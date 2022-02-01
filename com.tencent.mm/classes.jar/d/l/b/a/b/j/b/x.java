@@ -1,7 +1,7 @@
 package d.l.b.a.b.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.a.g;
 import d.l.b.a.b.a.g.a;
 import d.l.b.a.b.b.e;
@@ -24,13 +24,13 @@ public final class x
   public final ab b(y paramy)
   {
     AppMethodBeat.i(60120);
-    k.h(paramy, "module");
-    a locala = g.KZg.LaD;
-    k.g(locala, "KotlinBuiltIns.FQ_NAMES.uInt");
+    p.h(paramy, "module");
+    a locala = g.MQb.MRy;
+    p.g(locala, "KotlinBuiltIns.FQ_NAMES.uInt");
     paramy = s.b(paramy, locala);
     if (paramy != null)
     {
-      paramy = paramy.fRe();
+      paramy = paramy.giC();
       if (paramy != null)
       {
         paramy = (ab)paramy;
@@ -38,8 +38,8 @@ public final class x
         return paramy;
       }
     }
-    paramy = u.aWR("Unsigned type UInt not found");
-    k.g(paramy, "ErrorUtils.createErrorTy…ned type UInt not found\")");
+    paramy = u.bcU("Unsigned type UInt not found");
+    p.g(paramy, "ErrorUtils.createErrorTy…ned type UInt not found\")");
     paramy = (ab)paramy;
     AppMethodBeat.o(60120);
     return paramy;
@@ -55,7 +55,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.b.x
  * JD-Core Version:    0.7.0.1
  */

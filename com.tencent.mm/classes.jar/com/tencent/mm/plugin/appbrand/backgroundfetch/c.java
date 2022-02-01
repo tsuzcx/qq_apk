@@ -9,50 +9,50 @@ import java.util.Map;
 public final class c
   extends j
 {
-  public static c.a jxG;
-  static final String[] jxH;
+  public static c.a jRC;
+  static final String[] jRD;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(44704);
-    jxH = new String[] { "username", "fetchType" };
+    jRD = new String[] { "username", "fetchType" };
     Object localObject1 = new c.a();
-    ((c.a)localObject1).GvF = new Field[7];
+    ((c.a)localObject1).IhA = new Field[7];
     ((c.a)localObject1).columns = new String[8];
     Object localObject2 = new StringBuilder();
     ((c.a)localObject1).columns[0] = "username";
-    ((c.a)localObject1).GvH.put("username", "TEXT");
+    ((c.a)localObject1).IhC.put("username", "TEXT");
     ((StringBuilder)localObject2).append(" username TEXT");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[1] = "fetchType";
-    ((c.a)localObject1).GvH.put("fetchType", "INTEGER");
+    ((c.a)localObject1).IhC.put("fetchType", "INTEGER");
     ((StringBuilder)localObject2).append(" fetchType INTEGER");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[2] = "updateTime";
-    ((c.a)localObject1).GvH.put("updateTime", "LONG");
+    ((c.a)localObject1).IhC.put("updateTime", "LONG");
     ((StringBuilder)localObject2).append(" updateTime LONG");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[3] = "path";
-    ((c.a)localObject1).GvH.put("path", "TEXT");
+    ((c.a)localObject1).IhC.put("path", "TEXT");
     ((StringBuilder)localObject2).append(" path TEXT");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[4] = "query";
-    ((c.a)localObject1).GvH.put("query", "TEXT");
+    ((c.a)localObject1).IhC.put("query", "TEXT");
     ((StringBuilder)localObject2).append(" query TEXT");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[5] = "scene";
-    ((c.a)localObject1).GvH.put("scene", "INTEGER");
+    ((c.a)localObject1).IhC.put("scene", "INTEGER");
     ((StringBuilder)localObject2).append(" scene INTEGER");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[6] = "data";
-    ((c.a)localObject1).GvH.put("data", "TEXT");
+    ((c.a)localObject1).IhC.put("data", "TEXT");
     ((StringBuilder)localObject2).append(" data TEXT");
     ((c.a)localObject1).columns[7] = "rowid";
     ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    jxG = (c.a)localObject1;
+    jRC = (c.a)localObject1;
     localObject1 = " PRIMARY KEY ( ";
-    localObject2 = jxH;
+    localObject2 = jRD;
     int j = localObject2.length;
     while (i < j)
     {
@@ -63,14 +63,14 @@ public final class c
     localObject1 = ((String)localObject1).replaceFirst(",", "");
     localObject1 = (String)localObject1 + " )";
     localObject2 = new StringBuilder();
-    Object localObject3 = jxG;
+    Object localObject3 = jRC;
     ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
     AppMethodBeat.o(44704);
   }
   
   public final c.a getDBInfo()
   {
-    return jxG;
+    return jRC;
   }
 }
 

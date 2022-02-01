@@ -1,74 +1,74 @@
 package com.tencent.mm.plugin.nearby.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.model.bi.a;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bj.a;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 
 public enum b
 {
   static
   {
     AppMethodBeat.i(89764);
-    viM = new b("INSTANCE");
-    viN = new b[] { viM };
+    wof = new b("INSTANCE");
+    wog = new b[] { wof };
     AppMethodBeat.o(89764);
   }
   
   private b() {}
   
-  public static void Kc(int paramInt)
+  public static void LE(int paramInt)
   {
     AppMethodBeat.i(89759);
-    String str = bs.nullAsNil((String)g.agR().agA().get(143873, ""));
+    String str = bt.nullAsNil((String)g.ajC().ajl().get(143873, ""));
     if (!str.equals(""))
     {
-      if (bs.pN(bs.g((Long)g.agR().agA().get(143874, Long.valueOf(0L)))) < 7200L)
+      if (bt.rM(bt.g((Long)g.ajC().ajl().get(143874, Long.valueOf(0L)))) < 7200L)
       {
-        eg(str, paramInt);
+        ey(str, paramInt);
         AppMethodBeat.o(89759);
         return;
       }
-      anY(str);
+      asX(str);
     }
     AppMethodBeat.o(89759);
   }
   
-  public static void anY(String paramString)
+  public static void asX(String paramString)
   {
     AppMethodBeat.i(89763);
-    bj localbj = ((k)g.ab(k.class)).awB();
-    if (localbj.aNw(paramString)) {
-      localbj.aNA(paramString);
+    bp localbp = ((l)g.ab(l.class)).azp();
+    if (localbp.aTn(paramString)) {
+      localbp.aTr(paramString);
     }
-    bi.a(paramString, new bi.a()
+    bj.a(paramString, new bj.a()
     {
-      public final boolean Wr()
+      public final boolean YK()
       {
         return false;
       }
       
-      public final void Ws() {}
+      public final void YL() {}
     });
-    g.agR().agA().set(143873, "");
-    g.agR().agA().set(143874, Long.valueOf(0L));
-    djG();
+    g.ajC().ajl().set(143873, "");
+    g.ajC().ajl().set(143874, Long.valueOf(0L));
+    dtS();
     AppMethodBeat.o(89763);
   }
   
-  public static boolean djE()
+  public static boolean dtQ()
   {
     AppMethodBeat.i(89760);
-    if (bs.m((Integer)g.agR().agA().get(143875, Integer.valueOf(0))) == 1)
+    if (bt.n((Integer)g.ajC().ajl().get(143875, Integer.valueOf(0))) == 1)
     {
       AppMethodBeat.o(89760);
       return true;
@@ -77,41 +77,41 @@ public enum b
     return false;
   }
   
-  public static void djF()
+  public static void dtR()
   {
     AppMethodBeat.i(89761);
-    g.agR().agA().set(143875, Integer.valueOf(1));
+    g.ajC().ajl().set(143875, Integer.valueOf(1));
     AppMethodBeat.o(89761);
   }
   
-  public static void djG()
+  public static void dtS()
   {
     AppMethodBeat.i(89762);
-    g.agR().agA().set(143875, Integer.valueOf(0));
+    g.ajC().ajl().set(143875, Integer.valueOf(0));
     AppMethodBeat.o(89762);
   }
   
-  public static void eg(String paramString, int paramInt)
+  public static void ey(String paramString, int paramInt)
   {
     AppMethodBeat.i(89758);
-    paramString = new d(paramString, (int)bs.pN(bs.g((Long)g.agR().agA().get(143874, Long.valueOf(0L)))), paramInt);
-    g.agi().a(paramString, 0);
+    paramString = new d(paramString, (int)bt.rM(bt.g((Long)g.ajC().ajl().get(143874, Long.valueOf(0L)))), paramInt);
+    g.aiU().a(paramString, 0);
     AppMethodBeat.o(89758);
   }
   
-  public static boolean ia(String paramString1, String paramString2)
+  public static boolean il(String paramString1, String paramString2)
   {
     AppMethodBeat.i(89757);
-    ai localai = new ai();
-    localai.qj(paramString2);
-    localai.setUsername(paramString1);
-    paramString2 = ((k)g.ab(k.class)).awB();
-    ac.d("MicroMsg.LbsroomLogic", "Save lbsroom contact name:" + localai.field_username);
-    if (!paramString2.aNw(localai.field_username)) {
-      paramString2.ag(localai);
+    am localam = new am();
+    localam.sT(paramString2);
+    localam.setUsername(paramString1);
+    paramString2 = ((l)g.ab(l.class)).azp();
+    ad.d("MicroMsg.LbsroomLogic", "Save lbsroom contact name:" + localam.field_username);
+    if (!paramString2.aTn(localam.field_username)) {
+      paramString2.ag(localam);
     }
-    g.agR().agA().set(143873, paramString1);
-    g.agR().agA().set(143874, Long.valueOf(bs.aNx()));
+    g.ajC().ajl().set(143873, paramString1);
+    g.ajC().ajl().set(143874, Long.valueOf(bt.aQJ()));
     AppMethodBeat.o(89757);
     return true;
   }

@@ -28,38 +28,43 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.al.af;
-import com.tencent.mm.g.a.ui;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.am.ag;
+import com.tencent.mm.g.a.vb;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
-import com.tencent.mm.protocal.protobuf.aaf;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.protocal.protobuf.csq;
-import com.tencent.mm.protocal.protobuf.dbt;
+import com.tencent.mm.protocal.protobuf.acf;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.protocal.protobuf.cya;
+import com.tencent.mm.protocal.protobuf.dhg;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.storage.bc;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.AbstractTabChildActivity.AbStractTabFragment;
 import com.tencent.mm.ui.HomeUI;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.base.AlphabetScrollBar;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
 import com.tencent.mm.ui.base.VerticalScrollBar.a;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.f.a;
 import java.io.IOException;
 import java.util.HashMap;
@@ -69,7 +74,7 @@ import java.util.List;
 public class AddressUI
   extends FragmentActivity
 {
-  public MMFragment IsM;
+  public MMFragment Kjs;
   
   public void onCreate(Bundle paramBundle)
   {
@@ -78,9 +83,9 @@ public class AddressUI
     paramBundle = getSupportFragmentManager();
     if (paramBundle.findFragmentById(16908290) == null)
     {
-      this.IsM = new AddressUIFragment();
-      this.IsM.setArguments(getIntent().getExtras());
-      paramBundle.beginTransaction().a(16908290, this.IsM).commit();
+      this.Kjs = new AddressUIFragment();
+      this.Kjs.setArguments(getIntent().getExtras());
+      paramBundle.beginTransaction().a(16908290, this.Kjs).commit();
     }
     AppMethodBeat.o(37647);
   }
@@ -95,113 +100,113 @@ public class AddressUI
   
   public static class AddressUIFragment
     extends AbstractTabChildActivity.AbStractTabFragment
-    implements com.tencent.mm.ak.g
+    implements com.tencent.mm.al.f
   {
-    private TextView IsN;
-    private TextView IsO;
-    private a IsP;
-    private com.tencent.mm.ui.voicesearch.b IsQ;
-    private String IsR;
-    private String IsS;
-    private int IsT;
-    private AlphabetScrollBar IsU;
-    private LinearLayout IsV;
-    private boolean IsW;
-    private boolean IsX;
-    private l IsY;
-    private BizContactEntranceView IsZ;
-    private String Isk;
-    private String Isl;
-    private b Ita;
-    private b Itb;
-    private b Itc;
-    private b Itd;
-    private ContactCountView Ite;
-    private y Itf;
-    private j Itg;
-    boolean Ith;
-    private boolean Iti;
-    private LinearLayout Itj;
-    private VerticalScrollBar.a Itk;
-    List<String> Itl;
-    private Runnable Itm;
-    com.tencent.mm.pluginsdk.ui.d ftW;
-    private ProgressDialog fts;
-    List<String> fzw;
-    private final long hYc;
-    private TextView iJe;
-    private boolean iNn;
-    private int nwY;
-    private int nwZ;
-    private com.tencent.mm.ui.widget.b.a nym;
-    private n.d pHX;
-    private Animation qzo;
-    private ListView tUA;
-    private Animation viC;
-    private com.tencent.mm.sdk.b.c yTj;
+    private com.tencent.mm.sdk.b.c AkQ;
+    private String KiP;
+    private String KiQ;
+    private AlphabetScrollBar KjA;
+    private LinearLayout KjB;
+    private boolean KjC;
+    private boolean KjD;
+    private l KjE;
+    private BizContactEntranceView KjF;
+    private b KjG;
+    private b KjH;
+    private b KjI;
+    private b KjJ;
+    private ContactCountView KjK;
+    private y KjL;
+    private j KjM;
+    boolean KjN;
+    private boolean KjO;
+    private LinearLayout KjP;
+    private VerticalScrollBar.a KjQ;
+    List<String> KjR;
+    private Runnable KjS;
+    private TextView Kjt;
+    private TextView Kju;
+    private a Kjv;
+    private com.tencent.mm.ui.voicesearch.b Kjw;
+    private String Kjx;
+    private String Kjy;
+    private int Kjz;
+    com.tencent.mm.pluginsdk.ui.e fMX;
+    private ProgressDialog fMu;
+    List<String> fSL;
+    private final long iry;
+    private TextView jcn;
+    private boolean jgw;
+    private int nYw;
+    private int nYx;
+    private com.tencent.mm.ui.widget.b.a nZK;
+    private n.e qlC;
+    private Animation rjd;
+    private ListView uXc;
+    private Animation wnV;
     
     public AddressUIFragment()
     {
       AppMethodBeat.i(37621);
-      this.fts = null;
-      this.IsS = "";
-      this.IsV = null;
-      this.IsW = false;
-      this.iNn = false;
-      this.IsX = false;
-      this.Iti = true;
-      this.hYc = 180000L;
-      this.yTj = new com.tencent.mm.sdk.b.c() {};
-      this.pHX = new n.d()
+      this.fMu = null;
+      this.Kjy = "";
+      this.KjB = null;
+      this.KjC = false;
+      this.jgw = false;
+      this.KjD = false;
+      this.KjO = true;
+      this.iry = 180000L;
+      this.AkQ = new com.tencent.mm.sdk.b.c() {};
+      this.qlC = new n.e()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
-          AppMethodBeat.i(196733);
+          AppMethodBeat.i(194524);
           switch (paramAnonymousMenuItem.getItemId())
           {
           default: 
-            AppMethodBeat.o(196733);
+            AppMethodBeat.o(194524);
             return;
           case 1: 
           case 2: 
             AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this, AddressUI.AddressUIFragment.o(AddressUI.AddressUIFragment.this));
-            AppMethodBeat.o(196733);
+            AppMethodBeat.o(194524);
             return;
           }
           AddressUI.AddressUIFragment.c(AddressUI.AddressUIFragment.this, AddressUI.AddressUIFragment.o(AddressUI.AddressUIFragment.this));
-          AppMethodBeat.o(196733);
+          AppMethodBeat.o(194524);
         }
       };
-      this.Itk = new VerticalScrollBar.a()
+      this.KjQ = new VerticalScrollBar.a()
       {
-        public final void sn(String paramAnonymousString)
+        public final void vc(String paramAnonymousString)
         {
           int i = 0;
-          AppMethodBeat.i(196734);
+          AppMethodBeat.i(194525);
           if (AddressUI.AddressUIFragment.this.getString(2131762893).equals(paramAnonymousString))
           {
             AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).setSelection(0);
-            AppMethodBeat.o(196734);
+            AppMethodBeat.o(194525);
             return;
           }
           Object localObject = AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this);
-          ac.v("MicroMsg.AddressAdapter", "getSections");
-          localObject = ((a)localObject).Isq;
+          ad.v("MicroMsg.AddressAdapter", "getSections");
+          localObject = ((a)localObject).KiV;
           if (localObject == null)
           {
-            AppMethodBeat.o(196734);
+            AppMethodBeat.o(194525);
             return;
           }
           if ("↑".equals(paramAnonymousString))
           {
             AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).setSelection(0);
-            AppMethodBeat.o(196734);
+            AppMethodBeat.o(194525);
             return;
           }
           if ("☆".equals(paramAnonymousString))
           {
             AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).setSelection(AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).getHeaderViewsCount());
-            AppMethodBeat.o(196734);
+            AppMethodBeat.o(194525);
             return;
           }
           do
@@ -213,39 +218,39 @@ public class AddressUI
           } while (!localObject[i].equals(paramAnonymousString));
           i = AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this).getPositionForSection(i);
           AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).setSelection(i + AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).getHeaderViewsCount());
-          AppMethodBeat.o(196734);
+          AppMethodBeat.o(194525);
           return;
-          AppMethodBeat.o(196734);
+          AppMethodBeat.o(194525);
         }
       };
-      this.ftW = new com.tencent.mm.pluginsdk.ui.d(new AbsListView.OnScrollListener()
+      this.fMX = new com.tencent.mm.pluginsdk.ui.e(new AbsListView.OnScrollListener()
       {
         public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
-          AppMethodBeat.i(196735);
+          AppMethodBeat.i(194526);
           if (paramAnonymousInt1 < 2)
           {
-            AppMethodBeat.o(196735);
+            AppMethodBeat.o(194526);
             return;
           }
           if (!AddressUI.AddressUIFragment.p(AddressUI.AddressUIFragment.this)) {
             AddressUI.AddressUIFragment.q(AddressUI.AddressUIFragment.this);
           }
-          AppMethodBeat.o(196735);
+          AppMethodBeat.o(194526);
         }
         
         public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
         {
-          AppMethodBeat.i(196736);
+          AppMethodBeat.i(194527);
           if (paramAnonymousInt == 2) {
-            com.tencent.mm.cj.d.feq().fW(AddressUI.class.getName() + ".Listview", 4);
+            com.tencent.mm.cj.d.fux().gt(AddressUI.class.getName() + ".Listview", 4);
           }
-          AppMethodBeat.o(196736);
+          AppMethodBeat.o(194527);
         }
       });
-      this.fzw = new LinkedList();
-      this.Itl = new LinkedList();
-      this.Itm = new Runnable()
+      this.fSL = new LinkedList();
+      this.KjR = new LinkedList();
+      this.KjS = new Runnable()
       {
         public final void run()
         {
@@ -257,15 +262,80 @@ public class AddressUI
       AppMethodBeat.o(37621);
     }
     
-    private void ffv()
+    private void fHE()
     {
-      AppMethodBeat.i(196741);
+      AppMethodBeat.i(37628);
+      this.fSL = new LinkedList();
+      this.KjR = new LinkedList();
+      com.tencent.mm.bs.d.ffH();
+      this.fSL.add("tmessage");
+      this.KjR.addAll(this.fSL);
+      if (!this.fSL.contains("officialaccounts")) {
+        this.fSL.add("officialaccounts");
+      }
+      this.fSL.add("helper_entry");
+      if (this.Kjv != null) {
+        this.Kjv.io(this.fSL);
+      }
+      if (this.Kjw != null) {
+        this.Kjw.io(this.KjR);
+      }
+      AppMethodBeat.o(37628);
+    }
+    
+    private void fHF()
+    {
+      try
+      {
+        AppMethodBeat.i(37632);
+        long l = System.currentTimeMillis();
+        fHE();
+        ad.i("MicroMsg.AddressUI", "KEVIN updateBlockList() LAST" + (System.currentTimeMillis() - l));
+        l = System.currentTimeMillis();
+        if (this.Kjv != null)
+        {
+          ad.v("MicroMsg.AddressUI", "post to do refresh");
+          aq.f(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(37609);
+              AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this).fHD();
+              if (AddressUI.AddressUIFragment.h(AddressUI.AddressUIFragment.this) != null) {
+                AddressUI.AddressUIFragment.h(AddressUI.AddressUIFragment.this).reset();
+              }
+              AppMethodBeat.o(37609);
+            }
+          });
+        }
+        if (this.Kjw != null) {
+          aq.f(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(37610);
+              ad.v("MicroMsg.AddressUI", "post search adapter to do refresh");
+              AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).a(null, null);
+              AppMethodBeat.o(37610);
+            }
+          });
+        }
+        ad.i("MicroMsg.AddressUI", "KEVIN doRefresh() LAST" + (System.currentTimeMillis() - l));
+        AppMethodBeat.o(37632);
+        return;
+      }
+      finally {}
+    }
+    
+    private void fvE()
+    {
+      AppMethodBeat.i(194532);
       final View localView = getView().getRootView().findViewById(2131301338);
-      int i = com.tencent.mm.ui.ap.dT(getContext());
-      int j = com.tencent.mm.ui.ap.Q(getContext(), -1);
+      int i = ar.dT(getContext());
+      int j = ar.B(getContext(), -1);
       Runnable local12 = new Runnable()
       {
-        int gLY = 0;
+        int hfV = 0;
         
         public final void run()
         {
@@ -275,32 +345,32 @@ public class AddressUI
             AppMethodBeat.o(37608);
             return;
           }
-          int i = com.tencent.mm.ui.ap.dT(AddressUI.AddressUIFragment.this.getContext());
-          int j = com.tencent.mm.ui.ap.Q(AddressUI.AddressUIFragment.this.getContext(), -1);
+          int i = ar.dT(AddressUI.AddressUIFragment.this.getContext());
+          int j = ar.B(AddressUI.AddressUIFragment.this.getContext(), -1);
           if (j <= 0) {
-            if (this.gLY < 2)
+            if (this.hfV < 2)
             {
-              ac.i("MicroMsg.AddressUI", "[trySetParentViewPadding] try getStatusHeight again!");
+              ad.i("MicroMsg.AddressUI", "[trySetParentViewPadding] try getStatusHeight again!");
               AddressUI.AddressUIFragment.this.getView().post(this);
-              this.gLY += 1;
+              this.hfV += 1;
             }
           }
           for (;;)
           {
-            ac.i("MicroMsg.AddressUI", "[trySetParentViewPadding] tryCount:%s actionBarHeight:%s actionBarHeight:%s", new Object[] { Integer.valueOf(this.gLY), Integer.valueOf(j), Integer.valueOf(i) });
+            ad.i("MicroMsg.AddressUI", "[trySetParentViewPadding] tryCount:%s actionBarHeight:%s actionBarHeight:%s", new Object[] { Integer.valueOf(this.hfV), Integer.valueOf(j), Integer.valueOf(i) });
             AppMethodBeat.o(37608);
             return;
-            ac.e("MicroMsg.AddressUI", "[trySetParentViewPadding] try getStatusHeight finally!");
+            ad.e("MicroMsg.AddressUI", "[trySetParentViewPadding] try getStatusHeight finally!");
             break;
             int k = AddressUI.AddressUIFragment.b(AddressUI.AddressUIFragment.this);
             if (k != AddressUI.AddressUIFragment.this.getView().getPaddingTop())
             {
-              ac.i("MicroMsg.AddressUI", "[trySetParentViewPadding] now:%s old:%s", new Object[] { Integer.valueOf(k), Integer.valueOf(AddressUI.AddressUIFragment.this.getView().getPaddingTop()) });
+              ad.i("MicroMsg.AddressUI", "[trySetParentViewPadding] now:%s old:%s", new Object[] { Integer.valueOf(k), Integer.valueOf(AddressUI.AddressUIFragment.this.getView().getPaddingTop()) });
               AddressUI.AddressUIFragment.this.getView().setPadding(0, k, 0, localView.getHeight());
             }
             else
             {
-              ac.i("MicroMsg.AddressUI", "[trySetParentViewPadding] has try more once! it's right! actionBarHeight:%s actionBarHeight:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+              ad.i("MicroMsg.AddressUI", "[trySetParentViewPadding] has try more once! it's right! actionBarHeight:%s actionBarHeight:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
             }
           }
         }
@@ -308,86 +378,21 @@ public class AddressUI
       if (j <= 0)
       {
         getView().post(local12);
-        AppMethodBeat.o(196741);
+        AppMethodBeat.o(194532);
         return;
       }
       int k = getTopHeight();
       getView().setPadding(0, k, 0, localView.getHeight());
-      ac.i("MicroMsg.AddressUI", "[trySetParentViewPadding] actionBarHeight:%s actionBarHeight:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+      ad.i("MicroMsg.AddressUI", "[trySetParentViewPadding] actionBarHeight:%s actionBarHeight:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
       getView().postDelayed(local12, 100L);
-      AppMethodBeat.o(196741);
-    }
-    
-    private void fqR()
-    {
-      AppMethodBeat.i(37628);
-      this.fzw = new LinkedList();
-      this.Itl = new LinkedList();
-      com.tencent.mm.br.d.eQD();
-      this.fzw.add("tmessage");
-      this.Itl.addAll(this.fzw);
-      if (!this.fzw.contains("officialaccounts")) {
-        this.fzw.add("officialaccounts");
-      }
-      this.fzw.add("helper_entry");
-      if (this.IsP != null) {
-        this.IsP.ic(this.fzw);
-      }
-      if (this.IsQ != null) {
-        this.IsQ.ic(this.Itl);
-      }
-      AppMethodBeat.o(37628);
-    }
-    
-    private void fqS()
-    {
-      try
-      {
-        AppMethodBeat.i(37632);
-        long l = System.currentTimeMillis();
-        fqR();
-        ac.i("MicroMsg.AddressUI", "KEVIN updateBlockList() LAST" + (System.currentTimeMillis() - l));
-        l = System.currentTimeMillis();
-        if (this.IsP != null)
-        {
-          ac.v("MicroMsg.AddressUI", "post to do refresh");
-          com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(37609);
-              AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this).fqQ();
-              if (AddressUI.AddressUIFragment.h(AddressUI.AddressUIFragment.this) != null) {
-                AddressUI.AddressUIFragment.h(AddressUI.AddressUIFragment.this).reset();
-              }
-              AppMethodBeat.o(37609);
-            }
-          });
-        }
-        if (this.IsQ != null) {
-          com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(37610);
-              ac.v("MicroMsg.AddressUI", "post search adapter to do refresh");
-              AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).a(null, null);
-              AppMethodBeat.o(37610);
-            }
-          });
-        }
-        ac.i("MicroMsg.AddressUI", "KEVIN doRefresh() LAST" + (System.currentTimeMillis() - l));
-        AppMethodBeat.o(37632);
-        return;
-      }
-      finally {}
+      AppMethodBeat.o(194532);
     }
     
     private int getTopHeight()
     {
       AppMethodBeat.i(37625);
-      int j = com.tencent.mm.ui.ap.dT(getContext());
-      int i = com.tencent.mm.ui.ap.Q(getContext(), -1);
+      int j = ar.dT(getContext());
+      int i = ar.B(getContext(), -1);
       View localView = getView().getRootView().findViewById(2131296345);
       if ((Build.VERSION.SDK_INT >= 24) && (LauncherUI.getInstance() != null)) {}
       for (boolean bool1 = LauncherUI.getInstance().isInMultiWindowMode();; bool1 = false)
@@ -395,7 +400,7 @@ public class AddressUI
         SharedPreferences localSharedPreferences;
         if (!bool1)
         {
-          localSharedPreferences = com.tencent.mm.sdk.platformtools.ai.eUY();
+          localSharedPreferences = aj.fkD();
           if (localSharedPreferences == null) {
             break label178;
           }
@@ -420,7 +425,7 @@ public class AddressUI
           }
           for (i = localView.getTop();; i = 0)
           {
-            ac.i("MicroMsg.AddressUI", "getTopHeight statusHeight:%s, isInMultiWindowMode:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1) });
+            ad.i("MicroMsg.AddressUI", "getTopHeight statusHeight:%s, isInMultiWindowMode:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1) });
             AppMethodBeat.o(37625);
             return i + j;
           }
@@ -428,218 +433,91 @@ public class AddressUI
       }
     }
     
-    public final void feA() {}
-    
-    public final void feB()
+    public final void fHG()
     {
-      AppMethodBeat.i(37633);
-      ac.i("MicroMsg.AddressUI", "AddressUI on Pause");
-      az.ayM();
-      com.tencent.mm.model.c.agA().set(340226, Long.valueOf(System.currentTimeMillis()));
-      az.ayM();
-      com.tencent.mm.model.c.agA().set(12296, Boolean.valueOf(this.IsW));
-      if (this.IsQ != null) {
-        this.IsQ.onPause();
+      AppMethodBeat.i(37640);
+      if (this.uXc != null) {
+        this.uXc.setSelection(0);
       }
-      this.IsP.fqP();
-      com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(196737);
-          AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this).pause();
-          AppMethodBeat.o(196737);
-        }
-      });
-      if (this.IsY != null) {
-        this.IsY.setFrontGround(false);
-      }
-      LauncherUI localLauncherUI = (LauncherUI)getContext();
-      if (localLauncherUI != null) {
-        localLauncherUI.getHomeUI().aH(this.Itm);
-      }
-      AppMethodBeat.o(37633);
+      AppMethodBeat.o(37640);
     }
     
-    public final void feC() {}
-    
-    public final void feD()
-    {
-      AppMethodBeat.i(37634);
-      ac.v("MicroMsg.AddressUI", "onDestory");
-      if (this.IsU != null) {
-        this.IsU.HDk = null;
-      }
-      az.agi().b(138, this);
-      if (this.IsP != null)
-      {
-        this.IsP.wn(true);
-        this.IsP.detach();
-        this.IsP.feY();
-      }
-      if (this.IsQ != null)
-      {
-        this.IsQ.detach();
-        this.IsQ.cVi();
-      }
-      if ((az.agM()) && (this.IsP != null))
-      {
-        az.ayM();
-        com.tencent.mm.model.c.awB().b(this.IsP);
-      }
-      if ((az.agM()) && (this.Itg != null)) {
-        af.aCW().a(this.Itg);
-      }
-      if (this.IsY != null)
-      {
-        l locall = this.IsY;
-        if (az.agM()) {
-          com.tencent.mm.bj.d.aJe().remove(locall.IvH);
-        }
-        this.IsY = null;
-      }
-      if (this.IsZ != null) {
-        this.IsZ = null;
-      }
-      if (this.Ita != null) {
-        this.Ita = null;
-      }
-      if (this.Itd != null) {
-        this.Itd = null;
-      }
-      if (this.Itc != null) {
-        this.Itc = null;
-      }
-      AppMethodBeat.o(37634);
-    }
-    
-    public final void feE()
-    {
-      AppMethodBeat.i(37638);
-      ac.v("MicroMsg.AddressUI", "request to top");
-      if (this.tUA != null)
-      {
-        Object localObject1 = this.tUA;
-        localObject1 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject1);
-        Object localObject2 = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aeD(), "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment", "requestToTop", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-        BackwardSupportUtil.c.b((ListView)((com.tencent.mm.hellhoundlib.b.a)localObject1).lR(0));
-        com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment", "requestToTop", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-      }
-      AppMethodBeat.o(37638);
-    }
-    
-    public final void feF()
-    {
-      AppMethodBeat.i(37636);
-      if (this.IsP != null)
-      {
-        a locala = this.IsP;
-        locala.IsB.clear();
-        locala.Isz.clear();
-        locala.IsA = false;
-      }
-      ac.i("MicroMsg.INIT", "KEVIN Address turnTobg");
-      if (this.IsZ != null) {
-        this.IsZ.destroyDrawingCache();
-      }
-      if (this.Ita != null) {
-        this.Ita.destroyDrawingCache();
-      }
-      if (this.Itc != null) {
-        this.Itc.destroyDrawingCache();
-      }
-      if (this.Itd != null) {
-        this.Itd.destroyDrawingCache();
-      }
-      if (this.Ite != null) {
-        this.Ite.destroyDrawingCache();
-      }
-      if (this.IsY != null) {
-        this.IsY.destroyDrawingCache();
-      }
-      AppMethodBeat.o(37636);
-    }
-    
-    public final void feG()
-    {
-      AppMethodBeat.i(37637);
-      ac.v("MicroMsg.INIT", "KEVIN Address turnTofg");
-      AppMethodBeat.o(37637);
-    }
-    
-    public final void fey()
+    public final void fuF()
     {
       AppMethodBeat.i(37630);
-      ac.v("MicroMsg.AddressUI", "address ui on create");
-      ac.v("MicroMsg.AddressUI", "on address ui create");
-      this.IsW = false;
-      this.iNn = false;
-      this.IsX = false;
-      this.Isk = null;
-      this.Isl = null;
-      this.IsR = null;
-      az.agi().a(138, this);
-      this.Isk = "@all.contact.without.chatroom.without.openim";
-      this.Isl = getStringExtra("Contact_GroupFilter_Str");
-      this.IsR = getString(2131760134);
-      this.IsT = getIntExtra("List_Type", 2);
-      ffv();
-      ac.v("MicroMsg.AddressUI", "on address ui init view, %s", new Object[] { getResources().getDisplayMetrics() });
-      if (this.tUA != null)
+      ad.v("MicroMsg.AddressUI", "address ui on create");
+      ad.v("MicroMsg.AddressUI", "on address ui create");
+      this.KjC = false;
+      this.jgw = false;
+      this.KjD = false;
+      this.KiP = null;
+      this.KiQ = null;
+      this.Kjx = null;
+      ba.aiU().a(138, this);
+      this.KiP = "@all.contact.without.chatroom.without.openim";
+      this.KiQ = getStringExtra("Contact_GroupFilter_Str");
+      this.Kjx = getString(2131760134);
+      this.Kjz = getIntExtra("List_Type", 2);
+      fvE();
+      ad.v("MicroMsg.AddressUI", "on address ui init view, %s", new Object[] { getResources().getDisplayMetrics() });
+      if (this.uXc != null)
       {
-        if (this.IsY != null) {
-          this.tUA.removeHeaderView(this.IsY);
+        if (this.KjE != null) {
+          this.uXc.removeHeaderView(this.KjE);
         }
-        if (this.IsZ != null) {
-          this.tUA.removeHeaderView(this.IsZ);
+        if (this.KjF != null) {
+          this.uXc.removeHeaderView(this.KjF);
         }
-        if (this.Ita != null) {
-          this.tUA.removeHeaderView(this.Ita);
+        if (this.KjG != null) {
+          this.uXc.removeHeaderView(this.KjG);
         }
-        if (this.Itd != null) {
-          this.tUA.removeHeaderView(this.Itd);
+        if (this.KjJ != null) {
+          this.uXc.removeHeaderView(this.KjJ);
         }
-        if (this.Itc != null) {
-          this.tUA.removeHeaderView(this.Itc);
+        if (this.KjI != null) {
+          this.uXc.removeHeaderView(this.KjI);
         }
       }
-      this.tUA = ((ListView)findViewById(2131296471));
-      this.tUA.setScrollingCacheEnabled(false);
-      this.IsN = ((TextView)findViewById(2131299460));
-      this.IsN.setText(2131755193);
-      this.iJe = ((TextView)findViewById(2131299481));
-      this.iJe.setText(2131755195);
-      this.IsO = ((TextView)findViewById(2131299499));
-      this.IsO.setOnClickListener(new View.OnClickListener()
+      this.uXc = ((ListView)findViewById(2131296471));
+      this.uXc.setScrollingCacheEnabled(false);
+      this.Kjt = ((TextView)findViewById(2131299460));
+      this.Kjt.setText(2131755193);
+      this.jcn = ((TextView)findViewById(2131299481));
+      this.jcn.setText(2131755195);
+      this.Kju = ((TextView)findViewById(2131299499));
+      this.Kju.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(37615);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(37615);
         }
       });
-      this.IsP = new a(getContext(), this.Isk, this.Isl, this.IsT);
-      this.tUA.setAdapter(null);
-      this.IsP.a(new f.a()
+      this.Kjv = new a(getContext(), this.KiP, this.KiQ, this.Kjz);
+      this.uXc.setAdapter(null);
+      this.Kjv.a(new f.a()
       {
-        public final void aPg()
+        public final void aSs()
         {
           AppMethodBeat.i(37616);
           AddressUI.AddressUIFragment localAddressUIFragment = AddressUI.AddressUIFragment.this;
           AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this).getCount();
           AddressUI.AddressUIFragment.c(localAddressUIFragment);
-          AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this).fqO();
+          AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this).fHB();
           AppMethodBeat.o(37616);
         }
         
-        public final void ffk() {}
+        public final void fvs() {}
       });
-      this.IsP.Isx = true;
-      this.IsP.setFragment(this);
-      this.IsP.setGetViewPositionCallback(new MMSlideDelView.c()
+      this.Kjv.Kjc = true;
+      this.Kjv.setFragment(this);
+      this.Kjv.setGetViewPositionCallback(new MMSlideDelView.c()
       {
-        public final int dy(View paramAnonymousView)
+        public final int dA(View paramAnonymousView)
         {
           AppMethodBeat.i(37617);
           Object localObject = paramAnonymousView;
@@ -674,7 +552,7 @@ public class AddressUI
           return i;
         }
       });
-      this.IsP.setPerformItemClickListener(new MMSlideDelView.g()
+      this.Kjv.setPerformItemClickListener(new MMSlideDelView.g()
       {
         public final void s(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
         {
@@ -683,14 +561,14 @@ public class AddressUI
           AppMethodBeat.o(37618);
         }
       });
-      this.IsP.a(new MMSlideDelView.f()
+      this.Kjv.a(new MMSlideDelView.f()
       {
-        public final void cN(Object paramAnonymousObject)
+        public final void cP(Object paramAnonymousObject)
         {
           AppMethodBeat.i(37619);
           if (paramAnonymousObject == null)
           {
-            ac.e("MicroMsg.AddressUI", "onItemDel object null");
+            ad.e("MicroMsg.AddressUI", "onItemDel object null");
             AppMethodBeat.o(37619);
             return;
           }
@@ -698,344 +576,366 @@ public class AddressUI
           AppMethodBeat.o(37619);
         }
       });
-      this.IsQ = new com.tencent.mm.ui.voicesearch.b(getContext(), 1);
-      this.IsQ.xU(true);
-      this.Itj = new LinearLayout(getContext());
-      this.Itj.setOrientation(1);
-      this.tUA.addHeaderView(this.Itj);
-      this.Itb = new b(getContext(), b.a.Itu);
-      this.Itj.addView(this.Itb);
-      az.ayM();
-      ((Boolean)com.tencent.mm.model.c.agA().get(ah.a.GGA, Boolean.FALSE)).booleanValue();
-      this.Itb.setVisible(false);
-      this.IsY = new l(getContext());
-      this.Itj.addView(this.IsY);
-      this.Itd = new b(getContext(), b.a.Itv);
-      this.Itj.addView(this.Itd);
-      boolean bool = com.tencent.mm.kernel.g.agR().agA().getBoolean(ah.a.GWx, false);
+      this.Kjw = new com.tencent.mm.ui.voicesearch.b(getContext(), 1);
+      this.Kjw.yI(true);
+      this.KjP = new LinearLayout(getContext());
+      this.KjP.setOrientation(1);
+      this.uXc.addHeaderView(this.KjP);
+      this.KjH = new b(getContext(), b.a.Kka);
+      this.KjP.addView(this.KjH);
+      ba.aBQ();
+      ((Boolean)com.tencent.mm.model.c.ajl().get(al.a.IsS, Boolean.FALSE)).booleanValue();
+      this.KjH.setVisible(false);
+      this.KjE = new l(getContext());
+      this.KjP.addView(this.KjE);
+      this.KjJ = new b(getContext(), b.a.Kkb);
+      this.KjP.addView(this.KjJ);
+      boolean bool = com.tencent.mm.kernel.g.ajC().ajl().getBoolean(al.a.IJv, false);
       if (!bool) {
-        com.tencent.e.h.JZN.aT(new Runnable()
+        h.LTJ.aS(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(196739);
-            com.tencent.mm.kernel.g.agS();
-            if (((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNC("@social.black.android") > 0)
+            AppMethodBeat.i(194530);
+            com.tencent.mm.kernel.g.ajD();
+            if (((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().aTt("@social.black.android") > 0)
             {
-              com.tencent.mm.kernel.g.agR().agA().set(ah.a.GWx, Boolean.TRUE);
+              com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IJv, Boolean.TRUE);
               AddressUI.AddressUIFragment.e(AddressUI.AddressUIFragment.this).post(new Runnable()
               {
                 public final void run()
                 {
-                  AppMethodBeat.i(196738);
+                  AppMethodBeat.i(194529);
                   AddressUI.AddressUIFragment.e(AddressUI.AddressUIFragment.this).setVisible(true);
-                  AppMethodBeat.o(196738);
+                  AppMethodBeat.o(194529);
                 }
               });
             }
-            AppMethodBeat.o(196739);
+            AppMethodBeat.o(194530);
           }
         });
       }
-      Object localObject = this.Itd;
+      Object localObject = this.KjJ;
       if (bool)
       {
         bool = true;
         ((b)localObject).setVisible(bool);
-        this.Ita = new b(getContext(), b.a.Its);
-        this.Itj.addView(this.Ita);
-        this.Ita.setVisible(true);
-        this.Itc = new b(getContext(), b.a.Itt);
-        this.Itj.addView(this.Itc);
-        this.Itc.setVisible(true);
-        localObject = this.tUA;
+        this.KjG = new b(getContext(), b.a.KjY);
+        this.KjP.addView(this.KjG);
+        this.KjG.setVisible(true);
+        this.KjI = new b(getContext(), b.a.KjZ);
+        this.KjP.addView(this.KjI);
+        this.KjI.setVisible(true);
+        localObject = this.uXc;
         ContactCountView localContactCountView = new ContactCountView(getContext());
-        this.Ite = localContactCountView;
+        this.KjK = localContactCountView;
         ((ListView)localObject).addFooterView(localContactCountView, null, false);
-        if (com.tencent.mm.br.d.aCT("brandservice"))
+        if (com.tencent.mm.bs.d.aIu("brandservice"))
         {
-          this.IsZ = new BizContactEntranceView(getContext());
-          this.Itj.addView(this.IsZ);
-          this.IsZ.setVisible(true);
+          this.KjF = new BizContactEntranceView(getContext());
+          this.KjP.addView(this.KjF);
+          this.KjF.setVisible(true);
         }
         localObject = new y.b()
         {
-          public final void xx(boolean paramAnonymousBoolean)
+          public final void yk(boolean paramAnonymousBoolean)
           {
-            AppMethodBeat.i(196740);
+            AppMethodBeat.i(194531);
             if (AddressUI.AddressUIFragment.f(AddressUI.AddressUIFragment.this) == null)
             {
-              AppMethodBeat.o(196740);
+              AppMethodBeat.o(194531);
               return;
             }
             BizContactEntranceView localBizContactEntranceView = AddressUI.AddressUIFragment.f(AddressUI.AddressUIFragment.this);
             if (!paramAnonymousBoolean) {}
             for (paramAnonymousBoolean = true;; paramAnonymousBoolean = false)
             {
-              localBizContactEntranceView.xy(paramAnonymousBoolean);
-              AppMethodBeat.o(196740);
+              localBizContactEntranceView.yl(paramAnonymousBoolean);
+              AppMethodBeat.o(194531);
               return;
             }
           }
         };
-        this.Itf = new y(getContext(), new y.a()
+        this.KjL = new y(getContext(), new y.a()
         {
-          public final void abN(int paramAnonymousInt)
+          public final void aek(int paramAnonymousInt)
           {
-            AppMethodBeat.i(196727);
+            AppMethodBeat.i(194518);
             if ((AddressUI.AddressUIFragment.g(AddressUI.AddressUIFragment.this) == null) || (AddressUI.AddressUIFragment.f(AddressUI.AddressUIFragment.this) == null))
             {
-              AppMethodBeat.o(196727);
+              AppMethodBeat.o(194518);
               return;
             }
             if (paramAnonymousInt <= 0)
             {
               AddressUI.AddressUIFragment.g(AddressUI.AddressUIFragment.this).setVisibility(8);
-              AddressUI.AddressUIFragment.f(AddressUI.AddressUIFragment.this).xy(true);
-              AppMethodBeat.o(196727);
+              AddressUI.AddressUIFragment.f(AddressUI.AddressUIFragment.this).yl(true);
+              AppMethodBeat.o(194518);
               return;
             }
             AddressUI.AddressUIFragment.g(AddressUI.AddressUIFragment.this).setVisibility(0);
-            AddressUI.AddressUIFragment.f(AddressUI.AddressUIFragment.this).xy(false);
-            AppMethodBeat.o(196727);
+            AddressUI.AddressUIFragment.f(AddressUI.AddressUIFragment.this).yl(false);
+            AppMethodBeat.o(194518);
           }
         });
-        this.Itf.setOnVisibilityChangeListener((y.b)localObject);
-        if (this.Itf.getOpenIMCount() > 0) {
+        this.KjL.setOnVisibilityChangeListener((y.b)localObject);
+        if (this.KjL.getOpenIMCount() > 0) {
           break label1109;
         }
-        ((y.b)localObject).xx(false);
-        this.Itf.setVisibility(8);
+        ((y.b)localObject).yk(false);
+        this.KjL.setVisibility(8);
       }
       for (;;)
       {
-        this.Itj.addView(this.Itf);
-        this.Itg = new j(getContext(), new j.a()
+        this.KjP.addView(this.KjL);
+        this.KjM = new j(getContext(), new j.a()
         {
-          public final void abO(int paramAnonymousInt)
+          public final void ael(int paramAnonymousInt)
           {
-            AppMethodBeat.i(196728);
+            AppMethodBeat.i(194519);
             if (AddressUI.AddressUIFragment.h(AddressUI.AddressUIFragment.this) == null)
             {
-              AppMethodBeat.o(196728);
+              AppMethodBeat.o(194519);
               return;
             }
             if (paramAnonymousInt <= 0)
             {
               AddressUI.AddressUIFragment.h(AddressUI.AddressUIFragment.this).setVisibility(8);
-              AppMethodBeat.o(196728);
+              AppMethodBeat.o(194519);
               return;
             }
             AddressUI.AddressUIFragment.h(AddressUI.AddressUIFragment.this).setVisibility(0);
-            AppMethodBeat.o(196728);
+            AppMethodBeat.o(194519);
           }
         });
-        if (this.Itg.getEnterpriseFriendCount() <= 0) {
-          this.Itg.setVisibility(8);
+        if (this.KjM.getEnterpriseFriendCount() <= 0) {
+          this.KjM.setVisibility(8);
         }
-        this.Itj.addView(this.Itg);
-        this.nym = new com.tencent.mm.ui.widget.b.a(getContext());
-        this.IsP.Isv = new a.a() {};
-        this.tUA.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        this.KjP.addView(this.KjM);
+        this.nZK = new com.tencent.mm.ui.widget.b.a(getContext());
+        this.Kjv.Kja = new a.a() {};
+        this.uXc.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
           public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
           {
-            AppMethodBeat.i(196729);
+            AppMethodBeat.i(194520);
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousAdapterView);
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt);
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).qY(paramAnonymousLong);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$13", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
             paramAnonymousView = new StringBuilder("onItemClick ").append(paramAnonymousInt);
             if (AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this) == null) {}
-            for (paramAnonymousAdapterView = AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this);; paramAnonymousAdapterView = Boolean.valueOf(AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).IYA))
+            for (paramAnonymousAdapterView = AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this);; paramAnonymousAdapterView = Boolean.valueOf(AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).KPF))
             {
-              ac.i("MicroMsg.AddressUI", paramAnonymousAdapterView);
+              ad.i("MicroMsg.AddressUI", paramAnonymousAdapterView);
               if ((paramAnonymousInt != 0) || ("@biz.contact".equals(AddressUI.AddressUIFragment.j(AddressUI.AddressUIFragment.this)))) {
                 break;
               }
-              AppMethodBeat.o(196729);
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$13", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+              AppMethodBeat.o(194520);
               return;
             }
             if (paramAnonymousInt < AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).getHeaderViewsCount())
             {
-              AppMethodBeat.o(196729);
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$13", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+              AppMethodBeat.o(194520);
               return;
             }
             paramAnonymousInt -= AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).getHeaderViewsCount();
-            Object localObject;
-            if ((AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this) != null) && (AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).IYA))
+            if ((AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this) != null) && (AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).KPF))
             {
-              boolean bool1 = AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).GF(paramAnonymousInt);
-              boolean bool2 = AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).acA(paramAnonymousInt);
-              ac.i("MicroMsg.AddressUI", "onItemClick ".concat(String.valueOf(bool2)));
-              if (bool2)
-              {
-                AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).aRB("");
-                AppMethodBeat.o(196729);
-                return;
+              boolean bool1 = AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).HY(paramAnonymousInt);
+              boolean bool2 = AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).aeX(paramAnonymousInt);
+              ad.i("MicroMsg.AddressUI", "onItemClick ".concat(String.valueOf(bool2)));
+              if (bool2) {
+                AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).aXz("");
               }
-              if (bool1)
+              for (;;)
               {
-                paramAnonymousView = AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).acy(paramAnonymousInt);
-                paramAnonymousAdapterView = paramAnonymousView.EuE.FEm;
-                az.ayM();
-                localObject = com.tencent.mm.model.c.awB().aNt(paramAnonymousAdapterView);
-                if (com.tencent.mm.n.b.ln(((av)localObject).field_type))
+                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$13", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+                AppMethodBeat.o(194520);
+                return;
+                if (bool1)
                 {
+                  paramAnonymousView = AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).aeW(paramAnonymousInt);
+                  paramAnonymousAdapterView = paramAnonymousView.GbY.HoB;
+                  ba.aBQ();
+                  localObject = com.tencent.mm.model.c.azp().Bf(paramAnonymousAdapterView);
+                  if (com.tencent.mm.o.b.lM(((aw)localObject).field_type))
+                  {
+                    paramAnonymousView = new Intent();
+                    paramAnonymousView.putExtra("Contact_User", paramAnonymousAdapterView);
+                    paramAnonymousView.putExtra("Contact_Scene", 3);
+                    if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.length() > 0))
+                    {
+                      if (((am)localObject).fqg()) {
+                        com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, paramAnonymousAdapterView + ",3");
+                      }
+                      e.a(paramAnonymousView, paramAnonymousAdapterView);
+                      paramAnonymousView.putExtra("CONTACT_INFO_UI_SOURCE", 4);
+                      com.tencent.mm.bs.d.b(AddressUI.AddressUIFragment.this.getContext(), "profile", ".ui.ContactInfoUI", paramAnonymousView);
+                    }
+                  }
+                  else
+                  {
+                    localObject = new Intent();
+                    ((Intent)localObject).putExtra("Contact_User", paramAnonymousView.GbY.HoB);
+                    ((Intent)localObject).putExtra("Contact_Alias", paramAnonymousView.jdh);
+                    ((Intent)localObject).putExtra("Contact_Nick", paramAnonymousView.GKC.HoB);
+                    ((Intent)localObject).putExtra("Contact_Signature", paramAnonymousView.jdf);
+                    ((Intent)localObject).putExtra("Contact_RegionCode", RegionCodeDecoder.bf(paramAnonymousView.jdl, paramAnonymousView.jdd, paramAnonymousView.jde));
+                    ((Intent)localObject).putExtra("Contact_Sex", paramAnonymousView.jdc);
+                    ((Intent)localObject).putExtra("Contact_VUser_Info", paramAnonymousView.GNV);
+                    ((Intent)localObject).putExtra("Contact_VUser_Info_Flag", paramAnonymousView.GNU);
+                    ((Intent)localObject).putExtra("Contact_KWeibo_flag", paramAnonymousView.GNY);
+                    ((Intent)localObject).putExtra("Contact_KWeibo", paramAnonymousView.GNW);
+                    ((Intent)localObject).putExtra("Contact_KWeiboNick", paramAnonymousView.GNX);
+                    ((Intent)localObject).putExtra("Contact_KSnsIFlag", paramAnonymousView.GOa.jdn);
+                    ((Intent)localObject).putExtra("Contact_KSnsBgId", paramAnonymousView.GOa.jdp);
+                    ((Intent)localObject).putExtra("Contact_KSnsBgUrl", paramAnonymousView.GOa.jdo);
+                    if (paramAnonymousView.GOb != null) {}
+                    try
+                    {
+                      ((Intent)localObject).putExtra("Contact_customInfo", paramAnonymousView.GOb.toByteArray());
+                      if ((paramAnonymousView.GNU & 0x8) > 0) {
+                        com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, paramAnonymousAdapterView + ",3");
+                      }
+                      ((Intent)localObject).putExtra("CONTACT_INFO_UI_SOURCE", 4);
+                      com.tencent.mm.bs.d.b(AddressUI.AddressUIFragment.this.getContext(), "profile", ".ui.ContactInfoUI", (Intent)localObject);
+                    }
+                    catch (IOException localIOException)
+                    {
+                      for (;;)
+                      {
+                        ad.printErrStackTrace("MicroMsg.AddressUI", localIOException, "", new Object[0]);
+                      }
+                    }
+                  }
+                }
+                else
+                {
+                  paramAnonymousAdapterView = AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).FC(paramAnonymousInt);
+                  if (paramAnonymousAdapterView == null)
+                  {
+                    ad.e("MicroMsg.AddressUI", "on Contact ListView ItemClick, the item contact shoud not be null. count:%d, pos:%d ", new Object[] { Integer.valueOf(AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).getCount()), Integer.valueOf(paramAnonymousInt) });
+                    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$13", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+                    AppMethodBeat.o(194520);
+                    return;
+                  }
+                  paramAnonymousAdapterView = paramAnonymousAdapterView.field_username;
+                  if (w.Ad(paramAnonymousAdapterView))
+                  {
+                    paramAnonymousView = new Intent(AddressUI.AddressUIFragment.this.getContext(), AddressUI.class);
+                    paramAnonymousView.putExtra("Contact_GroupFilter_Type", "@biz.contact");
+                    paramAnonymousAdapterView = AddressUI.AddressUIFragment.this;
+                    paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
+                    com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.ahp(), "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$13", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                    paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.mq(0));
+                    com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$13", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$13", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+                    AppMethodBeat.o(194520);
+                    return;
+                  }
                   paramAnonymousView = new Intent();
                   paramAnonymousView.putExtra("Contact_User", paramAnonymousAdapterView);
                   paramAnonymousView.putExtra("Contact_Scene", 3);
-                  if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.length() > 0))
-                  {
-                    if (((com.tencent.mm.storage.ai)localObject).fad()) {
-                      com.tencent.mm.plugin.report.service.h.wUl.kvStat(10298, paramAnonymousAdapterView + ",3");
-                    }
-                    e.a(paramAnonymousView, paramAnonymousAdapterView);
-                    paramAnonymousView.putExtra("CONTACT_INFO_UI_SOURCE", 4);
-                    com.tencent.mm.br.d.b(AddressUI.AddressUIFragment.this.getContext(), "profile", ".ui.ContactInfoUI", paramAnonymousView);
-                  }
-                  AppMethodBeat.o(196729);
-                  return;
-                }
-                localObject = new Intent();
-                ((Intent)localObject).putExtra("Contact_User", paramAnonymousView.EuE.FEm);
-                ((Intent)localObject).putExtra("Contact_Alias", paramAnonymousView.iJY);
-                ((Intent)localObject).putExtra("Contact_Nick", paramAnonymousView.Fbd.FEm);
-                ((Intent)localObject).putExtra("Contact_Signature", paramAnonymousView.iJW);
-                ((Intent)localObject).putExtra("Contact_RegionCode", RegionCodeDecoder.aW(paramAnonymousView.iKc, paramAnonymousView.iJU, paramAnonymousView.iJV));
-                ((Intent)localObject).putExtra("Contact_Sex", paramAnonymousView.iJT);
-                ((Intent)localObject).putExtra("Contact_VUser_Info", paramAnonymousView.Fer);
-                ((Intent)localObject).putExtra("Contact_VUser_Info_Flag", paramAnonymousView.Feq);
-                ((Intent)localObject).putExtra("Contact_KWeibo_flag", paramAnonymousView.Feu);
-                ((Intent)localObject).putExtra("Contact_KWeibo", paramAnonymousView.Fes);
-                ((Intent)localObject).putExtra("Contact_KWeiboNick", paramAnonymousView.Fet);
-                ((Intent)localObject).putExtra("Contact_KSnsIFlag", paramAnonymousView.Few.iKe);
-                ((Intent)localObject).putExtra("Contact_KSnsBgId", paramAnonymousView.Few.iKg);
-                ((Intent)localObject).putExtra("Contact_KSnsBgUrl", paramAnonymousView.Few.iKf);
-                if (paramAnonymousView.Fex != null) {}
-                try
-                {
-                  ((Intent)localObject).putExtra("Contact_customInfo", paramAnonymousView.Fex.toByteArray());
-                  if ((paramAnonymousView.Feq & 0x8) > 0) {
-                    com.tencent.mm.plugin.report.service.h.wUl.kvStat(10298, paramAnonymousAdapterView + ",3");
-                  }
-                  ((Intent)localObject).putExtra("CONTACT_INFO_UI_SOURCE", 4);
-                  com.tencent.mm.br.d.b(AddressUI.AddressUIFragment.this.getContext(), "profile", ".ui.ContactInfoUI", (Intent)localObject);
-                  AppMethodBeat.o(196729);
-                  return;
-                }
-                catch (IOException localIOException)
-                {
-                  for (;;)
-                  {
-                    ac.printErrStackTrace("MicroMsg.AddressUI", localIOException, "", new Object[0]);
+                  paramAnonymousView.putExtra("CONTACT_INFO_UI_SOURCE", 4);
+                  if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.length() > 0)) {
+                    com.tencent.mm.bs.d.b(AddressUI.AddressUIFragment.this.getContext(), "profile", ".ui.ContactInfoUI", paramAnonymousView);
                   }
                 }
               }
-              paramAnonymousAdapterView = AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).acz(paramAnonymousInt);
-              if (paramAnonymousAdapterView == null)
-              {
-                ac.e("MicroMsg.AddressUI", "on Contact ListView ItemClick, the item contact shoud not be null. count:%d, pos:%d ", new Object[] { Integer.valueOf(AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).getCount()), Integer.valueOf(paramAnonymousInt) });
-                AppMethodBeat.o(196729);
-                return;
-              }
-              paramAnonymousAdapterView = paramAnonymousAdapterView.field_username;
-              if (w.xg(paramAnonymousAdapterView))
-              {
-                paramAnonymousView = new Intent(AddressUI.AddressUIFragment.this.getContext(), AddressUI.class);
-                paramAnonymousView.putExtra("Contact_GroupFilter_Type", "@biz.contact");
-                paramAnonymousAdapterView = AddressUI.AddressUIFragment.this;
-                paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.aeD(), "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$13", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.lR(0));
-                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$13", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                AppMethodBeat.o(196729);
-                return;
-              }
-              paramAnonymousView = new Intent();
-              paramAnonymousView.putExtra("Contact_User", paramAnonymousAdapterView);
-              paramAnonymousView.putExtra("Contact_Scene", 3);
-              paramAnonymousView.putExtra("CONTACT_INFO_UI_SOURCE", 4);
-              if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.length() > 0)) {
-                com.tencent.mm.br.d.b(AddressUI.AddressUIFragment.this.getContext(), "profile", ".ui.ContactInfoUI", paramAnonymousView);
-              }
-              AppMethodBeat.o(196729);
-              return;
             }
-            paramAnonymousAdapterView = (com.tencent.mm.storage.f)AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this).Za(paramAnonymousInt);
+            paramAnonymousAdapterView = (com.tencent.mm.storage.f)AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this).abj(paramAnonymousInt);
             if (paramAnonymousAdapterView != null)
             {
               paramAnonymousAdapterView = paramAnonymousAdapterView.field_username;
               paramAnonymousView = AddressUI.AddressUIFragment.this;
-              if ((paramAnonymousAdapterView == null) || (paramAnonymousAdapterView.length() <= 0))
-              {
-                AppMethodBeat.o(196729);
-                return;
-              }
-              if (w.xg(paramAnonymousAdapterView))
-              {
-                ac.e("MicroMsg.AddressUI", "error, 4.5 do not contain this contact %s", new Object[] { paramAnonymousAdapterView });
-                AppMethodBeat.o(196729);
-                return;
-              }
-              localObject = new Intent();
-              ((Intent)localObject).putExtra("Contact_User", paramAnonymousAdapterView);
-              if (w.wE(paramAnonymousAdapterView)) {
-                ((Intent)localObject).putExtra("Is_group_card", true);
-              }
-              if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.length() > 0))
-              {
-                e.a((Intent)localObject, paramAnonymousAdapterView);
-                ((Intent)localObject).putExtra("CONTACT_INFO_UI_SOURCE", 4);
-                com.tencent.mm.br.d.b(paramAnonymousView.getContext(), "profile", ".ui.ContactInfoUI", (Intent)localObject);
+              if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.length() > 0)) {
+                break label1090;
               }
             }
-            AppMethodBeat.o(196729);
+            for (;;)
+            {
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$13", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+              AppMethodBeat.o(194520);
+              return;
+              label1090:
+              if (w.Ad(paramAnonymousAdapterView))
+              {
+                ad.e("MicroMsg.AddressUI", "error, 4.5 do not contain this contact %s", new Object[] { paramAnonymousAdapterView });
+              }
+              else
+              {
+                localObject = new Intent();
+                ((Intent)localObject).putExtra("Contact_User", paramAnonymousAdapterView);
+                if (w.zB(paramAnonymousAdapterView)) {
+                  ((Intent)localObject).putExtra("Is_group_card", true);
+                }
+                if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.length() > 0))
+                {
+                  e.a((Intent)localObject, paramAnonymousAdapterView);
+                  ((Intent)localObject).putExtra("CONTACT_INFO_UI_SOURCE", 4);
+                  com.tencent.mm.bs.d.b(paramAnonymousView.getContext(), "profile", ".ui.ContactInfoUI", (Intent)localObject);
+                }
+              }
+            }
           }
         });
-        this.tUA.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+        this.uXc.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
         {
           public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
           {
-            AppMethodBeat.i(196730);
-            ac.i("MicroMsg.AddressUI", "onItemLongClick, targetview is SearchBar::ListView, pos = ".concat(String.valueOf(paramAnonymousInt)));
+            AppMethodBeat.i(194521);
+            ad.i("MicroMsg.AddressUI", "onItemLongClick, targetview is SearchBar::ListView, pos = ".concat(String.valueOf(paramAnonymousInt)));
             if (paramAnonymousInt < AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).getHeaderViewsCount())
             {
-              ac.w("MicroMsg.AddressUI", "on item long click, but match header view");
-              AppMethodBeat.o(196730);
+              ad.w("MicroMsg.AddressUI", "on item long click, but match header view");
+              AppMethodBeat.o(194521);
               return true;
             }
-            if ((AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this) != null) && (AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).IYA))
+            if ((AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this) != null) && (AddressUI.AddressUIFragment.i(AddressUI.AddressUIFragment.this).KPF))
             {
-              AppMethodBeat.o(196730);
+              AppMethodBeat.o(194521);
               return true;
             }
-            paramAnonymousAdapterView = (com.tencent.mm.storage.f)AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this).Za(paramAnonymousInt - AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).getHeaderViewsCount());
+            paramAnonymousAdapterView = (com.tencent.mm.storage.f)AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this).abj(paramAnonymousInt - AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).getHeaderViewsCount());
             if (paramAnonymousAdapterView == null)
             {
-              ac.e("MicroMsg.AddressUI", "cont is null. position:%d, header count:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).getHeaderViewsCount()) });
-              AppMethodBeat.o(196730);
+              ad.e("MicroMsg.AddressUI", "cont is null. position:%d, header count:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(AddressUI.AddressUIFragment.d(AddressUI.AddressUIFragment.this).getHeaderViewsCount()) });
+              AppMethodBeat.o(194521);
               return true;
             }
             paramAnonymousAdapterView = paramAnonymousAdapterView.field_username;
-            if ((w.xg(paramAnonymousAdapterView)) || (w.xh(paramAnonymousAdapterView)))
+            if ((w.Ad(paramAnonymousAdapterView)) || (w.Ae(paramAnonymousAdapterView)))
             {
-              AppMethodBeat.o(196730);
+              AppMethodBeat.o(194521);
               return true;
             }
             AddressUI.AddressUIFragment.b(AddressUI.AddressUIFragment.this, paramAnonymousAdapterView);
             AddressUI.AddressUIFragment.n(AddressUI.AddressUIFragment.this).a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, AddressUI.AddressUIFragment.this, AddressUI.AddressUIFragment.k(AddressUI.AddressUIFragment.this), AddressUI.AddressUIFragment.l(AddressUI.AddressUIFragment.this), AddressUI.AddressUIFragment.m(AddressUI.AddressUIFragment.this));
-            AppMethodBeat.o(196730);
+            AppMethodBeat.o(194521);
             return true;
           }
         });
-        this.tUA.setOnTouchListener(new View.OnTouchListener()
+        this.uXc.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
-            AppMethodBeat.i(196731);
+            AppMethodBeat.i(194522);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            localb.bd(paramAnonymousMotionEvent);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$15", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
             switch (paramAnonymousMotionEvent.getAction())
             {
             }
             for (;;)
             {
-              AppMethodBeat.o(196731);
+              com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$15", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+              AppMethodBeat.o(194522);
               return false;
               AddressUI.AddressUIFragment.this.hideVKB();
               AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this, (int)paramAnonymousMotionEvent.getRawX());
@@ -1043,46 +943,46 @@ public class AddressUI
             }
           }
         });
-        this.tUA.setOnScrollListener(this.ftW);
-        this.tUA.setDrawingCacheEnabled(false);
-        this.IsU = ((AlphabetScrollBar)findViewById(2131296489));
-        this.IsU.setOnScrollBarTouchListener(this.Itk);
-        az.ayM();
-        com.tencent.mm.model.c.awB().a(this.IsP);
-        if (this.Itg != null) {
-          af.aCW().a(this.Itg, null);
+        this.uXc.setOnScrollListener(this.fMX);
+        this.uXc.setDrawingCacheEnabled(false);
+        this.KjA = ((AlphabetScrollBar)findViewById(2131296489));
+        this.KjA.setOnScrollBarTouchListener(this.KjQ);
+        ba.aBQ();
+        com.tencent.mm.model.c.azp().a(this.Kjv);
+        if (this.KjM != null) {
+          ag.aFZ().a(this.KjM, null);
         }
         AppMethodBeat.o(37630);
         return;
         bool = false;
         break;
         label1109:
-        ((y.b)localObject).xx(true);
+        ((y.b)localObject).yk(true);
       }
     }
     
-    public final void fez()
+    public final void fuG()
     {
       AppMethodBeat.i(37631);
-      ac.v("MicroMsg.AddressUI", "address ui on resume");
+      ad.v("MicroMsg.AddressUI", "address ui on resume");
       long l = System.currentTimeMillis();
-      az.ayM();
-      if (l - bs.a((Long)com.tencent.mm.model.c.agA().get(340226, null), 0L) >= 180000L) {
-        fqT();
+      ba.aBQ();
+      if (l - bt.a((Long)com.tencent.mm.model.c.ajl().get(340226, null), 0L) >= 180000L) {
+        fHG();
       }
       Object localObject;
-      if (this.Iti)
+      if (this.KjO)
       {
-        this.Iti = false;
-        this.Ith = false;
-        fqR();
-        this.tUA.setAdapter(this.IsP);
-        this.tUA.post(new Runnable()
+        this.KjO = false;
+        this.KjN = false;
+        fHE();
+        this.uXc.setAdapter(this.Kjv);
+        this.uXc.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(37611);
-            ac.i("MicroMsg.AddressUI", "post to first init finish");
+            ad.i("MicroMsg.AddressUI", "post to first init finish");
             View localView = AddressUI.AddressUIFragment.this.findViewById(2131301512);
             if (localView != null)
             {
@@ -1092,44 +992,44 @@ public class AddressUI
             AppMethodBeat.o(37611);
           }
         });
-        this.IsQ.xT(false);
-        if (this.IsZ != null)
+        this.Kjw.yH(false);
+        if (this.KjF != null)
         {
-          localObject = this.IsZ;
-          ((BizContactEntranceView)localObject).fqV();
+          localObject = this.KjF;
+          ((BizContactEntranceView)localObject).fHI();
           ((BizContactEntranceView)localObject).setVisible(true);
         }
-        if (this.Itg != null)
+        if (this.KjM != null)
         {
-          if (this.Itg.getEnterpriseFriendCount() > 0) {
+          if (this.KjM.getEnterpriseFriendCount() > 0) {
             break label406;
           }
-          this.Itg.setVisibility(8);
+          this.KjM.setVisibility(8);
         }
       }
       for (;;)
       {
-        az.ayM();
-        this.IsW = ((Boolean)com.tencent.mm.model.c.agA().get(12296, Boolean.FALSE)).booleanValue();
-        if (this.IsT == 2)
+        ba.aBQ();
+        this.KjC = ((Boolean)com.tencent.mm.model.c.ajl().get(12296, Boolean.FALSE)).booleanValue();
+        if (this.Kjz == 2)
         {
-          az.ayM();
-          localObject = com.tencent.mm.model.c.awB().aNt(u.axw());
-          if ((localObject != null) && ((!com.tencent.mm.n.b.ln(((av)localObject).field_type)) || (!bs.isNullOrNil(((av)localObject).field_conRemark)) || (!bs.isNullOrNil(((av)localObject).field_conRemarkPYFull)) || (!bs.isNullOrNil(((av)localObject).field_conRemarkPYShort))))
+          ba.aBQ();
+          localObject = com.tencent.mm.model.c.azp().Bf(u.aAm());
+          if ((localObject != null) && ((!com.tencent.mm.o.b.lM(((aw)localObject).field_type)) || (!bt.isNullOrNil(((aw)localObject).field_conRemark)) || (!bt.isNullOrNil(((aw)localObject).field_conRemarkPYFull)) || (!bt.isNullOrNil(((aw)localObject).field_conRemarkPYShort))))
           {
-            ((com.tencent.mm.storage.ai)localObject).aaf();
-            ((com.tencent.mm.storage.ai)localObject).qh("");
-            ((com.tencent.mm.storage.ai)localObject).qn("");
-            ((com.tencent.mm.storage.ai)localObject).qo("");
-            az.ayM();
-            com.tencent.mm.model.c.awB().c(u.axw(), (com.tencent.mm.storage.ai)localObject);
+            ((am)localObject).acH();
+            ((am)localObject).sR("");
+            ((am)localObject).sX("");
+            ((am)localObject).sY("");
+            ba.aBQ();
+            com.tencent.mm.model.c.azp().c(u.aAm(), (am)localObject);
           }
         }
-        if (this.IsQ != null) {
-          this.IsQ.onResume();
+        if (this.Kjw != null) {
+          this.Kjw.onResume();
         }
-        this.IsP.HhQ = false;
-        com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
+        this.Kjv.IVh = false;
+        aq.f(new Runnable()
         {
           public final void run()
           {
@@ -1138,21 +1038,21 @@ public class AddressUI
             AppMethodBeat.o(37613);
           }
         });
-        if (this.IsY != null)
+        if (this.KjE != null)
         {
-          this.IsY.setFrontGround(true);
-          l.frl();
+          this.KjE.setFrontGround(true);
+          l.fHY();
         }
         localObject = (LauncherUI)getContext();
         if (localObject != null) {
-          ((LauncherUI)localObject).getHomeUI().setTitleBarDoubleClickListener(this.Itm);
+          ((LauncherUI)localObject).getHomeUI().setTitleBarDoubleClickListener(this.KjS);
         }
         AppMethodBeat.o(37631);
         return;
-        if (!this.Ith) {
+        if (!this.KjN) {
           break;
         }
-        this.Ith = false;
+        this.KjN = false;
         com.tencent.mm.sdk.g.b.d(new Runnable()
         {
           public final void run()
@@ -1163,32 +1063,163 @@ public class AddressUI
             AppMethodBeat.o(37612);
           }
         }, "AddressUI_updateUIData");
-        this.Ite.fqX();
+        this.KjK.fHK();
         break;
         label406:
-        this.Itg.setVisibility(0);
+        this.KjM.setVisibility(0);
       }
     }
     
-    public final void ffG()
+    public final void fuH() {}
+    
+    public final void fuI()
+    {
+      AppMethodBeat.i(37633);
+      ad.i("MicroMsg.AddressUI", "AddressUI on Pause");
+      ba.aBQ();
+      com.tencent.mm.model.c.ajl().set(340226, Long.valueOf(System.currentTimeMillis()));
+      ba.aBQ();
+      com.tencent.mm.model.c.ajl().set(12296, Boolean.valueOf(this.KjC));
+      if (this.Kjw != null) {
+        this.Kjw.onPause();
+      }
+      this.Kjv.fHC();
+      aq.f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(194528);
+          AddressUI.AddressUIFragment.a(AddressUI.AddressUIFragment.this).pause();
+          AppMethodBeat.o(194528);
+        }
+      });
+      if (this.KjE != null) {
+        this.KjE.setFrontGround(false);
+      }
+      LauncherUI localLauncherUI = (LauncherUI)getContext();
+      if (localLauncherUI != null) {
+        localLauncherUI.getHomeUI().aF(this.KjS);
+      }
+      AppMethodBeat.o(37633);
+    }
+    
+    public final void fuJ() {}
+    
+    public final void fuK()
+    {
+      AppMethodBeat.i(37634);
+      ad.v("MicroMsg.AddressUI", "onDestory");
+      if (this.KjA != null) {
+        this.KjA.Jra = null;
+      }
+      ba.aiU().b(138, this);
+      if (this.Kjv != null)
+      {
+        this.Kjv.wZ(true);
+        this.Kjv.detach();
+        this.Kjv.fvg();
+      }
+      if (this.Kjw != null)
+      {
+        this.Kjw.detach();
+        this.Kjw.det();
+      }
+      if ((ba.ajx()) && (this.Kjv != null))
+      {
+        ba.aBQ();
+        com.tencent.mm.model.c.azp().b(this.Kjv);
+      }
+      if ((ba.ajx()) && (this.KjM != null)) {
+        ag.aFZ().a(this.KjM);
+      }
+      if (this.KjE != null)
+      {
+        l locall = this.KjE;
+        if (ba.ajx()) {
+          com.tencent.mm.bk.d.aMo().remove(locall.Kmn);
+        }
+        this.KjE = null;
+      }
+      if (this.KjF != null) {
+        this.KjF = null;
+      }
+      if (this.KjG != null) {
+        this.KjG = null;
+      }
+      if (this.KjJ != null) {
+        this.KjJ = null;
+      }
+      if (this.KjI != null) {
+        this.KjI = null;
+      }
+      AppMethodBeat.o(37634);
+    }
+    
+    public final void fuL()
+    {
+      AppMethodBeat.i(37638);
+      ad.v("MicroMsg.AddressUI", "request to top");
+      if (this.uXc != null)
+      {
+        Object localObject1 = this.uXc;
+        localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
+        Object localObject2 = new Object();
+        com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment", "requestToTop", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        BackwardSupportUtil.c.b((ListView)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment", "requestToTop", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+      }
+      AppMethodBeat.o(37638);
+    }
+    
+    public final void fuM()
+    {
+      AppMethodBeat.i(37636);
+      if (this.Kjv != null)
+      {
+        a locala = this.Kjv;
+        locala.Kjg.clear();
+        locala.Kje.clear();
+        locala.Kjf = false;
+      }
+      ad.i("MicroMsg.INIT", "KEVIN Address turnTobg");
+      if (this.KjF != null) {
+        this.KjF.destroyDrawingCache();
+      }
+      if (this.KjG != null) {
+        this.KjG.destroyDrawingCache();
+      }
+      if (this.KjI != null) {
+        this.KjI.destroyDrawingCache();
+      }
+      if (this.KjJ != null) {
+        this.KjJ.destroyDrawingCache();
+      }
+      if (this.KjK != null) {
+        this.KjK.destroyDrawingCache();
+      }
+      if (this.KjE != null) {
+        this.KjE.destroyDrawingCache();
+      }
+      AppMethodBeat.o(37636);
+    }
+    
+    public final void fuN()
+    {
+      AppMethodBeat.i(37637);
+      ad.v("MicroMsg.INIT", "KEVIN Address turnTofg");
+      AppMethodBeat.o(37637);
+    }
+    
+    public final void fvQ()
     {
       AppMethodBeat.i(37639);
-      if (this.IsY != null) {
-        l.frl();
+      if (this.KjE != null) {
+        l.fHY();
       }
       AppMethodBeat.o(37639);
     }
     
-    public final void ffH() {}
-    
-    public final void fqT()
-    {
-      AppMethodBeat.i(37640);
-      if (this.tUA != null) {
-        this.tUA.setSelection(0);
-      }
-      AppMethodBeat.o(37640);
-    }
+    public final void fvR() {}
     
     public int getLayoutId()
     {
@@ -1198,7 +1229,7 @@ public class AddressUI
     public View getLayoutView()
     {
       AppMethodBeat.i(37622);
-      com.tencent.mm.kiss.a.b.ahR();
+      com.tencent.mm.kiss.a.b.akC();
       View localView = com.tencent.mm.kiss.a.b.c(getContext(), 2131492947);
       AppMethodBeat.o(37622);
       return localView;
@@ -1212,7 +1243,7 @@ public class AddressUI
     public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
     {
       AppMethodBeat.i(37629);
-      ac.i("MicroMsg.AddressUI", "onAcvityResult requestCode: %d", new Object[] { Integer.valueOf(paramInt1) });
+      ad.i("MicroMsg.AddressUI", "onAcvityResult requestCode: %d", new Object[] { Integer.valueOf(paramInt1) });
       if ((paramInt1 == 6) && (paramInt2 == -1))
       {
         setResult(-1);
@@ -1239,17 +1270,17 @@ public class AddressUI
     
     public void onConfigurationChanged(Configuration paramConfiguration)
     {
-      AppMethodBeat.i(196742);
+      AppMethodBeat.i(194533);
       super.onConfigurationChanged(paramConfiguration);
-      ffv();
-      AppMethodBeat.o(196742);
+      fvE();
+      AppMethodBeat.o(194533);
     }
     
     public void onCreate(Bundle paramBundle)
     {
       AppMethodBeat.i(37623);
       super.onCreate(paramBundle);
-      com.tencent.mm.sdk.b.a.GpY.c(this.yTj);
+      com.tencent.mm.sdk.b.a.IbL.c(this.AkQ);
       AppMethodBeat.o(37623);
     }
     
@@ -1258,33 +1289,33 @@ public class AddressUI
       AppMethodBeat.i(37626);
       super.onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
       paramContextMenuInfo = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-      az.ayM();
-      com.tencent.mm.storage.ai localai = com.tencent.mm.model.c.awB().aNt(this.IsS);
-      if (localai == null)
+      ba.aBQ();
+      am localam = com.tencent.mm.model.c.azp().Bf(this.Kjy);
+      if (localam == null)
       {
-        ac.e("MicroMsg.AddressUI", "onCreateContextMenu, contact is null, username = " + this.IsS);
+        ad.e("MicroMsg.AddressUI", "onCreateContextMenu, contact is null, username = " + this.Kjy);
         AppMethodBeat.o(37626);
         return;
       }
-      if (u.axw().equals(localai.field_username))
+      if (u.aAm().equals(localam.field_username))
       {
         AppMethodBeat.o(37626);
         return;
       }
-      if (w.wE(this.IsS))
+      if (w.zB(this.Kjy))
       {
-        paramContextMenu.setHeaderTitle(com.tencent.mm.pluginsdk.ui.span.k.c(paramView.getContext(), localai.aaS()));
+        paramContextMenu.setHeaderTitle(com.tencent.mm.pluginsdk.ui.span.k.c(paramView.getContext(), localam.adv()));
         paramContextMenu.add(paramContextMenuInfo.position, 2, 0, 2131755190);
         AppMethodBeat.o(37626);
         return;
       }
-      if ((w.wT(this.IsS)) || (w.xj(this.IsS)))
+      if ((w.zQ(this.Kjy)) || (w.Ag(this.Kjy)))
       {
         AppMethodBeat.o(37626);
         return;
       }
-      paramContextMenu.setHeaderTitle(com.tencent.mm.pluginsdk.ui.span.k.c(paramView.getContext(), localai.aaS()));
-      if ((com.tencent.mm.n.b.ln(localai.field_type)) && (localai.field_deleteFlag != 1)) {
+      paramContextMenu.setHeaderTitle(com.tencent.mm.pluginsdk.ui.span.k.c(paramView.getContext(), localam.adv()));
+      if ((com.tencent.mm.o.b.lM(localam.field_type)) && (localam.field_deleteFlag != 1)) {
         paramContextMenu.add(paramContextMenuInfo.position, 7, 0, 2131757731);
       }
       AppMethodBeat.o(37626);
@@ -1294,19 +1325,19 @@ public class AddressUI
     {
       AppMethodBeat.i(37635);
       super.onDestroy();
-      com.tencent.mm.sdk.b.a.GpY.d(this.yTj);
+      com.tencent.mm.sdk.b.a.IbL.d(this.AkQ);
       AppMethodBeat.o(37635);
     }
     
     public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
     {
       AppMethodBeat.i(37627);
-      if (this.fts != null)
+      if (this.fMu != null)
       {
-        this.fts.dismiss();
-        this.fts = null;
+        this.fMu.dismiss();
+        this.fMu = null;
       }
-      if (!bs.iX(getContext()))
+      if (!bt.jh(getContext()))
       {
         AppMethodBeat.o(37627);
         return;
@@ -1329,34 +1360,34 @@ public class AddressUI
       return false;
     }
     
-    public final void xw(boolean paramBoolean)
+    public final void yj(boolean paramBoolean)
     {
       AppMethodBeat.i(37624);
-      if (this.IsU != null)
+      if (this.KjA != null)
       {
-        if (this.qzo == null)
+        if (this.rjd == null)
         {
-          this.qzo = AnimationUtils.loadAnimation(getContext(), 2130772039);
-          this.qzo.setDuration(200L);
+          this.rjd = AnimationUtils.loadAnimation(getContext(), 2130772039);
+          this.rjd.setDuration(200L);
         }
-        if (this.viC == null)
+        if (this.wnV == null)
         {
-          this.viC = AnimationUtils.loadAnimation(getContext(), 2130772039);
-          this.viC.setDuration(200L);
+          this.wnV = AnimationUtils.loadAnimation(getContext(), 2130772039);
+          this.wnV.setDuration(200L);
         }
         if (paramBoolean)
         {
-          if (this.IsU.getVisibility() != 0)
+          if (this.KjA.getVisibility() != 0)
           {
-            this.IsU.setVisibility(0);
-            this.IsU.startAnimation(this.qzo);
+            this.KjA.setVisibility(0);
+            this.KjA.startAnimation(this.rjd);
             AppMethodBeat.o(37624);
           }
         }
-        else if (4 != this.IsU.getVisibility())
+        else if (4 != this.KjA.getVisibility())
         {
-          this.IsU.setVisibility(8);
-          this.IsU.startAnimation(this.viC);
+          this.KjA.setVisibility(8);
+          this.KjA.startAnimation(this.wnV);
         }
       }
       AppMethodBeat.o(37624);

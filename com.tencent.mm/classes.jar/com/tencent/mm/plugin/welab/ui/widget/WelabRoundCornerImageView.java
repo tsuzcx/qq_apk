@@ -12,7 +12,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WelabRoundCornerImageView
   extends ImageView
 {
-  private float CUu;
+  private float Eyr;
   
   public WelabRoundCornerImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,7 +40,7 @@ public class WelabRoundCornerImageView
   
   public void setCornerRadiusPercent(float paramFloat)
   {
-    this.CUu = paramFloat;
+    this.Eyr = paramFloat;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
@@ -52,25 +52,25 @@ public class WelabRoundCornerImageView
       AppMethodBeat.o(146296);
       return;
     }
-    if (this.CUu <= 0.0F)
+    if (this.Eyr <= 0.0F)
     {
       super.setImageBitmap(paramBitmap);
       AppMethodBeat.o(146296);
       return;
     }
     b localb = d.a(getResources(), paramBitmap);
-    float f = Math.min(paramBitmap.getWidth() * this.CUu, paramBitmap.getHeight() * this.CUu);
-    if (localb.Iv != f)
+    float f = Math.min(paramBitmap.getWidth() * this.Eyr, paramBitmap.getHeight() * this.Eyr);
+    if (localb.Kn != f)
     {
-      localb.Iz = false;
-      if (!b.z(f)) {
+      localb.Kr = false;
+      if (!b.x(f)) {
         break label147;
       }
-      localb.mPaint.setShader(localb.It);
+      localb.mPaint.setShader(localb.Kl);
     }
     for (;;)
     {
-      localb.Iv = f;
+      localb.Kn = f;
       localb.invalidateSelf();
       super.setImageDrawable(localb);
       AppMethodBeat.o(146296);

@@ -4,42 +4,42 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class e
 {
-  private static final String gag;
-  private static LinkedList<String> sWi;
-  private static final String sWj;
-  private static final String sWk;
+  private static final String gtF;
+  private static LinkedList<String> tSO;
+  private static final String tSP;
+  private static final String tSQ;
   
   static
   {
     AppMethodBeat.i(149404);
-    sWi = new LinkedList();
-    sWj = ai.getPackageName();
-    gag = ai.getPackageName() + ":tools";
-    sWk = ai.getPackageName() + ":toolsmp";
-    sWi.add(gag);
-    sWi.add(sWk);
+    tSO = new LinkedList();
+    tSP = aj.getPackageName();
+    gtF = aj.getPackageName() + ":tools";
+    tSQ = aj.getPackageName() + ":toolsmp";
+    tSO.add(gtF);
+    tSO.add(tSQ);
     AppMethodBeat.o(149404);
   }
   
-  public static void agQ(String paramString)
+  public static void aln(String paramString)
   {
     AppMethodBeat.i(149402);
-    if ((paramString.equals(sWj)) || (sWi.contains(paramString))) {
-      a.cOt();
+    if ((paramString.equals(tSP)) || (tSO.contains(paramString))) {
+      a.cWO();
     }
     AppMethodBeat.o(149402);
   }
   
-  public static void cOA()
+  public static void cWW()
   {
     AppMethodBeat.i(149403);
-    Iterator localIterator = sWi.iterator();
+    Iterator localIterator = tSO.iterator();
     while (localIterator.hasNext()) {
       h.a((String)localIterator.next(), null, a.class, null);
     }
@@ -52,7 +52,7 @@ public final class e
     public void invoke(Object paramObject, d paramd)
     {
       AppMethodBeat.i(149401);
-      a.cOt();
+      a.cWO();
       AppMethodBeat.o(149401);
     }
   }

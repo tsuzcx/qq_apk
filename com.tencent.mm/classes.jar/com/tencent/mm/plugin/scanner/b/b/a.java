@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.scanner.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.nh;
-import com.tencent.mm.protocal.protobuf.ni;
+import com.tencent.mm.protocal.protobuf.od;
+import com.tencent.mm.protocal.protobuf.oe;
 
 public final class a
   extends n
   implements k
 {
-  private g callback;
-  public String dnh;
-  public com.tencent.mm.ak.b rr;
+  private f callback;
+  public String dyV;
+  public com.tencent.mm.al.b rr;
   
   public a(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(118333);
-    this.dnh = paramString;
+    this.dyV = paramString;
     b.a locala = new b.a();
     locala.funcId = getType();
-    nh localnh = new nh();
-    localnh.DZw = new com.tencent.mm.bw.b(paramArrayOfByte);
-    localnh.DZz = paramString;
-    localnh.Edm = 3;
-    localnh.dbL = 101;
-    localnh.DWd = paramInt;
-    locala.hvt = localnh;
+    od localod = new od();
+    localod.FEU = new com.tencent.mm.bx.b(paramArrayOfByte);
+    localod.FEX = paramString;
+    localod.FJt = 3;
+    localod.dnh = 101;
+    localod.FBz = paramInt;
+    locala.hNM = localod;
     locala.uri = "/cgi-bin/mmpay-bin/ocrgetbankcardinfo";
-    locala.hvu = new ni();
-    this.rr = locala.aAz();
+    locala.hNN = new oe();
+    this.rr = locala.aDC();
     AppMethodBeat.o(118333);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(118335);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(118335);
     return i;
@@ -60,7 +60,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.b.b.a
  * JD-Core Version:    0.7.0.1
  */

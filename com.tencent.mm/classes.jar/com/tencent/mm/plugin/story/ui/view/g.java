@@ -5,61 +5,61 @@ import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/ViewClickHelper;", "", "view", "Landroid/view/View;", "(Landroid/view/View;)V", "clickDelay", "", "clickRecord", "", "endRecordRunnable", "Ljava/lang/Runnable;", "isRecording", "", "onClickListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "getOnClickListener", "()Lkotlin/jvm/functions/Function1;", "setOnClickListener", "(Lkotlin/jvm/functions/Function1;)V", "onDoubleClickListener", "getOnDoubleClickListener", "setOnDoubleClickListener", "onTripleClickListener", "getOnTripleClickListener", "setOnTripleClickListener", "checkDispatch", "dispatchClickEvent", "recordClick", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/ViewClickHelper;", "", "view", "Landroid/view/View;", "(Landroid/view/View;)V", "clickDelay", "", "clickRecord", "", "endRecordRunnable", "Ljava/lang/Runnable;", "isRecording", "", "onClickListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "getOnClickListener", "()Lkotlin/jvm/functions/Function1;", "setOnClickListener", "(Lkotlin/jvm/functions/Function1;)V", "onDoubleClickListener", "getOnDoubleClickListener", "setOnDoubleClickListener", "onTripleClickListener", "getOnTripleClickListener", "setOnTripleClickListener", "checkDispatch", "dispatchClickEvent", "recordClick", "plugin-story_release"})
 public final class g
 {
-  boolean hba;
+  b<? super View, z> Bcb;
+  public b<? super View, z> Bcc;
+  b<? super View, z> Bcd;
+  int Bce;
+  final long Bcf;
+  Runnable Bcg;
+  boolean htg;
   private final View view;
-  b<? super View, y> zKA;
-  public b<? super View, y> zKB;
-  b<? super View, y> zKC;
-  int zKD;
-  final long zKE;
-  Runnable zKF;
   
   public g(View paramView)
   {
     AppMethodBeat.i(120316);
     this.view = paramView;
-    this.zKE = ViewConfiguration.getDoubleTapTimeout();
-    this.zKF = ((Runnable)new a(this));
+    this.Bcf = ViewConfiguration.getDoubleTapTimeout();
+    this.Bcg = ((Runnable)new a(this));
     AppMethodBeat.o(120316);
   }
   
-  final void dZM()
+  final void emb()
   {
     AppMethodBeat.i(120315);
-    switch (this.zKD)
+    switch (this.Bce)
     {
     }
     for (;;)
     {
-      this.zKD = 0;
-      this.hba = false;
+      this.Bce = 0;
+      this.htg = false;
       AppMethodBeat.o(120315);
       return;
-      b localb = this.zKA;
+      b localb = this.Bcb;
       if (localb != null)
       {
-        localb.ay(this.view);
+        localb.invoke(this.view);
         continue;
-        localb = this.zKB;
+        localb = this.Bcc;
         if (localb != null)
         {
-          localb.ay(this.view);
+          localb.invoke(this.view);
           continue;
-          localb = this.zKC;
+          localb = this.Bcd;
           if (localb != null) {
-            localb.ay(this.view);
+            localb.invoke(this.view);
           }
         }
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -68,7 +68,7 @@ public final class g
     public final void run()
     {
       AppMethodBeat.i(120314);
-      this.zKG.dZM();
+      this.Bch.emb();
       AppMethodBeat.o(120314);
     }
   }

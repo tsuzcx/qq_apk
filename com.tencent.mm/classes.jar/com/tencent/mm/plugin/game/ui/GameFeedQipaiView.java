@@ -10,13 +10,15 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.af;
-import com.tencent.mm.plugin.game.d.ap;
-import com.tencent.mm.plugin.game.d.cz;
-import com.tencent.mm.plugin.game.e.a;
+import com.tencent.mm.game.report.f;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.game.d.ah;
+import com.tencent.mm.plugin.game.d.ar;
+import com.tencent.mm.plugin.game.d.dh;
 import com.tencent.mm.plugin.game.f.c;
+import com.tencent.mm.plugin.game.f.e;
 import com.tencent.mm.plugin.game.model.d;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -24,11 +26,11 @@ public class GameFeedQipaiView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private TextView lfN;
-  private TextView tqF;
-  private ImageView tqG;
-  private LinearLayout tqH;
-  private af tqI;
+  private TextView lCL;
+  private TextView upc;
+  private ImageView upd;
+  private LinearLayout upe;
+  private ah upf;
   
   public GameFeedQipaiView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,33 +40,40 @@ public class GameFeedQipaiView
   public void onClick(View paramView)
   {
     AppMethodBeat.i(42126);
-    if (this.tqI == null)
+    b localb = new b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameFeedQipaiView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    if (this.upf == null)
     {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedQipaiView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42126);
       return;
     }
     if (paramView.getId() == 2131302466)
     {
-      if (!bs.isNullOrNil(this.tqI.tiO.tjp))
+      if (!bt.isNullOrNil(this.upf.ugJ.uhp))
       {
-        i = c.ay(getContext(), this.tqI.tiO.tjp);
-        com.tencent.mm.game.report.e.a(getContext(), 10, 1023, 999, i, null, GameIndexListView.getSourceScene(), a.tu(this.tqI.thP));
+        i = c.aB(getContext(), this.upf.ugJ.uhp);
+        f.a(getContext(), 10, 1023, 999, i, null, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.wk(this.upf.ufG));
       }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedQipaiView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42126);
       return;
     }
     int i = ((Integer)paramView.getTag()).intValue();
-    if ((i < 0) || (i > this.tqI.tiO.thO.size() - 1))
+    if ((i < 0) || (i > this.upf.ugJ.ufF.size() - 1))
     {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedQipaiView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42126);
       return;
     }
-    paramView = (ap)this.tqI.tiO.thO.get(i);
-    if (!bs.isNullOrNil(paramView.thh))
+    paramView = (ar)this.upf.ugJ.ufF.get(i);
+    if (!bt.isNullOrNil(paramView.ueY))
     {
-      int j = c.ay(getContext(), paramView.thh);
-      com.tencent.mm.game.report.e.a(getContext(), 10, 1023, i + 1, j, paramView.hOf, GameIndexListView.getSourceScene(), a.tu(this.tqI.thP));
+      int j = c.aB(getContext(), paramView.ueY);
+      f.a(getContext(), 10, 1023, i + 1, j, paramView.iht, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.wk(this.upf.ufG));
     }
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedQipaiView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42126);
   }
   
@@ -72,78 +81,78 @@ public class GameFeedQipaiView
   {
     AppMethodBeat.i(42124);
     super.onFinishInflate();
-    this.lfN = ((TextView)findViewById(2131305902));
-    this.tqF = ((TextView)findViewById(2131302466));
-    this.tqG = ((ImageView)findViewById(2131302455));
-    this.tqH = ((LinearLayout)findViewById(2131300475));
-    this.tqF.setOnClickListener(this);
+    this.lCL = ((TextView)findViewById(2131305902));
+    this.upc = ((TextView)findViewById(2131302466));
+    this.upd = ((ImageView)findViewById(2131302455));
+    this.upe = ((LinearLayout)findViewById(2131300475));
+    this.upc.setOnClickListener(this);
     AppMethodBeat.o(42124);
   }
   
   public void setData(d paramd)
   {
     AppMethodBeat.i(42125);
-    if ((paramd == null) || (paramd.tdg == null) || (paramd.tdg.tiO == null))
+    if ((paramd == null) || (paramd.uaW == null) || (paramd.uaW.ugJ == null))
     {
       setVisibility(8);
       AppMethodBeat.o(42125);
       return;
     }
-    af localaf = paramd.tdg;
+    ah localah = paramd.uaW;
     setVisibility(0);
-    this.tqI = localaf;
-    if (!bs.isNullOrNil(localaf.tiO.Title))
+    this.upf = localah;
+    if (!bt.isNullOrNil(localah.ugJ.Title))
     {
-      this.lfN.setText(localaf.tiO.Title);
-      this.lfN.setVisibility(0);
-      if (bs.isNullOrNil(localaf.tiO.tiU)) {
+      this.lCL.setText(localah.ugJ.Title);
+      this.lCL.setVisibility(0);
+      if (bt.isNullOrNil(localah.ugJ.ugP)) {
         break label347;
       }
-      this.tqG.setVisibility(0);
-      this.tqF.setVisibility(0);
-      this.tqF.setText(localaf.tiO.tiU);
+      this.upd.setVisibility(0);
+      this.upc.setVisibility(0);
+      this.upc.setText(localah.ugJ.ugP);
     }
     for (;;)
     {
-      this.tqH.removeAllViews();
-      if (bs.gY(localaf.tiO.thO)) {
+      this.upe.removeAllViews();
+      if (bt.hj(localah.ugJ.ufF)) {
         break label368;
       }
-      Iterator localIterator = localaf.tiO.thO.iterator();
+      Iterator localIterator = localah.ugJ.ufF.iterator();
       while (localIterator.hasNext())
       {
-        ap localap = (ap)localIterator.next();
+        ar localar = (ar)localIterator.next();
         Object localObject = LayoutInflater.from(getContext()).inflate(2131494254, this, false);
         ((View)localObject).setOnClickListener(this);
-        ((View)localObject).setTag(Integer.valueOf(localaf.tiO.thO.indexOf(localap)));
-        this.tqH.addView((View)localObject, new LinearLayout.LayoutParams(-1, -2, 1.0F));
+        ((View)localObject).setTag(Integer.valueOf(localah.ugJ.ufF.indexOf(localar)));
+        this.upe.addView((View)localObject, new LinearLayout.LayoutParams(-1, -2, 1.0F));
         TextView localTextView1 = (TextView)((View)localObject).findViewById(2131303852);
         ImageView localImageView = (ImageView)((View)localObject).findViewById(2131303849);
         TextView localTextView2 = (TextView)((View)localObject).findViewById(2131303851);
         localObject = (TextView)((View)localObject).findViewById(2131303848);
         localTextView1.setVisibility(8);
-        com.tencent.mm.plugin.game.f.e.cRL().l(localImageView, localap.tjl);
-        localTextView2.setText(localap.Title);
-        ((TextView)localObject).setText(localap.Desc);
+        e.dav().l(localImageView, localar.uhg);
+        localTextView2.setText(localar.Title);
+        ((TextView)localObject).setText(localar.Desc);
       }
-      this.lfN.setVisibility(8);
+      this.lCL.setVisibility(8);
       break;
       label347:
-      this.tqF.setVisibility(8);
-      this.tqG.setVisibility(8);
+      this.upc.setVisibility(8);
+      this.upd.setVisibility(8);
     }
     label368:
-    if (!paramd.tdi)
+    if (!paramd.uaY)
     {
-      a.a(getContext(), 10, 1023, paramd.position, paramd.tdg.hOf, GameIndexListView.getSourceScene(), a.tu(paramd.tdg.thP));
-      paramd.tdi = true;
+      com.tencent.mm.plugin.game.e.a.a(getContext(), 10, 1023, paramd.position, paramd.uaW.iht, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.wk(paramd.uaW.ufG));
+      paramd.uaY = true;
     }
     AppMethodBeat.o(42125);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameFeedQipaiView
  * JD-Core Version:    0.7.0.1
  */

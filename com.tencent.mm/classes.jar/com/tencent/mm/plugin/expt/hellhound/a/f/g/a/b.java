@@ -1,109 +1,165 @@
 package com.tencent.mm.plugin.expt.hellhound.a.f.g.a;
 
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.apd;
-import com.tencent.mm.protocal.protobuf.ccs;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.asx;
+import com.tencent.mm.protocal.protobuf.boc;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  private static void a(apd paramapd)
+  static void Dq(int paramInt)
   {
-    AppMethodBeat.i(122276);
-    if (paramapd == null)
+    AppMethodBeat.i(210499);
+    asx localasx2 = cqE();
+    asx localasx1 = localasx2;
+    if (localasx2 == null) {
+      localasx1 = new asx();
+    }
+    localasx1.type = paramInt;
+    a(localasx1);
+    AppMethodBeat.o(210499);
+  }
+  
+  public static void a(asx paramasx)
+  {
+    AppMethodBeat.i(122285);
+    if (paramasx == null)
     {
-      AppMethodBeat.o(122276);
+      AppMethodBeat.o(122285);
       return;
     }
     try
     {
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_key_hell_float_lst_ac", paramapd.toByteArray());
-      AppMethodBeat.o(122276);
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.p("mmkv_key_hell_floatS", paramasx.toByteArray());
+      AppMethodBeat.o(122285);
       return;
     }
-    catch (Exception paramapd)
+    catch (Exception paramasx)
     {
-      ac.printErrStackTrace("FloatLastActionDao", paramapd, "HABBYGE-MALI, FloatLastActionDao._writeBack: %s", new Object[] { paramapd.getMessage() });
-      AppMethodBeat.o(122276);
+      ad.printErrStackTrace("HABBYGE-MALI.FloatSessionDao", paramasx, "FloatSessionDao._writeBack: %s", new Object[] { paramasx.getMessage() });
+      AppMethodBeat.o(122285);
     }
   }
   
-  public static void abJ(String paramString)
+  public static void b(boc paramboc)
   {
-    AppMethodBeat.i(122273);
-    if (paramString == null)
+    AppMethodBeat.i(122279);
+    if (paramboc == null)
     {
-      AppMethodBeat.o(122273);
+      AppMethodBeat.o(122279);
       return;
     }
-    apd localapd2 = clk();
-    apd localapd1 = localapd2;
-    if (localapd2 == null) {
-      localapd1 = new apd();
+    asx localasx2 = cqE();
+    asx localasx1 = localasx2;
+    if (localasx2 == null) {
+      localasx1 = new asx();
     }
-    localapd1.EIf = paramString;
-    localapd1.EIe = null;
-    localapd1.EIg = null;
-    a(localapd1);
-    ac.d("FloatLastActionDao", "HABBYGE-MALI, updateFloatAction: %s", new Object[] { paramString });
-    AppMethodBeat.o(122273);
+    localasx1.GqT = new boc();
+    localasx1.GqT.dtL = paramboc.dtL;
+    localasx1.GqT.dyV = paramboc.dyV;
+    localasx1.GqT.aHQ = paramboc.aHQ;
+    a(localasx1);
+    AppMethodBeat.o(122279);
   }
   
-  static apd clk()
+  public static boc cqB()
   {
-    AppMethodBeat.i(122277);
-    byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("mmkv_key_hell_float_lst_ac");
-    if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
+    AppMethodBeat.i(122280);
+    Object localObject = cqE();
+    if (localObject == null)
     {
-      ac.e("FloatLastActionDao", "HABBYGE-MALI, HellSession read(): NULL");
-      AppMethodBeat.o(122277);
+      AppMethodBeat.o(122280);
       return null;
     }
-    apd localapd = new apd();
+    localObject = ((asx)localObject).GqT;
+    AppMethodBeat.o(122280);
+    return localObject;
+  }
+  
+  public static int cqC()
+  {
+    AppMethodBeat.i(184390);
+    asx localasx = cqE();
+    if (localasx == null)
+    {
+      AppMethodBeat.o(184390);
+      return 8;
+    }
+    int i = localasx.GqX;
+    AppMethodBeat.o(184390);
+    return i;
+  }
+  
+  public static Pair<Integer, Integer> cqD()
+  {
+    AppMethodBeat.i(122284);
+    Object localObject = cqE();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(122284);
+      return null;
+    }
+    localObject = Pair.create(Integer.valueOf(((asx)localObject).GqU), Integer.valueOf(((asx)localObject).GqV));
+    AppMethodBeat.o(122284);
+    return localObject;
+  }
+  
+  public static asx cqE()
+  {
+    AppMethodBeat.i(122286);
+    byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("mmkv_key_hell_floatS");
+    if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
+    {
+      ad.e("HABBYGE-MALI.FloatSessionDao", "HellSession read(): NULL");
+      AppMethodBeat.o(122286);
+      return null;
+    }
+    asx localasx = new asx();
     try
     {
-      localapd.parseFrom(arrayOfByte);
-      AppMethodBeat.o(122277);
-      return localapd;
+      localasx.parseFrom(arrayOfByte);
+      AppMethodBeat.o(122286);
+      return localasx;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("FloatLastActionDao", localException, "HABBYGE-MALI, FloatLastActionDao._read: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(122277);
+      ad.printErrStackTrace("HABBYGE-MALI.FloatSessionDao", localException, "FloatSessionDao._read: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(122286);
     }
     return null;
   }
   
-  public static void m(ccs paramccs)
+  public static void fz(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(122274);
-    if (paramccs == null)
-    {
-      AppMethodBeat.o(122274);
-      return;
+    AppMethodBeat.i(122283);
+    asx localasx2 = cqE();
+    asx localasx1 = localasx2;
+    if (localasx2 == null) {
+      localasx1 = new asx();
     }
-    apd localapd2 = clk();
-    apd localapd1 = localapd2;
-    if (localapd2 == null) {
-      localapd1 = new apd();
+    if (paramInt1 != -1) {
+      localasx1.GqU = paramInt1;
     }
-    localapd1.EIf = null;
-    localapd1.EIe = paramccs;
-    a(localapd1);
-    AppMethodBeat.o(122274);
+    if (paramInt2 != -1) {
+      localasx1.GqV = paramInt2;
+    }
+    a(localasx1);
+    AppMethodBeat.o(122283);
   }
   
-  public static void n(ccs paramccs)
+  public static void lc(boolean paramBoolean)
   {
-    AppMethodBeat.i(122275);
-    apd localapd2 = clk();
-    apd localapd1 = localapd2;
-    if (localapd2 == null) {
-      localapd1 = new apd();
+    AppMethodBeat.i(122281);
+    asx localasx2 = cqE();
+    asx localasx1 = localasx2;
+    if (localasx2 == null) {
+      localasx1 = new asx();
     }
-    localapd1.EIg = paramccs;
-    a(localapd1);
-    AppMethodBeat.o(122275);
+    localasx1.GqW = paramBoolean;
+    a(localasx1);
+    ad.d("HABBYGE-MALI.FloatSessionDao", "setClickMenuItem: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(122281);
   }
 }
 

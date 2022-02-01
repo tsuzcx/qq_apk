@@ -6,7 +6,7 @@ public abstract interface b
   
   public abstract <T> T n(Class<T> paramClass);
   
-  public abstract void oC();
+  public abstract void oU();
   
   public abstract <T> void put(T paramT);
   

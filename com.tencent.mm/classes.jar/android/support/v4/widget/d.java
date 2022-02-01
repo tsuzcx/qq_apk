@@ -27,24 +27,24 @@ public final class d
   extends Drawable
   implements Animatable
 {
-  private static final Interpolator QG = new LinearInterpolator();
-  private static final Interpolator QH = new b();
-  private static final int[] QI = { -16777216 };
-  private Animator Di;
-  final a QJ;
-  private float QK;
-  float QL;
-  boolean QM;
+  private static final Interpolator Sv = new LinearInterpolator();
+  private static final Interpolator Sw = new b();
+  private static final int[] Sx = { -16777216 };
+  private Animator EZ;
+  float SA;
+  boolean SB;
+  final a Sy;
+  private float Sz;
   private Resources mResources;
   
   public d(final Context paramContext)
   {
     this.mResources = ((Context)m.checkNotNull(paramContext)).getResources();
-    this.QJ = new a();
-    this.QJ.setColors(QI);
-    this.QJ.setStrokeWidth(2.5F);
+    this.Sy = new a();
+    this.Sy.setColors(Sx);
+    this.Sy.setStrokeWidth(2.5F);
     invalidateSelf();
-    paramContext = this.QJ;
+    paramContext = this.Sy;
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
@@ -58,7 +58,7 @@ public final class d
     });
     localValueAnimator.setRepeatCount(-1);
     localValueAnimator.setRepeatMode(1);
-    localValueAnimator.setInterpolator(QG);
+    localValueAnimator.setInterpolator(Sv);
     localValueAnimator.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
@@ -68,27 +68,27 @@ public final class d
       public final void onAnimationRepeat(Animator paramAnonymousAnimator)
       {
         d.this.a(1.0F, paramContext, true);
-        paramContext.fs();
+        paramContext.fJ();
         d.a locala = paramContext;
-        locala.aU(locala.fq());
-        if (d.this.QM)
+        locala.aU(locala.fH());
+        if (d.this.SB)
         {
-          d.this.QM = false;
+          d.this.SB = false;
           paramAnonymousAnimator.cancel();
           paramAnonymousAnimator.setDuration(1332L);
           paramAnonymousAnimator.start();
           paramContext.O(false);
           return;
         }
-        d.this.QL += 1.0F;
+        d.this.SA += 1.0F;
       }
       
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
-        d.this.QL = 0.0F;
+        d.this.SA = 0.0F;
       }
     });
-    this.Di = localValueAnimator;
+    this.EZ = localValueAnimator;
   }
   
   static void a(float paramFloat, a parama)
@@ -96,8 +96,8 @@ public final class d
     if (paramFloat > 0.75F)
     {
       paramFloat = (paramFloat - 0.75F) / 0.25F;
-      int n = parama.fr();
-      int i = parama.mColors[parama.fq()];
+      int n = parama.fI();
+      int i = parama.mColors[parama.fH()];
       int j = n >> 24 & 0xFF;
       int k = n >> 16 & 0xFF;
       int m = n >> 8 & 0xFF;
@@ -105,48 +105,48 @@ public final class d
       int i1 = (int)(((i >> 24 & 0xFF) - j) * paramFloat);
       int i2 = (int)(((i >> 16 & 0xFF) - k) * paramFloat);
       int i3 = (int)(((i >> 8 & 0xFF) - m) * paramFloat);
-      parama.IA = ((int)(paramFloat * ((i & 0xFF) - n)) + n | j + i1 << 24 | k + i2 << 16 | i3 + m << 8);
+      parama.Ks = ((int)(paramFloat * ((i & 0xFF) - n)) + n | j + i1 << 24 | k + i2 << 16 | i3 + m << 8);
       return;
     }
-    parama.IA = parama.fr();
+    parama.Ks = parama.fI();
   }
   
   private void g(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    a locala = this.QJ;
+    a locala = this.Sy;
     float f = this.mResources.getDisplayMetrics().density;
     locala.setStrokeWidth(paramFloat2 * f);
-    locala.Rb = (paramFloat1 * f);
+    locala.SQ = (paramFloat1 * f);
     locala.aU(0);
-    locala.Rc = ((int)(paramFloat3 * f));
-    locala.Rd = ((int)(f * paramFloat4));
+    locala.SR = ((int)(paramFloat3 * f));
+    locala.SS = ((int)(f * paramFloat4));
   }
   
-  public final void E(float paramFloat)
+  public final void C(float paramFloat)
   {
-    a locala = this.QJ;
-    if (paramFloat != locala.Ra) {
-      locala.Ra = paramFloat;
+    a locala = this.Sy;
+    if (paramFloat != locala.SP) {
+      locala.SP = paramFloat;
     }
     invalidateSelf();
   }
   
-  public final void F(float paramFloat)
+  public final void D(float paramFloat)
   {
-    this.QJ.QS = 0.0F;
-    this.QJ.QT = paramFloat;
+    this.Sy.SH = 0.0F;
+    this.Sy.SI = paramFloat;
     invalidateSelf();
   }
   
-  public final void G(float paramFloat)
+  public final void E(float paramFloat)
   {
-    this.QJ.QK = paramFloat;
+    this.Sy.Sz = paramFloat;
     invalidateSelf();
   }
   
   public final void N(boolean paramBoolean)
   {
-    this.QJ.O(paramBoolean);
+    this.Sy.O(paramBoolean);
     invalidateSelf();
   }
   
@@ -154,36 +154,36 @@ public final class d
   {
     float f1;
     float f2;
-    if (this.QM)
+    if (this.SB)
     {
       a(paramFloat, parama);
-      f1 = (float)(Math.floor(parama.QX / 0.8F) + 1.0D);
-      parama.QS = (parama.QV + (parama.QW - 0.01F - parama.QV) * paramFloat);
-      parama.QT = parama.QW;
-      f2 = parama.QX;
-      parama.QK = ((f1 - parama.QX) * paramFloat + f2);
+      f1 = (float)(Math.floor(parama.SM / 0.8F) + 1.0D);
+      parama.SH = (parama.SK + (parama.SL - 0.01F - parama.SK) * paramFloat);
+      parama.SI = parama.SL;
+      f2 = parama.SM;
+      parama.Sz = ((f1 - parama.SM) * paramFloat + f2);
     }
     while ((paramFloat == 1.0F) && (!paramBoolean)) {
       return;
     }
-    float f3 = parama.QX;
+    float f3 = parama.SM;
     if (paramFloat < 0.5F)
     {
       f1 = paramFloat / 0.5F;
-      f2 = parama.QV;
-      f1 = QH.getInterpolation(f1) * 0.79F + 0.01F + f2;
+      f2 = parama.SK;
+      f1 = Sw.getInterpolation(f1) * 0.79F + 0.01F + f2;
     }
     for (;;)
     {
-      float f4 = this.QL;
-      parama.QS = f2;
-      parama.QT = f1;
-      parama.QK = (f3 + 0.21F * paramFloat);
-      this.QK = (216.0F * (f4 + paramFloat));
+      float f4 = this.SA;
+      parama.SH = f2;
+      parama.SI = f1;
+      parama.Sz = (f3 + 0.21F * paramFloat);
+      this.Sz = (216.0F * (f4 + paramFloat));
       return;
       f2 = (paramFloat - 0.5F) / 0.5F;
-      f1 = parama.QV + 0.79F;
-      f2 = f1 - ((1.0F - QH.getInterpolation(f2)) * 0.79F + 0.01F);
+      f1 = parama.SK + 0.79F;
+      f2 = f1 - ((1.0F - Sw.getInterpolation(f2)) * 0.79F + 0.01F);
     }
   }
   
@@ -191,56 +191,56 @@ public final class d
   {
     Rect localRect = getBounds();
     paramCanvas.save();
-    paramCanvas.rotate(this.QK, localRect.exactCenterX(), localRect.exactCenterY());
-    a locala = this.QJ;
-    RectF localRectF = locala.QP;
-    float f1 = locala.Rb + locala.vx / 2.0F;
-    if (locala.Rb <= 0.0F) {
-      f1 = Math.min(localRect.width(), localRect.height()) / 2.0F - Math.max(locala.Rc * locala.Ra / 2.0F, locala.vx / 2.0F);
+    paramCanvas.rotate(this.Sz, localRect.exactCenterX(), localRect.exactCenterY());
+    a locala = this.Sy;
+    RectF localRectF = locala.SE;
+    float f1 = locala.SQ + locala.xq / 2.0F;
+    if (locala.SQ <= 0.0F) {
+      f1 = Math.min(localRect.width(), localRect.height()) / 2.0F - Math.max(locala.SR * locala.SP / 2.0F, locala.xq / 2.0F);
     }
     localRectF.set(localRect.centerX() - f1, localRect.centerY() - f1, localRect.centerX() + f1, f1 + localRect.centerY());
-    f1 = (locala.QS + locala.QK) * 360.0F;
-    float f2 = (locala.QT + locala.QK) * 360.0F - f1;
-    locala.mPaint.setColor(locala.IA);
+    f1 = (locala.SH + locala.Sz) * 360.0F;
+    float f2 = (locala.SI + locala.Sz) * 360.0F - f1;
+    locala.mPaint.setColor(locala.Ks);
     locala.mPaint.setAlpha(locala.mAlpha);
-    float f3 = locala.vx / 2.0F;
+    float f3 = locala.xq / 2.0F;
     localRectF.inset(f3, f3);
-    paramCanvas.drawCircle(localRectF.centerX(), localRectF.centerY(), localRectF.width() / 2.0F, locala.QR);
+    paramCanvas.drawCircle(localRectF.centerX(), localRectF.centerY(), localRectF.width() / 2.0F, locala.SG);
     localRectF.inset(-f3, -f3);
     paramCanvas.drawArc(localRectF, f1, f2, false, locala.mPaint);
-    if (locala.QY)
+    if (locala.SN)
     {
-      if (locala.QZ != null) {
+      if (locala.SO != null) {
         break label522;
       }
-      locala.QZ = new Path();
-      locala.QZ.setFillType(Path.FillType.EVEN_ODD);
+      locala.SO = new Path();
+      locala.SO.setFillType(Path.FillType.EVEN_ODD);
     }
     for (;;)
     {
       f3 = Math.min(localRectF.width(), localRectF.height()) / 2.0F;
-      float f4 = locala.Rc * locala.Ra / 2.0F;
-      locala.QZ.moveTo(0.0F, 0.0F);
-      locala.QZ.lineTo(locala.Rc * locala.Ra, 0.0F);
-      locala.QZ.lineTo(locala.Rc * locala.Ra / 2.0F, locala.Rd * locala.Ra);
-      locala.QZ.offset(f3 + localRectF.centerX() - f4, localRectF.centerY() + locala.vx / 2.0F);
-      locala.QZ.close();
-      locala.QQ.setColor(locala.IA);
-      locala.QQ.setAlpha(locala.mAlpha);
+      float f4 = locala.SR * locala.SP / 2.0F;
+      locala.SO.moveTo(0.0F, 0.0F);
+      locala.SO.lineTo(locala.SR * locala.SP, 0.0F);
+      locala.SO.lineTo(locala.SR * locala.SP / 2.0F, locala.SS * locala.SP);
+      locala.SO.offset(f3 + localRectF.centerX() - f4, localRectF.centerY() + locala.xq / 2.0F);
+      locala.SO.close();
+      locala.SF.setColor(locala.Ks);
+      locala.SF.setAlpha(locala.mAlpha);
       paramCanvas.save();
       paramCanvas.rotate(f1 + f2, localRectF.centerX(), localRectF.centerY());
-      paramCanvas.drawPath(locala.QZ, locala.QQ);
+      paramCanvas.drawPath(locala.SO, locala.SF);
       paramCanvas.restore();
       paramCanvas.restore();
       return;
       label522:
-      locala.QZ.reset();
+      locala.SO.reset();
     }
   }
   
   public final int getAlpha()
   {
-    return this.QJ.mAlpha;
+    return this.Sy.mAlpha;
   }
   
   public final int getOpacity()
@@ -250,18 +250,18 @@ public final class d
   
   public final boolean isRunning()
   {
-    return this.Di.isRunning();
+    return this.EZ.isRunning();
   }
   
   public final void setAlpha(int paramInt)
   {
-    this.QJ.mAlpha = paramInt;
+    this.Sy.mAlpha = paramInt;
     invalidateSelf();
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.QJ.mPaint.setColorFilter(paramColorFilter);
+    this.Sy.mPaint.setColorFilter(paramColorFilter);
     invalidateSelf();
   }
   
@@ -280,103 +280,103 @@ public final class d
   
   public final void start()
   {
-    this.Di.cancel();
-    this.QJ.fs();
-    if (this.QJ.QT != this.QJ.QS)
+    this.EZ.cancel();
+    this.Sy.fJ();
+    if (this.Sy.SI != this.Sy.SH)
     {
-      this.QM = true;
-      this.Di.setDuration(666L);
-      this.Di.start();
+      this.SB = true;
+      this.EZ.setDuration(666L);
+      this.EZ.start();
       return;
     }
-    this.QJ.aU(0);
-    this.QJ.ft();
-    this.Di.setDuration(1332L);
-    this.Di.start();
+    this.Sy.aU(0);
+    this.Sy.fK();
+    this.EZ.setDuration(1332L);
+    this.EZ.start();
   }
   
   public final void stop()
   {
-    this.Di.cancel();
-    this.QK = 0.0F;
-    this.QJ.O(false);
-    this.QJ.aU(0);
-    this.QJ.ft();
+    this.EZ.cancel();
+    this.Sz = 0.0F;
+    this.Sy.O(false);
+    this.Sy.aU(0);
+    this.Sy.fK();
     invalidateSelf();
   }
   
   static final class a
   {
-    int IA;
-    float QK = 0.0F;
-    final RectF QP = new RectF();
-    final Paint QQ = new Paint();
-    final Paint QR = new Paint();
-    float QS = 0.0F;
-    float QT = 0.0F;
-    int QU;
-    float QV;
-    float QW;
-    float QX;
-    boolean QY;
-    Path QZ;
-    float Ra = 1.0F;
-    float Rb;
-    int Rc;
-    int Rd;
+    int Ks;
+    final RectF SE = new RectF();
+    final Paint SF = new Paint();
+    final Paint SG = new Paint();
+    float SH = 0.0F;
+    float SI = 0.0F;
+    int SJ;
+    float SK;
+    float SL;
+    float SM;
+    boolean SN;
+    Path SO;
+    float SP = 1.0F;
+    float SQ;
+    int SR;
+    int SS;
+    float Sz = 0.0F;
     int mAlpha = 255;
     int[] mColors;
     final Paint mPaint = new Paint();
-    float vx = 5.0F;
+    float xq = 5.0F;
     
     a()
     {
       this.mPaint.setStrokeCap(Paint.Cap.SQUARE);
       this.mPaint.setAntiAlias(true);
       this.mPaint.setStyle(Paint.Style.STROKE);
-      this.QQ.setStyle(Paint.Style.FILL);
-      this.QQ.setAntiAlias(true);
-      this.QR.setColor(0);
+      this.SF.setStyle(Paint.Style.FILL);
+      this.SF.setAntiAlias(true);
+      this.SG.setColor(0);
     }
     
     final void O(boolean paramBoolean)
     {
-      if (this.QY != paramBoolean) {
-        this.QY = paramBoolean;
+      if (this.SN != paramBoolean) {
+        this.SN = paramBoolean;
       }
     }
     
     final void aU(int paramInt)
     {
-      this.QU = paramInt;
-      this.IA = this.mColors[this.QU];
+      this.SJ = paramInt;
+      this.Ks = this.mColors[this.SJ];
     }
     
-    final int fq()
+    final int fH()
     {
-      return (this.QU + 1) % this.mColors.length;
+      return (this.SJ + 1) % this.mColors.length;
     }
     
-    final int fr()
+    final int fI()
     {
-      return this.mColors[this.QU];
+      return this.mColors[this.SJ];
     }
     
-    final void fs()
+    final void fJ()
     {
-      this.QV = this.QS;
-      this.QW = this.QT;
-      this.QX = this.QK;
+      this.SK = this.SH;
+      this.SL = this.SI;
+      this.SM = this.Sz;
     }
     
-    final void ft()
+    final void fK()
     {
-      this.QV = 0.0F;
-      this.QW = 0.0F;
-      this.QX = 0.0F;
-      this.QS = 0.0F;
-      this.QT = 0.0F;
-      this.QK = 0.0F;
+      this.SK = 0.0F;
+      this.SL = 0.0F;
+      this.SM = 0.0F;
+      this.SH = 0.0F;
+      this.SI = 0.0F;
+      this.Sz = 0.0F;
     }
     
     final void setColors(int[] paramArrayOfInt)
@@ -387,7 +387,7 @@ public final class d
     
     final void setStrokeWidth(float paramFloat)
     {
-      this.vx = paramFloat;
+      this.xq = paramFloat;
       this.mPaint.setStrokeWidth(paramFloat);
     }
   }

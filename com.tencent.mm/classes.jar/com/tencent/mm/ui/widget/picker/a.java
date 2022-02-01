@@ -15,193 +15,206 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public class a
 {
-  protected com.tencent.mm.ui.widget.picker.c.a Jja;
-  boolean cBT;
+  protected com.tencent.mm.ui.widget.picker.c.a Lax;
+  boolean cMS;
   private Context context;
-  protected ViewGroup isM;
-  ViewGroup isN;
-  private ViewGroup isO;
-  boolean isP;
-  private Animation isQ;
-  private Animation isR;
-  protected int isS;
-  private boolean isT;
-  private View.OnKeyListener isU;
-  private final View.OnTouchListener isV;
+  protected ViewGroup iLP;
+  ViewGroup iLQ;
+  private ViewGroup iLR;
+  boolean iLS;
+  private Animation iLT;
+  private Animation iLU;
+  protected int iLV;
+  private boolean iLW;
+  private View.OnKeyListener iLX;
+  private final View.OnTouchListener iLY;
   private Dialog mDialog;
   
   public a(Context paramContext)
   {
-    AppMethodBeat.i(199715);
-    this.isS = 80;
-    this.isT = true;
-    this.isU = new View.OnKeyListener()
+    AppMethodBeat.i(192661);
+    this.iLV = 80;
+    this.iLW = true;
+    this.iLX = new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
-        AppMethodBeat.i(199713);
+        AppMethodBeat.i(192659);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.bd(paramAnonymousKeyEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/BasePickerView$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahq());
         if ((paramAnonymousInt == 4) && (paramAnonymousKeyEvent.getAction() == 0))
         {
           paramAnonymousView = a.this;
-          if ((!paramAnonymousView.aMQ()) && ((paramAnonymousView.isN.getParent() != null) || (paramAnonymousView.cBT))) {}
+          if ((!paramAnonymousView.aQb()) && ((paramAnonymousView.iLQ.getParent() != null) || (paramAnonymousView.cMS))) {}
           for (paramAnonymousInt = 1; paramAnonymousInt != 0; paramAnonymousInt = 0)
           {
             a.this.dismiss();
-            AppMethodBeat.o(199713);
+            com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/picker/BasePickerView$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
+            AppMethodBeat.o(192659);
             return true;
           }
         }
-        AppMethodBeat.o(199713);
+        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/picker/BasePickerView$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
+        AppMethodBeat.o(192659);
         return false;
       }
     };
-    this.isV = new View.OnTouchListener()
+    this.iLY = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(199714);
+        AppMethodBeat.i(192660);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/BasePickerView$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
         if (paramAnonymousMotionEvent.getAction() == 0) {
           a.this.dismiss();
         }
-        AppMethodBeat.o(199714);
+        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/picker/BasePickerView$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(192660);
         return false;
       }
     };
     this.context = paramContext;
-    AppMethodBeat.o(199715);
+    AppMethodBeat.o(192661);
   }
   
-  protected final void aMM()
+  protected final void aPX()
   {
-    AppMethodBeat.i(199716);
+    AppMethodBeat.i(192662);
     Object localObject = new FrameLayout.LayoutParams(-1, -2, 80);
-    this.isN = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131494555, this.Jja.Xt, false));
-    this.isN.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    if (this.Jja.isI != -1) {
-      this.isN.setBackgroundColor(this.Jja.isI);
+    this.iLQ = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131494555, this.Lax.Zi, false));
+    this.iLQ.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    if (this.Lax.iLL != -1) {
+      this.iLQ.setBackgroundColor(this.Lax.iLL);
     }
-    this.isM = ((ViewGroup)this.isN.findViewById(2131298752));
-    this.isM.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if (aMQ()) {}
-    for (localObject = this.isO;; localObject = this.isN)
+    this.iLP = ((ViewGroup)this.iLQ.findViewById(2131298752));
+    this.iLP.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if (aQb()) {}
+    for (localObject = this.iLR;; localObject = this.iLQ)
     {
       ((ViewGroup)localObject).setFocusable(true);
       ((ViewGroup)localObject).setFocusableInTouchMode(true);
-      ((ViewGroup)localObject).setOnKeyListener(this.isU);
-      AppMethodBeat.o(199716);
+      ((ViewGroup)localObject).setOnKeyListener(this.iLX);
+      AppMethodBeat.o(192662);
       return;
     }
   }
   
-  protected final void aMN()
+  protected final void aPY()
   {
-    AppMethodBeat.i(199717);
-    int i = com.tencent.mm.ui.widget.picker.f.a.E(this.isS, true);
-    this.isR = AnimationUtils.loadAnimation(this.context, i);
-    i = com.tencent.mm.ui.widget.picker.f.a.E(this.isS, false);
-    this.isQ = AnimationUtils.loadAnimation(this.context, i);
-    AppMethodBeat.o(199717);
+    AppMethodBeat.i(192663);
+    int i = com.tencent.mm.ui.widget.picker.f.a.E(this.iLV, true);
+    this.iLU = AnimationUtils.loadAnimation(this.context, i);
+    i = com.tencent.mm.ui.widget.picker.f.a.E(this.iLV, false);
+    this.iLT = AnimationUtils.loadAnimation(this.context, i);
+    AppMethodBeat.o(192663);
   }
   
-  public final void aMO()
+  public final void aPZ()
   {
-    AppMethodBeat.i(199719);
-    this.Jja.Xt.post(new Runnable()
+    AppMethodBeat.i(192665);
+    this.Lax.Zi.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(199712);
-        a.this.Jja.Xt.removeView(a.this.isN);
-        a.this.cBT = false;
-        a.this.isP = false;
-        AppMethodBeat.o(199712);
+        AppMethodBeat.i(192658);
+        a.this.Lax.Zi.removeView(a.this.iLQ);
+        a.this.cMS = false;
+        a.this.iLS = false;
+        AppMethodBeat.o(192658);
       }
     });
-    AppMethodBeat.o(199719);
+    AppMethodBeat.o(192665);
   }
   
-  public final void aMP()
+  public final void aQa()
   {
-    AppMethodBeat.i(199721);
+    AppMethodBeat.i(192667);
     if (this.mDialog != null) {
-      this.mDialog.setCancelable(this.Jja.mz);
+      this.mDialog.setCancelable(this.Lax.ov);
     }
-    AppMethodBeat.o(199721);
+    AppMethodBeat.o(192667);
   }
   
-  public boolean aMQ()
+  public boolean aQb()
   {
     return false;
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(199718);
-    if (aMQ())
+    AppMethodBeat.i(192664);
+    if (aQb())
     {
       if (this.mDialog != null) {
         this.mDialog.dismiss();
       }
-      AppMethodBeat.o(199718);
+      AppMethodBeat.o(192664);
       return;
     }
-    if (this.isP)
+    if (this.iLS)
     {
-      AppMethodBeat.o(199718);
+      AppMethodBeat.o(192664);
       return;
     }
-    if (this.isT)
+    if (this.iLW)
     {
-      this.isQ.setAnimationListener(new Animation.AnimationListener()
+      this.iLT.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
-          AppMethodBeat.i(199711);
-          a.this.aMO();
-          AppMethodBeat.o(199711);
+          AppMethodBeat.i(192657);
+          a.this.aPZ();
+          AppMethodBeat.o(192657);
         }
         
         public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
         
         public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       });
-      this.isM.startAnimation(this.isQ);
+      this.iLP.startAnimation(this.iLT);
     }
     for (;;)
     {
-      this.isP = true;
-      AppMethodBeat.o(199718);
+      this.iLS = true;
+      AppMethodBeat.o(192664);
       return;
-      aMO();
+      aPZ();
     }
   }
   
   public final View findViewById(int paramInt)
   {
-    AppMethodBeat.i(199722);
-    View localView = this.isM.findViewById(paramInt);
-    AppMethodBeat.o(199722);
+    AppMethodBeat.i(192668);
+    View localView = this.iLP.findViewById(paramInt);
+    AppMethodBeat.o(192668);
     return localView;
   }
   
-  protected final a yj(boolean paramBoolean)
+  protected final a yV(boolean paramBoolean)
   {
-    AppMethodBeat.i(199720);
+    AppMethodBeat.i(192666);
     View localView;
-    if (this.isN != null)
+    if (this.iLQ != null)
     {
-      localView = this.isN.findViewById(2131303115);
+      localView = this.iLQ.findViewById(2131303115);
       if (!paramBoolean) {
         break label41;
       }
-      localView.setOnTouchListener(this.isV);
+      localView.setOnTouchListener(this.iLY);
     }
     for (;;)
     {
-      AppMethodBeat.o(199720);
+      AppMethodBeat.o(192666);
       return this;
       label41:
       localView.setOnTouchListener(null);
@@ -210,7 +223,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.a
  * JD-Core Version:    0.7.0.1
  */

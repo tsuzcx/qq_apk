@@ -3,17 +3,16 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.e;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aqg;
-import com.tencent.mm.protocal.protobuf.bju;
-import com.tencent.mm.protocal.protobuf.ccr;
-import com.tencent.mm.protocal.protobuf.ccs;
-import com.tencent.mm.protocal.protobuf.cvw;
-import com.tencent.mm.protocal.protobuf.cvx;
-import com.tencent.mm.protocal.protobuf.cwa;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.auc;
+import com.tencent.mm.protocal.protobuf.boc;
+import com.tencent.mm.protocal.protobuf.chj;
+import com.tencent.mm.protocal.protobuf.chk;
+import com.tencent.mm.protocal.protobuf.dbi;
+import com.tencent.mm.protocal.protobuf.dbj;
+import com.tencent.mm.protocal.protobuf.dbm;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,20 +25,22 @@ import java.util.Set;
 
 public final class a
 {
-  private static final Map<Integer, WeakReference<Activity>> qql;
+  private static WeakReference<Object> qQG;
+  private static final Map<Integer, WeakReference<Activity>> qZl;
   
   static
   {
     AppMethodBeat.i(122193);
-    qql = new HashMap();
+    qZl = new HashMap();
+    qQG = null;
     AppMethodBeat.o(122193);
   }
   
   @SuppressLint({"NewApi"})
-  public static void CA(int paramInt)
+  public static void Dn(int paramInt)
   {
     AppMethodBeat.i(122183);
-    Object localObject = (WeakReference)qql.get(Integer.valueOf(paramInt));
+    Object localObject = (WeakReference)qZl.get(Integer.valueOf(paramInt));
     if (localObject != null)
     {
       localObject = (Activity)((WeakReference)localObject).get();
@@ -55,18 +56,18 @@ public final class a
       AppMethodBeat.o(122183);
       return;
     }
-    ccs localccs = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.ckP();
-    if (localccs != null) {
-      a(localObject, localccs, true);
+    chk localchk = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cqe();
+    if (localchk != null) {
+      a(localObject, localchk, true);
     }
     AppMethodBeat.o(122183);
   }
   
   @SuppressLint({"NewApi"})
-  public static void CB(int paramInt)
+  public static void Do(int paramInt)
   {
     AppMethodBeat.i(122184);
-    Object localObject = (WeakReference)qql.get(Integer.valueOf(paramInt));
+    Object localObject = (WeakReference)qZl.get(Integer.valueOf(paramInt));
     if (localObject != null)
     {
       localObject = (Activity)((WeakReference)localObject).get();
@@ -82,37 +83,38 @@ public final class a
       AppMethodBeat.o(122184);
       return;
     }
-    ccs localccs = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.ckP();
-    if (localccs != null) {
-      a(localObject, localccs, false);
+    chk localchk = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cqe();
+    if (localchk != null)
+    {
+      ad.i("HABBYGE-MALI.HellPageParamsCatcher", "catchOnActivityFinishAsync: %s", new Object[] { localchk.sessionId });
+      a(localObject, localchk, false);
     }
     AppMethodBeat.o(122184);
   }
   
-  private static void a(Object paramObject, ccs paramccs, boolean paramBoolean)
+  private static void a(Object paramObject, chk paramchk, boolean paramBoolean)
   {
     AppMethodBeat.i(122189);
-    com.tencent.mm.plugin.expt.hellhound.a.f.b.d.ckF();
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.b.d.ckG();
+    com.tencent.mm.plugin.expt.hellhound.a.f.b.d.cpU();
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.b.d.cpV();
     if (localObject == null)
     {
-      ac.e("HABBYGE-MALI.HellPageParamsCatcher", "HellPageParamsCatcher, _doCatchOnActivity, config is NULL !!");
+      ad.e("HABBYGE-MALI.HellPageParamsCatcher", "HellPageParamsCatcher, _doCatchOnActivity, config is NULL !!");
       AppMethodBeat.o(122189);
       return;
     }
-    String str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aaS(paramccs.sessionId);
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aba(paramccs.sessionId)) {
-      str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.h(paramccs);
+    String str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeG(paramchk.sessionId);
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeN(paramchk.sessionId)) {
+      str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.g(paramchk);
     }
     for (;;)
     {
-      paramObject.getClass().getCanonicalName();
-      localObject = ((cvx)localObject).FGz.iterator();
+      localObject = ((dbj)localObject).Hrc.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        cwa localcwa = (cwa)((Iterator)localObject).next();
-        if ((localcwa != null) && ((localcwa.qon.equals(str)) || ("-1".equals(localcwa.qon)))) {
-          a(paramObject, localcwa, paramccs, paramBoolean);
+        dbm localdbm = (dbm)((Iterator)localObject).next();
+        if ((localdbm != null) && ((localdbm.qXk.equals(str)) || ("-1".equals(localdbm.qXk)))) {
+          a(paramObject, localdbm, paramchk, paramBoolean);
         }
       }
       AppMethodBeat.o(122189);
@@ -120,109 +122,110 @@ public final class a
     }
   }
   
-  private static void a(Object paramObject, cvw paramcvw1, cvw paramcvw2, String paramString, ccs paramccs, long paramLong, boolean paramBoolean)
+  private static void a(Object paramObject, dbi paramdbi1, dbi paramdbi2, String paramString, chk paramchk, long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(169354);
     if (paramBoolean)
     {
-      if (paramcvw2.qoi.equals(paramString))
+      if (paramdbi2.dtL.equals(paramString))
       {
-        a(paramObject, paramcvw2, paramccs.sessionId, paramLong, true);
+        a(paramObject, paramdbi2, paramchk.sessionId, paramLong, true);
         AppMethodBeat.o(169354);
         return;
       }
-      if (paramcvw1.qoi.equals(paramString))
+      if (paramdbi1.dtL.equals(paramString))
       {
-        a(paramObject, paramcvw1, paramccs.sessionId, paramLong, true);
+        a(paramObject, paramdbi1, paramchk.sessionId, paramLong, true);
         AppMethodBeat.o(169354);
       }
     }
     else
     {
-      if (paramcvw2.qoi.equals(paramString))
+      if (paramdbi2.dtL.equals(paramString))
       {
-        a(paramObject, paramcvw2, paramccs.sessionId, paramLong, false);
+        a(paramObject, paramdbi2, paramchk.sessionId, paramLong, false);
         AppMethodBeat.o(169354);
         return;
       }
-      if (paramcvw1.qoi.equals(paramString)) {
-        a(paramObject, paramcvw1, paramccs.sessionId, paramLong, false);
+      if (paramdbi1.dtL.equals(paramString)) {
+        a(paramObject, paramdbi1, paramchk.sessionId, paramLong, false);
       }
     }
     AppMethodBeat.o(169354);
   }
   
-  private static void a(Object paramObject, cvw paramcvw, String paramString, long paramLong, boolean paramBoolean)
+  private static void a(Object paramObject, dbi paramdbi, String paramString, long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(169355);
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.d.d.ad(paramString, paramLong);
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.d.d.ai(paramString, paramLong);
     if (localObject == null)
     {
+      ad.e("HABBYGE-MALI.HellPageParamsCatcher", "HABBYGE0-MALI, _setBizParams4FuzzyPath, FuzzyMatchDao.getPaths NULL");
       AppMethodBeat.o(169355);
       return;
     }
-    aqg localaqg = (aqg)((Pair)localObject).first;
+    auc localauc = (auc)((Pair)localObject).first;
     int i = ((Integer)((Pair)localObject).second).intValue();
-    paramcvw = paramcvw.FGy.iterator();
-    while (paramcvw.hasNext())
+    paramdbi = paramdbi.Hra.iterator();
+    while (paramdbi.hasNext())
     {
-      localObject = (ccr)paramcvw.next();
+      localObject = (chj)paramdbi.next();
       if (localObject != null) {
-        b.a(paramObject, (ccr)localObject, localaqg, paramBoolean);
+        b.a(paramObject, (chj)localObject, localauc, paramBoolean);
       }
     }
-    com.tencent.mm.plugin.expt.hellhound.a.d.d.a(paramString, localaqg, i);
+    com.tencent.mm.plugin.expt.hellhound.a.d.d.a(paramString, localauc, i);
     AppMethodBeat.o(169355);
   }
   
-  private static void a(Object paramObject, cvw paramcvw, String paramString, ccs paramccs, long paramLong, boolean paramBoolean)
+  private static void a(Object paramObject, dbi paramdbi, String paramString, chk paramchk, long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(169353);
     if (paramBoolean)
     {
-      if (paramcvw.qoi.equals(paramString))
+      if (paramdbi.dtL.equals(paramString))
       {
-        a(paramObject, paramcvw, paramccs.sessionId, paramLong, true);
+        a(paramObject, paramdbi, paramchk.sessionId, paramLong, true);
         AppMethodBeat.o(169353);
       }
     }
-    else if (paramcvw.qoi.equals(paramString)) {
-      a(paramObject, paramcvw, paramccs.sessionId, paramLong, false);
+    else if (paramdbi.dtL.equals(paramString)) {
+      a(paramObject, paramdbi, paramchk.sessionId, paramLong, false);
     }
     AppMethodBeat.o(169353);
   }
   
-  private static void a(Object paramObject, cwa paramcwa, ccs paramccs, boolean paramBoolean)
+  private static void a(Object paramObject, dbm paramdbm, chk paramchk, boolean paramBoolean)
   {
     AppMethodBeat.i(169351);
     String str = paramObject.getClass().getCanonicalName();
-    int j = paramcwa.FGD.size();
+    int j = paramdbm.Hrg.size();
     if (j == 1)
     {
-      b(paramObject, paramcwa, paramccs, paramBoolean);
+      b(paramObject, paramdbm, paramchk, paramBoolean);
       AppMethodBeat.o(169351);
       return;
     }
     int i = 1;
     while (i < j)
     {
-      cvw localcvw1 = (cvw)paramcwa.FGD.get(i - 1);
-      cvw localcvw2 = (cvw)paramcwa.FGD.get(i);
-      if ((localcvw1 != null) && (localcvw2 != null))
+      dbi localdbi1 = (dbi)paramdbm.Hrg.get(i - 1);
+      dbi localdbi2 = (dbi)paramdbm.Hrg.get(i);
+      if ((localdbi1 != null) && (localdbi2 != null))
       {
-        if (paramcwa.type != 0)
+        if (paramdbm.type != 0)
         {
-          if (paramcwa.type != 1) {
+          if (paramdbm.type != 1) {
             break label148;
           }
           if (j == 2)
           {
-            a(paramObject, localcvw1, localcvw2, str, paramccs, paramcwa.EJj, paramBoolean);
+            a(paramObject, localdbi1, localdbi2, str, paramchk, paramdbm.Gsl, paramBoolean);
             AppMethodBeat.o(169351);
             return;
           }
         }
-        a(paramObject, str, localcvw1, localcvw2, paramccs, paramBoolean, paramcwa);
+        a(paramObject, str, localdbi1, localdbi2, paramchk, paramBoolean, paramdbm);
       }
       label148:
       i += 1;
@@ -230,42 +233,41 @@ public final class a
     AppMethodBeat.o(169351);
   }
   
-  private static void a(Object paramObject, String paramString, cvw paramcvw1, cvw paramcvw2, ccs paramccs, boolean paramBoolean, cwa paramcwa)
+  private static void a(Object paramObject, String paramString, dbi paramdbi1, dbi paramdbi2, chk paramchk, boolean paramBoolean, dbm paramdbm)
   {
     AppMethodBeat.i(177398);
-    String str = com.tencent.mm.plugin.expt.hellhound.core.b.ciF();
-    if ((paramcvw2.qoi.equals(paramString)) && (paramcvw1.qoi.equals(str))) {
-      if (paramcwa.type == 0)
+    String str = com.tencent.mm.plugin.expt.hellhound.core.b.cnD();
+    if ((paramdbi2.dtL.equals(paramString)) && (paramdbi1.dtL.equals(str)))
+    {
+      if (paramdbm.type == 0)
       {
-        if (paramcvw2.qoi.equals(paramString))
-        {
-          a(paramObject, paramString, paramcvw2, paramccs.sessionId, paramBoolean);
-          AppMethodBeat.o(177398);
-        }
+        a(paramObject, paramString, paramdbi2, paramchk.sessionId, paramBoolean);
+        AppMethodBeat.o(177398);
+        return;
       }
-      else if (paramcwa.type == 1) {
-        a(paramObject, paramcvw2, paramString, paramccs, paramcwa.EJj, paramBoolean);
+      if (paramdbm.type == 1) {
+        a(paramObject, paramdbi2, paramString, paramchk, paramdbm.Gsl, paramBoolean);
       }
     }
     AppMethodBeat.o(177398);
   }
   
-  private static void a(Object paramObject, String paramString1, cvw paramcvw, String paramString2, boolean paramBoolean)
+  private static void a(Object paramObject, String paramString1, dbi paramdbi, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(169356);
-    paramString1 = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.fO(paramString2, paramString1);
+    paramString1 = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.fX(paramString2, paramString1);
     if (paramString1 == null)
     {
       AppMethodBeat.o(169356);
       return;
     }
-    paramString2 = (bju)paramString1.get(0);
-    paramcvw = paramcvw.FGy.iterator();
-    while (paramcvw.hasNext())
+    paramString2 = (boc)paramString1.get(0);
+    paramdbi = paramdbi.Hra.iterator();
+    while (paramdbi.hasNext())
     {
-      ccr localccr = (ccr)paramcvw.next();
-      if (localccr != null) {
-        b.a(paramObject, localccr, paramString2, false, paramBoolean);
+      chj localchj = (chj)paramdbi.next();
+      if (localchj != null) {
+        b.a(paramObject, localchj, paramString2, false, paramBoolean);
       }
     }
     com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(paramString2, ((Integer)paramString1.get(1)).intValue());
@@ -287,41 +289,119 @@ public final class a
     {
       AppMethodBeat.o(122185);
       return;
-      ccs localccs = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.ckP();
-      if (localccs != null) {
-        a(paramFragment, localccs, true);
+      chk localchk = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cqe();
+      if (localchk != null) {
+        a(paramFragment, localchk, true);
       }
       AppMethodBeat.o(122185);
       return;
-      localccs = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.ckP();
-      if (localccs != null) {
-        a(paramFragment, localccs, false);
+      localchk = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cqe();
+      if (localchk != null) {
+        a(paramFragment, localchk, false);
       }
     }
   }
   
-  private static void b(Object paramObject, cwa paramcwa, ccs paramccs, boolean paramBoolean)
+  private static void b(Object paramObject, dbm paramdbm, chk paramchk, boolean paramBoolean)
   {
     AppMethodBeat.i(169352);
-    cvw localcvw = (cvw)paramcwa.FGD.get(0);
-    if (localcvw == null)
+    dbi localdbi = (dbi)paramdbm.Hrg.get(0);
+    if (localdbi == null)
     {
       AppMethodBeat.o(169352);
       return;
     }
     String str = paramObject.getClass().getCanonicalName();
-    if (paramcwa.type == 0)
+    if (paramdbm.type == 0)
     {
-      if (localcvw.qoi.equals(str))
+      if (localdbi.dtL.equals(str))
       {
-        a(paramObject, str, localcvw, paramccs.sessionId, paramBoolean);
+        a(paramObject, str, localdbi, paramchk.sessionId, paramBoolean);
         AppMethodBeat.o(169352);
       }
     }
-    else if (paramcwa.type == 1) {
-      a(paramObject, localcvw, str, paramccs, paramcwa.EJj, paramBoolean);
+    else if (paramdbm.type == 1) {
+      a(paramObject, localdbi, str, paramchk, paramdbm.Gsl, paramBoolean);
     }
     AppMethodBeat.o(169352);
+  }
+  
+  public static void cX(Object paramObject)
+  {
+    AppMethodBeat.i(210475);
+    if (paramObject != null) {
+      qQG = new WeakReference(paramObject);
+    }
+    AppMethodBeat.o(210475);
+  }
+  
+  public static Object cnA()
+  {
+    AppMethodBeat.i(210474);
+    if (qQG == null)
+    {
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.a.cnB().cnA();
+      AppMethodBeat.o(210474);
+      return localObject;
+    }
+    Object localObject = qQG.get();
+    AppMethodBeat.o(210474);
+    return localObject;
+  }
+  
+  public static void df(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(210476);
+    if (qZl.isEmpty())
+    {
+      AppMethodBeat.o(210476);
+      return;
+    }
+    if (paramInt > 0) {
+      try
+      {
+        qZl.remove(Integer.valueOf(paramInt));
+        AppMethodBeat.o(210476);
+        return;
+      }
+      catch (NumberFormatException paramString)
+      {
+        ad.printErrStackTrace("HABBYGE-MALI.HellPageParamsCatcher", paramString, "HellPageParamsCatcher, onDestroy: %s", new Object[] { paramString.getMessage() });
+        AppMethodBeat.o(210476);
+        return;
+      }
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = qZl.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (localEntry != null)
+      {
+        Object localObject = (Activity)((WeakReference)localEntry.getValue()).get();
+        if (localObject == null)
+        {
+          localArrayList.add(localEntry.getKey());
+        }
+        else
+        {
+          localObject = localObject.getClass().getCanonicalName();
+          if ((localObject != null) && (((String)localObject).equals(paramString))) {
+            localArrayList.add(localEntry.getKey());
+          }
+        }
+      }
+    }
+    if (!localArrayList.isEmpty())
+    {
+      paramString = localArrayList.iterator();
+      while (paramString.hasNext())
+      {
+        paramInt = ((Integer)paramString.next()).intValue();
+        qZl.remove(Integer.valueOf(paramInt));
+      }
+    }
+    AppMethodBeat.o(210476);
   }
   
   public static void f(Activity paramActivity, int paramInt)
@@ -332,7 +412,6 @@ public final class a
       AppMethodBeat.o(122182);
       return;
     }
-    paramActivity.getClass().getCanonicalName();
     WeakReference localWeakReference;
     switch (paramInt)
     {
@@ -342,98 +421,43 @@ public final class a
       return;
     case 0: 
       paramInt = paramActivity.hashCode();
-      if (!qql.containsKey(Integer.valueOf(paramInt)))
+      if (!qZl.containsKey(Integer.valueOf(paramInt)))
       {
         paramActivity = new WeakReference(paramActivity);
-        qql.put(Integer.valueOf(paramInt), paramActivity);
+        qZl.put(Integer.valueOf(paramInt), paramActivity);
       }
       for (;;)
       {
-        com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().l(400, Integer.valueOf(paramInt));
+        com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cnO().l(400, Integer.valueOf(paramInt));
         AppMethodBeat.o(122182);
         return;
-        localWeakReference = (WeakReference)qql.get(Integer.valueOf(paramInt));
+        localWeakReference = (WeakReference)qZl.get(Integer.valueOf(paramInt));
         if ((localWeakReference == null) || (localWeakReference.get() == null))
         {
-          qql.remove(Integer.valueOf(paramInt));
+          qZl.remove(Integer.valueOf(paramInt));
           paramActivity = new WeakReference(paramActivity);
-          qql.put(Integer.valueOf(paramInt), paramActivity);
+          qZl.put(Integer.valueOf(paramInt), paramActivity);
         }
       }
     }
     paramInt = paramActivity.hashCode();
-    if (!qql.containsKey(Integer.valueOf(paramInt)))
+    if (!qZl.containsKey(Integer.valueOf(paramInt)))
     {
       paramActivity = new WeakReference(paramActivity);
-      qql.put(Integer.valueOf(paramInt), paramActivity);
+      qZl.put(Integer.valueOf(paramInt), paramActivity);
     }
     for (;;)
     {
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().l(401, Integer.valueOf(paramInt));
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cnO().l(401, Integer.valueOf(paramInt));
       break;
-      localWeakReference = (WeakReference)qql.get(Integer.valueOf(paramInt));
+      localWeakReference = (WeakReference)qZl.get(Integer.valueOf(paramInt));
       if ((localWeakReference == null) || (localWeakReference.get() == null))
       {
-        qql.remove(Integer.valueOf(paramInt));
+        qZl.remove(Integer.valueOf(paramInt));
         paramActivity = new WeakReference(paramActivity);
-        qql.put(Integer.valueOf(paramInt), paramActivity);
+        qZl.put(Integer.valueOf(paramInt), paramActivity);
       }
     }
-  }
-  
-  public static void fP(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(122181);
-    if (qql.isEmpty())
-    {
-      AppMethodBeat.o(122181);
-      return;
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      try
-      {
-        qql.remove(Integer.valueOf(paramString2));
-        AppMethodBeat.o(122181);
-        return;
-      }
-      catch (NumberFormatException paramString1)
-      {
-        ac.printErrStackTrace("HABBYGE-MALI.HellPageParamsCatcher", paramString1, "HellPageParamsCatcher, onDestroy: %s", new Object[] { paramString1.getMessage() });
-        AppMethodBeat.o(122181);
-        return;
-      }
-    }
-    paramString2 = new ArrayList();
-    Iterator localIterator = qql.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (localEntry != null)
-      {
-        Object localObject = (Activity)((WeakReference)localEntry.getValue()).get();
-        if (localObject == null)
-        {
-          paramString2.add(localEntry.getKey());
-        }
-        else
-        {
-          localObject = localObject.getClass().getCanonicalName();
-          if ((localObject != null) && (((String)localObject).equals(paramString1))) {
-            paramString2.add(localEntry.getKey());
-          }
-        }
-      }
-    }
-    if (!paramString2.isEmpty())
-    {
-      paramString1 = paramString2.iterator();
-      while (paramString1.hasNext())
-      {
-        int i = ((Integer)paramString1.next()).intValue();
-        qql.remove(Integer.valueOf(i));
-      }
-    }
-    AppMethodBeat.o(122181);
   }
 }
 

@@ -1,35 +1,35 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.g.a.le;
+import com.tencent.mm.g.a.ln;
 import com.tencent.mm.sdk.b.b;
 import com.tencent.mm.sdk.b.c;
 import java.util.ArrayList;
 
 public abstract class a
-  extends c<le>
+  extends c<ln>
 {
-  protected ArrayList<String> DfT = new ArrayList(3);
+  protected ArrayList<String> EJP = new ArrayList(3);
   
   public a()
   {
-    this.__eventId = le.class.getName().hashCode();
+    this.__eventId = ln.class.getName().hashCode();
   }
   
   public static void a(String paramString, a parama)
   {
-    if (!parama.DfT.contains(paramString)) {
-      parama.DfT.add(paramString);
+    if (!parama.EJP.contains(paramString)) {
+      parama.EJP.add(paramString);
     }
-    com.tencent.mm.sdk.b.a.GpY.c(parama);
-    e.aFP(paramString);
+    com.tencent.mm.sdk.b.a.IbL.c(parama);
+    e.aLp(paramString);
   }
   
   public static void b(String paramString, a parama)
   {
-    e.aFQ(paramString);
-    com.tencent.mm.sdk.b.a.GpY.d(parama);
-    if (parama.DfT.contains(paramString)) {
-      parama.DfT.remove(paramString);
+    e.aLq(paramString);
+    com.tencent.mm.sdk.b.a.IbL.d(parama);
+    if (parama.EJP.contains(paramString)) {
+      parama.EJP.remove(paramString);
     }
   }
   

@@ -1,6 +1,7 @@
 package com.tencent.tav.decoder;
 
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.TextureInfo;
 import java.nio.ByteBuffer;
@@ -9,6 +10,31 @@ public class CacheSampleBuffer
   extends CMSampleBuffer
 {
   private VideoTexture texture;
+  
+  public CacheSampleBuffer(CMSampleState paramCMSampleState)
+  {
+    super(paramCMSampleState);
+  }
+  
+  public CacheSampleBuffer(CMSampleState paramCMSampleState, TextureInfo paramTextureInfo)
+  {
+    super(paramCMSampleState, paramTextureInfo);
+  }
+  
+  public CacheSampleBuffer(CMSampleState paramCMSampleState, TextureInfo paramTextureInfo, boolean paramBoolean)
+  {
+    super(paramCMSampleState, paramTextureInfo, paramBoolean);
+  }
+  
+  public CacheSampleBuffer(CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer)
+  {
+    super(paramCMSampleState, paramByteBuffer);
+  }
+  
+  public CacheSampleBuffer(CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer, boolean paramBoolean)
+  {
+    super(paramCMSampleState, paramByteBuffer, paramBoolean);
+  }
   
   public CacheSampleBuffer(CMTime paramCMTime)
   {
@@ -47,7 +73,7 @@ public class CacheSampleBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.decoder.CacheSampleBuffer
  * JD-Core Version:    0.7.0.1
  */

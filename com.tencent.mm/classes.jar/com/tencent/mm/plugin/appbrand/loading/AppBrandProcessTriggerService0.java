@@ -10,11 +10,11 @@ import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.appbrand.s.a.a;
 import com.tencent.mm.plugin.appbrand.s.b;
 import com.tencent.mm.plugin.appbrand.task.preload.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService0;", "Landroid/app/Service;", "()V", "callback", "Lcom/tencent/mm/plugin/appbrand/preloading/IAppBrandProgressTriggerCallback;", "getCallback", "()Lcom/tencent/mm/plugin/appbrand/preloading/IAppBrandProgressTriggerCallback;", "setCallback", "(Lcom/tencent/mm/plugin/appbrand/preloading/IAppBrandProgressTriggerCallback;)V", "intent", "Landroid/content/Intent;", "getIntent", "()Landroid/content/Intent;", "setIntent", "(Landroid/content/Intent;)V", "onBind", "Landroid/os/IBinder;", "onCreate", "", "onDestroy", "onRebind", "onStartCommand", "", "flags", "startId", "onUnbind", "", "AppBrandTriggerBinder", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService0;", "Landroid/app/Service;", "()V", "callback", "Lcom/tencent/mm/plugin/appbrand/preloading/IAppBrandProgressTriggerCallback;", "getCallback", "()Lcom/tencent/mm/plugin/appbrand/preloading/IAppBrandProgressTriggerCallback;", "setCallback", "(Lcom/tencent/mm/plugin/appbrand/preloading/IAppBrandProgressTriggerCallback;)V", "intent", "Landroid/content/Intent;", "getIntent", "()Landroid/content/Intent;", "setIntent", "(Landroid/content/Intent;)V", "onBind", "Landroid/os/IBinder;", "onCreate", "", "onDestroy", "onRebind", "onStartCommand", "", "flags", "startId", "onUnbind", "", "AppBrandTriggerBinder", "Companion", "plugin-appbrand-integration_release"})
 @Keep
 public class AppBrandProcessTriggerService0
   extends Service
@@ -45,8 +45,8 @@ public class AppBrandProcessTriggerService0
   public IBinder onBind(Intent paramIntent)
   {
     AppMethodBeat.i(50827);
-    k.h(paramIntent, "intent");
-    ac.i("MicroMsg.AppBrand.AppBrandProcessTriggerService", "onBind: " + paramIntent.getPackage());
+    p.h(paramIntent, "intent");
+    ad.i("MicroMsg.AppBrand.AppBrandProcessTriggerService", "onBind: " + paramIntent.getPackage());
     this.intent = paramIntent;
     paramIntent = (IBinder)new a();
     AppMethodBeat.o(50827);
@@ -57,7 +57,7 @@ public class AppBrandProcessTriggerService0
   {
     AppMethodBeat.i(50829);
     super.onCreate();
-    ac.i("MicroMsg.AppBrand.AppBrandProcessTriggerService", "onCreate: ");
+    ad.i("MicroMsg.AppBrand.AppBrandProcessTriggerService", "onCreate: ");
     AppMethodBeat.o(50829);
   }
   
@@ -65,7 +65,7 @@ public class AppBrandProcessTriggerService0
   {
     AppMethodBeat.i(50832);
     super.onDestroy();
-    ac.i("MicroMsg.AppBrand.AppBrandProcessTriggerService", "onDestroy: ");
+    ad.i("MicroMsg.AppBrand.AppBrandProcessTriggerService", "onDestroy: ");
     AppMethodBeat.o(50832);
   }
   
@@ -73,7 +73,7 @@ public class AppBrandProcessTriggerService0
   {
     AppMethodBeat.i(50828);
     super.onRebind(paramIntent);
-    ac.i("MicroMsg.AppBrand.AppBrandProcessTriggerService", "onRebind: ");
+    ad.i("MicroMsg.AppBrand.AppBrandProcessTriggerService", "onRebind: ");
     AppMethodBeat.o(50828);
   }
   
@@ -85,7 +85,7 @@ public class AppBrandProcessTriggerService0
   public boolean onUnbind(Intent paramIntent)
   {
     AppMethodBeat.i(50830);
-    ac.i("MicroMsg.AppBrand.AppBrandProcessTriggerService", "onUnbind: ");
+    ad.i("MicroMsg.AppBrand.AppBrandProcessTriggerService", "onUnbind: ");
     AppMethodBeat.o(50830);
     return true;
   }
@@ -100,59 +100,59 @@ public class AppBrandProcessTriggerService0
     this.intent = paramIntent;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService0$AppBrandTriggerBinder;", "Lcom/tencent/mm/plugin/appbrand/preloading/IAppBrandProgressTriggerCall$Stub;", "(Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService0;)V", "registerInvokeCallback", "", "callback", "Lcom/tencent/mm/plugin/appbrand/preloading/IAppBrandProgressTriggerCallback;", "request", "", "requestCode", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService0$AppBrandTriggerBinder;", "Lcom/tencent/mm/plugin/appbrand/preloading/IAppBrandProgressTriggerCall$Stub;", "(Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService0;)V", "registerInvokeCallback", "", "callback", "Lcom/tencent/mm/plugin/appbrand/preloading/IAppBrandProgressTriggerCallback;", "request", "", "requestCode", "plugin-appbrand-integration_release"})
   public final class a
     extends a.a
   {
     public final void a(b paramb)
     {
-      AppMethodBeat.i(187343);
-      this.lqw.setCallback(paramb);
+      AppMethodBeat.i(189345);
+      this.lNU.setCallback(paramb);
       if (paramb != null)
       {
         paramb.s((IBinder)this);
-        AppMethodBeat.o(187343);
+        AppMethodBeat.o(189345);
         return;
       }
-      AppMethodBeat.o(187343);
+      AppMethodBeat.o(189345);
     }
     
-    public final int tN(int paramInt)
+    public final int ur(int paramInt)
     {
-      AppMethodBeat.i(187344);
-      ac.i("MicroMsg.AppBrand.AppBrandProcessTriggerService", "request: reqCode = ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.i(189346);
+      ad.i("MicroMsg.AppBrand.AppBrandProcessTriggerService", "request: reqCode = ".concat(String.valueOf(paramInt)));
       switch (paramInt)
       {
       case 1: 
       default: 
-        AppMethodBeat.o(187344);
+        AppMethodBeat.o(189346);
         return -1;
       case 0: 
-        AppMethodBeat.o(187344);
+        AppMethodBeat.o(189346);
         return 1;
       }
       new c();
-      c.a(this.lqw.getIntent(), (d)a.lqx);
-      AppMethodBeat.o(187344);
+      c.a(this.lNU.getIntent(), (d)a.lNV);
+      AppMethodBeat.o(189346);
       return 1;
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
     static final class a<T>
       implements d<IPCVoid>
     {
-      public static final a lqx;
+      public static final a lNV;
       
       static
       {
-        AppMethodBeat.i(187342);
-        lqx = new a();
-        AppMethodBeat.o(187342);
+        AppMethodBeat.i(189344);
+        lNV = new a();
+        AppMethodBeat.o(189344);
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService0$Companion;", "", "()V", "IPC_TRIGGER_PRELOAD", "", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService0$Companion;", "", "()V", "IPC_TRIGGER_PRELOAD", "", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class b {}
 }
 

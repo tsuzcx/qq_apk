@@ -5,16 +5,16 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class s
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String tih;
-  public String tii;
-  public String tij;
-  public dt tik;
-  public int til;
-  public int tim;
-  public String tin;
-  public int tio;
+  public String ufX;
+  public String ufY;
+  public String ufZ;
+  public ei uga;
+  public int ugb;
+  public int ugc;
+  public String ugd;
+  public int uge;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -22,72 +22,72 @@ public final class s
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.tih == null)
+      if (this.ufX == null)
       {
         paramVarArgs = new b("Not all required fields were included: DownloadURL");
         AppMethodBeat.o(41721);
         throw paramVarArgs;
       }
-      if (this.tih != null) {
-        paramVarArgs.d(1, this.tih);
+      if (this.ufX != null) {
+        paramVarArgs.d(1, this.ufX);
       }
-      if (this.tii != null) {
-        paramVarArgs.d(2, this.tii);
+      if (this.ufY != null) {
+        paramVarArgs.d(2, this.ufY);
       }
-      if (this.tij != null) {
-        paramVarArgs.d(4, this.tij);
+      if (this.ufZ != null) {
+        paramVarArgs.d(4, this.ufZ);
       }
-      if (this.tik != null)
+      if (this.uga != null)
       {
-        paramVarArgs.ln(5, this.tik.computeSize());
-        this.tik.writeFields(paramVarArgs);
+        paramVarArgs.lC(5, this.uga.computeSize());
+        this.uga.writeFields(paramVarArgs);
       }
-      paramVarArgs.aR(6, this.til);
-      paramVarArgs.aR(7, this.tim);
-      if (this.tin != null) {
-        paramVarArgs.d(8, this.tin);
+      paramVarArgs.aS(6, this.ugb);
+      paramVarArgs.aS(7, this.ugc);
+      if (this.ugd != null) {
+        paramVarArgs.d(8, this.ugd);
       }
-      paramVarArgs.aR(9, this.tio);
+      paramVarArgs.aS(9, this.uge);
       AppMethodBeat.o(41721);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.tih == null) {
+      if (this.ufX == null) {
         break label742;
       }
     }
     label742:
-    for (int i = f.a.a.b.b.a.e(1, this.tih) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.ufX) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.tii != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.tii);
+      if (this.ufY != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.ufY);
       }
       i = paramInt;
-      if (this.tij != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.tij);
+      if (this.ufZ != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.ufZ);
       }
       paramInt = i;
-      if (this.tik != null) {
-        paramInt = i + f.a.a.a.lm(5, this.tik.computeSize());
+      if (this.uga != null) {
+        paramInt = i + f.a.a.a.lB(5, this.uga.computeSize());
       }
-      i = paramInt + f.a.a.b.b.a.bx(6, this.til) + f.a.a.b.b.a.bx(7, this.tim);
+      i = paramInt + f.a.a.b.b.a.bz(6, this.ugb) + f.a.a.b.b.a.bz(7, this.ugc);
       paramInt = i;
-      if (this.tin != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.tin);
+      if (this.ugd != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.ugd);
       }
-      i = f.a.a.b.b.a.bx(9, this.tio);
+      i = f.a.a.b.b.a.bz(9, this.uge);
       AppMethodBeat.o(41721);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.tih == null)
+        if (this.ufX == null)
         {
           paramVarArgs = new b("Not all required fields were included: DownloadURL");
           AppMethodBeat.o(41721);
@@ -108,46 +108,46 @@ public final class s
           AppMethodBeat.o(41721);
           return -1;
         case 1: 
-          locals.tih = ((f.a.a.a.a)localObject1).LVo.readString();
+          locals.ufX = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(41721);
           return 0;
         case 2: 
-          locals.tii = ((f.a.a.a.a)localObject1).LVo.readString();
+          locals.ufY = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(41721);
           return 0;
         case 4: 
-          locals.tij = ((f.a.a.a.a)localObject1).LVo.readString();
+          locals.ufZ = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(41721);
           return 0;
         case 5: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dt();
+            localObject1 = new ei();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((dt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            locals.tik = ((dt)localObject1);
+            for (boolean bool = true; bool; bool = ((ei)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            locals.uga = ((ei)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(41721);
           return 0;
         case 6: 
-          locals.til = ((f.a.a.a.a)localObject1).LVo.xF();
+          locals.ugb = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(41721);
           return 0;
         case 7: 
-          locals.tim = ((f.a.a.a.a)localObject1).LVo.xF();
+          locals.ugc = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(41721);
           return 0;
         case 8: 
-          locals.tin = ((f.a.a.a.a)localObject1).LVo.readString();
+          locals.ugd = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(41721);
           return 0;
         }
-        locals.tio = ((f.a.a.a.a)localObject1).LVo.xF();
+        locals.uge = ((f.a.a.a.a)localObject1).NPN.zc();
         AppMethodBeat.o(41721);
         return 0;
       }
@@ -158,7 +158,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.s
  * JD-Core Version:    0.7.0.1
  */

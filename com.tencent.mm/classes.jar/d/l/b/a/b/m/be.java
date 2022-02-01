@@ -1,7 +1,7 @@
 package d.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.m;
 
 public final class be
@@ -9,8 +9,8 @@ public final class be
   public static final bg a(bg parambg, ab paramab)
   {
     AppMethodBeat.i(60904);
-    k.h(parambg, "$this$inheritEnhancement");
-    k.h(paramab, "origin");
+    p.h(parambg, "$this$inheritEnhancement");
+    p.h(paramab, "origin");
     parambg = b(parambg, aK(paramab));
     AppMethodBeat.o(60904);
     return parambg;
@@ -19,10 +19,10 @@ public final class be
   public static final ab aK(ab paramab)
   {
     AppMethodBeat.i(60903);
-    k.h(paramab, "$this$getEnhancement");
+    p.h(paramab, "$this$getEnhancement");
     if ((paramab instanceof bd))
     {
-      paramab = ((bd)paramab).gcx();
+      paramab = ((bd)paramab).gtY();
       AppMethodBeat.o(60903);
       return paramab;
     }
@@ -33,7 +33,7 @@ public final class be
   public static final bg b(bg parambg, ab paramab)
   {
     AppMethodBeat.i(60905);
-    k.h(parambg, "$this$wrapEnhancement");
+    p.h(parambg, "$this$wrapEnhancement");
     if (paramab == null)
     {
       AppMethodBeat.o(60905);
@@ -58,7 +58,7 @@ public final class be
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.be
  * JD-Core Version:    0.7.0.1
  */

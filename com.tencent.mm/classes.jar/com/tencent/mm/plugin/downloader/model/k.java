@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class k
   extends j
@@ -24,37 +24,37 @@ final class k
   public final long a(g paramg)
   {
     AppMethodBeat.i(89031);
-    if (bs.isNullOrNil(paramg.job))
+    if (bt.isNullOrNil(paramg.jHX))
     {
       AppMethodBeat.o(89031);
       return -1L;
     }
-    Object localObject = new Intent("android.intent.action.VIEW", Uri.parse(paramg.job));
+    Object localObject = new Intent("android.intent.action.VIEW", Uri.parse(paramg.jHX));
     ((Intent)localObject).addFlags(268435456);
     try
     {
-      paramg = ai.getContext();
-      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramg, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/downloader/model/FileDownloaderImplNormal", "addDownloadTask", "(Lcom/tencent/mm/plugin/downloader/model/FileDownloadRequest;)J", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramg.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+      paramg = aj.getContext();
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramg, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/downloader/model/FileDownloaderImplNormal", "addDownloadTask", "(Lcom/tencent/mm/plugin/downloader/model/FileDownloadRequest;)J", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramg.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramg, "com/tencent/mm/plugin/downloader/model/FileDownloaderImplNormal", "addDownloadTask", "(Lcom/tencent/mm/plugin/downloader/model/FileDownloadRequest;)J", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(89031);
       return 0L;
     }
     catch (Exception paramg)
     {
-      ac.e("MicroMsg.FileDownloaderImplNormal", "Add download task failed: " + paramg.toString());
+      ad.e("MicroMsg.FileDownloaderImplNormal", "Add download task failed: " + paramg.toString());
       AppMethodBeat.o(89031);
     }
     return -1L;
   }
   
-  public final int rS(long paramLong)
+  public final int tR(long paramLong)
   {
     return 1;
   }
   
-  public final FileDownloadTaskInfo rT(long paramLong)
+  public final FileDownloadTaskInfo tS(long paramLong)
   {
     AppMethodBeat.i(89032);
     FileDownloadTaskInfo localFileDownloadTaskInfo = new FileDownloadTaskInfo();
@@ -64,12 +64,12 @@ final class k
     return localFileDownloadTaskInfo;
   }
   
-  public final boolean rU(long paramLong)
+  public final boolean tT(long paramLong)
   {
     return false;
   }
   
-  public final boolean rV(long paramLong)
+  public final boolean tU(long paramLong)
   {
     return false;
   }

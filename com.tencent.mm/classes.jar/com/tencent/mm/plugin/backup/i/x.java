@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.backup.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class x
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public com.tencent.mm.bw.b ncy;
-  public String ndM;
-  public int ndN;
-  public int ndO;
-  public int ndP;
-  public int ndQ;
-  public int ndR;
-  public int ndS;
+  public com.tencent.mm.bx.b nCV;
+  public String nEj;
+  public int nEk;
+  public int nEl;
+  public int nEm;
+  public int nEn;
+  public int nEo;
+  public int nEp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -20,52 +20,52 @@ public final class x
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ndM == null)
+      if (this.nEj == null)
       {
         paramVarArgs = new f.a.a.b("Not all required fields were included: DataID");
         AppMethodBeat.o(22129);
         throw paramVarArgs;
       }
-      if (this.ndM != null) {
-        paramVarArgs.d(1, this.ndM);
+      if (this.nEj != null) {
+        paramVarArgs.d(1, this.nEj);
       }
-      paramVarArgs.aR(2, this.ndN);
-      paramVarArgs.aR(3, this.ndO);
-      paramVarArgs.aR(4, this.ndP);
-      paramVarArgs.aR(5, this.ndQ);
-      paramVarArgs.aR(6, this.ndR);
-      if (this.ncy != null) {
-        paramVarArgs.c(7, this.ncy);
+      paramVarArgs.aS(2, this.nEk);
+      paramVarArgs.aS(3, this.nEl);
+      paramVarArgs.aS(4, this.nEm);
+      paramVarArgs.aS(5, this.nEn);
+      paramVarArgs.aS(6, this.nEo);
+      if (this.nCV != null) {
+        paramVarArgs.c(7, this.nCV);
       }
-      paramVarArgs.aR(8, this.ndS);
+      paramVarArgs.aS(8, this.nEp);
       AppMethodBeat.o(22129);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ndM == null) {
+      if (this.nEj == null) {
         break label600;
       }
     }
     label600:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ndM) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.nEj) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bx(2, this.ndN) + f.a.a.b.b.a.bx(3, this.ndO) + f.a.a.b.b.a.bx(4, this.ndP) + f.a.a.b.b.a.bx(5, this.ndQ) + f.a.a.b.b.a.bx(6, this.ndR);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.nEk) + f.a.a.b.b.a.bz(3, this.nEl) + f.a.a.b.b.a.bz(4, this.nEm) + f.a.a.b.b.a.bz(5, this.nEn) + f.a.a.b.b.a.bz(6, this.nEo);
       paramInt = i;
-      if (this.ncy != null) {
-        paramInt = i + f.a.a.b.b.a.b(7, this.ncy);
+      if (this.nCV != null) {
+        paramInt = i + f.a.a.b.b.a.b(7, this.nCV);
       }
-      i = f.a.a.b.b.a.bx(8, this.ndS);
+      i = f.a.a.b.b.a.bz(8, this.nEp);
       AppMethodBeat.o(22129);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.ndM == null)
+        if (this.nEj == null)
         {
           paramVarArgs = new f.a.a.b("Not all required fields were included: DataID");
           AppMethodBeat.o(22129);
@@ -84,35 +84,35 @@ public final class x
           AppMethodBeat.o(22129);
           return -1;
         case 1: 
-          localx.ndM = locala.LVo.readString();
+          localx.nEj = locala.NPN.readString();
           AppMethodBeat.o(22129);
           return 0;
         case 2: 
-          localx.ndN = locala.LVo.xF();
+          localx.nEk = locala.NPN.zc();
           AppMethodBeat.o(22129);
           return 0;
         case 3: 
-          localx.ndO = locala.LVo.xF();
+          localx.nEl = locala.NPN.zc();
           AppMethodBeat.o(22129);
           return 0;
         case 4: 
-          localx.ndP = locala.LVo.xF();
+          localx.nEm = locala.NPN.zc();
           AppMethodBeat.o(22129);
           return 0;
         case 5: 
-          localx.ndQ = locala.LVo.xF();
+          localx.nEn = locala.NPN.zc();
           AppMethodBeat.o(22129);
           return 0;
         case 6: 
-          localx.ndR = locala.LVo.xF();
+          localx.nEo = locala.NPN.zc();
           AppMethodBeat.o(22129);
           return 0;
         case 7: 
-          localx.ncy = locala.LVo.gfk();
+          localx.nCV = locala.NPN.gxI();
           AppMethodBeat.o(22129);
           return 0;
         }
-        localx.ndS = locala.LVo.xF();
+        localx.nEp = locala.NPN.zc();
         AppMethodBeat.o(22129);
         return 0;
       }

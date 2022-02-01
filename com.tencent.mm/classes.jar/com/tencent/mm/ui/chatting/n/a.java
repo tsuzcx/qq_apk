@@ -1,99 +1,68 @@
 package com.tencent.mm.ui.chatting.n;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.view.View;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.messenger.a.f;
-import com.tencent.mm.plugin.messenger.d.b;
-import com.tencent.mm.plugin.messenger.d.b.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.neattextview.textview.view.NeatTextView;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.r;
+import com.tencent.mm.ui.chatting.h.d.b;
+import java.util.List;
 
 public final class a
-  extends b
+  implements e<bu>
 {
-  public a(b.b paramb)
+  private long JFK;
+  private Cursor Tc;
+  private int fTH;
+  private String fTa;
+  private int mCount;
+  
+  public a(String paramString, long paramLong, int paramInt1, int paramInt2)
   {
-    super(paramb);
+    this.fTa = paramString;
+    this.JFK = paramLong;
+    this.fTH = paramInt2;
+    this.mCount = paramInt1;
   }
   
-  public final CharSequence b(final Map<String, String> paramMap, String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
+  public final void a(d.b paramb)
   {
-    AppMethodBeat.i(196653);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    String str1 = bs.bG((String)paramMap.get(paramString + ".separator"), "、");
-    int i = 0;
-    Object localObject2 = new StringBuilder().append(paramString).append(".memberlist.member");
-    Object localObject1;
-    label82:
-    final String str2;
-    if (i != 0)
-    {
-      localObject1 = Integer.valueOf(i);
-      str2 = localObject1;
-      if (paramMap.get(str2) == null) {
-        break label302;
-      }
-      if (i != 0) {
-        localSpannableStringBuilder.append(str1);
-      }
-      localObject1 = (String)paramMap.get(str2 + ".username");
-      localObject2 = (String)paramMap.get(str2 + ".nickname");
-      str2 = (String)paramMap.get(str2 + ".antispam_ticket");
-      if ((!bs.isNullOrNil((String)localObject1)) && (!bs.isNullOrNil((String)localObject2))) {
-        break label250;
-      }
-      ac.w("MicroMsg.SysMsgHandlerProfile", "hy: can not resolve username or nickname");
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      localObject1 = "";
-      break label82;
-      label250:
-      SpannableString localSpannableString = k.c(ai.getContext(), (CharSequence)localObject2);
-      localSpannableString.setSpan(new com.tencent.mm.plugin.messenger.a.a()
-      {
-        public final void onClickImp(View paramAnonymousView)
-        {
-          AppMethodBeat.i(196652);
-          ((f)g.ab(f.class)).a("link_profile", paramMap, paramBundle);
-          if ((paramWeakReference != null) && (paramWeakReference.get() != null))
-          {
-            long l = paramBundle.getLong("msg_id");
-            paramAnonymousView = paramBundle.getString("conv_talker_username", null);
-            if (w.sQ(paramAnonymousView))
-            {
-              a.a((Context)paramWeakReference.get(), this.hyc, paramAnonymousView, str2, l);
-              AppMethodBeat.o(196652);
-              return;
-            }
-            a.a((Context)paramWeakReference.get(), this.hyc, null, str2, l);
-          }
-          AppMethodBeat.o(196652);
-        }
-      }, 0, ((String)localObject2).length(), 33);
-      localSpannableStringBuilder.append(localSpannableString);
-    }
-    label302:
-    AppMethodBeat.o(196653);
-    return localSpannableStringBuilder;
+    AppMethodBeat.i(36624);
+    long l = ((l)g.ab(l.class)).azS().apK(this.fTa);
+    ad.d("MicroMsg.ChattingLoader.ChattingBizDataSource", "[ChattingBizDataSource] talker:%s bizChatId:%s,count:%s totalCount:%s createTime:%s", new Object[] { this.fTa, Long.valueOf(this.JFK), Integer.valueOf(this.mCount), Integer.valueOf(this.fTH), Long.valueOf(l) });
+    ba.aBQ();
+    this.Tc = com.tencent.mm.model.c.azt().r(this.fTa, this.JFK, this.mCount);
+    paramb.next();
+    AppMethodBeat.o(36624);
   }
   
-  public final String dcL()
+  public final void close()
   {
-    return "link_profile";
+    AppMethodBeat.i(36626);
+    this.Tc.close();
+    AppMethodBeat.o(36626);
+  }
+  
+  public final int fpw()
+  {
+    return this.fTH;
+  }
+  
+  public final void in(List<bu> paramList)
+  {
+    AppMethodBeat.i(36625);
+    this.Tc.moveToFirst();
+    while (!this.Tc.isAfterLast())
+    {
+      bu localbu = new bu();
+      localbu.convertFrom(this.Tc);
+      paramList.add(localbu);
+      this.Tc.moveToNext();
+    }
+    AppMethodBeat.o(36625);
   }
 }
 

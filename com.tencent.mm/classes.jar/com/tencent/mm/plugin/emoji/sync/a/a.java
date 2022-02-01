@@ -1,299 +1,137 @@
 package com.tencent.mm.plugin.emoji.sync.a;
 
-import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.m;
-import com.tencent.mm.g.a.df;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.model.EmojiLogic;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.ao.f;
+import com.tencent.mm.g.a.di;
 import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.plugin.emoji.sync.d;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.az;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.emotion.f;
-import com.tencent.mm.vfs.i;
-import java.util.LinkedList;
+import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bd;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.storage.emotion.m;
+import java.io.IOException;
 
 public final class a
   extends com.tencent.mm.plugin.emoji.sync.c
 {
-  private EmojiInfo fPB;
-  private String pbJ;
-  private String pck;
-  private String pcl;
-  private d pdl;
-  private String pdm;
-  private String pdn;
-  private String pdo;
-  private String pdp;
-  private String pdq;
-  private String pdr;
-  private String pds;
-  private com.tencent.mm.plugin.emoji.d.a pdt;
-  private com.tencent.mm.av.a.b.a pdu;
+  public String pFG;
+  private d pGW;
+  private com.tencent.mm.plugin.emoji.f.g pGX;
+  private boolean pGd;
   
-  public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
+  public a(String paramString)
   {
-    AppMethodBeat.i(108769);
-    if (bs.isNullOrNil(paramString1)) {
-      ac.e("MicroMsg.BKGLoader.EmojiDownloadTask", "[cpan] can not create task md5 is null.");
+    AppMethodBeat.i(108773);
+    this.pGd = false;
+    if (bt.isNullOrNil(paramString)) {
+      ad.e("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "[cpan]");
     }
-    this.pdm = paramString1;
-    this.pdn = paramString2;
-    this.pdo = paramString3;
-    this.pck = paramString4;
-    this.pdp = paramString5;
-    this.pdq = paramString6;
-    this.pdr = paramString8;
-    this.pds = paramString9;
-    this.pbJ = paramString7;
-    this.pcl = paramString10;
-    this.fPB = k.getEmojiStorageMgr().GXZ.aOT(this.pdm);
-    if (this.fPB == null)
-    {
-      this.fPB = new EmojiInfo();
-      this.fPB.field_md5 = this.pdm;
-      this.fPB.field_cdnUrl = this.pdn;
-      this.fPB.field_thumbUrl = this.pdo;
-      this.fPB.field_designerID = this.pck;
-      this.fPB.field_encrypturl = this.pdp;
-      this.fPB.field_aeskey = this.pdq;
-      this.fPB.field_groupId = this.pbJ;
-    }
-    if (!bs.isNullOrNil(this.pdn))
-    {
-      this.fPB.field_cdnUrl = this.pdn;
-      if (bs.isNullOrNil(this.pdp)) {
-        break label401;
-      }
-      this.fPB.field_encrypturl = this.pdp;
-      this.fPB.field_aeskey = this.pdq;
-    }
-    for (;;)
-    {
-      if (!bs.isNullOrNil(this.pck)) {
-        this.fPB.field_designerID = this.pck;
-      }
-      if (!bs.isNullOrNil(this.pbJ)) {
-        this.fPB.field_groupId = this.pbJ;
-      }
-      if (!bs.isNullOrNil(this.pdo)) {
-        this.fPB.field_thumbUrl = this.pdo;
-      }
-      if (!bs.isNullOrNil(this.pcl)) {
-        this.fPB.field_activityid = this.pcl;
-      }
-      this.fPB.field_externUrl = this.pdr;
-      this.fPB.field_externMd5 = this.pds;
-      this.fPB.field_attachedText = null;
-      this.pdt = new com.tencent.mm.plugin.emoji.d.a();
-      this.pdu = new com.tencent.mm.av.a.b.a();
-      AppMethodBeat.o(108769);
-      return;
-      this.pdn = this.fPB.field_cdnUrl;
-      break;
-      label401:
-      this.pdp = this.fPB.field_encrypturl;
-      this.pdq = this.fPB.field_aeskey;
-    }
+    this.pFG = paramString;
+    AppMethodBeat.o(108773);
   }
   
-  private void ccO()
+  public a(String paramString, byte paramByte)
   {
-    AppMethodBeat.i(108771);
-    ac.i("MicroMsg.BKGLoader.EmojiDownloadTask", "disable to download emoji when cdn download failed.");
-    df localdf = new df();
-    localdf.dcH.md5 = this.pdm;
-    localdf.dcH.cZu = 0;
-    localdf.dcH.success = false;
-    com.tencent.mm.sdk.b.a.GpY.l(localdf);
-    if (this.fPB != null)
-    {
-      ac.i("MicroMsg.BKGLoader.EmojiDownloadTask", "[cpan] this emoji is broken. md5 is:%s", new Object[] { this.fPB.JC() });
-      this.fPB.field_state = EmojiInfo.Kgg;
-      this.fPB.field_catalog = EmojiInfo.Jss;
-      k.getEmojiStorageMgr().GXZ.L(this.fPB);
+    AppMethodBeat.i(108774);
+    this.pGd = false;
+    if (bt.isNullOrNil(paramString)) {
+      ad.e("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "[cpan]");
     }
-    AppMethodBeat.o(108771);
+    this.pFG = paramString;
+    this.pGd = true;
+    AppMethodBeat.o(108774);
   }
   
   public final void a(d paramd)
   {
-    this.pdl = paramd;
+    this.pGW = paramd;
   }
   
-  public final void cancel() {}
+  public final void cancel()
+  {
+    AppMethodBeat.i(108777);
+    if ((this.pGX != null) && (!bt.isNullOrNil(this.pGX.ibe)))
+    {
+      f.aGI().EQ(this.pGX.ibe);
+      ad.i("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "success cancel exchange emotion pack clientid:%s", new Object[] { this.pGX.ibe });
+      AppMethodBeat.o(108777);
+      return;
+    }
+    ad.i("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "failed cancel exchange emotion pack.");
+    AppMethodBeat.o(108777);
+  }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(108772);
+    AppMethodBeat.i(108776);
     if ((paramObject != null) && ((paramObject instanceof a)))
     {
       paramObject = (a)paramObject;
-      if ((!bs.isNullOrNil(this.pdm)) && (!bs.isNullOrNil(paramObject.pdm)) && (this.pdm.equals(paramObject.pdm)))
+      if ((!bt.isNullOrNil(this.pFG)) && (!bt.isNullOrNil(paramObject.getKey())) && (this.pFG.equals(paramObject.getKey())))
       {
-        AppMethodBeat.o(108772);
+        AppMethodBeat.o(108776);
         return true;
       }
     }
-    AppMethodBeat.o(108772);
+    AppMethodBeat.o(108776);
     return false;
   }
   
   public final String getKey()
   {
-    return this.pdm;
+    if (this.pFG == null) {
+      return "";
+    }
+    return this.pFG;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(108770);
-    Object localObject1;
-    int i;
-    if (this.pdl != null)
-    {
-      this.pdl.Yq(this.pdm);
-      ac.i("MicroMsg.BKGLoader.EmojiDownloadTask", "emoji md5:%s cndUrl:%s thumbUrl:%s field_designerID:%s field_encrypturl:%s field_groupId:%s", new Object[] { this.fPB.JC(), this.fPB.field_cdnUrl, this.fPB.field_thumbUrl, this.fPB.field_designerID, this.fPB.field_encrypturl, this.fPB.field_groupId });
-      if ((bs.isNullOrNil(this.pdn)) && (bs.isNullOrNil(this.pdp)) && (bs.isNullOrNil(this.pdr))) {
-        break label929;
-      }
-      localObject1 = this.pdn;
-      if ((bs.isNullOrNil(this.pdr)) || (bs.isNullOrNil(this.pds))) {
-        break label322;
-      }
-      localObject1 = this.pdr;
-      i = 1;
+    AppMethodBeat.i(108775);
+    if (this.pGW != null) {
+      this.pGW.abW(getKey());
     }
     for (;;)
     {
-      label161:
-      long l = System.currentTimeMillis();
-      Object localObject5 = this.pdt.CD((String)localObject1);
-      if ((localObject5 == null) || (bs.cv(((com.tencent.mm.av.a.d.b)localObject5).data)))
-      {
-        ac.d("MicroMsg.BKGLoader.EmojiDownloadTask", "get image data suuse time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-        ccO();
+      localObject = k.getEmojiStorageMgr().ILo.cJ(getKey(), true);
+      if ((this.pGd) || (localObject == null) || (((EmojiGroupInfo)localObject).field_sync != 2) || (((EmojiGroupInfo)localObject).field_status != 7)) {
+        break;
       }
+      localObject = new di();
+      ((di)localObject).dod.md5 = getKey();
+      ((di)localObject).dod.dkM = 2;
+      ((di)localObject).dod.success = true;
+      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+      AppMethodBeat.o(108775);
+      return;
+      ad.w("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "call back is null");
+    }
+    this.pGX = new com.tencent.mm.plugin.emoji.f.g(this.pFG);
+    com.tencent.mm.kernel.g.ajB().gAO.a(this.pGX, 0);
+    Object localObject = new GetEmotionDetailResponse();
+    com.tencent.mm.storage.emotion.l locall = k.getEmojiStorageMgr().ILr.aUT(this.pFG);
+    if ((locall != null) && (locall.field_content != null)) {}
+    try
+    {
+      ((GetEmotionDetailResponse)localObject).parseFrom(locall.field_content);
+      if (((GetEmotionDetailResponse)localObject).EmotionDetail == null)
+      {
+        localObject = new com.tencent.mm.plugin.emoji.f.l(this.pFG, 15);
+        com.tencent.mm.kernel.g.ajB().gAO.a((n)localObject, 0);
+      }
+      AppMethodBeat.o(108775);
+      return;
+    }
+    catch (IOException localIOException)
+    {
       for (;;)
       {
-        if (!bs.isNullOrNil(this.fPB.field_thumbUrl))
-        {
-          localObject1 = this.pdt.CD(this.fPB.field_thumbUrl);
-          if (localObject1 != null) {
-            this.pdu.a(this.fPB.field_thumbUrl, ((com.tencent.mm.av.a.d.b)localObject1).data, com.tencent.mm.plugin.emoji.e.e.p(this.fPB.ghd() + "_cover", new Object[0]));
-          }
-        }
-        AppMethodBeat.o(108770);
-        return;
-        ac.w("MicroMsg.BKGLoader.EmojiDownloadTask", "call back is null.");
-        break;
-        label322:
-        if ((bs.isNullOrNil(this.pdp)) || (bs.isNullOrNil(this.pdq))) {
-          break label989;
-        }
-        localObject1 = this.pdp;
-        i = 1;
-        break label161;
-        ac.d("MicroMsg.BKGLoader.EmojiDownloadTask", "get image data use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-        Object localObject4 = ((com.tencent.mm.av.a.d.b)localObject5).data;
-        Object localObject2 = localObject4;
-        if (i != 0) {}
-        try
-        {
-          localObject2 = com.tencent.mm.b.a.c(((com.tencent.mm.av.a.d.b)localObject5).data, Base64.encodeToString(bs.aLu(this.pdq), 0));
-          boolean bool = this.pdu.a((String)localObject1, (byte[])localObject2, com.tencent.mm.plugin.emoji.e.e.p(this.fPB.ghd(), new Object[0]));
-          localObject4 = new com.tencent.mm.vfs.e(this.fPB.ghd());
-          if ((!bool) || (!((com.tencent.mm.vfs.e)localObject4).exists())) {
-            break label865;
-          }
-          localObject5 = i.aKe(com.tencent.mm.vfs.q.B(((com.tencent.mm.vfs.e)localObject4).mUri));
-          localObject1 = this.fPB.JC();
-          if (!bs.isNullOrNil(this.pds)) {
-            localObject1 = this.pds;
-          }
-          if ((!bs.isNullOrNil((String)localObject5)) && (((String)localObject5).equalsIgnoreCase((String)localObject1)))
-          {
-            this.fPB.field_size = localObject2.length;
-            this.fPB.field_state = EmojiInfo.Kgf;
-            this.fPB.field_temp = 0;
-            this.fPB.field_catalog = EmojiInfo.Jsy;
-            j = EmojiLogic.aV((byte[])localObject2);
-            this.fPB.field_type = j;
-            j = k.getEmojiStorageMgr().GXZ.fds();
-            if (j < m.acs())
-            {
-              j = m.acs();
-              this.fPB.field_idx = j;
-              k.getEmojiStorageMgr().GXZ.L(this.fPB);
-              localObject1 = new df();
-              ((df)localObject1).dcH.md5 = this.pdm;
-              ((df)localObject1).dcH.cZu = 0;
-              ((df)localObject1).dcH.success = true;
-              com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
-              if (i == 0) {
-                break label753;
-              }
-              com.tencent.mm.plugin.emoji.c.sr(7L);
-              com.tencent.mm.plugin.emoji.c.sr(4L);
-              com.tencent.mm.plugin.emoji.c.a(this.pdm, 3, 0, 0, this.pbJ, 0, this.pck);
-              com.tencent.mm.emoji.decode.a.abO().a(this.fPB, true);
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            int j;
-            ac.w("MicroMsg.BKGLoader.EmojiDownloadTask", "encrypt file failed. %s", new Object[] { bs.m(localException) });
-            Object localObject3 = localObject4;
-            continue;
-            j += 1;
-            continue;
-            label753:
-            com.tencent.mm.plugin.emoji.c.sr(2L);
-            com.tencent.mm.plugin.emoji.c.sr(4L);
-            com.tencent.mm.plugin.emoji.c.a(this.pdm, 2, 0, 0, this.pbJ, 1, this.pck);
-          }
-          if (((com.tencent.mm.vfs.e)localObject4).exists()) {
-            ((com.tencent.mm.vfs.e)localObject4).delete();
-          }
-          ccO();
-          if (i != 0)
-          {
-            com.tencent.mm.plugin.emoji.c.sr(8L);
-            com.tencent.mm.plugin.emoji.c.a(this.pdm, 3, 0, 1, this.pbJ, 1, this.pck);
-            continue;
-          }
-          com.tencent.mm.plugin.emoji.c.sr(5L);
-          com.tencent.mm.plugin.emoji.c.a(this.pdm, 2, 0, 1, this.pbJ, 1, this.pck);
-        }
-        continue;
-        label865:
-        ccO();
-        if (i != 0)
-        {
-          com.tencent.mm.plugin.emoji.c.sr(8L);
-          com.tencent.mm.plugin.emoji.c.a(this.pdm, 3, 0, 1, this.pbJ, 1, this.pck);
-        }
-        else
-        {
-          com.tencent.mm.plugin.emoji.c.sr(3L);
-          com.tencent.mm.plugin.emoji.c.a(this.pdm, 2, 1, 1, this.pbJ, 1, this.pck);
-          continue;
-          label929:
-          h.wUl.idkeyStat(164L, 10L, 1L, false);
-          localObject1 = new LinkedList();
-          ((LinkedList)localObject1).add(this.pdm);
-          g.agQ().ghe.a(new com.tencent.mm.plugin.emoji.f.e((LinkedList)localObject1), 0);
-          ccO();
-        }
+        ad.e("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "exception:%s", new Object[] { bt.n(localIOException) });
       }
-      label989:
-      i = 0;
     }
   }
 }

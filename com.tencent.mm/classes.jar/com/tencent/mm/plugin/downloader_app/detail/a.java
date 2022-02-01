@@ -1,18 +1,20 @@
 package com.tencent.mm.plugin.downloader_app.detail;
 
 import android.app.Activity;
-import com.tencent.luggage.d.f;
+import com.tencent.luggage.d.e;
+import com.tencent.luggage.d.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader_app.detail.a.d;
 
 public final class a
-  extends f
+  extends i
 {
   public a(Activity paramActivity)
   {
     super(paramActivity);
     AppMethodBeat.i(8785);
-    this.bXa = b.class;
-    this.bXd.A(com.tencent.mm.plugin.downloader_app.detail.a.d.bYl());
+    this.chq = b.class;
+    this.cht.A(d.ccP());
     AppMethodBeat.o(8785);
   }
 }

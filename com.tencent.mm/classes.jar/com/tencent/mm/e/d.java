@@ -12,101 +12,101 @@ import com.tencent.mm.cache.f;
 public final class d
   extends b
 {
-  private float awo;
-  private float awp;
-  private float cPW;
-  private boolean cPX;
-  private boolean cPY;
-  private float cPy;
-  private float cPz;
+  private float ayf;
+  private float ayg;
+  private float daO;
+  private float daP;
+  private float dbm;
+  private boolean dbn;
+  private boolean dbo;
   public int mColor;
-  private Path vU;
+  private Path xN;
   
   public d()
   {
     AppMethodBeat.i(9148);
-    this.cPX = true;
-    this.cPY = false;
-    this.mColor = com.tencent.mm.view.footer.a.JAq[2];
-    this.vU = new Path();
+    this.dbn = true;
+    this.dbo = false;
+    this.mColor = com.tencent.mm.view.footer.a.Ltx[2];
+    this.xN = new Path();
     AppMethodBeat.o(9148);
   }
   
-  public final a LZ()
+  public final a NI()
   {
-    return a.cON;
+    return a.dad;
   }
   
-  public final void Ma()
+  public final void NJ()
   {
     AppMethodBeat.i(9152);
-    ck(true);
+    cl(true);
     AppMethodBeat.o(9152);
   }
   
   public final boolean n(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(9150);
-    if (!Mg())
+    if (!NP())
     {
       AppMethodBeat.o(9150);
       return false;
     }
-    if (this.cPd != null) {
-      this.cPd.n(paramMotionEvent);
+    if (this.dat != null) {
+      this.dat.n(paramMotionEvent);
     }
-    float[] arrayOfFloat = s(paramMotionEvent.getX(), paramMotionEvent.getY());
+    float[] arrayOfFloat = u(paramMotionEvent.getX(), paramMotionEvent.getY());
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      boolean bool = this.cPX;
+      boolean bool = this.dbn;
       AppMethodBeat.o(9150);
       return bool;
-      if (this.cOW.contains((int)arrayOfFloat[0], (int)arrayOfFloat[1]))
+      if (this.dam.contains((int)arrayOfFloat[0], (int)arrayOfFloat[1]))
       {
         float f = arrayOfFloat[0];
-        this.cPy = f;
-        this.awo = f;
+        this.daO = f;
+        this.ayf = f;
         f = arrayOfFloat[1];
-        this.cPz = f;
-        this.awp = f;
+        this.daP = f;
+        this.ayg = f;
       }
-      for (this.cPX = true;; this.cPX = false)
+      for (this.dbn = true;; this.dbn = false)
       {
-        this.cPY = false;
+        this.dbo = false;
         break;
       }
-      if ((this.cPX) && (this.cPY))
+      if ((this.dbn) && (this.dbo))
       {
-        if (Mb() == null)
+        if (NK() == null)
         {
           AppMethodBeat.o(9150);
           return false;
         }
-        Mb().add(new com.tencent.mm.z.b(new Path(this.vU), this.cOU.getInitScale() / this.cOU.getCurScale(), this.mColor));
-        ck(false);
-        c.Vr().b(g.cGz);
+        NK().add(new com.tencent.mm.aa.b(new Path(this.xN), this.dak.getInitScale() / this.dak.getCurScale(), this.mColor));
+        cl(false);
+        c.XI().b(g.cRD);
       }
-      Mj();
-      this.vU.reset();
-      this.cPY = false;
-      this.cPX = false;
+      NS();
+      this.xN.reset();
+      this.dbo = false;
+      this.dbn = false;
       continue;
-      if ((this.cPX) && (this.cPY))
+      if ((this.dbn) && (this.dbo))
       {
-        this.cPy = this.awo;
-        this.cPz = this.awp;
-        this.awo = arrayOfFloat[0];
-        this.awp = arrayOfFloat[1];
-        this.vU.quadTo(this.cPy, this.cPz, (this.awo + this.cPy) / 2.0F, (this.awp + this.cPz) / 2.0F);
-        Mi();
+        this.daO = this.ayf;
+        this.daP = this.ayg;
+        this.ayf = arrayOfFloat[0];
+        this.ayg = arrayOfFloat[1];
+        this.xN.quadTo(this.daO, this.daP, (this.ayf + this.daO) / 2.0F, (this.ayg + this.daP) / 2.0F);
+        NR();
       }
-      else if ((this.cPX) && (!this.cPY))
+      else if ((this.dbn) && (!this.dbo))
       {
-        this.vU.moveTo(arrayOfFloat[0], arrayOfFloat[1]);
-        this.cPY = true;
+        this.xN.moveTo(arrayOfFloat[0], arrayOfFloat[1]);
+        this.dbo = true;
       }
     }
   }
@@ -115,7 +115,7 @@ public final class d
   {
     AppMethodBeat.i(9149);
     super.onAlive();
-    this.cPW = this.cOU.getInitScale();
+    this.dbm = this.dak.getInitScale();
     AppMethodBeat.o(9149);
   }
   
@@ -123,10 +123,10 @@ public final class d
   {
     AppMethodBeat.i(9151);
     paramCanvas.save();
-    paramCanvas.clipRect(this.cOW);
+    paramCanvas.clipRect(this.dam);
     d(paramCanvas);
-    if (!this.vU.isEmpty()) {
-      new com.tencent.mm.z.b(this.vU, this.cOU.getInitScale() / this.cOU.getCurScale(), this.mColor).draw(paramCanvas);
+    if (!this.xN.isEmpty()) {
+      new com.tencent.mm.aa.b(this.xN, this.dak.getInitScale() / this.dak.getCurScale(), this.mColor).draw(paramCanvas);
     }
     paramCanvas.restore();
     AppMethodBeat.o(9151);
@@ -134,7 +134,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.e.d
  * JD-Core Version:    0.7.0.1
  */

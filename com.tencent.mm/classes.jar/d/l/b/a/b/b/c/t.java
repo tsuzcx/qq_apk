@@ -1,7 +1,7 @@
 package d.l.b.a.b.b.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.e;
 import d.l.b.a.b.j.f.h;
 import d.l.b.a.b.m.a.i;
@@ -10,7 +10,7 @@ import d.l.b.a.b.m.ay;
 public abstract class t
   implements e
 {
-  public static final a LhX = new a((byte)0);
+  public static final a MYT = new a((byte)0);
   
   protected abstract h a(i parami);
   
@@ -21,8 +21,8 @@ public abstract class t
     public static h a(e parame, i parami)
     {
       AppMethodBeat.i(57168);
-      k.h(parame, "$this$getRefinedUnsubstitutedMemberScopeIfPossible");
-      k.h(parami, "kotlinTypeRefiner");
+      p.h(parame, "$this$getRefinedUnsubstitutedMemberScopeIfPossible");
+      p.h(parami, "kotlinTypeRefiner");
       if (!(parame instanceof t)) {}
       for (Object localObject = null;; localObject = parame)
       {
@@ -35,8 +35,8 @@ public abstract class t
         }
         else
         {
-          parami = parame.fRj();
-          k.g(parami, "this.unsubstitutedMemberScope");
+          parami = parame.giI();
+          p.g(parami, "this.unsubstitutedMemberScope");
         }
         AppMethodBeat.o(57168);
         return parami;
@@ -46,9 +46,9 @@ public abstract class t
     public static h a(e parame, ay paramay, i parami)
     {
       AppMethodBeat.i(57169);
-      k.h(parame, "$this$getRefinedMemberScopeIfPossible");
-      k.h(paramay, "typeSubstitution");
-      k.h(parami, "kotlinTypeRefiner");
+      p.h(parame, "$this$getRefinedMemberScopeIfPossible");
+      p.h(paramay, "typeSubstitution");
+      p.h(parami, "kotlinTypeRefiner");
       if (!(parame instanceof t)) {}
       for (Object localObject = null;; localObject = parame)
       {
@@ -62,7 +62,7 @@ public abstract class t
         else
         {
           parami = parame.a(paramay);
-          k.g(parami, "this.getMemberScope(\n   …ubstitution\n            )");
+          p.g(parami, "this.getMemberScope(\n   …ubstitution\n            )");
         }
         AppMethodBeat.o(57169);
         return parami;
@@ -72,7 +72,7 @@ public abstract class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.c.t
  * JD-Core Version:    0.7.0.1
  */

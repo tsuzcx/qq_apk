@@ -1,46 +1,93 @@
 package com.tencent.mm.sdk.platformtools;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.support.v4.content.FileProvider;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.FileInputStream;
-import java.io.FilterInputStream;
-import java.nio.channels.FileChannel;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.q;
+import java.io.File;
 
 public final class n
-  extends FilterInputStream
 {
-  private long aRe = 0L;
-  
-  public n(FileInputStream paramFileInputStream)
+  public static Uri a(Context paramContext, e parame)
   {
-    super(paramFileInputStream);
+    AppMethodBeat.i(156179);
+    parame = com.tencent.mm.vfs.i.k(q.B(parame.mUri), false);
+    if (parame == null) {
+      paramContext = null;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(156179);
+      return paramContext;
+      if (Build.VERSION.SDK_INT >= 24) {
+        paramContext = FileProvider.getUriForFile(paramContext, paramContext.getPackageName() + ".external.fileprovider", new File(parame));
+      } else {
+        paramContext = Uri.fromFile(new File(parame));
+      }
+    }
   }
   
-  public final void mark(int paramInt)
+  public static void a(Context paramContext, Intent paramIntent, Uri paramUri, String paramString)
   {
-    AppMethodBeat.i(157537);
-    try
+    AppMethodBeat.i(156178);
+    String str = paramUri.getScheme();
+    if ((str == null) || (str.isEmpty()) || (str.equals("file")) || (str.equals("wcf")))
     {
-      this.aRe = ((FileInputStream)this.in).getChannel().position();
-      AppMethodBeat.o(157537);
+      a(paramContext, paramIntent, new e(paramUri.getPath()), paramString);
+      AppMethodBeat.o(156178);
       return;
     }
-    catch (Exception localException)
-    {
-      ac.printErrStackTrace("MicroMsg.FileSeekingInputStream", localException, "Failed seeking FileChannel.", new Object[0]);
-      AppMethodBeat.o(157537);
+    paramIntent.setDataAndType(paramUri, paramString);
+    paramIntent.addFlags(1);
+    AppMethodBeat.o(156178);
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, e parame, String paramString)
+  {
+    AppMethodBeat.i(156177);
+    String str = com.tencent.mm.vfs.i.k(q.B(parame.mUri), false);
+    if (str == null) {
+      paramContext = null;
     }
+    while ((i.IS_FLAVOR_RED) && (paramContext == null))
+    {
+      paramContext = new IllegalArgumentException("Path cannot be exported via provider: ".concat(String.valueOf(parame)));
+      AppMethodBeat.o(156177);
+      throw paramContext;
+      if (Build.VERSION.SDK_INT >= 24) {
+        paramContext = FileProvider.getUriForFile(paramContext, paramContext.getPackageName() + ".external.fileprovider", new File(str));
+      } else {
+        paramContext = Uri.fromFile(new File(str));
+      }
+    }
+    paramIntent.setDataAndType(paramContext, paramString).addFlags(1);
+    AppMethodBeat.o(156177);
   }
   
-  public final boolean markSupported()
+  public static Uri d(Context paramContext, File paramFile)
   {
-    return true;
-  }
-  
-  public final void reset()
-  {
-    AppMethodBeat.i(157538);
-    ((FileInputStream)this.in).getChannel().position(this.aRe);
-    AppMethodBeat.o(157538);
+    AppMethodBeat.i(207447);
+    try
+    {
+      if (Build.VERSION.SDK_INT >= 24) {}
+      for (paramContext = FileProvider.getUriForFile(paramContext, paramContext.getPackageName() + ".external.fileprovider", paramFile);; paramContext = Uri.fromFile(paramFile))
+      {
+        AppMethodBeat.o(207447);
+        return paramContext;
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.FileProviderHelper", paramContext, "[-] Fail to call getUriForFileWithoutVFSRemap", new Object[0]);
+        paramContext = null;
+      }
+    }
   }
 }
 

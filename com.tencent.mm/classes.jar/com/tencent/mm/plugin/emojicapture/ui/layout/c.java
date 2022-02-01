@@ -13,21 +13,21 @@ import android.support.v7.widget.af;
 import android.view.View;
 import android.view.animation.Interpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper;", "Landroid/support/v7/widget/LinearSnapHelper;", "()V", "onPageSelectedListener", "Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;", "getOnPageSelectedListener", "()Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;", "setOnPageSelectedListener", "(Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "attachToRecyclerView", "", "createScroller", "Landroid/support/v7/widget/RecyclerView$SmoothScroller;", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "findSnapView", "Landroid/view/View;", "findTargetSnapPosition", "", "velocityX", "velocityY", "OnPageSelectedListener", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper;", "Landroid/support/v7/widget/LinearSnapHelper;", "()V", "onPageSelectedListener", "Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;", "getOnPageSelectedListener", "()Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;", "setOnPageSelectedListener", "(Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "attachToRecyclerView", "", "createScroller", "Landroid/support/v7/widget/RecyclerView$SmoothScroller;", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "findSnapView", "Landroid/view/View;", "findTargetSnapPosition", "", "velocityX", "velocityY", "OnPageSelectedListener", "plugin-emojicapture_release"})
 public final class c
   extends af
 {
-  RecyclerView fTr;
-  public a pvN;
+  RecyclerView gmV;
+  public a pZs;
   
   public final int a(RecyclerView.i parami, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(893);
     paramInt1 = super.a(parami, paramInt1, paramInt2);
-    parami = this.pvN;
+    parami = this.pZs;
     if (parami != null) {
       parami.onPageSelected(paramInt1);
     }
@@ -52,9 +52,9 @@ public final class c
       }
     }
     label79:
-    for (int i = parami.ll();; i = -1)
+    for (int i = parami.lD();; i = -1)
     {
-      parami = this.pvN;
+      parami = this.pZs;
       if (parami != null) {
         parami.onPageSelected(i);
       }
@@ -74,7 +74,7 @@ public final class c
       AppMethodBeat.o(892);
       return null;
     }
-    RecyclerView localRecyclerView = this.fTr;
+    RecyclerView localRecyclerView = this.gmV;
     parami = localObject;
     if (localRecyclerView != null) {
       parami = localRecyclerView.getContext();
@@ -88,17 +88,17 @@ public final class c
   {
     AppMethodBeat.i(891);
     super.j(paramRecyclerView);
-    this.fTr = paramRecyclerView;
+    this.gmV = paramRecyclerView;
     AppMethodBeat.o(891);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;", "", "onPageSelected", "", "position", "", "plugin-emojicapture_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$OnPageSelectedListener;", "", "onPageSelected", "", "position", "", "plugin-emojicapture_release"})
   public static abstract interface a
   {
     public abstract void onPageSelected(int paramInt);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$createScroller$1", "Landroid/support/v7/widget/LinearSmoothScroller;", "onTargetFound", "", "targetView", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "action", "Landroid/support/v7/widget/RecyclerView$SmoothScroller$Action;", "plugin-emojicapture_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/emojicapture/ui/layout/StickerSnapHelper$createScroller$1", "Landroid/support/v7/widget/LinearSmoothScroller;", "onTargetFound", "", "targetView", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "action", "Landroid/support/v7/widget/RecyclerView$SmoothScroller$Action;", "plugin-emojicapture_release"})
   public static final class b
     extends ae
   {
@@ -110,24 +110,24 @@ public final class c
     public final void a(View paramView, RecyclerView.t paramt, RecyclerView.s.a parama)
     {
       AppMethodBeat.i(890);
-      k.h(paramView, "targetView");
-      k.h(paramt, "state");
-      k.h(parama, "action");
-      if (this.pvO.fTr != null)
+      p.h(paramView, "targetView");
+      p.h(paramt, "state");
+      p.h(parama, "action");
+      if (this.pZt.gmV != null)
       {
-        c localc = this.pvO;
-        paramt = this.pvO.fTr;
+        c localc = this.pZt;
+        paramt = this.pZt.gmV;
         if (paramt != null) {}
         int i;
         int j;
         for (paramt = paramt.getLayoutManager();; paramt = null)
         {
           if (paramt == null) {
-            k.fOy();
+            p.gfZ();
           }
           paramView = localc.a(paramt, paramView);
           if (paramView == null) {
-            k.fOy();
+            p.gfZ();
           }
           i = paramView[0];
           j = paramView[1];
@@ -135,11 +135,11 @@ public final class c
           if (k <= 0) {
             break;
           }
-          parama.a(i, j, k, (Interpolator)this.TN);
+          parama.a(i, j, k, (Interpolator)this.VD);
           AppMethodBeat.o(890);
           return;
         }
-        parama.a(i, j, 1, (Interpolator)this.TN);
+        parama.a(i, j, 1, (Interpolator)this.VD);
       }
       AppMethodBeat.o(890);
     }

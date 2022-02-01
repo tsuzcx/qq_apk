@@ -1,27 +1,27 @@
 package com.tencent.mm.console.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.e;
+import com.tencent.mm.aw.g;
 import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bu;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class b
 {
-  public List<String> fLD;
-  public List<c<bo, e>> fLE;
-  public List<c<bo, s>> fLF;
-  public List<c<bo, EmojiInfo>> fLG;
+  public List<String> gfd;
+  public List<c<bu, g>> gfe;
+  public List<c<bu, s>> gff;
+  public List<c<bu, EmojiInfo>> gfg;
   
   public b()
   {
     AppMethodBeat.i(20218);
-    this.fLD = new ArrayList();
-    this.fLE = new ArrayList();
-    this.fLF = new ArrayList();
-    this.fLG = new ArrayList();
+    this.gfd = new ArrayList();
+    this.gfe = new ArrayList();
+    this.gff = new ArrayList();
+    this.gfg = new ArrayList();
     AppMethodBeat.o(20218);
   }
 }

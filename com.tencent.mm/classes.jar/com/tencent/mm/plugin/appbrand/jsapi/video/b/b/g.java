@@ -18,13 +18,13 @@ public final class g
   public g(Uri paramUri, long paramLong)
   {
     this(paramUri, paramLong, paramLong, -1L, null, 0, null, -1);
-    AppMethodBeat.i(194215);
-    AppMethodBeat.o(194215);
+    AppMethodBeat.i(206027);
+    AppMethodBeat.o(206027);
   }
   
   public g(Uri paramUri, long paramLong1, long paramLong2, long paramLong3, String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    AppMethodBeat.i(194216);
+    AppMethodBeat.i(206028);
     boolean bool;
     if (paramLong1 >= 0L) {
       bool = true;
@@ -54,7 +54,7 @@ public final class g
             this.flags = paramInt1;
             this.uuid = paramString2;
             this.priority = paramInt2;
-            AppMethodBeat.o(194216);
+            AppMethodBeat.o(206028);
             return;
             bool = false;
           }
@@ -71,7 +71,7 @@ public final class g
       catch (IllegalArgumentException paramUri)
       {
         paramUri = new m(paramUri);
-        AppMethodBeat.o(194216);
+        AppMethodBeat.o(206028);
         throw paramUri;
       }
     }
@@ -79,9 +79,9 @@ public final class g
   
   public final String toString()
   {
-    AppMethodBeat.i(194217);
+    AppMethodBeat.i(206029);
     String str = "DataSpec[uri=" + this.uri + ", absPos=" + this.absoluteStreamPosition + ", pos=" + this.position + ", len=" + this.length + ", key=" + this.key + ", flags=" + this.flags + ", uuid=" + this.uuid + "]";
-    AppMethodBeat.o(194217);
+    AppMethodBeat.o(206029);
     return str;
   }
 }

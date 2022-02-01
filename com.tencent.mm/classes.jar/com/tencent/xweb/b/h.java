@@ -6,31 +6,31 @@ import java.io.File;
 public final class h
   implements d
 {
-  public d KCf;
+  public d MsA;
   
   private h(d paramd)
   {
-    this.KCf = paramd;
+    this.MsA = paramd;
   }
   
   public h(File paramFile)
   {
     AppMethodBeat.i(183514);
-    this.KCf = g.fKf().af(paramFile);
+    this.MsA = g.gbz().ah(paramFile);
     AppMethodBeat.o(183514);
   }
   
   public h(String paramString)
   {
     AppMethodBeat.i(183513);
-    this.KCf = g.fKf().aVd(paramString);
+    this.MsA = g.gbz().bbg(paramString);
     AppMethodBeat.o(183513);
   }
   
   public final boolean delete()
   {
     AppMethodBeat.i(183521);
-    boolean bool = this.KCf.delete();
+    boolean bool = this.MsA.delete();
     AppMethodBeat.o(183521);
     return bool;
   }
@@ -38,16 +38,16 @@ public final class h
   public final boolean exists()
   {
     AppMethodBeat.i(183520);
-    boolean bool = this.KCf.exists();
+    boolean bool = this.MsA.exists();
     AppMethodBeat.o(183520);
     return bool;
   }
   
-  public final h[] fKg()
+  public final h[] gbA()
   {
     int i = 0;
     AppMethodBeat.i(183517);
-    d[] arrayOfd = this.KCf.fKd();
+    d[] arrayOfd = this.MsA.gbx();
     if ((arrayOfd == null) || (arrayOfd.length == 0))
     {
       AppMethodBeat.o(183517);
@@ -66,7 +66,7 @@ public final class h
   public final String getAbsolutePath()
   {
     AppMethodBeat.i(183519);
-    String str = this.KCf.getPath();
+    String str = this.MsA.getPath();
     AppMethodBeat.o(183519);
     return str;
   }
@@ -74,7 +74,7 @@ public final class h
   public final String getName()
   {
     AppMethodBeat.i(183518);
-    String str = this.KCf.getPath();
+    String str = this.MsA.getPath();
     AppMethodBeat.o(183518);
     return str;
   }
@@ -82,7 +82,7 @@ public final class h
   public final String getPath()
   {
     AppMethodBeat.i(183515);
-    String str = this.KCf.getPath();
+    String str = this.MsA.getPath();
     AppMethodBeat.o(183515);
     return str;
   }
@@ -90,7 +90,7 @@ public final class h
   public final boolean isDirectory()
   {
     AppMethodBeat.i(183516);
-    boolean bool = this.KCf.isDirectory();
+    boolean bool = this.MsA.isDirectory();
     AppMethodBeat.o(183516);
     return bool;
   }
@@ -98,7 +98,7 @@ public final class h
   public final String[] list()
   {
     AppMethodBeat.i(183522);
-    String[] arrayOfString = this.KCf.list();
+    String[] arrayOfString = this.MsA.list();
     AppMethodBeat.o(183522);
     return arrayOfString;
   }

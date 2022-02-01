@@ -13,25 +13,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.d;
-import com.tencent.mm.plugin.finder.loader.h.a;
-import com.tencent.mm.plugin.finder.storage.m;
-import com.tencent.mm.plugin.finder.utils.n;
+import com.tencent.mm.plugin.finder.loader.i.a;
+import com.tencent.mm.plugin.finder.storage.r;
+import com.tencent.mm.plugin.finder.upload.f;
 import com.tencent.mm.plugin.finder.video.LocalVideoCropInfoParcelable;
-import com.tencent.mm.protocal.protobuf.bqr;
-import com.tencent.mm.protocal.protobuf.bqs;
-import com.tencent.mm.protocal.protobuf.brc;
-import com.tencent.mm.protocal.protobuf.dqk;
-import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.bve;
+import com.tencent.mm.protocal.protobuf.bvf;
+import com.tencent.mm.protocal.protobuf.bvp;
+import com.tencent.mm.protocal.protobuf.dwe;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.vfs.i;
 import com.tencent.mm.view.PhotoView;
 import com.tencent.mm.view.ViewAnimHelper;
 import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
 import d.a.j;
-import d.g.b.k;
 import d.l;
 import d.v;
 import java.util.ArrayList;
@@ -40,27 +37,27 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/widget/post/PostMixMediaWidget;", "Lcom/tencent/mm/plugin/finder/widget/post/BasePostMediaWidget;", "activity", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mediaCountView", "Landroid/widget/TextView;", "getMediaCountView", "()Landroid/widget/TextView;", "setMediaCountView", "(Landroid/widget/TextView;)V", "mediaCropInfoList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "Lkotlin/collections/ArrayList;", "getMediaCropInfoList", "()Ljava/util/ArrayList;", "setMediaCropInfoList", "(Ljava/util/ArrayList;)V", "mediaFileList", "", "getMediaFileList", "setMediaFileList", "mediaTypeList", "", "getMediaTypeList", "setMediaTypeList", "multiIcon", "Landroid/view/View;", "getMultiIcon", "()Landroid/view/View;", "setMultiIcon", "(Landroid/view/View;)V", "reprintIv", "rootView", "thumbFileList", "getThumbFileList", "setThumbFileList", "thumbIv", "Lcom/tencent/mm/view/PhotoView;", "getThumbIv", "()Lcom/tencent/mm/view/PhotoView;", "setThumbIv", "(Lcom/tencent/mm/view/PhotoView;)V", "videoPlayIcon", "Landroid/widget/ImageView;", "getVideoPlayIcon", "()Landroid/widget/ImageView;", "setVideoPlayIcon", "(Landroid/widget/ImageView;)V", "checkData", "", "getThumbFile", "index", "file", "mediaThumbList", "getUploadData", "Lcom/tencent/mm/plugin/finder/widget/post/UploadData;", "inflateView", "initCropInfo", "", "jumpToPreviewMediaUI", "onCreate", "onDestroy", "refresh", "showMediaThumb", "showVideoThumb", "thumbFile", "showThumb", "Companion", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/widget/post/PostMixMediaWidget;", "Lcom/tencent/mm/plugin/finder/widget/post/BasePostMediaWidget;", "activity", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mediaCountView", "Landroid/widget/TextView;", "getMediaCountView", "()Landroid/widget/TextView;", "setMediaCountView", "(Landroid/widget/TextView;)V", "mediaCropInfoList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "Lkotlin/collections/ArrayList;", "getMediaCropInfoList", "()Ljava/util/ArrayList;", "setMediaCropInfoList", "(Ljava/util/ArrayList;)V", "mediaFileList", "", "getMediaFileList", "setMediaFileList", "mediaTypeList", "", "getMediaTypeList", "setMediaTypeList", "multiIcon", "Landroid/view/View;", "getMultiIcon", "()Landroid/view/View;", "setMultiIcon", "(Landroid/view/View;)V", "reprintIv", "rootView", "thumbFileList", "getThumbFileList", "setThumbFileList", "thumbIv", "Lcom/tencent/mm/view/PhotoView;", "getThumbIv", "()Lcom/tencent/mm/view/PhotoView;", "setThumbIv", "(Lcom/tencent/mm/view/PhotoView;)V", "videoPlayIcon", "Landroid/widget/ImageView;", "getVideoPlayIcon", "()Landroid/widget/ImageView;", "setVideoPlayIcon", "(Landroid/widget/ImageView;)V", "checkData", "", "getThumbFile", "index", "file", "mediaThumbList", "getUploadData", "Lcom/tencent/mm/plugin/finder/widget/post/UploadData;", "inflateView", "initCropInfo", "", "jumpToPreviewMediaUI", "onCreate", "onDestroy", "refresh", "showMediaThumb", "showVideoThumb", "thumbFile", "showThumb", "Companion", "plugin-finder_release"})
 public final class e
   extends a
 {
   private static final String TAG = "Finder.PostMixMediaWidget";
-  public static final a siJ;
-  private View khe;
-  public PhotoView siC;
-  public TextView siD;
-  protected ImageView siE;
-  public View siF;
-  private ArrayList<String> siG;
-  private ArrayList<Integer> siH;
-  private ArrayList<brc> siI;
-  private View sio;
-  ArrayList<String> siq;
+  public static final a tfi;
+  private View kBS;
+  private View teK;
+  ArrayList<String> teN;
+  public PhotoView tfb;
+  public TextView tfc;
+  protected ImageView tfd;
+  public View tfe;
+  private ArrayList<String> tff;
+  private ArrayList<Integer> tfg;
+  private ArrayList<bvp> tfh;
   
   static
   {
     AppMethodBeat.i(168612);
-    siJ = new a((byte)0);
+    tfi = new a((byte)0);
     TAG = "Finder.PostMixMediaWidget";
     AppMethodBeat.o(168612);
   }
@@ -69,17 +66,17 @@ public final class e
   {
     super(paramContext);
     AppMethodBeat.i(168611);
-    this.siq = new ArrayList();
-    this.siI = new ArrayList();
+    this.teN = new ArrayList();
+    this.tfh = new ArrayList();
     AppMethodBeat.o(168611);
   }
   
-  public final void aa(ArrayList<String> paramArrayList)
+  public final void Z(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(204876);
-    Object localObject1 = this.siG;
+    AppMethodBeat.i(205810);
+    Object localObject1 = this.tff;
     if (localObject1 == null) {
-      k.fOy();
+      d.g.b.p.gfZ();
     }
     Iterator localIterator = ((Iterable)localObject1).iterator();
     int i = 0;
@@ -87,48 +84,48 @@ public final class e
     {
       localObject1 = localIterator.next();
       if (i < 0) {
-        j.fOc();
+        j.gfB();
       }
       localObject1 = (String)localObject1;
-      boolean bool;
+      final boolean bool;
       label72:
       Object localObject2;
       if (i == 0)
       {
         bool = true;
-        k.h(localObject1, "file");
-        localObject2 = this.siH;
+        d.g.b.p.h(localObject1, "file");
+        localObject2 = this.tfg;
         if (localObject2 == null) {
-          k.fOy();
+          d.g.b.p.gfZ();
         }
         localObject2 = (Integer)((ArrayList)localObject2).get(i);
         if (localObject2 != null) {
-          break label289;
+          break label290;
         }
         label109:
-        if ((paramArrayList == null) || (paramArrayList.size() <= i) || (bs.isNullOrNil((String)paramArrayList.get(i))) || (!i.eA((String)paramArrayList.get(i)))) {
-          break label363;
+        if ((paramArrayList == null) || (paramArrayList.size() <= i) || (bt.isNullOrNil((String)paramArrayList.get(i))) || (!com.tencent.mm.vfs.i.fv((String)paramArrayList.get(i)))) {
+          break label364;
         }
         localObject1 = paramArrayList.get(i);
-        k.g(localObject1, "mediaThumbList[index]");
+        d.g.b.p.g(localObject1, "mediaThumbList[index]");
         localObject1 = (String)localObject1;
       }
       for (;;)
       {
-        k.h(localObject1, "thumbFile");
-        ac.i(TAG, "showVideoThumb, thumbFile:" + (String)localObject1 + ", showThumb:" + bool);
-        if (!bs.isNullOrNil((String)localObject1))
+        d.g.b.p.h(localObject1, "thumbFile");
+        ad.i(TAG, "showVideoThumb, thumbFile:" + (String)localObject1 + ", showThumb:" + bool);
+        if (!bt.isNullOrNil((String)localObject1))
         {
-          localObject2 = com.tencent.mm.sdk.platformtools.f.decodeFile((String)localObject1);
+          localObject2 = com.tencent.mm.sdk.platformtools.g.decodeFile((String)localObject1);
           if (localObject2 != null) {
-            ap.f((Runnable)new e.d((Bitmap)localObject2, this, (String)localObject1, bool, (Bitmap)localObject2));
+            aq.f((Runnable)new d((Bitmap)localObject2, this, (String)localObject1, bool, (Bitmap)localObject2));
           }
         }
         if (bool)
         {
-          localObject1 = this.siE;
+          localObject1 = this.tfd;
           if (localObject1 == null) {
-            k.aVY("videoPlayIcon");
+            d.g.b.p.bcb("videoPlayIcon");
           }
           ((ImageView)localObject1).setVisibility(8);
         }
@@ -136,46 +133,46 @@ public final class e
         break;
         bool = false;
         break label72;
-        label289:
+        label290:
         if (((Integer)localObject2).intValue() != 2) {
           break label109;
         }
-        if ((paramArrayList != null) && (paramArrayList.size() > i) && (!bs.isNullOrNil((String)paramArrayList.get(i))))
+        if ((paramArrayList != null) && (paramArrayList.size() > i) && (!bt.isNullOrNil((String)paramArrayList.get(i))))
         {
           localObject1 = paramArrayList.get(i);
-          k.g(localObject1, "mediaThumbList[index]");
+          d.g.b.p.g(localObject1, "mediaThumbList[index]");
           localObject1 = (String)localObject1;
         }
         else
         {
-          localObject2 = com.tencent.mm.plugin.finder.upload.e.rMX;
-          localObject1 = com.tencent.mm.plugin.finder.upload.e.aer((String)localObject1);
+          localObject2 = f.sJc;
+          localObject1 = f.aiL((String)localObject1);
           continue;
-          label363:
-          if ((this.siI.size() > i) && (this.siI.get(i) != null))
+          label364:
+          if ((this.tfh.size() > i) && (this.tfh.get(i) != null))
           {
-            localObject2 = com.tencent.mm.plugin.finder.upload.e.rMX;
-            localObject2 = this.siI.get(i);
+            localObject2 = f.sJc;
+            localObject2 = this.tfh.get(i);
             if (localObject2 == null) {
-              k.fOy();
+              d.g.b.p.gfZ();
             }
-            localObject2 = ((brc)localObject2).Fgl;
-            k.g(localObject2, "mediaCropInfoList[index]!!.thumbRect");
-            localObject1 = com.tencent.mm.plugin.finder.upload.e.a((String)localObject1, (dqk)localObject2);
+            localObject2 = ((bvp)localObject2).GPN;
+            d.g.b.p.g(localObject2, "mediaCropInfoList[index]!!.thumbRect");
+            localObject1 = f.a((String)localObject1, (dwe)localObject2);
           }
           else
           {
-            ac.w(TAG, "no thumb & no thumbRect");
-            localObject2 = com.tencent.mm.plugin.finder.upload.e.rMX;
-            localObject1 = com.tencent.mm.plugin.finder.upload.e.aeq((String)localObject1);
+            ad.w(TAG, "no thumb & no thumbRect");
+            localObject2 = f.sJc;
+            localObject1 = f.aiK((String)localObject1);
           }
         }
       }
     }
-    AppMethodBeat.o(204876);
+    AppMethodBeat.o(205810);
   }
   
-  public final View cGA()
+  public final View cON()
   {
     AppMethodBeat.i(168608);
     Object localObject = this.context;
@@ -186,61 +183,61 @@ public final class e
       throw ((Throwable)localObject);
     }
     localObject = ((Activity)localObject).getLayoutInflater().inflate(2131494086, null);
-    k.g(localObject, "(context as Activity).la…_post_media_widget, null)");
-    this.khe = ((View)localObject);
-    localObject = this.khe;
+    d.g.b.p.g(localObject, "(context as Activity).la…_post_media_widget, null)");
+    this.kBS = ((View)localObject);
+    localObject = this.kBS;
     if (localObject == null) {
-      k.aVY("rootView");
+      d.g.b.p.bcb("rootView");
     }
     localObject = ((View)localObject).findViewById(2131305801);
-    k.g(localObject, "rootView.findViewById(R.id.thumb_view)");
-    this.siC = ((PhotoView)localObject);
-    localObject = this.khe;
+    d.g.b.p.g(localObject, "rootView.findViewById(R.id.thumb_view)");
+    this.tfb = ((PhotoView)localObject);
+    localObject = this.kBS;
     if (localObject == null) {
-      k.aVY("rootView");
+      d.g.b.p.bcb("rootView");
     }
     localObject = ((View)localObject).findViewById(2131302214);
-    k.g(localObject, "rootView.findViewById(R.id.media_number)");
-    this.siD = ((TextView)localObject);
-    localObject = this.khe;
+    d.g.b.p.g(localObject, "rootView.findViewById(R.id.media_number)");
+    this.tfc = ((TextView)localObject);
+    localObject = this.kBS;
     if (localObject == null) {
-      k.aVY("rootView");
+      d.g.b.p.bcb("rootView");
     }
     localObject = ((View)localObject).findViewById(2131306365);
-    k.g(localObject, "rootView.findViewById(R.id.video_play_icon)");
-    this.siE = ((ImageView)localObject);
-    localObject = this.khe;
+    d.g.b.p.g(localObject, "rootView.findViewById(R.id.video_play_icon)");
+    this.tfd = ((ImageView)localObject);
+    localObject = this.kBS;
     if (localObject == null) {
-      k.aVY("rootView");
+      d.g.b.p.bcb("rootView");
     }
     localObject = ((View)localObject).findViewById(2131302563);
-    k.g(localObject, "rootView.findViewById(R.id.multi_icon)");
-    this.siF = ((View)localObject);
-    localObject = this.khe;
+    d.g.b.p.g(localObject, "rootView.findViewById(R.id.multi_icon)");
+    this.tfe = ((View)localObject);
+    localObject = this.kBS;
     if (localObject == null) {
-      k.aVY("rootView");
+      d.g.b.p.bcb("rootView");
     }
     localObject = ((View)localObject).findViewById(2131304092);
-    k.g(localObject, "rootView.findViewById(R.id.reprint_iv)");
-    this.sio = ((View)localObject);
-    localObject = this.khe;
+    d.g.b.p.g(localObject, "rootView.findViewById(R.id.reprint_iv)");
+    this.teK = ((View)localObject);
+    localObject = this.kBS;
     if (localObject == null) {
-      k.aVY("rootView");
+      d.g.b.p.bcb("rootView");
     }
     AppMethodBeat.o(168608);
     return localObject;
   }
   
-  public final h cGB()
+  public final h cOO()
   {
-    AppMethodBeat.i(204875);
-    if ((this.shV != null) && (this.shW != null))
+    AppMethodBeat.i(205809);
+    if ((this.ter != null) && (this.tes != null))
     {
-      localObject1 = new h(true, 8, this.shW);
-      AppMethodBeat.o(204875);
+      localObject1 = new h(true, 8, this.tes);
+      AppMethodBeat.o(205809);
       return localObject1;
     }
-    Object localObject1 = (Collection)this.siG;
+    Object localObject1 = (Collection)this.tff;
     int i;
     Object localObject2;
     label161:
@@ -258,26 +255,26 @@ public final class e
       }
       localObject1 = TAG;
       localObject2 = new StringBuilder("media list ");
-      Object localObject3 = this.siG;
+      Object localObject3 = this.tff;
       if (localObject3 == null) {
-        k.fOy();
+        d.g.b.p.gfZ();
       }
-      ac.i((String)localObject1, ((ArrayList)localObject3).size() + ", thumb list " + this.siq.size());
-      localObject1 = this.siG;
+      ad.i((String)localObject1, ((ArrayList)localObject3).size() + ", thumb list " + this.teN.size());
+      localObject1 = this.tff;
       if (localObject1 == null) {
-        k.fOy();
+        d.g.b.p.gfZ();
       }
-      if (((ArrayList)localObject1).size() != this.siq.size()) {
+      if (((ArrayList)localObject1).size() != this.teN.size()) {
         break label341;
       }
       i = 1;
       if (i == 0) {
         break label443;
       }
-      localObject2 = new bqr();
-      localObject1 = this.siG;
+      localObject2 = new bve();
+      localObject1 = this.tff;
       if (localObject1 == null) {
-        k.fOy();
+        d.g.b.p.gfZ();
       }
       localObject3 = ((Iterable)localObject1).iterator();
       i = 0;
@@ -287,29 +284,29 @@ public final class e
       localObject1 = ((Iterator)localObject3).next();
       j = i + 1;
       if (i < 0) {
-        j.fOc();
+        j.gfB();
       }
       str1 = (String)localObject1;
-      localObject1 = this.siH;
+      localObject1 = this.tfg;
       if (localObject1 == null) {
-        k.fOy();
+        d.g.b.p.gfZ();
       }
       localObject1 = (Integer)((ArrayList)localObject1).get(i);
       if (localObject1 != null) {
         break label360;
       }
-      localObject4 = ((bqr)localObject2).mediaList;
-      localObject1 = com.tencent.mm.plugin.finder.upload.h.rNr;
-      str2 = bs.nullAsNil((String)this.siq.get(i));
-      k.g(str2, "Util.nullAsNil(thumbFileList[index])");
-      if (this.siI.size() <= i) {
+      localObject4 = ((bve)localObject2).mediaList;
+      localObject1 = com.tencent.mm.plugin.finder.upload.i.sJt;
+      str2 = bt.nullAsNil((String)this.teN.get(i));
+      d.g.b.p.g(str2, "Util.nullAsNil(thumbFileList[index])");
+      if (this.tfh.size() <= i) {
         break label417;
       }
     }
     label417:
-    for (localObject1 = (brc)this.siI.get(i);; localObject1 = null)
+    for (localObject1 = (bvp)this.tfh.get(i);; localObject1 = null)
     {
-      ((LinkedList)localObject4).add(com.tencent.mm.plugin.finder.upload.h.a(str1, str2, (brc)localObject1));
+      ((LinkedList)localObject4).add(com.tencent.mm.plugin.finder.upload.i.a(str1, str2, (bvp)localObject1));
       i = j;
       break label199;
       i = 0;
@@ -318,73 +315,73 @@ public final class e
       i = 0;
       break label161;
       label346:
-      ac.i(TAG, "media list null");
+      ad.i(TAG, "media list null");
       i = 0;
       break label161;
       label360:
       if (((Integer)localObject1).intValue() != 2) {
         break label259;
       }
-      localObject1 = ((bqr)localObject2).mediaList;
-      localObject4 = com.tencent.mm.plugin.finder.upload.h.rNr;
-      localObject4 = this.siq.get(i);
-      k.g(localObject4, "thumbFileList[index]");
-      ((LinkedList)localObject1).add(com.tencent.mm.plugin.finder.upload.h.gj(str1, (String)localObject4));
+      localObject1 = ((bve)localObject2).mediaList;
+      localObject4 = com.tencent.mm.plugin.finder.upload.i.sJt;
+      localObject4 = this.teN.get(i);
+      d.g.b.p.g(localObject4, "thumbFileList[index]");
+      ((LinkedList)localObject1).add(com.tencent.mm.plugin.finder.upload.i.gu(str1, (String)localObject4));
       i = j;
       break label199;
     }
     label422:
-    localObject1 = new h(true, 8, (bqr)localObject2);
-    AppMethodBeat.o(204875);
+    localObject1 = new h(true, 8, (bve)localObject2);
+    AppMethodBeat.o(205809);
     return localObject1;
     label443:
     localObject1 = new h(false, 0, null);
-    AppMethodBeat.o(204875);
+    AppMethodBeat.o(205809);
     return localObject1;
   }
   
-  public final PhotoView cGE()
+  public final PhotoView cOS()
   {
-    AppMethodBeat.i(204874);
-    PhotoView localPhotoView = this.siC;
+    AppMethodBeat.i(205808);
+    PhotoView localPhotoView = this.tfb;
     if (localPhotoView == null) {
-      k.aVY("thumbIv");
+      d.g.b.p.bcb("thumbIv");
     }
-    AppMethodBeat.o(204874);
+    AppMethodBeat.o(205808);
     return localPhotoView;
   }
   
-  public final void cGF()
+  public final void cOT()
   {
-    AppMethodBeat.i(204877);
-    bqr localbqr = new bqr();
-    if (this.shW != null)
+    AppMethodBeat.i(205811);
+    bve localbve = new bve();
+    if (this.tes != null)
     {
-      localObject1 = this.shW;
+      localObject1 = this.tes;
       if (localObject1 == null) {
-        k.fOy();
+        d.g.b.p.gfZ();
       }
-      if (!bs.gY((List)((bqr)localObject1).mediaList))
+      if (!bt.hj((List)((bve)localObject1).mediaList))
       {
-        localObject1 = localbqr.mediaList;
-        localObject2 = this.shW;
+        localObject1 = localbve.mediaList;
+        localObject2 = this.tes;
         if (localObject2 == null) {
-          k.fOy();
+          d.g.b.p.gfZ();
         }
-        ((LinkedList)localObject1).addAll((Collection)((bqr)localObject2).mediaList);
-        localObject1 = com.tencent.mm.plugin.finder.utils.a.rOv;
+        ((LinkedList)localObject1).addAll((Collection)((bve)localObject2).mediaList);
+        localObject1 = com.tencent.mm.plugin.finder.utils.a.sKD;
         localObject1 = this.context;
         if (localObject1 != null) {
           break label336;
         }
         localObject1 = new v("null cannot be cast to non-null type android.app.Activity");
-        AppMethodBeat.o(204877);
+        AppMethodBeat.o(205811);
         throw ((Throwable)localObject1);
       }
     }
-    Object localObject1 = this.siG;
+    Object localObject1 = this.tff;
     if (localObject1 == null) {
-      k.fOy();
+      d.g.b.p.gfZ();
     }
     Object localObject2 = ((Iterable)localObject1).iterator();
     int i = 0;
@@ -398,63 +395,63 @@ public final class e
       localObject1 = ((Iterator)localObject2).next();
       j = i + 1;
       if (i < 0) {
-        j.fOc();
+        j.gfB();
       }
       localObject3 = (String)localObject1;
-      localObject1 = this.siH;
+      localObject1 = this.tfg;
       if (localObject1 == null) {
-        k.fOy();
+        d.g.b.p.gfZ();
       }
       localObject1 = (Integer)((ArrayList)localObject1).get(i);
       if (localObject1 == null)
       {
-        localObject4 = localbqr.mediaList;
-        localObject1 = com.tencent.mm.plugin.finder.upload.h.rNr;
-        str = bs.nullAsNil((String)this.siq.get(i));
-        k.g(str, "Util.nullAsNil(thumbFileList[index])");
-        if (this.siI.size() <= i) {
+        localObject4 = localbve.mediaList;
+        localObject1 = com.tencent.mm.plugin.finder.upload.i.sJt;
+        str = bt.nullAsNil((String)this.teN.get(i));
+        d.g.b.p.g(str, "Util.nullAsNil(thumbFileList[index])");
+        if (this.tfh.size() <= i) {
           break label331;
         }
       }
     }
     label331:
-    for (localObject1 = (brc)this.siI.get(i);; localObject1 = null)
+    for (localObject1 = (bvp)this.tfh.get(i);; localObject1 = null)
     {
-      ((LinkedList)localObject4).add(com.tencent.mm.plugin.finder.upload.h.a((String)localObject3, str, (brc)localObject1));
+      ((LinkedList)localObject4).add(com.tencent.mm.plugin.finder.upload.i.a((String)localObject3, str, (bvp)localObject1));
       i = j;
       break label137;
       if (((Integer)localObject1).intValue() != 2) {
         break label197;
       }
-      localObject1 = localbqr.mediaList;
-      localObject4 = com.tencent.mm.plugin.finder.upload.h.rNr;
-      localObject4 = this.siq.get(i);
-      k.g(localObject4, "thumbFileList[index]");
-      ((LinkedList)localObject1).add(com.tencent.mm.plugin.finder.upload.h.gj((String)localObject3, (String)localObject4));
+      localObject1 = localbve.mediaList;
+      localObject4 = com.tencent.mm.plugin.finder.upload.i.sJt;
+      localObject4 = this.teN.get(i);
+      d.g.b.p.g(localObject4, "thumbFileList[index]");
+      ((LinkedList)localObject1).add(com.tencent.mm.plugin.finder.upload.i.gu((String)localObject3, (String)localObject4));
       i = j;
       break label137;
       break;
     }
     label336:
     localObject1 = (Activity)localObject1;
-    localObject2 = this.siC;
+    localObject2 = this.tfb;
     if (localObject2 == null) {
-      k.aVY("thumbIv");
+      d.g.b.p.bcb("thumbIv");
     }
     localObject2 = (View)localObject2;
     Object localObject3 = this.context;
     if (localObject3 == null)
     {
       localObject1 = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(204877);
+      AppMethodBeat.o(205811);
       throw ((Throwable)localObject1);
     }
     localObject3 = ((MMActivity)localObject3).getWindow();
-    k.g(localObject3, "(context as MMActivity).window");
-    localObject2 = ViewAnimHelper.n((View)localObject2, ((Window)localObject3).getDecorView());
-    k.g(localObject2, "ViewAnimHelper.getViewIn…tivity).window.decorView)");
-    com.tencent.mm.plugin.finder.utils.a.a((Activity)localObject1, (ViewAnimHelper.ViewInfo)localObject2, localbqr, this.shV);
-    AppMethodBeat.o(204877);
+    d.g.b.p.g(localObject3, "(context as MMActivity).window");
+    localObject2 = ViewAnimHelper.o((View)localObject2, ((Window)localObject3).getDecorView());
+    d.g.b.p.g(localObject2, "ViewAnimHelper.getViewIn…tivity).window.decorView)");
+    com.tencent.mm.plugin.finder.utils.a.a((Activity)localObject1, (ViewAnimHelper.ViewInfo)localObject2, localbve, this.ter);
+    AppMethodBeat.o(205811);
   }
   
   public final void refresh()
@@ -463,146 +460,146 @@ public final class e
     Object localObject2;
     Object localObject3;
     Object localObject4;
-    if (this.shW != null)
+    if (this.tes != null)
     {
-      localObject1 = this.shW;
+      localObject1 = this.tes;
       if (localObject1 == null) {
-        k.fOy();
+        d.g.b.p.gfZ();
       }
-      if (!bs.gY((List)((bqr)localObject1).mediaList))
+      if (!bt.hj((List)((bve)localObject1).mediaList))
       {
-        localObject1 = this.sio;
+        localObject1 = this.teK;
         if (localObject1 == null) {
-          k.aVY("reprintIv");
+          d.g.b.p.bcb("reprintIv");
         }
         ((View)localObject1).setVisibility(0);
-        localObject1 = this.shW;
+        localObject1 = this.tes;
         if (localObject1 == null) {
-          k.fOy();
+          d.g.b.p.gfZ();
         }
-        if (((bqr)localObject1).mediaList.size() > 1)
+        if (((bve)localObject1).mediaList.size() > 1)
         {
-          localObject1 = this.siD;
+          localObject1 = this.tfc;
           if (localObject1 == null) {
-            k.aVY("mediaCountView");
+            d.g.b.p.bcb("mediaCountView");
           }
           ((TextView)localObject1).setVisibility(8);
-          localObject1 = this.siD;
+          localObject1 = this.tfc;
           if (localObject1 == null) {
-            k.aVY("mediaCountView");
+            d.g.b.p.bcb("mediaCountView");
           }
           localObject2 = this.context;
-          localObject3 = this.shW;
+          localObject3 = this.tes;
           if (localObject3 == null) {
-            k.fOy();
+            d.g.b.p.gfZ();
           }
-          ((TextView)localObject1).setText((CharSequence)((Context)localObject2).getString(2131759238, new Object[] { Integer.valueOf(((bqr)localObject3).mediaList.size()) }));
-          localObject1 = this.siF;
+          ((TextView)localObject1).setText((CharSequence)((Context)localObject2).getString(2131759238, new Object[] { Integer.valueOf(((bve)localObject3).mediaList.size()) }));
+          localObject1 = this.tfe;
           if (localObject1 == null) {
-            k.aVY("multiIcon");
+            d.g.b.p.bcb("multiIcon");
           }
           ((View)localObject1).setVisibility(0);
-          localObject1 = this.shW;
+          localObject1 = this.tes;
           if (localObject1 == null) {
-            k.fOy();
+            d.g.b.p.gfZ();
           }
-          localObject1 = ((bqr)localObject1).mediaList;
-          k.g(localObject1, "refFeedContent!!.mediaList");
-          localObject1 = (bqs)((LinkedList)localObject1).getFirst();
-          localObject2 = n.rPN;
-          localObject2 = n.fF((int)((bqs)localObject1).width, (int)((bqs)localObject1).height);
-          localObject3 = this.siC;
+          localObject1 = ((bve)localObject1).mediaList;
+          d.g.b.p.g(localObject1, "refFeedContent!!.mediaList");
+          localObject1 = (bvf)((LinkedList)localObject1).getFirst();
+          localObject2 = com.tencent.mm.plugin.finder.utils.p.sMo;
+          localObject2 = com.tencent.mm.plugin.finder.utils.p.fT((int)((bvf)localObject1).width, (int)((bvf)localObject1).height);
+          localObject3 = this.tfb;
           if (localObject3 == null) {
-            k.aVY("thumbIv");
+            d.g.b.p.bcb("thumbIv");
           }
-          ((PhotoView)localObject3).getLayoutParams().width = ((Bundle)localObject2).getInt("media_layout_width", (int)((bqs)localObject1).width);
-          localObject3 = this.siC;
+          ((PhotoView)localObject3).getLayoutParams().width = ((Bundle)localObject2).getInt("media_layout_width", (int)((bvf)localObject1).width);
+          localObject3 = this.tfb;
           if (localObject3 == null) {
-            k.aVY("thumbIv");
+            d.g.b.p.bcb("thumbIv");
           }
-          ((PhotoView)localObject3).getLayoutParams().height = ((Bundle)localObject2).getInt("media_layout_height", (int)((bqs)localObject1).height);
-          localObject3 = this.siC;
+          ((PhotoView)localObject3).getLayoutParams().height = ((Bundle)localObject2).getInt("media_layout_height", (int)((bvf)localObject1).height);
+          localObject3 = this.tfb;
           if (localObject3 == null) {
-            k.aVY("thumbIv");
+            d.g.b.p.bcb("thumbIv");
           }
           ((PhotoView)localObject3).setScaleType(android.widget.ImageView.ScaleType.values()[localObject2.getInt("media_layout_sale_type", android.widget.ImageView.ScaleType.CENTER_CROP.ordinal())]);
-          localObject2 = this.siC;
+          localObject2 = this.tfb;
           if (localObject2 == null) {
-            k.aVY("thumbIv");
+            d.g.b.p.bcb("thumbIv");
           }
           ((PhotoView)localObject2).requestLayout();
-          if (((bqs)localObject1).mediaType != 4) {
+          if (((bvf)localObject1).mediaType != 4) {
             break label498;
           }
-          k.g(localObject1, "mediaObj");
-          localObject1 = new com.tencent.mm.plugin.finder.loader.f((bqs)localObject1, m.rDR);
-          localObject2 = com.tencent.mm.plugin.finder.loader.h.rtK;
-          localObject2 = com.tencent.mm.plugin.finder.loader.h.cwn();
-          localObject3 = this.siC;
+          d.g.b.p.g(localObject1, "mediaObj");
+          localObject1 = new com.tencent.mm.plugin.finder.loader.g((bvf)localObject1, r.syE);
+          localObject2 = com.tencent.mm.plugin.finder.loader.i.sja;
+          localObject2 = com.tencent.mm.plugin.finder.loader.i.cCB();
+          localObject3 = this.tfb;
           if (localObject3 == null) {
-            k.aVY("thumbIv");
+            d.g.b.p.bcb("thumbIv");
           }
           if (localObject3 == null) {
-            k.fOy();
+            d.g.b.p.gfZ();
           }
           localObject3 = (ImageView)localObject3;
-          localObject4 = com.tencent.mm.plugin.finder.loader.h.rtK;
-          ((d)localObject2).a(localObject1, (ImageView)localObject3, com.tencent.mm.plugin.finder.loader.h.a(h.a.rtL));
+          localObject4 = com.tencent.mm.plugin.finder.loader.i.sja;
+          ((d)localObject2).a(localObject1, (ImageView)localObject3, com.tencent.mm.plugin.finder.loader.i.a(i.a.sjb));
         }
         for (;;)
         {
-          localObject1 = this.siC;
+          localObject1 = this.tfb;
           if (localObject1 == null) {
-            k.aVY("thumbIv");
+            d.g.b.p.bcb("thumbIv");
           }
           ((PhotoView)localObject1).setOnClickListener((View.OnClickListener)new b(this));
           AppMethodBeat.o(168610);
           return;
-          localObject1 = this.siD;
+          localObject1 = this.tfc;
           if (localObject1 == null) {
-            k.aVY("mediaCountView");
+            d.g.b.p.bcb("mediaCountView");
           }
           ((TextView)localObject1).setVisibility(8);
           break;
           label498:
-          k.g(localObject1, "mediaObj");
-          localObject1 = new com.tencent.mm.plugin.finder.loader.f((bqs)localObject1, m.rDR);
-          localObject2 = com.tencent.mm.plugin.finder.loader.h.rtK;
-          localObject2 = com.tencent.mm.plugin.finder.loader.h.cwn();
-          localObject3 = this.siC;
+          d.g.b.p.g(localObject1, "mediaObj");
+          localObject1 = new com.tencent.mm.plugin.finder.loader.g((bvf)localObject1, r.syE);
+          localObject2 = com.tencent.mm.plugin.finder.loader.i.sja;
+          localObject2 = com.tencent.mm.plugin.finder.loader.i.cCB();
+          localObject3 = this.tfb;
           if (localObject3 == null) {
-            k.aVY("thumbIv");
+            d.g.b.p.bcb("thumbIv");
           }
           if (localObject3 == null) {
-            k.fOy();
+            d.g.b.p.gfZ();
           }
           localObject3 = (ImageView)localObject3;
-          localObject4 = com.tencent.mm.plugin.finder.loader.h.rtK;
-          ((d)localObject2).a(localObject1, (ImageView)localObject3, com.tencent.mm.plugin.finder.loader.h.a(h.a.rtL));
+          localObject4 = com.tencent.mm.plugin.finder.loader.i.sja;
+          ((d)localObject2).a(localObject1, (ImageView)localObject3, com.tencent.mm.plugin.finder.loader.i.a(i.a.sjb));
         }
       }
     }
-    Object localObject1 = this.dmf;
+    Object localObject1 = this.dxT;
     if (localObject1 != null)
     {
       localObject1 = ((Bundle)localObject1).getStringArrayList("MEDIA_FILE_LIST");
-      this.siG = ((ArrayList)localObject1);
-      localObject1 = this.dmf;
+      this.tff = ((ArrayList)localObject1);
+      localObject1 = this.dxT;
       if (localObject1 == null) {
         break label720;
       }
       localObject1 = ((Bundle)localObject1).getIntegerArrayList("MEDIA_TYPE_LIST");
       label611:
-      this.siH = ((ArrayList)localObject1);
-      localObject1 = this.dmf;
+      this.tfg = ((ArrayList)localObject1);
+      localObject1 = this.dxT;
       if (localObject1 == null) {
         break label725;
       }
       localObject1 = ((Bundle)localObject1).getStringArrayList("MEDIA_THUMB_LIST");
       label633:
-      localObject2 = this.dmf;
+      localObject2 = this.dxT;
       if (localObject2 == null) {
-        k.fOy();
+        d.g.b.p.gfZ();
       }
       localObject2 = ((Bundle)localObject2).getParcelableArrayList("VIDEO_CROP_LIST");
       if (localObject2 == null) {
@@ -618,7 +615,7 @@ public final class e
       localObject3 = (Parcelable)((Iterator)localObject2).next();
       if ((localObject3 != null) && ((localObject3 instanceof LocalVideoCropInfoParcelable)))
       {
-        this.siI.add(((LocalVideoCropInfoParcelable)localObject3).rvh);
+        this.tfh.add(((LocalVideoCropInfoParcelable)localObject3).skC);
         continue;
         localObject1 = null;
         break;
@@ -629,64 +626,64 @@ public final class e
         localObject1 = null;
         break label633;
       }
-      this.siI.add(null);
+      this.tfh.add(null);
     }
     label742:
-    if (this.siG != null)
+    if (this.tff != null)
     {
-      localObject2 = this.siG;
+      localObject2 = this.tff;
       if (localObject2 == null) {
-        k.fOy();
+        d.g.b.p.gfZ();
       }
       if (((ArrayList)localObject2).size() > 0)
       {
-        localObject2 = this.siG;
+        localObject2 = this.tff;
         if (localObject2 == null) {
-          k.fOy();
+          d.g.b.p.gfZ();
         }
         if (((ArrayList)localObject2).size() <= 1) {
           break label917;
         }
-        localObject2 = this.siD;
+        localObject2 = this.tfc;
         if (localObject2 == null) {
-          k.aVY("mediaCountView");
+          d.g.b.p.bcb("mediaCountView");
         }
         ((TextView)localObject2).setVisibility(8);
-        localObject2 = this.siD;
+        localObject2 = this.tfc;
         if (localObject2 == null) {
-          k.aVY("mediaCountView");
+          d.g.b.p.bcb("mediaCountView");
         }
         localObject3 = this.context;
-        localObject4 = this.siG;
+        localObject4 = this.tff;
         if (localObject4 == null) {
-          k.fOy();
+          d.g.b.p.gfZ();
         }
         ((TextView)localObject2).setText((CharSequence)((Context)localObject3).getString(2131759238, new Object[] { Integer.valueOf(((ArrayList)localObject4).size()) }));
-        localObject2 = this.siF;
+        localObject2 = this.tfe;
         if (localObject2 == null) {
-          k.aVY("multiIcon");
+          d.g.b.p.bcb("multiIcon");
         }
         ((View)localObject2).setVisibility(0);
       }
     }
     for (;;)
     {
-      b.c((Runnable)new e.c(this, (ArrayList)localObject1), "Finder_Post_Create_Media_Thumb");
+      com.tencent.mm.sdk.g.b.c((Runnable)new c(this, (ArrayList)localObject1), "Finder_Post_Create_Media_Thumb");
       AppMethodBeat.o(168610);
       return;
       label917:
-      localObject2 = this.siD;
+      localObject2 = this.tfc;
       if (localObject2 == null) {
-        k.aVY("mediaCountView");
+        d.g.b.p.bcb("mediaCountView");
       }
       ((TextView)localObject2).setVisibility(8);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/widget/post/PostMixMediaWidget$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/widget/post/PostMixMediaWidget$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
   public static final class a {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -695,14 +692,79 @@ public final class e
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(168600);
-      this.siK.cGF();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/widget/post/PostMixMediaWidget$refresh$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      this.tfj.cOT();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/widget/post/PostMixMediaWidget$refresh$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(168600);
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
+  {
+    c(e parame, ArrayList paramArrayList) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(168607);
+      this.tfj.Z(this.tfk);
+      AppMethodBeat.o(168607);
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/widget/post/PostMixMediaWidget$showVideoThumb$1$1"})
+  static final class d
+    implements Runnable
+  {
+    d(Bitmap paramBitmap1, e parame, String paramString, boolean paramBoolean, Bitmap paramBitmap2) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(205807);
+      jdField_this.teN.add(this.teW);
+      Object localObject = e.tfi;
+      ad.i(e.access$getTAG$cp(), "add thumb file");
+      if (bool)
+      {
+        localObject = com.tencent.mm.plugin.finder.utils.p.sMo;
+        localObject = com.tencent.mm.plugin.finder.utils.p.fT(this.teY.getWidth(), this.teY.getHeight());
+        jdField_this.cOS().getLayoutParams().width = ((Bundle)localObject).getInt("media_layout_width", this.teY.getWidth());
+        jdField_this.cOS().getLayoutParams().height = ((Bundle)localObject).getInt("media_layout_height", this.teY.getHeight());
+        jdField_this.cOS().setScaleType(android.widget.ImageView.ScaleType.values()[localObject.getInt("media_layout_sale_type", android.widget.ImageView.ScaleType.CENTER_CROP.ordinal())]);
+        jdField_this.cOS().requestLayout();
+        jdField_this.cOS().post((Runnable)new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(205805);
+            this.tfl.tfj.cOS().setImageBitmap(this.tfl.teV);
+            AppMethodBeat.o(205805);
+          }
+        });
+        jdField_this.cOS().setOnClickListener((View.OnClickListener)new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(205806);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/widget/post/PostMixMediaWidget$showVideoThumb$$inlined$let$lambda$1$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            this.tfl.tfj.cOT();
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/widget/post/PostMixMediaWidget$showVideoThumb$$inlined$let$lambda$1$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(205806);
+          }
+        });
+      }
+      AppMethodBeat.o(205807);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.widget.post.e
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.b.c;
 
 public abstract interface o
 {
-  public abstract void bka();
+  public abstract void bnL();
 }
 
 

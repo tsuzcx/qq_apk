@@ -1,75 +1,59 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class cvq
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String FGo;
-  public String FGu;
-  public String FGv;
-  public String qoi;
-  public String qon;
+  public int ret;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122529);
+    AppMethodBeat.i(127173);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.qon != null) {
-        paramVarArgs.d(1, this.qon);
+      if (this.username == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: username");
+        AppMethodBeat.o(127173);
+        throw paramVarArgs;
       }
-      if (this.FGo != null) {
-        paramVarArgs.d(2, this.FGo);
+      if (this.username != null) {
+        paramVarArgs.d(1, this.username);
       }
-      if (this.qoi != null) {
-        paramVarArgs.d(3, this.qoi);
-      }
-      if (this.FGu != null) {
-        paramVarArgs.d(4, this.FGu);
-      }
-      if (this.FGv != null) {
-        paramVarArgs.d(5, this.FGv);
-      }
-      AppMethodBeat.o(122529);
+      paramVarArgs.aS(2, this.ret);
+      AppMethodBeat.o(127173);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.qon == null) {
-        break label454;
+      if (this.username == null) {
+        break label306;
       }
     }
-    label454:
-    for (int i = f.a.a.b.b.a.e(1, this.qon) + 0;; i = 0)
+    label306:
+    for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.FGo != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.FGo);
-      }
-      i = paramInt;
-      if (this.qoi != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.qoi);
-      }
-      paramInt = i;
-      if (this.FGu != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.FGu);
-      }
-      i = paramInt;
-      if (this.FGv != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.FGv);
-      }
-      AppMethodBeat.o(122529);
-      return i;
+      int i = f.a.a.b.b.a.bz(2, this.ret);
+      AppMethodBeat.o(127173);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(122529);
+        if (this.username == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: username");
+          AppMethodBeat.o(127173);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(127173);
         return 0;
       }
       if (paramInt == 3)
@@ -79,37 +63,25 @@ public final class cvq
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(122529);
+          AppMethodBeat.o(127173);
           return -1;
         case 1: 
-          localcvq.qon = locala.LVo.readString();
-          AppMethodBeat.o(122529);
-          return 0;
-        case 2: 
-          localcvq.FGo = locala.LVo.readString();
-          AppMethodBeat.o(122529);
-          return 0;
-        case 3: 
-          localcvq.qoi = locala.LVo.readString();
-          AppMethodBeat.o(122529);
-          return 0;
-        case 4: 
-          localcvq.FGu = locala.LVo.readString();
-          AppMethodBeat.o(122529);
+          localcvq.username = locala.NPN.readString();
+          AppMethodBeat.o(127173);
           return 0;
         }
-        localcvq.FGv = locala.LVo.readString();
-        AppMethodBeat.o(122529);
+        localcvq.ret = locala.NPN.zc();
+        AppMethodBeat.o(127173);
         return 0;
       }
-      AppMethodBeat.o(122529);
+      AppMethodBeat.o(127173);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cvq
  * JD-Core Version:    0.7.0.1
  */

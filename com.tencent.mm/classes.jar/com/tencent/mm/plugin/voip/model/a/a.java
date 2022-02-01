@@ -1,78 +1,78 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.plugin.voip.b.d;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.voip.model.l;
 import com.tencent.mm.plugin.voip.model.v2protocal;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.act;
-import com.tencent.mm.protocal.protobuf.acu;
-import com.tencent.mm.protocal.protobuf.bai;
-import com.tencent.mm.protocal.protobuf.bxf;
-import com.tencent.mm.protocal.protobuf.cny;
-import com.tencent.mm.protocal.protobuf.cnz;
-import com.tencent.mm.protocal.protobuf.dqw;
-import com.tencent.mm.protocal.protobuf.dqx;
-import com.tencent.mm.protocal.protobuf.dsm;
-import com.tencent.mm.protocal.protobuf.dss;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.aeu;
+import com.tencent.mm.protocal.protobuf.aev;
+import com.tencent.mm.protocal.protobuf.bem;
+import com.tencent.mm.protocal.protobuf.cbv;
+import com.tencent.mm.protocal.protobuf.ctb;
+import com.tencent.mm.protocal.protobuf.ctc;
+import com.tencent.mm.protocal.protobuf.dwq;
+import com.tencent.mm.protocal.protobuf.dwr;
+import com.tencent.mm.protocal.protobuf.dyg;
+import com.tencent.mm.protocal.protobuf.dym;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.LinkedList;
 
 public final class a
-  extends n<dqw, dqx>
+  extends n<dwq, dwr>
 {
   String TAG;
   
-  public a(int paramInt1, long paramLong, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString, LinkedList<bxf> paramLinkedList)
+  public a(int paramInt1, long paramLong, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString, LinkedList<cbv> paramLinkedList)
   {
     AppMethodBeat.i(115215);
     this.TAG = "MicroMsg.NetSceneVoipAck";
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new dqw();
-    ((b.a)localObject).hvu = new dqx();
+    ((b.a)localObject).hNM = new dwq();
+    ((b.a)localObject).hNN = new dwr();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipack";
     ((b.a)localObject).funcId = 305;
-    ((b.a)localObject).reqCmdId = 123;
+    ((b.a)localObject).hNO = 123;
     ((b.a)localObject).respCmdId = 1000000123;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (dqw)this.rr.hvr.hvw;
-    ((dqw)localObject).Exf = paramInt1;
-    ((dqw)localObject).Exg = paramLong;
-    ((dqw)localObject).FYk = paramInt2;
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (dwq)this.rr.hNK.hNQ;
+    ((dwq)localObject).GeI = paramInt1;
+    ((dwq)localObject).GeJ = paramLong;
+    ((dwq)localObject).HJg = paramInt2;
     if (paramInt2 != 1)
     {
-      ((dqw)localObject).FYg = 0;
+      ((dwq)localObject).HJc = 0;
       AppMethodBeat.o(115215);
       return;
     }
-    ((dqw)localObject).FYj = paramString;
-    paramString = new dss();
-    paramString.ndI = 2;
+    ((dwq)localObject).HJf = paramString;
+    paramString = new dym();
+    paramString.nEf = 2;
     SKBuiltinBuffer_t localSKBuiltinBuffer_t = new SKBuiltinBuffer_t();
     localSKBuiltinBuffer_t.setBuffer(paramArrayOfByte1);
-    paramString.DVs = localSKBuiltinBuffer_t;
-    ((dqw)localObject).FYh = paramString;
-    paramArrayOfByte1 = new dss();
-    paramArrayOfByte1.ndI = 3;
+    paramString.FAN = localSKBuiltinBuffer_t;
+    ((dwq)localObject).HJd = paramString;
+    paramArrayOfByte1 = new dym();
+    paramArrayOfByte1.nEf = 3;
     paramString = new SKBuiltinBuffer_t();
     paramString.setBuffer(paramArrayOfByte2);
-    paramArrayOfByte1.DVs = paramString;
-    ((dqw)localObject).FYi = paramArrayOfByte1;
-    ((dqw)localObject).FYl = System.currentTimeMillis();
-    ((dqw)localObject).FYg = 1;
-    paramInt1 = ((com.tencent.mm.plugin.misc.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.misc.a.a.class)).Is(2);
-    ac.i(this.TAG, "simType: %s", new Object[] { Integer.valueOf(paramInt1) });
+    paramArrayOfByte1.FAN = paramString;
+    ((dwq)localObject).HJe = paramArrayOfByte1;
+    ((dwq)localObject).HJh = System.currentTimeMillis();
+    ((dwq)localObject).HJc = 1;
+    paramInt1 = ((com.tencent.mm.plugin.misc.a.a)g.ab(com.tencent.mm.plugin.misc.a.a.class)).JP(2);
+    ad.i(this.TAG, "simType: %s", new Object[] { Integer.valueOf(paramInt1) });
     if (paramInt1 == 0) {
       paramInt1 = 0;
     }
     for (;;)
     {
-      ((dqw)localObject).FYm = paramInt1;
-      ((dqw)localObject).FYn = paramLinkedList.size();
-      ((dqw)localObject).FYo = paramLinkedList;
+      ((dwq)localObject).HJi = paramInt1;
+      ((dwq)localObject).HJj = paramLinkedList.size();
+      ((dwq)localObject).HJk = paramLinkedList;
       AppMethodBeat.o(115215);
       return;
       if (paramInt1 == 3) {
@@ -85,24 +85,24 @@ public final class a
     }
   }
   
-  public final com.tencent.mm.ak.g eks()
+  public final com.tencent.mm.al.f eyd()
   {
     AppMethodBeat.i(115216);
-    com.tencent.mm.ak.g local1 = new com.tencent.mm.ak.g()
+    com.tencent.mm.al.f local1 = new com.tencent.mm.al.f()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, final com.tencent.mm.ak.n paramAnonymousn)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, final com.tencent.mm.al.n paramAnonymousn)
       {
         AppMethodBeat.i(115214);
-        d.Logi(a.this.TAG, "ack response:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " status:" + a.this.ACr.mStatus);
-        if (a.this.ACr.mStatus == 1)
+        com.tencent.mm.plugin.voip.b.f.Logi(a.this.TAG, "ack response:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " status:" + a.this.Cbq.mStatus);
+        if (a.this.Cbq.mStatus == 1)
         {
-          d.Logi(a.this.TAG, "reject ok!");
+          com.tencent.mm.plugin.voip.b.f.Logi(a.this.TAG, "reject ok!");
           AppMethodBeat.o(115214);
           return;
         }
-        if (a.this.ACr.mStatus != 3)
+        if (a.this.Cbq.mStatus != 3)
         {
-          d.Loge(a.this.TAG, "ack response not within WAITCONNECT, ignored.");
+          com.tencent.mm.plugin.voip.b.f.Loge(a.this.TAG, "ack response not within WAITCONNECT, ignored.");
           AppMethodBeat.o(115214);
           return;
         }
@@ -110,104 +110,104 @@ public final class a
         {
           if (paramAnonymousInt1 == 4)
           {
-            a.this.ACr.ABJ.AIf.ACR = 12;
-            a.this.ACr.ABJ.AIf.ACS = paramAnonymousInt2;
-            a.this.ACr.H(1, paramAnonymousInt2, "");
+            a.this.Cbq.CaI.Chg.CbS = 12;
+            a.this.Cbq.CaI.Chg.CbT = paramAnonymousInt2;
+            a.this.Cbq.J(1, paramAnonymousInt2, "");
             AppMethodBeat.o(115214);
             return;
           }
-          a.this.ACr.ABJ.AIf.ACR = 12;
-          a.this.ACr.ABJ.AIf.ACS = paramAnonymousInt2;
-          a.this.ACr.H(1, -9004, "");
+          a.this.Cbq.CaI.Chg.CbS = 12;
+          a.this.Cbq.CaI.Chg.CbT = paramAnonymousInt2;
+          a.this.Cbq.J(1, -9004, "");
           AppMethodBeat.o(115214);
           return;
         }
-        paramAnonymousString = (dqx)a.this.ekw();
-        if (paramAnonymousString.FYg != 1)
+        paramAnonymousString = (dwr)a.this.eyh();
+        if (paramAnonymousString.HJc != 1)
         {
-          d.Logi(a.this.TAG, "onVoipAckResp: do not use preconnect");
+          com.tencent.mm.plugin.voip.b.f.Logi(a.this.TAG, "onVoipAckResp: do not use preconnect");
           AppMethodBeat.o(115214);
           return;
         }
-        a.this.ACr.ABl = true;
-        a.this.ACr.ABJ.AGT = 1;
-        a.this.ACr.ABJ.roomId = paramAnonymousString.Exf;
-        a.this.ACr.ABJ.tIG = paramAnonymousString.Exg;
-        a.this.ACr.ABJ.tIN = paramAnonymousString.FYp;
-        a.this.ACr.ABJ.AGp = paramAnonymousString.FYt;
-        a.this.ACr.ABJ.AGt = paramAnonymousString.FYu;
-        a.this.ACr.Ss(paramAnonymousString.FYr);
-        d.Logi(a.this.TAG, "ack ok, roomid =" + a.this.ACr.ABJ.roomId + ",memberid = " + a.this.ACr.ABJ.tIN);
-        paramAnonymousn = paramAnonymousString.FYq;
-        if (paramAnonymousn.tJb > 0)
+        a.this.Cbq.Cak = true;
+        a.this.Cbq.CaI.CfU = 1;
+        a.this.Cbq.CaI.roomId = paramAnonymousString.GeI;
+        a.this.Cbq.CaI.uLt = paramAnonymousString.GeJ;
+        a.this.Cbq.CaI.uLA = paramAnonymousString.HJl;
+        a.this.Cbq.CaI.Cfp = paramAnonymousString.HJp;
+        a.this.Cbq.CaI.Cft = paramAnonymousString.HJq;
+        a.this.Cbq.Uk(paramAnonymousString.HJn);
+        com.tencent.mm.plugin.voip.b.f.Logi(a.this.TAG, "ack ok, roomid =" + a.this.Cbq.CaI.roomId + ",memberid = " + a.this.Cbq.CaI.uLA);
+        paramAnonymousn = paramAnonymousString.HJm;
+        if (paramAnonymousn.uLO > 0)
         {
-          paramAnonymousn.tJb -= 1;
-          d.Logi(a.this.TAG, "zhengxue[ENCRYPT] got encryptStrategy[" + paramAnonymousn.tJb + "] from ackresp relaydata");
+          paramAnonymousn.uLO -= 1;
+          com.tencent.mm.plugin.voip.b.f.Logi(a.this.TAG, "zhengxue[ENCRYPT] got encryptStrategy[" + paramAnonymousn.uLO + "] from ackresp relaydata");
         }
         for (;;)
         {
-          d.Logi(a.this.TAG, "ack with switchtcpcnt  =" + a.this.ACr.ABJ.AGo + " RedirectReqThreshold =" + paramAnonymousn.Gax + " BothSideSwitchFlag =" + paramAnonymousn.Gay + " WifiScanInterval =" + paramAnonymousString.FYu);
-          a.this.ACr.ABJ.AHw = paramAnonymousn.Gay;
-          if ((paramAnonymousn.GaA != null) && (paramAnonymousn.GaA.getBuffer() != null)) {
-            a.this.ACr.ABJ.AGq = paramAnonymousn.GaA.getBuffer().toByteArray();
+          com.tencent.mm.plugin.voip.b.f.Logi(a.this.TAG, "ack with switchtcpcnt  =" + a.this.Cbq.CaI.Cfo + " RedirectReqThreshold =" + paramAnonymousn.HLt + " BothSideSwitchFlag =" + paramAnonymousn.HLu + " WifiScanInterval =" + paramAnonymousString.HJq);
+          a.this.Cbq.CaI.Cgx = paramAnonymousn.HLu;
+          if ((paramAnonymousn.HLw != null) && (paramAnonymousn.HLw.getBuffer() != null)) {
+            a.this.Cbq.CaI.Cfq = paramAnonymousn.HLw.getBuffer().toByteArray();
           }
-          a.this.ACr.Sr(paramAnonymousn.Gac);
-          a.this.ACr.bI(paramAnonymousn.FYh.DVs.getBuffer().toByteArray());
-          a.this.ACr.eix();
-          if ((paramAnonymousn.Gaj != null) && (paramAnonymousn.Gaj.getBuffer() != null) && (paramAnonymousn.Gav != null) && (paramAnonymousn.Gav.getBuffer() != null)) {
-            a.this.ACr.a(paramAnonymousn.Gaj.getBuffer().toByteArray(), paramAnonymousn.Gai, paramAnonymousn.tJb, paramAnonymousn.Gav.getBuffer().toByteArray());
+          a.this.Cbq.Uj(paramAnonymousn.HKY);
+          a.this.Cbq.bP(paramAnonymousn.HJd.FAN.getBuffer().toByteArray());
+          a.this.Cbq.ewi();
+          if ((paramAnonymousn.HLf != null) && (paramAnonymousn.HLf.getBuffer() != null) && (paramAnonymousn.HLr != null) && (paramAnonymousn.HLr.getBuffer() != null)) {
+            a.this.Cbq.a(paramAnonymousn.HLf.getBuffer().toByteArray(), paramAnonymousn.HLe, paramAnonymousn.uLO, paramAnonymousn.HLr.getBuffer().toByteArray());
           }
-          a.this.ACr.i(paramAnonymousn.Gam, paramAnonymousn.Gan, paramAnonymousn.Gao, paramAnonymousn.Gap, paramAnonymousn.Gaq);
-          a.this.ACr.bJ(paramAnonymousn.FYi.DVs.getBuffer().toByteArray());
-          com.tencent.mm.kernel.g.agU().az(new Runnable()
+          a.this.Cbq.j(paramAnonymousn.HLi, paramAnonymousn.HLj, paramAnonymousn.HLk, paramAnonymousn.HLl, paramAnonymousn.HLm);
+          a.this.Cbq.bQ(paramAnonymousn.HJe.FAN.getBuffer().toByteArray());
+          g.ajF().ay(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(115213);
               Object localObject;
-              if ((paramAnonymousn.FZV == null) || (paramAnonymousn.FZV.FBe == 0))
+              if ((paramAnonymousn.HKR == null) || (paramAnonymousn.HKR.Hlr == 0))
               {
-                localObject = new cny();
-                ((cny)localObject).Evo = 0;
-                ((cny)localObject).Evp = "";
-                ((cny)localObject).Evq = "";
-                ((cny)localObject).Evr = a.this.ACr.ABJ.netType;
-                ((cny)localObject).Evs = 4;
-                ((cny)localObject).Evt = 2;
-                ((cny)localObject).FBc = paramAnonymousn.Gad;
-                ((cny)localObject).FBd = paramAnonymousn.Gal;
-                paramAnonymousn.FZV = new cnz();
-                paramAnonymousn.FZV.FBe = 1;
-                paramAnonymousn.FZV.FBf = new LinkedList();
-                paramAnonymousn.FZV.FBf.add(localObject);
+                localObject = new ctb();
+                ((ctb)localObject).GcK = 0;
+                ((ctb)localObject).GcL = "";
+                ((ctb)localObject).GcM = "";
+                ((ctb)localObject).GcN = a.this.Cbq.CaI.netType;
+                ((ctb)localObject).GcO = 4;
+                ((ctb)localObject).GcP = 2;
+                ((ctb)localObject).Hlp = paramAnonymousn.HKZ;
+                ((ctb)localObject).Hlq = paramAnonymousn.HLh;
+                paramAnonymousn.HKR = new ctc();
+                paramAnonymousn.HKR.Hlr = 1;
+                paramAnonymousn.HKR.Hls = new LinkedList();
+                paramAnonymousn.HKR.Hls.add(localObject);
               }
-              if ((paramAnonymousn.FZW == null) || (paramAnonymousn.FZW.Evz == 0))
+              if ((paramAnonymousn.HKS == null) || (paramAnonymousn.HKS.GcV == 0))
               {
-                localObject = new act();
-                ((act)localObject).Evo = 1;
-                ((act)localObject).Evp = "";
-                ((act)localObject).Evq = "";
-                ((act)localObject).Evr = a.this.ACr.ABJ.netType;
-                ((act)localObject).Evs = 4;
-                ((act)localObject).Evt = 2;
-                ((act)localObject).Evu = paramAnonymousn.Gae;
-                ((act)localObject).Evv = paramAnonymousn.GaD;
-                ((act)localObject).Evw = paramAnonymousn.GaE;
-                paramAnonymousn.FZW = new acu();
-                paramAnonymousn.FZW.Evz = 1;
-                paramAnonymousn.FZW.EvA = new LinkedList();
-                paramAnonymousn.FZW.EvA.add(localObject);
+                localObject = new aeu();
+                ((aeu)localObject).GcK = 1;
+                ((aeu)localObject).GcL = "";
+                ((aeu)localObject).GcM = "";
+                ((aeu)localObject).GcN = a.this.Cbq.CaI.netType;
+                ((aeu)localObject).GcO = 4;
+                ((aeu)localObject).GcP = 2;
+                ((aeu)localObject).GcQ = paramAnonymousn.HLa;
+                ((aeu)localObject).GcR = paramAnonymousn.HLz;
+                ((aeu)localObject).GcS = paramAnonymousn.HLA;
+                paramAnonymousn.HKS = new aev();
+                paramAnonymousn.HKS.GcV = 1;
+                paramAnonymousn.HKS.GcW = new LinkedList();
+                paramAnonymousn.HKS.GcW.add(localObject);
               }
-              d.Logi(a.this.TAG, "relay conn cnt: " + paramAnonymousn.FZV.FBe);
+              com.tencent.mm.plugin.voip.b.f.Logi(a.this.TAG, "relay conn cnt: " + paramAnonymousn.HKR.Hlr);
               try
               {
-                a.this.ACr.ABJ.AHI = paramAnonymousn.FZV.toByteArray();
+                a.this.Cbq.CaI.CgJ = paramAnonymousn.HKR.toByteArray();
               }
               catch (Exception localException2)
               {
                 try
                 {
-                  a.this.ACr.ABJ.AHJ = paramAnonymousn.FZW.toByteArray();
+                  a.this.Cbq.CaI.CgK = paramAnonymousn.HKS.toByteArray();
                 }
                 catch (Exception localException2)
                 {
@@ -215,30 +215,30 @@ public final class a
                   {
                     for (;;)
                     {
-                      if (paramAnonymousn.GaF.ERm > 0) {
-                        a.this.ACr.ABJ.AHK = paramAnonymousn.GaF.toByteArray();
+                      if (paramAnonymousn.HLB.GAE > 0) {
+                        a.this.Cbq.CaI.CgL = paramAnonymousn.HLB.toByteArray();
                       }
-                      a.this.ACr.Sq(paramAnonymousn.Gau);
-                      a.this.ACr.Sp(paramAnonymousn.Gax);
-                      if ((paramAnonymousn.Gas != null) && (paramAnonymousn.Gat != null)) {
-                        a.this.ACr.c(paramAnonymousn.Gar, paramAnonymousn.Gas.getBuffer().toByteArray(), paramAnonymousn.Gat.getBuffer().toByteArray());
+                      a.this.Cbq.Ui(paramAnonymousn.HLq);
+                      a.this.Cbq.Uh(paramAnonymousn.HLt);
+                      if ((paramAnonymousn.HLo != null) && (paramAnonymousn.HLp != null)) {
+                        a.this.Cbq.c(paramAnonymousn.HLn, paramAnonymousn.HLo.getBuffer().toByteArray(), paramAnonymousn.HLp.getBuffer().toByteArray());
                       }
-                      d.Logi(a.this.TAG, "ack success, try connect channel");
-                      a.this.ACr.eiA();
+                      com.tencent.mm.plugin.voip.b.f.Logi(a.this.TAG, "ack success, try connect channel");
+                      a.this.Cbq.ewl();
                       AppMethodBeat.o(115213);
                       return;
                       localException1 = localException1;
-                      ac.e(a.this.TAG, "relay conn info to byte array fail..");
+                      ad.e(a.this.TAG, "relay conn info to byte array fail..");
                       continue;
                       localException2 = localException2;
-                      ac.e(a.this.TAG, "direct conn info to byte array fail..");
+                      ad.e(a.this.TAG, "direct conn info to byte array fail..");
                     }
                   }
                   catch (Exception localException3)
                   {
                     for (;;)
                     {
-                      ac.e(a.this.TAG, "nic query info to byte array fail..");
+                      ad.e(a.this.TAG, "nic query info to byte array fail..");
                     }
                   }
                 }
@@ -247,8 +247,8 @@ public final class a
           });
           AppMethodBeat.o(115214);
           return;
-          paramAnonymousn.tJb = 1;
-          d.Logi(a.this.TAG, "zhengxue[LOGIC]:got no EncryptStrategy in ackresp mrdata");
+          paramAnonymousn.uLO = 1;
+          com.tencent.mm.plugin.voip.b.f.Logi(a.this.TAG, "zhengxue[LOGIC]:got no EncryptStrategy in ackresp mrdata");
         }
       }
     };
@@ -263,7 +263,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.a
  * JD-Core Version:    0.7.0.1
  */

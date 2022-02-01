@@ -7,8 +7,8 @@ import com.tencent.mm.app.af;
 import com.tencent.mm.plugin.hp.b.b;
 import com.tencent.mm.plugin.hp.b.b.a;
 import com.tencent.mm.plugin.hp.b.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.i;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
 import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
@@ -18,28 +18,28 @@ import java.util.Properties;
 public final class c
   extends com.tencent.tinker.lib.b.a
 {
-  private final int tGk;
+  private final int uIW;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(117464);
-    this.tGk = ((ActivityManager)paramContext.getSystemService("activity")).getMemoryClass();
-    ShareTinkerLog.v("Tinker.TinkerPatchListener", "application maxMemory:" + this.tGk, new Object[0]);
+    this.uIW = ((ActivityManager)paramContext.getSystemService("activity")).getMemoryClass();
+    ShareTinkerLog.v("Tinker.TinkerPatchListener", "application maxMemory:" + this.uIW, new Object[0]);
     AppMethodBeat.o(117464);
   }
   
-  public final int hi(String paramString1, String paramString2)
+  public final int hu(String paramString1, String paramString2)
   {
     boolean bool = false;
     AppMethodBeat.i(117465);
     Object localObject = new File(paramString1);
     ShareTinkerLog.v("Tinker.TinkerPatchListener", "receive a patch file: %s, file size:%d", new Object[] { paramString1, Long.valueOf(SharePatchFileUtil.getFileOrDirectorySize((File)localObject)) });
-    int j = super.hi(paramString1, paramString2);
+    int j = super.hu(paramString1, paramString2);
     int i = j;
     if (j == 0)
     {
-      if (this.tGk < 45) {
+      if (this.uIW < 45) {
         i = -23;
       }
     }
@@ -48,7 +48,7 @@ public final class c
       j = i;
       if (i == 0)
       {
-        com.tencent.tinker.lib.e.a.kX(this.context);
+        com.tencent.tinker.lib.e.a.lk(this.context);
         j = i;
         if (i == 0)
         {
@@ -72,18 +72,18 @@ public final class c
           }
         }
       }
-      localObject = com.tencent.mm.plugin.hp.c.c.fastGetPatchPackageMeta((File)localObject);
+      localObject = com.tencent.mm.plugin.hp.d.c.fastGetPatchPackageMeta((File)localObject);
       if (localObject == null) {
         break label307;
       }
-      paramString1 = h.gMJ;
+      paramString1 = i.hgG;
       paramString2 = ((Properties)localObject).getProperty("patch.client.ver");
       localObject = ((Properties)localObject).getProperty("NEW_TINKER_ID");
-      int k = b.b.tFx.value;
+      int k = b.b.uIg.value;
       if (i != 0) {
         break label296;
       }
-      j = b.a.tFt.value;
+      j = b.a.uIc.value;
       label200:
       b.e(paramString1, paramString2, (String)localObject, k, j);
     }
@@ -92,10 +92,10 @@ public final class c
       if (i == 0) {
         bool = true;
       }
-      b.nc(bool);
+      b.nw(bool);
       AppMethodBeat.o(117465);
       return i;
-      if (!com.tencent.mm.plugin.hp.c.c.cTB())
+      if (!com.tencent.mm.plugin.hp.d.c.dcN())
       {
         i = -21;
         break;
@@ -108,17 +108,17 @@ public final class c
       if (paramString1 != null)
       {
         j = i;
-        if (paramString1.equalsIgnoreCase(com.tencent.mm.loader.j.a.gMJ)) {
+        if (paramString1.equalsIgnoreCase(com.tencent.mm.loader.j.a.hgG)) {
           break label108;
         }
       }
       j = -25;
       break label108;
       label296:
-      j = b.a.tFs.value;
+      j = b.a.uIb.value;
       break label200;
       label307:
-      ac.i("Tinker.TinkerPatchListener", "patchCheck properties is null.");
+      ad.i("Tinker.TinkerPatchListener", "patchCheck properties is null.");
     }
   }
 }

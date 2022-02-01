@@ -6,61 +6,61 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class AppBrandDotPercentIndicator
   extends LinearLayout
 {
-  private int kVl;
+  private int lsk;
   private LayoutInflater mInflater;
   
   public AppBrandDotPercentIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(194627);
+    AppMethodBeat.i(206439);
     init(paramContext);
-    AppMethodBeat.o(194627);
+    AppMethodBeat.o(206439);
   }
   
   public AppBrandDotPercentIndicator(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(194628);
+    AppMethodBeat.i(206440);
     init(paramContext);
-    AppMethodBeat.o(194628);
+    AppMethodBeat.o(206440);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(194629);
+    AppMethodBeat.i(206441);
     this.mInflater = LayoutInflater.from(paramContext);
-    AppMethodBeat.o(194629);
+    AppMethodBeat.o(206441);
   }
   
   public void setDotsNum(int paramInt)
   {
-    AppMethodBeat.i(194630);
+    AppMethodBeat.i(206442);
     if (paramInt > 1) {}
     for (;;)
     {
-      this.kVl = paramInt;
+      this.lsk = paramInt;
       removeAllViews();
       paramInt = 0;
-      while (paramInt < this.kVl)
+      while (paramInt < this.lsk)
       {
         addView((ImageView)this.mInflater.inflate(2131492991, this, false));
         paramInt += 1;
       }
       paramInt = 8;
     }
-    AppMethodBeat.o(194630);
+    AppMethodBeat.o(206442);
   }
   
   public void setPercent(float paramFloat)
   {
     float f1 = 1.0F;
     float f2 = 0.0F;
-    AppMethodBeat.i(194631);
+    AppMethodBeat.i(206443);
     if (paramFloat < 0.0F)
     {
       paramFloat = f2;
@@ -73,8 +73,8 @@ public class AppBrandDotPercentIndicator
     label118:
     for (;;)
     {
-      int k = (int)Math.rint(this.kVl * paramFloat);
-      ac.v("MicroMsg.AppBrandDotPercentIndicator", "setPercent percent:%s dotsOnNum:%d", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(k) });
+      int k = (int)Math.rint(this.lsk * paramFloat);
+      ad.v("MicroMsg.AppBrandDotPercentIndicator", "setPercent percent:%s dotsOnNum:%d", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(k) });
       int i = 0;
       for (;;)
       {
@@ -96,7 +96,7 @@ public class AppBrandDotPercentIndicator
       ((ImageView)getChildAt(j)).setImageResource(2131230969);
       j += 1;
     }
-    AppMethodBeat.o(194631);
+    AppMethodBeat.o(206443);
   }
 }
 

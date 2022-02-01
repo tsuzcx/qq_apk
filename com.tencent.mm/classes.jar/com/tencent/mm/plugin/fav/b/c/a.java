@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.fav.b.c;
 
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bu;
 
 public final class a
 {
-  public bo cZc;
-  public boolean qKh;
-  public boolean qKi;
-  public a qKj;
+  public bu dku;
+  public boolean ruj;
+  public boolean ruk;
+  public a rul;
   public String talker;
   
-  public a(boolean paramBoolean1, boolean paramBoolean2, String paramString, bo parambo, a parama)
+  public a(boolean paramBoolean1, boolean paramBoolean2, String paramString, bu parambu, a parama)
   {
-    this.qKh = paramBoolean1;
-    this.qKi = paramBoolean2;
+    this.ruj = paramBoolean1;
+    this.ruk = paramBoolean2;
     this.talker = paramString;
-    this.cZc = parambo;
-    this.qKj = parama;
+    this.dku = parambu;
+    this.rul = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cqg();
+    public abstract void cvL();
   }
 }
 

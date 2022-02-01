@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.floatball.b;
@@ -13,13 +12,9 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.ball.c.h;
-import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
-import java.util.Iterator;
-import java.util.List;
 import org.apache.commons.a.d;
 import org.json.JSONObject;
 
@@ -28,69 +23,31 @@ public final class z
 {
   private static final int CTRL_INDEX = 99;
   private static final String NAME = "openDocument";
-  private static long krq = -1L;
-  private b jVq;
-  private h krr;
-  private h krs;
+  private static long kMM = -1L;
+  private h kMN;
+  private h kMO;
+  private b kpE;
   private String mAppID;
   
   public z()
   {
     AppMethodBeat.i(174793);
-    this.krr = new h()
-    {
-      public final void bm(List<BallInfo> paramAnonymousList)
-      {
-        AppMethodBeat.i(174791);
-        paramAnonymousList = paramAnonymousList.iterator();
-        while (paramAnonymousList.hasNext())
-        {
-          BallInfo localBallInfo = (BallInfo)paramAnonymousList.next();
-          if ((localBallInfo != null) && (localBallInfo.type == 4) && (localBallInfo.hSN != null) && (bs.nullAsNil(localBallInfo.hSN.getString("appId")).equals(z.d(z.this))))
-          {
-            localBallInfo.hSN.putString("processName", ai.getProcessName());
-            if (z.a(z.this) != null) {
-              z.a(z.this).a(localBallInfo);
-            }
-          }
-        }
-        AppMethodBeat.o(174791);
-      }
-    };
-    this.krs = new h()
-    {
-      public final void bm(List<BallInfo> paramAnonymousList)
-      {
-        AppMethodBeat.i(174792);
-        paramAnonymousList = paramAnonymousList.iterator();
-        while (paramAnonymousList.hasNext())
-        {
-          BallInfo localBallInfo = (BallInfo)paramAnonymousList.next();
-          if ((localBallInfo != null) && (localBallInfo.type == 4) && (localBallInfo.hSN != null) && (bs.nullAsNil(localBallInfo.hSN.getString("processName")).equals(ai.getProcessName())))
-          {
-            localBallInfo.hSN.putString("processName", "");
-            if (z.a(z.this) != null) {
-              z.a(z.this).a(localBallInfo);
-            }
-          }
-        }
-        AppMethodBeat.o(174792);
-      }
-    };
+    this.kMN = new z.3(this);
+    this.kMO = new z.4(this);
     AppMethodBeat.o(174793);
   }
   
   public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46349);
-    long l = bs.eWj();
-    if (l - krq < 1000L)
+    long l = bt.flT();
+    if (l - kMM < 1000L)
     {
       paramc.h(paramInt, e("fail:document viewer already starting", null));
       AppMethodBeat.o(46349);
       return;
     }
-    krq = l;
+    kMM = l;
     final Context localContext = paramc.getContext();
     if ((localContext == null) || (!(localContext instanceof Activity)))
     {
@@ -100,13 +57,13 @@ public final class z
     }
     boolean bool = paramJSONObject.optBoolean("showMenu");
     String str = paramJSONObject.optString("filePath");
-    if (bs.isNullOrNil(str))
+    if (bt.isNullOrNil(str))
     {
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(46349);
       return;
     }
-    e locale = paramc.DH().IS(str);
+    e locale = paramc.Fg().Mj(str);
     if (locale == null)
     {
       paramc.h(paramInt, e("fail:file doesn't exist", null));
@@ -115,13 +72,13 @@ public final class z
     }
     this.mAppID = paramc.getAppId();
     OpenFileRequest localOpenFileRequest = new OpenFileRequest();
-    localOpenFileRequest.filePath = q.B(locale.fxV());
-    localOpenFileRequest.fBR = d.getExtension(str);
+    localOpenFileRequest.filePath = q.B(locale.fOK());
+    localOpenFileRequest.fVf = d.getExtension(str);
     localOpenFileRequest.appId = this.mAppID;
-    localOpenFileRequest.jVr = bool;
+    localOpenFileRequest.kpF = bool;
     paramJSONObject = paramJSONObject.optString("fileType");
-    if (!bs.isNullOrNil(paramJSONObject)) {
-      localOpenFileRequest.fBR = paramJSONObject;
+    if (!bt.isNullOrNil(paramJSONObject)) {
+      localOpenFileRequest.fVf = paramJSONObject;
     }
     com.tencent.mm.plugin.appbrand.ipc.a.b(localContext, localOpenFileRequest, new AppBrandProxyUIProcessTask.b() {});
     g.a(paramc.getAppId(), new g.c()
@@ -161,7 +118,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.z
  * JD-Core Version:    0.7.0.1
  */

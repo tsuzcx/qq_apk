@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.expt.roomexpt;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
   extends j<e>
@@ -47,7 +47,7 @@ public final class b
     return bool;
   }
   
-  public final Cursor clZ()
+  public final Cursor crw()
   {
     Object localObject = null;
     AppMethodBeat.i(122423);
@@ -60,7 +60,7 @@ public final class b
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.ChatRoomExptStorage", localException, "get calc cursor", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ChatRoomExptStorage", localException, "get calc cursor", new Object[0]);
       }
     }
     AppMethodBeat.o(122423);
@@ -68,7 +68,7 @@ public final class b
   }
   
   /* Error */
-  public final java.util.List<e> cma()
+  public final java.util.List<e> crx()
   {
     // Byte code:
     //   0: ldc 95
@@ -121,7 +121,7 @@ public final class b
     //   85: ldc 124
     //   87: iconst_0
     //   88: anewarray 86	java/lang/Object
-    //   91: invokestatic 92	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   91: invokestatic 92	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   94: aload_2
     //   95: ifnull +9 -> 104
     //   98: aload_2
@@ -180,7 +180,7 @@ public final class b
   }
   
   /* Error */
-  public final e fR(String paramString1, String paramString2)
+  public final e ga(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 132
@@ -251,7 +251,7 @@ public final class b
     //   106: aload 4
     //   108: invokevirtual 143	java/lang/Exception:toString	()Ljava/lang/String;
     //   111: aastore
-    //   112: invokestatic 147	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   112: invokestatic 147	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   115: aload_1
     //   116: astore_3
     //   117: aload_2
@@ -307,7 +307,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.roomexpt.b
  * JD-Core Version:    0.7.0.1
  */

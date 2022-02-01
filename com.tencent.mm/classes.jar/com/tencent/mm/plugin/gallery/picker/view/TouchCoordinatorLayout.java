@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class TouchCoordinatorLayout
   extends CoordinatorLayout
 {
-  private View.OnTouchListener sOi;
+  private View.OnTouchListener tKQ;
   
   public TouchCoordinatorLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,8 +25,8 @@ public class TouchCoordinatorLayout
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164789);
-    if (this.sOi != null) {
-      this.sOi.onTouch(this, paramMotionEvent);
+    if (this.tKQ != null) {
+      this.tKQ.onTouch(this, paramMotionEvent);
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
     AppMethodBeat.o(164789);
@@ -35,12 +35,12 @@ public class TouchCoordinatorLayout
   
   public void setTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    this.sOi = paramOnTouchListener;
+    this.tKQ = paramOnTouchListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.view.TouchCoordinatorLayout
  * JD-Core Version:    0.7.0.1
  */

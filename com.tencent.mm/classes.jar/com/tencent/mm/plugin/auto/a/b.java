@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.auto.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class b
-  implements aw
+  implements ax
 {
-  private a mRP;
+  private a nso;
   
   public b()
   {
     AppMethodBeat.i(21158);
-    this.mRP = new a();
+    this.nso = new a();
     AppMethodBeat.o(21158);
   }
   
@@ -28,18 +28,18 @@ public final class b
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(21159);
-    ac.i("MicroMsg.auto.SubCoreAuto", "onAccountPostReset");
-    a locala = this.mRP;
-    com.tencent.mm.sdk.b.a.GpY.c(locala.mRN);
+    ad.i("MicroMsg.auto.SubCoreAuto", "onAccountPostReset");
+    a locala = this.nso;
+    com.tencent.mm.sdk.b.a.IbL.c(locala.nsm);
     AppMethodBeat.o(21159);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(21160);
-    ac.i("MicroMsg.auto.SubCoreAuto", "onAccountRelease");
-    a locala = this.mRP;
-    com.tencent.mm.sdk.b.a.GpY.d(locala.mRN);
+    ad.i("MicroMsg.auto.SubCoreAuto", "onAccountRelease");
+    a locala = this.nso;
+    com.tencent.mm.sdk.b.a.IbL.d(locala.nsm);
     AppMethodBeat.o(21160);
   }
   

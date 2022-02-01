@@ -2,17 +2,17 @@ package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cq.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class ah
   extends i
 {
-  public final void Kg()
+  public final void LF()
   {
     AppMethodBeat.i(160135);
-    ac.i("MicroMsg.ToolsProcessBootStep", "installPlugins()");
+    ad.i("MicroMsg.ToolsProcessBootStep", "installPlugins()");
     d.a(null);
-    super.Kg();
+    super.LF();
     AppMethodBeat.o(160135);
   }
 }

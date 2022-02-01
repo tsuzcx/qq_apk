@@ -8,9 +8,9 @@ public class MultiTalkGroupMember
   implements Parcelable
 {
   public static final Parcelable.Creator<MultiTalkGroupMember> CREATOR = new Parcelable.Creator() {};
-  public int JOX;
-  public String JPW = "";
-  public String JPX = "";
+  public int LIJ;
+  public String LJH = "";
+  public String LJI = "";
   public int reason;
   public int status;
   
@@ -21,35 +21,35 @@ public class MultiTalkGroupMember
   
   public String toString()
   {
-    return "MultiTalkGroupMember [usrName=" + this.JPW + ", inviteUsrName=" + this.JPX + ", status=" + this.status + ", reason=" + this.reason + ", inviteTime=" + this.JOX + "]";
+    return "MultiTalkGroupMember [usrName=" + this.LJH + ", inviteUsrName=" + this.LJI + ", status=" + this.status + ", reason=" + this.reason + ", inviteTime=" + this.LIJ + "]";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.JPW == null)
+    if (this.LJH == null)
     {
       str = "";
       paramParcel.writeString(str);
-      if (this.JPX != null) {
+      if (this.LJI != null) {
         break label63;
       }
     }
     label63:
-    for (String str = "";; str = this.JPX)
+    for (String str = "";; str = this.LJI)
     {
       paramParcel.writeString(str);
       paramParcel.writeInt(this.status);
       paramParcel.writeInt(this.reason);
-      paramParcel.writeInt(this.JOX);
+      paramParcel.writeInt(this.LIJ);
       return;
-      str = this.JPW;
+      str = this.LJH;
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.pb.talkroom.sdk.MultiTalkGroupMember
  * JD-Core Version:    0.7.0.1
  */

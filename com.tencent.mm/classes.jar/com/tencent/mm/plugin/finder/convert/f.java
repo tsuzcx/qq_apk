@@ -1,247 +1,87 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.presenter.contract.CommentDrawerContract.NPresenter;
-import com.tencent.mm.plugin.finder.report.d;
-import com.tencent.mm.plugin.finder.storage.t;
-import com.tencent.mm.plugin.finder.view.FinderCollapsibleTextView;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.view.recyclerview.e;
-import d.g.b.k;
-import d.y;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.cgi.q;
+import com.tencent.mm.plugin.finder.storage.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
+import d.l;
+import java.util.Iterator;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedCommentLevel2Convert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "presenter", "Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$NPresenter;", "(Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$NPresenter;)V", "getLayoutId", "", "initTipsLayout", "", "tipsLayout", "Landroid/view/View;", "tip", "", "rootComment", "down", "", "isWxScene", "onBindViewHolder", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "Companion", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedCommentFailedNotifyConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FeedHeaderCommentFailedNotifyData;", "()V", "getCommentDetail", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "feedId", "", "objectNonceId", "", "getLayoutId", "", "onBindViewHolder", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "Companion", "plugin-finder_release"})
 public final class f
-  extends com.tencent.mm.view.recyclerview.b<com.tencent.mm.plugin.finder.model.l>
+  extends com.tencent.mm.view.recyclerview.b<com.tencent.mm.plugin.finder.model.e>
 {
-  public static final f.a raf;
-  private final CommentDrawerContract.NPresenter qZO;
+  private static q rMs;
+  public static final a rMt;
   
   static
   {
-    AppMethodBeat.i(178121);
-    raf = new f.a((byte)0);
-    AppMethodBeat.o(178121);
+    AppMethodBeat.i(165333);
+    rMt = new a((byte)0);
+    AppMethodBeat.o(165333);
   }
   
-  public f(CommentDrawerContract.NPresenter paramNPresenter)
+  public final void a(RecyclerView paramRecyclerView, com.tencent.mm.view.recyclerview.e parame, int paramInt)
   {
-    AppMethodBeat.i(178120);
-    this.qZO = paramNPresenter;
-    AppMethodBeat.o(178120);
-  }
-  
-  private final void a(View paramView, final String paramString, final com.tencent.mm.plugin.finder.model.l paraml, final boolean paramBoolean)
-  {
-    AppMethodBeat.i(178119);
-    paramView.setVisibility(0);
-    ((TextView)paramView.findViewById(2131304784)).setText((CharSequence)paramString);
-    paramString = paramView.findViewById(2131304781);
-    k.g(paramString, "arrowIv");
-    paramString.setVisibility(0);
-    final View localView = paramView.findViewById(2131304783);
-    k.g(localView, "loadingView");
-    localView.setVisibility(8);
-    paramView.setOnClickListener((View.OnClickListener)new b(this, paramString, localView, paraml, paramBoolean));
-    AppMethodBeat.o(178119);
-  }
-  
-  private final boolean csV()
-  {
-    AppMethodBeat.i(178117);
-    if (this.qZO.cuJ() == 2)
-    {
-      AppMethodBeat.o(178117);
-      return true;
-    }
-    AppMethodBeat.o(178117);
-    return false;
-  }
-  
-  @SuppressLint({"ResourceType"})
-  public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
-  {
-    AppMethodBeat.i(178116);
-    k.h(paramRecyclerView, "recyclerView");
-    k.h(parame, "holder");
-    paramRecyclerView = (FinderCollapsibleTextView)parame.adJ(2131298506);
-    paramRecyclerView.setLimitLine(4);
-    paramRecyclerView.setCollapse(true);
-    paramRecyclerView.lV(false);
-    paramRecyclerView.setOnCollapse((d.g.a.b)new j(parame));
-    AppMethodBeat.o(178116);
+    AppMethodBeat.i(165331);
+    p.h(paramRecyclerView, "recyclerView");
+    p.h(parame, "holder");
+    AppMethodBeat.o(165331);
   }
   
   public final int getLayoutId()
   {
-    return 2131492865;
+    return 2131492866;
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedCommentFailedNotifyConvert$Companion;", "", "()V", "TAG", "", "curCgi", "Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderFeedComment;", "getCurCgi", "()Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderFeedComment;", "setCurCgi", "(Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderFeedComment;)V", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "kotlin.jvm.PlatformType", "call"})
+  static final class b<_Ret, _Var>
+    implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    b(f paramf, View paramView1, View paramView2, com.tencent.mm.plugin.finder.model.l paraml, boolean paramBoolean) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(178107);
-      paramView = paramString;
-      k.g(paramView, "arrowIv");
-      paramView.setVisibility(8);
-      paramView = localView;
-      k.g(paramView, "loadingView");
-      paramView.setVisibility(0);
-      f.a(this.rag).a(paraml, paramBoolean);
-      AppMethodBeat.o(178107);
-    }
+    b(com.tencent.mm.view.recyclerview.e parame, long paramLong) {}
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
-    c(com.tencent.mm.plugin.finder.model.l paraml, e parame) {}
+    c(f paramf, com.tencent.mm.plugin.finder.model.e parame, com.tencent.mm.view.recyclerview.e parame1) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(178108);
-      paramView = com.tencent.mm.plugin.finder.utils.a.rOv;
-      paramView = this.qZU.ruO.getUsername();
-      Object localObject = this.ojH.getContext();
-      k.g(localObject, "holder.context");
-      com.tencent.mm.plugin.finder.utils.a.d(paramView, (Context)localObject);
-      paramView = FinderReporterUIC.seQ;
-      paramView = this.ojH.getContext();
-      k.g(paramView, "holder.context");
-      paramView = FinderReporterUIC.a.eV(paramView);
-      if (paramView != null)
+      AppMethodBeat.i(165330);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/convert/FinderFeedCommentFailedNotifyConvert$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+      paramView = ((PluginFinder)g.ad(PluginFinder.class)).getFinderActionStorage();
+      long l = this.rMv.dtq;
+      ad.i(com.tencent.mm.plugin.finder.storage.a.TAG, "markUnsentCommentsCanRemove ".concat(String.valueOf(l)));
+      localObject = ((Iterable)((PluginFinder)g.ad(PluginFinder.class)).getFinderActionStorage().wM(l)).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = d.rxr;
-        d.a(1, this.qZU.ruO.field_feedId, paramView.rfR, 2, this.qZU.ruO.getUsername());
-        AppMethodBeat.o(178108);
-        return;
+        ab localab = (ab)((Iterator)localObject).next();
+        localab.field_canRemove = 1;
+        com.tencent.mm.plugin.finder.storage.a.a(paramView, localab.field_localCommentId, localab);
       }
-      AppMethodBeat.o(178108);
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class d
-    implements View.OnClickListener
-  {
-    d(com.tencent.mm.plugin.finder.model.l paraml, e parame) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(178109);
-      paramView = com.tencent.mm.plugin.finder.utils.a.rOv;
-      paramView = this.qZU.ruO.getUsername();
-      Object localObject = this.ojH.getContext();
-      k.g(localObject, "holder.context");
-      com.tencent.mm.plugin.finder.utils.a.d(paramView, (Context)localObject);
-      paramView = FinderReporterUIC.seQ;
-      paramView = this.ojH.getContext();
-      k.g(paramView, "holder.context");
-      paramView = FinderReporterUIC.a.eV(paramView);
-      if (paramView != null)
-      {
-        localObject = d.rxr;
-        d.a(1, this.qZU.ruO.field_feedId, paramView.rfR, 2, this.qZU.ruO.getUsername());
-        AppMethodBeat.o(178109);
-        return;
-      }
-      AppMethodBeat.o(178109);
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class e
-    implements View.OnClickListener
-  {
-    e(f paramf, com.tencent.mm.plugin.finder.model.l paraml, e parame) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(178110);
-      paramView = a.qZF;
-      paramView = this.qZU.ruO.getUsername();
-      com.tencent.mm.plugin.finder.model.l locall = this.qZU;
-      Context localContext = this.ojH.getContext();
-      k.g(localContext, "holder.context");
-      a.a(paramView, locall, localContext, f.a(this.rag).cuI());
-      AppMethodBeat.o(178110);
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class f
-    implements View.OnClickListener
-  {
-    f(f paramf, com.tencent.mm.plugin.finder.model.l paraml, e parame) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(178111);
-      paramView = a.qZF;
-      paramView = this.qZU.ruO.getUsername();
-      com.tencent.mm.plugin.finder.model.l locall = this.qZU;
-      Context localContext = this.ojH.getContext();
-      k.g(localContext, "holder.context");
-      a.a(paramView, locall, localContext, f.a(this.rag).cuI());
-      AppMethodBeat.o(178111);
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "username", "", "invoke"})
-  static final class g
-    extends d.g.b.l
-    implements d.g.a.b<String, y>
-  {
-    g(f paramf, com.tencent.mm.plugin.finder.model.l paraml, e parame)
-    {
-      super();
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class h
-    implements View.OnClickListener
-  {
-    h(f paramf, TextView paramTextView, e parame) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(178113);
-      paramView = f.a(this.rag);
-      TextView localTextView = this.raa;
-      k.g(localTextView, "commentFailTV");
-      paramView.af((View)localTextView, this.ojH.lv());
-      AppMethodBeat.o(178113);
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "collapse", "", "invoke", "com/tencent/mm/plugin/finder/convert/FinderFeedCommentLevel2Convert$onCreateViewHolder$1$1"})
-  static final class j
-    extends d.g.b.l
-    implements d.g.a.b<Boolean, y>
-  {
-    j(e parame)
-    {
-      super();
+      this.rMv.sjS = 1;
+      f.a(this.oNd, this.rMv.dtq, this.rMv.objectNonceId);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderFeedCommentFailedNotifyConvert$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(165330);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.f
  * JD-Core Version:    0.7.0.1
  */

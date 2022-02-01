@@ -4,11 +4,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
 final class n$3
   implements View.OnTouchListener
 {
@@ -17,22 +19,27 @@ final class n$3
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(82693);
-    k.g(paramMotionEvent, "event");
+    b localb = new b();
+    localb.bd(paramView);
+    localb.bd(paramMotionEvent);
+    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    p.g(paramMotionEvent, "event");
     if (paramMotionEvent.getAction() == 0)
     {
-      paramView = this.CNx;
-      if (paramView.CAP != -3) {
-        break label46;
+      paramView = this.Erx;
+      if (paramView.Eex != -3) {
+        break label93;
       }
-      paramView.CNv.hideVKB();
+      paramView.Erv.hideVKB();
     }
     for (;;)
     {
+      a.a(true, this, "com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(82693);
       return true;
-      label46:
-      if ((paramView.getSayFooter().eGD()) && (paramView.bjw())) {
-        paramView.getSayFooter().dRi();
+      label93:
+      if ((paramView.getSayFooter().eVD()) && (paramView.bni())) {
+        paramView.getSayFooter().edA();
       } else {
         paramView.hide();
       }

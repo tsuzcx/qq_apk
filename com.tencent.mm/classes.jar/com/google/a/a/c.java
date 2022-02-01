@@ -13,7 +13,7 @@ public @interface c
 {
   String value();
   
-  String[] xi() default {};
+  String[] yF() default {};
 }
 
 

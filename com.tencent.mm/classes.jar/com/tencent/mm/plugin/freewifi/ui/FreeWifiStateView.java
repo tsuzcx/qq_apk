@@ -10,19 +10,19 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class FreeWifiStateView
   extends ImageView
 {
   private int bottom;
-  private ao gox;
+  private ap gIf;
   private int left;
   private Context mContext;
   private Paint mPaint;
-  int pGo;
-  private int pGp;
-  private Runnable pGq;
+  int qjT;
+  private int qjU;
+  private Runnable qjV;
   private int right;
   private int state;
   private int top;
@@ -36,13 +36,13 @@ public class FreeWifiStateView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(25140);
-    this.pGo = 2;
+    this.qjT = 2;
     this.left = -1;
     this.top = -1;
     this.right = -1;
     this.bottom = -1;
-    this.pGp = -1;
-    this.pGq = new Runnable()
+    this.qjU = -1;
+    this.qjV = new Runnable()
     {
       public final void run()
       {
@@ -57,16 +57,16 @@ public class FreeWifiStateView
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.left = a.fromDPToPix(this.mContext, 2);
     this.top = this.left;
-    this.pGp = a.fromDPToPix(this.mContext, 3);
-    this.gox = new ao(Looper.getMainLooper());
+    this.qjU = a.fromDPToPix(this.mContext, 3);
+    this.gIf = new ap(Looper.getMainLooper());
     AppMethodBeat.o(25140);
   }
   
-  private void BZ(int paramInt)
+  private void CI(int paramInt)
   {
     AppMethodBeat.i(25143);
-    this.gox.removeCallbacks(this.pGq);
-    this.gox.postDelayed(this.pGq, paramInt);
+    this.gIf.removeCallbacks(this.qjV);
+    this.gIf.postDelayed(this.qjV, paramInt);
     AppMethodBeat.o(25143);
   }
   
@@ -78,19 +78,19 @@ public class FreeWifiStateView
     {
       int i = getWidth() / 2;
       this.mPaint.setARGB(255, 103, 209, 79);
-      this.mPaint.setStrokeWidth(this.pGp);
+      this.mPaint.setStrokeWidth(this.qjU);
       if (this.right == -1) {
         this.right = (i * 2 - this.left);
       }
       if (this.bottom == -1) {
         this.bottom = this.right;
       }
-      paramCanvas.drawArc(new RectF(this.left, this.top, this.right, this.bottom), 270.0F, this.pGo, false, this.mPaint);
-      this.pGo += 5;
-      if (this.pGo > 365) {
-        this.pGo = 0;
+      paramCanvas.drawArc(new RectF(this.left, this.top, this.right, this.bottom), 270.0F, this.qjT, false, this.mPaint);
+      this.qjT += 5;
+      if (this.qjT > 365) {
+        this.qjT = 0;
       }
-      BZ(100);
+      CI(100);
     }
     AppMethodBeat.o(25142);
   }
@@ -99,13 +99,13 @@ public class FreeWifiStateView
   {
     AppMethodBeat.i(25141);
     this.state = paramInt;
-    BZ(10);
+    CI(10);
     AppMethodBeat.o(25141);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiStateView
  * JD-Core Version:    0.7.0.1
  */

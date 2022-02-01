@@ -28,41 +28,41 @@ class Pinger
   
   Pinger(String paramString, int paramInt)
   {
-    AppMethodBeat.i(192518);
+    AppMethodBeat.i(215865);
     this.pingExecutor = Executors.newSingleThreadExecutor();
     this.host = ((String)Preconditions.checkNotNull(paramString));
     this.port = paramInt;
-    AppMethodBeat.o(192518);
+    AppMethodBeat.o(215865);
   }
   
   private List<Proxy> getDefaultProxies()
   {
-    AppMethodBeat.i(192520);
+    AppMethodBeat.i(215867);
     try
     {
       List localList = ProxySelector.getDefault().select(new URI(getPingUrl()));
-      AppMethodBeat.o(192520);
+      AppMethodBeat.o(215867);
       return localList;
     }
     catch (URISyntaxException localURISyntaxException)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException(localURISyntaxException);
-      AppMethodBeat.o(192520);
+      AppMethodBeat.o(215867);
       throw localIllegalStateException;
     }
   }
   
   private String getPingUrl()
   {
-    AppMethodBeat.i(192524);
+    AppMethodBeat.i(215871);
     String str = String.format(Locale.US, "http://%s:%d/%s", new Object[] { this.host, Integer.valueOf(this.port), "ping" });
-    AppMethodBeat.o(192524);
+    AppMethodBeat.o(215871);
     return str;
   }
   
   private boolean pingServer()
   {
-    AppMethodBeat.i(192523);
+    AppMethodBeat.i(215870);
     HttpUrlSource localHttpUrlSource = new HttpUrlSource(getPingUrl());
     try
     {
@@ -82,21 +82,21 @@ class Pinger
     finally
     {
       localHttpUrlSource.close();
-      AppMethodBeat.o(192523);
+      AppMethodBeat.o(215870);
     }
   }
   
   boolean isPingRequest(String paramString)
   {
-    AppMethodBeat.i(192521);
+    AppMethodBeat.i(215868);
     boolean bool = "ping".equals(paramString);
-    AppMethodBeat.o(192521);
+    AppMethodBeat.o(215868);
     return bool;
   }
   
   boolean ping(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192519);
+    AppMethodBeat.i(215866);
     boolean bool;
     if (paramInt1 > 0) {
       bool = true;
@@ -122,7 +122,7 @@ class Pinger
         bool = ((Boolean)this.pingExecutor.submit(new PingCallable(null)).get(i, TimeUnit.MILLISECONDS)).booleanValue();
         if (bool)
         {
-          AppMethodBeat.o(192519);
+          AppMethodBeat.o(215866);
           return true;
           bool = false;
           continue;
@@ -143,7 +143,7 @@ class Pinger
           Logger.error("Error pinging server due to unexpected error");
         }
         Logger.error(String.format(Locale.US, "Error pinging server (attempts: %d, max timeout: %d). If you see this message, please, report at https://github.com/danikula/AndroidVideoCache/issues/134. Default proxies are: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(i / 2), getDefaultProxies() }));
-        AppMethodBeat.o(192519);
+        AppMethodBeat.o(215866);
         return false;
       }
       catch (ExecutionException localExecutionException)
@@ -157,11 +157,11 @@ class Pinger
   
   void responseToPing(Socket paramSocket)
   {
-    AppMethodBeat.i(192522);
+    AppMethodBeat.i(215869);
     paramSocket = paramSocket.getOutputStream();
     paramSocket.write("HTTP/1.1 200 OK\n\n".getBytes());
     paramSocket.write("ping ok".getBytes());
-    AppMethodBeat.o(192522);
+    AppMethodBeat.o(215869);
   }
   
   class PingCallable
@@ -171,16 +171,16 @@ class Pinger
     
     public Boolean call()
     {
-      AppMethodBeat.i(192516);
+      AppMethodBeat.i(215863);
       boolean bool = Pinger.access$100(Pinger.this);
-      AppMethodBeat.o(192516);
+      AppMethodBeat.o(215863);
       return Boolean.valueOf(bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.danikula.videocache.Pinger
  * JD-Core Version:    0.7.0.1
  */

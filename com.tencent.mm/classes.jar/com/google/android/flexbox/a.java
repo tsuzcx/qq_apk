@@ -13,9 +13,9 @@ abstract interface a
   
   public abstract int cj(View paramView);
   
-  public abstract View ff(int paramInt);
+  public abstract View fi(int paramInt);
   
-  public abstract View fg(int paramInt);
+  public abstract View fj(int paramInt);
   
   public abstract int getAlignContent();
   
@@ -51,11 +51,11 @@ abstract interface a
   
   public abstract void setFlexLines(List<b> paramList);
   
-  public abstract boolean vX();
-  
   public abstract int w(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract int x(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract boolean xu();
 }
 
 

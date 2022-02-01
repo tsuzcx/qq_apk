@@ -5,76 +5,64 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class dao
-  extends cqk
+  extends cvc
 {
-  public SnsObject FJG;
+  public cwt GbY;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125794);
+    AppMethodBeat.i(155464);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      if (this.GbY == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(125794);
+        paramVarArgs = new b("Not all required fields were included: UserName");
+        AppMethodBeat.o(155464);
         throw paramVarArgs;
       }
-      if (this.FJG == null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: Object");
-        AppMethodBeat.o(125794);
-        throw paramVarArgs;
+        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.BaseResponse != null)
+      if (this.GbY != null)
       {
-        paramVarArgs.ln(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.lC(2, this.GbY.computeSize());
+        this.GbY.writeFields(paramVarArgs);
       }
-      if (this.FJG != null)
-      {
-        paramVarArgs.ln(2, this.FJG.computeSize());
-        this.FJG.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(125794);
+      AppMethodBeat.o(155464);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label562;
+      if (this.BaseRequest == null) {
+        break label514;
       }
     }
-    label562:
-    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label514:
+    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.FJG != null) {
-        i = paramInt + f.a.a.a.lm(2, this.FJG.computeSize());
+      if (this.GbY != null) {
+        i = paramInt + f.a.a.a.lB(2, this.GbY.computeSize());
       }
-      AppMethodBeat.o(125794);
+      AppMethodBeat.o(155464);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.GbY == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(125794);
+          paramVarArgs = new b("Not all required fields were included: UserName");
+          AppMethodBeat.o(155464);
           throw paramVarArgs;
         }
-        if (this.FJG == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Object");
-          AppMethodBeat.o(125794);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(125794);
+        AppMethodBeat.o(155464);
         return 0;
       }
       if (paramInt == 3)
@@ -87,47 +75,47 @@ public final class dao
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(125794);
+          AppMethodBeat.o(155464);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
+            localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdao.BaseResponse = ((BaseResponse)localObject1);
+            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdao.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(125794);
+          AppMethodBeat.o(155464);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new SnsObject();
+          localObject1 = new cwt();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SnsObject)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localdao.FJG = ((SnsObject)localObject1);
+          for (bool = true; bool; bool = ((cwt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localdao.GbY = ((cwt)localObject1);
           paramInt += 1;
         }
-        AppMethodBeat.o(125794);
+        AppMethodBeat.o(155464);
         return 0;
       }
-      AppMethodBeat.o(125794);
+      AppMethodBeat.o(155464);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dao
  * JD-Core Version:    0.7.0.1
  */

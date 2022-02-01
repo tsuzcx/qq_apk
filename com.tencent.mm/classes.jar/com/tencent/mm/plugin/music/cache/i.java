@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public static boolean anz(String paramString)
+  public static boolean asy(String paramString)
   {
     AppMethodBeat.i(137206);
-    if ((h.anx(paramString)) && (h.fD(paramString) > 0L))
+    if ((h.asw(paramString)) && (h.gy(paramString) > 0L))
     {
       AppMethodBeat.o(137206);
       return true;

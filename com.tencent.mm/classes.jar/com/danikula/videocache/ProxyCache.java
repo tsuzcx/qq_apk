@@ -29,16 +29,16 @@ class ProxyCache
   
   private void checkReadSourceErrorsCount()
   {
-    AppMethodBeat.i(192530);
+    AppMethodBeat.i(215877);
     int i = this.readSourceErrorsCount.get();
     if (i > 0)
     {
       this.readSourceErrorsCount.set(0);
       ProxyCacheException localProxyCacheException = new ProxyCacheException("Error reading source " + i + " times");
-      AppMethodBeat.o(192530);
+      AppMethodBeat.o(215877);
       throw localProxyCacheException;
     }
-    AppMethodBeat.o(192530);
+    AppMethodBeat.o(215877);
   }
   
   private void closeSource()
@@ -83,15 +83,15 @@ class ProxyCache
   
   private void onSourceRead()
   {
-    AppMethodBeat.i(192535);
+    AppMethodBeat.i(215882);
     this.percentsAvailable = 100;
     onCachePercentsAvailableChanged(this.percentsAvailable);
-    AppMethodBeat.o(192535);
+    AppMethodBeat.o(215882);
   }
   
   private void readSource()
   {
-    AppMethodBeat.i(192534);
+    AppMethodBeat.i(215881);
     long l6 = -1L;
     long l2 = 0L;
     long l1 = l2;
@@ -135,7 +135,7 @@ class ProxyCache
     {
       closeSource();
       notifyNewCacheDataAvailable(l2, l5);
-      AppMethodBeat.o(192534);
+      AppMethodBeat.o(215881);
     }
     l1 = l3;
     l4 = l6;
@@ -166,7 +166,7 @@ class ProxyCache
     onSourceRead();
     closeSource();
     notifyNewCacheDataAvailable(l3, l6);
-    AppMethodBeat.o(192534);
+    AppMethodBeat.o(215881);
   }
   
   /* Error */
@@ -245,32 +245,32 @@ class ProxyCache
   
   private void tryComplete()
   {
-    AppMethodBeat.i(192536);
+    AppMethodBeat.i(215883);
     synchronized (this.stopLock)
     {
       if ((!isStopped()) && (this.cache.available() == this.source.length())) {
         this.cache.complete();
       }
-      AppMethodBeat.o(192536);
+      AppMethodBeat.o(215883);
       return;
     }
   }
   
   private void waitForSourceData()
   {
-    AppMethodBeat.i(192532);
+    AppMethodBeat.i(215879);
     synchronized (this.wc)
     {
       try
       {
         this.wc.wait(1000L);
-        AppMethodBeat.o(192532);
+        AppMethodBeat.o(215879);
         return;
       }
       catch (InterruptedException localInterruptedException)
       {
         ProxyCacheException localProxyCacheException = new ProxyCacheException("Waiting source data is interrupted!", localInterruptedException);
-        AppMethodBeat.o(192532);
+        AppMethodBeat.o(215879);
         throw localProxyCacheException;
       }
     }
@@ -279,7 +279,7 @@ class ProxyCache
   protected void onCacheAvailable(long paramLong1, long paramLong2)
   {
     int k = 1;
-    AppMethodBeat.i(192533);
+    AppMethodBeat.i(215880);
     int i;
     label26:
     int j;
@@ -305,7 +305,7 @@ class ProxyCache
         onCachePercentsAvailableChanged(i);
       }
       this.percentsAvailable = i;
-      AppMethodBeat.o(192533);
+      AppMethodBeat.o(215880);
       return;
       i = 0;
       break;
@@ -337,7 +337,7 @@ class ProxyCache
   
   public int read(byte[] paramArrayOfByte, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(192529);
+    AppMethodBeat.i(215876);
     ProxyCacheUtils.assertBuffer(paramArrayOfByte, paramLong, paramInt);
     while ((!this.cache.isCompleted()) && (this.cache.available() < paramInt + paramLong) && (!this.stopped))
     {
@@ -351,13 +351,13 @@ class ProxyCache
       this.percentsAvailable = 100;
       onCachePercentsAvailableChanged(100);
     }
-    AppMethodBeat.o(192529);
+    AppMethodBeat.o(215876);
     return paramInt;
   }
   
   public void shutdown()
   {
-    AppMethodBeat.i(192531);
+    AppMethodBeat.i(215878);
     synchronized (this.stopLock)
     {
       Logger.debug("Shutdown proxy for " + this.source);
@@ -376,7 +376,7 @@ class ProxyCache
           onError(localProxyCacheException);
         }
       }
-      AppMethodBeat.o(192531);
+      AppMethodBeat.o(215878);
       return;
     }
   }

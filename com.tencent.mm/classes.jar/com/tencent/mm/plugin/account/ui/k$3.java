@@ -12,7 +12,7 @@ final class k$3
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(128293);
-    k.a(this.iTl);
+    k.a(this.jmt);
     AppMethodBeat.o(128293);
   }
 }

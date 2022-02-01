@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui.widget.ad;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,25 +10,27 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class ScrollableLayout
   extends LinearLayout
 {
+  private int ADS;
+  public View ADT;
+  private int ADU;
+  private int ADV;
+  private int ADW;
+  private int ADX;
+  private int ADY;
+  private ScrollableLayout.a ADZ;
+  private ScrollableLayout.b AEa;
+  private int AzY;
+  private int AzZ;
   private int mActivePointerId;
   private boolean mIsBeingDragged;
   protected Scroller mScroller;
   private int mTouchSlop;
-  private int mus;
-  private int zhZ;
-  private int zia;
-  public View zlH;
-  private int zlI;
-  private int zlJ;
-  private int zlK;
-  private int zlL;
-  private ScrollableLayout.a zlM;
-  private ScrollableLayout.b zlN;
+  private int mUZ;
   
   public ScrollableLayout(Context paramContext)
   {
@@ -47,87 +50,79 @@ public class ScrollableLayout
   private ScrollableLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(200678);
+    AppMethodBeat.i(198621);
     this.mIsBeingDragged = false;
-    this.zlI = 0;
-    this.zlJ = 0;
-    this.zlK = 0;
-    this.zlL = 0;
+    this.ADU = 0;
+    this.ADV = 0;
+    this.ADW = 0;
+    this.ADX = 0;
     this.mActivePointerId = -1;
-    this.mus = 0;
+    this.ADY = -2147483648;
+    this.mUZ = 0;
     try
     {
       this.mScroller = new Scroller(paramContext, new DecelerateInterpolator());
       this.mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
       setOrientation(1);
-      AppMethodBeat.o(200678);
+      this.ADS = paramContext.getResources().getDimensionPixelOffset(2131167073);
+      AppMethodBeat.o(198621);
       return;
     }
     catch (Throwable paramContext)
     {
-      ac.w("ScrollLinearLayout", "the init method has something wrong!");
-      AppMethodBeat.o(200678);
+      ad.w("ScrollLinearLayout", "the init method has something wrong!");
+      AppMethodBeat.o(198621);
     }
   }
   
-  private void Qd(int paramInt)
+  private void RO(int paramInt)
   {
-    AppMethodBeat.i(200684);
+    AppMethodBeat.i(198626);
     ScrollableLayout.b localb;
-    if (paramInt != this.mus)
+    if (paramInt != this.mUZ)
     {
-      localb = this.zlN;
+      localb = this.AEa;
       if (localb != null) {
-        if (getScrollY() < this.zlJ) {
-          break label68;
+        if (getScrollY() < this.ADV) {
+          break label78;
         }
       }
     }
-    label68:
+    label78:
     for (boolean bool = true;; bool = false)
     {
-      localb.av(paramInt, bool);
-      ac.i("ScrollLinearLayout", "the new state is ".concat(String.valueOf(paramInt)));
-      this.mus = paramInt;
-      AppMethodBeat.o(200684);
+      localb.aA(paramInt, bool);
+      ad.i("ScrollLinearLayout", "the new state is ".concat(String.valueOf(paramInt)));
+      this.mUZ = paramInt;
+      if (paramInt == 0) {
+        this.ADY = -2147483648;
+      }
+      AppMethodBeat.o(198626);
       return;
     }
   }
   
-  private boolean dSN()
+  private boolean y(View paramView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200683);
-    ScrollableLayout.a locala = this.zlM;
-    boolean bool = false;
-    if (locala != null) {
-      bool = locala.eH(this.zlH);
-    }
-    ac.i("ScrollLinearLayout", "the descendant is scrolled: ".concat(String.valueOf(bool)));
-    AppMethodBeat.o(200683);
-    return bool;
-  }
-  
-  private boolean x(View paramView, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(200682);
+    AppMethodBeat.i(198625);
     if (paramView == null)
     {
-      AppMethodBeat.o(200682);
+      AppMethodBeat.o(198625);
       return false;
     }
     int i = getScrollY();
     if ((paramInt2 >= paramView.getTop() - i) && (paramInt2 < paramView.getBottom() - i) && (paramInt1 >= paramView.getLeft()) && (paramInt1 < paramView.getRight()))
     {
-      AppMethodBeat.o(200682);
+      AppMethodBeat.o(198625);
       return true;
     }
-    AppMethodBeat.o(200682);
+    AppMethodBeat.o(198625);
     return false;
   }
   
   public void computeScroll()
   {
-    AppMethodBeat.i(200679);
+    AppMethodBeat.i(198622);
     super.computeScroll();
     try
     {
@@ -135,21 +130,21 @@ public class ScrollableLayout
       {
         scrollTo(this.mScroller.getCurrX(), this.mScroller.getCurrY());
         invalidate();
-        AppMethodBeat.o(200679);
+        AppMethodBeat.o(198622);
         return;
       }
-      if (this.mus == 2)
+      if (this.mUZ == 2)
       {
-        ac.i("ScrollLinearLayout", "compute scroll offset is false the currY is " + this.mScroller.getCurrY() + ", the final Y is " + this.mScroller.getFinalY());
-        Qd(0);
+        ad.i("ScrollLinearLayout", "compute scroll offset is false the currY is " + this.mScroller.getCurrY() + ", the final Y is " + this.mScroller.getFinalY());
+        RO(0);
       }
-      AppMethodBeat.o(200679);
+      AppMethodBeat.o(198622);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ac.w("ScrollLinearLayout", "the compute scroll has something wrong!");
-      AppMethodBeat.o(200679);
+      ad.w("ScrollLinearLayout", "the compute scroll has something wrong!");
+      AppMethodBeat.o(198622);
     }
   }
   
@@ -157,7 +152,7 @@ public class ScrollableLayout
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    AppMethodBeat.i(200680);
+    AppMethodBeat.i(198623);
     for (;;)
     {
       int j;
@@ -173,7 +168,7 @@ public class ScrollableLayout
             if (!bool1) {
               continue;
             }
-            AppMethodBeat.o(200680);
+            AppMethodBeat.o(198623);
             return true;
           }
         }
@@ -184,37 +179,38 @@ public class ScrollableLayout
         case 0: 
           i = (int)paramMotionEvent.getX();
           j = (int)paramMotionEvent.getY();
-          if (!x(this.zlH, i, j))
+          this.ADY = getScrollY();
+          if (!y(this.ADT, i, j))
           {
             this.mIsBeingDragged = false;
-            ac.i("ScrollLinearLayout", "the onInterceptTouchActionDown is called " + this.mIsBeingDragged);
+            ad.i("ScrollLinearLayout", "the onInterceptTouchActionDown is called " + this.mIsBeingDragged);
             bool1 = this.mIsBeingDragged;
             continue;
           }
           this.mActivePointerId = paramMotionEvent.getPointerId(0);
-          this.zhZ = j;
-          this.zia = i;
+          this.AzY = j;
+          this.AzZ = i;
           this.mScroller.computeScrollOffset();
           bool1 = bool2;
           if (!this.mScroller.isFinished()) {
             bool1 = true;
           }
           this.mIsBeingDragged = bool1;
-          if (this.zlI > 0)
+          if (this.ADU > 0)
           {
-            i = this.zlI;
-            this.zlK = (this.zlJ + i);
-            this.zlL = (-i);
+            i = this.ADU;
+            this.ADW = (this.ADV + i);
+            this.ADX = (-i);
             continue;
           }
-          i = this.zlJ / 3;
+          i = this.ADV / 3;
         }
       }
       catch (Throwable localThrowable)
       {
-        ac.e("ScrollLinearLayout", "the onInterceptTouchEventInner has something wrong");
+        ad.e("ScrollLinearLayout", "the onInterceptTouchEventInner has something wrong");
         bool1 = super.onInterceptTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(200680);
+        AppMethodBeat.o(198623);
         return bool1;
       }
       continue;
@@ -226,21 +222,24 @@ public class ScrollableLayout
         {
           i = (int)paramMotionEvent.getX(j);
           j = (int)paramMotionEvent.getY(j);
-          int k = j - this.zhZ;
-          if ((Math.abs(k) >= this.mTouchSlop) && (!dSN()) && (((k < 0) && (getScrollY() < this.zlJ)) || ((k > 0) && (getScrollY() >= this.zlI))))
+          int k = j - this.AzY;
+          int m = getScrollY();
+          if (Math.abs(k) >= this.mTouchSlop)
           {
-            this.mIsBeingDragged = true;
-            this.zhZ = j;
-            this.zia = i;
+            this.AzY = j;
+            this.AzZ = i;
+            if (((k < 0) && (m <= 0)) || ((k > 0) && (m >= this.ADV))) {
+              this.mIsBeingDragged = true;
+            }
           }
         }
       }
-      ac.i("ScrollLinearLayout", "the onInterceptTouchActionMove is called " + this.mIsBeingDragged);
+      ad.i("ScrollLinearLayout", "the onInterceptTouchActionMove is called " + this.mIsBeingDragged);
       bool1 = this.mIsBeingDragged;
       continue;
       this.mIsBeingDragged = false;
       this.mActivePointerId = -1;
-      ac.i("ScrollLinearLayout", "the onInterceptTouchActionUpOrCancel is called " + this.mIsBeingDragged);
+      ad.i("ScrollLinearLayout", "the onInterceptTouchActionUpOrCancel is called " + this.mIsBeingDragged);
       bool1 = this.mIsBeingDragged;
     }
   }
@@ -250,24 +249,27 @@ public class ScrollableLayout
     boolean bool2 = false;
     boolean bool3 = false;
     boolean bool1 = false;
-    AppMethodBeat.i(200681);
+    AppMethodBeat.i(198624);
     for (;;)
     {
+      int i;
+      int j;
+      int k;
       try
       {
-        int i = paramMotionEvent.getActionMasked();
+        i = paramMotionEvent.getActionMasked();
         switch (i)
         {
         default: 
           if (!bool1) {
             continue;
           }
-          AppMethodBeat.o(200681);
+          AppMethodBeat.o(198624);
           return true;
         case 0: 
           i = (int)paramMotionEvent.getX();
           j = (int)paramMotionEvent.getY();
-          if (!x(this.zlH, i, j)) {
+          if (!y(this.ADT, i, j)) {
             continue;
           }
           bool1 = bool2;
@@ -278,110 +280,118 @@ public class ScrollableLayout
           if (!this.mScroller.isFinished()) {
             this.mScroller.abortAnimation();
           }
-          this.zia = i;
-          this.zhZ = j;
+          this.AzZ = i;
+          this.AzY = j;
           this.mActivePointerId = paramMotionEvent.getPointerId(0);
-          ac.i("ScrollLinearLayout", "the onTouchActionDown is called " + this.mIsBeingDragged);
+          ad.i("ScrollLinearLayout", "the onTouchActionDown is called " + this.mIsBeingDragged);
           bool1 = this.mIsBeingDragged;
           break;
         case 2: 
           i = paramMotionEvent.findPointerIndex(this.mActivePointerId);
           if (i < 0)
           {
-            ac.e("ScrollLinearLayout", "Invalid pointerId=" + this.mActivePointerId + " in onTouchEvent");
+            ad.e("ScrollLinearLayout", "Invalid pointerId=" + this.mActivePointerId + " in onTouchEvent");
             bool1 = true;
             continue;
           }
-          ac.i("ScrollLinearLayout", "the onTouchActionMove is called " + this.mIsBeingDragged + " mLastEventY = " + this.zhZ);
-          int k = (int)paramMotionEvent.getX(i);
+          ad.i("ScrollLinearLayout", "the onTouchActionMove is called " + this.mIsBeingDragged + " mLastEventY = " + this.AzY);
+          k = (int)paramMotionEvent.getX(i);
           int m = (int)paramMotionEvent.getY(i);
-          j = m - this.zhZ;
-          ac.i("ScrollLinearLayout", "the onTouchActionMove is called " + this.mIsBeingDragged + " yOffset = " + j);
+          j = m - this.AzY;
+          ad.i("ScrollLinearLayout", "the onTouchActionMove is called " + this.mIsBeingDragged + " yOffset = " + j);
           i = j;
           if (!this.mIsBeingDragged)
           {
             i = j;
             if (Math.abs(j) >= this.mTouchSlop)
             {
-              i = j;
-              if (!dSN())
-              {
-                ac.i("ScrollLinearLayout", "the onTouchActionMove is called, the mIsBeingDragged is false");
-                this.mIsBeingDragged = true;
-                if (j <= 0) {
-                  continue;
-                }
-                i = j - this.mTouchSlop;
+              ad.i("ScrollLinearLayout", "the onTouchActionMove is called, the mIsBeingDragged is false");
+              this.mIsBeingDragged = true;
+              if (j <= 0) {
+                continue;
               }
+              i = j - this.mTouchSlop;
             }
           }
           j = getScrollY() - i;
-          if ((this.mIsBeingDragged) && (this.zlL < j) && (this.zlK > j))
+          if ((this.mIsBeingDragged) && (this.ADX < j) && (this.ADW > j))
           {
-            Qd(1);
+            RO(1);
             scrollBy(0, -i);
-            this.zhZ = m;
-            this.zia = k;
+            this.AzY = m;
+            this.AzZ = k;
           }
-          ac.i("ScrollLinearLayout", "the onTouchActionMove is called " + this.mIsBeingDragged + " scroll y = " + getScrollY());
+          ad.i("ScrollLinearLayout", "the onTouchActionMove is called " + this.mIsBeingDragged + " scroll y = " + getScrollY());
           bool1 = true;
           continue;
           i = j + this.mTouchSlop;
           break;
         }
-        int j = getScrollY();
-        i = this.zlJ - j;
-        if (j <= this.zlJ / 2) {
-          i = -j;
-        }
-        if (this.mIsBeingDragged)
+        i = this.ADY;
+        j = getScrollY();
+        k = j - i;
+        if (k > 0)
         {
+          i = this.ADV - j;
+          if (k < this.ADS) {
+            i = -j;
+          }
+          if (!this.mIsBeingDragged) {
+            break label648;
+          }
           this.mScroller.startScroll(getScrollX(), j, 0, i, 350);
           invalidate();
-          Qd(2);
+          RO(2);
           bool1 = true;
           this.mIsBeingDragged = false;
           this.mActivePointerId = -1;
-          this.zhZ = 0;
-          this.zia = 0;
+          this.AzY = 0;
+          this.AzZ = 0;
           continue;
         }
-        Qd(0);
+        i = -j;
       }
       catch (Throwable localThrowable)
       {
-        ac.e("ScrollLinearLayout", "the onTouchEventInner is called " + this.mIsBeingDragged);
+        ad.e("ScrollLinearLayout", "the onTouchEventInner is called " + this.mIsBeingDragged);
         bool1 = super.onTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(200681);
+        AppMethodBeat.o(198624);
         return bool1;
       }
-      bool1 = bool3;
+      if (k > -this.ADS)
+      {
+        i = this.ADV - j;
+        continue;
+        label648:
+        RO(0);
+        bool1 = bool3;
+      }
     }
   }
   
   public void setDescendantScrollStatusHunter(ScrollableLayout.a parama)
   {
-    this.zlM = parama;
+    this.ADZ = parama;
   }
   
   public void setMaxOverScrollOffset(int paramInt)
   {
-    this.zlI = paramInt;
+    this.ADU = paramInt;
   }
   
   public void setMaxYScrollOffset(int paramInt)
   {
-    this.zlJ = paramInt;
+    this.ADV = paramInt;
   }
   
   public void setOnScrollStatusListener(ScrollableLayout.b paramb)
   {
-    this.zlN = paramb;
+    this.AEa = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.ad.ScrollableLayout
  * JD-Core Version:    0.7.0.1
  */

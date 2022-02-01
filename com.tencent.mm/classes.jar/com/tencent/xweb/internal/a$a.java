@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a$a
 {
-  public a.b KCh;
-  public String KCi;
-  public String KCj;
-  public String KCk;
+  public a.b MsC;
+  public String MsD;
+  public String MsE;
+  public String MsF;
   
   public a$a()
   {
     AppMethodBeat.i(156950);
-    this.KCh = new a.b();
+    this.MsC = new a.b();
     AppMethodBeat.o(156950);
   }
 }

@@ -5,23 +5,23 @@ import d.l;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicReference;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/sequences/ConstrainedOnceSequence;", "T", "Lkotlin/sequences/Sequence;", "sequence", "(Lkotlin/sequences/Sequence;)V", "sequenceRef", "Ljava/util/concurrent/atomic/AtomicReference;", "kotlin.jvm.PlatformType", "iterator", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/sequences/ConstrainedOnceSequence;", "T", "Lkotlin/sequences/Sequence;", "sequence", "(Lkotlin/sequences/Sequence;)V", "sequenceRef", "Ljava/util/concurrent/atomic/AtomicReference;", "kotlin.jvm.PlatformType", "iterator", "", "kotlin-stdlib"})
 public final class a<T>
   implements h<T>
 {
-  private final AtomicReference<h<T>> LPx;
+  private final AtomicReference<h<T>> NGs;
   
   public a(h<? extends T> paramh)
   {
     AppMethodBeat.i(129535);
-    this.LPx = new AtomicReference(paramh);
+    this.NGs = new AtomicReference(paramh);
     AppMethodBeat.o(129535);
   }
   
   public final Iterator<T> iterator()
   {
     AppMethodBeat.i(129534);
-    Object localObject = (h)this.LPx.getAndSet(null);
+    Object localObject = (h)this.NGs.getAndSet(null);
     if (localObject == null)
     {
       localObject = (Throwable)new IllegalStateException("This sequence can be consumed only once.");

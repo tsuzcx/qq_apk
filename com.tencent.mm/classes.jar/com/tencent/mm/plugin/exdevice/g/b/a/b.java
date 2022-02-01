@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.exdevice.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.da;
+import com.tencent.mm.g.c.dk;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class b
-  extends da
+  extends dk
 {
   public static c.a info;
   
@@ -15,19 +15,19 @@ public final class b
   {
     AppMethodBeat.i(23552);
     c.a locala = new c.a();
-    locala.GvF = new Field[3];
+    locala.IhA = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appusername";
-    locala.GvH.put("appusername", "TEXT");
+    locala.IhC.put("appusername", "TEXT");
     localStringBuilder.append(" appusername TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "title";
-    locala.GvH.put("title", "TEXT");
+    locala.IhC.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "score";
-    locala.GvH.put("score", "INTEGER");
+    locala.IhC.put("score", "INTEGER");
     localStringBuilder.append(" score INTEGER");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

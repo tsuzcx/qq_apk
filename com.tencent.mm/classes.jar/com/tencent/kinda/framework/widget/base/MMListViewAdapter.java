@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.kinda.gen.KListViewCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class MMListViewAdapter
   extends BaseAdapter
@@ -51,7 +51,7 @@ public class MMListViewAdapter
   {
     paramViewGroup = null;
     AppMethodBeat.i(19285);
-    ac.i("MicroMsg.MMListViewAdapter", "getView %s %s", new Object[] { Integer.valueOf(paramInt), paramView });
+    ad.i("MicroMsg.MMListViewAdapter", "getView %s %s", new Object[] { Integer.valueOf(paramInt), paramView });
     if (paramView != null) {}
     for (paramView = (MMKViewLayout)paramView.getTag();; paramView = null)
     {
@@ -81,7 +81,7 @@ public class MMListViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMListViewAdapter
  * JD-Core Version:    0.7.0.1
  */

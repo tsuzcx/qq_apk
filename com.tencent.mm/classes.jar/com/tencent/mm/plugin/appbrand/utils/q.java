@@ -9,8 +9,8 @@ import com.tencent.mm.appbrand.v8.m.b;
 import com.tencent.mm.appbrand.v8.m.c;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.jsruntime.v;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,16 +21,16 @@ import junit.framework.Assert;
 
 public final class q
 {
-  private static final LinkedList<String> mop;
+  private static final LinkedList<String> mOR;
   
   static
   {
     AppMethodBeat.i(135375);
-    mop = new LinkedList();
+    mOR = new LinkedList();
     AppMethodBeat.o(135375);
   }
   
-  public static void Rx(String paramString)
+  public static void Vd(String paramString)
   {
     AppMethodBeat.i(135370);
     if (TextUtils.isEmpty(paramString))
@@ -38,9 +38,9 @@ public final class q
       AppMethodBeat.o(135370);
       return;
     }
-    synchronized (mop)
+    synchronized (mOR)
     {
-      mop.add(paramString);
+      mOR.add(paramString);
       AppMethodBeat.o(135370);
       return;
     }
@@ -57,19 +57,19 @@ public final class q
   public static void a(i parami, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, final a parama)
   {
     AppMethodBeat.i(135373);
-    ac.i("MicroMsg.JsValidationInjector", "hy: injecting file %s", new Object[] { paramString1 });
+    ad.i("MicroMsg.JsValidationInjector", "hy: injecting file %s", new Object[] { paramString1 });
     final long l = System.currentTimeMillis();
-    if (bs.isNullOrNil(paramString4))
+    if (bt.isNullOrNil(paramString4))
     {
-      ac.e("MicroMsg.JsValidationInjector", "hy: empty script!");
+      ad.e("MicroMsg.JsValidationInjector", "hy: empty script!");
       if (parama != null) {
-        parama.bZ("isNullOrNil script");
+        parama.cT("isNullOrNil script");
       }
       AppMethodBeat.o(135373);
       return;
     }
     paramString4 = paramString4 + String.format("\n;(function(){return %d;})();", new Object[] { Integer.valueOf(11111) });
-    String str = paramString4 + bs.nullAsNil(paramString5);
+    String str = paramString4 + bt.nullAsNil(paramString5);
     paramString5 = null;
     paramString4 = paramString5;
     if (paramString1 != null) {
@@ -101,12 +101,12 @@ public final class q
     }
     catch (MalformedURLException parami)
     {
-      ac.e("MicroMsg.JsValidationInjector", "hy: MalformedURLException");
-      parama.bZ("MalformedURLException");
+      ad.e("MicroMsg.JsValidationInjector", "hy: MalformedURLException");
+      parama.cT("MalformedURLException");
       AppMethodBeat.o(135373);
       return;
     }
-    if ((bs.isNullOrNil(paramString2)) || (bs.isNullOrNil(paramString3)))
+    if ((bt.isNullOrNil(paramString2)) || (bt.isNullOrNil(paramString3)))
     {
       parami.a(paramString4, str, new ValueCallback() {});
       AppMethodBeat.o(135373);
@@ -118,20 +118,20 @@ public final class q
   
   public static void a(i parami, URL paramURL, String paramString, a parama)
   {
-    AppMethodBeat.i(193526);
-    if (bs.isNullOrNil(paramString))
+    AppMethodBeat.i(197447);
+    if (bt.isNullOrNil(paramString))
     {
       if (parama != null) {
-        parama.bZ("isNullOrNil script");
+        parama.cT("isNullOrNil script");
       }
-      AppMethodBeat.o(193526);
+      AppMethodBeat.o(197447);
       return;
     }
     for (;;)
     {
-      synchronized (mop)
+      synchronized (mOR)
       {
-        Iterator localIterator = mop.iterator();
+        Iterator localIterator = mOR.iterator();
         if (!localIterator.hasNext()) {
           break label164;
         }
@@ -141,18 +141,18 @@ public final class q
         i = 0;
         ??? = paramString;
         if (i != 0) {
-          ??? = paramString + bxq();
+          ??? = paramString + bBu();
         }
         paramString = new ValueCallback() {};
         if (paramURL == null)
         {
           parami.evaluateJavascript((String)???, paramString);
-          AppMethodBeat.o(193526);
+          AppMethodBeat.o(197447);
           return;
         }
       }
       parami.a(paramURL, (String)???, paramString);
-      AppMethodBeat.o(193526);
+      AppMethodBeat.o(197447);
       return;
       label164:
       int i = 1;
@@ -164,7 +164,7 @@ public final class q
     AppMethodBeat.i(176788);
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
-      ac.e("MicroMsg.JsValidationInjector", "empty script list, abort");
+      ad.e("MicroMsg.JsValidationInjector", "empty script list, abort");
       AppMethodBeat.o(176788);
       return;
     }
@@ -181,18 +181,18 @@ public final class q
       str2 = localScriptPartObject.wxaPkgPath;
       str1 = localScriptPartObject.wxaFileName;
       localObject = localScriptPartObject.wxaPkgKeyFilePath;
-      ac.i("MicroMsg.JsValidationInjector", " contain wxa pkg: %s, file: %s", new Object[] { str2, str1 });
+      ad.i("MicroMsg.JsValidationInjector", " contain wxa pkg: %s, file: %s", new Object[] { str2, str1 });
     }
     label345:
     for (;;)
     {
       break;
       final long l = System.currentTimeMillis();
-      if ((bs.isNullOrNil(str2)) || (bs.isNullOrNil(str1)) || (bs.isNullOrNil((String)localObject)))
+      if ((bt.isNullOrNil(str2)) || (bt.isNullOrNil(str1)) || (bt.isNullOrNil((String)localObject)))
       {
-        ac.e("MicroMsg.JsValidationInjector", "empty wxa path or file path or key path!");
+        ad.e("MicroMsg.JsValidationInjector", "empty wxa path or file path or key path!");
         if (parama != null) {
-          parama.bZ("isNullOrNil empty path");
+          parama.cT("isNullOrNil empty path");
         }
         AppMethodBeat.o(176788);
         return;
@@ -221,8 +221,8 @@ public final class q
       }
       catch (MalformedURLException parami)
       {
-        ac.e("MicroMsg.JsValidationInjector", "MalformedURLException");
-        parama.bZ("MalformedURLException");
+        ad.e("MicroMsg.JsValidationInjector", "MalformedURLException");
+        parama.cT("MalformedURLException");
         AppMethodBeat.o(176788);
         return;
       }
@@ -232,7 +232,7 @@ public final class q
             public final void a(String paramAnonymousString, m.c paramAnonymousc)
             {
               AppMethodBeat.i(176787);
-              q.a(this.mos, parama, paramAnonymousString, l);
+              q.a(this.mOU, parama, paramAnonymousString, l);
               if ((parama instanceof q.b)) {
                 ((q.b)parama).a(paramAnonymousc);
               }
@@ -247,7 +247,7 @@ public final class q
     }
   }
   
-  public static String bxq()
+  public static String bBu()
   {
     AppMethodBeat.i(135371);
     String str = String.format(Locale.ENGLISH, "\n;(function(){return %d;})();", new Object[] { Integer.valueOf(11111) });
@@ -257,7 +257,7 @@ public final class q
   
   public static abstract interface a
   {
-    public abstract void bZ(String paramString);
+    public abstract void cT(String paramString);
     
     public abstract void onSuccess(String paramString);
   }
@@ -270,7 +270,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.q
  * JD-Core Version:    0.7.0.1
  */

@@ -19,10 +19,10 @@ public class RecoveryConsoleUI
   extends MMActivity
   implements AdapterView.OnItemClickListener
 {
-  List<b.a> DfN;
-  SimpleAdapter DfO;
-  ListView EO;
-  List<Map<String, String>> oXp;
+  List<b.a> EJJ;
+  SimpleAdapter EJK;
+  ListView GF;
+  List<Map<String, String>> pAZ;
   
   public int getLayoutId()
   {
@@ -34,35 +34,43 @@ public class RecoveryConsoleUI
     AppMethodBeat.i(151618);
     super.onCreate(paramBundle);
     setTitle("Recovery Console");
-    this.DfN = b.eKn();
-    this.oXp = new ArrayList(this.DfN.size());
-    paramBundle = this.DfN.iterator();
+    this.EJJ = b.eZb();
+    this.pAZ = new ArrayList(this.EJJ.size());
+    paramBundle = this.EJJ.iterator();
     while (paramBundle.hasNext())
     {
       b.a locala = (b.a)paramBundle.next();
       HashMap localHashMap = new HashMap();
-      localHashMap.put("title", getString(locala.lMi));
-      this.oXp.add(localHashMap);
+      localHashMap.put("title", getString(locala.mlW));
+      this.pAZ.add(localHashMap);
     }
-    this.DfO = new SimpleAdapter(this, this.oXp, 2131494804, new String[] { "title" }, new int[] { 16908310 });
-    this.EO = ((ListView)findViewById(16908298));
-    this.EO.setAdapter(this.DfO);
-    this.EO.setOnItemClickListener(this);
+    this.EJK = new SimpleAdapter(this, this.pAZ, 2131494804, new String[] { "title" }, new int[] { 16908310 });
+    this.GF = ((ListView)findViewById(16908298));
+    this.GF.setAdapter(this.EJK);
+    this.GF.setOnItemClickListener(this);
     AppMethodBeat.o(151618);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(151619);
-    paramAdapterView = (b.a)this.DfN.get(paramInt);
-    if (paramAdapterView.DfS != null)
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bd(paramAdapterView);
+    localb.bd(paramView);
+    localb.mr(paramInt);
+    localb.qY(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/cmd/RecoveryConsoleUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+    paramAdapterView = (b.a)this.EJJ.get(paramInt);
+    if (paramAdapterView.EJO != null) {
+      paramAdapterView.EJO.a(this, paramAdapterView.dOr.split(" +"), "");
+    }
+    for (;;)
     {
-      paramAdapterView.DfS.a(this, paramAdapterView.dCe.split(" +"), "");
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/cmd/RecoveryConsoleUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(151619);
       return;
+      b.L(this, paramAdapterView.dOr, "");
     }
-    b.I(this, paramAdapterView.dCe, "");
-    AppMethodBeat.o(151619);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -73,7 +81,7 @@ public class RecoveryConsoleUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.cmd.RecoveryConsoleUI
  * JD-Core Version:    0.7.0.1
  */

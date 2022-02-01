@@ -11,12 +11,12 @@ import android.content.Intent;
 public class CoreComponentFactory
   extends AppComponentFactory
 {
-  private static <T> T k(T paramT)
+  private static <T> T l(T paramT)
   {
     Object localObject1 = paramT;
     if ((paramT instanceof a))
     {
-      Object localObject2 = ((a)paramT).dJ();
+      Object localObject2 = ((a)paramT).dY();
       localObject1 = paramT;
       if (localObject2 != null) {
         localObject1 = localObject2;
@@ -27,37 +27,37 @@ public class CoreComponentFactory
   
   public Activity instantiateActivity(ClassLoader paramClassLoader, String paramString, Intent paramIntent)
   {
-    return (Activity)k(super.instantiateActivity(paramClassLoader, paramString, paramIntent));
+    return (Activity)l(super.instantiateActivity(paramClassLoader, paramString, paramIntent));
   }
   
   public Application instantiateApplication(ClassLoader paramClassLoader, String paramString)
   {
-    return (Application)k(super.instantiateApplication(paramClassLoader, paramString));
+    return (Application)l(super.instantiateApplication(paramClassLoader, paramString));
   }
   
   public ContentProvider instantiateProvider(ClassLoader paramClassLoader, String paramString)
   {
-    return (ContentProvider)k(super.instantiateProvider(paramClassLoader, paramString));
+    return (ContentProvider)l(super.instantiateProvider(paramClassLoader, paramString));
   }
   
   public BroadcastReceiver instantiateReceiver(ClassLoader paramClassLoader, String paramString, Intent paramIntent)
   {
-    return (BroadcastReceiver)k(super.instantiateReceiver(paramClassLoader, paramString, paramIntent));
+    return (BroadcastReceiver)l(super.instantiateReceiver(paramClassLoader, paramString, paramIntent));
   }
   
   public Service instantiateService(ClassLoader paramClassLoader, String paramString, Intent paramIntent)
   {
-    return (Service)k(super.instantiateService(paramClassLoader, paramString, paramIntent));
+    return (Service)l(super.instantiateService(paramClassLoader, paramString, paramIntent));
   }
   
   public static abstract interface a
   {
-    public abstract Object dJ();
+    public abstract Object dY();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v4.app.CoreComponentFactory
  * JD-Core Version:    0.7.0.1
  */

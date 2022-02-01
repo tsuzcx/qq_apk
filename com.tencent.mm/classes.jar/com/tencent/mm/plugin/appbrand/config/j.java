@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.al;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.model.am;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storagebase.h;
 import java.util.Locale;
 

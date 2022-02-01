@@ -4,13 +4,13 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.c.a.a;
 import com.tencent.mm.plugin.scanner.model.ScanPoint;
-import com.tencent.mm.plugin.scanner.model.y;
+import com.tencent.mm.plugin.scanner.model.ab;
 import com.tencent.mm.plugin.scanner.ui.scangoods.widget.ScanAnimationDotsView;
 import com.tencent.mm.plugin.scanner.ui.scangoods.widget.ScanGoodsMaskView;
 import com.tencent.mm.plugin.scanner.view.BaseScanMaskView;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.a.e;
-import d.g.b.k;
+import d.g.b.p;
 
 final class ScanUIRectView$3
   implements a.a
@@ -20,15 +20,15 @@ final class ScanUIRectView$3
   public final void a(final long paramLong, Bundle paramBundle)
   {
     AppMethodBeat.i(161016);
-    ac.d("MicroMsg.ScanUIRectView", "alvinluo onDecodeSuccess %d", new Object[] { Long.valueOf(paramLong) });
+    ad.d("MicroMsg.ScanUIRectView", "alvinluo onDecodeSuccess %d", new Object[] { Long.valueOf(paramLong) });
     if (paramBundle.getBoolean("result_is_best_img", false)) {
-      this.xfW.post(new Runnable()
+      this.ytY.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(161013);
-          if ((paramLong == ScanUIRectView.l(ScanUIRectView.3.this.xfW)) && (ScanUIRectView.l(ScanUIRectView.3.this.xfW) != 0L) && (ScanUIRectView.m(ScanUIRectView.3.this.xfW) != null)) {
-            ScanUIRectView.m(ScanUIRectView.3.this.xfW).e(ScanUIRectView.l(ScanUIRectView.3.this.xfW), this.val$result);
+          if ((paramLong == ScanUIRectView.l(ScanUIRectView.3.this.ytY)) && (ScanUIRectView.l(ScanUIRectView.3.this.ytY) != 0L) && (ScanUIRectView.m(ScanUIRectView.3.this.ytY) != null)) {
+            ScanUIRectView.m(ScanUIRectView.3.this.ytY).e(ScanUIRectView.l(ScanUIRectView.3.this.ytY), this.val$result);
           }
           AppMethodBeat.o(161013);
         }
@@ -37,30 +37,30 @@ final class ScanUIRectView$3
     AppMethodBeat.o(161016);
   }
   
-  public final void a(final y paramy)
+  public final void a(final ab paramab)
   {
     AppMethodBeat.i(161018);
-    this.xfW.post(new Runnable()
+    this.ytY.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(161015);
-        if ((paramy != null) && ((ScanUIRectView.r(ScanUIRectView.3.this.xfW) instanceof ScanGoodsMaskView)))
+        if ((paramab != null) && ((ScanUIRectView.r(ScanUIRectView.3.this.ytY) instanceof ScanGoodsMaskView)))
         {
-          ScanGoodsMaskView localScanGoodsMaskView = (ScanGoodsMaskView)ScanUIRectView.r(ScanUIRectView.3.this.xfW);
-          y localy = paramy;
-          k.h(localy, "pointsResult");
-          if (localScanGoodsMaskView.xmC)
+          ScanGoodsMaskView localScanGoodsMaskView = (ScanGoodsMaskView)ScanUIRectView.r(ScanUIRectView.3.this.ytY);
+          ab localab = paramab;
+          p.h(localab, "pointsResult");
+          if (localScanGoodsMaskView.yAD)
           {
-            ac.i("MicroMsg.ScanGoodsMaskView", "alvinluo addAnimationScanDots isViewDestroy");
+            ad.i("MicroMsg.ScanGoodsMaskView", "alvinluo addAnimationScanDots isViewDestroy");
             AppMethodBeat.o(161015);
             return;
           }
-          ScanPoint[] arrayOfScanPoint = localy.points;
+          ScanPoint[] arrayOfScanPoint = localab.points;
           if (arrayOfScanPoint != null)
           {
-            ac.v("MicroMsg.ScanGoodsMaskView", "alvinluo addAnimationScanDots size: %d", new Object[] { Integer.valueOf(localy.pointCount) });
-            int j = localy.pointCount;
+            ad.v("MicroMsg.ScanGoodsMaskView", "alvinluo addAnimationScanDots size: %d", new Object[] { Integer.valueOf(localab.pointCount) });
+            int j = localab.pointCount;
             int i = 0;
             if (i < j)
             {
@@ -83,7 +83,7 @@ final class ScanUIRectView$3
               label222:
               for (localObject2 = Float.valueOf(((ScanPoint)localObject2).getY());; localObject2 = null)
               {
-                ac.v("MicroMsg.ScanGoodsMaskView", "alvinluo getPointObjects id: %d, x: %f, y: %f", new Object[] { localObject1, localFloat, localObject2 });
+                ad.v("MicroMsg.ScanGoodsMaskView", "alvinluo getPointObjects id: %d, x: %f, y: %f", new Object[] { localObject1, localFloat, localObject2 });
                 i += 1;
                 break;
                 localObject1 = null;
@@ -92,11 +92,11 @@ final class ScanUIRectView$3
                 break label164;
               }
             }
-            Object localObject1 = localScanGoodsMaskView.xhV;
+            Object localObject1 = localScanGoodsMaskView.yvW;
             if (localObject1 == null) {
-              k.aVY("animationDotsView");
+              p.bcb("animationDotsView");
             }
-            ((ScanAnimationDotsView)localObject1).b(localy);
+            ((ScanAnimationDotsView)localObject1).b(localab);
           }
         }
         AppMethodBeat.o(161015);
@@ -105,17 +105,17 @@ final class ScanUIRectView$3
     AppMethodBeat.o(161018);
   }
   
-  public final void wA(final long paramLong)
+  public final void yW(final long paramLong)
   {
     AppMethodBeat.i(161017);
-    ac.d("MicroMsg.ScanUIRectView", "alvinluo postTakeShot session: %d, delay: %d", new Object[] { Long.valueOf(paramLong), Long.valueOf(0L) });
-    this.xfW.post(new Runnable()
+    ad.d("MicroMsg.ScanUIRectView", "alvinluo postTakeShot session: %d, delay: %d", new Object[] { Long.valueOf(paramLong), Long.valueOf(0L) });
+    this.ytY.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(161014);
-        if ((ScanUIRectView.l(ScanUIRectView.3.this.xfW) == paramLong) && (ScanUIRectView.l(ScanUIRectView.3.this.xfW) != 0L)) {
-          ScanUIRectView.3.this.xfW.wE(this.tGh);
+        if ((ScanUIRectView.l(ScanUIRectView.3.this.ytY) == paramLong) && (ScanUIRectView.l(ScanUIRectView.3.this.ytY) != 0L)) {
+          ScanUIRectView.3.this.ytY.zb(this.uIT);
         }
         AppMethodBeat.o(161014);
       }

@@ -8,14 +8,14 @@ import java.util.List;
 
 public class a
 {
-  protected int JQg;
-  protected QbarNative JQh;
+  protected int LJT;
+  protected QbarNative LJU;
   
   public a()
   {
     AppMethodBeat.i(88393);
-    this.JQg = -1;
-    this.JQh = new QbarNative();
+    this.LJT = -1;
+    this.LJU = new QbarNative();
     AppMethodBeat.o(88393);
   }
   
@@ -35,15 +35,15 @@ public class a
     return str;
   }
   
-  public int F(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public int G(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88397);
     try
     {
-      if (this.JQg < 0) {
+      if (this.LJT < 0) {
         return -1;
       }
-      paramInt1 = this.JQh.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.JQg);
+      paramInt1 = this.LJU.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.LJT);
       return paramInt1;
     }
     finally
@@ -52,7 +52,7 @@ public class a
     }
   }
   
-  public final int I(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
+  public final int K(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
   {
     int k = 0;
     AppMethodBeat.i(88401);
@@ -62,7 +62,7 @@ public class a
       int j;
       try
       {
-        if (this.JQg < 0) {
+        if (this.LJT < 0) {
           return 0;
         }
         QbarNative.QBarCodeDetectInfo[] arrayOfQBarCodeDetectInfo = new QbarNative.QBarCodeDetectInfo[3];
@@ -77,7 +77,7 @@ public class a
         }
         paramList.clear();
         paramList1.clear();
-        this.JQh.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.JQg);
+        this.LJU.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.LJT);
         i = 0;
         j = k;
         if (i < 3)
@@ -118,11 +118,11 @@ public class a
     AppMethodBeat.i(88395);
     try
     {
-      if (this.JQg < 0) {
-        this.JQg = this.JQh.Init(1, paramInt, paramString1, paramString2, paramQbarAiModelParam);
+      if (this.LJT < 0) {
+        this.LJT = this.LJU.Init(1, paramInt, paramString1, paramString2, paramQbarAiModelParam);
       }
-      System.out.println("qbarId:" + this.JQg);
-      if (this.JQg < 0) {
+      System.out.println("qbarId:" + this.LJT);
+      if (this.LJT < 0) {
         return -1;
       }
       return 0;
@@ -133,7 +133,7 @@ public class a
     }
   }
   
-  public final List<a> fCb()
+  public final List<a> fTq()
   {
     int j = 0;
     AppMethodBeat.i(88399);
@@ -142,7 +142,7 @@ public class a
       int i;
       try
       {
-        if (this.JQg < 0) {
+        if (this.LJT < 0) {
           return null;
         }
         QbarNative.QBarResultJNI[] arrayOfQBarResultJNI = new QbarNative.QBarResultJNI[3];
@@ -156,7 +156,7 @@ public class a
           i += 1;
           continue;
         }
-        this.JQh.GetResults(arrayOfQBarResultJNI, this.JQg);
+        this.LJU.GetResults(arrayOfQBarResultJNI, this.LJT);
         ArrayList localArrayList = new ArrayList();
         i = j;
         if (i < 3)
@@ -198,16 +198,16 @@ public class a
     }
   }
   
-  public final QbarNative.QBarZoomInfo fCc()
+  public final QbarNative.QBarZoomInfo fTr()
   {
     AppMethodBeat.i(88400);
     try
     {
-      if (this.JQg < 0) {
+      if (this.LJT < 0) {
         return null;
       }
       QbarNative.QBarZoomInfo localQBarZoomInfo = new QbarNative.QBarZoomInfo();
-      this.JQh.GetZoomInfo(localQBarZoomInfo, this.JQg);
+      this.LJU.GetZoomInfo(localQBarZoomInfo, this.LJT);
       return localQBarZoomInfo;
     }
     finally
@@ -221,10 +221,10 @@ public class a
     AppMethodBeat.i(88396);
     try
     {
-      if (this.JQg < 0) {
+      if (this.LJT < 0) {
         return -1;
       }
-      paramInt = this.JQh.SetReaders(paramArrayOfInt, paramInt, this.JQg);
+      paramInt = this.LJU.SetReaders(paramArrayOfInt, paramInt, this.LJT);
       return paramInt;
     }
     finally
@@ -238,11 +238,11 @@ public class a
     AppMethodBeat.i(88398);
     try
     {
-      if (this.JQg < 0) {
+      if (this.LJT < 0) {
         return 0;
       }
-      int i = this.JQh.Release(this.JQg);
-      this.JQg = -1;
+      int i = this.LJU.Release(this.LJT);
+      this.LJT = -1;
       return i;
     }
     finally

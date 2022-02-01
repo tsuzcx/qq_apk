@@ -3,31 +3,31 @@ package com.tencent.mm.plugin.emojicapture.model;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.h.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.n.n;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/EmojiCaptureUtil;", "", "()V", "TAG", "", "checkVideoValid", "", "videoPath", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/EmojiCaptureUtil;", "", "()V", "TAG", "", "checkVideoValid", "", "videoPath", "plugin-emojicapture_release"})
 public final class f
 {
   private static final String TAG = "MicroMsg.EmojiCaptureUtil";
-  public static final f pnz;
+  public static final f pQZ;
   
   static
   {
     AppMethodBeat.i(190);
-    pnz = new f();
+    pQZ = new f();
     TAG = "MicroMsg.EmojiCaptureUtil";
     AppMethodBeat.o(190);
   }
   
-  public static boolean YG(String paramString)
+  public static boolean acm(String paramString)
   {
     AppMethodBeat.i(189);
-    k.h(paramString, "videoPath");
-    if (i.aSp(paramString) <= 0L)
+    p.h(paramString, "videoPath");
+    if (i.aYo(paramString) <= 0L)
     {
       AppMethodBeat.o(189);
       return false;
@@ -48,7 +48,7 @@ public final class f
           }
           catch (Exception paramString)
           {
-            ac.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
+            ad.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
             continue;
           }
         }
@@ -57,7 +57,7 @@ public final class f
         if (i < j)
         {
           paramString = localc.getTrackFormat(i);
-          k.g(paramString, "extractor.getTrackFormat(i)");
+          p.g(paramString, "extractor.getTrackFormat(i)");
           if ((paramString != null) && (paramString.containsKey("mime")))
           {
             paramString = paramString.getString("mime");
@@ -73,7 +73,7 @@ public final class f
                 }
                 catch (Exception paramString)
                 {
-                  ac.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
+                  ad.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
                   continue;
                 }
               }
@@ -86,14 +86,14 @@ public final class f
       catch (Exception paramString)
       {
         paramString = paramString;
-        ac.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid error", new Object[0]);
+        ad.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid error", new Object[0]);
         try
         {
           localc.release();
         }
         catch (Exception paramString)
         {
-          ac.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
+          ad.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
         }
         continue;
       }
@@ -106,7 +106,7 @@ public final class f
       }
       catch (Exception paramString)
       {
-        ac.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
+        ad.printErrStackTrace(TAG, (Throwable)paramString, "checkVideoValid, release extractor error", new Object[0]);
       }
     }
     try
@@ -119,7 +119,7 @@ public final class f
     {
       for (;;)
       {
-        ac.printErrStackTrace(TAG, (Throwable)localException, "checkVideoValid, release extractor error", new Object[0]);
+        ad.printErrStackTrace(TAG, (Throwable)localException, "checkVideoValid, release extractor error", new Object[0]);
       }
     }
   }

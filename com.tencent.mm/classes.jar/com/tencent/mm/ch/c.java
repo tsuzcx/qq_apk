@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class c
   extends BroadcastReceiver
 {
-  a<Boolean> GzJ;
-  a<Boolean> GzK;
+  a<Boolean> IlD;
+  a<Boolean> IlE;
   
   c(Context paramContext)
   {
@@ -38,8 +38,8 @@ final class c
         bool1 = true;
       }
     }
-    this.GzJ = new a("charging", Boolean.valueOf(bool1));
-    this.GzK = new a("interactive", Boolean.valueOf(((PowerManager)paramContext.getSystemService("power")).isScreenOn()));
+    this.IlD = new a("charging", Boolean.valueOf(bool1));
+    this.IlE = new a("interactive", Boolean.valueOf(((PowerManager)paramContext.getSystemService("power")).isScreenOn()));
     AppMethodBeat.o(133217);
   }
   
@@ -65,7 +65,7 @@ final class c
     for (;;)
     {
       if (paramContext != null) {
-        ac.i("MicroMsg.SystemStatus", "System status changed: %s = %s", new Object[] { paramContext.name(), paramContext.get().toString() });
+        ad.i("MicroMsg.SystemStatus", "System status changed: %s = %s", new Object[] { paramContext.name(), paramContext.get().toString() });
       }
       AppMethodBeat.o(133218);
       return;
@@ -89,17 +89,17 @@ final class c
       }
       i = 3;
       break;
-      this.GzK.set(Boolean.TRUE);
-      paramContext = this.GzK;
+      this.IlE.set(Boolean.TRUE);
+      paramContext = this.IlE;
       continue;
-      this.GzK.set(Boolean.FALSE);
-      paramContext = this.GzK;
+      this.IlE.set(Boolean.FALSE);
+      paramContext = this.IlE;
       continue;
-      this.GzJ.set(Boolean.TRUE);
-      paramContext = this.GzJ;
+      this.IlD.set(Boolean.TRUE);
+      paramContext = this.IlD;
       continue;
-      this.GzJ.set(Boolean.FALSE);
-      paramContext = this.GzJ;
+      this.IlD.set(Boolean.FALSE);
+      paramContext = this.IlD;
     }
   }
 }

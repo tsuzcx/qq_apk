@@ -8,10 +8,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.o;
+import com.tencent.mm.aw.q;
 import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,30 +19,30 @@ public class f
   extends com.tencent.mm.plugin.emoji.a.a.a
 {
   private final String TAG;
-  public boolean oXt;
-  public boolean oXu;
-  public boolean oXv;
-  public boolean oXw;
-  private List<String> oXx;
+  public boolean pBd;
+  public boolean pBe;
+  public boolean pBf;
+  public boolean pBg;
+  private List<String> pBh;
   
   public f(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(179051);
     this.TAG = "MicroMsg.emoji.EmojiStoreMainAdapter";
-    this.oXt = false;
-    this.oXu = true;
-    this.oXv = false;
-    this.oXw = true;
-    this.oXx = new LinkedList();
+    this.pBd = false;
+    this.pBe = true;
+    this.pBf = false;
+    this.pBg = true;
+    this.pBh = new LinkedList();
     AppMethodBeat.o(179051);
   }
   
-  public void Bh(int paramInt) {}
+  public void BP(int paramInt) {}
   
-  public void Bi(int paramInt) {}
+  public void BQ(int paramInt) {}
   
-  public void Bj(int paramInt) {}
+  public void BR(int paramInt) {}
   
   public View b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
@@ -50,52 +50,52 @@ public class f
     int i = 0;
     AppMethodBeat.i(108325);
     a locala = (a)paramView.getTag();
-    paramViewGroup = Bk(paramInt);
-    if (this.oXv)
+    paramViewGroup = BS(paramInt);
+    if (this.pBf)
     {
-      paramViewGroup.oYr = true;
-      paramViewGroup.oYp = false;
-      paramViewGroup.oYq = false;
+      paramViewGroup.pCb = true;
+      paramViewGroup.pBZ = false;
+      paramViewGroup.pCa = false;
     }
     Object localObject;
     label131:
     boolean bool;
     if ((locala != null) && (paramViewGroup != null))
     {
-      paramViewGroup.oYq = this.oXw;
-      localObject = paramViewGroup.oYm;
+      paramViewGroup.pCa = this.pBg;
+      localObject = paramViewGroup.pBW;
       if (localObject != null) {
         break label278;
       }
-      locala.Bg(0);
+      locala.BO(0);
       paramInt = 0;
       if (paramInt == 0)
       {
-        paramViewGroup = paramViewGroup.oYl;
+        paramViewGroup = paramViewGroup.pBV;
         if (paramViewGroup != null)
         {
           locala.setTitle(paramViewGroup.PackName);
           if (!com.tencent.mm.plugin.emoji.h.a.g(paramViewGroup)) {
             break label401;
           }
-          o.aFB().loadImage("", locala.cbr());
-          locala.cbs();
-          bool = com.tencent.mm.plugin.emoji.a.a.e.fg(paramViewGroup.PackType, 2);
+          q.aIJ().loadImage("", locala.cfV());
+          locala.cfW();
+          bool = com.tencent.mm.plugin.emoji.a.a.e.fk(paramViewGroup.PackType, 2);
           if (TextUtils.isEmpty(paramViewGroup.TagUri)) {
             break label430;
           }
-          locala.cbt().setImageDrawable(null);
-          locala.cbt().setVisibility(0);
-          o.aFB().a(paramViewGroup.TagUri, locala.cbt(), com.tencent.mm.plugin.emoji.e.e.fk("", paramViewGroup.TagUri));
+          locala.cfX().setImageDrawable(null);
+          locala.cfX().setVisibility(0);
+          q.aIJ().a(paramViewGroup.TagUri, locala.cfX(), com.tencent.mm.plugin.emoji.e.e.fu("", paramViewGroup.TagUri));
           label193:
-          localObject = locala.oWO;
-          if (!this.oXx.contains(paramViewGroup.ProductID)) {
+          localObject = locala.pAy;
+          if (!this.pBh.contains(paramViewGroup.ProductID)) {
             break label459;
           }
           paramInt = i;
           label219:
           ((View)localObject).setVisibility(paramInt);
-          if (bs.isNullOrNil(paramViewGroup.ExptDesc)) {
+          if (bt.isNullOrNil(paramViewGroup.ExptDesc)) {
             break label465;
           }
         }
@@ -107,65 +107,65 @@ public class f
     label465:
     for (paramViewGroup = paramViewGroup.ExptDesc;; paramViewGroup = paramViewGroup.Introduce)
     {
-      locala.Xz(paramViewGroup);
-      if ((this.oXt) && (locala.oWL != null)) {
-        locala.oWL.setBackgroundResource(2131231820);
+      locala.abg(paramViewGroup);
+      if ((this.pBd) && (locala.pAv != null)) {
+        locala.pAv.setBackgroundResource(2131231820);
       }
       AppMethodBeat.o(108325);
       return paramView;
       locala.setTitle(((EmotionBannerSet)localObject).Title);
-      locala.Xz(((EmotionBannerSet)localObject).Desc);
-      if (!bs.isNullOrNil(((EmotionBannerSet)localObject).IconUrl)) {
-        o.aFB().a(((EmotionBannerSet)localObject).IconUrl, locala.cbr(), com.tencent.mm.plugin.emoji.e.e.fk("", ((EmotionBannerSet)localObject).IconUrl));
+      locala.abg(((EmotionBannerSet)localObject).Desc);
+      if (!bt.isNullOrNil(((EmotionBannerSet)localObject).IconUrl)) {
+        q.aIJ().a(((EmotionBannerSet)localObject).IconUrl, locala.cfV(), com.tencent.mm.plugin.emoji.e.e.fu("", ((EmotionBannerSet)localObject).IconUrl));
       }
-      if (!bs.isNullOrNil(((EmotionBannerSet)localObject).TagUrl))
+      if (!bt.isNullOrNil(((EmotionBannerSet)localObject).TagUrl))
       {
-        o.aFB().a(((EmotionBannerSet)localObject).TagUrl, locala.cbt(), com.tencent.mm.plugin.emoji.e.e.fk("", ((EmotionBannerSet)localObject).TagUrl));
-        locala.Bf(0);
+        q.aIJ().a(((EmotionBannerSet)localObject).TagUrl, locala.cfX(), com.tencent.mm.plugin.emoji.e.e.fu("", ((EmotionBannerSet)localObject).TagUrl));
+        locala.BN(0);
       }
       for (;;)
       {
-        locala.Bg(8);
+        locala.BO(8);
         paramInt = j;
         break;
-        locala.Bf(8);
+        locala.BN(8);
       }
-      o.aFB().a(paramViewGroup.IconUrl, locala.cbr(), com.tencent.mm.plugin.emoji.e.e.fk(paramViewGroup.ProductID, paramViewGroup.IconUrl));
+      q.aIJ().a(paramViewGroup.IconUrl, locala.cfV(), com.tencent.mm.plugin.emoji.e.e.fu(paramViewGroup.ProductID, paramViewGroup.IconUrl));
       break label131;
       if (bool)
       {
-        locala.Bf(0);
-        locala.cbu();
+        locala.BN(0);
+        locala.cfY();
         break label193;
       }
-      locala.Bf(8);
+      locala.BN(8);
       break label193;
       paramInt = 8;
       break label219;
     }
   }
   
-  public final void cM(List<String> paramList)
+  public final void cN(List<String> paramList)
   {
     AppMethodBeat.i(179052);
-    this.oXx.clear();
+    this.pBh.clear();
     if (paramList != null) {
-      this.oXx.addAll(paramList);
+      this.pBh.addAll(paramList);
     }
     AppMethodBeat.o(179052);
   }
   
-  public int cbE()
+  public int cgi()
   {
     return 0;
   }
   
-  public int cbF()
+  public int cgj()
   {
     return 0;
   }
   
-  public int cbG()
+  public int cgk()
   {
     return 0;
   }
@@ -181,7 +181,7 @@ public class f
   {
     AppMethodBeat.i(108323);
     paramContext = new a(paramContext, paramView);
-    paramContext.a(this.oYa);
+    paramContext.a(this.pBK);
     AppMethodBeat.o(108323);
     return paramContext;
   }
@@ -194,39 +194,39 @@ public class f
       super(paramView);
     }
     
-    protected final void cbn()
+    protected final void cfR()
     {
       AppMethodBeat.i(108319);
-      this.oWN.setVisibility(8);
-      cbv();
-      this.oWR.setVisibility(8);
-      this.oWV.setVisibility(8);
-      this.oWW.setVisibility(8);
-      this.oWM.setVisibility(0);
-      this.lfN.setVisibility(0);
-      this.oWT.setVisibility(0);
-      this.oWS.setVisibility(0);
-      this.oWU.setVisibility(0);
+      this.pAx.setVisibility(8);
+      cfZ();
+      this.pAB.setVisibility(8);
+      this.pAF.setVisibility(8);
+      this.pAG.setVisibility(8);
+      this.pAw.setVisibility(0);
+      this.lCL.setVisibility(0);
+      this.pAD.setVisibility(0);
+      this.pAC.setVisibility(0);
+      this.pAE.setVisibility(0);
       AppMethodBeat.o(108319);
     }
     
-    protected final int[] cbo()
+    protected final int[] cfS()
     {
       AppMethodBeat.i(108320);
-      int i = com.tencent.mm.cc.a.au(this.mContext, 2131166234);
+      int i = com.tencent.mm.cc.a.ax(this.mContext, 2131166234);
       AppMethodBeat.o(108320);
       return new int[] { i, i };
     }
     
-    protected final int cbp()
+    protected final int cfT()
     {
       AppMethodBeat.i(108321);
-      int i = com.tencent.mm.cc.a.au(this.mContext, 2131166233);
+      int i = com.tencent.mm.cc.a.ax(this.mContext, 2131166233);
       AppMethodBeat.o(108321);
       return i;
     }
     
-    protected final boolean cby()
+    protected final boolean cgc()
     {
       AppMethodBeat.i(108322);
       boolean bool = f.a(f.this);

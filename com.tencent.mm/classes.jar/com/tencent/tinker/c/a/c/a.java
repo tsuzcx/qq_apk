@@ -12,33 +12,33 @@ import java.io.ByteArrayOutputStream;
 
 public abstract class a
 {
-  public abstract int afA(int paramInt);
+  public abstract int ahX(int paramInt);
   
-  public abstract int afB(int paramInt);
+  public abstract int ahY(int paramInt);
   
-  public abstract int afC(int paramInt);
+  public abstract int ahZ(int paramInt);
   
-  public abstract int afD(int paramInt);
+  public abstract int aia(int paramInt);
   
-  public abstract int afE(int paramInt);
+  public abstract int aib(int paramInt);
   
-  public abstract int afF(int paramInt);
+  public abstract int aic(int paramInt);
   
-  public abstract int afG(int paramInt);
+  public abstract int aid(int paramInt);
   
-  public abstract int afH(int paramInt);
+  public abstract int aie(int paramInt);
   
-  public abstract int afI(int paramInt);
+  public abstract int aif(int paramInt);
   
-  public abstract int afJ(int paramInt);
+  public abstract int aig(int paramInt);
   
-  public abstract int afK(int paramInt);
+  public abstract int aih(int paramInt);
   
-  public abstract int afx(int paramInt);
+  public abstract int aii(int paramInt);
   
-  public abstract int afy(int paramInt);
+  public abstract int aij(int paramInt);
   
-  public abstract int afz(int paramInt);
+  public abstract int aik(int paramInt);
   
   public final e.a[] b(e.a[] paramArrayOfa)
   {
@@ -47,7 +47,7 @@ public abstract class a
     while (i < paramArrayOfa.length)
     {
       e.a locala = paramArrayOfa[i];
-      arrayOfa[i] = new e.a(afA(locala.KmL), locala.KmM);
+      arrayOfa[i] = new e.a(aia(locala.McJ), locala.McK);
       i += 1;
     }
     return arrayOfa;
@@ -60,9 +60,9 @@ public abstract class a
     while (i < paramArrayOfb.length)
     {
       e.b localb = paramArrayOfb[i];
-      int j = afB(localb.KmN);
-      int k = afK(localb.KmO);
-      arrayOfb[i] = new e.b(j, localb.KmM, k);
+      int j = aib(localb.McL);
+      int k = aik(localb.McM);
+      arrayOfb[i] = new e.b(j, localb.McK, k);
       i += 1;
     }
     return arrayOfb;
@@ -70,17 +70,17 @@ public abstract class a
   
   public final class a
   {
-    private final b KpX;
+    private final b MfV;
     
     public a(b paramb)
     {
-      this.KpX = paramb;
+      this.MfV = paramb;
     }
     
     private void a(m paramm)
     {
       int i = 0;
-      switch (paramm.xz())
+      switch (paramm.yW())
       {
       case 1: 
       case 5: 
@@ -99,77 +99,77 @@ public abstract class a
       case 21: 
       case 22: 
       default: 
-        throw new j("Unexpected type: " + Integer.toHexString(paramm.xz()));
+        throw new j("Unexpected type: " + Integer.toHexString(paramm.yW()));
       case 0: 
-        l.a(this.KpX, 0, paramm.readByte());
+        l.a(this.MfV, 0, paramm.readByte());
         return;
       case 2: 
-        l.a(this.KpX, 2, paramm.readShort());
+        l.a(this.MfV, 2, paramm.readShort());
         return;
       case 4: 
-        l.a(this.KpX, 4, paramm.readInt());
+        l.a(this.MfV, 4, paramm.readInt());
         return;
       case 6: 
-        l.a(this.KpX, 6, paramm.readLong());
+        l.a(this.MfV, 6, paramm.readLong());
         return;
       case 3: 
-        l.b(this.KpX, 3, paramm.readChar());
+        l.b(this.MfV, 3, paramm.readChar());
         return;
       case 16: 
         long l = Float.floatToIntBits(paramm.readFloat());
-        l.c(this.KpX, 16, l << 32);
+        l.c(this.MfV, 16, l << 32);
         return;
       case 17: 
-        l.c(this.KpX, 17, Double.doubleToLongBits(paramm.readDouble()));
+        l.c(this.MfV, 17, Double.doubleToLongBits(paramm.readDouble()));
         return;
       case 23: 
-        l.b(this.KpX, 23, a.this.afx(paramm.fGS()));
+        l.b(this.MfV, 23, a.this.ahX(paramm.fYe()));
         return;
       case 24: 
-        l.b(this.KpX, 24, a.this.afy(paramm.fGT()));
+        l.b(this.MfV, 24, a.this.ahY(paramm.fYf()));
         return;
       case 25: 
-        l.b(this.KpX, 25, a.this.afA(paramm.fGU()));
+        l.b(this.MfV, 25, a.this.aia(paramm.fYg()));
         return;
       case 27: 
-        l.b(this.KpX, 27, a.this.afA(paramm.fGV()));
+        l.b(this.MfV, 27, a.this.aia(paramm.fYh()));
         return;
       case 26: 
-        l.b(this.KpX, 26, a.this.afB(paramm.fGW()));
+        l.b(this.MfV, 26, a.this.aib(paramm.fYi()));
         return;
       case 28: 
-        kP(28, 0);
+        le(28, 0);
         c(paramm);
         return;
       case 29: 
-        kP(29, 0);
+        le(29, 0);
         b(paramm);
         return;
       case 30: 
-        paramm.fGX();
-        kP(30, 0);
+        paramm.fYj();
+        le(30, 0);
         return;
       }
       if (paramm.readBoolean()) {
         i = 1;
       }
-      kP(31, i);
+      le(31, i);
     }
     
-    private void kP(int paramInt1, int paramInt2)
+    private void le(int paramInt1, int paramInt2)
     {
-      this.KpX.writeByte(paramInt2 << 5 | paramInt1);
+      this.MfV.writeByte(paramInt2 << 5 | paramInt1);
     }
     
     public final void b(m paramm)
     {
-      int j = paramm.fGQ();
-      o.a(this.KpX, a.this.afy(paramm.Knz));
-      o.a(this.KpX, j);
+      int j = paramm.fYc();
+      o.a(this.MfV, a.this.ahY(paramm.Mdx));
+      o.a(this.MfV, j);
       int i = 0;
       while (i < j)
       {
-        o.a(this.KpX, a.this.afx(paramm.fGR()));
+        o.a(this.MfV, a.this.ahX(paramm.fYd()));
         a(paramm);
         i += 1;
       }
@@ -177,8 +177,8 @@ public abstract class a
     
     public final void c(m paramm)
     {
-      int j = paramm.fGP();
-      o.a(this.KpX, j);
+      int j = paramm.fYb();
+      o.a(this.MfV, j);
       int i = 0;
       while (i < j)
       {
@@ -190,7 +190,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.c.a.c.a
  * JD-Core Version:    0.7.0.1
  */

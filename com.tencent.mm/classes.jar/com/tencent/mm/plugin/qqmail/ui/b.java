@@ -10,61 +10,61 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.tencent.mars.cdn.CdnLogic;
+import com.tencent.mars.cdn.CdnLogic.C2CUploadRequest;
+import com.tencent.mars.cdn.CdnLogic.C2CUploadResult;
+import com.tencent.mars.cdn.CdnLogic.UploadCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.plugin.qqmail.b.ai;
-import com.tencent.mm.plugin.qqmail.b.aj;
-import com.tencent.mm.plugin.qqmail.b.o;
-import com.tencent.mm.plugin.qqmail.b.v;
-import com.tencent.mm.plugin.qqmail.b.w;
-import com.tencent.mm.plugin.qqmail.b.w.a;
-import com.tencent.mm.plugin.qqmail.b.w.c;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.qqmail.d.aj;
+import com.tencent.mm.plugin.qqmail.d.ap;
 import com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public final class b
-  implements com.tencent.mm.ak.g
+  implements CdnLogic.UploadCallback, f
 {
-  int mode;
-  private TextView vWt;
-  private ImageView vWu;
-  ComposeUI vXP;
-  ViewGroup vXQ;
-  Map<String, aj> vXR;
-  Map<String, v> vXS;
-  Map<String, String> vXT;
-  Map<String, String> vXU;
-  b vXV;
-  private View.OnClickListener vXW;
+  private TextView xel;
+  private ImageView xem;
+  private ComposeUI xfD;
+  private ViewGroup xfE;
+  Map<String, aj> xfF;
+  private Map<String, com.tencent.mm.plugin.qqmail.e.a> xfG;
+  private Map<String, String> xfH;
+  b xfI;
+  private View.OnClickListener xfJ;
   
   private b(ComposeUI paramComposeUI, TextView paramTextView, ImageView paramImageView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(123021);
-    this.vXR = new HashMap();
-    this.vXS = new HashMap();
-    this.vXT = new LinkedHashMap();
-    this.vXU = new LinkedHashMap();
-    this.vXV = null;
-    this.vXW = null;
-    this.mode = 5;
-    this.vXP = paramComposeUI;
-    this.vXQ = paramViewGroup;
-    this.vXW = null;
-    this.vWt = paramTextView;
-    this.vWu = paramImageView;
-    dsm();
-    com.tencent.mm.kernel.g.agQ().ghe.a(484, this);
+    this.xfF = new HashMap();
+    this.xfG = new HashMap();
+    this.xfH = new HashMap();
+    this.xfI = null;
+    this.xfJ = null;
+    this.xfD = paramComposeUI;
+    this.xfE = paramViewGroup;
+    this.xfJ = null;
+    this.xel = paramTextView;
+    this.xem = paramImageView;
+    dCL();
+    g.ajB().gAO.a(11665, this);
     AppMethodBeat.o(123021);
   }
   
@@ -73,10 +73,51 @@ public final class b
     this(paramComposeUI, paramTextView, paramImageView, paramViewGroup);
   }
   
-  public final boolean Gt(String paramString)
+  private void b(aj paramaj)
+  {
+    AppMethodBeat.i(123034);
+    int i = Math.abs(paramaj.path.hashCode() / 2);
+    Object localObject = (LinearLayout)this.xfE.findViewById(i);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(123034);
+      return;
+    }
+    localObject = (a)((LinearLayout)localObject).getTag();
+    ad.i("MicroMsg.Mail.FileUploadHelper", "show upload status %d", new Object[] { Integer.valueOf(paramaj.state) });
+    switch (paramaj.state)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(123034);
+      return;
+      ((a)localObject).jfJ.setTextColor(this.xfD.getResources().getColor(2131100711));
+      ((a)localObject).xfR.setVisibility(0);
+      ((a)localObject).xfS.setVisibility(8);
+      ((a)localObject).xfT.setVisibility(8);
+      ((a)localObject).xfU.setVisibility(0);
+      AppMethodBeat.o(123034);
+      return;
+      ((a)localObject).jfJ.setTextColor(this.xfD.getResources().getColor(2131100711));
+      ((a)localObject).xfR.setVisibility(8);
+      ((a)localObject).xfS.setVisibility(8);
+      ((a)localObject).xfT.setVisibility(8);
+      ((a)localObject).xfU.setVisibility(0);
+      AppMethodBeat.o(123034);
+      return;
+      ((a)localObject).jfJ.setTextColor(com.tencent.mm.cc.a.n(this.xfD, 2131100544));
+      ((a)localObject).xfR.setVisibility(8);
+      ((a)localObject).xfS.setVisibility(0);
+      ((a)localObject).xfT.setVisibility(0);
+      ((a)localObject).xfU.setVisibility(0);
+    }
+  }
+  
+  public final boolean JI(String paramString)
   {
     AppMethodBeat.i(123024);
-    boolean bool = this.vXR.containsKey(paramString);
+    boolean bool = this.xfF.containsKey(paramString);
     AppMethodBeat.o(123024);
     return bool;
   }
@@ -84,62 +125,44 @@ public final class b
   final void a(final aj paramaj)
   {
     AppMethodBeat.i(123025);
-    final LinearLayout localLinearLayout = (LinearLayout)((ViewGroup)View.inflate(this.vXP, 2131495156, null)).findViewById(2131303313);
+    final LinearLayout localLinearLayout = (LinearLayout)((ViewGroup)View.inflate(this.xfD, 2131495156, null)).findViewById(2131303313);
     ImageView localImageView1 = (ImageView)localLinearLayout.findViewById(2131303312);
     TextView localTextView1 = (TextView)localLinearLayout.findViewById(2131303314);
     TextView localTextView2 = (TextView)localLinearLayout.findViewById(2131303316);
     ProgressBar localProgressBar = (ProgressBar)localLinearLayout.findViewById(2131303317);
     TextView localTextView3 = (TextView)localLinearLayout.findViewById(2131303318);
-    final ImageView localImageView2 = (ImageView)localLinearLayout.findViewById(2131303315);
+    ImageView localImageView2 = (ImageView)localLinearLayout.findViewById(2131303315);
     ImageView localImageView3 = (ImageView)localLinearLayout.findViewById(2131303311);
     ((ViewGroup)localLinearLayout.getParent()).removeView(localLinearLayout);
-    localImageView1.setImageResource(FileExplorerUI.aHN(paramaj.name));
+    localImageView1.setImageResource(FileExplorerUI.aNp(paramaj.name));
     localTextView1.setText(paramaj.name);
-    localTextView2.setText(bs.qz(paramaj.size));
+    localTextView2.setText(bt.sy(paramaj.size));
     a locala = new a((byte)0);
-    locala.lzC = localImageView1;
-    locala.iMz = localTextView1;
-    locala.vXz = localTextView2;
-    locala.vYf = localProgressBar;
-    locala.vYg = localTextView3;
-    locala.vYh = localImageView2;
-    locala.vYi = localImageView3;
+    locala.lZa = localImageView1;
+    locala.jfJ = localTextView1;
+    locala.xfn = localTextView2;
+    locala.xfR = localProgressBar;
+    locala.xfS = localTextView3;
+    locala.xfT = localImageView2;
+    locala.xfU = localImageView3;
     localLinearLayout.setTag(locala);
     localLinearLayout.setId(Math.abs(paramaj.path.hashCode() / 2));
-    if (this.vXW != null) {
-      localLinearLayout.setOnClickListener(this.vXW);
+    if (this.xfJ != null) {
+      localLinearLayout.setOnClickListener(this.xfJ);
     }
-    this.vXQ.addView(localLinearLayout);
-    dsm();
-    localLinearLayout.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(123008);
-        if (localImageView2.getVisibility() == 0) {
-          localImageView2.performClick();
-        }
-        AppMethodBeat.o(123008);
-      }
-    });
+    this.xfE.addView(localLinearLayout);
+    dCL();
+    localLinearLayout.setOnClickListener(new b.1(this, localImageView2));
     localImageView2.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(123009);
-        long l;
-        if (b.this.mode == 5)
-        {
-          l = b.this.aqd(paramaj.path);
-          paramaj.vVK = l;
-          AppMethodBeat.o(123009);
-          return;
-        }
-        if (b.this.mode == 6)
-        {
-          l = b.this.is(paramaj.path, paramaj.name);
-          paramaj.vVK = l;
-        }
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/FileUploadHelper$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        paramaj.xcO = b.a(b.this, paramaj.path);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/FileUploadHelper$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(123009);
       }
     });
@@ -148,268 +171,114 @@ public final class b
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(123011);
-        com.tencent.mm.ui.base.h.a(b.this.vXP, 2131761951, 2131755906, new DialogInterface.OnClickListener()
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/FileUploadHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        h.a(b.a(b.this), 2131761951, 2131755906, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
             AppMethodBeat.i(123010);
-            aj localaj;
-            if ((b.3.this.vXZ.state == 0) || (b.3.this.vXZ.state == 1))
-            {
-              paramAnonymous2DialogInterface = b.this;
-              localaj = b.3.this.vXZ;
-              if (paramAnonymous2DialogInterface.mode != 5) {
-                break label216;
-              }
-              ((o)com.tencent.mm.kernel.g.ad(o.class)).getNormalMailAppService().cancel(localaj.vVK);
+            if ((b.3.this.xfM.state == 0) || (b.3.this.xfM.state == 1)) {
+              b.a(b.this, b.3.this.xfM);
             }
-            for (;;)
-            {
-              b.this.vXR.remove(b.3.this.vXZ.path);
-              b.this.vXS.remove(b.3.this.vXZ.path);
-              b.this.vXT.remove(b.3.this.vXZ.path);
-              b.this.vXU.remove(b.3.this.vXZ.path);
-              b.this.vXQ.removeView(b.3.this.vYa);
-              b.this.dsm();
-              AppMethodBeat.o(123010);
-              return;
-              label216:
-              if (paramAnonymous2DialogInterface.mode == 6)
-              {
-                v localv = (v)paramAnonymous2DialogInterface.vXS.get(localaj.path);
-                if (localv != null) {
-                  com.tencent.mm.kernel.g.agQ().ghe.a(localv);
-                }
-                paramAnonymous2DialogInterface.vXT.remove(localaj.path);
-                paramAnonymous2DialogInterface.vXU.remove(localaj.path);
-              }
-            }
+            b.b(b.this).remove(b.3.this.xfM.path);
+            b.c(b.this).remove(b.3.this.xfM.path);
+            b.d(b.this).removeView(b.3.this.xfN);
+            b.this.dCL();
+            AppMethodBeat.o(123010);
           }
         }, null);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/FileUploadHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(123011);
       }
     });
-    this.vXQ.post(new Runnable()
+    this.xfE.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(123012);
-        b.this.b(paramaj);
+        b.b(b.this, paramaj);
         AppMethodBeat.o(123012);
       }
     });
-    if (paramaj.state == 0)
-    {
-      if (this.mode == 5)
-      {
-        paramaj.vVK = aqd(paramaj.path);
-        AppMethodBeat.o(123025);
-        return;
-      }
-      if (this.mode == 6) {
-        paramaj.vVK = is(paramaj.path, paramaj.name);
-      }
+    if (paramaj.state == 0) {
+      paramaj.xcO = avc(paramaj.path);
     }
     AppMethodBeat.o(123025);
   }
   
-  final long aqd(final String paramString)
+  final long avc(String paramString)
   {
     AppMethodBeat.i(123029);
-    w.c localc = new w.c();
-    localc.vUX = false;
-    localc.vUW = true;
-    long l = ((o)com.tencent.mm.kernel.g.ad(o.class)).getNormalMailAppService().a("/cgi-bin/uploaddata", "UploadFile", paramString, localc, new w.a()
+    try
     {
-      public final void onComplete()
-      {
-        AppMethodBeat.i(123016);
-        b.a(b.this);
-        AppMethodBeat.o(123016);
-      }
-      
-      public final void onError(int paramAnonymousInt, String paramAnonymousString)
-      {
-        AppMethodBeat.i(123015);
-        ac.e("MicroMsg.FileUploadHelper", "errCode:%d, desc:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-        paramAnonymousString = (aj)b.this.vXR.get(paramString);
-        if (paramAnonymousString != null)
-        {
-          paramAnonymousString.state = 3;
-          b.this.b(paramAnonymousString);
-        }
-        if (paramAnonymousInt == -5)
-        {
-          b.this.vXP.vWA.a(new c.a()
-          {
-            public final void drP() {}
-            
-            public final void drQ() {}
-          });
-          AppMethodBeat.o(123015);
-          return;
-        }
-        AppMethodBeat.o(123015);
-      }
-      
-      public final boolean onReady()
-      {
-        AppMethodBeat.i(123013);
-        aj localaj = (aj)b.this.vXR.get(paramString);
-        if (localaj != null)
-        {
-          localaj.state = 1;
-          b.this.b(localaj);
-        }
-        AppMethodBeat.o(123013);
-        return true;
-      }
-      
-      public final void onSuccess(String paramAnonymousString, Map<String, String> paramAnonymousMap)
-      {
-        AppMethodBeat.i(123014);
-        paramAnonymousString = (String)paramAnonymousMap.get(".Response.result.DataID");
-        paramAnonymousMap = (aj)b.this.vXR.get(paramString);
-        if (paramAnonymousMap != null)
-        {
-          paramAnonymousMap.state = 2;
-          paramAnonymousMap.tBd = paramAnonymousString;
-          b.this.b(paramAnonymousMap);
-        }
-        AppMethodBeat.o(123014);
-      }
-    });
-    AppMethodBeat.o(123029);
-    return l;
-  }
-  
-  final void b(aj paramaj)
-  {
-    AppMethodBeat.i(123034);
-    int i = Math.abs(paramaj.path.hashCode() / 2);
-    Object localObject = (LinearLayout)this.vXQ.findViewById(i);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(123034);
-      return;
+      Object localObject1 = new e(paramString);
+      ad.i("MicroMsg.Mail.FileUploadHelper", "doNormalUpload %s", new Object[] { paramString, ((e)localObject1).getName() });
+      Object localObject2 = i.aY(paramString, 0, (int)((e)localObject1).length());
+      String str = com.tencent.mm.b.n.bytesToHex(MessageDigest.getInstance("SHA1").digest((byte[])localObject2));
+      localObject2 = ai.B((byte[])localObject2);
+      localObject1 = new com.tencent.mm.plugin.qqmail.e.a(paramString, (int)((e)localObject1).length(), str, (String)localObject2);
+      g.aiU().a((com.tencent.mm.al.n)localObject1, 0);
+      this.xfG.put(paramString, localObject1);
+      long l = System.currentTimeMillis();
+      AppMethodBeat.o(123029);
+      return l;
     }
-    localObject = (a)((LinearLayout)localObject).getTag();
-    switch (paramaj.state)
+    catch (Exception paramString)
     {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(123034);
-      return;
-      ((a)localObject).iMz.setTextColor(this.vXP.getResources().getColor(2131100711));
-      ((a)localObject).vYf.setVisibility(0);
-      ((a)localObject).vYg.setVisibility(8);
-      ((a)localObject).vYh.setVisibility(8);
-      ((a)localObject).vYi.setVisibility(0);
-      AppMethodBeat.o(123034);
-      return;
-      ((a)localObject).iMz.setTextColor(this.vXP.getResources().getColor(2131100711));
-      ((a)localObject).vYf.setVisibility(8);
-      ((a)localObject).vYg.setVisibility(8);
-      ((a)localObject).vYh.setVisibility(8);
-      ((a)localObject).vYi.setVisibility(0);
-      AppMethodBeat.o(123034);
-      return;
-      ((a)localObject).iMz.setTextColor(a.n(this.vXP, 2131100544));
-      ((a)localObject).vYf.setVisibility(8);
-      ((a)localObject).vYg.setVisibility(0);
-      ((a)localObject).vYh.setVisibility(0);
-      ((a)localObject).vYi.setVisibility(0);
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.Mail.FileUploadHelper", paramString, "", new Object[0]);
+      }
     }
   }
   
-  public final String dsi()
-  {
-    AppMethodBeat.i(123026);
-    String str1 = "";
-    Iterator localIterator = this.vXR.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str3 = (String)localIterator.next();
-      String str2 = str1;
-      if (str1.length() > 0) {
-        str2 = str1 + "|";
-      }
-      str1 = str2 + ((aj)this.vXR.get(str3)).tBd;
-    }
-    AppMethodBeat.o(123026);
-    return str1;
-  }
-  
-  public final LinkedList<aj> dsj()
+  public final LinkedList<aj> dCI()
   {
     AppMethodBeat.i(123027);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.vXR.keySet().iterator();
+    Iterator localIterator = this.xfF.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localLinkedList.add(this.vXR.get(str));
+      localLinkedList.add(this.xfF.get(str));
     }
     AppMethodBeat.o(123027);
     return localLinkedList;
   }
   
-  public final void dsk()
+  public final void dCJ()
   {
     AppMethodBeat.i(123028);
-    Iterator localIterator;
-    Object localObject;
-    if (this.mode == 5)
+    Iterator localIterator = this.xfF.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      localIterator = this.vXR.keySet().iterator();
-      while (localIterator.hasNext())
+      Object localObject = (String)localIterator.next();
+      localObject = (aj)this.xfF.get(localObject);
+      if (((aj)localObject).state != 2)
       {
-        localObject = (String)localIterator.next();
-        localObject = (aj)this.vXR.get(localObject);
-        if (((aj)localObject).state != 2)
+        com.tencent.mm.plugin.qqmail.e.a locala = (com.tencent.mm.plugin.qqmail.e.a)this.xfG.get(((aj)localObject).path);
+        if (locala != null)
         {
-          ((o)com.tencent.mm.kernel.g.ad(o.class)).getNormalMailAppService().cancel(((aj)localObject).vVK);
+          g.ajB().gAO.a(locala);
           ((aj)localObject).state = 3;
           b((aj)localObject);
-        }
-      }
-      AppMethodBeat.o(123028);
-      return;
-    }
-    if (this.mode == 6)
-    {
-      localIterator = this.vXR.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (String)localIterator.next();
-        localObject = (aj)this.vXR.get(localObject);
-        if (((aj)localObject).state != 2)
-        {
-          v localv = (v)this.vXS.get(((aj)localObject).path);
-          if (localv != null)
-          {
-            com.tencent.mm.kernel.g.agQ().ghe.a(localv);
-            ((aj)localObject).state = 3;
-            b((aj)localObject);
-          }
-          this.vXT.remove(((aj)localObject).path);
-          this.vXU.remove(((aj)localObject).path);
-          this.vXS.remove(((aj)localObject).path);
+          this.xfG.remove(((aj)localObject).path);
         }
       }
     }
     AppMethodBeat.o(123028);
   }
   
-  public final boolean dsl()
+  public final boolean dCK()
   {
     AppMethodBeat.i(123031);
-    Iterator localIterator = this.vXR.keySet().iterator();
+    Iterator localIterator = this.xfF.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (aj)this.vXR.get(localObject);
+      localObject = (aj)this.xfF.get(localObject);
       if ((((aj)localObject).state != 2) && (((aj)localObject).state != 3))
       {
         AppMethodBeat.o(123031);
@@ -420,17 +289,17 @@ public final class b
     return true;
   }
   
-  public final void dsm()
+  public final void dCL()
   {
     AppMethodBeat.i(123032);
     int j;
     int i;
-    if (this.vXR.size() == 0)
+    if (this.xfF.size() == 0)
     {
-      this.vWt.setText(this.vXP.getString(2131761958) + " " + this.vXP.getString(2131761961));
-      this.vWu.setImageResource(2131691058);
-      ((View)this.vXQ.getParent()).setVisibility(8);
-      j = this.vXQ.getChildCount();
+      this.xel.setText(this.xfD.getString(2131761958) + " " + this.xfD.getString(2131761961));
+      this.xem.setImageResource(2131691058);
+      ((View)this.xfE.getParent()).setVisibility(8);
+      j = this.xfE.getChildCount();
       i = 0;
       label102:
       if (i >= j) {
@@ -439,36 +308,54 @@ public final class b
       if (j != 1) {
         break label245;
       }
-      this.vXQ.getChildAt(i).setBackgroundResource(2131233185);
+      this.xfE.getChildAt(i).setBackgroundResource(2131233185);
     }
     for (;;)
     {
       i += 1;
       break label102;
-      this.vWt.setText(this.vXP.getString(2131761958) + this.vXP.getResources().getQuantityString(2131623962, this.vXR.size(), new Object[] { Integer.valueOf(this.vXR.size()), bs.qz(getTotalSize()) }));
-      this.vWu.setImageResource(2131691059);
-      ((View)this.vXQ.getParent()).setVisibility(0);
+      this.xel.setText(this.xfD.getString(2131761958) + this.xfD.getResources().getQuantityString(2131623962, this.xfF.size(), new Object[] { Integer.valueOf(this.xfF.size()), bt.sy(getTotalSize()) }));
+      this.xem.setImageResource(2131691059);
+      ((View)this.xfE.getParent()).setVisibility(0);
       break;
       label245:
       if (i == 0) {
-        this.vXQ.getChildAt(i).setBackgroundResource(2131233186);
+        this.xfE.getChildAt(i).setBackgroundResource(2131233186);
       } else if ((i > 0) && (i < j - 1)) {
-        this.vXQ.getChildAt(i).setBackgroundResource(2131233187);
+        this.xfE.getChildAt(i).setBackgroundResource(2131233187);
       } else {
-        this.vXQ.getChildAt(i).setBackgroundResource(2131233188);
+        this.xfE.getChildAt(i).setBackgroundResource(2131233188);
       }
     }
     label311:
     AppMethodBeat.o(123032);
   }
   
+  public final void eT(List<aj> paramList)
+  {
+    AppMethodBeat.i(215307);
+    if (paramList == null)
+    {
+      AppMethodBeat.o(215307);
+      return;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      aj localaj = (aj)paramList.next();
+      this.xfF.put(localaj.path, localaj);
+      a(localaj);
+    }
+    AppMethodBeat.o(215307);
+  }
+  
   public final int getTotalSize()
   {
     AppMethodBeat.i(123033);
-    Iterator localIterator = this.vXR.keySet().iterator();
+    Iterator localIterator = this.xfF.keySet().iterator();
     String str;
     long l;
-    for (int i = 0; localIterator.hasNext(); i = (int)(((aj)this.vXR.get(str)).size + l))
+    for (int i = 0; localIterator.hasNext(); i = (int)(((aj)this.xfF.get(str)).size + l))
     {
       str = (String)localIterator.next();
       l = i;
@@ -477,159 +364,101 @@ public final class b
     return i;
   }
   
-  public final void ir(String paramString1, String paramString2)
+  public final void onC2CUploadCompleted(String paramString, final CdnLogic.C2CUploadResult paramC2CUploadResult)
   {
-    AppMethodBeat.i(123023);
-    if ((paramString1 == null) || (paramString1.length() == 0) || (this.vXR.containsKey(paramString1)))
-    {
-      AppMethodBeat.o(123023);
-      return;
-    }
-    e locale = new e(paramString1);
-    if ((!locale.exists()) || (!locale.isFile()))
-    {
-      AppMethodBeat.o(123023);
-      return;
-    }
-    aj localaj = new aj();
-    localaj.path = paramString1;
-    if (paramString2 == null) {}
-    for (localaj.name = locale.getName();; localaj.name = paramString2)
-    {
-      localaj.size = locale.length();
-      localaj.state = 0;
-      this.vXR.put(paramString1, localaj);
-      a(localaj);
-      AppMethodBeat.o(123023);
-      return;
-    }
-  }
-  
-  final long is(final String paramString1, final String paramString2)
-  {
-    AppMethodBeat.i(123030);
-    if (this.vXS.containsKey(paramString1))
-    {
-      l = ((v)this.vXS.get(paramString1)).hashCode();
-      AppMethodBeat.o(123030);
-      return l;
-    }
-    paramString2 = new v(paramString1, paramString1, new com.tencent.mm.ak.h()
-    {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, final n paramAnonymousn)
+    AppMethodBeat.i(215308);
+    ad.i("MicroMsg.Mail.FileUploadHelper", "onC2CUploadCompleted %s", new Object[] { paramString });
+    if (this.xfH.containsKey(paramString)) {
+      aq.f(new Runnable()
       {
-        AppMethodBeat.i(123019);
-        ac.i("MicroMsg.FileUploadHelper", "offset: %d, totalLen: %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        if (paramAnonymousInt1 < paramAnonymousInt2)
+        public final void run()
         {
-          ac.i("MicroMsg.FileUploadHelper", "uploading file: %s, offset: %d, totalLen: %d", new Object[] { paramString1, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-          paramAnonymousn = (aj)b.this.vXR.get(paramString1);
-          if (paramAnonymousn != null)
+          AppMethodBeat.i(215306);
+          if (this.xfP != null)
           {
-            paramAnonymousn.state = 1;
-            ap.f(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(123017);
-                b.this.b(paramAnonymousn);
-                AppMethodBeat.o(123017);
-              }
-            });
+            if (paramC2CUploadResult.errorCode == 0) {
+              break label47;
+            }
+            this.xfP.state = 3;
           }
-          AppMethodBeat.o(123019);
-          return;
-        }
-        if (paramAnonymousInt1 >= paramAnonymousInt2)
-        {
-          final aj localaj = (aj)b.this.vXR.get(paramString1);
-          paramAnonymousn = ((v)paramAnonymousn).drJ().vTP;
-          b.this.vXT.put(paramString1, paramAnonymousn);
-          b.this.vXU.put(paramString1, paramString2);
-          b.this.vXS.remove(paramString1);
-          ac.i("MicroMsg.FileUploadHelper", "finish uploaded file: %s, attachId: %s", new Object[] { paramString1, paramAnonymousn });
-          if (localaj != null)
+          for (;;)
           {
-            localaj.state = 2;
-            localaj.tBd = paramAnonymousn;
-            ap.f(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(123018);
-                b.this.b(localaj);
-                AppMethodBeat.o(123018);
-              }
-            });
+            b.b(b.this, this.xfP);
+            AppMethodBeat.o(215306);
+            return;
+            label47:
+            this.xfP.state = 2;
+            b.e(b.this);
           }
-          b.a(b.this);
         }
-        AppMethodBeat.o(123019);
-      }
-    });
-    aj localaj = (aj)this.vXR.get(paramString1);
-    if (localaj != null) {
-      localaj.state = 1;
+      });
     }
-    b(localaj);
-    com.tencent.mm.kernel.g.agQ().ghe.a(paramString2, 0);
-    this.vXS.put(paramString1, paramString2);
-    long l = paramString2.hashCode();
-    AppMethodBeat.o(123030);
-    return l;
+    AppMethodBeat.o(215308);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
   {
     AppMethodBeat.i(123035);
-    if (paramn.getType() == 484)
+    if (paramn.getType() == 11665)
     {
-      paramString = (v)paramn;
-      paramn = paramString.filePath;
-      final aj localaj = (aj)this.vXR.get(paramn);
-      if ((localaj != null) && ((paramInt1 != 0) || (paramInt2 != 0)))
+      String str = ((com.tencent.mm.plugin.qqmail.e.a)paramn).filePath;
+      ad.i("MicroMsg.Mail.FileUploadHelper", "errType %d, errCode %d, errMsg %s, filePath %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, str });
+      paramString = (aj)this.xfF.get(str);
+      this.xfG.remove(str);
+      if (paramString != null)
       {
-        ac.e("MicroMsg.FileUploadHelper", "upload error, errType: %d, errCode: %d, file: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramn });
-        localaj.state = 3;
-        this.vXS.remove(paramn);
-        com.tencent.mm.kernel.g.agQ().ghe.a(paramString);
-        ap.f(new Runnable()
+        if ((paramInt1 != 0) || (paramInt2 != 0))
         {
-          public final void run()
-          {
-            AppMethodBeat.i(123020);
-            b.this.b(localaj);
-            AppMethodBeat.o(123020);
-          }
-        });
+          paramString.state = 3;
+          b(paramString);
+          AppMethodBeat.o(123035);
+          return;
+        }
+        CdnLogic.C2CUploadRequest localC2CUploadRequest = new CdnLogic.C2CUploadRequest();
+        localC2CUploadRequest.fileKey = ((com.tencent.mm.plugin.qqmail.e.a)paramn).xdC;
+        localC2CUploadRequest.setFilePath(str);
+        localC2CUploadRequest.forwardFileid = ((ap)((com.tencent.mm.plugin.qqmail.e.a)paramn).hWL.hNL.hNQ).xdk;
+        localC2CUploadRequest.host = ((ap)((com.tencent.mm.plugin.qqmail.e.a)paramn).hWL.hNL.hNQ).xdj;
+        this.xfH.put(localC2CUploadRequest.fileKey, str);
+        paramString.state = 1;
+        paramString.uDM = ((ap)((com.tencent.mm.plugin.qqmail.e.a)paramn).hWL.hNL.hNQ).fileid;
+        b(paramString);
+        CdnLogic.startFtnUpload(localC2CUploadRequest, this);
       }
     }
     AppMethodBeat.o(123035);
   }
   
+  public final void onUploadProgressChanged(String paramString, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(221590);
+    ad.i("MicroMsg.Mail.FileUploadHelper", "onUploadProgressChanged fileKey:%s finish:%d total:%d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    AppMethodBeat.o(221590);
+  }
+  
   final class a
   {
-    TextView iMz;
-    ImageView lzC;
-    TextView vXz;
-    ProgressBar vYf;
-    TextView vYg;
-    ImageView vYh;
-    ImageView vYi;
+    TextView jfJ;
+    ImageView lZa;
+    ProgressBar xfR;
+    TextView xfS;
+    ImageView xfT;
+    ImageView xfU;
+    TextView xfn;
     
     private a() {}
   }
   
   public static abstract interface b
   {
-    public abstract void dsd();
+    public abstract void dCB();
     
     public abstract void onComplete();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.b
  * JD-Core Version:    0.7.0.1
  */

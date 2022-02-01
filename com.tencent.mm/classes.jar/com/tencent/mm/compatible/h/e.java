@@ -10,8 +10,8 @@ import java.io.FileDescriptor;
 public final class e
   extends MediaRecorder
 {
-  private com.tencent.mm.vfs.e fKs;
-  private FileDescriptor fKt;
+  private com.tencent.mm.vfs.e gdT;
+  private FileDescriptor gdU;
   
   /* Error */
   public final void prepare()
@@ -20,11 +20,11 @@ public final class e
     //   0: ldc 20
     //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 28	com/tencent/mm/compatible/h/e:fKt	Ljava/io/FileDescriptor;
+    //   6: getfield 28	com/tencent/mm/compatible/h/e:gdU	Ljava/io/FileDescriptor;
     //   9: ifnull +21 -> 30
     //   12: aload_0
     //   13: aload_0
-    //   14: getfield 28	com/tencent/mm/compatible/h/e:fKt	Ljava/io/FileDescriptor;
+    //   14: getfield 28	com/tencent/mm/compatible/h/e:gdU	Ljava/io/FileDescriptor;
     //   17: invokespecial 32	android/media/MediaRecorder:setOutputFile	(Ljava/io/FileDescriptor;)V
     //   20: aload_0
     //   21: invokespecial 34	android/media/MediaRecorder:prepare	()V
@@ -32,15 +32,15 @@ public final class e
     //   26: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: return
     //   30: aload_0
-    //   31: getfield 39	com/tencent/mm/compatible/h/e:fKs	Lcom/tencent/mm/vfs/e;
+    //   31: getfield 39	com/tencent/mm/compatible/h/e:gdT	Lcom/tencent/mm/vfs/e;
     //   34: ifnull +100 -> 134
     //   37: aload_0
-    //   38: getfield 39	com/tencent/mm/compatible/h/e:fKs	Lcom/tencent/mm/vfs/e;
+    //   38: getfield 39	com/tencent/mm/compatible/h/e:gdT	Lcom/tencent/mm/vfs/e;
     //   41: astore_1
     //   42: aload_1
     //   43: getfield 45	com/tencent/mm/vfs/e:mUri	Landroid/net/Uri;
     //   46: aload_1
-    //   47: invokevirtual 49	com/tencent/mm/vfs/e:fxS	()Lcom/tencent/mm/vfs/a$e;
+    //   47: invokevirtual 49	com/tencent/mm/vfs/e:fOH	()Lcom/tencent/mm/vfs/a$e;
     //   50: ldc 51
     //   52: invokestatic 57	com/tencent/mm/vfs/i:a	(Landroid/net/Uri;Lcom/tencent/mm/vfs/a$e;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     //   55: astore_3
@@ -126,8 +126,8 @@ public final class e
   
   public final void setOutputFile(FileDescriptor paramFileDescriptor)
   {
-    this.fKs = null;
-    this.fKt = paramFileDescriptor;
+    this.gdT = null;
+    this.gdU = paramFileDescriptor;
   }
   
   public final void setOutputFile(String paramString)
@@ -136,8 +136,8 @@ public final class e
     if (paramString == null) {}
     for (paramString = null;; paramString = new com.tencent.mm.vfs.e(paramString))
     {
-      this.fKs = paramString;
-      this.fKt = null;
+      this.gdT = paramString;
+      this.gdU = null;
       AppMethodBeat.o(155941);
       return;
     }

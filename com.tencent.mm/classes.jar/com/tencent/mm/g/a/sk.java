@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class sk
   extends b
 {
-  public a dvv;
+  public a dGV;
   
   public sk()
   {
@@ -15,24 +15,21 @@ public final class sk
   
   private sk(byte paramByte)
   {
-    AppMethodBeat.i(116048);
-    this.dvv = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(91038);
+    this.dGV = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116048);
+    AppMethodBeat.o(91038);
   }
   
   public static final class a
   {
-    public String content;
-    public String dvw;
-    public int flags;
-    public int type;
+    public boolean dGW;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.sk
  * JD-Core Version:    0.7.0.1
  */

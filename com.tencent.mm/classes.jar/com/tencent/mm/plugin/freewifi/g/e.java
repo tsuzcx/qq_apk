@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.freewifi.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ck;
+import com.tencent.mm.g.c.co;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class e
-  extends ck
+  extends co
 {
   protected static c.a info;
   
@@ -15,24 +15,24 @@ public final class e
   {
     AppMethodBeat.i(24955);
     c.a locala = new c.a();
-    locala.GvF = new Field[4];
+    locala.IhA = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "id";
-    locala.GvH.put("id", "TEXT PRIMARY KEY ");
+    locala.IhC.put("id", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" id TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "id";
+    locala.IhB = "id";
     locala.columns[1] = "protocolNumber";
-    locala.GvH.put("protocolNumber", "INTEGER");
+    locala.IhC.put("protocolNumber", "INTEGER");
     localStringBuilder.append(" protocolNumber INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "logContent";
-    locala.GvH.put("logContent", "TEXT");
+    locala.IhC.put("logContent", "TEXT");
     localStringBuilder.append(" logContent TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "createTime";
-    locala.GvH.put("createTime", "LONG");
+    locala.IhC.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();

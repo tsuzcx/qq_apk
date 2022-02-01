@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.debugger;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.c.e.a;
+import com.tencent.mm.ab.c.e.a;
 import com.tencent.mm.ipcinvoker.d.c;
 import com.tencent.mm.modelappbrand.LogInfo;
 import com.tencent.mm.plugin.appbrand.wxawidget.console.b;
@@ -10,18 +10,18 @@ import java.util.ArrayList;
 
 public final class a
 {
-  private static e.a jLV;
+  private static e.a kgg;
   
   static
   {
     AppMethodBeat.i(121288);
-    jLV = new a.1();
+    kgg = new a.1();
     AppMethodBeat.o(121288);
   }
   
-  public static e.a bcu()
+  public static e.a bfY()
   {
-    return jLV;
+    return kgg;
   }
   
   public static void c(String paramString, ArrayList<LogInfo> paramArrayList)
@@ -30,8 +30,8 @@ public final class a
     Bundle localBundle = new Bundle();
     localBundle.putString("id", paramString);
     localBundle.putParcelableArrayList("logList", paramArrayList);
-    paramString = b.mPJ;
-    c.aeT().m(paramString.getClass().getName(), localBundle);
+    paramString = b.nqi;
+    c.ahF().m(paramString.getClass().getName(), localBundle);
     AppMethodBeat.o(121287);
   }
 }

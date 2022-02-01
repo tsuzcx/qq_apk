@@ -17,7 +17,7 @@ import java.io.File;
 public class a
   implements b
 {
-  ServiceConnection KqC;
+  ServiceConnection MgA;
   protected final Context context;
   
   public a(Context paramContext)
@@ -25,13 +25,13 @@ public class a
     this.context = paramContext;
   }
   
-  public final int aTQ(String paramString)
+  public final int aZO(String paramString)
   {
-    int i = hi(paramString, SharePatchFileUtil.getMD5(new File(paramString)));
+    int i = hu(paramString, SharePatchFileUtil.getMD5(new File(paramString)));
     if (i == 0) {}
     try
     {
-      this.KqC = new ServiceConnection()
+      this.MgA = new ServiceConnection()
       {
         public final void onBindingDied(ComponentName paramAnonymousComponentName) {}
         
@@ -39,21 +39,21 @@ public class a
         
         public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
         {
-          if ((a.this.context != null) && (a.this.KqC != null)) {}
+          if ((a.this.context != null) && (a.this.MgA != null)) {}
           try
           {
-            a.this.context.unbindService(a.this.KqC);
+            a.this.context.unbindService(a.this.MgA);
             return;
           }
           catch (Throwable paramAnonymousComponentName) {}
         }
       };
       Intent localIntent = new Intent(this.context, TinkerPatchForeService.class);
-      this.context.bindService(localIntent, this.KqC, 1);
+      this.context.bindService(localIntent, this.MgA, 1);
       label61:
-      TinkerPatchService.cy(this.context, paramString);
+      TinkerPatchService.cC(this.context, paramString);
       return i;
-      com.tencent.tinker.lib.e.a.kX(this.context).KqU.d(new File(paramString), i);
+      com.tencent.tinker.lib.e.a.lk(this.context).MgV.d(new File(paramString), i);
       return i;
     }
     catch (Throwable localThrowable)
@@ -62,10 +62,10 @@ public class a
     }
   }
   
-  protected int hi(String paramString1, String paramString2)
+  protected int hu(String paramString1, String paramString2)
   {
     int j = -2;
-    Object localObject = com.tencent.tinker.lib.e.a.kX(this.context);
+    Object localObject = com.tencent.tinker.lib.e.a.lk(this.context);
     int i;
     if ((!ShareTinkerInternals.isTinkerEnabled(((com.tencent.tinker.lib.e.a)localObject).tinkerFlags)) || (!ShareTinkerInternals.isTinkerEnableWithSharedPreferences(this.context))) {
       i = -1;
@@ -79,28 +79,28 @@ public class a
       } while (TextUtils.isEmpty(paramString2));
       i = j;
     } while (!SharePatchFileUtil.isLegalFile(new File(paramString1)));
-    if (((com.tencent.tinker.lib.e.a)localObject).KqY) {
+    if (((com.tencent.tinker.lib.e.a)localObject).MgZ) {
       return -4;
     }
-    if (com.tencent.tinker.lib.util.b.kZ(this.context)) {
+    if (com.tencent.tinker.lib.util.b.lm(this.context)) {
       return -3;
     }
     if (ShareTinkerInternals.isVmJit()) {
       return -5;
     }
-    paramString1 = ((com.tencent.tinker.lib.e.a)localObject).KqZ;
-    if ((((com.tencent.tinker.lib.e.a)localObject).zmI) && (paramString1 != null) && (paramString1.useInterpretMode)) {
+    paramString1 = ((com.tencent.tinker.lib.e.a)localObject).Mha;
+    if ((((com.tencent.tinker.lib.e.a)localObject).AEC) && (paramString1 != null) && (paramString1.useInterpretMode)) {
       i = 1;
     }
     while (i == 0) {
-      if ((((com.tencent.tinker.lib.e.a)localObject).Kra) && (paramString1 != null) && (paramString2.equals(paramString1.Kre)))
+      if ((((com.tencent.tinker.lib.e.a)localObject).Mhb) && (paramString1 != null) && (paramString2.equals(paramString1.Mhf)))
       {
         return -6;
         i = 0;
       }
       else
       {
-        localObject = ((com.tencent.tinker.lib.e.a)localObject).KqS.getAbsolutePath();
+        localObject = ((com.tencent.tinker.lib.e.a)localObject).MgT.getAbsolutePath();
         paramString1 = SharePatchFileUtil.getPatchInfoLockFile((String)localObject);
         localObject = SharePatchFileUtil.getPatchInfoFile((String)localObject);
         try
@@ -117,7 +117,7 @@ public class a
         catch (Throwable paramString1) {}
       }
     }
-    if (!com.tencent.tinker.lib.util.c.lc(this.context).aTT(paramString2)) {
+    if (!com.tencent.tinker.lib.util.c.lp(this.context).aZR(paramString2)) {
       return -7;
     }
     return 0;
@@ -125,7 +125,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.lib.b.a
  * JD-Core Version:    0.7.0.1
  */

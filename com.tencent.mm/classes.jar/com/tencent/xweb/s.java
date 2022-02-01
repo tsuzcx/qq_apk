@@ -13,14 +13,14 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class s
 {
-  static boolean Kzm;
-  static List<a> Kzn;
+  static boolean MpH;
+  static List<a> MpI;
   
   static
   {
     AppMethodBeat.i(185174);
-    Kzm = false;
-    Kzn = new ArrayList();
+    MpH = false;
+    MpI = new ArrayList();
     AppMethodBeat.o(185174);
   }
   
@@ -37,82 +37,107 @@ public final class s
           AppMethodBeat.o(185168);
           return;
         }
-        if (Kzn.contains(parama))
+        if (MpI.contains(parama))
         {
           AppMethodBeat.o(185168);
           continue;
         }
-        Kzn.add(parama);
+        MpI.add(parama);
       }
       finally {}
       AppMethodBeat.o(185168);
     }
   }
   
-  static void aga(int paramInt)
+  static void aiA(int paramInt)
+  {
+    try
+    {
+      AppMethodBeat.i(197074);
+      Iterator localIterator = MpI.iterator();
+      while (localIterator.hasNext()) {
+        ((a)localIterator.next()).xd(paramInt);
+      }
+      AppMethodBeat.o(197074);
+    }
+    finally {}
+  }
+  
+  static void aiB(int paramInt)
   {
     try
     {
       AppMethodBeat.i(185171);
-      Iterator localIterator = Kzn.iterator();
+      Iterator localIterator = MpI.iterator();
       while (localIterator.hasNext()) {
-        ((a)localIterator.next()).wx(paramInt);
+        ((a)localIterator.next()).xc(paramInt);
       }
       AppMethodBeat.o(185171);
     }
     finally {}
   }
   
-  static void fJh()
+  public static void b(a parama)
+  {
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(197073);
+        init();
+        if (parama == null)
+        {
+          AppMethodBeat.o(197073);
+          return;
+        }
+        if (!MpI.contains(parama))
+        {
+          AppMethodBeat.o(197073);
+          continue;
+        }
+        MpI.remove(parama);
+      }
+      finally {}
+      AppMethodBeat.o(197073);
+    }
+  }
+  
+  static void gaD()
   {
     try
     {
       AppMethodBeat.i(185169);
-      Iterator localIterator = Kzn.iterator();
+      Iterator localIterator = MpI.iterator();
       while (localIterator.hasNext()) {
-        localIterator.next();
+        ((a)localIterator.next()).bGk();
       }
       AppMethodBeat.o(185169);
     }
     finally {}
   }
   
-  static void fJi()
-  {
-    try
-    {
-      AppMethodBeat.i(185170);
-      Iterator localIterator = Kzn.iterator();
-      while (localIterator.hasNext()) {
-        localIterator.next();
-      }
-      AppMethodBeat.o(185170);
-    }
-    finally {}
-  }
-  
-  static void fJj()
+  static void gaE()
   {
     try
     {
       AppMethodBeat.i(185172);
-      Iterator localIterator = Kzn.iterator();
+      Iterator localIterator = MpI.iterator();
       while (localIterator.hasNext()) {
-        ((a)localIterator.next()).bCg();
+        ((a)localIterator.next()).bGl();
       }
       AppMethodBeat.o(185172);
     }
     finally {}
   }
   
-  static void fJk()
+  static void gaF()
   {
     try
     {
       AppMethodBeat.i(185173);
-      Iterator localIterator = Kzn.iterator();
+      Iterator localIterator = MpI.iterator();
       while (localIterator.hasNext()) {
-        ((a)localIterator.next()).bCh();
+        ((a)localIterator.next()).bGm();
       }
       AppMethodBeat.o(185173);
     }
@@ -126,7 +151,7 @@ public final class s
       try
       {
         AppMethodBeat.i(185167);
-        if (Kzm)
+        if (MpH)
         {
           AppMethodBeat.o(185167);
           return;
@@ -137,7 +162,7 @@ public final class s
           try
           {
             XWalkEnvironment.getApplicationContext().registerReceiver(new b((byte)0), new IntentFilter("com.tencent.xweb.update"));
-            Kzm = true;
+            MpH = true;
             AppMethodBeat.o(185167);
           }
           catch (Exception localException)
@@ -153,11 +178,15 @@ public final class s
   
   public static abstract interface a
   {
-    public abstract void bCg();
+    public abstract void bGk();
     
-    public abstract void bCh();
+    public abstract void bGl();
     
-    public abstract void wx(int paramInt);
+    public abstract void bGm();
+    
+    public abstract void xc(int paramInt);
+    
+    public abstract void xd(int paramInt);
   }
   
   static final class b
@@ -175,36 +204,38 @@ public final class s
       if ("start".equals(paramContext))
       {
         Log.i("updateReicever", "start update");
-        s.fJh();
+        s.gaD();
         AppMethodBeat.o(185166);
         return;
       }
+      int i;
       if ("updating".equals(paramContext))
       {
-        Log.i("updateReicever", "update progress = ".concat(String.valueOf(paramIntent.getIntExtra("extra_data", 0))));
-        s.fJi();
+        i = paramIntent.getIntExtra("extra_data", 0);
+        Log.i("updateReicever", "update progress = ".concat(String.valueOf(i)));
+        s.aiA(i);
         AppMethodBeat.o(185166);
         return;
       }
       if ("finished".equals(paramContext))
       {
-        int i = paramIntent.getIntExtra("extra_data", 0);
+        i = paramIntent.getIntExtra("extra_data", 0);
         Log.i("updateReicever", "update finished code = ".concat(String.valueOf(i)));
-        s.aga(i);
+        s.aiB(i);
         AppMethodBeat.o(185166);
         return;
       }
       if ("cfg_update".equals(paramContext))
       {
         Log.i("updateReicever", "cfg_update");
-        s.fJj();
+        s.gaE();
         AppMethodBeat.o(185166);
         return;
       }
       if ("plugin_update".equals(paramContext))
       {
         Log.i("updateReicever", "plugin_update");
-        s.fJk();
+        s.gaF();
       }
       AppMethodBeat.o(185166);
     }

@@ -14,8 +14,8 @@ public final class ac
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float paramFloat)
   {
     AppMethodBeat.i(144960);
-    paramd.jzc.setStrokeMiter(paramFloat);
-    paramd.jzb.setStrokeMiter(paramFloat);
+    paramd.jSZ.setStrokeMiter(paramFloat);
+    paramd.jSY.setStrokeMiter(paramFloat);
     AppMethodBeat.o(144960);
     return true;
   }
@@ -29,7 +29,7 @@ public final class ac
       AppMethodBeat.o(144961);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.jzy);
+    boolean bool = a(paramd, paramCanvas.jTv);
     AppMethodBeat.o(144961);
     return bool;
   }
@@ -47,7 +47,7 @@ public final class ac
     return bool;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144958);
     SeMiterLimitActionArg localSeMiterLimitActionArg = new SeMiterLimitActionArg();

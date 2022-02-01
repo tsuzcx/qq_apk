@@ -15,17 +15,17 @@ final class x
   
   public final void add(View paramView)
   {
-    this.BA.add(paramView);
+    this.Ds.add(paramView);
   }
   
   public final void remove(View paramView)
   {
-    this.BA.remove(paramView);
+    this.Ds.remove(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.x
  * JD-Core Version:    0.7.0.1
  */

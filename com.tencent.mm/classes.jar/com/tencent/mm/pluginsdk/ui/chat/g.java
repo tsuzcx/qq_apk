@@ -2,9 +2,9 @@ package com.tencent.mm.pluginsdk.ui.chat;
 
 final class g
 {
-  public String DyC;
-  public long DyD;
-  public long sKP;
+  public String FdL;
+  public long FdM;
+  public long tHA;
   public String thumbPath;
 }
 

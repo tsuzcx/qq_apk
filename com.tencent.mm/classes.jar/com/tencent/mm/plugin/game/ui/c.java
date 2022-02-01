@@ -10,116 +10,114 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.y;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.downloader.f.b;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
-import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.g.a;
 import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.pluginsdk.model.app.r;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public abstract class c
   implements View.OnClickListener
 {
-  protected long jYC = -1L;
+  protected long ksY = -1L;
   protected Context mContext;
   protected int mStatus = -1;
-  protected com.tencent.mm.plugin.game.model.c tdF = null;
-  protected int tfA;
-  protected String tmk;
-  protected FileDownloadTaskInfo tml;
-  protected com.tencent.mm.plugin.downloader.g.a tmm;
-  protected String tmn;
-  protected String tmo;
-  protected String tmp;
-  private String tmq = "xiaomi";
+  protected com.tencent.mm.plugin.game.model.c ubv = null;
+  protected int udq;
+  protected String ukJ;
+  protected FileDownloadTaskInfo ukK;
+  protected com.tencent.mm.plugin.downloader.g.a ukL;
+  protected String ukM;
+  protected String ukN;
+  protected String ukO;
+  private String ukP = "xiaomi";
   
   public c(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private void mO(boolean paramBoolean)
+  private void ni(boolean paramBoolean)
   {
     g.a locala;
     if (paramBoolean)
     {
-      k.a(this.tdF.eqk, this.tdF.eqp, this.tdF.dtF, this.tdF.field_appId, this.tmn, "app_update");
+      k.a(this.ubv.eHt, this.ubv.eHy, this.ubv.dFG, this.ubv.field_appId, this.ukM, "app_update");
       locala = new g.a();
-      locala.WD(this.tdF.eqk);
-      locala.WE(this.tdF.tdd);
-      locala.sk(this.tdF.lTP);
-      locala.WF(com.tencent.mm.pluginsdk.model.app.h.a(this.mContext, this.tdF, null));
-      locala.setAppId(this.tdF.field_appId);
-      locala.WG(this.tdF.eqp);
-      locala.jF(true);
-      locala.AG(1);
-      locala.ey(this.tdF.field_packageName);
-      locala.setScene(this.tdF.dtF);
-      if (this.tdF.diX != 1) {
+      locala.aak(this.ubv.eHt);
+      locala.aal(this.ubv.uaT);
+      locala.ui(this.ubv.mtE);
+      locala.aam(com.tencent.mm.pluginsdk.model.app.h.a(this.mContext, this.ubv, null));
+      locala.setAppId(this.ubv.field_appId);
+      locala.aan(this.ubv.eHy);
+      locala.jQ(true);
+      locala.Bp(1);
+      locala.ft(this.ubv.field_packageName);
+      locala.setScene(this.ubv.dFG);
+      if (this.ubv.duJ != 1) {
         break label324;
       }
     }
     label324:
-    for (long l = f.bXJ().b(locala.oJg);; l = f.bXJ().a(locala.oJg))
+    for (long l = com.tencent.mm.plugin.downloader.model.f.ccl().b(locala.pmN);; l = com.tencent.mm.plugin.downloader.model.f.ccl().a(locala.pmN))
     {
-      ac.i("MicroMsg.CommonGameClickLinstener", " add download task result:[%d], appid[%s]，downloaerType[%d]", new Object[] { Long.valueOf(l), this.tdF.field_appId, Integer.valueOf(this.tdF.diX) });
-      com.tencent.mm.plugin.game.model.e.as(this.mContext, this.tdF.field_appId);
-      com.tencent.mm.plugin.downloader.f.a.a(9, new b(this.tdF.field_appId, this.tdF.dtF, l, ""));
+      ad.i("MicroMsg.CommonGameClickLinstener", " add download task result:[%d], appid[%s]，downloaerType[%d]", new Object[] { Long.valueOf(l), this.ubv.field_appId, Integer.valueOf(this.ubv.duJ) });
+      com.tencent.mm.plugin.game.model.e.av(this.mContext, this.ubv.field_appId);
+      com.tencent.mm.plugin.downloader.f.a.a(9, new b(this.ubv.field_appId, this.ubv.dFG, l, ""));
       com.tencent.mm.modelstat.d.d(10, "CommonGameClickListener_addDownloadTask", hashCode());
       return;
-      k.a(this.tdF.eqk, this.tdF.eqp, this.tdF.dtF, this.tdF.field_appId, this.tmn, this.tmp);
+      k.a(this.ubv.eHt, this.ubv.eHy, this.ubv.dFG, this.ubv.field_appId, this.ukM, this.ukO);
       break;
     }
   }
   
-  protected final void cRg()
+  protected final void cZM()
   {
-    com.tencent.mm.plugin.game.model.e.aj(this.mContext, this.tdF.field_appId);
+    com.tencent.mm.plugin.game.model.e.ai(this.mContext, this.ubv.field_appId);
   }
   
-  protected final void cRh()
+  protected final void cZN()
   {
-    this.tmm = com.tencent.mm.plugin.downloader.model.d.Ww(this.tdF.field_appId);
-    this.tml = f.bXJ().WB(this.tdF.field_appId);
-    this.jYC = this.tml.id;
-    this.mStatus = this.tml.status;
-    this.tmk = this.tml.path;
+    this.ukL = com.tencent.mm.plugin.downloader.model.d.aad(this.ubv.field_appId);
+    this.ukK = com.tencent.mm.plugin.downloader.model.f.ccl().aai(this.ubv.field_appId);
+    this.ksY = this.ukK.id;
+    this.mStatus = this.ukK.status;
+    this.ukJ = this.ukK.path;
   }
   
-  protected final void mN(final boolean paramBoolean)
+  protected final void nh(final boolean paramBoolean)
   {
-    if (!ax.isNetworkConnected(this.mContext))
+    if (!ay.isNetworkConnected(this.mContext))
     {
       Toast.makeText(this.mContext, this.mContext.getString(2131759864), 0).show();
-      k.cQm();
-      k.a(this.tdF.field_appId, com.tencent.mm.plugin.downloader.a.a.oFF, false, null);
+      k.cYR();
+      k.a(this.ubv.field_appId, com.tencent.mm.plugin.downloader.a.a.pjj, false, null);
     }
     for (;;)
     {
       return;
-      g.agS();
-      if (!g.agR().isSDCardAvailable())
+      com.tencent.mm.kernel.g.ajD();
+      if (!com.tencent.mm.kernel.g.ajC().isSDCardAvailable())
       {
         Toast.makeText(this.mContext, this.mContext.getString(2131759868), 0).show();
-        k.cQm();
-        k.a(this.tdF.field_appId, com.tencent.mm.plugin.downloader.a.a.oFG, false, null);
+        k.cYR();
+        k.a(this.ubv.field_appId, com.tencent.mm.plugin.downloader.a.a.pjk, false, null);
         return;
       }
-      if ((!com.tencent.mm.plugin.downloader.model.h.sm(this.tdF.lTP)) && (!com.tencent.mm.plugin.downloader.model.h.sl(this.tdF.lTP)))
+      if ((!com.tencent.mm.plugin.downloader.model.h.uk(this.ubv.mtE)) && (!com.tencent.mm.plugin.downloader.model.h.uj(this.ubv.mtE)))
       {
         Toast.makeText(this.mContext, this.mContext.getString(2131759865), 0).show();
-        k.cQm();
-        k.a(this.tdF.field_appId, com.tencent.mm.plugin.downloader.a.a.oFG, false, null);
+        k.cYR();
+        k.a(this.ubv.field_appId, com.tencent.mm.plugin.downloader.a.a.pjk, false, null);
         return;
       }
-      if (com.tencent.mm.protocal.d.DHW.toLowerCase().contains(this.tmq)) {}
+      if (com.tencent.mm.protocal.d.Fnd.toLowerCase().contains(this.ukP)) {}
       try
       {
-        if ((Settings.Secure.getInt(this.mContext.getContentResolver(), "install_non_market_apps") == 0) && (!com.tencent.mm.plugin.game.model.e.fl(this.mContext)))
+        if ((Settings.Secure.getInt(this.mContext.getContentResolver(), "install_non_market_apps") == 0) && (!com.tencent.mm.plugin.game.model.e.fp(this.mContext)))
         {
           com.tencent.mm.ui.base.h.a(this.mContext, 2131759987, 2131759988, 2131759885, 2131755691, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
@@ -128,9 +126,9 @@ public abstract class c
               AppMethodBeat.i(41860);
               Object localObject = new Intent("android.settings.SECURITY_SETTINGS");
               Context localContext = c.this.mContext;
-              localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-              com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/game/ui/CommonGameClickListener$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+              localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+              com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/game/ui/CommonGameClickListener$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
               com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/plugin/game/ui/CommonGameClickListener$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               paramAnonymousDialogInterface.cancel();
               AppMethodBeat.o(41860);
@@ -144,24 +142,24 @@ public abstract class c
               AppMethodBeat.o(41861);
             }
           });
-          com.tencent.mm.plugin.game.model.e.fm(this.mContext);
+          com.tencent.mm.plugin.game.model.e.fq(this.mContext);
         }
-        if ((bs.isNullOrNil(this.tdF.eqk)) || (bs.isNullOrNil(this.tdF.eqp)))
+        if ((bt.isNullOrNil(this.ubv.eHt)) || (bt.isNullOrNil(this.ubv.eHy)))
         {
-          ac.d("MicroMsg.CommonGameClickLinstener", "downloadApk: appdownloadurl is null or appmd5 is null, try gpDownload");
-          if (bs.isNullOrNil(this.tdF.eqq))
+          ad.d("MicroMsg.CommonGameClickLinstener", "downloadApk: appdownloadurl is null or appmd5 is null, try gpDownload");
+          if (bt.isNullOrNil(this.ubv.eHz))
           {
-            ac.e("MicroMsg.CommonGameClickLinstener", "downloadApk fail, gpDownloadUrl is null");
-            if (bs.isNullOrNil(this.tdF.eqk))
+            ad.e("MicroMsg.CommonGameClickLinstener", "downloadApk fail, gpDownloadUrl is null");
+            if (bt.isNullOrNil(this.ubv.eHt))
             {
-              k.cQm();
-              k.a(this.tdF.field_appId, com.tencent.mm.plugin.downloader.a.a.DOWNLOAD_ERR_URL_INVALID, false, null);
+              k.cYR();
+              k.a(this.ubv.field_appId, com.tencent.mm.plugin.downloader.a.a.DOWNLOAD_ERR_URL_INVALID, false, null);
             }
-            if (!bs.isNullOrNil(this.tdF.eqp)) {
+            if (!bt.isNullOrNil(this.ubv.eHy)) {
               continue;
             }
-            k.cQm();
-            k.a(this.tdF.field_appId, com.tencent.mm.plugin.downloader.a.a.oFD, false, null);
+            k.cYR();
+            k.a(this.ubv.field_appId, com.tencent.mm.plugin.downloader.a.a.pjh, false, null);
             return;
           }
         }
@@ -170,23 +168,23 @@ public abstract class c
       {
         for (;;)
         {
-          ac.e("MicroMsg.CommonGameClickLinstener", "SettingNotFoundException ; %S", new Object[] { localSettingNotFoundException.getMessage() });
+          ad.e("MicroMsg.CommonGameClickLinstener", "SettingNotFoundException ; %S", new Object[] { localSettingNotFoundException.getMessage() });
           continue;
-          ac.d("MicroMsg.CommonGameClickLinstener", "downloadApk with gp, ret = %b", new Object[] { Boolean.valueOf(r.bL(this.mContext, this.tdF.eqq)) });
+          ad.d("MicroMsg.CommonGameClickLinstener", "downloadApk with gp, ret = %b", new Object[] { Boolean.valueOf(r.bP(this.mContext, this.ubv.eHz)) });
         }
-        com.tencent.mm.game.report.e.a(this.mContext, this.tdF.scene, this.tdF.dtF, this.tdF.position, 4, this.tdF.field_appId, this.tfA, this.tdF.daa, this.tmo);
-        if (ax.isWifi(this.mContext))
+        com.tencent.mm.game.report.f.a(this.mContext, this.ubv.scene, this.ubv.dFG, this.ubv.position, 4, this.ubv.field_appId, this.udq, this.ubv.dls, this.ukN);
+        if (ay.isWifi(this.mContext))
         {
-          mO(paramBoolean);
+          ni(paramBoolean);
           return;
         }
-        com.tencent.mm.plugin.report.service.h.wUl.f(14217, new Object[] { this.tdF.field_appId, Integer.valueOf(4), "", this.tdF.eqk, Integer.valueOf(2) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(14217, new Object[] { this.ubv.field_appId, Integer.valueOf(4), "", this.ubv.eHt, Integer.valueOf(2) });
         com.tencent.mm.ui.base.h.a(this.mContext, this.mContext.getString(2131766086), this.mContext.getString(2131766087), this.mContext.getString(2131766081), this.mContext.getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(41858);
-            com.tencent.mm.plugin.report.service.h.wUl.f(14217, new Object[] { c.this.tdF.field_appId, Integer.valueOf(5), "", c.this.tdF.eqk, Integer.valueOf(2) });
+            com.tencent.mm.plugin.report.service.g.yhR.f(14217, new Object[] { c.this.ubv.field_appId, Integer.valueOf(5), "", c.this.ubv.eHt, Integer.valueOf(2) });
             c.a(c.this, paramBoolean);
             paramAnonymousDialogInterface.dismiss();
             AppMethodBeat.o(41858);
@@ -196,9 +194,9 @@ public abstract class c
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(41859);
-            com.tencent.mm.plugin.report.service.h.wUl.f(14217, new Object[] { c.this.tdF.field_appId, Integer.valueOf(6), "", c.this.tdF.eqk, Integer.valueOf(2) });
+            com.tencent.mm.plugin.report.service.g.yhR.f(14217, new Object[] { c.this.ubv.field_appId, Integer.valueOf(6), "", c.this.ubv.eHt, Integer.valueOf(2) });
             paramAnonymousDialogInterface.dismiss();
-            ac.i("MicroMsg.CommonGameClickLinstener", "addDownloadTask not wifi, user cancel");
+            ad.i("MicroMsg.CommonGameClickLinstener", "addDownloadTask not wifi, user cancel");
             AppMethodBeat.o(41859);
           }
         }, 2131101171);
@@ -208,7 +206,7 @@ public abstract class c
   
   public final void setSourceScene(int paramInt)
   {
-    this.tfA = paramInt;
+    this.udq = paramInt;
   }
 }
 

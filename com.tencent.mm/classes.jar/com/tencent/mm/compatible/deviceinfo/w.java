@@ -6,23 +6,23 @@ import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class w
 {
-  private static final Object fHG;
+  private static final Object gbg;
   
   static
   {
     AppMethodBeat.i(155764);
-    fHG = new Object();
+    gbg = new Object();
     AppMethodBeat.o(155764);
   }
   
   public static v b(int paramInt, Looper paramLooper)
   {
     AppMethodBeat.i(155761);
-    if (d.kZ(28)) {
+    if (d.ly(28)) {
       try
       {
         v localv = new v(c(paramInt, paramLooper));
@@ -31,7 +31,7 @@ public final class w
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.MMCamera", localException, "opnImpl error, try camera directly, myLooper: %s", new Object[] { Looper.myLooper() });
+        ad.printErrStackTrace("MicroMsg.MMCamera", localException, "opnImpl error, try camera directly, myLooper: %s", new Object[] { Looper.myLooper() });
         if (Looper.myLooper() == null)
         {
           paramLooper = new v(d(paramInt, paramLooper));
@@ -76,57 +76,57 @@ public final class w
     }
     final Camera[] arrayOfCamera = new Camera[1];
     arrayOfCamera[0] = null;
-    h.JZN.aS(new Runnable()
+    h.LTJ.aR(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(155759);
         try
         {
-          if (this.fHH >= 0) {
-            arrayOfCamera[0] = Camera.open(this.fHH);
+          if (this.gbh >= 0) {
+            arrayOfCamera[0] = Camera.open(this.gbh);
           }
         }
         catch (Exception localException1)
         {
-          synchronized (w.fHG)
+          synchronized (w.gbg)
           {
             try
             {
               for (;;)
               {
-                w.fHG.notifyAll();
-                ac.i("MicroMsg.MMCamera", "openCamera notifyAll");
+                w.gbg.notifyAll();
+                ad.i("MicroMsg.MMCamera", "openCamera notifyAll");
                 AppMethodBeat.o(155759);
                 return;
                 arrayOfCamera[0] = Camera.open();
               }
               localException1 = localException1;
-              ac.printErrStackTrace("MicroMsg.MMCamera", localException1, "syncCreateCamera error in new free thread", new Object[0]);
+              ad.printErrStackTrace("MicroMsg.MMCamera", localException1, "syncCreateCamera error in new free thread", new Object[0]);
             }
             catch (Exception localException2)
             {
               for (;;)
               {
-                ac.printErrStackTrace("MicroMsg.MMCamera", localException2, "MMCamera_openLooperNull notify error", new Object[0]);
+                ad.printErrStackTrace("MicroMsg.MMCamera", localException2, "MMCamera_openLooperNull notify error", new Object[0]);
               }
             }
           }
         }
       }
     });
-    paramLooper = fHG;
+    paramLooper = gbg;
     if (arrayOfCamera[0] == null) {}
     try
     {
-      fHG.wait();
-      ac.i("MicroMsg.MMCamera", "openCamera wait finish");
+      gbg.wait();
+      ad.i("MicroMsg.MMCamera", "openCamera wait finish");
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.MMCamera", localException, "MMCamera_openLooperNull wait error", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.MMCamera", localException, "MMCamera_openLooperNull wait error", new Object[0]);
       }
     }
     finally
@@ -154,7 +154,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.w
  * JD-Core Version:    0.7.0.1
  */

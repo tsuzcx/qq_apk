@@ -22,31 +22,31 @@ import java.util.Set;
 public final class j
   implements d<InputStream>
 {
-  static final b aDB;
-  private final com.bumptech.glide.c.c.g aDC;
-  private final b aDD;
-  private HttpURLConnection aDE;
-  private InputStream aDF;
+  static final b aFs;
+  private final com.bumptech.glide.c.c.g aFt;
+  private final b aFu;
+  private HttpURLConnection aFv;
+  private InputStream aFw;
   private volatile boolean isCancelled;
   private final int timeout;
   
   static
   {
     AppMethodBeat.i(76893);
-    aDB = new a();
+    aFs = new a();
     AppMethodBeat.o(76893);
   }
   
   public j(com.bumptech.glide.c.c.g paramg, int paramInt)
   {
-    this(paramg, paramInt, aDB);
+    this(paramg, paramInt, aFs);
   }
   
   private j(com.bumptech.glide.c.c.g paramg, int paramInt, b paramb)
   {
-    this.aDC = paramg;
+    this.aFt = paramg;
     this.timeout = paramInt;
-    this.aDD = paramb;
+    this.aFu = paramb;
   }
   
   private InputStream a(URL paramURL1, int paramInt, URL paramURL2, Map<String, String> paramMap)
@@ -73,41 +73,41 @@ public final class j
         }
         catch (URISyntaxException paramURL2) {}
       }
-      this.aDE = this.aDD.b(paramURL1);
+      this.aFv = this.aFu.b(paramURL1);
       paramURL2 = paramMap.entrySet().iterator();
       while (paramURL2.hasNext())
       {
         localObject = (Map.Entry)paramURL2.next();
-        this.aDE.addRequestProperty((String)((Map.Entry)localObject).getKey(), (String)((Map.Entry)localObject).getValue());
+        this.aFv.addRequestProperty((String)((Map.Entry)localObject).getKey(), (String)((Map.Entry)localObject).getValue());
       }
-      this.aDE.setConnectTimeout(this.timeout);
-      this.aDE.setReadTimeout(this.timeout);
-      this.aDE.setUseCaches(false);
-      this.aDE.setDoInput(true);
-      this.aDE.setInstanceFollowRedirects(false);
-      this.aDE.connect();
-      this.aDF = this.aDE.getInputStream();
+      this.aFv.setConnectTimeout(this.timeout);
+      this.aFv.setReadTimeout(this.timeout);
+      this.aFv.setUseCaches(false);
+      this.aFv.setDoInput(true);
+      this.aFv.setInstanceFollowRedirects(false);
+      this.aFv.connect();
+      this.aFw = this.aFv.getInputStream();
       if (this.isCancelled)
       {
         AppMethodBeat.o(76891);
         return null;
       }
-      j = this.aDE.getResponseCode();
+      j = this.aFv.getResponseCode();
       if (j / 100 == 2)
       {
         i = 1;
         if (i == 0) {
           break label332;
         }
-        paramURL1 = this.aDE;
+        paramURL1 = this.aFv;
         if (!TextUtils.isEmpty(paramURL1.getContentEncoding())) {
           break label295;
         }
         paramInt = paramURL1.getContentLength();
       }
-      for (this.aDF = c.a(paramURL1.getInputStream(), paramInt);; this.aDF = paramURL1.getInputStream())
+      for (this.aFw = c.a(paramURL1.getInputStream(), paramInt);; this.aFw = paramURL1.getInputStream())
       {
-        paramURL1 = this.aDF;
+        paramURL1 = this.aFw;
         AppMethodBeat.o(76891);
         return paramURL1;
         i = 0;
@@ -124,7 +124,7 @@ public final class j
         if (i == 0) {
           break label416;
         }
-        paramURL2 = this.aDE.getHeaderField("Location");
+        paramURL2 = this.aFv.getHeaderField("Location");
         if (!TextUtils.isEmpty(paramURL2)) {
           break;
         }
@@ -145,7 +145,7 @@ public final class j
       AppMethodBeat.o(76891);
       throw paramURL1;
     }
-    paramURL1 = new com.bumptech.glide.c.e(this.aDE.getResponseMessage(), j);
+    paramURL1 = new com.bumptech.glide.c.e(this.aFv.getResponseMessage(), j);
     AppMethodBeat.o(76891);
     throw paramURL1;
   }
@@ -153,24 +153,24 @@ public final class j
   public final void a(com.bumptech.glide.g paramg, d.a<? super InputStream> parama)
   {
     AppMethodBeat.i(76890);
-    long l = com.bumptech.glide.h.e.pY();
+    long l = com.bumptech.glide.h.e.qq();
     try
     {
-      com.bumptech.glide.c.c.g localg = this.aDC;
-      if (localg.aIk == null)
+      com.bumptech.glide.c.c.g localg = this.aFt;
+      if (localg.aKb == null)
       {
-        if (TextUtils.isEmpty(localg.aIj))
+        if (TextUtils.isEmpty(localg.aKa))
         {
-          String str = localg.aIi;
+          String str = localg.aJZ;
           paramg = str;
           if (TextUtils.isEmpty(str)) {
             paramg = ((URL)i.checkNotNull(localg.url, "Argument must not be null")).toString();
           }
-          localg.aIj = Uri.encode(paramg, "@#&=*+-_.,:!?()/~'%;$");
+          localg.aKa = Uri.encode(paramg, "@#&=*+-_.,:!?()/~'%;$");
         }
-        localg.aIk = new URL(localg.aIj);
+        localg.aKb = new URL(localg.aKa);
       }
-      parama.R(a(localg.aIk, 0, null, this.aDC.aIh.getHeaders()));
+      parama.S(a(localg.aKb, 0, null, this.aFt.aJY.getHeaders()));
       return;
     }
     catch (IOException paramg)
@@ -197,15 +197,15 @@ public final class j
   public final void cleanup()
   {
     AppMethodBeat.i(76892);
-    if (this.aDF != null) {}
+    if (this.aFw != null) {}
     try
     {
-      this.aDF.close();
+      this.aFw.close();
       label20:
-      if (this.aDE != null) {
-        this.aDE.disconnect();
+      if (this.aFv != null) {
+        this.aFv.disconnect();
       }
-      this.aDE = null;
+      this.aFv = null;
       AppMethodBeat.o(76892);
       return;
     }
@@ -215,14 +215,14 @@ public final class j
     }
   }
   
-  public final Class<InputStream> nU()
+  public final Class<InputStream> om()
   {
     return InputStream.class;
   }
   
-  public final a nV()
+  public final a on()
   {
-    return a.aCQ;
+    return a.aEH;
   }
   
   static final class a

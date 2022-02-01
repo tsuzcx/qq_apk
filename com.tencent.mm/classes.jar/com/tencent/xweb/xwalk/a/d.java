@@ -5,25 +5,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends l
 {
-  public final String agh(int paramInt)
+  public final String aiI(int paramInt)
   {
     AppMethodBeat.i(157180);
-    String str = cV(paramInt, "pdfreader.apk");
+    String str = dd(paramInt, "pdfreader.apk");
     AppMethodBeat.o(157180);
     return str;
   }
   
-  public final String fLK()
+  public final String gdf()
   {
     return "com.tencent.xweb.xfiles.pdf.PDFReader";
   }
   
-  public final String fLL()
+  public final String gdg()
   {
     return "com.tencent.xweb.xfiles.pdf.PDFReaderEnvironment";
   }
   
-  public final int fLM()
+  public final int gdh()
   {
     return 100;
   }

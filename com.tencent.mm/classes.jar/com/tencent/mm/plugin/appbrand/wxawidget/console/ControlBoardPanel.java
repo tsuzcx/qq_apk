@@ -11,23 +11,25 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.modelappbrand.n;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class ControlBoardPanel
   extends FrameLayout
 {
-  ConsolePanel jOm;
-  a mPX;
-  View mPY;
-  SettingsPanel mPZ;
-  View mQa;
-  View mQb;
-  View mQc;
-  View mQd;
-  WindowManager mQe;
-  WindowManager.LayoutParams mQf;
-  boolean mQg;
+  ConsolePanel kix;
+  View nqA;
+  View nqB;
+  View nqC;
+  WindowManager nqD;
+  WindowManager.LayoutParams nqE;
+  boolean nqF;
+  a nqw;
+  View nqx;
+  SettingsPanel nqy;
+  View nqz;
   
   public ControlBoardPanel(Context paramContext)
   {
@@ -57,91 +59,109 @@ public class ControlBoardPanel
   {
     AppMethodBeat.i(121652);
     Context localContext = getContext();
-    this.mQe = ((WindowManager)localContext.getSystemService("window"));
+    this.nqD = ((WindowManager)localContext.getSystemService("window"));
     LayoutInflater.from(localContext).inflate(2131493661, this, true);
-    this.mPY = findViewById(2131298780);
-    this.jOm = ((ConsolePanel)findViewById(2131298581));
-    this.mPZ = ((SettingsPanel)findViewById(2131304667));
-    this.mQa = findViewById(2131303205);
-    this.mQb = findViewById(2131298579);
-    this.mQc = findViewById(2131304640);
-    this.mQd = findViewById(2131303204);
-    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().aAJ()) {
-      this.mQd.setVisibility(8);
+    this.nqx = findViewById(2131298780);
+    this.kix = ((ConsolePanel)findViewById(2131298581));
+    this.nqy = ((SettingsPanel)findViewById(2131304667));
+    this.nqz = findViewById(2131303205);
+    this.nqA = findViewById(2131298579);
+    this.nqB = findViewById(2131304640);
+    this.nqC = findViewById(2131303204);
+    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDF().aDM()) {
+      this.nqC.setVisibility(8);
     }
-    this.mQb.setOnClickListener(new View.OnClickListener()
+    this.nqA.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121643);
-        if (ControlBoardPanel.this.jOm.getVisibility() == 0)
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ControlBoardPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (ControlBoardPanel.this.kix.getVisibility() == 0)
         {
-          ControlBoardPanel.this.mPY.setVisibility(8);
-          ControlBoardPanel.this.jOm.setVisibility(8);
-          ControlBoardPanel.this.mQb.setSelected(false);
+          ControlBoardPanel.this.nqx.setVisibility(8);
+          ControlBoardPanel.this.kix.setVisibility(8);
+          ControlBoardPanel.this.nqA.setSelected(false);
           ControlBoardPanel.a(ControlBoardPanel.this);
+        }
+        for (;;)
+        {
+          a.a(this, "com/tencent/mm/plugin/appbrand/wxawidget/console/ControlBoardPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(121643);
           return;
+          ControlBoardPanel.this.nqx.setVisibility(0);
+          ControlBoardPanel.this.kix.setVisibility(0);
+          ControlBoardPanel.this.nqy.setVisibility(8);
+          ControlBoardPanel.this.nqz.setVisibility(8);
+          ControlBoardPanel.this.nqA.setSelected(true);
+          ControlBoardPanel.this.nqB.setSelected(false);
+          ControlBoardPanel.this.nqC.setSelected(false);
+          ControlBoardPanel.b(ControlBoardPanel.this);
         }
-        ControlBoardPanel.this.mPY.setVisibility(0);
-        ControlBoardPanel.this.jOm.setVisibility(0);
-        ControlBoardPanel.this.mPZ.setVisibility(8);
-        ControlBoardPanel.this.mQa.setVisibility(8);
-        ControlBoardPanel.this.mQb.setSelected(true);
-        ControlBoardPanel.this.mQc.setSelected(false);
-        ControlBoardPanel.this.mQd.setSelected(false);
-        ControlBoardPanel.b(ControlBoardPanel.this);
-        AppMethodBeat.o(121643);
       }
     });
-    this.mQc.setOnClickListener(new View.OnClickListener()
+    this.nqB.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121644);
-        if (ControlBoardPanel.this.mPZ.getVisibility() == 0)
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ControlBoardPanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (ControlBoardPanel.this.nqy.getVisibility() == 0)
         {
-          ControlBoardPanel.this.mPY.setVisibility(8);
-          ControlBoardPanel.this.mPZ.setVisibility(8);
-          ControlBoardPanel.this.mQc.setSelected(false);
+          ControlBoardPanel.this.nqx.setVisibility(8);
+          ControlBoardPanel.this.nqy.setVisibility(8);
+          ControlBoardPanel.this.nqB.setSelected(false);
           ControlBoardPanel.a(ControlBoardPanel.this);
+        }
+        for (;;)
+        {
+          a.a(this, "com/tencent/mm/plugin/appbrand/wxawidget/console/ControlBoardPanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(121644);
           return;
+          ControlBoardPanel.this.nqx.setVisibility(0);
+          ControlBoardPanel.this.kix.setVisibility(8);
+          ControlBoardPanel.this.nqy.setVisibility(0);
+          ControlBoardPanel.this.nqz.setVisibility(8);
+          ControlBoardPanel.this.nqA.setSelected(false);
+          ControlBoardPanel.this.nqB.setSelected(true);
+          ControlBoardPanel.this.nqC.setSelected(false);
+          ControlBoardPanel.b(ControlBoardPanel.this);
         }
-        ControlBoardPanel.this.mPY.setVisibility(0);
-        ControlBoardPanel.this.jOm.setVisibility(8);
-        ControlBoardPanel.this.mPZ.setVisibility(0);
-        ControlBoardPanel.this.mQa.setVisibility(8);
-        ControlBoardPanel.this.mQb.setSelected(false);
-        ControlBoardPanel.this.mQc.setSelected(true);
-        ControlBoardPanel.this.mQd.setSelected(false);
-        ControlBoardPanel.b(ControlBoardPanel.this);
-        AppMethodBeat.o(121644);
       }
     });
-    this.mQd.setOnClickListener(new View.OnClickListener()
+    this.nqC.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121645);
-        if (ControlBoardPanel.this.mQa.getVisibility() == 0)
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ControlBoardPanel$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (ControlBoardPanel.this.nqz.getVisibility() == 0)
         {
-          ControlBoardPanel.this.mPY.setVisibility(8);
-          ControlBoardPanel.this.mQa.setVisibility(8);
-          ControlBoardPanel.this.mQd.setSelected(false);
+          ControlBoardPanel.this.nqx.setVisibility(8);
+          ControlBoardPanel.this.nqz.setVisibility(8);
+          ControlBoardPanel.this.nqC.setSelected(false);
           ControlBoardPanel.a(ControlBoardPanel.this);
+        }
+        for (;;)
+        {
+          a.a(this, "com/tencent/mm/plugin/appbrand/wxawidget/console/ControlBoardPanel$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(121645);
           return;
+          ControlBoardPanel.this.nqx.setVisibility(0);
+          ControlBoardPanel.this.kix.setVisibility(8);
+          ControlBoardPanel.this.nqy.setVisibility(8);
+          ControlBoardPanel.this.nqz.setVisibility(0);
+          ControlBoardPanel.this.nqA.setSelected(false);
+          ControlBoardPanel.this.nqB.setSelected(false);
+          ControlBoardPanel.this.nqC.setSelected(true);
+          ControlBoardPanel.b(ControlBoardPanel.this);
         }
-        ControlBoardPanel.this.mPY.setVisibility(0);
-        ControlBoardPanel.this.jOm.setVisibility(8);
-        ControlBoardPanel.this.mPZ.setVisibility(8);
-        ControlBoardPanel.this.mQa.setVisibility(0);
-        ControlBoardPanel.this.mQb.setSelected(false);
-        ControlBoardPanel.this.mQc.setSelected(false);
-        ControlBoardPanel.this.mQd.setSelected(true);
-        ControlBoardPanel.b(ControlBoardPanel.this);
-        AppMethodBeat.o(121645);
       }
     });
     setOnKeyListener(new View.OnKeyListener()
@@ -149,40 +169,50 @@ public class ControlBoardPanel
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(121646);
-        ac.i("MicroMsg.ControlBoardPanel", "onKey(%s, %s)", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousKeyEvent });
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.bd(paramAnonymousKeyEvent);
+        a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ControlBoardPanel$4", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahq());
+        ad.i("MicroMsg.ControlBoardPanel", "onKey(%s, %s)", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousKeyEvent });
         if (paramAnonymousInt == 4)
         {
-          ControlBoardPanel.this.mPY.setVisibility(8);
-          ControlBoardPanel.this.mQa.setVisibility(8);
-          ControlBoardPanel.this.mQa.setVisibility(8);
-          ControlBoardPanel.this.mQd.setSelected(false);
-          ControlBoardPanel.this.mQb.setSelected(false);
-          ControlBoardPanel.this.mQc.setSelected(false);
+          ControlBoardPanel.this.nqx.setVisibility(8);
+          ControlBoardPanel.this.nqz.setVisibility(8);
+          ControlBoardPanel.this.nqz.setVisibility(8);
+          ControlBoardPanel.this.nqC.setSelected(false);
+          ControlBoardPanel.this.nqA.setSelected(false);
+          ControlBoardPanel.this.nqB.setSelected(false);
           ControlBoardPanel.a(ControlBoardPanel.this);
         }
+        a.a(false, this, "com/tencent/mm/plugin/appbrand/wxawidget/console/ControlBoardPanel$4", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
         AppMethodBeat.o(121646);
         return false;
       }
     });
-    this.mPZ.setOnCloseDebuggerClickListener(new View.OnClickListener()
+    this.nqy.setOnCloseDebuggerClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121647);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/wxawidget/console/ControlBoardPanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         paramAnonymousView = ControlBoardPanel.this;
-        if (paramAnonymousView.mQg)
+        if (paramAnonymousView.nqF)
         {
-          paramAnonymousView.mQg = false;
-          paramAnonymousView.mQe.removeViewImmediate(paramAnonymousView);
-          d.b(paramAnonymousView.jOm);
-          if (paramAnonymousView.mPX != null) {
-            paramAnonymousView.mPX.a(paramAnonymousView, false);
+          paramAnonymousView.nqF = false;
+          paramAnonymousView.nqD.removeViewImmediate(paramAnonymousView);
+          d.b(paramAnonymousView.kix);
+          if (paramAnonymousView.nqw != null) {
+            paramAnonymousView.nqw.a(paramAnonymousView, false);
           }
         }
+        a.a(this, "com/tencent/mm/plugin/appbrand/wxawidget/console/ControlBoardPanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(121647);
       }
     });
-    this.mPZ.setOnResetDebuggerRunnable(new Runnable()
+    this.nqy.setOnResetDebuggerRunnable(new Runnable()
     {
       public final void run()
       {
@@ -197,7 +227,7 @@ public class ControlBoardPanel
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(121653);
-    ac.i("MicroMsg.ControlBoardPanel", "onKeyUp(%s, %s)", new Object[] { Integer.valueOf(paramInt), paramKeyEvent });
+    ad.i("MicroMsg.ControlBoardPanel", "onKeyUp(%s, %s)", new Object[] { Integer.valueOf(paramInt), paramKeyEvent });
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
     AppMethodBeat.o(121653);
     return bool;
@@ -206,8 +236,8 @@ public class ControlBoardPanel
   public final void reset()
   {
     AppMethodBeat.i(121654);
-    d.b(this.jOm);
-    d.a(this.jOm);
+    d.b(this.kix);
+    d.a(this.kix);
     AppMethodBeat.o(121654);
   }
   

@@ -1,65 +1,56 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.p;
+import d.l;
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/SwipeBackLayoutSettingsAlignmentWC;", "", "()V", "alignSettings", "", "maybeSwipeLayout", "Landroid/view/View;", "plugin-appbrand-integration_release"})
 public final class bv
 {
-  public static void a(View paramView, Canvas paramCanvas)
+  public static final bv mfV;
+  
+  static
   {
-    AppMethodBeat.i(140769);
-    boolean bool;
-    if (paramView.getVisibility() != 0) {
-      bool = true;
-    }
-    while (bool)
-    {
-      AppMethodBeat.o(140769);
-      return;
-      if ((paramView instanceof bu))
-      {
-        bool = ((bu)paramView).c(paramCanvas);
-      }
-      else
-      {
-        paramView.draw(paramCanvas);
-        bool = false;
-      }
-    }
-    if ((paramView instanceof ViewGroup))
-    {
-      paramView = (ViewGroup)paramView;
-      int i = 0;
-      while (i < paramView.getChildCount())
-      {
-        a(paramView.getChildAt(i), paramCanvas);
-        i += 1;
-      }
-    }
-    AppMethodBeat.o(140769);
+    AppMethodBeat.i(50952);
+    mfV = new bv();
+    AppMethodBeat.o(50952);
   }
   
-  public static Bitmap cH(View paramView)
+  public static final void cK(View paramView)
   {
-    AppMethodBeat.i(140770);
-    if ((paramView.getWidth() <= 0) || (paramView.getHeight() <= 0))
-    {
-      AppMethodBeat.o(140770);
-      return null;
+    AppMethodBeat.i(50951);
+    if (!(paramView instanceof SwipeBackLayout)) {
+      paramView = null;
     }
-    Bitmap localBitmap = Bitmap.createBitmap(paramView.getWidth(), paramView.getHeight(), Bitmap.Config.ARGB_8888);
-    a(paramView, new Canvas(localBitmap));
-    AppMethodBeat.o(140770);
-    return localBitmap;
+    for (;;)
+    {
+      paramView = (SwipeBackLayout)paramView;
+      if (paramView != null)
+      {
+        Resources localResources = paramView.getResources();
+        p.g(localResources, "page.resources");
+        float f = localResources.getDisplayMetrics().density;
+        paramView.setMinVelocity(100.0F * f);
+        paramView.setMaxVelocity(300.0F * f);
+        paramView.setEdgeTrackingEnabled(1);
+        paramView.setEdgeSize((int)(f * 20.0F + 0.5F));
+        paramView.setEdgeTrackingEnabled(1);
+        paramView.setScrimColor(0);
+        AppMethodBeat.o(50951);
+        return;
+      }
+      AppMethodBeat.o(50951);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bv
  * JD-Core Version:    0.7.0.1
  */

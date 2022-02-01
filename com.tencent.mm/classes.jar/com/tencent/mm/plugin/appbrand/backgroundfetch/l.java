@@ -5,9 +5,9 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface l
   extends a
 {
-  public abstract AppBrandBackgroundFetchDataTokenParcel Jq(String paramString);
+  public abstract AppBrandBackgroundFetchDataTokenParcel MJ(String paramString);
   
-  public abstract boolean cv(String paramString1, String paramString2);
+  public abstract boolean cx(String paramString1, String paramString2);
 }
 
 

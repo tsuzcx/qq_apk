@@ -4,19 +4,17 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.z;
-import com.tencent.mm.g.a.rl;
+import com.tencent.mm.ai.z;
+import com.tencent.mm.g.a.rw;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.l;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class AppBrandVideoPreviewUI$d
   implements View.OnClickListener
 {
@@ -25,24 +23,28 @@ final class AppBrandVideoPreviewUI$d
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(51158);
-    ac.i(this.mfL.TAG, "hy: on click menu");
-    paramView = new rl();
-    paramView.dut.context = ((Context)this.mfL);
-    paramView.dut.duu = w.sQ(AppBrandVideoPreviewUI.a(this.mfL));
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-    d.g.b.k.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject).dcr();
-    Long localLong = AppBrandVideoPreviewUI.b(this.mfL);
+    Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandVideoPreviewUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
+    ad.i(this.mGm.TAG, "hy: on click menu");
+    paramView = new rw();
+    paramView.dGt.context = ((Context)this.mGm);
+    paramView.dGt.dGu = w.vF(AppBrandVideoPreviewUI.a(this.mGm));
+    localObject1 = new ArrayList();
+    Object localObject2 = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+    p.g(localObject2, "MMKernel.service(IMessengerStorage::class.java)");
+    localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject2).dlK();
+    Long localLong = AppBrandVideoPreviewUI.b(this.mGm);
     if (localLong == null) {
-      d.g.b.k.fOy();
+      p.gfZ();
     }
-    localArrayList.add(((h)localObject).vP(localLong.longValue()));
-    paramView.dut.dsS = ((List)localArrayList);
-    paramView.dut.talker = AppBrandVideoPreviewUI.a(this.mfL);
-    paramView.dut.duv = ((z)this.mfL);
-    a.GpY.l((b)paramView);
-    AppBrandVideoPreviewUI.a(this.mfL, 3);
+    ((ArrayList)localObject1).add(((i)localObject2).xY(localLong.longValue()));
+    paramView.dGt.dES = ((List)localObject1);
+    paramView.dGt.talker = AppBrandVideoPreviewUI.a(this.mGm);
+    paramView.dGt.dGv = ((z)this.mGm);
+    com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)paramView);
+    AppBrandVideoPreviewUI.a(this.mGm, 3);
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandVideoPreviewUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(51158);
   }
 }

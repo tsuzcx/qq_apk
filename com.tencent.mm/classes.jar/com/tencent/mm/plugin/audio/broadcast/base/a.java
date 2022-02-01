@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.audio.c.a.a;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/audio/broadcast/base/BaseAudioMgr;", "", "()V", "onAudioBecomingNoisy", "", "plugin-audio_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/audio/broadcast/base/BaseAudioMgr;", "", "()V", "onAudioBecomingNoisy", "", "plugin-audio_release"})
 public final class a
 {
-  public static final a mQU;
+  public static final a nrt;
   
   static
   {
-    AppMethodBeat.i(198332);
-    mQU = new a();
-    AppMethodBeat.o(198332);
+    AppMethodBeat.i(199730);
+    nrt = new a();
+    AppMethodBeat.o(199730);
   }
   
-  public static void bCo()
+  public static void bGt()
   {
-    AppMethodBeat.i(198331);
-    a.a locala = com.tencent.mm.plugin.audio.c.a.mRw;
-    a.a.bCx().hv(10);
-    AppMethodBeat.o(198331);
+    AppMethodBeat.i(199729);
+    a.a locala = com.tencent.mm.plugin.audio.c.a.nrV;
+    a.a.bGC().hC(10);
+    AppMethodBeat.o(199729);
   }
 }
 

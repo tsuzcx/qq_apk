@@ -6,11 +6,12 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aa.e;
+import com.tencent.mm.aa.e.a;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.z.e;
-import com.tencent.mm.z.e.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.g;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,43 +22,43 @@ import java.util.Stack;
 public final class i
   implements f<e>
 {
-  private Stack<e> fpX;
-  private Stack<e> fpY;
-  public int fqa;
-  private SparseArray<String> fqk;
-  private HashMap<String, Bitmap> fql;
+  private Stack<e> fIe;
+  private Stack<e> fIf;
+  public int fIh;
+  private SparseArray<String> fIr;
+  private HashMap<String, Bitmap> fIs;
   
-  public final void Mh()
+  public final void NQ()
   {
-    this.fqa += 1;
+    this.fIh += 1;
   }
   
-  public final void Vo()
+  public final void XF()
   {
     AppMethodBeat.i(9231);
-    ac.i("MicroMsg.MosaicCache", "[onRestore] size:%s", new Object[] { Integer.valueOf(this.fpX.size()) });
-    this.fpX.clear();
-    if (this.fpY != null)
+    ad.i("MicroMsg.MosaicCache", "[onRestore] size:%s", new Object[] { Integer.valueOf(this.fIe.size()) });
+    this.fIe.clear();
+    if (this.fIf != null)
     {
-      ac.i("MicroMsg.MosaicCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.fpY.size()) });
-      this.fpX.addAll(this.fpY);
+      ad.i("MicroMsg.MosaicCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.fIf.size()) });
+      this.fIe.addAll(this.fIf);
     }
     AppMethodBeat.o(9231);
   }
   
-  public final Bitmap Vw()
+  public final Bitmap XN()
   {
     AppMethodBeat.i(9235);
-    String str = (String)this.fqk.get(aj(true));
-    if (bs.isNullOrNil(str))
+    String str = (String)this.fIr.get(aj(true));
+    if (bt.isNullOrNil(str))
     {
-      ac.w("MicroMsg.MosaicCache", "[getCacheFromLocal] path is null");
+      ad.w("MicroMsg.MosaicCache", "[getCacheFromLocal] path is null");
       AppMethodBeat.o(9235);
       return null;
     }
-    ac.i("MicroMsg.MosaicCache", "[getCacheFromLocal] path:%s size:%s", new Object[] { str, Integer.valueOf(aj(true)) });
-    if (this.fql.containsKey(str)) {}
-    for (Bitmap localBitmap1 = (Bitmap)this.fql.get(str);; localBitmap1 = null)
+    ad.i("MicroMsg.MosaicCache", "[getCacheFromLocal] path:%s size:%s", new Object[] { str, Integer.valueOf(aj(true)) });
+    if (this.fIs.containsKey(str)) {}
+    for (Bitmap localBitmap1 = (Bitmap)this.fIs.get(str);; localBitmap1 = null)
     {
       Bitmap localBitmap2;
       if (localBitmap1 != null)
@@ -67,18 +68,18 @@ public final class i
       }
       else
       {
-        ac.i("MicroMsg.MosaicCache", "");
-        localBitmap2 = com.tencent.mm.sdk.platformtools.f.aKz(str);
-        ac.i("MicroMsg.MosaicCache", "[getCacheFromLocal] get from local!");
+        ad.i("MicroMsg.MosaicCache", "");
+        localBitmap2 = g.aQf(str);
+        ad.i("MicroMsg.MosaicCache", "[getCacheFromLocal] get from local!");
       }
       if (localBitmap2 == null)
       {
-        ac.e("MicroMsg.MosaicCache", "[getCacheFromLocal] null == bitmap path:%s", new Object[] { str });
+        ad.e("MicroMsg.MosaicCache", "[getCacheFromLocal] null == bitmap path:%s", new Object[] { str });
         AppMethodBeat.o(9235);
         return null;
       }
       localBitmap1 = localBitmap2.copy(Bitmap.Config.ARGB_8888, true);
-      ac.i("MicroMsg.MosaicCache", "bitmap recycle %s", new Object[] { localBitmap2 });
+      ad.i("MicroMsg.MosaicCache", "bitmap recycle %s", new Object[] { localBitmap2 });
       localBitmap2.recycle();
       AppMethodBeat.o(9235);
       return localBitmap1;
@@ -89,14 +90,14 @@ public final class i
   {
     AppMethodBeat.i(9232);
     if (!paramBoolean) {
-      if ((this.fpX == null) || (this.fpX.size() <= 0)) {
+      if ((this.fIe == null) || (this.fIe.size() <= 0)) {
         break label64;
       }
     }
     label64:
-    for (e locale = (e)this.fpX.peek();; locale = null)
+    for (e locale = (e)this.fIe.peek();; locale = null)
     {
-      if ((locale != null) && (locale.cQp == e.a.gfw)) {
+      if ((locale != null) && (locale.dbF == e.a.gzg)) {
         locale.draw(paramCanvas);
       }
       AppMethodBeat.o(9232);
@@ -107,8 +108,8 @@ public final class i
   public final void a(e parame)
   {
     AppMethodBeat.i(9236);
-    if (this.fpX != null) {
-      this.fpX.push(parame);
+    if (this.fIe != null) {
+      this.fIe.push(parame);
     }
     AppMethodBeat.o(9236);
   }
@@ -119,18 +120,18 @@ public final class i
     int i;
     if (paramBoolean)
     {
-      if (this.fpX != null)
+      if (this.fIe != null)
       {
-        i = this.fpX.size();
+        i = this.fIe.size();
         AppMethodBeat.o(9237);
         return i;
       }
       AppMethodBeat.o(9237);
       return 0;
     }
-    if (this.fpY != null)
+    if (this.fIf != null)
     {
-      i = this.fpY.size();
+      i = this.fIf.size();
       AppMethodBeat.o(9237);
       return i;
     }
@@ -138,16 +139,16 @@ public final class i
     return 0;
   }
   
-  public final void cA(boolean paramBoolean)
+  public final void cC(boolean paramBoolean)
   {
     AppMethodBeat.i(9230);
-    ac.i("MicroMsg.MosaicCache", "[onSave] size:%s", new Object[] { Integer.valueOf(this.fpX.size()) });
-    if (this.fpY != null) {
-      this.fpY.clear();
+    ad.i("MicroMsg.MosaicCache", "[onSave] size:%s", new Object[] { Integer.valueOf(this.fIe.size()) });
+    if (this.fIf != null) {
+      this.fIf.clear();
     }
-    this.fpY = ((Stack)this.fpX.clone());
+    this.fIf = ((Stack)this.fIe.clone());
     if (paramBoolean) {
-      this.fpX.clear();
+      this.fIe.clear();
     }
     AppMethodBeat.o(9230);
   }
@@ -155,7 +156,7 @@ public final class i
   public final void e(Canvas paramCanvas)
   {
     AppMethodBeat.i(9233);
-    Bitmap localBitmap = Vw();
+    Bitmap localBitmap = XN();
     if ((localBitmap != null) && (!localBitmap.isRecycled())) {
       paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
     }
@@ -165,44 +166,44 @@ public final class i
   public final void onCreate()
   {
     AppMethodBeat.i(9228);
-    ac.i("MicroMsg.MosaicCache", "[onCreate]");
-    this.fpX = new Stack();
-    this.fqk = new SparseArray();
-    this.fql = new HashMap();
+    ad.i("MicroMsg.MosaicCache", "[onCreate]");
+    this.fIe = new Stack();
+    this.fIr = new SparseArray();
+    this.fIs = new HashMap();
     AppMethodBeat.o(9228);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(9229);
-    if (this.fpX != null)
+    if (this.fIe != null)
     {
-      localIterator = this.fpX.iterator();
+      localIterator = this.fIe.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.fpX.clear();
+      this.fIe.clear();
     }
-    if (this.fpY != null)
+    if (this.fIf != null)
     {
-      localIterator = this.fpY.iterator();
+      localIterator = this.fIf.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.fpY.clear();
+      this.fIf.clear();
     }
-    this.fqk.clear();
-    Iterator localIterator = this.fql.entrySet().iterator();
+    this.fIr.clear();
+    Iterator localIterator = this.fIs.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Bitmap localBitmap = (Bitmap)((Map.Entry)localIterator.next()).getValue();
       if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
-        ac.i("MicroMsg.MosaicCache", "bitmap recycle %s", new Object[] { localBitmap.toString() });
+        ad.i("MicroMsg.MosaicCache", "bitmap recycle %s", new Object[] { localBitmap.toString() });
         localBitmap.recycle();
       }
     }
-    this.fql.clear();
+    this.fIs.clear();
     AppMethodBeat.o(9229);
   }
   
@@ -210,16 +211,16 @@ public final class i
   {
     AppMethodBeat.i(9234);
     paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
-    final String str1 = com.tencent.mm.cm.a.aRX(com.tencent.mm.e.a.cOO.toString());
-    ac.i("MicroMsg.MosaicCache", "[saveCacheToLocal] path:%s size:%s", new Object[] { str1, Integer.valueOf(aj(true)) });
-    String str2 = (String)this.fqk.get(aj(true));
-    if (!bs.isNullOrNil(str2))
+    final String str1 = com.tencent.mm.cm.a.aXW(com.tencent.mm.e.a.dae.toString());
+    ad.i("MicroMsg.MosaicCache", "[saveCacheToLocal] path:%s size:%s", new Object[] { str1, Integer.valueOf(aj(true)) });
+    String str2 = (String)this.fIr.get(aj(true));
+    if (!bt.isNullOrNil(str2))
     {
       com.tencent.mm.vfs.i.deleteFile(str2);
-      this.fqk.remove(aj(true));
+      this.fIr.remove(aj(true));
     }
-    this.fqk.put(aj(true), str1);
-    this.fql.put(str1, paramBitmap);
+    this.fIr.put(aj(true), str1);
+    this.fIs.put(str1, paramBitmap);
     b.e(new Runnable()
     {
       public final void run()
@@ -227,13 +228,13 @@ public final class i
         AppMethodBeat.i(9227);
         try
         {
-          com.tencent.mm.sdk.platformtools.f.a(paramBitmap, 50, Bitmap.CompressFormat.PNG, str1, true);
+          g.a(paramBitmap, 50, Bitmap.CompressFormat.PNG, str1, true);
           AppMethodBeat.o(9227);
           return;
         }
         catch (IOException localIOException)
         {
-          ac.printErrStackTrace("MicroMsg.MosaicCache", localIOException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.MosaicCache", localIOException, "", new Object[0]);
           AppMethodBeat.o(9227);
         }
       }
@@ -243,7 +244,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.cache.i
  * JD-Core Version:    0.7.0.1
  */

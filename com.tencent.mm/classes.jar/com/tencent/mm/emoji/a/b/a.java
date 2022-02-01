@@ -3,18 +3,18 @@ package com.tencent.mm.emoji.a.b;
 import com.tencent.mm.vending.e.b;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/search/AbsEmojiSuggest;", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;)V", "isAlive", "", "()Z", "setAlive", "(Z)V", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "dead", "", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/search/AbsEmojiSuggest;", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;)V", "isAlive", "", "()Z", "setAlive", "(Z)V", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "dead", "", "plugin-emojisdk_release"})
 public abstract class a
   implements j, com.tencent.mm.vending.e.a
 {
-  boolean czg;
-  private final b<com.tencent.mm.vending.e.a> fSt;
+  boolean cKc;
+  private final b<com.tencent.mm.vending.e.a> glX;
   
   public a(b<com.tencent.mm.vending.e.a> paramb)
   {
-    this.fSt = paramb;
-    this.czg = true;
-    paramb = this.fSt;
+    this.glX = paramb;
+    this.cKc = true;
+    paramb = this.glX;
     if (paramb != null) {
       paramb.keep((com.tencent.mm.vending.e.a)this);
     }
@@ -22,7 +22,7 @@ public abstract class a
   
   public void dead()
   {
-    this.czg = false;
+    this.cKc = false;
   }
 }
 

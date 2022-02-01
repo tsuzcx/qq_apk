@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.wallet.pay.a.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
+import com.tencent.mm.al.f;
 import com.tencent.mm.network.e;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wallet_core.model.v;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class i
   extends b
 {
-  public i(u paramu, Orders paramOrders)
+  public i(v paramv, Orders paramOrders)
   {
-    super(paramu, paramOrders);
+    super(paramv, paramOrders);
   }
   
-  protected final void aP(Map<String, String> paramMap)
+  protected final void aS(Map<String, String> paramMap)
   {
     AppMethodBeat.i(69296);
-    paramMap.put("busi_scene", this.Bio.cZz);
+    paramMap.put("busi_scene", this.CIC.dkR);
     AppMethodBeat.o(69296);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(69297);
-    h.wUl.idkeyStat(663L, 26L, 1L, false);
-    int i = super.doScene(parame, paramg);
+    g.yhR.idkeyStat(663L, 26L, 1L, false);
+    int i = super.doScene(parame, paramf);
     AppMethodBeat.o(69297);
     return i;
   }
@@ -47,7 +47,7 @@ public final class i
   {
     AppMethodBeat.i(69298);
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
-    h.wUl.idkeyStat(663L, 27L, 1L, false);
+    g.yhR.idkeyStat(663L, 27L, 1L, false);
     AppMethodBeat.o(69298);
   }
 }

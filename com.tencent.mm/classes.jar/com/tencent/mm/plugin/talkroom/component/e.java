@@ -5,11 +5,11 @@ import android.os.IInterface;
 public abstract interface e
   extends IInterface
 {
-  public abstract void crK();
+  public abstract void cxw();
   
-  public abstract void dOc();
+  public abstract void eaq();
   
-  public abstract int ebk();
+  public abstract int enB();
   
   public abstract void release();
   
@@ -17,7 +17,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.e
  * JD-Core Version:    0.7.0.1
  */

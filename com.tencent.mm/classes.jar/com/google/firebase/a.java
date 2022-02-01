@@ -36,59 +36,59 @@ import javax.annotation.concurrent.GuardedBy;
 
 public class a
 {
-  private static final List<String> bzF;
-  private static final List<String> bzG;
-  private static final List<String> bzH;
-  private static final List<String> bzI;
-  private static final Set<String> bzJ;
+  private static final List<String> bJT;
+  private static final List<String> bJU;
+  private static final List<String> bJV;
+  private static final List<String> bJW;
+  private static final Set<String> bJX;
   @GuardedBy("sLock")
-  static final Map<String, a> bzK;
+  static final Map<String, a> bJY;
   private static final Object sLock;
-  private final Context bzL;
-  private final b bzM;
-  private final n bzN;
-  private final AtomicBoolean bzO;
-  private final AtomicBoolean bzP;
-  private final List<Object> bzQ;
-  private final List<Object> bzR;
-  private a bzS;
+  private final Context bJZ;
+  private final b bKa;
+  private final n bKb;
+  private final AtomicBoolean bKc;
+  private final AtomicBoolean bKd;
+  private final List<Object> bKe;
+  private final List<Object> bKf;
+  private a bKg;
   private final String mName;
   private final List<Object> zzm;
   
   static
   {
     AppMethodBeat.i(4062);
-    bzF = Arrays.asList(new String[] { "com.google.firebase.auth.FirebaseAuth", "com.google.firebase.iid.FirebaseInstanceId" });
-    bzG = Collections.singletonList("com.google.firebase.crash.FirebaseCrash");
-    bzH = Arrays.asList(new String[] { "com.google.android.gms.measurement.AppMeasurement" });
-    bzI = Arrays.asList(new String[0]);
-    bzJ = Collections.emptySet();
+    bJT = Arrays.asList(new String[] { "com.google.firebase.auth.FirebaseAuth", "com.google.firebase.iid.FirebaseInstanceId" });
+    bJU = Collections.singletonList("com.google.firebase.crash.FirebaseCrash");
+    bJV = Arrays.asList(new String[] { "com.google.android.gms.measurement.AppMeasurement" });
+    bJW = Arrays.asList(new String[0]);
+    bJX = Collections.emptySet();
     sLock = new Object();
-    bzK = new android.support.v4.e.a();
+    bJY = new android.support.v4.e.a();
     AppMethodBeat.o(4062);
   }
   
   private a(Context paramContext, String paramString, b paramb)
   {
     AppMethodBeat.i(4055);
-    this.bzO = new AtomicBoolean(false);
-    this.bzP = new AtomicBoolean();
-    this.bzQ = new CopyOnWriteArrayList();
+    this.bKc = new AtomicBoolean(false);
+    this.bKd = new AtomicBoolean();
+    this.bKe = new CopyOnWriteArrayList();
     this.zzm = new CopyOnWriteArrayList();
-    this.bzR = new CopyOnWriteArrayList();
-    this.bzL = ((Context)Preconditions.checkNotNull(paramContext));
+    this.bKf = new CopyOnWriteArrayList();
+    this.bJZ = ((Context)Preconditions.checkNotNull(paramContext));
     this.mName = Preconditions.checkNotEmpty(paramString);
-    this.bzM = ((b)Preconditions.checkNotNull(paramb));
-    this.bzS = new com.google.firebase.b.a();
-    paramContext = new k(this.bzL);
-    this.bzN = new n(k.z(paramContext.bAn.an(paramContext.mContext)), new com.google.firebase.components.a[] { com.google.firebase.components.a.a(Context.class, this.bzL), com.google.firebase.components.a.a(a.class, this), com.google.firebase.components.a.a(b.class, this.bzM) });
+    this.bKa = ((b)Preconditions.checkNotNull(paramb));
+    this.bKg = new com.google.firebase.b.a();
+    paramContext = new k(this.bJZ);
+    this.bKb = new n(k.z(paramContext.bKB.an(paramContext.mContext)), new com.google.firebase.components.a[] { com.google.firebase.components.a.a(Context.class, this.bJZ), com.google.firebase.components.a.a(a.class, this), com.google.firebase.components.a.a(b.class, this.bKa) });
     AppMethodBeat.o(4055);
   }
   
   private static a a(Context arg0, b paramb, String paramString)
   {
     AppMethodBeat.i(4052);
-    com.google.firebase.b.b.wS();
+    com.google.firebase.b.b.yp();
     if ((PlatformVersion.isAtLeastIceCreamSandwich()) && ((???.getApplicationContext() instanceof Application)))
     {
       BackgroundDetector.initialize((Application)???.getApplicationContext());
@@ -101,14 +101,14 @@ public class a
     }
     synchronized (sLock)
     {
-      if (!bzK.containsKey(str))
+      if (!bJY.containsKey(str))
       {
         bool = true;
         Preconditions.checkState(bool, String.valueOf(str).length() + 33 + "FirebaseApp name " + str + " already exists!");
         Preconditions.checkNotNull(paramString, "Application context cannot be null.");
         paramb = new a(paramString, str, paramb);
-        bzK.put(str, paramb);
-        com.google.firebase.b.b.wT();
+        bJY.put(str, paramb);
+        com.google.firebase.b.b.yq();
         paramb.zzc();
         AppMethodBeat.o(4052);
         return paramb;
@@ -130,7 +130,7 @@ public class a
       if (paramBoolean) {}
       try
       {
-        if (bzI.contains(paramIterable))
+        if (bJW.contains(paramIterable))
         {
           Method localMethod = Class.forName(paramIterable).getMethod("getInstance", new Class[] { paramClass });
           int i = localMethod.getModifiers();
@@ -141,7 +141,7 @@ public class a
       }
       catch (ClassNotFoundException localClassNotFoundException)
       {
-        if (bzJ.contains(paramIterable))
+        if (bJX.contains(paramIterable))
         {
           paramClass = new IllegalStateException(String.valueOf(paramIterable).concat(" is missing, but is required. Check if it has been removed by Proguard."));
           AppMethodBeat.o(4060);
@@ -179,9 +179,9 @@ public class a
     AppMethodBeat.i(4051);
     synchronized (sLock)
     {
-      if (bzK.containsKey("[DEFAULT]"))
+      if (bJY.containsKey("[DEFAULT]"))
       {
-        paramContext = wn();
+        paramContext = xK();
         AppMethodBeat.o(4051);
         return paramContext;
       }
@@ -206,12 +206,12 @@ public class a
     return str;
   }
   
-  public static a wn()
+  public static a xK()
   {
     AppMethodBeat.i(4050);
     synchronized (sLock)
     {
-      Object localObject2 = (a)bzK.get("[DEFAULT]");
+      Object localObject2 = (a)bJY.get("[DEFAULT]");
       if (localObject2 == null)
       {
         localObject2 = ProcessUtils.getMyProcessName();
@@ -225,12 +225,12 @@ public class a
   }
   
   @KeepForSdk
-  public static void wo()
+  public static void xL()
   {
     AppMethodBeat.i(4053);
     synchronized (sLock)
     {
-      ArrayList localArrayList = (ArrayList)new ArrayList(bzK.values());
+      ArrayList localArrayList = (ArrayList)new ArrayList(bJY.values());
       int k = localArrayList.size();
       int i = 0;
       while (i < k)
@@ -239,9 +239,9 @@ public class a
         int j = i + 1;
         localObject3 = (a)localObject3;
         i = j;
-        if (((a)localObject3).bzO.get())
+        if (((a)localObject3).bKc.get())
         {
-          ((a)localObject3).wq();
+          ((a)localObject3).xN();
           i = j;
         }
       }
@@ -251,7 +251,7 @@ public class a
   
   @KeepForSdk
   @VisibleForTesting
-  private boolean wp()
+  private boolean xM()
   {
     AppMethodBeat.i(4057);
     boolean bool = "[DEFAULT]".equals(getName());
@@ -259,7 +259,7 @@ public class a
     return bool;
   }
   
-  private final void wq()
+  private final void xN()
   {
     AppMethodBeat.i(4058);
     Iterator localIterator = this.zzm.iterator();
@@ -272,7 +272,7 @@ public class a
   private final void zza()
   {
     AppMethodBeat.i(4056);
-    if (!this.bzP.get()) {}
+    if (!this.bKd.get()) {}
     for (boolean bool = true;; bool = false)
     {
       Preconditions.checkState(bool, "FirebaseApp was deleted");
@@ -284,21 +284,21 @@ public class a
   private final void zzc()
   {
     AppMethodBeat.i(4059);
-    boolean bool = android.support.v4.content.b.T(this.bzL);
+    boolean bool = android.support.v4.content.b.T(this.bJZ);
     if (bool) {
-      b.ak(this.bzL);
+      b.ak(this.bJZ);
     }
     for (;;)
     {
-      a(a.class, this, bzF, bool);
-      if (wp())
+      a(a.class, this, bJT, bool);
+      if (xM())
       {
-        a(a.class, this, bzG, bool);
-        a(Context.class, this.bzL, bzH, bool);
+        a(a.class, this, bJU, bool);
+        a(Context.class, this.bJZ, bJV, bool);
       }
       AppMethodBeat.o(4059);
       return;
-      this.bzN.bd(wp());
+      this.bKb.be(xM());
     }
   }
   
@@ -319,7 +319,7 @@ public class a
   {
     AppMethodBeat.i(4044);
     zza();
-    Context localContext = this.bzL;
+    Context localContext = this.bJZ;
     AppMethodBeat.o(4044);
     return localContext;
   }
@@ -335,7 +335,7 @@ public class a
   public String toString()
   {
     AppMethodBeat.i(4049);
-    String str = Objects.toStringHelper(this).add("name", this.mName).add("options", this.bzM).toString();
+    String str = Objects.toStringHelper(this).add("name", this.mName).add("options", this.bKa).toString();
     AppMethodBeat.o(4049);
     return str;
   }
@@ -345,16 +345,16 @@ public class a
   {
     AppMethodBeat.i(4054);
     zza();
-    paramClass = com.google.firebase.components.c.a(this.bzN, paramClass);
+    paramClass = com.google.firebase.components.c.a(this.bKb, paramClass);
     AppMethodBeat.o(4054);
     return paramClass;
   }
   
-  public final b wm()
+  public final b xJ()
   {
     AppMethodBeat.i(4046);
     zza();
-    b localb = this.bzM;
+    b localb = this.bKa;
     AppMethodBeat.o(4046);
     return localb;
   }
@@ -366,32 +366,32 @@ public class a
   static final class b
     extends BroadcastReceiver
   {
-    private static AtomicReference<b> bzT;
-    private final Context bzL;
+    private static AtomicReference<b> bKh;
+    private final Context bJZ;
     
     static
     {
       AppMethodBeat.i(4043);
-      bzT = new AtomicReference();
+      bKh = new AtomicReference();
       AppMethodBeat.o(4043);
     }
     
     private b(Context paramContext)
     {
-      this.bzL = paramContext;
+      this.bJZ = paramContext;
     }
     
     public final void onReceive(Context arg1, Intent paramIntent)
     {
       AppMethodBeat.i(4041);
-      synchronized (a.wr())
+      synchronized (a.xO())
       {
-        paramIntent = a.bzK.values().iterator();
+        paramIntent = a.bJY.values().iterator();
         if (paramIntent.hasNext()) {
           a.a((a)paramIntent.next());
         }
       }
-      this.bzL.unregisterReceiver(this);
+      this.bJZ.unregisterReceiver(this);
       AppMethodBeat.o(4041);
     }
   }

@@ -7,21 +7,21 @@ import java.util.List;
 
 final class s
 {
-  private final List<Format> bgr;
-  private final com.google.android.exoplayer2.c.m[] bgu;
+  private final List<Format> bqL;
+  private final com.google.android.exoplayer2.c.m[] bqO;
   
   public s(List<Format> paramList)
   {
     AppMethodBeat.i(92282);
-    this.bgr = paramList;
-    this.bgu = new com.google.android.exoplayer2.c.m[paramList.size()];
+    this.bqL = paramList;
+    this.bqO = new com.google.android.exoplayer2.c.m[paramList.size()];
     AppMethodBeat.o(92282);
   }
   
   public final void a(long paramLong, com.google.android.exoplayer2.i.m paramm)
   {
     AppMethodBeat.i(92284);
-    com.google.android.exoplayer2.f.a.g.a(paramLong, paramm, this.bgu);
+    com.google.android.exoplayer2.f.a.g.a(paramLong, paramm, this.bqO);
     AppMethodBeat.o(92284);
   }
   
@@ -29,12 +29,12 @@ final class s
   {
     AppMethodBeat.i(92283);
     int i = 0;
-    if (i < this.bgu.length)
+    if (i < this.bqO.length)
     {
-      paramd.ts();
-      com.google.android.exoplayer2.c.m localm = paramg.dW(paramd.getTrackId());
-      Format localFormat = (Format)this.bgr.get(i);
-      String str2 = localFormat.aSY;
+      paramd.uR();
+      com.google.android.exoplayer2.c.m localm = paramg.eb(paramd.getTrackId());
+      Format localFormat = (Format)this.bqL.get(i);
+      String str2 = localFormat.bdt;
       boolean bool;
       if (("application/cea-608".equals(str2)) || ("application/cea-708".equals(str2)))
       {
@@ -46,10 +46,10 @@ final class s
         }
       }
       label157:
-      for (String str1 = localFormat.id;; str1 = paramd.tt())
+      for (String str1 = localFormat.id;; str1 = paramd.uS())
       {
-        localm.f(Format.a(str1, str2, localFormat.aTl, localFormat.aTm, localFormat.aTn));
-        this.bgu[i] = localm;
+        localm.f(Format.a(str1, str2, localFormat.bdG, localFormat.language, localFormat.bdH));
+        this.bqO[i] = localm;
         i += 1;
         break;
         bool = false;
@@ -61,7 +61,7 @@ final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.s
  * JD-Core Version:    0.7.0.1
  */

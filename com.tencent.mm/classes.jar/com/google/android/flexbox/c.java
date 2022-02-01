@@ -15,11 +15,11 @@ import java.util.List;
 
 class c
 {
-  private final a byG;
-  private boolean[] byH;
-  int[] byI;
-  long[] byJ;
-  private long[] byK;
+  private final a bIU;
+  private boolean[] bIV;
+  int[] bIW;
+  long[] bIX;
+  private long[] bIY;
   
   static
   {
@@ -35,7 +35,7 @@ class c
   
   c(a parama)
   {
-    this.byG = parama;
+    this.bIU = parama;
   }
   
   private void J(View paramView, int paramInt)
@@ -64,7 +64,7 @@ class c
         i = View.MeasureSpec.makeMeasureSpec(i, 1073741824);
         paramView.measure(j, i);
         a(paramInt, j, i, paramView);
-        this.byG.a(paramInt, paramView);
+        this.bIU.a(paramInt, paramView);
       }
       AppMethodBeat.o(62243);
       return;
@@ -93,8 +93,8 @@ class c
   private int a(int paramInt1, FlexItem paramFlexItem, int paramInt2)
   {
     AppMethodBeat.i(62249);
-    a locala = this.byG;
-    paramInt2 = locala.w(paramInt1, locala.getPaddingLeft() + this.byG.getPaddingRight() + paramFlexItem.wb() + paramFlexItem.wd() + paramInt2, paramFlexItem.getWidth());
+    a locala = this.bIU;
+    paramInt2 = locala.w(paramInt1, locala.getPaddingLeft() + this.bIU.getPaddingRight() + paramFlexItem.xy() + paramFlexItem.xA() + paramInt2, paramFlexItem.getWidth());
     int i = View.MeasureSpec.getSize(paramInt2);
     if (i > paramFlexItem.getMaxWidth()) {
       paramInt1 = View.MeasureSpec.makeMeasureSpec(paramFlexItem.getMaxWidth(), View.MeasureSpec.getMode(paramInt2));
@@ -130,7 +130,7 @@ class c
     paramInt1 = (paramInt1 - paramInt2) / 2;
     ArrayList localArrayList = new ArrayList();
     b localb = new b();
-    localb.byy = paramInt1;
+    localb.bIM = paramInt1;
     paramInt2 = paramList.size();
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
@@ -151,11 +151,11 @@ class c
   private void a(int paramInt1, int paramInt2, int paramInt3, View paramView)
   {
     AppMethodBeat.i(62261);
-    if (this.byJ != null) {
-      this.byJ[paramInt1] = bp(paramInt2, paramInt3);
+    if (this.bIX != null) {
+      this.bIX[paramInt1] = br(paramInt2, paramInt3);
     }
-    if (this.byK != null) {
-      this.byK[paramInt1] = bp(paramView.getMeasuredWidth(), paramView.getMeasuredHeight());
+    if (this.bIY != null) {
+      this.bIY[paramInt1] = br(paramView.getMeasuredWidth(), paramView.getMeasuredHeight());
     }
     AppMethodBeat.o(62261);
   }
@@ -163,18 +163,18 @@ class c
   private void a(int paramInt1, int paramInt2, b paramb, int paramInt3, int paramInt4, boolean paramBoolean)
   {
     AppMethodBeat.i(62247);
-    if ((paramb.byA <= 0.0F) || (paramInt3 < paramb.byw))
+    if ((paramb.bIO <= 0.0F) || (paramInt3 < paramb.bIK))
     {
       AppMethodBeat.o(62247);
       return;
     }
-    int i1 = paramb.byw;
+    int i1 = paramb.bIK;
     int i = 0;
-    float f4 = (paramInt3 - paramb.byw) / paramb.byA;
-    paramb.byw = (paramb.byx + paramInt4);
+    float f4 = (paramInt3 - paramb.bIK) / paramb.bIO;
+    paramb.bIK = (paramb.bIL + paramInt4);
     int n = 0;
     if (!paramBoolean) {
-      paramb.byy = -2147483648;
+      paramb.bIM = -2147483648;
     }
     float f1 = 0.0F;
     int m = 0;
@@ -190,10 +190,10 @@ class c
     label355:
     int i3;
     int i4;
-    if (m < paramb.asn)
+    if (m < paramb.aue)
     {
-      i2 = paramb.byF + m;
-      localView = this.byG.fg(i2);
+      i2 = paramb.bIT + m;
+      localView = this.bIU.fj(i2);
       k = n;
       j = i;
       f2 = f1;
@@ -205,23 +205,23 @@ class c
         if (localView.getVisibility() != 8)
         {
           localFlexItem = (FlexItem)localView.getLayoutParams();
-          j = this.byG.getFlexDirection();
+          j = this.bIU.getFlexDirection();
           if ((j != 0) && (j != 1)) {
             break label610;
           }
           j = localView.getMeasuredWidth();
-          if (this.byK != null) {
-            j = (int)this.byK[i2];
+          if (this.bIY != null) {
+            j = (int)this.bIY[i2];
           }
           k = localView.getMeasuredHeight();
-          if (this.byK != null) {
-            k = (int)(this.byK[i2] >> 32);
+          if (this.bIY != null) {
+            k = (int)(this.bIY[i2] >> 32);
           }
-          if ((this.byH[i2] != 0) || (localFlexItem.getFlexGrow() <= 0.0F)) {
+          if ((this.bIV[i2] != 0) || (localFlexItem.getFlexGrow() <= 0.0F)) {
             break label1032;
           }
           f2 = j + localFlexItem.getFlexGrow() * f4;
-          if (m != paramb.asn - 1) {
+          if (m != paramb.aue - 1) {
             break label1029;
           }
           f3 = 0.0F;
@@ -233,15 +233,15 @@ class c
           }
           i = 1;
           j = localFlexItem.getMaxWidth();
-          this.byH[i2] = true;
-          paramb.byA -= localFlexItem.getFlexGrow();
-          i3 = b(paramInt2, localFlexItem, paramb.byD);
+          this.bIV[i2] = true;
+          paramb.bIO -= localFlexItem.getFlexGrow();
+          i3 = b(paramInt2, localFlexItem, paramb.bIR);
           i4 = View.MeasureSpec.makeMeasureSpec(j, 1073741824);
           localView.measure(i4, i3);
           j = localView.getMeasuredWidth();
           k = localView.getMeasuredHeight();
           a(i2, i4, i3, localView);
-          this.byG.a(i2, localView);
+          this.bIU.a(i2, localView);
         }
       }
     }
@@ -249,13 +249,13 @@ class c
     label1032:
     for (;;)
     {
-      k = Math.max(n, localFlexItem.wc() + k + localFlexItem.getMarginBottom() + this.byG.cj(localView));
-      n = paramb.byw;
-      i2 = localFlexItem.wb();
-      paramb.byw = (localFlexItem.wd() + (i2 + j) + n);
+      k = Math.max(n, localFlexItem.xz() + k + localFlexItem.getMarginBottom() + this.bIU.cj(localView));
+      n = paramb.bIK;
+      i2 = localFlexItem.xy();
+      paramb.bIK = (localFlexItem.xA() + (i2 + j) + n);
       j = k;
       label501:
-      paramb.byy = Math.max(paramb.byy, j);
+      paramb.bIM = Math.max(paramb.bIM, j);
       k = j;
       f2 = f1;
       j = i;
@@ -279,17 +279,17 @@ class c
         break label355;
         label610:
         j = localView.getMeasuredHeight();
-        if (this.byK != null) {
-          j = (int)(this.byK[i2] >> 32);
+        if (this.bIY != null) {
+          j = (int)(this.bIY[i2] >> 32);
         }
         k = localView.getMeasuredWidth();
-        if (this.byK != null) {
-          k = (int)this.byK[i2];
+        if (this.bIY != null) {
+          k = (int)this.bIY[i2];
         }
-        if ((this.byH[i2] == 0) && (localFlexItem.getFlexGrow() > 0.0F))
+        if ((this.bIV[i2] == 0) && (localFlexItem.getFlexGrow() > 0.0F))
         {
           f2 = j + localFlexItem.getFlexGrow() * f4;
-          if (m == paramb.asn - 1)
+          if (m == paramb.aue - 1)
           {
             f3 = 0.0F;
             f2 = f1 + f2;
@@ -300,25 +300,25 @@ class c
             {
               i = 1;
               j = localFlexItem.getMaxHeight();
-              this.byH[i2] = true;
-              paramb.byA -= localFlexItem.getFlexGrow();
+              this.bIV[i2] = true;
+              paramb.bIO -= localFlexItem.getFlexGrow();
               label779:
-              i3 = a(paramInt1, localFlexItem, paramb.byD);
+              i3 = a(paramInt1, localFlexItem, paramb.bIR);
               i4 = View.MeasureSpec.makeMeasureSpec(j, 1073741824);
               localView.measure(i3, i4);
               k = localView.getMeasuredWidth();
               j = localView.getMeasuredHeight();
               a(i2, i3, i4, localView);
-              this.byG.a(i2, localView);
+              this.bIU.a(i2, localView);
             }
           }
         }
         for (;;)
         {
-          k = Math.max(n, localFlexItem.wb() + k + localFlexItem.wd() + this.byG.cj(localView));
-          n = paramb.byw;
-          i2 = localFlexItem.wc();
-          paramb.byw = (localFlexItem.getMarginBottom() + (i2 + j) + n);
+          k = Math.max(n, localFlexItem.xy() + k + localFlexItem.xA() + this.bIU.cj(localView));
+          n = paramb.bIK;
+          i2 = localFlexItem.xz();
+          paramb.bIK = (localFlexItem.getMarginBottom() + (i2 + j) + n);
           j = k;
           break label501;
           f1 += f2 - j;
@@ -333,7 +333,7 @@ class c
             j -= 1;
             f1 = (float)(f1 + 1.0D);
             break label779;
-            if ((i != 0) && (i1 != paramb.byw))
+            if ((i != 0) && (i1 != paramb.bIK))
             {
               paramBoolean = true;
               break;
@@ -353,9 +353,9 @@ class c
   private void a(List<b> paramList, b paramb, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(62242);
-    paramb.byD = paramInt2;
-    this.byG.a(paramb);
-    paramb.aak = paramInt1;
+    paramb.bIR = paramInt2;
+    this.bIU.a(paramb);
+    paramb.aca = paramInt1;
     paramList.add(paramb);
     AppMethodBeat.o(62242);
   }
@@ -363,7 +363,7 @@ class c
   private static boolean a(int paramInt1, int paramInt2, b paramb)
   {
     AppMethodBeat.i(62241);
-    if ((paramInt1 == paramInt2 - 1) && (paramb.we() != 0))
+    if ((paramInt1 == paramInt2 - 1) && (paramb.xB() != 0))
     {
       AppMethodBeat.o(62241);
       return true;
@@ -375,12 +375,12 @@ class c
   private boolean a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, FlexItem paramFlexItem, int paramInt5, int paramInt6, int paramInt7)
   {
     AppMethodBeat.i(62240);
-    if (this.byG.getFlexWrap() == 0)
+    if (this.bIU.getFlexWrap() == 0)
     {
       AppMethodBeat.o(62240);
       return false;
     }
-    if (paramFlexItem.vZ())
+    if (paramFlexItem.xw())
     {
       AppMethodBeat.o(62240);
       return true;
@@ -390,13 +390,13 @@ class c
       AppMethodBeat.o(62240);
       return false;
     }
-    paramInt1 = this.byG.getMaxLine();
+    paramInt1 = this.bIU.getMaxLine();
     if ((paramInt1 != -1) && (paramInt1 <= paramInt7 + 1))
     {
       AppMethodBeat.o(62240);
       return false;
     }
-    paramInt5 = this.byG.m(paramView, paramInt5, paramInt6);
+    paramInt5 = this.bIU.m(paramView, paramInt5, paramInt6);
     paramInt1 = paramInt4;
     if (paramInt5 > 0) {
       paramInt1 = paramInt4 + paramInt5;
@@ -429,20 +429,6 @@ class c
     return arrayOfInt;
   }
   
-  private int aZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(62228);
-    if (paramBoolean)
-    {
-      i = this.byG.getPaddingStart();
-      AppMethodBeat.o(62228);
-      return i;
-    }
-    int i = this.byG.getPaddingTop();
-    AppMethodBeat.o(62228);
-    return i;
-  }
-  
   static int at(long paramLong)
   {
     return (int)paramLong;
@@ -456,8 +442,8 @@ class c
   private int b(int paramInt1, FlexItem paramFlexItem, int paramInt2)
   {
     AppMethodBeat.i(62250);
-    a locala = this.byG;
-    paramInt2 = locala.x(paramInt1, locala.getPaddingTop() + this.byG.getPaddingBottom() + paramFlexItem.wc() + paramFlexItem.getMarginBottom() + paramInt2, paramFlexItem.getHeight());
+    a locala = this.bIU;
+    paramInt2 = locala.x(paramInt1, locala.getPaddingTop() + this.bIU.getPaddingBottom() + paramFlexItem.xz() + paramFlexItem.getMarginBottom() + paramInt2, paramFlexItem.getHeight());
     int i = View.MeasureSpec.getSize(paramInt2);
     if (i > paramFlexItem.getMaxHeight()) {
       paramInt1 = View.MeasureSpec.makeMeasureSpec(paramFlexItem.getMaxHeight(), View.MeasureSpec.getMode(paramInt2));
@@ -490,18 +476,18 @@ class c
   private void b(int paramInt1, int paramInt2, b paramb, int paramInt3, int paramInt4, boolean paramBoolean)
   {
     AppMethodBeat.i(62248);
-    int i2 = paramb.byw;
-    if ((paramb.byB <= 0.0F) || (paramInt3 > paramb.byw))
+    int i2 = paramb.bIK;
+    if ((paramb.bIP <= 0.0F) || (paramInt3 > paramb.bIK))
     {
       AppMethodBeat.o(62248);
       return;
     }
     int i = 0;
-    float f4 = (paramb.byw - paramInt3) / paramb.byB;
+    float f4 = (paramb.bIK - paramInt3) / paramb.bIP;
     float f1 = 0.0F;
-    paramb.byw = (paramb.byx + paramInt4);
+    paramb.bIK = (paramb.bIL + paramInt4);
     if (!paramBoolean) {
-      paramb.byy = -2147483648;
+      paramb.bIM = -2147483648;
     }
     int n = 0;
     int k = 0;
@@ -517,30 +503,30 @@ class c
     int i1;
     label333:
     int i4;
-    if (n < paramb.asn)
+    if (n < paramb.aue)
     {
-      i3 = paramb.byF + n;
-      localView = this.byG.fg(i3);
+      i3 = paramb.bIT + n;
+      localView = this.bIU.fj(i3);
       if ((localView == null) || (localView.getVisibility() == 8)) {
         break label1036;
       }
       localFlexItem = (FlexItem)localView.getLayoutParams();
-      j = this.byG.getFlexDirection();
+      j = this.bIU.getFlexDirection();
       if ((j == 0) || (j == 1))
       {
         j = localView.getMeasuredWidth();
-        if (this.byK != null) {
-          j = (int)this.byK[i3];
+        if (this.bIY != null) {
+          j = (int)this.bIY[i3];
         }
         m = localView.getMeasuredHeight();
-        if (this.byK != null) {
-          m = (int)(this.byK[i3] >> 32);
+        if (this.bIY != null) {
+          m = (int)(this.bIY[i3] >> 32);
         }
-        if ((this.byH[i3] != 0) || (localFlexItem.getFlexShrink() <= 0.0F)) {
+        if ((this.bIV[i3] != 0) || (localFlexItem.getFlexShrink() <= 0.0F)) {
           break label1029;
         }
         f2 = j - localFlexItem.getFlexShrink() * f4;
-        if (n != paramb.asn - 1) {
+        if (n != paramb.aue - 1) {
           break label1026;
         }
         f3 = 0.0F;
@@ -551,24 +537,24 @@ class c
         {
           m = 1;
           j = localFlexItem.getMinWidth();
-          this.byH[i3] = true;
-          paramb.byB -= localFlexItem.getFlexShrink();
-          i = b(paramInt2, localFlexItem, paramb.byD);
+          this.bIV[i3] = true;
+          paramb.bIP -= localFlexItem.getFlexShrink();
+          i = b(paramInt2, localFlexItem, paramb.bIR);
           i4 = View.MeasureSpec.makeMeasureSpec(j, 1073741824);
           localView.measure(i4, i);
           j = localView.getMeasuredWidth();
           i1 = localView.getMeasuredHeight();
           a(i3, i4, i, localView);
-          this.byG.a(i3, localView);
+          this.bIU.a(i3, localView);
           i = m;
           label407:
-          k = Math.max(k, localFlexItem.wc() + i1 + localFlexItem.getMarginBottom() + this.byG.cj(localView));
-          m = paramb.byw;
-          i1 = localFlexItem.wb();
-          paramb.byw = (localFlexItem.wd() + (j + i1) + m);
+          k = Math.max(k, localFlexItem.xz() + i1 + localFlexItem.getMarginBottom() + this.bIU.cj(localView));
+          m = paramb.bIK;
+          i1 = localFlexItem.xy();
+          paramb.bIK = (localFlexItem.xA() + (j + i1) + m);
           j = k;
           label483:
-          paramb.byy = Math.max(paramb.byy, j);
+          paramb.bIM = Math.max(paramb.bIM, j);
         }
       }
     }
@@ -596,17 +582,17 @@ class c
       m = i;
       break label333;
       j = localView.getMeasuredHeight();
-      if (this.byK != null) {
-        j = (int)(this.byK[i3] >> 32);
+      if (this.bIY != null) {
+        j = (int)(this.bIY[i3] >> 32);
       }
       m = localView.getMeasuredWidth();
-      if (this.byK != null) {
-        m = (int)this.byK[i3];
+      if (this.bIY != null) {
+        m = (int)this.bIY[i3];
       }
-      if ((this.byH[i3] == 0) && (localFlexItem.getFlexShrink() > 0.0F))
+      if ((this.bIV[i3] == 0) && (localFlexItem.getFlexShrink() > 0.0F))
       {
         f2 = j - localFlexItem.getFlexShrink() * f4;
-        if (n == paramb.asn - 1)
+        if (n == paramb.aue - 1)
         {
           f3 = 0.0F;
           f2 = f1 + f2;
@@ -617,26 +603,26 @@ class c
           {
             m = 1;
             j = localFlexItem.getMinHeight();
-            this.byH[i3] = true;
-            paramb.byB -= localFlexItem.getFlexShrink();
+            this.bIV[i3] = true;
+            paramb.bIP -= localFlexItem.getFlexShrink();
             label757:
-            i = a(paramInt1, localFlexItem, paramb.byD);
+            i = a(paramInt1, localFlexItem, paramb.bIR);
             i4 = View.MeasureSpec.makeMeasureSpec(j, 1073741824);
             localView.measure(i, i4);
             i1 = localView.getMeasuredWidth();
             j = localView.getMeasuredHeight();
             a(i3, i, i4, localView);
-            this.byG.a(i3, localView);
+            this.bIU.a(i3, localView);
             i = m;
           }
         }
       }
       for (;;)
       {
-        k = Math.max(k, localFlexItem.wb() + i1 + localFlexItem.wd() + this.byG.cj(localView));
-        m = paramb.byw;
-        i1 = localFlexItem.wc();
-        paramb.byw = (localFlexItem.getMarginBottom() + (j + i1) + m);
+        k = Math.max(k, localFlexItem.xy() + i1 + localFlexItem.xA() + this.bIU.cj(localView));
+        m = paramb.bIK;
+        i1 = localFlexItem.xz();
+        paramb.bIK = (localFlexItem.getMarginBottom() + (j + i1) + m);
         j = k;
         break label483;
         f2 = f1 + (f2 - i1);
@@ -657,7 +643,7 @@ class c
         f1 = f2 + 1.0F;
         m = i;
         break label757;
-        if ((i != 0) && (i2 != paramb.byw))
+        if ((i != 0) && (i2 != paramb.bIK))
         {
           paramBoolean = true;
           break;
@@ -679,47 +665,61 @@ class c
   
   private int ba(boolean paramBoolean)
   {
-    AppMethodBeat.i(62229);
+    AppMethodBeat.i(62228);
     if (paramBoolean)
     {
-      i = this.byG.getPaddingEnd();
-      AppMethodBeat.o(62229);
+      i = this.bIU.getPaddingStart();
+      AppMethodBeat.o(62228);
       return i;
     }
-    int i = this.byG.getPaddingBottom();
-    AppMethodBeat.o(62229);
+    int i = this.bIU.getPaddingTop();
+    AppMethodBeat.o(62228);
     return i;
   }
   
   private int bb(boolean paramBoolean)
   {
-    AppMethodBeat.i(62230);
+    AppMethodBeat.i(62229);
     if (paramBoolean)
     {
-      i = this.byG.getPaddingTop();
-      AppMethodBeat.o(62230);
+      i = this.bIU.getPaddingEnd();
+      AppMethodBeat.o(62229);
       return i;
     }
-    int i = this.byG.getPaddingStart();
-    AppMethodBeat.o(62230);
+    int i = this.bIU.getPaddingBottom();
+    AppMethodBeat.o(62229);
     return i;
   }
   
   private int bc(boolean paramBoolean)
   {
+    AppMethodBeat.i(62230);
+    if (paramBoolean)
+    {
+      i = this.bIU.getPaddingTop();
+      AppMethodBeat.o(62230);
+      return i;
+    }
+    int i = this.bIU.getPaddingStart();
+    AppMethodBeat.o(62230);
+    return i;
+  }
+  
+  private int bd(boolean paramBoolean)
+  {
     AppMethodBeat.i(62231);
     if (paramBoolean)
     {
-      i = this.byG.getPaddingBottom();
+      i = this.bIU.getPaddingBottom();
       AppMethodBeat.o(62231);
       return i;
     }
-    int i = this.byG.getPaddingEnd();
+    int i = this.bIU.getPaddingEnd();
     AppMethodBeat.o(62231);
     return i;
   }
   
-  private static long bp(int paramInt1, int paramInt2)
+  private static long br(int paramInt1, int paramInt2)
   {
     return paramInt2 << 32 | paramInt1 & 0xFFFFFFFF;
   }
@@ -729,11 +729,11 @@ class c
     AppMethodBeat.i(62236);
     if (paramBoolean)
     {
-      i = paramFlexItem.wb();
+      i = paramFlexItem.xy();
       AppMethodBeat.o(62236);
       return i;
     }
-    int i = paramFlexItem.wc();
+    int i = paramFlexItem.xz();
     AppMethodBeat.o(62236);
     return i;
   }
@@ -743,7 +743,7 @@ class c
     AppMethodBeat.i(62237);
     if (paramBoolean)
     {
-      i = paramFlexItem.wd();
+      i = paramFlexItem.xA();
       AppMethodBeat.o(62237);
       return i;
     }
@@ -757,11 +757,11 @@ class c
     AppMethodBeat.i(62238);
     if (paramBoolean)
     {
-      i = paramFlexItem.wc();
+      i = paramFlexItem.xz();
       AppMethodBeat.o(62238);
       return i;
     }
-    int i = paramFlexItem.wb();
+    int i = paramFlexItem.xy();
     AppMethodBeat.o(62238);
     return i;
   }
@@ -775,19 +775,19 @@ class c
       AppMethodBeat.o(62239);
       return i;
     }
-    int i = paramFlexItem.wd();
+    int i = paramFlexItem.xA();
     AppMethodBeat.o(62239);
     return i;
   }
   
-  private List<c.b> fh(int paramInt)
+  private List<c.b> fk(int paramInt)
   {
     AppMethodBeat.i(62219);
     ArrayList localArrayList = new ArrayList(paramInt);
     int i = 0;
     while (i < paramInt)
     {
-      FlexItem localFlexItem = (FlexItem)this.byG.ff(i).getLayoutParams();
+      FlexItem localFlexItem = (FlexItem)this.bIU.fi(i).getLayoutParams();
       c.b localb = new c.b((byte)0);
       localb.order = localFlexItem.getOrder();
       localb.index = i;
@@ -798,32 +798,32 @@ class c
     return localArrayList;
   }
   
-  private void fi(int paramInt)
+  private void fl(int paramInt)
   {
     AppMethodBeat.i(62246);
     int i;
-    if (this.byH == null)
+    if (this.bIV == null)
     {
       i = paramInt;
       if (paramInt < 10) {
         i = 10;
       }
-      this.byH = new boolean[i];
+      this.bIV = new boolean[i];
       AppMethodBeat.o(62246);
       return;
     }
-    if (this.byH.length < paramInt)
+    if (this.bIV.length < paramInt)
     {
-      int j = this.byH.length * 2;
+      int j = this.bIV.length * 2;
       i = paramInt;
       if (j >= paramInt) {
         i = j;
       }
-      this.byH = new boolean[i];
+      this.bIV = new boolean[i];
       AppMethodBeat.o(62246);
       return;
     }
-    Arrays.fill(this.byH, false);
+    Arrays.fill(this.bIV, false);
     AppMethodBeat.o(62246);
   }
   
@@ -859,15 +859,15 @@ class c
   {
     AppMethodBeat.i(62255);
     FlexItem localFlexItem = (FlexItem)paramView.getLayoutParams();
-    int i = Math.min(Math.max(paramInt1 - localFlexItem.wc() - localFlexItem.getMarginBottom() - this.byG.cj(paramView), localFlexItem.getMinHeight()), localFlexItem.getMaxHeight());
-    if (this.byK != null) {}
-    for (paramInt1 = (int)this.byK[paramInt2];; paramInt1 = paramView.getMeasuredWidth())
+    int i = Math.min(Math.max(paramInt1 - localFlexItem.xz() - localFlexItem.getMarginBottom() - this.bIU.cj(paramView), localFlexItem.getMinHeight()), localFlexItem.getMaxHeight());
+    if (this.bIY != null) {}
+    for (paramInt1 = (int)this.bIY[paramInt2];; paramInt1 = paramView.getMeasuredWidth())
     {
       paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
       i = View.MeasureSpec.makeMeasureSpec(i, 1073741824);
       paramView.measure(paramInt1, i);
       a(paramInt2, paramInt1, i, paramView);
-      this.byG.a(paramInt2, paramView);
+      this.bIU.a(paramInt2, paramView);
       AppMethodBeat.o(62255);
       return;
     }
@@ -877,15 +877,15 @@ class c
   {
     AppMethodBeat.i(62256);
     FlexItem localFlexItem = (FlexItem)paramView.getLayoutParams();
-    int i = Math.min(Math.max(paramInt1 - localFlexItem.wb() - localFlexItem.wd() - this.byG.cj(paramView), localFlexItem.getMinWidth()), localFlexItem.getMaxWidth());
-    if (this.byK != null) {}
-    for (paramInt1 = (int)(this.byK[paramInt2] >> 32);; paramInt1 = paramView.getMeasuredHeight())
+    int i = Math.min(Math.max(paramInt1 - localFlexItem.xy() - localFlexItem.xA() - this.bIU.cj(paramView), localFlexItem.getMinWidth()), localFlexItem.getMaxWidth());
+    if (this.bIY != null) {}
+    for (paramInt1 = (int)(this.bIY[paramInt2] >> 32);; paramInt1 = paramView.getMeasuredHeight())
     {
       paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
       i = View.MeasureSpec.makeMeasureSpec(i, 1073741824);
       paramView.measure(i, paramInt1);
       a(paramInt2, i, paramInt1, paramView);
-      this.byG.a(paramInt2, paramView);
+      this.bIU.a(paramInt2, paramView);
       AppMethodBeat.o(62256);
       return;
     }
@@ -895,11 +895,11 @@ class c
   {
     AppMethodBeat.i(62257);
     FlexItem localFlexItem = (FlexItem)paramView.getLayoutParams();
-    int i = this.byG.getAlignItems();
-    if (localFlexItem.vY() != -1) {
-      i = localFlexItem.vY();
+    int i = this.bIU.getAlignItems();
+    if (localFlexItem.xv() != -1) {
+      i = localFlexItem.xv();
     }
-    int j = paramb.byy;
+    int j = paramb.bIM;
     switch (i)
     {
     }
@@ -907,40 +907,40 @@ class c
     {
       AppMethodBeat.o(62257);
       return;
-      if (this.byG.getFlexWrap() != 2)
+      if (this.bIU.getFlexWrap() != 2)
       {
-        paramView.layout(paramInt1, localFlexItem.wc() + paramInt2, paramInt3, localFlexItem.wc() + paramInt4);
+        paramView.layout(paramInt1, localFlexItem.xz() + paramInt2, paramInt3, localFlexItem.xz() + paramInt4);
         AppMethodBeat.o(62257);
         return;
       }
       paramView.layout(paramInt1, paramInt2 - localFlexItem.getMarginBottom(), paramInt3, paramInt4 - localFlexItem.getMarginBottom());
       AppMethodBeat.o(62257);
       return;
-      if (this.byG.getFlexWrap() != 2)
+      if (this.bIU.getFlexWrap() != 2)
       {
-        i = Math.max(paramb.byC - paramView.getBaseline(), localFlexItem.wc());
+        i = Math.max(paramb.bIQ - paramView.getBaseline(), localFlexItem.xz());
         paramView.layout(paramInt1, paramInt2 + i, paramInt3, i + paramInt4);
         AppMethodBeat.o(62257);
         return;
       }
-      i = Math.max(paramb.byC - paramView.getMeasuredHeight() + paramView.getBaseline(), localFlexItem.getMarginBottom());
+      i = Math.max(paramb.bIQ - paramView.getMeasuredHeight() + paramView.getBaseline(), localFlexItem.getMarginBottom());
       paramView.layout(paramInt1, paramInt2 - i, paramInt3, paramInt4 - i);
       AppMethodBeat.o(62257);
       return;
-      if (this.byG.getFlexWrap() != 2)
+      if (this.bIU.getFlexWrap() != 2)
       {
         paramView.layout(paramInt1, paramInt2 + j - paramView.getMeasuredHeight() - localFlexItem.getMarginBottom(), paramInt3, j + paramInt2 - localFlexItem.getMarginBottom());
         AppMethodBeat.o(62257);
         return;
       }
       i = paramView.getMeasuredHeight();
-      int k = localFlexItem.wc();
+      int k = localFlexItem.xz();
       int m = paramView.getMeasuredHeight();
-      paramView.layout(paramInt1, paramInt2 - j + i + k, paramInt3, localFlexItem.wc() + (paramInt4 - j + m));
+      paramView.layout(paramInt1, paramInt2 - j + i + k, paramInt3, localFlexItem.xz() + (paramInt4 - j + m));
       AppMethodBeat.o(62257);
       return;
-      paramInt4 = (j - paramView.getMeasuredHeight() + localFlexItem.wc() - localFlexItem.getMarginBottom()) / 2;
-      if (this.byG.getFlexWrap() != 2)
+      paramInt4 = (j - paramView.getMeasuredHeight() + localFlexItem.xz() - localFlexItem.getMarginBottom()) / 2;
+      if (this.bIU.getFlexWrap() != 2)
       {
         paramView.layout(paramInt1, paramInt2 + paramInt4, paramInt3, paramInt4 + paramInt2 + paramView.getMeasuredHeight());
         AppMethodBeat.o(62257);
@@ -954,11 +954,11 @@ class c
   {
     AppMethodBeat.i(62258);
     FlexItem localFlexItem = (FlexItem)paramView.getLayoutParams();
-    int i = this.byG.getAlignItems();
-    if (localFlexItem.vY() != -1) {
-      i = localFlexItem.vY();
+    int i = this.bIU.getAlignItems();
+    if (localFlexItem.xv() != -1) {
+      i = localFlexItem.xv();
     }
-    int j = paramb.byy;
+    int j = paramb.bIM;
     switch (i)
     {
     }
@@ -968,23 +968,23 @@ class c
       return;
       if (!paramBoolean)
       {
-        paramView.layout(localFlexItem.wb() + paramInt1, paramInt2, localFlexItem.wb() + paramInt3, paramInt4);
+        paramView.layout(localFlexItem.xy() + paramInt1, paramInt2, localFlexItem.xy() + paramInt3, paramInt4);
         AppMethodBeat.o(62258);
         return;
       }
-      paramView.layout(paramInt1 - localFlexItem.wd(), paramInt2, paramInt3 - localFlexItem.wd(), paramInt4);
+      paramView.layout(paramInt1 - localFlexItem.xA(), paramInt2, paramInt3 - localFlexItem.xA(), paramInt4);
       AppMethodBeat.o(62258);
       return;
       if (!paramBoolean)
       {
-        paramView.layout(paramInt1 + j - paramView.getMeasuredWidth() - localFlexItem.wd(), paramInt2, j + paramInt3 - paramView.getMeasuredWidth() - localFlexItem.wd(), paramInt4);
+        paramView.layout(paramInt1 + j - paramView.getMeasuredWidth() - localFlexItem.xA(), paramInt2, j + paramInt3 - paramView.getMeasuredWidth() - localFlexItem.xA(), paramInt4);
         AppMethodBeat.o(62258);
         return;
       }
       i = paramView.getMeasuredWidth();
-      int k = localFlexItem.wb();
+      int k = localFlexItem.xy();
       int m = paramView.getMeasuredWidth();
-      paramView.layout(paramInt1 - j + i + k, paramInt2, localFlexItem.wb() + (paramInt3 - j + m), paramInt4);
+      paramView.layout(paramInt1 - j + i + k, paramInt2, localFlexItem.xy() + (paramInt3 - j + m), paramInt4);
       AppMethodBeat.o(62258);
       return;
       paramb = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
@@ -1009,7 +1009,7 @@ class c
   final void a(a parama, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, List<b> paramList)
   {
     AppMethodBeat.i(62227);
-    boolean bool = this.byG.vX();
+    boolean bool = this.bIU.xu();
     int i3 = View.MeasureSpec.getMode(paramInt1);
     int i4 = View.MeasureSpec.getSize(paramInt1);
     int n = 0;
@@ -1017,7 +1017,7 @@ class c
     if (paramList == null) {
       localObject = new ArrayList();
     }
-    parama.byL = ((List)localObject);
+    parama.bIZ = ((List)localObject);
     int i;
     int i5;
     int i6;
@@ -1033,24 +1033,24 @@ class c
     if (paramInt5 == -1)
     {
       i = 1;
-      i5 = aZ(bool);
-      i6 = ba(bool);
-      i7 = bb(bool);
-      i8 = bc(bool);
+      i5 = ba(bool);
+      i6 = bb(bool);
+      i7 = bc(bool);
+      i8 = bd(bool);
       k = -2147483648;
       j = 0;
       i1 = 0;
       paramList = new b();
-      paramList.byF = paramInt4;
-      paramList.byw = (i5 + i6);
-      i9 = this.byG.getFlexItemCount();
+      paramList.bIT = paramInt4;
+      paramList.bIK = (i5 + i6);
+      i9 = this.bIU.getFlexItemCount();
       m = paramInt4;
       paramInt4 = i;
       i = n;
       if (m >= i9) {
         break label1323;
       }
-      localView = this.byG.fg(m);
+      localView = this.bIU.fj(m);
       if (localView != null) {
         break label220;
       }
@@ -1069,8 +1069,8 @@ class c
       label220:
       if (localView.getVisibility() == 8)
       {
-        paramList.byz += 1;
-        paramList.asn += 1;
+        paramList.bIN += 1;
+        paramList.aue += 1;
         if (a(m, i9, paramList)) {
           a((List)localObject, paramList, m, j);
         }
@@ -1078,35 +1078,35 @@ class c
       else
       {
         FlexItem localFlexItem = (FlexItem)localView.getLayoutParams();
-        if (localFlexItem.vY() == 4) {
-          paramList.byE.add(Integer.valueOf(m));
+        if (localFlexItem.xv() == 4) {
+          paramList.bIS.add(Integer.valueOf(m));
         }
         int i2 = a(localFlexItem, bool);
         n = i2;
-        if (localFlexItem.wa() != -1.0F)
+        if (localFlexItem.xx() != -1.0F)
         {
           n = i2;
           if (i3 == 1073741824) {
-            n = Math.round(i4 * localFlexItem.wa());
+            n = Math.round(i4 * localFlexItem.xx());
           }
         }
         int i10;
         if (bool)
         {
-          i2 = this.byG.w(paramInt1, i5 + i6 + c(localFlexItem, true) + d(localFlexItem, true), n);
-          n = this.byG.x(paramInt2, i7 + i8 + e(localFlexItem, true) + f(localFlexItem, true) + j, b(localFlexItem, true));
+          i2 = this.bIU.w(paramInt1, i5 + i6 + c(localFlexItem, true) + d(localFlexItem, true), n);
+          n = this.bIU.x(paramInt2, i7 + i8 + e(localFlexItem, true) + f(localFlexItem, true) + j, b(localFlexItem, true));
           localView.measure(i2, n);
           a(m, i2, n, localView);
-          this.byG.a(m, localView);
+          this.bIU.a(m, localView);
           J(localView, m);
           n = View.combineMeasuredStates(i, localView.getMeasuredState());
-          i = paramList.byw;
+          i = paramList.bIK;
           i10 = j(localView, bool);
           int i11 = c(localFlexItem, bool);
           if (!a(localView, i3, i4, i, d(localFlexItem, bool) + (i10 + i11), localFlexItem, m, i1, ((List)localObject).size())) {
             break label1267;
           }
-          if (paramList.we() <= 0) {
+          if (paramList.xB() <= 0) {
             break label1346;
           }
           if (m <= 0) {
@@ -1114,7 +1114,7 @@ class c
           }
           i = m - 1;
           a((List)localObject, paramList, i, j);
-          j += paramList.byy;
+          j += paramList.bIM;
         }
         for (;;)
         {
@@ -1122,44 +1122,44 @@ class c
           {
             if (localFlexItem.getHeight() == -1)
             {
-              paramList = this.byG;
-              localView.measure(i2, paramList.x(paramInt2, paramList.getPaddingTop() + this.byG.getPaddingBottom() + localFlexItem.wc() + localFlexItem.getMarginBottom() + j, localFlexItem.getHeight()));
+              paramList = this.bIU;
+              localView.measure(i2, paramList.x(paramInt2, paramList.getPaddingTop() + this.bIU.getPaddingBottom() + localFlexItem.xz() + localFlexItem.getMarginBottom() + j, localFlexItem.getHeight()));
               J(localView, m);
             }
             paramList = new b();
-            paramList.asn = 1;
-            paramList.byw = (i5 + i6);
-            paramList.byF = m;
+            paramList.aue = 1;
+            paramList.bIK = (i5 + i6);
+            paramList.bIT = m;
             i = 0;
             k = -2147483648;
             label738:
-            if (this.byI != null) {
-              this.byI[m] = ((List)localObject).size();
+            if (this.bIW != null) {
+              this.bIW[m] = ((List)localObject).size();
             }
-            paramList.byw += j(localView, bool) + c(localFlexItem, bool) + d(localFlexItem, bool);
-            paramList.byA += localFlexItem.getFlexGrow();
-            paramList.byB += localFlexItem.getFlexShrink();
-            this.byG.a(localView, m, i, paramList);
-            i2 = Math.max(k, k(localView, bool) + e(localFlexItem, bool) + f(localFlexItem, bool) + this.byG.cj(localView));
-            paramList.byy = Math.max(paramList.byy, i2);
+            paramList.bIK += j(localView, bool) + c(localFlexItem, bool) + d(localFlexItem, bool);
+            paramList.bIO += localFlexItem.getFlexGrow();
+            paramList.bIP += localFlexItem.getFlexShrink();
+            this.bIU.a(localView, m, i, paramList);
+            i2 = Math.max(k, k(localView, bool) + e(localFlexItem, bool) + f(localFlexItem, bool) + this.bIU.cj(localView));
+            paramList.bIM = Math.max(paramList.bIM, i2);
             if (bool)
             {
-              if (this.byG.getFlexWrap() == 2) {
+              if (this.bIU.getFlexWrap() == 2) {
                 break label1288;
               }
-              paramList.byC = Math.max(paramList.byC, localView.getBaseline() + localFlexItem.wc());
+              paramList.bIQ = Math.max(paramList.bIQ, localView.getBaseline() + localFlexItem.xz());
             }
             if (!a(m, i9, paramList)) {
               break label1343;
             }
             a((List)localObject, paramList, m, j);
-            j += paramList.byy;
+            j += paramList.bIM;
           }
           for (;;)
           {
-            if ((paramInt5 != -1) && (((List)localObject).size() > 0) && (((b)((List)localObject).get(((List)localObject).size() - 1)).aak >= paramInt5) && (m >= paramInt5) && (paramInt4 == 0))
+            if ((paramInt5 != -1) && (((List)localObject).size() > 0) && (((b)((List)localObject).get(((List)localObject).size() - 1)).aca >= paramInt5) && (m >= paramInt5) && (paramInt4 == 0))
             {
-              j = -paramList.byy;
+              j = -paramList.bIM;
               paramInt4 = 1;
             }
             for (;;)
@@ -1175,8 +1175,8 @@ class c
                 i = n;
                 k = i2;
                 break;
-                i10 = this.byG.w(paramInt2, i7 + i8 + e(localFlexItem, false) + f(localFlexItem, false) + j, b(localFlexItem, false));
-                i2 = this.byG.x(paramInt1, i5 + i6 + c(localFlexItem, false) + d(localFlexItem, false), n);
+                i10 = this.bIU.w(paramInt2, i7 + i8 + e(localFlexItem, false) + f(localFlexItem, false) + j, b(localFlexItem, false));
+                i2 = this.bIU.x(paramInt1, i5 + i6 + c(localFlexItem, false) + d(localFlexItem, false), n);
                 localView.measure(i10, i2);
                 a(m, i10, i2, localView);
                 break label471;
@@ -1185,19 +1185,19 @@ class c
                 if (localFlexItem.getWidth() != -1) {
                   break label699;
                 }
-                paramList = this.byG;
-                localView.measure(paramList.w(paramInt2, paramList.getPaddingLeft() + this.byG.getPaddingRight() + localFlexItem.wb() + localFlexItem.wd() + j, localFlexItem.getWidth()), i2);
+                paramList = this.bIU;
+                localView.measure(paramList.w(paramInt2, paramList.getPaddingLeft() + this.bIU.getPaddingRight() + localFlexItem.xy() + localFlexItem.xA() + j, localFlexItem.getWidth()), i2);
                 J(localView, m);
                 break label699;
                 label1267:
-                paramList.asn += 1;
+                paramList.aue += 1;
                 i = i1 + 1;
                 break label738;
-                paramList.byC = Math.max(paramList.byC, localView.getMeasuredHeight() - localView.getBaseline() + localFlexItem.getMarginBottom());
+                paramList.bIQ = Math.max(paramList.bIQ, localView.getMeasuredHeight() - localView.getBaseline() + localFlexItem.getMarginBottom());
                 break label947;
                 k = i;
               }
-              parama.byM = k;
+              parama.bJa = k;
               AppMethodBeat.o(62227);
               return;
             }
@@ -1217,8 +1217,8 @@ class c
   final int[] a(SparseIntArray paramSparseIntArray)
   {
     AppMethodBeat.i(62218);
-    int i = this.byG.getFlexItemCount();
-    paramSparseIntArray = a(i, fh(i), paramSparseIntArray);
+    int i = this.bIU.getFlexItemCount();
+    paramSparseIntArray = a(i, fk(i), paramSparseIntArray);
     AppMethodBeat.o(62218);
     return paramSparseIntArray;
   }
@@ -1226,8 +1226,8 @@ class c
   final int[] a(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams, SparseIntArray paramSparseIntArray)
   {
     AppMethodBeat.i(62217);
-    int i = this.byG.getFlexItemCount();
-    List localList = fh(i);
+    int i = this.bIU.getFlexItemCount();
+    List localList = fk(i);
     c.b localb = new c.b((byte)0);
     if ((paramView != null) && ((paramLayoutParams instanceof FlexItem)))
     {
@@ -1246,7 +1246,7 @@ class c
       localb.order = 1;
       break;
       label117:
-      if (paramInt < this.byG.getFlexItemCount())
+      if (paramInt < this.bIU.getFlexItemCount())
       {
         localb.index = paramInt;
         while (paramInt < i)
@@ -1273,7 +1273,7 @@ class c
   final boolean b(SparseIntArray paramSparseIntArray)
   {
     AppMethodBeat.i(62220);
-    int j = this.byG.getFlexItemCount();
+    int j = this.bIU.getFlexItemCount();
     if (paramSparseIntArray.size() != j)
     {
       AppMethodBeat.o(62220);
@@ -1282,7 +1282,7 @@ class c
     int i = 0;
     while (i < j)
     {
-      View localView = this.byG.ff(i);
+      View localView = this.bIU.fi(i);
       if ((localView != null) && (((FlexItem)localView.getLayoutParams()).getOrder() != paramSparseIntArray.get(i)))
       {
         AppMethodBeat.o(62220);
@@ -1294,7 +1294,7 @@ class c
     return false;
   }
   
-  final void bo(int paramInt1, int paramInt2)
+  final void bq(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(62244);
     y(paramInt1, paramInt2, 0);
@@ -1311,19 +1311,19 @@ class c
   final void c(List<b> paramList, int paramInt)
   {
     AppMethodBeat.i(62263);
-    if ((!$assertionsDisabled) && (this.byI == null))
+    if ((!$assertionsDisabled) && (this.bIW == null))
     {
       paramList = new AssertionError();
       AppMethodBeat.o(62263);
       throw paramList;
     }
-    if ((!$assertionsDisabled) && (this.byJ == null))
+    if ((!$assertionsDisabled) && (this.bIX == null))
     {
       paramList = new AssertionError();
       AppMethodBeat.o(62263);
       throw paramList;
     }
-    int j = this.byI[paramInt];
+    int j = this.bIW[paramInt];
     int i = j;
     if (j == -1) {
       i = 0;
@@ -1334,22 +1334,22 @@ class c
       paramList.remove(j);
       j -= 1;
     }
-    i = this.byI.length - 1;
+    i = this.bIW.length - 1;
     if (paramInt > i) {
-      Arrays.fill(this.byI, -1);
+      Arrays.fill(this.bIW, -1);
     }
     for (;;)
     {
-      i = this.byJ.length - 1;
+      i = this.bIX.length - 1;
       if (paramInt <= i) {
         break;
       }
-      Arrays.fill(this.byJ, 0L);
+      Arrays.fill(this.bIX, 0L);
       AppMethodBeat.o(62263);
       return;
-      Arrays.fill(this.byI, paramInt, i, -1);
+      Arrays.fill(this.bIW, paramInt, i, -1);
     }
-    Arrays.fill(this.byJ, paramInt, i, 0L);
+    Arrays.fill(this.bIX, paramInt, i, 0L);
     AppMethodBeat.o(62263);
   }
   
@@ -1360,42 +1360,42 @@ class c
     AppMethodBeat.o(62226);
   }
   
-  final void fj(int paramInt)
+  final void fm(int paramInt)
   {
     AppMethodBeat.i(62254);
-    if (paramInt >= this.byG.getFlexItemCount())
+    if (paramInt >= this.bIU.getFlexItemCount())
     {
       AppMethodBeat.o(62254);
       return;
     }
-    int j = this.byG.getFlexDirection();
+    int j = this.bIU.getFlexDirection();
     b localb;
     Object localObject2;
     Object localObject3;
-    if (this.byG.getAlignItems() == 4)
+    if (this.bIU.getAlignItems() == 4)
     {
       int i = 0;
-      if (this.byI != null) {
-        i = this.byI[paramInt];
+      if (this.bIW != null) {
+        i = this.bIW[paramInt];
       }
-      localObject1 = this.byG.getFlexLinesInternal();
+      localObject1 = this.bIU.getFlexLinesInternal();
       int k = ((List)localObject1).size();
       paramInt = i;
       while (paramInt < k)
       {
         localb = (b)((List)localObject1).get(paramInt);
-        int m = localb.asn;
+        int m = localb.aue;
         i = 0;
         if (i < m)
         {
-          int n = localb.byF + i;
-          if (i < this.byG.getFlexItemCount())
+          int n = localb.bIT + i;
+          if (i < this.bIU.getFlexItemCount())
           {
-            localObject2 = this.byG.fg(n);
+            localObject2 = this.bIU.fj(n);
             if ((localObject2 != null) && (((View)localObject2).getVisibility() != 8))
             {
               localObject3 = (FlexItem)((View)localObject2).getLayoutParams();
-              if ((((FlexItem)localObject3).vY() == -1) || (((FlexItem)localObject3).vY() == 4)) {
+              if ((((FlexItem)localObject3).xv() == -1) || (((FlexItem)localObject3).xv() == 4)) {
                 switch (j)
                 {
                 default: 
@@ -1404,7 +1404,7 @@ class c
                   throw ((Throwable)localObject1);
                 case 0: 
                 case 1: 
-                  n((View)localObject2, localb.byy, n);
+                  n((View)localObject2, localb.bIM, n);
                 }
               }
             }
@@ -1413,7 +1413,7 @@ class c
           {
             i += 1;
             break;
-            o((View)localObject2, localb.byy, n);
+            o((View)localObject2, localb.bIM, n);
           }
         }
         paramInt += 1;
@@ -1421,15 +1421,15 @@ class c
       AppMethodBeat.o(62254);
       return;
     }
-    Object localObject1 = this.byG.getFlexLinesInternal().iterator();
+    Object localObject1 = this.bIU.getFlexLinesInternal().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localb = (b)((Iterator)localObject1).next();
-      localObject2 = localb.byE.iterator();
+      localObject2 = localb.bIS.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (Integer)((Iterator)localObject2).next();
-        View localView = this.byG.fg(((Integer)localObject3).intValue());
+        View localView = this.bIU.fj(((Integer)localObject3).intValue());
         switch (j)
         {
         default: 
@@ -1438,115 +1438,115 @@ class c
           throw ((Throwable)localObject1);
         case 0: 
         case 1: 
-          n(localView, localb.byy, ((Integer)localObject3).intValue());
+          n(localView, localb.bIM, ((Integer)localObject3).intValue());
           break;
         case 2: 
         case 3: 
-          o(localView, localb.byy, ((Integer)localObject3).intValue());
+          o(localView, localb.bIM, ((Integer)localObject3).intValue());
         }
       }
     }
     AppMethodBeat.o(62254);
   }
   
-  final void fk(int paramInt)
+  final void fn(int paramInt)
   {
     AppMethodBeat.i(62259);
     int i;
-    if (this.byK == null)
+    if (this.bIY == null)
     {
       i = paramInt;
       if (paramInt < 10) {
         i = 10;
       }
-      this.byK = new long[i];
+      this.bIY = new long[i];
       AppMethodBeat.o(62259);
       return;
     }
-    if (this.byK.length < paramInt)
+    if (this.bIY.length < paramInt)
     {
-      int j = this.byK.length * 2;
+      int j = this.bIY.length * 2;
       i = paramInt;
       if (j >= paramInt) {
         i = j;
       }
-      this.byK = Arrays.copyOf(this.byK, i);
+      this.bIY = Arrays.copyOf(this.bIY, i);
     }
     AppMethodBeat.o(62259);
   }
   
-  final void fl(int paramInt)
+  final void fo(int paramInt)
   {
     AppMethodBeat.i(62260);
     int i;
-    if (this.byJ == null)
+    if (this.bIX == null)
     {
       i = paramInt;
       if (paramInt < 10) {
         i = 10;
       }
-      this.byJ = new long[i];
+      this.bIX = new long[i];
       AppMethodBeat.o(62260);
       return;
     }
-    if (this.byJ.length < paramInt)
+    if (this.bIX.length < paramInt)
     {
-      int j = this.byJ.length * 2;
+      int j = this.bIX.length * 2;
       i = paramInt;
       if (j >= paramInt) {
         i = j;
       }
-      this.byJ = Arrays.copyOf(this.byJ, i);
+      this.bIX = Arrays.copyOf(this.bIX, i);
     }
     AppMethodBeat.o(62260);
   }
   
-  final void fm(int paramInt)
+  final void fp(int paramInt)
   {
     AppMethodBeat.i(62262);
     int i;
-    if (this.byI == null)
+    if (this.bIW == null)
     {
       i = paramInt;
       if (paramInt < 10) {
         i = 10;
       }
-      this.byI = new int[i];
+      this.bIW = new int[i];
       AppMethodBeat.o(62262);
       return;
     }
-    if (this.byI.length < paramInt)
+    if (this.bIW.length < paramInt)
     {
-      int j = this.byI.length * 2;
+      int j = this.bIW.length * 2;
       i = paramInt;
       if (j >= paramInt) {
         i = j;
       }
-      this.byI = Arrays.copyOf(this.byI, i);
+      this.bIW = Arrays.copyOf(this.bIW, i);
     }
     AppMethodBeat.o(62262);
   }
   
-  final void wf()
+  final void xC()
   {
     AppMethodBeat.i(62253);
-    fj(0);
+    fm(0);
     AppMethodBeat.o(62253);
   }
   
   final void y(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(62245);
-    fi(this.byG.getFlexItemCount());
-    if (paramInt3 >= this.byG.getFlexItemCount())
+    fl(this.bIU.getFlexItemCount());
+    if (paramInt3 >= this.bIU.getFlexItemCount())
     {
       AppMethodBeat.o(62245);
       return;
     }
-    int i = this.byG.getFlexDirection();
+    int i = this.bIU.getFlexDirection();
     Object localObject;
     int j;
-    switch (this.byG.getFlexDirection())
+    switch (this.bIU.getFlexDirection())
     {
     default: 
       localObject = new IllegalArgumentException("Invalid flex direction: ".concat(String.valueOf(i)));
@@ -1558,8 +1558,8 @@ class c
       i = View.MeasureSpec.getSize(paramInt1);
       if (j == 1073741824)
       {
-        j = this.byG.getPaddingLeft() + this.byG.getPaddingRight();
-        if (this.byI == null) {
+        j = this.bIU.getPaddingLeft() + this.bIU.getPaddingRight();
+        if (this.bIW == null) {
           break label334;
         }
       }
@@ -1567,30 +1567,30 @@ class c
     }
     label191:
     label334:
-    for (paramInt3 = this.byI[paramInt3];; paramInt3 = 0)
+    for (paramInt3 = this.bIW[paramInt3];; paramInt3 = 0)
     {
-      localObject = this.byG.getFlexLinesInternal();
+      localObject = this.bIU.getFlexLinesInternal();
       int k = ((List)localObject).size();
       if (paramInt3 < k)
       {
         b localb = (b)((List)localObject).get(paramInt3);
-        if (localb.byw < i) {
+        if (localb.bIK < i) {
           a(paramInt1, paramInt2, localb, i, j, false);
         }
         for (;;)
         {
           paramInt3 += 1;
           break label191;
-          i = this.byG.getLargestMainSize();
+          i = this.bIU.getLargestMainSize();
           break;
           j = View.MeasureSpec.getMode(paramInt2);
           i = View.MeasureSpec.getSize(paramInt2);
           if (j == 1073741824) {}
           for (;;)
           {
-            j = this.byG.getPaddingTop() + this.byG.getPaddingBottom();
+            j = this.bIU.getPaddingTop() + this.bIU.getPaddingBottom();
             break;
-            i = this.byG.getLargestMainSize();
+            i = this.bIU.getLargestMainSize();
           }
           b(paramInt1, paramInt2, localb, i, j, false);
         }
@@ -1603,7 +1603,7 @@ class c
   final void z(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(62251);
-    int i = this.byG.getFlexDirection();
+    int i = this.bIU.getFlexDirection();
     Object localObject1;
     switch (i)
     {
@@ -1619,15 +1619,15 @@ class c
     }
     for (;;)
     {
-      localObject1 = this.byG.getFlexLinesInternal();
+      localObject1 = this.bIU.getFlexLinesInternal();
       if (paramInt2 != 1073741824) {
         break label224;
       }
-      paramInt2 = this.byG.getSumOfCrossSize() + paramInt3;
+      paramInt2 = this.bIU.getSumOfCrossSize() + paramInt3;
       if (((List)localObject1).size() != 1) {
         break;
       }
-      ((b)((List)localObject1).get(0)).byy = (paramInt1 - paramInt3);
+      ((b)((List)localObject1).get(0)).bIM = (paramInt1 - paramInt3);
       AppMethodBeat.o(62251);
       return;
       paramInt2 = View.MeasureSpec.getMode(paramInt1);
@@ -1640,7 +1640,7 @@ class c
     Object localObject2;
     float f3;
     float f2;
-    switch (this.byG.getAlignContent())
+    switch (this.bIU.getAlignContent())
     {
     default: 
     case 5: 
@@ -1656,7 +1656,7 @@ class c
       if (paramInt2 < paramInt3)
       {
         localObject2 = (b)((List)localObject1).get(paramInt2);
-        float f4 = ((b)localObject2).byy + f5;
+        float f4 = ((b)localObject2).bIM + f5;
         f3 = f4;
         f2 = f1;
         if (paramInt2 == ((List)localObject1).size() - 1)
@@ -1676,7 +1676,7 @@ class c
     }
     for (;;)
     {
-      ((b)localObject2).byy = paramInt1;
+      ((b)localObject2).bIM = paramInt1;
       paramInt2 += 1;
       break label264;
       if (f1 < -1.0F)
@@ -1688,14 +1688,14 @@ class c
         return;
         if (paramInt2 >= paramInt1)
         {
-          this.byG.setFlexLines(a((List)localObject1, paramInt1, paramInt2));
+          this.bIU.setFlexLines(a((List)localObject1, paramInt1, paramInt2));
           AppMethodBeat.o(62251);
           return;
         }
         paramInt1 = (paramInt1 - paramInt2) / (((List)localObject1).size() * 2);
         localObject2 = new ArrayList();
         b localb1 = new b();
-        localb1.byy = paramInt1;
+        localb1.bIM = paramInt1;
         localObject1 = ((List)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
@@ -1704,7 +1704,7 @@ class c
           ((List)localObject2).add(localb2);
           ((List)localObject2).add(localb1);
         }
-        this.byG.setFlexLines((List)localObject2);
+        this.bIU.setFlexLines((List)localObject2);
         AppMethodBeat.o(62251);
         return;
         if (paramInt2 >= paramInt1) {
@@ -1725,13 +1725,13 @@ class c
           localb1 = new b();
           if (paramInt1 == ((List)localObject1).size() - 2)
           {
-            localb1.byy = Math.round(f3 + f1);
+            localb1.bIM = Math.round(f3 + f1);
             f1 = 0.0F;
-            f2 = f1 + (f3 - localb1.byy);
+            f2 = f1 + (f3 - localb1.bIM);
             if (f2 <= 1.0F) {
               break label735;
             }
-            localb1.byy += 1;
+            localb1.bIM += 1;
             f1 = f2 - 1.0F;
             ((List)localObject2).add(localb1);
           }
@@ -1743,24 +1743,24 @@ class c
         {
           paramInt1 += 1;
           break label591;
-          localb1.byy = Math.round(f3);
+          localb1.bIM = Math.round(f3);
           break label666;
           label735:
           f1 = f2;
           if (f2 >= -1.0F) {
             break label705;
           }
-          localb1.byy -= 1;
+          localb1.bIM -= 1;
           f1 = f2 + 1.0F;
           break label705;
-          this.byG.setFlexLines((List)localObject2);
+          this.bIU.setFlexLines((List)localObject2);
           AppMethodBeat.o(62251);
           return;
-          this.byG.setFlexLines(a((List)localObject1, paramInt1, paramInt2));
+          this.bIU.setFlexLines(a((List)localObject1, paramInt1, paramInt2));
           AppMethodBeat.o(62251);
           return;
           localObject2 = new b();
-          ((b)localObject2).byy = (paramInt1 - paramInt2);
+          ((b)localObject2).bIM = (paramInt1 - paramInt2);
           ((List)localObject1).add(0, localObject2);
           break;
         }
@@ -1770,13 +1770,13 @@ class c
   
   static final class a
   {
-    List<b> byL;
-    int byM;
+    List<b> bIZ;
+    int bJa;
     
     final void reset()
     {
-      this.byL = null;
-      this.byM = 0;
+      this.bIZ = null;
+      this.bJa = 0;
     }
   }
 }

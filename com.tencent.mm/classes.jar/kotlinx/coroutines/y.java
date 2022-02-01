@@ -1,18 +1,16 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.a.b;
 import d.l;
+import d.z;
+import kotlinx.coroutines.internal.j;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/CompletionHandlerException;", "Ljava/lang/RuntimeException;", "Lkotlin/RuntimeException;", "message", "", "cause", "", "(Ljava/lang/String;Ljava/lang/Throwable;)V", "kotlinx-coroutines-core"})
-public final class y
-  extends RuntimeException
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/CompletionHandlerBase;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "()V", "invoke", "kotlinx-coroutines-core"})
+public abstract class y
+  extends j
+  implements b<Throwable, z>
 {
-  public y(String paramString, Throwable paramThrowable)
-  {
-    super(paramString, paramThrowable);
-    AppMethodBeat.i(118265);
-    AppMethodBeat.o(118265);
-  }
+  public abstract void v(Throwable paramThrowable);
 }
 
 

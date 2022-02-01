@@ -7,9 +7,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.picker.b.a;
@@ -20,9 +21,9 @@ import java.util.Calendar;
 
 public final class b
 {
-  private static int JGC = 0;
-  private static int JGD = 0;
-  private static final int JHr = 2131306731;
+  private static final int LAu = 2131306731;
+  private static int LzG = 0;
+  private static int LzH = 0;
   
   public static void a(MMActivity paramMMActivity, int paramInt1, int paramInt2)
   {
@@ -45,63 +46,63 @@ public final class b
   
   static void a(TenpaySecureEditText paramTenpaySecureEditText, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(207329);
+    AppMethodBeat.i(199372);
     if (paramTenpaySecureEditText != null)
     {
       if (paramInt == 1)
       {
         paramTenpaySecureEditText.setIsPasswordFormat(true, paramBoolean);
-        AppMethodBeat.o(207329);
+        AppMethodBeat.o(199372);
         return;
       }
       if (paramInt == 2)
       {
         paramTenpaySecureEditText.setIsSecurityAnswerFormat(true);
-        AppMethodBeat.o(207329);
+        AppMethodBeat.o(199372);
         return;
       }
       if (paramInt == 3)
       {
         paramTenpaySecureEditText.setIsCvvPaymentFormat(true);
-        AppMethodBeat.o(207329);
+        AppMethodBeat.o(199372);
         return;
       }
       if (paramInt == 4)
       {
         paramTenpaySecureEditText.setIsCvv4PaymentFormat(true);
-        AppMethodBeat.o(207329);
+        AppMethodBeat.o(199372);
         return;
       }
       if (paramInt == 5)
       {
         paramTenpaySecureEditText.setIsValidThru(true);
-        AppMethodBeat.o(207329);
+        AppMethodBeat.o(199372);
         return;
       }
       if (paramInt == 6)
       {
         paramTenpaySecureEditText.setIsBankcardFormat(true);
-        AppMethodBeat.o(207329);
+        AppMethodBeat.o(199372);
         return;
       }
       if (paramInt == 7)
       {
         paramTenpaySecureEditText.setIsMoneyAmountFormat(true);
-        AppMethodBeat.o(207329);
+        AppMethodBeat.o(199372);
         return;
       }
       if (paramInt == 8)
       {
         paramTenpaySecureEditText.setIsIdCardTailFormat(true);
-        AppMethodBeat.o(207329);
+        AppMethodBeat.o(199372);
         return;
       }
       paramTenpaySecureEditText.setIsCvv4PaymentFormat(false);
-      AppMethodBeat.o(207329);
+      AppMethodBeat.o(199372);
       return;
     }
-    ac.e("MicroMsg.FormatViewUtil", "hy: param error: no edit text view");
-    AppMethodBeat.o(207329);
+    ad.e("MicroMsg.FormatViewUtil", "hy: param error: no edit text view");
+    AppMethodBeat.o(199372);
   }
   
   public static void e(MMActivity paramMMActivity, String paramString)
@@ -123,19 +124,22 @@ public final class b
     AppMethodBeat.i(73136);
     paramWalletFormView.setOnClickListener(new View.OnClickListener()
     {
-      int JHs = -1;
+      int LAv = -1;
       int year = -1;
       
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(73132);
-        this.pBh.hideVKB();
-        if ((this.pBh instanceof WalletBaseUI)) {
-          ((WalletBaseUI)this.pBh).hideTenpayKB();
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        a.b("com/tencent/mm/wallet_core/ui/formview/FormViewUtil$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        this.qeM.hideVKB();
+        if ((this.qeM instanceof WalletBaseUI)) {
+          ((WalletBaseUI)this.qeM).hideTenpayKB();
         }
-        paramAnonymousView = new com.tencent.mm.ui.widget.picker.b(this.pBh);
-        paramAnonymousView.aP(true, false);
-        paramAnonymousView.Jjn = new b.a()
+        paramAnonymousView = new com.tencent.mm.ui.widget.picker.b(this.qeM);
+        paramAnonymousView.aX(true, false);
+        paramAnonymousView.LaK = new b.a()
         {
           public final void onResult(boolean paramAnonymous2Boolean, int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3)
           {
@@ -143,8 +147,8 @@ public final class b
             paramAnonymousView.hide();
             if (paramAnonymous2Boolean)
             {
-              localObject = paramAnonymousView.fvX();
-              if (bs.isNullOrNil((String)localObject))
+              localObject = paramAnonymousView.fML();
+              if (bt.isNullOrNil((String)localObject))
               {
                 AppMethodBeat.o(73131);
                 return;
@@ -155,43 +159,44 @@ public final class b
                 AppMethodBeat.o(73131);
                 return;
               }
-              ac.d("MicroMsg.FormatViewUtil", "result: %s", new Object[] { localObject });
-              paramAnonymous2Int1 = bs.aLy(arrayOfString[0]);
-              b.1.this.JHs = (bs.aLy(arrayOfString[1]) - 1);
-              ac.d("MicroMsg.FormatViewUtil", "year: %s, month: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(b.1.this.JHs) });
-              if ((paramAnonymous2Int1 >= b.JGC) || (b.1.this.JHs >= b.JGD)) {
+              ad.d("MicroMsg.FormatViewUtil", "result: %s", new Object[] { localObject });
+              paramAnonymous2Int1 = bt.aRe(arrayOfString[0]);
+              b.1.this.LAv = (bt.aRe(arrayOfString[1]) - 1);
+              ad.d("MicroMsg.FormatViewUtil", "year: %s, month: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(b.1.this.LAv) });
+              if ((paramAnonymous2Int1 >= b.LzG) || (b.1.this.LAv >= b.LzH)) {
                 break label221;
               }
-              h.c(b.1.this.pBh, b.1.this.pBh.getString(2131765250), null, true);
-              if (b.1.this.JHe.getInputValidChangeListener() != null) {
-                b.1.this.JHe.getInputValidChangeListener().onInputValidChange(b.1.this.JHe.aRO());
+              h.c(b.1.this.qeM, b.1.this.qeM.getString(2131765250), null, true);
+              if (b.1.this.LAh.getInputValidChangeListener() != null) {
+                b.1.this.LAh.getInputValidChangeListener().onInputValidChange(b.1.this.LAh.aVa());
               }
             }
             AppMethodBeat.o(73131);
             return;
             label221:
             Object localObject = new DecimalFormat("00");
-            if (u.axL()) {
-              b.1.this.JHe.setTag(((DecimalFormat)localObject).format(b.1.this.JHs + 1) + paramAnonymous2Int1);
+            if (u.aAB()) {
+              b.1.this.LAh.setTag(((DecimalFormat)localObject).format(b.1.this.LAv + 1) + paramAnonymous2Int1);
             }
             for (;;)
             {
-              b.1.this.JHe.setText(((DecimalFormat)localObject).format(b.1.this.JHs + 1) + ((DecimalFormat)localObject).format(paramAnonymous2Int1).substring(2));
+              b.1.this.LAh.setText(((DecimalFormat)localObject).format(b.1.this.LAv + 1) + ((DecimalFormat)localObject).format(paramAnonymous2Int1).substring(2));
               break;
-              b.1.this.JHe.setTag(((DecimalFormat)localObject).format(paramAnonymous2Int1).substring(2) + ((DecimalFormat)localObject).format(b.1.this.JHs + 1));
+              b.1.this.LAh.setTag(((DecimalFormat)localObject).format(paramAnonymous2Int1).substring(2) + ((DecimalFormat)localObject).format(b.1.this.LAv + 1));
             }
           }
         };
-        if ((this.year >= b.JGC) && (this.JHs >= b.JGD)) {
-          paramAnonymousView.aO(this.year, this.JHs + 1, 1);
+        if ((this.year >= b.LzG) && (this.LAv >= b.LzH)) {
+          paramAnonymousView.aP(this.year, this.LAv + 1, 1);
         }
         for (;;)
         {
           paramAnonymousView.show();
+          a.a(this, "com/tencent/mm/wallet_core/ui/formview/FormViewUtil$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(73132);
           return;
-          Calendar localCalendar = Calendar.getInstance();
-          paramAnonymousView.aO(localCalendar.get(1), localCalendar.get(2) + 1, localCalendar.get(5));
+          localObject = Calendar.getInstance();
+          paramAnonymousView.aP(((Calendar)localObject).get(1), ((Calendar)localObject).get(2) + 1, ((Calendar)localObject).get(5));
         }
       }
     });

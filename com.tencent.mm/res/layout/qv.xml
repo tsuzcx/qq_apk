@@ -4,8 +4,9 @@
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/aen" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/bq" android:layout_marginRight="@dimen/ci" android:layout_marginBottom="@dimen/ci" android:minHeight="@dimen/aiu">
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
             <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/et" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c0" android:src="@raw/icons_filled_stranger" app:iconColor="@color/Yellow" />
-            <TextView android:textColor="@color/km" android:id="@id/er" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a9x" />
+            <TextView android:textSize="@dimen/b_" android:textColor="@color/km" android:id="@id/er" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a9x" />
         </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f27" android:layout_width="10.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/c5" android:src="@raw/icons_outlined_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/FG_1" />
         <Button android:textSize="@dimen/b_" android:id="@id/aim" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:visibility="gone" android:layout_width="@dimen/am1" android:layout_height="@dimen/c9" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:minWidth="@dimen/jj" android:text="@string/arq" style="@style/o8" />
     </LinearLayout>
     <View android:layout_gravity="bottom" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" />

@@ -1,32 +1,12 @@
 package com.tencent.luggage.d;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import org.json.JSONObject;
 
-public final class d
+public abstract class d<TARGET extends s>
 {
-  final LinkedList<Class<? extends a>> bWU;
+  public abstract JSONObject BO();
   
-  public d()
-  {
-    AppMethodBeat.i(140371);
-    this.bWU = new LinkedList();
-    AppMethodBeat.o(140371);
-  }
-  
-  public final void A(List<Class<? extends a>> paramList)
-  {
-    AppMethodBeat.i(140372);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Class localClass = (Class)paramList.next();
-      this.bWU.add(localClass);
-    }
-    AppMethodBeat.o(140372);
-  }
+  public abstract String name();
 }
 
 

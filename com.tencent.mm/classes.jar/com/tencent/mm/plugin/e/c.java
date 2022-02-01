@@ -12,7 +12,7 @@ public final class c
   {
     AppMethodBeat.i(22634);
     getClass().getClassLoader();
-    j.sC("tencentloc");
+    j.vr("tencentlocsapp");
     AppMethodBeat.o(22634);
   }
   

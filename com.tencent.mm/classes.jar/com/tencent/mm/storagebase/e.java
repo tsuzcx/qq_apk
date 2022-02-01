@@ -4,7 +4,7 @@ import android.database.AbstractCursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.CursorWindow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class e
   extends AbstractCursor
@@ -29,7 +29,7 @@ public final class e
     this(paramArrayOfString);
   }
   
-  private static int dW(Object paramObject)
+  private static int dZ(Object paramObject)
   {
     if (paramObject == null) {
       return 0;
@@ -136,7 +136,7 @@ public final class e
           i = 0;
           label72:
           if (i < k) {
-            switch (dW(get(i)))
+            switch (dZ(get(i)))
             {
             }
           }
@@ -224,7 +224,7 @@ public final class e
       AppMethodBeat.o(133340);
       return d;
     }
-    double d = bs.getDouble(localObject.toString(), 0.0D);
+    double d = bt.getDouble(localObject.toString(), 0.0D);
     AppMethodBeat.o(133340);
     return d;
   }
@@ -244,7 +244,7 @@ public final class e
       AppMethodBeat.o(133339);
       return f;
     }
-    float f = bs.getFloat(localObject.toString(), 0.0F);
+    float f = bt.getFloat(localObject.toString(), 0.0F);
     AppMethodBeat.o(133339);
     return f;
   }
@@ -264,7 +264,7 @@ public final class e
       AppMethodBeat.o(133337);
       return paramInt;
     }
-    paramInt = bs.getInt(localObject.toString(), 0);
+    paramInt = bt.getInt(localObject.toString(), 0);
     AppMethodBeat.o(133337);
     return paramInt;
   }
@@ -284,7 +284,7 @@ public final class e
       AppMethodBeat.o(133338);
       return l;
     }
-    long l = bs.getLong(localObject.toString(), 0L);
+    long l = bt.getLong(localObject.toString(), 0L);
     AppMethodBeat.o(133338);
     return l;
   }
@@ -326,7 +326,7 @@ public final class e
   public final int getType(int paramInt)
   {
     AppMethodBeat.i(133342);
-    paramInt = dW(get(paramInt));
+    paramInt = dZ(get(paramInt));
     AppMethodBeat.o(133342);
     return paramInt;
   }
@@ -345,7 +345,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storagebase.e
  * JD-Core Version:    0.7.0.1
  */

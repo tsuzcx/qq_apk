@@ -11,45 +11,39 @@ import java.util.Set;
 
 public final class g
 {
-  private static final Iterator<g.c> jcQ;
-  private static final Map<String, b> jcR;
-  private static final Map<String, d> jcS;
-  private static final h<String, g.c> jcT;
-  private static final h<String, g.a> jcU;
+  private static final Iterator<g.c> jvZ;
+  private static final Map<String, b> jwa;
+  private static final Map<String, d> jwb;
+  private static final h<String, g.c> jwc;
+  private static final h<String, g.a> jwd;
   
   static
   {
     AppMethodBeat.i(140582);
-    jcQ = new Iterator()
-    {
-      public final boolean hasNext()
-      {
-        return false;
-      }
-    };
-    jcR = new HashMap();
-    jcS = new HashMap();
-    jcT = new h();
-    jcU = new h();
+    jvZ = new g.1();
+    jwa = new HashMap();
+    jwb = new HashMap();
+    jwc = new h();
+    jwd = new h();
     AppMethodBeat.o(140582);
   }
   
-  private static Iterator<g.c> GX(String paramString)
+  private static Iterator<g.c> Km(String paramString)
   {
     AppMethodBeat.i(140568);
-    paramString = jcT.cC(paramString);
+    paramString = jwc.cE(paramString);
     if (paramString != null)
     {
       paramString = paramString.iterator();
       AppMethodBeat.o(140568);
       return paramString;
     }
-    paramString = jcQ;
+    paramString = jvZ;
     AppMethodBeat.o(140568);
     return paramString;
   }
   
-  public static void GY(String paramString)
+  public static void Kn(String paramString)
   {
     AppMethodBeat.i(140569);
     if (TextUtils.isEmpty(paramString))
@@ -57,14 +51,14 @@ public final class g
       AppMethodBeat.o(140569);
       return;
     }
-    paramString = GX(paramString);
+    paramString = Km(paramString);
     while (paramString.hasNext()) {
       ((g.c)paramString.next()).onCreate();
     }
     AppMethodBeat.o(140569);
   }
   
-  public static void GZ(String paramString)
+  public static void Ko(String paramString)
   {
     AppMethodBeat.i(140570);
     if (TextUtils.isEmpty(paramString))
@@ -72,29 +66,29 @@ public final class g
       AppMethodBeat.o(140570);
       return;
     }
-    paramString = GX(paramString);
+    paramString = Km(paramString);
     while (paramString.hasNext()) {
       ((g.c)paramString.next()).onDestroy();
     }
     AppMethodBeat.o(140570);
   }
   
-  public static void Ha(String paramString)
+  public static void Kp(String paramString)
   {
-    AppMethodBeat.i(200932);
+    AppMethodBeat.i(187606);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(200932);
+      AppMethodBeat.o(187606);
       return;
     }
-    paramString = GX(paramString);
+    paramString = Km(paramString);
     while (paramString.hasNext()) {
-      ((g.c)paramString.next()).aSu();
+      ((g.c)paramString.next()).aVG();
     }
-    AppMethodBeat.o(200932);
+    AppMethodBeat.o(187606);
   }
   
-  public static void Hb(String paramString)
+  public static void Kq(String paramString)
   {
     AppMethodBeat.i(140571);
     if (TextUtils.isEmpty(paramString))
@@ -102,14 +96,14 @@ public final class g
       AppMethodBeat.o(140571);
       return;
     }
-    Iterator localIterator = GX(paramString);
+    Iterator localIterator = Km(paramString);
     while (localIterator.hasNext()) {
-      ((g.c)localIterator.next()).a(Hg(paramString));
+      ((g.c)localIterator.next()).a(Kv(paramString));
     }
     AppMethodBeat.o(140571);
   }
   
-  public static void Hc(String paramString)
+  public static void Kr(String paramString)
   {
     AppMethodBeat.i(140572);
     if (TextUtils.isEmpty(paramString))
@@ -117,14 +111,14 @@ public final class g
       AppMethodBeat.o(140572);
       return;
     }
-    paramString = GX(paramString);
+    paramString = Km(paramString);
     while (paramString.hasNext()) {
       ((g.c)paramString.next()).onResume();
     }
     AppMethodBeat.o(140572);
   }
   
-  public static void Hd(String paramString)
+  public static void Ks(String paramString)
   {
     AppMethodBeat.i(140573);
     if (TextUtils.isEmpty(paramString))
@@ -132,14 +126,14 @@ public final class g
       AppMethodBeat.o(140573);
       return;
     }
-    paramString = GX(paramString);
+    paramString = Km(paramString);
     while (paramString.hasNext()) {
       paramString.next();
     }
     AppMethodBeat.o(140573);
   }
   
-  public static void He(String paramString)
+  public static void Kt(String paramString)
   {
     AppMethodBeat.i(140576);
     if (TextUtils.isEmpty(paramString))
@@ -147,25 +141,25 @@ public final class g
       AppMethodBeat.o(140576);
       return;
     }
-    jcT.cD(paramString);
-    jcU.cD(paramString);
+    jwc.cF(paramString);
+    jwd.cF(paramString);
     AppMethodBeat.o(140576);
   }
   
-  public static void Hf(String paramString)
+  public static void Ku(String paramString)
   {
     AppMethodBeat.i(140577);
-    a(paramString, d.jde);
+    a(paramString, d.jwn);
     AppMethodBeat.o(140577);
   }
   
-  public static d Hg(String paramString)
+  public static d Kv(String paramString)
   {
     AppMethodBeat.i(140578);
-    paramString = (d)jcS.get(paramString);
+    paramString = (d)jwb.get(paramString);
     if (paramString == null)
     {
-      paramString = d.jde;
+      paramString = d.jwn;
       AppMethodBeat.o(140578);
       return paramString;
     }
@@ -173,13 +167,13 @@ public final class g
     return paramString;
   }
   
-  public static b Hh(String paramString)
+  public static b Kw(String paramString)
   {
     AppMethodBeat.i(140581);
-    b localb = (b)jcR.get(paramString);
+    b localb = (b)jwa.get(paramString);
     paramString = localb;
     if (localb == null) {
-      paramString = b.jcV;
+      paramString = b.jwe;
     }
     AppMethodBeat.o(140581);
     return paramString;
@@ -188,7 +182,7 @@ public final class g
   public static void a(String paramString, g.a parama)
   {
     AppMethodBeat.i(182832);
-    jcU.h(paramString, parama);
+    jwd.j(paramString, parama);
     AppMethodBeat.o(182832);
   }
   
@@ -200,7 +194,7 @@ public final class g
       AppMethodBeat.o(140580);
       return;
     }
-    jcR.put(paramString, paramb);
+    jwa.put(paramString, paramb);
     AppMethodBeat.o(140580);
   }
   
@@ -212,7 +206,7 @@ public final class g
       AppMethodBeat.o(140567);
       return;
     }
-    jcT.h(paramString, paramc);
+    jwc.j(paramString, paramc);
     AppMethodBeat.o(140567);
   }
   
@@ -224,14 +218,14 @@ public final class g
       AppMethodBeat.o(140579);
       return;
     }
-    jcS.put(paramString, paramd);
+    jwb.put(paramString, paramd);
     AppMethodBeat.o(140579);
   }
   
   public static void b(String paramString, g.a parama)
   {
     AppMethodBeat.i(182833);
-    jcU.B(paramString, parama);
+    jwd.D(paramString, parama);
     AppMethodBeat.o(182833);
   }
   
@@ -243,14 +237,14 @@ public final class g
       AppMethodBeat.o(140574);
       return;
     }
-    jcT.B(paramString, paramc);
+    jwc.D(paramString, paramc);
     AppMethodBeat.o(140574);
   }
   
   public static boolean b(String paramString, Intent paramIntent)
   {
     AppMethodBeat.i(182834);
-    paramString = jcU.cC(paramString);
+    paramString = jwd.cE(paramString);
     if (paramString != null)
     {
       paramString = paramString.iterator();
@@ -271,13 +265,13 @@ public final class g
     static
     {
       AppMethodBeat.i(140563);
-      jcV = new b("INIT", 0);
-      jcW = new b("ON_CREATE", 1);
-      jcX = new b("ON_RESUME", 2);
-      jcY = new b("ON_PAUSE", 3);
-      jcZ = new b("ON_STOP", 4);
-      jda = new b("ON_DESTROY", 5);
-      jdb = new b[] { jcV, jcW, jcX, jcY, jcZ, jda };
+      jwe = new b("INIT", 0);
+      jwf = new b("ON_CREATE", 1);
+      jwg = new b("ON_RESUME", 2);
+      jwh = new b("ON_PAUSE", 3);
+      jwi = new b("ON_STOP", 4);
+      jwj = new b("ON_DESTROY", 5);
+      jwk = new b[] { jwe, jwf, jwg, jwh, jwi, jwj };
       AppMethodBeat.o(140563);
     }
     
@@ -289,15 +283,15 @@ public final class g
     static
     {
       AppMethodBeat.i(140566);
-      jdc = new d("CLOSE", 0);
-      jdd = new d("BACK", 1);
-      jde = new d("HIDE", 2);
-      jdf = new d("HANG", 3);
-      jdg = new d("HOME_PRESSED", 4);
-      jdh = new d("RECENT_APPS_PRESSED", 5);
-      jdi = new d("LAUNCH_NATIVE_PAGE", 6);
-      jdj = new d("LAUNCH_MINI_PROGRAM", 7);
-      jdk = new d[] { jdc, jdd, jde, jdf, jdg, jdh, jdi, jdj };
+      jwl = new d("CLOSE", 0);
+      jwm = new d("BACK", 1);
+      jwn = new d("HIDE", 2);
+      jwo = new d("HANG", 3);
+      jwp = new d("HOME_PRESSED", 4);
+      jwq = new d("RECENT_APPS_PRESSED", 5);
+      jwr = new d("LAUNCH_NATIVE_PAGE", 6);
+      jws = new d("LAUNCH_MINI_PROGRAM", 7);
+      jwt = new d[] { jwl, jwm, jwn, jwo, jwp, jwq, jwr, jws };
       AppMethodBeat.o(140566);
     }
     
@@ -306,7 +300,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g
  * JD-Core Version:    0.7.0.1
  */

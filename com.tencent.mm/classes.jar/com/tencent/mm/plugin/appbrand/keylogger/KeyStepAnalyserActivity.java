@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -15,11 +14,12 @@ import android.widget.BaseAdapter;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.appbrand.keylogger.base.IKeyStepAnalyser.StepLogInfo;
 import com.tencent.mm.plugin.appbrand.keylogger.base.IKeyStepAnalyser.a;
 import com.tencent.mm.plugin.appbrand.keylogger.base.IKeyStepAnalyser.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,36 +29,36 @@ import java.util.regex.Pattern;
 public class KeyStepAnalyserActivity
   extends KeyStepBaseActivity
 {
-  private a lfn;
-  private Pattern lfo;
-  private Class lfp;
+  private a lCl;
+  private Pattern lCm;
+  private Class lCn;
   private int mDay;
   private int mMonth;
   private String mProcessName;
   private int mYear;
   
-  private void qS(long paramLong)
+  private void sR(long paramLong)
   {
-    AppMethodBeat.i(200973);
-    ac.i("MicroMsg.KeyStepBaseActivity", "analyse time:%d", new Object[] { Long.valueOf(paramLong) });
-    this.lfn.a(this.mProcessName, this.lfo, paramLong, new IKeyStepAnalyser.a()
+    AppMethodBeat.i(187645);
+    ad.i("MicroMsg.KeyStepBaseActivity", "analyse time:%d", new Object[] { Long.valueOf(paramLong) });
+    this.lCl.a(this.mProcessName, this.lCm, paramLong, new IKeyStepAnalyser.a()
     {
-      public final void bv(final List<IKeyStepAnalyser.b> paramAnonymousList)
+      public final void bx(final List<IKeyStepAnalyser.b> paramAnonymousList)
       {
-        AppMethodBeat.i(200963);
-        ap.f(new Runnable()
+        AppMethodBeat.i(187635);
+        aq.f(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(200962);
+            AppMethodBeat.i(187634);
             KeyStepAnalyserActivity.a(KeyStepAnalyserActivity.this, paramAnonymousList);
-            AppMethodBeat.o(200962);
+            AppMethodBeat.o(187634);
           }
         });
-        AppMethodBeat.o(200963);
+        AppMethodBeat.o(187635);
       }
     });
-    AppMethodBeat.o(200973);
+    AppMethodBeat.o(187645);
   }
   
   protected final int getLayoutId()
@@ -68,28 +68,20 @@ public class KeyStepAnalyserActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(200972);
+    AppMethodBeat.i(187644);
     super.onCreate(paramBundle);
-    this.lfp = ((Class)getIntent().getSerializableExtra("proces"));
-    this.mProcessName = f.ay(this.lfp);
-    this.lfo = ((Pattern)getIntent().getSerializableExtra("session_id_prefix"));
+    this.lCn = ((Class)getIntent().getSerializableExtra("proces"));
+    this.mProcessName = f.ay(this.lCn);
+    this.lCm = ((Pattern)getIntent().getSerializableExtra("session_id_prefix"));
     setTitle(getString(2131765443));
     paramBundle = Calendar.getInstance();
     this.mYear = paramBundle.get(1);
     this.mMonth = paramBundle.get(2);
     this.mDay = paramBundle.get(5);
-    findViewById(2131307181).setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(200961);
-        KeyStepAnalyserActivity.a(KeyStepAnalyserActivity.this);
-        AppMethodBeat.o(200961);
-      }
-    });
-    this.lfn = new a();
-    qS(System.currentTimeMillis());
-    AppMethodBeat.o(200972);
+    findViewById(2131307181).setOnClickListener(new KeyStepAnalyserActivity.1(this));
+    this.lCl = new a();
+    sR(System.currentTimeMillis());
+    AppMethodBeat.o(187644);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -102,33 +94,33 @@ public class KeyStepAnalyserActivity
     extends BaseAdapter
   {
     private static SimpleDateFormat sDateFormat;
-    List<IKeyStepAnalyser.b> lfu;
+    List<IKeyStepAnalyser.b> lCs;
     private final LayoutInflater mInflater;
     
     static
     {
-      AppMethodBeat.i(200971);
+      AppMethodBeat.i(187643);
       sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-      AppMethodBeat.o(200971);
+      AppMethodBeat.o(187643);
     }
     
     a(Context paramContext)
     {
-      AppMethodBeat.i(200966);
+      AppMethodBeat.i(187638);
       this.mInflater = LayoutInflater.from(paramContext);
-      AppMethodBeat.o(200966);
+      AppMethodBeat.o(187638);
     }
     
     public final int getCount()
     {
-      AppMethodBeat.i(200967);
-      if (this.lfu == null)
+      AppMethodBeat.i(187639);
+      if (this.lCs == null)
       {
-        AppMethodBeat.o(200967);
+        AppMethodBeat.o(187639);
         return 0;
       }
-      int i = this.lfu.size();
-      AppMethodBeat.o(200967);
+      int i = this.lCs.size();
+      AppMethodBeat.o(187639);
       return i;
     }
     
@@ -139,18 +131,18 @@ public class KeyStepAnalyserActivity
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(200969);
+      AppMethodBeat.i(187641);
       View localView;
       if (paramView == null)
       {
         localView = this.mInflater.inflate(2131496159, paramViewGroup, false);
         paramViewGroup = new KeyStepAnalyserActivity.b();
-        paramViewGroup.iBM = ((TextView)localView.findViewById(2131298928));
+        paramViewGroup.iUW = ((TextView)localView.findViewById(2131298928));
         localView.setTag(paramViewGroup);
-        if (tv(paramInt).lgi.isEmpty()) {
+        if (tY(paramInt).lDg.isEmpty()) {
           break label133;
         }
-        paramView = (IKeyStepAnalyser.StepLogInfo)tv(paramInt).lgi.get(0);
+        paramView = (IKeyStepAnalyser.StepLogInfo)tY(paramInt).lDg.get(0);
         if (paramView != null) {
           break label116;
         }
@@ -158,8 +150,8 @@ public class KeyStepAnalyserActivity
       }
       for (;;)
       {
-        paramViewGroup.iBM.setText(paramView);
-        AppMethodBeat.o(200969);
+        paramViewGroup.iUW.setText(paramView);
+        AppMethodBeat.o(187641);
         return localView;
         paramViewGroup = (KeyStepAnalyserActivity.b)paramView.getTag();
         localView = paramView;
@@ -168,28 +160,28 @@ public class KeyStepAnalyserActivity
         paramView = sDateFormat.format(Long.valueOf(paramView.time));
         continue;
         label133:
-        paramViewGroup.iBM.setText(null);
+        paramViewGroup.iUW.setText(null);
         paramView = null;
       }
     }
     
-    public final IKeyStepAnalyser.b tv(int paramInt)
+    public final IKeyStepAnalyser.b tY(int paramInt)
     {
-      AppMethodBeat.i(200968);
-      IKeyStepAnalyser.b localb = (IKeyStepAnalyser.b)this.lfu.get(paramInt);
-      AppMethodBeat.o(200968);
+      AppMethodBeat.i(187640);
+      IKeyStepAnalyser.b localb = (IKeyStepAnalyser.b)this.lCs.get(paramInt);
+      AppMethodBeat.o(187640);
       return localb;
     }
   }
   
   static final class b
   {
-    public TextView iBM;
+    public TextView iUW;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.KeyStepAnalyserActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dov;
-import com.tencent.mm.protocal.protobuf.dow;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.dum;
+import com.tencent.mm.protocal.protobuf.dun;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class s
   extends n
   implements k, e
 {
-  private g callback;
-  private boolean qwz;
+  private f callback;
+  private boolean rgp;
   private b rr;
   
   public s(long paramLong, String paramString1, String paramString2)
   {
     AppMethodBeat.i(103626);
-    this.qwz = false;
+    this.rgp = false;
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new dov();
-    ((b.a)localObject).hvu = new dow();
+    ((b.a)localObject).hNM = new dum();
+    ((b.a)localObject).hNN = new dun();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/verifyface";
     ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).hNO = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (dov)this.rr.hvr.hvw;
-    ((dov)localObject).EMt = paramLong;
-    ((dov)localObject).FAO = paramString1;
-    ((dov)localObject).FAP = paramString2;
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (dum)this.rr.hNK.hNQ;
+    ((dum)localObject).Gvx = paramLong;
+    ((dum)localObject).Hlc = paramString1;
+    ((dum)localObject).Hld = paramString2;
     AppMethodBeat.o(103626);
   }
   
-  public final boolean cmZ()
+  public final boolean csE()
   {
     return true;
   }
   
-  public final String cna()
+  public final String csF()
   {
     return null;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(103627);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(103627);
     return i;
@@ -67,15 +67,15 @@ public final class s
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103628);
-    paramq = (dow)((b)paramq).hvs.hvw;
+    paramq = (dun)((b)paramq).hNL.hNQ;
     boolean bool;
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      if (paramq.FAS == 0)
+      if (paramq.Hlf == 0)
       {
         bool = true;
-        this.qwz = bool;
-        paramInt1 = paramq.FAS;
-        ac.i("MicroMsg.NetSceneFaceVerifyFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.qwz) });
+        this.rgp = bool;
+        paramInt1 = paramq.Hlf;
+        ad.i("MicroMsg.NetSceneFaceVerifyFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.rgp) });
       }
     }
     for (;;)
@@ -91,10 +91,10 @@ public final class s
       if (paramq != null)
       {
         paramInt1 = paramInt3;
-        if (paramq.FAS != 0)
+        if (paramq.Hlf != 0)
         {
-          ac.i("MicroMsg.NetSceneFaceVerifyFace", "hy: has DetailRet, use it");
-          paramInt1 = paramq.FAS;
+          ad.i("MicroMsg.NetSceneFaceVerifyFace", "hy: has DetailRet, use it");
+          paramInt1 = paramq.Hlf;
         }
       }
     }
@@ -102,7 +102,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.s
  * JD-Core Version:    0.7.0.1
  */

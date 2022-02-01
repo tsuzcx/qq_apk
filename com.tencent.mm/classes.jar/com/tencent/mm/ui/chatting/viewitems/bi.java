@@ -1,19 +1,26 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class bi
+  extends c.a
 {
-  View IqL;
-  View IqM;
-  View IqN;
-  LinearLayout IqO;
-  View IqP;
-  TextView fUk;
-  View nBh;
-  TextView nyM;
+  public ImageView JZr;
+  bj Khk;
+  bp Khl;
+  b Khm;
+  LinearLayout ofq;
+  
+  bi()
+  {
+    AppMethodBeat.i(37552);
+    this.Khk = new bj();
+    this.Khl = new bp();
+    this.Khm = new b();
+    AppMethodBeat.o(37552);
+  }
 }
 
 

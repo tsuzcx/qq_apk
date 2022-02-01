@@ -16,59 +16,59 @@ public final class b
   implements d
 {
   protected String TAG = "CacheDataSink";
-  private final long bvp;
-  protected long bvr;
-  protected long bvs;
-  protected long jox = -1L;
-  private final a kPL;
-  protected e kPM;
-  protected g kPN;
-  private OutputStream kPO;
-  protected c kPP = c.kQO;
-  public String kPQ = "";
+  protected e aXd;
+  private final long bFD;
+  protected long bFF;
+  protected long bFG;
+  protected long jIt = -1L;
+  private final a lmm;
+  protected g lmn;
+  private OutputStream lmo;
+  protected c lmp = c.lnp;
+  public String lmq = "";
   private BufferedOutputStream outputStream;
   
   public b(a parama, long paramLong)
   {
-    this.kPL = parama;
-    this.bvp = paramLong;
+    this.lmm = parama;
+    this.bFD = paramLong;
   }
   
-  private void bjO()
+  private void bnA()
   {
-    AppMethodBeat.i(194156);
-    this.kPM = this.kPL.a(this.kPN.key, this.kPN.absoluteStreamPosition + this.bvs, this.jox, this.kPP, Math.min(this.kPN.length - this.bvs, this.bvp));
-    AppMethodBeat.o(194156);
+    AppMethodBeat.i(205969);
+    this.lmm.B(this.aXd);
+    AppMethodBeat.o(205969);
   }
   
-  private void bjP()
+  private void bnz()
   {
-    AppMethodBeat.i(194157);
-    this.kPL.B(this.kPM);
-    AppMethodBeat.o(194157);
+    AppMethodBeat.i(205968);
+    this.aXd = this.lmm.a(this.lmn.key, this.lmn.absoluteStreamPosition + this.bFG, this.jIt, this.lmp, Math.min(this.lmn.length - this.bFG, this.bFD));
+    AppMethodBeat.o(205968);
   }
   
   private String getLogTag()
   {
-    AppMethodBeat.i(194160);
-    String str = this.kPQ + this.TAG;
-    AppMethodBeat.o(194160);
+    AppMethodBeat.i(205972);
+    String str = this.lmq + this.TAG;
+    AppMethodBeat.o(205972);
     return str;
   }
   
-  private void vj()
+  private void wG()
   {
-    AppMethodBeat.i(194158);
-    bjO();
-    h.log(4, getLogTag(), "start cache " + q.B(this.kPM.fxV()));
-    this.kPO = i.ah(this.kPM);
-    this.outputStream = new BufferedOutputStream(this.kPO);
-    this.bvr = 0L;
-    AppMethodBeat.o(194158);
+    AppMethodBeat.i(205970);
+    bnz();
+    h.log(4, getLogTag(), "start cache " + q.B(this.aXd.fOK()));
+    this.lmo = i.aj(this.aXd);
+    this.outputStream = new BufferedOutputStream(this.lmo);
+    this.bFF = 0L;
+    AppMethodBeat.o(205970);
   }
   
   /* Error */
-  private void vk()
+  private void wH()
   {
     // Byte code:
     //   0: ldc 165
@@ -82,7 +82,7 @@ public final class b
     //   17: ldc 167
     //   19: invokestatic 144	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   22: ldc 165
-    //   24: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   24: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   27: return
     //   28: aload_0
     //   29: getfield 159	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:outputStream	Ljava/io/BufferedOutputStream;
@@ -93,7 +93,7 @@ public final class b
     //   40: aload_1
     //   41: invokevirtual 175	java/io/OutputStream:close	()V
     //   44: aload_0
-    //   45: invokespecial 177	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:bjP	()V
+    //   45: invokespecial 177	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:bnA	()V
     //   48: iconst_4
     //   49: aload_0
     //   50: invokespecial 122	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:getLogTag	()Ljava/lang/String;
@@ -102,29 +102,29 @@ public final class b
     //   57: ldc 179
     //   59: invokespecial 127	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   62: aload_0
-    //   63: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:kPM	Lcom/tencent/mm/vfs/e;
-    //   66: invokevirtual 133	com/tencent/mm/vfs/e:fxV	()Landroid/net/Uri;
+    //   63: getfield 68	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:aXd	Lcom/tencent/mm/vfs/e;
+    //   66: invokevirtual 133	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
     //   69: invokestatic 138	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   72: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   75: ldc 181
     //   77: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   80: aload_0
-    //   81: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:kPM	Lcom/tencent/mm/vfs/e;
+    //   81: getfield 68	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:aXd	Lcom/tencent/mm/vfs/e;
     //   84: invokevirtual 184	com/tencent/mm/vfs/e:length	()J
     //   87: invokevirtual 187	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   90: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   93: invokestatic 144	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   96: aload_0
     //   97: aconst_null
-    //   98: putfield 152	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:kPO	Ljava/io/OutputStream;
+    //   98: putfield 152	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:lmo	Ljava/io/OutputStream;
     //   101: aload_0
     //   102: aconst_null
     //   103: putfield 159	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:outputStream	Ljava/io/BufferedOutputStream;
     //   106: aload_0
     //   107: aconst_null
-    //   108: putfield 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:kPM	Lcom/tencent/mm/vfs/e;
+    //   108: putfield 68	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:aXd	Lcom/tencent/mm/vfs/e;
     //   111: ldc 165
-    //   113: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   113: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   116: return
     //   117: astore_1
     //   118: aload_0
@@ -133,7 +133,7 @@ public final class b
     //   123: aload_2
     //   124: invokevirtual 175	java/io/OutputStream:close	()V
     //   127: aload_0
-    //   128: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:kPM	Lcom/tencent/mm/vfs/e;
+    //   128: getfield 68	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:aXd	Lcom/tencent/mm/vfs/e;
     //   131: invokevirtual 191	com/tencent/mm/vfs/e:delete	()Z
     //   134: pop
     //   135: bipush 6
@@ -144,23 +144,23 @@ public final class b
     //   145: ldc 193
     //   147: invokespecial 127	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   150: aload_0
-    //   151: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:kPM	Lcom/tencent/mm/vfs/e;
-    //   154: invokevirtual 133	com/tencent/mm/vfs/e:fxV	()Landroid/net/Uri;
+    //   151: getfield 68	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:aXd	Lcom/tencent/mm/vfs/e;
+    //   154: invokevirtual 133	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
     //   157: invokestatic 138	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   160: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   166: invokestatic 144	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/h:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   169: aload_0
     //   170: aconst_null
-    //   171: putfield 152	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:kPO	Ljava/io/OutputStream;
+    //   171: putfield 152	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:lmo	Ljava/io/OutputStream;
     //   174: aload_0
     //   175: aconst_null
     //   176: putfield 159	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:outputStream	Ljava/io/BufferedOutputStream;
     //   179: aload_0
     //   180: aconst_null
-    //   181: putfield 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:kPM	Lcom/tencent/mm/vfs/e;
+    //   181: putfield 68	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/b:aXd	Lcom/tencent/mm/vfs/e;
     //   184: ldc 165
-    //   186: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   186: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   189: aload_1
     //   190: athrow
     //   191: astore_1
@@ -184,25 +184,25 @@ public final class b
   
   public final d a(g paramg, long paramLong, c paramc)
   {
-    AppMethodBeat.i(194153);
+    AppMethodBeat.i(205965);
     if (paramg.length != -1L) {}
     for (boolean bool = true;; bool = false)
     {
       com.tencent.mm.plugin.appbrand.jsapi.video.b.e.a.checkState(bool);
-      this.jox = paramLong;
-      this.kPP = paramc;
+      this.jIt = paramLong;
+      this.lmp = paramc;
       try
       {
-        this.kPN = paramg;
-        this.bvs = 0L;
-        vj();
-        AppMethodBeat.o(194153);
+        this.lmn = paramg;
+        this.bFG = 0L;
+        wG();
+        AppMethodBeat.o(205965);
         return this;
       }
       catch (IOException paramg)
       {
         paramg = new a(paramg);
-        AppMethodBeat.o(194153);
+        AppMethodBeat.o(205965);
         throw paramg;
       }
     }
@@ -210,48 +210,48 @@ public final class b
   
   public final void close()
   {
-    AppMethodBeat.i(194155);
+    AppMethodBeat.i(205967);
     try
     {
-      vk();
-      h.log(4, getLogTag(), "close outputStream, " + String.format("total cached %d bytes", new Object[] { Long.valueOf(this.bvs) }));
-      AppMethodBeat.o(194155);
+      wH();
+      h.log(4, getLogTag(), "close outputStream, " + String.format("total cached %d bytes", new Object[] { Long.valueOf(this.bFG) }));
+      AppMethodBeat.o(205967);
       return;
     }
     catch (IOException localIOException)
     {
       a locala = new a(localIOException);
-      AppMethodBeat.o(194155);
+      AppMethodBeat.o(205967);
       throw locala;
     }
   }
   
   public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194154);
+    AppMethodBeat.i(205966);
     int i = 0;
     while (i < paramInt2) {
       try
       {
-        if (this.bvr == this.bvp)
+        if (this.bFF == this.bFD)
         {
-          vk();
-          vj();
+          wH();
+          wG();
         }
-        int j = (int)Math.min(paramInt2 - i, this.bvp - this.bvr);
+        int j = (int)Math.min(paramInt2 - i, this.bFD - this.bFF);
         this.outputStream.write(paramArrayOfByte, paramInt1 + i, j);
         i += j;
-        this.bvr += j;
-        this.bvs += j;
+        this.bFF += j;
+        this.bFG += j;
       }
       catch (IOException paramArrayOfByte)
       {
         paramArrayOfByte = new a(paramArrayOfByte);
-        AppMethodBeat.o(194154);
+        AppMethodBeat.o(205966);
         throw paramArrayOfByte;
       }
     }
-    AppMethodBeat.o(194154);
+    AppMethodBeat.o(205966);
   }
   
   public static final class a

@@ -3,7 +3,6 @@ package com.tencent.mm.opensdk.modelbiz;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.utils.Log;
 
 public final class SubscribeMessage
@@ -29,26 +28,28 @@ public final class SubscribeMessage
     public boolean checkArgs()
     {
       AppMethodBeat.i(3881);
-      if ((this.templateID == null) || (this.templateID.length() == 0))
+      String str = this.templateID;
+      if ((str != null) && (str.length() != 0))
       {
-        Log.e("MicroMsg.SDK.SubscribeMessage.Req", "checkArgs fail, templateID is null");
+        if (this.templateID.length() > 1024)
+        {
+          Log.e("MicroMsg.SDK.SubscribeMessage.Req", "checkArgs fail, templateID is too long");
+          AppMethodBeat.o(3881);
+          return false;
+        }
+        str = this.reserved;
+        if ((str != null) && (str.length() > 1024))
+        {
+          Log.e("MicroMsg.SDK.SubscribeMessage.Req", "checkArgs fail, reserved is too long");
+          AppMethodBeat.o(3881);
+          return false;
+        }
         AppMethodBeat.o(3881);
-        return false;
+        return true;
       }
-      if (this.templateID.length() > 1024)
-      {
-        Log.e("MicroMsg.SDK.SubscribeMessage.Req", "checkArgs fail, templateID is too long");
-        AppMethodBeat.o(3881);
-        return false;
-      }
-      if ((this.reserved != null) && (this.reserved.length() > 1024))
-      {
-        Log.e("MicroMsg.SDK.SubscribeMessage.Req", "checkArgs fail, reserved is too long");
-        AppMethodBeat.o(3881);
-        return false;
-      }
+      Log.e("MicroMsg.SDK.SubscribeMessage.Req", "checkArgs fail, templateID is null");
       AppMethodBeat.o(3881);
-      return true;
+      return false;
     }
     
     public void fromBundle(Bundle paramBundle)
@@ -74,57 +75,6 @@ public final class SubscribeMessage
       paramBundle.putString("_wxapi_subscribemessage_req_templateid", this.templateID);
       paramBundle.putString("_wxapi_subscribemessage_req_reserved", this.reserved);
       AppMethodBeat.o(3880);
-    }
-  }
-  
-  public static class Resp
-    extends BaseResp
-  {
-    private static final String TAG = "MicroMsg.SDK.SubscribeMessage.Resp";
-    public String action;
-    public String reserved;
-    public int scene;
-    public String templateID;
-    
-    public Resp() {}
-    
-    public Resp(Bundle paramBundle)
-    {
-      AppMethodBeat.i(3920);
-      fromBundle(paramBundle);
-      AppMethodBeat.o(3920);
-    }
-    
-    public boolean checkArgs()
-    {
-      return true;
-    }
-    
-    public void fromBundle(Bundle paramBundle)
-    {
-      AppMethodBeat.i(3921);
-      super.fromBundle(paramBundle);
-      this.templateID = paramBundle.getString("_wxapi_subscribemessage_resp_templateid");
-      this.scene = paramBundle.getInt("_wxapi_subscribemessage_resp_scene");
-      this.action = paramBundle.getString("_wxapi_subscribemessage_resp_action");
-      this.reserved = paramBundle.getString("_wxapi_subscribemessage_resp_reserved");
-      AppMethodBeat.o(3921);
-    }
-    
-    public int getType()
-    {
-      return 18;
-    }
-    
-    public void toBundle(Bundle paramBundle)
-    {
-      AppMethodBeat.i(3922);
-      super.toBundle(paramBundle);
-      paramBundle.putString("_wxapi_subscribemessage_resp_templateid", this.templateID);
-      paramBundle.putInt("_wxapi_subscribemessage_resp_scene", this.scene);
-      paramBundle.putString("_wxapi_subscribemessage_resp_action", this.action);
-      paramBundle.putString("_wxapi_subscribemessage_resp_reserved", this.reserved);
-      AppMethodBeat.o(3922);
     }
   }
 }

@@ -17,18 +17,18 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aj;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ak;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.w;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.chatting.e.b.a;
-import com.tencent.mm.ui.chatting.e.b.b;
-import com.tencent.mm.ui.chatting.j.g;
+import com.tencent.mm.ui.chatting.f.b.a;
+import com.tencent.mm.ui.chatting.f.b.b;
+import com.tencent.mm.ui.chatting.k.h;
 import com.tencent.mm.ui.tools.r;
 import java.util.List;
 
@@ -37,27 +37,27 @@ public class MediaHistoryListUI
   extends MMActivity
   implements b.b
 {
-  private b.a HZS;
-  private com.tencent.mm.modelvoiceaddr.ui.b Ier;
-  private RecyclerView alu;
-  private String fzK;
-  private TextView fzM;
-  private ProgressDialog opZ;
+  private b.a JPh;
+  private com.tencent.mm.modelvoiceaddr.ui.b JTS;
+  private RecyclerView anl;
+  private String fTa;
+  private TextView fTc;
+  private ProgressDialog oTu;
   
-  private void ji(boolean paramBoolean)
+  private void jt(boolean paramBoolean)
   {
     AppMethodBeat.i(36391);
-    ac.i("MicroMsg.MediaHistoryListUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.i("MicroMsg.MediaHistoryListUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      this.opZ = p.a(this, getString(2131760709), true, 0, null);
+      this.oTu = p.a(this, getString(2131760709), true, 0, null);
       AppMethodBeat.o(36391);
       return;
     }
-    if ((this.opZ != null) && (this.opZ.isShowing()))
+    if ((this.oTu != null) && (this.oTu.isShowing()))
     {
-      this.opZ.dismiss();
-      this.opZ = null;
+      this.oTu.dismiss();
+      this.oTu = null;
     }
     AppMethodBeat.o(36391);
   }
@@ -65,45 +65,45 @@ public class MediaHistoryListUI
   public final void B(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(36388);
-    ji(false);
-    ac.i("MicroMsg.MediaHistoryListUI", "[onDataLoaded] isFirst:%s addCount:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    jt(false);
+    ad.i("MicroMsg.MediaHistoryListUI", "[onDataLoaded] isFirst:%s addCount:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     if (paramInt <= 0)
     {
-      this.fzM.setVisibility(0);
-      this.alu.setVisibility(8);
-      this.fzM.setText(getString(2131757279));
+      this.fTc.setVisibility(0);
+      this.anl.setVisibility(8);
+      this.fTc.setText(getString(2131757279));
       AppMethodBeat.o(36388);
       return;
     }
-    this.fzM.setVisibility(8);
-    this.alu.setVisibility(0);
-    this.alu.getAdapter().arg.notifyChanged();
+    this.fTc.setVisibility(8);
+    this.anl.setVisibility(0);
+    this.anl.getAdapter().asY.notifyChanged();
     AppMethodBeat.o(36388);
   }
   
-  public final void cN(String paramString, boolean paramBoolean)
+  public final void cS(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(36390);
     if (paramBoolean)
     {
       String str = getString(2131757283, new Object[] { paramString });
-      this.fzM.setVisibility(0);
-      this.alu.setVisibility(8);
-      TextView localTextView = this.fzM;
-      this.fzM.getContext();
+      this.fTc.setVisibility(0);
+      this.anl.setVisibility(8);
+      TextView localTextView = this.fTc;
+      this.fTc.getContext();
       localTextView.setText(com.tencent.mm.plugin.fts.a.f.b(str, paramString));
       AppMethodBeat.o(36390);
       return;
     }
-    this.fzM.setVisibility(8);
-    this.alu.setVisibility(0);
+    this.fTc.setVisibility(8);
+    this.anl.setVisibility(0);
     AppMethodBeat.o(36390);
   }
   
-  public final void fpd()
+  public final void fFI()
   {
     AppMethodBeat.i(36387);
-    ji(true);
+    jt(true);
     AppMethodBeat.o(36387);
   }
   
@@ -115,19 +115,19 @@ public class MediaHistoryListUI
   public void initView()
   {
     AppMethodBeat.i(36380);
-    this.Ier = new com.tencent.mm.modelvoiceaddr.ui.b();
-    this.Ier.xO(false);
-    this.Ier.a(this.HZS.fpb());
-    this.Ier.igd = false;
-    this.fzM = ((TextView)findViewById(2131304436));
-    this.alu = ((RecyclerView)findViewById(2131300757));
+    this.JTS = new com.tencent.mm.modelvoiceaddr.ui.b();
+    this.JTS.yC(false);
+    this.JTS.a(this.JPh.fFG());
+    this.JTS.izx = false;
+    this.fTc = ((TextView)findViewById(2131304436));
+    this.anl = ((RecyclerView)findViewById(2131300757));
     findViewById(2131298757).setBackgroundColor(getResources().getColor(2131099650));
-    this.alu.setBackgroundColor(getResources().getColor(2131099650));
-    this.alu.setLayoutManager(this.HZS.bUW());
-    this.alu.a(this.HZS.foY());
-    this.alu.setAdapter(this.HZS.aQt(this.fzK));
-    this.alu.setHasFixedSize(true);
-    setMMTitle(this.HZS.aOk());
+    this.anl.setBackgroundColor(getResources().getColor(2131099650));
+    this.anl.setLayoutManager(this.JPh.bZB());
+    this.anl.a(this.JPh.fFD());
+    this.anl.setAdapter(this.JPh.aWm(this.fTa));
+    this.anl.setHasFixedSize(true);
+    setMMTitle(this.JPh.aRw());
     AppMethodBeat.o(36380);
   }
   
@@ -151,7 +151,7 @@ public class MediaHistoryListUI
       paramBundle.excludeTarget(16908335, true);
       getWindow().setEnterTransition(paramBundle);
     }
-    this.fzK = getIntent().getStringExtra("kintent_talker");
+    this.fTa = getIntent().getStringExtra("kintent_talker");
     int i = getIntent().getIntExtra("key_media_type", -1);
     paramBundle = null;
     switch (i)
@@ -159,87 +159,87 @@ public class MediaHistoryListUI
     }
     while (paramBundle == null)
     {
-      ac.e("MicroMsg.MediaHistoryListUI", "[onCreate] presenter is null!");
+      ad.e("MicroMsg.MediaHistoryListUI", "[onCreate] presenter is null!");
       AppMethodBeat.o(36379);
       return;
-      paramBundle = new com.tencent.mm.ui.chatting.j.d(this);
+      paramBundle = new com.tencent.mm.ui.chatting.k.d(this);
       continue;
-      paramBundle = new com.tencent.mm.ui.chatting.j.h(this);
+      paramBundle = new h(this);
       continue;
-      paramBundle = new com.tencent.mm.ui.chatting.j.f(this);
+      paramBundle = new com.tencent.mm.ui.chatting.k.f(this);
       continue;
-      paramBundle = new g(this);
+      paramBundle = new com.tencent.mm.ui.chatting.k.g(this);
       continue;
-      paramBundle = new com.tencent.mm.ui.chatting.j.a(this);
+      paramBundle = new com.tencent.mm.ui.chatting.k.a(this);
     }
     paramBundle.a(this);
     setActionbarColor(android.support.v4.content.b.n(getContext(), 2131100705));
     hideActionbarLine();
     initView();
-    this.HZS.foZ();
-    boolean bool = w.sQ(this.fzK);
-    az.ayM();
-    paramBundle = c.awK().xO(this.fzK);
+    this.JPh.fFE();
+    boolean bool = w.vF(this.fTa);
+    ba.aBQ();
+    paramBundle = c.azz().AO(this.fTa);
     if (bool)
     {
-      if (this.HZS.getType() == 6)
+      if (this.JPh.getType() == 6)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.aDl().size()), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.aGo().size()), Integer.valueOf(1) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.HZS.getType() == -1)
+      if (this.JPh.getType() == -1)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(paramBundle.aDl().size()), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(paramBundle.aGo().size()), Integer.valueOf(1) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.HZS.getType() == 3)
+      if (this.JPh.getType() == 3)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(paramBundle.aDl().size()), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(paramBundle.aGo().size()), Integer.valueOf(1) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.HZS.getType() == 5)
+      if (this.JPh.getType() == 5)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.aDl().size()), Integer.valueOf(1), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.aGo().size()), Integer.valueOf(1), Integer.valueOf(1) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.HZS.getType() == 33)
+      if (this.JPh.getType() == 33)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.aDl().size()), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(8) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.aGo().size()), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(8) });
         AppMethodBeat.o(36379);
       }
     }
     else
     {
-      if (this.HZS.getType() == 6)
+      if (this.JPh.getType() == 6)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.HZS.getType() == -1)
+      if (this.JPh.getType() == -1)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.HZS.getType() == 3)
+      if (this.JPh.getType() == 3)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.HZS.getType() == 5)
+      if (this.JPh.getType() == 5)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.HZS.getType() == 33) {
-        com.tencent.mm.plugin.report.service.h.wUl.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(8) });
+      if (this.JPh.getType() == 33) {
+        com.tencent.mm.plugin.report.service.g.yhR.f(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(8) });
       }
     }
     AppMethodBeat.o(36379);
@@ -248,11 +248,11 @@ public class MediaHistoryListUI
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(36383);
-    this.Ier.a(this, paramMenu);
-    paramMenu = this.Ier;
-    String str = this.HZS.fpc();
-    if ((paramMenu.ITL != null) && (!bs.isNullOrNil(str))) {
-      paramMenu.ITL.setSelectedTag(str);
+    this.JTS.a(this, paramMenu);
+    paramMenu = this.JTS;
+    String str = this.JPh.fFH();
+    if ((paramMenu.KKP != null) && (!bt.isNullOrNil(str))) {
+      paramMenu.KKP.setSelectedTag(str);
     }
     getContentView().postDelayed(new Runnable()
     {
@@ -271,14 +271,14 @@ public class MediaHistoryListUI
   {
     AppMethodBeat.i(36381);
     super.onDestroy();
-    this.HZS.onDetach();
+    this.JPh.onDetach();
     AppMethodBeat.o(36381);
   }
   
   public final void onFinish()
   {
     AppMethodBeat.i(36389);
-    ac.i("MicroMsg.MediaHistoryListUI", "[onRefreshed]");
+    ad.i("MicroMsg.MediaHistoryListUI", "[onRefreshed]");
     finish();
     overridePendingTransition(0, 0);
     AppMethodBeat.o(36389);
@@ -304,7 +304,7 @@ public class MediaHistoryListUI
     AppMethodBeat.i(36382);
     super.onKeyboardStateChanged();
     if (keyboardState() == 2) {
-      this.Ier.clearFocus();
+      this.JTS.clearFocus();
     }
     AppMethodBeat.o(36382);
   }
@@ -312,7 +312,7 @@ public class MediaHistoryListUI
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(36384);
-    this.Ier.a(this, paramMenu);
+    this.JTS.a(this, paramMenu);
     AppMethodBeat.o(36384);
     return true;
   }

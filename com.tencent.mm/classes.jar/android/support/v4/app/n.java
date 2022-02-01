@@ -231,11 +231,11 @@ public abstract class n
   
   public abstract void c(Object paramObject, View paramView);
   
-  public abstract boolean h(Object paramObject);
-  
-  public abstract Object i(Object paramObject);
+  public abstract boolean i(Object paramObject);
   
   public abstract Object j(Object paramObject);
+  
+  public abstract Object k(Object paramObject);
 }
 
 

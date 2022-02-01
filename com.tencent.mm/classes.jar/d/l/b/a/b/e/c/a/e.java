@@ -1,7 +1,7 @@
 package d.l.b.a.b.e.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 
 public abstract class e
 {
@@ -9,11 +9,11 @@ public abstract class e
   
   public abstract String getName();
   
-  public abstract String rf();
+  public abstract String sD();
   
   public final String toString()
   {
-    return rf();
+    return sD();
   }
   
   public static final class a
@@ -39,7 +39,7 @@ public abstract class e
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((!k.g(this.name, paramObject.name)) || (!k.g(this.desc, paramObject.desc))) {}
+          if ((!p.i(this.name, paramObject.name)) || (!p.i(this.desc, paramObject.desc))) {}
         }
       }
       else
@@ -78,7 +78,7 @@ public abstract class e
       }
     }
     
-    public final String rf()
+    public final String sD()
     {
       AppMethodBeat.i(59233);
       String str = this.name + ':' + this.desc;
@@ -110,7 +110,7 @@ public abstract class e
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if ((!k.g(this.name, paramObject.name)) || (!k.g(this.desc, paramObject.desc))) {}
+          if ((!p.i(this.name, paramObject.name)) || (!p.i(this.desc, paramObject.desc))) {}
         }
       }
       else
@@ -149,7 +149,7 @@ public abstract class e
       }
     }
     
-    public final String rf()
+    public final String sD()
     {
       AppMethodBeat.i(59237);
       String str = this.name + this.desc;

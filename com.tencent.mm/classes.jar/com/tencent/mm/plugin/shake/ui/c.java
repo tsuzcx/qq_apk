@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 final class c
 {
-  au cLS;
+  av cXg;
   View view;
   
   public c(View paramView)
   {
     AppMethodBeat.i(28378);
-    this.cLS = new au(new au.a()
+    this.cXg = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(28377);
-        c.this.dDR();
+        c.this.dPu();
         AppMethodBeat.o(28377);
         return false;
       }
@@ -27,7 +27,7 @@ final class c
     AppMethodBeat.o(28378);
   }
   
-  public final void dDR()
+  public final void dPu()
   {
     AppMethodBeat.i(28379);
     if (this.view != null) {
@@ -38,7 +38,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.c
  * JD-Core Version:    0.7.0.1
  */

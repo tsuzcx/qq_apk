@@ -11,7 +11,7 @@ public class SetLineJoinActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetLineJoinActionArg> CREATOR;
-  public String jzF;
+  public String jTA;
   
   static
   {
@@ -51,7 +51,7 @@ public class SetLineJoinActionArg
       return false;
     }
     paramObject = (SetLineJoinActionArg)paramObject;
-    boolean bool = Objects.equals(this.jzF, paramObject.jzF);
+    boolean bool = Objects.equals(this.jTA, paramObject.jTA);
     AppMethodBeat.o(145207);
     return bool;
   }
@@ -60,14 +60,14 @@ public class SetLineJoinActionArg
   {
     AppMethodBeat.i(145204);
     super.h(paramParcel);
-    this.jzF = paramParcel.readString();
+    this.jTA = paramParcel.readString();
     AppMethodBeat.o(145204);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145208);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jzF });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jTA });
     AppMethodBeat.o(145208);
     return i;
   }
@@ -76,7 +76,7 @@ public class SetLineJoinActionArg
   {
     AppMethodBeat.i(145205);
     super.parse(paramJSONObject);
-    this.jzF = paramJSONObject.optJSONArray("data").optString(0);
+    this.jTA = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145205);
   }
   
@@ -84,7 +84,7 @@ public class SetLineJoinActionArg
   {
     AppMethodBeat.i(145206);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jzF);
+    paramParcel.writeString(this.jTA);
     AppMethodBeat.o(145206);
   }
 }

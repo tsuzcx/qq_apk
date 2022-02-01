@@ -3,7 +3,7 @@ package com.tencent.kinda.framework.module.impl;
 import com.tencent.kinda.gen.IAsyncTask;
 import com.tencent.kinda.gen.KEventLoop;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public class KindaUIEventLoop
   implements KEventLoop
@@ -11,7 +11,7 @@ public class KindaUIEventLoop
   public void post(final IAsyncTask paramIAsyncTask)
   {
     AppMethodBeat.i(18658);
-    ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public void run()
       {
@@ -25,7 +25,7 @@ public class KindaUIEventLoop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaUIEventLoop
  * JD-Core Version:    0.7.0.1
  */

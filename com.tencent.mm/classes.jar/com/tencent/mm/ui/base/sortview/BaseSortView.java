@@ -11,8 +11,10 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 import com.tencent.mm.ui.base.VerticalScrollBar.a;
 import java.util.ArrayList;
@@ -23,55 +25,62 @@ public abstract class BaseSortView
   extends LinearLayout
   implements VerticalScrollBar.a
 {
-  private VerticalScrollBar HGf;
-  private View HGg;
-  private c HGh = new c(getItemViewCreator());
-  private AdapterView.OnItemLongClickListener HGi;
-  private List<d> HGj = new ArrayList();
-  public boolean HGk;
-  public boolean HGl;
-  private a HGm;
-  private AdapterView.OnItemSelectedListener Wh;
-  private AdapterView.OnItemClickListener auB;
+  private VerticalScrollBar JtW;
+  private View JtX;
+  private c JtY = new c(getItemViewCreator());
+  private AdapterView.OnItemLongClickListener JtZ;
+  private List<d> Jua = new ArrayList();
+  public boolean Jub;
+  public boolean Juc;
+  private a Jud;
+  private AdapterView.OnItemSelectedListener XW;
+  private AdapterView.OnItemClickListener awt;
   private int mMode;
-  private ListView nyo;
+  private ListView nZM;
   
   public BaseSortView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     inflate();
-    this.HGf = getScrollBar();
-    this.nyo = getListView();
-    this.HGg = getNoResultView();
-    this.HGk = true;
-    wY(true);
-    this.nyo.setAdapter(this.HGh);
-    if (this.HGf != null) {
-      this.HGf.setOnScrollBarTouchListener(this);
+    this.JtW = getScrollBar();
+    this.nZM = getListView();
+    this.JtX = getNoResultView();
+    this.Jub = true;
+    xJ(true);
+    this.nZM.setAdapter(this.JtY);
+    if (this.JtW != null) {
+      this.JtW.setOnScrollBarTouchListener(this);
     }
-    this.HGh.registerDataSetObserver(new DataSetObserver()
+    this.JtY.registerDataSetObserver(new DataSetObserver()
     {
       public final void onChanged()
       {
         AppMethodBeat.i(142687);
         if (BaseSortView.a(BaseSortView.this) != null) {
-          BaseSortView.a(BaseSortView.this).ch(BaseSortView.b(BaseSortView.this).HGj);
+          BaseSortView.a(BaseSortView.this).ci(BaseSortView.b(BaseSortView.this).Jua);
         }
         AppMethodBeat.o(142687);
       }
     });
-    this.nyo.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.nZM.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(142688);
+        b localb = new b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        a.b("com/tencent/mm/ui/base/sortview/BaseSortView$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
         if (BaseSortView.c(BaseSortView.this) != null) {
           BaseSortView.c(BaseSortView.this).onItemClick(paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
         }
+        a.a(this, "com/tencent/mm/ui/base/sortview/BaseSortView$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(142688);
       }
     });
-    this.nyo.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.nZM.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -86,14 +95,21 @@ public abstract class BaseSortView
         return false;
       }
     });
-    this.nyo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+    this.nZM.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
     {
       public final void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(142690);
+        b localb = new b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        a.b("com/tencent/mm/ui/base/sortview/BaseSortView$4", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
         if (BaseSortView.e(BaseSortView.this) != null) {
           BaseSortView.e(BaseSortView.this).onItemSelected(paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
         }
+        a.a(this, "com/tencent/mm/ui/base/sortview/BaseSortView$4", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(142690);
       }
       
@@ -125,19 +141,19 @@ public abstract class BaseSortView
   
   public abstract boolean a(String paramString, d paramd);
   
-  public final void aPR(String paramString)
+  public final void aVH(String paramString)
   {
     boolean bool2 = true;
     if (this.mMode != 1)
     {
-      ac.w("MicroMsg.BaseSortView", "Can't doFilter successfully out of the search mode.");
+      ad.w("MicroMsg.BaseSortView", "Can't doFilter successfully out of the search mode.");
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
       localArrayList.clear();
-      Iterator localIterator = this.HGj.iterator();
+      Iterator localIterator = this.Jua.iterator();
       while (localIterator.hasNext())
       {
         d locald = (d)localIterator.next();
@@ -148,12 +164,12 @@ public abstract class BaseSortView
     }
     for (int i = 1;; i = 0)
     {
-      paramString = this.nyo;
+      paramString = this.nZM;
       if ((i != 0) && (localArrayList.size() > 0))
       {
         bool1 = true;
         x(paramString, bool1);
-        paramString = this.HGg;
+        paramString = this.JtX;
         if ((i == 0) || (localArrayList.size() > 0)) {
           break label165;
         }
@@ -162,7 +178,7 @@ public abstract class BaseSortView
       for (boolean bool1 = bool2;; bool1 = false)
       {
         x(paramString, bool1);
-        gh(localArrayList);
+        gs(localArrayList);
         return;
         bool1 = false;
         break;
@@ -170,30 +186,30 @@ public abstract class BaseSortView
     }
   }
   
-  public final boolean fjw()
+  public final boolean fzL()
   {
-    return this.HGk;
+    return this.Jub;
   }
   
-  public final void fjx()
+  public final void fzM()
   {
-    this.HGk = false;
-    this.HGh.refresh();
+    this.Jub = false;
+    this.JtY.refresh();
   }
   
   public c getAdapter()
   {
-    return this.HGh;
+    return this.JtY;
   }
   
   public a getDataSetObserver()
   {
-    return this.HGm;
+    return this.Jud;
   }
   
   public List<d> getDatas()
   {
-    return this.HGh.HGj;
+    return this.JtY.Jua;
   }
   
   public abstract c.a getItemViewCreator();
@@ -209,43 +225,43 @@ public abstract class BaseSortView
   
   public AdapterView.OnItemClickListener getOnItemClickListener()
   {
-    return this.auB;
+    return this.awt;
   }
   
   public AdapterView.OnItemLongClickListener getOnItemLongClickListener()
   {
-    return this.HGi;
+    return this.JtZ;
   }
   
   public AdapterView.OnItemSelectedListener getOnItemSelectedListener()
   {
-    return this.Wh;
+    return this.XW;
   }
   
   public abstract VerticalScrollBar getScrollBar();
   
-  public final void gh(List<d> paramList)
+  public final void gs(List<d> paramList)
   {
-    if ((this.mMode == 0) && (this.HGj != paramList))
+    if ((this.mMode == 0) && (this.Jua != paramList))
     {
-      this.HGj.clear();
+      this.Jua.clear();
       if (paramList != null) {
-        this.HGj.addAll(paramList);
+        this.Jua.addAll(paramList);
       }
     }
-    this.HGh.gh(paramList);
+    this.JtY.gs(paramList);
   }
   
   public abstract View inflate();
   
   public void refresh()
   {
-    this.HGh.refresh();
+    this.JtY.refresh();
   }
   
   public void setDataSetObserver(a parama)
   {
-    this.HGm = parama;
+    this.Jud = parama;
   }
   
   public void setMode(int paramInt)
@@ -253,45 +269,45 @@ public abstract class BaseSortView
     if (paramInt == 1)
     {
       this.mMode = 1;
-      aPR("");
+      aVH("");
       return;
     }
     this.mMode = 0;
-    x(this.HGg, false);
-    x(this.nyo, true);
-    gh(this.HGj);
+    x(this.JtX, false);
+    x(this.nZM, true);
+    gs(this.Jua);
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.auB = paramOnItemClickListener;
+    this.awt = paramOnItemClickListener;
   }
   
   public void setOnItemLongClickListener(AdapterView.OnItemLongClickListener paramOnItemLongClickListener)
   {
-    this.HGi = paramOnItemLongClickListener;
+    this.JtZ = paramOnItemLongClickListener;
   }
   
   public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    this.Wh = paramOnItemSelectedListener;
+    this.XW = paramOnItemSelectedListener;
   }
   
-  public final void sn(String paramString)
+  public final void vc(String paramString)
   {
-    int i = this.HGh.aPS(paramString);
+    int i = this.JtY.aVI(paramString);
     if (i >= 0) {
-      this.nyo.setSelection(i);
+      this.nZM.setSelection(i);
     }
   }
   
-  public final void wY(boolean paramBoolean)
+  public final void xJ(boolean paramBoolean)
   {
-    this.HGl = paramBoolean;
+    this.Juc = paramBoolean;
     VerticalScrollBar localVerticalScrollBar;
-    if (this.HGf != null)
+    if (this.JtW != null)
     {
-      localVerticalScrollBar = this.HGf;
+      localVerticalScrollBar = this.JtW;
       if (!paramBoolean) {
         break label29;
       }
@@ -306,7 +322,7 @@ public abstract class BaseSortView
   
   public static abstract interface a
   {
-    public abstract void ch(List<d> paramList);
+    public abstract void ci(List<d> paramList);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.mmsight;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uf;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.g.a.uo;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.y.a;
-import com.tencent.mm.plugin.mmsight.model.a.j;
+import com.tencent.mm.plugin.mmsight.model.a.k;
 import com.tencent.mm.plugin.mmsight.model.n;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
@@ -13,18 +13,18 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class e
-  implements aw
+  implements ax
 {
-  private n uJH;
-  private c uJI;
-  private c uJJ;
+  private n vMN;
+  private c vMO;
+  private c vMP;
   
   public e()
   {
     AppMethodBeat.i(89317);
-    this.uJH = new n();
-    this.uJI = new e.1(this);
-    this.uJJ = new c() {};
+    this.vMN = new n();
+    this.vMO = new c() {};
+    this.vMP = new e.2(this);
     AppMethodBeat.o(89317);
   }
   
@@ -38,19 +38,19 @@ public class e
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(89318);
-    o.aJD().a(this.uJH);
-    a.GpY.b(this.uJJ);
-    a.GpY.c(this.uJI);
+    o.aMO().a(this.vMN);
+    a.IbL.b(this.vMP);
+    a.IbL.c(this.vMO);
     AppMethodBeat.o(89318);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(89319);
-    o.aJD().b(this.uJH);
-    a.GpY.d(this.uJJ);
-    j.uMV.avJ();
-    a.GpY.d(this.uJI);
+    o.aMO().b(this.vMN);
+    a.IbL.d(this.vMP);
+    k.vQc.ayw();
+    a.IbL.d(this.vMO);
     AppMethodBeat.o(89319);
   }
   
@@ -58,7 +58,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,125 +1,140 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.appbrand.page.bt;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.report.model.c;
-import com.tencent.mm.plugin.appbrand.report.model.d;
-import com.tencent.mm.plugin.appbrand.report.model.f;
-import com.tencent.mm.plugin.appbrand.report.model.p;
-import com.tencent.mm.plugin.appbrand.report.model.q;
-import com.tencent.mm.sdk.f.a;
+import com.tencent.mm.plugin.appbrand.ui.v;
+import com.tencent.mm.ui.statusbar.b;
+import d.g.a.a;
+import d.l;
+import d.z;
 
-@SuppressLint({"ViewConstructor"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLoadingSplash;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "isHide", "", "progresDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "animateHide", "", "listener", "Lkotlin/Function0;", "backgroundColor", "color", "", "getView", "Landroid/view/View;", "onAttachedToWindow", "onDetachedFromWindow", "onViewAdded", "child", "setAppInfo", "icon", "", "name", "setProgress", "progress", "plugin-appbrand-integration_release"})
 public final class h
-  extends v
+  extends b
+  implements v
 {
-  public h(j paramj)
+  private boolean dKW;
+  private com.tencent.mm.ui.base.p lOu;
+  
+  public h(Context paramContext)
   {
-    super(a.jg(paramj.mContext), paramj);
-    AppMethodBeat.i(47512);
-    AppMethodBeat.o(47512);
+    super(paramContext);
+    AppMethodBeat.i(50875);
+    L(0, true);
+    setBackgroundColor(0);
+    AppMethodBeat.o(50875);
   }
   
-  public final void OE(String paramString)
+  public final void dV(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(47513);
-    super.OE("__wx__/open-api-redirecting-page");
-    AppMethodBeat.o(47513);
+    AppMethodBeat.i(50874);
+    d.g.b.p.h(paramString1, "icon");
+    d.g.b.p.h(paramString2, "name");
+    AppMethodBeat.o(50874);
   }
   
-  public final f bop()
+  public final View getView()
   {
-    AppMethodBeat.i(47514);
-    f local1 = new f()
+    return (View)this;
+  }
+  
+  public final void onAttachedToWindow()
+  {
+    AppMethodBeat.i(50872);
+    super.onAttachedToWindow();
+    if (this.dKW)
     {
-      private final com.tencent.mm.plugin.appbrand.report.model.h lqW;
-      
-      public final void H(Intent paramAnonymousIntent) {}
-      
-      public final void a(long paramAnonymousLong, bt paramAnonymousbt) {}
-      
-      public final void a(ae paramAnonymousae1, ae paramAnonymousae2, bt paramAnonymousbt)
-      {
-        AppMethodBeat.i(47509);
-        this.lqW.a(paramAnonymousae1, paramAnonymousae2, paramAnonymousbt);
-        AppMethodBeat.o(47509);
-      }
-      
-      public final void bor() {}
-      
-      public final com.tencent.mm.plugin.appbrand.report.model.h bos()
-      {
-        return this.lqW;
-      }
-      
-      public final Intent bot()
-      {
-        return null;
-      }
-      
-      public final p bou()
-      {
-        AppMethodBeat.i(47508);
-        p localp = p.btG();
-        AppMethodBeat.o(47508);
-        return localp;
-      }
-      
-      public final q bov()
-      {
-        AppMethodBeat.i(180319);
-        q localq = q.btH();
-        AppMethodBeat.o(180319);
-        return localq;
-      }
-      
-      public final void bow() {}
-      
-      public final void c(ae paramAnonymousae)
-      {
-        AppMethodBeat.i(47507);
-        d(paramAnonymousae);
-        AppMethodBeat.o(47507);
-      }
-      
-      public final void d(ae paramAnonymousae)
-      {
-        AppMethodBeat.i(47510);
-        this.lqW.d(paramAnonymousae);
-        AppMethodBeat.o(47510);
-      }
-      
-      public final void e(ae paramAnonymousae)
-      {
-        AppMethodBeat.i(47511);
-        this.lqW.e(paramAnonymousae);
-        AppMethodBeat.o(47511);
-      }
-      
-      public final void resetSession() {}
-    };
-    AppMethodBeat.o(47514);
-    return local1;
+      AppMethodBeat.o(50872);
+      return;
+    }
+    Context localContext = getContext();
+    getResources().getString(2131755906);
+    this.lOu = com.tencent.mm.ui.base.h.b(localContext, getResources().getString(2131760709), false, null);
+    AppMethodBeat.o(50872);
   }
   
-  public final ae boq()
+  protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(175007);
-    i locali = new i();
-    AppMethodBeat.o(175007);
-    return locali;
+    AppMethodBeat.i(50873);
+    super.onDetachedFromWindow();
+    com.tencent.mm.ui.base.p localp = this.lOu;
+    if (localp != null)
+    {
+      if (localp.isShowing() == true)
+      {
+        localp = this.lOu;
+        if (localp != null)
+        {
+          localp.dismiss();
+          AppMethodBeat.o(50873);
+        }
+      }
+    }
+    else
+    {
+      AppMethodBeat.o(50873);
+      return;
+    }
+    AppMethodBeat.o(50873);
   }
+  
+  public final void onViewAdded(View paramView)
+  {
+    AppMethodBeat.i(50871);
+    super.onViewAdded(paramView);
+    if (paramView != null)
+    {
+      if (paramView.getId() == 2131296892)
+      {
+        ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+        Object localObject = localLayoutParams;
+        if (!(localLayoutParams instanceof FrameLayout.LayoutParams)) {
+          localObject = null;
+        }
+        localObject = (FrameLayout.LayoutParams)localObject;
+        if (localObject != null) {
+          ((FrameLayout.LayoutParams)localObject).gravity = 17;
+        }
+        paramView.setLayoutParams(paramView.getLayoutParams());
+      }
+      AppMethodBeat.o(50871);
+      return;
+    }
+    AppMethodBeat.o(50871);
+  }
+  
+  public final void setProgress(int paramInt) {}
+  
+  public final void u(a<z> parama)
+  {
+    AppMethodBeat.i(189355);
+    this.dKW = true;
+    com.tencent.mm.ui.base.p localp = this.lOu;
+    if ((localp != null) && (localp.isShowing() == true))
+    {
+      localp = this.lOu;
+      if (localp != null) {
+        localp.dismiss();
+      }
+    }
+    if (parama != null)
+    {
+      parama.invoke();
+      AppMethodBeat.o(189355);
+      return;
+    }
+    AppMethodBeat.o(189355);
+  }
+  
+  public final void ux(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.h
  * JD-Core Version:    0.7.0.1
  */

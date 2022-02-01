@@ -1,94 +1,145 @@
 package com.tencent.mm.storage;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ac;
 
 public final class ca
-  extends j<bz>
-  implements m
 {
-  public static final String[] SQL_CREATE;
-  private final l<m.a, bz> GCe;
-  private e db;
+  public a INb;
+  int INc;
+  int dDp;
+  public String name;
+  int status;
   
-  static
+  public ca()
   {
-    AppMethodBeat.i(117352);
-    SQL_CREATE = new String[] { j.getCreateSQLs(bz.info, "Stranger") };
-    AppMethodBeat.o(117352);
+    this.dDp = 135;
+    this.name = "";
+    this.INb = null;
+    this.INb = null;
+    this.name = "";
+    this.status = 0;
+    this.INc = 0;
   }
   
-  public ca(e parame)
+  public ca(String paramString, boolean paramBoolean, int paramInt)
   {
-    super(parame, bz.info, "Stranger", null);
-    AppMethodBeat.i(117347);
-    this.GCe = new l() {};
-    this.db = parame;
-    AppMethodBeat.o(117347);
-  }
-  
-  private void b(bz parambz)
-  {
-    AppMethodBeat.i(117344);
-    if (this.GCe.dS(parambz)) {
-      this.GCe.doNotify();
-    }
-    AppMethodBeat.o(117344);
-  }
-  
-  public final void a(m.a parama)
-  {
-    AppMethodBeat.i(117345);
-    this.GCe.a(parama, null);
-    AppMethodBeat.o(117345);
-  }
-  
-  public final bz alK(String paramString)
-  {
-    AppMethodBeat.i(117348);
-    if ((paramString == null) || (paramString.length() <= 0))
+    AppMethodBeat.i(43298);
+    this.dDp = 135;
+    this.name = "";
+    this.INb = null;
+    this.INb = new a(paramString);
+    this.name = paramString;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      AppMethodBeat.o(117348);
-      return null;
+      this.status = (i | 0x2);
+      this.INc = paramInt;
+      AppMethodBeat.o(43298);
+      return;
     }
-    bz localbz = new bz();
-    paramString = this.db.a("Stranger", null, "encryptUsername = ?", new String[] { paramString }, null, null, null, 2);
-    if (paramString.moveToFirst()) {
-      localbz.convertFrom(paramString);
-    }
-    paramString.close();
-    AppMethodBeat.o(117348);
-    return localbz;
   }
   
-  public final int alL(String paramString)
+  public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(117349);
-    int i = this.db.delete("Stranger", "(encryptUsername=?)", new String[] { String.valueOf(paramString) });
-    if (i > 0) {
-      doNotify();
+    AppMethodBeat.i(43299);
+    if ((this.dDp & 0x2) != 0)
+    {
+      this.name = paramCursor.getString(1);
+      if (this.INb == null) {
+        this.INb = new a(this.name);
+      }
     }
-    ac.i("MicroMsg.StrangerStorage", "delByEncryptUsername:" + paramString + " result:" + i);
-    AppMethodBeat.o(117349);
-    return i;
+    if ((this.dDp & 0x4) != 0) {
+      this.status = paramCursor.getInt(2);
+    }
+    if ((this.dDp & 0x80) != 0) {
+      this.INc = paramCursor.getInt(7);
+    }
+    AppMethodBeat.o(43299);
   }
   
-  public final void b(m.a parama)
+  public final ContentValues convertTo()
   {
-    AppMethodBeat.i(117346);
-    this.GCe.remove(parama);
-    AppMethodBeat.o(117346);
+    AppMethodBeat.i(43300);
+    ContentValues localContentValues = new ContentValues();
+    if ((this.dDp & 0x2) != 0) {
+      localContentValues.put("name", this.name);
+    }
+    if ((this.dDp & 0x4) != 0) {
+      localContentValues.put("status", Integer.valueOf(this.status));
+    }
+    if ((this.dDp & 0x80) != 0) {
+      localContentValues.put("int_reserved1", Integer.valueOf(this.INc));
+    }
+    AppMethodBeat.o(43300);
+    return localContentValues;
+  }
+  
+  public final boolean fsC()
+  {
+    return (this.status & 0x2) != 0;
+  }
+  
+  public final boolean fsD()
+  {
+    return this.INc == 1;
+  }
+  
+  public final boolean isEnable()
+  {
+    return (this.status & 0x1) != 0;
+  }
+  
+  public final void setEnable(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      int j = this.status;
+      if (paramBoolean) {}
+      for (int i = 1;; i = 0)
+      {
+        this.status = (i | j);
+        return;
+      }
+    }
+    this.status &= 0xFFFFFFFE;
+  }
+  
+  public static final class a
+  {
+    private String EFF;
+    private String dDy;
+    
+    public a(String paramString)
+    {
+      AppMethodBeat.i(43297);
+      int i = paramString.indexOf("@");
+      if (i >= 0)
+      {
+        this.dDy = paramString.substring(0, i);
+        this.EFF = paramString.substring(i);
+        AppMethodBeat.o(43297);
+        return;
+      }
+      this.dDy = paramString;
+      this.EFF = "";
+      AppMethodBeat.o(43297);
+    }
+    
+    public final String aUs(String paramString)
+    {
+      if (this.EFF != null) {
+        paramString = this.EFF;
+      }
+      return paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.ca
  * JD-Core Version:    0.7.0.1
  */

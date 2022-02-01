@@ -1,13 +1,29 @@
 package com.tencent.mm.pluginsdk;
 
-import android.content.Intent;
+import android.content.Context;
+import android.view.View;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.protobuf.css;
+import com.tencent.mm.pluginsdk.ui.applet.y.a;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.widget.a.d;
 
 public abstract interface j
   extends a
 {
-  public abstract void a(Intent paramIntent, css paramcss, int paramInt);
+  public abstract o a(s params, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, y.a parama);
+  
+  public abstract d a(Context paramContext, String paramString1, View paramView, String paramString2, y.a parama);
+  
+  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, y.a parama);
+  
+  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, y.a parama);
+  
+  public abstract void a(s params, String paramString1, String paramString2, String paramString3, y.a parama);
+  
+  public abstract d b(s params, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, y.a parama);
+  
+  public abstract void b(Context paramContext, String paramString1, String paramString2, String paramString3, y.a parama);
 }
 
 

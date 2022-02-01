@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public final class d
   extends m
 {
-  public k Dcu;
+  public k EGu;
   
   public d(String paramString1, String paramString2)
   {
@@ -36,7 +36,7 @@ public final class d
   {
     boolean bool = true;
     AppMethodBeat.i(72304);
-    ac.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    ad.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(72304);
@@ -48,23 +48,23 @@ public final class d
       String str;
       try
       {
-        this.Dcu = new k();
-        this.Dcu.Dcy = paramJSONObject.optInt("credit_state");
-        this.Dcu.Dct = (paramJSONObject.optInt("credit_amount") / 100.0D);
-        this.Dcu.Dcz = (paramJSONObject.optInt("credit_usable") / 100.0D);
-        this.Dcu.DcA = (paramJSONObject.optInt("bill_amount") / 100.0D);
-        this.Dcu.DcB = paramJSONObject.optInt("bill_date");
-        this.Dcu.DcC = (paramJSONObject.optInt("repay_amount") / 100.0D);
-        this.Dcu.DcD = (paramJSONObject.optInt("repay_minimum") / 100.0D);
-        paramString = this.Dcu;
+        this.EGu = new k();
+        this.EGu.EGy = paramJSONObject.optInt("credit_state");
+        this.EGu.EGt = (paramJSONObject.optInt("credit_amount") / 100.0D);
+        this.EGu.EGz = (paramJSONObject.optInt("credit_usable") / 100.0D);
+        this.EGu.EGA = (paramJSONObject.optInt("bill_amount") / 100.0D);
+        this.EGu.EGB = paramJSONObject.optInt("bill_date");
+        this.EGu.EGC = (paramJSONObject.optInt("repay_amount") / 100.0D);
+        this.EGu.EGD = (paramJSONObject.optInt("repay_minimum") / 100.0D);
+        paramString = this.EGu;
         if (paramJSONObject.optInt("upgrade_amount") != 1) {
           break label525;
         }
-        paramString.DcE = bool;
-        this.Dcu.DcF = paramJSONObject.optInt("bill_month");
-        this.Dcu.DcG = paramJSONObject.optString("repay_url");
-        this.Dcu.DcH = paramJSONObject.optString("repay_lasttime");
-        this.Dcu.DcK = paramJSONObject.optString("lasttime");
+        paramString.EGE = bool;
+        this.EGu.EGF = paramJSONObject.optInt("bill_month");
+        this.EGu.EGG = paramJSONObject.optString("repay_url");
+        this.EGu.EGH = paramJSONObject.optString("repay_lasttime");
+        this.EGu.EGK = paramJSONObject.optString("lasttime");
         paramString = paramJSONObject.getJSONArray("jump_url_array");
         if ((paramString == null) || (paramString.length() <= 0)) {
           break label423;
@@ -77,34 +77,34 @@ public final class d
         localJSONObject = paramString.getJSONObject(paramInt);
         str = localJSONObject.getString("jump_name");
         if ("account_rights_url".equals(str)) {
-          this.Dcu.DcJ = localJSONObject.getString("jump_url");
+          this.EGu.EGJ = localJSONObject.getString("jump_url");
         } else if ("bill_url".equals(str)) {
-          this.Dcu.wLj = localJSONObject.getString("jump_url");
+          this.EGu.xYQ = localJSONObject.getString("jump_url");
         }
       }
       catch (Exception paramString)
       {
-        ac.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
+        ad.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
         AppMethodBeat.o(72304);
         return;
       }
       if ("card_detail_url".equals(str))
       {
-        this.Dcu.DcI = localJSONObject.getString("jump_url");
+        this.EGu.EGI = localJSONObject.getString("jump_url");
       }
       else if ("know_more_url".equals(str))
       {
-        this.Dcu.DcL = localJSONObject.getString("jump_url");
+        this.EGu.EGL = localJSONObject.getString("jump_url");
         break label518;
         label423:
         paramString = paramJSONObject.getJSONObject("appservice");
         if (paramString != null)
         {
-          this.Dcu.DcM = new j();
-          this.Dcu.DcM.Dcx = paramString.getString("app_telephone");
-          this.Dcu.DcM.nickname = paramString.getString("nickname");
-          this.Dcu.DcM.username = paramString.getString("username");
-          this.Dcu.DcM.url = paramString.getString("jump_url");
+          this.EGu.EGM = new j();
+          this.EGu.EGM.EGx = paramString.getString("app_telephone");
+          this.EGu.EGM.nickname = paramString.getString("nickname");
+          this.EGu.EGM.username = paramString.getString("username");
+          this.EGu.EGM.url = paramString.getString("jump_url");
         }
         AppMethodBeat.o(72304);
         return;

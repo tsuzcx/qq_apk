@@ -10,12 +10,12 @@ public enum g
   static
   {
     AppMethodBeat.i(46297);
-    kqM = new g("OK", 0, 0, "ok");
-    kqN = new g("SYSTEM_ERROR", 1, -1, "fail system error");
-    kqO = new g("CGI_ERROR", 2, -2, "fail CGI error");
-    kqP = new g("CANCEL", 3, -3, "fail cancel");
-    kqQ = new g("INVALID_BUSINESS_TYPE", 4, -4, "fail invalid businessType");
-    kqR = new g[] { kqM, kqN, kqO, kqP, kqQ };
+    kMi = new g("OK", 0, 0, "ok");
+    kMj = new g("SYSTEM_ERROR", 1, -1, "fail system error");
+    kMk = new g("CGI_ERROR", 2, -2, "fail CGI error");
+    kMl = new g("CANCEL", 3, -3, "fail cancel");
+    kMm = new g("INVALID_BUSINESS_TYPE", 4, -4, "fail invalid businessType");
+    kMn = new g[] { kMi, kMj, kMk, kMl, kMm };
     AppMethodBeat.o(46297);
   }
   

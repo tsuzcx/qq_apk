@@ -7,12 +7,10 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.plugin.setting.model.l;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -23,35 +21,35 @@ public class SettingsPluginsNotifyUI
   private f screen;
   private int state;
   
-  private void NE(int paramInt)
+  private void Ph(int paramInt)
   {
     AppMethodBeat.i(74332);
     this.state = paramInt;
     if ((this.state == 1) || (this.state == 0))
     {
-      g.agR().agA().set(8200, Boolean.TRUE);
+      g.ajC().ajl().set(8200, Boolean.TRUE);
       if (this.state == 1)
       {
-        g.agR().agA().set(8201, Integer.valueOf(22));
-        g.agR().agA().set(8208, Integer.valueOf(8));
-        ((k)g.ab(k.class)).awA().c(new l(true, 22, 8));
+        g.ajC().ajl().set(8201, Integer.valueOf(22));
+        g.ajC().ajl().set(8208, Integer.valueOf(8));
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new com.tencent.mm.plugin.setting.model.l(true, 22, 8));
       }
     }
     for (;;)
     {
-      dCr();
+      dNV();
       AppMethodBeat.o(74332);
       return;
-      g.agR().agA().set(8201, Integer.valueOf(0));
-      g.agR().agA().set(8208, Integer.valueOf(0));
-      ((k)g.ab(k.class)).awA().c(new l(true, 0, 0));
+      g.ajC().ajl().set(8201, Integer.valueOf(0));
+      g.ajC().ajl().set(8208, Integer.valueOf(0));
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new com.tencent.mm.plugin.setting.model.l(true, 0, 0));
       continue;
-      g.agR().agA().set(8200, Boolean.FALSE);
-      ((k)g.ab(k.class)).awA().c(new l());
+      g.ajC().ajl().set(8200, Boolean.FALSE);
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new com.tencent.mm.plugin.setting.model.l());
     }
   }
   
-  private void dCr()
+  private void dNV()
   {
     AppMethodBeat.i(74331);
     this.screen.removeAll();
@@ -110,12 +108,9 @@ public class SettingsPluginsNotifyUI
   public void initView()
   {
     AppMethodBeat.i(74333);
-    g.agS();
-    Boolean localBoolean = Boolean.valueOf(bs.l((Boolean)g.agR().agA().get(8200, null)));
-    g.agS();
-    int j = bs.a((Integer)g.agR().agA().get(8201, null), 22);
-    g.agS();
-    int k = bs.a((Integer)g.agR().agA().get(8208, null), 8);
+    Boolean localBoolean = Boolean.valueOf(u.aAM());
+    int j = u.aAW();
+    int k = u.aAX();
     int i;
     if (localBoolean.booleanValue()) {
       if (j == k) {
@@ -124,7 +119,7 @@ public class SettingsPluginsNotifyUI
     }
     for (this.state = i;; this.state = 2)
     {
-      ac.d("ui.settings.SettingsPlugingsNotify", localBoolean + "st " + j + " ed " + k + "  state " + this.state);
+      ad.d("ui.settings.SettingsPlugingsNotify", localBoolean + "st " + j + " ed " + k + "  state " + this.state);
       this.state = this.state;
       this.screen = getPreferenceScreen();
       setMMTitle(2131763353);
@@ -159,13 +154,13 @@ public class SettingsPluginsNotifyUI
     AppMethodBeat.i(74330);
     paramf = paramPreference.mKey;
     if (paramf.equals("settings_plugings_disturb_on")) {
-      NE(0);
+      Ph(0);
     }
     if (paramf.equals("settings_plugings_disturb_on_night")) {
-      NE(1);
+      Ph(1);
     }
     if (paramf.equals("settings_plugings_disturb_off")) {
-      NE(2);
+      Ph(2);
     }
     AppMethodBeat.o(74330);
     return false;
@@ -175,7 +170,7 @@ public class SettingsPluginsNotifyUI
   {
     AppMethodBeat.i(74329);
     super.onResume();
-    dCr();
+    dNV();
     AppMethodBeat.o(74329);
   }
   

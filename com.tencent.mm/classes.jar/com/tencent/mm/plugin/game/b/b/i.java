@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.game.b.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public int Height;
   public int Width;
-  public int sVK;
-  public String sVL;
-  public String sVM;
-  public boolean sVN;
-  public int sVO;
-  public long sVP;
-  public int sVQ;
+  public int tSp;
+  public String tSq;
+  public String tSr;
+  public boolean tSs;
+  public int tSt;
+  public long tSu;
+  public int tSv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -21,48 +21,48 @@ public final class i
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.sVK);
-      if (this.sVL != null) {
-        paramVarArgs.d(2, this.sVL);
+      paramVarArgs.aS(1, this.tSp);
+      if (this.tSq != null) {
+        paramVarArgs.d(2, this.tSq);
       }
-      if (this.sVM != null) {
-        paramVarArgs.d(3, this.sVM);
+      if (this.tSr != null) {
+        paramVarArgs.d(3, this.tSr);
       }
-      paramVarArgs.aR(4, this.Width);
-      paramVarArgs.aR(5, this.Height);
-      paramVarArgs.bl(6, this.sVN);
-      paramVarArgs.aR(7, this.sVO);
-      paramVarArgs.aO(8, this.sVP);
-      paramVarArgs.aR(9, this.sVQ);
+      paramVarArgs.aS(4, this.Width);
+      paramVarArgs.aS(5, this.Height);
+      paramVarArgs.bt(6, this.tSs);
+      paramVarArgs.aS(7, this.tSt);
+      paramVarArgs.aY(8, this.tSu);
+      paramVarArgs.aS(9, this.tSv);
       AppMethodBeat.o(40875);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.sVK) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.tSp) + 0;
       paramInt = i;
-      if (this.sVL != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.sVL);
+      if (this.tSq != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.tSq);
       }
       i = paramInt;
-      if (this.sVM != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.sVM);
+      if (this.tSr != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.tSr);
       }
-      paramInt = f.a.a.b.b.a.bx(4, this.Width);
-      int j = f.a.a.b.b.a.bx(5, this.Height);
-      int k = f.a.a.b.b.a.fK(6);
-      int m = f.a.a.b.b.a.bx(7, this.sVO);
-      int n = f.a.a.b.b.a.p(8, this.sVP);
-      int i1 = f.a.a.b.b.a.bx(9, this.sVQ);
+      paramInt = f.a.a.b.b.a.bz(4, this.Width);
+      int j = f.a.a.b.b.a.bz(5, this.Height);
+      int k = f.a.a.b.b.a.alV(6);
+      int m = f.a.a.b.b.a.bz(7, this.tSt);
+      int n = f.a.a.b.b.a.p(8, this.tSu);
+      int i1 = f.a.a.b.b.a.bz(9, this.tSv);
       AppMethodBeat.o(40875);
-      return i + paramInt + j + (k + 1) + m + n + i1;
+      return i + paramInt + j + k + m + n + i1;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(40875);
@@ -78,39 +78,39 @@ public final class i
         AppMethodBeat.o(40875);
         return -1;
       case 1: 
-        locali.sVK = locala.LVo.xF();
+        locali.tSp = locala.NPN.zc();
         AppMethodBeat.o(40875);
         return 0;
       case 2: 
-        locali.sVL = locala.LVo.readString();
+        locali.tSq = locala.NPN.readString();
         AppMethodBeat.o(40875);
         return 0;
       case 3: 
-        locali.sVM = locala.LVo.readString();
+        locali.tSr = locala.NPN.readString();
         AppMethodBeat.o(40875);
         return 0;
       case 4: 
-        locali.Width = locala.LVo.xF();
+        locali.Width = locala.NPN.zc();
         AppMethodBeat.o(40875);
         return 0;
       case 5: 
-        locali.Height = locala.LVo.xF();
+        locali.Height = locala.NPN.zc();
         AppMethodBeat.o(40875);
         return 0;
       case 6: 
-        locali.sVN = locala.LVo.fZX();
+        locali.tSs = locala.NPN.grw();
         AppMethodBeat.o(40875);
         return 0;
       case 7: 
-        locali.sVO = locala.LVo.xF();
+        locali.tSt = locala.NPN.zc();
         AppMethodBeat.o(40875);
         return 0;
       case 8: 
-        locali.sVP = locala.LVo.xG();
+        locali.tSu = locala.NPN.zd();
         AppMethodBeat.o(40875);
         return 0;
       }
-      locali.sVQ = locala.LVo.xF();
+      locali.tSv = locala.NPN.zc();
       AppMethodBeat.o(40875);
       return 0;
     }
@@ -120,7 +120,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.b.b.i
  * JD-Core Version:    0.7.0.1
  */

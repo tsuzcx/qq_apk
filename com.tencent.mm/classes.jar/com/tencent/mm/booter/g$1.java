@@ -1,17 +1,17 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class g$1
-  implements g
+  implements f
 {
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(131928);
-    ac.i("MicroMsg.NotifySyncMgr", "onGYNetEnd: %d [%d,%d,%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ad.i("MicroMsg.NotifySyncMgr", "onGYNetEnd: %d [%d,%d,%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     AppMethodBeat.o(131928);
   }
 }

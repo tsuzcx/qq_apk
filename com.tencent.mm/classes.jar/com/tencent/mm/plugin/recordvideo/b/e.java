@@ -2,53 +2,53 @@ package com.tencent.mm.plugin.recordvideo.b;
 
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.j.e.a;
+import com.tencent.mm.media.k.e.a;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/config/ImageToVideoConfig;", "", "()V", "CheckRemuxFlag", "", "getCheckRemuxFlag", "()Z", "setCheckRemuxFlag", "(Z)V", "FrameRate", "", "getFrameRate", "()I", "setFrameRate", "(I)V", "Height", "getHeight", "setHeight", "IFrameInterval", "getIFrameInterval", "setIFrameInterval", "MaxSize", "RemuxFlag", "getRemuxFlag", "setRemuxFlag", "VIDEO_DURATION", "getVIDEO_DURATION", "Width", "getWidth", "setWidth", "maxSize", "getMaxSize", "getScaleSize", "Landroid/graphics/Point;", "origWidth", "origHeight", "setupWindowSize", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/config/ImageToVideoConfig;", "", "()V", "CheckRemuxFlag", "", "getCheckRemuxFlag", "()Z", "setCheckRemuxFlag", "(Z)V", "FrameRate", "", "getFrameRate", "()I", "setFrameRate", "(I)V", "Height", "getHeight", "setHeight", "IFrameInterval", "getIFrameInterval", "setIFrameInterval", "MaxSize", "RemuxFlag", "getRemuxFlag", "setRemuxFlag", "VIDEO_DURATION", "getVIDEO_DURATION", "Width", "getWidth", "setWidth", "maxSize", "getMaxSize", "getScaleSize", "Landroid/graphics/Point;", "origWidth", "origHeight", "setupWindowSize", "plugin-recordvideo_release"})
 public final class e
 {
   private static int Height = 0;
   private static int Width = 0;
-  private static final int wpm = 15000;
-  private static int wpn;
-  private static int wpo;
-  private static int wpp;
-  private static boolean wpq;
-  private static boolean wpr;
-  public static final e wps;
+  private static final int xxc = 15000;
+  private static int xxd;
+  private static int xxe;
+  private static int xxf;
+  private static boolean xxg;
+  private static boolean xxh;
+  public static final e xxi;
   
   static
   {
     AppMethodBeat.i(75372);
-    wps = new e();
-    wpm = 15000;
-    wpn = 15;
-    wpo = 10;
-    wpq = true;
+    xxi = new e();
+    xxc = 15000;
+    xxd = 15;
+    xxe = 10;
+    xxg = true;
     AppMethodBeat.o(75372);
   }
   
-  public static int duT()
+  public static int dFo()
   {
-    return wpm;
+    return xxc;
   }
   
-  public static boolean duU()
+  public static boolean dFp()
   {
-    return wpq;
+    return xxg;
   }
   
-  public static boolean duV()
+  public static boolean dFq()
   {
-    return wpr;
+    return xxh;
   }
   
   public static int getFrameRate()
   {
-    return wpn;
+    return xxd;
   }
   
   public static int getHeight()
@@ -61,40 +61,40 @@ public final class e
     return Width;
   }
   
-  public static void pk(boolean paramBoolean)
+  public static void pH(boolean paramBoolean)
   {
-    wpq = paramBoolean;
+    xxg = paramBoolean;
   }
   
-  public static void pl(boolean paramBoolean)
+  public static void pI(boolean paramBoolean)
   {
-    wpr = paramBoolean;
+    xxh = paramBoolean;
   }
   
-  public final Point duW()
+  public final Point dFr()
   {
     try
     {
       AppMethodBeat.i(75371);
       if ((Width <= 0) || (Height <= 0))
       {
-        localObject1 = com.tencent.mm.modelcontrol.d.aDL();
-        k.g(localObject1, "SubCoreVideoControl.getCore()");
-        localObject1 = ((com.tencent.mm.modelcontrol.d)localObject1).aDP();
+        localObject1 = com.tencent.mm.modelcontrol.d.aGQ();
+        p.g(localObject1, "SubCoreVideoControl.getCore()");
+        localObject1 = ((com.tencent.mm.modelcontrol.d)localObject1).aGU();
         int k = ((VideoTransPara)localObject1).width;
-        e.a locala = com.tencent.mm.media.j.e.gWS;
-        int j = e.a.nq(((VideoTransPara)localObject1).width);
+        e.a locala = com.tencent.mm.media.k.e.hoY;
+        int j = e.a.nP(((VideoTransPara)localObject1).width);
         int i = j;
         if (j % 16 != 0) {
-          i = com.tencent.mm.plugin.mmsight.d.IJ(j);
+          i = com.tencent.mm.plugin.mmsight.d.Kg(j);
         }
         j = k;
         if (k % 16 != 0) {
-          j = com.tencent.mm.plugin.mmsight.d.IJ(k);
+          j = com.tencent.mm.plugin.mmsight.d.Kg(k);
         }
         Width = j;
         Height = i;
-        wpp = Width;
+        xxf = Width;
       }
       Object localObject1 = new Point(Width, Height);
       AppMethodBeat.o(75371);
@@ -106,10 +106,10 @@ public final class e
   public final int getMaxSize()
   {
     AppMethodBeat.i(75370);
-    if (wpp <= 0) {
-      duW();
+    if (xxf <= 0) {
+      dFr();
     }
-    int i = wpp;
+    int i = xxf;
     AppMethodBeat.o(75370);
     return i;
   }

@@ -9,7 +9,7 @@ public abstract class d<T>
     try
     {
       if (this.mInstance == null) {
-        this.mInstance = ou();
+        this.mInstance = oM();
       }
       Object localObject1 = this.mInstance;
       return localObject1;
@@ -17,11 +17,11 @@ public abstract class d<T>
     finally {}
   }
   
-  protected abstract T ou();
+  protected abstract T oM();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.c.d
  * JD-Core Version:    0.7.0.1
  */

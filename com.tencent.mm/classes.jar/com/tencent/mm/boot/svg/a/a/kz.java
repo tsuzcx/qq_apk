@@ -45,7 +45,7 @@ public final class kz
       c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-5066062);
+      localPaint.setColor(-1);
       localObject = c.n(paramVarArgs);
       ((Path)localObject).moveTo(15.8F, 8.795279F);
       ((Path)localObject).lineTo(15.8F, 1.2F);
@@ -88,7 +88,7 @@ public final class kz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.kz
  * JD-Core Version:    0.7.0.1
  */

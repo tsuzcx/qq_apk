@@ -10,13 +10,13 @@ final class LuckyMoneyPrepareUI$23
   public final void run()
   {
     AppMethodBeat.i(65852);
-    this.uyl.finish();
+    this.vAO.finish();
     AppMethodBeat.o(65852);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyPrepareUI.23
  * JD-Core Version:    0.7.0.1
  */

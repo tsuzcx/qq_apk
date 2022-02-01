@@ -11,10 +11,9 @@ import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.f;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import java.util.Iterator;
 import java.util.List;
@@ -31,9 +30,9 @@ public final class JsApiFetchSendingAndFailProfileFeed
     extends MainProcessTask
   {
     public static final Parcelable.Creator<FetchSendingAndFailProfileFeedTask> CREATOR;
-    private int jOT;
-    private q jiP;
-    private String krS;
+    private q jCl;
+    private String kNo;
+    private int kje;
     
     static
     {
@@ -44,8 +43,8 @@ public final class JsApiFetchSendingAndFailProfileFeed
     
     public FetchSendingAndFailProfileFeedTask(int paramInt, q paramq)
     {
-      this.jOT = paramInt;
-      this.jiP = paramq;
+      this.kje = paramInt;
+      this.jCl = paramq;
     }
     
     public FetchSendingAndFailProfileFeedTask(Parcel paramParcel)
@@ -55,15 +54,15 @@ public final class JsApiFetchSendingAndFailProfileFeed
       AppMethodBeat.o(163931);
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       AppMethodBeat.i(163934);
-      h.JZN.f(new Runnable()
+      h.LTJ.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(163930);
-          Object localObject = ((PluginFinder)g.ad(PluginFinder.class)).getFeedStorage().cAy();
+          Object localObject = ((PluginFinder)g.ad(PluginFinder.class)).getFeedStorage().cIt();
           JSONArray localJSONArray = new JSONArray();
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
@@ -88,12 +87,12 @@ public final class JsApiFetchSendingAndFailProfileFeed
       AppMethodBeat.o(163934);
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(163935);
       try
       {
-        localJSONObject1 = new JSONObject(this.krS);
+        localJSONObject1 = new JSONObject(this.kNo);
         localJSONArray = localJSONObject1.optJSONArray("data");
         if (localJSONArray == null) {
           break label269;
@@ -114,7 +113,7 @@ public final class JsApiFetchSendingAndFailProfileFeed
           String str;
           com.tencent.mm.plugin.appbrand.z.i locali;
           label269:
-          this.krS = a.a(localException.getMessage(), -1, new JSONArray());
+          this.kNo = a.a(localException.getMessage(), -1, new JSONArray());
           continue;
           j += 1;
           continue;
@@ -144,17 +143,17 @@ public final class JsApiFetchSendingAndFailProfileFeed
         {
           localObject2 = localJSONObject2.optString("url");
           str = localJSONObject2.optString("thumbUrl");
-          if ((!bs.isNullOrNil((String)localObject2)) && (!((String)localObject2).startsWith("http")))
+          if ((!bt.isNullOrNil((String)localObject2)) && (!((String)localObject2).startsWith("http")))
           {
             locali = new com.tencent.mm.plugin.appbrand.z.i();
-            if (this.jiP.DH().a(new e((String)localObject2), null, false, locali) == l.jsB) {
+            if (this.jCl.Fg().a(new e((String)localObject2), null, false, locali) == l.jMv) {
               localJSONObject2.put("url", locali.value);
             }
           }
-          if ((!bs.isNullOrNil(str)) && (!str.startsWith("http")))
+          if ((!bt.isNullOrNil(str)) && (!str.startsWith("http")))
           {
             localObject2 = new com.tencent.mm.plugin.appbrand.z.i();
-            if (this.jiP.DH().a(new e(str), null, false, (com.tencent.mm.plugin.appbrand.z.i)localObject2) == l.jsB) {
+            if (this.jCl.Fg().a(new e(str), null, false, (com.tencent.mm.plugin.appbrand.z.i)localObject2) == l.jMv) {
               localJSONObject2.put("thumbUrl", ((com.tencent.mm.plugin.appbrand.z.i)localObject2).value);
             }
           }
@@ -162,10 +161,10 @@ public final class JsApiFetchSendingAndFailProfileFeed
       }
       else
       {
-        this.krS = localJSONObject1.toString();
-        ac.i("MicroMsg.Finder.JsApiFetchSendingAndFailProfileFeed", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.jiP.getAppId(), this.krS, Integer.valueOf(this.jOT), Boolean.valueOf(this.jiP.isRunning()) });
-        this.jiP.h(this.jOT, this.krS);
-        bek();
+        this.kNo = localJSONObject1.toString();
+        ad.i("MicroMsg.Finder.JsApiFetchSendingAndFailProfileFeed", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.jCl.getAppId(), this.kNo, Integer.valueOf(this.kje), Boolean.valueOf(this.jCl.isRunning()) });
+        this.jCl.h(this.kje, this.kNo);
+        bhO();
         AppMethodBeat.o(163935);
         return;
       }
@@ -174,14 +173,14 @@ public final class JsApiFetchSendingAndFailProfileFeed
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(163932);
-      this.krS = paramParcel.readString();
+      this.kNo = paramParcel.readString();
       AppMethodBeat.o(163932);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(163933);
-      paramParcel.writeString(this.krS);
+      paramParcel.writeString(this.kNo);
       AppMethodBeat.o(163933);
     }
   }

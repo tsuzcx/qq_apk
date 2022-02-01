@@ -12,54 +12,55 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class a
   extends FrameLayout
   implements View.OnClickListener, f
 {
-  private final ao mHandler;
-  private TextView mMg;
-  private final Runnable mMh;
-  private ViewPropertyAnimator mMi;
-  ViewPropertyAnimator mMj;
+  private final ap mHandler;
+  private TextView nmC;
+  private final Runnable nmD;
+  private ViewPropertyAnimator nmE;
+  ViewPropertyAnimator nmF;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(135488);
-    this.mMh = new Runnable()
+    this.nmD = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(135483);
         a locala = a.this;
-        if ((locala.getAlpha() == 0.0F) || (locala.mMj != null))
+        if ((locala.getAlpha() == 0.0F) || (locala.nmF != null))
         {
           AppMethodBeat.o(135483);
           return;
         }
         locala.animate().cancel();
         ViewPropertyAnimator localViewPropertyAnimator = locala.animate();
-        locala.mMj = localViewPropertyAnimator;
+        locala.nmF = localViewPropertyAnimator;
         localViewPropertyAnimator.alpha(0.0F).setListener(new a.3(locala)).start();
         AppMethodBeat.o(135483);
       }
     };
-    this.mHandler = new ao(Looper.getMainLooper());
+    this.mHandler = new ap(Looper.getMainLooper());
     LayoutInflater.from(paramContext).inflate(2131493060, this, true);
-    this.mMg = ((TextView)findViewById(2131305902));
+    this.nmC = ((TextView)findViewById(2131305902));
     setOnClickListener(this);
     AppMethodBeat.o(135488);
   }
   
-  public final void Sd(String paramString)
+  public final void VA(String paramString)
   {
     AppMethodBeat.i(135489);
-    this.mMg.setText(paramString);
-    this.mHandler.removeCallbacks(this.mMh);
-    this.mHandler.postDelayed(this.mMh, mMu);
-    if ((getAlpha() == 1.0F) || (this.mMi != null))
+    this.nmC.setText(paramString);
+    this.mHandler.removeCallbacks(this.nmD);
+    this.mHandler.postDelayed(this.nmD, nmQ);
+    if ((getAlpha() == 1.0F) || (this.nmE != null))
     {
       AppMethodBeat.o(135489);
       return;
@@ -67,7 +68,7 @@ public final class a
     setVisibility(0);
     animate().cancel();
     paramString = animate();
-    this.mMi = paramString;
+    this.nmE = paramString;
     paramString.alpha(1.0F).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
@@ -98,12 +99,16 @@ public final class a
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(135491);
+    b localb = new b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/prompt/AppBrandNewBanAlert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/prompt/AppBrandNewBanAlert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(135491);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.e.a
  * JD-Core Version:    0.7.0.1
  */

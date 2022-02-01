@@ -70,9 +70,9 @@ public final class VectorHeatOverlayOptions
   
   public final VectorHeatOverlayOptions.VectorHeatOverlayType getType()
   {
-    AppMethodBeat.i(191301);
+    AppMethodBeat.i(195101);
     VectorHeatOverlayOptions.VectorHeatOverlayType localVectorHeatOverlayType = VectorHeatOverlayOptions.VectorHeatOverlayType.values()[this.mType];
-    AppMethodBeat.o(191301);
+    AppMethodBeat.o(195101);
     return localVectorHeatOverlayType;
   }
   
@@ -119,9 +119,9 @@ public final class VectorHeatOverlayOptions
   
   public final VectorHeatOverlayOptions type(VectorHeatOverlayOptions.VectorHeatOverlayType paramVectorHeatOverlayType)
   {
-    AppMethodBeat.i(191302);
+    AppMethodBeat.i(195102);
     this.mType = paramVectorHeatOverlayType.ordinal();
-    AppMethodBeat.o(191302);
+    AppMethodBeat.o(195102);
     return this;
   }
   
@@ -133,7 +133,7 @@ public final class VectorHeatOverlayOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.VectorHeatOverlayOptions
  * JD-Core Version:    0.7.0.1
  */

@@ -25,64 +25,64 @@ class c
   extends DataSetObservable
 {
   static final String LOG_TAG = c.class.getSimpleName();
-  private static final Object ahc = new Object();
-  private static final Map<String, c> ahd = new HashMap();
-  final Object ahe;
-  final List<a> ahf;
-  private final List<c> ahg;
-  final String ahh;
-  private b ahi;
-  private int ahj;
-  boolean ahk;
-  private boolean ahl;
-  private boolean ahm;
-  private boolean ahn;
-  private d aho;
+  private static final Object aiT = new Object();
+  private static final Map<String, c> aiU = new HashMap();
+  final Object aiV;
+  final List<a> aiW;
+  private final List<c> aiX;
+  final String aiY;
+  private b aiZ;
+  private int aja;
+  boolean ajb;
+  private boolean ajc;
+  private boolean ajd;
+  private boolean aje;
+  private d ajf;
   final Context mContext;
   private Intent mIntent;
   
-  private void ip()
+  private void iF()
   {
-    if (!this.ahl) {
+    if (!this.ajc) {
       throw new IllegalStateException("No preceding call to #readHistoricalData");
     }
-    if (!this.ahm) {}
+    if (!this.ajd) {}
     do
     {
       return;
-      this.ahm = false;
-    } while (TextUtils.isEmpty(this.ahh));
-    new e().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Object[] { new ArrayList(this.ahg), this.ahh });
+      this.ajd = false;
+    } while (TextUtils.isEmpty(this.aiY));
+    new e().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Object[] { new ArrayList(this.aiX), this.aiY });
   }
   
-  private boolean ir()
+  private boolean iH()
   {
-    if ((this.ahi != null) && (this.mIntent != null) && (!this.ahf.isEmpty()) && (!this.ahg.isEmpty()))
+    if ((this.aiZ != null) && (this.mIntent != null) && (!this.aiW.isEmpty()) && (!this.aiX.isEmpty()))
     {
-      Collections.unmodifiableList(this.ahg);
+      Collections.unmodifiableList(this.aiX);
       return true;
     }
     return false;
   }
   
-  private boolean is()
+  private boolean iI()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.ahn)
+    if (this.aje)
     {
       bool1 = bool2;
       if (this.mIntent != null)
       {
-        this.ahn = false;
-        this.ahf.clear();
+        this.aje = false;
+        this.aiW.clear();
         List localList = this.mContext.getPackageManager().queryIntentActivities(this.mIntent, 0);
         int j = localList.size();
         int i = 0;
         while (i < j)
         {
           ResolveInfo localResolveInfo = (ResolveInfo)localList.get(i);
-          this.ahf.add(new a(localResolveInfo));
+          this.aiW.add(new a(localResolveInfo));
           i += 1;
         }
         bool1 = true;
@@ -91,43 +91,43 @@ class c
     return bool1;
   }
   
-  private boolean it()
+  private boolean iJ()
   {
-    if ((this.ahk) && (this.ahm) && (!TextUtils.isEmpty(this.ahh)))
+    if ((this.ajb) && (this.ajd) && (!TextUtils.isEmpty(this.aiY)))
     {
-      this.ahk = false;
-      this.ahl = true;
-      iv();
+      this.ajb = false;
+      this.ajc = true;
+      iL();
       return true;
     }
     return false;
   }
   
-  private void iu()
+  private void iK()
   {
-    int j = this.ahg.size() - this.ahj;
+    int j = this.aiX.size() - this.aja;
     if (j <= 0) {}
     for (;;)
     {
       return;
-      this.ahm = true;
+      this.ajd = true;
       int i = 0;
       while (i < j)
       {
-        this.ahg.remove(0);
+        this.aiX.remove(0);
         i += 1;
       }
     }
   }
   
   /* Error */
-  private void iv()
+  private void iL()
   {
     // Byte code:
     //   0: aload_0
     //   1: getfield 137	android/support/v7/widget/c:mContext	Landroid/content/Context;
     //   4: aload_0
-    //   5: getfield 85	android/support/v7/widget/c:ahh	Ljava/lang/String;
+    //   5: getfield 85	android/support/v7/widget/c:aiY	Ljava/lang/String;
     //   8: invokevirtual 188	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
     //   11: astore_2
     //   12: invokestatic 194	android/util/Xml:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
@@ -164,7 +164,7 @@ class c
     //   76: ldc 222
     //   78: invokespecial 223	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   81: aload_0
-    //   82: getfield 85	android/support/v7/widget/c:ahh	Ljava/lang/String;
+    //   82: getfield 85	android/support/v7/widget/c:aiY	Ljava/lang/String;
     //   85: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   88: pop
     //   89: aload_2
@@ -173,7 +173,7 @@ class c
     //   94: invokevirtual 232	java/io/FileInputStream:close	()V
     //   97: return
     //   98: aload_0
-    //   99: getfield 104	android/support/v7/widget/c:ahg	Ljava/util/List;
+    //   99: getfield 104	android/support/v7/widget/c:aiX	Ljava/util/List;
     //   102: astore 4
     //   104: aload 4
     //   106: invokeinterface 135 1 0
@@ -205,7 +205,7 @@ class c
     //   162: ldc 222
     //   164: invokespecial 223	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   167: aload_0
-    //   168: getfield 85	android/support/v7/widget/c:ahh	Ljava/lang/String;
+    //   168: getfield 85	android/support/v7/widget/c:aiY	Ljava/lang/String;
     //   171: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: pop
     //   175: aload_2
@@ -308,10 +308,10 @@ class c
     for (;;)
     {
       int i;
-      synchronized (this.ahe)
+      synchronized (this.aiV)
       {
-        iq();
-        List localList = this.ahf;
+        iG();
+        List localList = this.aiW;
         int j = localList.size();
         i = 0;
         if (i < j)
@@ -330,13 +330,13 @@ class c
   
   final boolean a(c paramc)
   {
-    boolean bool = this.ahg.add(paramc);
+    boolean bool = this.aiX.add(paramc);
     if (bool)
     {
-      this.ahm = true;
-      iu();
-      ip();
-      ir();
+      this.ajd = true;
+      iK();
+      iF();
+      iH();
       notifyChanged();
     }
     return bool;
@@ -344,30 +344,30 @@ class c
   
   public final ResolveInfo bx(int paramInt)
   {
-    synchronized (this.ahe)
+    synchronized (this.aiV)
     {
-      iq();
-      ResolveInfo localResolveInfo = ((a)this.ahf.get(paramInt)).resolveInfo;
+      iG();
+      ResolveInfo localResolveInfo = ((a)this.aiW.get(paramInt)).resolveInfo;
       return localResolveInfo;
     }
   }
   
   public final Intent by(int paramInt)
   {
-    synchronized (this.ahe)
+    synchronized (this.aiV)
     {
       if (this.mIntent == null) {
         return null;
       }
-      iq();
-      Object localObject2 = (a)this.ahf.get(paramInt);
+      iG();
+      Object localObject2 = (a)this.aiW.get(paramInt);
       localObject2 = new ComponentName(((a)localObject2).resolveInfo.activityInfo.packageName, ((a)localObject2).resolveInfo.activityInfo.name);
       Intent localIntent = new Intent(this.mIntent);
       localIntent.setComponent((ComponentName)localObject2);
-      if (this.aho != null)
+      if (this.ajf != null)
       {
         new Intent(localIntent);
-        if (this.aho.iw()) {
+        if (this.ajf.iM()) {
           return null;
         }
       }
@@ -378,46 +378,46 @@ class c
   
   public final int getHistorySize()
   {
-    synchronized (this.ahe)
+    synchronized (this.aiV)
     {
-      iq();
-      int i = this.ahg.size();
+      iG();
+      int i = this.aiX.size();
       return i;
     }
   }
   
-  public final int im()
+  public final int iD()
   {
-    synchronized (this.ahe)
+    synchronized (this.aiV)
     {
-      iq();
-      int i = this.ahf.size();
+      iG();
+      int i = this.aiW.size();
       return i;
     }
   }
   
-  public final ResolveInfo in()
+  public final ResolveInfo iE()
   {
-    synchronized (this.ahe)
+    synchronized (this.aiV)
     {
-      iq();
-      if (!this.ahf.isEmpty())
+      iG();
+      if (!this.aiW.isEmpty())
       {
-        ResolveInfo localResolveInfo = ((a)this.ahf.get(0)).resolveInfo;
+        ResolveInfo localResolveInfo = ((a)this.aiW.get(0)).resolveInfo;
         return localResolveInfo;
       }
       return null;
     }
   }
   
-  final void iq()
+  final void iG()
   {
-    boolean bool1 = is();
-    boolean bool2 = it();
-    iu();
+    boolean bool1 = iI();
+    boolean bool2 = iJ();
+    iK();
     if ((bool1 | bool2))
     {
-      ir();
+      iH();
       notifyChanged();
     }
   }
@@ -470,13 +470,13 @@ class c
   
   public static final class c
   {
-    public final ComponentName ahp;
+    public final ComponentName ajg;
     public final long time;
     public final float weight;
     
     public c(ComponentName paramComponentName, long paramLong, float paramFloat)
     {
-      this.ahp = paramComponentName;
+      this.ajg = paramComponentName;
       this.time = paramLong;
       this.weight = paramFloat;
     }
@@ -499,13 +499,13 @@ class c
           return false;
         }
         paramObject = (c)paramObject;
-        if (this.ahp == null)
+        if (this.ajg == null)
         {
-          if (paramObject.ahp != null) {
+          if (paramObject.ajg != null) {
             return false;
           }
         }
-        else if (!this.ahp.equals(paramObject.ahp)) {
+        else if (!this.ajg.equals(paramObject.ajg)) {
           return false;
         }
         if (this.time != paramObject.time) {
@@ -517,8 +517,8 @@ class c
     
     public final int hashCode()
     {
-      if (this.ahp == null) {}
-      for (int i = 0;; i = this.ahp.hashCode()) {
+      if (this.ajg == null) {}
+      for (int i = 0;; i = this.ajg.hashCode()) {
         return ((i + 31) * 31 + (int)(this.time ^ this.time >>> 32)) * 31 + Float.floatToIntBits(this.weight);
       }
     }
@@ -527,7 +527,7 @@ class c
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[");
-      localStringBuilder.append("; activity:").append(this.ahp);
+      localStringBuilder.append("; activity:").append(this.ajg);
       localStringBuilder.append("; time:").append(this.time);
       localStringBuilder.append("; weight:").append(new BigDecimal(this.weight));
       localStringBuilder.append("]");
@@ -537,7 +537,7 @@ class c
   
   public static abstract interface d
   {
-    public abstract boolean iw();
+    public abstract boolean iM();
   }
   
   final class e
@@ -573,7 +573,7 @@ class c
             }
             localc = (c.c)localList.remove(0);
             localXmlSerializer.startTag(null, "historical-record");
-            localXmlSerializer.attribute(null, "activity", localc.ahp.flattenToString());
+            localXmlSerializer.attribute(null, "activity", localc.ajg.flattenToString());
             localXmlSerializer.attribute(null, "time", String.valueOf(localc.time));
             localXmlSerializer.attribute(null, "weight", String.valueOf(localc.weight));
             localXmlSerializer.endTag(null, "historical-record");
@@ -586,8 +586,8 @@ class c
           {
             XmlSerializer localXmlSerializer;
             String str1 = c.LOG_TAG;
-            new StringBuilder("Error writing historical record file: ").append(c.this.ahh);
-            c.this.ahk = true;
+            new StringBuilder("Error writing historical record file: ").append(c.this.aiY);
+            c.this.ajb = true;
             if (paramVarArgs == null) {
               continue;
             }
@@ -604,8 +604,8 @@ class c
           catch (IllegalStateException localIllegalStateException)
           {
             String str2 = c.LOG_TAG;
-            new StringBuilder("Error writing historical record file: ").append(c.this.ahh);
-            c.this.ahk = true;
+            new StringBuilder("Error writing historical record file: ").append(c.this.aiY);
+            c.this.ajb = true;
             if (paramVarArgs == null) {
               continue;
             }
@@ -622,8 +622,8 @@ class c
           catch (IOException localIOException)
           {
             String str3 = c.LOG_TAG;
-            new StringBuilder("Error writing historical record file: ").append(c.this.ahh);
-            c.this.ahk = true;
+            new StringBuilder("Error writing historical record file: ").append(c.this.aiY);
+            c.this.ajb = true;
             if (paramVarArgs == null) {
               continue;
             }
@@ -639,7 +639,7 @@ class c
           }
           finally
           {
-            c.this.ahk = true;
+            c.this.ajb = true;
             if (paramVarArgs == null) {
               break label387;
             }
@@ -648,7 +648,7 @@ class c
         }
         label186:
         localXmlSerializer.endDocument();
-        c.this.ahk = true;
+        c.this.ajb = true;
         if (paramVarArgs != null) {
           try
           {

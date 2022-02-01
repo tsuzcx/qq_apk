@@ -7,7 +7,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -16,23 +16,23 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class g
 {
-  private static final int[] JTI = { 1, 4, 9 };
-  private final HashSet<Sensor> JTG;
-  public final SparseArray<i> JTH;
-  public a JTJ;
+  private static final int[] LNy = { 1, 4, 9 };
+  private final HashSet<Sensor> LNw;
+  public final SparseArray<i> LNx;
+  public a LNz;
   private final SensorManager mSensorManager;
   
   public g()
   {
     AppMethodBeat.i(138398);
-    this.JTG = new HashSet();
-    this.JTH = new SparseArray();
-    this.JTJ = new a();
-    this.mSensorManager = ((SensorManager)ai.getContext().getSystemService("sensor"));
+    this.LNw = new HashSet();
+    this.LNx = new SparseArray();
+    this.LNz = new a();
+    this.mSensorManager = ((SensorManager)aj.getContext().getSystemService("sensor"));
     AppMethodBeat.o(138398);
   }
   
-  private static boolean f(SparseArray<i> paramSparseArray)
+  private static boolean g(SparseArray<i> paramSparseArray)
   {
     AppMethodBeat.i(138402);
     if (paramSparseArray.size() == 0)
@@ -46,15 +46,15 @@ public final class g
       Object localObject = (i)paramSparseArray.valueAt(i);
       if (localObject != null)
       {
-        Object[] arrayOfObject = ((i)localObject).fCK();
+        Object[] arrayOfObject = ((i)localObject).fUa();
         if ((arrayOfObject != null) && (arrayOfObject.length != 0))
         {
           int j = 0;
           int m;
-          for (int k = 0; j < ((i)localObject).MS.length; k = m)
+          for (int k = 0; j < ((i)localObject).OI.length; k = m)
           {
             m = k;
-            if ((List)localObject.MS[j] != null) {
+            if ((List)localObject.OI[j] != null) {
               m = k + 1;
             }
             j += 1;
@@ -68,7 +68,7 @@ public final class g
           while (j < arrayOfObject.length)
           {
             localObject = (List)arrayOfObject[j];
-            if ((localObject != null) && (((List)localObject).size() < f.JTE / 2))
+            if ((localObject != null) && (((List)localObject).size() < f.LNu / 2))
             {
               AppMethodBeat.o(138402);
               return false;
@@ -84,7 +84,7 @@ public final class g
   }
   
   /* Error */
-  public final boolean BQ(long paramLong)
+  public final boolean ES(long paramLong)
   {
     // Byte code:
     //   0: aload_0
@@ -103,35 +103,35 @@ public final class g
     //   24: iload 6
     //   26: ireturn
     //   27: aload_0
-    //   28: getfield 49	com/tencent/d/e/a/a/g:JTJ	Lcom/tencent/d/e/a/a/g$a;
+    //   28: getfield 49	com/tencent/d/e/a/a/g:LNz	Lcom/tencent/d/e/a/a/g$a;
     //   31: astore 9
     //   33: aload 9
-    //   35: getfield 110	com/tencent/d/e/a/a/g$a:JTK	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   35: getfield 110	com/tencent/d/e/a/a/g$a:LNA	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   38: astore 8
     //   40: aload 8
     //   42: monitorenter
     //   43: aload 9
-    //   45: getfield 110	com/tencent/d/e/a/a/g$a:JTK	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   45: getfield 110	com/tencent/d/e/a/a/g$a:LNA	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   48: invokevirtual 116	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   51: ifeq +126 -> 177
     //   54: aload 8
     //   56: monitorexit
     //   57: aload_0
-    //   58: getfield 39	com/tencent/d/e/a/a/g:JTG	Ljava/util/HashSet;
+    //   58: getfield 39	com/tencent/d/e/a/a/g:LNw	Ljava/util/HashSet;
     //   61: astore 8
     //   63: aload 8
     //   65: monitorenter
     //   66: aload_0
-    //   67: getfield 39	com/tencent/d/e/a/a/g:JTG	Ljava/util/HashSet;
+    //   67: getfield 39	com/tencent/d/e/a/a/g:LNw	Ljava/util/HashSet;
     //   70: invokevirtual 119	java/util/HashSet:clear	()V
     //   73: aload 8
     //   75: monitorexit
     //   76: aload_0
-    //   77: getfield 39	com/tencent/d/e/a/a/g:JTG	Ljava/util/HashSet;
+    //   77: getfield 39	com/tencent/d/e/a/a/g:LNw	Ljava/util/HashSet;
     //   80: astore 8
     //   82: aload 8
     //   84: monitorenter
-    //   85: getstatic 23	com/tencent/d/e/a/a/g:JTI	[I
+    //   85: getstatic 23	com/tencent/d/e/a/a/g:LNy	[I
     //   88: astore 9
     //   90: aload 9
     //   92: arraylength
@@ -161,13 +161,13 @@ public final class g
     //   136: aload_0
     //   137: getfield 67	com/tencent/d/e/a/a/g:mSensorManager	Landroid/hardware/SensorManager;
     //   140: aload_0
-    //   141: getfield 49	com/tencent/d/e/a/a/g:JTJ	Lcom/tencent/d/e/a/a/g$a;
+    //   141: getfield 49	com/tencent/d/e/a/a/g:LNz	Lcom/tencent/d/e/a/a/g$a;
     //   144: aload 10
     //   146: iconst_0
     //   147: invokevirtual 127	android/hardware/SensorManager:registerListener	(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;I)Z
     //   150: ifeq +16 -> 166
     //   153: aload_0
-    //   154: getfield 39	com/tencent/d/e/a/a/g:JTG	Ljava/util/HashSet;
+    //   154: getfield 39	com/tencent/d/e/a/a/g:LNw	Ljava/util/HashSet;
     //   157: aload 10
     //   159: invokevirtual 131	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   162: pop
@@ -181,21 +181,21 @@ public final class g
     //   172: istore 6
     //   174: goto -74 -> 100
     //   177: aload 9
-    //   179: getfield 110	com/tencent/d/e/a/a/g$a:JTK	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   179: getfield 110	com/tencent/d/e/a/a/g$a:LNA	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   182: iconst_1
     //   183: invokevirtual 135	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   186: aload 9
     //   188: invokestatic 141	java/lang/System:currentTimeMillis	()J
-    //   191: putfield 145	com/tencent/d/e/a/a/g$a:JTz	J
+    //   191: putfield 145	com/tencent/d/e/a/a/g$a:LNp	J
     //   194: aload 9
     //   196: lload_1
     //   197: l2d
-    //   198: getstatic 148	com/tencent/d/e/a/a/f:JTD	J
+    //   198: getstatic 148	com/tencent/d/e/a/a/f:LNt	J
     //   201: l2d
     //   202: ddiv
     //   203: invokestatic 154	java/lang/Math:ceil	(D)D
     //   206: d2i
-    //   207: putfield 157	com/tencent/d/e/a/a/g$a:JTL	I
+    //   207: putfield 157	com/tencent/d/e/a/a/g$a:LNB	I
     //   210: aload 8
     //   212: monitorexit
     //   213: goto -156 -> 57
@@ -223,7 +223,7 @@ public final class g
     //   252: iload 6
     //   254: ifne +7 -> 261
     //   257: aload_0
-    //   258: invokevirtual 160	com/tencent/d/e/a/a/g:fCE	()V
+    //   258: invokevirtual 160	com/tencent/d/e/a/a/g:fTU	()V
     //   261: ldc 106
     //   263: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   266: goto -244 -> 22
@@ -272,7 +272,7 @@ public final class g
     //   271	274	269	finally
   }
   
-  public final void fCE()
+  public final void fTU()
   {
     for (;;)
     {
@@ -284,50 +284,50 @@ public final class g
           AppMethodBeat.o(138400);
           return;
         }
-        synchronized (this.JTG)
+        synchronized (this.LNw)
         {
-          Iterator localIterator = this.JTG.iterator();
+          Iterator localIterator = this.LNw.iterator();
           if (localIterator.hasNext())
           {
             Sensor localSensor = (Sensor)localIterator.next();
-            this.mSensorManager.unregisterListener(this.JTJ, localSensor);
+            this.mSensorManager.unregisterListener(this.LNz, localSensor);
           }
         }
-        this.JTG.clear();
+        this.LNw.clear();
       }
       finally {}
-      a locala = this.JTJ;
-      synchronized (locala.JTK)
+      a locala = this.LNz;
+      synchronized (locala.LNA)
       {
-        if (!locala.JTK.get())
+        if (!locala.LNA.get())
         {
           AppMethodBeat.o(138400);
           continue;
         }
-        locala.JTK.set(false);
-        locala.JTM = (System.currentTimeMillis() - locala.JTz);
-        if (locala.JTM < 0L) {
-          locala.JTM = 0L;
+        locala.LNA.set(false);
+        locala.LNC = (System.currentTimeMillis() - locala.LNp);
+        if (locala.LNC < 0L) {
+          locala.LNC = 0L;
         }
-        locala.JTz = 0L;
+        locala.LNp = 0L;
         AppMethodBeat.o(138400);
       }
     }
   }
   
-  public final SparseArray<i> fCF()
+  public final SparseArray<i> fTV()
   {
     AppMethodBeat.i(138401);
-    synchronized (this.JTH)
+    synchronized (this.LNx)
     {
       SparseArray localSparseArray2 = new SparseArray();
       int i = 0;
-      while (i < this.JTH.size())
+      while (i < this.LNx.size())
       {
-        localSparseArray2.append(this.JTH.keyAt(i), (i)this.JTH.valueAt(i));
+        localSparseArray2.append(this.LNx.keyAt(i), (i)this.LNx.valueAt(i));
         i += 1;
       }
-      if (f(localSparseArray2))
+      if (g(localSparseArray2))
       {
         AppMethodBeat.o(138401);
         return localSparseArray2;
@@ -341,35 +341,35 @@ public final class g
   public final class a
     implements SensorEventListener
   {
-    final AtomicBoolean JTK;
-    int JTL;
-    long JTM;
-    long JTz;
+    final AtomicBoolean LNA;
+    int LNB;
+    long LNC;
+    long LNp;
     
     a()
     {
       AppMethodBeat.i(138396);
-      this.JTK = new AtomicBoolean(false);
-      this.JTz = 0L;
-      this.JTL = 0;
-      this.JTM = 0L;
+      this.LNA = new AtomicBoolean(false);
+      this.LNp = 0L;
+      this.LNB = 0;
+      this.LNC = 0L;
       AppMethodBeat.o(138396);
     }
     
-    public final long fCG()
+    public final long fTW()
     {
-      synchronized (this.JTK)
+      synchronized (this.LNA)
       {
-        long l = this.JTz;
+        long l = this.LNp;
         return l;
       }
     }
     
-    public final long fCH()
+    public final long fTX()
     {
-      synchronized (this.JTK)
+      synchronized (this.LNA)
       {
-        long l = this.JTM;
+        long l = this.LNC;
         return l;
       }
     }
@@ -379,9 +379,9 @@ public final class g
     public final void onSensorChanged(SensorEvent arg1)
     {
       AppMethodBeat.i(138397);
-      synchronized (this.JTK)
+      synchronized (this.LNA)
       {
-        if (!this.JTK.get())
+        if (!this.LNA.get())
         {
           AppMethodBeat.o(138397);
           return;
@@ -395,16 +395,16 @@ public final class g
       j localj = new j(???, System.currentTimeMillis());
       int j;
       int i;
-      synchronized (this.JTK)
+      synchronized (this.LNA)
       {
-        long l = localj.timestamp - this.JTz;
+        long l = localj.timestamp - this.LNp;
         if (l < 0L)
         {
           AppMethodBeat.o(138397);
           return;
         }
-        j = localj.JTS;
-        i = (int)(l / f.JTD);
+        j = localj.LNI;
+        i = (int)(l / f.LNt);
       }
       for (;;)
       {
@@ -413,20 +413,20 @@ public final class g
           ??? = (i)g.a(g.this).get(j);
           if (??? == null)
           {
-            ??? = new i(j, f.JTE, this.JTL);
+            ??? = new i(j, f.LNu, this.LNB);
             g.a(g.this).put(j, ???);
-            if ((i < ???.cMP) && (i > ???.aaj))
+            if ((i < ???.cYf) && (i > ???.abZ))
             {
-              j = i / ???.JTR;
-              List localList = (List)???.MS[j];
+              j = i / ???.LNH;
+              List localList = (List)???.OI[j];
               ??? = localList;
               if (localList == null)
               {
                 ??? = new ArrayList();
-                ???.MS[j] = ???;
+                ???.OI[j] = ???;
               }
               ((List)???).add(localj);
-              ???.aaj = i;
+              ???.abZ = i;
             }
             AppMethodBeat.o(138397);
             return;

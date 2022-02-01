@@ -8,31 +8,33 @@ import android.text.Layout.Alignment;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.StaticLayout;
+import android.text.StaticLayout.Builder;
 import android.text.TextDirectionHeuristic;
 import android.text.TextDirectionHeuristics;
 import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import android.text.style.MetricAffectingSpan;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class d
 {
-  private static e glk;
-  private static final SpannableString gll;
-  CharSequence glm = null;
-  CharSequence gln = null;
-  int glo = 0;
-  int glp = 0;
-  TextPaint glq = null;
-  Layout.Alignment glr = Layout.Alignment.ALIGN_NORMAL;
-  TextUtils.TruncateAt gls = null;
-  int glt = -1;
-  TextDirectionHeuristic glu = null;
-  float glv = 0.0F;
-  float glw = 1.0F;
-  boolean glx = false;
-  InputFilter.LengthFilter gly = null;
+  private static e gEU;
+  private static final SpannableString gEV;
+  int breakStrategy = -1;
+  CharSequence gEW = null;
+  CharSequence gEX = null;
+  int gEY = 0;
+  int gEZ = 0;
+  TextPaint gFa = null;
+  Layout.Alignment gFb = Layout.Alignment.ALIGN_NORMAL;
+  TextUtils.TruncateAt gFc = null;
+  int gFd = -1;
+  TextDirectionHeuristic gFe = null;
+  float gFf = 0.0F;
+  float gFg = 1.0F;
+  boolean gFh = false;
+  InputFilter.LengthFilter gFi = null;
   int gravity = 51;
   int maxLength = -1;
   int maxLines = 2147483647;
@@ -41,31 +43,35 @@ public final class d
   static
   {
     AppMethodBeat.i(141031);
-    glk = new e();
-    gll = new SpannableString("");
+    gEU = new e();
+    gEV = new SpannableString("");
     AppMethodBeat.o(141031);
   }
   
-  private StaticLayout a(CharSequence paramCharSequence, boolean paramBoolean, int paramInt)
+  private StaticLayout a(CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(141030);
-    if (paramBoolean) {
-      paramCharSequence = new StaticLayout(paramCharSequence, this.glo, this.glp, this.glq, this.width, this.glr, this.glw, this.glv, this.glx, this.gls, paramInt);
+    AppMethodBeat.i(186428);
+    if (paramInt2 >= 0) {
+      paramCharSequence = StaticLayout.Builder.obtain(paramCharSequence, this.gEY, this.gEZ, this.gFa, this.width).setAlignment(this.gFb).setTextDirection(TextDirectionHeuristics.FIRSTSTRONG_LTR).setLineSpacing(this.gFf, this.gFg).setIncludePad(this.gFh).setEllipsize(this.gFc).setEllipsizedWidth(paramInt1).setBreakStrategy(paramInt2).setMaxLines(2147483647).build();
     }
     for (;;)
     {
-      AppMethodBeat.o(141030);
+      AppMethodBeat.o(186428);
       return paramCharSequence;
-      if (Build.VERSION.SDK_INT >= 18)
+      if (paramBoolean)
       {
-        if (this.glu == null) {
-          this.glu = TextDirectionHeuristics.FIRSTSTRONG_LTR;
+        paramCharSequence = new StaticLayout(paramCharSequence, this.gEY, this.gEZ, this.gFa, this.width, this.gFb, this.gFg, this.gFf, this.gFh, this.gFc, paramInt1);
+      }
+      else if (Build.VERSION.SDK_INT >= 18)
+      {
+        if (this.gFe == null) {
+          this.gFe = TextDirectionHeuristics.FIRSTSTRONG_LTR;
         }
-        paramCharSequence = com.tencent.mm.kiss.widget.textview.b.a.a(paramCharSequence, this.glo, this.glp, this.glq, this.width, this.glr, this.glu, this.glw, this.glv, this.glx, this.gls, paramInt, this.maxLines);
+        paramCharSequence = com.tencent.mm.kiss.widget.textview.b.a.a(paramCharSequence, this.gEY, this.gEZ, this.gFa, this.width, this.gFb, this.gFe, this.gFg, this.gFf, this.gFh, this.gFc, paramInt1, this.maxLines);
       }
       else
       {
-        paramCharSequence = com.tencent.mm.kiss.widget.textview.b.a.a(paramCharSequence, this.glo, this.glp, this.glq, this.width, this.glr, this.glw, this.glv, this.glx, this.gls, paramInt, this.maxLines);
+        paramCharSequence = com.tencent.mm.kiss.widget.textview.b.a.a(paramCharSequence, this.gEY, this.gEZ, this.gFa, this.width, this.gFb, this.gFg, this.gFf, this.gFh, this.gFc, paramInt1, this.maxLines);
       }
     }
   }
@@ -83,17 +89,17 @@ public final class d
     if (localObject1 == null) {
       localObject2 = "";
     }
-    localObject1 = glk.ahV();
+    localObject1 = gEU.akG();
     paramCharSequence = (CharSequence)localObject1;
     if (localObject1 == null) {
       paramCharSequence = new d();
     }
-    paramCharSequence.glm = ((CharSequence)localObject2).toString();
-    paramCharSequence.gln = ((CharSequence)localObject2);
-    paramCharSequence.glo = 0;
-    paramCharSequence.glp = i;
+    paramCharSequence.gEW = ((CharSequence)localObject2).toString();
+    paramCharSequence.gEX = ((CharSequence)localObject2);
+    paramCharSequence.gEY = 0;
+    paramCharSequence.gEZ = i;
     paramCharSequence.width = paramInt;
-    paramCharSequence.glq = new TextPaint();
+    paramCharSequence.gFa = new TextPaint();
     if (parama.maxLines != -1)
     {
       paramInt = parama.maxLines;
@@ -107,69 +113,69 @@ public final class d
       if (paramInt >= 0)
       {
         paramCharSequence.maxLength = paramInt;
-        paramCharSequence.gly = new InputFilter.LengthFilter(paramCharSequence.maxLength);
+        paramCharSequence.gFi = new InputFilter.LengthFilter(paramCharSequence.maxLength);
       }
     }
-    localObject1 = parama.glr;
+    localObject1 = parama.gFb;
     if (localObject1 != null) {
-      paramCharSequence.glr = ((Layout.Alignment)localObject1);
+      paramCharSequence.gFb = ((Layout.Alignment)localObject1);
     }
-    if (parama.gls != null)
+    if (parama.gFc != null)
     {
-      localObject1 = parama.gls;
+      localObject1 = parama.gFc;
       if (localObject1 != null) {
-        paramCharSequence.gls = ((TextUtils.TruncateAt)localObject1);
+        paramCharSequence.gFc = ((TextUtils.TruncateAt)localObject1);
       }
     }
     paramCharSequence.gravity = parama.gravity;
-    if (parama.glT != -1)
+    if (parama.gFD != -1)
     {
-      paramInt = parama.glT;
+      paramInt = parama.gFD;
       if (paramInt >= 0) {
-        paramCharSequence.glt = paramInt;
+        paramCharSequence.gFd = paramInt;
       }
     }
-    if (parama.glu != null)
+    if (parama.gFe != null)
     {
-      localObject1 = parama.glu;
+      localObject1 = parama.gFe;
       if (Build.VERSION.SDK_INT >= 18) {
-        paramCharSequence.glu = ((TextDirectionHeuristic)localObject1);
+        paramCharSequence.gFe = ((TextDirectionHeuristic)localObject1);
       }
     }
-    float f1 = parama.glv;
-    float f2 = parama.glw;
-    paramCharSequence.glv = f1;
-    paramCharSequence.glw = f2;
-    paramCharSequence.glx = parama.glx;
-    if (parama.qC != null)
+    float f1 = parama.gFf;
+    float f2 = parama.gFg;
+    paramCharSequence.gFf = f1;
+    paramCharSequence.gFg = f2;
+    paramCharSequence.gFh = parama.gFh;
+    if (parama.sx != null)
     {
       if (parama.fontStyle == -1) {
-        break label543;
+        break label564;
       }
-      localObject1 = parama.qC;
+      localObject1 = parama.sx;
       i = parama.fontStyle;
       if (i <= 0) {
-        break label517;
+        break label538;
       }
       if (localObject1 != null) {
-        break label495;
+        break label516;
       }
       localObject1 = Typeface.defaultFromStyle(i);
       paramCharSequence.c((Typeface)localObject1);
       if (localObject1 == null) {
-        break label507;
+        break label528;
       }
       paramInt = ((Typeface)localObject1).getStyle();
       label358:
       paramInt = (paramInt ^ 0xFFFFFFFF) & i;
-      localObject1 = paramCharSequence.glq;
+      localObject1 = paramCharSequence.gFa;
       if ((paramInt & 0x1) != 0) {
         bool = true;
       }
       ((TextPaint)localObject1).setFakeBoldText(bool);
-      localObject1 = paramCharSequence.glq;
+      localObject1 = paramCharSequence.gFa;
       if ((paramInt & 0x2) == 0) {
-        break label512;
+        break label533;
       }
       f1 = -0.25F;
       label402:
@@ -180,85 +186,92 @@ public final class d
       if (parama.textSize != -1.0F)
       {
         f1 = parama.textSize;
-        paramCharSequence.glq.setTextSize(f1);
+        paramCharSequence.gFa.setTextSize(f1);
       }
       if (parama.textColor != -1)
       {
         paramInt = parama.textColor;
-        paramCharSequence.glq.setColor(paramInt);
+        paramCharSequence.gFa.setColor(paramInt);
       }
       if (parama.linkColor != -1)
       {
         paramInt = parama.linkColor;
-        paramCharSequence.glq.linkColor = paramInt;
+        paramCharSequence.gFa.linkColor = paramInt;
       }
-      if (parama.gZ != null) {
-        paramCharSequence.glq = parama.gZ;
+      if (parama.iU != null) {
+        paramCharSequence.gFa = parama.iU;
+      }
+      if (parama.breakStrategy >= 0)
+      {
+        paramInt = parama.breakStrategy;
+        if (paramInt >= 0) {
+          paramCharSequence.breakStrategy = paramInt;
+        }
       }
       AppMethodBeat.o(141027);
       return paramCharSequence;
-      label495:
+      label516:
       localObject1 = Typeface.create((Typeface)localObject1, i);
       break;
-      label507:
+      label528:
       paramInt = 0;
       break label358;
-      label512:
+      label533:
       f1 = 0.0F;
       break label402;
-      label517:
-      paramCharSequence.glq.setFakeBoldText(false);
-      paramCharSequence.glq.setTextSkewX(0.0F);
+      label538:
+      paramCharSequence.gFa.setFakeBoldText(false);
+      paramCharSequence.gFa.setTextSkewX(0.0F);
       paramCharSequence.c((Typeface)localObject1);
       continue;
-      label543:
-      paramCharSequence.c(parama.qC);
+      label564:
+      paramCharSequence.c(parama.sx);
     }
   }
   
   private d c(Typeface paramTypeface)
   {
     AppMethodBeat.i(141028);
-    this.glq.setTypeface(paramTypeface);
+    this.gFa.setTypeface(paramTypeface);
     AppMethodBeat.o(141028);
     return this;
   }
   
   @TargetApi(18)
-  public final f ahU()
+  public final f akF()
   {
     AppMethodBeat.i(141029);
     int j;
     Object localObject1;
-    if ((this.gls == null) || (this.glt <= 0))
+    if ((this.gFc == null) || (this.gFd <= 0))
     {
       j = this.width;
-      if ((this.gls == null) && (this.maxLines == 1)) {
-        this.gls = TextUtils.TruncateAt.END;
+      if ((this.gFc == null) && (this.maxLines == 1)) {
+        this.gFc = TextUtils.TruncateAt.END;
       }
-      if ((this.maxLength > 0) && (this.gly != null))
+      if ((this.maxLength > 0) && (this.gFi != null))
       {
-        localObject1 = this.gly.filter(this.gln, 0, this.gln.length(), gll, 0, 0);
+        localObject1 = this.gFi.filter(this.gEX, 0, this.gEX.length(), gEV, 0, 0);
         if (localObject1 != null)
         {
-          this.gln = ((CharSequence)localObject1);
-          if (this.glp > this.gln.length()) {
-            this.glp = this.gln.length();
+          this.gEX = ((CharSequence)localObject1);
+          if (this.gEZ > this.gEX.length()) {
+            this.gEZ = this.gEX.length();
           }
         }
       }
       if (h.DEBUG) {
-        ac.i("StaticTextView.StaticLayoutBuilder", "StaticLayoutWrapper build " + this.gln + " " + this.width);
+        ad.i("StaticTextView.StaticLayoutBuilder", "StaticLayoutWrapper build " + this.gEX + " " + this.width);
       }
-      if (this.glr == Layout.Alignment.ALIGN_NORMAL) {}
+      if (this.gFb == Layout.Alignment.ALIGN_NORMAL) {}
       switch (this.gravity & 0x800007)
       {
       default: 
-        this.glr = Layout.Alignment.ALIGN_NORMAL;
-        label247:
-        this.glq.setAntiAlias(true);
+        this.gFb = Layout.Alignment.ALIGN_NORMAL;
+        label251:
+        this.gFa.setAntiAlias(true);
         localObject1 = null;
-        if (((this.glu != null) && ((!com.tencent.mm.compatible.util.d.kZ(18)) || (this.glu != TextDirectionHeuristics.FIRSTSTRONG_LTR))) || ((this.maxLines != 2147483647) && (this.maxLines != -1))) {
+        if (((this.gFe != null) && ((!com.tencent.mm.compatible.util.d.ly(18)) || (this.gFe != TextDirectionHeuristics.FIRSTSTRONG_LTR))) || ((this.maxLines != 2147483647) && (this.maxLines != -1))) {
           break;
         }
       }
@@ -267,7 +280,7 @@ public final class d
     {
       try
       {
-        localObject3 = a(this.gln, bool, j);
+        localObject3 = a(this.gEX, bool, j, this.breakStrategy);
         localObject1 = localObject3;
       }
       catch (Exception localException2)
@@ -275,7 +288,7 @@ public final class d
         for (;;)
         {
           Object localObject3;
-          ac.i("StaticTextView.StaticLayoutBuilder", "build static layout error: %s", new Object[] { localException2.getMessage() });
+          ad.i("StaticTextView.StaticLayoutBuilder", "build static layout error: %s", new Object[] { localException2.getMessage() });
           int i = 0;
           if (i < 3)
           {
@@ -283,7 +296,7 @@ public final class d
             Object localObject4 = localObject1;
             try
             {
-              SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(this.gln);
+              SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(this.gEX);
               k = i;
               localObject4 = localObject1;
               MetricAffectingSpan[] arrayOfMetricAffectingSpan = (MetricAffectingSpan[])localSpannableStringBuilder.getSpans(0, localSpannableStringBuilder.length(), MetricAffectingSpan.class);
@@ -303,20 +316,20 @@ public final class d
               {
                 k = i;
                 localObject4 = localObject1;
-                this.gln = localSpannableStringBuilder;
+                this.gEX = localSpannableStringBuilder;
                 k = i;
                 localObject4 = localObject1;
-                localObject1 = a(this.gln, bool, j);
+                localObject1 = a(this.gEX, bool, j, this.breakStrategy);
                 k = i;
                 localObject4 = localObject1;
-                ac.i("StaticTextView.StaticLayoutBuilder", "fix from build static layout, fixCount: %s", new Object[] { Integer.valueOf(i) });
+                ad.i("StaticTextView.StaticLayoutBuilder", "fix from build static layout, fixCount: %s", new Object[] { Integer.valueOf(i) });
                 break;
                 i = 100;
               }
             }
             catch (Exception localException1)
             {
-              ac.i("StaticTextView.StaticLayoutBuilder", "fix, build static layout error: %s, fixCount: %s", new Object[] { localException1.getMessage(), Integer.valueOf(k) });
+              ad.i("StaticTextView.StaticLayoutBuilder", "fix, build static layout error: %s, fixCount: %s", new Object[] { localException1.getMessage(), Integer.valueOf(k) });
               i = k;
               Object localObject2 = localObject4;
             }
@@ -326,29 +339,30 @@ public final class d
       localObject3 = localObject1;
       if (localObject1 == null)
       {
-        this.gln = this.gln.toString();
-        localObject3 = a(this.gln, bool, j);
+        this.gEX = this.gEX.toString();
+        localObject3 = a(this.gEX, bool, j, this.breakStrategy);
       }
       localObject1 = new f((StaticLayout)localObject3);
-      ((f)localObject1).glB = this.glm;
-      ((f)localObject1).text = this.gln;
+      ((f)localObject1).gFl = this.gEW;
+      ((f)localObject1).text = this.gEX;
       ((f)localObject1).maxLength = this.maxLength;
       ((f)localObject1).maxLines = this.maxLines;
-      ((f)localObject1).glr = this.glr;
-      ((f)localObject1).gls = this.gls;
-      ((f)localObject1).gZ = this.glq;
+      ((f)localObject1).gFb = this.gFb;
+      ((f)localObject1).gFc = this.gFc;
+      ((f)localObject1).iU = this.gFa;
       ((f)localObject1).gravity = this.gravity;
-      glk.a(this);
+      ((f)localObject1).breakStrategy = this.breakStrategy;
+      gEU.a(this);
       AppMethodBeat.o(141029);
       return localObject1;
-      j = this.glt;
+      j = this.gFd;
       break;
-      this.glr = Layout.Alignment.ALIGN_NORMAL;
-      break label247;
-      this.glr = Layout.Alignment.ALIGN_OPPOSITE;
-      break label247;
-      this.glr = Layout.Alignment.ALIGN_CENTER;
-      break label247;
+      this.gFb = Layout.Alignment.ALIGN_NORMAL;
+      break label251;
+      this.gFb = Layout.Alignment.ALIGN_OPPOSITE;
+      break label251;
+      this.gFb = Layout.Alignment.ALIGN_CENTER;
+      break label251;
     }
   }
 }

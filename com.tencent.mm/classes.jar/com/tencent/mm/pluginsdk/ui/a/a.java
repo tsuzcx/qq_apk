@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.a;
 
 public abstract interface a
 {
-  public abstract void aHa(String paramString);
+  public abstract void aMD(String paramString);
 }
 
 

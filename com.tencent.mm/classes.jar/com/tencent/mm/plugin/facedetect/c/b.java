@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.facedetect.c;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public enum b
 {
   static
   {
     AppMethodBeat.i(103645);
-    qwS = new b("IML");
-    qwT = new b[] { qwS };
+    rgI = new b("IML");
+    rgJ = new b[] { rgI };
     AppMethodBeat.o(103645);
   }
   
@@ -20,7 +20,7 @@ public enum b
   public static a a(Context paramContext, f paramf, int paramInt1, int paramInt2, Bundle paramBundle)
   {
     AppMethodBeat.i(103644);
-    ac.i("MicroMsg.FaceDetectControllerFactory", "alvinluo getController serverScene: %d", new Object[] { Integer.valueOf(paramInt1) });
+    ad.i("MicroMsg.FaceDetectControllerFactory", "alvinluo getController serverScene: %d", new Object[] { Integer.valueOf(paramInt1) });
     switch (paramInt1)
     {
     default: 
@@ -46,7 +46,7 @@ public enum b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.c.b
  * JD-Core Version:    0.7.0.1
  */

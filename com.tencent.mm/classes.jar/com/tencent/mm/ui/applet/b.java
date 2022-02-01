@@ -8,24 +8,24 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 
 public final class b
 {
-  private int Edg;
-  private c HtT;
-  LinkedList<String> HtU;
-  a HtV;
+  private int FJm;
+  private c JhJ;
+  LinkedList<String> JhK;
+  a JhL;
   int direction;
-  private GestureDetector irA;
-  private MessageQueue.IdleHandler nEp;
+  private GestureDetector iKD;
+  private MessageQueue.IdleHandler ogP;
   
   public b(a parama)
   {
     AppMethodBeat.i(141587);
     this.direction = 0;
-    this.irA = new GestureDetector(new GestureDetector.OnGestureListener()
+    this.iKD = new GestureDetector(new GestureDetector.OnGestureListener()
     {
       public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
       {
@@ -37,7 +37,15 @@ public final class b
         return false;
       }
       
-      public final void onLongPress(MotionEvent paramAnonymousMotionEvent) {}
+      public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(186455);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/applet/EarlyGetHeadImg$2", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/applet/EarlyGetHeadImg$2", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
+        AppMethodBeat.o(186455);
+      }
       
       public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
@@ -54,28 +62,34 @@ public final class b
       
       public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
       {
+        AppMethodBeat.i(186454);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/applet/EarlyGetHeadImg$2", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/applet/EarlyGetHeadImg$2", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(186454);
         return false;
       }
     });
-    this.HtV = parama;
-    this.Edg = 15;
-    this.HtT = new c();
-    this.HtU = new LinkedList();
-    this.nEp = new MessageQueue.IdleHandler()
+    this.JhL = parama;
+    this.FJm = 15;
+    this.JhJ = new c();
+    this.JhK = new LinkedList();
+    this.ogP = new MessageQueue.IdleHandler()
     {
       public final boolean queueIdle()
       {
         AppMethodBeat.i(141583);
-        while (b.this.HtU.size() > 0)
+        while (b.this.JhK.size() > 0)
         {
-          String str = (String)b.this.HtU.removeFirst();
-          b.this.HtV.Go(str);
+          String str = (String)b.this.JhK.removeFirst();
+          b.this.JhL.JD(str);
         }
         AppMethodBeat.o(141583);
         return true;
       }
     };
-    Looper.myQueue().addIdleHandler(this.nEp);
+    Looper.myQueue().addIdleHandler(this.ogP);
     AppMethodBeat.o(141587);
   }
   
@@ -84,19 +98,19 @@ public final class b
     AppMethodBeat.i(141588);
     if (paramb == null)
     {
-      ac.e("MicroMsg.EarlyGetHeadImg", "earlyGet, getter is null, no early get headimg will be performed");
+      ad.e("MicroMsg.EarlyGetHeadImg", "earlyGet, getter is null, no early get headimg will be performed");
       AppMethodBeat.o(141588);
       return;
     }
-    if (this.Edg <= 0)
+    if (this.FJm <= 0)
     {
-      ac.e("MicroMsg.EarlyGetHeadImg", "earlyGet fail, threshold is invalid");
+      ad.e("MicroMsg.EarlyGetHeadImg", "earlyGet fail, threshold is invalid");
       AppMethodBeat.o(141588);
       return;
     }
-    int j = paramb.aPz();
+    int j = paramb.aSL();
     int i = 1;
-    if (i <= this.Edg)
+    if (i <= this.FJm)
     {
       String str;
       if (this.direction == 1)
@@ -106,11 +120,11 @@ public final class b
           AppMethodBeat.o(141588);
           return;
         }
-        str = paramb.qN(paramInt - i);
-        if ((str != null) && (str.length() != 0) && (!this.HtT.contains(str)))
+        str = paramb.rn(paramInt - i);
+        if ((str != null) && (str.length() != 0) && (!this.JhJ.contains(str)))
         {
-          this.HtT.Bk(str);
-          this.HtU.add(str);
+          this.JhJ.Ej(str);
+          this.JhK.add(str);
         }
       }
       for (;;)
@@ -122,11 +136,11 @@ public final class b
           AppMethodBeat.o(141588);
           return;
         }
-        str = paramb.qN(paramInt + i);
-        if ((str != null) && (str.length() != 0) && (!this.HtT.contains(str)))
+        str = paramb.rn(paramInt + i);
+        if ((str != null) && (str.length() != 0) && (!this.JhJ.contains(str)))
         {
-          this.HtT.Bk(str);
-          this.HtU.add(str);
+          this.JhJ.Ej(str);
+          this.JhK.add(str);
         }
       }
     }
@@ -136,8 +150,8 @@ public final class b
   public final void detach()
   {
     AppMethodBeat.i(141590);
-    if (this.nEp != null) {
-      Looper.myQueue().removeIdleHandler(this.nEp);
+    if (this.ogP != null) {
+      Looper.myQueue().removeIdleHandler(this.ogP);
     }
     AppMethodBeat.o(141590);
   }
@@ -145,49 +159,53 @@ public final class b
   public final void onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(141589);
-    if (this.irA != null) {
-      this.irA.onTouchEvent(paramMotionEvent);
+    if (this.iKD != null)
+    {
+      GestureDetector localGestureDetector = this.iKD;
+      paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, paramMotionEvent.ahp(), "com/tencent/mm/ui/applet/EarlyGetHeadImg", "onTouchEvent", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)paramMotionEvent.mq(0)), "com/tencent/mm/ui/applet/EarlyGetHeadImg", "onTouchEvent", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     }
     AppMethodBeat.o(141589);
   }
   
   public static abstract interface a
   {
-    public abstract Bitmap Go(String paramString);
+    public abstract Bitmap JD(String paramString);
   }
   
   public static abstract interface b
   {
-    public abstract int aPz();
+    public abstract int aSL();
     
-    public abstract String qN(int paramInt);
+    public abstract String rn(int paramInt);
   }
   
   final class c
   {
-    private LinkedList<String> fBS;
+    private LinkedList<String> fVg;
     private int maxSize;
     
     public c()
     {
       AppMethodBeat.i(141584);
-      this.fBS = null;
+      this.fVg = null;
       this.maxSize = 40;
-      this.fBS = new LinkedList();
+      this.fVg = new LinkedList();
       AppMethodBeat.o(141584);
     }
     
-    final void Bk(String paramString)
+    final void Ej(String paramString)
     {
       AppMethodBeat.i(141585);
-      if (this.fBS.contains(paramString))
+      if (this.fVg.contains(paramString))
       {
         AppMethodBeat.o(141585);
         return;
       }
-      this.fBS.add(paramString);
-      if (this.fBS.size() >= this.maxSize) {
-        this.fBS.removeFirst();
+      this.fVg.add(paramString);
+      if (this.fVg.size() >= this.maxSize) {
+        this.fVg.removeFirst();
       }
       AppMethodBeat.o(141585);
     }
@@ -195,7 +213,7 @@ public final class b
     final boolean contains(String paramString)
     {
       AppMethodBeat.i(141586);
-      boolean bool = this.fBS.contains(paramString);
+      boolean bool = this.fVg.contains(paramString);
       AppMethodBeat.o(141586);
       return bool;
     }
@@ -203,7 +221,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.applet.b
  * JD-Core Version:    0.7.0.1
  */

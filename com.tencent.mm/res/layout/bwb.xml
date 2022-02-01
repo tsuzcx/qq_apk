@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:gravity="center_horizontal" android:orientation="horizontal" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/dw3" android:background="@drawable/c88" android:layout_width="@dimen/bq" android:layout_height="@dimen/bq" android:layout_marginTop="@dimen/ca" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+    <View android:id="@id/d0u" android:background="@color/BW_0_Alpha_0_1" android:layout_width="@dimen/c8" android:layout_height="1.0dip" android:layout_marginRight="@dimen/ci" app:layout_constraintBottom_toBottomOf="@id/dw3" app:layout_constraintRight_toLeftOf="@id/dw3" app:layout_constraintTop_toTopOf="@id/dw3" />
+    <View android:id="@id/f2j" android:background="@color/BW_0_Alpha_0_1" android:layout_width="@dimen/c8" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ci" app:layout_constraintBottom_toBottomOf="@id/dw3" app:layout_constraintLeft_toRightOf="@id/dw3" app:layout_constraintTop_toTopOf="@id/dw3" />
+</android.support.constraint.ConstraintLayout>

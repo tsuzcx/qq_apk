@@ -28,7 +28,7 @@ public class TranslateActionArg
     super(paramParcel, (byte)0);
   }
   
-  public final boolean aZP()
+  public final boolean bdo()
   {
     return (this.x == 0.0F) && (this.y == 0.0F);
   }

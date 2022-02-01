@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class y
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String ulF;
-  public long umH;
-  public String umI;
-  public String umU;
-  public String umV;
-  public String umW;
-  public String umX;
   public String userName;
+  public String vol;
+  public String vpA;
+  public String vpB;
+  public String vpC;
+  public String vpD;
+  public long vpn;
+  public String vpo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -20,24 +20,24 @@ public final class y
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.umU != null) {
-        paramVarArgs.d(1, this.umU);
+      if (this.vpA != null) {
+        paramVarArgs.d(1, this.vpA);
       }
-      if (this.umV != null) {
-        paramVarArgs.d(2, this.umV);
+      if (this.vpB != null) {
+        paramVarArgs.d(2, this.vpB);
       }
-      paramVarArgs.aO(3, this.umH);
-      if (this.umI != null) {
-        paramVarArgs.d(4, this.umI);
+      paramVarArgs.aY(3, this.vpn);
+      if (this.vpo != null) {
+        paramVarArgs.d(4, this.vpo);
       }
-      if (this.umW != null) {
-        paramVarArgs.d(5, this.umW);
+      if (this.vpC != null) {
+        paramVarArgs.d(5, this.vpC);
       }
-      if (this.ulF != null) {
-        paramVarArgs.d(6, this.ulF);
+      if (this.vol != null) {
+        paramVarArgs.d(6, this.vol);
       }
-      if (this.umX != null) {
-        paramVarArgs.d(7, this.umX);
+      if (this.vpD != null) {
+        paramVarArgs.d(7, this.vpD);
       }
       if (this.userName != null) {
         paramVarArgs.d(8, this.userName);
@@ -46,33 +46,33 @@ public final class y
       return 0;
     }
     if (paramInt == 1) {
-      if (this.umU == null) {
+      if (this.vpA == null) {
         break label626;
       }
     }
     label626:
-    for (paramInt = f.a.a.b.b.a.e(1, this.umU) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.vpA) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.umV != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.umV);
+      if (this.vpB != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.vpB);
       }
-      i += f.a.a.b.b.a.p(3, this.umH);
+      i += f.a.a.b.b.a.p(3, this.vpn);
       paramInt = i;
-      if (this.umI != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.umI);
+      if (this.vpo != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.vpo);
       }
       i = paramInt;
-      if (this.umW != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.umW);
+      if (this.vpC != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.vpC);
       }
       paramInt = i;
-      if (this.ulF != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.ulF);
+      if (this.vol != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.vol);
       }
       i = paramInt;
-      if (this.umX != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.umX);
+      if (this.vpD != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.vpD);
       }
       paramInt = i;
       if (this.userName != null) {
@@ -83,9 +83,9 @@ public final class y
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(91258);
@@ -101,35 +101,35 @@ public final class y
           AppMethodBeat.o(91258);
           return -1;
         case 1: 
-          localy.umU = locala.LVo.readString();
+          localy.vpA = locala.NPN.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 2: 
-          localy.umV = locala.LVo.readString();
+          localy.vpB = locala.NPN.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 3: 
-          localy.umH = locala.LVo.xG();
+          localy.vpn = locala.NPN.zd();
           AppMethodBeat.o(91258);
           return 0;
         case 4: 
-          localy.umI = locala.LVo.readString();
+          localy.vpo = locala.NPN.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 5: 
-          localy.umW = locala.LVo.readString();
+          localy.vpC = locala.NPN.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 6: 
-          localy.ulF = locala.LVo.readString();
+          localy.vol = locala.NPN.readString();
           AppMethodBeat.o(91258);
           return 0;
         case 7: 
-          localy.umX = locala.LVo.readString();
+          localy.vpD = locala.NPN.readString();
           AppMethodBeat.o(91258);
           return 0;
         }
-        localy.userName = locala.LVo.readString();
+        localy.userName = locala.NPN.readString();
         AppMethodBeat.o(91258);
         return 0;
       }
@@ -140,7 +140,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.y
  * JD-Core Version:    0.7.0.1
  */

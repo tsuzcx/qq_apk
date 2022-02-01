@@ -8,15 +8,15 @@ import java.io.RandomAccessFile;
 
 public final class a
 {
-  public a.a cGU;
-  public b cGV = null;
+  public a.a cRY;
+  public b cRZ = null;
   
   public a(b paramb)
   {
-    this.cGV = paramb;
+    this.cRZ = paramb;
   }
   
-  public static a ea(String paramString)
+  public static a eV(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(962);
@@ -42,25 +42,25 @@ public final class a
         AppMethodBeat.o(962);
       }
     }
-    localObject = a.a.G(i(paramString, i - 8, 8));
+    localObject = a.a.G(k(paramString, i - 8, 8));
     if (localObject == null)
     {
       AppMethodBeat.o(962);
       return null;
     }
-    if (((a.a)localObject).cGX >= 0)
+    if (((a.a)localObject).cSb >= 0)
     {
       localb = new b();
-      localb.parseFrom(i(paramString, i - ((a.a)localObject).cGX - 8, ((a.a)localObject).cGX));
+      localb.parseFrom(k(paramString, i - ((a.a)localObject).cSb - 8, ((a.a)localObject).cSb));
       paramString = new a(localb);
-      paramString.cGU = ((a.a)localObject);
+      paramString.cRY = ((a.a)localObject);
       AppMethodBeat.o(962);
       return paramString;
     }
     return null;
   }
   
-  public static boolean eb(String paramString)
+  public static boolean eW(String paramString)
   {
     AppMethodBeat.i(963);
     if (paramString == null)
@@ -74,14 +74,14 @@ public final class a
       AppMethodBeat.o(963);
       return false;
     }
-    a locala = ea(paramString);
-    if ((locala != null) && (locala.cGV != null)) {
+    a locala = eV(paramString);
+    if ((locala != null) && (locala.cRZ != null)) {
       try
       {
         paramString = new File(paramString);
         if (paramString.exists())
         {
-          boolean bool = locala.cGV.apkMd5.equalsIgnoreCase(g.a(paramString, (int)(localFile.length() - (locala.cGU.cGX + 8) - 2L), new byte[] { 0, 0 }));
+          boolean bool = locala.cRZ.apkMd5.equalsIgnoreCase(g.a(paramString, (int)(localFile.length() - (locala.cRY.cSb + 8) - 2L), new byte[] { 0, 0 }));
           AppMethodBeat.o(963);
           return bool;
         }
@@ -92,7 +92,7 @@ public final class a
     return false;
   }
   
-  private static byte[] i(String paramString, int paramInt1, int paramInt2)
+  private static byte[] k(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(964);
     if (paramString == null)
@@ -162,15 +162,15 @@ public final class a
     AppMethodBeat.i(961);
     try
     {
-      if (ea(paramFile.getAbsolutePath()) != null)
+      if (eV(paramFile.getAbsolutePath()) != null)
       {
         System.out.println("Error: duplicate append apk external info!");
         AppMethodBeat.o(961);
         return -1;
       }
-      byte[] arrayOfByte = this.cGV.toByteArray();
+      byte[] arrayOfByte = this.cRZ.toByteArray();
       Object localObject = new a.a(arrayOfByte.length);
-      localObject = a.a.be(a.a.cGW << 32 | ((a.a)localObject).cGX);
+      localObject = a.a.be(a.a.cSa << 32 | ((a.a)localObject).cSb);
       int i = (byte)((arrayOfByte.length + 8) % 256);
       int j = (byte)((arrayOfByte.length + 8) / 256);
       RandomAccessFile localRandomAccessFile = new RandomAccessFile(paramFile, "rw");

@@ -6,37 +6,56 @@ import com.tencent.mm.plugin.report.a;
 public final class bv
   extends a
 {
-  public long dNx = 0L;
+  private String dSb;
+  private long ear;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(149907);
+    AppMethodBeat.i(209240);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dNx);
+    ((StringBuffer)localObject).append(this.dSb);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ear);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(149907);
+    awz((String)localObject);
+    AppMethodBeat.o(209240);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(149908);
+    AppMethodBeat.i(209241);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ClickScene:").append(this.dNx);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RedDotCount:").append(this.ear);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149908);
+    AppMethodBeat.o(209241);
     return localObject;
+  }
+  
+  public final bv gN(long paramLong)
+  {
+    this.ear = paramLong;
+    return this;
   }
   
   public final int getId()
   {
-    return 16722;
+    return 19947;
+  }
+  
+  public final bv kO(String paramString)
+  {
+    AppMethodBeat.i(209239);
+    this.dSb = t("SessionId", paramString, true);
+    AppMethodBeat.o(209239);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.bv
  * JD-Core Version:    0.7.0.1
  */

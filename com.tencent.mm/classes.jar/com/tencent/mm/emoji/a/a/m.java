@@ -3,22 +3,22 @@ package com.tencent.mm.emoji.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/EntranceItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "entranceType", "", "(I)V", "getEntranceType", "()I", "equals", "", "other", "", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/EntranceItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "entranceType", "", "(I)V", "getEntranceType", "()I", "equals", "", "other", "", "plugin-emojisdk_release"})
 public final class m
-  extends y
+  extends ac
 {
-  public final int fRQ;
+  public final int glr;
   
   public m(int paramInt)
   {
     super(3);
-    this.fRQ = paramInt;
+    this.glr = paramInt;
   }
   
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(105558);
-    if ((super.equals(paramObject)) && ((paramObject instanceof m)) && (((m)paramObject).fRQ == this.fRQ))
+    if ((super.equals(paramObject)) && ((paramObject instanceof m)) && (((m)paramObject).glr == this.glr))
     {
       AppMethodBeat.o(105558);
       return true;

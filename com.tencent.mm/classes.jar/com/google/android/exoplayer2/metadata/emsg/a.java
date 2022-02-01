@@ -14,22 +14,22 @@ public final class a
   public final Metadata a(d paramd)
   {
     AppMethodBeat.i(92395);
-    Object localObject = paramd.aJg;
+    Object localObject = paramd.aKX;
     paramd = ((ByteBuffer)localObject).array();
     int i = ((ByteBuffer)localObject).limit();
     localObject = new m(paramd, i);
-    String str1 = ((m)localObject).vI();
-    String str2 = ((m)localObject).vI();
-    long l = ((m)localObject).dm();
-    ((m)localObject).eX(4);
-    paramd = new Metadata(new Metadata.Entry[] { new EventMessage(str1, str2, ((m)localObject).dm() * 1000L / l, ((m)localObject).dm(), Arrays.copyOfRange(paramd, ((m)localObject).position, i)) });
+    String str1 = ((m)localObject).xf();
+    String str2 = ((m)localObject).xf();
+    long l = ((m)localObject).dB();
+    ((m)localObject).fa(4);
+    paramd = new Metadata(new Metadata.Entry[] { new EventMessage(str1, str2, ((m)localObject).dB() * 1000L / l, ((m)localObject).dB(), Arrays.copyOfRange(paramd, ((m)localObject).position, i)) });
     AppMethodBeat.o(92395);
     return paramd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.emsg.a
  * JD-Core Version:    0.7.0.1
  */

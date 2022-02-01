@@ -12,7 +12,7 @@ public final class a
 {
   public static Animator a(c paramc, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofObject(paramc, c.b.hT, c.a.hS, new c.d[] { new c.d(paramFloat1, paramFloat2, paramFloat3) });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofObject(paramc, c.b.jO, c.a.jN, new c.d[] { new c.d(paramFloat1, paramFloat2, paramFloat3) });
     if (Build.VERSION.SDK_INT >= 21)
     {
       Object localObject = paramc.getRevealInfo();

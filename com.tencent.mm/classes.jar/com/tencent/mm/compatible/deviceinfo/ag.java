@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ag
 {
-  public boolean fJs;
-  public boolean fJt;
+  public boolean gcT;
+  public boolean gcU;
   
   public ag()
   {
@@ -16,8 +16,8 @@ public final class ag
   
   public final void reset()
   {
-    this.fJs = false;
-    this.fJt = false;
+    this.gcT = false;
+    this.gcU = false;
   }
 }
 

@@ -1,13 +1,13 @@
 package kotlinx.coroutines.android;
 
 import d.l;
-import kotlinx.coroutines.ar;
-import kotlinx.coroutines.bw;
+import kotlinx.coroutines.as;
+import kotlinx.coroutines.bz;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/android/HandlerDispatcher;", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "Lkotlinx/coroutines/Delay;", "()V", "immediate", "getImmediate", "()Lkotlinx/coroutines/android/HandlerDispatcher;", "Lkotlinx/coroutines/android/HandlerContext;", "kotlinx-coroutines-android"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/android/HandlerDispatcher;", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "Lkotlinx/coroutines/Delay;", "()V", "immediate", "getImmediate", "()Lkotlinx/coroutines/android/HandlerDispatcher;", "Lkotlinx/coroutines/android/HandlerContext;", "kotlinx-coroutines-android"})
 public abstract class b
-  extends bw
-  implements ar
+  extends bz
+  implements as
 {}
 
 

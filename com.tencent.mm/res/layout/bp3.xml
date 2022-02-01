@@ -10,7 +10,7 @@
         <TextView android:textSize="@dimen/gu" android:textColor="@color/Link_80" android:ellipsize="end" android:id="@id/d29" android:background="@drawable/uj" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" />
     </LinearLayout>
     <FrameLayout android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/gu" android:textColor="@color/FG_0" android:id="@id/giu" android:paddingTop="@dimen/bq" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="12:00" android:maxLines="1" />
+        <TextView android:textSize="@dimen/gu" android:textColor="@color/FG_1" android:id="@id/giu" android:paddingTop="@dimen/bq" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="12:00" android:maxLines="1" />
     </FrameLayout>
     <com.tencent.mm.plugin.finder.view.FinderFeedExposeLayout android:id="@id/axh" android:paddingTop="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <ViewStub android:id="@id/ek8" android:layout="@layout/a6m" android:inflatedId="@id/ek7" android:layout_width="fill_parent" android:layout_height="@dimen/cb" />

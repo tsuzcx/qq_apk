@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class pd
   extends b
 {
-  public a drQ;
-  public b drR;
+  public a dDd;
   
   public pd()
   {
@@ -16,28 +15,26 @@ public final class pd
   
   private pd(byte paramByte)
   {
-    AppMethodBeat.i(9427);
-    this.drQ = new a();
-    this.drR = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(168630);
+    this.dDd = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(9427);
+    AppMethodBeat.o(168630);
   }
   
   public static final class a
   {
-    public long dbz;
-    public String dqf;
-  }
-  
-  public static final class b
-  {
-    public String drS;
+    public boolean dDe;
+    public String dDf;
+    public String mediaId;
+    public int process;
+    public int size;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.pd
  * JD-Core Version:    0.7.0.1
  */

@@ -10,21 +10,21 @@ import java.util.List;
 final class c
 {
   int mPriority;
-  String xNZ;
-  String xOa;
-  List<String> xOb;
-  List<String> xOc;
-  String xOd;
+  String zdT;
+  String zdU;
+  List<String> zdV;
+  List<String> zdW;
+  String zdX;
   
-  final Collection<b> dGH()
+  final Collection<b> dSU()
   {
-    AppMethodBeat.i(200076);
+    AppMethodBeat.i(197801);
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = this.xOb;
-    Object localObject2 = this.xOc;
+    Object localObject1 = this.zdV;
+    Object localObject2 = this.zdW;
     if ((localObject1 == null) || (((List)localObject1).isEmpty()))
     {
-      AppMethodBeat.o(200076);
+      AppMethodBeat.o(197801);
       return localArrayList;
     }
     if ((localObject2 != null) && (!((List)localObject2).isEmpty())) {
@@ -35,15 +35,15 @@ final class c
       String str = (String)((Iterator)localObject2).next();
       Iterator localIterator = ((List)localObject1).iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(b.w((String)localIterator.next(), str, this.xNZ, this.xOa));
+        localArrayList.add(b.x((String)localIterator.next(), str, this.zdT, this.zdU));
       }
       continue;
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        localArrayList.add(b.w((String)((Iterator)localObject1).next(), "", this.xNZ, this.xOa));
+        localArrayList.add(b.x((String)((Iterator)localObject1).next(), "", this.zdT, this.zdU));
       }
     }
-    AppMethodBeat.o(200076);
+    AppMethodBeat.o(197801);
     return localArrayList;
   }
   
@@ -52,16 +52,16 @@ final class c
   {
     private static int a(c paramc1, c paramc2)
     {
-      AppMethodBeat.i(200074);
+      AppMethodBeat.i(197799);
       try
       {
         int i = Integer.compare(paramc1.mPriority, paramc2.mPriority);
-        AppMethodBeat.o(200074);
+        AppMethodBeat.o(197799);
         return i;
       }
       catch (Throwable paramc1)
       {
-        AppMethodBeat.o(200074);
+        AppMethodBeat.o(197799);
       }
       return 0;
     }

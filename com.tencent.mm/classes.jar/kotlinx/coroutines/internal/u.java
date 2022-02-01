@@ -1,15 +1,18 @@
 package kotlinx.coroutines.internal;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"AVAILABLE_PROCESSORS", "", "getAVAILABLE_PROCESSORS", "()I", "systemProp", "", "propertyName", "kotlinx-coroutines-core"})
+@l(gfx={1, 1, 16}, gfy={"kotlinx/coroutines/internal/SystemPropsKt__SystemPropsKt", "kotlinx/coroutines/internal/SystemPropsKt__SystemProps_commonKt"})
 public final class u
 {
-  private static final int LTi;
-  
-  public static final String aXg(String arg0) {}
-  
-  public static final int geJ() {}
+  private static long e(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  {
+    AppMethodBeat.i(118123);
+    paramLong1 = w.e(paramString, paramLong1, paramLong2, paramLong3);
+    AppMethodBeat.o(118123);
+    return paramLong1;
+  }
 }
 
 

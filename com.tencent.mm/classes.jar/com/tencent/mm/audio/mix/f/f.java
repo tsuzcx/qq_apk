@@ -2,7 +2,7 @@ package com.tencent.mm.audio.mix.f;
 
 public abstract interface f
 {
-  public abstract void Nh();
+  public abstract void OQ();
   
   public abstract void onError(int paramInt);
 }

@@ -8,33 +8,19 @@ public abstract class fa
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eXr;
-  private static final int eXs;
-  private static final int eXt = "invalidtime".hashCode();
-  private static final int erG;
-  private static final int etX;
-  private static final int ezo = "transferId".hashCode();
+  private static final int eEU = "appId".hashCode();
+  private static final int foh = "hit".hashCode();
+  private static final int foi = "hitTimeMS".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eXo = true;
-  private boolean eXp = true;
-  private boolean eXq = true;
-  private boolean err = true;
-  private boolean etJ = true;
-  private boolean ezn = true;
-  public long field_invalidtime;
-  public boolean field_isSend;
-  public long field_locaMsgId;
-  public int field_receiveStatus;
-  public String field_talker;
-  public String field_transferId;
-  
-  static
-  {
-    eXr = "locaMsgId".hashCode();
-    eXs = "receiveStatus".hashCode();
-    erG = "isSend".hashCode();
-    etX = "talker".hashCode();
-  }
+  private static final int type_HASHCODE = "type".hashCode();
+  private boolean __hadSettype = true;
+  private boolean eED = true;
+  public String field_appId;
+  public int field_hit;
+  public long field_hitTimeMS;
+  public int field_type;
+  private boolean fof = true;
+  private boolean fog = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -42,51 +28,32 @@ public abstract class fa
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ezo != k) {
-        break label65;
+      if (eEU != k) {
+        break label60;
       }
-      this.field_transferId = paramCursor.getString(i);
-      this.ezn = true;
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eXr == k)
-      {
-        this.field_locaMsgId = paramCursor.getLong(i);
-      }
-      else if (eXs == k)
-      {
-        this.field_receiveStatus = paramCursor.getInt(i);
-      }
-      else
-      {
-        if (erG == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_isSend = bool;
-            break;
-          }
-        }
-        if (etX == k) {
-          this.field_talker = paramCursor.getString(i);
-        } else if (eXt == k) {
-          this.field_invalidtime = paramCursor.getLong(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      label60:
+      if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (foh == k) {
+        this.field_hit = paramCursor.getInt(i);
+      } else if (foi == k) {
+        this.field_hitTimeMS = paramCursor.getLong(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -94,23 +61,17 @@ public abstract class fa
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ezn) {
-      localContentValues.put("transferId", this.field_transferId);
+    if (this.eED) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.eXo) {
-      localContentValues.put("locaMsgId", Long.valueOf(this.field_locaMsgId));
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eXp) {
-      localContentValues.put("receiveStatus", Integer.valueOf(this.field_receiveStatus));
+    if (this.fof) {
+      localContentValues.put("hit", Integer.valueOf(this.field_hit));
     }
-    if (this.err) {
-      localContentValues.put("isSend", Boolean.valueOf(this.field_isSend));
-    }
-    if (this.etJ) {
-      localContentValues.put("talker", this.field_talker);
-    }
-    if (this.eXq) {
-      localContentValues.put("invalidtime", Long.valueOf(this.field_invalidtime));
+    if (this.fog) {
+      localContentValues.put("hitTimeMS", Long.valueOf(this.field_hitTimeMS));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -120,7 +81,7 @@ public abstract class fa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.fa
  * JD-Core Version:    0.7.0.1
  */

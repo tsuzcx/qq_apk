@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.contact.a.d;
 import com.tencent.mm.ui.contact.n;
 import com.tencent.mm.ui.contact.q;
@@ -21,24 +21,24 @@ public final class a
   extends q
   implements l
 {
-  ai contact;
-  ao handler;
-  private List<m> lnk;
+  am contact;
+  ap handler;
+  private List<m> lKC;
   
-  public a(n paramn, int paramInt, ai paramai)
+  public a(n paramn, int paramInt, am paramam)
   {
     super(paramn, new ArrayList(), true, false, paramInt);
     AppMethodBeat.i(26950);
-    this.handler = new ao(Looper.getMainLooper());
-    this.contact = paramai;
+    this.handler = new ap(Looper.getMainLooper());
+    this.contact = paramam;
     AppMethodBeat.o(26950);
   }
   
   public final void b(k paramk)
   {
     AppMethodBeat.i(26953);
-    if (paramk.bPH == 0) {
-      this.lnk = paramk.syK;
+    if (paramk.bZU == 0) {
+      this.lKC = paramk.tvl;
     }
     notifyDataSetChanged();
     AppMethodBeat.o(26953);
@@ -47,22 +47,22 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(26952);
-    if (this.lnk == null)
+    if (this.lKC == null)
     {
       AppMethodBeat.o(26952);
       return 0;
     }
-    int i = this.lnk.size();
+    int i = this.lKC.size();
     AppMethodBeat.o(26952);
     return i;
   }
   
-  public final com.tencent.mm.ui.contact.a.a qH(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a rh(int paramInt)
   {
     AppMethodBeat.i(26951);
     d locald = new d(paramInt, this.contact);
-    az.ayM();
-    locald.contact = c.awB().aNt(((m)this.lnk.get(paramInt)).sxG);
+    ba.aBQ();
+    locald.contact = c.azp().Bf(((m)this.lKC.get(paramInt)).tuh);
     AppMethodBeat.o(26951);
     return locald;
   }

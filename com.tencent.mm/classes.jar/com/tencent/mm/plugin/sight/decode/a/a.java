@@ -6,7 +6,7 @@ public abstract interface a
 {
   public abstract void clear();
   
-  public abstract void dEx();
+  public abstract void dQa();
   
   public abstract void e(String paramString, boolean paramBoolean, int paramInt);
   
@@ -14,7 +14,7 @@ public abstract interface a
   
   public abstract String getVideoPath();
   
-  public abstract void hf(int paramInt1, int paramInt2);
+  public abstract void hw(int paramInt1, int paramInt2);
   
   public abstract void setCanPlay(boolean paramBoolean);
   

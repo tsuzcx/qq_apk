@@ -4,8 +4,8 @@ import java.lang.reflect.Method;
 
 final class h
 {
-  static Method zx;
-  static boolean zy;
+  static Method Bo;
+  static boolean Bp;
 }
 
 

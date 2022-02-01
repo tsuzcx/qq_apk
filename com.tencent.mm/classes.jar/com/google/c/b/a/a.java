@@ -4,50 +4,50 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static final a bIA;
-  public static final a bIt;
-  public static final a bIu;
-  public static final a bIv;
-  public static final a bIw;
-  public static final a bIx;
-  public static final a bIy;
-  public static final a bIz;
-  final int[] bIB;
-  final int[] bIC;
-  final b bID;
-  private final b bIE;
-  private final int bIF;
-  final int bIG;
+  public static final a bSH;
+  public static final a bSI;
+  public static final a bSJ;
+  public static final a bSK;
+  public static final a bSL;
+  public static final a bSM;
+  public static final a bSN;
+  public static final a bSO;
+  final int[] bSP;
+  final int[] bSQ;
+  final b bSR;
+  private final b bSS;
+  private final int bST;
+  final int bSU;
   final int size;
   
   static
   {
     AppMethodBeat.i(12338);
-    bIt = new a(4201, 4096, 1);
-    bIu = new a(1033, 1024, 1);
-    bIv = new a(67, 64, 1);
-    bIw = new a(19, 16, 1);
-    bIx = new a(285, 256, 0);
+    bSH = new a(4201, 4096, 1);
+    bSI = new a(1033, 1024, 1);
+    bSJ = new a(67, 64, 1);
+    bSK = new a(19, 16, 1);
+    bSL = new a(285, 256, 0);
     a locala = new a(301, 256, 1);
-    bIy = locala;
-    bIz = locala;
-    bIA = bIv;
+    bSM = locala;
+    bSN = locala;
+    bSO = bSJ;
     AppMethodBeat.o(12338);
   }
   
   private a(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(12336);
-    this.bIF = paramInt1;
+    this.bST = paramInt1;
     this.size = paramInt2;
-    this.bIG = paramInt3;
-    this.bIB = new int[paramInt2];
-    this.bIC = new int[paramInt2];
+    this.bSU = paramInt3;
+    this.bSP = new int[paramInt2];
+    this.bSQ = new int[paramInt2];
     int i = 0;
     paramInt3 = 1;
     while (i < paramInt2)
     {
-      this.bIB[i] = paramInt3;
+      this.bSP[i] = paramInt3;
       int j = paramInt3 << 1;
       paramInt3 = j;
       if (j >= paramInt2) {
@@ -58,31 +58,31 @@ public final class a
     paramInt1 = 0;
     while (paramInt1 < paramInt2 - 1)
     {
-      this.bIC[this.bIB[paramInt1]] = paramInt1;
+      this.bSQ[this.bSP[paramInt1]] = paramInt1;
       paramInt1 += 1;
     }
-    this.bID = new b(this, new int[] { 0 });
-    this.bIE = new b(this, new int[] { 1 });
+    this.bSR = new b(this, new int[] { 0 });
+    this.bSS = new b(this, new int[] { 1 });
     AppMethodBeat.o(12336);
   }
   
-  static int bH(int paramInt1, int paramInt2)
+  static int bJ(int paramInt1, int paramInt2)
   {
     return paramInt1 ^ paramInt2;
   }
   
-  final int bI(int paramInt1, int paramInt2)
+  final int bK(int paramInt1, int paramInt2)
   {
     if ((paramInt1 == 0) || (paramInt2 == 0)) {
       return 0;
     }
-    return this.bIB[((this.bIC[paramInt1] + this.bIC[paramInt2]) % (this.size - 1))];
+    return this.bSP[((this.bSQ[paramInt1] + this.bSQ[paramInt2]) % (this.size - 1))];
   }
   
   public final String toString()
   {
     AppMethodBeat.i(12337);
-    String str = "GF(0x" + Integer.toHexString(this.bIF) + ',' + this.size + ')';
+    String str = "GF(0x" + Integer.toHexString(this.bST) + ',' + this.size + ')';
     AppMethodBeat.o(12337);
     return str;
   }

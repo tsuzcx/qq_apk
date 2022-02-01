@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.subapp.d;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gf;
+import com.tencent.mm.g.c.gp;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,29 +16,29 @@ import junit.framework.Assert;
 public final class k
   extends j<g>
 {
+  private static long Big;
   public static final String[] SQL_CREATE;
-  private static long iaX;
+  private Map<String, c> Bih;
   e db;
-  private Map<String, c> zQF;
   
   static
   {
     AppMethodBeat.i(29002);
     SQL_CREATE = new String[] { j.getCreateSQLs(g.info, "VoiceRemindInfo") };
-    iaX = 0L;
+    Big = 0L;
     AppMethodBeat.o(29002);
   }
   
   public k(e parame)
   {
-    super(parame, g.info, "VoiceRemindInfo", gf.INDEX_CREATE);
+    super(parame, g.info, "VoiceRemindInfo", gp.INDEX_CREATE);
     AppMethodBeat.i(28995);
-    this.zQF = new HashMap();
+    this.Bih = new HashMap();
     this.db = parame;
     AppMethodBeat.o(28995);
   }
   
-  public static String DU(String paramString)
+  public static String Hg(String paramString)
   {
     AppMethodBeat.i(28996);
     long l = System.currentTimeMillis();
@@ -53,21 +53,36 @@ public final class k
     }
     paramString = str1 + l % 10000L;
     paramString = new StringBuilder().append(paramString);
-    l = iaX;
-    iaX = 1L + l;
+    l = Big;
+    Big = 1L + l;
     paramString = l;
     AppMethodBeat.o(28996);
     return paramString;
   }
   
-  public final void ED(String paramString)
+  public final boolean CA(String paramString)
+  {
+    AppMethodBeat.i(28997);
+    if (paramString.length() > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      if (this.db.delete("VoiceRemindInfo", "filename= ?", new String[] { paramString }) <= 0) {
+        ad.w("MicroMsg.VoiceRemindStorage", "delete failed, no such file:".concat(String.valueOf(paramString)));
+      }
+      AppMethodBeat.o(28997);
+      return true;
+    }
+  }
+  
+  public final void HS(String paramString)
   {
     AppMethodBeat.i(28999);
-    c localc = (c)this.zQF.get(paramString);
+    c localc = (c)this.Bih.get(paramString);
     if (localc != null)
     {
-      localc.aKd();
-      this.zQF.remove(paramString);
+      localc.aNm();
+      this.Bih.remove(paramString);
     }
     AppMethodBeat.o(28999);
   }
@@ -90,7 +105,7 @@ public final class k
       if (paramg.size() > 0) {
         break label66;
       }
-      ac.e("MicroMsg.VoiceRemindStorage", "update failed, no values set");
+      ad.e("MicroMsg.VoiceRemindStorage", "update failed, no values set");
     }
     label61:
     label66:
@@ -108,18 +123,18 @@ public final class k
     return true;
   }
   
-  public final c axw(String paramString)
+  public final c aCA(String paramString)
   {
     AppMethodBeat.i(28998);
-    if (this.zQF.get(paramString) == null) {
-      this.zQF.put(paramString, new c(paramString));
+    if (this.Bih.get(paramString) == null) {
+      this.Bih.put(paramString, new c(paramString));
     }
-    paramString = (c)this.zQF.get(paramString);
+    paramString = (c)this.Bih.get(paramString);
     AppMethodBeat.o(28998);
     return paramString;
   }
   
-  public final g axx(String paramString)
+  public final g aCB(String paramString)
   {
     AppMethodBeat.i(29000);
     Object localObject1 = null;
@@ -134,21 +149,6 @@ public final class k
     ((Cursor)localObject2).close();
     AppMethodBeat.o(29000);
     return paramString;
-  }
-  
-  public final boolean zB(String paramString)
-  {
-    AppMethodBeat.i(28997);
-    if (paramString.length() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      if (this.db.delete("VoiceRemindInfo", "filename= ?", new String[] { paramString }) <= 0) {
-        ac.w("MicroMsg.VoiceRemindStorage", "delete failed, no such file:".concat(String.valueOf(paramString)));
-      }
-      AppMethodBeat.o(28997);
-      return true;
-    }
   }
 }
 

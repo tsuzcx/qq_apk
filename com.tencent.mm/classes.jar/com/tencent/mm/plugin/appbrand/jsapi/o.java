@@ -7,42 +7,42 @@ import org.json.JSONObject;
 
 public abstract class o
 {
-  private int jOT;
-  private m jOU;
-  protected aa jWv;
-  protected JSONObject jWw;
-  protected q jiP;
+  protected q jCl;
+  private int kje;
+  private m kjf;
+  protected aa kqM;
+  protected JSONObject kqN;
   
   public o(m paramm, q paramq, aa paramaa, JSONObject paramJSONObject, int paramInt)
   {
     if ((paramm == null) || (paramq == null) || (paramJSONObject == null)) {
       throw new IllegalArgumentException("JsApiAsyncRequest");
     }
-    this.jOU = paramm;
-    this.jiP = paramq;
-    this.jWv = paramaa;
-    this.jOT = paramInt;
-    this.jWw = paramJSONObject;
+    this.kjf = paramm;
+    this.jCl = paramq;
+    this.kqM = paramaa;
+    this.kje = paramInt;
+    this.kqN = paramJSONObject;
   }
   
-  public final q CX()
+  public final q Ew()
   {
-    return this.jiP;
+    return this.jCl;
   }
   
-  public final JSONObject beG()
+  public final JSONObject bik()
   {
-    return this.jWw;
+    return this.kqN;
   }
   
-  protected final void l(String paramString, Map<String, ? extends Object> paramMap)
+  protected final void n(String paramString, Map<String, ? extends Object> paramMap)
   {
-    this.jiP.h(this.jOT, this.jOU.k(paramString, paramMap));
+    this.jCl.h(this.kje, this.kjf.m(paramString, paramMap));
   }
   
   protected final void z(Map<String, ? extends Object> paramMap)
   {
-    this.jiP.h(this.jOT, this.jOU.k("ok", paramMap));
+    this.jCl.h(this.kje, this.kjf.m("ok", paramMap));
   }
 }
 

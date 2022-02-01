@@ -9,257 +9,257 @@ import java.util.Queue;
 
 public final class c
 {
-  private int clA;
-  private int clB;
-  private float clC;
-  private Queue<Float> clD;
-  private float clE;
-  private int clF;
-  private int clG;
-  private boolean clH;
-  private a clI;
-  private a clJ;
-  private final MBRuntime clw;
-  public SparseLongArray clx;
-  private a cly;
-  final b clz;
+  private final MBRuntime cvY;
+  public SparseLongArray cvZ;
+  private a cwa;
+  final b cwb;
+  private int cwc;
+  private int cwd;
+  private float cwe;
+  private Queue<Float> cwf;
+  private float cwg;
+  private int cwh;
+  private int cwi;
+  private boolean cwj;
+  private a cwk;
+  private a cwl;
   Handler handler;
   private boolean hasInit;
   
   c(MBRuntime paramMBRuntime)
   {
     AppMethodBeat.i(139930);
-    this.clx = new SparseLongArray();
-    this.cly = new a((byte)0);
-    this.clz = new b((byte)0);
-    this.clD = new LinkedList();
-    this.clI = new a();
-    this.clJ = new a();
-    this.clw = paramMBRuntime;
+    this.cvZ = new SparseLongArray();
+    this.cwa = new a((byte)0);
+    this.cwb = new b((byte)0);
+    this.cwf = new LinkedList();
+    this.cwk = new a();
+    this.cwl = new a();
+    this.cvY = paramMBRuntime;
     this.hasInit = false;
     AppMethodBeat.o(139930);
   }
   
-  public final int FA()
+  final void GQ()
   {
-    synchronized (this.clw)
+    AppMethodBeat.i(139931);
+    if (this.handler != null)
     {
-      int i = this.clI.clL;
+      this.handler.removeCallbacks(this.cwb);
+      this.handler = null;
+    }
+    AppMethodBeat.o(139931);
+  }
+  
+  public final a GR()
+  {
+    synchronized (this.cvY)
+    {
+      a locala = this.cwa;
+      return locala;
+    }
+  }
+  
+  public final a GS()
+  {
+    synchronized (this.cvY)
+    {
+      this.cwl.cwn = this.cwk.cwn;
+      this.cwl.cwm = this.cwk.cwm;
+      this.cwk.cwn = 0;
+      this.cwk.cwm = 0;
+      a locala = this.cwl;
+      return locala;
+    }
+  }
+  
+  public final int GT()
+  {
+    synchronized (this.cvY)
+    {
+      int i = this.cwk.cwm;
       return i;
     }
   }
   
-  public final float FB()
+  public final int GU()
+  {
+    synchronized (this.cvY)
+    {
+      int i = this.cwk.cwn;
+      return i;
+    }
+  }
+  
+  public final float GV()
   {
     AppMethodBeat.i(139933);
-    synchronized (this.clw)
+    synchronized (this.cvY)
     {
-      if (this.clw.mNativeInst == 0L)
+      if (this.cvY.mNativeInst == 0L)
       {
         AppMethodBeat.o(139933);
         return -1.0F;
       }
-      float f = this.clw.nativeGetCurrentFpsVariance(this.clw.mNativeInst);
+      float f = this.cvY.nativeGetCurrentFpsVariance(this.cvY.mNativeInst);
       AppMethodBeat.o(139933);
       return f;
     }
   }
   
-  public final void FC()
+  public final void GW()
   {
     AppMethodBeat.i(139934);
-    synchronized (this.clw)
+    synchronized (this.cvY)
     {
-      if (this.clw.mNativeInst == 0L)
+      if (this.cvY.mNativeInst == 0L)
       {
         AppMethodBeat.o(139934);
         return;
       }
-      this.clw.nativeSetEnableInspectFpsVariance(this.clw.mNativeInst, true);
+      this.cvY.nativeSetEnableInspectFpsVariance(this.cvY.mNativeInst, true);
       AppMethodBeat.o(139934);
       return;
     }
   }
   
-  public final int FD()
+  public final int GX()
   {
     AppMethodBeat.i(139935);
-    synchronized (this.clw)
+    synchronized (this.cvY)
     {
-      if (this.clw.mNativeInst == 0L)
+      if (this.cvY.mNativeInst == 0L)
       {
         AppMethodBeat.o(139935);
         return -1;
       }
-      int i = this.clw.nativeGetFrameCounter(this.clw.mNativeInst);
+      int i = this.cvY.nativeGetFrameCounter(this.cvY.mNativeInst);
       AppMethodBeat.o(139935);
       return i;
     }
   }
   
-  public final int FE()
+  public final int GY()
   {
     AppMethodBeat.i(139936);
-    synchronized (this.clw)
+    synchronized (this.cvY)
     {
-      if (this.clw.mNativeInst == 0L)
+      if (this.cvY.mNativeInst == 0L)
       {
         AppMethodBeat.o(139936);
         return 0;
       }
-      int i = this.clw.nativeGetDrawCalls(this.clw.mNativeInst);
+      int i = this.cvY.nativeGetDrawCalls(this.cvY.mNativeInst);
       AppMethodBeat.o(139936);
       return i;
     }
   }
   
-  public final int FF()
+  public final int GZ()
   {
     AppMethodBeat.i(139937);
-    synchronized (this.clw)
+    synchronized (this.cvY)
     {
-      if (this.clw.mNativeInst == 0L)
+      if (this.cvY.mNativeInst == 0L)
       {
         AppMethodBeat.o(139937);
         return 0;
       }
-      int i = this.clw.nativeGetVertexes(this.clw.mNativeInst);
+      int i = this.cvY.nativeGetVertexes(this.cvY.mNativeInst);
       AppMethodBeat.o(139937);
       return i;
     }
   }
   
-  public final int FG()
+  public final int Ha()
   {
     AppMethodBeat.i(139938);
-    synchronized (this.clw)
+    synchronized (this.cvY)
     {
-      if (this.clw.mNativeInst == 0L)
+      if (this.cvY.mNativeInst == 0L)
       {
         AppMethodBeat.o(139938);
         return 0;
       }
-      int i = this.clw.nativeGetTriangles(this.clw.mNativeInst);
+      int i = this.cvY.nativeGetTriangles(this.cvY.mNativeInst);
       AppMethodBeat.o(139938);
       return i;
     }
   }
   
-  public final void FH()
+  public final void Hb()
   {
     AppMethodBeat.i(139939);
-    synchronized (this.clw)
+    synchronized (this.cvY)
     {
-      if (this.clw.mNativeInst == 0L)
+      if (this.cvY.mNativeInst == 0L)
       {
         AppMethodBeat.o(139939);
         return;
       }
-      Object localObject1 = this.clw.nativeGetCurrentFps(this.clw.mNativeInst);
-      this.cly.clj = localObject1[0];
-      this.cly.clk = localObject1[1];
+      Object localObject1 = this.cvY.nativeGetCurrentFps(this.cvY.mNativeInst);
+      this.cwa.cvL = localObject1[0];
+      this.cwa.cvM = localObject1[1];
       if (this.hasInit)
       {
-        this.clF += 1;
-        if (this.clF > this.clG)
+        this.cwh += 1;
+        if (this.cwh > this.cwi)
         {
-          this.clF = 1;
-          if (this.clH)
+          this.cwh = 1;
+          if (this.cwj)
           {
-            this.clI.clL = 0;
-            this.clI.clK = 0;
+            this.cwk.cwn = 0;
+            this.cwk.cwm = 0;
           }
         }
-        if (this.cly.clj < this.clC)
+        if (this.cwa.cvL < this.cwe)
         {
-          localObject1 = this.clI;
-          ((a)localObject1).clL += 1;
+          localObject1 = this.cwk;
+          ((a)localObject1).cwn += 1;
         }
-        if ((this.clD.size() >= this.clA) && (this.clA > 0))
+        if ((this.cwf.size() >= this.cwc) && (this.cwc > 0))
         {
-          if (this.cly.clj * this.clA + this.clB < this.clE)
+          if (this.cwa.cvL * this.cwc + this.cwd < this.cwg)
           {
-            localObject1 = this.clI;
-            ((a)localObject1).clK += 1;
+            localObject1 = this.cwk;
+            ((a)localObject1).cwm += 1;
           }
-          this.clE -= ((Float)this.clD.remove()).floatValue();
+          this.cwg -= ((Float)this.cwf.remove()).floatValue();
         }
-        this.clD.add(Float.valueOf(this.cly.clj));
-        this.clE += this.cly.clj;
+        this.cwf.add(Float.valueOf(this.cwa.cvL));
+        this.cwg += this.cwa.cvL;
       }
       AppMethodBeat.o(139939);
       return;
     }
   }
   
-  final void Fw()
-  {
-    AppMethodBeat.i(139931);
-    if (this.handler != null)
-    {
-      this.handler.removeCallbacks(this.clz);
-      this.handler = null;
-    }
-    AppMethodBeat.o(139931);
-  }
-  
-  public final a Fx()
-  {
-    synchronized (this.clw)
-    {
-      a locala = this.cly;
-      return locala;
-    }
-  }
-  
-  public final a Fy()
-  {
-    synchronized (this.clw)
-    {
-      this.clJ.clL = this.clI.clL;
-      this.clJ.clK = this.clI.clK;
-      this.clI.clL = 0;
-      this.clI.clK = 0;
-      a locala = this.clJ;
-      return locala;
-    }
-  }
-  
-  public final int Fz()
-  {
-    synchronized (this.clw)
-    {
-      int i = this.clI.clK;
-      return i;
-    }
-  }
-  
   public final void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, boolean paramBoolean)
   {
-    synchronized (this.clw)
+    synchronized (this.cvY)
     {
-      this.clA = paramInt1;
-      this.clC = paramFloat;
-      this.clB = (paramInt1 * paramInt2);
-      this.clG = paramInt3;
-      this.clH = paramBoolean;
+      this.cwc = paramInt1;
+      this.cwe = paramFloat;
+      this.cwd = (paramInt1 * paramInt2);
+      this.cwi = paramInt3;
+      this.cwj = paramBoolean;
       this.hasInit = true;
       return;
     }
   }
   
-  public final float gL(int paramInt)
+  public final float gQ(int paramInt)
   {
     AppMethodBeat.i(139932);
-    float f = (FD() - paramInt) * 1000.0F / (float)h.aO(this.clx.get(paramInt));
+    float f = (GX() - paramInt) * 1000.0F / (float)h.aO(this.cvZ.get(paramInt));
     AppMethodBeat.o(139932);
     return f;
   }
   
   public final class a
   {
-    public int clK;
-    public int clL;
+    public int cwm;
+    public int cwn;
     
     public a() {}
   }
@@ -272,15 +272,15 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(139929);
-      c.this.FH();
-      c.this.handler.postDelayed(c.this.clz, 1000L);
+      c.this.Hb();
+      c.this.handler.postDelayed(c.this.cwb, 1000L);
       AppMethodBeat.o(139929);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.c
  * JD-Core Version:    0.7.0.1
  */

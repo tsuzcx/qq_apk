@@ -4,38 +4,38 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.a;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.x;
+import com.tencent.mm.al.x.a;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.extension.c;
 import com.tencent.mm.ipcinvoker.wx_extension.service.IPCRunCgiRespWrapper;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.i;
 import java.lang.reflect.Modifier;
 import java.util.Locale;
 import junit.framework.Assert;
 
 public final class IPCRunCgi
 {
-  private static final b gez;
+  private static final b gyj;
   
   static
   {
-    AppMethodBeat.i(192945);
-    gez = new b()
+    AppMethodBeat.i(189802);
+    gyj = new b()
     {
-      public final com.tencent.mm.ak.b a(com.tencent.mm.ak.b paramAnonymousb)
+      public final com.tencent.mm.al.b a(com.tencent.mm.al.b paramAnonymousb)
       {
         return paramAnonymousb;
       }
     };
-    AppMethodBeat.o(192945);
+    AppMethodBeat.o(189802);
   }
   
-  public static n a(com.tencent.mm.ak.b paramb, a parama)
+  public static n a(com.tencent.mm.al.b paramb, IPCRunCgi.a parama)
   {
     AppMethodBeat.i(174551);
     paramb = a(paramb, null, parama);
@@ -43,39 +43,28 @@ public final class IPCRunCgi
     return paramb;
   }
   
-  public static n a(com.tencent.mm.ak.b paramb, b paramb1, a parama)
+  public static n a(com.tencent.mm.al.b paramb, b paramb1, IPCRunCgi.a parama)
   {
-    AppMethodBeat.i(192943);
-    if (ai.ciE())
+    AppMethodBeat.i(189800);
+    if (aj.cnC())
     {
       b localb = paramb1;
       if (paramb1 == null) {
-        localb = gez;
+        localb = gyj;
       }
-      paramb = x.a(localb.a(paramb), new x.a()
-      {
-        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
-        {
-          AppMethodBeat.i(192936);
-          if (this.geA != null) {
-            this.geA.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousb);
-          }
-          AppMethodBeat.o(192936);
-          return 0;
-        }
-      }, true);
-      AppMethodBeat.o(192943);
+      paramb = x.a(localb.a(paramb), new IPCRunCgi.2(parama), true);
+      AppMethodBeat.o(189800);
       return paramb;
     }
     b(paramb, paramb1, parama);
-    AppMethodBeat.o(192943);
+    AppMethodBeat.o(189800);
     return null;
   }
   
-  private static void b(com.tencent.mm.ak.b paramb, b paramb1, a parama)
+  private static void b(com.tencent.mm.al.b paramb, b paramb1, IPCRunCgi.a parama)
   {
     Object localObject = null;
-    AppMethodBeat.i(192944);
+    AppMethodBeat.i(189801);
     b localb = paramb1;
     if (paramb1 != null)
     {
@@ -83,10 +72,10 @@ public final class IPCRunCgi
       if (!Modifier.isStatic(paramb1.getClass().getModifiers()))
       {
         paramb1 = String.format(Locale.ENGLISH, "remoteCgiImpl in client process, invalid interceptor %s", new Object[] { paramb1.getClass().getName() });
-        if (h.IS_FLAVOR_RED) {
+        if (i.IS_FLAVOR_RED) {
           Assert.fail(paramb1);
         }
-        ac.printErrStackTrace("MicroMsg.IPCRunCgi", new Throwable(), paramb1, new Object[0]);
+        ad.printErrStackTrace("MicroMsg.IPCRunCgi", new Throwable(), paramb1, new Object[0]);
         localb = null;
       }
     }
@@ -97,7 +86,7 @@ public final class IPCRunCgi
       IPCRunCgiParamsWrapper.a(localIPCRunCgiParamsWrapper, paramb1);
       IPCRunCgiParamsWrapper.a(localIPCRunCgiParamsWrapper, paramb);
       XIPCInvoker.a("com.tencent.mm", localIPCRunCgiParamsWrapper, c.class, new d() {});
-      AppMethodBeat.o(192944);
+      AppMethodBeat.o(189801);
       return;
     }
   }
@@ -106,47 +95,47 @@ public final class IPCRunCgi
     implements Parcelable
   {
     public static final Parcelable.Creator<IPCRunCgiParamsWrapper> CREATOR;
-    private String geB;
-    private com.tencent.mm.ak.b rr;
+    private String gyl;
+    private com.tencent.mm.al.b rr;
     
     static
     {
-      AppMethodBeat.i(192942);
+      AppMethodBeat.i(189799);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(192942);
+      AppMethodBeat.o(189799);
     }
     
     public IPCRunCgiParamsWrapper() {}
     
     IPCRunCgiParamsWrapper(Parcel paramParcel)
     {
-      AppMethodBeat.i(192941);
-      this.geB = paramParcel.readString();
-      this.rr = ((com.tencent.mm.ak.b)c.a(a.class.getName(), paramParcel));
-      AppMethodBeat.o(192941);
+      AppMethodBeat.i(189798);
+      this.gyl = paramParcel.readString();
+      this.rr = ((com.tencent.mm.al.b)c.a(a.class.getName(), paramParcel));
+      AppMethodBeat.o(189798);
     }
     
-    public final IPCRunCgi.b aeX()
+    public final IPCRunCgi.b ahJ()
     {
-      AppMethodBeat.i(192939);
+      AppMethodBeat.i(189796);
       IPCRunCgi.b localb1;
-      if (this.geB == null)
+      if (this.gyl == null)
       {
-        localb1 = IPCRunCgi.aeW();
-        AppMethodBeat.o(192939);
+        localb1 = IPCRunCgi.ahI();
+        AppMethodBeat.o(189796);
         return localb1;
       }
       try
       {
-        localb1 = (IPCRunCgi.b)org.a.a.bD(org.a.a.forName(this.geB)).gfN().object;
-        AppMethodBeat.o(192939);
+        localb1 = (IPCRunCgi.b)org.a.a.bF(org.a.a.forName(this.gyl)).gyr().object;
+        AppMethodBeat.o(189796);
         return localb1;
       }
       catch (org.a.b localb)
       {
-        ac.e("MicroMsg.IPCRunCgi", "createInterceptor with name:%s, get exception:%s", new Object[] { this.geB, localb });
-        IPCRunCgi.b localb2 = IPCRunCgi.aeW();
-        AppMethodBeat.o(192939);
+        ad.e("MicroMsg.IPCRunCgi", "createInterceptor with name:%s, get exception:%s", new Object[] { this.gyl, localb });
+        IPCRunCgi.b localb2 = IPCRunCgi.ahI();
+        AppMethodBeat.o(189796);
         return localb2;
       }
     }
@@ -158,21 +147,16 @@ public final class IPCRunCgi
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(192940);
-      paramParcel.writeString(this.geB);
+      AppMethodBeat.i(189797);
+      paramParcel.writeString(this.gyl);
       c.a(this.rr, paramParcel);
-      AppMethodBeat.o(192940);
+      AppMethodBeat.o(189797);
     }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb);
   }
   
   public static abstract interface b
   {
-    public abstract com.tencent.mm.ak.b a(com.tencent.mm.ak.b paramb);
+    public abstract com.tencent.mm.al.b a(com.tencent.mm.al.b paramb);
   }
   
   static final class c
@@ -181,7 +165,7 @@ public final class IPCRunCgi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi
  * JD-Core Version:    0.7.0.1
  */

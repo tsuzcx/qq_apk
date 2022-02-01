@@ -16,9 +16,9 @@ public abstract interface b
   
   public abstract boolean isRunning();
   
-  public abstract void pause();
+  public abstract boolean pR();
   
-  public abstract boolean pz();
+  public abstract void pause();
   
   public abstract void recycle();
 }

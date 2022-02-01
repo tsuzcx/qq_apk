@@ -9,30 +9,30 @@ import org.xwalk.core.XWalkEnvironment;
 public final class t
   implements IWebViewDatabase
 {
-  b KHg;
+  b MxG;
   
   public t()
   {
-    AppMethodBeat.i(208937);
-    this.KHg = b.cC(XWalkEnvironment.getApplicationContext(), "xweb_http_auth.db");
-    AppMethodBeat.o(208937);
+    AppMethodBeat.i(195578);
+    this.MxG = b.cG(XWalkEnvironment.getApplicationContext(), "xweb_http_auth.db");
+    AppMethodBeat.o(195578);
   }
   
   public final String[] getHttpAuthUsernamePassword(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(208939);
-    paramString1 = this.KHg.getHttpAuthUsernamePassword(paramString1, paramString2);
-    AppMethodBeat.o(208939);
+    AppMethodBeat.i(195580);
+    paramString1 = this.MxG.getHttpAuthUsernamePassword(paramString1, paramString2);
+    AppMethodBeat.o(195580);
     return paramString1;
   }
   
   public final void setHttpAuthUsernamePassword(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(208938);
-    b localb = this.KHg;
-    if ((paramString1 == null) || (paramString2 == null) || (!localb.fLs()))
+    AppMethodBeat.i(195579);
+    b localb = this.MxG;
+    if ((paramString1 == null) || (paramString2 == null) || (!localb.gcO()))
     {
-      AppMethodBeat.o(208938);
+      AppMethodBeat.o(195579);
       return;
     }
     ContentValues localContentValues = new ContentValues();
@@ -41,7 +41,7 @@ public final class t
     localContentValues.put("username", paramString3);
     localContentValues.put("password", paramString4);
     localb.mDatabase.insert("httpauth", "host", localContentValues);
-    AppMethodBeat.o(208938);
+    AppMethodBeat.o(195579);
   }
 }
 

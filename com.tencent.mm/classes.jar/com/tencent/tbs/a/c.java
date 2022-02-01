@@ -9,14 +9,14 @@ public enum c
   static
   {
     AppMethodBeat.i(174266);
-    JYS = new c("VERBOSE", 0, 2);
-    JYR = new c("DEBUG", 1, 3);
-    JYT = new c("INFO", 2, 4);
-    JYU = new c("WARN", 3, 5);
-    JYV = new c("ERROR", 4, 6);
-    JYW = new c("ALL", 5, -2147483648);
-    JYX = new c("NONE", 6, 2147483647);
-    JYY = new c[] { JYS, JYR, JYT, JYU, JYV, JYW, JYX };
+    LSN = new c("VERBOSE", 0, 2);
+    LSM = new c("DEBUG", 1, 3);
+    LSO = new c("INFO", 2, 4);
+    LSP = new c("WARN", 3, 5);
+    LSQ = new c("ERROR", 4, 6);
+    LSR = new c("ALL", 5, -2147483648);
+    LSS = new c("NONE", 6, 2147483647);
+    LST = new c[] { LSN, LSM, LSO, LSP, LSQ, LSR, LSS };
     AppMethodBeat.o(174266);
   }
   
@@ -31,8 +31,8 @@ public enum c
     switch (1.a[paramc.ordinal()])
     {
     default: 
-      if (paramc.h < JYS.h) {
-        paramc = "V-" + (JYS.h - paramc.h);
+      if (paramc.h < LSN.h) {
+        paramc = "V-" + (LSN.h - paramc.h);
       }
       break;
     }
@@ -50,26 +50,26 @@ public enum c
       continue;
       paramc = "E";
       continue;
-      paramc = "E+" + (paramc.h - JYV.h);
+      paramc = "E+" + (paramc.h - LSQ.h);
     }
   }
   
-  public static c aer(int paramInt)
+  public static c agR(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return JYX;
+      return LSS;
     case 2: 
-      return JYS;
+      return LSN;
     case 3: 
-      return JYR;
+      return LSM;
     case 4: 
-      return JYT;
+      return LSO;
     case 5: 
-      return JYU;
+      return LSP;
     }
-    return JYV;
+    return LSQ;
   }
 }
 

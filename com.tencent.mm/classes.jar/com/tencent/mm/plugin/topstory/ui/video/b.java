@@ -5,85 +5,85 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.aj;
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.cyv;
-import com.tencent.mm.protocal.protobuf.dil;
-import com.tencent.mm.protocal.protobuf.dio;
+import com.tencent.mm.protocal.protobuf.dei;
+import com.tencent.mm.protocal.protobuf.doa;
+import com.tencent.mm.protocal.protobuf.dod;
 import com.tencent.mm.ui.MMActivity;
 import java.util.List;
 
 public abstract interface b
 {
-  public abstract boolean Nw();
+  public abstract boolean Pf();
   
-  public abstract boolean Rn(int paramInt);
+  public abstract boolean SX(int paramInt);
   
-  public abstract void Ro(int paramInt);
+  public abstract void SY(int paramInt);
   
-  public abstract void Rp(int paramInt);
+  public abstract void SZ(int paramInt);
   
-  public abstract void a(cyv paramcyv);
+  public abstract void a(dei paramdei);
   
-  public abstract void a(dio paramdio);
+  public abstract void a(dod paramdod);
   
-  public abstract void a(dio paramdio, int paramInt1, int paramInt2);
+  public abstract void a(dod paramdod, int paramInt1, int paramInt2);
   
-  public abstract void a(dio paramdio, View paramView);
+  public abstract void a(dod paramdod, View paramView);
   
-  public abstract void a(dio paramdio, f paramf, int paramInt);
+  public abstract void a(dod paramdod, f paramf, int paramInt);
   
-  public abstract void as(View paramView, int paramInt);
+  public abstract void aCV(String paramString);
   
-  public abstract void axQ(String paramString);
+  public abstract void aCW(String paramString);
   
-  public abstract void axR(String paramString);
+  public abstract void at(View paramView, int paramInt);
   
-  public abstract void cWw();
+  public abstract void dfI();
   
-  public abstract MMActivity cYC();
+  public abstract MMActivity dhO();
   
-  public abstract void edb();
+  public abstract m epA();
   
-  public abstract void edc();
+  public abstract r epB();
   
-  public abstract l ede();
+  public abstract Point epC();
   
-  public abstract o edf();
+  public abstract aj epD();
   
-  public abstract String edg();
+  public abstract int epE();
   
-  public abstract dil edh();
+  public abstract boolean epF();
   
-  public abstract m edi();
+  public abstract boolean epG();
   
-  public abstract r edj();
+  public abstract e epH();
   
-  public abstract Point edk();
+  public abstract boolean epI();
   
-  public abstract aj edl();
+  public abstract void epJ();
   
-  public abstract int edm();
+  public abstract int epK();
   
-  public abstract boolean edn();
+  public abstract n epL();
   
-  public abstract boolean edo();
+  public abstract String epM();
   
-  public abstract e edp();
+  public abstract int epN();
   
-  public abstract boolean edq();
+  public abstract void epO();
   
-  public abstract void edr();
+  public abstract int epP();
   
-  public abstract int eds();
+  public abstract void ept();
   
-  public abstract n edt();
+  public abstract void epu();
   
-  public abstract String edu();
+  public abstract l epw();
   
-  public abstract int edv();
+  public abstract o epx();
   
-  public abstract void edw();
+  public abstract String epy();
   
-  public abstract int edx();
+  public abstract doa epz();
   
   public abstract RecyclerView.i getLayoutManager();
   
@@ -95,7 +95,7 @@ public abstract interface b
   
   public abstract boolean isFullscreenMode();
   
-  public abstract void m(List<dio> paramList, boolean paramBoolean);
+  public abstract void n(List<dod> paramList, boolean paramBoolean);
 }
 
 

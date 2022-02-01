@@ -12,7 +12,7 @@ public final class t
   public final b a(String paramString, a parama, int paramInt1, int paramInt2, Map<c, ?> paramMap)
   {
     AppMethodBeat.i(12220);
-    if (parama != a.bGX)
+    if (parama != a.bRl)
     {
       paramString = new IllegalArgumentException("Can only encode UPC_E, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12220);
@@ -23,7 +23,7 @@ public final class t
     return paramString;
   }
   
-  public final boolean[] bn(String paramString)
+  public final boolean[] cg(String paramString)
   {
     AppMethodBeat.i(12221);
     if (paramString.length() != 8)
@@ -33,9 +33,9 @@ public final class t
       throw paramString;
     }
     int i = Integer.parseInt(paramString.substring(7, 8));
-    int n = s.bJN[i];
+    int n = s.bUa[i];
     boolean[] arrayOfBoolean = new boolean[51];
-    int j = a(arrayOfBoolean, 0, q.bJJ, true);
+    int j = a(arrayOfBoolean, 0, q.bTW, true);
     i = 1;
     j += 0;
     while (i <= 6)
@@ -45,10 +45,10 @@ public final class t
       if ((n >> 6 - i & 0x1) == 1) {
         k = m + 10;
       }
-      j += a(arrayOfBoolean, j, q.bJM[k], false);
+      j += a(arrayOfBoolean, j, q.bTZ[k], false);
       i += 1;
     }
-    a(arrayOfBoolean, j, q.bJH, false);
+    a(arrayOfBoolean, j, q.bTU, false);
     AppMethodBeat.o(12221);
     return arrayOfBoolean;
   }

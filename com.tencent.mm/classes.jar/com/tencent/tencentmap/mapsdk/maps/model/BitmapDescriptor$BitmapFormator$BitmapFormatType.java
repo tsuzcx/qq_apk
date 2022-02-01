@@ -12,9 +12,11 @@ public @interface BitmapDescriptor$BitmapFormator$BitmapFormatType
   public static final int FORMAT_DEFAULT = 5;
   public static final int FORMAT_DEFAULT_F = 6;
   public static final int FORMAT_FILE = 3;
+  public static final int FORMAT_FONT_TEXT = 9;
   public static final int FORMAT_NONE = -1;
   public static final int FORMAT_PATH = 4;
   public static final int FORMAT_RESOURCE = 1;
+  public static final int FORMAT_URL = 8;
 }
 
 

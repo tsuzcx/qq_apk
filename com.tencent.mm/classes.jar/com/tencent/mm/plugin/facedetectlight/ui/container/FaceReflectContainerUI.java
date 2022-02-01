@@ -10,6 +10,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.facedetect.PluginFace;
 import com.tencent.mm.plugin.facedetect.c.f;
 import com.tencent.mm.plugin.facedetect.model.FaceDetectReporter;
@@ -19,7 +20,7 @@ import com.tencent.mm.plugin.facedetectlight.ui.a.a.1;
 import com.tencent.mm.plugin.facedetectlight.ui.c.a;
 import com.tencent.mm.plugin.facedetectlight.ui.d;
 import com.tencent.mm.plugin.facedetectlight.ui.e;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.youtu.ytcommon.YTCommonExInterface;
 
@@ -28,15 +29,15 @@ public class FaceReflectContainerUI
   extends MMActivity
   implements View.OnClickListener, f, a
 {
-  private String foE;
+  private String fGM;
   private String mAppId;
-  private byte[] qAD;
-  private String qAJ;
-  private String qGS;
-  private com.tencent.mm.plugin.facedetectlight.ui.a.a qHu;
-  private d qHv;
-  private e qHw;
-  private TextView qHx;
+  private byte[] rkt;
+  private String rkz;
+  private String rqR;
+  private com.tencent.mm.plugin.facedetectlight.ui.a.a rrt;
+  private d rru;
+  private e rrv;
+  private TextView rrw;
   
   static
   {
@@ -48,16 +49,16 @@ public class FaceReflectContainerUI
     AppMethodBeat.o(104344);
   }
   
-  private void coR()
+  private void cuw()
   {
     AppMethodBeat.i(104334);
-    ac.d("MicroMsg.FaceReflectContainerUI", "initLayout");
-    this.qHx = ((TextView)findViewById(2131299658));
-    this.qHx.setOnClickListener(this);
-    this.qHu = new com.tencent.mm.plugin.facedetectlight.ui.a.a((ViewGroup)findViewById(2131299697), this);
-    this.qHv = new d((ViewGroup)findViewById(2131299718), this);
-    this.qHw = new e((ViewGroup)findViewById(2131299731), this);
-    this.qHu.setBusinessTip(this.qAJ);
+    ad.d("MicroMsg.FaceReflectContainerUI", "initLayout");
+    this.rrw = ((TextView)findViewById(2131299658));
+    this.rrw.setOnClickListener(this);
+    this.rrt = new com.tencent.mm.plugin.facedetectlight.ui.a.a((ViewGroup)findViewById(2131299697), this);
+    this.rru = new d((ViewGroup)findViewById(2131299718), this);
+    this.rrv = new e((ViewGroup)findViewById(2131299731), this);
+    this.rrt.setBusinessTip(this.rkz);
     AppMethodBeat.o(104334);
   }
   
@@ -66,9 +67,9 @@ public class FaceReflectContainerUI
     AppMethodBeat.i(104331);
     if (PluginFace.isEnabled())
     {
-      com.tencent.mm.plugin.expansions.a.Zu("YTCommon");
-      com.tencent.mm.plugin.expansions.a.Zu("YTFaceTrack");
-      com.tencent.mm.plugin.expansions.a.Zu("YTAGReflectLiveCheck");
+      com.tencent.mm.plugin.expansions.a.ada("YTCommon");
+      com.tencent.mm.plugin.expansions.a.ada("YTFaceTrack");
+      com.tencent.mm.plugin.expansions.a.ada("YTAGReflectLiveCheck");
     }
     AppMethodBeat.o(104331);
   }
@@ -76,12 +77,12 @@ public class FaceReflectContainerUI
   public final void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(104339);
-    ac.i("MicroMsg.FaceReflectContainerUI", "finishWithResult errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if ((paramInt1 != 0) && (paramInt2 != 0) && (com.tencent.mm.plugin.facedetect.e.a.coq().isStarted()) && (com.tencent.mm.plugin.facedetect.e.a.coq().qCF)) {
-      com.tencent.mm.plugin.facedetect.e.a.coq().cos();
+    ad.i("MicroMsg.FaceReflectContainerUI", "finishWithResult errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if ((paramInt1 != 0) && (paramInt2 != 0) && (com.tencent.mm.plugin.facedetect.e.a.ctV().isStarted()) && (com.tencent.mm.plugin.facedetect.e.a.ctV().rmv)) {
+      com.tencent.mm.plugin.facedetect.e.a.ctV().ctX();
     }
     Bundle localBundle = new Bundle();
-    localBundle.putParcelable("key_parcelable_reporter", FaceDetectReporter.cnC());
+    localBundle.putParcelable("key_parcelable_reporter", FaceDetectReporter.cth());
     if (paramBundle != null) {
       localBundle.putAll(paramBundle);
     }
@@ -89,7 +90,7 @@ public class FaceReflectContainerUI
     paramBundle.putInt("err_type", paramInt1);
     paramBundle.putInt("err_code", paramInt2);
     paramBundle.putString("err_msg", paramString);
-    paramBundle.putString("k_bio_id", this.qGS);
+    paramBundle.putString("k_bio_id", this.rqR);
     paramBundle.putAll(localBundle);
     paramString = new Intent();
     paramString.putExtras(paramBundle);
@@ -100,21 +101,21 @@ public class FaceReflectContainerUI
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, com.tencent.mm.plugin.facedetect.ui.c paramc) {}
   
-  public final void cnd()
+  public final void csI()
   {
     AppMethodBeat.i(104333);
-    this.qHu.cnd();
+    this.rrt.csI();
     AppMethodBeat.o(104333);
   }
   
-  public final void cnf()
+  public final void csK()
   {
-    AppMethodBeat.i(210516);
-    c.a.coQ().release();
-    AppMethodBeat.o(210516);
+    AppMethodBeat.i(221174);
+    c.a.cuv().release();
+    AppMethodBeat.o(221174);
   }
   
-  public final void cni() {}
+  public final void csN() {}
   
   public final void d(int paramInt1, int paramInt2, String paramString, Bundle paramBundle) {}
   
@@ -127,15 +128,19 @@ public class FaceReflectContainerUI
   {
     AppMethodBeat.i(104340);
     super.onBackPressed();
-    c.a.coQ().onBackPressed();
+    c.a.cuv().onBackPressed();
     AppMethodBeat.o(104340);
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(104343);
-    c.a.coQ().onBackPressed();
+    b localb = new b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetectlight/ui/container/FaceReflectContainerUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    c.a.cuv().onBackPressed();
     finish();
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetectlight/ui/container/FaceReflectContainerUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(104343);
   }
   
@@ -143,50 +148,50 @@ public class FaceReflectContainerUI
   {
     AppMethodBeat.i(104332);
     tryLoadLibrary();
-    ac.d("MicroMsg.FaceReflectContainerUI", "start VerifyActivity");
+    ad.d("MicroMsg.FaceReflectContainerUI", "start VerifyActivity");
     super.onCreate(paramBundle);
     getWindow().addFlags(2097280);
-    ac.d("MicroMsg.FaceReflectContainerUI", "getData");
+    ad.d("MicroMsg.FaceReflectContainerUI", "getData");
     this.mAppId = getIntent().getStringExtra("k_app_id");
-    this.foE = getIntent().getStringExtra("k_user_name");
-    this.qAD = getIntent().getByteArrayExtra("k_bio_config");
-    this.qGS = getIntent().getStringExtra("k_bio_id");
-    this.qAJ = getIntent().getStringExtra("business_tips");
-    ac.i("MicroMsg.FaceReflectContainerUI", "mConfig " + this.qAD);
-    ac.i("MicroMsg.FaceReflectContainerUI", "mBioID is %s", new Object[] { this.qGS });
-    ac.i("MicroMsg.FaceReflectContainerUI", "mAppID is %s", new Object[] { this.mAppId });
-    ac.i("MicroMsg.FaceReflectContainerUI", "mBusinessTip is %s", new Object[] { this.qAJ });
+    this.fGM = getIntent().getStringExtra("k_user_name");
+    this.rkt = getIntent().getByteArrayExtra("k_bio_config");
+    this.rqR = getIntent().getStringExtra("k_bio_id");
+    this.rkz = getIntent().getStringExtra("business_tips");
+    ad.i("MicroMsg.FaceReflectContainerUI", "mConfig " + this.rkt);
+    ad.i("MicroMsg.FaceReflectContainerUI", "mBioID is %s", new Object[] { this.rqR });
+    ad.i("MicroMsg.FaceReflectContainerUI", "mAppID is %s", new Object[] { this.mAppId });
+    ad.i("MicroMsg.FaceReflectContainerUI", "mBusinessTip is %s", new Object[] { this.rkz });
     paramBundle = (FaceDetectReporter)getIntent().getBundleExtra("key_reporter_bundle").getParcelable("key_parcelable_reporter");
     if (paramBundle != null) {
-      FaceDetectReporter.cnC().a(paramBundle);
+      FaceDetectReporter.cth().a(paramBundle);
     }
-    FaceDetectReporter.cnC().appId = this.mAppId;
-    FaceDetectReporter.cnC().qye = 6;
+    FaceDetectReporter.cth().appId = this.mAppId;
+    FaceDetectReporter.cth().rhU = 6;
     if (p.al(this))
     {
-      ac.i("MicroMsg.FaceReflectContainerUI", "carson: checkFacePermissionAnd Request true and do init ");
-      coR();
-      cnd();
+      ad.i("MicroMsg.FaceReflectContainerUI", "carson: checkFacePermissionAnd Request true and do init ");
+      cuw();
+      csI();
       AppMethodBeat.o(104332);
       return;
     }
-    ac.i("MicroMsg.FaceReflectContainerUI", "carson: no camera permission. request permission");
+    ad.i("MicroMsg.FaceReflectContainerUI", "carson: no camera permission. request permission");
     AppMethodBeat.o(104332);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(207495);
+    AppMethodBeat.i(213195);
     super.onDestroy();
-    ac.i("MicroMsg.FaceReflectContainerUI", "onDestroy");
-    c.a.coQ().release();
-    AppMethodBeat.o(207495);
+    ad.i("MicroMsg.FaceReflectContainerUI", "onDestroy");
+    c.a.cuv().release();
+    AppMethodBeat.o(213195);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(104342);
-    ac.i("MicroMsg.FaceReflectContainerUI", "carson onRequestPermissionsResult");
+    ad.i("MicroMsg.FaceReflectContainerUI", "carson onRequestPermissionsResult");
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
       AppMethodBeat.o(104342);
@@ -199,8 +204,8 @@ public class FaceReflectContainerUI
     {
       AppMethodBeat.o(104342);
       return;
-      coR();
-      this.qHu.cnd();
+      cuw();
+      this.rrt.csI();
     }
   }
   
@@ -208,8 +213,8 @@ public class FaceReflectContainerUI
   {
     AppMethodBeat.i(104335);
     super.onResume();
-    if (this.qHu != null) {
-      this.qHu.resume();
+    if (this.rrt != null) {
+      this.rrt.resume();
     }
     AppMethodBeat.o(104335);
   }
@@ -218,12 +223,12 @@ public class FaceReflectContainerUI
   {
     AppMethodBeat.i(104336);
     super.onStop();
-    if (this.qHu != null)
+    if (this.rrt != null)
     {
-      com.tencent.mm.plugin.facedetectlight.ui.a.a locala = this.qHu;
-      ac.i(locala.TAG, " FaceReflect Preview UI pause");
-      if (locala.qGp != null) {
-        locala.qGp.qBh = false;
+      com.tencent.mm.plugin.facedetectlight.ui.a.a locala = this.rrt;
+      ad.i(locala.TAG, " FaceReflect Preview UI pause");
+      if (locala.rqi != null) {
+        locala.rqi.rkX = false;
       }
     }
     AppMethodBeat.o(104336);
@@ -238,15 +243,15 @@ public class FaceReflectContainerUI
   public final void startPreview()
   {
     AppMethodBeat.i(104338);
-    this.qHx.setTextColor(-1);
-    com.tencent.mm.plugin.facedetectlight.ui.a.a locala = this.qHu;
-    locala.a(this.qAD, this.qGS, this.mAppId, this.foE);
-    locala.qGP.setVisibility(0);
-    locala.qHy.setVisibility(4);
-    locala.qHy.post(new a.1(locala));
+    this.rrw.setTextColor(-1);
+    com.tencent.mm.plugin.facedetectlight.ui.a.a locala = this.rrt;
+    locala.a(this.rkt, this.rqR, this.mAppId, this.fGM);
+    locala.rqO.setVisibility(0);
+    locala.rrx.setVisibility(4);
+    locala.rrx.post(new a.1(locala));
     locala.resume();
-    locala.qGi.setVisibility(0);
-    FaceDetectReporter.cnC().Y(0, System.currentTimeMillis());
+    locala.rqb.setVisibility(0);
+    FaceDetectReporter.cth().ab(0, System.currentTimeMillis());
     AppMethodBeat.o(104338);
   }
 }

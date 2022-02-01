@@ -30,7 +30,7 @@ public class MMNativeJpeg
     //   21: iconst_0
     //   22: aload_0
     //   23: aastore
-    //   24: invokestatic 41	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   24: invokestatic 41	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   27: ldc 23
     //   29: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   32: iconst_1
@@ -64,7 +64,7 @@ public class MMNativeJpeg
     //   82: astore_3
     //   83: ldc 11
     //   85: ldc 52
-    //   87: invokestatic 55	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   87: invokestatic 55	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   90: aload 4
     //   92: astore 5
     //   94: aload 9
@@ -107,7 +107,7 @@ public class MMNativeJpeg
     //   170: astore_3
     //   171: aload 11
     //   173: iconst_0
-    //   174: invokestatic 83	com/tencent/mm/vfs/i:cS	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   174: invokestatic 83	com/tencent/mm/vfs/i:cX	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   177: astore 4
     //   179: aload 4
     //   181: astore 8
@@ -137,7 +137,7 @@ public class MMNativeJpeg
     //   227: iconst_0
     //   228: aload 11
     //   230: aastore
-    //   231: invokestatic 93	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   231: invokestatic 93	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   234: aload 4
     //   236: astore 5
     //   238: aload 4
@@ -147,7 +147,7 @@ public class MMNativeJpeg
     //   245: aload 11
     //   247: aload_0
     //   248: iconst_1
-    //   249: invokestatic 99	com/tencent/mm/sdk/platformtools/o:C	(Ljava/lang/String;Ljava/lang/String;Z)Z
+    //   249: invokestatic 99	com/tencent/mm/sdk/platformtools/p:C	(Ljava/lang/String;Ljava/lang/String;Z)Z
     //   252: istore_2
     //   253: aload 4
     //   255: ifnull +8 -> 263
@@ -177,7 +177,7 @@ public class MMNativeJpeg
     //   301: aload_0
     //   302: invokestatic 110	com/tencent/mm/sdk/platformtools/MMNativeJpeg:exception2String	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   305: aastore
-    //   306: invokestatic 41	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   306: invokestatic 41	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   309: aload 5
     //   311: ifnull -31 -> 280
     //   314: aload 5
@@ -190,7 +190,7 @@ public class MMNativeJpeg
     //   329: astore_3
     //   330: ldc 11
     //   332: ldc 112
-    //   334: invokestatic 114	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   334: invokestatic 114	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   337: aload 6
     //   339: ifnull -59 -> 280
     //   342: aload 6
@@ -276,14 +276,14 @@ public class MMNativeJpeg
     {
       if (mmjpeg.queryParams(toRealPath(paramString)) == null)
       {
-        ac.e("MMJPEG.JAVA", "IsJpegFile : can't query jpeg parames.");
+        ad.e("MMJPEG.JAVA", "IsJpegFile : can't query jpeg parames.");
         AppMethodBeat.o(156201);
         return false;
       }
     }
     catch (Exception paramString)
     {
-      ac.e("MMJPEG.JAVA", "IsJpegFile exception:%s", new Object[] { exception2String(paramString) });
+      ad.e("MMJPEG.JAVA", "IsJpegFile exception:%s", new Object[] { exception2String(paramString) });
       AppMethodBeat.o(156201);
       return false;
     }
@@ -296,7 +296,7 @@ public class MMNativeJpeg
     AppMethodBeat.i(156194);
     if (Build.VERSION.SDK_INT < 11)
     {
-      ac.i("MMJPEG.JAVA", "early version before android 3.0  unsupported.");
+      ad.i("MMJPEG.JAVA", "early version before android 3.0  unsupported.");
       AppMethodBeat.o(156194);
       return false;
     }
@@ -316,22 +316,22 @@ public class MMNativeJpeg
     try
     {
       String str = paramString + ".prog.dat";
-      ac.i("MMJPEG.JAVA", "convert %s to %s use progressive.quality:%d", new Object[] { paramString, str, Integer.valueOf(paramInt) });
+      ad.i("MMJPEG.JAVA", "convert %s to %s use progressive.quality:%d", new Object[] { paramString, str, Integer.valueOf(paramInt) });
       paramInt = mmjpeg.convertToProgressive(paramString, str);
       if (paramInt != 0)
       {
-        ac.e("MMJPEG.JAVA", "convert failed. error:%d", new Object[] { Integer.valueOf(paramInt) });
+        ad.e("MMJPEG.JAVA", "convert failed. error:%d", new Object[] { Integer.valueOf(paramInt) });
         AppMethodBeat.o(156198);
         return false;
       }
-      boolean bool = i.ma(str, paramString);
-      ac.i("MMJPEG.JAVA", "convert ret:%b", new Object[] { Boolean.valueOf(bool) });
+      boolean bool = i.mA(str, paramString);
+      ad.i("MMJPEG.JAVA", "convert ret:%b", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(156198);
       return bool;
     }
     catch (Exception paramString)
     {
-      ac.e("MMJPEG.JAVA", "convertToProgressive exception:%s", new Object[] { exception2String(paramString) });
+      ad.e("MMJPEG.JAVA", "convertToProgressive exception:%s", new Object[] { exception2String(paramString) });
       AppMethodBeat.o(156198);
     }
     return false;
@@ -340,37 +340,37 @@ public class MMNativeJpeg
   public static Bitmap decodeAsBitmap(String paramString)
   {
     AppMethodBeat.i(156199);
-    ac.i("MMJPEG.JAVA", "decodeAsBitmap:%s", new Object[] { paramString });
+    ad.i("MMJPEG.JAVA", "decodeAsBitmap:%s", new Object[] { paramString });
     paramString = toRealPath(paramString);
     try
     {
       Object localObject = mmjpeg.queryParams(paramString);
       if (localObject == null)
       {
-        ac.e("MMJPEG.JAVA", "can't query jpeg parames.");
+        ad.e("MMJPEG.JAVA", "can't query jpeg parames.");
         AppMethodBeat.o(156199);
         return null;
       }
       localObject = Bitmap.createBitmap(((JpegParams)localObject).Width, ((JpegParams)localObject).Height, Bitmap.Config.ARGB_8888);
       if (mmjpeg.decodeToBitmap(paramString, (Bitmap)localObject))
       {
-        ac.i("MMJPEG.JAVA", "decode bitmap successed.");
+        ad.i("MMJPEG.JAVA", "decode bitmap successed.");
         AppMethodBeat.o(156199);
         return localObject;
       }
-      ac.e("MMJPEG.JAVA", "can't decode to bmp.");
+      ad.e("MMJPEG.JAVA", "can't decode to bmp.");
       AppMethodBeat.o(156199);
       return null;
     }
     catch (Exception paramString)
     {
-      ac.e("MMJPEG.JAVA", "decodeAsBitmap exception:%s", new Object[] { exception2String(paramString) });
+      ad.e("MMJPEG.JAVA", "decodeAsBitmap exception:%s", new Object[] { exception2String(paramString) });
       AppMethodBeat.o(156199);
       return null;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      ac.e("MMJPEG.JAVA", "decodeAsBitmap OOM:%s", new Object[] { paramString });
+      ad.e("MMJPEG.JAVA", "decodeAsBitmap OOM:%s", new Object[] { paramString });
       AppMethodBeat.o(156199);
     }
     return null;
@@ -389,29 +389,29 @@ public class MMNativeJpeg
   public static boolean isProgressive(String paramString)
   {
     AppMethodBeat.i(156197);
-    ac.v("MMJPEG.JAVA", "isProgressive:%s", new Object[] { paramString });
+    ad.v("MMJPEG.JAVA", "isProgressive:%s", new Object[] { paramString });
     if (!checkAndroidVersion())
     {
       AppMethodBeat.o(156197);
       return false;
     }
-    if (!i.eA(paramString))
+    if (!i.fv(paramString))
     {
       AppMethodBeat.o(156197);
       return false;
     }
     paramString = toRealPath(paramString);
-    ac.d("MMJPEG.JAVA", "check progressive for file:%s", new Object[] { paramString });
+    ad.d("MMJPEG.JAVA", "check progressive for file:%s", new Object[] { paramString });
     try
     {
       int i = mmjpeg.isProgressiveFile(paramString);
       if ((1 != i) && (i != 0))
       {
-        ac.e("MMJPEG.JAVA", "check failed. error:%d", new Object[] { Integer.valueOf(i) });
+        ad.e("MMJPEG.JAVA", "check failed. error:%d", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(156197);
         return false;
       }
-      ac.i("MMJPEG.JAVA", "file:%s progressive:%d", new Object[] { paramString, Integer.valueOf(i) });
+      ad.i("MMJPEG.JAVA", "file:%s progressive:%d", new Object[] { paramString, Integer.valueOf(i) });
       if (i == 1)
       {
         AppMethodBeat.o(156197);
@@ -422,7 +422,7 @@ public class MMNativeJpeg
     }
     catch (Exception paramString)
     {
-      ac.e("MMJPEG.JAVA", "isProgressive exception:%s", new Object[] { exception2String(paramString) });
+      ad.e("MMJPEG.JAVA", "isProgressive exception:%s", new Object[] { exception2String(paramString) });
       AppMethodBeat.o(156197);
     }
     return false;
@@ -436,7 +436,7 @@ public class MMNativeJpeg
       AppMethodBeat.o(156196);
       return 0;
     }
-    if (!i.eA(paramString))
+    if (!i.fv(paramString))
     {
       AppMethodBeat.o(156196);
       return 0;
@@ -445,7 +445,7 @@ public class MMNativeJpeg
     try
     {
       int i = mmjpeg.queryQuality(paramString);
-      ac.i("MMJPEG.JAVA", "after query quality:%d", new Object[] { Integer.valueOf(i) });
+      ad.i("MMJPEG.JAVA", "after query quality:%d", new Object[] { Integer.valueOf(i) });
       if ((i < 10000) && (i >= 24))
       {
         AppMethodBeat.o(156196);
@@ -457,26 +457,26 @@ public class MMNativeJpeg
         AppMethodBeat.o(156196);
         return 25;
       }
-      ac.w("MMJPEG.JAVA", "invalid jpeg file or too small quality.");
+      ad.w("MMJPEG.JAVA", "invalid jpeg file or too small quality.");
       AppMethodBeat.o(156196);
       return 0;
     }
     catch (Exception paramString)
     {
-      ac.e("MMJPEG.JAVA", "queryQuality failed. exception:%s", new Object[] { exception2String(paramString) });
+      ad.e("MMJPEG.JAVA", "queryQuality failed. exception:%s", new Object[] { exception2String(paramString) });
       AppMethodBeat.o(156196);
       return 0;
     }
     catch (IncompatibleClassChangeError paramString)
     {
-      ac.printErrStackTrace("MicroMsg.Crash", paramString, "May cause dvmFindCatchBlock crash!", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.Crash", paramString, "May cause dvmFindCatchBlock crash!", new Object[0]);
       paramString = (IncompatibleClassChangeError)new IncompatibleClassChangeError("May cause dvmFindCatchBlock crash!").initCause(paramString);
       AppMethodBeat.o(156196);
       throw paramString;
     }
     catch (Error paramString)
     {
-      ac.e("MMJPEG.JAVA", "queryQuality error. java.lang.UnsatisfiedLinkError: queryQuality, %s", new Object[] { paramString.toString() });
+      ad.e("MMJPEG.JAVA", "queryQuality error. java.lang.UnsatisfiedLinkError: queryQuality, %s", new Object[] { paramString.toString() });
       AppMethodBeat.o(156196);
     }
     return 0;
@@ -491,7 +491,7 @@ public class MMNativeJpeg
       str1 = paramString;
       if (str3 != null)
       {
-        ac.i("MMJPEG.JAVA", "From %s to real path %s", new Object[] { paramString, str3 });
+        ad.i("MMJPEG.JAVA", "From %s to real path %s", new Object[] { paramString, str3 });
         str1 = str3;
       }
     }
@@ -500,7 +500,7 @@ public class MMNativeJpeg
       for (;;)
       {
         String str1;
-        ac.printErrStackTrace("MMJPEG.JAVA", localThrowable, "to real path", new Object[0]);
+        ad.printErrStackTrace("MMJPEG.JAVA", localThrowable, "to real path", new Object[0]);
         String str2 = paramString;
       }
     }
@@ -510,7 +510,7 @@ public class MMNativeJpeg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMNativeJpeg
  * JD-Core Version:    0.7.0.1
  */

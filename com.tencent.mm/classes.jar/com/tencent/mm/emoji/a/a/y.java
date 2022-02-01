@@ -1,29 +1,49 @@
 package com.tencent.mm.emoji.a.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.support.v7.widget.RecyclerView.a;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/PanelItem;", "", "type", "", "(I)V", "getType", "()I", "contentEquals", "", "other", "equals", "plugin-emojisdk_release"})
-public class y
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/PanelDataAdapterListener;", "Lcom/tencent/mm/emoji/model/panel/PanelDataListener;", "groupAdapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "tabAdapter", "(Landroid/support/v7/widget/RecyclerView$Adapter;Landroid/support/v7/widget/RecyclerView$Adapter;)V", "onGroupChange", "", "start", "", "count", "onGroupInsert", "onGroupMoved", "from", "to", "onGroupRemove", "onTabChange", "onTabInsert", "onTabRemove", "plugin-emojisdk_release"})
+public abstract class y
+  implements z
 {
-  public final int type;
+  private final RecyclerView.a<?> gly;
+  private final RecyclerView.a<?> glz;
   
-  public y(int paramInt)
+  public y(RecyclerView.a<?> parama1, RecyclerView.a<?> parama2)
   {
-    this.type = paramInt;
+    this.gly = parama1;
+    this.glz = parama2;
   }
   
-  public boolean aQ(Object paramObject)
+  public final void cE(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(105573);
-    boolean bool = equals(paramObject);
-    AppMethodBeat.o(105573);
-    return bool;
+    this.glz.ar(paramInt1, paramInt2);
   }
   
-  public boolean equals(Object paramObject)
+  public final void cF(int paramInt1, int paramInt2)
   {
-    return (paramObject != null) && ((paramObject instanceof y)) && (((y)paramObject).type == this.type);
+    this.glz.ap(paramInt1, paramInt2);
+  }
+  
+  public final void cG(int paramInt1, int paramInt2)
+  {
+    this.glz.as(paramInt1, paramInt2);
+  }
+  
+  public final void cx(int paramInt1, int paramInt2)
+  {
+    this.gly.ar(paramInt1, paramInt2);
+  }
+  
+  public final void cy(int paramInt1, int paramInt2)
+  {
+    this.gly.ap(paramInt1, paramInt2);
+  }
+  
+  public final void cz(int paramInt1, int paramInt2)
+  {
+    this.gly.as(paramInt1, paramInt2);
   }
 }
 

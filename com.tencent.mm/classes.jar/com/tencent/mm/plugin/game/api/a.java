@@ -6,42 +6,42 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private static LinkedList<g> sVl;
+  private static LinkedList<h> tRO;
   
   static
   {
     AppMethodBeat.i(89655);
-    sVl = new LinkedList();
+    tRO = new LinkedList();
     AppMethodBeat.o(89655);
   }
   
-  public static void a(g paramg)
+  public static void a(h paramh)
   {
     AppMethodBeat.i(89651);
-    if (paramg != null) {
-      sVl.add(paramg);
+    if (paramh != null) {
+      tRO.add(paramh);
     }
     AppMethodBeat.o(89651);
   }
   
-  public static void b(g paramg)
+  public static void b(h paramh)
   {
     AppMethodBeat.i(89652);
-    if (paramg != null) {
-      sVl.remove(paramg);
+    if (paramh != null) {
+      tRO.remove(paramh);
     }
     AppMethodBeat.o(89652);
   }
   
-  public static void dr(String paramString, int paramInt)
+  public static void dH(String paramString, int paramInt)
   {
     AppMethodBeat.i(89653);
-    Iterator localIterator = sVl.iterator();
+    Iterator localIterator = tRO.iterator();
     while (localIterator.hasNext())
     {
-      g localg = (g)localIterator.next();
-      if (localg != null) {
-        localg.ds(paramString, paramInt);
+      h localh = (h)localIterator.next();
+      if (localh != null) {
+        localh.dI(paramString, paramInt);
       }
     }
     AppMethodBeat.o(89653);
@@ -50,12 +50,12 @@ public final class a
   public static void g(String paramString, float paramFloat)
   {
     AppMethodBeat.i(89654);
-    Iterator localIterator = sVl.iterator();
+    Iterator localIterator = tRO.iterator();
     while (localIterator.hasNext())
     {
-      g localg = (g)localIterator.next();
-      if (localg != null) {
-        localg.h(paramString, paramFloat);
+      h localh = (h)localIterator.next();
+      if (localh != null) {
+        localh.h(paramString, paramFloat);
       }
     }
     AppMethodBeat.o(89654);

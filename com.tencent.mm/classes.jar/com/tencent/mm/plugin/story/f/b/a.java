@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.story.f.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ddk;
-import com.tencent.mm.protocal.protobuf.ddl;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.dix;
+import com.tencent.mm.protocal.protobuf.diy;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "", "commentDetail", "Lcom/tencent/mm/protocal/protobuf/StoryCommentDetail;", "(Lcom/tencent/mm/protocal/protobuf/StoryCommentDetail;)V", "commentOp", "Lcom/tencent/mm/protocal/protobuf/StoryCommentOp;", "(Lcom/tencent/mm/protocal/protobuf/StoryCommentOp;)V", "storyCommentItem", "(Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;)V", "()V", "color", "", "getColor", "()I", "setColor", "(I)V", "commentId", "getCommentId", "setCommentId", "content", "", "getContent", "()Ljava/lang/String;", "setContent", "(Ljava/lang/String;)V", "createTime", "getCreateTime", "setCreateTime", "fromUser", "getFromUser", "setFromUser", "isBubble", "", "()Z", "setBubble", "(Z)V", "isEnhance", "setEnhance", "isSelf", "setSelf", "isStoryDeprecated", "setStoryDeprecated", "isUnread", "setUnread", "localId", "getLocalId", "setLocalId", "needShake", "getNeedShake", "setNeedShake", "replyCommentId", "getReplyCommentId", "setReplyCommentId", "state", "getState", "setState", "storyId", "", "getStoryId", "()J", "setStoryId", "(J)V", "storyOwner", "getStoryOwner", "setStoryOwner", "thumbUrl", "getThumbUrl", "setThumbUrl", "toUser", "getToUser", "setToUser", "toString", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "", "commentDetail", "Lcom/tencent/mm/protocal/protobuf/StoryCommentDetail;", "(Lcom/tencent/mm/protocal/protobuf/StoryCommentDetail;)V", "commentOp", "Lcom/tencent/mm/protocal/protobuf/StoryCommentOp;", "(Lcom/tencent/mm/protocal/protobuf/StoryCommentOp;)V", "storyCommentItem", "(Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;)V", "()V", "color", "", "getColor", "()I", "setColor", "(I)V", "commentId", "getCommentId", "setCommentId", "content", "", "getContent", "()Ljava/lang/String;", "setContent", "(Ljava/lang/String;)V", "createTime", "getCreateTime", "setCreateTime", "fromUser", "getFromUser", "setFromUser", "isBubble", "", "()Z", "setBubble", "(Z)V", "isEnhance", "setEnhance", "isSelf", "setSelf", "isStoryDeprecated", "setStoryDeprecated", "isUnread", "setUnread", "localId", "getLocalId", "setLocalId", "needShake", "getNeedShake", "setNeedShake", "replyCommentId", "getReplyCommentId", "setReplyCommentId", "state", "getState", "setState", "storyId", "", "getStoryId", "()J", "setStoryId", "(J)V", "storyOwner", "getStoryOwner", "setStoryOwner", "thumbUrl", "getThumbUrl", "setThumbUrl", "toUser", "getToUser", "setToUser", "toString", "plugin-story_release"})
 public final class a
 {
+  public boolean ALC;
+  public boolean ALD;
+  public boolean ALE;
+  public boolean ALF;
+  String ALG = "";
+  public int ALH;
+  public boolean ALI;
+  public int ALy;
   private int color = -1;
   public String content = "";
-  private boolean dfZ;
-  private String dgl = "";
-  public String dng = "";
-  public long dyg;
-  public int hGU;
+  public long dKt;
+  private String drH = "";
+  private boolean drv;
+  public String dyU = "";
+  public int hZE;
   private int state;
   private String thumbUrl;
   public String toUser = "";
-  public int ztE;
-  public boolean ztI;
-  public boolean ztJ;
-  public boolean ztK;
-  public boolean ztL;
-  String ztM = "";
-  public int ztN;
-  public boolean ztO;
   
   public a() {}
   
@@ -34,66 +34,66 @@ public final class a
   {
     this();
     AppMethodBeat.i(118848);
-    this.dfZ = parama.dfZ;
-    this.dng = parama.dng;
+    this.drv = parama.drv;
+    this.dyU = parama.dyU;
     this.content = parama.content;
-    this.hGU = parama.hGU;
-    this.dyg = parama.dyg;
+    this.hZE = parama.hZE;
+    this.dKt = parama.dKt;
     this.thumbUrl = parama.thumbUrl;
-    this.ztE = parama.ztE;
-    this.dgl = parama.dgl;
-    this.ztI = parama.ztI;
+    this.ALy = parama.ALy;
+    this.drH = parama.drH;
+    this.ALC = parama.ALC;
     this.color = parama.color;
     this.state = parama.state;
-    this.ztJ = parama.ztJ;
-    this.ztK = parama.ztK;
-    this.ztL = parama.ztL;
+    this.ALD = parama.ALD;
+    this.ALE = parama.ALE;
+    this.ALF = parama.ALF;
     this.toUser = parama.toUser;
-    this.ztM = parama.ztM;
-    this.ztN = parama.ztN;
-    this.ztO = parama.ztO;
+    this.ALG = parama.ALG;
+    this.ALH = parama.ALH;
+    this.ALI = parama.ALI;
     AppMethodBeat.o(118848);
   }
   
-  public a(ddk paramddk)
+  public a(dix paramdix)
   {
     this();
     AppMethodBeat.i(118846);
-    this.dyg = paramddk.Id;
-    this.hGU = paramddk.CreateTime;
-    this.ztE = paramddk.FIZ;
-    String str = paramddk.tlK;
+    this.dKt = paramdix.Id;
+    this.hZE = paramdix.CreateTime;
+    this.ALy = paramdix.HtH;
+    String str = paramdix.ukj;
     Object localObject = str;
     if (str == null) {
       localObject = "";
     }
-    this.dng = ((String)localObject);
-    str = paramddk.hkR;
+    this.dyU = ((String)localObject);
+    str = paramdix.hDa;
     localObject = str;
     if (str == null) {
       localObject = "";
     }
     this.content = ((String)localObject);
-    localObject = (CharSequence)paramddk.hkR;
+    localObject = (CharSequence)paramdix.hDa;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0))
     {
       bool1 = true;
-      this.ztJ = bool1;
-      if (paramddk.FNd != 1) {
+      this.ALD = bool1;
+      if (paramdix.HxO != 1) {
         break label181;
       }
     }
     label181:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.ztL = bool1;
-      str = paramddk.tlJ;
+      this.ALF = bool1;
+      str = paramdix.uki;
       localObject = str;
       if (str == null) {
         localObject = "";
       }
       this.toUser = ((String)localObject);
-      this.ztN = paramddk.FIY;
+      this.ALH = paramdix.HtG;
       AppMethodBeat.o(118846);
       return;
       bool1 = false;
@@ -101,60 +101,60 @@ public final class a
     }
   }
   
-  public a(ddl paramddl)
+  public a(diy paramdiy)
   {
     this();
     AppMethodBeat.i(118847);
-    this.dyg = paramddl.dyg;
-    String str = paramddl.dng;
+    this.dKt = paramdiy.dKt;
+    String str = paramdiy.dyU;
     Object localObject = str;
     if (str == null) {
       localObject = "";
     }
-    this.dng = ((String)localObject);
-    str = paramddl.content;
+    this.dyU = ((String)localObject);
+    str = paramdiy.content;
     localObject = str;
     if (str == null) {
       localObject = "";
     }
     this.content = ((String)localObject);
-    this.hGU = paramddl.hGU;
-    localObject = (CharSequence)paramddl.content;
+    this.hZE = paramdiy.hZE;
+    localObject = (CharSequence)paramdiy.content;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.ztJ = bool;
-      str = paramddl.toUser;
+      this.ALD = bool;
+      str = paramdiy.toUser;
       localObject = str;
       if (str == null) {
         localObject = "";
       }
       this.toUser = ((String)localObject);
-      str = paramddl.ztM;
+      str = paramdiy.ALG;
       localObject = str;
       if (str == null) {
         localObject = "";
       }
-      this.ztM = ((String)localObject);
-      this.ztN = paramddl.ztN;
-      this.ztO = false;
+      this.ALG = ((String)localObject);
+      this.ALH = paramdiy.ALH;
+      this.ALI = false;
       AppMethodBeat.o(118847);
       return;
     }
   }
   
-  public final void awL(String paramString)
+  public final void aBP(String paramString)
   {
     AppMethodBeat.i(118844);
-    k.h(paramString, "<set-?>");
-    this.ztM = paramString;
+    p.h(paramString, "<set-?>");
+    this.ALG = paramString;
     AppMethodBeat.o(118844);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(118845);
-    String str = "StoryCommentItem(fromUser='" + this.dng + "', content='" + this.content + "', createTime=" + this.hGU + ", commentId=" + this.ztE + ", isUnread=" + this.ztI + " )";
+    String str = "StoryCommentItem(fromUser='" + this.dyU + "', content='" + this.content + "', createTime=" + this.hZE + ", commentId=" + this.ALy + ", isUnread=" + this.ALC + " )";
     AppMethodBeat.o(118845);
     return str;
   }

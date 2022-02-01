@@ -9,7 +9,7 @@ import java.util.Set;
 
 public final class u
 {
-  final ArrayList<Transition> Be = new ArrayList();
+  final ArrayList<Transition> CW = new ArrayList();
   public final Map<String, Object> values = new HashMap();
   public View view;
   

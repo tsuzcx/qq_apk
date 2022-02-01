@@ -36,21 +36,21 @@ public final class b
       }
       i = 1;
       break;
-      i = ((Integer)paramj.tn("id")).intValue();
-      paramj = (String)paramj.tn("value");
-      e.wTc.kvStat(i, paramj);
+      i = ((Integer)paramj.wd("id")).intValue();
+      paramj = (String)paramj.wd("value");
+      e.ygI.kvStat(i, paramj);
       AppMethodBeat.o(148872);
       return;
-      i = ((Integer)paramj.tn("id")).intValue();
-      int j = ((Integer)paramj.tn("key")).intValue();
-      int k = ((Integer)paramj.tn("value")).intValue();
-      e.wTc.idkeyStat(i, j, k, false);
+      i = ((Integer)paramj.wd("id")).intValue();
+      int j = ((Integer)paramj.wd("key")).intValue();
+      int k = ((Integer)paramj.wd("value")).intValue();
+      e.ygI.idkeyStat(i, j, k, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.model.b
  * JD-Core Version:    0.7.0.1
  */

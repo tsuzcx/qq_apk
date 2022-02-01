@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ra
   extends b
 {
-  public a dug;
-  public b duh;
+  public a dFB;
   
   public ra()
   {
@@ -17,22 +15,16 @@ public final class ra
   
   private ra(byte paramByte)
   {
-    AppMethodBeat.i(149886);
-    this.dug = new a();
-    this.duh = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(19828);
+    this.dFB = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(149886);
+    AppMethodBeat.o(19828);
   }
   
   public static final class a
   {
-    public Context context;
-  }
-  
-  public static final class b
-  {
-    public boolean dtV;
+    public int scene = 1;
   }
 }
 

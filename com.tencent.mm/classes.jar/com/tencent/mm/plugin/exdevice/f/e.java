@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.exdevice.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int pAG;
-  public String pAH;
+  public int qel;
+  public String qem;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,19 +14,19 @@ public final class e
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.pAG);
-      if (this.pAH != null) {
-        paramVarArgs.d(2, this.pAH);
+      paramVarArgs.aS(1, this.qel);
+      if (this.qem != null) {
+        paramVarArgs.d(2, this.qem);
       }
       AppMethodBeat.o(23489);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.pAG) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.qel) + 0;
       paramInt = i;
-      if (this.pAH != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.pAH);
+      if (this.qem != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.qem);
       }
       AppMethodBeat.o(23489);
       return paramInt;
@@ -34,9 +34,9 @@ public final class e
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(23489);
@@ -52,11 +52,11 @@ public final class e
         AppMethodBeat.o(23489);
         return -1;
       case 1: 
-        locale.pAG = locala.LVo.xF();
+        locale.qel = locala.NPN.zc();
         AppMethodBeat.o(23489);
         return 0;
       }
-      locale.pAH = locala.LVo.readString();
+      locale.qem = locala.NPN.readString();
       AppMethodBeat.o(23489);
       return 0;
     }
@@ -66,7 +66,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.f.e
  * JD-Core Version:    0.7.0.1
  */

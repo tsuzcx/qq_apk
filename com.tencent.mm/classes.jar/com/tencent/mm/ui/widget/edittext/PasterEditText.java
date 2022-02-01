@@ -9,16 +9,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class PasterEditText
   extends EditText
 {
+  private ClipboardManager AcT;
   private Context context;
-  private int mcI;
-  private ClipboardManager yLy;
+  private int mCQ;
   
   public PasterEditText(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(168813);
-    this.yLy = null;
-    this.mcI = 0;
+    this.AcT = null;
+    this.mCQ = 0;
     this.context = paramContext;
     init();
     AppMethodBeat.o(168813);
@@ -28,8 +28,8 @@ public class PasterEditText
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159400);
-    this.yLy = null;
-    this.mcI = 0;
+    this.AcT = null;
+    this.mCQ = 0;
     this.context = paramContext;
     init();
     AppMethodBeat.o(159400);
@@ -39,8 +39,8 @@ public class PasterEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159401);
-    this.yLy = null;
-    this.mcI = 0;
+    this.AcT = null;
+    this.mCQ = 0;
     init();
     AppMethodBeat.o(159401);
   }
@@ -48,21 +48,21 @@ public class PasterEditText
   private void init()
   {
     AppMethodBeat.i(159402);
-    this.yLy = ((ClipboardManager)this.context.getApplicationContext().getSystemService("clipboard"));
+    this.AcT = ((ClipboardManager)this.context.getApplicationContext().getSystemService("clipboard"));
     AppMethodBeat.o(159402);
   }
   
   public int getPasterLen()
   {
-    return this.mcI;
+    return this.mCQ;
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
     AppMethodBeat.i(159403);
     if (paramInt == 16908322) {
-      if ((this.yLy != null) && (this.yLy.getText() != null) && ((this.yLy.getText() instanceof String)) && (this.yLy.getText() != null) && (this.yLy.getText().length() > 0)) {
-        this.mcI += this.yLy.getText().length();
+      if ((this.AcT != null) && (this.AcT.getText() != null) && ((this.AcT.getText() instanceof String)) && (this.AcT.getText() != null) && (this.AcT.getText().length() > 0)) {
+        this.mCQ += this.AcT.getText().length();
       }
     }
     for (boolean bool = super.onTextContextMenuItem(paramInt);; bool = super.onTextContextMenuItem(paramInt))

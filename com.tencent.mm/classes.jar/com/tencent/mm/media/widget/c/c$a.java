@@ -2,7 +2,7 @@ package com.tencent.mm.media.widget.c;
 
 public abstract interface c$a
 {
-  public abstract void pF(long paramLong);
+  public abstract void rE(long paramLong);
 }
 
 

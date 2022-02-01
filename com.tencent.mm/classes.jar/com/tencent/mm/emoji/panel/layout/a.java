@@ -14,23 +14,23 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Interpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/layout/EmojiPagerScrollHelper;", "Landroid/support/v7/widget/PagerSnapHelper;", "()V", "onPageSelectedListener", "Lcom/tencent/mm/emoji/panel/layout/EmojiPagerScrollHelper$OnPageSelectedListener;", "getOnPageSelectedListener", "()Lcom/tencent/mm/emoji/panel/layout/EmojiPagerScrollHelper$OnPageSelectedListener;", "setOnPageSelectedListener", "(Lcom/tencent/mm/emoji/panel/layout/EmojiPagerScrollHelper$OnPageSelectedListener;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "targetSnapPos", "", "attachToRecyclerView", "", "createScroller", "Landroid/support/v7/widget/RecyclerView$SmoothScroller;", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "findSnapView", "Landroid/view/View;", "findTargetSnapPosition", "velocityX", "velocityY", "OnPageSelectedListener", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/layout/EmojiPagerScrollHelper;", "Landroid/support/v7/widget/PagerSnapHelper;", "()V", "onPageSelectedListener", "Lcom/tencent/mm/emoji/panel/layout/EmojiPagerScrollHelper$OnPageSelectedListener;", "getOnPageSelectedListener", "()Lcom/tencent/mm/emoji/panel/layout/EmojiPagerScrollHelper$OnPageSelectedListener;", "setOnPageSelectedListener", "(Lcom/tencent/mm/emoji/panel/layout/EmojiPagerScrollHelper$OnPageSelectedListener;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "targetSnapPos", "", "attachToRecyclerView", "", "createScroller", "Landroid/support/v7/widget/RecyclerView$SmoothScroller;", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "findSnapView", "Landroid/view/View;", "findTargetSnapPosition", "velocityX", "velocityY", "OnPageSelectedListener", "plugin-emojisdk_release"})
 public final class a
   extends ak
 {
-  RecyclerView fTr;
-  private int fUO = -1;
-  public a fUP;
+  RecyclerView gmV;
+  private int gor = -1;
+  public a gos;
   
   public final int a(RecyclerView.i parami, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(105710);
     paramInt1 = super.a(parami, paramInt1, paramInt2);
-    this.fUO = paramInt1;
-    parami = this.fUP;
+    this.gor = paramInt1;
+    parami = this.gos;
     if (parami != null) {
       parami.onPageSelected(paramInt1);
     }
@@ -55,16 +55,16 @@ public final class a
       }
     }
     label90:
-    for (int i = parami.ll();; i = -1)
+    for (int i = parami.lD();; i = -1)
     {
-      if (this.fUO == -1)
+      if (this.gor == -1)
       {
-        parami = this.fUP;
+        parami = this.gos;
         if (parami != null) {
           parami.onPageSelected(i);
         }
       }
-      this.fUO = -1;
+      this.gor = -1;
       AppMethodBeat.o(105711);
       return localView;
       parami = null;
@@ -81,7 +81,7 @@ public final class a
       AppMethodBeat.o(105709);
       return null;
     }
-    RecyclerView localRecyclerView = this.fTr;
+    RecyclerView localRecyclerView = this.gmV;
     parami = localObject;
     if (localRecyclerView != null) {
       parami = localRecyclerView.getContext();
@@ -95,17 +95,17 @@ public final class a
   {
     AppMethodBeat.i(105708);
     super.j(paramRecyclerView);
-    this.fTr = paramRecyclerView;
+    this.gmV = paramRecyclerView;
     AppMethodBeat.o(105708);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/layout/EmojiPagerScrollHelper$OnPageSelectedListener;", "", "onPageSelected", "", "position", "", "plugin-emojisdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/layout/EmojiPagerScrollHelper$OnPageSelectedListener;", "", "onPageSelected", "", "position", "", "plugin-emojisdk_release"})
   public static abstract interface a
   {
     public abstract void onPageSelected(int paramInt);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/emoji/panel/layout/EmojiPagerScrollHelper$createScroller$1", "Landroid/support/v7/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "onTargetFound", "", "targetView", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "action", "Landroid/support/v7/widget/RecyclerView$SmoothScroller$Action;", "plugin-emojisdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/emoji/panel/layout/EmojiPagerScrollHelper$createScroller$1", "Landroid/support/v7/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "onTargetFound", "", "targetView", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "action", "Landroid/support/v7/widget/RecyclerView$SmoothScroller$Action;", "plugin-emojisdk_release"})
   public static final class b
     extends ae
   {
@@ -117,7 +117,7 @@ public final class a
     public final float a(DisplayMetrics paramDisplayMetrics)
     {
       AppMethodBeat.i(105707);
-      k.h(paramDisplayMetrics, "displayMetrics");
+      p.h(paramDisplayMetrics, "displayMetrics");
       float f = 50.0F / paramDisplayMetrics.densityDpi;
       AppMethodBeat.o(105707);
       return f;
@@ -126,24 +126,24 @@ public final class a
     public final void a(View paramView, RecyclerView.t paramt, RecyclerView.s.a parama)
     {
       AppMethodBeat.i(105706);
-      k.h(paramView, "targetView");
-      k.h(paramt, "state");
-      k.h(parama, "action");
-      if (this.fUQ.fTr != null)
+      p.h(paramView, "targetView");
+      p.h(paramt, "state");
+      p.h(parama, "action");
+      if (this.got.gmV != null)
       {
-        a locala = this.fUQ;
-        paramt = this.fUQ.fTr;
+        a locala = this.got;
+        paramt = this.got.gmV;
         if (paramt != null) {}
         int i;
         int j;
         for (paramt = paramt.getLayoutManager();; paramt = null)
         {
           if (paramt == null) {
-            k.fOy();
+            p.gfZ();
           }
           paramView = locala.a(paramt, paramView);
           if (paramView == null) {
-            k.fOy();
+            p.gfZ();
           }
           i = paramView[0];
           j = paramView[1];
@@ -151,11 +151,11 @@ public final class a
           if (k <= 0) {
             break;
           }
-          parama.a(i, j, k, (Interpolator)this.TN);
+          parama.a(i, j, k, (Interpolator)this.VD);
           AppMethodBeat.o(105706);
           return;
         }
-        parama.a(i, j, 1, (Interpolator)this.TN);
+        parama.a(i, j, 1, (Interpolator)this.VD);
       }
       AppMethodBeat.o(105706);
     }

@@ -3,25 +3,25 @@ package com.tencent.mm.emoji.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/CapturePanelGroupModel;", "Lcom/tencent/mm/emoji/model/panel/PanelGroupModel;", "Lcom/tencent/mm/emoji/model/panel/CaptureItemGroup;", "config", "Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;", "(Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;)V", "getConfig", "()Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;", "data", "getData", "()Lcom/tencent/mm/emoji/model/panel/CaptureItemGroup;", "setData", "(Lcom/tencent/mm/emoji/model/panel/CaptureItemGroup;)V", "createData", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/CapturePanelGroupModel;", "Lcom/tencent/mm/emoji/model/panel/PanelGroupModel;", "Lcom/tencent/mm/emoji/model/panel/CaptureItemGroup;", "config", "Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;", "(Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;)V", "getConfig", "()Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;", "data", "getData", "()Lcom/tencent/mm/emoji/model/panel/CaptureItemGroup;", "setData", "(Lcom/tencent/mm/emoji/model/panel/CaptureItemGroup;)V", "createData", "plugin-emojisdk_release"})
 public final class d
-  extends x<c>
+  extends ab<c>
 {
-  private c fRm;
-  private final i fRn;
+  private c gkM;
+  private final i gkN;
   
   public d(i parami)
   {
     AppMethodBeat.i(105530);
-    this.fRn = parami;
-    this.fRm = acK();
+    this.gkN = parami;
+    this.gkM = afo();
     AppMethodBeat.o(105530);
   }
   
-  private c acK()
+  private c afo()
   {
     AppMethodBeat.i(105528);
-    c localc = new c(this.fRn.fRw);
+    c localc = new c(this.gkN.gkW);
     AppMethodBeat.o(105528);
     return localc;
   }

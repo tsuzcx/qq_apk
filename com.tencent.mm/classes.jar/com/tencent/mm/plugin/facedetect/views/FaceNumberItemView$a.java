@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.facedetect.views;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.lang.ref.WeakReference;
 import java.util.TimerTask;
 
 final class FaceNumberItemView$a
   extends TimerTask
 {
-  private WeakReference<Runnable> qED;
+  private WeakReference<Runnable> rot;
   
   private FaceNumberItemView$a(FaceNumberItemView paramFaceNumberItemView, Runnable paramRunnable)
   {
     AppMethodBeat.i(104164);
-    this.qED = null;
-    this.qED = new WeakReference(paramRunnable);
+    this.rot = null;
+    this.rot = new WeakReference(paramRunnable);
     AppMethodBeat.o(104164);
   }
   
   public final void run()
   {
     AppMethodBeat.i(104165);
-    if ((this.qED != null) && (this.qED.get() != null))
+    if ((this.rot != null) && (this.rot.get() != null))
     {
-      ap.f((Runnable)this.qED.get());
+      aq.f((Runnable)this.rot.get());
       AppMethodBeat.o(104165);
       return;
     }
@@ -33,7 +33,7 @@ final class FaceNumberItemView$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceNumberItemView.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,109 +1,109 @@
 package com.tencent.mm.ca;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aa.f;
 import com.tencent.mm.api.g;
 import com.tencent.mm.api.u;
 import com.tencent.mm.cache.ArtistCacheManager;
 import com.tencent.mm.cache.d;
 import com.tencent.mm.cache.i;
-import com.tencent.mm.z.f;
 import java.util.Iterator;
 import java.util.Stack;
 
 public final class c
   implements u
 {
-  private com.tencent.mm.bt.b cOU;
-  private boolean czg = true;
+  private boolean cKc = true;
+  private com.tencent.mm.bu.b dak;
   
-  public c(com.tencent.mm.bt.b paramb)
+  public c(com.tencent.mm.bu.b paramb)
   {
-    this.cOU = paramb;
+    this.dak = paramb;
   }
   
-  public final int JD()
+  public final int Lc()
   {
     AppMethodBeat.i(9333);
-    d locald = (d)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cOP);
+    d locald = (d)ArtistCacheManager.XD().a(com.tencent.mm.e.a.daf);
     if (locald == null)
     {
       AppMethodBeat.o(9333);
       return 0;
     }
-    int i = locald.cB(this.czg)[1];
+    int i = locald.cD(this.cKc)[1];
     AppMethodBeat.o(9333);
     return i;
   }
   
-  public final int JE()
+  public final int Ld()
   {
     AppMethodBeat.i(9334);
-    d locald = (d)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cOP);
+    d locald = (d)ArtistCacheManager.XD().a(com.tencent.mm.e.a.daf);
     if (locald == null)
     {
       AppMethodBeat.o(9334);
       return 0;
     }
-    int i = locald.cB(this.czg)[0];
+    int i = locald.cD(this.cKc)[0];
     AppMethodBeat.o(9334);
     return i;
   }
   
-  public final int JF()
+  public final int Le()
   {
     AppMethodBeat.i(9335);
-    i locali = (i)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cOO);
+    i locali = (i)ArtistCacheManager.XD().a(com.tencent.mm.e.a.dae);
     if (locali == null)
     {
       AppMethodBeat.o(9335);
       return 0;
     }
-    int i = locali.aj(this.czg);
+    int i = locali.aj(this.cKc);
     AppMethodBeat.o(9335);
     return i;
   }
   
-  public final int JG()
+  public final int Lf()
   {
     AppMethodBeat.i(9336);
-    com.tencent.mm.cache.b localb = (com.tencent.mm.cache.b)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cON);
+    com.tencent.mm.cache.b localb = (com.tencent.mm.cache.b)ArtistCacheManager.XD().a(com.tencent.mm.e.a.dad);
     if (localb == null)
     {
       AppMethodBeat.o(9336);
       return 0;
     }
-    int i = localb.aj(this.czg);
+    int i = localb.aj(this.cKc);
     AppMethodBeat.o(9336);
     return i;
   }
   
-  public final int JH()
+  public final int Lg()
   {
     AppMethodBeat.i(9337);
     int i = 0;
-    Object localObject = (com.tencent.mm.cache.b)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cON);
+    Object localObject = (com.tencent.mm.cache.b)ArtistCacheManager.XD().a(com.tencent.mm.e.a.dad);
     if (localObject != null) {
-      i = ((com.tencent.mm.cache.b)localObject).fqa + 0;
+      i = ((com.tencent.mm.cache.b)localObject).fIh + 0;
     }
-    localObject = (i)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cOO);
+    localObject = (i)ArtistCacheManager.XD().a(com.tencent.mm.e.a.dae);
     int j = i;
     if (localObject != null) {
-      j = i + ((i)localObject).fqa;
+      j = i + ((i)localObject).fIh;
     }
     AppMethodBeat.o(9337);
     return j;
   }
   
-  public final boolean JI()
+  public final boolean Lh()
   {
     boolean bool2 = false;
     AppMethodBeat.i(9339);
-    com.tencent.mm.e.b localb = this.cOU.c(g.cGD);
+    com.tencent.mm.e.b localb = this.dak.c(g.cRH);
     boolean bool1 = bool2;
     if (localb != null)
     {
       bool1 = bool2;
-      if (localb.LZ() == com.tencent.mm.e.a.cOQ) {
+      if (localb.NI() == com.tencent.mm.e.a.dag) {
         if (((com.tencent.mm.e.c)localb).getRotation() == 0.0F) {
           break label61;
         }
@@ -117,19 +117,19 @@ public final class c
     }
   }
   
-  public final int JJ()
+  public final int Li()
   {
     AppMethodBeat.i(9341);
-    Object localObject = (com.tencent.mm.cache.b)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cON);
+    Object localObject = (com.tencent.mm.cache.b)ArtistCacheManager.XD().a(com.tencent.mm.e.a.dad);
     if (localObject == null)
     {
       AppMethodBeat.o(9341);
       return 0;
     }
-    int[] arrayOfInt1 = new int[com.tencent.mm.view.footer.a.JAq.length];
-    if (this.czg)
+    int[] arrayOfInt1 = new int[com.tencent.mm.view.footer.a.Ltx.length];
+    if (this.cKc)
     {
-      localObject = ((com.tencent.mm.cache.b)localObject).fpX;
+      localObject = ((com.tencent.mm.cache.b)localObject).fIe;
       if (localObject != null) {
         localObject = ((Stack)localObject).iterator();
       }
@@ -143,8 +143,8 @@ public final class c
         if (!((Iterator)localObject).hasNext()) {
           break label145;
         }
-        com.tencent.mm.z.b localb = (com.tencent.mm.z.b)((Iterator)localObject).next();
-        int[] arrayOfInt2 = com.tencent.mm.view.footer.a.JAq;
+        com.tencent.mm.aa.b localb = (com.tencent.mm.aa.b)((Iterator)localObject).next();
+        int[] arrayOfInt2 = com.tencent.mm.view.footer.a.Ltx;
         i = 0;
         for (;;)
         {
@@ -155,7 +155,7 @@ public final class c
           {
             arrayOfInt1[i] += 1;
             break label67;
-            localObject = ((com.tencent.mm.cache.b)localObject).fpY;
+            localObject = ((com.tencent.mm.cache.b)localObject).fIf;
             break;
           }
           i += 1;
@@ -178,13 +178,13 @@ public final class c
     return j;
   }
   
-  public final boolean JK()
+  public final boolean Lj()
   {
     AppMethodBeat.i(9342);
-    com.tencent.mm.cache.b localb = (com.tencent.mm.cache.b)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cON);
-    i locali = (i)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cOO);
-    com.tencent.mm.cache.a locala = (com.tencent.mm.cache.a)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cOQ);
-    d locald = (d)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cOP);
+    com.tencent.mm.cache.b localb = (com.tencent.mm.cache.b)ArtistCacheManager.XD().a(com.tencent.mm.e.a.dad);
+    i locali = (i)ArtistCacheManager.XD().a(com.tencent.mm.e.a.dae);
+    com.tencent.mm.cache.a locala = (com.tencent.mm.cache.a)ArtistCacheManager.XD().a(com.tencent.mm.e.a.dag);
+    d locald = (d)ArtistCacheManager.XD().a(com.tencent.mm.e.a.daf);
     if (((localb != null) && (localb.aj(true) > 0)) || ((locali != null) && (locali.aj(true) > 0)) || ((locald != null) && (locald.aj(true) > 0)) || ((locala != null) && (locala.aj(true) > 0)))
     {
       AppMethodBeat.o(9342);
@@ -194,18 +194,18 @@ public final class c
     return false;
   }
   
-  public final String JL()
+  public final String Lk()
   {
     AppMethodBeat.i(9343);
-    String str = ((d)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cOP)).rS(",")[0];
+    String str = ((d)ArtistCacheManager.XD().a(com.tencent.mm.e.a.daf)).uF(",")[0];
     AppMethodBeat.o(9343);
     return str;
   }
   
-  public final String JM()
+  public final String Ll()
   {
     AppMethodBeat.i(9344);
-    String str = ((d)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cOP)).rS("||")[1];
+    String str = ((d)ArtistCacheManager.XD().a(com.tencent.mm.e.a.daf)).uF("||")[1];
     AppMethodBeat.o(9344);
     return str;
   }
@@ -213,16 +213,16 @@ public final class c
   public final int getTextColor()
   {
     AppMethodBeat.i(9340);
-    Object localObject1 = (d)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cOP);
+    Object localObject1 = (d)ArtistCacheManager.XD().a(com.tencent.mm.e.a.daf);
     if (localObject1 == null)
     {
       AppMethodBeat.o(9340);
       return 0;
     }
     int i;
-    if (this.czg)
+    if (this.cKc)
     {
-      localObject1 = ((d)localObject1).fpX;
+      localObject1 = ((d)localObject1).fIe;
       if (localObject1 != null)
       {
         localObject1 = ((Stack)localObject1).iterator();
@@ -239,11 +239,11 @@ public final class c
         if (!((Iterator)localObject1).hasNext()) {
           break label143;
         }
-        Object localObject2 = (com.tencent.mm.z.c)((Iterator)localObject1).next();
+        Object localObject2 = (com.tencent.mm.aa.c)((Iterator)localObject1).next();
         if ((localObject2 instanceof f))
         {
           localObject2 = (f)localObject2;
-          int[] arrayOfInt = com.tencent.mm.view.footer.a.JAq;
+          int[] arrayOfInt = com.tencent.mm.view.footer.a.Ltx;
           j = 0;
           for (;;)
           {
@@ -254,7 +254,7 @@ public final class c
             {
               i = 1 << j | i;
               break label54;
-              localObject1 = ((d)localObject1).fpY;
+              localObject1 = ((d)localObject1).fIf;
               break;
             }
             j += 1;
@@ -271,13 +271,13 @@ public final class c
   public final boolean isCropped()
   {
     AppMethodBeat.i(9338);
-    com.tencent.mm.cache.a locala = (com.tencent.mm.cache.a)ArtistCacheManager.Vm().a(com.tencent.mm.e.a.cOQ);
+    com.tencent.mm.cache.a locala = (com.tencent.mm.cache.a)ArtistCacheManager.XD().a(com.tencent.mm.e.a.dag);
     if (locala == null)
     {
       AppMethodBeat.o(9338);
       return false;
     }
-    if (locala.aj(this.czg) > 0)
+    if (locala.aj(this.cKc) > 0)
     {
       AppMethodBeat.o(9338);
       return true;
@@ -288,7 +288,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ca.c
  * JD-Core Version:    0.7.0.1
  */

@@ -8,28 +8,28 @@ public abstract class eb
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eSD = "inviteUserName".hashCode();
-  private static final int eSG = "memberUuid".hashCode();
-  private static final int eSH = "memberId".hashCode();
-  private static final int eSz = "wxGroupId".hashCode();
-  private static final int elV = "status".hashCode();
-  private static final int emW = "userName".hashCode();
-  private static final int emY = "createTime".hashCode();
+  private static final int eHT = "title".hashCode();
+  private static final int fjk = "loan_jump_url".hashCode();
+  private static final int fjl = "red_dot_index".hashCode();
+  private static final int fjm = "is_show_entry".hashCode();
+  private static final int fjn = "tips".hashCode();
+  private static final int fjo = "is_overdue".hashCode();
+  private static final int fjp = "available_otb".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eSE = true;
-  private boolean eSF = true;
-  private boolean eSu = true;
-  private boolean eSy = true;
-  private boolean elS = true;
-  private boolean emB = true;
-  private boolean emz = true;
-  public long field_createTime;
-  public String field_inviteUserName;
-  public long field_memberId;
-  public long field_memberUuid;
-  public int field_status;
-  public String field_userName;
-  public String field_wxGroupId;
+  private boolean eHQ = true;
+  public String field_available_otb;
+  public int field_is_overdue;
+  public int field_is_show_entry;
+  public String field_loan_jump_url;
+  public int field_red_dot_index;
+  public String field_tips;
+  public String field_title;
+  private boolean fje = true;
+  private boolean fjf = true;
+  private boolean fjg = true;
+  private boolean fjh = true;
+  private boolean fji = true;
+  private boolean fjj = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -44,29 +44,30 @@ public abstract class eb
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eSG != k) {
-        break label60;
+      if (eHT != k) {
+        break label65;
       }
-      this.field_memberUuid = paramCursor.getLong(i);
+      this.field_title = paramCursor.getString(i);
+      this.eHQ = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eSz == k) {
-        this.field_wxGroupId = paramCursor.getString(i);
-      } else if (emW == k) {
-        this.field_userName = paramCursor.getString(i);
-      } else if (eSD == k) {
-        this.field_inviteUserName = paramCursor.getString(i);
-      } else if (eSH == k) {
-        this.field_memberId = paramCursor.getLong(i);
-      } else if (elV == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (emY == k) {
-        this.field_createTime = paramCursor.getLong(i);
+      label65:
+      if (fjk == k) {
+        this.field_loan_jump_url = paramCursor.getString(i);
+      } else if (fjl == k) {
+        this.field_red_dot_index = paramCursor.getInt(i);
+      } else if (fjm == k) {
+        this.field_is_show_entry = paramCursor.getInt(i);
+      } else if (fjn == k) {
+        this.field_tips = paramCursor.getString(i);
+      } else if (fjo == k) {
+        this.field_is_overdue = paramCursor.getInt(i);
+      } else if (fjp == k) {
+        this.field_available_otb = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -76,26 +77,26 @@ public abstract class eb
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eSE) {
-      localContentValues.put("memberUuid", Long.valueOf(this.field_memberUuid));
+    if (this.eHQ) {
+      localContentValues.put("title", this.field_title);
     }
-    if (this.eSu) {
-      localContentValues.put("wxGroupId", this.field_wxGroupId);
+    if (this.fje) {
+      localContentValues.put("loan_jump_url", this.field_loan_jump_url);
     }
-    if (this.emz) {
-      localContentValues.put("userName", this.field_userName);
+    if (this.fjf) {
+      localContentValues.put("red_dot_index", Integer.valueOf(this.field_red_dot_index));
     }
-    if (this.eSy) {
-      localContentValues.put("inviteUserName", this.field_inviteUserName);
+    if (this.fjg) {
+      localContentValues.put("is_show_entry", Integer.valueOf(this.field_is_show_entry));
     }
-    if (this.eSF) {
-      localContentValues.put("memberId", Long.valueOf(this.field_memberId));
+    if (this.fjh) {
+      localContentValues.put("tips", this.field_tips);
     }
-    if (this.elS) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
+    if (this.fji) {
+      localContentValues.put("is_overdue", Integer.valueOf(this.field_is_overdue));
     }
-    if (this.emB) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.fjj) {
+      localContentValues.put("available_otb", this.field_available_otb);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -105,7 +106,7 @@ public abstract class eb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.eb
  * JD-Core Version:    0.7.0.1
  */

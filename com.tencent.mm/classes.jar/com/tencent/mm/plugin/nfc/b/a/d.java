@@ -11,7 +11,7 @@ public abstract interface d
   
   public abstract boolean connect();
   
-  public abstract boolean dkn();
+  public abstract boolean duz();
   
   public abstract boolean isConnected();
 }

@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class m
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String name;
   public int type;
@@ -24,7 +24,7 @@ public final class m
       if (this.name != null) {
         paramVarArgs.d(1, this.name);
       }
-      paramVarArgs.aR(2, this.type);
+      paramVarArgs.aS(2, this.type);
       AppMethodBeat.o(96164);
       return 0;
     }
@@ -36,15 +36,15 @@ public final class m
     label306:
     for (paramInt = f.a.a.b.b.a.e(1, this.name) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bx(2, this.type);
+      int i = f.a.a.b.b.a.bz(2, this.type);
       AppMethodBeat.o(96164);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         if (this.name == null)
@@ -66,11 +66,11 @@ public final class m
           AppMethodBeat.o(96164);
           return -1;
         case 1: 
-          localm.name = locala.LVo.readString();
+          localm.name = locala.NPN.readString();
           AppMethodBeat.o(96164);
           return 0;
         }
-        localm.type = locala.LVo.xF();
+        localm.type = locala.NPN.zc();
         AppMethodBeat.o(96164);
         return 0;
       }

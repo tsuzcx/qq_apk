@@ -10,36 +10,36 @@ import com.tencent.tbs.reader.TbsReaderManager;
 
 public final class at
 {
-  public static at krN;
-  private TbsReaderManager krO;
+  public static at kNj;
+  private TbsReaderManager kNk;
   
   private at(Context paramContext)
   {
-    AppMethodBeat.i(186666);
-    this.krO = null;
+    AppMethodBeat.i(188399);
+    this.kNk = null;
     ReaderEngine.getInstance().initReaderEntry(paramContext);
-    this.krO = new TbsReaderManager();
-    AppMethodBeat.o(186666);
+    this.kNk = new TbsReaderManager();
+    AppMethodBeat.o(188399);
   }
   
   public static boolean canOpenFile(String paramString)
   {
-    AppMethodBeat.i(186668);
+    AppMethodBeat.i(188401);
     boolean bool = ReaderEngine.getInstance().isSupportExt(3, paramString);
-    AppMethodBeat.o(186668);
+    AppMethodBeat.o(188401);
     return bool;
   }
   
-  public static at du(Context paramContext)
+  public static at ds(Context paramContext)
   {
     try
     {
-      AppMethodBeat.i(186665);
-      if (krN == null) {
-        krN = new at(paramContext);
+      AppMethodBeat.i(188398);
+      if (kNj == null) {
+        kNj = new at(paramContext);
       }
-      paramContext = krN;
-      AppMethodBeat.o(186665);
+      paramContext = kNj;
+      AppMethodBeat.o(188398);
       return paramContext;
     }
     finally {}
@@ -47,24 +47,24 @@ public final class at
   
   public final int a(Context paramContext, Bundle paramBundle, ITbsReaderCallback paramITbsReaderCallback)
   {
-    AppMethodBeat.i(186667);
-    if (this.krO == null)
+    AppMethodBeat.i(188400);
+    if (this.kNk == null)
     {
-      AppMethodBeat.o(186667);
+      AppMethodBeat.o(188400);
       return -1;
     }
-    int i = this.krO.createReaderMode(paramContext, paramITbsReaderCallback).openFile(paramBundle, null);
-    AppMethodBeat.o(186667);
+    int i = this.kNk.createReaderMode(paramContext, paramITbsReaderCallback).openFile(paramBundle, null);
+    AppMethodBeat.o(188400);
     return i;
   }
   
   public final void closeFileReader()
   {
-    AppMethodBeat.i(186669);
-    if (this.krO != null) {
-      this.krO.destroy();
+    AppMethodBeat.i(188402);
+    if (this.kNk != null) {
+      this.kNk.destroy();
     }
-    AppMethodBeat.o(186669);
+    AppMethodBeat.o(188402);
   }
 }
 

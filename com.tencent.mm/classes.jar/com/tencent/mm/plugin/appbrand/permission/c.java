@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.permission;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,38 +13,38 @@ import org.json.JSONObject;
 
 public final class c
 {
-  private static volatile Set<String> lIa;
+  private static volatile Set<String> mhL;
   
   static
   {
     AppMethodBeat.i(147598);
     HashSet localHashSet = new HashSet();
-    lIa = localHashSet;
+    mhL = localHashSet;
     localHashSet.add("operateLivePlayer");
-    lIa.add("operateLivePusher");
-    lIa.add("operateXWebLivePlayer");
-    lIa.add("operateXWebLivePusher");
-    Collections.addAll(lIa, new String[] { "joinVoIPChat", "exitVoIPChat", "onVoIPChatMembersChanged", "onVoIPChatSpeakersChanged", "onVoIPChatInterrupted", "updateVoIPChatMuteConfig", "insertVoIPView", "updateVoIPView", "removeVoIPView" });
+    mhL.add("operateLivePusher");
+    mhL.add("operateXWebLivePlayer");
+    mhL.add("operateXWebLivePusher");
+    Collections.addAll(mhL, new String[] { "joinVoIPChat", "exitVoIPChat", "onVoIPChatMembersChanged", "onVoIPChatSpeakersChanged", "onVoIPChatInterrupted", "updateVoIPChatMuteConfig", "insertVoIPView", "updateVoIPView", "removeVoIPView" });
     AppMethodBeat.o(147598);
   }
   
-  public static void Qk(String paramString)
+  public static void TP(String paramString)
   {
     AppMethodBeat.i(169512);
-    lIa.add(paramString);
+    mhL.add(paramString);
     AppMethodBeat.o(169512);
   }
   
-  static int b(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2)
+  static int c(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2)
   {
     AppMethodBeat.i(147597);
     if ((paramc instanceof aa)) {}
-    for (boolean bool = true; !bool; bool = lIa.contains(paramString1))
+    for (boolean bool = true; !bool; bool = mhL.contains(paramString1))
     {
       AppMethodBeat.o(147597);
       return -2147483648;
     }
-    if (bs.isNullOrNil(paramString2))
+    if (bt.isNullOrNil(paramString2))
     {
       AppMethodBeat.o(147597);
       return -2147483648;
@@ -61,20 +61,20 @@ public final class c
       paramString2 = paramString2.getJSONArray("permissionBytes");
       if (paramString2.length() < 3)
       {
-        ac.w("MicroMsg.AppRuntimeApiPermissionController", "permissionBytes length:%d invalid", new Object[] { Integer.valueOf(paramString2.length()) });
+        ad.w("MicroMsg.AppRuntimeApiPermissionController", "permissionBytes length:%d invalid", new Object[] { Integer.valueOf(paramString2.length()) });
         AppMethodBeat.o(147597);
         return -2147483648;
       }
     }
     catch (Exception paramc)
     {
-      ac.e("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy exp:%s", new Object[] { paramc.getMessage() });
+      ad.e("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy exp:%s", new Object[] { paramc.getMessage() });
       AppMethodBeat.o(147597);
       return -2147483648;
     }
     int i;
     if ((paramc instanceof q)) {
-      switch (1.jrs[((q)paramc).getRuntime().jdK.jqZ.aXJ().ordinal()])
+      switch (1.jLm[((q)paramc).getRuntime().jwS.jKT.bbg().ordinal()])
       {
       default: 
         i = paramString2.optInt(0, -2147483648);
@@ -82,7 +82,7 @@ public final class c
     }
     for (;;)
     {
-      ac.i("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy api:%s checkRet:%d", new Object[] { paramString1, Integer.valueOf(i) });
+      ad.i("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy api:%s checkRet:%d", new Object[] { paramString1, Integer.valueOf(i) });
       AppMethodBeat.o(147597);
       return i;
       i = paramString2.optInt(2, -2147483648);
@@ -95,7 +95,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.c
  * JD-Core Version:    0.7.0.1
  */

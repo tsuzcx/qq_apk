@@ -7,11 +7,11 @@ public abstract interface c
 {
   public abstract boolean a(Context paramContext, u paramu, h paramh);
   
-  public abstract u x(Context paramContext, String paramString);
+  public abstract u w(Context paramContext, String paramString);
   
   public static final class a
   {
-    public static c DBW;
+    public static c Fhd;
   }
 }
 

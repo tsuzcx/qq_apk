@@ -7,9 +7,9 @@ import android.view.View;
 class ViewOffsetBehavior<V extends View>
   extends CoordinatorLayout.Behavior<V>
 {
-  private p uB;
-  private int uC = 0;
-  private int uD = 0;
+  private p wt;
+  private int wv = 0;
+  private int ww = 0;
   
   public ViewOffsetBehavior() {}
   
@@ -20,43 +20,43 @@ class ViewOffsetBehavior<V extends View>
   
   public boolean G(int paramInt)
   {
-    if (this.uB != null) {
-      return this.uB.G(paramInt);
+    if (this.wt != null) {
+      return this.wt.G(paramInt);
     }
-    this.uC = paramInt;
+    this.wv = paramInt;
     return false;
   }
   
   public boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
   {
     c(paramCoordinatorLayout, paramV, paramInt);
-    if (this.uB == null) {
-      this.uB = new p(paramV);
+    if (this.wt == null) {
+      this.wt = new p(paramV);
     }
-    this.uB.df();
-    if (this.uC != 0)
+    this.wt.du();
+    if (this.wv != 0)
     {
-      this.uB.G(this.uC);
-      this.uC = 0;
+      this.wt.G(this.wv);
+      this.wv = 0;
     }
-    if (this.uD != 0)
+    if (this.ww != 0)
     {
-      paramCoordinatorLayout = this.uB;
-      paramInt = this.uD;
-      if (paramCoordinatorLayout.uH != paramInt)
+      paramCoordinatorLayout = this.wt;
+      paramInt = this.ww;
+      if (paramCoordinatorLayout.wA != paramInt)
       {
-        paramCoordinatorLayout.uH = paramInt;
-        paramCoordinatorLayout.dg();
+        paramCoordinatorLayout.wA = paramInt;
+        paramCoordinatorLayout.dv();
       }
-      this.uD = 0;
+      this.ww = 0;
     }
     return true;
   }
   
-  public int bC()
+  public int bR()
   {
-    if (this.uB != null) {
-      return this.uB.uG;
+    if (this.wt != null) {
+      return this.wt.wz;
     }
     return 0;
   }

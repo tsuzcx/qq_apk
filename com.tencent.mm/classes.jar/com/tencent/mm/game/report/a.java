@@ -1,32 +1,34 @@
 package com.tencent.mm.game.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class a
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  private static a fYz;
+  private static a grU;
   
   private a()
   {
     AppMethodBeat.i(175991);
-    com.tencent.mm.kernel.g.agi().a(1223, this);
+    g.aiU().a(1223, this);
     AppMethodBeat.o(175991);
   }
   
-  public static a adX()
+  public static a agD()
   {
     AppMethodBeat.i(175990);
-    if (fYz == null) {}
+    if (grU == null) {}
     try
     {
-      if (fYz == null) {
-        fYz = new a();
+      if (grU == null) {
+        grU = new a();
       }
-      a locala = fYz;
+      a locala = grU;
       AppMethodBeat.o(175990);
       return locala;
     }
@@ -39,16 +41,16 @@ public class a
   public static void b(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
     AppMethodBeat.i(175993);
-    ac.i("MicroMsg.GameMsgReportService", "appId = %s, opType = %d, opStatus = %d, extInfo = %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString3 });
-    paramString1 = new c(paramString1, paramInt1, paramInt2, paramString2, paramString3);
-    com.tencent.mm.kernel.g.agi().a(paramString1, 0);
+    ad.i("MicroMsg.GameMsgReportService", "appId = %s, opType = %d, opStatus = %d, extInfo = %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString3 });
+    paramString1 = new d(paramString1, paramInt1, paramInt2, paramString2, paramString3);
+    g.aiU().a(paramString1, 0);
     AppMethodBeat.o(175993);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(175992);
-    ac.i("MicroMsg.GameMsgReportService", "onSceneEnd, errType : %d, errCode : %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.GameMsgReportService", "onSceneEnd, errType : %d, errCode : %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(175992);
   }
 }

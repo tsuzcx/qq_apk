@@ -7,49 +7,49 @@ import java.util.TreeSet;
 public final class h
   implements d, Comparator<f>
 {
-  private long aGT;
-  public volatile long bvX;
-  private final TreeSet<f> bvY;
+  private long aIK;
+  public volatile long bGl;
+  private final TreeSet<f> bGm;
   
   public h(long paramLong)
   {
-    AppMethodBeat.i(194181);
-    this.bvX = paramLong;
-    this.bvY = new TreeSet(this);
-    AppMethodBeat.o(194181);
+    AppMethodBeat.i(205993);
+    this.bGl = paramLong;
+    this.bGm = new TreeSet(this);
+    AppMethodBeat.o(205993);
   }
   
   private void b(a parama, long paramLong)
   {
-    AppMethodBeat.i(194185);
-    while ((this.aGT + paramLong > this.bvX) && (!this.bvY.isEmpty())) {
-      parama.b((f)this.bvY.first());
+    AppMethodBeat.i(205997);
+    while ((this.aIK + paramLong > this.bGl) && (!this.bGm.isEmpty())) {
+      parama.b((f)this.bGm.first());
     }
-    AppMethodBeat.o(194185);
+    AppMethodBeat.o(205997);
   }
   
   public final void a(a parama, long paramLong)
   {
-    AppMethodBeat.i(194182);
+    AppMethodBeat.i(205994);
     b(parama, paramLong);
-    AppMethodBeat.o(194182);
+    AppMethodBeat.o(205994);
   }
   
   public final void a(a parama, f paramf)
   {
-    AppMethodBeat.i(194183);
-    this.bvY.add(paramf);
-    this.aGT += paramf.length;
+    AppMethodBeat.i(205995);
+    this.bGm.add(paramf);
+    this.aIK += paramf.length;
     b(parama, 0L);
-    AppMethodBeat.o(194183);
+    AppMethodBeat.o(205995);
   }
   
   public final void c(f paramf)
   {
-    AppMethodBeat.i(194184);
-    this.bvY.remove(paramf);
-    this.aGT -= paramf.length;
-    AppMethodBeat.o(194184);
+    AppMethodBeat.i(205996);
+    this.bGm.remove(paramf);
+    this.aIK -= paramf.length;
+    AppMethodBeat.o(205996);
   }
 }
 

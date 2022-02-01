@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ch
   extends b
 {
-  public a dbU;
+  public a dnl;
+  public b dnm;
   
   public ch()
   {
@@ -15,21 +17,29 @@ public final class ch
   
   private ch(byte paramByte)
   {
-    AppMethodBeat.i(93322);
-    this.dbU = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(149859);
+    this.dnl = new a();
+    this.dnm = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(93322);
+    AppMethodBeat.o(149859);
   }
   
   public static final class a
   {
-    public int bPH = 0;
+    public Context context;
+    public String dnn;
+    public String username;
+  }
+  
+  public static final class b
+  {
+    public boolean dno = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ch
  * JD-Core Version:    0.7.0.1
  */

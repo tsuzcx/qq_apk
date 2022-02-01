@@ -2,7 +2,7 @@ package d.l.b.a.b.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.v;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.d.a.e.d;
 import d.l.b.a.b.f.b;
 import java.lang.reflect.AnnotatedElement;
@@ -11,15 +11,15 @@ import java.util.List;
 public abstract interface f
   extends d
 {
-  public abstract AnnotatedElement fTd();
+  public abstract AnnotatedElement gkC();
   
   public static final class a
   {
     public static c a(f paramf, b paramb)
     {
       AppMethodBeat.i(57419);
-      k.h(paramb, "fqName");
-      paramf = paramf.fTd();
+      p.h(paramb, "fqName");
+      paramf = paramf.gkC();
       if (paramf != null)
       {
         paramf = paramf.getDeclaredAnnotations();
@@ -37,7 +37,7 @@ public abstract interface f
     public static List<c> a(f paramf)
     {
       AppMethodBeat.i(57418);
-      paramf = paramf.fTd();
+      paramf = paramf.gkC();
       if (paramf != null)
       {
         paramf = paramf.getDeclaredAnnotations();
@@ -48,7 +48,7 @@ public abstract interface f
           return paramf;
         }
       }
-      paramf = (List)v.KTF;
+      paramf = (List)v.MKE;
       AppMethodBeat.o(57418);
       return paramf;
     }
@@ -56,7 +56,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.f
  * JD-Core Version:    0.7.0.1
  */

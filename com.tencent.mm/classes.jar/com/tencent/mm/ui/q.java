@@ -2,7 +2,6 @@ package com.tencent.mm.ui;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
@@ -12,27 +11,26 @@ import android.view.Window;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
+import com.tencent.mm.compatible.util.n;
 import com.tencent.mm.sdk.h.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.lang.reflect.Field;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.reflect.Method;
 
 public class q
 {
-  public static int VA(int paramInt)
+  public static int Xp(int paramInt)
   {
     return ((int)((paramInt >> 24 & 0xFF) * 0.78F + 56.100006F) & 0xFF) << 24 | ((int)((paramInt >> 16 & 0xFF) * 0.78F + 0.0F) & 0xFF) << 16 | ((int)((paramInt >> 8 & 0xFF) * 0.78F + 0.0F) & 0xFF) << 8 | ((int)((paramInt & 0xFF) * 0.78F + 0.0F) & 0xFF) << 0;
   }
   
-  private static int aH(Context paramContext, int paramInt)
+  private static int aK(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(175975);
     Rect localRect = new Rect();
     ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
     if (localRect.top > paramInt)
     {
-      ac.w("Luggage.LuggageUIHelper", "[fixStatusBarHeight] top:%s statusHeight:%s", new Object[] { Integer.valueOf(localRect.top), Integer.valueOf(paramInt) });
+      ad.w("Luggage.LuggageUIHelper", "[fixStatusBarHeight] top:%s statusHeight:%s", new Object[] { Integer.valueOf(localRect.top), Integer.valueOf(paramInt) });
       AppMethodBeat.o(175975);
       return 0;
     }
@@ -64,7 +62,7 @@ public class q
       AppMethodBeat.o(175978);
       return false;
     }
-    if (fgC())
+    if (fwO())
     {
       paramWindow = paramWindow.getDecorView();
       int i = paramWindow.getSystemUiVisibility();
@@ -83,7 +81,7 @@ public class q
     return false;
   }
   
-  public static Point cl(Context paramContext)
+  public static Point ci(Context paramContext)
   {
     AppMethodBeat.i(175980);
     Point localPoint = new Point();
@@ -114,10 +112,10 @@ public class q
     }
   }
   
-  public static boolean fgC()
+  public static boolean fwO()
   {
     AppMethodBeat.i(175979);
-    if ((Build.VERSION.SDK_INT >= 23) && (!b.YJ()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!b.abl()))
     {
       AppMethodBeat.o(175979);
       return true;
@@ -126,21 +124,21 @@ public class q
     return false;
   }
   
-  public static int ji(Context paramContext)
+  public static int jG(Context paramContext)
   {
     AppMethodBeat.i(175973);
-    int i = jx(paramContext);
+    int i = n.B(paramContext, 25);
     AppMethodBeat.o(175973);
     return i;
   }
   
-  public static int jw(Context paramContext)
+  public static int jH(Context paramContext)
   {
     AppMethodBeat.i(175974);
-    int i = jx(paramContext);
+    int i = n.B(paramContext, -1);
     if (i > 0)
     {
-      i = aH(paramContext, i);
+      i = aK(paramContext, i);
       AppMethodBeat.o(175974);
       return i;
     }
@@ -166,23 +164,10 @@ public class q
     return i;
   }
   
-  public static int jx(Context paramContext)
+  public static int jI(Context paramContext)
   {
-    int i = 0;
     AppMethodBeat.i(175976);
-    try
-    {
-      Class localClass = Class.forName("com.android.internal.R$dimen");
-      Object localObject = localClass.newInstance();
-      int j = bs.getInt(localClass.getField("status_bar_height").get(localObject).toString(), 0);
-      j = paramContext.getResources().getDimensionPixelSize(j);
-      i = j;
-    }
-    catch (Exception paramContext)
-    {
-      label49:
-      break label49;
-    }
+    int i = n.B(paramContext, 0);
     AppMethodBeat.o(175976);
     return i;
   }

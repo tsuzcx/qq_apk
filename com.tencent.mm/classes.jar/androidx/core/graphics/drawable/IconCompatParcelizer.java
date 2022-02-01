@@ -14,14 +14,14 @@ public class IconCompatParcelizer
   {
     AppMethodBeat.i(62496);
     IconCompat localIconCompat = new IconCompat();
-    localIconCompat.mType = parama.aS(localIconCompat.mType, 1);
+    localIconCompat.mType = parama.aT(localIconCompat.mType, 1);
     localIconCompat.mData = parama.j(localIconCompat.mData);
-    localIconCompat.Im = parama.a(localIconCompat.Im, 3);
-    localIconCompat.In = parama.aS(localIconCompat.In, 4);
-    localIconCompat.Io = parama.aS(localIconCompat.Io, 5);
-    localIconCompat.Ip = ((ColorStateList)parama.a(localIconCompat.Ip, 6));
-    localIconCompat.Iq = parama.N(localIconCompat.Iq);
-    localIconCompat.wn = PorterDuff.Mode.valueOf(localIconCompat.Iq);
+    localIconCompat.Ke = parama.a(localIconCompat.Ke, 3);
+    localIconCompat.Kf = parama.aT(localIconCompat.Kf, 4);
+    localIconCompat.Kg = parama.aT(localIconCompat.Kg, 5);
+    localIconCompat.Kh = ((ColorStateList)parama.a(localIconCompat.Kh, 6));
+    localIconCompat.Ki = parama.M(localIconCompat.Ki);
+    localIconCompat.yf = PorterDuff.Mode.valueOf(localIconCompat.Ki);
     switch (localIconCompat.mType)
     {
     }
@@ -29,29 +29,29 @@ public class IconCompatParcelizer
     {
       AppMethodBeat.o(62496);
       return localIconCompat;
-      if (localIconCompat.Im != null)
+      if (localIconCompat.Ke != null)
       {
-        localIconCompat.Il = localIconCompat.Im;
+        localIconCompat.Kd = localIconCompat.Ke;
       }
       else
       {
         parama = new IllegalArgumentException("Invalid icon");
         AppMethodBeat.o(62496);
         throw parama;
-        if (localIconCompat.Im != null)
+        if (localIconCompat.Ke != null)
         {
-          localIconCompat.Il = localIconCompat.Im;
+          localIconCompat.Kd = localIconCompat.Ke;
         }
         else
         {
-          localIconCompat.Il = localIconCompat.mData;
+          localIconCompat.Kd = localIconCompat.mData;
           localIconCompat.mType = 3;
-          localIconCompat.In = 0;
-          localIconCompat.Io = localIconCompat.mData.length;
+          localIconCompat.Kf = 0;
+          localIconCompat.Kg = localIconCompat.mData.length;
           continue;
-          localIconCompat.Il = new String(localIconCompat.mData, Charset.forName("UTF-16"));
+          localIconCompat.Kd = new String(localIconCompat.mData, Charset.forName("UTF-16"));
           continue;
-          localIconCompat.Il = localIconCompat.mData;
+          localIconCompat.Kd = localIconCompat.mData;
         }
       }
     }
@@ -60,36 +60,36 @@ public class IconCompatParcelizer
   public static void write(IconCompat paramIconCompat, a parama)
   {
     AppMethodBeat.i(62497);
-    paramIconCompat.Iq = paramIconCompat.wn.name();
+    paramIconCompat.Ki = paramIconCompat.yf.name();
     switch (paramIconCompat.mType)
     {
     }
     for (;;)
     {
-      parama.aR(paramIconCompat.mType, 1);
+      parama.aS(paramIconCompat.mType, 1);
       parama.i(paramIconCompat.mData);
-      parama.writeParcelable(paramIconCompat.Im, 3);
-      parama.aR(paramIconCompat.In, 4);
-      parama.aR(paramIconCompat.Io, 5);
-      parama.writeParcelable(paramIconCompat.Ip, 6);
-      parama.M(paramIconCompat.Iq);
+      parama.writeParcelable(paramIconCompat.Ke, 3);
+      parama.aS(paramIconCompat.Kf, 4);
+      parama.aS(paramIconCompat.Kg, 5);
+      parama.writeParcelable(paramIconCompat.Kh, 6);
+      parama.L(paramIconCompat.Ki);
       AppMethodBeat.o(62497);
       return;
-      paramIconCompat.Im = ((Parcelable)paramIconCompat.Il);
+      paramIconCompat.Ke = ((Parcelable)paramIconCompat.Kd);
       continue;
-      paramIconCompat.Im = ((Parcelable)paramIconCompat.Il);
+      paramIconCompat.Ke = ((Parcelable)paramIconCompat.Kd);
       continue;
-      paramIconCompat.mData = paramIconCompat.Il.toString().getBytes(Charset.forName("UTF-16"));
+      paramIconCompat.mData = paramIconCompat.Kd.toString().getBytes(Charset.forName("UTF-16"));
       continue;
-      paramIconCompat.mData = ((String)paramIconCompat.Il).getBytes(Charset.forName("UTF-16"));
+      paramIconCompat.mData = ((String)paramIconCompat.Kd).getBytes(Charset.forName("UTF-16"));
       continue;
-      paramIconCompat.mData = ((byte[])paramIconCompat.Il);
+      paramIconCompat.mData = ((byte[])paramIconCompat.Kd);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     androidx.core.graphics.drawable.IconCompatParcelizer
  * JD-Core Version:    0.7.0.1
  */

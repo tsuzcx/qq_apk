@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.vlog.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/ImageSource;", "Lcom/tencent/mm/plugin/vlog/model/SourceMaterial;", "width", "", "height", "path", "", "(IILjava/lang/String;)V", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "plugin-vlog_release"})
-public final class h
-  extends n
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/Filter;", "", "(Ljava/lang/String;I)V", "NO_FILTER", "plugin-vlog_release"})
+public enum h
 {
-  String path;
-  
-  public h(int paramInt1, int paramInt2, String paramString)
+  static
   {
-    super(paramInt1, paramInt2, 1, (byte)0);
-    AppMethodBeat.i(207513);
-    this.path = paramString;
-    AppMethodBeat.o(207513);
+    AppMethodBeat.i(110920);
+    h localh = new h("NO_FILTER");
+    BFf = localh;
+    BFg = new h[] { localh };
+    AppMethodBeat.o(110920);
   }
+  
+  private h() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.h
  * JD-Core Version:    0.7.0.1
  */

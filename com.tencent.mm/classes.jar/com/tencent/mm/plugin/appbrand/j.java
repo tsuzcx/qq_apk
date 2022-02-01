@@ -6,11 +6,11 @@ import android.system.ErrnoException;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.gq;
+import com.tencent.mm.g.b.a.ht;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.plugin.appbrand.appcache.ax;
+import com.tencent.mm.plugin.appbrand.appcache.ay;
 import com.tencent.mm.plugin.appbrand.appcache.n;
 import com.tencent.mm.plugin.appbrand.appcache.n.b;
 import com.tencent.mm.plugin.appbrand.appcache.n.c;
@@ -18,72 +18,72 @@ import com.tencent.mm.plugin.appbrand.appcache.n.e;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig.PackageManager;
 import com.tencent.mm.plugin.appbrand.jsruntime.aa;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class j
 {
-  private static final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.d> jdr;
+  private static final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.d> jwA;
   
   static
   {
     AppMethodBeat.i(43798);
-    jdr = new com.tencent.mm.sdk.b.c() {};
+    jwA = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(43798);
   }
   
-  public static void aSw()
+  public static void aVI()
   {
-    AppMethodBeat.i(186218);
-    h.JZN.f(new a(new Runnable()
+    AppMethodBeat.i(187873);
+    h.LTJ.f(new a(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(186217);
-        if (!com.tencent.mm.kernel.g.agP().ggT)
+        AppMethodBeat.i(187872);
+        if (!com.tencent.mm.kernel.g.ajA().gAD)
         {
-          AppMethodBeat.o(186217);
+          AppMethodBeat.o(187872);
           return;
         }
-        long l1 = AppBrandGlobalSystemConfig.bat().jCW.jDm;
-        long l2 = ((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GIU, Long.valueOf(0L))).longValue();
-        long l3 = bs.aNx();
+        long l1 = AppBrandGlobalSystemConfig.bdT().jWS.jXi;
+        long l2 = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivm, Long.valueOf(0L))).longValue();
+        long l3 = bt.aQJ();
         if (l3 >= l2)
         {
-          com.tencent.mm.kernel.g.agR().agA().set(ah.a.GIU, Long.valueOf(l1 + l3));
-          n.c.aWi().run();
-          if (com.tencent.mm.plugin.appbrand.app.j.aVq() == null)
+          com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Ivm, Long.valueOf(l1 + l3));
+          n.c.aZD().run();
+          if (com.tencent.mm.plugin.appbrand.app.j.aYL() == null)
           {
-            ac.e("MicroMsg.AppBrand.IPkgCleanupLogic.Report", "reportStorageUsage, db not ready");
-            aa.bmC();
-            com.tencent.mm.plugin.appbrand.appstorage.g.jsr.run();
-            ((com.tencent.mm.plugin.appbrand.appcache.b.d.a)com.tencent.mm.plugin.appbrand.app.j.T(com.tencent.mm.plugin.appbrand.appcache.b.d.a.class)).aXF();
-            com.tencent.mm.plugin.appbrand.page.web_renderingcache.d.brD();
+            ad.e("MicroMsg.AppBrand.IPkgCleanupLogic.Report", "reportStorageUsage, db not ready");
+            aa.bqn();
+            com.tencent.mm.plugin.appbrand.appstorage.g.jMl.run();
+            ((com.tencent.mm.plugin.appbrand.appcache.b.d.a)com.tencent.mm.plugin.appbrand.app.j.T(com.tencent.mm.plugin.appbrand.appcache.b.d.a.class)).bbd();
+            com.tencent.mm.plugin.appbrand.page.web_renderingcache.d.bvH();
           }
         }
         else
         {
-          AppMethodBeat.o(186217);
+          AppMethodBeat.o(187872);
           return;
         }
-        gq localgq = new gq();
-        StatFs localStatFs = new StatFs(ax.aXb());
+        ht localht = new ht();
+        StatFs localStatFs = new StatFs(ay.baz());
         if (Build.VERSION.SDK_INT >= 18)
         {
           l1 = localStatFs.getBlockCountLong();
           label173:
-          l3 = n.b.aWh();
+          l3 = n.b.aZC();
           if (Build.VERSION.SDK_INT < 18) {
             break label335;
           }
           l2 = localStatFs.getBlockSizeLong();
           label193:
           double d = l3 / l2 / l1;
-          localgq.ecE = l3;
-          localgq.ecF = Math.round(d * 100.0D);
-          localStatFs = new StatFs(b.aoZ());
+          localht.etj = l3;
+          localht.etk = Math.round(d * 100.0D);
+          localStatFs = new StatFs(b.arM());
           if (Build.VERSION.SDK_INT < 18) {
             break label346;
           }
@@ -98,11 +98,11 @@ public final class j
         label356:
         for (l2 = localStatFs.getAvailableBlocksLong();; l2 = localStatFs.getAvailableBlocks())
         {
-          localgq.ecG = Math.round(l2 / l1 * 100.0D);
-          localgq.ecH = 1L;
-          localgq.ecI = n.e.aWo();
-          ac.i("MicroMsg.AppBrand.IPkgCleanupLogic.Report", "reportStorageUsage %s", new Object[] { localgq.PS() });
-          localgq.aHZ();
+          localht.etl = Math.round(l2 / l1 * 100.0D);
+          localht.etm = 1L;
+          localht.etn = n.e.aZJ();
+          ad.i("MicroMsg.AppBrand.IPkgCleanupLogic.Report", "reportStorageUsage %s", new Object[] { localht.RE() });
+          localht.aLk();
           break;
           l1 = localStatFs.getBlockCount();
           break label173;
@@ -113,66 +113,66 @@ public final class j
         }
       }
     }), "MicroMsg.AppBrandPruner");
-    AppMethodBeat.o(186218);
+    AppMethodBeat.o(187873);
   }
   
   public static void release()
   {
     AppMethodBeat.i(43797);
-    jdr.dead();
+    jwA.dead();
     AppMethodBeat.o(43797);
   }
   
   public static void setup()
   {
     AppMethodBeat.i(43796);
-    jdr.alive();
+    jwA.alive();
     AppMethodBeat.o(43796);
   }
   
   final class a
     implements com.tencent.mm.kernel.api.c, Runnable
   {
-    private volatile boolean jds;
+    private volatile boolean jwB;
     
     a()
     {
-      AppMethodBeat.i(186215);
-      this.jds = false;
-      com.tencent.mm.kernel.a.c.ahe().add(this);
-      AppMethodBeat.o(186215);
+      AppMethodBeat.i(187870);
+      this.jwB = false;
+      com.tencent.mm.kernel.a.c.ajP().add(this);
+      AppMethodBeat.o(187870);
     }
     
     public final void onAccountInitialized(e.c paramc) {}
     
     public final void onAccountRelease()
     {
-      this.jds = true;
+      this.jwB = true;
     }
     
     public final void run()
     {
-      AppMethodBeat.i(186216);
+      AppMethodBeat.i(187871);
       try
       {
         j.this.run();
-        AppMethodBeat.o(186216);
+        AppMethodBeat.o(187871);
         return;
       }
       catch (Throwable localThrowable)
       {
         if ((localThrowable instanceof ErrnoException))
         {
-          AppMethodBeat.o(186216);
+          AppMethodBeat.o(187871);
           return;
         }
-        ac.printErrStackTrace("MicroMsg.AppBrandPruner", localThrowable, "caught exception while prune", new Object[0]);
-        if (!this.jds)
+        ad.printErrStackTrace("MicroMsg.AppBrandPruner", localThrowable, "caught exception while prune", new Object[0]);
+        if (!this.jwB)
         {
-          AppMethodBeat.o(186216);
+          AppMethodBeat.o(187871);
           throw localThrowable;
         }
-        AppMethodBeat.o(186216);
+        AppMethodBeat.o(187871);
       }
     }
   }

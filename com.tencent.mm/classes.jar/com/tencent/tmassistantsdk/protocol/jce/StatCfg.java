@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class StatCfg
   extends JceStruct
@@ -141,7 +141,7 @@ public final class StatCfg
     }
     catch (Exception localException2)
     {
-      ac.printErrStackTrace("StatCfg", localException2, "", new Object[0]);
+      ad.printErrStackTrace("StatCfg", localException2, "", new Object[0]);
       AppMethodBeat.o(102381);
     }
     return 0;

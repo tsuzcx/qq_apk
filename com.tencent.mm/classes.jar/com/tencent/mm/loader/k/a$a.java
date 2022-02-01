@@ -2,7 +2,7 @@ package com.tencent.mm.loader.k;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/task/ImageLoadWorkTask$Companion;", "", "()V", "TAG", "", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/task/ImageLoadWorkTask$Companion;", "", "()V", "TAG", "", "libimageloader_release"})
 public final class a$a {}
 
 

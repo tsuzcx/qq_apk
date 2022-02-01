@@ -1,29 +1,9 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import com.tencent.mm.sdk.e.g;
-import com.tencent.mm.storage.bu;
-import java.util.List;
-
-public abstract interface k
-  extends g
-{
-  public abstract bu alJ(String paramString);
-  
-  public abstract void bp(String paramString, boolean paramBoolean);
-  
-  public abstract void dX(String paramString, int paramInt);
-  
-  public abstract List<bu> dcK();
-  
-  public abstract void delete(String paramString);
-  
-  public abstract void f(String paramString, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract boolean has(String paramString);
-}
+public abstract interface k {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.a.k
  * JD-Core Version:    0.7.0.1
  */

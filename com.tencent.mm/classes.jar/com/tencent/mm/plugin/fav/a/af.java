@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.mm.kernel.b.d;
-import com.tencent.mm.protocal.protobuf.ahd;
-import com.tencent.mm.protocal.protobuf.ahq;
+import com.tencent.mm.protocal.protobuf.ajt;
+import com.tencent.mm.protocal.protobuf.akg;
 import java.util.List;
 
 public abstract interface af
   extends d
 {
-  public abstract void checkFavItem(ahq paramahq);
+  public abstract void checkFavItem(akg paramakg);
   
-  public abstract void checkFavItem(List<ahd> paramList);
+  public abstract void checkFavItem(List<ajt> paramList);
   
   public abstract r getCheckCdnService();
   
@@ -50,7 +50,7 @@ public abstract interface af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.af
  * JD-Core Version:    0.7.0.1
  */

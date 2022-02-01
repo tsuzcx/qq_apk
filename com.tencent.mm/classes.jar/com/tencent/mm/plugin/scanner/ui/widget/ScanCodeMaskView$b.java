@@ -4,10 +4,12 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.scanner.g;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.pluginsdk.m;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class ScanCodeMaskView$b
   implements View.OnClickListener
 {
@@ -16,14 +18,18 @@ final class ScanCodeMaskView$b
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(170044);
-    h.wUl.f(11264, new Object[] { Integer.valueOf(3) });
-    g.dyX().bE(this.cgl);
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    com.tencent.mm.plugin.report.service.g.yhR.f(11264, new Object[] { Integer.valueOf(3) });
+    com.tencent.mm.plugin.scanner.g.dKv().bD(this.cqB);
+    a.a(this, "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(170044);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.ScanCodeMaskView.b
  * JD-Core Version:    0.7.0.1
  */

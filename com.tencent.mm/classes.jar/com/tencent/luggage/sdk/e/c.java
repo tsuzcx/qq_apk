@@ -1,8 +1,8 @@
 package com.tencent.luggage.sdk.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,75 +12,75 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksManager;", "", "()V", "TAG", "", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksCollection;", "addTasksCollection", "", "collection", "id", "finishByInstanceId", "instanceId", "getTasksCollectionById", "luggage-wechat-full-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksManager;", "", "()V", "TAG", "", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksCollection;", "addTasksCollection", "", "collection", "id", "finishByInstanceId", "instanceId", "getTasksCollectionById", "luggage-wechat-full-sdk_release"})
 public final class c
 {
-  private static final ConcurrentHashMap<String, b> cfp;
-  public static final c cfq;
+  private static final ConcurrentHashMap<String, b> cpF;
+  public static final c cpG;
   
   static
   {
-    AppMethodBeat.i(206204);
-    cfq = new c();
-    cfp = new ConcurrentHashMap();
-    AppMethodBeat.o(206204);
+    AppMethodBeat.i(192336);
+    cpG = new c();
+    cpF = new ConcurrentHashMap();
+    AppMethodBeat.o(192336);
   }
   
   public static void a(b paramb, String paramString)
   {
-    AppMethodBeat.i(206202);
-    k.h(paramb, "collection");
-    k.h(paramString, "id");
-    if ((b)cfp.put(paramString, paramb) != null) {
-      ac.e("Luggage.AppBrandParallelTasksManager", "add duplicate collection id = [%s]", new Object[] { paramString });
+    AppMethodBeat.i(192334);
+    p.h(paramb, "collection");
+    p.h(paramString, "id");
+    if ((b)cpF.put(paramString, paramb) != null) {
+      ad.e("Luggage.AppBrandParallelTasksManager", "add duplicate collection id = [%s]", new Object[] { paramString });
     }
-    AppMethodBeat.o(206202);
+    AppMethodBeat.o(192334);
   }
   
-  public static b cm(String paramString)
+  public static b jdMethod_do(String paramString)
   {
-    AppMethodBeat.i(206201);
-    k.h(paramString, "instanceId");
-    if (cfp.get(paramString) == null)
+    AppMethodBeat.i(192333);
+    p.h(paramString, "instanceId");
+    if (cpF.get(paramString) == null)
     {
       b localb = new b();
-      ((Map)cfp).put(paramString, localb);
+      ((Map)cpF).put(paramString, localb);
     }
-    paramString = cfp.get(paramString);
+    paramString = cpF.get(paramString);
     if (paramString == null) {
-      k.fOy();
+      p.gfZ();
     }
     paramString = (b)paramString;
-    AppMethodBeat.o(206201);
+    AppMethodBeat.o(192333);
     return paramString;
   }
   
-  public static void cn(String paramString)
+  public static void dp(String paramString)
   {
-    AppMethodBeat.i(206203);
-    k.h(paramString, "instanceId");
-    paramString = (b)cfp.remove(paramString);
+    AppMethodBeat.i(192335);
+    p.h(paramString, "instanceId");
+    paramString = (b)cpF.remove(paramString);
     if (paramString != null)
     {
-      ac.i("Luggage.AppBrandParallelTasksCollection", "finishAllTask: ");
-      Iterator localIterator = ((Map)paramString.cfm).entrySet().iterator();
+      ad.i("Luggage.AppBrandParallelTasksCollection", "finishAllTask: ");
+      Iterator localIterator = ((Map)paramString.cpC).entrySet().iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)((Map.Entry)localIterator.next()).getValue();
-        if (locala.DM()) {
+        if (locala.Fl()) {
           locala.cancel();
         }
       }
-      paramString.cfm.clear();
-      localIterator = ((Iterable)paramString.cfn).iterator();
+      paramString.cpC.clear();
+      localIterator = ((Iterable)paramString.cpD).iterator();
       while (localIterator.hasNext()) {
         ((d.g.a.a)localIterator.next()).invoke();
       }
-      paramString.cfn.clear();
-      AppMethodBeat.o(206203);
+      paramString.cpD.clear();
+      AppMethodBeat.o(192335);
       return;
     }
-    AppMethodBeat.o(206203);
+    AppMethodBeat.o(192335);
   }
 }
 

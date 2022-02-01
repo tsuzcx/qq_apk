@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.soter.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class d
   extends n
   implements k
 {
-  private h znc;
+  private h AEW;
   
-  public abstract void Fn(int paramInt);
+  public abstract void GC(int paramInt);
   
-  public abstract void cHM();
+  public abstract void cQb();
   
   public abstract void d(int paramInt1, int paramInt2, String paramString, q paramq);
   
   public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     int i = 1;
-    ac.i("MicroMsg.NetSceneSoterBase", "onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.znc = new h(new a((byte)0));
-    this.znc.znf = -3202;
-    paramArrayOfByte = this.znc;
+    ad.i("MicroMsg.NetSceneSoterBase", "onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.AEW = new h(new a((byte)0));
+    this.AEW.AEZ = -3202;
+    paramArrayOfByte = this.AEW;
     if ((paramInt2 == 4) && (paramInt3 == -3200))
     {
       com.tencent.soter.a.a.a(new h.1(paramArrayOfByte), true, new f());
@@ -36,12 +36,12 @@ public abstract class d
         d(paramInt2, paramInt3, paramString, paramq);
       }
       return;
-      if ((paramInt2 == 4) && (paramInt3 == paramArrayOfByte.znf))
+      if ((paramInt2 == 4) && (paramInt3 == paramArrayOfByte.AEZ))
       {
         paramInt1 = i;
-        if (paramArrayOfByte.zne != null)
+        if (paramArrayOfByte.AEY != null)
         {
-          paramArrayOfByte.zne.dTe();
+          paramArrayOfByte.AEY.efs();
           paramInt1 = i;
         }
       }
@@ -57,17 +57,17 @@ public abstract class d
   {
     private a() {}
     
-    public final void Qh(int paramInt)
+    public final void RP(int paramInt)
     {
       AppMethodBeat.i(130810);
-      d.this.Fn(paramInt);
+      d.this.GC(paramInt);
       AppMethodBeat.o(130810);
     }
     
-    public final void dTe()
+    public final void efs()
     {
       AppMethodBeat.i(130809);
-      d.this.cHM();
+      d.this.cQb();
       AppMethodBeat.o(130809);
     }
   }

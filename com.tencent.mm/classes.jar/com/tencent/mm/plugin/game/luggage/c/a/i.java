@@ -1,26 +1,57 @@
 package com.tencent.mm.plugin.game.luggage.c.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.protocal.protobuf.bug;
-import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.mm.plugin.downloader.model.d;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.plugin.lite.jsapi.a;
+import com.tencent.mm.plugin.lite.jsapi.a.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONObject;
 
-public final class i
+public class i
   extends a
 {
-  public i()
+  public final int cXg()
   {
-    super(7);
+    return 1;
   }
   
-  public final void a(Context paramContext, f paramf, bug parambug)
+  public final void j(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(83114);
-    if (paramf.getWebView() != null) {
-      paramf.getWebView().reload();
+    AppMethodBeat.i(211646);
+    long l = paramJSONObject.optLong("download_id");
+    if (l <= 0L)
+    {
+      ad.e("LiteAppJsApiPauseDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
+      this.uYz.YL("invalid_downloadid");
+      AppMethodBeat.o(211646);
+      return;
     }
-    AppMethodBeat.o(83114);
+    paramString = d.ua(l);
+    if (paramString == null)
+    {
+      this.uYz.cXe();
+      AppMethodBeat.o(211646);
+      return;
+    }
+    int i = paramJSONObject.optInt("scene", 1000);
+    int j = paramJSONObject.optInt("uiarea");
+    int k = paramJSONObject.optInt("notice_id");
+    int m = paramJSONObject.optInt("ssid");
+    paramString.field_scene = i;
+    paramString.field_uiarea = j;
+    paramString.field_noticeId = k;
+    paramString.field_ssid = m;
+    paramString.field_downloadInWifi = false;
+    d.e(paramString);
+    if (f.ccl().tT(l))
+    {
+      this.uYz.cXe();
+      AppMethodBeat.o(211646);
+      return;
+    }
+    this.uYz.YL("fail");
+    AppMethodBeat.o(211646);
   }
 }
 

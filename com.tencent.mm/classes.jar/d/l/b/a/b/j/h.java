@@ -1,6 +1,6 @@
 package d.l.b.a.b.j;
 
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.b;
 import java.util.Collection;
 
@@ -8,9 +8,9 @@ public abstract class h
 {
   public void a(b paramb, Collection<? extends b> paramCollection)
   {
-    k.h(paramb, "member");
-    k.h(paramCollection, "overridden");
-    paramb.t(paramCollection);
+    p.h(paramb, "member");
+    p.h(paramCollection, "overridden");
+    paramb.u(paramCollection);
   }
   
   public abstract void b(b paramb1, b paramb2);
@@ -21,7 +21,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.h
  * JD-Core Version:    0.7.0.1
  */

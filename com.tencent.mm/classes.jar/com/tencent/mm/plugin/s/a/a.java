@@ -12,42 +12,42 @@ public abstract interface a
   
   public abstract Bitmap a(String paramString, int paramInt, float paramFloat);
   
-  public abstract void aH(LinkedList<String> paramLinkedList);
+  public abstract void aI(LinkedList<String> paramLinkedList);
   
-  public abstract g aoV(String paramString);
+  public abstract g atV(String paramString);
   
-  public abstract g aoW(String paramString);
+  public abstract g atW(String paramString);
   
-  public abstract void aoX(String paramString);
+  public abstract void atX(String paramString);
   
-  public abstract Cursor dnC();
+  public abstract Cursor dxU();
   
-  public abstract j dnD();
+  public abstract j dxV();
   
-  public abstract Cursor dnE();
+  public abstract Cursor dxW();
   
   public abstract void e(g paramg);
   
-  public abstract void ej(String paramString, int paramInt);
+  public abstract void eB(String paramString, int paramInt);
   
   public abstract void f(g paramg);
   
   public abstract void g(g paramg);
   
-  public abstract Cursor gC(int paramInt1, int paramInt2);
+  public abstract Cursor gU(int paramInt1, int paramInt2);
   
   public static final class a
   {
-    private static a vwA = null;
+    private static a wBU = null;
     
     public static void a(a parama)
     {
-      vwA = parama;
+      wBU = parama;
     }
     
-    public static a dnF()
+    public static a dxX()
     {
-      return vwA;
+      return wBU;
     }
   }
 }

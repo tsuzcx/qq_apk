@@ -46,11 +46,11 @@ public final class d
     return false;
   }
   
-  public static Activity ko(Context paramContext)
+  public static Activity kA(Context paramContext)
   {
-    AppMethodBeat.i(210362);
-    paramContext = a.jg(paramContext);
-    AppMethodBeat.o(210362);
+    AppMethodBeat.i(221635);
+    paramContext = a.jq(paramContext);
+    AppMethodBeat.o(221635);
     return paramContext;
   }
 }

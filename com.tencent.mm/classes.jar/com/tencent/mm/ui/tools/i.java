@@ -1,24 +1,24 @@
 package com.tencent.mm.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.modelsimple.s;
 import com.tencent.mm.ui.applet.SecurityImage.b;
 
 final class i
   extends SecurityImage.b
 {
-  protected byte[] iJm = null;
-  protected String iJn = "";
-  protected String iJo = "";
-  protected int iSx = 0;
+  protected byte[] jcv = null;
+  protected String jcw = "";
+  protected String jcx = "";
+  protected int jlF = 0;
   
-  public final void aPj()
+  public final void aSv()
   {
     AppMethodBeat.i(39073);
-    s locals = new s(this.iSx, "", this.iJn, this.iJo);
-    az.agi().a(locals, 0);
+    s locals = new s(this.jlF, "", this.jcw, this.jcx);
+    ba.aiU().a(locals, 0);
     AppMethodBeat.o(39073);
   }
 }

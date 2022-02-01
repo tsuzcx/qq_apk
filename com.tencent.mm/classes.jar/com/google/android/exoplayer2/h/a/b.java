@@ -14,57 +14,57 @@ import java.io.OutputStream;
 public final class b
   implements f
 {
-  private j bmN;
+  private final a bFC;
+  private final long bFD;
+  private FileOutputStream bFE;
+  private long bFF;
+  private long bFG;
+  private q bFH;
   private final int bufferSize;
-  private final a bvo;
-  private final long bvp;
-  private FileOutputStream bvq;
-  private long bvr;
-  private long bvs;
-  private q bvt;
+  private j bxi;
   private File file;
   private OutputStream outputStream;
   
   public b(a parama, long paramLong, int paramInt)
   {
     AppMethodBeat.i(92959);
-    this.bvo = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
-    this.bvp = paramLong;
+    this.bFC = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
+    this.bFD = paramLong;
     this.bufferSize = paramInt;
     AppMethodBeat.o(92959);
   }
   
-  private void vj()
+  private void wG()
   {
     AppMethodBeat.i(92963);
     long l;
-    if (this.bmN.length == -1L)
+    if (this.bxi.length == -1L)
     {
-      l = this.bvp;
-      this.file = this.bvo.e(this.bmN.key, this.bmN.absoluteStreamPosition + this.bvs, l);
-      this.bvq = new FileOutputStream(this.file);
+      l = this.bFD;
+      this.file = this.bFC.e(this.bxi.key, this.bxi.absoluteStreamPosition + this.bFG, l);
+      this.bFE = new FileOutputStream(this.file);
       if (this.bufferSize <= 0) {
         break label161;
       }
-      if (this.bvt != null) {
+      if (this.bFH != null) {
         break label147;
       }
-      this.bvt = new q(this.bvq, this.bufferSize);
+      this.bFH = new q(this.bFE, this.bufferSize);
     }
     label105:
-    for (this.outputStream = this.bvt;; this.outputStream = this.bvq)
+    for (this.outputStream = this.bFH;; this.outputStream = this.bFE)
     {
-      this.bvr = 0L;
+      this.bFF = 0L;
       AppMethodBeat.o(92963);
       return;
-      l = Math.min(this.bmN.length - this.bvs, this.bvp);
+      l = Math.min(this.bxi.length - this.bFG, this.bFD);
       break;
-      this.bvt.a(this.bvq);
+      this.bFH.a(this.bFE);
       break label105;
     }
   }
   
-  private void vk()
+  private void wH()
   {
     AppMethodBeat.i(92964);
     if (this.outputStream == null)
@@ -75,12 +75,12 @@ public final class b
     try
     {
       this.outputStream.flush();
-      this.bvq.getFD().sync();
+      this.bFE.getFD().sync();
       x.closeQuietly(this.outputStream);
       this.outputStream = null;
       File localFile1 = this.file;
       this.file = null;
-      this.bvo.w(localFile1);
+      this.bFC.w(localFile1);
       AppMethodBeat.o(92964);
       return;
     }
@@ -100,15 +100,15 @@ public final class b
     AppMethodBeat.i(92960);
     if ((paramj.length == -1L) && (!paramj.isFlagSet(2)))
     {
-      this.bmN = null;
+      this.bxi = null;
       AppMethodBeat.o(92960);
       return;
     }
-    this.bmN = paramj;
-    this.bvs = 0L;
+    this.bxi = paramj;
+    this.bFG = 0L;
     try
     {
-      vj();
+      wG();
       AppMethodBeat.o(92960);
       return;
     }
@@ -123,14 +123,14 @@ public final class b
   public final void close()
   {
     AppMethodBeat.i(92962);
-    if (this.bmN == null)
+    if (this.bxi == null)
     {
       AppMethodBeat.o(92962);
       return;
     }
     try
     {
-      vk();
+      wH();
       AppMethodBeat.o(92962);
       return;
     }
@@ -145,7 +145,7 @@ public final class b
   public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(92961);
-    if (this.bmN == null)
+    if (this.bxi == null)
     {
       AppMethodBeat.o(92961);
       return;
@@ -154,16 +154,16 @@ public final class b
     while (i < paramInt2) {
       try
       {
-        if (this.bvr == this.bvp)
+        if (this.bFF == this.bFD)
         {
-          vk();
-          vj();
+          wH();
+          wG();
         }
-        int j = (int)Math.min(paramInt2 - i, this.bvp - this.bvr);
+        int j = (int)Math.min(paramInt2 - i, this.bFD - this.bFF);
         this.outputStream.write(paramArrayOfByte, paramInt1 + i, j);
         i += j;
-        this.bvr += j;
-        this.bvs += j;
+        this.bFF += j;
+        this.bFG += j;
       }
       catch (IOException paramArrayOfByte)
       {

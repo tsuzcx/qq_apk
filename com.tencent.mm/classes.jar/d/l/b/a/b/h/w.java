@@ -5,7 +5,7 @@ import java.util.List;
 public final class w
   extends RuntimeException
 {
-  private final List<String> LBe = null;
+  private final List<String> Nsa = null;
   
   public w()
   {

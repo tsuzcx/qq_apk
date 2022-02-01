@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.ipcall.model.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 
 public final class c
 {
-  public static void Hh(int paramInt)
+  public static void ID(int paramInt)
   {
     AppMethodBeat.i(25500);
-    h.wUl.f(13779, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt) });
+    g.yhR.f(13779, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt) });
     AppMethodBeat.o(25500);
   }
 }

@@ -7,12 +7,13 @@ import android.graphics.SurfaceTexture;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import com.tencent.liteav.basic.a.c;
 import com.tencent.liteav.basic.d.m;
 import com.tencent.liteav.basic.d.n;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.basic.module.TXCStatus;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.capturer.a.a;
 import com.tencent.liteav.renderer.TXCGLSurfaceView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
@@ -24,7 +25,7 @@ public class b
 {
   WeakReference<com.tencent.liteav.basic.c.a> a;
   private Context b;
-  private com.tencent.liteav.capturer.a c;
+  private final com.tencent.liteav.capturer.a c;
   private k d;
   private boolean e;
   private f f;
@@ -43,8 +44,7 @@ public class b
   
   public b(Context paramContext, f paramf, m paramm, boolean paramBoolean)
   {
-    AppMethodBeat.i(193043);
-    this.c = null;
+    AppMethodBeat.i(187212);
     this.g = 0;
     this.h = null;
     this.i = false;
@@ -64,7 +64,8 @@ public class b
       this.h = paramm;
       this.h.setSurfaceTextureListener(this);
       this.f.W = paramBoolean;
-      AppMethodBeat.o(193043);
+      this.c.b(this.f.U);
+      AppMethodBeat.o(187212);
       return;
     }
     catch (CloneNotSupportedException paramf)
@@ -79,7 +80,7 @@ public class b
   private void a(int paramInt, String paramString)
   {
     AppMethodBeat.i(16719);
-    d.a(this.a, paramInt, paramString);
+    com.tencent.liteav.basic.util.f.a(this.a, paramInt, paramString);
     AppMethodBeat.o(16719);
   }
   
@@ -94,7 +95,7 @@ public class b
     if (!this.i)
     {
       Monitor.a(2, String.format("VideoCapture[%d]: capture first frame", new Object[] { Integer.valueOf(hashCode()) }), "", 0);
-      d.a(this.a, 1007, "首帧画面采集完成");
+      com.tencent.liteav.basic.util.f.a(this.a, 1007, "首帧画面采集完成");
       this.i = true;
       this.r = true;
       TXCLog.i("CameraCapture", "trtc_render: render first frame");
@@ -124,7 +125,7 @@ public class b
     }
     for (localb.h = this.f.a;; localb.h = this.f.b)
     {
-      localb.l = d.a(localb.e, localb.f, this.f.b, this.f.a);
+      localb.l = com.tencent.liteav.basic.util.f.a(localb.e, localb.f, this.f.b, this.f.a);
       if (this.d != null) {
         this.d.b(localb);
       }
@@ -160,13 +161,13 @@ public class b
     {
       this.c.a(this);
       this.c.a(paramSurfaceTexture);
-      this.c.b(this.f.h);
-      this.c.d(this.f.l);
-      this.c.b(this.f.K);
+      this.c.a(this.f.h);
+      this.c.c(this.f.l);
+      this.c.c(this.f.K);
       this.c.a(n());
       this.c.a(this.f.W, this.f.a, this.f.b);
       TXCLog.i("CameraCapture", String.format("vsize startCapture w*h:%d*%d orientation:%d", new Object[] { Integer.valueOf(this.f.a), Integer.valueOf(this.f.b), Integer.valueOf(this.f.l) }));
-      if (this.c.c(this.f.m) == 0)
+      if (this.c.d(this.f.m) == 0)
       {
         this.e = true;
         this.k = System.currentTimeMillis();
@@ -187,23 +188,41 @@ public class b
     AppMethodBeat.o(16718);
   }
   
-  private int n()
+  private a.a n()
   {
-    if (!this.f.T) {}
-    switch (this.f.k)
+    AppMethodBeat.i(187213);
+    if (this.f.T)
+    {
+      locala = a.a.i;
+      AppMethodBeat.o(187213);
+      return locala;
+    }
+    switch (3.a[this.f.k.ordinal()])
     {
     default: 
-      return 8;
-    case 0: 
-      return 4;
+      locala = a.a.g;
+      AppMethodBeat.o(187213);
+      return locala;
     case 1: 
-      return 5;
+      locala = a.a.a;
+      AppMethodBeat.o(187213);
+      return locala;
     case 2: 
-      return 6;
-    case 30: 
-      return 7;
+      locala = a.a.e;
+      AppMethodBeat.o(187213);
+      return locala;
+    case 3: 
+      locala = a.a.f;
+      AppMethodBeat.o(187213);
+      return locala;
+    case 4: 
+      locala = a.a.h;
+      AppMethodBeat.o(187213);
+      return locala;
     }
-    return 3;
+    a.a locala = a.a.d;
+    AppMethodBeat.o(187213);
+    return locala;
   }
   
   private boolean o()
@@ -315,6 +334,12 @@ public class b
     AppMethodBeat.o(16720);
   }
   
+  public void a(c paramc)
+  {
+    this.f.k = paramc;
+    this.r = true;
+  }
+  
   public void a(com.tencent.liteav.basic.c.a parama)
   {
     AppMethodBeat.i(16708);
@@ -390,7 +415,7 @@ public class b
   public boolean a(int paramInt)
   {
     AppMethodBeat.i(16697);
-    boolean bool = this.c.c(paramInt);
+    boolean bool = this.c.b(paramInt);
     AppMethodBeat.o(16697);
     return bool;
   }
@@ -424,7 +449,7 @@ public class b
     c();
     TXCLog.i("CameraCapture", "onSurfaceTextureDestroy->enter with mListener:" + this.d);
     if (this.d != null) {
-      this.d.t();
+      this.d.s();
     }
     AppMethodBeat.o(16721);
   }
@@ -446,14 +471,14 @@ public class b
       ((f)localObject).m = paramBoolean;
       this.c.f();
       this.h.a(false);
-      this.c.b(this.f.h);
-      this.c.d(this.f.l);
+      this.c.a(this.f.h);
+      this.c.c(this.f.l);
       this.c.a(n());
       this.c.a(this.f.W, this.f.a, this.f.b);
       this.c.a(this);
       this.c.a(this.h.getSurfaceTexture());
       TXCLog.i("CameraCapture", String.format("vsize refreshCapture w*h:%d*%d orientation:%d", new Object[] { Integer.valueOf(this.f.a), Integer.valueOf(this.f.b), Integer.valueOf(this.f.l) }));
-      if (this.c.c(this.f.m) != 0) {
+      if (this.c.d(this.f.m) != 0) {
         break label322;
       }
       this.e = true;
@@ -554,10 +579,19 @@ public class b
   {
     AppMethodBeat.i(16709);
     this.f.l = paramInt;
-    this.c.d(this.f.l);
+    this.c.c(this.f.l);
     this.r = true;
     TXCLog.i("CameraCapture", String.format("vsize setCaptureOrientation w*h:%d*%d orientation:%d", new Object[] { Integer.valueOf(this.f.a), Integer.valueOf(this.f.b), Integer.valueOf(this.f.l) }));
     AppMethodBeat.o(16709);
+  }
+  
+  public void e(boolean paramBoolean)
+  {
+    AppMethodBeat.i(187214);
+    this.f.U = paramBoolean;
+    this.c.b(paramBoolean);
+    this.r = true;
+    AppMethodBeat.o(187214);
   }
   
   public EGLContext f()
@@ -573,7 +607,7 @@ public class b
     AppMethodBeat.i(16711);
     this.f.h = paramInt;
     if (this.c != null) {
-      this.c.b(paramInt);
+      this.c.a(paramInt);
     }
     if ((this.h != null) && ((this.h instanceof TXCGLSurfaceView))) {
       ((TXCGLSurfaceView)this.h).setFPS(paramInt);
@@ -684,10 +718,10 @@ public class b
                 TXCLog.w("CameraCapture", "camera monitor restart capture");
                 b.c(b.this).f();
                 b.d(b.this).a(false);
-                b.c(b.this).b(b.a(b.this).h);
+                b.c(b.this).a(b.a(b.this).h);
                 b.c(b.this).a(b.a(b.this).W, b.a(b.this).a, b.a(b.this).b);
                 b.c(b.this).a(b.d(b.this).getSurfaceTexture());
-                b.c(b.this).c(b.a(b.this).m);
+                b.c(b.this).d(b.a(b.this).m);
                 AppMethodBeat.o(14379);
                 return;
               }
@@ -713,7 +747,7 @@ public class b
   public void onNotifyEvent(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(16707);
-    d.a(this.a, paramInt, paramBundle);
+    com.tencent.liteav.basic.util.f.a(this.a, paramInt, paramBundle);
     AppMethodBeat.o(16707);
   }
 }

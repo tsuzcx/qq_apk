@@ -40,6 +40,11 @@ public class a
   
   public static Executor Q()
   {
+    return bM;
+  }
+  
+  public static Executor R()
+  {
     return bN;
   }
   

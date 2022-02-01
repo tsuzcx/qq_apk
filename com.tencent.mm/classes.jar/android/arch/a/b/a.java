@@ -7,19 +7,19 @@ public final class a<K, V>
 {
   public HashMap<K, b.c<K, V>> bP = new HashMap();
   
-  protected final b.c<K, V> c(K paramK)
-  {
-    return (b.c)this.bP.get(paramK);
-  }
-  
   public final boolean contains(K paramK)
   {
     return this.bP.containsKey(paramK);
   }
   
+  protected final b.c<K, V> d(K paramK)
+  {
+    return (b.c)this.bP.get(paramK);
+  }
+  
   public final V putIfAbsent(K paramK, V paramV)
   {
-    b.c localc = c(paramK);
+    b.c localc = d(paramK);
     if (localc != null) {
       return localc.mValue;
     }

@@ -12,27 +12,27 @@ import java.nio.ByteBuffer;
 public class DartExecutor
   implements c
 {
-  private final a KLT;
-  public final c KLU;
-  public boolean KLV;
-  public String KLW;
-  private c KLX;
-  private final c.a KLY;
-  private final FlutterJNI KLj;
-  private final AssetManager aDu;
+  private final a MCQ;
+  public final c MCR;
+  public boolean MCS;
+  public String MCT;
+  private c MCU;
+  private final c.a MCV;
+  private final FlutterJNI MCg;
+  private final AssetManager aFl;
   
   public DartExecutor(FlutterJNI paramFlutterJNI, AssetManager paramAssetManager)
   {
     AppMethodBeat.i(10198);
-    this.KLV = false;
-    this.KLY = new c.a()
+    this.MCS = false;
+    this.MCV = new c.a()
     {
       public final void a(ByteBuffer paramAnonymousByteBuffer, c.b paramAnonymousb)
       {
         AppMethodBeat.i(10205);
         paramAnonymousb = DartExecutor.this;
-        p localp = p.KPf;
-        DartExecutor.a(paramAnonymousb, p.O(paramAnonymousByteBuffer));
+        p localp = p.MGc;
+        DartExecutor.a(paramAnonymousb, p.P(paramAnonymousByteBuffer));
         if (DartExecutor.a(DartExecutor.this) != null)
         {
           DartExecutor.a(DartExecutor.this);
@@ -41,27 +41,27 @@ public class DartExecutor
         AppMethodBeat.o(10205);
       }
     };
-    this.KLj = paramFlutterJNI;
-    this.aDu = paramAssetManager;
-    this.KLT = new a(paramFlutterJNI);
-    this.KLT.a("flutter/isolate", this.KLY);
-    this.KLU = new b(this.KLT, (byte)0);
+    this.MCg = paramFlutterJNI;
+    this.aFl = paramAssetManager;
+    this.MCQ = new a(paramFlutterJNI);
+    this.MCQ.a("flutter/isolate", this.MCV);
+    this.MCR = new b(this.MCQ, (byte)0);
     AppMethodBeat.o(10198);
   }
   
   public final void a(DartExecutor.a parama)
   {
     AppMethodBeat.i(10201);
-    if (this.KLV)
+    if (this.MCS)
     {
-      io.flutter.a.fMG();
+      io.flutter.a.ged();
       AppMethodBeat.o(10201);
       return;
     }
     new StringBuilder("Executing Dart entrypoint: ").append(parama);
-    io.flutter.a.fMD();
-    this.KLj.runBundleAndSnapshotFromLibrary(parama.KMa, parama.KMb, null, this.aDu);
-    this.KLV = true;
+    io.flutter.a.gea();
+    this.MCg.runBundleAndSnapshotFromLibrary(parama.MCX, parama.MCY, null, this.aFl);
+    this.MCS = true;
     AppMethodBeat.o(10201);
   }
   
@@ -69,7 +69,7 @@ public class DartExecutor
   public final void a(String paramString, c.a parama)
   {
     AppMethodBeat.i(10204);
-    this.KLU.a(paramString, parama);
+    this.MCR.a(paramString, parama);
     AppMethodBeat.o(10204);
   }
   
@@ -77,7 +77,7 @@ public class DartExecutor
   public final void a(String paramString, ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(10202);
-    this.KLU.a(paramString, paramByteBuffer);
+    this.MCR.a(paramString, paramByteBuffer);
     AppMethodBeat.o(10202);
   }
   
@@ -85,60 +85,60 @@ public class DartExecutor
   public final void a(String paramString, ByteBuffer paramByteBuffer, c.b paramb)
   {
     AppMethodBeat.i(10203);
-    this.KLU.a(paramString, paramByteBuffer, paramb);
+    this.MCR.a(paramString, paramByteBuffer, paramb);
     AppMethodBeat.o(10203);
   }
   
-  public final boolean fNq()
+  public final boolean geP()
   {
-    return this.KLV;
+    return this.MCS;
   }
   
   public void onAttachedToJNI()
   {
     AppMethodBeat.i(10199);
-    io.flutter.a.fMD();
-    this.KLj.setPlatformMessageHandler(this.KLT);
+    io.flutter.a.gea();
+    this.MCg.setPlatformMessageHandler(this.MCQ);
     AppMethodBeat.o(10199);
   }
   
   public void onDetachedFromJNI()
   {
     AppMethodBeat.i(10200);
-    io.flutter.a.fMD();
-    this.KLj.setPlatformMessageHandler(null);
+    io.flutter.a.gea();
+    this.MCg.setPlatformMessageHandler(null);
     AppMethodBeat.o(10200);
   }
   
   static final class b
     implements c
   {
-    private final a KMc;
+    private final a MCZ;
     
     private b(a parama)
     {
-      this.KMc = parama;
+      this.MCZ = parama;
     }
     
     public final void a(String paramString, c.a parama)
     {
-      AppMethodBeat.i(192810);
-      this.KMc.a(paramString, parama);
-      AppMethodBeat.o(192810);
+      AppMethodBeat.i(213259);
+      this.MCZ.a(paramString, parama);
+      AppMethodBeat.o(213259);
     }
     
     public final void a(String paramString, ByteBuffer paramByteBuffer)
     {
-      AppMethodBeat.i(192808);
-      this.KMc.a(paramString, paramByteBuffer, null);
-      AppMethodBeat.o(192808);
+      AppMethodBeat.i(213257);
+      this.MCZ.a(paramString, paramByteBuffer, null);
+      AppMethodBeat.o(213257);
     }
     
     public final void a(String paramString, ByteBuffer paramByteBuffer, c.b paramb)
     {
-      AppMethodBeat.i(192809);
-      this.KMc.a(paramString, paramByteBuffer, paramb);
-      AppMethodBeat.o(192809);
+      AppMethodBeat.i(213258);
+      this.MCZ.a(paramString, paramByteBuffer, paramb);
+      AppMethodBeat.o(213258);
     }
   }
   

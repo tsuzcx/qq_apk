@@ -19,11 +19,11 @@ public abstract class AbsStoryPreference
   
   public abstract void a(d paramd);
   
-  public abstract void dUA();
+  public abstract void egO();
   
-  public abstract void dUB();
+  public abstract void egP();
   
-  public abstract void dUC();
+  public abstract void egQ();
   
   public abstract void onCreate(String paramString);
   

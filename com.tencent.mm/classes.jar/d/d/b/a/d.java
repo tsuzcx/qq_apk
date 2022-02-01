@@ -1,13 +1,68 @@
 package d.d.b.a;
 
+import d.d.e;
+import d.d.f;
+import d.d.f.b;
+import d.d.f.c;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "kotlin-stdlib"})
-public abstract interface d
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/coroutines/jvm/internal/ContinuationImpl;", "Lkotlin/coroutines/jvm/internal/BaseContinuationImpl;", "completion", "Lkotlin/coroutines/Continuation;", "", "(Lkotlin/coroutines/Continuation;)V", "_context", "Lkotlin/coroutines/CoroutineContext;", "(Lkotlin/coroutines/Continuation;Lkotlin/coroutines/CoroutineContext;)V", "context", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "intercepted", "releaseIntercepted", "", "kotlin-stdlib"})
+public abstract class d
+  extends a
 {
-  public abstract d fOh();
+  private transient d.d.d<Object> MLm;
+  private final f MLn;
   
-  public abstract StackTraceElement fOi();
+  public d(d.d.d<Object> paramd) {}
+  
+  public d(d.d.d<Object> paramd, f paramf)
+  {
+    super(paramd);
+    this.MLn = paramf;
+  }
+  
+  public final f gfE()
+  {
+    f localf = this.MLn;
+    if (localf == null) {
+      p.gfZ();
+    }
+    return localf;
+  }
+  
+  protected final void gfI()
+  {
+    d.d.d locald = this.MLm;
+    if ((locald != null) && (locald != (d)this))
+    {
+      f.b localb = gfE().get((f.c)e.MKV);
+      if (localb == null) {
+        p.gfZ();
+      }
+      ((e)localb).c(locald);
+    }
+    this.MLm = ((d.d.d)c.MLl);
+  }
+  
+  public final d.d.d<Object> gfJ()
+  {
+    d.d.d locald = this.MLm;
+    Object localObject = locald;
+    if (locald == null)
+    {
+      localObject = (e)gfE().get((f.c)e.MKV);
+      if (localObject == null) {
+        break label52;
+      }
+    }
+    label52:
+    for (localObject = ((e)localObject).b((d.d.d)this);; localObject = (d.d.d)this)
+    {
+      this.MLm = ((d.d.d)localObject);
+      return localObject;
+    }
+  }
 }
 
 

@@ -7,17 +7,17 @@ final class a
 {
   public static void a(c paramc, int paramInt, String paramString)
   {
-    AppMethodBeat.i(193014);
-    paramc = paramc.HdL;
+    AppMethodBeat.i(211559);
+    paramc = paramc.IRb;
     if (paramc != null) {
-      paramc.cE(paramInt, paramString);
+      paramc.cL(paramInt, paramString);
     }
-    AppMethodBeat.o(193014);
+    AppMethodBeat.o(211559);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.toolkit.a.a
  * JD-Core Version:    0.7.0.1
  */

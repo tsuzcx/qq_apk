@@ -41,30 +41,31 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.Exif;
-import com.tencent.mm.g.a.ol;
-import com.tencent.mm.g.b.a.cr;
-import com.tencent.mm.g.c.ff;
+import com.tencent.mm.g.a.ou;
+import com.tencent.mm.g.b.a.dk;
+import com.tencent.mm.g.c.fp;
 import com.tencent.mm.model.u;
 import com.tencent.mm.network.n.a;
-import com.tencent.mm.platformtools.p;
 import com.tencent.mm.platformtools.p.a;
 import com.tencent.mm.plugin.image.d;
 import com.tencent.mm.plugin.scanner.PluginScanTranslation;
 import com.tencent.mm.plugin.scanner.e;
-import com.tencent.mm.plugin.scanner.util.j;
+import com.tencent.mm.plugin.scanner.model.af;
 import com.tencent.mm.plugin.scanner.util.j.b;
 import com.tencent.mm.plugin.scanner.util.m;
 import com.tencent.mm.plugin.scanner.util.m.a;
 import com.tencent.mm.plugin.scanner.util.m.b;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.MMTextureView;
 import com.tencent.mm.ui.base.MultiTouchImageView;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 import com.tencent.mm.vfs.i;
@@ -75,69 +76,69 @@ import java.util.List;
 @com.tencent.mm.ui.base.a(3)
 public class ScanTranslationCaptureUI
   extends MMActivity
-  implements Camera.PreviewCallback, TextureView.SurfaceTextureListener, com.tencent.mm.ak.g, j.b
+  implements Camera.PreviewCallback, TextureView.SurfaceTextureListener, com.tencent.mm.al.f, j.b
 {
-  private int dbL;
-  private int gVh;
-  private int hxS;
-  private View iCB;
-  private boolean iMq;
-  private String iag;
-  private int kWC;
-  private ImageView qOY;
-  private ValueAnimator qPb;
-  private com.tencent.mm.network.n qPd;
+  private int dnh;
+  private int hQn;
+  private int hnk;
+  private View iVL;
+  private String itB;
+  private boolean jfA;
+  private int ltB;
+  private ImageView ryX;
+  private ValueAnimator rza;
+  private com.tencent.mm.network.n rzc;
   private SurfaceTexture surfaceTexture;
-  private String tbJ;
-  private MMTextureView xeH;
-  private com.tencent.mm.plugin.scanner.a.a xeI;
-  private View xeJ;
-  private View xeK;
-  private View xeL;
-  private View xeM;
-  private View xeN;
-  private ImageView xeO;
-  private View xeP;
-  private View xeQ;
-  private View xeR;
-  private TextView xeS;
-  private Bitmap xeT;
-  private Bitmap xeU;
-  private String xeV;
-  private a xeW;
-  private MMGestureGallery xeX;
-  private ValueAnimator xeY;
-  private int xeZ;
-  private String xfa;
-  private boolean xfb;
-  private int xfc;
-  private cr xfd;
-  private long[] xfe;
-  private c<ol> xff;
+  private String tZz;
+  private MMTextureView ysJ;
+  private com.tencent.mm.plugin.scanner.a.a ysK;
+  private View ysL;
+  private View ysM;
+  private View ysN;
+  private View ysO;
+  private View ysP;
+  private ImageView ysQ;
+  private View ysR;
+  private View ysS;
+  private View ysT;
+  private TextView ysU;
+  private Bitmap ysV;
+  private Bitmap ysW;
+  private String ysX;
+  private a ysY;
+  private MMGestureGallery ysZ;
+  private ValueAnimator yta;
+  private int ytb;
+  private String ytc;
+  private boolean ytd;
+  private int yte;
+  private dk ytf;
+  private long[] ytg;
+  private c<ou> yth;
   
   public ScanTranslationCaptureUI()
   {
     AppMethodBeat.i(120893);
-    this.iMq = true;
-    this.xfc = 0;
-    this.dbL = 0;
-    this.gVh = 0;
-    this.xfd = new cr();
-    this.xfe = new long[2];
-    this.xff = new c() {};
-    this.qPd = new n.a()
+    this.jfA = true;
+    this.yte = 0;
+    this.dnh = 0;
+    this.hnk = 0;
+    this.ytf = new dk();
+    this.ytg = new long[2];
+    this.yth = new c() {};
+    this.rzc = new n.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
         AppMethodBeat.i(120878);
-        ap.f(new Runnable()
+        aq.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(120877);
-            if ((com.tencent.mm.kernel.g.agi().aBK() != 6) && (com.tencent.mm.kernel.g.agi().aBK() != 4) && (ScanTranslationCaptureUI.e(ScanTranslationCaptureUI.this) == 1))
+            if ((com.tencent.mm.kernel.g.aiU().aEN() != 6) && (com.tencent.mm.kernel.g.aiU().aEN() != 4) && (ScanTranslationCaptureUI.e(ScanTranslationCaptureUI.this) == 1))
             {
-              com.tencent.mm.ui.base.h.c(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.this.getString(2131762844), "", true);
+              h.c(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.this.getString(2131762844), "", true);
               ScanTranslationCaptureUI.f(ScanTranslationCaptureUI.this);
             }
             AppMethodBeat.o(120877);
@@ -157,29 +158,29 @@ public class ScanTranslationCaptureUI
       AppMethodBeat.o(120920);
       return;
     }
-    this.xeW.bitmap = paramBitmap;
-    this.xeW.notifyDataSetChanged();
+    this.ysY.bitmap = paramBitmap;
+    this.ysY.notifyDataSetChanged();
     AppMethodBeat.o(120920);
   }
   
-  private void auj()
+  private void awW()
   {
     AppMethodBeat.i(120905);
     try
     {
       stopPreview();
-      this.xeI.close();
+      this.ysK.close();
       AppMethodBeat.o(120905);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.ScanTranslationCaptureUI", localException.getMessage());
+      ad.e("MicroMsg.ScanTranslationCaptureUI", localException.getMessage());
       AppMethodBeat.o(120905);
     }
   }
   
-  private void bjx()
+  private void bnj()
   {
     AppMethodBeat.i(120911);
     getWindow().addFlags(2097280);
@@ -191,51 +192,51 @@ public class ScanTranslationCaptureUI
     AppMethodBeat.o(120911);
   }
   
-  private void cqR()
+  private void cwB()
   {
     AppMethodBeat.i(120913);
     stopPreview();
-    if ((com.tencent.mm.kernel.g.agi().aBK() != 6) && (com.tencent.mm.kernel.g.agi().aBK() != 4))
+    if ((com.tencent.mm.kernel.g.aiU().aEN() != 6) && (com.tencent.mm.kernel.g.aiU().aEN() != 4))
     {
-      com.tencent.mm.ui.base.h.c(this, getString(2131762844), "", true);
-      dAt();
+      h.c(this, getString(2131762844), "", true);
+      dLR();
       AppMethodBeat.o(120913);
       return;
     }
-    this.xfd.dNi = 2L;
-    this.xeZ = ((int)(u.axw().hashCode() + System.currentTimeMillis() & 0xFFFFFFFF));
-    this.hxS = 1;
+    this.ytf.ecx = 2L;
+    this.ytb = ((int)(u.aAm().hashCode() + System.currentTimeMillis() & 0xFFFFFFFF));
+    this.hQn = 1;
     showTitleView();
-    dAs();
-    dAo();
-    if (this.xfa.equalsIgnoreCase("zh_CN"))
+    dLQ();
+    dLM();
+    if (this.ytc.equalsIgnoreCase("zh_CN"))
     {
-      this.xeO.setImageResource(2131691335);
-      this.xeQ.setVisibility(0);
-      this.xeR.setVisibility(0);
-      this.xeN.setVisibility(8);
-      this.qOY.setVisibility(0);
-      this.xeM.setVisibility(8);
-      this.xeX.setVisibility(0);
-      this.xeS.setVisibility(8);
-      this.qPb.setRepeatMode(1);
-      this.qPb.setRepeatCount(-1);
-      this.qPb.start();
+      this.ysQ.setImageResource(2131691335);
+      this.ysS.setVisibility(0);
+      this.ysT.setVisibility(0);
+      this.ysP.setVisibility(8);
+      this.ryX.setVisibility(0);
+      this.ysO.setVisibility(8);
+      this.ysZ.setVisibility(0);
+      this.ysU.setVisibility(8);
+      this.rza.setRepeatMode(1);
+      this.rza.setRepeatCount(-1);
+      this.rza.start();
     }
     try
     {
-      if ((bs.isNullOrNil(this.iag)) || (this.xeT == null)) {
+      if ((bt.isNullOrNil(this.itB)) || (this.ysV == null)) {
         break label368;
       }
-      this.tbJ = m.arY(this.iag);
-      str2 = this.iag;
-      if (this.dbL != 0) {
+      this.tZz = m.awZ(this.itB);
+      str2 = this.itB;
+      if (this.dnh != 0) {
         break label398;
       }
       l = System.currentTimeMillis();
-      com.tencent.mm.sdk.platformtools.f.a(this.xeT, 80, Bitmap.CompressFormat.JPEG, this.iag, false);
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "save img cost %d", new Object[] { Integer.valueOf((int)(System.currentTimeMillis() - l)) });
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "fileSize %d", new Object[] { Long.valueOf(i.aSp(this.iag)) });
+      com.tencent.mm.sdk.platformtools.g.a(this.ysV, 80, Bitmap.CompressFormat.JPEG, this.itB, false);
+      ad.i("MicroMsg.ScanTranslationCaptureUI", "save img cost %d", new Object[] { Integer.valueOf((int)(System.currentTimeMillis() - l)) });
+      ad.i("MicroMsg.ScanTranslationCaptureUI", "fileSize %d", new Object[] { Long.valueOf(i.aYo(this.itB)) });
       localObject = str2;
     }
     catch (Exception localException)
@@ -247,31 +248,31 @@ public class ScanTranslationCaptureUI
         Object localObject;
         label325:
         label368:
-        com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.ScanTranslationCaptureUI", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ScanTranslationCaptureUI", localException, "", new Object[0]);
         label398:
         continue;
-        com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.ScanTranslationCaptureUI", "can not find old translation result!");
+        ad.w("MicroMsg.ScanTranslationCaptureUI", "can not find old translation result!");
         String str1 = str2;
-        if (this.gVh != 0)
+        if (this.hnk != 0)
         {
           l = System.currentTimeMillis();
           str1 = ((e)com.tencent.mm.kernel.g.ad(e.class)).genScanTmpImgPath("jpg");
-          com.tencent.mm.sdk.platformtools.f.a(this.xeT, 80, Bitmap.CompressFormat.JPEG, str1, false);
-          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "save img cost %d", new Object[] { Integer.valueOf((int)(System.currentTimeMillis() - l)) });
-          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "fileSize %d", new Object[] { Long.valueOf(i.aSp(str1)) });
+          com.tencent.mm.sdk.platformtools.g.a(this.ysV, 80, Bitmap.CompressFormat.JPEG, str1, false);
+          ad.i("MicroMsg.ScanTranslationCaptureUI", "save img cost %d", new Object[] { Integer.valueOf((int)(System.currentTimeMillis() - l)) });
+          ad.i("MicroMsg.ScanTranslationCaptureUI", "fileSize %d", new Object[] { Long.valueOf(i.aYo(str1)) });
         }
       }
     }
-    this.xfe[1] = System.currentTimeMillis();
-    ((e)com.tencent.mm.kernel.g.ad(e.class)).getScanCdnService().a(this.tbJ, (String)localObject, com.tencent.mm.i.a.MediaType_IMAGE, new m.a()
+    this.ytg[1] = System.currentTimeMillis();
+    ((e)com.tencent.mm.kernel.g.ad(e.class)).getScanCdnService().a(this.tZz, (String)localObject, com.tencent.mm.i.a.MediaType_IMAGE, new m.a()
     {
       public final void a(String paramAnonymousString, m.b paramAnonymousb)
       {
         AppMethodBeat.i(120873);
-        if ((!bs.isNullOrNil(paramAnonymousString)) && (paramAnonymousString.equals(ScanTranslationCaptureUI.w(ScanTranslationCaptureUI.this))))
+        if ((!bt.isNullOrNil(paramAnonymousString)) && (paramAnonymousString.equals(ScanTranslationCaptureUI.w(ScanTranslationCaptureUI.this))))
         {
-          ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).dQq = ((int)(System.currentTimeMillis() - ScanTranslationCaptureUI.i(ScanTranslationCaptureUI.this)[1]));
-          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "upload img cost %d", new Object[] { Long.valueOf(ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).dQq) });
+          ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).efM = ((int)(System.currentTimeMillis() - ScanTranslationCaptureUI.i(ScanTranslationCaptureUI.this)[1]));
+          ad.i("MicroMsg.ScanTranslationCaptureUI", "upload img cost %d", new Object[] { Long.valueOf(ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).efM) });
           switch (paramAnonymousb.errCode)
           {
           }
@@ -280,36 +281,36 @@ public class ScanTranslationCaptureUI
         {
           if ((ScanTranslationCaptureUI.e(ScanTranslationCaptureUI.this) == 1) && (ScanTranslationCaptureUI.y(ScanTranslationCaptureUI.this) != 0))
           {
-            com.tencent.mm.sdk.platformtools.ac.i("delete tmp path %s", this.wVw);
-            i.deleteFile(this.wVw);
+            ad.i("delete tmp path %s", this.yiZ);
+            i.deleteFile(this.yiZ);
           }
           AppMethodBeat.o(120873);
           return;
-          if (!bs.T(new String[] { paramAnonymousb.fileId, paramAnonymousb.aeskey }))
+          if (!bt.V(new String[] { paramAnonymousb.fileId, paramAnonymousb.aeskey }))
           {
-            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "fileId %s", new Object[] { paramAnonymousb.fileId });
-            paramAnonymousString = new com.tencent.mm.plugin.scanner.model.h(ScanTranslationCaptureUI.x(ScanTranslationCaptureUI.this), (int)i.aSp(this.wVw), paramAnonymousb.fileId, paramAnonymousb.aeskey);
-            com.tencent.mm.kernel.g.agi().a(paramAnonymousString, 0);
+            ad.i("MicroMsg.ScanTranslationCaptureUI", "fileId %s", new Object[] { paramAnonymousb.fileId });
+            paramAnonymousString = new com.tencent.mm.plugin.scanner.model.j(ScanTranslationCaptureUI.x(ScanTranslationCaptureUI.this), (int)i.aYo(this.yiZ), paramAnonymousb.fileId, paramAnonymousb.aeskey);
+            com.tencent.mm.kernel.g.aiU().a(paramAnonymousString, 0);
           }
           else
           {
-            ap.f(new Runnable()
+            aq.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(120870);
-                ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).dNi = 3L;
-                com.tencent.mm.ui.base.h.cg(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.this.getString(2131762880));
+                ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).ecx = 3L;
+                h.cl(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.this.getString(2131762880));
                 AppMethodBeat.o(120870);
               }
             });
             continue;
-            ap.f(new Runnable()
+            aq.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(120872);
-                com.tencent.mm.ui.base.h.d(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.this.getString(2131759055), ScanTranslationCaptureUI.this.getString(2131755906), new DialogInterface.OnClickListener()
+                h.d(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.this.getString(2131759055), ScanTranslationCaptureUI.this.getString(2131755906), new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                   {
@@ -321,34 +322,34 @@ public class ScanTranslationCaptureUI
                 AppMethodBeat.o(120872);
               }
             });
-            ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).dNi = 3L;
+            ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).ecx = 3L;
           }
         }
       }
     });
     for (;;)
     {
-      com.tencent.mm.kernel.g.agi().a(294, this);
+      com.tencent.mm.kernel.g.aiU().a(294, this);
       AppMethodBeat.o(120913);
       return;
-      this.xeO.setImageResource(2131691338);
+      this.ysQ.setImageResource(2131691338);
       break;
       localObject = str2;
-      if (this.dbL != 1) {
+      if (this.dnh != 1) {
         break label325;
       }
-      localObject = ah.dg(this.iag + i.aSq(this.iag));
-      localObject = ((PluginScanTranslation)com.tencent.mm.kernel.g.ad(PluginScanTranslation.class)).getTranslationResultStorage().arL((String)localObject);
+      localObject = ai.ee(this.itB + i.aYp(this.itB));
+      localObject = ((PluginScanTranslation)com.tencent.mm.kernel.g.ad(PluginScanTranslation.class)).getTranslationResultStorage().awM((String)localObject);
       if (localObject == null) {
         break label544;
       }
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "already has translation result");
-      this.xeV = ((ff)localObject).field_resultFile;
-      this.xeU = com.tencent.mm.sdk.platformtools.f.decodeFile(this.xeV, new BitmapFactory.Options());
-      if (this.xeU == null) {
+      ad.i("MicroMsg.ScanTranslationCaptureUI", "already has translation result");
+      this.ysX = ((fp)localObject).field_resultFile;
+      this.ysW = com.tencent.mm.sdk.platformtools.g.decodeFile(this.ysX, new BitmapFactory.Options());
+      if (this.ysW == null) {
         break label536;
       }
-      ap.n(new Runnable()
+      aq.o(new Runnable()
       {
         public final void run()
         {
@@ -361,61 +362,83 @@ public class ScanTranslationCaptureUI
     }
   }
   
-  private void cqU()
+  private void cwE()
   {
     AppMethodBeat.i(120916);
-    this.qPb.setRepeatMode(1);
-    this.qPb.setRepeatCount(0);
-    this.qPb.end();
+    this.rza.setRepeatMode(1);
+    this.rza.setRepeatCount(0);
+    this.rza.end();
     AppMethodBeat.o(120916);
   }
   
-  private void dAo()
+  private void dDn()
+  {
+    AppMethodBeat.i(120903);
+    if (!com.tencent.mm.compatible.d.b.abb())
+    {
+      h.a(this, getString(2131755900), getString(2131755825), getString(2131755826), true, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(120875);
+          com.tencent.mm.compatible.d.b.bZ(ScanTranslationCaptureUI.this);
+          ScanTranslationCaptureUI.this.finish();
+          AppMethodBeat.o(120875);
+        }
+      });
+      AppMethodBeat.o(120903);
+      return;
+    }
+    dLP();
+    AppMethodBeat.o(120903);
+  }
+  
+  private void dLM()
   {
     AppMethodBeat.i(120896);
-    ab.eUO().equalsIgnoreCase("zh_CN");
-    this.xfa = ab.iC(this);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "targetLang %s", new Object[] { this.xfa });
+    ac.fks().equalsIgnoreCase("zh_CN");
+    this.ytc = ac.iM(this);
+    ad.i("MicroMsg.ScanTranslationCaptureUI", "targetLang %s", new Object[] { this.ytc });
     AppMethodBeat.o(120896);
   }
   
-  private void dAp()
+  private void dLN()
   {
     AppMethodBeat.i(120904);
     try
     {
-      if (!this.xeI.isOpen())
+      if (!this.ysK.isOpen())
       {
         long l = System.currentTimeMillis();
-        this.xeI.aeh(getWindowManager().getDefaultDisplay().getRotation());
-        this.xeI.a(new Camera.PreviewCallback()
+        this.ysK.agH(getWindowManager().getDefaultDisplay().getRotation());
+        this.ysK.a(new Camera.PreviewCallback()
         {
           public final void onPreviewFrame(byte[] paramAnonymousArrayOfByte, Camera paramAnonymousCamera) {}
         });
-        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "open camera cost %s, failed count %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(this.xfc) });
-        this.xeI.dzi();
+        ad.i("MicroMsg.ScanTranslationCaptureUI", "open camera cost %s, failed count %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(this.yte) });
+        this.ysK.dKG();
         Rect localRect = new Rect();
         getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-        this.xeI.l(new Point(localRect.width(), localRect.height()));
-        if (this.hxS == 0) {
-          dAt();
+        this.ysK.l(new Point(localRect.width(), localRect.height()));
+        if (this.hQn == 0) {
+          dLR();
         }
-        this.xfc = 0;
+        this.yte = 0;
       }
       AppMethodBeat.o(120904);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.ScanTranslationCaptureUI", localException.getMessage());
-      this.xfc += 1;
-      if (this.xfc >= 5)
+      ad.e("MicroMsg.ScanTranslationCaptureUI", localException.getMessage());
+      this.yte += 1;
+      if (this.yte >= 5)
       {
-        dAq();
+        dLO();
         AppMethodBeat.o(120904);
         return;
       }
-      ap.n(new Runnable()
+      aq.o(new Runnable()
       {
         public final void run()
         {
@@ -428,10 +451,10 @@ public class ScanTranslationCaptureUI
     }
   }
   
-  private void dAq()
+  private void dLO()
   {
     AppMethodBeat.i(120908);
-    com.tencent.mm.ui.base.h.a(this, getString(2131762855), getString(2131755906), false, new DialogInterface.OnClickListener()
+    h.a(this, getString(2131762855), getString(2131755906), false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -445,20 +468,20 @@ public class ScanTranslationCaptureUI
     AppMethodBeat.o(120908);
   }
   
-  private void dAr()
+  private void dLP()
   {
     AppMethodBeat.i(120909);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "curState %d", new Object[] { Integer.valueOf(this.hxS) });
-    if (!this.xeI.isOpen()) {
-      dAp();
+    ad.i("MicroMsg.ScanTranslationCaptureUI", "curState %d", new Object[] { Integer.valueOf(this.hQn) });
+    if (!this.ysK.isOpen()) {
+      dLN();
     }
-    if ((this.hxS == 0) && (this.xeI.isOpen())) {
-      dAt();
+    if ((this.hQn == 0) && (this.ysK.isOpen())) {
+      dLR();
     }
     AppMethodBeat.o(120909);
   }
   
-  private void dAs()
+  private void dLQ()
   {
     AppMethodBeat.i(120912);
     getController().setNavigationbarColor(getResources().getColor(2131101053));
@@ -466,136 +489,114 @@ public class ScanTranslationCaptureUI
     AppMethodBeat.o(120912);
   }
   
-  private void dAt()
+  private void dLR()
   {
     AppMethodBeat.i(120914);
-    bjx();
+    bnj();
     startPreview();
     hideTitleView();
-    this.xfe[0] = System.currentTimeMillis();
-    if ((this.dbL == 0) && (!bs.isNullOrNil(this.iag))) {
-      i.deleteFile(this.iag);
+    this.ytg[0] = System.currentTimeMillis();
+    if ((this.dnh == 0) && (!bt.isNullOrNil(this.itB))) {
+      i.deleteFile(this.itB);
     }
-    this.hxS = 0;
-    this.dbL = 0;
-    this.iag = null;
-    this.xeV = null;
-    this.xeT = null;
-    this.xeU = null;
-    this.gVh = 0;
-    this.xeQ.setVisibility(8);
-    this.xeR.setVisibility(8);
-    this.xeM.setVisibility(0);
-    this.xeN.setVisibility(8);
-    this.xeX.setVisibility(8);
-    this.xeH.setVisibility(0);
-    this.xeS.setVisibility(0);
-    this.qOY.setVisibility(8);
-    cqU();
-    com.tencent.mm.kernel.g.agi().b(294, this);
+    this.hQn = 0;
+    this.dnh = 0;
+    this.itB = null;
+    this.ysX = null;
+    this.ysV = null;
+    this.ysW = null;
+    this.hnk = 0;
+    this.ysS.setVisibility(8);
+    this.ysT.setVisibility(8);
+    this.ysO.setVisibility(0);
+    this.ysP.setVisibility(8);
+    this.ysZ.setVisibility(8);
+    this.ysJ.setVisibility(0);
+    this.ysU.setVisibility(0);
+    this.ryX.setVisibility(8);
+    cwE();
+    com.tencent.mm.kernel.g.aiU().b(294, this);
     AppMethodBeat.o(120914);
   }
   
-  private void dAu()
+  private void dLS()
   {
     AppMethodBeat.i(120915);
-    dAs();
-    this.hxS = 3;
-    this.xeN.setVisibility(0);
-    if (this.xfa.equalsIgnoreCase("zh_CN")) {
-      this.xeO.setImageResource(2131234422);
+    dLQ();
+    this.hQn = 3;
+    this.ysP.setVisibility(0);
+    if (this.ytc.equalsIgnoreCase("zh_CN")) {
+      this.ysQ.setImageResource(2131234422);
     }
     for (;;)
     {
-      this.qOY.setVisibility(8);
-      cqU();
-      if ((this.dbL != 1) || (!bs.isNullOrNil(this.xeV))) {
+      this.ryX.setVisibility(8);
+      cwE();
+      if ((this.dnh != 1) || (!bt.isNullOrNil(this.ysX))) {
         break label234;
       }
-      this.xeV = ((PluginScanTranslation)com.tencent.mm.kernel.g.ad(PluginScanTranslation.class)).genTranslationResultImgPath("jpg");
+      this.ysX = ((PluginScanTranslation)com.tencent.mm.kernel.g.ad(PluginScanTranslation.class)).genTranslationResultImgPath("jpg");
       try
       {
-        com.tencent.mm.sdk.platformtools.f.a(this.xeU, 80, Bitmap.CompressFormat.JPEG, this.xeV, false);
-        com.tencent.mm.plugin.scanner.model.ac localac = new com.tencent.mm.plugin.scanner.model.ac();
-        localac.field_originMD5 = ah.dg(this.iag + i.aSq(this.iag));
-        localac.field_resultFile = this.xeV;
-        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "insert translate result %s", new Object[] { this.xeV });
-        ((PluginScanTranslation)com.tencent.mm.kernel.g.ad(PluginScanTranslation.class)).getTranslationResultStorage().a(localac);
+        com.tencent.mm.sdk.platformtools.g.a(this.ysW, 80, Bitmap.CompressFormat.JPEG, this.ysX, false);
+        af localaf = new af();
+        localaf.field_originMD5 = ai.ee(this.itB + i.aYp(this.itB));
+        localaf.field_resultFile = this.ysX;
+        ad.i("MicroMsg.ScanTranslationCaptureUI", "insert translate result %s", new Object[] { this.ysX });
+        ((PluginScanTranslation)com.tencent.mm.kernel.g.ad(PluginScanTranslation.class)).getTranslationResultStorage().a(localaf);
         AppMethodBeat.o(120915);
         return;
       }
       catch (IOException localIOException)
       {
-        com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.ScanTranslationCaptureUI", localIOException, "save translate result file error", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ScanTranslationCaptureUI", localIOException, "save translate result file error", new Object[0]);
       }
-      this.xeO.setImageResource(2131234424);
+      this.ysQ.setImageResource(2131234424);
     }
     label234:
     AppMethodBeat.o(120915);
   }
   
-  private void dsQ()
-  {
-    AppMethodBeat.i(120903);
-    if (!com.tencent.mm.compatible.d.b.Yz())
-    {
-      com.tencent.mm.ui.base.h.a(this, getString(2131755900), getString(2131755825), getString(2131755826), true, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(120875);
-          com.tencent.mm.compatible.d.b.cb(ScanTranslationCaptureUI.this);
-          ScanTranslationCaptureUI.this.finish();
-          AppMethodBeat.o(120875);
-        }
-      });
-      AppMethodBeat.o(120903);
-      return;
-    }
-    dAr();
-    AppMethodBeat.o(120903);
-  }
-  
   private void goBack()
   {
     AppMethodBeat.i(120902);
-    ((PluginScanTranslation)com.tencent.mm.kernel.g.ad(PluginScanTranslation.class)).getTranslationRender().dBs();
-    if (this.hxS == 0)
+    ((PluginScanTranslation)com.tencent.mm.kernel.g.ad(PluginScanTranslation.class)).getTranslationRender().dMQ();
+    if (this.hQn == 0)
     {
-      if (this.xfb)
+      if (this.ytd)
       {
-        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "is playing animation");
+        ad.i("MicroMsg.ScanTranslationCaptureUI", "is playing animation");
         AppMethodBeat.o(120902);
         return;
       }
-      this.xeY.addListener(new AnimatorListenerAdapter()
+      this.yta.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(120874);
-          paramAnonymousAnimator = new ol();
-          paramAnonymousAnimator.dqV.action = 3;
-          com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousAnimator);
+          paramAnonymousAnimator = new ou();
+          paramAnonymousAnimator.dCM.action = 3;
+          com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousAnimator);
           ScanTranslationCaptureUI.a(ScanTranslationCaptureUI.this, false);
           ScanTranslationCaptureUI.z(ScanTranslationCaptureUI.this);
           ScanTranslationCaptureUI.this.finish();
           AppMethodBeat.o(120874);
         }
       });
-      this.xeY.reverse();
-      this.xfb = true;
+      this.yta.reverse();
+      this.ytd = true;
       AppMethodBeat.o(120902);
       return;
     }
-    if ((this.hxS == 1) || (this.hxS == 2) || (this.hxS == 3))
+    if ((this.hQn == 1) || (this.hQn == 2) || (this.hQn == 3))
     {
-      if (this.hxS == 1) {
-        this.xfd.dQs = ((int)(System.currentTimeMillis() - this.xfe[1]));
+      if (this.hQn == 1) {
+        this.ytf.efO = ((int)(System.currentTimeMillis() - this.ytg[1]));
       }
-      if (this.xfd.dNi != 0L) {
-        this.xfd.aHZ();
+      if (this.ytf.ecx != 0L) {
+        this.ytf.aLk();
       }
-      dAt();
+      dLR();
     }
     AppMethodBeat.o(120902);
   }
@@ -605,22 +606,22 @@ public class ScanTranslationCaptureUI
     AppMethodBeat.i(120907);
     try
     {
-      if ((this.surfaceTexture != null) && (this.xeI.isOpen()) && (!this.xeI.cDz()))
+      if ((this.surfaceTexture != null) && (this.ysK.isOpen()) && (!this.ysK.cLT()))
       {
-        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "start preview");
-        this.xeI.p(this.surfaceTexture);
-        this.xeK.setEnabled(true);
+        ad.i("MicroMsg.ScanTranslationCaptureUI", "start preview");
+        this.ysK.p(this.surfaceTexture);
+        this.ysM.setEnabled(true);
         AppMethodBeat.o(120907);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "can not start preview");
+      ad.i("MicroMsg.ScanTranslationCaptureUI", "can not start preview");
       AppMethodBeat.o(120907);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.ScanTranslationCaptureUI", localException.getMessage());
-      dAq();
+      ad.e("MicroMsg.ScanTranslationCaptureUI", localException.getMessage());
+      dLO();
       AppMethodBeat.o(120907);
     }
   }
@@ -630,15 +631,15 @@ public class ScanTranslationCaptureUI
     AppMethodBeat.i(120906);
     try
     {
-      if (this.xeI.cDz()) {
-        this.xeI.stopPreview();
+      if (this.ysK.cLT()) {
+        this.ysK.stopPreview();
       }
       AppMethodBeat.o(120906);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.ScanTranslationCaptureUI", localException.getMessage());
+      ad.e("MicroMsg.ScanTranslationCaptureUI", localException.getMessage());
       AppMethodBeat.o(120906);
     }
   }
@@ -646,12 +647,12 @@ public class ScanTranslationCaptureUI
   public final void c(int paramInt, Bitmap paramBitmap)
   {
     AppMethodBeat.i(120921);
-    if ((paramBitmap != null) && (paramInt == this.xeZ))
+    if ((paramBitmap != null) && (paramInt == this.ytb))
     {
-      this.xfd.dQs = ((int)(System.currentTimeMillis() - this.xfe[1]));
-      this.xeU = paramBitmap;
-      dAu();
-      ab(this.xeU);
+      this.ytf.efO = ((int)(System.currentTimeMillis() - this.ytg[1]));
+      this.ysW = paramBitmap;
+      dLS();
+      ab(this.ysW);
     }
     AppMethodBeat.o(120921);
   }
@@ -664,168 +665,250 @@ public class ScanTranslationCaptureUI
   public void initView()
   {
     AppMethodBeat.i(120895);
-    this.iCB = findViewById(2131304241);
-    this.iCB.setAlpha(0.0F);
-    this.xeH = ((MMTextureView)findViewById(2131306072));
-    this.xeH.setOpaque(false);
-    this.xeH.setSurfaceTextureListener(this);
-    this.xeX = ((MMGestureGallery)findViewById(2131306074));
-    this.xeW = new a((byte)0);
-    this.xeX.setAdapter(this.xeW);
-    this.xeM = findViewById(2131297700);
-    this.xeJ = findViewById(2131304340);
-    this.xeJ.setOnClickListener(new View.OnClickListener()
+    this.iVL = findViewById(2131304241);
+    this.iVL.setAlpha(0.0F);
+    this.ysJ = ((MMTextureView)findViewById(2131306072));
+    this.ysJ.setOpaque(false);
+    this.ysJ.setSurfaceTextureListener(this);
+    this.ysZ = ((MMGestureGallery)findViewById(2131306074));
+    this.ysY = new a((byte)0);
+    this.ysZ.setAdapter(this.ysY);
+    this.ysO = findViewById(2131297700);
+    this.ysL = findViewById(2131304340);
+    this.ysL.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120884);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         ScanTranslationCaptureUI.g(ScanTranslationCaptureUI.this);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(120884);
       }
     });
-    this.xeK = findViewById(2131304307);
-    this.xeK.setOnClickListener(new View.OnClickListener()
+    this.ysM = findViewById(2131304307);
+    this.ysM.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120885);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         ScanTranslationCaptureUI.h(ScanTranslationCaptureUI.this).a(ScanTranslationCaptureUI.this);
-        ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).dQp = ((int)(System.currentTimeMillis() - ScanTranslationCaptureUI.i(ScanTranslationCaptureUI.this)[0]));
-        ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).dNc = 1L;
+        ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).efL = ((int)(System.currentTimeMillis() - ScanTranslationCaptureUI.i(ScanTranslationCaptureUI.this)[0]));
+        ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).eca = 1L;
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(120885);
       }
     });
-    this.xeK.setEnabled(false);
-    this.xeS = ((TextView)findViewById(2131304308));
-    this.xeL = findViewById(2131304341);
-    this.xeL.setOnClickListener(new View.OnClickListener()
+    this.ysM.setEnabled(false);
+    this.ysU = ((TextView)findViewById(2131304308));
+    this.ysN = findViewById(2131304341);
+    this.ysN.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120886);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         com.tencent.mm.pluginsdk.ui.tools.q.a(ScanTranslationCaptureUI.this, 561, 1, 0, 1, null);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(120886);
       }
     });
-    this.xeN = findViewById(2131304289);
-    this.xeO = ((ImageView)this.xeN.findViewById(2131306078));
-    this.xeO.setOnClickListener(new View.OnClickListener()
+    this.ysP = findViewById(2131304289);
+    this.ysQ = ((ImageView)this.ysP.findViewById(2131306078));
+    this.ysQ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120887);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (ScanTranslationCaptureUI.e(ScanTranslationCaptureUI.this) == 3)
         {
           if (ScanTranslationCaptureUI.k(ScanTranslationCaptureUI.this) != null) {
             ScanTranslationCaptureUI.a(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.k(ScanTranslationCaptureUI.this));
           }
-          if (ScanTranslationCaptureUI.l(ScanTranslationCaptureUI.this).equalsIgnoreCase("zh_CN")) {
+          if (ScanTranslationCaptureUI.l(ScanTranslationCaptureUI.this).equalsIgnoreCase("zh_CN"))
+          {
             ScanTranslationCaptureUI.m(ScanTranslationCaptureUI.this).setImageResource(2131691336);
+            ScanTranslationCaptureUI.a(ScanTranslationCaptureUI.this, 2);
+            ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).efP += 1L;
           }
+        }
+        while (ScanTranslationCaptureUI.e(ScanTranslationCaptureUI.this) != 2) {
           for (;;)
           {
-            ScanTranslationCaptureUI.a(ScanTranslationCaptureUI.this, 2);
-            ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).dQt += 1L;
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(120887);
             return;
             ScanTranslationCaptureUI.m(ScanTranslationCaptureUI.this).setImageResource(2131691339);
           }
         }
-        if (ScanTranslationCaptureUI.e(ScanTranslationCaptureUI.this) == 2)
-        {
-          if (ScanTranslationCaptureUI.n(ScanTranslationCaptureUI.this) != null) {
-            ScanTranslationCaptureUI.a(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.n(ScanTranslationCaptureUI.this));
-          }
-          if (!ScanTranslationCaptureUI.l(ScanTranslationCaptureUI.this).equalsIgnoreCase("zh_CN")) {
-            break label196;
-          }
+        if (ScanTranslationCaptureUI.n(ScanTranslationCaptureUI.this) != null) {
+          ScanTranslationCaptureUI.a(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.n(ScanTranslationCaptureUI.this));
+        }
+        if (ScanTranslationCaptureUI.l(ScanTranslationCaptureUI.this).equalsIgnoreCase("zh_CN")) {
           ScanTranslationCaptureUI.m(ScanTranslationCaptureUI.this).setImageResource(2131234422);
         }
         for (;;)
         {
           ScanTranslationCaptureUI.a(ScanTranslationCaptureUI.this, 3);
-          AppMethodBeat.o(120887);
-          return;
-          label196:
+          break;
           ScanTranslationCaptureUI.m(ScanTranslationCaptureUI.this).setImageResource(2131234424);
         }
       }
     });
-    this.xeQ = findViewById(2131306077);
-    this.xeR = findViewById(2131306071);
+    this.ysS = findViewById(2131306077);
+    this.ysT = findViewById(2131306071);
     hideTitleView();
     setMMTitle(2131762808);
     setActionbarColor(getResources().getColor(2131101053));
-    this.qOY = ((ImageView)findViewById(2131304314));
-    this.xeP = this.xeN.findViewById(2131306073);
-    this.xeP.setOnClickListener(new View.OnClickListener()
+    this.ryX = ((ImageView)findViewById(2131304314));
+    this.ysR = this.ysP.findViewById(2131306073);
+    this.ysR.setOnClickListener(new View.OnClickListener()
     {
+      /* Error */
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(120888);
-        if (ScanTranslationCaptureUI.e(ScanTranslationCaptureUI.this) == 2) {
-          try
-          {
-            ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).dQv = 1L;
-            p.a(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.o(ScanTranslationCaptureUI.this), new p.a()
-            {
-              public final void bD(String paramAnonymous2String1, String paramAnonymous2String2)
-              {
-                AppMethodBeat.i(208109);
-                com.tencent.mm.ui.widget.snackbar.b.n(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.this.getString(2131762883));
-                AppMethodBeat.o(208109);
-              }
-              
-              public final void bE(String paramAnonymous2String1, String paramAnonymous2String2) {}
-            });
-            AppMethodBeat.o(120888);
-            return;
-          }
-          catch (Exception paramAnonymousView)
-          {
-            com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.ScanTranslationCaptureUI", paramAnonymousView, "copy to gallery error", new Object[0]);
-            AppMethodBeat.o(120888);
-            return;
-          }
-        }
-        if (ScanTranslationCaptureUI.e(ScanTranslationCaptureUI.this) == 3) {
-          try
-          {
-            ScanTranslationCaptureUI.j(ScanTranslationCaptureUI.this).dQu = 1L;
-            int i = ScanTranslationCaptureUI.p(ScanTranslationCaptureUI.this);
-            if (i == 0) {}
-            try
-            {
-              ScanTranslationCaptureUI.a(ScanTranslationCaptureUI.this, ((PluginScanTranslation)com.tencent.mm.kernel.g.ad(PluginScanTranslation.class)).genTranslationResultImgPath("jpg"));
-              com.tencent.mm.sdk.platformtools.f.a(ScanTranslationCaptureUI.n(ScanTranslationCaptureUI.this), 80, Bitmap.CompressFormat.JPEG, ScanTranslationCaptureUI.q(ScanTranslationCaptureUI.this), false);
-              p.a(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.q(ScanTranslationCaptureUI.this), new p.a()
-              {
-                public final void bD(String paramAnonymous2String1, String paramAnonymous2String2)
-                {
-                  AppMethodBeat.i(208110);
-                  com.tencent.mm.ui.widget.snackbar.b.n(ScanTranslationCaptureUI.this, ScanTranslationCaptureUI.this.getString(2131762883));
-                  AppMethodBeat.o(208110);
-                }
-                
-                public final void bE(String paramAnonymous2String1, String paramAnonymous2String2) {}
-              });
-              AppMethodBeat.o(120888);
-              return;
-            }
-            catch (IOException paramAnonymousView)
-            {
-              for (;;)
-              {
-                com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.ScanTranslationCaptureUI", paramAnonymousView, "save translate result file error", new Object[0]);
-              }
-            }
-            AppMethodBeat.o(120888);
-          }
-          catch (Exception paramAnonymousView)
-          {
-            com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.ScanTranslationCaptureUI", paramAnonymousView, "save to gallery error", new Object[0]);
-          }
-        }
+        // Byte code:
+        //   0: ldc 31
+        //   2: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   5: new 39	com/tencent/mm/hellhoundlib/b/b
+        //   8: dup
+        //   9: invokespecial 40	com/tencent/mm/hellhoundlib/b/b:<init>	()V
+        //   12: astore_3
+        //   13: aload_3
+        //   14: aload_1
+        //   15: invokevirtual 44	com/tencent/mm/hellhoundlib/b/b:bd	(Ljava/lang/Object;)V
+        //   18: ldc 46
+        //   20: ldc 47
+        //   22: ldc 48
+        //   24: ldc 49
+        //   26: aload_0
+        //   27: aload_3
+        //   28: invokevirtual 53	com/tencent/mm/hellhoundlib/b/b:ahq	()[Ljava/lang/Object;
+        //   31: invokestatic 59	com/tencent/mm/hellhoundlib/a/a:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+        //   34: aload_0
+        //   35: getfield 21	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22:yti	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;
+        //   38: invokestatic 63	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI:e	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;)I
+        //   41: iconst_2
+        //   42: if_icmpne +70 -> 112
+        //   45: aload_0
+        //   46: getfield 21	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22:yti	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;
+        //   49: invokestatic 67	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI:j	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;)Lcom/tencent/mm/g/b/a/dk;
+        //   52: lconst_1
+        //   53: putfield 73	com/tencent/mm/g/b/a/dk:efR	J
+        //   56: aload_0
+        //   57: getfield 21	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22:yti	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;
+        //   60: aload_0
+        //   61: getfield 21	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22:yti	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;
+        //   64: invokestatic 77	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI:o	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;)Ljava/lang/String;
+        //   67: new 13	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22$1
+        //   70: dup
+        //   71: aload_0
+        //   72: invokespecial 80	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22$1:<init>	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22;)V
+        //   75: invokestatic 86	com/tencent/mm/platformtools/p:a	(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/platformtools/p$a;)V
+        //   78: aload_0
+        //   79: ldc 46
+        //   81: ldc 47
+        //   83: ldc 48
+        //   85: ldc 49
+        //   87: invokestatic 89	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+        //   90: ldc 31
+        //   92: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   95: return
+        //   96: astore_1
+        //   97: ldc 93
+        //   99: aload_1
+        //   100: ldc 95
+        //   102: iconst_0
+        //   103: anewarray 4	java/lang/Object
+        //   106: invokestatic 101	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   109: goto -31 -> 78
+        //   112: aload_0
+        //   113: getfield 21	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22:yti	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;
+        //   116: invokestatic 63	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI:e	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;)I
+        //   119: iconst_3
+        //   120: if_icmpne -42 -> 78
+        //   123: aload_0
+        //   124: getfield 21	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22:yti	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;
+        //   127: invokestatic 67	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI:j	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;)Lcom/tencent/mm/g/b/a/dk;
+        //   130: lconst_1
+        //   131: putfield 104	com/tencent/mm/g/b/a/dk:efQ	J
+        //   134: aload_0
+        //   135: getfield 21	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22:yti	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;
+        //   138: invokestatic 107	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI:p	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;)I
+        //   141: istore_2
+        //   142: iload_2
+        //   143: ifne +48 -> 191
+        //   146: aload_0
+        //   147: getfield 21	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22:yti	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;
+        //   150: ldc 109
+        //   152: invokestatic 115	com/tencent/mm/kernel/g:ad	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+        //   155: checkcast 109	com/tencent/mm/plugin/scanner/PluginScanTranslation
+        //   158: ldc 117
+        //   160: invokevirtual 121	com/tencent/mm/plugin/scanner/PluginScanTranslation:genTranslationResultImgPath	(Ljava/lang/String;)Ljava/lang/String;
+        //   163: invokestatic 124	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI:a	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;Ljava/lang/String;)Ljava/lang/String;
+        //   166: pop
+        //   167: aload_0
+        //   168: getfield 21	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22:yti	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;
+        //   171: invokestatic 128	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI:n	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;)Landroid/graphics/Bitmap;
+        //   174: bipush 80
+        //   176: getstatic 134	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+        //   179: aload_0
+        //   180: getfield 21	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22:yti	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;
+        //   183: invokestatic 137	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI:q	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;)Ljava/lang/String;
+        //   186: iconst_0
+        //   187: invokestatic 142	com/tencent/mm/sdk/platformtools/g:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
+        //   190: pop
+        //   191: aload_0
+        //   192: getfield 21	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22:yti	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;
+        //   195: aload_0
+        //   196: getfield 21	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22:yti	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;
+        //   199: invokestatic 137	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI:q	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI;)Ljava/lang/String;
+        //   202: new 15	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22$2
+        //   205: dup
+        //   206: aload_0
+        //   207: invokespecial 143	com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22$2:<init>	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$22;)V
+        //   210: invokestatic 86	com/tencent/mm/platformtools/p:a	(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/platformtools/p$a;)V
+        //   213: goto -135 -> 78
+        //   216: astore_1
+        //   217: ldc 93
+        //   219: aload_1
+        //   220: ldc 145
+        //   222: iconst_0
+        //   223: anewarray 4	java/lang/Object
+        //   226: invokestatic 101	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   229: goto -151 -> 78
+        //   232: astore_1
+        //   233: ldc 93
+        //   235: aload_1
+        //   236: ldc 147
+        //   238: iconst_0
+        //   239: anewarray 4	java/lang/Object
+        //   242: invokestatic 101	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   245: goto -54 -> 191
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	248	0	this	22
+        //   0	248	1	paramAnonymousView	View
+        //   141	2	2	i	int
+        //   12	16	3	localb	com.tencent.mm.hellhoundlib.b.b
+        // Exception table:
+        //   from	to	target	type
+        //   45	78	96	java/lang/Exception
+        //   123	142	216	java/lang/Exception
+        //   146	191	216	java/lang/Exception
+        //   191	213	216	java/lang/Exception
+        //   233	245	216	java/lang/Exception
+        //   146	191	232	java/io/IOException
       }
     });
     setBackBtn(new MenuItem.OnMenuItemClickListener()
@@ -838,9 +921,9 @@ public class ScanTranslationCaptureUI
         return true;
       }
     });
-    this.kWC = getWindowManager().getDefaultDisplay().getHeight();
-    this.qPb = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.qPb.addListener(new AnimatorListenerAdapter()
+    this.ltB = getWindowManager().getDefaultDisplay().getHeight();
+    this.rza = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.rza.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -856,7 +939,7 @@ public class ScanTranslationCaptureUI
         AppMethodBeat.o(120890);
       }
     });
-    this.qPb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.rza.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -876,21 +959,25 @@ public class ScanTranslationCaptureUI
         }
       }
     });
-    Object localObject = (RelativeLayout.LayoutParams)this.xeN.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).bottomMargin += aj.ej(this);
-    this.xeN.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.qPb.setDuration(5000L);
+    Object localObject = (RelativeLayout.LayoutParams)this.ysP.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin += al.ej(this);
+    this.ysP.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.rza.setDuration(5000L);
     com.tencent.mm.ui.base.b.a(this, null);
-    this.iCB.setOnTouchListener(new View.OnTouchListener()
+    this.iVL.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(120866);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$11", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
         if ((ScanTranslationCaptureUI.e(ScanTranslationCaptureUI.this) == 0) && (paramAnonymousView == ScanTranslationCaptureUI.b(ScanTranslationCaptureUI.this)))
         {
           if (paramAnonymousMotionEvent.getAction() == 0)
           {
-            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "event down, (%f, %f)", new Object[] { Float.valueOf(paramAnonymousMotionEvent.getX()), Float.valueOf(paramAnonymousMotionEvent.getY()) });
+            ad.i("MicroMsg.ScanTranslationCaptureUI", "event down, (%f, %f)", new Object[] { Float.valueOf(paramAnonymousMotionEvent.getX()), Float.valueOf(paramAnonymousMotionEvent.getY()) });
             float f1 = paramAnonymousMotionEvent.getX() / ScanTranslationCaptureUI.b(ScanTranslationCaptureUI.this).getWidth();
             float f2 = paramAnonymousMotionEvent.getY() / ScanTranslationCaptureUI.b(ScanTranslationCaptureUI.this).getHeight();
             ScanTranslationCaptureUI.h(ScanTranslationCaptureUI.this).a(f1, f2, new Camera.AutoFocusCallback()
@@ -898,23 +985,25 @@ public class ScanTranslationCaptureUI
               public final void onAutoFocus(boolean paramAnonymous2Boolean, Camera paramAnonymous2Camera)
               {
                 AppMethodBeat.i(120865);
-                com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "camera auto focus call back");
+                ad.i("MicroMsg.ScanTranslationCaptureUI", "camera auto focus call back");
                 ScanTranslationCaptureUI.h(ScanTranslationCaptureUI.this).cancelAutoFocus();
-                ScanTranslationCaptureUI.h(ScanTranslationCaptureUI.this).dzi();
+                ScanTranslationCaptureUI.h(ScanTranslationCaptureUI.this).dKG();
                 AppMethodBeat.o(120865);
               }
             });
           }
+          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$11", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(120866);
           return true;
         }
+        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$11", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(120866);
         return false;
       }
     });
-    dAo();
-    this.xeY = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-    this.xeY.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    dLM();
+    this.yta = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+    this.yta.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -929,7 +1018,7 @@ public class ScanTranslationCaptureUI
         AppMethodBeat.o(120867);
       }
     });
-    this.xeY.addListener(new AnimatorListenerAdapter()
+    this.yta.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -939,10 +1028,10 @@ public class ScanTranslationCaptureUI
         AppMethodBeat.o(120868);
       }
     });
-    this.xeY.setDuration(300L);
-    localObject = new ol();
-    ((ol)localObject).dqV.action = 1;
-    com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+    this.yta.setDuration(300L);
+    localObject = new ou();
+    ((ou)localObject).dCM.action = 1;
+    com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
     AppMethodBeat.o(120895);
   }
   
@@ -952,21 +1041,21 @@ public class ScanTranslationCaptureUI
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt1 == 561) && (paramInt2 == -1))
     {
-      paramIntent = com.tencent.mm.ui.tools.a.i(this, paramIntent, d.awL());
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "select: [%s]", new Object[] { paramIntent });
-      if (!bs.isNullOrNil(paramIntent))
+      paramIntent = com.tencent.mm.ui.tools.a.j(this, paramIntent, d.azA());
+      ad.i("MicroMsg.ScanTranslationCaptureUI", "select: [%s]", new Object[] { paramIntent });
+      if (!bt.isNullOrNil(paramIntent))
       {
-        this.iag = paramIntent;
-        this.dbL = 1;
-        this.xfd.dNc = 2L;
-        this.gVh = Exif.fromFile(paramIntent).getOrientationInDegree();
-        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "degree %s", new Object[] { Integer.valueOf(this.gVh) });
-        paramIntent = com.tencent.mm.sdk.platformtools.f.aKA(paramIntent);
+        this.itB = paramIntent;
+        this.dnh = 1;
+        this.ytf.eca = 2L;
+        this.hnk = Exif.fromFile(paramIntent).getOrientationInDegree();
+        ad.i("MicroMsg.ScanTranslationCaptureUI", "degree %s", new Object[] { Integer.valueOf(this.hnk) });
+        paramIntent = com.tencent.mm.sdk.platformtools.g.aQg(paramIntent);
         if (paramIntent != null)
         {
-          this.xeT = com.tencent.mm.sdk.platformtools.f.a(paramIntent, this.gVh);
-          cqR();
-          ab(this.xeT);
+          this.ysV = com.tencent.mm.sdk.platformtools.g.a(paramIntent, this.hnk);
+          cwB();
+          ab(this.ysV);
         }
       }
     }
@@ -978,10 +1067,10 @@ public class ScanTranslationCaptureUI
     AppMethodBeat.i(120894);
     customfixStatusbar(true);
     super.onCreate(paramBundle);
-    this.xeI = new com.tencent.mm.plugin.scanner.a.a();
+    this.ysK = new com.tencent.mm.plugin.scanner.a.a();
     initView();
-    com.tencent.mm.sdk.b.a.GpY.c(this.xff);
-    this.xfd.dNc = 3L;
+    com.tencent.mm.sdk.b.a.IbL.c(this.yth);
+    this.ytf.eca = 3L;
     AppMethodBeat.o(120894);
   }
   
@@ -989,8 +1078,8 @@ public class ScanTranslationCaptureUI
   {
     AppMethodBeat.i(120901);
     super.onDestroy();
-    this.xeY.removeAllUpdateListeners();
-    this.qPb.removeAllUpdateListeners();
+    this.yta.removeAllUpdateListeners();
+    this.rza.removeAllUpdateListeners();
     AppMethodBeat.o(120901);
   }
   
@@ -1019,30 +1108,30 @@ public class ScanTranslationCaptureUI
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
     AppMethodBeat.i(120918);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "get preview frame success, length %d", new Object[] { Integer.valueOf(paramArrayOfByte.length) });
+    ad.i("MicroMsg.ScanTranslationCaptureUI", "get preview frame success, length %d", new Object[] { Integer.valueOf(paramArrayOfByte.length) });
     if (paramArrayOfByte != null) {}
     try
     {
       if (paramArrayOfByte.length > 0)
       {
-        this.xeT = null;
+        this.ysV = null;
         long l = System.currentTimeMillis();
-        paramCamera = this.xeI.fCS();
+        paramCamera = this.ysK.fUk();
         paramArrayOfByte = new YuvImage(paramArrayOfByte, 17, paramCamera.x, paramCamera.y, null);
         ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
         paramArrayOfByte.compressToJpeg(new Rect(0, 0, paramCamera.x, paramCamera.y), 100, localByteArrayOutputStream);
-        paramArrayOfByte = com.tencent.mm.sdk.platformtools.f.ck(localByteArrayOutputStream.toByteArray());
+        paramArrayOfByte = com.tencent.mm.sdk.platformtools.g.cr(localByteArrayOutputStream.toByteArray());
         int i = (int)(System.currentTimeMillis() - l);
         if (paramArrayOfByte != null)
         {
           l = System.currentTimeMillis();
-          this.xeT = com.tencent.mm.sdk.platformtools.f.a(paramArrayOfByte, this.xeI.getCameraRotation());
-          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "decode cost %d, rotate cost %d", new Object[] { Integer.valueOf(i), Integer.valueOf((int)(System.currentTimeMillis() - l)) });
-          if (this.xeT != null)
+          this.ysV = com.tencent.mm.sdk.platformtools.g.a(paramArrayOfByte, this.ysK.getCameraRotation());
+          ad.i("MicroMsg.ScanTranslationCaptureUI", "decode cost %d, rotate cost %d", new Object[] { Integer.valueOf(i), Integer.valueOf((int)(System.currentTimeMillis() - l)) });
+          if (this.ysV != null)
           {
-            this.iag = ((e)com.tencent.mm.kernel.g.ad(e.class)).genScanCaptureImgPath("jpg");
-            cqR();
-            ab(this.xeT);
+            this.itB = ((e)com.tencent.mm.kernel.g.ad(e.class)).genScanCaptureImgPath("jpg");
+            cwB();
+            ab(this.ysV);
           }
         }
       }
@@ -1051,7 +1140,7 @@ public class ScanTranslationCaptureUI
     }
     catch (Exception paramArrayOfByte)
     {
-      com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.ScanTranslationCaptureUI", paramArrayOfByte, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.ScanTranslationCaptureUI", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(120918);
     }
   }
@@ -1061,11 +1150,11 @@ public class ScanTranslationCaptureUI
     AppMethodBeat.i(120910);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      ad.i("MicroMsg.ScanTranslationCaptureUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(120910);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ad.i("MicroMsg.ScanTranslationCaptureUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -1075,21 +1164,21 @@ public class ScanTranslationCaptureUI
       return;
       if ((paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == 0))
       {
-        dsQ();
+        dDn();
         AppMethodBeat.o(120910);
         return;
       }
-      this.iMq = false;
-      com.tencent.mm.ui.base.h.a(this, getString(2131761860), getString(2131761885), getString(2131760598), getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      this.jfA = false;
+      h.a(this, getString(2131761860), getString(2131761885), getString(2131760598), getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(120880);
           paramAnonymousDialogInterface = ScanTranslationCaptureUI.this;
           Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$21", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$21", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/scanner/ui/ScanTranslationCaptureUI$21", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           ScanTranslationCaptureUI.B(ScanTranslationCaptureUI.this);
           ScanTranslationCaptureUI.this.finish();
@@ -1113,51 +1202,51 @@ public class ScanTranslationCaptureUI
     AppMethodBeat.i(120897);
     super.onResume();
     com.tencent.mm.plugin.ball.f.f.e(true, true, true);
-    bjx();
-    com.tencent.mm.kernel.g.agi().a(294, this);
-    com.tencent.mm.kernel.g.agQ().a(this.qPd);
-    if (this.iMq)
+    bnj();
+    com.tencent.mm.kernel.g.aiU().a(294, this);
+    com.tencent.mm.kernel.g.ajB().a(this.rzc);
+    if (this.jfA)
     {
       boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.CAMERA", 16, null, null);
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "summerper checkPermission checkCamera[%b]", new Object[] { Boolean.valueOf(bool) });
+      ad.i("MicroMsg.ScanTranslationCaptureUI", "summerper checkPermission checkCamera[%b]", new Object[] { Boolean.valueOf(bool) });
       if (!bool)
       {
         AppMethodBeat.o(120897);
         return;
       }
-      dsQ();
+      dDn();
       AppMethodBeat.o(120897);
       return;
     }
-    dAr();
+    dLP();
     AppMethodBeat.o(120897);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
   {
     AppMethodBeat.i(120919);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "errType %s, errCode %s, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ad.i("MicroMsg.ScanTranslationCaptureUI", "errType %s, errCode %s, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = ((com.tencent.mm.plugin.scanner.model.h)paramn).wYW;
-      if ((paramString != null) && (((com.tencent.mm.plugin.scanner.model.h)paramn).daq == this.xeZ))
+      paramString = ((com.tencent.mm.plugin.scanner.model.j)paramn).ymP;
+      if ((paramString != null) && (((com.tencent.mm.plugin.scanner.model.j)paramn).dlK == this.ytb))
       {
-        this.xfd.dQr = ((int)(System.currentTimeMillis() - ((com.tencent.mm.plugin.scanner.model.h)paramn).wYX));
-        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "angle %f, translationInfos length %d", new Object[] { Float.valueOf(((com.tencent.mm.plugin.scanner.model.h)paramn).angle), Integer.valueOf(paramString.size()) });
+        this.ytf.efN = ((int)(System.currentTimeMillis() - ((com.tencent.mm.plugin.scanner.model.j)paramn).ymQ));
+        ad.i("MicroMsg.ScanTranslationCaptureUI", "angle %f, translationInfos length %d", new Object[] { Float.valueOf(((com.tencent.mm.plugin.scanner.model.j)paramn).angle), Integer.valueOf(paramString.size()) });
         if (paramString.size() > 0)
         {
-          this.xfd.dNi = 1L;
-          ((PluginScanTranslation)com.tencent.mm.kernel.g.ad(PluginScanTranslation.class)).getTranslationRender().a(this.xeZ, paramString, ((com.tencent.mm.plugin.scanner.model.h)paramn).angle, this.xeT, this);
-          if (!bs.isNullOrNil(((com.tencent.mm.plugin.scanner.model.h)paramn).dzv()))
+          this.ytf.ecx = 1L;
+          ((PluginScanTranslation)com.tencent.mm.kernel.g.ad(PluginScanTranslation.class)).getTranslationRender().a(this.ytb, paramString, ((com.tencent.mm.plugin.scanner.model.j)paramn).angle, this.ysV, this);
+          if (!bt.isNullOrNil(((com.tencent.mm.plugin.scanner.model.j)paramn).dKT()))
           {
-            this.xfa = ((com.tencent.mm.plugin.scanner.model.h)paramn).dzv();
+            this.ytc = ((com.tencent.mm.plugin.scanner.model.j)paramn).dKT();
             AppMethodBeat.o(120919);
           }
         }
         else
         {
-          this.xfd.dQs = ((int)(System.currentTimeMillis() - this.xfe[1]));
-          com.tencent.mm.ui.base.h.a(this, getString(2131762880), "", false, new DialogInterface.OnClickListener()
+          this.ytf.efO = ((int)(System.currentTimeMillis() - this.ytg[1]));
+          h.a(this, getString(2131762880), "", false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
@@ -1171,13 +1260,13 @@ public class ScanTranslationCaptureUI
       AppMethodBeat.o(120919);
       return;
     }
-    this.xfd.dNi = 5L;
-    this.xfd.dQs = ((int)(System.currentTimeMillis() - this.xfe[1]));
+    this.ytf.ecx = 5L;
+    this.ytf.efO = ((int)(System.currentTimeMillis() - this.ytg[1]));
     paramn = getString(2131762880);
-    if (!bs.isNullOrNil(paramString)) {}
+    if (!bt.isNullOrNil(paramString)) {}
     for (;;)
     {
-      com.tencent.mm.ui.base.h.a(this, paramString, "", false, new DialogInterface.OnClickListener()
+      h.a(this, paramString, "", false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -1196,39 +1285,39 @@ public class ScanTranslationCaptureUI
   {
     AppMethodBeat.i(120900);
     super.onStop();
-    auj();
-    com.tencent.mm.kernel.g.agi().b(294, this);
-    com.tencent.mm.sdk.b.a.GpY.d(this.xff);
-    com.tencent.mm.kernel.g.agQ().b(this.qPd);
+    awW();
+    com.tencent.mm.kernel.g.aiU().b(294, this);
+    com.tencent.mm.sdk.b.a.IbL.d(this.yth);
+    com.tencent.mm.kernel.g.ajB().b(this.rzc);
     AppMethodBeat.o(120900);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(120917);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "surface texture available");
-    this.xeH.fiQ();
+    ad.i("MicroMsg.ScanTranslationCaptureUI", "surface texture available");
+    this.ysJ.fzf();
     this.surfaceTexture = paramSurfaceTexture;
-    if (this.iMq)
+    if (this.jfA)
     {
       boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.CAMERA", 16, null, null);
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ScanTranslationCaptureUI", "summerper checkPermission checkCamera[%b]", new Object[] { Boolean.valueOf(bool) });
+      ad.i("MicroMsg.ScanTranslationCaptureUI", "summerper checkPermission checkCamera[%b]", new Object[] { Boolean.valueOf(bool) });
       if (!bool)
       {
         AppMethodBeat.o(120917);
         return;
       }
-      dsQ();
+      dDn();
       AppMethodBeat.o(120917);
       return;
     }
-    if (!this.xeI.isOpen())
+    if (!this.ysK.isOpen())
     {
-      dAp();
+      dLN();
       AppMethodBeat.o(120917);
       return;
     }
-    dAt();
+    dLR();
     AppMethodBeat.o(120917);
   }
   
@@ -1282,8 +1371,8 @@ public class ScanTranslationCaptureUI
         if (this.bitmap != null)
         {
           paramView.setImageBitmap(this.bitmap);
-          paramView.cF(this.bitmap.getWidth(), this.bitmap.getHeight());
-          paramView.fij();
+          paramView.cH(this.bitmap.getWidth(), this.bitmap.getHeight());
+          paramView.fyy();
         }
         AppMethodBeat.o(120892);
         return paramView;
@@ -1294,7 +1383,7 @@ public class ScanTranslationCaptureUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ScanTranslationCaptureUI
  * JD-Core Version:    0.7.0.1
  */

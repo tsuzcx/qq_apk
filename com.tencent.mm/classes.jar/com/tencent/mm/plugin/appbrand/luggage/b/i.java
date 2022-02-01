@@ -6,55 +6,55 @@ import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
-import com.tencent.mm.plugin.appbrand.g.a.b;
-import com.tencent.mm.plugin.appbrand.g.a.c;
+import com.tencent.mm.plugin.appbrand.f.a.b;
+import com.tencent.mm.plugin.appbrand.f.a.c;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 
 public final class i
   extends com.tencent.luggage.bridge.impl.a.a
-  implements com.tencent.mm.plugin.appbrand.g.b
+  implements com.tencent.mm.plugin.appbrand.f.b
 {
-  private final AppBrandRuntime jgY;
+  private final AppBrandRuntime jzY;
   
   public i(AppBrandRuntime paramAppBrandRuntime)
   {
-    this.jgY = paramAppBrandRuntime;
+    this.jzY = paramAppBrandRuntime;
   }
   
-  private static Pair<String, String> OB(String paramString)
+  private static Pair<String, String> Sa(String paramString)
   {
-    AppMethodBeat.i(193385);
+    AppMethodBeat.i(197278);
     int i = paramString.lastIndexOf("?appId=");
     String str = paramString.substring(0, i);
     paramString = Pair.create(paramString.substring(i + 7), str);
-    AppMethodBeat.o(193385);
+    AppMethodBeat.o(197278);
     return paramString;
   }
   
-  public final String Ap()
+  public final String BM()
   {
     return "WxFileImageReader";
   }
   
   public final void a(String paramString, a.c paramc)
   {
-    AppMethodBeat.i(193386);
+    AppMethodBeat.i(197279);
     if (paramc == null)
     {
-      AppMethodBeat.o(193386);
+      AppMethodBeat.o(197279);
       return;
     }
-    p localp = this.jgY.DH();
+    p localp = this.jzY.Fg();
     if (localp == null)
     {
-      paramc.z(null);
-      AppMethodBeat.o(193386);
+      paramc.D(null);
+      AppMethodBeat.o(197279);
       return;
     }
-    paramc.z(localp.IW((String)OB(paramString).second));
-    AppMethodBeat.o(193386);
+    paramc.D(localp.Mn((String)Sa(paramString).second));
+    AppMethodBeat.o(197279);
   }
   
   public final boolean a(c paramc, String paramString)
@@ -82,19 +82,19 @@ public final class i
       AppMethodBeat.o(134904);
       return null;
     }
-    paramb = this.jgY.DH();
+    paramb = this.jzY.Fg();
     if (paramb == null)
     {
       AppMethodBeat.o(134904);
       return null;
     }
-    paramString = paramb.IS((String)OB(paramString).second);
+    paramString = paramb.Mj((String)Sa(paramString).second);
     if ((paramString == null) || (!paramString.exists()))
     {
       AppMethodBeat.o(134904);
       return null;
     }
-    paramString = q.B(paramString.fxV());
+    paramString = q.B(paramString.fOK());
     if (!paramString.startsWith("file://")) {
       paramString = "file://".concat(String.valueOf(paramString));
     }
@@ -103,7 +103,7 @@ public final class i
       if (paramRect != null) {}
       for (paramRect = new com.tencent.mm.plugin.appbrand.luggage.a.a(paramRect.left, paramRect.top, paramRect.width(), paramRect.height());; paramRect = null)
       {
-        paramString = com.tencent.mm.modelappbrand.a.b.aAS().a(paramString, paramRect);
+        paramString = com.tencent.mm.modelappbrand.a.b.aDV().a(paramString, paramRect);
         AppMethodBeat.o(134904);
         return paramString;
       }
@@ -137,7 +137,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.i
  * JD-Core Version:    0.7.0.1
  */

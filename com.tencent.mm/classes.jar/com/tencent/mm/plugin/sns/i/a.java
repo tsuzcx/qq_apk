@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.sns.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bii;
-import com.tencent.mm.protocal.protobuf.btz;
-import com.tencent.mm.protocal.protobuf.bub;
-import com.tencent.mm.protocal.protobuf.dl;
-import com.tencent.mm.protocal.protobuf.gk;
-import com.tencent.mm.protocal.protobuf.gl;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.protocal.protobuf.bmq;
+import com.tencent.mm.protocal.protobuf.byn;
+import com.tencent.mm.protocal.protobuf.byp;
+import com.tencent.mm.protocal.protobuf.dm;
+import com.tencent.mm.protocal.protobuf.gr;
+import com.tencent.mm.protocal.protobuf.gs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class a
 {
-  private static float Dq(String paramString)
+  private static float Gv(String paramString)
   {
     float f1 = 0.0F;
     AppMethodBeat.i(96144);
@@ -26,21 +26,21 @@ public final class a
     }
     try
     {
-      float f2 = bs.getFloat(paramString, 0.0F);
+      float f2 = bt.getFloat(paramString, 0.0F);
       f1 = f2;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ac.e("MicroMsg.AlbumBgHelper", "parseFloat error ".concat(String.valueOf(paramString)));
+        ad.e("MicroMsg.AlbumBgHelper", "parseFloat error ".concat(String.valueOf(paramString)));
       }
     }
     AppMethodBeat.o(96144);
     return f1;
   }
   
-  private static String Dr(String paramString)
+  private static String Gw(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -49,25 +49,25 @@ public final class a
     return str;
   }
   
-  private static dl a(Map<String, String> paramMap, dl paramdl)
+  private static dm a(Map<String, String> paramMap, dm paramdm)
   {
     AppMethodBeat.i(96146);
-    gk localgk = new gk();
-    localgk.Name = Dr((String)paramMap.get(".albumList.album.author.name"));
-    localgk.Title = Dr((String)paramMap.get(".albumList.album.author.title"));
-    localgk.DPS = Dr((String)paramMap.get(".albumList.album.author.description"));
-    localgk.DTp = Dr((String)paramMap.get(".albumList.album.author.quote"));
-    localgk.DTq = aF(paramMap);
-    paramdl.DQz = localgk;
+    gr localgr = new gr();
+    localgr.Name = Gw((String)paramMap.get(".albumList.album.author.name"));
+    localgr.Title = Gw((String)paramMap.get(".albumList.album.author.title"));
+    localgr.Fvh = Gw((String)paramMap.get(".albumList.album.author.description"));
+    localgr.FyI = Gw((String)paramMap.get(".albumList.album.author.quote"));
+    localgr.FyJ = aI(paramMap);
+    paramdm.FvO = localgr;
     AppMethodBeat.o(96146);
-    return paramdl;
+    return paramdm;
   }
   
-  private static gl aF(Map<String, String> paramMap)
+  private static gs aI(Map<String, String> paramMap)
   {
     AppMethodBeat.i(96147);
-    gl localgl = new gl();
-    bub localbub = p(paramMap, ".albumList.album.author.icon.media");
+    gs localgs = new gs();
+    byp localbyp = r(paramMap, ".albumList.album.author.icon.media");
     String str1 = (String)paramMap.get(".albumList.album.author.icon.media.id");
     String str2 = (String)paramMap.get(".albumList.album.author.icon.media.type");
     String str3 = (String)paramMap.get(".albumList.album.author.icon.media.title");
@@ -77,50 +77,50 @@ public final class a
     String str7 = (String)paramMap.get(".albumList.album.author.icon.media.thumb");
     String str8 = (String)paramMap.get(".albumList.album.author.icon.media.url.$type");
     paramMap = (String)paramMap.get(".albumList.album.author.icon.media.thumb.$type");
-    btz localbtz = new btz();
-    localbtz.Id = Dr(str1);
-    localbtz.ndI = auu(str2);
-    localbtz.Title = Dr(str3);
-    localbtz.Desc = Dr(str4);
-    localbtz.Url = Dr(str5);
-    localbtz.EUH = auu(str8);
-    localbtz.Fjh = Dr(str7);
-    localbtz.Fji = auu(paramMap);
-    localbtz.Fjj = auu(str6);
-    localbtz.Fjk = localbub;
-    localgl.DTr = localbtz;
+    byn localbyn = new byn();
+    localbyn.Id = Gw(str1);
+    localbyn.nEf = azA(str2);
+    localbyn.Title = Gw(str3);
+    localbyn.Desc = Gw(str4);
+    localbyn.Url = Gw(str5);
+    localbyn.GEe = azA(str8);
+    localbyn.GSI = Gw(str7);
+    localbyn.GSJ = azA(paramMap);
+    localbyn.GSK = azA(str6);
+    localbyn.GSL = localbyp;
+    localgs.FyK = localbyn;
     AppMethodBeat.o(96147);
-    return localgl;
+    return localgs;
   }
   
-  private static int auu(String paramString)
+  private static int azA(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(96143);
     try
     {
-      int j = bs.getInt(paramString, 0);
+      int j = bt.getInt(paramString, 0);
       i = j;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ac.e("MicroMsg.AlbumBgHelper", "parserInt error ".concat(String.valueOf(paramString)));
+        ad.e("MicroMsg.AlbumBgHelper", "parserInt error ".concat(String.valueOf(paramString)));
       }
     }
     AppMethodBeat.o(96143);
     return i;
   }
   
-  public static dl auv(String paramString)
+  public static dm azB(String paramString)
   {
     AppMethodBeat.i(96145);
-    Map localMap = bv.L(paramString, "albumList");
-    paramString = new dl();
+    Map localMap = bw.M(paramString, "albumList");
+    paramString = new dm();
     if (localMap != null)
     {
-      paramString.tju = Dr((String)localMap.get(".albumList.$lang"));
+      paramString.uhu = Gw((String)localMap.get(".albumList.$lang"));
       paramString = b(localMap, a(localMap, paramString));
     }
     for (;;)
@@ -130,11 +130,11 @@ public final class a
     }
   }
   
-  private static dl b(Map<String, String> paramMap, dl paramdl)
+  private static dm b(Map<String, String> paramMap, dm paramdm)
   {
     AppMethodBeat.i(96149);
     int i = 0;
-    bii localbii = new bii();
+    bmq localbmq = new bmq();
     String str2;
     if (i == 0) {
       str2 = ".albumList.album.groupList.group.name";
@@ -145,19 +145,19 @@ public final class a
       if (str2 == null) {
         break label130;
       }
-      localbii.Name = Dr(str2);
-      localbii.Etz = q(paramMap, str1);
-      paramdl.GroupList.add(localbii);
+      localbmq.Name = Gw(str2);
+      localbmq.GaQ = s(paramMap, str1);
+      paramdm.GroupList.add(localbmq);
       i += 1;
       break;
       str2 = ".albumList.album.groupList.group" + i + ".name";
     }
     label130:
     AppMethodBeat.o(96149);
-    return paramdl;
+    return paramdm;
   }
   
-  private static bub p(Map<String, String> paramMap, String paramString)
+  private static byp r(Map<String, String> paramMap, String paramString)
   {
     AppMethodBeat.i(96148);
     String str2 = paramString + ".size.$width";
@@ -166,24 +166,24 @@ public final class a
     paramString = (String)paramMap.get(str2);
     str1 = (String)paramMap.get(str1);
     paramMap = (String)paramMap.get(localObject);
-    localObject = new bub();
-    ((bub)localObject).FjZ = 0.0F;
-    ((bub)localObject).FjY = 0.0F;
-    ((bub)localObject).Fka = 0.0F;
+    localObject = new byp();
+    ((byp)localObject).GTA = 0.0F;
+    ((byp)localObject).GTz = 0.0F;
+    ((byp)localObject).GTB = 0.0F;
     if (paramString != null) {
-      ((bub)localObject).FjY = Dq(paramString);
+      ((byp)localObject).GTz = Gv(paramString);
     }
     if (str1 != null) {
-      ((bub)localObject).FjZ = Dq(str1);
+      ((byp)localObject).GTA = Gv(str1);
     }
     if (paramMap != null) {
-      ((bub)localObject).Fka = Dq(paramMap);
+      ((byp)localObject).GTB = Gv(paramMap);
     }
     AppMethodBeat.o(96148);
     return localObject;
   }
   
-  private static LinkedList<btz> q(Map<String, String> paramMap, String paramString)
+  private static LinkedList<byn> s(Map<String, String> paramMap, String paramString)
   {
     AppMethodBeat.i(96150);
     LinkedList localLinkedList = new LinkedList();
@@ -214,7 +214,7 @@ public final class a
       if ((str9 == null) || (str8 == null)) {
         break label819;
       }
-      localObject = p(paramMap, (String)localObject);
+      localObject = r(paramMap, (String)localObject);
       str9 = (String)paramMap.get(str9);
       str8 = (String)paramMap.get(str8);
       str7 = (String)paramMap.get(str7);
@@ -227,18 +227,18 @@ public final class a
       if ((str9 == null) || (str8 == null)) {
         break label819;
       }
-      btz localbtz = new btz();
-      localbtz.Id = Dr(str9);
-      localbtz.ndI = auu(str8);
-      localbtz.Title = Dr(str7);
-      localbtz.Desc = Dr(str6);
-      localbtz.Url = Dr(str5);
-      localbtz.EUH = auu(str2);
-      localbtz.Fjh = Dr(str3);
-      localbtz.Fji = auu(str1);
-      localbtz.Fjj = auu(str4);
-      localbtz.Fjk = ((bub)localObject);
-      localLinkedList.add(localbtz);
+      byn localbyn = new byn();
+      localbyn.Id = Gw(str9);
+      localbyn.nEf = azA(str8);
+      localbyn.Title = Gw(str7);
+      localbyn.Desc = Gw(str6);
+      localbyn.Url = Gw(str5);
+      localbyn.GEe = azA(str2);
+      localbyn.GSI = Gw(str3);
+      localbyn.GSJ = azA(str1);
+      localbyn.GSK = azA(str4);
+      localbyn.GSL = ((byp)localObject);
+      localLinkedList.add(localbyn);
       i += 1;
       break;
       str9 = paramString + ".media.id";

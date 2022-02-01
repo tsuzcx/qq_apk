@@ -24,7 +24,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,39 +33,39 @@ public class GridHeadersGridView
   extends GridView
   implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, AdapterView.OnItemSelectedListener
 {
-  private AdapterView.OnItemLongClickListener HGi;
-  private int HuN;
-  private int HuO;
-  protected boolean Hvg;
-  private Runnable Hzw;
-  public a IJA;
-  public b IJB;
-  private boolean IJC;
-  private final Rect IJD;
-  private boolean IJE;
-  private boolean IJF;
-  private int IJG;
-  private long IJH;
-  private int IJI;
-  private float IJJ;
-  private boolean IJK;
-  private int IJL;
-  GridHeadersGridView.c IJM;
-  d IJN;
-  private e IJO;
-  private View IJP;
-  protected c IJQ;
-  protected int IJR;
-  private boolean IJS;
-  private DataSetObserver Rq;
-  private AdapterView.OnItemSelectedListener Wh;
-  private AdapterView.OnItemClickListener auB;
-  protected int awn;
-  private ao mHandler;
+  private AbsListView.OnScrollListener AAD;
+  private int JiD;
+  private int JiE;
+  protected boolean JiW;
+  private Runnable Jnn;
+  private AdapterView.OnItemLongClickListener JtZ;
+  public a KAH;
+  public b KAI;
+  private boolean KAJ;
+  private final Rect KAK;
+  private boolean KAL;
+  private boolean KAM;
+  private int KAN;
+  private long KAO;
+  private int KAP;
+  private float KAQ;
+  private boolean KAR;
+  private int KAS;
+  GridHeadersGridView.c KAT;
+  d KAU;
+  private e KAV;
+  private View KAW;
+  protected c KAX;
+  protected int KAY;
+  private boolean KAZ;
+  private DataSetObserver Tf;
+  private AdapterView.OnItemSelectedListener XW;
+  private AdapterView.OnItemClickListener awt;
+  protected int aye;
+  private ap mHandler;
   private int mNumColumns;
   private int mScrollState;
   private int mTouchSlop;
-  private AbsListView.OnScrollListener ziD;
   
   public GridHeadersGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -75,11 +76,11 @@ public class GridHeadersGridView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142806);
-    this.mHandler = new ao();
-    this.IJC = true;
-    this.IJD = new Rect();
-    this.IJH = -1L;
-    this.Rq = new DataSetObserver()
+    this.mHandler = new ap();
+    this.KAJ = true;
+    this.KAK = new Rect();
+    this.KAO = -1L;
+    this.Tf = new DataSetObserver()
     {
       public final void onChanged()
       {
@@ -95,22 +96,22 @@ public class GridHeadersGridView
         AppMethodBeat.o(142794);
       }
     };
-    this.IJL = 1;
+    this.KAS = 1;
     this.mScrollState = 0;
-    this.IJS = true;
+    this.KAZ = true;
     super.setOnScrollListener(this);
     setVerticalFadingEdgeEnabled(false);
-    if (!this.IJK) {
+    if (!this.KAR) {
       this.mNumColumns = -1;
     }
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     AppMethodBeat.o(142806);
   }
   
-  private void acp(int paramInt)
+  private void aeN(int paramInt)
   {
     AppMethodBeat.i(142830);
-    if ((this.IJQ == null) || (this.IJQ.getCount() == 0) || (!this.IJC))
+    if ((this.KAX == null) || (this.KAX.getCount() == 0) || (!this.KAJ))
     {
       AppMethodBeat.o(142830);
       return;
@@ -120,33 +121,33 @@ public class GridHeadersGridView
       AppMethodBeat.o(142830);
       return;
     }
-    int j = paramInt - this.IJL;
+    int j = paramInt - this.KAS;
     int i = j;
     if (j < 0) {
       i = paramInt;
     }
-    int k = this.IJL + paramInt;
+    int k = this.KAS + paramInt;
     j = k;
-    if (k >= this.IJQ.getCount()) {
+    if (k >= this.KAX.getCount()) {
       j = paramInt;
     }
     long l;
     Object localObject;
     label198:
     c.d locald;
-    if (this.HuO != 0) {
-      if (this.HuO < 0)
+    if (this.JiE != 0) {
+      if (this.JiE < 0)
       {
-        this.IJQ.An(paramInt);
-        if (getChildAt(this.IJL).getTop() <= 0)
+        this.KAX.AW(paramInt);
+        if (getChildAt(this.KAS).getTop() <= 0)
         {
-          l = this.IJQ.An(j);
+          l = this.KAX.AW(j);
           i = j;
-          if (this.IJH != l)
+          if (this.KAO != l)
           {
-            this.IJP = this.IJQ.a(i, this.IJP, this);
-            fsU();
-            this.IJH = l;
+            this.KAW = this.KAX.a(i, this.KAW, this);
+            fJI();
+            this.KAO = l;
           }
           int m = getChildCount();
           if (m == 0) {
@@ -159,7 +160,7 @@ public class GridHeadersGridView
             break label345;
           }
           locald = (c.d)super.getChildAt(k);
-          if (!this.IJE) {
+          if (!this.KAL) {
             break label336;
           }
           j = locald.getTop() - getPaddingTop();
@@ -173,19 +174,19 @@ public class GridHeadersGridView
     }
     for (;;)
     {
-      k += this.IJL;
+      k += this.KAS;
       i = j;
       break label198;
-      l = this.IJQ.An(paramInt);
+      l = this.KAX.AW(paramInt);
       i = paramInt;
       break;
       j = getChildAt(0).getTop();
-      if ((j > 0) && (j < this.HuO))
+      if ((j > 0) && (j < this.JiE))
       {
-        l = this.IJQ.An(i);
+        l = this.KAX.AW(i);
         break;
       }
-      l = this.IJQ.An(paramInt);
+      l = this.KAX.AW(paramInt);
       i = paramInt;
       break;
       label336:
@@ -195,35 +196,35 @@ public class GridHeadersGridView
       i = getHeaderHeight();
       if (localObject != null)
       {
-        if ((paramInt == 0) && (super.getChildAt(0).getTop() > 0) && (!this.IJE))
+        if ((paramInt == 0) && (super.getChildAt(0).getTop() > 0) && (!this.KAL))
         {
-          this.IJI = 0;
+          this.KAP = 0;
           AppMethodBeat.o(142830);
           return;
         }
-        if (this.IJE)
+        if (this.KAL)
         {
-          this.IJI = Math.min(localObject.getTop(), getPaddingTop() + i);
-          if (this.IJI < getPaddingTop()) {}
-          for (paramInt = i + getPaddingTop();; paramInt = this.IJI)
+          this.KAP = Math.min(localObject.getTop(), getPaddingTop() + i);
+          if (this.KAP < getPaddingTop()) {}
+          for (paramInt = i + getPaddingTop();; paramInt = this.KAP)
           {
-            this.IJI = paramInt;
+            this.KAP = paramInt;
             AppMethodBeat.o(142830);
             return;
           }
         }
-        this.IJI = Math.min(localObject.getTop(), i);
-        if (this.IJI < 0) {}
-        for (paramInt = i;; paramInt = this.IJI)
+        this.KAP = Math.min(localObject.getTop(), i);
+        if (this.KAP < 0) {}
+        for (paramInt = i;; paramInt = this.KAP)
         {
-          this.IJI = paramInt;
+          this.KAP = paramInt;
           AppMethodBeat.o(142830);
           return;
         }
       }
-      this.IJI = i;
-      if (this.IJE) {
-        this.IJI += getPaddingTop();
+      this.KAP = i;
+      if (this.KAL) {
+        this.KAP += getPaddingTop();
       }
       label516:
       AppMethodBeat.o(142830);
@@ -233,21 +234,21 @@ public class GridHeadersGridView
     }
   }
   
-  private void fsU()
+  private void fJI()
   {
     AppMethodBeat.i(142829);
-    if (this.IJP == null)
+    if (this.KAW == null)
     {
       AppMethodBeat.o(142829);
       return;
     }
     int j = View.MeasureSpec.makeMeasureSpec(getWidth() - getPaddingLeft() - getPaddingRight(), 1073741824);
-    ViewGroup.LayoutParams localLayoutParams = this.IJP.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.KAW.getLayoutParams();
     if ((localLayoutParams != null) && (localLayoutParams.height > 0)) {}
     for (int i = View.MeasureSpec.makeMeasureSpec(localLayoutParams.height, 1073741824);; i = View.MeasureSpec.makeMeasureSpec(0, 0))
     {
-      this.IJP.measure(j, i);
-      this.IJP.layout(getLeft() + getPaddingLeft(), 0, getRight() - getPaddingRight(), this.IJP.getMeasuredHeight());
+      this.KAW.measure(j, i);
+      this.KAW.layout(getLeft() + getPaddingLeft(), 0, getRight() - getPaddingRight(), this.KAW.getMeasuredHeight());
       AppMethodBeat.o(142829);
       return;
     }
@@ -256,9 +257,9 @@ public class GridHeadersGridView
   private int getHeaderHeight()
   {
     AppMethodBeat.i(142828);
-    if (this.IJP != null)
+    if (this.KAW != null)
     {
-      int i = this.IJP.getMeasuredHeight();
+      int i = this.KAW.getMeasuredHeight();
       AppMethodBeat.o(142828);
       return i;
     }
@@ -268,18 +269,18 @@ public class GridHeadersGridView
   
   private void reset()
   {
-    this.IJI = 0;
-    this.IJP = null;
-    this.IJH = -9223372036854775808L;
+    this.KAP = 0;
+    this.KAW = null;
+    this.KAO = -9223372036854775808L;
   }
   
-  public final View aco(int paramInt)
+  public final View aeM(int paramInt)
   {
     AppMethodBeat.i(142807);
     View localView;
     if (paramInt == -2)
     {
-      localView = this.IJP;
+      localView = this.KAW;
       AppMethodBeat.o(142807);
       return localView;
     }
@@ -300,9 +301,9 @@ public class GridHeadersGridView
   {
     AppMethodBeat.i(142831);
     if (Build.VERSION.SDK_INT < 8) {
-      acp(getFirstVisiblePosition());
+      aeN(getFirstVisiblePosition());
     }
-    if ((this.IJP != null) && (this.IJC) && (this.IJP.getVisibility() == 0)) {}
+    if ((this.KAW != null) && (this.KAJ) && (this.KAW.getVisibility() == 0)) {}
     int m;
     int n;
     ArrayList localArrayList;
@@ -310,15 +311,15 @@ public class GridHeadersGridView
     for (int i = 1;; i = 0)
     {
       m = getHeaderHeight();
-      n = this.IJI - m;
-      if ((i != 0) && (this.IJS))
+      n = this.KAP - m;
+      if ((i != 0) && (this.KAZ))
       {
-        this.IJD.left = getPaddingLeft();
-        this.IJD.right = (getWidth() - getPaddingRight());
-        this.IJD.top = this.IJI;
-        this.IJD.bottom = getHeight();
+        this.KAK.left = getPaddingLeft();
+        this.KAK.right = (getWidth() - getPaddingRight());
+        this.KAK.top = this.KAP;
+        this.KAK.bottom = getHeight();
         paramCanvas.save();
-        paramCanvas.clipRect(this.IJD);
+        paramCanvas.clipRect(this.KAK);
       }
       super.dispatchDraw(paramCanvas);
       localArrayList = new ArrayList();
@@ -329,8 +330,8 @@ public class GridHeadersGridView
         if (getItemIdAtPosition(k) == -1L) {
           localArrayList.add(Integer.valueOf(j));
         }
-        k += this.IJL;
-        j += this.IJL;
+        k += this.KAS;
+        j += this.KAS;
       }
     }
     int j = 0;
@@ -342,19 +343,19 @@ public class GridHeadersGridView
         try
         {
           View localView = (View)locald.getTag();
-          if ((((c.b)locald.getChildAt(0)).getHeaderId() == this.IJH) && (locald.getTop() < 0) && (this.IJC))
+          if ((((c.b)locald.getChildAt(0)).getHeaderId() == this.KAO) && (locald.getTop() < 0) && (this.KAJ))
           {
             k = 1;
             if ((localView.getVisibility() == 0) && (k == 0))
             {
               localView.measure(View.MeasureSpec.makeMeasureSpec(getWidth(), 1073741824 - getPaddingLeft() - getPaddingRight()), View.MeasureSpec.makeMeasureSpec(0, 0));
               localView.layout(getLeft() + getPaddingLeft(), 0, getRight() - getPaddingRight(), locald.getHeight());
-              this.IJD.left = getPaddingLeft();
-              this.IJD.right = (getWidth() - getPaddingRight());
-              this.IJD.bottom = locald.getBottom();
-              this.IJD.top = locald.getTop();
+              this.KAK.left = getPaddingLeft();
+              this.KAK.right = (getWidth() - getPaddingRight());
+              this.KAK.bottom = locald.getBottom();
+              this.KAK.top = locald.getTop();
               paramCanvas.save();
-              paramCanvas.clipRect(this.IJD);
+              paramCanvas.clipRect(this.KAK);
               paramCanvas.translate(getPaddingLeft(), locald.getTop());
               localView.draw(paramCanvas);
               paramCanvas.restore();
@@ -370,31 +371,31 @@ public class GridHeadersGridView
         k = 0;
       }
     }
-    if ((i != 0) && (this.IJS))
+    if ((i != 0) && (this.KAZ))
     {
       paramCanvas.restore();
-      if (this.IJP.getWidth() != getWidth() - getPaddingLeft() - getPaddingRight())
+      if (this.KAW.getWidth() != getWidth() - getPaddingLeft() - getPaddingRight())
       {
         i = View.MeasureSpec.makeMeasureSpec(getWidth(), 1073741824 - getPaddingLeft() - getPaddingRight());
         j = View.MeasureSpec.makeMeasureSpec(0, 0);
-        this.IJP.measure(i, j);
-        this.IJP.layout(getLeft() + getPaddingLeft(), 0, getRight() - getPaddingRight(), this.IJP.getHeight());
+        this.KAW.measure(i, j);
+        this.KAW.layout(getLeft() + getPaddingLeft(), 0, getRight() - getPaddingRight(), this.KAW.getHeight());
       }
-      this.IJD.left = getPaddingLeft();
-      this.IJD.right = (getWidth() - getPaddingRight());
-      this.IJD.bottom = (n + m);
-      if (!this.IJE) {
+      this.KAK.left = getPaddingLeft();
+      this.KAK.right = (getWidth() - getPaddingRight());
+      this.KAK.bottom = (n + m);
+      if (!this.KAL) {
         break label741;
       }
     }
     label741:
-    for (this.IJD.top = getPaddingTop();; this.IJD.top = 0)
+    for (this.KAK.top = getPaddingTop();; this.KAK.top = 0)
     {
       paramCanvas.save();
-      paramCanvas.clipRect(this.IJD);
+      paramCanvas.clipRect(this.KAK);
       paramCanvas.translate(getPaddingLeft(), n);
-      paramCanvas.saveLayerAlpha(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), (int)(255.0F * this.IJI / m), 31);
-      this.IJP.draw(paramCanvas);
+      paramCanvas.saveLayerAlpha(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), (int)(255.0F * this.KAP / m), 31);
+      this.KAW.draw(paramCanvas);
       paramCanvas.restore();
       paramCanvas.restore();
       AppMethodBeat.o(142831);
@@ -424,21 +425,21 @@ public class GridHeadersGridView
       }
       AppMethodBeat.o(142816);
       return false;
-      if (this.IJB == null) {
-        this.IJB = new b();
+      if (this.KAI == null) {
+        this.KAI = new b();
       }
-      this.mHandler.postDelayed(this.IJA, ViewConfiguration.getTapTimeout());
+      this.mHandler.postDelayed(this.KAH, ViewConfiguration.getTapTimeout());
       i = (int)paramMotionEvent.getY();
-      this.IJJ = i;
+      this.KAQ = i;
       float f = i;
-      if ((this.IJP != null) && (f <= this.IJP.getBottom())) {}
+      if ((this.KAW != null) && (f <= this.KAW.getBottom())) {}
       for (;;)
       {
-        this.IJR = j;
-        if ((this.IJR == -1) || (this.mScrollState == 2)) {
+        this.KAY = j;
+        if ((this.KAY == -1) || (this.mScrollState == 2)) {
           break;
         }
-        this.awn = 0;
+        this.aye = 0;
         break;
         int k = getFirstVisiblePosition();
         i = 0;
@@ -460,84 +461,84 @@ public class GridHeadersGridView
               }
             }
           }
-          k += this.IJL;
-          i += this.IJL;
+          k += this.KAS;
+          i += this.KAS;
         }
         label247:
         j = -1;
       }
-      if ((this.IJR == -1) || (Math.abs(paramMotionEvent.getY() - this.IJJ) <= this.mTouchSlop)) {
+      if ((this.KAY == -1) || (Math.abs(paramMotionEvent.getY() - this.KAQ) <= this.mTouchSlop)) {
         break;
       }
-      this.awn = -1;
-      Object localObject = aco(this.IJR);
+      this.aye = -1;
+      Object localObject = aeM(this.KAY);
       if (localObject != null) {
         ((View)localObject).setPressed(false);
       }
-      if (this.IJA != null) {
-        this.mHandler.removeCallbacks(this.IJA);
+      if (this.KAH != null) {
+        this.mHandler.removeCallbacks(this.KAH);
       }
-      this.IJR = -1;
+      this.KAY = -1;
       break;
-      if ((this.awn == -2) || (this.awn == -1) || (this.IJR == -1)) {
+      if ((this.aye == -2) || (this.aye == -1) || (this.KAY == -1)) {
         break;
       }
-      final View localView = aco(this.IJR);
+      final View localView = aeM(this.KAY);
       final e locale;
       if ((localView != null) && (!localView.hasFocusable()))
       {
-        if (this.awn != 0) {
+        if (this.aye != 0) {
           localView.setPressed(false);
         }
-        if (this.IJO == null) {
-          this.IJO = new e((byte)0);
+        if (this.KAV == null) {
+          this.KAV = new e((byte)0);
         }
-        locale = this.IJO;
-        locale.IJW = this.IJR;
-        locale.fsW();
-        if ((this.awn == 0) && (this.awn == 1)) {
+        locale = this.KAV;
+        locale.KBd = this.KAY;
+        locale.fJK();
+        if ((this.aye == 0) && (this.aye == 1)) {
           break label574;
         }
-        localao = this.mHandler;
-        if (this.awn == 0) {}
-        for (localObject = this.IJB;; localObject = this.IJA)
+        localap = this.mHandler;
+        if (this.aye == 0) {}
+        for (localObject = this.KAI;; localObject = this.KAH)
         {
-          localao.removeCallbacks((Runnable)localObject);
-          if (this.Hvg) {
+          localap.removeCallbacks((Runnable)localObject);
+          if (this.JiW) {
             break label561;
           }
-          this.awn = 1;
+          this.aye = 1;
           localView.setPressed(true);
           setPressed(true);
-          if (this.Hzw != null) {
-            removeCallbacks(this.Hzw);
+          if (this.Jnn != null) {
+            removeCallbacks(this.Jnn);
           }
-          this.Hzw = new Runnable()
+          this.Jnn = new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(142795);
-              GridHeadersGridView.this.awn = -1;
+              GridHeadersGridView.this.aye = -1;
               localView.setPressed(false);
               GridHeadersGridView.this.setPressed(false);
-              if (!GridHeadersGridView.this.Hvg) {
+              if (!GridHeadersGridView.this.JiW) {
                 locale.run();
               }
               AppMethodBeat.o(142795);
             }
           };
-          this.mHandler.postDelayed(this.Hzw, ViewConfiguration.getPressedStateDuration());
+          this.mHandler.postDelayed(this.Jnn, ViewConfiguration.getPressedStateDuration());
           i = 1;
           break;
         }
         label561:
-        this.awn = -1;
+        this.aye = -1;
       }
       label574:
-      while (this.Hvg)
+      while (this.JiW)
       {
-        ao localao;
-        this.awn = -1;
+        ap localap;
+        this.aye = -1;
         break;
       }
       locale.run();
@@ -551,25 +552,32 @@ public class GridHeadersGridView
   
   public View getStickiedHeader()
   {
-    return this.IJP;
+    return this.KAW;
   }
   
   public boolean getStickyHeaderIsTranscluent()
   {
-    return !this.IJS;
+    return !this.KAZ;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(142808);
-    this.auB.onItemClick(paramAdapterView, paramView, this.IJQ.acn(paramInt).mPosition, paramLong);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bd(paramAdapterView);
+    localb.bd(paramView);
+    localb.mr(paramInt);
+    localb.qY(paramLong);
+    a.b("com/tencent/mm/ui/gridviewheaders/GridHeadersGridView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+    this.awt.onItemClick(paramAdapterView, paramView, this.KAX.aeL(paramInt).mPosition, paramLong);
+    a.a(this, "com/tencent/mm/ui/gridviewheaders/GridHeadersGridView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
     AppMethodBeat.o(142808);
   }
   
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(142809);
-    boolean bool = this.HGi.onItemLongClick(paramAdapterView, paramView, this.IJQ.acn(paramInt).mPosition, paramLong);
+    boolean bool = this.JtZ.onItemLongClick(paramAdapterView, paramView, this.KAX.aeL(paramInt).mPosition, paramLong);
     AppMethodBeat.o(142809);
     return bool;
   }
@@ -577,7 +585,14 @@ public class GridHeadersGridView
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(142810);
-    this.Wh.onItemSelected(paramAdapterView, paramView, this.IJQ.acn(paramInt).mPosition, paramLong);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bd(paramAdapterView);
+    localb.bd(paramView);
+    localb.mr(paramInt);
+    localb.qY(paramLong);
+    a.b("com/tencent/mm/ui/gridviewheaders/GridHeadersGridView", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+    this.XW.onItemSelected(paramAdapterView, paramView, this.KAX.aeL(paramInt).mPosition, paramLong);
+    a.a(this, "com/tencent/mm/ui/gridviewheaders/GridHeadersGridView", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
     AppMethodBeat.o(142810);
   }
   
@@ -586,14 +601,14 @@ public class GridHeadersGridView
     int i = 1;
     AppMethodBeat.i(142832);
     if (this.mNumColumns == -1) {
-      if (this.IJG > 0)
+      if (this.KAN > 0)
       {
         int k = Math.max(View.MeasureSpec.getSize(paramInt1) - getPaddingLeft() - getPaddingRight(), 0);
-        int j = k / this.IJG;
+        int j = k / this.KAN;
         if (j > 0)
         {
           i = j;
-          while ((i != 1) && (this.IJG * i + (i - 1) * this.HuN > k)) {
+          while ((i != 1) && (this.KAN * i + (i - 1) * this.JiD > k)) {
             i -= 1;
           }
         }
@@ -605,12 +620,12 @@ public class GridHeadersGridView
     }
     for (;;)
     {
-      for (this.IJL = i;; this.IJL = this.mNumColumns)
+      for (this.KAS = i;; this.KAS = this.mNumColumns)
       {
-        if (this.IJQ != null) {
-          this.IJQ.setNumColumns(this.IJL);
+        if (this.KAX != null) {
+          this.KAX.setNumColumns(this.KAS);
         }
-        fsU();
+        fJI();
         super.onMeasure(paramInt1, paramInt2);
         AppMethodBeat.o(142832);
         return;
@@ -621,7 +636,7 @@ public class GridHeadersGridView
   public void onNothingSelected(AdapterView<?> paramAdapterView)
   {
     AppMethodBeat.i(142811);
-    this.Wh.onNothingSelected(paramAdapterView);
+    this.XW.onNothingSelected(paramAdapterView);
     AppMethodBeat.o(142811);
   }
   
@@ -630,7 +645,7 @@ public class GridHeadersGridView
     AppMethodBeat.i(142812);
     paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.IJC = paramParcelable.IJX;
+    this.KAJ = paramParcelable.KBe;
     requestLayout();
     AppMethodBeat.o(142812);
   }
@@ -639,7 +654,7 @@ public class GridHeadersGridView
   {
     AppMethodBeat.i(142813);
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
-    localSavedState.IJX = this.IJC;
+    localSavedState.KBe = this.KAJ;
     AppMethodBeat.o(142813);
     return localSavedState;
   }
@@ -647,11 +662,11 @@ public class GridHeadersGridView
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(142814);
-    if (this.ziD != null) {
-      this.ziD.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.AAD != null) {
+      this.AAD.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
     if (Build.VERSION.SDK_INT >= 8) {
-      acp(paramInt1);
+      aeN(paramInt1);
     }
     AppMethodBeat.o(142814);
   }
@@ -659,8 +674,8 @@ public class GridHeadersGridView
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     AppMethodBeat.i(142815);
-    if (this.ziD != null) {
-      this.ziD.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.AAD != null) {
+      this.AAD.onScrollStateChanged(paramAbsListView, paramInt);
     }
     this.mScrollState = paramInt;
     AppMethodBeat.o(142815);
@@ -669,21 +684,21 @@ public class GridHeadersGridView
   public void setAdapter(ListAdapter paramListAdapter)
   {
     AppMethodBeat.i(142817);
-    if ((this.IJQ != null) && (this.Rq != null)) {
-      this.IJQ.unregisterDataSetObserver(this.Rq);
+    if ((this.KAX != null) && (this.Tf != null)) {
+      this.KAX.unregisterDataSetObserver(this.Tf);
     }
-    if (!this.IJF) {
-      this.IJE = true;
+    if (!this.KAM) {
+      this.KAL = true;
     }
     if ((paramListAdapter instanceof b)) {
       paramListAdapter = (b)paramListAdapter;
     }
     for (;;)
     {
-      this.IJQ = new c(getContext(), this, paramListAdapter);
-      this.IJQ.registerDataSetObserver(this.Rq);
+      this.KAX = new c(getContext(), this, paramListAdapter);
+      this.KAX.registerDataSetObserver(this.Tf);
       reset();
-      super.setAdapter(this.IJQ);
+      super.setAdapter(this.KAX);
       AppMethodBeat.o(142817);
       return;
       if ((paramListAdapter instanceof e)) {
@@ -697,9 +712,9 @@ public class GridHeadersGridView
   public void setAreHeadersSticky(boolean paramBoolean)
   {
     AppMethodBeat.i(142818);
-    if (paramBoolean != this.IJC)
+    if (paramBoolean != this.KAJ)
     {
-      this.IJC = paramBoolean;
+      this.KAJ = paramBoolean;
       requestLayout();
     }
     AppMethodBeat.o(142818);
@@ -709,8 +724,8 @@ public class GridHeadersGridView
   {
     AppMethodBeat.i(142819);
     super.setClipToPadding(paramBoolean);
-    this.IJE = paramBoolean;
-    this.IJF = true;
+    this.KAL = paramBoolean;
+    this.KAM = true;
     AppMethodBeat.o(142819);
   }
   
@@ -718,7 +733,7 @@ public class GridHeadersGridView
   {
     AppMethodBeat.i(142820);
     super.setColumnWidth(paramInt);
-    this.IJG = paramInt;
+    this.KAN = paramInt;
     AppMethodBeat.o(142820);
   }
   
@@ -726,7 +741,7 @@ public class GridHeadersGridView
   {
     AppMethodBeat.i(142821);
     super.setHorizontalSpacing(paramInt);
-    this.HuN = paramInt;
+    this.JiD = paramInt;
     AppMethodBeat.o(142821);
   }
   
@@ -734,17 +749,17 @@ public class GridHeadersGridView
   {
     AppMethodBeat.i(142822);
     super.setNumColumns(paramInt);
-    this.IJK = true;
+    this.KAR = true;
     this.mNumColumns = paramInt;
-    if ((paramInt != -1) && (this.IJQ != null)) {
-      this.IJQ.setNumColumns(paramInt);
+    if ((paramInt != -1) && (this.KAX != null)) {
+      this.KAX.setNumColumns(paramInt);
     }
     AppMethodBeat.o(142822);
   }
   
   public void setOnHeaderClickListener(GridHeadersGridView.c paramc)
   {
-    this.IJM = paramc;
+    this.KAT = paramc;
   }
   
   public void setOnHeaderLongClickListener(d paramd)
@@ -753,14 +768,14 @@ public class GridHeadersGridView
     if (!isLongClickable()) {
       setLongClickable(true);
     }
-    this.IJN = paramd;
+    this.KAU = paramd;
     AppMethodBeat.o(142823);
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
     AppMethodBeat.i(142824);
-    this.auB = paramOnItemClickListener;
+    this.awt = paramOnItemClickListener;
     super.setOnItemClickListener(this);
     AppMethodBeat.o(142824);
   }
@@ -768,7 +783,7 @@ public class GridHeadersGridView
   public void setOnItemLongClickListener(AdapterView.OnItemLongClickListener paramOnItemLongClickListener)
   {
     AppMethodBeat.i(142825);
-    this.HGi = paramOnItemLongClickListener;
+    this.JtZ = paramOnItemLongClickListener;
     super.setOnItemLongClickListener(this);
     AppMethodBeat.o(142825);
   }
@@ -776,14 +791,14 @@ public class GridHeadersGridView
   public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
     AppMethodBeat.i(142826);
-    this.Wh = paramOnItemSelectedListener;
+    this.XW = paramOnItemSelectedListener;
     super.setOnItemSelectedListener(this);
     AppMethodBeat.o(142826);
   }
   
   public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.ziD = paramOnScrollListener;
+    this.AAD = paramOnScrollListener;
   }
   
   public void setStickyHeaderIsTranscluent(boolean paramBoolean)
@@ -791,7 +806,7 @@ public class GridHeadersGridView
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      this.IJS = paramBoolean;
+      this.KAZ = paramBoolean;
       return;
     }
   }
@@ -800,7 +815,7 @@ public class GridHeadersGridView
   {
     AppMethodBeat.i(142827);
     super.setVerticalSpacing(paramInt);
-    this.HuO = paramInt;
+    this.JiE = paramInt;
     AppMethodBeat.o(142827);
   }
   
@@ -808,7 +823,7 @@ public class GridHeadersGridView
     extends View.BaseSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    boolean IJX;
+    boolean KBe;
     
     static
     {
@@ -824,7 +839,7 @@ public class GridHeadersGridView
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.IJX = bool;
+        this.KBe = bool;
         AppMethodBeat.o(142800);
         return;
       }
@@ -838,7 +853,7 @@ public class GridHeadersGridView
     public String toString()
     {
       AppMethodBeat.i(142801);
-      String str = "StickyGridHeadersGridView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " areHeadersSticky=" + this.IJX + "}";
+      String str = "StickyGridHeadersGridView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " areHeadersSticky=" + this.KBe + "}";
       AppMethodBeat.o(142801);
       return str;
     }
@@ -847,7 +862,7 @@ public class GridHeadersGridView
     {
       AppMethodBeat.i(142802);
       super.writeToParcel(paramParcel, paramInt);
-      if (this.IJX) {}
+      if (this.KBe) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
@@ -869,19 +884,19 @@ public class GridHeadersGridView
     public final void run()
     {
       AppMethodBeat.i(142796);
-      View localView = GridHeadersGridView.this.aco(GridHeadersGridView.this.IJR);
+      View localView = GridHeadersGridView.this.aeM(GridHeadersGridView.this.KAY);
       boolean bool1;
       if (localView != null)
       {
-        GridHeadersGridView.a(GridHeadersGridView.this, GridHeadersGridView.this.IJR);
-        if ((!fsX()) || (GridHeadersGridView.this.Hvg)) {
+        GridHeadersGridView.a(GridHeadersGridView.this, GridHeadersGridView.this.KAY);
+        if ((!fJL()) || (GridHeadersGridView.this.JiW)) {
           break label156;
         }
         GridHeadersGridView localGridHeadersGridView = GridHeadersGridView.this;
-        if (localGridHeadersGridView.IJN == null) {
+        if (localGridHeadersGridView.KAU == null) {
           break label151;
         }
-        bool1 = localGridHeadersGridView.IJN.fsV();
+        bool1 = localGridHeadersGridView.KAU.fJJ();
         bool2 = bool1;
         if (bool1)
         {
@@ -897,13 +912,13 @@ public class GridHeadersGridView
       {
         if (bool2)
         {
-          GridHeadersGridView.this.awn = -2;
+          GridHeadersGridView.this.aye = -2;
           GridHeadersGridView.this.setPressed(false);
           localView.setPressed(false);
           AppMethodBeat.o(142796);
           return;
         }
-        GridHeadersGridView.this.awn = 2;
+        GridHeadersGridView.this.aye = 2;
         AppMethodBeat.o(142796);
         return;
         bool1 = false;
@@ -920,13 +935,13 @@ public class GridHeadersGridView
     public final void run()
     {
       AppMethodBeat.i(142797);
-      if (GridHeadersGridView.this.awn == 0)
+      if (GridHeadersGridView.this.aye == 0)
       {
-        GridHeadersGridView.this.awn = 1;
-        View localView = GridHeadersGridView.this.aco(GridHeadersGridView.this.IJR);
+        GridHeadersGridView.this.aye = 1;
+        View localView = GridHeadersGridView.this.aeM(GridHeadersGridView.this.KAY);
         if ((localView != null) && (!localView.hasFocusable()))
         {
-          if (!GridHeadersGridView.this.Hvg)
+          if (!GridHeadersGridView.this.JiW)
           {
             localView.setPressed(true);
             GridHeadersGridView.this.setPressed(true);
@@ -934,19 +949,19 @@ public class GridHeadersGridView
             int i = ViewConfiguration.getLongPressTimeout();
             if (GridHeadersGridView.this.isLongClickable())
             {
-              if (GridHeadersGridView.this.IJA == null) {
-                GridHeadersGridView.this.IJA = new GridHeadersGridView.a(GridHeadersGridView.this, (byte)0);
+              if (GridHeadersGridView.this.KAH == null) {
+                GridHeadersGridView.this.KAH = new GridHeadersGridView.a(GridHeadersGridView.this, (byte)0);
               }
-              GridHeadersGridView.this.IJA.fsW();
-              GridHeadersGridView.d(GridHeadersGridView.this).postDelayed(GridHeadersGridView.this.IJA, i);
+              GridHeadersGridView.this.KAH.fJK();
+              GridHeadersGridView.d(GridHeadersGridView.this).postDelayed(GridHeadersGridView.this.KAH, i);
               AppMethodBeat.o(142797);
               return;
             }
-            GridHeadersGridView.this.awn = 2;
+            GridHeadersGridView.this.aye = 2;
             AppMethodBeat.o(142797);
             return;
           }
-          GridHeadersGridView.this.awn = 2;
+          GridHeadersGridView.this.aye = 2;
         }
       }
       AppMethodBeat.o(142797);
@@ -955,14 +970,14 @@ public class GridHeadersGridView
   
   public static abstract interface d
   {
-    public abstract boolean fsV();
+    public abstract boolean fJJ();
   }
   
   final class e
     extends GridHeadersGridView.f
     implements Runnable
   {
-    int IJW;
+    int KBd;
     
     private e()
     {
@@ -972,25 +987,25 @@ public class GridHeadersGridView
     public final void run()
     {
       AppMethodBeat.i(142798);
-      if (GridHeadersGridView.this.Hvg)
+      if (GridHeadersGridView.this.JiW)
       {
         AppMethodBeat.o(142798);
         return;
       }
-      if ((GridHeadersGridView.this.IJQ != null) && (GridHeadersGridView.this.IJQ.getCount() > 0) && (this.IJW != -1) && (this.IJW < GridHeadersGridView.this.IJQ.getCount()) && (fsX()))
+      if ((GridHeadersGridView.this.KAX != null) && (GridHeadersGridView.this.KAX.getCount() > 0) && (this.KBd != -1) && (this.KBd < GridHeadersGridView.this.KAX.getCount()) && (fJL()))
       {
-        View localView = GridHeadersGridView.this.aco(this.IJW);
+        View localView = GridHeadersGridView.this.aeM(this.KBd);
         if (localView != null)
         {
           GridHeadersGridView localGridHeadersGridView = GridHeadersGridView.this;
-          GridHeadersGridView.a(GridHeadersGridView.this, this.IJW);
-          if (localGridHeadersGridView.IJM != null)
+          GridHeadersGridView.a(GridHeadersGridView.this, this.KBd);
+          if (localGridHeadersGridView.KAT != null)
           {
             localGridHeadersGridView.playSoundEffect(0);
             if (localView != null) {
               localView.sendAccessibilityEvent(1);
             }
-            localGridHeadersGridView.IJM.dJ(localView);
+            localGridHeadersGridView.KAT.dM(localView);
           }
         }
       }
@@ -1000,21 +1015,21 @@ public class GridHeadersGridView
   
   class f
   {
-    private int HzC;
+    private int Jnt;
     
     private f() {}
     
-    public final void fsW()
+    public final void fJK()
     {
       AppMethodBeat.i(142804);
-      this.HzC = GridHeadersGridView.b(GridHeadersGridView.this);
+      this.Jnt = GridHeadersGridView.b(GridHeadersGridView.this);
       AppMethodBeat.o(142804);
     }
     
-    public final boolean fsX()
+    public final boolean fJL()
     {
       AppMethodBeat.i(142805);
-      if ((GridHeadersGridView.this.hasWindowFocus()) && (GridHeadersGridView.c(GridHeadersGridView.this) == this.HzC))
+      if ((GridHeadersGridView.this.hasWindowFocus()) && (GridHeadersGridView.c(GridHeadersGridView.this) == this.Jnt))
       {
         AppMethodBeat.o(142805);
         return true;

@@ -12,7 +12,7 @@ import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
 import com.tencent.liteav.basic.module.TXCStatus;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -79,7 +79,7 @@ public class TXCStreamUploader
   static
   {
     AppMethodBeat.i(15385);
-    d.f();
+    f.f();
     AppMethodBeat.o(15385);
   }
   
@@ -309,10 +309,10 @@ public class TXCStreamUploader
     }
     if (this.mRtmpProxyEnable)
     {
-      if (this.mLastNetworkType != d.e(this.mContext))
+      if (this.mLastNetworkType != f.e(this.mContext))
       {
-        TXCLog.e("TXCStreamUploader", "reconnect network switch from " + this.mLastNetworkType + " to " + d.e(this.mContext));
-        this.mLastNetworkType = d.e(this.mContext);
+        TXCLog.e("TXCStreamUploader", "reconnect network switch from " + this.mLastNetworkType + " to " + f.e(this.mContext));
+        this.mLastNetworkType = f.e(this.mContext);
         this.mRetryCount = 0;
         Monitor.a(2, "WebrtcRoom: need enter again by user", "", 0);
         sendNotifyEvent(1021, String.format("网络类型发生变化，需要重新进房", new Object[0]));
@@ -344,10 +344,10 @@ public class TXCStreamUploader
       return;
     }
     this.mUploadQualityReport.c();
-    if ((this.mEnableNearestIP) && (this.mLastNetworkType != d.e(this.mContext)))
+    if ((this.mEnableNearestIP) && (this.mLastNetworkType != f.e(this.mContext)))
     {
-      TXCLog.e("TXCStreamUploader", "reconnect network switch from " + this.mLastNetworkType + " to " + d.e(this.mContext));
-      this.mLastNetworkType = d.e(this.mContext);
+      TXCLog.e("TXCStreamUploader", "reconnect network switch from " + this.mLastNetworkType + " to " + f.e(this.mContext));
+      this.mLastNetworkType = f.e(this.mContext);
       this.mIntelligentRoute.a(this.mRtmpUrl, this.mChannelType);
       this.mRetryCount = 0;
       AppMethodBeat.o(15357);
@@ -1007,7 +1007,7 @@ public class TXCStreamUploader
   private void rtmpProxySendHeartBeat()
   {
     AppMethodBeat.i(15366);
-    ??? = d.a();
+    ??? = f.a();
     long l1 = ???[0] / 10;
     long l2 = ???[1] / 10;
     long l3 = TXCStatus.c(getID(), 7004);
@@ -1077,7 +1077,7 @@ public class TXCStreamUploader
     for (;;)
     {
       ((Bundle)???).putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
-      d.a(this.mNotifyListener, paramInt, (Bundle)???);
+      f.a(this.mNotifyListener, paramInt, (Bundle)???);
       AppMethodBeat.o(15359);
       return;
       ((Bundle)???).putString("EVT_MSG", "所有IP都已经尝试失败,可以放弃治疗");
@@ -1139,7 +1139,7 @@ public class TXCStreamUploader
       Bundle localBundle = new Bundle();
       localBundle.putString("EVT_MSG", paramString);
       localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
-      d.a(this.mNotifyListener, paramInt, localBundle);
+      f.a(this.mNotifyListener, paramInt, localBundle);
     }
     if (paramInt == 1101) {
       this.mUploadQualityReport.d();
@@ -1662,7 +1662,7 @@ public class TXCStreamUploader
     for (String str = "yes";; str = "no")
     {
       TXCLog.i("TXCStreamUploader", str + "channel type:" + paramInt);
-      if (d.e(this.mContext) != 0) {
+      if (f.e(this.mContext) != 0) {
         break;
       }
       sendNotifyEvent(-1325);
@@ -1710,7 +1710,7 @@ public class TXCStreamUploader
     parseProxyInfo(paramString);
     if (this.mRtmpProxyEnable)
     {
-      this.mLastNetworkType = d.e(this.mContext);
+      this.mLastNetworkType = f.e(this.mContext);
       nativeCacheJNIParams();
       startPushTask(this.mRtmpUrl, this.mQuicChannel, 0);
     }
@@ -1720,11 +1720,11 @@ public class TXCStreamUploader
       paramString = this.mRtmpUrl;
       AppMethodBeat.o(15341);
       return paramString;
-      if ((!this.mEnableNearestIP) || (this.mLastNetworkType == d.e(this.mContext))) {
+      if ((!this.mEnableNearestIP) || (this.mLastNetworkType == f.e(this.mContext))) {
         break;
       }
       TXCLog.i("TXCStreamUploader", "fetching nearest ip list");
-      this.mLastNetworkType = d.e(this.mContext);
+      this.mLastNetworkType = f.e(this.mContext);
       this.mIntelligentRoute.a(paramString, paramInt);
     }
   }

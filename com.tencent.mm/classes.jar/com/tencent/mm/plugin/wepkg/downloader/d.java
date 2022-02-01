@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wepkg.downloader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.util.HashMap;
@@ -9,9 +9,9 @@ import java.util.concurrent.Future;
 
 public final class d
 {
-  private static volatile d CZU;
+  private static volatile d EDT;
   private static Object lock;
-  HashMap<String, c> CZV;
+  HashMap<String, c> EDU;
   
   static
   {
@@ -23,20 +23,20 @@ public final class d
   private d()
   {
     AppMethodBeat.i(110598);
-    this.CZV = new HashMap();
+    this.EDU = new HashMap();
     AppMethodBeat.o(110598);
   }
   
-  public static d eIZ()
+  public static d eXT()
   {
     AppMethodBeat.i(110597);
-    if (CZU == null) {}
+    if (EDT == null) {}
     synchronized (lock)
     {
-      if (CZU == null) {
-        CZU = new d();
+      if (EDT == null) {
+        EDT = new d();
       }
-      ??? = CZU;
+      ??? = EDT;
       AppMethodBeat.o(110597);
       return ???;
     }
@@ -45,35 +45,35 @@ public final class d
   final boolean a(c paramc)
   {
     AppMethodBeat.i(110600);
-    if (this.CZV.containsKey(paramc.CZL.Dal))
+    if (this.EDU.containsKey(paramc.EDK.EEk))
     {
-      paramc.CZR = true;
+      paramc.EDQ = true;
       for (;;)
       {
         try
         {
-          HttpURLConnection localHttpURLConnection = paramc.CZN;
+          HttpURLConnection localHttpURLConnection = paramc.EDM;
           if (localHttpURLConnection == null) {}
         }
         catch (Exception localException2)
         {
-          ac.i("MicroMsg.Wepkg.WePkgDownloadTask", "stop, " + localException2.getMessage());
+          ad.i("MicroMsg.Wepkg.WePkgDownloadTask", "stop, " + localException2.getMessage());
           continue;
         }
         try
         {
-          paramc.CZN.getInputStream().close();
-          paramc.CZN.disconnect();
-          if (paramc.CZM != null) {
-            paramc.CZM.cancel(false);
+          paramc.EDM.getInputStream().close();
+          paramc.EDM.disconnect();
+          if (paramc.EDL != null) {
+            paramc.EDL.cancel(false);
           }
-          this.CZV.remove(paramc.CZL.Dal);
+          this.EDU.remove(paramc.EDK.EEk);
           AppMethodBeat.o(110600);
           return true;
         }
         catch (Exception localException1)
         {
-          ac.e("MicroMsg.Wepkg.WePkgDownloadTask", localException1.getMessage());
+          ad.e("MicroMsg.Wepkg.WePkgDownloadTask", localException1.getMessage());
         }
       }
     }
@@ -81,11 +81,11 @@ public final class d
     return false;
   }
   
-  public final boolean aFh(String paramString)
+  public final boolean aKG(String paramString)
   {
     AppMethodBeat.i(110599);
-    if (this.CZV.containsKey(paramString)) {
-      this.CZV.remove(paramString);
+    if (this.EDU.containsKey(paramString)) {
+      this.EDU.remove(paramString);
     }
     AppMethodBeat.o(110599);
     return true;
@@ -93,7 +93,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.downloader.d
  * JD-Core Version:    0.7.0.1
  */

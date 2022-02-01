@@ -4,23 +4,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelcontrol.d;
-import com.tencent.mm.plugin.finder.cgi.p;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.w;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.m;
-import com.tencent.mm.protocal.protobuf.alw;
-import com.tencent.mm.protocal.protobuf.ana;
-import com.tencent.mm.protocal.protobuf.anb;
-import com.tencent.mm.protocal.protobuf.anc;
-import com.tencent.mm.protocal.protobuf.bqs;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.plugin.finder.loader.m;
+import com.tencent.mm.plugin.finder.model.y;
+import com.tencent.mm.plugin.finder.storage.data.i;
+import com.tencent.mm.plugin.finder.storage.logic.c;
+import com.tencent.mm.plugin.finder.storage.r;
+import com.tencent.mm.protocal.protobuf.FinderMedia;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
+import com.tencent.mm.protocal.protobuf.apc;
+import com.tencent.mm.protocal.protobuf.aqm;
+import com.tencent.mm.protocal.protobuf.aqn;
+import com.tencent.mm.protocal.protobuf.aqo;
+import com.tencent.mm.protocal.protobuf.bvf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.k.h;
+import d.l;
 import d.n.n;
 import d.o;
 import java.util.ArrayList;
@@ -32,392 +36,521 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel;", "", "()V", "hotMediaSet", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/protocal/protobuf/FinderPreloadObjectInfo;", "getHotMediaSet", "()Ljava/util/concurrent/ConcurrentHashMap;", "setHotMediaSet", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "isMoovFailReady2DownloadAll", "", "()Z", "setMoovFailReady2DownloadAll", "(Z)V", "localConfig", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$LocalConfig;", "getLocalConfig", "()Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$LocalConfig;", "setLocalConfig", "(Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$LocalConfig;)V", "maxConcurrentCount", "", "getMaxConcurrentCount", "()I", "setMaxConcurrentCount", "(I)V", "maxPreloadBitRate", "", "getMaxPreloadBitRate", "()J", "setMaxPreloadBitRate", "(J)V", "maxPreloadBytes", "getMaxPreloadBytes", "setMaxPreloadBytes", "maxPreloadPercent", "getMaxPreloadPercent", "setMaxPreloadPercent", "nextCount", "getNextCount", "setNextCount", "preloadId", "getPreloadId", "setPreloadId", "prevCount", "getPrevCount", "setPrevCount", "findTargetSpec", "Lkotlin/Pair;", "Lcom/tencent/mm/protocal/protobuf/FinderMediaSpec;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "maxBitRate", "query", "", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$Detail;", "isCareCache", "storePreloadInfo", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderPreloadInfo;", "updatePreloadInfo", "feedSet", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Companion", "Detail", "LocalConfig", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel;", "", "()V", "hotMediaSet", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/protocal/protobuf/FinderPreloadObjectInfo;", "getHotMediaSet", "()Ljava/util/concurrent/ConcurrentHashMap;", "setHotMediaSet", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "isMoovFailReady2DownloadAll", "", "()Z", "setMoovFailReady2DownloadAll", "(Z)V", "isOpenMultiBitRateDownload", "isSecondPreload", "setSecondPreload", "maxPreloadBitRate", "", "getMaxPreloadBitRate", "()J", "setMaxPreloadBitRate", "(J)V", "maxPreloadBytes", "getMaxPreloadBytes", "setMaxPreloadBytes", "maxPreloadPercent", "", "getMaxPreloadPercent", "()I", "setMaxPreloadPercent", "(I)V", "maxPreloadTaskCount", "getMaxPreloadTaskCount", "setMaxPreloadTaskCount", "nextCount", "getNextCount", "setNextCount", "playConcurrentCount", "getPlayConcurrentCount", "setPlayConcurrentCount", "preloadConcurrentCount", "getPreloadConcurrentCount", "setPreloadConcurrentCount", "preloadId", "getPreloadId", "setPreloadId", "prevCount", "getPrevCount", "setPrevCount", "startPreloadPercent", "getStartPreloadPercent", "setStartPreloadPercent", "startPreloadSecs", "getStartPreloadSecs", "setStartPreloadSecs", "findTargetSpec", "Lkotlin/Pair;", "Lcom/tencent/mm/protocal/protobuf/FinderMediaSpec;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "maxBitRate", "query", "", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$Detail;", "isPreload", "storePreloadInfo", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderPreloadInfo;", "updatePreloadInfo", "feedSet", "Ljava/util/HashMap;", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "Companion", "Detail", "plugin-finder_release"})
 public final class a
 {
-  private static final boolean rvN;
-  public static final a.a rvO;
-  public a.c rvD;
-  public boolean rvE;
-  public int rvF;
-  public int rvG;
-  private int rvH;
-  public int rvI;
-  private long rvJ;
-  public long rvK;
-  public long rvL;
-  private ConcurrentHashMap<String, anc> rvM;
+  private static final boolean slt;
+  public static final a slu;
+  public boolean sle;
+  public int slf;
+  public int slg;
+  public int slh;
+  public long sli;
+  public int slj;
+  public int slk;
+  public int sll;
+  public int slm;
+  public int sln;
+  private long slo;
+  public long slp;
+  private ConcurrentHashMap<String, aqo> slq;
+  public final boolean slr;
+  public boolean sls;
   
   static
   {
     AppMethodBeat.i(166482);
-    rvO = new a.a((byte)0);
-    rvN = d.oE(4);
+    slu = new a((byte)0);
+    slt = d.pf(4);
     AppMethodBeat.o(166482);
   }
   
   public a()
   {
     AppMethodBeat.i(166481);
-    this.rvM = new ConcurrentHashMap();
+    this.slf = 1;
+    this.slg = 4;
+    this.slh = d.h.a.co(30.000002F);
+    this.sli = 2097152L;
+    this.slj = 1;
+    this.slk = 1;
+    this.sll = 4;
+    this.slm = d.h.a.co(0.0F);
+    this.slq = new ConcurrentHashMap();
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
+    this.slr = com.tencent.mm.plugin.finder.storage.b.cGE();
     AppMethodBeat.o(166481);
   }
   
-  private final o<alw, String> a(bqs parambqs, long paramLong)
+  private static o<apc, String> a(bvf parambvf, long paramLong)
   {
-    AppMethodBeat.i(202633);
+    AppMethodBeat.i(203054);
     String str2;
     String str1;
     Object localObject1;
     label44:
     int i;
-    if (rvN)
+    if (slt)
     {
       str2 = "h265";
       str1 = "step#1";
-      localObject1 = parambqs.spec;
-      k.g(localObject1, "media.spec");
+      localObject1 = parambvf.spec;
+      p.g(localObject1, "media.spec");
       Object localObject2 = ((Iterable)localObject1).iterator();
       if (!((Iterator)localObject2).hasNext()) {
-        break label390;
+        break label382;
       }
       localObject1 = ((Iterator)localObject2).next();
-      Object localObject3 = (alw)localObject1;
-      if ((!n.I(((alw)localObject3).rvP, str2, true)) || (((alw)localObject3).EFp >= paramLong)) {
-        break label384;
+      Object localObject3 = (apc)localObject1;
+      if ((!n.H(((apc)localObject3).slv, str2, true)) || (((apc)localObject3).GnD >= paramLong)) {
+        break label377;
       }
       i = 1;
-      label98:
+      label97:
       if (i == 0) {
-        break label388;
+        break label380;
       }
-      label103:
-      localObject2 = (alw)localObject1;
+      label101:
+      localObject2 = (apc)localObject1;
       localObject1 = localObject2;
       if (localObject2 != null) {
-        break label413;
+        break label405;
       }
-      localObject3 = (a)this;
       str1 = "step#2";
-      localObject1 = parambqs.spec;
-      k.g(localObject1, "media.spec");
+      localObject1 = parambvf.spec;
+      p.g(localObject1, "media.spec");
       localObject1 = (List)localObject1;
       localObject2 = ((List)localObject1).listIterator(((List)localObject1).size());
       while (((ListIterator)localObject2).hasPrevious())
       {
         localObject1 = ((ListIterator)localObject2).previous();
-        if (n.I(((alw)localObject1).rvP, str2, true))
+        if (n.H(((apc)localObject1).slv, str2, true))
         {
-          label201:
-          localObject2 = (alw)localObject1;
+          label193:
+          localObject2 = (apc)localObject1;
           localObject1 = localObject2;
           if (localObject2 != null) {
-            break label413;
+            break label405;
           }
           str1 = "step#3";
-          parambqs = parambqs.spec;
-          k.g(parambqs, "media.spec");
-          parambqs = (List)parambqs;
-          localObject2 = parambqs.listIterator(parambqs.size());
-          label251:
+          parambvf = parambvf.spec;
+          p.g(parambvf, "media.spec");
+          parambvf = (List)parambvf;
+          localObject2 = parambvf.listIterator(parambvf.size());
+          label244:
           if (!((ListIterator)localObject2).hasPrevious()) {
-            break label408;
+            break label400;
           }
           localObject1 = ((ListIterator)localObject2).previous();
-          String str3 = ((alw)localObject1).rvP;
-          if (!k.g(str2, "h265")) {
-            break label402;
+          localObject3 = ((apc)localObject1).slv;
+          if (!p.i(str2, "h265")) {
+            break label394;
           }
-          parambqs = "h264";
-          label293:
-          if (!n.I(str3, parambqs, true)) {
-            break label406;
+          parambvf = "h264";
+          label287:
+          if (!n.H((String)localObject3, parambvf, true)) {
+            break label398;
           }
-          parambqs = (bqs)localObject1;
-          label306:
-          parambqs = (alw)parambqs;
-          localObject1 = parambqs;
-          if (parambqs != null) {
-            break label413;
+          parambvf = (bvf)localObject1;
+          label300:
+          parambvf = (apc)parambvf;
+          localObject1 = parambvf;
+          if (parambvf != null) {
+            break label405;
           }
-          parambqs = "step#4";
-          localObject1 = new alw();
-          ((alw)localObject1).drn = m.rDS.detail;
-          ((alw)localObject1).rvP = str2;
-          ((alw)localObject1).EFo = ((int)((a)localObject3).rvJ);
+          parambvf = "step#4";
+          localObject1 = new apc();
+          ((apc)localObject1).dDf = r.syF.detail;
+          ((apc)localObject1).slv = str2;
+          ((apc)localObject1).GnC = 2097152;
         }
       }
     }
     for (;;)
     {
-      parambqs = new o(localObject1, parambqs);
-      AppMethodBeat.o(202633);
-      return parambqs;
+      parambvf = new o(localObject1, parambvf);
+      AppMethodBeat.o(203054);
+      return parambvf;
       str2 = "h264";
       break;
-      label384:
+      label377:
       i = 0;
-      break label98;
-      label388:
+      break label97;
+      label380:
       break label44;
-      label390:
+      label382:
       localObject1 = null;
-      break label103;
+      break label101;
       localObject1 = null;
-      break label201;
-      label402:
-      parambqs = "h265";
-      break label293;
-      label406:
-      break label251;
-      label408:
-      parambqs = null;
-      break label306;
-      label413:
-      parambqs = str1;
+      break label193;
+      label394:
+      parambvf = "h265";
+      break label287;
+      label398:
+      break label244;
+      label400:
+      parambvf = null;
+      break label300;
+      label405:
+      parambvf = str1;
     }
   }
   
-  public final List<a.b> a(bqs parambqs, boolean paramBoolean)
+  public final List<b> a(bvf parambvf, boolean paramBoolean)
   {
-    AppMethodBeat.i(202632);
-    k.h(parambqs, "media");
-    Object localObject1 = com.tencent.mm.plugin.finder.storage.b.rCU;
-    boolean bool = com.tencent.mm.plugin.finder.storage.b.cAk();
+    AppMethodBeat.i(203053);
+    p.h(parambvf, "media");
+    boolean bool = this.slr;
     LinkedList localLinkedList = new LinkedList();
-    Object localObject2 = parambqs.mediaId;
-    Object localObject3 = a(parambqs, this.rvK);
-    alw localalw = (alw)((o)localObject3).first;
+    Object localObject2 = parambvf.mediaId;
+    Object localObject3 = a(parambvf, this.slo);
+    apc localapc = (apc)((o)localObject3).first;
     int i;
-    Object localObject4;
-    if (n.I(localalw.rvP, "h265", true))
+    Object localObject1;
+    label160:
+    int j;
+    label200:
+    long l;
+    label348:
+    float f;
+    if (n.H(localapc.slv, "h265", true))
     {
       i = 2;
+      Object localObject4;
       if ((paramBoolean) && (bool))
       {
-        localObject1 = com.tencent.mm.plugin.finder.storage.logic.c.rFo;
-        localObject1 = parambqs.mediaId;
-        k.g(localObject1, "media.mediaId");
-        localObject4 = ((Iterable)j.a((Iterable)com.tencent.mm.plugin.finder.storage.logic.c.aej((String)localObject1), (Comparator)new a.d())).iterator();
-        for (;;)
+        localObject1 = c.sAv;
+        localObject1 = parambvf.mediaId;
+        p.g(localObject1, "media.mediaId");
+        localObject4 = ((Iterable)j.a((Iterable)c.aiE((String)localObject1), (Comparator)new c())).iterator();
+      }
+      for (;;)
+      {
+        if (((Iterator)localObject4).hasNext())
         {
-          if (((Iterator)localObject4).hasNext())
+          localObject1 = ((Iterator)localObject4).next();
+          if (((y)localObject1).cCX())
           {
-            localObject1 = ((Iterator)localObject4).next();
-            if (((w)localObject1).cwH())
+            localObject1 = (y)localObject1;
+            if (localObject1 != null)
             {
-              label163:
-              localObject1 = (w)localObject1;
-              if (localObject1 != null)
+              localObject4 = (CharSequence)((y)localObject1).field_fileFormat;
+              if ((localObject4 != null) && (((CharSequence)localObject4).length() != 0)) {
+                break label723;
+              }
+              j = 1;
+              if ((j == 0) && (localapc.dDf.hashCode() > ((y)localObject1).field_fileFormat.hashCode()))
               {
-                localObject4 = (CharSequence)((w)localObject1).field_fileFormat;
-                if ((localObject4 != null) && (((CharSequence)localObject4).length() != 0)) {
-                  break label708;
-                }
+                ad.w("Finder.MediaPreloadModel", "[query] continue to use high fileFormat, [" + parambvf.mediaId + "] change[" + localapc.dDf + "->" + ((y)localObject1).field_fileFormat + ']');
+                localapc.dDf = ((y)localObject1).field_fileFormat;
+              }
+            }
+            if (!bool) {
+              localapc.dDf = r.syQ.detail;
+            }
+            localObject1 = new m(parambvf, a.ahG(localapc.dDf), i, null, 8);
+            if (localapc.GnC <= 0) {
+              break label729;
+            }
+            l = localapc.GnC;
+            localObject4 = localapc.dDf;
+            p.g(localObject4, "targetSpec.fileFormat");
+            String str = localapc.slv;
+            p.g(str, "targetSpec.codingFormat");
+            localLinkedList.add(new b(1, l, (String)localObject4, str, (m)localObject1, (byte)0));
+            if ((!bool) || (this.slh <= 0)) {
+              break label742;
+            }
+            this.sls = true;
+            localObject4 = (aqo)this.slq.get(localObject2);
+            if (localObject4 == null) {
+              break label737;
+            }
+            f = ((aqo)localObject4).GoH;
+            label443:
+            i = Math.min(100, d.h.a.co(Math.max(1.0F, f * this.slh)));
+            if ((aqo)this.slq.get(localObject2) != null)
+            {
+              localObject4 = localapc.dDf;
+              p.g(localObject4, "targetSpec.fileFormat");
+              str = localapc.slv;
+              p.g(str, "targetSpec.codingFormat");
+              localLinkedList.add(new b(i, 2097152L, (String)localObject4, str, (m)localObject1, (byte)0));
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      localObject1 = new StringBuilder("[query] isPreload=").append(paramBoolean).append(" mid=").append((String)localObject2).append(" stage=[").append((String)((o)localObject3).second).append(':').append(localLinkedList.size()).append("] target").append(b.a(localapc)).append(" details=").append(localLinkedList).append(", allSpec=");
+      parambvf = parambvf.spec;
+      p.g(parambvf, "media.spec");
+      localObject2 = (Iterable)parambvf;
+      parambvf = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
+      localObject2 = ((Iterable)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (apc)((Iterator)localObject2).next();
+        p.g(localObject3, "it");
+        parambvf.add(b.a((apc)localObject3));
+      }
+      i = 1;
+      break;
+      localObject1 = null;
+      break label160;
+      label723:
+      j = 0;
+      break label200;
+      label729:
+      l = 2097152L;
+      break label348;
+      label737:
+      f = 0.0F;
+      break label443;
+      label742:
+      this.sls = false;
+    }
+    ad.i("Finder.MediaPreloadModel", (List)parambvf);
+    parambvf = (List)localLinkedList;
+    AppMethodBeat.o(203053);
+    return parambvf;
+  }
+  
+  public final void a(aqn paramaqn, HashMap<Long, FinderObject> paramHashMap)
+  {
+    AppMethodBeat.i(203052);
+    p.h(paramaqn, "info");
+    p.h(paramHashMap, "feedSet");
+    this.slp = paramaqn.slp;
+    Object localObject1 = paramaqn.GoF;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      this.slf = ((aqm)localObject1).slf;
+      this.slg = ((aqm)localObject1).slg;
+      this.slh = d.h.a.co(((aqm)localObject1).GoB * 100.0F);
+      this.slo = ((aqm)localObject1).GoA;
+      this.sli = ((aqm)localObject1).GoC;
+      this.slj = h.lp(1, ((aqm)localObject1).GoD);
+      this.slk = h.lp(1, ((aqm)localObject1).slk);
+      this.sll = ((aqm)localObject1).sll;
+      this.slm = d.h.a.co(((aqm)localObject1).GoE * 100.0F);
+      this.sln = ((aqm)localObject1).sln;
+      this.sle = false;
+      localObject1 = paramaqn.GoG;
+      p.g(localObject1, "info.objectInfos");
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (aqo)((Iterator)localObject1).next();
+        Object localObject3 = (FinderObject)paramHashMap.get(Long.valueOf(((aqo)localObject2).dtq));
+        if (localObject3 != null)
+        {
+          localObject3 = ((FinderObject)localObject3).objectDesc;
+          if (localObject3 != null)
+          {
+            localObject3 = ((FinderObjectDesc)localObject3).media;
+            if (localObject3 != null)
+            {
+              localObject3 = ((Iterable)localObject3).iterator();
+              while (((Iterator)localObject3).hasNext())
+              {
+                Object localObject4 = (FinderMedia)((Iterator)localObject3).next();
+                Map localMap = (Map)this.slq;
+                p.g(localObject4, "it");
+                localObject4 = i.a((FinderMedia)localObject4).mediaId;
+                p.g(localObject4, "it.toLocal().mediaId");
+                p.g(localObject2, "hot");
+                localMap.put(localObject4, localObject2);
               }
             }
           }
         }
       }
     }
-    label708:
-    for (int j = 1;; j = 0)
+    ad.i("Finder.MediaPreloadModel", "[updatePreloadInfo]\nisSupportH265=" + slt + '\n' + "[prev:next]Count=" + this.slf + ':' + this.slg + '\n' + "maxPreloadPercent=" + this.slh + '\n' + "maxPreloadBitRate=" + bt.sy(this.slo) + "maxPreloadBytes=" + bt.sy(this.sli) + '\n' + "maxPreloadTaskCount=" + this.slj + '\n' + "[preload:play]ConcurrentCount=" + this.slk + ':' + this.sll + '\n' + "[startPreloadSecs:startPreloadPercent]=" + this.sln + ':' + this.slm + '\n' + "isOpenMultiBitRateDownload=" + this.slr + '\n' + "hotFeed=" + this.slq.size() + '\n');
+    if (paramaqn != null)
     {
-      if (j == 0)
-      {
-        localObject4 = localalw.drn;
-        str = ((w)localObject1).field_fileFormat;
-        k.g(str, "it.field_fileFormat");
-        if (((String)localObject4).compareTo(str) > 0)
-        {
-          ac.w("Finder.MediaPreloadModel", "[query] continue to use high fileFormat, [" + parambqs.mediaId + "] change[" + localalw.drn + "->" + ((w)localObject1).field_fileFormat + ']');
-          localalw.drn = ((w)localObject1).field_fileFormat;
-        }
-      }
-      if (!bool) {
-        localalw.drn = m.rEd.detail;
-      }
-      localObject1 = new com.tencent.mm.plugin.finder.loader.l(parambqs, a.a.adK(localalw.drn), i, null, 8);
-      long l = localalw.EFo;
-      localObject4 = localalw.drn;
-      k.g(localObject4, "targetSpec.fileFormat");
-      String str = localalw.rvP;
-      k.g(str, "targetSpec.codingFormat");
-      localLinkedList.add(new a.b(1, l, (String)localObject4, str, (com.tencent.mm.plugin.finder.loader.l)localObject1, (byte)0));
-      if (bool)
-      {
-        localObject4 = (anc)this.rvM.get(localObject2);
-        if (localObject4 != null)
-        {
-          float f = this.rvH;
-          i = Math.min(100, d.h.a.cj(((anc)localObject4).EGk * f));
-          l = localalw.EFo;
-          localObject4 = localalw.drn;
-          k.g(localObject4, "targetSpec.fileFormat");
-          str = localalw.rvP;
-          k.g(str, "targetSpec.codingFormat");
-          localLinkedList.add(new a.b(i, l, (String)localObject4, str, (com.tencent.mm.plugin.finder.loader.l)localObject1, (byte)0));
-        }
-      }
-      localObject1 = new StringBuilder("[query] ").append(paramBoolean).append(" mid=").append((String)localObject2).append(" maxBitRate=").append(this.rvK).append(' ').append((String)((o)localObject3).second).append(" stage=").append(localLinkedList.size()).append(' ').append(b.a(localalw)).append(", ");
-      parambqs = parambqs.spec;
-      k.g(parambqs, "media.spec");
-      localObject2 = (Iterable)parambqs;
-      parambqs = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
-      localObject2 = ((Iterable)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (alw)((Iterator)localObject2).next();
-        k.g(localObject3, "it");
-        parambqs.add(b.a((alw)localObject3));
-      }
-      i = 1;
-      break;
-      localObject1 = null;
-      break label163;
-    }
-    ac.i("Finder.MediaPreloadModel", (List)parambqs);
-    parambqs = (List)localLinkedList;
-    AppMethodBeat.o(202632);
-    return parambqs;
-  }
-  
-  public final void a(anb paramanb, HashMap<Long, BaseFinderFeed> paramHashMap)
-  {
-    AppMethodBeat.i(202631);
-    k.h(paramanb, "info");
-    k.h(paramHashMap, "feedSet");
-    this.rvL = paramanb.rvL;
-    Object localObject1 = paramanb.EGi;
-    Object localObject2;
-    if (localObject1 == null)
-    {
-      localObject2 = new a.c();
-      localObject1 = new ana();
-      ((ana)localObject1).EGe = 0;
-      ((ana)localObject1).EGg = ((int)((a.c)localObject2).rvU);
-      ((ana)localObject1).EGf = (((a.c)localObject2).rvV / 100.0F);
-      ((ana)localObject1).rvG = ((a.c)localObject2).rvX;
-      ((ana)localObject1).rvF = ((a.c)localObject2).rvW;
-    }
-    for (;;)
-    {
-      localObject2 = this.rvD;
-      Object localObject3;
-      if (localObject2 != null)
-      {
-        this.rvF = ((a.c)localObject2).rvW;
-        this.rvG = ((a.c)localObject2).rvX;
-        this.rvH = d.h.a.cj(100.0F * ((a.c)localObject2).rvV);
-        this.rvK = ((ana)localObject1).EGe;
-        this.rvJ = ((a.c)localObject2).rvU;
-        this.rvI = ((a.c)localObject2).rvY;
-        this.rvE = false;
-        if (paramanb != null)
-        {
-          localObject2 = paramanb.toByteArray();
-          localObject3 = g.agR();
-          k.g(localObject3, "MMKernel.storage()");
-          ((e)localObject3).agA().set(ah.a.GUO, bs.cx((byte[])localObject2));
-          ac.i("Finder.MediaPreloadModel", "[storePreloadInfo] buffer size=" + bs.qz(localObject2.length));
-        }
-        localObject2 = new StringBuilder();
-        paramanb = paramanb.EGj;
-        k.g(paramanb, "info.objectInfos");
-        localObject3 = ((Iterable)paramanb).iterator();
-        if (!((Iterator)localObject3).hasNext()) {
-          break label638;
-        }
-        localObject4 = (anc)((Iterator)localObject3).next();
-        paramanb = (BaseFinderFeed)paramHashMap.get(Long.valueOf(((anc)localObject4).dig));
-        if (paramanb == null) {
-          break label535;
-        }
-      }
-      Object localObject5;
-      label535:
-      for (paramanb = paramanb.feedObject;; paramanb = null)
-      {
-        if (paramanb == null) {
-          break label540;
-        }
-        localObject5 = paramanb.getMediaList();
-        if (localObject5 == null) {
-          break label540;
-        }
-        localObject5 = ((Iterable)localObject5).iterator();
-        bqs localbqs;
-        for (int i = 0;; i = localbqs.spec.size() + i)
-        {
-          j = i;
-          if (!((Iterator)localObject5).hasNext()) {
-            break;
-          }
-          localbqs = (bqs)((Iterator)localObject5).next();
-          Map localMap = (Map)this.rvM;
-          String str = localbqs.mediaId;
-          k.g(str, "it.mediaId");
-          k.g(localObject4, "hot");
-          localMap.put(str, localObject4);
-        }
-        localObject2 = (a)this;
-        ((a)localObject2).rvF = ((ana)localObject1).rvF;
-        ((a)localObject2).rvG = ((ana)localObject1).rvG;
-        ((a)localObject2).rvH = d.h.a.cj(100.0F * ((ana)localObject1).EGf);
-        ((a)localObject2).rvK = ((ana)localObject1).EGe;
-        ((a)localObject2).rvJ = ((ana)localObject1).EGg;
-        ((a)localObject2).rvI = h.la(1, ((ana)localObject1).EGh);
-        ((a)localObject2).rvE = false;
-        break;
-      }
-      label540:
-      int j = 0;
-      Object localObject4 = ((StringBuilder)localObject2).append("feed=").append(com.tencent.mm.ac.c.pb(((anc)localObject4).dig) + " mid=");
-      if (paramanb != null)
-      {
-        paramanb = paramanb.getFeedObject();
-        if (paramanb != null) {
-          localObject5 = p.qXG;
-        }
-      }
-      for (paramanb = p.a(paramanb);; paramanb = null)
-      {
-        ((StringBuilder)localObject4).append(paramanb).append(" spec=").append(j).append("\n");
-        break;
-      }
-      label638:
-      paramanb = new StringBuilder("[updatePreloadInfo]\nisSupportH265=").append(rvN).append('\n').append("prevCount=").append(this.rvF).append("->").append(((ana)localObject1).rvF).append('\n').append("nextCount=").append(this.rvG).append("->").append(((ana)localObject1).rvG).append('\n').append("maxPreloadPercent=").append(this.rvH).append("->").append(((ana)localObject1).EGf * 100.0F).append('\n').append("maxPreloadBitRate=").append(this.rvK).append("->").append(((ana)localObject1).EGe).append('\n').append("maxPreloadBytes=").append(this.rvJ).append("->").append(((ana)localObject1).EGg).append('\n').append("maxConcurrentCount=").append(this.rvI).append("->").append(((ana)localObject1).EGh).append('\n').append("isUseLocal=");
-      if (this.rvD != null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramanb = paramanb.append(bool).append('\n').append("isOpenMultiBitRateDownload=");
-        paramHashMap = com.tencent.mm.plugin.finder.storage.b.rCU;
-        paramanb = paramanb.append(com.tencent.mm.plugin.finder.storage.b.cAk()).append('\n').append("hotFeed=");
-        localObject1 = (Map)this.rvM;
-        paramHashMap = (Collection)new ArrayList(((Map)localObject1).size());
-        localObject1 = ((Map)localObject1).entrySet().iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject3 = (Map.Entry)((Iterator)localObject1).next();
-          paramHashMap.add(com.tencent.mm.ac.c.pb(((anc)((Map.Entry)localObject3).getValue()).dig) + '=' + ((anc)((Map.Entry)localObject3).getValue()).EGk);
-        }
-      }
-      ac.i("Finder.MediaPreloadModel", (List)paramHashMap + '\n' + localObject2);
-      AppMethodBeat.o(202631);
+      paramHashMap = new LinkedList((Collection)paramaqn.GoG);
+      paramaqn.GoG.clear();
+      localObject1 = paramaqn.toByteArray();
+      localObject2 = g.ajC();
+      p.g(localObject2, "MMKernel.storage()");
+      ((e)localObject2).ajl().set(al.a.IHv, bt.cE((byte[])localObject1));
+      ad.i("Finder.MediaPreloadModel", "[storePreloadInfo] buffer size=" + bt.sy(localObject1.length));
+      paramaqn.GoG.addAll((Collection)paramHashMap);
+      AppMethodBeat.o(203052);
       return;
     }
+    AppMethodBeat.o(203052);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$Detail$Companion;", "", "()V", "NIL", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$Detail;", "getNIL", "()Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$Detail;", "plugin-finder_release"})
-  public static final class b$a {}
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$Companion;", "", "()V", "CODING_H264", "", "CODING_H265", "TAG", "_2M", "", "defaultMaxPreloadTaskCount", "", "defaultNextCount", "defaultPlayConcurrentCount", "defaultPreloadConcurrentCount", "defaultPreloadMinSize", "defaultPreloadPercent", "", "defaultPrevCount", "defaultStartPreloadPercent", "defaultStartPreloadSecs", "isSupportH265", "", "getFinderMediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "fileFormat", "plugin-finder_release"})
+  public static final class a
+  {
+    public static r ahG(String paramString)
+    {
+      AppMethodBeat.i(203045);
+      if (p.i(paramString, r.syF.detail))
+      {
+        paramString = r.syF;
+        AppMethodBeat.o(203045);
+        return paramString;
+      }
+      if (p.i(paramString, r.syG.detail))
+      {
+        paramString = r.syG;
+        AppMethodBeat.o(203045);
+        return paramString;
+      }
+      if (p.i(paramString, r.syH.detail))
+      {
+        paramString = r.syH;
+        AppMethodBeat.o(203045);
+        return paramString;
+      }
+      if (p.i(paramString, r.syI.detail))
+      {
+        paramString = r.syI;
+        AppMethodBeat.o(203045);
+        return paramString;
+      }
+      if (p.i(paramString, r.syJ.detail))
+      {
+        paramString = r.syJ;
+        AppMethodBeat.o(203045);
+        return paramString;
+      }
+      if (p.i(paramString, r.syK.detail))
+      {
+        paramString = r.syK;
+        AppMethodBeat.o(203045);
+        return paramString;
+      }
+      if (p.i(paramString, r.syL.detail))
+      {
+        paramString = r.syL;
+        AppMethodBeat.o(203045);
+        return paramString;
+      }
+      if (p.i(paramString, r.syM.detail))
+      {
+        paramString = r.syM;
+        AppMethodBeat.o(203045);
+        return paramString;
+      }
+      if (p.i(paramString, r.syN.detail))
+      {
+        paramString = r.syN;
+        AppMethodBeat.o(203045);
+        return paramString;
+      }
+      if (p.i(paramString, r.syO.detail))
+      {
+        paramString = r.syO;
+        AppMethodBeat.o(203045);
+        return paramString;
+      }
+      if (p.i(paramString, r.syP.detail))
+      {
+        paramString = r.syP;
+        AppMethodBeat.o(203045);
+        return paramString;
+      }
+      paramString = r.syQ;
+      AppMethodBeat.o(203045);
+      return paramString;
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$Detail;", "", "preloadPercent", "", "preloadMinSize", "", "fileFormat", "", "codingFormat", "media", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "isLocalDefault", "", "(IJLjava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/finder/loader/FinderVideo;Z)V", "getCodingFormat", "()Ljava/lang/String;", "getFileFormat", "()Z", "getMedia", "()Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "getPreloadMinSize", "()J", "getPreloadPercent", "()I", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "other", "hashCode", "toString", "Companion", "plugin-finder_release"})
+  public static final class b
+  {
+    private static final b sly;
+    public static final a slz;
+    public final String dDf;
+    public final int fJK;
+    public final long preloadMinSize;
+    public final String slv;
+    public final m slw;
+    private final boolean slx;
+    
+    static
+    {
+      AppMethodBeat.i(203048);
+      slz = new a((byte)0);
+      sly = new b(0, 0L, "", "", new m(new bvf(), r.syQ, 0, null, 12), (byte)0);
+      AppMethodBeat.o(203048);
+    }
+    
+    private b(int paramInt, long paramLong, String paramString1, String paramString2, m paramm)
+    {
+      AppMethodBeat.i(203047);
+      this.fJK = paramInt;
+      this.preloadMinSize = paramLong;
+      this.dDf = paramString1;
+      this.slv = paramString2;
+      this.slw = paramm;
+      this.slx = false;
+      AppMethodBeat.o(203047);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(203050);
+      if (this != paramObject)
+      {
+        if ((paramObject instanceof b))
+        {
+          paramObject = (b)paramObject;
+          if ((this.fJK != paramObject.fJK) || (this.preloadMinSize != paramObject.preloadMinSize) || (!p.i(this.dDf, paramObject.dDf)) || (!p.i(this.slv, paramObject.slv)) || (!p.i(this.slw, paramObject.slw)) || (this.slx != paramObject.slx)) {}
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(203050);
+        return true;
+      }
+      AppMethodBeat.o(203050);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(203046);
+      String str = this.fJK + "%:" + this.preloadMinSize + ':' + this.dDf;
+      AppMethodBeat.o(203046);
+      return str;
+    }
+    
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$Detail$Companion;", "", "()V", "NIL", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$Detail;", "getNIL", "()Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel$Detail;", "plugin-finder_release"})
+    public static final class a {}
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
+  public static final class c<T>
+    implements Comparator<T>
+  {
+    public final int compare(T paramT1, T paramT2)
+    {
+      AppMethodBeat.i(203051);
+      int i = d.b.a.a((Comparable)Integer.valueOf(((y)paramT1).field_fileFormat.hashCode()), (Comparable)Integer.valueOf(((y)paramT2).field_fileFormat.hashCode()));
+      AppMethodBeat.o(203051);
+      return i;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.preload.model.a
  * JD-Core Version:    0.7.0.1
  */

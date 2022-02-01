@@ -1,45 +1,91 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.d;
 import d.l;
-import d.p;
-import d.p.a;
-import d.q;
+import java.util.concurrent.atomic.AtomicLong;
+import kotlinx.coroutines.internal.v;
+import kotlinx.coroutines.internal.w;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"classSimpleName", "", "", "getClassSimpleName", "(Ljava/lang/Object;)Ljava/lang/String;", "hexAddress", "getHexAddress", "toDebugString", "Lkotlin/coroutines/Continuation;", "kotlinx-coroutines-core"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"ASSERTIONS_ENABLED", "", "getASSERTIONS_ENABLED", "()Z", "COROUTINE_ID", "Ljava/util/concurrent/atomic/AtomicLong;", "getCOROUTINE_ID", "()Ljava/util/concurrent/atomic/AtomicLong;", "DEBUG", "getDEBUG", "DEBUG_PROPERTY_NAME", "", "DEBUG_PROPERTY_VALUE_AUTO", "DEBUG_PROPERTY_VALUE_OFF", "DEBUG_PROPERTY_VALUE_ON", "RECOVER_STACK_TRACES", "getRECOVER_STACK_TRACES", "STACKTRACE_RECOVERY_PROPERTY_NAME", "assert", "", "value", "Lkotlin/Function0;", "resetCoroutineId", "kotlinx-coroutines-core"})
 public final class am
 {
-  public static final String e(d<?> paramd)
+  private static final boolean ASSERTIONS_ENABLED;
+  private static final boolean DEBUG;
+  private static final boolean NIc;
+  private static final AtomicLong NId;
+  
+  static
   {
-    AppMethodBeat.i(191151);
-    if ((paramd instanceof at))
+    boolean bool2 = true;
+    AppMethodBeat.i(118233);
+    ASSERTIONS_ENABLED = af.class.desiredAssertionStatus();
+    Object localObject = v.bdj("kotlinx.coroutines.debug");
+    if (localObject == null)
     {
-      paramd = paramd.toString();
-      AppMethodBeat.o(191151);
-      return paramd;
-    }
-    try
-    {
-      Object localObject1 = p.KTg;
-      localObject1 = p.eI(paramd + '@' + Integer.toHexString(System.identityHashCode(paramd)));
-      if (p.eH(localObject1) == null)
-      {
-        paramd = (String)localObject1;
-        AppMethodBeat.o(191151);
-        return paramd;
+      bool1 = ASSERTIONS_ENABLED;
+      label29:
+      DEBUG = bool1;
+      if ((!bool1) || (!w.bdk("kotlinx.coroutines.stacktrace.recovery"))) {
+        break label210;
       }
     }
-    catch (Throwable localThrowable)
+    label210:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
+      NIc = bool1;
+      NId = new AtomicLong(0L);
+      AppMethodBeat.o(118233);
+      return;
+      switch (((String)localObject).hashCode())
+      {
+      default: 
+      case 0: 
+        label116:
+        do
+        {
+          localObject = (Throwable)new IllegalStateException(("System property 'kotlinx.coroutines.debug' has unrecognized value '" + (String)localObject + '\'').toString());
+          AppMethodBeat.o(118233);
+          throw ((Throwable)localObject);
+        } while (!((String)localObject).equals(""));
+      }
       for (;;)
       {
-        p.a locala = p.KTg;
-        Object localObject2 = p.eI(q.n(localThrowable));
-        continue;
-        localObject2 = paramd.getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(paramd));
+        bool1 = true;
+        break label29;
+        if (!((String)localObject).equals("auto")) {
+          break label116;
+        }
+        break;
+        if (!((String)localObject).equals("off")) {
+          break label116;
+        }
+        bool1 = false;
+        break label29;
+        if (!((String)localObject).equals("on")) {
+          break label116;
+        }
       }
     }
+  }
+  
+  public static final boolean getDEBUG()
+  {
+    return DEBUG;
+  }
+  
+  public static final boolean gvd()
+  {
+    return ASSERTIONS_ENABLED;
+  }
+  
+  public static final boolean gve()
+  {
+    return NIc;
+  }
+  
+  public static final AtomicLong gvf()
+  {
+    return NId;
   }
 }
 

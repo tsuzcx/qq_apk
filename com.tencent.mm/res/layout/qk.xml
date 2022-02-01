@@ -32,5 +32,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <com.tencent.mm.ui.chatting.view.AvatarImageView android:id="@id/aku" android:focusable="false" android:visibility="gone" style="@style/gn" />
+    <com.tencent.mm.ui.chatting.view.ChattingAvatarImageView android:id="@id/aku" android:focusable="false" android:visibility="gone" style="@style/gn" />
 </LinearLayout>

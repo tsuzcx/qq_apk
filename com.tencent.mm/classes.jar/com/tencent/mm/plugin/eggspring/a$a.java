@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.eggspring;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/eggspring/SpringEggRpt$Companion;", "", "()V", "RECEIVER", "", "SENDER", "TYPE_GROUP", "TYPE_SINGLE", "instance", "Lcom/tencent/mm/plugin/eggspring/SpringEggRpt;", "getInstance", "()Lcom/tencent/mm/plugin/eggspring/SpringEggRpt;", "plugin-eggspring_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/eggspring/SpringEggRpt$Companion;", "", "()V", "RECEIVER", "", "SENDER", "TYPE_GROUP", "TYPE_SINGLE", "instance", "Lcom/tencent/mm/plugin/eggspring/SpringEggRpt;", "getInstance", "()Lcom/tencent/mm/plugin/eggspring/SpringEggRpt;", "plugin-eggspring_release"})
 public final class a$a {}
 
 

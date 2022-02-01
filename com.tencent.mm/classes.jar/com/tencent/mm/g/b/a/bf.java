@@ -6,113 +6,91 @@ import com.tencent.mm.plugin.report.a;
 public final class bf
   extends a
 {
-  private String dDw;
-  private long dHN;
-  private long dHO;
-  private long dHP;
-  private long dHR;
-  private String dLA;
-  private long dLX;
+  private String dSb;
+  private String dXz;
+  private long dYD;
+  private long dYE;
+  private long dYF;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(184183);
+    AppMethodBeat.i(209167);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dDw);
+    ((StringBuffer)localObject).append(this.dSb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dLA);
+    ((StringBuffer)localObject).append(this.dYD);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHR);
+    ((StringBuffer)localObject).append(this.dYE);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHN);
+    ((StringBuffer)localObject).append(this.dYF);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHO);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHP);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dLX);
+    ((StringBuffer)localObject).append(this.dXz);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(184183);
+    awz((String)localObject);
+    AppMethodBeat.o(209167);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(184184);
+    AppMethodBeat.i(209168);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("sessionid:").append(this.dDw);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("feedid:").append(this.dLA);
+    ((StringBuffer)localObject).append("Type:").append(this.dYD);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("scene:").append(this.dHR);
+    ((StringBuffer)localObject).append("IsOverlap:").append(this.dYE);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedLikeCount:").append(this.dHN);
+    ((StringBuffer)localObject).append("OverlapCount:").append(this.dYF);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedCommentCount:").append(this.dHO);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedFriLikeCount:").append(this.dHP);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RoleBeforeSwitch:").append(this.dLX);
+    ((StringBuffer)localObject).append("feedid:").append(this.dXz);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(184184);
+    AppMethodBeat.o(209168);
     return localObject;
   }
   
-  public final bf fm(long paramLong)
+  public final bf fb(long paramLong)
   {
-    this.dHR = paramLong;
+    this.dYD = paramLong;
     return this;
   }
   
-  public final bf fn(long paramLong)
+  public final bf fc(long paramLong)
   {
-    this.dHN = paramLong;
+    this.dYE = paramLong;
     return this;
   }
   
-  public final bf fo(long paramLong)
+  public final bf fd(long paramLong)
   {
-    this.dHO = paramLong;
-    return this;
-  }
-  
-  public final bf fp(long paramLong)
-  {
-    this.dHP = paramLong;
-    return this;
-  }
-  
-  public final bf fq(long paramLong)
-  {
-    this.dLX = paramLong;
+    this.dYF = paramLong;
     return this;
   }
   
   public final int getId()
   {
-    return 19387;
+    return 19946;
   }
   
-  public final bf iZ(String paramString)
+  public final bf jy(String paramString)
   {
-    AppMethodBeat.i(184181);
-    this.dDw = t("sessionid", paramString, true);
-    AppMethodBeat.o(184181);
+    AppMethodBeat.i(209165);
+    this.dSb = t("SessionId", paramString, true);
+    AppMethodBeat.o(209165);
     return this;
   }
   
-  public final bf ja(String paramString)
+  public final bf jz(String paramString)
   {
-    AppMethodBeat.i(184182);
-    this.dLA = t("feedid", paramString, true);
-    AppMethodBeat.o(184182);
+    AppMethodBeat.i(209166);
+    this.dXz = t("feedid", paramString, true);
+    AppMethodBeat.o(209166);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.bf
  * JD-Core Version:    0.7.0.1
  */

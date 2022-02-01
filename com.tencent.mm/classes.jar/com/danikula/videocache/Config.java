@@ -26,10 +26,10 @@ class Config
   
   File generateCacheFile(String paramString)
   {
-    AppMethodBeat.i(192471);
+    AppMethodBeat.i(215818);
     paramString = this.fileNameGenerator.generate(paramString);
     paramString = new File(this.cacheRoot, paramString);
-    AppMethodBeat.o(192471);
+    AppMethodBeat.o(215818);
     return paramString;
   }
 }

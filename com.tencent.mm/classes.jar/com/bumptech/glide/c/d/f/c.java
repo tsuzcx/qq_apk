@@ -11,15 +11,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   implements e<Drawable, byte[]>
 {
-  private final com.bumptech.glide.c.b.a.e aAt;
-  private final e<Bitmap, byte[]> aKx;
-  private final e<com.bumptech.glide.c.d.e.c, byte[]> aKy;
+  private final com.bumptech.glide.c.b.a.e aCk;
+  private final e<Bitmap, byte[]> aMo;
+  private final e<com.bumptech.glide.c.d.e.c, byte[]> aMp;
   
   public c(com.bumptech.glide.c.b.a.e parame, e<Bitmap, byte[]> parame1, e<com.bumptech.glide.c.d.e.c, byte[]> parame2)
   {
-    this.aAt = parame;
-    this.aKx = parame1;
-    this.aKy = parame2;
+    this.aCk = parame;
+    this.aMo = parame1;
+    this.aMp = parame2;
   }
   
   public final u<byte[]> a(u<Drawable> paramu, j paramj)
@@ -28,13 +28,13 @@ public final class c
     Drawable localDrawable = (Drawable)paramu.get();
     if ((localDrawable instanceof BitmapDrawable))
     {
-      paramu = this.aKx.a(d.a(((BitmapDrawable)localDrawable).getBitmap(), this.aAt), paramj);
+      paramu = this.aMo.a(d.a(((BitmapDrawable)localDrawable).getBitmap(), this.aCk), paramj);
       AppMethodBeat.o(77532);
       return paramu;
     }
     if ((localDrawable instanceof com.bumptech.glide.c.d.e.c))
     {
-      paramu = this.aKy.a(paramu, paramj);
+      paramu = this.aMp.a(paramu, paramj);
       AppMethodBeat.o(77532);
       return paramu;
     }

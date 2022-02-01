@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.wxcredit;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
-  implements aw
+  implements ax
 {
   static
   {
@@ -31,7 +31,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a
  * JD-Core Version:    0.7.0.1
  */

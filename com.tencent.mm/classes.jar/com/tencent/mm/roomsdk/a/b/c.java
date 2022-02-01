@@ -6,16 +6,56 @@ import java.util.List;
 public abstract class c
   implements a<c>
 {
-  public String DQh = "";
+  public String Fvv = "";
   public String chatroomName = null;
-  public int dni = 0;
-  public List<String> dom = new LinkedList();
-  public List<String> dop = new LinkedList();
-  public List<String> dor = new LinkedList();
-  public List<String> dos = new LinkedList();
-  public List<String> fsi = new LinkedList();
-  public List<String> fsj = new LinkedList();
-  public List<String> fsk = new LinkedList();
+  public List<String> dAa = new LinkedList();
+  public List<String> dAd = new LinkedList();
+  public List<String> dAf = new LinkedList();
+  public List<String> dAg = new LinkedList();
+  public int dyW = 0;
+  public List<String> fKI = new LinkedList();
+  public List<String> fKJ = new LinkedList();
+  public List<String> fKK = new LinkedList();
+  
+  public final List<String> fid()
+  {
+    return this.dAd;
+  }
+  
+  public final List<String> fie()
+  {
+    return this.fKJ;
+  }
+  
+  public final List<String> fif()
+  {
+    return this.dAf;
+  }
+  
+  public final List<String> fig()
+  {
+    return this.dAg;
+  }
+  
+  public final List<String> fih()
+  {
+    return this.fKK;
+  }
+  
+  public final List<String> fii()
+  {
+    return this.fKI;
+  }
+  
+  public final String fij()
+  {
+    return this.chatroomName;
+  }
+  
+  public final int fik()
+  {
+    return this.dyW;
+  }
 }
 
 

@@ -16,7 +16,7 @@ public final class a
   public final boolean a(Context paramContext, final String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(121281);
-    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().aAJ())
+    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDF().aDM())
     {
       AppMethodBeat.o(121281);
       return true;
@@ -119,7 +119,7 @@ public final class a
         default: 
           break;
         case 0: 
-          ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().ey(true);
+          ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDF().eA(true);
           break;
           if (!paramArrayOfString.equals("-or")) {
             break label288;
@@ -137,9 +137,9 @@ public final class a
           i = 2;
         }
       }
-      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().ey(false);
+      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDF().eA(false);
       continue;
-      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().cA(paramContext);
+      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDF().cx(paramContext);
     }
   }
   

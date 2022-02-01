@@ -4,12 +4,12 @@ import android.view.ViewGroup;
 
 public final class o
 {
-  private final ViewGroup NX;
-  public int NY;
+  private final ViewGroup PO;
+  public int PP;
   
   public o(ViewGroup paramViewGroup)
   {
-    this.NX = paramViewGroup;
+    this.PO = paramViewGroup;
   }
 }
 

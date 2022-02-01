@@ -1,39 +1,39 @@
 package com.tencent.mm.emoji.decode;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/decode/FramePicker;", "", "frameCount", "", "(I)V", "TAG", "", "allFrameValid", "", "getAllFrameValid", "()Z", "setAllFrameValid", "(Z)V", "getFrameCount", "()I", "<set-?>", "frameSum", "getFrameSum", "frameTimeList", "", "getFrameTimeList", "()[I", "findFrameIndex", "time", "setFrameTime", "", "index", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/decode/FramePicker;", "", "frameCount", "", "(I)V", "TAG", "", "allFrameValid", "", "getAllFrameValid", "()Z", "setAllFrameValid", "(Z)V", "getFrameCount", "()I", "<set-?>", "frameSum", "getFrameSum", "frameTimeList", "", "getFrameTimeList", "()[I", "findFrameIndex", "time", "setFrameTime", "", "index", "plugin-emojisdk_release"})
 public final class c
 {
   private final String TAG;
-  private final int[] fOC;
-  boolean fOD;
-  private int fOE;
   private final int frameCount;
+  private final int[] gic;
+  boolean gid;
+  private int gie;
   
   public c(int paramInt)
   {
-    AppMethodBeat.i(209815);
+    AppMethodBeat.i(218934);
     this.frameCount = paramInt;
     this.TAG = "MicroMsg.FramePicker";
-    this.fOC = new int[this.frameCount];
-    AppMethodBeat.o(209815);
+    this.gic = new int[this.frameCount];
+    AppMethodBeat.o(218934);
   }
   
-  public final void cu(int paramInt1, int paramInt2)
+  public final void cw(int paramInt1, int paramInt2)
   {
     boolean bool = false;
-    AppMethodBeat.i(209814);
+    AppMethodBeat.i(218933);
     int i = this.frameCount;
     if ((paramInt1 < 0) || (i <= paramInt1)) {
-      ac.i(this.TAG, "setFrameTime: invalid index ".concat(String.valueOf(paramInt1)));
+      ad.i(this.TAG, "setFrameTime: invalid index ".concat(String.valueOf(paramInt1)));
     }
-    this.fOE -= this.fOC[paramInt1];
-    this.fOC[paramInt1] = paramInt2;
-    this.fOE += this.fOC[paramInt1];
-    int[] arrayOfInt = this.fOC;
+    this.gie -= this.gic[paramInt1];
+    this.gic[paramInt1] = paramInt2;
+    this.gie += this.gic[paramInt1];
+    int[] arrayOfInt = this.gic;
     i = arrayOfInt.length;
     paramInt1 = 0;
     if (paramInt1 < i) {
@@ -48,8 +48,8 @@ public final class c
     }
     for (;;)
     {
-      this.fOD = bool;
-      AppMethodBeat.o(209814);
+      this.gid = bool;
+      AppMethodBeat.o(218933);
       return;
       paramInt2 = 0;
       break label101;
@@ -60,18 +60,18 @@ public final class c
     }
   }
   
-  public final int lv(int paramInt)
+  public final int lU(int paramInt)
   {
     int k = -1;
     if (this.frameCount <= 0) {}
-    while ((!this.fOD) && (paramInt > this.fOE)) {
+    while ((!this.gid) && (paramInt > this.gie)) {
       return k;
     }
     int i = paramInt;
-    if (this.fOD) {
-      i = paramInt % this.fOE;
+    if (this.gid) {
+      i = paramInt % this.gie;
     }
-    int j = this.fOC[0];
+    int j = this.gic[0];
     paramInt = 0;
     for (;;)
     {
@@ -80,13 +80,13 @@ public final class c
         break;
       }
       paramInt += 1;
-      j += this.fOC[paramInt];
+      j += this.gic[paramInt];
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.decode.c
  * JD-Core Version:    0.7.0.1
  */

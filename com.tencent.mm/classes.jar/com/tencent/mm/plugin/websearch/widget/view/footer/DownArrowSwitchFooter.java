@@ -11,29 +11,30 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.aw.a.a.c;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.z;
 
 public class DownArrowSwitchFooter
   extends LinearLayout
   implements a
 {
-  private c CbH;
-  private TextView Ccp;
-  private View Ccq;
-  private a.a Ccs;
+  private c DEF;
+  private TextView DFo;
+  private View DFp;
+  private a.a DFr;
   private Context context;
-  private ImageView mmk;
+  private ImageView mMM;
   
   public DownArrowSwitchFooter(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(116752);
     c.a locala = new c.a();
-    locala.hKx = true;
-    locala.hKw = true;
-    this.CbH = locala.aFT();
+    locala.idr = true;
+    locala.idq = true;
+    this.DEF = locala.aJc();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116752);
@@ -44,9 +45,9 @@ public class DownArrowSwitchFooter
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(116753);
     paramAttributeSet = new c.a();
-    paramAttributeSet.hKx = true;
-    paramAttributeSet.hKw = true;
-    this.CbH = paramAttributeSet.aFT();
+    paramAttributeSet.idr = true;
+    paramAttributeSet.idq = true;
+    this.DEF = paramAttributeSet.aJc();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116753);
@@ -55,18 +56,22 @@ public class DownArrowSwitchFooter
   private void init()
   {
     AppMethodBeat.i(116754);
-    ViewGroup localViewGroup = (ViewGroup)z.jD(this.context).inflate(2131496111, this);
-    this.Ccq = localViewGroup.findViewById(2131299188);
-    this.Ccp = ((TextView)localViewGroup.findViewById(2131300214));
-    this.mmk = ((ImageView)localViewGroup.findViewById(2131300201));
+    ViewGroup localViewGroup = (ViewGroup)z.jO(this.context).inflate(2131496111, this);
+    this.DFp = localViewGroup.findViewById(2131299188);
+    this.DFo = ((TextView)localViewGroup.findViewById(2131300214));
+    this.mMM = ((ImageView)localViewGroup.findViewById(2131300201));
     localViewGroup.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(116751);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/footer/DownArrowSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (DownArrowSwitchFooter.a(DownArrowSwitchFooter.this) != null) {
-          DownArrowSwitchFooter.a(DownArrowSwitchFooter.this).eyj();
+          DownArrowSwitchFooter.a(DownArrowSwitchFooter.this).eNa();
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/widget/view/footer/DownArrowSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(116751);
       }
     });
@@ -76,16 +81,16 @@ public class DownArrowSwitchFooter
   public void setCallback(a.a parama)
   {
     AppMethodBeat.i(116757);
-    this.Ccs = parama;
+    this.DFr = parama;
     if (parama != null)
     {
       if (parama.getItemCount() > 1)
       {
-        this.Ccq.setVisibility(0);
+        this.DFp.setVisibility(0);
         AppMethodBeat.o(116757);
         return;
       }
-      this.Ccq.setVisibility(8);
+      this.DFp.setVisibility(8);
     }
     AppMethodBeat.o(116757);
   }
@@ -95,19 +100,19 @@ public class DownArrowSwitchFooter
     AppMethodBeat.i(116756);
     if (TextUtils.isEmpty(paramString))
     {
-      this.mmk.setVisibility(8);
+      this.mMM.setVisibility(8);
       AppMethodBeat.o(116756);
       return;
     }
-    this.mmk.setVisibility(0);
-    com.tencent.mm.av.a.a.aFG().a(paramString, this.mmk, this.CbH);
+    this.mMM.setVisibility(0);
+    com.tencent.mm.aw.a.a.aIP().a(paramString, this.mMM, this.DEF);
     AppMethodBeat.o(116756);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(116755);
-    this.Ccp.setText(paramString);
+    this.DFo.setText(paramString);
     AppMethodBeat.o(116755);
   }
 }

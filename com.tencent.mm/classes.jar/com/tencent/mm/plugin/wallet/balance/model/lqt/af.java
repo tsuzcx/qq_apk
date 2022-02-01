@@ -4,20 +4,20 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cga;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.ckz;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.d.a;
 import com.tencent.mm.wallet_core.ui.e;
 
 public final class af
 {
-  public static String To(int paramInt)
+  public static String Vh(int paramInt)
   {
     AppMethodBeat.i(68551);
-    Context localContext = ai.getContext();
+    Context localContext = aj.getContext();
     String str = "";
     switch (paramInt)
     {
@@ -38,45 +38,45 @@ public final class af
     }
   }
   
-  public static void a(final Context paramContext, cga paramcga)
+  public static void a(final Context paramContext, ckz paramckz)
   {
     AppMethodBeat.i(68552);
-    if (paramcga == null)
+    if (paramckz == null)
     {
       AppMethodBeat.o(68552);
       return;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRI(paramcga.dlQ);
-    if (!bs.isNullOrNil(paramcga.Fuh)) {
-      locala.aRP(paramcga.Fuh);
+    locala.aXG(paramckz.dxD);
+    if (!bt.isNullOrNil(paramckz.Hem)) {
+      locala.aXN(paramckz.Hem);
     }
-    if (!bs.isNullOrNil(paramcga.BhV)) {
-      locala.aRO(paramcga.BhV);
+    if (!bt.isNullOrNil(paramckz.CIj)) {
+      locala.aXM(paramckz.CIj);
     }
-    locala.yf(false);
+    locala.yR(false);
     locala.a(true, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(68550);
-        ac.i("MicroMsg.LqtUtil", "click item, type: %s", new Object[] { Integer.valueOf(this.AYm.type) });
-        if (this.AYm.type != 1)
+        ad.i("MicroMsg.LqtUtil", "click item, type: %s", new Object[] { Integer.valueOf(this.Cyv.type) });
+        if (this.Cyv.type != 1)
         {
-          if (this.AYm.type == 2)
+          if (this.Cyv.type == 2)
           {
-            e.o(paramContext, this.AYm.BnF, true);
+            e.o(paramContext, this.Cyv.CNU, true);
             AppMethodBeat.o(68550);
             return;
           }
-          if (this.AYm.type == 3) {
-            e.v(this.AYm.AZE, this.AYm.AZF, 0, 1061);
+          if (this.Cyv.type == 3) {
+            e.v(this.Cyv.CzQ, this.Cyv.CzR, 0, 1061);
           }
         }
         AppMethodBeat.o(68550);
       }
     });
-    locala.fvp().show();
+    locala.fMb().show();
     AppMethodBeat.o(68552);
   }
 }

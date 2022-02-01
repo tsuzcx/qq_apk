@@ -13,19 +13,19 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.bt;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.bu;
+import com.tencent.mm.model.bv;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMAppMgr;
 import com.tencent.mm.ui.chatting.ChattingUI;
@@ -39,18 +39,18 @@ import java.util.Map;
 public class VoiceSearchResultUI
   extends MMActivity
 {
-  private b IYG;
-  private String[] IYH;
-  private boolean IYI = false;
-  boolean IYJ = false;
-  private ListView IYt;
-  private String IYv = null;
-  int cZX = 1;
-  private int dtw = 2;
-  private TextView orL;
-  private int qvd = -1;
+  private String KPA = null;
+  private b KPL;
+  private String[] KPM;
+  private boolean KPN = false;
+  boolean KPO = false;
+  private ListView KPy;
+  private int dFx = 2;
+  int dlp = 1;
+  private TextView oVh;
+  private int reT = -1;
   
-  private static String[] X(String[] paramArrayOfString)
+  private static String[] Z(String[] paramArrayOfString)
   {
     AppMethodBeat.i(39578);
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
@@ -58,7 +58,7 @@ public class VoiceSearchResultUI
       AppMethodBeat.o(39578);
       return paramArrayOfString;
     }
-    ac.d("MicroMsg.VoiceSearchResultUI", "oldlist.length " + paramArrayOfString.length);
+    ad.d("MicroMsg.VoiceSearchResultUI", "oldlist.length " + paramArrayOfString.length);
     HashMap localHashMap = new HashMap();
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfString.length;
@@ -66,11 +66,11 @@ public class VoiceSearchResultUI
     while (i < j)
     {
       String str1 = paramArrayOfString[i];
-      String str2 = v.wk(str1);
-      ac.d("MicroMsg.VoiceSearchResultUI", "displayname ".concat(String.valueOf(str2)));
-      if ((!localHashMap.containsValue(str2)) || (!w.sQ(str1)))
+      String str2 = v.zf(str1);
+      ad.d("MicroMsg.VoiceSearchResultUI", "displayname ".concat(String.valueOf(str2)));
+      if ((!localHashMap.containsValue(str2)) || (!w.vF(str1)))
       {
-        ac.d("MicroMsg.VoiceSearchResultUI", "username ".concat(String.valueOf(str1)));
+        ad.d("MicroMsg.VoiceSearchResultUI", "username ".concat(String.valueOf(str1)));
         localHashMap.put(str2, str1);
         localArrayList.add(str1);
       }
@@ -81,53 +81,11 @@ public class VoiceSearchResultUI
     return paramArrayOfString;
   }
   
-  private void Y(String[] paramArrayOfString)
-  {
-    AppMethodBeat.i(39583);
-    ArrayList localArrayList = new ArrayList();
-    if ((paramArrayOfString != null) && (this.IYG != null))
-    {
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = paramArrayOfString[i];
-        if (this.IYG.aRD(str)) {
-          localArrayList.add(str);
-        }
-        i += 1;
-      }
-    }
-    if (localArrayList.size() == 0)
-    {
-      this.orL.setVisibility(0);
-      if (this.IYv != null) {
-        this.orL.setText(this.IYv);
-      }
-    }
-    for (;;)
-    {
-      if (this.IYG != null)
-      {
-        paramArrayOfString = this.IYG;
-        paramArrayOfString.HGx = ((String[])localArrayList.toArray(new String[localArrayList.size()]));
-        paramArrayOfString.wzP = null;
-        paramArrayOfString.cVi();
-        paramArrayOfString.rp(false);
-      }
-      AppMethodBeat.o(39583);
-      return;
-      this.orL.setText(getString(2131755195));
-      continue;
-      this.orL.setVisibility(8);
-    }
-  }
-  
-  static boolean aRE(String paramString)
+  static boolean aXC(String paramString)
   {
     AppMethodBeat.i(39582);
     Cursor[] arrayOfCursor = new Cursor[2];
-    arrayOfCursor[0] = az.ayM().hlY.b(w.hmN, null, paramString);
+    arrayOfCursor[0] = ba.aBQ().hEl.a(w.hFd, null, paramString);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     try
@@ -136,10 +94,10 @@ public class VoiceSearchResultUI
       {
         String str = arrayOfCursor[0].getString(arrayOfCursor[0].getColumnIndex("username"));
         localArrayList1.add(str);
-        if (!w.sQ(str)) {
+        if (!w.vF(str)) {
           localArrayList2.add(str);
         }
-        ac.d("MicroMsg.VoiceSearchResultUI", "block user ".concat(String.valueOf(str)));
+        ad.d("MicroMsg.VoiceSearchResultUI", "block user ".concat(String.valueOf(str)));
       }
       int i;
       int j;
@@ -147,19 +105,61 @@ public class VoiceSearchResultUI
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.VoiceSearchResultUI", localException, "", new Object[0]);
-      arrayOfCursor[1] = az.ayM().hlZ.a(paramString, "@micromsg.with.all.biz.qq.com", localArrayList1, localArrayList2);
+      ad.printErrStackTrace("MicroMsg.VoiceSearchResultUI", localException, "", new Object[0]);
+      arrayOfCursor[1] = ba.aBQ().hEm.a(paramString, "@micromsg.with.all.biz.qq.com", localArrayList1, localArrayList2);
       i = arrayOfCursor[1].getCount();
       j = arrayOfCursor[0].getCount();
       arrayOfCursor[0].close();
       arrayOfCursor[1].close();
-      ac.d("MicroMsg.VoiceSearchResultUI", "contactCount " + i + " conversationCount " + j);
+      ad.d("MicroMsg.VoiceSearchResultUI", "contactCount " + i + " conversationCount " + j);
       if (i + j <= 1)
       {
         AppMethodBeat.o(39582);
         return true;
       }
       AppMethodBeat.o(39582);
+    }
+  }
+  
+  private void aa(String[] paramArrayOfString)
+  {
+    AppMethodBeat.i(39583);
+    ArrayList localArrayList = new ArrayList();
+    if ((paramArrayOfString != null) && (this.KPL != null))
+    {
+      int j = paramArrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = paramArrayOfString[i];
+        if (this.KPL.aXB(str)) {
+          localArrayList.add(str);
+        }
+        i += 1;
+      }
+    }
+    if (localArrayList.size() == 0)
+    {
+      this.oVh.setVisibility(0);
+      if (this.KPA != null) {
+        this.oVh.setText(this.KPA);
+      }
+    }
+    for (;;)
+    {
+      if (this.KPL != null)
+      {
+        paramArrayOfString = this.KPL;
+        paramArrayOfString.Juo = ((String[])localArrayList.toArray(new String[localArrayList.size()]));
+        paramArrayOfString.xJc = null;
+        paramArrayOfString.det();
+        paramArrayOfString.rT(false);
+      }
+      AppMethodBeat.o(39583);
+      return;
+      this.oVh.setText(getString(2131755195));
+      continue;
+      this.oVh.setVisibility(8);
     }
   }
   
@@ -171,38 +171,38 @@ public class VoiceSearchResultUI
   public void initView()
   {
     AppMethodBeat.i(39577);
-    this.IYt = ((ListView)findViewById(2131306532));
-    this.orL = ((TextView)findViewById(2131299481));
-    this.IYH = getIntent().getStringArrayExtra("VoiceSearchResultUI_Resultlist");
-    this.IYv = getIntent().getStringExtra("VoiceSearchResultUI_Error");
-    this.qvd = getIntent().getIntExtra("VoiceSearchResultUI_VoiceId", -1);
-    this.cZX = getIntent().getIntExtra("VoiceSearchResultUI_ShowType", 1);
+    this.KPy = ((ListView)findViewById(2131306532));
+    this.oVh = ((TextView)findViewById(2131299481));
+    this.KPM = getIntent().getStringArrayExtra("VoiceSearchResultUI_Resultlist");
+    this.KPA = getIntent().getStringExtra("VoiceSearchResultUI_Error");
+    this.reT = getIntent().getIntExtra("VoiceSearchResultUI_VoiceId", -1);
+    this.dlp = getIntent().getIntExtra("VoiceSearchResultUI_ShowType", 1);
     int i;
     LinkedList localLinkedList;
-    if (this.cZX == 1)
+    if (this.dlp == 1)
     {
       i = 2;
-      this.dtw = i;
-      this.IYJ = getIntent().getBooleanExtra("VoiceSearchResultUI_IsVoiceControl", false);
-      ac.i("MicroMsg.VoiceSearchResultUI", "showType = %s, isVoiceControl = %s", new Object[] { Integer.valueOf(this.cZX), Boolean.valueOf(this.IYJ) });
-      this.IYG = new b(getApplicationContext(), this.cZX);
-      this.IYG.xU(false);
+      this.dFx = i;
+      this.KPO = getIntent().getBooleanExtra("VoiceSearchResultUI_IsVoiceControl", false);
+      ad.i("MicroMsg.VoiceSearchResultUI", "showType = %s, isVoiceControl = %s", new Object[] { Integer.valueOf(this.dlp), Boolean.valueOf(this.KPO) });
+      this.KPL = new b(getApplicationContext(), this.dlp);
+      this.KPL.yI(false);
       localLinkedList = new LinkedList();
-      switch (this.cZX)
+      switch (this.dlp)
       {
       case 1: 
       default: 
         label216:
-        if (this.IYG != null) {
-          this.IYG.ic(localLinkedList);
+        if (this.KPL != null) {
+          this.KPL.io(localLinkedList);
         }
-        this.IYt.setAdapter(this.IYG);
-        this.orL.setVisibility(8);
-        ac.d("MicroMsg.VoiceSearchResultUI", "voiceId  " + this.qvd);
-        if (this.cZX == 2)
+        this.KPy.setAdapter(this.KPL);
+        this.oVh.setVisibility(8);
+        ad.d("MicroMsg.VoiceSearchResultUI", "voiceId  " + this.reT);
+        if (this.dlp == 2)
         {
           setMMTitle("");
-          this.IYH = X(this.IYH);
+          this.KPM = Z(this.KPM);
         }
         break;
       }
@@ -218,7 +218,7 @@ public class VoiceSearchResultUI
           StringBuilder localStringBuilder;
           if (!VoiceSearchResultUI.a(VoiceSearchResultUI.this))
           {
-            paramAnonymousMenuItem = h.wUl;
+            paramAnonymousMenuItem = g.yhR;
             localStringBuilder = new StringBuilder().append(VoiceSearchResultUI.b(VoiceSearchResultUI.this)).append(",").append(VoiceSearchResultUI.c(VoiceSearchResultUI.this)).append(",");
             if (VoiceSearchResultUI.d(VoiceSearchResultUI.this) != null) {
               break label122;
@@ -237,208 +237,193 @@ public class VoiceSearchResultUI
           }
         }
       });
-      this.IYt.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.KPy.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(39575);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousAdapterView);
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt);
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).qY(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/voicesearch/VoiceSearchResultUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          int i;
           if (!VoiceSearchResultUI.a(VoiceSearchResultUI.this))
           {
-            paramAnonymousAdapterView = h.wUl;
+            paramAnonymousAdapterView = g.yhR;
             paramAnonymousView = new StringBuilder().append(VoiceSearchResultUI.b(VoiceSearchResultUI.this)).append(",").append(VoiceSearchResultUI.c(VoiceSearchResultUI.this)).append(",");
-            if (VoiceSearchResultUI.d(VoiceSearchResultUI.this) != null) {
-              break label143;
-            }
-          }
-          Object localObject;
-          label143:
-          for (int i = 0;; i = VoiceSearchResultUI.d(VoiceSearchResultUI.this).length)
-          {
-            paramAnonymousAdapterView.kvStat(10452, i + "," + paramAnonymousInt);
-            localObject = VoiceSearchResultUI.f(VoiceSearchResultUI.this).acz(paramAnonymousInt);
-            paramAnonymousAdapterView = VoiceSearchResultUI.this;
-            paramAnonymousView = ((av)localObject).field_username;
-            localObject = ((ai)localObject).aaS();
-            if ((paramAnonymousView != null) && (paramAnonymousView.length() > 0)) {
-              break;
-            }
-            AppMethodBeat.o(39575);
-            return;
-          }
-          ac.d("MicroMsg.VoiceSearchResultUI", "dealSelectContact ".concat(String.valueOf(paramAnonymousView)));
-          if (paramAnonymousAdapterView.cZX == 3)
-          {
-            localObject = new Intent();
-            ((Intent)localObject).putExtra("Select_Conv_User", paramAnonymousView);
-            paramAnonymousAdapterView.setResult(-1, (Intent)localObject);
-            paramAnonymousAdapterView.finish();
-            AppMethodBeat.o(39575);
-            return;
-          }
-          if ((paramAnonymousAdapterView.cZX == 1) || (w.xs(paramAnonymousView)) || (w.wH(paramAnonymousView)) || (w.sQ(paramAnonymousView)) || (w.wE(paramAnonymousView)) || (VoiceSearchResultUI.aRE((String)localObject)))
-          {
-            if (paramAnonymousAdapterView.cZX == 1)
+            if (VoiceSearchResultUI.d(VoiceSearchResultUI.this) == null)
             {
-              localObject = new Intent();
-              ((Intent)localObject).putExtra("Contact_User", paramAnonymousView);
-              if (w.wE(paramAnonymousView)) {
-                ((Intent)localObject).putExtra("Is_group_card", true);
-              }
-              if ((paramAnonymousView != null) && (paramAnonymousView.length() > 0))
-              {
-                e.a((Intent)localObject, paramAnonymousView);
-                if (paramAnonymousAdapterView.IYJ)
-                {
-                  paramAnonymousAdapterView.startActivity(ChattingUI.class, new Intent().putExtra("Chat_User", paramAnonymousView).putExtra("finish_direct", true));
-                  paramAnonymousAdapterView.finish();
-                  AppMethodBeat.o(39575);
-                  return;
-                }
-                d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", (Intent)localObject);
-              }
-              AppMethodBeat.o(39575);
-              return;
-            }
-            if (paramAnonymousAdapterView.cZX == 2)
-            {
-              if (bs.isNullOrNil(paramAnonymousView))
-              {
-                ac.e("MicroMsg.VoiceSearchResultUI", "username is null ".concat(String.valueOf(paramAnonymousView)));
-                AppMethodBeat.o(39575);
-                return;
-              }
-              if (w.wM(paramAnonymousView))
-              {
-                if (u.axR())
-                {
-                  paramAnonymousView = new Intent().putExtra("finish_direct", true);
-                  d.b(paramAnonymousAdapterView.getContext(), "tmessage", ".ui.TConversationUI", paramAnonymousView);
-                  AppMethodBeat.o(39575);
-                  return;
-                }
-                d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
-                AppMethodBeat.o(39575);
-                return;
-              }
-              if (w.wO(paramAnonymousView))
-              {
-                if (u.axO())
-                {
-                  paramAnonymousView = new Intent().putExtra("finish_direct", true);
-                  d.b(paramAnonymousAdapterView.getContext(), "qmessage", ".ui.QConversationUI", paramAnonymousView);
-                  AppMethodBeat.o(39575);
-                  return;
-                }
-                d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
-                AppMethodBeat.o(39575);
-                return;
-              }
-              if (w.wN(paramAnonymousView))
-              {
-                d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
-                AppMethodBeat.o(39575);
-                return;
-              }
-              if (w.wS(paramAnonymousView))
-              {
-                MMAppMgr.cancelNotification(paramAnonymousView);
-                d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
-                AppMethodBeat.o(39575);
-                return;
-              }
-              if (w.wK(paramAnonymousView))
-              {
-                if (u.aya())
-                {
-                  paramAnonymousAdapterView.startActivity(ChattingUI.class, new Intent().putExtra("Chat_User", paramAnonymousView).putExtra("finish_direct", true));
-                  AppMethodBeat.o(39575);
-                  return;
-                }
-                d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
-                AppMethodBeat.o(39575);
-                return;
-              }
-              if (w.wX(paramAnonymousView))
-              {
-                if (u.axU())
-                {
-                  paramAnonymousView = new Intent();
-                  paramAnonymousView.putExtra("type", 20);
-                  d.b(paramAnonymousAdapterView, "readerapp", ".ui.ReaderAppUI", paramAnonymousView);
-                  AppMethodBeat.o(39575);
-                  return;
-                }
-                d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
-                AppMethodBeat.o(39575);
-                return;
-              }
-              if (w.xf(paramAnonymousView))
-              {
-                if (u.axV())
-                {
-                  paramAnonymousView = new Intent();
-                  paramAnonymousView.putExtra("type", 11);
-                  d.b(paramAnonymousAdapterView, "readerapp", ".ui.ReaderAppUI", paramAnonymousView);
-                  AppMethodBeat.o(39575);
-                  return;
-                }
-                d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
-                AppMethodBeat.o(39575);
-                return;
-              }
-              if (w.wP(paramAnonymousView))
-              {
-                d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
-                AppMethodBeat.o(39575);
-                return;
-              }
-              if (w.wQ(paramAnonymousView))
-              {
-                if (u.axX())
-                {
-                  d.b(paramAnonymousAdapterView, "masssend", ".ui.MassSendHistoryUI", new Intent().putExtra("finish_direct", true));
-                  AppMethodBeat.o(39575);
-                  return;
-                }
-                d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
-                AppMethodBeat.o(39575);
-                return;
-              }
-              if (w.wW(paramAnonymousView))
-              {
-                if (u.axS())
-                {
-                  paramAnonymousAdapterView.startActivity(ChattingUI.class, new Intent().putExtra("Chat_User", paramAnonymousView).putExtra("finish_direct", true));
-                  AppMethodBeat.o(39575);
-                  return;
-                }
-                d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
-                AppMethodBeat.o(39575);
-                return;
-              }
-              if ((w.wU(paramAnonymousView)) || (w.wV(paramAnonymousView)) || (w.wR(paramAnonymousView)) || (w.wZ(paramAnonymousView)) || (w.xa(paramAnonymousView)) || (w.wL(paramAnonymousView)) || (w.xi(paramAnonymousView)))
-              {
-                d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
-                AppMethodBeat.o(39575);
-                return;
-              }
-              paramAnonymousAdapterView.startActivity(ChattingUI.class, new Intent().putExtra("Chat_User", paramAnonymousView).putExtra("finish_direct", true));
-              AppMethodBeat.o(39575);
+              i = 0;
+              paramAnonymousAdapterView.kvStat(10452, i + "," + paramAnonymousInt);
             }
           }
           else
           {
-            paramAnonymousView = new Intent(paramAnonymousAdapterView, SearchConversationResultUI.class);
-            paramAnonymousView.putExtra("SearchConversationResult_User", (String)localObject);
-            paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.aeD(), "com/tencent/mm/ui/voicesearch/VoiceSearchResultUI", "dealSelectContact", "(Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.lR(0));
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/ui/voicesearch/VoiceSearchResultUI", "dealSelectContact", "(Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            localObject = VoiceSearchResultUI.f(VoiceSearchResultUI.this).FC(paramAnonymousInt);
+            paramAnonymousAdapterView = VoiceSearchResultUI.this;
+            paramAnonymousView = ((aw)localObject).field_username;
+            localObject = ((am)localObject).adv();
+            if ((paramAnonymousView != null) && (paramAnonymousView.length() > 0)) {
+              break label219;
+            }
           }
-          AppMethodBeat.o(39575);
+          for (;;)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/voicesearch/VoiceSearchResultUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+            AppMethodBeat.o(39575);
+            return;
+            i = VoiceSearchResultUI.d(VoiceSearchResultUI.this).length;
+            break;
+            label219:
+            ad.d("MicroMsg.VoiceSearchResultUI", "dealSelectContact ".concat(String.valueOf(paramAnonymousView)));
+            if (paramAnonymousAdapterView.dlp == 3)
+            {
+              localObject = new Intent();
+              ((Intent)localObject).putExtra("Select_Conv_User", paramAnonymousView);
+              paramAnonymousAdapterView.setResult(-1, (Intent)localObject);
+              paramAnonymousAdapterView.finish();
+            }
+            else if ((paramAnonymousAdapterView.dlp == 1) || (w.Aq(paramAnonymousView)) || (w.zE(paramAnonymousView)) || (w.vF(paramAnonymousView)) || (w.zB(paramAnonymousView)) || (VoiceSearchResultUI.aXC((String)localObject)))
+            {
+              if (paramAnonymousAdapterView.dlp == 1)
+              {
+                localObject = new Intent();
+                ((Intent)localObject).putExtra("Contact_User", paramAnonymousView);
+                if (w.zB(paramAnonymousView)) {
+                  ((Intent)localObject).putExtra("Is_group_card", true);
+                }
+                if ((paramAnonymousView != null) && (paramAnonymousView.length() > 0))
+                {
+                  e.a((Intent)localObject, paramAnonymousView);
+                  if (paramAnonymousAdapterView.KPO)
+                  {
+                    paramAnonymousAdapterView.startActivity(ChattingUI.class, new Intent().putExtra("Chat_User", paramAnonymousView).putExtra("finish_direct", true));
+                    paramAnonymousAdapterView.finish();
+                  }
+                  else
+                  {
+                    d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", (Intent)localObject);
+                  }
+                }
+              }
+              else if (paramAnonymousAdapterView.dlp == 2)
+              {
+                if (bt.isNullOrNil(paramAnonymousView))
+                {
+                  ad.e("MicroMsg.VoiceSearchResultUI", "username is null ".concat(String.valueOf(paramAnonymousView)));
+                }
+                else if (w.zJ(paramAnonymousView))
+                {
+                  if (u.aAJ())
+                  {
+                    paramAnonymousView = new Intent().putExtra("finish_direct", true);
+                    d.b(paramAnonymousAdapterView.getContext(), "tmessage", ".ui.TConversationUI", paramAnonymousView);
+                  }
+                  else
+                  {
+                    d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
+                  }
+                }
+                else if (w.zL(paramAnonymousView))
+                {
+                  if (u.aAG())
+                  {
+                    paramAnonymousView = new Intent().putExtra("finish_direct", true);
+                    d.b(paramAnonymousAdapterView.getContext(), "qmessage", ".ui.QConversationUI", paramAnonymousView);
+                  }
+                  else
+                  {
+                    d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
+                  }
+                }
+                else if (w.zK(paramAnonymousView))
+                {
+                  d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
+                }
+                else if (w.zP(paramAnonymousView))
+                {
+                  MMAppMgr.cancelNotification(paramAnonymousView);
+                  d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
+                }
+                else if (w.zH(paramAnonymousView))
+                {
+                  if (u.aAU()) {
+                    paramAnonymousAdapterView.startActivity(ChattingUI.class, new Intent().putExtra("Chat_User", paramAnonymousView).putExtra("finish_direct", true));
+                  } else {
+                    d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
+                  }
+                }
+                else if (w.zU(paramAnonymousView))
+                {
+                  if (u.aAN())
+                  {
+                    paramAnonymousView = new Intent();
+                    paramAnonymousView.putExtra("type", 20);
+                    d.b(paramAnonymousAdapterView, "readerapp", ".ui.ReaderAppUI", paramAnonymousView);
+                  }
+                  else
+                  {
+                    d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
+                  }
+                }
+                else if (w.Ac(paramAnonymousView))
+                {
+                  if (u.aAO())
+                  {
+                    paramAnonymousView = new Intent();
+                    paramAnonymousView.putExtra("type", 11);
+                    d.b(paramAnonymousAdapterView, "readerapp", ".ui.ReaderAppUI", paramAnonymousView);
+                  }
+                  else
+                  {
+                    d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
+                  }
+                }
+                else if (w.zM(paramAnonymousView))
+                {
+                  d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
+                }
+                else if (w.zN(paramAnonymousView))
+                {
+                  if (u.aAQ()) {
+                    d.b(paramAnonymousAdapterView, "masssend", ".ui.MassSendHistoryUI", new Intent().putExtra("finish_direct", true));
+                  } else {
+                    d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
+                  }
+                }
+                else if (w.zT(paramAnonymousView))
+                {
+                  if (u.aAK()) {
+                    paramAnonymousAdapterView.startActivity(ChattingUI.class, new Intent().putExtra("Chat_User", paramAnonymousView).putExtra("finish_direct", true));
+                  } else {
+                    d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
+                  }
+                }
+                else if ((w.zR(paramAnonymousView)) || (w.zS(paramAnonymousView)) || (w.zO(paramAnonymousView)) || (w.zW(paramAnonymousView)) || (w.zX(paramAnonymousView)) || (w.zI(paramAnonymousView)) || (w.Af(paramAnonymousView)))
+                {
+                  d.b(paramAnonymousAdapterView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAnonymousView));
+                }
+                else
+                {
+                  paramAnonymousAdapterView.startActivity(ChattingUI.class, new Intent().putExtra("Chat_User", paramAnonymousView).putExtra("finish_direct", true));
+                }
+              }
+            }
+            else
+            {
+              paramAnonymousView = new Intent(paramAnonymousAdapterView, SearchConversationResultUI.class);
+              paramAnonymousView.putExtra("SearchConversationResult_User", (String)localObject);
+              paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.ahp(), "com/tencent/mm/ui/voicesearch/VoiceSearchResultUI", "dealSelectContact", "(Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.mq(0));
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/ui/voicesearch/VoiceSearchResultUI", "dealSelectContact", "(Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            }
+          }
         }
       });
-      Y(this.IYH);
+      aa(this.KPM);
       AppMethodBeat.o(39577);
       return;
       i = 1;
@@ -455,11 +440,11 @@ public class VoiceSearchResultUI
       localLinkedList.add("linkedinplugin");
       localLinkedList.add("notifymessage");
       localLinkedList.add("appbrand_notify_message");
-      i = u.axI();
+      i = u.aAy();
       if ((i & 0x1) != 0) {
         localLinkedList.add("qqmail");
       }
-      if ((!w.ayl()) || ((i & 0x2) != 0)) {
+      if ((!w.aBl()) || ((i & 0x2) != 0)) {
         localLinkedList.add("tmessage");
       }
       if ((i & 0x20) != 0) {
@@ -474,7 +459,7 @@ public class VoiceSearchResultUI
       if ((0x80000 & i) != 0) {
         localLinkedList.add("newsapp");
       }
-      if (((0x40000 & i) != 0) || (!w.ayk())) {
+      if (((0x40000 & i) != 0) || (!w.aBk())) {
         localLinkedList.add("blogapp");
       }
       if ((i & 0x10000) != 0) {
@@ -491,7 +476,7 @@ public class VoiceSearchResultUI
     AppMethodBeat.i(39576);
     super.onCreate(paramBundle);
     initView();
-    this.IYI = false;
+    this.KPN = false;
     AppMethodBeat.o(39576);
   }
   
@@ -499,7 +484,7 @@ public class VoiceSearchResultUI
   {
     AppMethodBeat.i(39579);
     super.onDestroy();
-    this.IYG.cVi();
+    this.KPL.det();
     AppMethodBeat.o(39579);
   }
   
@@ -508,21 +493,21 @@ public class VoiceSearchResultUI
     AppMethodBeat.i(39581);
     if (4 == paramInt)
     {
-      h localh;
+      g localg;
       StringBuilder localStringBuilder;
-      if (!this.IYI)
+      if (!this.KPN)
       {
-        localh = h.wUl;
-        localStringBuilder = new StringBuilder().append(this.dtw).append(",").append(this.qvd).append(",");
-        if (this.IYH != null) {
+        localg = g.yhR;
+        localStringBuilder = new StringBuilder().append(this.dFx).append(",").append(this.reT).append(",");
+        if (this.KPM != null) {
           break label115;
         }
       }
       label115:
-      for (int i = 0;; i = this.IYH.length)
+      for (int i = 0;; i = this.KPM.length)
       {
-        localh.kvStat(10452, i + ",0");
-        if (!this.IYJ) {
+        localg.kvStat(10452, i + ",0");
+        if (!this.KPO) {
           break;
         }
         moveTaskToBack(true);
@@ -540,7 +525,7 @@ public class VoiceSearchResultUI
   {
     AppMethodBeat.i(39580);
     super.onPause();
-    this.IYI = true;
+    this.KPN = true;
     AppMethodBeat.o(39580);
   }
   

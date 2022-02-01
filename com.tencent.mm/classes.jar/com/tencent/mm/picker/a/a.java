@@ -7,19 +7,19 @@ import java.util.List;
 public final class a<T>
   implements b
 {
-  private List<T> hqR;
+  private List<T> hJj;
   
   public a(List<T> paramList)
   {
-    this.hqR = paramList;
+    this.hJj = paramList;
   }
   
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(175284);
-    if ((paramInt >= 0) && (paramInt < this.hqR.size()))
+    if ((paramInt >= 0) && (paramInt < this.hJj.size()))
     {
-      Object localObject = this.hqR.get(paramInt);
+      Object localObject = this.hJj.get(paramInt);
       AppMethodBeat.o(175284);
       return localObject;
     }
@@ -30,12 +30,12 @@ public final class a<T>
   public final int getItemsCount()
   {
     AppMethodBeat.i(175286);
-    int i = this.hqR.size();
+    int i = this.hJj.size();
     AppMethodBeat.o(175286);
     return i;
   }
   
-  public final String qk(int paramInt)
+  public final String qL(int paramInt)
   {
     AppMethodBeat.i(175285);
     Object localObject2 = getItem(paramInt);

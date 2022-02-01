@@ -7,7 +7,7 @@ import com.tencent.mm.kernel.b.e;
 import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.plugin.appbrand.widget.header.HeaderContainer;
 
-@e(com.tencent.mm.plugin.appbrand.a.c.class)
+@e(com.tencent.mm.plugin.appbrand.api.c.class)
 public abstract interface d
   extends a
 {
@@ -15,13 +15,13 @@ public abstract interface d
   
   public abstract AppBrandRecentView a(Context paramContext, d.b paramb, d.a parama);
   
-  public abstract void bxV();
+  public abstract void bCb();
   
-  public abstract b bxW();
+  public abstract b bCc();
   
-  public abstract void bxX();
+  public abstract void bCd();
   
-  public abstract boolean bxY();
+  public abstract boolean bCe();
   
   public abstract HeaderContainer dU(Context paramContext);
   

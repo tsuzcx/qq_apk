@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.bottle.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.storage.bk.a;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.ca;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bq.a;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class d
-  implements aw
+  implements ax
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private bk.a hnP;
-  private b nty;
+  private bq.a hGh;
+  private b nUu;
   
   static
   {
@@ -37,24 +37,24 @@ public final class d
   public d()
   {
     AppMethodBeat.i(22649);
-    this.hnP = new bk.a()
+    this.hGh = new bq.a()
     {
-      public final void a(ap paramAnonymousap, bk paramAnonymousbk)
+      public final void a(at paramAnonymousat, bq paramAnonymousbq)
       {
         AppMethodBeat.i(22648);
-        if (paramAnonymousap == null)
+        if (paramAnonymousat == null)
         {
           AppMethodBeat.o(22648);
           return;
         }
-        if ("_USER_FOR_THROWBOTTLE_".equals(paramAnonymousap.field_username))
+        if ("_USER_FOR_THROWBOTTLE_".equals(paramAnonymousat.field_username))
         {
-          paramAnonymousap.setUsername("");
+          paramAnonymousat.setUsername("");
           AppMethodBeat.o(22648);
           return;
         }
-        if ((1 != paramAnonymousap.field_isSend) && (ai.ww(paramAnonymousap.field_username)) && (!paramAnonymousbk.afK(paramAnonymousap.field_username))) {
-          c.Te(paramAnonymousap.field_username);
+        if ((1 != paramAnonymousat.field_isSend) && (am.zs(paramAnonymousat.field_username)) && (!paramAnonymousbq.aki(paramAnonymousat.field_username))) {
+          c.WE(paramAnonymousat.field_username);
         }
         AppMethodBeat.o(22648);
       }
@@ -62,32 +62,32 @@ public final class d
     AppMethodBeat.o(22649);
   }
   
-  private static d bII()
+  private static d bMV()
   {
     AppMethodBeat.i(22650);
-    com.tencent.mm.model.az.ayG();
-    d locald2 = (d)bz.yz("plugin.bottle");
+    com.tencent.mm.model.ba.aBK();
+    d locald2 = (d)ca.By("plugin.bottle");
     d locald1 = locald2;
     if (locald2 == null)
     {
       locald1 = new d();
-      com.tencent.mm.model.az.ayG().a("plugin.bottle", locald1);
+      com.tencent.mm.model.ba.aBK().a("plugin.bottle", locald1);
     }
     AppMethodBeat.o(22650);
     return locald1;
   }
   
-  public static b bIJ()
+  public static b bMW()
   {
     AppMethodBeat.i(22651);
-    g.agP().afT();
-    if (bII().nty == null)
+    g.ajA().aiF();
+    if (bMV().nUu == null)
     {
-      localObject = bII();
-      com.tencent.mm.model.az.ayM();
-      ((d)localObject).nty = new b(com.tencent.mm.model.c.agw());
+      localObject = bMV();
+      com.tencent.mm.model.ba.aBQ();
+      ((d)localObject).nUu = new b(com.tencent.mm.model.c.getDataDB());
     }
-    Object localObject = bII().nty;
+    Object localObject = bMV().nUu;
     AppMethodBeat.o(22651);
     return localObject;
   }
@@ -102,17 +102,17 @@ public final class d
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(22653);
-    c.bIH();
-    com.tencent.mm.model.az.ayM();
-    com.tencent.mm.model.c.awG().c(this.hnP);
+    c.bMU();
+    com.tencent.mm.model.ba.aBQ();
+    com.tencent.mm.model.c.azv().c(this.hGh);
     AppMethodBeat.o(22653);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(22652);
-    com.tencent.mm.model.az.ayM();
-    com.tencent.mm.model.c.awG().d(this.hnP);
+    com.tencent.mm.model.ba.aBQ();
+    com.tencent.mm.model.c.azv().d(this.hGh);
     AppMethodBeat.o(22652);
   }
   

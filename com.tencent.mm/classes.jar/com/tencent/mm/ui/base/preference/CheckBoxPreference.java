@@ -14,13 +14,13 @@ import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 public class CheckBoxPreference
   extends Preference
 {
-  private TextView Bod;
-  private int Boe;
-  private String Bof;
-  private int Bog;
-  public boolean mF;
+  private TextView COs;
+  private int COt;
+  private String COu;
+  private int COv;
   private View mView;
-  private MMSwitchBtn tTm;
+  public boolean oB;
+  private MMSwitchBtn rck;
   
   public CheckBoxPreference(Context paramContext)
   {
@@ -36,36 +36,36 @@ public class CheckBoxPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142512);
-    this.mF = false;
-    this.Boe = -1;
-    this.Bof = "";
-    this.Bog = 8;
+    this.oB = false;
+    this.COt = -1;
+    this.COu = "";
+    this.COv = 8;
     setLayoutResource(2131494804);
     AppMethodBeat.o(142512);
   }
   
-  public void TD(int paramInt)
+  public void Vv(int paramInt)
   {
     AppMethodBeat.i(142517);
-    this.Bog = paramInt;
-    if (this.Bod != null) {
-      this.Bod.setVisibility(this.Bog);
+    this.COv = paramInt;
+    if (this.COs != null) {
+      this.COs.setVisibility(this.COv);
     }
     AppMethodBeat.o(142517);
   }
   
-  public void eU(String paramString, int paramInt)
+  public void fn(String paramString, int paramInt)
   {
     AppMethodBeat.i(142516);
-    this.Boe = paramInt;
-    this.Bof = paramString;
-    if (this.Bod != null)
+    this.COt = paramInt;
+    this.COu = paramString;
+    if (this.COs != null)
     {
       if (paramInt > 0) {
-        this.Bod.setBackgroundResource(this.Boe);
+        this.COs.setBackgroundResource(this.COt);
       }
-      if (!TextUtils.isEmpty(this.Bof)) {
-        this.Bod.setText(this.Bof);
+      if (!TextUtils.isEmpty(this.COu)) {
+        this.COs.setText(this.COu);
       }
     }
     AppMethodBeat.o(142516);
@@ -73,19 +73,19 @@ public class CheckBoxPreference
   
   public final boolean isChecked()
   {
-    if (this.tTm != null) {
-      return this.tTm.JaE;
+    if (this.rck != null) {
+      return this.rck.KRP;
     }
-    return this.mF;
+    return this.oB;
   }
   
   public void onBindView(View paramView)
   {
     AppMethodBeat.i(142514);
     super.onBindView(paramView);
-    aam(8);
-    this.tTm = ((MMSwitchBtn)paramView.findViewById(2131298255));
-    this.tTm.setSwitchListener(new MMSwitchBtn.a()
+    acw(8);
+    this.rck = ((MMSwitchBtn)paramView.findViewById(2131298255));
+    this.rck.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
@@ -94,16 +94,16 @@ public class CheckBoxPreference
         AppMethodBeat.o(142511);
       }
     });
-    this.tTm.setCheck(this.mF);
+    this.rck.setCheck(this.oB);
     if (!isEnabled())
     {
-      this.tTm.setEnabled(false);
+      this.rck.setEnabled(false);
       ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(2131100249));
       ((TextView)paramView.findViewById(16908304)).setTextColor(paramView.getResources().getColor(2131100249));
     }
-    this.Bod = ((TextView)paramView.findViewById(2131305883));
-    eU(this.Bof, this.Boe);
-    TD(this.Bog);
+    this.COs = ((TextView)paramView.findViewById(2131305883));
+    fn(this.COu, this.COt);
+    Vv(this.COv);
     AppMethodBeat.o(142514);
   }
   
@@ -122,16 +122,16 @@ public class CheckBoxPreference
   
   public final void setChecked(boolean paramBoolean)
   {
-    this.mF = paramBoolean;
+    this.oB = paramBoolean;
   }
   
-  public final void wT(boolean paramBoolean)
+  public final void xE(boolean paramBoolean)
   {
     AppMethodBeat.i(142515);
-    if (this.tTm != null)
+    if (this.rck != null)
     {
-      this.mF = paramBoolean;
-      this.tTm.setCheck(paramBoolean);
+      this.oB = paramBoolean;
+      this.rck.setCheck(paramBoolean);
     }
     AppMethodBeat.o(142515);
   }

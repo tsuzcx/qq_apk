@@ -5,6 +5,20 @@ import java.util.Set;
 
 public abstract interface i
 {
+  public abstract void Ah(boolean paramBoolean);
+  
+  public abstract void Ai(boolean paramBoolean);
+  
+  public abstract void Aj(boolean paramBoolean);
+  
+  public abstract void Ak(boolean paramBoolean);
+  
+  public abstract void Al(boolean paramBoolean);
+  
+  public abstract void Am(boolean paramBoolean);
+  
+  public abstract void An(boolean paramBoolean);
+  
   public abstract void a(a parama);
   
   public abstract void a(b paramb);
@@ -13,40 +27,26 @@ public abstract interface i
   
   public abstract void a(p paramp);
   
-  public abstract a gaR();
+  public abstract a gsq();
   
-  public abstract boolean gaS();
+  public abstract boolean gsr();
   
-  public abstract boolean gaT();
+  public abstract boolean gss();
   
-  public abstract Set<d.l.b.a.b.f.b> gaU();
-  
-  public abstract void n(Set<d.l.b.a.b.f.b> paramSet);
-  
-  public abstract void o(Set<? extends h> paramSet);
+  public abstract Set<d.l.b.a.b.f.b> gst();
   
   public abstract void setDebugMode(boolean paramBoolean);
   
-  public abstract void zt(boolean paramBoolean);
+  public abstract void u(Set<d.l.b.a.b.f.b> paramSet);
   
-  public abstract void zu(boolean paramBoolean);
-  
-  public abstract void zv(boolean paramBoolean);
-  
-  public abstract void zw(boolean paramBoolean);
-  
-  public abstract void zx(boolean paramBoolean);
-  
-  public abstract void zy(boolean paramBoolean);
-  
-  public abstract void zz(boolean paramBoolean);
+  public abstract void v(Set<? extends h> paramSet);
   
   public static final class a
   {
     public static boolean a(i parami)
     {
       AppMethodBeat.i(59803);
-      boolean bool = parami.gaR().LBW;
+      boolean bool = parami.gsq().NsS;
       AppMethodBeat.o(59803);
       return bool;
     }
@@ -54,7 +54,7 @@ public abstract interface i
     public static boolean b(i parami)
     {
       AppMethodBeat.i(59804);
-      boolean bool = parami.gaR().LBX;
+      boolean bool = parami.gsq().NsT;
       AppMethodBeat.o(59804);
       return bool;
     }
@@ -62,7 +62,7 @@ public abstract interface i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.i.i
  * JD-Core Version:    0.7.0.1
  */

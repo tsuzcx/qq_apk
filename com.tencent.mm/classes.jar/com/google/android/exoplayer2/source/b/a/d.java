@@ -22,61 +22,61 @@ import java.util.regex.Pattern;
 public final class d
   implements u.a<c>
 {
-  private static final Pattern boL;
-  private static final Pattern boM;
-  private static final Pattern boN;
-  private static final Pattern boO;
-  private static final Pattern boP;
-  private static final Pattern boQ;
-  private static final Pattern boR;
-  private static final Pattern boS;
-  private static final Pattern boT;
-  private static final Pattern boU;
-  private static final Pattern boV;
-  private static final Pattern boW;
-  private static final Pattern boX;
-  private static final Pattern boY;
-  private static final Pattern boZ;
-  private static final Pattern bpa;
-  private static final Pattern bpb;
-  private static final Pattern bpc;
-  private static final Pattern bpd;
-  private static final Pattern bpe;
-  private static final Pattern bpf;
-  private static final Pattern bpg;
+  private static final Pattern bzA;
+  private static final Pattern bzB;
+  private static final Pattern bzg;
+  private static final Pattern bzh;
+  private static final Pattern bzi;
+  private static final Pattern bzj;
+  private static final Pattern bzk;
+  private static final Pattern bzl;
+  private static final Pattern bzm;
+  private static final Pattern bzn;
+  private static final Pattern bzo;
+  private static final Pattern bzp;
+  private static final Pattern bzq;
+  private static final Pattern bzr;
+  private static final Pattern bzs;
+  private static final Pattern bzt;
+  private static final Pattern bzu;
+  private static final Pattern bzv;
+  private static final Pattern bzw;
+  private static final Pattern bzx;
+  private static final Pattern bzy;
+  private static final Pattern bzz;
   
   static
   {
     AppMethodBeat.i(62903);
-    boL = Pattern.compile("AVERAGE-BANDWIDTH=(\\d+)\\b");
-    boM = Pattern.compile("[^-]BANDWIDTH=(\\d+)\\b");
-    boN = Pattern.compile("CODECS=\"(.+?)\"");
-    boO = Pattern.compile("RESOLUTION=(\\d+x\\d+)");
-    boP = Pattern.compile("#EXT-X-TARGETDURATION:(\\d+)\\b");
-    boQ = Pattern.compile("#EXT-X-VERSION:(\\d+)\\b");
-    boR = Pattern.compile("#EXT-X-PLAYLIST-TYPE:(.+)\\b");
-    boS = Pattern.compile("#EXT-X-MEDIA-SEQUENCE:(\\d+)\\b");
-    boT = Pattern.compile("#EXTINF:([\\d\\.]+)\\b");
-    boU = Pattern.compile("TIME-OFFSET=(-?[\\d\\.]+)\\b");
-    boV = Pattern.compile("#EXT-X-BYTERANGE:(\\d+(?:@\\d+)?)\\b");
-    boW = Pattern.compile("BYTERANGE=\"(\\d+(?:@\\d+)?)\\b\"");
-    boX = Pattern.compile("METHOD=(NONE|AES-128)");
-    boY = Pattern.compile("URI=\"(.+?)\"");
-    boZ = Pattern.compile("IV=([^,.*]+)");
-    bpa = Pattern.compile("TYPE=(AUDIO|VIDEO|SUBTITLES|CLOSED-CAPTIONS)");
-    bpb = Pattern.compile("LANGUAGE=\"(.+?)\"");
-    bpc = Pattern.compile("NAME=\"(.+?)\"");
-    bpd = Pattern.compile("INSTREAM-ID=\"((?:CC|SERVICE)\\d+)\"");
-    bpe = aq("AUTOSELECT");
-    bpf = aq("DEFAULT");
-    bpg = aq("FORCED");
+    bzg = Pattern.compile("AVERAGE-BANDWIDTH=(\\d+)\\b");
+    bzh = Pattern.compile("[^-]BANDWIDTH=(\\d+)\\b");
+    bzi = Pattern.compile("CODECS=\"(.+?)\"");
+    bzj = Pattern.compile("RESOLUTION=(\\d+x\\d+)");
+    bzk = Pattern.compile("#EXT-X-TARGETDURATION:(\\d+)\\b");
+    bzl = Pattern.compile("#EXT-X-VERSION:(\\d+)\\b");
+    bzm = Pattern.compile("#EXT-X-PLAYLIST-TYPE:(.+)\\b");
+    bzn = Pattern.compile("#EXT-X-MEDIA-SEQUENCE:(\\d+)\\b");
+    bzo = Pattern.compile("#EXTINF:([\\d\\.]+)\\b");
+    bzp = Pattern.compile("TIME-OFFSET=(-?[\\d\\.]+)\\b");
+    bzq = Pattern.compile("#EXT-X-BYTERANGE:(\\d+(?:@\\d+)?)\\b");
+    bzr = Pattern.compile("BYTERANGE=\"(\\d+(?:@\\d+)?)\\b\"");
+    bzs = Pattern.compile("METHOD=(NONE|AES-128)");
+    bzt = Pattern.compile("URI=\"(.+?)\"");
+    bzu = Pattern.compile("IV=([^,.*]+)");
+    bzv = Pattern.compile("TYPE=(AUDIO|VIDEO|SUBTITLES|CLOSED-CAPTIONS)");
+    bzw = Pattern.compile("LANGUAGE=\"(.+?)\"");
+    bzx = Pattern.compile("NAME=\"(.+?)\"");
+    bzy = Pattern.compile("INSTREAM-ID=\"((?:CC|SERVICE)\\d+)\"");
+    bzz = bj("AUTOSELECT");
+    bzA = bj("DEFAULT");
+    bzB = bj("FORCED");
     AppMethodBeat.o(62903);
   }
   
   private static int a(BufferedReader paramBufferedReader, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(62893);
-    while ((paramInt != -1) && (Character.isWhitespace(paramInt)) && ((paramBoolean) || (!x.fb(paramInt)))) {
+    while ((paramInt != -1) && (Character.isWhitespace(paramInt)) && ((paramBoolean) || (!x.fe(paramInt)))) {
       paramInt = paramBufferedReader.read();
     }
     AppMethodBeat.o(62893);
@@ -91,7 +91,7 @@ public final class d
     return i;
   }
   
-  private static a a(d.a parama, String paramString)
+  private static a a(a parama, String paramString)
   {
     AppMethodBeat.i(62894);
     HashSet localHashSet = new HashSet();
@@ -121,22 +121,22 @@ public final class d
       {
         String str2;
         String str3;
-        if (e((String)localObject3, bpf))
+        if (e((String)localObject3, bzA))
         {
           i = 1;
-          if (!e((String)localObject3, bpg)) {
+          if (!e((String)localObject3, bzB)) {
             break label301;
           }
           k = 2;
-          if (!e((String)localObject3, bpe)) {
+          if (!e((String)localObject3, bzz)) {
             break label307;
           }
           m = 4;
           k = k | i | m;
-          localObject4 = c((String)localObject3, boY);
-          str1 = d((String)localObject3, bpc);
-          str2 = c((String)localObject3, bpb);
-          str3 = d((String)localObject3, bpa);
+          localObject4 = c((String)localObject3, bzt);
+          str1 = d((String)localObject3, bzx);
+          str2 = c((String)localObject3, bzw);
+          str3 = d((String)localObject3, bzv);
           i = -1;
           switch (str3.hashCode())
           {
@@ -184,7 +184,7 @@ public final class d
         continue;
         localArrayList3.add(new a.a((String)localObject4, Format.a(str1, "application/x-mpegURL", "text/vtt", k, str2)));
         continue;
-        localObject4 = d((String)localObject3, bpd);
+        localObject4 = d((String)localObject3, bzy);
         if (((String)localObject4).startsWith("CC")) {
           localObject3 = "application/cea-608";
         }
@@ -202,13 +202,13 @@ public final class d
       }
       else if (((String)localObject3).startsWith("#EXT-X-STREAM-INF"))
       {
-        k = a((String)localObject3, boM);
-        localObject4 = c((String)localObject3, boL);
+        k = a((String)localObject3, bzh);
+        localObject4 = c((String)localObject3, bzg);
         if (localObject4 != null) {
           k = Integer.parseInt((String)localObject4);
         }
-        localObject4 = c((String)localObject3, boN);
-        str1 = c((String)localObject3, boO);
+        localObject4 = c((String)localObject3, bzi);
+        str1 = c((String)localObject3, bzj);
         int n = j | ((String)localObject3).contains("CLOSED-CAPTIONS=NONE");
         if (str1 != null)
         {
@@ -283,14 +283,14 @@ public final class d
       if (((String)localObject).startsWith("#EXT-X-STREAM-INF"))
       {
         localLinkedList.add(localObject);
-        paramUri = a(new d.a(localLinkedList, paramInputStream), paramUri.toString());
+        paramUri = a(new a(localLinkedList, paramInputStream), paramUri.toString());
         x.closeQuietly(paramInputStream);
         AppMethodBeat.o(62891);
         return paramUri;
       }
     } while ((!((String)localObject).startsWith("#EXT-X-TARGETDURATION")) && (!((String)localObject).startsWith("#EXT-X-MEDIA-SEQUENCE")) && (!((String)localObject).startsWith("#EXTINF")) && (!((String)localObject).startsWith("#EXT-X-KEY")) && (!((String)localObject).startsWith("#EXT-X-BYTERANGE")) && (!((String)localObject).equals("#EXT-X-DISCONTINUITY")) && (!((String)localObject).equals("#EXT-X-DISCONTINUITY-SEQUENCE")) && (!((String)localObject).equals("#EXT-X-ENDLIST")));
     localLinkedList.add(localObject);
-    paramUri = b(new d.a(localLinkedList, paramInputStream), paramUri.toString());
+    paramUri = b(new a(localLinkedList, paramInputStream), paramUri.toString());
     x.closeQuietly(paramInputStream);
     AppMethodBeat.o(62891);
     return paramUri;
@@ -326,17 +326,9 @@ public final class d
       j = paramBufferedReader.read();
       i += 1;
     }
-    boolean bool = x.fb(a(paramBufferedReader, false, j));
+    boolean bool = x.fe(a(paramBufferedReader, false, j));
     AppMethodBeat.o(62892);
     return bool;
-  }
-  
-  private static Pattern aq(String paramString)
-  {
-    AppMethodBeat.i(62901);
-    paramString = Pattern.compile(paramString + "=(NO|YES)");
-    AppMethodBeat.o(62901);
-    return paramString;
   }
   
   private static double b(String paramString, Pattern paramPattern)
@@ -347,7 +339,7 @@ public final class d
     return d;
   }
   
-  private static b b(d.a parama, String paramString)
+  private static b b(a parama, String paramString)
   {
     AppMethodBeat.i(62895);
     int i = 0;
@@ -389,7 +381,7 @@ public final class d
       if (!str3.startsWith("#EXT-X-PLAYLIST-TYPE")) {
         break label198;
       }
-      localObject1 = d(str3, boR);
+      localObject1 = d(str3, bzm);
       if (!"VOD".equals(localObject1)) {
         break;
       }
@@ -406,14 +398,14 @@ public final class d
       label198:
       if (str3.startsWith("#EXT-X-START"))
       {
-        l4 = (b(str3, boU) * 1000000.0D);
+        l4 = (b(str3, bzp) * 1000000.0D);
         l3 = l8;
         break;
       }
       if (str3.startsWith("#EXT-X-MAP"))
       {
-        localObject1 = d(str3, boY);
-        localObject2 = c(str3, boW);
+        localObject1 = d(str3, bzt);
+        localObject2 = c(str3, bzr);
         if (localObject2 == null) {
           break label948;
         }
@@ -438,35 +430,35 @@ public final class d
         break;
         if (str3.startsWith("#EXT-X-TARGETDURATION"))
         {
-          l5 = a(str3, boP) * 1000000L;
+          l5 = a(str3, bzk) * 1000000L;
           l3 = l8;
           break;
         }
         if (str3.startsWith("#EXT-X-MEDIA-SEQUENCE"))
         {
-          n = a(str3, boS);
+          n = a(str3, bzn);
           j = n;
           l3 = l8;
           break;
         }
         if (str3.startsWith("#EXT-X-VERSION"))
         {
-          k = a(str3, boQ);
+          k = a(str3, bzl);
           l3 = l8;
           break;
         }
         if (str3.startsWith("#EXTINF"))
         {
-          l3 = (b(str3, boT) * 1000000.0D);
+          l3 = (b(str3, bzo) * 1000000.0D);
           break;
         }
         if (str3.startsWith("#EXT-X-KEY"))
         {
-          bool4 = "AES-128".equals(d(str3, boX));
+          bool4 = "AES-128".equals(d(str3, bzs));
           if (bool4)
           {
-            str2 = d(str3, boY);
-            str1 = c(str3, boZ);
+            str2 = d(str3, bzt);
+            str1 = c(str3, bzu);
             l3 = l8;
             break;
           }
@@ -477,7 +469,7 @@ public final class d
         }
         if (str3.startsWith("#EXT-X-BYTERANGE"))
         {
-          localObject1 = d(str3, boV).split("@");
+          localObject1 = d(str3, bzq).split("@");
           l2 = Long.parseLong(localObject1[0]);
           if (localObject1.length <= 1) {
             break label945;
@@ -507,7 +499,7 @@ public final class d
             if (l6 != 0L) {
               break;
             }
-            l6 = com.google.android.exoplayer2.b.w(x.aP(str3.substring(str3.indexOf(':') + 1))) - l7;
+            l6 = com.google.android.exoplayer2.b.w(x.bI(str3.substring(str3.indexOf(':') + 1))) - l7;
             l3 = l8;
             break;
           }
@@ -570,6 +562,14 @@ public final class d
     }
   }
   
+  private static Pattern bj(String paramString)
+  {
+    AppMethodBeat.i(62901);
+    paramString = Pattern.compile(paramString + "=(NO|YES)");
+    AppMethodBeat.o(62901);
+    return paramString;
+  }
+  
   private static String c(String paramString, Pattern paramPattern)
   {
     AppMethodBeat.i(62898);
@@ -611,6 +611,65 @@ public final class d
     }
     AppMethodBeat.o(62900);
     return false;
+  }
+  
+  static final class a
+  {
+    private final BufferedReader bzC;
+    private final Queue<String> bzD;
+    private String bzE;
+    
+    public a(Queue<String> paramQueue, BufferedReader paramBufferedReader)
+    {
+      this.bzD = paramQueue;
+      this.bzC = paramBufferedReader;
+    }
+    
+    public final boolean hasNext()
+    {
+      AppMethodBeat.i(62889);
+      if (this.bzE != null)
+      {
+        AppMethodBeat.o(62889);
+        return true;
+      }
+      if (!this.bzD.isEmpty())
+      {
+        this.bzE = ((String)this.bzD.poll());
+        AppMethodBeat.o(62889);
+        return true;
+      }
+      do
+      {
+        String str = this.bzC.readLine();
+        this.bzE = str;
+        if (str == null) {
+          break;
+        }
+        this.bzE = this.bzE.trim();
+      } while (this.bzE.isEmpty());
+      AppMethodBeat.o(62889);
+      return true;
+      AppMethodBeat.o(62889);
+      return false;
+    }
+    
+    public final String next()
+    {
+      AppMethodBeat.i(62890);
+      String str;
+      if (hasNext())
+      {
+        str = this.bzE;
+        this.bzE = null;
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(62890);
+        return str;
+        str = null;
+      }
+    }
   }
 }
 

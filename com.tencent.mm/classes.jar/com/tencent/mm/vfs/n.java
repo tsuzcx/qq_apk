@@ -1,9 +1,13 @@
 package com.tencent.mm.vfs;
 
+import android.os.StatFs;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.loader.j.b;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,146 +17,153 @@ import java.util.Set;
 
 public final class n
 {
-  private static int JtA;
-  private static int JtB;
-  private static int JtC;
-  private static int JtD;
-  private static int JtE;
-  private static int JtF;
-  private static int JtG;
-  private static int JtH;
-  private static int JtI;
-  private static ArrayList<IDKey> JtJ;
-  private static int JtK;
-  private static int JtL;
-  private static int JtM;
-  private static int JtN;
-  private static HashMap<String, Long> JtO;
-  private static HashMap<String, Long> JtP;
-  private static int JtQ;
-  private static float JtR;
-  private static float JtS;
-  private static long JtT;
-  private static long JtU;
-  private static long JtV;
-  private static long JtW;
-  private static int JtX;
-  private static int JtY;
-  private static long JtZ;
-  private static a Jtx;
-  private static int Jty;
-  private static int Jtz;
-  private static long Jua;
-  private static long Jub;
-  private static long Juc;
-  private static long Jud;
-  private static long Jue;
-  private static long Juf;
-  private static long Jug;
-  private static LinkedList<String> jHQ;
-  private static long oqI;
+  private static long LlA;
+  private static long LlB;
+  private static long LlC;
+  private static long LlD;
+  private static long LlE;
+  private static int LlF;
+  private static int LlG;
+  private static long LlH;
+  private static long LlI;
+  private static long LlJ;
+  private static long LlK;
+  private static long LlL;
+  private static long LlM;
+  private static long LlN;
+  private static long LlO;
+  private static a Lld;
+  private static int Lle;
+  private static int Llf;
+  private static int Llg;
+  private static int Llh;
+  private static int Lli;
+  private static int Llj;
+  private static int Llk;
+  private static int Lll;
+  private static int Llm;
+  private static int Lln;
+  private static int Llo;
+  private static ArrayList<IDKey> Llp;
+  private static int Llq;
+  private static int Llr;
+  private static int Lls;
+  private static int Llt;
+  private static HashMap<String, Long> Llu;
+  private static HashMap<String, Long> Llv;
+  private static int Llw;
+  private static float Llx;
+  private static int Lly;
+  private static float Llz;
+  private static LinkedList<String> kcc;
+  private static long oUd;
   
   static
   {
-    AppMethodBeat.i(206982);
-    Jty = 1401;
-    Jtz = 0;
-    JtA = 1;
-    JtB = 2;
-    JtC = 3;
-    JtD = 4;
-    JtE = 5;
-    JtF = 6;
-    JtG = 7;
-    JtH = 8;
-    JtI = 9;
-    JtJ = new ArrayList();
-    JtK = 20047;
-    JtL = 1;
-    JtM = 2;
-    JtN = 3;
-    JtO = new HashMap();
-    JtP = new HashMap();
-    jHQ = new LinkedList();
-    JtQ = 0;
-    JtR = -1.0F;
-    JtS = -1.0F;
-    JtT = 0L;
-    JtU = 0L;
-    oqI = 0L;
-    JtV = -1L;
-    JtW = -1L;
-    JtX = -1;
-    JtY = -1;
-    JtZ = -1L;
-    Jua = -1L;
-    Jub = 0L;
-    JtO.put("sns", Long.valueOf(0L));
-    JtO.put("sns_ad_landingpages", Long.valueOf(0L));
-    JtO.put("finder", Long.valueOf(0L));
-    JtO.put("brandicon", Long.valueOf(0L));
-    JtO.put("bizcache", Long.valueOf(0L));
-    JtO.put("openapi_cache", Long.valueOf(0L));
-    JtO.put("CDNTemp", Long.valueOf(0L));
-    JtO.put("vproxy", Long.valueOf(0L));
-    JtO.put("backupRecover", Long.valueOf(0L));
-    JtO.put("msgsynchronize", Long.valueOf(0L));
-    JtP.put("oneday", Long.valueOf(0L));
-    JtP.put("bizimg", Long.valueOf(0L));
-    JtP.put("openim", Long.valueOf(0L));
-    JtP.put("avatar", Long.valueOf(0L));
-    JtP.put("wallet_images", Long.valueOf(0L));
-    JtP.put("emoji", Long.valueOf(0L));
-    Juc = -1L;
-    Jud = 0L;
-    Jue = 0L;
-    Juf = -1L;
-    Jug = -1L;
-    AppMethodBeat.o(206982);
+    AppMethodBeat.i(189950);
+    Lle = 1401;
+    Llf = 0;
+    Llg = 1;
+    Llh = 2;
+    Lli = 3;
+    Llj = 4;
+    Llk = 5;
+    Lll = 6;
+    Llm = 7;
+    Lln = 8;
+    Llo = 9;
+    Llp = new ArrayList();
+    Llq = 20047;
+    Llr = 1;
+    Lls = 2;
+    Llt = 3;
+    Llu = new HashMap();
+    Llv = new HashMap();
+    kcc = new LinkedList();
+    Llw = 0;
+    Llx = -1.0F;
+    Lly = 0;
+    Llz = -1.0F;
+    LlA = 0L;
+    LlB = 0L;
+    oUd = 0L;
+    LlC = -1L;
+    LlD = -1L;
+    LlE = -1L;
+    LlF = -1;
+    LlG = -1;
+    LlH = -1L;
+    LlI = -1L;
+    LlJ = 0L;
+    Llu.put("sns", Long.valueOf(0L));
+    Llu.put("sns_ad_landingpages", Long.valueOf(0L));
+    Llu.put("finder", Long.valueOf(0L));
+    Llu.put("brandicon", Long.valueOf(0L));
+    Llu.put("bizcache", Long.valueOf(0L));
+    Llu.put("openapi_cache", Long.valueOf(0L));
+    Llu.put("CDNTemp", Long.valueOf(0L));
+    Llu.put("vproxy", Long.valueOf(0L));
+    Llu.put("backupRecover", Long.valueOf(0L));
+    Llu.put("msgsynchronize", Long.valueOf(0L));
+    Llv.put("oneday", Long.valueOf(0L));
+    Llv.put("bizimg", Long.valueOf(0L));
+    Llv.put("openim", Long.valueOf(0L));
+    Llv.put("avatar", Long.valueOf(0L));
+    Llv.put("wallet_images", Long.valueOf(0L));
+    Llv.put("emoji", Long.valueOf(0L));
+    LlK = -1L;
+    LlL = 0L;
+    LlM = 0L;
+    LlN = -1L;
+    LlO = -1L;
+    AppMethodBeat.o(189950);
   }
   
-  public static a fxY()
+  public static a fON()
   {
-    AppMethodBeat.i(206980);
-    if (Jtx == null)
+    AppMethodBeat.i(189948);
+    if (Lld == null)
     {
-      Jtx = new a((byte)0);
-      localObject = a.ghk();
-      a locala = Jtx;
-      a.d locald = ((a)localObject).Kjb;
-      ((a)localObject).Kjb = locala;
+      Lld = new a((byte)0);
+      localObject = a.gzU();
+      a locala = Lld;
+      a.d locald = ((a)localObject).OfG;
+      ((a)localObject).OfG = locala;
     }
-    Object localObject = Jtx;
-    AppMethodBeat.o(206980);
+    Object localObject = Lld;
+    AppMethodBeat.o(189948);
     return localObject;
   }
   
   public static void resetParams()
   {
-    AppMethodBeat.i(206981);
-    JtJ.clear();
-    JtO.clear();
-    JtP.clear();
-    jHQ.clear();
-    Juc = -1L;
-    Jud = 0L;
-    Jue = 0L;
-    Juf = -1L;
-    Jug = -1L;
-    JtQ = 0;
-    JtR = -1.0F;
-    JtS = -1.0F;
-    JtT = 0L;
-    JtU = 0L;
-    oqI = 0L;
-    JtV = -1L;
-    JtW = -1L;
-    JtX = -1;
-    JtY = -1;
-    JtZ = -1L;
-    Jua = -1L;
-    Jub = 0L;
-    AppMethodBeat.o(206981);
+    AppMethodBeat.i(189949);
+    Llp.clear();
+    Llu.clear();
+    Llv.clear();
+    kcc.clear();
+    LlK = -1L;
+    LlL = 0L;
+    LlM = 0L;
+    LlN = -1L;
+    LlO = -1L;
+    Llw = 0;
+    Llx = -1.0F;
+    Lly = 0;
+    Llz = -1.0F;
+    LlA = 0L;
+    LlB = 0L;
+    oUd = 0L;
+    LlC = -1L;
+    LlC = -1L;
+    LlD = -1L;
+    LlE = -1L;
+    LlF = -1;
+    LlG = -1;
+    LlH = -1L;
+    LlI = -1L;
+    LlJ = 0L;
+    AppMethodBeat.o(189949);
   }
   
   static final class a
@@ -160,23 +171,23 @@ public final class n
   {
     public final void a(String paramString, FileSystem paramFileSystem, int paramInt, Map<String, Object> paramMap)
     {
-      AppMethodBeat.i(206977);
-      ac.d("MicroMsg.VFSStatistics", "VFS statistics name:%s, fs:%s, phase:%s, params:%s", new Object[] { paramString, paramFileSystem.toString(), Integer.valueOf(paramInt), paramMap });
+      AppMethodBeat.i(189945);
+      ad.d("MicroMsg.VFSStatistics", "VFS statistics name:%s, fs:%s, phase:%s, params:%s", new Object[] { paramString, paramFileSystem.toString(), Integer.valueOf(paramInt), paramMap });
       long l;
       if ((paramFileSystem instanceof ExpireFileSystem))
       {
         if (paramInt == 3)
         {
           l = ((Long)paramMap.get("deleteSize")).longValue();
-          if (n.JtO.containsKey(paramString)) {
-            n.JtO.put(paramString, Long.valueOf(((Long)n.JtO.get(paramString)).longValue() + l));
+          if (n.Llu.containsKey(paramString)) {
+            n.Llu.put(paramString, Long.valueOf(((Long)n.Llu.get(paramString)).longValue() + l));
           }
           for (;;)
           {
-            n.BD(n.Jud + l);
-            AppMethodBeat.o(206977);
+            n.Ev(n.LlL + l);
+            AppMethodBeat.o(189945);
             return;
-            n.JtO.put(paramString, Long.valueOf(l));
+            n.Llu.put(paramString, Long.valueOf(l));
           }
         }
       }
@@ -187,35 +198,35 @@ public final class n
           switch (paramInt)
           {
           default: 
-            AppMethodBeat.o(206977);
+            AppMethodBeat.o(189945);
             return;
           case 2: 
-            n.rh(((Long)paramMap.get("totalSize")).longValue());
-            AppMethodBeat.o(206977);
+            n.Ew(((Long)paramMap.get("totalSize")).longValue());
+            AppMethodBeat.o(189945);
             return;
           }
-          if (n.GQ() < 0L)
+          if (n.Il() < 0L)
           {
-            ac.e("MicroMsg.VFSStatistics", "quotaBeginSize is not initialize");
-            n.fxZ().add(paramString);
-            AppMethodBeat.o(206977);
+            ad.e("MicroMsg.VFSStatistics", "quotaBeginSize is not initialize");
+            n.fOO().add(paramString);
+            AppMethodBeat.o(189945);
             return;
           }
-          l = n.GQ() - ((Long)paramMap.get("totalSize")).longValue();
+          l = n.Il() - ((Long)paramMap.get("totalSize")).longValue();
           if (l <= 0L)
           {
-            ac.e("MicroMsg.VFSStatistics", "deleteSize <= 0!, deleteSize:%d, quotaBeginSize:%d", new Object[] { Long.valueOf(l), Long.valueOf(n.GQ()) });
-            n.fxZ().add(paramString);
+            ad.e("MicroMsg.VFSStatistics", "deleteSize <= 0!, deleteSize:%d, quotaBeginSize:%d", new Object[] { Long.valueOf(l), Long.valueOf(n.Il()) });
+            n.fOO().add(paramString);
           }
           for (;;)
           {
-            n.Bw(n.Jue + l);
-            n.rh(-1L);
+            n.Eo(n.LlM + l);
+            n.Ew(-1L);
             break;
-            if (n.dhV().containsKey(paramString)) {
-              n.dhV().put(paramString, Long.valueOf(((Long)n.dhV().get(paramString)).longValue() + l));
+            if (n.dsi().containsKey(paramString)) {
+              n.dsi().put(paramString, Long.valueOf(((Long)n.dsi().get(paramString)).longValue() + l));
             } else {
-              n.dhV().put(paramString, Long.valueOf(l));
+              n.dsi().put(paramString, Long.valueOf(l));
             }
           }
         }
@@ -227,110 +238,123 @@ public final class n
       }
       for (;;)
       {
-        AppMethodBeat.o(206977);
+        AppMethodBeat.o(189945);
         return;
-        n.BE(System.currentTimeMillis());
-        n.BF(-1L);
-        n.BG(0L);
-        AppMethodBeat.o(206977);
+        n.Ex(System.currentTimeMillis());
+        n.Ey(-1L);
+        n.Ez(0L);
+        AppMethodBeat.o(189945);
         return;
-        if (n.brP() > 0L)
+        if (n.bvT() > 0L)
         {
-          n.BF(System.currentTimeMillis() - n.brP());
-          n.BE(-1L);
+          n.Ey(System.currentTimeMillis() - n.bvT());
+          n.Ex(-1L);
         }
-        n.adq(((Integer)paramMap.get("cleanStorageCount")).intValue());
-        n.bZ(((Float)paramMap.get("cleanRepetitionRatio")).floatValue());
-        n.ca(((Float)paramMap.get("cleanStorageRepetitionRatio")).floatValue());
-        n.Bv(((Long)paramMap.get("cleanStorageDeleteSize")).longValue());
-        n.BH(((Long)paramMap.get("cleanStorageFreeSize")).longValue());
-        n.BI(((Long)paramMap.get("deleteSize")).longValue());
-        n.BJ(((Long)paramMap.get("cleanNewExpireTime")).longValue());
-        n.BK(((Long)paramMap.get("cleanExtraCostTime")).longValue());
-        n.adr(((Integer)paramMap.get("cleanTrend")).intValue());
-        n.ads(((Integer)paramMap.get("changeSwitch")).intValue());
-        n.BG(n.Jub + n.fya());
-        n.BD(n.Jud + n.fya());
+        n.afQ(((Integer)paramMap.get("cleanStorageCount")).intValue());
+        n.ce(((Float)paramMap.get("cleanRepetitionRatio")).floatValue());
+        n.afR(((Integer)paramMap.get("cleanRepetitionRatioCount")).intValue());
+        n.cf(((Float)paramMap.get("cleanStorageRepetitionRatio")).floatValue());
+        n.EA(((Long)paramMap.get("cleanStorageDeleteSize")).longValue());
+        n.EB(((Long)paramMap.get("cleanStorageFreeSize")).longValue());
+        n.EC(((Long)paramMap.get("deleteSize")).longValue());
+        n.ED(((Long)paramMap.get("cleanOriginExpireTime")).longValue());
+        n.EE(((Long)paramMap.get("cleanNewExpireTime")).longValue());
+        n.EF(((Long)paramMap.get("cleanExtraCostTime")).longValue());
+        n.afS(((Integer)paramMap.get("cleanTrend")).intValue());
+        n.afT(((Integer)paramMap.get("changeSwitch")).intValue());
+        n.Ez(n.LlJ + n.fOP());
+        n.Ev(n.LlL + n.fOP());
       }
     }
     
-    public final void aQ(boolean paramBoolean1, boolean paramBoolean2)
+    public final void aY(boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(206979);
-      ac.i("MicroMsg.VFSStatistics", "onMaintenanceEnd");
-      n.fyc().add(new IDKey(n.fyb(), n.bWR(), 1));
-      long l2 = n.Jud + n.Jue;
-      long l1;
+      AppMethodBeat.i(189947);
+      ad.i("MicroMsg.VFSStatistics", "onMaintenanceEnd");
+      n.fOR().add(new IDKey(n.fOQ(), n.fOS(), 1));
+      long l2 = n.LlL + n.LlM;
       int i;
       if (l2 / 1024L == 0L)
       {
         l1 = 1L;
-        n.fyc().add(new IDKey(n.fyb(), n.bWS(), l1));
+        n.fOR().add(new IDKey(n.fOQ(), n.fOT(), l1));
         if (!paramBoolean1) {
           break label304;
         }
-        i = n.fyd();
-        n.fyc().add(new IDKey(n.fyb(), n.fye(), 1));
-        n.fyc().add(new IDKey(n.fyb(), n.fyf(), l1));
+        i = n.fOU();
+        n.fOR().add(new IDKey(n.fOQ(), n.dxd(), 1));
+        n.fOR().add(new IDKey(n.fOQ(), n.fOV(), l1));
       }
       StringBuilder localStringBuilder;
       for (;;)
       {
-        if (n.cPm() > 0L)
+        if (n.fPb() > 0L)
         {
-          n.BM(System.currentTimeMillis() - n.cPm());
-          n.fyc().add(new IDKey(n.fyb(), n.fyk(), n.fyl()));
+          n.EH(System.currentTimeMillis() - n.fPb());
+          n.fOR().add(new IDKey(n.fOQ(), n.fPc(), n.fPd()));
         }
-        e.wTc.b(n.fyc(), true);
+        e.ygI.b(n.fOR(), true);
         localStringBuilder = new StringBuilder();
-        localObject1 = n.JtO.keySet().iterator();
+        localObject1 = n.Llu.keySet().iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (String)((Iterator)localObject1).next();
-          ac.d("MicroMsg.VFSStatistics", "name:%s, size:%d", new Object[] { localObject2, n.JtO.get(localObject2) });
-          localStringBuilder.append((String)localObject2).append(":").append(n.JtO.get(localObject2)).append(";");
+          ad.d("MicroMsg.VFSStatistics", "name:%s, size:%d", new Object[] { localObject2, n.Llu.get(localObject2) });
+          localStringBuilder.append((String)localObject2).append(":").append(n.Llu.get(localObject2)).append(";");
         }
         l1 = l2 / 1024L;
         break;
         label304:
         if (paramBoolean2)
         {
-          i = n.dmL();
-          n.fyc().add(new IDKey(n.fyb(), n.fyg(), 1));
-          n.fyc().add(new IDKey(n.fyb(), n.fyh(), l1));
+          i = n.fOW();
+          n.fOR().add(new IDKey(n.fOQ(), n.fOX(), 1));
+          n.fOR().add(new IDKey(n.fOQ(), n.doa(), l1));
         }
         else
         {
-          i = n.fyi();
-          n.fyc().add(new IDKey(n.fyb(), n.deC(), 1));
-          n.fyc().add(new IDKey(n.fyb(), n.fyj(), l1));
+          i = n.fOY();
+          n.fOR().add(new IDKey(n.fOQ(), n.fOZ(), 1));
+          n.fOR().add(new IDKey(n.fOQ(), n.fPa(), l1));
         }
       }
-      Object localObject1 = n.dhV().keySet().iterator();
+      Object localObject1 = n.dsi().keySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        ac.d("MicroMsg.VFSStatistics", "name:%s, size:%d", new Object[] { localObject2, n.dhV().get(localObject2) });
-        localStringBuilder.append((String)localObject2).append(":").append(n.dhV().get(localObject2)).append(";");
+        ad.d("MicroMsg.VFSStatistics", "name:%s, size:%d", new Object[] { localObject2, n.dsi().get(localObject2) });
+        localStringBuilder.append((String)localObject2).append(":").append(n.dsi().get(localObject2)).append(";");
       }
       localObject1 = new StringBuilder();
-      Object localObject2 = n.fxZ().iterator();
+      Object localObject2 = n.fOO().iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((StringBuilder)localObject1).append((String)((Iterator)localObject2).next()).append(";");
       }
-      e.wTc.f(n.fym(), new Object[] { Integer.valueOf(i), Long.valueOf(n.fyl()), Long.valueOf(l2), Long.valueOf(n.Jud), Long.valueOf(n.Jue), localStringBuilder.toString(), ((StringBuilder)localObject1).toString(), Integer.valueOf(n.aZz()), Integer.valueOf((int)n.fyn()), Integer.valueOf((int)n.dth()), Long.valueOf(n.frR()), Long.valueOf(n.fyo()), Long.valueOf(n.Jub), Long.valueOf(n.fyp()), Long.valueOf(n.fyq()), Long.valueOf(n.fyr()), Integer.valueOf(n.bDq()), Integer.valueOf(n.fys()) });
-      ac.i("MicroMsg.VFSStatistics", "onMaintenanceEnd report finish code:%d, costTime:%d, deleteSize:%d, result:%s, errList:%s, storageCount:%d, repetitionRatio:%s, storageRepetitionRatio:%s, storageDeleteSize:%d, storageFreeSize:%d, vfsCleanExpireDeleteSize:%d, newExpireTime:%d, cleanExtraCostTime:%d, vfsCleanExpireCostTime:%d, cleanTrend:%d, changeSwitch:%d", new Object[] { Integer.valueOf(i), Long.valueOf(n.fyl()), Long.valueOf(l2), localStringBuilder.toString(), ((StringBuilder)localObject1).toString(), Integer.valueOf(n.aZz()), Float.valueOf(n.fyn()), Float.valueOf(n.dth()), Long.valueOf(n.frR()), Long.valueOf(n.fyo()), Long.valueOf(n.Jub), Long.valueOf(n.fyp()), Long.valueOf(n.fyq()), Long.valueOf(n.fyr()), Integer.valueOf(n.bDq()), Integer.valueOf(n.fys()) });
-      AppMethodBeat.o(206979);
+      localObject2 = g.getExternalStorageDirectory().getPath();
+      if (b.arP().equals(localObject2)) {
+        localObject2 = new StatFs((String)localObject2);
+      }
+      int j;
+      for (long l1 = ((StatFs)localObject2).getBlockSize() * ((StatFs)localObject2).getAvailableBlocks();; l1 = ((StatFs)localObject2).getAvailableBlocks() * j)
+      {
+        p.fPs();
+        e.ygI.f(n.fPe(), new Object[] { Integer.valueOf(i), Long.valueOf(n.fPd()), Long.valueOf(l2), Long.valueOf(n.LlL), Long.valueOf(n.LlM), localStringBuilder.toString(), ((StringBuilder)localObject1).toString(), Integer.valueOf(n.bcX()), Integer.valueOf((int)n.fPf()), Integer.valueOf((int)n.fPg()), Long.valueOf(n.fPh()), Long.valueOf(n.fPi()), Long.valueOf(n.LlJ), Long.valueOf(n.fPj()), Long.valueOf(n.fPk()), Long.valueOf(n.fPl()), Integer.valueOf(n.cbs()), Integer.valueOf(n.fPm()), Long.valueOf(n.fPn()), Integer.valueOf(n.evH()), Integer.valueOf(1), Long.valueOf(l1) });
+        ad.i("MicroMsg.VFSStatistics", "onMaintenanceEnd report finish code:%d, costTime:%d, deleteSize:%d, result:%s, errList:%s, storageCount:%d, repetitionRatio:%s, storageRepetitionRatio:%s, storageDeleteSize:%d, storageFreeSize:%d, vfsCleanExpireDeleteSize:%d, newExpireTime:%d, cleanExtraCostTime:%d, vfsCleanExpireCostTime:%d, cleanTrend:%d, changeSwitch:%d, originExpireTime:%d, repetitionRatioCount:%d, isVFSOpened:%d, availableSize:%d", new Object[] { Integer.valueOf(i), Long.valueOf(n.fPd()), Long.valueOf(l2), localStringBuilder.toString(), ((StringBuilder)localObject1).toString(), Integer.valueOf(n.bcX()), Float.valueOf(n.fPf()), Float.valueOf(n.fPg()), Long.valueOf(n.fPh()), Long.valueOf(n.fPi()), Long.valueOf(n.LlJ), Long.valueOf(n.fPj()), Long.valueOf(n.fPk()), Long.valueOf(n.fPl()), Integer.valueOf(n.cbs()), Integer.valueOf(n.fPm()), Long.valueOf(n.fPn()), Integer.valueOf(n.evH()), Integer.valueOf(1), Long.valueOf(l1) });
+        AppMethodBeat.o(189947);
+        return;
+        localObject2 = new StatFs(b.arP());
+        j = ((StatFs)localObject2).getBlockSize();
+      }
     }
     
-    public final void fxN()
+    public final void fOA()
     {
-      AppMethodBeat.i(206978);
-      ac.i("MicroMsg.VFSStatistics", "onMaintenanceBegin");
+      AppMethodBeat.i(189946);
+      ad.i("MicroMsg.VFSStatistics", "onMaintenanceBegin");
       n.resetParams();
-      n.BL(System.currentTimeMillis());
-      n.fyc().add(new IDKey(n.fyb(), n.bWQ(), 1));
-      AppMethodBeat.o(206978);
+      n.EG(System.currentTimeMillis());
+      n.fOR().add(new IDKey(n.fOQ(), n.cbu(), 1));
+      AppMethodBeat.o(189946);
     }
   }
 }

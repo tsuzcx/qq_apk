@@ -8,18 +8,18 @@ public final class i
   {
     AppMethodBeat.i(133870);
     Object localObject;
-    if (paramInt2 == a.baW) {
+    if (paramInt2 == a.blr) {
       localObject = new p(paramInt1, paramLong, paramInt2);
     }
     for (;;)
     {
       AppMethodBeat.o(133870);
       return localObject;
-      if (paramInt2 == a.baX) {
+      if (paramInt2 == a.bls) {
         localObject = new g(paramInt1, paramLong, paramInt2);
-      } else if (paramInt2 == a.baZ) {
+      } else if (paramInt2 == a.blu) {
         localObject = new o(paramInt1, paramLong, paramInt2);
-      } else if (paramInt2 == a.bbi) {
+      } else if (paramInt2 == a.blD) {
         localObject = new d(paramInt1, paramLong, paramInt2);
       } else {
         localObject = new a(paramInt1, paramLong, paramInt2, 0L);
@@ -29,7 +29,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.a.i
  * JD-Core Version:    0.7.0.1
  */

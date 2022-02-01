@@ -9,9 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jn;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
@@ -90,7 +87,7 @@ public final class d
       {
         AppMethodBeat.i(113757);
         paramAnonymousDialogInterface.dismiss();
-        this.omg.bSs();
+        this.oPB.bWX();
         AppMethodBeat.o(113757);
       }
     }, new DialogInterface.OnClickListener()
@@ -119,7 +116,7 @@ public final class d
         {
           AppMethodBeat.i(113754);
           paramAnonymousDialogInterface.dismiss();
-          this.omg.bOM();
+          this.oPB.bTr();
           AppMethodBeat.o(113754);
         }
       }, new DialogInterface.OnClickListener()
@@ -149,20 +146,13 @@ public final class d
       {
         AppMethodBeat.i(113759);
         paramAnonymousDialogInterface.dismiss();
-        if (this.omh) {
+        if (this.oPC) {
           paramMMActivity.finish();
         }
         AppMethodBeat.o(113759);
       }
     });
     AppMethodBeat.o(113767);
-  }
-  
-  public static void b(MMActivity paramMMActivity)
-  {
-    AppMethodBeat.i(113768);
-    h.a(paramMMActivity, paramMMActivity.getString(2131756957, new Object[] { paramMMActivity.getString(2131756800) }), paramMMActivity.getString(2131755906), new d.7(paramMMActivity), new d.8());
-    AppMethodBeat.o(113768);
   }
   
   public static void b(MMActivity paramMMActivity, String paramString, int paramInt)
@@ -185,35 +175,7 @@ public final class d
       return;
     }
     if (paramInt1 == 2131493350) {}
-    for (paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(2131756894), new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(113761);
-            paramAnonymousDialogInterface.dismiss();
-            AppMethodBeat.o(113761);
-          }
-        });; paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(2131756910), paramContext.getResources().getString(2131756894), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(113762);
-            paramAnonymousDialogInterface.dismiss();
-            paramAnonymousDialogInterface = new jn();
-            paramAnonymousDialogInterface.dlb.context = this.val$context;
-            a.GpY.l(paramAnonymousDialogInterface);
-            ac.i("MicroMsg.CardDialogHelper", "enter to cardhome");
-            AppMethodBeat.o(113762);
-          }
-        }, new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(113755);
-            paramAnonymousDialogInterface.dismiss();
-            AppMethodBeat.o(113755);
-          }
-        }))
+    for (paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(2131756894), new d.9());; paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(2131756910), paramContext.getResources().getString(2131756894), new d.10(paramContext), new d.2()))
     {
       if (paramContext != null) {
         paramContext.show();
@@ -221,6 +183,13 @@ public final class d
       AppMethodBeat.o(113769);
       return;
     }
+  }
+  
+  public static void c(MMActivity paramMMActivity)
+  {
+    AppMethodBeat.i(113768);
+    h.a(paramMMActivity, paramMMActivity.getString(2131756957, new Object[] { paramMMActivity.getString(2131756800) }), paramMMActivity.getString(2131755906), new d.7(paramMMActivity), new d.8());
+    AppMethodBeat.o(113768);
   }
   
   public static void c(MMActivity paramMMActivity, String paramString)
@@ -236,14 +205,14 @@ public final class d
   
   public static abstract interface b
   {
-    public abstract void bOM();
+    public abstract void bTr();
     
-    public abstract void bSs();
+    public abstract void bWX();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.d
  * JD-Core Version:    0.7.0.1
  */

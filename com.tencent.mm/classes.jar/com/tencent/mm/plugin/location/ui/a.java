@@ -6,8 +6,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.v;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.base.j;
 import com.tencent.mm.ui.base.j.a;
 import java.util.ArrayList;
@@ -16,14 +16,14 @@ import java.util.Iterator;
 public final class a
   extends j
 {
-  private int tYw;
-  private ArrayList<String> tYx;
+  private int vbf;
+  private ArrayList<String> vbg;
   
   public a()
   {
     AppMethodBeat.i(55794);
-    this.tYw = 8;
-    this.tYx = new ArrayList();
+    this.vbf = 8;
+    this.vbg = new ArrayList();
     AppMethodBeat.o(55794);
   }
   
@@ -33,21 +33,21 @@ public final class a
     a locala = new a();
     if (paramView == null)
     {
-      paramView = View.inflate(ai.getContext(), 2131493125, null);
-      locala.iKw = ((ImageView)paramView.findViewById(2131297006));
-      locala.tYy = ((TextView)paramView.findViewById(2131306252));
+      paramView = View.inflate(aj.getContext(), 2131493125, null);
+      locala.jdF = ((ImageView)paramView.findViewById(2131297006));
+      locala.vbh = ((TextView)paramView.findViewById(2131306252));
       paramView.setTag(locala);
     }
     for (;;)
     {
-      Object localObject = (String)this.tYx.get(paramInt);
-      a.b.c(locala.iKw, (String)localObject);
-      String str = v.wk((String)localObject);
+      Object localObject = (String)this.vbg.get(paramInt);
+      a.b.c(locala.jdF, (String)localObject);
+      String str = v.zf((String)localObject);
       localObject = str;
-      if (str.length() > this.tYw) {
-        localObject = str.subSequence(0, this.tYw + 1) + "...";
+      if (str.length() > this.vbf) {
+        localObject = str.subSequence(0, this.vbf + 1) + "...";
       }
-      locala.tYy.setText((CharSequence)localObject);
+      locala.vbh.setText((CharSequence)localObject);
       AppMethodBeat.o(55797);
       return paramView;
       locala = (a)paramView.getTag();
@@ -57,7 +57,7 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(55796);
-    int i = this.tYx.size();
+    int i = this.vbg.size();
     AppMethodBeat.o(55796);
     return i;
   }
@@ -65,7 +65,7 @@ public final class a
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(55798);
-    Object localObject = this.tYx.get(paramInt);
+    Object localObject = this.vbg.get(paramInt);
     AppMethodBeat.o(55798);
     return localObject;
   }
@@ -78,38 +78,38 @@ public final class a
   public final void setData(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(55795);
-    this.tYx.clear();
+    this.vbg.clear();
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
       String str = (String)paramArrayList.next();
-      this.tYx.add(str);
+      this.vbg.add(str);
     }
-    if (this.Hxr == null) {}
+    if (this.Jlh == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.i("MicroMsg.MMGridPaperAdapter", "notifyDataSetChange, notifier is null ? %B", new Object[] { Boolean.valueOf(bool) });
-      if (this.Hxr != null) {
+      ad.i("MicroMsg.MMGridPaperAdapter", "notifyDataSetChange, notifier is null ? %B", new Object[] { Boolean.valueOf(bool) });
+      if (this.Jlh != null) {
         break;
       }
       AppMethodBeat.o(55795);
       return;
     }
-    this.Hxr.bJU();
+    this.Jlh.bOo();
     AppMethodBeat.o(55795);
   }
   
   final class a
   {
-    ImageView iKw;
-    TextView tYy;
+    ImageView jdF;
+    TextView vbh;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.rtmp.ITXLiveBaseListener;
 import com.tencent.rtmp.TXLiveBase;
 
 public final class j
 {
-  private static boolean cho;
+  private static boolean crG;
   
-  public static void EB()
+  public static void Ga()
   {
     AppMethodBeat.i(145902);
-    if (cho)
+    if (crG)
     {
       AppMethodBeat.o(145902);
       return;
@@ -27,41 +27,41 @@ public final class j
         switch (paramAnonymousInt)
         {
         default: 
-          ac.d(paramAnonymousString1, paramAnonymousString2);
+          ad.d(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(145901);
           return;
         case 0: 
-          ac.v(paramAnonymousString1, paramAnonymousString2);
+          ad.v(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(145901);
           return;
         case 1: 
-          ac.d(paramAnonymousString1, paramAnonymousString2);
+          ad.d(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(145901);
           return;
         case 2: 
-          ac.i(paramAnonymousString1, paramAnonymousString2);
+          ad.i(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(145901);
           return;
         case 3: 
-          ac.w(paramAnonymousString1, paramAnonymousString2);
+          ad.w(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(145901);
           return;
         case 4: 
-          ac.e(paramAnonymousString1, paramAnonymousString2);
+          ad.e(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(145901);
           return;
         }
-        ac.f(paramAnonymousString1, paramAnonymousString2);
+        ad.f(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(145901);
       }
     });
-    cho = true;
+    crG = true;
     AppMethodBeat.o(145902);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.j
  * JD-Core Version:    0.7.0.1
  */

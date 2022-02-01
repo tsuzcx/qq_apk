@@ -7,13 +7,13 @@ import com.tencent.mm.modelsimple.s.a;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.j.f;
 import com.tencent.mm.protocal.j.g;
-import com.tencent.mm.protocal.protobuf.btf;
-import com.tencent.mm.protocal.protobuf.btg;
-import com.tencent.mm.protocal.protobuf.cyu;
-import com.tencent.mm.protocal.protobuf.dew;
-import com.tencent.mm.protocal.protobuf.dlb;
-import com.tencent.mm.protocal.protobuf.gq;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.bxt;
+import com.tencent.mm.protocal.protobuf.bxu;
+import com.tencent.mm.protocal.protobuf.deh;
+import com.tencent.mm.protocal.protobuf.dkj;
+import com.tencent.mm.protocal.protobuf.dqs;
+import com.tencent.mm.protocal.protobuf.gx;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -37,32 +37,32 @@ public final class e
       AppMethodBeat.o(151376);
       return null;
     }
-    if (((j.g)params.hwy.getRespObj()).DIG.FTR == null)
+    if (((j.g)params.hON.getRespObj()).FnN.HEF == null)
     {
       AppMethodBeat.o(151376);
       return null;
     }
-    Object localObject = ((j.g)params.hwy.getRespObj()).DIG.FTR.DTK;
-    if ((localObject != null) && (((cyu)localObject).FIa != null) && (((cyu)localObject).FIa.size() > 0))
+    Object localObject = ((j.g)params.hON.getRespObj()).FnN.HEF.Fze;
+    if ((localObject != null) && (((deh)localObject).HsI != null) && (((deh)localObject).HsI.size() > 0))
     {
       s.a locala = new s.a();
-      localObject = ((cyu)localObject).FIa.iterator();
+      localObject = ((deh)localObject).HsI.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        dew localdew = (dew)((Iterator)localObject).next();
-        if (localdew.wTD == 19) {
-          locala.ddJ = localdew.FOp;
-        } else if (localdew.wTD == 20) {
-          locala.hSM = localdew.FOp;
-        } else if (localdew.wTD == 21) {
-          locala.dlQ = localdew.FOp;
+        dkj localdkj = (dkj)((Iterator)localObject).next();
+        if (localdkj.yhn == 19) {
+          locala.dpf = localdkj.Hza;
+        } else if (localdkj.yhn == 20) {
+          locala.imd = localdkj.Hza;
+        } else if (localdkj.yhn == 21) {
+          locala.dxD = localdkj.Hza;
         }
       }
-      locala.hSN = paramBundle;
+      locala.ime = paramBundle;
       locala.type = 0;
-      if (!bs.isNullOrNil(locala.ddJ))
+      if (!bt.isNullOrNil(locala.dpf))
       {
-        locala.username = ((j.f)params.hwy.getReqObj()).DII.Fim.ncR;
+        locala.username = ((j.f)params.hON.getReqObj()).FnP.GRN.nDo;
         AppMethodBeat.o(151376);
         return locala;
       }
@@ -73,7 +73,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.platformtools.e
  * JD-Core Version:    0.7.0.1
  */

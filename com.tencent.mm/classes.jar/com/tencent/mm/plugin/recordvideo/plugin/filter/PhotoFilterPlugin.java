@@ -19,58 +19,60 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.t;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.x.a.a;
-import d.g.a.b;
-import d.g.b.k;
-import d.y;
+import com.tencent.mm.plugin.recordvideo.plugin.t.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.y.a.a;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "defaultWeight", "", "getDefaultWeight", "()F", "itemViews", "", "Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin$ViewHolder;", "getItemViews", "()Ljava/util/List;", "lastSelectedIndex", "", "getLastSelectedIndex", "()I", "setLastSelectedIndex", "(I)V", "progressDescTv", "Landroid/widget/TextView;", "getProgressDescTv", "()Landroid/widget/TextView;", "seekBar", "Landroid/widget/SeekBar;", "getSeekBar", "()Landroid/widget/SeekBar;", "seekBarLayout", "Landroid/view/ViewGroup;", "getSeekBarLayout", "()Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "weightMap", "", "getWeightMap", "()Ljava/util/Map;", "setWeightMap", "(Ljava/util/Map;)V", "onBackPress", "", "postFuncType", "", "index", "colorWeight", "setPreImage", "bitmap", "Landroid/graphics/Bitmap;", "setStatus", "setVisibility", "visibility", "ViewHolder", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "defaultWeight", "", "getDefaultWeight", "()F", "itemViews", "", "Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin$ViewHolder;", "getItemViews", "()Ljava/util/List;", "lastSelectedIndex", "", "getLastSelectedIndex", "()I", "setLastSelectedIndex", "(I)V", "progressDescTv", "Landroid/widget/TextView;", "getProgressDescTv", "()Landroid/widget/TextView;", "seekBar", "Landroid/widget/SeekBar;", "getSeekBar", "()Landroid/widget/SeekBar;", "seekBarLayout", "Landroid/view/ViewGroup;", "getSeekBarLayout", "()Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "weightMap", "", "getWeightMap", "()Ljava/util/Map;", "setWeightMap", "(Ljava/util/Map;)V", "onBackPress", "", "postFuncType", "", "index", "colorWeight", "setPreImage", "bitmap", "Landroid/graphics/Bitmap;", "setStatus", "setVisibility", "visibility", "ViewHolder", "plugin-recordvideo_release"})
 public final class PhotoFilterPlugin
   extends RelativeLayout
   implements t
 {
   private final String TAG;
-  private final SeekBar mJE;
-  private d rTT;
-  private final List<a> wuT;
-  private final ViewGroup wuU;
-  private final TextView wuV;
-  private int wuW;
-  private Map<Integer, Float> wuX;
-  private final float wuY;
+  private final SeekBar nka;
+  private d sQE;
+  private final List<a> xCP;
+  private final ViewGroup xCQ;
+  private final TextView xCR;
+  private int xCS;
+  private Map<Integer, Float> xCT;
+  private final float xCU;
   
   public PhotoFilterPlugin(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(163462);
     this.TAG = "MicroMsg.PhotoFilterPlugin";
-    this.wuT = ((List)new ArrayList());
-    this.wuX = ((Map)new LinkedHashMap());
-    this.wuY = 0.8F;
+    this.xCP = ((List)new ArrayList());
+    this.xCT = ((Map)new LinkedHashMap());
+    this.xCU = 0.8F;
     LayoutInflater.from(paramContext).inflate(2131495088, (ViewGroup)this, true);
     paramAttributeSet = findViewById(2131304489);
-    k.g(paramAttributeSet, "findViewById(R.id.seekbar_layout)");
-    this.wuU = ((ViewGroup)paramAttributeSet);
+    p.g(paramAttributeSet, "findViewById(R.id.seekbar_layout)");
+    this.xCQ = ((ViewGroup)paramAttributeSet);
     paramAttributeSet = findViewById(2131299962);
-    k.g(paramAttributeSet, "findViewById(R.id.filter_seek_bar)");
-    this.mJE = ((SeekBar)paramAttributeSet);
+    p.g(paramAttributeSet, "findViewById(R.id.filter_seek_bar)");
+    this.nka = ((SeekBar)paramAttributeSet);
     paramAttributeSet = findViewById(2131299963);
-    k.g(paramAttributeSet, "findViewById(R.id.filter_seek_bar_desc)");
-    this.wuV = ((TextView)paramAttributeSet);
-    paramAttributeSet = (b)new b(this);
-    this.mJE.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener)new SeekBar.OnSeekBarChangeListener()
+    p.g(paramAttributeSet, "findViewById(R.id.filter_seek_bar_desc)");
+    this.xCR = ((TextView)paramAttributeSet);
+    paramAttributeSet = (d.g.a.b)new b(this);
+    this.nka.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener)new SeekBar.OnSeekBarChangeListener()
     {
       public final void onProgressChanged(SeekBar paramAnonymousSeekBar, int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(163449);
-        ac.d(this.wuZ.getTAG(), "onProgressChanged ".concat(String.valueOf(paramAnonymousInt)));
-        this.wuZ.getProgressDescTv().setText((CharSequence)(paramAnonymousInt + '%'));
+        ad.d(this.xCV.getTAG(), "onProgressChanged ".concat(String.valueOf(paramAnonymousInt)));
+        this.xCV.getProgressDescTv().setText((CharSequence)(paramAnonymousInt + '%'));
         AppMethodBeat.o(163449);
       }
       
@@ -79,31 +81,31 @@ public final class PhotoFilterPlugin
       public final void onStopTrackingTouch(SeekBar paramAnonymousSeekBar)
       {
         AppMethodBeat.i(163450);
-        PhotoFilterPlugin localPhotoFilterPlugin = this.wuZ;
-        int i = this.wuZ.getLastSelectedIndex();
+        PhotoFilterPlugin localPhotoFilterPlugin = this.xCV;
+        int i = this.xCV.getLastSelectedIndex();
         if (paramAnonymousSeekBar == null) {
-          k.fOy();
+          p.gfZ();
         }
         PhotoFilterPlugin.a(localPhotoFilterPlugin, i, paramAnonymousSeekBar.getProgress() / 100.0F);
         AppMethodBeat.o(163450);
       }
     });
     LinearLayout localLinearLayout = (LinearLayout)findViewById(2131303246);
-    Object localObject = com.tencent.mm.x.a.fZG;
-    localObject = ((Iterable)com.tencent.mm.x.a.aeb()).iterator();
+    Object localObject = com.tencent.mm.y.a.gtc;
+    localObject = ((Iterable)com.tencent.mm.y.a.agG()).iterator();
     while (((Iterator)localObject).hasNext())
     {
       a.a locala = (a.a)((Iterator)localObject).next();
       View localView = LayoutInflater.from(paramContext).inflate(2131495087, (ViewGroup)localLinearLayout, false);
       localLinearLayout.addView(localView);
-      List localList = this.wuT;
-      k.g(localView, "itemView");
+      List localList = this.xCP;
+      p.g(localView, "itemView");
       localList.add(new a(localView, locala.type, locala.name, paramAttributeSet));
     }
     AppMethodBeat.o(163462);
   }
   
-  public final boolean alO()
+  public final boolean aoB()
   {
     AppMethodBeat.i(163461);
     if (getVisibility() == 0)
@@ -116,36 +118,36 @@ public final class PhotoFilterPlugin
     return false;
   }
   
-  public final void awk() {}
+  public final void ayX() {}
   
   public final float getDefaultWeight()
   {
-    return this.wuY;
+    return this.xCU;
   }
   
   public final List<a> getItemViews()
   {
-    return this.wuT;
+    return this.xCP;
   }
   
   public final int getLastSelectedIndex()
   {
-    return this.wuW;
+    return this.xCS;
   }
   
   public final TextView getProgressDescTv()
   {
-    return this.wuV;
+    return this.xCR;
   }
   
   public final SeekBar getSeekBar()
   {
-    return this.mJE;
+    return this.nka;
   }
   
   public final ViewGroup getSeekBarLayout()
   {
-    return this.wuU;
+    return this.xCQ;
   }
   
   public final String getTAG()
@@ -155,7 +157,7 @@ public final class PhotoFilterPlugin
   
   public final Map<Integer, Float> getWeightMap()
   {
-    return this.wuX;
+    return this.xCT;
   }
   
   public final String name()
@@ -169,6 +171,15 @@ public final class PhotoFilterPlugin
   
   public final void onPause() {}
   
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(200371);
+    p.h(paramArrayOfString, "permissions");
+    p.h(paramArrayOfInt, "grantResults");
+    t.a.a(paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(200371);
+  }
+  
   public final void onResume() {}
   
   public final void release() {}
@@ -177,22 +188,22 @@ public final class PhotoFilterPlugin
   
   public final void setLastSelectedIndex(int paramInt)
   {
-    this.wuW = paramInt;
+    this.xCS = paramInt;
   }
   
   public final void setPreImage(final Bitmap paramBitmap)
   {
     AppMethodBeat.i(163459);
-    k.h(paramBitmap, "bitmap");
-    h.JZN.aS((Runnable)new c(this, paramBitmap));
+    p.h(paramBitmap, "bitmap");
+    h.LTJ.aR((Runnable)new c(this, paramBitmap));
     AppMethodBeat.o(163459);
   }
   
   public final void setStatus(d paramd)
   {
     AppMethodBeat.i(163458);
-    k.h(paramd, "status");
-    this.rTT = paramd;
+    p.h(paramd, "status");
+    this.sQE = paramd;
     AppMethodBeat.o(163458);
   }
   
@@ -201,7 +212,7 @@ public final class PhotoFilterPlugin
     AppMethodBeat.i(163460);
     super.setVisibility(paramInt);
     if (paramInt == 0) {
-      ((a)this.wuT.get(this.wuW)).dwh();
+      ((a)this.xCP.get(this.xCS)).dGD();
     }
     AppMethodBeat.o(163460);
   }
@@ -209,65 +220,69 @@ public final class PhotoFilterPlugin
   public final void setWeightMap(Map<Integer, Float> paramMap)
   {
     AppMethodBeat.i(163457);
-    k.h(paramMap, "<set-?>");
-    this.wuX = paramMap;
+    p.h(paramMap, "<set-?>");
+    this.xCT = paramMap;
     AppMethodBeat.o(163457);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin$ViewHolder;", "", "effectLayout", "Landroid/view/View;", "index", "", "effectName", "", "onSelect", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "(Landroid/view/View;ILjava/lang/String;Lkotlin/jvm/functions/Function1;)V", "effectIv", "Landroid/widget/ImageView;", "getEffectIv", "()Landroid/widget/ImageView;", "getEffectLayout", "()Landroid/view/View;", "getEffectName", "()Ljava/lang/String;", "effectTv", "Landroid/widget/TextView;", "getEffectTv", "()Landroid/widget/TextView;", "filtered", "", "getFiltered", "()Z", "setFiltered", "(Z)V", "getIndex", "()I", "maskView", "getMaskView", "getOnSelect", "()Lkotlin/jvm/functions/Function1;", "selected", "setImage", "bitmap", "Landroid/graphics/Bitmap;", "unselected", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin$ViewHolder;", "", "effectLayout", "Landroid/view/View;", "index", "", "effectName", "", "onSelect", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "(Landroid/view/View;ILjava/lang/String;Lkotlin/jvm/functions/Function1;)V", "effectIv", "Landroid/widget/ImageView;", "getEffectIv", "()Landroid/widget/ImageView;", "getEffectLayout", "()Landroid/view/View;", "getEffectName", "()Ljava/lang/String;", "effectTv", "Landroid/widget/TextView;", "getEffectTv", "()Landroid/widget/TextView;", "filtered", "", "getFiltered", "()Z", "setFiltered", "(Z)V", "getIndex", "()I", "maskView", "getMaskView", "getOnSelect", "()Lkotlin/jvm/functions/Function1;", "selected", "setImage", "bitmap", "Landroid/graphics/Bitmap;", "unselected", "plugin-recordvideo_release"})
   public static final class a
   {
-    final View gGk;
+    final View gZU;
     final int index;
-    final ImageView wva;
-    private final TextView wvb;
-    boolean wvc;
-    private final View wvd;
-    private final String wve;
-    private final b<Integer, y> wvf;
+    final ImageView xCW;
+    private final TextView xCX;
+    boolean xCY;
+    private final View xCZ;
+    private final String xDa;
+    private final d.g.a.b<Integer, z> xDb;
     
-    public a(View paramView, int paramInt, String paramString, b<? super Integer, y> paramb)
+    public a(View paramView, int paramInt, String paramString, d.g.a.b<? super Integer, z> paramb)
     {
       AppMethodBeat.i(163453);
-      this.wvd = paramView;
+      this.xCZ = paramView;
       this.index = paramInt;
-      this.wve = paramString;
-      this.wvf = paramb;
-      paramView = this.wvd.findViewById(2131303245);
-      k.g(paramView, "effectLayout.findViewById(R.id.photo_effect_iv)");
-      this.wva = ((ImageView)paramView);
-      paramView = this.wvd.findViewById(2131303247);
-      k.g(paramView, "effectLayout.findViewById(R.id.photo_effect_mask)");
-      this.gGk = paramView;
-      paramView = this.wvd.findViewById(2131303248);
-      k.g(paramView, "effectLayout.findViewByI….id.photo_effect_name_tv)");
-      this.wvb = ((TextView)paramView);
-      this.wvd.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+      this.xDa = paramString;
+      this.xDb = paramb;
+      paramView = this.xCZ.findViewById(2131303245);
+      p.g(paramView, "effectLayout.findViewById(R.id.photo_effect_iv)");
+      this.xCW = ((ImageView)paramView);
+      paramView = this.xCZ.findViewById(2131303247);
+      p.g(paramView, "effectLayout.findViewById(R.id.photo_effect_mask)");
+      this.gZU = paramView;
+      paramView = this.xCZ.findViewById(2131303248);
+      p.g(paramView, "effectLayout.findViewByI….id.photo_effect_name_tv)");
+      this.xCX = ((TextView)paramView);
+      this.xCZ.setOnClickListener((View.OnClickListener)new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(163451);
-          this.wvg.dwh();
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          this.xDc.dGD();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(163451);
         }
       });
-      this.wvb.setText((CharSequence)this.wve);
+      this.xCX.setText((CharSequence)this.xDa);
       AppMethodBeat.o(163453);
     }
     
-    public final void dwh()
+    public final void dGD()
     {
       AppMethodBeat.i(163452);
-      this.gGk.setVisibility(8);
-      this.wvf.ay(Integer.valueOf(this.index));
+      this.gZU.setVisibility(8);
+      this.xDb.invoke(Integer.valueOf(this.index));
       AppMethodBeat.o(163452);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "index", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "index", "", "invoke"})
   static final class b
-    extends d.g.b.l
-    implements b<Integer, y>
+    extends q
+    implements d.g.a.b<Integer, z>
   {
     b(PhotoFilterPlugin paramPhotoFilterPlugin)
     {
@@ -275,7 +290,7 @@ public final class PhotoFilterPlugin
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -284,25 +299,25 @@ public final class PhotoFilterPlugin
     public final void run()
     {
       AppMethodBeat.i(163456);
-      Iterator localIterator = ((Iterable)this.wuZ.getItemViews()).iterator();
+      Iterator localIterator = ((Iterable)this.xCV.getItemViews()).iterator();
       while (localIterator.hasNext())
       {
         PhotoFilterPlugin.a locala = (PhotoFilterPlugin.a)localIterator.next();
-        if (!locala.wvc)
+        if (!locala.xCY)
         {
-          Object localObject = com.tencent.mm.x.a.fZG;
-          com.tencent.mm.x.a.v(paramBitmap);
-          int k = com.tencent.mm.cc.a.av(this.wuZ.getContext(), 2131165301);
-          int j = com.tencent.mm.cc.a.av(this.wuZ.getContext(), 2131165301);
+          Object localObject = com.tencent.mm.y.a.gtc;
+          com.tencent.mm.y.a.v(paramBitmap);
+          int k = com.tencent.mm.cc.a.ay(this.xCV.getContext(), 2131165301);
+          int j = com.tencent.mm.cc.a.ay(this.xCV.getContext(), 2131165301);
           int i;
           if (paramBitmap.getWidth() > paramBitmap.getHeight()) {
             i = (int)(paramBitmap.getWidth() / paramBitmap.getHeight() * j);
           }
           for (;;)
           {
-            localObject = com.tencent.mm.x.a.fZG;
-            localObject = com.tencent.mm.x.a.a(paramBitmap, locala.index, i, j, this.wuZ.getDefaultWeight());
-            this.wuZ.post((Runnable)new a(locala, (Bitmap)localObject));
+            localObject = com.tencent.mm.y.a.gtc;
+            localObject = com.tencent.mm.y.a.a(paramBitmap, locala.index, i, j, this.xCV.getDefaultWeight());
+            this.xCV.post((Runnable)new a(locala, (Bitmap)localObject));
             break;
             i = k;
             if (paramBitmap.getWidth() < paramBitmap.getHeight())
@@ -316,7 +331,7 @@ public final class PhotoFilterPlugin
       AppMethodBeat.o(163456);
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -325,11 +340,11 @@ public final class PhotoFilterPlugin
       public final void run()
       {
         AppMethodBeat.i(163455);
-        PhotoFilterPlugin.a locala = this.wvh;
-        Bitmap localBitmap = this.wvi;
-        k.h(localBitmap, "bitmap");
-        locala.wva.setImageBitmap(localBitmap);
-        locala.wvc = true;
+        PhotoFilterPlugin.a locala = this.xDd;
+        Bitmap localBitmap = this.xDe;
+        p.h(localBitmap, "bitmap");
+        locala.xCW.setImageBitmap(localBitmap);
+        locala.xCY = true;
         AppMethodBeat.o(163455);
       }
     }

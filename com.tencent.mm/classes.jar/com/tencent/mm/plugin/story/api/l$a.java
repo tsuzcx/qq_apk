@@ -7,9 +7,9 @@ public abstract interface l$a
 {
   public abstract void a(List<String> paramList, ArrayList<String> paramArrayList);
   
-  public abstract void ah(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void al(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void bP(String paramString, boolean paramBoolean);
+  public abstract void bW(String paramString, boolean paramBoolean);
 }
 
 

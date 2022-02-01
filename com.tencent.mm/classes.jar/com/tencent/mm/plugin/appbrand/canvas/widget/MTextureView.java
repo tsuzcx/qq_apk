@@ -15,8 +15,8 @@ import android.view.View.OnAttachStateChangeListener;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.json.JSONArray;
@@ -25,21 +25,21 @@ public class MTextureView
   extends TextureView
   implements TextureView.SurfaceTextureListener, a
 {
-  private volatile ao jAC;
-  private Runnable jAD;
-  private volatile boolean jAF;
-  private final b jAy;
-  private final Set<View.OnAttachStateChangeListener> jAz;
+  private volatile boolean jUA;
+  private final b jUt;
+  private final Set<View.OnAttachStateChangeListener> jUu;
+  private volatile ap jUx;
+  private Runnable jUy;
   private volatile Object mLock;
   
   public MTextureView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(145498);
-    this.jAy = new b(this);
-    this.jAz = new LinkedHashSet();
+    this.jUt = new b(this);
+    this.jUu = new LinkedHashSet();
     this.mLock = new Object();
-    this.jAD = new Runnable()
+    this.jUy = new Runnable()
     {
       public final void run()
       {
@@ -82,10 +82,10 @@ public class MTextureView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(145499);
-    this.jAy = new b(this);
-    this.jAz = new LinkedHashSet();
+    this.jUt = new b(this);
+    this.jUu = new LinkedHashSet();
     this.mLock = new Object();
-    this.jAD = new Runnable()
+    this.jUy = new Runnable()
     {
       public final void run()
       {
@@ -128,10 +128,10 @@ public class MTextureView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(145500);
-    this.jAy = new b(this);
-    this.jAz = new LinkedHashSet();
+    this.jUt = new b(this);
+    this.jUu = new LinkedHashSet();
     this.mLock = new Object();
-    this.jAD = new Runnable()
+    this.jUy = new Runnable()
     {
       public final void run()
       {
@@ -177,72 +177,45 @@ public class MTextureView
     ((Activity)getContext()).getWindow().setFlags(16777216, 16777216);
     Paint localPaint = new Paint();
     localPaint.setColor(-1);
-    this.jAy.getDrawContext().jzg = localPaint;
+    this.jUt.getDrawContext().jTd = localPaint;
     AppMethodBeat.o(145501);
   }
   
-  public final void S(Runnable paramRunnable)
+  public final void R(Runnable paramRunnable)
   {
     AppMethodBeat.i(145505);
-    if (this.jAC == null)
+    if (this.jUx == null)
     {
       AppMethodBeat.o(145505);
       return;
     }
-    this.jAC.post(paramRunnable);
+    this.jUx.post(paramRunnable);
     AppMethodBeat.o(145505);
   }
   
   public final void a(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145511);
-    this.jAy.a(paramDrawCanvasArg, parama);
+    this.jUt.a(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145511);
   }
   
   public final void a(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145509);
-    this.jAy.a(paramJSONArray, parama);
+    this.jUt.a(paramJSONArray, parama);
     AppMethodBeat.o(145509);
-  }
-  
-  public final void aZL()
-  {
-    AppMethodBeat.i(145504);
-    if (this.jAC == null)
-    {
-      AppMethodBeat.o(145504);
-      return;
-    }
-    this.jAC.removeCallbacks(this.jAD);
-    this.jAC.post(this.jAD);
-    AppMethodBeat.o(145504);
-  }
-  
-  public final void aZM()
-  {
-    AppMethodBeat.i(145513);
-    this.jAy.aZM();
-    AppMethodBeat.o(145513);
-  }
-  
-  public final void aZN()
-  {
-    AppMethodBeat.i(145520);
-    this.jAy.aZN();
-    AppMethodBeat.o(145520);
   }
   
   public void addOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145514);
-    if (this.jAz.contains(paramOnAttachStateChangeListener))
+    if (this.jUu.contains(paramOnAttachStateChangeListener))
     {
       AppMethodBeat.o(145514);
       return;
     }
-    this.jAz.add(paramOnAttachStateChangeListener);
+    this.jUu.add(paramOnAttachStateChangeListener);
     super.addOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145514);
   }
@@ -250,21 +223,48 @@ public class MTextureView
   public final void b(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145512);
-    this.jAy.b(paramDrawCanvasArg, parama);
+    this.jUt.b(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145512);
   }
   
   public final void b(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145510);
-    this.jAy.b(paramJSONArray, parama);
+    this.jUt.b(paramJSONArray, parama);
     AppMethodBeat.o(145510);
+  }
+  
+  public final void bdk()
+  {
+    AppMethodBeat.i(145504);
+    if (this.jUx == null)
+    {
+      AppMethodBeat.o(145504);
+      return;
+    }
+    this.jUx.removeCallbacks(this.jUy);
+    this.jUx.post(this.jUy);
+    AppMethodBeat.o(145504);
+  }
+  
+  public final void bdl()
+  {
+    AppMethodBeat.i(145513);
+    this.jUt.bdl();
+    AppMethodBeat.o(145513);
+  }
+  
+  public final void bdm()
+  {
+    AppMethodBeat.i(145520);
+    this.jUt.bdm();
+    AppMethodBeat.o(145520);
   }
   
   public com.tencent.mm.plugin.appbrand.canvas.d getDrawContext()
   {
     AppMethodBeat.i(145506);
-    com.tencent.mm.plugin.appbrand.canvas.d locald = this.jAy.getDrawContext();
+    com.tencent.mm.plugin.appbrand.canvas.d locald = this.jUt.getDrawContext();
     AppMethodBeat.o(145506);
     return locald;
   }
@@ -272,7 +272,7 @@ public class MTextureView
   public String getSessionId()
   {
     AppMethodBeat.i(145517);
-    String str = this.jAy.getSessionId();
+    String str = this.jUt.getSessionId();
     AppMethodBeat.o(145517);
     return str;
   }
@@ -280,7 +280,7 @@ public class MTextureView
   public String getTraceId()
   {
     AppMethodBeat.i(145503);
-    String str = this.jAy.getTraceId();
+    String str = this.jUt.getTraceId();
     AppMethodBeat.o(145503);
     return str;
   }
@@ -288,32 +288,32 @@ public class MTextureView
   public final boolean h(Canvas paramCanvas)
   {
     AppMethodBeat.i(145508);
-    boolean bool = this.jAy.h(paramCanvas);
+    boolean bool = this.jUt.h(paramCanvas);
     AppMethodBeat.o(145508);
     return bool;
   }
   
   public final boolean isPaused()
   {
-    return this.jAy.mPause;
+    return this.jUt.mPause;
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(145516);
-    this.jAy.onResume();
+    this.jUt.onResume();
     AppMethodBeat.o(145516);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(145521);
-    ac.v("MicroMsg.MTextureView", "onSurfaceTextureAvailable");
-    if (this.jAC == null)
+    ad.v("MicroMsg.MTextureView", "onSurfaceTextureAvailable");
+    if (this.jUx == null)
     {
-      paramSurfaceTexture = com.tencent.e.c.d.gy("MTextureView#Rending-Thread", -19);
+      paramSurfaceTexture = com.tencent.e.c.d.gW("MTextureView#Rending-Thread", -19);
       paramSurfaceTexture.start();
-      this.jAC = new ao(paramSurfaceTexture.getLooper());
+      this.jUx = new ap(paramSurfaceTexture.getLooper());
     }
     paramSurfaceTexture = lockCanvas();
     if (paramSurfaceTexture == null)
@@ -329,17 +329,17 @@ public class MTextureView
   public boolean onSurfaceTextureDestroyed(SurfaceTexture arg1)
   {
     AppMethodBeat.i(145523);
-    ac.v("MicroMsg.MTextureView", "onSurfaceTextureDestroyed");
-    this.jAC.removeCallbacks(this.jAD);
-    this.jAC.getLooper().quit();
+    ad.v("MicroMsg.MTextureView", "onSurfaceTextureDestroyed");
+    this.jUx.removeCallbacks(this.jUy);
+    this.jUx.getLooper().quit();
     synchronized (this.mLock)
     {
-      boolean bool = this.jAF;
+      boolean bool = this.jUA;
       if (bool) {}
       try
       {
         this.mLock.wait(1000L);
-        this.jAC = null;
+        this.jUx = null;
         AppMethodBeat.o(145523);
         return true;
       }
@@ -347,7 +347,7 @@ public class MTextureView
       {
         for (;;)
         {
-          ac.e("MicroMsg.MTextureView", "await error : %s", new Object[] { Log.getStackTraceString(localInterruptedException) });
+          ad.e("MicroMsg.MTextureView", "await error : %s", new Object[] { Log.getStackTraceString(localInterruptedException) });
         }
       }
     }
@@ -356,7 +356,7 @@ public class MTextureView
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(145522);
-    ac.v("MicroMsg.MTextureView", "onSurfaceTextureSizeChanged");
+    ad.v("MicroMsg.MTextureView", "onSurfaceTextureSizeChanged");
     AppMethodBeat.o(145522);
   }
   
@@ -365,7 +365,7 @@ public class MTextureView
   public void removeOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145515);
-    this.jAz.remove(paramOnAttachStateChangeListener);
+    this.jUu.remove(paramOnAttachStateChangeListener);
     super.removeOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145515);
   }
@@ -373,34 +373,34 @@ public class MTextureView
   public void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama)
   {
     AppMethodBeat.i(145507);
-    this.jAy.setDrawActionReportable(parama);
+    this.jUt.setDrawActionReportable(parama);
     AppMethodBeat.o(145507);
   }
   
   public void setSessionId(String paramString)
   {
     AppMethodBeat.i(145518);
-    this.jAy.setSessionId(paramString);
+    this.jUt.setSessionId(paramString);
     AppMethodBeat.o(145518);
   }
   
   public void setStartTime(long paramLong)
   {
     AppMethodBeat.i(145519);
-    this.jAy.setStartTime(paramLong);
+    this.jUt.setStartTime(paramLong);
     AppMethodBeat.o(145519);
   }
   
   public void setTraceId(String paramString)
   {
     AppMethodBeat.i(145502);
-    this.jAy.setTraceId(paramString);
+    this.jUt.setTraceId(paramString);
     AppMethodBeat.o(145502);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.widget.MTextureView
  * JD-Core Version:    0.7.0.1
  */

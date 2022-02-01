@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bk;
+import com.tencent.mm.g.a.bn;
 import com.tencent.mm.plugin.ipcall.model.h.f;
 import com.tencent.mm.sdk.b.c;
 import java.util.ArrayList;
 
 public final class e
 {
-  private static e tHC = null;
-  c iOv;
-  public ArrayList<f> tHD;
+  private static e uKp = null;
+  c jhE;
+  public ArrayList<f> uKq;
   
   private e()
   {
     AppMethodBeat.i(25356);
-    this.tHD = null;
-    this.iOv = new c() {};
+    this.uKq = null;
+    this.jhE = new c() {};
     AppMethodBeat.o(25356);
   }
   
-  public static e cUn()
+  public static e ddy()
   {
     AppMethodBeat.i(25357);
-    if (tHC == null) {
-      tHC = new e();
+    if (uKp == null) {
+      uKp = new e();
     }
-    e locale = tHC;
+    e locale = uKp;
     AppMethodBeat.o(25357);
     return locale;
   }
   
   /* Error */
-  public final boolean bn(byte[] paramArrayOfByte)
+  public final boolean bq(byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: sipush 25358
@@ -44,7 +44,7 @@ public final class e
     //   14: astore_1
     //   15: aload_1
     //   16: ldc 51
-    //   18: invokestatic 57	com/tencent/mm/sdk/platformtools/bv:L	(Ljava/lang/String;Ljava/lang/String;)Ljava/util/Map;
+    //   18: invokestatic 57	com/tencent/mm/sdk/platformtools/bw:M	(Ljava/lang/String;Ljava/lang/String;)Ljava/util/Map;
     //   21: astore 4
     //   23: aload 4
     //   25: ifnull +436 -> 461
@@ -89,12 +89,12 @@ public final class e
     //   113: astore 6
     //   115: aload 6
     //   117: aload 7
-    //   119: putfield 93	com/tencent/mm/plugin/ipcall/model/h/f:tLH	Ljava/lang/String;
+    //   119: putfield 93	com/tencent/mm/plugin/ipcall/model/h/f:uOu	Ljava/lang/String;
     //   122: aload 6
     //   124: new 59	java/util/ArrayList
     //   127: dup
     //   128: invokespecial 60	java/util/ArrayList:<init>	()V
-    //   131: putfield 96	com/tencent/mm/plugin/ipcall/model/h/f:tLI	Ljava/util/ArrayList;
+    //   131: putfield 96	com/tencent/mm/plugin/ipcall/model/h/f:uOv	Ljava/util/ArrayList;
     //   134: new 62	java/lang/StringBuilder
     //   137: dup
     //   138: invokespecial 63	java/lang/StringBuilder:<init>	()V
@@ -155,9 +155,9 @@ public final class e
     //   260: putfield 106	com/tencent/mm/plugin/ipcall/model/h/e:Id	Ljava/lang/String;
     //   263: aload 8
     //   265: aload_1
-    //   266: putfield 109	com/tencent/mm/plugin/ipcall/model/h/e:tLG	Ljava/lang/String;
+    //   266: putfield 109	com/tencent/mm/plugin/ipcall/model/h/e:uOt	Ljava/lang/String;
     //   269: aload 6
-    //   271: getfield 96	com/tencent/mm/plugin/ipcall/model/h/f:tLI	Ljava/util/ArrayList;
+    //   271: getfield 96	com/tencent/mm/plugin/ipcall/model/h/f:uOv	Ljava/util/ArrayList;
     //   274: aload 8
     //   276: invokevirtual 113	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   279: pop
@@ -168,7 +168,7 @@ public final class e
     //   287: ldc 71
     //   289: iconst_0
     //   290: anewarray 4	java/lang/Object
-    //   293: invokestatic 121	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   293: invokestatic 121	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   296: ldc 115
     //   298: ldc 123
     //   300: iconst_1
@@ -178,7 +178,7 @@ public final class e
     //   306: aload_1
     //   307: invokevirtual 126	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   310: aastore
-    //   311: invokestatic 130	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   311: invokestatic 130	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   314: sipush 25358
     //   317: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   320: iconst_0
@@ -189,7 +189,7 @@ public final class e
     //   326: ldc 71
     //   328: iconst_0
     //   329: anewarray 4	java/lang/Object
-    //   332: invokestatic 121	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   332: invokestatic 121	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   335: ldc 115
     //   337: ldc 132
     //   339: iconst_1
@@ -199,7 +199,7 @@ public final class e
     //   345: aload_1
     //   346: invokevirtual 126	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   349: aastore
-    //   350: invokestatic 130	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   350: invokestatic 130	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   353: sipush 25358
     //   356: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   359: iconst_0
@@ -219,16 +219,16 @@ public final class e
     //   385: dup
     //   386: iconst_0
     //   387: aload 6
-    //   389: getfield 93	com/tencent/mm/plugin/ipcall/model/h/f:tLH	Ljava/lang/String;
+    //   389: getfield 93	com/tencent/mm/plugin/ipcall/model/h/f:uOu	Ljava/lang/String;
     //   392: aastore
     //   393: dup
     //   394: iconst_1
     //   395: aload 6
-    //   397: getfield 96	com/tencent/mm/plugin/ipcall/model/h/f:tLI	Ljava/util/ArrayList;
+    //   397: getfield 96	com/tencent/mm/plugin/ipcall/model/h/f:uOv	Ljava/util/ArrayList;
     //   400: invokevirtual 144	java/util/ArrayList:size	()I
     //   403: invokestatic 138	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   406: aastore
-    //   407: invokestatic 147	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   407: invokestatic 147	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   410: aload 5
     //   412: aload 6
     //   414: invokevirtual 113	java/util/ArrayList:add	(Ljava/lang/Object;)Z
@@ -248,17 +248,17 @@ public final class e
     //   437: invokevirtual 144	java/util/ArrayList:size	()I
     //   440: invokestatic 138	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   443: aastore
-    //   444: invokestatic 151	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   444: invokestatic 151	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   447: aload_0
     //   448: aload 5
-    //   450: putfield 29	com/tencent/mm/plugin/ipcall/model/e:tHD	Ljava/util/ArrayList;
+    //   450: putfield 29	com/tencent/mm/plugin/ipcall/model/e:uKq	Ljava/util/ArrayList;
     //   453: sipush 25358
     //   456: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   459: iconst_1
     //   460: ireturn
     //   461: ldc 115
     //   463: ldc 153
-    //   465: invokestatic 156	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   465: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   468: sipush 25358
     //   471: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   474: iconst_0

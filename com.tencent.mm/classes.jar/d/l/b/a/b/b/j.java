@@ -1,7 +1,7 @@
 package d.l.b.a.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.a.g;
 import d.l.b.a.b.a.m;
 import d.l.b.a.b.m.ab;
@@ -9,23 +9,23 @@ import d.l.b.a.b.m.bc;
 
 public final class j
 {
-  public static final j LdD;
+  public static final j MUy;
   
   static
   {
     AppMethodBeat.i(56849);
-    LdD = new j();
+    MUy = new j();
     AppMethodBeat.o(56849);
   }
   
   public static final boolean G(ab paramab)
   {
     AppMethodBeat.i(56848);
-    k.h(paramab, "type");
-    k.h(paramab, "$this$canBeUsedForConstVal");
+    p.h(paramab, "type");
+    p.h(paramab, "$this$canBeUsedForConstVal");
     if (!g.o(paramab))
     {
-      m localm = m.LbG;
+      m localm = m.MSB;
       if (!m.F(paramab)) {
         break label42;
       }
@@ -42,7 +42,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.j
  * JD-Core Version:    0.7.0.1
  */

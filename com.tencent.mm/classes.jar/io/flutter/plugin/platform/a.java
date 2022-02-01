@@ -2,7 +2,7 @@ package io.flutter.plugin.platform;
 
 final class a
 {
-  io.flutter.view.a KKY;
+  io.flutter.view.a MBQ;
 }
 
 

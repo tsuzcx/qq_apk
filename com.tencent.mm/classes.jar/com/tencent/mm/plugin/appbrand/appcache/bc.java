@@ -1,219 +1,93 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.content.Context;
-import android.widget.Toast;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.model.cc.a;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appusage.y;
-import com.tencent.mm.plugin.appbrand.config.p;
-import com.tencent.mm.plugin.appbrand.config.p.c;
-import com.tencent.mm.plugin.appbrand.config.u;
-import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
-import com.tencent.mm.plugin.appbrand.debugger.c;
-import com.tencent.mm.plugin.appbrand.debugger.d;
-import com.tencent.mm.plugin.appbrand.ipc.e;
-import com.tencent.mm.plugin.appbrand.task.f;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.protocal.protobuf.dpt;
-import com.tencent.mm.protocal.protobuf.dzu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
+import com.tencent.mm.g.c.w;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class bc
-  implements cc.a
+  extends w
 {
-  public static final Map<String, c> joz;
+  static final c.a hEe;
+  public static final String[] jIu;
   
   static
   {
-    AppMethodBeat.i(44366);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("AppBrandNotify", new b((byte)0));
-    localHashMap.put("AppPublicLibraryNotify", new d((byte)0));
-    localHashMap.put("mmbizwxaconfig", new a((byte)0));
-    localHashMap.put("ForceOpenAppNotify", new d());
-    localHashMap.put("AppBrandForceKill", new c());
-    if (DebuggerShell.baW()) {
-      localHashMap.put("AppBrandTestUpdateWxaUsageListNotify", new com.tencent.mm.plugin.appbrand.debugger.h());
+    int i = 0;
+    AppMethodBeat.i(146004);
+    jIu = new String[] { "appId", "version", "debugType" };
+    Object localObject1 = new c.a();
+    ((c.a)localObject1).IhA = new Field[10];
+    ((c.a)localObject1).columns = new String[11];
+    Object localObject2 = new StringBuilder();
+    ((c.a)localObject1).columns[0] = "appId";
+    ((c.a)localObject1).IhC.put("appId", "TEXT");
+    ((StringBuilder)localObject2).append(" appId TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[1] = "version";
+    ((c.a)localObject1).IhC.put("version", "INTEGER");
+    ((StringBuilder)localObject2).append(" version INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[2] = "versionMd5";
+    ((c.a)localObject1).IhC.put("versionMd5", "TEXT");
+    ((StringBuilder)localObject2).append(" versionMd5 TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[3] = "NewMd5";
+    ((c.a)localObject1).IhC.put("NewMd5", "TEXT");
+    ((StringBuilder)localObject2).append(" NewMd5 TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[4] = "pkgPath";
+    ((c.a)localObject1).IhC.put("pkgPath", "TEXT");
+    ((StringBuilder)localObject2).append(" pkgPath TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[5] = "createTime";
+    ((c.a)localObject1).IhC.put("createTime", "LONG");
+    ((StringBuilder)localObject2).append(" createTime LONG");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[6] = "debugType";
+    ((c.a)localObject1).IhC.put("debugType", "INTEGER default '0' ");
+    ((StringBuilder)localObject2).append(" debugType INTEGER default '0' ");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[7] = "downloadURL";
+    ((c.a)localObject1).IhC.put("downloadURL", "TEXT");
+    ((StringBuilder)localObject2).append(" downloadURL TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[8] = "startTime";
+    ((c.a)localObject1).IhC.put("startTime", "LONG");
+    ((StringBuilder)localObject2).append(" startTime LONG");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[9] = "endTime";
+    ((c.a)localObject1).IhC.put("endTime", "LONG");
+    ((StringBuilder)localObject2).append(" endTime LONG");
+    ((c.a)localObject1).columns[10] = "rowid";
+    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
+    hEe = (c.a)localObject1;
+    localObject1 = " PRIMARY KEY (";
+    localObject2 = jIu;
+    int j = localObject2.length;
+    while (i < j)
+    {
+      localObject3 = localObject2[i];
+      localObject1 = (String)localObject1 + ", " + (String)localObject3;
+      i += 1;
     }
-    joz = Collections.unmodifiableMap(localHashMap);
-    AppMethodBeat.o(44366);
+    localObject1 = ((String)localObject1).replaceFirst(",", "");
+    localObject1 = (String)localObject1 + " )";
+    localObject2 = new StringBuilder();
+    Object localObject3 = hEe;
+    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
+    AppMethodBeat.o(146004);
   }
   
-  public final void a(final f.a parama)
+  public final c.a getDBInfo()
   {
-    AppMethodBeat.i(44364);
-    parama = z.a(parama.fXi.DPV);
-    if (bs.isNullOrNil(parama))
-    {
-      ac.w("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "msg content is null");
-      AppMethodBeat.o(44364);
-      return;
-    }
-    com.tencent.e.h.JZN.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(44357);
-        bc.ei(parama);
-        AppMethodBeat.o(44357);
-      }
-    }, "MicroMsg.AppBrand.WxaPkgPushingXmlHandler");
-    AppMethodBeat.o(44364);
-  }
-  
-  public final void a(f.c paramc) {}
-  
-  static final class a
-    implements bc.c
-  {
-    public final void i(final String paramString, Map<String, String> paramMap)
-    {
-      AppMethodBeat.i(186324);
-      if (paramMap.get(".sysmsg.mmbizwxaconfig") == null)
-      {
-        AppMethodBeat.o(186324);
-        return;
-      }
-      int i = bs.getInt((String)paramMap.get(".sysmsg.mmbizwxaconfig.command"), -1);
-      final int j = bs.getInt((String)paramMap.get(".sysmsg.mmbizwxaconfig.type"), 0);
-      paramString = (String)paramMap.get(".sysmsg.mmbizwxaconfig.appid");
-      int k = bs.getInt((String)paramMap.get(".sysmsg.mmbizwxaconfig.configversion"), 0);
-      ac.i("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "handle common config, command = %d, type = %d, appid = %s, configversion = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramString, Integer.valueOf(k) });
-      paramMap = new LinkedList();
-      dpt localdpt = new dpt();
-      localdpt.version = k;
-      localdpt.type = j;
-      paramMap.add(localdpt);
-      p.a(paramString, paramMap, false);
-      p.a(paramString, j, i, new p.c()
-      {
-        public final void Ik(String paramAnonymousString)
-        {
-          AppMethodBeat.i(44358);
-          ac.i("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "CommonConfigManager.getConfig config:%s", new Object[] { paramAnonymousString });
-          e.o(paramString, j, paramAnonymousString);
-          AppMethodBeat.o(44358);
-        }
-      }, true);
-      AppMethodBeat.o(186324);
-    }
-  }
-  
-  static final class b
-    implements bc.c
-  {
-    private boolean j(String paramString, Map<String, String> paramMap)
-    {
-      AppMethodBeat.i(44362);
-      ac.d("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "optDebugInfo, prefix = %s", new Object[] { paramString });
-      if (paramMap.get(paramString) == null)
-      {
-        AppMethodBeat.o(44362);
-        return false;
-      }
-      final String str1 = (String)paramMap.get(paramString + ".AppID");
-      String str2 = (String)paramMap.get(paramString + ".UserName");
-      final int i = bs.getInt((String)paramMap.get(paramString + ".Type"), 1);
-      String str3 = (String)paramMap.get(paramString + ".URL");
-      long l1 = bs.getLong((String)paramMap.get(paramString + ".StartTime"), bs.aNx());
-      long l2 = bs.getLong((String)paramMap.get(paramString + ".EndTime"), 7200L + l1);
-      paramString = (String)paramMap.get(paramString + ".MD5");
-      boolean bool = j.aVC().a(str1, i, str3, paramString, l1, l2);
-      ac.i("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "handle debug notify, appId = %s, username = %s, debugType = %d, url = %s, start = %d, end = %d, md5 = %s, updated = %b", new Object[] { str1, str2, Integer.valueOf(i), str3, Long.valueOf(l1), Long.valueOf(l2), paramString, Boolean.valueOf(bool) });
-      if (bool)
-      {
-        if (999 == i) {
-          break label398;
-        }
-        com.tencent.mm.plugin.appbrand.config.w.Ks(str2);
-        ap.f(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(44360);
-            f.bV(str1, i);
-            Toast.makeText(ai.getContext(), ai.getContext().getString(2131755575, new Object[] { bs.bG(this.joE, str1) }), 1).show();
-            AppMethodBeat.o(44360);
-          }
-        });
-      }
-      for (;;)
-      {
-        j.aVA().be(str2, i);
-        AppMethodBeat.o(44362);
-        return true;
-        label398:
-        w.jmC.fD(false);
-      }
-    }
-    
-    public final void i(String paramString, Map<String, String> paramMap)
-    {
-      AppMethodBeat.i(186325);
-      j(".sysmsg.AppBrandNotify.DebugInfoList.DebugInfo", paramMap);
-      int i = 0;
-      int j;
-      do
-      {
-        j = i + 1;
-        i = j;
-      } while (j(".sysmsg.AppBrandNotify.DebugInfoList.DebugInfo".concat(String.valueOf(j)), paramMap));
-      AppMethodBeat.o(186325);
-    }
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void i(String paramString, Map<String, String> paramMap);
-  }
-  
-  static final class d
-    implements bc.c
-  {
-    public final void i(String paramString, Map<String, String> paramMap)
-    {
-      AppMethodBeat.i(186326);
-      if (paramMap.get(".sysmsg.AppPublicLibraryNotify") == null)
-      {
-        AppMethodBeat.o(186326);
-        return;
-      }
-      int i = bs.getInt((String)paramMap.get(".sysmsg.AppPublicLibraryNotify.Version"), 0);
-      paramString = (String)paramMap.get(".sysmsg.AppPublicLibraryNotify.MD5");
-      String str = (String)paramMap.get(".sysmsg.AppPublicLibraryNotify.URL");
-      int j = bs.getInt((String)paramMap.get(".sysmsg.AppPublicLibraryNotify.ForceUpdate"), 0);
-      if ((bs.isNullOrNil(str)) || (bs.isNullOrNil(paramString)) || (i <= 0))
-      {
-        ac.i("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "handle library notify, invalid params: url = %s, md5 = %s, version = %d", new Object[] { str, paramString, Integer.valueOf(i) });
-        AppMethodBeat.o(186326);
-        return;
-      }
-      ac.i("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "handle library notify, version = %d, md5 = %s, url = %s, forceUpdate = %d", new Object[] { Integer.valueOf(i), paramString, str, Integer.valueOf(j) });
-      paramMap = new dzu();
-      paramMap.version = i;
-      paramMap.md5 = paramString;
-      paramMap.url = str;
-      paramMap.Fwu = j;
-      as.a(paramMap);
-      AppMethodBeat.o(186326);
-    }
+    return hEe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bc
  * JD-Core Version:    0.7.0.1
  */

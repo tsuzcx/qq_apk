@@ -47,27 +47,27 @@ public class NestedScrollView
   extends FrameLayout
   implements k, n
 {
-  private static final a SQ = new a();
-  private static final int[] SR = { 16843130 };
-  private long SB;
-  private OverScroller SC = new OverScroller(getContext());
-  private EdgeEffect SD;
-  private EdgeEffect SE;
-  private int SF;
-  private boolean SG = true;
-  private boolean SH = false;
-  private View SI = null;
-  private boolean SJ;
-  private boolean SK = true;
-  private final int[] SL = new int[2];
-  private final int[] SM = new int[2];
-  private int SN;
-  private int SO;
-  private SavedState SP;
-  private final o SS;
-  private final l ST;
-  private float SU;
-  private b SV;
+  private static final a UF = new a();
+  private static final int[] UG = { 16843130 };
+  private final int[] UA = new int[2];
+  private final int[] UB = new int[2];
+  private int UC;
+  private int UD;
+  private SavedState UE;
+  private final o UH;
+  private final l UI;
+  private float UJ;
+  private b UK;
+  private long Uq;
+  private OverScroller Ur = new OverScroller(getContext());
+  private EdgeEffect Us;
+  private EdgeEffect Ut;
+  private int Uu;
+  private boolean Uv = true;
+  private boolean Uw = false;
+  private View Ux = null;
+  private boolean Uy;
+  private boolean Uz = true;
   private int mActivePointerId = -1;
   private boolean mIsBeingDragged = false;
   private int mMaximumVelocity;
@@ -91,28 +91,33 @@ public class NestedScrollView
     this.mTouchSlop = localViewConfiguration.getScaledTouchSlop();
     this.mMinimumVelocity = localViewConfiguration.getScaledMinimumFlingVelocity();
     this.mMaximumVelocity = localViewConfiguration.getScaledMaximumFlingVelocity();
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, SR, paramInt, 0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, UG, paramInt, 0);
     setFillViewport(paramContext.getBoolean(0, false));
     paramContext.recycle();
-    this.SS = new o(this);
-    this.ST = new l(this);
+    this.UH = new o(this);
+    this.UI = new l(this);
     setNestedScrollingEnabled(true);
-    t.a(this, SQ);
+    t.a(this, UF);
+  }
+  
+  private boolean A(int paramInt1, int paramInt2)
+  {
+    return this.UI.A(paramInt1, paramInt2);
   }
   
   private boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt, int paramInt5)
   {
-    return this.ST.a(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt, paramInt5);
+    return this.UI.a(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt, paramInt5);
   }
   
   private boolean a(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt3)
   {
-    return this.ST.a(paramInt1, paramInt2, paramArrayOfInt1, paramArrayOfInt2, paramInt3);
+    return this.UI.a(paramInt1, paramInt2, paramArrayOfInt1, paramArrayOfInt2, paramInt3);
   }
   
   private boolean aN(int paramInt)
   {
-    return this.ST.aN(paramInt);
+    return this.UI.aN(paramInt);
   }
   
   private boolean aS(View paramView)
@@ -138,7 +143,7 @@ public class NestedScrollView
   {
     if (paramInt != 0)
     {
-      if (this.SK) {
+      if (this.Uz) {
         smoothScrollBy(0, paramInt);
       }
     }
@@ -218,7 +223,7 @@ public class NestedScrollView
     }
   }
   
-  private View b(boolean paramBoolean, int paramInt1, int paramInt2)
+  private View c(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = getFocusables(2);
     Object localObject = null;
@@ -356,23 +361,23 @@ public class NestedScrollView
   private void endDrag()
   {
     this.mIsBeingDragged = false;
-    fE();
+    fV();
     aM(0);
-    if (this.SD != null)
+    if (this.Us != null)
     {
-      this.SD.onRelease();
-      this.SE.onRelease();
+      this.Us.onRelease();
+      this.Ut.onRelease();
     }
   }
   
-  private void fD()
+  private void fU()
   {
     if (this.mVelocityTracker == null) {
       this.mVelocityTracker = VelocityTracker.obtain();
     }
   }
   
-  private void fE()
+  private void fV()
   {
     if (this.mVelocityTracker != null)
     {
@@ -381,23 +386,23 @@ public class NestedScrollView
     }
   }
   
-  private void fF()
+  private void fW()
   {
     if (getOverScrollMode() != 2)
     {
-      if (this.SD == null)
+      if (this.Us == null)
       {
         Context localContext = getContext();
-        this.SD = new EdgeEffect(localContext);
-        this.SE = new EdgeEffect(localContext);
+        this.Us = new EdgeEffect(localContext);
+        this.Ut = new EdgeEffect(localContext);
       }
       return;
     }
-    this.SD = null;
-    this.SE = null;
+    this.Us = null;
+    this.Ut = null;
   }
   
-  private boolean fi()
+  private boolean fz()
   {
     if (getChildCount() > 0)
     {
@@ -419,7 +424,7 @@ public class NestedScrollView
     if (paramInt1 == 33) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      View localView = b(bool1, paramInt2, paramInt3);
+      View localView = c(bool1, paramInt2, paramInt3);
       Object localObject = localView;
       if (localView == null) {
         localObject = this;
@@ -473,7 +478,7 @@ public class NestedScrollView
       for (;;)
       {
         if ((bool2) && (!aN(1))) {
-          this.SC.springBack(paramInt1, paramInt2, 0, 0, 0, getScrollRange());
+          this.Ur.springBack(paramInt1, paramInt2, 0, 0, 0, getScrollRange());
         }
         onOverScrolled(paramInt1, paramInt2, bool1, bool2);
         if (!bool1)
@@ -517,16 +522,16 @@ public class NestedScrollView
   
   private float getVerticalScrollFactorCompat()
   {
-    if (this.SU == 0.0F)
+    if (this.UJ == 0.0F)
     {
       TypedValue localTypedValue = new TypedValue();
       Context localContext = getContext();
       if (!localContext.getTheme().resolveAttribute(16842829, localTypedValue, true)) {
         throw new IllegalStateException("Expected theme to define listPreferredItemHeight.");
       }
-      this.SU = localTypedValue.getDimension(localContext.getResources().getDisplayMetrics());
+      this.UJ = localTypedValue.getDimension(localContext.getResources().getDisplayMetrics());
     }
-    return this.SU;
+    return this.UJ;
   }
   
   private void onSecondaryPointerUp(MotionEvent paramMotionEvent)
@@ -540,7 +545,7 @@ public class NestedScrollView
     label57:
     for (i = 1;; i = 0)
     {
-      this.SF = ((int)paramMotionEvent.getY(i));
+      this.Uu = ((int)paramMotionEvent.getY(i));
       this.mActivePointerId = paramMotionEvent.getPointerId(i);
       if (this.mVelocityTracker != null) {
         this.mVelocityTracker.clear();
@@ -592,7 +597,7 @@ public class NestedScrollView
     if (getChildCount() == 0) {
       return;
     }
-    if (AnimationUtils.currentAnimationTimeMillis() - this.SB > 250L)
+    if (AnimationUtils.currentAnimationTimeMillis() - this.Uq > 250L)
     {
       View localView = getChildAt(0);
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localView.getLayoutParams();
@@ -604,24 +609,19 @@ public class NestedScrollView
       int i1 = getPaddingBottom();
       paramInt1 = getScrollY();
       paramInt2 = Math.max(0, Math.min(paramInt1 + paramInt2, Math.max(0, k + (i + j) - (m - n - i1))));
-      this.SO = getScrollY();
-      this.SC.startScroll(getScrollX(), paramInt1, 0, paramInt2 - paramInt1);
+      this.UD = getScrollY();
+      this.Ur.startScroll(getScrollX(), paramInt1, 0, paramInt2 - paramInt1);
       t.W(this);
     }
     for (;;)
     {
-      this.SB = AnimationUtils.currentAnimationTimeMillis();
+      this.Uq = AnimationUtils.currentAnimationTimeMillis();
       return;
-      if (!this.SC.isFinished()) {
-        this.SC.abortAnimation();
+      if (!this.Ur.isFinished()) {
+        this.Ur.abortAnimation();
       }
       scrollBy(paramInt1, paramInt2);
     }
-  }
-  
-  private boolean t(int paramInt1, int paramInt2)
-  {
-    return this.ST.t(paramInt1, paramInt2);
   }
   
   public final void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -644,7 +644,7 @@ public class NestedScrollView
   
   public final void aM(int paramInt)
   {
-    this.ST.aM(paramInt);
+    this.UI.aM(paramInt);
   }
   
   public final void aY(int paramInt)
@@ -686,8 +686,8 @@ public class NestedScrollView
   
   public final void b(View paramView1, View paramView2, int paramInt1, int paramInt2)
   {
-    this.SS.NY = paramInt1;
-    t(2, paramInt2);
+    this.UH.PP = paramInt1;
+    A(2, paramInt2);
   }
   
   public int computeHorizontalScrollExtent()
@@ -708,14 +708,14 @@ public class NestedScrollView
   public void computeScroll()
   {
     int j = 0;
-    if (this.SC.computeScrollOffset())
+    if (this.Ur.computeScrollOffset())
     {
-      this.SC.getCurrX();
-      int m = this.SC.getCurrY();
-      int k = m - this.SO;
+      this.Ur.getCurrX();
+      int m = this.Ur.getCurrY();
+      int k = m - this.UD;
       int i = k;
-      if (a(0, k, this.SM, null, 1)) {
-        i = k - this.SM[1];
+      if (a(0, k, this.UB, null, 1)) {
+        i = k - this.UB[1];
       }
       int n;
       if (i != 0)
@@ -742,29 +742,29 @@ public class NestedScrollView
           }
           if (i != 0)
           {
-            fF();
+            fW();
             if ((m > 0) || (n <= 0)) {
               break label188;
             }
-            this.SD.onAbsorb((int)this.SC.getCurrVelocity());
+            this.Us.onAbsorb((int)this.Ur.getCurrVelocity());
           }
         }
       }
       for (;;)
       {
-        this.SO = m;
+        this.UD = m;
         t.W(this);
         return;
         label188:
         if ((m >= k) && (n < k)) {
-          this.SE.onAbsorb((int)this.SC.getCurrVelocity());
+          this.Ut.onAbsorb((int)this.Ur.getCurrVelocity());
         }
       }
     }
     if (aN(1)) {
       aM(1);
     }
-    this.SO = 0;
+    this.UD = 0;
   }
   
   public int computeVerticalScrollExtent()
@@ -808,12 +808,12 @@ public class NestedScrollView
   
   public boolean dispatchNestedFling(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    return this.ST.dispatchNestedFling(paramFloat1, paramFloat2, paramBoolean);
+    return this.UI.dispatchNestedFling(paramFloat1, paramFloat2, paramBoolean);
   }
   
   public boolean dispatchNestedPreFling(float paramFloat1, float paramFloat2)
   {
-    return this.ST.dispatchNestedPreFling(paramFloat1, paramFloat2);
+    return this.UI.dispatchNestedPreFling(paramFloat1, paramFloat2);
   }
   
   public boolean dispatchNestedPreScroll(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
@@ -835,10 +835,10 @@ public class NestedScrollView
     int j;
     int i2;
     int i1;
-    if (this.SD != null)
+    if (this.Us != null)
     {
       i3 = getScrollY();
-      if (!this.SD.isFinished())
+      if (!this.Us.isFinished())
       {
         i4 = paramCanvas.save();
         j = getWidth();
@@ -866,12 +866,12 @@ public class NestedScrollView
         }
       }
       paramCanvas.translate(i, m);
-      this.SD.setSize(j, k);
-      if (this.SD.draw(paramCanvas)) {
+      this.Us.setSize(j, k);
+      if (this.Us.draw(paramCanvas)) {
         t.W(this);
       }
       paramCanvas.restoreToCount(i4);
-      if (!this.SE.isFinished())
+      if (!this.Ut.isFinished())
       {
         i4 = paramCanvas.save();
         k = getWidth();
@@ -902,8 +902,8 @@ public class NestedScrollView
         }
         paramCanvas.translate(j - i, m);
         paramCanvas.rotate(180.0F, i, 0.0F);
-        this.SE.setSize(i, k);
-        if (this.SE.draw(paramCanvas)) {
+        this.Ut.setSize(i, k);
+        if (this.Ut.draw(paramCanvas)) {
           t.W(this);
         }
         paramCanvas.restoreToCount(i4);
@@ -918,7 +918,7 @@ public class NestedScrollView
     boolean bool2 = false;
     this.mTempRect.setEmpty();
     boolean bool1;
-    if (!fi())
+    if (!fz())
     {
       bool1 = bool2;
       if (isFocused())
@@ -987,9 +987,9 @@ public class NestedScrollView
   {
     if (getChildCount() > 0)
     {
-      t(2, 1);
-      this.SC.fling(getScrollX(), getScrollY(), 0, paramInt, 0, 0, -2147483648, 2147483647, 0, 0);
-      this.SO = getScrollY();
+      A(2, 1);
+      this.Ur.fling(getScrollX(), getScrollY(), 0, paramInt, 0, 0, -2147483648, 2147483647, 0, 0);
+      this.UD = getScrollY();
       t.W(this);
     }
   }
@@ -1044,7 +1044,7 @@ public class NestedScrollView
   
   public int getNestedScrollAxes()
   {
-    return this.SS.NY;
+    return this.UH.PP;
   }
   
   int getScrollRange()
@@ -1080,12 +1080,12 @@ public class NestedScrollView
   
   public boolean isNestedScrollingEnabled()
   {
-    return this.ST.NV;
+    return this.UI.PM;
   }
   
   public final void j(View paramView, int paramInt)
   {
-    this.SS.NY = 0;
+    this.UH.PP = 0;
     aM(paramInt);
   }
   
@@ -1106,7 +1106,7 @@ public class NestedScrollView
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.SH = false;
+    this.Uw = false;
   }
   
   public boolean onGenericMotionEvent(MotionEvent paramMotionEvent)
@@ -1169,13 +1169,13 @@ public class NestedScrollView
         else
         {
           i = (int)paramMotionEvent.getY(j);
-          if ((Math.abs(i - this.SF) > this.mTouchSlop) && ((getNestedScrollAxes() & 0x2) == 0))
+          if ((Math.abs(i - this.Uu) > this.mTouchSlop) && ((getNestedScrollAxes() & 0x2) == 0))
           {
             this.mIsBeingDragged = true;
-            this.SF = i;
-            fD();
+            this.Uu = i;
+            fU();
             this.mVelocityTracker.addMovement(paramMotionEvent);
-            this.SN = 0;
+            this.UC = 0;
             paramMotionEvent = getParent();
             if (paramMotionEvent != null)
             {
@@ -1197,29 +1197,29 @@ public class NestedScrollView
                   break label298;
                 }
                 this.mIsBeingDragged = false;
-                fE();
+                fV();
                 break;
                 i = 0;
                 continue;
                 i = 0;
               }
               label298:
-              this.SF = j;
+              this.Uu = j;
               this.mActivePointerId = paramMotionEvent.getPointerId(0);
               if (this.mVelocityTracker == null)
               {
                 this.mVelocityTracker = VelocityTracker.obtain();
                 label326:
                 this.mVelocityTracker.addMovement(paramMotionEvent);
-                this.SC.computeScrollOffset();
-                if (this.SC.isFinished()) {
+                this.Ur.computeScrollOffset();
+                if (this.Ur.isFinished()) {
                   break label378;
                 }
               }
               for (;;)
               {
                 this.mIsBeingDragged = bool;
-                t(2, 0);
+                A(2, 0);
                 break;
                 this.mVelocityTracker.clear();
                 break label326;
@@ -1228,8 +1228,8 @@ public class NestedScrollView
               }
               this.mIsBeingDragged = false;
               this.mActivePointerId = -1;
-              fE();
-              if (this.SC.springBack(getScrollX(), getScrollY(), 0, 0, 0, getScrollRange())) {
+              fV();
+              if (this.Ur.springBack(getScrollX(), getScrollY(), 0, 0, 0, getScrollRange())) {
                 t.W(this);
               }
               aM(0);
@@ -1246,17 +1246,17 @@ public class NestedScrollView
   {
     int i = 0;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.SG = false;
-    if ((this.SI != null) && (c(this.SI, this))) {
-      aT(this.SI);
+    this.Uv = false;
+    if ((this.Ux != null) && (c(this.Ux, this))) {
+      aT(this.Ux);
     }
-    this.SI = null;
-    if (!this.SH)
+    this.Ux = null;
+    if (!this.Uw)
     {
-      if (this.SP != null)
+      if (this.UE != null)
       {
-        scrollTo(getScrollX(), this.SP.SW);
-        this.SP = null;
+        scrollTo(getScrollX(), this.UE.UL);
+        this.UE = null;
       }
       paramInt1 = i;
       if (getChildCount() > 0)
@@ -1276,13 +1276,13 @@ public class NestedScrollView
       }
     }
     scrollTo(getScrollX(), getScrollY());
-    this.SH = true;
+    this.Uw = true;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (!this.SJ) {}
+    if (!this.Uy) {}
     View localView;
     FrameLayout.LayoutParams localLayoutParams;
     int i;
@@ -1377,22 +1377,22 @@ public class NestedScrollView
     }
     paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.SP = paramParcelable;
+    this.UE = paramParcelable;
     requestLayout();
   }
   
   protected Parcelable onSaveInstanceState()
   {
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
-    localSavedState.SW = getScrollY();
+    localSavedState.UL = getScrollY();
     return localSavedState;
   }
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.SV != null) {
-      this.SV.a(this, paramInt2);
+    if (this.UK != null) {
+      this.UK.a(this, paramInt2);
     }
   }
   
@@ -1421,13 +1421,13 @@ public class NestedScrollView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    fD();
+    fU();
     MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
     int i = paramMotionEvent.getActionMasked();
     if (i == 0) {
-      this.SN = 0;
+      this.UC = 0;
     }
-    localMotionEvent.offsetLocation(0.0F, this.SN);
+    localMotionEvent.offsetLocation(0.0F, this.UC);
     int k;
     int m;
     int j;
@@ -1448,7 +1448,7 @@ public class NestedScrollView
         if (getChildCount() == 0) {
           return false;
         }
-        if (!this.SC.isFinished()) {}
+        if (!this.Ur.isFinished()) {}
         for (boolean bool = true;; bool = false)
         {
           this.mIsBeingDragged = bool;
@@ -1459,12 +1459,12 @@ public class NestedScrollView
               localViewParent.requestDisallowInterceptTouchEvent(true);
             }
           }
-          if (!this.SC.isFinished()) {
-            this.SC.abortAnimation();
+          if (!this.Ur.isFinished()) {
+            this.Ur.abortAnimation();
           }
-          this.SF = ((int)paramMotionEvent.getY());
+          this.Uu = ((int)paramMotionEvent.getY());
           this.mActivePointerId = paramMotionEvent.getPointerId(0);
-          t(2, 0);
+          A(2, 0);
           break;
         }
         k = paramMotionEvent.findPointerIndex(this.mActivePointerId);
@@ -1474,13 +1474,13 @@ public class NestedScrollView
         new StringBuilder("Invalid pointerId=").append(this.mActivePointerId).append(" in onTouchEvent");
       }
       m = (int)paramMotionEvent.getY(k);
-      j = this.SF - m;
+      j = this.Uu - m;
       i = j;
-      if (a(0, j, this.SM, this.SL, 0))
+      if (a(0, j, this.UB, this.UA, 0))
       {
-        i = j - this.SM[1];
-        localMotionEvent.offsetLocation(0.0F, this.SL[1]);
-        this.SN += this.SL[1];
+        i = j - this.UB[1];
+        localMotionEvent.offsetLocation(0.0F, this.UA[1]);
+        this.UC += this.UA[1];
       }
       if ((!this.mIsBeingDragged) && (Math.abs(i) > this.mTouchSlop))
       {
@@ -1498,7 +1498,7 @@ public class NestedScrollView
     label376:
     while (this.mIsBeingDragged)
     {
-      this.SF = (m - this.SL[1]);
+      this.Uu = (m - this.UA[1]);
       int n = getScrollY();
       m = getScrollRange();
       j = getOverScrollMode();
@@ -1509,12 +1509,12 @@ public class NestedScrollView
           this.mVelocityTracker.clear();
         }
         int i1 = getScrollY() - n;
-        if (!a(0, i1, 0, i - i1, this.SL, 0)) {
+        if (!a(0, i1, 0, i - i1, this.UA, 0)) {
           break label549;
         }
-        this.SF -= this.SL[1];
-        localMotionEvent.offsetLocation(0.0F, this.SL[1]);
-        this.SN += this.SL[1];
+        this.Uu -= this.UA[1];
+        localMotionEvent.offsetLocation(0.0F, this.UA[1]);
+        this.UC += this.UA[1];
         break;
         i += this.mTouchSlop;
         break label376;
@@ -1522,24 +1522,24 @@ public class NestedScrollView
       if (j == 0) {
         break;
       }
-      fF();
+      fW();
       j = n + i;
       if (j < 0)
       {
-        i.a(this.SD, i / getHeight(), paramMotionEvent.getX(k) / getWidth());
-        if (!this.SE.isFinished()) {
-          this.SE.onRelease();
+        i.a(this.Us, i / getHeight(), paramMotionEvent.getX(k) / getWidth());
+        if (!this.Ut.isFinished()) {
+          this.Ut.onRelease();
         }
       }
-      while ((this.SD != null) && ((!this.SD.isFinished()) || (!this.SE.isFinished())))
+      while ((this.Us != null) && ((!this.Us.isFinished()) || (!this.Ut.isFinished())))
       {
         t.W(this);
         break;
         if (j > m)
         {
-          i.a(this.SE, i / getHeight(), 1.0F - paramMotionEvent.getX(k) / getWidth());
-          if (!this.SD.isFinished()) {
-            this.SD.onRelease();
+          i.a(this.Ut, i / getHeight(), 1.0F - paramMotionEvent.getX(k) / getWidth());
+          if (!this.Us.isFinished()) {
+            this.Us.onRelease();
           }
         }
       }
@@ -1554,36 +1554,36 @@ public class NestedScrollView
         this.mActivePointerId = -1;
         endDrag();
         break;
-        if (this.SC.springBack(getScrollX(), getScrollY(), 0, 0, 0, getScrollRange())) {
+        if (this.Ur.springBack(getScrollX(), getScrollY(), 0, 0, 0, getScrollRange())) {
           t.W(this);
         }
       }
-      if ((this.mIsBeingDragged) && (getChildCount() > 0) && (this.SC.springBack(getScrollX(), getScrollY(), 0, 0, 0, getScrollRange()))) {
+      if ((this.mIsBeingDragged) && (getChildCount() > 0) && (this.Ur.springBack(getScrollX(), getScrollY(), 0, 0, 0, getScrollRange()))) {
         t.W(this);
       }
       this.mActivePointerId = -1;
       endDrag();
       break;
       i = paramMotionEvent.getActionIndex();
-      this.SF = ((int)paramMotionEvent.getY(i));
+      this.Uu = ((int)paramMotionEvent.getY(i));
       this.mActivePointerId = paramMotionEvent.getPointerId(i);
       break;
       onSecondaryPointerUp(paramMotionEvent);
-      this.SF = ((int)paramMotionEvent.getY(paramMotionEvent.findPointerIndex(this.mActivePointerId)));
+      this.Uu = ((int)paramMotionEvent.getY(paramMotionEvent.findPointerIndex(this.mActivePointerId)));
       break;
     }
   }
   
   public void requestChildFocus(View paramView1, View paramView2)
   {
-    if (!this.SG) {
+    if (!this.Uv) {
       aT(paramView2);
     }
     for (;;)
     {
       super.requestChildFocus(paramView1, paramView2);
       return;
-      this.SI = paramView2;
+      this.Ux = paramView2;
     }
   }
   
@@ -1610,14 +1610,14 @@ public class NestedScrollView
   public void requestDisallowInterceptTouchEvent(boolean paramBoolean)
   {
     if (paramBoolean) {
-      fE();
+      fV();
     }
     super.requestDisallowInterceptTouchEvent(paramBoolean);
   }
   
   public void requestLayout()
   {
-    this.SG = true;
+    this.Uv = true;
     super.requestLayout();
   }
   
@@ -1649,26 +1649,26 @@ public class NestedScrollView
   
   public void setFillViewport(boolean paramBoolean)
   {
-    if (paramBoolean != this.SJ)
+    if (paramBoolean != this.Uy)
     {
-      this.SJ = paramBoolean;
+      this.Uy = paramBoolean;
       requestLayout();
     }
   }
   
   public void setNestedScrollingEnabled(boolean paramBoolean)
   {
-    this.ST.setNestedScrollingEnabled(paramBoolean);
+    this.UI.setNestedScrollingEnabled(paramBoolean);
   }
   
   public void setOnScrollChangeListener(b paramb)
   {
-    this.SV = paramb;
+    this.UK = paramb;
   }
   
   public void setSmoothScrollingEnabled(boolean paramBoolean)
   {
-    this.SK = paramBoolean;
+    this.Uz = paramBoolean;
   }
   
   public boolean shouldDelayChildPressedState()
@@ -1678,7 +1678,7 @@ public class NestedScrollView
   
   public boolean startNestedScroll(int paramInt)
   {
-    return t(paramInt, 0);
+    return A(paramInt, 0);
   }
   
   public void stopNestedScroll()
@@ -1690,12 +1690,12 @@ public class NestedScrollView
     extends View.BaseSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
-    public int SW;
+    public int UL;
     
     SavedState(Parcel paramParcel)
     {
       super();
-      this.SW = paramParcel.readInt();
+      this.UL = paramParcel.readInt();
     }
     
     SavedState(Parcelable paramParcelable)
@@ -1705,13 +1705,13 @@ public class NestedScrollView
     
     public String toString()
     {
-      return "HorizontalScrollView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " scrollPosition=" + this.SW + "}";
+      return "HorizontalScrollView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " scrollPosition=" + this.UL + "}";
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.SW);
+      paramParcel.writeInt(this.UL);
     }
   }
   

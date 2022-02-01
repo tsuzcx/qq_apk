@@ -11,13 +11,13 @@ import com.tencent.mm.vending.j.d;
 public class g
   implements b<f>
 {
-  protected f iBj;
-  public final d iBk;
-  public final a iBl;
-  public final e iBm;
-  public final c iBn;
-  public final b iBo;
-  public final f iBp;
+  protected f iUt;
+  public final d iUu;
+  public final a iUv;
+  public final e iUw;
+  public final c iUx;
+  public final b iUy;
+  public final f iUz;
   
   public g()
   {
@@ -29,13 +29,13 @@ public class g
   private g(f paramf)
   {
     AppMethodBeat.i(63469);
-    this.iBk = new d();
-    this.iBl = new a();
-    this.iBm = new e();
-    this.iBn = new c();
-    this.iBo = new b();
-    this.iBp = new f();
-    this.iBj = paramf;
+    this.iUu = new d();
+    this.iUv = new a();
+    this.iUw = new e();
+    this.iUx = new c();
+    this.iUy = new b();
+    this.iUz = new f();
+    this.iUt = paramf;
     AppMethodBeat.o(63469);
   }
   
@@ -44,7 +44,7 @@ public class g
   {
     public a() {}
     
-    public final String Ua()
+    public final String Wr()
     {
       return "Vending.LOGIC";
     }
@@ -55,7 +55,7 @@ public class g
   {
     public b() {}
     
-    public final String Ua()
+    public final String Wr()
     {
       return "Vending.LOGIC";
     }
@@ -66,7 +66,7 @@ public class g
   {
     public c() {}
     
-    public final String Ua()
+    public final String Wr()
     {
       return "Vending.LOGIC";
     }
@@ -85,15 +85,15 @@ public class g
   {
     public d() {}
     
-    public final String Ua()
+    public final String Wr()
     {
       return "Vending.LOGIC";
     }
     
-    public final c<w> aOa()
+    public final c<w> aRm()
     {
       AppMethodBeat.i(63463);
-      c localc = com.tencent.mm.vending.g.g.fxs().c(this);
+      c localc = com.tencent.mm.vending.g.g.fOf().c(this);
       AppMethodBeat.o(63463);
       return localc;
     }
@@ -104,12 +104,12 @@ public class g
   {
     public e() {}
     
-    public final String Ua()
+    public final String Wr()
     {
       return "Vending.LOGIC";
     }
     
-    public final c<Void> x(String paramString1, String paramString2, String paramString3)
+    public final c<Void> w(String paramString1, String paramString2, String paramString3)
     {
       AppMethodBeat.i(63465);
       paramString1 = com.tencent.mm.vending.g.g.h(paramString1, paramString2, paramString3).c(this);
@@ -123,7 +123,7 @@ public class g
   {
     public f() {}
     
-    public final String Ua()
+    public final String Wr()
     {
       return "Vending.LOGIC";
     }
@@ -131,7 +131,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.b.g
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.fts.a.a;
 
 public final class f
 {
-  public int bPH;
-  public CharSequence syd;
+  public int bZU;
+  public CharSequence tuE;
 }
 
 

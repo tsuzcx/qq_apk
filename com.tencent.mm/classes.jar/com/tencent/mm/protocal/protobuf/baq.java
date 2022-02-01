@@ -4,50 +4,41 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class baq
-  extends cpx
+  extends cvc
 {
-  public String pAD;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32253);
+    AppMethodBeat.i(192507);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
+        paramVarArgs.lC(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.pAD != null) {
-        paramVarArgs.d(2, this.pAD);
-      }
-      AppMethodBeat.o(32253);
+      AppMethodBeat.o(192507);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label378;
+        break label310;
       }
     }
-    label378:
-    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label310:
+    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.pAD != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.pAD);
-      }
-      AppMethodBeat.o(32253);
-      return i;
+      AppMethodBeat.o(192507);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(32253);
+        AppMethodBeat.o(192507);
         return 0;
       }
       if (paramInt == 3)
@@ -58,36 +49,32 @@ public final class baq
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32253);
+          AppMethodBeat.o(192507);
           return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbaq.BaseRequest = ((iv)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(32253);
-          return 0;
         }
-        localbaq.pAD = ((f.a.a.a.a)localObject1).LVo.readString();
-        AppMethodBeat.o(32253);
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new jc();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localbaq.BaseRequest = ((jc)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(192507);
         return 0;
       }
-      AppMethodBeat.o(32253);
+      AppMethodBeat.o(192507);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.baq
  * JD-Core Version:    0.7.0.1
  */

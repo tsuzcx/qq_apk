@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.m.e;
-import com.tencent.mm.m.g;
-import com.tencent.mm.plugin.appbrand.u;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.protocal.protobuf.btg;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
 
-final class az
+public class az
+  extends j<ay>
 {
-  final String appId;
+  public static final String[] hEf;
   
-  az(String paramString)
+  static
   {
-    this.appId = paramString;
+    AppMethodBeat.i(146072);
+    hEf = new String[] { j.getCreateSQLs(ay.jGU, "LaunchWxaAppPBTable") };
+    AppMethodBeat.o(146072);
   }
   
-  final boolean bnH()
+  public az(e parame)
   {
-    AppMethodBeat.i(47307);
-    if (g.ZY().getInt("WeAppForbiddenSwitch", 0) == 1)
+    super(parame, ay.jGU, "LaunchWxaAppPBTable", ay.INDEX_CREATE);
+  }
+  
+  public final boolean b(String paramString, btg parambtg)
+  {
+    AppMethodBeat.i(146071);
+    if ((TextUtils.isEmpty(paramString)) || (parambtg == null))
     {
-      ac.i("MicroMsg.AppBrand.PreLaunchCheckForOversea", "startApp, WeAppForbiddenSwitch == 1, go webview, appId %s", new Object[] { this.appId });
-      Intent localIntent = new Intent().putExtra("rawUrl", u.Hv(this.appId)).putExtra("forceHideShare", true);
-      Context localContext = ai.getContext();
-      if (!(localContext instanceof Activity)) {
-        localIntent.addFlags(268435456);
-      }
-      d.b(localContext, "webview", ".ui.tools.WebViewUI", localIntent);
-      AppMethodBeat.o(47307);
-      return true;
+      AppMethodBeat.o(146071);
+      return false;
     }
-    AppMethodBeat.o(47307);
-    return false;
+    ay localay = new ay();
+    localay.field_appId = paramString;
+    localay.field_launchPB = parambtg;
+    boolean bool = super.replace(localay);
+    AppMethodBeat.o(146071);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.az
  * JD-Core Version:    0.7.0.1
  */

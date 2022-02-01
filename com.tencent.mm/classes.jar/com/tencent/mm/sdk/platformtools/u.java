@@ -1,69 +1,84 @@
 package com.tencent.mm.sdk.platformtools;
 
+import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public final class u
 {
-  private static final Pattern Gra;
-  private static final Pattern Grb;
-  private static final Pattern Grc;
+  public ArrayMap<String, Object> IcM;
+  public boolean IcN;
   
-  static
+  public u()
   {
-    AppMethodBeat.i(157562);
-    Gra = Pattern.compile("^(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}$");
-    Grb = Pattern.compile("^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$");
-    Grc = Pattern.compile("^((?:[0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4})*)?)::((?:[0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4})*)?)$");
-    AppMethodBeat.o(157562);
+    AppMethodBeat.i(125223);
+    this.IcM = null;
+    this.IcN = false;
+    this.IcM = new ArrayMap();
+    AppMethodBeat.o(125223);
   }
   
-  public static InetAddress aKH(String paramString)
+  private static void a(String paramString1, Object paramObject1, String paramString2, Object paramObject2, ClassCastException paramClassCastException)
   {
-    AppMethodBeat.i(157561);
-    if (isIPv4Address(paramString))
-    {
-      paramString = InetAddress.getByName(paramString);
-      AppMethodBeat.o(157561);
-      return paramString;
-    }
-    if (isIPv6Address(paramString))
-    {
-      paramString = InetAddress.getByName(paramString);
-      AppMethodBeat.o(157561);
-      return paramString;
-    }
-    paramString = new UnknownHostException("invalid ipv4 or ipv6 dotted string");
-    AppMethodBeat.o(157561);
-    throw paramString;
+    AppMethodBeat.i(125224);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Key ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" expected ");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" but value was a ");
+    localStringBuilder.append(paramObject1.getClass().getName());
+    localStringBuilder.append(".  The default value ");
+    localStringBuilder.append(paramObject2);
+    localStringBuilder.append(" was returned.");
+    ad.w("MicroMsg.ImmutableBundle", localStringBuilder.toString());
+    ad.w("MicroMsg.ImmutableBundle", "Attempt to cast generated internal exception:", new Object[] { paramClassCastException });
+    AppMethodBeat.o(125224);
   }
   
-  public static boolean isIPv4Address(String paramString)
+  public final boolean aQm(String paramString)
   {
-    AppMethodBeat.i(157559);
-    boolean bool = Gra.matcher(paramString).matches();
-    AppMethodBeat.o(157559);
-    return bool;
-  }
-  
-  public static boolean isIPv6Address(String paramString)
-  {
-    AppMethodBeat.i(157560);
-    if ((Grb.matcher(paramString).matches()) || (Grc.matcher(paramString).matches()))
+    AppMethodBeat.i(125225);
+    Object localObject = this.IcM.get(paramString);
+    if (localObject == null)
     {
-      AppMethodBeat.o(157560);
-      return true;
+      AppMethodBeat.o(125225);
+      return false;
     }
-    AppMethodBeat.o(157560);
+    try
+    {
+      boolean bool = ((Boolean)localObject).booleanValue();
+      AppMethodBeat.o(125225);
+      return bool;
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      a(paramString, localObject, "Boolean", Boolean.FALSE, localClassCastException);
+      AppMethodBeat.o(125225);
+    }
     return false;
+  }
+  
+  public final String getString(String paramString)
+  {
+    AppMethodBeat.i(125226);
+    Object localObject = this.IcM.get(paramString);
+    try
+    {
+      String str = (String)localObject;
+      AppMethodBeat.o(125226);
+      return str;
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      a(paramString, localObject, "String", "<null>", localClassCastException);
+      AppMethodBeat.o(125226);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.u
  * JD-Core Version:    0.7.0.1
  */

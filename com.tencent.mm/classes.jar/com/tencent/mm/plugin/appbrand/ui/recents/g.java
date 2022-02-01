@@ -9,72 +9,72 @@ import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 
 public final class g
 {
-  public final View asD;
-  private ThreeDotsLoadingView mkI;
-  View mkJ;
-  private View mkK;
+  public final View auu;
+  private ThreeDotsLoadingView mLk;
+  View mLl;
+  private View mLm;
   
   public g(Context paramContext, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(49140);
-    this.asD = LayoutInflater.from(paramContext).inflate(2131493035, paramViewGroup, false);
-    this.mkI = ((ThreeDotsLoadingView)this.asD.findViewById(2131301514));
-    this.mkJ = this.asD.findViewById(2131300215);
-    this.mkK = this.asD.findViewById(2131299491);
+    this.auu = LayoutInflater.from(paramContext).inflate(2131493035, paramViewGroup, false);
+    this.mLk = ((ThreeDotsLoadingView)this.auu.findViewById(2131301514));
+    this.mLl = this.auu.findViewById(2131300215);
+    this.mLm = this.auu.findViewById(2131299491);
     AppMethodBeat.o(49140);
   }
   
-  public final boolean bwE()
+  public final boolean bAK()
   {
-    AppMethodBeat.i(187059);
-    if ((this.mkI != null) && (this.mkI.isShown()))
+    AppMethodBeat.i(188938);
+    if ((this.mLk != null) && (this.mLk.isShown()))
     {
-      AppMethodBeat.o(187059);
+      AppMethodBeat.o(188938);
       return true;
     }
-    AppMethodBeat.o(187059);
+    AppMethodBeat.o(188938);
     return false;
   }
   
-  public final void bwF()
+  public final void bAL()
   {
     AppMethodBeat.i(49141);
-    if (this.mkJ != null) {
-      this.mkJ.setBackgroundResource(2131101053);
+    if (this.mLl != null) {
+      this.mLl.setBackgroundResource(2131101053);
     }
     AppMethodBeat.o(49141);
   }
   
-  public final View bwp()
+  public final View bAv()
   {
-    return this.asD;
+    return this.auu;
   }
   
-  public final void hE(boolean paramBoolean)
+  public final void hO(boolean paramBoolean)
   {
     AppMethodBeat.i(49139);
     if (paramBoolean)
     {
-      if (this.mkI != null)
+      if (this.mLk != null)
       {
-        this.mkI.setVisibility(0);
-        this.mkI.fuW();
+        this.mLk.setVisibility(0);
+        this.mLk.fLJ();
       }
-      if (this.mkK != null)
+      if (this.mLm != null)
       {
-        this.mkK.setVisibility(8);
+        this.mLm.setVisibility(8);
         AppMethodBeat.o(49139);
       }
     }
     else
     {
-      if (this.mkI != null)
+      if (this.mLk != null)
       {
-        this.mkI.fuX();
-        this.mkI.setVisibility(8);
+        this.mLk.fLK();
+        this.mLk.setVisibility(8);
       }
-      if (this.mkK != null) {
-        this.mkK.setVisibility(0);
+      if (this.mLm != null) {
+        this.mLm.setVisibility(0);
       }
     }
     AppMethodBeat.o(49139);
@@ -82,8 +82,8 @@ public final class g
   
   public final void onDetached()
   {
-    this.mkI = null;
-    this.mkK = null;
+    this.mLk = null;
+    this.mLm = null;
   }
 }
 

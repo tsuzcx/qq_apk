@@ -1,99 +1,81 @@
 package com.tencent.mm.ui.chatting.h;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d.a;
-import com.tencent.mm.br.d.b;
-import com.tencent.mm.ui.chatting.d.a;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.WeakHashMap;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.base.MMPullDownView;
+import com.tencent.mm.ui.chatting.d.b.s;
+import com.tencent.mm.ui.chatting.d.b.u;
+import com.tencent.mm.ui.chatting.e.a;
+import com.tencent.mm.ui.chatting.view.MMChattingListView;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class b
-  implements d.b
+  implements f<bu>
 {
-  private static WeakHashMap<Fragment, HashMap<Integer, d.a>> Ifi;
-  private WeakReference<a> Ifj;
+  private MMChattingListView JVb;
+  public a JVc;
+  private a cWM;
   
-  static
+  public b(a parama, MMChattingListView paramMMChattingListView)
   {
-    AppMethodBeat.i(36442);
-    Ifi = new WeakHashMap();
-    AppMethodBeat.o(36442);
+    this.JVb = paramMMChattingListView;
+    this.cWM = parama;
   }
   
-  public b(a parama)
+  public final void a(d.d paramd)
   {
-    AppMethodBeat.i(36436);
-    this.Ifj = new WeakReference(parama);
-    AppMethodBeat.o(36436);
-  }
-  
-  private static void a(Fragment paramFragment, int paramInt, d.a parama)
-  {
-    AppMethodBeat.i(36438);
-    HashMap localHashMap2 = (HashMap)Ifi.get(paramFragment);
-    HashMap localHashMap1 = localHashMap2;
-    if (localHashMap2 == null)
+    AppMethodBeat.i(36420);
+    this.cWM.JOY = false;
+    ad.i("MicroMsg.ChattingLoader.ChattingViewCallback", "[onViewUpdate] result:%s", new Object[] { paramd.toString() });
+    Object localObject = (s)this.cWM.bh(s.class);
+    if ((localObject != null) && (((s)localObject).fDC() != null) && (((s)localObject).fDC().uCj))
     {
-      localHashMap1 = new HashMap();
-      Ifi.put(paramFragment, localHashMap1);
+      ad.i("MicroMsg.ChattingLoader.ChattingViewCallback", "keyboard is shown! scroll to last");
+      this.cWM.xR(true);
     }
-    localHashMap1.put(Integer.valueOf(paramInt), parama);
-    AppMethodBeat.o(36438);
-  }
-  
-  public static d.a d(Fragment paramFragment, int paramInt)
-  {
-    AppMethodBeat.i(36437);
-    paramFragment = (HashMap)Ifi.get(paramFragment);
-    if (paramFragment != null)
+    if (paramd.JVl != d.a.JVf)
     {
-      paramFragment = (d.a)paramFragment.remove(Integer.valueOf(paramInt));
-      AppMethodBeat.o(36437);
-      return paramFragment;
+      localObject = this.JVb;
+      MMPullDownView.o((ViewGroup)((MMPullDownView)localObject).JmB, 4);
+      MMPullDownView.o((ViewGroup)((MMPullDownView)localObject).BKV, 4);
     }
-    AppMethodBeat.o(36437);
-    return null;
+    ((u)this.cWM.bh(u.class)).startTimer();
+    if (this.JVc != null) {
+      this.JVc.a(this.JVb, paramd);
+    }
+    AppMethodBeat.o(36420);
   }
   
-  public final void a(Intent paramIntent, int paramInt, d.a parama)
+  public final boolean b(d.a parama)
   {
-    AppMethodBeat.i(36440);
-    Fragment localFragment = getFragment();
-    if (localFragment == null)
+    AppMethodBeat.i(194226);
+    if (!this.cWM.cBJ)
     {
-      AppMethodBeat.o(36440);
-      return;
+      ad.e("MicroMsg.ChattingLoader.ChattingViewCallback", "[onViewUpdate] this ChattingUI has been in background!");
+      AppMethodBeat.o(194226);
+      return false;
     }
-    a(localFragment, paramInt, parama);
-    localFragment.startActivityForResult(paramIntent, paramInt);
-    AppMethodBeat.o(36440);
-  }
-  
-  public final Context getContext()
-  {
-    AppMethodBeat.i(36441);
-    FragmentActivity localFragmentActivity = getFragment().getActivity();
-    AppMethodBeat.o(36441);
-    return localFragmentActivity;
-  }
-  
-  public final Fragment getFragment()
-  {
-    AppMethodBeat.i(36439);
-    Object localObject = (a)this.Ifj.get();
-    if (localObject != null)
+    if (!this.cWM.JOX)
     {
-      localObject = ((a)localObject).HZF;
-      AppMethodBeat.o(36439);
-      return localObject;
+      ad.e("MicroMsg.ChattingLoader.ChattingViewCallback", "current ChattingUI lose focus! action=%s", new Object[] { parama });
+      a locala = this.cWM;
+      ad.i("MicroMsg.ChattingContext", "trace setNeedUpdateUI, needUpdateUI %s, trace %s", new Object[] { Boolean.TRUE, bt.flS() });
+      locala.JOY = true;
+      locala.JPb.add(parama);
+      AppMethodBeat.o(194226);
+      return false;
     }
-    AppMethodBeat.o(36439);
-    return null;
+    AppMethodBeat.o(194226);
+    return true;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(MMChattingListView paramMMChattingListView, d.d<bu> paramd);
   }
 }
 

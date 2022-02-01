@@ -7,6 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 
 public class ModulePkgInfo
   implements Parcelable, IPkgInfo, Cloneable
@@ -76,7 +77,7 @@ public class ModulePkgInfo
   public long getPkgSize()
   {
     AppMethodBeat.i(182977);
-    if (!i.eA(this.pkgPath))
+    if (!i.fv(this.pkgPath))
     {
       localObject = new FileNotFoundException();
       AppMethodBeat.o(182977);
@@ -104,9 +105,9 @@ public class ModulePkgInfo
   public long lastModified()
   {
     AppMethodBeat.i(182973);
-    if (i.eA(this.pkgPath))
+    if (i.fv(this.pkgPath))
     {
-      long l = i.aSq(this.pkgPath);
+      long l = i.aYp(this.pkgPath);
       AppMethodBeat.o(182973);
       return l;
     }
@@ -138,6 +139,14 @@ public class ModulePkgInfo
       AppMethodBeat.o(134271);
       return;
     }
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(199409);
+    String str = "ModulePkgInfo{pkgPath='" + this.pkgPath + '\'' + ", name='" + this.name + '\'' + ", md5='" + this.md5 + '\'' + ", independent=" + this.independent + ", aliases=" + Arrays.toString(this.aliases) + ", pkgVersion=" + this.pkgVersion + '}';
+    AppMethodBeat.o(199409);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

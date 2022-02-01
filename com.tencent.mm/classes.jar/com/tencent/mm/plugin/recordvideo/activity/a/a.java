@@ -7,39 +7,39 @@ import com.tencent.mm.compatible.h.c;
 import com.tencent.mm.media.widget.camerarecordview.b.b;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.sight.base.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.n.n;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/activity/controller/RecordUIController;", "", "()V", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "checkConfigProvider", "", "toWhere", "fileCheck", "path", "", "formatCheck", "getCaptureInfoFromProvider", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "setUpProvider", "", "Companion", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/activity/controller/RecordUIController;", "", "()V", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "checkConfigProvider", "", "toWhere", "fileCheck", "path", "", "formatCheck", "getCaptureInfoFromProvider", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "setUpProvider", "", "Companion", "plugin-recordvideo_release"})
 public final class a
 {
-  public static final a.a wlz;
+  public static final a.a xtv;
   
   static
   {
     AppMethodBeat.i(75067);
-    wlz = new a.a((byte)0);
+    xtv = new a.a((byte)0);
     AppMethodBeat.o(75067);
   }
   
-  public static int aqv(String paramString)
+  public static int avv(String paramString)
   {
     AppMethodBeat.i(75064);
     if (TextUtils.isEmpty((CharSequence)paramString))
     {
-      ac.e("MicroMsg.MMRecordUI", "fileCheck path is null");
+      ad.e("MicroMsg.MMRecordUI", "fileCheck path is null");
       AppMethodBeat.o(75064);
       return 1000;
     }
-    if (i.aSp(paramString) < 1L)
+    if (i.aYo(paramString) < 1L)
     {
-      ac.e("MicroMsg.MMRecordUI", "fileCheck file size is 0. path: ".concat(String.valueOf(paramString)));
+      ad.e("MicroMsg.MMRecordUI", "fileCheck file size is 0. path: ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(75064);
       return 1001;
     }
@@ -47,11 +47,11 @@ public final class a
     return 999;
   }
   
-  public static int aqw(String paramString)
+  public static int avw(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(75065);
-    long l = bs.Gn();
+    long l = bt.HI();
     c localc = new c();
     for (;;)
     {
@@ -73,22 +73,22 @@ public final class a
         if (i < j)
         {
           localMediaFormat = localc.getTrackFormat(i);
-          k.g(localMediaFormat, "extractor.getTrackFormat(i)");
+          p.g(localMediaFormat, "extractor.getTrackFormat(i)");
           if (!localMediaFormat.containsKey("mime"))
           {
-            ac.d("MicroMsg.RecordUIController", "find video mime : not found.");
+            ad.d("MicroMsg.RecordUIController", "find video mime : not found.");
             localObject5 = localObject2;
             localObject6 = str1;
             break label386;
           }
           str2 = localMediaFormat.getString("mime");
-          ac.d("MicroMsg.RecordUIController", "find video mime : %s", new Object[] { str2 });
+          ad.d("MicroMsg.RecordUIController", "find video mime : %s", new Object[] { str2 });
           localObject5 = localObject2;
           localObject6 = str1;
           if (str2 == null) {
             break label386;
           }
-          if (n.nb(str2, "video/"))
+          if (n.nz(str2, "video/"))
           {
             localObject3 = localObject2;
             localObject4 = str1;
@@ -102,7 +102,7 @@ public final class a
         }
         else
         {
-          ac.i("MicroMsg.RecordUIController", "cost time: " + bs.aO(l));
+          ad.i("MicroMsg.RecordUIController", "cost time: " + bt.aO(l));
           if (localObject3 == null) {
             continue;
           }
@@ -110,7 +110,7 @@ public final class a
             continue;
           }
           str1 = "";
-          boolean bool = n.I("audio/mp4a-latm", str1, true);
+          boolean bool = n.H("audio/mp4a-latm", str1, true);
           if (!bool) {
             continue;
           }
@@ -118,7 +118,7 @@ public final class a
         }
         localObject3 = localObject2;
         localObject4 = str1;
-        if (!n.nb(str2, "audio/")) {
+        if (!n.nz(str2, "audio/")) {
           break label401;
         }
         localObject3 = localObject2;
@@ -132,12 +132,12 @@ public final class a
         str1 = localObject3.getString("mime");
         continue;
         return 999;
-        ac.d("MicroMsg.RecordUIController", "mediaItem format:%s, videoPath:%s", new Object[] { localObject4, paramString });
+        ad.d("MicroMsg.RecordUIController", "mediaItem format:%s, videoPath:%s", new Object[] { localObject4, paramString });
         localc.release();
       }
       catch (Exception localException)
       {
-        ac.d("MicroMsg.RecordUIController", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { paramString, localException.getMessage() });
+        ad.d("MicroMsg.RecordUIController", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { paramString, localException.getMessage() });
         localc.release();
         continue;
       }
@@ -170,23 +170,23 @@ public final class a
   public static b b(RecordConfigProvider paramRecordConfigProvider)
   {
     AppMethodBeat.i(75066);
-    k.h(paramRecordConfigProvider, "configProvider");
+    p.h(paramRecordConfigProvider, "configProvider");
     b localb = new b(null, null, false, null, null, null, null, null, 16379);
-    Object localObject = paramRecordConfigProvider.wqJ;
+    Object localObject = paramRecordConfigProvider.xyA;
     if (localObject != null) {
-      localb.hbP = ((ArrayList)localObject);
+      localb.htX = ((ArrayList)localObject);
     }
-    localObject = paramRecordConfigProvider.rHT;
+    localObject = paramRecordConfigProvider.sCR;
     if (localObject != null) {
-      localb.hbO = ((ArrayList)localObject);
+      localb.htW = ((ArrayList)localObject);
     }
-    localObject = (Collection)paramRecordConfigProvider.rHT;
+    localObject = (Collection)paramRecordConfigProvider.sCR;
     if ((localObject == null) || (((Collection)localObject).isEmpty()))
     {
       i = 1;
       if (i != 0)
       {
-        localObject = (Collection)paramRecordConfigProvider.wqJ;
+        localObject = (Collection)paramRecordConfigProvider.xyA;
         if ((localObject != null) && (!((Collection)localObject).isEmpty())) {
           break label290;
         }
@@ -195,31 +195,31 @@ public final class a
     label290:
     for (int i = 1;; i = 0)
     {
-      if ((i == 0) && (paramRecordConfigProvider.wqJ.size() == 1))
+      if ((i == 0) && (paramRecordConfigProvider.xyA.size() == 1))
       {
-        localObject = paramRecordConfigProvider.wqJ.get(0);
-        k.g(localObject, "configProvider.videos[0]");
-        localb.vt((String)localObject);
-        localb.hbI = e.asx(localb.hbF).videoDuration;
+        localObject = paramRecordConfigProvider.xyA.get(0);
+        p.g(localObject, "configProvider.videos[0]");
+        localb.yk((String)localObject);
+        localb.htQ = e.axx(localb.htN).videoDuration;
         localObject = paramRecordConfigProvider.thumbPath;
-        k.g(localObject, "configProvider.thumbPath");
-        localb.vu((String)localObject);
+        p.g(localObject, "configProvider.thumbPath");
+        localb.yl((String)localObject);
       }
-      if (!TextUtils.isEmpty((CharSequence)paramRecordConfigProvider.wqH))
+      if (!TextUtils.isEmpty((CharSequence)paramRecordConfigProvider.xyy))
       {
-        localObject = paramRecordConfigProvider.wqH;
-        k.g(localObject, "configProvider.inputPhotoPath");
-        localb.vv((String)localObject);
+        localObject = paramRecordConfigProvider.xyy;
+        p.g(localObject, "configProvider.inputPhotoPath");
+        localb.ym((String)localObject);
       }
-      if ((!TextUtils.isEmpty((CharSequence)paramRecordConfigProvider.wqF)) && (i.eA(paramRecordConfigProvider.wqF)))
+      if ((!TextUtils.isEmpty((CharSequence)paramRecordConfigProvider.xyw)) && (i.fv(paramRecordConfigProvider.xyw)))
       {
-        localObject = paramRecordConfigProvider.wqF;
-        k.g(localObject, "configProvider.inputVideoPath");
-        localb.vt((String)localObject);
-        localb.hbI = e.asx(paramRecordConfigProvider.wqF).videoDuration;
+        localObject = paramRecordConfigProvider.xyw;
+        p.g(localObject, "configProvider.inputVideoPath");
+        localb.yk((String)localObject);
+        localb.htQ = e.axx(paramRecordConfigProvider.xyw).videoDuration;
         paramRecordConfigProvider = paramRecordConfigProvider.thumbPath;
-        k.g(paramRecordConfigProvider, "configProvider.thumbPath");
-        localb.vu(paramRecordConfigProvider);
+        p.g(paramRecordConfigProvider, "configProvider.thumbPath");
+        localb.yl(paramRecordConfigProvider);
       }
       AppMethodBeat.o(75066);
       return localb;

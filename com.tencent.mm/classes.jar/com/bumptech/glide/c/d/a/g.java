@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class g
 {
-  public static final g aJi = new e();
-  public static final g aJj = new d();
-  public static final g aJk = new a();
-  public static final g aJl = new b();
-  public static final g aJm = new c();
-  public static final g aJn = new f();
-  public static final g aJo = aJj;
-  public static final i<g> aJp = i.b("com.bumptech.glide.load.resource.bitmap.Downsampler.DownsampleStrategy", aJo);
+  public static final g aKZ = new e();
+  public static final g aLa = new d();
+  public static final g aLb = new a();
+  public static final g aLc = new b();
+  public static final g aLd = new c();
+  public static final g aLe = new f();
+  public static final g aLf = aLa;
+  public static final i<g> aLg = i.b("com.bumptech.glide.load.resource.bitmap.Downsampler.DownsampleStrategy", aLf);
   
   public abstract float l(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract g pe();
+  public abstract g.g pw();
   
   static final class a
     extends g
@@ -35,9 +35,9 @@ public abstract class g
       return f;
     }
     
-    public final g.g pe()
+    public final g.g pw()
     {
-      return g.g.aJr;
+      return g.g.aLi;
     }
   }
   
@@ -59,9 +59,9 @@ public abstract class g
       }
     }
     
-    public final g.g pe()
+    public final g.g pw()
     {
-      return g.g.aJq;
+      return g.g.aLh;
     }
   }
   
@@ -71,14 +71,14 @@ public abstract class g
     public final float l(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
       AppMethodBeat.i(77386);
-      float f = Math.min(1.0F, aJi.l(paramInt1, paramInt2, paramInt3, paramInt4));
+      float f = Math.min(1.0F, aKZ.l(paramInt1, paramInt2, paramInt3, paramInt4));
       AppMethodBeat.o(77386);
       return f;
     }
     
-    public final g.g pe()
+    public final g.g pw()
     {
-      return g.g.aJr;
+      return g.g.aLi;
     }
   }
   
@@ -93,9 +93,9 @@ public abstract class g
       return f;
     }
     
-    public final g.g pe()
+    public final g.g pw()
     {
-      return g.g.aJr;
+      return g.g.aLi;
     }
   }
   
@@ -110,9 +110,9 @@ public abstract class g
       return f;
     }
     
-    public final g.g pe()
+    public final g.g pw()
     {
-      return g.g.aJr;
+      return g.g.aLi;
     }
   }
   
@@ -124,24 +124,10 @@ public abstract class g
       return 1.0F;
     }
     
-    public final g.g pe()
+    public final g.g pw()
     {
-      return g.g.aJr;
+      return g.g.aLi;
     }
-  }
-  
-  public static enum g
-  {
-    static
-    {
-      AppMethodBeat.i(77391);
-      aJq = new g("MEMORY", 0);
-      aJr = new g("QUALITY", 1);
-      aJs = new g[] { aJq, aJr };
-      AppMethodBeat.o(77391);
-    }
-    
-    private g() {}
   }
 }
 

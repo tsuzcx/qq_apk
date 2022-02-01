@@ -1,162 +1,53 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
+import junit.framework.Assert;
 
 public final class be
-  extends j<bd>
-  implements com.tencent.mm.plugin.messenger.foundation.a.a.e
+  extends e
 {
-  private static final String[] GCW;
-  public static final String[] SQL_CREATE;
-  public com.tencent.mm.sdk.e.e db;
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS bottlemessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  bmessageSvrIdIndex ON bottlemessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  bmessageTalkerIndex ON bottlemessage ( talker )", "CREATE INDEX IF NOT EXISTS  bmessageTalerStatusIndex ON bottlemessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  bmessageCreateTimeIndex ON bottlemessage ( createTime )", "CREATE INDEX IF NOT EXISTS  bmessageCreateTaklerTimeIndex ON bottlemessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  bmessageSendCreateTimeIndex ON bottlemessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  bottlemessageTalkerTypeIndex ON bottlemessage ( talker,type )", "CREATE TABLE IF NOT EXISTS qmessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  qmessageSvrIdIndex ON qmessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerIndex ON qmessage ( talker )", "CREATE INDEX IF NOT EXISTS  qmessageTalerStatusIndex ON qmessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  qmessageCreateTimeIndex ON qmessage ( createTime )", "CREATE INDEX IF NOT EXISTS  qmessageCreateTaklerTimeIndex ON qmessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  qmessageSendCreateTimeIndex ON qmessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerSvrIdIndex ON qmessage ( talker,msgSvrId )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerTypeIndex ON qmessage ( talker,type )", "CREATE TABLE IF NOT EXISTS tmessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  tmessageSvrIdIndex ON tmessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  tmessageTalkerIndex ON tmessage ( talker )", "CREATE INDEX IF NOT EXISTS  tmessageTalerStatusIndex ON tmessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  tmessageCreateTimeIndex ON tmessage ( createTime )", "CREATE INDEX IF NOT EXISTS  tmessageCreateTaklerTimeIndex ON tmessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  tmessageSendCreateTimeIndex ON tmessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  tmessageTalkerTypeIndex ON tmessage ( talker,type )" };
   
-  static
+  public be(i parami)
   {
-    AppMethodBeat.i(117170);
-    SQL_CREATE = new String[] { j.getCreateSQLs(bd.info, "fmessage_msginfo") };
-    GCW = new String[] { "CREATE INDEX IF NOT EXISTS  fmessageTalkerIndex ON fmessage_msginfo ( talker )" };
-    AppMethodBeat.o(117170);
+    super(parami);
+    AppMethodBeat.i(32878);
+    d(getDB(), "bottlemessage");
+    d(getDB(), "qmessage");
+    d(getDB(), "tmessage");
+    a(new i.b(8, "bottlemessage", i.b.a(2000001L, 2500000L, 96000001L, 99000000L)));
+    a(new i.b(2, "qmessage", i.b.a(1000001L, 1500000L, 90000001L, 93000000L)));
+    a(new i.b(4, "tmessage", i.b.a(1500001L, 2000000L, 93000001L, 96000000L)));
+    AppMethodBeat.o(32878);
   }
   
-  public be(com.tencent.mm.sdk.e.e parame)
+  public final String aiu(String paramString)
   {
-    super(parame, bd.info, "fmessage_msginfo", GCW);
-    this.db = parame;
-  }
-  
-  public final bd[] aOe(String paramString)
-  {
-    AppMethodBeat.i(117162);
-    ac.d("MicroMsg.FMessageMsgInfoStorage", "getLastFMessageMsgInfo");
-    paramString = "select *, rowid from fmessage_msginfo  where talker = '" + bs.aLh(paramString) + "' order by createTime DESC limit 3";
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
+    AppMethodBeat.i(32879);
+    if ((paramString != null) && (paramString.length() > 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      bd localbd = new bd();
-      localbd.convertFrom(paramString);
-      localArrayList.add(localbd);
+      Assert.assertTrue(bool);
+      if (!paramString.endsWith("@t.qq.com")) {
+        break;
+      }
+      AppMethodBeat.o(32879);
+      return "tmessage";
     }
-    paramString.close();
-    paramString = (bd[])localArrayList.toArray(new bd[localArrayList.size()]);
-    AppMethodBeat.o(117162);
-    return paramString;
-  }
-  
-  public final bd aOf(String paramString)
-  {
-    AppMethodBeat.i(117164);
-    paramString = fR(paramString, 1);
-    if ((paramString != null) && (paramString.length > 0))
+    if (paramString.endsWith("@qqim"))
     {
-      paramString = paramString[0];
-      AppMethodBeat.o(117164);
-      return paramString;
+      AppMethodBeat.o(32879);
+      return "qmessage";
     }
-    AppMethodBeat.o(117164);
+    if (am.zs(paramString))
+    {
+      AppMethodBeat.o(32879);
+      return "bottlemessage";
+    }
+    AppMethodBeat.o(32879);
     return null;
-  }
-  
-  public final bd ala(String paramString)
-  {
-    AppMethodBeat.i(117163);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ac.e("MicroMsg.FMessageMsgInfoStorage", "getLastFMsg fail, talker is null");
-      AppMethodBeat.o(117163);
-      return null;
-    }
-    paramString = "select * from fmessage_msginfo where talker = '" + bs.aLh(paramString) + "' order by createTime DESC limit 1";
-    paramString = this.db.a(paramString, null, 2);
-    bd localbd = new bd();
-    if (paramString.moveToFirst()) {
-      localbd.convertFrom(paramString);
-    }
-    paramString.close();
-    AppMethodBeat.o(117163);
-    return localbd;
-  }
-  
-  public final boolean alb(String paramString)
-  {
-    AppMethodBeat.i(117168);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ac.e("MicroMsg.FMessageMsgInfoStorage", "deleteByTalker fail, talker is null");
-      AppMethodBeat.o(117168);
-      return false;
-    }
-    paramString = "delete from fmessage_msginfo where talker = '" + bs.aLh(paramString) + "'";
-    boolean bool = this.db.execSQL("fmessage_msginfo", paramString);
-    AppMethodBeat.o(117168);
-    return bool;
-  }
-  
-  public final boolean b(bd parambd)
-  {
-    AppMethodBeat.i(117166);
-    if (parambd == null)
-    {
-      ac.e("MicroMsg.FMessageMsgInfoStorage", "insert fail, fmsgInfo is null");
-      AppMethodBeat.o(117166);
-      return false;
-    }
-    if (super.insert(parambd))
-    {
-      doNotify(parambd.systemRowid);
-      AppMethodBeat.o(117166);
-      return true;
-    }
-    AppMethodBeat.o(117166);
-    return false;
-  }
-  
-  public final List<bd> dcx()
-  {
-    AppMethodBeat.i(117167);
-    ac.d("MicroMsg.FMessageMsgInfoStorage", "getFMsgByType, type = 0");
-    ArrayList localArrayList = new ArrayList();
-    Cursor localCursor = this.db.a("select *, rowid from fmessage_msginfo where type = 0", null, 2);
-    while (localCursor.moveToNext())
-    {
-      bd localbd = new bd();
-      localbd.convertFrom(localCursor);
-      localArrayList.add(localbd);
-    }
-    localCursor.close();
-    ac.d("MicroMsg.FMessageMsgInfoStorage", "getFMsgByType, size = " + localArrayList.size());
-    AppMethodBeat.o(117167);
-    return localArrayList;
-  }
-  
-  public final bd[] fR(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(117165);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ac.e("MicroMsg.FMessageMsgInfoStorage", "getLastRecvFMsg fail, talker is null");
-      AppMethodBeat.o(117165);
-      return null;
-    }
-    paramString = "select * from fmessage_msginfo where isSend != 1 and talker = '" + bs.aLh(paramString) + "' order by createTime DESC limit " + paramInt;
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      bd localbd = new bd();
-      localbd.convertFrom(paramString);
-      localArrayList.add(localbd);
-    }
-    paramString.close();
-    paramString = (bd[])localArrayList.toArray(new bd[localArrayList.size()]);
-    AppMethodBeat.o(117165);
-    return paramString;
   }
 }
 

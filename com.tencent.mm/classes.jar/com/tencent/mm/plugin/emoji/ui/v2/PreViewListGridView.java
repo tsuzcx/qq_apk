@@ -12,32 +12,32 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.emoji.PopEmojiView;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class PreViewListGridView
   extends ListView
 {
-  private WindowManager gqS;
-  private ao mHandler;
+  private WindowManager gKC;
+  private ap mHandler;
   private int mOrientation;
-  private boolean pmb;
-  private WindowManager.LayoutParams pmh;
-  private int pmi;
-  private int pmj;
-  private int pmk;
-  private boolean pml;
-  private volatile int pmm;
-  private String pmn;
-  private PopEmojiView pmo;
-  private a pmp;
+  private boolean pPB;
+  private WindowManager.LayoutParams pPH;
+  private int pPI;
+  private int pPJ;
+  private int pPK;
+  private boolean pPL;
+  private volatile int pPM;
+  private String pPN;
+  private PopEmojiView pPO;
+  private a pPP;
   
   public PreViewListGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(109421);
-    this.pmb = true;
-    this.mHandler = new ao();
-    this.pmm = -1;
+    this.pPB = true;
+    this.mHandler = new ap();
+    this.pPM = -1;
     init(paramContext);
     AppMethodBeat.o(109421);
   }
@@ -46,9 +46,9 @@ public class PreViewListGridView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(109422);
-    this.pmb = true;
-    this.mHandler = new ao();
-    this.pmm = -1;
+    this.pPB = true;
+    this.mHandler = new ap();
+    this.pPM = -1;
     init(paramContext);
     AppMethodBeat.o(109422);
   }
@@ -56,35 +56,35 @@ public class PreViewListGridView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(109423);
-    this.pmo = new PopEmojiView(getContext());
-    this.pmi = paramContext.getResources().getDimensionPixelSize(2131166259);
-    this.gqS = ((WindowManager)paramContext.getSystemService("window"));
-    this.pmh = new WindowManager.LayoutParams(-1, -1, 2, 8, 1);
-    this.pmh.width = this.pmi;
-    this.pmh.height = this.pmi;
-    this.pmh.gravity = 17;
+    this.pPO = new PopEmojiView(getContext());
+    this.pPI = paramContext.getResources().getDimensionPixelSize(2131166259);
+    this.gKC = ((WindowManager)paramContext.getSystemService("window"));
+    this.pPH = new WindowManager.LayoutParams(-1, -1, 2, 8, 1);
+    this.pPH.width = this.pPI;
+    this.pPH.height = this.pPI;
+    this.pPH.gravity = 17;
     this.mOrientation = getResources().getConfiguration().orientation;
     if (this.mOrientation == 2)
     {
-      this.pmj = this.gqS.getDefaultDisplay().getHeight();
-      this.pmk = this.gqS.getDefaultDisplay().getWidth();
+      this.pPJ = this.gKC.getDefaultDisplay().getHeight();
+      this.pPK = this.gKC.getDefaultDisplay().getWidth();
       AppMethodBeat.o(109423);
       return;
     }
-    this.pmj = this.gqS.getDefaultDisplay().getWidth();
-    this.pmk = this.gqS.getDefaultDisplay().getHeight();
+    this.pPJ = this.gKC.getDefaultDisplay().getWidth();
+    this.pPK = this.gKC.getDefaultDisplay().getHeight();
     AppMethodBeat.o(109423);
   }
   
-  public final void cev()
+  public final void ciY()
   {
     AppMethodBeat.i(109426);
-    if (this.pml)
+    if (this.pPL)
     {
-      this.gqS.removeView(this.pmo);
-      this.pml = false;
+      this.gKC.removeView(this.pPO);
+      this.pPL = false;
     }
-    this.pmn = "";
+    this.pPN = "";
     AppMethodBeat.o(109426);
   }
   
@@ -99,8 +99,8 @@ public class PreViewListGridView
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
       AppMethodBeat.o(109425);
       return bool;
-    } while (!this.pml);
-    cev();
+    } while (!this.pPL);
+    ciY();
     AppMethodBeat.o(109425);
     return true;
   }
@@ -109,13 +109,13 @@ public class PreViewListGridView
   {
     AppMethodBeat.i(109424);
     super.setAdapter(paramListAdapter);
-    this.pmp = ((a)paramListAdapter);
+    this.pPP = ((a)paramListAdapter);
     AppMethodBeat.o(109424);
   }
   
   public void setEnablePreView(boolean paramBoolean)
   {
-    this.pmb = paramBoolean;
+    this.pPB = paramBoolean;
   }
 }
 

@@ -1,46 +1,52 @@
 package com.tencent.mm.plugin.appbrand.g;
 
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import com.tencent.luggage.a.b;
-import java.io.InputStream;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface a
-  extends b
+public final class a
 {
-  public abstract Bitmap a(String paramString, Rect paramRect, b paramb);
+  private static b kct;
+  private static String kcu;
   
-  public abstract void a(String paramString, c paramc);
-  
-  public abstract void a(String paramString, Map<String, String> paramMap, c paramc);
-  
-  public abstract Bitmap bH(String paramString);
-  
-  public static abstract interface a
+  static
   {
-    public abstract String Ap();
-    
-    public abstract void a(String paramString, Map<String, String> paramMap, a.c paramc);
-    
-    public abstract Bitmap b(String paramString, Rect paramRect, a.b paramb);
-    
-    public abstract boolean match(String paramString);
+    AppMethodBeat.i(192859);
+    kct = new a.1();
+    AppMethodBeat.o(192859);
   }
   
-  public static abstract interface b
+  public static void a(String paramString, b paramb)
   {
-    public abstract void M(Bitmap paramBitmap);
+    kcu = paramString;
+    kct = paramb;
   }
   
-  public static abstract interface c
+  public static void b(String paramString1, Throwable paramThrowable, String paramString2)
   {
-    public abstract void z(InputStream paramInputStream);
+    AppMethodBeat.i(192858);
+    kct.b(paramString1, paramThrowable, paramString2);
+    new StringBuilder().append(kcu).append(paramString1);
+    AppMethodBeat.o(192858);
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(192857);
+    kct.e(kcu + paramString1, paramString2);
+    new StringBuilder().append(kcu).append(paramString1);
+    AppMethodBeat.o(192857);
+  }
+  
+  public static void i(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(192856);
+    kct.i(kcu + paramString1, paramString2);
+    new StringBuilder().append(kcu).append(paramString1);
+    AppMethodBeat.o(192856);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.a
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.address.a.a;
 import com.tencent.mm.plugin.address.model.RcptItem;
 import com.tencent.mm.plugin.address.model.l;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceSmallCategory;
@@ -20,33 +20,33 @@ import java.util.List;
 public class WalletMultiRcptSelectUI
   extends MMPreference
 {
-  private int doR = 0;
-  private RcptItem jaJ = null;
-  private RcptItem jaK = null;
-  private List<RcptItem> jaL;
+  private int dAF = 0;
+  private RcptItem jtS = null;
+  private RcptItem jtT = null;
+  private List<RcptItem> jtU;
   private f screen;
   
-  private void aRU()
+  private void aVg()
   {
     AppMethodBeat.i(21009);
-    switch (this.doR)
+    switch (this.dAF)
     {
     }
     for (;;)
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("key_stage", this.doR);
-      localIntent.putExtra("key_province", this.jaJ);
-      localIntent.putExtra("key_city", this.jaK);
+      localIntent.putExtra("key_stage", this.dAF);
+      localIntent.putExtra("key_province", this.jtS);
+      localIntent.putExtra("key_city", this.jtT);
       setResult(0, localIntent);
       finish();
       AppMethodBeat.o(21009);
       return;
-      this.jaK = null;
-      this.doR = 1;
+      this.jtT = null;
+      this.dAF = 1;
       continue;
-      this.jaJ = null;
-      this.doR = 0;
+      this.jtS = null;
+      this.dAF = 0;
     }
   }
   
@@ -55,29 +55,29 @@ public class WalletMultiRcptSelectUI
     AppMethodBeat.i(21014);
     if (paramIntent == null)
     {
-      ac.e("MicroMsg.MultiRptSelectUI", "initData intent is null");
+      ad.e("MicroMsg.MultiRptSelectUI", "initData intent is null");
       AppMethodBeat.o(21014);
       return;
     }
-    this.doR = paramIntent.getIntExtra("key_stage", 0);
-    this.jaJ = ((RcptItem)paramIntent.getParcelableExtra("key_province"));
-    this.jaK = ((RcptItem)paramIntent.getParcelableExtra("key_city"));
+    this.dAF = paramIntent.getIntExtra("key_stage", 0);
+    this.jtS = ((RcptItem)paramIntent.getParcelableExtra("key_province"));
+    this.jtT = ((RcptItem)paramIntent.getParcelableExtra("key_city"));
     String str = paramIntent.getStringExtra("extra_province");
     if (str != null)
     {
-      a.aRF();
-      this.jaJ = a.aRH().GQ(str);
-      if (this.jaJ != null) {
-        this.doR = 1;
+      a.aUR();
+      this.jtS = a.aUT().Kf(str);
+      if (this.jtS != null) {
+        this.dAF = 1;
       }
     }
     paramIntent = paramIntent.getStringExtra("extra_city");
-    if ((paramIntent != null) && (1 == this.doR))
+    if ((paramIntent != null) && (1 == this.dAF))
     {
-      a.aRF();
-      this.jaK = a.aRH().bS(this.jaJ.code, paramIntent);
-      if (this.jaK != null) {
-        this.doR = 2;
+      a.aUR();
+      this.jtT = a.aUT().bU(this.jtS.code, paramIntent);
+      if (this.jtT != null) {
+        this.dAF = 2;
       }
     }
     AppMethodBeat.o(21014);
@@ -108,58 +108,58 @@ public class WalletMultiRcptSelectUI
       }
     });
     y((Intent)localObject);
-    localObject = a.aRH().iYI;
+    localObject = a.aUT().jrR;
     if ((localObject == null) || (((List)localObject).isEmpty()))
     {
-      ac.e("MicroMsg.MultiRptSelectUI", "list == null || list.isEmpty(), need loadata!");
-      a.aRH().aRI();
+      ad.e("MicroMsg.MultiRptSelectUI", "list == null || list.isEmpty(), need loadata!");
+      a.aUT().aUU();
     }
-    switch (this.doR)
+    switch (this.dAF)
     {
     default: 
-      a.aRF();
-      localObject = a.aRH().iYI;
+      a.aUR();
+      localObject = a.aUT().jrR;
     }
     for (;;)
     {
-      this.jaL = ((List)localObject);
-      if ((this.jaL != null) && (this.jaL.size() > 0)) {
+      this.jtU = ((List)localObject);
+      if ((this.jtU != null) && (this.jtU.size() > 0)) {
         break label257;
       }
-      ac.e("MicroMsg.MultiRptSelectUI", "initZoneItems error ,check zone lists!");
+      ad.e("MicroMsg.MultiRptSelectUI", "initZoneItems error ,check zone lists!");
       AppMethodBeat.o(21013);
       return;
-      a.aRF();
-      localObject = a.aRH().iYI;
+      a.aUR();
+      localObject = a.aUT().jrR;
       continue;
-      if ((this.jaJ != null) && (!bs.isNullOrNil(this.jaJ.code)))
+      if ((this.jtS != null) && (!bt.isNullOrNil(this.jtS.code)))
       {
-        a.aRF();
-        localObject = a.aRH().GO(this.jaJ.code);
+        a.aUR();
+        localObject = a.aUT().Kd(this.jtS.code);
       }
       else
       {
-        if ((this.jaK == null) || (bs.isNullOrNil(this.jaK.code))) {
+        if ((this.jtT == null) || (bt.isNullOrNil(this.jtT.code))) {
           break;
         }
-        a.aRF();
-        localObject = a.aRH().GP(this.jaK.code);
+        a.aUR();
+        localObject = a.aUT().Ke(this.jtT.code);
       }
     }
     label257:
     this.screen.removeAll();
     i = 0;
-    if (i < this.jaL.size())
+    if (i < this.jtU.size())
     {
       RcptItem localRcptItem;
-      if ((this.jaL.get(i) != null) && (!bs.isNullOrNil(((RcptItem)this.jaL.get(i)).name)))
+      if ((this.jtU.get(i) != null) && (!bt.isNullOrNil(((RcptItem)this.jtU.get(i)).name)))
       {
         localObject = new RcptPreference(this);
-        localRcptItem = (RcptItem)this.jaL.get(i);
-        if ((localRcptItem != null) && (!bs.isNullOrNil(localRcptItem.name))) {
+        localRcptItem = (RcptItem)this.jtU.get(i);
+        if ((localRcptItem != null) && (!bt.isNullOrNil(localRcptItem.name))) {
           break label377;
         }
-        ac.e("MicroMsg.RcptPreference", "setZoneItem item = null");
+        ad.e("MicroMsg.RcptPreference", "setZoneItem item = null");
       }
       for (;;)
       {
@@ -168,7 +168,7 @@ public class WalletMultiRcptSelectUI
         break;
         label377:
         ((RcptPreference)localObject).setKey(localRcptItem.code + localObject.hashCode());
-        ((RcptPreference)localObject).jaA = localRcptItem;
+        ((RcptPreference)localObject).jtJ = localRcptItem;
       }
     }
     localObject = new PreferenceSmallCategory(this);
@@ -200,7 +200,7 @@ public class WalletMultiRcptSelectUI
   public void onBackPressed()
   {
     AppMethodBeat.i(21016);
-    aRU();
+    aVg();
     super.onBackPressed();
     AppMethodBeat.o(21016);
   }
@@ -226,17 +226,17 @@ public class WalletMultiRcptSelectUI
     AppMethodBeat.i(21015);
     if ((paramPreference instanceof RcptPreference))
     {
-      paramf = ((RcptPreference)paramPreference).jaA;
-      if ((paramf == null) || (bs.isNullOrNil(paramf.name)))
+      paramf = ((RcptPreference)paramPreference).jtJ;
+      if ((paramf == null) || (bt.isNullOrNil(paramf.name)))
       {
-        ac.e("MicroMsg.MultiRptSelectUI", "onPreferenceTreeClick error item, item is null or item.name isNullOrNil");
+        ad.e("MicroMsg.MultiRptSelectUI", "onPreferenceTreeClick error item, item is null or item.name isNullOrNil");
         AppMethodBeat.o(21015);
         return false;
       }
-      if (!paramf.iYF) {
-        this.doR = 2;
+      if (!paramf.jrO) {
+        this.dAF = 2;
       }
-      switch (this.doR)
+      switch (this.dAF)
       {
       default: 
         paramf = getIntent();
@@ -248,9 +248,9 @@ public class WalletMultiRcptSelectUI
     for (int i = paramf.getIntExtra("ui_title", -1);; i = -1)
     {
       paramf = new Intent(this, WalletMultiRcptSelectUI.class);
-      paramf.putExtra("key_stage", this.doR);
-      paramf.putExtra("key_province", this.jaJ);
-      paramf.putExtra("key_city", this.jaK);
+      paramf.putExtra("key_stage", this.dAF);
+      paramf.putExtra("key_province", this.jtS);
+      paramf.putExtra("key_city", this.jtT);
       if (-1 != i) {
         paramf.putExtra("ui_title", i);
       }
@@ -259,24 +259,24 @@ public class WalletMultiRcptSelectUI
       {
         AppMethodBeat.o(21015);
         return false;
-        this.jaJ = paramf;
-        this.doR = 1;
+        this.jtS = paramf;
+        this.dAF = 1;
         break;
-        this.jaK = paramf;
-        this.doR = 2;
+        this.jtT = paramf;
+        this.dAF = 2;
         break;
         paramPreference = new StringBuilder();
-        if (this.jaJ != null) {
-          paramPreference.append(this.jaJ.name).append(" ");
+        if (this.jtS != null) {
+          paramPreference.append(this.jtS.name).append(" ");
         }
-        if (this.jaK != null) {
-          paramPreference.append(this.jaK.name).append(" ");
+        if (this.jtT != null) {
+          paramPreference.append(this.jtT.name).append(" ");
         }
         paramPreference.append(paramf.name);
-        ac.d("MicroMsg.MultiRptSelectUI", "area_result: " + paramPreference.toString() + ",item.name: " + paramf.name);
+        ad.d("MicroMsg.MultiRptSelectUI", "area_result: " + paramPreference.toString() + ",item.name: " + paramf.name);
         Intent localIntent = new Intent();
         localIntent.putExtra("karea_result", paramPreference.toString());
-        localIntent.putExtra("kpost_code", paramf.iYE);
+        localIntent.putExtra("kpost_code", paramf.jrN);
         localIntent.putExtra("kwcode", paramf.code);
         setResult(-1, localIntent);
         finish();
@@ -299,7 +299,7 @@ public class WalletMultiRcptSelectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.WalletMultiRcptSelectUI
  * JD-Core Version:    0.7.0.1
  */

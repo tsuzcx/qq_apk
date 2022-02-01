@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ov;
+import com.tencent.mm.g.a.pe;
 import com.tencent.mm.sdk.b.c;
 
 public final class a
-  extends c<ov>
+  extends c<pe>
 {
   public a()
   {
     AppMethodBeat.i(160829);
-    this.__eventId = ov.class.getName().hashCode();
+    this.__eventId = pe.class.getName().hashCode();
     AppMethodBeat.o(160829);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.a
  * JD-Core Version:    0.7.0.1
  */

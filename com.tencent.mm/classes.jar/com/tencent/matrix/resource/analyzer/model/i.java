@@ -2,24 +2,24 @@ package com.tencent.matrix.resource.analyzer.model;
 
 public final class i
 {
-  public final e cvV;
-  public final com.d.a.b.i cvW;
-  public final i cvX;
-  public final String cvY;
-  public final j.b cvZ;
+  public final e cGQ;
+  public final com.e.a.b.i cGR;
+  public final i cGS;
+  public final String cGT;
+  public final j.b cGU;
   
-  public i(e parame, com.d.a.b.i parami, i parami1, String paramString, j.b paramb)
+  public i(e parame, com.e.a.b.i parami, i parami1, String paramString, j.b paramb)
   {
-    this.cvV = parame;
-    this.cvW = parami;
-    this.cvX = parami1;
-    this.cvY = paramString;
-    this.cvZ = paramb;
+    this.cGQ = parame;
+    this.cGR = parami;
+    this.cGS = parami1;
+    this.cGT = paramString;
+    this.cGU = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.i
  * JD-Core Version:    0.7.0.1
  */

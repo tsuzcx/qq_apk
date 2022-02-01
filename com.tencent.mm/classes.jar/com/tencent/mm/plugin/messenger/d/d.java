@@ -1,10 +1,14 @@
 package com.tencent.mm.plugin.messenger.d;
 
 import com.tencent.mm.plugin.messenger.e.a;
+import com.tencent.mm.plugin.messenger.e.b;
+import com.tencent.mm.plugin.messenger.e.c;
 
 public final class d
 {
-  public a uHE;
+  public a vKH;
+  public c vKI;
+  public b vKJ;
 }
 
 

@@ -3,34 +3,34 @@ package com.tencent.mm.plugin.fts.a.a;
 import android.graphics.Color;
 import android.text.TextPaint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.List;
 
 public final class e
 {
-  public TextPaint gZ;
-  public CharSequence sxL;
-  public h sxM;
-  public boolean sxN;
-  public boolean sxO;
-  public e.a sxP;
-  public int sxQ;
-  public float sxR;
-  public CharSequence sxS;
-  public CharSequence sxT;
-  public String sxU;
-  public String sxV;
+  public TextPaint iU;
+  public CharSequence tum;
+  public h tun;
+  public boolean tuo;
+  public boolean tup;
+  public e.a tuq;
+  public int tur;
+  public float tus;
+  public CharSequence tut;
+  public CharSequence tuu;
+  public String tuv;
+  public String tuw;
   
   public e()
   {
     AppMethodBeat.i(131679);
-    this.sxP = e.a.sxW;
-    this.sxQ = Color.parseColor("#07C160");
-    this.sxS = "";
-    this.sxT = "";
-    this.sxU = "";
-    this.sxV = "";
+    this.tuq = e.a.tux;
+    this.tur = Color.parseColor("#07C160");
+    this.tut = "";
+    this.tuu = "";
+    this.tuv = "";
+    this.tuw = "";
     AppMethodBeat.o(131679);
   }
   
@@ -38,8 +38,8 @@ public final class e
   {
     AppMethodBeat.i(131682);
     e locale = new e();
-    locale.sxL = paramCharSequence;
-    locale.sxM = paramh;
+    locale.tum = paramCharSequence;
+    locale.tun = paramh;
     AppMethodBeat.o(131682);
     return locale;
   }
@@ -64,12 +64,12 @@ public final class e
   {
     AppMethodBeat.i(131685);
     e locale = new e();
-    locale.sxL = paramCharSequence;
-    locale.sxM = paramh;
-    locale.sxN = paramBoolean1;
-    locale.sxO = paramBoolean2;
-    locale.sxR = paramFloat;
-    locale.gZ = paramTextPaint;
+    locale.tum = paramCharSequence;
+    locale.tun = paramh;
+    locale.tuo = paramBoolean1;
+    locale.tup = paramBoolean2;
+    locale.tus = paramFloat;
+    locale.iU = paramTextPaint;
     AppMethodBeat.o(131685);
     return locale;
   }
@@ -78,14 +78,14 @@ public final class e
   {
     AppMethodBeat.i(131686);
     e locale = new e();
-    locale.sxL = paramCharSequence1;
-    locale.sxM = paramh;
-    locale.sxN = paramBoolean1;
-    locale.sxO = paramBoolean2;
-    locale.sxR = 400.0F;
-    locale.gZ = paramTextPaint;
-    locale.sxS = paramCharSequence2;
-    locale.sxT = paramCharSequence3;
+    locale.tum = paramCharSequence1;
+    locale.tun = paramh;
+    locale.tuo = paramBoolean1;
+    locale.tup = paramBoolean2;
+    locale.tus = 400.0F;
+    locale.iU = paramTextPaint;
+    locale.tut = paramCharSequence2;
+    locale.tuu = paramCharSequence3;
     AppMethodBeat.o(131686);
     return locale;
   }
@@ -93,7 +93,7 @@ public final class e
   public static final e a(CharSequence paramCharSequence, List<String> paramList)
   {
     AppMethodBeat.i(131680);
-    paramCharSequence = c(paramCharSequence, bs.n(paramList, " "));
+    paramCharSequence = c(paramCharSequence, bt.m(paramList, " "));
     AppMethodBeat.o(131680);
     return paramCharSequence;
   }
@@ -102,8 +102,8 @@ public final class e
   {
     AppMethodBeat.i(131687);
     paramCharSequence = a(paramCharSequence, paramList);
-    paramCharSequence.sxP = parama;
-    paramCharSequence.sxQ = paramInt;
+    paramCharSequence.tuq = parama;
+    paramCharSequence.tur = paramInt;
     AppMethodBeat.o(131687);
     return paramCharSequence;
   }
@@ -112,10 +112,10 @@ public final class e
   {
     AppMethodBeat.i(131681);
     e locale = new e();
-    locale.sxL = paramCharSequence;
-    locale.sxM = h.bi(paramString, false);
-    locale.sxN = false;
-    locale.sxO = false;
+    locale.tum = paramCharSequence;
+    locale.tun = h.bn(paramString, false);
+    locale.tuo = false;
+    locale.tup = false;
     AppMethodBeat.o(131681);
     return locale;
   }
@@ -123,20 +123,20 @@ public final class e
   public static final class b
     implements Comparable<b>
   {
-    public h.c sya;
-    public int syb = -1;
-    public int syc = -1;
+    public h.c tuB;
+    public int tuC = -1;
+    public int tuD = -1;
     
-    public final String cKv()
+    public final String cSK()
     {
       AppMethodBeat.i(131677);
-      if ((this.sya != null) && (this.sya.sys.size() > 0))
+      if ((this.tuB != null) && (this.tuB.tuT.size() > 0))
       {
-        Object localObject = this.sya.sys.iterator();
+        Object localObject = this.tuB.tuT.iterator();
         while (((Iterator)localObject).hasNext())
         {
           h.b localb = (h.b)((Iterator)localObject).next();
-          if (localb.syq == h.d.syv)
+          if (localb.tuR == h.d.tuW)
           {
             localObject = localb.content;
             AppMethodBeat.o(131677);
@@ -150,16 +150,16 @@ public final class e
     
     public final boolean isAvailable()
     {
-      return (this.syb != -1) && (this.syc != -1);
+      return (this.tuC != -1) && (this.tuD != -1);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(131678);
-      if (this.sya == null) {}
-      for (String str = "";; str = this.sya.cKy().replaceAll("​", ","))
+      if (this.tuB == null) {}
+      for (String str = "";; str = this.tuB.cSN().replaceAll("​", ","))
       {
-        str = String.format("FTSQueryHLRequest.Item %s %d %d", new Object[] { str, Integer.valueOf(this.syb), Integer.valueOf(this.syc) });
+        str = String.format("FTSQueryHLRequest.Item %s %d %d", new Object[] { str, Integer.valueOf(this.tuC), Integer.valueOf(this.tuD) });
         AppMethodBeat.o(131678);
         return str;
       }
@@ -168,7 +168,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.e
  * JD-Core Version:    0.7.0.1
  */

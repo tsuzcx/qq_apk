@@ -13,20 +13,20 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.i.a.a.a;
+import com.tencent.mm.pluginsdk.k.a.a.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Map;
 import junit.framework.Assert;
 
 public final class c
 {
-  com.tencent.mm.pluginsdk.i.a.a IGM;
+  com.tencent.mm.pluginsdk.k.a.a KxS;
   
-  c(com.tencent.mm.pluginsdk.i.a.a parama)
+  c(com.tencent.mm.pluginsdk.k.a.a parama)
   {
-    this.IGM = parama;
+    this.KxS = parama;
   }
   
   private static Drawable a(Map<String, String> paramMap, Context paramContext)
@@ -37,24 +37,24 @@ public final class c
       AppMethodBeat.o(38771);
       return null;
     }
-    Object localObject2 = (String)paramMap.get(BackwardSupportUtil.b.io(paramContext));
+    Object localObject2 = (String)paramMap.get(BackwardSupportUtil.b.iy(paramContext));
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = (String)paramMap.get(BackwardSupportUtil.b.in(paramContext));
+      localObject1 = (String)paramMap.get(BackwardSupportUtil.b.ix(paramContext));
     }
-    if (bs.nullAsNil((String)localObject1).length() <= 0)
+    if (bt.nullAsNil((String)localObject1).length() <= 0)
     {
       AppMethodBeat.o(38771);
       return null;
     }
-    localObject2 = com.tencent.mm.pluginsdk.i.a.a.aGN((String)localObject1);
-    if (localObject2 == a.a.Dmo)
+    localObject2 = com.tencent.mm.pluginsdk.k.a.a.aMn((String)localObject1);
+    if (localObject2 == a.a.ERq)
     {
       AppMethodBeat.o(38771);
       return null;
     }
-    localObject1 = com.tencent.mm.pluginsdk.i.a.a.aGM((String)localObject1);
-    if (bs.nullAsNil((String)localObject1).length() <= 0)
+    localObject1 = com.tencent.mm.pluginsdk.k.a.a.aMm((String)localObject1);
+    if (bt.nullAsNil((String)localObject1).length() <= 0)
     {
       AppMethodBeat.o(38771);
       return null;
@@ -63,19 +63,19 @@ public final class c
     {
       try
       {
-        if (localObject2 == a.a.Dmm)
+        if (localObject2 == a.a.ERo)
         {
           paramMap = BackwardSupportUtil.b.b(paramContext.getAssets().open((String)localObject1), com.tencent.mm.cc.a.getDensity(paramContext));
           if (paramMap == null)
           {
-            ac.e("MicroMsg.ADListView.Message", "get Bitmap failed type:" + localObject2 + " path:" + (String)localObject1);
+            ad.e("MicroMsg.ADListView.Message", "get Bitmap failed type:" + localObject2 + " path:" + (String)localObject1);
             AppMethodBeat.o(38771);
             return null;
           }
         }
         else
         {
-          paramMap = BackwardSupportUtil.b.n((String)localObject1, com.tencent.mm.cc.a.getDensity(paramContext));
+          paramMap = BackwardSupportUtil.b.o((String)localObject1, com.tencent.mm.cc.a.getDensity(paramContext));
           continue;
         }
         localObject1 = paramMap.getNinePatchChunk();
@@ -92,7 +92,7 @@ public final class c
         {
           if (paramMap != localObject1)
           {
-            ac.i("MicroMsg.ADListView.Message", "recycle bitmap:%s", new Object[] { paramMap });
+            ad.i("MicroMsg.ADListView.Message", "recycle bitmap:%s", new Object[] { paramMap });
             paramMap.recycle();
           }
         }
@@ -106,7 +106,7 @@ public final class c
       }
       catch (Exception paramMap)
       {
-        ac.printErrStackTrace("MicroMsg.ADListView.Message", paramMap, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ADListView.Message", paramMap, "", new Object[0]);
         AppMethodBeat.o(38771);
         return null;
       }
@@ -122,7 +122,7 @@ public final class c
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      if (paramd.IGO == null) {
+      if (paramd.KxU == null) {
         break label68;
       }
     }
@@ -131,7 +131,7 @@ public final class c
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      localDrawable = a(this.IGM.Dmk, paramd.IGN.getContext());
+      localDrawable = a(this.KxS.ERm, paramd.KxT.getContext());
       if (localDrawable != null) {
         break label73;
       }
@@ -141,9 +141,9 @@ public final class c
       break;
     }
     label73:
-    paramd.IGN.setBackgroundDrawable(localDrawable);
-    paramd = paramd.IGO;
-    if (this.IGM.Dmf) {}
+    paramd.KxT.setBackgroundDrawable(localDrawable);
+    paramd = paramd.KxU;
+    if (this.KxS.ERh) {}
     for (int i = 0;; i = 8)
     {
       paramd.setVisibility(i);

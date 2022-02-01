@@ -2,13 +2,15 @@ package com.tencent.mm.plugin.sns.ad.d;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.modelsns.g;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.e;
+import com.tencent.mm.plugin.sns.storage.f;
 import com.tencent.mm.plugin.sns.storage.q;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.dcu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.dih;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.IOException;
 
 public final class h
@@ -16,7 +18,7 @@ public final class h
   public static String a(long paramLong, Object... paramVarArgs)
   {
     AppMethodBeat.i(94986);
-    af.dHL();
+    ag.dTY();
     paramVarArgs = new StringBuilder(k.v(paramVarArgs));
     a(paramLong, paramVarArgs);
     paramVarArgs = paramVarArgs.toString();
@@ -27,67 +29,67 @@ public final class h
   public static void a(long paramLong, StringBuilder paramStringBuilder)
   {
     AppMethodBeat.i(94987);
-    Object localObject = af.dHU().xB(paramLong);
+    Object localObject = ag.dUh().zZ(paramLong);
     if (localObject != null)
     {
-      localObject = ((e)localObject).dLV();
+      localObject = ((e)localObject).dYl();
       if (localObject != null)
       {
-        com.tencent.mm.modelstat.p.a(((TimeLineObject)localObject).yAj, paramStringBuilder);
+        com.tencent.mm.modelstat.p.a(((TimeLineObject)localObject).zRz, paramStringBuilder);
         AppMethodBeat.o(94987);
         return;
       }
-      ac.v("SnsAdExtUtil", "l timeLineObject null, snsId %d", new Object[] { Long.valueOf(paramLong) });
+      ad.v("SnsAdExtUtil", "l timeLineObject null, snsId %d", new Object[] { Long.valueOf(paramLong) });
       paramStringBuilder.append(",,");
       AppMethodBeat.o(94987);
       return;
     }
-    ac.v("SnsAdExtUtil", "l snsInfo null, snsId %d", new Object[] { Long.valueOf(paramLong) });
+    ad.v("SnsAdExtUtil", "l snsInfo null, snsId %d", new Object[] { Long.valueOf(paramLong) });
     paramStringBuilder.append(",,");
     AppMethodBeat.o(94987);
   }
   
-  public static void a(String paramString, com.tencent.mm.modelsns.f paramf)
+  public static void a(String paramString, g paramg)
   {
     AppMethodBeat.i(94985);
-    Object localObject = af.dHR().auS(paramString);
+    Object localObject = ag.dUe().azZ(paramString);
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.plugin.sns.storage.p)localObject).dLV();
+      localObject = ((com.tencent.mm.plugin.sns.storage.p)localObject).dYl();
       if (localObject != null)
       {
-        com.tencent.mm.modelstat.p.a(((TimeLineObject)localObject).yAj, paramf);
+        com.tencent.mm.modelstat.p.a(((TimeLineObject)localObject).zRz, paramg);
         AppMethodBeat.o(94985);
         return;
       }
-      ac.v("SnsAdExtUtil", "timeLineObject null, snsId %s", new Object[] { paramString });
+      ad.v("SnsAdExtUtil", "timeLineObject null, snsId %s", new Object[] { paramString });
       AppMethodBeat.o(94985);
       return;
     }
-    ac.v("SnsAdExtUtil", "snsInfo null, snsId %s", new Object[] { paramString });
+    ad.v("SnsAdExtUtil", "snsInfo null, snsId %s", new Object[] { paramString });
     AppMethodBeat.o(94985);
   }
   
-  private static String asE(String paramString)
+  private static String axD(String paramString)
   {
     AppMethodBeat.i(94989);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(94989);
       return "";
     }
     paramString = Base64.decode(paramString, 0);
-    dcu localdcu = new dcu();
+    dih localdih = new dih();
     try
     {
-      localdcu.parseFrom(paramString);
-      paramString = com.tencent.mm.modelstat.p.a(localdcu.FMs);
+      localdih.parseFrom(paramString);
+      paramString = com.tencent.mm.modelstat.p.a(localdih.Hxa);
       AppMethodBeat.o(94989);
       return paramString;
     }
     catch (IOException paramString)
     {
-      ac.e("SnsAdExtUtil", "", new Object[] { paramString });
+      ad.e("SnsAdExtUtil", "", new Object[] { paramString });
       AppMethodBeat.o(94989);
     }
     return "";
@@ -98,11 +100,11 @@ public final class h
     AppMethodBeat.i(94988);
     if (paramTimeLineObject != null)
     {
-      paramTimeLineObject = asE(paramTimeLineObject.yAj);
+      paramTimeLineObject = axD(paramTimeLineObject.zRz);
       AppMethodBeat.o(94988);
       return paramTimeLineObject;
     }
-    ac.v("SnsAdExtUtil", "getSnsStatExt timeLineObject null");
+    ad.v("SnsAdExtUtil", "getSnsStatExt timeLineObject null");
     AppMethodBeat.o(94988);
     return null;
   }

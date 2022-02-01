@@ -48,13 +48,13 @@ public class PoseDetectProcessManager
   
   public void initAll() {}
   
-  public int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, float paramFloat3)
+  public int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt2)
   {
-    AppMethodBeat.i(62518);
+    AppMethodBeat.i(213172);
     int i = YTCameraSetting.getRotateTag(this.mCameraRotate, 1);
-    paramInt = YTPoseDetectJNIInterface.poseDetect(paramArrayOfFloat1, paramArrayOfFloat2, paramInt, paramArrayOfByte, this.mDesiredPreviewWidth, this.mDesiredPreviewHeight, i, paramFloat1, paramFloat2, paramFloat3);
-    AppMethodBeat.o(62518);
-    return paramInt;
+    paramInt1 = YTPoseDetectJNIInterface.poseDetect(paramArrayOfFloat1, paramArrayOfFloat2, paramInt1, paramArrayOfByte, this.mDesiredPreviewWidth, this.mDesiredPreviewHeight, i, paramFloat1, paramFloat2, paramFloat3, paramInt2);
+    AppMethodBeat.o(213172);
+    return paramInt1;
   }
   
   public void restoreCamera()
@@ -109,7 +109,7 @@ public class PoseDetectProcessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.manager.PoseDetectProcessManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bu;
 
 public abstract class c
 {
-  public bo dpq;
+  public bu dBd;
 }
 
 

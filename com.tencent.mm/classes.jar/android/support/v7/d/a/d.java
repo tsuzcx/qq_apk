@@ -11,25 +11,25 @@ import android.support.v4.graphics.drawable.a;
 public final class d
   extends Drawable
 {
-  private static final float aaS = (float)Math.toRadians(45.0D);
-  private float aaT;
-  private float aaU;
-  private float aaV;
-  private float aaW;
-  private boolean aaX;
-  private boolean aaY;
-  private float aaZ;
-  private float aba;
-  private int abb;
+  private static final float acI = (float)Math.toRadians(45.0D);
+  private float acJ;
+  private float acK;
+  private float acL;
+  private float acM;
+  private boolean acN;
+  private boolean acO;
+  private float acP;
+  private int acQ;
   private final Paint mPaint;
+  private float mProgress;
   private final int mSize;
-  private final Path vU;
+  private final Path xN;
   
   public final void aa(boolean paramBoolean)
   {
-    if (this.aaY != paramBoolean)
+    if (this.acO != paramBoolean)
     {
-      this.aaY = paramBoolean;
+      this.acO = paramBoolean;
       invalidateSelf();
     }
   }
@@ -40,20 +40,20 @@ public final class d
     int i;
     float f1;
     float f2;
-    switch (this.abb)
+    switch (this.acQ)
     {
     case 2: 
     default: 
       if (a.k(this) == 1)
       {
         i = 1;
-        f1 = (float)Math.sqrt(this.aaT * this.aaT * 2.0F);
-        f2 = this.aaU;
-        float f6 = f2 + (f1 - f2) * this.aaZ;
-        f1 = this.aaU;
-        float f3 = f1 + (this.aaV - f1) * this.aaZ;
-        float f4 = Math.round(0.0F + (this.aba - 0.0F) * this.aaZ);
-        float f7 = 0.0F + (aaS - 0.0F) * this.aaZ;
+        f1 = (float)Math.sqrt(this.acJ * this.acJ * 2.0F);
+        f2 = this.acK;
+        float f6 = f2 + (f1 - f2) * this.mProgress;
+        f1 = this.acK;
+        float f3 = f1 + (this.acL - f1) * this.mProgress;
+        float f4 = Math.round(0.0F + (this.acP - 0.0F) * this.mProgress);
+        float f7 = 0.0F + (acI - 0.0F) * this.mProgress;
         if (i == 0) {
           break label476;
         }
@@ -64,29 +64,29 @@ public final class d
         }
         f2 = 180.0F;
         label153:
-        float f5 = this.aaZ;
+        float f5 = this.mProgress;
         float f8 = (float)Math.round(f6 * Math.cos(f7));
         f6 = (float)Math.round(f6 * Math.sin(f7));
-        this.vU.rewind();
-        f7 = this.aaW + this.mPaint.getStrokeWidth();
-        f7 += (-this.aba - f7) * this.aaZ;
+        this.xN.rewind();
+        f7 = this.acM + this.mPaint.getStrokeWidth();
+        f7 += (-this.acP - f7) * this.mProgress;
         float f9 = -f3 / 2.0F;
-        this.vU.moveTo(f9 + f4, 0.0F);
-        this.vU.rLineTo(f3 - f4 * 2.0F, 0.0F);
-        this.vU.moveTo(f9, f7);
-        this.vU.rLineTo(f8, f6);
-        this.vU.moveTo(f9, -f7);
-        this.vU.rLineTo(f8, -f6);
-        this.vU.close();
+        this.xN.moveTo(f9 + f4, 0.0F);
+        this.xN.rLineTo(f3 - f4 * 2.0F, 0.0F);
+        this.xN.moveTo(f9, f7);
+        this.xN.rLineTo(f8, f6);
+        this.xN.moveTo(f9, -f7);
+        this.xN.rLineTo(f8, -f6);
+        this.xN.close();
         paramCanvas.save();
         f3 = this.mPaint.getStrokeWidth();
-        f4 = (int)(localRect.height() - 3.0F * f3 - this.aaW * 2.0F) / 4 * 2;
-        f6 = this.aaW;
+        f4 = (int)(localRect.height() - 3.0F * f3 - this.acM * 2.0F) / 4 * 2;
+        f6 = this.acM;
         paramCanvas.translate(localRect.centerX(), f3 * 1.5F + f6 + f4);
-        if (!this.aaX) {
+        if (!this.acN) {
           break label493;
         }
-        if ((i ^ this.aaY) == 0) {
+        if ((i ^ this.acO) == 0) {
           break label487;
         }
         i = -1;
@@ -97,7 +97,7 @@ public final class d
     }
     for (;;)
     {
-      paramCanvas.drawPath(this.vU, this.mPaint);
+      paramCanvas.drawPath(this.xN, this.mPaint);
       paramCanvas.restore();
       return;
       i = 0;
@@ -161,9 +161,9 @@ public final class d
   
   public final void setProgress(float paramFloat)
   {
-    if (this.aaZ != paramFloat)
+    if (this.mProgress != paramFloat)
     {
-      this.aaZ = paramFloat;
+      this.mProgress = paramFloat;
       invalidateSelf();
     }
   }

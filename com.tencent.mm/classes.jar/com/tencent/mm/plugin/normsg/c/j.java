@@ -7,37 +7,37 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.normsg.a.b;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class j
 {
-  private static boolean gpB = false;
-  private static a vpQ;
+  private static boolean gJk = false;
+  private static a wvi;
   
   public static boolean isConnected()
   {
-    return gpB;
+    return gJk;
   }
   
   public static void start()
   {
     AppMethodBeat.i(149110);
-    if (vpQ == null) {
-      vpQ = new a((byte)0);
+    if (wvi == null) {
+      wvi = new a((byte)0);
     }
     IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction(b.vor.aon(""));
-    ai.getContext().registerReceiver(vpQ, localIntentFilter);
+    localIntentFilter.addAction(b.wtJ.atn(""));
+    aj.getContext().registerReceiver(wvi, localIntentFilter);
     AppMethodBeat.o(149110);
   }
   
   public static void stop()
   {
     AppMethodBeat.i(149111);
-    if (vpQ != null) {
-      ai.getContext().unregisterReceiver(vpQ);
+    if (wvi != null) {
+      aj.getContext().unregisterReceiver(wvi);
     }
-    vpQ = null;
+    wvi = null;
     AppMethodBeat.o(149111);
   }
   
@@ -52,14 +52,14 @@ public final class j
         AppMethodBeat.o(149109);
         return;
       }
-      j.access$002(paramIntent.getExtras().getBoolean(b.vor.aon("3<<;14\"<<")));
+      j.access$002(paramIntent.getExtras().getBoolean(b.wtJ.atn("3<<;14\"<<")));
       AppMethodBeat.o(149109);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.c.j
  * JD-Core Version:    0.7.0.1
  */

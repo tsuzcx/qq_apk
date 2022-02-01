@@ -8,45 +8,51 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class PoiHeaderView
   extends RelativeLayout
 {
   private Context context;
-  public TextView fxS;
-  public String tZm;
-  public String tZn;
-  public SimpleImageView tZo;
+  public TextView fRf;
+  public String vbV;
+  public String vbW;
+  public SimpleImageView vbX;
   
   public PoiHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55854);
-    this.tZm = "";
-    this.tZn = "";
+    this.vbV = "";
+    this.vbW = "";
     this.context = paramContext;
     paramContext = View.inflate(this.context, 2131495098, this);
-    this.fxS = ((TextView)paramContext.findViewById(2131300728));
-    this.tZo = ((SimpleImageView)paramContext.findViewById(2131300721));
-    this.fxS.setVisibility(8);
-    this.tZo.setVisibility(8);
+    this.fRf = ((TextView)paramContext.findViewById(2131300728));
+    this.vbX = ((SimpleImageView)paramContext.findViewById(2131300721));
+    this.fRf.setVisibility(8);
+    this.vbX.setVisibility(8);
     setVisibility(8);
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(55853);
-        Intent localIntent = new Intent();
-        if (bs.isNullOrNil(PoiHeaderView.a(PoiHeaderView.this))) {}
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/location/ui/PoiHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        localObject = new Intent();
+        if (bt.isNullOrNil(PoiHeaderView.a(PoiHeaderView.this))) {}
         for (paramAnonymousView = PoiHeaderView.b(PoiHeaderView.this);; paramAnonymousView = PoiHeaderView.a(PoiHeaderView.this))
         {
-          ac.d("MicroMsg.PoiHeaderView", "click url %s", new Object[] { paramAnonymousView });
-          localIntent.putExtra("rawUrl", paramAnonymousView);
-          localIntent.putExtra("showShare", false);
-          d.e(PoiHeaderView.this.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+          ad.d("MicroMsg.PoiHeaderView", "click url %s", new Object[] { paramAnonymousView });
+          ((Intent)localObject).putExtra("rawUrl", paramAnonymousView);
+          ((Intent)localObject).putExtra("showShare", false);
+          d.f(PoiHeaderView.this.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", (Intent)localObject);
+          a.a(this, "com/tencent/mm/plugin/location/ui/PoiHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(55853);
           return;
         }
@@ -58,14 +64,14 @@ public class PoiHeaderView
   public void setViewUrl(String paramString)
   {
     AppMethodBeat.i(55855);
-    ac.d("MicroMsg.PoiHeaderView", "viewUrl ".concat(String.valueOf(paramString)));
-    this.tZn = paramString;
+    ad.d("MicroMsg.PoiHeaderView", "viewUrl ".concat(String.valueOf(paramString)));
+    this.vbW = paramString;
     AppMethodBeat.o(55855);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.PoiHeaderView
  * JD-Core Version:    0.7.0.1
  */

@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  b COV;
-  WebViewSmileyPanel.a COW;
-  Context mHB;
-  boolean mHR = false;
-  int mHV;
-  int mHW;
+  b EsV;
+  WebViewSmileyPanel.a EsW;
+  Context nhZ;
+  boolean nip = false;
+  int nit;
+  int niu;
   
-  public final a eGO()
+  public final a eVO()
   {
     AppMethodBeat.i(82355);
-    if (this.COV == null)
+    if (this.EsV == null)
     {
-      this.COV = new b();
-      this.COV.mHB = this.mHB;
-      this.COV.setPanelManager(this);
+      this.EsV = new b();
+      this.EsV.nhZ = this.nhZ;
+      this.EsV.setPanelManager(this);
     }
-    b localb = this.COV;
+    b localb = this.EsV;
     AppMethodBeat.o(82355);
     return localb;
   }

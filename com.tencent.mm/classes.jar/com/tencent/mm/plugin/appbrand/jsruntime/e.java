@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.appbrand.jsruntime;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.appbrand.v8.m;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class e
 {
-  private final a leI;
-  private final AtomicInteger leJ;
-  final SparseArray<d> leK;
+  private final a lBH;
+  private final AtomicInteger lBI;
+  final SparseArray<d> lBJ;
   
   static
   {
@@ -27,37 +27,37 @@ public class e
   public e(a parama)
   {
     AppMethodBeat.i(144168);
-    this.leI = parama;
-    this.leJ = new AtomicInteger(1);
-    this.leK = new SparseArray();
+    this.lBH = parama;
+    this.lBI = new AtomicInteger(1);
+    this.lBJ = new SparseArray();
     AppMethodBeat.o(144168);
   }
   
-  public static int bmz()
+  public static int bqk()
   {
     return 1;
   }
   
-  public final g bmy()
+  public final g bqj()
   {
     AppMethodBeat.i(144170);
-    int i = this.leJ.incrementAndGet();
-    f localf = new f(this.leI.tu(i), i);
-    synchronized (this.leK)
+    int i = this.lBI.incrementAndGet();
+    f localf = new f(this.lBH.tX(i), i);
+    synchronized (this.lBJ)
     {
-      this.leK.put(i, localf);
-      ac.i("MicroMsg.AppBrandJ2V8ContextMgr", "allocJsContext id:%d", new Object[] { Integer.valueOf(i) });
+      this.lBJ.put(i, localf);
+      ad.i("MicroMsg.AppBrandJ2V8ContextMgr", "allocJsContext id:%d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(144170);
       return localf;
     }
   }
   
-  public final g tp(int paramInt)
+  public final g tS(int paramInt)
   {
     AppMethodBeat.i(144169);
-    synchronized (this.leK)
+    synchronized (this.lBJ)
     {
-      g localg = (g)this.leK.get(paramInt);
+      g localg = (g)this.lBJ.get(paramInt);
       AppMethodBeat.o(144169);
       return localg;
     }
@@ -65,12 +65,12 @@ public class e
   
   public static abstract interface a
   {
-    public abstract m tu(int paramInt);
+    public abstract m tX(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsruntime.e
  * JD-Core Version:    0.7.0.1
  */

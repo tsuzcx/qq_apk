@@ -2,22 +2,20 @@ package com.tencent.mm.plugin.wallet.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet.a.s;
-import com.tencent.mm.plugin.wallet_core.model.ak;
-import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.plugin.wallet_core.model.al;
+import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class a
 {
-  public static boolean TE(int paramInt)
+  public static boolean Vw(int paramInt)
   {
     AppMethodBeat.i(69858);
-    g.agS();
-    if ((((Integer)g.agR().agA().get(ah.a.GHf, Integer.valueOf(-1))).intValue() < paramInt) && (paramInt > 0))
+    com.tencent.mm.kernel.g.ajD();
+    if ((((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Itx, Integer.valueOf(-1))).intValue() < paramInt) && (paramInt > 0))
     {
       AppMethodBeat.o(69858);
       return true;
@@ -26,37 +24,37 @@ public final class a
     return false;
   }
   
-  public static boolean eqC()
+  public static boolean eEC()
   {
     AppMethodBeat.i(69859);
-    com.tencent.mm.plugin.fingerprint.d.a locala = (com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
+    com.tencent.mm.plugin.fingerprint.d.a locala = (com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
     Object localObject = new StringBuilder("mgr==null?");
-    ak localak;
+    al localal;
     StringBuilder localStringBuilder;
     if (locala == null)
     {
       bool = true;
-      ac.i("MicroMsg.WalletUtil", bool);
+      ad.i("MicroMsg.WalletUtil", bool);
       if (locala != null) {
-        ac.i("MicroMsg.WalletUtil", " mgr.isSupportAndLoadSuccess()=" + locala.cHe());
+        ad.i("MicroMsg.WalletUtil", " mgr.isSupportAndLoadSuccess()=" + locala.cPt());
       }
-      s.epp();
-      localObject = s.epq();
-      localak = ((am)localObject).esi();
+      s.eDp();
+      localObject = s.eDq();
+      localal = ((an)localObject).eGi();
       localStringBuilder = new StringBuilder("config==null?");
-      if (localak != null) {
+      if (localal != null) {
         break label212;
       }
     }
     label212:
     for (boolean bool = true;; bool = false)
     {
-      ac.i("MicroMsg.WalletUtil", bool);
-      if (localak != null) {
-        ac.i("MicroMsg.WalletUtil", "config.isSupportTouchPay()=" + localak.erQ());
+      ad.i("MicroMsg.WalletUtil", bool);
+      if (localal != null) {
+        ad.i("MicroMsg.WalletUtil", "config.isSupportTouchPay()=" + localal.eFQ());
       }
-      ac.i("MicroMsg.WalletUtil", "userInfoManger.isReg()=" + ((am)localObject).esa());
-      if ((locala == null) || (!locala.cHe()) || (localak == null) || (!localak.erQ()) || (!((am)localObject).esa())) {
+      ad.i("MicroMsg.WalletUtil", "userInfoManger.isReg()=" + ((an)localObject).eGa());
+      if ((locala == null) || (!locala.cPt()) || (localal == null) || (!localal.eFQ()) || (!((an)localObject).eGa())) {
         break label217;
       }
       AppMethodBeat.o(69859);
@@ -69,22 +67,22 @@ public final class a
     return false;
   }
   
-  public static boolean eqD()
+  public static boolean eED()
   {
     AppMethodBeat.i(69860);
-    com.tencent.mm.plugin.fingerprint.d.a locala = (com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
+    com.tencent.mm.plugin.fingerprint.d.a locala = (com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
     if (locala == null)
     {
-      ac.w("MicroMsg.WalletUtil", "no finger mgr!");
+      ad.w("MicroMsg.WalletUtil", "no finger mgr!");
       AppMethodBeat.o(69860);
       return false;
     }
-    s.epp();
-    am localam = s.epq();
-    ak localak = localam.esi();
-    h.wUl.dB(916, 0);
-    ac.i("MicroMsg.WalletUtil", "support faceid: %s, %s, %s", new Object[] { Boolean.valueOf(locala.cHm()), Boolean.valueOf(localak.erQ()), Boolean.valueOf(localam.esa()) });
-    if ((locala.cHm()) && (localak.erQ()) && (localam.esa()))
+    s.eDp();
+    an localan = s.eDq();
+    al localal = localan.eGi();
+    com.tencent.mm.plugin.report.service.g.yhR.dD(916, 0);
+    ad.i("MicroMsg.WalletUtil", "support faceid: %s, %s, %s", new Object[] { Boolean.valueOf(locala.cPB()), Boolean.valueOf(localal.eFQ()), Boolean.valueOf(localan.eGa()) });
+    if ((locala.cPB()) && (localal.eFQ()) && (localan.eGa()))
     {
       AppMethodBeat.o(69860);
       return true;

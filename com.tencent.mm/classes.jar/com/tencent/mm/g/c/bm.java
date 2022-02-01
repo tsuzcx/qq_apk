@@ -8,16 +8,13 @@ public abstract class bm
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eAf = "productID".hashCode();
-  private static final int eCq = "lan".hashCode();
-  private static final int eng = "content".hashCode();
+  private static final int eEm = "content".hashCode();
+  private static final int eTM = "designerIDAndType".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCp = true;
-  private boolean emI = true;
-  private boolean ezF = true;
+  private boolean eDP = true;
+  private boolean eTL = true;
   public byte[] field_content;
-  public String field_lan;
-  public String field_productID;
+  public String field_designerIDAndType;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +29,11 @@ public abstract class bm
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eAf != k) {
+      if (eTM != k) {
         break label65;
       }
-      this.field_productID = paramCursor.getString(i);
-      this.ezF = true;
+      this.field_designerIDAndType = paramCursor.getString(i);
+      this.eTL = true;
     }
     for (;;)
     {
@@ -44,10 +41,8 @@ public abstract class bm
       break label20;
       break;
       label65:
-      if (eng == k) {
+      if (eEm == k) {
         this.field_content = paramCursor.getBlob(i);
-      } else if (eCq == k) {
-        this.field_lan = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -57,17 +52,11 @@ public abstract class bm
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ezF) {
-      localContentValues.put("productID", this.field_productID);
+    if (this.eTL) {
+      localContentValues.put("designerIDAndType", this.field_designerIDAndType);
     }
-    if (this.emI) {
+    if (this.eDP) {
       localContentValues.put("content", this.field_content);
-    }
-    if (this.field_lan == null) {
-      this.field_lan = "";
-    }
-    if (this.eCp) {
-      localContentValues.put("lan", this.field_lan);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

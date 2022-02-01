@@ -5,35 +5,36 @@ import com.tencent.luggage.a.b;
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.f;
 import d.g;
-import d.g.b.k;
+import d.g.b.p;
+import d.l;
 import d.n.n;
 import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask;", "", "()V", "storage", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "getStorage", "()Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "storage$delegate", "Lkotlin/Lazy;", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask;", "", "()V", "storage", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "getStorage", "()Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "storage$delegate", "Lkotlin/Lazy;", "plugin-appbrand-integration_release"})
 abstract class q
 {
-  private final f lOA = g.K((d.g.a.a)a.lOB);
+  private final f moq = g.O((d.g.a.a)a.mor);
   
-  protected final o bsD()
+  protected final o bwH()
   {
-    return (o)this.lOA.getValue();
+    return (o)this.moq.getValue();
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "com/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1", "invoke", "()Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1;"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "com/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1", "invoke", "()Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1;"})
   static final class a
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<1>
   {
-    public static final a lOB;
+    public static final a mor;
     
     static
     {
-      AppMethodBeat.i(187374);
-      lOB = new a();
-      AppMethodBeat.o(187374);
+      AppMethodBeat.i(189583);
+      mor = new a();
+      AppMethodBeat.o(189583);
     }
     
     a()
@@ -44,7 +45,7 @@ abstract class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.q
  * JD-Core Version:    0.7.0.1
  */

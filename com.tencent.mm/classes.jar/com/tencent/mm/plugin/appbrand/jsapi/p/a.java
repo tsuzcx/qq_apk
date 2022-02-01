@@ -1,28 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi.p;
 
-import com.tencent.luggage.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 import d.l;
 import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/IReferrerHelper;", "Lcom/tencent/luggage/base/ICustomize;", "defaultReferrerPolicy", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "getDefaultReferrerPolicy", "()Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "parseReferrerPolicy", "referrerPolicyStr", "", "parseReferrerPolicyFallback", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "parseReferrerPolicyOrFallback", "data", "Lorg/json/JSONObject;", "parseReferrerPolicyStr", "provideReferrer", "luggage-commons_release"})
-public abstract interface a
-  extends b
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/picker/BasePickerJsapi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentView;", "()V", "isEnableNewPicker", "", "()Z", "setEnableNewPicker", "(Z)V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-default-impl_release"})
+public class a
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<e>
 {
-  public abstract c MX(String paramString);
+  public static final a ldx;
+  boolean ldw = true;
   
-  public abstract String U(JSONObject paramJSONObject);
+  static
+  {
+    AppMethodBeat.i(138163);
+    ldx = new a((byte)0);
+    AppMethodBeat.o(138163);
+  }
   
-  public abstract c a(JSONObject paramJSONObject, com.tencent.mm.plugin.appbrand.jsapi.c paramc);
+  public void b(e parame, JSONObject paramJSONObject, int paramInt) {}
   
-  public abstract c biC();
-  
-  public abstract c x(com.tencent.mm.plugin.appbrand.jsapi.c paramc);
-  
-  public abstract String y(com.tencent.mm.plugin.appbrand.jsapi.c paramc);
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/picker/BasePickerJsapi$Companion;", "", "()V", "TAG", "", "luggage-commons-jsapi-default-impl_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p.a
  * JD-Core Version:    0.7.0.1
  */

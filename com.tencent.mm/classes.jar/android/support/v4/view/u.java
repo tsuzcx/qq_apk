@@ -10,14 +10,14 @@ import java.lang.reflect.Method;
 
 public final class u
 {
-  private static Method OU;
+  private static Method QJ;
   
   static
   {
     if (Build.VERSION.SDK_INT == 25) {}
     try
     {
-      OU = ViewConfiguration.class.getDeclaredMethod("getScaledScrollFactor", new Class[0]);
+      QJ = ViewConfiguration.class.getDeclaredMethod("getScaledScrollFactor", new Class[0]);
       return;
     }
     catch (Exception localException) {}
@@ -55,10 +55,10 @@ public final class u
   
   private static float c(ViewConfiguration paramViewConfiguration, Context paramContext)
   {
-    if ((Build.VERSION.SDK_INT >= 25) && (OU != null)) {
+    if ((Build.VERSION.SDK_INT >= 25) && (QJ != null)) {
       try
       {
-        int i = ((Integer)OU.invoke(paramViewConfiguration, new Object[0])).intValue();
+        int i = ((Integer)QJ.invoke(paramViewConfiguration, new Object[0])).intValue();
         return i;
       }
       catch (Exception paramViewConfiguration) {}

@@ -4,45 +4,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.n.n;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheUtils;", "", "()V", "generateDirectoryPrefix", "", "appId", "generateRootDirectoryPrefix", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheUtils;", "", "()V", "generateDirectoryPrefix", "", "appId", "generateRootDirectoryPrefix", "plugin-appbrand-integration_release"})
 public final class h
 {
-  public static final h lHo;
+  public static final h mha;
   
   static
   {
     AppMethodBeat.i(50996);
-    lHo = new h();
+    mha = new h();
     AppMethodBeat.o(50996);
   }
   
-  public static final String Qf(String paramString)
+  public static final String TK(String paramString)
   {
     AppMethodBeat.i(50994);
-    k.h(paramString, "appId");
-    paramString = brF() + '/' + paramString;
-    i.aSh(paramString);
+    p.h(paramString, "appId");
+    paramString = bvJ() + '/' + paramString;
+    i.aYg(paramString);
     AppMethodBeat.o(50994);
     return paramString;
   }
   
-  public static final String brF()
+  public static final String bvJ()
   {
     AppMethodBeat.i(50995);
-    Object localObject = g.agR();
-    k.g(localObject, "MMKernel.storage()");
-    String str = ((e)localObject).agv();
-    k.g(str, "path");
+    Object localObject = g.ajC();
+    p.g(localObject, "MMKernel.storage()");
+    String str = ((e)localObject).ajh();
+    p.g(str, "path");
     localObject = str;
     if (!n.a((CharSequence)str, '/')) {
       localObject = str + '/';
     }
     localObject = (String)localObject + "appbrand/web_renderingcache";
-    k.g(localObject, "path");
+    p.g(localObject, "path");
     AppMethodBeat.o(50995);
     return localObject;
   }

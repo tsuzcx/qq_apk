@@ -2,18 +2,20 @@ package com.tencent.mm.emoji.debug;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class EmojiDebugUI$j
-  extends d.g.b.l
+  extends q
   implements a<String>
 {
-  public static final j fOp;
+  public static final j ghP;
   
   static
   {
     AppMethodBeat.i(177045);
-    fOp = new j();
+    ghP = new j();
     AppMethodBeat.o(177045);
   }
   

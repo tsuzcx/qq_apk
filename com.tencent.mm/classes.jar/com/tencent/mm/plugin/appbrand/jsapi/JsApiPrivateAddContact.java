@@ -8,10 +8,10 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
+import com.tencent.mm.pluginsdk.i;
 import com.tencent.mm.pluginsdk.ui.applet.v;
 import com.tencent.mm.pluginsdk.ui.applet.w;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class JsApiPrivateAddContact
   extends a<h>
@@ -19,7 +19,7 @@ public class JsApiPrivateAddContact
   public static final int CTRL_INDEX = 407;
   public static final String NAME = "private_addContact";
   
-  protected int beO()
+  protected int bis()
   {
     return 1;
   }
@@ -28,7 +28,7 @@ public class JsApiPrivateAddContact
     extends AppBrandProxyUIProcessTask.ProcessRequest
   {
     public static final Parcelable.Creator<AddContactRequest> CREATOR;
-    int jZz;
+    int ktV;
     int scene;
     String userName;
     
@@ -48,7 +48,7 @@ public class JsApiPrivateAddContact
       AppMethodBeat.o(45604);
     }
     
-    public final Class<? extends AppBrandProxyUIProcessTask> bdj()
+    public final Class<? extends AppBrandProxyUIProcessTask> bgN()
     {
       return JsApiPrivateAddContact.a.class;
     }
@@ -58,7 +58,7 @@ public class JsApiPrivateAddContact
       AppMethodBeat.i(45605);
       this.userName = paramParcel.readString();
       this.scene = paramParcel.readInt();
-      this.jZz = paramParcel.readInt();
+      this.ktV = paramParcel.readInt();
       AppMethodBeat.o(45605);
     }
     
@@ -67,7 +67,7 @@ public class JsApiPrivateAddContact
       AppMethodBeat.i(45606);
       paramParcel.writeString(this.userName);
       paramParcel.writeInt(this.scene);
-      paramParcel.writeInt(this.jZz);
+      paramParcel.writeInt(this.ktV);
       AppMethodBeat.o(45606);
     }
   }
@@ -76,7 +76,7 @@ public class JsApiPrivateAddContact
     extends AppBrandProxyUIProcessTask.ProcessResult
   {
     public static final Parcelable.Creator<AddContactResult> CREATOR;
-    private int bPH;
+    private int bZU;
     
     static
     {
@@ -102,14 +102,14 @@ public class JsApiPrivateAddContact
     public final void j(Parcel paramParcel)
     {
       AppMethodBeat.i(45610);
-      this.bPH = paramParcel.readInt();
+      this.bZU = paramParcel.readInt();
       AppMethodBeat.o(45610);
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45611);
-      paramParcel.writeInt(this.bPH);
+      paramParcel.writeInt(this.bZU);
       AppMethodBeat.o(45611);
     }
   }
@@ -121,35 +121,32 @@ public class JsApiPrivateAddContact
     {
       boolean bool = true;
       AppMethodBeat.i(45614);
-      Object localObject = new JsApiPrivateAddContact.AddContactResult();
+      final JsApiPrivateAddContact.AddContactResult localAddContactResult = new JsApiPrivateAddContact.AddContactResult();
       if (!(paramProcessRequest instanceof JsApiPrivateAddContact.AddContactRequest))
       {
-        ac.w("MicroMsg.JsApiPrivateAddContact", "handleRequest !(request instanceof AddContactRequest)");
-        JsApiPrivateAddContact.AddContactResult.a((JsApiPrivateAddContact.AddContactResult)localObject, -1);
-        b((AppBrandProxyUIProcessTask.ProcessResult)localObject);
+        ad.w("MicroMsg.JsApiPrivateAddContact", "handleRequest !(request instanceof AddContactRequest)");
+        JsApiPrivateAddContact.AddContactResult.a(localAddContactResult, -1);
+        b(localAddContactResult);
         AppMethodBeat.o(45614);
         return;
       }
       paramProcessRequest = (JsApiPrivateAddContact.AddContactRequest)paramProcessRequest;
-      com.tencent.mm.pluginsdk.h localh = (com.tencent.mm.pluginsdk.h)g.ab(com.tencent.mm.pluginsdk.h.class);
-      MMActivity localMMActivity = bef();
-      String str = paramProcessRequest.userName;
-      int i = paramProcessRequest.scene;
-      localObject = new v()
-      {
-        public final void sj(int paramAnonymousInt)
-        {
-          AppMethodBeat.i(45613);
-          ac.i("MicroMsg.JsApiPrivateAddContact", "onAddContact resultCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          JsApiPrivateAddContact.AddContactResult.a(this.jZA, paramAnonymousInt);
-          JsApiPrivateAddContact.a.a(JsApiPrivateAddContact.a.this, this.jZA);
-          AppMethodBeat.o(45613);
-        }
-      };
-      if (paramProcessRequest.jZz == 1) {}
+      com.tencent.mm.pluginsdk.a locala = new com.tencent.mm.pluginsdk.a();
+      if (paramProcessRequest.ktV == 1) {}
       for (;;)
       {
-        localh.a(localMMActivity, str, i, (v)localObject, bool, "").show();
+        locala.EIT = bool;
+        ((i)g.ab(i.class)).a(bhJ(), paramProcessRequest.userName, paramProcessRequest.scene, new v()
+        {
+          public final void sL(int paramAnonymousInt)
+          {
+            AppMethodBeat.i(45613);
+            ad.i("MicroMsg.JsApiPrivateAddContact", "onAddContact resultCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            JsApiPrivateAddContact.AddContactResult.a(localAddContactResult, paramAnonymousInt);
+            JsApiPrivateAddContact.a.a(JsApiPrivateAddContact.a.this, localAddContactResult);
+            AppMethodBeat.o(45613);
+          }
+        }, locala).show();
         AppMethodBeat.o(45614);
         return;
         bool = false;

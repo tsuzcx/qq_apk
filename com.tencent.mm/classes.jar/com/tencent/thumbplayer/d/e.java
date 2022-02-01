@@ -5,15 +5,15 @@ import java.io.Serializable;
 public final class e
   implements com.tencent.thumbplayer.b.a.e, Serializable
 {
-  private int KgM;
-  private int KgN;
-  public String Khb;
-  private long Khc;
+  private int Mac;
+  private int Mad;
+  public String Mar;
+  private long Mas;
   private long mEndTime;
   private long mStartPosition;
   private long mStartTime;
   
-  public final void BX(long paramLong)
+  public final void EZ(long paramLong)
   {
     this.mStartPosition = paramLong;
   }
@@ -26,47 +26,47 @@ public final class e
     if (!(paramObject instanceof e)) {
       return false;
     }
-    return (this.KgN == ((e)paramObject).KgN) && (this.KgM == ((e)paramObject).KgM);
+    return (this.Mad == ((e)paramObject).Mad) && (this.Mac == ((e)paramObject).Mac);
   }
   
-  public final int fFp()
-  {
-    return this.KgN;
-  }
-  
-  public final long fFq()
+  public final long esj()
   {
     return this.mStartTime;
   }
   
-  public final long fFr()
+  public final long esk()
   {
     return this.mEndTime;
   }
   
-  public final long fFs()
+  public final int fWG()
   {
-    return this.Khc;
+    return this.Mad;
   }
   
-  public final long fFt()
+  public final long fWH()
+  {
+    return this.Mas;
+  }
+  
+  public final long fWI()
   {
     return this.mStartPosition;
   }
   
   public final String getFilePath()
   {
-    return this.Khb;
+    return this.Mar;
   }
   
   public final int getMediaType()
   {
-    return this.KgM;
+    return this.Mac;
   }
   
   public final String getUrl()
   {
-    return this.Khb;
+    return this.Mar;
   }
 }
 

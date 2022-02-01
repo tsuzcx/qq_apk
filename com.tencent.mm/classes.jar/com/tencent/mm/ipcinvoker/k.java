@@ -2,7 +2,7 @@ package com.tencent.mm.ipcinvoker;
 
 public abstract interface k<InputType, ResultType>
 {
-  public abstract ResultType ay(InputType paramInputType);
+  public abstract ResultType invoke(InputType paramInputType);
 }
 
 

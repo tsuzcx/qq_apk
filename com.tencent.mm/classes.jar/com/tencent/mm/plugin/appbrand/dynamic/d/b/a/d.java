@@ -16,7 +16,7 @@ public final class d
     return paramString;
   }
   
-  public final int bcz()
+  public final int bgd()
   {
     return 0;
   }

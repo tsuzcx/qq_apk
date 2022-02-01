@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class qs
   extends b
 {
-  public a dtI;
+  public a dFn;
   
   public qs()
   {
@@ -16,32 +15,22 @@ public final class qs
   
   private qs(byte paramByte)
   {
-    AppMethodBeat.i(116044);
-    this.dtI = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(63291);
+    this.dFn = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116044);
+    AppMethodBeat.o(63291);
   }
   
   public static final class a
   {
-    public String cYP;
-    public Context context;
-    public String djj;
-    public String dng;
-    public long dpl;
-    public int dtJ;
-    public String dtK;
-    public int dtL;
-    public String mediaTagName;
-    public int msgType;
-    public String packageName;
-    public int scene;
+    public int dFo = 0;
+    public boolean doF = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.qs
  * JD-Core Version:    0.7.0.1
  */

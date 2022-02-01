@@ -9,15 +9,15 @@ public abstract interface t
 {
   public static final String[] SQL_CREATE = { j.getCreateSQLs(f.info, "FavEditInfo") };
   
+  public abstract void A(long paramLong, int paramInt);
+  
   public abstract boolean a(f paramf);
   
   public abstract boolean a(f paramf, String... paramVarArgs);
   
-  public abstract List<f> cpE();
+  public abstract List<f> cvj();
   
-  public abstract f tG(long paramLong);
-  
-  public abstract void z(long paramLong, int paramInt);
+  public abstract f vD(long paramLong);
 }
 
 

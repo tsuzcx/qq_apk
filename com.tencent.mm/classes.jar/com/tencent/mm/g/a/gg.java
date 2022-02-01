@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gg
   extends b
 {
-  public a dgI;
+  public a drV;
   
   public gg()
   {
@@ -15,20 +15,16 @@ public final class gg
   
   private gg(byte paramByte)
   {
-    AppMethodBeat.i(91204);
-    this.dgI = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(63287);
+    this.drV = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91204);
+    AppMethodBeat.o(63287);
   }
   
   public static final class a
   {
-    public String dac;
-    public String dad;
-    public int dae;
-    public boolean isKinda = false;
-    public int type;
+    public boolean drW;
   }
 }
 

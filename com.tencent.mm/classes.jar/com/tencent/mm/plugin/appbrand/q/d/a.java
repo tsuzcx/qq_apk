@@ -5,11 +5,13 @@ import com.tencent.luggage.sdk.d.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
+import com.tencent.mm.plugin.appbrand.permission.d;
+import com.tencent.mm.plugin.appbrand.q.a.e;
 import com.tencent.mm.plugin.appbrand.q.a.e.a;
 import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.appbrand.r.a;
 import com.tencent.mm.plugin.appbrand.r.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,59 +19,59 @@ import java.util.Map;
 import java.util.Vector;
 
 public final class a
-  extends com.tencent.mm.plugin.appbrand.q.a.e
+  extends e
 {
-  private r.b lyw;
+  private r.b lXU;
   
   public a(e.a parama, com.tencent.mm.plugin.appbrand.q paramq)
   {
     super(parama, paramq);
   }
   
-  public final void bpC()
+  public final void btD()
   {
     AppMethodBeat.i(147405);
-    this.lyw = new r.b()
+    this.lXU = new r.b()
     {
-      public final void aUt()
+      public final void aXF()
       {
         AppMethodBeat.i(147404);
-        ac.i("MicroMsg.ProxyAppBrandServiceOnRuntimeReadyListener", "AppBrandRuntimeProfile| onRuntimeReady %s", new Object[] { a.this.ceh.getAppId() });
-        Object localObject2 = a.this.ceh.getRuntime();
+        ad.i("MicroMsg.ProxyAppBrandServiceOnRuntimeReadyListener", "AppBrandRuntimeProfile| onRuntimeReady %s", new Object[] { a.this.cox.getAppId() });
+        Object localObject2 = a.this.cox.getRuntime();
         if (localObject2 == null)
         {
           localObject1 = new IllegalStateException("onRuntimeReady runtime null");
           AppMethodBeat.o(147404);
           throw ((Throwable)localObject1);
         }
-        Object localObject1 = (com.tencent.mm.plugin.appbrand.jsruntime.q)a.this.ceh.aUV().P(com.tencent.mm.plugin.appbrand.jsruntime.q.class);
+        Object localObject1 = (com.tencent.mm.plugin.appbrand.jsruntime.q)a.this.cox.aYh().P(com.tencent.mm.plugin.appbrand.jsruntime.q.class);
         localObject2 = new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(169499);
-            if (this.joK.isDestroyed())
+            if (this.jIG.isDestroyed())
             {
               AppMethodBeat.o(169499);
               return;
             }
-            ac.i("MicroMsg.ProxyAppBrandServiceOnRuntimeReadyListener", "AppBrandRuntimeProfile| start prepareDataForNode %s", new Object[] { a.this.ceh.getAppId() });
+            ad.i("MicroMsg.ProxyAppBrandServiceOnRuntimeReadyListener", "AppBrandRuntimeProfile| start prepareDataForNode %s", new Object[] { a.this.cox.getAppId() });
             HashMap localHashMap = new HashMap();
-            Object localObject = ((c)this.joK).cfa;
+            Object localObject = ((c)this.jIG).cpr;
             if (localObject == null) {
-              ac.w("MicroMsg.ProxyAppBrandServiceOnRuntimeReadyListener", "fillPermissionBytes controller null");
+              ad.w("MicroMsg.ProxyAppBrandServiceOnRuntimeReadyListener", "fillPermissionBytes controller null");
             }
             for (;;)
             {
-              localHashMap.put("state", com.tencent.mm.plugin.appbrand.b.b.jqU);
-              localHashMap.put("wxaData", com.tencent.mm.plugin.appbrand.q.b.b.ah(this.joK));
+              localHashMap.put("state", com.tencent.mm.plugin.appbrand.a.b.jKO);
+              localHashMap.put("wxaData", com.tencent.mm.plugin.appbrand.q.b.b.ab(this.jIG));
               a.this.Q(localHashMap);
               AppMethodBeat.o(169499);
               return;
-              localObject = ((com.tencent.mm.plugin.appbrand.permission.e)localObject).brY();
+              localObject = ((d)localObject).bvW();
               if (localObject == null)
               {
-                ac.i("MicroMsg.ProxyAppBrandServiceOnRuntimeReadyListener", "fillPermissionBytes getPermissionBytes null");
+                ad.i("MicroMsg.ProxyAppBrandServiceOnRuntimeReadyListener", "fillPermissionBytes getPermissionBytes null");
               }
               else
               {
@@ -79,7 +81,7 @@ public final class a
             }
           }
         };
-        if (((com.tencent.mm.plugin.appbrand.jsruntime.q)localObject1).AU())
+        if (((com.tencent.mm.plugin.appbrand.jsruntime.q)localObject1).Ct())
         {
           ((Runnable)localObject2).run();
           AppMethodBeat.o(147404);
@@ -89,19 +91,19 @@ public final class a
         AppMethodBeat.o(147404);
       }
     };
-    r localr = r.a.jhi;
-    Object localObject1 = this.ceh;
-    r.b localb = this.lyw;
-    int i = ((com.tencent.mm.plugin.appbrand.q)localObject1).aUT();
-    ac.i("MicroMsg.AppBrandServiceOnRuntimeReadyListenerMgr", "addListener service:%d", new Object[] { Integer.valueOf(i) });
+    r localr = r.a.jAn;
+    Object localObject1 = this.cox;
+    r.b localb = this.lXU;
+    int i = ((com.tencent.mm.plugin.appbrand.q)localObject1).aXC();
+    ad.i("MicroMsg.AppBrandServiceOnRuntimeReadyListenerMgr", "addListener service:%d", new Object[] { Integer.valueOf(i) });
     try
     {
-      List localList = (List)localr.jhg.get(i);
+      List localList = (List)localr.jAl.get(i);
       localObject1 = localList;
       if (localList == null)
       {
         localObject1 = new ArrayList();
-        localr.jhg.put(i, localObject1);
+        localr.jAl.put(i, localObject1);
       }
       ((List)localObject1).add(localb);
       localr.e(i, (List)localObject1);
@@ -121,20 +123,20 @@ public final class a
   public final void removeListener()
   {
     AppMethodBeat.i(147406);
-    r localr = r.a.jhi;
-    Object localObject2 = this.ceh;
-    r.b localb = this.lyw;
-    int i = ((com.tencent.mm.plugin.appbrand.q)localObject2).aUT();
-    ac.i("MicroMsg.AppBrandServiceOnRuntimeReadyListenerMgr", "removeListener service:%d", new Object[] { Integer.valueOf(i) });
+    r localr = r.a.jAn;
+    Object localObject2 = this.cox;
+    r.b localb = this.lXU;
+    int i = ((com.tencent.mm.plugin.appbrand.q)localObject2).aXC();
+    ad.i("MicroMsg.AppBrandServiceOnRuntimeReadyListenerMgr", "removeListener service:%d", new Object[] { Integer.valueOf(i) });
     try
     {
-      localObject2 = (List)localr.jhg.get(i);
+      localObject2 = (List)localr.jAl.get(i);
       if (localObject2 == null) {
         return;
       }
       ((List)localObject2).remove(localb);
       if (((List)localObject2).isEmpty()) {
-        localr.jhg.remove(i);
+        localr.jAl.remove(i);
       }
       return;
     }
@@ -146,7 +148,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.q.d.a
  * JD-Core Version:    0.7.0.1
  */

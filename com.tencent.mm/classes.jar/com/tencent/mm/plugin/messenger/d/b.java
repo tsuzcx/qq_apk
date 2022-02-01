@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.a.f;
-import com.tencent.mm.plugin.messenger.a.f.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.messenger.a.e;
+import com.tencent.mm.plugin.messenger.a.e.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
@@ -17,50 +17,57 @@ import junit.framework.Assert;
 
 public abstract class b
 {
-  public WeakReference<b> uHC = null;
+  public WeakReference<b> vKF = null;
   
   public b(b paramb)
   {
     Assert.assertNotNull(paramb);
-    this.uHC = new WeakReference(paramb);
-    ((f)g.ab(f.class)).a(dcL(), new f.b()
+    this.vKF = new WeakReference(paramb);
+    ((e)g.ab(e.class)).a(dmf(), new e.b()
     {
       public final CharSequence a(Map<String, String> paramAnonymousMap, String paramAnonymousString, Bundle paramAnonymousBundle, WeakReference<Context> paramAnonymousWeakReference, WeakReference<NeatTextView> paramAnonymousWeakReference1)
       {
-        AppMethodBeat.i(198610);
+        AppMethodBeat.i(211860);
         String str = paramAnonymousBundle.getString("conv_talker_username", "");
         if (paramAnonymousMap == null)
         {
-          ac.w("MicroMsg.SysMsgTemp.SysMsgTemplateLinkHandlerBase", "hy: non map!!");
-          AppMethodBeat.o(198610);
+          ad.w("MicroMsg.SysMsgTemp.SysMsgTemplateLinkHandlerBase", "hy: non map!!");
+          AppMethodBeat.o(211860);
           return null;
         }
-        if (bs.isNullOrNil(paramAnonymousString))
+        if (bt.isNullOrNil(paramAnonymousString))
         {
-          ac.w("MicroMsg.SysMsgTemp.SysMsgTemplateLinkHandlerBase", "hy: non header!!");
-          AppMethodBeat.o(198610);
+          ad.w("MicroMsg.SysMsgTemp.SysMsgTemplateLinkHandlerBase", "hy: non header!!");
+          AppMethodBeat.o(211860);
           return null;
         }
-        if (bs.isNullOrNil(str))
+        if (bt.isNullOrNil(str))
         {
-          ac.w("MicroMsg.SysMsgTemp.SysMsgTemplateLinkHandlerBase", "hy: not resolved talker!!");
-          AppMethodBeat.o(198610);
+          ad.w("MicroMsg.SysMsgTemp.SysMsgTemplateLinkHandlerBase", "hy: not resolved talker!!");
+          AppMethodBeat.o(211860);
           return null;
         }
         paramAnonymousMap = b.this.b(paramAnonymousMap, paramAnonymousString, paramAnonymousBundle, paramAnonymousWeakReference, paramAnonymousWeakReference1);
-        AppMethodBeat.o(198610);
+        AppMethodBeat.o(211860);
         return paramAnonymousMap;
       }
     });
   }
   
+  public final void a(long paramLong, LinkedList<String> paramLinkedList, int paramInt)
+  {
+    if ((this.vKF != null) && (this.vKF.get() != null)) {
+      ((b)this.vKF.get()).a(paramLong, paramLinkedList, paramInt);
+    }
+  }
+  
   protected abstract CharSequence b(Map<String, String> paramMap, String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference, WeakReference<NeatTextView> paramWeakReference1);
   
-  protected abstract String dcL();
+  protected abstract String dmf();
   
   public void release()
   {
-    ((f)g.ab(f.class)).akI(dcL());
+    ((e)g.ab(e.class)).apu(dmf());
   }
   
   public final class a
@@ -73,9 +80,9 @@ public abstract class b
   
   public static abstract interface b
   {
-    public abstract void a(View paramView, b.a parama);
+    public abstract void a(long paramLong, LinkedList<String> paramLinkedList, int paramInt);
     
-    public abstract void aG(LinkedList<String> paramLinkedList);
+    public abstract void a(View paramView, b.a parama);
   }
 }
 

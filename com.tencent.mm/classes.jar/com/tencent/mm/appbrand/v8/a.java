@@ -10,7 +10,7 @@ import com.eclipsesource.v8.V8ScriptException;
 import com.eclipsesource.v8.utils.MemoryManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsruntime.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Locale;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;
@@ -20,22 +20,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class a
   implements IJSRuntime
 {
-  private static final AtomicInteger cLZ = new AtomicInteger(0);
-  private static Runnable cMa = new a.1();
-  private MultiContextV8 cMb;
-  private c cMc;
-  private CountDownLatch cMd;
-  private MemoryManager cMe;
-  private aa cMf;
-  e cMg;
-  String cMh;
-  byte[] cMi;
-  boolean cMj;
-  private final boolean cMk;
-  final boolean cMl;
-  private final SparseArray<h> cMm;
-  private final ConcurrentLinkedQueue<Runnable> cMn;
-  IJSRuntime.Config cMo;
+  private static final AtomicInteger cXn = new AtomicInteger(0);
+  private static Runnable cXo = new a.1();
+  final boolean cXA;
+  private final SparseArray<h> cXB;
+  private final ConcurrentLinkedQueue<Runnable> cXC;
+  IJSRuntime.Config cXD;
+  private MultiContextV8 cXp;
+  private c cXq;
+  private CountDownLatch cXr;
+  private MemoryManager cXs;
+  private aa cXt;
+  e cXu;
+  String cXv;
+  byte[] cXw;
+  String cXx;
+  boolean cXy;
+  private final boolean cXz;
   private volatile int mTid = -1;
   
   a(final IJSRuntime.Config paramConfig)
@@ -43,40 +44,41 @@ public abstract class a
     IJSRuntime.Config localConfig;
     if (paramConfig != null)
     {
-      this.cMh = paramConfig.cMs;
-      this.cMi = paramConfig.cMt;
-      this.cMk = paramConfig.useNativeBufferJNI();
-      this.cMj = paramConfig.cMw;
-      this.cMl = paramConfig.cMx;
+      this.cXv = paramConfig.cXH;
+      this.cXw = paramConfig.cXI;
+      this.cXz = paramConfig.useNativeBufferJNI();
+      this.cXy = paramConfig.cXL;
+      this.cXA = paramConfig.cXM;
+      this.cXx = paramConfig.cXO;
       if (paramConfig != null) {
-        break label229;
+        break label237;
       }
       localConfig = new IJSRuntime.Config();
-      label65:
-      this.cMo = localConfig;
-      ac.i("MicroMsg.AbstractJSRuntime", "hy: use native buffer: %b, hasGlobalTimer: %b", new Object[] { Boolean.valueOf(this.cMk), Boolean.valueOf(this.cMl) });
+      label73:
+      this.cXD = localConfig;
+      ad.i("MicroMsg.AbstractJSRuntime", "hy: use native buffer: %b, hasGlobalTimer: %b", new Object[] { Boolean.valueOf(this.cXz), Boolean.valueOf(this.cXA) });
       if (paramConfig == null) {
-        break label234;
+        break label242;
       }
     }
-    label229:
-    label234:
+    label237:
+    label242:
     for (paramConfig = paramConfig.toString();; paramConfig = "")
     {
-      ac.i("MicroMsg.AbstractJSRuntime", "hy: config: %s", new Object[] { paramConfig });
-      this.cMm = new SparseArray();
-      this.cMn = new ConcurrentLinkedQueue();
+      ad.i("MicroMsg.AbstractJSRuntime", "hy: config: %s", new Object[] { paramConfig });
+      this.cXB = new SparseArray();
+      this.cXC = new ConcurrentLinkedQueue();
       paramConfig = new CountDownLatch(1);
-      this.cMd = new CountDownLatch(1);
-      new Thread(String.format(Locale.US, "JSRuntimeLooper#%d", new Object[] { Integer.valueOf(cLZ.getAndIncrement()) }))
+      this.cXr = new CountDownLatch(1);
+      new Thread(String.format(Locale.US, "JSRuntimeLooper#%d", new Object[] { Integer.valueOf(cXn.getAndIncrement()) }))
       {
         public final void run()
         {
           AppMethodBeat.i(143991);
           a.a(a.this, Process.myTid());
-          a.cMa.run();
-          ac.i("MicroMsg.AbstractJSRuntime", "expansions file is ready");
-          a.a(a.this, a.this.LE());
+          a.cXo.run();
+          ad.i("MicroMsg.AbstractJSRuntime", "expansions file is ready");
+          a.a(a.this, a.this.Nm());
           a.b(a.this).a(new c.a()
           {
             public final void b(V8ScriptException paramAnonymous2V8ScriptException)
@@ -89,18 +91,18 @@ public abstract class a
           paramConfig.countDown();
           a.c(a.this).countDown();
           long l = System.currentTimeMillis();
-          ac.i("MicroMsg.AbstractJSRuntime", "prepareV8WhenThreadStart, tid[%d] JsRuntime[%d] JsLooper[%d]", new Object[] { Integer.valueOf(a.d(a.this)), Integer.valueOf(a.this.hashCode()), Integer.valueOf(a.b(a.this).hashCode()) });
-          a.a(a.this, a.this.LD());
+          ad.i("MicroMsg.AbstractJSRuntime", "prepareV8WhenThreadStart, tid[%d] JsRuntime[%d] JsLooper[%d]", new Object[] { Integer.valueOf(a.d(a.this)), Integer.valueOf(a.this.hashCode()), Integer.valueOf(a.b(a.this).hashCode()) });
+          a.a(a.this, a.this.Nl());
           a.a(a.this, new aa(a.a(a.this)));
           a.e(a.this);
           a.a(a.this, a.a(a.this).createMemoryManager());
           l = System.currentTimeMillis() - l;
-          ac.i("MicroMsg.AbstractJSRuntime", "v8 init cost:%d ms", new Object[] { Long.valueOf(l) });
+          ad.i("MicroMsg.AbstractJSRuntime", "v8 init cost:%d ms", new Object[] { Long.valueOf(l) });
           x.a(5, l, -1, null, -1, -1, -1);
           V8Locker localV8Locker = a.a(a.this).getV8Locker();
           if (localV8Locker.hasLock())
           {
-            ac.i("MicroMsg.AbstractJSRuntime", "has lock release");
+            ad.i("MicroMsg.AbstractJSRuntime", "has lock release");
             localV8Locker.release();
           }
           localV8Locker.acquire();
@@ -111,8 +113,8 @@ public abstract class a
           try
           {
             a.h(a.this).clear();
-            ac.i("MicroMsg.AbstractJSRuntime", "whenThreadEnd, mJSExceptionHandlerMap.clear() succeed, JsRuntime[%d]", new Object[] { Integer.valueOf(a.this.hashCode()) });
-            a.this.LF();
+            ad.i("MicroMsg.AbstractJSRuntime", "whenThreadEnd, mJSExceptionHandlerMap.clear() succeed, JsRuntime[%d]", new Object[] { Integer.valueOf(a.this.hashCode()) });
+            a.this.Nn();
             AppMethodBeat.o(143991);
             return;
           }
@@ -120,7 +122,7 @@ public abstract class a
           {
             for (;;)
             {
-              ac.e("MicroMsg.AbstractJSRuntime", "whenThreadEnd, mJSExceptionHandlerMap.clear(), JsRuntime[%d] get exception[%s]", new Object[] { Integer.valueOf(a.this.hashCode()), localThrowable });
+              ad.e("MicroMsg.AbstractJSRuntime", "whenThreadEnd, mJSExceptionHandlerMap.clear(), JsRuntime[%d] get exception[%s]", new Object[] { Integer.valueOf(a.this.hashCode()), localThrowable });
             }
           }
         }
@@ -132,29 +134,29 @@ public abstract class a
       }
       catch (InterruptedException paramConfig)
       {
-        ac.i("MicroMsg.AbstractJSRuntime", "init latch.await InterruptedException:%s", new Object[] { paramConfig });
+        ad.i("MicroMsg.AbstractJSRuntime", "init latch.await InterruptedException:%s", new Object[] { paramConfig });
       }
-      this.cMk = false;
-      this.cMl = false;
+      this.cXz = false;
+      this.cXA = false;
       break;
       localConfig = paramConfig;
-      break label65;
+      break label73;
     }
   }
   
-  private void LI()
+  private void Nq()
   {
-    if ((this.cMc == null) && (this.cMd != null)) {
-      ac.i("MicroMsg.AbstractJSRuntime", "scheduleToJSThread but looper null");
+    if ((this.cXq == null) && (this.cXr != null)) {
+      ad.i("MicroMsg.AbstractJSRuntime", "scheduleToJSThread but looper null");
     }
     try
     {
-      this.cMd.await(30000L, TimeUnit.MILLISECONDS);
-      ac.i("MicroMsg.AbstractJSRuntime", "scheduleToJSThread but looper assigned");
-      if (this.cMc == null)
+      this.cXr.await(30000L, TimeUnit.MILLISECONDS);
+      ad.i("MicroMsg.AbstractJSRuntime", "scheduleToJSThread but looper assigned");
+      if (this.cXq == null)
       {
-        cMa.run();
-        if (this.cMc == null) {
+        cXo.run();
+        if (this.cXq == null) {
           throw new IllegalStateException("JSRuntime not ready!");
         }
       }
@@ -163,78 +165,78 @@ public abstract class a
     {
       for (;;)
       {
-        ac.i("MicroMsg.AbstractJSRuntime", "scheduleToJSThread latch.await InterruptedException:%s", new Object[] { localInterruptedException });
+        ad.i("MicroMsg.AbstractJSRuntime", "scheduleToJSThread latch.await InterruptedException:%s", new Object[] { localInterruptedException });
       }
     }
   }
   
   private void a(V8ScriptException paramV8ScriptException)
   {
-    h localh = (h)this.cMm.get(paramV8ScriptException.getContextTag());
+    h localh = (h)this.cXB.get(paramV8ScriptException.getContextTag());
     if (localh != null)
     {
       localh.u(paramV8ScriptException.getJSMessage(), paramV8ScriptException.getJSStackTrace());
       return;
     }
-    ac.w("MicroMsg.AbstractJSRuntime", "publishJSException jsHandler null %s", new Object[] { paramV8ScriptException });
+    ad.w("MicroMsg.AbstractJSRuntime", "publishJSException jsHandler null %s", new Object[] { paramV8ScriptException });
   }
   
-  public final String AV()
+  public final String Cu()
   {
-    return this.cMc.AV();
+    return this.cXq.Cu();
   }
   
-  public final IJSRuntime.Config LC()
+  public final IJSRuntime.Config Nk()
   {
-    return this.cMo;
+    return this.cXD;
   }
   
-  abstract MultiContextV8 LD();
+  abstract MultiContextV8 Nl();
   
-  abstract c LE();
+  abstract c Nm();
   
-  abstract void LF();
+  abstract void Nn();
   
-  public final e LG()
+  public final e No()
   {
-    if (this.cMg == null)
+    if (this.cXu == null)
     {
-      if (!this.cMk) {
+      if (!this.cXz) {
         break label38;
       }
-      ac.i("MicroMsg.AbstractJSRuntime", "hy: start load native buffer jni");
+      ad.i("MicroMsg.AbstractJSRuntime", "hy: start load native buffer jni");
     }
     label38:
-    for (this.cMg = new NativeBufferJNI();; this.cMg = new u()) {
-      return this.cMg;
+    for (this.cXu = new NativeBufferJNI();; this.cXu = new u()) {
+      return this.cXu;
     }
   }
   
-  public final boolean LH()
+  public final boolean Np()
   {
-    return this.cMc.LH();
+    return this.cXq.Np();
   }
   
   public final void a(int paramInt, h paramh)
   {
     if (this.mTid < 0)
     {
-      ac.e("MicroMsg.AbstractJSRuntime", "setJsExceptionHandler after destroyed, JsRuntime[%d] stack=%s", new Object[] { Integer.valueOf(hashCode()), Log.getStackTraceString(new Throwable()) });
+      ad.e("MicroMsg.AbstractJSRuntime", "setJsExceptionHandler after destroyed, JsRuntime[%d] stack=%s", new Object[] { Integer.valueOf(hashCode()), Log.getStackTraceString(new Throwable()) });
       return;
     }
-    ac.i("MicroMsg.AbstractJSRuntime", "setJsExceptionHandler contextId[%d] JsRuntime[%d] JSThread.id[%d], currentThread.id[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hashCode()), Integer.valueOf(this.mTid), Long.valueOf(Thread.currentThread().getId()) });
-    this.cMm.put(paramInt, paramh);
+    ad.i("MicroMsg.AbstractJSRuntime", "setJsExceptionHandler contextId[%d] JsRuntime[%d] JSThread.id[%d], currentThread.id[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hashCode()), Integer.valueOf(this.mTid), Long.valueOf(Thread.currentThread().getId()) });
+    this.cXB.put(paramInt, paramh);
   }
   
   public final void a(Runnable paramRunnable, long paramLong, boolean paramBoolean)
   {
-    LI();
-    this.cMc.b(paramRunnable, paramLong, paramBoolean);
+    Nq();
+    this.cXq.b(paramRunnable, paramLong, paramBoolean);
   }
   
-  public final void ci(boolean paramBoolean)
+  public final void cj(boolean paramBoolean)
   {
-    this.cMc.ci(paramBoolean);
+    this.cXq.cj(paramBoolean);
   }
   
   public final void e(Runnable paramRunnable, long paramLong)
@@ -244,19 +246,19 @@ public abstract class a
   
   public final long getIsolatePtr()
   {
-    return this.cMb.getIsolatePtr();
+    return this.cXp.getIsolatePtr();
   }
   
   public final long getUVLoopPtr()
   {
-    return this.cMb.getUVLoopPtr();
+    return this.cXp.getUVLoopPtr();
   }
   
-  public final m ho(final int paramInt)
+  public final m hv(final int paramInt)
   {
-    new m(this, LG(), new m.a()
+    new m(this, No(), new m.a()
     {
-      public final V8Context LJ()
+      public final V8Context Nr()
       {
         AppMethodBeat.i(143989);
         if (a.a(a.this) == null)
@@ -274,13 +276,13 @@ public abstract class a
   
   public final void pause()
   {
-    this.cMc.pause();
+    this.cXq.pause();
   }
   
   public final void quit()
   {
-    ac.i("MicroMsg.AbstractJSRuntime", "quit() JsRuntime[%d]", new Object[] { Integer.valueOf(hashCode()) });
-    this.cMc.quit();
+    ad.i("MicroMsg.AbstractJSRuntime", "quit() JsRuntime[%d]", new Object[] { Integer.valueOf(hashCode()) });
+    this.cXq.quit();
     this.mTid = -1;
   }
   
@@ -291,13 +293,13 @@ public abstract class a
   
   public final void resume()
   {
-    this.cMc.resume();
+    this.cXq.resume();
   }
   
   public final void s(Runnable paramRunnable)
   {
-    LI();
-    this.cMc.u(paramRunnable);
+    Nq();
+    this.cXq.u(paramRunnable);
   }
   
   public final void setThreadPriority(int paramInt)
@@ -307,30 +309,30 @@ public abstract class a
     try
     {
       Process.setThreadPriority(i, paramInt);
-      ac.d("MicroMsg.AbstractJSRuntime", "setThreadPriority priority=%d tid=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      ad.d("MicroMsg.AbstractJSRuntime", "setThreadPriority priority=%d tid=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
       return;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.AbstractJSRuntime", localException, "setThreadPriority priority=%d tid=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      ad.printErrStackTrace("MicroMsg.AbstractJSRuntime", localException, "setThreadPriority priority=%d tid=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
     }
   }
   
   public final void t(Runnable paramRunnable)
   {
-    this.cMn.add(paramRunnable);
+    this.cXC.add(paramRunnable);
   }
   
   public final void waitForDebugger(String paramString)
   {
-    n localn = new n(this.cMb, this);
-    localn.cNv.r(new n.1(localn, paramString));
-    localn.cNv.t(new n.2(localn));
+    n localn = new n(this.cXp, this);
+    localn.cYL.r(new n.1(localn, paramString));
+    localn.cYL.t(new n.2(localn));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.a
  * JD-Core Version:    0.7.0.1
  */

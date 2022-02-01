@@ -27,18 +27,19 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.setting.model.UserAuthItemParcelable;
 import com.tencent.mm.plugin.setting.model.c;
 import com.tencent.mm.plugin.setting.model.j;
 import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.protocal.protobuf.ctn;
-import com.tencent.mm.protocal.protobuf.dnz;
-import com.tencent.mm.protocal.protobuf.doa;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.cyx;
+import com.tencent.mm.protocal.protobuf.dtq;
+import com.tencent.mm.protocal.protobuf.dtr;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.search.FTSEditTextView;
@@ -56,33 +57,33 @@ import java.util.List;
 @com.tencent.mm.ui.base.a(3)
 public class SettingsSearchAuthUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements f
 {
   private ListView mListView;
-  private ProgressDialog rGq;
-  private byte[] xol;
-  private boolean xsB;
-  private com.tencent.mm.ui.search.a xuc;
-  private View xud;
-  private TextView xue;
-  private TextView xuf;
-  private List<dnz> xug;
-  private a xuh;
+  private ProgressDialog sBI;
+  private byte[] yCQ;
+  private boolean yHk;
+  private com.tencent.mm.ui.search.a yIN;
+  private View yIO;
+  private TextView yIP;
+  private TextView yIQ;
+  private List<dtq> yIR;
+  private a yIS;
   
   public SettingsSearchAuthUI()
   {
     AppMethodBeat.i(74392);
-    this.xug = new ArrayList();
+    this.yIR = new ArrayList();
     AppMethodBeat.o(74392);
   }
   
-  private void dCf()
+  private void dNI()
   {
     AppMethodBeat.i(74397);
     removeAllOptionMenu();
-    if (!this.xug.isEmpty())
+    if (!this.yIR.isEmpty())
     {
-      if (this.xsB)
+      if (this.yHk)
       {
         addTextOptionMenu(700, getString(2131755779), new MenuItem.OnMenuItemClickListener()
         {
@@ -137,33 +138,33 @@ public class SettingsSearchAuthUI
   public void initView()
   {
     AppMethodBeat.i(74394);
-    this.xuc = new com.tencent.mm.ui.search.a(this);
+    this.yIN = new com.tencent.mm.ui.search.a(this);
     this.mListView = ((ListView)findViewById(2131296982));
-    this.xuh = new a((byte)0);
-    this.mListView.setAdapter(this.xuh);
-    this.xud = findViewById(2131304443);
-    this.xue = ((TextView)findViewById(2131304395));
-    this.xuf = ((TextView)findViewById(2131304435));
-    dCf();
-    getSupportActionBar().setCustomView(this.xuc);
-    this.xuc.setSearchViewListener(new a.b()
+    this.yIS = new a((byte)0);
+    this.mListView.setAdapter(this.yIS);
+    this.yIO = findViewById(2131304443);
+    this.yIP = ((TextView)findViewById(2131304395));
+    this.yIQ = ((TextView)findViewById(2131304435));
+    dNI();
+    getSupportActionBar().setCustomView(this.yIN);
+    this.yIN.setSearchViewListener(new a.b()
     {
       public final void onClickBackBtn(View paramAnonymousView)
       {
         AppMethodBeat.i(74374);
-        ac.i("MicroMsg.SettingsSearchAuthUI", "click search back");
+        ad.i("MicroMsg.SettingsSearchAuthUI", "click search back");
         SettingsSearchAuthUI.this.finish();
         AppMethodBeat.o(74374);
       }
     });
-    this.xuc.getFtsEditText().ftb();
-    this.xuc.getFtsEditText().setFtsEditTextListener(new FTSEditTextView.a()
+    this.yIN.getFtsEditText().fJP();
+    this.yIN.getFtsEditText().setFtsEditTextListener(new FTSEditTextView.a()
     {
       public final void a(String paramAnonymousString1, String paramAnonymousString2, List<a.c> paramAnonymousList, FTSEditTextView.b paramAnonymousb)
       {
         AppMethodBeat.i(164137);
-        ac.i("MicroMsg.SettingsSearchAuthUI", "search totalText %s", new Object[] { paramAnonymousString1 });
-        if (!bs.isNullOrNil(paramAnonymousString1))
+        ad.i("MicroMsg.SettingsSearchAuthUI", "search totalText %s", new Object[] { paramAnonymousString1 });
+        if (!bt.isNullOrNil(paramAnonymousString1))
         {
           SettingsSearchAuthUI.a(SettingsSearchAuthUI.this);
           paramAnonymousString2 = SettingsSearchAuthUI.this.getString(2131755882);
@@ -177,28 +178,28 @@ public class SettingsSearchAuthUI
         AppMethodBeat.o(164137);
       }
       
-      public final boolean bvs()
+      public final boolean bzz()
       {
         AppMethodBeat.i(74378);
-        ac.i("MicroMsg.SettingsSearchAuthUI", "search key down");
+        ad.i("MicroMsg.SettingsSearchAuthUI", "search key down");
         Editable localEditable = SettingsSearchAuthUI.d(SettingsSearchAuthUI.this).getFtsEditText().getEditText().getText();
         SettingsSearchAuthUI.b(SettingsSearchAuthUI.this).setVisibility(8);
         SettingsSearchAuthUI.d(SettingsSearchAuthUI.this).getFtsEditText().getEditText().clearFocus();
         SettingsSearchAuthUI.this.hideVKB();
         SettingsSearchAuthUI.e(SettingsSearchAuthUI.this);
-        if (!bs.aj(localEditable)) {
+        if (!bt.ai(localEditable)) {
           SettingsSearchAuthUI.a(SettingsSearchAuthUI.this, localEditable.toString().trim());
         }
         AppMethodBeat.o(74378);
         return true;
       }
       
-      public final void cxG() {}
+      public final void cED() {}
       
-      public final void lF(boolean paramAnonymousBoolean)
+      public final void ma(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(74376);
-        ac.i("MicroMsg.SettingsSearchAuthUI", "searchView hasFocus %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        ad.i("MicroMsg.SettingsSearchAuthUI", "searchView hasFocus %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
         if (paramAnonymousBoolean)
         {
           SettingsSearchAuthUI.this.showVKB();
@@ -212,20 +213,24 @@ public class SettingsSearchAuthUI
       public final void onClickClearTextBtn(View paramAnonymousView)
       {
         AppMethodBeat.i(74377);
-        ac.i("MicroMsg.SettingsSearchAuthUI", "clear search text");
+        ad.i("MicroMsg.SettingsSearchAuthUI", "clear search text");
         SettingsSearchAuthUI.c(SettingsSearchAuthUI.this);
         AppMethodBeat.o(74377);
       }
     });
-    this.xue.setOnClickListener(new View.OnClickListener()
+    this.yIP.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(74379);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsSearchAuthUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         paramAnonymousView = SettingsSearchAuthUI.d(SettingsSearchAuthUI.this).getFtsEditText().getEditText().getText();
-        if (!bs.aj(paramAnonymousView)) {
+        if (!bt.ai(paramAnonymousView)) {
           SettingsSearchAuthUI.a(SettingsSearchAuthUI.this, paramAnonymousView.toString().trim());
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsSearchAuthUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(74379);
       }
     });
@@ -234,36 +239,43 @@ public class SettingsSearchAuthUI
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(74380);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousAdapterView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).qY(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsSearchAuthUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
         if (!SettingsSearchAuthUI.f(SettingsSearchAuthUI.this))
         {
-          paramAnonymousView = SettingsSearchAuthUI.g(SettingsSearchAuthUI.this).NC(paramAnonymousInt);
+          paramAnonymousView = SettingsSearchAuthUI.g(SettingsSearchAuthUI.this).Pf(paramAnonymousInt);
           if (paramAnonymousView != null)
           {
             paramAnonymousAdapterView = new Intent(SettingsSearchAuthUI.this, SettingsModifyUserAuthUI.class);
-            UserAuthItemParcelable[] arrayOfUserAuthItemParcelable = (UserAuthItemParcelable[])UserAuthItemParcelable.CREATOR.newArray(paramAnonymousView.FVF.size());
+            localObject = (UserAuthItemParcelable[])UserAuthItemParcelable.CREATOR.newArray(paramAnonymousView.HGt.size());
             paramAnonymousInt = 0;
-            while (paramAnonymousInt < paramAnonymousView.FVF.size())
+            while (paramAnonymousInt < paramAnonymousView.HGt.size())
             {
-              doa localdoa = (doa)paramAnonymousView.FVF.get(paramAnonymousInt);
+              dtr localdtr = (dtr)paramAnonymousView.HGt.get(paramAnonymousInt);
               UserAuthItemParcelable localUserAuthItemParcelable = new UserAuthItemParcelable();
-              localUserAuthItemParcelable.scope = localdoa.scope;
-              localUserAuthItemParcelable.xoN = localdoa.xoN;
-              localUserAuthItemParcelable.state = localdoa.state;
-              localUserAuthItemParcelable.xoO = localdoa.xoO;
-              arrayOfUserAuthItemParcelable[paramAnonymousInt] = localUserAuthItemParcelable;
+              localUserAuthItemParcelable.scope = localdtr.scope;
+              localUserAuthItemParcelable.yDs = localdtr.yDs;
+              localUserAuthItemParcelable.state = localdtr.state;
+              localUserAuthItemParcelable.yDt = localdtr.yDt;
+              localObject[paramAnonymousInt] = localUserAuthItemParcelable;
               paramAnonymousInt += 1;
             }
-            paramAnonymousAdapterView.putExtra("app_id", paramAnonymousView.djj);
-            paramAnonymousAdapterView.putExtra("app_name", paramAnonymousView.hiX);
+            paramAnonymousAdapterView.putExtra("app_id", paramAnonymousView.duW);
+            paramAnonymousAdapterView.putExtra("app_name", paramAnonymousView.hBg);
             paramAnonymousAdapterView.putExtra("modify_scene", 2);
-            paramAnonymousAdapterView.putParcelableArrayListExtra("app_auth_items", new ArrayList(Arrays.asList(arrayOfUserAuthItemParcelable)));
+            paramAnonymousAdapterView.putParcelableArrayListExtra("app_auth_items", new ArrayList(Arrays.asList((Object[])localObject)));
             paramAnonymousView = SettingsSearchAuthUI.this;
-            paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousAdapterView);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.aeD(), "com/tencent/mm/plugin/setting/ui/setting/SettingsSearchAuthUI$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.lR(0));
+            paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousAdapterView);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahp(), "com/tencent/mm/plugin/setting/ui/setting/SettingsSearchAuthUI$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mq(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/setting/ui/setting/SettingsSearchAuthUI$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsSearchAuthUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(74380);
       }
     });
@@ -274,7 +286,7 @@ public class SettingsSearchAuthUI
         AppMethodBeat.i(74381);
         if (paramAnonymousInt1 + paramAnonymousInt2 == paramAnonymousInt3)
         {
-          ac.i("MicroMsg.SettingsSearchAuthUI", "scroll to the end");
+          ad.i("MicroMsg.SettingsSearchAuthUI", "scroll to the end");
           if (SettingsSearchAuthUI.h(SettingsSearchAuthUI.this) != null)
           {
             SettingsSearchAuthUI.a(SettingsSearchAuthUI.this, SettingsSearchAuthUI.h(SettingsSearchAuthUI.this));
@@ -301,8 +313,8 @@ public class SettingsSearchAuthUI
   {
     AppMethodBeat.i(74396);
     super.onPause();
-    com.tencent.mm.kernel.g.agi().b(1169, this);
-    com.tencent.mm.kernel.g.agi().b(1127, this);
+    g.aiU().b(1169, this);
+    g.aiU().b(1127, this);
     AppMethodBeat.o(74396);
   }
   
@@ -310,17 +322,17 @@ public class SettingsSearchAuthUI
   {
     AppMethodBeat.i(74395);
     super.onResume();
-    com.tencent.mm.kernel.g.agi().a(1169, this);
-    com.tencent.mm.kernel.g.agi().a(1127, this);
+    g.aiU().a(1169, this);
+    g.aiU().a(1127, this);
     AppMethodBeat.o(74395);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(74399);
-    ac.i("MicroMsg.SettingsSearchAuthUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.rGq != null) {
-      this.rGq.dismiss();
+    ad.i("MicroMsg.SettingsSearchAuthUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (this.sBI != null) {
+      this.sBI.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
@@ -329,36 +341,36 @@ public class SettingsSearchAuthUI
         paramString = (j)paramn;
         label123:
         List localList;
-        if ((paramString.xoo != null) && (paramString.xoo.EUM == 1))
+        if ((paramString.yCT != null) && (paramString.yCT.GEj == 1))
         {
-          paramString = paramString.xoo.EUK.toByteArray();
-          this.xol = paramString;
-          if (((j)paramn).xol == null) {
+          paramString = paramString.yCT.GEh.toByteArray();
+          this.yCQ = paramString;
+          if (((j)paramn).yCQ == null) {
             break label235;
           }
           paramInt1 = 1;
           if (paramInt1 == 0) {
-            this.xug.clear();
+            this.yIR.clear();
           }
-          localList = this.xug;
+          localList = this.yIR;
           paramString = (j)paramn;
-          if (paramString.xoo == null) {
+          if (paramString.yCT == null) {
             break label240;
           }
         }
         label235:
         label240:
-        for (paramString = paramString.xoo.EUL;; paramString = Collections.emptyList())
+        for (paramString = paramString.yCT.GEi;; paramString = Collections.emptyList())
         {
           localList.addAll(paramString);
-          if (this.xug.isEmpty()) {
+          if (this.yIR.isEmpty()) {
             break label247;
           }
-          this.xuh.xsD = this.xug;
-          this.xuh.notifyDataSetChanged();
-          this.xud.setVisibility(8);
+          this.yIS.yHm = this.yIR;
+          this.yIS.notifyDataSetChanged();
+          this.yIO.setVisibility(8);
           this.mListView.setVisibility(0);
-          dCf();
+          dNI();
           AppMethodBeat.o(74399);
           return;
           paramString = null;
@@ -367,37 +379,37 @@ public class SettingsSearchAuthUI
           break label123;
         }
         label247:
-        this.xud.setVisibility(0);
-        this.xue.setVisibility(8);
-        this.xuf.setVisibility(0);
+        this.yIO.setVisibility(0);
+        this.yIP.setVisibility(8);
+        this.yIQ.setVisibility(0);
         this.mListView.setVisibility(8);
-        this.xug.clear();
-        dCf();
+        this.yIR.clear();
+        dNI();
         AppMethodBeat.o(74399);
         return;
       }
       if (paramn.getType() == 1127)
       {
         paramString = ((c)paramn).appId;
-        if (!bs.isNullOrNil(paramString))
+        if (!bt.isNullOrNil(paramString))
         {
-          if (!this.xug.isEmpty())
+          if (!this.yIR.isEmpty())
           {
-            paramn = this.xug.iterator();
+            paramn = this.yIR.iterator();
             while (paramn.hasNext()) {
-              if (((dnz)paramn.next()).djj.equals(paramString)) {
+              if (((dtq)paramn.next()).duW.equals(paramString)) {
                 paramn.remove();
               }
             }
           }
-          this.xuh.notifyDataSetChanged();
+          this.yIS.notifyDataSetChanged();
         }
         AppMethodBeat.o(74399);
       }
     }
     else
     {
-      h.cg(this, paramString);
+      h.cl(this, paramString);
     }
     AppMethodBeat.o(74399);
   }
@@ -411,18 +423,18 @@ public class SettingsSearchAuthUI
   final class a
     extends BaseAdapter
   {
-    List<dnz> xsD;
+    List<dtq> yHm;
     
     private a() {}
     
-    public final dnz NC(int paramInt)
+    public final dtq Pf(int paramInt)
     {
       AppMethodBeat.i(74389);
       if ((paramInt >= 0) && (paramInt < getCount()))
       {
-        dnz localdnz = (dnz)this.xsD.get(paramInt);
+        dtq localdtq = (dtq)this.yHm.get(paramInt);
         AppMethodBeat.o(74389);
-        return localdnz;
+        return localdtq;
       }
       AppMethodBeat.o(74389);
       return null;
@@ -431,9 +443,9 @@ public class SettingsSearchAuthUI
     public final int getCount()
     {
       AppMethodBeat.i(74388);
-      if ((this.xsD != null) && (!this.xsD.isEmpty()))
+      if ((this.yHm != null) && (!this.yHm.isEmpty()))
       {
-        int i = this.xsD.size();
+        int i = this.yHm.size();
         AppMethodBeat.o(74388);
         return i;
       }
@@ -456,47 +468,51 @@ public class SettingsSearchAuthUI
         paramView = new a((byte)0);
         localView.setTag(paramView);
         paramViewGroup = paramView;
-        paramViewGroup.mmb = ((TextView)localView.findViewById(2131304638));
-        paramViewGroup.xsH = ((TextView)localView.findViewById(2131304639));
-        paramViewGroup.xsI = ((TextView)localView.findViewById(2131304637));
-        paramViewGroup.iPj = ((Button)localView.findViewById(2131304636));
-        paramViewGroup.iPj.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.mMD = ((TextView)localView.findViewById(2131304638));
+        paramViewGroup.yHq = ((TextView)localView.findViewById(2131304639));
+        paramViewGroup.yHr = ((TextView)localView.findViewById(2131304637));
+        paramViewGroup.jis = ((Button)localView.findViewById(2131304636));
+        paramViewGroup.jis.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(final View paramAnonymousView)
           {
             AppMethodBeat.i(74387);
-            if (SettingsSearchAuthUI.a.this.NC(paramInt) != null)
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsSearchAuthUI$AuthListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            if (SettingsSearchAuthUI.a.this.Pf(paramInt) != null)
             {
-              paramAnonymousView = new c(SettingsSearchAuthUI.a.this.NC(paramInt).djj, 2);
+              paramAnonymousView = new c(SettingsSearchAuthUI.a.this.Pf(paramInt).duW, 2);
               if (SettingsSearchAuthUI.j(SettingsSearchAuthUI.this) != null) {
                 SettingsSearchAuthUI.j(SettingsSearchAuthUI.this).dismiss();
               }
-              com.tencent.mm.kernel.g.agi().a(paramAnonymousView, 0);
+              g.aiU().a(paramAnonymousView, 0);
               SettingsSearchAuthUI.a(SettingsSearchAuthUI.this, h.b(SettingsSearchAuthUI.this, SettingsSearchAuthUI.this.getString(2131755886), true, new DialogInterface.OnCancelListener()
               {
                 public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
                 {
                   AppMethodBeat.i(74386);
-                  com.tencent.mm.kernel.g.agi().a(paramAnonymousView);
+                  g.aiU().a(paramAnonymousView);
                   AppMethodBeat.o(74386);
                 }
               }));
             }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsSearchAuthUI$AuthListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(74387);
           }
         });
         if (!SettingsSearchAuthUI.f(SettingsSearchAuthUI.this)) {
           break label210;
         }
-        paramViewGroup.iPj.setVisibility(0);
+        paramViewGroup.jis.setVisibility(0);
       }
       for (;;)
       {
-        if (NC(paramInt) != null)
+        if (Pf(paramInt) != null)
         {
-          paramViewGroup.mmb.setText(NC(paramInt).hiX);
-          paramViewGroup.xsH.setText(NC(paramInt).FVG);
-          paramViewGroup.xsI.setText(SettingsSearchAuthUI.fo(NC(paramInt).FVF));
+          paramViewGroup.mMD.setText(Pf(paramInt).hBg);
+          paramViewGroup.yHq.setText(Pf(paramInt).HGu);
+          paramViewGroup.yHr.setText(SettingsSearchAuthUI.fB(Pf(paramInt).HGt));
         }
         AppMethodBeat.o(74390);
         return localView;
@@ -504,16 +520,16 @@ public class SettingsSearchAuthUI
         localView = paramView;
         break;
         label210:
-        paramViewGroup.iPj.setVisibility(8);
+        paramViewGroup.jis.setVisibility(8);
       }
     }
     
     final class a
     {
-      Button iPj;
-      TextView mmb;
-      TextView xsH;
-      TextView xsI;
+      Button jis;
+      TextView mMD;
+      TextView yHq;
+      TextView yHr;
       
       private a() {}
     }
@@ -521,7 +537,7 @@ public class SettingsSearchAuthUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsSearchAuthUI
  * JD-Core Version:    0.7.0.1
  */

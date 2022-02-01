@@ -8,27 +8,33 @@ public abstract class p
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandLauncherLayoutItemUpdateTimeIndex ON AppBrandLauncherLayoutItem(updateTime)", "CREATE INDEX IF NOT EXISTS AppBrandLauncherLayoutItemSceneIndex ON AppBrandLauncherLayoutItem(scene)" };
-  private static final int env = "scene".hashCode();
-  private static final int eoA;
-  private static final int eoK = "recordId".hashCode();
-  private static final int eoL = "brandId".hashCode();
-  private static final int eol;
+  private static final int eEB = "scene".hashCode();
+  private static final int eFF;
+  private static final int eFR = "recordId".hashCode();
+  private static final int eFS = "brandId".hashCode();
+  private static final int eFT = "usedInThirdPartyAppRecently".hashCode();
+  private static final int eFU = "thirdPartyAppUsingDesc".hashCode();
+  private static final int eFq;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ent = true;
-  private boolean eoI = true;
-  private boolean eoJ = true;
-  private boolean eoi = true;
-  private boolean eow = true;
+  private boolean eEz = true;
+  private boolean eFB = true;
+  private boolean eFN = true;
+  private boolean eFO = true;
+  private boolean eFP = true;
+  private boolean eFQ = true;
+  private boolean eFn = true;
   public String field_brandId;
   public int field_recordId;
   public int field_scene;
+  public String field_thirdPartyAppUsingDesc;
   public long field_updateTime;
+  public boolean field_usedInThirdPartyAppRecently;
   public int field_versionType;
   
   static
   {
-    eoA = "versionType".hashCode();
-    eol = "updateTime".hashCode();
+    eFF = "versionType".hashCode();
+    eFq = "updateTime".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -37,18 +43,18 @@ public abstract class p
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eoK != k) {
+      if (eFR != k) {
         break label65;
       }
       this.field_recordId = paramCursor.getInt(i);
-      this.eoI = true;
+      this.eFN = true;
     }
     for (;;)
     {
@@ -56,16 +62,38 @@ public abstract class p
       break label20;
       break;
       label65:
-      if (eoL == k) {
+      if (eFS == k)
+      {
         this.field_brandId = paramCursor.getString(i);
-      } else if (eoA == k) {
+      }
+      else if (eFF == k)
+      {
         this.field_versionType = paramCursor.getInt(i);
-      } else if (eol == k) {
+      }
+      else if (eFq == k)
+      {
         this.field_updateTime = paramCursor.getLong(i);
-      } else if (env == k) {
+      }
+      else if (eEB == k)
+      {
         this.field_scene = paramCursor.getInt(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      }
+      else
+      {
+        if (eFT == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (boolean bool = true;; bool = false)
+          {
+            this.field_usedInThirdPartyAppRecently = bool;
+            break;
+          }
+        }
+        if (eFU == k) {
+          this.field_thirdPartyAppUsingDesc = paramCursor.getString(i);
+        } else if (rowid_HASHCODE == k) {
+          this.systemRowid = paramCursor.getLong(i);
+        }
       }
     }
   }
@@ -73,20 +101,26 @@ public abstract class p
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eoI) {
+    if (this.eFN) {
       localContentValues.put("recordId", Integer.valueOf(this.field_recordId));
     }
-    if (this.eoJ) {
+    if (this.eFO) {
       localContentValues.put("brandId", this.field_brandId);
     }
-    if (this.eow) {
+    if (this.eFB) {
       localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
     }
-    if (this.eoi) {
+    if (this.eFn) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.ent) {
+    if (this.eEz) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    }
+    if (this.eFP) {
+      localContentValues.put("usedInThirdPartyAppRecently", Boolean.valueOf(this.field_usedInThirdPartyAppRecently));
+    }
+    if (this.eFQ) {
+      localContentValues.put("thirdPartyAppUsingDesc", this.field_thirdPartyAppUsingDesc);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

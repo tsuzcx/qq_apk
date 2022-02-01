@@ -11,13 +11,13 @@ public class ForceUpdateNotify
   implements Parcelable
 {
   public static Parcelable.Creator<ForceUpdateNotify> CREATOR;
-  public static Set<String> DaA;
-  public String[] DaB;
+  public static Set<String> EEz;
+  public String[] EEA;
   
   static
   {
     AppMethodBeat.i(110637);
-    DaA = new HashSet();
+    EEz = new HashSet();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(110637);
   }
@@ -25,34 +25,34 @@ public class ForceUpdateNotify
   private ForceUpdateNotify(Parcel paramParcel)
   {
     AppMethodBeat.i(110636);
-    this.DaB = paramParcel.createStringArray();
+    this.EEA = paramParcel.createStringArray();
     AppMethodBeat.o(110636);
   }
   
   private ForceUpdateNotify(String[] paramArrayOfString)
   {
-    this.DaB = paramArrayOfString;
+    this.EEA = paramArrayOfString;
   }
   
-  public static void Bk(String paramString)
+  public static void Ej(String paramString)
   {
     AppMethodBeat.i(110633);
-    DaA.add(paramString);
+    EEz.add(paramString);
     AppMethodBeat.o(110633);
   }
   
-  public static void cxQ()
+  public static void cEN()
   {
     AppMethodBeat.i(110634);
-    if (DaA.size() != 0)
+    if (EEz.size() != 0)
     {
-      Set localSet = DaA;
+      Set localSet = EEz;
       c.a(new ForceUpdateNotify((String[])localSet.toArray(new String[localSet.size()])), new c.a()
       {
-        public final void dkf()
+        public final void dur()
         {
           AppMethodBeat.i(110631);
-          ForceUpdateNotify.DaA.clear();
+          ForceUpdateNotify.EEz.clear();
           AppMethodBeat.o(110631);
         }
       });
@@ -68,13 +68,13 @@ public class ForceUpdateNotify
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(110635);
-    paramParcel.writeStringArray(this.DaB);
+    paramParcel.writeStringArray(this.EEA);
     AppMethodBeat.o(110635);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.event.ForceUpdateNotify
  * JD-Core Version:    0.7.0.1
  */

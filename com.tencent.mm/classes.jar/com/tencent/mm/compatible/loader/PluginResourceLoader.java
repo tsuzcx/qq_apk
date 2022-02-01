@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.util.TypedValue;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
@@ -19,24 +19,24 @@ import java.util.zip.ZipFile;
 public class PluginResourceLoader
   extends Resources
 {
-  private Method fJA;
-  private HashMap<String, ZipFile> fJB;
-  private final b<WeakReference<Drawable.ConstantState>> fJC;
-  public Resources fJy;
-  private Method fJz;
+  public Resources gcZ;
+  private Method gda;
+  private Method gdb;
+  private HashMap<String, ZipFile> gdc;
+  private final b<WeakReference<Drawable.ConstantState>> gdd;
   
   private Drawable a(TypedValue paramTypedValue, int paramInt)
   {
     AppMethodBeat.i(155838);
     try
     {
-      Drawable localDrawable1 = (Drawable)this.fJz.invoke(this.fJy, new Object[] { paramTypedValue, Integer.valueOf(paramInt) });
+      Drawable localDrawable1 = (Drawable)this.gda.invoke(this.gcZ, new Object[] { paramTypedValue, Integer.valueOf(paramInt) });
       AppMethodBeat.o(155838);
       return localDrawable1;
     }
     catch (StackOverflowError localStackOverflowError)
     {
-      ac.e("MicroMsg.PluginResourceLoader", "load drawable StackOverflowError");
+      ad.e("MicroMsg.PluginResourceLoader", "load drawable StackOverflowError");
       try
       {
         if ((paramTypedValue.string != null) && (paramTypedValue.string.toString().endsWith(".xml")))
@@ -51,7 +51,7 @@ public class PluginResourceLoader
       catch (Exception localException1)
       {
         Drawable localDrawable2;
-        Iterator localIterator = this.fJB.entrySet().iterator();
+        Iterator localIterator = this.gdc.entrySet().iterator();
         while (localIterator.hasNext())
         {
           localDrawable2 = a((ZipFile)((Map.Entry)localIterator.next()).getValue(), paramTypedValue);
@@ -61,7 +61,7 @@ public class PluginResourceLoader
             return localDrawable2;
           }
         }
-        ac.d("MicroMsg.PluginResourceLoader", "loadFromZipFile null");
+        ad.d("MicroMsg.PluginResourceLoader", "loadFromZipFile null");
         AppMethodBeat.o(155838);
         return null;
       }
@@ -103,10 +103,10 @@ public class PluginResourceLoader
     //   42: lor
     //   43: lstore 4
     //   45: aload_0
-    //   46: getfield 147	com/tencent/mm/compatible/loader/PluginResourceLoader:fJC	Lcom/tencent/mm/compatible/loader/b;
+    //   46: getfield 147	com/tencent/mm/compatible/loader/PluginResourceLoader:gdd	Lcom/tencent/mm/compatible/loader/b;
     //   49: astore 6
     //   51: aload 6
-    //   53: getfield 153	com/tencent/mm/compatible/loader/b:MR	[J
+    //   53: getfield 153	com/tencent/mm/compatible/loader/b:OH	[J
     //   56: aload 6
     //   58: getfield 156	com/tencent/mm/compatible/loader/b:mSize	I
     //   61: lload 4
@@ -115,10 +115,10 @@ public class PluginResourceLoader
     //   67: iload_3
     //   68: iflt +16 -> 84
     //   71: aload 6
-    //   73: getfield 163	com/tencent/mm/compatible/loader/b:MS	[Ljava/lang/Object;
+    //   73: getfield 163	com/tencent/mm/compatible/loader/b:OI	[Ljava/lang/Object;
     //   76: iload_3
     //   77: aaload
-    //   78: getstatic 167	com/tencent/mm/compatible/loader/b:MP	Ljava/lang/Object;
+    //   78: getstatic 167	com/tencent/mm/compatible/loader/b:OF	Ljava/lang/Object;
     //   81: if_acmpne +61 -> 142
     //   84: aconst_null
     //   85: astore 6
@@ -141,22 +141,22 @@ public class PluginResourceLoader
     //   124: ifnull +91 -> 215
     //   127: ldc 53
     //   129: ldc 180
-    //   131: invokestatic 183	com/tencent/mm/sdk/platformtools/ac:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   131: invokestatic 183	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   134: ldc 142
     //   136: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   139: aload 6
     //   141: areturn
     //   142: aload 6
-    //   144: getfield 163	com/tencent/mm/compatible/loader/b:MS	[Ljava/lang/Object;
+    //   144: getfield 163	com/tencent/mm/compatible/loader/b:OI	[Ljava/lang/Object;
     //   147: iload_3
     //   148: aaload
     //   149: astore 6
     //   151: goto -64 -> 87
     //   154: aload_0
-    //   155: getfield 147	com/tencent/mm/compatible/loader/PluginResourceLoader:fJC	Lcom/tencent/mm/compatible/loader/b;
+    //   155: getfield 147	com/tencent/mm/compatible/loader/PluginResourceLoader:gdd	Lcom/tencent/mm/compatible/loader/b;
     //   158: astore 6
     //   160: aload 6
-    //   162: getfield 153	com/tencent/mm/compatible/loader/b:MR	[J
+    //   162: getfield 153	com/tencent/mm/compatible/loader/b:OH	[J
     //   165: aload 6
     //   167: getfield 156	com/tencent/mm/compatible/loader/b:mSize	I
     //   170: lload 4
@@ -165,19 +165,19 @@ public class PluginResourceLoader
     //   176: iload_3
     //   177: iflt +32 -> 209
     //   180: aload 6
-    //   182: getfield 163	com/tencent/mm/compatible/loader/b:MS	[Ljava/lang/Object;
+    //   182: getfield 163	com/tencent/mm/compatible/loader/b:OI	[Ljava/lang/Object;
     //   185: iload_3
     //   186: aaload
-    //   187: getstatic 167	com/tencent/mm/compatible/loader/b:MP	Ljava/lang/Object;
+    //   187: getstatic 167	com/tencent/mm/compatible/loader/b:OF	Ljava/lang/Object;
     //   190: if_acmpeq +19 -> 209
     //   193: aload 6
-    //   195: getfield 163	com/tencent/mm/compatible/loader/b:MS	[Ljava/lang/Object;
+    //   195: getfield 163	com/tencent/mm/compatible/loader/b:OI	[Ljava/lang/Object;
     //   198: iload_3
-    //   199: getstatic 167	com/tencent/mm/compatible/loader/b:MP	Ljava/lang/Object;
+    //   199: getstatic 167	com/tencent/mm/compatible/loader/b:OF	Ljava/lang/Object;
     //   202: aastore
     //   203: aload 6
     //   205: iconst_1
-    //   206: putfield 187	com/tencent/mm/compatible/loader/b:MQ	Z
+    //   206: putfield 187	com/tencent/mm/compatible/loader/b:OG	Z
     //   209: aconst_null
     //   210: astore 6
     //   212: goto -90 -> 122
@@ -200,7 +200,7 @@ public class PluginResourceLoader
     //   245: aload_1
     //   246: invokevirtual 192	java/util/zip/ZipFile:getName	()Ljava/lang/String;
     //   249: aastore
-    //   250: invokestatic 195	com/tencent/mm/sdk/platformtools/ac:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   250: invokestatic 195	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   253: aload 6
     //   255: astore 7
     //   257: aload_1
@@ -264,7 +264,7 @@ public class PluginResourceLoader
     //   370: aload_1
     //   371: ifnull +23 -> 394
     //   374: aload_0
-    //   375: getfield 147	com/tencent/mm/compatible/loader/PluginResourceLoader:fJC	Lcom/tencent/mm/compatible/loader/b;
+    //   375: getfield 147	com/tencent/mm/compatible/loader/PluginResourceLoader:gdd	Lcom/tencent/mm/compatible/loader/b;
     //   378: lload 4
     //   380: new 169	java/lang/ref/WeakReference
     //   383: dup
@@ -398,13 +398,13 @@ public class PluginResourceLoader
     AppMethodBeat.i(155834);
     try
     {
-      paramString1 = (XmlResourceParser)this.fJA.invoke(this.fJy, new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2 });
+      paramString1 = (XmlResourceParser)this.gdb.invoke(this.gcZ, new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2 });
       AppMethodBeat.o(155834);
       return paramString1;
     }
     catch (Exception paramString1)
     {
-      ac.printErrStackTrace("MicroMsg.PluginResourceLoader", paramString1, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.PluginResourceLoader", paramString1, "", new Object[0]);
       AppMethodBeat.o(155834);
     }
     return null;
@@ -421,7 +421,7 @@ public class PluginResourceLoader
     paramTypedValue = paramTypedValue.string.toString();
     try
     {
-      ac.d("MicroMsg.PluginResourceLoader", "try load stream from zip, entry=%s, file=%s", new Object[] { paramTypedValue, paramZipFile.getName() });
+      ad.d("MicroMsg.PluginResourceLoader", "try load stream from zip, entry=%s, file=%s", new Object[] { paramTypedValue, paramZipFile.getName() });
       paramZipFile = paramZipFile.getInputStream(paramZipFile.getEntry(paramTypedValue));
       AppMethodBeat.o(155840);
       return paramZipFile;
@@ -459,7 +459,7 @@ public class PluginResourceLoader
       InputStream localInputStream1 = super.openRawResource(paramInt, paramTypedValue);
       if (localInputStream1 == null)
       {
-        Iterator localIterator = this.fJB.entrySet().iterator();
+        Iterator localIterator = this.gdc.entrySet().iterator();
         localInputStream1 = localInputStream2;
         while (localIterator.hasNext())
         {

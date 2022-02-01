@@ -1,99 +1,117 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.Point;
-import android.os.Build.VERSION;
-import android.view.Display;
-import android.view.WindowManager;
+import android.content.res.Resources.Theme;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.b;
+import android.util.DisplayMetrics;
+import android.util.SparseIntArray;
+import android.util.TypedValue;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Method;
 
 public final class aq
 {
-  public static Point cl(Context paramContext)
+  private static SparseIntArray HVk;
+  private static float density;
+  private static float scale;
+  
+  static
   {
-    AppMethodBeat.i(159145);
-    Point localPoint = new Point();
-    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    if (Build.VERSION.SDK_INT >= 17) {
-      paramContext.getRealSize(localPoint);
-    }
-    for (;;)
+    AppMethodBeat.i(159132);
+    density = -1.0F;
+    scale = 0.0F;
+    HVk = new SparseIntArray();
+    AppMethodBeat.o(159132);
+  }
+  
+  public static Drawable aM(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(159129);
+    paramContext = paramContext.obtainStyledAttributes(new int[] { paramInt });
+    Drawable localDrawable = paramContext.getDrawable(0);
+    paramContext.recycle();
+    AppMethodBeat.o(159129);
+    return localDrawable;
+  }
+  
+  public static int aN(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(159130);
+    TypedValue localTypedValue = new TypedValue();
+    paramContext.getTheme().resolveAttribute(paramInt, localTypedValue, true);
+    paramInt = localTypedValue.data;
+    AppMethodBeat.o(159130);
+    return paramInt;
+  }
+  
+  public static int ay(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(159126);
+    if (paramContext == null)
     {
-      AppMethodBeat.o(159145);
-      return localPoint;
-      if (Build.VERSION.SDK_INT >= 14) {
-        try
-        {
-          Method localMethod = Display.class.getMethod("getRawHeight", new Class[0]);
-          localPoint.x = ((Integer)Display.class.getMethod("getRawWidth", new Class[0]).invoke(paramContext, new Object[0])).intValue();
-          localPoint.y = ((Integer)localMethod.invoke(paramContext, new Object[0])).intValue();
-        }
-        catch (Exception localException) {}
-      } else {
-        paramContext.getSize(localPoint);
+      ap.e("WeUIResHelper", "get dimension pixel size, resId %d, but context is null".concat(String.valueOf(paramInt)), new Object[0]);
+      AppMethodBeat.o(159126);
+      return 0;
+    }
+    int j = HVk.get(paramInt, 0);
+    int i = j;
+    if (j == 0)
+    {
+      i = paramContext.getResources().getDimensionPixelSize(paramInt);
+      HVk.put(paramInt, i);
+    }
+    AppMethodBeat.o(159126);
+    return i;
+  }
+  
+  public static float eb(Context paramContext)
+  {
+    AppMethodBeat.i(159128);
+    if (scale == 0.0F) {
+      if (paramContext != null) {
+        break label32;
       }
+    }
+    label32:
+    for (scale = 1.0F;; scale = paramContext.getSharedPreferences("com.tencent.mm_preferences", 0).getFloat("text_size_scale_key", 1.0F))
+    {
+      float f = scale;
+      AppMethodBeat.o(159128);
+      return f;
     }
   }
   
-  public static int ee(String paramString)
+  public static int fromDPToPix(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(159147);
-    if (paramString != null) {}
-    try
-    {
-      if (paramString.length() <= 0)
-      {
-        AppMethodBeat.o(159147);
-        return 0;
-      }
-      int i = Integer.decode(paramString).intValue();
-      AppMethodBeat.o(159147);
-      return i;
-    }
-    catch (NumberFormatException paramString)
-    {
-      an.printErrStackTrace("WeUIUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(159147);
-    }
-    return 0;
+    AppMethodBeat.i(159125);
+    paramInt = Math.round(getDensity(paramContext) * paramInt);
+    AppMethodBeat.o(159125);
+    return paramInt;
   }
   
-  public static int ej(Context paramContext)
+  public static float getDensity(Context paramContext)
   {
-    AppMethodBeat.i(168811);
-    if (jF(paramContext))
-    {
-      int i = Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android");
-      if (i > 0)
-      {
-        i = Resources.getSystem().getDimensionPixelSize(i);
-        AppMethodBeat.o(168811);
-        return i;
-      }
+    AppMethodBeat.i(159127);
+    if ((paramContext != null) && (density < 0.0F)) {
+      density = paramContext.getResources().getDisplayMetrics().density;
     }
-    AppMethodBeat.o(168811);
-    return 0;
+    float f = density;
+    AppMethodBeat.o(159127);
+    return f;
   }
   
-  @TargetApi(17)
-  public static boolean jF(Context paramContext)
+  public static ColorStateList jV(Context paramContext)
   {
-    AppMethodBeat.i(159146);
-    Display localDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    Point localPoint = new Point();
-    localDisplay.getSize(localPoint);
-    paramContext = cl(paramContext);
-    int i = Math.max(localPoint.y, localPoint.x);
-    if (Math.max(paramContext.y, paramContext.x) > i)
-    {
-      AppMethodBeat.o(159146);
-      return true;
-    }
-    AppMethodBeat.o(159146);
-    return false;
+    AppMethodBeat.i(159131);
+    TypedValue localTypedValue = new TypedValue();
+    paramContext.getTheme().resolveAttribute(2130969126, localTypedValue, true);
+    paramContext = b.m(paramContext, localTypedValue.resourceId);
+    AppMethodBeat.o(159131);
+    return paramContext;
   }
 }
 

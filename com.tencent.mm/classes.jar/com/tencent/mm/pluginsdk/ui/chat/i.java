@@ -16,71 +16,74 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.model.az;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.o;
 import java.util.ArrayList;
 
 public final class i
 {
-  private h DyE;
-  g DyF;
-  o DyG;
-  boolean DyH;
-  h.a DyI;
-  a DyJ;
+  private h FdN;
+  g FdO;
+  o FdP;
+  boolean FdQ;
+  h.a FdR;
+  a FdS;
   Bitmap bitmap;
   private View contentView;
   Context context;
-  ImageView dkL;
-  View fvu;
+  ImageView dwy;
+  View fOB;
   SharedPreferences sp;
-  View ubI;
+  View ves;
   
   public i(Context paramContext, View paramView1, View paramView2, a parama)
   {
     AppMethodBeat.i(31756);
     this.contentView = null;
-    this.dkL = null;
+    this.dwy = null;
     this.bitmap = null;
-    this.DyH = true;
+    this.FdQ = true;
     this.context = paramContext;
-    this.fvu = paramView1;
-    this.ubI = paramView2;
-    this.DyE = new h(this.context);
-    this.sp = paramContext.getSharedPreferences(ai.eUX(), 0);
-    this.DyJ = parama;
+    this.fOB = paramView1;
+    this.ves = paramView2;
+    this.FdN = new h(this.context);
+    this.sp = paramContext.getSharedPreferences(aj.fkC(), 0);
+    this.FdS = parama;
     this.contentView = View.inflate(this.context, 2131493402, null);
-    this.dkL = ((ImageView)this.contentView.findViewById(2131303810));
-    this.DyG = new o(this.contentView, -2, -2, false);
-    this.DyG.setBackgroundDrawable(new ColorDrawable(0));
-    this.DyG.setOutsideTouchable(true);
+    this.dwy = ((ImageView)this.contentView.findViewById(2131303810));
+    this.FdP = new o(this.contentView, -2, -2, false);
+    this.FdP.setBackgroundDrawable(new ColorDrawable(0));
+    this.FdP.setOutsideTouchable(true);
     this.contentView.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(31751);
-        if ((i.this.DyJ != null) && (i.this.DyF != null)) {
-          i.this.DyJ.aHx(i.this.DyF.DyC);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/pluginsdk/ui/chat/RecentImageBubble$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if ((i.this.FdS != null) && (i.this.FdO != null)) {
+          i.this.FdS.aNa(i.this.FdO.FdL);
         }
-        i.this.DyG.dismiss();
+        i.this.FdP.dismiss();
+        a.a(this, "com/tencent/mm/pluginsdk/ui/chat/RecentImageBubble$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(31751);
       }
     });
     AppMethodBeat.o(31756);
   }
   
-  final float Xp(int paramInt)
+  final float Zl(int paramInt)
   {
     AppMethodBeat.i(31759);
     float f = TypedValue.applyDimension(1, paramInt, this.context.getResources().getDisplayMetrics());
@@ -88,47 +91,59 @@ public final class i
     return f;
   }
   
-  public final void ePt()
+  public final void fev()
   {
     AppMethodBeat.i(31757);
-    final ao local2 = new ao(this.context.getMainLooper())
+    if (!this.FdR.fdU())
+    {
+      ad.w("MicroMsg.RecentImageBubble", "[checkIfShow] is not support.");
+      AppMethodBeat.o(31757);
+      return;
+    }
+    final ap local2 = new ap(this.context.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(31752);
         paramAnonymousMessage = i.this;
-        if ((paramAnonymousMessage.dkL == null) || (paramAnonymousMessage.DyF == null) || (paramAnonymousMessage.bitmap == null) || (paramAnonymousMessage.DyG == null) || (paramAnonymousMessage.fvu == null) || (paramAnonymousMessage.ubI == null))
+        if (!paramAnonymousMessage.FdR.fdU())
+        {
+          ad.w("MicroMsg.RecentImageBubble", "[checkIfShow] is not support.");
+          AppMethodBeat.o(31752);
+          return;
+        }
+        if ((paramAnonymousMessage.dwy == null) || (paramAnonymousMessage.FdO == null) || (paramAnonymousMessage.bitmap == null) || (paramAnonymousMessage.FdP == null) || (paramAnonymousMessage.fOB == null) || (paramAnonymousMessage.ves == null))
         {
           AppMethodBeat.o(31752);
           return;
         }
-        paramAnonymousMessage.dkL.setImageBitmap(paramAnonymousMessage.bitmap);
+        paramAnonymousMessage.dwy.setImageBitmap(paramAnonymousMessage.bitmap);
         int k;
         int j;
-        label91:
+        label117:
         int i;
-        label108:
+        label134:
         int n;
         int m;
         Rect localRect;
-        if (paramAnonymousMessage.DyH)
+        if (paramAnonymousMessage.FdQ)
         {
           k = 83;
-          if (!paramAnonymousMessage.DyH) {
-            break label273;
+          if (!paramAnonymousMessage.FdQ) {
+            break label299;
           }
           j = 0;
-          if (paramAnonymousMessage.DyI == null) {
-            break label279;
+          if (paramAnonymousMessage.FdR == null) {
+            break label305;
           }
-          i = paramAnonymousMessage.DyI.getYFromBottom();
+          i = paramAnonymousMessage.FdR.getYFromBottom();
           n = j;
           m = i;
           if (Build.VERSION.SDK_INT >= 21)
           {
-            localRect = aj.fhy();
-            if (!paramAnonymousMessage.DyH) {
-              break label290;
+            localRect = al.fxL();
+            if (!paramAnonymousMessage.FdQ) {
+              break label316;
             }
             j = 0;
           }
@@ -136,34 +151,34 @@ public final class i
         for (;;)
         {
           m = i + localRect.bottom;
-          ac.i("MicroMsg.RecentImageBubble", "recent bubble navbar height %s %s", new Object[] { Integer.valueOf(localRect.right), Integer.valueOf(localRect.bottom) });
+          ad.i("MicroMsg.RecentImageBubble", "recent bubble navbar height %s %s", new Object[] { Integer.valueOf(localRect.right), Integer.valueOf(localRect.bottom) });
           n = j;
           if (((paramAnonymousMessage.context instanceof Activity)) && (!((Activity)paramAnonymousMessage.context).isFinishing()) && (!((Activity)paramAnonymousMessage.context).isDestroyed())) {
-            paramAnonymousMessage.DyG.showAtLocation(paramAnonymousMessage.fvu, k, n, m);
+            paramAnonymousMessage.FdP.showAtLocation(paramAnonymousMessage.fOB, k, n, m);
           }
-          new au(new i.4(paramAnonymousMessage), false).au(10000L, 10000L);
+          new av(new i.4(paramAnonymousMessage), false).az(10000L, 10000L);
           AppMethodBeat.o(31752);
           return;
           k = 85;
           break;
-          label273:
+          label299:
           j = 10;
-          break label91;
-          label279:
-          i = paramAnonymousMessage.ubI.getHeight();
-          break label108;
-          label290:
+          break label117;
+          label305:
+          i = paramAnonymousMessage.ves.getHeight();
+          break label134;
+          label316:
           j += localRect.right;
         }
       }
     };
-    az.agU().az(new Runnable()
+    ba.ajF().ay(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(31753);
         i locali = i.this;
-        Object localObject = locali.ePu();
+        Object localObject = locali.few();
         int i;
         int j;
         int m;
@@ -178,29 +193,29 @@ public final class i
         }
         else
         {
-          i = (int)locali.Xp(70);
-          j = (int)locali.Xp(120);
-          m = BackwardSupportUtil.ExifHelper.ce((String)localObject);
+          i = (int)locali.Zl(70);
+          j = (int)locali.Zl(120);
+          m = BackwardSupportUtil.ExifHelper.cY((String)localObject);
           if ((m != 90) && (m != 270)) {
             break label197;
           }
         }
         for (;;)
         {
-          int k = (int)locali.Xp(4);
-          localObject = f.e((String)localObject, i, j, true);
+          int k = (int)locali.Zl(4);
+          localObject = com.tencent.mm.sdk.platformtools.g.d((String)localObject, i, j, true);
           if (localObject != null)
           {
-            locali.bitmap = f.a(f.a((Bitmap)localObject, m), true, k);
-            locali.sp.edit().putString("chattingui_recent_shown_image_path", locali.DyF.DyC).commit();
-            ac.d("MicroMsg.RecentImageBubble", "check ok");
+            locali.bitmap = com.tencent.mm.sdk.platformtools.g.a(com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject, m), true, k);
+            locali.sp.edit().putString("chattingui_recent_shown_image_path", locali.FdO.FdL).commit();
+            ad.d("MicroMsg.RecentImageBubble", "check ok");
             i = 1;
             break;
           }
-          ac.e("MicroMsg.RecentImageBubble", "image hits hole.");
+          ad.e("MicroMsg.RecentImageBubble", "image hits hole.");
           i = 0;
           break;
-          ac.d("MicroMsg.RecentImageBubble", "check false");
+          ad.d("MicroMsg.RecentImageBubble", "check false");
           AppMethodBeat.o(31753);
           return;
           label197:
@@ -221,19 +236,19 @@ public final class i
     AppMethodBeat.o(31757);
   }
   
-  public final String ePu()
+  public final String few()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(31758);
-        if (this.DyE == null)
+        if (this.FdN == null)
         {
-          ac.d("MicroMsg.RecentImageBubble", "because of imageQuery == null");
+          ad.d("MicroMsg.RecentImageBubble", "because of imageQuery == null");
           localObject1 = null;
-          this.DyF = ((g)localObject1);
-          if (this.DyF == null)
+          this.FdO = ((g)localObject1);
+          if (this.FdO == null)
           {
             AppMethodBeat.o(31758);
             localObject1 = null;
@@ -242,79 +257,79 @@ public final class i
         }
         else
         {
-          localObject1 = this.DyE.ePs();
+          localObject1 = this.FdN.feu();
           if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
           {
-            ac.d("MicroMsg.RecentImageBubble", "because of items == null || items.size() == 0");
+            ad.d("MicroMsg.RecentImageBubble", "because of items == null || items.size() == 0");
             localObject1 = null;
             continue;
           }
           g localg = (g)((ArrayList)localObject1).get(0);
           if (localg != null)
           {
-            if (bs.pN(localg.DyD) >= 0L) {
-              break label304;
+            if (bt.rM(localg.FdM) >= 0L) {
+              break label306;
             }
             i = 1;
             if (i != 0)
             {
-              ac.e("MicroMsg.RecentImageBubble", "we found u have a future pic that lead to forbid this featur. file : %s", new Object[] { localg.DyC });
+              ad.e("MicroMsg.RecentImageBubble", "we found u have a future pic that lead to forbid this featur. file : %s", new Object[] { localg.FdL });
               localObject1 = null;
               continue;
             }
           }
-          if ((localg != null) && (localg.DyC != null) && (localg.DyC.contains(b.aoX())))
+          if ((localg != null) && (localg.FdL != null) && (localg.FdL.contains(com.tencent.mm.loader.j.b.arK())))
           {
             localObject1 = null;
             continue;
           }
           if (localg != null)
           {
-            if (bs.pN(localg.DyD) > 30L) {
-              break label309;
+            if (bt.rM(localg.FdM) > 30L) {
+              break label311;
             }
             i = 1;
             if (i != 0)
             {
               localObject1 = localg;
-              if (!this.sp.getString("chattingui_recent_shown_image_path", "").equals(localg.DyC)) {
+              if (!this.sp.getString("chattingui_recent_shown_image_path", "").equals(localg.FdL)) {
                 continue;
               }
-              ac.d("MicroMsg.RecentImageBubble", "because of recentImage.equals(imageItem.orginalPath)");
+              ad.d("MicroMsg.RecentImageBubble", "because of recentImage.equals(imageItem.orginalPath)");
               localObject1 = null;
               continue;
             }
           }
           if (localg != null) {
-            break label314;
+            break label316;
           }
           bool = true;
-          ac.d("MicroMsg.RecentImageBubble", "because of checkAddDate(generateDate) == false, or imageItem == null : %s", new Object[] { Boolean.valueOf(bool) });
+          ad.d("MicroMsg.RecentImageBubble", "because of checkAddDate(generateDate) == false, or imageItem == null : %s", new Object[] { Boolean.valueOf(bool) });
           localObject1 = null;
           continue;
         }
-        Object localObject1 = this.DyF.thumbPath;
-        if (this.DyF.thumbPath == null) {
-          localObject1 = this.DyF.DyC;
+        Object localObject1 = this.FdO.thumbPath;
+        if (this.FdO.thumbPath == null) {
+          localObject1 = this.FdO.FdL;
         }
         AppMethodBeat.o(31758);
         continue;
         i = 0;
       }
       finally {}
-      label304:
+      label306:
       continue;
-      label309:
+      label311:
       int i = 0;
       continue;
-      label314:
+      label316:
       boolean bool = false;
     }
   }
   
   public static abstract interface a
   {
-    public abstract void aHx(String paramString);
+    public abstract void aNa(String paramString);
   }
 }
 

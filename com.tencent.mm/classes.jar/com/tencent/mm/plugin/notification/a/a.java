@@ -5,57 +5,57 @@ import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.m.f;
-import com.tencent.mm.model.aq;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ar;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
+import com.tencent.mm.n.f;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 
 public final class a
   implements n.b
 {
   private final int DELAY_TIME;
   private final String TAG;
-  private ao mHandler;
-  public boolean vpS;
+  private ap mHandler;
+  public boolean wvk;
   
   public a()
   {
     AppMethodBeat.i(26721);
     this.TAG = "MicroMsg.NotificationObserver";
     this.DELAY_TIME = 50;
-    this.vpS = false;
-    this.mHandler = new ao(Looper.getMainLooper())
+    this.wvk = false;
+    this.mHandler = new ap(Looper.getMainLooper())
     {
       public final void handleMessage(final Message paramAnonymousMessage)
       {
         AppMethodBeat.i(26720);
         super.handleMessage(paramAnonymousMessage);
         paramAnonymousMessage = paramAnonymousMessage.getData().getString("com.tencent.mm.notification.observer");
-        az.agU().m(new Runnable()
+        ba.ajF().n(new Runnable()
         {
           public final void run()
           {
             final int i = 0;
             AppMethodBeat.i(26719);
-            if (!g.agP().afY())
+            if (!g.ajA().aiK())
             {
-              ac.w("MicroMsg.NotificationObserver", "account not init.");
+              ad.w("MicroMsg.NotificationObserver", "account not init.");
               AppMethodBeat.o(26719);
               return;
             }
-            final int j = f.ZV();
-            az.ayM();
-            ai localai = c.awB().aNt(paramAnonymousMessage);
+            final int j = f.acx();
+            ba.aBQ();
+            am localam = c.azp().Bf(paramAnonymousMessage);
             final boolean bool;
-            if (localai == null)
+            if (localam == null)
             {
               bool = false;
               if (!bool) {
@@ -64,26 +64,26 @@ public final class a
             }
             for (;;)
             {
-              ap.f(new Runnable()
+              aq.f(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(26718);
-                  az.getNotification().kq(j);
+                  ba.getNotification().kN(j);
                   if (!bool) {
-                    az.getNotification().y(a.1.1.this.vpU, i);
+                    ba.getNotification().A(a.1.1.this.wvm, i);
                   }
-                  ac.i("MicroMsg.NotificationObserver", "NotificationObserver refresh total badge count: %d, and talker badge count: %d, talker is mute: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool) });
+                  ad.i("MicroMsg.NotificationObserver", "NotificationObserver refresh total badge count: %d, and talker badge count: %d, talker is mute: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool) });
                   com.tencent.mm.sdk.g.b.c(new Runnable()
                   {
                     public final void run()
                     {
                       AppMethodBeat.i(26717);
-                      az.getNotification().p(a.1.1.1.this.vpW, a.1.1.this.vpU);
-                      if (a.this.vpS)
+                      ba.getNotification().p(a.1.1.1.this.wvo, a.1.1.this.wvm);
+                      if (a.this.wvk)
                       {
-                        a.this.vpS = false;
-                        az.getNotification().cy(false);
+                        a.this.wvk = false;
+                        ba.getNotification().cA(false);
                       }
                       AppMethodBeat.o(26717);
                     }
@@ -93,10 +93,10 @@ public final class a
               });
               AppMethodBeat.o(26719);
               return;
-              bool = localai.Nw();
+              bool = localam.Pf();
               break;
               label94:
-              i = f.sO(paramAnonymousMessage);
+              i = f.vD(paramAnonymousMessage);
             }
           }
         }, 500L);
@@ -109,17 +109,17 @@ public final class a
   public final void a(int paramInt, n paramn, Object paramObject)
   {
     AppMethodBeat.i(26722);
-    ac.i("MicroMsg.NotificationObserver", "event: %d", new Object[] { Integer.valueOf(paramInt) });
-    if ((!(paramObject instanceof String)) || (bs.isNullOrNil((String)paramObject)))
+    ad.i("MicroMsg.NotificationObserver", "event: %d", new Object[] { Integer.valueOf(paramInt) });
+    if ((!(paramObject instanceof String)) || (bt.isNullOrNil((String)paramObject)))
     {
-      ac.d("MicroMsg.NotificationObserver", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      ad.d("MicroMsg.NotificationObserver", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
       AppMethodBeat.o(26722);
       return;
     }
-    if (!az.ayF()) {
-      az.ayM();
+    if (!ba.aBJ()) {
+      ba.aBQ();
     }
-    for (paramInt = (int)c.awB().aNr((String)paramObject).fLJ;; paramInt = 0)
+    for (paramInt = (int)c.azp().aTj((String)paramObject).gfj;; paramInt = 0)
     {
       this.mHandler.removeMessages(paramInt);
       paramn = Message.obtain();

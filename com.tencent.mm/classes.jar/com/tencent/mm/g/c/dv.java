@@ -7,23 +7,65 @@ import com.tencent.mm.sdk.e.c;
 public abstract class dv
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEC = "subtype".hashCode();
-  private static final int eRA = "bubbleMd5".hashCode();
-  private static final int eRB = "coverMd5".hashCode();
-  private static final int eRC = "minilogoMd5".hashCode();
-  private static final int epb = "version".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS lbsverifymessage_unread_index ON LBSVerifyMessage(status)", "CREATE INDEX IF NOT EXISTS lbsverifymessage_createtimeIndex ON LBSVerifyMessage(createtime)" };
+  private static final int eDc;
+  private static final int eEB;
+  private static final int eEC = "ticket".hashCode();
+  private static final int eEm;
+  private static final int eHX = "flag".hashCode();
+  private static final int eIP;
+  private static final int eLf;
+  private static final int eSQ = "svrid".hashCode();
+  private static final int feK;
+  private static final int fgJ;
+  private static final int fgK;
+  private static final int fgL;
+  private static final int fgM;
   private static final int rowid_HASHCODE = "rowid".hashCode();
+  private static final int type_HASHCODE;
+  private boolean __hadSettype = true;
+  private boolean eCZ = true;
+  private boolean eDP = true;
   private boolean eEA = true;
-  private boolean eRx = true;
-  private boolean eRy = true;
-  private boolean eRz = true;
-  private boolean eoW = true;
-  public String field_bubbleMd5;
-  public String field_coverMd5;
-  public String field_minilogoMd5;
-  public int field_subtype;
-  public int field_version;
+  private boolean eEz = true;
+  private boolean eHV = true;
+  private boolean eIA = true;
+  private boolean eKS = true;
+  private boolean eSe = true;
+  private boolean feB = true;
+  private boolean fgF = true;
+  private boolean fgG = true;
+  private boolean fgH = true;
+  private boolean fgI = true;
+  public String field_content;
+  public long field_createtime;
+  public int field_flag;
+  public String field_imgpath;
+  public int field_isSend;
+  public String field_sayhicontent;
+  public String field_sayhiencryptuser;
+  public String field_sayhiuser;
+  public int field_scene;
+  public int field_status;
+  public long field_svrid;
+  public String field_talker;
+  public String field_ticket;
+  public int field_type;
+  
+  static
+  {
+    eDc = "status".hashCode();
+    type_HASHCODE = "type".hashCode();
+    eEB = "scene".hashCode();
+    feK = "createtime".hashCode();
+    eLf = "talker".hashCode();
+    eEm = "content".hashCode();
+    fgJ = "sayhiuser".hashCode();
+    fgK = "sayhicontent".hashCode();
+    fgL = "imgpath".hashCode();
+    eIP = "isSend".hashCode();
+    fgM = "sayhiencryptuser".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,11 +80,11 @@ public abstract class dv
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEC != k) {
+      if (eSQ != k) {
         break label65;
       }
-      this.field_subtype = paramCursor.getInt(i);
-      this.eEA = true;
+      this.field_svrid = paramCursor.getLong(i);
+      this.eSe = true;
     }
     for (;;)
     {
@@ -50,14 +92,32 @@ public abstract class dv
       break label20;
       break;
       label65:
-      if (eRA == k) {
-        this.field_bubbleMd5 = paramCursor.getString(i);
-      } else if (eRB == k) {
-        this.field_coverMd5 = paramCursor.getString(i);
-      } else if (eRC == k) {
-        this.field_minilogoMd5 = paramCursor.getString(i);
-      } else if (epb == k) {
-        this.field_version = paramCursor.getInt(i);
+      if (eDc == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (eEB == k) {
+        this.field_scene = paramCursor.getInt(i);
+      } else if (feK == k) {
+        this.field_createtime = paramCursor.getLong(i);
+      } else if (eLf == k) {
+        this.field_talker = paramCursor.getString(i);
+      } else if (eEm == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (fgJ == k) {
+        this.field_sayhiuser = paramCursor.getString(i);
+      } else if (fgK == k) {
+        this.field_sayhicontent = paramCursor.getString(i);
+      } else if (fgL == k) {
+        this.field_imgpath = paramCursor.getString(i);
+      } else if (eIP == k) {
+        this.field_isSend = paramCursor.getInt(i);
+      } else if (fgM == k) {
+        this.field_sayhiencryptuser = paramCursor.getString(i);
+      } else if (eEC == k) {
+        this.field_ticket = paramCursor.getString(i);
+      } else if (eHX == k) {
+        this.field_flag = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -67,20 +127,47 @@ public abstract class dv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
+    if (this.eSe) {
+      localContentValues.put("svrid", Long.valueOf(this.field_svrid));
+    }
+    if (this.eCZ) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
+    }
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
+    }
+    if (this.eEz) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    }
+    if (this.feB) {
+      localContentValues.put("createtime", Long.valueOf(this.field_createtime));
+    }
+    if (this.eKS) {
+      localContentValues.put("talker", this.field_talker);
+    }
+    if (this.eDP) {
+      localContentValues.put("content", this.field_content);
+    }
+    if (this.fgF) {
+      localContentValues.put("sayhiuser", this.field_sayhiuser);
+    }
+    if (this.fgG) {
+      localContentValues.put("sayhicontent", this.field_sayhicontent);
+    }
+    if (this.fgH) {
+      localContentValues.put("imgpath", this.field_imgpath);
+    }
+    if (this.eIA) {
+      localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
+    }
+    if (this.fgI) {
+      localContentValues.put("sayhiencryptuser", this.field_sayhiencryptuser);
+    }
     if (this.eEA) {
-      localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
+      localContentValues.put("ticket", this.field_ticket);
     }
-    if (this.eRx) {
-      localContentValues.put("bubbleMd5", this.field_bubbleMd5);
-    }
-    if (this.eRy) {
-      localContentValues.put("coverMd5", this.field_coverMd5);
-    }
-    if (this.eRz) {
-      localContentValues.put("minilogoMd5", this.field_minilogoMd5);
-    }
-    if (this.eoW) {
-      localContentValues.put("version", Integer.valueOf(this.field_version));
+    if (this.eHV) {
+      localContentValues.put("flag", Integer.valueOf(this.field_flag));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

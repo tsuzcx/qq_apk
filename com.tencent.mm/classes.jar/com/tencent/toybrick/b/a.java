@@ -9,24 +9,24 @@ import com.tencent.toybrick.c.e;
 
 public final class a
 {
-  private static RecyclerView.n Ksg;
+  private static RecyclerView.n Mih;
   
   static
   {
     AppMethodBeat.i(159916);
     RecyclerView.n localn = new RecyclerView.n();
-    Ksg = localn;
-    localn.aB(d.Ksp, 10);
-    Ksg.aB(e.Ksp, 10);
-    Ksg.aB(com.tencent.toybrick.c.a.Ksp, 10);
-    Ksg.aB(b.Ksp, 10);
-    Ksg.aB(c.Ksp, 10);
+    Mih = localn;
+    localn.aC(d.Miq, 10);
+    Mih.aC(e.Miq, 10);
+    Mih.aC(com.tencent.toybrick.c.a.Miq, 10);
+    Mih.aC(b.Miq, 10);
+    Mih.aC(c.Miq, 10);
     AppMethodBeat.o(159916);
   }
   
-  public static RecyclerView.n fHp()
+  public static RecyclerView.n fYG()
   {
-    return Ksg;
+    return Mih;
   }
 }
 

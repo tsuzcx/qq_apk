@@ -2,11 +2,11 @@ package com.tencent.soter.a.f;
 
 public final class d$a
 {
-  public String JXs;
+  public String LRn;
   
   public d$a(String paramString)
   {
-    this.JXs = paramString;
+    this.LRn = paramString;
   }
 }
 

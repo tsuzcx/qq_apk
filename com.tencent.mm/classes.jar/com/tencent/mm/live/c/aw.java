@@ -6,171 +6,171 @@ import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.live.b.d;
 import com.tencent.mm.live.view.LiveVideoView;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ay;
 import com.tencent.rtmp.ITXLivePlayListener;
 import com.tencent.rtmp.TXLivePlayConfig;
 import com.tencent.rtmp.TXLivePlayer;
 import com.tencent.rtmp.ui.TXCloudVideoView;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/plugin/LiveTXLivePlayerPlygin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/rtmp/ITXLivePlayListener;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "TAG", "", "curPlayerStatus", "", "liveCore", "Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "streamType", "txLivePlayer", "Lcom/tencent/rtmp/TXLivePlayer;", "txLivePlayerPreview", "Lcom/tencent/mm/live/view/LiveVideoView;", "kotlin.jvm.PlatformType", "url", "getPlayer", "getPlayerView", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "isCdnPlayerDisconnect", "", "onNetStatus", "", "params", "Landroid/os/Bundle;", "onPlayEvent", "event", "pausePlayer", "resumePlayer", "setPreviewClickListener", "listener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "x", "y", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "startPlay", "action", "Lkotlin/Function1;", "success", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "stopPlay", "keepLastFrame", "unMount", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveTXLivePlayerPlygin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/rtmp/ITXLivePlayListener;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "TAG", "", "curPlayerStatus", "", "liveCore", "Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "streamType", "txLivePlayer", "Lcom/tencent/rtmp/TXLivePlayer;", "txLivePlayerPreview", "Lcom/tencent/mm/live/view/LiveVideoView;", "kotlin.jvm.PlatformType", "url", "getPlayer", "getPlayerView", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "isCdnPlayerDisconnect", "", "onNetStatus", "", "params", "Landroid/os/Bundle;", "onPlayEvent", "event", "pausePlayer", "resumePlayer", "setPreviewClickListener", "listener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "x", "y", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "startPlay", "action", "Lkotlin/Function1;", "success", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "stopPlay", "keepLastFrame", "unMount", "plugin-logic_release"})
 public final class aw
   extends a
   implements ITXLivePlayListener
 {
   private final String TAG;
-  public final LiveVideoView gDl;
-  public com.tencent.mm.live.core.core.trtc.a gDm;
-  public int gDn;
-  public TXLivePlayer gte;
-  private final b gzb;
+  public TXLivePlayer gMP;
+  private final b gSM;
+  public final LiveVideoView gWV;
+  public com.tencent.mm.live.core.core.trtc.a gWW;
+  public int gWX;
   private int streamType;
   private String url;
   
   public aw(ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(190300);
-    this.gzb = paramb;
+    AppMethodBeat.i(212590);
+    this.gSM = paramb;
     this.TAG = "MicroMsg.LiveTXLivePlayerPlygin";
-    this.gDl = ((LiveVideoView)paramViewGroup.findViewById(2131307810));
+    this.gWV = ((LiveVideoView)paramViewGroup.findViewById(2131307810));
     this.url = "";
-    paramb = d.gtf;
+    paramb = d.gMQ;
     Object localObject = paramViewGroup.getContext();
-    k.g(localObject, "root.context");
+    p.g(localObject, "root.context");
     paramb = (ITXLivePlayListener)this;
-    k.h(localObject, "context");
-    k.h(paramb, "playListener");
-    if (d.akg() == null)
+    p.h(localObject, "context");
+    p.h(paramb, "playListener");
+    if (d.amS() == null)
     {
       d.a(new TXLivePlayer((Context)localObject));
       localObject = new TXLivePlayConfig();
       ((TXLivePlayConfig)localObject).setAutoAdjustCacheTime(true);
       ((TXLivePlayConfig)localObject).setMinAutoAdjustCacheTime(1.0F);
       ((TXLivePlayConfig)localObject).setMaxAutoAdjustCacheTime(1.0F);
-      TXLivePlayer localTXLivePlayer = d.akg();
+      TXLivePlayer localTXLivePlayer = d.amS();
       if (localTXLivePlayer != null) {
         localTXLivePlayer.setPlayListener(paramb);
       }
-      paramb = d.akg();
+      paramb = d.amS();
       if (paramb != null) {
         paramb.setConfig((TXLivePlayConfig)localObject);
       }
-      paramb = d.akg();
+      paramb = d.amS();
       if (paramb != null) {
         paramb.setRenderMode(1);
       }
     }
-    this.gte = d.akg();
+    this.gMP = d.amS();
     paramViewGroup.setPadding(0, 0, 0, 0);
-    AppMethodBeat.o(190300);
+    AppMethodBeat.o(212590);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(190296);
-    k.h(paramc, "status");
+    AppMethodBeat.i(212586);
+    p.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (ax.cfA[paramc.ordinal()])
+    switch (ax.cpQ[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(190296);
+      AppMethodBeat.o(212586);
       return;
-      ami();
-      nj(8);
+      aoV();
+      nI(8);
     }
   }
   
-  public final void alN()
+  public final void aoA()
   {
-    AppMethodBeat.i(190299);
-    super.alN();
-    AppMethodBeat.o(190299);
+    AppMethodBeat.i(212589);
+    super.aoA();
+    AppMethodBeat.o(212589);
   }
   
-  public final void ami()
+  public final void aoV()
   {
-    AppMethodBeat.i(190294);
-    ac.i(this.TAG, "stopPlay " + this.url + ", type:" + this.streamType);
-    Object localObject = d.gtf;
-    ac.i(d.access$getTAG$cp(), "stopPlay");
-    localObject = d.akg();
+    AppMethodBeat.i(212584);
+    ad.i(this.TAG, "stopPlay " + this.url + ", type:" + this.streamType);
+    Object localObject = d.gMQ;
+    ad.i(d.access$getTAG$cp(), "stopPlay");
+    localObject = d.amS();
     if (localObject != null) {
       ((TXLivePlayer)localObject).stopPlay(false);
     }
-    localObject = d.akg();
+    localObject = d.amS();
     if (localObject != null) {
       ((TXLivePlayer)localObject).setPlayListener(null);
     }
     d.a(null);
-    AppMethodBeat.o(190294);
+    AppMethodBeat.o(212584);
   }
   
-  public final TXCloudVideoView amj()
+  public final TXCloudVideoView aoW()
   {
-    AppMethodBeat.i(190295);
-    Object localObject = this.gDl;
-    k.g(localObject, "txLivePlayerPreview");
+    AppMethodBeat.i(212585);
+    Object localObject = this.gWV;
+    p.g(localObject, "txLivePlayerPreview");
     localObject = (TXCloudVideoView)localObject;
-    AppMethodBeat.o(190295);
+    AppMethodBeat.o(212585);
     return localObject;
   }
   
   public final void onNetStatus(Bundle paramBundle)
   {
-    AppMethodBeat.i(190298);
-    int i = ax.getNetType(this.gnb.getContext());
+    AppMethodBeat.i(212588);
+    int i = ay.getNetType(this.gGK.getContext());
     paramBundle = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("onNetStatus curPlayStatus:").append(this.gDn).append(", netQuality:").append(i).append(", isPlaying:");
-    TXLivePlayer localTXLivePlayer = this.gte;
+    StringBuilder localStringBuilder = new StringBuilder("onNetStatus curPlayStatus:").append(this.gWX).append(", netQuality:").append(i).append(", isPlaying:");
+    TXLivePlayer localTXLivePlayer = this.gMP;
     if ((localTXLivePlayer != null) && (localTXLivePlayer.isPlaying() == true)) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.i(paramBundle, bool);
-      paramBundle = this.gte;
+      ad.i(paramBundle, bool);
+      paramBundle = this.gMP;
       if (paramBundle == null) {
         break;
       }
-      if ((paramBundle.isPlaying() == true) && (i != -1) && (this.gDn == -2301))
+      if ((paramBundle.isPlaying() == true) && (i != -1) && (this.gWX == -2301))
       {
-        paramBundle = this.gte;
+        paramBundle = this.gMP;
         if (paramBundle != null) {
           paramBundle.stopPlay(false);
         }
-        paramBundle = this.gte;
+        paramBundle = this.gMP;
         if (paramBundle != null) {
           paramBundle.startPlay(this.url, this.streamType);
         }
-        b.b.a(this.gzb, b.c.gxJ);
+        b.b.a(this.gSM, b.c.gRu);
       }
-      AppMethodBeat.o(190298);
+      AppMethodBeat.o(212588);
       return;
     }
-    AppMethodBeat.o(190298);
+    AppMethodBeat.o(212588);
   }
   
   public final void onPlayEvent(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(190297);
+    AppMethodBeat.i(212587);
     paramBundle = this.TAG;
     StringBuilder localStringBuilder = new StringBuilder("onPlayEvent:").append(paramInt).append(", isPlaying:");
-    TXLivePlayer localTXLivePlayer = this.gte;
+    TXLivePlayer localTXLivePlayer = this.gMP;
     boolean bool;
     if ((localTXLivePlayer != null) && (localTXLivePlayer.isPlaying() == true))
     {
       bool = true;
-      ac.i(paramBundle, bool);
-      paramBundle = this.gte;
+      ad.i(paramBundle, bool);
+      paramBundle = this.gMP;
       if (paramBundle == null) {
         break label144;
       }
       if (paramBundle.isPlaying() == true)
       {
-        this.gDn = paramInt;
+        this.gWX = paramInt;
         switch (paramInt)
         {
         }
@@ -178,27 +178,27 @@ public final class aw
     }
     for (;;)
     {
-      AppMethodBeat.o(190297);
+      AppMethodBeat.o(212587);
       return;
       bool = false;
       break;
       label144:
-      AppMethodBeat.o(190297);
+      AppMethodBeat.o(212587);
       return;
-      b.b.a(this.gzb, b.c.gyw);
-      AppMethodBeat.o(190297);
+      b.b.a(this.gSM, b.c.gSh);
+      AppMethodBeat.o(212587);
       return;
-      if (ax.getNetType(this.gnb.getContext()) == -1)
+      if (ay.getNetType(this.gGK.getContext()) == -1)
       {
-        b.b.a(this.gzb, b.c.gyu);
-        AppMethodBeat.o(190297);
+        b.b.a(this.gSM, b.c.gSf);
+        AppMethodBeat.o(212587);
         return;
-        paramBundle = this.gte;
+        paramBundle = this.gMP;
         if (paramBundle != null) {
           paramBundle.stopPlay(false);
         }
-        if (ax.getNetType(this.gnb.getContext()) == -1) {
-          b.b.a(this.gzb, b.c.gyv);
+        if (ay.getNetType(this.gGK.getContext()) == -1) {
+          b.b.a(this.gSM, b.c.gSg);
         }
       }
     }

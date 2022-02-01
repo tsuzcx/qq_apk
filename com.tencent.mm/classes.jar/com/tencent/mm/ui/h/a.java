@@ -15,16 +15,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static b IKe;
-  private static b IKf;
+  private static b KBl;
+  private static b KBm;
   
   @TargetApi(11)
-  public static void b(Activity paramActivity, View paramView)
+  public static void c(Activity paramActivity, View paramView)
   {
     AppMethodBeat.i(142857);
     View localView = paramActivity.getWindow().getDecorView();
-    IKe = b.km(paramActivity);
-    IKf = b.km(paramActivity);
+    KBl = b.ky(paramActivity);
+    KBm = b.ky(paramActivity);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
     Rect localRect = new Rect();
@@ -32,30 +32,30 @@ public final class a
     int i = localRect.top;
     int j = ((AppCompatActivity)paramActivity).getSupportActionBar().getHeight();
     int k = arrayOfInt[1];
-    IKe.setHeight(k - i - j);
+    KBl.setHeight(k - i - j);
     k = eB(paramActivity)[1];
     int m = arrayOfInt[1];
     int n = paramView.getHeight();
-    IKf.setHeight(k - m - n);
-    IKe.showAtLocation(localView, 48, 0, j + i);
-    IKf.showAtLocation(localView, 80, 0, 0);
+    KBm.setHeight(k - m - n);
+    KBl.showAtLocation(localView, 48, 0, j + i);
+    KBm.showAtLocation(localView, 80, 0, 0);
     AppMethodBeat.o(142857);
   }
   
   public static void dismiss()
   {
     AppMethodBeat.i(142858);
-    if (IKe != null)
+    if (KBl != null)
     {
-      IKe.setAnimationStyle(-1);
-      IKe.dismiss();
-      IKe = null;
+      KBl.setAnimationStyle(-1);
+      KBl.dismiss();
+      KBl = null;
     }
-    if (IKf != null)
+    if (KBm != null)
     {
-      IKf.setAnimationStyle(-1);
-      IKf.dismiss();
-      IKf = null;
+      KBm.setAnimationStyle(-1);
+      KBm.dismiss();
+      KBm = null;
     }
     AppMethodBeat.o(142858);
   }

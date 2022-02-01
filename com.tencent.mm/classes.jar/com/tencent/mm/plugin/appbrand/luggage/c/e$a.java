@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(47559);
-    lrs = new a("PRE_NONE", 0);
-    lrt = new a("PRE_LOADING", 1);
-    lru = new a("PRE_LOADED", 2);
-    lrv = new a[] { lrs, lrt, lru };
+    lQC = new a("PRE_NONE", 0);
+    lQD = new a("PRE_LOADING", 1);
+    lQE = new a("PRE_LOADED", 2);
+    lQF = new a[] { lQC, lQD, lQE };
     AppMethodBeat.o(47559);
   }
   

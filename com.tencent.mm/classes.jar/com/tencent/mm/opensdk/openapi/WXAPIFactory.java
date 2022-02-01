@@ -11,7 +11,7 @@ public class WXAPIFactory
   private WXAPIFactory()
   {
     AppMethodBeat.i(3767);
-    RuntimeException localRuntimeException = new RuntimeException(getClass().getSimpleName() + " should not be instantiated");
+    RuntimeException localRuntimeException = new RuntimeException(WXAPIFactory.class.getSimpleName() + " should not be instantiated");
     AppMethodBeat.o(3767);
     throw localRuntimeException;
   }

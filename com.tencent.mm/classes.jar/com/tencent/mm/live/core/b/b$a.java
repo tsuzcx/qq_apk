@@ -2,7 +2,7 @@ package com.tencent.mm.live.core.b;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/render/LiveRenderManager$Companion;", "", "()V", "TAG", "", "plugin-core_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/render/LiveRenderManager$Companion;", "", "()V", "TAG", "", "plugin-core_release"})
 public final class b$a {}
 
 

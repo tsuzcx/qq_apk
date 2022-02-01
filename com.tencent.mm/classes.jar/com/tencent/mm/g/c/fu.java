@@ -3,68 +3,36 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public abstract class fu
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int fbG = "storyId".hashCode();
-  private static final int fbH = "readCommentId".hashCode();
-  private static final int fbI = "syncCommentId".hashCode();
-  private static final int fbJ = "readCommentTime".hashCode();
-  private static final int fbK = "syncCommentTime".hashCode();
-  private static final int fbL = "commentFlag".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS file_name_hash_index ON SightDraftInfo(fileNameHash)" };
+  private static final int eEf = "createTime".hashCode();
+  private static final int eVj = "localId".hashCode();
+  private static final int eXb = "fileName".hashCode();
+  private static final int fsl = "fileNameHash".hashCode();
+  private static final int fsm = "fileMd5".hashCode();
+  private static final int fsn = "fileLength".hashCode();
+  private static final int fso = "fileStatus".hashCode();
+  private static final int fsp = "fileDuration".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean fbA = true;
-  private boolean fbB = true;
-  private boolean fbC = true;
-  private boolean fbD = true;
-  private boolean fbE = true;
-  private boolean fbF = true;
-  public int field_commentFlag;
-  public int field_readCommentId;
-  public int field_readCommentTime;
-  public long field_storyId;
-  public int field_syncCommentId;
-  public int field_syncCommentTime;
-  
-  public static c.a Th()
-  {
-    c.a locala = new c.a();
-    locala.GvF = new Field[6];
-    locala.columns = new String[7];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "storyId";
-    locala.GvH.put("storyId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" storyId LONG PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.GvG = "storyId";
-    locala.columns[1] = "readCommentId";
-    locala.GvH.put("readCommentId", "INTEGER");
-    localStringBuilder.append(" readCommentId INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "syncCommentId";
-    locala.GvH.put("syncCommentId", "INTEGER");
-    localStringBuilder.append(" syncCommentId INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "readCommentTime";
-    locala.GvH.put("readCommentTime", "INTEGER");
-    localStringBuilder.append(" readCommentTime INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "syncCommentTime";
-    locala.GvH.put("syncCommentTime", "INTEGER");
-    localStringBuilder.append(" syncCommentTime INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "commentFlag";
-    locala.GvH.put("commentFlag", "INTEGER");
-    localStringBuilder.append(" commentFlag INTEGER");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
-  }
+  private boolean eDI = true;
+  private boolean eVh = true;
+  private boolean eWy = true;
+  public long field_createTime;
+  public int field_fileDuration;
+  public long field_fileLength;
+  public String field_fileMd5;
+  public String field_fileName;
+  public int field_fileNameHash;
+  public int field_fileStatus;
+  public int field_localId;
+  private boolean fsg = true;
+  private boolean fsh = true;
+  private boolean fsi = true;
+  private boolean fsj = true;
+  private boolean fsk = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -79,11 +47,11 @@ public abstract class fu
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fbG != k) {
+      if (eVj != k) {
         break label65;
       }
-      this.field_storyId = paramCursor.getLong(i);
-      this.fbA = true;
+      this.field_localId = paramCursor.getInt(i);
+      this.eVh = true;
     }
     for (;;)
     {
@@ -91,16 +59,20 @@ public abstract class fu
       break label20;
       break;
       label65:
-      if (fbH == k) {
-        this.field_readCommentId = paramCursor.getInt(i);
-      } else if (fbI == k) {
-        this.field_syncCommentId = paramCursor.getInt(i);
-      } else if (fbJ == k) {
-        this.field_readCommentTime = paramCursor.getInt(i);
-      } else if (fbK == k) {
-        this.field_syncCommentTime = paramCursor.getInt(i);
-      } else if (fbL == k) {
-        this.field_commentFlag = paramCursor.getInt(i);
+      if (eXb == k) {
+        this.field_fileName = paramCursor.getString(i);
+      } else if (fsl == k) {
+        this.field_fileNameHash = paramCursor.getInt(i);
+      } else if (fsm == k) {
+        this.field_fileMd5 = paramCursor.getString(i);
+      } else if (fsn == k) {
+        this.field_fileLength = paramCursor.getLong(i);
+      } else if (fso == k) {
+        this.field_fileStatus = paramCursor.getInt(i);
+      } else if (fsp == k) {
+        this.field_fileDuration = paramCursor.getInt(i);
+      } else if (eEf == k) {
+        this.field_createTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -110,23 +82,32 @@ public abstract class fu
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fbA) {
-      localContentValues.put("storyId", Long.valueOf(this.field_storyId));
+    if (this.eVh) {
+      localContentValues.put("localId", Integer.valueOf(this.field_localId));
     }
-    if (this.fbB) {
-      localContentValues.put("readCommentId", Integer.valueOf(this.field_readCommentId));
+    if (this.eWy) {
+      localContentValues.put("fileName", this.field_fileName);
     }
-    if (this.fbC) {
-      localContentValues.put("syncCommentId", Integer.valueOf(this.field_syncCommentId));
+    if (this.fsg) {
+      localContentValues.put("fileNameHash", Integer.valueOf(this.field_fileNameHash));
     }
-    if (this.fbD) {
-      localContentValues.put("readCommentTime", Integer.valueOf(this.field_readCommentTime));
+    if (this.field_fileMd5 == null) {
+      this.field_fileMd5 = "";
     }
-    if (this.fbE) {
-      localContentValues.put("syncCommentTime", Integer.valueOf(this.field_syncCommentTime));
+    if (this.fsh) {
+      localContentValues.put("fileMd5", this.field_fileMd5);
     }
-    if (this.fbF) {
-      localContentValues.put("commentFlag", Integer.valueOf(this.field_commentFlag));
+    if (this.fsi) {
+      localContentValues.put("fileLength", Long.valueOf(this.field_fileLength));
+    }
+    if (this.fsj) {
+      localContentValues.put("fileStatus", Integer.valueOf(this.field_fileStatus));
+    }
+    if (this.fsk) {
+      localContentValues.put("fileDuration", Integer.valueOf(this.field_fileDuration));
+    }
+    if (this.eDI) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -136,7 +117,7 @@ public abstract class fu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.fu
  * JD-Core Version:    0.7.0.1
  */

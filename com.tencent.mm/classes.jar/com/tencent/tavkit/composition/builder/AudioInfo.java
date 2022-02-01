@@ -21,25 +21,25 @@ class AudioInfo
   
   CompositionTrackSegment getCurrentSegmentBy()
   {
-    AppMethodBeat.i(192007);
+    AppMethodBeat.i(219804);
     int i = 0;
     while (i < this.compositionTrack.getSegments().size())
     {
       CompositionTrackSegment localCompositionTrackSegment = (CompositionTrackSegment)this.compositionTrack.getSegments().get(i);
       if (localCompositionTrackSegment.getTimeMapping().getTarget().equals(this.audio.getTimeRange()))
       {
-        AppMethodBeat.o(192007);
+        AppMethodBeat.o(219804);
         return localCompositionTrackSegment;
       }
       i += 1;
     }
-    AppMethodBeat.o(192007);
+    AppMethodBeat.o(219804);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.composition.builder.AudioInfo
  * JD-Core Version:    0.7.0.1
  */

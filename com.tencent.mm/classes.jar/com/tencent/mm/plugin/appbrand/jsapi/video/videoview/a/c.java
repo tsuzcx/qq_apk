@@ -12,211 +12,211 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.e.h;
 public final class c
   implements e
 {
-  private b kWF;
+  private b ltE;
   
   public c(Context paramContext)
   {
-    AppMethodBeat.i(194669);
-    this.kWF = new b(paramContext);
-    AppMethodBeat.o(194669);
+    AppMethodBeat.i(206483);
+    this.ltE = new b(paramContext);
+    AppMethodBeat.o(206483);
   }
   
-  public final boolean aB(float paramFloat)
+  public final boolean aE(float paramFloat)
   {
-    AppMethodBeat.i(194695);
-    boolean bool = this.kWF.aB(paramFloat);
-    AppMethodBeat.o(194695);
+    AppMethodBeat.i(206509);
+    boolean bool = this.ltE.aE(paramFloat);
+    AppMethodBeat.o(206509);
     return bool;
   }
   
-  public final boolean bed()
+  public final boolean bhH()
   {
-    AppMethodBeat.i(194681);
-    boolean bool = this.kWF.bed();
-    AppMethodBeat.o(194681);
+    AppMethodBeat.i(206495);
+    boolean bool = this.ltE.bhH();
+    AppMethodBeat.o(206495);
     return bool;
   }
   
-  public final void biX()
+  public final void bmJ()
   {
-    AppMethodBeat.i(194670);
-    this.kWF.biX();
-    AppMethodBeat.o(194670);
+    AppMethodBeat.i(206484);
+    this.ltE.bmJ();
+    AppMethodBeat.o(206484);
   }
   
   public final void c(boolean paramBoolean, String paramString, int paramInt)
   {
-    AppMethodBeat.i(194683);
-    this.kWF.c(paramBoolean, paramString, paramInt);
-    AppMethodBeat.o(194683);
+    AppMethodBeat.i(206497);
+    this.ltE.c(paramBoolean, paramString, paramInt);
+    AppMethodBeat.o(206497);
   }
   
   public final boolean c(double paramDouble, boolean paramBoolean)
   {
-    AppMethodBeat.i(194673);
-    paramBoolean = this.kWF.c(paramDouble, paramBoolean);
-    AppMethodBeat.o(194673);
+    AppMethodBeat.i(206487);
+    paramBoolean = this.ltE.c(paramDouble, paramBoolean);
+    AppMethodBeat.o(206487);
     return paramBoolean;
   }
   
   public final int getCacheTimeSec()
   {
-    AppMethodBeat.i(194679);
-    int i = this.kWF.getCacheTimeSec();
-    AppMethodBeat.o(194679);
+    AppMethodBeat.i(206493);
+    int i = this.ltE.getCacheTimeSec();
+    AppMethodBeat.o(206493);
     return i;
   }
   
   public final int getCurrPosMs()
   {
-    AppMethodBeat.i(194677);
-    int i = this.kWF.getCurrPosMs();
-    AppMethodBeat.o(194677);
+    AppMethodBeat.i(206491);
+    int i = this.ltE.getCurrPosMs();
+    AppMethodBeat.o(206491);
     return i;
   }
   
   public final int getCurrPosSec()
   {
-    AppMethodBeat.i(194678);
-    int i = this.kWF.getCurrPosSec();
-    AppMethodBeat.o(194678);
+    AppMethodBeat.i(206492);
+    int i = this.ltE.getCurrPosSec();
+    AppMethodBeat.o(206492);
     return i;
   }
   
   public final int getPlayerType()
   {
-    AppMethodBeat.i(194671);
-    int i = this.kWF.getPlayerType();
-    AppMethodBeat.o(194671);
+    AppMethodBeat.i(206485);
+    int i = this.ltE.getPlayerType();
+    AppMethodBeat.o(206485);
     return i;
   }
   
   public final int getVideoDurationSec()
   {
-    AppMethodBeat.i(194676);
-    int i = this.kWF.getVideoDurationSec();
-    AppMethodBeat.o(194676);
+    AppMethodBeat.i(206490);
+    int i = this.ltE.getVideoDurationSec();
+    AppMethodBeat.o(206490);
     return i;
   }
   
   public final View getView()
   {
-    return this.kWF;
+    return this.ltE;
   }
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(194680);
-    boolean bool = this.kWF.isPlaying();
-    AppMethodBeat.o(194680);
+    AppMethodBeat.i(206494);
+    boolean bool = this.ltE.isPlaying();
+    AppMethodBeat.o(206494);
     return bool;
   }
   
   public final boolean o(double paramDouble)
   {
-    AppMethodBeat.i(194672);
-    boolean bool = this.kWF.o(paramDouble);
-    AppMethodBeat.o(194672);
+    AppMethodBeat.i(206486);
+    boolean bool = this.ltE.o(paramDouble);
+    AppMethodBeat.o(206486);
     return bool;
   }
   
   public final void onUIDestroy()
   {
-    AppMethodBeat.i(194692);
-    this.kWF.onUIDestroy();
-    AppMethodBeat.o(194692);
+    AppMethodBeat.i(206506);
+    this.ltE.onUIDestroy();
+    AppMethodBeat.o(206506);
   }
   
   public final void onUIPause()
   {
-    AppMethodBeat.i(194691);
-    this.kWF.onUIPause();
-    AppMethodBeat.o(194691);
+    AppMethodBeat.i(206505);
+    this.ltE.onUIPause();
+    AppMethodBeat.o(206505);
   }
   
   public final void onUIResume()
   {
-    AppMethodBeat.i(194690);
-    this.kWF.onUIResume();
-    AppMethodBeat.o(194690);
+    AppMethodBeat.i(206504);
+    this.ltE.onUIResume();
+    AppMethodBeat.o(206504);
   }
   
   public final boolean pause()
   {
-    AppMethodBeat.i(194688);
-    boolean bool = this.kWF.pause();
-    AppMethodBeat.o(194688);
+    AppMethodBeat.i(206502);
+    boolean bool = this.ltE.pause();
+    AppMethodBeat.o(206502);
     return bool;
   }
   
   public final void setCover(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(194682);
-    this.kWF.setCover(paramBitmap);
-    AppMethodBeat.o(194682);
+    AppMethodBeat.i(206496);
+    this.ltE.setCover(paramBitmap);
+    AppMethodBeat.o(206496);
   }
   
   public final void setFullDirection(int paramInt)
   {
-    AppMethodBeat.i(194675);
-    this.kWF.setFullDirection(paramInt);
-    AppMethodBeat.o(194675);
+    AppMethodBeat.i(206489);
+    this.ltE.setFullDirection(paramInt);
+    AppMethodBeat.o(206489);
   }
   
   public final void setIMMVideoViewCallback(e.c paramc)
   {
-    AppMethodBeat.i(194694);
-    this.kWF.setIMMVideoViewCallback(paramc);
-    AppMethodBeat.o(194694);
+    AppMethodBeat.i(206508);
+    this.ltE.setIMMVideoViewCallback(paramc);
+    AppMethodBeat.o(206508);
   }
   
   public final void setIsShowBasicControls(boolean paramBoolean)
   {
-    AppMethodBeat.i(194674);
-    this.kWF.setIsShowBasicControls(paramBoolean);
-    AppMethodBeat.o(194674);
+    AppMethodBeat.i(206488);
+    this.ltE.setIsShowBasicControls(paramBoolean);
+    AppMethodBeat.o(206488);
   }
   
   public final void setMute(boolean paramBoolean)
   {
-    AppMethodBeat.i(194689);
-    this.kWF.setMute(paramBoolean);
-    AppMethodBeat.o(194689);
+    AppMethodBeat.i(206503);
+    this.ltE.setMute(paramBoolean);
+    AppMethodBeat.o(206503);
   }
   
   public final void setScaleType(e.h paramh)
   {
-    AppMethodBeat.i(194693);
-    this.kWF.setScaleType(paramh);
-    AppMethodBeat.o(194693);
+    AppMethodBeat.i(206507);
+    this.ltE.setScaleType(paramh);
+    AppMethodBeat.o(206507);
   }
   
   public final void setVideoFooterView(e.b paramb)
   {
-    AppMethodBeat.i(194685);
-    this.kWF.setVideoFooterView(paramb);
-    AppMethodBeat.o(194685);
+    AppMethodBeat.i(206499);
+    this.ltE.setVideoFooterView(paramb);
+    AppMethodBeat.o(206499);
   }
   
   public final void setVideoSource(int paramInt)
   {
-    AppMethodBeat.i(194684);
-    this.kWF.setVideoSource(paramInt);
-    AppMethodBeat.o(194684);
+    AppMethodBeat.i(206498);
+    this.ltE.setVideoSource(paramInt);
+    AppMethodBeat.o(206498);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(194686);
-    this.kWF.start();
-    AppMethodBeat.o(194686);
+    AppMethodBeat.i(206500);
+    this.ltE.start();
+    AppMethodBeat.o(206500);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(194687);
-    this.kWF.stop();
-    AppMethodBeat.o(194687);
+    AppMethodBeat.i(206501);
+    this.ltE.stop();
+    AppMethodBeat.o(206501);
   }
 }
 

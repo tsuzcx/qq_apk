@@ -9,47 +9,47 @@ import java.util.concurrent.atomic.AtomicReference;
 public final class d
   implements j
 {
-  private static final ScheduledExecutorService[] Mei;
-  private static final ScheduledExecutorService Mej;
-  public static final d Mek;
-  private static int Mem;
-  private final AtomicReference<ScheduledExecutorService[]> Mel;
+  private static final ScheduledExecutorService[] NZk;
+  private static final ScheduledExecutorService NZl;
+  public static final d NZm;
+  private static int NZo;
+  private final AtomicReference<ScheduledExecutorService[]> NZn;
   
   static
   {
     AppMethodBeat.i(90373);
-    Mei = new ScheduledExecutorService[0];
+    NZk = new ScheduledExecutorService[0];
     ScheduledExecutorService localScheduledExecutorService = Executors.newScheduledThreadPool(0);
-    Mej = localScheduledExecutorService;
+    NZl = localScheduledExecutorService;
     localScheduledExecutorService.shutdown();
-    Mek = new d();
+    NZm = new d();
     AppMethodBeat.o(90373);
   }
   
   private d()
   {
     AppMethodBeat.i(90369);
-    this.Mel = new AtomicReference(Mei);
+    this.NZn = new AtomicReference(NZk);
     start();
     AppMethodBeat.o(90369);
   }
   
-  public static ScheduledExecutorService ggx()
+  public static ScheduledExecutorService gzb()
   {
     AppMethodBeat.i(90372);
-    Object localObject = (ScheduledExecutorService[])Mek.Mel.get();
-    if (localObject == Mei)
+    Object localObject = (ScheduledExecutorService[])NZm.NZn.get();
+    if (localObject == NZk)
     {
-      localObject = Mej;
+      localObject = NZl;
       AppMethodBeat.o(90372);
       return localObject;
     }
-    int j = Mem + 1;
+    int j = NZo + 1;
     int i = j;
     if (j >= localObject.length) {
       i = 0;
     }
-    Mem = i;
+    NZo = i;
     localObject = localObject[i];
     AppMethodBeat.o(90372);
     return localObject;
@@ -61,13 +61,13 @@ public final class d
     ScheduledExecutorService[] arrayOfScheduledExecutorService;
     do
     {
-      arrayOfScheduledExecutorService = (ScheduledExecutorService[])this.Mel.get();
-      if (arrayOfScheduledExecutorService == Mei)
+      arrayOfScheduledExecutorService = (ScheduledExecutorService[])this.NZn.get();
+      if (arrayOfScheduledExecutorService == NZk)
       {
         AppMethodBeat.o(90371);
         return;
       }
-    } while (!this.Mel.compareAndSet(arrayOfScheduledExecutorService, Mei));
+    } while (!this.NZn.compareAndSet(arrayOfScheduledExecutorService, NZk));
     int j = arrayOfScheduledExecutorService.length;
     int i = 0;
     while (i < j)
@@ -99,10 +99,10 @@ public final class d
       j = 0;
       while (j < i)
       {
-        arrayOfScheduledExecutorService[j] = e.ggy();
+        arrayOfScheduledExecutorService[j] = e.gzc();
         j += 1;
       }
-      if (this.Mel.compareAndSet(Mei, arrayOfScheduledExecutorService))
+      if (this.NZn.compareAndSet(NZk, arrayOfScheduledExecutorService))
       {
         j = arrayOfScheduledExecutorService.length;
         i = k;

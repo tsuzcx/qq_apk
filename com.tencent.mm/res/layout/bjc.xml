@@ -26,15 +26,15 @@
                     <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:id="@id/d9b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
                     <ImageView android:id="@id/gxg" android:visibility="gone" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:src="@drawable/axy" />
                 </LinearLayout>
-                <TextView android:textSize="13.0dip" android:textColor="@color/s5" android:id="@id/has" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/s5" android:id="@id/has" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
                 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d8p" android:background="@drawable/zs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginTop="16.0dip">
                     <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="13.199982dip" android:src="@raw/icons_outlined_error" app:iconColor="@color/Red" />
                     <TextView android:textSize="14.0dip" android:textColor="@color/Red" android:id="@id/d8q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="11.199982dip" android:layout_marginRight="10.0dip" android:text="" android:singleLine="false" />
                 </LinearLayout>
-                <TextView android:textSize="13.0dip" android:textColor="@color/ff" android:id="@id/d9c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/ff" android:id="@id/d9c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" />
                 <com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtArriveTimeLayout android:orientation="vertical" android:id="@id/d9_" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:layout_weight="1.0" />
                 <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/d9g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip">
-                    <CheckBox android:id="@id/d9h" android:background="@drawable/a2r" android:layout_width="13.0dip" android:layout_height="13.0dip" />
+                    <CheckBox android:id="@id/d9h" android:background="@drawable/c9f" android:layout_width="13.0dip" android:layout_height="13.0dip" />
                     <TextView android:textSize="12.0dip" android:textColor="@color/rx" android:id="@id/d9i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" />
                 </LinearLayout>
                 <TextView android:textSize="12.0dip" android:textColor="@color/rx" android:layout_gravity="center_horizontal" android:id="@id/d9j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="24.0dip" android:text="" />

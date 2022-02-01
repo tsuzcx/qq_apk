@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/RandomScanDotsAnimationController$Companion;", "", "()V", "DOTS_CENTER_X_MAX_FACTOR", "", "DOTS_CENTER_X_MIN_FACTOR", "DOTS_CENTER_Y_MAX_FACTOR", "DOTS_CENTER_Y_MIN_FACTOR", "GROUP_DOTS_MAX_COUNT", "", "GROUP_DOTS_MIN_COUNT", "TAG", "", "plugin-scan_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/RandomScanDotsAnimationController$Companion;", "", "()V", "DOTS_CENTER_X_MAX_FACTOR", "", "DOTS_CENTER_X_MIN_FACTOR", "DOTS_CENTER_Y_MAX_FACTOR", "DOTS_CENTER_Y_MIN_FACTOR", "GROUP_DOTS_MAX_COUNT", "", "GROUP_DOTS_MIN_COUNT", "TAG", "", "plugin-scan_release"})
 public final class f$a {}
 
 

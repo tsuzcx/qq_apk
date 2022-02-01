@@ -2,72 +2,41 @@ package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.b.b.a;
-import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ab.b.b.a;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.model.y.b;
-import com.tencent.mm.modelappbrand.t;
-import com.tencent.mm.plugin.appbrand.dynamic.widget.IPCDynamicPageView;
-import com.tencent.mm.plugin.webview.ui.tools.widget.r;
-import com.tencent.mm.plugin.webview.ui.tools.widget.r.a;
-import com.tencent.mm.protocal.protobuf.bmb;
-import com.tencent.mm.protocal.protobuf.bmp;
-import com.tencent.mm.protocal.protobuf.bmr;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public final class a
   extends com.tencent.mm.plugin.appbrand.dynamic.d.a.a
 {
-  private static String jLX = "com.tencent.mm:tools";
+  private static String kgi = "com.tencent.mm:tools";
   
   public a()
   {
     super("authorize", 419);
   }
   
-  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.ab.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121307);
-    parama = parama.afz();
+    parama = parama.ail();
     Bundle localBundle = new Bundle();
     try
     {
       localBundle.putString("scope", paramJSONObject.getString("scope"));
       localBundle.putString("appId", parama.getString("__page_app_id", ""));
       localBundle.putString("widgetId", parama.getString("__page_view_id", ""));
-      XIPCInvoker.a(parama.getString("__process_name", jLX), localBundle, b.class, new d() {});
+      XIPCInvoker.a(parama.getString("__process_name", kgi), localBundle, a.b.class, new d() {});
       AppMethodBeat.o(121307);
       return;
     }
     catch (Exception parama)
     {
-      ac.e("MicroMsg.JsApiFunc_DoAuthroize", "JSON Exception[%s]", new Object[] { parama.getMessage() });
+      ad.e("MicroMsg.JsApiFunc_DoAuthroize", "JSON Exception[%s]", new Object[] { parama.getMessage() });
       AppMethodBeat.o(121307);
-    }
-  }
-  
-  static abstract interface a
-  {
-    public abstract void q(Bundle paramBundle);
-  }
-  
-  static class b
-    implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
-  {
-    private static final String[] jMa = { "scope.userLocation" };
-    
-    private static void a(d<Bundle> paramd, boolean paramBoolean, String paramString)
-    {
-      AppMethodBeat.i(121301);
-      Bundle localBundle = new Bundle();
-      localBundle.putBoolean("ret", paramBoolean);
-      localBundle.putString("reason", paramString);
-      paramd.bc(localBundle);
-      AppMethodBeat.o(121301);
     }
   }
 }

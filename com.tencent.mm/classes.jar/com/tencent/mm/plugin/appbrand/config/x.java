@@ -1,288 +1,529 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import com.tencent.luggage.wxa.storage.a;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.km;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.Arrays;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.al.a.a;
+import com.tencent.mm.al.y.a;
+import com.tencent.mm.cn.f;
+import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.pointers.PBool;
+import com.tencent.mm.protocal.protobuf.egl;
+import com.tencent.mm.protocal.protobuf.egm;
+import com.tencent.mm.protocal.protobuf.kv;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.vending.g.c.a;
+import com.tencent.mm.vending.g.d.a;
+import com.tencent.mm.vending.g.d.b;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class x
 {
-  private static final Uri URI;
-  private static final x jGg;
-  
-  static
+  public static boolean NJ(String paramString)
   {
-    AppMethodBeat.i(146063);
-    URI = Uri.parse("content://" + a.AUTHORITY + "/WxaAttributesTable");
-    jGg = new x();
-    AppMethodBeat.o(146063);
-  }
-  
-  /* Error */
-  public static java.util.List<WxaAttributes> a(java.util.List<String> paramList, String... paramVarArgs)
-  {
-    // Byte code:
-    //   0: ldc 63
-    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: ifnull +12 -> 18
-    //   9: aload_0
-    //   10: invokeinterface 69 1 0
-    //   15: ifeq +14 -> 29
-    //   18: invokestatic 75	java/util/Collections:emptyList	()Ljava/util/List;
-    //   21: astore_0
-    //   22: ldc 63
-    //   24: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   27: aload_0
-    //   28: areturn
-    //   29: new 77	java/util/ArrayList
-    //   32: dup
-    //   33: aload_0
-    //   34: invokespecial 80	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
-    //   37: astore 4
-    //   39: iconst_0
-    //   40: istore_2
-    //   41: iload_2
-    //   42: aload 4
-    //   44: invokevirtual 84	java/util/ArrayList:size	()I
-    //   47: if_icmpge +38 -> 85
-    //   50: aload 4
-    //   52: iload_2
-    //   53: getstatic 90	java/util/Locale:ENGLISH	Ljava/util/Locale;
-    //   56: ldc 92
-    //   58: iconst_1
-    //   59: anewarray 4	java/lang/Object
-    //   62: dup
-    //   63: iconst_0
-    //   64: aload 4
-    //   66: iload_2
-    //   67: invokevirtual 96	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   70: aastore
-    //   71: invokestatic 102	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   74: invokevirtual 106	java/util/ArrayList:set	(ILjava/lang/Object;)Ljava/lang/Object;
-    //   77: pop
-    //   78: iload_2
-    //   79: iconst_1
-    //   80: iadd
-    //   81: istore_2
-    //   82: goto -41 -> 41
-    //   85: aload 4
-    //   87: ldc 108
-    //   89: invokestatic 113	org/apache/commons/b/g:a	(Ljava/util/Collection;Ljava/lang/String;)Ljava/lang/String;
-    //   92: astore 4
-    //   94: invokestatic 119	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
-    //   97: invokevirtual 125	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   100: astore 5
-    //   102: getstatic 49	com/tencent/mm/plugin/appbrand/config/x:URI	Landroid/net/Uri;
-    //   105: astore 6
-    //   107: aload_1
-    //   108: arraylength
-    //   109: ifgt +118 -> 227
-    //   112: aconst_null
-    //   113: astore_1
-    //   114: aload 5
-    //   116: aload 6
-    //   118: aload_1
-    //   119: getstatic 90	java/util/Locale:ENGLISH	Ljava/util/Locale;
-    //   122: ldc 127
-    //   124: iconst_2
-    //   125: anewarray 4	java/lang/Object
-    //   128: dup
-    //   129: iconst_0
-    //   130: ldc 129
-    //   132: aastore
-    //   133: dup
-    //   134: iconst_1
-    //   135: aload 4
-    //   137: aastore
-    //   138: invokestatic 102	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   141: aconst_null
-    //   142: aconst_null
-    //   143: invokevirtual 135	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   146: astore 5
-    //   148: new 137	java/util/LinkedList
-    //   151: dup
-    //   152: invokespecial 138	java/util/LinkedList:<init>	()V
-    //   155: astore_1
-    //   156: aload 5
-    //   158: ifnull +50 -> 208
-    //   161: aload 5
-    //   163: invokeinterface 143 1 0
-    //   168: ifeq +40 -> 208
-    //   171: new 145	com/tencent/mm/plugin/appbrand/config/WxaAttributes
-    //   174: dup
-    //   175: invokespecial 146	com/tencent/mm/plugin/appbrand/config/WxaAttributes:<init>	()V
-    //   178: astore 4
-    //   180: aload 4
-    //   182: aload 5
-    //   184: invokevirtual 150	com/tencent/mm/plugin/appbrand/config/WxaAttributes:convertFrom	(Landroid/database/Cursor;)V
-    //   187: aload_1
-    //   188: aload 4
-    //   190: invokeinterface 154 2 0
-    //   195: pop
-    //   196: aload 5
-    //   198: invokeinterface 157 1 0
-    //   203: istore_3
-    //   204: iload_3
-    //   205: ifne -34 -> 171
-    //   208: aload 5
-    //   210: ifnull +10 -> 220
-    //   213: aload 5
-    //   215: invokeinterface 160 1 0
-    //   220: ldc 63
-    //   222: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   225: aload_1
-    //   226: areturn
-    //   227: goto -113 -> 114
-    //   230: astore 4
-    //   232: ldc 63
-    //   234: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   237: aload 4
-    //   239: athrow
-    //   240: astore_1
-    //   241: aload 5
-    //   243: ifnull +15 -> 258
-    //   246: aload 4
-    //   248: ifnull +64 -> 312
-    //   251: aload 5
-    //   253: invokeinterface 160 1 0
-    //   258: ldc 63
-    //   260: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   263: aload_1
-    //   264: athrow
-    //   265: astore_1
-    //   266: ldc 162
-    //   268: ldc 164
-    //   270: iconst_2
-    //   271: anewarray 4	java/lang/Object
-    //   274: dup
-    //   275: iconst_0
-    //   276: aload_0
-    //   277: invokeinterface 165 1 0
-    //   282: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   285: aastore
-    //   286: dup
-    //   287: iconst_1
-    //   288: aload_1
-    //   289: aastore
-    //   290: invokestatic 177	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   293: ldc 63
-    //   295: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   298: aconst_null
-    //   299: areturn
-    //   300: astore 5
-    //   302: aload 4
-    //   304: aload 5
-    //   306: invokevirtual 181	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   309: goto -51 -> 258
-    //   312: aload 5
-    //   314: invokeinterface 160 1 0
-    //   319: goto -61 -> 258
-    //   322: astore_1
-    //   323: aconst_null
-    //   324: astore 4
-    //   326: goto -85 -> 241
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	329	0	paramList	java.util.List<String>
-    //   0	329	1	paramVarArgs	String[]
-    //   40	42	2	i	int
-    //   203	2	3	bool	boolean
-    //   37	152	4	localObject1	Object
-    //   230	73	4	localThrowable1	java.lang.Throwable
-    //   324	1	4	localObject2	Object
-    //   100	152	5	localObject3	Object
-    //   300	13	5	localThrowable2	java.lang.Throwable
-    //   105	12	6	localUri	Uri
-    // Exception table:
-    //   from	to	target	type
-    //   148	156	230	java/lang/Throwable
-    //   161	171	230	java/lang/Throwable
-    //   171	204	230	java/lang/Throwable
-    //   232	240	240	finally
-    //   94	112	265	java/lang/Throwable
-    //   114	148	265	java/lang/Throwable
-    //   213	220	265	java/lang/Throwable
-    //   258	265	265	java/lang/Throwable
-    //   302	309	265	java/lang/Throwable
-    //   312	319	265	java/lang/Throwable
-    //   251	258	300	java/lang/Throwable
-    //   148	156	322	finally
-    //   161	171	322	finally
-    //   171	204	322	finally
-  }
-  
-  public static boolean a(km paramkm)
-  {
-    AppMethodBeat.i(182791);
-    if (paramkm == null)
+    AppMethodBeat.i(44926);
+    if (j.aYP() == null)
     {
-      AppMethodBeat.o(182791);
+      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.WxaAttrSyncHelper", "needUpdateAttr, storage NULL");
+      AppMethodBeat.o(44926);
       return false;
     }
-    try
+    long l2 = bt.aQJ();
+    WxaAttributes localWxaAttributes = j.aYP().d(paramString, new String[] { "syncTimeSecond" });
+    if (localWxaAttributes == null) {}
+    for (long l1 = 0L;; l1 = localWxaAttributes.field_syncTimeSecond)
     {
-      paramkm = paramkm.toByteArray();
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("CONTENT_KEY_BATCH_SYNC_PROTO", paramkm);
-      ai.getContext().getContentResolver().insert(URI, localContentValues);
-      AppMethodBeat.o(182791);
+      int i = com.tencent.mm.n.g.acA().getInt("MMBizAttrSyncFreq", 3600);
+      com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.WxaAttrSyncHelper", "needUpdateAttr, username(%s), currentMS(%d), lastUpdateTime(%d), freq(%d).", new Object[] { paramString, Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(i) });
+      if (l2 - l1 < i) {
+        break;
+      }
+      AppMethodBeat.o(44926);
       return true;
     }
-    catch (Exception paramkm)
-    {
-      ac.e("Luggage.WxaAttrsContentResolver", "batchUpdateWithProto insert failed");
-      AppMethodBeat.o(182791);
-    }
+    AppMethodBeat.o(44926);
     return false;
   }
   
-  public static x baS()
+  private static boolean NK(String paramString)
   {
-    return jGg;
-  }
-  
-  public static WxaAttributes e(String paramString, String... paramVarArgs)
-  {
-    AppMethodBeat.i(208996);
-    long l = bs.Gn();
-    WxaAttributes localWxaAttributes = f(String.format("%s=?", new Object[] { "appId" }), new String[] { paramString });
-    ac.i("Luggage.WxaAttrsContentResolver", "queryWithAppId appId:%s, cost:%dms, columns:%s", new Object[] { paramString, Long.valueOf(bs.Gn() - l), Arrays.toString(paramVarArgs) });
-    AppMethodBeat.o(208996);
-    return localWxaAttributes;
-  }
-  
-  public static WxaAttributes f(String paramString, String[] paramArrayOfString)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(146062);
-    paramArrayOfString = ai.getContext().getContentResolver().query(URI, null, paramString, paramArrayOfString, null);
-    if (paramArrayOfString == null)
+    AppMethodBeat.i(44927);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(146062);
-      return null;
+      AppMethodBeat.o(44927);
+      return false;
     }
-    paramString = localObject;
-    if (!paramArrayOfString.isClosed())
+    if (!m.yt(paramString))
     {
-      paramString = localObject;
-      if (paramArrayOfString.moveToFirst())
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WxaAttrSyncHelper", "checkLogIfInvalidUsername %s, %s", new Object[] { paramString, at.n(new Throwable()) });
+      com.tencent.mm.plugin.report.service.g.yhR.dD(648, 1);
+      AppMethodBeat.o(44927);
+      return true;
+    }
+    AppMethodBeat.o(44927);
+    return false;
+  }
+  
+  public static void NL(String paramString)
+  {
+    AppMethodBeat.i(44928);
+    if (NK(paramString))
+    {
+      AppMethodBeat.o(44928);
+      return;
+    }
+    h.LTJ.aR(new Runnable()
+    {
+      public final void run()
       {
-        paramString = new WxaAttributes();
-        paramString.convertFrom(paramArrayOfString);
+        AppMethodBeat.i(44910);
+        x.NM(this.fNr);
+        AppMethodBeat.o(44910);
+      }
+    });
+    AppMethodBeat.o(44928);
+  }
+  
+  public static void NM(String paramString)
+  {
+    AppMethodBeat.i(44933);
+    if (NK(paramString))
+    {
+      AppMethodBeat.o(44933);
+      return;
+    }
+    if (NJ(paramString)) {
+      b(paramString, true, null);
+    }
+    AppMethodBeat.o(44933);
+  }
+  
+  public static Pair<WxaAttributes, a.a> a(String paramString, boolean paramBoolean, d paramd)
+  {
+    AppMethodBeat.i(44929);
+    paramString = a(paramString, paramBoolean, paramd, new a()
+    {
+      public final o NN(String paramAnonymousString)
+      {
+        AppMethodBeat.i(44913);
+        paramAnonymousString = new o(null, paramAnonymousString);
+        AppMethodBeat.o(44913);
+        return paramAnonymousString;
+      }
+      
+      public final String getUsername()
+      {
+        AppMethodBeat.i(44912);
+        String str = v.NG(this.val$appId);
+        AppMethodBeat.o(44912);
+        return str;
+      }
+    }, null);
+    AppMethodBeat.o(44929);
+    return paramString;
+  }
+  
+  static <T> Pair<T, a.a> a(String paramString, boolean paramBoolean, d paramd, a<T> parama, PBool paramPBool)
+  {
+    a.a locala = null;
+    AppMethodBeat.i(188115);
+    if ((bt.isNullOrNil(paramString)) || (!com.tencent.mm.kernel.g.ajA().gAD))
+    {
+      paramString = Pair.create(null, null);
+      AppMethodBeat.o(188115);
+      return paramString;
+    }
+    Object localObject;
+    if (!paramBoolean)
+    {
+      localObject = parama.NO(paramString);
+      if ((localObject != null) && (!parama.cp(localObject))) {}
+    }
+    for (;;)
+    {
+      if (paramd != null) {
+        paramd.bek();
+      }
+      locala = parama.NN(paramString).brO();
+      int i;
+      int j;
+      if ((locala == null) || ((locala instanceof y.a)) || (locala.errType != 0) || (locala.errCode != 0)) {
+        if (locala == null)
+        {
+          i = -1;
+          if (locala != null) {
+            break label220;
+          }
+          j = -1;
+          label133:
+          if (locala != null) {
+            break label230;
+          }
+          paramd = "null resp";
+          label141:
+          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WxaAttrSyncHelper", "loadOrSync, ignoreLocal %b, errType = %d, errCode = %d, errMsg = %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), Integer.valueOf(j), paramd });
+          if (localObject != null) {
+            break label577;
+          }
+          paramString = parama.NO(paramString);
+          if (paramString == null) {
+            break label239;
+          }
+        }
+      }
+      for (;;)
+      {
+        paramString = Pair.create(paramString, locala);
+        AppMethodBeat.o(188115);
+        return paramString;
+        i = locala.errType;
+        break;
+        label220:
+        j = locala.errCode;
+        break label133;
+        label230:
+        paramd = locala.errMsg;
+        break label141;
+        label239:
+        paramString = Pair.create(null, locala);
+        AppMethodBeat.o(188115);
+        return paramString;
+        paramd = ((egm)locala.hNC).FGG.iterator();
+        for (;;)
+        {
+          if (paramd.hasNext())
+          {
+            localObject = (egl)paramd.next();
+            if ("UserName".equalsIgnoreCase(((egl)localObject).ujy))
+            {
+              localObject = ((egl)localObject).yhw;
+              paramd = (d)localObject;
+              if (((String)localObject).endsWith("@app")) {
+                break;
+              }
+            }
+          }
+        }
+        for (paramd = (String)localObject + "@app";; paramd = null)
+        {
+          localObject = paramd;
+          if (bt.isNullOrNil(paramd))
+          {
+            paramd = parama.getUsername();
+            localObject = paramd;
+            if (bt.isNullOrNil(paramd))
+            {
+              com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WxaAttrSyncHelper", "loadOrSync, ignoreLocal %b, key %s, cgi sync fail username invalid", new Object[] { Boolean.valueOf(paramBoolean), paramString });
+              paramString = Pair.create(null, null);
+              AppMethodBeat.o(188115);
+              return paramString;
+            }
+          }
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WxaAttrSyncHelper", "loadOrSync key(%s), username(%s), flushAttrs", new Object[] { paramString, localObject });
+          if (j.aYP().a((String)localObject, ((egm)locala.hNC).FGF, ((egm)locala.hNC).FGG))
+          {
+            v.bej().n("single", localObject);
+            if (paramPBool != null) {
+              paramPBool.value = true;
+            }
+          }
+          localObject = parama.NO(paramString);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WxaAttrSyncHelper", "loadOrSync, ignoreLocal %b, cgi sync result, key:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
+          co(localObject);
+          for (paramString = locala;; paramString = locala)
+          {
+            paramString = Pair.create(localObject, paramString);
+            AppMethodBeat.o(188115);
+            return paramString;
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WxaAttrSyncHelper", "loadOrSync, ignoreLocal %b, no need cgi sync, key:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
+            co(localObject);
+          }
+        }
+        label577:
+        paramString = (String)localObject;
+      }
+      localObject = null;
+    }
+  }
+  
+  public static com.tencent.mm.vending.g.e<List<String>> a(List<String> paramList, final n.a parama, final c paramc)
+  {
+    AppMethodBeat.i(188118);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WxaAttrSyncHelper", "batchSync before real logic, list_size:%d, scene:%d", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(parama.intValue) });
+    if (bt.hj(paramList))
+    {
+      paramList = com.tencent.mm.cn.g.er(Collections.emptyList());
+      AppMethodBeat.o(188118);
+      return paramList;
+    }
+    if (com.tencent.mm.plugin.appbrand.utils.ad.Ch())
+    {
+      paramList = com.tencent.mm.cn.g.fSm().j(new com.tencent.mm.vending.c.a() {});
+      AppMethodBeat.o(188118);
+      return paramList;
+    }
+    Object localObject = paramList;
+    if (!(paramList instanceof ArrayList)) {
+      if (!(paramList instanceof LinkedList)) {
+        break label174;
       }
     }
-    paramArrayOfString.close();
-    AppMethodBeat.o(146062);
+    label174:
+    for (localObject = paramList;; localObject = new LinkedList(paramList))
+    {
+      paramList = ((List)localObject).iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        if ((TextUtils.isEmpty(str)) || (!am.yt(str)) || (!NJ(str))) {
+          paramList.remove();
+        }
+      }
+    }
+    if (bt.hj((List)localObject))
+    {
+      if (paramc != null) {
+        paramc.done();
+      }
+      paramList = com.tencent.mm.cn.g.er(Collections.emptyList());
+      AppMethodBeat.o(188118);
+      return paramList;
+    }
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WxaAttrSyncHelper", "batchSync, list_size %d, scene %s(%d)", new Object[] { Integer.valueOf(((List)localObject).size()), parama.name(), Integer.valueOf(parama.intValue) });
+    paramList = new LinkedList();
+    int i = 0;
+    int j = 0;
+    while (i < ((List)localObject).size() / 20)
+    {
+      int k = i * 20;
+      j = k + 20;
+      paramList.add(d(((List)localObject).subList(k, j), parama));
+      i += 1;
+    }
+    if (j < ((List)localObject).size()) {
+      paramList.add(d(((List)localObject).subList(j, ((List)localObject).size()), parama));
+    }
+    paramList = com.tencent.mm.cn.g.c(new c.a() {});
+    AppMethodBeat.o(188118);
+    return paramList;
+  }
+  
+  public static void a(String paramString, final boolean paramBoolean, final b<WxaAttributes> paramb)
+  {
+    AppMethodBeat.i(44932);
+    if (NK(paramString))
+    {
+      AppMethodBeat.o(44932);
+      return;
+    }
+    h.LTJ.aR(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(44922);
+        Object localObject1 = new PBool();
+        Object localObject2 = this.fNr;
+        boolean bool;
+        if ((paramBoolean) && (x.NJ(this.fNr)))
+        {
+          bool = true;
+          localObject2 = x.a((String)localObject2, bool, null, new x.a()
+          {
+            public final o NN(String paramAnonymous2String)
+            {
+              AppMethodBeat.i(44919);
+              paramAnonymous2String = new o(paramAnonymous2String, null);
+              AppMethodBeat.o(44919);
+              return paramAnonymous2String;
+            }
+            
+            public final String getUsername()
+            {
+              return x.5.this.fNr;
+            }
+          }, (PBool)localObject1);
+          if (paramb != null)
+          {
+            if (((Pair)localObject2).second != null) {
+              break label96;
+            }
+            localObject1 = x.b.a.jZn;
+          }
+        }
+        for (;;)
+        {
+          paramb.a((x.b.a)localObject1, ((Pair)localObject2).first);
+          AppMethodBeat.o(44922);
+          return;
+          bool = false;
+          break;
+          label96:
+          if ((((a.a)((Pair)localObject2).second).errType != 0) || (((a.a)((Pair)localObject2).second).errCode != 0)) {
+            localObject1 = x.b.a.jZq;
+          } else if (((PBool)localObject1).value) {
+            localObject1 = x.b.a.jZo;
+          } else {
+            localObject1 = x.b.a.jZp;
+          }
+        }
+      }
+    });
+    AppMethodBeat.o(44932);
+  }
+  
+  public static Pair<WxaAttributes, a.a> b(String paramString, boolean paramBoolean, d paramd)
+  {
+    AppMethodBeat.i(44931);
+    if (NK(paramString))
+    {
+      paramString = new Pair(null, null);
+      AppMethodBeat.o(44931);
+      return paramString;
+    }
+    paramString = a(paramString, paramBoolean, paramd, new a()
+    {
+      public final o NN(String paramAnonymousString)
+      {
+        AppMethodBeat.i(44916);
+        paramAnonymousString = new o(paramAnonymousString, null);
+        AppMethodBeat.o(44916);
+        return paramAnonymousString;
+      }
+      
+      public final String getUsername()
+      {
+        return this.fNr;
+      }
+    }, null);
+    AppMethodBeat.o(44931);
     return paramString;
+  }
+  
+  public static com.tencent.mm.vending.g.e<List<String>> c(List<String> paramList, n.a parama)
+  {
+    AppMethodBeat.i(221276);
+    paramList = a(paramList, parama, null);
+    AppMethodBeat.o(221276);
+    return paramList;
+  }
+  
+  private static <T> void co(T paramT)
+  {
+    AppMethodBeat.i(188116);
+    if ((paramT instanceof WxaAttributes))
+    {
+      ((WxaAttributes)paramT).beq();
+      AppMethodBeat.o(188116);
+      return;
+    }
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WxaAttrSyncHelper", "printContact %s", new Object[] { paramT });
+    AppMethodBeat.o(188116);
+  }
+  
+  private static com.tencent.mm.vending.g.e<List<String>> d(List<String> paramList, n.a parama)
+  {
+    AppMethodBeat.i(188119);
+    if (bt.hj(paramList))
+    {
+      paramList = com.tencent.mm.cn.g.er(Collections.emptyList());
+      AppMethodBeat.o(188119);
+      return paramList;
+    }
+    paramList = new n(paramList, parama).aED().i(new com.tencent.mm.vending.c.a()
+    {
+      private List<String> d(a.a<kv> paramAnonymousa)
+      {
+        AppMethodBeat.i(188110);
+        if ((paramAnonymousa.errType != 0) || (paramAnonymousa.errCode != 0))
+        {
+          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WxaAttrSyncHelper", "BatchWxaAttrSync, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousa.errType), Integer.valueOf(paramAnonymousa.errCode), paramAnonymousa.errMsg });
+          paramAnonymousa = Collections.emptyList();
+          AppMethodBeat.o(188110);
+          return paramAnonymousa;
+        }
+        if (paramAnonymousa.hNC != null) {}
+        try
+        {
+          w localw = j.aYP();
+          if (!localw.beh())
+          {
+            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WxaAttrSyncHelper", "BatchBizAttrSync storage can not work");
+            paramAnonymousa = Collections.emptyList();
+            AppMethodBeat.o(188110);
+            return paramAnonymousa;
+          }
+          localw.a((kv)paramAnonymousa.hNC);
+        }
+        catch (NullPointerException paramAnonymousa)
+        {
+          while (j.aYL() == null) {}
+          AppMethodBeat.o(188110);
+          throw paramAnonymousa;
+        }
+        catch (com.tencent.mm.model.b paramAnonymousa)
+        {
+          break label129;
+        }
+        paramAnonymousa = this.jZe;
+        AppMethodBeat.o(188110);
+        return paramAnonymousa;
+      }
+    });
+    AppMethodBeat.o(188119);
+    return paramList;
+  }
+  
+  static abstract interface a<T>
+  {
+    public abstract o NN(String paramString);
+    
+    public abstract T NO(String paramString);
+    
+    public abstract boolean cp(T paramT);
+    
+    public abstract String getUsername();
+  }
+  
+  public static abstract interface b<T>
+  {
+    public abstract void a(a parama, T paramT);
+    
+    public static enum a
+    {
+      static
+      {
+        AppMethodBeat.i(188114);
+        jZn = new a("RET_HIT_FREQUENCY_LIMIT", 0);
+        jZo = new a("RET_UPDATED", 1);
+        jZp = new a("RET_NO_UPDATE", 2);
+        jZq = new a("RET_CGI_FAIL", 3);
+        jZr = new a[] { jZn, jZo, jZp, jZq };
+        AppMethodBeat.o(188114);
+      }
+      
+      private a() {}
+    }
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void done();
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void bek();
   }
 }
 

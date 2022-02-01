@@ -1,6 +1,7 @@
 package com.tencent.e.h;
 
 import android.os.Handler;
+import com.tencent.e.d.a;
 import com.tencent.e.i.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
@@ -13,16 +14,16 @@ import java.util.concurrent.TimeUnit;
 
 public final class e
 {
-  public final b Kbl;
-  public final c Kbm;
-  public final f Kbn;
+  public final b LVi;
+  public final c LVj;
+  public final f LVk;
   
   public e(com.tencent.e.a parama)
   {
     AppMethodBeat.i(183363);
-    this.Kbl = new b(parama.JZc, parama.JZb);
-    this.Kbm = new c(parama.JZd);
-    this.Kbn = new f();
+    this.LVi = new b(parama.LSX, parama.LSW);
+    this.LVj = new c(parama.LSY);
+    this.LVk = new f();
     AppMethodBeat.o(183363);
   }
   
@@ -34,7 +35,7 @@ public final class e
     if ((paramk instanceof com.tencent.e.j.e))
     {
       paramd = (com.tencent.e.j.e)paramk;
-      com.tencent.e.j.d locald = paramd.GvQ.KbG;
+      com.tencent.e.j.d locald = paramd.IhL.LVC;
       if (paramBoolean)
       {
         l = -2147483648L;
@@ -47,32 +48,32 @@ public final class e
       return paramk;
       l = paramk.getDelay(TimeUnit.MILLISECONDS);
       break;
-      paramk.Kby.h(paramk);
+      paramk.LVv.h(paramk);
     }
   }
   
   private d l(k<?> paramk)
   {
     AppMethodBeat.i(183367);
-    if (com.tencent.e.c.b.Kap != null)
+    if (com.tencent.e.c.b.LUm != null)
     {
-      if (com.tencent.e.c.b.Kap.aTB(paramk.getKey()))
+      if (com.tencent.e.c.b.LUm.aZB(paramk.getKey()))
       {
-        paramk = this.Kbl;
+        paramk = this.LVi;
         AppMethodBeat.o(183367);
         return paramk;
       }
-      paramk = this.Kbm;
+      paramk = this.LVj;
       AppMethodBeat.o(183367);
       return paramk;
     }
-    if (this.Kbm.isBusy())
+    if (this.LVj.isBusy())
     {
-      paramk = this.Kbl;
+      paramk = this.LVi;
       AppMethodBeat.o(183367);
       return paramk;
     }
-    paramk = this.Kbm;
+    paramk = this.LVj;
     AppMethodBeat.o(183367);
     return paramk;
   }
@@ -85,34 +86,41 @@ public final class e
     return paramk;
   }
   
-  public final Map<String, List<String>> fEc()
+  public final Map<String, List<String>> fVu()
   {
     AppMethodBeat.i(183366);
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    Object localObject1 = this.Kbn.Kbo;
-    Object localObject2 = new LinkedList();
-    ((f.a)localObject1).aAO.dump(new f.a.2((f.a)localObject1, (List)localObject2), "");
-    localLinkedHashMap.put("UIPool", localObject2);
-    localLinkedHashMap.put("HotPool", this.Kbm.fEv());
-    localLinkedHashMap.put("ColdPool", this.Kbl.fEv());
-    localObject1 = com.tencent.e.j.a.fEF().iterator();
-    while (((Iterator)localObject1).hasNext())
+    localLinkedHashMap = new LinkedHashMap();
+    try
     {
-      localObject2 = (com.tencent.e.j.a)((Iterator)localObject1).next();
-      List localList = ((com.tencent.e.j.a)localObject2).KbG.fEG();
-      if (localList.size() > 0) {
-        localLinkedHashMap.put(((com.tencent.e.j.a)localObject2).tag, localList);
+      Object localObject1 = this.LVk.LVl;
+      Object localObject2 = new LinkedList();
+      ((f.a)localObject1).aCF.dump(new f.a.2((f.a)localObject1, (List)localObject2), "");
+      localLinkedHashMap.put("UIPool", localObject2);
+      localLinkedHashMap.put("HotPool", this.LVj.fVN());
+      localLinkedHashMap.put("ColdPool", this.LVi.fVN());
+      localObject1 = com.tencent.e.j.a.fVX().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (com.tencent.e.j.a)((Iterator)localObject1).next();
+        List localList = ((com.tencent.e.j.a)localObject2).LVC.fVY();
+        if (localList.size() > 0) {
+          localLinkedHashMap.put(((com.tencent.e.j.a)localObject2).tag, localList);
+        }
       }
+      return localLinkedHashMap;
     }
-    AppMethodBeat.o(183366);
-    return localLinkedHashMap;
+    catch (NullPointerException localNullPointerException)
+    {
+      com.tencent.e.d.LTy.e("PoolAdapter", "[dumpWaitingTask] e=%s", new Object[] { localNullPointerException });
+      AppMethodBeat.o(183366);
+    }
   }
   
   public final <V> com.tencent.e.i.d<V> k(k<V> paramk)
   {
-    AppMethodBeat.i(191087);
-    paramk = a(paramk, false, this.Kbm);
-    AppMethodBeat.o(191087);
+    AppMethodBeat.i(219283);
+    paramk = a(paramk, false, this.LVj);
+    AppMethodBeat.o(219283);
     return paramk;
   }
 }

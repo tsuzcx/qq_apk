@@ -20,13 +20,7 @@ public final class MultiContextNodeJS
   static
   {
     AppMethodBeat.i(61598);
-    sTmpFileDirectoryDelegate = new MultiContextNodeJS.IGetTmpFileDirectory()
-    {
-      public final File getDirectory()
-      {
-        return null;
-      }
-    };
+    sTmpFileDirectoryDelegate = new MultiContextNodeJS.2();
     AppMethodBeat.o(61598);
   }
   
@@ -49,8 +43,8 @@ public final class MultiContextNodeJS
   {
     // Byte code:
     //   0: ldc 74
-    //   2: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 14
+    //   2: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 12
     //   7: aload_1
     //   8: aload_2
     //   9: invokestatic 80	com/eclipsesource/v8/MultiContextV8:createMultiContextV8	(Ljava/lang/String;Ljava/lang/String;[B)Lcom/eclipsesource/v8/MultiContextV8;
@@ -75,16 +69,16 @@ public final class MultiContextNodeJS
     //   47: dup
     //   48: aload_2
     //   49: invokespecial 98	com/eclipsesource/v8/MultiContextNodeJS$1:<init>	(Lcom/eclipsesource/v8/MultiContextNodeJS;)V
-    //   52: ldc 17
+    //   52: ldc 15
     //   54: invokeinterface 104 3 0
     //   59: pop
-    //   60: ldc 20
+    //   60: ldc 18
     //   62: ldc 106
     //   64: iconst_3
     //   65: anewarray 4	java/lang/Object
     //   68: dup
     //   69: iconst_0
-    //   70: ldc 23
+    //   70: ldc 21
     //   72: aastore
     //   73: dup
     //   74: iconst_1
@@ -243,17 +237,17 @@ public final class MultiContextNodeJS
   
   public final void nativeDispatch()
   {
-    AppMethodBeat.i(194749);
+    AppMethodBeat.i(213632);
     this.mv8.getV8().nativeDispatch();
-    AppMethodBeat.o(194749);
+    AppMethodBeat.o(213632);
   }
   
   public final void nativeMessageLoop()
   {
-    AppMethodBeat.i(194748);
+    AppMethodBeat.i(213631);
     this.mv8.getV8().checkThread();
     this.mv8.getV8().nativeMessageLoop();
-    AppMethodBeat.o(194748);
+    AppMethodBeat.o(213631);
   }
   
   public final void release()
@@ -286,7 +280,7 @@ public final class MultiContextNodeJS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.eclipsesource.v8.MultiContextNodeJS
  * JD-Core Version:    0.7.0.1
  */

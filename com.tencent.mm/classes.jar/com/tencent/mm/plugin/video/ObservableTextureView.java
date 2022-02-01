@@ -5,22 +5,22 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.MMTextureView;
 
 public class ObservableTextureView
   extends MMTextureView
   implements TextureView.SurfaceTextureListener
 {
-  protected b AmI;
-  private boolean AmJ;
+  protected b BEN;
+  private boolean BEO;
   protected SurfaceTexture surfaceTexture;
   
   public ObservableTextureView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(127133);
-    this.AmJ = false;
+    this.BEO = false;
     init();
     AppMethodBeat.o(127133);
   }
@@ -29,7 +29,7 @@ public class ObservableTextureView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(127134);
-    this.AmJ = false;
+    this.BEO = false;
     init();
     AppMethodBeat.o(127134);
   }
@@ -37,7 +37,7 @@ public class ObservableTextureView
   public ObservableTextureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.AmJ = false;
+    this.BEO = false;
   }
   
   private void init()
@@ -50,17 +50,17 @@ public class ObservableTextureView
   
   public boolean isAvailable()
   {
-    return this.AmJ;
+    return this.BEO;
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(127136);
-    ac.i("MicroMsg.ObservableTextureView", "onSurfaceTextureAvailable");
-    fiQ();
-    this.AmJ = true;
-    if (this.AmI != null) {
-      this.AmI.f(paramSurfaceTexture);
+    ad.i("MicroMsg.ObservableTextureView", "onSurfaceTextureAvailable");
+    fzf();
+    this.BEO = true;
+    if (this.BEN != null) {
+      this.BEN.f(paramSurfaceTexture);
     }
     AppMethodBeat.o(127136);
   }
@@ -68,8 +68,8 @@ public class ObservableTextureView
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(127138);
-    ac.i("MicroMsg.ObservableTextureView", "onSurfaceTextureDestroyed");
-    this.AmJ = false;
+    ad.i("MicroMsg.ObservableTextureView", "onSurfaceTextureDestroyed");
+    this.BEO = false;
     AppMethodBeat.o(127138);
     return false;
   }
@@ -77,7 +77,7 @@ public class ObservableTextureView
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(127137);
-    ac.d("MicroMsg.ObservableTextureView", "onSurfaceTextureSizeChanged");
+    ad.d("MicroMsg.ObservableTextureView", "onSurfaceTextureSizeChanged");
     AppMethodBeat.o(127137);
   }
   
@@ -85,12 +85,12 @@ public class ObservableTextureView
   
   public void setTextureChangeCallback(b paramb)
   {
-    this.AmI = paramb;
+    this.BEN = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.video.ObservableTextureView
  * JD-Core Version:    0.7.0.1
  */

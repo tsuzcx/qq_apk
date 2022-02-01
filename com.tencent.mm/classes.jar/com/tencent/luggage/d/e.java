@@ -1,119 +1,31 @@
 package com.tencent.luggage.d;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public abstract class e
+public final class e
 {
-  protected i bWV;
-  public g bWW;
-  protected a bWX;
-  public Context mContext;
+  final LinkedList<Class<? extends b>> chj;
   
-  public e(g paramg)
+  public e()
   {
-    this.mContext = paramg.getContext();
-    this.bWV = new i();
-    this.bWW = paramg;
+    AppMethodBeat.i(140371);
+    this.chj = new LinkedList();
+    AppMethodBeat.o(140371);
   }
   
-  protected abstract View Ar();
-  
-  final void As()
+  public final void A(List<Class<? extends b>> paramList)
   {
-    this.bWV.O(i.e.class);
-  }
-  
-  public final void At()
-  {
-    onForeground();
-    this.bWV.O(i.d.class);
-  }
-  
-  final void Au()
-  {
-    onBackground();
-    this.bWV.O(i.b.class);
-  }
-  
-  final boolean Av()
-  {
-    return (this.bWV.O(i.a.class)) || (onBackPressed());
-  }
-  
-  final void Aw()
-  {
-    onDestroy();
-    this.bWV.O(i.c.class);
-  }
-  
-  final void a(Animator paramAnimator, final Runnable paramRunnable)
-  {
-    paramAnimator.addListener(new AnimatorListenerAdapter()
+    AppMethodBeat.i(140372);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(140373);
-        if (paramRunnable != null) {
-          paramRunnable.run();
-        }
-        AppMethodBeat.o(140373);
-      }
-    });
-    paramAnimator.start();
-  }
-  
-  public void a(a parama)
-  {
-    this.bWX = parama;
-  }
-  
-  protected abstract void destroy();
-  
-  public abstract void g(String paramString, Bundle paramBundle);
-  
-  public abstract View getContentView();
-  
-  final void h(Runnable paramRunnable)
-  {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(getContentView(), "translationX", new float[] { -(getContentView().getWidth() * 0.25F), 0.0F });
-    localObjectAnimator.setDuration(250L);
-    a(localObjectAnimator, paramRunnable);
-  }
-  
-  final void i(Runnable paramRunnable)
-  {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(getContentView(), "translationX", new float[] { 0.0F, getContentView().getWidth() });
-    localObjectAnimator.setDuration(250L);
-    a(localObjectAnimator, paramRunnable);
-  }
-  
-  protected boolean onBackPressed()
-  {
-    return false;
-  }
-  
-  protected void onBackground() {}
-  
-  protected void onDestroy() {}
-  
-  protected void onForeground() {}
-  
-  public static class a
-  {
-    protected a bWZ;
-    
-    public a() {}
-    
-    protected a(a parama)
-    {
-      this.bWZ = parama;
+      Class localClass = (Class)paramList.next();
+      this.chj.add(localClass);
     }
+    AppMethodBeat.o(140372);
   }
 }
 

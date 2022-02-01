@@ -1,44 +1,46 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aud;
-import com.tencent.mm.protocal.protobuf.aue;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.protocal.protobuf.ayb;
+import com.tencent.mm.protocal.protobuf.ayc;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
 
 public final class x
   extends n
   implements k
 {
-  private com.tencent.mm.ak.g callback;
-  private String nWG;
+  private f callback;
+  private String oAa;
   private final b rr;
   
   public x()
   {
     AppMethodBeat.i(112828);
-    this.nWG = "";
+    this.oAa = "";
     b.a locala = new b.a();
-    locala.hvt = new aud();
-    locala.hvu = new aue();
+    locala.hNM = new ayb();
+    locala.hNN = new ayc();
     locala.uri = "/cgi-bin/micromsg-bin/getcardconfiginfo";
     locala.funcId = 1046;
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aAz();
+    this.rr = locala.aDC();
     AppMethodBeat.o(112828);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(112829);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(112829);
     return i;
@@ -52,11 +54,11 @@ public final class x
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112830);
-    ac.i("MicroMsg.NetSceneGetCardConfigInfo", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    ad.i("MicroMsg.NetSceneGetCardConfigInfo", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.nWG = ((aue)this.rr.hvs.hvw).nWw;
-      com.tencent.mm.kernel.g.agR().agA().set(282885, this.nWG);
+      this.oAa = ((ayc)this.rr.hNL.hNQ).ozQ;
+      g.ajC().ajl().set(282885, this.oAa);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112830);

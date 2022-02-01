@@ -15,47 +15,47 @@ public abstract class MigrateResultCallback
   public static final Parcelable.Creator<MigrateResultCallback> CREATOR = new Parcelable.Creator() {};
   private final Handler mHandler = new Handler(Looper.getMainLooper());
   
-  protected abstract void Yd(int paramInt);
-  
-  protected abstract void Ye(int paramInt);
-  
-  public final void Yh(final int paramInt)
-  {
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      Yd(paramInt);
-      return;
-    }
-    this.mHandler.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(195866);
-        MigrateResultCallback.this.Yd(paramInt);
-        AppMethodBeat.o(195866);
-      }
-    });
-  }
-  
-  public final void Yi(final int paramInt)
-  {
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      Ye(paramInt);
-      return;
-    }
-    this.mHandler.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(195868);
-        MigrateResultCallback.this.Ye(paramInt);
-        AppMethodBeat.o(195868);
-      }
-    });
-  }
-  
   protected abstract void a(int paramInt, ExtStorageMigrateException paramExtStorageMigrateException);
+  
+  protected abstract void aah(int paramInt);
+  
+  protected abstract void aai(int paramInt);
+  
+  public final void aam(final int paramInt)
+  {
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      aah(paramInt);
+      return;
+    }
+    this.mHandler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(211101);
+        MigrateResultCallback.this.aah(paramInt);
+        AppMethodBeat.o(211101);
+      }
+    });
+  }
+  
+  public final void aan(final int paramInt)
+  {
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      aai(paramInt);
+      return;
+    }
+    this.mHandler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(211103);
+        MigrateResultCallback.this.aai(paramInt);
+        AppMethodBeat.o(211103);
+      }
+    });
+  }
   
   public final void b(final int paramInt, final ExtStorageMigrateException paramExtStorageMigrateException)
   {
@@ -68,9 +68,9 @@ public abstract class MigrateResultCallback
     {
       public final void run()
       {
-        AppMethodBeat.i(195869);
+        AppMethodBeat.i(211104);
         MigrateResultCallback.this.a(paramInt, paramExtStorageMigrateException);
-        AppMethodBeat.o(195869);
+        AppMethodBeat.o(211104);
       }
     });
   }
@@ -80,62 +80,62 @@ public abstract class MigrateResultCallback
     return 0;
   }
   
-  protected abstract void eTA();
-  
-  protected abstract void eTz();
-  
-  public final void eUb()
+  public final void fjE()
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      eTA();
+      fjd();
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(195870);
-        MigrateResultCallback.this.eTA();
-        AppMethodBeat.o(195870);
+        AppMethodBeat.i(211105);
+        MigrateResultCallback.this.fjd();
+        AppMethodBeat.o(211105);
       }
     });
   }
   
-  protected abstract void jg(int paramInt1, int paramInt2);
+  protected abstract void fjc();
   
-  public final void jh(final int paramInt1, final int paramInt2)
+  protected abstract void fjd();
+  
+  protected abstract void js(int paramInt1, int paramInt2);
+  
+  public final void jt(final int paramInt1, final int paramInt2)
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      jg(paramInt1, paramInt2);
+      js(paramInt1, paramInt2);
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(195871);
-        MigrateResultCallback.this.jg(paramInt1, paramInt2);
-        AppMethodBeat.o(195871);
+        AppMethodBeat.i(211106);
+        MigrateResultCallback.this.js(paramInt1, paramInt2);
+        AppMethodBeat.o(211106);
       }
     });
   }
   
-  public final void lj(final String paramString1, final String paramString2)
+  public final void lI(final String paramString1, final String paramString2)
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      eTz();
+      fjc();
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(195867);
-        MigrateResultCallback.this.eTz();
-        AppMethodBeat.o(195867);
+        AppMethodBeat.i(211102);
+        MigrateResultCallback.this.fjc();
+        AppMethodBeat.o(211102);
       }
     });
   }

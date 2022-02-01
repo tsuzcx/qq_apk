@@ -12,19 +12,20 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.c;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.n;
 import com.tencent.mm.plugin.account.friend.a.o;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.r;
 
 public final class a
   extends r<n>
 {
-  private String iFB;
-  a iIj;
+  private String iYK;
+  a jbs;
   private Context mContext;
   private String mFilter;
   private LayoutInflater mLayoutInflater;
@@ -33,33 +34,33 @@ public final class a
   {
     super(paramContext, new n());
     AppMethodBeat.i(110068);
-    this.iFB = paramString;
+    this.iYK = paramString;
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(this.mContext);
     AppMethodBeat.o(110068);
   }
   
-  public final void FZ(String paramString)
+  public final void Jo(String paramString)
   {
     AppMethodBeat.i(110071);
-    this.mFilter = bs.aLh(paramString);
-    cVi();
-    Xb();
+    this.mFilter = bt.aQN(paramString);
+    det();
+    Zu();
     AppMethodBeat.o(110071);
   }
   
-  public final void Xb()
+  public final void Zu()
   {
     AppMethodBeat.i(110070);
-    setCursor(((o)((com.tencent.mm.plugin.account.a.a.a)g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getGoogleFriendStorage()).bO(this.mFilter, this.iFB));
+    setCursor(((o)((com.tencent.mm.plugin.account.a.a.a)g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getGoogleFriendStorage()).bQ(this.mFilter, this.iYK));
     super.notifyDataSetChanged();
     AppMethodBeat.o(110070);
   }
   
-  public final void Xc()
+  public final void Zv()
   {
     AppMethodBeat.i(110069);
-    Xb();
+    Zu();
     AppMethodBeat.o(110069);
   }
   
@@ -84,20 +85,20 @@ public final class a
       paramViewGroup = (b)paramView.getTag();
     }
     paramViewGroup.position = paramInt;
-    paramViewGroup.iIk = localn.field_googlegmail;
+    paramViewGroup.jbt = localn.field_googlegmail;
     switch (localn.field_status)
     {
     default: 
       if (TextUtils.isEmpty(localn.field_googlename))
       {
-        paramViewGroup.fwQ.setText(bs.aLI(localn.field_googlegmail));
+        paramViewGroup.fQd.setText(bt.aRo(localn.field_googlegmail));
         switch (localn.field_status)
         {
         default: 
           switch (localn.field_googlecgistatus)
           {
           default: 
-            paramViewGroup.iIl.setText(localn.field_googlegmail);
+            paramViewGroup.jbu.setText(localn.field_googlegmail);
             AppMethodBeat.o(110072);
             return paramView;
           }
@@ -117,67 +118,67 @@ public final class a
     {
       if (localBitmap == null)
       {
-        paramViewGroup.fxQ.setImageDrawable(com.tencent.mm.cc.a.l(this.mContext, 2131690013));
+        paramViewGroup.fRd.setImageDrawable(com.tencent.mm.cc.a.l(this.mContext, 2131690013));
         break;
       }
-      paramViewGroup.fxQ.setImageBitmap(localBitmap);
+      paramViewGroup.fRd.setImageBitmap(localBitmap);
       break;
-      localBitmap = c.zK(localn.field_googleid);
+      localBitmap = c.CJ(localn.field_googleid);
       if (localBitmap == null)
       {
-        paramViewGroup.fxQ.setImageDrawable(com.tencent.mm.cc.a.l(this.mContext, 2131690013));
+        paramViewGroup.fRd.setImageDrawable(com.tencent.mm.cc.a.l(this.mContext, 2131690013));
         break;
       }
-      paramViewGroup.fxQ.setImageBitmap(localBitmap);
+      paramViewGroup.fRd.setImageBitmap(localBitmap);
       break;
-      paramViewGroup.fwQ.setText(localn.field_googlename);
+      paramViewGroup.fQd.setText(localn.field_googlename);
       break label146;
-      paramViewGroup.iIm.setClickable(true);
-      paramViewGroup.iIm.setBackgroundResource(2131231365);
-      paramViewGroup.fBE.setText(2131760015);
-      paramViewGroup.fBE.setTextColor(this.mContext.getResources().getColor(2131101179));
+      paramViewGroup.jbv.setClickable(true);
+      paramViewGroup.jbv.setBackgroundResource(2131231365);
+      paramViewGroup.fUR.setText(2131760015);
+      paramViewGroup.fUR.setTextColor(this.mContext.getResources().getColor(2131101179));
       break label176;
-      paramViewGroup.iIm.setClickable(true);
-      paramViewGroup.iIm.setBackgroundResource(2131231367);
-      paramViewGroup.fBE.setText(2131760023);
-      paramViewGroup.fBE.setTextColor(this.mContext.getResources().getColor(2131100544));
+      paramViewGroup.jbv.setClickable(true);
+      paramViewGroup.jbv.setBackgroundResource(2131231367);
+      paramViewGroup.fUR.setText(2131760023);
+      paramViewGroup.fUR.setTextColor(this.mContext.getResources().getColor(2131100544));
       break label176;
-      paramViewGroup.iIm.setClickable(false);
-      paramViewGroup.iIm.setBackgroundDrawable(null);
-      paramViewGroup.fBE.setText(2131760017);
-      paramViewGroup.fBE.setTextColor(this.mContext.getResources().getColor(2131100544));
+      paramViewGroup.jbv.setClickable(false);
+      paramViewGroup.jbv.setBackgroundDrawable(null);
+      paramViewGroup.fUR.setText(2131760017);
+      paramViewGroup.fUR.setTextColor(this.mContext.getResources().getColor(2131100544));
       break label176;
-      paramViewGroup.fBE.setVisibility(4);
-      paramViewGroup.iIn.setVisibility(0);
+      paramViewGroup.fUR.setVisibility(4);
+      paramViewGroup.jbw.setVisibility(0);
       break label208;
-      paramViewGroup.iIm.setClickable(false);
-      paramViewGroup.iIm.setBackgroundDrawable(null);
-      paramViewGroup.fBE.setVisibility(0);
-      paramViewGroup.iIn.setVisibility(8);
-      paramViewGroup.fBE.setTextColor(this.mContext.getResources().getColor(2131100544));
+      paramViewGroup.jbv.setClickable(false);
+      paramViewGroup.jbv.setBackgroundDrawable(null);
+      paramViewGroup.fUR.setVisibility(0);
+      paramViewGroup.jbw.setVisibility(8);
+      paramViewGroup.fUR.setTextColor(this.mContext.getResources().getColor(2131100544));
       switch (localn.field_status)
       {
       default: 
         break;
       case 0: 
-        paramViewGroup.fBE.setText(2131760016);
+        paramViewGroup.fUR.setText(2131760016);
         break;
       case 1: 
-        paramViewGroup.fBE.setText(2131760024);
+        paramViewGroup.fUR.setText(2131760024);
         break;
-        paramViewGroup.fBE.setVisibility(0);
-        paramViewGroup.iIn.setVisibility(8);
+        paramViewGroup.fUR.setVisibility(0);
+        paramViewGroup.jbw.setVisibility(8);
         switch (localn.field_status)
         {
         default: 
           break;
         case 0: 
-          paramViewGroup.fBE.setText(2131760015);
-          paramViewGroup.fBE.setTextColor(this.mContext.getResources().getColor(2131101179));
+          paramViewGroup.fUR.setText(2131760015);
+          paramViewGroup.fUR.setTextColor(this.mContext.getResources().getColor(2131101179));
           break;
         case 1: 
-          paramViewGroup.fBE.setText(2131760023);
-          paramViewGroup.fBE.setTextColor(this.mContext.getResources().getColor(2131100544));
+          paramViewGroup.fUR.setText(2131760023);
+          paramViewGroup.fUR.setTextColor(this.mContext.getResources().getColor(2131100544));
           break;
         }
         break;
@@ -187,38 +188,42 @@ public final class a
   
   static abstract interface a
   {
-    public abstract void qK(int paramInt);
+    public abstract void rk(int paramInt);
   }
   
   final class b
   {
-    TextView fBE;
-    TextView fwQ;
-    ImageView fxQ;
-    String iIk;
-    TextView iIl;
-    View iIm;
-    ProgressBar iIn;
+    TextView fQd;
+    ImageView fRd;
+    TextView fUR;
+    String jbt;
+    TextView jbu;
+    View jbv;
+    ProgressBar jbw;
     int position;
     
     public b(View paramView)
     {
       AppMethodBeat.i(110067);
-      this.fxQ = ((ImageView)paramView.findViewById(2131300572));
-      this.fwQ = ((TextView)paramView.findViewById(2131300576));
-      this.iIm = paramView.findViewById(2131300577);
-      this.fBE = ((TextView)paramView.findViewById(2131300578));
-      this.iIn = ((ProgressBar)paramView.findViewById(2131300575));
-      this.iIl = ((TextView)paramView.findViewById(2131300573));
-      this.iIm.setOnClickListener(new View.OnClickListener()
+      this.fRd = ((ImageView)paramView.findViewById(2131300572));
+      this.fQd = ((TextView)paramView.findViewById(2131300576));
+      this.jbv = paramView.findViewById(2131300577);
+      this.fUR = ((TextView)paramView.findViewById(2131300578));
+      this.jbw = ((ProgressBar)paramView.findViewById(2131300575));
+      this.jbu = ((TextView)paramView.findViewById(2131300573));
+      this.jbv.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(110066);
-          ac.d("MicroMsg.GoogleContact.GoogleFriendAdapter", "onClick");
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/GoogleFriendAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          ad.d("MicroMsg.GoogleContact.GoogleFriendAdapter", "onClick");
           if (a.a(a.this) != null) {
-            a.a(a.this).qK(a.b.this.position);
+            a.a(a.this).rk(a.b.this.position);
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/GoogleFriendAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(110066);
         }
       });

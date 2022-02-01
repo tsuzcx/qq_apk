@@ -1,100 +1,120 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bng
-  extends cpx
+  extends com.tencent.mm.bx.a
 {
-  public String Fdi;
-  public int Scene;
+  public int GHi;
+  public com.tencent.mm.bx.b GHj;
+  public com.tencent.mm.bx.b GHk;
+  public com.tencent.mm.bx.b GHl;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56255);
+    AppMethodBeat.i(115844);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      if (this.GHj == null)
       {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new f.a.a.b("Not all required fields were included: SPSBuf");
+        AppMethodBeat.o(115844);
+        throw paramVarArgs;
       }
-      if (this.Fdi != null) {
-        paramVarArgs.d(2, this.Fdi);
+      if (this.GHk == null)
+      {
+        paramVarArgs = new f.a.a.b("Not all required fields were included: PPSBuf");
+        AppMethodBeat.o(115844);
+        throw paramVarArgs;
       }
-      paramVarArgs.aR(3, this.Scene);
-      AppMethodBeat.o(56255);
+      paramVarArgs.aS(1, this.GHi);
+      if (this.GHj != null) {
+        paramVarArgs.c(2, this.GHj);
+      }
+      if (this.GHk != null) {
+        paramVarArgs.c(3, this.GHk);
+      }
+      if (this.GHl != null) {
+        paramVarArgs.c(4, this.GHl);
+      }
+      AppMethodBeat.o(115844);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label414;
-      }
-    }
-    label414:
-    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.Fdi != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Fdi);
+      int i = f.a.a.b.b.a.bz(1, this.GHi) + 0;
+      paramInt = i;
+      if (this.GHj != null) {
+        paramInt = i + f.a.a.b.b.a.b(2, this.GHj);
       }
-      paramInt = f.a.a.b.b.a.bx(3, this.Scene);
-      AppMethodBeat.o(56255);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
-          }
-        }
-        AppMethodBeat.o(56255);
-        return 0;
+      i = paramInt;
+      if (this.GHk != null) {
+        i = paramInt + f.a.a.b.b.a.b(3, this.GHk);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        bng localbng = (bng)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(56255);
-          return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbng.BaseRequest = ((iv)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(56255);
-          return 0;
-        case 2: 
-          localbng.Fdi = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(56255);
-          return 0;
-        }
-        localbng.Scene = ((f.a.a.a.a)localObject1).LVo.xF();
-        AppMethodBeat.o(56255);
-        return 0;
+      paramInt = i;
+      if (this.GHl != null) {
+        paramInt = i + f.a.a.b.b.a.b(4, this.GHl);
       }
-      AppMethodBeat.o(56255);
-      return -1;
+      AppMethodBeat.o(115844);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gxE();
+        }
+      }
+      if (this.GHj == null)
+      {
+        paramVarArgs = new f.a.a.b("Not all required fields were included: SPSBuf");
+        AppMethodBeat.o(115844);
+        throw paramVarArgs;
+      }
+      if (this.GHk == null)
+      {
+        paramVarArgs = new f.a.a.b("Not all required fields were included: PPSBuf");
+        AppMethodBeat.o(115844);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(115844);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      bng localbng = (bng)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(115844);
+        return -1;
+      case 1: 
+        localbng.GHi = locala.NPN.zc();
+        AppMethodBeat.o(115844);
+        return 0;
+      case 2: 
+        localbng.GHj = locala.NPN.gxI();
+        AppMethodBeat.o(115844);
+        return 0;
+      case 3: 
+        localbng.GHk = locala.NPN.gxI();
+        AppMethodBeat.o(115844);
+        return 0;
+      }
+      localbng.GHl = locala.NPN.gxI();
+      AppMethodBeat.o(115844);
+      return 0;
+    }
+    AppMethodBeat.o(115844);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bng
  * JD-Core Version:    0.7.0.1
  */

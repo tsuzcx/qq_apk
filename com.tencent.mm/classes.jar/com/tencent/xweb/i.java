@@ -2,7 +2,7 @@ package com.tencent.xweb;
 
 public abstract interface i
 {
-  public abstract void cw(int paramInt, String paramString);
+  public abstract void cC(int paramInt, String paramString);
 }
 
 

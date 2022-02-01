@@ -15,9 +15,9 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class LoadMoreRecyclerView
   extends MRecyclerView
 {
-  private View fzV;
-  private a mOB;
-  boolean mOC;
+  private View fTl;
+  private a noY;
+  boolean noZ;
   
   public LoadMoreRecyclerView(Context paramContext)
   {
@@ -46,22 +46,22 @@ public class LoadMoreRecyclerView
   private void init()
   {
     AppMethodBeat.i(131561);
-    final LinearLayoutManager localLinearLayoutManager = bwy();
+    final LinearLayoutManager localLinearLayoutManager = bAE();
     super.setLayoutManager(localLinearLayoutManager);
     a(new RecyclerView.m()
     {
-      int mOD = 0;
+      int npa = 0;
       
       public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(131555);
         b localb = new b();
-        localb.bb(paramAnonymousRecyclerView);
-        localb.lS(paramAnonymousInt1);
-        localb.lS(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.aeE());
+        localb.bd(paramAnonymousRecyclerView);
+        localb.mr(paramAnonymousInt1);
+        localb.mr(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahq());
         super.a(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
-        this.mOD = localLinearLayoutManager.jY();
+        this.npa = localLinearLayoutManager.ko();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
         AppMethodBeat.o(131555);
       }
@@ -70,25 +70,25 @@ public class LoadMoreRecyclerView
       {
         AppMethodBeat.i(131554);
         b localb = new b();
-        localb.bb(paramAnonymousRecyclerView);
-        localb.lS(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
+        localb.bd(paramAnonymousRecyclerView);
+        localb.mr(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahq());
         super.b(paramAnonymousRecyclerView, paramAnonymousInt);
-        if ((paramAnonymousInt == 0) && (LoadMoreRecyclerView.this.mOC) && (this.mOD == LoadMoreRecyclerView.this.mOG.getItemCount() - 1) && (LoadMoreRecyclerView.a(LoadMoreRecyclerView.this) != null)) {
-          LoadMoreRecyclerView.a(LoadMoreRecyclerView.this).bwz();
+        if ((paramAnonymousInt == 0) && (LoadMoreRecyclerView.this.noZ) && (this.npa == LoadMoreRecyclerView.this.npd.getItemCount() - 1) && (LoadMoreRecyclerView.a(LoadMoreRecyclerView.this) != null)) {
+          LoadMoreRecyclerView.a(LoadMoreRecyclerView.this).bAF();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
         AppMethodBeat.o(131554);
       }
     });
-    this.mOG.a(new RecyclerView.c()
+    this.npd.a(new RecyclerView.c()
     {
-      public final void au(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void av(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(131556);
-        super.au(paramAnonymousInt1, paramAnonymousInt2);
-        if ((LoadMoreRecyclerView.this.mOC) && (localLinearLayoutManager.jY() == LoadMoreRecyclerView.this.mOG.getItemCount() - 1) && (LoadMoreRecyclerView.a(LoadMoreRecyclerView.this) != null)) {
-          LoadMoreRecyclerView.a(LoadMoreRecyclerView.this).bwz();
+        super.av(paramAnonymousInt1, paramAnonymousInt2);
+        if ((LoadMoreRecyclerView.this.noZ) && (localLinearLayoutManager.ko() == LoadMoreRecyclerView.this.npd.getItemCount() - 1) && (LoadMoreRecyclerView.a(LoadMoreRecyclerView.this) != null)) {
+          LoadMoreRecyclerView.a(LoadMoreRecyclerView.this).bAF();
         }
         AppMethodBeat.o(131556);
       }
@@ -99,8 +99,8 @@ public class LoadMoreRecyclerView
   public final void addFooterView(View paramView)
   {
     AppMethodBeat.i(131562);
-    int i = this.mOG.bBE() - 1;
-    if ((this.fzV == null) || (i < 0))
+    int i = this.npd.bFG() - 1;
+    if ((this.fTl == null) || (i < 0))
     {
       super.addFooterView(paramView);
       AppMethodBeat.o(131562);
@@ -110,12 +110,21 @@ public class LoadMoreRecyclerView
     AppMethodBeat.o(131562);
   }
   
-  protected final boolean bBF()
+  protected LinearLayoutManager bAE()
+  {
+    AppMethodBeat.i(131560);
+    getContext();
+    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager();
+    AppMethodBeat.o(131560);
+    return localLinearLayoutManager;
+  }
+  
+  protected final boolean bFH()
   {
     AppMethodBeat.i(131566);
-    if (this.fzV != null)
+    if (this.fTl != null)
     {
-      if ((this.mOG.getItemCount() == 1) && (this.mOG.bBE() == 1))
+      if ((this.npd.getItemCount() == 1) && (this.npd.bFG() == 1))
       {
         AppMethodBeat.o(131566);
         return true;
@@ -123,18 +132,9 @@ public class LoadMoreRecyclerView
       AppMethodBeat.o(131566);
       return false;
     }
-    boolean bool = super.bBF();
+    boolean bool = super.bFH();
     AppMethodBeat.o(131566);
     return bool;
-  }
-  
-  protected LinearLayoutManager bwy()
-  {
-    AppMethodBeat.i(131560);
-    getContext();
-    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager();
-    AppMethodBeat.o(131560);
-    return localLinearLayoutManager;
   }
   
   public void setLayoutManager(RecyclerView.i parami) {}
@@ -149,20 +149,20 @@ public class LoadMoreRecyclerView
   public void setLoadingView(View paramView)
   {
     AppMethodBeat.i(131563);
-    if (this.fzV == paramView)
+    if (this.fTl == paramView)
     {
       AppMethodBeat.o(131563);
       return;
     }
-    if ((this.fzV != null) && (!this.fzV.equals(paramView))) {
-      ds(this.fzV);
+    if ((this.fTl != null) && (!this.fTl.equals(paramView))) {
+      du(this.fTl);
     }
-    this.fzV = paramView;
-    if (this.fzV != null)
+    this.fTl = paramView;
+    if (this.fTl != null)
     {
-      addFooterView(this.fzV);
-      paramView = this.fzV;
-      if (!this.mOC) {
+      addFooterView(this.fTl);
+      paramView = this.fTl;
+      if (!this.noZ) {
         break label90;
       }
     }
@@ -177,23 +177,23 @@ public class LoadMoreRecyclerView
   
   public void setOnLoadingStateChangedListener(a parama)
   {
-    this.mOB = parama;
+    this.noY = parama;
   }
   
   public final void showLoading(boolean paramBoolean)
   {
     AppMethodBeat.i(131565);
-    if (this.mOC == paramBoolean)
+    if (this.noZ == paramBoolean)
     {
       AppMethodBeat.o(131565);
       return;
     }
-    this.mOC = paramBoolean;
+    this.noZ = paramBoolean;
     View localView;
-    if (this.fzV != null)
+    if (this.fTl != null)
     {
-      localView = this.fzV;
-      if (!this.mOC) {
+      localView = this.fTl;
+      if (!this.noZ) {
         break label56;
       }
     }
@@ -208,12 +208,12 @@ public class LoadMoreRecyclerView
   
   public static abstract interface a
   {
-    public abstract void bwz();
+    public abstract void bAF();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,20 +10,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.ui.b.c;
+import com.tencent.mm.plugin.fts.ui.n;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class g
   extends m
 {
-  private a sEp;
-  CharSequence sEq;
+  private a tBg;
+  CharSequence tBh;
   
   public g(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112072);
-    this.sEp = new a();
+    this.tBg = new a();
     AppMethodBeat.o(112072);
   }
   
@@ -31,18 +32,18 @@ public final class g
   {
     AppMethodBeat.i(112073);
     super.a(paramContext, parama, paramVarArgs);
-    paramVarArgs = d.acr(this.jPN.talker);
+    paramVarArgs = d.agg(this.kjY.talker);
     parama = paramVarArgs;
-    if (bs.isNullOrNil(paramVarArgs)) {
-      parama = d.acr(this.jPN.sxG);
+    if (bt.isNullOrNil(paramVarArgs)) {
+      parama = d.agg(this.kjY.tuh);
     }
-    this.sEq = k.d(paramContext, parama, b.c.sBG);
+    this.tBh = k.d(paramContext, parama, b.c.tyh);
     AppMethodBeat.o(112073);
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a.b adW()
+  public final com.tencent.mm.plugin.fts.a.d.a.a.b agC()
   {
-    return this.sEp;
+    return this.tBg;
   }
   
   public final class a
@@ -57,14 +58,14 @@ public final class g
     {
       AppMethodBeat.i(112070);
       paramViewGroup = LayoutInflater.from(paramContext).inflate(2131494215, paramViewGroup, false);
-      m.a locala = (m.a)g.this.sEQ;
-      locala.fuY = ((ImageView)paramViewGroup.findViewById(2131297008));
-      locala.fuZ = ((TextView)paramViewGroup.findViewById(2131302867));
-      locala.fAy = ((TextView)paramViewGroup.findViewById(2131302555));
-      locala.jPT = paramViewGroup.findViewById(2131299154);
-      locala.fAz = ((TextView)paramViewGroup.findViewById(2131305822));
-      locala.fuY.getLayoutParams().width = com.tencent.mm.cc.a.au(paramContext, 2131165558);
-      locala.fuY.getLayoutParams().height = com.tencent.mm.cc.a.au(paramContext, 2131165558);
+      m.a locala = (m.a)g.this.tBI;
+      locala.fOf = ((ImageView)paramViewGroup.findViewById(2131297008));
+      locala.fOg = ((TextView)paramViewGroup.findViewById(2131302867));
+      locala.fTO = ((TextView)paramViewGroup.findViewById(2131302555));
+      locala.kke = paramViewGroup.findViewById(2131299154);
+      locala.fTP = ((TextView)paramViewGroup.findViewById(2131305822));
+      locala.fOf.getLayoutParams().width = com.tencent.mm.cc.a.ax(paramContext, 2131165558);
+      locala.fOf.getLayoutParams().height = com.tencent.mm.cc.a.ax(paramContext, 2131165558);
       paramViewGroup.setTag(locala);
       AppMethodBeat.o(112070);
       return paramViewGroup;
@@ -75,18 +76,18 @@ public final class g
       AppMethodBeat.i(112071);
       paramContext = (g)parama1;
       parama = (m.a)parama;
-      com.tencent.mm.plugin.fts.ui.m.p(parama.jPT, g.this.szt);
-      if (bs.isNullOrNil(paramContext.jPN.talker)) {
-        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fuY, paramContext.jPN.sxG);
+      n.p(parama.kke, g.this.tvU);
+      if (bt.isNullOrNil(paramContext.kjY.talker)) {
+        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fOf, paramContext.kjY.tuh);
       }
       for (;;)
       {
-        com.tencent.mm.plugin.fts.ui.m.a(paramContext.sEq, parama.fuZ);
-        com.tencent.mm.plugin.fts.ui.m.a(paramContext.gIg, parama.fAy);
-        com.tencent.mm.plugin.fts.ui.m.a(paramContext.sEO, parama.fAz);
+        n.a(paramContext.tBh, parama.fOg);
+        n.a(paramContext.hbQ, parama.fTO);
+        n.a(paramContext.tBG, parama.fTP);
         AppMethodBeat.o(112071);
         return;
-        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fuY, paramContext.jPN.talker);
+        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fOf, paramContext.kjY.talker);
       }
     }
   }

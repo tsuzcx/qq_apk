@@ -11,26 +11,26 @@ import com.tencent.mm.plugin.music.e.e;
 import com.tencent.mm.plugin.music.e.k;
 import com.tencent.mm.plugin.music.f.a.d;
 import com.tencent.mm.plugin.music.f.c.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class MMMusicPlayerService
   extends Service
 {
-  a vfV;
-  Runnable vfW;
+  a wlq;
+  Runnable wlr;
   
   public MMMusicPlayerService()
   {
     AppMethodBeat.i(63122);
-    this.vfW = new Runnable()
+    this.wlr = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(63121);
-        ac.i("MicroMsg.Music.MMMusicPlayerService", "quit");
-        ap.aB(MMMusicPlayerService.a(MMMusicPlayerService.this));
+        ad.i("MicroMsg.Music.MMMusicPlayerService", "quit");
+        aq.aA(MMMusicPlayerService.a(MMMusicPlayerService.this));
         MMMusicPlayerService.this.stopSelf();
         AppMethodBeat.o(63121);
       }
@@ -41,30 +41,30 @@ public class MMMusicPlayerService
   public final void c(com.tencent.mm.plugin.music.model.e.a parama)
   {
     AppMethodBeat.i(63125);
-    ac.i("MicroMsg.Music.MMMusicPlayerService", "play");
+    ad.i("MicroMsg.Music.MMMusicPlayerService", "play");
     if (parama == null)
     {
-      ac.e("MicroMsg.Music.MMMusicPlayerService", "music is null, return");
+      ad.e("MicroMsg.Music.MMMusicPlayerService", "music is null, return");
       AppMethodBeat.o(63125);
       return;
     }
-    ap.aB(this.vfW);
-    this.vfV.c(parama);
+    aq.aA(this.wlr);
+    this.wlq.c(parama);
     AppMethodBeat.o(63125);
   }
   
   public final void d(com.tencent.mm.plugin.music.model.e.a parama)
   {
     AppMethodBeat.i(63126);
-    ac.i("MicroMsg.Music.MMMusicPlayerService", "pause");
+    ad.i("MicroMsg.Music.MMMusicPlayerService", "pause");
     if (parama == null)
     {
-      ac.e("MicroMsg.Music.MMMusicPlayerService", "music is null, return");
+      ad.e("MicroMsg.Music.MMMusicPlayerService", "music is null, return");
       AppMethodBeat.o(63126);
       return;
     }
-    ap.aB(this.vfW);
-    this.vfV.d(parama);
+    aq.aA(this.wlr);
+    this.wlq.d(parama);
     AppMethodBeat.o(63126);
   }
   
@@ -80,17 +80,17 @@ public class MMMusicPlayerService
   {
     AppMethodBeat.i(63123);
     super.onCreate();
-    ac.i("MicroMsg.Music.MMMusicPlayerService", "onCreate");
-    ac.i("MicroMsg.Music.MMMusicPlayerService", "init");
-    this.vfV = new a();
-    a locala = this.vfV;
-    ac.i("MicroMsg.Music.MMMusicNotification", "init");
-    locala.vfO = this;
-    locala.vfP = ((NotificationManager)getSystemService("notification"));
-    locala.vfR = new a.2(locala);
+    ad.i("MicroMsg.Music.MMMusicPlayerService", "onCreate");
+    ad.i("MicroMsg.Music.MMMusicPlayerService", "init");
+    this.wlq = new a();
+    a locala = this.wlq;
+    ad.i("MicroMsg.Music.MMMusicNotification", "init");
+    locala.wlj = this;
+    locala.wlk = ((NotificationManager)getSystemService("notification"));
+    locala.wlm = new a.2(locala);
     IntentFilter localIntentFilter = new IntentFilter("com.tencent.mm.Intent.ACTION_MMMUSIC_NOTIFICATION_CLICK");
-    registerReceiver(locala.vfR, localIntentFilter);
-    locala.cqf = true;
+    registerReceiver(locala.wlm, localIntentFilter);
+    locala.cAX = true;
     refresh();
     AppMethodBeat.o(63123);
   }
@@ -99,14 +99,14 @@ public class MMMusicPlayerService
   {
     AppMethodBeat.i(63128);
     super.onDestroy();
-    ac.i("MicroMsg.Music.MMMusicPlayerService", "onDestroy");
-    a locala = this.vfV;
-    ac.i("MicroMsg.Music.MMMusicNotification", "uninit");
-    locala.vfO.unregisterReceiver(locala.vfR);
-    locala.vfR = null;
-    locala.vfO = null;
-    locala.vfP = null;
-    locala.cqf = false;
+    ad.i("MicroMsg.Music.MMMusicPlayerService", "onDestroy");
+    a locala = this.wlq;
+    ad.i("MicroMsg.Music.MMMusicNotification", "uninit");
+    locala.wlj.unregisterReceiver(locala.wlm);
+    locala.wlm = null;
+    locala.wlj = null;
+    locala.wlk = null;
+    locala.cAX = false;
     AppMethodBeat.o(63128);
   }
   
@@ -118,41 +118,41 @@ public class MMMusicPlayerService
   final void refresh()
   {
     AppMethodBeat.i(63124);
-    ac.i("MicroMsg.Music.MMMusicPlayerService", "initNotification");
+    ad.i("MicroMsg.Music.MMMusicPlayerService", "initNotification");
     Object localObject = (e)b.aQ(e.class);
     if (localObject == null)
     {
-      ac.e("MicroMsg.Music.MMMusicPlayerService", "initNotification logic music is null, return");
+      ad.e("MicroMsg.Music.MMMusicPlayerService", "initNotification logic music is null, return");
       AppMethodBeat.o(63124);
       return;
     }
-    localObject = ((e)localObject).diD();
+    localObject = ((e)localObject).dsP();
     if (localObject == null)
     {
-      ac.e("MicroMsg.Music.MMMusicPlayerService", "initNotification music is null, return");
+      ad.e("MicroMsg.Music.MMMusicPlayerService", "initNotification music is null, return");
       AppMethodBeat.o(63124);
       return;
     }
-    if (!bs.isNullOrNil(((com.tencent.mm.plugin.music.model.e.a)localObject).field_protocol))
+    if (!bt.isNullOrNil(((com.tencent.mm.plugin.music.model.e.a)localObject).field_protocol))
     {
-      ac.e("MicroMsg.Music.MMMusicPlayerService", "exoplayer play audio, ingore");
+      ad.e("MicroMsg.Music.MMMusicPlayerService", "exoplayer play audio, ingore");
       AppMethodBeat.o(63124);
       return;
     }
-    d locald = k.diO().diB();
+    d locald = k.dta().dsN();
     if (locald == null)
     {
-      ac.e("MicroMsg.Music.MMMusicPlayerService", "musicPlayer is null, return");
+      ad.e("MicroMsg.Music.MMMusicPlayerService", "musicPlayer is null, return");
       AppMethodBeat.o(63124);
       return;
     }
-    if (locald.aGv())
+    if (locald.aJG())
     {
       c((com.tencent.mm.plugin.music.model.e.a)localObject);
       AppMethodBeat.o(63124);
       return;
     }
-    if (locald.aGw())
+    if (locald.aJH())
     {
       d((com.tencent.mm.plugin.music.model.e.a)localObject);
       AppMethodBeat.o(63124);
@@ -164,10 +164,10 @@ public class MMMusicPlayerService
   public final void stop()
   {
     AppMethodBeat.i(63127);
-    ac.i("MicroMsg.Music.MMMusicPlayerService", "stop");
-    this.vfV.close();
-    ap.aB(this.vfW);
-    ap.n(this.vfW, 60000L);
+    ad.i("MicroMsg.Music.MMMusicPlayerService", "stop");
+    this.wlq.close();
+    aq.aA(this.wlr);
+    aq.o(this.wlr, 60000L);
     AppMethodBeat.o(63127);
   }
   

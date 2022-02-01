@@ -5849,7 +5849,6 @@ Weibo"</string>
     <string name="f24">הקש כדי לשלוח הודעה קולית</string>
     <string name="f25">אני %s</string>
     <string name="f27">שולח</string>
-    <string name="f28">לא ניתן לשלוח קבצים שגודלם עולה על 100MB</string>
     <string name="f29">לא ניתן לשלוח את הבקשה</string>
     <string name="f2_">נשלח בהצלחה</string>
     <string name="f2a">שולח...</string>
@@ -6083,13 +6082,11 @@ Weibo"</string>
     <string name="f9p">מושבת</string>
     <string name="f9q">מופעל</string>
     <string name="f9r">אפשר</string>
-    <string name="f9s">לא ניתן להפעיל</string>
     <string name="f9t">מופעל</string>
     <string name="f9u">תכונות מופעלות</string>
     <string name="f9v">מפעיל...</string>
     <string name="f9w">הגדרות של תכונות</string>
     <string name="f9x">השבת</string>
-    <string name="f9y">לא ניתן להשבית</string>
     <string name="f9z">נתוני ההיסטוריה יימחקו כשתשבית תכונה זו</string>
     <string name="f_0">אם תשבית תכונה זו, לא תקבל התראות על עדכוני רגעים של חברים. עם זאת, הרגעים, ההערות והלייקים שפרסמת לא יימחקו.</string>
     <string name="f_1">מושבת</string>

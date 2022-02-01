@@ -14,33 +14,33 @@ import com.robinhood.ticker.TickerView;
 import com.robinhood.ticker.TickerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.ui.e;
 
 public class WcPayMoneyLoadingView
   extends FrameLayout
   implements LifecycleObserver
 {
-  private TickerView BNg;
-  private String BNh;
-  private String BNi;
-  private boolean BNj;
-  public Runnable BNk;
-  public ProgressBar iIW;
+  private String DnA;
+  private boolean DnB;
+  public Runnable DnC;
+  private TickerView Dny;
+  private String Dnz;
+  public ProgressBar jcf;
   
   public WcPayMoneyLoadingView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(71597);
-    this.BNh = "";
-    this.BNj = false;
-    this.BNk = new Runnable()
+    this.Dnz = "";
+    this.DnB = false;
+    this.DnC = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(71596);
-        ac.i("MicroMsg.WcPayMoneyLoadingView", "show loading pb");
+        ad.i("MicroMsg.WcPayMoneyLoadingView", "show loading pb");
         WcPayMoneyLoadingView.a(WcPayMoneyLoadingView.this).setVisibility(0);
         WcPayMoneyLoadingView.b(WcPayMoneyLoadingView.this);
         AppMethodBeat.o(71596);
@@ -54,14 +54,14 @@ public class WcPayMoneyLoadingView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(71598);
-    this.BNh = "";
-    this.BNj = false;
-    this.BNk = new Runnable()
+    this.Dnz = "";
+    this.DnB = false;
+    this.DnC = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(71596);
-        ac.i("MicroMsg.WcPayMoneyLoadingView", "show loading pb");
+        ad.i("MicroMsg.WcPayMoneyLoadingView", "show loading pb");
         WcPayMoneyLoadingView.a(WcPayMoneyLoadingView.this).setVisibility(0);
         WcPayMoneyLoadingView.b(WcPayMoneyLoadingView.this);
         AppMethodBeat.o(71596);
@@ -76,14 +76,14 @@ public class WcPayMoneyLoadingView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(71599);
-    this.BNh = "";
-    this.BNj = false;
-    this.BNk = new Runnable()
+    this.Dnz = "";
+    this.DnB = false;
+    this.DnC = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(71596);
-        ac.i("MicroMsg.WcPayMoneyLoadingView", "show loading pb");
+        ad.i("MicroMsg.WcPayMoneyLoadingView", "show loading pb");
         WcPayMoneyLoadingView.a(WcPayMoneyLoadingView.this).setVisibility(0);
         WcPayMoneyLoadingView.b(WcPayMoneyLoadingView.this);
         AppMethodBeat.o(71596);
@@ -105,7 +105,7 @@ public class WcPayMoneyLoadingView
     paramAttributeSet.recycle();
     setTextSize(f);
     setTextColor(paramInt);
-    setTypeface(e.aO(getContext(), i));
+    setTypeface(e.aR(getContext(), i));
     AppMethodBeat.o(71600);
   }
   
@@ -113,12 +113,12 @@ public class WcPayMoneyLoadingView
   {
     AppMethodBeat.i(71601);
     inflate(getContext(), 2131494941, this);
-    this.BNg = ((TickerView)findViewById(2131302292));
-    this.BNg.setCharacterLists(new String[] { "0123456789" });
+    this.Dny = ((TickerView)findViewById(2131302292));
+    this.Dny.setCharacterLists(new String[] { "0123456789" });
     AppMethodBeat.o(71601);
   }
   
-  public final void cc(String paramString, boolean paramBoolean)
+  public final void ck(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(71607);
     if (paramString == null)
@@ -126,12 +126,12 @@ public class WcPayMoneyLoadingView
       AppMethodBeat.o(71607);
       return;
     }
-    if (bs.isNullOrNil(this.BNi))
+    if (bt.isNullOrNil(this.DnA))
     {
       setFirstMoney(paramString);
       if (paramBoolean)
       {
-        removeCallbacks(this.BNk);
+        removeCallbacks(this.DnC);
         AppMethodBeat.o(71607);
       }
     }
@@ -146,39 +146,39 @@ public class WcPayMoneyLoadingView
   public void onActivityDestroy()
   {
     AppMethodBeat.i(71611);
-    removeCallbacks(this.BNk);
+    removeCallbacks(this.DnC);
     AppMethodBeat.o(71611);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(71610);
-    ac.d("MicroMsg.WcPayMoneyLoadingView", "reset money");
-    this.BNi = null;
+    ad.d("MicroMsg.WcPayMoneyLoadingView", "reset money");
+    this.DnA = null;
     AppMethodBeat.o(71610);
   }
   
   public void setFirstMoney(String paramString)
   {
     AppMethodBeat.i(71608);
-    ac.d("MicroMsg.WcPayMoneyLoadingView", "set last money: %s", new Object[] { paramString });
-    this.BNi = paramString;
-    if (!bs.isNullOrNil(paramString)) {
-      this.BNg.setText(this.BNh + paramString, false);
+    ad.d("MicroMsg.WcPayMoneyLoadingView", "set last money: %s", new Object[] { paramString });
+    this.DnA = paramString;
+    if (!bt.isNullOrNil(paramString)) {
+      this.Dny.setText(this.Dnz + paramString, false);
     }
-    postDelayed(this.BNk, 500L);
+    postDelayed(this.DnC, 500L);
     AppMethodBeat.o(71608);
   }
   
   public void setLoadingPb(ProgressBar paramProgressBar)
   {
-    this.iIW = paramProgressBar;
+    this.jcf = paramProgressBar;
   }
   
   public void setMoney(String paramString)
   {
     AppMethodBeat.i(71606);
-    cc(paramString, false);
+    ck(paramString, false);
     AppMethodBeat.o(71606);
   }
   
@@ -186,33 +186,33 @@ public class WcPayMoneyLoadingView
   {
     boolean bool1 = false;
     AppMethodBeat.i(71609);
-    ac.d("MicroMsg.WcPayMoneyLoadingView", "set new money: %s", new Object[] { paramString });
-    removeCallbacks(this.BNk);
-    this.iIW.setVisibility(8);
+    ad.d("MicroMsg.WcPayMoneyLoadingView", "set new money: %s", new Object[] { paramString });
+    removeCallbacks(this.DnC);
+    this.jcf.setVisibility(8);
     label94:
     boolean bool2;
-    if (this.BNi.length() != paramString.length())
+    if (this.DnA.length() != paramString.length())
     {
-      this.BNg.setAnimationDuration(800L);
-      double d = bs.getDouble(this.BNi, 0.0D);
-      if (bs.getDouble(paramString, 0.0D) <= d) {
+      this.Dny.setAnimationDuration(800L);
+      double d = bt.getDouble(this.DnA, 0.0D);
+      if (bt.getDouble(paramString, 0.0D) <= d) {
         break label159;
       }
-      this.BNg.setPreferredScrollingDirection(TickerView.a.bMq);
-      bool2 = this.BNj;
-      if (!bs.isNullOrNil(this.BNi)) {
+      this.Dny.setPreferredScrollingDirection(TickerView.a.bWD);
+      bool2 = this.DnB;
+      if (!bt.isNullOrNil(this.DnA)) {
         break label172;
       }
     }
     for (;;)
     {
-      this.BNg.setText(this.BNh + paramString, bool1);
+      this.Dny.setText(this.Dnz + paramString, bool1);
       AppMethodBeat.o(71609);
       return;
-      this.BNg.setAnimationDuration(500L);
+      this.Dny.setAnimationDuration(500L);
       break;
       label159:
-      this.BNg.setPreferredScrollingDirection(TickerView.a.bMp);
+      this.Dny.setPreferredScrollingDirection(TickerView.a.bWC);
       break label94;
       label172:
       bool1 = bool2;
@@ -221,7 +221,7 @@ public class WcPayMoneyLoadingView
   
   public void setPrefixSymbol(String paramString)
   {
-    this.BNh = paramString;
+    this.Dnz = paramString;
   }
   
   public void setProgressBarStyle(int paramInt)
@@ -229,32 +229,32 @@ public class WcPayMoneyLoadingView
     AppMethodBeat.i(71602);
     if (paramInt == 0)
     {
-      this.iIW.setIndeterminateDrawable(getResources().getDrawable(2131233682));
+      this.jcf.setIndeterminateDrawable(getResources().getDrawable(2131233682));
       AppMethodBeat.o(71602);
       return;
     }
-    this.iIW.setIndeterminateDrawable(getResources().getDrawable(2131233679));
+    this.jcf.setIndeterminateDrawable(getResources().getDrawable(2131233679));
     AppMethodBeat.o(71602);
   }
   
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(71605);
-    this.BNg.setTextColor(paramInt);
+    this.Dny.setTextColor(paramInt);
     AppMethodBeat.o(71605);
   }
   
   public void setTextSize(float paramFloat)
   {
     AppMethodBeat.i(71604);
-    this.BNg.setTextSize(paramFloat);
+    this.Dny.setTextSize(paramFloat);
     AppMethodBeat.o(71604);
   }
   
   public void setTypeface(Typeface paramTypeface)
   {
     AppMethodBeat.i(71603);
-    this.BNg.setTypeface(paramTypeface);
+    this.Dny.setTypeface(paramTypeface);
     AppMethodBeat.o(71603);
   }
 }

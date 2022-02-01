@@ -25,7 +25,7 @@
                         <TextView android:textSize="16.0dip" android:textColor="@color/a4d" android:gravity="center" android:id="@id/gfv" android:visibility="gone" android:layout_width="74.0dip" android:layout_height="74.0dip" />
                     </FrameLayout>
                     <com.tencent.mm.plugin.sns.ui.SnsUnScaleTextView android:layout_gravity="bottom|center|right" android:id="@id/h0k" android:background="@drawable/ay9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                    <ImageView android:layout_gravity="bottom|center|left" android:id="@id/fow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/js" android:layout_marginBottom="@dimen/js" android:src="@raw/sns_sight_icon_mark" android:scaleType="fitXY" />
+                    <ImageView android:layout_gravity="center" android:id="@id/fow" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:src="@raw/shortvideo_play_btn" />
                 </FrameLayout>
                 <RelativeLayout android:orientation="vertical" android:id="@id/b_f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="6.0dip" android:layout_marginRight="4.0dip">
                     <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/b_" android:textColor="@color/a1u" android:ellipsize="end" android:gravity="center|left|top" android:id="@id/b__" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="3" android:singleLine="false" android:includeFontPadding="false" android:lineSpacingExtra="-1.0dip" />

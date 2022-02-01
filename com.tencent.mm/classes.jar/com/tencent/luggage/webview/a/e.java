@@ -2,7 +2,7 @@ package com.tencent.luggage.webview.a;
 
 public abstract interface e
 {
-  public abstract boolean DY();
+  public abstract boolean Fx();
 }
 
 

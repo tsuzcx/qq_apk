@@ -18,17 +18,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.q;
 import com.tencent.mm.api.m;
 import com.tencent.mm.g.a.an;
 import com.tencent.mm.g.a.an.b;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.fts.ui.widget.FTSLocalPageRelevantView;
-import com.tencent.mm.plugin.websearch.api.ab;
-import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.protocal.protobuf.css;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.websearch.api.af;
+import com.tencent.mm.plugin.websearch.api.am;
+import com.tencent.mm.protocal.protobuf.cyc;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.search.FTSEditTextView;
 import com.tencent.mm.ui.search.FTSEditTextView.b;
 import com.tencent.mm.ui.search.a.c;
@@ -39,49 +41,49 @@ import org.json.JSONObject;
 public class FTSAddFriendUI
   extends FTSBaseUI
 {
-  private final com.tencent.mm.ak.g callback;
-  private long lqi;
-  private long mxx;
-  private Dialog pzQ;
-  private css qtd;
-  private View sBN;
-  private View sBO;
-  private View sBP;
-  private View sBQ;
-  private View sBR;
-  private View sBS;
-  private View sBT;
-  private ImageView sBU;
-  private TextView sBV;
-  private TextView sBW;
-  private TextView sBX;
-  private TextView sBY;
-  private TextView sBZ;
-  private boolean sCa;
-  protected boolean sCb;
-  private int sCc;
-  private FTSLocalPageRelevantView sCd;
-  private c sCe;
-  private int sCf;
-  private int sCg;
-  private String sCh;
-  int sCi;
+  private final com.tencent.mm.al.f callback;
+  private long lND;
+  private long mYb;
+  private Dialog qdv;
+  private cyc rcR;
+  private TextView tyA;
+  private boolean tyB;
+  protected boolean tyC;
+  private int tyD;
+  private FTSLocalPageRelevantView tyE;
+  private c tyF;
+  private int tyG;
+  private int tyH;
+  private String tyI;
+  int tyJ;
+  private View tyo;
+  private View typ;
+  private View tyq;
+  private View tyr;
+  private View tys;
+  private View tyt;
+  private View tyu;
+  private ImageView tyv;
+  private TextView tyw;
+  private TextView tyx;
+  private TextView tyy;
+  private TextView tyz;
   
   public FTSAddFriendUI()
   {
     AppMethodBeat.i(111826);
-    this.sCc = 1;
+    this.tyD = 1;
     this.callback = new FTSAddFriendUI.5(this);
-    this.sCi = -1;
+    this.tyJ = -1;
     AppMethodBeat.o(111826);
   }
   
-  private void agl(final String paramString)
+  private void akJ(final String paramString)
   {
     AppMethodBeat.i(111838);
-    this.sCa = true;
-    this.sCb = false;
-    this.sCc = 1;
+    this.tyB = true;
+    this.tyC = false;
+    this.tyD = 1;
     if ((paramString == null) || (paramString.length() == 0) || (paramString.trim().length() == 0))
     {
       AppMethodBeat.o(111838);
@@ -90,20 +92,20 @@ public class FTSAddFriendUI
     if (Character.isDigit(paramString.charAt(0))) {}
     for (int i = 15;; i = 3)
     {
-      this.sCi = i;
-      this.sCf = 0;
-      this.sCg = 0;
-      com.tencent.mm.kernel.g.agi().a(106, this.callback);
-      paramString = new com.tencent.mm.plugin.messenger.a.g(paramString, 3);
-      com.tencent.mm.kernel.g.agi().a(paramString, 0);
+      this.tyJ = i;
+      this.tyG = 0;
+      this.tyH = 0;
+      g.aiU().a(106, this.callback);
+      paramString = new com.tencent.mm.plugin.messenger.a.f(paramString, 3);
+      g.aiU().a(paramString, 0);
       getString(2131755906);
-      this.pzQ = com.tencent.mm.ui.base.h.b(this, getString(2131762915), true, new DialogInterface.OnCancelListener()
+      this.qdv = com.tencent.mm.ui.base.h.b(this, getString(2131762915), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(111823);
-          com.tencent.mm.kernel.g.agi().a(paramString);
-          com.tencent.mm.kernel.g.agi().b(106, FTSAddFriendUI.i(FTSAddFriendUI.this));
+          g.aiU().a(paramString);
+          g.aiU().b(106, FTSAddFriendUI.i(FTSAddFriendUI.this));
           FTSAddFriendUI.j(FTSAddFriendUI.this);
           AppMethodBeat.o(111823);
         }
@@ -113,38 +115,38 @@ public class FTSAddFriendUI
     }
   }
   
-  private void cLa()
+  private void cTp()
   {
     AppMethodBeat.i(111836);
-    if (bs.nullAsNil(com.tencent.mm.platformtools.z.a(this.qtd.EuE)).length() > 0)
+    if (bt.nullAsNil(z.a(this.rcR.GbY)).length() > 0)
     {
-      if (2 != this.qtd.FEO) {
-        break label129;
+      if (2 != this.rcR.Hpn) {
+        break label128;
       }
-      this.sCi = 15;
+      this.tyJ = 15;
     }
     for (;;)
     {
       Intent localIntent = new Intent();
-      ((m)com.tencent.mm.kernel.g.ab(m.class)).a(localIntent, this.qtd, this.sCi);
-      if ((this.sCi == 15) && (2 == this.qtd.FEO)) {
-        localIntent.putExtra("Contact_Search_Mobile", this.sCh);
+      ((m)g.ab(m.class)).a(localIntent, this.rcR, this.tyJ);
+      if ((this.tyJ == 15) && (2 == this.rcR.Hpn)) {
+        localIntent.putExtra("Contact_Search_Mobile", this.tyI);
       }
       localIntent.putExtra("add_more_friend_search_scene", 2);
-      com.tencent.mm.br.d.b(this, "profile", ".ui.ContactInfoUI", localIntent);
+      com.tencent.mm.bs.d.b(this, "profile", ".ui.ContactInfoUI", localIntent);
       AppMethodBeat.o(111836);
       return;
-      label129:
-      if (1 == this.qtd.FEO) {
-        this.sCi = 1;
+      label128:
+      if (1 == this.rcR.Hpn) {
+        this.tyJ = 1;
       }
     }
   }
   
-  private void cLb()
+  private void cTq()
   {
     AppMethodBeat.i(111839);
-    ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {
@@ -163,10 +165,10 @@ public class FTSAddFriendUI
   protected final d a(e parame)
   {
     AppMethodBeat.i(111830);
-    if (this.sCe == null) {
-      this.sCe = new c(parame);
+    if (this.tyF == null) {
+      this.tyF = new c(parame);
     }
-    parame = this.sCe;
+    parame = this.tyF;
     AppMethodBeat.o(111830);
     return parame;
   }
@@ -176,13 +178,13 @@ public class FTSAddFriendUI
     AppMethodBeat.i(111831);
     if ((parama instanceof com.tencent.mm.plugin.fts.ui.a.a))
     {
-      if (System.currentTimeMillis() - this.mxx <= 1000L)
+      if (System.currentTimeMillis() - this.mYb <= 1000L)
       {
         AppMethodBeat.o(111831);
         return;
       }
-      this.mxx = System.currentTimeMillis();
-      agl(parama.sxM.syk);
+      this.mYb = System.currentTimeMillis();
+      akJ(parama.tun.tuL);
     }
     AppMethodBeat.o(111831);
   }
@@ -191,24 +193,24 @@ public class FTSAddFriendUI
   {
     AppMethodBeat.i(168765);
     super.a(paramString1, paramString2, paramList, paramb);
-    this.sCa = false;
+    this.tyB = false;
     AppMethodBeat.o(168765);
   }
   
-  public final boolean bvs()
+  public final boolean bzz()
   {
     AppMethodBeat.i(111833);
-    agl(this.query);
+    akJ(this.query);
     hideVKB();
     AppMethodBeat.o(111833);
     return true;
   }
   
-  protected final void cKZ()
+  protected final void cTo()
   {
     AppMethodBeat.i(111834);
-    super.cKZ();
-    this.sBO.setVisibility(8);
+    super.cTo();
+    this.typ.setVisibility(8);
     AppMethodBeat.o(111834);
   }
   
@@ -228,9 +230,9 @@ public class FTSAddFriendUI
   {
     AppMethodBeat.i(111840);
     super.onClickClearTextBtn(paramView);
-    if (!this.sCw.getFtsEditText().ty.hasFocus())
+    if (!this.tyX.getFtsEditText().vr.hasFocus())
     {
-      this.sCw.getFtsEditText().fte();
+      this.tyX.getFtsEditText().fJS();
       showVKB();
     }
     AppMethodBeat.o(111840);
@@ -240,7 +242,7 @@ public class FTSAddFriendUI
   {
     AppMethodBeat.i(111827);
     super.onCreate(paramBundle);
-    com.tencent.mm.plugin.fts.a.e.swV = com.tencent.mm.plugin.fts.a.d.Fx(16);
+    com.tencent.mm.plugin.fts.a.e.ttw = com.tencent.mm.plugin.fts.a.d.GM(16);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramBundle = TransitionInflater.from(this).inflateTransition(17760258);
@@ -250,45 +252,37 @@ public class FTSAddFriendUI
     }
     setActionbarColor(getContext().getResources().getColor(2131100705));
     setHint(getContext().getResources().getString(2131757917));
-    this.sBN = findViewById(2131297205);
-    this.sBO = findViewById(2131298588);
-    this.sBP = findViewById(2131300681);
-    this.sBT = findViewById(2131298589);
-    this.sBQ = findViewById(2131302876);
-    this.sBR = findViewById(2131302252);
-    this.sBS = findViewById(2131304408);
-    this.sCd = ((FTSLocalPageRelevantView)findViewById(2131303972));
-    this.sBU = ((ImageView)findViewById(2131298585));
-    this.sBV = ((TextView)findViewById(2131298716));
-    this.sBW = ((TextView)findViewById(2131298593));
-    this.sBX = ((TextView)findViewById(2131304451));
-    this.sBY = ((TextView)findViewById(2131298594));
-    this.sBZ = ((TextView)findViewById(2131304410));
+    this.tyo = findViewById(2131297205);
+    this.typ = findViewById(2131298588);
+    this.tyq = findViewById(2131300681);
+    this.tyu = findViewById(2131298589);
+    this.tyr = findViewById(2131302876);
+    this.tys = findViewById(2131302252);
+    this.tyt = findViewById(2131304408);
+    this.tyE = ((FTSLocalPageRelevantView)findViewById(2131303972));
+    this.tyv = ((ImageView)findViewById(2131298585));
+    this.tyw = ((TextView)findViewById(2131298716));
+    this.tyx = ((TextView)findViewById(2131298593));
+    this.tyy = ((TextView)findViewById(2131304451));
+    this.tyz = ((TextView)findViewById(2131298594));
+    this.tyA = ((TextView)findViewById(2131304410));
     try
     {
-      paramBundle = ab.aAv("webSearchBar").optString("wording");
-      ac.i("MicroMsg.FTS.FTSAddFriendUI", "set searchNetworkTips %s", new Object[] { paramBundle });
-      this.sBZ.setText(paramBundle);
+      paramBundle = af.aFP("webSearchBar").optString("wording");
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FTS.FTSAddFriendUI", "set searchNetworkTips %s", new Object[] { paramBundle });
+      this.tyA.setText(paramBundle);
       label320:
       getContentView().postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(111818);
-          FTSAddFriendUI.this.sCw.getFtsEditText().fte();
-          FTSAddFriendUI.this.sCw.getFtsEditText().ftd();
+          FTSAddFriendUI.this.tyX.getFtsEditText().fJS();
+          FTSAddFriendUI.this.tyX.getFtsEditText().fJR();
           AppMethodBeat.o(111818);
         }
       }, 128L);
-      this.sBN.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(111819);
-          FTSAddFriendUI.this.finish();
-          AppMethodBeat.o(111819);
-        }
-      });
+      this.tyo.setOnClickListener(new FTSAddFriendUI.2(this));
       AppMethodBeat.o(111827);
       return;
     }
@@ -302,9 +296,9 @@ public class FTSAddFriendUI
   {
     AppMethodBeat.i(111837);
     super.onDestroy();
-    com.tencent.mm.kernel.g.agi().b(106, this.callback);
-    if ((this.sCa) && (!this.sCb)) {
-      ai.p(this.query, this.sCc, 3, 16);
+    g.aiU().b(106, this.callback);
+    if ((this.tyB) && (!this.tyC)) {
+      am.p(this.query, this.tyD, 3, 16);
     }
     AppMethodBeat.o(111837);
   }
@@ -313,7 +307,7 @@ public class FTSAddFriendUI
   {
     AppMethodBeat.i(111828);
     super.onResume();
-    com.tencent.mm.plugin.websearch.api.z.exn();
+    com.tencent.mm.plugin.websearch.api.ad.eMe();
     AppMethodBeat.o(111828);
   }
   
@@ -327,13 +321,13 @@ public class FTSAddFriendUI
   {
     AppMethodBeat.i(111835);
     super.stopSearch();
-    this.sBO.setVisibility(8);
+    this.typ.setVisibility(8);
     AppMethodBeat.o(111835);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSAddFriendUI
  * JD-Core Version:    0.7.0.1
  */

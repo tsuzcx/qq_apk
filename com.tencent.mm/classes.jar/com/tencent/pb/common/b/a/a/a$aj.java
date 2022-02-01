@@ -6,21 +6,21 @@ import com.google.b.a.e;
 public final class a$aj
   extends e
 {
-  public a.ax[] JOc = a.ax.fBP();
+  public a.ax[] LHM = a.ax.fTe();
   
   public a$aj()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
-    if ((this.JOc != null) && (this.JOc.length > 0))
+    if ((this.LHM != null) && (this.LHM.length > 0))
     {
       int i = 0;
-      while (i < this.JOc.length)
+      while (i < this.LHM.length)
       {
-        a.ax localax = this.JOc[i];
+        a.ax localax = this.LHM[i];
         if (localax != null) {
           paramb.a(1, localax);
         }
@@ -30,23 +30,23 @@ public final class a$aj
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int i = super.xT();
+    int i = super.zq();
     int k = i;
-    if (this.JOc != null)
+    if (this.LHM != null)
     {
       k = i;
-      if (this.JOc.length > 0)
+      if (this.LHM.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.JOc.length) {
+          if (j >= this.LHM.length) {
             break;
           }
-          a.ax localax = this.JOc[j];
+          a.ax localax = this.LHM[j];
           k = i;
           if (localax != null) {
             k = i + b.b(1, localax);
@@ -61,7 +61,7 @@ public final class a$aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.aj
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public abstract interface d
 {
-  public abstract void ftq();
+  public abstract void fKe();
   
-  public abstract boolean ftr();
+  public abstract boolean fKf();
   
-  public abstract boolean fts();
+  public abstract boolean fKg();
   
   public abstract String getSearchContent();
   
@@ -40,9 +40,9 @@ public abstract interface d
   
   public abstract void setStatusBtnEnabled(boolean paramBoolean);
   
-  public abstract void xL(boolean paramBoolean);
+  public abstract void yA(boolean paramBoolean);
   
-  public abstract void xM(boolean paramBoolean);
+  public abstract void yz(boolean paramBoolean);
 }
 
 

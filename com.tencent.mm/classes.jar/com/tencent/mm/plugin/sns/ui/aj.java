@@ -1,180 +1,157 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.view.animation.ScaleAnimation;
-import android.widget.AbsoluteLayout;
-import android.widget.AbsoluteLayout.LayoutParams;
-import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.plugin.sns.data.e;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.modelsns.e;
+import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.plugin.sns.c.a;
+import com.tencent.mm.plugin.sns.j.g;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.bb;
+import com.tencent.mm.plugin.sns.model.bc;
+import com.tencent.mm.pluginsdk.i.d;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.protocal.protobuf.bvq;
+import com.tencent.mm.protocal.protobuf.dhj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.MMActivity;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class aj
+  implements ac
 {
-  private Context mContext;
-  boolean mwy;
-  private int xJx;
-  private com.tencent.mm.plugin.sns.ui.d.b xZe;
-  private FrameLayout xZf;
-  AbsoluteLayout xZg;
-  protected Animation xZh;
-  protected Animation xZi;
-  boolean xZj;
-  private com.tencent.mm.plugin.sns.h.b yws;
+  private String appName = "";
+  private String duW = "";
+  private MMActivity fLP;
+  private int zQd;
+  private e zQj = null;
+  private String zQk = "";
+  private boolean zRC = false;
+  private boolean zRD = false;
+  private WXMediaMessage zRE = null;
+  private String zTD = "";
+  private boolean zTE = false;
+  private int znT = 1;
   
-  public aj(Context paramContext, com.tencent.mm.plugin.sns.ui.d.b paramb, FrameLayout paramFrameLayout)
+  public aj(MMActivity paramMMActivity, boolean paramBoolean)
   {
-    AppMethodBeat.i(98144);
-    this.xZg = null;
-    this.xZj = false;
-    this.mwy = false;
-    this.xJx = -1;
-    this.mContext = paramContext;
-    this.xZe = paramb;
-    this.xZf = paramFrameLayout;
-    this.xZh = new ScaleAnimation(1.0F, 1.0F, 0.0F, 1.0F, 1, 1.0F, 1, 0.0F);
-    this.xZh = AnimationUtils.loadAnimation(paramContext, 2130772022);
-    this.xZi = new ScaleAnimation(1.0F, 1.0F, 1.0F, 0.0F, 1, 1.0F, 1, 0.0F);
-    this.xZi = AnimationUtils.loadAnimation(paramContext, 2130772023);
-    AppMethodBeat.o(98144);
+    this.fLP = paramMMActivity;
+    this.zTE = paramBoolean;
   }
   
-  private void eT(final View paramView)
+  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bvq parambvq, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(98146);
-    this.xZj = true;
-    paramView.startAnimation(this.xZi);
-    this.xZi.setAnimationListener(new Animation.AnimationListener()
+    AppMethodBeat.i(98012);
+    if (this.fLP.isFinishing())
     {
-      public final void onAnimationEnd(Animation paramAnonymousAnimation)
+      AppMethodBeat.o(98012);
+      return false;
+    }
+    paramLinkedList = new bc(2);
+    paramPInt.value = paramLinkedList.beN;
+    if (paramInt3 > a.zbZ) {
+      paramLinkedList.Qb(2);
+    }
+    paramPInt = new LinkedList();
+    if (paramList1 != null)
+    {
+      new LinkedList();
+      paramString2 = d.fas();
+      paramList1 = paramList1.iterator();
+      while (paramList1.hasNext())
       {
-        AppMethodBeat.i(98143);
-        if (paramView != null)
+        String str = (String)paramList1.next();
+        if (!paramString2.contains(str))
         {
-          paramView.clearAnimation();
-          paramView.setVisibility(8);
-          aj.this.dJj();
+          dhj localdhj = new dhj();
+          localdhj.nDo = str;
+          paramPInt.add(localdhj);
         }
-        aj.this.xZj = false;
-        AppMethodBeat.o(98143);
-      }
-      
-      public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
-      
-      public final void onAnimationStart(Animation paramAnonymousAnimation)
-      {
-        aj.this.xZj = true;
-      }
-    });
-    AppMethodBeat.o(98146);
-  }
-  
-  public final boolean dJj()
-  {
-    AppMethodBeat.i(98147);
-    if ((this.yws != null) && (af.dHJ().dJm())) {
-      this.yws.dJj();
-    }
-    if (this.xZg != null)
-    {
-      this.xZf.removeView(this.xZg);
-      this.xZg = null;
-      AppMethodBeat.o(98147);
-      return true;
-    }
-    this.xZj = false;
-    AppMethodBeat.o(98147);
-    return false;
-  }
-  
-  public final boolean eK(final View paramView)
-  {
-    AppMethodBeat.i(98145);
-    if (this.xZj)
-    {
-      AppMethodBeat.o(98145);
-      return false;
-    }
-    if (this.xZg != null)
-    {
-      if ((this.xZg.getTag() instanceof a)) {
-        eT(((a)this.xZg.getTag()).xIw);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(98145);
-        return false;
-        dJj();
       }
     }
-    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof e)))
-    {
-      AppMethodBeat.o(98145);
-      return false;
-    }
-    Object localObject2 = (e)paramView.getTag();
-    Object localObject1 = ((e)localObject2).ddB;
-    this.xZg = new AbsoluteLayout(this.mContext);
-    this.xZg.setId(2131296470);
-    this.xZf.addView(this.xZg);
-    int j = BackwardSupportUtil.b.g(this.mContext, 126.0F);
-    int k = BackwardSupportUtil.b.g(this.mContext, 30.0F);
-    final View localView = z.jD(this.mContext).inflate(2131495055, null);
-    localView.setOnClickListener(this.xZe.zgS);
-    localView.setTag(localObject2);
-    int[] arrayOfInt = new int[2];
-    int i = com.tencent.mm.pluginsdk.g.hh(this.mContext);
-    ((e)localObject2).xMQ.getLocationInWindow(arrayOfInt);
-    ac.d("MicroMsg.AdNotLikeHelper", "addCommentView getLocationInWindow " + arrayOfInt[0] + "  " + arrayOfInt[1] + " height: " + i);
-    this.xJx = com.tencent.mm.ui.aj.jw(this.mContext);
-    if (this.mwy)
-    {
-      i = a.fromDPToPix(this.mContext, 2);
-      this.xJx = 0;
+    if (paramBoolean) {
+      paramLinkedList.Qh(1);
     }
     for (;;)
     {
-      localObject2 = new AbsoluteLayout.LayoutParams(-2, -2, arrayOfInt[0] - j, arrayOfInt[1] - this.xJx - i + k);
-      localObject1 = new a((String)localObject1, localView);
-      this.xZg.setTag(localObject1);
-      this.xZg.addView(localView, (ViewGroup.LayoutParams)localObject2);
-      localView.setVisibility(8);
-      this.xZj = true;
-      new ao().post(new Runnable()
+      if (parami != null) {
+        paramLinkedList.jr(parami.token, parami.GTp);
+      }
+      paramLinkedList.Qg(this.zQd);
+      if (this.zRC) {
+        paramLinkedList.Qg(5);
+      }
+      if ((this.zRD) && (this.zRE != null))
       {
-        public final void run()
-        {
-          AppMethodBeat.i(98142);
-          aj.a(aj.this, localView);
-          AppMethodBeat.o(98142);
-        }
-      });
-      AppMethodBeat.o(98145);
+        paramLinkedList.azk(this.zRE.mediaTagName);
+        paramLinkedList.aD(this.duW, this.zRE.messageExt, this.zRE.messageAction);
+      }
+      paramLinkedList.cc(this.znT, this.zQk);
+      paramLinkedList.g(null, null, null, paramInt4, paramInt5);
+      paramLinkedList.azj(paramString1).a(parambvq).aU(paramPInt).Qe(paramInt1).Qf(paramInt2).fL(paramList2);
+      paramInt1 = paramLinkedList.commit();
+      if (this.zQj != null)
+      {
+        this.zQj.pX(paramInt1);
+        g.zus.c(this.zQj);
+      }
+      this.fLP.setResult(-1);
+      ag.dUa().dSE();
+      this.fLP.finish();
+      AppMethodBeat.o(98012);
       return true;
+      paramLinkedList.Qh(0);
     }
   }
   
-  final class a
+  public final void ap(Bundle paramBundle)
   {
-    View xIw = null;
-    String xZz;
-    
-    public a(String paramString, View paramView)
-    {
-      this.xZz = paramString;
-      this.xIw = paramView;
+    AppMethodBeat.i(98011);
+    this.zQj = e.w(this.fLP.getIntent());
+    this.zTD = this.fLP.getIntent().getStringExtra("Kdescription");
+    this.duW = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_appid"), "");
+    this.appName = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_appname"), "");
+    this.zRC = this.fLP.getIntent().getBooleanExtra("KThrid_app", false);
+    this.zRD = this.fLP.getIntent().getBooleanExtra("KSnsAction", false);
+    this.zQd = this.fLP.getIntent().getIntExtra("Ksnsupload_source", 0);
+    paramBundle = this.fLP.getIntent().getBundleExtra("Ksnsupload_timeline");
+    if (paramBundle != null) {
+      this.zRE = new SendMessageToWX.Req(paramBundle).message;
     }
+    if (this.fLP.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
+    for (this.znT = 1;; this.znT = 0)
+    {
+      this.zQk = bt.bI(this.fLP.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
+      AppMethodBeat.o(98011);
+      return;
+    }
+  }
+  
+  public final void aq(Bundle paramBundle) {}
+  
+  public final boolean dZG()
+  {
+    return this.zTE;
+  }
+  
+  public final View dZH()
+  {
+    return null;
+  }
+  
+  public final boolean dZI()
+  {
+    return false;
+  }
+  
+  public final boolean k(int paramInt, Intent paramIntent)
+  {
+    return false;
   }
 }
 

@@ -6,13 +6,13 @@ public enum k
 {
   static
   {
-    AppMethodBeat.i(193130);
+    AppMethodBeat.i(187358);
     a = new k("NORMAL", 0);
     b = new k("ROTATION_90", 1);
     c = new k("ROTATION_180", 2);
     d = new k("ROTATION_270", 3);
     e = new k[] { a, b, c, d };
-    AppMethodBeat.o(193130);
+    AppMethodBeat.o(187358);
   }
   
   private k() {}

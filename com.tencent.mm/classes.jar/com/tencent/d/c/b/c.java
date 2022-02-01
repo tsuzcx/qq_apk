@@ -8,28 +8,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   extends JceStruct
 {
-  static byte[] JSR;
-  static byte[] JSS;
-  public int JSI = 0;
-  public int JSJ = 0;
-  public int JSK = 0;
-  public byte[] JSL = null;
-  public int JSM = 0;
-  public long JSN = 0L;
-  public byte[] JSO = null;
-  public int JSP = 0;
-  public int JSQ = 0;
-  public int JSa = 0;
-  public int hCD = 0;
+  static byte[] LMI;
+  static byte[] LMJ;
+  public int LLR = 0;
+  public int LMA = 0;
+  public int LMB = 0;
+  public byte[] LMC = null;
+  public int LMD = 0;
+  public long LME = 0L;
+  public byte[] LMF = null;
+  public int LMG = 0;
+  public int LMH = 0;
+  public int LMz = 0;
+  public int hVi = 0;
   public int requestType = 0;
   
   static
   {
     byte[] arrayOfByte = (byte[])new byte[1];
-    JSR = arrayOfByte;
+    LMI = arrayOfByte;
     ((byte[])arrayOfByte)[0] = 0;
     arrayOfByte = (byte[])new byte[1];
-    JSS = arrayOfByte;
+    LMJ = arrayOfByte;
     ((byte[])arrayOfByte)[0] = 0;
   }
   
@@ -44,55 +44,55 @@ public final class c
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     AppMethodBeat.i(138338);
-    this.JSI = paramJceInputStream.read(this.JSI, 0, false);
-    this.JSa = paramJceInputStream.read(this.JSa, 1, false);
+    this.LMz = paramJceInputStream.read(this.LMz, 0, false);
+    this.LLR = paramJceInputStream.read(this.LLR, 1, false);
     this.requestType = paramJceInputStream.read(this.requestType, 2, false);
-    this.JSJ = paramJceInputStream.read(this.JSJ, 3, false);
-    this.JSK = paramJceInputStream.read(this.JSK, 4, false);
-    this.JSL = ((byte[])paramJceInputStream.read(JSR, 5, false));
-    this.JSM = paramJceInputStream.read(this.JSM, 6, false);
-    this.hCD = paramJceInputStream.read(this.hCD, 7, false);
-    this.JSN = paramJceInputStream.read(this.JSN, 8, false);
-    this.JSO = ((byte[])paramJceInputStream.read(JSS, 9, false));
-    this.JSP = paramJceInputStream.read(this.JSP, 10, false);
-    this.JSQ = paramJceInputStream.read(this.JSQ, 11, false);
+    this.LMA = paramJceInputStream.read(this.LMA, 3, false);
+    this.LMB = paramJceInputStream.read(this.LMB, 4, false);
+    this.LMC = ((byte[])paramJceInputStream.read(LMI, 5, false));
+    this.LMD = paramJceInputStream.read(this.LMD, 6, false);
+    this.hVi = paramJceInputStream.read(this.hVi, 7, false);
+    this.LME = paramJceInputStream.read(this.LME, 8, false);
+    this.LMF = ((byte[])paramJceInputStream.read(LMJ, 9, false));
+    this.LMG = paramJceInputStream.read(this.LMG, 10, false);
+    this.LMH = paramJceInputStream.read(this.LMH, 11, false);
     AppMethodBeat.o(138338);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     AppMethodBeat.i(138337);
-    if (this.JSI != 0) {
-      paramJceOutputStream.write(this.JSI, 0);
+    if (this.LMz != 0) {
+      paramJceOutputStream.write(this.LMz, 0);
     }
-    paramJceOutputStream.write(this.JSa, 1);
+    paramJceOutputStream.write(this.LLR, 1);
     paramJceOutputStream.write(this.requestType, 2);
-    if (this.JSJ != 0) {
-      paramJceOutputStream.write(this.JSJ, 3);
+    if (this.LMA != 0) {
+      paramJceOutputStream.write(this.LMA, 3);
     }
-    if (this.JSK != 0) {
-      paramJceOutputStream.write(this.JSK, 4);
+    if (this.LMB != 0) {
+      paramJceOutputStream.write(this.LMB, 4);
     }
-    if (this.JSL != null) {
-      paramJceOutputStream.write(this.JSL, 5);
+    if (this.LMC != null) {
+      paramJceOutputStream.write(this.LMC, 5);
     }
-    if (this.JSM != 0) {
-      paramJceOutputStream.write(this.JSM, 6);
+    if (this.LMD != 0) {
+      paramJceOutputStream.write(this.LMD, 6);
     }
-    if (this.hCD != 0) {
-      paramJceOutputStream.write(this.hCD, 7);
+    if (this.hVi != 0) {
+      paramJceOutputStream.write(this.hVi, 7);
     }
-    if (this.JSN != 0L) {
-      paramJceOutputStream.write(this.JSN, 8);
+    if (this.LME != 0L) {
+      paramJceOutputStream.write(this.LME, 8);
     }
-    if (this.JSO != null) {
-      paramJceOutputStream.write(this.JSO, 9);
+    if (this.LMF != null) {
+      paramJceOutputStream.write(this.LMF, 9);
     }
-    if (this.JSP != 0) {
-      paramJceOutputStream.write(this.JSP, 10);
+    if (this.LMG != 0) {
+      paramJceOutputStream.write(this.LMG, 10);
     }
-    if (this.JSQ != 0) {
-      paramJceOutputStream.write(this.JSQ, 11);
+    if (this.LMH != 0) {
+      paramJceOutputStream.write(this.LMH, 11);
     }
     AppMethodBeat.o(138337);
   }

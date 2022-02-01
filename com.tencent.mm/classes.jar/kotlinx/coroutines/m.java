@@ -1,17 +1,19 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
 import d.l;
+import kotlinx.coroutines.internal.t;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"getOrCreateCancellableContinuation", "Lkotlinx/coroutines/CancellableContinuationImpl;", "T", "delegate", "Lkotlin/coroutines/Continuation;", "suspendAtomicCancellableCoroutine", "block", "Lkotlin/Function1;", "Lkotlinx/coroutines/CancellableContinuation;", "", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "holdCancellability", "", "(ZLkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "suspendAtomicCancellableCoroutineReusable", "suspendCancellableCoroutine", "disposeOnCancellation", "handle", "Lkotlinx/coroutines/DisposableHandle;", "removeOnCancellation", "node", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "kotlinx-coroutines-core"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"RESUMED", "", "RESUME_TOKEN", "Lkotlinx/coroutines/internal/Symbol;", "RESUME_TOKEN$annotations", "()V", "SUSPENDED", "UNDECIDED", "kotlinx-coroutines-core"})
 public final class m
 {
-  public static final void a(j<?> paramj, az paramaz)
+  public static final t NHE;
+  
+  static
   {
-    AppMethodBeat.i(191146);
-    paramj.K((b)new ba(paramaz));
-    AppMethodBeat.o(191146);
+    AppMethodBeat.i(190765);
+    NHE = new t("RESUME_TOKEN");
+    AppMethodBeat.o(190765);
   }
 }
 

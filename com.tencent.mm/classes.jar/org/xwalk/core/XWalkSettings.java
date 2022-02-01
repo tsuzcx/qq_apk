@@ -290,11 +290,11 @@ public class XWalkSettings
   
   public void disableCustomizedLongPressTimeout()
   {
-    AppMethodBeat.i(208974);
+    AppMethodBeat.i(195617);
     try
     {
       this.disableCustomizedLongPressTimeoutVoidMethod.invoke(new Object[0]);
-      AppMethodBeat.o(208974);
+      AppMethodBeat.o(195617);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -303,21 +303,21 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(208974);
+        AppMethodBeat.o(195617);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(208974);
+      AppMethodBeat.o(195617);
     }
   }
   
   public void enableCustomizedLongPressTimeout(int paramInt)
   {
-    AppMethodBeat.i(208973);
+    AppMethodBeat.i(195616);
     try
     {
       this.enableCustomizedLongPressTimeoutIntMethod.invoke(new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(208973);
+      AppMethodBeat.o(195616);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -326,11 +326,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(208973);
+        AppMethodBeat.o(195616);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(208973);
+      AppMethodBeat.o(195616);
     }
   }
   

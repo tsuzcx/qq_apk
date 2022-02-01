@@ -1,81 +1,60 @@
 package com.tencent.mm.plugin.record.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.plugin.record.a.e;
+import com.tencent.mm.plugin.record.a.h;
+import com.tencent.mm.storagebase.h.b;
+import java.util.HashMap;
 
 public final class v
-  extends com.tencent.mm.bw.a
+  implements ax
 {
-  public LinkedList<u> hkS;
+  private static HashMap<Integer, h.b> baseDBFactories;
   
-  public v()
+  static
   {
-    AppMethodBeat.i(27829);
-    this.hkS = new LinkedList();
-    AppMethodBeat.o(27829);
+    AppMethodBeat.i(27827);
+    HashMap localHashMap = new HashMap();
+    baseDBFactories = localHashMap;
+    localHashMap.put(Integer.valueOf("RECORD_MSG_INFO_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return h.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("RECORD_MSG_CDN_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return e.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(27827);
   }
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public final void clearPluginData(int paramInt) {}
+  
+  public final HashMap<Integer, h.b> getBaseDBFactories()
   {
-    AppMethodBeat.i(27830);
-    if (paramInt == 0)
-    {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.hkS);
-      AppMethodBeat.o(27830);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.a.c(1, 8, this.hkS);
-      AppMethodBeat.o(27830);
-      return paramInt + 0;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.hkS.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
-        }
-      }
-      AppMethodBeat.o(27830);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      v localv = (v)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(27830);
-        return -1;
-      }
-      paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new u();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((u)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localv.hkS.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(27830);
-      return 0;
-    }
-    AppMethodBeat.o(27830);
-    return -1;
+    return baseDBFactories;
   }
+  
+  public final void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(27826);
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.record.a.g.class, new m());
+    AppMethodBeat.o(27826);
+  }
+  
+  public final void onAccountRelease() {}
+  
+  public final void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.v
  * JD-Core Version:    0.7.0.1
  */

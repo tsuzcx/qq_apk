@@ -2,16 +2,14 @@ package com.tencent.mm.ui.chatting.viewitems;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.comm.a.b;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bu;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.ui.chatting.e.a;
 import com.tencent.mm.ui.chatting.s.e;
 
 public final class l$a
@@ -22,24 +20,24 @@ public final class l$a
     super(parama);
   }
   
-  public final void a(View paramView, a parama, bo parambo)
+  public final void a(View paramView, a parama, bu parambu)
   {
     AppMethodBeat.i(36920);
-    ((b)g.ab(b.class)).Wm(parambo.field_talker);
-    paramView = (bj)paramView.getTag();
-    az.ayM();
+    ((b)com.tencent.mm.kernel.g.ab(b.class)).ZT(parambu.field_talker);
+    paramView = (bk)paramView.getTag();
+    ba.aBQ();
     if (c.isSDCardAvailable())
     {
-      parama = paramView.dpq;
-      if (!w.sQ(parama.field_talker)) {
+      parama = paramView.dBd;
+      if (!w.vF(parama.field_talker)) {
         break label119;
       }
     }
     label119:
-    for (paramView = this.HNS.getTalkerUserName();; paramView = null)
+    for (paramView = this.JBI.getTalkerUserName();; paramView = null)
     {
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(this.HNS.HZF.getContext(), parama, paramView);
-      h.wUl.f(11592, new Object[] { Integer.valueOf(0) });
+      ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(this.JBI.JOR.getContext(), parama, paramView);
+      com.tencent.mm.plugin.report.service.g.yhR.f(11592, new Object[] { Integer.valueOf(0) });
       AppMethodBeat.o(36920);
       return;
     }

@@ -1,36 +1,30 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.d.f;
+import d.d.f.c;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/CoroutineStart;", "", "(Ljava/lang/String;I)V", "isLazy", "", "isLazy$annotations", "()V", "()Z", "invoke", "", "T", "block", "Lkotlin/Function1;", "Lkotlin/coroutines/Continuation;", "", "completion", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V", "R", "Lkotlin/Function2;", "Lkotlin/ExtensionFunctionType;", "receiver", "(Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V", "DEFAULT", "LAZY", "ATOMIC", "UNDISPATCHED", "kotlinx-coroutines-core"})
-public enum ai
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"isActive", "", "Lkotlinx/coroutines/CoroutineScope;", "isActive$annotations", "(Lkotlinx/coroutines/CoroutineScope;)V", "(Lkotlinx/coroutines/CoroutineScope;)Z", "CoroutineScope", "context", "Lkotlin/coroutines/CoroutineContext;", "MainScope", "coroutineScope", "R", "block", "Lkotlin/Function2;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "cancel", "", "message", "", "cause", "", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "ensureActive", "plus", "kotlinx-coroutines-core"})
+public final class ai
 {
-  static
+  public static final boolean a(ah paramah)
   {
-    AppMethodBeat.i(118175);
-    ai localai1 = new ai("DEFAULT", 0);
-    LRc = localai1;
-    ai localai2 = new ai("LAZY", 1);
-    LRd = localai2;
-    ai localai3 = new ai("ATOMIC", 2);
-    LRe = localai3;
-    ai localai4 = new ai("UNDISPATCHED", 3);
-    LRf = localai4;
-    LRg = new ai[] { localai1, localai2, localai3, localai4 };
-    AppMethodBeat.o(118175);
-  }
-  
-  private ai() {}
-  
-  public final boolean gdC()
-  {
-    return (ai)this == LRd;
+    AppMethodBeat.i(190868);
+    paramah = (br)paramah.guE().get((f.c)br.NIM);
+    if (paramah != null)
+    {
+      boolean bool = paramah.isActive();
+      AppMethodBeat.o(190868);
+      return bool;
+    }
+    AppMethodBeat.o(190868);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.ai
  * JD-Core Version:    0.7.0.1
  */

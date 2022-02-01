@@ -7,18 +7,18 @@ import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.FindListener;
 public final class a$b
   implements IX5WebViewBase.FindListener
 {
-  WebView.FindListener KEj;
+  WebView.FindListener MuJ;
   
   public a$b(WebView.FindListener paramFindListener)
   {
-    this.KEj = paramFindListener;
+    this.MuJ = paramFindListener;
   }
   
   public final void onFindResultReceived(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(153813);
-    if (this.KEj != null) {
-      this.KEj.onFindResultReceived(paramInt1, paramInt2, paramBoolean);
+    if (this.MuJ != null) {
+      this.MuJ.onFindResultReceived(paramInt1, paramInt2, paramBoolean);
     }
     AppMethodBeat.o(153813);
   }

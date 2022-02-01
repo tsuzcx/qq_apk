@@ -12,7 +12,7 @@ final class AlbumPreviewUI$8
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(173756);
-    this.sQc.finish();
+    this.tMG.finish();
     AppMethodBeat.o(173756);
   }
 }

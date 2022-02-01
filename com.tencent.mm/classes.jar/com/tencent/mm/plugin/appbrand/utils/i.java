@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.utils;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.n;
+import com.tencent.mm.plugin.appbrand.report.o;
 import com.tencent.mm.sdk.d.d;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -11,57 +11,57 @@ import java.util.Queue;
 public abstract class i<Task>
   extends d
 {
-  final i<Task>.b moe = new b((byte)0);
-  private final i<Task>.a mof = new a((byte)0);
-  final String mog;
-  private final Queue<Task> moh = new LinkedList();
+  final i<Task>.b mOG = new b((byte)0);
+  private final i<Task>.a mOH = new a((byte)0);
+  final String mOI;
+  private final Queue<Task> mOJ = new LinkedList();
   
   protected i(String paramString, Looper paramLooper)
   {
     super(paramString, paramLooper);
-    this.mog = paramString;
-    a(this.moe);
-    a(this.mof);
-    b(this.moe);
+    this.mOI = paramString;
+    a(this.mOG);
+    a(this.mOH);
+    b(this.mOG);
     start();
   }
   
-  public final void aWu()
+  public final void aZP()
   {
-    super.aWu();
-    synchronized (this.moh)
+    super.aZP();
+    synchronized (this.mOJ)
     {
-      this.moh.clear();
+      this.mOJ.clear();
       return;
     }
   }
   
-  protected abstract boolean bfj();
+  protected abstract boolean biM();
   
-  public final void cG(Task paramTask)
+  public final void cI(Task paramTask)
   {
-    if (bfj()) {
+    if (biM()) {
       return;
     }
-    synchronized (this.moh)
+    synchronized (this.mOJ)
     {
-      this.moh.offer(paramTask);
-      Yv(1);
+      this.mOJ.offer(paramTask);
+      aaA(1);
       return;
     }
   }
   
-  protected abstract void cs(Task paramTask);
+  protected abstract void cu(Task paramTask);
   
   final class a
-    extends n
+    extends o
   {
     private a() {}
     
     public final String getName()
     {
       AppMethodBeat.i(107819);
-      String str = i.this.mog + "|StateExecuting";
+      String str = i.this.mOI + "|StateExecuting";
       AppMethodBeat.o(107819);
       return str;
     }
@@ -71,7 +71,7 @@ public abstract class i<Task>
       AppMethodBeat.i(107818);
       if (2 == paramMessage.what)
       {
-        i.this.b(i.this.moe);
+        i.this.b(i.this.mOG);
         AppMethodBeat.o(107818);
         return true;
       }
@@ -82,7 +82,7 @@ public abstract class i<Task>
   }
   
   final class b
-    extends n
+    extends o
   {
     private b() {}
     
@@ -97,7 +97,7 @@ public abstract class i<Task>
     public final String getName()
     {
       AppMethodBeat.i(107822);
-      String str = i.this.mog + "|StateIdle";
+      String str = i.this.mOI + "|StateIdle";
       AppMethodBeat.o(107822);
       return str;
     }
@@ -119,7 +119,7 @@ public abstract class i<Task>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.i
  * JD-Core Version:    0.7.0.1
  */

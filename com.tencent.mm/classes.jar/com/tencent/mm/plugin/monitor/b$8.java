@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.monitor;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.protocal.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class b$8
   implements Runnable
@@ -13,21 +13,21 @@ final class b$8
   public final void run()
   {
     AppMethodBeat.i(163487);
-    ac.i("MicroMsg.SubCoreBaseMonitor", "reportECDHAuth USE_ECDH[%s] USE_ML[%b]", new Object[] { Boolean.valueOf(f.DIl), Boolean.valueOf(f.DIm) });
-    h localh = h.wUl;
-    if (f.DIl)
+    ad.i("MicroMsg.SubCoreBaseMonitor", "reportECDHAuth USE_ECDH[%s] USE_ML[%b]", new Object[] { Boolean.valueOf(f.Fns), Boolean.valueOf(f.Fnt) });
+    g localg = g.yhR;
+    if (f.Fns)
     {
       l = 100L;
-      localh.idkeyStat(148L, l, 1L, true);
-      localh = h.wUl;
-      if (!f.DIm) {
+      localg.idkeyStat(148L, l, 1L, true);
+      localg = g.yhR;
+      if (!f.Fnt) {
         break label95;
       }
     }
     label95:
     for (long l = 102L;; l = 103L)
     {
-      localh.idkeyStat(148L, l, 1L, true);
+      localg.idkeyStat(148L, l, 1L, true);
       AppMethodBeat.o(163487);
       return;
       l = 101L;

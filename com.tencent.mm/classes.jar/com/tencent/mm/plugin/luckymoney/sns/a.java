@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.d;
@@ -28,11 +28,11 @@ public class a
           AppMethodBeat.i(65344);
           if ((paramAnonymousn instanceof com.tencent.mm.plugin.luckymoney.sns.a.a))
           {
-            ac.i("MicroMsg.ProcessManager", "OpenSnsPayProcess onSceneEnd, errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " errMsg:" + paramAnonymousString);
+            ad.i("MicroMsg.ProcessManager", "OpenSnsPayProcess onSceneEnd, errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " errMsg:" + paramAnonymousString);
             if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
             {
-              h.cg(this.activity, this.activity.getString(2131760920));
-              a.HP(121);
+              h.cl(this.activity, this.activity.getString(2131760920));
+              a.Jl(121);
               a.a(a.this).putBoolean("is_open_sns_pay", true);
               a.this.a(this.activity, 0, a.b(a.this));
             }
@@ -40,8 +40,8 @@ public class a
             {
               AppMethodBeat.o(65344);
               return true;
-              h.cg(this.activity, this.activity.getString(2131760919));
-              a.HP(122);
+              h.cl(this.activity, this.activity.getString(2131760919));
+              a.Jl(122);
               a.this.g(this.activity, 0);
             }
           }
@@ -53,7 +53,7 @@ public class a
         {
           AppMethodBeat.i(65345);
           paramAnonymousVarArgs = (String)paramAnonymousVarArgs[0];
-          this.JFQ.a(new com.tencent.mm.plugin.luckymoney.sns.a.a(1, paramAnonymousVarArgs, ""), true, 1);
+          this.LyU.a(new com.tencent.mm.plugin.luckymoney.sns.a.a(1, paramAnonymousVarArgs, ""), true, 1);
           AppMethodBeat.o(65345);
           return true;
         }
@@ -101,7 +101,7 @@ public class a
     return false;
   }
   
-  public final String cHN()
+  public final String cQc()
   {
     return "LuckyFreePwdProcess";
   }

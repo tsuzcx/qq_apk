@@ -2,7 +2,7 @@ package d.l.b.a.b.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.ah;
 import d.l.b.a.b.b.ai;
 import d.l.b.a.b.b.av;
@@ -20,19 +20,19 @@ public final class e
   private static av A(d.l.b.a.b.b.e parame)
   {
     AppMethodBeat.i(59940);
-    k.h(parame, "$this$underlyingRepresentation");
-    if (!parame.fQf())
+    p.h(parame, "$this$underlyingRepresentation");
+    if (!parame.ghD())
     {
       AppMethodBeat.o(59940);
       return null;
     }
-    parame = parame.fQa();
+    parame = parame.ghy();
     if (parame != null)
     {
-      parame = parame.fQU();
+      parame = parame.gis();
       if (parame != null)
       {
-        parame = (av)j.iT(parame);
+        parame = (av)j.jh(parame);
         AppMethodBeat.o(59940);
         return parame;
       }
@@ -44,8 +44,8 @@ public final class e
   public static final boolean D(l paraml)
   {
     AppMethodBeat.i(59941);
-    k.h(paraml, "$this$isInlineClass");
-    if (((paraml instanceof d.l.b.a.b.b.e)) && (((d.l.b.a.b.b.e)paraml).fQf()))
+    p.h(paraml, "$this$isInlineClass");
+    if (((paraml instanceof d.l.b.a.b.b.e)) && (((d.l.b.a.b.b.e)paraml).ghD()))
     {
       AppMethodBeat.o(59941);
       return true;
@@ -57,9 +57,9 @@ public final class e
   public static final boolean a(ax paramax)
   {
     AppMethodBeat.i(59945);
-    k.h(paramax, "$this$isUnderlyingPropertyOfInlineClass");
-    Object localObject = paramax.fPU();
-    k.g(localObject, "this.containingDeclaration");
+    p.h(paramax, "$this$isUnderlyingPropertyOfInlineClass");
+    Object localObject = paramax.ghs();
+    p.g(localObject, "this.containingDeclaration");
     if (!D((l)localObject))
     {
       AppMethodBeat.o(59945);
@@ -73,9 +73,9 @@ public final class e
     }
     localObject = A((d.l.b.a.b.b.e)localObject);
     if (localObject != null) {}
-    for (localObject = ((av)localObject).fRf();; localObject = null)
+    for (localObject = ((av)localObject).giD();; localObject = null)
     {
-      boolean bool = k.g(localObject, paramax.fRf());
+      boolean bool = p.i(localObject, paramax.giD());
       AppMethodBeat.o(59945);
       return bool;
     }
@@ -84,8 +84,8 @@ public final class e
   public static final boolean ab(ab paramab)
   {
     AppMethodBeat.i(59942);
-    k.h(paramab, "$this$isInlineClassType");
-    paramab = paramab.gbz().fQq();
+    p.h(paramab, "$this$isInlineClassType");
+    paramab = paramab.gsZ().ghO();
     if (paramab != null)
     {
       boolean bool = D((l)paramab);
@@ -99,9 +99,9 @@ public final class e
   public static final ab ac(ab paramab)
   {
     AppMethodBeat.i(59943);
-    k.h(paramab, "$this$substitutedUnderlyingType");
-    k.h(paramab, "$this$unsubstitutedUnderlyingParameter");
-    d.l.b.a.b.b.h localh = paramab.gbz().fQq();
+    p.h(paramab, "$this$substitutedUnderlyingType");
+    p.h(paramab, "$this$unsubstitutedUnderlyingParameter");
+    d.l.b.a.b.b.h localh = paramab.gsZ().ghO();
     Object localObject = localh;
     if (!(localh instanceof d.l.b.a.b.b.e)) {
       localObject = null;
@@ -113,13 +113,13 @@ public final class e
       AppMethodBeat.o(59943);
       return null;
     }
-    paramab = paramab.fQN();
-    localObject = ((av)localObject).fRf();
-    k.g(localObject, "parameter.name");
-    paramab = (ah)j.g((Iterable)paramab.a((f)localObject, (d.l.b.a.b.c.a.a)c.Lkd));
+    paramab = paramab.gil();
+    localObject = ((av)localObject).giD();
+    p.g(localObject, "parameter.name");
+    paramab = (ah)j.g((Iterable)paramab.a((f)localObject, (d.l.b.a.b.c.a.a)c.Nba));
     if (paramab != null)
     {
-      paramab = paramab.fRV();
+      paramab = paramab.gju();
       AppMethodBeat.o(59943);
       return paramab;
     }
@@ -130,11 +130,11 @@ public final class e
   public static final boolean f(d.l.b.a.b.b.a parama)
   {
     AppMethodBeat.i(59944);
-    k.h(parama, "$this$isGetterOfUnderlyingPropertyOfInlineClass");
+    p.h(parama, "$this$isGetterOfUnderlyingPropertyOfInlineClass");
     if ((parama instanceof ai))
     {
-      parama = ((ai)parama).fRJ();
-      k.g(parama, "correspondingProperty");
+      parama = ((ai)parama).gji();
+      p.g(parama, "correspondingProperty");
       if (a((ax)parama))
       {
         AppMethodBeat.o(59944);
@@ -147,7 +147,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.e
  * JD-Core Version:    0.7.0.1
  */

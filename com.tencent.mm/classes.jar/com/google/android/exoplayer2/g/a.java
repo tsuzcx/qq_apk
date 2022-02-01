@@ -9,26 +9,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends b
 {
-  private int bns;
-  private final d btC;
-  private final int btD;
-  private final long btE;
-  private final long btF;
-  private final long btG;
-  private final float btH;
+  private final d bDS;
+  private final int bDT;
+  private final long bDU;
+  private final long bDV;
+  private final long bDW;
+  private final float bDX;
+  private int bxN;
   private int reason;
   
   public a(o paramo, int[] paramArrayOfInt, d paramd, int paramInt, long paramLong1, long paramLong2, long paramLong3, float paramFloat)
   {
     super(paramo, paramArrayOfInt);
     AppMethodBeat.i(92926);
-    this.btC = paramd;
-    this.btD = paramInt;
-    this.btE = (1000L * paramLong1);
-    this.btF = (1000L * paramLong2);
-    this.btG = (1000L * paramLong3);
-    this.btH = paramFloat;
-    this.bns = ak(-9223372036854775808L);
+    this.bDS = paramd;
+    this.bDT = paramInt;
+    this.bDU = (1000L * paramLong1);
+    this.bDV = (1000L * paramLong2);
+    this.bDW = (1000L * paramLong3);
+    this.bDX = paramFloat;
+    this.bxN = ak(-9223372036854775808L);
     this.reason = 1;
     AppMethodBeat.o(92926);
   }
@@ -36,10 +36,10 @@ public final class a
   private int ak(long paramLong)
   {
     AppMethodBeat.i(92928);
-    long l = this.btC.va();
+    long l = this.bDS.wz();
     if (l == -1L) {}
     int i;
-    for (l = this.btD;; l = ((float)l * this.btH))
+    for (l = this.bDT;; l = ((float)l * this.bDX))
     {
       i = 0;
       j = 0;
@@ -49,7 +49,7 @@ public final class a
       if ((paramLong != -9223372036854775808L) && (k(i, paramLong))) {
         break label117;
       }
-      if (this.bmh[i].bitrate > l) {
+      if (this.bwC[i].bitrate > l) {
         break;
       }
       AppMethodBeat.o(92928);
@@ -71,9 +71,9 @@ public final class a
   {
     AppMethodBeat.i(92927);
     long l = SystemClock.elapsedRealtime();
-    int i = this.bns;
-    this.bns = ak(l);
-    if (this.bns == i)
+    int i = this.bxN;
+    this.bxN = ak(l);
+    if (this.bxN == i)
     {
       AppMethodBeat.o(92927);
       return;
@@ -82,37 +82,37 @@ public final class a
     Format localFormat2;
     if (!k(i, l))
     {
-      localFormat1 = this.bmh[i];
-      int j = this.bns;
-      localFormat2 = this.bmh[j];
-      if ((localFormat2.bitrate <= localFormat1.bitrate) || (paramLong >= this.btE)) {
+      localFormat1 = this.bwC[i];
+      int j = this.bxN;
+      localFormat2 = this.bwC[j];
+      if ((localFormat2.bitrate <= localFormat1.bitrate) || (paramLong >= this.bDU)) {
         break label118;
       }
     }
-    for (this.bns = i;; this.bns = i) {
+    for (this.bxN = i;; this.bxN = i) {
       label118:
       do
       {
-        if (this.bns != i) {
+        if (this.bxN != i) {
           this.reason = 3;
         }
         AppMethodBeat.o(92927);
         return;
-      } while ((localFormat2.bitrate >= localFormat1.bitrate) || (paramLong < this.btF));
+      } while ((localFormat2.bitrate >= localFormat1.bitrate) || (paramLong < this.bDV));
     }
   }
   
   public final int getSelectedIndex()
   {
-    return this.bns;
+    return this.bxN;
   }
   
-  public final int ul()
+  public final int vK()
   {
     return this.reason;
   }
   
-  public final Object um()
+  public final Object vL()
   {
     return null;
   }
@@ -120,32 +120,32 @@ public final class a
   public static final class a
     implements f.a
   {
-    private final d btC;
-    private final int btD;
-    private final float btH;
-    private final int btI;
-    private final int btJ;
-    private final int btK;
+    private final d bDS;
+    private final int bDT;
+    private final float bDX;
+    private final int bDY;
+    private final int bDZ;
+    private final int bEa;
     
     public a(d paramd)
     {
-      this(paramd, 800000, 10000, 25000, 0.75F);
+      this(paramd, (byte)0);
     }
     
-    public a(d paramd, int paramInt1, int paramInt2, int paramInt3, float paramFloat)
+    private a(d paramd, byte paramByte)
     {
-      this.btC = paramd;
-      this.btD = paramInt1;
-      this.btI = paramInt2;
-      this.btJ = paramInt3;
-      this.btK = 25000;
-      this.btH = paramFloat;
+      this.bDS = paramd;
+      this.bDT = 800000;
+      this.bDY = 10000;
+      this.bDZ = 25000;
+      this.bEa = 25000;
+      this.bDX = 0.75F;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.g.a
  * JD-Core Version:    0.7.0.1
  */

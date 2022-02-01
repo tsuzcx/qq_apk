@@ -16,22 +16,22 @@ import java.io.PrintStream;
 public final class a
   implements k.c
 {
-  private m.c KJP;
+  private m.c MAB;
   
   public a(m.c paramc)
   {
-    this.KJP = paramc;
+    this.MAB = paramc;
   }
   
-  private float cHZ()
+  private float cQo()
   {
     AppMethodBeat.i(160027);
-    float f2 = this.KJP.Iq().getWindow().getAttributes().screenBrightness;
+    float f2 = this.MAB.JQ().getWindow().getAttributes().screenBrightness;
     f1 = f2;
     if (f2 < 0.0F) {}
     try
     {
-      int i = Settings.System.getInt(this.KJP.Ir().getContentResolver(), "screen_brightness");
+      int i = Settings.System.getInt(this.MAB.JR().getContentResolver(), "screen_brightness");
       f1 = i / 255.0F;
     }
     catch (Settings.SettingNotFoundException localSettingNotFoundException)
@@ -59,7 +59,7 @@ public final class a
       switch (i)
       {
       default: 
-        paramd.daE();
+        paramd.djR();
         AppMethodBeat.o(160026);
         return;
         if (str.equals("brightness"))
@@ -83,42 +83,42 @@ public final class a
         break;
       }
     }
-    paramd.db(Float.valueOf(cHZ()));
+    paramd.de(Float.valueOf(cQo()));
     AppMethodBeat.o(160026);
     return;
-    double d = ((Double)paramj.tn("brightness")).doubleValue();
-    paramj = this.KJP.Iq().getWindow().getAttributes();
+    double d = ((Double)paramj.wd("brightness")).doubleValue();
+    paramj = this.MAB.JQ().getWindow().getAttributes();
     paramj.screenBrightness = ((float)d);
-    this.KJP.Iq().getWindow().setAttributes(paramj);
-    paramd.db(null);
+    this.MAB.JQ().getWindow().setAttributes(paramj);
+    paramd.de(null);
     AppMethodBeat.o(160026);
     return;
-    if ((this.KJP.Iq().getWindow().getAttributes().flags & 0x80) != 0) {}
+    if ((this.MAB.JQ().getWindow().getAttributes().flags & 0x80) != 0) {}
     for (;;)
     {
-      paramd.db(Boolean.valueOf(bool));
+      paramd.de(Boolean.valueOf(bool));
       AppMethodBeat.o(160026);
       return;
       bool = false;
     }
-    if (((Boolean)paramj.tn("on")).booleanValue())
+    if (((Boolean)paramj.wd("on")).booleanValue())
     {
       System.out.println("Keeping screen on ");
-      this.KJP.Iq().getWindow().addFlags(128);
+      this.MAB.JQ().getWindow().addFlags(128);
     }
     for (;;)
     {
-      paramd.db(null);
+      paramd.de(null);
       AppMethodBeat.o(160026);
       return;
       System.out.println("Not keeping screen on");
-      this.KJP.Iq().getWindow().clearFlags(128);
+      this.MAB.JQ().getWindow().clearFlags(128);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     b.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

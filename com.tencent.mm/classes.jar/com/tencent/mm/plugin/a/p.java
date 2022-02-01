@@ -6,8 +6,8 @@ import java.io.RandomAccessFile;
 public final class p
   extends a
 {
-  public g iyu;
-  public d iyv;
+  public g iRD;
+  public d iRE;
   
   public p(int paramInt1, long paramLong, int paramInt2)
   {
@@ -17,14 +17,14 @@ public final class p
   public static g b(RandomAccessFile paramRandomAccessFile, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(133892);
-    paramRandomAccessFile = (g)c.a(paramRandomAccessFile, paramArrayOfByte, a.baX);
+    paramRandomAccessFile = (g)c.a(paramRandomAccessFile, paramArrayOfByte, a.bls);
     AppMethodBeat.o(133892);
     return paramRandomAccessFile;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.a.p
  * JD-Core Version:    0.7.0.1
  */

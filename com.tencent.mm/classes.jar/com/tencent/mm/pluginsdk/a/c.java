@@ -1,27 +1,27 @@
 package com.tencent.mm.pluginsdk.a;
 
-import com.tencent.mm.pluginsdk.n.b;
+import com.tencent.mm.pluginsdk.o.b;
 
 public final class c
-  implements n.b
+  implements o.b
 {
-  public final int dDe()
+  public final int dOH()
   {
     return 0;
   }
   
-  public final void dDf() {}
+  public final void dOI() {}
   
-  public final boolean dDg()
+  public final boolean dOJ()
   {
     return false;
   }
   
-  public final void dDh() {}
+  public final void dOK() {}
   
-  public final void dDi() {}
+  public final void dOL() {}
   
-  public final boolean dDj()
+  public final boolean dOM()
   {
     return false;
   }

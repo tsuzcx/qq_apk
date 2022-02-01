@@ -14,8 +14,8 @@ import android.view.Window;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.bankcard.model.EnterTimeParcel;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -27,9 +27,9 @@ public class BankRemitSelectArriveTimeUI
   extends MMPreference
 {
   private f screen;
-  private List<EnterTimeParcel> wGR;
-  private List<Preference> wGS;
-  private int wGT;
+  private int xUA;
+  private List<EnterTimeParcel> xUy;
+  private List<Preference> xUz;
   
   public int getResourceId()
   {
@@ -40,34 +40,34 @@ public class BankRemitSelectArriveTimeUI
   {
     AppMethodBeat.i(67574);
     this.screen = getPreferenceScreen();
-    if ((this.wGR != null) && (this.wGR.size() > 0))
+    if ((this.xUy != null) && (this.xUy.size() > 0))
     {
-      this.wGS = new ArrayList();
+      this.xUz = new ArrayList();
       int i = 0;
-      if (i < this.wGR.size())
+      if (i < this.xUy.size())
       {
-        EnterTimeParcel localEnterTimeParcel = (EnterTimeParcel)this.wGR.get(i);
-        ac.d("MicroMsg.BankRemitSelectArriveTimeUI", "enter scene: %d", new Object[] { Integer.valueOf(localEnterTimeParcel.wEF) });
+        EnterTimeParcel localEnterTimeParcel = (EnterTimeParcel)this.xUy.get(i);
+        ad.d("MicroMsg.BankRemitSelectArriveTimeUI", "enter scene: %d", new Object[] { Integer.valueOf(localEnterTimeParcel.xSm) });
         Preference localPreference = new Preference(this);
         localPreference.setLayoutResource(2131493160);
-        localPreference.HFK = false;
-        localPreference.setKey(localEnterTimeParcel.wEF);
-        localPreference.setTitle(localEnterTimeParcel.wEG);
-        if (localEnterTimeParcel.wEF == this.wGT) {
+        localPreference.JtB = false;
+        localPreference.setKey(localEnterTimeParcel.xSm);
+        localPreference.setTitle(localEnterTimeParcel.xSn);
+        if (localEnterTimeParcel.xSm == this.xUA) {
           localPreference.setWidgetLayoutResource(2131494878);
         }
         for (;;)
         {
-          if (localEnterTimeParcel.wEI == 0)
+          if (localEnterTimeParcel.xSp == 0)
           {
-            if (!bs.isNullOrNil(localEnterTimeParcel.wEH)) {
-              localPreference.setSummary(localEnterTimeParcel.wEH);
+            if (!bt.isNullOrNil(localEnterTimeParcel.xSo)) {
+              localPreference.setSummary(localEnterTimeParcel.xSo);
             }
             localPreference.setEnabled(false);
           }
           localPreference.getExtras().putParcelable("arrive_time", localEnterTimeParcel);
           this.screen.b(localPreference);
-          this.wGS.add(localPreference);
+          this.xUz.add(localPreference);
           i += 1;
           break;
           localPreference.setWidgetLayoutResource(2131494879);
@@ -103,8 +103,8 @@ public class BankRemitSelectArriveTimeUI
     BankRemitBaseUI.aA(this);
     getContentView().setFitsSystemWindows(true);
     setMMTitle(2131756395);
-    this.wGR = getIntent().getParcelableArrayListExtra("key_arrive_time_parcel_list");
-    this.wGT = getIntent().getIntExtra("key_select_arrive_time", -1);
+    this.xUy = getIntent().getParcelableArrayListExtra("key_arrive_time_parcel_list");
+    this.xUA = getIntent().getIntExtra("key_select_arrive_time", -1);
     initView();
     findViewById(16908298).setBackgroundColor(getResources().getColor(2131099994));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
@@ -123,7 +123,7 @@ public class BankRemitSelectArriveTimeUI
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(67575);
-    paramf = this.wGS.iterator();
+    paramf = this.xUz.iterator();
     while (paramf.hasNext())
     {
       Preference localPreference = (Preference)paramf.next();
@@ -137,12 +137,12 @@ public class BankRemitSelectArriveTimeUI
     paramf = (EnterTimeParcel)paramPreference.getExtras().getParcelable("arrive_time");
     if (paramf == null)
     {
-      ac.i("MicroMsg.BankRemitSelectArriveTimeUI", "is header");
+      ad.i("MicroMsg.BankRemitSelectArriveTimeUI", "is header");
       AppMethodBeat.o(67575);
       return false;
     }
     paramPreference = new Intent();
-    paramPreference.putExtra("key_enter_time_scene", paramf.wEF);
+    paramPreference.putExtra("key_enter_time_scene", paramf.xSm);
     setResult(-1, paramPreference);
     finish();
     AppMethodBeat.o(67575);

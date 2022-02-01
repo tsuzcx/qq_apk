@@ -10,20 +10,20 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.af.a.a;
 import java.util.HashMap;
 import junit.framework.Assert;
 
 public final class ChoicePreference
   extends Preference
 {
-  private RadioGroup HDQ;
-  private CharSequence[] HDR;
-  private CharSequence[] HDS;
-  public Preference.a HDT;
-  private int vGl;
+  private RadioGroup JrG;
+  private CharSequence[] JrH;
+  private CharSequence[] JrI;
+  public Preference.a JrJ;
   String value;
   private final HashMap<CharSequence, b> values;
+  private int wNr;
   
   public ChoicePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,34 +35,34 @@ public final class ChoicePreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142523);
     this.values = new HashMap();
-    this.vGl = -1;
+    this.wNr = -1;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ChoicePreference, paramInt, 0);
-    this.HDR = paramContext.getTextArray(0);
-    this.HDS = paramContext.getTextArray(1);
+    this.JrH = paramContext.getTextArray(0);
+    this.JrI = paramContext.getTextArray(1);
     paramContext.recycle();
-    fji();
+    fzx();
     AppMethodBeat.o(142523);
   }
   
-  private void fji()
+  private void fzx()
   {
     int i = 0;
     AppMethodBeat.i(142525);
-    if (this.HDR == null) {
-      this.HDR = new CharSequence[0];
+    if (this.JrH == null) {
+      this.JrH = new CharSequence[0];
     }
-    if (this.HDS == null) {
-      this.HDS = new CharSequence[0];
+    if (this.JrI == null) {
+      this.JrI = new CharSequence[0];
     }
-    if (this.HDR.length == this.HDS.length) {}
+    if (this.JrH.length == this.JrI.length) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("entries count different", bool);
       this.values.clear();
-      while (i < this.HDS.length)
+      while (i < this.JrI.length)
       {
-        b localb = new b(this.HDR[i], 1048576 + i);
-        this.values.put(this.HDS[i], localb);
+        b localb = new b(this.JrH[i], 1048576 + i);
+        this.values.put(this.JrI[i], localb);
         i += 1;
       }
     }
@@ -71,15 +71,15 @@ public final class ChoicePreference
   
   public final void a(Preference.a parama)
   {
-    this.HDT = parama;
+    this.JrJ = parama;
   }
   
   protected final void onBindView(View paramView)
   {
     AppMethodBeat.i(142526);
     super.onBindView(paramView);
-    if (this.HDQ != null) {
-      this.HDQ.check(this.vGl);
+    if (this.JrG != null) {
+      this.JrG.check(this.wNr);
     }
     AppMethodBeat.o(142526);
   }
@@ -92,11 +92,11 @@ public final class ChoicePreference
     Object localObject = (ViewGroup)paramViewGroup.findViewById(2131298739);
     ((ViewGroup)localObject).removeAllViews();
     localLayoutInflater.inflate(2131494825, (ViewGroup)localObject);
-    this.HDQ = ((RadioGroup)paramViewGroup.findViewById(2131300621));
+    this.JrG = ((RadioGroup)paramViewGroup.findViewById(2131300621));
     int i = 0;
-    if (i < this.HDS.length)
+    if (i < this.JrI.length)
     {
-      localObject = this.HDS[i];
+      localObject = this.JrI[i];
       localObject = (b)this.values.get(localObject);
       RadioButton localRadioButton;
       if (localObject != null)
@@ -106,28 +106,28 @@ public final class ChoicePreference
         }
         localRadioButton = (RadioButton)localLayoutInflater.inflate(2131494778, null);
         ((b)localObject).a(localRadioButton);
-        this.HDQ.addView(localRadioButton);
+        this.JrG.addView(localRadioButton);
       }
       for (;;)
       {
         i += 1;
         break;
         label139:
-        if (i == this.HDS.length - 1)
+        if (i == this.JrI.length - 1)
         {
           localRadioButton = (RadioButton)localLayoutInflater.inflate(2131494780, null);
           ((b)localObject).a(localRadioButton);
-          this.HDQ.addView(localRadioButton);
+          this.JrG.addView(localRadioButton);
         }
         else
         {
           localRadioButton = (RadioButton)localLayoutInflater.inflate(2131494779, null);
           ((b)localObject).a(localRadioButton);
-          this.HDQ.addView(localRadioButton);
+          this.JrG.addView(localRadioButton);
         }
       }
     }
-    this.HDQ.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+    this.JrG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(RadioGroup paramAnonymousRadioGroup, int paramAnonymousInt)
       {
@@ -161,17 +161,17 @@ public final class ChoicePreference
     paramString = (b)this.values.get(paramString);
     if (paramString == null)
     {
-      this.vGl = -1;
+      this.wNr = -1;
       AppMethodBeat.o(142527);
       return;
     }
-    this.vGl = paramString.id;
+    this.wNr = paramString.id;
     AppMethodBeat.o(142527);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.ChoicePreference
  * JD-Core Version:    0.7.0.1
  */

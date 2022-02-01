@@ -7,19 +7,19 @@ public abstract class k
 {
   public String toString()
   {
-    return m.Lse.a(this);
+    return m.Njb.a(this);
   }
   
   public static final class a
     extends k
   {
-    final k Lsb;
+    final k NiY;
     
     public a(k paramk)
     {
       super();
       AppMethodBeat.i(58206);
-      this.Lsb = paramk;
+      this.NiY = paramk;
       AppMethodBeat.o(58206);
     }
   }
@@ -27,13 +27,13 @@ public abstract class k
   public static final class b
     extends k
   {
-    final String Lsc;
+    final String NiZ;
     
     public b(String paramString)
     {
       super();
       AppMethodBeat.i(58207);
-      this.Lsc = paramString;
+      this.NiZ = paramString;
       AppMethodBeat.o(58207);
     }
   }
@@ -41,18 +41,18 @@ public abstract class k
   public static final class c
     extends k
   {
-    final d Lsd;
+    final d Nja;
     
     public c(d paramd)
     {
       super();
-      this.Lsd = paramd;
+      this.Nja = paramd;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.b.k
  * JD-Core Version:    0.7.0.1
  */

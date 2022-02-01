@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import org.json.JSONObject;
 
@@ -19,7 +19,7 @@ public final class af
   {
     AppMethodBeat.i(128891);
     paramJSONObject = paramJSONObject.optString("filePath", "");
-    if (bs.isNullOrNil(paramJSONObject)) {
+    if (bt.isNullOrNil(paramJSONObject)) {
       paramJSONObject = "fail:invalid data";
     }
     for (;;)
@@ -27,9 +27,9 @@ public final class af
       paramc.h(paramInt, e(paramJSONObject, null));
       AppMethodBeat.o(128891);
       return;
-      if (!paramc.DH().IV(paramJSONObject)) {
+      if (!paramc.Fg().Mm(paramJSONObject)) {
         paramJSONObject = "fail not a store filePath";
-      } else if (paramc.DH().IS(paramJSONObject).delete()) {
+      } else if (paramc.Fg().Mj(paramJSONObject).delete()) {
         paramJSONObject = "ok";
       } else {
         paramJSONObject = "fail";

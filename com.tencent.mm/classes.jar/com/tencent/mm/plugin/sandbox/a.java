@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.sandbox;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.sandbox.updater.i;
 
 public final class a
-  implements m
+  implements n
 {
   public a()
   {
     AppMethodBeat.i(28048);
-    com.tencent.mm.sdk.b.a.GpY.c(new i());
+    com.tencent.mm.sdk.b.a.IbL.c(new i());
     AppMethodBeat.o(28048);
   }
   
-  public final void a(k paramk) {}
-  
   public final void a(l paraml) {}
+  
+  public final void a(m paramm) {}
 }
 
 

@@ -7,20 +7,20 @@ import java.util.List;
 public final class d
   implements i
 {
-  private h cSY;
-  private int cSZ = 4;
+  private h deo;
+  private int dep = 4;
   
   public final com.tencent.mm.audio.mix.a.b J(List<e> paramList)
   {
     AppMethodBeat.i(136865);
-    if (this.cSY == null)
+    if (this.deo == null)
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioMixer", "mixAlgorithm must be init, please call init() first");
       AppMethodBeat.o(136865);
       return null;
     }
-    com.tencent.mm.audio.mix.a.b localb = com.tencent.mm.audio.mix.b.a.MD().ME();
-    if (!this.cSY.a(localb, paramList))
+    com.tencent.mm.audio.mix.a.b localb = com.tencent.mm.audio.mix.b.a.Om().On();
+    if (!this.deo.a(localb, paramList))
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioMixer", "mix audio fail");
       AppMethodBeat.o(136865);
@@ -34,8 +34,8 @@ public final class d
   {
     AppMethodBeat.i(136864);
     Object localObject;
-    if (this.cSY == null) {
-      switch (this.cSZ)
+    if (this.deo == null) {
+      switch (this.dep)
       {
       default: 
         localObject = new j();
@@ -43,7 +43,7 @@ public final class d
     }
     for (;;)
     {
-      this.cSY = ((h)localObject);
+      this.deo = ((h)localObject);
       AppMethodBeat.o(136864);
       return;
       localObject = new n();

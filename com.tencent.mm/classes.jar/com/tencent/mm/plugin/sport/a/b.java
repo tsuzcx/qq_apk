@@ -9,21 +9,21 @@ public abstract interface b
 {
   public abstract void b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3);
   
-  public abstract void dTJ();
+  public abstract void efX();
   
-  public abstract boolean dTK();
+  public abstract boolean efY();
   
-  public abstract void dTL();
+  public abstract void efZ();
   
-  public abstract void dTM();
+  public abstract void ega();
   
   public abstract void g(Activity paramActivity, String paramString);
   
-  public abstract boolean gn(Context paramContext);
+  public abstract boolean gq(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ final class ViewAnimHelper$4
   public final void onAnimationCancel(Animator paramAnimator)
   {
     AppMethodBeat.i(143615);
-    if (this.xck != null) {
-      this.xck.onAnimationCancel(paramAnimator);
+    if (this.yqm != null) {
+      this.yqm.onAnimationCancel(paramAnimator);
     }
     AppMethodBeat.o(143615);
   }
@@ -21,8 +21,8 @@ final class ViewAnimHelper$4
   public final void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(143614);
-    if (this.xck != null) {
-      this.xck.onAnimationEnd(paramAnimator);
+    if (this.yqm != null) {
+      this.yqm.onAnimationEnd(paramAnimator);
     }
     AppMethodBeat.o(143614);
   }
@@ -30,8 +30,8 @@ final class ViewAnimHelper$4
   public final void onAnimationRepeat(Animator paramAnimator)
   {
     AppMethodBeat.i(143616);
-    if (this.xck != null) {
-      this.xck.onAnimationRepeat(paramAnimator);
+    if (this.yqm != null) {
+      this.yqm.onAnimationRepeat(paramAnimator);
     }
     AppMethodBeat.o(143616);
   }
@@ -39,15 +39,15 @@ final class ViewAnimHelper$4
   public final void onAnimationStart(Animator paramAnimator)
   {
     AppMethodBeat.i(143613);
-    if (this.xck != null) {
-      this.xck.onAnimationStart(paramAnimator);
+    if (this.yqm != null) {
+      this.yqm.onAnimationStart(paramAnimator);
     }
     AppMethodBeat.o(143613);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.view.ViewAnimHelper.4
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d.a;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -13,24 +13,24 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class j
 {
-  private static j jKY;
-  public Map<String, b> jKQ;
+  private static j kfj;
+  public Map<String, b> kfb;
   
   static
   {
     AppMethodBeat.i(121193);
-    jKY = new j();
+    kfj = new j();
     AppMethodBeat.o(121193);
   }
   
   public j()
   {
     AppMethodBeat.i(121187);
-    this.jKQ = new ConcurrentHashMap();
+    this.kfb = new ConcurrentHashMap();
     AppMethodBeat.o(121187);
   }
   
-  private String Ld(String paramString)
+  private String Ox(String paramString)
   {
     AppMethodBeat.i(121191);
     if (TextUtils.isEmpty(paramString))
@@ -38,7 +38,7 @@ public final class j
       AppMethodBeat.o(121191);
       return "";
     }
-    Iterator localIterator = this.jKQ.entrySet().iterator();
+    Iterator localIterator = this.kfb.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -53,41 +53,41 @@ public final class j
     return "";
   }
   
-  public static j bci()
+  public static j bfM()
   {
-    return jKY;
+    return kfj;
   }
   
-  public final void K(String paramString, int paramInt1, int paramInt2)
+  public final void M(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(121189);
-    b localb = (b)this.jKQ.get(paramString);
+    b localb = (b)this.kfb.get(paramString);
     if (localb != null)
     {
       com.tencent.mm.ipcinvoker.h.b.i("WidgetReporter_14443", "report %s, %s, %s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      h.wUl.f(14443, new Object[] { localb.appId, Integer.valueOf(0), Integer.valueOf(localb.cYO), Integer.valueOf(2), localb.dac, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(localb.cFI) });
+      g.yhR.f(14443, new Object[] { localb.appId, Integer.valueOf(0), Integer.valueOf(localb.dkg), Integer.valueOf(2), localb.dlu, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(localb.cQN) });
     }
     AppMethodBeat.o(121189);
   }
   
-  public final void Lc(String paramString)
+  public final void Ow(String paramString)
   {
     AppMethodBeat.i(121190);
-    K(Ld(paramString), 626, 7);
+    M(Ox(paramString), 626, 7);
     AppMethodBeat.o(121190);
   }
   
-  public final void Le(String paramString)
+  public final void Oy(String paramString)
   {
     AppMethodBeat.i(121192);
-    K(paramString, 626, 26);
+    M(paramString, 626, 26);
     AppMethodBeat.o(121192);
   }
   
-  public final void bw(String paramString, int paramInt)
+  public final void by(String paramString, int paramInt)
   {
     AppMethodBeat.i(121188);
-    K(Ld(paramString), 626, paramInt);
+    M(Ox(paramString), 626, paramInt);
     AppMethodBeat.o(121188);
   }
   
@@ -99,30 +99,30 @@ public final class j
     implements a
   {
     String appId = "";
-    int cFI;
-    int cYO;
-    String dac;
-    String jKT = "";
+    int cQN;
+    int dkg;
+    String dlu;
+    String kfe = "";
     
     public b() {}
     
     public b(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2)
     {
-      this.jKT = paramString1;
+      this.kfe = paramString1;
       this.appId = paramString2;
-      this.cYO = paramInt1;
-      this.dac = paramString3;
-      this.cFI = paramInt2;
+      this.dkg = paramInt1;
+      this.dlu = paramString3;
+      this.cQN = paramInt2;
     }
     
     public final void fromBundle(Bundle paramBundle)
     {
       AppMethodBeat.i(121186);
-      this.jKT = paramBundle.getString("widgetId");
+      this.kfe = paramBundle.getString("widgetId");
       this.appId = paramBundle.getString("appid");
-      this.cYO = paramBundle.getInt("appState");
-      this.dac = paramBundle.getString("reqKey");
-      this.cFI = paramBundle.getInt("serviceType");
+      this.dkg = paramBundle.getInt("appState");
+      this.dlu = paramBundle.getString("reqKey");
+      this.cQN = paramBundle.getInt("serviceType");
       AppMethodBeat.o(121186);
     }
     
@@ -130,11 +130,11 @@ public final class j
     {
       AppMethodBeat.i(121185);
       Bundle localBundle = new Bundle();
-      localBundle.putString("widgetId", this.jKT);
+      localBundle.putString("widgetId", this.kfe);
       localBundle.putString("appid", this.appId);
-      localBundle.putInt("appState", this.cYO);
-      localBundle.putString("reqKey", this.dac);
-      localBundle.putInt("serviceType", this.cFI);
+      localBundle.putInt("appState", this.dkg);
+      localBundle.putString("reqKey", this.dlu);
+      localBundle.putInt("serviceType", this.cQN);
       AppMethodBeat.o(121185);
       return localBundle;
     }

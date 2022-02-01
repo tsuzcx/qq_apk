@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.secinforeport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.b;
+import com.tencent.mm.ax.b;
 import com.tencent.mm.b.i;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.secinforeport.a.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
 
 final class PluginSecInfoReport$2
   implements Runnable
@@ -16,21 +16,21 @@ final class PluginSecInfoReport$2
   public final void run()
   {
     AppMethodBeat.i(89145);
-    ac.i("MicroMsg.PSIR", "[+] report task start running.");
+    ad.i("MicroMsg.PSIR", "[+] report task start running.");
     for (;;)
     {
       int j;
       try
       {
-        i = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).ZY().getInt("DisableRiskScanSdkProb", 0);
-        j = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).ZY().getInt("DisableInstalledPkgInfoReportProb", 0);
-        g.agP();
-        k = i.cc(com.tencent.mm.kernel.a.getUin(), 101);
+        i = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getInt("DisableRiskScanSdkProb", 0);
+        j = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getInt("DisableInstalledPkgInfoReportProb", 0);
+        g.ajA();
+        k = i.ce(com.tencent.mm.kernel.a.getUin(), 101);
         if ((i > 0) && (k >= 0) && (k <= i))
         {
           i = 1;
           break label191;
-          d.xnP.hd(this.xnG, i);
+          d.yBQ.hu(this.yBH, i);
           AppMethodBeat.o(89145);
         }
         else
@@ -41,7 +41,7 @@ final class PluginSecInfoReport$2
       catch (Throwable localThrowable2)
       {
         label105:
-        ac.printErrStackTrace("MicroMsg.PSIR", localThrowable2, "unexpected exception was thrown.", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.PSIR", localThrowable2, "unexpected exception was thrown.", new Object[0]);
         AppMethodBeat.o(89145);
         return;
       }
@@ -50,14 +50,14 @@ final class PluginSecInfoReport$2
       try
       {
         label110:
-        boolean bool = b.CQ((String)g.agR().agA().get(274436, null));
+        boolean bool = b.FU((String)g.ajC().ajl().get(274436, null));
         if (bool) {
           i = 0;
         }
       }
       catch (Throwable localThrowable1)
       {
-        ac.printErrStackTrace("MicroMsg.PSIR", localThrowable1, "**** point 0, explained by source code.", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.PSIR", localThrowable1, "**** point 0, explained by source code.", new Object[0]);
         i = 0;
       }
       label191:

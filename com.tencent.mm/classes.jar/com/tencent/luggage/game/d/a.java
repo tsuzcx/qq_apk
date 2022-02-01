@@ -8,12 +8,12 @@ public class a
   public static final int CTRL_INDEX = 585;
   public static final String NAME = "hideSplashScreen";
   
-  protected boolean Bg()
+  protected boolean CF()
   {
     return false;
   }
   
-  protected void Bh() {}
+  protected void CG() {}
 }
 
 

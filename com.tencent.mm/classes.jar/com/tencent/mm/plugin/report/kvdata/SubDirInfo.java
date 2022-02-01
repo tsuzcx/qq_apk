@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.report.kvdata;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SubDirInfo
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public long dirCount_;
   public long fileCount_;
@@ -17,17 +17,17 @@ public class SubDirInfo
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.tag_);
-      paramVarArgs.aO(2, this.totalSize_);
-      paramVarArgs.aO(3, this.dirCount_);
-      paramVarArgs.aO(4, this.fileCount_);
-      paramVarArgs.aO(5, this.fileLenInvalidCount);
+      paramVarArgs.aS(1, this.tag_);
+      paramVarArgs.aY(2, this.totalSize_);
+      paramVarArgs.aY(3, this.dirCount_);
+      paramVarArgs.aY(4, this.fileCount_);
+      paramVarArgs.aY(5, this.fileLenInvalidCount);
       AppMethodBeat.o(151539);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bx(1, this.tag_);
+      paramInt = f.a.a.b.b.a.bz(1, this.tag_);
       int i = f.a.a.b.b.a.p(2, this.totalSize_);
       int j = f.a.a.b.b.a.p(3, this.dirCount_);
       int k = f.a.a.b.b.a.p(4, this.fileCount_);
@@ -38,9 +38,9 @@ public class SubDirInfo
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(151539);
@@ -56,23 +56,23 @@ public class SubDirInfo
         AppMethodBeat.o(151539);
         return -1;
       case 1: 
-        localSubDirInfo.tag_ = locala.LVo.xF();
+        localSubDirInfo.tag_ = locala.NPN.zc();
         AppMethodBeat.o(151539);
         return 0;
       case 2: 
-        localSubDirInfo.totalSize_ = locala.LVo.xG();
+        localSubDirInfo.totalSize_ = locala.NPN.zd();
         AppMethodBeat.o(151539);
         return 0;
       case 3: 
-        localSubDirInfo.dirCount_ = locala.LVo.xG();
+        localSubDirInfo.dirCount_ = locala.NPN.zd();
         AppMethodBeat.o(151539);
         return 0;
       case 4: 
-        localSubDirInfo.fileCount_ = locala.LVo.xG();
+        localSubDirInfo.fileCount_ = locala.NPN.zd();
         AppMethodBeat.o(151539);
         return 0;
       }
-      localSubDirInfo.fileLenInvalidCount = locala.LVo.xG();
+      localSubDirInfo.fileLenInvalidCount = locala.NPN.zd();
       AppMethodBeat.o(151539);
       return 0;
     }

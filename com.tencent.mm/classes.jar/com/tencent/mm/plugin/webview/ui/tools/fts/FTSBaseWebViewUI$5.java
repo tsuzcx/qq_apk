@@ -11,8 +11,8 @@ final class FTSBaseWebViewUI$5
   public final void run()
   {
     AppMethodBeat.i(80585);
-    if (this.CDb.Cjc != null) {
-      this.CDb.Cjc.fl(this.CCE, this.hXk);
+    if (this.EgM.DzP != null) {
+      this.EgM.DzP.fI(this.Egn, this.iqF);
     }
     AppMethodBeat.o(80585);
   }

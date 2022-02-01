@@ -18,7 +18,7 @@ public final class e
   {
     AppMethodBeat.i(12285);
     Object localObject;
-    switch (1.bHn[parama.ordinal()])
+    switch (1.bRB[parama.ordinal()])
     {
     default: 
       paramString = new IllegalArgumentException("No encoder available for format ".concat(String.valueOf(parama)));

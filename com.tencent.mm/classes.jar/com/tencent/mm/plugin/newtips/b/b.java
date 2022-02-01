@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
   extends j<a>
@@ -25,12 +25,12 @@ public final class b
     this.db = parame;
   }
   
-  public final a Kr(int paramInt)
+  public final a LT(int paramInt)
   {
     AppMethodBeat.i(127265);
     if (this.db == null)
     {
-      ac.e("MicroMsg.NewTipsCompatInfoStorage", "getByTipsId, but db is null, return");
+      ad.e("MicroMsg.NewTipsCompatInfoStorage", "getByTipsId, but db is null, return");
       AppMethodBeat.o(127265);
       return null;
     }
@@ -47,13 +47,13 @@ public final class b
       }
       catch (Exception localException)
       {
-        ac.e("MicroMsg.NewTipsCompatInfoStorage", "getByTipsId convertFrom(cu) cause IlleagalStateException, return null");
+        ad.e("MicroMsg.NewTipsCompatInfoStorage", "getByTipsId convertFrom(cu) cause IlleagalStateException, return null");
         localCursor.close();
         AppMethodBeat.o(127265);
         return null;
       }
     }
-    ac.w("MicroMsg.NewTipsCompatInfoStorage", "getByTipsId:%d, no data", new Object[] { Integer.valueOf(paramInt) });
+    ad.w("MicroMsg.NewTipsCompatInfoStorage", "getByTipsId:%d, no data", new Object[] { Integer.valueOf(paramInt) });
     localCursor.close();
     AppMethodBeat.o(127265);
     return null;
@@ -64,7 +64,7 @@ public final class b
     AppMethodBeat.i(127264);
     if (parama == null)
     {
-      ac.e("MicroMsg.NewTipsCompatInfoStorage", "NewTipsCompatInfo is null!");
+      ad.e("MicroMsg.NewTipsCompatInfoStorage", "NewTipsCompatInfo is null!");
       AppMethodBeat.o(127264);
       return false;
     }
@@ -72,7 +72,7 @@ public final class b
     if (bool) {
       doNotify(parama.field_tipId, 3, Integer.valueOf(parama.field_tipId));
     }
-    ac.d("MicroMsg.NewTipsCompatInfoStorage", "update result[%B]", new Object[] { Boolean.valueOf(bool) });
+    ad.d("MicroMsg.NewTipsCompatInfoStorage", "update result[%B]", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(127264);
     return bool;
   }
@@ -82,13 +82,13 @@ public final class b
     AppMethodBeat.i(127263);
     if (parama == null)
     {
-      ac.e("MicroMsg.NewTipsCompatInfoStorage", "NewTipsCompatInfo is null!");
+      ad.e("MicroMsg.NewTipsCompatInfoStorage", "NewTipsCompatInfo is null!");
       AppMethodBeat.o(127263);
       return false;
     }
     if (parama.field_tipId <= 0)
     {
-      ac.e("MicroMsg.NewTipsCompatInfoStorage", "newTipsId is error, tipsId = %s", new Object[] { Integer.valueOf(parama.field_tipId) });
+      ad.e("MicroMsg.NewTipsCompatInfoStorage", "newTipsId is error, tipsId = %s", new Object[] { Integer.valueOf(parama.field_tipId) });
       AppMethodBeat.o(127263);
       return false;
     }
@@ -102,7 +102,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.b.b
  * JD-Core Version:    0.7.0.1
  */

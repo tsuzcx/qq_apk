@@ -3,12 +3,12 @@ package com.tencent.mm.modelappbrand;
 public abstract class ah
   implements o
 {
+  public abstract void Cp(String paramString);
+  
   public final String getName()
   {
     return "openApp";
   }
-  
-  public abstract void zq(String paramString);
 }
 
 

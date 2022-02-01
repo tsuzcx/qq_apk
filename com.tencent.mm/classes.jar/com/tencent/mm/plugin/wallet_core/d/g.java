@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.wallet_core.d;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.ac;
+import com.tencent.mm.plugin.wallet_core.model.ad;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 import java.util.ArrayList;
 
 public final class g
-  extends j<ac>
+  extends j<ad>
 {
   public static final String[] SQL_CREATE;
   public e db;
@@ -16,17 +16,17 @@ public final class g
   static
   {
     AppMethodBeat.i(70616);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ac.info, "WalletKindInfo") };
+    SQL_CREATE = new String[] { j.getCreateSQLs(ad.info, "WalletKindInfo") };
     AppMethodBeat.o(70616);
   }
   
   public g(e parame)
   {
-    super(parame, ac.info, "WalletKindInfo", null);
+    super(parame, ad.info, "WalletKindInfo", null);
     this.db = parame;
   }
   
-  public final ArrayList<ac> esZ()
+  public final ArrayList<ad> eHf()
   {
     ArrayList localArrayList = null;
     AppMethodBeat.i(70615);
@@ -41,9 +41,9 @@ public final class g
       localArrayList = new ArrayList();
       do
       {
-        ac localac = new ac();
-        localac.convertFrom(localCursor);
-        localArrayList.add(localac);
+        ad localad = new ad();
+        localad.convertFrom(localCursor);
+        localArrayList.add(localad);
       } while (localCursor.moveToNext());
     }
     localCursor.close();
@@ -53,7 +53,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.g
  * JD-Core Version:    0.7.0.1
  */

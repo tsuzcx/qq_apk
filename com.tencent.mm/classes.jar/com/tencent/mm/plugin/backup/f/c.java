@@ -7,66 +7,66 @@ public final class c
   extends com.tencent.mm.plugin.backup.b.a
 {
   private static String TAG = "MicroMsg.BackupItemFactory";
-  private static c mWP;
-  private HashMap<Integer, l> mWQ;
+  private static c nxm;
+  private HashMap<Integer, l> nxn;
   
-  public static c bDW()
+  public static c bIf()
   {
     AppMethodBeat.i(21510);
-    if (mWP == null)
+    if (nxm == null)
     {
       localc = new c();
-      mWP = localc;
+      nxm = localc;
       a(localc);
     }
-    c localc = mWP;
+    c localc = nxm;
     AppMethodBeat.o(21510);
     return localc;
   }
   
-  private void bDX()
+  private void bIg()
   {
     AppMethodBeat.i(21512);
-    this.mWQ = new HashMap();
-    this.mWQ.put(Integer.valueOf(3), new d());
-    this.mWQ.put(Integer.valueOf(47), new b());
-    this.mWQ.put(Integer.valueOf(49), new a());
-    this.mWQ.put(Integer.valueOf(34), new g());
+    this.nxn = new HashMap();
+    this.nxn.put(Integer.valueOf(3), new d());
+    this.nxn.put(Integer.valueOf(47), new b());
+    this.nxn.put(Integer.valueOf(49), new a());
+    this.nxn.put(Integer.valueOf(34), new g());
     Object localObject = new f();
-    this.mWQ.put(Integer.valueOf(43), localObject);
-    this.mWQ.put(Integer.valueOf(44), localObject);
-    this.mWQ.put(Integer.valueOf(62), localObject);
+    this.nxn.put(Integer.valueOf(43), localObject);
+    this.nxn.put(Integer.valueOf(44), localObject);
+    this.nxn.put(Integer.valueOf(62), localObject);
     localObject = new e();
-    this.mWQ.put(Integer.valueOf(48), localObject);
-    this.mWQ.put(Integer.valueOf(42), localObject);
-    this.mWQ.put(Integer.valueOf(66), localObject);
-    this.mWQ.put(Integer.valueOf(10000), localObject);
-    this.mWQ.put(Integer.valueOf(1), localObject);
-    this.mWQ.put(Integer.valueOf(37), localObject);
-    this.mWQ.put(Integer.valueOf(40), localObject);
-    this.mWQ.put(Integer.valueOf(50), localObject);
+    this.nxn.put(Integer.valueOf(48), localObject);
+    this.nxn.put(Integer.valueOf(42), localObject);
+    this.nxn.put(Integer.valueOf(66), localObject);
+    this.nxn.put(Integer.valueOf(10000), localObject);
+    this.nxn.put(Integer.valueOf(1), localObject);
+    this.nxn.put(Integer.valueOf(37), localObject);
+    this.nxn.put(Integer.valueOf(40), localObject);
+    this.nxn.put(Integer.valueOf(50), localObject);
     AppMethodBeat.o(21512);
   }
   
-  public final void bCK()
+  public final void bGS()
   {
-    mWP = null;
+    nxm = null;
   }
   
-  public final l wR(int paramInt)
+  public final l xx(int paramInt)
   {
     AppMethodBeat.i(21511);
-    if (this.mWQ == null) {
-      bDX();
+    if (this.nxn == null) {
+      bIg();
     }
-    l locall = (l)this.mWQ.get(Integer.valueOf(paramInt));
+    l locall = (l)this.nxn.get(Integer.valueOf(paramInt));
     AppMethodBeat.o(21511);
     return locall;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.f.c
  * JD-Core Version:    0.7.0.1
  */

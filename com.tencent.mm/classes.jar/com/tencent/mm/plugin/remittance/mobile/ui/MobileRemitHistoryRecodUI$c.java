@@ -16,19 +16,19 @@ public final class MobileRemitHistoryRecodUI$c
   extends RecyclerView.h
 {
   private int dividerHeight;
-  private Paint fvL;
-  private Paint fwN;
-  private int fwO;
+  private Paint fOS;
+  private Paint fQa;
+  private int fQb;
   
   public MobileRemitHistoryRecodUI$c(Context paramContext)
   {
     AppMethodBeat.i(67702);
     this.dividerHeight = a.g(paramContext, 0.5F);
-    this.fwO = a.fromDPToPix(paramContext, 16);
-    this.fvL = new Paint();
-    this.fvL.setColor(paramContext.getResources().getColor(2131099656));
-    this.fwN = new Paint();
-    this.fwN.setColor(paramContext.getResources().getColor(2131099679));
+    this.fQb = a.fromDPToPix(paramContext, 16);
+    this.fOS = new Paint();
+    this.fOS.setColor(paramContext.getResources().getColor(2131099656));
+    this.fQa = new Paint();
+    this.fQa.setColor(paramContext.getResources().getColor(2131099679));
     AppMethodBeat.o(67702);
   }
   
@@ -38,7 +38,7 @@ public final class MobileRemitHistoryRecodUI$c
     super.a(paramCanvas, paramRecyclerView, paramt);
     int j = paramRecyclerView.getChildCount();
     int k = paramRecyclerView.getPaddingLeft();
-    int m = this.fwO;
+    int m = this.fQb;
     int n = paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight();
     int i = 0;
     if (i < j)
@@ -47,13 +47,13 @@ public final class MobileRemitHistoryRecodUI$c
       float f1 = paramt.getBottom();
       float f2 = paramt.getBottom() + this.dividerHeight;
       if (i == j - 1) {
-        paramCanvas.drawRect(k, f1, n, f2, this.fwN);
+        paramCanvas.drawRect(k, f1, n, f2, this.fQa);
       }
       for (;;)
       {
         i += 1;
         break;
-        paramCanvas.drawRect(k + m, f1, n, f2, this.fvL);
+        paramCanvas.drawRect(k + m, f1, n, f2, this.fOS);
       }
     }
     AppMethodBeat.o(67703);

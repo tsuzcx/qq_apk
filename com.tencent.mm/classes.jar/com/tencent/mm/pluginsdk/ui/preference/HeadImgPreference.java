@@ -14,10 +14,10 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class HeadImgPreference
   extends Preference
 {
-  private Bitmap DAP;
+  private Bitmap FfW;
   private int height;
-  private ImageView ig;
-  private View.OnClickListener uWS;
+  private ImageView ka;
+  private View.OnClickListener waa;
   
   public HeadImgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,16 +37,16 @@ public final class HeadImgPreference
   {
     AppMethodBeat.i(31855);
     super.onBindView(paramView);
-    if (this.ig == null) {
-      this.ig = ((ImageView)paramView.findViewById(2131300940));
+    if (this.ka == null) {
+      this.ka = ((ImageView)paramView.findViewById(2131300940));
     }
-    if (this.uWS != null) {
-      this.ig.setOnClickListener(this.uWS);
+    if (this.waa != null) {
+      this.ka.setOnClickListener(this.waa);
     }
-    if (this.DAP != null)
+    if (this.FfW != null)
     {
-      this.ig.setImageBitmap(this.DAP);
-      this.DAP = null;
+      this.ka.setImageBitmap(this.FfW);
+      this.FfW = null;
     }
     paramView = (LinearLayout)paramView.findViewById(2131302326);
     if (this.height != -1) {
@@ -62,7 +62,7 @@ public final class HeadImgPreference
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
     View.inflate(this.mContext, 2131494828, localViewGroup);
-    this.ig = ((ImageView)paramViewGroup.findViewById(2131300940));
+    this.ka = ((ImageView)paramViewGroup.findViewById(2131300940));
     AppMethodBeat.o(31854);
     return paramViewGroup;
   }

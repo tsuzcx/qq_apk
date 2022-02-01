@@ -11,23 +11,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMRadioGroupView
   extends LinearLayout
 {
-  private int Hze;
-  private MMRadioImageButton.a Hzf;
-  private b Hzg;
-  private c Hzh;
-  private MMRadioImageButton Hzi;
-  private d Hzj;
-  private int gqj;
+  private int JmV;
+  private MMRadioImageButton.a JmW;
+  private b JmX;
+  private c JmY;
+  private MMRadioImageButton JmZ;
+  private d Jna;
+  private int gJT;
   
   public MMRadioGroupView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142106);
-    this.gqj = -1;
-    this.Hze = -1;
-    this.Hzf = new a();
-    this.Hzh = new c((byte)0);
-    super.setOnHierarchyChangeListener(this.Hzh);
+    this.gJT = -1;
+    this.JmV = -1;
+    this.JmW = new a();
+    this.JmY = new c((byte)0);
+    super.setOnHierarchyChangeListener(this.JmY);
     AppMethodBeat.o(142106);
   }
   
@@ -43,17 +43,17 @@ public class MMRadioGroupView
   
   private void setCheckedButton(MMRadioImageButton paramMMRadioImageButton)
   {
-    this.Hzi = paramMMRadioImageButton;
+    this.JmZ = paramMMRadioImageButton;
   }
   
   private void setCheckedId(int paramInt)
   {
-    this.gqj = paramInt;
+    this.gJT = paramInt;
   }
   
   private void setClickedId(int paramInt)
   {
-    this.Hze = paramInt;
+    this.JmV = paramInt;
   }
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
@@ -64,8 +64,8 @@ public class MMRadioGroupView
       MMRadioImageButton localMMRadioImageButton = (MMRadioImageButton)paramView;
       if (localMMRadioImageButton.isChecked())
       {
-        if (this.gqj != -1) {
-          c(this.gqj, false);
+        if (this.gJT != -1) {
+          c(this.gJT, false);
         }
         setCheckedId(localMMRadioImageButton.getId());
         setCheckedButton(localMMRadioImageButton);
@@ -77,27 +77,27 @@ public class MMRadioGroupView
   
   public MMRadioImageButton getCheckedRadioButton()
   {
-    return this.Hzi;
+    return this.JmZ;
   }
   
   public int getCheckedRadioButtonId()
   {
-    return this.gqj;
+    return this.gJT;
   }
   
   public int getClickedRadioButtonId()
   {
-    return this.Hze;
+    return this.JmV;
   }
   
   protected void onFinishInflate()
   {
     AppMethodBeat.i(142107);
     super.onFinishInflate();
-    if (this.gqj != -1)
+    if (this.gJT != -1)
     {
-      c(this.gqj, true);
-      setCheckedId(this.gqj);
+      c(this.gJT, true);
+      setCheckedId(this.gJT);
     }
     AppMethodBeat.o(142107);
   }
@@ -111,12 +111,12 @@ public class MMRadioGroupView
   
   public void setOnMMRadioGroupCheckedChangeListener(b paramb)
   {
-    this.Hzg = paramb;
+    this.JmX = paramb;
   }
   
   public void setOnSizeChangeObserver(d paramd)
   {
-    this.Hzj = paramd;
+    this.Jna = paramd;
   }
   
   final class a
@@ -149,7 +149,7 @@ public class MMRadioGroupView
   final class c
     implements ViewGroup.OnHierarchyChangeListener
   {
-    private ViewGroup.OnHierarchyChangeListener oD;
+    private ViewGroup.OnHierarchyChangeListener qw;
     
     private c() {}
     
@@ -169,8 +169,8 @@ public class MMRadioGroupView
         }
         ((MMRadioImageButton)paramView2).setOnOtherMMRadioButtonCheckedChangeListener(MMRadioGroupView.b(MMRadioGroupView.this));
       }
-      if (this.oD != null) {
-        this.oD.onChildViewAdded(paramView1, paramView2);
+      if (this.qw != null) {
+        this.qw.onChildViewAdded(paramView1, paramView2);
       }
       AppMethodBeat.o(142104);
     }
@@ -181,8 +181,8 @@ public class MMRadioGroupView
       if ((paramView1 == MMRadioGroupView.this) && ((paramView2 instanceof MMRadioImageButton))) {
         ((MMRadioImageButton)paramView2).setOnOtherMMRadioButtonCheckedChangeListener(null);
       }
-      if (this.oD != null) {
-        this.oD.onChildViewRemoved(paramView1, paramView2);
+      if (this.qw != null) {
+        this.qw.onChildViewRemoved(paramView1, paramView2);
       }
       AppMethodBeat.o(142105);
     }

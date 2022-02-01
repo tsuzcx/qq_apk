@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.game;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.commlib.e.b;
-import com.tencent.mm.plugin.game.commlib.e.b.a;
+import com.tencent.mm.plugin.game.commlib.util.b;
+import com.tencent.mm.plugin.game.commlib.util.b.a;
 
 public final class a
 {
-  public static final String sUI;
+  public static final String tRh;
   
   static
   {
     AppMethodBeat.i(40810);
-    sUI = b.b(b.a.sWv) + "message/";
+    tRh = b.c(b.a.tTd) + "message/";
     AppMethodBeat.o(40810);
   }
 }

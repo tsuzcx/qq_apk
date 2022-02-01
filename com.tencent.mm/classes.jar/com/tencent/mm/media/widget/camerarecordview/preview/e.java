@@ -2,13 +2,13 @@ package com.tencent.mm.media.widget.camerarecordview.preview;
 
 import android.graphics.SurfaceTexture;
 import android.opengl.EGLContext;
-import com.tencent.mm.media.f.d;
-import com.tencent.mm.media.i.a;
+import com.tencent.mm.media.g.d;
+import com.tencent.mm.media.j.a;
 import com.tencent.mm.plugin.mmsight.model.g;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;", "clearFrame", "", "getEGLContext", "Landroid/opengl/EGLContext;", "getFrameDataCallback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "getPreviewTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "ignoreRender", "ignore", "", "release", "setOnDrawListener", "frameAvailableListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "texture", "setPreviewRenderer", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "cpuCrop", "tryCameraPreview", "callback", "Landroid/graphics/SurfaceTexture;", "tryStopCameraPreview", "updateCameraConfig", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;", "clearFrame", "", "getEGLContext", "Landroid/opengl/EGLContext;", "getFrameDataCallback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "getPreviewTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "ignoreRender", "ignore", "", "release", "setOnDrawListener", "frameAvailableListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "texture", "setPreviewRenderer", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "cpuCrop", "tryCameraPreview", "callback", "Landroid/graphics/SurfaceTexture;", "tryStopCameraPreview", "updateCameraConfig", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "plugin-mediaeditor_release"})
 public abstract interface e
   extends f
 {
@@ -16,11 +16,11 @@ public abstract interface e
   
   public abstract void a(com.tencent.mm.media.widget.a.b paramb);
   
-  public abstract void ajA();
+  public abstract void amm();
   
-  public abstract void ajB();
+  public abstract void amn();
   
-  public abstract void c(d.g.a.b<? super SurfaceTexture, y> paramb);
+  public abstract void d(d.g.a.b<? super SurfaceTexture, z> paramb);
   
   public abstract EGLContext getEGLContext();
   
@@ -30,11 +30,11 @@ public abstract interface e
   
   public abstract void release();
   
-  public abstract void setOnDrawListener(d.g.a.b<? super d, y> paramb);
+  public abstract void setOnDrawListener(d.g.a.b<? super d, z> paramb);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.media.widget.camerarecordview.preview.e
  * JD-Core Version:    0.7.0.1
  */

@@ -18,23 +18,25 @@ public class WXEmojiSharedObject
   
   public WXEmojiSharedObject(String paramString1, int paramInt, String paramString2, String paramString3)
   {
+    AppMethodBeat.i(196968);
     this.thumburl = paramString1;
     this.packageflag = paramInt;
     this.packageid = paramString2;
     this.url = paramString3;
+    AppMethodBeat.o(196968);
   }
   
   public boolean checkArgs()
   {
     AppMethodBeat.i(3996);
-    if ((TextUtils.isEmpty(this.packageid)) || (TextUtils.isEmpty(this.thumburl)) || (TextUtils.isEmpty(this.url)) || (this.packageflag == -1))
+    if ((!TextUtils.isEmpty(this.packageid)) && (!TextUtils.isEmpty(this.thumburl)) && (!TextUtils.isEmpty(this.url)) && (this.packageflag != -1))
     {
-      Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, packageid or thumburl is invalid");
       AppMethodBeat.o(3996);
-      return false;
+      return true;
     }
+    Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, packageid or thumburl is invalid");
     AppMethodBeat.o(3996);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

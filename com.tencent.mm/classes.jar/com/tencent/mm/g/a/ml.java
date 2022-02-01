@@ -2,11 +2,13 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.List;
 
 public final class ml
   extends b
 {
-  public a doW;
+  public a dzX;
+  public b dzY;
   
   public ml()
   {
@@ -15,19 +17,30 @@ public final class ml
   
   private ml(byte paramByte)
   {
-    AppMethodBeat.i(116034);
-    this.doW = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(116459);
+    this.dzX = new a();
+    this.dzY = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116034);
+    AppMethodBeat.o(116459);
   }
   
   public static final class a
   {
-    public int cYG;
-    public boolean doX;
-    public boolean doY;
-    public String talker;
+    public List<String> dAa;
+    public boolean dzW = false;
+    public String dzZ;
+  }
+  
+  public static final class b
+  {
+    public int dAb;
+    public String dAc;
+    public List<String> dAd;
+    public List<String> dAe;
+    public List<String> dAf;
+    public List<String> dAg;
+    public List<String> dAh;
   }
 }
 

@@ -11,7 +11,7 @@ public final class m
     super(paramAssetManager, paramString);
   }
   
-  public final Class<InputStream> nU()
+  public final Class<InputStream> om()
   {
     return InputStream.class;
   }

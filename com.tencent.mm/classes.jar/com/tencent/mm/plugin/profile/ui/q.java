@@ -17,10 +17,10 @@ final class q
   public final void a(HelperHeaderPreference paramHelperHeaderPreference)
   {
     AppMethodBeat.i(27231);
-    if ((u.axI() & 0x8000) == 0) {}
+    if ((u.aAy() & 0x8000) == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramHelperHeaderPreference.oU(bool);
+      paramHelperHeaderPreference.pt(bool);
       AppMethodBeat.o(27231);
       return;
     }

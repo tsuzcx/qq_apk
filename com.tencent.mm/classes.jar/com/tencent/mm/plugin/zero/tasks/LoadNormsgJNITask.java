@@ -12,11 +12,11 @@ public final class LoadNormsgJNITask
   {
     AppMethodBeat.i(133030);
     getClass().getClassLoader();
-    j.sC("stlport_shared");
+    j.vr("stlport_shared");
     getClass().getClassLoader();
-    j.sC("wechatxlog");
+    j.vr("wechatxlog");
     getClass().getClassLoader();
-    j.sC("wechatnormsg");
+    j.vr("wechatnormsg");
     AppMethodBeat.o(133030);
   }
   

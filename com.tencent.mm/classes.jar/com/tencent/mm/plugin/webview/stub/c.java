@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface c
   extends IInterface
 {
-  public abstract boolean eCB();
+  public abstract boolean eRs();
   
   public abstract boolean getResult();
   
@@ -57,7 +57,7 @@ public abstract interface c
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-        bool = eCB();
+        bool = eRs();
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -105,7 +105,7 @@ public abstract interface c
       }
       
       /* Error */
-      public final boolean eCB()
+      public final boolean eRs()
       {
         // Byte code:
         //   0: iconst_1

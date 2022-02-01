@@ -14,18 +14,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMSmoothHorizontalScrollView
   extends HorizontalScrollView
 {
-  private Interpolator HwD;
-  private View HzD;
+  private Interpolator Jkt;
+  private View Jnu;
   private float mLastMotionX;
   private Rect mRect;
-  private TranslateAnimation wcv;
+  private TranslateAnimation xke;
   
   public MMSmoothHorizontalScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142152);
     this.mRect = new Rect();
-    this.HwD = new DecelerateInterpolator();
+    this.Jkt = new DecelerateInterpolator();
     setFadingEdgeLength(0);
     AppMethodBeat.o(142152);
   }
@@ -34,7 +34,7 @@ public class MMSmoothHorizontalScrollView
   {
     AppMethodBeat.i(142153);
     if (getChildCount() > 0) {
-      this.HzD = getChildAt(0);
+      this.Jnu = getChildAt(0);
     }
     AppMethodBeat.o(142153);
   }
@@ -45,7 +45,7 @@ public class MMSmoothHorizontalScrollView
     int i = 0;
     AppMethodBeat.i(142154);
     boolean bool;
-    if (this.HzD == null)
+    if (this.Jnu == null)
     {
       bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(142154);
@@ -69,7 +69,7 @@ public class MMSmoothHorizontalScrollView
       j = (int)(this.mLastMotionX - f) / 2;
       scrollBy(j, 0);
       this.mLastMotionX = f;
-      int k = this.HzD.getMeasuredWidth();
+      int k = this.Jnu.getMeasuredWidth();
       int m = getWidth();
       int n = getPaddingLeft();
       int i1 = getPaddingRight();
@@ -80,9 +80,9 @@ public class MMSmoothHorizontalScrollView
       if (i != 0)
       {
         if (this.mRect.isEmpty()) {
-          this.mRect.set(this.HzD.getLeft(), this.HzD.getTop(), this.HzD.getRight(), this.HzD.getBottom());
+          this.mRect.set(this.Jnu.getLeft(), this.Jnu.getTop(), this.Jnu.getRight(), this.Jnu.getBottom());
         }
-        this.HzD.layout(this.HzD.getLeft() - j, this.HzD.getTop(), this.HzD.getRight() - j, this.HzD.getBottom());
+        this.Jnu.layout(this.Jnu.getLeft() - j, this.Jnu.getTop(), this.Jnu.getRight() - j, this.Jnu.getBottom());
         continue;
         this.mLastMotionX = 0.0F;
         if (!this.mRect.isEmpty()) {}
@@ -91,11 +91,11 @@ public class MMSmoothHorizontalScrollView
           if (i == 0) {
             break label432;
           }
-          this.wcv = new TranslateAnimation(this.HzD.getLeft(), this.mRect.left, 0.0F, 0.0F);
-          this.wcv.setInterpolator(this.HwD);
-          this.wcv.setDuration(Math.abs(this.HzD.getLeft() - this.mRect.left));
-          this.HzD.startAnimation(this.wcv);
-          this.HzD.layout(this.mRect.left, this.mRect.top, this.mRect.right, this.mRect.bottom);
+          this.xke = new TranslateAnimation(this.Jnu.getLeft(), this.mRect.left, 0.0F, 0.0F);
+          this.xke.setInterpolator(this.Jkt);
+          this.xke.setDuration(Math.abs(this.Jnu.getLeft() - this.mRect.left));
+          this.Jnu.startAnimation(this.xke);
+          this.Jnu.layout(this.mRect.left, this.mRect.top, this.mRect.right, this.mRect.bottom);
           this.mRect.setEmpty();
           break;
         }

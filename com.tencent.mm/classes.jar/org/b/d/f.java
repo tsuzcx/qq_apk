@@ -15,14 +15,14 @@ import org.b.b.b;
 
 class f
 {
-  private String FaF;
-  private j Mbi;
-  private e Mbj;
-  private e Mbk;
-  private byte[] Mbl;
-  private boolean Mbm;
-  private Long Mbn;
-  private Long Mbo;
+  private String GKe;
+  private j NWk;
+  private e NWl;
+  private e NWm;
+  private byte[] NWn;
+  private boolean NWo;
+  private Long NWp;
+  private Long NWq;
   private String charset;
   private HttpURLConnection connection;
   private Map<String, String> headers;
@@ -31,15 +31,15 @@ class f
   public f(j paramj, String paramString)
   {
     AppMethodBeat.i(40519);
-    this.FaF = null;
-    this.Mbl = null;
-    this.Mbm = false;
-    this.Mbn = null;
-    this.Mbo = null;
-    this.Mbi = paramj;
+    this.GKe = null;
+    this.NWn = null;
+    this.NWo = false;
+    this.NWp = null;
+    this.NWq = null;
+    this.NWk = paramj;
     this.url = paramString;
-    this.Mbj = new e();
-    this.Mbk = new e();
+    this.NWl = new e();
+    this.NWm = new e();
     this.headers = new HashMap();
     AppMethodBeat.o(40519);
   }
@@ -60,26 +60,26 @@ class f
     }
   }
   
-  private byte[] gga()
+  private byte[] gyE()
   {
     AppMethodBeat.i(40527);
-    if (this.Mbl != null)
+    if (this.NWn != null)
     {
-      localObject = this.Mbl;
+      localObject = this.NWn;
       AppMethodBeat.o(40527);
       return localObject;
     }
-    if (this.FaF != null) {}
-    for (Object localObject = this.FaF;; localObject = this.Mbk.gfZ()) {
+    if (this.GKe != null) {}
+    for (Object localObject = this.GKe;; localObject = this.NWm.gyD()) {
       try
       {
-        localObject = ((String)localObject).getBytes(gfU());
+        localObject = ((String)localObject).getBytes(gyy());
         AppMethodBeat.o(40527);
         return localObject;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        b localb = new b("Unsupported Charset: " + gfU(), localUnsupportedEncodingException);
+        b localb = new b("Unsupported Charset: " + gyy(), localUnsupportedEncodingException);
         AppMethodBeat.o(40527);
         throw localb;
       }
@@ -98,14 +98,27 @@ class f
     return this.url;
   }
   
-  public e gfR()
+  public e gyA()
+  {
+    return this.NWm;
+  }
+  
+  public String gyB()
+  {
+    AppMethodBeat.i(40526);
+    String str = this.url.replaceAll("\\?.*", "").replace("\\:\\d{4}", "");
+    AppMethodBeat.o(40526);
+    return str;
+  }
+  
+  public e gyv()
   {
     AppMethodBeat.i(40525);
     try
     {
       e locale = new e();
-      locale.aXF(new URL(this.url).getQuery());
-      locale.a(this.Mbj);
+      locale.beb(new URL(this.url).getQuery());
+      locale.a(this.NWl);
       AppMethodBeat.o(40525);
       return locale;
     }
@@ -117,18 +130,18 @@ class f
     }
   }
   
-  public j gfS()
+  public j gyw()
   {
-    return this.Mbi;
+    return this.NWk;
   }
   
-  public String gfT()
+  public String gyx()
   {
     AppMethodBeat.i(40521);
-    Object localObject2 = this.Mbj;
+    Object localObject2 = this.NWl;
     Object localObject1 = this.url;
     org.b.g.d.j(localObject1, "Cannot append to null URL");
-    localObject2 = ((e)localObject2).gfZ();
+    localObject2 = ((e)localObject2).gyD();
     if (((String)localObject2).equals(""))
     {
       AppMethodBeat.o(40521);
@@ -144,7 +157,7 @@ class f
     }
   }
   
-  public String gfU()
+  public String gyy()
   {
     AppMethodBeat.i(40528);
     if (this.charset == null)
@@ -159,119 +172,119 @@ class f
   }
   
   /* Error */
-  public g gfV()
+  public g gyz()
   {
     // Byte code:
-    //   0: ldc 219
+    //   0: ldc 234
     //   2: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokevirtual 221	org/b/d/f:gfT	()Ljava/lang/String;
+    //   6: invokevirtual 236	org/b/d/f:gyx	()Ljava/lang/String;
     //   9: astore_2
     //   10: aload_0
-    //   11: getfield 223	org/b/d/f:connection	Ljava/net/HttpURLConnection;
+    //   11: getfield 238	org/b/d/f:connection	Ljava/net/HttpURLConnection;
     //   14: ifnonnull +38 -> 52
     //   17: aload_0
-    //   18: getfield 43	org/b/d/f:Mbm	Z
+    //   18: getfield 43	org/b/d/f:NWo	Z
     //   21: ifeq +195 -> 216
-    //   24: ldc 225
+    //   24: ldc 240
     //   26: astore_1
-    //   27: ldc 227
+    //   27: ldc 242
     //   29: aload_1
-    //   30: invokestatic 233	java/lang/System:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   30: invokestatic 247	java/lang/System:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   33: pop
     //   34: aload_0
-    //   35: new 153	java/net/URL
+    //   35: new 170	java/net/URL
     //   38: dup
     //   39: aload_2
-    //   40: invokespecial 154	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   43: invokevirtual 237	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   40: invokespecial 171	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   43: invokevirtual 251	java/net/URL:openConnection	()Ljava/net/URLConnection;
     //   46: checkcast 100	java/net/HttpURLConnection
-    //   49: putfield 223	org/b/d/f:connection	Ljava/net/HttpURLConnection;
+    //   49: putfield 238	org/b/d/f:connection	Ljava/net/HttpURLConnection;
     //   52: aload_0
-    //   53: getfield 223	org/b/d/f:connection	Ljava/net/HttpURLConnection;
+    //   53: getfield 238	org/b/d/f:connection	Ljava/net/HttpURLConnection;
     //   56: aload_0
-    //   57: getfield 49	org/b/d/f:Mbi	Lorg/b/d/j;
-    //   60: invokevirtual 240	org/b/d/j:name	()Ljava/lang/String;
-    //   63: invokevirtual 243	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   57: getfield 49	org/b/d/f:NWk	Lorg/b/d/j;
+    //   60: invokevirtual 254	org/b/d/j:name	()Ljava/lang/String;
+    //   63: invokevirtual 257	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   66: aload_0
-    //   67: getfield 45	org/b/d/f:Mbn	Ljava/lang/Long;
+    //   67: getfield 45	org/b/d/f:NWp	Ljava/lang/Long;
     //   70: ifnull +17 -> 87
     //   73: aload_0
-    //   74: getfield 223	org/b/d/f:connection	Ljava/net/HttpURLConnection;
+    //   74: getfield 238	org/b/d/f:connection	Ljava/net/HttpURLConnection;
     //   77: aload_0
-    //   78: getfield 45	org/b/d/f:Mbn	Ljava/lang/Long;
-    //   81: invokevirtual 249	java/lang/Long:intValue	()I
-    //   84: invokevirtual 252	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   78: getfield 45	org/b/d/f:NWp	Ljava/lang/Long;
+    //   81: invokevirtual 263	java/lang/Long:intValue	()I
+    //   84: invokevirtual 266	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   87: aload_0
-    //   88: getfield 47	org/b/d/f:Mbo	Ljava/lang/Long;
+    //   88: getfield 47	org/b/d/f:NWq	Ljava/lang/Long;
     //   91: ifnull +17 -> 108
     //   94: aload_0
-    //   95: getfield 223	org/b/d/f:connection	Ljava/net/HttpURLConnection;
+    //   95: getfield 238	org/b/d/f:connection	Ljava/net/HttpURLConnection;
     //   98: aload_0
-    //   99: getfield 47	org/b/d/f:Mbo	Ljava/lang/Long;
-    //   102: invokevirtual 249	java/lang/Long:intValue	()I
-    //   105: invokevirtual 255	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   99: getfield 47	org/b/d/f:NWq	Ljava/lang/Long;
+    //   102: invokevirtual 263	java/lang/Long:intValue	()I
+    //   105: invokevirtual 269	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   108: aload_0
     //   109: aload_0
-    //   110: getfield 223	org/b/d/f:connection	Ljava/net/HttpURLConnection;
-    //   113: invokespecial 257	org/b/d/f:g	(Ljava/net/HttpURLConnection;)V
+    //   110: getfield 238	org/b/d/f:connection	Ljava/net/HttpURLConnection;
+    //   113: invokespecial 271	org/b/d/f:g	(Ljava/net/HttpURLConnection;)V
     //   116: aload_0
-    //   117: getfield 49	org/b/d/f:Mbi	Lorg/b/d/j;
-    //   120: getstatic 260	org/b/d/j:Mbv	Lorg/b/d/j;
-    //   123: invokevirtual 261	org/b/d/j:equals	(Ljava/lang/Object;)Z
+    //   117: getfield 49	org/b/d/f:NWk	Lorg/b/d/j;
+    //   120: getstatic 274	org/b/d/j:NWx	Lorg/b/d/j;
+    //   123: invokevirtual 275	org/b/d/j:equals	(Ljava/lang/Object;)Z
     //   126: ifne +16 -> 142
     //   129: aload_0
-    //   130: getfield 49	org/b/d/f:Mbi	Lorg/b/d/j;
-    //   133: getstatic 264	org/b/d/j:Mbu	Lorg/b/d/j;
-    //   136: invokevirtual 261	org/b/d/j:equals	(Ljava/lang/Object;)Z
+    //   130: getfield 49	org/b/d/f:NWk	Lorg/b/d/j;
+    //   133: getstatic 278	org/b/d/j:NWw	Lorg/b/d/j;
+    //   136: invokevirtual 275	org/b/d/j:equals	(Ljava/lang/Object;)Z
     //   139: ifeq +58 -> 197
     //   142: aload_0
-    //   143: getfield 223	org/b/d/f:connection	Ljava/net/HttpURLConnection;
+    //   143: getfield 238	org/b/d/f:connection	Ljava/net/HttpURLConnection;
     //   146: astore_1
     //   147: aload_0
-    //   148: invokespecial 266	org/b/d/f:gga	()[B
+    //   148: invokespecial 280	org/b/d/f:gyE	()[B
     //   151: astore_2
     //   152: aload_1
-    //   153: ldc_w 268
+    //   153: ldc_w 282
     //   156: aload_2
     //   157: arraylength
-    //   158: invokestatic 271	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   158: invokestatic 285	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   161: invokevirtual 104	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   164: aload_1
-    //   165: ldc_w 273
-    //   168: invokevirtual 277	java/net/HttpURLConnection:getRequestProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   165: ldc_w 287
+    //   168: invokevirtual 291	java/net/HttpURLConnection:getRequestProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   171: ifnonnull +13 -> 184
     //   174: aload_1
-    //   175: ldc_w 273
-    //   178: ldc_w 279
+    //   175: ldc_w 287
+    //   178: ldc_w 293
     //   181: invokevirtual 104	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   184: aload_1
     //   185: iconst_1
-    //   186: invokevirtual 283	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   186: invokevirtual 297	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   189: aload_1
-    //   190: invokevirtual 287	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   190: invokevirtual 301	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
     //   193: aload_2
-    //   194: invokevirtual 293	java/io/OutputStream:write	([B)V
-    //   197: new 295	org/b/d/g
+    //   194: invokevirtual 307	java/io/OutputStream:write	([B)V
+    //   197: new 309	org/b/d/g
     //   200: dup
     //   201: aload_0
-    //   202: getfield 223	org/b/d/f:connection	Ljava/net/HttpURLConnection;
-    //   205: invokespecial 297	org/b/d/g:<init>	(Ljava/net/HttpURLConnection;)V
+    //   202: getfield 238	org/b/d/f:connection	Ljava/net/HttpURLConnection;
+    //   205: invokespecial 311	org/b/d/g:<init>	(Ljava/net/HttpURLConnection;)V
     //   208: astore_1
-    //   209: ldc 219
+    //   209: ldc 234
     //   211: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   214: aload_1
     //   215: areturn
-    //   216: ldc_w 299
+    //   216: ldc_w 313
     //   219: astore_1
     //   220: goto -193 -> 27
     //   223: astore_1
-    //   224: new 301	org/b/b/a
+    //   224: new 315	org/b/b/a
     //   227: dup
     //   228: aload_1
-    //   229: invokespecial 304	org/b/b/a:<init>	(Ljava/lang/Exception;)V
+    //   229: invokespecial 318	org/b/b/a:<init>	(Ljava/lang/Exception;)V
     //   232: astore_1
-    //   233: ldc 219
+    //   233: ldc 234
     //   235: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   238: aload_1
     //   239: athrow
@@ -294,30 +307,17 @@ class f
     //   197	209	223	java/lang/Exception
   }
   
-  public e gfW()
-  {
-    return this.Mbk;
-  }
-  
-  public String gfX()
-  {
-    AppMethodBeat.i(40526);
-    String str = this.url.replaceAll("\\?.*", "").replace("\\:\\d{4}", "");
-    AppMethodBeat.o(40526);
-    return str;
-  }
-  
-  public void no(String paramString1, String paramString2)
+  public void nN(String paramString1, String paramString2)
   {
     AppMethodBeat.i(40524);
-    this.Mbj.Mbh.add(new d(paramString1, paramString2));
+    this.NWl.NWj.add(new d(paramString1, paramString2));
     AppMethodBeat.o(40524);
   }
   
   public String toString()
   {
     AppMethodBeat.i(40529);
-    String str = String.format("@Request(%s %s)", new Object[] { gfS(), getUrl() });
+    String str = String.format("@Request(%s %s)", new Object[] { gyw(), getUrl() });
     AppMethodBeat.o(40529);
     return str;
   }

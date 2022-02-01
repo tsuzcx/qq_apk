@@ -16,19 +16,19 @@ import java.util.Map;
 
 final class a
 {
-  private final boolean aAM;
-  final Handler aAO;
-  final Map<h, b> aDR;
-  o.a aDS;
-  ReferenceQueue<o<?>> aDT;
-  private Thread aDU;
-  volatile boolean aDV;
-  volatile a aDW;
+  private final boolean aCD;
+  final Handler aCF;
+  final Map<h, b> aFI;
+  o.a aFJ;
+  ReferenceQueue<o<?>> aFK;
+  private Thread aFL;
+  volatile boolean aFM;
+  volatile a aFN;
   
   a(boolean paramBoolean)
   {
     AppMethodBeat.i(76918);
-    this.aAO = new Handler(Looper.getMainLooper(), new Handler.Callback()
+    this.aCF = new Handler(Looper.getMainLooper(), new Handler.Callback()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
@@ -43,46 +43,46 @@ final class a
         return false;
       }
     });
-    this.aDR = new HashMap();
-    this.aAM = paramBoolean;
+    this.aFI = new HashMap();
+    this.aCD = paramBoolean;
     AppMethodBeat.o(76918);
   }
   
   final void a(b paramb)
   {
     AppMethodBeat.i(76920);
-    j.qa();
-    this.aDR.remove(paramb.aDY);
-    if ((!paramb.aDZ) || (paramb.aEa == null))
+    j.qs();
+    this.aFI.remove(paramb.aFP);
+    if ((!paramb.aFQ) || (paramb.aFR == null))
     {
       AppMethodBeat.o(76920);
       return;
     }
-    o localo = new o(paramb.aEa, true, false);
-    localo.a(paramb.aDY, this.aDS);
-    this.aDS.b(paramb.aDY, localo);
+    o localo = new o(paramb.aFR, true, false);
+    localo.a(paramb.aFP, this.aFJ);
+    this.aFJ.b(paramb.aFP, localo);
     AppMethodBeat.o(76920);
   }
   
   final void a(h paramh, o<?> paramo)
   {
     AppMethodBeat.i(76919);
-    if (this.aDT == null)
+    if (this.aFK == null)
     {
-      this.aDT = new ReferenceQueue();
-      this.aDU = new Thread(new Runnable()
+      this.aFK = new ReferenceQueue();
+      this.aFL = new Thread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(76915);
           Process.setThreadPriority(10);
           a locala = a.this;
-          while (!locala.aDV) {
+          while (!locala.aFM) {
             try
             {
-              Object localObject = (a.b)locala.aDT.remove();
-              locala.aAO.obtainMessage(1, localObject).sendToTarget();
-              localObject = locala.aDW;
+              Object localObject = (a.b)locala.aFK.remove();
+              locala.aCF.obtainMessage(1, localObject).sendToTarget();
+              localObject = locala.aFN;
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -92,10 +92,10 @@ final class a
           AppMethodBeat.o(76915);
         }
       }, "glide-active-resources");
-      this.aDU.start();
+      this.aFL.start();
     }
-    paramo = new b(paramh, paramo, this.aDT, this.aAM);
-    paramh = (b)this.aDR.put(paramh, paramo);
+    paramo = new b(paramh, paramo, this.aFK, this.aCD);
+    paramh = (b)this.aFI.put(paramh, paramo);
     if (paramh != null) {
       paramh.reset();
     }
@@ -107,20 +107,20 @@ final class a
   static final class b
     extends WeakReference<o<?>>
   {
-    final h aDY;
-    final boolean aDZ;
-    u<?> aEa;
+    final h aFP;
+    final boolean aFQ;
+    u<?> aFR;
     
     b(h paramh, o<?> paramo, ReferenceQueue<? super o<?>> paramReferenceQueue, boolean paramBoolean)
     {
       super(paramReferenceQueue);
       AppMethodBeat.i(76916);
-      this.aDY = ((h)i.checkNotNull(paramh, "Argument must not be null"));
-      if ((paramo.aDZ) && (paramBoolean)) {}
-      for (paramh = (u)i.checkNotNull(paramo.aEa, "Argument must not be null");; paramh = null)
+      this.aFP = ((h)i.checkNotNull(paramh, "Argument must not be null"));
+      if ((paramo.aFQ) && (paramBoolean)) {}
+      for (paramh = (u)i.checkNotNull(paramo.aFR, "Argument must not be null");; paramh = null)
       {
-        this.aEa = paramh;
-        this.aDZ = paramo.aDZ;
+        this.aFR = paramh;
+        this.aFQ = paramo.aFQ;
         AppMethodBeat.o(76916);
         return;
       }
@@ -129,7 +129,7 @@ final class a
     final void reset()
     {
       AppMethodBeat.i(76917);
-      this.aEa = null;
+      this.aFR = null;
       clear();
       AppMethodBeat.o(76917);
     }

@@ -17,39 +17,39 @@ import java.util.List;
 public class b
   implements a.c
 {
-  private final LongSparseArray<List<c.b>> csl = new LongSparseArray();
-  private d.b csm = null;
-  private int csn = 0;
-  private long cso = 0L;
+  private final LongSparseArray<List<c.b>> cDh = new LongSparseArray();
+  private d.b cDi = null;
+  private int cDj = 0;
+  private long cDk = 0L;
   
-  public void GK()
+  public void If()
   {
-    Object localObject = (a)com.tencent.matrix.b.Gq().V(a.class);
+    Object localObject = (a)com.tencent.matrix.b.HL().V(a.class);
     if (localObject != null)
     {
       localObject = (d)((a)localObject).W(d.class);
       if (localObject != null) {
-        this.csm = ((d)localObject).GR();
+        this.cDi = ((d)localObject).Im();
       }
     }
   }
   
-  public void GL()
+  public void Ig()
   {
-    Object localObject = (a)com.tencent.matrix.b.Gq().V(a.class);
+    Object localObject = (a)com.tencent.matrix.b.HL().V(a.class);
     if (localObject != null)
     {
       localObject = (d)((a)localObject).W(d.class);
-      if ((localObject != null) && (this.csm != null))
+      if ((localObject != null) && (this.cDi != null))
       {
-        localObject = ((d)localObject).GR();
-        this.csn = (((d.b)localObject).csP - this.csm.csP);
-        this.cso = (((d.b)localObject).csN - this.csm.csN);
+        localObject = ((d)localObject).Im();
+        this.cDj = (((d.b)localObject).cDL - this.cDi.cDL);
+        this.cDk = (((d.b)localObject).cDJ - this.cDi.cDJ);
       }
     }
   }
   
-  public StringBuilder GM()
+  public StringBuilder Ih()
   {
     return new StringBuilder();
   }
@@ -58,32 +58,32 @@ public class b
   {
     StringBuilder localStringBuilder = new StringBuilder("\t\n");
     localStringBuilder.append("****************************************** PowerTest *****************************************\n");
-    localStringBuilder.append("| pid=").append(Process.myPid()).append("\t\tisForeground=").append(???.cqM).append("\t\tduring(min)=").append(???.csw / 60000L).append("<").append(???.csv / 60000L).append("\t\tdiff(jiffies)=").append(???.csu).append("\t\taverage(jiffies/min)=").append(???.csu / Math.max(1L, ???.csw / 60000L)).append("\n");
+    localStringBuilder.append("| pid=").append(Process.myPid()).append("\t\tisForeground=").append(???.cBJ).append("\t\tduring(min)=").append(???.cDs / 60000L).append("<").append(???.cDr / 60000L).append("\t\tdiff(jiffies)=").append(???.cDq).append("\t\taverage(jiffies/min)=").append(???.cDq / Math.max(1L, ???.cDs / 60000L)).append("\n");
     localStringBuilder.append("==============================================================================================\n");
-    ??? = ???.csx.subList(0, Math.min(???.csx.size(), 8)).iterator();
+    ??? = ???.cDt.subList(0, Math.min(???.cDt.size(), 8)).iterator();
     for (;;)
     {
       Object localObject2;
       if (???.hasNext())
       {
         localObject2 = (b.e)???.next();
-        if (((b.e)localObject2).csE <= 0L) {
+        if (((b.e)localObject2).cDA <= 0L) {
           localStringBuilder.append("|\t\t......\n");
         }
       }
       else
       {
-        localStringBuilder.append("| -> incrementWakeCount=").append(this.csn).append(" sumWakeTime=").append(this.cso).append("ms\n");
-        localStringBuilder.append(GM());
+        localStringBuilder.append("| -> incrementWakeCount=").append(this.cDj).append(" sumWakeTime=").append(this.cDk).append("ms\n");
+        localStringBuilder.append(Ih());
         localStringBuilder.append("**********************************************************************************************");
         c.i("Matrix.BatteryPrinter", "%s", new Object[] { localStringBuilder.toString() });
       }
-      synchronized (this.csl)
+      synchronized (this.cDh)
       {
-        this.csl.clear();
+        this.cDh.clear();
         return;
         localStringBuilder.append("| -> ").append(localObject2).append("\n");
-        localObject2 = (List)this.csl.get(((b.e)localObject2).csD.tid);
+        localObject2 = (List)this.cDh.get(((b.e)localObject2).cDz.tid);
         if ((localObject2 == null) || (((List)localObject2).isEmpty())) {
           continue;
         }
@@ -100,9 +100,9 @@ public class b
   public final void a(Thread paramThread, List<c.b> paramList)
   {
     if ((paramThread instanceof HandlerThread)) {
-      synchronized (this.csl)
+      synchronized (this.cDh)
       {
-        this.csl.put(((HandlerThread)paramThread).getThreadId(), paramList);
+        this.cDh.put(((HandlerThread)paramThread).getThreadId(), paramList);
         return;
       }
     }

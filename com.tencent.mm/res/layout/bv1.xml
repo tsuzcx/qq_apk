@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.view.TouchableLayout android:id="@id/b39" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/hwe" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/f31" android:layout_width="fill_parent" android:layout_height="wrap_content" app:loadMoreLayout="@layout/bv2">
+            <android.support.v7.widget.RecyclerView android:id="@id/hwf" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </FrameLayout>
+</com.tencent.mm.view.TouchableLayout>

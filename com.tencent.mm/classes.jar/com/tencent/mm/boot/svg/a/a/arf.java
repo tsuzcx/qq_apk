@@ -14,7 +14,7 @@ public final class arf
   extends c
 {
   private final int height = 72;
-  private final int width = 72;
+  private final int width = 36;
   
   public final int a(int paramInt, Object... paramVarArgs)
   {
@@ -24,7 +24,7 @@ public final class arf
     for (;;)
     {
       return 0;
-      return 72;
+      return 36;
       return 72;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
@@ -48,28 +48,16 @@ public final class arf
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
       localObject = c.n(paramVarArgs);
-      ((Path)localObject).moveTo(36.0F, 66.0F);
-      ((Path)localObject).cubicTo(19.431458F, 66.0F, 6.0F, 52.568542F, 6.0F, 36.0F);
-      ((Path)localObject).cubicTo(6.0F, 19.431458F, 19.431458F, 6.0F, 36.0F, 6.0F);
-      ((Path)localObject).cubicTo(52.568542F, 6.0F, 66.0F, 19.431458F, 66.0F, 36.0F);
-      ((Path)localObject).cubicTo(66.0F, 52.568542F, 52.568542F, 66.0F, 36.0F, 66.0F);
+      ((Path)localObject).moveTo(30.0F, 58.3125F);
+      ((Path)localObject).lineTo(26.863596F, 61.5F);
+      ((Path)localObject).lineTo(3.879233F, 38.141186F);
+      ((Path)localObject).cubicTo(2.715646F, 36.958641F, 2.710184F, 35.046909F, 3.879233F, 33.858814F);
+      ((Path)localObject).lineTo(26.863596F, 10.5F);
+      ((Path)localObject).lineTo(30.0F, 13.6875F);
+      ((Path)localObject).lineTo(8.045178F, 36.0F);
+      ((Path)localObject).lineTo(30.0F, 58.3125F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(36.0F, 62.400002F);
-      ((Path)localObject).cubicTo(50.580318F, 62.400002F, 62.400002F, 50.580318F, 62.400002F, 36.0F);
-      ((Path)localObject).cubicTo(62.400002F, 21.419683F, 50.580318F, 9.6F, 36.0F, 9.6F);
-      ((Path)localObject).cubicTo(21.419683F, 9.6F, 9.6F, 21.419683F, 9.6F, 36.0F);
-      ((Path)localObject).cubicTo(9.6F, 50.580318F, 21.419683F, 62.400002F, 36.0F, 62.400002F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(32.485283F, 43.674976F);
-      ((Path)localObject).lineTo(49.910259F, 26.25F);
-      ((Path)localObject).lineTo(52.455845F, 28.795584F);
-      ((Path)localObject).lineTo(34.606602F, 46.644829F);
-      ((Path)localObject).cubicTo(33.435028F, 47.816399F, 31.535534F, 47.816399F, 30.363962F, 46.644829F);
-      ((Path)localObject).lineTo(21.0F, 37.280865F);
-      ((Path)localObject).lineTo(23.545584F, 34.735279F);
-      ((Path)localObject).lineTo(32.485283F, 43.674976F);
-      ((Path)localObject).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
       localCanvas.drawPath((Path)localObject, localPaint);
       localCanvas.restore();
       c.l(paramVarArgs);
@@ -78,7 +66,7 @@ public final class arf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.arf
  * JD-Core Version:    0.7.0.1
  */

@@ -6,10 +6,10 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hc;
+import com.tencent.mm.g.c.hm;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.stubs.logger.Log;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -24,109 +24,109 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class WxaAttributes
-  extends hc
+  extends hm
 {
-  public static final c.a jmW;
-  private a jFn;
-  private c jFo;
-  private WxaVersionInfo jFp;
-  private List<WxaEntryInfo> jFq = null;
-  private b jFr;
+  public static final c.a jGU;
+  private a jZs;
+  private c jZt;
+  private WxaVersionInfo jZu;
+  private List<WxaEntryInfo> jZv = null;
+  private b jZw;
   
   static
   {
     AppMethodBeat.i(123525);
     c.a locala = new c.a();
-    locala.GvF = new Field[21];
+    locala.IhA = new Field[21];
     locala.columns = new String[22];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "usernameHash";
-    locala.GvH.put("usernameHash", "INTEGER PRIMARY KEY ");
+    locala.IhC.put("usernameHash", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" usernameHash INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "usernameHash";
+    locala.IhB = "usernameHash";
     locala.columns[1] = "username";
-    locala.GvH.put("username", "TEXT");
+    locala.IhC.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "appId";
-    locala.GvH.put("appId", "TEXT");
+    locala.IhC.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "nickname";
-    locala.GvH.put("nickname", "TEXT");
+    locala.IhC.put("nickname", "TEXT");
     localStringBuilder.append(" nickname TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "shortNickname";
-    locala.GvH.put("shortNickname", "TEXT");
+    locala.IhC.put("shortNickname", "TEXT");
     localStringBuilder.append(" shortNickname TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "brandIconURL";
-    locala.GvH.put("brandIconURL", "TEXT");
+    locala.IhC.put("brandIconURL", "TEXT");
     localStringBuilder.append(" brandIconURL TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "roundedSquareIconURL";
-    locala.GvH.put("roundedSquareIconURL", "TEXT");
+    locala.IhC.put("roundedSquareIconURL", "TEXT");
     localStringBuilder.append(" roundedSquareIconURL TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "bigHeadURL";
-    locala.GvH.put("bigHeadURL", "TEXT");
+    locala.IhC.put("bigHeadURL", "TEXT");
     localStringBuilder.append(" bigHeadURL TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "smallHeadURL";
-    locala.GvH.put("smallHeadURL", "TEXT");
+    locala.IhC.put("smallHeadURL", "TEXT");
     localStringBuilder.append(" smallHeadURL TEXT");
     localStringBuilder.append(", ");
     locala.columns[9] = "signature";
-    locala.GvH.put("signature", "TEXT");
+    locala.IhC.put("signature", "TEXT");
     localStringBuilder.append(" signature TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "appOpt";
-    locala.GvH.put("appOpt", "INTEGER default '0' ");
+    locala.IhC.put("appOpt", "INTEGER default '0' ");
     localStringBuilder.append(" appOpt INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[11] = "registerSource";
-    locala.GvH.put("registerSource", "TEXT");
+    locala.IhC.put("registerSource", "TEXT");
     localStringBuilder.append(" registerSource TEXT");
     localStringBuilder.append(", ");
     locala.columns[12] = "appInfo";
-    locala.GvH.put("appInfo", "TEXT");
+    locala.IhC.put("appInfo", "TEXT");
     localStringBuilder.append(" appInfo TEXT");
     localStringBuilder.append(", ");
     locala.columns[13] = "versionInfo";
-    locala.GvH.put("versionInfo", "TEXT");
+    locala.IhC.put("versionInfo", "TEXT");
     localStringBuilder.append(" versionInfo TEXT");
     localStringBuilder.append(", ");
     locala.columns[14] = "passThroughInfo";
-    locala.GvH.put("passThroughInfo", "TEXT");
+    locala.IhC.put("passThroughInfo", "TEXT");
     localStringBuilder.append(" passThroughInfo TEXT");
     localStringBuilder.append(", ");
     locala.columns[15] = "bindWxaInfo";
-    locala.GvH.put("bindWxaInfo", "TEXT");
+    locala.IhC.put("bindWxaInfo", "TEXT");
     localStringBuilder.append(" bindWxaInfo TEXT");
     localStringBuilder.append(", ");
     locala.columns[16] = "dynamicInfo";
-    locala.GvH.put("dynamicInfo", "TEXT");
+    locala.IhC.put("dynamicInfo", "TEXT");
     localStringBuilder.append(" dynamicInfo TEXT");
     localStringBuilder.append(", ");
     locala.columns[17] = "reserved";
-    locala.GvH.put("reserved", "TEXT");
+    locala.IhC.put("reserved", "TEXT");
     localStringBuilder.append(" reserved TEXT");
     localStringBuilder.append(", ");
     locala.columns[18] = "syncTimeSecond";
-    locala.GvH.put("syncTimeSecond", "LONG default '0' ");
+    locala.IhC.put("syncTimeSecond", "LONG default '0' ");
     localStringBuilder.append(" syncTimeSecond LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[19] = "syncVersion";
-    locala.GvH.put("syncVersion", "TEXT");
+    locala.IhC.put("syncVersion", "TEXT");
     localStringBuilder.append(" syncVersion TEXT");
     localStringBuilder.append(", ");
     locala.columns[20] = "bizMenu";
-    locala.GvH.put("bizMenu", "TEXT");
+    locala.IhC.put("bizMenu", "TEXT");
     localStringBuilder.append(" bizMenu TEXT");
     locala.columns[21] = "rowid";
     locala.sql = localStringBuilder.toString();
-    jmW = locala;
+    jGU = locala;
     AppMethodBeat.o(123525);
   }
   
@@ -153,9 +153,9 @@ public final class WxaAttributes
           locala.type = ((JSONObject)localObject).optInt("type");
           JSONObject localJSONObject = new JSONObject(((JSONObject)localObject).optString("value", ""));
           locala.userName = localJSONObject.optString("userName", "");
-          locala.cYQ = localJSONObject.optString("pagePath", "");
+          locala.dki = localJSONObject.optString("pagePath", "");
           locala.version = localJSONObject.optInt("version");
-          locala.jFB = k(((JSONObject)localObject).optJSONArray("sub_button_list"));
+          locala.jZG = k(((JSONObject)localObject).optJSONArray("sub_button_list"));
           localArrayList.add(locala);
           i += 1;
         }
@@ -171,23 +171,23 @@ public final class WxaAttributes
     return localObject;
   }
   
-  public final a baL()
+  public final a bel()
   {
     AppMethodBeat.i(123518);
-    if (this.jFn == null) {
-      this.jFn = a.Kw(this.field_appInfo);
+    if (this.jZs == null) {
+      this.jZs = a.NP(this.field_appInfo);
     }
-    a locala = this.jFn;
+    a locala = this.jZs;
     AppMethodBeat.o(123518);
     return locala;
   }
   
-  public final c baM()
+  public final c bem()
   {
     boolean bool2 = true;
     int i = 0;
     AppMethodBeat.i(123519);
-    if (this.jFo == null) {
+    if (this.jZt == null) {
       try
       {
         Object localObject1 = new JSONObject(this.field_dynamicInfo);
@@ -195,80 +195,85 @@ public final class WxaAttributes
         if (localObject1 == null) {
           localObject2 = new JSONObject();
         }
-        this.jFo = new c();
+        this.jZt = new c();
         Object localObject3 = ((JSONObject)localObject2).optJSONObject("NewSetting");
         localObject1 = localObject3;
         if (localObject3 == null) {
           localObject1 = new JSONObject();
         }
-        this.jFo.jFC.ccL = ((JSONObject)localObject1).optInt("MaxLocalstorageSize", 5);
-        this.jFo.jFC.jFE = ((JSONObject)localObject1).optInt("OpendataMaxLocalstorageSize", 5);
-        this.jFo.jFC.jFF = ((JSONObject)localObject1).optInt("MaxCodeSize", 5);
-        this.jFo.jFC.jDZ = ((JSONObject)localObject1).optInt("ExpendedMaxWebviewDepth", 5);
-        this.jFo.jFC.ccu = ((JSONObject)localObject1).optInt("MaxBackgroundLifespan", 600);
-        this.jFo.jFC.ccv = ((JSONObject)localObject1).optInt("MaxRequestConcurrent", 5);
-        this.jFo.jFC.ccw = ((JSONObject)localObject1).optInt("MaxUploadConcurrent", 5);
-        this.jFo.jFC.ccx = ((JSONObject)localObject1).optInt("MaxDownloadConcurrent", 5);
-        this.jFo.jFC.ccy = ((JSONObject)localObject1).optInt("MaxWebsocketConnect", 2);
-        this.jFo.jFC.ccz = ((JSONObject)localObject1).optInt("MaxWorkerConcurrent", 1);
-        localObject3 = this.jFo.jFC;
+        this.jZt.jZH.cnc = ((JSONObject)localObject1).optInt("MaxLocalstorageSize", 5);
+        this.jZt.jZH.jZJ = ((JSONObject)localObject1).optInt("OpendataMaxLocalstorageSize", 5);
+        this.jZt.jZH.jZK = ((JSONObject)localObject1).optInt("MaxCodeSize", 5);
+        this.jZt.jZH.jYa = ((JSONObject)localObject1).optInt("ExpendedMaxWebviewDepth", 5);
+        this.jZt.jZH.cmL = ((JSONObject)localObject1).optInt("MaxBackgroundLifespan", 600);
+        this.jZt.jZH.cmM = ((JSONObject)localObject1).optInt("MaxRequestConcurrent", 5);
+        this.jZt.jZH.cmN = ((JSONObject)localObject1).optInt("MaxUploadConcurrent", 5);
+        this.jZt.jZH.cmO = ((JSONObject)localObject1).optInt("MaxDownloadConcurrent", 5);
+        this.jZt.jZH.cmP = ((JSONObject)localObject1).optInt("MaxWebsocketConnect", 2);
+        this.jZt.jZH.cmQ = ((JSONObject)localObject1).optInt("MaxWorkerConcurrent", 1);
+        localObject3 = this.jZt.jZH;
         if (((JSONObject)localObject1).optInt("WebsocketSkipPortCheck", 0) != 0)
         {
           bool1 = true;
-          ((WxaAttributes.c.a)localObject3).ccA = bool1;
-          localObject3 = this.jFo.jFC;
+          ((WxaAttributes.c.a)localObject3).cmR = bool1;
+          localObject3 = this.jZt.jZH;
           if (((JSONObject)localObject1).optInt("TLSSkipHostnameCheck", 0) == 0) {
-            break label726;
+            break label827;
           }
           bool1 = true;
-          ((WxaAttributes.c.a)localObject3).ccB = bool1;
-          this.jFo.jFC.jFG = ((JSONObject)localObject1).optInt("MaxFileStorageSize", 10);
-          this.jFo.jFC.jFH = ((JSONObject)localObject1).optInt("BackgroundNetworkInterruptedTimeout", 5);
-          localObject3 = this.jFo.jFC;
+          ((WxaAttributes.c.a)localObject3).cmS = bool1;
+          this.jZt.jZH.jZL = ((JSONObject)localObject1).optInt("MaxFileStorageSize", 10);
+          this.jZt.jZH.jZM = ((JSONObject)localObject1).optInt("BackgroundNetworkInterruptedTimeout", 5);
+          localObject3 = this.jZt.jZH;
           if (((JSONObject)localObject1).optInt("CanKeepAliveByAudioPlay", 0) <= 0) {
-            break label731;
+            break label832;
           }
           bool1 = true;
-          ((WxaAttributes.c.a)localObject3).jEa = bool1;
-          this.jFo.jFC.jEe = ((JSONObject)localObject1).optInt("LifeSpanBeforeSuspend", 5);
-          this.jFo.jFC.jEf = ((JSONObject)localObject1).optInt("LifeSpanAfterSuspend", 300);
-          localObject3 = this.jFo.jFC;
+          ((WxaAttributes.c.a)localObject3).jYb = bool1;
+          this.jZt.jZH.jYf = ((JSONObject)localObject1).optInt("LifeSpanBeforeSuspend", 5);
+          this.jZt.jZH.jYg = ((JSONObject)localObject1).optInt("LifeSpanAfterSuspend", 300);
+          localObject3 = this.jZt.jZH;
           if (((JSONObject)localObject1).optInt("ScanCodeEnableZZM", 0) == 0) {
-            break label736;
+            break label837;
           }
           bool1 = true;
-          ((WxaAttributes.c.a)localObject3).ccJ = bool1;
-          localObject3 = this.jFo.jFC;
+          ((WxaAttributes.c.a)localObject3).cna = bool1;
+          localObject3 = this.jZt.jZH;
           if (((JSONObject)localObject1).optInt("CanPreFetchData", 0) <= 0) {
-            break label741;
+            break label842;
           }
           bool1 = true;
-          ((WxaAttributes.c.a)localObject3).jxy = bool1;
-          localObject3 = this.jFo.jFC;
+          ((WxaAttributes.c.a)localObject3).jRu = bool1;
+          localObject3 = this.jZt.jZH;
           if (((JSONObject)localObject1).optInt("CanPeriodFetchData", 0) <= 0) {
-            break label746;
+            break label847;
           }
           bool1 = true;
-          ((WxaAttributes.c.a)localObject3).jxz = bool1;
-          this.jFo.jFC.jxA = ((JSONObject)localObject1).optInt("PeriodFetchData", 0);
-          this.jFo.jFC.jxB = ((JSONObject)localObject1).optInt("PeriodFetchDataDay", 7);
-          this.jFo.jFC.ccR = ((JSONObject)localObject1).optInt("GuaranteeFlag", 0);
-          localObject3 = this.jFo.jFC;
+          ((WxaAttributes.c.a)localObject3).jRv = bool1;
+          this.jZt.jZH.jRw = ((JSONObject)localObject1).optInt("PeriodFetchData", 0);
+          this.jZt.jZH.jRx = ((JSONObject)localObject1).optInt("PeriodFetchDataDay", 7);
+          this.jZt.jZH.jXI = ((JSONObject)localObject1).optInt("GuaranteeFlag", 0);
+          localObject3 = this.jZt.jZH;
           if (((JSONObject)localObject1).optInt("CanShowLoadingAdvert", 0) <= 0) {
-            break label751;
+            break label852;
           }
           bool1 = bool2;
-          ((WxaAttributes.c.a)localObject3).jFI = bool1;
+          ((WxaAttributes.c.a)localObject3).jZN = bool1;
+          this.jZt.jZH.jXJ = ((JSONObject)localObject1).optInt("BrandOfficialLabel", 0);
+          this.jZt.jZH.jZO = ((JSONObject)localObject1).optLong("OpenWxaWaitUpdateMaxMicSec", 13000L);
+          this.jZt.jZH.jZP = ((JSONObject)localObject1).optLong("OpenWxaWaitUpdateMaxMicSecForWeakNet", 10000L);
+          this.jZt.jZH.jZQ = ((JSONObject)localObject1).optLong("OpenWxaWaitUpdateMinMicSec", 0L);
+          this.jZt.jZH.jZR = ((JSONObject)localObject1).optLong("NextTryOpenWxaDisMicSec", 10000L);
           localObject1 = ((JSONObject)localObject2).optJSONArray("NewCategories");
           if (localObject1 == null) {
-            break label756;
+            break label857;
           }
-          this.jFo.jFD = new LinkedList();
+          this.jZt.jZI = new LinkedList();
           while (i < ((JSONArray)localObject1).length())
           {
             localObject2 = ((JSONArray)localObject1).optJSONObject(i);
             if (localObject2 != null) {
-              this.jFo.jFD.add(new Pair(((JSONObject)localObject2).optString("first"), ((JSONObject)localObject2).optString("second")));
+              this.jZt.jZI.add(new Pair(((JSONObject)localObject2).optString("first"), ((JSONObject)localObject2).optString("second")));
             }
             i += 1;
           }
@@ -282,57 +287,57 @@ public final class WxaAttributes
           continue;
           boolean bool1 = false;
           continue;
-          label726:
+          label827:
           bool1 = false;
           continue;
-          label731:
+          label832:
           bool1 = false;
           continue;
-          label736:
+          label837:
           bool1 = false;
           continue;
-          label741:
+          label842:
           bool1 = false;
           continue;
-          label746:
+          label847:
           bool1 = false;
           continue;
-          label751:
+          label852:
           bool1 = false;
         }
       }
     }
-    label756:
-    c localc = this.jFo;
+    label857:
+    c localc = this.jZt;
     AppMethodBeat.o(123519);
     return localc;
   }
   
-  public final WxaVersionInfo baN()
+  public final WxaVersionInfo ben()
   {
     AppMethodBeat.i(123520);
-    if ((this.jFp == null) && (!bs.isNullOrNil(this.field_versionInfo)))
+    if ((this.jZu == null) && (!bt.isNullOrNil(this.field_versionInfo)))
     {
-      localWxaVersionInfo = WxaVersionInfo.Ky(this.field_versionInfo);
-      this.jFp = localWxaVersionInfo;
+      localWxaVersionInfo = WxaVersionInfo.NR(this.field_versionInfo);
+      this.jZu = localWxaVersionInfo;
       AppMethodBeat.o(123520);
       return localWxaVersionInfo;
     }
-    WxaVersionInfo localWxaVersionInfo = this.jFp;
+    WxaVersionInfo localWxaVersionInfo = this.jZu;
     AppMethodBeat.o(123520);
     return localWxaVersionInfo;
   }
   
-  public final List<WxaEntryInfo> baO()
+  public final List<WxaEntryInfo> beo()
   {
     AppMethodBeat.i(123521);
-    if ((this.jFq == null) && (!bs.isNullOrNil(this.field_bindWxaInfo))) {
+    if ((this.jZv == null) && (!bt.isNullOrNil(this.field_bindWxaInfo))) {
       try
       {
         JSONArray localJSONArray = new JSONObject(this.field_bindWxaInfo).optJSONArray("bizEntryInfo");
         if (localJSONArray != null)
         {
-          this.jFq = new LinkedList();
+          this.jZv = new LinkedList();
           int i = 0;
           while (i < localJSONArray.length())
           {
@@ -340,23 +345,23 @@ public final class WxaAttributes
             if (localJSONObject != null)
             {
               String str = localJSONObject.optString("username");
-              if (!bs.isNullOrNil(str))
+              if (!bt.isNullOrNil(str))
               {
                 WxaEntryInfo localWxaEntryInfo = new WxaEntryInfo();
                 localWxaEntryInfo.username = str;
                 localWxaEntryInfo.title = localJSONObject.optString("title");
                 localWxaEntryInfo.iconUrl = localJSONObject.optString("icon_url");
-                this.jFq.add(localWxaEntryInfo);
+                this.jZv.add(localWxaEntryInfo);
               }
             }
             i += 1;
           }
         }
-        localList = this.jFq;
+        localList = this.jZv;
       }
       catch (Exception localException)
       {
-        this.jFq = null;
+        this.jZv = null;
       }
     }
     List localList;
@@ -364,18 +369,18 @@ public final class WxaAttributes
     return localList;
   }
   
-  public final b baP()
+  public final b bep()
   {
     AppMethodBeat.i(123522);
-    if ((this.jFr == null) && (!bs.isNullOrNil(this.field_bizMenu))) {}
+    if ((this.jZw == null) && (!bt.isNullOrNil(this.field_bizMenu))) {}
     try
     {
       Object localObject = new JSONObject(this.field_bizMenu);
-      this.jFr = new b();
-      this.jFr.cFL = ((JSONObject)localObject).optInt("interactive_mode", 0);
-      this.jFr.type = ((JSONObject)localObject).optInt("type", 0);
-      this.jFr.jFA = k(((JSONObject)localObject).optJSONArray("button_list"));
-      localObject = this.jFr;
+      this.jZw = new b();
+      this.jZw.cQQ = ((JSONObject)localObject).optInt("interactive_mode", 0);
+      this.jZw.type = ((JSONObject)localObject).optInt("type", 0);
+      this.jZw.jZF = k(((JSONObject)localObject).optJSONArray("button_list"));
+      localObject = this.jZw;
       AppMethodBeat.o(123522);
       return localObject;
     }
@@ -383,15 +388,15 @@ public final class WxaAttributes
     {
       for (;;)
       {
-        this.jFr = null;
+        this.jZw = null;
       }
     }
   }
   
-  public final void baQ()
+  public final void beq()
   {
     int i = 0;
-    AppMethodBeat.i(194852);
+    AppMethodBeat.i(190974);
     String str1 = String.format(Locale.ENGLISH, ">>>>>> WxaAttributes(%s|%s|%s)START >>>>>>", new Object[] { this.field_username, this.field_appId, this.field_nickname });
     String str2 = ">>> field_appInfo=" + this.field_appInfo;
     String str3 = ">>> field_versionInfo=" + this.field_versionInfo;
@@ -402,24 +407,24 @@ public final class WxaAttributes
       Log.println(4, "MicroMsg.AppBrand.WxaAttributes", new String[] { str1, str2, str3, str4, str5 }[i]);
       i += 1;
     }
-    AppMethodBeat.o(194852);
+    AppMethodBeat.o(190974);
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(123517);
     super.convertFrom(paramCursor);
-    this.jFn = null;
-    this.jFo = null;
-    this.jFp = null;
-    this.jFq = null;
-    this.jFr = null;
+    this.jZs = null;
+    this.jZt = null;
+    this.jZu = null;
+    this.jZv = null;
+    this.jZw = null;
     AppMethodBeat.o(123517);
   }
   
   public final c.a getDBInfo()
   {
-    return jmW;
+    return jGU;
   }
   
   public final String toString()
@@ -435,7 +440,7 @@ public final class WxaAttributes
   {
     public static final Parcelable.Creator<WxaEntryInfo> CREATOR;
     public String iconUrl;
-    public String jFJ;
+    public String jZS;
     public String title;
     public String username;
     
@@ -453,7 +458,7 @@ public final class WxaAttributes
       AppMethodBeat.i(123494);
       this.username = paramParcel.readString();
       this.title = paramParcel.readString();
-      this.jFJ = paramParcel.readString();
+      this.jZS = paramParcel.readString();
       this.iconUrl = paramParcel.readString();
       AppMethodBeat.o(123494);
     }
@@ -468,7 +473,7 @@ public final class WxaAttributes
       AppMethodBeat.i(123493);
       paramParcel.writeString(this.username);
       paramParcel.writeString(this.title);
-      paramParcel.writeString(this.jFJ);
+      paramParcel.writeString(this.jZS);
       paramParcel.writeString(this.iconUrl);
       AppMethodBeat.o(123493);
     }
@@ -479,7 +484,7 @@ public final class WxaAttributes
   {
     public static final Parcelable.Creator<WxaPluginCodeInfo> CREATOR;
     public List<Integer> contexts;
-    public boolean jFK;
+    public boolean jZT;
     public String md5;
     public String prefixPath;
     public String provider;
@@ -510,7 +515,7 @@ public final class WxaAttributes
       if (paramParcel.readByte() == 1) {}
       for (;;)
       {
-        this.jFK = bool;
+        this.jZT = bool;
         if (this.contexts == null) {
           this.contexts = new LinkedList();
         }
@@ -521,10 +526,10 @@ public final class WxaAttributes
       }
     }
     
-    public static List<WxaPluginCodeInfo> Kx(String paramString)
+    public static List<WxaPluginCodeInfo> NQ(String paramString)
     {
       AppMethodBeat.i(123497);
-      if (bs.isNullOrNil(paramString))
+      if (bt.isNullOrNil(paramString))
       {
         AppMethodBeat.o(123497);
         return null;
@@ -560,7 +565,7 @@ public final class WxaAttributes
                 break label291;
               }
               break label279;
-              localWxaPluginCodeInfo.jFK = bool;
+              localWxaPluginCodeInfo.jZT = bool;
               localObject = ((JSONObject)localObject).optJSONArray("contexts");
               if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {
                 break label296;
@@ -585,7 +590,7 @@ public final class WxaAttributes
         }
         catch (JSONException paramString)
         {
-          ac.e("MicroMsg.AppBrand.WxaAttributes.WxaPluginCodeInfo", "parse json array, e = %s", new Object[] { paramString });
+          ad.e("MicroMsg.AppBrand.WxaAttributes.WxaPluginCodeInfo", "parse json array, e = %s", new Object[] { paramString });
           AppMethodBeat.o(123497);
           return null;
         }
@@ -610,10 +615,10 @@ public final class WxaAttributes
       if (paramList != null)
       {
         Iterator localIterator = paramList.iterator();
-        for (paramList = (List<WxaAttributes.WxaWidgetInfo>)localObject; localIterator.hasNext(); paramList = ((WxaAttributes.WxaWidgetInfo)localObject).jGf)
+        for (paramList = (List<WxaAttributes.WxaWidgetInfo>)localObject; localIterator.hasNext(); paramList = ((WxaAttributes.WxaWidgetInfo)localObject).kao)
         {
           localObject = (WxaAttributes.WxaWidgetInfo)localIterator.next();
-          if (((WxaAttributes.WxaWidgetInfo)localObject).dcj != paramInt) {
+          if (((WxaAttributes.WxaWidgetInfo)localObject).dnF != paramInt) {
             break label76;
           }
         }
@@ -622,7 +627,7 @@ public final class WxaAttributes
       {
         localObject = paramList;
         if (paramList == null) {
-          localObject = Kx(paramString);
+          localObject = NQ(paramString);
         }
         AppMethodBeat.o(175233);
         return localObject;
@@ -644,7 +649,7 @@ public final class WxaAttributes
       paramParcel.writeInt(this.version);
       paramParcel.writeString(this.md5);
       paramParcel.writeString(this.prefixPath);
-      if (this.jFK) {}
+      if (this.jZT) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
@@ -659,8 +664,8 @@ public final class WxaAttributes
     implements Parcelable
   {
     public static final Parcelable.Creator<WxaVersionCoverImageInfo> CREATOR;
-    public String jFL;
-    public String jFM;
+    public String jZU;
+    public String jZV;
     
     static
     {
@@ -674,8 +679,8 @@ public final class WxaAttributes
     protected WxaVersionCoverImageInfo(Parcel paramParcel)
     {
       AppMethodBeat.i(123503);
-      this.jFL = paramParcel.readString();
-      this.jFM = paramParcel.readString();
+      this.jZU = paramParcel.readString();
+      this.jZV = paramParcel.readString();
       AppMethodBeat.o(123503);
     }
     
@@ -687,8 +692,8 @@ public final class WxaAttributes
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(123502);
-      paramParcel.writeString(this.jFL);
-      paramParcel.writeString(this.jFM);
+      paramParcel.writeString(this.jZU);
+      paramParcel.writeString(this.jZV);
       AppMethodBeat.o(123502);
     }
   }
@@ -697,24 +702,24 @@ public final class WxaAttributes
     implements Parcelable
   {
     public static final Parcelable.Creator<WxaVersionInfo> CREATOR;
-    public int aBM;
-    public int ccg;
-    public List<WxaAttributes.WxaWidgetInfo> hVm;
-    public boolean jBH;
-    public String jFN;
-    public String jFO;
-    public WxaAttributes.WxaVersionCoverImageInfo jFP;
-    public List<WxaAttributes.WxaPluginCodeInfo> jFQ;
-    public int jFR;
-    public boolean jFS;
-    public String jFT;
-    public String jFU;
-    public String jFV;
-    public long jFW;
-    public String jFX;
-    public String jFY;
-    public String jFZ;
-    public String jGa;
+    public int aDD;
+    public int cmx;
+    public List<WxaAttributes.WxaWidgetInfo> ioH;
+    public boolean jVD;
+    public String jZW;
+    public String jZX;
+    public WxaAttributes.WxaVersionCoverImageInfo jZY;
+    public List<WxaAttributes.WxaPluginCodeInfo> jZZ;
+    public int kaa;
+    public boolean kab;
+    public String kac;
+    public String kad;
+    public String kae;
+    public long kaf;
+    public String kag;
+    public String kah;
+    public String kai;
+    public String kaj;
     public List<WxaAttributes.WxaVersionModuleInfo> moduleList;
     
     static
@@ -726,53 +731,53 @@ public final class WxaAttributes
     
     public WxaVersionInfo()
     {
-      this.jFX = "";
-      this.jFY = "";
-      this.jFZ = "";
-      this.jGa = "";
-      this.jBH = false;
+      this.kag = "";
+      this.kah = "";
+      this.kai = "";
+      this.kaj = "";
+      this.jVD = false;
     }
     
     protected WxaVersionInfo(Parcel paramParcel)
     {
       AppMethodBeat.i(123508);
-      this.jFX = "";
-      this.jFY = "";
-      this.jFZ = "";
-      this.jGa = "";
-      this.jBH = false;
-      this.aBM = paramParcel.readInt();
-      this.ccg = paramParcel.readInt();
-      this.jFN = paramParcel.readString();
-      this.jFO = paramParcel.readString();
-      this.jFP = ((WxaAttributes.WxaVersionCoverImageInfo)paramParcel.readParcelable(WxaAttributes.WxaVersionCoverImageInfo.class.getClassLoader()));
-      this.jFQ = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
-      this.jFR = paramParcel.readInt();
+      this.kag = "";
+      this.kah = "";
+      this.kai = "";
+      this.kaj = "";
+      this.jVD = false;
+      this.aDD = paramParcel.readInt();
+      this.cmx = paramParcel.readInt();
+      this.jZW = paramParcel.readString();
+      this.jZX = paramParcel.readString();
+      this.jZY = ((WxaAttributes.WxaVersionCoverImageInfo)paramParcel.readParcelable(WxaAttributes.WxaVersionCoverImageInfo.class.getClassLoader()));
+      this.jZZ = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
+      this.kaa = paramParcel.readInt();
       this.moduleList = paramParcel.createTypedArrayList(WxaAttributes.WxaVersionModuleInfo.CREATOR);
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.jFS = bool;
-        this.jFT = paramParcel.readString();
-        this.jFU = paramParcel.readString();
-        this.jFV = paramParcel.readString();
-        this.hVm = paramParcel.createTypedArrayList(WxaAttributes.WxaWidgetInfo.CREATOR);
-        this.jFX = paramParcel.readString();
-        this.jFY = paramParcel.readString();
-        this.jFZ = paramParcel.readString();
-        this.jGa = paramParcel.readString();
+        this.kab = bool;
+        this.kac = paramParcel.readString();
+        this.kad = paramParcel.readString();
+        this.kae = paramParcel.readString();
+        this.ioH = paramParcel.createTypedArrayList(WxaAttributes.WxaWidgetInfo.CREATOR);
+        this.kag = paramParcel.readString();
+        this.kah = paramParcel.readString();
+        this.kai = paramParcel.readString();
+        this.kaj = paramParcel.readString();
         boolean[] arrayOfBoolean = new boolean[1];
         paramParcel.readBooleanArray(arrayOfBoolean);
-        this.jBH = arrayOfBoolean[0];
+        this.jVD = arrayOfBoolean[0];
         AppMethodBeat.o(123508);
         return;
       }
     }
     
-    public static WxaVersionInfo Ky(String paramString)
+    public static WxaVersionInfo NR(String paramString)
     {
       AppMethodBeat.i(123506);
-      if (bs.isNullOrNil(paramString))
+      if (bt.isNullOrNil(paramString))
       {
         AppMethodBeat.o(123506);
         return null;
@@ -781,18 +786,18 @@ public final class WxaAttributes
       {
         JSONObject localJSONObject1 = new JSONObject(paramString);
         paramString = new WxaVersionInfo();
-        paramString.aBM = localJSONObject1.optInt("AppVersion", 0);
-        paramString.ccg = localJSONObject1.optInt("VersionState", -1);
-        paramString.jFN = localJSONObject1.optString("VersionMD5");
-        paramString.jFO = localJSONObject1.optString("device_orientation");
-        paramString.jFU = localJSONObject1.optString("client_js_ext_info");
-        paramString.jFR = localJSONObject1.optInt("code_size");
+        paramString.aDD = localJSONObject1.optInt("AppVersion", 0);
+        paramString.cmx = localJSONObject1.optInt("VersionState", -1);
+        paramString.jZW = localJSONObject1.optString("VersionMD5");
+        paramString.jZX = localJSONObject1.optString("device_orientation");
+        paramString.kad = localJSONObject1.optString("client_js_ext_info");
+        paramString.kaa = localJSONObject1.optInt("code_size");
         JSONObject localJSONObject2 = localJSONObject1.optJSONObject("loading_image_info");
         if (localJSONObject2 != null)
         {
-          paramString.jFP = new WxaAttributes.WxaVersionCoverImageInfo();
-          paramString.jFP.jFL = localJSONObject2.optString("url");
-          paramString.jFP.jFM = localJSONObject2.optString("progressbar_color");
+          paramString.jZY = new WxaAttributes.WxaVersionCoverImageInfo();
+          paramString.jZY.jZU = localJSONObject2.optString("url");
+          paramString.jZY.jZV = localJSONObject2.optString("progressbar_color");
         }
         JSONObject localJSONObject3 = localJSONObject1.optJSONObject("fake_native_loading_style_info");
         if (localJSONObject3 != null)
@@ -802,30 +807,30 @@ public final class WxaAttributes
           if (localJSONObject2 != null)
           {
             if (localJSONObject2.has("navigation_bar_text_color")) {
-              paramString.jFX = localJSONObject2.optString("navigation_bar_text_color");
+              paramString.kag = localJSONObject2.optString("navigation_bar_text_color");
             }
             if (localJSONObject2.has("background_color")) {
-              paramString.jFY = localJSONObject2.optString("background_color");
+              paramString.kah = localJSONObject2.optString("background_color");
             }
           }
           if (localJSONObject3 != null)
           {
             if (localJSONObject3.has("navigation_bar_text_color")) {
-              paramString.jFZ = localJSONObject3.optString("navigation_bar_text_color");
+              paramString.kai = localJSONObject3.optString("navigation_bar_text_color");
             }
             if (localJSONObject3.has("background_color")) {
-              paramString.jGa = localJSONObject3.optString("background_color");
+              paramString.kaj = localJSONObject3.optString("background_color");
             }
           }
         }
-        paramString.moduleList = WxaAttributes.WxaVersionModuleInfo.Kz(localJSONObject1.optString("module_list"));
-        paramString.jFS = localJSONObject1.optBoolean("UseModule", false);
-        paramString.jFT = localJSONObject1.optString("EntranceModule");
-        paramString.jFV = localJSONObject1.optString("without_lib_md5");
-        paramString.hVm = WxaAttributes.WxaWidgetInfo.KA(localJSONObject1.optString("widget_list"));
-        paramString.jFQ = WxaAttributes.WxaPluginCodeInfo.a(paramString.hVm, localJSONObject1.optString("separated_plugin_list"), 22);
-        paramString.jFW = localJSONObject1.optLong("ForceSyncUpdateWhenLaunchLastInterval", -1L);
-        paramString.jBH = localJSONObject1.optBoolean("resizable", false);
+        paramString.moduleList = WxaAttributes.WxaVersionModuleInfo.NS(localJSONObject1.optString("module_list"));
+        paramString.kab = localJSONObject1.optBoolean("UseModule", false);
+        paramString.kac = localJSONObject1.optString("EntranceModule");
+        paramString.kae = localJSONObject1.optString("without_lib_md5");
+        paramString.ioH = WxaAttributes.WxaWidgetInfo.NT(localJSONObject1.optString("widget_list"));
+        paramString.jZZ = WxaAttributes.WxaPluginCodeInfo.a(paramString.ioH, localJSONObject1.optString("separated_plugin_list"), 22);
+        paramString.kaf = localJSONObject1.optLong("ForceSyncUpdateWhenLaunchLastInterval", -1L);
+        paramString.jVD = localJSONObject1.optBoolean("resizable", false);
       }
       catch (Exception paramString)
       {
@@ -846,27 +851,27 @@ public final class WxaAttributes
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(123507);
-      paramParcel.writeInt(this.aBM);
-      paramParcel.writeInt(this.ccg);
-      paramParcel.writeString(this.jFN);
-      paramParcel.writeString(this.jFO);
-      paramParcel.writeParcelable(this.jFP, paramInt);
-      paramParcel.writeTypedList(this.jFQ);
-      paramParcel.writeInt(this.jFR);
+      paramParcel.writeInt(this.aDD);
+      paramParcel.writeInt(this.cmx);
+      paramParcel.writeString(this.jZW);
+      paramParcel.writeString(this.jZX);
+      paramParcel.writeParcelable(this.jZY, paramInt);
+      paramParcel.writeTypedList(this.jZZ);
+      paramParcel.writeInt(this.kaa);
       paramParcel.writeTypedList(this.moduleList);
-      if (this.jFS) {}
+      if (this.kab) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeString(this.jFT);
-        paramParcel.writeString(this.jFU);
-        paramParcel.writeString(this.jFV);
-        paramParcel.writeTypedList(this.hVm);
-        paramParcel.writeString(this.jFX);
-        paramParcel.writeString(this.jFY);
-        paramParcel.writeString(this.jFZ);
-        paramParcel.writeString(this.jGa);
-        paramParcel.writeBooleanArray(new boolean[] { this.jBH });
+        paramParcel.writeString(this.kac);
+        paramParcel.writeString(this.kad);
+        paramParcel.writeString(this.kae);
+        paramParcel.writeTypedList(this.ioH);
+        paramParcel.writeString(this.kag);
+        paramParcel.writeString(this.kah);
+        paramParcel.writeString(this.kai);
+        paramParcel.writeString(this.kaj);
+        paramParcel.writeBooleanArray(new boolean[] { this.jVD });
         AppMethodBeat.o(123507);
         return;
       }
@@ -879,10 +884,10 @@ public final class WxaAttributes
     public static final Parcelable.Creator<WxaVersionModuleInfo> CREATOR;
     public String[] aliases;
     public boolean independent;
-    public String jFV;
-    public List<WxaAttributes.WxaPluginCodeInfo> jGb;
-    public List<WxaAttributes.WxaWidgetInfo> jGc;
-    private JSONObject jGd;
+    public String kae;
+    public List<WxaAttributes.WxaPluginCodeInfo> kak;
+    public List<WxaAttributes.WxaWidgetInfo> kal;
+    private JSONObject kam;
     public String md5;
     public String name;
     public int size;
@@ -907,18 +912,18 @@ public final class WxaAttributes
         this.independent = bool;
         this.size = paramParcel.readInt();
         this.aliases = paramParcel.createStringArray();
-        this.jGb = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
-        this.jFV = paramParcel.readString();
-        this.jGc = paramParcel.createTypedArrayList(WxaAttributes.WxaWidgetInfo.CREATOR);
+        this.kak = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
+        this.kae = paramParcel.readString();
+        this.kal = paramParcel.createTypedArrayList(WxaAttributes.WxaWidgetInfo.CREATOR);
         AppMethodBeat.o(123515);
         return;
       }
     }
     
-    public static List<WxaVersionModuleInfo> Kz(String paramString)
+    public static List<WxaVersionModuleInfo> NS(String paramString)
     {
       AppMethodBeat.i(123512);
-      if (bs.isNullOrNil(paramString))
+      if (bt.isNullOrNil(paramString))
       {
         AppMethodBeat.o(123512);
         return null;
@@ -938,7 +943,7 @@ public final class WxaAttributes
       }
       catch (JSONException localJSONException)
       {
-        ac.e("MicroMsg.AppBrand.WxaAttributes.WxaVersionModuleInfo", "parse json array, json = %s, e = %s", new Object[] { paramString, localJSONException });
+        ad.e("MicroMsg.AppBrand.WxaAttributes.WxaVersionModuleInfo", "parse json array, json = %s, e = %s", new Object[] { paramString, localJSONException });
         AppMethodBeat.o(123512);
       }
       return null;
@@ -957,15 +962,15 @@ public final class WxaAttributes
           if (localJSONObject != null)
           {
             WxaVersionModuleInfo localWxaVersionModuleInfo = new WxaVersionModuleInfo();
-            localWxaVersionModuleInfo.jGd = localJSONObject;
+            localWxaVersionModuleInfo.kam = localJSONObject;
             localWxaVersionModuleInfo.name = localJSONObject.getString("name");
             localWxaVersionModuleInfo.md5 = localJSONObject.getString("md5");
             localWxaVersionModuleInfo.size = localJSONObject.optInt("size", 0);
             localWxaVersionModuleInfo.independent = localJSONObject.optBoolean("independent", false);
             localWxaVersionModuleInfo.aliases = y(localJSONObject);
-            localWxaVersionModuleInfo.jFV = localJSONObject.optString("without_lib_md5");
-            localWxaVersionModuleInfo.jGc = WxaAttributes.WxaWidgetInfo.KA(localJSONObject.optString("widget_list"));
-            localWxaVersionModuleInfo.jGb = WxaAttributes.WxaPluginCodeInfo.a(localWxaVersionModuleInfo.jGc, localJSONObject.optString("separated_plugin_list"), 23);
+            localWxaVersionModuleInfo.kae = localJSONObject.optString("without_lib_md5");
+            localWxaVersionModuleInfo.kal = WxaAttributes.WxaWidgetInfo.NT(localJSONObject.optString("widget_list"));
+            localWxaVersionModuleInfo.kak = WxaAttributes.WxaPluginCodeInfo.a(localWxaVersionModuleInfo.kal, localJSONObject.optString("separated_plugin_list"), 23);
             localLinkedList.add(localWxaVersionModuleInfo);
           }
           i += 1;
@@ -975,7 +980,7 @@ public final class WxaAttributes
       }
       catch (JSONException paramJSONArray)
       {
-        ac.e("MicroMsg.AppBrand.WxaAttributes.WxaVersionModuleInfo", "parse json array, e = %s", new Object[] { paramJSONArray });
+        ad.e("MicroMsg.AppBrand.WxaAttributes.WxaVersionModuleInfo", "parse json array, e = %s", new Object[] { paramJSONArray });
         AppMethodBeat.o(123511);
       }
       return null;
@@ -1017,9 +1022,9 @@ public final class WxaAttributes
         paramParcel.writeByte(b);
         paramParcel.writeInt(this.size);
         paramParcel.writeStringArray(this.aliases);
-        paramParcel.writeTypedList(this.jGb);
-        paramParcel.writeString(this.jFV);
-        paramParcel.writeTypedList(this.jGc);
+        paramParcel.writeTypedList(this.kak);
+        paramParcel.writeString(this.kae);
+        paramParcel.writeTypedList(this.kal);
         AppMethodBeat.o(123514);
         return;
       }
@@ -1030,9 +1035,9 @@ public final class WxaAttributes
     implements Parcelable
   {
     public static final Parcelable.Creator<WxaWidgetInfo> CREATOR;
-    public int dcj;
-    public String jGe;
-    public List<WxaAttributes.WxaPluginCodeInfo> jGf;
+    public int dnF;
+    public String kan;
+    public List<WxaAttributes.WxaPluginCodeInfo> kao;
     
     static
     {
@@ -1046,16 +1051,16 @@ public final class WxaAttributes
     protected WxaWidgetInfo(Parcel paramParcel)
     {
       AppMethodBeat.i(175238);
-      this.dcj = paramParcel.readInt();
-      this.jGe = paramParcel.readString();
-      this.jGf = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
+      this.dnF = paramParcel.readInt();
+      this.kan = paramParcel.readString();
+      this.kao = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
       AppMethodBeat.o(175238);
     }
     
-    public static List<WxaWidgetInfo> KA(String paramString)
+    public static List<WxaWidgetInfo> NT(String paramString)
     {
       AppMethodBeat.i(175236);
-      if (bs.isNullOrNil(paramString))
+      if (bt.isNullOrNil(paramString))
       {
         AppMethodBeat.o(175236);
         return null;
@@ -1077,11 +1082,11 @@ public final class WxaAttributes
           if (localJSONObject != null)
           {
             WxaWidgetInfo localWxaWidgetInfo = new WxaWidgetInfo();
-            localWxaWidgetInfo.dcj = localJSONObject.optInt("package_type");
-            localWxaWidgetInfo.jGe = localJSONObject.optString("wxapkg_md5");
-            if (org.apache.commons.b.a.contains(com.tencent.mm.co.a.JHU, localWxaWidgetInfo.dcj))
+            localWxaWidgetInfo.dnF = localJSONObject.optInt("package_type");
+            localWxaWidgetInfo.kan = localJSONObject.optString("wxapkg_md5");
+            if (org.apache.commons.b.a.contains(com.tencent.mm.co.a.LAY, localWxaWidgetInfo.dnF))
             {
-              localWxaWidgetInfo.jGf = WxaAttributes.WxaPluginCodeInfo.Kx(localJSONObject.optString("separated_plugin_list"));
+              localWxaWidgetInfo.kao = WxaAttributes.WxaPluginCodeInfo.NQ(localJSONObject.optString("separated_plugin_list"));
               localLinkedList.add(localWxaWidgetInfo);
             }
           }
@@ -1092,7 +1097,7 @@ public final class WxaAttributes
       }
       catch (JSONException paramString)
       {
-        ac.e("MicroMsg.AppBrand.WxaAttributes.WxaPluginCodeInfo", "parse json array, e = %s", new Object[] { paramString });
+        ad.e("MicroMsg.AppBrand.WxaAttributes.WxaPluginCodeInfo", "parse json array, e = %s", new Object[] { paramString });
         AppMethodBeat.o(175236);
       }
       return null;
@@ -1106,35 +1111,35 @@ public final class WxaAttributes
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(175237);
-      paramParcel.writeInt(this.dcj);
-      paramParcel.writeString(this.jGe);
-      paramParcel.writeTypedList(this.jGf);
+      paramParcel.writeInt(this.dnF);
+      paramParcel.writeString(this.kan);
+      paramParcel.writeTypedList(this.kao);
       AppMethodBeat.o(175237);
     }
   }
   
   public static final class a
   {
-    public int cFI;
-    public long ccQ = 0L;
-    public String jDu;
-    public String jFs;
-    private int jFt;
-    public List<String> jFu;
-    public List<String> jFv;
-    public List<String> jFw;
-    public List<String> jFx;
-    public List<String> jFy;
-    public String jFz;
-    public long jwh = 0L;
+    public int cQN;
+    public long cnh = 0L;
+    public long jQb = 0L;
+    public String jXq;
+    public List<String> jZA;
+    public List<String> jZB;
+    public List<String> jZC;
+    public List<String> jZD;
+    public String jZE;
+    public String jZx;
+    private int jZy;
+    public List<String> jZz;
     public int originalFlag;
     
-    public static a Kw(String paramString)
+    public static a NP(String paramString)
     {
       AppMethodBeat.i(123490);
-      if (bs.isNullOrNil(paramString))
+      if (bt.isNullOrNil(paramString))
       {
-        ac.e("MicroMsg.AppBrand.WxaAttributes", "getAppInfo, json is EMPTY");
+        ad.e("MicroMsg.AppBrand.WxaAttributes", "getAppInfo, json is EMPTY");
         AppMethodBeat.o(123490);
         return null;
       }
@@ -1145,31 +1150,31 @@ public final class WxaAttributes
         JSONObject localJSONObject2 = localJSONObject1.optJSONObject("RunningFlagInfo");
         if (localJSONObject2 != null)
         {
-          locala.ccQ = localJSONObject2.optLong("RunningFlag");
-          locala.jFs = localJSONObject2.optString("AppOpenForbiddenUrl");
-          locala.jwh = localJSONObject2.optLong("CanNotStarWxaBeforeTime", 0L);
+          locala.cnh = localJSONObject2.optLong("RunningFlag");
+          locala.jZx = localJSONObject2.optString("AppOpenForbiddenUrl");
+          locala.jQb = localJSONObject2.optLong("CanNotStarWxaBeforeTime", 0L);
         }
         localJSONObject2 = localJSONObject1.optJSONObject("Network");
         if (localJSONObject2 != null)
         {
-          locala.jFu = z.m(localJSONObject2.optJSONArray("RequestDomain"));
-          locala.jFv = z.m(localJSONObject2.optJSONArray("WsRequestDomain"));
-          locala.jFw = z.m(localJSONObject2.optJSONArray("UploadDomain"));
-          locala.jFx = z.m(localJSONObject2.optJSONArray("DownloadDomain"));
-          locala.jFy = z.m(localJSONObject2.optJSONArray("UDPDomain"));
+          locala.jZz = aa.m(localJSONObject2.optJSONArray("RequestDomain"));
+          locala.jZA = aa.m(localJSONObject2.optJSONArray("WsRequestDomain"));
+          locala.jZB = aa.m(localJSONObject2.optJSONArray("UploadDomain"));
+          locala.jZC = aa.m(localJSONObject2.optJSONArray("DownloadDomain"));
+          locala.jZD = aa.m(localJSONObject2.optJSONArray("UDPDomain"));
         }
-        locala.jFt = localJSONObject1.optInt("WechatPluginApp", 0);
-        locala.cFI = localJSONObject1.optInt("AppServiceType", 0);
-        locala.jFz = localJSONObject1.optString("fromBusinessUsername");
+        locala.jZy = localJSONObject1.optInt("WechatPluginApp", 0);
+        locala.cQN = localJSONObject1.optInt("AppServiceType", 0);
+        locala.jZE = localJSONObject1.optString("fromBusinessUsername");
         locala.originalFlag = localJSONObject1.optInt("OriginalFlag", 0);
-        locala.jDu = localJSONObject1.optString("OriginalRedirectUrl");
+        locala.jXq = localJSONObject1.optString("OriginalRedirectUrl");
         paramString = locala;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ac.e("MicroMsg.AppBrand.WxaAttributes", "getAppInfo, json(%s) parse failed ex = %s", new Object[] { paramString, localException });
+          ad.e("MicroMsg.AppBrand.WxaAttributes", "getAppInfo, json(%s) parse failed ex = %s", new Object[] { paramString, localException });
           paramString = null;
         }
       }
@@ -1177,27 +1182,27 @@ public final class WxaAttributes
       return paramString;
     }
     
-    public final boolean CC()
+    public final boolean Eb()
     {
-      return this.cFI == 4;
+      return this.cQN == 4;
     }
     
-    public final boolean baR()
+    public final boolean ber()
     {
-      return (this.jFt > 0) || (this.cFI == 7);
+      return (this.jZy > 0) || (this.cQN == 7);
     }
   }
   
   public static final class b
   {
-    public int cFL;
-    public List<a> jFA;
+    public int cQQ;
+    public List<a> jZF;
     public int type;
     
     public static final class a
     {
-      public String cYQ;
-      public List<a> jFB;
+      public String dki;
+      public List<a> jZG;
       public String name;
       public int type;
       public String userName;
@@ -1207,42 +1212,47 @@ public final class WxaAttributes
   
   public static final class c
   {
-    public a jFC;
-    public List<Pair<String, String>> jFD;
+    public a jZH;
+    public List<Pair<String, String>> jZI;
     
     public c()
     {
       AppMethodBeat.i(123491);
-      this.jFC = new a();
+      this.jZH = new a();
       AppMethodBeat.o(123491);
     }
     
     public static final class a
     {
-      public boolean ccA;
-      public boolean ccB;
-      public boolean ccJ;
-      public int ccL;
-      public int ccR;
-      public int ccu;
-      public int ccv;
-      public int ccw;
-      public int ccx;
-      public int ccy;
-      public int ccz;
-      public int jDZ;
-      public boolean jEa;
-      public int jEe;
-      public int jEf;
-      public int jFE;
-      public int jFF;
-      public int jFG;
-      public int jFH;
-      public boolean jFI;
-      public int jxA;
-      public int jxB;
-      public boolean jxy;
-      public boolean jxz;
+      public int cmL;
+      public int cmM;
+      public int cmN;
+      public int cmO;
+      public int cmP;
+      public int cmQ;
+      public boolean cmR;
+      public boolean cmS;
+      public boolean cna;
+      public int cnc;
+      public boolean jRu;
+      public boolean jRv;
+      public int jRw;
+      public int jRx;
+      public int jXI;
+      public int jXJ;
+      public int jYa;
+      public boolean jYb;
+      public int jYf;
+      public int jYg;
+      public int jZJ;
+      public int jZK;
+      public int jZL;
+      public int jZM;
+      public boolean jZN;
+      public long jZO;
+      public long jZP;
+      public long jZQ;
+      public long jZR;
     }
   }
 }

@@ -11,13 +11,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.o;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.emoji.e.e;
 import com.tencent.mm.plugin.emoji.model.EmojiLogic;
 import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.protocal.protobuf.ads;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.agb;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.z;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,42 +28,42 @@ public final class a
 {
   private Context mContext;
   private int mNumColumns;
-  private int mvQ;
-  private int myh;
-  private int oXG;
-  List<ads> oXp;
-  private boolean pmb;
-  private LinearLayout.LayoutParams pmc;
-  private LinearLayout.LayoutParams pmd;
-  a pme;
+  private int mWv;
+  private int mYP;
+  List<agb> pAZ;
+  private int pBq;
+  private boolean pPB;
+  private LinearLayout.LayoutParams pPC;
+  private LinearLayout.LayoutParams pPD;
+  a pPE;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(109414);
     this.mNumColumns = 3;
-    this.pmb = true;
+    this.pPB = true;
     this.mNumColumns = 3;
     this.mContext = paramContext;
-    this.oXG = com.tencent.mm.cc.a.ig(this.mContext);
-    this.myh = this.mContext.getResources().getDimensionPixelSize(2131166219);
-    this.mvQ = ((int)((this.oXG - this.mNumColumns * this.myh) / (this.mNumColumns + 1.0F)));
+    this.pBq = com.tencent.mm.cc.a.ip(this.mContext);
+    this.mYP = this.mContext.getResources().getDimensionPixelSize(2131166219);
+    this.mWv = ((int)((this.pBq - this.mNumColumns * this.mYP) / (this.mNumColumns + 1.0F)));
     AppMethodBeat.o(109414);
   }
   
   private int getRealCount()
   {
     AppMethodBeat.i(109416);
-    if (this.oXp == null)
+    if (this.pAZ == null)
     {
       AppMethodBeat.o(109416);
       return 0;
     }
-    int i = this.oXp.size();
+    int i = this.pAZ.size();
     AppMethodBeat.o(109416);
     return i;
   }
   
-  public final ads BB(int paramInt)
+  public final agb Cj(int paramInt)
   {
     AppMethodBeat.i(109418);
     if ((paramInt < 0) || (paramInt >= getRealCount()))
@@ -70,41 +71,41 @@ public final class a
       AppMethodBeat.o(109418);
       return null;
     }
-    if (this.oXp == null)
+    if (this.pAZ == null)
     {
       AppMethodBeat.o(109418);
       return null;
     }
-    ads localads = (ads)this.oXp.get(paramInt);
+    agb localagb = (agb)this.pAZ.get(paramInt);
     AppMethodBeat.o(109418);
-    return localads;
+    return localagb;
   }
   
-  public final void U(List<ads> paramList)
+  public final void V(List<agb> paramList)
   {
     AppMethodBeat.i(109415);
-    if (this.oXp == null) {
-      this.oXp = new ArrayList();
+    if (this.pAZ == null) {
+      this.pAZ = new ArrayList();
     }
     for (;;)
     {
-      this.oXp = paramList;
+      this.pAZ = paramList;
       notifyDataSetChanged();
       AppMethodBeat.o(109415);
       return;
-      this.oXp.clear();
+      this.pAZ.clear();
     }
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(109417);
-    if (this.oXp == null)
+    if (this.pAZ == null)
     {
       AppMethodBeat.o(109417);
       return 0;
     }
-    int i = (int)Math.ceil(this.oXp.size() / this.mNumColumns);
+    int i = (int)Math.ceil(this.pAZ.size() / this.mNumColumns);
     AppMethodBeat.o(109417);
     return i;
   }
@@ -121,10 +122,10 @@ public final class a
     Object localObject2;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      localObject1 = z.jD(this.mContext).inflate(2131493825, null);
+      localObject1 = z.jO(this.mContext).inflate(2131493825, null);
       localObject2 = new b();
-      ((b)localObject2).oXM = ((LinearLayout)((View)localObject1).findViewById(2131301144));
-      ((b)localObject2).oXM.setPadding(0, this.mvQ, 0, 0);
+      ((b)localObject2).pBw = ((LinearLayout)((View)localObject1).findViewById(2131301144));
+      ((b)localObject2).pBw.setPadding(0, this.mWv, 0, 0);
       ((View)localObject1).setTag(localObject2);
       i = 0;
       for (;;)
@@ -134,14 +135,14 @@ public final class a
         if (i >= this.mNumColumns) {
           break;
         }
-        this.pmd = new LinearLayout.LayoutParams(-2, -2);
-        this.pmd.leftMargin = this.mvQ;
-        this.pmc = new LinearLayout.LayoutParams(this.myh, this.myh);
+        this.pPD = new LinearLayout.LayoutParams(-2, -2);
+        this.pPD.leftMargin = this.mWv;
+        this.pPC = new LinearLayout.LayoutParams(this.mYP, this.mYP);
         paramView = new PaddingImageView(this.mContext);
-        paramViewGroup = this.pmc;
-        paramView.addView(paramView.lqK, paramViewGroup);
-        paramView.addView(paramView.plZ, paramViewGroup);
-        ((b)localObject2).oXM.addView(paramView, i, this.pmd);
+        paramViewGroup = this.pPC;
+        paramView.addView(paramView.cum, paramViewGroup);
+        paramView.addView(paramView.pPz, paramViewGroup);
+        ((b)localObject2).pBw.addView(paramView, i, this.pPD);
         i += 1;
       }
     }
@@ -150,17 +151,17 @@ public final class a
     if (i < this.mNumColumns)
     {
       final int j = this.mNumColumns * paramInt + i;
-      localObject1 = (PaddingImageView)paramViewGroup.oXM.getChildAt(i);
+      localObject1 = (PaddingImageView)paramViewGroup.pBw.getChildAt(i);
       Object localObject3;
       if (j <= getRealCount() - 1)
       {
-        localObject2 = BB(j);
+        localObject2 = Cj(j);
         if (localObject2 != null) {
-          if (!bs.isNullOrNil(((ads)localObject2).ThumbUrl))
+          if (!bt.isNullOrNil(((agb)localObject2).ThumbUrl))
           {
-            localObject3 = com.tencent.mm.emoji.d.a.fWM;
-            localObject3 = com.tencent.mm.emoji.d.a.tl(((ads)localObject2).Md5);
-            o.aFB().a(((ads)localObject2).ThumbUrl, ((PaddingImageView)localObject1).getImageView(), e.a((String)localObject3, this.myh, new Object[0]));
+            localObject3 = com.tencent.mm.emoji.d.a.gqn;
+            localObject3 = com.tencent.mm.emoji.d.a.wb(((agb)localObject2).Md5);
+            q.aIJ().a(((agb)localObject2).ThumbUrl, ((PaddingImageView)localObject1).getImageView(), e.a((String)localObject3, this.mYP, new Object[0]));
             label324:
             ((PaddingImageView)localObject1).setClickable(true);
             ((PaddingImageView)localObject1).getImageViewFG().setBackgroundResource(2131232034);
@@ -169,9 +170,13 @@ public final class a
               public final void onClick(View paramAnonymousView)
               {
                 AppMethodBeat.i(109413);
+                b localb = new b();
+                localb.bd(paramAnonymousView);
+                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/v2/PreViewListGridAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
                 if (a.a(a.this) != null) {
-                  a.a(a.this).Bm(j);
+                  a.a(a.this).BU(j);
                 }
+                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/PreViewListGridAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(109413);
               }
             });
@@ -182,23 +187,23 @@ public final class a
       {
         i += 1;
         break;
-        if (!bs.isNullOrNil(((ads)localObject2).Url))
+        if (!bt.isNullOrNil(((agb)localObject2).Url))
         {
-          localObject3 = com.tencent.mm.emoji.d.a.fWM;
-          localObject3 = EmojiLogic.P(com.tencent.mm.emoji.d.a.adJ(), "", ((ads)localObject2).Md5);
-          k.cck().a(((ads)localObject2).Url, ((PaddingImageView)localObject1).getImageView(), e.a((String)localObject3, this.myh, new Object[0]));
+          localObject3 = com.tencent.mm.emoji.d.a.gqn;
+          localObject3 = EmojiLogic.Q(com.tencent.mm.emoji.d.a.agp(), "", ((agb)localObject2).Md5);
+          k.cgO().a(((agb)localObject2).Url, ((PaddingImageView)localObject1).getImageView(), e.a((String)localObject3, this.mYP, new Object[0]));
           break label324;
         }
-        ac.w("MicroMsg.emoji.PreViewListGridAdapter", "this emoji has no thumb url and url. download faild");
+        ad.w("MicroMsg.emoji.PreViewListGridAdapter", "this emoji has no thumb url and url. download faild");
         break label324;
         ((PaddingImageView)localObject1).getImageViewFG().setBackgroundDrawable(null);
-        o.aFB().loadImage("", ((PaddingImageView)localObject1).getImageView());
-        ac.w("MicroMsg.emoji.PreViewListGridAdapter", "item is null");
+        q.aIJ().loadImage("", ((PaddingImageView)localObject1).getImageView());
+        ad.w("MicroMsg.emoji.PreViewListGridAdapter", "item is null");
         ((PaddingImageView)localObject1).setClickable(false);
         ((PaddingImageView)localObject1).setOnClickListener(null);
         continue;
         ((PaddingImageView)localObject1).getImageViewFG().setBackgroundDrawable(null);
-        o.aFB().loadImage("", ((PaddingImageView)localObject1).getImageView());
+        q.aIJ().loadImage("", ((PaddingImageView)localObject1).getImageView());
         ((PaddingImageView)localObject1).setClickable(false);
         ((PaddingImageView)localObject1).setOnClickListener(null);
       }
@@ -209,12 +214,12 @@ public final class a
   
   static abstract interface a
   {
-    public abstract void Bm(int paramInt);
+    public abstract void BU(int paramInt);
   }
   
   final class b
   {
-    LinearLayout oXM;
+    LinearLayout pBw;
     
     b() {}
   }

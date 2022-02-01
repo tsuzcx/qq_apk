@@ -1,28 +1,29 @@
 package com.tencent.mm.plugin.soter.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.soter.a.f.e.b;
 
 public final class f
   extends n
   implements k, com.tencent.soter.a.f.e
 {
-  private com.tencent.mm.ak.g callback;
-  private com.tencent.mm.ak.b rr;
-  private com.tencent.soter.a.f.b<e.b> sli = null;
+  private com.tencent.mm.al.f callback;
+  private com.tencent.mm.al.b rr;
+  private com.tencent.soter.a.f.b<e.b> thK = null;
   
   public final void a(com.tencent.soter.a.f.b<e.b> paramb)
   {
-    this.sli = paramb;
+    this.thK = paramb;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.f paramf)
   {
     AppMethodBeat.i(130817);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(130817);
     return i;
@@ -31,8 +32,8 @@ public final class f
   public final void execute()
   {
     AppMethodBeat.i(130819);
-    ac.v("MicroMsg.NetSceneUploadSoterASK", "alvinluo NetSceneUploadSoterASK execute doScene");
-    com.tencent.mm.kernel.g.agi().a(this, 0);
+    ad.v("MicroMsg.NetSceneUploadSoterASK", "alvinluo NetSceneUploadSoterASK execute doScene");
+    g.aiU().a(this, 0);
     AppMethodBeat.o(130819);
   }
   
@@ -44,25 +45,25 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(130818);
-    ac.i("MicroMsg.NetSceneUploadSoterASK", "MicroMsg.NetSceneUploadSoterASK errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ad.i("MicroMsg.NetSceneUploadSoterASK", "MicroMsg.NetSceneUploadSoterASK errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    com.tencent.mm.plugin.soter.d.m.znN = paramString;
+    com.tencent.mm.plugin.soter.d.m.AFH = paramString;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ac.i("MicroMsg.NetSceneUploadSoterASK", "netscene upload soter ask successfully");
-      if (this.sli != null)
+      ad.i("MicroMsg.NetSceneUploadSoterASK", "netscene upload soter ask successfully");
+      if (this.thK != null)
       {
-        this.sli.er(new e.b(true));
+        this.thK.eu(new e.b(true));
         AppMethodBeat.o(130818);
       }
     }
     else
     {
-      ac.e("MicroMsg.NetSceneUploadSoterASK", "netscene upload soter ask failed");
-      if (this.sli != null) {
-        this.sli.er(new e.b(false));
+      ad.e("MicroMsg.NetSceneUploadSoterASK", "netscene upload soter ask failed");
+      if (this.thK != null) {
+        this.thK.eu(new e.b(false));
       }
     }
     AppMethodBeat.o(130818);
@@ -70,7 +71,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.b.f
  * JD-Core Version:    0.7.0.1
  */

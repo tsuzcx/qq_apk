@@ -1,85 +1,71 @@
 package com.tencent.mm.plugin.story.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.math.BigInteger;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/data/StoryUtil;", "", "()V", "Companion", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/data/StoryUtil;", "", "()V", "Companion", "plugin-story_release"})
 public final class b
 {
+  private static final String AJa = "Locall_path";
+  private static final float AJb = -1000.0F;
+  private static final String AJc = "story_respone_count";
+  public static final a AJd;
   private static final String TAG = "MicroMsg.StoryUtil";
-  private static final String xNO = "storyb";
-  private static final String zrg = "Locall_path";
-  private static final float zrh = -1000.0F;
-  private static final String zri = "story_respone_count";
-  public static final a zrj;
+  private static final String zdI = "storyb";
   
   static
   {
     AppMethodBeat.i(118627);
-    zrj = new a((byte)0);
+    AJd = new a((byte)0);
     TAG = "MicroMsg.StoryUtil";
-    zrg = "Locall_path";
-    zrh = -1000.0F;
-    xNO = "storyb";
-    zri = "story_respone_count";
+    AJa = "Locall_path";
+    AJb = -1000.0F;
+    zdI = "storyb";
+    AJc = "story_respone_count";
     AppMethodBeat.o(118627);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/data/StoryUtil$Companion;", "", "()V", "B_PRE", "", "INVALID_GEO", "", "getINVALID_GEO", "()F", "LOCAL_PATH_PRE", "getLOCAL_PATH_PRE", "()Ljava/lang/String;", "RESPONE_COUNT", "TAG", "bitmapAvailable", "", "bm", "Landroid/graphics/Bitmap;", "dumpMedia", "media", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "exportVideo", "", "videoPath", "getFullStrSeq", "stringSeq", "getStoryResponeCount", "", "getVideoInfo", "Lcom/tencent/mm/plugin/story/data/StoryUtil$Companion$VideoInfo;", "path", "getVideoMIME", "longToFullString", "seq", "", "longToString", "VideoInfo", "plugin-story_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/data/StoryUtil$Companion;", "", "()V", "B_PRE", "", "INVALID_GEO", "", "getINVALID_GEO", "()F", "LOCAL_PATH_PRE", "getLOCAL_PATH_PRE", "()Ljava/lang/String;", "RESPONE_COUNT", "TAG", "bitmapAvailable", "", "bm", "Landroid/graphics/Bitmap;", "dumpMedia", "media", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "exportVideo", "", "videoPath", "getFullStrSeq", "stringSeq", "getStoryResponeCount", "", "getVideoInfo", "Lcom/tencent/mm/plugin/story/data/StoryUtil$Companion$VideoInfo;", "path", "getVideoMIME", "longToFullString", "seq", "", "longToString", "VideoInfo", "plugin-story_release"})
   public static final class a
   {
-    private static String asY(String paramString)
-    {
-      AppMethodBeat.i(118625);
-      k.h(paramString, "stringSeq");
-      paramString = new StringBuffer(paramString);
-      while (paramString.length() < 25) {
-        paramString.insert(0, "0");
-      }
-      paramString = paramString.toString();
-      k.g(paramString, "sb.toString()");
-      AppMethodBeat.o(118625);
-      return paramString;
-    }
-    
     /* Error */
-    public static String awu(String paramString)
+    public static String aBz(String paramString)
     {
       // Byte code:
-      //   0: ldc 98
-      //   2: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   0: ldc 57
+      //   2: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: ldc 99
-      //   8: invokestatic 68	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+      //   6: ldc 64
+      //   8: invokestatic 70	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
       //   11: aload_0
-      //   12: invokestatic 105	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+      //   12: invokestatic 76	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
       //   15: ifeq +11 -> 26
-      //   18: ldc 98
-      //   20: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   23: ldc 106
+      //   18: ldc 57
+      //   20: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   23: ldc 80
       //   25: areturn
       //   26: aconst_null
       //   27: astore_1
-      //   28: new 108	com/tencent/mm/media/e/a
+      //   28: new 82	com/tencent/mm/media/f/a
       //   31: dup
       //   32: aload_0
-      //   33: invokespecial 109	com/tencent/mm/media/e/a:<init>	(Ljava/lang/String;)V
+      //   33: invokespecial 85	com/tencent/mm/media/f/a:<init>	(Ljava/lang/String;)V
       //   36: astore_0
       //   37: aload_0
-      //   38: invokevirtual 112	com/tencent/mm/media/e/a:aqN	()Ljava/lang/String;
+      //   38: invokevirtual 88	com/tencent/mm/media/f/a:atB	()Ljava/lang/String;
       //   41: astore_2
       //   42: aload_2
       //   43: astore_1
       //   44: aload_2
       //   45: ifnonnull +6 -> 51
-      //   48: ldc 106
+      //   48: ldc 80
       //   50: astore_1
       //   51: aload_0
-      //   52: invokevirtual 115	com/tencent/mm/media/e/a:release	()V
-      //   55: ldc 98
-      //   57: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   52: invokevirtual 91	com/tencent/mm/media/f/a:release	()V
+      //   55: ldc 57
+      //   57: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   60: aload_1
       //   61: areturn
       //   62: astore_0
@@ -88,10 +74,10 @@ public final class b
       //   65: aload_0
       //   66: ifnull +7 -> 73
       //   69: aload_0
-      //   70: invokevirtual 115	com/tencent/mm/media/e/a:release	()V
-      //   73: ldc 98
-      //   75: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   78: ldc 106
+      //   70: invokevirtual 91	com/tencent/mm/media/f/a:release	()V
+      //   73: ldc 57
+      //   75: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   78: ldc 80
       //   80: areturn
       //   81: astore_0
       //   82: aconst_null
@@ -99,9 +85,9 @@ public final class b
       //   84: aload_1
       //   85: ifnull +7 -> 92
       //   88: aload_1
-      //   89: invokevirtual 115	com/tencent/mm/media/e/a:release	()V
-      //   92: ldc 98
-      //   94: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   89: invokevirtual 91	com/tencent/mm/media/f/a:release	()V
+      //   92: ldc 57
+      //   94: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   97: aload_0
       //   98: athrow
       //   99: astore_1
@@ -130,7 +116,21 @@ public final class b
       //   37	42	109	java/lang/Exception
     }
     
-    public static String wX(long paramLong)
+    private static String ayd(String paramString)
+    {
+      AppMethodBeat.i(118625);
+      p.h(paramString, "stringSeq");
+      paramString = new StringBuffer(paramString);
+      while (paramString.length() < 25) {
+        paramString.insert(0, "0");
+      }
+      paramString = paramString.toString();
+      p.g(paramString, "sb.toString()");
+      AppMethodBeat.o(118625);
+      return paramString;
+    }
+    
+    public static String zx(long paramLong)
     {
       AppMethodBeat.i(118624);
       if (paramLong == 0L)
@@ -139,8 +139,8 @@ public final class b
         return "";
       }
       String str = new BigInteger(Long.toBinaryString(paramLong), 2).toString();
-      k.g(str, "big.toString()");
-      str = asY(str);
+      p.g(str, "big.toString()");
+      str = ayd(str);
       AppMethodBeat.o(118624);
       return str;
     }

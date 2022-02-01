@@ -1,13 +1,11 @@
 package com.tencent.mm.plugin.webview.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.d.c;
-import com.tencent.luggage.d.k;
-import com.tencent.luggage.d.n;
+import com.tencent.luggage.d.d;
+import com.tencent.luggage.d.p;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.plugin.webview.luggage.p.a;
+import com.tencent.mm.plugin.webview.luggage.q.a;
 import com.tencent.mm.ui.base.l;
 import org.json.JSONObject;
 
@@ -19,13 +17,13 @@ public final class m
     super(2);
   }
   
-  public final void a(Context paramContext, f paramf)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78708);
-    paramf.eAt().aBA("shareTimeline");
-    paramf.bXF.a(new c()
+    paramg.ePj().aGY("shareTimeline");
+    paramg.chX.a(new d()
     {
-      public final JSONObject Aq()
+      public final JSONObject BO()
       {
         return null;
       }
@@ -35,14 +33,14 @@ public final class m
         return "menu:share:timeline";
       }
     });
-    h.wUl.dB(982, 10);
+    com.tencent.mm.plugin.report.service.g.yhR.dD(982, 10);
     AppMethodBeat.o(78708);
   }
   
-  public final void a(Context paramContext, f paramf, l paraml)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
   {
     AppMethodBeat.i(78707);
-    if (paramf.Gi(23)) {
+    if (paramg.HC(23)) {
       paraml.a(2, paramContext.getString(2131762164), 2131689817);
     }
     AppMethodBeat.o(78707);

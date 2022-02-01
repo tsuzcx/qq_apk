@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.sharecard.model.l;
 import com.tencent.mm.plugin.card.sharecard.model.m;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,13 +12,13 @@ import org.json.JSONObject;
 
 public final class t
 {
-  public static l VH(String paramString)
+  public static l Zq(String paramString)
   {
     int m = 1;
     AppMethodBeat.i(113875);
     if (TextUtils.isEmpty(paramString))
     {
-      ac.e("MicroMsg.ShareCardLayoutDataParser", "parseShareCardLayoutData jsonContent is null");
+      ad.e("MicroMsg.ShareCardLayoutDataParser", "parseShareCardLayoutData jsonContent is null");
       AppMethodBeat.o(113875);
       return null;
     }
@@ -27,44 +27,44 @@ public final class t
       paramString = new JSONObject(paramString).optJSONObject("list");
       if (paramString == null)
       {
-        ac.e("MicroMsg.ShareCardLayoutDataParser", "parseShareCardLayoutData resultJson is null");
+        ad.e("MicroMsg.ShareCardLayoutDataParser", "parseShareCardLayoutData resultJson is null");
         AppMethodBeat.o(113875);
         return null;
       }
       l locall = new l();
-      locall.nYr = paramString.optString("local_city");
-      locall.nYp = VI(paramString.optString("local_city_list"));
-      locall.nYq = VI(paramString.optString("other_city_list"));
-      locall.nYs = paramString.optBoolean("local_end");
-      locall.nYt = paramString.optBoolean("other_end");
-      locall.dvX = paramString.optBoolean("show_red_dot");
-      locall.dvY = paramString.optBoolean("show_new");
-      locall.nYv = paramString.optString("tips");
-      locall.nYu = VJ(paramString.optString("icons"));
-      locall.nYw = paramString.optInt("newest_sharecard_time_second");
+      locall.oBL = paramString.optString("local_city");
+      locall.oBJ = Zr(paramString.optString("local_city_list"));
+      locall.oBK = Zr(paramString.optString("other_city_list"));
+      locall.oBM = paramString.optBoolean("local_end");
+      locall.oBN = paramString.optBoolean("other_end");
+      locall.dIh = paramString.optBoolean("show_red_dot");
+      locall.dIi = paramString.optBoolean("show_new");
+      locall.oBP = paramString.optString("tips");
+      locall.oBO = Zs(paramString.optString("icons"));
+      locall.oBQ = paramString.optInt("newest_sharecard_time_second");
       int i;
       int j;
       label209:
       int k;
-      if (locall.nYs)
+      if (locall.oBM)
       {
         i = 1;
-        if (!locall.nYt) {
+        if (!locall.oBN) {
           break label288;
         }
         j = 1;
-        if (!locall.dvX) {
+        if (!locall.dIh) {
           break label293;
         }
         k = 1;
         label219:
-        if (!locall.dvY) {
+        if (!locall.dIi) {
           break label298;
         }
       }
       for (;;)
       {
-        ac.i("MicroMsg.ShareCardLayoutDataParser", "localEnd:%d, otherEnd:%d, showRedDot:%d, showNew:%d, tips:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), locall.nYv });
+        ad.i("MicroMsg.ShareCardLayoutDataParser", "localEnd:%d, otherEnd:%d, showRedDot:%d, showNew:%d, tips:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), locall.oBP });
         AppMethodBeat.o(113875);
         return locall;
         i = 0;
@@ -82,17 +82,17 @@ public final class t
     }
     catch (JSONException paramString)
     {
-      ac.printErrStackTrace("MicroMsg.ShareCardLayoutDataParser", paramString, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.ShareCardLayoutDataParser", paramString, "", new Object[0]);
       AppMethodBeat.o(113875);
     }
   }
   
-  private static LinkedList<m> VI(String paramString)
+  private static LinkedList<m> Zr(String paramString)
   {
     AppMethodBeat.i(113876);
     if (TextUtils.isEmpty(paramString))
     {
-      ac.e("MicroMsg.ShareCardLayoutDataParser", "parseShareCardLayoutItem jsonContent is null");
+      ad.e("MicroMsg.ShareCardLayoutDataParser", "parseShareCardLayoutItem jsonContent is null");
       AppMethodBeat.o(113876);
       return null;
     }
@@ -101,7 +101,7 @@ public final class t
       paramString = new JSONObject(paramString).optJSONArray("item_list");
       if ((paramString == null) || (paramString.length() == 0))
       {
-        ac.e("MicroMsg.ShareCardLayoutDataParser", "parseShareCardLayoutItem itemListJson is null");
+        ad.e("MicroMsg.ShareCardLayoutDataParser", "parseShareCardLayoutItem itemListJson is null");
         AppMethodBeat.o(113876);
         return null;
       }
@@ -111,14 +111,14 @@ public final class t
       {
         JSONObject localJSONObject = paramString.optJSONObject(i);
         m localm = new m();
-        localm.dvO = localJSONObject.optString("card_id");
-        localm.nUr = localJSONObject.optString("card_tp_id");
-        localm.nYx = localJSONObject.optString("announcement");
-        localm.nYy = localJSONObject.optInt("end_time", 0);
-        localm.nYz = localJSONObject.optInt("update_time", 0);
-        localm.nYA = localJSONObject.optInt("item_type", 0);
+        localm.dHX = localJSONObject.optString("card_id");
+        localm.oxM = localJSONObject.optString("card_tp_id");
+        localm.oBR = localJSONObject.optString("announcement");
+        localm.oBS = localJSONObject.optInt("end_time", 0);
+        localm.oBT = localJSONObject.optInt("update_time", 0);
+        localm.oBU = localJSONObject.optInt("item_type", 0);
         localm.top = localJSONObject.optInt("top", 0);
-        ac.i("MicroMsg.ShareCardLayoutDataParser", "ljd: card_tp_id:" + localm.nUr + " top:" + localm.top);
+        ad.i("MicroMsg.ShareCardLayoutDataParser", "ljd: card_tp_id:" + localm.oxM + " top:" + localm.top);
         localLinkedList.add(localm);
         i += 1;
       }
@@ -127,18 +127,18 @@ public final class t
     }
     catch (JSONException paramString)
     {
-      ac.printErrStackTrace("MicroMsg.ShareCardLayoutDataParser", paramString, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.ShareCardLayoutDataParser", paramString, "", new Object[0]);
       AppMethodBeat.o(113876);
     }
     return null;
   }
   
-  private static LinkedList<String> VJ(String paramString)
+  private static LinkedList<String> Zs(String paramString)
   {
     AppMethodBeat.i(113877);
     if (TextUtils.isEmpty(paramString))
     {
-      ac.e("MicroMsg.ShareCardLayoutDataParser", "parseShareCardIcons jsonContent is null");
+      ad.e("MicroMsg.ShareCardLayoutDataParser", "parseShareCardIcons jsonContent is null");
       AppMethodBeat.o(113877);
       return null;
     }
@@ -147,7 +147,7 @@ public final class t
       paramString = new JSONArray(paramString);
       if (paramString.length() == 0)
       {
-        ac.e("MicroMsg.ShareCardLayoutDataParser", "parseShareCardIcons itemListJson is null");
+        ad.e("MicroMsg.ShareCardLayoutDataParser", "parseShareCardIcons itemListJson is null");
         AppMethodBeat.o(113877);
         return null;
       }
@@ -163,7 +163,7 @@ public final class t
     }
     catch (JSONException paramString)
     {
-      ac.printErrStackTrace("MicroMsg.ShareCardLayoutDataParser", paramString, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.ShareCardLayoutDataParser", paramString, "", new Object[0]);
       AppMethodBeat.o(113877);
     }
     return null;
@@ -171,7 +171,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.t
  * JD-Core Version:    0.7.0.1
  */

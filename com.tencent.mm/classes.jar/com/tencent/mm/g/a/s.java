@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class s
   extends b
 {
-  public a cYZ;
+  public a dkr;
   
   public s()
   {
@@ -16,15 +16,15 @@ public final class s
   private s(byte paramByte)
   {
     AppMethodBeat.i(104408);
-    this.cYZ = new a();
-    this.Gqe = false;
+    this.dkr = new a();
+    this.IbR = false;
     this.callback = null;
     AppMethodBeat.o(104408);
   }
   
   public static final class a
   {
-    public String cZa;
+    public String dks;
     public int percentage;
     public int status;
   }

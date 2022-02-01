@@ -22,30 +22,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.v;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.modelvideo.c.a;
 import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.modelvideo.t;
+import com.tencent.mm.network.ae;
 import com.tencent.mm.plugin.mmsight.SightCaptureResult;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.ui.chat.AppPanel;
 import com.tencent.mm.pluginsdk.ui.chat.AppPanel.a;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.h;
+import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.btq;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.s;
+import com.tencent.mm.protocal.protobuf.bye;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.vfs.i;
@@ -55,29 +57,29 @@ import java.util.List;
 @com.tencent.mm.ui.base.a(3)
 public class MassSendMsgUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
-  private static String uFa = "";
+  private static String vIa = "";
+  private List<String> fPS;
   private String filePath;
-  private List<String> fwF;
-  private TextView gIx;
+  private TextView hch;
   private p tipDialog;
-  private TextView uEZ;
-  private ChatFooter uEt;
-  private String uEv;
-  private boolean uEw;
-  private com.tencent.mm.ui.widget.a.d uFb;
-  private b uFc;
-  private AppPanel.a uFd;
+  private TextView vHZ;
+  private ChatFooter vHt;
+  private String vHv;
+  private boolean vHw;
+  private com.tencent.mm.ui.widget.a.d vIb;
+  private b vIc;
+  private AppPanel.a vId;
   
   public MassSendMsgUI()
   {
     AppMethodBeat.i(26474);
     this.tipDialog = null;
-    this.uEw = false;
-    this.uFd = new AppPanel.a()
+    this.vHw = false;
+    this.vId = new AppPanel.a()
     {
-      public final void Im(int paramAnonymousInt)
+      public final void JI(int paramAnonymousInt)
       {
         AppMethodBeat.i(26463);
         switch (paramAnonymousInt)
@@ -90,7 +92,7 @@ public class MassSendMsgUI
           com.tencent.mm.pluginsdk.ui.tools.q.a(MassSendMsgUI.this, 1, 1, 3, 3, null);
           AppMethodBeat.o(26463);
           return;
-          com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(com.tencent.mm.loader.j.b.aps());
+          com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(com.tencent.mm.loader.j.b.asg());
           if ((!locale.exists()) && (!locale.mkdirs()))
           {
             Toast.makeText(MassSendMsgUI.this, MassSendMsgUI.this.getString(2131757320), 1).show();
@@ -98,7 +100,7 @@ public class MassSendMsgUI
             return;
           }
           boolean bool = com.tencent.mm.pluginsdk.permission.b.a(MassSendMsgUI.this.getContext(), "android.permission.CAMERA", 16, "", "");
-          ac.i("MicroMsg.MassSendMsgUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bs.eWi(), MassSendMsgUI.this.getContext() });
+          ad.i("MicroMsg.MassSendMsgUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bt.flS(), MassSendMsgUI.this.getContext() });
           if (!bool)
           {
             AppMethodBeat.o(26463);
@@ -108,7 +110,7 @@ public class MassSendMsgUI
         }
       }
       
-      public final void In(int paramAnonymousInt)
+      public final void JJ(int paramAnonymousInt)
       {
         AppMethodBeat.i(26467);
         MassSendMsgUI.a(MassSendMsgUI.this, paramAnonymousInt);
@@ -117,119 +119,105 @@ public class MassSendMsgUI
       
       public final void d(com.tencent.mm.pluginsdk.model.app.g paramAnonymousg) {}
       
-      public final void dbN()
+      public final void dlh()
       {
         AppMethodBeat.i(26458);
         Toast.makeText(MassSendMsgUI.this, MassSendMsgUI.this.getString(2131761188), 0).show();
         AppMethodBeat.o(26458);
       }
       
-      public final void dbO()
+      public final void dli()
       {
         AppMethodBeat.i(26459);
         Toast.makeText(MassSendMsgUI.this, MassSendMsgUI.this.getString(2131761170), 0).show();
         AppMethodBeat.o(26459);
       }
       
-      public final void dbP()
+      public final void dlj()
       {
         AppMethodBeat.i(26460);
         Toast.makeText(MassSendMsgUI.this, MassSendMsgUI.this.getString(2131761186), 0).show();
         AppMethodBeat.o(26460);
       }
       
-      public final void dbQ()
+      public final void dlk()
       {
         AppMethodBeat.i(26461);
         Toast.makeText(MassSendMsgUI.this, MassSendMsgUI.this.getString(2131761179), 0).show();
         AppMethodBeat.o(26461);
       }
       
-      public final void dbR()
+      public final void dll()
       {
         AppMethodBeat.i(26462);
         Toast.makeText(MassSendMsgUI.this, MassSendMsgUI.this.getString(2131761170), 0).show();
         AppMethodBeat.o(26462);
       }
       
-      public final void dbS()
+      public final void dlm()
       {
         AppMethodBeat.i(26464);
-        com.tencent.mm.plugin.masssend.a.iyx.bF(MassSendMsgUI.this);
+        com.tencent.mm.plugin.masssend.a.iRG.bE(MassSendMsgUI.this);
         AppMethodBeat.o(26464);
       }
       
-      public final void dbT()
+      public final void dln()
       {
         AppMethodBeat.i(26465);
         Toast.makeText(MassSendMsgUI.this, MassSendMsgUI.this.getString(2131761170), 0).show();
         AppMethodBeat.o(26465);
       }
       
-      public final void dbU() {}
+      public final void dlo() {}
       
-      public final void dbV()
+      public final void dlp()
       {
         AppMethodBeat.i(26466);
         Intent localIntent = new Intent();
         localIntent.putExtra("preceding_scence", 13);
-        com.tencent.mm.br.d.b(MassSendMsgUI.this, "emoji", ".ui.v2.EmojiStoreV2UI", localIntent);
+        com.tencent.mm.bs.d.b(MassSendMsgUI.this, "emoji", ".ui.v2.EmojiStoreV2UI", localIntent);
         AppMethodBeat.o(26466);
       }
       
-      public final void dbW()
+      public final void dlq()
       {
         AppMethodBeat.i(26468);
         Toast.makeText(MassSendMsgUI.this, MassSendMsgUI.this.getString(2131761180), 0).show();
         AppMethodBeat.o(26468);
       }
       
-      public final void dbX() {}
+      public final void dlr() {}
       
-      public final void dbY() {}
+      public final void dls() {}
       
-      public final void dbZ() {}
+      public final void dlt() {}
       
-      public final void dca() {}
+      public final void dlu() {}
       
-      public final void dcb() {}
+      public final void dlv() {}
       
-      public final void dcc() {}
+      public final void dlw() {}
       
-      public final void dcd() {}
+      public final void dlx() {}
+      
+      public final void dly() {}
     };
     AppMethodBeat.o(26474);
   }
   
-  public static void akE(String paramString)
-  {
-    uFa = paramString;
-  }
-  
-  private static void akF(String paramString)
-  {
-    AppMethodBeat.i(26491);
-    long l = i.aSp(paramString);
-    int i = bs.m((Integer)com.tencent.mm.plugin.report.service.h.a((int)(l / 1024L), new int[] { 512, 1024, 2048, 5120, 8192, 10240, 15360, 20480 }, 247, 255));
-    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(106L, i, 1L, false);
-    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(106L, 246L, 1L, false);
-    ac.d("MicroMsg.MassSendMsgUI", "report video size res : " + i + " hadCompress : true fileLen : " + l / 1024L + "K");
-    AppMethodBeat.o(26491);
-  }
-  
-  private void av(final Intent paramIntent)
+  private void aA(final Intent paramIntent)
   {
     AppMethodBeat.i(26483);
     Object localObject = paramIntent.getStringExtra("VideoRecorder_FileName");
     int i = paramIntent.getIntExtra("VideoRecorder_VideoLength", 0);
     paramIntent = new com.tencent.mm.plugin.masssend.a.a();
-    paramIntent.uEc = this.uEv;
-    paramIntent.uEd = this.fwF.size();
+    paramIntent.vHc = this.vHv;
+    paramIntent.vHd = this.fPS.size();
     paramIntent.filename = ((String)localObject);
-    paramIntent.uEe = i;
+    paramIntent.vHe = i;
     paramIntent.msgType = 43;
-    paramIntent = new com.tencent.mm.plugin.masssend.a.f(paramIntent, this.uEw);
-    az.agi().a(paramIntent, 0);
+    paramIntent = new com.tencent.mm.plugin.masssend.a.f(paramIntent, this.vHw);
+    ba.aiU().a(paramIntent, 0);
     localObject = getContext();
     getString(2131755906);
     this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject, getString(2131763077), true, new DialogInterface.OnCancelListener()
@@ -237,14 +225,14 @@ public class MassSendMsgUI
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(26470);
-        az.agi().a(paramIntent);
+        ba.aiU().a(paramIntent);
         AppMethodBeat.o(26470);
       }
     });
     AppMethodBeat.o(26483);
   }
   
-  private void aw(final Intent paramIntent)
+  private void aB(final Intent paramIntent)
   {
     AppMethodBeat.i(26484);
     Object localObject = paramIntent.getStringExtra("CropImage_OutputPath");
@@ -256,16 +244,16 @@ public class MassSendMsgUI
     if (u.f((String)localObject, null, paramIntent.getBooleanExtra("CropImage_Compress_Img", true))) {}
     for (int i = 1;; i = 0)
     {
-      com.tencent.mm.plugin.masssend.a.h.dbz();
-      paramIntent = com.tencent.mm.plugin.masssend.a.b.l((String)localObject, this.uEv, this.fwF.size(), i);
+      com.tencent.mm.plugin.masssend.a.h.dkT();
+      paramIntent = com.tencent.mm.plugin.masssend.a.b.l((String)localObject, this.vHv, this.fPS.size(), i);
       if (paramIntent != null) {
         break;
       }
       AppMethodBeat.o(26484);
       return;
     }
-    paramIntent = new com.tencent.mm.plugin.masssend.a.f(paramIntent, this.uEw, i);
-    az.agi().a(paramIntent, 0);
+    paramIntent = new com.tencent.mm.plugin.masssend.a.f(paramIntent, this.vHw, i);
+    ba.aiU().a(paramIntent, 0);
     localObject = getContext();
     getString(2131755906);
     this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject, getString(2131763077), true, new DialogInterface.OnCancelListener()
@@ -273,17 +261,17 @@ public class MassSendMsgUI
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(26471);
-        az.agi().a(paramIntent);
+        ba.aiU().a(paramIntent);
         AppMethodBeat.o(26471);
       }
     });
     AppMethodBeat.o(26484);
   }
   
-  private void ax(final Intent paramIntent)
+  private void aC(final Intent paramIntent)
   {
     AppMethodBeat.i(26487);
-    if (!com.tencent.mm.network.ae.cS(this))
+    if (!ae.cP(this))
     {
       com.tencent.mm.ui.base.h.a(this, 2131764676, 2131755906, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
@@ -300,11 +288,11 @@ public class MassSendMsgUI
       AppMethodBeat.o(26487);
       return;
     }
-    ay(paramIntent);
+    aD(paramIntent);
     AppMethodBeat.o(26487);
   }
   
-  private void ay(Intent paramIntent)
+  private void aD(Intent paramIntent)
   {
     AppMethodBeat.i(26488);
     final com.tencent.mm.modelvideo.c localc = new com.tencent.mm.modelvideo.c();
@@ -313,15 +301,15 @@ public class MassSendMsgUI
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        localc.hYl = null;
+        localc.irH = null;
       }
     });
-    localc.a(this, paramIntent, new c.a()
+    localc.a(this, paramIntent, this.vHv, new c.a()
     {
       public final void c(int paramAnonymousInt1, final String paramAnonymousString1, final String paramAnonymousString2, final int paramAnonymousInt2)
       {
         AppMethodBeat.i(26453);
-        ac.d("MicroMsg.MassSendMsgUI", "onImportFinish, ret: %s, fileName: %s, importPath: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), paramAnonymousString1, paramAnonymousString2 });
+        ad.d("MicroMsg.MassSendMsgUI", "onImportFinish, ret: %s, fileName: %s, importPath: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), paramAnonymousString1, paramAnonymousString2 });
         if ((paramAnonymousInt1 < 0) && (paramAnonymousInt1 != -50002))
         {
           Toast.makeText(MassSendMsgUI.this, MassSendMsgUI.this.getString(2131764674), 0).show();
@@ -341,19 +329,19 @@ public class MassSendMsgUI
               AppMethodBeat.i(26452);
               if (MassSendMsgUI.a(MassSendMsgUI.this, paramAnonymousString1, paramAnonymousString2))
               {
-                ap.f(new Runnable()
+                aq.f(new Runnable()
                 {
                   public final void run()
                   {
                     AppMethodBeat.i(26450);
-                    MassSendMsgUI.a(MassSendMsgUI.this, MassSendMsgUI.6.1.this.cNj, MassSendMsgUI.6.1.this.kIx);
+                    MassSendMsgUI.a(MassSendMsgUI.this, MassSendMsgUI.6.1.this.cYz, MassSendMsgUI.6.1.this.leQ);
                     AppMethodBeat.o(26450);
                   }
                 });
                 AppMethodBeat.o(26452);
                 return;
               }
-              ap.f(new Runnable()
+              aq.f(new Runnable()
               {
                 public final void run()
                 {
@@ -377,16 +365,32 @@ public class MassSendMsgUI
     AppMethodBeat.o(26488);
   }
   
-  private void cNE()
+  public static void apr(String paramString)
+  {
+    vIa = paramString;
+  }
+  
+  private static void aps(String paramString)
+  {
+    AppMethodBeat.i(26491);
+    long l = i.aYo(paramString);
+    int i = bt.n((Integer)com.tencent.mm.plugin.report.service.g.a((int)(l / 1024L), new int[] { 512, 1024, 2048, 5120, 8192, 10240, 15360, 20480 }, 247, 255));
+    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(106L, i, 1L, false);
+    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(106L, 246L, 1L, false);
+    ad.d("MicroMsg.MassSendMsgUI", "report video size res : " + i + " hadCompress : true fileLen : " + l / 1024L + "K");
+    AppMethodBeat.o(26491);
+  }
+  
+  private void cVW()
   {
     AppMethodBeat.i(26481);
-    if (!com.tencent.mm.pluginsdk.ui.tools.q.d(this, com.tencent.mm.loader.j.b.aps(), "microMsg." + System.currentTimeMillis() + ".jpg", 2)) {
+    if (!com.tencent.mm.pluginsdk.ui.tools.q.d(this, com.tencent.mm.loader.j.b.asg(), "microMsg." + System.currentTimeMillis() + ".jpg", 2)) {
       Toast.makeText(this, getString(2131763022), 1).show();
     }
     AppMethodBeat.o(26481);
   }
   
-  private void dJ(String paramString, int paramInt)
+  private void ea(String paramString, int paramInt)
   {
     AppMethodBeat.i(26486);
     final com.tencent.mm.modelvideo.c localc = new com.tencent.mm.modelvideo.c();
@@ -395,17 +399,17 @@ public class MassSendMsgUI
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        localc.hYl = null;
+        localc.irH = null;
       }
     });
     com.tencent.mm.sdk.g.b.c(new MassSendMsgUI.2(this, paramString, paramInt), "MassSend_Remux");
     AppMethodBeat.o(26486);
   }
   
-  private boolean hC(String paramString1, String paramString2)
+  private boolean hO(String paramString1, String paramString2)
   {
     AppMethodBeat.i(26489);
-    boolean bool = ax.is2G(this);
+    boolean bool = ay.is2G(this);
     int i;
     if (bool)
     {
@@ -419,7 +423,7 @@ public class MassSendMsgUI
     for (double d = 60000.0D;; d = 300000.0D)
     {
       i = SightVideoJNI.shouldRemuxingVFS(paramString2, 660, 500, i, d, 1000000);
-      ac.i("MicroMsg.MassSendMsgUI", "check remuxing, ret %d", new Object[] { Integer.valueOf(i) });
+      ad.i("MicroMsg.MassSendMsgUI", "check remuxing, ret %d", new Object[] { Integer.valueOf(i) });
       switch (i)
       {
       default: 
@@ -429,19 +433,19 @@ public class MassSendMsgUI
         break label22;
       }
     }
-    o.aJy();
-    akF(t.DV(paramString1));
+    o.aMJ();
+    aps(com.tencent.mm.modelvideo.t.Hh(paramString1));
     AppMethodBeat.o(26489);
     return true;
     AppMethodBeat.o(26489);
     return false;
-    o.aJy();
-    String str = t.DV(paramString1);
+    o.aMJ();
+    String str = com.tencent.mm.modelvideo.t.Hh(paramString1);
     com.tencent.mm.compatible.h.d locald = new com.tencent.mm.compatible.h.d();
     locald.setDataSource(paramString2);
-    ac.i("MicroMsg.MassSendMsgUI", "start remux, targetPath: %s", new Object[] { str });
-    int m = bs.getInt(locald.extractMetadata(18), 0);
-    int n = bs.getInt(locald.extractMetadata(19), 0);
+    ad.i("MicroMsg.MassSendMsgUI", "start remux, targetPath: %s", new Object[] { str });
+    int m = bt.getInt(locald.extractMetadata(18), 0);
+    int n = bt.getInt(locald.extractMetadata(19), 0);
     VideoTransPara localVideoTransPara = new VideoTransPara();
     Object localObject = new PInt();
     PInt localPInt1 = new PInt();
@@ -454,9 +458,9 @@ public class MassSendMsgUI
     localVideoTransPara.height = localPInt2.value;
     localVideoTransPara.fps = localPInt3.value;
     localVideoTransPara.videoBitrate = localPInt4.value;
-    localObject = com.tencent.mm.modelcontrol.d.aDL().c(localVideoTransPara);
-    int i2 = com.tencent.mm.plugin.sight.base.c.xCs;
-    ac.d("MicroMsg.MassSendMsgUI", "check remuxing old para %s, newPara: %s", new Object[] { localVideoTransPara, localObject });
+    localObject = com.tencent.mm.modelcontrol.d.aGQ().c(localVideoTransPara);
+    int i2 = com.tencent.mm.plugin.sight.base.c.yRc;
+    ad.d("MicroMsg.MassSendMsgUI", "check remuxing old para %s, newPara: %s", new Object[] { localVideoTransPara, localObject });
     int i1;
     int j;
     int k;
@@ -485,11 +489,11 @@ public class MassSendMsgUI
     for (;;)
     {
       locald.release();
-      k = SightVideoJNI.remuxingVFS(paramString2, str, i, j, k, com.tencent.mm.plugin.sight.base.c.xCr, 8, 2, 25.0F, com.tencent.mm.plugin.sight.base.c.xCt, null, 0, false, 0, 51);
+      k = SightVideoJNI.remuxingVFS(paramString2, str, i, j, k, com.tencent.mm.plugin.sight.base.c.yRb, 8, 2, 25.0F, com.tencent.mm.plugin.sight.base.c.yRd, null, 0, false, 0, 51);
       if (k >= 0) {
         break label646;
       }
-      ac.w("MicroMsg.MassSendMsgUI", "remuxing video error");
+      ad.w("MicroMsg.MassSendMsgUI", "remuxing video error");
       AppMethodBeat.o(26489);
       return false;
       i = k / 2;
@@ -507,28 +511,28 @@ public class MassSendMsgUI
       k = ((VideoTransPara)localObject).videoBitrate;
     }
     label646:
-    akF(str);
-    o.aJy();
-    paramString1 = t.DW(paramString1);
-    if (!i.eA(paramString1)) {
-      ac.i("MicroMsg.MassSendMsgUI", "thumb not exist create one, thumbPath: %s", new Object[] { paramString1 });
+    aps(str);
+    o.aMJ();
+    paramString1 = com.tencent.mm.modelvideo.t.Hi(paramString1);
+    if (!i.fv(paramString1)) {
+      ad.i("MicroMsg.MassSendMsgUI", "thumb not exist create one, thumbPath: %s", new Object[] { paramString1 });
     }
     try
     {
-      paramString2 = com.tencent.mm.sdk.platformtools.f.createVideoThumbnail(str, 1);
+      paramString2 = com.tencent.mm.sdk.platformtools.g.createVideoThumbnail(str, 1);
       if (paramString2 != null) {
-        com.tencent.mm.sdk.platformtools.f.a(paramString2, 60, Bitmap.CompressFormat.JPEG, paramString1, true);
+        com.tencent.mm.sdk.platformtools.g.a(paramString2, 60, Bitmap.CompressFormat.JPEG, paramString1, true);
       }
     }
     catch (Exception paramString1)
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.MassSendMsgUI", paramString1, "", new Object[0]);
-        ac.e("MicroMsg.MassSendMsgUI", "create thumb error: %s", new Object[] { paramString1.getMessage() });
+        ad.printErrStackTrace("MicroMsg.MassSendMsgUI", paramString1, "", new Object[0]);
+        ad.e("MicroMsg.MassSendMsgUI", "create thumb error: %s", new Object[] { paramString1.getMessage() });
       }
     }
-    ac.i("MicroMsg.MassSendMsgUI", "do remux, targetPath: %s, outputWidth: %s, outputHeight: %s, retDuration: %s", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+    ad.i("MicroMsg.MassSendMsgUI", "do remux, targetPath: %s, outputWidth: %s, outputHeight: %s, retDuration: %s", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
     AppMethodBeat.o(26489);
     return true;
   }
@@ -543,44 +547,44 @@ public class MassSendMsgUI
     boolean bool = true;
     AppMethodBeat.i(26479);
     setMMTitle(2131761181);
-    this.uEZ = ((TextView)findViewById(2131302187));
-    this.gIx = ((TextView)findViewById(2131302186));
-    TextView localTextView = this.uEZ;
-    int j = (int)this.uEZ.getTextSize();
+    this.vHZ = ((TextView)findViewById(2131302187));
+    this.hch = ((TextView)findViewById(2131302186));
+    TextView localTextView = this.vHZ;
+    int j = (int)this.vHZ.getTextSize();
     Object localObject;
     int i;
-    if (this.fwF == null)
+    if (this.fPS == null)
     {
       localObject = new SpannableString("");
       localTextView.setText((CharSequence)localObject);
-      this.gIx.setText(getResources().getQuantityString(2131623956, this.fwF.size(), new Object[] { Integer.valueOf(this.fwF.size()) }));
-      this.uEt = ((ChatFooter)findViewById(2131302672));
-      ((MassSendLayout)findViewById(2131302191)).setPanel(this.uEt.getPanel());
-      this.uEt.setCattingRootLayoutId(2131302191);
-      this.uFc = new b(this, this.uEt, this.uEv, this.fwF, this.uEw);
-      this.uEt.setFooterEventListener(this.uFc);
+      this.hch.setText(getResources().getQuantityString(2131623956, this.fPS.size(), new Object[] { Integer.valueOf(this.fPS.size()) }));
+      this.vHt = ((ChatFooter)findViewById(2131302672));
+      ((MassSendLayout)findViewById(2131302191)).setPanel(this.vHt.getPanel());
+      this.vHt.setCattingRootLayoutId(2131302191);
+      this.vIc = new b(this, this.vHt, this.vHv, this.fPS, this.vHw);
+      this.vHt.setFooterEventListener(this.vIc);
       localObject = new d(this);
-      this.uEt.setSmileyPanelCallback((com.tencent.mm.pluginsdk.ui.chat.f)localObject);
-      localObject = this.uEt;
-      az.ayM();
-      j = ((Integer)com.tencent.mm.model.c.agA().get(18, Integer.valueOf(-1))).intValue();
+      this.vHt.setSmileyPanelCallback((com.tencent.mm.pluginsdk.ui.chat.f)localObject);
+      localObject = this.vHt;
+      ba.aBQ();
+      j = ((Integer)com.tencent.mm.model.c.ajl().get(18, Integer.valueOf(-1))).intValue();
       i = j;
       if (j == -1) {
         i = 1;
       }
       ((ChatFooter)localObject).setMode(i);
-      this.uEt.setUserName("masssendapp");
-      this.uEt.DtP.refresh();
-      this.uEt.DtP.eNW();
-      this.uEt.DtP.eNX();
-      this.uEt.DtP.eNY();
-      az.ayM();
-      if (((Boolean)com.tencent.mm.model.c.agA().get(66832, Boolean.FALSE)).booleanValue())
+      this.vHt.setUserName("masssendapp");
+      this.vHt.EYU.refresh();
+      this.vHt.EYU.fcV();
+      this.vHt.EYU.fcW();
+      this.vHt.EYU.fcX();
+      ba.aBQ();
+      if (((Boolean)com.tencent.mm.model.c.ajl().get(66832, Boolean.FALSE)).booleanValue())
       {
-        this.uEt.eOG();
-        this.uEt.eOo();
+        this.vHt.fdG();
+        this.vHt.fdn();
       }
-      this.uEt.addTextChangedListener(new TextWatcher()
+      this.vHt.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable) {}
         
@@ -591,12 +595,12 @@ public class MassSendMsgUI
           AppMethodBeat.i(26457);
           paramAnonymousCharSequence = String.valueOf(paramAnonymousCharSequence);
           final String str = paramAnonymousCharSequence.substring(paramAnonymousInt1, paramAnonymousInt1 + paramAnonymousInt3);
-          if (((MassSendMsgUI.a(MassSendMsgUI.this) == null) || (!MassSendMsgUI.a(MassSendMsgUI.this).isShowing())) && (s.aKC(str)))
+          if (((MassSendMsgUI.a(MassSendMsgUI.this) == null) || (!MassSendMsgUI.a(MassSendMsgUI.this).isShowing())) && (com.tencent.mm.sdk.platformtools.t.aQi(str)))
           {
-            Bitmap localBitmap = com.tencent.mm.sdk.platformtools.f.e(str, 300, 300, false);
+            Bitmap localBitmap = com.tencent.mm.sdk.platformtools.g.d(str, 300, 300, false);
             if (localBitmap == null)
             {
-              ac.e("MicroMsg.MassSendMsgUI", "showAlert fail, bmp is null");
+              ad.e("MicroMsg.MassSendMsgUI", "showAlert fail, bmp is null");
               AppMethodBeat.o(26457);
               return;
             }
@@ -617,29 +621,29 @@ public class MassSendMsgUI
             }, null));
             paramAnonymousCharSequence = paramAnonymousCharSequence.substring(0, paramAnonymousInt1) + paramAnonymousCharSequence.substring(paramAnonymousInt1 + paramAnonymousInt3);
             MassSendMsgUI.b(MassSendMsgUI.this).w(paramAnonymousCharSequence, -1, false);
-            MassSendMsgUI.ahu(paramAnonymousCharSequence);
+            MassSendMsgUI.alW(paramAnonymousCharSequence);
           }
           AppMethodBeat.o(26457);
         }
       });
-      this.uEt.DtP.eNT();
-      this.uEt.DtP.eNQ();
-      this.uEt.DtP.eNS();
-      this.uEt.aG(true, true);
-      this.uEt.DtP.eNR();
-      this.uEt.vg(true);
-      this.uEt.setAppPanelListener(this.uFd);
-      localObject = this.uEt;
-      com.tencent.mm.br.d.eQD();
-      if (!com.tencent.mm.aw.b.aGa()) {
+      this.vHt.EYU.fcS();
+      this.vHt.EYU.fcP();
+      this.vHt.EYU.fcR();
+      this.vHt.aN(true, true);
+      this.vHt.EYU.fcQ();
+      this.vHt.vS(true);
+      this.vHt.setAppPanelListener(this.vId);
+      localObject = this.vHt;
+      com.tencent.mm.bs.d.ffH();
+      if (!com.tencent.mm.ax.b.aJj()) {
         break label624;
       }
     }
     for (;;)
     {
-      ((ChatFooter)localObject).vh(bool);
-      this.uEt.DtP.eNU();
-      this.uEt.DtP.eNV();
+      ((ChatFooter)localObject).vT(bool);
+      this.vHt.EYU.fcT();
+      this.vHt.EYU.fcU();
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -654,10 +658,10 @@ public class MassSendMsgUI
       return;
       localObject = new StringBuilder();
       i = 0;
-      if (i < this.fwF.size())
+      if (i < this.fPS.size())
       {
-        String str = v.wk((String)this.fwF.get(i));
-        if (i == this.fwF.size() - 1) {
+        String str = v.zf((String)this.fPS.get(i));
+        if (i == this.fPS.size() - 1) {
           ((StringBuilder)localObject).append(str);
         }
         for (;;)
@@ -667,7 +671,7 @@ public class MassSendMsgUI
           ((StringBuilder)localObject).append(str + ",  ");
         }
       }
-      localObject = com.tencent.mm.pluginsdk.ui.span.k.b(this, ((StringBuilder)localObject).toString(), j);
+      localObject = k.b(this, ((StringBuilder)localObject).toString(), j);
       break;
       label624:
       bool = false;
@@ -677,7 +681,7 @@ public class MassSendMsgUI
   public void onActivityResult(int paramInt1, int paramInt2, final Intent paramIntent)
   {
     AppMethodBeat.i(26485);
-    ac.i("MicroMsg.MassSendMsgUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
+    ad.i("MicroMsg.MassSendMsgUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
     if (paramInt2 != -1)
     {
       AppMethodBeat.o(26485);
@@ -689,7 +693,7 @@ public class MassSendMsgUI
     {
     case 3: 
     default: 
-      ac.e("MicroMsg.MassSendMsgUI", "onActivityResult: not found this requestCode");
+      ad.e("MicroMsg.MassSendMsgUI", "onActivityResult: not found this requestCode");
       AppMethodBeat.o(26485);
       return;
     case 1: 
@@ -705,7 +709,7 @@ public class MassSendMsgUI
         paramIntent = (String)((List)localObject1).get(0);
         localObject1 = new Intent();
         ((Intent)localObject1).setData(Uri.parse("file://".concat(String.valueOf(paramIntent))));
-        ax((Intent)localObject1);
+        aC((Intent)localObject1);
         AppMethodBeat.o(26485);
         return;
       }
@@ -718,13 +722,13 @@ public class MassSendMsgUI
       localObject2 = new Intent();
       ((Intent)localObject2).putExtra("CropImage_OutputPath", (String)((List)localObject1).get(0));
       ((Intent)localObject2).putExtra("CropImage_Compress_Img", paramIntent.getBooleanExtra("CropImage_Compress_Img", true));
-      aw((Intent)localObject2);
+      aB((Intent)localObject2);
       AppMethodBeat.o(26485);
       return;
     case 2: 
       localObject1 = getApplicationContext();
-      az.ayM();
-      this.filePath = com.tencent.mm.pluginsdk.ui.tools.q.h((Context)localObject1, paramIntent, com.tencent.mm.model.c.awL());
+      ba.aBQ();
+      this.filePath = com.tencent.mm.pluginsdk.ui.tools.q.i((Context)localObject1, paramIntent, com.tencent.mm.model.c.azA());
       if (this.filePath == null)
       {
         AppMethodBeat.o(26485);
@@ -734,11 +738,11 @@ public class MassSendMsgUI
       paramIntent.putExtra("CropImageMode", 4);
       paramIntent.putExtra("CropImage_Filter", true);
       paramIntent.putExtra("CropImage_ImgPath", this.filePath);
-      com.tencent.mm.plugin.masssend.a.iyx.a(getContext(), paramIntent, 4);
+      com.tencent.mm.plugin.masssend.a.iRG.a(getContext(), paramIntent, 4);
       AppMethodBeat.o(26485);
       return;
     case 4: 
-      aw(paramIntent);
+      aB(paramIntent);
       AppMethodBeat.o(26485);
       return;
     case 9: 
@@ -747,22 +751,22 @@ public class MassSendMsgUI
       paramIntent.putExtra("KSEGMENTVIDEOTHUMBPATH", ((CaptureDataManager.CaptureVideoNormalModel)localObject1).thumbPath);
       if (localObject1 != null)
       {
-        if (((CaptureDataManager.CaptureVideoNormalModel)localObject1).wql.booleanValue())
+        if (((CaptureDataManager.CaptureVideoNormalModel)localObject1).xyb.booleanValue())
         {
           paramIntent = ((CaptureDataManager.CaptureVideoNormalModel)localObject1).thumbPath;
-          if (!bs.isNullOrNil(paramIntent)) {
+          if (!bt.isNullOrNil(paramIntent)) {
             try
             {
-              ac.i("MicroMsg.MassSendMsgUI", "doSendChattingImage, path: %s", new Object[] { paramIntent });
-              com.tencent.mm.plugin.masssend.a.h.dbz();
-              paramIntent = com.tencent.mm.plugin.masssend.a.b.l(paramIntent, this.uEv, this.fwF.size(), 0);
+              ad.i("MicroMsg.MassSendMsgUI", "doSendChattingImage, path: %s", new Object[] { paramIntent });
+              com.tencent.mm.plugin.masssend.a.h.dkT();
+              paramIntent = com.tencent.mm.plugin.masssend.a.b.l(paramIntent, this.vHv, this.fPS.size(), 0);
               if (paramIntent == null)
               {
                 AppMethodBeat.o(26485);
                 return;
               }
-              paramIntent = new com.tencent.mm.plugin.masssend.a.f(paramIntent, this.uEw, 0);
-              az.agi().a(paramIntent, 0);
+              paramIntent = new com.tencent.mm.plugin.masssend.a.f(paramIntent, this.vHw, 0);
+              ba.aiU().a(paramIntent, 0);
               localObject1 = getContext();
               getString(2131755906);
               this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject1, getString(2131763077), true, new DialogInterface.OnCancelListener()
@@ -770,7 +774,7 @@ public class MassSendMsgUI
                 public final void onCancel(DialogInterface paramAnonymousDialogInterface)
                 {
                   AppMethodBeat.i(26472);
-                  az.agi().a(paramIntent);
+                  ba.aiU().a(paramIntent);
                   AppMethodBeat.o(26472);
                 }
               });
@@ -779,22 +783,22 @@ public class MassSendMsgUI
             }
             catch (Exception paramIntent)
             {
-              ac.e("MicroMsg.MassSendMsgUI", "doSendChattingImage error: %s", new Object[] { paramIntent.getMessage() });
+              ad.e("MicroMsg.MassSendMsgUI", "doSendChattingImage error: %s", new Object[] { paramIntent.getMessage() });
             }
           }
           AppMethodBeat.o(26485);
           return;
         }
-        ac.i("MicroMsg.MassSendMsgUI", "video path %s thumb path ", new Object[] { ((CaptureDataManager.CaptureVideoNormalModel)localObject1).videoPath, ((CaptureDataManager.CaptureVideoNormalModel)localObject1).thumbPath });
-        paramIntent = i.aSu(((CaptureDataManager.CaptureVideoNormalModel)localObject1).videoPath);
-        o.aJy();
-        localObject2 = t.DV(paramIntent);
+        ad.i("MicroMsg.MassSendMsgUI", "video path %s thumb path ", new Object[] { ((CaptureDataManager.CaptureVideoNormalModel)localObject1).videoPath, ((CaptureDataManager.CaptureVideoNormalModel)localObject1).thumbPath });
+        paramIntent = i.aYt(((CaptureDataManager.CaptureVideoNormalModel)localObject1).videoPath);
+        o.aMJ();
+        localObject2 = com.tencent.mm.modelvideo.t.Hh(paramIntent);
         if (!((CaptureDataManager.CaptureVideoNormalModel)localObject1).videoPath.equals(localObject2))
         {
-          ac.i("MicroMsg.MassSendMsgUI", "filepath not videopath and move it %s %s", new Object[] { ((CaptureDataManager.CaptureVideoNormalModel)localObject1).videoPath, localObject2 });
-          i.ma(((CaptureDataManager.CaptureVideoNormalModel)localObject1).videoPath, (String)localObject2);
+          ad.i("MicroMsg.MassSendMsgUI", "filepath not videopath and move it %s %s", new Object[] { ((CaptureDataManager.CaptureVideoNormalModel)localObject1).videoPath, localObject2 });
+          i.mA(((CaptureDataManager.CaptureVideoNormalModel)localObject1).videoPath, (String)localObject2);
         }
-        dJ(paramIntent, (int)(((CaptureDataManager.CaptureVideoNormalModel)localObject1).wqk.longValue() / 1000L));
+        ea(paramIntent, (int)(((CaptureDataManager.CaptureVideoNormalModel)localObject1).xya.longValue() / 1000L));
       }
       AppMethodBeat.o(26485);
       return;
@@ -802,22 +806,22 @@ public class MassSendMsgUI
       paramIntent = (SightCaptureResult)paramIntent.getParcelableExtra("key_req_result");
       if (paramIntent != null)
       {
-        if (paramIntent.uJm)
+        if (paramIntent.vMs)
         {
-          paramIntent = paramIntent.uJu;
-          if (!bs.isNullOrNil(paramIntent)) {
+          paramIntent = paramIntent.vMA;
+          if (!bt.isNullOrNil(paramIntent)) {
             try
             {
-              ac.i("MicroMsg.MassSendMsgUI", "doSendChattingImage, path: %s", new Object[] { paramIntent });
-              com.tencent.mm.plugin.masssend.a.h.dbz();
-              paramIntent = com.tencent.mm.plugin.masssend.a.b.l(paramIntent, this.uEv, this.fwF.size(), 0);
+              ad.i("MicroMsg.MassSendMsgUI", "doSendChattingImage, path: %s", new Object[] { paramIntent });
+              com.tencent.mm.plugin.masssend.a.h.dkT();
+              paramIntent = com.tencent.mm.plugin.masssend.a.b.l(paramIntent, this.vHv, this.fPS.size(), 0);
               if (paramIntent == null)
               {
                 AppMethodBeat.o(26485);
                 return;
               }
-              paramIntent = new com.tencent.mm.plugin.masssend.a.f(paramIntent, this.uEw, 0);
-              az.agi().a(paramIntent, 0);
+              paramIntent = new com.tencent.mm.plugin.masssend.a.f(paramIntent, this.vHw, 0);
+              ba.aiU().a(paramIntent, 0);
               localObject1 = getContext();
               getString(2131755906);
               this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject1, getString(2131763077), true, new DialogInterface.OnCancelListener()
@@ -825,7 +829,7 @@ public class MassSendMsgUI
                 public final void onCancel(DialogInterface paramAnonymousDialogInterface)
                 {
                   AppMethodBeat.i(26473);
-                  az.agi().a(paramIntent);
+                  ba.aiU().a(paramIntent);
                   AppMethodBeat.o(26473);
                 }
               });
@@ -834,21 +838,21 @@ public class MassSendMsgUI
             }
             catch (Exception paramIntent)
             {
-              ac.e("MicroMsg.MassSendMsgUI", "doSendChattingImage error: %s", new Object[] { paramIntent.getMessage() });
+              ad.e("MicroMsg.MassSendMsgUI", "doSendChattingImage error: %s", new Object[] { paramIntent.getMessage() });
             }
           }
           AppMethodBeat.o(26485);
           return;
         }
-        ac.i("MicroMsg.MassSendMsgUI", "video path %s thumb path ", new Object[] { paramIntent.uJo, paramIntent.uJp });
-        o.aJy();
-        localObject1 = t.DV(paramIntent.uJq);
-        if (!paramIntent.uJo.equals(localObject1))
+        ad.i("MicroMsg.MassSendMsgUI", "video path %s thumb path ", new Object[] { paramIntent.vMu, paramIntent.vMv });
+        o.aMJ();
+        localObject1 = com.tencent.mm.modelvideo.t.Hh(paramIntent.vMw);
+        if (!paramIntent.vMu.equals(localObject1))
         {
-          ac.i("MicroMsg.MassSendMsgUI", "filepath not videopath and move it %s %s", new Object[] { paramIntent.uJo, localObject1 });
-          i.ma(paramIntent.uJo, (String)localObject1);
+          ad.i("MicroMsg.MassSendMsgUI", "filepath not videopath and move it %s %s", new Object[] { paramIntent.vMu, localObject1 });
+          i.mA(paramIntent.vMu, (String)localObject1);
         }
-        dJ(paramIntent.uJq, paramIntent.uJs);
+        ea(paramIntent.vMw, paramIntent.vMy);
       }
       AppMethodBeat.o(26485);
       return;
@@ -857,21 +861,21 @@ public class MassSendMsgUI
       {
         if (paramIntent.getBooleanExtra("from_record", false))
         {
-          av(paramIntent);
+          aA(paramIntent);
           AppMethodBeat.o(26485);
           return;
         }
-        ax(paramIntent);
+        aC(paramIntent);
         AppMethodBeat.o(26485);
         return;
       }
       break;
     case 5: 
-      av(paramIntent);
+      aA(paramIntent);
       AppMethodBeat.o(26485);
       return;
     case 6: 
-      ax(paramIntent);
+      aC(paramIntent);
       AppMethodBeat.o(26485);
       return;
     }
@@ -882,11 +886,11 @@ public class MassSendMsgUI
   {
     AppMethodBeat.i(26475);
     super.onCreate(paramBundle);
-    az.agi().a(193, this);
-    this.uEw = getIntent().getBooleanExtra("mass_send_again", false);
-    this.uEv = getIntent().getStringExtra("mass_send_contact_list");
-    paramBundle = this.uEv;
-    this.fwF = new ArrayList();
+    ba.aiU().a(193, this);
+    this.vHw = getIntent().getBooleanExtra("mass_send_again", false);
+    this.vHv = getIntent().getStringExtra("mass_send_contact_list");
+    paramBundle = this.vHv;
+    this.fPS = new ArrayList();
     if ((paramBundle == null) || (paramBundle.equals(""))) {}
     for (;;)
     {
@@ -895,7 +899,7 @@ public class MassSendMsgUI
       return;
       paramBundle = paramBundle.split(";");
       if ((paramBundle != null) && (paramBundle.length > 0)) {
-        this.fwF = bs.S(paramBundle);
+        this.fPS = bt.U(paramBundle);
       }
     }
   }
@@ -903,10 +907,10 @@ public class MassSendMsgUI
   public void onDestroy()
   {
     AppMethodBeat.i(26477);
-    az.agi().b(193, this);
+    ba.aiU().b(193, this);
     super.onDestroy();
-    if (this.uEt != null) {
-      this.uEt.destroy();
+    if (this.vHt != null) {
+      this.vHt.destroy();
     }
     AppMethodBeat.o(26477);
   }
@@ -914,9 +918,9 @@ public class MassSendMsgUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(26480);
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0) && (this.uEt.eOK()))
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0) && (this.vHt.fdK()))
     {
-      this.uEt.setBottomPanelVisibility(8);
+      this.vHt.setBottomPanelVisibility(8);
       AppMethodBeat.o(26480);
       return true;
     }
@@ -928,8 +932,8 @@ public class MassSendMsgUI
   public void onPause()
   {
     AppMethodBeat.i(26478);
-    this.uEt.a(ChatFooter.h.DxV);
-    this.uEt.onPause();
+    this.vHt.a(ChatFooter.h.Fde);
+    this.vHt.onPause();
     super.onPause();
     AppMethodBeat.o(26478);
   }
@@ -939,11 +943,11 @@ public class MassSendMsgUI
     AppMethodBeat.i(26482);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ac.i("MicroMsg.MassSendMsgUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      ad.i("MicroMsg.MassSendMsgUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(26482);
       return;
     }
-    ac.i("MicroMsg.MassSendMsgUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ad.i("MicroMsg.MassSendMsgUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -953,7 +957,7 @@ public class MassSendMsgUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        cNE();
+        cVW();
         AppMethodBeat.o(26482);
         return;
       }
@@ -964,9 +968,9 @@ public class MassSendMsgUI
           AppMethodBeat.i(26469);
           paramAnonymousDialogInterface = MassSendMsgUI.this;
           Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/masssend/ui/MassSendMsgUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/masssend/ui/MassSendMsgUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/masssend/ui/MassSendMsgUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(26469);
         }
@@ -978,10 +982,10 @@ public class MassSendMsgUI
   {
     AppMethodBeat.i(26476);
     super.onResume();
-    if (this.uEt != null)
+    if (this.vHt != null)
     {
-      this.uEt.setLastText(uFa);
-      this.uEt.a(getContext(), this);
+      this.vHt.setLastText(vIa);
+      this.vHt.a(getContext(), this);
     }
     AppMethodBeat.o(26476);
   }
@@ -989,15 +993,15 @@ public class MassSendMsgUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(26490);
-    ac.i("MicroMsg.MassSendMsgUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ad.i("MicroMsg.MassSendMsgUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    if (this.uFc != null)
+    if (this.vIc != null)
     {
-      b localb = this.uFc;
+      b localb = this.vIc;
       if (localb.tipDialog != null)
       {
         localb.tipDialog.dismiss();
@@ -1006,12 +1010,12 @@ public class MassSendMsgUI
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      uFa = "";
+      vIa = "";
       paramString = new Intent(this, MassSendHistoryUI.class);
       paramString.addFlags(67108864);
-      paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramString.aeD(), "com/tencent/mm/plugin/masssend/ui/MassSendMsgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramString.lR(0));
+      paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramString.ahp(), "com/tencent/mm/plugin/masssend/ui/MassSendMsgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramString.mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/masssend/ui/MassSendMsgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       finish();
       AppMethodBeat.o(26490);
@@ -1019,15 +1023,15 @@ public class MassSendMsgUI
     }
     if ((paramInt1 == 4) && (paramInt2 == -24))
     {
-      ac.e("MicroMsg.MassSendMsgUI", "onSceneEnd, masssend err spam");
+      ad.e("MicroMsg.MassSendMsgUI", "onSceneEnd, masssend err spam");
       Toast.makeText(this, 2131761176, 0).show();
       AppMethodBeat.o(26490);
       return;
     }
     if ((paramInt1 == 2) || (paramInt1 == 1) || (paramInt1 == 3)) {
-      this.uEt.setLastText(uFa);
+      this.vHt.setLastText(vIa);
     }
-    com.tencent.mm.plugin.masssend.a.iyy.a(getContext(), paramInt1, paramInt2, paramString);
+    com.tencent.mm.plugin.masssend.a.iRH.a(getContext(), paramInt1, paramInt2, paramString);
     switch (paramInt2)
     {
     default: 
@@ -1035,7 +1039,7 @@ public class MassSendMsgUI
       AppMethodBeat.o(26490);
       return;
     case -71: 
-      com.tencent.mm.ui.base.h.d(this, getString(2131761187, new Object[] { Integer.valueOf(((btq)((com.tencent.mm.plugin.masssend.a.f)paramn).rr.hvs.hvw).FiO) }), getString(2131755906), new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.d(this, getString(2131761187, new Object[] { Integer.valueOf(((bye)((com.tencent.mm.plugin.masssend.a.f)paramn).rr.hNL.hNQ).GSp) }), getString(2131755906), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {

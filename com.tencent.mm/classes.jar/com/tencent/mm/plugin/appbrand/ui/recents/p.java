@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ux;
-import com.tencent.mm.g.b.a.fu;
+import com.tencent.mm.g.a.vq;
+import com.tencent.mm.g.b.a.gx;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -18,14 +18,14 @@ import org.apache.commons.b.g;
 
 final class p
 {
-  boolean mlH = false;
-  private Intent mlI = null;
-  long mlJ;
-  fu mlK = null;
-  LinkedHashSet<AppBrandRecentTaskInfo> mlL = null;
-  c<ux> mlM;
+  boolean mMj = false;
+  private Intent mMk = null;
+  long mMl;
+  gx mMm = null;
+  LinkedHashSet<AppBrandRecentTaskInfo> mMn = null;
+  c<vq> mMo;
   
-  private static int S(Intent paramIntent)
+  private static int U(Intent paramIntent)
   {
     AppMethodBeat.i(49282);
     if (paramIntent != null) {}
@@ -35,7 +35,7 @@ final class p
       if (paramIntent.getComponent() != null)
       {
         String str = paramIntent.getComponent().getShortClassName();
-        boolean bool = bs.isNullOrNil(str);
+        boolean bool = bt.isNullOrNil(str);
         if (bool)
         {
           AppMethodBeat.o(49282);
@@ -69,42 +69,42 @@ final class p
     }
     catch (Exception paramIntent)
     {
-      ac.e("MicroMsg.AppBrand.RecentsReporter", "makeFromMainFrameExitReportLeaveType e=%s", new Object[] { paramIntent });
+      ad.e("MicroMsg.AppBrand.RecentsReporter", "makeFromMainFrameExitReportLeaveType e=%s", new Object[] { paramIntent });
       AppMethodBeat.o(49282);
     }
     return 0;
   }
   
-  final void T(Intent paramIntent)
+  final void V(Intent paramIntent)
   {
-    this.mlI = paramIntent;
-    this.mlH = true;
+    this.mMk = paramIntent;
+    this.mMj = true;
   }
   
   final void a(String paramString, Activity paramActivity)
   {
     AppMethodBeat.i(49281);
-    ac.d("MicroMsg.AppBrand.RecentsReporter", "reportExitAction reason[%s]", new Object[] { paramString });
-    if (this.mlK != null)
+    ad.d("MicroMsg.AppBrand.RecentsReporter", "reportExitAction reason[%s]", new Object[] { paramString });
+    if (this.mMm != null)
     {
-      long l = paramActivity.getIntent().getLongExtra("extra_start_activity_click_timestamp_ms", this.mlJ);
-      paramActivity = this.mlK;
-      paramActivity.eaa = l;
-      paramActivity.eab = bs.eWj();
+      long l = paramActivity.getIntent().getLongExtra("extra_start_activity_click_timestamp_ms", this.mMl);
+      paramActivity = this.mMm;
+      paramActivity.eqI = l;
+      paramActivity.eqJ = bt.flT();
       LinkedList localLinkedList;
       ArrayList localArrayList;
       int i;
-      if (paramActivity.eac <= 0L)
+      if (paramActivity.eqK <= 0L)
       {
         if ("onDestroy".equals(paramString)) {
-          paramActivity.eac = 1L;
+          paramActivity.eqK = 1L;
         }
       }
       else
       {
         paramString = new String[4];
         localLinkedList = new LinkedList();
-        localArrayList = new ArrayList(this.mlL);
+        localArrayList = new ArrayList(this.mMn);
         i = 0;
       }
       for (;;)
@@ -121,7 +121,7 @@ final class p
             localLinkedList.addLast(((AppBrandRecentTaskInfo)localArrayList.get(j)).appId);
             j += 1;
             continue;
-            paramActivity.eac = S(this.mlI);
+            paramActivity.eqK = U(this.mMk);
             break;
           }
         }
@@ -129,17 +129,17 @@ final class p
         i += 1;
       }
       label204:
-      this.mlK.nq(paramString[0]);
-      this.mlK.nr(paramString[1]);
-      this.mlK.ns(paramString[2]);
-      this.mlK.nt(paramString[3]);
-      paramActivity.aHZ();
-      this.mlK = null;
+      this.mMm.pP(paramString[0]);
+      this.mMm.pQ(paramString[1]);
+      this.mMm.pR(paramString[2]);
+      this.mMm.pS(paramString[3]);
+      paramActivity.aLk();
+      this.mMm = null;
     }
-    if (this.mlM != null)
+    if (this.mMo != null)
     {
-      this.mlM.dead();
-      this.mlM = null;
+      this.mMo.dead();
+      this.mMo = null;
     }
     AppMethodBeat.o(49281);
   }

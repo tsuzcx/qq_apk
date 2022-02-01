@@ -7,9 +7,9 @@ public enum SoundWaveView$d
   static
   {
     AppMethodBeat.i(185287);
-    AlA = new d("NORMAL", 0);
-    AlB = new d("MINI", 1);
-    AlC = new d[] { AlA, AlB };
+    BDl = new d("NORMAL", 0);
+    BDm = new d("MINI", 1);
+    BDn = new d[] { BDl, BDm };
     AppMethodBeat.o(185287);
   }
   

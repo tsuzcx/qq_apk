@@ -6,27 +6,27 @@ import com.tencent.mm.plugin.appbrand.performance.e;
 
 public enum g
 {
-  e lHx;
+  e mhj;
   
   static
   {
     AppMethodBeat.i(48221);
-    lUT = new g("INST");
-    lUU = new g[] { lUT };
+    muJ = new g("INST");
+    muK = new g[] { muJ };
     AppMethodBeat.o(48221);
   }
   
   private g()
   {
     AppMethodBeat.i(48220);
-    this.lHx = new e(Process.myPid());
-    this.lHx.brQ();
+    this.mhj = new e(Process.myPid());
+    this.mhj.bvU();
     AppMethodBeat.o(48220);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.g
  * JD-Core Version:    0.7.0.1
  */

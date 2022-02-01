@@ -14,12 +14,12 @@ class QRCodeRewardServiceImpl
     AppMethodBeat.i(18714);
     ITransmitKvData localITransmitKvData = super.generateSnsUseCaseData();
     localITransmitKvData.putString("rece_desc", "收款方");
-    localITransmitKvData.putString("rece_name", this.mBean.getPayInfo().hbR.getString("extinfo_key_28"));
+    localITransmitKvData.putString("rece_name", this.mBean.getPayInfo().htZ.getString("extinfo_key_28"));
     localITransmitKvData.putString("username", this.mBean.getReceiverName());
-    localITransmitKvData.putString("rece_img_url", this.mBean.getPayInfo().hbR.getString("extinfo_key_27"));
+    localITransmitKvData.putString("rece_img_url", this.mBean.getPayInfo().htZ.getString("extinfo_key_27"));
     localITransmitKvData.putString("cashier_desc", this.mBean.getContext().getString(2131762090));
-    localITransmitKvData.putString("rece_remark", this.mBean.getPayInfo().hbR.getString("extinfo_key_3"));
-    localITransmitKvData.putString("payee_remark", this.mBean.getPayInfo().hbR.getString("extinfo_key_7"));
+    localITransmitKvData.putString("rece_remark", this.mBean.getPayInfo().htZ.getString("extinfo_key_3"));
+    localITransmitKvData.putString("payee_remark", this.mBean.getPayInfo().htZ.getString("extinfo_key_7"));
     AppMethodBeat.o(18714);
     return localITransmitKvData;
   }

@@ -11,32 +11,36 @@ import rx.internal.a.h;
 
 public enum c
 {
-  public static final e Mfd;
-  public static final c Mfe;
-  public static final g Mff;
-  static final f Mfg;
-  public static final d Mfh;
-  static final c.b Mfi;
-  public static final b<Throwable> Mfj;
-  public static final d.b<Boolean, Object> Mfk;
+  public static final e Oaf;
+  public static final c Oag;
+  public static final g Oah;
+  static final f Oai;
+  public static final d Oaj;
+  static final b Oak;
+  public static final b<Throwable> Oal;
+  public static final d.b<Boolean, Object> Oam;
   
   static
   {
     AppMethodBeat.i(90218);
-    Mfl = new c[0];
-    Mfd = new e();
-    Mfe = new c();
-    Mff = new g();
-    Mfg = new f();
-    Mfh = new d();
-    Mfi = new c.b();
-    Mfj = new a();
-    Mfk = new h(j.a.MfH);
+    Oan = new c[0];
+    Oaf = new e();
+    Oag = new c();
+    Oah = new g();
+    Oai = new f();
+    Oaj = new d();
+    Oak = new b();
+    Oal = new a();
+    Oam = new h(j.a.OaJ);
     AppMethodBeat.o(90218);
   }
   
   static final class a
     implements b<Throwable>
+  {}
+  
+  static final class b
+    implements e<rx.c<?>, Throwable>
   {}
   
   public static final class c

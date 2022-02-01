@@ -9,7 +9,7 @@ import com.tencent.a.a.a.a.a;
 import com.tencent.a.a.a.b;
 import com.tencent.a.a.a.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.tmassistantsdk.util.Base64;
 import com.tencent.tmassistantsdk.util.Cryptor;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -108,11 +108,11 @@ public class TMAssistantDownloadOpenSDKClient
     //   62: dup
     //   63: invokespecial 129	com/tencent/mm/hellhoundlib/b/a:<init>	()V
     //   66: aload_3
-    //   67: invokevirtual 133	com/tencent/mm/hellhoundlib/b/a:ba	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
+    //   67: invokevirtual 133	com/tencent/mm/hellhoundlib/b/a:bc	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
     //   70: astore_3
     //   71: aload_2
     //   72: aload_3
-    //   73: invokevirtual 137	com/tencent/mm/hellhoundlib/b/a:aeD	()[Ljava/lang/Object;
+    //   73: invokevirtual 137	com/tencent/mm/hellhoundlib/b/a:ahp	()[Ljava/lang/Object;
     //   76: ldc 138
     //   78: ldc 139
     //   80: ldc 140
@@ -123,7 +123,7 @@ public class TMAssistantDownloadOpenSDKClient
     //   91: aload_2
     //   92: aload_3
     //   93: iconst_0
-    //   94: invokevirtual 156	com/tencent/mm/hellhoundlib/b/a:lR	(I)Ljava/lang/Object;
+    //   94: invokevirtual 156	com/tencent/mm/hellhoundlib/b/a:mq	(I)Ljava/lang/Object;
     //   97: checkcast 79	android/content/Intent
     //   100: invokevirtual 160	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   103: aload_2
@@ -134,19 +134,19 @@ public class TMAssistantDownloadOpenSDKClient
     //   112: ldc 144
     //   114: ldc 146
     //   116: invokestatic 163	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   119: new 165	com/tencent/mm/sdk/platformtools/ao
+    //   119: new 165	com/tencent/mm/sdk/platformtools/ap
     //   122: dup
     //   123: ldc 167
-    //   125: invokespecial 168	com/tencent/mm/sdk/platformtools/ao:<init>	(Ljava/lang/String;)V
+    //   125: invokespecial 168	com/tencent/mm/sdk/platformtools/ap:<init>	(Ljava/lang/String;)V
     //   128: astore_2
     //   129: aload_2
     //   130: new 8	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient$2
     //   133: dup
     //   134: aload_0
     //   135: aload_2
-    //   136: invokespecial 171	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient$2:<init>	(Lcom/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient;Lcom/tencent/mm/sdk/platformtools/ao;)V
+    //   136: invokespecial 171	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient$2:<init>	(Lcom/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadOpenSDKClient;Lcom/tencent/mm/sdk/platformtools/ap;)V
     //   139: ldc2_w 172
-    //   142: invokevirtual 177	com/tencent/mm/sdk/platformtools/ao:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   142: invokevirtual 177	com/tencent/mm/sdk/platformtools/ap:postDelayed	(Ljava/lang/Runnable;J)Z
     //   145: pop
     //   146: ldc 96
     //   148: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V

@@ -5,9 +5,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.m.e;
+import com.tencent.mm.n.e;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ag;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
@@ -17,10 +17,10 @@ import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComp
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -31,20 +31,20 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class j
 {
-  private static j yuL;
-  ConcurrentLinkedQueue<String> yuK;
+  private static j zLZ;
+  ConcurrentLinkedQueue<String> zLY;
   
   static
   {
     AppMethodBeat.i(97391);
-    yuL = new j();
+    zLZ = new j();
     AppMethodBeat.o(97391);
   }
   
   private j()
   {
     AppMethodBeat.i(97385);
-    this.yuK = new ConcurrentLinkedQueue();
+    this.zLY = new ConcurrentLinkedQueue();
     AppMethodBeat.o(97385);
   }
   
@@ -52,11 +52,11 @@ public final class j
   {
     AppMethodBeat.i(97387);
     Object localObject1;
-    if (i.OV(paramx.type))
+    if (i.QD(paramx.type))
     {
       localObject1 = new ArrayList();
-      if (i.OW(paramx.type)) {
-        ((List)localObject1).addAll(((ag)paramx).dKd());
+      if (i.QE(paramx.type)) {
+        ((List)localObject1).addAll(((ah)paramx).dWq());
       }
       for (;;)
       {
@@ -64,104 +64,104 @@ public final class j
         while (paramx.hasNext()) {
           a(paramString, (x)paramx.next());
         }
-        if (i.OZ(paramx.type)) {
-          ((List)localObject1).addAll(((v)paramx).bsA);
-        } else if (i.OX(paramx.type)) {
-          ((List)localObject1).addAll(((y)paramx).dKd());
-        } else if (i.OY(paramx.type)) {
-          ((List)localObject1).addAll(((w)paramx).dKd());
+        if (i.QH(paramx.type)) {
+          ((List)localObject1).addAll(((v)paramx).aQH);
+        } else if (i.QF(paramx.type)) {
+          ((List)localObject1).addAll(((y)paramx).dWq());
+        } else if (i.QG(paramx.type)) {
+          ((List)localObject1).addAll(((w)paramx).dWq());
         }
       }
       AppMethodBeat.o(97387);
       return;
     }
-    if (paramx.yjt == 41)
+    if (paramx.zAh == 41)
     {
       localObject1 = (s)paramx;
-      if (auP(((s)localObject1).yjd))
+      if (azW(((s)localObject1).zzL))
       {
         AppMethodBeat.o(97387);
         return;
       }
-      this.yuK.add(((s)localObject1).yjd);
-      h.c(paramString, ((s)localObject1).yjd, true, paramx.yjt, new f.a()
+      this.zLY.add(((s)localObject1).zzL);
+      h.c(paramString, ((s)localObject1).zzL, true, paramx.zAh, new f.a()
       {
-        public final void asD(String paramAnonymousString)
+        public final void axG(String paramAnonymousString)
         {
           AppMethodBeat.i(97361);
-          j.a(j.this, this.yuM.yjd);
+          j.a(j.this, this.zMa.zzL);
           AppMethodBeat.o(97361);
         }
         
-        public final void dFC() {}
+        public final void dRW() {}
         
-        public final void dFD()
+        public final void dRX()
         {
           AppMethodBeat.i(97360);
-          ac.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.yuM.yjd + "is error");
-          j.a(j.this, this.yuM.yjd);
+          ad.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.zMa.zzL + "is error");
+          j.a(j.this, this.zMa.zzL);
           AppMethodBeat.o(97360);
         }
       });
       AppMethodBeat.o(97387);
       return;
     }
-    if (paramx.yjt == 44)
+    if (paramx.zAh == 44)
     {
       localObject1 = (r)paramx;
-      if (auP(((r)localObject1).yjd))
+      if (azW(((r)localObject1).zzL))
       {
         AppMethodBeat.o(97387);
         return;
       }
-      this.yuK.add(((r)localObject1).yjd);
-      h.c(paramString, ((r)localObject1).yjd, true, paramx.yjt, new f.a()
+      this.zLY.add(((r)localObject1).zzL);
+      h.c(paramString, ((r)localObject1).zzL, true, paramx.zAh, new f.a()
       {
-        public final void asD(String paramAnonymousString)
+        public final void axG(String paramAnonymousString)
         {
           AppMethodBeat.i(97368);
-          j.a(j.this, this.yuQ.yjd);
+          j.a(j.this, this.zMe.zzL);
           AppMethodBeat.o(97368);
         }
         
-        public final void dFC() {}
+        public final void dRW() {}
         
-        public final void dFD()
+        public final void dRX()
         {
           AppMethodBeat.i(97367);
-          ac.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.yuQ.yjd + "is error");
-          j.a(j.this, this.yuQ.yjd);
+          ad.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.zMe.zzL + "is error");
+          j.a(j.this, this.zMe.zzL);
           AppMethodBeat.o(97367);
         }
       });
       AppMethodBeat.o(97387);
       return;
     }
-    if (paramx.yjt == 45)
+    if (paramx.zAh == 45)
     {
       localObject1 = (s)paramx;
-      if (auP(((s)localObject1).yjd))
+      if (azW(((s)localObject1).zzL))
       {
         AppMethodBeat.o(97387);
         return;
       }
-      this.yuK.add(((s)localObject1).yjd);
-      h.c(paramString, ((s)localObject1).yjd, true, paramx.yjt, new f.a()
+      this.zLY.add(((s)localObject1).zzL);
+      h.c(paramString, ((s)localObject1).zzL, true, paramx.zAh, new f.a()
       {
-        public final void asD(String paramAnonymousString)
+        public final void axG(String paramAnonymousString)
         {
           AppMethodBeat.i(97370);
-          j.a(j.this, this.yuM.yjd);
+          j.a(j.this, this.zMa.zzL);
           AppMethodBeat.o(97370);
         }
         
-        public final void dFC() {}
+        public final void dRW() {}
         
-        public final void dFD()
+        public final void dRX()
         {
           AppMethodBeat.i(97369);
-          ac.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.yuM.yjd + "is error");
-          j.a(j.this, this.yuM.yjd);
+          ad.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.zMa.zzL + "is error");
+          j.a(j.this, this.zMa.zzL);
           AppMethodBeat.o(97369);
         }
       });
@@ -169,36 +169,36 @@ public final class j
       return;
     }
     Object localObject2;
-    if (paramx.yjt == 61)
+    if (paramx.zAh == 61)
     {
       paramx = (u)paramx;
-      if (!auP(paramx.yji))
+      if (!azW(paramx.zzQ))
       {
         localObject1 = new PInt();
         localObject2 = new PInt();
-        com.tencent.mm.modelcontrol.c.aDI();
+        com.tencent.mm.modelcontrol.c.aGN();
         if (com.tencent.mm.modelcontrol.c.a((PInt)localObject1, (PInt)localObject2))
         {
-          this.yuK.add(paramx.yji);
-          if (paramx.yjr) {
+          this.zLY.add(paramx.zzQ);
+          if (paramx.zzZ) {
             break label546;
           }
-          h.d(paramString, paramx.yji, true, 61, new f.a()
+          h.d(paramString, paramx.zzQ, true, 61, new f.a()
           {
-            public final void asD(String paramAnonymousString)
+            public final void axG(String paramAnonymousString)
             {
               AppMethodBeat.i(97372);
-              j.a(j.this, paramx.yji);
+              j.a(j.this, paramx.zzQ);
               AppMethodBeat.o(97372);
             }
             
-            public final void dFC() {}
+            public final void dRW() {}
             
-            public final void dFD()
+            public final void dRX()
             {
               AppMethodBeat.i(97371);
-              ac.e("AdLandingPagesPreDownloadResHelper", "pre download sight by http error:" + paramx.yji);
-              j.a(j.this, paramx.yji);
+              ad.e("AdLandingPagesPreDownloadResHelper", "pre download sight by http error:" + paramx.zzQ);
+              j.a(j.this, paramx.zzQ);
               AppMethodBeat.o(97371);
             }
           });
@@ -206,118 +206,118 @@ public final class j
       }
       for (;;)
       {
-        if (!auP(paramx.yjj))
+        if (!azW(paramx.zzR))
         {
-          this.yuK.add(paramx.yjj);
-          h.c(paramString, paramx.yjj, true, 1000000001, new f.a()
+          this.zLY.add(paramx.zzR);
+          h.c(paramString, paramx.zzR, true, 1000000001, new f.a()
           {
-            public final void asD(String paramAnonymousString)
+            public final void axG(String paramAnonymousString)
             {
-              AppMethodBeat.i(200325);
-              j.a(j.this, paramx.yjj);
-              AppMethodBeat.o(200325);
+              AppMethodBeat.i(198121);
+              j.a(j.this, paramx.zzR);
+              AppMethodBeat.o(198121);
             }
             
-            public final void dFC() {}
+            public final void dRW() {}
             
-            public final void dFD()
+            public final void dRX()
             {
-              AppMethodBeat.i(200324);
-              ac.e("AdLandingPagesPreDownloadResHelper", "pre download sight thumb error:" + paramx.yjj);
-              j.a(j.this, paramx.yjj);
-              AppMethodBeat.o(200324);
+              AppMethodBeat.i(198120);
+              ad.e("AdLandingPagesPreDownloadResHelper", "pre download sight thumb error:" + paramx.zzR);
+              j.a(j.this, paramx.zzR);
+              AppMethodBeat.o(198120);
             }
           });
         }
         AppMethodBeat.o(97387);
         return;
         label546:
-        h.b(paramString, paramx.yji, new f.a()
+        h.b(paramString, paramx.zzQ, new f.a()
         {
-          public final void asD(String paramAnonymousString)
+          public final void axG(String paramAnonymousString)
           {
             AppMethodBeat.i(97374);
-            j.a(j.this, paramx.yji);
+            j.a(j.this, paramx.zzQ);
             AppMethodBeat.o(97374);
           }
           
-          public final void dFC() {}
+          public final void dRW() {}
           
-          public final void dFD()
+          public final void dRX()
           {
             AppMethodBeat.i(97373);
-            ac.e("AdLandingPagesPreDownloadResHelper", "pre download sight by cdn error:" + paramx.yji);
-            j.a(j.this, paramx.yji);
+            ad.e("AdLandingPagesPreDownloadResHelper", "pre download sight by cdn error:" + paramx.zzQ);
+            j.a(j.this, paramx.zzQ);
             AppMethodBeat.o(97373);
           }
         });
       }
     }
     Object localObject3;
-    if (paramx.yjt == 62)
+    if (paramx.zAh == 62)
     {
       boolean bool;
       int i;
-      if (com.tencent.mm.m.g.ZY().getInt("SnsAdNativePagePreloadStreamMedia", 0) > 0)
+      if (com.tencent.mm.n.g.acA().getInt("SnsAdNativePagePreloadStreamMedia", 0) > 0)
       {
         bool = true;
-        ac.i("AdLandingPagesPreDownloadResHelper", "pre down video value: ".concat(String.valueOf(bool)));
-        localObject1 = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)paramx;
-        if ((bool) && (!auP(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)localObject1).yjk)))
+        ad.i("AdLandingPagesPreDownloadResHelper", "pre down video value: ".concat(String.valueOf(bool)));
+        localObject1 = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)paramx;
+        if ((bool) && (!azW(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject1).zzS)))
         {
-          this.yuK.add(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)localObject1).yjk);
-          localObject2 = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)localObject1).yjk;
-          i = paramx.yjt;
+          this.zLY.add(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject1).zzS);
+          localObject2 = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject1).zzS;
+          i = paramx.zAh;
           localObject3 = new c.a()
           {
-            public final void ML(String paramAnonymousString)
+            public final void Qi(String paramAnonymousString)
             {
-              AppMethodBeat.i(200326);
-              ac.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.yuS.yjk + "is error");
-              j.a(j.this, this.yuS.yjk);
-              AppMethodBeat.o(200326);
+              AppMethodBeat.i(198122);
+              ad.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.zMg.zzS + "is error");
+              j.a(j.this, this.zMg.zzS);
+              AppMethodBeat.o(198122);
             }
             
-            public final void cZ(String paramAnonymousString, int paramAnonymousInt) {}
+            public final void dk(String paramAnonymousString, int paramAnonymousInt) {}
             
-            public final void vn(String paramAnonymousString)
+            public final void ye(String paramAnonymousString)
             {
-              AppMethodBeat.i(200327);
-              j.a(j.this, this.yuS.yjk);
-              AppMethodBeat.o(200327);
+              AppMethodBeat.i(198123);
+              j.a(j.this, this.zMg.zzS);
+              AppMethodBeat.o(198123);
             }
           };
-          if ((!bs.isNullOrNil((String)localObject2)) && (!bs.isNullOrNil(paramString))) {
+          if ((!bt.isNullOrNil((String)localObject2)) && (!bt.isNullOrNil(paramString))) {
             break label752;
           }
-          ((c.a)localObject3).ML("the res or adId is null");
+          ((c.a)localObject3).Qi("the res or adId is null");
         }
       }
       for (;;)
       {
-        if (!auP(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)localObject1).ykg))
+        if (!azW(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject1).zAV))
         {
-          this.yuK.add(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)localObject1).ykg);
-          h.c("adId", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)localObject1).ykg, true, paramx.yjt, new f.a()
+          this.zLY.add(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject1).zAV);
+          h.c("adId", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)localObject1).zAV, true, paramx.zAh, new f.a()
           {
-            public final void asD(String paramAnonymousString)
+            public final void axG(String paramAnonymousString)
             {
               AppMethodBeat.i(97381);
-              j.a(j.this, this.yuS.ykg);
+              j.a(j.this, this.zMg.zAV);
               AppMethodBeat.o(97381);
             }
             
-            public final void dFC()
+            public final void dRW()
             {
               AppMethodBeat.i(97379);
               AppMethodBeat.o(97379);
             }
             
-            public final void dFD()
+            public final void dRX()
             {
               AppMethodBeat.i(97380);
-              ac.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.yuS.ykg + "is error");
-              j.a(j.this, this.yuS.yjk);
+              ad.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.zMg.zAV + "is error");
+              j.a(j.this, this.zMg.zzS);
               AppMethodBeat.o(97380);
             }
           });
@@ -327,17 +327,17 @@ public final class j
         bool = false;
         break;
         label752:
-        ac.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download video for " + (String)localObject2 + " for adid:" + paramString);
-        String str1 = h.dLL();
-        String str2 = ah.dg((String)localObject2);
+        ad.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download video for " + (String)localObject2 + " for adid:" + paramString);
+        String str1 = h.dYb();
+        String str2 = ai.ee((String)localObject2);
         paramString = paramString + "_stream_" + str2;
         str2 = str1 + paramString;
-        if (!bs.isNullOrNil(str2))
+        if (!bt.isNullOrNil(str2))
         {
-          if (com.tencent.mm.vfs.i.eA(str2))
+          if (com.tencent.mm.vfs.i.fv(str2))
           {
-            ac.i("MicroMsg.AdLandingPageDownloadFileHelper", "big file %s is already exists", new Object[] { str2 });
-            ap.f(new e.4((c.a)localObject3, str2));
+            ad.i("MicroMsg.AdLandingPageDownloadFileHelper", "big file %s is already exists", new Object[] { str2 });
+            aq.f(new e.4((c.a)localObject3, str2));
           }
           else
           {
@@ -345,43 +345,43 @@ public final class j
           }
         }
         else {
-          ap.f(new e.6((c.a)localObject3));
+          aq.f(new e.6((c.a)localObject3));
         }
       }
     }
-    if (paramx.yjt == 133)
+    if (paramx.zAh == 133)
     {
       localObject2 = (t)paramx;
-      localObject3 = ((t)localObject2).yho;
-      localObject1 = ((t)localObject2).yjg;
-      localObject2 = ((t)localObject2).yjh;
+      localObject3 = ((t)localObject2).zxv;
+      localObject1 = ((t)localObject2).zzO;
+      localObject2 = ((t)localObject2).zzP;
       try
       {
-        if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!auP((String)localObject3)))
+        if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!azW((String)localObject3)))
         {
-          this.yuK.add(localObject3);
-          h.c(paramString, (String)localObject3, true, paramx.yjt, new f.a()
+          this.zLY.add(localObject3);
+          h.c(paramString, (String)localObject3, true, paramx.zAh, new f.a()
           {
-            public final void asD(String paramAnonymousString)
+            public final void axG(String paramAnonymousString)
             {
               AppMethodBeat.i(97384);
-              j.a(j.this, this.yuT);
-              ac.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download adLanding sphereImageUrl succ, url=" + this.yuT);
+              j.a(j.this, this.zMh);
+              ad.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download adLanding sphereImageUrl succ, url=" + this.zMh);
               AppMethodBeat.o(97384);
             }
             
-            public final void dFC()
+            public final void dRW()
             {
               AppMethodBeat.i(97382);
-              ac.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download adLanding sphereImageUrl");
+              ad.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download adLanding sphereImageUrl");
               AppMethodBeat.o(97382);
             }
             
-            public final void dFD()
+            public final void dRX()
             {
               AppMethodBeat.i(97383);
-              ac.e("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download adLanding sphereImageUrl err, url=" + this.yuT);
-              j.a(j.this, this.yuT);
+              ad.e("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download adLanding sphereImageUrl err, url=" + this.zMh);
+              j.a(j.this, this.zMh);
               AppMethodBeat.o(97383);
             }
           });
@@ -393,62 +393,62 @@ public final class j
         {
           for (;;)
           {
-            if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!auP((String)localObject1)))
+            if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!azW((String)localObject1)))
             {
-              this.yuK.add(localObject1);
-              h.c(paramString, (String)localObject1, true, paramx.yjt, new f.a()
+              this.zLY.add(localObject1);
+              h.c(paramString, (String)localObject1, true, paramx.zAh, new f.a()
               {
-                public final void asD(String paramAnonymousString)
+                public final void axG(String paramAnonymousString)
                 {
                   AppMethodBeat.i(97364);
-                  j.a(j.this, this.yuO);
-                  ac.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download timeLineImageUrl succ, url=" + this.yuO);
+                  j.a(j.this, this.zMc);
+                  ad.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download timeLineImageUrl succ, url=" + this.zMc);
                   AppMethodBeat.o(97364);
                 }
                 
-                public final void dFC()
+                public final void dRW()
                 {
                   AppMethodBeat.i(97362);
-                  ac.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download timeLineImageUrl");
+                  ad.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download timeLineImageUrl");
                   AppMethodBeat.o(97362);
                 }
                 
-                public final void dFD()
+                public final void dRX()
                 {
                   AppMethodBeat.i(97363);
-                  ac.e("AdLandingPagesPreDownloadResHelper.SphereImageView", " pre download timeLineImageUrl err, url=" + this.yuO);
-                  j.a(j.this, this.yuO);
+                  ad.e("AdLandingPagesPreDownloadResHelper.SphereImageView", " pre download timeLineImageUrl err, url=" + this.zMc);
+                  j.a(j.this, this.zMc);
                   AppMethodBeat.o(97363);
                 }
               });
             }
             try
             {
-              if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!auP((String)localObject2)))
+              if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!azW((String)localObject2)))
               {
-                this.yuK.add(localObject2);
-                h.c(paramString, (String)localObject2, true, paramx.yjt, new f.a()
+                this.zLY.add(localObject2);
+                h.c(paramString, (String)localObject2, true, paramx.zAh, new f.a()
                 {
-                  public final void asD(String paramAnonymousString)
+                  public final void axG(String paramAnonymousString)
                   {
                     AppMethodBeat.i(97366);
-                    j.a(j.this, this.yuP);
-                    ac.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download timeLineThumbUrl succ, url=" + this.yuP);
+                    j.a(j.this, this.zMd);
+                    ad.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download timeLineThumbUrl succ, url=" + this.zMd);
                     AppMethodBeat.o(97366);
                   }
                   
-                  public final void dFC()
+                  public final void dRW()
                   {
-                    AppMethodBeat.i(200321);
-                    ac.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download timeLineThumbUrl");
-                    AppMethodBeat.o(200321);
+                    AppMethodBeat.i(198117);
+                    ad.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download timeLineThumbUrl");
+                    AppMethodBeat.o(198117);
                   }
                   
-                  public final void dFD()
+                  public final void dRX()
                   {
                     AppMethodBeat.i(97365);
-                    ac.e("AdLandingPagesPreDownloadResHelper.SphereImageView", " pre download timeLineThumbUrl err, url=" + this.yuP);
-                    j.a(j.this, this.yuP);
+                    ad.e("AdLandingPagesPreDownloadResHelper.SphereImageView", " pre download timeLineThumbUrl err, url=" + this.zMd);
+                    j.a(j.this, this.zMd);
                     AppMethodBeat.o(97365);
                   }
                 });
@@ -458,17 +458,17 @@ public final class j
             }
             catch (Throwable paramString)
             {
-              ac.e("AdLandingPagesPreDownloadResHelper.SphereImageView", " pre download timeLineThumbUrl exp=" + paramString.toString());
+              ad.e("AdLandingPagesPreDownloadResHelper.SphereImageView", " pre download timeLineThumbUrl exp=" + paramString.toString());
             }
             localThrowable2 = localThrowable2;
-            ac.e("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download sphereImageUrl expl=" + localThrowable2.toString());
+            ad.e("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download sphereImageUrl expl=" + localThrowable2.toString());
           }
         }
         catch (Throwable localThrowable1)
         {
           for (;;)
           {
-            ac.e("AdLandingPagesPreDownloadResHelper.SphereImageView", " pre download timeLineImageUrl exp=" + localThrowable1.toString());
+            ad.e("AdLandingPagesPreDownloadResHelper.SphereImageView", " pre download timeLineImageUrl exp=" + localThrowable1.toString());
           }
         }
       }
@@ -476,15 +476,15 @@ public final class j
     AppMethodBeat.o(97387);
   }
   
-  private boolean auP(String paramString)
+  private boolean azW(String paramString)
   {
     AppMethodBeat.i(97386);
-    boolean bool = this.yuK.contains(paramString);
+    boolean bool = this.zLY.contains(paramString);
     AppMethodBeat.o(97386);
     return bool;
   }
   
-  private void auQ(final String paramString)
+  private void azX(final String paramString)
   {
     AppMethodBeat.i(97388);
     if (TextUtils.isEmpty(paramString))
@@ -492,84 +492,84 @@ public final class j
       AppMethodBeat.o(97388);
       return;
     }
-    if (auP(paramString))
+    if (azW(paramString))
     {
       AppMethodBeat.o(97388);
       return;
     }
-    this.yuK.add(paramString);
+    this.zLY.add(paramString);
     h.c("adId", paramString, true, 0, new f.a()
     {
-      public final void asD(String paramAnonymousString)
+      public final void axG(String paramAnonymousString)
       {
-        AppMethodBeat.i(200323);
+        AppMethodBeat.i(198119);
         j.a(j.this, paramString);
-        AppMethodBeat.o(200323);
+        AppMethodBeat.o(198119);
       }
       
-      public final void dFC() {}
+      public final void dRW() {}
       
-      public final void dFD()
+      public final void dRX()
       {
-        AppMethodBeat.i(200322);
-        ac.e("AdLandingPagesPreDownloadResHelper", " pre download " + paramString + "is error");
+        AppMethodBeat.i(198118);
+        ad.e("AdLandingPagesPreDownloadResHelper", " pre download " + paramString + "is error");
         j.a(j.this, paramString);
-        AppMethodBeat.o(200322);
+        AppMethodBeat.o(198118);
       }
     });
     AppMethodBeat.o(97388);
   }
   
-  public static j dLO()
+  public static j dYe()
   {
-    return yuL;
+    return zLZ;
   }
   
   public final void f(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     AppMethodBeat.i(97389);
-    Object localObject = ((ConnectivityManager)com.tencent.mm.sdk.platformtools.ai.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
+    Object localObject = ((ConnectivityManager)com.tencent.mm.sdk.platformtools.aj.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
     paramString2 = new i.a(paramString2, paramString3);
-    paramString3 = paramString2.yuE;
-    paramString2 = paramString2.yuF;
+    paramString3 = paramString2.zLR;
+    paramString2 = paramString2.zLS;
     int j;
     int i;
     if (paramInt == 0)
     {
       if ((localObject != null) && (((NetworkInfo)localObject).getType() == 1))
       {
-        ac.i("AdLandingPagesPreDownloadResHelper", "start pre download all resource in wifi");
+        ad.i("AdLandingPagesPreDownloadResHelper", "start pre download all resource in wifi");
         paramString3 = paramString3.iterator();
         while (paramString3.hasNext())
         {
           localObject = (g)paramString3.next();
-          Iterator localIterator = ((g)localObject).yuw.iterator();
+          Iterator localIterator = ((g)localObject).zLJ.iterator();
           while (localIterator.hasNext()) {
             a(paramString1, (x)localIterator.next());
           }
-          localIterator = ((g)localObject).yux.keySet().iterator();
+          localIterator = ((g)localObject).zLK.keySet().iterator();
           while (localIterator.hasNext())
           {
             String str = (String)localIterator.next();
-            a(paramString1, (x)((g)localObject).yux.get(str));
+            a(paramString1, (x)((g)localObject).zLK.get(str));
           }
-          auQ(((g)localObject).yuu);
+          azX(((g)localObject).zLH);
         }
       }
-      ac.i("AdLandingPagesPreDownloadResHelper", "start pre download resource in no wifi");
-      j = com.tencent.mm.m.g.ZY().getInt("SnsAdNativePageNormalFeedPreloadPageCount", 1);
-      paramInt = com.tencent.mm.m.g.ZY().getInt("SnsAdNativePageNormalFeedPreloadResourceCount", 2);
+      ad.i("AdLandingPagesPreDownloadResHelper", "start pre download resource in no wifi");
+      j = com.tencent.mm.n.g.acA().getInt("SnsAdNativePageNormalFeedPreloadPageCount", 1);
+      paramInt = com.tencent.mm.n.g.acA().getInt("SnsAdNativePageNormalFeedPreloadResourceCount", 2);
       if ((paramString3 != null) && (paramString3.size() > 0))
       {
         paramString3 = paramString3.iterator();
         while (paramString3.hasNext())
         {
           localObject = (g)paramString3.next();
-          auQ(((g)localObject).yuu);
+          azX(((g)localObject).zLH);
           if ((paramInt <= 0) || (j <= 0)) {
             break;
           }
-          localObject = ((g)localObject).yuw.iterator();
+          localObject = ((g)localObject).zLJ.iterator();
           do
           {
             i = paramInt;
@@ -587,23 +587,23 @@ public final class j
     }
     else if (paramInt == 1)
     {
-      ac.i("AdLandingPagesPreDownloadResHelper", "start pre download first pages resource");
+      ad.i("AdLandingPagesPreDownloadResHelper", "start pre download first pages resource");
       if ((localObject != null) && (((NetworkInfo)localObject).getType() == 1))
       {
-        ac.i("AdLandingPagesPreDownloadResHelper", "start pre download resource in shared scene in wifi");
-        j = com.tencent.mm.m.g.ZY().getInt("SnsAdNativePageForwardFeedPreloadPageCount", 1);
-        paramInt = com.tencent.mm.m.g.ZY().getInt("SnsAdNativePageForwardFeedPreloadResourceCount", 2);
+        ad.i("AdLandingPagesPreDownloadResHelper", "start pre download resource in shared scene in wifi");
+        j = com.tencent.mm.n.g.acA().getInt("SnsAdNativePageForwardFeedPreloadPageCount", 1);
+        paramInt = com.tencent.mm.n.g.acA().getInt("SnsAdNativePageForwardFeedPreloadResourceCount", 2);
         if ((paramString3 != null) && (paramString3.size() > 0))
         {
           paramString3 = paramString3.iterator();
           while (paramString3.hasNext())
           {
             localObject = (g)paramString3.next();
-            auQ(((g)localObject).yuu);
+            azX(((g)localObject).zLH);
             if ((paramInt <= 0) || (j <= 0)) {
               break;
             }
-            localObject = ((g)localObject).yuw.iterator();
+            localObject = ((g)localObject).zLJ.iterator();
             do
             {
               i = paramInt;
@@ -621,39 +621,39 @@ public final class j
       }
       else
       {
-        ac.i("AdLandingPagesPreDownloadResHelper", "start pre download resource in shared scene in no wifi,this can't download everything");
+        ad.i("AdLandingPagesPreDownloadResHelper", "start pre download resource in shared scene in no wifi,this can't download everything");
         paramString1 = paramString3.iterator();
         while (paramString1.hasNext()) {
-          auQ(((g)paramString1.next()).yuu);
+          azX(((g)paramString1.next()).zLH);
         }
       }
     }
     else
     {
-      ac.e("AdLandingPagesPreDownloadResHelper", "the dwnloadKind is error");
+      ad.e("AdLandingPagesPreDownloadResHelper", "the dwnloadKind is error");
     }
     if (paramString2 != null) {}
     try
     {
-      if (!TextUtils.isEmpty(paramString2.yjG)) {
-        auQ(paramString2.yjG);
+      if (!TextUtils.isEmpty(paramString2.zAv)) {
+        azX(paramString2.zAv);
       }
       if (!TextUtils.isEmpty(paramString2.iconUrl)) {
-        auQ(paramString2.iconUrl);
+        azX(paramString2.iconUrl);
       }
       AppMethodBeat.o(97389);
       return;
     }
     catch (Exception paramString1)
     {
-      ac.e("AdLandingPagesPreDownloadResHelper", "predownload float bar res exp=" + paramString1.toString());
+      ad.e("AdLandingPagesPreDownloadResHelper", "predownload float bar res exp=" + paramString1.toString());
       AppMethodBeat.o(97389);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.j
  * JD-Core Version:    0.7.0.1
  */

@@ -44,6 +44,14 @@ public abstract class TRTCCloudListener
   
   public void onRemoteUserLeaveRoom(String paramString, int paramInt) {}
   
+  public void onScreenCapturePaused() {}
+  
+  public void onScreenCaptureResumed() {}
+  
+  public void onScreenCaptureStarted() {}
+  
+  public void onScreenCaptureStopped(int paramInt) {}
+  
   public void onSendFirstLocalAudioFrame() {}
   
   public void onSendFirstLocalVideoFrame(int paramInt) {}
@@ -89,11 +97,6 @@ public abstract class TRTCCloudListener
     public abstract void onMixedPlayAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame);
     
     public abstract void onPlayAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame, String paramString);
-  }
-  
-  public static abstract class TRTCLogListener
-  {
-    public abstract void onLog(String paramString1, int paramInt, String paramString2);
   }
   
   public static abstract interface TRTCSnapshotListener

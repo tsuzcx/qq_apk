@@ -9,23 +9,23 @@ import com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetSysConfig;
 public abstract interface WxaWidgetContext
   extends Parcelable
 {
-  public abstract int aVY();
+  public abstract int aZt();
   
-  public abstract WxaPkgWrappingInfo bcj();
+  public abstract WxaPkgWrappingInfo bfN();
   
-  public abstract WxaPkgWrappingInfo bck();
+  public abstract WxaPkgWrappingInfo bfO();
   
-  public abstract int bcl();
+  public abstract int bfP();
   
-  public abstract byte[] bcm();
+  public abstract byte[] bfQ();
   
-  public abstract int bcn();
+  public abstract int bfR();
   
-  public abstract DebuggerInfo bco();
+  public abstract DebuggerInfo bfS();
   
-  public abstract WidgetSysConfig bcp();
+  public abstract WidgetSysConfig bfT();
   
-  public abstract WidgetRuntimeConfig bcq();
+  public abstract WidgetRuntimeConfig bfU();
   
   public abstract String getAppId();
   

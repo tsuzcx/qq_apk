@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.res.Resources;
 import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.a;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,59 +16,60 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.ui.aq;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public final class e
 {
-  public l CGH;
-  public n.c ISu;
-  public n.d ISv;
-  public ListView JjB;
-  public View JjC;
-  public ArrayList<Integer> JjD;
-  public a JjE;
-  public b JjF;
-  public Button gAJ;
-  public Button gCY;
-  public View khe;
-  public int lcC;
-  private BottomSheetBehavior lcD;
+  public TextView ABw;
+  public l Ekt;
+  public n.d KJy;
+  public n.e KJz;
+  public ListView LaY;
+  public View LaZ;
+  public ArrayList<Integer> Lba;
+  public a Lbb;
+  public b Lbc;
+  public Button gUt;
+  public Button gWI;
+  public View kBS;
+  public int lzC;
+  private BottomSheetBehavior lzD;
   public Context mContext;
-  public a tyZ;
-  public TextView zjv;
+  public android.support.design.widget.a uBI;
   
   public e(Context paramContext)
   {
     AppMethodBeat.i(159571);
     this.mContext = paramContext;
-    this.CGH = new l(this.mContext);
-    this.tyZ = new a(this.mContext);
-    this.khe = View.inflate(this.mContext, 2131494966, null);
-    this.JjB = ((ListView)this.khe.findViewById(2131302564));
-    this.gAJ = ((Button)this.khe.findViewById(2131302999));
-    this.gCY = ((Button)this.khe.findViewById(2131297690));
-    this.JjC = this.khe.findViewById(2131300720);
-    this.zjv = ((TextView)this.khe.findViewById(2131300731));
-    this.tyZ.setContentView(this.khe);
-    this.lcC = (ao.av(this.mContext, 2131165203) + ao.av(this.mContext, 2131165204));
-    this.lcD = BottomSheetBehavior.l((View)this.khe.getParent());
-    if (this.lcD != null)
+    this.Ekt = new l(this.mContext);
+    this.uBI = new android.support.design.widget.a(this.mContext);
+    this.kBS = View.inflate(this.mContext, 2131494966, null);
+    this.LaY = ((ListView)this.kBS.findViewById(2131302564));
+    this.gUt = ((Button)this.kBS.findViewById(2131302999));
+    this.gWI = ((Button)this.kBS.findViewById(2131297690));
+    this.LaZ = this.kBS.findViewById(2131300720);
+    this.ABw = ((TextView)this.kBS.findViewById(2131300731));
+    this.uBI.setContentView(this.kBS);
+    this.lzC = (aq.ay(this.mContext, 2131165203) + aq.ay(this.mContext, 2131165204));
+    this.lzD = BottomSheetBehavior.l((View)this.kBS.getParent());
+    if (this.lzD != null)
     {
-      this.lcD.J(this.lcC);
-      this.lcD.mg = false;
+      this.lzD.J(this.lzC);
+      this.lzD.nZ = false;
     }
-    this.tyZ.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.uBI.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
-        e.this.tyZ = null;
+        e.this.uBI = null;
       }
     });
     AppMethodBeat.o(159571);
@@ -78,8 +78,8 @@ public final class e
   public final void hide()
   {
     AppMethodBeat.i(159572);
-    if (this.tyZ != null) {
-      this.tyZ.dismiss();
+    if (this.uBI != null) {
+      this.uBI.dismiss();
     }
     AppMethodBeat.o(159572);
   }
@@ -87,22 +87,22 @@ public final class e
   public final class a
     extends BaseAdapter
   {
-    public HashMap<Integer, Boolean> JjH;
-    private ArrayList<Integer> JjI;
+    public HashMap<Integer, Boolean> Lbe;
+    private ArrayList<Integer> Lbf;
     private Context context;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(159565);
-      this.JjH = new HashMap();
+      this.Lbe = new HashMap();
       this.context = paramContext;
       AppMethodBeat.o(159565);
     }
     
-    public final void fvZ()
+    public final void fMN()
     {
       AppMethodBeat.i(159569);
-      if (e.this.JjD == null)
+      if (e.this.Lba == null)
       {
         AppMethodBeat.o(159569);
         return;
@@ -110,37 +110,37 @@ public final class e
       int i = 0;
       if (i < getCount())
       {
-        if (e.this.JjD.contains(Integer.valueOf(i))) {
-          this.JjH.put(Integer.valueOf(i), Boolean.TRUE);
+        if (e.this.Lba.contains(Integer.valueOf(i))) {
+          this.Lbe.put(Integer.valueOf(i), Boolean.TRUE);
         }
         for (;;)
         {
           i += 1;
           break;
-          this.JjH.put(Integer.valueOf(i), Boolean.FALSE);
+          this.Lbe.put(Integer.valueOf(i), Boolean.FALSE);
         }
       }
       AppMethodBeat.o(159569);
     }
     
-    public final ArrayList<Integer> fwa()
+    public final ArrayList<Integer> fMO()
     {
       AppMethodBeat.i(159570);
-      if (this.JjH == null)
+      if (this.Lbe == null)
       {
         AppMethodBeat.o(159570);
         return null;
       }
-      this.JjI = new ArrayList();
+      this.Lbf = new ArrayList();
       int i = 0;
       while (i < getCount())
       {
-        if (((Boolean)this.JjH.get(Integer.valueOf(i))).booleanValue()) {
-          this.JjI.add(Integer.valueOf(i));
+        if (((Boolean)this.Lbe.get(Integer.valueOf(i))).booleanValue()) {
+          this.Lbf.add(Integer.valueOf(i));
         }
         i += 1;
       }
-      ArrayList localArrayList = this.JjI;
+      ArrayList localArrayList = this.Lbf;
       AppMethodBeat.o(159570);
       return localArrayList;
     }
@@ -148,7 +148,7 @@ public final class e
     public final int getCount()
     {
       AppMethodBeat.i(159566);
-      int i = e.this.CGH.size();
+      int i = e.this.Ekt.size();
       AppMethodBeat.o(159566);
       return i;
     }
@@ -156,7 +156,7 @@ public final class e
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(159567);
-      Object localObject = e.this.CGH.Hyi.get(paramInt);
+      Object localObject = e.this.Ekt.JlY.get(paramInt);
       AppMethodBeat.o(159567);
       return localObject;
     }
@@ -169,30 +169,34 @@ public final class e
     public final View getView(final int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(159568);
-      final m localm = (m)e.this.CGH.Hyi.get(paramInt);
+      final m localm = (m)e.this.Ekt.JlY.get(paramInt);
       paramViewGroup = LayoutInflater.from(this.context);
       View localView;
       if (paramView == null)
       {
         localView = paramViewGroup.inflate(2131494965, null);
         paramView = new a();
-        paramView.JfS = ((LinearLayout)localView.findViewById(2131301167));
-        paramView.ijt = ((CheckBox)localView.findViewById(2131301143));
-        paramView.iCg = ((TextView)localView.findViewById(2131301198));
-        paramView.ijE = ((TextView)localView.findViewById(2131301149));
+        paramView.KXg = ((LinearLayout)localView.findViewById(2131301167));
+        paramView.iCK = ((CheckBox)localView.findViewById(2131301143));
+        paramView.iVq = ((TextView)localView.findViewById(2131301198));
+        paramView.iCV = ((TextView)localView.findViewById(2131301149));
         localView.setTag(paramView);
         paramViewGroup = paramView;
-        paramViewGroup.iCg.setText(localm.getTitle());
-        paramViewGroup.JfS.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.iVq.setText(localm.getTitle());
+        paramViewGroup.KXg.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(159564);
-            if (e.this.ISv != null) {
-              e.this.ISv.onMMMenuItemSelected(e.this.CGH.getItem(paramInt), paramInt);
+            b localb = new b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/MultiPicker$ListViewAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            if (e.this.KJz != null) {
+              e.this.KJz.onMMMenuItemSelected(e.this.Ekt.getItem(paramInt), paramInt);
             }
-            if (localm.ltx)
+            if (localm.lSG)
             {
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/picker/MultiPicker$ListViewAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(159564);
               return;
             }
@@ -201,30 +205,31 @@ public final class e
             }
             for (;;)
             {
-              e.a.this.JjH = e.a.a(e.a.this);
+              e.a.this.Lbe = e.a.a(e.a.this);
               e.a.this.notifyDataSetChanged();
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/picker/MultiPicker$ListViewAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(159564);
               return;
               e.a.a(e.a.this).put(Integer.valueOf(paramInt), Boolean.TRUE);
             }
           }
         });
-        if (paramViewGroup.ijE != null)
+        if (paramViewGroup.iCV != null)
         {
-          if ((localm.sEs == null) || (localm.sEs.length() <= 0)) {
+          if ((localm.tBj == null) || (localm.tBj.length() <= 0)) {
             break label304;
           }
-          paramViewGroup.ijE.setVisibility(0);
-          paramViewGroup.ijE.setText(localm.sEs);
+          paramViewGroup.iCV.setVisibility(0);
+          paramViewGroup.iCV.setText(localm.tBj);
         }
         label198:
-        if (!localm.ltx) {
+        if (!localm.lSG) {
           break label316;
         }
-        paramViewGroup.iCg.setTextColor(e.this.mContext.getResources().getColor(2131100031));
-        paramViewGroup.ijE.setTextColor(e.this.mContext.getResources().getColor(2131100031));
-        paramViewGroup.ijt.setChecked(((Boolean)this.JjH.get(Integer.valueOf(paramInt))).booleanValue());
-        paramViewGroup.ijt.setEnabled(false);
+        paramViewGroup.iVq.setTextColor(e.this.mContext.getResources().getColor(2131100031));
+        paramViewGroup.iCV.setTextColor(e.this.mContext.getResources().getColor(2131100031));
+        paramViewGroup.iCK.setChecked(((Boolean)this.Lbe.get(Integer.valueOf(paramInt))).booleanValue());
+        paramViewGroup.iCK.setEnabled(false);
       }
       for (;;)
       {
@@ -234,22 +239,22 @@ public final class e
         localView = paramView;
         break;
         label304:
-        paramViewGroup.ijE.setVisibility(8);
+        paramViewGroup.iCV.setVisibility(8);
         break label198;
         label316:
-        paramViewGroup.iCg.setTextColor(e.this.mContext.getResources().getColor(2131100030));
-        paramViewGroup.ijE.setTextColor(e.this.mContext.getResources().getColor(2131100032));
-        paramViewGroup.ijt.setChecked(((Boolean)this.JjH.get(Integer.valueOf(paramInt))).booleanValue());
-        paramViewGroup.ijt.setEnabled(true);
+        paramViewGroup.iVq.setTextColor(e.this.mContext.getResources().getColor(2131100030));
+        paramViewGroup.iCV.setTextColor(e.this.mContext.getResources().getColor(2131100032));
+        paramViewGroup.iCK.setChecked(((Boolean)this.Lbe.get(Integer.valueOf(paramInt))).booleanValue());
+        paramViewGroup.iCK.setEnabled(true);
       }
     }
     
     final class a
     {
-      LinearLayout JfS;
-      TextView iCg;
-      TextView ijE;
-      CheckBox ijt;
+      LinearLayout KXg;
+      CheckBox iCK;
+      TextView iCV;
+      TextView iVq;
       
       a() {}
     }
@@ -257,7 +262,7 @@ public final class e
   
   public static abstract interface b
   {
-    public abstract void pN(boolean paramBoolean);
+    public abstract void qm(boolean paramBoolean);
   }
 }
 

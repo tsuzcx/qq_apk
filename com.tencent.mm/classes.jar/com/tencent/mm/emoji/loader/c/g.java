@@ -3,75 +3,75 @@ package com.tencent.mm.emoji.loader.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.c;
 import com.tencent.mm.plugin.emoji.d.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiHttpFetcher;", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcher;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "", "fetcherConfig", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "fetch", "getEmojiData", "Lcom/tencent/mm/modelimage/loader/model/Response;", "reportResult", "reportStart", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiHttpFetcher;", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcher;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "", "fetcherConfig", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "fetch", "getEmojiData", "Lcom/tencent/mm/modelimage/loader/model/Response;", "reportResult", "reportStart", "plugin-emojisdk_release"})
 public final class g
   implements d
 {
   private final String TAG = "MicroMsg.EmojiLoader.EmojiHttpFetcher";
-  private e fPj;
-  private d.g.a.b<? super Boolean, y> fPk;
+  private e giJ;
+  private d.g.a.b<? super Boolean, z> giK;
   
-  private final void dd(boolean paramBoolean)
+  private final void df(boolean paramBoolean)
   {
     AppMethodBeat.i(105440);
-    e locale = this.fPj;
+    e locale = this.giJ;
     if (locale != null)
     {
       if (paramBoolean)
       {
-        c.sr(2L);
+        c.up(2L);
         AppMethodBeat.o(105440);
         return;
       }
-      c.sr(3L);
-      switch (locale.fPD)
+      c.up(3L);
+      switch (locale.gjd)
       {
       }
       for (;;)
       {
         AppMethodBeat.o(105440);
         return;
-        c.a(locale.fPB.JC(), 4, 1, 1, locale.fPB.azp(), 1, locale.fPB.field_designerID);
+        c.a(locale.gjb.Lb(), 4, 1, 1, locale.gjb.afw(), 1, locale.gjb.field_designerID);
         AppMethodBeat.o(105440);
         return;
-        c.a(locale.fPB.JC(), 2, 1, 1, locale.fPB.azp(), 1, locale.fPB.field_designerID);
+        c.a(locale.gjb.Lb(), 2, 1, 1, locale.gjb.afw(), 1, locale.gjb.field_designerID);
         AppMethodBeat.o(105440);
         return;
-        c.a(locale.fPB.JC(), 4, 1, 1, locale.fPB.azp(), 1, locale.fPB.field_designerID);
+        c.a(locale.gjb.Lb(), 4, 1, 1, locale.gjb.afw(), 1, locale.gjb.field_designerID);
       }
     }
     AppMethodBeat.o(105440);
   }
   
-  public final void a(e parame, d.g.a.b<? super Boolean, y> paramb)
+  public final void a(e parame, d.g.a.b<? super Boolean, z> paramb)
   {
     AppMethodBeat.i(105439);
-    k.h(parame, "fetcherConfig");
-    this.fPj = parame;
-    this.fPk = paramb;
-    Object localObject = this.fPj;
+    p.h(parame, "fetcherConfig");
+    this.giJ = parame;
+    this.giK = paramb;
+    Object localObject = this.giJ;
     if (localObject != null) {}
     label92:
     label104:
     int i;
-    switch (((e)localObject).fPD)
+    switch (((e)localObject).gjd)
     {
     default: 
-      localObject = this.fPj;
+      localObject = this.giJ;
       if (localObject != null)
       {
-        localObject = new a().CD(((e)localObject).url);
+        localObject = new a().FH(((e)localObject).url);
         if (localObject == null) {
           break label206;
         }
-        localObject = ((com.tencent.mm.av.a.d.b)localObject).data;
+        localObject = ((com.tencent.mm.aw.a.d.b)localObject).data;
         if (localObject != null)
         {
           if (localObject.length != 0) {
@@ -86,18 +86,18 @@ public final class g
     {
       if (i != 0)
       {
-        ac.i(this.TAG, "download fail " + parame.fPB.JC());
-        dd(false);
+        ad.i(this.TAG, "download fail " + parame.gjb.Lb());
+        df(false);
         if (paramb != null)
         {
-          paramb.ay(Boolean.FALSE);
+          paramb.invoke(Boolean.FALSE);
           AppMethodBeat.o(105439);
           return;
-          c.sr(1L);
+          c.up(1L);
           break;
-          c.sr(6L);
+          c.up(6L);
           break;
-          c.sr(10L);
+          c.up(10L);
           break;
           localObject = null;
           break label92;
@@ -112,13 +112,13 @@ public final class g
         return;
       }
     }
-    ac.i(this.TAG, "download success " + parame.fPB.JC() + ", " + parame.path);
-    new com.tencent.mm.vfs.e(parame.path).fxU().mkdirs();
-    i.B(parame.path, (byte[])localObject);
-    dd(true);
+    ad.i(this.TAG, "download success " + parame.gjb.Lb() + ", " + parame.path);
+    new com.tencent.mm.vfs.e(parame.path).fOJ().mkdirs();
+    i.C(parame.path, (byte[])localObject);
+    df(true);
     if (paramb != null)
     {
-      paramb.ay(Boolean.TRUE);
+      paramb.invoke(Boolean.TRUE);
       AppMethodBeat.o(105439);
       return;
     }

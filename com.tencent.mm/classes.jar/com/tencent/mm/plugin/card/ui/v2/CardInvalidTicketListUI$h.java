@@ -6,9 +6,11 @@ import android.content.DialogInterface.OnClickListener;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.ui.base.h;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
 final class CardInvalidTicketListUI$h
   implements MenuItem.OnMenuItemClickListener
 {
@@ -17,17 +19,17 @@ final class CardInvalidTicketListUI$h
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(112488);
-    com.tencent.mm.ui.base.h.a((Context)this.oiA.getContext(), false, this.oiA.getString(2131756897), "", this.oiA.getString(2131757560), this.oiA.getString(2131757558), (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
+    h.a((Context)this.oLU.getContext(), false, this.oLU.getString(2131756897), "", this.oLU.getString(2131757560), this.oLU.getString(2131757558), (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(112485);
-        CardInvalidTicketListUI.bTw();
-        com.tencent.mm.plugin.report.service.h.wUl.f(16322, new Object[] { Integer.valueOf(11) });
+        CardInvalidTicketListUI.bYb();
+        g.yhR.f(16322, new Object[] { Integer.valueOf(11) });
         AppMethodBeat.o(112485);
       }
-    }, (DialogInterface.OnClickListener)2.oiF);
-    com.tencent.mm.plugin.report.service.h.wUl.f(16322, new Object[] { Integer.valueOf(10) });
+    }, (DialogInterface.OnClickListener)2.oLZ);
+    g.yhR.f(16322, new Object[] { Integer.valueOf(10) });
     AppMethodBeat.o(112488);
     return false;
   }

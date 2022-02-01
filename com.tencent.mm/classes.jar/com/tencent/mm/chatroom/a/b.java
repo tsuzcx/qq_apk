@@ -19,31 +19,31 @@ public final class b
   implements c.a
 {
   private final Calendar calendar;
-  private final TypedArray frN;
-  private final a frO;
-  public final a<com.tencent.mm.chatroom.d.a> frP;
-  private final Collection<com.tencent.mm.chatroom.d.a> frQ;
-  private final Integer frR;
-  private final Integer frS;
-  private final boolean frT;
+  private final TypedArray fJW;
+  private final a fJX;
+  public final a<com.tencent.mm.chatroom.d.a> fJY;
+  private final Collection<com.tencent.mm.chatroom.d.a> fJZ;
+  private final Integer fKa;
+  private final Integer fKb;
+  private final boolean fKc;
   private final Context mContext;
   
   public b(Context paramContext, a parama, TypedArray paramTypedArray, long paramLong, Collection<com.tencent.mm.chatroom.d.a> paramCollection)
   {
     AppMethodBeat.i(12437);
-    this.frN = paramTypedArray;
+    this.fJW = paramTypedArray;
     this.calendar = Calendar.getInstance();
-    this.frS = Integer.valueOf(paramTypedArray.getInt(15, this.calendar.get(2) % 12));
+    this.fKb = Integer.valueOf(paramTypedArray.getInt(15, this.calendar.get(2) % 12));
     if (-1L != paramLong) {
       this.calendar.setTimeInMillis(paramLong);
     }
-    this.frR = Integer.valueOf(paramTypedArray.getInt(13, this.calendar.get(2)));
-    this.frT = paramTypedArray.getBoolean(16, false);
-    this.frP = new a();
-    this.frQ = paramCollection;
+    this.fKa = Integer.valueOf(paramTypedArray.getInt(13, this.calendar.get(2)));
+    this.fKc = paramTypedArray.getBoolean(16, false);
+    this.fJY = new a();
+    this.fJZ = paramCollection;
     this.mContext = paramContext;
-    this.frO = parama;
-    if (this.frN.getBoolean(10, false)) {
+    this.fJX = parama;
+    if (this.fJW.getBoolean(10, false)) {
       c(new com.tencent.mm.chatroom.d.a(System.currentTimeMillis()));
     }
     AppMethodBeat.o(12437);
@@ -52,7 +52,7 @@ public final class b
   private void c(com.tencent.mm.chatroom.d.a parama)
   {
     AppMethodBeat.i(12440);
-    this.frO.a(parama);
+    this.fJX.a(parama);
     d(parama);
     AppMethodBeat.o(12440);
   }
@@ -60,40 +60,40 @@ public final class b
   private void d(com.tencent.mm.chatroom.d.a parama)
   {
     AppMethodBeat.i(12441);
-    if (this.frT)
+    if (this.fKc)
     {
       int i;
-      if ((this.frP.first != null) && (this.frP.frU == null))
+      if ((this.fJY.first != null) && (this.fJY.fKd == null))
       {
-        this.frP.frU = parama;
-        if (((com.tencent.mm.chatroom.d.a)this.frP.first).month < parama.month) {
+        this.fJY.fKd = parama;
+        if (((com.tencent.mm.chatroom.d.a)this.fJY.first).month < parama.month) {
           i = 0;
         }
       }
       else
       {
-        while (i < ((com.tencent.mm.chatroom.d.a)this.frP.first).month - parama.month - 1)
+        while (i < ((com.tencent.mm.chatroom.d.a)this.fJY.first).month - parama.month - 1)
         {
-          this.frO.a(parama);
+          this.fJX.a(parama);
           i += 1;
           continue;
-          if (this.frP.frU == null) {
+          if (this.fJY.fKd == null) {
             break label144;
           }
-          this.frP.first = parama;
-          this.frP.frU = null;
+          this.fJY.first = parama;
+          this.fJY.fKd = null;
         }
       }
     }
     for (;;)
     {
-      this.arg.notifyChanged();
+      this.asY.notifyChanged();
       AppMethodBeat.o(12441);
       return;
       label144:
-      this.frP.first = parama;
+      this.fJY.first = parama;
       continue;
-      this.frP.first = parama;
+      this.fJY.first = parama;
     }
   }
   
@@ -109,14 +109,14 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(12438);
-    int j = (new com.tencent.mm.chatroom.d.a(this.frO.VL()).year - this.calendar.get(1) + 1) * 12;
+    int j = (new com.tencent.mm.chatroom.d.a(this.fJX.Yc()).year - this.calendar.get(1) + 1) * 12;
     int i = j;
-    if (this.frR.intValue() != -1) {
-      i = j - this.frR.intValue();
+    if (this.fKa.intValue() != -1) {
+      i = j - this.fKa.intValue();
     }
     j = i;
-    if (this.frS.intValue() != -1) {
-      j = i - (12 - this.frS.intValue() - 1);
+    if (this.fKb.intValue() != -1) {
+      j = i - (12 - this.fKb.intValue() - 1);
     }
     AppMethodBeat.o(12438);
     return j;
@@ -130,30 +130,30 @@ public final class b
   public static final class a<K>
     implements Serializable
   {
+    K fKd;
     K first;
-    K frU;
   }
   
   public static final class b
     extends RecyclerView.w
   {
-    final c frV;
+    final c fKe;
     
     public b(View paramView, c.a parama)
     {
       super();
       AppMethodBeat.i(12436);
-      this.frV = ((c)paramView);
-      this.frV.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-      this.frV.setClickable(true);
-      this.frV.setOnDayClickListener(parama);
+      this.fKe = ((c)paramView);
+      this.fKe.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+      this.fKe.setClickable(true);
+      this.fKe.setOnDayClickListener(parama);
       AppMethodBeat.o(12436);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.a.b
  * JD-Core Version:    0.7.0.1
  */

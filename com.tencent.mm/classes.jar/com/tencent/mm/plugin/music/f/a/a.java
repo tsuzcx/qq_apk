@@ -3,44 +3,44 @@ package com.tencent.mm.plugin.music.f.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.qqmusic.mediaplayer.AudioPlayerConfigure;
 import com.tencent.qqmusic.mediaplayer.ISoLibraryLoader;
 import com.tencent.qqmusic.mediaplayer.NativeLibs;
 
 public class a
 {
-  private static boolean aMG;
-  private static c vgT;
-  private static boolean vgU;
+  private static boolean aWX;
+  private static c wmo;
+  private static boolean wmp;
   
   static
   {
     AppMethodBeat.i(137400);
-    vgT = new a.a((byte)0);
-    vgU = false;
-    aMG = false;
+    wmo = new a.a((byte)0);
+    wmp = false;
+    aWX = false;
     AppMethodBeat.o(137400);
   }
   
   public static void a(c paramc)
   {
-    vgT = paramc;
+    wmo = paramc;
   }
   
-  public static void djo()
+  public static void dtA()
   {
     AppMethodBeat.i(137398);
-    ac.i("MicroMsg.Audio.AudioPlayerUtils", "configQQMusicSdkConfig");
+    ad.i("MicroMsg.Audio.AudioPlayerUtils", "configQQMusicSdkConfig");
     AudioPlayerConfigure.setLog(new a.1());
     AudioPlayerConfigure.setSoLibraryLoader(new ISoLibraryLoader()
     {
       public final String findLibPath(String paramAnonymousString)
       {
         AppMethodBeat.i(137392);
-        if (a.djq() != null)
+        if (a.dtC() != null)
         {
-          paramAnonymousString = a.djq().findLibPath(paramAnonymousString);
+          paramAnonymousString = a.dtC().findLibPath(paramAnonymousString);
           AppMethodBeat.o(137392);
           return paramAnonymousString;
         }
@@ -51,9 +51,9 @@ public class a
       public final boolean load(String paramAnonymousString)
       {
         AppMethodBeat.i(137391);
-        if (a.djq() != null)
+        if (a.dtC() != null)
         {
-          boolean bool = a.djq().load(paramAnonymousString);
+          boolean bool = a.dtC().load(paramAnonymousString);
           AppMethodBeat.o(137391);
           return bool;
         }
@@ -61,16 +61,16 @@ public class a
         return false;
       }
     });
-    if ((!vgU) && (!aMG))
+    if ((!wmp) && (!aWX))
     {
-      aMG = true;
+      aWX = true;
       b.c(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(137393);
-          a.djp();
-          a.bvu();
+          a.dtB();
+          a.bzA();
           AppMethodBeat.o(137393);
         }
       }, "audio load NLog");
@@ -78,7 +78,7 @@ public class a
     AppMethodBeat.o(137398);
   }
   
-  public static boolean djp()
+  public static boolean dtB()
   {
     boolean bool1 = false;
     for (;;)
@@ -86,41 +86,42 @@ public class a
       try
       {
         AppMethodBeat.i(137399);
-        if (vgU)
+        if (wmp)
         {
           bool1 = true;
           AppMethodBeat.o(137399);
           return bool1;
         }
-        if (vgT == null)
+        if (wmo == null)
         {
           AppMethodBeat.o(137399);
           continue;
         }
-        vgT.load(NativeLibs.nlog.getName());
+        wmo.load(NativeLibs.nlog.getName());
       }
       finally {}
-      boolean bool2 = vgT.anI(NativeLibs.nlog.getName());
+      wmo.load(NativeLibs.audioCommon.getName());
+      boolean bool2 = wmo.asH(NativeLibs.nlog.getName());
       if (bool2)
       {
         try
         {
-          vgU = AudioPlayerConfigure.enableNativeLog(null);
-          if (vgU) {
-            ac.i("MicroMsg.Audio.AudioPlayerUtils", "enableNativeLog success");
+          wmp = AudioPlayerConfigure.enableNativeLog(null);
+          if (wmp) {
+            ad.i("MicroMsg.Audio.AudioPlayerUtils", "enableNativeLog success");
           }
-          bool1 = vgU;
+          bool1 = wmp;
           AppMethodBeat.o(137399);
         }
         catch (Throwable localThrowable)
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.Audio.AudioPlayerUtils", localThrowable, "checkNLogLoad", new Object[0]);
-            if (!d.la(20)) {
+            ad.printErrStackTrace("MicroMsg.Audio.AudioPlayerUtils", localThrowable, "checkNLogLoad", new Object[0]);
+            if (!d.lz(20)) {
               break;
             }
-            vgU = AudioPlayerConfigure.enableNativeLog(null);
+            wmp = AudioPlayerConfigure.enableNativeLog(null);
           }
           AppMethodBeat.o(137399);
           throw localThrowable;
@@ -128,7 +129,7 @@ public class a
       }
       else
       {
-        ac.i("MicroMsg.Audio.AudioPlayerUtils", "enableNativeLog fail");
+        ad.i("MicroMsg.Audio.AudioPlayerUtils", "enableNativeLog fail");
         AppMethodBeat.o(137399);
       }
     }

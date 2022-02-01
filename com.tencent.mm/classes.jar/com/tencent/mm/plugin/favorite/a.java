@@ -14,7 +14,7 @@ public final class a
 {
   public a()
   {
-    super(com.tencent.mm.br.c.aIo("favorite"));
+    super(com.tencent.mm.bs.c.aNR("favorite"));
     AppMethodBeat.i(24569);
     AppMethodBeat.o(24569);
   }
@@ -22,8 +22,8 @@ public final class a
   public final void parallelsDependency()
   {
     AppMethodBeat.i(24570);
-    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).by(g.ad(n.class));
-    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).by(g.ad(af.class));
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bA(g.ad(n.class));
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bA(g.ad(af.class));
     AppMethodBeat.o(24570);
   }
 }

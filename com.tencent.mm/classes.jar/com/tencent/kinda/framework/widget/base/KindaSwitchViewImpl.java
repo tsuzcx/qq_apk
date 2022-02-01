@@ -7,7 +7,6 @@ import com.tencent.kinda.gen.KSwitchView;
 import com.tencent.kinda.gen.KSwitchViewOnChangeSwitchCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
-import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 
 public class KindaSwitchViewImpl
   extends MMKView<MMSwitchBtn>
@@ -40,7 +39,7 @@ public class KindaSwitchViewImpl
   
   public boolean getOn()
   {
-    return this.mmSwitchBtn.JaE;
+    return this.mmSwitchBtn.KRP;
   }
   
   public KImage getOnImage()
@@ -79,18 +78,10 @@ public class KindaSwitchViewImpl
     AppMethodBeat.o(18967);
   }
   
-  public void setOnChangeSwitchCallback(final KSwitchViewOnChangeSwitchCallback paramKSwitchViewOnChangeSwitchCallback)
+  public void setOnChangeSwitchCallback(KSwitchViewOnChangeSwitchCallback paramKSwitchViewOnChangeSwitchCallback)
   {
     AppMethodBeat.i(18970);
-    this.mmSwitchBtn.setSwitchListener(new MMSwitchBtn.a()
-    {
-      public void onStatusChange(boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(18965);
-        paramKSwitchViewOnChangeSwitchCallback.onChangeSwitch();
-        AppMethodBeat.o(18965);
-      }
-    });
+    this.mmSwitchBtn.setSwitchListener(new KindaSwitchViewImpl.1(this, paramKSwitchViewOnChangeSwitchCallback));
     AppMethodBeat.o(18970);
   }
   
@@ -104,7 +95,7 @@ public class KindaSwitchViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaSwitchViewImpl
  * JD-Core Version:    0.7.0.1
  */

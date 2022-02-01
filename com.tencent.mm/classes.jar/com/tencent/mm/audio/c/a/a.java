@@ -1,23 +1,23 @@
 package com.tencent.mm.audio.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/audio/utils/player/AudioPlayerReportUtil;", "", "()V", "mIsReportStart", "", "mRMSInOnePlayerProcess", "", "", "[Ljava/lang/Integer;", "mSystemVolumProcess", "byteArray2ShortArray", "", "data", "", "items", "calcDecibelLevel", "", "buffer", "readSize", "checkPCMAmplitude", "", "length", "checkSystemVolume", "type", "volume", "doAudioRecordKVReport", "audioType", "scenes", "featureKey", "", "pcmSilent", "pcmLow", "pcmMiddle", "pcmHigh", "systemSilent", "systemLow", "systemMiddle", "systemHigh", "audioSource", "doAudioVolumeRecordKVReport", "streamType", "doPCMPlayerChecker", "doPCMPlayerPercentReport", "index", "result", "", "doPCMPlayerResultReport", "doPcmPlayerReport", "doSystemVolumePercentReport", "doSystemVolumePlayerChecker", "doSystemVolumeResultReport", "getRMSInOnePlayerProcessReportSum", "getSystemVolumePercentReportSum", "Companion", "plugin-audiosdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/audio/utils/player/AudioPlayerReportUtil;", "", "()V", "mIsReportStart", "", "mRMSInOnePlayerProcess", "", "", "[Ljava/lang/Integer;", "mSystemVolumProcess", "byteArray2ShortArray", "", "data", "", "items", "calcDecibelLevel", "", "buffer", "readSize", "checkPCMAmplitude", "", "length", "checkSystemVolume", "type", "volume", "doAudioRecordKVReport", "audioType", "scenes", "featureKey", "", "pcmSilent", "pcmLow", "pcmMiddle", "pcmHigh", "systemSilent", "systemLow", "systemMiddle", "systemHigh", "audioSource", "doAudioVolumeRecordKVReport", "streamType", "doPCMPlayerChecker", "doPCMPlayerPercentReport", "index", "result", "", "doPCMPlayerResultReport", "doPcmPlayerReport", "doSystemVolumePercentReport", "doSystemVolumePlayerChecker", "doSystemVolumeResultReport", "getRMSInOnePlayerProcessReportSum", "getSystemVolumePercentReportSum", "Companion", "plugin-audiosdk_release"})
 public final class a
 {
-  public static final a.a cXs;
-  private boolean cXp;
-  private Integer[] cXq;
-  private Integer[] cXr;
+  public static final a.a diK;
+  private boolean diH;
+  private Integer[] diI;
+  private Integer[] diJ;
   
   static
   {
     AppMethodBeat.i(130117);
-    cXs = new a.a((byte)0);
+    diK = new a.a((byte)0);
     AppMethodBeat.o(130117);
   }
   
@@ -31,7 +31,7 @@ public final class a
       arrayOfInteger[i] = Integer.valueOf(0);
       i += 1;
     }
-    this.cXq = arrayOfInteger;
+    this.diI = arrayOfInteger;
     arrayOfInteger = new Integer[4];
     i = 0;
     while (i < 4)
@@ -39,14 +39,14 @@ public final class a
       arrayOfInteger[i] = Integer.valueOf(0);
       i += 1;
     }
-    this.cXr = arrayOfInteger;
+    this.diJ = arrayOfInteger;
     AppMethodBeat.o(130116);
   }
   
-  private final int Ow()
+  private final int Qi()
   {
     AppMethodBeat.i(130113);
-    Integer[] arrayOfInteger = this.cXq;
+    Integer[] arrayOfInteger = this.diI;
     int k = arrayOfInteger.length;
     int i = 0;
     int j = 0;
@@ -62,28 +62,28 @@ public final class a
   public final void b(int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(130109);
-    k.h(paramString, "featureKey");
-    int i3 = Ow();
+    p.h(paramString, "featureKey");
+    int i3 = Qi();
     if (i3 != 0)
     {
-      int i = this.cXq[0].intValue() * 100 / i3;
-      int j = this.cXq[1].intValue() * 100 / i3;
-      int k = this.cXq[2].intValue() * 100 / i3;
-      int m = this.cXq[3].intValue() * 100 / i3;
-      int n = this.cXr[0].intValue() * 100 / i3;
-      int i1 = this.cXr[1].intValue() * 100 / i3;
-      int i2 = this.cXr[2].intValue() * 100 / i3;
-      i3 = this.cXr[3].intValue() * 100 / i3;
-      ac.i("MicroMsg.AudioPlayerReportUtil", "audioType = 1 ,scenes = " + paramInt1 + ",featureKey=" + paramString + ",pcmSilent=" + i + ", pcmLow=" + j + ",pcmMiddle=" + k + ",pcmHigh=" + m + ",systemSilent=" + n + ",systemLow=" + i1 + ",systemMiddle=" + i2 + ",systemHigh=" + i3 + ",streamType=" + paramInt2 + '}');
-      h.wUl.a(18554, true, true, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), paramString, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt2) });
+      int i = this.diI[0].intValue() * 100 / i3;
+      int j = this.diI[1].intValue() * 100 / i3;
+      int k = this.diI[2].intValue() * 100 / i3;
+      int m = this.diI[3].intValue() * 100 / i3;
+      int n = this.diJ[0].intValue() * 100 / i3;
+      int i1 = this.diJ[1].intValue() * 100 / i3;
+      int i2 = this.diJ[2].intValue() * 100 / i3;
+      i3 = this.diJ[3].intValue() * 100 / i3;
+      ad.i("MicroMsg.AudioPlayerReportUtil", "audioType = 1 ,scenes = " + paramInt1 + ",featureKey=" + paramString + ",pcmSilent=" + i + ", pcmLow=" + j + ",pcmMiddle=" + k + ",pcmHigh=" + m + ",systemSilent=" + n + ",systemLow=" + i1 + ",systemMiddle=" + i2 + ",systemHigh=" + i3 + ",streamType=" + paramInt2 + '}');
+      g.yhR.a(18554, true, true, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), paramString, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt2) });
     }
     AppMethodBeat.o(130109);
   }
   
-  public final void cg(int paramInt1, int paramInt2)
+  public final void ci(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130114);
-    if (!this.cXp)
+    if (!this.diH)
     {
       AppMethodBeat.o(130114);
       return;
@@ -98,56 +98,58 @@ public final class a
       Integer[] arrayOfInteger;
       if (paramInt2 < 10)
       {
-        arrayOfInteger = this.cXr;
+        arrayOfInteger = this.diJ;
         arrayOfInteger[0] = Integer.valueOf(arrayOfInteger[0].intValue() + 1);
         AppMethodBeat.o(130114);
         return;
       }
       if (paramInt2 < 40)
       {
-        arrayOfInteger = this.cXr;
+        arrayOfInteger = this.diJ;
         arrayOfInteger[1] = Integer.valueOf(arrayOfInteger[1].intValue() + 1);
         AppMethodBeat.o(130114);
         return;
       }
       if (paramInt2 < 80)
       {
-        arrayOfInteger = this.cXr;
+        arrayOfInteger = this.diJ;
         arrayOfInteger[2] = Integer.valueOf(arrayOfInteger[2].intValue() + 1);
         AppMethodBeat.o(130114);
         return;
       }
       if (paramInt2 <= 100)
       {
-        arrayOfInteger = this.cXr;
+        arrayOfInteger = this.diJ;
         arrayOfInteger[3] = Integer.valueOf(arrayOfInteger[3].intValue() + 1);
+        AppMethodBeat.o(130114);
+        return;
       }
       AppMethodBeat.o(130114);
       return;
       if (paramInt2 < 10)
       {
-        arrayOfInteger = this.cXr;
+        arrayOfInteger = this.diJ;
         arrayOfInteger[0] = Integer.valueOf(arrayOfInteger[0].intValue() + 1);
         AppMethodBeat.o(130114);
         return;
       }
       if (paramInt2 < 40)
       {
-        arrayOfInteger = this.cXr;
+        arrayOfInteger = this.diJ;
         arrayOfInteger[1] = Integer.valueOf(arrayOfInteger[1].intValue() + 1);
         AppMethodBeat.o(130114);
         return;
       }
       if (paramInt2 < 80)
       {
-        arrayOfInteger = this.cXr;
+        arrayOfInteger = this.diJ;
         arrayOfInteger[2] = Integer.valueOf(arrayOfInteger[2].intValue() + 1);
         AppMethodBeat.o(130114);
         return;
       }
       if (paramInt2 <= 100)
       {
-        arrayOfInteger = this.cXr;
+        arrayOfInteger = this.diJ;
         arrayOfInteger[3] = Integer.valueOf(arrayOfInteger[3].intValue() + 1);
       }
     }
@@ -156,8 +158,8 @@ public final class a
   public final void e(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(130115);
-    k.h(paramArrayOfByte, "data");
-    if (!this.cXp)
+    p.h(paramArrayOfByte, "data");
+    if (!this.diH)
     {
       AppMethodBeat.o(130115);
       return;
@@ -185,35 +187,35 @@ public final class a
       d = Math.sqrt(d / i);
       if (d < 50.0D)
       {
-        paramArrayOfByte = this.cXq;
+        paramArrayOfByte = this.diI;
         paramArrayOfByte[0] = Integer.valueOf(paramArrayOfByte[0].intValue() + 1);
         AppMethodBeat.o(130115);
         return;
       }
       if (d < 300.0D)
       {
-        paramArrayOfByte = this.cXq;
+        paramArrayOfByte = this.diI;
         paramArrayOfByte[1] = Integer.valueOf(paramArrayOfByte[1].intValue() + 1);
         AppMethodBeat.o(130115);
         return;
       }
       if (d < 2000.0D)
       {
-        paramArrayOfByte = this.cXq;
+        paramArrayOfByte = this.diI;
         paramArrayOfByte[2] = Integer.valueOf(paramArrayOfByte[2].intValue() + 1);
         AppMethodBeat.o(130115);
         return;
       }
-      paramArrayOfByte = this.cXq;
+      paramArrayOfByte = this.diI;
       paramArrayOfByte[3] = Integer.valueOf(paramArrayOfByte[3].intValue() + 1);
     }
     AppMethodBeat.o(130115);
   }
   
-  public final void hJ(int paramInt)
+  public final void hQ(int paramInt)
   {
     AppMethodBeat.i(130110);
-    this.cXp = true;
+    this.diH = true;
     switch (paramInt)
     {
     }
@@ -221,25 +223,25 @@ public final class a
     {
       AppMethodBeat.o(130110);
       return;
-      c.Ox();
+      c.Qj();
       AppMethodBeat.o(130110);
       return;
-      b.Ox();
+      b.Qj();
     }
   }
   
-  public final void hK(int paramInt)
+  public final void hR(int paramInt)
   {
     AppMethodBeat.i(130111);
-    if (!this.cXp)
+    if (!this.diH)
     {
       AppMethodBeat.o(130111);
       return;
     }
-    int k = Ow();
+    int k = Qi();
     if (k != 0)
     {
-      Integer[] arrayOfInteger = this.cXq;
+      Integer[] arrayOfInteger = this.diI;
       int i = 0;
       int m = arrayOfInteger.length;
       int j = 0;
@@ -247,12 +249,12 @@ public final class a
       {
         int n = ((Number)arrayOfInteger[j]).intValue();
         long l = n * 100 / k;
-        if (this.cXp) {}
+        if (this.diH) {}
         switch (paramInt)
         {
         default: 
           n = n * 100 / k;
-          if (this.cXp) {
+          if (this.diH) {
             switch (paramInt)
             {
             }
@@ -302,73 +304,73 @@ public final class a
                 break;
               case 0: 
                 if (n == 0) {
-                  c.Oy();
+                  c.Qk();
                 } else if (n <= 20) {
-                  c.Oz();
+                  c.Ql();
                 } else if (n <= 40) {
-                  c.OA();
+                  c.Qm();
                 } else if (n <= 60) {
-                  c.OB();
+                  c.Qn();
                 } else if (n <= 80) {
-                  c.OC();
+                  c.Qo();
                 } else if (n == 100) {
-                  c.OD();
+                  c.Qp();
                 }
                 break;
               case 1: 
                 if (n == 0) {
-                  c.OE();
+                  c.Qq();
                 } else if (n <= 20) {
-                  c.OF();
+                  c.Qr();
                 } else if (n <= 40) {
-                  c.OG();
+                  c.Qs();
                 } else if (n <= 60) {
-                  c.OH();
+                  c.Qt();
                 } else if (n <= 80) {
-                  c.OI();
+                  c.Qu();
                 } else if (n == 100) {
-                  c.OJ();
+                  c.Qv();
                 }
                 break;
               case 2: 
                 if (n == 0) {
-                  c.OK();
+                  c.Qw();
                 } else if (n <= 20) {
-                  c.OL();
+                  c.Qx();
                 } else if (n <= 40) {
-                  c.OM();
+                  c.Qy();
                 } else if (n <= 60) {
-                  c.ON();
+                  c.Qz();
                 } else if (n <= 80) {
-                  c.OO();
+                  c.QA();
                 } else if (n == 100) {
-                  c.OP();
+                  c.QB();
                 }
                 break;
               case 3: 
                 if (n == 0)
                 {
-                  c.OQ();
+                  c.QC();
                 }
                 else if (n <= 20)
                 {
-                  c.OR();
+                  c.QD();
                 }
                 else if (n <= 40)
                 {
-                  c.OS();
+                  c.QE();
                 }
                 else if (n <= 60)
                 {
-                  c.OT();
+                  c.QF();
                 }
                 else if (n <= 80)
                 {
-                  c.OU();
+                  c.QG();
                 }
                 else if (n == 100)
                 {
-                  c.OV();
+                  c.QH();
                   continue;
                   switch (i)
                   {
@@ -376,62 +378,62 @@ public final class a
                     break;
                   case 0: 
                     if (n == 0) {
-                      b.Oy();
+                      b.Qk();
                     } else if (n <= 20) {
-                      b.Oz();
+                      b.Ql();
                     } else if (n <= 40) {
-                      b.OA();
+                      b.Qm();
                     } else if (n <= 60) {
-                      b.OB();
+                      b.Qn();
                     } else if (n <= 80) {
-                      b.OC();
+                      b.Qo();
                     } else if (n <= 100) {
-                      b.OD();
+                      b.Qp();
                     }
                     break;
                   case 1: 
                     if (n == 0) {
-                      b.OE();
+                      b.Qq();
                     } else if (n <= 20) {
-                      b.OF();
+                      b.Qr();
                     } else if (n <= 40) {
-                      b.OG();
+                      b.Qs();
                     } else if (n <= 60) {
-                      b.OH();
+                      b.Qt();
                     } else if (n <= 80) {
-                      b.OI();
+                      b.Qu();
                     } else if (n <= 100) {
-                      b.OJ();
+                      b.Qv();
                     }
                     break;
                   case 2: 
                     if (n == 0) {
-                      b.OK();
+                      b.Qw();
                     } else if (n <= 20) {
-                      b.OL();
+                      b.Qx();
                     } else if (n <= 40) {
-                      b.OM();
+                      b.Qy();
                     } else if (n <= 60) {
-                      b.ON();
+                      b.Qz();
                     } else if (n <= 80) {
-                      b.OO();
+                      b.QA();
                     } else if (n <= 100) {
-                      b.OP();
+                      b.QB();
                     }
                     break;
                   case 3: 
                     if (n == 0) {
-                      b.OQ();
+                      b.QC();
                     } else if (n <= 20) {
-                      b.OR();
+                      b.QD();
                     } else if (n <= 40) {
-                      b.OS();
+                      b.QE();
                     } else if (n <= 60) {
-                      b.OT();
+                      b.QF();
                     } else if (n <= 80) {
-                      b.OU();
+                      b.QG();
                     } else if (n <= 100) {
-                      b.OV();
+                      b.QH();
                     }
                     break;
                   }
@@ -451,20 +453,20 @@ public final class a
         arrayOfInteger[paramInt] = Integer.valueOf(0);
         paramInt += 1;
       }
-      this.cXq = arrayOfInteger;
+      this.diI = arrayOfInteger;
     }
     AppMethodBeat.o(130111);
   }
   
-  public final void hL(int paramInt)
+  public final void hS(int paramInt)
   {
     AppMethodBeat.i(130112);
-    if (!this.cXp)
+    if (!this.diH)
     {
       AppMethodBeat.o(130112);
       return;
     }
-    Integer[] arrayOfInteger = this.cXr;
+    Integer[] arrayOfInteger = this.diJ;
     int k = arrayOfInteger.length;
     int j = 0;
     int i = 0;
@@ -477,7 +479,7 @@ public final class a
     }
     if (i != 0)
     {
-      arrayOfInteger = this.cXr;
+      arrayOfInteger = this.diJ;
       j = 0;
       m = arrayOfInteger.length;
       k = 0;
@@ -485,12 +487,12 @@ public final class a
       {
         int n = ((Number)arrayOfInteger[k]).intValue();
         long l = n * 100 / i;
-        if (this.cXp) {}
+        if (this.diH) {}
         switch (paramInt)
         {
         default: 
           n = n * 100 / i;
-          if (this.cXp) {
+          if (this.diH) {
             switch (paramInt)
             {
             }
@@ -540,73 +542,73 @@ public final class a
                 break;
               case 0: 
                 if (n == 0) {
-                  c.OW();
+                  c.QI();
                 } else if (n <= 20) {
-                  c.OX();
+                  c.QJ();
                 } else if (n <= 40) {
-                  c.OY();
+                  c.QK();
                 } else if (n <= 60) {
-                  c.OZ();
+                  c.QL();
                 } else if (n <= 80) {
-                  c.Pa();
+                  c.QM();
                 } else if (n == 100) {
-                  c.Pb();
+                  c.QN();
                 }
                 break;
               case 1: 
                 if (n == 0) {
-                  c.Pc();
+                  c.QO();
                 } else if (n <= 20) {
-                  c.Pd();
+                  c.QP();
                 } else if (n <= 40) {
-                  c.Pe();
+                  c.QQ();
                 } else if (n <= 60) {
-                  c.Pf();
+                  c.QR();
                 } else if (n <= 80) {
-                  c.Pg();
+                  c.QS();
                 } else if (n == 100) {
-                  c.Ph();
+                  c.QT();
                 }
                 break;
               case 2: 
                 if (n == 0) {
-                  c.Pi();
+                  c.QU();
                 } else if (n <= 20) {
-                  c.Pj();
+                  c.QV();
                 } else if (n <= 40) {
-                  c.Pk();
+                  c.QW();
                 } else if (n <= 60) {
-                  c.Pl();
+                  c.QX();
                 } else if (n <= 80) {
-                  c.Pm();
+                  c.QY();
                 } else if (n == 100) {
-                  c.Pn();
+                  c.QZ();
                 }
                 break;
               case 3: 
                 if (n == 0)
                 {
-                  c.Po();
+                  c.Ra();
                 }
                 else if (n <= 20)
                 {
-                  c.Pp();
+                  c.Rb();
                 }
                 else if (n <= 40)
                 {
-                  c.Pq();
+                  c.Rc();
                 }
                 else if (n <= 60)
                 {
-                  c.Pr();
+                  c.Rd();
                 }
                 else if (n <= 80)
                 {
-                  c.Ps();
+                  c.Re();
                 }
                 else if (n == 100)
                 {
-                  c.Pt();
+                  c.Rf();
                   continue;
                   switch (j)
                   {
@@ -614,62 +616,62 @@ public final class a
                     break;
                   case 0: 
                     if (n == 0) {
-                      b.OW();
+                      b.QI();
                     } else if (n <= 20) {
-                      b.OX();
+                      b.QJ();
                     } else if (n <= 40) {
-                      b.OY();
+                      b.QK();
                     } else if (n <= 60) {
-                      b.OZ();
+                      b.QL();
                     } else if (n <= 80) {
-                      b.Pa();
+                      b.QM();
                     } else if (n <= 100) {
-                      b.Pb();
+                      b.QN();
                     }
                     break;
                   case 1: 
                     if (n == 0) {
-                      b.Pc();
+                      b.QO();
                     } else if (n <= 20) {
-                      b.Pd();
+                      b.QP();
                     } else if (n <= 40) {
-                      b.Pe();
+                      b.QQ();
                     } else if (n <= 60) {
-                      b.Pf();
+                      b.QR();
                     } else if (n <= 80) {
-                      b.Pg();
+                      b.QS();
                     } else if (n <= 100) {
-                      b.Ph();
+                      b.QT();
                     }
                     break;
                   case 2: 
                     if (n == 0) {
-                      b.Pi();
+                      b.QU();
                     } else if (n <= 20) {
-                      b.Pj();
+                      b.QV();
                     } else if (n <= 40) {
-                      b.Pk();
+                      b.QW();
                     } else if (n <= 60) {
-                      b.Pl();
+                      b.QX();
                     } else if (n <= 80) {
-                      b.Pm();
+                      b.QY();
                     } else if (n <= 100) {
-                      b.Pn();
+                      b.QZ();
                     }
                     break;
                   case 3: 
                     if (n == 0) {
-                      b.Po();
+                      b.Ra();
                     } else if (n <= 20) {
-                      b.Pp();
+                      b.Rb();
                     } else if (n <= 40) {
-                      b.Pq();
+                      b.Rc();
                     } else if (n <= 60) {
-                      b.Pr();
+                      b.Rd();
                     } else if (n <= 80) {
-                      b.Ps();
+                      b.Re();
                     } else if (n <= 100) {
-                      b.Pt();
+                      b.Rf();
                     }
                     break;
                   }
@@ -689,14 +691,14 @@ public final class a
         arrayOfInteger[paramInt] = Integer.valueOf(0);
         paramInt += 1;
       }
-      this.cXr = arrayOfInteger;
+      this.diJ = arrayOfInteger;
     }
     AppMethodBeat.o(130112);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.audio.c.a.a
  * JD-Core Version:    0.7.0.1
  */

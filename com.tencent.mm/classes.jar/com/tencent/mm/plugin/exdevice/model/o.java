@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.atz;
-import com.tencent.mm.protocal.protobuf.aua;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.axx;
+import com.tencent.mm.protocal.protobuf.axy;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class o
   extends n
   implements k
 {
-  private g callback;
+  private f callback;
   b rr;
   
   public o()
@@ -26,21 +26,21 @@ public final class o
     this.callback = null;
     this.rr = null;
     b.a locala = new b.a();
-    locala.hvt = new atz();
-    locala.hvu = new aua();
+    locala.hNM = new axx();
+    locala.hNN = new axy();
     locala.uri = "/cgi-bin/micromsg-bin/getboundharddevices";
     locala.funcId = 539;
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aAz();
-    ((atz)this.rr.hvr.hvw).Version = 1;
+    this.rr = locala.aDC();
+    ((axx)this.rr.hNK.hNQ).Version = 1;
     AppMethodBeat.o(23391);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(23393);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(23393);
     return i;
@@ -54,7 +54,7 @@ public final class o
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23392);
-    ac.i("MicroMsg.exdevice.NetSceneGetBoundHardDevices", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    ad.i("MicroMsg.exdevice.NetSceneGetBoundHardDevices", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(23392);
   }

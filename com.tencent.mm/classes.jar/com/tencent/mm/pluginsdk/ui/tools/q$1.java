@@ -10,18 +10,18 @@ final class q$1
 {
   q$1(Context paramContext) {}
   
-  public final void bD(String paramString1, String paramString2)
+  public final void bF(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(205632);
+    AppMethodBeat.i(213203);
     Toast.makeText(this.val$context, this.val$context.getString(2131760319, new Object[] { paramString2 }), 1).show();
-    AppMethodBeat.o(205632);
+    AppMethodBeat.o(213203);
   }
   
-  public final void bE(String paramString1, String paramString2)
+  public final void bG(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(205633);
+    AppMethodBeat.i(213204);
     Toast.makeText(this.val$context, this.val$context.getString(2131762779), 1).show();
-    AppMethodBeat.o(205633);
+    AppMethodBeat.o(213204);
   }
 }
 

@@ -4,26 +4,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public long icV;
+  public long iwr;
   
   public i(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(130039);
-    this.icV = MediaRecorder.SilkEncInit(paramInt1, paramInt2, paramInt3, MediaRecorder.icC);
+    this.iwr = MediaRecorder.SilkEncInit(paramInt1, paramInt2, paramInt3, MediaRecorder.ivY);
     AppMethodBeat.o(130039);
   }
   
-  public final int dq(int paramInt1, int paramInt2)
+  public final int ds(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130040);
-    paramInt1 = MediaRecorder.SetVoiceSilkControl(paramInt1, paramInt2, this.icV);
+    paramInt1 = MediaRecorder.SetVoiceSilkControl(paramInt1, paramInt2, this.iwr);
     AppMethodBeat.o(130040);
     return paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelvoice.i
  * JD-Core Version:    0.7.0.1
  */

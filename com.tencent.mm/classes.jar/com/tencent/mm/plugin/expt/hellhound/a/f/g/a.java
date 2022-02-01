@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.g;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ccs;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.chk;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,31 +12,53 @@ import java.util.Map;
 
 public final class a
 {
-  private static final com.tencent.mm.hellhoundlib.a.c qqn;
-  private static volatile boolean qqo;
+  private static final com.tencent.mm.hellhoundlib.a.c qZq;
+  private static volatile boolean qZr;
   
   static
   {
     AppMethodBeat.i(169369);
-    qqn = new com.tencent.mm.hellhoundlib.a.c()
-    {
-      public final void b(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, Object paramAnonymousObject, Object[] paramAnonymousArrayOfObject)
-      {
-        AppMethodBeat.i(184386);
-        com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().l(220, Long.valueOf(System.currentTimeMillis()));
-        AppMethodBeat.o(184386);
-      }
-      
-      public final void f(String paramAnonymousString, Object paramAnonymousObject) {}
-    };
-    qqo = false;
+    qZq = new a.1();
+    qZr = false;
     AppMethodBeat.o(169369);
   }
   
-  public static boolean abG(String paramString)
+  public static void A(String paramString, int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(210496);
+    chk localchk = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cqe();
+    if (localchk == null)
+    {
+      AppMethodBeat.o(210496);
+      return;
+    }
+    ad.i("HABBYGE-MALI.ScanSessionHandler", "ScanSessionHandler, curSession: %s, %s", new Object[] { localchk.sessionId, paramString });
+    if (afu(localchk.sessionId))
+    {
+      String str = com.tencent.mm.plugin.expt.hellhound.core.b.adx(paramString);
+      if (com.tencent.mm.plugin.expt.hellhound.core.b.ads(paramString))
+      {
+        if (!qZr)
+        {
+          qZr = true;
+          c(localchk, str, paramInt, paramLong);
+          AppMethodBeat.o(210496);
+          return;
+        }
+        qZr = false;
+        com.tencent.mm.plugin.expt.hellhound.a.f.b.cpE().a(localchk, paramLong);
+        AppMethodBeat.o(210496);
+        return;
+      }
+      c(localchk, str, paramInt, paramLong);
+    }
+    AppMethodBeat.o(210496);
+  }
+  
+  public static boolean afu(String paramString)
   {
     AppMethodBeat.i(122266);
-    paramString = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aaS(paramString);
+    paramString = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeG(paramString);
     if (("124".equals(paramString)) || ("109".equals(paramString)))
     {
       AppMethodBeat.o(122266);
@@ -46,107 +68,75 @@ public final class a
     return false;
   }
   
-  public static void abH(String paramString)
+  public static void afv(String paramString)
   {
     AppMethodBeat.i(169363);
-    if (!com.tencent.mm.plugin.expt.hellhound.core.b.ZX(paramString))
+    if (!com.tencent.mm.plugin.expt.hellhound.core.b.adK(paramString))
     {
       AppMethodBeat.o(169363);
       return;
     }
-    ac.i("ScanSessionHandler", "HABBYGE-MALI, ScanSessionHandler, startMonitor: %s", new Object[] { paramString });
+    ad.i("HABBYGE-MALI.ScanSessionHandler", "ScanSessionHandler, startMonitor: %s", new Object[] { paramString });
     paramString = new ArrayList();
     paramString.add(Pair.create("goBack", "()V"));
     HashMap localHashMap = new HashMap();
     localHashMap.put("com/tencent/mm/plugin/scanner/ui/BaseScanUI", paramString);
-    com.tencent.mm.hellhoundlib.a.aeC();
-    com.tencent.mm.hellhoundlib.a.a(localHashMap, qqn);
+    com.tencent.mm.hellhoundlib.a.aho();
+    com.tencent.mm.hellhoundlib.a.a(localHashMap, qZq);
     AppMethodBeat.o(169363);
   }
   
-  public static void abI(String paramString)
+  public static void afw(String paramString)
   {
     AppMethodBeat.i(169364);
-    if (!com.tencent.mm.plugin.expt.hellhound.core.b.ZX(paramString))
+    if (!com.tencent.mm.plugin.expt.hellhound.core.b.adK(paramString))
     {
       AppMethodBeat.o(169364);
       return;
     }
-    com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().Cg(221);
+    com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cnO().CR(221);
     AppMethodBeat.o(169364);
   }
   
-  public static void ap(String paramString, long paramLong)
+  private static void c(chk paramchk, String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(169367);
-    ccs localccs = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.ckP();
-    if (localccs == null)
+    AppMethodBeat.i(210497);
+    if ((paramchk == null) || (TextUtils.isEmpty(paramString)))
     {
-      AppMethodBeat.o(169367);
+      AppMethodBeat.o(210497);
       return;
     }
-    ac.i("ScanSessionHandler", "HABBYGE-MALI, ScanSessionHandler, curSession: %s, %s", new Object[] { localccs.sessionId, paramString });
-    if (abG(localccs.sessionId))
-    {
-      String str = com.tencent.mm.plugin.expt.hellhound.core.b.ZK(paramString);
-      if (com.tencent.mm.plugin.expt.hellhound.core.b.ZF(paramString))
-      {
-        if (!qqo)
-        {
-          qqo = true;
-          d(localccs, str, paramLong);
-          AppMethodBeat.o(169367);
-          return;
-        }
-        qqo = false;
-        com.tencent.mm.plugin.expt.hellhound.a.f.b.ckp().a(localccs, paramLong);
-        AppMethodBeat.o(169367);
-        return;
-      }
-      d(localccs, str, paramLong);
+    if (afu(paramchk.sessionId)) {
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.b(paramchk, paramString, paramInt, paramLong);
     }
-    AppMethodBeat.o(169367);
+    AppMethodBeat.o(210497);
   }
   
-  public static void clj()
+  public static void cqA()
   {
     AppMethodBeat.i(169365);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Pair.create("goBack", "()V"));
     HashMap localHashMap = new HashMap();
     localHashMap.put("com/tencent/mm/plugin/scanner/ui/BaseScanUI", localArrayList);
-    com.tencent.mm.hellhoundlib.a.aeC();
-    com.tencent.mm.hellhoundlib.a.b(localHashMap, qqn);
+    com.tencent.mm.hellhoundlib.a.aho();
+    com.tencent.mm.hellhoundlib.a.b(localHashMap, qZq);
     AppMethodBeat.o(169365);
   }
   
-  private static void d(ccs paramccs, String paramString, long paramLong)
-  {
-    AppMethodBeat.i(169368);
-    if ((paramccs == null) || (TextUtils.isEmpty(paramString)))
-    {
-      AppMethodBeat.o(169368);
-      return;
-    }
-    if (abG(paramccs.sessionId)) {
-      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.c(paramccs, paramString, paramLong);
-    }
-    AppMethodBeat.o(169368);
-  }
-  
-  public static void tg(long paramLong)
+  public static void vd(long paramLong)
   {
     AppMethodBeat.i(184387);
-    ccs localccs = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.ckP();
-    if (localccs == null)
+    chk localchk = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cqe();
+    if (localchk == null)
     {
-      ac.e("ScanSessionHandler", "HABBYGE-MALI, baseScanUIGoBack, session End !!");
+      ad.e("HABBYGE-MALI.ScanSessionHandler", "baseScanUIGoBack, session End !!");
       AppMethodBeat.o(184387);
       return;
     }
-    ac.i("ScanSessionHandler", "HABBYGE-MALI, ScanSessionHandler, baseScanUIGoBack: %s", new Object[] { localccs.sessionId });
-    if (abG(localccs.sessionId)) {
-      com.tencent.mm.plugin.expt.hellhound.a.f.b.ckp().a(localccs, paramLong);
+    ad.i("HABBYGE-MALI.ScanSessionHandler", "ScanSessionHandler, baseScanUIGoBack: %s", new Object[] { localchk.sessionId });
+    if (afu(localchk.sessionId)) {
+      com.tencent.mm.plugin.expt.hellhound.a.f.b.cpE().a(localchk, paramLong);
     }
     AppMethodBeat.o(184387);
   }

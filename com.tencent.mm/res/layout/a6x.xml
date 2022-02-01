@@ -22,8 +22,16 @@
         <FrameLayout android:id="@id/hqz" android:background="@drawable/a_c" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <RelativeLayout android:background="@drawable/c5y" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/ce">
                 <TextView android:textStyle="normal" android:id="@id/dvh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hjv" android:layout_centerVertical="true" style="@style/ht" />
-                <TextView android:ellipsize="end" android:id="@id/heh" android:visibility="gone" android:layout_marginLeft="@dimen/c5" android:singleLine="true" android:layout_toLeftOf="@id/hqy" android:layout_centerVertical="true" style="@style/yi" />
+                <TextView android:ellipsize="end" android:id="@id/heh" android:visibility="gone" android:layout_marginLeft="@dimen/c5" android:minWidth="18.0dip" android:singleLine="true" android:layout_toLeftOf="@id/hqy" android:layout_centerVertical="true" style="@style/yi" />
                 <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hqy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:src="@raw/arrow_right" android:tint="@color/BW_50" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </FrameLayout>
+        <FrameLayout android:id="@id/hzl" android:background="@drawable/a_c" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:background="@drawable/c5y" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/ce">
+                <TextView android:textStyle="normal" android:id="@id/hzo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hu7" android:layout_centerVertical="true" style="@style/ht" />
+                <TextView android:ellipsize="end" android:id="@id/hxe" android:visibility="gone" android:layout_marginLeft="@dimen/c5" android:minWidth="18.0dip" android:singleLine="true" android:layout_toLeftOf="@id/hzm" android:layout_centerVertical="true" style="@style/yi" />
+                <TextView android:ellipsize="end" android:id="@id/hx7" android:visibility="gone" android:layout_marginLeft="@dimen/ci" android:singleLine="true" android:layout_toLeftOf="@id/hzm" android:layout_centerVertical="true" style="@style/yj" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hzm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_right" android:tint="@color/BW_50" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ci" android:layout_alignParentEnd="true" />
             </RelativeLayout>
         </FrameLayout>
         <FrameLayout android:id="@id/hry" android:background="@drawable/a_c" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">

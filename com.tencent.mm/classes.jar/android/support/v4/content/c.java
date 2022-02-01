@@ -51,7 +51,7 @@ public class c<D>
   public void deliverResult(D paramD)
   {
     if (this.mListener != null) {
-      this.mListener.l(paramD);
+      this.mListener.m(paramD);
     }
   }
   
@@ -230,7 +230,7 @@ public class c<D>
   
   public static abstract interface b<D>
   {
-    public abstract void l(D paramD);
+    public abstract void m(D paramD);
   }
 }
 

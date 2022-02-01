@@ -2,15 +2,13 @@ package com.tencent.mm.g.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.z;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bo;
-import java.util.List;
 
 public final class rl
   extends b
 {
-  public a dut;
+  public a dGg;
+  public b dGh;
   
   public rl()
   {
@@ -19,25 +17,27 @@ public final class rl
   
   private rl(byte paramByte)
   {
-    AppMethodBeat.i(149887);
-    this.dut = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(149886);
+    this.dGg = new a();
+    this.dGh = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(149887);
+    AppMethodBeat.o(149886);
   }
   
   public static final class a
   {
     public Context context;
-    public List<bo> dsS;
-    public boolean duu = false;
-    public z duv;
-    public String talker;
+  }
+  
+  public static final class b
+  {
+    public boolean dFV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.rl
  * JD-Core Version:    0.7.0.1
  */

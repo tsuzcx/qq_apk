@@ -11,22 +11,23 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 public final class n
   extends RecyclerView.w
 {
-  public final ImageView fBA;
-  public final CheckBox fwP;
-  public final TextView fwQ;
-  public final ImageView fxQ;
-  public final TextView gAI;
-  public final View iCJ;
-  public final ProgressBar iIW;
-  public final LinearLayout opd;
-  public final MMPinProgressBtn oph;
-  public final ImageView opo;
-  public final View opq;
+  public final CheckBox fQc;
+  public final TextView fQd;
+  public final ImageView fRd;
+  public final ImageView fUN;
+  public final TextView gUs;
+  public final View iVT;
+  public final ProgressBar jcf;
+  public final MMPinProgressBtn oSC;
+  public final ImageView oSJ;
+  public final View oSL;
+  public final LinearLayout oSy;
   public final TextView timeTv;
   public final TextView titleTv;
   
@@ -34,53 +35,63 @@ public final class n
   {
     super(paramView);
     AppMethodBeat.i(123305);
-    this.opd = ((LinearLayout)paramView.findViewById(2131298738));
-    this.fxQ = ((ImageView)paramView.findViewById(2131297008));
-    this.fwQ = ((TextView)paramView.findViewById(2131302666));
+    this.oSy = ((LinearLayout)paramView.findViewById(2131298738));
+    this.fRd = ((ImageView)paramView.findViewById(2131297008));
+    this.fQd = ((TextView)paramView.findViewById(2131302666));
     this.timeTv = ((TextView)paramView.findViewById(2131305822));
-    this.fwP = ((CheckBox)paramView.findViewById(2131304502));
-    this.opq = paramView.findViewById(2131304515);
-    this.opo = ((ImageView)paramView.findViewById(2131299520));
-    this.fBA = ((ImageView)paramView.findViewById(2131300891));
+    this.fQc = ((CheckBox)paramView.findViewById(2131304502));
+    this.oSL = paramView.findViewById(2131304515);
+    this.oSJ = ((ImageView)paramView.findViewById(2131299520));
+    this.fUN = ((ImageView)paramView.findViewById(2131300891));
     this.titleTv = ((TextView)paramView.findViewById(2131305948));
-    this.gAI = ((TextView)paramView.findViewById(2131299061));
-    this.oph = ((MMPinProgressBtn)paramView.findViewById(2131299229));
-    this.iIW = ((ProgressBar)paramView.findViewById(2131301506));
-    this.iCJ = paramView.findViewById(2131299154);
-    this.opd.setOnClickListener(new View.OnClickListener()
+    this.gUs = ((TextView)paramView.findViewById(2131299061));
+    this.oSC = ((MMPinProgressBtn)paramView.findViewById(2131299229));
+    this.jcf = ((ProgressBar)paramView.findViewById(2131301506));
+    this.iVT = paramView.findViewById(2131299154);
+    this.oSy.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(123303);
-        a locala = (a)paramAnonymousView.getTag();
-        if (locala == null)
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderList$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        localObject = (a)paramAnonymousView.getTag();
+        if (localObject == null)
         {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderList$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(123303);
           return;
         }
-        locala.a(paramAnonymousView, locala);
+        ((a)localObject).a(paramAnonymousView, (a)localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderList$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(123303);
       }
     });
-    this.opq.setOnClickListener(new View.OnClickListener()
+    this.oSL.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(123304);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderList$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         paramAnonymousView = (a)paramAnonymousView.getTag();
         if (paramAnonymousView == null)
         {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderList$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(123304);
           return;
         }
-        if (!n.this.fwP.isChecked()) {}
+        if (!n.this.fQc.isChecked()) {}
         for (boolean bool = true;; bool = false)
         {
           if (paramAnonymousView.isEnable())
           {
-            n.this.fwP.setChecked(bool);
+            n.this.fQc.setChecked(bool);
             paramAnonymousView.a(bool, paramAnonymousView, n.this);
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/choosemsgfile/logic/model/ViewHolderList$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(123304);
           return;
         }
@@ -99,7 +110,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.n
  * JD-Core Version:    0.7.0.1
  */

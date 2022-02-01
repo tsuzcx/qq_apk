@@ -14,7 +14,7 @@ public abstract interface g
   
   public static abstract interface a
   {
-    public abstract g vc();
+    public abstract g wB();
   }
 }
 

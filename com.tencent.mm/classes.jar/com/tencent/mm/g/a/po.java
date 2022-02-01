@@ -2,12 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class po
   extends b
 {
-  public a dsy;
+  public a dDN;
+  public b dDO;
   
   public po()
   {
@@ -16,16 +16,23 @@ public final class po
   
   private po(byte paramByte)
   {
-    AppMethodBeat.i(118413);
-    this.dsy = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(127289);
+    this.dDN = new a();
+    this.dDO = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(118413);
+    AppMethodBeat.o(127289);
   }
   
   public static final class a
   {
-    public List dsz;
+    public String dDP;
+    public String talker;
+  }
+  
+  public static final class b
+  {
+    public boolean dno = false;
   }
 }
 

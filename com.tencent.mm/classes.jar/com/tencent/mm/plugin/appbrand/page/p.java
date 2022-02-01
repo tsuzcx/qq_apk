@@ -7,19 +7,19 @@ public final class p
 {
   private static final int CTRL_INDEX = 156;
   private static final String NAME = "onTapStatusBar";
-  private static p lAv;
+  private static p lZT;
   
   static
   {
     AppMethodBeat.i(135003);
-    lAv = new p();
+    lZT = new p();
     AppMethodBeat.o(135003);
   }
   
   public static void h(aa paramaa)
   {
     AppMethodBeat.i(135002);
-    lAv.g(paramaa).beN();
+    lZT.g(paramaa).bir();
     AppMethodBeat.o(135002);
   }
 }

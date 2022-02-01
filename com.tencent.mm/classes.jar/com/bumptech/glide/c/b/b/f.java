@@ -16,7 +16,7 @@ public final class f
   {
     super(new d.a()
     {
-      public final File oK()
+      public final File pc()
       {
         AppMethodBeat.i(77154);
         File localFile = f.this.getCacheDir();

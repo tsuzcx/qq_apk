@@ -3,18 +3,17 @@ package com.tencent.mm.plugin.webview.luggage.b;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.luggage.d.c;
-import com.tencent.luggage.d.k;
-import com.tencent.luggage.d.n;
+import com.tencent.luggage.d.d;
+import com.tencent.luggage.d.p;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.fav.ui.e;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.luggage.FavUrlTask;
-import com.tencent.mm.plugin.webview.luggage.jsapi.ax;
-import com.tencent.mm.plugin.webview.luggage.p.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.webview.luggage.jsapi.ba;
+import com.tencent.mm.plugin.webview.luggage.q.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.widget.snackbar.a.b;
 import org.json.JSONObject;
@@ -22,15 +21,15 @@ import org.json.JSONObject;
 public final class f
   extends a
 {
-  private a.b sXH;
+  private a.b tUH;
   
   public f()
   {
     super(3);
     AppMethodBeat.i(78691);
-    this.sXH = new a.b()
+    this.tUH = new a.b()
     {
-      public final void beL()
+      public final void bip()
       {
         AppMethodBeat.i(78690);
         FavUrlTask localFavUrlTask = new FavUrlTask();
@@ -42,42 +41,42 @@ public final class f
     AppMethodBeat.o(78691);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.f paramf)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78693);
     Bundle localBundle = new Bundle();
-    localBundle.putLong("msg_id", paramf.mParams.getLong("msg_id", -9223372036854775808L));
-    localBundle.putString("sns_local_id", paramf.mParams.getString("sns_local_id"));
-    localBundle.putInt("news_svr_id", paramf.mParams.getInt("news_svr_id", 0));
-    localBundle.putString("news_svr_tweetid", paramf.mParams.getString("news_svr_tweetid"));
-    localBundle.putInt("message_index", paramf.mParams.getInt("message_index", 0));
-    Object localObject = paramf.getUrl();
-    String str = paramf.bLL();
+    localBundle.putLong("msg_id", paramg.mParams.getLong("msg_id", -9223372036854775808L));
+    localBundle.putString("sns_local_id", paramg.mParams.getString("sns_local_id"));
+    localBundle.putInt("news_svr_id", paramg.mParams.getInt("news_svr_id", 0));
+    localBundle.putString("news_svr_tweetid", paramg.mParams.getString("news_svr_tweetid"));
+    localBundle.putInt("message_index", paramg.mParams.getInt("message_index", 0));
+    Object localObject = paramg.getUrl();
+    String str = paramg.bQm();
     localBundle.putString("rawUrl", str);
-    if ((!bs.isNullOrNil(str)) && (str.endsWith("#rd")))
+    if ((!bt.isNullOrNil(str)) && (str.endsWith("#rd")))
     {
       str = str.substring(0, str.length() - 3);
-      if ((!bs.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
+      if ((!bt.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
       {
         localBundle.putString("rawUrl", (String)localObject);
         localBundle.putLong("msg_id", -9223372036854775808L);
       }
-      localBundle.putString("preChatName", paramf.mParams.getString("preChatName"));
-      localBundle.putInt("preMsgIndex", paramf.mParams.getInt("preMsgIndex", 0));
-      localBundle.putString("prePublishId", paramf.mParams.getString("prePublishId"));
-      localBundle.putString("preUsername", paramf.mParams.getString("preUsername"));
+      localBundle.putString("preChatName", paramg.mParams.getString("preChatName"));
+      localBundle.putInt("preMsgIndex", paramg.mParams.getInt("preMsgIndex", 0));
+      localBundle.putString("prePublishId", paramg.mParams.getString("prePublishId"));
+      localBundle.putString("preUsername", paramg.mParams.getString("preUsername"));
       localObject = new FavUrlTask();
       ((FavUrlTask)localObject).actionType = 1;
-      ((FavUrlTask)localObject).dmf = localBundle;
+      ((FavUrlTask)localObject).dxT = localBundle;
       AppBrandMainProcessService.b((MainProcessTask)localObject);
-      if (!((FavUrlTask)localObject).CkX) {
+      if (!((FavUrlTask)localObject).DOc) {
         break label367;
       }
-      ax.UT(1);
-      paramf.eAt().aBA("sendAppMessage");
-      paramf.bXF.a(new c()
+      ba.WJ(1);
+      paramg.ePj().aGY("sendAppMessage");
+      paramg.chX.a(new d()
       {
-        public final JSONObject Aq()
+        public final JSONObject BO()
         {
           return null;
         }
@@ -90,10 +89,10 @@ public final class f
     }
     for (;;)
     {
-      h.wUl.dB(982, 2);
+      com.tencent.mm.plugin.report.service.g.yhR.dD(982, 2);
       AppMethodBeat.o(78693);
       return;
-      if ((bs.isNullOrNil((String)localObject)) || (((String)localObject).startsWith(str))) {
+      if ((bt.isNullOrNil((String)localObject)) || (((String)localObject).startsWith(str))) {
         break;
       }
       localBundle.putString("rawUrl", (String)localObject);
@@ -101,14 +100,14 @@ public final class f
       localBundle.putString("sns_local_id", "");
       break;
       label367:
-      e.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.sXH);
+      e.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.tUH);
     }
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.f paramf, l paraml)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
   {
     AppMethodBeat.i(78692);
-    if (!paramf.mParams.getBoolean("is_favorite_item", false)) {
+    if (!paramg.mParams.getBoolean("is_favorite_item", false)) {
       paraml.a(3, paramContext.getString(2131761941), 2131689808);
     }
     AppMethodBeat.o(78692);

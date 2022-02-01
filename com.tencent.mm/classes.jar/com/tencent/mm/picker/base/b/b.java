@@ -2,7 +2,7 @@ package com.tencent.mm.picker.base.b;
 
 public abstract interface b
 {
-  public abstract void qm(int paramInt);
+  public abstract void onItemSelected(int paramInt);
 }
 
 

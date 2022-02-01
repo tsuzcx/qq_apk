@@ -1,0 +1,66 @@
+package kotlinx.a.c.a;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.p;
+import d.l;
+import java.util.List;
+import kotlinx.a.c.b;
+import kotlinx.a.c.f;
+import kotlinx.a.n;
+
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/serialization/json/internal/JsonTreeListInput;", "Lkotlinx/serialization/json/internal/AbstractJsonTreeInput;", "json", "Lkotlinx/serialization/json/Json;", "value", "Lkotlinx/serialization/json/JsonArray;", "(Lkotlinx/serialization/json/Json;Lkotlinx/serialization/json/JsonArray;)V", "currentIndex", "", "size", "getValue", "()Lkotlinx/serialization/json/JsonArray;", "currentElement", "Lkotlinx/serialization/json/JsonElement;", "tag", "", "decodeElementIndex", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "elementName", "desc", "index", "kotlinx-serialization-runtime"})
+final class i
+  extends a
+{
+  private final b NOm;
+  private int currentIndex;
+  private final int size;
+  
+  public i(kotlinx.a.c.a parama, b paramb)
+  {
+    super(parama, (f)paramb, (byte)0);
+    AppMethodBeat.i(191357);
+    this.NOm = paramb;
+    this.size = this.NOm.NNm.size();
+    this.currentIndex = -1;
+    AppMethodBeat.o(191357);
+  }
+  
+  public final int b(n paramn)
+  {
+    AppMethodBeat.i(191356);
+    p.h(paramn, "descriptor");
+    if (this.currentIndex < this.size - 1)
+    {
+      this.currentIndex += 1;
+      int i = this.currentIndex;
+      AppMethodBeat.o(191356);
+      return i;
+    }
+    AppMethodBeat.o(191356);
+    return -1;
+  }
+  
+  protected final f bdo(String paramString)
+  {
+    AppMethodBeat.i(191355);
+    p.h(paramString, "tag");
+    paramString = this.NOm.alL(Integer.parseInt(paramString));
+    AppMethodBeat.o(191355);
+    return paramString;
+  }
+  
+  public final String m(n paramn, int paramInt)
+  {
+    AppMethodBeat.i(191354);
+    p.h(paramn, "desc");
+    AppMethodBeat.o(191354);
+    return String.valueOf(paramInt);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     kotlinx.a.c.a.i
+ * JD-Core Version:    0.7.0.1
+ */

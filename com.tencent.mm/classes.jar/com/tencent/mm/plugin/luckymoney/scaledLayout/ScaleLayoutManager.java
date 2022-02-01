@@ -7,33 +7,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ScaleLayoutManager
   extends ViewPagerLayoutManager
 {
-  public float aNl;
-  private int fUm;
-  private float uow;
-  private float uox;
-  private float uoy;
+  public float aXF;
+  private int gnO;
+  private float vra;
+  private float vrb;
+  private float vrc;
   
   private ScaleLayoutManager(int paramInt1, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt2, float paramFloat4, int paramInt3, int paramInt4, boolean paramBoolean)
   {
     super(paramInt2, paramBoolean);
     AppMethodBeat.i(65337);
-    G(null);
-    if (this.uoR != paramInt4)
+    F(null);
+    if (this.vrv != paramInt4)
     {
-      this.uoR = paramInt4;
+      this.vrv = paramInt4;
       removeAllViews();
     }
-    G(null);
-    if (this.uoP != paramInt3)
+    F(null);
+    if (this.vrt != paramInt3)
     {
-      this.uoP = paramInt3;
+      this.vrt = paramInt3;
       removeAllViews();
     }
-    this.fUm = paramInt1;
-    this.aNl = paramFloat1;
-    this.uow = paramFloat4;
-    this.uox = paramFloat2;
-    this.uoy = paramFloat3;
+    this.gnO = paramInt1;
+    this.aXF = paramFloat1;
+    this.vra = paramFloat4;
+    this.vrb = paramFloat2;
+    this.vrc = paramFloat3;
     AppMethodBeat.o(65337);
   }
   
@@ -51,34 +51,34 @@ public class ScaleLayoutManager
     AppMethodBeat.o(65336);
   }
   
-  protected final float cZh()
+  protected final float dit()
   {
-    return this.fUm + this.uoE;
+    return this.gnO + this.vri;
   }
   
-  protected final float cZi()
+  protected final float diu()
   {
-    if (this.uow == 0.0F) {
+    if (this.vra == 0.0F) {
       return 3.4028235E+38F;
     }
-    return 1.0F / this.uow;
+    return 1.0F / this.vra;
   }
   
   protected final void q(View paramView, float paramFloat)
   {
     AppMethodBeat.i(65338);
-    float f2 = Math.abs(this.uoG + paramFloat - this.uoG);
+    float f2 = Math.abs(this.vrk + paramFloat - this.vrk);
     float f1 = f2;
-    if (f2 - this.uoE > 0.0F) {
-      f1 = this.uoE;
+    if (f2 - this.vri > 0.0F) {
+      f1 = this.vri;
     }
-    f1 = 1.0F - f1 / this.uoE * (1.0F - this.aNl);
+    f1 = 1.0F - f1 / this.vri * (1.0F - this.aXF);
     paramView.setScaleX(f1);
     paramView.setScaleY(f1);
     f1 = Math.abs(paramFloat);
-    paramFloat = (this.uoy - this.uox) / this.uoL * f1 + this.uox;
-    if (f1 >= this.uoL) {
-      paramFloat = this.uoy;
+    paramFloat = (this.vrc - this.vrb) / this.vrp * f1 + this.vrb;
+    if (f1 >= this.vrp) {
+      paramFloat = this.vrc;
     }
     paramView.setAlpha(paramFloat);
     AppMethodBeat.o(65338);
@@ -86,30 +86,30 @@ public class ScaleLayoutManager
   
   public static final class a
   {
-    private static float uoA = 1.0F;
-    private static float uoz = 1.0F;
-    private float aNl;
-    private boolean arF;
+    private static float vrd = 1.0F;
+    private static float vre = 1.0F;
+    private float aXF;
+    private boolean atw;
     private Context context;
-    private int fUm = 0;
+    private int gnO = 0;
     private int orientation;
-    private int uoB;
-    private int uoC;
-    private float uow;
-    private float uox;
-    private float uoy;
+    private float vra;
+    private float vrb;
+    private float vrc;
+    private int vrf;
+    private int vrg;
     
     public a(Context paramContext)
     {
       this.context = paramContext;
       this.orientation = 0;
-      this.aNl = 0.8F;
-      this.uow = 1.0F;
-      this.uox = uoA;
-      this.uoy = uoz;
-      this.arF = false;
-      this.uoC = 2147483647;
-      this.uoB = -1;
+      this.aXF = 0.8F;
+      this.vra = 1.0F;
+      this.vrb = vre;
+      this.vrc = vrd;
+      this.atw = false;
+      this.vrg = 2147483647;
+      this.vrf = -1;
     }
   }
 }

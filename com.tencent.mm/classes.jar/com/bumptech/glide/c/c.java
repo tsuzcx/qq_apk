@@ -7,10 +7,10 @@ public enum c
   static
   {
     AppMethodBeat.i(76841);
-    aDa = new c("SOURCE", 0);
-    aDb = new c("TRANSFORMED", 1);
-    aDc = new c("NONE", 2);
-    aDd = new c[] { aDa, aDb, aDc };
+    aER = new c("SOURCE", 0);
+    aES = new c("TRANSFORMED", 1);
+    aET = new c("NONE", 2);
+    aEU = new c[] { aER, aES, aET };
     AppMethodBeat.o(76841);
   }
   

@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class oj
   extends b
 {
-  public a dqS;
-  public b dqT;
+  public a dCl;
   
   public oj()
   {
@@ -16,22 +15,25 @@ public final class oj
   
   private oj(byte paramByte)
   {
-    AppMethodBeat.i(130032);
-    this.dqS = new a();
-    this.dqT = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(146134);
+    this.dCl = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(130032);
+    AppMethodBeat.o(146134);
   }
   
   public static final class a
   {
-    public int type;
-  }
-  
-  public static final class b
-  {
-    public boolean dqR = false;
+    public int action;
+    public String appId;
+    public boolean dCm;
+    public int duration;
+    public int errCode;
+    public String errMsg;
+    public String filePath;
+    public int fileSize;
+    public byte[] frameBuffer;
+    public String state;
   }
 }
 

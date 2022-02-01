@@ -9,11 +9,11 @@ import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.network.b;
 import com.tencent.mm.network.v;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.j;
 
 public final class y$1
   implements Runnable
@@ -23,21 +23,21 @@ public final class y$1
   public final void run()
   {
     AppMethodBeat.i(19909);
-    long l = bs.eWj();
+    long l = bt.flT();
     Process.setThreadPriority(10);
-    Object localObject1 = this.fnr;
-    int i = i.cGY;
-    String str = q.XX();
-    int j = d.DIc;
-    Object localObject2 = ab.eUO();
-    int k = ((y)localObject1).context.getSharedPreferences(ai.eUX(), 0).getInt("last_reportdevice_channel", 0);
-    int m = ((y)localObject1).context.getSharedPreferences(ai.eUX(), 0).getInt("last_reportdevice_clientversion", 0);
+    Object localObject1 = this.fFz;
+    int i = j.cSc;
+    String str = q.aay();
+    int j = d.Fnj;
+    Object localObject2 = ac.fks();
+    int k = ((y)localObject1).context.getSharedPreferences(aj.fkC(), 0).getInt("last_reportdevice_channel", 0);
+    int m = ((y)localObject1).context.getSharedPreferences(aj.fkC(), 0).getInt("last_reportdevice_clientversion", 0);
     if ((k == 0) && (m == 0)) {}
     for (i = 0;; i = 1) {
-      for (str = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/reportdevice?channel=" + i.cGY + "&deviceid=" + str + "&clientversion=" + j + "&platform=" + "0" + "&lang=" + (String)localObject2 + "&installtype=" + i;; str = null)
+      for (str = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/reportdevice?channel=" + j.cSc + "&deviceid=" + str + "&clientversion=" + j + "&platform=" + "0" + "&lang=" + (String)localObject2 + "&installtype=" + i;; str = null)
       {
-        ac.i("MicroMsg.StartupReport", "tryReport thread:%s pri:%d  Url[%s] ", new Object[] { Thread.currentThread().getName(), Integer.valueOf(Process.getThreadPriority(Process.myTid())), str });
-        if (!bs.isNullOrNil(str)) {
+        ad.i("MicroMsg.StartupReport", "tryReport thread:%s pri:%d  Url[%s] ", new Object[] { Thread.currentThread().getName(), Integer.valueOf(Process.getThreadPriority(Process.myTid())), str });
+        if (!bt.isNullOrNil(str)) {
           break label236;
         }
         AppMethodBeat.o(19909);
@@ -53,7 +53,7 @@ public final class y$1
       {
         label236:
         localObject1 = b.a(str, null);
-        ac.printErrStackTrace("MicroMsg.StartupReport", localException1, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.StartupReport", localException1, "", new Object[0]);
       }
       catch (Exception localException1)
       {
@@ -65,14 +65,14 @@ public final class y$1
           i = ((v)localObject1).getResponseCode();
           if (i == 200)
           {
-            localObject2 = this.fnr;
-            j = i.cGY;
-            k = d.DIc;
-            localObject2 = ((y)localObject2).context.getSharedPreferences(ai.eUX(), 0);
+            localObject2 = this.fFz;
+            j = j.cSc;
+            k = d.Fnj;
+            localObject2 = ((y)localObject2).context.getSharedPreferences(aj.fkC(), 0);
             ((SharedPreferences)localObject2).edit().putInt("last_reportdevice_channel", j).commit();
             ((SharedPreferences)localObject2).edit().putInt("last_reportdevice_clientversion", k).commit();
           }
-          ac.d("MicroMsg.StartupReport", "report FIN time:%d resp:%d url[%s]", new Object[] { Long.valueOf(bs.Ap(l)), Integer.valueOf(i), str });
+          ad.d("MicroMsg.StartupReport", "report FIN time:%d resp:%d url[%s]", new Object[] { Long.valueOf(bt.Df(l)), Integer.valueOf(i), str });
           if (localObject1 != null) {
             ((v)localObject1).disconnect();
           }
@@ -87,7 +87,7 @@ public final class y$1
         localObject1 = null;
       }
       label404:
-      ac.e("MicroMsg.StartupReport", "tryReport error url[%s]", new Object[] { str });
+      ad.e("MicroMsg.StartupReport", "tryReport error url[%s]", new Object[] { str });
     }
   }
 }

@@ -6,23 +6,23 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.widget.MMEditText;
 import java.util.LinkedList;
 
 public class MMTagPanelScrollView
   extends ScrollView
 {
-  private Runnable HAh;
-  private a HAi;
-  private int HAj;
-  private int gNV;
+  private Runnable JnY;
+  private a JnZ;
+  private int Joa;
+  private int targetHeight;
   
   public MMTagPanelScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142218);
-    this.HAh = new Runnable()
+    this.JnY = new Runnable()
     {
       public final void run()
       {
@@ -31,9 +31,9 @@ public class MMTagPanelScrollView
         AppMethodBeat.o(142215);
       }
     };
-    this.HAi = new a((byte)0);
-    this.gNV = 0;
-    this.HAj = 2;
+    this.JnZ = new a((byte)0);
+    this.targetHeight = 0;
+    this.Joa = 2;
     AppMethodBeat.o(142218);
   }
   
@@ -41,7 +41,7 @@ public class MMTagPanelScrollView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142217);
-    this.HAh = new Runnable()
+    this.JnY = new Runnable()
     {
       public final void run()
       {
@@ -50,9 +50,9 @@ public class MMTagPanelScrollView
         AppMethodBeat.o(142215);
       }
     };
-    this.HAi = new a((byte)0);
-    this.gNV = 0;
-    this.HAj = 2;
+    this.JnZ = new a((byte)0);
+    this.targetHeight = 0;
+    this.Joa = 2;
     AppMethodBeat.o(142217);
   }
   
@@ -76,36 +76,36 @@ public class MMTagPanelScrollView
     if ((getChildAt(0) instanceof MMTagPanel))
     {
       MMTagPanel localMMTagPanel = (MMTagPanel)getChildAt(0);
-      if (localMMTagPanel.HzS == null) {}
+      if (localMMTagPanel.JnJ == null) {}
       int i;
       int j;
-      for (boolean bool = false;; bool = localMMTagPanel.HzS.isFocused())
+      for (boolean bool = false;; bool = localMMTagPanel.JnJ.isFocused())
       {
-        if (localMMTagPanel.getLineCount() == this.HAj) {
-          this.gNV = (localMMTagPanel.getMeasuredHeight() + getResources().getDimensionPixelOffset(2131165573));
+        if (localMMTagPanel.getLineCount() == this.Joa) {
+          this.targetHeight = (localMMTagPanel.getMeasuredHeight() + getResources().getDimensionPixelOffset(2131165573));
         }
-        if (localMMTagPanel.getLineCount() < this.HAj) {
+        if (localMMTagPanel.getLineCount() < this.Joa) {
           break label277;
         }
         i = View.MeasureSpec.getSize(paramInt1);
-        paramInt1 = this.HAj;
-        j = Math.max(0, Math.min(localMMTagPanel.HuP.size(), paramInt1));
+        paramInt1 = this.Joa;
+        j = Math.max(0, Math.min(localMMTagPanel.JiF.size(), paramInt1));
         paramInt2 = localMMTagPanel.getPaddingTop();
         paramInt1 = 0;
         while (paramInt1 < j - 1)
         {
-          paramInt2 += ((Integer)localMMTagPanel.HuP.get(paramInt1)).intValue() + localMMTagPanel.HuO;
+          paramInt2 += ((Integer)localMMTagPanel.JiF.get(paramInt1)).intValue() + localMMTagPanel.JiE;
           paramInt1 += 1;
         }
       }
-      paramInt1 = Math.max(((Integer)localMMTagPanel.HuP.get(j - 1)).intValue() + paramInt2 + localMMTagPanel.getPaddingBottom(), this.gNV);
-      ac.d("MicroMsg.FavTagPanelScrollView", "height %d", new Object[] { Integer.valueOf(paramInt1) });
+      paramInt1 = Math.max(((Integer)localMMTagPanel.JiF.get(j - 1)).intValue() + paramInt2 + localMMTagPanel.getPaddingBottom(), this.targetHeight);
+      ad.d("MicroMsg.FavTagPanelScrollView", "height %d", new Object[] { Integer.valueOf(paramInt1) });
       setMeasuredDimension(i, paramInt1);
       if (bool)
       {
-        this.HAi.HAl = localMMTagPanel;
-        removeCallbacks(this.HAi);
-        post(this.HAi);
+        this.JnZ.Joc = localMMTagPanel;
+        removeCallbacks(this.JnZ);
+        post(this.JnZ);
       }
     }
     label277:
@@ -118,21 +118,21 @@ public class MMTagPanelScrollView
     if (paramInt <= 0) {
       i = 1;
     }
-    this.HAj = i;
+    this.Joa = i;
   }
   
   static final class a
     implements Runnable
   {
-    public MMTagPanel HAl;
+    public MMTagPanel Joc;
     
     public final void run()
     {
       AppMethodBeat.i(142216);
-      if (this.HAl != null) {
-        this.HAl.fiL();
+      if (this.Joc != null) {
+        this.Joc.fza();
       }
-      this.HAl = null;
+      this.Joc = null;
       AppMethodBeat.o(142216);
     }
   }

@@ -6,33 +6,34 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.plugin.account.friend.a.ak;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.h;
 
 public final class g
-  implements com.tencent.mm.ak.g
+  implements f
 {
   private Context context;
-  private ProgressDialog huQ;
-  a iNC;
-  private boolean iND = true;
-  String iNE = "";
+  private ProgressDialog hNi;
+  a jgL;
+  private boolean jgM = true;
+  String jgN = "";
   
   public g(Context paramContext, a parama)
   {
     this.context = paramContext;
-    this.iNC = parama;
-    this.iND = true;
+    this.jgL = parama;
+    this.jgM = true;
   }
   
   public g(Context paramContext, a parama, byte paramByte)
   {
     this.context = paramContext;
-    this.iNC = parama;
-    this.iND = false;
+    this.jgL = parama;
+    this.jgM = false;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
@@ -43,55 +44,55 @@ public final class g
       AppMethodBeat.o(131311);
       return;
     }
-    if (this.huQ != null)
+    if (this.hNi != null)
     {
-      this.huQ.dismiss();
-      this.huQ = null;
+      this.hNi.dismiss();
+      this.hNi = null;
     }
-    com.tencent.mm.kernel.g.agi().b(116, this);
+    com.tencent.mm.kernel.g.aiU().b(116, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      ac.i("MicroMsg.SendInviteEmail", "dealSendInviteEmailSuccess");
-      if (this.iND)
+      ad.i("MicroMsg.SendInviteEmail", "dealSendInviteEmailSuccess");
+      if (this.jgM)
       {
         h.a(this.context, 2131760375, 2131755906, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(131309);
-            g.this.iNC.g(true, g.this.iNE);
+            g.this.jgL.h(true, g.this.jgN);
             AppMethodBeat.o(131309);
           }
         });
         AppMethodBeat.o(131311);
         return;
       }
-      this.iNC.g(true, this.iNE);
+      this.jgL.h(true, this.jgN);
       AppMethodBeat.o(131311);
       return;
     }
-    ac.i("MicroMsg.SendInviteEmail", "dealSendInviteEmailFail");
-    this.iNC.g(false, this.iNE);
+    ad.i("MicroMsg.SendInviteEmail", "dealSendInviteEmailFail");
+    this.jgL.h(false, this.jgN);
     AppMethodBeat.o(131311);
   }
   
   public final void r(final int[] paramArrayOfInt)
   {
     AppMethodBeat.i(131310);
-    com.tencent.mm.kernel.g.agi().a(116, this);
+    com.tencent.mm.kernel.g.aiU().a(116, this);
     paramArrayOfInt = new ak(paramArrayOfInt);
-    com.tencent.mm.kernel.g.agi().a(paramArrayOfInt, 0);
-    if (this.iND)
+    com.tencent.mm.kernel.g.aiU().a(paramArrayOfInt, 0);
+    if (this.jgM)
     {
       Context localContext = this.context;
       this.context.getString(2131760378);
-      this.huQ = h.b(localContext, this.context.getString(2131760376), true, new DialogInterface.OnCancelListener()
+      this.hNi = h.b(localContext, this.context.getString(2131760376), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(131308);
-          com.tencent.mm.kernel.g.agi().a(paramArrayOfInt);
-          g.this.iNC.g(false, g.this.iNE);
+          com.tencent.mm.kernel.g.aiU().a(paramArrayOfInt);
+          g.this.jgL.h(false, g.this.jgN);
           AppMethodBeat.o(131308);
         }
       });
@@ -101,7 +102,7 @@ public final class g
   
   public static abstract interface a
   {
-    public abstract void g(boolean paramBoolean, String paramString);
+    public abstract void h(boolean paramBoolean, String paramString);
   }
 }
 

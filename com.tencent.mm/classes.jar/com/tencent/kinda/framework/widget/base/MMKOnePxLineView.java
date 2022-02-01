@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.kinda.gen.KOnePxLineView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class MMKOnePxLineView
   extends MMKView<LinearLayout>
@@ -20,16 +20,16 @@ public class MMKOnePxLineView
   private void updateOrientation()
   {
     AppMethodBeat.i(19092);
-    ac.d("MMKOnePxLineView", "updateOrientation，更新分隔线方向前，本控件宽度：" + this.mOnePxViewWidth + "，高度：" + this.mOnePxViewHeight);
+    ad.d("MMKOnePxLineView", "updateOrientation，更新分隔线方向前，本控件宽度：" + this.mOnePxViewWidth + "，高度：" + this.mOnePxViewHeight);
     if (this.mOnePxViewWidth >= this.mOnePxViewHeight) {
-      ac.d("MMKOnePxLineView", "updateOrientation，分隔线为横向");
+      ad.d("MMKOnePxLineView", "updateOrientation，分隔线为横向");
     }
     for (LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 1);; localLayoutParams = new LinearLayout.LayoutParams(1, -1))
     {
       this.mOnePxView.setLayoutParams(localLayoutParams);
       AppMethodBeat.o(19092);
       return;
-      ac.d("MMKOnePxLineView", "updateOrientation，分隔线为纵向");
+      ad.d("MMKOnePxLineView", "updateOrientation，分隔线为纵向");
     }
   }
   
@@ -66,7 +66,7 @@ public class MMKOnePxLineView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKOnePxLineView
  * JD-Core Version:    0.7.0.1
  */

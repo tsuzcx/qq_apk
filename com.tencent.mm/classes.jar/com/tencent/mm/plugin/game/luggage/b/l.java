@@ -1,66 +1,83 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.d.f;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.plugin.wepkg.model.h;
-import com.tencent.mm.plugin.wepkg.model.h.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.plugin.lite.a.a;
+import com.tencent.mm.plugin.lite.logic.c;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class l
-  extends bn<f>
+  extends br<com.tencent.mm.plugin.game.luggage.f.g>
 {
-  public final void a(Context paramContext, String paramString, final bn.a parama)
+  public final void a(Context paramContext, String paramString, bq.a parama)
   {
-    AppMethodBeat.i(83072);
-    ac.i("MicroMsg.JsApiGetLocalWePkgInfo", "invokeInMM");
-    ap.f(new Runnable()
+    AppMethodBeat.i(211606);
+    boolean bool2 = ((a)com.tencent.mm.kernel.g.ab(a.class)).dfC();
+    ad.i("MicroMsg.JsApiGetLiteAppSwitch", "isLiteAppCanOpen value: %s", new Object[] { Boolean.valueOf(bool2) });
+    paramContext = new JSONObject();
+    try
     {
-      public final void run()
-      {
-        AppMethodBeat.i(83071);
-        h.a(new h.a()
-        {
-          public final void ar(JSONObject paramAnonymous2JSONObject)
-          {
-            AppMethodBeat.i(83070);
-            JSONObject localJSONObject = new JSONObject();
-            try
-            {
-              localJSONObject.put("wepkg_info", paramAnonymous2JSONObject);
-              label21:
-              l.1.this.oKM.f(null, localJSONObject);
-              AppMethodBeat.o(83070);
-              return;
-            }
-            catch (JSONException paramAnonymous2JSONObject)
-            {
-              break label21;
-            }
-          }
-        });
-        AppMethodBeat.o(83071);
+      if (bu.flW()) {
+        break label228;
       }
-    });
-    AppMethodBeat.o(83072);
+      if (!bool2) {
+        break label197;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        StringBuilder localStringBuilder;
+        label197:
+        ad.printErrStackTrace("MicroMsg.JsApiGetLiteAppSwitch", paramString, "", new Object[0]);
+        continue;
+        continue;
+        boolean bool1 = true;
+      }
+    }
+    c.dfF();
+    paramString = c.aoy("wxalited0d6cb88ac866bcdf3b738f1f3df8872");
+    com.tencent.mm.plugin.report.service.g.yhR.n(11293L, 80L, 1L);
+    if (bool1)
+    {
+      com.tencent.mm.plugin.report.service.g.yhR.n(1293L, 81L, 1L);
+      if (paramString == null)
+      {
+        com.tencent.mm.plugin.report.service.g.yhR.n(1293L, 82L, 1L);
+        bool1 = false;
+        localStringBuilder = new StringBuilder("debug:false, coolassist:").append(bu.flW()).append(", enable:").append(bool2).append(",info:");
+        if (paramString == null) {}
+        for (bool2 = true;; bool2 = false)
+        {
+          ad.i("MicroMsg.JsApiGetLiteAppSwitch", bool2);
+          paramContext.put("switch", bool1);
+          parama.f(null, paramContext);
+          AppMethodBeat.o(211606);
+          return;
+          bool1 = false;
+          break;
+        }
+      }
+    }
   }
   
-  public final void b(a.a parama) {}
+  public final void b(b<com.tencent.mm.plugin.game.luggage.f.g>.a paramb) {}
   
-  public final int bYk()
+  public final int ccO()
   {
     return 1;
   }
   
   public final String name()
   {
-    return "getLocalWePkgInfo";
+    return "getLiteAppSwitch";
   }
 }
 

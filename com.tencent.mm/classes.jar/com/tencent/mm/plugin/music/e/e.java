@@ -5,31 +5,31 @@ import java.util.List;
 public abstract interface e
   extends com.tencent.mm.plugin.music.f.c.a
 {
-  public abstract void Ho(int paramInt);
+  public abstract void IK(int paramInt);
   
-  public abstract void JK(int paramInt);
+  public abstract void Lm(int paramInt);
   
   public abstract void a(com.tencent.mm.plugin.music.model.e.a parama, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract com.tencent.mm.plugin.music.model.e.a anD(String paramString);
+  public abstract com.tencent.mm.plugin.music.model.e.a asC(String paramString);
   
-  public abstract com.tencent.mm.plugin.music.model.e.a diD();
+  public abstract com.tencent.mm.plugin.music.model.e.a dsP();
   
-  public abstract boolean diE();
+  public abstract boolean dsQ();
   
-  public abstract List<String> diF();
+  public abstract List<String> dsR();
   
-  public abstract void diG();
+  public abstract void dsS();
   
-  public abstract void diH();
+  public abstract void dsT();
   
-  public abstract void diI();
+  public abstract void dsU();
   
-  public abstract int diJ();
+  public abstract int dsV();
   
-  public abstract void diK();
+  public abstract void dsW();
   
-  public abstract boolean diL();
+  public abstract boolean dsX();
   
   public abstract int getMode();
 }

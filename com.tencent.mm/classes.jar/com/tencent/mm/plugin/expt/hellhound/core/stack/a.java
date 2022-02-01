@@ -9,12 +9,12 @@ public enum a
   static
   {
     AppMethodBeat.i(121877);
-    qjd = new a("CREATE", 0, 0);
-    qje = new a("RESUME", 1, 1);
-    qjf = new a("PAUSE", 2, 2);
-    qjg = new a("STOP", 3, 3);
-    qjh = new a("DESTROY", 4, 4);
-    qji = new a[] { qjd, qje, qjf, qjg, qjh };
+    qRd = new a("CREATE", 0, 0);
+    qRe = new a("RESUME", 1, 1);
+    qRf = new a("PAUSE", 2, 2);
+    qRg = new a("STOP", 3, 3);
+    qRh = new a("DESTROY", 4, 4);
+    qRi = new a[] { qRd, qRe, qRf, qRg, qRh };
     AppMethodBeat.o(121877);
   }
   

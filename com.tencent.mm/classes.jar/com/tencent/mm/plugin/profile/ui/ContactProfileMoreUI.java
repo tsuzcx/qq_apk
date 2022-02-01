@@ -8,11 +8,11 @@ import android.os.Looper;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aj;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ak;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.v;
@@ -22,14 +22,14 @@ import com.tencent.mm.plugin.fts.a.e;
 import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.profile.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -42,27 +42,27 @@ public class ContactProfileMoreUI
   extends MMPreference
   implements l
 {
-  private String foE;
-  x ftP;
-  private String fvZ;
-  boolean fxr = false;
-  private f lZC;
-  private ai piT;
-  private b vHP;
+  private String fGM;
+  ab fLO;
+  private String fPi;
+  boolean fQE = false;
+  private f mzx;
+  private am pMt;
+  private b wOW;
   
   public final void b(com.tencent.mm.plugin.fts.a.a.k paramk)
   {
     AppMethodBeat.i(27041);
-    Preference localPreference = this.lZC.aPN("common_chatroom");
-    if (paramk.bPH == 0)
+    Preference localPreference = this.mzx.aVD("common_chatroom");
+    if (paramk.bZU == 0)
     {
-      int i = ((Integer)((m)paramk.syK.get(0)).userData).intValue();
+      int i = ((Integer)((m)paramk.tvl.get(0)).userData).intValue();
       localPreference.setSummary(getString(2131757637, new Object[] { Integer.valueOf(i) }));
       localPreference.getExtras().putInt("count", i);
     }
     for (;;)
     {
-      this.lZC.notifyDataSetChanged();
+      this.mzx.notifyDataSetChanged();
       AppMethodBeat.o(27041);
       return;
       localPreference.setSummary(getString(2131757637, new Object[] { Integer.valueOf(0) }));
@@ -89,64 +89,64 @@ public class ContactProfileMoreUI
         return true;
       }
     });
-    this.fxr = getIntent().getBooleanExtra("Is_RoomOwner", false);
-    this.fvZ = getIntent().getStringExtra("Contact_ChatRoomId");
-    this.foE = getIntent().getStringExtra("Contact_User");
-    az.ayM();
-    this.piT = c.awB().aNt(this.foE);
-    if (!bs.isNullOrNil(this.fvZ))
+    this.fQE = getIntent().getBooleanExtra("Is_RoomOwner", false);
+    this.fPi = getIntent().getStringExtra("Contact_ChatRoomId");
+    this.fGM = getIntent().getStringExtra("Contact_User");
+    ba.aBQ();
+    this.pMt = c.azp().Bf(this.fGM);
+    if (!bt.isNullOrNil(this.fPi))
     {
-      az.ayM();
-      this.ftP = c.awK().xN(this.fvZ);
+      ba.aBQ();
+      this.fLO = c.azz().AN(this.fPi);
     }
-    this.vHP = new b(this, this.piT);
+    this.wOW = new b(this, this.pMt);
     f localf = getPreferenceScreen();
-    this.lZC = localf;
-    paramBundle = this.piT;
-    Object localObject1 = localf.aPN("common_chatroom");
+    this.mzx = localf;
+    paramBundle = this.pMt;
+    Object localObject1 = localf.aVD("common_chatroom");
     int i;
     label202:
     Object localObject4;
-    if ((ai.aNc(paramBundle.field_username)) || (paramBundle.field_username.equals(u.axw())))
+    if ((am.aSQ(paramBundle.field_username)) || (paramBundle.field_username.equals(u.aAm())))
     {
       i = 1;
       if (i == 0) {
         break label786;
       }
-      localf.cK("common_chatroom", true);
-      paramBundle = this.lZC.aPN("friend_source");
-      switch (this.piT.getSource())
+      localf.cP("common_chatroom", true);
+      paramBundle = this.mzx.aVD("friend_source");
+      switch (this.pMt.getSource())
       {
       default: 
         paramBundle.setSummary(null);
         label445:
-        if (bs.aj(paramBundle.getSummary())) {
-          localf.cK("friend_source", true);
+        if (bt.ai(paramBundle.getSummary())) {
+          localf.cP("friend_source", true);
         }
-        localObject1 = localf.aPN("district");
-        localObject4 = new StringBuilder().append(v.wm(this.piT.getProvince()));
-        if (bs.isNullOrNil(this.piT.getCity()))
+        localObject1 = localf.aVD("district");
+        localObject4 = new StringBuilder().append(v.zh(this.pMt.getProvince()));
+        if (bt.isNullOrNil(this.pMt.getCity()))
         {
           paramBundle = "";
           label515:
           ((Preference)localObject1).setSummary(paramBundle);
-          if (bs.aj(((Preference)localObject1).getSummary())) {
-            localf.cK("district", true);
+          if (bt.ai(((Preference)localObject1).getSummary())) {
+            localf.cP("district", true);
           }
-          paramBundle = localf.aPN("signature");
-          paramBundle.setSummary(com.tencent.mm.pluginsdk.ui.span.k.c(this, this.piT.signature));
-          if (bs.aj(paramBundle.getSummary())) {
-            localf.cK("district", true);
+          paramBundle = localf.aVD("signature");
+          paramBundle.setSummary(com.tencent.mm.pluginsdk.ui.span.k.c(this, this.pMt.signature));
+          if (bt.ai(paramBundle.getSummary())) {
+            localf.cP("district", true);
           }
-          paramBundle = this.piT;
-          localObject4 = localf.aPN("weishop");
-          if (!u.axw().equals(paramBundle.field_username)) {
+          paramBundle = this.pMt;
+          localObject4 = localf.aVD("weishop");
+          if (!u.aAm().equals(paramBundle.field_username)) {
             break label1329;
           }
-          az.ayM();
-          paramBundle = (String)c.agA().get(ah.a.GGT, null);
+          ba.aBQ();
+          paramBundle = (String)c.ajl().get(al.a.Itl, null);
           label644:
-          if (bs.isNullOrNil(paramBundle)) {
+          if (bt.isNullOrNil(paramBundle)) {
             break label1378;
           }
         }
@@ -169,18 +169,18 @@ public class ContactProfileMoreUI
       try
       {
         localObject1 = ((JSONObject)localObject1).optString("ShopName");
-        if (!bs.isNullOrNil(paramBundle))
+        if (!bt.isNullOrNil(paramBundle))
         {
           ((Preference)localObject4).setSummary((CharSequence)localObject1);
-          ((Preference)localObject4).omy = getResources().getColor(2131100763);
+          ((Preference)localObject4).oPT = getResources().getColor(2131100763);
           ((Preference)localObject4).getExtras().putString("shopUrl", paramBundle);
         }
-        if (!bs.aj(((Preference)localObject4).getSummary())) {
+        if (!bt.ai(((Preference)localObject4).getSummary())) {
           break label1359;
         }
-        localf.cK("weishop", true);
-        localf.cK("contact_info_category_1", true);
-        ((CheckBoxPreference)localf.aPN("add_to_black")).mF = this.piT.aaH();
+        localf.cP("weishop", true);
+        localf.cP("contact_info_category_1", true);
+        ((CheckBoxPreference)localf.aVD("add_to_black")).oB = this.pMt.adk();
         AppMethodBeat.o(27039);
         return;
       }
@@ -191,18 +191,18 @@ public class ContactProfileMoreUI
       }
       i = 0;
       break;
-      if (paramBundle.exL == 1)
+      if (paramBundle.ePk == 1)
       {
         ((Preference)localObject1).setTitle(2131757634);
         localObject1 = new j();
         ((j)localObject1).query = paramBundle.field_username;
-        ((j)localObject1).syI = this;
-        ((j)localObject1).handler = new ao(Looper.getMainLooper());
-        ((j)localObject1).jwR = 5;
+        ((j)localObject1).tvj = this;
+        ((j)localObject1).handler = new ap(Looper.getMainLooper());
+        ((j)localObject1).jQN = 5;
         ((n)g.ad(n.class)).search(2, (j)localObject1);
         break label202;
       }
-      if (paramBundle.exL == 2)
+      if (paramBundle.ePk == 2)
       {
         ((Preference)localObject1).setTitle(2131757633);
       }
@@ -212,35 +212,35 @@ public class ContactProfileMoreUI
         continue;
         paramBundle.setSummary(2131759467);
         break label445;
-        if (this.piT.aaU() > 1000000)
+        if (this.pMt.adx() > 1000000)
         {
           paramBundle.setSummary(2131757862);
           break label445;
         }
         paramBundle.setSummary(2131757861);
         break label445;
-        if (this.piT.aaU() > 1000000)
+        if (this.pMt.adx() > 1000000)
         {
           paramBundle.setSummary(2131757865);
           break label445;
         }
         paramBundle.setSummary(2131757864);
         break label445;
-        if (this.piT.aaU() > 1000000)
+        if (this.pMt.adx() > 1000000)
         {
           paramBundle.setSummary(2131757842);
           break label445;
         }
         paramBundle.setSummary(2131757839);
         break label445;
-        if (this.piT.aaU() > 1000000)
+        if (this.pMt.adx() > 1000000)
         {
           paramBundle.setSummary(2131757850);
           break label445;
         }
         paramBundle.setSummary(2131757849);
         break label445;
-        if (this.piT.aaU() > 1000000)
+        if (this.pMt.adx() > 1000000)
         {
           paramBundle.setSummary(2131757855);
           break label445;
@@ -249,14 +249,14 @@ public class ContactProfileMoreUI
         break label445;
         paramBundle.setSummary(2131757857);
         break label445;
-        if (this.piT.aaU() > 1000000)
+        if (this.pMt.adx() > 1000000)
         {
           paramBundle.setSummary(2131757846);
           break label445;
         }
         paramBundle.setSummary(2131757845);
         break label445;
-        if (this.piT.aaU() > 1000000)
+        if (this.pMt.adx() > 1000000)
         {
           paramBundle.setSummary(2131757868);
           break label445;
@@ -269,44 +269,44 @@ public class ContactProfileMoreUI
         break label445;
         paramBundle.setSummary(2131757852);
         break label445;
-        if (this.piT.aaU() > 1000000)
+        if (this.pMt.adx() > 1000000)
         {
           paramBundle.setSummary(2131757871);
           break label445;
         }
         paramBundle.setSummary(2131757870);
         break label445;
-        if (this.piT.aaU() > 1000000)
+        if (this.pMt.adx() > 1000000)
         {
           paramBundle.setSummary(2131757871);
           break label445;
         }
         paramBundle.setSummary(2131757870);
         break label445;
-        if (this.piT.aaU() > 1000000)
+        if (this.pMt.adx() > 1000000)
         {
           paramBundle.setSummary(2131757837);
           break label445;
         }
         paramBundle.setSummary(2131757836);
         break label445;
-        if (this.piT.aaU() > 1000000)
+        if (this.pMt.adx() > 1000000)
         {
           paramBundle.setSummary(2131757859);
           break label445;
         }
         paramBundle.setSummary(2131757858);
         break label445;
-        paramBundle = "  " + this.piT.getCity();
+        paramBundle = "  " + this.pMt.getCity();
         break label515;
-        paramBundle = paramBundle.eyk;
+        paramBundle = paramBundle.ePI;
         break label644;
         label1340:
-        ac.printErrStackTrace("MicroMsg.ContactProfileMoreUI", localJSONException1, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ContactProfileMoreUI", localJSONException1, "", new Object[0]);
         localObject2 = null;
         continue;
         label1359:
-        localf.cK("contact_info_category_1", false);
+        localf.cP("contact_info_category_1", false);
         continue;
         label1378:
         paramBundle = null;
@@ -319,7 +319,7 @@ public class ContactProfileMoreUI
   {
     AppMethodBeat.i(27040);
     super.onDestroy();
-    this.vHP.destroy();
+    this.wOW.destroy();
     AppMethodBeat.o(27040);
   }
   
@@ -329,14 +329,14 @@ public class ContactProfileMoreUI
     if (paramPreference.mKey.equals("common_chatroom"))
     {
       int i = paramPreference.getExtras().getInt("count", 0);
-      e.Fz(i);
+      e.GO(i);
       if (i > 0)
       {
         paramf = new Intent(this, CommonChatroomInfoUI.class);
-        paramf.putExtra("Select_Talker_Name", this.piT.field_username);
-        paramf = new com.tencent.mm.hellhoundlib.b.a().ba(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.aeD(), "com/tencent/mm/plugin/profile/ui/ContactProfileMoreUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.lR(0));
+        paramf.putExtra("Select_Talker_Name", this.pMt.field_username);
+        paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahp(), "com/tencent/mm/plugin/profile/ui/ContactProfileMoreUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/ContactProfileMoreUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       AppMethodBeat.o(27038);
@@ -346,7 +346,7 @@ public class ContactProfileMoreUI
     {
       paramf = new Intent();
       paramf.putExtra("rawUrl", paramPreference.getExtras().getString("shopUrl"));
-      paramf.putExtra("geta8key_username", u.axw());
+      paramf.putExtra("geta8key_username", u.aAm());
       d.b(this, "webview", ".ui.tools.WebViewUI", paramf);
     }
     for (;;)
@@ -354,13 +354,13 @@ public class ContactProfileMoreUI
       AppMethodBeat.o(27038);
       return false;
       if (paramPreference.mKey.equals("send_to_friend")) {
-        this.vHP.dpJ();
+        this.wOW.dAm();
       } else if (paramPreference.mKey.equals("add_to_black")) {
-        this.vHP.oP(false);
+        this.wOW.po(false);
       } else if (paramPreference.mKey.equals("expose")) {
-        this.vHP.dpM();
+        this.wOW.dAp();
       } else if (paramPreference.mKey.equals("delete_contact")) {
-        this.vHP.dpI();
+        this.wOW.dAl();
       }
     }
   }

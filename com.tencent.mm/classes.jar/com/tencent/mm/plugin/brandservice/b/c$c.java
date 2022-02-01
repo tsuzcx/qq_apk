@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ax;
 import d.g.a.a;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
 final class c$c
-  extends d.g.b.l
-  implements a<aw>
+  extends q
+  implements a<ax>
 {
-  public static final c nve;
+  public static final c nWC;
   
   static
   {
     AppMethodBeat.i(175466);
-    nve = new c();
+    nWC = new c();
     AppMethodBeat.o(175466);
   }
   

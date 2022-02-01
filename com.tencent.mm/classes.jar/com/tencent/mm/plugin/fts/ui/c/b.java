@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.fts.ui.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.c;
 import com.tencent.mm.plugin.fts.a.d.a.a;
-import com.tencent.mm.plugin.fts.ui.k;
-import com.tencent.mm.protocal.protobuf.dfn;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.fts.ui.l;
+import com.tencent.mm.protocal.protobuf.dla;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,50 +14,50 @@ public final class b
 {
   public int favCount;
   public String query;
-  public long sCr;
-  public int sFA;
-  public int sFB;
-  public int sFC;
-  public int sFD;
-  public int sFE;
-  public int sFF;
-  public int sFG;
-  public int sFH;
-  public int sFI;
-  public int sFJ;
-  public int sFK;
-  public int sFL;
-  public int sFM;
-  public int sFN;
-  public int sFO;
-  public int sFP;
-  public int sFQ;
-  public String sFR;
-  public boolean sFS;
-  public int sFT;
-  public List<Integer> sFU;
-  public List<c> sFV;
-  public long sFw;
-  public long sFy;
-  public int sFz;
+  public int tCA;
+  public int tCB;
+  public int tCC;
+  public int tCD;
+  public int tCE;
+  public int tCF;
+  public int tCG;
+  public int tCH;
+  public int tCI;
+  public int tCJ;
+  public int tCK;
+  public String tCL;
+  public boolean tCM;
+  public int tCN;
+  public List<Integer> tCO;
+  public List<c> tCP;
+  public long tCq;
+  public long tCs;
+  public int tCt;
+  public int tCu;
+  public int tCv;
+  public int tCw;
+  public int tCx;
+  public int tCy;
+  public int tCz;
+  public long tyS;
   
   public b()
   {
     AppMethodBeat.i(112145);
-    this.sFR = "";
-    this.sFy = 0L;
-    this.sFS = false;
-    this.sFT = 0;
-    this.sFU = new ArrayList();
-    this.sFV = new ArrayList();
+    this.tCL = "";
+    this.tCs = 0L;
+    this.tCM = false;
+    this.tCN = 0;
+    this.tCO = new ArrayList();
+    this.tCP = new ArrayList();
     AppMethodBeat.o(112145);
   }
   
-  public final void FJ(int paramInt)
+  public final void GY(int paramInt)
   {
     AppMethodBeat.i(112151);
-    ac.i("MicroMsg.FTS.FTSSearchStaticsObj", "addClickItemType %s", new Object[] { Integer.valueOf(paramInt) });
-    this.sFU.add(Integer.valueOf(paramInt));
+    ad.i("MicroMsg.FTS.FTSSearchStaticsObj", "addClickItemType %s", new Object[] { Integer.valueOf(paramInt) });
+    this.tCO.add(Integer.valueOf(paramInt));
     AppMethodBeat.o(112151);
   }
   
@@ -66,14 +66,14 @@ public final class b
     AppMethodBeat.i(112149);
     c localc = new c();
     localc.position = paramInt1;
-    localc.dpE = 27;
-    localc.sxH = (System.currentTimeMillis() - this.sCr);
-    localc.sxI = (paramLong - this.sCr);
-    localc.sxJ = paramInt2;
-    localc.sxK = paramString2;
-    localc.dpt = paramString1;
-    if (!this.sFV.contains(localc)) {
-      this.sFV.add(localc);
+    localc.dBr = 27;
+    localc.tui = (System.currentTimeMillis() - this.tyS);
+    localc.tuj = (paramLong - this.tyS);
+    localc.tuk = paramInt2;
+    localc.tul = paramString2;
+    localc.dBg = paramString1;
+    if (!this.tCP.contains(localc)) {
+      this.tCP.add(localc);
     }
     AppMethodBeat.o(112149);
   }
@@ -81,40 +81,40 @@ public final class b
   public final void b(a parama)
   {
     AppMethodBeat.i(112150);
-    FJ(k.a(parama));
+    GY(l.a(parama));
     AppMethodBeat.o(112150);
   }
   
-  public final int cLr()
+  public final int cTK()
   {
-    int i = this.sFQ;
-    this.sFQ = 2;
+    int i = this.tCK;
+    this.tCK = 2;
     return i;
   }
   
-  public final void cLs()
+  public final void cTL()
   {
     AppMethodBeat.i(112147);
     c localc = new c();
-    if ((this.sFL > 0) || (this.sFM > 0)) {}
-    for (localc.position = (this.sFP + 2);; localc.position = (this.sFP + 1))
+    if ((this.tCF > 0) || (this.tCG > 0)) {}
+    for (localc.position = (this.tCJ + 2);; localc.position = (this.tCJ + 1))
     {
-      localc.dpt = "SOSBar";
-      localc.sxI = (System.currentTimeMillis() - this.sCr);
-      localc.dpE = 18;
-      if (!this.sFV.contains(localc)) {
-        this.sFV.add(localc);
+      localc.dBg = "SOSBar";
+      localc.tuj = (System.currentTimeMillis() - this.tyS);
+      localc.dBr = 18;
+      if (!this.tCP.contains(localc)) {
+        this.tCP.add(localc);
       }
       AppMethodBeat.o(112147);
       return;
     }
   }
   
-  public final String cLt()
+  public final String cTM()
   {
     AppMethodBeat.i(112152);
     Object localObject = new StringBuffer();
-    Iterator localIterator = this.sFU.iterator();
+    Iterator localIterator = this.tCO.iterator();
     while (localIterator.hasNext())
     {
       ((StringBuffer)localObject).append(((Integer)localIterator.next()).intValue());
@@ -125,23 +125,23 @@ public final class b
     return localObject;
   }
   
-  public final String cLu()
+  public final String cTN()
   {
     AppMethodBeat.i(112153);
     Object localObject = new StringBuffer();
-    Iterator localIterator = this.sFV.iterator();
+    Iterator localIterator = this.tCP.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if (localc.dpE != 0)
+      if (localc.dBr != 0)
       {
         ((StringBuffer)localObject).append(localc.position + localc.index);
         ((StringBuffer)localObject).append("#");
-        ((StringBuffer)localObject).append(localc.dpE);
+        ((StringBuffer)localObject).append(localc.dBr);
         ((StringBuffer)localObject).append("#");
-        ((StringBuffer)localObject).append(localc.sxH);
+        ((StringBuffer)localObject).append(localc.tui);
         ((StringBuffer)localObject).append("#");
-        ((StringBuffer)localObject).append(localc.sxI);
+        ((StringBuffer)localObject).append(localc.tuj);
         ((StringBuffer)localObject).append("|");
       }
     }
@@ -150,21 +150,21 @@ public final class b
     return localObject;
   }
   
-  public final String cLv()
+  public final String cTO()
   {
     AppMethodBeat.i(112154);
     Object localObject = new StringBuffer();
-    Iterator localIterator = this.sFV.iterator();
+    Iterator localIterator = this.tCP.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if ((localc.dpE != 0) && (localc.sxJ != 0))
+      if ((localc.dBr != 0) && (localc.tuk != 0))
       {
         ((StringBuffer)localObject).append(localc.position);
         ((StringBuffer)localObject).append("#");
-        ((StringBuffer)localObject).append(localc.dpE);
+        ((StringBuffer)localObject).append(localc.dBr);
         ((StringBuffer)localObject).append("#");
-        ((StringBuffer)localObject).append(localc.sxJ);
+        ((StringBuffer)localObject).append(localc.tuk);
         ((StringBuffer)localObject).append("|");
       }
     }
@@ -173,16 +173,16 @@ public final class b
     return localObject;
   }
   
-  public final String cLw()
+  public final String cTP()
   {
     AppMethodBeat.i(112155);
-    Object localObject = this.sFV.iterator();
+    Object localObject = this.tCP.iterator();
     while (((Iterator)localObject).hasNext())
     {
       c localc = (c)((Iterator)localObject).next();
-      if (localc.dpE == 27)
+      if (localc.dBr == 27)
       {
-        localObject = localc.sxK;
+        localObject = localc.tul;
         AppMethodBeat.o(112155);
         return localObject;
       }
@@ -191,57 +191,57 @@ public final class b
     return "";
   }
   
-  public final String cLx()
+  public final String cTQ()
   {
     AppMethodBeat.i(112156);
     Object localObject = new StringBuffer();
-    if (this.sFz > 0)
+    if (this.tCt > 0)
     {
       ((StringBuffer)localObject).append(2);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFz);
+      ((StringBuffer)localObject).append(this.tCt);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFA > 0)
+    if (this.tCu > 0)
     {
       ((StringBuffer)localObject).append(3);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFA);
+      ((StringBuffer)localObject).append(this.tCu);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFB > 0)
+    if (this.tCv > 0)
     {
       ((StringBuffer)localObject).append(4);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFB);
+      ((StringBuffer)localObject).append(this.tCv);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFC > 0)
+    if (this.tCw > 0)
     {
       ((StringBuffer)localObject).append(5);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFC);
+      ((StringBuffer)localObject).append(this.tCw);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFD > 0)
+    if (this.tCx > 0)
     {
       ((StringBuffer)localObject).append(11);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFD);
+      ((StringBuffer)localObject).append(this.tCx);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFE > 0)
+    if (this.tCy > 0)
     {
       ((StringBuffer)localObject).append(10);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFE);
+      ((StringBuffer)localObject).append(this.tCy);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFG > 0)
+    if (this.tCA > 0)
     {
       ((StringBuffer)localObject).append(19);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFG);
+      ((StringBuffer)localObject).append(this.tCA);
       ((StringBuffer)localObject).append("|");
     }
     if (this.favCount > 0)
@@ -251,60 +251,60 @@ public final class b
       ((StringBuffer)localObject).append(this.favCount);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFH > 0)
+    if (this.tCB > 0)
     {
       ((StringBuffer)localObject).append(25);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFH);
+      ((StringBuffer)localObject).append(this.tCB);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFI > 0)
+    if (this.tCC > 0)
     {
       ((StringBuffer)localObject).append(26);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFI);
+      ((StringBuffer)localObject).append(this.tCC);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFJ > 0)
+    if (this.tCD > 0)
     {
       ((StringBuffer)localObject).append(28);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFJ);
+      ((StringBuffer)localObject).append(this.tCD);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFK > 0)
+    if (this.tCE > 0)
     {
       ((StringBuffer)localObject).append(27);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFK);
+      ((StringBuffer)localObject).append(this.tCE);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFO > 0)
+    if (this.tCI > 0)
     {
       ((StringBuffer)localObject).append(23);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFO);
+      ((StringBuffer)localObject).append(this.tCI);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFN > 0)
+    if (this.tCH > 0)
     {
       ((StringBuffer)localObject).append(18);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFN);
+      ((StringBuffer)localObject).append(this.tCH);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFL > 0)
+    if (this.tCF > 0)
     {
       ((StringBuffer)localObject).append(8);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFL);
+      ((StringBuffer)localObject).append(this.tCF);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.sFM > 0)
+    if (this.tCG > 0)
     {
       ((StringBuffer)localObject).append(9);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.sFM);
+      ((StringBuffer)localObject).append(this.tCG);
       ((StringBuffer)localObject).append("|");
     }
     localObject = ((StringBuffer)localObject).toString();
@@ -312,11 +312,11 @@ public final class b
     return localObject;
   }
   
-  public final void dM(List<dfn> paramList)
+  public final void dW(List<dla> paramList)
   {
-    AppMethodBeat.i(209772);
-    if ((this.sFL > 0) || (this.sFM > 0)) {}
-    for (int i = this.sFP + 3;; i = this.sFP + 2)
+    AppMethodBeat.i(219349);
+    if ((this.tCF > 0) || (this.tCG > 0)) {}
+    for (int i = this.tCJ + 3;; i = this.tCJ + 2)
     {
       int j = 0;
       while (j < paramList.size())
@@ -324,41 +324,41 @@ public final class b
         c localc = new c();
         localc.index = j;
         localc.position = i;
-        localc.dpt = ("SOSRelevant-" + ((dfn)paramList.get(j)).FrN);
-        localc.sxI = (System.currentTimeMillis() - this.sCr);
-        localc.dpE = 23;
-        if (!this.sFV.contains(localc)) {
-          this.sFV.add(localc);
+        localc.dBg = ("SOSRelevant-" + ((dla)paramList.get(j)).HbR);
+        localc.tuj = (System.currentTimeMillis() - this.tyS);
+        localc.dBr = 23;
+        if (!this.tCP.contains(localc)) {
+          this.tCP.add(localc);
         }
         j += 1;
       }
     }
-    AppMethodBeat.o(209772);
+    AppMethodBeat.o(219349);
   }
   
-  public final void fQ(int paramInt1, int paramInt2)
+  public final void gg(int paramInt1, int paramInt2)
   {
-    this.sFJ = paramInt1;
-    this.sFK = paramInt2;
+    this.tCD = paramInt1;
+    this.tCE = paramInt2;
   }
   
-  public final void fR(int paramInt1, int paramInt2)
+  public final void gh(int paramInt1, int paramInt2)
   {
-    this.sFO = paramInt1;
-    this.sFN = paramInt2;
+    this.tCI = paramInt1;
+    this.tCH = paramInt2;
   }
   
-  public final void o(long paramLong, String paramString)
+  public final void p(long paramLong, String paramString)
   {
     AppMethodBeat.i(176914);
     c localc = new c();
     localc.position = 1;
-    localc.dpE = 28;
-    localc.sxH = (System.currentTimeMillis() - this.sCr);
-    localc.sxI = (paramLong - this.sCr);
-    localc.dpt = paramString;
-    if (!this.sFV.contains(localc)) {
-      this.sFV.add(localc);
+    localc.dBr = 28;
+    localc.tui = (System.currentTimeMillis() - this.tyS);
+    localc.tuj = (paramLong - this.tyS);
+    localc.dBg = paramString;
+    if (!this.tCP.contains(localc)) {
+      this.tCP.add(localc);
     }
     AppMethodBeat.o(176914);
   }
@@ -367,34 +367,34 @@ public final class b
   {
     AppMethodBeat.i(112146);
     this.query = "";
-    this.sFw = 0L;
-    this.sFz = 0;
-    this.sFA = 0;
-    this.sFB = 0;
-    this.sFC = 0;
-    this.sFD = 0;
-    this.sFE = 0;
+    this.tCq = 0L;
+    this.tCt = 0;
+    this.tCu = 0;
+    this.tCv = 0;
+    this.tCw = 0;
+    this.tCx = 0;
+    this.tCy = 0;
     this.favCount = 0;
-    this.sFF = 0;
-    this.sFG = 0;
-    this.sFy = 0L;
-    this.sFH = 0;
-    this.sFI = 0;
-    this.sFJ = 0;
-    this.sFL = 0;
-    this.sFM = 0;
-    this.sFK = 0;
-    this.sFN = 0;
-    this.sFO = 0;
-    this.sFP = 0;
-    this.sFV.clear();
-    this.sFU.clear();
+    this.tCz = 0;
+    this.tCA = 0;
+    this.tCs = 0L;
+    this.tCB = 0;
+    this.tCC = 0;
+    this.tCD = 0;
+    this.tCF = 0;
+    this.tCG = 0;
+    this.tCE = 0;
+    this.tCH = 0;
+    this.tCI = 0;
+    this.tCJ = 0;
+    this.tCP.clear();
+    this.tCO.clear();
     AppMethodBeat.o(112146);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.c.b
  * JD-Core Version:    0.7.0.1
  */

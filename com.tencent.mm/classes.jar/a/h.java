@@ -11,18 +11,18 @@ import java.util.concurrent.ExecutorService;
 
 public final class h<TResult>
 {
-  private static volatile a aAa;
-  private static h<?> aAf;
-  private static h<Boolean> aAg;
-  private static h<Boolean> aAh;
-  private static h<?> aAi;
-  public static final ExecutorService azX;
-  public static final Executor azY;
-  public static final Executor azZ;
-  private boolean aAb;
-  private boolean aAc;
-  private j aAd;
-  private List<f<TResult, Void>> aAe;
+  public static final ExecutorService aBO;
+  public static final Executor aBP;
+  public static final Executor aBQ;
+  private static volatile a aBR;
+  private static h<?> aBW;
+  private static h<Boolean> aBX;
+  private static h<Boolean> aBY;
+  private static h<?> aBZ;
+  private boolean aBS;
+  private boolean aBT;
+  private j aBU;
+  private List<f<TResult, Void>> aBV;
   private boolean cancelled;
   private Exception error;
   private final Object lock;
@@ -31,13 +31,13 @@ public final class h<TResult>
   static
   {
     AppMethodBeat.i(53004);
-    azX = b.ni();
-    azY = b.nj();
-    azZ = a.nh();
-    aAf = new h(null);
-    aAg = new h(Boolean.TRUE);
-    aAh = new h(Boolean.FALSE);
-    aAi = new h((byte)0);
+    aBO = b.nA();
+    aBP = b.nB();
+    aBQ = a.nz();
+    aBW = new h(null);
+    aBX = new h(Boolean.TRUE);
+    aBY = new h(Boolean.FALSE);
+    aBZ = new h((byte)0);
     AppMethodBeat.o(53004);
   }
   
@@ -45,7 +45,7 @@ public final class h<TResult>
   {
     AppMethodBeat.i(52991);
     this.lock = new Object();
-    this.aAe = new ArrayList();
+    this.aBV = new ArrayList();
     AppMethodBeat.o(52991);
   }
   
@@ -53,8 +53,8 @@ public final class h<TResult>
   {
     AppMethodBeat.i(52993);
     this.lock = new Object();
-    this.aAe = new ArrayList();
-    np();
+    this.aBV = new ArrayList();
+    nH();
     AppMethodBeat.o(52993);
   }
   
@@ -62,7 +62,7 @@ public final class h<TResult>
   {
     AppMethodBeat.i(52992);
     this.lock = new Object();
-    this.aAe = new ArrayList();
+    this.aBV = new ArrayList();
     trySetResult(paramTResult);
     AppMethodBeat.o(52992);
   }
@@ -70,7 +70,7 @@ public final class h<TResult>
   public static <TResult> h<TResult> a(Callable<TResult> paramCallable)
   {
     AppMethodBeat.i(52995);
-    paramCallable = a(paramCallable, azX);
+    paramCallable = a(paramCallable, aBO);
     AppMethodBeat.o(52995);
     return paramCallable;
   }
@@ -86,32 +86,32 @@ public final class h<TResult>
         public final void run()
         {
           AppMethodBeat.i(52990);
-          if ((this.aAm != null) && (this.aAm.azS.isCancellationRequested()))
+          if ((this.aCd != null) && (this.aCd.aBJ.isCancellationRequested()))
           {
-            this.aAj.nq();
+            this.aCa.nI();
             AppMethodBeat.o(52990);
             return;
           }
           try
           {
-            this.aAj.setResult(paramCallable.call());
+            this.aCa.setResult(paramCallable.call());
             AppMethodBeat.o(52990);
             return;
           }
           catch (CancellationException localCancellationException)
           {
-            this.aAj.nq();
+            this.aCa.nI();
             AppMethodBeat.o(52990);
             return;
           }
           catch (Exception localException)
           {
-            this.aAj.c(localException);
+            this.aCa.c(localException);
             AppMethodBeat.o(52990);
           }
         }
       });
-      paramCallable = locali.aAp;
+      paramCallable = locali.aCg;
       AppMethodBeat.o(52996);
       return paramCallable;
     }
@@ -134,9 +134,9 @@ public final class h<TResult>
         public final void run()
         {
           AppMethodBeat.i(52989);
-          if ((this.aAm != null) && (this.aAm.azS.isCancellationRequested()))
+          if ((this.aCd != null) && (this.aCd.aBJ.isCancellationRequested()))
           {
-            parami.nq();
+            parami.nI();
             AppMethodBeat.o(52989);
             return;
           }
@@ -149,7 +149,7 @@ public final class h<TResult>
           }
           catch (CancellationException localCancellationException)
           {
-            parami.nq();
+            parami.nI();
             AppMethodBeat.o(52989);
             return;
           }
@@ -174,17 +174,17 @@ public final class h<TResult>
   {
     synchronized (this.lock)
     {
-      boolean bool = this.aAb;
+      boolean bool = this.aBS;
       return bool;
     }
   }
   
-  public static a nm()
+  public static a nE()
   {
-    return aAa;
+    return aBR;
   }
   
-  private void no()
+  private void nG()
   {
     AppMethodBeat.i(52999);
     for (;;)
@@ -192,7 +192,7 @@ public final class h<TResult>
       f localf;
       synchronized (this.lock)
       {
-        Iterator localIterator = this.aAe.iterator();
+        Iterator localIterator = this.aBV.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
@@ -217,7 +217,7 @@ public final class h<TResult>
         throw localRuntimeException2;
       }
     }
-    this.aAe = null;
+    this.aBV = null;
     AppMethodBeat.o(52999);
   }
   
@@ -229,12 +229,12 @@ public final class h<TResult>
     {
       boolean bool = isCompleted();
       if (!bool) {
-        this.aAe.add(new f() {});
+        this.aBV.add(new f() {});
       }
       if (bool) {
         a(locali, paramf, this, paramExecutor, null);
       }
-      paramf = locali.aAp;
+      paramf = locali.aCg;
       AppMethodBeat.o(52997);
       return paramf;
     }
@@ -245,18 +245,18 @@ public final class h<TResult>
     AppMethodBeat.i(53002);
     synchronized (this.lock)
     {
-      if (this.aAb)
+      if (this.aBS)
       {
         AppMethodBeat.o(53002);
         return false;
       }
-      this.aAb = true;
+      this.aBS = true;
       this.error = paramException;
-      this.aAc = false;
+      this.aBT = false;
       this.lock.notifyAll();
-      no();
-      if ((!this.aAc) && (aAa != null)) {
-        this.aAd = new j(this);
+      nG();
+      if ((!this.aBT) && (aBR != null)) {
+        this.aBU = new j(this);
       }
       AppMethodBeat.o(53002);
       return true;
@@ -269,11 +269,11 @@ public final class h<TResult>
     {
       if (this.error != null)
       {
-        this.aAc = true;
-        if (this.aAd != null)
+        this.aBT = true;
+        if (this.aBU != null)
         {
-          this.aAd.aAp = null;
-          this.aAd = null;
+          this.aBU.aCg = null;
+          this.aBU = null;
         }
       }
       Exception localException = this.error;
@@ -281,7 +281,7 @@ public final class h<TResult>
     }
   }
   
-  public final boolean nn()
+  public final boolean nF()
   {
     AppMethodBeat.i(52994);
     synchronized (this.lock)
@@ -296,20 +296,20 @@ public final class h<TResult>
     }
   }
   
-  final boolean np()
+  final boolean nH()
   {
     AppMethodBeat.i(53000);
     synchronized (this.lock)
     {
-      if (this.aAb)
+      if (this.aBS)
       {
         AppMethodBeat.o(53000);
         return false;
       }
-      this.aAb = true;
+      this.aBS = true;
       this.cancelled = true;
       this.lock.notifyAll();
-      no();
+      nG();
       AppMethodBeat.o(53000);
       return true;
     }
@@ -320,15 +320,15 @@ public final class h<TResult>
     AppMethodBeat.i(53001);
     synchronized (this.lock)
     {
-      if (this.aAb)
+      if (this.aBS)
       {
         AppMethodBeat.o(53001);
         return false;
       }
-      this.aAb = true;
+      this.aBS = true;
       this.result = paramTResult;
       this.lock.notifyAll();
-      no();
+      nG();
       AppMethodBeat.o(53001);
       return true;
     }
@@ -338,7 +338,7 @@ public final class h<TResult>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     a.h
  * JD-Core Version:    0.7.0.1
  */

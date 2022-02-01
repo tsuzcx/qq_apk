@@ -8,31 +8,31 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  public static final a leW;
-  ConcurrentHashMap<String, a> leX;
+  public static final a lBV;
+  ConcurrentHashMap<String, a> lBW;
   
   static
   {
     AppMethodBeat.i(47029);
-    leW = new a();
+    lBV = new a();
     AppMethodBeat.o(47029);
   }
   
   public a()
   {
     AppMethodBeat.i(47028);
-    this.leX = new ConcurrentHashMap();
+    this.lBW = new ConcurrentHashMap();
     AppMethodBeat.o(47028);
   }
   
   static final class a
   {
-    ServiceConnection leY;
+    ServiceConnection lBX;
     
     private a()
     {
       AppMethodBeat.i(47027);
-      this.leY = new ServiceConnection()
+      this.lBX = new ServiceConnection()
       {
         public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder) {}
         
@@ -44,7 +44,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keepalive.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(23920);
-    pFb = new b("CONNECT_PROTO_TYPE_WIFI", 0);
-    pFc = new b("CONNECT_PROTO_TYPE_BLUE", 1);
-    pFd = new b[] { pFb, pFc };
+    qiG = new b("CONNECT_PROTO_TYPE_WIFI", 0);
+    qiH = new b("CONNECT_PROTO_TYPE_BLUE", 1);
+    qiI = new b[] { qiG, qiH };
     AppMethodBeat.o(23920);
   }
   

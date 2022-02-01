@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.finder;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.c;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.protocal.protobuf.FinderUserPageResponse;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public final class c

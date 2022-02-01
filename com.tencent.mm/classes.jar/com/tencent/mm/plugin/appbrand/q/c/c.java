@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.q.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.plugin.appbrand.p.j;
+import com.tencent.mm.ac.i;
+import com.tencent.mm.plugin.appbrand.o.j;
 import com.tencent.mm.plugin.appbrand.q.a.d;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +13,9 @@ public final class c
   public final String b(i parami, com.tencent.mm.plugin.appbrand.q.a.c paramc)
   {
     AppMethodBeat.i(147394);
-    parami = (String)j.Pm(parami.optString("url")).get("host");
+    parami = (String)j.SP(parami.optString("url")).get("host");
     HashMap localHashMap = new HashMap();
-    if (j.Po(parami) == 2) {}
+    if (j.SR(parami) == 2) {}
     for (boolean bool = true;; bool = false)
     {
       localHashMap.put("isLANIp", Boolean.valueOf(bool));
@@ -25,14 +25,14 @@ public final class c
     }
   }
   
-  public final int bpA()
+  public final int btB()
   {
     return 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.q.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.location.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bng;
-import com.tencent.mm.protocal.protobuf.bnh;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.brq;
+import com.tencent.mm.protocal.protobuf.brr;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
   extends n
   implements k
 {
-  private g callback;
+  private f callback;
   public int errCode;
   public String errMsg;
   public int errType;
-  private Runnable hTh;
-  public String jXd;
-  public final com.tencent.mm.ak.b rr;
-  public String tWG;
+  private Runnable imy;
+  public String krz;
+  public final com.tencent.mm.al.b rr;
+  public String uZp;
   
   public b(String paramString)
   {
     AppMethodBeat.i(55788);
-    this.tWG = "";
+    this.uZp = "";
     b.a locala = new b.a();
-    locala.hvt = new bng();
-    locala.hvu = new bnh();
+    locala.hNM = new brq();
+    locala.hNN = new brr();
     locala.uri = "/cgi-bin/micromsg-bin/jointrackroom";
     locala.funcId = 490;
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aAz();
-    ((bng)this.rr.hvr.hvw).Fdi = paramString;
-    ac.d("MicroMsg.NetSceneJoinTrackRoom", "chatNameId:".concat(String.valueOf(paramString)));
+    this.rr = locala.aDC();
+    ((brq)this.rr.hNK.hNQ).GMI = paramString;
+    ad.d("MicroMsg.NetSceneJoinTrackRoom", "chatNameId:".concat(String.valueOf(paramString)));
     AppMethodBeat.o(55788);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(55789);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(55789);
     return i;
@@ -63,23 +63,23 @@ public final class b
     this.errType = paramInt2;
     this.errCode = paramInt3;
     this.errMsg = paramString;
-    if (((com.tencent.mm.ak.b)paramq).hvs.hvw != null) {}
-    for (paramq = (bnh)((com.tencent.mm.ak.b)paramq).hvs.hvw;; paramq = null)
+    if (((com.tencent.mm.al.b)paramq).hNL.hNQ != null) {}
+    for (paramq = (brr)((com.tencent.mm.al.b)paramq).hNL.hNQ;; paramq = null)
     {
-      ac.d("MicroMsg.NetSceneJoinTrackRoom", "onGYNetEnd errType %d errCode%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      ad.d("MicroMsg.NetSceneJoinTrackRoom", "onGYNetEnd errType %d errCode%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
       if (((paramInt3 == 0) || (paramInt3 >= 1000)) && (paramq != null))
       {
-        this.tWG = paramq.Exq;
-        ac.d("MicroMsg.NetSceneJoinTrackRoom", "get trackRoomid %s", new Object[] { this.tWG });
+        this.uZp = paramq.GeT;
+        ad.d("MicroMsg.NetSceneJoinTrackRoom", "get trackRoomid %s", new Object[] { this.uZp });
       }
       if (paramq != null) {
-        this.jXd = paramq.DWV;
+        this.krz = paramq.FCr;
       }
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
-      if (this.hTh != null) {
-        this.hTh.run();
+      if (this.imy != null) {
+        this.imy.run();
       }
       AppMethodBeat.o(55790);
       return;
@@ -88,7 +88,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.a.b
  * JD-Core Version:    0.7.0.1
  */

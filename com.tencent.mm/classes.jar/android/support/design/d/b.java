@@ -14,17 +14,17 @@ import android.util.TypedValue;
 
 public final class b
 {
-  public final ColorStateList jB;
-  public final ColorStateList jC;
-  public final String jD;
-  public final boolean jE;
-  public final ColorStateList jF;
-  public final float jG;
-  public final float jH;
-  private final int jI;
-  boolean jJ = false;
-  Typeface jK;
-  public final ColorStateList jk;
+  public final String fontFamily;
+  Typeface lA;
+  public final ColorStateList lb;
+  public final ColorStateList ls;
+  public final ColorStateList lt;
+  public final boolean lu;
+  public final ColorStateList lv;
+  public final float lw;
+  public final float lx;
+  private final int ly;
+  boolean lz = false;
   public final float shadowRadius;
   public final float textSize;
   public final int textStyle;
@@ -34,20 +34,20 @@ public final class b
   {
     TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramInt, a.a.TextAppearance);
     this.textSize = localTypedArray.getDimension(0, 0.0F);
-    this.jk = a.b(paramContext, localTypedArray, 3);
-    this.jB = a.b(paramContext, localTypedArray, 4);
-    this.jC = a.b(paramContext, localTypedArray, 5);
+    this.lb = a.b(paramContext, localTypedArray, 3);
+    this.ls = a.b(paramContext, localTypedArray, 4);
+    this.lt = a.b(paramContext, localTypedArray, 5);
     this.textStyle = localTypedArray.getInt(2, 0);
     this.typeface = localTypedArray.getInt(1, 1);
     if (localTypedArray.hasValue(11)) {}
     for (paramInt = i;; paramInt = 10)
     {
-      this.jI = localTypedArray.getResourceId(paramInt, 0);
-      this.jD = localTypedArray.getString(paramInt);
-      this.jE = localTypedArray.getBoolean(12, false);
-      this.jF = a.b(paramContext, localTypedArray, 6);
-      this.jG = localTypedArray.getFloat(7, 0.0F);
-      this.jH = localTypedArray.getFloat(8, 0.0F);
+      this.ly = localTypedArray.getResourceId(paramInt, 0);
+      this.fontFamily = localTypedArray.getString(paramInt);
+      this.lu = localTypedArray.getBoolean(12, false);
+      this.lv = a.b(paramContext, localTypedArray, 6);
+      this.lw = localTypedArray.getFloat(7, 0.0F);
+      this.lx = localTypedArray.getFloat(8, 0.0F);
       this.shadowRadius = localTypedArray.getFloat(9, 0.0F);
       localTypedArray.recycle();
       return;
@@ -57,28 +57,28 @@ public final class b
   private Typeface H(Context paramContext)
   {
     Object localObject = null;
-    if (this.jJ) {
-      return this.jK;
+    if (this.lz) {
+      return this.lA;
     }
     if (!paramContext.isRestricted()) {}
     for (;;)
     {
       try
       {
-        i = this.jI;
+        i = this.ly;
         if (!paramContext.isRestricted()) {
           continue;
         }
         paramContext = localObject;
-        this.jK = paramContext;
-        if (this.jK != null) {
-          this.jK = Typeface.create(this.jK, this.textStyle);
+        this.lA = paramContext;
+        if (this.lA != null) {
+          this.lA = Typeface.create(this.lA, this.textStyle);
         }
       }
       catch (Exception paramContext)
       {
         int i;
-        new StringBuilder("Error loading font ").append(this.jD);
+        new StringBuilder("Error loading font ").append(this.fontFamily);
         continue;
       }
       catch (UnsupportedOperationException paramContext)
@@ -89,44 +89,44 @@ public final class b
       {
         continue;
       }
-      br();
-      this.jJ = true;
-      return this.jK;
+      bG();
+      this.lz = true;
+      return this.lA;
       paramContext = f.a(paramContext, i, new TypedValue(), 0, null, false);
     }
   }
   
   private void a(Context paramContext, final TextPaint paramTextPaint, final f.a parama)
   {
-    if (this.jJ)
+    if (this.lz)
     {
-      a(paramTextPaint, this.jK);
+      a(paramTextPaint, this.lA);
       return;
     }
-    br();
+    bG();
     if (paramContext.isRestricted())
     {
-      this.jJ = true;
-      a(paramTextPaint, this.jK);
+      this.lz = true;
+      a(paramTextPaint, this.lA);
       return;
     }
     try
     {
-      int i = this.jI;
+      int i = this.ly;
       paramTextPaint = new f.a()
       {
         public final void D(int paramAnonymousInt)
         {
-          b.this.br();
-          b.this.jJ = true;
+          b.this.bG();
+          b.this.lz = true;
           parama.D(paramAnonymousInt);
         }
         
         public final void a(Typeface paramAnonymousTypeface)
         {
-          b.this.jK = Typeface.create(paramAnonymousTypeface, b.this.textStyle);
+          b.this.lA = Typeface.create(paramAnonymousTypeface, b.this.textStyle);
           b.this.a(paramTextPaint, paramAnonymousTypeface);
-          b.this.jJ = true;
+          b.this.lz = true;
           parama.a(paramAnonymousTypeface);
         }
       };
@@ -141,7 +141,7 @@ public final class b
     }
     catch (Resources.NotFoundException paramContext) {}catch (Exception paramContext)
     {
-      new StringBuilder("Error loading font ").append(this.jD);
+      new StringBuilder("Error loading font ").append(this.fontFamily);
       return;
     }
     catch (UnsupportedOperationException paramContext) {}
@@ -178,19 +178,19 @@ public final class b
     float f1;
     float f2;
     float f3;
-    if (this.jk != null)
+    if (this.lb != null)
     {
-      i = this.jk.getColorForState(paramTextPaint.drawableState, this.jk.getDefaultColor());
+      i = this.lb.getColorForState(paramTextPaint.drawableState, this.lb.getDefaultColor());
       paramTextPaint.setColor(i);
       f1 = this.shadowRadius;
-      f2 = this.jG;
-      f3 = this.jH;
-      if (this.jF == null) {
+      f2 = this.lw;
+      f3 = this.lx;
+      if (this.lv == null) {
         break label105;
       }
     }
     label105:
-    for (int i = this.jF.getColorForState(paramTextPaint.drawableState, this.jF.getDefaultColor());; i = 0)
+    for (int i = this.lv.getColorForState(paramTextPaint.drawableState, this.lv.getDefaultColor());; i = 0)
     {
       paramTextPaint.setShadowLayer(f1, f2, f3, i);
       return;
@@ -199,43 +199,43 @@ public final class b
     }
   }
   
-  final void br()
+  final void bG()
   {
-    if (this.jK == null) {
-      this.jK = Typeface.create(this.jD, this.textStyle);
+    if (this.lA == null) {
+      this.lA = Typeface.create(this.fontFamily, this.textStyle);
     }
-    if (this.jK == null) {
+    if (this.lA == null) {
       switch (this.typeface)
       {
       default: 
-        this.jK = Typeface.DEFAULT;
+        this.lA = Typeface.DEFAULT;
       }
     }
     for (;;)
     {
-      if (this.jK != null) {
-        this.jK = Typeface.create(this.jK, this.textStyle);
+      if (this.lA != null) {
+        this.lA = Typeface.create(this.lA, this.textStyle);
       }
       return;
-      this.jK = Typeface.SANS_SERIF;
+      this.lA = Typeface.SANS_SERIF;
       continue;
-      this.jK = Typeface.SERIF;
+      this.lA = Typeface.SERIF;
       continue;
-      this.jK = Typeface.MONOSPACE;
+      this.lA = Typeface.MONOSPACE;
     }
   }
   
   public final void c(Context paramContext, TextPaint paramTextPaint, f.a parama)
   {
-    if (c.jO) {
+    if (c.lE) {
       a(paramTextPaint, H(paramContext));
     }
     do
     {
       return;
       a(paramContext, paramTextPaint, parama);
-    } while (this.jJ);
-    a(paramTextPaint, this.jK);
+    } while (this.lz);
+    a(paramTextPaint, this.lA);
   }
 }
 

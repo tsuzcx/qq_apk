@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.emojicapture.ui.b;
 import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.g.a.a;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/graphics/SurfaceTexture;", "kotlin.jvm.PlatformType", "onFrameAvailable"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/graphics/SurfaceTexture;", "kotlin.jvm.PlatformType", "onFrameAvailable"})
 final class c$c
   implements SurfaceTexture.OnFrameAvailableListener
 {
@@ -16,8 +16,8 @@ final class c$c
   public final void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(840);
-    paramSurfaceTexture = this.puX;
-    ac.i(paramSurfaceTexture.TAG, "onVideoSurfaceFrameAvailable");
+    paramSurfaceTexture = this.pYC;
+    ad.i(paramSurfaceTexture.TAG, "onVideoSurfaceFrameAvailable");
     paramSurfaceTexture.i((a)new c.d(paramSurfaceTexture));
     AppMethodBeat.o(840);
   }

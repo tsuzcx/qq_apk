@@ -10,9 +10,9 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.launching.e.f;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.reflect.Method;
 
 public abstract class a
@@ -20,13 +20,13 @@ public abstract class a
 {
   public final boolean a(Context paramContext, LaunchParcel paramLaunchParcel)
   {
-    if ((bs.isNullOrNil(paramLaunchParcel.username)) && (bs.isNullOrNil(paramLaunchParcel.appId))) {
+    if ((bt.isNullOrNil(paramLaunchParcel.username)) && (bt.isNullOrNil(paramLaunchParcel.appId))) {
       return false;
     }
-    paramLaunchParcel.lpI = bs.eWj();
+    paramLaunchParcel.lNb = bt.flT();
     Object localObject2;
     if ((paramContext == null) || (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()))) {
-      localObject2 = ai.getContext();
+      localObject2 = aj.getContext();
     }
     for (;;)
     {
@@ -67,7 +67,7 @@ public abstract class a
           {
             localObject1 = localTypedArray;
             localObject2 = localTypedArray;
-            ac.printErrStackTrace("MicroMsg.AppBrand.Precondition.AbstractLaunchEntry", localThrowable, "call convertActivityFromTranslucent Fail: %s", new Object[] { localThrowable.getMessage() });
+            ad.printErrStackTrace("MicroMsg.AppBrand.Precondition.AbstractLaunchEntry", localThrowable, "call convertActivityFromTranslucent Fail: %s", new Object[] { localThrowable.getMessage() });
           }
         }
         localObject2 = paramContext;
@@ -81,7 +81,7 @@ public abstract class a
       {
         TypedArray localTypedArray;
         localObject2 = localObject1;
-        ac.printErrStackTrace("MicroMsg.AppBrand.Precondition.AbstractLaunchEntry", localException, "convertActivityFromTranslucent %s", new Object[] { paramContext.getClass().getSimpleName() });
+        ad.printErrStackTrace("MicroMsg.AppBrand.Precondition.AbstractLaunchEntry", localException, "convertActivityFromTranslucent %s", new Object[] { paramContext.getClass().getSimpleName() });
         localObject2 = paramContext;
         if (localObject1 == null) {
           continue;
@@ -106,22 +106,22 @@ public abstract class a
     if (paramString3 == null)
     {
       paramString1 = null;
-      localLaunchParcel.jjf = paramString1;
+      localLaunchParcel.jCN = paramString1;
       if (!j.a.isValid(paramInt1)) {
         break label94;
       }
     }
-    for (localLaunchParcel.hxM = paramInt1;; localLaunchParcel.hxM = 0)
+    for (localLaunchParcel.hQh = paramInt1;; localLaunchParcel.hQh = 0)
     {
       localLaunchParcel.version = paramInt2;
-      localLaunchParcel.lpG = paramAppBrandStatObject;
-      localLaunchParcel.cce = paramAppBrandLaunchReferrer;
-      localLaunchParcel.lpH = paramLaunchParamsOptional;
+      localLaunchParcel.lMZ = paramAppBrandStatObject;
+      localLaunchParcel.cmv = paramAppBrandLaunchReferrer;
+      localLaunchParcel.lNa = paramLaunchParamsOptional;
       return a(paramContext, localLaunchParcel);
       paramString1 = paramString3.trim();
       break;
       label94:
-      ac.e("MicroMsg.AppBrand.Precondition.AbstractLaunchEntry", "start with invalid versionType[%d], use 0 instead, stack=%s", new Object[] { Integer.valueOf(paramInt1), Log.getStackTraceString(new Throwable()) });
+      ad.e("MicroMsg.AppBrand.Precondition.AbstractLaunchEntry", "start with invalid versionType[%d], use 0 instead, stack=%s", new Object[] { Integer.valueOf(paramInt1), Log.getStackTraceString(new Throwable()) });
     }
   }
   

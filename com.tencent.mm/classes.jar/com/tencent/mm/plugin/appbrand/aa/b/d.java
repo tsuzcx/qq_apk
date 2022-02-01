@@ -14,7 +14,7 @@ public final class d
   {
     AppMethodBeat.i(156647);
     super.a(parama, parami);
-    parami.RD("WebSocket Protocol Handshake");
+    parami.Vi("WebSocket Protocol Handshake");
     parami.put("Server", "Java-WebSocket");
     parama = Calendar.getInstance();
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US);
@@ -24,7 +24,7 @@ public final class d
     return parami;
   }
   
-  public final a bxA()
+  public final a bBF()
   {
     AppMethodBeat.i(156648);
     d locald = new d();
@@ -34,7 +34,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa.b.d
  * JD-Core Version:    0.7.0.1
  */

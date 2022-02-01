@@ -6,25 +6,25 @@ import java.util.PriorityQueue;
 
 public final class p
 {
-  public final PriorityQueue<Integer> bwN;
-  public int bwO;
+  public final PriorityQueue<Integer> bHb;
+  public int bHc;
   public final Object lock;
   
-  public final void vM()
+  public final void xj()
   {
     AppMethodBeat.i(93193);
     synchronized (this.lock)
     {
-      this.bwN.remove(Integer.valueOf(0));
-      if (this.bwN.isEmpty())
+      this.bHb.remove(Integer.valueOf(0));
+      if (this.bHb.isEmpty())
       {
         i = -2147483648;
-        this.bwO = i;
+        this.bHc = i;
         this.lock.notifyAll();
         AppMethodBeat.o(93193);
         return;
       }
-      int i = ((Integer)this.bwN.peek()).intValue();
+      int i = ((Integer)this.bHb.peek()).intValue();
     }
   }
   

@@ -6,16 +6,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.RecyclerView.l;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class JsonRecyclerView
   extends RecyclerView
 {
-  private a IKO;
-  float IKP;
-  private RecyclerView.l IKQ;
+  private a KBV;
+  float KBW;
+  private RecyclerView.l KBX;
   int mode;
   
   public JsonRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,45 +26,7 @@ public class JsonRecyclerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(38910);
-    this.IKQ = new RecyclerView.l()
-    {
-      public final boolean a(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(196951);
-        switch (paramAnonymousMotionEvent.getAction() & paramAnonymousMotionEvent.getActionMasked())
-        {
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(196951);
-          return false;
-          JsonRecyclerView.this.mode = 1;
-          continue;
-          JsonRecyclerView.this.mode = 0;
-          continue;
-          paramAnonymousRecyclerView = JsonRecyclerView.this;
-          paramAnonymousRecyclerView.mode -= 1;
-          continue;
-          JsonRecyclerView.this.IKP = JsonRecyclerView.ad(paramAnonymousMotionEvent);
-          paramAnonymousRecyclerView = JsonRecyclerView.this;
-          paramAnonymousRecyclerView.mode += 1;
-          continue;
-          if (JsonRecyclerView.this.mode >= 2)
-          {
-            float f = JsonRecyclerView.ad(paramAnonymousMotionEvent);
-            if (Math.abs(f - JsonRecyclerView.this.IKP) > 0.5F)
-            {
-              JsonRecyclerView.a(JsonRecyclerView.this, f / JsonRecyclerView.this.IKP);
-              JsonRecyclerView.this.IKP = f;
-            }
-          }
-        }
-      }
-      
-      public final void ai(boolean paramAnonymousBoolean) {}
-      
-      public final void b(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent) {}
-    };
+    this.KBX = new JsonRecyclerView.1(this);
     getContext();
     setLayoutManager(new LinearLayoutManager());
     AppMethodBeat.o(38910);
@@ -91,12 +52,12 @@ public class JsonRecyclerView
   
   public void setBracesColor(int paramInt)
   {
-    a.IKI = paramInt;
+    a.KBP = paramInt;
   }
   
   public void setKeyColor(int paramInt)
   {
-    a.IKC = paramInt;
+    a.KBJ = paramInt;
   }
   
   public void setScaleEnable(boolean paramBoolean)
@@ -104,11 +65,11 @@ public class JsonRecyclerView
     AppMethodBeat.i(38912);
     if (paramBoolean)
     {
-      a(this.IKQ);
+      a(this.KBX);
       AppMethodBeat.o(38912);
       return;
     }
-    b(this.IKQ);
+    b(this.KBX);
     AppMethodBeat.o(38912);
   }
   
@@ -119,10 +80,10 @@ public class JsonRecyclerView
     if (paramFloat < 10.0F) {
       f = 10.0F;
     }
-    while (a.IKJ != f)
+    while (a.KBQ != f)
     {
-      a.IKJ = f;
-      if (this.IKO == null) {
+      a.KBQ = f;
+      if (this.KBV == null) {
         break;
       }
       RecyclerView.i locali = getLayoutManager();
@@ -143,27 +104,27 @@ public class JsonRecyclerView
   
   public void setValueBooleanColor(int paramInt)
   {
-    a.IKF = paramInt;
+    a.KBM = paramInt;
   }
   
   public void setValueNullColor(int paramInt)
   {
-    a.IKE = paramInt;
+    a.KBL = paramInt;
   }
   
   public void setValueNumberColor(int paramInt)
   {
-    a.IKE = paramInt;
+    a.KBL = paramInt;
   }
   
   public void setValueTextColor(int paramInt)
   {
-    a.IKD = paramInt;
+    a.KBK = paramInt;
   }
   
   public void setValueUrlColor(int paramInt)
   {
-    a.IKG = paramInt;
+    a.KBN = paramInt;
   }
 }
 

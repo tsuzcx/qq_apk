@@ -12,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public final class c
 {
-  private Handler.Callback LE = new Handler.Callback()
+  private Handler.Callback Nw = new Handler.Callback()
   {
     public final boolean handleMessage(Message arg1)
     {
@@ -26,7 +26,7 @@ public final class c
         synchronized (localc1.mLock)
         {
           localc1.mHandler.removeMessages(0);
-          localc1.mHandler.sendMessageDelayed(localc1.mHandler.obtainMessage(0), localc1.LF);
+          localc1.mHandler.sendMessageDelayed(localc1.mHandler.obtainMessage(0), localc1.Nx);
           return true;
         }
       }
@@ -43,7 +43,7 @@ public final class c
       return true;
     }
   };
-  final int LF;
+  final int Nx;
   private int mGeneration;
   Handler mHandler;
   final Object mLock = new Object();
@@ -55,7 +55,7 @@ public final class c
   {
     this.mThreadName = paramString;
     this.mPriority = 10;
-    this.LF = 10000;
+    this.Nx = 10000;
     this.mGeneration = 0;
   }
   
@@ -170,7 +170,7 @@ public final class c
       {
         this.mThread = new HandlerThread(this.mThreadName, this.mPriority);
         this.mThread.start();
-        this.mHandler = new Handler(this.mThread.getLooper(), this.LE);
+        this.mHandler = new Handler(this.mThread.getLooper(), this.Nw);
         this.mGeneration += 1;
       }
       this.mHandler.removeMessages(0);
@@ -181,7 +181,7 @@ public final class c
   
   public static abstract interface a<T>
   {
-    public abstract void C(T paramT);
+    public abstract void D(T paramT);
   }
 }
 

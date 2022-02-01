@@ -54,11 +54,9 @@ public class MetadataItem
     return this.value;
   }
   
-  public class MutableMetadataItem
+  public static class MutableMetadataItem
     extends MetadataItem
   {
-    public MutableMetadataItem() {}
-    
     public void setDataType(String paramString)
     {
       this.dataType = paramString;

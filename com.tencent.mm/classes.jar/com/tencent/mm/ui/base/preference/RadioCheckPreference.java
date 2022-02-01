@@ -14,13 +14,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class RadioCheckPreference
   extends Preference
 {
-  private TextView Bod;
-  private int Boe;
-  private String Bof;
-  private int Bog;
-  private CheckBox HDO;
-  private int HDP;
-  private boolean mF;
+  private TextView COs;
+  private int COt;
+  private String COu;
+  private int COv;
+  private CheckBox JrE;
+  private int JrF;
+  private boolean oB;
   
   public RadioCheckPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,11 +31,11 @@ public class RadioCheckPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142666);
-    this.mF = false;
-    this.Boe = -1;
-    this.Bof = "";
-    this.Bog = 8;
-    this.HDP = -1;
+    this.oB = false;
+    this.COt = -1;
+    this.COu = "";
+    this.COv = 8;
+    this.JrF = -1;
     setLayoutResource(2131494804);
     AppMethodBeat.o(142666);
   }
@@ -44,30 +44,30 @@ public class RadioCheckPreference
   {
     AppMethodBeat.i(142668);
     super.onBindView(paramView);
-    aam(8);
-    this.HDO = ((CheckBox)paramView.findViewById(2131303709));
-    this.HDO.setChecked(this.mF);
-    this.Bod = ((TextView)paramView.findViewById(2131305883));
-    paramView = this.Bof;
-    int i = this.Boe;
-    this.Boe = i;
-    this.Bof = paramView;
-    if (this.Bod != null)
+    acw(8);
+    this.JrE = ((CheckBox)paramView.findViewById(2131303709));
+    this.JrE.setChecked(this.oB);
+    this.COs = ((TextView)paramView.findViewById(2131305883));
+    paramView = this.COu;
+    int i = this.COt;
+    this.COt = i;
+    this.COu = paramView;
+    if (this.COs != null)
     {
       if (i > 0) {
-        this.Bod.setBackgroundResource(this.Boe);
+        this.COs.setBackgroundResource(this.COt);
       }
-      if (!TextUtils.isEmpty(this.Bof)) {
-        this.Bod.setText(this.Bof);
+      if (!TextUtils.isEmpty(this.COu)) {
+        this.COs.setText(this.COu);
       }
     }
-    this.Bog = this.Bog;
-    if (this.Bod != null) {
-      this.Bod.setVisibility(this.Bog);
+    this.COv = this.COv;
+    if (this.COs != null) {
+      this.COs.setVisibility(this.COv);
     }
-    paramView = (LinearLayout.LayoutParams)this.HDO.getLayoutParams();
-    if (-1 != this.HDP) {
-      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.HDP, paramView.bottomMargin);
+    paramView = (LinearLayout.LayoutParams)this.JrE.getLayoutParams();
+    if (-1 != this.JrF) {
+      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.JrF, paramView.bottomMargin);
     }
     AppMethodBeat.o(142668);
   }
@@ -84,12 +84,12 @@ public class RadioCheckPreference
     return paramViewGroup;
   }
   
-  public final void wT(boolean paramBoolean)
+  public final void xE(boolean paramBoolean)
   {
     AppMethodBeat.i(142669);
-    this.mF = paramBoolean;
-    if (this.HDO != null) {
-      this.HDO.setChecked(paramBoolean);
+    this.oB = paramBoolean;
+    if (this.JrE != null) {
+      this.JrE.setChecked(paramBoolean);
     }
     AppMethodBeat.o(142669);
   }

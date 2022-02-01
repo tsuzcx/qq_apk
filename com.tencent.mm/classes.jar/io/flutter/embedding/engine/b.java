@@ -6,39 +6,39 @@ import java.util.Map;
 
 public final class b
 {
-  private static b KLy;
-  private final Map<String, a> KLz;
+  private static b MCv;
+  private final Map<String, a> MCw;
   
   b()
   {
     AppMethodBeat.i(10117);
-    this.KLz = new HashMap();
+    this.MCw = new HashMap();
     AppMethodBeat.o(10117);
   }
   
-  public static b fNd()
+  public static b geD()
   {
     AppMethodBeat.i(10116);
-    if (KLy == null) {
-      KLy = new b();
+    if (MCv == null) {
+      MCv = new b();
     }
-    b localb = KLy;
+    b localb = MCv;
     AppMethodBeat.o(10116);
     return localb;
   }
   
-  public final a aVH(String paramString)
+  public final a bbK(String paramString)
   {
     AppMethodBeat.i(10118);
-    paramString = (a)this.KLz.get(paramString);
+    paramString = (a)this.MCw.get(paramString);
     AppMethodBeat.o(10118);
     return paramString;
   }
   
-  public final void aVI(String paramString)
+  public final void bbL(String paramString)
   {
     AppMethodBeat.i(10119);
-    this.KLz.remove(paramString);
+    this.MCw.remove(paramString);
     AppMethodBeat.o(10119);
   }
 }

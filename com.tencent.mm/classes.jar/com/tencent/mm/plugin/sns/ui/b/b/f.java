@@ -8,21 +8,21 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView;
-import com.tencent.mm.plugin.sns.ui.an;
+import com.tencent.mm.plugin.sns.ui.aq;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
-import com.tencent.mm.plugin.sns.ui.item.d.a;
+import com.tencent.mm.plugin.sns.ui.item.e.a;
 import com.tencent.mm.plugin.sns.ui.widget.SnsAdTimelineVideoView;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 
 public final class f
   extends b
 {
-  AnimatorSet xhG;
-  private ValueAnimator zaW;
-  private ValueAnimator zaX;
-  d.a zbv;
+  private ValueAnimator AsN;
+  private ValueAnimator AsO;
+  e.a Atm;
+  AnimatorSet yvH;
   
   public f(MMActivity paramMMActivity, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
@@ -30,9 +30,9 @@ public final class f
     try
     {
       this.activity = paramMMActivity;
-      this.zbv = ((d.a)paramBaseViewHolder);
-      this.zaW = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.zaW.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.Atm = ((e.a)paramBaseViewHolder);
+      this.AsN = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      this.AsN.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -40,76 +40,76 @@ public final class f
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
           if (f != 1.0F)
           {
-            f.this.zbv.yGK.setScaleX(f);
-            f.this.zbv.yGK.setScaleY(f);
-            f.this.zbv.yGK.setAlpha(f);
+            f.this.Atm.zYc.setScaleX(f);
+            f.this.Atm.zYc.setScaleY(f);
+            f.this.Atm.zYc.setAlpha(f);
           }
           AppMethodBeat.o(99970);
         }
       });
-      this.zaW.setDuration(400L);
-      this.zaW.addListener(new AnimatorListenerAdapter()
+      this.AsN.setDuration(400L);
+      this.AsN.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(99971);
-          if (f.this.zbv.fYC)
+          if (f.this.Atm.grY)
           {
-            ac.i("MicroMsg.FullCardAdClickAnimation", "holder is busy");
+            ad.i("MicroMsg.FullCardAdClickAnimation", "holder is busy");
             paramAnonymousAnimator = f.this;
-            if (paramAnonymousAnimator.xhG != null) {
-              paramAnonymousAnimator.xhG.end();
+            if (paramAnonymousAnimator.yvH != null) {
+              paramAnonymousAnimator.yvH.end();
             }
             AppMethodBeat.o(99971);
             return;
           }
-          f.this.zbv.fYC = true;
+          f.this.Atm.grY = true;
           AppMethodBeat.o(99971);
         }
       });
-      this.zaX = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.zaX.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.AsO = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      this.AsO.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(99972);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          f.this.zbv.rXY.setAlpha(f);
-          f.this.zbv.zbW.setAlpha(f);
+          f.this.Atm.sUS.setAlpha(f);
+          f.this.Atm.AtN.setAlpha(f);
           AppMethodBeat.o(99972);
         }
       });
-      this.zaX.setDuration(100L);
-      this.xhG = new AnimatorSet();
-      this.xhG.playTogether(new Animator[] { this.zaW, this.zaX });
-      this.xhG.addListener(new AnimatorListenerAdapter()
+      this.AsO.setDuration(100L);
+      this.yvH = new AnimatorSet();
+      this.yvH.playTogether(new Animator[] { this.AsN, this.AsO });
+      this.yvH.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(99974);
-          ac.i("MicroMsg.FullCardAdClickAnimation", "onAnimation end");
-          f.this.zbv.yGK.setScaleX(1.0F);
-          f.this.zbv.yGK.setScaleY(1.0F);
-          f.this.zbv.yGK.setAlpha(1.0F);
-          f.this.zbv.rXY.setAlpha(1.0F);
-          f.this.zbv.zbW.setAlpha(1.0F);
-          if (f.this.zaU != null) {
-            f.this.zaU.onAnimationEnd();
+          ad.i("MicroMsg.FullCardAdClickAnimation", "onAnimation end");
+          f.this.Atm.zYc.setScaleX(1.0F);
+          f.this.Atm.zYc.setScaleY(1.0F);
+          f.this.Atm.zYc.setAlpha(1.0F);
+          f.this.Atm.sUS.setAlpha(1.0F);
+          f.this.Atm.AtN.setAlpha(1.0F);
+          if (f.this.AsL != null) {
+            f.this.AsL.onAnimationEnd();
           }
-          f.this.zbv.fYC = false;
-          if (f.this.zbv.zbE.yFl)
+          f.this.Atm.grY = false;
+          if (f.this.Atm.Atv.zWG)
           {
-            if (f.this.zbv.zbE.yFe.getVisibility() == 0)
+            if (f.this.Atm.Atv.zWz.getVisibility() == 0)
             {
-              f.this.zbv.zbE.yFe.aw(0, false);
-              ac.i("MicroMsg.FullCardAdClickAnimation", "seek newVideoView to 0");
+              f.this.Atm.Atv.zWz.aB(0, false);
+              ad.i("MicroMsg.FullCardAdClickAnimation", "seek newVideoView to 0");
               AppMethodBeat.o(99974);
             }
           }
-          else if (f.this.zbv.zbE.yFd.getVisibility() == 0)
+          else if (f.this.Atm.Atv.zWy.getVisibility() == 0)
           {
-            f.this.zbv.zbE.yFd.xDG.clear();
-            ac.i("MicroMsg.FullCardAdClickAnimation", "seek sightView to 0");
+            f.this.Atm.Atv.zWy.ySq.clear();
+            ad.i("MicroMsg.FullCardAdClickAnimation", "seek sightView to 0");
           }
           AppMethodBeat.o(99974);
         }
@@ -117,7 +117,7 @@ public final class f
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(99973);
-          ac.i("MicroMsg.FullCardAdClickAnimation", "onAnimation start");
+          ad.i("MicroMsg.FullCardAdClickAnimation", "onAnimation start");
           AppMethodBeat.o(99973);
         }
       });
@@ -126,18 +126,18 @@ public final class f
     }
     catch (Throwable paramMMActivity)
     {
-      ac.e("MicroMsg.FullCardAdClickAnimation", "init exp=" + paramMMActivity.toString());
+      ad.e("MicroMsg.FullCardAdClickAnimation", "init exp=" + paramMMActivity.toString());
       AppMethodBeat.o(99975);
     }
   }
   
-  public final void xV(long paramLong)
+  public final void At(long paramLong)
   {
     AppMethodBeat.i(99976);
-    if ((this.xhG != null) && (!this.xhG.isStarted()))
+    if ((this.yvH != null) && (!this.yvH.isStarted()))
     {
-      this.xhG.setStartDelay(paramLong);
-      this.xhG.start();
+      this.yvH.setStartDelay(paramLong);
+      this.yvH.start();
     }
     AppMethodBeat.o(99976);
   }

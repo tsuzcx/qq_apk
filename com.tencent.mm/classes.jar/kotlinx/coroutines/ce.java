@@ -1,48 +1,61 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import d.d.d;
+import d.p;
+import d.p.a;
+import d.q;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/ThreadLocalEventLoop;", "", "()V", "eventLoop", "Lkotlinx/coroutines/EventLoop;", "getEventLoop$kotlinx_coroutines_core", "()Lkotlinx/coroutines/EventLoop;", "ref", "Ljava/lang/ThreadLocal;", "Lkotlinx/coroutines/internal/CommonThreadLocal;", "currentOrNull", "currentOrNull$kotlinx_coroutines_core", "resetEventLoop", "", "resetEventLoop$kotlinx_coroutines_core", "setEventLoop", "setEventLoop$kotlinx_coroutines_core", "kotlinx-coroutines-core"})
-public final class ce
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/ResumeAwaitOnCompletion;", "T", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/JobSupport;", "job", "continuation", "Lkotlinx/coroutines/CancellableContinuationImpl;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/CancellableContinuationImpl;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
+final class ce<T>
+  extends bu<bv>
 {
-  private static final ThreadLocal<bc> LSk;
-  public static final ce LSl;
+  private final l<T> NJf;
   
-  static
+  public ce(bv parambv, l<? super T> paraml)
   {
-    AppMethodBeat.i(191099);
-    LSl = new ce();
-    LSk = new ThreadLocal();
-    AppMethodBeat.o(191099);
+    super((br)parambv);
+    AppMethodBeat.i(190770);
+    this.NJf = paraml;
+    AppMethodBeat.o(190770);
   }
   
-  public static void a(bc parambc)
+  public final String toString()
   {
-    AppMethodBeat.i(191098);
-    LSk.set(parambc);
-    AppMethodBeat.o(191098);
+    AppMethodBeat.i(118268);
+    String str = "ResumeAwaitOnCompletion[" + this.NJf + ']';
+    AppMethodBeat.o(118268);
+    return str;
   }
   
-  public static bc geq()
+  public final void v(Throwable paramThrowable)
   {
-    AppMethodBeat.i(191096);
-    bc localbc2 = (bc)LSk.get();
-    bc localbc1 = localbc2;
-    if (localbc2 == null)
+    AppMethodBeat.i(118266);
+    Object localObject = ((bv)this.NIO).gvE();
+    if (am.gvd())
     {
-      localbc1 = (bc)new e(Thread.currentThread());
-      LSk.set(localbc1);
+      if (!(localObject instanceof bm)) {}
+      for (int i = 1; i == 0; i = 0)
+      {
+        paramThrowable = (Throwable)new AssertionError();
+        AppMethodBeat.o(118266);
+        throw paramThrowable;
+      }
     }
-    AppMethodBeat.o(191096);
-    return localbc1;
-  }
-  
-  public static void ger()
-  {
-    AppMethodBeat.i(191097);
-    LSk.set(null);
-    AppMethodBeat.o(191097);
+    if ((localObject instanceof u))
+    {
+      paramThrowable = (d)this.NJf;
+      localObject = ((u)localObject).cause;
+      locala = p.MKe;
+      paramThrowable.eN(p.eL(q.o((Throwable)localObject)));
+      AppMethodBeat.o(118266);
+      return;
+    }
+    paramThrowable = (d)this.NJf;
+    localObject = bw.fV(localObject);
+    p.a locala = p.MKe;
+    paramThrowable.eN(p.eL(localObject));
+    AppMethodBeat.o(118266);
   }
 }
 

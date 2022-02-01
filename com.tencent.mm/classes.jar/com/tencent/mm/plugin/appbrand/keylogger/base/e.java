@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.appbrand.keylogger.base;
 public class e
   implements a, d
 {
-  private final boolean lgn;
-  private final boolean lgo;
-  private final int lgp;
-  private final int lgq;
+  private final boolean lDl;
+  private final boolean lDm;
+  private final int lDn;
+  private final int lDo;
   private final String mDesc;
   private final String mName;
   private final String mProcessName;
@@ -16,42 +16,42 @@ public class e
   {
     this.mProcessName = paramString1;
     this.mName = paramString2;
-    this.lgn = paramBoolean1;
-    this.lgo = paramBoolean2;
+    this.lDl = paramBoolean1;
+    this.lDm = paramBoolean2;
     this.mDesc = paramString3;
     this.mType = paramInt1;
-    this.lgp = paramInt2;
-    this.lgq = paramInt3;
+    this.lDn = paramInt2;
+    this.lDo = paramInt3;
   }
   
-  public final String bmN()
+  public final boolean bqA()
   {
-    return this.mProcessName;
+    return this.lDm;
   }
   
-  public final boolean bmO()
-  {
-    return this.lgn;
-  }
-  
-  public final boolean bmP()
-  {
-    return this.lgo;
-  }
-  
-  public final String bmQ()
+  public final String bqB()
   {
     return this.mDesc;
   }
   
-  public final int bmS()
+  public final int bqD()
   {
-    return this.lgq;
+    return this.lDo;
   }
   
-  public final int bmT()
+  public final int bqE()
   {
-    return this.lgp;
+    return this.lDn;
+  }
+  
+  public final String bqy()
+  {
+    return this.mProcessName;
+  }
+  
+  public final boolean bqz()
+  {
+    return this.lDl;
   }
   
   public final int getType()
@@ -66,7 +66,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.base.e
  * JD-Core Version:    0.7.0.1
  */

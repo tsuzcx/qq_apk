@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.order.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public int month;
-  public String vxO;
+  public String wDi;
   public int year;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -15,20 +15,20 @@ public final class d
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.year);
-      paramVarArgs.aR(2, this.month);
-      if (this.vxO != null) {
-        paramVarArgs.d(3, this.vxO);
+      paramVarArgs.aS(1, this.year);
+      paramVarArgs.aS(2, this.month);
+      if (this.wDi != null) {
+        paramVarArgs.d(3, this.wDi);
       }
       AppMethodBeat.o(91260);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.year) + 0 + f.a.a.b.b.a.bx(2, this.month);
+      int i = f.a.a.b.b.a.bz(1, this.year) + 0 + f.a.a.b.b.a.bz(2, this.month);
       paramInt = i;
-      if (this.vxO != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.vxO);
+      if (this.wDi != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.wDi);
       }
       AppMethodBeat.o(91260);
       return paramInt;
@@ -36,9 +36,9 @@ public final class d
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(91260);
@@ -54,15 +54,15 @@ public final class d
         AppMethodBeat.o(91260);
         return -1;
       case 1: 
-        locald.year = locala.LVo.xF();
+        locald.year = locala.NPN.zc();
         AppMethodBeat.o(91260);
         return 0;
       case 2: 
-        locald.month = locala.LVo.xF();
+        locald.month = locala.NPN.zc();
         AppMethodBeat.o(91260);
         return 0;
       }
-      locald.vxO = locala.LVo.readString();
+      locald.wDi = locala.NPN.readString();
       AppMethodBeat.o(91260);
       return 0;
     }
@@ -72,7 +72,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.d
  * JD-Core Version:    0.7.0.1
  */

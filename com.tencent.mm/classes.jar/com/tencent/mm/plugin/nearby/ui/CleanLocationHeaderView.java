@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CleanLocationHeaderView
   extends LinearLayout
 {
-  private ImageView fBA;
-  private TextView viY;
+  private ImageView fUN;
+  private TextView wor;
   
   public CleanLocationHeaderView(Context paramContext)
   {
@@ -34,17 +34,17 @@ public class CleanLocationHeaderView
   {
     AppMethodBeat.i(89808);
     paramContext = View.inflate(paramContext, 2131494999, this);
-    this.viY = ((TextView)paramContext.findViewById(2131302701));
-    this.viY.setSingleLine(false);
-    this.fBA = ((ImageView)paramContext.findViewById(2131302683));
-    this.viY.setText(2131757391);
-    this.fBA.setImageResource(2131691025);
+    this.wor = ((TextView)paramContext.findViewById(2131302701));
+    this.wor.setSingleLine(false);
+    this.fUN = ((ImageView)paramContext.findViewById(2131302683));
+    this.wor.setText(2131757391);
+    this.fUN.setImageResource(2131691025);
     AppMethodBeat.o(89808);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.CleanLocationHeaderView
  * JD-Core Version:    0.7.0.1
  */

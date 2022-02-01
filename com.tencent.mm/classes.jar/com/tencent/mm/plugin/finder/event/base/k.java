@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.finder.event.base;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/event/base/TabChangeEvent;", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "focusTabType", "", "(I)V", "centerFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getCenterFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "setCenterFeed", "(Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/event/base/TabChangeEvent;", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "focusTabType", "", "(I)V", "centerFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getCenterFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "setCenterFeed", "(Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "plugin-finder_release"})
 public final class k
   extends b
 {
-  public BaseFinderFeed rde;
+  public BaseFinderFeed rRn;
 }
 
 

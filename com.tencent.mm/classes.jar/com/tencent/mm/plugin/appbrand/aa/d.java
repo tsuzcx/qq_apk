@@ -6,15 +6,15 @@ import java.nio.ByteBuffer;
 
 public abstract interface d
 {
-  public abstract void RA(String paramString);
+  public abstract void Vf(String paramString);
   
   public abstract void a(a parama, com.tencent.mm.plugin.appbrand.aa.d.d paramd);
   
-  public abstract void au(int paramInt, String paramString);
+  public abstract void aw(int paramInt, String paramString);
   
   public abstract void b(com.tencent.mm.plugin.appbrand.aa.e.a parama);
   
-  public abstract i bxv();
+  public abstract i bBA();
   
   public abstract void c(com.tencent.mm.plugin.appbrand.aa.d.d paramd);
   
@@ -26,7 +26,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa.d
  * JD-Core Version:    0.7.0.1
  */

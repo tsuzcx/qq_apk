@@ -6,29 +6,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  public static final int CYI = 2131495031;
-  public static final int CYJ = 2131495030;
-  public static final int oOI = 2131495034;
-  public static final int oOJ = 2131495033;
-  public SparseArray<Integer> CYK;
+  public static final int ECE = 2131495031;
+  public static final int ECF = 2131495030;
+  public static final int psq = 2131495034;
+  public static final int psr = 2131495033;
+  public SparseArray<Integer> ECG;
   
   public h()
   {
     AppMethodBeat.i(30862);
-    this.CYK = new SparseArray();
-    this.CYK.put(1, Integer.valueOf(oOI));
-    this.CYK.put(2, Integer.valueOf(oOJ));
-    this.CYK.put(4, Integer.valueOf(oOJ));
-    this.CYK.put(3, Integer.valueOf(oOJ));
-    this.CYK.put(5, Integer.valueOf(oOJ));
-    this.CYK.put(6, Integer.valueOf(oOJ));
-    this.CYK.put(0, Integer.valueOf(oOJ));
-    this.CYK.put(-1, Integer.valueOf(oOJ));
-    this.CYK.put(-3, Integer.valueOf(CYI));
-    this.CYK.put(-2, Integer.valueOf(oOJ));
-    this.CYK.put(-4, Integer.valueOf(oOJ));
-    this.CYK.put(20, Integer.valueOf(oOJ));
-    this.CYK.put(30, Integer.valueOf(CYJ));
+    this.ECG = new SparseArray();
+    this.ECG.put(1, Integer.valueOf(psq));
+    this.ECG.put(2, Integer.valueOf(psr));
+    this.ECG.put(4, Integer.valueOf(psr));
+    this.ECG.put(3, Integer.valueOf(psr));
+    this.ECG.put(5, Integer.valueOf(psr));
+    this.ECG.put(6, Integer.valueOf(psr));
+    this.ECG.put(0, Integer.valueOf(psr));
+    this.ECG.put(-1, Integer.valueOf(psr));
+    this.ECG.put(-3, Integer.valueOf(ECE));
+    this.ECG.put(-2, Integer.valueOf(psr));
+    this.ECG.put(-4, Integer.valueOf(psr));
+    this.ECG.put(20, Integer.valueOf(psr));
+    this.ECG.put(30, Integer.valueOf(ECF));
     AppMethodBeat.o(30862);
   }
   
@@ -96,7 +96,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.h
  * JD-Core Version:    0.7.0.1
  */

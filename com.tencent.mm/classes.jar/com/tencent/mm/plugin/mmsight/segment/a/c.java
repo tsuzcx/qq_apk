@@ -3,40 +3,40 @@ package com.tencent.mm.plugin.mmsight.segment.a;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.storage.al.a;
 
 public final class c
   implements a
 {
-  private au hNn;
+  private av igC;
   boolean released;
-  int uQA;
-  int uQB;
-  private a uQH;
-  a.c uQI;
-  private a.c uQJ;
-  private au.a uQK;
-  public a uQj;
+  int vTK;
+  int vTL;
+  private a vTR;
+  a.c vTS;
+  private a.c vTT;
+  private av.a vTU;
+  public a vTt;
   
   public c()
   {
     AppMethodBeat.i(107728);
-    this.uQI = null;
-    this.uQJ = new a.c()
+    this.vTS = null;
+    this.vTT = new a.c()
     {
-      public final void dt(Object paramAnonymousObject)
+      public final void dw(Object paramAnonymousObject)
       {
         AppMethodBeat.i(107726);
-        if (c.this.uQI != null) {
-          c.this.uQI.dt(paramAnonymousObject);
+        if (c.this.vTS != null) {
+          c.this.vTS.dw(paramAnonymousObject);
         }
         AppMethodBeat.o(107726);
       }
     };
-    this.uQK = new au.a()
+    this.vTU = new av.a()
     {
       public final boolean onTimerExpired()
       {
@@ -55,24 +55,24 @@ public final class c
             return true;
           }
           int i = c.this.getCurrentPosition();
-          if (c.this.uQj != null) {
-            c.this.uQj.IU(i);
+          if (c.this.vTt != null) {
+            c.this.vTt.Kr(i);
           }
-          ac.d("MicroMsg.SectionRepeatMediaPlayer", "position[%d] repeat[%d, %d] duration[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(c.this.uQA), Integer.valueOf(c.this.uQB), Integer.valueOf(c.this.getDuration()) });
-          int j = c.this.uQB;
+          ad.d("MicroMsg.SectionRepeatMediaPlayer", "position[%d] repeat[%d, %d] duration[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(c.this.vTK), Integer.valueOf(c.this.vTL), Integer.valueOf(c.this.getDuration()) });
+          int j = c.this.vTL;
           if (i < j)
           {
             AppMethodBeat.o(107727);
             return true;
           }
-          ac.i("MicroMsg.SectionRepeatMediaPlayer", "reach repeat end time, seek to %s", new Object[] { Integer.valueOf(c.this.uQB) });
-          c.this.seekTo(c.this.uQA);
+          ad.i("MicroMsg.SectionRepeatMediaPlayer", "reach repeat end time, seek to %s", new Object[] { Integer.valueOf(c.this.vTL) });
+          c.this.seekTo(c.this.vTK);
           AppMethodBeat.o(107727);
           return false;
         }
         catch (IllegalStateException localIllegalStateException)
         {
-          ac.e("MicroMsg.SectionRepeatMediaPlayer", "MediaPlayer may be released. %s", new Object[] { localIllegalStateException.getMessage() });
+          ad.e("MicroMsg.SectionRepeatMediaPlayer", "MediaPlayer may be released. %s", new Object[] { localIllegalStateException.getMessage() });
           if (!c.this.released)
           {
             AppMethodBeat.o(107727);
@@ -83,31 +83,31 @@ public final class c
         return false;
       }
     };
-    int i = CaptureMMProxy.getInstance().getInt(ah.a.GKr, -1);
+    int i = CaptureMMProxy.getInstance().getInt(al.a.IwJ, -1);
     if (i == 1)
     {
-      ac.i("MicroMsg.SectionRepeatMediaPlayer", "used system media player");
-      this.uQH = new d();
+      ad.i("MicroMsg.SectionRepeatMediaPlayer", "used system media player");
+      this.vTR = new d();
     }
     for (;;)
     {
-      this.hNn = new au("check auto job", this.uQK, true);
+      this.igC = new av("check auto job", this.vTU, true);
       AppMethodBeat.o(107728);
       return;
       if (i == 2)
       {
-        ac.i("MicroMsg.SectionRepeatMediaPlayer", "used mm video player");
-        this.uQH = new b();
+        ad.i("MicroMsg.SectionRepeatMediaPlayer", "used mm video player");
+        this.vTR = new b();
       }
       else if (CaptureMMProxy.getInstance().checkUseMMVideoPlayer())
       {
-        ac.i("MicroMsg.SectionRepeatMediaPlayer", "default used mm video player");
-        this.uQH = new b();
+        ad.i("MicroMsg.SectionRepeatMediaPlayer", "default used mm video player");
+        this.vTR = new b();
       }
       else
       {
-        ac.i("MicroMsg.SectionRepeatMediaPlayer", "default used system media player");
-        this.uQH = new d();
+        ad.i("MicroMsg.SectionRepeatMediaPlayer", "default used system media player");
+        this.vTR = new d();
       }
     }
   }
@@ -115,35 +115,35 @@ public final class c
   public final void a(a.a parama)
   {
     AppMethodBeat.i(107744);
-    this.uQH.a(parama);
+    this.vTR.a(parama);
     AppMethodBeat.o(107744);
   }
   
   public final void a(a.b paramb)
   {
     AppMethodBeat.i(107746);
-    this.uQH.a(paramb);
+    this.vTR.a(paramb);
     AppMethodBeat.o(107746);
   }
   
   public final void a(a.c paramc)
   {
     AppMethodBeat.i(107735);
-    this.uQH.a(paramc);
+    this.vTR.a(paramc);
     AppMethodBeat.o(107735);
   }
   
   public final void a(a.d paramd)
   {
     AppMethodBeat.i(107745);
-    this.uQH.a(paramd);
+    this.vTR.a(paramd);
     AppMethodBeat.o(107745);
   }
   
   public final int getCurrentPosition()
   {
     AppMethodBeat.i(107737);
-    int i = this.uQH.getCurrentPosition();
+    int i = this.vTR.getCurrentPosition();
     AppMethodBeat.o(107737);
     return i;
   }
@@ -151,9 +151,9 @@ public final class c
   public final int getDuration()
   {
     AppMethodBeat.i(107738);
-    if (this.uQH != null)
+    if (this.vTR != null)
     {
-      int i = this.uQH.getDuration();
+      int i = this.vTR.getDuration();
       AppMethodBeat.o(107738);
       return i;
     }
@@ -164,7 +164,7 @@ public final class c
   public final boolean isPlaying()
   {
     AppMethodBeat.i(107740);
-    boolean bool = this.uQH.isPlaying();
+    boolean bool = this.vTR.isPlaying();
     AppMethodBeat.o(107740);
     return bool;
   }
@@ -172,15 +172,15 @@ public final class c
   public final void pause()
   {
     AppMethodBeat.i(107733);
-    this.uQH.pause();
-    this.hNn.stopTimer();
+    this.vTR.pause();
+    this.igC.stopTimer();
     AppMethodBeat.o(107733);
   }
   
   public final void prepareAsync()
   {
     AppMethodBeat.i(107742);
-    this.uQH.prepareAsync();
+    this.vTR.prepareAsync();
     AppMethodBeat.o(107742);
   }
   
@@ -188,11 +188,11 @@ public final class c
   {
     AppMethodBeat.i(107731);
     this.released = true;
-    this.uQH.release();
-    if (this.hNn != null)
+    this.vTR.release();
+    if (this.igC != null)
     {
-      this.hNn.stopTimer();
-      this.hNn.quit();
+      this.igC.stopTimer();
+      this.igC.quit();
     }
     AppMethodBeat.o(107731);
   }
@@ -200,31 +200,31 @@ public final class c
   public final void seekTo(int paramInt)
   {
     AppMethodBeat.i(107741);
-    this.uQH.seekTo(paramInt);
+    this.vTR.seekTo(paramInt);
     AppMethodBeat.o(107741);
   }
   
   public final void setAudioStreamType(int paramInt)
   {
     AppMethodBeat.i(107736);
-    this.uQH.setAudioStreamType(paramInt);
+    this.vTR.setAudioStreamType(paramInt);
     AppMethodBeat.o(107736);
   }
   
   public final void setDataSource(String paramString)
   {
     AppMethodBeat.i(107730);
-    this.uQH.setDataSource(paramString);
+    this.vTR.setDataSource(paramString);
     AppMethodBeat.o(107730);
   }
   
   public final void setLoop(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(107729);
-    this.uQA = paramInt1;
-    this.uQB = paramInt2;
-    if (this.uQH != null) {
-      this.uQH.setLoop(this.uQA, this.uQB);
+    this.vTK = paramInt1;
+    this.vTL = paramInt2;
+    if (this.vTR != null) {
+      this.vTR.setLoop(this.vTK, this.vTL);
     }
     AppMethodBeat.o(107729);
   }
@@ -232,41 +232,41 @@ public final class c
   public final void setLooping(boolean paramBoolean)
   {
     AppMethodBeat.i(107743);
-    this.uQH.setLooping(paramBoolean);
+    this.vTR.setLooping(paramBoolean);
     AppMethodBeat.o(107743);
   }
   
   public final void setSurface(Surface paramSurface)
   {
     AppMethodBeat.i(107739);
-    this.uQH.setSurface(paramSurface);
+    this.vTR.setSurface(paramSurface);
     AppMethodBeat.o(107739);
   }
   
   public final void start()
   {
     AppMethodBeat.i(107732);
-    this.uQH.start();
-    this.hNn.au(30L, 30L);
+    this.vTR.start();
+    this.igC.az(30L, 30L);
     AppMethodBeat.o(107732);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(107734);
-    this.uQH.stop();
-    this.hNn.stopTimer();
+    this.vTR.stop();
+    this.igC.stopTimer();
     AppMethodBeat.o(107734);
   }
   
   public static abstract interface a
   {
-    public abstract void IU(int paramInt);
+    public abstract void Kr(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.a.c
  * JD-Core Version:    0.7.0.1
  */

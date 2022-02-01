@@ -13,18 +13,18 @@ public final class g
     super(parama, parama1);
   }
   
-  public final String aup(String paramString)
+  public final String azv(String paramString)
   {
     return paramString;
   }
   
-  public final boolean dIV()
+  public final boolean dVi()
   {
     AppMethodBeat.i(96072);
-    if ((this.xYf != null) && (!TextUtils.isEmpty(this.xYf.xNA))) {}
-    for (String str = this.xYf.xNA;; str = q.i(this.dwE))
+    if ((this.zoe != null) && (!TextUtils.isEmpty(this.zoe.zdu))) {}
+    for (String str = this.zoe.zdu;; str = q.i(this.dIQ))
     {
-      i.aT(this.xYf.getPath(), this.xYf.dIT(), str);
+      i.bb(this.zoe.getPath(), this.zoe.dVg(), str);
       AppMethodBeat.o(96072);
       return true;
     }

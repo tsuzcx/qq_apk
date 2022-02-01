@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsns.SnsAdClick;
 import com.tencent.mm.sdk.b.b;
 
 public final class qt
   extends b
 {
-  public a dtM;
-  
   public qt()
   {
     this((byte)0);
@@ -16,18 +12,8 @@ public final class qt
   
   private qt(byte paramByte)
   {
-    AppMethodBeat.i(125628);
-    this.dtM = new a();
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(125628);
-  }
-  
-  public static final class a
-  {
-    public int dtN;
-    public SnsAdClick dtu;
-    public String dtx;
   }
 }
 

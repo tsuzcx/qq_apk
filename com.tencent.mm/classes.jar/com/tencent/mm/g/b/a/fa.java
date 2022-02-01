@@ -6,108 +6,85 @@ import com.tencent.mm.plugin.report.a;
 public final class fa
   extends a
 {
-  public long dVg = 0L;
-  public long dWt = 0L;
-  public long dWu = 0L;
-  public long dWv = 0L;
-  private long dWw = 0L;
-  private long dWx = 0L;
-  private long dWy = 0L;
+  private String dWC;
+  private String ejE;
+  public int ejF;
+  public long ejG;
+  public long ejH;
+  public int ejI;
+  private String ejz;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(118510);
+    AppMethodBeat.i(197547);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dWt);
+    ((StringBuffer)localObject).append(this.ejz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWu);
+    ((StringBuffer)localObject).append(this.ejE);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWv);
+    ((StringBuffer)localObject).append(this.dWC);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWw);
+    ((StringBuffer)localObject).append(this.ejF);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWx);
+    ((StringBuffer)localObject).append(this.ejG);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVg);
+    ((StringBuffer)localObject).append(this.ejH);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWy);
+    ((StringBuffer)localObject).append(this.ejI);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(118510);
+    awz((String)localObject);
+    AppMethodBeat.o(197547);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(118511);
+    AppMethodBeat.i(197548);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ClickMyProfileTime:").append(this.dWt);
+    ((StringBuffer)localObject).append("PublishId:").append(this.ejz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickCameraTime:").append(this.dWu);
+    ((StringBuffer)localObject).append("FriendUsername:").append(this.ejE);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickGuidePageTime:").append(this.dWv);
+    ((StringBuffer)localObject).append("CommentId:").append(this.dWC);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isProfileRedPoint:").append(this.dWw);
+    ((StringBuffer)localObject).append("CommentType:").append(this.ejF);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isCameraRedPoint:").append(this.dWx);
+    ((StringBuffer)localObject).append("CurrentLikeCount:").append(this.ejG);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoObjectId:").append(this.dVg);
+    ((StringBuffer)localObject).append("CurrentCommentCount:").append(this.ejH);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isStoryCommentRedDot:").append(this.dWy);
+    ((StringBuffer)localObject).append("OpResult:").append(this.ejI);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118511);
+    AppMethodBeat.o(197548);
     return localObject;
-  }
-  
-  public final fa RE()
-  {
-    this.dWt = 0L;
-    return this;
-  }
-  
-  public final fa RF()
-  {
-    this.dWu = 0L;
-    return this;
-  }
-  
-  public final fa RG()
-  {
-    this.dWv = 0L;
-    return this;
-  }
-  
-  public final fa RH()
-  {
-    this.dVg = 0L;
-    return this;
-  }
-  
-  public final long RI()
-  {
-    return this.dVg;
   }
   
   public final int getId()
   {
-    return 16844;
+    return 20565;
   }
   
-  public final fa jA(long paramLong)
+  public final fa oh(String paramString)
   {
-    this.dWx = paramLong;
+    AppMethodBeat.i(197544);
+    this.ejz = t("PublishId", paramString, true);
+    AppMethodBeat.o(197544);
     return this;
   }
   
-  public final fa jB(long paramLong)
+  public final fa oi(String paramString)
   {
-    this.dWy = paramLong;
+    AppMethodBeat.i(197545);
+    this.ejE = t("FriendUsername", paramString, true);
+    AppMethodBeat.o(197545);
     return this;
   }
   
-  public final fa jz(long paramLong)
+  public final fa oj(String paramString)
   {
-    this.dWw = paramLong;
+    AppMethodBeat.i(197546);
+    this.dWC = t("CommentId", paramString, true);
+    AppMethodBeat.o(197546);
     return this;
   }
 }

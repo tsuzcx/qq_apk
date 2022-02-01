@@ -7,30 +7,30 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.w;
+import com.tencent.mm.g.b.a.z;
 import com.tencent.mm.plugin.emoji.a.a.a;
 import com.tencent.mm.plugin.emoji.a.a.f.a;
 import com.tencent.mm.plugin.emoji.e.k;
 import com.tencent.mm.plugin.emoji.f.n;
 import com.tencent.mm.plugin.emoji.ui.BaseEmojiStoreUI;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.protocal.protobuf.chh;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.cmg;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.io.IOException;
 
 public class EmojiStoreV2RankUI
   extends BaseEmojiStoreUI
 {
-  protected w pbh;
-  private boolean pjJ;
+  protected z pER;
+  private boolean pNj;
   
   public EmojiStoreV2RankUI()
   {
     AppMethodBeat.i(109236);
-    this.pbh = new w();
-    this.pjJ = true;
+    this.pER = new z();
+    this.pNj = true;
     AppMethodBeat.o(109236);
   }
   
@@ -38,9 +38,9 @@ public class EmojiStoreV2RankUI
   {
     AppMethodBeat.i(109239);
     super.a(paramInt1, paramInt2, paramString, paramn);
-    if (this.pjJ)
+    if (this.pNj)
     {
-      ap.n(new Runnable()
+      aq.o(new Runnable()
       {
         public final void run()
         {
@@ -49,7 +49,7 @@ public class EmojiStoreV2RankUI
           AppMethodBeat.o(109235);
         }
       }, 300L);
-      this.pjJ = false;
+      this.pNj = false;
     }
     AppMethodBeat.o(109239);
   }
@@ -59,16 +59,16 @@ public class EmojiStoreV2RankUI
     AppMethodBeat.i(109240);
     if (paramf == null)
     {
-      ac.i("MicroMsg.EmojiStoreV2RankUI", "item is null.");
+      ad.i("MicroMsg.EmojiStoreV2RankUI", "item is null.");
       AppMethodBeat.o(109240);
       return;
     }
-    if (paramf.oYk == f.a.oYt)
+    if (paramf.pBU == f.a.pCd)
     {
-      paramf = paramf.oYm;
+      paramf = paramf.pBW;
       if (paramf == null)
       {
-        ac.i("MicroMsg.EmojiStoreV2RankUI", "banner set is null. do nothing");
+        ad.i("MicroMsg.EmojiStoreV2RankUI", "banner set is null. do nothing");
         AppMethodBeat.o(109240);
         return;
       }
@@ -76,44 +76,44 @@ public class EmojiStoreV2RankUI
       AppMethodBeat.o(109240);
       return;
     }
-    EmotionSummary localEmotionSummary = paramf.oYl;
+    EmotionSummary localEmotionSummary = paramf.pBV;
     if (localEmotionSummary == null)
     {
-      ac.i("MicroMsg.EmojiStoreV2RankUI", "summary is null. do nothing");
+      ad.i("MicroMsg.EmojiStoreV2RankUI", "summary is null. do nothing");
       AppMethodBeat.o(109240);
       return;
     }
-    this.pbh.fU(String.valueOf(paramInt + 1));
-    this.pbh.fS(localEmotionSummary.ProductID);
-    this.pbh.fT(localEmotionSummary.Introduce);
-    this.pbh.dHA = 3;
-    this.pbh.aHZ();
+    this.pER.gW(String.valueOf(paramInt + 1));
+    this.pER.gU(localEmotionSummary.ProductID);
+    this.pER.gV(localEmotionSummary.Introduce);
+    this.pER.dUD = 3;
+    this.pER.aLk();
     String str = getIntent().getStringExtra("to_talker_name");
-    k.a(getContext(), localEmotionSummary, 5, paramf.mStatus, paramf.FG, str, 105, this.pbh);
+    k.a(getContext(), localEmotionSummary, 5, paramf.mStatus, paramf.Hx, str, 105, this.pER);
     AppMethodBeat.o(109240);
   }
   
-  public final int ccQ()
+  public final int chC()
+  {
+    return 10;
+  }
+  
+  public final int cht()
   {
     return 5;
   }
   
-  public final int ccR()
+  public final int chu()
   {
     return 105;
   }
   
-  public final a ccS()
+  public final a chv()
   {
     AppMethodBeat.i(109241);
     com.tencent.mm.plugin.emoji.a.f localf = new com.tencent.mm.plugin.emoji.a.f(getContext());
     AppMethodBeat.o(109241);
     return localf;
-  }
-  
-  public final int ccZ()
-  {
-    return 10;
   }
   
   public int getForceOrientation()
@@ -146,23 +146,23 @@ public class EmojiStoreV2RankUI
   {
     AppMethodBeat.i(109237);
     super.onCreate(paramBundle);
-    h.wUl.f(12740, new Object[] { Integer.valueOf(4), "", "", "", Integer.valueOf(5), Integer.valueOf(5) });
-    this.pbh.dHz = 3;
-    this.pdT.pbh = this.pbh;
+    g.yhR.f(12740, new Object[] { Integer.valueOf(4), "", "", "", Integer.valueOf(5), Integer.valueOf(5) });
+    this.pER.dUC = 3;
+    this.pHv.pER = this.pER;
     long l = System.currentTimeMillis();
-    paramBundle = new chh();
-    paramBundle.Fvw = l;
-    this.pbh.dHy = l;
-    ac.i("MicroMsg.EmojiStoreV2RankUI", "initeData: %s", new Object[] { Long.valueOf(paramBundle.Fvw) });
+    paramBundle = new cmg();
+    paramBundle.HfB = l;
+    this.pER.dUB = l;
+    ad.i("MicroMsg.EmojiStoreV2RankUI", "initeData: %s", new Object[] { Long.valueOf(paramBundle.HfB) });
     try
     {
-      this.pdG = paramBundle.toByteArray();
+      this.pHi = paramBundle.toByteArray();
       AppMethodBeat.o(109237);
       return;
     }
     catch (IOException paramBundle)
     {
-      ac.printErrStackTrace("MicroMsg.EmojiStoreV2RankUI", paramBundle, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.EmojiStoreV2RankUI", paramBundle, "", new Object[0]);
       AppMethodBeat.o(109237);
     }
   }

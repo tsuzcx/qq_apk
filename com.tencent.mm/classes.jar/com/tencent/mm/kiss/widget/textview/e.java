@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private final d[] glz;
+  private final d[] gFj;
   private final Object mLock;
   private int mPoolSize;
   
@@ -14,7 +14,7 @@ public final class e
   {
     AppMethodBeat.i(141032);
     this.mLock = new Object();
-    this.glz = new d[3];
+    this.gFj = new d[3];
     AppMethodBeat.o(141032);
   }
   
@@ -30,7 +30,7 @@ public final class e
         if (i >= this.mPoolSize) {
           break label72;
         }
-        if (this.glz[i] == paramd)
+        if (this.gFj[i] == paramd)
         {
           i = 1;
           if (i == 0) {
@@ -50,26 +50,27 @@ public final class e
       label72:
       i = 0;
     }
-    paramd.glm = null;
-    paramd.gln = null;
-    paramd.glo = 0;
-    paramd.glp = 0;
-    paramd.glq = new TextPaint();
+    paramd.gEW = null;
+    paramd.gEX = null;
+    paramd.gEY = 0;
+    paramd.gEZ = 0;
+    paramd.gFa = new TextPaint();
     paramd.width = 0;
-    paramd.glr = Layout.Alignment.ALIGN_NORMAL;
+    paramd.gFb = Layout.Alignment.ALIGN_NORMAL;
     paramd.gravity = 51;
-    paramd.gls = null;
-    paramd.glt = 0;
+    paramd.gFc = null;
+    paramd.gFd = 0;
     paramd.maxLines = 2147483647;
-    paramd.glu = null;
-    paramd.glv = 0.0F;
-    paramd.glw = 1.0F;
-    paramd.glx = false;
+    paramd.gFe = null;
+    paramd.gFf = 0.0F;
+    paramd.gFg = 1.0F;
+    paramd.gFh = false;
     paramd.maxLength = 0;
-    paramd.gly = null;
-    if (this.mPoolSize < this.glz.length)
+    paramd.gFi = null;
+    paramd.breakStrategy = -1;
+    if (this.mPoolSize < this.gFj.length)
     {
-      this.glz[this.mPoolSize] = paramd;
+      this.gFj[this.mPoolSize] = paramd;
       this.mPoolSize += 1;
       AppMethodBeat.o(141033);
       return true;
@@ -78,15 +79,15 @@ public final class e
     return false;
   }
   
-  public final d ahV()
+  public final d akG()
   {
     synchronized (this.mLock)
     {
       if (this.mPoolSize > 0)
       {
         int i = this.mPoolSize - 1;
-        d locald = this.glz[i];
-        this.glz[i] = null;
+        d locald = this.gFj[i];
+        this.gFj[i] = null;
         this.mPoolSize -= 1;
         return locald;
       }

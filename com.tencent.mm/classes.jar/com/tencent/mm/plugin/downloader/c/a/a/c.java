@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.downloader.c.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String oGa;
+  public String pjE;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -13,28 +13,28 @@ public final class c
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.oGa != null) {
-        paramVarArgs.d(1, this.oGa);
+      if (this.pjE != null) {
+        paramVarArgs.d(1, this.pjE);
       }
       AppMethodBeat.o(153043);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.oGa == null) {
+      if (this.pjE == null) {
         break label213;
       }
     }
     label213:
-    for (paramInt = f.a.a.b.b.a.e(1, this.oGa) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.pjE) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(153043);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(153043);
@@ -50,7 +50,7 @@ public final class c
           AppMethodBeat.o(153043);
           return -1;
         }
-        localc.oGa = locala.LVo.readString();
+        localc.pjE = locala.NPN.readString();
         AppMethodBeat.o(153043);
         return 0;
       }
@@ -61,7 +61,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.c.a.a.c
  * JD-Core Version:    0.7.0.1
  */

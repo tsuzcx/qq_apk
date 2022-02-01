@@ -5,93 +5,93 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.audio.b.d;
 import com.tencent.mm.plugin.audio.c.a.a;
 import com.tencent.mm.plugin.audio.d.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.ao.a;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 import java.util.Iterator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/audio/SceneVoiceRecorderAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyResponse", "", "(Lkotlin/jvm/functions/Function1;)V", "isRequestBluetoothStart", "getOnStartRecord", "()Lkotlin/jvm/functions/Function1;", "setOnStartRecord", "startRecordHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecordDevice", "Companion", "plugin-audiologic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/audio/SceneVoiceRecorderAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyResponse", "", "(Lkotlin/jvm/functions/Function1;)V", "isRequestBluetoothStart", "getOnStartRecord", "()Lkotlin/jvm/functions/Function1;", "setOnStartRecord", "startRecordHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecordDevice", "Companion", "plugin-audiologic_release"})
 public final class b
   extends d
 {
-  public static final b.a cQE;
-  private final ao cQB;
-  private boolean cQC;
-  d.g.a.b<? super Boolean, y> cQD;
+  public static final b.a dbU;
+  private final ap dbR;
+  private boolean dbS;
+  d.g.a.b<? super Boolean, z> dbT;
   
   static
   {
-    AppMethodBeat.i(209476);
-    cQE = new b.a((byte)0);
-    AppMethodBeat.o(209476);
+    AppMethodBeat.i(205855);
+    dbU = new b.a((byte)0);
+    AppMethodBeat.o(205855);
   }
   
-  public b(d.g.a.b<? super Boolean, y> paramb)
+  public b(d.g.a.b<? super Boolean, z> paramb)
   {
-    AppMethodBeat.i(209475);
-    this.cQD = paramb;
-    com.tencent.mm.plugin.audio.d.a.bCE();
-    c.bCE();
-    paramb = com.tencent.mm.plugin.audio.c.a.mRw;
+    AppMethodBeat.i(205854);
+    this.dbT = paramb;
+    com.tencent.mm.plugin.audio.d.a.bGM();
+    c.bGM();
+    paramb = com.tencent.mm.plugin.audio.c.a.nrV;
     a.a.a((com.tencent.mm.plugin.audio.b.a)this, "record");
-    this.cQB = new ao((ao.a)new b(this));
-    AppMethodBeat.o(209475);
+    this.dbR = new ap((ap.a)new b(this));
+    AppMethodBeat.o(205854);
   }
   
-  public final void Mv()
+  public final void Oe()
   {
-    AppMethodBeat.i(209472);
-    Object localObject = com.tencent.mm.plugin.audio.c.a.mRw;
+    AppMethodBeat.i(205851);
+    Object localObject = com.tencent.mm.plugin.audio.c.a.nrV;
     a.a.a((com.tencent.mm.plugin.audio.b.a)this, "record");
-    ac.i("MicroMsg.SceneVoiceRecorderAudioManager", "some one has been request audio to record");
-    localObject = com.tencent.mm.plugin.audio.c.a.mRw;
-    localObject = com.tencent.mm.plugin.audio.d.a.mRz;
-    if (com.tencent.mm.plugin.audio.d.a.bCA())
+    ad.i("MicroMsg.SceneVoiceRecorderAudioManager", "some one has been request audio to record");
+    localObject = com.tencent.mm.plugin.audio.c.a.nrV;
+    localObject = com.tencent.mm.plugin.audio.d.a.nrY;
+    if (com.tencent.mm.plugin.audio.d.a.bGG())
     {
       if (isBluetoothScoOn())
       {
-        this.cQC = true;
-        this.cQD.ay(Boolean.TRUE);
+        this.dbS = true;
+        this.dbT.invoke(Boolean.TRUE);
         b("record", Integer.valueOf(1));
-        AppMethodBeat.o(209472);
+        AppMethodBeat.o(205851);
         return;
       }
-      this.cQC = true;
+      this.dbS = true;
       if (b("record", Integer.valueOf(4)) != -1)
       {
-        this.cQB.sendEmptyMessageDelayed(0, 1000L);
-        AppMethodBeat.o(209472);
+        this.dbR.sendEmptyMessageDelayed(0, 1000L);
+        AppMethodBeat.o(205851);
         return;
       }
-      this.cQD.ay(Boolean.TRUE);
-      AppMethodBeat.o(209472);
+      this.dbT.invoke(Boolean.TRUE);
+      AppMethodBeat.o(205851);
       return;
     }
-    this.cQD.ay(Boolean.TRUE);
-    AppMethodBeat.o(209472);
+    this.dbT.invoke(Boolean.TRUE);
+    AppMethodBeat.o(205851);
   }
   
-  public final void Mw()
+  public final void Of()
   {
-    AppMethodBeat.i(209473);
-    this.cQB.removeCallbacksAndMessages(null);
-    if (this.cQC)
+    AppMethodBeat.i(205852);
+    this.dbR.removeCallbacksAndMessages(null);
+    if (this.dbS)
     {
-      Sl("record");
-      this.cQC = false;
+      VJ("record");
+      this.dbS = false;
     }
-    a.a locala = com.tencent.mm.plugin.audio.c.a.mRw;
-    a.a.So("record");
-    AppMethodBeat.o(209473);
+    a.a locala = com.tencent.mm.plugin.audio.c.a.nrV;
+    a.a.VM("record");
+    AppMethodBeat.o(205852);
   }
   
-  public final void hv(int paramInt)
+  public final void hC(int paramInt)
   {
-    AppMethodBeat.i(209474);
-    super.hv(paramInt);
+    AppMethodBeat.i(205853);
+    super.hC(paramInt);
     switch (paramInt)
     {
     }
@@ -99,16 +99,16 @@ public final class b
     label135:
     for (;;)
     {
-      AppMethodBeat.o(209474);
+      AppMethodBeat.o(205853);
       return;
-      this.cQB.removeCallbacksAndMessages(null);
-      k.h("record", "type");
-      Iterator localIterator = ((Iterable)this.mRe).iterator();
+      this.dbR.removeCallbacksAndMessages(null);
+      p.h("record", "type");
+      Iterator localIterator = ((Iterable)this.nrD).iterator();
       Object localObject;
       while (localIterator.hasNext())
       {
         localObject = localIterator.next();
-        if (k.g((String)localObject, "record")) {
+        if (p.i((String)localObject, "record")) {
           label94:
           if (localObject == null) {
             break label132;
@@ -120,8 +120,8 @@ public final class b
         if (paramInt == 0) {
           break label135;
         }
-        ac.i("MicroMsg.SceneVoiceRecorderAudioManager", "checkIfSomeRequestAvailable available");
-        this.cQD.ay(Boolean.TRUE);
+        ad.i("MicroMsg.SceneVoiceRecorderAudioManager", "checkIfSomeRequestAvailable available");
+        this.dbT.invoke(Boolean.TRUE);
         break;
         localObject = null;
         break label94;
@@ -129,17 +129,17 @@ public final class b
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
   static final class b
-    implements ao.a
+    implements ap.a
   {
     b(b paramb) {}
     
     public final boolean handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(209471);
-      this.cQF.cQD.ay(Boolean.FALSE);
-      AppMethodBeat.o(209471);
+      AppMethodBeat.i(205850);
+      this.dbV.dbT.invoke(Boolean.FALSE);
+      AppMethodBeat.o(205850);
       return false;
     }
   }

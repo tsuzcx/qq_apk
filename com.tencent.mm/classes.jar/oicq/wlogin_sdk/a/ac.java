@@ -5,7 +5,7 @@ public final class ac
 {
   public ac()
   {
-    this.LVT = 310;
+    this.NQs = 310;
   }
 }
 

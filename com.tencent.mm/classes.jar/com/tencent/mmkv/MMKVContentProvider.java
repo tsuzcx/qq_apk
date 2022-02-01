@@ -18,9 +18,9 @@ import java.util.List;
 public class MMKVContentProvider
   extends ContentProvider
 {
-  private static Uri JIr;
+  private static Uri LCa;
   
-  protected static String aP(Context paramContext, int paramInt)
+  protected static String aS(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(13531);
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
@@ -42,7 +42,7 @@ public class MMKVContentProvider
     return "";
   }
   
-  private static String iF(Context paramContext)
+  private static String iP(Context paramContext)
   {
     AppMethodBeat.i(13529);
     try
@@ -67,12 +67,12 @@ public class MMKVContentProvider
     return null;
   }
   
-  protected static Uri kF(Context paramContext)
+  protected static Uri kR(Context paramContext)
   {
     AppMethodBeat.i(13528);
-    if (JIr != null)
+    if (LCa != null)
     {
-      paramContext = JIr;
+      paramContext = LCa;
       AppMethodBeat.o(13528);
       return paramContext;
     }
@@ -81,14 +81,14 @@ public class MMKVContentProvider
       AppMethodBeat.o(13528);
       return null;
     }
-    paramContext = iF(paramContext);
+    paramContext = iP(paramContext);
     if (paramContext == null)
     {
       AppMethodBeat.o(13528);
       return null;
     }
     paramContext = Uri.parse("content://".concat(String.valueOf(paramContext)));
-    JIr = paramContext;
+    LCa = paramContext;
     AppMethodBeat.o(13528);
     return paramContext;
   }
@@ -148,14 +148,14 @@ public class MMKVContentProvider
       AppMethodBeat.o(13530);
       return false;
     }
-    localObject = iF((Context)localObject);
+    localObject = iP((Context)localObject);
     if (localObject == null)
     {
       AppMethodBeat.o(13530);
       return false;
     }
-    if (JIr == null) {
-      JIr = Uri.parse("content://".concat(String.valueOf(localObject)));
+    if (LCa == null) {
+      LCa = Uri.parse("content://".concat(String.valueOf(localObject)));
     }
     AppMethodBeat.o(13530);
     return true;

@@ -11,8 +11,8 @@ class GroupIDKeyDataInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<GroupIDKeyDataInfo> CREATOR;
-  ArrayList<IDKey> wTA;
-  public boolean wTB;
+  ArrayList<IDKey> yhk;
+  public boolean yhl;
   
   static
   {
@@ -24,12 +24,12 @@ class GroupIDKeyDataInfo
   protected GroupIDKeyDataInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(143814);
-    this.wTA = new ArrayList();
-    paramParcel.readTypedList(this.wTA, IDKey.CREATOR);
+    this.yhk = new ArrayList();
+    paramParcel.readTypedList(this.yhk, IDKey.CREATOR);
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.wTB = bool;
+      this.yhl = bool;
       AppMethodBeat.o(143814);
       return;
       bool = false;
@@ -39,9 +39,9 @@ class GroupIDKeyDataInfo
   GroupIDKeyDataInfo(ArrayList<IDKey> paramArrayList)
   {
     AppMethodBeat.i(143812);
-    this.wTA = new ArrayList();
-    this.wTA = paramArrayList;
-    this.wTB = false;
+    this.yhk = new ArrayList();
+    this.yhk = paramArrayList;
+    this.yhl = false;
     AppMethodBeat.o(143812);
   }
   
@@ -53,8 +53,8 @@ class GroupIDKeyDataInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(143813);
-    paramParcel.writeTypedList(this.wTA);
-    if (this.wTB) {}
+    paramParcel.writeTypedList(this.yhk);
+    if (this.yhl) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);

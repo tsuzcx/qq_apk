@@ -18,7 +18,7 @@ public abstract interface SlookSmartClipDataElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.samsung.android.sdk.look.smartclip.SlookSmartClipDataElement
  * JD-Core Version:    0.7.0.1
  */

@@ -7,34 +7,32 @@ import android.content.Intent;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.st;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.b;
-import com.tencent.mm.model.ar.b.a;
+import com.tencent.mm.g.a.tk;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.b;
+import com.tencent.mm.model.as.b.a;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import d.g.b.v.f;
-import d.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import d.g.b.y.f;
 import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebViewJSApi;", "Lcom/tencent/mm/plugin/box/webview/BoxWebViewJSApi;", "uiComponent", "Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;", "(Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;)V", "getContactUserName", "", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "dismissProgressDialog", "", "doOpenProfilePage", "", "username", "openAdPage", "params", "openProfilePage", "openVideoPage", "openWebView", "showProgressDialog", "cancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "viewContactProfile", "intent", "Landroid/content/Intent;", "Companion", "plugin-scan_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebViewJSApi;", "Lcom/tencent/mm/plugin/box/webview/BoxWebViewJSApi;", "uiComponent", "Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;", "(Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;)V", "getContactUserName", "", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "closePage", "", "params", "dismissProgressDialog", "doOpenProfilePage", "", "username", "openAdPage", "openProfilePage", "openVideoPage", "openWebView", "showProgressDialog", "cancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "viewContactProfile", "intent", "Landroid/content/Intent;", "Companion", "plugin-scan_release"})
 public final class i
   extends com.tencent.mm.plugin.box.webview.d
 {
-  public static final i.a wXx;
-  private com.tencent.mm.ui.base.p fua;
-  private final com.tencent.mm.plugin.box.c.c nua;
-  private String wXw;
+  public static final i.a yli;
+  private com.tencent.mm.ui.base.p fNb;
+  private final com.tencent.mm.plugin.box.c.c nVq;
+  private String ylh;
   
   static
   {
     AppMethodBeat.i(52144);
-    wXx = new i.a((byte)0);
+    yli = new i.a((byte)0);
     AppMethodBeat.o(52144);
   }
   
@@ -42,54 +40,63 @@ public final class i
   {
     super(paramc);
     AppMethodBeat.i(52143);
-    this.nua = paramc;
+    this.nVq = paramc;
     AppMethodBeat.o(52143);
   }
   
-  private final void aD(Intent paramIntent)
+  private final void aI(Intent paramIntent)
   {
-    AppMethodBeat.i(199576);
-    com.tencent.mm.br.d.b(this.nua.getActivityContext(), "profile", ".ui.ContactInfoUI", paramIntent);
-    AppMethodBeat.o(199576);
+    AppMethodBeat.i(186254);
+    com.tencent.mm.bs.d.b(this.nVq.getActivityContext(), "profile", ".ui.ContactInfoUI", paramIntent);
+    AppMethodBeat.o(186254);
+  }
+  
+  @JavascriptInterface
+  public final void closePage(String paramString)
+  {
+    AppMethodBeat.i(186256);
+    ad.i("MicroMsg.ScanBoxWebViewJSApi", "scanBoxJsApi closePage: %s", new Object[] { paramString });
+    com.tencent.e.h.LTJ.aP((Runnable)new b(this));
+    AppMethodBeat.o(186256);
   }
   
   @JavascriptInterface
   public final void openAdPage(String paramString)
   {
-    AppMethodBeat.i(199574);
-    d.g.b.k.h(paramString, "params");
-    ac.d("MicroMsg.ScanBoxWebViewJSApi", "alvinluo openAdPage %s", new Object[] { paramString });
+    AppMethodBeat.i(186252);
+    d.g.b.p.h(paramString, "params");
+    ad.d("MicroMsg.ScanBoxWebViewJSApi", "alvinluo openAdPage %s", new Object[] { paramString });
     try
     {
       Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).optString("adXml", "");
       localObject = ((JSONObject)localObject).optString("uxinfo", "");
-      ac.i("MicroMsg.ScanBoxWebViewJSApi", "openAdPage, adXml=".concat(String.valueOf(paramString)));
+      ad.i("MicroMsg.ScanBoxWebViewJSApi", "openAdPage, adXml=".concat(String.valueOf(paramString)));
       Intent localIntent = new Intent();
       localIntent.putExtra("sns_landing_pages_xml", paramString);
       localIntent.putExtra("sns_landig_pages_from_source", 14);
       localIntent.putExtra("sns_landing_pages_need_enter_and_exit_animation", false);
       localIntent.putExtra("sns_landing_pages_ux_info", (String)localObject);
-      if (this.nua.getActivityContext() != null)
+      if (this.nVq.getActivityContext() != null)
       {
-        com.tencent.mm.br.d.b(this.nua.getActivityContext(), "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", localIntent);
-        AppMethodBeat.o(199574);
+        com.tencent.mm.bs.d.b(this.nVq.getActivityContext(), "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", localIntent);
+        AppMethodBeat.o(186252);
         return;
       }
     }
     catch (Exception paramString)
     {
-      ac.printErrStackTrace("MicroMsg.ScanBoxWebViewJSApi", (Throwable)paramString, "alvinluo openAdPage exception", new Object[0]);
-      AppMethodBeat.o(199574);
+      ad.printErrStackTrace("MicroMsg.ScanBoxWebViewJSApi", (Throwable)paramString, "alvinluo openAdPage exception", new Object[0]);
+      AppMethodBeat.o(186252);
     }
   }
   
   @JavascriptInterface
   public final void openProfilePage(final String paramString)
   {
-    AppMethodBeat.i(199575);
-    d.g.b.k.h(paramString, "params");
-    ac.d("MicroMsg.ScanBoxWebViewJSApi", "alvinluo openProfilePage %s", new Object[] { paramString });
+    AppMethodBeat.i(186253);
+    d.g.b.p.h(paramString, "params");
+    ad.d("MicroMsg.ScanBoxWebViewJSApi", "alvinluo openProfilePage %s", new Object[] { paramString });
     for (;;)
     {
       try
@@ -101,14 +108,14 @@ public final class i
           boolean bool;
           if (paramString.length() == 0)
           {
-            break label616;
+            break label619;
             if (i != 0)
             {
-              ac.e("MicroMsg.ScanBoxWebViewJSApi", "doOpenProfilePage fail, username is null");
-              Toast.makeText(this.nua.getActivityContext(), (CharSequence)this.nua.getActivityContext().getString(2131759562, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
+              ad.e("MicroMsg.ScanBoxWebViewJSApi", "doOpenProfilePage fail, username is null");
+              Toast.makeText(this.nVq.getActivityContext(), (CharSequence)this.nVq.getActivityContext().getString(2131759562, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
               bool = false;
-              ac.i("MicroMsg.ScanBoxWebViewJSApi", "alvinluo openProfilePage result: %b", new Object[] { Boolean.valueOf(bool) });
-              AppMethodBeat.o(199575);
+              ad.i("MicroMsg.ScanBoxWebViewJSApi", "alvinluo openProfilePage result: %b", new Object[] { Boolean.valueOf(bool) });
+              AppMethodBeat.o(186253);
             }
           }
           else
@@ -116,58 +123,58 @@ public final class i
             i = 0;
             continue;
           }
-          final v.f localf = new v.f();
-          paramString = (com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
+          final y.f localf = new y.f();
+          paramString = (com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
           if (paramString == null) {
-            break label621;
+            break label624;
           }
-          paramString = paramString.awB();
+          paramString = paramString.azp();
           if (paramString == null) {
-            break label621;
+            break label624;
           }
-          paramString = paramString.aNt((String)localObject);
-          localf.KUQ = paramString;
-          if (((ai)localf.KUQ == null) || (((ai)localf.KUQ).aaQ() <= 0))
+          paramString = paramString.Bf((String)localObject);
+          localf.MLV = paramString;
+          if (((am)localf.MLV == null) || (((am)localf.MLV).adt() <= 0))
           {
-            paramString = g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-            d.g.b.k.g(paramString, "MMKernel.service(IMessengerStorage::class.java)");
-            localf.KUQ = ((com.tencent.mm.plugin.messenger.foundation.a.k)paramString).awB().aNp((String)localObject);
+            paramString = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+            d.g.b.p.g(paramString, "MMKernel.service(IMessengerStorage::class.java)");
+            localf.MLV = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramString).azp().aTh((String)localObject);
           }
           paramString = new Intent();
-          if (((ai)localf.KUQ != null) && (((ai)localf.KUQ).aaQ() > 0))
+          if (((am)localf.MLV != null) && (((am)localf.MLV).adt() > 0))
           {
             paramString.addFlags(268435456);
-            paramString.putExtra("Contact_User", ((ai)localf.KUQ).getUsername());
-            if (((ai)localf.KUQ).fad())
+            paramString.putExtra("Contact_User", ((am)localf.MLV).getUsername());
+            if (((am)localf.MLV).fqg())
             {
-              com.tencent.mm.plugin.report.service.h.wUl.kvStat(10298, ((ai)localf.KUQ).getUsername() + ",300");
+              com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, ((am)localf.MLV).getUsername() + ",300");
               paramString.putExtra("Contact_Scene", 300);
             }
-            if (((ai)localf.KUQ).aaE())
+            if (((am)localf.MLV).adh())
             {
-              localObject = new st();
-              ((st)localObject).dvI.intent = paramString;
-              ((st)localObject).dvI.username = ((ai)localf.KUQ).getUsername();
-              a.GpY.l((b)localObject);
+              localObject = new tk();
+              ((tk)localObject).dHR.intent = paramString;
+              ((tk)localObject).dHR.username = ((am)localf.MLV).getUsername();
+              a.IbL.l((b)localObject);
             }
-            aD(paramString);
+            aI(paramString);
             bool = true;
             continue;
           }
-          CharSequence localCharSequence = (CharSequence)this.wXw;
+          CharSequence localCharSequence = (CharSequence)this.ylh;
           if (localCharSequence == null) {
-            break label626;
+            break label629;
           }
           if (localCharSequence.length() == 0)
           {
-            break label626;
+            break label629;
             if (i == 0) {
-              ar.a.ayw().yd(this.wXw);
+              as.a.aBA().AJ(this.ylh);
             }
-            this.wXw = ((String)localObject);
-            ar.a.ayw().a((String)localObject, "", (ar.b.a)new b(this, localf, paramString));
-            paramString = (DialogInterface.OnCancelListener)new c((String)localObject);
-            this.fua = com.tencent.mm.ui.base.h.b(this.nua.getActivityContext(), this.nua.getActivityContext().getString(2131755936), true, paramString);
+            this.ylh = ((String)localObject);
+            as.a.aBA().a((String)localObject, "", (as.b.a)new c(this, localf, paramString));
+            paramString = (DialogInterface.OnCancelListener)new d((String)localObject);
+            this.fNb = com.tencent.mm.ui.base.h.b(this.nVq.getActivityContext(), this.nVq.getActivityContext().getString(2131755936), true, paramString);
             bool = true;
             continue;
           }
@@ -178,16 +185,16 @@ public final class i
       }
       catch (Exception paramString)
       {
-        ac.printErrStackTrace("MicroMsg.ScanBoxWebViewJSApi", (Throwable)paramString, "alvinluo openProfilePage exception", new Object[0]);
-        AppMethodBeat.o(199575);
+        ad.printErrStackTrace("MicroMsg.ScanBoxWebViewJSApi", (Throwable)paramString, "alvinluo openProfilePage exception", new Object[0]);
+        AppMethodBeat.o(186253);
         return;
       }
-      label616:
+      label619:
       continue;
-      label621:
+      label624:
       paramString = null;
       continue;
-      label626:
+      label629:
       int i = 1;
     }
   }
@@ -195,31 +202,31 @@ public final class i
   @JavascriptInterface
   public final void openVideoPage(String paramString)
   {
-    AppMethodBeat.i(199577);
-    d.g.b.k.h(paramString, "params");
-    ac.i("MicroMsg.ScanBoxWebViewJSApi", "openVideoPage param = ".concat(String.valueOf(paramString)));
+    AppMethodBeat.i(186255);
+    d.g.b.p.h(paramString, "params");
+    ad.i("MicroMsg.ScanBoxWebViewJSApi", "openVideoPage param = ".concat(String.valueOf(paramString)));
     try
     {
       Object localObject = new JSONObject(paramString).optString("videoUrl", "");
-      if (bs.isNullOrNil((String)localObject))
+      if (bt.isNullOrNil((String)localObject))
       {
-        ac.i("MicroMsg.ScanBoxWebViewJSApi", "openVideoPage videoUrl null");
-        AppMethodBeat.o(199577);
+        ad.i("MicroMsg.ScanBoxWebViewJSApi", "openVideoPage videoUrl null");
+        AppMethodBeat.o(186255);
         return;
       }
       paramString = new Intent();
       paramString.putExtra("rawUrl", (String)localObject);
-      localObject = this.nua.getActivityContext();
+      localObject = this.nVq.getActivityContext();
       if (localObject != null)
       {
-        com.tencent.mm.br.d.b((Context)localObject, "brandservice", ".ui.timeline.video.lite.VideoLiteUI", paramString);
-        AppMethodBeat.o(199577);
+        com.tencent.mm.bs.d.b((Context)localObject, "brandservice", ".ui.timeline.video.lite.VideoLiteUI", paramString);
+        AppMethodBeat.o(186255);
         return;
       }
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(199577);
+      AppMethodBeat.o(186255);
     }
   }
   
@@ -227,72 +234,86 @@ public final class i
   public final void openWebView(String paramString)
   {
     AppMethodBeat.i(52140);
-    d.g.b.k.h(paramString, "params");
-    ac.i("MicroMsg.ScanBoxWebViewJSApi", "alvinluo openWebView %s", new Object[] { paramString });
+    d.g.b.p.h(paramString, "params");
+    ad.i("MicroMsg.ScanBoxWebViewJSApi", "alvinluo openWebView %s", new Object[] { paramString });
     try
     {
       Object localObject = new JSONObject(paramString).optString("url", "");
       paramString = new Intent();
       paramString.putExtra("rawUrl", (String)localObject);
       paramString.putExtra("geta8key_scene", 67);
-      localObject = this.nua.getActivityContext();
+      localObject = this.nVq.getActivityContext();
       if (localObject != null)
       {
-        com.tencent.mm.br.d.b((Context)localObject, "webview", ".ui.tools.WebViewUI", paramString);
+        com.tencent.mm.bs.d.b((Context)localObject, "webview", ".ui.tools.WebViewUI", paramString);
         AppMethodBeat.o(52140);
         return;
       }
     }
     catch (Exception paramString)
     {
-      ac.printErrStackTrace("MicroMsg.ScanBoxWebViewJSApi", (Throwable)paramString, "alvinluo openWebView exception", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.ScanBoxWebViewJSApi", (Throwable)paramString, "alvinluo openWebView exception", new Object[0]);
       AppMethodBeat.o(52140);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "userName", "", "kotlin.jvm.PlatformType", "succ", "", "getContactCallBack"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class b
-    implements ar.b.a
+    implements Runnable
   {
-    b(i parami, v.f paramf, Intent paramIntent) {}
+    b(i parami) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(186249);
+      i.b(this.ylj).dismiss();
+      AppMethodBeat.o(186249);
+    }
+  }
+  
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "userName", "", "kotlin.jvm.PlatformType", "succ", "", "getContactCallBack"})
+  static final class c
+    implements as.b.a
+  {
+    c(i parami, y.f paramf, Intent paramIntent) {}
     
     public final void p(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(199572);
-      i.a(this.wXy);
-      if (i.b(this.wXy).getActivityContext() == null)
+      AppMethodBeat.i(186250);
+      i.a(this.ylj);
+      if (i.b(this.ylj).getActivityContext() == null)
       {
-        ac.w("MicroMsg.ScanBoxWebViewJSApi", "doOpenProfilePage getNow callback, context is null");
-        AppMethodBeat.o(199572);
+        ad.w("MicroMsg.ScanBoxWebViewJSApi", "doOpenProfilePage getNow callback, context is null");
+        AppMethodBeat.o(186250);
         return;
       }
-      i.c(this.wXy);
-      Object localObject = (com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
+      i.c(this.ylj);
+      Object localObject = (com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
       if (localObject != null)
       {
-        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject).awB();
+        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azp();
         if (localObject != null)
         {
-          localObject = ((bj)localObject).aNt(paramString);
+          localObject = ((bp)localObject).Bf(paramString);
           if (localObject != null)
           {
-            ai localai = (ai)localf.KUQ;
-            if (localai == null) {
-              d.g.b.k.fOy();
+            am localam = (am)localf.MLV;
+            if (localam == null) {
+              d.g.b.p.gfZ();
             }
-            if (localai.aaQ() > 0) {
+            if (localam.adt() > 0) {
               break label353;
             }
           }
-          localObject = g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-          d.g.b.k.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-          localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject).awB().aNp(paramString);
+          localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+          d.g.b.p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
+          localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azp().aTh(paramString);
         }
       }
       label353:
       for (;;)
       {
-        if ((localObject == null) || (((ai)localObject).aaQ() <= 0)) {
+        if ((localObject == null) || (((am)localObject).adt() <= 0)) {
           paramBoolean = false;
         }
         for (;;)
@@ -300,46 +321,46 @@ public final class i
           if (paramBoolean) {
             break label232;
           }
-          Toast.makeText(i.b(this.wXy).getActivityContext(), (CharSequence)i.b(this.wXy).getActivityContext().getString(2131759562, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
-          AppMethodBeat.o(199572);
+          Toast.makeText(i.b(this.ylj).getActivityContext(), (CharSequence)i.b(this.ylj).getActivityContext().getString(2131759562, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
+          AppMethodBeat.o(186250);
           return;
           localObject = null;
           break;
-          paramString = ((ai)localObject).getUsername();
+          paramString = ((am)localObject).getUsername();
         }
         label232:
-        ac.i("MicroMsg.ScanBoxWebViewJSApi", "alvinluo doOpenProfilePage realUsername: %s", new Object[] { paramString });
-        com.tencent.mm.aj.c.ag(paramString, 3);
-        com.tencent.mm.aj.p.aBy().zV(paramString);
+        ad.i("MicroMsg.ScanBoxWebViewJSApi", "alvinluo doOpenProfilePage realUsername: %s", new Object[] { paramString });
+        com.tencent.mm.ak.c.ak(paramString, 3);
+        com.tencent.mm.ak.p.aEz().CU(paramString);
         paramString.addFlags(268435456);
         paramString.putExtra("Contact_User", paramString);
         if (localObject == null) {
-          d.g.b.k.fOy();
+          d.g.b.p.gfZ();
         }
-        if (((ai)localObject).fad())
+        if (((am)localObject).fqg())
         {
-          com.tencent.mm.plugin.report.service.h.wUl.kvStat(10298, paramString + ",300");
+          com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, paramString + ",300");
           paramString.putExtra("Contact_Scene", 300);
         }
-        i.a(this.wXy, paramString);
-        AppMethodBeat.o(199572);
+        i.a(this.ylj, paramString);
+        AppMethodBeat.o(186250);
         return;
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
-  static final class c
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  static final class d
     implements DialogInterface.OnCancelListener
   {
-    c(String paramString) {}
+    d(String paramString) {}
     
     public final void onCancel(DialogInterface paramDialogInterface)
     {
-      AppMethodBeat.i(199573);
-      ac.i("MicroMsg.ScanBoxWebViewJSApi", "alvinluo doOpenProfilePage user cancel");
-      ar.a.ayw().yd(this.gxu);
-      AppMethodBeat.o(199573);
+      AppMethodBeat.i(186251);
+      ad.i("MicroMsg.ScanBoxWebViewJSApi", "alvinluo doOpenProfilePage user cancel");
+      as.a.aBA().AJ(this.gRf);
+      AppMethodBeat.o(186251);
     }
   }
 }

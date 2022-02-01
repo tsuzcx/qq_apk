@@ -4,28 +4,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.util.HashMap;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/sync/StoryCommentReply;", "", "storyOwner", "", "createTime", "", "interactTime", "", "storyIds", "Ljava/util/HashMap;", "(Ljava/lang/String;IJLjava/util/HashMap;)V", "getCreateTime", "()I", "setCreateTime", "(I)V", "getInteractTime", "()J", "getStoryIds", "()Ljava/util/HashMap;", "getStoryOwner", "()Ljava/lang/String;", "toString", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/sync/StoryCommentReply;", "", "storyOwner", "", "createTime", "", "interactTime", "", "storyIds", "Ljava/util/HashMap;", "(Ljava/lang/String;IJLjava/util/HashMap;)V", "getCreateTime", "()I", "setCreateTime", "(I)V", "getInteractTime", "()J", "getStoryIds", "()Ljava/util/HashMap;", "getStoryOwner", "()Ljava/lang/String;", "toString", "plugin-story_release"})
 public final class c
 {
-  int hGU;
-  final String ztM;
-  private final long zvL;
-  final HashMap<Long, Integer> zvM;
+  final String ALG;
+  private final long ANH;
+  final HashMap<Long, Integer> ANI;
+  int hZE;
   
   private c(String paramString, int paramInt, long paramLong, HashMap<Long, Integer> paramHashMap)
   {
     AppMethodBeat.i(119044);
-    this.ztM = paramString;
-    this.hGU = paramInt;
-    this.zvL = paramLong;
-    this.zvM = paramHashMap;
+    this.ALG = paramString;
+    this.hZE = paramInt;
+    this.ANH = paramLong;
+    this.ANI = paramHashMap;
     AppMethodBeat.o(119044);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(119043);
-    String str = "StoryCommentReply[" + this.ztM + " : " + this.hGU + " : " + this.zvL + " : " + this.zvM + ']';
+    String str = "StoryCommentReply[" + this.ALG + " : " + this.hZE + " : " + this.ANH + " : " + this.ANI + ']';
     AppMethodBeat.o(119043);
     return str;
   }

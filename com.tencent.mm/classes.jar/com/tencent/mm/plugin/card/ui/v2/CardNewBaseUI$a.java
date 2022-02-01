@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.ui.v2;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/card/ui/v2/CardNewBaseUI$Companion;", "", "()V", "DEFAULT_REQ_NUM", "", "DEFAULT_REQ_NUM_DISTANCE", "REQ_GPS_PERMISSION", "REQ_OPEN_GPS", "TAG", "", "plugin-card_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/card/ui/v2/CardNewBaseUI$Companion;", "", "()V", "DEFAULT_REQ_NUM", "", "DEFAULT_REQ_NUM_DISTANCE", "REQ_GPS_PERMISSION", "REQ_OPEN_GPS", "TAG", "", "plugin-card_release"})
 public final class CardNewBaseUI$a {}
 
 

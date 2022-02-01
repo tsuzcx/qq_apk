@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class kf
   extends b
 {
-  public a dlK;
+  public a dxj;
   
   public kf()
   {
@@ -16,23 +16,23 @@ public final class kf
   
   private kf(byte paramByte)
   {
-    AppMethodBeat.i(91208);
-    this.dlK = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(114792);
+    this.dxj = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91208);
+    AppMethodBeat.o(114792);
   }
   
   public static final class a
   {
-    public int bPH;
-    public Intent dlL;
-    public int requestCode;
+    public Context dxk;
+    public long dxl;
+    public boolean dxm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.kf
  * JD-Core Version:    0.7.0.1
  */

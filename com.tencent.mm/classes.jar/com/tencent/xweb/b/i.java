@@ -6,27 +6,35 @@ import java.io.OutputStream;
 
 public final class i
 {
-  static e KCg;
+  static e MsB;
   
   static
   {
     AppMethodBeat.i(183528);
-    KCg = g.fKf().fKe();
+    MsB = g.gbz().gby();
     AppMethodBeat.o(183528);
   }
   
-  public static String aKe(String paramString)
+  public static OutputStream Cz(String paramString)
+  {
+    AppMethodBeat.i(183527);
+    paramString = MsB.Cz(paramString);
+    AppMethodBeat.o(183527);
+    return paramString;
+  }
+  
+  public static String aPK(String paramString)
   {
     AppMethodBeat.i(183524);
-    paramString = KCg.aKe(paramString);
+    paramString = MsB.aPK(paramString);
     AppMethodBeat.o(183524);
     return paramString;
   }
   
-  public static boolean lm(String paramString1, String paramString2)
+  public static boolean lL(String paramString1, String paramString2)
   {
     AppMethodBeat.i(183525);
-    boolean bool = KCg.lm(paramString1, paramString2);
+    boolean bool = MsB.lL(paramString1, paramString2);
     AppMethodBeat.o(183525);
     return bool;
   }
@@ -34,16 +42,8 @@ public final class i
   public static InputStream openRead(String paramString)
   {
     AppMethodBeat.i(183526);
-    paramString = KCg.openRead(paramString);
+    paramString = MsB.openRead(paramString);
     AppMethodBeat.o(183526);
-    return paramString;
-  }
-  
-  public static OutputStream zA(String paramString)
-  {
-    AppMethodBeat.i(183527);
-    paramString = KCg.zA(paramString);
-    AppMethodBeat.o(183527);
     return paramString;
   }
 }

@@ -9,29 +9,29 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AutoScrollTextView
   extends LinearLayout
 {
-  private int plF;
-  private au tmI;
-  private ArrayList<String> tnZ;
-  private Animation tog;
-  private Animation toh;
-  private TextView twB;
-  private TextView twC;
+  private int pPf;
+  private av ulh;
+  private Animation umE;
+  private Animation umF;
+  private ArrayList<String> umx;
+  private TextView uvN;
+  private TextView uvO;
   
   public AutoScrollTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(42571);
-    this.tnZ = new ArrayList();
-    this.plF = 0;
-    this.tmI = new au(new au.a()
+    this.umx = new ArrayList();
+    this.pPf = 0;
+    this.ulh = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
@@ -41,17 +41,17 @@ public class AutoScrollTextView
         return true;
       }
     }, true);
-    this.twB = new TextView(paramContext, paramAttributeSet);
-    this.twB.setVisibility(8);
-    this.twC = new TextView(paramContext, paramAttributeSet);
-    this.twC.setVisibility(8);
-    addView(this.twB);
-    addView(this.twC);
+    this.uvN = new TextView(paramContext, paramAttributeSet);
+    this.uvN.setVisibility(8);
+    this.uvO = new TextView(paramContext, paramAttributeSet);
+    this.uvO.setVisibility(8);
+    addView(this.uvN);
+    addView(this.uvO);
     setOrientation(1);
     setGravity(17);
     setPadding(0, 0, 0, 0);
-    this.tog = AnimationUtils.loadAnimation(paramContext, 2130772139);
-    this.toh = AnimationUtils.loadAnimation(paramContext, 2130772147);
+    this.umE = AnimationUtils.loadAnimation(paramContext, 2130772139);
+    this.umF = AnimationUtils.loadAnimation(paramContext, 2130772147);
     AppMethodBeat.o(42571);
   }
   
@@ -66,38 +66,38 @@ public class AutoScrollTextView
   {
     AppMethodBeat.i(42574);
     super.onDetachedFromWindow();
-    this.tmI.stopTimer();
+    this.ulh.stopTimer();
     AppMethodBeat.o(42574);
   }
   
   public void setText(List<String> paramList)
   {
     AppMethodBeat.i(42572);
-    this.tnZ.clear();
-    this.tmI.stopTimer();
+    this.umx.clear();
+    this.ulh.stopTimer();
     if ((paramList == null) || (paramList.size() == 0))
     {
-      this.twB.setVisibility(8);
-      this.twC.setVisibility(8);
+      this.uvN.setVisibility(8);
+      this.uvO.setVisibility(8);
       AppMethodBeat.o(42572);
       return;
     }
-    this.tnZ.addAll(paramList);
-    c(this.twB, (String)this.tnZ.get(0));
-    this.twB.setVisibility(0);
-    this.plF = 0;
-    if (this.tnZ.size() == 1)
+    this.umx.addAll(paramList);
+    c(this.uvN, (String)this.umx.get(0));
+    this.uvN.setVisibility(0);
+    this.pPf = 0;
+    if (this.umx.size() == 1)
     {
       AppMethodBeat.o(42572);
       return;
     }
-    this.tmI.au(5000L, 5000L);
+    this.ulh.az(5000L, 5000L);
     AppMethodBeat.o(42572);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.AutoScrollTextView
  * JD-Core Version:    0.7.0.1
  */

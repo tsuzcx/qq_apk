@@ -1,46 +1,46 @@
 package com.tencent.mm.live.core.core.trtc;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.rtmp.ITXLiveBaseListener;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "level", "", "module", "", "kotlin.jvm.PlatformType", "log", "OnLog"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "level", "", "module", "", "kotlin.jvm.PlatformType", "log", "OnLog"})
 final class a$1
   implements ITXLiveBaseListener
 {
-  public static final 1 goO;
+  public static final 1 gIw;
   
   static
   {
-    AppMethodBeat.i(209179);
-    goO = new 1();
-    AppMethodBeat.o(209179);
+    AppMethodBeat.i(216836);
+    gIw = new 1();
+    AppMethodBeat.o(216836);
   }
   
   public final void OnLog(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(209178);
+    AppMethodBeat.i(216835);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(209178);
+      AppMethodBeat.o(216835);
       return;
-      ac.v("MicroMsg.LiveCoreSdk", "[LiteAV][" + paramInt + "][" + paramString1 + ']' + paramString2);
-      AppMethodBeat.o(209178);
+      ad.v("MicroMsg.LiveCoreSdk", "[LiteAV][" + paramInt + "][" + paramString1 + ']' + paramString2);
+      AppMethodBeat.o(216835);
       return;
-      ac.d("MicroMsg.LiveCoreSdk", "[LiteAV][" + paramInt + "][" + paramString1 + ']' + paramString2);
-      AppMethodBeat.o(209178);
+      ad.d("MicroMsg.LiveCoreSdk", "[LiteAV][" + paramInt + "][" + paramString1 + ']' + paramString2);
+      AppMethodBeat.o(216835);
       return;
-      ac.i("MicroMsg.LiveCoreSdk", "[LiteAV][" + paramInt + "][" + paramString1 + ']' + paramString2);
-      AppMethodBeat.o(209178);
+      ad.i("MicroMsg.LiveCoreSdk", "[LiteAV][" + paramInt + "][" + paramString1 + ']' + paramString2);
+      AppMethodBeat.o(216835);
       return;
-      ac.w("MicroMsg.LiveCoreSdk", "[LiteAV][" + paramInt + "][" + paramString1 + ']' + paramString2);
-      AppMethodBeat.o(209178);
+      ad.w("MicroMsg.LiveCoreSdk", "[LiteAV][" + paramInt + "][" + paramString1 + ']' + paramString2);
+      AppMethodBeat.o(216835);
       return;
-      ac.e("MicroMsg.LiveCoreSdk", "[LiteAV][" + paramInt + "][" + paramString1 + ']' + paramString2);
+      ad.e("MicroMsg.LiveCoreSdk", "[LiteAV][" + paramInt + "][" + paramString1 + ']' + paramString2);
     }
   }
 }

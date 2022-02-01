@@ -1,6 +1,5 @@
 package com.tencent.mm.model;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -11,26 +10,43 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class y
 {
-  private static volatile y hmY;
-  private Map<String, c> hmZ;
+  private static volatile y hFo;
+  private Map<String, c> hFp;
   
   private y()
   {
     AppMethodBeat.i(125111);
-    this.hmZ = new a((byte)0);
+    this.hFp = new a((byte)0);
     AppMethodBeat.o(125111);
   }
   
-  public static y ayq()
+  private c AE(String paramString)
+  {
+    AppMethodBeat.i(125112);
+    c localc = new c();
+    this.hFp.put(paramString, localc);
+    AppMethodBeat.o(125112);
+    return localc;
+  }
+  
+  public static String AH(String paramString)
+  {
+    AppMethodBeat.i(125116);
+    paramString = "SessionId@" + paramString + "#" + System.nanoTime();
+    AppMethodBeat.o(125116);
+    return paramString;
+  }
+  
+  public static y aBq()
   {
     AppMethodBeat.i(125110);
-    if (hmY == null) {}
+    if (hFo == null) {}
     try
     {
-      if (hmY == null) {
-        hmY = new y();
+      if (hFo == null) {
+        hFo = new y();
       }
-      y localy = hmY;
+      y localy = hFo;
       AppMethodBeat.o(125110);
       return localy;
     }
@@ -40,27 +56,38 @@ public class y
     }
   }
   
-  private c xG(String paramString)
+  public final y.b AF(String paramString)
   {
-    AppMethodBeat.i(125112);
-    c localc = new c();
-    this.hmZ.put(paramString, localc);
-    AppMethodBeat.o(125112);
-    return localc;
+    AppMethodBeat.i(125113);
+    paramString = (c)this.hFp.get(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.hFr;
+      AppMethodBeat.o(125113);
+      return paramString;
+    }
+    AppMethodBeat.o(125113);
+    return null;
   }
   
-  public static String xJ(String paramString)
+  public final y.b AG(String paramString)
   {
-    AppMethodBeat.i(125116);
-    paramString = "SessionId@" + paramString + "#" + System.nanoTime();
-    AppMethodBeat.o(125116);
-    return paramString;
+    AppMethodBeat.i(125115);
+    paramString = (c)this.hFp.remove(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.hFr;
+      AppMethodBeat.o(125115);
+      return paramString;
+    }
+    AppMethodBeat.o(125115);
+    return null;
   }
   
-  public final b F(String paramString, boolean paramBoolean)
+  public final y.b F(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(125114);
-    c localc2 = (c)this.hmZ.get(paramString);
+    c localc2 = (c)this.hFp.get(paramString);
     c localc1 = localc2;
     if (localc2 == null)
     {
@@ -69,9 +96,9 @@ public class y
         AppMethodBeat.o(125114);
         return null;
       }
-      localc1 = xG(paramString);
+      localc1 = AE(paramString);
     }
-    paramString = localc1.hnb;
+    paramString = localc1.hFr;
     AppMethodBeat.o(125114);
     return paramString;
   }
@@ -81,8 +108,8 @@ public class y
     AppMethodBeat.i(125117);
     long l = System.currentTimeMillis();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("DataCenter \nDataStore size : ").append(this.hmZ.size());
-    LinkedHashSet localLinkedHashSet = new LinkedHashSet(this.hmZ.entrySet());
+    ((StringBuilder)localObject).append("DataCenter \nDataStore size : ").append(this.hFp.size());
+    LinkedHashSet localLinkedHashSet = new LinkedHashSet(this.hFp.entrySet());
     Iterator localIterator = localLinkedHashSet.iterator();
     while (localIterator.hasNext())
     {
@@ -93,8 +120,8 @@ public class y
         if (localc != null)
         {
           ((StringBuilder)localObject).append("\nDataStore id : ").append((String)localEntry.getKey());
-          ((StringBuilder)localObject).append(", CT : ").append(localc.hnc).append("ms");
-          ((StringBuilder)localObject).append(", TTL : ").append((l - localc.hnc) / 1000L).append("s");
+          ((StringBuilder)localObject).append(", CT : ").append(localc.hFs).append("ms");
+          ((StringBuilder)localObject).append(", TTL : ").append((l - localc.hFs) / 1000L).append("s");
         }
       }
     }
@@ -102,34 +129,6 @@ public class y
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(125117);
     return localObject;
-  }
-  
-  public final b xH(String paramString)
-  {
-    AppMethodBeat.i(125113);
-    paramString = (c)this.hmZ.get(paramString);
-    if (paramString != null)
-    {
-      paramString = paramString.hnb;
-      AppMethodBeat.o(125113);
-      return paramString;
-    }
-    AppMethodBeat.o(125113);
-    return null;
-  }
-  
-  public final b xI(String paramString)
-  {
-    AppMethodBeat.i(125115);
-    paramString = (c)this.hmZ.remove(paramString);
-    if (paramString != null)
-    {
-      paramString = paramString.hnb;
-      AppMethodBeat.o(125115);
-      return paramString;
-    }
-    AppMethodBeat.o(125115);
-    return null;
   }
   
   static final class a<K, V>
@@ -194,190 +193,16 @@ public class y
     }
   }
   
-  public static final class b
-  {
-    private Map<String, Object> hna;
-    
-    public b()
-    {
-      AppMethodBeat.i(125094);
-      this.hna = new y.a((byte)0);
-      AppMethodBeat.o(125094);
-    }
-    
-    public final b G(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(125099);
-      if (!TextUtils.isEmpty(paramString)) {
-        this.hna.put(paramString, Boolean.valueOf(paramBoolean));
-      }
-      AppMethodBeat.o(125099);
-      return this;
-    }
-    
-    public final b aF(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(125100);
-      if (!TextUtils.isEmpty(paramString1)) {
-        this.hna.put(paramString1, paramString2);
-      }
-      AppMethodBeat.o(125100);
-      return this;
-    }
-    
-    public final boolean containsKey(String paramString)
-    {
-      AppMethodBeat.i(125096);
-      boolean bool = this.hna.containsKey(paramString);
-      AppMethodBeat.o(125096);
-      return bool;
-    }
-    
-    public final Object get(String paramString)
-    {
-      AppMethodBeat.i(125102);
-      paramString = this.hna.get(paramString);
-      AppMethodBeat.o(125102);
-      return paramString;
-    }
-    
-    public final <T> T get(String paramString, T paramT)
-    {
-      AppMethodBeat.i(125107);
-      paramString = get(paramString);
-      if (paramString != null)
-      {
-        AppMethodBeat.o(125107);
-        return paramString;
-      }
-      AppMethodBeat.o(125107);
-      return paramT;
-    }
-    
-    public final boolean getBoolean(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(125105);
-      boolean bool = paramBoolean;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = this.hna.get(paramString);
-        bool = paramBoolean;
-        if ((paramString instanceof Boolean)) {
-          bool = ((Boolean)paramString).booleanValue();
-        }
-      }
-      AppMethodBeat.o(125105);
-      return bool;
-    }
-    
-    public final int getInt(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(125104);
-      int i = paramInt;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = this.hna.get(paramString);
-        i = paramInt;
-        if ((paramString instanceof Integer)) {
-          i = ((Integer)paramString).intValue();
-        }
-      }
-      AppMethodBeat.o(125104);
-      return i;
-    }
-    
-    public final Set<String> getKeySet()
-    {
-      AppMethodBeat.i(125095);
-      Set localSet = this.hna.keySet();
-      AppMethodBeat.o(125095);
-      return localSet;
-    }
-    
-    public final String getString(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(125106);
-      String str = paramString2;
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        paramString1 = this.hna.get(paramString1);
-        str = paramString2;
-        if ((paramString1 instanceof String)) {
-          str = (String)paramString1;
-        }
-      }
-      AppMethodBeat.o(125106);
-      return str;
-    }
-    
-    public final b l(String paramString, Object paramObject)
-    {
-      AppMethodBeat.i(125097);
-      if (!TextUtils.isEmpty(paramString)) {
-        this.hna.put(paramString, paramObject);
-      }
-      AppMethodBeat.o(125097);
-      return this;
-    }
-    
-    public final void recycle()
-    {
-      AppMethodBeat.i(125108);
-      this.hna.clear();
-      AppMethodBeat.o(125108);
-    }
-    
-    public final long tx(String paramString)
-    {
-      AppMethodBeat.i(125103);
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = this.hna.get(paramString);
-        if (!(paramString instanceof Long)) {}
-      }
-      for (long l = ((Long)paramString).longValue();; l = 0L)
-      {
-        AppMethodBeat.o(125103);
-        return l;
-      }
-    }
-    
-    public final b v(String paramString, long paramLong)
-    {
-      AppMethodBeat.i(125098);
-      if (!TextUtils.isEmpty(paramString)) {
-        this.hna.put(paramString, Long.valueOf(paramLong));
-      }
-      AppMethodBeat.o(125098);
-      return this;
-    }
-    
-    public final boolean xK(String paramString)
-    {
-      AppMethodBeat.i(125101);
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = this.hna.get(paramString);
-        if (!(paramString instanceof Boolean)) {}
-      }
-      for (boolean bool = ((Boolean)paramString).booleanValue();; bool = false)
-      {
-        AppMethodBeat.o(125101);
-        return bool;
-      }
-    }
-  }
-  
   static final class c
   {
-    y.b hnb;
-    long hnc;
+    y.b hFr;
+    long hFs;
     
     c()
     {
       AppMethodBeat.i(125109);
-      this.hnb = new y.b();
-      this.hnc = System.currentTimeMillis();
+      this.hFr = new y.b();
+      this.hFs = System.currentTimeMillis();
       AppMethodBeat.o(125109);
     }
   }

@@ -18,43 +18,43 @@ import android.support.v7.d.a.c;
 public final class l
   extends c
 {
-  static final double rn = Math.cos(Math.toRadians(45.0D));
+  static final double ti = Math.cos(Math.toRadians(45.0D));
   private boolean dirty = true;
-  private final int rA;
-  boolean rB = true;
-  private boolean rC = false;
-  final Paint ro;
   float rotation;
-  final Paint rp;
-  final RectF rq;
-  float rs;
-  Path rt;
-  float ru;
-  float rv;
-  float rw;
-  float rx;
-  private final int ry;
-  private final int rz;
+  final Paint tj;
+  final Paint tk;
+  final RectF tl;
+  float tm;
+  Path tn;
+  float to;
+  float tp;
+  float tq;
+  float tr;
+  private final int ts;
+  private final int tt;
+  private final int tu;
+  boolean tv = true;
+  private boolean tw = false;
   
   public l(Context paramContext, Drawable paramDrawable, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     super(paramDrawable);
-    this.ry = b.n(paramContext, 2131100219);
-    this.rz = b.n(paramContext, 2131100218);
-    this.rA = b.n(paramContext, 2131100217);
-    this.ro = new Paint(5);
-    this.ro.setStyle(Paint.Style.FILL);
-    this.rs = Math.round(paramFloat1);
-    this.rq = new RectF();
-    this.rp = new Paint(this.ro);
-    this.rp.setAntiAlias(false);
+    this.ts = b.n(paramContext, 2131100219);
+    this.tt = b.n(paramContext, 2131100218);
+    this.tu = b.n(paramContext, 2131100217);
+    this.tj = new Paint(5);
+    this.tj.setStyle(Paint.Style.FILL);
+    this.tm = Math.round(paramFloat1);
+    this.tl = new RectF();
+    this.tk = new Paint(this.tj);
+    this.tk.setAntiAlias(false);
     f(paramFloat2, paramFloat3);
   }
   
   public static float a(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
     if (paramBoolean) {
-      return (float)(1.5F * paramFloat1 + (1.0D - rn) * paramFloat2);
+      return (float)(1.5F * paramFloat1 + (1.0D - ti) * paramFloat2);
     }
     return 1.5F * paramFloat1;
   }
@@ -63,12 +63,12 @@ public final class l
   {
     float f = paramFloat1;
     if (paramBoolean) {
-      f = (float)(paramFloat1 + (1.0D - rn) * paramFloat2);
+      f = (float)(paramFloat1 + (1.0D - ti) * paramFloat2);
     }
     return f;
   }
   
-  private static int u(float paramFloat)
+  private static int s(float paramFloat)
   {
     int j = Math.round(paramFloat);
     int i = j;
@@ -88,57 +88,57 @@ public final class l
     if (this.dirty)
     {
       Object localObject = getBounds();
-      f1 = this.rv * 1.5F;
-      this.rq.set(((Rect)localObject).left + this.rv, ((Rect)localObject).top + f1, ((Rect)localObject).right - this.rv, ((Rect)localObject).bottom - f1);
-      this.mDrawable.setBounds((int)this.rq.left, (int)this.rq.top, (int)this.rq.right, (int)this.rq.bottom);
-      localObject = new RectF(-this.rs, -this.rs, this.rs, this.rs);
+      f1 = this.tp * 1.5F;
+      this.tl.set(((Rect)localObject).left + this.tp, ((Rect)localObject).top + f1, ((Rect)localObject).right - this.tp, ((Rect)localObject).bottom - f1);
+      this.mDrawable.setBounds((int)this.tl.left, (int)this.tl.top, (int)this.tl.right, (int)this.tl.bottom);
+      localObject = new RectF(-this.tm, -this.tm, this.tm, this.tm);
       RectF localRectF = new RectF((RectF)localObject);
-      localRectF.inset(-this.rw, -this.rw);
-      if (this.rt == null)
+      localRectF.inset(-this.tq, -this.tq);
+      if (this.tn == null)
       {
-        this.rt = new Path();
-        this.rt.setFillType(Path.FillType.EVEN_ODD);
-        this.rt.moveTo(-this.rs, 0.0F);
-        this.rt.rLineTo(-this.rw, 0.0F);
-        this.rt.arcTo(localRectF, 180.0F, 90.0F, false);
-        this.rt.arcTo((RectF)localObject, 270.0F, -90.0F, false);
-        this.rt.close();
+        this.tn = new Path();
+        this.tn.setFillType(Path.FillType.EVEN_ODD);
+        this.tn.moveTo(-this.tm, 0.0F);
+        this.tn.rLineTo(-this.tq, 0.0F);
+        this.tn.arcTo(localRectF, 180.0F, 90.0F, false);
+        this.tn.arcTo((RectF)localObject, 270.0F, -90.0F, false);
+        this.tn.close();
         f1 = -localRectF.top;
         if (f1 > 0.0F)
         {
-          f2 = this.rs / f1;
+          f2 = this.tm / f1;
           f3 = (1.0F - f2) / 2.0F;
-          localPaint = this.ro;
-          i = this.ry;
-          j = this.rz;
-          k = this.rA;
+          localPaint = this.tj;
+          i = this.ts;
+          j = this.tt;
+          k = this.tu;
           Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
           localPaint.setShader(new RadialGradient(0.0F, 0.0F, f1, new int[] { 0, i, j, k }, new float[] { 0.0F, f2, f2 + f3, 1.0F }, localTileMode));
         }
-        Paint localPaint = this.rp;
+        Paint localPaint = this.tk;
         f1 = ((RectF)localObject).top;
         f2 = localRectF.top;
-        i = this.ry;
-        j = this.rz;
-        k = this.rA;
+        i = this.ts;
+        j = this.tt;
+        k = this.tu;
         localObject = Shader.TileMode.CLAMP;
         localPaint.setShader(new LinearGradient(0.0F, f1, 0.0F, f2, new int[] { i, j, k }, new float[] { 0.0F, 0.5F, 1.0F }, (Shader.TileMode)localObject));
-        this.rp.setAntiAlias(false);
+        this.tk.setAntiAlias(false);
         this.dirty = false;
       }
     }
     else
     {
       k = paramCanvas.save();
-      paramCanvas.rotate(this.rotation, this.rq.centerX(), this.rq.centerY());
-      f1 = -this.rs - this.rw;
-      f2 = this.rs;
-      if (this.rq.width() - 2.0F * f2 <= 0.0F) {
+      paramCanvas.rotate(this.rotation, this.tl.centerX(), this.tl.centerY());
+      f1 = -this.tm - this.tq;
+      f2 = this.tm;
+      if (this.tl.width() - 2.0F * f2 <= 0.0F) {
         break label1060;
       }
       i = 1;
       label535:
-      if (this.rq.height() - 2.0F * f2 <= 0.0F) {
+      if (this.tl.height() - 2.0F * f2 <= 0.0F) {
         break label1066;
       }
     }
@@ -146,64 +146,64 @@ public final class l
     label1066:
     for (int j = 1;; j = 0)
     {
-      float f6 = this.rx;
-      float f7 = this.rx;
-      f3 = this.rx;
-      float f8 = this.rx;
-      float f4 = this.rx;
-      float f5 = this.rx;
+      float f6 = this.tr;
+      float f7 = this.tr;
+      f3 = this.tr;
+      float f8 = this.tr;
+      float f4 = this.tr;
+      float f5 = this.tr;
       f3 = f2 / (f3 - f8 * 0.5F + f2);
       f6 = f2 / (f6 - f7 * 0.25F + f2);
       f4 = f2 / (f2 + (f4 - f5 * 1.0F));
       int m = paramCanvas.save();
-      paramCanvas.translate(this.rq.left + f2, this.rq.top + f2);
+      paramCanvas.translate(this.tl.left + f2, this.tl.top + f2);
       paramCanvas.scale(f3, f6);
-      paramCanvas.drawPath(this.rt, this.ro);
+      paramCanvas.drawPath(this.tn, this.tj);
       if (i != 0)
       {
         paramCanvas.scale(1.0F / f3, 1.0F);
-        paramCanvas.drawRect(0.0F, f1, this.rq.width() - 2.0F * f2, -this.rs, this.rp);
+        paramCanvas.drawRect(0.0F, f1, this.tl.width() - 2.0F * f2, -this.tm, this.tk);
       }
       paramCanvas.restoreToCount(m);
       m = paramCanvas.save();
-      paramCanvas.translate(this.rq.right - f2, this.rq.bottom - f2);
+      paramCanvas.translate(this.tl.right - f2, this.tl.bottom - f2);
       paramCanvas.scale(f3, f4);
       paramCanvas.rotate(180.0F);
-      paramCanvas.drawPath(this.rt, this.ro);
+      paramCanvas.drawPath(this.tn, this.tj);
       if (i != 0)
       {
         paramCanvas.scale(1.0F / f3, 1.0F);
-        f5 = this.rq.width();
-        f7 = -this.rs;
-        paramCanvas.drawRect(0.0F, f1, f5 - 2.0F * f2, this.rw + f7, this.rp);
+        f5 = this.tl.width();
+        f7 = -this.tm;
+        paramCanvas.drawRect(0.0F, f1, f5 - 2.0F * f2, this.tq + f7, this.tk);
       }
       paramCanvas.restoreToCount(m);
       i = paramCanvas.save();
-      paramCanvas.translate(this.rq.left + f2, this.rq.bottom - f2);
+      paramCanvas.translate(this.tl.left + f2, this.tl.bottom - f2);
       paramCanvas.scale(f3, f4);
       paramCanvas.rotate(270.0F);
-      paramCanvas.drawPath(this.rt, this.ro);
+      paramCanvas.drawPath(this.tn, this.tj);
       if (j != 0)
       {
         paramCanvas.scale(1.0F / f4, 1.0F);
-        paramCanvas.drawRect(0.0F, f1, this.rq.height() - 2.0F * f2, -this.rs, this.rp);
+        paramCanvas.drawRect(0.0F, f1, this.tl.height() - 2.0F * f2, -this.tm, this.tk);
       }
       paramCanvas.restoreToCount(i);
       i = paramCanvas.save();
-      paramCanvas.translate(this.rq.right - f2, this.rq.top + f2);
+      paramCanvas.translate(this.tl.right - f2, this.tl.top + f2);
       paramCanvas.scale(f3, f6);
       paramCanvas.rotate(90.0F);
-      paramCanvas.drawPath(this.rt, this.ro);
+      paramCanvas.drawPath(this.tn, this.tj);
       if (j != 0)
       {
         paramCanvas.scale(1.0F / f6, 1.0F);
-        paramCanvas.drawRect(0.0F, f1, this.rq.height() - 2.0F * f2, -this.rs, this.rp);
+        paramCanvas.drawRect(0.0F, f1, this.tl.height() - 2.0F * f2, -this.tm, this.tk);
       }
       paramCanvas.restoreToCount(i);
       paramCanvas.restoreToCount(k);
       super.draw(paramCanvas);
       return;
-      this.rt.reset();
+      this.tn.reset();
       break;
       i = 0;
       break label535;
@@ -215,23 +215,23 @@ public final class l
     if ((paramFloat1 < 0.0F) || (paramFloat2 < 0.0F)) {
       throw new IllegalArgumentException("invalid shadow size");
     }
-    float f = u(paramFloat1);
-    paramFloat2 = u(paramFloat2);
+    float f = s(paramFloat1);
+    paramFloat2 = s(paramFloat2);
     paramFloat1 = f;
     if (f > paramFloat2)
     {
-      if (!this.rC) {
-        this.rC = true;
+      if (!this.tw) {
+        this.tw = true;
       }
       paramFloat1 = paramFloat2;
     }
-    if ((this.rx == paramFloat1) && (this.rv == paramFloat2)) {
+    if ((this.tr == paramFloat1) && (this.tp == paramFloat2)) {
       return;
     }
-    this.rx = paramFloat1;
-    this.rv = paramFloat2;
-    this.rw = Math.round(paramFloat1 * 1.5F);
-    this.ru = paramFloat2;
+    this.tr = paramFloat1;
+    this.tp = paramFloat2;
+    this.tq = Math.round(paramFloat1 * 1.5F);
+    this.to = paramFloat2;
     this.dirty = true;
     invalidateSelf();
   }
@@ -243,8 +243,8 @@ public final class l
   
   public final boolean getPadding(Rect paramRect)
   {
-    int i = (int)Math.ceil(a(this.rv, this.rs, this.rB));
-    int j = (int)Math.ceil(b(this.rv, this.rs, this.rB));
+    int i = (int)Math.ceil(a(this.tp, this.tm, this.tv));
+    int j = (int)Math.ceil(b(this.tp, this.tm, this.tv));
     paramRect.set(j, i, j, i);
     return true;
   }
@@ -257,13 +257,13 @@ public final class l
   public final void setAlpha(int paramInt)
   {
     super.setAlpha(paramInt);
-    this.ro.setAlpha(paramInt);
-    this.rp.setAlpha(paramInt);
+    this.tj.setAlpha(paramInt);
+    this.tk.setAlpha(paramInt);
   }
   
-  public final void v(float paramFloat)
+  public final void t(float paramFloat)
   {
-    f(paramFloat, this.rv);
+    f(paramFloat, this.tp);
   }
 }
 

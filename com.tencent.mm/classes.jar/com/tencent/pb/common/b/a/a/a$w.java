@@ -8,34 +8,34 @@ import java.util.Arrays;
 public final class a$w
   extends e
 {
-  public a.v JNC = null;
-  public byte[] body = g.bGH;
+  public a.v LHl = null;
+  public byte[] body = g.bQV;
   
   public a$w()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.JNC != null) {
-      paramb.a(1, this.JNC);
+    if (this.LHl != null) {
+      paramb.a(1, this.LHl);
     }
-    if (!Arrays.equals(this.body, g.bGH)) {
+    if (!Arrays.equals(this.body, g.bQV)) {
       paramb.b(2, this.body);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.JNC != null) {
-      i = j + b.b(1, this.JNC);
+    if (this.LHl != null) {
+      i = j + b.b(1, this.LHl);
     }
     j = i;
-    if (!Arrays.equals(this.body, g.bGH)) {
+    if (!Arrays.equals(this.body, g.bQV)) {
       j = i + b.c(2, this.body);
     }
     return j;
@@ -43,7 +43,7 @@ public final class a$w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.w
  * JD-Core Version:    0.7.0.1
  */

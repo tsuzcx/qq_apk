@@ -44,7 +44,7 @@ public abstract class a$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
-      paramInt1 = ebh();
+      paramInt1 = eny();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -125,7 +125,7 @@ public abstract class a$a
       }
     }
     paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
-    paramParcel1 = ebi();
+    paramParcel1 = enz();
     paramParcel2.writeNoException();
     if (paramParcel1 != null) {}
     for (paramParcel1 = paramParcel1.asBinder();; paramParcel1 = null)
@@ -434,7 +434,7 @@ public abstract class a$a
       //   85	91	94	finally
     }
     
-    public final int ebh()
+    public final int eny()
     {
       AppMethodBeat.i(29373);
       Parcel localParcel1 = Parcel.obtain();
@@ -455,7 +455,7 @@ public abstract class a$a
       }
     }
     
-    public final d ebi()
+    public final d enz()
     {
       AppMethodBeat.i(29380);
       Parcel localParcel1 = Parcel.obtain();
@@ -500,7 +500,7 @@ public abstract class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.a.a
  * JD-Core Version:    0.7.0.1
  */

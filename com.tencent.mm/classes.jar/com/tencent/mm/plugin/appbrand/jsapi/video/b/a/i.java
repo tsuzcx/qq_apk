@@ -16,27 +16,27 @@ import java.util.TreeSet;
 public final class i
   implements a
 {
-  private final HashMap<String, f> bwa;
-  private final HashMap<String, ArrayList<a.a>> bwc;
-  private long bwd;
-  final e kQd;
-  private final d kQe;
-  private final HashMap<String, TreeSet<f>> kQf;
+  private final HashMap<String, f> bGo;
+  private final HashMap<String, ArrayList<a.a>> bGq;
+  private long bGr;
+  final e lmD;
+  private final d lmE;
+  private final HashMap<String, TreeSet<f>> lmF;
   
   public i(final e parame, d paramd)
   {
-    AppMethodBeat.i(194188);
-    this.kQd = parame;
-    this.kQe = paramd;
-    this.bwa = new HashMap();
-    this.kQf = new HashMap();
-    this.bwc = new HashMap();
+    AppMethodBeat.i(206000);
+    this.lmD = parame;
+    this.lmE = paramd;
+    this.bGo = new HashMap();
+    this.lmF = new HashMap();
+    this.bGq = new HashMap();
     parame = new ConditionVariable();
     new Thread()
     {
       public final void run()
       {
-        AppMethodBeat.i(194187);
+        AppMethodBeat.i(205999);
         for (;;)
         {
           int i;
@@ -45,10 +45,10 @@ public final class i
           {
             parame.open();
             i locali2 = i.this;
-            if (!locali2.kQd.exists()) {
-              locali2.kQd.mkdirs();
+            if (!locali2.lmD.exists()) {
+              locali2.lmD.mkdirs();
             }
-            e[] arrayOfe = locali2.kQd.fxX();
+            e[] arrayOfe = locali2.lmD.fOM();
             if (arrayOfe == null) {
               break label165;
             }
@@ -71,11 +71,11 @@ public final class i
           }
           if (!localObject.f(localf))
           {
-            h.log(3, "SimpleCache", "remove duplicated span " + localf.kPM);
+            h.log(3, "SimpleCache", "remove duplicated span " + localf.aXd);
             localObject.b(localf);
             break label173;
             label165:
-            AppMethodBeat.o(194187);
+            AppMethodBeat.o(205999);
             return;
           }
           label173:
@@ -84,39 +84,70 @@ public final class i
       }
     }.start();
     parame.block();
-    AppMethodBeat.o(194188);
+    AppMethodBeat.o(206000);
+  }
+  
+  private void bnD()
+  {
+    AppMethodBeat.i(206010);
+    Iterator localIterator1 = this.lmF.entrySet().iterator();
+    while (localIterator1.hasNext())
+    {
+      Iterator localIterator2 = ((TreeSet)((Map.Entry)localIterator1.next()).getValue()).iterator();
+      int i = 1;
+      while (localIterator2.hasNext())
+      {
+        f localf = (f)localIterator2.next();
+        if (!localf.aXd.exists())
+        {
+          localIterator2.remove();
+          if (localf.bFZ) {
+            this.bGr -= localf.length;
+          }
+          g(localf);
+        }
+        else
+        {
+          i = 0;
+        }
+      }
+      if (i != 0) {
+        localIterator1.remove();
+      }
+    }
+    AppMethodBeat.o(206010);
   }
   
   /* Error */
-  private NavigableSet<f> aB(String paramString)
+  private NavigableSet<f> bu(String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 65
+    //   2: ldc 121
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 44	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:kQf	Ljava/util/HashMap;
+    //   8: getfield 44	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:lmF	Ljava/util/HashMap;
     //   11: aload_1
-    //   12: invokevirtual 69	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   15: checkcast 71	java/util/TreeSet
+    //   12: invokevirtual 125	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   15: checkcast 91	java/util/TreeSet
     //   18: astore_1
     //   19: aload_1
     //   20: ifnonnull +14 -> 34
     //   23: aconst_null
     //   24: astore_1
-    //   25: ldc 65
+    //   25: ldc 121
     //   27: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: aload_0
     //   31: monitorexit
     //   32: aload_1
     //   33: areturn
-    //   34: new 71	java/util/TreeSet
+    //   34: new 91	java/util/TreeSet
     //   37: dup
     //   38: aload_1
-    //   39: invokespecial 74	java/util/TreeSet:<init>	(Ljava/util/SortedSet;)V
+    //   39: invokespecial 128	java/util/TreeSet:<init>	(Ljava/util/SortedSet;)V
     //   42: astore_1
-    //   43: ldc 65
+    //   43: ldc 121
     //   45: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   48: goto -18 -> 30
     //   51: astore_1
@@ -135,37 +166,6 @@ public final class i
     //   34	48	51	finally
   }
   
-  private void bjS()
-  {
-    AppMethodBeat.i(194198);
-    Iterator localIterator1 = this.kQf.entrySet().iterator();
-    while (localIterator1.hasNext())
-    {
-      Iterator localIterator2 = ((TreeSet)((Map.Entry)localIterator1.next()).getValue()).iterator();
-      int i = 1;
-      while (localIterator2.hasNext())
-      {
-        f localf = (f)localIterator2.next();
-        if (!localf.kPM.exists())
-        {
-          localIterator2.remove();
-          if (localf.bvL) {
-            this.bwd -= localf.length;
-          }
-          g(localf);
-        }
-        else
-        {
-          i = 0;
-        }
-      }
-      if (i != 0) {
-        localIterator1.remove();
-      }
-    }
-    AppMethodBeat.o(194198);
-  }
-  
   private f e(f paramf)
   {
     for (;;)
@@ -174,26 +174,26 @@ public final class i
       f localf;
       try
       {
-        AppMethodBeat.i(194192);
+        AppMethodBeat.i(206004);
         str = paramf.key;
         long l = paramf.position;
-        TreeSet localTreeSet = (TreeSet)this.kQf.get(str);
+        TreeSet localTreeSet = (TreeSet)this.lmF.get(str);
         if (localTreeSet == null)
         {
-          localf = f.M(str, paramf.position);
-          if (!localf.bvL) {
+          localf = f.T(str, paramf.position);
+          if (!localf.bFZ) {
             break label188;
           }
-          AppMethodBeat.o(194192);
+          AppMethodBeat.o(206004);
           return localf;
         }
         localf = (f)localTreeSet.floor(paramf);
         if ((localf != null) && (localf.position <= l) && (l < localf.position + localf.length))
         {
-          if (localf.kPM.exists()) {
+          if (localf.aXd.exists()) {
             continue;
           }
-          bjS();
+          bnD();
           continue;
         }
         localf = (f)localTreeSet.ceiling(paramf);
@@ -201,22 +201,22 @@ public final class i
       finally {}
       if (localf == null)
       {
-        localf = f.M(str, paramf.position);
+        localf = f.T(str, paramf.position);
       }
       else
       {
         localf = f.p(str, paramf.position, localf.position - paramf.position);
         continue;
         label188:
-        if (!this.bwa.containsKey(paramf.key))
+        if (!this.bGo.containsKey(paramf.key))
         {
-          this.bwa.put(paramf.key, localf);
-          AppMethodBeat.o(194192);
+          this.bGo.put(paramf.key, localf);
+          AppMethodBeat.o(206004);
         }
         else
         {
           localf = null;
-          AppMethodBeat.o(194192);
+          AppMethodBeat.o(206004);
         }
       }
     }
@@ -224,8 +224,8 @@ public final class i
   
   private void g(f paramf)
   {
-    AppMethodBeat.i(194199);
-    ArrayList localArrayList = (ArrayList)this.bwc.get(paramf.key);
+    AppMethodBeat.i(206011);
+    ArrayList localArrayList = (ArrayList)this.bGq.get(paramf.key);
     if (localArrayList != null)
     {
       int i = localArrayList.size() - 1;
@@ -235,14 +235,14 @@ public final class i
         i -= 1;
       }
     }
-    this.kQe.c(paramf);
-    AppMethodBeat.o(194199);
+    this.lmE.c(paramf);
+    AppMethodBeat.o(206011);
   }
   
   private void h(f paramf)
   {
-    AppMethodBeat.i(194200);
-    ArrayList localArrayList = (ArrayList)this.bwc.get(paramf.key);
+    AppMethodBeat.i(206012);
+    ArrayList localArrayList = (ArrayList)this.bGq.get(paramf.key);
     if (localArrayList != null)
     {
       int i = localArrayList.size() - 1;
@@ -252,8 +252,8 @@ public final class i
         i -= 1;
       }
     }
-    this.kQe.a(this, paramf);
-    AppMethodBeat.o(194200);
+    this.lmE.a(this, paramf);
+    AppMethodBeat.o(206012);
   }
   
   public final void B(e parame)
@@ -262,16 +262,16 @@ public final class i
     {
       try
       {
-        AppMethodBeat.i(194194);
+        AppMethodBeat.i(206006);
         f localf = f.C(parame);
         boolean bool;
         if (localf != null)
         {
           bool = true;
           com.tencent.mm.plugin.appbrand.jsapi.video.b.e.a.checkState(bool);
-          com.tencent.mm.plugin.appbrand.jsapi.video.b.e.a.checkState(this.bwa.containsKey(localf.key));
+          com.tencent.mm.plugin.appbrand.jsapi.video.b.e.a.checkState(this.bGo.containsKey(localf.key));
           if (!parame.exists()) {
-            AppMethodBeat.o(194194);
+            AppMethodBeat.o(206006);
           }
         }
         else
@@ -282,43 +282,43 @@ public final class i
         if (parame.length() == 0L)
         {
           parame.delete();
-          AppMethodBeat.o(194194);
+          AppMethodBeat.o(206006);
           continue;
         }
         f(localf);
       }
       finally {}
       notifyAll();
-      AppMethodBeat.o(194194);
+      AppMethodBeat.o(206006);
     }
   }
   
   /* Error */
-  public final f J(String paramString, long paramLong)
+  public final f Q(String paramString, long paramLong)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 216
+    //   2: ldc 217
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_1
     //   8: lload_2
-    //   9: invokestatic 219	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:L	(Ljava/lang/String;J)Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a/f;
+    //   9: invokestatic 220	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:S	(Ljava/lang/String;J)Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a/f;
     //   12: astore_1
     //   13: aload_0
     //   14: aload_1
-    //   15: invokespecial 221	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:e	(Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a/f;)Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a/f;
+    //   15: invokespecial 222	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:e	(Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a/f;)Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a/f;
     //   18: astore 4
     //   20: aload 4
     //   22: ifnull +13 -> 35
-    //   25: ldc 216
+    //   25: ldc 217
     //   27: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: aload_0
     //   31: monitorexit
     //   32: aload 4
     //   34: areturn
     //   35: aload_0
-    //   36: invokevirtual 224	java/lang/Object:wait	()V
+    //   36: invokevirtual 225	java/lang/Object:wait	()V
     //   39: goto -26 -> 13
     //   42: astore_1
     //   43: aload_0
@@ -339,59 +339,43 @@ public final class i
     //   35	39	42	finally
   }
   
-  public final f K(String paramString, long paramLong)
-  {
-    try
-    {
-      AppMethodBeat.i(194191);
-      paramString = e(f.L(paramString, paramLong));
-      AppMethodBeat.o(194191);
-      return paramString;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
   /* Error */
-  public final long Nl(String paramString)
+  public final long QI(String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 229
+    //   2: ldc 228
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: aload_1
-    //   9: invokespecial 231	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:aB	(Ljava/lang/String;)Ljava/util/NavigableSet;
+    //   9: invokespecial 230	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:bu	(Ljava/lang/String;)Ljava/util/NavigableSet;
     //   12: astore_1
     //   13: aload_1
     //   14: ifnull +40 -> 54
     //   17: aload_1
-    //   18: invokeinterface 236 1 0
-    //   23: checkcast 106	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
+    //   18: invokeinterface 235 1 0
+    //   23: checkcast 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
     //   26: astore_1
     //   27: aload_1
     //   28: ifnull +26 -> 54
     //   31: aload_1
-    //   32: getfield 239	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jox	J
+    //   32: getfield 238	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jIt	J
     //   35: lconst_0
     //   36: lcmp
     //   37: iflt +17 -> 54
     //   40: aload_1
-    //   41: getfield 239	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jox	J
+    //   41: getfield 238	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jIt	J
     //   44: lstore_2
-    //   45: ldc 229
+    //   45: ldc 228
     //   47: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   50: aload_0
     //   51: monitorexit
     //   52: lload_2
     //   53: lreturn
-    //   54: ldc2_w 240
+    //   54: ldc2_w 239
     //   57: lstore_2
-    //   58: ldc 229
+    //   58: ldc 228
     //   60: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   63: goto -13 -> 50
     //   66: astore_1
@@ -413,42 +397,42 @@ public final class i
   }
   
   /* Error */
-  public final c Nm(String paramString)
+  public final c QJ(String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 244
+    //   2: ldc 243
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: aload_1
-    //   9: invokespecial 231	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:aB	(Ljava/lang/String;)Ljava/util/NavigableSet;
+    //   9: invokespecial 230	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:bu	(Ljava/lang/String;)Ljava/util/NavigableSet;
     //   12: astore_1
     //   13: aload_1
     //   14: ifnull +40 -> 54
     //   17: aload_1
-    //   18: invokeinterface 236 1 0
-    //   23: checkcast 106	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
+    //   18: invokeinterface 235 1 0
+    //   23: checkcast 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
     //   26: astore_1
     //   27: aload_1
     //   28: ifnull +26 -> 54
     //   31: aload_1
-    //   32: getfield 239	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jox	J
+    //   32: getfield 238	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jIt	J
     //   35: lconst_0
     //   36: lcmp
     //   37: iflt +17 -> 54
     //   40: aload_1
-    //   41: getfield 248	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:kPP	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
+    //   41: getfield 247	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:lmp	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
     //   44: astore_1
-    //   45: ldc 244
+    //   45: ldc 243
     //   47: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   50: aload_0
     //   51: monitorexit
     //   52: aload_1
     //   53: areturn
-    //   54: getstatic 253	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:kQO	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
+    //   54: getstatic 252	com/tencent/mm/plugin/appbrand/jsapi/video/b/c/c:lnp	Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/c/c;
     //   57: astore_1
-    //   58: ldc 244
+    //   58: ldc 243
     //   60: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   63: goto -13 -> 50
     //   66: astore_1
@@ -469,34 +453,34 @@ public final class i
   }
   
   /* Error */
-  public final long Nn(String paramString)
+  public final long QK(String paramString)
   {
     // Byte code:
     //   0: lconst_0
     //   1: lstore_2
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc 255
+    //   4: ldc 254
     //   6: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: aload_1
-    //   11: invokespecial 231	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:aB	(Ljava/lang/String;)Ljava/util/NavigableSet;
+    //   11: invokespecial 230	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:bu	(Ljava/lang/String;)Ljava/util/NavigableSet;
     //   14: astore_1
     //   15: lload_2
     //   16: lstore 4
     //   18: aload_1
     //   19: ifnull +136 -> 155
     //   22: aload_1
-    //   23: invokeinterface 236 1 0
-    //   28: checkcast 106	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
+    //   23: invokeinterface 235 1 0
+    //   28: checkcast 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
     //   31: astore 6
     //   33: aload 6
     //   35: ifnull +42 -> 77
     //   38: aload 6
-    //   40: getfield 121	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:bvL	Z
+    //   40: getfield 109	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:bFZ	Z
     //   43: ifeq +34 -> 77
     //   46: aload 6
-    //   48: getfield 239	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jox	J
+    //   48: getfield 238	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jIt	J
     //   51: lconst_0
     //   52: lcmp
     //   53: iflt +24 -> 77
@@ -505,7 +489,7 @@ public final class i
     //   61: lconst_0
     //   62: lcmp
     //   63: ifeq +14 -> 77
-    //   66: ldc 255
+    //   66: ldc 254
     //   68: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: lconst_0
     //   72: lstore_2
@@ -520,37 +504,37 @@ public final class i
     //   85: lload_2
     //   86: lstore 4
     //   88: aload 6
-    //   90: getfield 239	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jox	J
+    //   90: getfield 238	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:jIt	J
     //   93: lconst_0
     //   94: lcmp
     //   95: iflt +60 -> 155
     //   98: aload_1
-    //   99: invokeinterface 256 1 0
+    //   99: invokeinterface 255 1 0
     //   104: astore_1
     //   105: lload_2
     //   106: lstore 4
     //   108: aload_1
-    //   109: invokeinterface 94 1 0
+    //   109: invokeinterface 80 1 0
     //   114: ifeq +41 -> 155
     //   117: aload_1
-    //   118: invokeinterface 98 1 0
-    //   123: checkcast 106	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
+    //   118: invokeinterface 84 1 0
+    //   123: checkcast 94	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f
     //   126: astore 6
     //   128: aload 6
-    //   130: getfield 121	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:bvL	Z
+    //   130: getfield 109	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:bFZ	Z
     //   133: ifne +11 -> 144
-    //   136: ldc 255
+    //   136: ldc 254
     //   138: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   141: goto -68 -> 73
     //   144: lload_2
     //   145: aload 6
-    //   147: getfield 126	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:length	J
+    //   147: getfield 114	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:length	J
     //   150: ladd
     //   151: lstore_2
     //   152: goto -47 -> 105
     //   155: lload 4
     //   157: lstore_2
-    //   158: ldc 255
+    //   158: ldc 254
     //   160: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   163: goto -90 -> 73
     //   166: astore_1
@@ -576,20 +560,36 @@ public final class i
     //   158	163	166	finally
   }
   
+  public final f R(String paramString, long paramLong)
+  {
+    try
+    {
+      AppMethodBeat.i(206003);
+      paramString = e(f.S(paramString, paramLong));
+      AppMethodBeat.o(206003);
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
   public final e a(String paramString, long paramLong1, long paramLong2, c paramc, long paramLong3)
   {
     try
     {
-      AppMethodBeat.i(194193);
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.e.a.checkState(this.bwa.containsKey(paramString));
-      if (!this.kQd.exists())
+      AppMethodBeat.i(206005);
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.e.a.checkState(this.bGo.containsKey(paramString));
+      if (!this.lmD.exists())
       {
-        bjS();
-        this.kQd.mkdirs();
+        bnD();
+        this.lmD.mkdirs();
       }
-      this.kQe.a(this, paramLong3);
-      paramString = f.a(this.kQd, paramString, paramLong1, paramLong2, paramc, System.currentTimeMillis());
-      AppMethodBeat.o(194193);
+      this.lmE.a(this, paramLong3);
+      paramString = f.a(this.lmD, paramString, paramLong1, paramLong2, paramc, System.currentTimeMillis());
+      AppMethodBeat.o(206005);
       return paramString;
     }
     finally {}
@@ -601,14 +601,14 @@ public final class i
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 273
+    //   2: ldc_w 274
     //   5: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
     //   9: aload_0
-    //   10: getfield 42	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:bwa	Ljava/util/HashMap;
+    //   10: getfield 42	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/i:bGo	Ljava/util/HashMap;
     //   13: aload_1
     //   14: getfield 137	com/tencent/mm/plugin/appbrand/jsapi/video/b/a/f:key	Ljava/lang/String;
-    //   17: invokevirtual 275	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   17: invokevirtual 276	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   20: if_acmpne +22 -> 42
     //   23: iconst_1
     //   24: istore_2
@@ -616,7 +616,7 @@ public final class i
     //   26: invokestatic 202	com/tencent/mm/plugin/appbrand/jsapi/video/b/e/a:checkState	(Z)V
     //   29: aload_0
     //   30: invokevirtual 215	java/lang/Object:notifyAll	()V
-    //   33: ldc_w 273
+    //   33: ldc_w 274
     //   36: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   39: aload_0
     //   40: monitorexit
@@ -644,15 +644,15 @@ public final class i
   {
     try
     {
-      AppMethodBeat.i(194197);
-      TreeSet localTreeSet = (TreeSet)this.kQf.get(paramf.key);
-      this.bwd -= paramf.length;
-      paramf.kPM.delete();
+      AppMethodBeat.i(206009);
+      TreeSet localTreeSet = (TreeSet)this.lmF.get(paramf.key);
+      this.bGr -= paramf.length;
+      paramf.aXd.delete();
       if ((localTreeSet == null) || (localTreeSet.isEmpty())) {
-        this.kQf.remove(paramf.key);
+        this.lmF.remove(paramf.key);
       }
       g(paramf);
-      AppMethodBeat.o(194197);
+      AppMethodBeat.o(206009);
       return;
     }
     finally {}
@@ -660,18 +660,18 @@ public final class i
   
   final boolean f(f paramf)
   {
-    AppMethodBeat.i(194196);
-    TreeSet localTreeSet2 = (TreeSet)this.kQf.get(paramf.key);
+    AppMethodBeat.i(206008);
+    TreeSet localTreeSet2 = (TreeSet)this.lmF.get(paramf.key);
     TreeSet localTreeSet1 = localTreeSet2;
     if (localTreeSet2 == null)
     {
       localTreeSet1 = new TreeSet();
-      this.kQf.put(paramf.key, localTreeSet1);
+      this.lmF.put(paramf.key, localTreeSet1);
     }
     boolean bool = localTreeSet1.add(paramf);
-    this.bwd += paramf.length;
+    this.bGr += paramf.length;
     h(paramf);
-    AppMethodBeat.o(194196);
+    AppMethodBeat.o(206008);
     return bool;
   }
   
@@ -682,21 +682,21 @@ public final class i
     {
       try
       {
-        AppMethodBeat.i(194203);
-        paramString = aB(paramString);
+        AppMethodBeat.i(206015);
+        paramString = bu(paramString);
         if (paramString != null)
         {
           f localf = (f)paramString.first();
-          if ((localf != null) && (localf.jox >= 0L))
+          if ((localf != null) && (localf.jIt >= 0L))
           {
-            long l2 = localf.jox;
+            long l2 = localf.jIt;
             paramString = paramString.iterator();
             if (paramString.hasNext())
             {
               localf = (f)paramString.next();
-              if (!localf.bvL)
+              if (!localf.bFZ)
               {
-                AppMethodBeat.o(194203);
+                AppMethodBeat.o(206015);
                 bool = false;
                 return bool;
               }
@@ -706,23 +706,23 @@ public final class i
             if (l1 >= l2)
             {
               bool = true;
-              AppMethodBeat.o(194203);
+              AppMethodBeat.o(206015);
               continue;
             }
           }
         }
-        AppMethodBeat.o(194203);
+        AppMethodBeat.o(206015);
       }
       finally {}
       boolean bool = false;
     }
   }
   
-  public final long vi()
+  public final long wF()
   {
     try
     {
-      long l = this.bwd;
+      long l = this.bGr;
       return l;
     }
     finally

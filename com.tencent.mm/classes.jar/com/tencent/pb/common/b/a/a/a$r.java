@@ -6,27 +6,27 @@ import com.google.b.a.e;
 public final class a$r
   extends e
 {
-  public int JNc = 0;
+  public int LGL = 0;
   
   public a$r()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
-    paramb.bw(1, this.JNc);
+    paramb.by(1, this.LGL);
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    return super.xT() + b.by(1, this.JNc);
+    return super.zq() + b.bA(1, this.LGL);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.r
  * JD-Core Version:    0.7.0.1
  */

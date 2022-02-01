@@ -2,7 +2,7 @@ package com.tencent.mm.media.widget.camerarecordview.c;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$Companion;", "", "()V", "TAG", "", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$Companion;", "", "()V", "TAG", "", "plugin-mediaeditor_release"})
 public final class a$a {}
 
 

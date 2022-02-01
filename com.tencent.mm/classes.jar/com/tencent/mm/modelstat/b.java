@@ -2,21 +2,19 @@ package com.tencent.mm.modelstat;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.sn;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.g.a.ta;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.plugin.report.kvdata.IMBehavior;
 import com.tencent.mm.plugin.report.kvdata.IMBehaviorChattingOP;
 import com.tencent.mm.plugin.report.kvdata.IMBehaviorMsgOP;
 import com.tencent.mm.plugin.report.kvdata.log_13835;
 import com.tencent.mm.plugin.report.kvdata.log_13913;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Locale;
@@ -24,18 +22,18 @@ import java.util.Map;
 
 public final class b
 {
-  public static b hUE;
-  private com.tencent.mm.sdk.b.c fnu;
-  public log_13835 hUD;
-  private int hUF;
-  private int hUG;
+  public static b inZ;
+  private com.tencent.mm.sdk.b.c fFC;
   private boolean hasInit;
+  public log_13835 inY;
+  private int ioa;
+  private int iob;
   public Object lock;
   
   static
   {
     AppMethodBeat.i(151006);
-    hUE = new b();
+    inZ = new b();
     AppMethodBeat.o(151006);
   }
   
@@ -43,11 +41,11 @@ public final class b
   {
     AppMethodBeat.i(150983);
     this.lock = new Object();
-    this.fnu = new com.tencent.mm.sdk.b.c() {};
-    this.hUF = 1;
-    this.hUG = 1;
+    this.fFC = new com.tencent.mm.sdk.b.c() {};
+    this.ioa = 1;
+    this.iob = 1;
     this.hasInit = false;
-    a.GpY.b(this.fnu);
+    a.IbL.b(this.fFC);
     AppMethodBeat.o(150983);
   }
   
@@ -56,17 +54,17 @@ public final class b
     AppMethodBeat.i(150989);
     synchronized (this.lock)
     {
-      if (paramIMBehavior.opType == b.a.hUJ.value)
+      if (paramIMBehavior.opType == b.a.ioe.value)
       {
-        this.hUD.oplist_.add(paramIMBehavior);
+        this.inY.oplist_.add(paramIMBehavior);
         AppMethodBeat.o(150989);
         return;
       }
-      Iterator localIterator = this.hUD.oplist_.iterator();
+      Iterator localIterator = this.inY.oplist_.iterator();
       while (localIterator.hasNext())
       {
         IMBehavior localIMBehavior = (IMBehavior)localIterator.next();
-        if (localIMBehavior.opType == b.a.hUK.value)
+        if (localIMBehavior.opType == b.a.iof.value)
         {
           IMBehaviorMsgOP localIMBehaviorMsgOP1 = localIMBehavior.msgOp;
           IMBehaviorMsgOP localIMBehaviorMsgOP2 = paramIMBehavior.msgOp;
@@ -80,16 +78,42 @@ public final class b
           }
         }
       }
-      this.hUD.oplist_.add(paramIMBehavior);
+      this.inY.oplist_.add(paramIMBehavior);
       AppMethodBeat.o(150989);
       return;
     }
   }
   
-  private String aIo()
+  private void aLA()
+  {
+    AppMethodBeat.i(151004);
+    if (this.hasInit)
+    {
+      AppMethodBeat.o(151004);
+      return;
+    }
+    this.hasInit = true;
+    if (!com.tencent.mm.kernel.g.ajx())
+    {
+      ad.w("MicroMsg.ChattingOperationUitl", "account has not ready");
+      AppMethodBeat.o(151004);
+      return;
+    }
+    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aDs().wz("100148");
+    if (localc.isValid()) {
+      this.ioa = bt.getInt((String)localc.foF().get("needUploadData"), 1);
+    }
+    localc = com.tencent.mm.model.c.d.aDs().wz("100149");
+    if (localc.isValid()) {
+      this.iob = bt.getInt((String)localc.foF().get("needUploadData"), 1);
+    }
+    AppMethodBeat.o(151004);
+  }
+  
+  private String aLy()
   {
     AppMethodBeat.i(151002);
-    if (this.hUD == null)
+    if (this.inY == null)
     {
       AppMethodBeat.o(151002);
       return "";
@@ -101,7 +125,7 @@ public final class b
       Object localObject5;
       synchronized (this.lock)
       {
-        ((LinkedList)localObject4).addAll(this.hUD.oplist_);
+        ((LinkedList)localObject4).addAll(this.inY.oplist_);
         Iterator localIterator = ((LinkedList)localObject4).iterator();
         int i = 1;
         if (!localIterator.hasNext()) {
@@ -152,102 +176,64 @@ public final class b
         localObject2 = String.format(Locale.US, "msgType=%d&msgOpType=%d&count=%d", new Object[] { Integer.valueOf(((IMBehaviorMsgOP)localObject2).msgType), Integer.valueOf(((IMBehaviorMsgOP)localObject2).msgOpType), Integer.valueOf(((IMBehaviorMsgOP)localObject2).count) });
       }
     }
-    Object localObject2 = (String)localObject2 + "," + this.hUD.currChatName_;
+    Object localObject2 = (String)localObject2 + "," + this.inY.currChatName_;
     AppMethodBeat.o(151002);
     return localObject2;
   }
   
-  private void aIq()
-  {
-    AppMethodBeat.i(151004);
-    if (this.hasInit)
-    {
-      AppMethodBeat.o(151004);
-      return;
-    }
-    this.hasInit = true;
-    if (!g.agM())
-    {
-      ac.w("MicroMsg.ChattingOperationUitl", "account has not ready");
-      AppMethodBeat.o(151004);
-      return;
-    }
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aAp().tJ("100148");
-    if (localc.isValid()) {
-      this.hUF = bs.getInt((String)localc.eYV().get("needUploadData"), 1);
-    }
-    localc = com.tencent.mm.model.c.d.aAp().tJ("100149");
-    if (localc.isValid()) {
-      this.hUG = bs.getInt((String)localc.eYV().get("needUploadData"), 1);
-    }
-    AppMethodBeat.o(151004);
-  }
-  
-  public final void P(bo parambo)
+  public final void S(bu parambu)
   {
     AppMethodBeat.i(150994);
-    if (!aIp())
+    if (!aLz())
     {
       AppMethodBeat.o(150994);
       return;
     }
-    a(parambo, b.hUQ, 0);
+    a(parambu, b.iol, 0);
     AppMethodBeat.o(150994);
   }
   
-  public final void Q(bo parambo)
+  public final void T(bu parambu)
   {
     AppMethodBeat.i(150996);
-    if (!aIp())
+    if (!aLz())
     {
       AppMethodBeat.o(150996);
       return;
     }
-    a(parambo, b.hUS, 0);
+    a(parambu, b.ion, 0);
     AppMethodBeat.o(150996);
   }
   
-  public final void R(bo parambo)
+  public final void U(bu parambu)
   {
     AppMethodBeat.i(150997);
-    if (!aIp())
+    if (!aLz())
     {
       AppMethodBeat.o(150997);
       return;
     }
-    a(parambo, b.hUO, 0);
+    a(parambu, b.ioj, 0);
     AppMethodBeat.o(150997);
   }
   
-  public final void S(bo parambo)
+  public final void V(bu parambu)
   {
     AppMethodBeat.i(150998);
-    if (!aIp())
+    if (!aLz())
     {
       AppMethodBeat.o(150998);
       return;
     }
-    a(parambo, b.hUT, 0);
+    a(parambu, b.ioo, 0);
     AppMethodBeat.o(150998);
-  }
-  
-  public final void T(bo parambo)
-  {
-    AppMethodBeat.i(151000);
-    if (!aIp())
-    {
-      AppMethodBeat.o(151000);
-      return;
-    }
-    a(parambo, b.hUX, 0);
-    AppMethodBeat.o(151000);
   }
   
   public final void V(String arg1, boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(150986);
-    if (!aIp())
+    if (!aLz())
     {
       AppMethodBeat.o(150986);
       return;
@@ -261,7 +247,7 @@ public final class b
     {
       localIMBehaviorChattingOP.changeUnread = i;
       report();
-      if (eb(???)) {
+      if (eW(???)) {
         break;
       }
       AppMethodBeat.o(150986);
@@ -270,23 +256,35 @@ public final class b
     }
     synchronized (this.lock)
     {
-      this.hUD.oplist_.add(localIMBehavior);
+      this.inY.oplist_.add(localIMBehavior);
       report();
       AppMethodBeat.o(150986);
       return;
     }
   }
   
+  public final void W(bu parambu)
+  {
+    AppMethodBeat.i(151000);
+    if (!aLz())
+    {
+      AppMethodBeat.o(151000);
+      return;
+    }
+    a(parambu, b.ios, 0);
+    AppMethodBeat.o(151000);
+  }
+  
   public final void W(String paramString, boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(150988);
-    if (!aIp())
+    if (!aLz())
     {
       AppMethodBeat.o(150988);
       return;
     }
-    if (!eb(paramString))
+    if (!eW(paramString))
     {
       AppMethodBeat.o(150988);
       return;
@@ -301,7 +299,7 @@ public final class b
       ((IMBehaviorChattingOP)???).changeSaveAddress = i;
       synchronized (this.lock)
       {
-        this.hUD.oplist_.add(paramString);
+        this.inY.oplist_.add(paramString);
         AppMethodBeat.o(150988);
         return;
         i = 2;
@@ -309,10 +307,10 @@ public final class b
     }
   }
   
-  public final void a(bo parambo, b paramb, int paramInt)
+  public final void a(bu parambu, b paramb, int paramInt)
   {
     AppMethodBeat.i(150990);
-    if ((parambo == null) || (!eb(parambo.field_talker)))
+    if ((parambu == null) || (!eW(parambu.field_talker)))
     {
       AppMethodBeat.o(150990);
       return;
@@ -320,8 +318,8 @@ public final class b
     IMBehavior localIMBehavior = new IMBehavior();
     localIMBehavior.opType = 2;
     localIMBehavior.msgOp = new IMBehaviorMsgOP();
-    localIMBehavior.msgOp.msgType = (parambo.getType() & 0xFFFF);
-    if (parambo.cKN()) {
+    localIMBehavior.msgOp.msgType = (parambu.getType() & 0xFFFF);
+    if (parambu.cTc()) {
       localIMBehavior.msgOp.appMsgInnerType = paramInt;
     }
     localIMBehavior.msgOp.msgOpType = paramb.value;
@@ -330,50 +328,50 @@ public final class b
     AppMethodBeat.o(150990);
   }
   
-  public final void a(bo parambo, boolean paramBoolean)
+  public final void a(bu parambu, boolean paramBoolean)
   {
     AppMethodBeat.i(150999);
-    if (!aIp())
+    if (!aLz())
     {
       AppMethodBeat.o(150999);
       return;
     }
-    if (!parambo.isText())
+    if (!parambu.isText())
     {
       AppMethodBeat.o(150999);
       return;
     }
     if (paramBoolean) {}
-    for (b localb = b.hUU;; localb = b.hUV)
+    for (b localb = b.iop;; localb = b.ioq)
     {
-      a(parambo, localb, 0);
+      a(parambu, localb, 0);
       AppMethodBeat.o(150999);
       return;
     }
   }
   
-  public final void a(bo parambo, boolean paramBoolean, int paramInt)
+  public final void a(bu parambu, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(151001);
-    if (!aIp())
+    if (!aLz())
     {
       AppMethodBeat.o(151001);
       return;
     }
     if (paramBoolean) {}
-    for (b localb = b.hUY;; localb = b.hUZ)
+    for (b localb = b.iot;; localb = b.iou)
     {
-      a(parambo, localb, paramInt);
+      a(parambu, localb, paramInt);
       AppMethodBeat.o(151001);
       return;
     }
   }
   
-  public final boolean aIp()
+  public final boolean aLz()
   {
     AppMethodBeat.i(151003);
-    aIq();
-    if ((this.hUF != 0) || (this.hUG != 0))
+    aLA();
+    if ((this.ioa != 0) || (this.iob != 0))
     {
       AppMethodBeat.o(151003);
       return true;
@@ -382,30 +380,30 @@ public final class b
     return false;
   }
   
-  public final void b(final bo parambo, final int paramInt)
+  public final void b(final bu parambu, final int paramInt)
   {
     AppMethodBeat.i(150991);
-    new ao(Looper.getMainLooper()).post(new Runnable()
+    new ap(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(150975);
-        b.a(b.this, parambo, paramInt);
+        b.a(b.this, parambu, paramInt);
         AppMethodBeat.o(150975);
       }
     });
     AppMethodBeat.o(150991);
   }
   
-  public final void c(bo parambo, int paramInt)
+  public final void c(bu parambu, int paramInt)
   {
     AppMethodBeat.i(150993);
-    if (!aIp())
+    if (!aLz())
     {
       AppMethodBeat.o(150993);
       return;
     }
-    a(parambo, b.hUQ, paramInt);
+    a(parambu, b.iol, paramInt);
     AppMethodBeat.o(150993);
   }
   
@@ -413,7 +411,7 @@ public final class b
   {
     int i = 1;
     AppMethodBeat.i(150987);
-    if (!aIp())
+    if (!aLz())
     {
       AppMethodBeat.o(150987);
       return;
@@ -429,7 +427,7 @@ public final class b
       if (paramBoolean1) {
         report();
       }
-      if (eb(???)) {
+      if (eW(???)) {
         break;
       }
       AppMethodBeat.o(150987);
@@ -438,7 +436,7 @@ public final class b
     }
     synchronized (this.lock)
     {
-      this.hUD.oplist_.add(localIMBehavior);
+      this.inY.oplist_.add(localIMBehavior);
       if (paramBoolean1) {
         report();
       }
@@ -447,53 +445,53 @@ public final class b
     }
   }
   
-  public final void d(bo parambo, int paramInt)
+  public final void d(bu parambu, int paramInt)
   {
     AppMethodBeat.i(150995);
-    if (!aIp())
+    if (!aLz())
     {
       AppMethodBeat.o(150995);
       return;
     }
-    a(parambo, b.hUS, paramInt);
+    a(parambu, b.ion, paramInt);
     AppMethodBeat.o(150995);
   }
   
-  public final boolean eb(String paramString)
+  public final boolean eW(String paramString)
   {
     AppMethodBeat.i(150984);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      paramString = bs.eWi().toString();
-      ac.e("MicroMsg.ChattingOperationUitl", "check error:%s", new Object[] { paramString });
+      paramString = bt.flS().toString();
+      ad.e("MicroMsg.ChattingOperationUitl", "check error:%s", new Object[] { paramString });
       log_13913 locallog_13913 = new log_13913();
       locallog_13913.scene_ = 1;
       locallog_13913.error_ = paramString;
-      h.wUl.c(13913, locallog_13913);
+      com.tencent.mm.plugin.report.service.g.yhR.c(13913, locallog_13913);
       AppMethodBeat.o(150984);
       return false;
     }
-    if ((this.hUD != null) && (this.hUD.currChatName_ != null) && (!this.hUD.currChatName_.equals(paramString))) {
+    if ((this.inY != null) && (this.inY.currChatName_ != null) && (!this.inY.currChatName_.equals(paramString))) {
       report();
     }
-    if (this.hUD == null)
+    if (this.inY == null)
     {
-      this.hUD = new log_13835();
-      this.hUD.currChatName_ = paramString;
+      this.inY = new log_13835();
+      this.inY.currChatName_ = paramString;
     }
     AppMethodBeat.o(150984);
     return true;
   }
   
-  public final void q(final bo parambo)
+  public final void q(final bu parambu)
   {
     AppMethodBeat.i(150992);
-    new ao(Looper.getMainLooper()).post(new Runnable()
+    new ap(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(150976);
-        b.a(b.this, parambo, 0);
+        b.a(b.this, parambu, 0);
         AppMethodBeat.o(150976);
       }
     });
@@ -503,31 +501,31 @@ public final class b
   public final void report()
   {
     AppMethodBeat.i(150985);
-    if (!aIp())
+    if (!aLz())
     {
       AppMethodBeat.o(150985);
       return;
     }
     synchronized (this.lock)
     {
-      if ((this.hUD != null) && (!this.hUD.oplist_.isEmpty()))
+      if ((this.inY != null) && (!this.inY.oplist_.isEmpty()))
       {
         i = 1;
         if (i != 0)
         {
-          if (this.hUG != 0)
+          if (this.iob != 0)
           {
-            ac.i("MicroMsg.ChattingOperationUitl", "report imOperation(13835)");
-            h.wUl.c(13835, this.hUD);
+            ad.i("MicroMsg.ChattingOperationUitl", "report imOperation(13835)");
+            com.tencent.mm.plugin.report.service.g.yhR.c(13835, this.inY);
           }
-          if (this.hUF != 0)
+          if (this.ioa != 0)
           {
-            ??? = aIo();
-            ac.i("MicroMsg.ChattingOperationUitl", "report imOperation(13748) reportStr:%s", new Object[] { ??? });
-            h.wUl.kvStat(13748, (String)???);
+            ??? = aLy();
+            ad.i("MicroMsg.ChattingOperationUitl", "report imOperation(13748) reportStr:%s", new Object[] { ??? });
+            com.tencent.mm.plugin.report.service.g.yhR.kvStat(13748, (String)???);
           }
         }
-        this.hUD = null;
+        this.inY = null;
         AppMethodBeat.o(150985);
         return;
       }
@@ -542,21 +540,21 @@ public final class b
     static
     {
       AppMethodBeat.i(150982);
-      hUM = new b("UnKnownType", 0, 0);
-      hUN = new b("expourse", 1, 1);
-      hUO = new b("click", 2, 2);
-      hUP = new b("send", 3, 3);
-      hUQ = new b("fav", 4, 4);
-      hUR = new b("revoke", 5, 5);
-      hUS = new b("delete", 6, 6);
-      hUT = new b("voiceToText", 7, 7);
-      hUU = new b("translate", 8, 8);
-      hUV = new b("translateHidden", 9, 9);
-      hUW = new b("doubleClickText", 10, 10);
-      hUX = new b("imageSaveToLocal", 11, 11);
-      hUY = new b("playMusic", 12, 12);
-      hUZ = new b("stopMusic", 13, 13);
-      hVa = new b[] { hUM, hUN, hUO, hUP, hUQ, hUR, hUS, hUT, hUU, hUV, hUW, hUX, hUY, hUZ };
+      ioh = new b("UnKnownType", 0, 0);
+      ioi = new b("expourse", 1, 1);
+      ioj = new b("click", 2, 2);
+      iok = new b("send", 3, 3);
+      iol = new b("fav", 4, 4);
+      iom = new b("revoke", 5, 5);
+      ion = new b("delete", 6, 6);
+      ioo = new b("voiceToText", 7, 7);
+      iop = new b("translate", 8, 8);
+      ioq = new b("translateHidden", 9, 9);
+      ior = new b("doubleClickText", 10, 10);
+      ios = new b("imageSaveToLocal", 11, 11);
+      iot = new b("playMusic", 12, 12);
+      iou = new b("stopMusic", 13, 13);
+      iov = new b[] { ioh, ioi, ioj, iok, iol, iom, ion, ioo, iop, ioq, ior, ios, iot, iou };
       AppMethodBeat.o(150982);
     }
     

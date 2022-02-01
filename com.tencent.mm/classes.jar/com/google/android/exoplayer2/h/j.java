@@ -8,7 +8,7 @@ import java.util.Arrays;
 public final class j
 {
   public final long absoluteStreamPosition;
-  public final byte[] buv;
+  public final byte[] bEK;
   public final int flags;
   public final String key;
   public final long length;
@@ -62,7 +62,7 @@ public final class j
     {
       a.checkArgument(bool);
       this.uri = paramUri;
-      this.buv = paramArrayOfByte;
+      this.bEK = paramArrayOfByte;
       this.absoluteStreamPosition = paramLong1;
       this.position = paramLong2;
       this.length = paramLong3;
@@ -85,7 +85,7 @@ public final class j
       AppMethodBeat.o(93048);
       return this;
     }
-    j localj = new j(this.uri, this.buv, this.absoluteStreamPosition + paramLong1, this.position + paramLong1, paramLong2, this.key, this.flags);
+    j localj = new j(this.uri, this.bEK, this.absoluteStreamPosition + paramLong1, this.position + paramLong1, paramLong2, this.key, this.flags);
     AppMethodBeat.o(93048);
     return localj;
   }
@@ -112,7 +112,7 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(93046);
-    String str = "DataSpec[" + this.uri + ", " + Arrays.toString(this.buv) + ", " + this.absoluteStreamPosition + ", " + this.position + ", " + this.length + ", " + this.key + ", " + this.flags + "]";
+    String str = "DataSpec[" + this.uri + ", " + Arrays.toString(this.bEK) + ", " + this.absoluteStreamPosition + ", " + this.position + ", " + this.length + ", " + this.key + ", " + this.flags + "]";
     AppMethodBeat.o(93046);
     return str;
   }

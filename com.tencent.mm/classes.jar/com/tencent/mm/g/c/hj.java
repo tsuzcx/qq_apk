@@ -1,136 +1,116 @@
 package com.tencent.mm.g.c;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storagebase.h;
-import com.tencent.mm.storagebase.h.b;
-import java.util.HashMap;
-import junit.framework.Assert;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mm.sdk.e.c;
 
-public final class hj
-  extends h
+public abstract class hj
+  extends c
 {
-  private static HashMap<Integer, h.b> baseDBFactories;
-  private static hj fkH;
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eCW = "msgId".hashCode();
+  private static final int eFM = "size".hashCode();
+  private static final int eFp = "username".hashCode();
+  private static final int eFw;
+  private static final int eIQ = "msgType".hashCode();
+  private static final int fBA = "msgSubType".hashCode();
+  private static final int fBB = "msgtime".hashCode();
+  private static final int rowid_HASHCODE = "rowid".hashCode();
+  private boolean eCS = true;
+  private boolean eFK = true;
+  private boolean eFm = true;
+  private boolean eFs = true;
+  private boolean eIB = true;
+  private boolean fBy = true;
+  private boolean fBz = true;
+  public long field_msgId;
+  public int field_msgSubType;
+  public int field_msgType;
+  public long field_msgtime;
+  public String field_path;
+  public long field_size;
+  public String field_username;
   
   static
   {
-    AppMethodBeat.i(127419);
-    fkH = null;
-    HashMap localHashMap = new HashMap();
-    baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("FavItemInfo".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        AppMethodBeat.i(127411);
-        String str = j.getCreateSQLs(bw.Th(), "FavItemInfo");
-        AppMethodBeat.o(127411);
-        return new String[] { str };
-      }
-    });
-    baseDBFactories.put(Integer.valueOf("FavSearchInfo".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        AppMethodBeat.i(127412);
-        String str = j.getCreateSQLs(by.Th(), "FavSearchInfo");
-        AppMethodBeat.o(127412);
-        return new String[] { str };
-      }
-    });
-    baseDBFactories.put(Integer.valueOf("FavEditInfo".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        AppMethodBeat.i(127413);
-        String str = j.getCreateSQLs(bv.Th(), "FavEditInfo");
-        AppMethodBeat.o(127413);
-        return new String[] { str };
-      }
-    });
-    baseDBFactories.put(Integer.valueOf("FavCdnInfo".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        AppMethodBeat.i(127414);
-        String str = j.getCreateSQLs(bt.Th(), "FavCdnInfo");
-        AppMethodBeat.o(127414);
-        return new String[] { str };
-      }
-    });
-    baseDBFactories.put(Integer.valueOf("FavConfigInfo".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        AppMethodBeat.i(127415);
-        String str = j.getCreateSQLs(bu.Th(), "FavConfigInfo");
-        AppMethodBeat.o(127415);
-        return new String[] { str };
-      }
-    });
-    AppMethodBeat.o(127419);
+    eFw = "path".hashCode();
   }
   
-  private hj()
+  public void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(127416);
-    long l1 = System.currentTimeMillis();
-    g.agP();
-    if (a.getUin() != 0) {}
-    for (boolean bool = true;; bool = false)
+    String[] arrayOfString = paramCursor.getColumnNames();
+    if (arrayOfString == null) {
+      return;
+    }
+    int i = 0;
+    int j = arrayOfString.length;
+    label20:
+    int k;
+    if (i < j)
     {
-      Assert.assertTrue(bool);
-      localObject = g.agR().cachePath + "enFavorite.db";
-      ac.d("MicroMsg.FavoriteDataBase", "db path", new Object[] { localObject });
-      g.agP();
-      long l2 = a.getUin();
-      q.cF(true);
-      if (a("", (String)localObject, l2, baseDBFactories)) {
-        break;
+      k = arrayOfString[i].hashCode();
+      if (eCW != k) {
+        break label60;
       }
-      localObject = new com.tencent.mm.model.b((byte)0);
-      AppMethodBeat.o(127416);
-      throw ((Throwable)localObject);
+      this.field_msgId = paramCursor.getLong(i);
     }
-    Object localObject = this.HbO;
-    if (!bs.isNullOrNil((String)localObject))
+    for (;;)
     {
-      ac.e("MicroMsg.FavoriteDataBase", "dbinit failed :".concat(String.valueOf(localObject)));
-      com.tencent.mm.sdk.a.b.N("init db Favorite Failed: [ " + (String)localObject + "]", "DBinit");
+      i += 1;
+      break label20;
+      break;
+      label60:
+      if (eFp == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (eIQ == k) {
+        this.field_msgType = paramCursor.getInt(i);
+      } else if (fBA == k) {
+        this.field_msgSubType = paramCursor.getInt(i);
+      } else if (eFw == k) {
+        this.field_path = paramCursor.getString(i);
+      } else if (eFM == k) {
+        this.field_size = paramCursor.getLong(i);
+      } else if (fBB == k) {
+        this.field_msgtime = paramCursor.getLong(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
+      }
     }
-    ac.d("MicroMsg.FavoriteDataBase", "init db Favorite time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(127416);
   }
   
-  public static hj TJ()
+  public ContentValues convertTo()
   {
-    AppMethodBeat.i(127417);
-    if (fkH == null) {
-      fkH = new hj();
+    ContentValues localContentValues = new ContentValues();
+    if (this.eCS) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    hj localhj = fkH;
-    AppMethodBeat.o(127417);
-    return localhj;
-  }
-  
-  public final void ro(String paramString)
-  {
-    AppMethodBeat.i(127418);
-    super.ro(paramString);
-    fkH = null;
-    AppMethodBeat.o(127418);
+    if (this.eFm) {
+      localContentValues.put("username", this.field_username);
+    }
+    if (this.eIB) {
+      localContentValues.put("msgType", Integer.valueOf(this.field_msgType));
+    }
+    if (this.fBy) {
+      localContentValues.put("msgSubType", Integer.valueOf(this.field_msgSubType));
+    }
+    if (this.eFs) {
+      localContentValues.put("path", this.field_path);
+    }
+    if (this.eFK) {
+      localContentValues.put("size", Long.valueOf(this.field_size));
+    }
+    if (this.fBz) {
+      localContentValues.put("msgtime", Long.valueOf(this.field_msgtime));
+    }
+    if (this.systemRowid > 0L) {
+      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+    }
+    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.hj
  * JD-Core Version:    0.7.0.1
  */

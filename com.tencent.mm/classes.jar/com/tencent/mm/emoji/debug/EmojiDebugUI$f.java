@@ -6,17 +6,17 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/debug/EmojiDebugUI$DebugViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/widget/TextView;", "(Lcom/tencent/mm/emoji/debug/EmojiDebugUI;Landroid/widget/TextView;)V", "textView", "getTextView", "()Landroid/widget/TextView;", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/debug/EmojiDebugUI$DebugViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/widget/TextView;", "(Lcom/tencent/mm/emoji/debug/EmojiDebugUI;Landroid/widget/TextView;)V", "textView", "getTextView", "()Landroid/widget/TextView;", "plugin-emojisdk_release"})
 public final class EmojiDebugUI$f
   extends RecyclerView.w
 {
-  final TextView tr;
+  final TextView vk;
   
   public EmojiDebugUI$f(TextView paramTextView)
   {
     super((View)localObject);
     AppMethodBeat.i(105341);
-    this.tr = localObject;
+    this.vk = localObject;
     AppMethodBeat.o(105341);
   }
 }

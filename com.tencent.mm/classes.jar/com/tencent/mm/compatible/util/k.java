@@ -2,49 +2,37 @@ package com.tencent.mm.compatible.util;
 
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class k
 {
-  public static boolean UV()
+  public static boolean Xm()
   {
     AppMethodBeat.i(155906);
-    if (bs.bG(Build.MANUFACTURER, "").toLowerCase().indexOf("samsung".toLowerCase()) >= 0)
-    {
-      AppMethodBeat.o(155906);
-      return true;
-    }
+    boolean bool = bt.bI(Build.MANUFACTURER, "").toLowerCase().contains("samsung".toLowerCase());
     AppMethodBeat.o(155906);
-    return false;
+    return bool;
   }
   
-  public static boolean YP()
+  public static boolean abq()
   {
     AppMethodBeat.i(155907);
-    if (bs.bG(Build.MANUFACTURER, "").toLowerCase().indexOf("HMD Global".toLowerCase()) >= 0)
-    {
-      AppMethodBeat.o(155907);
-      return true;
-    }
+    boolean bool = bt.bI(Build.MANUFACTURER, "").toLowerCase().contains("HMD Global".toLowerCase());
     AppMethodBeat.o(155907);
-    return false;
+    return bool;
   }
   
-  public static boolean YQ()
+  public static boolean abr()
   {
     AppMethodBeat.i(155908);
-    if (bs.bG(Build.MANUFACTURER, "").toLowerCase().indexOf("smartisan".toLowerCase()) >= 0)
-    {
-      AppMethodBeat.o(155908);
-      return true;
-    }
+    boolean bool = bt.bI(Build.MANUFACTURER, "").toLowerCase().contains("smartisan".toLowerCase());
     AppMethodBeat.o(155908);
-    return false;
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.util.k
  * JD-Core Version:    0.7.0.1
  */

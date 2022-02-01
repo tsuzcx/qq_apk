@@ -11,8 +11,8 @@ import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public final class JsApiSetLabInfo
@@ -26,15 +26,15 @@ public final class JsApiSetLabInfo
     AppMethodBeat.i(46372);
     if (paramJSONObject == null)
     {
-      ac.e("MicroMsg.JsApiSetLabInfo", "fail:data is null");
+      ad.e("MicroMsg.JsApiSetLabInfo", "fail:data is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(46372);
       return;
     }
     String str = paramJSONObject.optString("labId");
-    if ((bs.isNullOrNil(str)) || (!paramJSONObject.has("enabled")))
+    if ((bt.isNullOrNil(str)) || (!paramJSONObject.has("enabled")))
     {
-      ac.e("MicroMsg.JsApiSetLabInfo", "fail:labId is null or no enabled");
+      ad.e("MicroMsg.JsApiSetLabInfo", "fail:labId is null or no enabled");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(46372);
       return;
@@ -47,7 +47,7 @@ public final class JsApiSetLabInfo
     implements Parcelable
   {
     public static final Parcelable.Creator<IPCSetLabInfoRequest> CREATOR;
-    private String djj;
+    private String duW;
     private boolean enabled;
     
     static
@@ -62,7 +62,7 @@ public final class JsApiSetLabInfo
     protected IPCSetLabInfoRequest(Parcel paramParcel)
     {
       AppMethodBeat.i(46370);
-      this.djj = paramParcel.readString();
+      this.duW = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
@@ -74,7 +74,7 @@ public final class JsApiSetLabInfo
     
     public IPCSetLabInfoRequest(String paramString, boolean paramBoolean)
     {
-      this.djj = paramString;
+      this.duW = paramString;
       this.enabled = paramBoolean;
     }
     
@@ -86,7 +86,7 @@ public final class JsApiSetLabInfo
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(46369);
-      paramParcel.writeString(this.djj);
+      paramParcel.writeString(this.duW);
       if (this.enabled) {}
       for (byte b = 1;; b = 0)
       {

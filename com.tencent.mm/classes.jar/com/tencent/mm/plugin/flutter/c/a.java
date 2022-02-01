@@ -1,155 +1,112 @@
 package com.tencent.mm.plugin.flutter.c;
 
-import android.app.Activity;
-import android.content.Context;
-import android.provider.Settings.SettingNotFoundException;
-import android.provider.Settings.System;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import io.flutter.plugin.a.j;
-import io.flutter.plugin.a.k.c;
-import io.flutter.plugin.a.k.d;
-import io.flutter.plugin.a.m.c;
-import io.flutter.plugin.a.m.f;
-import io.flutter.view.FlutterNativeView;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import d.g.b.p;
+import d.l;
+import d.v;
+import java.util.Map;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/flutter/lite/WxaLiteAppCrashReportHandler;", "", "()V", "TAG", "", "handleCrash", "", "crashInfoMap", "", "killSelf", "", "plugin-flutter_release"})
 public final class a
-  implements k.c
 {
-  private final m.c aRg;
+  private static final String TAG = "MicroMsg.WxaLiteAppCrashReportHandler";
+  public static final a tiD;
   
-  public a(m.c paramc)
+  static
   {
-    this.aRg = paramc;
+    AppMethodBeat.i(219130);
+    tiD = new a();
+    TAG = "MicroMsg.WxaLiteAppCrashReportHandler";
+    AppMethodBeat.o(219130);
   }
   
-  private float cHZ()
+  public static void b(Map<String, ? extends Object> paramMap, boolean paramBoolean)
   {
-    AppMethodBeat.i(148875);
-    float f2 = this.aRg.Iq().getWindow().getAttributes().screenBrightness;
-    f1 = f2;
-    if (f2 < 0.0F) {}
-    try
-    {
-      int i = Settings.System.getInt(this.aRg.Ir().getContentResolver(), "screen_brightness");
-      f1 = i / 255.0F;
+    AppMethodBeat.i(219129);
+    p.h(paramMap, "crashInfoMap");
+    Object localObject = (Map)paramMap.get("customParameters");
+    if (localObject == null) {
+      p.gfZ();
     }
-    catch (Settings.SettingNotFoundException localSettingNotFoundException)
+    String str;
+    label271:
+    label302:
+    g localg;
+    if (((Map)localObject).containsKey("WxaLiteApp"))
     {
-      for (;;)
+      localObject = ax.flh();
+      str = ((ax)localObject).getString("wxa_lite_app_game_center_version", "");
+      if (str != null)
       {
-        f1 = 1.0F;
-        ac.printErrStackTrace("MicroMsg.FlutterScreenPlugin", localSettingNotFoundException, "", new Object[0]);
-      }
-    }
-    AppMethodBeat.o(148875);
-    return f1;
-  }
-  
-  public final void a(j paramj, k.d paramd)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(148874);
-    String str = paramj.method;
-    int i = -1;
-    switch (str.hashCode())
-    {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        paramd.daE();
-        AppMethodBeat.o(148874);
-        return;
-        if (str.equals("brightness"))
+        int i;
+        if (paramBoolean)
         {
-          i = 0;
-          continue;
-          if (str.equals("setBrightness"))
+          i = ((ax)localObject).getInt("count_".concat(String.valueOf(str)), 0);
+          long l1 = ((ax)localObject).getLong("time_".concat(String.valueOf(str)), 0L);
+          long l2 = System.currentTimeMillis();
+          if (l2 - l1 > 3600000L)
           {
-            i = 1;
-            continue;
-            if (str.equals("isKeptOn"))
-            {
-              i = 2;
-              continue;
-              if (str.equals("keepOn")) {
-                i = 3;
-              }
-            }
+            ((ax)localObject).putInt("count_".concat(String.valueOf(str)), 1);
+            ((ax)localObject).putLong("time_".concat(String.valueOf(str)), l2);
+            ad.i(TAG, "WxaLiteApp handle crash. version:%s count%d time:%s now:%s", new Object[] { str, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2) });
+            ((ax)localObject).commit();
           }
         }
-        break;
+        for (;;)
+        {
+          paramMap = paramMap.get("error");
+          if (paramMap != null) {
+            break label271;
+          }
+          paramMap = new v("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(219129);
+          throw paramMap;
+          ((ax)localObject).putInt("count_".concat(String.valueOf(str)), i + 1);
+          break;
+          ad.i(TAG, "WxaLiteApp handle state error . version:%s", new Object[] { str });
+        }
+        paramMap = (String)paramMap;
+        if (paramMap.length() >= 10) {
+          break label347;
+        }
+        if (!paramBoolean) {
+          break label385;
+        }
+        g.yhR.n(1293L, 103L, 1L);
+        localg = g.yhR;
+        if (!paramBoolean) {
+          break label401;
+        }
       }
     }
-    if (this.aRg.Iq() == null)
+    label385:
+    label401:
+    for (localObject = "crash";; localObject = "bad state only")
     {
-      ac.w("MicroMsg.FlutterScreenPlugin", "activity is null, please must sure the activity have attach. ignore");
-      paramd.e("MicroMsg.FlutterScreenPlugin", "activity is null", "");
-      AppMethodBeat.o(148874);
+      localg.f(20315, new Object[] { str, localObject, paramMap });
+      AppMethodBeat.o(219129);
       return;
-    }
-    paramd.db(Float.valueOf(cHZ()));
-    AppMethodBeat.o(148874);
-    return;
-    if (this.aRg.Iq() == null)
-    {
-      ac.w("MicroMsg.FlutterScreenPlugin", "activity is null, please must sure the activity have attach. ignore");
-      paramd.e("MicroMsg.FlutterScreenPlugin", "activity is null", "");
-      AppMethodBeat.o(148874);
-      return;
-    }
-    double d = ((Double)paramj.tn("brightness")).doubleValue();
-    paramj = this.aRg.Iq().getWindow().getAttributes();
-    paramj.screenBrightness = ((float)d);
-    this.aRg.Iq().getWindow().setAttributes(paramj);
-    paramd.db(null);
-    AppMethodBeat.o(148874);
-    return;
-    if (this.aRg.Iq() == null)
-    {
-      ac.w("MicroMsg.FlutterScreenPlugin", "activity is null, please must sure the activity have attach. ignore");
-      paramd.e("MicroMsg.FlutterScreenPlugin", "activity is null", "");
-      AppMethodBeat.o(148874);
-      return;
-    }
-    if ((this.aRg.Iq().getWindow().getAttributes().flags & 0x80) != 0) {}
-    for (;;)
-    {
-      paramd.db(Boolean.valueOf(bool));
-      AppMethodBeat.o(148874);
-      return;
-      bool = false;
-    }
-    if (this.aRg.Iq() == null)
-    {
-      ac.w("MicroMsg.FlutterScreenPlugin", "activity is null, please must sure the activity have attach. ignore");
-      paramd.e("MicroMsg.FlutterScreenPlugin", "activity is null", "");
-      AppMethodBeat.o(148874);
-      return;
-    }
-    if (((Boolean)paramj.tn("on")).booleanValue())
-    {
-      ac.i("MicroMsg.FlutterScreenPlugin", "Keeping screen on ");
-      this.aRg.Iq().getWindow().addFlags(128);
-    }
-    for (;;)
-    {
-      paramd.db(null);
-      AppMethodBeat.o(148874);
-      return;
-      ac.i("MicroMsg.FlutterScreenPlugin", "Not keeping screen on");
-      this.aRg.Iq().getWindow().clearFlags(128);
+      label347:
+      if (paramMap == null)
+      {
+        paramMap = new v("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(219129);
+        throw paramMap;
+      }
+      paramMap = paramMap.substring(0, 10);
+      p.g(paramMap, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      break;
+      g.yhR.n(1293L, 104L, 1L);
+      break label302;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.c.a
  * JD-Core Version:    0.7.0.1
  */

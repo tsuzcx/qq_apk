@@ -9,16 +9,16 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.b.b.b.a;
 import com.tencent.mm.plugin.sns.ui.c.a.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 
 public final class e
   extends a
 {
-  private AnimatorSet xhG;
-  private ValueAnimator zaW;
-  private ValueAnimator zaX;
-  c zbi;
+  private ValueAnimator AsN;
+  private ValueAnimator AsO;
+  c AsZ;
+  private AnimatorSet yvH;
   
   public e(MMActivity paramMMActivity, com.tencent.mm.plugin.sns.ui.c.a.a parama)
   {
@@ -26,9 +26,9 @@ public final class e
     try
     {
       this.activity = paramMMActivity;
-      this.zbi = ((c)parama);
-      this.zaW = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.zaW.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.AsZ = ((c)parama);
+      this.AsN = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.AsN.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -36,53 +36,53 @@ public final class e
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
           if (f != 0.0F)
           {
-            e.this.zbi.yGK.setScaleX(f);
-            e.this.zbi.yGK.setScaleY(f);
-            e.this.zbi.yGK.setAlpha(f);
+            e.this.AsZ.zYc.setScaleX(f);
+            e.this.AsZ.zYc.setScaleY(f);
+            e.this.AsZ.zYc.setAlpha(f);
           }
           AppMethodBeat.o(99912);
         }
       });
-      this.zaW.setDuration(400L);
-      this.zaW.addListener(new AnimatorListenerAdapter()
+      this.AsN.setDuration(400L);
+      this.AsN.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(179327);
-          e.this.zbi.rXY.setAlpha(0.0F);
-          e.this.zbi.zbW.setAlpha(0.0F);
+          e.this.AsZ.sUS.setAlpha(0.0F);
+          e.this.AsZ.AtN.setAlpha(0.0F);
           AppMethodBeat.o(179327);
         }
       });
-      this.zaX = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.zaX.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.AsO = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.AsO.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(179328);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          e.this.zbi.rXY.setAlpha(f);
-          e.this.zbi.zbW.setAlpha(f);
+          e.this.AsZ.sUS.setAlpha(f);
+          e.this.AsZ.AtN.setAlpha(f);
           AppMethodBeat.o(179328);
         }
       });
-      this.zaX.setDuration(100L);
-      this.zaX.setStartDelay(300L);
-      this.xhG = new AnimatorSet();
-      this.xhG.playTogether(new Animator[] { this.zaW, this.zaX });
-      this.xhG.addListener(new AnimatorListenerAdapter()
+      this.AsO.setDuration(100L);
+      this.AsO.setStartDelay(300L);
+      this.yvH = new AnimatorSet();
+      this.yvH.playTogether(new Animator[] { this.AsN, this.AsO });
+      this.yvH.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(179330);
-          ac.i("MicroMsg.FullCardAdDetailBackAnimation", "onAnimation end");
-          e.this.zbi.yGK.setScaleX(1.0F);
-          e.this.zbi.yGK.setScaleY(1.0F);
-          e.this.zbi.yGK.setAlpha(1.0F);
-          e.this.zbi.rXY.setAlpha(1.0F);
-          e.this.zbi.zbW.setAlpha(1.0F);
-          if (e.this.zaU != null) {
-            e.this.zaU.onAnimationEnd();
+          ad.i("MicroMsg.FullCardAdDetailBackAnimation", "onAnimation end");
+          e.this.AsZ.zYc.setScaleX(1.0F);
+          e.this.AsZ.zYc.setScaleY(1.0F);
+          e.this.AsZ.zYc.setAlpha(1.0F);
+          e.this.AsZ.sUS.setAlpha(1.0F);
+          e.this.AsZ.AtN.setAlpha(1.0F);
+          if (e.this.AsL != null) {
+            e.this.AsL.onAnimationEnd();
           }
           AppMethodBeat.o(179330);
         }
@@ -90,7 +90,7 @@ public final class e
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(179329);
-          ac.i("MicroMsg.FullCardAdDetailBackAnimation", "onAnimation start");
+          ad.i("MicroMsg.FullCardAdDetailBackAnimation", "onAnimation start");
           AppMethodBeat.o(179329);
         }
       });
@@ -99,18 +99,18 @@ public final class e
     }
     catch (Throwable paramMMActivity)
     {
-      ac.e("MicroMsg.FullCardAdDetailBackAnimation", "init exp=" + paramMMActivity.toString());
+      ad.e("MicroMsg.FullCardAdDetailBackAnimation", "init exp=" + paramMMActivity.toString());
       AppMethodBeat.o(99916);
     }
   }
   
-  public final void xV(long paramLong)
+  public final void At(long paramLong)
   {
     AppMethodBeat.i(99917);
-    if ((this.xhG != null) && (!this.xhG.isStarted()))
+    if ((this.yvH != null) && (!this.yvH.isStarted()))
     {
-      this.xhG.setStartDelay(paramLong);
-      this.xhG.start();
+      this.yvH.setStartDelay(paramLong);
+      this.yvH.start();
     }
     AppMethodBeat.o(99917);
   }

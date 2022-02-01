@@ -2,12 +2,12 @@ package com.tencent.mm.pluginsdk.ui.chat;
 
 public final class e
 {
-  public static e.b DyA;
-  public static a DyB;
+  public static e.b FdJ;
+  public static a FdK;
   
-  public static e.b ePr()
+  public static e.b fet()
   {
-    return DyA;
+    return FdJ;
   }
   
   public static abstract interface a {}

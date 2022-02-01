@@ -14,225 +14,225 @@ import com.tencent.mm.protocal.a.a.l;
 import com.tencent.mm.protocal.a.a.m;
 import com.tencent.mm.protocal.a.a.n;
 import com.tencent.mm.protocal.a.a.o;
-import com.tencent.mm.protocal.protobuf.avi;
-import com.tencent.mm.protocal.protobuf.avj;
-import com.tencent.mm.protocal.protobuf.bky;
-import com.tencent.mm.protocal.protobuf.bkz;
-import com.tencent.mm.protocal.protobuf.bnv;
-import com.tencent.mm.protocal.protobuf.bxz;
-import com.tencent.mm.protocal.protobuf.det;
-import com.tencent.mm.protocal.protobuf.ws;
-import com.tencent.mm.protocal.protobuf.wt;
-import com.tencent.mm.protocal.protobuf.wu;
+import com.tencent.mm.protocal.protobuf.azg;
+import com.tencent.mm.protocal.protobuf.azh;
+import com.tencent.mm.protocal.protobuf.bpi;
+import com.tencent.mm.protocal.protobuf.bpj;
+import com.tencent.mm.protocal.protobuf.bsh;
+import com.tencent.mm.protocal.protobuf.ccq;
+import com.tencent.mm.protocal.protobuf.dkg;
+import com.tencent.mm.protocal.protobuf.yr;
+import com.tencent.mm.protocal.protobuf.ys;
+import com.tencent.mm.protocal.protobuf.yt;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class SmcProtoBufUtil
 {
-  private static o fillStrategyTable(LinkedList<det> paramLinkedList)
+  private static o fillStrategyTable(LinkedList<dkg> paramLinkedList)
   {
     o localo = new o();
     int i = 0;
     while (i < paramLinkedList.size())
     {
-      det localdet = (det)paramLinkedList.get(i);
+      dkg localdkg = (dkg)paramLinkedList.get(i);
       m localm = new m();
-      localm.DKl = localdet.FOm;
-      localm.DKm = localdet.FOn;
+      localm.Fps = localdkg.HyX;
+      localm.Fpt = localdkg.HyY;
       int j = 0;
-      while (j < localdet.FOo.size())
+      while (j < localdkg.HyZ.size())
       {
-        bxz localbxz = (bxz)localdet.FOo.get(j);
+        ccq localccq = (ccq)localdkg.HyZ.get(j);
         n localn = new n();
-        localn.DJF = localbxz.Fdx;
-        localn.DKo = localbxz.Fng;
-        localn.DKp = localbxz.Fne;
-        localn.DKq = localbxz.Fnf;
-        localn.DKr = localbxz.Fnh;
-        localn.DKs = localbxz.Fni;
-        localn.DKt = localbxz.Fnj;
-        localn.type = localbxz.ndI;
-        localm.DKn.add(localn);
+        localn.FoM = localccq.GNa;
+        localn.Fpv = localccq.GWP;
+        localn.Fpw = localccq.GWN;
+        localn.Fpx = localccq.GWO;
+        localn.Fpy = localccq.GWQ;
+        localn.Fpz = localccq.GWR;
+        localn.FpA = localccq.GWS;
+        localn.type = localccq.nEf;
+        localm.Fpu.add(localn);
         j += 1;
       }
-      localo.DKu.add(localm);
+      localo.FpB.add(localm);
       i += 1;
     }
     return localo;
   }
   
-  public static avi toMMGetStrategyReq()
+  public static azg toMMGetStrategyReq()
   {
-    avi localavi = new avi();
+    azg localazg = new azg();
     ArrayList localArrayList = SmcLogic.getStrategyVersions();
     if (localArrayList.size() != 6) {
       return null;
     }
-    localavi.EqT = ((Integer)localArrayList.get(0)).intValue();
-    localavi.EqU = ((Integer)localArrayList.get(1)).intValue();
-    localavi.EqV = ((Integer)localArrayList.get(2)).intValue();
-    localavi.ENx = ((Integer)localArrayList.get(3)).intValue();
-    localavi.ENy = ((Integer)localArrayList.get(4)).intValue();
-    localavi.ENz = ((Integer)localArrayList.get(5)).intValue();
-    return localavi;
+    localazg.FYd = ((Integer)localArrayList.get(0)).intValue();
+    localazg.FYe = ((Integer)localArrayList.get(1)).intValue();
+    localazg.FYf = ((Integer)localArrayList.get(2)).intValue();
+    localazg.GwC = ((Integer)localArrayList.get(3)).intValue();
+    localazg.GwD = ((Integer)localArrayList.get(4)).intValue();
+    localazg.GwE = ((Integer)localArrayList.get(5)).intValue();
+    return localazg;
   }
   
-  public static wt toMMReportIdkeyReq(g paramg)
+  public static ys toMMReportIdkeyReq(g paramg)
   {
-    wt localwt = new wt();
-    localwt.EqT = paramg.DJI;
-    localwt.EqU = paramg.DJY;
-    localwt.EqV = 0;
+    ys localys = new ys();
+    localys.FYd = paramg.FoP;
+    localys.FYe = paramg.Fpf;
+    localys.FYf = 0;
     int i = 0;
-    while (i < paramg.DJZ.size())
+    while (i < paramg.Fpg.size())
     {
-      com.tencent.mm.protocal.a.a.b localb = (com.tencent.mm.protocal.a.a.b)paramg.DJZ.get(i);
-      ws localws = new ws();
-      localws.pAs = localb.uin;
-      localws.DWJ = localb.DJG;
-      localws.EqS = localb.nettype;
+      com.tencent.mm.protocal.a.a.b localb = (com.tencent.mm.protocal.a.a.b)paramg.Fpg.get(i);
+      yr localyr = new yr();
+      localyr.qdX = localb.uin;
+      localyr.FCf = localb.FoN;
+      localyr.FYc = localb.nettype;
       int j = 0;
-      while (j < localb.DJH.size())
+      while (j < localb.FoO.size())
       {
-        a locala = (a)localb.DJH.get(j);
-        bnv localbnv = new bnv();
-        localbnv.Fdx = locala.DJF;
-        localbnv.EvG = 0;
-        localbnv.Fdz = 0;
-        localbnv.ncL = locala.count;
-        localbnv.Fdy = com.tencent.mm.bw.b.cc(Integer.toString(locala.value).getBytes());
-        localws.tiT.add(localbnv);
+        a locala = (a)localb.FoO.get(j);
+        bsh localbsh = new bsh();
+        localbsh.GNa = locala.FoM;
+        localbsh.Gdc = 0;
+        localbsh.GNc = 0;
+        localbsh.nDi = locala.count;
+        localbsh.GNb = com.tencent.mm.bx.b.cj(Integer.toString(locala.value).getBytes());
+        localyr.ugO.add(localbsh);
         j += 1;
       }
-      localwt.EqW.add(localws);
+      localys.FYg.add(localyr);
       i += 1;
     }
-    return localwt;
+    return localys;
   }
   
-  public static wt toMMReportKvReq(i parami)
+  public static ys toMMReportKvReq(i parami)
   {
-    wt localwt = new wt();
-    localwt.EqT = parami.DJI;
-    localwt.EqU = parami.DJY;
-    localwt.EqV = parami.DJW;
+    ys localys = new ys();
+    localys.FYd = parami.FoP;
+    localys.FYe = parami.Fpf;
+    localys.FYf = parami.Fpd;
     int i = 0;
-    while (i < parami.DJZ.size())
+    while (i < parami.Fpg.size())
     {
-      e locale = (e)parami.DJZ.get(i);
-      ws localws = new ws();
-      localws.pAs = locale.uin;
-      localws.DWJ = locale.DJG;
-      localws.EqS = locale.nettype;
-      localws.fZs = locale.DJS;
-      localws.fZq = locale.DJQ;
-      localws.fZr = locale.DJR;
-      localws.fZt = locale.DJT;
-      localws.fZu = locale.DJU;
-      localws.ndN = locale.DJV;
+      e locale = (e)parami.Fpg.get(i);
+      yr localyr = new yr();
+      localyr.qdX = locale.uin;
+      localyr.FCf = locale.FoN;
+      localyr.FYc = locale.nettype;
+      localyr.gsO = locale.FoZ;
+      localyr.gsM = locale.FoX;
+      localyr.gsN = locale.FoY;
+      localyr.gsP = locale.Fpa;
+      localyr.gsQ = locale.Fpb;
+      localyr.nEk = locale.Fpc;
       int j = 0;
-      while (j < locale.DJH.size())
+      while (j < locale.FoO.size())
       {
-        d locald = (d)locale.DJH.get(j);
-        bnv localbnv = new bnv();
-        localbnv.Fdx = locald.DJF;
-        localbnv.Fdy = locald.DJO;
-        localbnv.Fdz = locald.DJP;
-        localbnv.EvG = locald.xxQ;
-        localbnv.ncL = locald.count;
-        localws.tiT.add(localbnv);
+        d locald = (d)locale.FoO.get(j);
+        bsh localbsh = new bsh();
+        localbsh.GNa = locald.FoM;
+        localbsh.GNb = locald.FoV;
+        localbsh.GNc = locald.FoW;
+        localbsh.Gdc = locald.yMB;
+        localbsh.nDi = locald.count;
+        localyr.ugO.add(localbsh);
         j += 1;
       }
-      localwt.EqW.add(localws);
+      localys.FYg.add(localyr);
       i += 1;
     }
-    return localwt;
+    return localys;
   }
   
-  public static bky toMMSelfMonitor(k paramk)
+  public static bpi toMMSelfMonitor(k paramk)
   {
-    bky localbky = new bky();
-    localbky.Faw = paramk.DKc;
+    bpi localbpi = new bpi();
+    localbpi.GJV = paramk.Fpj;
     int i = 0;
-    while (i < paramk.DKd.size())
+    while (i < paramk.Fpk.size())
     {
-      bkz localbkz = new bkz();
-      l locall = (l)paramk.DKd.get(i);
-      localbkz.Fax = locall.DKe;
-      localbkz.cZY = locall.action;
-      localbkz.Fay = locall.DKf;
-      localbkz.Faz = locall.DKg;
-      localbkz.FaA = locall.DKh;
-      localbkz.FaB = locall.DKi;
-      localbkz.FaC = locall.DKj;
-      localbkz.FaD = locall.DKk;
-      localbky.tiT.add(localbkz);
+      bpj localbpj = new bpj();
+      l locall = (l)paramk.Fpk.get(i);
+      localbpj.GJW = locall.Fpl;
+      localbpj.dlq = locall.action;
+      localbpj.GJX = locall.Fpm;
+      localbpj.GJY = locall.Fpn;
+      localbpj.GJZ = locall.Fpo;
+      localbpj.GKa = locall.Fpp;
+      localbpj.GKb = locall.Fpq;
+      localbpj.GKc = locall.Fpr;
+      localbpi.ugO.add(localbpj);
       i += 1;
     }
-    return localbky;
+    return localbpi;
   }
   
-  public static c toSmcIdkeyStrategyResp(avj paramavj)
+  public static c toSmcIdkeyStrategyResp(azh paramazh)
   {
     c localc = new c();
-    localc.ret = paramavj.Ret;
-    localc.DJI = paramavj.EqZ;
-    localc.DJJ = paramavj.Era;
-    localc.DJM = paramavj.Erf;
-    localc.DJN = paramavj.Erh;
-    localc.DJK = fillStrategyTable(paramavj.Erc);
-    localc.DJL = fillStrategyTable(paramavj.Erd);
+    localc.ret = paramazh.Ret;
+    localc.FoP = paramazh.FYj;
+    localc.FoQ = paramazh.FYk;
+    localc.FoT = paramazh.FYp;
+    localc.FoU = paramazh.FYr;
+    localc.FoR = fillStrategyTable(paramazh.FYm);
+    localc.FoS = fillStrategyTable(paramazh.FYn);
     return localc;
   }
   
-  public static f toSmcKVStrategyResp(avj paramavj)
+  public static f toSmcKVStrategyResp(azh paramazh)
   {
     f localf = new f();
-    localf.ret = paramavj.Ret;
-    localf.DJI = paramavj.ENx;
-    localf.DJJ = paramavj.ENy;
-    localf.DJW = paramavj.ENz;
-    localf.DJM = paramavj.Erf;
-    localf.DJN = paramavj.Erh;
-    localf.DJK = fillStrategyTable(paramavj.ENA);
-    localf.DJL = fillStrategyTable(paramavj.ENB);
-    localf.DJX = fillStrategyTable(paramavj.ENC);
+    localf.ret = paramazh.Ret;
+    localf.FoP = paramazh.GwC;
+    localf.FoQ = paramazh.GwD;
+    localf.Fpd = paramazh.GwE;
+    localf.FoT = paramazh.FYp;
+    localf.FoU = paramazh.FYr;
+    localf.FoR = fillStrategyTable(paramazh.GwF);
+    localf.FoS = fillStrategyTable(paramazh.GwG);
+    localf.Fpe = fillStrategyTable(paramazh.GwH);
     return localf;
   }
   
-  public static h toSmcReportIdkeyResp(wu paramwu)
+  public static h toSmcReportIdkeyResp(yt paramyt)
   {
     h localh = new h();
-    localh.ret = paramwu.Ret;
-    localh.DJI = paramwu.EqZ;
-    localh.DJJ = paramwu.Era;
-    localh.DJM = paramwu.Erf;
-    localh.DKb = paramwu.Erg;
-    localh.DJN = paramwu.Erh;
-    localh.DJK = fillStrategyTable(paramwu.Erc);
-    localh.DJL = fillStrategyTable(paramwu.Erd);
+    localh.ret = paramyt.Ret;
+    localh.FoP = paramyt.FYj;
+    localh.FoQ = paramyt.FYk;
+    localh.FoT = paramyt.FYp;
+    localh.Fpi = paramyt.FYq;
+    localh.FoU = paramyt.FYr;
+    localh.FoR = fillStrategyTable(paramyt.FYm);
+    localh.FoS = fillStrategyTable(paramyt.FYn);
     return localh;
   }
   
-  public static j toSmcReportKvResp(wu paramwu)
+  public static j toSmcReportKvResp(yt paramyt)
   {
     j localj = new j();
-    localj.ret = paramwu.Ret;
-    localj.DJI = paramwu.EqZ;
-    localj.DJJ = paramwu.Era;
-    localj.DJW = paramwu.Erb;
-    localj.DJM = paramwu.Erf;
-    localj.DKb = paramwu.Erg;
-    localj.DJN = paramwu.Erh;
-    localj.DJK = fillStrategyTable(paramwu.Erc);
-    localj.DJL = fillStrategyTable(paramwu.Erd);
-    localj.DJX = fillStrategyTable(paramwu.Ere);
+    localj.ret = paramyt.Ret;
+    localj.FoP = paramyt.FYj;
+    localj.FoQ = paramyt.FYk;
+    localj.Fpd = paramyt.FYl;
+    localj.FoT = paramyt.FYp;
+    localj.Fpi = paramyt.FYq;
+    localj.FoU = paramyt.FYr;
+    localj.FoR = fillStrategyTable(paramyt.FYm);
+    localj.FoS = fillStrategyTable(paramyt.FYn);
+    localj.Fpe = fillStrategyTable(paramyt.FYo);
     return localj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mars.smc.SmcProtoBufUtil
  * JD-Core Version:    0.7.0.1
  */

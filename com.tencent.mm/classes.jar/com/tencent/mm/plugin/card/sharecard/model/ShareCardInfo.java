@@ -6,116 +6,116 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fi;
+import com.tencent.mm.g.c.fs;
 import com.tencent.mm.plugin.card.b.e;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.protocal.protobuf.cyg;
-import com.tencent.mm.protocal.protobuf.qy;
-import com.tencent.mm.protocal.protobuf.rn;
-import com.tencent.mm.protocal.protobuf.rr;
-import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.protocal.protobuf.ddt;
+import com.tencent.mm.protocal.protobuf.sr;
+import com.tencent.mm.protocal.protobuf.th;
+import com.tencent.mm.protocal.protobuf.tl;
+import com.tencent.mm.protocal.protobuf.ts;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class ShareCardInfo
-  extends fi
+  extends fs
   implements Parcelable, com.tencent.mm.plugin.card.base.b
 {
   public static final Parcelable.Creator<ShareCardInfo> CREATOR;
   protected static c.a info;
-  public String nUu;
-  public ry nVC;
-  public qy nVD;
-  public cyg nVE;
-  public rr nVF;
-  public boolean nVG;
+  public String oxP;
+  public ts oyX;
+  public sr oyY;
+  public ddt oyZ;
+  public tl oza;
+  public boolean ozb;
   
   static
   {
     AppMethodBeat.i(113011);
     c.a locala = new c.a();
-    locala.GvF = new Field[19];
+    locala.IhA = new Field[19];
     locala.columns = new String[20];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "card_id";
-    locala.GvH.put("card_id", "TEXT PRIMARY KEY ");
+    locala.IhC.put("card_id", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" card_id TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "card_id";
+    locala.IhB = "card_id";
     locala.columns[1] = "card_tp_id";
-    locala.GvH.put("card_tp_id", "TEXT");
+    locala.IhC.put("card_tp_id", "TEXT");
     localStringBuilder.append(" card_tp_id TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "from_username";
-    locala.GvH.put("from_username", "TEXT");
+    locala.IhC.put("from_username", "TEXT");
     localStringBuilder.append(" from_username TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "consumer";
-    locala.GvH.put("consumer", "TEXT");
+    locala.IhC.put("consumer", "TEXT");
     localStringBuilder.append(" consumer TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "app_id";
-    locala.GvH.put("app_id", "TEXT");
+    locala.IhC.put("app_id", "TEXT");
     localStringBuilder.append(" app_id TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "status";
-    locala.GvH.put("status", "INTEGER");
+    locala.IhC.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "share_time";
-    locala.GvH.put("share_time", "LONG");
+    locala.IhC.put("share_time", "LONG");
     localStringBuilder.append(" share_time LONG");
     localStringBuilder.append(", ");
     locala.columns[7] = "local_updateTime";
-    locala.GvH.put("local_updateTime", "LONG");
+    locala.IhC.put("local_updateTime", "LONG");
     localStringBuilder.append(" local_updateTime LONG");
     localStringBuilder.append(", ");
     locala.columns[8] = "updateTime";
-    locala.GvH.put("updateTime", "LONG");
+    locala.IhC.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
     localStringBuilder.append(", ");
     locala.columns[9] = "begin_time";
-    locala.GvH.put("begin_time", "LONG");
+    locala.IhC.put("begin_time", "LONG");
     localStringBuilder.append(" begin_time LONG");
     localStringBuilder.append(", ");
     locala.columns[10] = "end_time";
-    locala.GvH.put("end_time", "LONG");
+    locala.IhC.put("end_time", "LONG");
     localStringBuilder.append(" end_time LONG");
     localStringBuilder.append(", ");
     locala.columns[11] = "updateSeq";
-    locala.GvH.put("updateSeq", "LONG");
+    locala.IhC.put("updateSeq", "LONG");
     localStringBuilder.append(" updateSeq LONG");
     localStringBuilder.append(", ");
     locala.columns[12] = "block_mask";
-    locala.GvH.put("block_mask", "LONG");
+    locala.IhC.put("block_mask", "LONG");
     localStringBuilder.append(" block_mask LONG");
     localStringBuilder.append(", ");
     locala.columns[13] = "dataInfoData";
-    locala.GvH.put("dataInfoData", "BLOB");
+    locala.IhC.put("dataInfoData", "BLOB");
     localStringBuilder.append(" dataInfoData BLOB");
     localStringBuilder.append(", ");
     locala.columns[14] = "cardTpInfoData";
-    locala.GvH.put("cardTpInfoData", "BLOB");
+    locala.IhC.put("cardTpInfoData", "BLOB");
     localStringBuilder.append(" cardTpInfoData BLOB");
     localStringBuilder.append(", ");
     locala.columns[15] = "shareInfoData";
-    locala.GvH.put("shareInfoData", "BLOB");
+    locala.IhC.put("shareInfoData", "BLOB");
     localStringBuilder.append(" shareInfoData BLOB");
     localStringBuilder.append(", ");
     locala.columns[16] = "shopInfoData";
-    locala.GvH.put("shopInfoData", "BLOB");
+    locala.IhC.put("shopInfoData", "BLOB");
     localStringBuilder.append(" shopInfoData BLOB");
     localStringBuilder.append(", ");
     locala.columns[17] = "categoryType";
-    locala.GvH.put("categoryType", "INTEGER default '0' ");
+    locala.IhC.put("categoryType", "INTEGER default '0' ");
     localStringBuilder.append(" categoryType INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[18] = "itemIndex";
-    locala.GvH.put("itemIndex", "INTEGER default '0' ");
+    locala.IhC.put("itemIndex", "INTEGER default '0' ");
     localStringBuilder.append(" itemIndex INTEGER default '0' ");
     locala.columns[19] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -126,15 +126,15 @@ public class ShareCardInfo
   
   public ShareCardInfo()
   {
-    this.nVG = true;
-    this.nUu = "";
+    this.ozb = true;
+    this.oxP = "";
   }
   
   public ShareCardInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(113004);
-    this.nVG = true;
-    this.nUu = "";
+    this.ozb = true;
+    this.oxP = "";
     this.field_card_id = paramParcel.readString();
     this.field_card_tp_id = paramParcel.readString();
     this.field_from_username = paramParcel.readString();
@@ -195,180 +195,113 @@ public class ShareCardInfo
     AppMethodBeat.o(113004);
   }
   
-  public final void Ut(String paramString)
+  public final String An(int paramInt)
+  {
+    AppMethodBeat.i(113008);
+    String str;
+    if (paramInt == 10)
+    {
+      str = (String)am.bUS().getValue("key_share_card_local_city");
+      AppMethodBeat.o(113008);
+      return str;
+    }
+    if (paramInt == 0)
+    {
+      if (com.tencent.mm.plugin.card.sharecard.a.b.bVs())
+      {
+        str = aj.getResources().getString(2131756965);
+        AppMethodBeat.o(113008);
+        return str;
+      }
+      AppMethodBeat.o(113008);
+      return "";
+    }
+    AppMethodBeat.o(113008);
+    return "";
+  }
+  
+  public final void Yc(String paramString)
   {
     this.field_from_username = paramString;
   }
   
-  public final void a(cyg paramcyg)
+  public final void a(ddt paramddt)
   {
     AppMethodBeat.i(113001);
-    this.nVE = paramcyg;
+    this.oyZ = paramddt;
     try
     {
-      this.field_shareInfoData = paramcyg.toByteArray();
+      this.field_shareInfoData = paramddt.toByteArray();
       AppMethodBeat.o(113001);
       return;
     }
-    catch (Exception paramcyg)
+    catch (Exception paramddt)
     {
-      ac.e("MicroMsg.ShareCardInfo", "setShareInfo fail, ex = %s", new Object[] { paramcyg.getMessage() });
-      ac.printErrStackTrace("MicroMsg.ShareCardInfo", paramcyg, "", new Object[0]);
+      ad.e("MicroMsg.ShareCardInfo", "setShareInfo fail, ex = %s", new Object[] { paramddt.getMessage() });
+      ad.printErrStackTrace("MicroMsg.ShareCardInfo", paramddt, "", new Object[0]);
       AppMethodBeat.o(113001);
     }
   }
   
-  public final void a(qy paramqy)
+  public final void a(sr paramsr)
   {
     AppMethodBeat.i(112999);
-    this.nVD = paramqy;
-    if (this.nVD != null) {
+    this.oyY = paramsr;
+    if (this.oyY != null) {
       try
       {
-        this.field_dataInfoData = paramqy.toByteArray();
+        this.field_dataInfoData = paramsr.toByteArray();
         AppMethodBeat.o(112999);
         return;
       }
-      catch (Exception paramqy)
+      catch (Exception paramsr)
       {
-        ac.e("MicroMsg.ShareCardInfo", "setDataInfo fail, ex = %s", new Object[] { paramqy.getMessage() });
-        ac.printErrStackTrace("MicroMsg.ShareCardInfo", paramqy, "", new Object[0]);
+        ad.e("MicroMsg.ShareCardInfo", "setDataInfo fail, ex = %s", new Object[] { paramsr.getMessage() });
+        ad.printErrStackTrace("MicroMsg.ShareCardInfo", paramsr, "", new Object[0]);
       }
     }
     AppMethodBeat.o(112999);
   }
   
-  public final void a(rr paramrr)
+  public final void a(tl paramtl)
   {
     AppMethodBeat.i(113003);
-    this.nVF = paramrr;
+    this.oza = paramtl;
     try
     {
-      this.field_shopInfoData = paramrr.toByteArray();
+      this.field_shopInfoData = paramtl.toByteArray();
       AppMethodBeat.o(113003);
       return;
     }
-    catch (Exception paramrr)
+    catch (Exception paramtl)
     {
-      ac.e("MicroMsg.ShareCardInfo", "setShopInfo fail, ex = %s", new Object[] { paramrr.getMessage() });
-      ac.printErrStackTrace("MicroMsg.ShareCardInfo", paramrr, "", new Object[0]);
+      ad.e("MicroMsg.ShareCardInfo", "setShopInfo fail, ex = %s", new Object[] { paramtl.getMessage() });
+      ad.printErrStackTrace("MicroMsg.ShareCardInfo", paramtl, "", new Object[0]);
       AppMethodBeat.o(113003);
     }
   }
   
-  public final void a(ry paramry)
+  public final void a(ts paramts)
   {
     AppMethodBeat.i(112997);
-    this.nVC = paramry;
+    this.oyX = paramts;
     try
     {
-      this.field_cardTpInfoData = paramry.toByteArray();
+      this.field_cardTpInfoData = paramts.toByteArray();
       AppMethodBeat.o(112997);
       return;
     }
-    catch (Exception paramry)
+    catch (Exception paramts)
     {
-      ac.e("MicroMsg.ShareCardInfo", "setCardTpInfo fail, ex = %s", new Object[] { paramry.getMessage() });
+      ad.e("MicroMsg.ShareCardInfo", "setCardTpInfo fail, ex = %s", new Object[] { paramts.getMessage() });
       AppMethodBeat.o(112997);
     }
   }
   
-  public final boolean bON()
-  {
-    AppMethodBeat.i(113006);
-    if ((bPi() != null) && (bPi().EkG == 0))
-    {
-      AppMethodBeat.o(113006);
-      return true;
-    }
-    AppMethodBeat.o(113006);
-    return false;
-  }
-  
-  public final boolean bOO()
-  {
-    AppMethodBeat.i(113007);
-    if ((bPi() != null) && (bPi().EkG == 1))
-    {
-      AppMethodBeat.o(113007);
-      return true;
-    }
-    AppMethodBeat.o(113007);
-    return false;
-  }
-  
-  public final boolean bOP()
-  {
-    AppMethodBeat.i(112980);
-    if ((bPi() != null) && (bPi().lRv == 10))
-    {
-      AppMethodBeat.o(112980);
-      return true;
-    }
-    AppMethodBeat.o(112980);
-    return false;
-  }
-  
-  public final boolean bOQ()
-  {
-    AppMethodBeat.i(112981);
-    if ((bPi() != null) && (bPi().lRv == 0))
-    {
-      AppMethodBeat.o(112981);
-      return true;
-    }
-    AppMethodBeat.o(112981);
-    return false;
-  }
-  
-  public final boolean bOR()
-  {
-    AppMethodBeat.i(112982);
-    if ((bPi() != null) && (bPi().lRv == 20))
-    {
-      AppMethodBeat.o(112982);
-      return true;
-    }
-    AppMethodBeat.o(112982);
-    return false;
-  }
-  
-  public final boolean bOS()
-  {
-    AppMethodBeat.i(112983);
-    if ((bPi() != null) && (bPi().lRv == 11))
-    {
-      AppMethodBeat.o(112983);
-      return true;
-    }
-    AppMethodBeat.o(112983);
-    return false;
-  }
-  
-  public final boolean bOT()
-  {
-    AppMethodBeat.i(112984);
-    if ((bPi() != null) && (bPi().lRv == 30))
-    {
-      AppMethodBeat.o(112984);
-      return true;
-    }
-    AppMethodBeat.o(112984);
-    return false;
-  }
-  
-  public final boolean bOU()
-  {
-    AppMethodBeat.i(112985);
-    boolean bool = l.zG(bPi().lRv);
-    AppMethodBeat.o(112985);
-    return bool;
-  }
-  
-  public final boolean bOV()
+  public final boolean bTA()
   {
     AppMethodBeat.i(112986);
-    if ((bPi().Ekw & 0x2) == 0)
+    if ((bTN().FRF & 0x2) == 0)
     {
       AppMethodBeat.o(112986);
       return true;
@@ -377,10 +310,10 @@ public class ShareCardInfo
     return false;
   }
   
-  public final boolean bOW()
+  public final boolean bTB()
   {
     AppMethodBeat.i(112987);
-    if ((bPi().Ekw & 0x1) == 0)
+    if ((bTN().FRF & 0x1) == 0)
     {
       AppMethodBeat.o(112987);
       return true;
@@ -389,10 +322,10 @@ public class ShareCardInfo
     return false;
   }
   
-  public final boolean bOX()
+  public final boolean bTC()
   {
     AppMethodBeat.i(112988);
-    if ((bPi().Ekz & 1L) == 0L)
+    if ((bTN().FRI & 1L) == 0L)
     {
       AppMethodBeat.o(112988);
       return true;
@@ -401,10 +334,10 @@ public class ShareCardInfo
     return false;
   }
   
-  public final boolean bOY()
+  public final boolean bTD()
   {
     AppMethodBeat.i(112989);
-    if ((bPi().Ekz & 0x10) == 0L)
+    if ((bTN().FRI & 0x10) == 0L)
     {
       AppMethodBeat.o(112989);
       return true;
@@ -413,10 +346,10 @@ public class ShareCardInfo
     return false;
   }
   
-  public final boolean bOZ()
+  public final boolean bTE()
   {
     AppMethodBeat.i(112990);
-    if ((bPi().Ekz & 0x2) > 0L)
+    if ((bTN().FRI & 0x2) > 0L)
     {
       AppMethodBeat.o(112990);
       return true;
@@ -425,15 +358,15 @@ public class ShareCardInfo
     return false;
   }
   
-  public final boolean bPa()
+  public final boolean bTF()
   {
     return false;
   }
   
-  public final boolean bPb()
+  public final boolean bTG()
   {
     AppMethodBeat.i(112991);
-    if ((bPi().Ekz & 0x4) > 0L)
+    if ((bTN().FRI & 0x4) > 0L)
     {
       AppMethodBeat.o(112991);
       return true;
@@ -442,10 +375,10 @@ public class ShareCardInfo
     return false;
   }
   
-  public final boolean bPc()
+  public final boolean bTH()
   {
     AppMethodBeat.i(112992);
-    if ((bPi().Ekz & 0x8) > 0L)
+    if ((bTN().FRI & 0x8) > 0L)
     {
       AppMethodBeat.o(112992);
       return true;
@@ -454,10 +387,10 @@ public class ShareCardInfo
     return false;
   }
   
-  public final boolean bPd()
+  public final boolean bTI()
   {
     AppMethodBeat.i(113010);
-    if ((bPi() != null) && (bPi().EkL == 1))
+    if ((bTN() != null) && (bTN().FRU == 1))
     {
       AppMethodBeat.o(113010);
       return true;
@@ -466,39 +399,39 @@ public class ShareCardInfo
     return false;
   }
   
-  public final boolean bPe()
+  public final boolean bTJ()
   {
-    return (this.nVD != null) && (this.nVD.status == 0);
+    return (this.oyY != null) && (this.oyY.status == 0);
   }
   
-  public final boolean bPf()
+  public final boolean bTK()
   {
     AppMethodBeat.i(112994);
-    if (!bPe())
+    if (!bTJ())
     {
       AppMethodBeat.o(112994);
       return false;
     }
-    if (this.nVC != null) {
-      ac.i("MicroMsg.ShareCardInfo", "is_acceptable:" + this.nVC.EkM);
+    if (this.oyX != null) {
+      ad.i("MicroMsg.ShareCardInfo", "is_acceptable:" + this.oyX.FRV);
     }
-    ac.i("MicroMsg.ShareCardInfo", "avail_num:" + this.nVD.Eie);
-    if ((this.nVC != null) && (this.nVC.EkM == 1))
+    ad.i("MicroMsg.ShareCardInfo", "avail_num:" + this.oyY.FPo);
+    if ((this.oyX != null) && (this.oyX.FRV == 1))
     {
       AppMethodBeat.o(112994);
       return true;
     }
-    if (this.nVD.Eie > 0)
+    if (this.oyY.FPo > 0)
     {
       AppMethodBeat.o(112994);
       return true;
     }
-    if ((this.nVC != null) && (this.nVC.EkM == 0))
+    if ((this.oyX != null) && (this.oyX.FRV == 0))
     {
       AppMethodBeat.o(112994);
       return false;
     }
-    if (this.nVD.Eie == 0)
+    if (this.oyY.FPo == 0)
     {
       AppMethodBeat.o(112994);
       return false;
@@ -507,18 +440,18 @@ public class ShareCardInfo
     return false;
   }
   
-  public final boolean bPg()
+  public final boolean bTL()
   {
     AppMethodBeat.i(112995);
-    if ((this.nVC == null) || (this.nVC.EkD == null) || (TextUtils.isEmpty(this.nVC.EkD.text)))
+    if ((this.oyX == null) || (this.oyX.FRM == null) || (TextUtils.isEmpty(this.oyX.FRM.text)))
     {
       AppMethodBeat.o(112995);
       return false;
     }
-    rn localrn = this.nVC.EkD;
+    th localth = this.oyX.FRM;
     int i = (int)(System.currentTimeMillis() / 1000L);
-    int j = localrn.xxQ;
-    if ((localrn.xxQ > 0) && (j - i > 0))
+    int j = localth.yMB;
+    if ((localth.yMB > 0) && (j - i > 0))
     {
       AppMethodBeat.o(112995);
       return true;
@@ -527,155 +460,247 @@ public class ShareCardInfo
     return false;
   }
   
-  public final boolean bPh()
+  public final boolean bTM()
   {
-    return (this.nVC != null) && (this.nVC.EkQ == 1);
+    return (this.oyX != null) && (this.oyX.FRZ == 1);
   }
   
-  public final ry bPi()
+  public final ts bTN()
   {
     AppMethodBeat.i(112996);
-    ry localry1;
-    if (this.nVC != null)
+    ts localts1;
+    if (this.oyX != null)
     {
-      localry1 = this.nVC;
+      localts1 = this.oyX;
       AppMethodBeat.o(112996);
-      return localry1;
+      return localts1;
     }
     try
     {
-      this.nVC = ((ry)new ry().parseFrom(this.field_cardTpInfoData));
-      localry1 = this.nVC;
+      this.oyX = ((ts)new ts().parseFrom(this.field_cardTpInfoData));
+      localts1 = this.oyX;
       AppMethodBeat.o(112996);
-      return localry1;
+      return localts1;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.ShareCardInfo", "getCardTpInfo fail, ex = %s", new Object[] { localException.getMessage() });
-      ac.printErrStackTrace("MicroMsg.ShareCardInfo", localException, "", new Object[0]);
-      ry localry2 = new ry();
+      ad.e("MicroMsg.ShareCardInfo", "getCardTpInfo fail, ex = %s", new Object[] { localException.getMessage() });
+      ad.printErrStackTrace("MicroMsg.ShareCardInfo", localException, "", new Object[0]);
+      ts localts2 = new ts();
       AppMethodBeat.o(112996);
-      return localry2;
+      return localts2;
     }
   }
   
-  public final qy bPj()
+  public final sr bTO()
   {
     AppMethodBeat.i(112998);
-    qy localqy1;
-    if (this.nVD != null)
+    sr localsr1;
+    if (this.oyY != null)
     {
-      localqy1 = this.nVD;
+      localsr1 = this.oyY;
       AppMethodBeat.o(112998);
-      return localqy1;
+      return localsr1;
     }
     try
     {
-      this.nVD = ((qy)new qy().parseFrom(this.field_dataInfoData));
-      localqy1 = this.nVD;
+      this.oyY = ((sr)new sr().parseFrom(this.field_dataInfoData));
+      localsr1 = this.oyY;
       AppMethodBeat.o(112998);
-      return localqy1;
+      return localsr1;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.ShareCardInfo", "getDataInfo fail, ex = %s", new Object[] { localException.getMessage() });
-      ac.printErrStackTrace("MicroMsg.ShareCardInfo", localException, "", new Object[0]);
-      qy localqy2 = new qy();
+      ad.e("MicroMsg.ShareCardInfo", "getDataInfo fail, ex = %s", new Object[] { localException.getMessage() });
+      ad.printErrStackTrace("MicroMsg.ShareCardInfo", localException, "", new Object[0]);
+      sr localsr2 = new sr();
       AppMethodBeat.o(112998);
-      return localqy2;
+      return localsr2;
     }
   }
   
-  public final cyg bPk()
+  public final ddt bTP()
   {
     AppMethodBeat.i(113000);
-    cyg localcyg1;
-    if (this.nVE != null)
+    ddt localddt1;
+    if (this.oyZ != null)
     {
-      localcyg1 = this.nVE;
+      localddt1 = this.oyZ;
       AppMethodBeat.o(113000);
-      return localcyg1;
+      return localddt1;
     }
     try
     {
-      this.nVE = ((cyg)new cyg().parseFrom(this.field_shareInfoData));
-      localcyg1 = this.nVE;
+      this.oyZ = ((ddt)new ddt().parseFrom(this.field_shareInfoData));
+      localddt1 = this.oyZ;
       AppMethodBeat.o(113000);
-      return localcyg1;
+      return localddt1;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.ShareCardInfo", "getShareInfo fail, ex = %s", new Object[] { localException.getMessage() });
-      ac.printErrStackTrace("MicroMsg.ShareCardInfo", localException, "", new Object[0]);
-      cyg localcyg2 = new cyg();
+      ad.e("MicroMsg.ShareCardInfo", "getShareInfo fail, ex = %s", new Object[] { localException.getMessage() });
+      ad.printErrStackTrace("MicroMsg.ShareCardInfo", localException, "", new Object[0]);
+      ddt localddt2 = new ddt();
       AppMethodBeat.o(113000);
-      return localcyg2;
+      return localddt2;
     }
   }
   
-  public final rr bPl()
+  public final tl bTQ()
   {
     AppMethodBeat.i(113002);
-    rr localrr;
-    if (this.nVF != null)
+    tl localtl;
+    if (this.oza != null)
     {
-      localrr = this.nVF;
+      localtl = this.oza;
       AppMethodBeat.o(113002);
-      return localrr;
+      return localtl;
     }
     try
     {
-      this.nVF = ((rr)new rr().parseFrom(this.field_shopInfoData));
-      localrr = this.nVF;
+      this.oza = ((tl)new tl().parseFrom(this.field_shopInfoData));
+      localtl = this.oza;
       AppMethodBeat.o(113002);
-      return localrr;
+      return localtl;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.ShareCardInfo", "getShopInfo fail ex = %s", new Object[] { localException.getMessage() });
-      ac.printErrStackTrace("MicroMsg.ShareCardInfo", localException, "", new Object[0]);
+      ad.e("MicroMsg.ShareCardInfo", "getShopInfo fail ex = %s", new Object[] { localException.getMessage() });
+      ad.printErrStackTrace("MicroMsg.ShareCardInfo", localException, "", new Object[0]);
       AppMethodBeat.o(113002);
     }
     return null;
   }
   
-  public final String bPm()
+  public final String bTR()
   {
     return this.field_card_id;
   }
   
-  public final String bPn()
+  public final String bTS()
   {
     return this.field_card_tp_id;
   }
   
-  public final String bPo()
+  public final String bTT()
   {
     return this.field_from_username;
   }
   
-  public final long bPp()
+  public final long bTU()
   {
     return this.field_local_updateTime;
   }
   
-  public final String bPq()
+  public final String bTV()
   {
     return "";
   }
   
-  public final int bPr()
+  public final int bTW()
   {
     return this.field_categoryType;
   }
   
-  public final String bPs()
+  public final String bTX()
   {
     AppMethodBeat.i(113009);
-    ac.d("MicroMsg.ShareCardInfo", "encrypt_code:" + this.nUu);
-    String str = this.nUu;
+    ad.d("MicroMsg.ShareCardInfo", "encrypt_code:" + this.oxP);
+    String str = this.oxP;
     AppMethodBeat.o(113009);
     return str;
+  }
+  
+  public final boolean bTs()
+  {
+    AppMethodBeat.i(113006);
+    if ((bTN() != null) && (bTN().FRP == 0))
+    {
+      AppMethodBeat.o(113006);
+      return true;
+    }
+    AppMethodBeat.o(113006);
+    return false;
+  }
+  
+  public final boolean bTt()
+  {
+    AppMethodBeat.i(113007);
+    if ((bTN() != null) && (bTN().FRP == 1))
+    {
+      AppMethodBeat.o(113007);
+      return true;
+    }
+    AppMethodBeat.o(113007);
+    return false;
+  }
+  
+  public final boolean bTu()
+  {
+    AppMethodBeat.i(112980);
+    if ((bTN() != null) && (bTN().mrl == 10))
+    {
+      AppMethodBeat.o(112980);
+      return true;
+    }
+    AppMethodBeat.o(112980);
+    return false;
+  }
+  
+  public final boolean bTv()
+  {
+    AppMethodBeat.i(112981);
+    if ((bTN() != null) && (bTN().mrl == 0))
+    {
+      AppMethodBeat.o(112981);
+      return true;
+    }
+    AppMethodBeat.o(112981);
+    return false;
+  }
+  
+  public final boolean bTw()
+  {
+    AppMethodBeat.i(112982);
+    if ((bTN() != null) && (bTN().mrl == 20))
+    {
+      AppMethodBeat.o(112982);
+      return true;
+    }
+    AppMethodBeat.o(112982);
+    return false;
+  }
+  
+  public final boolean bTx()
+  {
+    AppMethodBeat.i(112983);
+    if ((bTN() != null) && (bTN().mrl == 11))
+    {
+      AppMethodBeat.o(112983);
+      return true;
+    }
+    AppMethodBeat.o(112983);
+    return false;
+  }
+  
+  public final boolean bTy()
+  {
+    AppMethodBeat.i(112984);
+    if ((bTN() != null) && (bTN().mrl == 30))
+    {
+      AppMethodBeat.o(112984);
+      return true;
+    }
+    AppMethodBeat.o(112984);
+    return false;
+  }
+  
+  public final boolean bTz()
+  {
+    AppMethodBeat.i(112985);
+    boolean bool = l.Ap(bTN().mrl);
+    AppMethodBeat.o(112985);
+    return bool;
   }
   
   public int describeContents()
@@ -696,26 +721,26 @@ public class ShareCardInfo
   public final boolean isAcceptable()
   {
     AppMethodBeat.i(112993);
-    if (!bPe())
+    if (!bTJ())
     {
       AppMethodBeat.o(112993);
       return false;
     }
-    if (this.nVC != null) {
-      ac.i("MicroMsg.ShareCardInfo", "is_acceptable:" + this.nVC.EkM);
+    if (this.oyX != null) {
+      ad.i("MicroMsg.ShareCardInfo", "is_acceptable:" + this.oyX.FRV);
     }
-    ac.i("MicroMsg.ShareCardInfo", "stock_num:" + this.nVD.Eih + " limit_num:" + this.nVD.Eii);
-    if ((this.nVC != null) && (this.nVC.EkM == 1))
+    ad.i("MicroMsg.ShareCardInfo", "stock_num:" + this.oyY.FPr + " limit_num:" + this.oyY.FPs);
+    if ((this.oyX != null) && (this.oyX.FRV == 1))
     {
       AppMethodBeat.o(112993);
       return true;
     }
-    if ((this.nVC != null) && (this.nVC.EkM == 0))
+    if ((this.oyX != null) && (this.oyX.FRV == 0))
     {
       AppMethodBeat.o(112993);
       return false;
     }
-    if ((this.nVD.Eih == 0L) || (this.nVD.Eii == 0))
+    if ((this.oyY.FPr == 0L) || (this.oyY.FPs == 0))
     {
       AppMethodBeat.o(112993);
       return false;
@@ -782,35 +807,10 @@ public class ShareCardInfo
     }
     AppMethodBeat.o(113005);
   }
-  
-  public final String zE(int paramInt)
-  {
-    AppMethodBeat.i(113008);
-    String str;
-    if (paramInt == 10)
-    {
-      str = (String)am.bQn().getValue("key_share_card_local_city");
-      AppMethodBeat.o(113008);
-      return str;
-    }
-    if (paramInt == 0)
-    {
-      if (com.tencent.mm.plugin.card.sharecard.a.b.bQN())
-      {
-        str = ai.getResources().getString(2131756965);
-        AppMethodBeat.o(113008);
-        return str;
-      }
-      AppMethodBeat.o(113008);
-      return "";
-    }
-    AppMethodBeat.o(113008);
-    return "";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.ShareCardInfo
  * JD-Core Version:    0.7.0.1
  */

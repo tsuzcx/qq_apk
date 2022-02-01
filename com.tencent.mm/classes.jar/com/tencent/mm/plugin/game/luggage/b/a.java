@@ -1,54 +1,60 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.jsapi.ba;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bd;
 import java.util.LinkedList;
 
 public final class a
 {
-  private static LinkedList<Class<? extends com.tencent.luggage.d.a>> oKO;
+  private static LinkedList<Class<? extends com.tencent.luggage.d.b>> pow;
   
-  private static void aM(Class<? extends com.tencent.luggage.d.a> paramClass)
+  private static void aM(Class<? extends com.tencent.luggage.d.b> paramClass)
   {
     AppMethodBeat.i(83050);
-    oKO.add(paramClass);
+    pow.add(paramClass);
     AppMethodBeat.o(83050);
   }
   
-  public static LinkedList<Class<? extends com.tencent.luggage.d.a>> bYl()
+  public static LinkedList<Class<? extends com.tencent.luggage.d.b>> ccP()
   {
     try
     {
       AppMethodBeat.i(83049);
-      oKO = new LinkedList();
+      pow = new LinkedList();
       aM(g.class);
-      aM(i.class);
       aM(j.class);
-      aM(l.class);
+      aM(k.class);
       aM(m.class);
-      aM(r.class);
-      aM(s.class);
-      aM(u.class);
-      aM(z.class);
+      aM(n.class);
+      aM(t.class);
+      aM(v.class);
       aM(x.class);
-      aM(y.class);
-      aM(o.class);
+      aM(ae.class);
+      aM(aa.class);
+      aM(ab.class);
+      aM(q.class);
       aM(c.class);
       aM(b.class);
-      aM(q.class);
-      aM(h.class);
-      aM(p.class);
+      aM(s.class);
+      aM(i.class);
+      aM(r.class);
       aM(f.class);
-      aM(v.class);
+      aM(y.class);
       aM(e.class);
-      aM(w.class);
-      aM(n.class);
-      aM(aa.class);
-      aM(ba.class);
+      aM(z.class);
+      aM(p.class);
+      aM(ah.class);
+      aM(bd.class);
       aM(d.class);
-      aM(k.class);
-      aM(t.class);
-      LinkedList localLinkedList = oKO;
+      aM(l.class);
+      aM(w.class);
+      aM(af.class);
+      aM(ag.class);
+      aM(o.class);
+      aM(ad.class);
+      aM(u.class);
+      aM(ac.class);
+      LinkedList localLinkedList = pow;
       AppMethodBeat.o(83049);
       return localLinkedList;
     }

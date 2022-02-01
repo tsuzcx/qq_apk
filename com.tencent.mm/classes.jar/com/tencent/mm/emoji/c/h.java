@@ -3,27 +3,27 @@ package com.tencent.mm.emoji.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.a.m;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/upload/EmojiUploadFactory;", "", "()V", "useCdn", "", "getUpload", "Lcom/tencent/mm/emoji/upload/EmojiUpload;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "isSelfie", "callback", "Lcom/tencent/mm/emoji/upload/EmojiUpload$Callback;", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/upload/EmojiUploadFactory;", "", "()V", "useCdn", "", "getUpload", "Lcom/tencent/mm/emoji/upload/EmojiUpload;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "isSelfie", "callback", "Lcom/tencent/mm/emoji/upload/EmojiUpload$Callback;", "plugin-emojisdk_release"})
 public final class h
 {
-  public static final h fWC;
+  public static final h gqf;
   
   static
   {
     AppMethodBeat.i(105778);
-    fWC = new h();
+    gqf = new h();
     AppMethodBeat.o(105778);
   }
   
   public static d a(EmojiInfo paramEmojiInfo, boolean paramBoolean, d.a parama)
   {
     AppMethodBeat.i(105777);
-    k.h(paramEmojiInfo, "emojiInfo");
-    k.h(parama, "callback");
-    if (m.acF())
+    p.h(paramEmojiInfo, "emojiInfo");
+    p.h(parama, "callback");
+    if (m.afj())
     {
       paramEmojiInfo = (d)new e(paramEmojiInfo, paramBoolean, parama);
       AppMethodBeat.o(105777);

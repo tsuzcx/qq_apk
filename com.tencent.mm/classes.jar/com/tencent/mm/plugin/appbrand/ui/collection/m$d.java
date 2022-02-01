@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a.e.b;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onDismiss"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onDismiss"})
 final class m$d
   implements e.b
 {
-  public static final d miH;
+  public static final d mJi;
   
   static
   {
     AppMethodBeat.i(175229);
-    miH = new d();
+    mJi = new d();
     AppMethodBeat.o(175229);
   }
   

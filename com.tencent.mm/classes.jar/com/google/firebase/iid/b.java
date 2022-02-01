@@ -16,7 +16,7 @@ public final class b
     AppMethodBeat.i(4150);
     if (paramBundle.getBoolean("ack", false))
     {
-      o(null);
+      p(null);
       AppMethodBeat.o(4150);
       return;
     }

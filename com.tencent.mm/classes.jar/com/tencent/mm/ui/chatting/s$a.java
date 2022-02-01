@@ -2,9 +2,9 @@ package com.tencent.mm.ui.chatting;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.chatting.d.a;
-import com.tencent.mm.ui.chatting.viewitems.bj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.chatting.e.a;
+import com.tencent.mm.ui.chatting.viewitems.bk;
 
 public final class s$a
   extends s.b
@@ -14,11 +14,11 @@ public final class s$a
     super(parama);
   }
   
-  public final void a(Intent paramIntent, bj parambj)
+  public final void a(Intent paramIntent, bk parambk)
   {
     AppMethodBeat.i(34589);
-    if (!bs.isNullOrNil(parambj.IqU)) {
-      paramIntent.putExtra("Contact_BIZ_KF_WORKER_ID", parambj.IqU);
+    if (!bt.isNullOrNil(parambk.Khx)) {
+      paramIntent.putExtra("Contact_BIZ_KF_WORKER_ID", parambk.Khx);
     }
     AppMethodBeat.o(34589);
   }

@@ -14,7 +14,7 @@ public final class b<E>
     this.value = paramE;
   }
   
-  public final E ggF()
+  public final E gzj()
   {
     Object localObject = this.value;
     this.value = null;

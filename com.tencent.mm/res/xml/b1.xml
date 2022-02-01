@@ -5,6 +5,7 @@
     <IconPreference android:key="settings_qrcode" android:layout="@layout/aop" android:title="@string/c91" />
     <Preference android:key="settings_auth" android:layout="@layout/aop" android:title="@string/c8w" />
     <Preference android:key="settings_data" android:layout="@layout/aop" android:title="@string/hib" />
-    <PreferenceSmallCategory />
     <Preference android:key="settings_privacy" android:layout="@layout/aop" android:title="@string/cc4" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_creater_guide" android:layout="@layout/aop" android:title="@string/hzp" />
 </PreferenceScreen>

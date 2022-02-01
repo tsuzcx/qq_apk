@@ -12,117 +12,117 @@ import com.tencent.xweb.z;
 public final class g
   extends z
 {
-  WebView KDR;
-  String KDS;
+  WebView Mur;
+  String Mus;
   
   public g(WebView paramWebView)
   {
     AppMethodBeat.i(153778);
-    this.KDS = "";
-    this.KDR = paramWebView;
+    this.Mus = "";
+    this.Mur = paramWebView;
     getUserAgentString();
     AppMethodBeat.o(153778);
   }
   
   public final void enableCustomizedLongPressTimeout(int paramInt) {}
   
-  public final void fJA()
-  {
-    AppMethodBeat.i(153786);
-    this.KDR.getSettings().setSavePassword(false);
-    AppMethodBeat.o(153786);
-  }
-  
-  public final void fJB()
-  {
-    AppMethodBeat.i(153790);
-    this.KDR.getSettings().setDefaultFontSize(8);
-    AppMethodBeat.o(153790);
-  }
-  
-  public final void fJC()
-  {
-    AppMethodBeat.i(153795);
-    this.KDR.getSettings().setAllowUniversalAccessFromFileURLs(true);
-    AppMethodBeat.o(153795);
-  }
-  
-  public final void fJD()
-  {
-    AppMethodBeat.i(153796);
-    this.KDR.getSettings().setAllowFileAccessFromFileURLs(true);
-    AppMethodBeat.o(153796);
-  }
-  
-  public final void fJE()
-  {
-    AppMethodBeat.i(153799);
-    this.KDR.getSettings().setAppCacheEnabled(true);
-    AppMethodBeat.o(153799);
-  }
-  
-  public final void fJF()
-  {
-    AppMethodBeat.i(153801);
-    this.KDR.getSettings().setAppCacheMaxSize(10485760L);
-    AppMethodBeat.o(153801);
-  }
-  
-  public final void fJG()
-  {
-    AppMethodBeat.i(153802);
-    this.KDR.getSettings().setDatabaseEnabled(true);
-    AppMethodBeat.o(153802);
-  }
-  
-  public final void fJH()
-  {
-    AppMethodBeat.i(153803);
-    this.KDR.getSettings().setDomStorageEnabled(true);
-    AppMethodBeat.o(153803);
-  }
-  
-  public final void fJI()
-  {
-    AppMethodBeat.i(153810);
-    this.KDR.getSettings().setCacheMode(-1);
-    AppMethodBeat.o(153810);
-  }
-  
-  public final void fJJ()
-  {
-    AppMethodBeat.i(153811);
-    if (Build.VERSION.SDK_INT >= 21) {
-      this.KDR.getSettings().setMixedContentMode(0);
-    }
-    AppMethodBeat.o(153811);
-  }
-  
-  public final void fJx()
+  public final void gaR()
   {
     AppMethodBeat.i(153782);
-    this.KDR.getSettings().setDisplayZoomControls(false);
+    this.Mur.getSettings().setDisplayZoomControls(false);
     AppMethodBeat.o(153782);
   }
   
-  public final void fJy()
+  public final void gaS()
   {
     AppMethodBeat.i(153783);
-    this.KDR.getSettings().setAllowFileAccess(true);
+    this.Mur.getSettings().setAllowFileAccess(true);
     AppMethodBeat.o(153783);
   }
   
-  public final void fJz()
+  public final void gaT()
   {
     AppMethodBeat.i(153785);
-    this.KDR.getSettings().setSaveFormData(false);
+    this.Mur.getSettings().setSaveFormData(false);
     AppMethodBeat.o(153785);
+  }
+  
+  public final void gaU()
+  {
+    AppMethodBeat.i(153786);
+    this.Mur.getSettings().setSavePassword(false);
+    AppMethodBeat.o(153786);
+  }
+  
+  public final void gaV()
+  {
+    AppMethodBeat.i(153790);
+    this.Mur.getSettings().setDefaultFontSize(8);
+    AppMethodBeat.o(153790);
+  }
+  
+  public final void gaW()
+  {
+    AppMethodBeat.i(153795);
+    this.Mur.getSettings().setAllowUniversalAccessFromFileURLs(true);
+    AppMethodBeat.o(153795);
+  }
+  
+  public final void gaX()
+  {
+    AppMethodBeat.i(153796);
+    this.Mur.getSettings().setAllowFileAccessFromFileURLs(true);
+    AppMethodBeat.o(153796);
+  }
+  
+  public final void gaY()
+  {
+    AppMethodBeat.i(153799);
+    this.Mur.getSettings().setAppCacheEnabled(true);
+    AppMethodBeat.o(153799);
+  }
+  
+  public final void gaZ()
+  {
+    AppMethodBeat.i(153801);
+    this.Mur.getSettings().setAppCacheMaxSize(10485760L);
+    AppMethodBeat.o(153801);
+  }
+  
+  public final void gba()
+  {
+    AppMethodBeat.i(153802);
+    this.Mur.getSettings().setDatabaseEnabled(true);
+    AppMethodBeat.o(153802);
+  }
+  
+  public final void gbb()
+  {
+    AppMethodBeat.i(153803);
+    this.Mur.getSettings().setDomStorageEnabled(true);
+    AppMethodBeat.o(153803);
+  }
+  
+  public final void gbc()
+  {
+    AppMethodBeat.i(153810);
+    this.Mur.getSettings().setCacheMode(-1);
+    AppMethodBeat.o(153810);
+  }
+  
+  public final void gbd()
+  {
+    AppMethodBeat.i(153811);
+    if (Build.VERSION.SDK_INT >= 21) {
+      this.Mur.getSettings().setMixedContentMode(0);
+    }
+    AppMethodBeat.o(153811);
   }
   
   public final boolean getBlockNetworkImage()
   {
     AppMethodBeat.i(153793);
-    boolean bool = this.KDR.getSettings().getBlockNetworkImage();
+    boolean bool = this.Mur.getSettings().getBlockNetworkImage();
     AppMethodBeat.o(153793);
     return bool;
   }
@@ -140,12 +140,12 @@ public final class g
   public final String getUserAgentString()
   {
     AppMethodBeat.i(153808);
-    if ((this.KDS == null) || (this.KDS.isEmpty())) {}
+    if ((this.Mus == null) || (this.Mus.isEmpty())) {}
     try
     {
-      this.KDS = this.KDR.getSettings().getUserAgentString();
+      this.Mus = this.Mur.getSettings().getUserAgentString();
       label36:
-      String str = this.KDS;
+      String str = this.Mus;
       AppMethodBeat.o(153808);
       return str;
     }
@@ -158,7 +158,7 @@ public final class g
   public final void setAppCachePath(String paramString)
   {
     AppMethodBeat.i(153800);
-    this.KDR.getSettings().setAppCachePath(paramString);
+    this.Mur.getSettings().setAppCachePath(paramString);
     AppMethodBeat.o(153800);
   }
   
@@ -167,28 +167,28 @@ public final class g
   public final void setBlockNetworkImage(boolean paramBoolean)
   {
     AppMethodBeat.i(153792);
-    this.KDR.getSettings().setBlockNetworkImage(paramBoolean);
+    this.Mur.getSettings().setBlockNetworkImage(paramBoolean);
     AppMethodBeat.o(153792);
   }
   
   public final void setBuiltInZoomControls(boolean paramBoolean)
   {
     AppMethodBeat.i(153781);
-    this.KDR.getSettings().setBuiltInZoomControls(paramBoolean);
+    this.Mur.getSettings().setBuiltInZoomControls(paramBoolean);
     AppMethodBeat.o(153781);
   }
   
   public final void setDatabasePath(String paramString)
   {
     AppMethodBeat.i(153798);
-    this.KDR.getSettings().setDatabasePath(paramString);
+    this.Mur.getSettings().setDatabasePath(paramString);
     AppMethodBeat.o(153798);
   }
   
   public final void setDefaultTextEncodingName(String paramString)
   {
     AppMethodBeat.i(153806);
-    this.KDR.getSettings().setDefaultTextEncodingName(paramString);
+    this.Mur.getSettings().setDefaultTextEncodingName(paramString);
     AppMethodBeat.o(153806);
   }
   
@@ -199,42 +199,42 @@ public final class g
   public final void setGeolocationEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(153804);
-    this.KDR.getSettings().setGeolocationEnabled(paramBoolean);
+    this.Mur.getSettings().setGeolocationEnabled(paramBoolean);
     AppMethodBeat.o(153804);
   }
   
   public final void setJavaScriptCanOpenWindowsAutomatically(boolean paramBoolean)
   {
     AppMethodBeat.i(153805);
-    this.KDR.getSettings().setJavaScriptCanOpenWindowsAutomatically(paramBoolean);
+    this.Mur.getSettings().setJavaScriptCanOpenWindowsAutomatically(paramBoolean);
     AppMethodBeat.o(153805);
   }
   
   public final void setJavaScriptEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(153794);
-    this.KDR.getSettings().setJavaScriptEnabled(paramBoolean);
+    this.Mur.getSettings().setJavaScriptEnabled(paramBoolean);
     AppMethodBeat.o(153794);
   }
   
   public final void setLayoutAlgorithm(WebSettings.LayoutAlgorithm paramLayoutAlgorithm)
   {
     AppMethodBeat.i(153789);
-    this.KDR.getSettings().setLayoutAlgorithm(paramLayoutAlgorithm);
+    this.Mur.getSettings().setLayoutAlgorithm(paramLayoutAlgorithm);
     AppMethodBeat.o(153789);
   }
   
   public final void setLoadWithOverviewMode(boolean paramBoolean)
   {
     AppMethodBeat.i(153784);
-    this.KDR.getSettings().setLoadWithOverviewMode(paramBoolean);
+    this.Mur.getSettings().setLoadWithOverviewMode(paramBoolean);
     AppMethodBeat.o(153784);
   }
   
   public final void setLoadsImagesAutomatically(boolean paramBoolean)
   {
     AppMethodBeat.i(153791);
-    this.KDR.getSettings().setLoadsImagesAutomatically(paramBoolean);
+    this.Mur.getSettings().setLoadsImagesAutomatically(paramBoolean);
     AppMethodBeat.o(153791);
   }
   
@@ -242,7 +242,7 @@ public final class g
   {
     AppMethodBeat.i(153780);
     if (Build.VERSION.SDK_INT >= 17) {
-      this.KDR.getSettings().setMediaPlaybackRequiresUserGesture(paramBoolean);
+      this.Mur.getSettings().setMediaPlaybackRequiresUserGesture(paramBoolean);
     }
     AppMethodBeat.o(153780);
   }
@@ -250,43 +250,43 @@ public final class g
   public final void setPluginsEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(153797);
-    f.c(this.KDR.getSettings(), "setPluginsEnabled", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+    f.c(this.Mur.getSettings(), "setPluginsEnabled", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(153797);
   }
   
   public final void setRenderPriority(WebSettings.RenderPriority paramRenderPriority)
   {
     AppMethodBeat.i(153809);
-    this.KDR.getSettings().setRenderPriority(paramRenderPriority);
+    this.Mur.getSettings().setRenderPriority(paramRenderPriority);
     AppMethodBeat.o(153809);
   }
   
   public final void setSupportZoom(boolean paramBoolean)
   {
     AppMethodBeat.i(153779);
-    this.KDR.getSettings().setSupportZoom(paramBoolean);
+    this.Mur.getSettings().setSupportZoom(paramBoolean);
     AppMethodBeat.o(153779);
   }
   
   public final void setTextZoom(int paramInt)
   {
     AppMethodBeat.i(153787);
-    this.KDR.getSettings().setTextZoom(paramInt);
+    this.Mur.getSettings().setTextZoom(paramInt);
     AppMethodBeat.o(153787);
   }
   
   public final void setUseWideViewPort(boolean paramBoolean)
   {
     AppMethodBeat.i(153788);
-    this.KDR.getSettings().setUseWideViewPort(paramBoolean);
+    this.Mur.getSettings().setUseWideViewPort(paramBoolean);
     AppMethodBeat.o(153788);
   }
   
   public final void setUserAgentString(String paramString)
   {
     AppMethodBeat.i(153807);
-    this.KDS = paramString;
-    this.KDR.getSettings().setUserAgentString(paramString);
+    this.Mus = paramString;
+    this.Mur.getSettings().setUserAgentString(paramString);
     AppMethodBeat.o(153807);
   }
   

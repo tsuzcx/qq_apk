@@ -1,262 +1,541 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.cct;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.chl;
+import com.tencent.mm.protocal.protobuf.chm;
+import com.tencent.mm.protocal.protobuf.chn;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/PageStatisticsDao;", "", "()V", "Companion", "plugin-expt_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/PageStatisticsDao;", "", "()V", "Companion", "plugin-expt_release"})
 public final class f
 {
-  public static final a qoN;
+  public static final a qXM;
   
   static
   {
-    AppMethodBeat.i(195561);
-    qoN = new a((byte)0);
-    AppMethodBeat.o(195561);
+    AppMethodBeat.i(210919);
+    qXM = new a((byte)0);
+    AppMethodBeat.o(210919);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/PageStatisticsDao$Companion;", "", "()V", "MMKV_KEY", "", "MMKV_KEY_WITHOUT_78EVENT", "TAG", "read", "Lcom/tencent/mm/protocal/protobuf/PageStatistics;", "readWith78Event", "reset", "", "resetWith78Event", "write", "pageStatistics", "writeWith78Event", "plugin-expt_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/PageStatisticsDao$Companion;", "", "()V", "MMKV_KEY", "", "MMKV_KEY_WITHOUT_78EVENT", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/PageStatisticsMap;", "_readWith78Event", "_write", "", "pageMap", "_writeWith78Event", "getLastStatics", "Lcom/tencent/mm/protocal/protobuf/PageStatistics;", "getLastStaticsWith78Event", "read", "sPageName", "hashCode", "", "readWith78Event", "remove", "removeWith78Event", "reset", "resetWith78Event", "update", "statics", "updateWith78Event", "write", "writeWith78Event", "plugin-expt_release"})
   public static final class a
   {
-    public final void a(cct paramcct)
+    private static void a(chn paramchn)
+    {
+      AppMethodBeat.i(210910);
+      try
+      {
+        com.tencent.mm.plugin.expt.hellhound.core.a.b.p("hell_pge_sttics_d_1", paramchn.toByteArray());
+        AppMethodBeat.o(210910);
+        return;
+      }
+      catch (Exception paramchn)
+      {
+        ad.printErrStackTrace("HABBYGE-MALI.PageStatisticsDao", (Throwable)paramchn, "_write, exception: " + paramchn.getMessage(), new Object[0]);
+        AppMethodBeat.o(210910);
+      }
+    }
+    
+    private static void b(chn paramchn)
+    {
+      AppMethodBeat.i(210918);
+      try
+      {
+        com.tencent.mm.plugin.expt.hellhound.core.a.b.p("hell_pge_sttics_d_3", paramchn.toByteArray());
+        AppMethodBeat.o(210918);
+        return;
+      }
+      catch (Exception paramchn)
+      {
+        ad.printErrStackTrace("HABBYGE-MALI.PageStatisticsDao", (Throwable)paramchn, "_writeWith78Event, exception: " + paramchn.getMessage(), new Object[0]);
+        AppMethodBeat.o(210918);
+      }
+    }
+    
+    private static chn cpg()
+    {
+      AppMethodBeat.i(210909);
+      byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("hell_pge_sttics_d_1");
+      if (arrayOfByte != null) {
+        if (arrayOfByte.length != 0) {
+          break label33;
+        }
+      }
+      label33:
+      for (int i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(210909);
+        return null;
+      }
+      chn localchn = new chn();
+      try
+      {
+        localchn.parseFrom(arrayOfByte);
+        AppMethodBeat.o(210909);
+        return localchn;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ad.printErrStackTrace("HABBYGE-MALI.PageStatisticsDao", (Throwable)localException, "_read, exception: " + localException.getMessage(), new Object[0]);
+          Object localObject = null;
+        }
+      }
+    }
+    
+    private static chn cpj()
+    {
+      AppMethodBeat.i(210917);
+      byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("hell_pge_sttics_d_3");
+      if (arrayOfByte != null) {
+        if (arrayOfByte.length != 0) {
+          break label33;
+        }
+      }
+      label33:
+      for (int i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(210917);
+        return null;
+      }
+      chn localchn = new chn();
+      try
+      {
+        localchn.parseFrom(arrayOfByte);
+        AppMethodBeat.o(210917);
+        return localchn;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ad.printErrStackTrace("HABBYGE-MALI.PageStatisticsDao", (Throwable)localException, "_readWith78Event, exception: " + localException.getMessage(), new Object[0]);
+          Object localObject = null;
+        }
+      }
+    }
+    
+    public final void a(chl paramchl)
+    {
+      label171:
+      for (;;)
+      {
+        try
+        {
+          AppMethodBeat.i(210903);
+          p.h(paramchl, "statics");
+          chn localchn = cpg();
+          if (localchn != null) {
+            break label171;
+          }
+          localchn = new chn();
+          String str = paramchl.dtL + paramchl.aHQ;
+          Object localObject = localchn.GML;
+          p.g(localObject, "pageMap.map");
+          localObject = ((Iterable)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            if (!p.i(str, ((chm)((Iterator)localObject).next()).key)) {
+              continue;
+            }
+            i = 1;
+            if (i == 0)
+            {
+              localObject = new chm();
+              ((chm)localObject).key = str;
+              ((chm)localObject).HaY = paramchl;
+              localchn.GML.add(localObject);
+              a(localchn);
+            }
+            AppMethodBeat.o(210903);
+            return;
+          }
+        }
+        finally {}
+        int i = 0;
+      }
+    }
+    
+    public final void b(chl paramchl)
+    {
+      label181:
+      for (;;)
+      {
+        try
+        {
+          AppMethodBeat.i(210904);
+          p.h(paramchl, "statics");
+          chn localchn = cpg();
+          if (localchn != null) {
+            break label181;
+          }
+          localchn = new chn();
+          String str = paramchl.dtL + paramchl.aHQ;
+          Object localObject = localchn.GML;
+          p.g(localObject, "pageMap.map");
+          localObject = ((Iterable)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            chm localchm = (chm)((Iterator)localObject).next();
+            if (!p.i(str, localchm.key)) {
+              continue;
+            }
+            localchm.HaY = paramchl;
+            i = 1;
+            if (i == 0)
+            {
+              localObject = new chm();
+              ((chm)localObject).key = str;
+              ((chm)localObject).HaY = paramchl;
+              localchn.GML.add(localObject);
+            }
+            a(localchn);
+            AppMethodBeat.o(210904);
+            return;
+          }
+        }
+        finally {}
+        int i = 0;
+      }
+    }
+    
+    public final void c(chl paramchl)
+    {
+      label171:
+      for (;;)
+      {
+        try
+        {
+          AppMethodBeat.i(210911);
+          p.h(paramchl, "statics");
+          chn localchn = cpj();
+          if (localchn != null) {
+            break label171;
+          }
+          localchn = new chn();
+          String str = paramchl.dtL + paramchl.aHQ;
+          Object localObject = localchn.GML;
+          p.g(localObject, "pageMap.map");
+          localObject = ((Iterable)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            if (!p.i(str, ((chm)((Iterator)localObject).next()).key)) {
+              continue;
+            }
+            i = 1;
+            if (i == 0)
+            {
+              localObject = new chm();
+              ((chm)localObject).key = str;
+              ((chm)localObject).HaY = paramchl;
+              localchn.GML.add(localObject);
+              b(localchn);
+            }
+            AppMethodBeat.o(210911);
+            return;
+          }
+        }
+        finally {}
+        int i = 0;
+      }
+    }
+    
+    public final chl cpf()
+    {
+      chl localchl = null;
+      for (;;)
+      {
+        try
+        {
+          AppMethodBeat.i(210907);
+          chn localchn = cpg();
+          if (localchn == null)
+          {
+            AppMethodBeat.o(210907);
+            return localchl;
+          }
+          if (localchn.GML.isEmpty())
+          {
+            AppMethodBeat.o(210907);
+            continue;
+          }
+          localObject2 = localchn.GML;
+        }
+        finally {}
+        p.g(localObject2, "pageMap.map");
+        Object localObject2 = ((chm)((LinkedList)localObject2).getLast()).HaY;
+        AppMethodBeat.o(210907);
+      }
+    }
+    
+    public final chl cph()
+    {
+      chl localchl = null;
+      for (;;)
+      {
+        try
+        {
+          AppMethodBeat.i(210915);
+          chn localchn = cpj();
+          if (localchn == null)
+          {
+            AppMethodBeat.o(210915);
+            return localchl;
+          }
+          if (localchn.GML.isEmpty())
+          {
+            AppMethodBeat.o(210915);
+            continue;
+          }
+          localObject2 = localchn.GML;
+        }
+        finally {}
+        p.g(localObject2, "pageMap.map");
+        Object localObject2 = ((chm)((LinkedList)localObject2).getLast()).HaY;
+        AppMethodBeat.o(210915);
+      }
+    }
+    
+    public final void cpi()
     {
       try
       {
-        AppMethodBeat.i(195555);
-        k.h(paramcct, "pageStatistics");
-        try
+        AppMethodBeat.i(210916);
+        if (com.tencent.mm.plugin.expt.hellhound.core.b.cnC())
         {
-          b.o("hell_pge_sttics_d", paramcct.toByteArray());
-          AppMethodBeat.o(195555);
+          ad.i("HABBYGE-MALI.PageStatisticsDao", "resetWith78Event");
+          com.tencent.mm.plugin.expt.hellhound.core.a.b.p("hell_pge_sttics_d_3", new byte[0]);
         }
-        catch (Exception paramcct)
-        {
-          for (;;)
-          {
-            ac.printErrStackTrace("HABBYGE-MALI.PageStatisticsDao", (Throwable)paramcct, "PageStatisticsDao writeBack, exception: " + paramcct.getMessage(), new Object[0]);
-            AppMethodBeat.o(195555);
-          }
-        }
+        AppMethodBeat.o(210916);
         return;
       }
       finally {}
     }
     
-    public final void b(cct paramcct)
+    public final void d(chl paramchl)
     {
-      try
+      label181:
+      for (;;)
       {
-        AppMethodBeat.i(195558);
-        k.h(paramcct, "pageStatistics");
         try
         {
-          b.o("hell_pge_sttics_d2", paramcct.toByteArray());
-          AppMethodBeat.o(195558);
-        }
-        catch (Exception paramcct)
-        {
-          for (;;)
+          AppMethodBeat.i(210912);
+          p.h(paramchl, "statics");
+          chn localchn = cpj();
+          if (localchn != null) {
+            break label181;
+          }
+          localchn = new chn();
+          String str = paramchl.dtL + paramchl.aHQ;
+          Object localObject = localchn.GML;
+          p.g(localObject, "pageMap.map");
+          localObject = ((Iterable)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
           {
-            ac.printErrStackTrace("HABBYGE-MALI.PageStatisticsDao", (Throwable)paramcct, "PageStatisticsDao writeBack, exception: " + paramcct.getMessage(), new Object[0]);
-            AppMethodBeat.o(195558);
+            chm localchm = (chm)((Iterator)localObject).next();
+            if (!p.i(str, localchm.key)) {
+              continue;
+            }
+            localchm.HaY = paramchl;
+            i = 1;
+            if (i == 0)
+            {
+              localObject = new chm();
+              ((chm)localObject).key = str;
+              ((chm)localObject).HaY = paramchl;
+              localchn.GML.add(localObject);
+            }
+            b(localchn);
+            AppMethodBeat.o(210912);
+            return;
           }
         }
-        return;
+        finally {}
+        int i = 0;
       }
-      finally {}
     }
     
-    /* Error */
-    public final cct cjT()
+    public final chl da(String paramString, int paramInt)
     {
-      // Byte code:
-      //   0: iconst_0
-      //   1: istore_1
-      //   2: aload_0
-      //   3: monitorenter
-      //   4: ldc 103
-      //   6: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   9: ldc 54
-      //   11: invokestatic 107	com/tencent/mm/plugin/expt/hellhound/core/a/b:getBytes	(Ljava/lang/String;)[B
-      //   14: astore_3
-      //   15: aload_3
-      //   16: ifnull +13 -> 29
-      //   19: aload_3
-      //   20: arraylength
-      //   21: ifne +84 -> 105
-      //   24: iconst_1
-      //   25: istore_1
-      //   26: goto +79 -> 105
-      //   29: ldc 103
-      //   31: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   34: aconst_null
-      //   35: astore_2
-      //   36: aload_0
-      //   37: monitorexit
-      //   38: aload_2
-      //   39: areturn
-      //   40: new 56	com/tencent/mm/protocal/protobuf/cct
-      //   43: dup
-      //   44: invokespecial 108	com/tencent/mm/protocal/protobuf/cct:<init>	()V
-      //   47: astore_2
-      //   48: aload_2
-      //   49: aload_3
-      //   50: invokevirtual 112	com/tencent/mm/protocal/protobuf/cct:parseFrom	([B)Lcom/tencent/mm/bw/a;
-      //   53: pop
-      //   54: ldc 103
-      //   56: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   59: goto -23 -> 36
-      //   62: astore_2
-      //   63: aload_0
-      //   64: monitorexit
-      //   65: aload_2
-      //   66: athrow
-      //   67: astore_2
-      //   68: ldc 70
-      //   70: aload_2
-      //   71: checkcast 72	java/lang/Throwable
-      //   74: new 74	java/lang/StringBuilder
-      //   77: dup
-      //   78: ldc 114
-      //   80: invokespecial 79	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   83: aload_2
-      //   84: invokevirtual 83	java/lang/Exception:getMessage	()Ljava/lang/String;
-      //   87: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   90: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   93: iconst_0
-      //   94: anewarray 4	java/lang/Object
-      //   97: invokestatic 96	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   100: aconst_null
-      //   101: astore_2
-      //   102: goto -48 -> 54
-      //   105: iload_1
-      //   106: ifeq -66 -> 40
-      //   109: goto -80 -> 29
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	112	0	this	a
-      //   1	105	1	i	int
-      //   35	14	2	localcct	cct
-      //   62	4	2	localObject1	Object
-      //   67	17	2	localException	Exception
-      //   101	1	2	localObject2	Object
-      //   14	36	3	arrayOfByte	byte[]
-      // Exception table:
-      //   from	to	target	type
-      //   4	15	62	finally
-      //   19	24	62	finally
-      //   29	34	62	finally
-      //   40	48	62	finally
-      //   48	54	62	finally
-      //   54	59	62	finally
-      //   68	100	62	finally
-      //   48	54	67	java/lang/Exception
+      for (;;)
+      {
+        try
+        {
+          AppMethodBeat.i(210905);
+          if (paramString == null)
+          {
+            AppMethodBeat.o(210905);
+            paramString = null;
+            return paramString;
+          }
+          Object localObject = cpg();
+          if (localObject == null)
+          {
+            AppMethodBeat.o(210905);
+            paramString = null;
+            continue;
+          }
+          paramString = paramString + String.valueOf(paramInt);
+          localObject = ((chn)localObject).GML;
+          p.g(localObject, "pageMap.map");
+          localObject = ((Iterable)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            chm localchm = (chm)((Iterator)localObject).next();
+            if (!p.i(paramString, localchm.key)) {
+              continue;
+            }
+            paramString = localchm.HaY;
+            AppMethodBeat.o(210905);
+            continue;
+          }
+          AppMethodBeat.o(210905);
+        }
+        finally {}
+        paramString = null;
+      }
     }
     
-    /* Error */
-    public final cct cjU()
+    public final void db(String paramString, int paramInt)
     {
-      // Byte code:
-      //   0: iconst_0
-      //   1: istore_1
-      //   2: aload_0
-      //   3: monitorenter
-      //   4: ldc 116
-      //   6: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   9: ldc 100
-      //   11: invokestatic 107	com/tencent/mm/plugin/expt/hellhound/core/a/b:getBytes	(Ljava/lang/String;)[B
-      //   14: astore_3
-      //   15: aload_3
-      //   16: ifnull +13 -> 29
-      //   19: aload_3
-      //   20: arraylength
-      //   21: ifne +84 -> 105
-      //   24: iconst_1
-      //   25: istore_1
-      //   26: goto +79 -> 105
-      //   29: ldc 116
-      //   31: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   34: aconst_null
-      //   35: astore_2
-      //   36: aload_0
-      //   37: monitorexit
-      //   38: aload_2
-      //   39: areturn
-      //   40: new 56	com/tencent/mm/protocal/protobuf/cct
-      //   43: dup
-      //   44: invokespecial 108	com/tencent/mm/protocal/protobuf/cct:<init>	()V
-      //   47: astore_2
-      //   48: aload_2
-      //   49: aload_3
-      //   50: invokevirtual 112	com/tencent/mm/protocal/protobuf/cct:parseFrom	([B)Lcom/tencent/mm/bw/a;
-      //   53: pop
-      //   54: ldc 116
-      //   56: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   59: goto -23 -> 36
-      //   62: astore_2
-      //   63: aload_0
-      //   64: monitorexit
-      //   65: aload_2
-      //   66: athrow
-      //   67: astore_2
-      //   68: ldc 70
-      //   70: aload_2
-      //   71: checkcast 72	java/lang/Throwable
-      //   74: new 74	java/lang/StringBuilder
-      //   77: dup
-      //   78: ldc 114
-      //   80: invokespecial 79	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   83: aload_2
-      //   84: invokevirtual 83	java/lang/Exception:getMessage	()Ljava/lang/String;
-      //   87: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   90: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   93: iconst_0
-      //   94: anewarray 4	java/lang/Object
-      //   97: invokestatic 96	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   100: aconst_null
-      //   101: astore_2
-      //   102: goto -48 -> 54
-      //   105: iload_1
-      //   106: ifeq -66 -> 40
-      //   109: goto -80 -> 29
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	112	0	this	a
-      //   1	105	1	i	int
-      //   35	14	2	localcct	cct
-      //   62	4	2	localObject1	Object
-      //   67	17	2	localException	Exception
-      //   101	1	2	localObject2	Object
-      //   14	36	3	arrayOfByte	byte[]
-      // Exception table:
-      //   from	to	target	type
-      //   4	15	62	finally
-      //   19	24	62	finally
-      //   29	34	62	finally
-      //   40	48	62	finally
-      //   48	54	62	finally
-      //   54	59	62	finally
-      //   68	100	62	finally
-      //   48	54	67	java/lang/Exception
-    }
-    
-    public final void cjV()
-    {
+      chn localchn;
       try
       {
-        AppMethodBeat.i(195560);
-        b.o("hell_pge_sttics_d2", new byte[0]);
-        AppMethodBeat.o(195560);
-        return;
+        AppMethodBeat.i(210906);
+        if (paramString == null) {
+          AppMethodBeat.o(210906);
+        }
+        for (;;)
+        {
+          return;
+          localchn = cpg();
+          if (localchn != null) {
+            break;
+          }
+          AppMethodBeat.o(210906);
+        }
+        paramString = paramString + paramInt;
       }
-      finally
+      finally {}
+      Object localObject = localchn.GML;
+      p.g(localObject, "pageMap.map");
+      localObject = ((Iterable)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = finally;
-        throw localObject;
+        chm localchm = (chm)((Iterator)localObject).next();
+        if (p.i(paramString, localchm.key)) {
+          localchn.GML.remove(localchm);
+        }
+      }
+      for (paramInt = 1;; paramInt = 0)
+      {
+        if (paramInt != 0)
+        {
+          if (localchn.GML.isEmpty())
+          {
+            com.tencent.mm.plugin.expt.hellhound.core.a.b.p("hell_pge_sttics_d_1", new byte[0]);
+            AppMethodBeat.o(210906);
+            break;
+          }
+          a(localchn);
+        }
+        AppMethodBeat.o(210906);
+        break;
+      }
+    }
+    
+    public final chl dc(String paramString, int paramInt)
+    {
+      for (;;)
+      {
+        try
+        {
+          AppMethodBeat.i(210913);
+          if (paramString == null)
+          {
+            AppMethodBeat.o(210913);
+            paramString = null;
+            return paramString;
+          }
+          Object localObject = cpj();
+          if (localObject == null)
+          {
+            AppMethodBeat.o(210913);
+            paramString = null;
+            continue;
+          }
+          paramString = paramString + String.valueOf(paramInt);
+          localObject = ((chn)localObject).GML;
+          p.g(localObject, "pageMap.map");
+          localObject = ((Iterable)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            chm localchm = (chm)((Iterator)localObject).next();
+            if (!p.i(paramString, localchm.key)) {
+              continue;
+            }
+            paramString = localchm.HaY;
+            AppMethodBeat.o(210913);
+            continue;
+          }
+          AppMethodBeat.o(210913);
+        }
+        finally {}
+        paramString = null;
+      }
+    }
+    
+    public final void dd(String paramString, int paramInt)
+    {
+      chn localchn;
+      try
+      {
+        AppMethodBeat.i(210914);
+        if (paramString == null) {
+          AppMethodBeat.o(210914);
+        }
+        for (;;)
+        {
+          return;
+          localchn = cpj();
+          if (localchn != null) {
+            break;
+          }
+          AppMethodBeat.o(210914);
+        }
+        paramString = paramString + paramInt;
+      }
+      finally {}
+      Object localObject = localchn.GML;
+      p.g(localObject, "pageMap.map");
+      localObject = ((Iterable)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        chm localchm = (chm)((Iterator)localObject).next();
+        if (p.i(paramString, localchm.key)) {
+          localchn.GML.remove(localchm);
+        }
+      }
+      for (paramInt = 1;; paramInt = 0)
+      {
+        if (paramInt != 0)
+        {
+          if (localchn.GML.isEmpty())
+          {
+            com.tencent.mm.plugin.expt.hellhound.core.a.b.p("hell_pge_sttics_d_3", new byte[0]);
+            AppMethodBeat.o(210914);
+            break;
+          }
+          b(localchn);
+        }
+        AppMethodBeat.o(210914);
+        break;
       }
     }
     
@@ -264,22 +543,22 @@ public final class f
     {
       try
       {
-        AppMethodBeat.i(195557);
-        b.o("hell_pge_sttics_d", new byte[0]);
-        AppMethodBeat.o(195557);
+        AppMethodBeat.i(210908);
+        if (com.tencent.mm.plugin.expt.hellhound.core.b.cnC())
+        {
+          ad.i("HABBYGE-MALI.PageStatisticsDao", "reset");
+          com.tencent.mm.plugin.expt.hellhound.core.a.b.p("hell_pge_sttics_d_1", new byte[0]);
+        }
+        AppMethodBeat.o(210908);
         return;
       }
-      finally
-      {
-        localObject = finally;
-        throw localObject;
-      }
+      finally {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.d.f
  * JD-Core Version:    0.7.0.1
  */

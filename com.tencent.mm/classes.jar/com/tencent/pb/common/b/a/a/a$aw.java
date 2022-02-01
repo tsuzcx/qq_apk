@@ -8,33 +8,33 @@ import java.util.Arrays;
 public final class a$aw
   extends e
 {
-  public long JOA = 0L;
-  public byte[] JOB = g.bGH;
-  public byte[] JOC = g.bGH;
-  public byte[] JOD = g.bGH;
-  public a.ba JOE = null;
-  public byte[] JOF = g.bGH;
-  public a.as JOG = null;
-  public String JOH = "";
-  public String JOI = "";
-  public long JOJ = 0L;
-  public byte[] JOK = g.bGH;
-  public byte[] JOL = g.bGH;
-  public byte[] JOM = g.bGH;
-  public byte[] JON = g.bGH;
-  public int JOO = 0;
-  public byte[] JOP = g.bGH;
-  public byte[] JOQ = g.bGH;
-  public int JOR = 0;
-  public a.o[] JOS = a.o.fBI();
-  public byte[] JOz = g.bGH;
-  public byte[] bPB = g.bGH;
-  public int dhE = 0;
+  public int LIA = 0;
+  public byte[] LIB = g.bQV;
+  public byte[] LIC = g.bQV;
+  public int LID = 0;
+  public a.o[] LIE = a.o.fSX();
+  public byte[] LIl = g.bQV;
+  public long LIm = 0L;
+  public byte[] LIn = g.bQV;
+  public byte[] LIo = g.bQV;
+  public byte[] LIp = g.bQV;
+  public a.ba LIq = null;
+  public byte[] LIr = g.bQV;
+  public a.as LIs = null;
+  public String LIt = "";
+  public String LIu = "";
+  public long LIv = 0L;
+  public byte[] LIw = g.bQV;
+  public byte[] LIx = g.bQV;
+  public byte[] LIy = g.bQV;
+  public byte[] LIz = g.bQV;
+  public byte[] bZO = g.bQV;
+  public int dtc = 0;
   public String name = "";
   
   public a$aw()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
@@ -42,75 +42,75 @@ public final class a$aw
     if (!this.name.equals("")) {
       paramb.d(1, this.name);
     }
-    if (!Arrays.equals(this.JOz, g.bGH)) {
-      paramb.b(2, this.JOz);
+    if (!Arrays.equals(this.LIl, g.bQV)) {
+      paramb.b(2, this.LIl);
     }
-    if (this.dhE != 0) {
-      paramb.bv(3, this.dhE);
+    if (this.dtc != 0) {
+      paramb.bx(3, this.dtc);
     }
-    if (this.JOA != 0L) {
-      paramb.m(4, this.JOA);
+    if (this.LIm != 0L) {
+      paramb.m(4, this.LIm);
     }
-    if (!Arrays.equals(this.JOB, g.bGH)) {
-      paramb.b(5, this.JOB);
+    if (!Arrays.equals(this.LIn, g.bQV)) {
+      paramb.b(5, this.LIn);
     }
-    if (!Arrays.equals(this.JOC, g.bGH)) {
-      paramb.b(6, this.JOC);
+    if (!Arrays.equals(this.LIo, g.bQV)) {
+      paramb.b(6, this.LIo);
     }
-    if (!Arrays.equals(this.JOD, g.bGH)) {
-      paramb.b(7, this.JOD);
+    if (!Arrays.equals(this.LIp, g.bQV)) {
+      paramb.b(7, this.LIp);
     }
-    if (this.JOE != null) {
-      paramb.a(8, this.JOE);
+    if (this.LIq != null) {
+      paramb.a(8, this.LIq);
     }
-    if (!Arrays.equals(this.JOF, g.bGH)) {
-      paramb.b(9, this.JOF);
+    if (!Arrays.equals(this.LIr, g.bQV)) {
+      paramb.b(9, this.LIr);
     }
-    if (this.JOG != null) {
-      paramb.a(10, this.JOG);
+    if (this.LIs != null) {
+      paramb.a(10, this.LIs);
     }
-    if (!this.JOH.equals("")) {
-      paramb.d(100, this.JOH);
+    if (!this.LIt.equals("")) {
+      paramb.d(100, this.LIt);
     }
-    if (!this.JOI.equals("")) {
-      paramb.d(101, this.JOI);
+    if (!this.LIu.equals("")) {
+      paramb.d(101, this.LIu);
     }
-    if (this.JOJ != 0L) {
-      paramb.m(200, this.JOJ);
+    if (this.LIv != 0L) {
+      paramb.m(200, this.LIv);
     }
-    if (!Arrays.equals(this.JOK, g.bGH)) {
-      paramb.b(201, this.JOK);
+    if (!Arrays.equals(this.LIw, g.bQV)) {
+      paramb.b(201, this.LIw);
     }
-    if (!Arrays.equals(this.JOL, g.bGH)) {
-      paramb.b(202, this.JOL);
+    if (!Arrays.equals(this.LIx, g.bQV)) {
+      paramb.b(202, this.LIx);
     }
-    if (!Arrays.equals(this.JOM, g.bGH)) {
-      paramb.b(203, this.JOM);
+    if (!Arrays.equals(this.LIy, g.bQV)) {
+      paramb.b(203, this.LIy);
     }
-    if (!Arrays.equals(this.JON, g.bGH)) {
-      paramb.b(204, this.JON);
+    if (!Arrays.equals(this.LIz, g.bQV)) {
+      paramb.b(204, this.LIz);
     }
-    if (this.JOO != 0) {
-      paramb.bv(220, this.JOO);
+    if (this.LIA != 0) {
+      paramb.bx(220, this.LIA);
     }
-    if (!Arrays.equals(this.JOP, g.bGH)) {
-      paramb.b(221, this.JOP);
+    if (!Arrays.equals(this.LIB, g.bQV)) {
+      paramb.b(221, this.LIB);
     }
-    if (!Arrays.equals(this.JOQ, g.bGH)) {
-      paramb.b(222, this.JOQ);
+    if (!Arrays.equals(this.LIC, g.bQV)) {
+      paramb.b(222, this.LIC);
     }
-    if (!Arrays.equals(this.bPB, g.bGH)) {
-      paramb.b(223, this.bPB);
+    if (!Arrays.equals(this.bZO, g.bQV)) {
+      paramb.b(223, this.bZO);
     }
-    if (this.JOR != 0) {
-      paramb.bw(224, this.JOR);
+    if (this.LID != 0) {
+      paramb.by(224, this.LID);
     }
-    if ((this.JOS != null) && (this.JOS.length > 0))
+    if ((this.LIE != null) && (this.LIE.length > 0))
     {
       int i = 0;
-      while (i < this.JOS.length)
+      while (i < this.LIE.length)
       {
-        a.o localo = this.JOS[i];
+        a.o localo = this.LIE[i];
         if (localo != null) {
           paramb.a(225, localo);
         }
@@ -120,107 +120,107 @@ public final class a$aw
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
     if (!this.name.equals("")) {
       i = j + b.e(1, this.name);
     }
     j = i;
-    if (!Arrays.equals(this.JOz, g.bGH)) {
-      j = i + b.c(2, this.JOz);
+    if (!Arrays.equals(this.LIl, g.bQV)) {
+      j = i + b.c(2, this.LIl);
     }
     i = j;
-    if (this.dhE != 0) {
-      i = j + b.bx(3, this.dhE);
+    if (this.dtc != 0) {
+      i = j + b.bz(3, this.dtc);
     }
     j = i;
-    if (this.JOA != 0L) {
-      j = i + b.o(4, this.JOA);
+    if (this.LIm != 0L) {
+      j = i + b.o(4, this.LIm);
     }
     i = j;
-    if (!Arrays.equals(this.JOB, g.bGH)) {
-      i = j + b.c(5, this.JOB);
+    if (!Arrays.equals(this.LIn, g.bQV)) {
+      i = j + b.c(5, this.LIn);
     }
     j = i;
-    if (!Arrays.equals(this.JOC, g.bGH)) {
-      j = i + b.c(6, this.JOC);
+    if (!Arrays.equals(this.LIo, g.bQV)) {
+      j = i + b.c(6, this.LIo);
     }
     i = j;
-    if (!Arrays.equals(this.JOD, g.bGH)) {
-      i = j + b.c(7, this.JOD);
+    if (!Arrays.equals(this.LIp, g.bQV)) {
+      i = j + b.c(7, this.LIp);
     }
     j = i;
-    if (this.JOE != null) {
-      j = i + b.b(8, this.JOE);
+    if (this.LIq != null) {
+      j = i + b.b(8, this.LIq);
     }
     i = j;
-    if (!Arrays.equals(this.JOF, g.bGH)) {
-      i = j + b.c(9, this.JOF);
+    if (!Arrays.equals(this.LIr, g.bQV)) {
+      i = j + b.c(9, this.LIr);
     }
     j = i;
-    if (this.JOG != null) {
-      j = i + b.b(10, this.JOG);
+    if (this.LIs != null) {
+      j = i + b.b(10, this.LIs);
     }
     i = j;
-    if (!this.JOH.equals("")) {
-      i = j + b.e(100, this.JOH);
+    if (!this.LIt.equals("")) {
+      i = j + b.e(100, this.LIt);
     }
     j = i;
-    if (!this.JOI.equals("")) {
-      j = i + b.e(101, this.JOI);
+    if (!this.LIu.equals("")) {
+      j = i + b.e(101, this.LIu);
     }
     i = j;
-    if (this.JOJ != 0L) {
-      i = j + b.o(200, this.JOJ);
+    if (this.LIv != 0L) {
+      i = j + b.o(200, this.LIv);
     }
     j = i;
-    if (!Arrays.equals(this.JOK, g.bGH)) {
-      j = i + b.c(201, this.JOK);
+    if (!Arrays.equals(this.LIw, g.bQV)) {
+      j = i + b.c(201, this.LIw);
     }
     i = j;
-    if (!Arrays.equals(this.JOL, g.bGH)) {
-      i = j + b.c(202, this.JOL);
+    if (!Arrays.equals(this.LIx, g.bQV)) {
+      i = j + b.c(202, this.LIx);
     }
     j = i;
-    if (!Arrays.equals(this.JOM, g.bGH)) {
-      j = i + b.c(203, this.JOM);
+    if (!Arrays.equals(this.LIy, g.bQV)) {
+      j = i + b.c(203, this.LIy);
     }
     i = j;
-    if (!Arrays.equals(this.JON, g.bGH)) {
-      i = j + b.c(204, this.JON);
+    if (!Arrays.equals(this.LIz, g.bQV)) {
+      i = j + b.c(204, this.LIz);
     }
     j = i;
-    if (this.JOO != 0) {
-      j = i + b.bx(220, this.JOO);
+    if (this.LIA != 0) {
+      j = i + b.bz(220, this.LIA);
     }
     i = j;
-    if (!Arrays.equals(this.JOP, g.bGH)) {
-      i = j + b.c(221, this.JOP);
+    if (!Arrays.equals(this.LIB, g.bQV)) {
+      i = j + b.c(221, this.LIB);
     }
     j = i;
-    if (!Arrays.equals(this.JOQ, g.bGH)) {
-      j = i + b.c(222, this.JOQ);
+    if (!Arrays.equals(this.LIC, g.bQV)) {
+      j = i + b.c(222, this.LIC);
     }
     int k = j;
-    if (!Arrays.equals(this.bPB, g.bGH)) {
-      k = j + b.c(223, this.bPB);
+    if (!Arrays.equals(this.bZO, g.bQV)) {
+      k = j + b.c(223, this.bZO);
     }
     i = k;
-    if (this.JOR != 0) {
-      i = k + b.by(224, this.JOR);
+    if (this.LID != 0) {
+      i = k + b.bA(224, this.LID);
     }
     j = i;
-    if (this.JOS != null)
+    if (this.LIE != null)
     {
       j = i;
-      if (this.JOS.length > 0)
+      if (this.LIE.length > 0)
       {
         j = 0;
-        while (j < this.JOS.length)
+        while (j < this.LIE.length)
         {
-          a.o localo = this.JOS[j];
+          a.o localo = this.LIE[j];
           k = i;
           if (localo != null) {
             k = i + b.b(225, localo);
@@ -236,7 +236,7 @@ public final class a$aw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.aw
  * JD-Core Version:    0.7.0.1
  */

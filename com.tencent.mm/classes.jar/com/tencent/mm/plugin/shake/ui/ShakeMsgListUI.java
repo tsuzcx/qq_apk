@@ -20,13 +20,15 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.shake.b.f;
-import com.tencent.mm.plugin.shake.b.g;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.tools.l;
 
 public class ShakeMsgListUI
@@ -35,23 +37,23 @@ public class ShakeMsgListUI
   private int from;
   private int limit;
   private int mType;
-  private long mWU;
-  private n.d ntM;
-  private TextView oAn;
-  private int vkh;
-  private int vki;
-  private g xAd;
-  private d xAe;
-  private ListView xAf;
+  private n.e nUI;
+  private long nxr;
+  private TextView pdI;
+  private int wpA;
+  private int wpz;
+  private com.tencent.mm.plugin.shake.b.g yON;
+  private d yOO;
+  private ListView yOP;
   
   public ShakeMsgListUI()
   {
     AppMethodBeat.i(28429);
-    this.xAd = null;
+    this.yON = null;
     this.limit = 0;
-    this.vkh = 0;
-    this.vki = 0;
-    this.ntM = new n.d()
+    this.wpz = 0;
+    this.wpA = 0;
+    this.nUI = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -59,7 +61,7 @@ public class ShakeMsgListUI
         paramAnonymousMenuItem = ShakeMsgListUI.a(ShakeMsgListUI.this);
         long l = ShakeMsgListUI.i(ShakeMsgListUI.this);
         String str = "svrid = '" + String.valueOf(l) + "'";
-        ac.i("MicroMsg.ShakeMessageStorage", "delBySvrId = ".concat(String.valueOf(paramAnonymousMenuItem.db.delete(paramAnonymousMenuItem.getTableName(), str, null))));
+        ad.i("MicroMsg.ShakeMessageStorage", "delBySvrId = ".concat(String.valueOf(paramAnonymousMenuItem.db.delete(paramAnonymousMenuItem.getTableName(), str, null))));
         ShakeMsgListUI.b(ShakeMsgListUI.this).a(null, null);
         AppMethodBeat.o(28428);
       }
@@ -67,11 +69,11 @@ public class ShakeMsgListUI
     AppMethodBeat.o(28429);
   }
   
-  private void dDT()
+  private void dPw()
   {
     AppMethodBeat.i(28435);
-    this.oAn.setText(2131763591);
-    this.oAn.setVisibility(0);
+    this.pdI.setText(2131763591);
+    this.pdI.setVisibility(0);
     enableOptionMenu(false);
     AppMethodBeat.o(28435);
   }
@@ -101,14 +103,14 @@ public class ShakeMsgListUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(28424);
-        com.tencent.mm.ui.base.h.a(ShakeMsgListUI.this.getContext(), true, ShakeMsgListUI.this.getString(2131763590), "", ShakeMsgListUI.this.getString(2131762786), ShakeMsgListUI.this.getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        h.a(ShakeMsgListUI.this.getContext(), true, ShakeMsgListUI.this.getString(2131763590), "", ShakeMsgListUI.this.getString(2131762786), ShakeMsgListUI.this.getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
             AppMethodBeat.i(28423);
             paramAnonymous2DialogInterface = ShakeMsgListUI.a(ShakeMsgListUI.this);
             paramAnonymous2DialogInterface.db.delete(paramAnonymous2DialogInterface.getTableName(), null, null);
-            ShakeMsgListUI.b(ShakeMsgListUI.this).Xb();
+            ShakeMsgListUI.b(ShakeMsgListUI.this).Zu();
             ShakeMsgListUI.c(ShakeMsgListUI.this);
             AppMethodBeat.o(28423);
           }
@@ -120,60 +122,71 @@ public class ShakeMsgListUI
         return true;
       }
     });
-    this.oAn = ((TextView)findViewById(2131299468));
-    if (this.vkh == 0) {
-      dDT();
+    this.pdI = ((TextView)findViewById(2131299468));
+    if (this.wpz == 0) {
+      dPw();
     }
-    this.xAf = ((ListView)findViewById(2131304697));
+    this.yOP = ((ListView)findViewById(2131304697));
     Object localObject = getLayoutInflater().inflate(2131495281, null);
     ((View)localObject).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(28425);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/shake/ui/ShakeMsgListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         ShakeMsgListUI.a(ShakeMsgListUI.this, ShakeMsgListUI.d(ShakeMsgListUI.this) + 8);
-        ShakeMsgListUI.b(ShakeMsgListUI.this).NO(ShakeMsgListUI.d(ShakeMsgListUI.this));
+        ShakeMsgListUI.b(ShakeMsgListUI.this).Pr(ShakeMsgListUI.d(ShakeMsgListUI.this));
         if (ShakeMsgListUI.e(ShakeMsgListUI.this) <= ShakeMsgListUI.d(ShakeMsgListUI.this)) {
-          ShakeMsgListUI.f(ShakeMsgListUI.this).removeFooterView(this.vkl);
+          ShakeMsgListUI.f(ShakeMsgListUI.this).removeFooterView(this.wpD);
         }
+        a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeMsgListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(28425);
       }
     });
-    if ((this.vkh > 0) && (this.limit < this.vkh)) {
-      this.xAf.addFooterView((View)localObject);
+    if ((this.wpz > 0) && (this.limit < this.wpz)) {
+      this.yOP.addFooterView((View)localObject);
     }
-    this.xAe = new d(this);
-    this.xAe.xAa = this.limit;
-    this.xAf.setAdapter(this.xAe);
-    this.xAf.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.yOO = new d(this);
+    this.yOO.yOK = this.limit;
+    this.yOP.setAdapter(this.yOO);
+    this.yOP.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(28426);
+        b localb = new b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        a.b("com/tencent/mm/plugin/shake/ui/ShakeMsgListUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
         paramAnonymousAdapterView = (f)ShakeMsgListUI.b(ShakeMsgListUI.this).getItem(paramAnonymousInt);
-        if (!bs.isNullOrNil(paramAnonymousAdapterView.field_tag))
+        if (!bt.isNullOrNil(paramAnonymousAdapterView.field_tag))
         {
-          com.tencent.mm.plugin.report.service.h.wUl.kvStat(11316, ShakeMsgListUI.g(ShakeMsgListUI.this) + "," + paramAnonymousAdapterView.field_tag);
+          com.tencent.mm.plugin.report.service.g.yhR.kvStat(11316, ShakeMsgListUI.g(ShakeMsgListUI.this) + "," + paramAnonymousAdapterView.field_tag);
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("rawUrl", paramAnonymousAdapterView.field_tag);
-          com.tencent.mm.br.d.b(ShakeMsgListUI.this.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
+          com.tencent.mm.bs.d.b(ShakeMsgListUI.this.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
         }
+        a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeMsgListUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(28426);
       }
     });
     localObject = new l(this);
-    this.xAf.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.yOP.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(28427);
         if (paramAnonymousInt < ShakeMsgListUI.f(ShakeMsgListUI.this).getHeaderViewsCount())
         {
-          ac.w("MicroMsg.ShakeMsgListUI", "on header view long click, ignore");
+          ad.w("MicroMsg.ShakeMsgListUI", "on header view long click, ignore");
           AppMethodBeat.o(28427);
           return true;
         }
-        this.ntP.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, ShakeMsgListUI.this.getContext(), ShakeMsgListUI.h(ShakeMsgListUI.this));
+        this.nUL.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, ShakeMsgListUI.this.getContext(), ShakeMsgListUI.h(ShakeMsgListUI.this));
         AppMethodBeat.o(28427);
         return true;
       }
@@ -186,33 +199,33 @@ public class ShakeMsgListUI
     AppMethodBeat.i(28430);
     super.onCreate(paramBundle);
     this.mType = getIntent().getIntExtra("shake_msg_type", 0);
-    this.xAd = m.dDm();
-    this.vki = this.xAd.bQe();
+    this.yON = m.dOP();
+    this.wpA = this.yON.bUJ();
     int i;
-    if (this.vki == 0)
+    if (this.wpA == 0)
     {
       i = 8;
       this.limit = i;
-      this.vkh = this.xAd.getCount();
+      this.wpz = this.yON.getCount();
       this.from = getIntent().getIntExtra("shake_msg_from", 1);
       if (this.from != 1) {
         break label191;
       }
-      com.tencent.mm.plugin.report.service.h.wUl.f(11313, new Object[] { Integer.valueOf(this.vki), e.dEl() });
+      com.tencent.mm.plugin.report.service.g.yhR.f(11313, new Object[] { Integer.valueOf(this.wpA), e.dPO() });
     }
     for (;;)
     {
-      paramBundle = this.xAd;
+      paramBundle = this.yON;
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("status", Integer.valueOf(1));
       paramBundle.db.update(paramBundle.getTableName(), localContentValues, "status!=? ", new String[] { "1" });
       initView();
       AppMethodBeat.o(28430);
       return;
-      i = this.vki;
+      i = this.wpA;
       break;
       label191:
-      com.tencent.mm.plugin.report.service.h.wUl.f(11315, new Object[] { Integer.valueOf(this.vki), e.dEl() });
+      com.tencent.mm.plugin.report.service.g.yhR.f(11315, new Object[] { Integer.valueOf(this.wpA), e.dPO() });
     }
   }
   
@@ -220,7 +233,7 @@ public class ShakeMsgListUI
   {
     AppMethodBeat.i(28434);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    this.mWU = ((f)this.xAe.getItem(paramView.position)).field_svrid;
+    this.nxr = ((f)this.yOO.getItem(paramView.position)).field_svrid;
     paramContextMenu.add(paramView.position, 0, 0, 2131755707);
     AppMethodBeat.o(28434);
   }
@@ -228,7 +241,7 @@ public class ShakeMsgListUI
   public void onDestroy()
   {
     AppMethodBeat.i(28432);
-    this.xAe.cVi();
+    this.yOO.det();
     super.onDestroy();
     AppMethodBeat.o(28432);
   }
@@ -237,15 +250,15 @@ public class ShakeMsgListUI
   {
     AppMethodBeat.i(28431);
     super.onResume();
-    if (this.vkh != this.xAd.getCount())
+    if (this.wpz != this.yON.getCount())
     {
-      this.vkh = this.xAd.getCount();
-      if (this.vkh == 0) {
-        dDT();
+      this.wpz = this.yON.getCount();
+      if (this.wpz == 0) {
+        dPw();
       }
-      this.xAe.Xb();
+      this.yOO.Zu();
     }
-    this.xAe.notifyDataSetChanged();
+    this.yOO.notifyDataSetChanged();
     AppMethodBeat.o(28431);
   }
   

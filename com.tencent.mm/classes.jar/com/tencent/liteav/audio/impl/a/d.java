@@ -9,6 +9,7 @@ import android.media.MediaFormat;
 import com.tencent.liteav.audio.e;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
@@ -35,7 +36,7 @@ public class d
   static
   {
     AppMethodBeat.i(16390);
-    com.tencent.liteav.basic.util.d.f();
+    f.f();
     AppMethodBeat.o(16390);
   }
   

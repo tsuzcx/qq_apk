@@ -2,7 +2,7 @@ package com.tencent.tbs.a;
 
 public final class b
 {
-  public c JYR;
+  public c LSM;
   public long a;
   public String c;
   public String d;
@@ -10,7 +10,7 @@ public final class b
   b(long paramLong, c paramc, String paramString1, String paramString2)
   {
     this.a = paramLong;
-    this.JYR = paramc;
+    this.LSM = paramc;
     this.c = paramString1;
     this.d = paramString2;
   }

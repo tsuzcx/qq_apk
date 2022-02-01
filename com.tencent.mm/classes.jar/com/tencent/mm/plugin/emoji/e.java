@@ -11,38 +11,38 @@ public final class e
   extends t
   implements b
 {
-  private static e oWz;
+  private static e pAj;
   
   private e()
   {
-    super(com.tencent.mm.au.a.class);
+    super(com.tencent.mm.av.a.class);
   }
   
-  public static e cbl()
+  public static e cfP()
   {
     try
     {
       AppMethodBeat.i(104543);
-      if (oWz == null) {
-        oWz = new e();
+      if (pAj == null) {
+        pAj = new e();
       }
-      e locale = oWz;
+      e locale = pAj;
       AppMethodBeat.o(104543);
       return locale;
     }
     finally {}
   }
   
-  public static String cbm()
+  public static String cfQ()
   {
     AppMethodBeat.i(104545);
-    Object localObject = com.tencent.mm.emoji.d.a.fWM;
-    localObject = com.tencent.mm.emoji.d.a.adJ();
+    Object localObject = com.tencent.mm.emoji.d.a.gqn;
+    localObject = com.tencent.mm.emoji.d.a.agp();
     AppMethodBeat.o(104545);
     return localObject;
   }
   
-  public final List<String> agY()
+  public final List<String> ajJ()
   {
     AppMethodBeat.i(104544);
     LinkedList localLinkedList = new LinkedList();
@@ -53,7 +53,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e
  * JD-Core Version:    0.7.0.1
  */

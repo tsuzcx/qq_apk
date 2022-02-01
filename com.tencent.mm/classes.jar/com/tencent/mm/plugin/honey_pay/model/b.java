@@ -8,14 +8,14 @@ public final class b
   extends j<a>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] iAI;
+  private static final String[] iTS;
   private e db;
   
   static
   {
     AppMethodBeat.i(64646);
     SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "HoneyPayMsgRecord") };
-    iAI = new String[] { "*", "rowid" };
+    iTS = new String[] { "*", "rowid" };
     AppMethodBeat.o(64646);
   }
   

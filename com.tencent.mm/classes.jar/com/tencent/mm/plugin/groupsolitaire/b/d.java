@@ -2,25 +2,24 @@ package com.tencent.mm.plugin.groupsolitaire.b;
 
 import android.util.Base64;
 import android.util.Pair;
-import com.tencent.e.i;
+import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.eh;
-import com.tencent.mm.g.b.a.ei;
-import com.tencent.mm.g.b.a.ej;
-import com.tencent.mm.g.b.a.ek;
-import com.tencent.mm.g.b.a.el;
-import com.tencent.mm.g.b.a.en;
-import com.tencent.mm.g.c.dy;
+import com.tencent.mm.g.a.na;
+import com.tencent.mm.g.b.a.fg;
+import com.tencent.mm.g.b.a.fh;
+import com.tencent.mm.g.b.a.fi;
+import com.tencent.mm.g.b.a.fj;
+import com.tencent.mm.g.b.a.fk;
+import com.tencent.mm.g.b.a.fm;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.groupsolitaire.PluginGroupSolitaire;
-import com.tencent.mm.plugin.groupsolitaire.c.a;
 import com.tencent.mm.plugin.groupsolitaire.c.b;
-import com.tencent.mm.plugin.groupsolitaire.c.c;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -30,22 +29,22 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  ConcurrentHashMap<Long, Pair<String, String>> tyD;
-  ConcurrentHashMap<Long, Boolean> tyE;
-  public ConcurrentHashMap<Long, a> tyF;
-  ConcurrentHashMap<Long, d.b> tyG;
+  ConcurrentHashMap<Long, Pair<String, String>> uBn;
+  ConcurrentHashMap<Long, Boolean> uBo;
+  public ConcurrentHashMap<Long, a> uBp;
+  ConcurrentHashMap<Long, b> uBq;
   
   public d()
   {
     AppMethodBeat.i(110384);
-    this.tyD = new ConcurrentHashMap();
-    this.tyE = new ConcurrentHashMap();
-    this.tyF = new ConcurrentHashMap();
-    this.tyG = new ConcurrentHashMap();
+    this.uBn = new ConcurrentHashMap();
+    this.uBo = new ConcurrentHashMap();
+    this.uBp = new ConcurrentHashMap();
+    this.uBq = new ConcurrentHashMap();
     AppMethodBeat.o(110384);
   }
   
-  public static void a(a parama, int paramInt)
+  public static void a(com.tencent.mm.plugin.groupsolitaire.c.a parama, int paramInt)
   {
     AppMethodBeat.i(110389);
     if (parama == null)
@@ -53,115 +52,115 @@ public final class d
       AppMethodBeat.o(110389);
       return;
     }
-    ek localek = new ek();
-    localek.mi(parama.field_key);
-    localek.mg(parama.field_username);
-    localek.mh(parama.field_creator);
-    localek.dUy = parama.field_msgSvrId;
-    localek.dUL = paramInt;
-    localek.aHZ();
+    fj localfj = new fj();
+    localfj.ov(parama.field_key);
+    localfj.ot(parama.field_username);
+    localfj.ou(parama.field_creator);
+    localfj.ekQ = parama.field_msgSvrId;
+    localfj.eld = paramInt;
+    localfj.aLk();
     AppMethodBeat.o(110389);
   }
   
-  public static void a(a parama, int paramInt1, int paramInt2)
+  public static void a(com.tencent.mm.plugin.groupsolitaire.c.a parama, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(110392);
-    ej localej = new ej();
-    localej.dUC = localej.t("Identifier", parama.field_key, true);
-    localej.dEE = localej.t("ChatName", parama.field_username, true);
-    localej.dUy = parama.field_msgSvrId;
-    localej.dIi = paramInt1;
-    localej.dUK = paramInt2;
-    localej.aHZ();
+    fi localfi = new fi();
+    localfi.ekU = localfi.t("Identifier", parama.field_key, true);
+    localfi.dRB = localfi.t("ChatName", parama.field_username, true);
+    localfi.ekQ = parama.field_msgSvrId;
+    localfi.dVP = paramInt1;
+    localfi.elc = paramInt2;
+    localfi.aLk();
     AppMethodBeat.o(110392);
   }
   
-  public static void a(a parama, int paramInt1, int paramInt2, boolean paramBoolean)
+  public static void a(com.tencent.mm.plugin.groupsolitaire.c.a parama, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(110390);
-    el localel = new el();
-    localel.mk(parama.field_key);
-    localel.mj(parama.field_username);
-    localel.dUy = parama.field_msgSvrId;
-    localel.dII = paramInt1;
-    localel.dNu = paramInt2;
+    fk localfk = new fk();
+    localfk.ox(parama.field_key);
+    localfk.ow(parama.field_username);
+    localfk.ekQ = parama.field_msgSvrId;
+    localfk.dWq = paramInt1;
+    localfk.ecJ = paramInt2;
     if (paramBoolean) {}
-    for (localel.dUM = 2L;; localel.dUM = 1L)
+    for (localfk.ele = 2L;; localfk.ele = 1L)
     {
-      localel.aHZ();
+      localfk.aLk();
       AppMethodBeat.o(110390);
       return;
     }
   }
   
-  static void a(a parama, boolean paramBoolean, String paramString, long paramLong)
+  static void a(com.tencent.mm.plugin.groupsolitaire.c.a parama, boolean paramBoolean, String paramString, long paramLong)
   {
     AppMethodBeat.i(110386);
     if (paramLong == 0L)
     {
-      ac.e("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "reportSolitaireActive() MsgSvrId==0 key:%s", new Object[] { parama.field_key });
+      ad.e("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "reportSolitaireActive() MsgSvrId==0 key:%s", new Object[] { parama.field_key });
       AppMethodBeat.o(110386);
       return;
     }
-    ac.i("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "reportSolitaireActive() MsgSvrId==%s key:%s", new Object[] { Long.valueOf(paramLong), parama.field_key });
-    ei localei = new ei();
-    localei.mf(parama.field_key);
-    localei.mc(parama.field_username);
-    localei.md(parama.field_creator);
+    ad.i("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "reportSolitaireActive() MsgSvrId==%s key:%s", new Object[] { Long.valueOf(paramLong), parama.field_key });
+    fh localfh = new fh();
+    localfh.os(parama.field_key);
+    localfh.op(parama.field_username);
+    localfh.oq(parama.field_creator);
     if (paramBoolean)
     {
-      localei.me(paramString);
-      localei.dUF = paramLong;
-      if (parama.tyQ == 1) {
-        localei.dUG = parama.header.length();
+      localfh.or(paramString);
+      localfh.ekX = paramLong;
+      if (parama.uBz == 1) {
+        localfh.ekY = parama.header.length();
       }
-      localei.dUH = parama.tyP.length();
-      localei.dUI = parama.tyO.length();
+      localfh.ekZ = parama.tUK.length();
+      localfh.ela = parama.uBy.length();
       if (!paramBoolean) {
         break label198;
       }
     }
     label198:
-    for (localei.dUJ = 1L;; localei.dUJ = 2L)
+    for (localfh.elb = 1L;; localfh.elb = 2L)
     {
-      localei.aHZ();
+      localfh.aLk();
       AppMethodBeat.o(110386);
       return;
-      localei.me(parama.field_creator);
+      localfh.or(parama.field_creator);
       break;
     }
   }
   
-  public static void b(a parama, String paramString)
+  public static void b(com.tencent.mm.plugin.groupsolitaire.c.a parama, String paramString)
   {
     AppMethodBeat.i(161735);
     if (parama == null)
     {
-      ac.e("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "reportSolitaireActive() groupSolitatire == null");
+      ad.e("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "reportSolitaireActive() groupSolitatire == null");
       AppMethodBeat.o(161735);
       return;
     }
-    bo localbo = ((k)g.ab(k.class)).dcr().vP(parama.field_firstMsgId);
+    bu localbu = ((l)g.ab(l.class)).dlK().xY(parama.field_firstMsgId);
     if (parama.field_msgSvrId == 0L)
     {
-      parama.field_msgSvrId = localbo.field_msgSvrId;
+      parama.field_msgSvrId = localbu.field_msgSvrId;
       ((PluginGroupSolitaire)g.ad(PluginGroupSolitaire.class)).getGroupSolitatireStorage().a(parama, true);
     }
     a(parama, true, paramString, parama.field_msgSvrId);
     AppMethodBeat.o(161735);
   }
   
-  public static void dB(String paramString, int paramInt)
+  public static void dS(String paramString, int paramInt)
   {
     AppMethodBeat.i(110391);
-    en localen = new en();
-    localen.dEE = localen.t("ChatName", paramString, true);
-    localen.dUM = paramInt;
-    localen.aHZ();
+    fm localfm = new fm();
+    localfm.dRB = localfm.t("ChatName", paramString, true);
+    localfm.ele = paramInt;
+    localfm.aLk();
     AppMethodBeat.o(110391);
   }
   
-  public static void q(List<a> paramList, int paramInt)
+  public static void s(List<com.tencent.mm.plugin.groupsolitaire.c.a> paramList, int paramInt)
   {
     AppMethodBeat.i(110388);
     if ((paramList == null) && (paramList.size() == 0))
@@ -171,25 +170,25 @@ public final class d
     }
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      a((a)paramList.next(), paramInt);
+      a((com.tencent.mm.plugin.groupsolitaire.c.a)paramList.next(), paramInt);
     }
     AppMethodBeat.o(110388);
   }
   
-  public final void U(long paramLong1, long paramLong2)
+  public final void V(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(192999);
-    Pair localPair = (Pair)this.tyD.remove(Long.valueOf(paramLong1));
-    Boolean localBoolean = (Boolean)this.tyE.remove(Long.valueOf(paramLong1));
+    AppMethodBeat.i(215780);
+    Pair localPair = (Pair)this.uBn.remove(Long.valueOf(paramLong1));
+    Boolean localBoolean = (Boolean)this.uBo.remove(Long.valueOf(paramLong1));
     if (localPair != null)
     {
-      this.tyD.put(Long.valueOf(paramLong2), localPair);
-      this.tyE.put(Long.valueOf(paramLong2), localBoolean);
+      this.uBn.put(Long.valueOf(paramLong2), localPair);
+      this.uBo.put(Long.valueOf(paramLong2), localBoolean);
     }
-    AppMethodBeat.o(192999);
+    AppMethodBeat.o(215780);
   }
   
-  public final void a(long paramLong, a parama1, a parama2, boolean paramBoolean, int paramInt)
+  public final void a(long paramLong, com.tencent.mm.plugin.groupsolitaire.c.a parama1, com.tencent.mm.plugin.groupsolitaire.c.a parama2, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(110385);
     if ((paramLong < 0L) || (parama1 == null))
@@ -197,13 +196,13 @@ public final class d
       AppMethodBeat.o(110385);
       return;
     }
-    this.tyD.put(Long.valueOf(paramLong), new Pair(parama1.field_username, parama1.field_key));
-    this.tyE.put(Long.valueOf(paramLong), Boolean.valueOf(paramBoolean));
-    this.tyG.put(Long.valueOf(paramLong), new d.b(this, parama1, parama2, paramInt));
+    this.uBn.put(Long.valueOf(paramLong), new Pair(parama1.field_username, parama1.field_key));
+    this.uBo.put(Long.valueOf(paramLong), Boolean.valueOf(paramBoolean));
+    this.uBq.put(Long.valueOf(paramLong), new b(parama1, parama2, paramInt));
     AppMethodBeat.o(110385);
   }
   
-  public final void a(final a parama1, final a parama2, final int paramInt)
+  public final void a(final com.tencent.mm.plugin.groupsolitaire.c.a parama1, final com.tencent.mm.plugin.groupsolitaire.c.a parama2, final int paramInt)
   {
     AppMethodBeat.i(110387);
     if (parama1 == null)
@@ -211,7 +210,7 @@ public final class d
       AppMethodBeat.o(110387);
       return;
     }
-    com.tencent.e.h.JZN.aS(new Runnable()
+    h.LTJ.aR(new Runnable()
     {
       public final void run()
       {
@@ -219,34 +218,34 @@ public final class d
         Object localObject1 = "";
         if (parama2 == null)
         {
-          i = parama1.tyS.size();
+          i = parama1.uBB.size();
           localObject1 = parama1.separator;
           j = 0;
           localObject2 = localObject1;
-          if (bs.isNullOrNil((String)localObject1)) {
+          if (bt.isNullOrNil((String)localObject1)) {
             localObject2 = parama1.separator;
           }
-          localObject1 = new eh();
-          ((eh)localObject1).dUC = ((eh)localObject1).t("Identifier", parama1.field_key, true);
-          ((eh)localObject1).dEE = ((eh)localObject1).t("ChatName", parama1.field_username, true);
-          ((eh)localObject1).dUx = ((eh)localObject1).t("LaunchUserName", parama1.field_creator, true);
-          ((eh)localObject1).dUy = parama1.field_msgSvrId;
-          ((eh)localObject1).dUz = j;
-          ((eh)localObject1).dUA = i;
-          ((eh)localObject1).dUB = paramInt;
-          ((eh)localObject1).dUD = ((eh)localObject1).t("Punctuation", Base64.encodeToString(((String)localObject2).getBytes(), 0), true);
-          ac.d("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "separator:%s base64:%s", new Object[] { localObject2, Base64.encodeToString(((String)localObject2).getBytes(), 0) });
-          ((eh)localObject1).aHZ();
+          localObject1 = new fg();
+          ((fg)localObject1).ekU = ((fg)localObject1).t("Identifier", parama1.field_key, true);
+          ((fg)localObject1).dRB = ((fg)localObject1).t("ChatName", parama1.field_username, true);
+          ((fg)localObject1).ekP = ((fg)localObject1).t("LaunchUserName", parama1.field_creator, true);
+          ((fg)localObject1).ekQ = parama1.field_msgSvrId;
+          ((fg)localObject1).ekR = j;
+          ((fg)localObject1).ekS = i;
+          ((fg)localObject1).ekT = paramInt;
+          ((fg)localObject1).ekV = ((fg)localObject1).t("Punctuation", Base64.encodeToString(((String)localObject2).getBytes(), 0), true);
+          ad.d("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "separator:%s base64:%s", new Object[] { localObject2, Base64.encodeToString(((String)localObject2).getBytes(), 0) });
+          ((fg)localObject1).aLk();
           AppMethodBeat.o(110382);
           return;
         }
         Object localObject2 = new HashSet();
         Object localObject3 = new HashMap();
         int i = 1;
-        while (i <= parama2.tyS.size())
+        while (i <= parama2.uBB.size())
         {
-          b localb = (b)parama2.tyS.get(Integer.valueOf(i));
-          if ((localb != null) && (bs.lr(localb.username, u.axw())))
+          b localb = (b)parama2.uBB.get(Integer.valueOf(i));
+          if ((localb != null) && (bt.lQ(localb.username, u.aAm())))
           {
             ((Set)localObject2).add(localb);
             ((HashMap)localObject3).put(localb.content, localb);
@@ -258,11 +257,11 @@ public final class d
         i = 0;
         label335:
         int k;
-        if (m <= parama1.tyS.size())
+        if (m <= parama1.uBB.size())
         {
-          localObject3 = (b)parama1.tyS.get(Integer.valueOf(m));
+          localObject3 = (b)parama1.uBB.get(Integer.valueOf(m));
           k = i;
-          if (!bs.lr(((b)localObject3).username, u.axw())) {
+          if (!bt.lQ(((b)localObject3).username, u.aAm())) {
             break label463;
           }
           if (((Set)localObject2).contains(localObject3))
@@ -280,7 +279,7 @@ public final class d
           break label335;
           int n = i + 1;
           k = n;
-          if (bs.isNullOrNil((String)localObject1))
+          if (bt.isNullOrNil((String)localObject1))
           {
             localObject1 = ((b)localObject3).separator;
             i = j;
@@ -299,17 +298,31 @@ public final class d
   
   public final class a
   {
-    public String frx = "";
+    public String fJG = "";
     public String key = "";
-    public long tyK = 0L;
-    public long tyL = 0L;
+    public long uBu = 0L;
+    public long uBv = 0L;
     
     public a() {}
+  }
+  
+  final class b
+  {
+    int scene;
+    com.tencent.mm.plugin.groupsolitaire.c.a uBw;
+    com.tencent.mm.plugin.groupsolitaire.c.a uBx;
+    
+    public b(com.tencent.mm.plugin.groupsolitaire.c.a parama1, com.tencent.mm.plugin.groupsolitaire.c.a parama2, int paramInt)
+    {
+      this.uBw = parama1;
+      this.uBx = parama2;
+      this.scene = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,64 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.g.c.ez;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class ae
-  extends j<ad>
+  extends ez
 {
-  public static final String[] hlS;
+  static final String[] jFa;
+  static final c.a jGU;
   
   static
   {
-    AppMethodBeat.i(44314);
-    hlS = new String[] { j.getCreateSQLs(ad.jmW, "PkgUpdateStats") };
-    AppMethodBeat.o(44314);
+    int i = 0;
+    AppMethodBeat.i(44312);
+    jFa = new String[] { "key", "version" };
+    Object localObject1 = new c.a();
+    ((c.a)localObject1).IhA = new Field[4];
+    ((c.a)localObject1).columns = new String[5];
+    Object localObject2 = new StringBuilder();
+    ((c.a)localObject1).columns[0] = "key";
+    ((c.a)localObject1).IhC.put("key", "TEXT");
+    ((StringBuilder)localObject2).append(" key TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[1] = "version";
+    ((c.a)localObject1).IhC.put("version", "INTEGER");
+    ((StringBuilder)localObject2).append(" version INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[2] = "scene";
+    ((c.a)localObject1).IhC.put("scene", "INTEGER");
+    ((StringBuilder)localObject2).append(" scene INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[3] = "updateTime";
+    ((c.a)localObject1).IhC.put("updateTime", "LONG");
+    ((StringBuilder)localObject2).append(" updateTime LONG");
+    ((c.a)localObject1).columns[4] = "rowid";
+    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
+    jGU = (c.a)localObject1;
+    localObject1 = " PRIMARY KEY (";
+    localObject2 = jFa;
+    int j = localObject2.length;
+    while (i < j)
+    {
+      localObject3 = localObject2[i];
+      localObject1 = (String)localObject1 + ", " + (String)localObject3;
+      i += 1;
+    }
+    localObject1 = ((String)localObject1).replaceFirst(",", "");
+    localObject1 = (String)localObject1 + " )";
+    localObject2 = new StringBuilder();
+    Object localObject3 = jGU;
+    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
+    AppMethodBeat.o(44312);
   }
   
-  public ae(e parame)
+  public final c.a getDBInfo()
   {
-    super(parame, ad.jmW, "PkgUpdateStats", ad.INDEX_CREATE);
+    return jGU;
   }
 }
 

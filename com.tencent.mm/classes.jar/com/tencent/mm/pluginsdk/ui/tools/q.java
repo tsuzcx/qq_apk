@@ -11,16 +11,16 @@ import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.t;
-import com.tencent.mm.platformtools.ab;
+import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.platformtools.p;
 import com.tencent.mm.plugin.mmsight.SightParams;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.n;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
@@ -29,7 +29,7 @@ public final class q
 {
   private static String filePath = null;
   
-  private static void M(Context paramContext, String paramString1, String paramString2)
+  private static void P(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(116225);
     paramContext.getSharedPreferences("opensdk_shareTicket", 0).edit().putString(paramString1, paramString2).apply();
@@ -82,7 +82,7 @@ public final class q
       paramString.delete();
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("output", m.a(paramActivity, paramString));
+    localIntent.putExtra("output", n.a(paramActivity, paramString));
     localIntent.putExtra("android.intent.extra.videoQuality", paramInt3);
     if (paramBoolean) {}
     for (paramInt3 = 1;; paramInt3 = 0)
@@ -109,12 +109,12 @@ public final class q
   private static void a(Fragment paramFragment, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, Intent paramIntent)
   {
     AppMethodBeat.i(116243);
-    ac.i("MicroMsg.TakePhotoUtil", "summerhardcoder startPerformance[%s]", new Object[] { Integer.valueOf(WXHardCoderJNI.startPerformance(true, 0, 1, 1, 0, 2000, 706, 4L, "MicroMsg.TakePhotoUtil")) });
+    ad.i("MicroMsg.TakePhotoUtil", "summerhardcoder startPerformance[%s]", new Object[] { Integer.valueOf(WXHardCoderJNI.startPerformance(true, 0, 1, 1, 0, 2000, 706, 4L, "MicroMsg.TakePhotoUtil")) });
     Intent localIntent = paramIntent;
     if (paramIntent == null) {
       localIntent = new Intent();
     }
-    if (!bs.isNullOrNil(paramString2))
+    if (!bt.isNullOrNil(paramString2))
     {
       localIntent.putExtra("GalleryUI_FromUser", paramString1);
       localIntent.putExtra("GalleryUI_ToUser", paramString2);
@@ -122,7 +122,7 @@ public final class q
     localIntent.putExtra("max_select_count", paramInt2);
     localIntent.putExtra("query_source_type", paramInt3);
     localIntent.putExtra("query_media_type", paramInt4);
-    if (ab.iwF) {
+    if (ac.iPN) {
       localIntent.putExtra("show_header_view", true);
     }
     for (;;)
@@ -168,7 +168,7 @@ public final class q
   private static boolean a(Context paramContext, int paramInt1, Intent paramIntent, int paramInt2, String paramString1, int paramInt3, String paramString2)
   {
     AppMethodBeat.i(116220);
-    ac.i("MicroMsg.TakePhotoUtil", "summerhardcoder startPerformance[%s]", new Object[] { Integer.valueOf(WXHardCoderJNI.startPerformance(true, 0, 1, 1, 0, 2000, 707, 4L, "MicroMsg.TakePhotoUtil")) });
+    ad.i("MicroMsg.TakePhotoUtil", "summerhardcoder startPerformance[%s]", new Object[] { Integer.valueOf(WXHardCoderJNI.startPerformance(true, 0, 1, 1, 0, 2000, 707, 4L, "MicroMsg.TakePhotoUtil")) });
     SightParams localSightParams1 = null;
     if (paramIntent != null) {
       localSightParams1 = (SightParams)paramIntent.getParcelableExtra("KEY_SIGHT_PARAMS");
@@ -177,22 +177,22 @@ public final class q
     if (localSightParams1 == null) {
       localSightParams2 = new SightParams(paramInt2, paramInt3);
     }
-    localSightParams2.uJD = paramString2;
+    localSightParams2.vMJ = paramString2;
     if (localSightParams2 == null)
     {
-      ac.e("MicroMsg.TakePhotoUtil", "videoParams takeMMSight is null");
+      ad.e("MicroMsg.TakePhotoUtil", "videoParams takeMMSight is null");
       if (paramInt2 == 1)
       {
-        paramString1 = t.DU(paramString1);
-        o.aJy();
-        paramString2 = t.DV(paramString1);
-        o.aJy();
-        localSightParams2.r(paramString1, paramString2, t.DW(paramString1), com.tencent.mm.loader.j.b.aps() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
+        paramString1 = t.Hg(paramString1);
+        o.aMJ();
+        paramString2 = t.Hh(paramString1);
+        o.aMJ();
+        localSightParams2.r(paramString1, paramString2, t.Hi(paramString1), com.tencent.mm.loader.j.b.asg() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
       }
       if (localSightParams2 != null) {
         break label252;
       }
-      ac.e("MicroMsg.TakePhotoUtil", "videoParams takeMMSight is null");
+      ad.e("MicroMsg.TakePhotoUtil", "videoParams takeMMSight is null");
     }
     for (;;)
     {
@@ -217,48 +217,48 @@ public final class q
     if (localSightParams == null) {
       localObject = new SightParams(2, 0);
     }
-    ((SightParams)localObject).uJD = paramString1;
+    ((SightParams)localObject).vMJ = paramString1;
     if (localObject == null) {
-      ac.e("MicroMsg.TakePhotoUtil", "videoParams takeMMSight is null");
+      ad.e("MicroMsg.TakePhotoUtil", "videoParams takeMMSight is null");
     }
     try
     {
       for (;;)
       {
-        paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.aeD(), "com/tencent/mm/pluginsdk/ui/tools/TakePhotoUtil", "takeWeiShiSightToEdit", "(Landroid/content/Context;ILandroid/content/Intent;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramIntent.lR(0));
+        paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/pluginsdk/ui/tools/TakePhotoUtil", "takeWeiShiSightToEdit", "(Landroid/content/Context;ILandroid/content/Intent;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramIntent.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/ui/tools/TakePhotoUtil", "takeWeiShiSightToEdit", "(Landroid/content/Context;ILandroid/content/Intent;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         if ((paramContext instanceof Activity)) {
           ((Activity)paramContext).overridePendingTransition(2130772137, -1);
         }
         AppMethodBeat.o(116223);
         return true;
-        localObject = ((SightParams)localObject).uJD;
+        localObject = ((SightParams)localObject).vMJ;
         paramString1 = (String)localObject;
-        if (bs.isNullOrNil((String)localObject)) {
-          paramString1 = bs.eWj() + "_" + bs.Yu(5);
+        if (bt.isNullOrNil((String)localObject)) {
+          paramString1 = bt.flT() + "_" + bt.aaz(5);
         }
-        if (bs.isNullOrNil(paramString2)) {
-          ac.e("MicroMsg.TakePhotoUtil", "path is null");
+        if (bt.isNullOrNil(paramString2)) {
+          ad.e("MicroMsg.TakePhotoUtil", "path is null");
         }
         if (!new e(paramString2).exists()) {
-          ac.e("MicroMsg.TakePhotoUtil", "file is not exists");
+          ad.e("MicroMsg.TakePhotoUtil", "file is not exists");
         }
-        paramString2 = aIb(paramString2);
-        ac.d("MicroMsg.TakePhotoUtil", "weishi_uri = %s", new Object[] { paramString2 });
+        paramString2 = aND(paramString2);
+        ad.d("MicroMsg.TakePhotoUtil", "weishi_uri = %s", new Object[] { paramString2 });
         paramIntent.setAction("android.intent.action.VIEW");
         paramIntent.setData(Uri.parse(paramString2));
         paramIntent.setPackage("com.tencent.weishi");
         paramIntent.setFlags(268435456);
-        M(paramContext, paramIntent.getPackage(), paramString1);
+        P(paramContext, paramIntent.getPackage(), paramString1);
       }
     }
     catch (Exception paramContext)
     {
       for (;;)
       {
-        ac.w("MicroMsg.TakePhotoUtil", "takeWeishiSight Exception: %s", new Object[] { paramContext.getMessage() });
+        ad.w("MicroMsg.TakePhotoUtil", "takeWeishiSight Exception: %s", new Object[] { paramContext.getMessage() });
       }
     }
   }
@@ -266,13 +266,13 @@ public final class q
   public static boolean a(Fragment paramFragment, Intent paramIntent, String paramString, int paramInt)
   {
     AppMethodBeat.i(116214);
-    ac.i("MicroMsg.TakePhotoUtil", "summerhardcoder startPerformance[%s]", new Object[] { Integer.valueOf(WXHardCoderJNI.startPerformance(true, 0, 1, 1, 0, 2000, 707, 4L, "MicroMsg.TakePhotoUtil")) });
+    ad.i("MicroMsg.TakePhotoUtil", "summerhardcoder startPerformance[%s]", new Object[] { Integer.valueOf(WXHardCoderJNI.startPerformance(true, 0, 1, 1, 0, 2000, 707, 4L, "MicroMsg.TakePhotoUtil")) });
     SightParams localSightParams = new SightParams(1, paramInt);
-    paramString = t.DU(paramString);
-    o.aJy();
-    String str = t.DV(paramString);
-    o.aJy();
-    localSightParams.r(paramString, str, t.DW(paramString), com.tencent.mm.loader.j.b.aps() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
+    paramString = t.Hg(paramString);
+    o.aMJ();
+    String str = t.Hh(paramString);
+    o.aMJ();
+    localSightParams.r(paramString, str, t.Hi(paramString), com.tencent.mm.loader.j.b.asg() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
     paramIntent.putExtra("KEY_SIGHT_PARAMS", localSightParams);
     d.a(paramFragment, "mmsight", ".ui.SightCaptureUI", paramIntent, 226);
     paramFragment.getActivity().overridePendingTransition(2130772137, -1);
@@ -284,12 +284,12 @@ public final class q
   {
     AppMethodBeat.i(116226);
     boolean bool = b(paramMMFragment, paramString1, paramString2);
-    ac.i("MicroMsg.TakePhotoUtil", "takePhoto(), dir = [%s], filename = [%s], cmd = [%s], result = [%s]", new Object[] { paramString1, paramString2, Integer.valueOf(201), Boolean.valueOf(bool) });
+    ad.i("MicroMsg.TakePhotoUtil", "takePhoto(), dir = [%s], filename = [%s], cmd = [%s], result = [%s]", new Object[] { paramString1, paramString2, Integer.valueOf(201), Boolean.valueOf(bool) });
     AppMethodBeat.o(116226);
     return bool;
   }
   
-  public static String aIb(String paramString)
+  public static String aND(String paramString)
   {
     AppMethodBeat.i(116224);
     paramString = "weishi://videoEdit?videoPath=" + paramString + "&activity_id=WxPublisherAct&update=1";
@@ -321,21 +321,12 @@ public final class q
     return true;
   }
   
-  public static boolean ag(Context paramContext, Intent paramIntent)
+  public static boolean ai(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(116215);
-    boolean bool = d(paramContext, paramIntent, "");
+    boolean bool = e(paramContext, paramIntent, "");
     AppMethodBeat.o(116215);
     return bool;
-  }
-  
-  @Deprecated
-  public static String alY(String paramString)
-  {
-    AppMethodBeat.i(116248);
-    paramString = com.tencent.mm.sdk.f.b.alY(paramString);
-    AppMethodBeat.o(116248);
-    return paramString;
   }
   
   private static boolean b(MMFragment paramMMFragment, String paramString1, String paramString2)
@@ -343,18 +334,18 @@ public final class q
     AppMethodBeat.i(116227);
     if (paramMMFragment == null)
     {
-      ac.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys fragment is null!");
+      ad.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys fragment is null!");
       AppMethodBeat.o(116227);
       return false;
     }
-    if ((com.tencent.mm.r.a.cg(paramMMFragment.getContext())) || (com.tencent.mm.r.a.cf(paramMMFragment.getContext())) || (com.tencent.mm.r.a.ck(paramMMFragment.getContext())))
+    if ((com.tencent.mm.s.a.n(paramMMFragment.getContext(), true)) || (com.tencent.mm.s.a.cd(paramMMFragment.getContext())) || (com.tencent.mm.s.a.ch(paramMMFragment.getContext())))
     {
       AppMethodBeat.o(116227);
       return false;
     }
     filePath = i.k(paramString1 + paramString2, true);
-    ac.i("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), filePath = " + filePath);
-    bR(paramMMFragment.getContext(), filePath);
+    ad.i("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), filePath = " + filePath);
+    bV(paramMMFragment.getContext(), filePath);
     paramString2 = new Intent("android.media.action.IMAGE_CAPTURE");
     e locale = new e(paramString1);
     if (!locale.exists()) {}
@@ -363,7 +354,7 @@ public final class q
       locale.mkdirs();
       if (!locale.exists())
       {
-        ac.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), dir not exist. ".concat(String.valueOf(paramString1)));
+        ad.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), dir not exist. ".concat(String.valueOf(paramString1)));
         AppMethodBeat.o(116227);
         return false;
       }
@@ -372,10 +363,10 @@ public final class q
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.TakePhotoUtil", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.TakePhotoUtil", localException, "", new Object[0]);
       }
       paramString1 = new e(filePath);
-      paramString2.putExtra("output", m.a(paramMMFragment.getContext(), paramString1));
+      paramString2.putExtra("output", n.a(paramMMFragment.getContext(), paramString1));
       try
       {
         paramMMFragment.startActivityForResult(paramString2, 201);
@@ -384,14 +375,14 @@ public final class q
       }
       catch (ActivityNotFoundException paramMMFragment)
       {
-        ac.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), " + paramMMFragment.getMessage());
+        ad.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), " + paramMMFragment.getMessage());
         AppMethodBeat.o(116227);
       }
     }
     return false;
   }
   
-  private static void bR(Context paramContext, String paramString)
+  private static void bV(Context paramContext, String paramString)
   {
     AppMethodBeat.i(116230);
     paramContext = paramContext.getSharedPreferences("system_config_prefs", 0).edit();
@@ -406,14 +397,6 @@ public final class q
     a(paramActivity, paramInt, 1, 0, paramIntent);
     AppMethodBeat.o(116231);
     return true;
-  }
-  
-  public static boolean c(Context paramContext, Intent paramIntent, String paramString)
-  {
-    AppMethodBeat.i(210513);
-    boolean bool = d(paramContext, paramIntent, paramString);
-    AppMethodBeat.o(210513);
-    return bool;
   }
   
   public static void d(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
@@ -431,31 +414,31 @@ public final class q
   {
     AppMethodBeat.i(116228);
     boolean bool = e(paramActivity, paramString1, paramString2, paramInt);
-    ac.i("MicroMsg.TakePhotoUtil", "takePhoto(), dir = [%s], filename = [%s], cmd = [%s], result = [%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+    ad.i("MicroMsg.TakePhotoUtil", "takePhoto(), dir = [%s], filename = [%s], cmd = [%s], result = [%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool) });
     AppMethodBeat.o(116228);
     return bool;
   }
   
-  private static boolean d(Context paramContext, Intent paramIntent, String paramString)
+  public static boolean d(Context paramContext, Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(116218);
-    boolean bool = a(paramContext, 17, paramIntent, 2, "", 0, paramString);
-    AppMethodBeat.o(116218);
+    AppMethodBeat.i(221735);
+    boolean bool = e(paramContext, paramIntent, paramString);
+    AppMethodBeat.o(221735);
     return bool;
   }
   
   private static boolean e(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(116229);
-    if ((com.tencent.mm.r.a.cg(paramActivity)) || (com.tencent.mm.r.a.cf(paramActivity)) || (com.tencent.mm.r.a.ck(paramActivity)))
+    if ((com.tencent.mm.s.a.n(paramActivity, true)) || (com.tencent.mm.s.a.cd(paramActivity)) || (com.tencent.mm.s.a.ch(paramActivity)))
     {
       AppMethodBeat.o(116229);
       return false;
     }
-    ac.i("MicroMsg.TakePhotoUtil", "summerhardcoder startPerformance[%s]", new Object[] { Integer.valueOf(WXHardCoderJNI.startPerformance(true, 0, 1, 1, 0, 2000, 707, 4L, "MicroMsg.TakePhotoUtil")) });
+    ad.i("MicroMsg.TakePhotoUtil", "summerhardcoder startPerformance[%s]", new Object[] { Integer.valueOf(WXHardCoderJNI.startPerformance(true, 0, 1, 1, 0, 2000, 707, 4L, "MicroMsg.TakePhotoUtil")) });
     filePath = i.k(paramString1 + paramString2, true);
-    ac.i("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), filePath = " + filePath);
-    bR(paramActivity, filePath);
+    ad.i("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), filePath = " + filePath);
+    bV(paramActivity, filePath);
     paramString2 = new Intent("android.media.action.IMAGE_CAPTURE");
     e locale = new e(paramString1);
     if (!locale.exists()) {}
@@ -464,7 +447,7 @@ public final class q
       locale.mkdirs();
       if (!locale.exists())
       {
-        ac.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), dir not exist. ".concat(String.valueOf(paramString1)));
+        ad.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), dir not exist. ".concat(String.valueOf(paramString1)));
         AppMethodBeat.o(116229);
         return false;
       }
@@ -473,9 +456,9 @@ public final class q
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.TakePhotoUtil", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.TakePhotoUtil", localException, "", new Object[0]);
       }
-      paramString2.putExtra("output", m.a(paramActivity, new e(filePath)));
+      paramString2.putExtra("output", n.a(paramActivity, new e(filePath)));
       try
       {
         paramActivity.startActivityForResult(paramString2, paramInt);
@@ -484,43 +467,26 @@ public final class q
       }
       catch (Exception paramActivity)
       {
-        ac.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), " + paramActivity.getMessage());
+        ad.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), " + paramActivity.getMessage());
         AppMethodBeat.o(116229);
       }
     }
     return false;
   }
   
-  public static boolean e(Context paramContext, Intent paramIntent, String paramString)
+  private static boolean e(Context paramContext, Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(116219);
-    boolean bool = a(paramContext, 8, paramIntent, 1, paramString, 0, "");
-    AppMethodBeat.o(116219);
+    AppMethodBeat.i(116218);
+    boolean bool = a(paramContext, 17, paramIntent, 2, "", 0, paramString);
+    AppMethodBeat.o(116218);
     return bool;
-  }
-  
-  @TargetApi(8)
-  public static String eQm()
-  {
-    AppMethodBeat.i(177105);
-    String str = com.tencent.mm.loader.j.b.aps();
-    AppMethodBeat.o(177105);
-    return str;
-  }
-  
-  public static String eQn()
-  {
-    AppMethodBeat.i(116250);
-    String str = com.tencent.mm.sdk.f.b.eQn();
-    AppMethodBeat.o(116250);
-    return str;
   }
   
   public static boolean f(Context paramContext, Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(116221);
-    boolean bool = g(paramContext, paramIntent, paramString);
-    AppMethodBeat.o(116221);
+    AppMethodBeat.i(116219);
+    boolean bool = a(paramContext, 8, paramIntent, 1, paramString, 0, "");
+    AppMethodBeat.o(116219);
     return bool;
   }
   
@@ -532,7 +498,32 @@ public final class q
     return true;
   }
   
-  private static boolean g(Context paramContext, Intent paramIntent, String paramString)
+  @TargetApi(8)
+  public static String ffo()
+  {
+    AppMethodBeat.i(177105);
+    String str = com.tencent.mm.loader.j.b.asg();
+    AppMethodBeat.o(177105);
+    return str;
+  }
+  
+  public static String ffp()
+  {
+    AppMethodBeat.i(116250);
+    String str = com.tencent.mm.sdk.f.b.ffp();
+    AppMethodBeat.o(116250);
+    return str;
+  }
+  
+  public static boolean g(Context paramContext, Intent paramIntent, String paramString)
+  {
+    AppMethodBeat.i(116221);
+    boolean bool = h(paramContext, paramIntent, paramString);
+    AppMethodBeat.o(116221);
+    return bool;
+  }
+  
+  private static boolean h(Context paramContext, Intent paramIntent, String paramString)
   {
     AppMethodBeat.i(116222);
     Object localObject1 = null;
@@ -543,54 +534,54 @@ public final class q
     if (localObject1 == null) {
       localObject2 = new SightParams(2, 0);
     }
-    ((SightParams)localObject2).uJD = paramString;
+    ((SightParams)localObject2).vMJ = paramString;
     if (localObject2 == null) {
-      ac.e("MicroMsg.TakePhotoUtil", "videoParams takeMMSight is null");
+      ad.e("MicroMsg.TakePhotoUtil", "videoParams takeMMSight is null");
     }
     try
     {
       for (;;)
       {
-        paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.aeD(), "com/tencent/mm/pluginsdk/ui/tools/TakePhotoUtil", "takeWeiShiSight", "(Landroid/content/Context;ILandroid/content/Intent;ILjava/lang/String;ILjava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramIntent.lR(0));
+        paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/pluginsdk/ui/tools/TakePhotoUtil", "takeWeiShiSight", "(Landroid/content/Context;ILandroid/content/Intent;ILjava/lang/String;ILjava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramIntent.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/ui/tools/TakePhotoUtil", "takeWeiShiSight", "(Landroid/content/Context;ILandroid/content/Intent;ILjava/lang/String;ILjava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         if ((paramContext instanceof Activity)) {
           ((Activity)paramContext).overridePendingTransition(2130772137, -1);
         }
         AppMethodBeat.o(116222);
         return true;
-        localObject1 = ((SightParams)localObject2).uJD;
+        localObject1 = ((SightParams)localObject2).vMJ;
         paramString = (String)localObject1;
-        if (bs.isNullOrNil((String)localObject1)) {
-          paramString = bs.eWj() + "_" + bs.Yu(5);
+        if (bt.isNullOrNil((String)localObject1)) {
+          paramString = bt.flT() + "_" + bt.aaz(5);
         }
         localObject1 = new StringBuilder("weishi://camera?forceNoShowLogin=1");
-        ac.d("MicroMsg.TakePhotoUtil", "weishi_url = %s", new Object[] { ((StringBuilder)localObject1).toString() });
+        ad.d("MicroMsg.TakePhotoUtil", "weishi_url = %s", new Object[] { ((StringBuilder)localObject1).toString() });
         paramIntent.setAction("android.intent.action.VIEW");
         paramIntent.setData(Uri.parse(((StringBuilder)localObject1).toString()));
         paramIntent.setPackage("com.tencent.weishi");
         paramIntent.setFlags(268435456);
-        M(paramContext, paramIntent.getPackage(), paramString);
+        P(paramContext, paramIntent.getPackage(), paramString);
       }
     }
     catch (Exception paramContext)
     {
       for (;;)
       {
-        ac.w("MicroMsg.TakePhotoUtil", "takeWeishiSight Exception: %s", new Object[] { paramContext.getMessage() });
+        ad.w("MicroMsg.TakePhotoUtil", "takeWeishiSight Exception: %s", new Object[] { paramContext.getMessage() });
       }
     }
   }
   
-  public static String h(Context paramContext, Intent paramIntent, String paramString)
+  public static String i(Context paramContext, Intent paramIntent, String paramString)
   {
     AppMethodBeat.i(116246);
     if (filePath == null) {
       filePath = paramContext.getSharedPreferences("system_config_prefs", 0).getString("camera_file_path", null);
     }
-    if (!i.eA(filePath)) {
-      filePath = com.tencent.mm.ui.tools.a.i(paramContext, paramIntent, paramString);
+    if (!i.fv(filePath)) {
+      filePath = com.tencent.mm.ui.tools.a.j(paramContext, paramIntent, paramString);
     }
     com.tencent.mm.sdk.f.b.k(filePath, paramContext);
     paramContext = filePath;
@@ -607,9 +598,9 @@ public final class q
   
   public static void k(String paramString, Context paramContext)
   {
-    AppMethodBeat.i(210514);
+    AppMethodBeat.i(221736);
     com.tencent.mm.sdk.f.b.k(paramString, paramContext);
-    AppMethodBeat.o(210514);
+    AppMethodBeat.o(221736);
   }
   
   public static boolean o(Activity paramActivity, int paramInt)

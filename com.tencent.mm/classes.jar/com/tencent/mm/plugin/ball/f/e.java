@@ -4,49 +4,49 @@ import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.ar;
 
 public final class e
 {
-  public static final int nhO;
-  public static final int nhP;
-  public static final int nhQ;
-  public static final int nhR;
-  public static final int nhS;
-  public static final int nhT;
-  public static final int nhU;
-  public static final int nhV;
-  public static final float nhW;
-  public static final int nhX;
-  public static final int nhY;
-  public static final int nhZ;
-  public static int nia;
-  public static final int nib;
-  public static final int nic;
-  public static final int nid;
+  public static final int nIk;
+  public static final int nIl;
+  public static final int nIm;
+  public static final int nIn;
+  public static final int nIo;
+  public static final int nIp;
+  public static final int nIq;
+  public static final int nIr;
+  public static final float nIs;
+  public static final int nIt;
+  public static final int nIu;
+  public static final int nIv;
+  public static int nIw;
+  public static final int nIx;
+  public static final int nIy;
+  public static final int nIz;
   
   static
   {
     AppMethodBeat.i(106369);
-    nhO = ap.ji(ai.getContext());
-    nhP = ai.getContext().getResources().getDimensionPixelSize(2131166326);
-    nhQ = ai.getContext().getResources().getDimensionPixelSize(2131166330);
-    nhR = a.av(ai.getContext(), 2131166329);
-    nhS = a.av(ai.getContext(), 2131166327);
-    nhT = a.av(ai.getContext(), 2131166328);
-    nhU = ai.getContext().getResources().getDimensionPixelSize(2131166361);
-    int i = ai.getContext().getResources().getDimensionPixelSize(2131166360);
-    nhV = i;
-    nhW = i / nhU;
-    nhX = a.ig(ai.getContext()) - (nhQ + nhT);
-    nhY = nhP + nhO;
-    nhZ = a.ih(ai.getContext()) - nhP - (nhQ + nhR + nhS);
-    nia = ej(ai.getContext());
-    nib = nhY;
-    nic = nhX;
-    nid = (int)(a.ih(ai.getContext()) * 0.3F);
+    nIk = ar.jG(aj.getContext());
+    nIl = aj.getContext().getResources().getDimensionPixelSize(2131166326);
+    nIm = aj.getContext().getResources().getDimensionPixelSize(2131166330);
+    nIn = a.ay(aj.getContext(), 2131166329);
+    nIo = a.ay(aj.getContext(), 2131166327);
+    nIp = a.ay(aj.getContext(), 2131166328);
+    nIq = aj.getContext().getResources().getDimensionPixelSize(2131166361);
+    int i = aj.getContext().getResources().getDimensionPixelSize(2131166360);
+    nIr = i;
+    nIs = i / nIq;
+    nIt = a.ip(aj.getContext()) - (nIm + nIp);
+    nIu = nIl + nIk;
+    nIv = a.iq(aj.getContext()) - nIl - (nIm + nIn + nIo);
+    nIw = ej(aj.getContext());
+    nIx = nIu;
+    nIy = nIt;
+    nIz = (int)(a.iq(aj.getContext()) * 0.3F);
     AppMethodBeat.o(106369);
   }
   
@@ -56,14 +56,14 @@ public final class e
     AppMethodBeat.i(106367);
     try
     {
-      int j = ap.ej(paramContext);
+      int j = ar.ej(paramContext);
       i = j;
     }
     catch (Exception paramContext)
     {
       for (;;)
       {
-        ac.e("MicroMsg.FloatBallViewConstants", "getNavigationBarHeight exception:%s", new Object[] { paramContext });
+        ad.e("MicroMsg.FloatBallViewConstants", "getNavigationBarHeight exception:%s", new Object[] { paramContext });
       }
     }
     AppMethodBeat.o(106367);
@@ -73,7 +73,7 @@ public final class e
   public static void ek(Context paramContext)
   {
     AppMethodBeat.i(106368);
-    nia = ej(paramContext);
+    nIw = ej(paramContext);
     AppMethodBeat.o(106368);
   }
   
@@ -82,11 +82,11 @@ public final class e
     static
     {
       AppMethodBeat.i(106366);
-      nie = new a("TOP_LEFT", 0);
-      nif = new a("TOP_RIGHT", 1);
-      nig = new a("BOTTOM_LEFT", 2);
-      nih = new a("BOTTOM_RIGHT", 3);
-      nii = new a[] { nie, nif, nig, nih };
+      nIA = new a("TOP_LEFT", 0);
+      nIB = new a("TOP_RIGHT", 1);
+      nIC = new a("BOTTOM_LEFT", 2);
+      nID = new a("BOTTOM_RIGHT", 3);
+      nIE = new a[] { nIA, nIB, nIC, nID };
       AppMethodBeat.o(106366);
     }
     
@@ -95,7 +95,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.f.e
  * JD-Core Version:    0.7.0.1
  */

@@ -5,10 +5,9 @@ import com.tencent.mm.appbrand.v8.IJSRuntime;
 import com.tencent.mm.appbrand.v8.IJSRuntime.Config;
 import com.tencent.mm.appbrand.v8.f;
 import com.tencent.mm.appbrand.v8.h;
-import com.tencent.mm.appbrand.v8.h.5;
 import com.tencent.mm.appbrand.v8.m;
 
-public final class x
+public class x
   extends a
 {
   public x()
@@ -24,16 +23,12 @@ public final class x
   protected final m a(IJSRuntime paramIJSRuntime, int paramInt)
   {
     AppMethodBeat.i(144176);
-    paramIJSRuntime = (h)paramIJSRuntime;
-    if (paramIJSRuntime.cMG == null) {
-      paramIJSRuntime.cMG = new m(paramIJSRuntime, paramIJSRuntime.LG(), new h.5(paramIJSRuntime));
-    }
-    paramIJSRuntime = paramIJSRuntime.cMG;
+    paramIJSRuntime = ((h)paramIJSRuntime).Nt();
     AppMethodBeat.o(144176);
     return paramIJSRuntime;
   }
   
-  protected final IJSRuntime g(IJSRuntime.Config paramConfig)
+  protected IJSRuntime g(IJSRuntime.Config paramConfig)
   {
     AppMethodBeat.i(144175);
     paramConfig = f.b(paramConfig);
@@ -43,7 +38,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsruntime.x
  * JD-Core Version:    0.7.0.1
  */

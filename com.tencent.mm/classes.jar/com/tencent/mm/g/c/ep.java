@@ -8,24 +8,19 @@ public abstract class ep
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int env = "scene".hashCode();
-  private static final int eol = "updateTime".hashCode();
-  private static final int epb;
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int eDc = "status".hashCode();
+  private static final int fni = "reqkey".hashCode();
+  private static final int fnj = "ack_key".hashCode();
+  private static final int fnk = "receive_time".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean __hadSetkey = true;
-  private boolean ent = true;
-  private boolean eoW = true;
-  private boolean eoi = true;
-  public String field_key;
-  public int field_scene;
-  public long field_updateTime;
-  public int field_version;
-  
-  static
-  {
-    epb = "version".hashCode();
-  }
+  private boolean eCZ = true;
+  public String field_ack_key;
+  public long field_receive_time;
+  public String field_reqkey;
+  public int field_status;
+  private boolean fnf = true;
+  private boolean fng = true;
+  private boolean fnh = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -40,23 +35,24 @@ public abstract class ep
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
-        break label60;
+      if (fni != k) {
+        break label65;
       }
-      this.field_key = paramCursor.getString(i);
+      this.field_reqkey = paramCursor.getString(i);
+      this.fnf = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (epb == k) {
-        this.field_version = paramCursor.getInt(i);
-      } else if (env == k) {
-        this.field_scene = paramCursor.getInt(i);
-      } else if (eol == k) {
-        this.field_updateTime = paramCursor.getLong(i);
+      label65:
+      if (fnj == k) {
+        this.field_ack_key = paramCursor.getString(i);
+      } else if (eDc == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (fnk == k) {
+        this.field_receive_time = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -66,17 +62,17 @@ public abstract class ep
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.fnf) {
+      localContentValues.put("reqkey", this.field_reqkey);
     }
-    if (this.eoW) {
-      localContentValues.put("version", Integer.valueOf(this.field_version));
+    if (this.fng) {
+      localContentValues.put("ack_key", this.field_ack_key);
     }
-    if (this.ent) {
-      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    if (this.eCZ) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eoi) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.fnh) {
+      localContentValues.put("receive_time", Long.valueOf(this.field_receive_time));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

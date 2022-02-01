@@ -6,11 +6,11 @@ import java.util.Map;
 
 public abstract interface w
 {
-  public abstract void Fh(String paramString);
+  public abstract void Iv(String paramString);
   
-  public abstract String aLJ();
+  public abstract String aOR();
   
-  public abstract int aLK();
+  public abstract int aOS();
   
   public abstract void disconnect();
   

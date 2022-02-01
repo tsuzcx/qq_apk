@@ -5,53 +5,55 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class bzt
-  extends cqk
+  extends com.tencent.mm.bx.a
 {
+  public aex GUL;
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32366);
+    AppMethodBeat.i(43108);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      if (this.GUL == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(32366);
+        paramVarArgs = new b("Not all required fields were included: DisturbSetting");
+        AppMethodBeat.o(43108);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
+      if (this.GUL != null)
       {
-        paramVarArgs.ln(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.lC(1, this.GUL.computeSize());
+        this.GUL.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(32366);
+      AppMethodBeat.o(43108);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label369;
+      if (this.GUL == null) {
+        break label358;
       }
     }
-    label369:
-    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label358:
+    for (paramInt = f.a.a.a.lB(1, this.GUL.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(32366);
+      AppMethodBeat.o(43108);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.GUL == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(32366);
+          paramVarArgs = new b("Not all required fields were included: DisturbSetting");
+          AppMethodBeat.o(43108);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(32366);
+        AppMethodBeat.o(43108);
         return 0;
       }
       if (paramInt == 3)
@@ -62,25 +64,25 @@ public final class bzt
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32366);
+          AppMethodBeat.o(43108);
           return -1;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
         int i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new BaseResponse();
+          localObject1 = new aex();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localbzt.BaseResponse = ((BaseResponse)localObject1);
+          for (boolean bool = true; bool; bool = ((aex)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localbzt.GUL = ((aex)localObject1);
           paramInt += 1;
         }
-        AppMethodBeat.o(32366);
+        AppMethodBeat.o(43108);
         return 0;
       }
-      AppMethodBeat.o(32366);
+      AppMethodBeat.o(43108);
       return -1;
     }
   }

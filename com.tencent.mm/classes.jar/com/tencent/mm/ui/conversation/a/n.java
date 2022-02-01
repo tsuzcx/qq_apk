@@ -14,19 +14,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ap.a.a;
-import com.tencent.mm.g.c.dy;
+import com.tencent.mm.aq.a.a;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.vfs.q;
 import java.io.OutputStream;
 import java.lang.ref.WeakReference;
@@ -34,43 +33,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public final class n
-  extends b
+  extends com.tencent.mm.pluginsdk.ui.b.b
   implements View.OnClickListener
 {
-  private static int fsL()
-  {
-    AppMethodBeat.i(38828);
-    if (Build.VERSION.SDK_INT < 23)
-    {
-      AppMethodBeat.o(38828);
-      return 1;
-    }
-    PowerManager localPowerManager = (PowerManager)ai.getContext().getSystemService("power");
-    for (;;)
-    {
-      try
-      {
-        boolean bool = localPowerManager.isIgnoringBatteryOptimizations(ai.getContext().getPackageName());
-        ac.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]app is ignore:".concat(String.valueOf(bool)));
-        ac.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]is device idle mode:" + localPowerManager.isDeviceIdleMode());
-        if (bool) {
-          continue;
-        }
-        i = 2;
-      }
-      catch (Exception localException)
-      {
-        ac.e("MicroMsg.MsgDelayTipsBanner", "[oneliang]ignoring battery optimizations check failure.use another way.");
-        int i = 3;
-        continue;
-      }
-      AppMethodBeat.o(38828);
-      return i;
-      i = 3;
-    }
-  }
-  
-  private static int fsM()
+  private static int fJA()
   {
     AppMethodBeat.i(38829);
     String str = Build.BRAND;
@@ -106,7 +72,40 @@ public final class n
     return 2131761356;
   }
   
-  public static void ki(Context paramContext)
+  private static int fJz()
+  {
+    AppMethodBeat.i(38828);
+    if (Build.VERSION.SDK_INT < 23)
+    {
+      AppMethodBeat.o(38828);
+      return 1;
+    }
+    PowerManager localPowerManager = (PowerManager)aj.getContext().getSystemService("power");
+    for (;;)
+    {
+      try
+      {
+        boolean bool = localPowerManager.isIgnoringBatteryOptimizations(aj.getContext().getPackageName());
+        ad.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]app is ignore:".concat(String.valueOf(bool)));
+        ad.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]is device idle mode:" + localPowerManager.isDeviceIdleMode());
+        if (bool) {
+          continue;
+        }
+        i = 2;
+      }
+      catch (Exception localException)
+      {
+        ad.e("MicroMsg.MsgDelayTipsBanner", "[oneliang]ignoring battery optimizations check failure.use another way.");
+        int i = 3;
+        continue;
+      }
+      AppMethodBeat.o(38828);
+      return i;
+      i = 3;
+    }
+  }
+  
+  public static void ku(Context paramContext)
   {
     AppMethodBeat.i(38830);
     if (paramContext == null)
@@ -114,22 +113,22 @@ public final class n
       AppMethodBeat.o(38830);
       return;
     }
-    switch (fsL())
+    switch (fJz())
     {
     }
     for (;;)
     {
       AppMethodBeat.o(38830);
       return;
-      int i = fsM();
+      int i = fJA();
       if (i > 0)
       {
-        com.tencent.mm.ui.base.h.d(paramContext, paramContext.getString(i), "", new DialogInterface.OnClickListener()
+        h.d(paramContext, paramContext.getString(i), "", new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(38825);
-            ac.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]yes");
+            ad.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]yes");
             if (paramAnonymousDialogInterface != null) {
               paramAnonymousDialogInterface.dismiss();
             }
@@ -139,24 +138,24 @@ public final class n
         AppMethodBeat.o(38830);
         return;
       }
-      ac.e("MicroMsg.MsgDelayTipsBanner", "[oneliang]impossible......");
+      ad.e("MicroMsg.MsgDelayTipsBanner", "[oneliang]impossible......");
       AppMethodBeat.o(38830);
       return;
-      ac.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]need to add ignore");
-      Object localObject = new Intent("android.settings.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS").setData(Uri.parse("package:" + ai.getContext().getPackageName()));
+      ad.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]need to add ignore");
+      Object localObject = new Intent("android.settings.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS").setData(Uri.parse("package:" + aj.getContext().getPackageName()));
       ((Intent)localObject).setFlags(268435456);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/conversation/banner/MsgDelayTipsBanner", "showTips", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/conversation/banner/MsgDelayTipsBanner", "showTips", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/ui/conversation/banner/MsgDelayTipsBanner", "showTips", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
   }
   
-  public static void kj(Context paramContext)
+  public static void kv(Context paramContext)
   {
     AppMethodBeat.i(38831);
     paramContext.getString(2131755906);
-    localObject2 = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(2131755936), true, new DialogInterface.OnCancelListener()
+    localObject2 = h.b(paramContext, paramContext.getString(2131755936), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -167,7 +166,7 @@ public final class n
         AppMethodBeat.o(38826);
       }
     });
-    Object localObject3 = com.tencent.mm.ap.a.aEc();
+    Object localObject3 = com.tencent.mm.aq.a.aHh();
     Object localObject1 = new StringBuilder();
     if (localObject3 != null)
     {
@@ -176,16 +175,16 @@ public final class n
       {
         localObject4 = (a.a)((Iterator)localObject3).next();
         ((StringBuilder)localObject1).append(((a.a)localObject4).toString());
-        ac.i("MicroMsg.MsgDelayTipsBanner", ((a.a)localObject4).toString());
+        ad.i("MicroMsg.MsgDelayTipsBanner", ((a.a)localObject4).toString());
       }
     }
     if (localObject2 != null) {
       ((Dialog)localObject2).dismiss();
     }
     localObject2 = new StringBuilder();
-    az.ayM();
-    localObject2 = c.awx() + "/delayedMsg";
-    i.aSh((String)localObject2);
+    ba.aBQ();
+    localObject2 = c.azl() + "/delayedMsg";
+    com.tencent.mm.vfs.i.aYg((String)localObject2);
     Object localObject4 = new com.tencent.mm.vfs.e((String)localObject2, "data.txt");
     String str = ((StringBuilder)localObject1).toString();
     if (!((com.tencent.mm.vfs.e)localObject4).exists()) {}
@@ -201,7 +200,7 @@ public final class n
       {
         try
         {
-          localObject3 = i.d((com.tencent.mm.vfs.e)localObject4, false);
+          localObject3 = com.tencent.mm.vfs.i.d((com.tencent.mm.vfs.e)localObject4, false);
           localObject1 = localObject3;
           localObject2 = localObject3;
           ((OutputStream)localObject3).write((str + "\n").getBytes("UTF-8"));
@@ -213,7 +212,7 @@ public final class n
         catch (Exception localException5)
         {
           localObject2 = localException2;
-          ac.i("MicroMsg.MsgDelayTipsBanner", "exception:" + localException5.getMessage());
+          ad.i("MicroMsg.MsgDelayTipsBanner", "exception:" + localException5.getMessage());
           if (localException2 == null) {
             continue;
           }
@@ -223,7 +222,7 @@ public final class n
           }
           catch (Exception localException3)
           {
-            ac.i("MicroMsg.MsgDelayTipsBanner", "close exception:" + localException3.getMessage());
+            ad.i("MicroMsg.MsgDelayTipsBanner", "close exception:" + localException3.getMessage());
           }
           continue;
         }
@@ -240,7 +239,7 @@ public final class n
           }
           catch (Exception localException4)
           {
-            ac.i("MicroMsg.MsgDelayTipsBanner", "close exception:" + localException4.getMessage());
+            ad.i("MicroMsg.MsgDelayTipsBanner", "close exception:" + localException4.getMessage());
             continue;
           }
           localException4.setStatus(3);
@@ -249,41 +248,41 @@ public final class n
         try
         {
           ((OutputStream)localObject3).close();
-          Toast.makeText(paramContext, q.B(((com.tencent.mm.vfs.e)localObject4).fxV()), 1).show();
-          paramContext = q.B(((com.tencent.mm.vfs.e)localObject4).fxV());
-          localObject1 = new bo();
-          ((bo)localObject1).re("weixin");
-          ((bo)localObject1).setContent(paramContext);
-          ((bo)localObject1).setType(1);
-          ((bo)localObject1).jT(0);
-          if (((dy)localObject1).field_isSend == 1)
+          Toast.makeText(paramContext, q.B(((com.tencent.mm.vfs.e)localObject4).fOK()), 1).show();
+          paramContext = q.B(((com.tencent.mm.vfs.e)localObject4).fOK());
+          localObject1 = new bu();
+          ((bu)localObject1).tN("weixin");
+          ((bu)localObject1).setContent(paramContext);
+          ((bu)localObject1).setType(1);
+          ((bu)localObject1).kr(0);
+          if (((ei)localObject1).field_isSend == 1)
           {
-            ((bo)localObject1).setStatus(4);
+            ((bu)localObject1).setStatus(4);
             long l = System.currentTimeMillis();
-            ((bo)localObject1).oz(l);
-            ((bo)localObject1).oA(l);
-            ((k)g.ab(k.class)).dcr().ap((bo)localObject1);
+            ((bu)localObject1).qz(l);
+            ((bu)localObject1).qA(l);
+            ((l)g.ab(l.class)).dlK().as((bu)localObject1);
             AppMethodBeat.o(38831);
             return;
             localException1 = localException1;
-            ac.i("MicroMsg.MsgDelayTipsBanner", "create new file exception:" + localException1.getMessage());
+            ad.i("MicroMsg.MsgDelayTipsBanner", "create new file exception:" + localException1.getMessage());
           }
         }
         catch (Exception localException2)
         {
-          ac.i("MicroMsg.MsgDelayTipsBanner", "close exception:" + localException2.getMessage());
+          ad.i("MicroMsg.MsgDelayTipsBanner", "close exception:" + localException2.getMessage());
         }
       }
     }
   }
   
-  public final boolean bvU()
+  public final boolean bAa()
   {
     AppMethodBeat.i(38832);
-    ac.i("MicroMsg.MsgDelayTipsBanner", "refresh banner.");
-    g.agS();
-    boolean bool = g.agR().agA().getBoolean(ah.a.GPh, false);
-    ac.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]need to show banner:%s", new Object[] { Boolean.valueOf(bool) });
+    ad.i("MicroMsg.MsgDelayTipsBanner", "refresh banner.");
+    g.ajD();
+    boolean bool = g.ajC().ajl().getBoolean(al.a.IBC, false);
+    ad.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]need to show banner:%s", new Object[] { Boolean.valueOf(bool) });
     if (bool) {
       if (this.view != null) {
         this.view.setVisibility(0);
@@ -291,7 +290,7 @@ public final class n
     }
     for (;;)
     {
-      bool = super.bvU();
+      bool = super.bAa();
       AppMethodBeat.o(38832);
       return bool;
       if (this.view != null) {
@@ -310,12 +309,16 @@ public final class n
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(38827);
-    ki((Context)this.Dsc.get());
-    g.agS();
-    g.agR().agA().set(ah.a.GPh, Boolean.FALSE);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/MsgDelayTipsBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    ku((Context)this.EXg.get());
+    g.ajD();
+    g.ajC().ajl().set(al.a.IBC, Boolean.FALSE);
     if (this.view != null) {
       this.view.setVisibility(8);
     }
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/MsgDelayTipsBanner", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(38827);
   }
 }

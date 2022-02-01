@@ -9,14 +9,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class FlutterFragment
   extends Fragment
 {
-  private String KOK = "/";
+  private String MFH = "/";
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(159077);
     super.onCreate(paramBundle);
     if (getArguments() != null) {
-      this.KOK = getArguments().getString("route");
+      this.MFH = getArguments().getString("route");
     }
     AppMethodBeat.o(159077);
   }

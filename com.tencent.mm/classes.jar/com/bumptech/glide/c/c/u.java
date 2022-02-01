@@ -10,14 +10,14 @@ import java.io.InputStream;
 public final class u<Data>
   implements n<String, Data>
 {
-  private final n<Uri, Data> aIO;
+  private final n<Uri, Data> aKF;
   
   public u(n<Uri, Data> paramn)
   {
-    this.aIO = paramn;
+    this.aKF = paramn;
   }
   
-  private static Uri S(String paramString)
+  private static Uri R(String paramString)
   {
     AppMethodBeat.i(77306);
     paramString = Uri.fromFile(new File(paramString));

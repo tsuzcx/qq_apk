@@ -2,22 +2,39 @@ package kotlinx.coroutines.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
+import d.p;
+import d.p.a;
+import d.q;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "()V", "isEmpty", "", "()Z", "isRemoved", "forEach", "", "T", "Lkotlinx/coroutines/internal/Node;", "block", "Lkotlin/Function1;", "nextIfRemoved", "remove", "validate", "validate$kotlinx_coroutines_core", "kotlinx-coroutines-core"})
-public class g
-  extends i
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"ANDROID_DETECTED", "", "getANDROID_DETECTED", "()Z", "kotlinx-coroutines-core"})
+public final class g
 {
-  public final boolean bzN()
+  private static final boolean NJH;
+  
+  static
   {
-    AppMethodBeat.i(118107);
-    Throwable localThrowable = (Throwable)new IllegalStateException("head cannot be removed".toString());
-    AppMethodBeat.o(118107);
-    throw localThrowable;
+    AppMethodBeat.i(190814);
+    try
+    {
+      Object localObject1 = p.MKe;
+      localObject1 = p.eL(Class.forName("android.os.Build"));
+      NJH = p.eI(localObject1);
+      AppMethodBeat.o(190814);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        p.a locala = p.MKe;
+        Object localObject2 = p.eL(q.o(localThrowable));
+      }
+    }
   }
   
-  public final boolean isRemoved()
+  public static final boolean gvX()
   {
-    return false;
+    return NJH;
   }
 }
 

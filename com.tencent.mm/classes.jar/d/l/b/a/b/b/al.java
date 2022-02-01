@@ -2,63 +2,68 @@ package d.l.b.a.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
-import d.g.b.u;
-import d.g.b.w;
+import d.g.b.p;
+import d.g.b.q;
+import d.g.b.x;
+import d.g.b.z;
+import d.l.b.a.b.j.f.h;
 import d.l.b.a.b.l.f;
+import d.l.b.a.b.l.j;
+import d.l.k;
 
-public final class al<T extends d.l.b.a.b.j.f.h>
+public final class al<T extends h>
 {
-  public static final a Lea;
-  private final f LdW;
-  private final e LdX;
-  private final b<d.l.b.a.b.m.a.i, T> LdY;
-  private final d.l.b.a.b.m.a.i LdZ;
+  public static final a MUV;
+  private final f MUR;
+  private final e MUS;
+  private final b<d.l.b.a.b.m.a.i, T> MUT;
+  private final d.l.b.a.b.m.a.i MUU;
   
   static
   {
     AppMethodBeat.i(56881);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(al.class), "scopeForOwnerModule", "getScopeForOwnerModule()Lorg/jetbrains/kotlin/resolve/scopes/MemberScope;")) };
-    Lea = new a((byte)0);
+    cwV = new k[] { (k)z.a(new x(z.bp(al.class), "scopeForOwnerModule", "getScopeForOwnerModule()Lorg/jetbrains/kotlin/resolve/scopes/MemberScope;")) };
+    MUV = new a((byte)0);
     AppMethodBeat.o(56881);
   }
   
-  private al(e parame, d.l.b.a.b.l.i parami, b<? super d.l.b.a.b.m.a.i, ? extends T> paramb, d.l.b.a.b.m.a.i parami1)
+  private al(e parame, j paramj, b<? super d.l.b.a.b.m.a.i, ? extends T> paramb, d.l.b.a.b.m.a.i parami)
   {
     AppMethodBeat.i(56883);
-    this.LdX = parame;
-    this.LdY = paramb;
-    this.LdZ = parami1;
-    this.LdW = parami.O((d.g.a.a)new b(this));
+    this.MUS = parame;
+    this.MUT = paramb;
+    this.MUU = parami;
+    this.MUR = paramj.S((d.g.a.a)new b(this));
     AppMethodBeat.o(56883);
   }
   
   public final T b(d.l.b.a.b.m.a.i parami)
   {
     AppMethodBeat.i(56882);
-    d.g.b.k.h(parami, "kotlinTypeRefiner");
-    parami.f(d.l.b.a.b.j.d.a.F((l)this.LdX));
-    parami = (d.l.b.a.b.j.f.h)d.l.b.a.b.l.h.a(this.LdW, $$delegatedProperties[0]);
+    p.h(parami, "kotlinTypeRefiner");
+    parami.f(d.l.b.a.b.j.d.a.F((l)this.MUS));
+    parami = (h)d.l.b.a.b.l.i.a(this.MUR, cwV[0]);
     AppMethodBeat.o(56882);
     return parami;
   }
   
   public static final class a
   {
-    public static <T extends d.l.b.a.b.j.f.h> al<T> a(e parame, d.l.b.a.b.l.i parami, d.l.b.a.b.m.a.i parami1, b<? super d.l.b.a.b.m.a.i, ? extends T> paramb)
+    public static <T extends h> al<T> a(e parame, j paramj, d.l.b.a.b.m.a.i parami, b<? super d.l.b.a.b.m.a.i, ? extends T> paramb)
     {
       AppMethodBeat.i(56879);
-      d.g.b.k.h(parame, "classDescriptor");
-      d.g.b.k.h(parami, "storageManager");
-      d.g.b.k.h(parami1, "kotlinTypeRefinerForOwnerModule");
-      d.g.b.k.h(paramb, "scopeFactory");
-      parame = new al(parame, parami, paramb, parami1, (byte)0);
+      p.h(parame, "classDescriptor");
+      p.h(paramj, "storageManager");
+      p.h(parami, "kotlinTypeRefinerForOwnerModule");
+      p.h(paramb, "scopeFactory");
+      parame = new al(parame, paramj, paramb, parami, (byte)0);
       AppMethodBeat.o(56879);
       return parame;
     }
   }
   
   static final class b
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<T>
   {
     b(al paramal)
@@ -69,7 +74,7 @@ public final class al<T extends d.l.b.a.b.j.f.h>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.al
  * JD-Core Version:    0.7.0.1
  */

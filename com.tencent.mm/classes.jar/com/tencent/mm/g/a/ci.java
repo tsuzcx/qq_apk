@@ -12,13 +12,13 @@ public final class ci
   
   private ci(byte paramByte)
   {
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ci
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public class PluginDescription
   implements Parcelable, Serializable
 {
   public static final Parcelable.Creator<PluginDescription> CREATOR;
-  public final int fJx;
+  public final int gcY;
   public final String md5;
   public final String name;
   public final int size;
@@ -33,7 +33,7 @@ public class PluginDescription
     this.md5 = ((String)m.checkNotNull(paramParcel.readString()));
     this.version = ((String)m.checkNotNull(paramParcel.readString()));
     this.size = paramParcel.readInt();
-    this.fJx = paramParcel.readInt();
+    this.gcY = paramParcel.readInt();
     AppMethodBeat.o(155831);
   }
   
@@ -45,7 +45,7 @@ public class PluginDescription
   public String toString()
   {
     AppMethodBeat.i(155832);
-    String str = String.format("PluginDescription = [name=%s, url=%s, md5=%s, version=%s, size=%d, downloadType=%d]", new Object[] { this.name, this.url, this.md5, this.version, Integer.valueOf(this.size), Integer.valueOf(this.fJx) });
+    String str = String.format("PluginDescription = [name=%s, url=%s, md5=%s, version=%s, size=%d, downloadType=%d]", new Object[] { this.name, this.url, this.md5, this.version, Integer.valueOf(this.size), Integer.valueOf(this.gcY) });
     AppMethodBeat.o(155832);
     return str;
   }
@@ -58,13 +58,13 @@ public class PluginDescription
     paramParcel.writeString(this.md5);
     paramParcel.writeString(this.version);
     paramParcel.writeInt(this.size);
-    paramParcel.writeInt(this.fJx);
+    paramParcel.writeInt(this.gcY);
     AppMethodBeat.o(155830);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.compatible.loader.PluginDescription
  * JD-Core Version:    0.7.0.1
  */

@@ -1,496 +1,166 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.format.DateFormat;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ce;
-import com.tencent.mm.pluginsdk.g.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ai;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mm.app.AppForegroundDelegate;
+import com.tencent.mm.app.n;
+import com.tencent.mm.model.cf;
+import com.tencent.mm.plugin.finder.report.n.a;
+import com.tencent.mm.plugin.finder.storage.b;
+import com.tencent.mm.plugin.finder.storage.logic.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
+import d.g.b.p;
+import d.l;
+import d.o;
+import d.z;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/utils/FinderFolderClearManager;", "", "()V", "MARK_DEL_FOLDERS", "", "TAG", "fileLock", "Ljava/lang/Object;", "finderUICount", "", "lastDumpTime", "", "checkClearWhenAppInBackground", "", "clearMarkFolder", "dumpAndMark", "enterFinderUI", "exitFinderUI", "mark", "curSize", "folder", "Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "plugin-finder_release"})
 public final class g
 {
-  private static HashMap<Long, Long> nPE;
-  private static HashMap<Long, String> nPF;
-  private static Map<String, List<String>> rOO;
-  private static Map<String, List<String>> rOP;
+  static final String TAG = "Finder.FinderFolderClearManager";
+  private static long guk;
+  static final Object sJa;
+  static int sLi;
+  public static final g sLj;
   
   static
   {
-    AppMethodBeat.i(168642);
-    rOO = new HashMap();
-    rOP = new HashMap();
-    nPE = new HashMap();
-    nPF = new HashMap();
-    AppMethodBeat.o(168642);
-  }
-  
-  public static String Ew(int paramInt)
-  {
-    AppMethodBeat.i(168639);
-    String str = ab.iC(ai.getContext());
-    if (paramInt <= 0)
+    AppMethodBeat.i(167889);
+    sLj = new g();
+    TAG = "Finder.FinderFolderClearManager";
+    sJa = new Object();
+    AppForegroundDelegate.cSQ.a((n)new n()
     {
-      AppMethodBeat.o(168639);
-      return "0";
-    }
-    if (paramInt <= 999)
-    {
-      AppMethodBeat.o(168639);
-      return String.valueOf(paramInt);
-    }
-    if ((str.equals("zh_CN")) || (str.equals("zh_HK")) || (str.equals("zh_TW")))
-    {
-      if (paramInt <= 9999)
+      public final void onAppBackground(String arg1)
       {
-        AppMethodBeat.o(168639);
-        return String.valueOf(paramInt);
-      }
-      if (paramInt <= 100000)
-      {
-        str = ai.getContext().getString(2131759292, new Object[] { Float.valueOf(paramInt * 1.0F / 10000.0F) });
-        AppMethodBeat.o(168639);
-        return str;
-      }
-      str = ai.getContext().getString(2131759295, new Object[] { Integer.valueOf(10) });
-      AppMethodBeat.o(168639);
-      return str;
-    }
-    if (paramInt <= 100000)
-    {
-      str = ai.getContext().getString(2131759294, new Object[] { Float.valueOf(paramInt * 1.0F / 1000.0F) });
-      AppMethodBeat.o(168639);
-      return str;
-    }
-    str = ai.getContext().getString(2131759298, new Object[] { Integer.valueOf(100) });
-    AppMethodBeat.o(168639);
-    return str;
-  }
-  
-  public static String Ex(int paramInt)
-  {
-    AppMethodBeat.i(210216);
-    String str = vk(paramInt);
-    AppMethodBeat.o(210216);
-    return str;
-  }
-  
-  public static String Ey(int paramInt)
-  {
-    AppMethodBeat.i(201079);
-    String str = ab.iC(ai.getContext());
-    if (paramInt <= 0)
-    {
-      AppMethodBeat.o(201079);
-      return "0";
-    }
-    if (paramInt <= 999)
-    {
-      AppMethodBeat.o(201079);
-      return String.valueOf(paramInt);
-    }
-    if ((str.equals("zh_CN")) || (str.equals("zh_HK")) || (str.equals("zh_TW")))
-    {
-      if (paramInt <= 9999)
-      {
-        AppMethodBeat.o(201079);
-        return String.valueOf(paramInt);
-      }
-      if (paramInt <= 990000)
-      {
-        str = ai.getContext().getString(2131759292, new Object[] { Float.valueOf(paramInt * 1.0F / 10000.0F) });
-        AppMethodBeat.o(201079);
-        return str;
-      }
-      str = ai.getContext().getString(2131759295, new Object[] { Integer.valueOf(99) });
-      AppMethodBeat.o(201079);
-      return str;
-    }
-    if (paramInt <= 999000)
-    {
-      str = ai.getContext().getString(2131759294, new Object[] { Float.valueOf(paramInt * 1.0F / 1000.0F) });
-      AppMethodBeat.o(201079);
-      return str;
-    }
-    str = ai.getContext().getString(2131759298, new Object[] { Integer.valueOf(999) });
-    AppMethodBeat.o(201079);
-    return str;
-  }
-  
-  public static String f(Context paramContext, long paramLong)
-  {
-    int i = 1;
-    long l3;
-    label130:
-    Object localObject;
-    int j;
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(168637);
-        if (paramLong < 3600000L)
+        AppMethodBeat.i(167887);
+        ??? = g.sLj;
+        ad.i(g.TAG, "checkClearWhenAppInBackground");
+        if (g.sLi <= 0)
         {
-          paramContext = "";
-          AppMethodBeat.o(168637);
-          return paramContext;
-        }
-        l3 = ce.azH();
-        if (!nPE.containsKey(Long.valueOf(paramLong))) {
-          break label696;
-        }
-        if (l3 - ((Long)nPE.get(Long.valueOf(paramLong))).longValue() < 60000L)
-        {
-          if (nPF.containsKey(Long.valueOf(paramLong)))
+          ad.i(g.TAG, "clearMarkFolder");
+          synchronized (g.sJa)
           {
-            paramContext = (String)nPF.get(Long.valueOf(paramLong));
-            AppMethodBeat.o(168637);
+            l = bt.HI();
+            localObject3 = ax.flg();
+            Set localSet = ((ax)localObject3).getStringSet("FINDER_MARK_DEL_FOLDERS", (Set)new HashSet());
+            if (localSet != null)
+            {
+              Iterator localIterator = ((Iterable)localSet).iterator();
+              while (localIterator.hasNext())
+              {
+                Object localObject4 = (String)localIterator.next();
+                ad.i(g.TAG, "clearMarkFolders ".concat(String.valueOf(localObject4)));
+                i.cZ((String)localObject4, true);
+                r localr = r.sNc;
+                if (p.i(localObject4, r.cLH()))
+                {
+                  localObject4 = c.sAv;
+                  c.aSJ();
+                }
+              }
+            }
           }
+          ((ax)localObject3).putStringSet("FINDER_MARK_DEL_FOLDERS", (Set)new HashSet());
+          Object localObject3 = r.sNc;
+          localObject3 = r.cLJ();
+          int j = localObject3.length;
+          int i = 0;
+          while (i < j)
+          {
+            localObject3[i].cLe();
+            i += 1;
+          }
+          long l = bt.aO(l);
+          if ((localObject1 != null) && (localObject1.size() > 0))
+          {
+            localObject2 = n.a.spN;
+            n.a.wv(l);
+          }
+          ad.i(g.TAG, "clearMarkFolder cost:".concat(String.valueOf(l)));
+          Object localObject2 = z.MKo;
+          ??? = com.tencent.mm.plugin.finder.upload.f.sJc;
+          com.tencent.mm.plugin.finder.upload.f.cKH();
         }
-        else {
-          nPE.remove(Long.valueOf(paramLong));
-        }
+        AppMethodBeat.o(167887);
       }
-      finally {}
-      break label696;
-      if (localObject < 0L)
-      {
-        paramContext = DateFormat.format(paramContext.getString(2131759517), paramLong);
-        nPF.put(Long.valueOf(paramLong), paramContext);
-        nPE.put(Long.valueOf(paramLong), Long.valueOf(l3));
-        AppMethodBeat.o(168637);
-      }
-      else if (localObject / 3600000L == 0L)
-      {
-        j = (int)(localObject / 60000L);
-        if (j > 0) {
-          break label732;
-        }
-      }
-    }
-    for (;;)
-    {
-      paramContext = paramContext.getResources().getString(2131759368, new Object[] { Integer.valueOf(i) });
-      nPF.put(Long.valueOf(paramLong), paramContext);
-      nPE.put(Long.valueOf(paramLong), Long.valueOf(l3));
-      AppMethodBeat.o(168637);
-      break;
-      if (localObject <= 86400000L)
-      {
-        j = (int)(localObject / 3600000L);
-        i = j;
-        if (j <= 0) {
-          i = 1;
-        }
-        paramContext = paramContext.getResources().getString(2131759367, new Object[] { Integer.valueOf(i) });
-        nPF.put(Long.valueOf(paramLong), paramContext);
-        nPE.put(Long.valueOf(paramLong), Long.valueOf(l3));
-        AppMethodBeat.o(168637);
-        break;
-      }
-      if (localObject <= 172800000L)
-      {
-        paramContext = paramContext.getString(2131759551);
-        nPF.put(Long.valueOf(paramLong), paramContext);
-        nPE.put(Long.valueOf(paramLong), Long.valueOf(l3));
-        AppMethodBeat.o(168637);
-        break;
-      }
-      if (localObject <= 259200000L)
-      {
-        paramContext = paramContext.getString(2131759534);
-        nPF.put(Long.valueOf(paramLong), paramContext);
-        nPE.put(Long.valueOf(paramLong), Long.valueOf(l3));
-        AppMethodBeat.o(168637);
-        break;
-      }
-      if (localObject <= 2592000000L)
-      {
-        paramContext = paramContext.getResources().getQuantityString(2131623947, (int)(localObject / 86400000L), new Object[] { Integer.valueOf((int)(localObject / 86400000L)) });
-        nPF.put(Long.valueOf(paramLong), paramContext);
-        nPE.put(Long.valueOf(paramLong), Long.valueOf(l3));
-        AppMethodBeat.o(168637);
-        break;
-      }
-      if (localObject <= 31536000000L)
-      {
-        paramContext = paramContext.getResources().getQuantityString(2131623948, (int)(localObject / 2592000000L), new Object[] { Integer.valueOf((int)(localObject / 2592000000L)) });
-        nPF.put(Long.valueOf(paramLong), paramContext);
-        nPE.put(Long.valueOf(paramLong), Long.valueOf(l3));
-        AppMethodBeat.o(168637);
-        break;
-      }
-      paramContext = paramContext.getResources().getQuantityString(2131623949, (int)(localObject / 31536000000L), new Object[] { Integer.valueOf((int)(localObject / 31536000000L)) });
-      nPF.put(Long.valueOf(paramLong), paramContext);
-      nPE.put(Long.valueOf(paramLong), Long.valueOf(l3));
-      AppMethodBeat.o(168637);
-      break;
-      label696:
-      long l2 = l3 - paramLong;
-      long l1 = l2;
-      if (l2 >= 0L) {
-        break label130;
-      }
-      l1 = l2;
-      if (l2 <= -3600000L) {
-        break label130;
-      }
-      l1 = 0L;
-      break label130;
-      label732:
-      i = j;
+      
+      public final void onAppForeground(String paramAnonymousString) {}
+    });
+    AppMethodBeat.o(167889);
+  }
+  
+  public static void cLg()
+  {
+    sLi += 1;
+  }
+  
+  public static void cLh()
+  {
+    int i = sLi - 1;
+    sLi = i;
+    if (i < 0) {
+      sLi = 0;
     }
   }
   
-  public static String fD(int paramInt1, int paramInt2)
+  public static void cLi()
   {
-    AppMethodBeat.i(168638);
-    Object localObject = n.rPN;
-    if (n.EB(paramInt1))
+    AppMethodBeat.i(167888);
+    ad.i(TAG, "dumpAndMark");
+    long l1 = cf.aCK();
+    long l2 = guk;
+    Object localObject1 = b.sxa;
+    if (l1 - l2 < b.cFz())
     {
-      localObject = vk(paramInt2);
-      AppMethodBeat.o(168638);
-      return localObject;
+      AppMethodBeat.o(167888);
+      return;
     }
-    localObject = Ew(paramInt2);
-    AppMethodBeat.o(168638);
-    return localObject;
-  }
-  
-  public static String j(Context paramContext, long paramLong)
-  {
-    AppMethodBeat.i(168636);
-    GregorianCalendar localGregorianCalendar1 = new GregorianCalendar();
-    if (paramLong < 3600000L)
+    l2 = bt.HI();
+    guk = l1;
+    localObject1 = (Map)new LinkedHashMap();
+    ??? = r.sNc;
+    f[] arrayOff = r.cLJ();
+    int j = arrayOff.length;
+    int i = 0;
+    while (i < j)
     {
-      AppMethodBeat.o(168636);
-      return "";
-    }
-    long l1 = localGregorianCalendar1.getTimeInMillis();
-    if (nPE.containsKey(Long.valueOf(paramLong))) {
-      if (l1 - ((Long)nPE.get(Long.valueOf(paramLong))).longValue() < 60000L)
+      f localf = arrayOff[i];
+      l1 = ((Number)localf.cLf().second).longValue();
+      if ((localf.sLh) && (l1 > localf.maxSize)) {}
+      synchronized (sJa)
       {
-        if (nPF.containsKey(Long.valueOf(paramLong)))
-        {
-          paramContext = (String)nPF.get(Long.valueOf(paramLong));
-          AppMethodBeat.o(168636);
-          return paramContext;
+        ad.i(TAG, "mark: size " + l1 + ", name " + localf.name + ", path " + localf.path);
+        ax localax = ax.flg();
+        Set localSet = localax.getStringSet("FINDER_MARK_DEL_FOLDERS", (Set)new HashSet());
+        if (localSet == null) {
+          p.gfZ();
         }
-      }
-      else {
-        nPE.remove(Long.valueOf(paramLong));
-      }
-    }
-    int j;
-    int i;
-    if ((l1 - paramLong) / 3600000L == 0L)
-    {
-      j = (int)((l1 - paramLong) / 60000L);
-      i = j;
-      if (j <= 0) {
-        i = 1;
-      }
-      paramContext = paramContext.getResources().getString(2131759368, new Object[] { Integer.valueOf(i) });
-      nPF.put(Long.valueOf(paramLong), paramContext);
-      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
-      AppMethodBeat.o(168636);
-      return paramContext;
-    }
-    GregorianCalendar localGregorianCalendar2 = new GregorianCalendar(localGregorianCalendar1.get(1), localGregorianCalendar1.get(2), localGregorianCalendar1.get(5));
-    long l2 = paramLong - localGregorianCalendar2.getTimeInMillis();
-    if ((l2 > 0L) && (l2 <= 86400000L))
-    {
-      j = (int)((l1 - paramLong) / 3600000L);
-      i = j;
-      if (j <= 0) {
-        i = 1;
-      }
-      paramContext = paramContext.getResources().getString(2131759367, new Object[] { Integer.valueOf(i) });
-      nPF.put(Long.valueOf(paramLong), paramContext);
-      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
-      AppMethodBeat.o(168636);
-      return paramContext;
-    }
-    l2 = paramLong - localGregorianCalendar2.getTimeInMillis() + 86400000L;
-    if ((l2 > 0L) && (l2 <= 86400000L))
-    {
-      paramContext = paramContext.getString(2131759551) + " " + h.formatTime(paramContext.getString(2131759529), paramLong / 1000L);
-      nPF.put(Long.valueOf(paramLong), paramContext);
-      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
-      AppMethodBeat.o(168636);
-      return paramContext;
-    }
-    l2 = paramLong - (localGregorianCalendar2.getTimeInMillis() - 172800000L);
-    if ((l2 >= 0L) && (l2 < 86400000L))
-    {
-      paramContext = paramContext.getString(2131759534) + " " + h.formatTime(paramContext.getString(2131759529), paramLong / 1000L);
-      nPF.put(Long.valueOf(paramLong), paramContext);
-      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
-      AppMethodBeat.o(168636);
-      return paramContext;
-    }
-    localGregorianCalendar2 = new GregorianCalendar();
-    localGregorianCalendar2.setTimeInMillis(paramLong);
-    if (localGregorianCalendar1.get(1) == localGregorianCalendar2.get(1))
-    {
-      paramContext = DateFormat.format(paramContext.getString(2131759500, new Object[] { " " }), paramLong);
-      nPF.put(Long.valueOf(paramLong), paramContext);
-      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
-      AppMethodBeat.o(168636);
-      return paramContext;
-    }
-    paramContext = DateFormat.format(paramContext.getString(2131759517), paramLong);
-    nPF.put(Long.valueOf(paramLong), paramContext);
-    nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
-    AppMethodBeat.o(168636);
-    return paramContext;
-  }
-  
-  public static String k(Context paramContext, long paramLong)
-  {
-    AppMethodBeat.i(201077);
-    GregorianCalendar localGregorianCalendar1 = new GregorianCalendar();
-    if (paramLong < 3600000L)
-    {
-      AppMethodBeat.o(201077);
-      return "";
-    }
-    long l1 = localGregorianCalendar1.getTimeInMillis();
-    if (nPE.containsKey(Long.valueOf(paramLong))) {
-      if (l1 - ((Long)nPE.get(Long.valueOf(paramLong))).longValue() < 60000L)
-      {
-        if (nPF.containsKey(Long.valueOf(paramLong)))
-        {
-          paramContext = (String)nPF.get(Long.valueOf(paramLong));
-          AppMethodBeat.o(201077);
-          return paramContext;
-        }
-      }
-      else {
-        nPE.remove(Long.valueOf(paramLong));
+        localSet.add(localf.path);
+        localax.putStringSet("FINDER_MARK_DEL_FOLDERS", localSet).commit();
+        ((Map)localObject1).put(localf.name, Long.valueOf(l1));
+        i += 1;
       }
     }
-    int j;
-    int i;
-    if ((l1 - paramLong) / 3600000L == 0L)
-    {
-      j = (int)((l1 - paramLong) / 60000L);
-      i = j;
-      if (j <= 0) {
-        i = 1;
-      }
-      paramContext = paramContext.getResources().getString(2131759368, new Object[] { Integer.valueOf(i) });
-      nPF.put(Long.valueOf(paramLong), paramContext);
-      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
-      AppMethodBeat.o(201077);
-      return paramContext;
-    }
-    GregorianCalendar localGregorianCalendar2 = new GregorianCalendar(localGregorianCalendar1.get(1), localGregorianCalendar1.get(2), localGregorianCalendar1.get(5));
-    long l2 = paramLong - localGregorianCalendar2.getTimeInMillis();
-    if ((l2 > 0L) && (l2 <= 86400000L))
-    {
-      j = (int)((l1 - paramLong) / 3600000L);
-      i = j;
-      if (j <= 0) {
-        i = 1;
-      }
-      paramContext = paramContext.getResources().getString(2131759367, new Object[] { Integer.valueOf(i) });
-      nPF.put(Long.valueOf(paramLong), paramContext);
-      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
-      AppMethodBeat.o(201077);
-      return paramContext;
-    }
-    l2 = paramLong - localGregorianCalendar2.getTimeInMillis() + 86400000L;
-    if ((l2 > 0L) && (l2 <= 86400000L))
-    {
-      paramContext = paramContext.getString(2131759551);
-      nPF.put(Long.valueOf(paramLong), paramContext);
-      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
-      AppMethodBeat.o(201077);
-      return paramContext;
-    }
-    l2 = paramLong - (localGregorianCalendar2.getTimeInMillis() - 172800000L);
-    if ((l2 >= 0L) && (l2 < 86400000L))
-    {
-      paramContext = paramContext.getString(2131759534);
-      nPF.put(Long.valueOf(paramLong), paramContext);
-      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
-      AppMethodBeat.o(201077);
-      return paramContext;
-    }
-    localGregorianCalendar2 = new GregorianCalendar();
-    localGregorianCalendar2.setTimeInMillis(paramLong);
-    if (localGregorianCalendar1.get(1) == localGregorianCalendar2.get(1))
-    {
-      paramContext = DateFormat.format(paramContext.getString(2131759498), paramLong);
-      nPF.put(Long.valueOf(paramLong), paramContext);
-      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
-      AppMethodBeat.o(201077);
-      return paramContext;
-    }
-    paramContext = DateFormat.format(paramContext.getString(2131759517), paramLong);
-    nPF.put(Long.valueOf(paramLong), paramContext);
-    nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
-    AppMethodBeat.o(201077);
-    return paramContext;
-  }
-  
-  public static String vk(long paramLong)
-  {
-    AppMethodBeat.i(168641);
-    String str = ab.iC(ai.getContext());
-    if (paramLong <= 0L)
-    {
-      AppMethodBeat.o(168641);
-      return "0";
-    }
-    if (paramLong <= 999L)
-    {
-      AppMethodBeat.o(168641);
-      return String.valueOf(paramLong);
-    }
-    if ((str.equals("zh_CN")) || (str.equals("zh_HK")) || (str.equals("zh_TW")))
-    {
-      if (paramLong <= 9999L)
-      {
-        AppMethodBeat.o(168641);
-        return String.valueOf(paramLong);
-      }
-      if (paramLong <= 99990000L)
-      {
-        str = ai.getContext().getString(2131759292, new Object[] { Float.valueOf((float)paramLong * 1.0F / 10000.0F) });
-        AppMethodBeat.o(168641);
-        return str;
-      }
-      str = ai.getContext().getString(2131759296, new Object[] { Integer.valueOf(1) });
-      AppMethodBeat.o(168641);
-      return str;
-    }
-    if (paramLong <= 990000L)
-    {
-      str = ai.getContext().getString(2131759294, new Object[] { Float.valueOf((float)paramLong * 1.0F / 1000.0F) });
-      AppMethodBeat.o(168641);
-      return str;
-    }
-    if (paramLong <= 99990000L)
-    {
-      str = ai.getContext().getString(2131759293, new Object[] { Float.valueOf((float)paramLong * 1.0F / 1000000.0F) });
-      AppMethodBeat.o(168641);
-      return str;
-    }
-    str = ai.getContext().getString(2131759297, new Object[] { Integer.valueOf(100) });
-    AppMethodBeat.o(168641);
-    return str;
+    l1 = bt.aO(l2);
+    ??? = n.a.spN;
+    n.a.ww(l1);
+    ??? = n.a.spN;
+    n.a.Z(localMap);
+    AppMethodBeat.o(167888);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.g
  * JD-Core Version:    0.7.0.1
  */

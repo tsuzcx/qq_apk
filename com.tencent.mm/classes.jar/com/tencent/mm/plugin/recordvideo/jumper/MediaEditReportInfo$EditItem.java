@@ -23,16 +23,16 @@ public class MediaEditReportInfo$EditItem
   
   static
   {
-    AppMethodBeat.i(199490);
+    AppMethodBeat.i(209013);
     CREATOR = new MediaEditReportInfo.EditItem.1();
-    AppMethodBeat.o(199490);
+    AppMethodBeat.o(209013);
   }
   
   public MediaEditReportInfo$EditItem() {}
   
   protected MediaEditReportInfo$EditItem(Parcel paramParcel)
   {
-    AppMethodBeat.i(199488);
+    AppMethodBeat.i(209011);
     this.type = paramParcel.readInt();
     if (paramParcel.readInt() != 0) {}
     for (boolean bool = true;; bool = false)
@@ -45,7 +45,7 @@ public class MediaEditReportInfo$EditItem
       this.durationScrollCount = paramParcel.readInt();
       this.dragCount = paramParcel.readInt();
       this.scaleCount = paramParcel.readInt();
-      AppMethodBeat.o(199488);
+      AppMethodBeat.o(209011);
       return;
     }
   }
@@ -57,7 +57,7 @@ public class MediaEditReportInfo$EditItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(199489);
+    AppMethodBeat.i(209012);
     paramParcel.writeInt(this.type);
     if (this.isBeauty) {}
     for (paramInt = 1;; paramInt = 0)
@@ -70,14 +70,14 @@ public class MediaEditReportInfo$EditItem
       paramParcel.writeInt(this.durationScrollCount);
       paramParcel.writeInt(this.dragCount);
       paramParcel.writeInt(this.scaleCount);
-      AppMethodBeat.o(199489);
+      AppMethodBeat.o(209012);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.MediaEditReportInfo.EditItem
  * JD-Core Version:    0.7.0.1
  */

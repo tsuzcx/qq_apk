@@ -5,16 +5,16 @@ import java.security.MessageDigest;
 
 public final class i<T>
 {
-  private static final a<Object> aDp;
-  final T aDq;
-  final a<T> aDr;
-  volatile byte[] aDs;
+  private static final a<Object> aFg;
+  final T aFh;
+  final a<T> aFi;
+  volatile byte[] aFj;
   final String key;
   
   static
   {
     AppMethodBeat.i(76855);
-    aDp = new a()
+    aFg = new a()
     {
       public final void a(byte[] paramAnonymousArrayOfByte, Object paramAnonymousObject, MessageDigest paramAnonymousMessageDigest) {}
     };
@@ -25,15 +25,15 @@ public final class i<T>
   {
     AppMethodBeat.i(76851);
     this.key = com.bumptech.glide.h.i.checkNotEmpty(paramString);
-    this.aDq = paramT;
-    this.aDr = ((a)com.bumptech.glide.h.i.checkNotNull(parama, "Argument must not be null"));
+    this.aFh = paramT;
+    this.aFi = ((a)com.bumptech.glide.h.i.checkNotNull(parama, "Argument must not be null"));
     AppMethodBeat.o(76851);
   }
   
-  public static <T> i<T> Q(String paramString)
+  public static <T> i<T> P(String paramString)
   {
     AppMethodBeat.i(76848);
-    paramString = new i(paramString, null, aDp);
+    paramString = new i(paramString, null, aFg);
     AppMethodBeat.o(76848);
     return paramString;
   }
@@ -49,7 +49,7 @@ public final class i<T>
   public static <T> i<T> b(String paramString, T paramT)
   {
     AppMethodBeat.i(76849);
-    paramString = new i(paramString, paramT, aDp);
+    paramString = new i(paramString, paramT, aFg);
     AppMethodBeat.o(76849);
     return paramString;
   }

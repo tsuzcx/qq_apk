@@ -20,38 +20,48 @@ public class WXMusicObject
   public boolean checkArgs()
   {
     AppMethodBeat.i(3979);
-    if (((this.musicUrl == null) || (this.musicUrl.length() == 0)) && ((this.musicLowBandUrl == null) || (this.musicLowBandUrl.length() == 0)))
+    String str = this.musicUrl;
+    if ((str == null) || (str.length() == 0))
     {
-      Log.e("MicroMsg.SDK.WXMusicObject", "both arguments are null");
-      AppMethodBeat.o(3979);
-      return false;
+      str = this.musicLowBandUrl;
+      if ((str == null) || (str.length() == 0)) {}
     }
-    if ((this.musicUrl != null) && (this.musicUrl.length() > 10240))
+    else
     {
-      Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, musicUrl is too long");
+      str = this.musicUrl;
+      if ((str != null) && (str.length() > 10240))
+      {
+        Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, musicUrl is too long");
+        AppMethodBeat.o(3979);
+        return false;
+      }
+      str = this.musicLowBandUrl;
+      if ((str != null) && (str.length() > 10240))
+      {
+        Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, musicLowBandUrl is too long");
+        AppMethodBeat.o(3979);
+        return false;
+      }
+      str = this.songAlbumUrl;
+      if ((str != null) && (str.length() > 10240))
+      {
+        Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, songAlbumUrl is too long");
+        AppMethodBeat.o(3979);
+        return false;
+      }
+      str = this.songLyric;
+      if ((str != null) && (str.length() > 32768))
+      {
+        Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, songLyric is too long");
+        AppMethodBeat.o(3979);
+        return false;
+      }
       AppMethodBeat.o(3979);
-      return false;
+      return true;
     }
-    if ((this.musicLowBandUrl != null) && (this.musicLowBandUrl.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, musicLowBandUrl is too long");
-      AppMethodBeat.o(3979);
-      return false;
-    }
-    if ((this.songAlbumUrl != null) && (this.songAlbumUrl.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, songAlbumUrl is too long");
-      AppMethodBeat.o(3979);
-      return false;
-    }
-    if ((this.songLyric != null) && (this.songLyric.length() > 32768))
-    {
-      Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, songLyric is too long");
-      AppMethodBeat.o(3979);
-      return false;
-    }
+    Log.e("MicroMsg.SDK.WXMusicObject", "both arguments are null");
     AppMethodBeat.o(3979);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

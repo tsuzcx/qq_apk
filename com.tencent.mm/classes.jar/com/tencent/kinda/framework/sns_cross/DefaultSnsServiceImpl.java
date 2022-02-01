@@ -13,12 +13,12 @@ public class DefaultSnsServiceImpl
     AppMethodBeat.i(18707);
     ITransmitKvData localITransmitKvData = super.generateSnsUseCaseData();
     Object localObject = this.mBean.getPayInfo();
-    if ((localObject == null) || (((PayInfo)localObject).hbR == null))
+    if ((localObject == null) || (((PayInfo)localObject).htZ == null))
     {
       AppMethodBeat.o(18707);
       return localITransmitKvData;
     }
-    localObject = ((PayInfo)localObject).hbR;
+    localObject = ((PayInfo)localObject).htZ;
     localITransmitKvData.putString("cashier_desc", ((Bundle)localObject).getString("cashier_desc"));
     localITransmitKvData.putString("succ_tip", ((Bundle)localObject).getString("succ_tip"));
     localITransmitKvData.putString("prepay_page_payee", ((Bundle)localObject).getString("prepay_page_payee"));

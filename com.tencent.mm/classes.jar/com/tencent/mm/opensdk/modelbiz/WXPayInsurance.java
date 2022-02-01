@@ -3,9 +3,8 @@ package com.tencent.mm.opensdk.modelbiz;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXPayInsurance
 {
@@ -19,7 +18,7 @@ public class WXPayInsurance
     public final boolean checkArgs()
     {
       AppMethodBeat.i(3892);
-      if (d.b(this.url))
+      if (b.b(this.url))
       {
         Log.i("MicroMsg.SDK.WXPayInsurance.Req", "url should not be empty");
         AppMethodBeat.o(3892);
@@ -54,38 +53,6 @@ public class WXPayInsurance
       super.fromBundle(paramBundle);
       paramBundle.putString("_wxapi_pay_insourance_req_url", this.url);
       AppMethodBeat.o(3893);
-    }
-  }
-  
-  public static final class Resp
-    extends BaseResp
-  {
-    public String wxOrderId;
-    
-    public final boolean checkArgs()
-    {
-      return true;
-    }
-    
-    public final void fromBundle(Bundle paramBundle)
-    {
-      AppMethodBeat.i(3863);
-      super.fromBundle(paramBundle);
-      this.wxOrderId = paramBundle.getString("_wxapi_pay_insourance_order_id");
-      AppMethodBeat.o(3863);
-    }
-    
-    public final int getType()
-    {
-      return 22;
-    }
-    
-    public final void toBundle(Bundle paramBundle)
-    {
-      AppMethodBeat.i(3862);
-      super.fromBundle(paramBundle);
-      paramBundle.putString("_wxapi_pay_insourance_order_id", this.wxOrderId);
-      AppMethodBeat.o(3862);
     }
   }
 }

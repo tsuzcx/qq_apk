@@ -2,48 +2,48 @@ package com.tencent.mm.plugin.sns.ui.a.b;
 
 import android.content.Context;
 import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.plugin.sns.ui.be;
-import com.tencent.mm.plugin.sns.ui.bf;
+import com.tencent.mm.plugin.sns.ui.bh;
+import com.tencent.mm.plugin.sns.ui.bi;
 
 public abstract class b
-  extends com.tencent.mm.vending.a.b<bf, p>
+  extends com.tencent.mm.vending.a.b<bi, p>
 {
   public b(p paramp)
   {
     super(paramp);
   }
   
-  public abstract String A(long paramLong, String paramString);
+  public abstract String As(long paramLong);
   
-  public abstract void a(Context paramContext, be parambe, String paramString);
+  public abstract String E(long paramLong, String paramString);
   
-  public abstract void aew();
+  public abstract void a(Context paramContext, bh parambh, String paramString);
   
-  public abstract void avO(String paramString);
+  public abstract void aAV(String paramString);
   
-  public abstract void avP(String paramString);
+  public abstract void aAW(String paramString);
   
-  public abstract void avQ(String paramString);
+  public abstract void aAX(String paramString);
   
-  public abstract void avR(String paramString);
+  public abstract void aAY(String paramString);
   
-  public abstract void avS(String paramString);
+  public abstract void aAZ(String paramString);
   
-  public abstract void dQh();
+  public abstract void ahi();
   
-  public abstract String dRA();
+  public abstract void ecx();
   
-  public abstract String dRB();
+  public abstract String edU();
   
-  public abstract String dRC();
+  public abstract String edV();
   
-  public abstract String dRD();
+  public abstract String edW();
   
-  public abstract String dRE();
+  public abstract String edX();
   
-  public abstract void ru(boolean paramBoolean);
+  public abstract String edY();
   
-  public abstract String xU(long paramLong);
+  public abstract void sa(boolean paramBoolean);
 }
 
 

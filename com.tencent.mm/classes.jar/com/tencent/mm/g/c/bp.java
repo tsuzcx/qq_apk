@@ -8,45 +8,28 @@ public abstract class bp
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eBC;
-  private static final int eCG = "exptId".hashCode();
-  private static final int eCH;
-  private static final int eCI;
-  private static final int eCJ;
-  private static final int eCK = "exptCheckSum".hashCode();
-  private static final int emh;
-  private static final int emi;
-  private static final int enp;
+  private static final int eHX = "flag".hashCode();
+  private static final int eHb = "modifyTime".hashCode();
+  private static final int eTU = "prodcutID".hashCode();
+  private static final int eTV = "totalCount".hashCode();
+  private static final int eTW = "continuCount".hashCode();
+  private static final int eTX = "showTipsTime".hashCode();
+  private static final int eTY = "setFlagTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eAQ = true;
-  private boolean eCB = true;
-  private boolean eCC = true;
-  private boolean eCD = true;
-  private boolean eCE = true;
-  private boolean eCF = true;
-  private boolean emR = true;
-  private boolean ema = true;
-  private boolean emb = true;
-  public long field_endTime;
-  public String field_exptCheckSum;
-  public String field_exptContent;
-  public int field_exptId;
-  public int field_exptSeq;
-  public int field_exptType;
-  public int field_groupId;
-  public long field_startTime;
-  public int field_subType;
-  
-  static
-  {
-    eBC = "groupId".hashCode();
-    eCH = "exptSeq".hashCode();
-    eCI = "exptContent".hashCode();
-    emh = "startTime".hashCode();
-    emi = "endTime".hashCode();
-    eCJ = "exptType".hashCode();
-    enp = "subType".hashCode();
-  }
+  private boolean eGF = true;
+  private boolean eHV = true;
+  private boolean eTP = true;
+  private boolean eTQ = true;
+  private boolean eTR = true;
+  private boolean eTS = true;
+  private boolean eTT = true;
+  public int field_continuCount;
+  public int field_flag;
+  public long field_modifyTime;
+  public String field_prodcutID;
+  public long field_setFlagTime;
+  public long field_showTipsTime;
+  public int field_totalCount;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -61,11 +44,11 @@ public abstract class bp
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eCG != k) {
+      if (eTU != k) {
         break label65;
       }
-      this.field_exptId = paramCursor.getInt(i);
-      this.eCB = true;
+      this.field_prodcutID = paramCursor.getString(i);
+      this.eTP = true;
     }
     for (;;)
     {
@@ -73,22 +56,18 @@ public abstract class bp
       break label20;
       break;
       label65:
-      if (eBC == k) {
-        this.field_groupId = paramCursor.getInt(i);
-      } else if (eCH == k) {
-        this.field_exptSeq = paramCursor.getInt(i);
-      } else if (eCI == k) {
-        this.field_exptContent = paramCursor.getString(i);
-      } else if (emh == k) {
-        this.field_startTime = paramCursor.getLong(i);
-      } else if (emi == k) {
-        this.field_endTime = paramCursor.getLong(i);
-      } else if (eCJ == k) {
-        this.field_exptType = paramCursor.getInt(i);
-      } else if (enp == k) {
-        this.field_subType = paramCursor.getInt(i);
-      } else if (eCK == k) {
-        this.field_exptCheckSum = paramCursor.getString(i);
+      if (eTV == k) {
+        this.field_totalCount = paramCursor.getInt(i);
+      } else if (eTW == k) {
+        this.field_continuCount = paramCursor.getInt(i);
+      } else if (eHX == k) {
+        this.field_flag = paramCursor.getInt(i);
+      } else if (eHb == k) {
+        this.field_modifyTime = paramCursor.getLong(i);
+      } else if (eTX == k) {
+        this.field_showTipsTime = paramCursor.getLong(i);
+      } else if (eTY == k) {
+        this.field_setFlagTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -98,32 +77,26 @@ public abstract class bp
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eCB) {
-      localContentValues.put("exptId", Integer.valueOf(this.field_exptId));
+    if (this.eTP) {
+      localContentValues.put("prodcutID", this.field_prodcutID);
     }
-    if (this.eAQ) {
-      localContentValues.put("groupId", Integer.valueOf(this.field_groupId));
+    if (this.eTQ) {
+      localContentValues.put("totalCount", Integer.valueOf(this.field_totalCount));
     }
-    if (this.eCC) {
-      localContentValues.put("exptSeq", Integer.valueOf(this.field_exptSeq));
+    if (this.eTR) {
+      localContentValues.put("continuCount", Integer.valueOf(this.field_continuCount));
     }
-    if (this.eCD) {
-      localContentValues.put("exptContent", this.field_exptContent);
+    if (this.eHV) {
+      localContentValues.put("flag", Integer.valueOf(this.field_flag));
     }
-    if (this.ema) {
-      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
+    if (this.eGF) {
+      localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
     }
-    if (this.emb) {
-      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
+    if (this.eTS) {
+      localContentValues.put("showTipsTime", Long.valueOf(this.field_showTipsTime));
     }
-    if (this.eCE) {
-      localContentValues.put("exptType", Integer.valueOf(this.field_exptType));
-    }
-    if (this.emR) {
-      localContentValues.put("subType", Integer.valueOf(this.field_subType));
-    }
-    if (this.eCF) {
-      localContentValues.put("exptCheckSum", this.field_exptCheckSum);
+    if (this.eTT) {
+      localContentValues.put("setFlagTime", Long.valueOf(this.field_setFlagTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -133,7 +106,7 @@ public abstract class bp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.bp
  * JD-Core Version:    0.7.0.1
  */

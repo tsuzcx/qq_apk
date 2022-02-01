@@ -15,127 +15,127 @@ public final class Assertions
   
   public static void checkArgument(boolean paramBoolean)
   {
-    AppMethodBeat.i(193800);
+    AppMethodBeat.i(220582);
     if (!paramBoolean)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException();
-      AppMethodBeat.o(193800);
+      AppMethodBeat.o(220582);
       throw localIllegalArgumentException;
     }
-    AppMethodBeat.o(193800);
+    AppMethodBeat.o(220582);
   }
   
   public static void checkArgument(boolean paramBoolean, Object paramObject)
   {
-    AppMethodBeat.i(193801);
+    AppMethodBeat.i(220583);
     if (!paramBoolean)
     {
       paramObject = new IllegalArgumentException(String.valueOf(paramObject));
-      AppMethodBeat.o(193801);
+      AppMethodBeat.o(220583);
       throw paramObject;
     }
-    AppMethodBeat.o(193801);
+    AppMethodBeat.o(220583);
   }
   
   public static int checkIndex(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(193802);
+    AppMethodBeat.i(220584);
     if ((paramInt1 < paramInt2) || (paramInt1 >= paramInt3))
     {
       IndexOutOfBoundsException localIndexOutOfBoundsException = new IndexOutOfBoundsException();
-      AppMethodBeat.o(193802);
+      AppMethodBeat.o(220584);
       throw localIndexOutOfBoundsException;
     }
-    AppMethodBeat.o(193802);
+    AppMethodBeat.o(220584);
     return paramInt1;
   }
   
   public static void checkMainThread()
   {
-    AppMethodBeat.i(193809);
+    AppMethodBeat.i(220591);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Not in applications main thread");
-      AppMethodBeat.o(193809);
+      AppMethodBeat.o(220591);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(193809);
+    AppMethodBeat.o(220591);
   }
   
   public static String checkNotEmpty(String paramString)
   {
-    AppMethodBeat.i(193807);
+    AppMethodBeat.i(220589);
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new IllegalArgumentException();
-      AppMethodBeat.o(193807);
+      AppMethodBeat.o(220589);
       throw paramString;
     }
-    AppMethodBeat.o(193807);
+    AppMethodBeat.o(220589);
     return paramString;
   }
   
   public static String checkNotEmpty(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(193808);
+    AppMethodBeat.i(220590);
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new IllegalArgumentException(String.valueOf(paramObject));
-      AppMethodBeat.o(193808);
+      AppMethodBeat.o(220590);
       throw paramString;
     }
-    AppMethodBeat.o(193808);
+    AppMethodBeat.o(220590);
     return paramString;
   }
   
   public static <T> T checkNotNull(T paramT)
   {
-    AppMethodBeat.i(193805);
+    AppMethodBeat.i(220587);
     if (paramT == null)
     {
       paramT = new NullPointerException();
-      AppMethodBeat.o(193805);
+      AppMethodBeat.o(220587);
       throw paramT;
     }
-    AppMethodBeat.o(193805);
+    AppMethodBeat.o(220587);
     return paramT;
   }
   
   public static <T> T checkNotNull(T paramT, Object paramObject)
   {
-    AppMethodBeat.i(193806);
+    AppMethodBeat.i(220588);
     if (paramT == null)
     {
       paramT = new NullPointerException(String.valueOf(paramObject));
-      AppMethodBeat.o(193806);
+      AppMethodBeat.o(220588);
       throw paramT;
     }
-    AppMethodBeat.o(193806);
+    AppMethodBeat.o(220588);
     return paramT;
   }
   
   public static void checkState(boolean paramBoolean)
   {
-    AppMethodBeat.i(193803);
+    AppMethodBeat.i(220585);
     if (!paramBoolean)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException();
-      AppMethodBeat.o(193803);
+      AppMethodBeat.o(220585);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(193803);
+    AppMethodBeat.o(220585);
   }
   
   public static void checkState(boolean paramBoolean, Object paramObject)
   {
-    AppMethodBeat.i(193804);
+    AppMethodBeat.i(220586);
     if (!paramBoolean)
     {
       paramObject = new IllegalStateException(String.valueOf(paramObject));
-      AppMethodBeat.o(193804);
+      AppMethodBeat.o(220586);
       throw paramObject;
     }
-    AppMethodBeat.o(193804);
+    AppMethodBeat.o(220586);
   }
 }
 

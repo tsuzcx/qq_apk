@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,128 +13,128 @@ import java.util.Set;
 
 public final class a
 {
-  public int sIB;
-  public int sIC;
-  public int sID;
-  private int sIE;
-  private int sIF;
-  private int sIG;
-  private int sIH;
-  private int sII;
-  public List<String> sIJ;
-  public List<String> sIK;
-  public List<String> sIL;
-  public List<String> sIM;
-  public List<String> sIN;
-  public HashMap<String, Integer> sIO;
   private int scene;
+  public int tFm;
+  public int tFn;
+  public int tFo;
+  private int tFp;
+  private int tFq;
+  private int tFr;
+  private int tFs;
+  private int tFt;
+  public List<String> tFu;
+  public List<String> tFv;
+  public List<String> tFw;
+  public List<String> tFx;
+  public List<String> tFy;
+  public HashMap<String, Integer> tFz;
   
   private a()
   {
     AppMethodBeat.i(111226);
-    this.sIJ = new ArrayList(9);
-    this.sIK = new ArrayList(9);
-    this.sIL = new ArrayList(9);
-    this.sIM = new ArrayList(9);
-    this.sIN = new ArrayList(9);
-    this.sIO = new HashMap(9);
+    this.tFu = new ArrayList(9);
+    this.tFv = new ArrayList(9);
+    this.tFw = new ArrayList(9);
+    this.tFx = new ArrayList(9);
+    this.tFy = new ArrayList(9);
+    this.tFz = new HashMap(9);
     AppMethodBeat.o(111226);
   }
   
-  public final void ae(String paramString, int paramInt1, int paramInt2)
+  public final void ai(String paramString, int paramInt1, int paramInt2)
   {
     int i = 1;
     AppMethodBeat.i(173726);
     if ((paramInt1 < 0) || (paramInt1 > 4))
     {
-      ac.e("MicroMsg.GalleryReporter", "type error, %d.", new Object[] { Integer.valueOf(paramInt1) });
+      ad.e("MicroMsg.GalleryReporter", "type error, %d.", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(173726);
       return;
     }
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      ac.e("MicroMsg.GalleryReporter", "path is invalid!");
+      ad.e("MicroMsg.GalleryReporter", "path is invalid!");
       AppMethodBeat.o(173726);
       return;
     }
-    ac.i("MicroMsg.GalleryReporter", "type: %d, path: %s.", new Object[] { Integer.valueOf(paramInt1), paramString });
-    if (this.sIJ.contains(paramString))
+    ad.i("MicroMsg.GalleryReporter", "type: %d, path: %s.", new Object[] { Integer.valueOf(paramInt1), paramString });
+    if (this.tFu.contains(paramString))
     {
-      this.sIJ.remove(paramString);
-      ac.i("MicroMsg.GalleryReporter", "sendCountFromSearchUnOCRList, remove.");
+      this.tFu.remove(paramString);
+      ad.i("MicroMsg.GalleryReporter", "sendCountFromSearchUnOCRList, remove.");
       paramInt1 = i;
     }
     for (;;)
     {
       if (paramInt1 != 0) {
-        this.sIO.remove(paramString);
+        this.tFz.remove(paramString);
       }
       AppMethodBeat.o(173726);
       return;
-      if (this.sIK.contains(paramString))
+      if (this.tFv.contains(paramString))
       {
-        this.sIK.remove(paramString);
-        ac.i("MicroMsg.GalleryReporter", "sendCountFromSearchOCRList, remove.");
+        this.tFv.remove(paramString);
+        ad.i("MicroMsg.GalleryReporter", "sendCountFromSearchOCRList, remove.");
         paramInt1 = i;
       }
-      else if (this.sIL.contains(paramString))
+      else if (this.tFw.contains(paramString))
       {
-        this.sIL.remove(paramString);
-        ac.i("MicroMsg.GalleryReporter", "sendCountFromClassifyList, remove.");
+        this.tFw.remove(paramString);
+        ad.i("MicroMsg.GalleryReporter", "sendCountFromClassifyList, remove.");
         paramInt1 = i;
       }
-      else if (this.sIM.contains(paramString))
+      else if (this.tFx.contains(paramString))
       {
-        this.sIM.remove(paramString);
-        ac.i("MicroMsg.GalleryReporter", "sendCountFromDefaultList, remove.");
+        this.tFx.remove(paramString);
+        ad.i("MicroMsg.GalleryReporter", "sendCountFromDefaultList, remove.");
         paramInt1 = i;
       }
       else
       {
-        if (!this.sIN.contains(paramString)) {
+        if (!this.tFy.contains(paramString)) {
           break;
         }
-        this.sIN.remove(paramString);
-        ac.i("MicroMsg.GalleryReporter", "sendCountFromOtherList, remove.");
+        this.tFy.remove(paramString);
+        ad.i("MicroMsg.GalleryReporter", "sendCountFromOtherList, remove.");
         paramInt1 = i;
       }
     }
-    ac.i("MicroMsg.GalleryReporter", "add!!!");
+    ad.i("MicroMsg.GalleryReporter", "add!!!");
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      this.sIO.put(paramString, Integer.valueOf(paramInt2));
+      this.tFz.put(paramString, Integer.valueOf(paramInt2));
       paramInt1 = 0;
       break;
-      this.sIJ.add(paramString);
+      this.tFu.add(paramString);
       continue;
-      this.sIK.add(paramString);
+      this.tFv.add(paramString);
       continue;
-      this.sIL.add(paramString);
+      this.tFw.add(paramString);
       continue;
-      this.sIM.add(paramString);
+      this.tFx.add(paramString);
       continue;
-      this.sIN.add(paramString);
+      this.tFy.add(paramString);
     }
   }
   
   public final void report()
   {
     AppMethodBeat.i(173728);
-    this.sIE = this.sIJ.size();
-    this.sIF = this.sIK.size();
-    this.sIG = this.sIL.size();
-    this.sIH = this.sIM.size();
-    this.sII = this.sIN.size();
+    this.tFp = this.tFu.size();
+    this.tFq = this.tFv.size();
+    this.tFr = this.tFw.size();
+    this.tFs = this.tFx.size();
+    this.tFt = this.tFy.size();
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.sIO.entrySet().iterator();
+    Iterator localIterator = this.tFz.entrySet().iterator();
     while (localIterator.hasNext()) {
       localStringBuilder.append(((Map.Entry)localIterator.next()).getValue()).append("|");
     }
-    ac.d("MicroMsg.GalleryReporter", "poiStr: %s.", new Object[] { localStringBuilder });
-    h.wUl.f(18077, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.sIB), Integer.valueOf(this.sIC), Integer.valueOf(this.sID), Integer.valueOf(this.sIE), Integer.valueOf(this.sIF), Integer.valueOf(this.sIG), Integer.valueOf(this.sIH), Integer.valueOf(this.sII), localStringBuilder });
+    ad.d("MicroMsg.GalleryReporter", "poiStr: %s.", new Object[] { localStringBuilder });
+    g.yhR.f(18077, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.tFm), Integer.valueOf(this.tFn), Integer.valueOf(this.tFo), Integer.valueOf(this.tFp), Integer.valueOf(this.tFq), Integer.valueOf(this.tFr), Integer.valueOf(this.tFs), Integer.valueOf(this.tFt), localStringBuilder });
     reset();
     AppMethodBeat.o(173728);
   }
@@ -143,20 +143,20 @@ public final class a
   {
     AppMethodBeat.i(173727);
     this.scene = 0;
-    this.sIB = 0;
-    this.sIC = 0;
-    this.sID = 0;
-    this.sIE = 0;
-    this.sIF = 0;
-    this.sIG = 0;
-    this.sIH = 0;
-    this.sII = 0;
-    this.sIJ.clear();
-    this.sIK.clear();
-    this.sIL.clear();
-    this.sIM.clear();
-    this.sIN.clear();
-    this.sIO.clear();
+    this.tFm = 0;
+    this.tFn = 0;
+    this.tFo = 0;
+    this.tFp = 0;
+    this.tFq = 0;
+    this.tFr = 0;
+    this.tFs = 0;
+    this.tFt = 0;
+    this.tFu.clear();
+    this.tFv.clear();
+    this.tFw.clear();
+    this.tFx.clear();
+    this.tFy.clear();
+    this.tFz.clear();
     AppMethodBeat.o(173727);
   }
   
@@ -213,6 +213,18 @@ public final class a
       return;
     }
     this.scene = 16;
+  }
+  
+  public static final class a
+  {
+    public static a tFA;
+    
+    static
+    {
+      AppMethodBeat.i(111225);
+      tFA = new a((byte)0);
+      AppMethodBeat.o(111225);
+    }
   }
 }
 

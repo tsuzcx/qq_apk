@@ -1,13 +1,15 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.h.a;
+import com.tencent.mm.al.h.b;
 import com.tencent.mm.sdk.b.b;
 
 public final class fv
   extends b
 {
-  public a dfU;
-  public b dfV;
+  public a drj;
+  public b drk;
   
   public fv()
   {
@@ -16,31 +18,32 @@ public final class fv
   
   private fv(byte paramByte)
   {
-    AppMethodBeat.i(116021);
-    this.dfU = new a();
-    this.dfV = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(116019);
+    this.drj = new a();
+    this.drk = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116021);
+    AppMethodBeat.o(116019);
   }
   
   public static final class a
   {
-    public Runnable cLX;
-    public int duration;
-    public String filePath;
+    public boolean dbL;
+    public boolean drl = false;
+    public h.a drm;
+    public h.b drn;
+    public String fileName;
     public int op;
   }
   
   public static final class b
   {
-    public boolean dbS = false;
-    public int dfW;
+    public boolean dno = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.fv
  * JD-Core Version:    0.7.0.1
  */

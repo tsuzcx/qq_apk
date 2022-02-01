@@ -12,34 +12,34 @@ import java.util.List;
 final class b
   implements d.a<Object>, e
 {
-  private final List<h> aEb;
-  private final f<?> aEc;
-  private final e.a aEd;
-  private int aEe = -1;
-  private h aEf;
-  private List<n<File, ?>> aEg;
-  private int aEh;
-  private volatile n.a<?> aEi;
-  private File aEj;
+  private final List<h> aFS;
+  private final f<?> aFT;
+  private final e.a aFU;
+  private int aFV = -1;
+  private h aFW;
+  private List<n<File, ?>> aFX;
+  private int aFY;
+  private volatile n.a<?> aFZ;
+  private File aGa;
   
   b(f<?> paramf, e.a parama)
   {
-    this(paramf.od(), paramf, parama);
+    this(paramf.ov(), paramf, parama);
     AppMethodBeat.i(76921);
     AppMethodBeat.o(76921);
   }
   
   b(List<h> paramList, f<?> paramf, e.a parama)
   {
-    this.aEb = paramList;
-    this.aEc = paramf;
-    this.aEd = parama;
+    this.aFS = paramList;
+    this.aFT = paramf;
+    this.aFU = parama;
   }
   
-  private boolean nZ()
+  private boolean or()
   {
     AppMethodBeat.i(76923);
-    if (this.aEh < this.aEg.size())
+    if (this.aFY < this.aFX.size())
     {
       AppMethodBeat.o(76923);
       return true;
@@ -48,19 +48,19 @@ final class b
     return false;
   }
   
-  public final void R(Object paramObject)
+  public final void S(Object paramObject)
   {
     AppMethodBeat.i(76925);
-    this.aEd.a(this.aEf, paramObject, this.aEi.aIy, com.bumptech.glide.c.a.aCR, this.aEf);
+    this.aFU.a(this.aFW, paramObject, this.aFZ.aKp, com.bumptech.glide.c.a.aEI, this.aFW);
     AppMethodBeat.o(76925);
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(76924);
-    n.a locala = this.aEi;
+    n.a locala = this.aFZ;
     if (locala != null) {
-      locala.aIy.cancel();
+      locala.aKp.cancel();
     }
     AppMethodBeat.o(76924);
   }
@@ -68,45 +68,45 @@ final class b
   public final void e(Exception paramException)
   {
     AppMethodBeat.i(76926);
-    this.aEd.a(this.aEf, paramException, this.aEi.aIy, com.bumptech.glide.c.a.aCR);
+    this.aFU.a(this.aFW, paramException, this.aFZ.aKp, com.bumptech.glide.c.a.aEI);
     AppMethodBeat.o(76926);
   }
   
-  public final boolean nY()
+  public final boolean oq()
   {
     boolean bool = false;
     AppMethodBeat.i(76922);
     Object localObject;
-    while ((this.aEg == null) || (!nZ()))
+    while ((this.aFX == null) || (!or()))
     {
-      this.aEe += 1;
-      if (this.aEe >= this.aEb.size())
+      this.aFV += 1;
+      if (this.aFV >= this.aFS.size())
       {
         AppMethodBeat.o(76922);
         return false;
       }
-      localObject = (h)this.aEb.get(this.aEe);
-      c localc = new c((h)localObject, this.aEc.aEk);
-      this.aEj = this.aEc.ob().a(localc);
-      if (this.aEj != null)
+      localObject = (h)this.aFS.get(this.aFV);
+      c localc = new c((h)localObject, this.aFT.aGb);
+      this.aGa = this.aFT.ot().a(localc);
+      if (this.aGa != null)
       {
-        this.aEf = ((h)localObject);
-        this.aEg = this.aEc.t(this.aEj);
-        this.aEh = 0;
+        this.aFW = ((h)localObject);
+        this.aFX = this.aFT.t(this.aGa);
+        this.aFY = 0;
       }
     }
-    this.aEi = null;
-    if ((!bool) && (nZ()))
+    this.aFZ = null;
+    if ((!bool) && (or()))
     {
-      localObject = this.aEg;
-      int i = this.aEh;
-      this.aEh = (i + 1);
-      this.aEi = ((n)((List)localObject).get(i)).b(this.aEj, this.aEc.width, this.aEc.height, this.aEc.aEm);
-      if ((this.aEi == null) || (!this.aEc.k(this.aEi.aIy.nU()))) {
+      localObject = this.aFX;
+      int i = this.aFY;
+      this.aFY = (i + 1);
+      this.aFZ = ((n)((List)localObject).get(i)).b(this.aGa, this.aFT.width, this.aFT.height, this.aFT.aGd);
+      if ((this.aFZ == null) || (!this.aFT.k(this.aFZ.aKp.om()))) {
         break label279;
       }
       bool = true;
-      this.aEi.aIy.a(this.aEc.aEt, this);
+      this.aFZ.aKp.a(this.aFT.aGk, this);
     }
     label279:
     for (;;)

@@ -8,58 +8,50 @@ import java.util.List;
 public abstract class b
   extends a
 {
+  int Azx;
   protected Context mContext;
   ArrayList<Object> mItems = new ArrayList();
-  int zhv;
   
   protected b(Context paramContext)
   {
     this.mContext = paramContext;
-    this.zhv = 3;
+    this.Azx = 3;
   }
   
-  public boolean PT(int paramInt)
+  public boolean RC(int paramInt)
   {
     return true;
   }
   
-  public boolean PU(int paramInt)
+  public boolean RD(int paramInt)
   {
     return true;
   }
   
   public final void add(int paramInt, Object paramObject)
   {
-    dG(paramObject);
+    dJ(paramObject);
     this.mItems.add(paramInt, paramObject);
     notifyDataSetChanged();
   }
   
   public final void add(Object paramObject)
   {
-    dG(paramObject);
+    dJ(paramObject);
     this.mItems.add(paramObject);
     notifyDataSetChanged();
   }
   
   public void clear()
   {
-    this.zhu.clear();
+    this.Azw.clear();
     this.mItems.clear();
-    notifyDataSetChanged();
-  }
-  
-  public void fU(List<?> paramList)
-  {
-    clear();
-    fT(paramList);
-    this.mItems.addAll(paramList);
     notifyDataSetChanged();
   }
   
   public final int getColumnCount()
   {
-    return this.zhv;
+    return this.Azx;
   }
   
   protected final Context getContext()
@@ -77,7 +69,15 @@ public abstract class b
     return this.mItems.get(paramInt);
   }
   
-  public void hE(int paramInt1, int paramInt2)
+  public void gf(List<?> paramList)
+  {
+    clear();
+    ge(paramList);
+    this.mItems.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public void hV(int paramInt1, int paramInt2)
   {
     if (paramInt2 < getCount())
     {

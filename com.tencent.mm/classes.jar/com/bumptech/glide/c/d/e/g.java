@@ -17,18 +17,18 @@ import java.util.List;
 
 final class g
 {
-  private final com.bumptech.glide.c.b.a.e aAt;
-  final j aBl;
-  private m<Bitmap> aGs;
-  final a aKi;
-  private boolean aKj;
-  private boolean aKk;
-  private com.bumptech.glide.i<Bitmap> aKl;
-  a aKm;
-  boolean aKn;
-  a aKo;
-  Bitmap aKp;
-  a aKq;
+  private final com.bumptech.glide.c.b.a.e aCk;
+  final j aDc;
+  private m<Bitmap> aIj;
+  final a aLZ;
+  private boolean aMa;
+  private boolean aMb;
+  private com.bumptech.glide.i<Bitmap> aMc;
+  a aMd;
+  boolean aMe;
+  a aMf;
+  Bitmap aMg;
+  a aMh;
   final List<b> callbacks;
   private final Handler handler;
   boolean isRunning;
@@ -37,33 +37,33 @@ final class g
   {
     AppMethodBeat.i(77514);
     this.callbacks = new ArrayList();
-    this.aBl = paramj;
+    this.aDc = paramj;
     paramj = new Handler(Looper.getMainLooper(), new c());
-    this.aAt = parame;
+    this.aCk = parame;
     this.handler = paramj;
-    this.aKl = parami;
-    this.aKi = parama;
+    this.aMc = parami;
+    this.aLZ = parama;
     a(paramm, paramBitmap);
     AppMethodBeat.o(77514);
   }
   
   g(com.bumptech.glide.c paramc, a parama, int paramInt1, int paramInt2, m<Bitmap> paramm, Bitmap paramBitmap)
   {
-    this(paramc.aAt, com.bumptech.glide.c.ae(paramc.aAw.getBaseContext()), parama, com.bumptech.glide.c.ae(paramc.aAw.getBaseContext()).nw().a(com.bumptech.glide.f.e.a(com.bumptech.glide.c.b.i.aFr).pD().pE().aW(paramInt1, paramInt2)), paramm, paramBitmap);
+    this(paramc.aCk, com.bumptech.glide.c.ae(paramc.aCn.getBaseContext()), parama, com.bumptech.glide.c.ae(paramc.aCn.getBaseContext()).nO().a(com.bumptech.glide.f.e.a(com.bumptech.glide.c.b.i.aHi).pV().pW().aX(paramInt1, paramInt2)), paramm, paramBitmap);
     AppMethodBeat.i(77513);
     AppMethodBeat.o(77513);
   }
   
-  private void ps()
+  private void pK()
   {
     AppMethodBeat.i(77520);
-    if ((!this.isRunning) || (this.aKj))
+    if ((!this.isRunning) || (this.aMa))
     {
       AppMethodBeat.o(77520);
       return;
     }
-    if (this.aKk) {
-      if (this.aKq != null) {
+    if (this.aMb) {
+      if (this.aMh != null) {
         break label91;
       }
     }
@@ -71,28 +71,28 @@ final class g
     for (boolean bool = true;; bool = false)
     {
       com.bumptech.glide.h.i.checkArgument(bool, "Pending target must be null when starting from the first frame");
-      this.aKi.nJ();
-      this.aKk = false;
-      if (this.aKq == null) {
+      this.aLZ.ob();
+      this.aMb = false;
+      if (this.aMh == null) {
         break;
       }
-      a locala = this.aKq;
-      this.aKq = null;
+      a locala = this.aMh;
+      this.aMh = null;
       a(locala);
       AppMethodBeat.o(77520);
       return;
     }
-    this.aKj = true;
-    int i = this.aKi.nH();
+    this.aMa = true;
+    int i = this.aLZ.nZ();
     long l1 = SystemClock.uptimeMillis();
     long l2 = i;
-    this.aKi.advance();
-    this.aKo = new a(this.handler, this.aKi.nI(), l2 + l1);
-    this.aKl.a(com.bumptech.glide.f.e.e(pu())).P(this.aKi).b(this.aKo);
+    this.aLZ.advance();
+    this.aMf = new a(this.handler, this.aLZ.oa(), l2 + l1);
+    this.aMc.a(com.bumptech.glide.f.e.e(pM())).Q(this.aLZ).b(this.aMf);
     AppMethodBeat.o(77520);
   }
   
-  private static h pu()
+  private static h pM()
   {
     AppMethodBeat.i(77523);
     b localb = new b(Double.valueOf(Math.random()));
@@ -109,16 +109,16 @@ final class g
       return;
     }
     this.isRunning = true;
-    this.aKn = false;
-    ps();
+    this.aMe = false;
+    pK();
     AppMethodBeat.o(77519);
   }
   
   final void a(a parama)
   {
     AppMethodBeat.i(77522);
-    this.aKj = false;
-    if (this.aKn)
+    this.aMa = false;
+    if (this.aMe)
     {
       this.handler.obtainMessage(2, parama).sendToTarget();
       AppMethodBeat.o(77522);
@@ -126,33 +126,33 @@ final class g
     }
     if (!this.isRunning)
     {
-      this.aKq = parama;
+      this.aMh = parama;
       AppMethodBeat.o(77522);
       return;
     }
-    if (parama.aKs != null)
+    if (parama.aMj != null)
     {
-      pt();
-      a locala = this.aKm;
-      this.aKm = parama;
+      pL();
+      a locala = this.aMd;
+      this.aMd = parama;
       int i = this.callbacks.size() - 1;
       while (i >= 0)
       {
-        ((b)this.callbacks.get(i)).pq();
+        ((b)this.callbacks.get(i)).pI();
         i -= 1;
       }
       if (locala != null) {
         this.handler.obtainMessage(2, locala).sendToTarget();
       }
     }
-    ps();
+    pK();
     AppMethodBeat.o(77522);
   }
   
   final void a(b paramb)
   {
     AppMethodBeat.i(77516);
-    if (this.aKn)
+    if (this.aMe)
     {
       paramb = new IllegalStateException("Cannot subscribe to a cleared frame loader");
       AppMethodBeat.o(77516);
@@ -175,9 +175,9 @@ final class g
   final void a(m<Bitmap> paramm, Bitmap paramBitmap)
   {
     AppMethodBeat.i(77515);
-    this.aGs = ((m)com.bumptech.glide.h.i.checkNotNull(paramm, "Argument must not be null"));
-    this.aKp = ((Bitmap)com.bumptech.glide.h.i.checkNotNull(paramBitmap, "Argument must not be null"));
-    this.aKl = this.aKl.a(new com.bumptech.glide.f.e().a(paramm));
+    this.aIj = ((m)com.bumptech.glide.h.i.checkNotNull(paramm, "Argument must not be null"));
+    this.aMg = ((Bitmap)com.bumptech.glide.h.i.checkNotNull(paramBitmap, "Argument must not be null"));
+    this.aMc = this.aMc.a(new com.bumptech.glide.f.e().a(paramm));
     AppMethodBeat.o(77515);
   }
   
@@ -194,26 +194,26 @@ final class g
   final int getFrameCount()
   {
     AppMethodBeat.i(77518);
-    int i = this.aKi.getFrameCount();
+    int i = this.aLZ.getFrameCount();
     AppMethodBeat.o(77518);
     return i;
   }
   
-  final Bitmap pr()
+  final Bitmap pJ()
   {
-    if (this.aKm != null) {
-      return this.aKm.aKs;
+    if (this.aMd != null) {
+      return this.aMd.aMj;
     }
-    return this.aKp;
+    return this.aMg;
   }
   
-  final void pt()
+  final void pL()
   {
     AppMethodBeat.i(77521);
-    if (this.aKp != null)
+    if (this.aMg != null)
     {
-      this.aAt.g(this.aKp);
-      this.aKp = null;
+      this.aCk.g(this.aMg);
+      this.aMg = null;
     }
     AppMethodBeat.o(77521);
   }
@@ -221,8 +221,8 @@ final class g
   static final class a
     extends com.bumptech.glide.f.a.c<Bitmap>
   {
-    private final long aKr;
-    Bitmap aKs;
+    private final long aMi;
+    Bitmap aMj;
     private final Handler handler;
     final int index;
     
@@ -230,13 +230,13 @@ final class g
     {
       this.handler = paramHandler;
       this.index = paramInt;
-      this.aKr = paramLong;
+      this.aMi = paramLong;
     }
   }
   
   public static abstract interface b
   {
-    public abstract void pq();
+    public abstract void pI();
   }
   
   final class c
@@ -257,7 +257,7 @@ final class g
       if (paramMessage.what == 2)
       {
         paramMessage = (g.a)paramMessage.obj;
-        g.this.aBl.c(paramMessage);
+        g.this.aDc.c(paramMessage);
       }
       AppMethodBeat.o(77512);
       return false;

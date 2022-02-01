@@ -1,11 +1,12 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: 微信-7.0.16-1700-3454.apk
+apkFileName: 微信-7.0.18-1740-3454.apk
 compressionType: false
 doNotCompress:
 - png
 - assets/b7c9a7fd-851e-7761-07df-8ab7c0b02787.sec
 - assets/default_poi_categories.dat
 - assets/emoji_config.conf
+- gif
 - assets/game_region_default.txt
 - assets/googleLogo.data
 - m4a
@@ -14,16 +15,13 @@ doNotCompress:
 - wav
 - assets/wenote_config.conf
 - assets/xwalk-command-line
-- assets/TencentLocationComp/1
-- assets/TencentLocationDat/V
+- assets/TencentLocationComp_sapp/1
 - jpg
 - assets/fts/feature/version.info
 - mp3
-- assets/tencentmap/tms_ps/tms_module/cbcdc3e1ae93dd03306cadacd828682c
+- assets/tencentmap/tms_ps/tms_module/d93cbed572d6c1f607def2a3aa4f13db
 - assets/wxa_library/develop/DEVELOP
 - assets/wxa_library/local/LOCAL
-- assets/xlab/version.txt
-- gif
 isFrameworkApk: false
 packageInfo:
   forcedPackageId: '127'
@@ -40,5 +38,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1700'
-  versionName: 7.0.16
+  versionCode: '1740'
+  versionName: 7.0.18

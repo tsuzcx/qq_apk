@@ -17,8 +17,8 @@ public final class aa
     AppMethodBeat.i(144952);
     if ("miter".equalsIgnoreCase(paramString))
     {
-      paramd.jzc.setStrokeJoin(Paint.Join.MITER);
-      paramd.jzb.setStrokeJoin(Paint.Join.MITER);
+      paramd.jSZ.setStrokeJoin(Paint.Join.MITER);
+      paramd.jSY.setStrokeJoin(Paint.Join.MITER);
     }
     for (;;)
     {
@@ -26,13 +26,13 @@ public final class aa
       return true;
       if ("round".equalsIgnoreCase(paramString))
       {
-        paramd.jzc.setStrokeJoin(Paint.Join.ROUND);
-        paramd.jzb.setStrokeJoin(Paint.Join.ROUND);
+        paramd.jSZ.setStrokeJoin(Paint.Join.ROUND);
+        paramd.jSY.setStrokeJoin(Paint.Join.ROUND);
       }
       else if ("bevel".equalsIgnoreCase(paramString))
       {
-        paramd.jzc.setStrokeJoin(Paint.Join.BEVEL);
-        paramd.jzb.setStrokeJoin(Paint.Join.BEVEL);
+        paramd.jSZ.setStrokeJoin(Paint.Join.BEVEL);
+        paramd.jSY.setStrokeJoin(Paint.Join.BEVEL);
       }
     }
   }
@@ -46,7 +46,7 @@ public final class aa
       AppMethodBeat.o(144953);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.jzF);
+    boolean bool = b(paramd, paramCanvas.jTA);
     AppMethodBeat.o(144953);
     return bool;
   }
@@ -64,7 +64,7 @@ public final class aa
     return bool;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144950);
     SetLineJoinActionArg localSetLineJoinActionArg = new SetLineJoinActionArg();

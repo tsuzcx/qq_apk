@@ -3,16 +3,16 @@ package com.tencent.mm.live.core.core;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/core/LiveCoreConstants;", "", "()V", "AudienceMode", "LiveCoreEvent", "NetStatus", "plugin-core_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/core/LiveCoreConstants;", "", "()V", "AudienceMode", "LiveCoreEvent", "NetStatus", "plugin-core_release"})
 public final class c
 {
-  public static final c gni;
+  public static final c gGR;
   
   static
   {
-    AppMethodBeat.i(209128);
-    gni = new c();
-    AppMethodBeat.o(209128);
+    AppMethodBeat.i(216785);
+    gGR = new c();
+    AppMethodBeat.o(216785);
   }
 }
 

@@ -15,8 +15,8 @@ import android.provider.MediaStore.Video.Media;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.io.File;
@@ -24,7 +24,7 @@ import java.io.File;
 public final class a
 {
   /* Error */
-  private static String e(Context paramContext, Uri paramUri)
+  private static String f(Context paramContext, Uri paramUri)
   {
     // Byte code:
     //   0: ldc 11
@@ -47,7 +47,7 @@ public final class a
     //   33: aload_0
     //   34: invokestatic 42	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   37: invokevirtual 46	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   40: invokestatic 51	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   40: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   43: aload_0
     //   44: invokestatic 57	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   47: ifeq +10 -> 57
@@ -119,19 +119,19 @@ public final class a
     //   182: aload_0
     //   183: invokestatic 42	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   186: invokevirtual 46	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   189: invokestatic 51	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   189: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   192: new 108	com/tencent/mm/vfs/e
     //   195: dup
-    //   196: invokestatic 113	com/tencent/mm/loader/j/b:apK	()Ljava/lang/String;
+    //   196: invokestatic 113	com/tencent/mm/loader/j/b:asy	()Ljava/lang/String;
     //   199: aload_0
     //   200: invokespecial 115	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   203: astore 5
     //   205: aload 5
-    //   207: invokevirtual 119	com/tencent/mm/vfs/e:fxU	()Lcom/tencent/mm/vfs/e;
+    //   207: invokevirtual 119	com/tencent/mm/vfs/e:fOJ	()Lcom/tencent/mm/vfs/e;
     //   210: invokevirtual 123	com/tencent/mm/vfs/e:exists	()Z
     //   213: ifne +12 -> 225
     //   216: aload 5
-    //   218: invokevirtual 119	com/tencent/mm/vfs/e:fxU	()Lcom/tencent/mm/vfs/e;
+    //   218: invokevirtual 119	com/tencent/mm/vfs/e:fOJ	()Lcom/tencent/mm/vfs/e;
     //   221: invokevirtual 126	com/tencent/mm/vfs/e:mkdirs	()Z
     //   224: pop
     //   225: aload 5
@@ -144,7 +144,7 @@ public final class a
     //   241: invokevirtual 132	com/tencent/mm/vfs/e:createNewFile	()Z
     //   244: pop
     //   245: aload 5
-    //   247: invokestatic 138	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   247: invokestatic 138	com/tencent/mm/vfs/i:aj	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
     //   250: astore_0
     //   251: aload 4
     //   253: aload_1
@@ -153,9 +153,9 @@ public final class a
     //   258: aload_1
     //   259: ifnonnull +18 -> 277
     //   262: aload_1
-    //   263: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   263: invokestatic 148	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   266: aload_0
-    //   267: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   267: invokestatic 148	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   270: ldc 11
     //   272: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   275: aconst_null
@@ -197,11 +197,11 @@ public final class a
     //   332: ldc 162
     //   334: iconst_0
     //   335: anewarray 4	java/lang/Object
-    //   338: invokestatic 166	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   338: invokestatic 166	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   341: aload_1
-    //   342: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   342: invokestatic 148	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   345: aload_0
-    //   346: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   346: invokestatic 148	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   349: ldc 11
     //   351: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   354: aconst_null
@@ -211,13 +211,13 @@ public final class a
     //   359: aload_0
     //   360: astore_3
     //   361: aload 5
-    //   363: invokevirtual 170	com/tencent/mm/vfs/e:fxV	()Landroid/net/Uri;
+    //   363: invokevirtual 170	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
     //   366: invokestatic 175	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   369: astore 5
     //   371: aload_1
-    //   372: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   372: invokestatic 148	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   375: aload_0
-    //   376: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   376: invokestatic 148	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   379: ldc 11
     //   381: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   384: aload 5
@@ -228,9 +228,9 @@ public final class a
     //   391: aconst_null
     //   392: astore_0
     //   393: aload 4
-    //   395: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   395: invokestatic 148	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   398: aload_0
-    //   399: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   399: invokestatic 148	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   402: ldc 11
     //   404: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   407: aload_1
@@ -289,16 +289,16 @@ public final class a
     AppMethodBeat.i(155916);
     if ((paramIntent == null) || (paramIntent.getData() == null))
     {
-      ac.e("MicroMsg.GetVideoMetadata", "input invalid");
+      ad.e("MicroMsg.GetVideoMetadata", "input invalid");
       AppMethodBeat.o(155916);
       return null;
     }
-    long l = bs.Gn();
+    long l = bt.HI();
     String str = paramIntent.getDataString();
-    ac.i("MicroMsg.GetVideoMetadata", "get video file name, dataString ".concat(String.valueOf(str)));
+    ad.i("MicroMsg.GetVideoMetadata", "get video file name, dataString ".concat(String.valueOf(str)));
     if (str == null)
     {
-      ac.e("MicroMsg.GetVideoMetadata", "dataString empty");
+      ad.e("MicroMsg.GetVideoMetadata", "dataString empty");
       AppMethodBeat.o(155916);
       return null;
     }
@@ -323,7 +323,7 @@ public final class a
         }
         ((Cursor)localObject2).close();
       }
-      ac.i("MicroMsg.GetVideoMetadata", "get video filename:" + (String)localObject3 + ", cost time: " + bs.aO(l));
+      ad.i("MicroMsg.GetVideoMetadata", "get video filename:" + (String)localObject3 + ", cost time: " + bt.aO(l));
       if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (new e((String)localObject3).exists()))
       {
         AppMethodBeat.o(155916);
@@ -332,7 +332,7 @@ public final class a
     }
     else if (str.startsWith("content://"))
     {
-      localObject1 = bs.j(paramContext, paramIntent.getData());
+      localObject1 = bt.k(paramContext, paramIntent.getData());
     }
     for (;;)
     {
@@ -352,7 +352,7 @@ public final class a
             break label497;
           }
           localObject1 = (Uri)paramIntent.getExtras().getParcelable("android.intent.extra.STREAM");
-          if ((localObject1 == null) || (bs.isNullOrNil(((Uri)localObject1).getPath()))) {
+          if ((localObject1 == null) || (bt.isNullOrNil(((Uri)localObject1).getPath()))) {
             break label497;
           }
         }
@@ -370,7 +370,7 @@ public final class a
         {
           localObject1 = g.getExternalStorageDirectory().getAbsolutePath() + ((String)localObject1).substring(7);
           break label309;
-          paramContext = e(paramContext, paramIntent.getData());
+          paramContext = f(paramContext, paramIntent.getData());
           AppMethodBeat.o(155916);
           return paramContext;
         }
@@ -388,7 +388,7 @@ public final class a
   public static a.a j(Context paramContext, Intent paramIntent)
   {
     // Byte code:
-    //   0: ldc_w 301
+    //   0: ldc_w 303
     //   3: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: ifnull +10 -> 17
@@ -397,28 +397,28 @@ public final class a
     //   14: ifnonnull +18 -> 32
     //   17: ldc 34
     //   19: ldc 188
-    //   21: invokestatic 190	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   24: ldc_w 301
+    //   21: invokestatic 191	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   24: ldc_w 303
     //   27: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: aconst_null
     //   31: areturn
-    //   32: invokestatic 194	com/tencent/mm/sdk/platformtools/bs:Gn	()J
+    //   32: invokestatic 195	com/tencent/mm/sdk/platformtools/bt:HI	()J
     //   35: lstore 4
     //   37: aload_1
-    //   38: invokevirtual 197	android/content/Intent:getDataString	()Ljava/lang/String;
+    //   38: invokevirtual 198	android/content/Intent:getDataString	()Ljava/lang/String;
     //   41: astore 8
     //   43: ldc 34
-    //   45: ldc_w 303
+    //   45: ldc_w 305
     //   48: aload 8
     //   50: invokestatic 42	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   53: invokevirtual 46	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   56: invokestatic 51	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   56: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   59: aload 8
     //   61: ifnonnull +18 -> 79
     //   64: ldc 34
-    //   66: ldc 201
-    //   68: invokestatic 190	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   71: ldc_w 301
+    //   66: ldc 202
+    //   68: invokestatic 191	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   71: ldc_w 303
     //   74: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   77: aconst_null
     //   78: areturn
@@ -427,12 +427,12 @@ public final class a
     //   83: astore 13
     //   85: new 6	com/tencent/mm/compatible/h/a$a
     //   88: dup
-    //   89: invokespecial 304	com/tencent/mm/compatible/h/a$a:<init>	()V
+    //   89: invokespecial 306	com/tencent/mm/compatible/h/a$a:<init>	()V
     //   92: astore 12
     //   94: aload 8
-    //   96: getstatic 207	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
-    //   99: invokevirtual 208	android/net/Uri:toString	()Ljava/lang/String;
-    //   102: invokevirtual 211	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   96: getstatic 208	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
+    //   99: invokevirtual 209	android/net/Uri:toString	()Ljava/lang/String;
+    //   102: invokevirtual 212	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   105: ifeq +435 -> 540
     //   108: aload 13
     //   110: aload_1
@@ -441,45 +441,45 @@ public final class a
     //   115: aconst_null
     //   116: aconst_null
     //   117: aconst_null
-    //   118: invokevirtual 215	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   118: invokevirtual 216	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   121: astore 8
-    //   123: ldc_w 305
+    //   123: ldc_w 307
     //   126: istore_2
     //   127: iload_2
     //   128: istore_3
     //   129: aload 8
     //   131: ifnull +198 -> 329
     //   134: aload 8
-    //   136: invokeinterface 221 1 0
+    //   136: invokeinterface 222 1 0
     //   141: ifle +179 -> 320
     //   144: aload 8
-    //   146: invokeinterface 224 1 0
+    //   146: invokeinterface 225 1 0
     //   151: pop
     //   152: aload 8
     //   154: aload 8
-    //   156: ldc_w 307
-    //   159: invokeinterface 230 2 0
-    //   164: invokeinterface 311 2 0
+    //   156: ldc_w 309
+    //   159: invokeinterface 231 2 0
+    //   164: invokeinterface 313 2 0
     //   169: istore_3
     //   170: aload 12
-    //   172: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   172: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   175: ifnonnull +24 -> 199
     //   178: aload 12
     //   180: aload 8
     //   182: aload 8
-    //   184: ldc 226
-    //   186: invokeinterface 230 2 0
-    //   191: invokeinterface 234 2 0
-    //   196: putfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   184: ldc 227
+    //   186: invokeinterface 231 2 0
+    //   191: invokeinterface 235 2 0
+    //   196: putfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   199: aload 12
     //   201: aload 8
     //   203: aload 8
-    //   205: ldc_w 317
-    //   208: invokeinterface 230 2 0
-    //   213: invokeinterface 311 2 0
-    //   218: putfield 320	com/tencent/mm/compatible/h/a$a:duration	I
+    //   205: ldc_w 319
+    //   208: invokeinterface 231 2 0
+    //   213: invokeinterface 313 2 0
+    //   218: putfield 322	com/tencent/mm/compatible/h/a$a:duration	I
     //   221: aload 12
-    //   223: getfield 320	com/tencent/mm/compatible/h/a$a:duration	I
+    //   223: getfield 322	com/tencent/mm/compatible/h/a$a:duration	I
     //   226: ifne +86 -> 312
     //   229: aconst_null
     //   230: astore 11
@@ -490,17 +490,17 @@ public final class a
     //   239: aload 11
     //   241: astore_1
     //   242: ldc 34
-    //   244: ldc_w 322
-    //   247: invokestatic 51	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   244: ldc_w 324
+    //   247: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   250: aload 10
     //   252: astore 9
     //   254: aload 11
     //   256: astore_1
     //   257: aload_0
     //   258: aload 12
-    //   260: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
-    //   263: invokestatic 326	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   266: invokestatic 331	com/tencent/mm/compatible/b/k:d	(Landroid/content/Context;Landroid/net/Uri;)Lcom/tencent/mm/compatible/b/k;
+    //   260: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   263: invokestatic 328	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   266: invokestatic 333	com/tencent/mm/compatible/b/k:e	(Landroid/content/Context;Landroid/net/Uri;)Lcom/tencent/mm/compatible/b/k;
     //   269: astore 10
     //   271: aload 10
     //   273: ifnull +547 -> 820
@@ -509,7 +509,7 @@ public final class a
     //   280: aload 10
     //   282: astore_1
     //   283: aload 10
-    //   285: invokevirtual 336	android/media/MediaPlayer:getDuration	()I
+    //   285: invokevirtual 338	android/media/MediaPlayer:getDuration	()I
     //   288: istore_2
     //   289: aload 10
     //   291: astore 9
@@ -517,22 +517,22 @@ public final class a
     //   295: astore_1
     //   296: aload 12
     //   298: iload_2
-    //   299: putfield 320	com/tencent/mm/compatible/h/a$a:duration	I
+    //   299: putfield 322	com/tencent/mm/compatible/h/a$a:duration	I
     //   302: aload 10
     //   304: ifnull +8 -> 312
     //   307: aload 10
-    //   309: invokevirtual 339	android/media/MediaPlayer:release	()V
+    //   309: invokevirtual 341	android/media/MediaPlayer:release	()V
     //   312: aload 12
     //   314: aconst_null
-    //   315: putfield 343	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   315: putfield 345	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
     //   318: iload_3
     //   319: istore_2
     //   320: aload 8
-    //   322: invokeinterface 237 1 0
+    //   322: invokeinterface 238 1 0
     //   327: iload_2
     //   328: istore_3
     //   329: iload_3
-    //   330: ldc_w 305
+    //   330: ldc_w 307
     //   333: if_icmpeq +29 -> 362
     //   336: iload_3
     //   337: i2l
@@ -542,198 +542,198 @@ public final class a
     //   344: lload 6
     //   346: iconst_1
     //   347: aconst_null
-    //   348: invokestatic 349	android/provider/MediaStore$Video$Thumbnails:getThumbnail	(Landroid/content/ContentResolver;JILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   351: putfield 343	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   348: invokestatic 351	android/provider/MediaStore$Video$Thumbnails:getThumbnail	(Landroid/content/ContentResolver;JILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   351: putfield 345	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
     //   354: ldc 34
-    //   356: ldc_w 351
-    //   359: invokestatic 51	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   356: ldc_w 353
+    //   359: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   362: aload 12
-    //   364: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
-    //   367: invokestatic 294	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   364: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   367: invokestatic 295	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   370: ifne +111 -> 481
     //   373: aload 12
-    //   375: getfield 343	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   375: getfield 345	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
     //   378: ifnonnull +103 -> 481
     //   381: ldc 34
-    //   383: ldc_w 353
-    //   386: invokestatic 51	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   383: ldc_w 355
+    //   386: invokestatic 51	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   389: aload 12
     //   391: aload 12
-    //   393: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
-    //   396: invokestatic 357	com/tencent/mm/compatible/h/a:sH	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   399: putfield 343	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   393: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   396: invokestatic 359	com/tencent/mm/compatible/h/a:vw	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   399: putfield 345	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
     //   402: aload 12
-    //   404: getfield 343	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   404: getfield 345	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
     //   407: ifnull +14 -> 421
     //   410: aload 12
-    //   412: getfield 343	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
-    //   415: invokestatic 361	com/tencent/mm/compatible/h/a:u	(Landroid/graphics/Bitmap;)Z
+    //   412: getfield 345	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   415: invokestatic 363	com/tencent/mm/compatible/h/a:u	(Landroid/graphics/Bitmap;)Z
     //   418: ifeq +17 -> 435
     //   421: aload 12
     //   423: aload 12
-    //   425: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   425: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   428: iconst_1
-    //   429: invokestatic 367	com/tencent/mm/sdk/platformtools/f:createVideoThumbnail	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
-    //   432: putfield 343	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   429: invokestatic 369	com/tencent/mm/sdk/platformtools/g:createVideoThumbnail	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
+    //   432: putfield 345	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
     //   435: aload 12
-    //   437: getfield 343	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   437: getfield 345	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
     //   440: ifnonnull +41 -> 481
     //   443: aload_0
     //   444: new 183	android/content/Intent
     //   447: dup
-    //   448: ldc_w 369
+    //   448: ldc_w 371
     //   451: new 82	java/lang/StringBuilder
     //   454: dup
-    //   455: ldc_w 279
+    //   455: ldc_w 280
     //   458: invokespecial 88	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   461: aload 12
-    //   463: getfield 343	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
-    //   466: invokevirtual 372	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   463: getfield 345	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   466: invokevirtual 374	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   469: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   472: invokestatic 326	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   475: invokespecial 375	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
-    //   478: invokevirtual 379	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
+    //   472: invokestatic 328	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   475: invokespecial 377	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
+    //   478: invokevirtual 381	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
     //   481: ldc 34
-    //   483: ldc_w 381
+    //   483: ldc_w 383
     //   486: iconst_3
     //   487: anewarray 4	java/lang/Object
     //   490: dup
     //   491: iconst_0
     //   492: lload 4
-    //   494: invokestatic 245	com/tencent/mm/sdk/platformtools/bs:aO	(J)J
-    //   497: invokestatic 386	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   494: invokestatic 246	com/tencent/mm/sdk/platformtools/bt:aO	(J)J
+    //   497: invokestatic 388	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   500: aastore
     //   501: dup
     //   502: iconst_1
     //   503: aload 12
-    //   505: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   505: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   508: aastore
     //   509: dup
     //   510: iconst_2
     //   511: aload 12
-    //   513: getfield 320	com/tencent/mm/compatible/h/a$a:duration	I
-    //   516: invokestatic 391	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   513: getfield 322	com/tencent/mm/compatible/h/a$a:duration	I
+    //   516: invokestatic 393	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   519: aastore
-    //   520: invokestatic 394	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   520: invokestatic 396	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   523: aload 12
-    //   525: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   525: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   528: ifnull +377 -> 905
-    //   531: ldc_w 301
+    //   531: ldc_w 303
     //   534: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   537: aload 12
     //   539: areturn
     //   540: aload 8
-    //   542: ldc 251
-    //   544: invokevirtual 211	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   542: ldc 252
+    //   544: invokevirtual 212	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   547: ifeq +141 -> 688
     //   550: aload 12
     //   552: aload_0
     //   553: aload_1
     //   554: invokevirtual 186	android/content/Intent:getData	()Landroid/net/Uri;
-    //   557: invokestatic 254	com/tencent/mm/sdk/platformtools/bs:j	(Landroid/content/Context;Landroid/net/Uri;)Ljava/lang/String;
-    //   560: putfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   557: invokestatic 255	com/tencent/mm/sdk/platformtools/bt:k	(Landroid/content/Context;Landroid/net/Uri;)Ljava/lang/String;
+    //   560: putfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   563: aload 12
-    //   565: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   565: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   568: invokestatic 57	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   571: ifeq +16 -> 587
     //   574: aload 12
     //   576: aload_0
     //   577: aload_1
     //   578: invokevirtual 186	android/content/Intent:getData	()Landroid/net/Uri;
-    //   581: invokestatic 298	com/tencent/mm/compatible/h/a:e	(Landroid/content/Context;Landroid/net/Uri;)Ljava/lang/String;
-    //   584: putfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   581: invokestatic 299	com/tencent/mm/compatible/h/a:f	(Landroid/content/Context;Landroid/net/Uri;)Ljava/lang/String;
+    //   584: putfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   587: aload 12
-    //   589: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   589: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   592: ifnull +321 -> 913
     //   595: aload 12
-    //   597: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
-    //   600: ldc_w 256
-    //   603: invokevirtual 211	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   597: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   600: ldc_w 257
+    //   603: invokevirtual 212	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   606: ifeq +160 -> 766
     //   609: aload 12
     //   611: new 82	java/lang/StringBuilder
     //   614: dup
     //   615: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   618: invokestatic 262	com/tencent/mm/compatible/util/g:getExternalStorageDirectory	()Ljava/io/File;
-    //   621: invokevirtual 267	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   618: invokestatic 263	com/tencent/mm/compatible/util/g:getExternalStorageDirectory	()Ljava/io/File;
+    //   621: invokevirtual 268	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   624: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   627: aload 12
-    //   629: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   629: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   632: bipush 24
-    //   634: invokevirtual 270	java/lang/String:substring	(I)Ljava/lang/String;
+    //   634: invokevirtual 271	java/lang/String:substring	(I)Ljava/lang/String;
     //   637: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   640: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   643: putfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   643: putfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   646: new 82	java/lang/StringBuilder
     //   649: dup
-    //   650: ldc_w 272
+    //   650: ldc_w 273
     //   653: invokespecial 88	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   656: aload 12
-    //   658: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
-    //   661: invokestatic 277	android/database/DatabaseUtils:sqlEscapeString	(Ljava/lang/String;)Ljava/lang/String;
+    //   658: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   661: invokestatic 278	android/database/DatabaseUtils:sqlEscapeString	(Ljava/lang/String;)Ljava/lang/String;
     //   664: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   667: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   670: astore_1
     //   671: aload 13
-    //   673: getstatic 207	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
+    //   673: getstatic 208	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   676: aconst_null
     //   677: aload_1
     //   678: aconst_null
     //   679: aconst_null
-    //   680: invokevirtual 215	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   680: invokevirtual 216	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   683: astore 8
     //   685: goto -562 -> 123
     //   688: aload 8
-    //   690: ldc_w 279
-    //   693: invokevirtual 211	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   690: ldc_w 280
+    //   693: invokevirtual 212	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   696: ifeq -109 -> 587
     //   699: aload_1
-    //   700: invokevirtual 283	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   700: invokevirtual 284	android/content/Intent:getExtras	()Landroid/os/Bundle;
     //   703: ifnull +40 -> 743
     //   706: aload_1
-    //   707: invokevirtual 283	android/content/Intent:getExtras	()Landroid/os/Bundle;
-    //   710: ldc_w 285
-    //   713: invokevirtual 291	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   707: invokevirtual 284	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   710: ldc_w 286
+    //   713: invokevirtual 292	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
     //   716: checkcast 65	android/net/Uri
     //   719: astore_1
     //   720: aload_1
     //   721: ifnull +22 -> 743
     //   724: aload_1
     //   725: invokevirtual 80	android/net/Uri:getPath	()Ljava/lang/String;
-    //   728: invokestatic 294	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   728: invokestatic 295	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   731: ifne +12 -> 743
     //   734: aload 12
     //   736: aload_1
     //   737: invokevirtual 80	android/net/Uri:getPath	()Ljava/lang/String;
-    //   740: putfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   740: putfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   743: aload 12
-    //   745: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   745: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   748: ifnonnull -161 -> 587
     //   751: aload 12
     //   753: aload 8
     //   755: bipush 7
-    //   757: invokevirtual 270	java/lang/String:substring	(I)Ljava/lang/String;
-    //   760: putfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   757: invokevirtual 271	java/lang/String:substring	(I)Ljava/lang/String;
+    //   760: putfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   763: goto -176 -> 587
     //   766: aload 12
-    //   768: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
-    //   771: ldc_w 296
-    //   774: invokevirtual 211	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   768: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   771: ldc_w 297
+    //   774: invokevirtual 212	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   777: ifeq -131 -> 646
     //   780: aload 12
     //   782: new 82	java/lang/StringBuilder
     //   785: dup
     //   786: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   789: invokestatic 262	com/tencent/mm/compatible/util/g:getExternalStorageDirectory	()Ljava/io/File;
-    //   792: invokevirtual 267	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   789: invokestatic 263	com/tencent/mm/compatible/util/g:getExternalStorageDirectory	()Ljava/io/File;
+    //   792: invokevirtual 268	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   795: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   798: aload 12
-    //   800: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   800: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   803: bipush 7
-    //   805: invokevirtual 270	java/lang/String:substring	(I)Ljava/lang/String;
+    //   805: invokevirtual 271	java/lang/String:substring	(I)Ljava/lang/String;
     //   808: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   811: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   814: putfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   814: putfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   817: goto -171 -> 646
     //   820: iconst_0
     //   821: istore_2
@@ -743,41 +743,41 @@ public final class a
     //   829: astore_1
     //   830: ldc 34
     //   832: aload 10
-    //   834: ldc_w 396
+    //   834: ldc_w 398
     //   837: iconst_1
     //   838: anewarray 4	java/lang/Object
     //   841: dup
     //   842: iconst_0
     //   843: aload 12
-    //   845: getfield 315	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
+    //   845: getfield 317	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
     //   848: aastore
-    //   849: invokestatic 166	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   849: invokestatic 166	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   852: aload 9
     //   854: ifnull -542 -> 312
     //   857: aload 9
-    //   859: invokevirtual 339	android/media/MediaPlayer:release	()V
+    //   859: invokevirtual 341	android/media/MediaPlayer:release	()V
     //   862: goto -550 -> 312
     //   865: astore_0
     //   866: aload_1
     //   867: ifnull +7 -> 874
     //   870: aload_1
-    //   871: invokevirtual 339	android/media/MediaPlayer:release	()V
-    //   874: ldc_w 301
+    //   871: invokevirtual 341	android/media/MediaPlayer:release	()V
+    //   874: ldc_w 303
     //   877: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   880: aload_0
     //   881: athrow
     //   882: astore_1
     //   883: ldc 34
     //   885: aload_1
-    //   886: ldc_w 398
+    //   886: ldc_w 400
     //   889: iconst_0
     //   890: anewarray 4	java/lang/Object
-    //   893: invokestatic 166	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   893: invokestatic 166	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   896: aload 12
     //   898: aconst_null
-    //   899: putfield 343	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   899: putfield 345	com/tencent/mm/compatible/h/a$a:bitmap	Landroid/graphics/Bitmap;
     //   902: goto -540 -> 362
-    //   905: ldc_w 301
+    //   905: ldc_w 303
     //   908: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   911: aconst_null
     //   912: areturn
@@ -813,46 +813,12 @@ public final class a
     //   340	362	882	java/lang/Exception
   }
   
-  private static Bitmap sH(String paramString)
-  {
-    AppMethodBeat.i(155918);
-    if ((bs.isNullOrNil(paramString)) || (!i.eA(paramString)))
-    {
-      ac.e("MicroMsg.GetVideoMetadata", "getVideoThumb, %s not exist!!", new Object[] { paramString });
-      AppMethodBeat.o(155918);
-      return null;
-    }
-    long l = bs.Gn();
-    ac.i("MicroMsg.GetVideoMetadata", "getVideoThumb, %s", new Object[] { paramString });
-    try
-    {
-      d locald = new d();
-      locald.setDataSource(paramString);
-      int i = bs.getInt(locald.extractMetadata(18), -1);
-      int j = bs.getInt(locald.extractMetadata(19), -1);
-      paramString = locald.getFrameAtTime(0L, 2);
-      locald.release();
-      ac.i("MicroMsg.GetVideoMetadata", "getVideoThumb, width: %s, height: %s, cost:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(bs.aO(l)) });
-      if (paramString != null)
-      {
-        AppMethodBeat.o(155918);
-        return paramString;
-      }
-    }
-    catch (Exception paramString)
-    {
-      ac.printErrStackTrace("MicroMsg.GetVideoMetadata", paramString, "get video thumb error! %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(155918);
-    }
-    return null;
-  }
-  
   private static boolean u(Bitmap paramBitmap)
   {
     AppMethodBeat.i(155919);
     if (paramBitmap != null)
     {
-      long l2 = bs.Gn();
+      long l2 = bt.HI();
       paramBitmap = Bitmap.createScaledBitmap(paramBitmap, 20, 20, true);
       int[] arrayOfInt = new int[400];
       paramBitmap.getPixels(arrayOfInt, 0, 20, 0, 0, 20, 20);
@@ -864,7 +830,7 @@ public final class a
         i += 1;
       }
       l1 = ((float)l1 / 400.0F);
-      ac.i("MicroMsg.GetVideoMetadata", "isBitmapDark, avg bitmap avgColor:%s, cost:%s", new Object[] { Long.valueOf(l1), Long.valueOf(bs.aO(l2)) });
+      ad.i("MicroMsg.GetVideoMetadata", "isBitmapDark, avg bitmap avgColor:%s, cost:%s", new Object[] { Long.valueOf(l1), Long.valueOf(bt.aO(l2)) });
       if (l1 <= 10L)
       {
         AppMethodBeat.o(155919);
@@ -875,6 +841,40 @@ public final class a
     }
     AppMethodBeat.o(155919);
     return false;
+  }
+  
+  private static Bitmap vw(String paramString)
+  {
+    AppMethodBeat.i(155918);
+    if ((bt.isNullOrNil(paramString)) || (!i.fv(paramString)))
+    {
+      ad.e("MicroMsg.GetVideoMetadata", "getVideoThumb, %s not exist!!", new Object[] { paramString });
+      AppMethodBeat.o(155918);
+      return null;
+    }
+    long l = bt.HI();
+    ad.i("MicroMsg.GetVideoMetadata", "getVideoThumb, %s", new Object[] { paramString });
+    try
+    {
+      d locald = new d();
+      locald.setDataSource(paramString);
+      int i = bt.getInt(locald.extractMetadata(18), -1);
+      int j = bt.getInt(locald.extractMetadata(19), -1);
+      paramString = locald.getFrameAtTime(0L, 2);
+      locald.release();
+      ad.i("MicroMsg.GetVideoMetadata", "getVideoThumb, width: %s, height: %s, cost:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(bt.aO(l)) });
+      if (paramString != null)
+      {
+        AppMethodBeat.o(155918);
+        return paramString;
+      }
+    }
+    catch (Exception paramString)
+    {
+      ad.printErrStackTrace("MicroMsg.GetVideoMetadata", paramString, "get video thumb error! %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(155918);
+    }
+    return null;
   }
 }
 

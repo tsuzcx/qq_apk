@@ -2,36 +2,36 @@ package com.tencent.mm.plugin.sns.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.sns.ad.d.h;
 import com.tencent.mm.plugin.sns.storage.a;
 import com.tencent.mm.plugin.sns.storage.a.c.a;
-import com.tencent.mm.plugin.sns.storage.f;
 import com.tencent.mm.plugin.sns.storage.i;
 import com.tencent.mm.plugin.sns.storage.o;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
 import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.czl;
-import com.tencent.mm.protocal.protobuf.czo;
-import com.tencent.mm.protocal.protobuf.czt;
-import com.tencent.mm.protocal.protobuf.daa;
-import com.tencent.mm.protocal.protobuf.dam;
-import com.tencent.mm.protocal.protobuf.dap;
-import com.tencent.mm.protocal.protobuf.daq;
-import com.tencent.mm.protocal.protobuf.dar;
-import com.tencent.mm.protocal.protobuf.das;
-import com.tencent.mm.protocal.protobuf.dat;
-import com.tencent.mm.protocal.protobuf.daz;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.dey;
+import com.tencent.mm.protocal.protobuf.dfb;
+import com.tencent.mm.protocal.protobuf.dfg;
+import com.tencent.mm.protocal.protobuf.dfn;
+import com.tencent.mm.protocal.protobuf.dfz;
+import com.tencent.mm.protocal.protobuf.dgc;
+import com.tencent.mm.protocal.protobuf.dgd;
+import com.tencent.mm.protocal.protobuf.dge;
+import com.tencent.mm.protocal.protobuf.dgf;
+import com.tencent.mm.protocal.protobuf.dgg;
+import com.tencent.mm.protocal.protobuf.dgm;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -39,15 +39,15 @@ public final class q
   extends n
   implements com.tencent.mm.network.k
 {
-  public com.tencent.mm.ak.g callback;
-  public int dwR;
-  private ao handler;
-  private com.tencent.mm.ak.b rr;
+  public com.tencent.mm.al.f callback;
+  public int dJd;
+  private ap handler;
+  private com.tencent.mm.al.b rr;
   public int type;
-  private long xRB;
-  private daa xRC;
-  private Object xRD;
-  private int xRE;
+  public long zhv;
+  public dfn zhw;
+  private Object zhx;
+  private int zhy;
   
   public q(long paramLong, int paramInt)
   {
@@ -58,40 +58,40 @@ public final class q
   {
     AppMethodBeat.i(95602);
     this.type = -1;
-    this.xRB = 0L;
-    this.dwR = -1;
-    this.xRE = 0;
-    this.handler = new ao(Looper.getMainLooper());
-    this.xRC = null;
+    this.zhv = 0L;
+    this.dJd = -1;
+    this.zhy = 0;
+    this.handler = new ap(Looper.getMainLooper());
+    this.zhw = null;
     this.type = 9;
-    this.xRB = paramLong;
-    ac.i("MicroMsg.NetSceneSnsObjectOp", "snsId : " + paramLong + "  op : " + this.type);
+    this.zhv = paramLong;
+    ad.i("MicroMsg.NetSceneSnsObjectOp", "snsId : " + paramLong + "  op : " + this.type);
     Object localObject1 = new b.a();
-    ((b.a)localObject1).hvt = new das();
-    ((b.a)localObject1).hvu = new dat();
+    ((b.a)localObject1).hNM = new dgf();
+    ((b.a)localObject1).hNN = new dgg();
     ((b.a)localObject1).uri = "/cgi-bin/micromsg-bin/mmsnsobjectop";
     ((b.a)localObject1).funcId = 218;
-    ((b.a)localObject1).reqCmdId = 104;
+    ((b.a)localObject1).hNO = 104;
     ((b.a)localObject1).respCmdId = 1000000104;
-    this.rr = ((b.a)localObject1).aAz();
-    localObject1 = (das)this.rr.hvr.hvw;
-    Object localObject2 = af.dHR().xK(paramLong);
+    this.rr = ((b.a)localObject1).aDC();
+    localObject1 = (dgf)this.rr.hNK.hNQ;
+    Object localObject2 = ag.dUe().Ai(paramLong);
     if (localObject2 != null) {
-      this.dwR = ((p)localObject2).yvp;
+      this.dJd = ((p)localObject2).zMC;
     }
-    localObject2 = P(paramLong, this.type);
-    dar localdar = new dar();
-    localdar.Scene = paramInt1;
-    localdar.FJH = paramInt2;
-    localdar.FJI = z.FI(paramString);
+    localObject2 = U(paramLong, this.type);
+    dge localdge = new dge();
+    localdge.Scene = paramInt1;
+    localdge.Hup = paramInt2;
+    localdge.Huq = z.IX(paramString);
     try
     {
-      paramString = localdar.toByteArray();
-      ((dap)localObject2).FqS = new SKBuiltinBuffer_t().setBuffer(paramString);
+      paramString = localdge.toByteArray();
+      ((dgc)localObject2).HaC = new SKBuiltinBuffer_t().setBuffer(paramString);
       paramString = new LinkedList();
       paramString.add(localObject2);
-      ((das)localObject1).FJK = paramString;
-      ((das)localObject1).FJJ = paramString.size();
+      ((dgf)localObject1).Hus = paramString;
+      ((dgf)localObject1).Hur = paramString.size();
       AppMethodBeat.o(95602);
       return;
     }
@@ -99,50 +99,50 @@ public final class q
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramString, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramString, "", new Object[0]);
       }
     }
   }
   
-  public q(long paramLong, int paramInt, daa paramdaa)
+  public q(long paramLong, int paramInt, dfn paramdfn)
   {
-    this(paramLong, paramInt, paramdaa, null);
+    this(paramLong, paramInt, paramdfn, null);
   }
   
-  private q(long paramLong, int paramInt, daa paramdaa, Object paramObject)
+  private q(long paramLong, int paramInt, dfn paramdfn, Object paramObject)
   {
     AppMethodBeat.i(95601);
     this.type = -1;
-    this.xRB = 0L;
-    this.dwR = -1;
-    this.xRE = 0;
-    this.handler = new ao(Looper.getMainLooper());
-    this.xRC = paramdaa;
+    this.zhv = 0L;
+    this.dJd = -1;
+    this.zhy = 0;
+    this.handler = new ap(Looper.getMainLooper());
+    this.zhw = paramdfn;
     this.type = paramInt;
-    this.xRB = paramLong;
-    this.xRD = paramObject;
-    ac.i("MicroMsg.NetSceneSnsObjectOp", "snsId : " + paramLong + "  op : " + paramInt);
-    if (paramdaa != null) {
-      ac.i("MicroMsg.NetSceneSnsObjectOp", paramdaa.FIZ + " " + paramdaa.FJb);
+    this.zhv = paramLong;
+    this.zhx = paramObject;
+    ad.i("MicroMsg.NetSceneSnsObjectOp", "snsId : " + paramLong + "  op : " + paramInt);
+    if (paramdfn != null) {
+      ad.i("MicroMsg.NetSceneSnsObjectOp", paramdfn.HtH + " " + paramdfn.HtJ);
     }
-    paramdaa = new b.a();
-    paramdaa.hvt = new das();
-    paramdaa.hvu = new dat();
-    paramdaa.uri = "/cgi-bin/micromsg-bin/mmsnsobjectop";
-    paramdaa.funcId = 218;
-    paramdaa.reqCmdId = 104;
-    paramdaa.respCmdId = 1000000104;
-    this.rr = paramdaa.aAz();
-    paramdaa = (das)this.rr.hvr.hvw;
-    Object localObject = af.dHR().xK(paramLong);
+    paramdfn = new b.a();
+    paramdfn.hNM = new dgf();
+    paramdfn.hNN = new dgg();
+    paramdfn.uri = "/cgi-bin/micromsg-bin/mmsnsobjectop";
+    paramdfn.funcId = 218;
+    paramdfn.hNO = 104;
+    paramdfn.respCmdId = 1000000104;
+    this.rr = paramdfn.aDC();
+    paramdfn = (dgf)this.rr.hNK.hNQ;
+    Object localObject = ag.dUe().Ai(paramLong);
     if (localObject != null) {
-      this.dwR = ((p)localObject).yvp;
+      this.dJd = ((p)localObject).zMC;
     }
-    paramObject = a(paramLong, paramInt, this.xRC, paramObject);
+    paramObject = a(paramLong, paramInt, this.zhw, paramObject);
     localObject = new LinkedList();
     ((LinkedList)localObject).add(paramObject);
-    paramdaa.FJK = ((LinkedList)localObject);
-    paramdaa.FJJ = ((LinkedList)localObject).size();
+    paramdfn.Hus = ((LinkedList)localObject);
+    paramdfn.Hur = ((LinkedList)localObject).size();
     AppMethodBeat.o(95601);
   }
   
@@ -151,93 +151,93 @@ public final class q
     this(paramLong, paramInt, null, paramObject);
   }
   
-  private static dap P(long paramLong, int paramInt)
+  private static dgc U(long paramLong, int paramInt)
   {
     AppMethodBeat.i(95604);
-    dap localdap = new dap();
-    localdap.FqS = new SKBuiltinBuffer_t();
-    localdap.Id = paramLong;
-    localdap.fZz = paramInt;
+    dgc localdgc = new dgc();
+    localdgc.HaC = new SKBuiltinBuffer_t();
+    localdgc.Id = paramLong;
+    localdgc.gsV = paramInt;
     AppMethodBeat.o(95604);
-    return localdap;
+    return localdgc;
   }
   
-  private static dap a(long paramLong, int paramInt, daa paramdaa, Object paramObject)
+  private static dgc a(long paramLong, int paramInt, dfn paramdfn, Object paramObject)
   {
     AppMethodBeat.i(95603);
-    dap localdap = P(paramLong, paramInt);
+    dgc localdgc = U(paramLong, paramInt);
     Object localObject2 = new StringBuilder("getSnsObjectOp ").append(paramInt).append(" ");
     Object localObject1;
     if (paramObject == null)
     {
       localObject1 = "";
-      ac.i("MicroMsg.NetSceneSnsObjectOp", (String)localObject1);
+      ad.i("MicroMsg.NetSceneSnsObjectOp", (String)localObject1);
       localObject2 = "";
       if ((paramInt != 8) && (paramInt != 10) && (paramInt != 7) && (paramInt != 8) && (paramInt != 6)) {
         break label1046;
       }
-      localObject1 = af.dHU().xB(paramLong);
+      localObject1 = ag.dUh().zZ(paramLong);
       if (localObject1 == null) {
         break label1040;
       }
-      localObject1 = ((com.tencent.mm.plugin.sns.storage.e)localObject1).dMb();
+      localObject1 = ((com.tencent.mm.plugin.sns.storage.e)localObject1).dYr();
       label113:
-      if ((localObject1 == null) || (!((p)localObject1).Pe(32))) {
+      if ((localObject1 == null) || (!((p)localObject1).QM(32))) {
         break label1037;
       }
-      localObject2 = ((p)localObject1).dFQ();
+      localObject2 = ((p)localObject1).dRK();
       if (localObject2 != null) {
         break label205;
       }
       localObject2 = "";
       label144:
-      ac.i("MicroMsg.NetSceneSnsObjectOp", "aduxinfo ".concat(String.valueOf(localObject2)));
+      ad.i("MicroMsg.NetSceneSnsObjectOp", "aduxinfo ".concat(String.valueOf(localObject2)));
     }
     for (;;)
     {
       if (paramInt == 6)
       {
-        if ((paramdaa == null) || ((paramdaa.FIZ == 0) && (paramdaa.FJb == 0L)))
+        if ((paramdfn == null) || ((paramdfn.HtH == 0) && (paramdfn.HtJ == 0L)))
         {
           AppMethodBeat.o(95603);
-          return localdap;
+          return localdgc;
           localObject1 = paramObject.toString();
           break;
           label205:
-          localObject2 = ((a)localObject2).dtx;
+          localObject2 = ((a)localObject2).dFy;
           break label144;
         }
-        paramObject = new czt();
-        paramObject.FIV = paramdaa.FJb;
-        paramObject.FIJ = z.FI(bs.bG((String)localObject2, ""));
+        paramObject = new dfg();
+        paramObject.HtD = paramdfn.HtJ;
+        paramObject.Htr = z.IX(bt.bI((String)localObject2, ""));
       }
       for (;;)
       {
         try
         {
-          paramdaa = paramObject.toByteArray();
-          localdap.FqS = new SKBuiltinBuffer_t().setBuffer(paramdaa);
+          paramdfn = paramObject.toByteArray();
+          localdgc.HaC = new SKBuiltinBuffer_t().setBuffer(paramdfn);
           AppMethodBeat.o(95603);
-          return localdap;
+          return localdgc;
         }
-        catch (Exception paramdaa)
+        catch (Exception paramdfn)
         {
-          ac.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramdaa, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramdfn, "", new Object[0]);
           continue;
         }
         if (paramInt != 7) {
           break;
         }
-        paramdaa = new czl();
-        paramdaa.FIJ = z.FI(bs.bG((String)localObject2, ""));
+        paramdfn = new dey();
+        paramdfn.Htr = z.IX(bt.bI((String)localObject2, ""));
         try
         {
-          paramdaa = paramdaa.toByteArray();
-          localdap.FqS = new SKBuiltinBuffer_t().setBuffer(paramdaa);
+          paramdfn = paramdfn.toByteArray();
+          localdgc.HaC = new SKBuiltinBuffer_t().setBuffer(paramdfn);
         }
-        catch (Exception paramdaa)
+        catch (Exception paramdfn)
         {
-          ac.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramdaa, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramdfn, "", new Object[0]);
         }
       }
       if (paramInt == 8) {
@@ -248,131 +248,131 @@ public final class q
           if (paramInt == 0) {
             break label1031;
           }
-          paramdaa = (a.c.a)paramObject;
-          localObject2 = bs.bG((String)localObject2, "");
+          paramdfn = (a.c.a)paramObject;
+          localObject2 = bt.bI((String)localObject2, "");
         }
       }
       label1031:
-      for (paramdaa = (String)localObject2 + new StringBuilder("&").append(paramdaa.xMz).append("|").append(paramdaa.yfo).toString();; paramdaa = (daa)localObject2)
+      for (paramdfn = (String)localObject2 + new StringBuilder("&").append(paramdfn.zcr).append("|").append(paramdfn.zvq).toString();; paramdfn = (dfn)localObject2)
       {
         for (;;)
         {
           for (;;)
           {
-            localObject2 = new czo();
-            ((czo)localObject2).FIJ = z.FI(bs.bG(paramdaa, ""));
+            localObject2 = new dfb();
+            ((dfb)localObject2).Htr = z.IX(bt.bI(paramdfn, ""));
             if (localObject1 != null)
             {
-              ((czo)localObject2).sVo = ((p)localObject1).dMF();
-              paramdaa = ((p)localObject1).getSnsId();
-              localObject1 = af.dHR().auS(paramdaa);
+              ((dfb)localObject2).tRT = ((p)localObject1).dYV();
+              paramdfn = ((p)localObject1).getSnsId();
+              localObject1 = ag.dUe().azZ(paramdfn);
               if (localObject1 != null)
               {
-                paramdaa = h.b(((p)localObject1).dLV());
+                paramdfn = h.b(((p)localObject1).dYl());
                 label522:
-                ((czo)localObject2).FIL = z.FI(bs.bG(paramdaa, ""));
+                ((dfb)localObject2).Htt = z.IX(bt.bI(paramdfn, ""));
               }
             }
             else
             {
-              if ((paramInt == 0) || (((a.c.a)paramObject).yfn != a.c.a.yfj)) {
+              if ((paramInt == 0) || (((a.c.a)paramObject).zvp != a.c.a.zvl)) {
                 break label631;
               }
-              ((czo)localObject2).FIM = a.c.a.yfj;
+              ((dfb)localObject2).Htu = a.c.a.zvl;
             }
             for (;;)
             {
               try
               {
-                paramdaa = ((czo)localObject2).toByteArray();
-                localdap.FqS = new SKBuiltinBuffer_t().setBuffer(paramdaa);
+                paramdfn = ((dfb)localObject2).toByteArray();
+                localdgc.HaC = new SKBuiltinBuffer_t().setBuffer(paramdfn);
               }
-              catch (Exception paramdaa)
+              catch (Exception paramdfn)
               {
-                ac.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramdaa, "", new Object[0]);
+                ad.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramdfn, "", new Object[0]);
               }
               break;
               paramInt = 0;
               break label384;
-              ac.v("SnsAdExtUtil", "getSnsStatExtBySnsId snsInfo null, snsId %s", new Object[] { paramdaa });
-              paramdaa = "";
+              ad.v("SnsAdExtUtil", "getSnsStatExtBySnsId snsInfo null, snsId %s", new Object[] { paramdfn });
+              paramdfn = "";
               break label522;
               label631:
-              af.dHU().delete(paramLong);
-              af.dHW().xF(paramLong);
-              i.xE(paramLong);
+              ag.dUh().delete(paramLong);
+              ag.dUj().Ad(paramLong);
+              i.Ac(paramLong);
               if (paramInt != 0) {
-                ((czo)localObject2).FIM = ((a.c.a)paramObject).yfn;
+                ((dfb)localObject2).Htu = ((a.c.a)paramObject).zvp;
               }
             }
             if (paramInt != 4) {
               break label764;
             }
-            if ((paramdaa == null) || ((paramdaa.FIZ == 0) && (paramdaa.FJb == 0L)))
+            if ((paramdfn == null) || ((paramdfn.HtH == 0) && (paramdfn.HtJ == 0L)))
             {
               AppMethodBeat.o(95603);
-              return localdap;
+              return localdgc;
             }
-            paramObject = new daq();
-            paramObject.FIZ = paramdaa.FIZ;
+            paramObject = new dgd();
+            paramObject.HtH = paramdfn.HtH;
             try
             {
-              paramdaa = paramObject.toByteArray();
-              localdap.FqS = new SKBuiltinBuffer_t().setBuffer(paramdaa);
+              paramdfn = paramObject.toByteArray();
+              localdgc.HaC = new SKBuiltinBuffer_t().setBuffer(paramdfn);
             }
-            catch (Exception paramdaa)
+            catch (Exception paramdfn)
             {
-              ac.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramdaa, "", new Object[0]);
+              ad.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramdfn, "", new Object[0]);
             }
           }
           break;
           label764:
           if (paramInt == 10)
           {
-            paramdaa = new daz();
-            if ((paramObject instanceof com.tencent.mm.bw.b))
+            paramdfn = new dgm();
+            if ((paramObject instanceof com.tencent.mm.bx.b))
             {
-              paramObject = (com.tencent.mm.bw.b)paramObject;
-              paramdaa.FKg = z.al(paramObject.xy);
-              ac.i("MicroMsg.NetSceneSnsObjectOp", "NetSceneSnsObjectOpticket " + paramObject.xy.length);
+              paramObject = (com.tencent.mm.bx.b)paramObject;
+              paramdfn.HuO = z.al(paramObject.zr);
+              ad.i("MicroMsg.NetSceneSnsObjectOp", "NetSceneSnsObjectOpticket " + paramObject.zr.length);
             }
             for (;;)
             {
               try
               {
-                paramdaa = paramdaa.toByteArray();
-                localdap.FqS = new SKBuiltinBuffer_t().setBuffer(paramdaa);
-                ac.i("MicroMsg.NetSceneSnsObjectOp", "opFree " + paramdaa.length);
+                paramdfn = paramdfn.toByteArray();
+                localdgc.HaC = new SKBuiltinBuffer_t().setBuffer(paramdfn);
+                ad.i("MicroMsg.NetSceneSnsObjectOp", "opFree " + paramdfn.length);
               }
-              catch (Exception paramdaa)
+              catch (Exception paramdfn)
               {
-                ac.e("MicroMsg.NetSceneSnsObjectOp", "error ticket " + paramdaa.getMessage());
-                ac.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramdaa, "", new Object[0]);
+                ad.e("MicroMsg.NetSceneSnsObjectOp", "error ticket " + paramdfn.getMessage());
+                ad.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramdfn, "", new Object[0]);
               }
               break;
-              ac.e("MicroMsg.NetSceneSnsObjectOp", "error ticket");
+              ad.e("MicroMsg.NetSceneSnsObjectOp", "error ticket");
             }
           }
           if (paramInt != 12) {
             break;
           }
-          if (!(paramObject instanceof dam)) {
+          if (!(paramObject instanceof dfz)) {
             break label1020;
           }
-          paramdaa = (dam)paramObject;
+          paramdfn = (dfz)paramObject;
           try
           {
-            localdap.FqS = z.al(paramdaa.toByteArray());
-            ac.i("MicroMsg.NetSceneSnsObjectOp", "snsMetionBlockOp, switch:%d " + paramdaa.FJE);
+            localdgc.HaC = z.al(paramdfn.toByteArray());
+            ad.i("MicroMsg.NetSceneSnsObjectOp", "snsMetionBlockOp, switch:%d " + paramdfn.Hum);
           }
-          catch (Exception paramdaa)
+          catch (Exception paramdfn)
           {
-            ac.e("MicroMsg.NetSceneSnsObjectOp", "error snsMetionBlockOp " + paramdaa.getMessage());
+            ad.e("MicroMsg.NetSceneSnsObjectOp", "error snsMetionBlockOp " + paramdfn.getMessage());
           }
         }
         break;
         label1020:
-        ac.e("MicroMsg.NetSceneSnsObjectOp", "error snsMetionBlockOp");
+        ad.e("MicroMsg.NetSceneSnsObjectOp", "error snsMetionBlockOp");
         break;
       }
       label1037:
@@ -385,10 +385,10 @@ public final class q
     }
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.f paramf)
   {
     AppMethodBeat.i(95605);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(95605);
     return i;
@@ -402,7 +402,7 @@ public final class q
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(95606);
-    ac.i("MicroMsg.NetSceneSnsObjectOp", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    ad.i("MicroMsg.NetSceneSnsObjectOp", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       if ((paramInt2 == 4) && (this.type == 1)) {
@@ -415,9 +415,9 @@ public final class q
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         AppMethodBeat.o(95606);
         return;
-        af.dHQ().xp(this.xRB);
+        ag.dUd().zO(this.zhv);
         continue;
-        af.dHQ().xr(this.xRB);
+        ag.dUd().zQ(this.zhv);
       }
     }
     switch (this.type)
@@ -433,38 +433,38 @@ public final class q
       {
         for (;;)
         {
-          af.dHQ().dHs();
+          ag.dUd().dTE();
           this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
           AppMethodBeat.o(95606);
           return;
-          af.dHQ().xp(this.xRB);
-          af.dHR().delete(this.xRB);
-          paramq = (dat)((com.tencent.mm.ak.b)paramq).hvs.hvw;
-          if (paramq.FJM == 1)
+          ag.dUd().zO(this.zhv);
+          ag.dUe().delete(this.zhv);
+          paramq = (dgg)((com.tencent.mm.al.b)paramq).hNL.hNQ;
+          if (paramq.Huu == 1)
           {
-            af.dHV().v(af.dHx(), paramq.FJO);
+            ag.dUi().x(ag.dTJ(), paramq.Huw);
             continue;
-            paramq = af.dHR().xK(this.xRB);
+            paramq = ag.dUe().Ai(this.zhv);
             if (paramq != null)
             {
               paramq.field_pravited = 1;
-              paramq.dMo();
-              af.dHR().b(this.xRB, paramq);
+              paramq.dYE();
+              ag.dUe().b(this.zhv, paramq);
               continue;
-              paramq = af.dHR().xK(this.xRB);
+              paramq = ag.dUe().Ai(this.zhv);
               if (paramq != null)
               {
                 paramq.field_pravited = 0;
                 paramq.field_localPrivate = 0;
-                paramq.dMr();
-                af.dHR().b(this.xRB, paramq);
+                paramq.dYH();
+                ag.dUe().b(this.zhv, paramq);
                 continue;
-                af.dHQ().xr(this.xRB);
+                ag.dUd().zQ(this.zhv);
               }
             }
           }
         }
-        paramArrayOfByte = af.dHR().xK(this.xRB);
+        paramArrayOfByte = ag.dUe().Ai(this.zhv);
       } while (paramArrayOfByte == null);
     }
     for (;;)
@@ -478,23 +478,23 @@ public final class q
         if (!localIterator.hasNext()) {
           break label1350;
         }
-        paramq = (daa)localIterator.next();
-        if ((this.xRC == null) || (paramq.FIZ != this.xRC.FIZ)) {
+        paramq = (dfn)localIterator.next();
+        if ((this.zhw == null) || (paramq.HtH != this.zhw.HtH)) {
           continue;
         }
         if (paramq != null) {
           localSnsObject.CommentUserList.remove(paramq);
         }
-        paramArrayOfByte.bB(localSnsObject.toByteArray());
-        af.dHR().K(paramArrayOfByte);
-        af.dHW().i(paramArrayOfByte.field_snsId, this.xRC.FIZ, this.xRC.ndI);
+        paramArrayOfByte.bI(localSnsObject.toByteArray());
+        ag.dUe().M(paramArrayOfByte);
+        ag.dUj().i(paramArrayOfByte.field_snsId, this.zhw.HtH, this.zhw.nEf);
       }
       catch (Exception paramq)
       {
-        ac.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramq, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramq, "", new Object[0]);
       }
       break;
-      paramArrayOfByte = af.dHU().xB(this.xRB);
+      paramArrayOfByte = ag.dUh().zZ(this.zhv);
       if (paramArrayOfByte == null) {
         break;
       }
@@ -507,53 +507,53 @@ public final class q
           if (!localIterator.hasNext()) {
             break label1344;
           }
-          paramq = (daa)localIterator.next();
-          if ((this.xRC == null) || (paramq.FJb != this.xRC.FJb)) {
+          paramq = (dfn)localIterator.next();
+          if ((this.zhw == null) || (paramq.HtJ != this.zhw.HtJ)) {
             continue;
           }
           if (paramq != null) {
             localSnsObject.CommentUserList.remove(paramq);
           }
-          paramArrayOfByte.bB(localSnsObject.toByteArray());
-          af.dHU().replace(paramArrayOfByte);
-          af.dHW().i(paramArrayOfByte.field_snsId, this.xRC.FJb, this.xRC.ndI);
+          paramArrayOfByte.bI(localSnsObject.toByteArray());
+          ag.dUh().replace(paramArrayOfByte);
+          ag.dUj().i(paramArrayOfByte.field_snsId, this.zhw.HtJ, this.zhw.nEf);
         }
         catch (Exception paramq)
         {
-          ac.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramq, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.NetSceneSnsObjectOp", paramq, "", new Object[0]);
         }
         break;
-        af.dHQ().xr(this.xRB);
+        ag.dUd().zQ(this.zhv);
         break;
-        if ((this.xRD != null) && ((this.xRD instanceof a.c.a)) && (((a.c.a)this.xRD).yfn == a.c.a.yfj)) {
+        if ((this.zhx != null) && ((this.zhx instanceof a.c.a)) && (((a.c.a)this.zhx).zvp == a.c.a.zvl)) {
           break;
         }
-        af.dHU().delete(this.xRB);
-        af.dHW().xF(this.xRB);
-        i.xE(this.xRB);
+        ag.dUh().delete(this.zhv);
+        ag.dUj().Ad(this.zhv);
+        i.Ac(this.zhv);
         break;
-        paramq = af.dHR().xK(this.xRB);
+        paramq = ag.dUe().Ai(this.zhv);
         if (paramq == null) {
           break;
         }
-        paramq.Pf(2);
-        af.dHR().b(this.xRB, paramq);
+        paramq.QN(2);
+        ag.dUe().b(this.zhv, paramq);
         break;
-        ac.i("MicroMsg.NetSceneSnsObjectOp", "scene end switch " + this.xRE);
+        ad.i("MicroMsg.NetSceneSnsObjectOp", "scene end switch " + this.zhy);
         label951:
         int i;
         int j;
-        if (this.xRE == 0)
+        if (this.zhy == 0)
         {
-          com.tencent.mm.kernel.g.agS();
-          com.tencent.mm.kernel.g.agR().agA().set(ah.a.GHT, Boolean.TRUE);
-          com.tencent.mm.kernel.g.agS();
-          paramInt1 = ((Integer)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GHV, Integer.valueOf(0))).intValue();
-          com.tencent.mm.kernel.g.agS();
-          com.tencent.mm.kernel.g.agR().agA().set(ah.a.GHV, Integer.valueOf(paramInt1 + 1));
-          com.tencent.mm.kernel.g.agS();
-          i = ((Integer)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GHW, Integer.valueOf(0))).intValue();
-          if (this.xRE != 0) {
+          g.ajD();
+          g.ajC().ajl().set(al.a.Iul, Boolean.TRUE);
+          g.ajD();
+          paramInt1 = ((Integer)g.ajC().ajl().get(al.a.Iun, Integer.valueOf(0))).intValue();
+          g.ajD();
+          g.ajC().ajl().set(al.a.Iun, Integer.valueOf(paramInt1 + 1));
+          g.ajD();
+          i = ((Integer)g.ajC().ajl().get(al.a.Iuo, Integer.valueOf(0))).intValue();
+          if (this.zhy != 0) {
             break label1165;
           }
           i += 1;
@@ -563,25 +563,25 @@ public final class q
             paramInt1 = 216;
           }
           if (paramInt1 >= 200) {
-            com.tencent.mm.plugin.sns.lucky.a.b.lA(paramInt1);
+            com.tencent.mm.plugin.sns.lucky.a.b.ma(paramInt1);
           }
-          ac.i("MicroMsg.NetSceneSnsObjectOp", "opcount open " + paramInt1 + " " + i);
+          ad.i("MicroMsg.NetSceneSnsObjectOp", "opcount open " + paramInt1 + " " + i);
           paramInt1 = i;
         }
         for (;;)
         {
-          com.tencent.mm.kernel.g.agS();
-          com.tencent.mm.kernel.g.agR().agA().set(ah.a.GHW, Integer.valueOf(paramInt1));
+          g.ajD();
+          g.ajC().ajl().set(al.a.Iuo, Integer.valueOf(paramInt1));
           break;
-          if (this.xRE != 1) {
+          if (this.zhy != 1) {
             break label951;
           }
-          com.tencent.mm.kernel.g.agS();
-          com.tencent.mm.kernel.g.agR().agA().set(ah.a.GHT, Boolean.FALSE);
+          g.ajD();
+          g.ajC().ajl().set(al.a.Iul, Boolean.FALSE);
           break label951;
           label1165:
           paramInt1 = i;
-          if (this.xRE == 1)
+          if (this.zhy == 1)
           {
             i += 1;
             j = i * 2 + 198 + 1;
@@ -590,20 +590,20 @@ public final class q
               paramInt1 = 217;
             }
             if (paramInt1 >= 201) {
-              com.tencent.mm.plugin.sns.lucky.a.b.lA(paramInt1);
+              com.tencent.mm.plugin.sns.lucky.a.b.ma(paramInt1);
             }
-            ac.i("MicroMsg.NetSceneSnsObjectOp", "opcount close " + paramInt1 + " " + i);
+            ad.i("MicroMsg.NetSceneSnsObjectOp", "opcount close " + paramInt1 + " " + i);
             paramInt1 = i;
           }
         }
-        if ((this.xRD == null) || (!(this.xRD instanceof dam))) {
+        if ((this.zhx == null) || (!(this.zhx instanceof dfz))) {
           break;
         }
-        if (((dam)this.xRD).FJE == 1) {}
+        if (((dfz)this.zhx).Hum == 1) {}
         for (boolean bool = true;; bool = false)
         {
-          af.dHW().E(this.xRB, bool);
-          ac.i("MicroMsg.NetSceneSnsObjectOp", "remind  update [snsId:%d] ->isSilence: %b", new Object[] { Long.valueOf(this.xRB), Boolean.valueOf(bool) });
+          ag.dUj().E(this.zhv, bool);
+          ad.i("MicroMsg.NetSceneSnsObjectOp", "remind  update [snsId:%d] ->isSilence: %b", new Object[] { Long.valueOf(this.zhv), Boolean.valueOf(bool) });
           break;
         }
         label1344:

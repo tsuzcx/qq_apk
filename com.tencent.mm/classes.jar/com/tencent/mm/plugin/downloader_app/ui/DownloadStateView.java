@@ -13,9 +13,9 @@ import com.tencent.mm.cc.a;
 public class DownloadStateView
   extends AppCompatImageView
 {
-  private int FG;
+  private int Hx;
   private Paint mPaint;
-  private int oMQ = -1;
+  private int pqy = -1;
   
   public DownloadStateView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,7 +26,7 @@ public class DownloadStateView
   {
     AppMethodBeat.i(175279);
     super.onDraw(paramCanvas);
-    if (this.FG < 0)
+    if (this.Hx < 0)
     {
       AppMethodBeat.o(175279);
       return;
@@ -41,22 +41,22 @@ public class DownloadStateView
     this.mPaint.setStrokeCap(Paint.Cap.ROUND);
     this.mPaint.setStrokeWidth(f1);
     paramCanvas.drawCircle(f2, f3, f4, this.mPaint);
-    this.mPaint.setColor(this.oMQ);
-    paramCanvas.drawArc(f2 - f4, f3 - f4, f2 + f4, f3 + f4, -90.0F, this.FG / 100.0F * 360.0F, false, this.mPaint);
+    this.mPaint.setColor(this.pqy);
+    paramCanvas.drawArc(f2 - f4, f3 - f4, f2 + f4, f3 + f4, -90.0F, this.Hx / 100.0F * 360.0F, false, this.mPaint);
     AppMethodBeat.o(175279);
   }
   
   public void setProgress(int paramInt)
   {
     AppMethodBeat.i(175278);
-    this.FG = paramInt;
+    this.Hx = paramInt;
     postInvalidate();
     AppMethodBeat.o(175278);
   }
   
   public void setProgressColor(int paramInt)
   {
-    this.oMQ = paramInt;
+    this.pqy = paramInt;
   }
 }
 

@@ -7,7 +7,8 @@ import com.tencent.mm.sdk.b.b;
 public final class tk
   extends b
 {
-  public a dwq;
+  public a dHR;
+  public b dHS;
   
   public tk()
   {
@@ -16,20 +17,21 @@ public final class tk
   
   private tk(byte paramByte)
   {
-    AppMethodBeat.i(199932);
-    this.dwq = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(155375);
+    this.dHR = new a();
+    this.dHS = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(199932);
+    AppMethodBeat.o(155375);
   }
   
   public static final class a
   {
-    public int CW;
-    public int bPH;
-    public Intent dlL;
-    public int requestCode;
+    public Intent intent;
+    public String username;
   }
+  
+  public static final class b {}
 }
 
 

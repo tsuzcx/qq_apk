@@ -1,33 +1,33 @@
 package com.tencent.mm.sticker.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.i.c;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.protocal.protobuf.ayy;
-import com.tencent.mm.protocal.protobuf.bpl;
-import com.tencent.mm.protocal.protobuf.bpn;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.bdc;
+import com.tencent.mm.protocal.protobuf.bty;
+import com.tencent.mm.protocal.protobuf.bua;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.io.ByteArrayOutputStream;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/loader/StickerFileIdTask;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "(Lcom/tencent/mm/sticker/loader/StickerLoadInfo;)V", "TAG", "", "aesKey", "fileId", "fileSize", "", "netScene", "Lcom/tencent/mm/sticker/net/NetSceneGetLensInfo;", "outputPath", "task", "Lcom/tencent/mm/cdn/keep_TaskInfo;", "zipPath", "call", "", "cancel", "handleFile", "", "onResult", "success", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "runTask", "uniqueId", "plugin-sticker_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/loader/StickerFileIdTask;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "(Lcom/tencent/mm/sticker/loader/StickerLoadInfo;)V", "TAG", "", "aesKey", "fileId", "fileSize", "", "netScene", "Lcom/tencent/mm/sticker/net/NetSceneGetLensInfo;", "outputPath", "task", "Lcom/tencent/mm/cdn/keep_TaskInfo;", "zipPath", "call", "", "cancel", "handleFile", "", "onResult", "success", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "runTask", "uniqueId", "plugin-sticker_release"})
 public final class d
   extends g
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
-  private com.tencent.mm.sticker.b.a GAF;
-  private String GAG;
+  private String ImA;
+  private com.tencent.mm.sticker.b.a Imz;
   final String TAG;
-  private String fQi;
   private String fileId;
   private int fileSize;
-  private final String poB;
-  private final com.tencent.mm.i.g wrB;
+  private String gjI;
+  private final String pSc;
+  private final com.tencent.mm.i.g xzs;
   
   public d(StickerLoadInfo paramStickerLoadInfo)
   {
@@ -35,28 +35,29 @@ public final class d
     AppMethodBeat.i(105924);
     this.TAG = "MicroMsg.StickerTask";
     this.fileId = paramStickerLoadInfo.fileId;
-    this.fQi = paramStickerLoadInfo.fQi;
-    this.fileSize = paramStickerLoadInfo.jlZ;
-    Object localObject = e.GAP;
-    this.poB = e.aMx(paramStickerLoadInfo.pmO);
+    this.gjI = paramStickerLoadInfo.gjI;
+    this.fileSize = paramStickerLoadInfo.jFP;
+    Object localObject = e.ImJ;
+    this.pSc = e.aSe(paramStickerLoadInfo.pQo);
     localObject = new StringBuilder();
-    e locale = e.GAP;
-    this.GAG = (e.eYv() + paramStickerLoadInfo.pmO);
-    this.wrB = new com.tencent.mm.i.g();
-    this.wrB.frb = ((g.a)new g.a()
+    e locale = e.ImJ;
+    this.ImA = (e.fof() + paramStickerLoadInfo.pQo);
+    this.xzs = new com.tencent.mm.i.g();
+    this.xzs.fJi = "task_StickerFileIdTask";
+    this.xzs.fJj = ((g.a)new g.a()
     {
       public final int a(String paramAnonymousString, int paramAnonymousInt, c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
       {
         Object localObject = null;
         AppMethodBeat.i(105918);
-        String str = this.GAH.TAG;
+        String str = this.ImB.TAG;
         StringBuilder localStringBuilder = new StringBuilder("callback: ").append(paramAnonymousString).append(", ").append(paramAnonymousInt).append("; progress ");
         if (paramAnonymousc != null)
         {
           paramAnonymousString = Long.valueOf(paramAnonymousc.field_toltalLength);
           localStringBuilder = localStringBuilder.append(paramAnonymousString).append(", ");
           if (paramAnonymousc == null) {
-            break label170;
+            break label172;
           }
           paramAnonymousString = Long.valueOf(paramAnonymousc.field_finishedLength);
           label83:
@@ -65,17 +66,16 @@ public final class d
           if (paramAnonymousd != null) {
             paramAnonymousString = Integer.valueOf(paramAnonymousd.field_retCode);
           }
-          ac.i(str, paramAnonymousString);
+          ad.i(str, paramAnonymousString);
           if (paramAnonymousInt != 0) {
-            break label175;
+            break label177;
           }
           if (paramAnonymousd != null)
           {
-            if (paramAnonymousd.field_retCode != 0) {
-              break label175;
+            if ((paramAnonymousd.field_retCode != 0) || (!this.ImB.fod())) {
+              break label177;
             }
-            this.GAH.eYt();
-            this.GAH.de(true);
+            this.ImB.dg(true);
           }
         }
         for (;;)
@@ -84,11 +84,11 @@ public final class d
           return 0;
           paramAnonymousString = null;
           break;
-          label170:
+          label172:
           paramAnonymousString = null;
           break label83;
-          label175:
-          this.GAH.de(false);
+          label177:
+          this.ImB.dg(false);
         }
       }
       
@@ -102,14 +102,14 @@ public final class d
     AppMethodBeat.o(105924);
   }
   
-  private final void MO()
+  private final void Ox()
   {
     AppMethodBeat.i(105920);
     if (((CharSequence)this.fileId).length() == 0)
     {
       i = 1;
       if (i == 0) {
-        if (((CharSequence)this.fQi).length() != 0) {
+        if (((CharSequence)this.gjI).length() != 0) {
           break label63;
         }
       }
@@ -120,44 +120,44 @@ public final class d
       if (i == 0) {
         break label68;
       }
-      de(false);
+      dg(false);
       AppMethodBeat.o(105920);
       return;
       i = 0;
       break;
     }
     label68:
-    this.wrB.field_fileType = com.tencent.mm.i.a.MediaType_FILE;
-    this.wrB.field_needStorage = true;
-    this.wrB.field_mediaId = ("lensInfo_" + this.GAW.pmO);
-    this.wrB.field_fileId = this.fileId;
-    this.wrB.field_aesKey = this.fQi;
-    this.wrB.field_totalLen = this.fileSize;
-    this.wrB.field_fullpath = this.GAG;
-    com.tencent.mm.an.f.aDD().e(this.wrB);
+    this.xzs.field_fileType = com.tencent.mm.i.a.MediaType_FILE;
+    this.xzs.field_needStorage = true;
+    this.xzs.field_mediaId = ("lensInfo_" + this.ImQ.pQo);
+    this.xzs.field_fileId = this.fileId;
+    this.xzs.field_aesKey = this.gjI;
+    this.xzs.field_totalLen = this.fileSize;
+    this.xzs.field_fullpath = this.ImA;
+    com.tencent.mm.ao.f.aGI().e(this.xzs);
     AppMethodBeat.o(105920);
   }
   
-  public final String acg()
+  public final String aeK()
   {
-    return this.GAW.pmO;
+    return this.ImQ.pQo;
   }
   
   public final void call()
   {
     AppMethodBeat.i(105919);
-    if (((CharSequence)this.GAW.pmO).length() == 0) {}
+    if (((CharSequence)this.ImQ.pQo).length() == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ac.w(this.TAG, "call: lensId is " + this.GAW.pmO);
-      de(false);
+      ad.w(this.TAG, "call: lensId is " + this.ImQ.pQo);
+      dg(false);
       AppMethodBeat.o(105919);
       return;
     }
-    if (i.eA(this.poB))
+    if (i.fv(this.pSc))
     {
-      ac.i(this.TAG, "call: file exists " + this.poB);
-      de(true);
+      ad.i(this.TAG, "call: file exists " + this.pSc);
+      dg(true);
       AppMethodBeat.o(105919);
       return;
     }
@@ -165,7 +165,7 @@ public final class d
     {
       i = 1;
       if (i == 0) {
-        if (((CharSequence)this.fQi).length() != 0) {
+        if (((CharSequence)this.gjI).length() != 0) {
           break label234;
         }
       }
@@ -176,77 +176,81 @@ public final class d
       if (i == 0) {
         break label239;
       }
-      this.GAF = new com.tencent.mm.sticker.b.a();
-      com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.agQ();
-      k.g(localb, "MMKernel.network()");
-      localb.agi().a(3903, (com.tencent.mm.ak.g)this);
-      localb = com.tencent.mm.kernel.g.agQ();
-      k.g(localb, "MMKernel.network()");
-      localb.agi().b((n)this.GAF);
+      this.Imz = new com.tencent.mm.sticker.b.a();
+      com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.ajB();
+      p.g(localb, "MMKernel.network()");
+      localb.aiU().a(3903, (com.tencent.mm.al.f)this);
+      localb = com.tencent.mm.kernel.g.ajB();
+      p.g(localb, "MMKernel.network()");
+      localb.aiU().b((n)this.Imz);
       AppMethodBeat.o(105919);
       return;
       i = 0;
       break;
     }
     label239:
-    MO();
+    Ox();
     AppMethodBeat.o(105919);
   }
   
-  public final void de(boolean paramBoolean)
+  public final void dg(boolean paramBoolean)
   {
     AppMethodBeat.i(105923);
-    ac.i(this.TAG, "onResult: ".concat(String.valueOf(paramBoolean)));
-    super.de(paramBoolean);
+    ad.i(this.TAG, "onResult: ".concat(String.valueOf(paramBoolean)));
+    super.dg(paramBoolean);
     AppMethodBeat.o(105923);
   }
   
-  final boolean eYt()
+  final boolean fod()
   {
     AppMethodBeat.i(105921);
-    i.aSh(this.poB);
-    if (i.fp(this.GAG, this.poB) == 0)
+    i.aYg(this.pSc);
+    if (i.fz(this.ImA, this.pSc) == 0)
     {
-      i.deleteFile(this.GAG);
+      i.deleteFile(this.ImA);
       com.tencent.mm.sticker.f localf = new com.tencent.mm.sticker.f();
-      localf.aMs(this.poB);
-      localf.aMr(this.GAW.pmO);
-      localf.aMu(this.poB);
+      localf.aRZ(this.pSc);
+      localf.aRY(this.ImQ.pQo);
+      localf.aSb(this.pSc);
+      AppMethodBeat.o(105921);
+      return true;
     }
+    i.deleteFile(this.ImA);
+    i.deleteDir(this.pSc);
     AppMethodBeat.o(105921);
-    return true;
+    return false;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(105922);
-    if (k.g(paramn, this.GAF))
+    if (p.i(paramn, this.Imz))
     {
-      paramString = com.tencent.mm.kernel.g.agQ();
-      k.g(paramString, "MMKernel.network()");
-      paramString.agi().b(3903, (com.tencent.mm.ak.g)this);
-      paramString = this.GAF;
+      paramString = com.tencent.mm.kernel.g.ajB();
+      p.g(paramString, "MMKernel.network()");
+      paramString.aiU().b(3903, (com.tencent.mm.al.f)this);
+      paramString = this.Imz;
       if (paramString != null)
       {
-        paramString = paramString.rr.aBD();
+        paramString = paramString.rr.aEF();
         if (paramString == null)
         {
           paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLensInfoResponse");
           AppMethodBeat.o(105922);
           throw paramString;
         }
-        paramString = (ayy)paramString;
+        paramString = (bdc)paramString;
         if ((paramInt1 != 0) || (paramInt2 != 0) || (paramString == null)) {
           break label248;
         }
-        paramn = paramString.EQx;
+        paramn = paramString.GzO;
         String str;
         if (paramn != null)
         {
-          paramn = paramn.FeM;
+          paramn = paramn.GOq;
           if (paramn != null)
           {
-            str = paramn.DUJ;
+            str = paramn.FAe;
             paramn = str;
             if (str != null) {
               break label143;
@@ -256,10 +260,10 @@ public final class d
         paramn = "";
         label143:
         this.fileId = paramn;
-        paramn = paramString.EQx;
+        paramn = paramString.GzO;
         if (paramn != null)
         {
-          paramn = paramn.FeM;
+          paramn = paramn.GOq;
           if (paramn != null)
           {
             str = paramn.AesKey;
@@ -271,12 +275,12 @@ public final class d
         }
         paramn = "";
         label193:
-        this.fQi = paramn;
-        paramString = paramString.EQx;
+        this.gjI = paramn;
+        paramString = paramString.GzO;
         if (paramString == null) {
           break label243;
         }
-        paramString = paramString.FeM;
+        paramString = paramString.GOq;
         if (paramString == null) {
           break label243;
         }
@@ -285,14 +289,14 @@ public final class d
       for (paramInt1 = paramString.FileSize;; paramInt1 = 0)
       {
         this.fileSize = paramInt1;
-        MO();
+        Ox();
         AppMethodBeat.o(105922);
         return;
         paramString = null;
         break;
       }
       label248:
-      de(false);
+      dg(false);
     }
     AppMethodBeat.o(105922);
   }

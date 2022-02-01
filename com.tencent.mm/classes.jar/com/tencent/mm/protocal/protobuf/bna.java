@@ -1,67 +1,67 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bna
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int Fck;
-  public LinkedList<String> Fcl;
-  public String scope;
-  public String xoN;
-  
-  public bna()
-  {
-    AppMethodBeat.i(82449);
-    this.Fcl = new LinkedList();
-    AppMethodBeat.o(82449);
-  }
+  public String GHa;
+  public String GHb;
+  public String dDH;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(82450);
+    AppMethodBeat.i(72495);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.scope != null) {
-        paramVarArgs.d(1, this.scope);
+      if (this.GHa != null) {
+        paramVarArgs.d(1, this.GHa);
       }
-      paramVarArgs.aR(2, this.Fck);
-      if (this.xoN != null) {
-        paramVarArgs.d(3, this.xoN);
+      if (this.GHb != null) {
+        paramVarArgs.d(2, this.GHb);
       }
-      paramVarArgs.e(4, 1, this.Fcl);
-      AppMethodBeat.o(82450);
+      if (this.url != null) {
+        paramVarArgs.d(3, this.url);
+      }
+      if (this.dDH != null) {
+        paramVarArgs.d(4, this.dDH);
+      }
+      AppMethodBeat.o(72495);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.scope == null) {
-        break label378;
+      if (this.GHa == null) {
+        break label394;
       }
     }
-    label378:
-    for (paramInt = f.a.a.b.b.a.e(1, this.scope) + 0;; paramInt = 0)
+    label394:
+    for (int i = f.a.a.b.b.a.e(1, this.GHa) + 0;; i = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bx(2, this.Fck);
       paramInt = i;
-      if (this.xoN != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.xoN);
+      if (this.GHb != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.GHb);
       }
-      i = f.a.a.a.c(4, 1, this.Fcl);
-      AppMethodBeat.o(82450);
-      return paramInt + i;
+      i = paramInt;
+      if (this.url != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.url);
+      }
+      paramInt = i;
+      if (this.dDH != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.dDH);
+      }
+      AppMethodBeat.o(72495);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.Fcl.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(82450);
+        AppMethodBeat.o(72495);
         return 0;
       }
       if (paramInt == 3)
@@ -71,33 +71,33 @@ public final class bna
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(82450);
+          AppMethodBeat.o(72495);
           return -1;
         case 1: 
-          localbna.scope = locala.LVo.readString();
-          AppMethodBeat.o(82450);
+          localbna.GHa = locala.NPN.readString();
+          AppMethodBeat.o(72495);
           return 0;
         case 2: 
-          localbna.Fck = locala.LVo.xF();
-          AppMethodBeat.o(82450);
+          localbna.GHb = locala.NPN.readString();
+          AppMethodBeat.o(72495);
           return 0;
         case 3: 
-          localbna.xoN = locala.LVo.readString();
-          AppMethodBeat.o(82450);
+          localbna.url = locala.NPN.readString();
+          AppMethodBeat.o(72495);
           return 0;
         }
-        localbna.Fcl.add(locala.LVo.readString());
-        AppMethodBeat.o(82450);
+        localbna.dDH = locala.NPN.readString();
+        AppMethodBeat.o(72495);
         return 0;
       }
-      AppMethodBeat.o(82450);
+      AppMethodBeat.o(72495);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bna
  * JD-Core Version:    0.7.0.1
  */

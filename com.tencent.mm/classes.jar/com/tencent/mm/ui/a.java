@@ -9,26 +9,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public final class a
 {
-  private ImageView AcJ;
-  private View CDT;
-  public ViewGroup HeM;
-  public WeImageView HeN;
-  public TextView HeO;
-  public ViewGroup HeP;
-  public WeImageView HeQ;
-  public ImageView HeR;
-  public ImageView HeS;
-  private ImageView HeT;
-  public ImageView HeU;
-  private View HeV;
-  private ImageView gyM;
-  public TextView iCg;
+  private ImageView Buu;
+  private View EhE;
+  private ImageView ISc;
+  public ViewGroup ISd;
+  public WeImageView ISe;
+  public TextView ISf;
+  public ViewGroup ISg;
+  public WeImageView ISh;
+  public ImageView ISi;
+  public ImageView ISj;
+  private ImageView ISk;
+  public ImageView ISl;
+  private View ISm;
+  private ImageView gSx;
+  public TextView iVq;
   
   public a(View paramView)
   {
@@ -40,20 +41,21 @@ public final class a
     for (;;)
     {
       paramView.setLayoutParams(localLayoutParams);
-      this.iCg = ((TextView)paramView.findViewById(2131305908));
-      this.HeM = ((ViewGroup)paramView.findViewById(2131308035));
-      this.HeN = ((WeImageView)paramView.findViewById(2131308034));
-      this.HeO = ((TextView)paramView.findViewById(2131305509));
-      this.HeP = ((ViewGroup)paramView.findViewById(2131308013));
-      this.HeQ = ((WeImageView)paramView.findViewById(2131308012));
-      this.AcJ = ((ImageView)paramView.findViewById(2131302623));
-      this.HeR = ((ImageView)paramView.findViewById(2131300216));
-      this.HeS = ((ImageView)paramView.findViewById(2131303211));
-      this.HeT = ((ImageView)paramView.findViewById(2131303553));
-      this.CDT = paramView.findViewById(2131296939);
-      this.gyM = ((ImageView)paramView.findViewById(2131296940));
-      this.HeU = ((ImageView)paramView.findViewById(2131303966));
-      this.HeV = paramView;
+      this.iVq = ((TextView)paramView.findViewById(2131305908));
+      this.ISc = ((ImageView)paramView.findViewById(2131305936));
+      this.ISd = ((ViewGroup)paramView.findViewById(2131308035));
+      this.ISe = ((WeImageView)paramView.findViewById(2131308034));
+      this.ISf = ((TextView)paramView.findViewById(2131305509));
+      this.ISg = ((ViewGroup)paramView.findViewById(2131308013));
+      this.ISh = ((WeImageView)paramView.findViewById(2131308012));
+      this.Buu = ((ImageView)paramView.findViewById(2131302623));
+      this.ISi = ((ImageView)paramView.findViewById(2131300216));
+      this.ISj = ((ImageView)paramView.findViewById(2131303211));
+      this.ISk = ((ImageView)paramView.findViewById(2131303553));
+      this.EhE = paramView.findViewById(2131296939);
+      this.gSx = ((ImageView)paramView.findViewById(2131296940));
+      this.ISl = ((ImageView)paramView.findViewById(2131303966));
+      this.ISm = paramView;
       AppMethodBeat.o(141266);
       return;
       localLayoutParams.width = -2;
@@ -63,44 +65,53 @@ public final class a
   
   public final void al(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(197177);
-    if ((paramCharSequence == null) || (bs.isNullOrNil(paramCharSequence.toString())))
+    AppMethodBeat.i(186435);
+    if ((paramCharSequence == null) || (bt.isNullOrNil(paramCharSequence.toString())))
     {
-      this.HeO.setVisibility(8);
-      AppMethodBeat.o(197177);
+      this.ISf.setVisibility(8);
+      AppMethodBeat.o(186435);
       return;
     }
-    this.HeO.setVisibility(0);
-    this.HeO.setText(paramCharSequence);
-    if (com.tencent.mm.cc.a.id(this.HeO.getContext()))
+    this.ISf.setVisibility(0);
+    this.ISf.setText(paramCharSequence);
+    if (com.tencent.mm.cc.a.im(this.ISf.getContext()))
     {
-      this.HeO.setTextSize(1, 14.0F);
-      this.iCg.setTextSize(1, 18.0F);
+      this.ISf.setTextSize(1, 14.0F);
+      this.iVq.setTextSize(1, 18.0F);
     }
-    AppMethodBeat.o(197177);
+    AppMethodBeat.o(186435);
   }
   
-  public final void e(View.OnClickListener paramOnClickListener)
+  public final void fuT()
+  {
+    AppMethodBeat.i(186436);
+    if (this.gSx != null) {
+      this.gSx.setImageResource(2131689490);
+    }
+    AppMethodBeat.o(186436);
+  }
+  
+  public final void setClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(141270);
-    this.CDT.setOnClickListener(paramOnClickListener);
+    this.EhE.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(141270);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(141267);
-    this.iCg.setText(paramCharSequence);
-    if (com.tencent.mm.cc.a.id(this.iCg.getContext())) {
-      this.iCg.setTextSize(0, com.tencent.mm.cc.a.av(this.iCg.getContext(), 2131165184) * com.tencent.mm.cc.a.ib(this.iCg.getContext()));
+    this.iVq.setText(paramCharSequence);
+    if (com.tencent.mm.cc.a.im(this.iVq.getContext())) {
+      this.iVq.setTextSize(0, com.tencent.mm.cc.a.ay(this.iVq.getContext(), 2131165184) * com.tencent.mm.cc.a.ik(this.iVq.getContext()));
     }
     AppMethodBeat.o(141267);
   }
   
-  public final void wj(boolean paramBoolean)
+  public final void wV(boolean paramBoolean)
   {
     AppMethodBeat.i(141268);
-    ImageView localImageView = this.AcJ;
+    ImageView localImageView = this.Buu;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -110,10 +121,10 @@ public final class a
     }
   }
   
-  public final void wk(boolean paramBoolean)
+  public final void wW(boolean paramBoolean)
   {
     AppMethodBeat.i(141269);
-    ImageView localImageView = this.HeT;
+    ImageView localImageView = this.ISk;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {

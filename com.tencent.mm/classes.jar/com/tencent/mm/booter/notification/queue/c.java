@@ -1,8 +1,8 @@
 package com.tencent.mm.booter.notification.queue;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -23,15 +23,15 @@ public final class c
     paramSerializable = URLEncoder.encode(localByteArrayOutputStream.toString("ISO-8859-1"), "UTF-8");
     localObjectOutputStream.close();
     localByteArrayOutputStream.close();
-    ac.d("MicroMsg.NotificationQueueTool", "serialize consume: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ad.d("MicroMsg.NotificationQueueTool", "serialize consume: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     AppMethodBeat.o(20034);
     return paramSerializable;
   }
   
-  public static Serializable rD(String paramString)
+  public static Serializable uq(String paramString)
   {
     AppMethodBeat.i(20035);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(20035);
       return null;
@@ -42,7 +42,7 @@ public final class c
     Serializable localSerializable = (Serializable)localObjectInputStream.readObject();
     localObjectInputStream.close();
     paramString.close();
-    ac.d("MicroMsg.NotificationQueueTool", "de serialize consume: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ad.d("MicroMsg.NotificationQueueTool", "de serialize consume: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     AppMethodBeat.o(20035);
     return localSerializable;
   }

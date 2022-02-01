@@ -5,34 +5,34 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.c;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.adr;
+import com.tencent.mm.protocal.protobuf.aga;
 
 public final class s$b
   extends l.e
   implements l.c
 {
-  public adr iKM;
+  public aga jdV;
   
   public s$b()
   {
     AppMethodBeat.i(131069);
-    this.iKM = new adr();
+    this.jdV = new aga();
     AppMethodBeat.o(131069);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131070);
-    this.iKM = ((adr)new adr().parseFrom(paramArrayOfByte));
-    l.a(this, this.iKM.getBaseResponse());
-    int i = this.iKM.getBaseResponse().Ret;
+    this.jdV = ((aga)new aga().parseFrom(paramArrayOfByte));
+    l.a(this, this.jdV.getBaseResponse());
+    int i = this.jdV.getBaseResponse().Ret;
     AppMethodBeat.o(131070);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.s.b
  * JD-Core Version:    0.7.0.1
  */

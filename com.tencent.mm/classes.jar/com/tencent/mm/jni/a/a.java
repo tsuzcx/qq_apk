@@ -9,12 +9,12 @@ import android.os.SystemClock;
 import android.util.SparseArray;
 import com.tencent.mars.comm.WakerLock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.g.a.rf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.Externalizable;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -28,15 +28,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class a
 {
-  private static SparseArray<b> gfD;
-  private static ao mHandler;
+  private static SparseArray<b> gzn;
+  private static ap mHandler;
   private static final byte[] mLock;
   
   static
   {
     AppMethodBeat.i(153439);
-    gfD = new SparseArray();
-    mHandler = new ao(Looper.getMainLooper());
+    gzn = new SparseArray();
+    mHandler = new ap(Looper.getMainLooper());
     mLock = new byte[0];
     AppMethodBeat.o(153439);
   }
@@ -46,36 +46,36 @@ public final class a
     AppMethodBeat.i(153437);
     synchronized (mLock)
     {
-      b localb2 = (b)gfD.get(paramWakerLock.hashCode());
+      b localb2 = (b)gzn.get(paramWakerLock.hashCode());
       b localb1 = localb2;
       if (localb2 == null)
       {
         localb1 = new b(paramWakerLock);
-        gfD.put(paramWakerLock.hashCode(), localb1);
+        gzn.put(paramWakerLock.hashCode(), localb1);
       }
-      if (!localb1.gfH.containsKey(paramString)) {
-        localb1.gfH.put(paramString, new a.b.a(paramString, SystemClock.elapsedRealtime()));
+      if (!localb1.gzr.containsKey(paramString)) {
+        localb1.gzr.put(paramString, new a.b.a(paramString, SystemClock.elapsedRealtime()));
       }
-      c.tK(paramString);
+      c.wA(paramString);
       paramWakerLock = mHandler;
-      if (!localb1.gfF)
+      if (!localb1.gzp)
       {
-        localb1.gfF = true;
-        paramWakerLock.postDelayed(localb1.gfG, 60000L);
+        localb1.gzp = true;
+        paramWakerLock.postDelayed(localb1.gzq, 60000L);
       }
       AppMethodBeat.o(153437);
       return;
     }
   }
   
-  public static void afj()
+  public static void ahV()
   {
     AppMethodBeat.i(153435);
-    c.lm();
+    c.lE();
     AppMethodBeat.o(153435);
   }
   
-  public static void afk()
+  public static void ahW()
   {
     AppMethodBeat.i(153436);
     c.detach();
@@ -87,22 +87,22 @@ public final class a
     AppMethodBeat.i(153438);
     synchronized (mLock)
     {
-      paramWakerLock = (b)gfD.get(paramWakerLock.hashCode());
+      paramWakerLock = (b)gzn.get(paramWakerLock.hashCode());
       if (paramWakerLock == null) {
         break label114;
       }
       Object localObject = mHandler;
-      if (paramWakerLock.gfF)
+      if (paramWakerLock.gzp)
       {
-        paramWakerLock.gfF = false;
-        ((ao)localObject).removeCallbacks(paramWakerLock.gfG);
+        paramWakerLock.gzp = false;
+        ((ap)localObject).removeCallbacks(paramWakerLock.gzq);
       }
-      localObject = paramWakerLock.gfH.values().iterator();
+      localObject = paramWakerLock.gzr.values().iterator();
       if (((Iterator)localObject).hasNext()) {
-        c.tL(((a.b.a)((Iterator)localObject).next()).gfI);
+        c.wB(((a.b.a)((Iterator)localObject).next()).gzs);
       }
     }
-    paramWakerLock.gfH.clear();
+    paramWakerLock.gzr.clear();
     label114:
     AppMethodBeat.o(153438);
   }
@@ -110,11 +110,11 @@ public final class a
   static final class a
     implements Runnable
   {
-    private WakerLock gfE = null;
+    private WakerLock gzo = null;
     
     public a(WakerLock paramWakerLock)
     {
-      this.gfE = paramWakerLock;
+      this.gzo = paramWakerLock;
     }
     
     public final void run()
@@ -126,16 +126,16 @@ public final class a
       for (;;)
       {
         int i;
-        synchronized (a.afl())
+        synchronized (a.ahX())
         {
-          localObject2 = (a.b)a.afm().get(this.gfE.hashCode());
+          localObject2 = (a.b)a.ahY().get(this.gzo.hashCode());
           if (localObject2 == null) {
             break label274;
           }
-          k = this.gfE.hashCode();
-          m = this.gfE.innerWakeLockHashCode();
-          String str = this.gfE.getCreatePosStackLine();
-          Object localObject3 = ((a.b)localObject2).gfH.values();
+          k = this.gzo.hashCode();
+          m = this.gzo.innerWakeLockHashCode();
+          String str = this.gzo.getCreatePosStackLine();
+          Object localObject3 = ((a.b)localObject2).gzr.values();
           localObject2 = new StringBuilder();
           i = 1;
           localObject3 = ((Collection)localObject3).iterator();
@@ -147,10 +147,10 @@ public final class a
           {
             j = 0;
             i = j;
-            if (locala.gfJ == 0L) {
+            if (locala.gzt == 0L) {
               continue;
             }
-            ((StringBuilder)localObject2).append('{').append(locala.gfI).append(',').append(SystemClock.elapsedRealtime() - locala.gfJ).append('}');
+            ((StringBuilder)localObject2).append('{').append(locala.gzs).append(',').append(SystemClock.elapsedRealtime() - locala.gzt).append('}');
             i = j;
           }
         }
@@ -160,121 +160,121 @@ public final class a
       if (((StringBuilder)localObject2).length() == 0) {
         ((StringBuilder)localObject2).append("<empty>");
       }
-      ac.w("MicroMsg.WakeLockManager", "wakerlock held too long: [%d,%d] @[%s] force to unlock it. state: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(m), localObject1, ((StringBuilder)localObject2).toString() });
+      ad.w("MicroMsg.WakeLockManager", "wakerlock held too long: [%d,%d] @[%s] force to unlock it. state: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(m), localObject1, ((StringBuilder)localObject2).toString() });
       for (;;)
       {
-        this.gfE.unLock();
+        this.gzo.unLock();
         AppMethodBeat.o(153418);
         return;
         label274:
-        ac.w("MicroMsg.WakeLockManager", "wakerlock held too long: [%d,%d] @[%s] force to unlock it. state: %s", new Object[] { Integer.valueOf(this.gfE.hashCode()), Integer.valueOf(this.gfE.innerWakeLockHashCode()), this.gfE.getCreatePosStackLine(), "#lost-trace-state#" });
+        ad.w("MicroMsg.WakeLockManager", "wakerlock held too long: [%d,%d] @[%s] force to unlock it. state: %s", new Object[] { Integer.valueOf(this.gzo.hashCode()), Integer.valueOf(this.gzo.innerWakeLockHashCode()), this.gzo.getCreatePosStackLine(), "#lost-trace-state#" });
       }
     }
   }
   
   static final class b
   {
-    volatile boolean gfF;
-    a.a gfG;
-    Map<String, a> gfH;
+    volatile boolean gzp;
+    a.a gzq;
+    Map<String, a> gzr;
     
     public b(WakerLock paramWakerLock)
     {
       AppMethodBeat.i(153419);
-      this.gfF = false;
-      this.gfG = null;
-      this.gfH = new HashMap();
-      this.gfG = new a.a(paramWakerLock);
+      this.gzp = false;
+      this.gzq = null;
+      this.gzr = new HashMap();
+      this.gzq = new a.a(paramWakerLock);
       AppMethodBeat.o(153419);
     }
     
     static final class a
     {
-      public String gfI = null;
-      public long gfJ = 0L;
+      public String gzs = null;
+      public long gzt = 0L;
       
       public a(String paramString, long paramLong)
       {
-        this.gfI = paramString;
-        this.gfJ = paramLong;
+        this.gzs = paramString;
+        this.gzt = paramLong;
       }
     }
   }
   
   static final class c
   {
-    private static int gfK;
-    private static long gfL;
-    private static long gfM;
-    private static final HashMap<String, a> gfN;
-    private static final byte[] gfO;
-    private static BroadcastReceiver gfP;
+    private static int gzu;
+    private static long gzv;
+    private static long gzw;
+    private static final HashMap<String, a> gzx;
+    private static final byte[] gzy;
+    private static BroadcastReceiver gzz;
     
     static
     {
       AppMethodBeat.i(183797);
-      gfK = 0;
-      gfL = 0L;
-      gfM = 0L;
-      gfN = new HashMap();
-      gfO = new byte[0];
-      gfP = null;
+      gzu = 0;
+      gzv = 0L;
+      gzw = 0L;
+      gzx = new HashMap();
+      gzy = new byte[0];
+      gzz = null;
       AppMethodBeat.o(183797);
     }
     
-    private static void afn()
+    private static void ahZ()
     {
       AppMethodBeat.i(153431);
       long l;
       for (;;)
       {
-        synchronized (gfO)
+        synchronized (gzy)
         {
           l = SystemClock.elapsedRealtime();
-          if (l - gfL < 21600000L) {
+          if (l - gzv < 21600000L) {
             break label292;
           }
-          if (gfN.isEmpty()) {
+          if (gzx.isEmpty()) {
             break label288;
           }
           StringBuilder localStringBuilder = new StringBuilder();
-          Iterator localIterator = gfN.entrySet().iterator();
+          Iterator localIterator = gzx.entrySet().iterator();
           if (!localIterator.hasNext()) {
             break;
           }
           Object localObject2 = (a)((Map.Entry)localIterator.next()).getValue();
-          if (((a)localObject2).gfT <= 0) {
+          if (((a)localObject2).gzD <= 0) {
             continue;
           }
           localStringBuilder.setLength(0);
-          Object localObject3 = localStringBuilder.append(((a)localObject2).mProcessName).append(',').append(((a)localObject2).gfI.replace(",", "##")).append(',').append(((a)localObject2).gfT).append(',').append(((a)localObject2).gfS).append(',').append(((a)localObject2).gfU).append(',');
-          if (((a)localObject2).gfR)
+          Object localObject3 = localStringBuilder.append(((a)localObject2).mProcessName).append(',').append(((a)localObject2).gzs.replace(",", "##")).append(',').append(((a)localObject2).gzD).append(',').append(((a)localObject2).gzC).append(',').append(((a)localObject2).gzE).append(',');
+          if (((a)localObject2).gzB)
           {
             i = 1;
-            ((StringBuilder)localObject3).append(i).append(',').append(((a)localObject2).gfQ);
+            ((StringBuilder)localObject3).append(i).append(',').append(((a)localObject2).gzA);
             localObject2 = localStringBuilder.toString();
-            localObject3 = new qu();
-            ((qu)localObject3).dtO.dtP = ((String)localObject2);
-            com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject3);
-            ac.d("MicroMsg.WakeLockStatsManager", "kvstat-str: %s", new Object[] { localStringBuilder.toString() });
+            localObject3 = new rf();
+            ((rf)localObject3).dFO.dFP = ((String)localObject2);
+            com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject3);
+            ad.d("MicroMsg.WakeLockStatsManager", "kvstat-str: %s", new Object[] { localStringBuilder.toString() });
           }
         }
         int i = 0;
       }
-      gfN.clear();
+      gzx.clear();
       label288:
-      gfL = l;
+      gzv = l;
       label292:
       AppMethodBeat.o(153431);
     }
     
     /* Error */
-    private static void afo()
+    private static void aia()
     {
       // Byte code:
       //   0: ldc 189
       //   2: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   5: getstatic 48	com/tencent/mm/jni/a/a$c:gfO	[B
+      //   5: getstatic 48	com/tencent/mm/jni/a/a$c:gzy	[B
       //   8: astore_3
       //   9: aload_3
       //   10: monitorenter
@@ -286,7 +286,7 @@ public final class a
       //   16: astore_0
       //   17: new 191	com/tencent/mm/vfs/e
       //   20: dup
-      //   21: invokestatic 197	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+      //   21: invokestatic 197	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
       //   24: invokevirtual 203	android/content/Context:getCacheDir	()Ljava/io/File;
       //   27: ldc 205
       //   29: invokespecial 208	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
@@ -294,9 +294,9 @@ public final class a
       //   34: aload_1
       //   35: astore_0
       //   36: aload 4
-      //   38: invokevirtual 212	com/tencent/mm/vfs/e:fxV	()Landroid/net/Uri;
+      //   38: invokevirtual 212	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
       //   41: invokestatic 218	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
-      //   44: invokestatic 224	com/tencent/mm/vfs/i:aSh	(Ljava/lang/String;)Z
+      //   44: invokestatic 224	com/tencent/mm/vfs/i:aYg	(Ljava/lang/String;)Z
       //   47: ifne +89 -> 136
       //   50: aload_1
       //   51: astore_0
@@ -307,7 +307,7 @@ public final class a
       //   60: ldc 226
       //   62: invokespecial 229	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   65: aload 4
-      //   67: invokevirtual 212	com/tencent/mm/vfs/e:fxV	()Landroid/net/Uri;
+      //   67: invokevirtual 212	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
       //   70: invokestatic 218	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
       //   73: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   76: ldc 231
@@ -335,7 +335,7 @@ public final class a
       //   111: ldc 234
       //   113: iconst_0
       //   114: anewarray 4	java/lang/Object
-      //   117: invokestatic 238	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   117: invokestatic 238	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   120: aload_1
       //   121: ifnull +7 -> 128
       //   124: aload_1
@@ -354,14 +354,14 @@ public final class a
       //   146: aload 4
       //   148: ldc 245
       //   150: invokespecial 248	com/tencent/mm/vfs/e:<init>	(Lcom/tencent/mm/vfs/e;Ljava/lang/String;)V
-      //   153: invokestatic 252	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+      //   153: invokestatic 252	com/tencent/mm/vfs/i:aj	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
       //   156: invokespecial 255	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
       //   159: astore_1
       //   160: aload_1
-      //   161: getstatic 37	com/tencent/mm/jni/a/a$c:gfL	J
+      //   161: getstatic 37	com/tencent/mm/jni/a/a$c:gzv	J
       //   164: invokevirtual 259	java/io/ObjectOutputStream:writeLong	(J)V
       //   167: aload_1
-      //   168: getstatic 46	com/tencent/mm/jni/a/a$c:gfN	Ljava/util/HashMap;
+      //   168: getstatic 46	com/tencent/mm/jni/a/a$c:gzx	Ljava/util/HashMap;
       //   171: invokevirtual 263	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
       //   174: aload_1
       //   175: invokevirtual 243	java/io/ObjectOutputStream:close	()V
@@ -445,25 +445,25 @@ public final class a
     {
       AppMethodBeat.i(153429);
       String str = paramString1 + "_" + paramString2;
-      synchronized (gfO)
+      synchronized (gzy)
       {
-        a locala2 = (a)gfN.get(str);
+        a locala2 = (a)gzx.get(str);
         a locala1 = locala2;
         if (locala2 == null)
         {
           locala1 = new a((byte)0);
           locala1.mProcessName = paramString1;
-          locala1.gfI = paramString2;
-          locala1.gfU = 0L;
-          locala1.gfS = 0;
-          locala1.gfT = 0;
-          gfN.put(str, locala1);
+          locala1.gzs = paramString2;
+          locala1.gzE = 0L;
+          locala1.gzC = 0;
+          locala1.gzD = 0;
+          gzx.put(str, locala1);
         }
-        if (locala1.gfW.getAndIncrement() == 0)
+        if (locala1.gzG.getAndIncrement() == 0)
         {
-          locala1.gfV = paramLong;
-          locala1.gfQ = ax.getNetTypeString(ai.getContext());
-          locala1.gfR = com.tencent.mm.sdk.a.b.foreground;
+          locala1.gzF = paramLong;
+          locala1.gzA = ay.getNetTypeString(aj.getContext());
+          locala1.gzB = com.tencent.mm.sdk.a.b.foreground;
         }
         AppMethodBeat.o(153429);
         return;
@@ -475,32 +475,32 @@ public final class a
       AppMethodBeat.i(153430);
       paramString2 = ??? + "_" + paramString2;
       long l2 = 0L;
-      synchronized (gfO)
+      synchronized (gzy)
       {
-        paramString2 = (a)gfN.get(paramString2);
+        paramString2 = (a)gzx.get(paramString2);
         long l1 = l2;
         if (paramString2 != null)
         {
           l1 = l2;
-          if (paramString2.gfW.get() > 0)
+          if (paramString2.gzG.get() > 0)
           {
-            paramString2.gfS += 1;
+            paramString2.gzC += 1;
             l1 = l2;
-            if (paramString2.gfW.decrementAndGet() == 0)
+            if (paramString2.gzG.decrementAndGet() == 0)
             {
-              l1 = paramLong - paramString2.gfV;
-              paramString2.gfU += l1;
-              paramString2.gfT += 1;
+              l1 = paramLong - paramString2.gzF;
+              paramString2.gzE += l1;
+              paramString2.gzD += 1;
             }
           }
         }
-        afn();
+        ahZ();
         paramLong = SystemClock.elapsedRealtime();
-        if ((l1 >= 14000L) || (paramLong - gfM >= 3600000L))
+        if ((l1 >= 14000L) || (paramLong - gzw >= 3600000L))
         {
-          ac.d("MicroMsg.WakeLockStatsManager", "saveStatsToStorage triggered.");
-          afo();
-          gfM = paramLong;
+          ad.d("MicroMsg.WakeLockStatsManager", "saveStatsToStorage triggered.");
+          aia();
+          gzw = paramLong;
         }
         AppMethodBeat.o(153430);
         return;
@@ -510,33 +510,33 @@ public final class a
     public static void detach()
     {
       AppMethodBeat.i(153425);
-      if (gfK > 0)
+      if (gzu > 0)
       {
-        ai.getContext().unregisterReceiver(gfP);
-        afo();
-        gfK = 0;
-        ac.i("MicroMsg.WakeLockStatsManager", "WakeLockStatsManager is detached from process [%s]", new Object[] { ai.getProcessName() });
+        aj.getContext().unregisterReceiver(gzz);
+        aia();
+        gzu = 0;
+        ad.i("MicroMsg.WakeLockStatsManager", "WakeLockStatsManager is detached from process [%s]", new Object[] { aj.getProcessName() });
       }
       AppMethodBeat.o(153425);
     }
     
     /* Error */
-    public static void lm()
+    public static void lE()
     {
       // Byte code:
       //   0: aconst_null
       //   1: astore_1
       //   2: ldc_w 348
       //   5: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: getstatic 35	com/tencent/mm/jni/a/a$c:gfK	I
+      //   8: getstatic 35	com/tencent/mm/jni/a/a$c:gzu	I
       //   11: ifne +232 -> 243
       //   14: invokestatic 353	android/os/Process:myPid	()I
-      //   17: putstatic 35	com/tencent/mm/jni/a/a$c:gfK	I
+      //   17: putstatic 35	com/tencent/mm/jni/a/a$c:gzu	I
       //   20: new 9	com/tencent/mm/jni/a/a$c$1
       //   23: dup
       //   24: invokespecial 354	com/tencent/mm/jni/a/a$c$1:<init>	()V
-      //   27: putstatic 50	com/tencent/mm/jni/a/a$c:gfP	Landroid/content/BroadcastReceiver;
-      //   30: getstatic 48	com/tencent/mm/jni/a/a$c:gfO	[B
+      //   27: putstatic 50	com/tencent/mm/jni/a/a$c:gzz	Landroid/content/BroadcastReceiver;
+      //   30: getstatic 48	com/tencent/mm/jni/a/a$c:gzy	[B
       //   33: astore_3
       //   34: aload_3
       //   35: monitorenter
@@ -544,23 +544,23 @@ public final class a
       //   39: dup
       //   40: new 191	com/tencent/mm/vfs/e
       //   43: dup
-      //   44: invokestatic 197	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+      //   44: invokestatic 197	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
       //   47: invokevirtual 203	android/content/Context:getCacheDir	()Ljava/io/File;
       //   50: ldc_w 358
       //   53: invokespecial 208	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
-      //   56: invokestatic 362	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+      //   56: invokestatic 362	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
       //   59: invokespecial 365	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
       //   62: astore_0
       //   63: aload_0
       //   64: invokevirtual 368	java/io/ObjectInputStream:readLong	()J
-      //   67: putstatic 37	com/tencent/mm/jni/a/a$c:gfL	J
+      //   67: putstatic 37	com/tencent/mm/jni/a/a$c:gzv	J
       //   70: aload_0
       //   71: invokevirtual 371	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
       //   74: checkcast 41	java/util/HashMap
       //   77: astore_1
       //   78: aload_1
       //   79: ifnull +10 -> 89
-      //   82: getstatic 46	com/tencent/mm/jni/a/a$c:gfN	Ljava/util/HashMap;
+      //   82: getstatic 46	com/tencent/mm/jni/a/a$c:gzx	Ljava/util/HashMap;
       //   85: aload_1
       //   86: invokevirtual 375	java/util/HashMap:putAll	(Ljava/util/Map;)V
       //   89: aload_0
@@ -577,8 +577,8 @@ public final class a
       //   110: aload_0
       //   111: ldc_w 386
       //   114: invokevirtual 384	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-      //   117: invokestatic 197	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
-      //   120: getstatic 50	com/tencent/mm/jni/a/a$c:gfP	Landroid/content/BroadcastReceiver;
+      //   117: invokestatic 197	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+      //   120: getstatic 50	com/tencent/mm/jni/a/a$c:gzz	Landroid/content/BroadcastReceiver;
       //   123: aload_0
       //   124: ldc_w 388
       //   127: aconst_null
@@ -590,9 +590,9 @@ public final class a
       //   138: anewarray 4	java/lang/Object
       //   141: dup
       //   142: iconst_0
-      //   143: invokestatic 334	com/tencent/mm/sdk/platformtools/ai:getProcessName	()Ljava/lang/String;
+      //   143: invokestatic 334	com/tencent/mm/sdk/platformtools/aj:getProcessName	()Ljava/lang/String;
       //   146: aastore
-      //   147: invokestatic 336	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   147: invokestatic 336	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   150: ldc_w 348
       //   153: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   156: return
@@ -601,10 +601,10 @@ public final class a
       //   159: astore_0
       //   160: ldc 172
       //   162: ldc_w 396
-      //   165: invokestatic 398	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   165: invokestatic 398	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   168: invokestatic 62	android/os/SystemClock:elapsedRealtime	()J
-      //   171: putstatic 37	com/tencent/mm/jni/a/a$c:gfL	J
-      //   174: getstatic 46	com/tencent/mm/jni/a/a$c:gfN	Ljava/util/HashMap;
+      //   171: putstatic 37	com/tencent/mm/jni/a/a$c:gzv	J
+      //   174: getstatic 46	com/tencent/mm/jni/a/a$c:gzx	Ljava/util/HashMap;
       //   177: invokevirtual 183	java/util/HashMap:clear	()V
       //   180: aload_0
       //   181: ifnull -88 -> 93
@@ -637,9 +637,9 @@ public final class a
       //   229: ldc_w 400
       //   232: iconst_0
       //   233: anewarray 4	java/lang/Object
-      //   236: invokestatic 238	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   236: invokestatic 238	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   239: iconst_0
-      //   240: putstatic 35	com/tencent/mm/jni/a/a$c:gfK	I
+      //   240: putstatic 35	com/tencent/mm/jni/a/a$c:gzu	I
       //   243: ldc_w 348
       //   246: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   249: return
@@ -710,8 +710,8 @@ public final class a
     {
       AppMethodBeat.i(153428);
       int i = Process.myPid();
-      String str = ai.getProcessName();
-      if (i == gfK)
+      String str = aj.getProcessName();
+      if (i == gzu)
       {
         if (paramBoolean)
         {
@@ -730,7 +730,7 @@ public final class a
         localIntent.putExtra("processName", str);
         localIntent.putExtra("traceMsg", paramString);
         localIntent.putExtra("tick", SystemClock.elapsedRealtime());
-        ai.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
+        aj.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
         AppMethodBeat.o(153428);
         return;
       }
@@ -739,18 +739,18 @@ public final class a
       localIntent.putExtra("processName", str);
       localIntent.putExtra("traceMsg", paramString);
       localIntent.putExtra("tick", SystemClock.elapsedRealtime());
-      ai.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
+      aj.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
       AppMethodBeat.o(153428);
     }
     
-    public static void tK(String paramString)
+    public static void wA(String paramString)
     {
       AppMethodBeat.i(153426);
       t(paramString, true);
       AppMethodBeat.o(153426);
     }
     
-    public static void tL(String paramString)
+    public static void wB(String paramString)
     {
       AppMethodBeat.i(153427);
       t(paramString, false);
@@ -760,45 +760,45 @@ public final class a
     static final class a
       implements Externalizable
     {
-      public String gfI;
-      public String gfQ;
-      public boolean gfR;
-      public int gfS;
-      public int gfT;
-      public long gfU;
-      public long gfV;
-      public AtomicInteger gfW;
+      public String gzA;
+      public boolean gzB;
+      public int gzC;
+      public int gzD;
+      public long gzE;
+      public long gzF;
+      public AtomicInteger gzG;
+      public String gzs;
       public String mProcessName;
       
       private a()
       {
         AppMethodBeat.i(153421);
         this.mProcessName = "";
-        this.gfI = "";
-        this.gfQ = "";
-        this.gfR = false;
-        this.gfS = 0;
-        this.gfT = 0;
-        this.gfU = 0L;
-        this.gfV = 0L;
-        this.gfW = new AtomicInteger(0);
+        this.gzs = "";
+        this.gzA = "";
+        this.gzB = false;
+        this.gzC = 0;
+        this.gzD = 0;
+        this.gzE = 0L;
+        this.gzF = 0L;
+        this.gzG = new AtomicInteger(0);
         AppMethodBeat.o(153421);
       }
       
       public final void readExternal(ObjectInput paramObjectInput)
       {
         AppMethodBeat.i(153422);
-        synchronized (a.c.afp())
+        synchronized (a.c.aib())
         {
           this.mProcessName = paramObjectInput.readUTF();
-          this.gfI = paramObjectInput.readUTF();
-          this.gfS = paramObjectInput.readInt();
-          this.gfT = paramObjectInput.readInt();
-          this.gfU = paramObjectInput.readLong();
-          this.gfQ = "";
-          this.gfR = false;
-          this.gfV = 0L;
-          this.gfW = new AtomicInteger(0);
+          this.gzs = paramObjectInput.readUTF();
+          this.gzC = paramObjectInput.readInt();
+          this.gzD = paramObjectInput.readInt();
+          this.gzE = paramObjectInput.readLong();
+          this.gzA = "";
+          this.gzB = false;
+          this.gzF = 0L;
+          this.gzG = new AtomicInteger(0);
           AppMethodBeat.o(153422);
           return;
         }
@@ -807,13 +807,13 @@ public final class a
       public final void writeExternal(ObjectOutput paramObjectOutput)
       {
         AppMethodBeat.i(153423);
-        synchronized (a.c.afp())
+        synchronized (a.c.aib())
         {
           paramObjectOutput.writeUTF(this.mProcessName);
-          paramObjectOutput.writeUTF(this.gfI);
-          paramObjectOutput.writeInt(this.gfS);
-          paramObjectOutput.writeInt(this.gfT);
-          paramObjectOutput.writeLong(this.gfU);
+          paramObjectOutput.writeUTF(this.gzs);
+          paramObjectOutput.writeInt(this.gzC);
+          paramObjectOutput.writeInt(this.gzD);
+          paramObjectOutput.writeLong(this.gzE);
           AppMethodBeat.o(153423);
           return;
         }
@@ -823,7 +823,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.jni.a.a
  * JD-Core Version:    0.7.0.1
  */

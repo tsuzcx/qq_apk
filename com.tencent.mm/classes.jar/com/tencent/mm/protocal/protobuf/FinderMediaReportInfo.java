@@ -3,9 +3,11 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FinderMediaReportInfo
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
+  public int audioBitrate;
   public int fileSize;
+  public int fps;
   public int height;
   public int videoBitrate;
   public int videoDuration;
@@ -17,30 +19,34 @@ public class FinderMediaReportInfo
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.videoDuration);
-      paramVarArgs.aR(2, this.videoBitrate);
-      paramVarArgs.aR(3, this.width);
-      paramVarArgs.aR(4, this.height);
-      paramVarArgs.aR(5, this.fileSize);
+      paramVarArgs.aS(1, this.videoDuration);
+      paramVarArgs.aS(2, this.videoBitrate);
+      paramVarArgs.aS(3, this.width);
+      paramVarArgs.aS(4, this.height);
+      paramVarArgs.aS(5, this.fileSize);
+      paramVarArgs.aS(6, this.audioBitrate);
+      paramVarArgs.aS(7, this.fps);
       AppMethodBeat.o(169007);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bx(1, this.videoDuration);
-      int i = f.a.a.b.b.a.bx(2, this.videoBitrate);
-      int j = f.a.a.b.b.a.bx(3, this.width);
-      int k = f.a.a.b.b.a.bx(4, this.height);
-      int m = f.a.a.b.b.a.bx(5, this.fileSize);
+      paramInt = f.a.a.b.b.a.bz(1, this.videoDuration);
+      int i = f.a.a.b.b.a.bz(2, this.videoBitrate);
+      int j = f.a.a.b.b.a.bz(3, this.width);
+      int k = f.a.a.b.b.a.bz(4, this.height);
+      int m = f.a.a.b.b.a.bz(5, this.fileSize);
+      int n = f.a.a.b.b.a.bz(6, this.audioBitrate);
+      int i1 = f.a.a.b.b.a.bz(7, this.fps);
       AppMethodBeat.o(169007);
-      return paramInt + 0 + i + j + k + m;
+      return paramInt + 0 + i + j + k + m + n + i1;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(169007);
@@ -56,23 +62,31 @@ public class FinderMediaReportInfo
         AppMethodBeat.o(169007);
         return -1;
       case 1: 
-        localFinderMediaReportInfo.videoDuration = locala.LVo.xF();
+        localFinderMediaReportInfo.videoDuration = locala.NPN.zc();
         AppMethodBeat.o(169007);
         return 0;
       case 2: 
-        localFinderMediaReportInfo.videoBitrate = locala.LVo.xF();
+        localFinderMediaReportInfo.videoBitrate = locala.NPN.zc();
         AppMethodBeat.o(169007);
         return 0;
       case 3: 
-        localFinderMediaReportInfo.width = locala.LVo.xF();
+        localFinderMediaReportInfo.width = locala.NPN.zc();
         AppMethodBeat.o(169007);
         return 0;
       case 4: 
-        localFinderMediaReportInfo.height = locala.LVo.xF();
+        localFinderMediaReportInfo.height = locala.NPN.zc();
+        AppMethodBeat.o(169007);
+        return 0;
+      case 5: 
+        localFinderMediaReportInfo.fileSize = locala.NPN.zc();
+        AppMethodBeat.o(169007);
+        return 0;
+      case 6: 
+        localFinderMediaReportInfo.audioBitrate = locala.NPN.zc();
         AppMethodBeat.o(169007);
         return 0;
       }
-      localFinderMediaReportInfo.fileSize = locala.LVo.xF();
+      localFinderMediaReportInfo.fps = locala.NPN.zc();
       AppMethodBeat.o(169007);
       return 0;
     }
@@ -82,7 +96,7 @@ public class FinderMediaReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.FinderMediaReportInfo
  * JD-Core Version:    0.7.0.1
  */

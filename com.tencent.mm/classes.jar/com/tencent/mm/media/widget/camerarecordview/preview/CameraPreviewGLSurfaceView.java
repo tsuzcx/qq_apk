@@ -12,32 +12,34 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.f.d;
+import com.tencent.mm.media.g.d;
 import com.tencent.mm.media.widget.camerarecordview.preview.a.c;
 import com.tencent.mm.plugin.mmsight.model.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aw;
-import d.g.b.k;
-import d.y;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;", "Landroid/opengl/GLSurfaceView;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "canPreview", "", "frameRotate", "", "ignoreRender", "previewCallback", "Lkotlin/Function1;", "Landroid/graphics/SurfaceTexture;", "", "previewController", "Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/AbsPreviewController;", "clearFrame", "getEGLContext", "Landroid/opengl/EGLContext;", "getEGLSurface", "callback", "Landroid/opengl/EGLSurface;", "Lkotlin/ParameterName;", "name", "eglSurface", "getFrameDataCallback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "getPreviewTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "ignore", "queueEvent", "r", "Lkotlin/Function0;", "release", "setOnDrawListener", "frameAvailableListener", "texture", "setPreviewRenderer", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "cpuCrop", "surfaceChanged", "holder", "Landroid/view/SurfaceHolder;", "format", "w", "h", "surfaceCreated", "surfaceDestroyed", "tryCameraPreview", "tryStopCameraPreview", "updateCameraConfig", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "Companion", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;", "Landroid/opengl/GLSurfaceView;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "canPreview", "", "frameRotate", "", "ignoreRender", "previewCallback", "Lkotlin/Function1;", "Landroid/graphics/SurfaceTexture;", "", "previewController", "Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/AbsPreviewController;", "clearFrame", "getEGLContext", "Landroid/opengl/EGLContext;", "getEGLSurface", "callback", "Landroid/opengl/EGLSurface;", "Lkotlin/ParameterName;", "name", "eglSurface", "getFrameDataCallback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "getPreviewTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "ignore", "queueEvent", "r", "Lkotlin/Function0;", "release", "setOnDrawListener", "frameAvailableListener", "texture", "setPreviewRenderer", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "cpuCrop", "surfaceChanged", "holder", "Landroid/view/SurfaceHolder;", "format", "w", "h", "surfaceCreated", "surfaceDestroyed", "tryCameraPreview", "tryStopCameraPreview", "updateCameraConfig", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "Companion", "plugin-mediaeditor_release"})
 public class CameraPreviewGLSurfaceView
   extends GLSurfaceView
   implements e
 {
-  public static final CameraPreviewGLSurfaceView.a hcc;
-  private com.tencent.mm.media.widget.camerarecordview.preview.a.a grf;
-  private d.g.a.b<? super SurfaceTexture, y> hbY;
-  private int hbZ;
-  private boolean hca;
-  private boolean hcb;
+  public static final CameraPreviewGLSurfaceView.a huk;
+  private com.tencent.mm.media.widget.camerarecordview.preview.a.a gKP;
+  private d.g.a.b<? super SurfaceTexture, z> hug;
+  private int huh;
+  private boolean hui;
+  private boolean huj;
   
   static
   {
     AppMethodBeat.i(94310);
-    hcc = new CameraPreviewGLSurfaceView.a((byte)0);
+    huk = new CameraPreviewGLSurfaceView.a((byte)0);
     AppMethodBeat.o(94310);
   }
   
@@ -49,18 +51,18 @@ public class CameraPreviewGLSurfaceView
     try
     {
       getHolder().setType(2);
-      setEGLContextFactory((GLSurfaceView.EGLContextFactory)new com.tencent.mm.media.i.a.b());
-      setEGLContextClientVersion(aw.aKT("mmkv_gl_key").decodeInt("support_egl_context_client_version", 3));
-      setEGLConfigChooser((GLSurfaceView.EGLConfigChooser)new com.tencent.mm.media.i.a.a());
+      setEGLContextFactory((GLSurfaceView.EGLContextFactory)new com.tencent.mm.media.j.a.b());
+      setEGLContextClientVersion(ax.aQz("mmkv_gl_key").decodeInt("support_egl_context_client_version", 3));
+      setEGLConfigChooser((GLSurfaceView.EGLConfigChooser)new com.tencent.mm.media.j.a.a());
       setPreserveEGLContextOnPause(false);
       setRenderer((GLSurfaceView.Renderer)new GLSurfaceView.Renderer()
       {
         public final void onDrawFrame(GL10 paramAnonymousGL10)
         {
           AppMethodBeat.i(94292);
-          if (!CameraPreviewGLSurfaceView.b(this.hcd))
+          if (!CameraPreviewGLSurfaceView.b(this.hul))
           {
-            com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = CameraPreviewGLSurfaceView.a(this.hcd);
+            com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = CameraPreviewGLSurfaceView.a(this.hul);
             if (locala != null)
             {
               locala.onDrawFrame(paramAnonymousGL10);
@@ -74,11 +76,11 @@ public class CameraPreviewGLSurfaceView
         public final void onSurfaceChanged(final GL10 paramAnonymousGL10, final int paramAnonymousInt1, final int paramAnonymousInt2)
         {
           AppMethodBeat.i(94293);
-          ac.m("MicroMsg.CameraPreviewGLSurfaceView", "onSurfaceChanged width:" + paramAnonymousInt1 + " height:" + paramAnonymousInt2, new Object[0]);
-          com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = CameraPreviewGLSurfaceView.a(this.hcd);
+          ad.m("MicroMsg.CameraPreviewGLSurfaceView", "onSurfaceChanged width:" + paramAnonymousInt1 + " height:" + paramAnonymousInt2, new Object[0]);
+          com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = CameraPreviewGLSurfaceView.a(this.hul);
           if (locala != null)
           {
-            locala.a(CameraPreviewGLSurfaceView.c(this.hcd), (d.g.a.a)new a(this, paramAnonymousGL10, paramAnonymousInt1, paramAnonymousInt2));
+            locala.a(CameraPreviewGLSurfaceView.c(this.hul), (d.g.a.a)new a(this, paramAnonymousGL10, paramAnonymousInt1, paramAnonymousInt2));
             AppMethodBeat.o(94293);
             return;
           }
@@ -88,8 +90,8 @@ public class CameraPreviewGLSurfaceView
         public final void onSurfaceCreated(GL10 paramAnonymousGL10, EGLConfig paramAnonymousEGLConfig)
         {
           AppMethodBeat.i(94294);
-          ac.m("MicroMsg.CameraPreviewGLSurfaceView", "onSurfaceCreated", new Object[0]);
-          com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = CameraPreviewGLSurfaceView.a(this.hcd);
+          ad.m("MicroMsg.CameraPreviewGLSurfaceView", "onSurfaceCreated", new Object[0]);
+          com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = CameraPreviewGLSurfaceView.a(this.hul);
           if (locala != null)
           {
             locala.onSurfaceCreated(paramAnonymousGL10, paramAnonymousEGLConfig);
@@ -99,10 +101,10 @@ public class CameraPreviewGLSurfaceView
           AppMethodBeat.o(94294);
         }
         
-        @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+        @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
         static final class a
-          extends d.g.b.l
-          implements d.g.a.a<y>
+          extends q
+          implements d.g.a.a<z>
         {
           a(CameraPreviewGLSurfaceView.1 param1, GL10 paramGL10, int paramInt1, int paramInt2)
           {
@@ -111,7 +113,7 @@ public class CameraPreviewGLSurfaceView
         }
       });
       setRenderMode(0);
-      ac.m("MicroMsg.CameraPreviewGLSurfaceView", "init create CameraPreviewGLSurfaceView", new Object[0]);
+      ad.m("MicroMsg.CameraPreviewGLSurfaceView", "init create CameraPreviewGLSurfaceView", new Object[0]);
       AppMethodBeat.o(94309);
       return;
     }
@@ -135,20 +137,20 @@ public class CameraPreviewGLSurfaceView
     }
   }
   
-  public void a(com.tencent.mm.media.i.a parama, boolean paramBoolean)
+  public void a(com.tencent.mm.media.j.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(94296);
-    k.h(parama, "renderer");
-    ac.m("MicroMsg.CameraPreviewGLSurfaceView", "setPreviewRenderer cpuCrop:".concat(String.valueOf(paramBoolean)), new Object[0]);
-    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.grf;
+    p.h(parama, "renderer");
+    ad.m("MicroMsg.CameraPreviewGLSurfaceView", "setPreviewRenderer cpuCrop:".concat(String.valueOf(paramBoolean)), new Object[0]);
+    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.gKP;
     if (locala != null) {
       locala.release();
     }
     if (paramBoolean) {}
     for (locala = (com.tencent.mm.media.widget.camerarecordview.preview.a.a)new com.tencent.mm.media.widget.camerarecordview.preview.a.b((e)this);; locala = (com.tencent.mm.media.widget.camerarecordview.preview.a.a)new c((f)this))
     {
-      this.grf = locala;
-      locala = this.grf;
+      this.gKP = locala;
+      locala = this.gKP;
       if (locala == null) {
         break;
       }
@@ -162,9 +164,9 @@ public class CameraPreviewGLSurfaceView
   public void a(com.tencent.mm.media.widget.a.b paramb)
   {
     AppMethodBeat.i(94297);
-    k.h(paramb, "cameraConfig");
-    ac.m("MicroMsg.CameraPreviewGLSurfaceView", "updateCameraConfig:".concat(String.valueOf(paramb)), new Object[0]);
-    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.grf;
+    p.h(paramb, "cameraConfig");
+    ad.m("MicroMsg.CameraPreviewGLSurfaceView", "updateCameraConfig:".concat(String.valueOf(paramb)), new Object[0]);
+    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.gKP;
     if (locala != null)
     {
       locala.a(paramb);
@@ -174,64 +176,64 @@ public class CameraPreviewGLSurfaceView
     AppMethodBeat.o(94297);
   }
   
-  public void ajA()
+  public void amm()
   {
     AppMethodBeat.i(94299);
-    ac.m("MicroMsg.CameraPreviewGLSurfaceView", "tryStopCameraPreview", new Object[0]);
-    this.hbY = null;
+    ad.m("MicroMsg.CameraPreviewGLSurfaceView", "tryStopCameraPreview", new Object[0]);
+    this.hug = null;
     AppMethodBeat.o(94299);
   }
   
-  public void ajB()
+  public void amn()
   {
     AppMethodBeat.i(94303);
-    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.grf;
+    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.gKP;
     if (locala != null)
     {
-      locala.ajB();
+      locala.amn();
       AppMethodBeat.o(94303);
       return;
     }
     AppMethodBeat.o(94303);
   }
   
-  public void c(d.g.a.b<? super SurfaceTexture, y> paramb)
+  public void d(d.g.a.b<? super SurfaceTexture, z> paramb)
   {
     Object localObject2 = null;
     AppMethodBeat.i(94298);
-    ac.m("MicroMsg.CameraPreviewGLSurfaceView", "tryCameraPreview  canPreview:" + this.hca, new Object[0]);
-    if (this.hca)
+    ad.m("MicroMsg.CameraPreviewGLSurfaceView", "tryCameraPreview  canPreview:" + this.hui, new Object[0]);
+    if (this.hui)
     {
       Object localObject3 = new StringBuilder("callback.invoke  ");
-      Object localObject1 = this.grf;
+      Object localObject1 = this.gKP;
       if (localObject1 != null) {}
       for (localObject1 = ((com.tencent.mm.media.widget.camerarecordview.preview.a.a)localObject1).getSurfaceTexture();; localObject1 = null)
       {
-        ac.m("MicroMsg.CameraPreviewGLSurfaceView", localObject1, new Object[0]);
+        ad.m("MicroMsg.CameraPreviewGLSurfaceView", localObject1, new Object[0]);
         if (paramb == null) {
           break;
         }
-        localObject3 = this.grf;
+        localObject3 = this.gKP;
         localObject1 = localObject2;
         if (localObject3 != null) {
           localObject1 = ((com.tencent.mm.media.widget.camerarecordview.preview.a.a)localObject3).getSurfaceTexture();
         }
-        paramb.ay(localObject1);
+        paramb.invoke(localObject1);
         AppMethodBeat.o(94298);
         return;
       }
       AppMethodBeat.o(94298);
       return;
     }
-    this.hbY = paramb;
+    this.hug = paramb;
     AppMethodBeat.o(94298);
   }
   
   public EGLContext getEGLContext()
   {
-    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.grf;
+    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.gKP;
     if (locala != null) {
-      return locala.gWL;
+      return locala.hoR;
     }
     return null;
   }
@@ -239,7 +241,7 @@ public class CameraPreviewGLSurfaceView
   public g getFrameDataCallback()
   {
     AppMethodBeat.i(94304);
-    Object localObject = this.grf;
+    Object localObject = this.gKP;
     if (localObject != null)
     {
       localObject = ((com.tencent.mm.media.widget.camerarecordview.preview.a.a)localObject).getFrameDataCallback();
@@ -252,22 +254,22 @@ public class CameraPreviewGLSurfaceView
   
   public d getPreviewTexture()
   {
-    AppMethodBeat.i(209927);
-    Object localObject = this.grf;
+    AppMethodBeat.i(219322);
+    Object localObject = this.gKP;
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.media.widget.camerarecordview.preview.a.a)localObject).auU();
-      AppMethodBeat.o(209927);
+      localObject = ((com.tencent.mm.media.widget.camerarecordview.preview.a.a)localObject).axH();
+      AppMethodBeat.o(219322);
       return localObject;
     }
-    AppMethodBeat.o(209927);
+    AppMethodBeat.o(219322);
     return null;
   }
   
-  public void h(d.g.a.a<y> parama)
+  public void h(d.g.a.a<z> parama)
   {
     AppMethodBeat.i(94305);
-    k.h(parama, "r");
+    p.h(parama, "r");
     queueEvent((Runnable)new a(parama));
     AppMethodBeat.o(94305);
   }
@@ -276,22 +278,22 @@ public class CameraPreviewGLSurfaceView
   {
     AppMethodBeat.i(94302);
     getHolder().removeCallback((SurfaceHolder.Callback)this);
-    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.grf;
+    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.gKP;
     if (locala != null) {
       locala.release();
     }
-    this.hca = false;
+    this.hui = false;
     AppMethodBeat.o(94302);
   }
   
-  public void setOnDrawListener(d.g.a.b<? super d, y> paramb)
+  public void setOnDrawListener(d.g.a.b<? super d, z> paramb)
   {
     AppMethodBeat.i(94300);
-    ac.m("MicroMsg.CameraPreviewGLSurfaceView", "setOnDrawListener", new Object[0]);
-    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.grf;
+    ad.m("MicroMsg.CameraPreviewGLSurfaceView", "setOnDrawListener", new Object[0]);
+    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.gKP;
     if (locala != null)
     {
-      locala.hco = paramb;
+      locala.huw = paramb;
       AppMethodBeat.o(94300);
       return;
     }
@@ -305,7 +307,7 @@ public class CameraPreviewGLSurfaceView
     if (paramSurfaceHolder != null) {}
     for (Surface localSurface = paramSurfaceHolder.getSurface();; localSurface = null)
     {
-      ac.i("MicroMsg.CameraPreviewGLSurfaceView", localSurface + ", format:" + paramInt1 + ", w:" + paramInt2 + ", h:" + paramInt3);
+      ad.i("MicroMsg.CameraPreviewGLSurfaceView", localSurface + ", format:" + paramInt1 + ", w:" + paramInt2 + ", h:" + paramInt3);
       super.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
       AppMethodBeat.o(94306);
       return;
@@ -319,7 +321,7 @@ public class CameraPreviewGLSurfaceView
     if (paramSurfaceHolder != null) {}
     for (Surface localSurface = paramSurfaceHolder.getSurface();; localSurface = null)
     {
-      ac.i("MicroMsg.CameraPreviewGLSurfaceView", localSurface);
+      ad.i("MicroMsg.CameraPreviewGLSurfaceView", localSurface);
       super.surfaceCreated(paramSurfaceHolder);
       AppMethodBeat.o(94308);
       return;
@@ -333,12 +335,12 @@ public class CameraPreviewGLSurfaceView
     if (paramSurfaceHolder != null) {}
     for (Object localObject = paramSurfaceHolder.getSurface();; localObject = null)
     {
-      ac.i("MicroMsg.CameraPreviewGLSurfaceView", localObject);
-      localObject = this.grf;
+      ad.i("MicroMsg.CameraPreviewGLSurfaceView", localObject);
+      localObject = this.gKP;
       if (localObject != null) {
         ((com.tencent.mm.media.widget.camerarecordview.preview.a.a)localObject).release();
       }
-      this.hca = false;
+      this.hui = false;
       super.surfaceDestroyed(paramSurfaceHolder);
       AppMethodBeat.o(94307);
       return;
@@ -347,7 +349,7 @@ public class CameraPreviewGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.media.widget.camerarecordview.preview.CameraPreviewGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ public abstract interface p
   
   public static final class a
   {
-    private static final Set<p> jgU;
+    private static final Set<p> jzU;
     
     static
     {
       AppMethodBeat.i(43958);
-      jgU = new HashSet();
+      jzU = new HashSet();
       AppMethodBeat.o(43958);
     }
     
@@ -24,9 +24,9 @@ public abstract interface p
     {
       AppMethodBeat.i(43956);
       if (paramp != null) {
-        synchronized (jgU)
+        synchronized (jzU)
         {
-          jgU.add(paramp);
+          jzU.add(paramp);
           AppMethodBeat.o(43956);
           return;
         }
@@ -34,12 +34,12 @@ public abstract interface p
       AppMethodBeat.o(43956);
     }
     
-    static Set<p> aUj()
+    static Set<p> aXs()
     {
       AppMethodBeat.i(43957);
-      synchronized (jgU)
+      synchronized (jzU)
       {
-        HashSet localHashSet = new HashSet(jgU);
+        HashSet localHashSet = new HashSet(jzU);
         AppMethodBeat.o(43957);
         return localHashSet;
       }

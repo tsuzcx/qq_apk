@@ -2,38 +2,38 @@ package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.i.a.e;
-import com.tencent.mm.protocal.protobuf.anx;
+import com.tencent.mm.protocal.protobuf.arj;
 import java.util.Map;
 
 public final class b
 {
-  public anx hTI;
+  public arj inc;
   
   public b()
   {
     AppMethodBeat.i(164139);
-    this.hTI = new anx();
+    this.inc = new arj();
     AppMethodBeat.o(164139);
   }
   
-  public final String aHU()
+  public final String aLf()
   {
     AppMethodBeat.i(164140);
-    String str = e.b(this.hTI);
+    String str = e.b(this.inc);
     AppMethodBeat.o(164140);
     return str;
   }
   
-  public final void h(String paramString, Map<String, String> paramMap)
+  public final void i(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(164141);
-    this.hTI = e.t(paramString, paramMap);
+    this.inc = e.v(paramString, paramMap);
     AppMethodBeat.o(164141);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsns.b
  * JD-Core Version:    0.7.0.1
  */

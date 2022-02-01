@@ -5,19 +5,19 @@ import com.tencent.magicbrush.ui.MagicBrushView;
 
 public abstract interface d
 {
-  public abstract void BQ();
+  public abstract void Dq();
   
-  public abstract MagicBrushView BR();
+  public abstract void Dr();
   
-  public abstract void BS();
+  public abstract Bitmap Ds();
   
-  public abstract Bitmap BT();
+  public abstract MagicBrushView getMagicBrushView();
   
   public abstract Bitmap q(int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.game.page.d
  * JD-Core Version:    0.7.0.1
  */

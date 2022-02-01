@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.utils.v;
 import com.tencent.mm.plugin.appbrand.utils.v.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.ByteArrayInputStream;
 import java.nio.ByteBuffer;
 import java.util.Map;
@@ -21,21 +21,21 @@ class bg
     AppMethodBeat.i(128935);
     boolean bool = paramJSONObject.optBoolean("append", false);
     String str = paramJSONObject.optString("encoding");
-    v.a(paramc.aUV(), paramJSONObject, (v.a)paramc.ar(v.a.class));
+    v.a(paramc.aYh(), null, paramJSONObject, (v.a)paramc.ar(v.a.class));
     Object localObject = paramJSONObject.opt("data");
     if ((localObject instanceof String)) {
-      if (bs.isNullOrNil(str)) {
-        paramJSONObject = (h)h.a.krd.get("utf8");
+      if (bt.isNullOrNil(str)) {
+        paramJSONObject = (h)h.a.kMz.get("utf8");
       }
     }
     for (;;)
     {
       try
       {
-        paramJSONObject = paramJSONObject.Mg((String)localObject);
+        paramJSONObject = paramJSONObject.PC((String)localObject);
         paramJSONObject = new a(paramJSONObject);
-        paramc = paramc.DH().a(paramString, paramJSONObject, bool);
-        switch (1.krw[paramc.ordinal()])
+        paramc = paramc.Fg().a(paramString, paramJSONObject, bool);
+        switch (1.kMS[paramc.ordinal()])
         {
         default: 
           paramc = new i.a("fail " + paramc.name(), new Object[0]);
@@ -49,7 +49,7 @@ class bg
         AppMethodBeat.o(128935);
         return paramc;
       }
-      paramJSONObject = (h)h.a.krd.get(str.toLowerCase());
+      paramJSONObject = (h)h.a.kMz.get(str.toLowerCase());
       if (paramJSONObject == null)
       {
         paramc = new i.a("fail invalid encoding", new Object[0]);
@@ -102,7 +102,7 @@ class bg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.bg
  * JD-Core Version:    0.7.0.1
  */

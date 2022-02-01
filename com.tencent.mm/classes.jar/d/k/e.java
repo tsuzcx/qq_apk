@@ -5,19 +5,19 @@ import d.e.c;
 import d.g.b.a.a;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/ranges/LongProgression;", "", "", "start", "endInclusive", "step", "(JJJ)V", "first", "getFirst", "()J", "last", "getLast", "getStep", "equals", "", "other", "", "hashCode", "", "isEmpty", "iterator", "Lkotlin/collections/LongIterator;", "toString", "", "Companion", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/LongProgression;", "", "", "start", "endInclusive", "step", "(JJJ)V", "first", "getFirst", "()J", "last", "getLast", "getStep", "equals", "", "other", "", "hashCode", "", "isEmpty", "iterator", "Lkotlin/collections/LongIterator;", "toString", "", "Companion", "kotlin-stdlib"})
 public class e
   implements a, Iterable<Long>
 {
-  public static final a KVk;
-  public final long KVj;
+  public static final a MMq;
+  public final long MMp;
   public final long first;
-  public final long woo;
+  public final long xwe;
   
   static
   {
     AppMethodBeat.i(129320);
-    KVk = new a((byte)0);
+    MMq = new a((byte)0);
     AppMethodBeat.o(129320);
   }
   
@@ -45,18 +45,18 @@ public class e
     }
     for (;;)
     {
-      this.KVj = l;
-      this.woo = paramLong3;
+      this.MMp = l;
+      this.xwe = paramLong3;
       AppMethodBeat.o(129319);
       return;
-      l = paramLong2 - c.s(paramLong2, paramLong1, paramLong3);
+      l = paramLong2 - c.u(paramLong2, paramLong1, paramLong3);
       continue;
       if (paramLong3 >= 0L) {
         break;
       }
       l = paramLong2;
       if (paramLong1 > paramLong2) {
-        l = paramLong2 + c.s(paramLong1, paramLong2, -paramLong3);
+        l = paramLong2 + c.u(paramLong1, paramLong2, -paramLong3);
       }
     }
     Throwable localThrowable = (Throwable)new IllegalArgumentException("Step is zero.");
@@ -67,7 +67,7 @@ public class e
   public boolean equals(Object paramObject)
   {
     AppMethodBeat.i(129316);
-    if (((paramObject instanceof e)) && (((isEmpty()) && (((e)paramObject).isEmpty())) || ((this.first == ((e)paramObject).first) && (this.KVj == ((e)paramObject).KVj) && (this.woo == ((e)paramObject).woo))))
+    if (((paramObject instanceof e)) && (((isEmpty()) && (((e)paramObject).isEmpty())) || ((this.first == ((e)paramObject).first) && (this.MMp == ((e)paramObject).MMp) && (this.xwe == ((e)paramObject).xwe))))
     {
       AppMethodBeat.o(129316);
       return true;
@@ -84,17 +84,17 @@ public class e
       AppMethodBeat.o(129317);
       return -1;
     }
-    int i = (int)(((this.first ^ this.first >>> 32) * 31L + (this.KVj ^ this.KVj >>> 32)) * 31L + (this.woo ^ this.woo >>> 32));
+    int i = (int)(((this.first ^ this.first >>> 32) * 31L + (this.MMp ^ this.MMp >>> 32)) * 31L + (this.xwe ^ this.xwe >>> 32));
     AppMethodBeat.o(129317);
     return i;
   }
   
   public boolean isEmpty()
   {
-    if (this.woo > 0L) {
-      if (this.first <= this.KVj) {}
+    if (this.xwe > 0L) {
+      if (this.first <= this.MMp) {}
     }
-    while (this.first < this.KVj)
+    while (this.first < this.MMp)
     {
       return true;
       return false;
@@ -105,21 +105,21 @@ public class e
   public String toString()
   {
     AppMethodBeat.i(129318);
-    if (this.woo > 0L)
+    if (this.xwe > 0L)
     {
-      str = this.first + ".." + this.KVj + " step " + this.woo;
+      str = this.first + ".." + this.MMp + " step " + this.xwe;
       AppMethodBeat.o(129318);
       return str;
     }
-    String str = this.first + " downTo " + this.KVj + " step " + -this.woo;
+    String str = this.first + " downTo " + this.MMp + " step " + -this.xwe;
     AppMethodBeat.o(129318);
     return str;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/ranges/LongProgression$Companion;", "", "()V", "fromClosedRange", "Lkotlin/ranges/LongProgression;", "rangeStart", "", "rangeEnd", "step", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/LongProgression$Companion;", "", "()V", "fromClosedRange", "Lkotlin/ranges/LongProgression;", "rangeStart", "", "rangeEnd", "step", "kotlin-stdlib"})
   public static final class a
   {
-    public static e t(long paramLong1, long paramLong2, long paramLong3)
+    public static e v(long paramLong1, long paramLong2, long paramLong3)
     {
       AppMethodBeat.i(129321);
       e locale = new e(paramLong1, paramLong2, paramLong3);

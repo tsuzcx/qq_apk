@@ -49,7 +49,7 @@ public class h
   
   public h(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(193101);
+    AppMethodBeat.i(187329);
     this.u = false;
     this.v = -1;
     this.w = null;
@@ -72,15 +72,15 @@ public class h
     this.i = ByteBuffer.allocateDirect(l.a.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.k = l.a(k.a, false, true);
     this.i.put(this.k).position(0);
-    AppMethodBeat.o(193101);
+    AppMethodBeat.o(187329);
   }
   
   private static float[] a(FloatBuffer paramFloatBuffer)
   {
-    AppMethodBeat.i(193106);
+    AppMethodBeat.i(187334);
     if (paramFloatBuffer.limit() <= 0)
     {
-      AppMethodBeat.o(193106);
+      AppMethodBeat.o(187334);
       return null;
     }
     float[] arrayOfFloat = new float[paramFloatBuffer.limit()];
@@ -90,24 +90,24 @@ public class h
       arrayOfFloat[i1] = paramFloatBuffer.get(i1);
       i1 += 1;
     }
-    AppMethodBeat.o(193106);
+    AppMethodBeat.o(187334);
     return arrayOfFloat;
   }
   
   public int a(int paramInt)
   {
-    AppMethodBeat.i(193112);
+    AppMethodBeat.i(187340);
     paramInt = b(paramInt, this.h, this.i);
-    AppMethodBeat.o(193112);
+    AppMethodBeat.o(187340);
     return paramInt;
   }
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(193114);
+    AppMethodBeat.i(187342);
     if (!this.g)
     {
-      AppMethodBeat.o(193114);
+      AppMethodBeat.o(187342);
       return -1;
     }
     GLES20.glBindFramebuffer(36160, paramInt2);
@@ -116,31 +116,31 @@ public class h
       this.l.a(paramInt3);
     }
     GLES20.glBindFramebuffer(36160, 0);
-    AppMethodBeat.o(193114);
+    AppMethodBeat.o(187342);
     return paramInt3;
   }
   
   public void a(final int paramInt, final float paramFloat)
   {
-    AppMethodBeat.i(193121);
+    AppMethodBeat.i(187349);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(193064);
+        AppMethodBeat.i(187292);
         GLES20.glUniform1f(paramInt, paramFloat);
-        AppMethodBeat.o(193064);
+        AppMethodBeat.o(187292);
       }
     });
-    AppMethodBeat.o(193121);
+    AppMethodBeat.o(187349);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193108);
+    AppMethodBeat.i(187336);
     if ((this.f == paramInt2) && (this.e == paramInt1))
     {
-      AppMethodBeat.o(193108);
+      AppMethodBeat.o(187336);
       return;
     }
     this.e = paramInt1;
@@ -158,12 +158,12 @@ public class h
       GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.n, 0);
       GLES20.glBindFramebuffer(36160, 0);
     }
-    AppMethodBeat.o(193108);
+    AppMethodBeat.o(187336);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, float[] paramArrayOfFloat, float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(193118);
+    AppMethodBeat.i(187346);
     float[] arrayOfFloat = paramArrayOfFloat;
     if (paramArrayOfFloat == null) {
       arrayOfFloat = l.a(k.a, false, true);
@@ -250,7 +250,7 @@ public class h
       for (;;)
       {
         a((float[])l.e.clone(), arrayOfFloat);
-        AppMethodBeat.o(193118);
+        AppMethodBeat.o(187346);
         return;
         if (paramBoolean2)
         {
@@ -275,7 +275,7 @@ public class h
   
   public void a(int paramInt, FloatBuffer paramFloatBuffer)
   {
-    AppMethodBeat.i(193119);
+    AppMethodBeat.i(187347);
     if (paramFloatBuffer == null) {}
     for (paramFloatBuffer = l.a(k.a, false, true);; paramFloatBuffer = a(paramFloatBuffer))
     {
@@ -297,7 +297,7 @@ public class h
       }
     }
     a((float[])l.e.clone(), paramFloatBuffer);
-    AppMethodBeat.o(193119);
+    AppMethodBeat.o(187347);
   }
   
   public void a(int paramInt, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2)
@@ -350,17 +350,17 @@ public class h
   
   public void a(final int paramInt, final float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(193122);
+    AppMethodBeat.i(187350);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(193045);
+        AppMethodBeat.i(187273);
         GLES20.glUniform2fv(paramInt, 1, FloatBuffer.wrap(paramArrayOfFloat));
-        AppMethodBeat.o(193045);
+        AppMethodBeat.o(187273);
       }
     });
-    AppMethodBeat.o(193122);
+    AppMethodBeat.o(187350);
   }
   
   public void a(a parama)
@@ -376,11 +376,11 @@ public class h
   
   public void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(193125);
+    AppMethodBeat.i(187353);
     synchronized (this.r)
     {
       this.r.addLast(paramRunnable);
-      AppMethodBeat.o(193125);
+      AppMethodBeat.o(187353);
       return;
     }
   }
@@ -397,26 +397,26 @@ public class h
   
   public void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    AppMethodBeat.i(193116);
+    AppMethodBeat.i(187344);
     this.j = paramArrayOfFloat1;
     this.h = ByteBuffer.allocateDirect(l.e.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.h.put(paramArrayOfFloat1).position(0);
     this.k = paramArrayOfFloat2;
     this.i = ByteBuffer.allocateDirect(l.a.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.i.put(paramArrayOfFloat2).position(0);
-    AppMethodBeat.o(193116);
+    AppMethodBeat.o(187344);
   }
   
   public boolean a()
   {
-    AppMethodBeat.i(193102);
+    AppMethodBeat.i(187330);
     this.a = j.a(this.s, this.t);
     if ((this.a != 0) && (b())) {}
     for (this.g = true;; this.g = false)
     {
       c();
       boolean bool = this.g;
-      AppMethodBeat.o(193102);
+      AppMethodBeat.o(187330);
       return bool;
     }
   }
@@ -424,7 +424,7 @@ public class h
   public float[] a(int paramInt1, int paramInt2, FloatBuffer paramFloatBuffer, a parama, int paramInt3)
   {
     int i1 = 0;
-    AppMethodBeat.i(193117);
+    AppMethodBeat.i(187345);
     float f2;
     float f4;
     if (paramFloatBuffer == null) {
@@ -473,70 +473,70 @@ public class h
       paramFloatBuffer[paramInt2] -= f4;
     }
     label225:
-    AppMethodBeat.o(193117);
+    AppMethodBeat.o(187345);
     return paramFloatBuffer;
   }
   
   public int b(int paramInt)
   {
-    AppMethodBeat.i(193115);
+    AppMethodBeat.i(187343);
     paramInt = a(paramInt, this.m, this.n);
-    AppMethodBeat.o(193115);
+    AppMethodBeat.o(187343);
     return paramInt;
   }
   
   public int b(int paramInt, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2)
   {
-    AppMethodBeat.i(193111);
+    AppMethodBeat.i(187339);
     if (!this.g)
     {
-      AppMethodBeat.o(193111);
+      AppMethodBeat.o(187339);
       return -1;
     }
     a(paramInt, paramFloatBuffer1, paramFloatBuffer2);
     if ((this.l instanceof a)) {
       this.l.a(paramInt);
     }
-    AppMethodBeat.o(193111);
+    AppMethodBeat.o(187339);
     return 1;
   }
   
   public void b(final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(193120);
+    AppMethodBeat.i(187348);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(193049);
+        AppMethodBeat.i(187277);
         GLES20.glUniform1i(paramInt1, paramInt2);
-        AppMethodBeat.o(193049);
+        AppMethodBeat.o(187277);
       }
     });
-    AppMethodBeat.o(193120);
+    AppMethodBeat.o(187348);
   }
   
   public void b(final int paramInt, final float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(193123);
+    AppMethodBeat.i(187351);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(193099);
+        AppMethodBeat.i(187327);
         GLES20.glUniform3fv(paramInt, 1, FloatBuffer.wrap(paramArrayOfFloat));
-        AppMethodBeat.o(193099);
+        AppMethodBeat.o(187327);
       }
     });
-    AppMethodBeat.o(193123);
+    AppMethodBeat.o(187351);
   }
   
   public void b(boolean paramBoolean)
   {
-    AppMethodBeat.i(193103);
+    AppMethodBeat.i(187331);
     this.p = paramBoolean;
     TXCLog.i(this.x, "set Nearest model ".concat(String.valueOf(paramBoolean)));
-    AppMethodBeat.o(193103);
+    AppMethodBeat.o(187331);
   }
   
   public boolean b()
@@ -554,40 +554,40 @@ public class h
   
   public void c(final int paramInt, final float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(193124);
+    AppMethodBeat.i(187352);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(193047);
+        AppMethodBeat.i(187275);
         GLES20.glUniform4fv(paramInt, 1, FloatBuffer.wrap(paramArrayOfFloat));
-        AppMethodBeat.o(193047);
+        AppMethodBeat.o(187275);
       }
     });
-    AppMethodBeat.o(193124);
+    AppMethodBeat.o(187352);
   }
   
   public void d()
   {
-    AppMethodBeat.i(193104);
+    AppMethodBeat.i(187332);
     GLES20.glDeleteProgram(this.a);
     e();
     this.g = false;
-    AppMethodBeat.o(193104);
+    AppMethodBeat.o(187332);
   }
   
   public void e()
   {
-    AppMethodBeat.i(193105);
+    AppMethodBeat.i(187333);
     f();
     this.f = -1;
     this.e = -1;
-    AppMethodBeat.o(193105);
+    AppMethodBeat.o(187333);
   }
   
   public void f()
   {
-    AppMethodBeat.i(193107);
+    AppMethodBeat.i(187335);
     if (this.m != -1)
     {
       GLES20.glDeleteFramebuffers(1, new int[] { this.m }, 0);
@@ -598,12 +598,12 @@ public class h
       GLES20.glDeleteTextures(1, new int[] { this.n }, 0);
       this.n = -1;
     }
-    AppMethodBeat.o(193107);
+    AppMethodBeat.o(187335);
   }
   
   public void g()
   {
-    AppMethodBeat.i(193109);
+    AppMethodBeat.i(187337);
     if (this.k != null)
     {
       int i1 = 0;
@@ -613,15 +613,15 @@ public class h
         i1 += 2;
       }
     }
-    AppMethodBeat.o(193109);
+    AppMethodBeat.o(187337);
     return;
     a(this.j, this.k);
-    AppMethodBeat.o(193109);
+    AppMethodBeat.o(187337);
   }
   
   public void h()
   {
-    AppMethodBeat.i(193110);
+    AppMethodBeat.i(187338);
     if (this.k != null)
     {
       int i1 = 1;
@@ -631,10 +631,10 @@ public class h
         i1 += 2;
       }
     }
-    AppMethodBeat.o(193110);
+    AppMethodBeat.o(187338);
     return;
     a(this.j, this.k);
-    AppMethodBeat.o(193110);
+    AppMethodBeat.o(187338);
   }
   
   protected void i() {}
@@ -643,11 +643,11 @@ public class h
   
   protected void k()
   {
-    AppMethodBeat.i(193113);
+    AppMethodBeat.i(187341);
     while (!this.r.isEmpty()) {
       ((Runnable)this.r.removeFirst()).run();
     }
-    AppMethodBeat.o(193113);
+    AppMethodBeat.o(187341);
   }
   
   public int l()

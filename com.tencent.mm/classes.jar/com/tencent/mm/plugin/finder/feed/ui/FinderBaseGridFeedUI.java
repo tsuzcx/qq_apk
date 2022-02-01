@@ -7,16 +7,16 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.c.a;
-import com.tencent.mm.plugin.finder.feed.c.b;
+import com.tencent.mm.plugin.finder.feed.b.a;
+import com.tencent.mm.plugin.finder.feed.b.b;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.plugin.finder.view.FinderLikeDrawer;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.HashMap;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseGridFeedUI;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "initAfterAttach", "", "initOnCreate", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "plugin-finder_release"})
-public abstract class FinderBaseGridFeedUI<V extends c.b, P extends c.a>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseGridFeedUI;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "initAfterAttach", "", "initOnCreate", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "plugin-finder_release"})
+public abstract class FinderBaseGridFeedUI<V extends b.b, P extends b.a>
   extends MMFinderUI
 {
   private HashMap _$_findViewCache;
@@ -36,34 +36,34 @@ public abstract class FinderBaseGridFeedUI<V extends c.b, P extends c.a>
     return localView1;
   }
   
-  public abstract P cuC();
+  public abstract P cAP();
   
-  public abstract V cvO();
+  public abstract V cCe();
   
   public abstract void initOnCreate();
   
   public void onBackPressed()
   {
-    Object localObject1 = cuC();
-    Object localObject2 = ((c.a)localObject1).rgf;
+    Object localObject1 = cAP();
+    Object localObject2 = ((b.a)localObject1).rTQ;
     if (localObject2 == null) {
-      k.fOy();
+      p.gfZ();
     }
-    localObject2 = ((c.b)localObject2).cuE();
+    localObject2 = ((b.b)localObject2).cAJ();
     if (localObject2 == null) {
-      k.fOy();
+      p.gfZ();
     }
-    if (((FinderLikeDrawer)localObject2).cEG())
+    if (((FinderLikeDrawer)localObject2).cMZ())
     {
-      localObject1 = ((c.a)localObject1).rgf;
+      localObject1 = ((b.a)localObject1).rTQ;
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
-      localObject1 = ((c.b)localObject1).cuE();
+      localObject1 = ((b.b)localObject1).cAJ();
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
-      ((FinderLikeDrawer)localObject1).cEF();
+      ((FinderLikeDrawer)localObject1).cMY();
     }
     for (int i = 1;; i = 0)
     {
@@ -79,25 +79,25 @@ public abstract class FinderBaseGridFeedUI<V extends c.b, P extends c.a>
     super.onCreate(paramBundle);
     initOnCreate();
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    cuC().a(cvO());
+    cAP().a(cCe());
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    cuC().onDetach();
+    cAP().onDetach();
   }
   
   public void onPause()
   {
     super.onPause();
-    cuC();
+    cAP();
   }
   
   public void onResume()
   {
     super.onResume();
-    cuC();
+    cAP();
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -106,7 +106,7 @@ public abstract class FinderBaseGridFeedUI<V extends c.b, P extends c.a>
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -114,16 +114,16 @@ public abstract class FinderBaseGridFeedUI<V extends c.b, P extends c.a>
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(202288);
-      this.roJ.onBackPressed();
-      AppMethodBeat.o(202288);
+      AppMethodBeat.i(202613);
+      this.sds.onBackPressed();
+      AppMethodBeat.o(202613);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderBaseGridFeedUI
  * JD-Core Version:    0.7.0.1
  */

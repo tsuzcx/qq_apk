@@ -13,18 +13,18 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bh.e;
-import com.tencent.mm.g.a.rx;
-import com.tencent.mm.g.a.sb;
-import com.tencent.mm.g.b.a.ge;
+import com.tencent.mm.bi.e;
+import com.tencent.mm.g.a.sj;
+import com.tencent.mm.g.a.sn;
+import com.tencent.mm.g.b.a.hh;
 import com.tencent.mm.kernel.i;
 import com.tencent.mm.plugin.scanner.d.e.b;
 import com.tencent.mm.plugin.scanner.view.ScanCardRectView;
 import com.tencent.mm.plugin.scanner.view.ScanCardRectView.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.g;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.h;
 
 @i
@@ -33,22 +33,22 @@ public class ScanCardUI
   extends MMActivity
   implements e.b
 {
-  private boolean wXU;
-  private boolean xbA;
-  private long xbC;
-  private int xdW;
-  private ScanCardRectView xdX;
-  private com.tencent.mm.plugin.scanner.b.c.a xdY;
-  private ge xdZ;
-  private ScanCardRectView.a xea;
-  private ScanCardRectView.a xeb;
+  private boolean ylF;
+  private boolean ypC;
+  private long ypE;
+  private int yrY;
+  private ScanCardRectView yrZ;
+  private com.tencent.mm.plugin.scanner.b.c.a ysa;
+  private hh ysb;
+  private ScanCardRectView.a ysc;
+  private ScanCardRectView.a ysd;
   
   public ScanCardUI()
   {
     AppMethodBeat.i(118357);
-    this.xbA = true;
-    this.xdZ = new ge();
-    this.xea = new ScanCardRectView.a()
+    this.ypC = true;
+    this.ysb = new hh();
+    this.ysc = new ScanCardRectView.a()
     {
       public final void e(long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
@@ -59,21 +59,21 @@ public class ScanCardUI
         AppMethodBeat.o(118350);
       }
     };
-    this.xeb = new ScanCardRectView.a()
+    this.ysd = new ScanCardRectView.a()
     {
       public final void e(long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(118351);
         if (paramAnonymousBundle.containsKey("param_card_bitmap"))
         {
-          paramAnonymousBundle = f.ck(paramAnonymousBundle.getByteArray("param_card_bitmap"));
+          paramAnonymousBundle = g.cr(paramAnonymousBundle.getByteArray("param_card_bitmap"));
           if (ScanCardUI.b(ScanCardUI.this) == 11)
           {
-            rx localrx = new rx();
-            localrx.duQ.cardType = "identity_pay_auth";
-            localrx.duQ.duR = 1;
-            localrx.duQ.duT = paramAnonymousBundle;
-            com.tencent.mm.sdk.b.a.GpY.l(localrx);
+            sj localsj = new sj();
+            localsj.dGR.cardType = "identity_pay_auth";
+            localsj.dGR.dGS = 1;
+            localsj.dGR.dGU = paramAnonymousBundle;
+            com.tencent.mm.sdk.b.a.IbL.l(localsj);
             ScanCardUI.this.finish();
           }
         }
@@ -86,25 +86,25 @@ public class ScanCardUI
   private void goBack()
   {
     AppMethodBeat.i(118360);
-    sb localsb = new sb();
-    localsb.dvb.drx = 1;
-    com.tencent.mm.sdk.b.a.GpY.l(localsb);
+    sn localsn = new sn();
+    localsn.dHc.dDp = 1;
+    com.tencent.mm.sdk.b.a.IbL.l(localsn);
     setResult(0);
-    bRD();
+    bWi();
     AppMethodBeat.o(118360);
   }
   
-  public final void bRD()
+  public final void bWi()
   {
     AppMethodBeat.i(118361);
-    ac.i("MicroMsg.ScanCardUI", "finishUI");
-    if (this.xdW == 7)
+    ad.i("MicroMsg.ScanCardUI", "finishUI");
+    if (this.yrY == 7)
     {
-      if (this.xdZ.dHY == 1L) {
-        this.xdZ.dHY = 4L;
+      if (this.ysb.dVd == 1L) {
+        this.ysb.dVd = 4L;
       }
-      this.xdZ.ebr = (System.currentTimeMillis() - this.xbC);
-      this.xdZ.aHZ();
+      this.ysb.ebY = (System.currentTimeMillis() - this.ypE);
+      this.ysb.aLk();
     }
     finish();
     overridePendingTransition(0, 0);
@@ -122,27 +122,31 @@ public class ScanCardUI
     getWindow().getDecorView().setSystemUiVisibility(5892);
     setActionbarColor(getResources().getColor(2131101053));
     Object localObject = (FrameLayout)findViewById(2131304241);
-    this.xdX = new ScanCardRectView(this);
-    ((FrameLayout)localObject).addView(this.xdX, 0, new FrameLayout.LayoutParams(-1, -1));
+    this.yrZ = new ScanCardRectView(this);
+    ((FrameLayout)localObject).addView(this.yrZ, 0, new FrameLayout.LayoutParams(-1, -1));
     Button localButton = new Button(this);
     localButton.setWidth(com.tencent.mm.cc.a.fromDPToPix(getContext(), 36));
     localButton.setHeight(com.tencent.mm.cc.a.fromDPToPix(getContext(), 36));
-    localButton.setBackgroundDrawable(am.e(getResources().getDrawable(2131690372), -1));
+    localButton.setBackgroundDrawable(ao.e(getResources().getDrawable(2131690372), -1));
     localButton.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(118352);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/ScanCardUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         ScanCardUI.c(ScanCardUI.this);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/ScanCardUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(118352);
       }
     });
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.setMargins(getResources().getDimensionPixelSize(2131165293), getResources().getDimensionPixelSize(2131165301), 0, 0);
     ((FrameLayout)localObject).addView(localButton, localLayoutParams);
-    this.xdX.setMode(this.xdW);
-    this.xdX.onCreate();
-    switch (this.xdW)
+    this.yrZ.setMode(this.yrY);
+    this.yrZ.onCreate();
+    switch (this.yrY)
     {
     case 8: 
     default: 
@@ -151,27 +155,27 @@ public class ScanCardUI
       return;
     case 7: 
       setMMTitle(2131762802);
-      localObject = this.xdZ;
-      ((ge)localObject).dHY = 1L;
-      ((ge)localObject).aHZ();
-      this.xdX.setScanCallback(this.xea);
-      this.xdY = new com.tencent.mm.plugin.scanner.b.c.a(this.xdW, this.xdX, this, this.xdZ);
-      this.xdY.wXU = this.wXU;
+      localObject = this.ysb;
+      ((hh)localObject).dVd = 1L;
+      ((hh)localObject).aLk();
+      this.yrZ.setScanCallback(this.ysc);
+      this.ysa = new com.tencent.mm.plugin.scanner.b.c.a(this.yrY, this.yrZ, this, this.ysb);
+      this.ysa.ylF = this.ylF;
       AppMethodBeat.o(118359);
       return;
     case 9: 
       setMMTitle(2131762805);
-      this.xdX.setScanCallback(this.xeb);
+      this.yrZ.setScanCallback(this.ysd);
       AppMethodBeat.o(118359);
       return;
     case 10: 
       setMMTitle(2131762803);
-      this.xdX.setScanCallback(this.xeb);
+      this.yrZ.setScanCallback(this.ysd);
       AppMethodBeat.o(118359);
       return;
     }
     setMMTitle(2131762806);
-    this.xdX.setScanCallback(this.xeb);
+    this.yrZ.setScanCallback(this.ysd);
     AppMethodBeat.o(118359);
   }
   
@@ -187,11 +191,11 @@ public class ScanCardUI
     AppMethodBeat.i(118358);
     super.onCreate(paramBundle);
     hideTitleView();
-    this.xdW = getIntent().getIntExtra("BaseScanUI_select_scan_mode", -1);
-    ac.i("MicroMsg.ScanCardUI", "scanMode %d", new Object[] { Integer.valueOf(this.xdW) });
-    this.wXU = getIntent().getBooleanExtra("scan_bankcard_with_confirm_ui", false);
+    this.yrY = getIntent().getIntExtra("BaseScanUI_select_scan_mode", -1);
+    ad.i("MicroMsg.ScanCardUI", "scanMode %d", new Object[] { Integer.valueOf(this.yrY) });
+    this.ylF = getIntent().getBooleanExtra("scan_bankcard_with_confirm_ui", false);
     initView();
-    this.xbC = System.currentTimeMillis();
+    this.ypE = System.currentTimeMillis();
     AppMethodBeat.o(118358);
   }
   
@@ -199,9 +203,9 @@ public class ScanCardUI
   {
     AppMethodBeat.i(118366);
     super.onDestroy();
-    this.xdX.onDestroy();
-    if (this.xdY != null) {
-      this.xdY.destroy();
+    this.yrZ.onDestroy();
+    if (this.ysa != null) {
+      this.ysa.destroy();
     }
     AppMethodBeat.o(118366);
   }
@@ -209,7 +213,7 @@ public class ScanCardUI
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(118364);
-    ac.i("MicroMsg.ScanCardUI", "summerper onRequestPermissionsResult requestCode[%d],grantResults len[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt.length), Long.valueOf(Thread.currentThread().getId()) });
+    ad.i("MicroMsg.ScanCardUI", "summerper onRequestPermissionsResult requestCode[%d],grantResults len[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt.length), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -219,7 +223,7 @@ public class ScanCardUI
       return;
       if ((paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == -1))
       {
-        this.xbA = false;
+        this.ypC = false;
         h.a(this, getString(2131761860), getString(2131761885), getString(2131760598), getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -227,9 +231,9 @@ public class ScanCardUI
             AppMethodBeat.i(118355);
             paramAnonymousDialogInterface = ScanCardUI.this;
             Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/scanner/ui/ScanCardUI$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/scanner/ui/ScanCardUI$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/scanner/ui/ScanCardUI$6", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             ScanCardUI.d(ScanCardUI.this);
             ScanCardUI.this.finish();
@@ -251,57 +255,56 @@ public class ScanCardUI
   
   public void onResume()
   {
-    int j = 1;
     AppMethodBeat.i(118363);
     super.onResume();
-    ac.i("MicroMsg.ScanCardUI", "should check camera %s", new Object[] { Boolean.valueOf(this.xbA) });
-    int i = j;
-    if (this.xbA)
+    ad.i("MicroMsg.ScanCardUI", "should check camera %s", new Object[] { Boolean.valueOf(this.ypC) });
+    int i;
+    if (this.ypC)
     {
       boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.CAMERA", 16, null, null);
-      ac.i("MicroMsg.ScanCardUI", "summerper checkPermission checkCamera[%b]", new Object[] { Boolean.valueOf(bool) });
-      i = j;
-      if (!bool) {
+      ad.i("MicroMsg.ScanCardUI", "summerper checkPermission checkCamera[%b]", new Object[] { Boolean.valueOf(bool) });
+      if (!bool)
+      {
         i = 0;
-      }
-    }
-    if (i != 0)
-    {
-      if (com.tencent.mm.compatible.d.b.Yz()) {
-        break label194;
-      }
-      h.a(this, getString(2131761860), getString(2131761885), getString(2131760598), getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        if (i != 0)
         {
-          AppMethodBeat.i(118353);
-          paramAnonymousDialogInterface = ScanCardUI.this;
-          Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/scanner/ui/ScanCardUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/scanner/ui/ScanCardUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ScanCardUI.d(ScanCardUI.this);
-          ScanCardUI.this.finish();
-          AppMethodBeat.o(118353);
+          if (com.tencent.mm.compatible.d.b.abb()) {
+            break label195;
+          }
+          h.a(this, getString(2131761860), getString(2131761885), getString(2131760598), getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(118353);
+              paramAnonymousDialogInterface = ScanCardUI.this;
+              Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
+              localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/scanner/ui/ScanCardUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/scanner/ui/ScanCardUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              ScanCardUI.d(ScanCardUI.this);
+              ScanCardUI.this.finish();
+              AppMethodBeat.o(118353);
+            }
+          }, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(118354);
+              ScanCardUI.d(ScanCardUI.this);
+              ScanCardUI.this.finish();
+              AppMethodBeat.o(118354);
+            }
+          });
         }
-      }, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(118354);
-          ScanCardUI.d(ScanCardUI.this);
-          ScanCardUI.this.finish();
-          AppMethodBeat.o(118354);
-        }
-      });
+      }
     }
     for (;;)
     {
-      if (!com.tencent.mm.r.a.cg(getApplicationContext()))
+      if (!com.tencent.mm.s.a.n(getApplicationContext(), true))
       {
         getApplicationContext();
-        if ((!e.aIX()) && (!com.tencent.mm.r.a.cj(getApplicationContext()))) {}
+        if ((!e.aMh()) && (!com.tencent.mm.s.a.p(getApplicationContext(), true))) {}
       }
       else
       {
@@ -310,8 +313,10 @@ public class ScanCardUI
       getWindow().addFlags(128);
       AppMethodBeat.o(118363);
       return;
-      label194:
-      this.xdX.onResume();
+      i = 1;
+      break;
+      label195:
+      this.yrZ.onResume();
     }
   }
   
@@ -319,7 +324,7 @@ public class ScanCardUI
   {
     AppMethodBeat.i(118365);
     super.onStop();
-    this.xdX.onStop();
+    this.yrZ.onStop();
     AppMethodBeat.o(118365);
   }
   
@@ -331,7 +336,7 @@ public class ScanCardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ScanCardUI
  * JD-Core Version:    0.7.0.1
  */

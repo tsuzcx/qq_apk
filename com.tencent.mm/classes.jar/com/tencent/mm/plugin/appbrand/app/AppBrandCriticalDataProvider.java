@@ -7,27 +7,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.c;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.appcache.bf;
-import com.tencent.mm.plugin.appbrand.config.t;
+import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.config.u;
 import com.tencent.mm.plugin.appbrand.task.f;
 import com.tencent.mm.sdk.e.e;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandCriticalDataProvider;", "Lcom/tencent/luggage/wxa/storage/WxaCriticalDataProvider;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "()V", "insert", "Landroid/net/Uri;", "uri", "contentValues", "Landroid/content/ContentValues;", "onAccountInitialized", "", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "provideDatabase", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandCriticalDataProvider;", "Lcom/tencent/luggage/wxa/storage/WxaCriticalDataProvider;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "()V", "insert", "Landroid/net/Uri;", "uri", "contentValues", "Landroid/content/ContentValues;", "onAccountInitialized", "", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "provideDatabase", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "plugin-appbrand-integration_release"})
 public final class AppBrandCriticalDataProvider
   extends WxaCriticalDataProvider
   implements c
 {
-  public final e Eb()
+  public final e FA()
   {
     AppMethodBeat.i(50159);
-    Object localObject = j.aVq();
+    Object localObject = j.aYL();
     if (localObject != null)
     {
-      c(t.class, j.aVu());
-      c(bf.class, j.aVC());
-      g.agS().bn(localObject);
+      c(u.class, j.aYP());
+      c(bg.class, j.aYX());
+      g.ajD().bp(localObject);
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public final class AppBrandCriticalDataProvider
   public final Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
     AppMethodBeat.i(50160);
-    k.h(paramUri, "uri");
+    p.h(paramUri, "uri");
     Uri localUri = super.insert(paramUri, paramContentValues);
     int i;
     if ((localUri != null) && (p(paramUri) == 5))
@@ -50,7 +50,7 @@ public final class AppBrandCriticalDataProvider
         break label119;
       }
       paramUri = paramContentValues.getAsString("CONTENT_KEY_ACTION");
-      if (k.g(paramUri, "ACTION_FLUSH_WXA_DEBUG_PKG_INFO"))
+      if (p.i(paramUri, "ACTION_FLUSH_WXA_DEBUG_PKG_INFO"))
       {
         paramUri = paramContentValues.getAsString("CONTENT_KEY_APPID");
         paramContentValues = paramContentValues.getAsInteger("CONTENT_KEY_PKG_TYPE");
@@ -69,7 +69,7 @@ public final class AppBrandCriticalDataProvider
     for (int j = 1;; j = 0)
     {
       if ((j == 0) && (i != -1)) {
-        f.bV(paramUri, i);
+        f.bY(paramUri, i);
       }
       AppMethodBeat.o(50160);
       return localUri;
@@ -87,7 +87,7 @@ public final class AppBrandCriticalDataProvider
   public final void onAccountRelease()
   {
     AppMethodBeat.i(50158);
-    super.Ec();
+    super.FB();
     AppMethodBeat.o(50158);
   }
 }

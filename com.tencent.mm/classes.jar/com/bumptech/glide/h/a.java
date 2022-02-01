@@ -8,12 +8,12 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class a
 {
-  private static final AtomicReference<byte[]> aMb;
+  private static final AtomicReference<byte[]> aNS;
   
   static
   {
     AppMethodBeat.i(77721);
-    aMb = new AtomicReference();
+    aNS = new AtomicReference();
     AppMethodBeat.o(77721);
   }
   
@@ -271,7 +271,7 @@ public final class a
   static final class a
     extends InputStream
   {
-    private int aMc = -1;
+    private int aNT = -1;
     private final ByteBuffer byteBuffer;
     
     a(ByteBuffer paramByteBuffer)
@@ -292,7 +292,7 @@ public final class a
       try
       {
         AppMethodBeat.i(77713);
-        this.aMc = this.byteBuffer.position();
+        this.aNT = this.byteBuffer.position();
         AppMethodBeat.o(77713);
         return;
       }
@@ -340,7 +340,7 @@ public final class a
       try
       {
         AppMethodBeat.i(77715);
-        if (this.aMc == -1)
+        if (this.aNT == -1)
         {
           IOException localIOException = new IOException("Cannot reset to unset mark position");
           AppMethodBeat.o(77715);
@@ -348,7 +348,7 @@ public final class a
         }
       }
       finally {}
-      this.byteBuffer.position(this.aMc);
+      this.byteBuffer.position(this.aNT);
       AppMethodBeat.o(77715);
     }
     
@@ -383,7 +383,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.h.a
  * JD-Core Version:    0.7.0.1
  */

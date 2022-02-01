@@ -13,13 +13,13 @@ public final class b<T>
   implements View.OnClickListener
 {
   private Context context;
-  public d isX;
+  public d iMa;
   
   public b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(175345);
-    this.isX = new d();
+    this.iMa = new d();
     this.context = paramContext;
     AppMethodBeat.o(175345);
   }
@@ -27,88 +27,88 @@ public final class b<T>
   public final void a(com.tencent.mm.picker.c.a parama)
   {
     AppMethodBeat.i(175346);
-    this.isf = parama;
+    this.iLi = parama;
     Object localObject = this.context;
-    aMP();
-    aMM();
-    aMN();
-    parama = this.isX;
+    aQa();
+    aPX();
+    aPY();
+    parama = this.iMa;
     localObject = new WheelView((Context)localObject);
-    parama.isl = this.isf.isl;
-    if (parama.ita == null) {
-      parama.ita = ((WheelView)localObject);
+    parama.iLo = this.iLi.iLo;
+    if (parama.iMd == null) {
+      parama.iMd = ((WheelView)localObject);
     }
-    parama.itb = parama.ita;
-    if (this.isf.isj != null) {
-      this.isX.isj = this.isf.isj;
+    parama.iMe = parama.iMd;
+    if (this.iLi.iLm != null) {
+      this.iMa.iLm = this.iLi.iLm;
     }
-    parama = this.isX;
-    localObject = this.isf.label;
+    parama = this.iMa;
+    localObject = this.iLi.label;
     if (localObject != null) {
-      parama.itb.setLabel((String)localObject);
+      parama.iMe.setLabel((String)localObject);
     }
-    parama = this.isX;
-    boolean bool = this.isf.isk;
-    parama.itb.setCyclic(bool);
-    fg(this.isf.mz);
-    this.isX.setDividerColor(this.isf.irK);
-    this.isX.isL = this.isf.isL;
-    this.isX.isJ = this.isf.isJ;
-    parama = this.isX;
-    bool = this.isf.irD;
-    parama.itb.irD = bool;
-    this.isX.qv(this.isf.it);
-    this.isX.setDividerColor(this.isf.irK);
+    parama = this.iMa;
+    boolean bool = this.iLi.iLn;
+    parama.iMe.setCyclic(bool);
+    fk(this.iLi.ov);
+    this.iMa.setDividerColor(this.iLi.iKN);
+    this.iMa.iLO = this.iLi.iLO;
+    this.iMa.iLM = this.iLi.iLM;
+    parama = this.iMa;
+    bool = this.iLi.iKG;
+    parama.iMe.iKG = bool;
+    this.iMa.qV(this.iLi.kl);
+    this.iMa.setDividerColor(this.iLi.iKN);
     AppMethodBeat.o(175346);
   }
   
   public final void a(com.tencent.mm.picker.d.b paramb)
   {
-    this.isf.isj = paramb;
-    this.isX.isj = this.isf.isj;
+    this.iLi.iLm = paramb;
+    this.iMa.iLm = this.iLi.iLm;
   }
   
-  public final void aF(List<T> paramList)
+  public final void aG(List<T> paramList)
   {
     AppMethodBeat.i(175347);
-    d locald = this.isX;
-    locald.itc = paramList;
-    locald.itb.setAdapter(new com.tencent.mm.picker.a.a(locald.itc));
-    locald.itb.setCurrentItem(0);
-    locald.itb.setIsOptions(true);
+    d locald = this.iMa;
+    locald.iMf = paramList;
+    locald.iMe.setAdapter(new com.tencent.mm.picker.a.a(locald.iMf));
+    locald.iMe.setCurrentItem(0);
+    locald.iMe.setIsOptions(true);
     d.1 local1 = new d.1(locald);
-    if ((paramList != null) && (locald.itd)) {
-      locald.itb.setOnItemSelectedListener(local1);
+    if ((paramList != null) && (locald.iMg)) {
+      locald.iMe.setOnItemSelectedListener(local1);
     }
-    if (this.isX != null) {
-      this.isX.qv(this.isf.option);
+    if (this.iMa != null) {
+      this.iMa.qV(this.iLi.option);
     }
     AppMethodBeat.o(175347);
   }
   
-  public final boolean aMQ()
+  public final boolean aQb()
   {
-    return this.isf.isK;
+    return this.iLi.iLN;
   }
   
-  public final void aMR()
+  public final void aQc()
   {
     AppMethodBeat.i(175349);
-    if (this.isf.isg != null)
+    if (this.iLi.iLj != null)
     {
-      int[] arrayOfInt = this.isX.aMV();
-      this.isf.isg.qu(arrayOfInt[0]);
+      int[] arrayOfInt = this.iMa.aQg();
+      this.iLi.iLj.qU(arrayOfInt[0]);
     }
     AppMethodBeat.o(175349);
   }
   
-  public final WheelView aMS()
+  public final WheelView aQd()
   {
     AppMethodBeat.i(175350);
-    if (this.isX.ita == null) {
-      this.isX.ita = new WheelView(this.context);
+    if (this.iMa.iMd == null) {
+      this.iMa.iMd = new WheelView(this.context);
     }
-    WheelView localWheelView = this.isX.ita;
+    WheelView localWheelView = this.iMa.iMd;
     AppMethodBeat.o(175350);
     return localWheelView;
   }
@@ -117,7 +117,7 @@ public final class b<T>
   {
     AppMethodBeat.i(175348);
     if (((String)paramView.getTag()).equals("submit")) {
-      aMR();
+      aQc();
     }
     dismiss();
     AppMethodBeat.o(175348);
@@ -126,7 +126,7 @@ public final class b<T>
   public final void setDividerHeight(float paramFloat)
   {
     AppMethodBeat.i(175351);
-    this.isX.itb.setDividerHeight(paramFloat);
+    this.iMa.iMe.setDividerHeight(paramFloat);
     AppMethodBeat.o(175351);
   }
 }

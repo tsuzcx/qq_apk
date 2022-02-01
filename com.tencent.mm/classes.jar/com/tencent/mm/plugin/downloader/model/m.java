@@ -4,19 +4,19 @@ public abstract interface m
 {
   public abstract void a(long paramLong, int paramInt, boolean paramBoolean);
   
+  public abstract void a(long paramLong1, String paramString, long paramLong2, long paramLong3);
+  
   public abstract void b(long paramLong, String paramString, boolean paramBoolean);
   
   public abstract void j(long paramLong, String paramString);
   
-  public abstract void onTaskPaused(long paramLong);
+  public abstract void k(long paramLong, String paramString);
   
-  public abstract void onTaskRemoved(long paramLong);
+  public abstract void sL(long paramLong);
   
-  public abstract void onTaskStarted(long paramLong, String paramString);
+  public abstract void sM(long paramLong);
   
-  public abstract void qN(long paramLong);
-  
-  public abstract void qO(long paramLong);
+  public abstract void sN(long paramLong);
 }
 
 

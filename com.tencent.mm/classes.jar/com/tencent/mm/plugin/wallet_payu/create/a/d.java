@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.wallet_payu.create.a;
 
 public final class d
 {
-  public int BRS;
-  public int BRT;
+  public int Dsl;
+  public int Dsm;
   public int titleRes;
   
   public d(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.BRS = paramInt1;
+    this.Dsl = paramInt1;
     this.titleRes = paramInt2;
-    this.BRT = paramInt3;
+    this.Dsm = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.create.a.d
  * JD-Core Version:    0.7.0.1
  */

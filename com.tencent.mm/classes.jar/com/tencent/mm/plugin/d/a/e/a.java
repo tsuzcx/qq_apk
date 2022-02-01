@@ -5,23 +5,23 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.k.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
 {
-  public static boolean bIC()
+  public static boolean bMP()
   {
     AppMethodBeat.i(22629);
     if (BluetoothAdapter.getDefaultAdapter() != null) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.i("MicroMsg.exdevice.BluetoothSDKUtil", "isSupportBC: %b", new Object[] { Boolean.valueOf(bool) });
+      ad.i("MicroMsg.exdevice.BluetoothSDKUtil", "isSupportBC: %b", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(22629);
       return bool;
     }
   }
   
-  public static boolean bIE()
+  public static boolean bMR()
   {
     AppMethodBeat.i(22630);
     BluetoothAdapter localBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -31,7 +31,7 @@ public final class a
       return false;
     }
     boolean bool = localBluetoothAdapter.isEnabled();
-    ac.i("MicroMsg.exdevice.BluetoothSDKUtil", "isBluetoothOpen: %b", new Object[] { Boolean.valueOf(bool) });
+    ad.i("MicroMsg.exdevice.BluetoothSDKUtil", "isBluetoothOpen: %b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(22630);
     return bool;
   }
@@ -40,23 +40,23 @@ public final class a
   {
     AppMethodBeat.i(22628);
     boolean bool = paramContext.getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
-    ac.i("MicroMsg.exdevice.BluetoothSDKUtil", "isBLESupported, ret = %b", new Object[] { Boolean.valueOf(bool) });
+    ad.i("MicroMsg.exdevice.BluetoothSDKUtil", "isBLESupported, ret = %b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(22628);
     return bool;
   }
   
   @Deprecated
-  public static String rk(long paramLong)
+  public static String ti(long paramLong)
   {
-    AppMethodBeat.i(210116);
-    String str = b.sQ(paramLong);
-    AppMethodBeat.o(210116);
+    AppMethodBeat.i(221375);
+    String str = b.uO(paramLong);
+    AppMethodBeat.o(221375);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.e.a
  * JD-Core Version:    0.7.0.1
  */

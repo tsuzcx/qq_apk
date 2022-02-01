@@ -24,25 +24,25 @@ public class TPAudioPassThroughPluginCallbackToNative
   @TPMethodCalledByNative
   private void registerCallback()
   {
-    AppMethodBeat.i(193578);
+    AppMethodBeat.i(220360);
     TPAudioPassThroughPluginDetector.addListener(this);
-    AppMethodBeat.o(193578);
+    AppMethodBeat.o(220360);
   }
   
   @TPMethodCalledByNative
   private void unregisterCallback()
   {
-    AppMethodBeat.i(193579);
+    AppMethodBeat.i(220361);
     TPAudioPassThroughPluginDetector.removeListener(this);
-    AppMethodBeat.o(193579);
+    AppMethodBeat.o(220361);
   }
   
   public void onAudioPassThroughPlugin(boolean paramBoolean)
   {
-    AppMethodBeat.i(193580);
+    AppMethodBeat.i(220362);
     TPNativeLog.printLog(2, "TPAudioPassThroughPluginCallback", "onAudioPassThroughPlugin bPlugin:".concat(String.valueOf(paramBoolean)));
     _onAudioPassThroughStateChanged(paramBoolean);
-    AppMethodBeat.o(193580);
+    AppMethodBeat.o(220362);
   }
 }
 

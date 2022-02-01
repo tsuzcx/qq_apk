@@ -4,16 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public abstract class BaseVideoView
   extends AbstractVideoView
 {
-  protected boolean bps;
-  private boolean hYH = false;
-  protected int kOJ = 0;
-  protected int kPa;
+  protected boolean bzN;
+  private boolean isd = false;
+  protected int llD;
+  protected int llm = 0;
   protected String url;
   
   public BaseVideoView(Context paramContext)
@@ -31,26 +31,26 @@ public abstract class BaseVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean aB(float paramFloat)
+  public final boolean aE(float paramFloat)
   {
     boolean bool = false;
-    ac.i("MicroMsg.Video.BaseVideoView", "%s set play rate [%f]", new Object[] { blf(), Float.valueOf(paramFloat) });
-    if ((this.kWi instanceof AbstractVideoTextureView)) {
-      bool = ((AbstractVideoTextureView)this.kWi).aB(paramFloat);
+    ad.i("MicroMsg.Video.BaseVideoView", "%s set play rate [%f]", new Object[] { boQ(), Float.valueOf(paramFloat) });
+    if ((this.lth instanceof AbstractVideoTextureView)) {
+      bool = ((AbstractVideoTextureView)this.lth).aE(paramFloat);
     }
     return bool;
   }
   
-  public final boolean bed()
+  public final boolean bhH()
   {
     boolean bool2 = false;
-    boolean bool3 = blh();
+    boolean bool3 = boS();
     int i;
     boolean bool1;
-    if (this.kWi != null)
+    if (this.lth != null)
     {
-      i = this.kWi.getDuration();
-      if (!this.bps) {
+      i = this.lth.getDuration();
+      if (!this.bzN) {
         break label41;
       }
       bool1 = true;
@@ -70,46 +70,46 @@ public abstract class BaseVideoView
     return true;
   }
   
-  public final void biX()
+  public final void bmJ()
   {
-    if (this.kWi != null)
+    if (this.lth != null)
     {
-      ac.i("MicroMsg.Video.BaseVideoView", "%s preloadVideo url:%s, path:%s", new Object[] { blf(), this.url, this.kWi.getVideoPath() });
-      if (bs.isNullOrNil(this.kWi.getVideoPath()))
+      ad.i("MicroMsg.Video.BaseVideoView", "%s preloadVideo url:%s, path:%s", new Object[] { boQ(), this.url, this.lth.getVideoPath() });
+      if (bt.isNullOrNil(this.lth.getVideoPath()))
       {
-        this.kWi.setVideoPath(this.url);
-        this.kWo = false;
+        this.lth.setVideoPath(this.url);
+        this.ltn = false;
       }
     }
   }
   
   public final void c(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.bps = paramBoolean;
+    this.bzN = paramBoolean;
     this.url = paramString;
-    this.kPa = paramInt;
+    this.llD = paramInt;
   }
   
   public final boolean c(double paramDouble, boolean paramBoolean)
   {
-    if (bed())
+    if (bhH())
     {
-      ac.w("MicroMsg.Video.BaseVideoView", "%s it is live, don't seek ", new Object[] { blf() });
+      ad.w("MicroMsg.Video.BaseVideoView", "%s it is live, don't seek ", new Object[] { boQ() });
       return false;
     }
     return super.c(paramDouble, paramBoolean);
   }
   
-  protected final a dC(Context paramContext)
+  protected final a dA(Context paramContext)
   {
-    return dD(paramContext);
+    return dB(paramContext);
   }
   
-  protected abstract a dD(Context paramContext);
+  protected abstract a dB(Context paramContext);
   
-  public final void ea(int paramInt1, int paramInt2)
+  public final void ec(int paramInt1, int paramInt2)
   {
-    ac.i("MicroMsg.Video.BaseVideoView", "%s onInfo [%d %d]", new Object[] { blf(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.Video.BaseVideoView", "%s onInfo [%d %d]", new Object[] { boQ(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 701) {
       showLoading();
     }
@@ -123,9 +123,9 @@ public abstract class BaseVideoView
   {
     try
     {
-      if ((this.kWi instanceof AbstractVideoTextureView))
+      if ((this.lth instanceof AbstractVideoTextureView))
       {
-        int i = ((AbstractVideoTextureView)this.kWi).getDownloadPercent();
+        int i = ((AbstractVideoTextureView)this.lth).getDownloadPercent();
         int j = super.getVideoDurationSec();
         float f = j;
         return (int)(i * 1.0F / 100.0F * f);
@@ -133,22 +133,22 @@ public abstract class BaseVideoView
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.Video.BaseVideoView", localException, "%s get cache time sec error", new Object[] { blf() });
+      ad.printErrStackTrace("MicroMsg.Video.BaseVideoView", localException, "%s get cache time sec error", new Object[] { boQ() });
     }
     return 0;
   }
   
   public int getVideoDurationSec()
   {
-    if (this.kPa <= 0) {
+    if (this.llD <= 0) {
       return super.getVideoDurationSec();
     }
-    return this.kPa;
+    return this.llD;
   }
   
   public int getVideoSource()
   {
-    return this.kOJ;
+    return this.llm;
   }
   
   public View getView()
@@ -163,9 +163,9 @@ public abstract class BaseVideoView
   
   public final void onCompletion()
   {
-    if (bed())
+    if (bhH())
     {
-      ac.i("MicroMsg.Video.BaseVideoView", "%s it is live video, do not completion", new Object[] { blf() });
+      ad.i("MicroMsg.Video.BaseVideoView", "%s it is live video, do not completion", new Object[] { boQ() });
       stop();
       start();
     }
@@ -173,7 +173,7 @@ public abstract class BaseVideoView
     {
       return;
       super.onCompletion();
-    } while (!this.hYH);
+    } while (!this.isd);
     c(0.0D, true);
   }
   
@@ -185,44 +185,44 @@ public abstract class BaseVideoView
   public final void onUIResume()
   {
     super.onUIResume();
-    if ((this.kWi != null) && ((this.kWi instanceof AbstractVideoTextureView)))
+    if ((this.lth != null) && ((this.lth instanceof AbstractVideoTextureView)))
     {
-      if (this.kWm) {
+      if (this.ltl) {
         play();
       }
     }
     else {
       return;
     }
-    ((AbstractVideoTextureView)this.kWi).bld();
+    ((AbstractVideoTextureView)this.lth).boO();
   }
   
   public void setLoop(boolean paramBoolean)
   {
-    this.hYH = paramBoolean;
+    this.isd = paramBoolean;
   }
   
   public void setScaleType(e.h paramh)
   {
-    if ((this.kWi instanceof AbstractVideoTextureView)) {
-      ((AbstractVideoTextureView)this.kWi).setScaleType(paramh);
+    if ((this.lth instanceof AbstractVideoTextureView)) {
+      ((AbstractVideoTextureView)this.lth).setScaleType(paramh);
     }
   }
   
   public void setVideoSource(int paramInt)
   {
-    this.kOJ = paramInt;
+    this.llm = paramInt;
   }
   
   public final void start()
   {
-    if (this.kWi != null)
+    if (this.lth != null)
     {
-      ac.i("MicroMsg.Video.BaseVideoView", "%s start path [%s] [%s]", new Object[] { blf(), this.kWi.getVideoPath(), bs.eWi() });
-      if (bs.isNullOrNil(this.kWi.getVideoPath()))
+      ad.i("MicroMsg.Video.BaseVideoView", "%s start path [%s] [%s]", new Object[] { boQ(), this.lth.getVideoPath(), bt.flS() });
+      if (bt.isNullOrNil(this.lth.getVideoPath()))
       {
-        this.kWi.setVideoPath(this.url);
-        this.kWo = true;
+        this.lth.setVideoPath(this.url);
+        this.ltn = true;
         showLoading();
       }
     }
@@ -230,13 +230,13 @@ public abstract class BaseVideoView
     {
       return;
     }
-    this.kWo = true;
+    this.ltn = true;
     play();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.videoview.BaseVideoView
  * JD-Core Version:    0.7.0.1
  */

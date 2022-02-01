@@ -5,15 +5,15 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.wd;
-import com.tencent.mm.plugin.appbrand.z.l;
+import com.tencent.mm.g.a.ww;
+import com.tencent.mm.plugin.appbrand.z.m;
 import com.tencent.mm.plugin.webview.model.j;
 import com.tencent.mm.plugin.webview.model.r;
-import com.tencent.mm.protocal.protobuf.dkh;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.dpy;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.vending.c.a;
 import com.tencent.xweb.WebView;
@@ -26,33 +26,33 @@ import java.util.concurrent.TimeUnit;
 
 public final class c
 {
-  private final int CcF;
-  private final int CcG;
-  private final int CcH;
-  WebView CcI;
-  public LinkedList<String> CcJ;
-  public String CcK;
-  public String CcL;
-  public int CcM;
-  public int CcN;
-  public CountDownLatch CcO;
-  public com.tencent.mm.sdk.b.c CcP;
+  private final int DFF;
+  private final int DFG;
+  private final int DFH;
+  WebView DFI;
+  public LinkedList<String> DFJ;
+  public String DFK;
+  public String DFL;
+  public int DFM;
+  public int DFN;
+  public CountDownLatch DFO;
+  public com.tencent.mm.sdk.b.c DFP;
   public p tipDialog;
   
   public c()
   {
     AppMethodBeat.i(77820);
-    this.CcF = 0;
-    this.CcG = 1;
-    this.CcH = 2;
-    this.CcI = null;
-    this.CcJ = null;
-    this.CcK = null;
-    this.CcL = null;
-    this.CcM = 0;
-    this.CcN = 0;
-    this.CcO = new CountDownLatch(1);
-    this.CcP = new com.tencent.mm.sdk.b.c() {};
+    this.DFF = 0;
+    this.DFG = 1;
+    this.DFH = 2;
+    this.DFI = null;
+    this.DFJ = null;
+    this.DFK = null;
+    this.DFL = null;
+    this.DFM = 0;
+    this.DFN = 0;
+    this.DFO = new CountDownLatch(1);
+    this.DFP = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(77820);
   }
   
@@ -76,11 +76,11 @@ public final class c
     {
       for (;;)
       {
-        ac.e("MicroMsg.WebViewTranslateHelper", "supportTranslateWebSite error %s", new Object[] { paramWebView.getMessage() });
+        ad.e("MicroMsg.WebViewTranslateHelper", "supportTranslateWebSite error %s", new Object[] { paramWebView.getMessage() });
         boolean bool = false;
       }
     }
-    ac.i("MicroMsg.WebViewTranslateHelper", "supportTranslate %b", new Object[] { Boolean.valueOf(bool) });
+    ad.i("MicroMsg.WebViewTranslateHelper", "supportTranslate %b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(77821);
     return bool;
   }
@@ -88,29 +88,29 @@ public final class c
   private int i(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(77824);
-    ac.i("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate in");
-    this.CcI = paramWebView;
+    ad.i("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate in");
+    this.DFI = paramWebView;
     try
     {
       paramWebView = new int[1];
       paramWebView[0] = 2;
-      this.CcO = new CountDownLatch(1);
+      this.DFO = new CountDownLatch(1);
       try
       {
-        l.runOnUiThread(new Runnable()
+        m.runOnUiThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(77817);
-            c.this.CcI.invokeMiscMethod("getTranslateSampleString", null);
+            c.this.DFI.invokeMiscMethod("getTranslateSampleString", null);
             AppMethodBeat.o(77817);
           }
         });
-        ac.i("MicroMsg.WebViewTranslateHelper", "invokeMiscMethod getTranslateSampleString begin");
-        this.CcO.await(500L, TimeUnit.MILLISECONDS);
-        ac.i("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate end");
-        paramWebView[0] = new j().g(this.CcJ, paramString);
-        ac.i("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate doScene end ret[0] = " + paramWebView[0]);
+        ad.i("MicroMsg.WebViewTranslateHelper", "invokeMiscMethod getTranslateSampleString begin");
+        this.DFO.await(500L, TimeUnit.MILLISECONDS);
+        ad.i("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate end");
+        paramWebView[0] = new j().g(this.DFJ, paramString);
+        ad.i("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate doScene end ret[0] = " + paramWebView[0]);
         int i = paramWebView[0];
         AppMethodBeat.o(77824);
         return i;
@@ -119,15 +119,15 @@ public final class c
       {
         for (;;)
         {
-          ac.w("MicroMsg.WebViewTranslateHelper", localInterruptedException.getMessage());
-          ac.printErrStackTrace("MicroMsg.WebViewTranslateHelper", localInterruptedException, "", new Object[0]);
+          ad.w("MicroMsg.WebViewTranslateHelper", localInterruptedException.getMessage());
+          ad.printErrStackTrace("MicroMsg.WebViewTranslateHelper", localInterruptedException, "", new Object[0]);
         }
       }
       return 2;
     }
     catch (Exception paramWebView)
     {
-      ac.e("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate failed");
+      ad.e("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate failed");
       AppMethodBeat.o(77824);
     }
   }
@@ -141,7 +141,7 @@ public final class c
       return 2;
     }
     Bundle localBundle = new Bundle();
-    String str = ab.eUO();
+    String str = ac.fks();
     localBundle.putString("destLanguage", str);
     if (paramBoolean) {
       localBundle.putBoolean("isFastOpen", true);
@@ -151,7 +151,7 @@ public final class c
       if (paramWebView.isXWalkKernel()) {}
       for (i = i(paramWebView, str);; i = paramWebView.getInt("errorCode", 2))
       {
-        ac.i("MicroMsg.WebViewTranslateHelper", "needTranslate errCode %d,languageCode %s", new Object[] { Integer.valueOf(i), str });
+        ad.i("MicroMsg.WebViewTranslateHelper", "needTranslate errCode %d,languageCode %s", new Object[] { Integer.valueOf(i), str });
         AppMethodBeat.o(77822);
         return i;
         localBundle.putBoolean("isFastOpen", false);
@@ -166,7 +166,7 @@ public final class c
     {
       for (;;)
       {
-        ac.e("MicroMsg.WebViewTranslateHelper", "detectTranslateWebSiteIsNeeded error %s", new Object[] { paramWebView.getMessage() });
+        ad.e("MicroMsg.WebViewTranslateHelper", "detectTranslateWebSiteIsNeeded error %s", new Object[] { paramWebView.getMessage() });
         label161:
         int i = 2;
       }
@@ -176,28 +176,28 @@ public final class c
   public final void a(WebView paramWebView, HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(182684);
-    this.CcI = paramWebView;
+    this.DFI = paramWebView;
     paramWebView = new LinkedList();
     Iterator localIterator = paramHashMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str1 = (String)localIterator.next();
       String str2 = (String)paramHashMap.get(str1);
-      dkh localdkh = new dkh();
-      localdkh.FTo = bs.aLy(str1);
-      localdkh.FTp = str2;
-      localdkh.Scene = 8;
-      paramWebView.add(localdkh);
+      dpy localdpy = new dpy();
+      localdpy.HEc = bt.aRe(str1);
+      localdpy.HEd = str2;
+      localdpy.Scene = 8;
+      paramWebView.add(localdpy);
     }
-    if (!new r().a(paramWebView, this.CcM, this.CcN))
+    if (!new r().a(paramWebView, this.DFM, this.DFN))
     {
-      eym();
-      ac.d("MicroMsg.WebViewTranslateHelper", "translate: BatchGetTranslateString err !!!!");
+      eNd();
+      ad.d("MicroMsg.WebViewTranslateHelper", "translate: BatchGetTranslateString err !!!!");
     }
     AppMethodBeat.o(182684);
   }
   
-  public final void eym()
+  public final void eNd()
   {
     AppMethodBeat.i(77823);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing()))

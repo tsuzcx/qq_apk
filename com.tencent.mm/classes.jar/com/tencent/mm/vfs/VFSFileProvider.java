@@ -20,14 +20,14 @@ public class VFSFileProvider
   extends ContentProvider
 {
   private static final String[] COLUMNS;
-  private static final Pattern Jtw;
-  private String GV;
+  private static final Pattern Llc;
+  private String IP;
   
   static
   {
     AppMethodBeat.i(13316);
     COLUMNS = new String[] { "_display_name", "_size" };
-    Jtw = Pattern.compile("/");
+    Llc = Pattern.compile("/");
     AppMethodBeat.o(13316);
   }
   
@@ -44,7 +44,7 @@ public class VFSFileProvider
     if (((String)localObject).startsWith("/")) {
       paramUri = ((String)localObject).substring(1);
     }
-    String[] arrayOfString = Jtw.split(paramUri, 3);
+    String[] arrayOfString = Llc.split(paramUri, 3);
     if (arrayOfString.length < 2)
     {
       AppMethodBeat.o(13308);
@@ -94,7 +94,7 @@ public class VFSFileProvider
       AppMethodBeat.o(13309);
       throw paramContext;
     }
-    this.GV = paramProviderInfo.authority;
+    this.IP = paramProviderInfo.authority;
     AppMethodBeat.o(13309);
   }
   
@@ -177,11 +177,11 @@ public class VFSFileProvider
       AppMethodBeat.o(13315);
       throw paramUri;
     }
-    localObject = a.ghk().a((Uri)localObject, null);
+    localObject = a.gzU().a((Uri)localObject, null);
     if (((a.e)localObject).valid()) {
       try
       {
-        paramUri = ((a.e)localObject).Jsh.lT(((a.e)localObject).path, paramString);
+        paramUri = ((a.e)localObject).LjM.mt(((a.e)localObject).path, paramString);
         AppMethodBeat.o(13315);
         return paramUri;
       }

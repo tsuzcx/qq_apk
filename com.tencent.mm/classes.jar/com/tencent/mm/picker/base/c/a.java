@@ -8,94 +8,94 @@ import java.util.TimerTask;
 public final class a
   extends TimerTask
 {
-  private float irs;
-  private final float irt;
-  private final WheelView iru;
+  private float iKv;
+  private final float iKw;
+  private final WheelView iKx;
   
   public a(WheelView paramWheelView, float paramFloat)
   {
-    this.iru = paramWheelView;
-    this.irt = paramFloat;
-    this.irs = 2.147484E+009F;
+    this.iKx = paramWheelView;
+    this.iKw = paramFloat;
+    this.iKv = 2.147484E+009F;
   }
   
   public final void run()
   {
     float f1 = 2000.0F;
     AppMethodBeat.i(175296);
-    if (this.irs == 2.147484E+009F)
+    if (this.iKv == 2.147484E+009F)
     {
-      if (Math.abs(this.irt) <= 2000.0F) {
+      if (Math.abs(this.iKw) <= 2000.0F) {
         break label103;
       }
-      if (this.irt <= 0.0F) {
+      if (this.iKw <= 0.0F) {
         break label97;
       }
     }
     label97:
     label103:
-    for (this.irs = f1;; this.irs = this.irt)
+    for (this.iKv = f1;; this.iKv = this.iKw)
     {
-      if ((Math.abs(this.irs) < 0.0F) || (Math.abs(this.irs) > 20.0F)) {
+      if ((Math.abs(this.iKv) < 0.0F) || (Math.abs(this.iKv) > 20.0F)) {
         break label114;
       }
-      this.iru.aMF();
-      this.iru.getHandler().sendEmptyMessage(2000);
+      this.iKx.aPQ();
+      this.iKx.getHandler().sendEmptyMessage(2000);
       AppMethodBeat.o(175296);
       return;
       f1 = -2000.0F;
       break;
     }
     label114:
-    int i = (int)(this.irs / 100.0F);
-    this.iru.setTotalScrollY(this.iru.getTotalScrollY() - i);
+    int i = (int)(this.iKv / 100.0F);
+    this.iKx.setTotalScrollY(this.iKx.getTotalScrollY() - i);
     float f5;
     float f3;
     float f4;
     float f2;
-    if (!this.iru.hYH)
+    if (!this.iKx.isd)
     {
-      f5 = this.iru.getItemHeight();
-      f3 = -this.iru.getInitPosition() * f5;
-      f4 = (this.iru.getItemsCount() - 1 - this.iru.getInitPosition()) * f5;
-      if (this.iru.getTotalScrollY() - f5 * 0.25D < f3)
+      f5 = this.iKx.getItemHeight();
+      f3 = -this.iKx.getInitPosition() * f5;
+      f4 = (this.iKx.getItemsCount() - 1 - this.iKx.getInitPosition()) * f5;
+      if (this.iKx.getTotalScrollY() - f5 * 0.25D < f3)
       {
-        f2 = this.iru.getTotalScrollY() + i;
+        f2 = this.iKx.getTotalScrollY() + i;
         f1 = f4;
-        if (this.iru.getTotalScrollY() > f2) {
+        if (this.iKx.getTotalScrollY() > f2) {
           break label347;
         }
-        this.irs = 40.0F;
-        this.iru.setTotalScrollY((int)f2);
+        this.iKv = 40.0F;
+        this.iKx.setTotalScrollY((int)f2);
       }
     }
     else
     {
       label262:
-      if (this.irs >= 0.0F) {
+      if (this.iKv >= 0.0F) {
         break label378;
       }
     }
     label347:
     label378:
-    for (this.irs += 20.0F;; this.irs -= 20.0F)
+    for (this.iKv += 20.0F;; this.iKv -= 20.0F)
     {
-      this.iru.getHandler().sendEmptyMessage(1000);
+      this.iKx.getHandler().sendEmptyMessage(1000);
       AppMethodBeat.o(175296);
       return;
       f1 = f4;
       f2 = f3;
-      if (this.iru.getTotalScrollY() + f5 * 0.25D <= f4) {
+      if (this.iKx.getTotalScrollY() + f5 * 0.25D <= f4) {
         break;
       }
-      f1 = this.iru.getTotalScrollY() + i;
+      f1 = this.iKx.getTotalScrollY() + i;
       f2 = f3;
       break;
-      if (this.iru.getTotalScrollY() < f1) {
+      if (this.iKx.getTotalScrollY() < f1) {
         break label262;
       }
-      this.iru.setTotalScrollY((int)f1);
-      this.irs = -40.0F;
+      this.iKx.setTotalScrollY((int)f1);
+      this.iKv = -40.0F;
       break label262;
     }
   }

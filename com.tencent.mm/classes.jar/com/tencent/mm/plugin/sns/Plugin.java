@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.plugin.sns.c.a;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
   implements d
 {
-  public m createApplication()
+  public n createApplication()
   {
     AppMethodBeat.i(94895);
     a locala = new a();
@@ -18,7 +18,7 @@ public class Plugin
     return locala;
   }
   
-  public aw createSubCore()
+  public ax createSubCore()
   {
     return null;
   }

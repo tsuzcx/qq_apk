@@ -8,7 +8,7 @@ final class a
   public final void a(h paramh)
   {
     AppMethodBeat.i(12271);
-    String str = paramh.bIO;
+    String str = paramh.msg;
     int j = paramh.pos;
     int n = str.length();
     if (j < n)
@@ -40,11 +40,11 @@ final class a
     int k = 0;
     if (k >= 2)
     {
-      c1 = paramh.bIO.charAt(paramh.pos);
-      char c2 = paramh.bIO.charAt(paramh.pos + 1);
+      c1 = paramh.msg.charAt(paramh.pos);
+      char c2 = paramh.msg.charAt(paramh.pos + 1);
       if ((j.isDigit(c1)) && (j.isDigit(c2)))
       {
-        paramh.e((char)((c1 - '0') * 10 + (c2 - '0') + 130));
+        paramh.g((char)((c1 - '0') * 10 + (c2 - '0') + 130));
         paramh.pos += 2;
         AppMethodBeat.o(12271);
         return;
@@ -53,8 +53,8 @@ final class a
       AppMethodBeat.o(12271);
       throw paramh;
     }
-    char c1 = paramh.xZ();
-    int i = j.b(paramh.bIO, paramh.pos, 0);
+    char c1 = paramh.zw();
+    int i = j.b(paramh.msg, paramh.pos, 0);
     if (i != 0)
     {
       switch (i)
@@ -64,47 +64,47 @@ final class a
         AppMethodBeat.o(12271);
         throw paramh;
       case 5: 
-        paramh.e('ç');
-        paramh.bIT = 5;
+        paramh.g('ç');
+        paramh.bTg = 5;
         AppMethodBeat.o(12271);
         return;
       case 1: 
-        paramh.e('æ');
-        paramh.bIT = 1;
+        paramh.g('æ');
+        paramh.bTg = 1;
         AppMethodBeat.o(12271);
         return;
       case 3: 
-        paramh.e('î');
-        paramh.bIT = 3;
+        paramh.g('î');
+        paramh.bTg = 3;
         AppMethodBeat.o(12271);
         return;
       case 2: 
-        paramh.e('ï');
-        paramh.bIT = 2;
+        paramh.g('ï');
+        paramh.bTg = 2;
         AppMethodBeat.o(12271);
         return;
       }
-      paramh.e('ð');
-      paramh.bIT = 4;
+      paramh.g('ð');
+      paramh.bTg = 4;
       AppMethodBeat.o(12271);
       return;
     }
-    if (j.f(c1))
+    if (j.h(c1))
     {
-      paramh.e('ë');
-      paramh.e((char)(c1 - '' + 1));
+      paramh.g('ë');
+      paramh.g((char)(c1 - '' + 1));
       paramh.pos += 1;
       AppMethodBeat.o(12271);
       return;
     }
-    paramh.e((char)(c1 + '\001'));
+    paramh.g((char)(c1 + '\001'));
     paramh.pos += 1;
     AppMethodBeat.o(12271);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.c.c.a.a
  * JD-Core Version:    0.7.0.1
  */

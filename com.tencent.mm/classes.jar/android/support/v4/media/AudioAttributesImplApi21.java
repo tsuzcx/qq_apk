@@ -7,8 +7,8 @@ import android.media.AudioAttributes;
 public final class AudioAttributesImplApi21
   implements AudioAttributesImpl
 {
-  AudioAttributes IK;
-  int IL = -1;
+  AudioAttributes KB;
+  int KC = -1;
   
   public final boolean equals(Object paramObject)
   {
@@ -16,22 +16,22 @@ public final class AudioAttributesImplApi21
       return false;
     }
     paramObject = (AudioAttributesImplApi21)paramObject;
-    return this.IK.equals(paramObject.IK);
+    return this.KB.equals(paramObject.KB);
   }
   
   public final int hashCode()
   {
-    return this.IK.hashCode();
+    return this.KB.hashCode();
   }
   
   public final String toString()
   {
-    return "AudioAttributesCompat: audioattributes=" + this.IK;
+    return "AudioAttributesCompat: audioattributes=" + this.KB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.media.AudioAttributesImplApi21
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.gif.MMAnimateView;
 public class EmojiStoreV2RewardBannerView
   extends MMAnimateView
 {
-  private float cEY = 0.75F;
+  private float cQd = 0.75F;
   
   public EmojiStoreV2RewardBannerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,7 +26,7 @@ public class EmojiStoreV2RewardBannerView
   {
     AppMethodBeat.i(109243);
     paramInt2 = getRight() - getLeft() - getPaddingRight() - getPaddingLeft();
-    int i = (int)(paramInt2 * this.cEY);
+    int i = (int)(paramInt2 * this.cQd);
     if (paramInt2 != 0)
     {
       paramInt1 = i;
@@ -35,7 +35,7 @@ public class EmojiStoreV2RewardBannerView
     else
     {
       paramInt2 = getContext().getResources().getDisplayMetrics().widthPixels;
-      paramInt1 = (int)(paramInt2 * this.cEY);
+      paramInt1 = (int)(paramInt2 * this.cQd);
     }
     setMeasuredDimension(paramInt2, paramInt1);
     AppMethodBeat.o(109243);
@@ -43,7 +43,7 @@ public class EmojiStoreV2RewardBannerView
   
   public void setScale(float paramFloat)
   {
-    this.cEY = paramFloat;
+    this.cQd = paramFloat;
   }
 }
 

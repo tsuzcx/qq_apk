@@ -3,7 +3,7 @@ package com.tencent.mm.ui.chatting;
 final class y
 {
   String appId;
-  String fBV;
+  String fVj;
   String iconUrl;
   int resId;
 }

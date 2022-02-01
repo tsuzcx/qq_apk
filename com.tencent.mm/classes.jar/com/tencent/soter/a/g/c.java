@@ -8,13 +8,13 @@ import com.tencent.soter.a.c.b;
 abstract class c
   extends d
 {
-  protected static void gw(String paramString, int paramInt)
+  protected static void gU(String paramString, int paramInt)
   {
     com.tencent.soter.core.c.d.d("Soter.BaseSoterPrepareKeyTask", "soter: marking preference. key: %s, status: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
     try
     {
-      if (b.fDE().fDH() != null) {
-        b.fDE().fDH().edit().putInt(paramString, paramInt).commit();
+      if (b.fUW().fUZ() != null) {
+        b.fUW().fUZ().edit().putInt(paramString, paramInt).commit();
       }
       return;
     }

@@ -27,16 +27,16 @@ public class c
   extends b
   implements com.tencent.soter.core.c.b
 {
-  private static boolean JWK = false;
-  protected String JWL = "SoterKeyStore";
+  private static boolean LQF = false;
+  protected String LQG = "SoterKeyStore";
   
   public c(String paramString)
   {
-    this.JWL = paramString;
+    this.LQG = paramString;
   }
   
   @SuppressLint({"PrivateApi"})
-  public static void cZj()
+  public static void div()
   {
     AppMethodBeat.i(88681);
     try
@@ -68,17 +68,17 @@ public class c
     }
     finally
     {
-      JWK = true;
+      LQF = true;
       AppMethodBeat.o(88681);
     }
   }
   
-  public final byte[] BS(long paramLong)
+  public final byte[] EU(long paramLong)
   {
     return new byte[0];
   }
   
-  public final f aTr(String paramString)
+  public final f aZr(String paramString)
   {
     AppMethodBeat.i(88689);
     if (g.isNullOrNil(paramString))
@@ -88,23 +88,23 @@ public class c
       AppMethodBeat.o(88689);
       return paramString;
     }
-    if (fDh()) {
+    if (fUz()) {
       try
       {
-        if (!fDk())
+        if (!fUC())
         {
           paramString = new f(3, "app secure key not exist");
           AppMethodBeat.o(88689);
           return paramString;
         }
-        KeyStore.getInstance(this.JWL).load(null);
-        KeyPairGenerator localKeyPairGenerator = KeyPairGenerator.getInstance("RSA", this.JWL);
+        KeyStore.getInstance(this.LQG).load(null);
+        KeyPairGenerator localKeyPairGenerator = KeyPairGenerator.getInstance("RSA", this.LQG);
         try
         {
-          localKeyPairGenerator.initialize(a.gv(paramString + String.format(".addcounter.auto_signed_when_get_pubkey(%s).secmsg_and_counter_signed_when_sign", new Object[] { e.fDq().JWv }), 4).Z(new String[] { "SHA-256" }).fDp().aa(new String[] { "PSS" }).fDo());
+          localKeyPairGenerator.initialize(a.gT(paramString + String.format(".addcounter.auto_signed_when_get_pubkey(%s).secmsg_and_counter_signed_when_sign", new Object[] { e.fUI().LQq }), 4).ab(new String[] { "SHA-256" }).fUH().ac(new String[] { "PSS" }).fUG());
           long l = System.nanoTime();
           localKeyPairGenerator.generateKeyPair();
-          d.i("Soter.SoterCoreBeforeTreble", "soter: generate successfully, cost: %d ms", new Object[] { Long.valueOf(g.BT(l)) });
+          d.i("Soter.SoterCoreBeforeTreble", "soter: generate successfully, cost: %d ms", new Object[] { Long.valueOf(g.EV(l)) });
           h.reset();
           paramString = new f(0);
           AppMethodBeat.o(88689);
@@ -129,7 +129,7 @@ public class c
       catch (OutOfMemoryError paramString)
       {
         d.b("Soter.SoterCoreBeforeTreble", paramString, "soter: out of memory when generate AuthKey!! maybe no attk inside");
-        h.fDr();
+        h.fUJ();
       }
     }
     for (;;)
@@ -140,7 +140,7 @@ public class c
     }
   }
   
-  public final boolean aTs(String paramString)
+  public final boolean aZs(String paramString)
   {
     AppMethodBeat.i(88691);
     if (g.isNullOrNil(paramString))
@@ -151,7 +151,7 @@ public class c
     }
     try
     {
-      KeyStore localKeyStore = KeyStore.getInstance(this.JWL);
+      KeyStore localKeyStore = KeyStore.getInstance(this.LQG);
       localKeyStore.load(null);
       if (localKeyStore.getCertificate(paramString) != null)
       {
@@ -169,7 +169,7 @@ public class c
     return false;
   }
   
-  public final boolean aTt(String paramString)
+  public final boolean aZt(String paramString)
   {
     AppMethodBeat.i(88692);
     d.i("Soter.SoterCoreBeforeTreble", String.format("soter: checking key valid: auth key name: %s, autoDelIfNotValid: %b ", new Object[] { paramString, Boolean.TRUE }), new Object[0]);
@@ -181,7 +181,7 @@ public class c
     }
     try
     {
-      aTx(paramString);
+      aZx(paramString);
       d.i("Soter.SoterCoreBeforeTreble", "soter: key valid", new Object[0]);
       h.reset();
       AppMethodBeat.o(88692);
@@ -190,7 +190,7 @@ public class c
     catch (UnrecoverableEntryException localUnrecoverableEntryException)
     {
       d.e("Soter.SoterCoreBeforeTreble", "soter: key invalid.", new Object[0]);
-      db(paramString, false);
+      dg(paramString, false);
       AppMethodBeat.o(88692);
       return false;
     }
@@ -204,7 +204,7 @@ public class c
     catch (OutOfMemoryError paramString)
     {
       d.b("Soter.SoterCoreBeforeTreble", paramString, "soter: out of memory when isAuthKeyValid!! maybe no attk inside");
-      h.fDr();
+      h.fUJ();
       AppMethodBeat.o(88692);
       return false;
     }
@@ -215,7 +215,7 @@ public class c
     }
   }
   
-  public final i aTu(String paramString)
+  public final i aZu(String paramString)
   {
     AppMethodBeat.i(88693);
     if (g.isNullOrNil(paramString))
@@ -224,12 +224,12 @@ public class c
       AppMethodBeat.o(88693);
       return null;
     }
-    if (fDh()) {}
+    if (fUz()) {}
     for (;;)
     {
       try
       {
-        KeyStore localKeyStore = KeyStore.getInstance(this.JWL);
+        KeyStore localKeyStore = KeyStore.getInstance(this.LQG);
         localKeyStore.load(null);
         try
         {
@@ -237,7 +237,7 @@ public class c
           h.reset();
           if (paramString != null)
           {
-            paramString = cL(paramString.getEncoded());
+            paramString = cS(paramString.getEncoded());
             AppMethodBeat.o(88693);
             return paramString;
           }
@@ -251,7 +251,7 @@ public class c
           AppMethodBeat.o(88693);
           return null;
         }
-        d.e("Soter.SoterCoreBeforeTreble", "soter: not support soter " + this.JWL, new Object[0]);
+        d.e("Soter.SoterCoreBeforeTreble", "soter: not support soter " + this.LQG, new Object[0]);
       }
       catch (Exception paramString)
       {
@@ -262,12 +262,12 @@ public class c
       catch (OutOfMemoryError paramString)
       {
         d.b("Soter.SoterCoreBeforeTreble", paramString, "soter: out of memory when getAuthKeyModel!! maybe no attk inside");
-        h.fDr();
+        h.fUJ();
       }
     }
   }
   
-  public final Signature aTv(String paramString)
+  public final Signature aZv(String paramString)
   {
     AppMethodBeat.i(88694);
     if (g.isNullOrNil(paramString))
@@ -276,11 +276,11 @@ public class c
       AppMethodBeat.o(88694);
       return null;
     }
-    if (fDh()) {}
+    if (fUz()) {}
     try
     {
       h.reset();
-      paramString = aTx(paramString);
+      paramString = aZx(paramString);
       AppMethodBeat.o(88694);
       return paramString;
     }
@@ -300,10 +300,10 @@ public class c
     catch (OutOfMemoryError paramString)
     {
       d.b("Soter.SoterCoreBeforeTreble", paramString, "soter: out of memory when getAuthInitAndSign!! maybe no attk inside");
-      h.fDr();
+      h.fUJ();
       AppMethodBeat.o(88694);
       return null;
-      d.e("Soter.SoterCoreBeforeTreble", "soter: not support soter" + this.JWL, new Object[0]);
+      d.e("Soter.SoterCoreBeforeTreble", "soter: not support soter" + this.LQG, new Object[0]);
       AppMethodBeat.o(88694);
       return null;
     }
@@ -314,7 +314,7 @@ public class c
     }
   }
   
-  public Signature aTx(String paramString)
+  public Signature aZx(String paramString)
   {
     AppMethodBeat.i(88695);
     if (g.isNullOrNil(paramString))
@@ -324,7 +324,7 @@ public class c
       return null;
     }
     Signature localSignature = Signature.getInstance("SHA256withRSA/PSS", "AndroidKeyStoreBCWorkaround");
-    KeyStore localKeyStore = KeyStore.getInstance(this.JWL);
+    KeyStore localKeyStore = KeyStore.getInstance(this.LQG);
     localKeyStore.load(null);
     paramString = (KeyStore.PrivateKeyEntry)localKeyStore.getEntry(paramString, null);
     if (paramString != null)
@@ -338,7 +338,7 @@ public class c
     return null;
   }
   
-  public final f db(String paramString, boolean paramBoolean)
+  public final f dg(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(88690);
     if (g.isNullOrNil(paramString))
@@ -349,17 +349,17 @@ public class c
       return paramString;
     }
     d.i("Soter.SoterCoreBeforeTreble", "soter: start remove key: ".concat(String.valueOf(paramString)), new Object[0]);
-    if (fDh()) {
+    if (fUz()) {
       try
       {
-        KeyStore localKeyStore = KeyStore.getInstance(this.JWL);
+        KeyStore localKeyStore = KeyStore.getInstance(this.LQG);
         localKeyStore.load(null);
         localKeyStore.deleteEntry(paramString);
         if (paramBoolean)
         {
           d.i("Soter.SoterCoreBeforeTreble", "soter: auto delete ask", new Object[0]);
-          if (fDk()) {
-            fDj();
+          if (fUC()) {
+            fUB();
           }
         }
         paramString = new f(0);
@@ -380,13 +380,164 @@ public class c
     return paramString;
   }
   
-  public final boolean fDh()
+  public f fUA()
+  {
+    AppMethodBeat.i(88684);
+    d.i("Soter.SoterCoreBeforeTreble", "soter: start generate ask", new Object[0]);
+    if (fUz()) {
+      try
+      {
+        KeyStore.getInstance(this.LQG).load(null);
+        Object localObject = KeyPairGenerator.getInstance("RSA", "SoterKeyStore");
+        ((KeyPairGenerator)localObject).initialize(a.gT(e.fUI().LQq + ".addcounter.auto_signed_when_get_pubkey_attk", 4).ab(new String[] { "SHA-256" }).ac(new String[] { "PSS" }).fUG());
+        long l = System.nanoTime();
+        ((KeyPairGenerator)localObject).generateKeyPair();
+        d.i("Soter.SoterCoreBeforeTreble", "soter: generate successfully. cost: %d ms", new Object[] { Long.valueOf(g.EV(l)) });
+        h.reset();
+        localObject = new f(0);
+        AppMethodBeat.o(88684);
+        return localObject;
+      }
+      catch (Exception localException)
+      {
+        d.e("Soter.SoterCoreBeforeTreble", "soter: generateAppGlobalSecureKey " + localException.toString(), new Object[0]);
+        d.b("Soter.SoterCoreBeforeTreble", localException, "soter: generateAppGlobalSecureKey error");
+        f localf1 = new f(4, localException.toString());
+        AppMethodBeat.o(88684);
+        return localf1;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        d.b("Soter.SoterCoreBeforeTreble", localOutOfMemoryError, "soter: out of memory when generate ASK!! maybe no attk inside");
+        h.fUJ();
+      }
+    }
+    for (;;)
+    {
+      f localf2 = new f(2);
+      AppMethodBeat.o(88684);
+      return localf2;
+      d.e("Soter.SoterCoreBeforeTreble", "soter: not support soter", new Object[0]);
+    }
+  }
+  
+  public final f fUB()
+  {
+    AppMethodBeat.i(88685);
+    d.i("Soter.SoterCoreBeforeTreble", "soter: start remove app global secure key", new Object[0]);
+    if (fUz()) {
+      try
+      {
+        Object localObject = KeyStore.getInstance(this.LQG);
+        ((KeyStore)localObject).load(null);
+        ((KeyStore)localObject).deleteEntry(e.fUI().LQq);
+        localObject = new f(0);
+        AppMethodBeat.o(88685);
+        return localObject;
+      }
+      catch (Exception localException)
+      {
+        d.e("Soter.SoterCoreBeforeTreble", "soter: removeAppGlobalSecureKey " + localException.toString(), new Object[0]);
+        localf = new f(5, localException.toString());
+        AppMethodBeat.o(88685);
+        return localf;
+      }
+    }
+    d.e("Soter.SoterCoreBeforeTreble", "soter: not support soter", new Object[0]);
+    f localf = new f(2);
+    AppMethodBeat.o(88685);
+    return localf;
+  }
+  
+  public final boolean fUC()
+  {
+    AppMethodBeat.i(88686);
+    try
+    {
+      KeyStore localKeyStore = KeyStore.getInstance(this.LQG);
+      localKeyStore.load(null);
+      if (localKeyStore.getCertificate(e.fUI().LQq) != null)
+      {
+        AppMethodBeat.o(88686);
+        return true;
+      }
+      AppMethodBeat.o(88686);
+      return false;
+    }
+    catch (Exception localException)
+    {
+      d.e("Soter.SoterCoreBeforeTreble", "soter: hasAppGlobalSecureKey exception: " + localException.toString(), new Object[0]);
+      AppMethodBeat.o(88686);
+    }
+    return false;
+  }
+  
+  public final boolean fUD()
+  {
+    AppMethodBeat.i(88687);
+    if ((fUC()) && (fUE() != null))
+    {
+      AppMethodBeat.o(88687);
+      return true;
+    }
+    AppMethodBeat.o(88687);
+    return false;
+  }
+  
+  public i fUE()
+  {
+    AppMethodBeat.i(88688);
+    d.i("Soter.SoterCoreBeforeTreble", "soter: start get app global secure key pub", new Object[0]);
+    if (fUz()) {}
+    for (;;)
+    {
+      try
+      {
+        Object localObject = KeyStore.getInstance(this.LQG);
+        ((KeyStore)localObject).load(null);
+        try
+        {
+          localObject = ((KeyStore)localObject).getKey(e.fUI().LQq, "from_soter_ui".toCharArray());
+          if (localObject != null)
+          {
+            h.reset();
+            localObject = cS(((Key)localObject).getEncoded());
+            AppMethodBeat.o(88688);
+            return localObject;
+          }
+          d.e("Soter.SoterCoreBeforeTreble", "soter: key can not be retrieved", new Object[0]);
+          AppMethodBeat.o(88688);
+          return null;
+        }
+        catch (ClassCastException localClassCastException)
+        {
+          d.e("Soter.SoterCoreBeforeTreble", "soter: cast error: " + localClassCastException.toString(), new Object[0]);
+          AppMethodBeat.o(88688);
+          return null;
+        }
+        d.e("Soter.SoterCoreBeforeTreble", "soter: not support soter", new Object[0]);
+      }
+      catch (Exception localException)
+      {
+        d.b("Soter.SoterCoreBeforeTreble", localException, "soter: error when get ask");
+        AppMethodBeat.o(88688);
+        return null;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        d.b("Soter.SoterCoreBeforeTreble", localOutOfMemoryError, "soter: out of memory when getting ask!! maybe no attk inside");
+        h.fUJ();
+      }
+    }
+  }
+  
+  public final boolean fUz()
   {
     AppMethodBeat.i(88683);
-    if (!JWK) {
-      cZj();
+    if (!LQF) {
+      div();
     }
-    if (h.fDs())
+    if (h.fUK())
     {
       d.w("Soter.SoterCoreBeforeTreble", "hy: the device has already triggered OOM. mark as not support", new Object[0]);
       AppMethodBeat.o(88683);
@@ -417,166 +568,15 @@ public class c
     return false;
   }
   
-  public f fDi()
-  {
-    AppMethodBeat.i(88684);
-    d.i("Soter.SoterCoreBeforeTreble", "soter: start generate ask", new Object[0]);
-    if (fDh()) {
-      try
-      {
-        KeyStore.getInstance(this.JWL).load(null);
-        Object localObject = KeyPairGenerator.getInstance("RSA", "SoterKeyStore");
-        ((KeyPairGenerator)localObject).initialize(a.gv(e.fDq().JWv + ".addcounter.auto_signed_when_get_pubkey_attk", 4).Z(new String[] { "SHA-256" }).aa(new String[] { "PSS" }).fDo());
-        long l = System.nanoTime();
-        ((KeyPairGenerator)localObject).generateKeyPair();
-        d.i("Soter.SoterCoreBeforeTreble", "soter: generate successfully. cost: %d ms", new Object[] { Long.valueOf(g.BT(l)) });
-        h.reset();
-        localObject = new f(0);
-        AppMethodBeat.o(88684);
-        return localObject;
-      }
-      catch (Exception localException)
-      {
-        d.e("Soter.SoterCoreBeforeTreble", "soter: generateAppGlobalSecureKey " + localException.toString(), new Object[0]);
-        d.b("Soter.SoterCoreBeforeTreble", localException, "soter: generateAppGlobalSecureKey error");
-        f localf1 = new f(4, localException.toString());
-        AppMethodBeat.o(88684);
-        return localf1;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        d.b("Soter.SoterCoreBeforeTreble", localOutOfMemoryError, "soter: out of memory when generate ASK!! maybe no attk inside");
-        h.fDr();
-      }
-    }
-    for (;;)
-    {
-      f localf2 = new f(2);
-      AppMethodBeat.o(88684);
-      return localf2;
-      d.e("Soter.SoterCoreBeforeTreble", "soter: not support soter", new Object[0]);
-    }
-  }
-  
-  public final f fDj()
-  {
-    AppMethodBeat.i(88685);
-    d.i("Soter.SoterCoreBeforeTreble", "soter: start remove app global secure key", new Object[0]);
-    if (fDh()) {
-      try
-      {
-        Object localObject = KeyStore.getInstance(this.JWL);
-        ((KeyStore)localObject).load(null);
-        ((KeyStore)localObject).deleteEntry(e.fDq().JWv);
-        localObject = new f(0);
-        AppMethodBeat.o(88685);
-        return localObject;
-      }
-      catch (Exception localException)
-      {
-        d.e("Soter.SoterCoreBeforeTreble", "soter: removeAppGlobalSecureKey " + localException.toString(), new Object[0]);
-        localf = new f(5, localException.toString());
-        AppMethodBeat.o(88685);
-        return localf;
-      }
-    }
-    d.e("Soter.SoterCoreBeforeTreble", "soter: not support soter", new Object[0]);
-    f localf = new f(2);
-    AppMethodBeat.o(88685);
-    return localf;
-  }
-  
-  public final boolean fDk()
-  {
-    AppMethodBeat.i(88686);
-    try
-    {
-      KeyStore localKeyStore = KeyStore.getInstance(this.JWL);
-      localKeyStore.load(null);
-      if (localKeyStore.getCertificate(e.fDq().JWv) != null)
-      {
-        AppMethodBeat.o(88686);
-        return true;
-      }
-      AppMethodBeat.o(88686);
-      return false;
-    }
-    catch (Exception localException)
-    {
-      d.e("Soter.SoterCoreBeforeTreble", "soter: hasAppGlobalSecureKey exception: " + localException.toString(), new Object[0]);
-      AppMethodBeat.o(88686);
-    }
-    return false;
-  }
-  
-  public final boolean fDl()
-  {
-    AppMethodBeat.i(88687);
-    if ((fDk()) && (fDm() != null))
-    {
-      AppMethodBeat.o(88687);
-      return true;
-    }
-    AppMethodBeat.o(88687);
-    return false;
-  }
-  
-  public i fDm()
-  {
-    AppMethodBeat.i(88688);
-    d.i("Soter.SoterCoreBeforeTreble", "soter: start get app global secure key pub", new Object[0]);
-    if (fDh()) {}
-    for (;;)
-    {
-      try
-      {
-        Object localObject = KeyStore.getInstance(this.JWL);
-        ((KeyStore)localObject).load(null);
-        try
-        {
-          localObject = ((KeyStore)localObject).getKey(e.fDq().JWv, "from_soter_ui".toCharArray());
-          if (localObject != null)
-          {
-            h.reset();
-            localObject = cL(((Key)localObject).getEncoded());
-            AppMethodBeat.o(88688);
-            return localObject;
-          }
-          d.e("Soter.SoterCoreBeforeTreble", "soter: key can not be retrieved", new Object[0]);
-          AppMethodBeat.o(88688);
-          return null;
-        }
-        catch (ClassCastException localClassCastException)
-        {
-          d.e("Soter.SoterCoreBeforeTreble", "soter: cast error: " + localClassCastException.toString(), new Object[0]);
-          AppMethodBeat.o(88688);
-          return null;
-        }
-        d.e("Soter.SoterCoreBeforeTreble", "soter: not support soter", new Object[0]);
-      }
-      catch (Exception localException)
-      {
-        d.b("Soter.SoterCoreBeforeTreble", localException, "soter: error when get ask");
-        AppMethodBeat.o(88688);
-        return null;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        d.b("Soter.SoterCoreBeforeTreble", localOutOfMemoryError, "soter: out of memory when getting ask!! maybe no attk inside");
-        h.fDr();
-      }
-    }
-  }
-  
-  public final boolean kS(Context paramContext)
+  public final boolean lf(Context paramContext)
   {
     AppMethodBeat.i(88682);
-    cZj();
+    div();
     AppMethodBeat.o(88682);
     return true;
   }
   
-  public final SoterSessionResult mn(String paramString1, String paramString2)
+  public final SoterSessionResult mL(String paramString1, String paramString2)
   {
     return null;
   }

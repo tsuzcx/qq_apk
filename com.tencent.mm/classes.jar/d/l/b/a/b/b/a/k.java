@@ -3,7 +3,8 @@ package d.l.b.a.b.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.e;
 import d.a.j;
-import d.g.b.l;
+import d.g.b.p;
+import d.g.b.q;
 import d.m.h;
 import d.m.i;
 import java.util.Collection;
@@ -13,18 +14,18 @@ import java.util.List;
 public final class k
   implements g
 {
-  private final List<g> Lfc;
+  private final List<g> MVX;
   
   public k(List<? extends g> paramList)
   {
     AppMethodBeat.i(56968);
-    this.Lfc = paramList;
+    this.MVX = paramList;
     AppMethodBeat.o(56968);
   }
   
   public k(g... paramVarArgs)
   {
-    this(e.V(paramVarArgs));
+    this(e.W(paramVarArgs));
     AppMethodBeat.i(56969);
     AppMethodBeat.o(56969);
   }
@@ -32,9 +33,9 @@ public final class k
   public final c g(d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(56966);
-    d.g.b.k.h(paramb, "fqName");
-    paramb = i.e(j.t((Iterable)this.Lfc), (d.g.a.b)new a(paramb));
-    d.g.b.k.h(paramb, "$this$firstOrNull");
+    p.h(paramb, "fqName");
+    paramb = i.e(j.v((Iterable)this.MVX), (d.g.a.b)new a(paramb));
+    p.h(paramb, "$this$firstOrNull");
     paramb = paramb.iterator();
     if (!paramb.hasNext()) {}
     for (paramb = null;; paramb = paramb.next())
@@ -48,8 +49,8 @@ public final class k
   public final boolean h(d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(56965);
-    d.g.b.k.h(paramb, "fqName");
-    Iterator localIterator = j.t((Iterable)this.Lfc).iterator();
+    p.h(paramb, "fqName");
+    Iterator localIterator = j.v((Iterable)this.MVX).iterator();
     while (localIterator.hasNext()) {
       if (((g)localIterator.next()).h(paramb))
       {
@@ -64,7 +65,7 @@ public final class k
   public final boolean isEmpty()
   {
     AppMethodBeat.i(56964);
-    Object localObject = (Iterable)this.Lfc;
+    Object localObject = (Iterable)this.MVX;
     if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
     {
       localObject = ((Iterable)localObject).iterator();
@@ -83,13 +84,13 @@ public final class k
   public final Iterator<c> iterator()
   {
     AppMethodBeat.i(56967);
-    Iterator localIterator = i.c(j.t((Iterable)this.Lfc), (d.g.a.b)b.Lfe).iterator();
+    Iterator localIterator = i.c(j.v((Iterable)this.MVX), (d.g.a.b)b.MVZ).iterator();
     AppMethodBeat.o(56967);
     return localIterator;
   }
   
   static final class a
-    extends l
+    extends q
     implements d.g.a.b<g, c>
   {
     a(d.l.b.a.b.f.b paramb)
@@ -99,15 +100,15 @@ public final class k
   }
   
   static final class b
-    extends l
+    extends q
     implements d.g.a.b<g, h<? extends c>>
   {
-    public static final b Lfe;
+    public static final b MVZ;
     
     static
     {
       AppMethodBeat.i(56963);
-      Lfe = new b();
+      MVZ = new b();
       AppMethodBeat.o(56963);
     }
     

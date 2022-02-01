@@ -17,14 +17,14 @@ import java.util.TreeMap;
 public final class n
   implements l
 {
-  private static final Bitmap.Config[] aGY;
-  private static final Bitmap.Config[] aGZ;
-  private static final Bitmap.Config[] aHa;
-  private static final Bitmap.Config[] aHb;
-  private static final Bitmap.Config[] aHc;
-  private final Map<Bitmap.Config, NavigableMap<Integer, Integer>> aGK;
-  private final h<a, Bitmap> aGz;
-  private final b aHd;
+  private static final Bitmap.Config[] aIP;
+  private static final Bitmap.Config[] aIQ;
+  private static final Bitmap.Config[] aIR;
+  private static final Bitmap.Config[] aIS;
+  private static final Bitmap.Config[] aIT;
+  private final Map<Bitmap.Config, NavigableMap<Integer, Integer>> aIB;
+  private final b aIU;
+  private final h<a, Bitmap> aIq;
   
   static
   {
@@ -38,20 +38,20 @@ public final class n
       arrayOfConfig1 = (Bitmap.Config[])Arrays.copyOf(arrayOfConfig2, 3);
       arrayOfConfig1[(arrayOfConfig1.length - 1)] = Bitmap.Config.RGBA_F16;
     }
-    aGY = arrayOfConfig1;
-    aGZ = arrayOfConfig1;
-    aHa = new Bitmap.Config[] { Bitmap.Config.RGB_565 };
-    aHb = new Bitmap.Config[] { Bitmap.Config.ARGB_4444 };
-    aHc = new Bitmap.Config[] { Bitmap.Config.ALPHA_8 };
+    aIP = arrayOfConfig1;
+    aIQ = arrayOfConfig1;
+    aIR = new Bitmap.Config[] { Bitmap.Config.RGB_565 };
+    aIS = new Bitmap.Config[] { Bitmap.Config.ARGB_4444 };
+    aIT = new Bitmap.Config[] { Bitmap.Config.ALPHA_8 };
     AppMethodBeat.o(77143);
   }
   
   public n()
   {
     AppMethodBeat.i(77132);
-    this.aHd = new b();
-    this.aGz = new h();
-    this.aGK = new HashMap();
+    this.aIU = new b();
+    this.aIq = new h();
+    this.aIB = new HashMap();
     AppMethodBeat.o(77132);
   }
   
@@ -87,12 +87,12 @@ public final class n
   private NavigableMap<Integer, Integer> b(Bitmap.Config paramConfig)
   {
     AppMethodBeat.i(77137);
-    NavigableMap localNavigableMap = (NavigableMap)this.aGK.get(paramConfig);
+    NavigableMap localNavigableMap = (NavigableMap)this.aIB.get(paramConfig);
     Object localObject = localNavigableMap;
     if (localNavigableMap == null)
     {
       localObject = new TreeMap();
-      this.aGK.put(paramConfig, localObject);
+      this.aIB.put(paramConfig, localObject);
     }
     AppMethodBeat.o(77137);
     return localObject;
@@ -103,13 +103,13 @@ public final class n
     int i = 0;
     AppMethodBeat.i(77134);
     int j = j.i(paramInt1, paramInt2, paramConfig);
-    a locala = this.aHd.c(j, paramConfig);
+    a locala = this.aIU.c(j, paramConfig);
     Object localObject;
     label56:
     Bitmap.Config localConfig;
     if ((Build.VERSION.SDK_INT >= 26) && (Bitmap.Config.RGBA_F16.equals(paramConfig)))
     {
-      localObject = aGZ;
+      localObject = aIQ;
       int k = localObject.length;
       if (i >= k) {
         break label306;
@@ -129,10 +129,10 @@ public final class n
         }
       }
       label128:
-      this.aHd.a(locala);
-      paramConfig = this.aHd.c(localInteger.intValue(), localConfig);
+      this.aIU.a(locala);
+      paramConfig = this.aIU.c(localInteger.intValue(), localConfig);
       label152:
-      localObject = (Bitmap)this.aGz.b(paramConfig);
+      localObject = (Bitmap)this.aIq.b(paramConfig);
       if (localObject != null)
       {
         a(Integer.valueOf(paramConfig.size), (Bitmap)localObject);
@@ -150,22 +150,22 @@ public final class n
       ((Bitmap)localObject).reconfigure(paramInt1, paramInt2, paramConfig);
       AppMethodBeat.o(77134);
       return localObject;
-      switch (n.1.$SwitchMap$android$graphics$Bitmap$Config[paramConfig.ordinal()])
+      switch (1.$SwitchMap$android$graphics$Bitmap$Config[paramConfig.ordinal()])
       {
       default: 
         localObject = new Bitmap.Config[] { paramConfig };
         break;
       case 1: 
-        localObject = aGY;
+        localObject = aIP;
         break;
       case 2: 
-        localObject = aHa;
+        localObject = aIR;
         break;
       case 3: 
-        localObject = aHb;
+        localObject = aIS;
         break;
       case 4: 
-        localObject = aHc;
+        localObject = aIT;
         break;
         if (!localConfig.equals(paramConfig)) {
           break label128;
@@ -190,8 +190,8 @@ public final class n
   {
     AppMethodBeat.i(77133);
     int i = j.k(paramBitmap);
-    a locala = this.aHd.c(i, paramBitmap.getConfig());
-    this.aGz.a(locala, paramBitmap);
+    a locala = this.aIU.c(i, paramBitmap.getConfig());
+    this.aIq.a(locala, paramBitmap);
     paramBitmap = b(paramBitmap.getConfig());
     Integer localInteger = (Integer)paramBitmap.get(Integer.valueOf(locala.size));
     int j = locala.size;
@@ -220,10 +220,10 @@ public final class n
     return i;
   }
   
-  public final Bitmap oD()
+  public final Bitmap oV()
   {
     AppMethodBeat.i(77135);
-    Bitmap localBitmap = (Bitmap)this.aGz.removeLast();
+    Bitmap localBitmap = (Bitmap)this.aIq.removeLast();
     if (localBitmap != null) {
       a(Integer.valueOf(j.k(localBitmap)), localBitmap);
     }
@@ -234,14 +234,14 @@ public final class n
   public final String toString()
   {
     AppMethodBeat.i(77141);
-    Object localObject = new StringBuilder("SizeConfigStrategy{groupedMap=").append(this.aGz).append(", sortedSizes=(");
-    Iterator localIterator = this.aGK.entrySet().iterator();
+    Object localObject = new StringBuilder("SizeConfigStrategy{groupedMap=").append(this.aIq).append(", sortedSizes=(");
+    Iterator localIterator = this.aIB.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       ((StringBuilder)localObject).append(localEntry.getKey()).append('[').append(localEntry.getValue()).append("], ");
     }
-    if (!this.aGK.isEmpty()) {
+    if (!this.aIB.isEmpty()) {
       ((StringBuilder)localObject).replace(((StringBuilder)localObject).length() - 2, ((StringBuilder)localObject).length(), "");
     }
     localObject = ")}";
@@ -252,19 +252,19 @@ public final class n
   static final class a
     implements m
   {
-    private Bitmap.Config aGB;
-    private final n.b aHe;
+    private final n.b aIV;
+    private Bitmap.Config aIs;
     int size;
     
     public a(n.b paramb)
     {
-      this.aHe = paramb;
+      this.aIV = paramb;
     }
     
     public final void b(int paramInt, Bitmap.Config paramConfig)
     {
       this.size = paramInt;
-      this.aGB = paramConfig;
+      this.aIs = paramConfig;
     }
     
     public final boolean equals(Object paramObject)
@@ -273,7 +273,7 @@ public final class n
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((this.size == paramObject.size) && (j.e(this.aGB, paramObject.aGB)))
+        if ((this.size == paramObject.size) && (j.g(this.aIs, paramObject.aIs)))
         {
           AppMethodBeat.o(77128);
           return true;
@@ -289,25 +289,25 @@ public final class n
     {
       AppMethodBeat.i(77129);
       int j = this.size;
-      if (this.aGB != null) {}
-      for (int i = this.aGB.hashCode();; i = 0)
+      if (this.aIs != null) {}
+      for (int i = this.aIs.hashCode();; i = 0)
       {
         AppMethodBeat.o(77129);
         return i + j * 31;
       }
     }
     
-    public final void oE()
+    public final void oW()
     {
       AppMethodBeat.i(77126);
-      this.aHe.a(this);
+      this.aIV.a(this);
       AppMethodBeat.o(77126);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(77127);
-      String str = n.a(this.size, this.aGB);
+      String str = n.a(this.size, this.aIs);
       AppMethodBeat.o(77127);
       return str;
     }
@@ -319,7 +319,7 @@ public final class n
     public final n.a c(int paramInt, Bitmap.Config paramConfig)
     {
       AppMethodBeat.i(77130);
-      n.a locala = (n.a)oG();
+      n.a locala = (n.a)oY();
       locala.b(paramInt, paramConfig);
       AppMethodBeat.o(77130);
       return locala;

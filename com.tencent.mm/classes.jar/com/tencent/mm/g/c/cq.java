@@ -2,88 +2,97 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.protocal.protobuf.qu;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.io.IOException;
 
 public abstract class cq
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eBr;
-  private static final int eGb = "sectionMd5Byte".hashCode();
-  private static final int eKR;
-  private static final int eKS;
-  private static final int eKT;
-  private static final int eKU;
-  private static final int eKV;
-  private static final int eKW;
-  private static final int eKX;
-  private static final int eKY;
-  private static final int eKZ;
-  private static final int eKw;
-  private static final int eLa;
-  private static final int eLb;
-  private static final int eLc = "forceUpdateFlag".hashCode();
-  private static final int enO = "appId".hashCode();
-  private static final int eoH;
-  private static final int epR;
-  private static final int evD = "downloadUrl".hashCode();
+  private static final int eDc;
+  private static final int eGk;
+  private static final int eXN;
+  private static final int eYo = "retryCount".hashCode();
+  private static final int fbA;
+  private static final int fbB;
+  private static final int fbC;
+  private static final int fbD;
+  private static final int fbE;
+  private static final int fbF;
+  private static final int fbG = "retryCountLimit".hashCode();
+  private static final int fbH = "businessInfo".hashCode();
+  private static final int fbI = "opCode".hashCode();
+  private static final int fbs = "cgi".hashCode();
+  private static final int fbt = "cmdid".hashCode();
+  private static final int fbu = "functionmsgid".hashCode();
+  private static final int fbv;
+  private static final int fbw;
+  private static final int fbx;
+  private static final int fby;
+  private static final int fbz;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eAF = true;
-  private boolean eFy = true;
-  private boolean eKF = true;
-  private boolean eKG = true;
-  private boolean eKH = true;
-  private boolean eKI = true;
-  private boolean eKJ = true;
-  private boolean eKK = true;
-  private boolean eKL = true;
-  private boolean eKM = true;
-  private boolean eKN = true;
-  private boolean eKO = true;
-  private boolean eKP = true;
-  private boolean eKQ = true;
-  private boolean eKl = true;
-  private boolean enx = true;
-  private boolean eoF = true;
-  private boolean epv = true;
-  private boolean evv = true;
-  public String field_SecondaryUrl;
-  public String field_appId;
-  public boolean field_continueDelay;
-  public boolean field_downloadInWidget;
-  public String field_downloadUrl;
-  public long field_expireTime;
-  public int field_forceUpdateFlag;
-  public boolean field_isFirst;
-  public boolean field_isRunning;
-  public boolean field_lowBattery;
-  public String field_md5;
-  public long field_nextCheckTime;
-  public boolean field_noEnoughSpace;
-  public boolean field_noSdcard;
-  public boolean field_noWifi;
-  public String field_packageName;
-  public long field_randomTime;
-  public byte[] field_sectionMd5Byte;
-  public long field_size;
+  private boolean eCZ = true;
+  private boolean eGf = true;
+  private boolean eXD = true;
+  private boolean eYe = true;
+  private boolean fbb = true;
+  private boolean fbc = true;
+  private boolean fbd = true;
+  private boolean fbe = true;
+  private boolean fbf = true;
+  private boolean fbg = true;
+  private boolean fbh = true;
+  private boolean fbi = true;
+  private boolean fbj = true;
+  private boolean fbk = true;
+  private boolean fbl = true;
+  private boolean fbm = true;
+  private boolean fbn = true;
+  private boolean fbo = true;
+  private boolean fbp = true;
+  private boolean fbq = true;
+  private boolean fbr = true;
+  public long field_actionTime;
+  public cv field_addMsg;
+  public qu field_businessInfo;
+  public String field_cgi;
+  public int field_cmdid;
+  public String field_custombuff;
+  public String field_defaultContent;
+  public long field_delayTime;
+  public int field_failkey;
+  public int field_finalfailkey;
+  public String field_functionmsgid;
+  public boolean field_needShow;
+  public int field_opCode;
+  public long field_preVersion;
+  public int field_reportid;
+  public int field_retryCount;
+  public int field_retryCountLimit;
+  public int field_retryinterval;
+  public int field_status;
+  public int field_successkey;
+  public long field_version;
   
   static
   {
-    eoH = "size".hashCode();
-    eBr = "md5".hashCode();
-    epR = "packageName".hashCode();
-    eKw = "expireTime".hashCode();
-    eKR = "randomTime".hashCode();
-    eKS = "isFirst".hashCode();
-    eKT = "nextCheckTime".hashCode();
-    eKU = "isRunning".hashCode();
-    eKV = "noWifi".hashCode();
-    eKW = "noSdcard".hashCode();
-    eKX = "noEnoughSpace".hashCode();
-    eKY = "lowBattery".hashCode();
-    eKZ = "continueDelay".hashCode();
-    eLa = "SecondaryUrl".hashCode();
-    eLb = "downloadInWidget".hashCode();
+    eGk = "version".hashCode();
+    fbv = "preVersion".hashCode();
+    fbw = "retryinterval".hashCode();
+    fbx = "reportid".hashCode();
+    fby = "successkey".hashCode();
+    fbz = "failkey".hashCode();
+    fbA = "finalfailkey".hashCode();
+    fbB = "custombuff".hashCode();
+    fbC = "addMsg".hashCode();
+    eDc = "status".hashCode();
+    fbD = "needShow".hashCode();
+    fbE = "defaultContent".hashCode();
+    eXN = "actionTime".hashCode();
+    fbF = "delayTime".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -99,137 +108,115 @@ public abstract class cq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (enO != k) {
-        break label65;
+      if (fbs != k) {
+        break label60;
       }
-      this.field_appId = paramCursor.getString(i);
-      this.enx = true;
+      this.field_cgi = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (evD == k)
+      label60:
+      if (fbt == k)
       {
-        this.field_downloadUrl = paramCursor.getString(i);
+        this.field_cmdid = paramCursor.getInt(i);
       }
-      else if (eoH == k)
+      else if (fbu == k)
       {
-        this.field_size = paramCursor.getLong(i);
+        this.field_functionmsgid = paramCursor.getString(i);
+        this.fbd = true;
       }
-      else if (eBr == k)
+      else if (eGk == k)
       {
-        this.field_md5 = paramCursor.getString(i);
+        this.field_version = paramCursor.getLong(i);
       }
-      else if (epR == k)
+      else if (fbv == k)
       {
-        this.field_packageName = paramCursor.getString(i);
+        this.field_preVersion = paramCursor.getLong(i);
       }
-      else if (eKw == k)
+      else if (fbw == k)
       {
-        this.field_expireTime = paramCursor.getLong(i);
+        this.field_retryinterval = paramCursor.getInt(i);
       }
-      else if (eKR == k)
+      else if (fbx == k)
       {
-        this.field_randomTime = paramCursor.getLong(i);
+        this.field_reportid = paramCursor.getInt(i);
+      }
+      else if (fby == k)
+      {
+        this.field_successkey = paramCursor.getInt(i);
+      }
+      else if (fbz == k)
+      {
+        this.field_failkey = paramCursor.getInt(i);
+      }
+      else if (fbA == k)
+      {
+        this.field_finalfailkey = paramCursor.getInt(i);
+      }
+      else if (fbB == k)
+      {
+        this.field_custombuff = paramCursor.getString(i);
+      }
+      else if (fbC == k)
+      {
+        try
+        {
+          byte[] arrayOfByte1 = paramCursor.getBlob(i);
+          if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
+            continue;
+          }
+          this.field_addMsg = ((cv)new cv().parseFrom(arrayOfByte1));
+        }
+        catch (IOException localIOException1)
+        {
+          ad.e("MicroMsg.SDK.BaseFunctionMsgItem", localIOException1.getMessage());
+        }
+      }
+      else if (eDc == k)
+      {
+        this.field_status = paramCursor.getInt(i);
       }
       else
       {
-        boolean bool;
-        if (eKS == k)
+        if (fbD == k)
         {
           if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
+          for (boolean bool = true;; bool = false)
           {
-            this.field_isFirst = bool;
+            this.field_needShow = bool;
             break;
           }
         }
-        if (eKT == k)
-        {
-          this.field_nextCheckTime = paramCursor.getLong(i);
-        }
-        else
-        {
-          if (eKU == k)
+        if (fbE == k) {
+          this.field_defaultContent = paramCursor.getString(i);
+        } else if (eXN == k) {
+          this.field_actionTime = paramCursor.getLong(i);
+        } else if (fbF == k) {
+          this.field_delayTime = paramCursor.getLong(i);
+        } else if (eYo == k) {
+          this.field_retryCount = paramCursor.getInt(i);
+        } else if (fbG == k) {
+          this.field_retryCountLimit = paramCursor.getInt(i);
+        } else if (fbH == k) {
+          try
           {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_isRunning = bool;
-              break;
+            byte[] arrayOfByte2 = paramCursor.getBlob(i);
+            if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
+              continue;
             }
+            this.field_businessInfo = ((qu)new qu().parseFrom(arrayOfByte2));
           }
-          if (eKV == k)
+          catch (IOException localIOException2)
           {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_noWifi = bool;
-              break;
-            }
+            ad.e("MicroMsg.SDK.BaseFunctionMsgItem", localIOException2.getMessage());
           }
-          if (eKW == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_noSdcard = bool;
-              break;
-            }
-          }
-          if (eKX == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_noEnoughSpace = bool;
-              break;
-            }
-          }
-          if (eKY == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_lowBattery = bool;
-              break;
-            }
-          }
-          if (eKZ == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_continueDelay = bool;
-              break;
-            }
-          }
-          if (eLa == k)
-          {
-            this.field_SecondaryUrl = paramCursor.getString(i);
-          }
-          else
-          {
-            if (eLb == k)
-            {
-              if (paramCursor.getInt(i) != 0) {}
-              for (bool = true;; bool = false)
-              {
-                this.field_downloadInWidget = bool;
-                break;
-              }
-            }
-            if (eGb == k) {
-              this.field_sectionMd5Byte = paramCursor.getBlob(i);
-            } else if (eLc == k) {
-              this.field_forceUpdateFlag = paramCursor.getInt(i);
-            } else if (rowid_HASHCODE == k) {
-              this.systemRowid = paramCursor.getLong(i);
-            }
-          }
+        } else if (fbI == k) {
+          this.field_opCode = paramCursor.getInt(i);
+        } else if (rowid_HASHCODE == k) {
+          this.systemRowid = paramCursor.getLong(i);
         }
       }
     }
@@ -238,72 +225,94 @@ public abstract class cq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.enx) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.fbb) {
+      localContentValues.put("cgi", this.field_cgi);
     }
-    if (this.evv) {
-      localContentValues.put("downloadUrl", this.field_downloadUrl);
+    if (this.fbc) {
+      localContentValues.put("cmdid", Integer.valueOf(this.field_cmdid));
     }
-    if (this.eoF) {
-      localContentValues.put("size", Long.valueOf(this.field_size));
+    if (this.fbd) {
+      localContentValues.put("functionmsgid", this.field_functionmsgid);
     }
-    if (this.eAF) {
-      localContentValues.put("md5", this.field_md5);
+    if (this.eGf) {
+      localContentValues.put("version", Long.valueOf(this.field_version));
     }
-    if (this.epv) {
-      localContentValues.put("packageName", this.field_packageName);
+    if (this.fbe) {
+      localContentValues.put("preVersion", Long.valueOf(this.field_preVersion));
     }
-    if (this.eKl) {
-      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
+    if (this.fbf) {
+      localContentValues.put("retryinterval", Integer.valueOf(this.field_retryinterval));
     }
-    if (this.eKF) {
-      localContentValues.put("randomTime", Long.valueOf(this.field_randomTime));
+    if (this.fbg) {
+      localContentValues.put("reportid", Integer.valueOf(this.field_reportid));
     }
-    if (this.eKG) {
-      localContentValues.put("isFirst", Boolean.valueOf(this.field_isFirst));
+    if (this.fbh) {
+      localContentValues.put("successkey", Integer.valueOf(this.field_successkey));
     }
-    if (this.eKH) {
-      localContentValues.put("nextCheckTime", Long.valueOf(this.field_nextCheckTime));
+    if (this.fbi) {
+      localContentValues.put("failkey", Integer.valueOf(this.field_failkey));
     }
-    if (this.eKI) {
-      localContentValues.put("isRunning", Boolean.valueOf(this.field_isRunning));
+    if (this.fbj) {
+      localContentValues.put("finalfailkey", Integer.valueOf(this.field_finalfailkey));
     }
-    if (this.eKJ) {
-      localContentValues.put("noWifi", Boolean.valueOf(this.field_noWifi));
+    if (this.fbk) {
+      localContentValues.put("custombuff", this.field_custombuff);
     }
-    if (this.eKK) {
-      localContentValues.put("noSdcard", Boolean.valueOf(this.field_noSdcard));
+    if ((this.fbl) && (this.field_addMsg != null)) {}
+    try
+    {
+      localContentValues.put("addMsg", this.field_addMsg.toByteArray());
+      if (this.eCZ) {
+        localContentValues.put("status", Integer.valueOf(this.field_status));
+      }
+      if (this.fbm) {
+        localContentValues.put("needShow", Boolean.valueOf(this.field_needShow));
+      }
+      if (this.fbn) {
+        localContentValues.put("defaultContent", this.field_defaultContent);
+      }
+      if (this.eXD) {
+        localContentValues.put("actionTime", Long.valueOf(this.field_actionTime));
+      }
+      if (this.fbo) {
+        localContentValues.put("delayTime", Long.valueOf(this.field_delayTime));
+      }
+      if (this.eYe) {
+        localContentValues.put("retryCount", Integer.valueOf(this.field_retryCount));
+      }
+      if (this.fbp) {
+        localContentValues.put("retryCountLimit", Integer.valueOf(this.field_retryCountLimit));
+      }
+      if ((!this.fbq) || (this.field_businessInfo == null)) {}
     }
-    if (this.eKL) {
-      localContentValues.put("noEnoughSpace", Boolean.valueOf(this.field_noEnoughSpace));
+    catch (IOException localIOException1)
+    {
+      try
+      {
+        localContentValues.put("businessInfo", this.field_businessInfo.toByteArray());
+        if (this.fbr) {
+          localContentValues.put("opCode", Integer.valueOf(this.field_opCode));
+        }
+        if (this.systemRowid > 0L) {
+          localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+        }
+        return localContentValues;
+        localIOException1 = localIOException1;
+        ad.e("MicroMsg.SDK.BaseFunctionMsgItem", localIOException1.getMessage());
+      }
+      catch (IOException localIOException2)
+      {
+        for (;;)
+        {
+          ad.e("MicroMsg.SDK.BaseFunctionMsgItem", localIOException2.getMessage());
+        }
+      }
     }
-    if (this.eKM) {
-      localContentValues.put("lowBattery", Boolean.valueOf(this.field_lowBattery));
-    }
-    if (this.eKN) {
-      localContentValues.put("continueDelay", Boolean.valueOf(this.field_continueDelay));
-    }
-    if (this.eKO) {
-      localContentValues.put("SecondaryUrl", this.field_SecondaryUrl);
-    }
-    if (this.eKP) {
-      localContentValues.put("downloadInWidget", Boolean.valueOf(this.field_downloadInWidget));
-    }
-    if (this.eFy) {
-      localContentValues.put("sectionMd5Byte", this.field_sectionMd5Byte);
-    }
-    if (this.eKQ) {
-      localContentValues.put("forceUpdateFlag", Integer.valueOf(this.field_forceUpdateFlag));
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.c.cq
  * JD-Core Version:    0.7.0.1
  */

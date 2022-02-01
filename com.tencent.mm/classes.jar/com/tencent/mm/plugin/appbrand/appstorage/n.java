@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 import android.text.TextUtils;
 import com.tencent.luggage.h.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import java.nio.ByteBuffer;
@@ -15,61 +15,84 @@ import java.util.List;
 public class n
   extends i
 {
-  public final String jsT;
-  private final String jsU;
-  public final String jsV;
-  public final LuggageLocalFileObjectManager jsW;
-  public String jsX;
-  public volatile long jsY;
+  public final String jMN;
+  private final String jMO;
+  public final String jMP;
+  public final LuggageLocalFileObjectManager jMQ;
+  public String jMR;
+  public volatile long jMS;
   
   public n(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(134338);
-    this.jsX = "tmp";
-    this.jsY = -1L;
-    this.jsT = q.B(new e(paramString1).fxV());
-    this.jsU = paramString2;
-    this.jsV = paramString3;
-    this.jsW = new LuggageLocalFileObjectManager(this.jsT, this.jsU, this.jsV);
+    this.jMR = "tmp";
+    this.jMS = -1L;
+    this.jMN = q.B(new e(paramString1).fOK());
+    this.jMO = paramString2;
+    this.jMP = paramString3;
+    this.jMQ = new LuggageLocalFileObjectManager(this.jMN, this.jMO, this.jMP);
     AppMethodBeat.o(134338);
   }
   
-  public final l IR(String paramString)
+  public final boolean Lw(String paramString)
+  {
+    AppMethodBeat.i(134339);
+    boolean bool = bt.nullAsNil(paramString).startsWith(this.jMP);
+    AppMethodBeat.o(134339);
+    return bool;
+  }
+  
+  public final l Lx(String paramString)
+  {
+    AppMethodBeat.i(134340);
+    paramString = this.jMQ.Mv(paramString);
+    if ((paramString == null) || (!com.tencent.mm.vfs.i.fv(paramString.hIy)))
+    {
+      paramString = l.jMB;
+      AppMethodBeat.o(134340);
+      return paramString;
+    }
+    paramString = l.jMv;
+    AppMethodBeat.o(134340);
+    return paramString;
+  }
+  
+  public final l Mi(String paramString)
   {
     AppMethodBeat.i(134353);
-    paramString = l.jsF;
+    paramString = l.jMz;
     AppMethodBeat.o(134353);
     return paramString;
   }
   
-  public final e IS(String paramString)
+  public final e Mj(String paramString)
   {
     AppMethodBeat.i(175577);
-    paramString = this.jsW.Je(paramString);
+    paramString = this.jMQ.Mv(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(175577);
       return null;
     }
-    paramString = new e(paramString.hqg);
+    paramString = new e(paramString.hIy);
     AppMethodBeat.o(175577);
     return paramString;
   }
   
-  public final e IU(String paramString)
+  public final e Ml(String paramString)
   {
     AppMethodBeat.i(134348);
-    com.tencent.mm.vfs.i.aSh(this.jsT);
-    paramString = new e(this.jsT + "/" + paramString);
+    com.tencent.mm.vfs.i.aYg(this.jMN);
+    paramString = new e(this.jMN + "/" + paramString);
     AppMethodBeat.o(134348);
     return paramString;
   }
   
-  public final boolean IV(String paramString)
+  public final boolean Mm(String paramString)
   {
     AppMethodBeat.i(134352);
-    paramString = this.jsW.Je(paramString);
-    if ((paramString != null) && (paramString.jsm))
+    paramString = this.jMQ.Mv(paramString);
+    if ((paramString != null) && (paramString.jMg))
     {
       AppMethodBeat.o(134352);
       return true;
@@ -78,47 +101,24 @@ public class n
     return false;
   }
   
-  public final boolean Ie(String paramString)
-  {
-    AppMethodBeat.i(134339);
-    boolean bool = bs.nullAsNil(paramString).startsWith(this.jsV);
-    AppMethodBeat.o(134339);
-    return bool;
-  }
-  
-  public final l If(String paramString)
-  {
-    AppMethodBeat.i(134340);
-    paramString = this.jsW.Je(paramString);
-    if ((paramString == null) || (!com.tencent.mm.vfs.i.eA(paramString.hqg)))
-    {
-      paramString = l.jsH;
-      AppMethodBeat.o(134340);
-      return paramString;
-    }
-    paramString = l.jsB;
-    AppMethodBeat.o(134340);
-    return paramString;
-  }
-  
-  public final String Jb(String paramString)
+  public final String Ms(String paramString)
   {
     AppMethodBeat.i(134346);
-    paramString = this.jsW.Je(paramString);
+    paramString = this.jMQ.Mv(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(134346);
       return null;
     }
-    paramString = paramString.hqg;
+    paramString = paramString.hIy;
     AppMethodBeat.o(134346);
     return paramString;
   }
   
   public final l a(com.tencent.mm.plugin.appbrand.z.i<String> parami)
   {
-    parami.value = this.jsT;
-    return l.jsB;
+    parami.value = this.jMN;
+    return l.jMv;
   }
   
   public final l a(e parame, String paramString, com.tencent.mm.plugin.appbrand.z.i<String> parami)
@@ -127,19 +127,19 @@ public class n
     AppMethodBeat.i(175579);
     if ((parame == null) || (!parame.exists()))
     {
-      parame = l.jsC;
+      parame = l.jMw;
       AppMethodBeat.o(175579);
       return parame;
     }
     if ((!TextUtils.isEmpty(paramString)) || (parami == null))
     {
-      parame = l.jsR;
+      parame = l.jML;
       AppMethodBeat.o(175579);
       return parame;
     }
-    if (this.jsY > 0L)
+    if (this.jMS > 0L)
     {
-      paramString = this.jsW.aYf();
+      paramString = this.jMQ.bbD();
       long l2 = l1;
       if (paramString != null)
       {
@@ -149,10 +149,10 @@ public class n
       }
       else
       {
-        if (l2 + parame.length() <= this.jsY) {
+        if (l2 + parame.length() <= this.jMS) {
           break label151;
         }
-        parame = l.jsQ;
+        parame = l.jMK;
         AppMethodBeat.o(175579);
         return parame;
       }
@@ -169,24 +169,24 @@ public class n
       }
     }
     label151:
-    paramString = this.jsW.Jd(parame.getName());
+    paramString = this.jMQ.Mu(parame.getName());
     if (paramString != null)
     {
-      if (paramString.jsm)
+      if (paramString.jMg)
       {
-        parami.value = paramString.dgl;
-        parame = l.jsB;
+        parami.value = paramString.drH;
+        parame = l.jMv;
         AppMethodBeat.o(175579);
         return parame;
       }
-      parami.value = this.jsW.a(paramString).dgl;
-      parame = l.jsB;
+      parami.value = this.jMQ.a(paramString).drH;
+      parame = l.jMv;
       AppMethodBeat.o(175579);
       return parame;
     }
-    parame = this.jsW.j(q.B(parame.fxV()), null, false);
-    parami.value = this.jsW.a(parame).dgl;
-    parame = l.jsB;
+    parame = this.jMQ.j(q.B(parame.fOK()), null, false);
+    parami.value = this.jMQ.a(parame).drH;
+    parame = l.jMv;
     AppMethodBeat.o(175579);
     return parame;
   }
@@ -194,16 +194,16 @@ public class n
   public final l a(e parame, String paramString, boolean paramBoolean, com.tencent.mm.plugin.appbrand.z.i<String> parami)
   {
     AppMethodBeat.i(175578);
-    ac.i("MicroMsg.Luggage.FlattenFileSystem", "createTempFileFrom src[%s] suffix[%s] deleteSrc[%b]", new Object[] { parame, paramString, Boolean.valueOf(paramBoolean) });
-    parame = this.jsW.j(q.B(parame.fxV()), paramString, paramBoolean);
+    ad.i("MicroMsg.Luggage.FlattenFileSystem", "createTempFileFrom src[%s] suffix[%s] deleteSrc[%b]", new Object[] { parame, paramString, Boolean.valueOf(paramBoolean) });
+    parame = this.jMQ.j(q.B(parame.fOK()), paramString, paramBoolean);
     if (parame == null)
     {
-      parame = l.jsC;
+      parame = l.jMw;
       AppMethodBeat.o(175578);
       return parame;
     }
-    parami.value = parame.dgl;
-    parame = l.jsB;
+    parami.value = parame.drH;
+    parame = l.jMv;
     AppMethodBeat.o(175578);
     return parame;
   }
@@ -211,16 +211,16 @@ public class n
   public final l a(String paramString, long paramLong1, long paramLong2, com.tencent.mm.plugin.appbrand.z.i<ByteBuffer> parami)
   {
     AppMethodBeat.i(175575);
-    paramString = this.jsW.Je(paramString);
-    if ((paramString == null) || (!com.tencent.mm.vfs.i.eA(paramString.hqg)))
+    paramString = this.jMQ.Mv(paramString);
+    if ((paramString == null) || (!com.tencent.mm.vfs.i.fv(paramString.hIy)))
     {
-      paramString = l.jsH;
+      paramString = l.jMB;
       AppMethodBeat.o(175575);
       return paramString;
     }
-    paramString = new e(paramString.hqg);
+    paramString = new e(paramString.hIy);
     l locall = g(paramLong1, paramLong2, paramString.length());
-    if (locall != l.jsB)
+    if (locall != l.jMv)
     {
       AppMethodBeat.o(175575);
       return locall;
@@ -230,7 +230,7 @@ public class n
       l = paramString.length() - paramLong1;
     }
     parami.value = m.a(paramString, paramLong1, l);
-    paramString = l.jsB;
+    paramString = l.jMv;
     AppMethodBeat.o(175575);
     return paramString;
   }
@@ -238,26 +238,26 @@ public class n
   public final l a(String paramString, FileStructStat paramFileStructStat)
   {
     AppMethodBeat.i(134342);
-    paramString = this.jsW.Je(paramString);
-    if ((paramString == null) || (!com.tencent.mm.vfs.i.eA(paramString.hqg)))
+    paramString = this.jMQ.Mv(paramString);
+    if ((paramString == null) || (!com.tencent.mm.vfs.i.fv(paramString.hIy)))
     {
-      paramString = l.jsH;
+      paramString = l.jMB;
       AppMethodBeat.o(134342);
       return paramString;
     }
     if (paramFileStructStat == null)
     {
-      paramString = l.jsC;
+      paramString = l.jMw;
       AppMethodBeat.o(134342);
       return paramString;
     }
-    if (FileStat.b(paramString.hqg, paramFileStructStat) == 0)
+    if (FileStat.b(paramString.hIy, paramFileStructStat) == 0)
     {
-      paramString = l.jsB;
+      paramString = l.jMv;
       AppMethodBeat.o(134342);
       return paramString;
     }
-    paramString = l.jsC;
+    paramString = l.jMw;
     AppMethodBeat.o(134342);
     return paramString;
   }
@@ -266,35 +266,27 @@ public class n
   {
     AppMethodBeat.i(134343);
     Object localObject = new LinkedList();
-    b.c((List)localObject, this.jsW.aYe());
-    b.c((List)localObject, this.jsW.aYg());
+    b.c((List)localObject, this.jMQ.bbC());
+    b.c((List)localObject, this.jMQ.bbE());
     paramString = new LinkedList();
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       w localw = (w)((Iterator)localObject).next();
       j localj = new j();
-      localj.fileName = localw.dgl;
+      localj.fileName = localw.drH;
       paramString.add(localj);
     }
     parami.value = paramString;
-    paramString = l.jsB;
+    paramString = l.jMv;
     AppMethodBeat.o(134343);
     return paramString;
-  }
-  
-  public final List<w> aYc()
-  {
-    AppMethodBeat.i(134351);
-    List localList = this.jsW.aYe();
-    AppMethodBeat.o(134351);
-    return localList;
   }
   
   public final e ae(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(175576);
-    paramString = IS(paramString);
+    paramString = Mj(paramString);
     AppMethodBeat.o(175576);
     return paramString;
   }
@@ -302,36 +294,44 @@ public class n
   public final l b(String paramString, com.tencent.mm.plugin.appbrand.z.i<ByteBuffer> parami)
   {
     AppMethodBeat.i(134341);
-    paramString = this.jsW.Je(paramString);
-    if ((paramString == null) || (!com.tencent.mm.vfs.i.eA(paramString.hqg)))
+    paramString = this.jMQ.Mv(paramString);
+    if ((paramString == null) || (!com.tencent.mm.vfs.i.fv(paramString.hIy)))
     {
-      paramString = l.jsH;
+      paramString = l.jMB;
       AppMethodBeat.o(134341);
       return paramString;
     }
-    parami.value = m.t(new e(paramString.hqg));
-    paramString = l.jsB;
+    parami.value = m.t(new e(paramString.hIy));
+    paramString = l.jMv;
     AppMethodBeat.o(134341);
     return paramString;
   }
   
+  public final List<w> bbA()
+  {
+    AppMethodBeat.i(134351);
+    List localList = this.jMQ.bbC();
+    AppMethodBeat.o(134351);
+    return localList;
+  }
+  
   public final String getRootPath()
   {
-    return this.jsT;
+    return this.jMN;
   }
   
   public final void initialize()
   {
     AppMethodBeat.i(134347);
-    if (!com.tencent.mm.vfs.i.aSh(this.jsT)) {
-      ac.e("MicroMsg.Luggage.FlattenFileSystem", "Initialization Failed");
+    if (!com.tencent.mm.vfs.i.aYg(this.jMN)) {
+      ad.e("MicroMsg.Luggage.FlattenFileSystem", "Initialization Failed");
     }
     AppMethodBeat.o(134347);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.n
  * JD-Core Version:    0.7.0.1
  */

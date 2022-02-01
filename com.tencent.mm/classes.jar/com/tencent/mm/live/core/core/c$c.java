@@ -3,43 +3,43 @@ package com.tencent.mm.live.core.core;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$NetStatus;", "", "()V", "NET_BAD", "", "getNET_BAD", "()I", "NET_DISABLE", "getNET_DISABLE", "NET_GOOD", "getNET_GOOD", "NET_NORMAL", "getNET_NORMAL", "plugin-core_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$NetStatus;", "", "()V", "NET_BAD", "", "getNET_BAD", "()I", "NET_DISABLE", "getNET_DISABLE", "NET_GOOD", "getNET_GOOD", "NET_NORMAL", "getNET_NORMAL", "plugin-core_release"})
 public final class c$c
 {
-  private static final int gnv = 0;
-  private static final int gnw = 1;
-  private static final int gnx = 2;
-  private static final int gny = 3;
-  public static final c gnz;
+  private static final int gHe = 0;
+  private static final int gHf = 1;
+  private static final int gHg = 2;
+  private static final int gHh = 3;
+  public static final c gHi;
   
   static
   {
-    AppMethodBeat.i(209127);
-    gnz = new c();
-    gnw = 1;
-    gnx = 2;
-    gny = 3;
-    AppMethodBeat.o(209127);
+    AppMethodBeat.i(216784);
+    gHi = new c();
+    gHf = 1;
+    gHg = 2;
+    gHh = 3;
+    AppMethodBeat.o(216784);
   }
   
-  public static int aiI()
+  public static int alu()
   {
-    return gnv;
+    return gHe;
   }
   
-  public static int aiJ()
+  public static int alv()
   {
-    return gnw;
+    return gHf;
   }
   
-  public static int aiK()
+  public static int alw()
   {
-    return gnx;
+    return gHg;
   }
   
-  public static int aiL()
+  public static int alx()
   {
-    return gny;
+    return gHh;
   }
 }
 

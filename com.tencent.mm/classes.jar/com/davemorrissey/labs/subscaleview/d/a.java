@@ -2,9 +2,9 @@ package com.davemorrissey.labs.subscaleview.d;
 
 public final class a
 {
-  public int aMJ = 0;
-  public int aMK = 0;
-  public int aML = 0;
+  public int aXa = 0;
+  public int aXb = 0;
+  public int aXc = 0;
 }
 
 

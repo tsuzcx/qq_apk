@@ -1,232 +1,150 @@
 package com.tencent.mm.pluginsdk.ui;
 
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.b;
-import com.tencent.mm.aj.e.a;
-import com.tencent.mm.bx.a.a;
-import com.tencent.mm.bx.a.a.a;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.by.a.a.a;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.g;
+import java.io.IOException;
 
 public final class c
-  extends i
+  extends a
   implements e.a
 {
-  private a DmQ;
-  private int DmR;
+  private float ERS;
+  private Paint ERT;
+  int[] ERU;
+  Bitmap nZT;
   
-  public c(String paramString)
+  private c(String paramString)
   {
-    this(paramString, (byte)0);
+    super(a.b.fbx(), paramString);
+    AppMethodBeat.i(152111);
+    this.ERS = 0.5F;
+    this.nZT = null;
+    this.ERT = new Paint();
+    this.ERU = new int[2];
+    AppMethodBeat.o(152111);
   }
   
-  private c(String paramString, byte paramByte)
+  public c(String paramString, float paramFloat)
   {
-    super(new a(a.b.eMA()), paramString, (byte)0);
-    AppMethodBeat.i(152121);
-    this.DmQ = ((a)this.vQR);
-    AppMethodBeat.o(152121);
+    this(paramString);
+    this.ERS = paramFloat;
   }
   
-  private void at(Bitmap paramBitmap)
+  private void a(Canvas paramCanvas, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(192691);
-    if (this.DmQ != null) {
-      this.DmQ.au(paramBitmap);
-    }
-    AppMethodBeat.o(192691);
-  }
-  
-  public final void WO(int paramInt)
-  {
-    AppMethodBeat.i(152122);
-    if ((this.DmR == paramInt) && (this.DmQ != null) && (this.DmQ.nyv != null) && (!this.DmQ.nyv.isRecycled()))
+    AppMethodBeat.i(152114);
+    Rect localRect2 = getBounds();
+    Rect localRect1 = null;
+    if ((this.ESV > 1.0F) || (this.vRh))
     {
-      AppMethodBeat.o(152122);
+      int i = paramBitmap.getHeight() / 15 / 2;
+      int j = paramBitmap.getWidth() / 15 / 2;
+      localRect1 = new Rect(j, i, paramBitmap.getWidth() - j, paramBitmap.getHeight() - i);
+    }
+    paramCanvas.drawBitmap(paramBitmap, localRect1, localRect2, this.hxL);
+    AppMethodBeat.o(152114);
+  }
+  
+  public final void De(String paramString)
+  {
+    AppMethodBeat.i(152112);
+    super.De(paramString);
+    AppMethodBeat.o(152112);
+  }
+  
+  public final void YJ(int paramInt)
+  {
+    AppMethodBeat.i(152115);
+    this.hxL.setAlpha(paramInt);
+    AppMethodBeat.o(152115);
+  }
+  
+  public final void draw(Canvas paramCanvas)
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(152113);
+    String str = this.tag + "-" + this.ERS;
+    com.tencent.mm.by.a.a locala = a.a.HTy;
+    if (locala != null) {
+      localObject1 = a.a.HTy.aoz(str);
+    }
+    if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
+    {
+      a(paramCanvas, (Bitmap)localObject1);
+      if (this.pressed)
+      {
+        this.ERT.setColor(-16777216);
+        this.ERT.setAlpha(76);
+        this.ERT.setAntiAlias(true);
+        localObject1 = new RectF(getBounds());
+        paramCanvas.drawRoundRect((RectF)localObject1, this.ERS * ((RectF)localObject1).width(), this.ERS * ((RectF)localObject1).height(), this.ERT);
+      }
+      AppMethodBeat.o(152113);
       return;
     }
-    this.DmR = paramInt;
-    at(f.Yo(paramInt));
-    AppMethodBeat.o(152122);
-  }
-  
-  public final void a(b paramb)
-  {
-    if (this.DmQ != null) {
-      this.DmQ.DmS = paramb;
-    }
-  }
-  
-  static final class a
-    implements i.a
-  {
-    b DmS = null;
-    Bitmap nyv = null;
-    private i.a vQR;
-    
-    public a(i.a parama)
+    if (this.ESR)
     {
-      this.vQR = parama;
-    }
-    
-    private Bitmap aGR(String paramString)
-    {
-      AppMethodBeat.i(192688);
-      if (eMB())
-      {
-        a locala = a.a.Gik;
-        if (locala != null)
-        {
-          paramString = locala.ajM(aGS(paramString));
-          AppMethodBeat.o(192688);
-          return paramString;
-        }
+      localObject1 = this.wYb.a(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
+      label184:
+      if (!(this.wYb instanceof j.b)) {
+        break label401;
       }
-      AppMethodBeat.o(192688);
-      return null;
     }
-    
-    private String aGS(String paramString)
-    {
-      AppMethodBeat.i(192690);
-      paramString = paramString + "-" + this.DmS.htH;
-      AppMethodBeat.o(192690);
-      return paramString;
-    }
-    
-    private Bitmap av(Bitmap paramBitmap)
-    {
-      AppMethodBeat.i(192687);
-      Bitmap localBitmap = paramBitmap;
-      if (paramBitmap != null)
+    label401:
+    for (boolean bool = ((j.b)this.wYb).ahv(this.tag);; bool = true) {
+      for (;;)
       {
-        localBitmap = paramBitmap;
-        if (!paramBitmap.isRecycled())
+        if (localObject1 != null)
         {
-          localBitmap = paramBitmap;
-          if (eMB()) {
-            localBitmap = f.a(paramBitmap, false, this.DmS.htH * paramBitmap.getWidth());
+          Object localObject2 = localObject1;
+          if (bool) {
+            localObject2 = g.a((Bitmap)localObject1, false, this.ERS * ((Bitmap)localObject1).getWidth());
+          }
+          if (locala != null) {
+            locala.p(str, (Bitmap)localObject2);
+          }
+          if ((localObject2 == null) || (((Bitmap)localObject2).isRecycled())) {
+            break;
+          }
+          a(paramCanvas, (Bitmap)localObject2);
+          break;
+          localObject1 = this.wYb.fg(this.tag);
+          break label184;
+        }
+        if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
+          break;
+        }
+        if (this.nZT == null) {}
+        try
+        {
+          this.nZT = BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cc.a.getDensity(null));
+          this.nZT = g.a(this.nZT, false, this.ERS * this.nZT.getWidth());
+          localObject1 = this.nZT;
+          if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {
+            break;
+          }
+          a(paramCanvas, (Bitmap)localObject1);
+        }
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            ad.printErrStackTrace("MicroMsg.AvatarRoundDrawable", localIOException, "", new Object[0]);
           }
         }
       }
-      AppMethodBeat.o(192687);
-      return localBitmap;
-    }
-    
-    private boolean eMB()
-    {
-      return (this.DmS != null) && (this.DmS.htH > 0.0F);
-    }
-    
-    private void v(String paramString, Bitmap paramBitmap)
-    {
-      AppMethodBeat.i(192689);
-      if ((paramBitmap != null) && (eMB()))
-      {
-        a locala = a.a.Gik;
-        if (locala != null) {
-          locala.p(aGS(paramString), paramBitmap);
-        }
-      }
-      AppMethodBeat.o(192689);
-    }
-    
-    public final Bitmap Kj()
-    {
-      AppMethodBeat.i(152119);
-      Bitmap localBitmap;
-      if ((this.nyv != null) && (!this.nyv.isRecycled()))
-      {
-        localBitmap = this.nyv;
-        AppMethodBeat.o(152119);
-        return localBitmap;
-      }
-      if (this.vQR != null)
-      {
-        localBitmap = this.vQR.Kj();
-        AppMethodBeat.o(152119);
-        return localBitmap;
-      }
-      AppMethodBeat.o(152119);
-      return null;
-    }
-    
-    public final Bitmap a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-    {
-      AppMethodBeat.i(152116);
-      Bitmap localBitmap = aGR(paramString);
-      if ((localBitmap != null) && (!localBitmap.isRecycled()))
-      {
-        AppMethodBeat.o(152116);
-        return localBitmap;
-      }
-      if (this.vQR != null) {
-        localBitmap = this.vQR.a(paramString, paramInt1, paramInt2, paramInt3);
-      }
-      localBitmap = av(localBitmap);
-      v(paramString, localBitmap);
-      AppMethodBeat.o(152116);
-      return localBitmap;
-    }
-    
-    public final void a(i parami)
-    {
-      AppMethodBeat.i(152120);
-      if (this.vQR != null) {
-        this.vQR.a(parami);
-      }
-      AppMethodBeat.o(152120);
-    }
-    
-    public final void au(Bitmap paramBitmap)
-    {
-      AppMethodBeat.i(192686);
-      this.nyv = paramBitmap;
-      this.nyv = av(this.nyv);
-      AppMethodBeat.o(192686);
-    }
-    
-    public final Bitmap el(String paramString)
-    {
-      AppMethodBeat.i(152117);
-      Bitmap localBitmap = aGR(paramString);
-      if ((localBitmap != null) && (!localBitmap.isRecycled()))
-      {
-        AppMethodBeat.o(152117);
-        return localBitmap;
-      }
-      if (this.DmS != null) {
-        localBitmap = com.tencent.mm.aj.c.a(paramString, false, -1, this.DmS);
-      }
-      for (;;)
-      {
-        localBitmap = av(localBitmap);
-        v(paramString, localBitmap);
-        AppMethodBeat.o(152117);
-        return localBitmap;
-        if (this.vQR != null) {
-          localBitmap = this.vQR.el(paramString);
-        }
-      }
-    }
-    
-    public final Bitmap em(String paramString)
-    {
-      AppMethodBeat.i(152118);
-      Bitmap localBitmap = aGR(paramString);
-      if ((localBitmap != null) && (!localBitmap.isRecycled()))
-      {
-        AppMethodBeat.o(152118);
-        return localBitmap;
-      }
-      if (this.vQR != null)
-      {
-        paramString = this.vQR.em(paramString);
-        AppMethodBeat.o(152118);
-        return paramString;
-      }
-      AppMethodBeat.o(152118);
-      return null;
     }
   }
 }

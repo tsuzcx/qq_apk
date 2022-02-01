@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class GameBestSellingTitle
   extends LinearLayout
@@ -18,7 +18,7 @@ public class GameBestSellingTitle
   public void setText(String paramString)
   {
     AppMethodBeat.i(41898);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       setVisibility(8);
       AppMethodBeat.o(41898);

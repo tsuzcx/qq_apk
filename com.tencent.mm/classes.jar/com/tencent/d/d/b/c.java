@@ -6,39 +6,39 @@ import java.lang.reflect.Method;
 
 public final class c
 {
-  private static Object JTc;
-  private static Method JTd;
-  private static boolean JTe;
+  private static Object LMT;
+  private static Method LMU;
+  private static boolean LMV;
   
   static
   {
     AppMethodBeat.i(138362);
-    JTc = null;
-    JTd = null;
+    LMT = null;
+    LMU = null;
     if (Build.VERSION.SDK_INT >= 14) {
       try
       {
-        JTc = e.mm("libcore.io.Libcore", "os");
-        JTd = e.a("libcore.io.Os", "stat", new Class[] { String.class });
-        JTe = true;
+        LMT = e.mK("libcore.io.Libcore", "os");
+        LMU = e.a("libcore.io.Os", "stat", new Class[] { String.class });
+        LMV = true;
         AppMethodBeat.o(138362);
         return;
       }
       catch (Throwable localThrowable) {}
     }
-    JTe = false;
+    LMV = false;
     AppMethodBeat.o(138362);
   }
   
-  public static int aTk(String paramString)
+  public static int aZk(String paramString)
   {
     AppMethodBeat.i(138361);
-    if (!JTe)
+    if (!LMV)
     {
       AppMethodBeat.o(138361);
       return 0;
     }
-    paramString = JTd.invoke(JTc, new Object[] { paramString });
+    paramString = LMU.invoke(LMT, new Object[] { paramString });
     if (paramString == null)
     {
       AppMethodBeat.o(138361);
@@ -51,7 +51,7 @@ public final class c
   
   public static boolean isAvailable()
   {
-    return JTe;
+    return LMV;
   }
 }
 

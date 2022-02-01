@@ -6,90 +6,89 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bpl;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.bty;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sticker.c;
-import com.tencent.mm.sticker.loader.a;
 import com.tencent.mm.sticker.loader.h;
 import d.a.j;
 import d.g.a.m;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$BaseViewHolder;", "()V", "TAG", "", "itemClickListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "position", "Lcom/tencent/mm/sticker/LensItem;", "info", "", "getItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "onBindListener", "Lkotlin/Function1;", "getOnBindListener", "()Lkotlin/jvm/functions/Function1;", "setOnBindListener", "(Lkotlin/jvm/functions/Function1;)V", "selectedId", "selectedLoading", "", "selectedPosition", "stickerList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getItem", "getItemCount", "getItemViewType", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "setLoading", "lensId", "isLoading", "setSelection", "update", "lensList", "", "BaseViewHolder", "Companion", "DiffCallbackToAdapter", "EmptyStickerViewHolder", "StickerViewHolder", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$BaseViewHolder;", "()V", "TAG", "", "itemClickListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "position", "Lcom/tencent/mm/sticker/LensItem;", "info", "", "getItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "onBindListener", "Lkotlin/Function1;", "getOnBindListener", "()Lkotlin/jvm/functions/Function1;", "setOnBindListener", "(Lkotlin/jvm/functions/Function1;)V", "selectedId", "selectedLoading", "", "selectedPosition", "stickerList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getItem", "getItemCount", "getItemViewType", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "setLoading", "lensId", "isLoading", "setSelection", "update", "lensList", "", "BaseViewHolder", "Companion", "DiffCallbackToAdapter", "EmptyStickerViewHolder", "StickerViewHolder", "plugin-finder_release"})
 public final class e
   extends RecyclerView.a<a>
 {
-  public static final e.b rUB;
+  public static final e.b sRj;
   final String TAG;
-  String poq;
-  final ArrayList<c> pru;
-  m<? super Integer, ? super c, y> prv;
-  d.g.a.b<? super Integer, y> prw;
-  boolean rUA;
-  int ta;
+  String pRQ;
+  final ArrayList<c> pVa;
+  m<? super Integer, ? super c, z> pVb;
+  d.g.a.b<? super Integer, z> pVc;
+  boolean sRi;
+  int uT;
   
   static
   {
-    AppMethodBeat.i(204050);
-    rUB = new e.b((byte)0);
-    AppMethodBeat.o(204050);
+    AppMethodBeat.i(205003);
+    sRj = new e.b((byte)0);
+    AppMethodBeat.o(205003);
   }
   
   public e()
   {
-    AppMethodBeat.i(204049);
+    AppMethodBeat.i(205002);
     this.TAG = "MicroMsg.StickerEffectAdapter";
-    this.pru = new ArrayList();
-    AppMethodBeat.o(204049);
+    this.pVa = new ArrayList();
+    AppMethodBeat.o(205002);
   }
   
-  public final c BN(int paramInt)
+  public final c Cv(int paramInt)
   {
-    AppMethodBeat.i(204044);
-    c localc = (c)j.C((List)this.pru, paramInt);
-    AppMethodBeat.o(204044);
+    AppMethodBeat.i(204997);
+    c localc = (c)j.E((List)this.pVa, paramInt);
+    AppMethodBeat.o(204997);
     return localc;
   }
   
-  public final void bc(String paramString, boolean paramBoolean)
+  public final void bh(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(204043);
-    if ((k.g(this.poq, paramString)) && (this.rUA != paramBoolean))
+    AppMethodBeat.i(204996);
+    if ((p.i(this.pRQ, paramString)) && (this.sRi != paramBoolean))
     {
-      this.rUA = paramBoolean;
-      cj(this.ta);
+      this.sRi = paramBoolean;
+      cj(this.uT);
     }
-    AppMethodBeat.o(204043);
+    AppMethodBeat.o(204996);
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(204047);
-    int i = this.pru.size();
-    AppMethodBeat.o(204047);
+    AppMethodBeat.i(205000);
+    int i = this.pVa.size();
+    AppMethodBeat.o(205000);
     return i;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    AppMethodBeat.i(204045);
-    c localc = BN(paramInt);
-    f.a locala = f.rUJ;
-    if (k.g(localc, f.cEx()))
+    AppMethodBeat.i(204998);
+    c localc = Cv(paramInt);
+    f.a locala = f.sRr;
+    if (p.i(localc, f.cMQ()))
     {
-      AppMethodBeat.o(204045);
+      AppMethodBeat.o(204998);
       return 1;
     }
-    AppMethodBeat.o(204045);
+    AppMethodBeat.o(204998);
     return 0;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$BaseViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;Landroid/view/View;)V", "update", "", "position", "", "info", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$BaseViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;Landroid/view/View;)V", "update", "", "position", "", "info", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "plugin-finder_release"})
   public abstract class a
     extends RecyclerView.w
   {
@@ -100,155 +99,154 @@ public final class e
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(204033);
-          int i = this.rUD.lv();
-          paramAnonymousView = this.rUD.rUC.BN(i);
+          AppMethodBeat.i(204986);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$BaseViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          int i = this.sRl.lN();
+          paramAnonymousView = this.sRl.sRk.Cv(i);
           if (paramAnonymousView != null)
           {
-            m localm = this.rUD.rUC.prv;
-            if (localm != null)
-            {
-              localm.n(Integer.valueOf(i), paramAnonymousView);
-              AppMethodBeat.o(204033);
-              return;
+            localObject = this.sRl.sRk.pVb;
+            if (localObject != null) {
+              ((m)localObject).p(Integer.valueOf(i), paramAnonymousView);
             }
-            AppMethodBeat.o(204033);
-            return;
           }
-          AppMethodBeat.o(204033);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$BaseViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(204986);
         }
       });
     }
     
-    public void b(int paramInt, bpl parambpl)
+    public void b(int paramInt, bty parambty)
     {
-      k.h(parambpl, "info");
-      parambpl = this.asD;
-      k.g(parambpl, "itemView");
+      p.h(parambty, "info");
+      parambty = this.auu;
+      p.g(parambty, "itemView");
       if (paramInt == e.a(e.this)) {}
       for (boolean bool = true;; bool = false)
       {
-        parambpl.setSelected(bool);
+        parambty.setSelected(bool);
         return;
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$DiffCallbackToAdapter;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "adapter", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;", "(Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;)V", "getAdapter", "()Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "updateData", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$DiffCallbackToAdapter;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "adapter", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;", "(Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;)V", "getAdapter", "()Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "updateData", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "plugin-finder_release"})
   public static final class c
     implements d
   {
-    private final e rUE;
+    private final e sRm;
     
     public c(e parame)
     {
-      AppMethodBeat.i(204039);
-      this.rUE = parame;
-      AppMethodBeat.o(204039);
+      AppMethodBeat.i(204992);
+      this.sRm = parame;
+      AppMethodBeat.o(204992);
     }
     
-    public final void U(List<c> paramList)
+    public final void V(List<c> paramList)
     {
-      AppMethodBeat.i(204034);
-      k.h(paramList, "lensList");
-      e locale = this.rUE;
-      k.h(paramList, "lensList");
-      ac.i(locale.TAG, "update: " + paramList.size());
-      locale.pru.clear();
-      locale.pru.addAll((Collection)paramList);
-      AppMethodBeat.o(204034);
+      AppMethodBeat.i(204987);
+      p.h(paramList, "lensList");
+      e locale = this.sRm;
+      p.h(paramList, "lensList");
+      ad.i(locale.TAG, "update: " + paramList.size());
+      locale.pVa.clear();
+      locale.pVa.addAll((Collection)paramList);
+      AppMethodBeat.o(204987);
     }
     
-    public final void fm(int paramInt1, int paramInt2)
+    public final void fq(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(204035);
-      this.rUE.aq(paramInt1, paramInt2);
-      AppMethodBeat.o(204035);
+      AppMethodBeat.i(204988);
+      this.sRm.ar(paramInt1, paramInt2);
+      AppMethodBeat.o(204988);
     }
     
-    public final void fn(int paramInt1, int paramInt2)
+    public final void fr(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(204036);
-      this.rUE.ar(paramInt1, paramInt2);
-      AppMethodBeat.o(204036);
+      AppMethodBeat.i(204989);
+      this.sRm.as(paramInt1, paramInt2);
+      AppMethodBeat.o(204989);
     }
     
-    public final void fo(int paramInt1, int paramInt2)
+    public final void fs(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(204037);
-      this.rUE.ap(paramInt1, paramInt2);
-      AppMethodBeat.o(204037);
+      AppMethodBeat.i(204990);
+      this.sRm.aq(paramInt1, paramInt2);
+      AppMethodBeat.o(204990);
     }
     
-    public final void fp(int paramInt1, int paramInt2)
+    public final void ft(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(204038);
-      this.rUE.ao(paramInt1, paramInt2);
-      AppMethodBeat.o(204038);
+      AppMethodBeat.i(204991);
+      this.sRm.ap(paramInt1, paramInt2);
+      AppMethodBeat.o(204991);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$EmptyStickerViewHolder;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;Landroid/view/View;)V", "icon", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getIcon", "()Landroid/widget/ImageView;", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$EmptyStickerViewHolder;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;Landroid/view/View;)V", "icon", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getIcon", "()Landroid/widget/ImageView;", "plugin-finder_release"})
   public final class d
     extends e.a
   {
-    private final ImageView ig;
+    private final ImageView ka;
     
     public d()
     {
       super(localObject);
-      AppMethodBeat.i(204040);
-      this.ig = ((ImageView)localObject.findViewById(2131307392));
-      AppMethodBeat.o(204040);
+      AppMethodBeat.i(204993);
+      this.ka = ((ImageView)localObject.findViewById(2131307392));
+      AppMethodBeat.o(204993);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$StickerViewHolder;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;Landroid/view/View;)V", "icon", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getIcon", "()Landroid/widget/ImageView;", "loading", "getLoading", "()Landroid/view/View;", "loadingBg", "getLoadingBg", "update", "", "position", "", "info", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$StickerViewHolder;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectAdapter;Landroid/view/View;)V", "icon", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getIcon", "()Landroid/widget/ImageView;", "loading", "getLoading", "()Landroid/view/View;", "loadingBg", "getLoadingBg", "update", "", "position", "", "info", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "plugin-finder_release"})
   public final class e
     extends e.a
   {
-    private final ImageView ig;
-    private final View psM;
-    private final View rUF;
+    private final ImageView ka;
+    private final View pWs;
+    private final View sRn;
     
     public e()
     {
       super(localObject);
-      AppMethodBeat.i(204042);
-      this.ig = ((ImageView)localObject.findViewById(2131307392));
-      this.psM = localObject.findViewById(2131307393);
-      this.rUF = localObject.findViewById(2131307394);
-      AppMethodBeat.o(204042);
+      AppMethodBeat.i(204995);
+      this.ka = ((ImageView)localObject.findViewById(2131307392));
+      this.pWs = localObject.findViewById(2131307393);
+      this.sRn = localObject.findViewById(2131307394);
+      AppMethodBeat.o(204995);
     }
     
-    public final void b(int paramInt, bpl parambpl)
+    public final void b(int paramInt, bty parambty)
     {
-      AppMethodBeat.i(204041);
-      k.h(parambpl, "info");
-      super.b(paramInt, parambpl);
-      Object localObject = h.GAX;
-      parambpl = h.getLoader().bG(new a(parambpl));
-      localObject = this.ig;
-      k.g(localObject, "icon");
-      parambpl.c((ImageView)localObject);
+      AppMethodBeat.i(204994);
+      p.h(parambty, "info");
+      super.b(paramInt, parambty);
+      Object localObject = h.ImR;
+      parambty = h.getLoader().bI(new com.tencent.mm.sticker.loader.a(parambty));
+      localObject = this.ka;
+      p.g(localObject, "icon");
+      parambty.c((ImageView)localObject);
       if ((paramInt == e.a(e.this)) && (e.b(e.this)))
       {
-        parambpl = this.psM;
-        k.g(parambpl, "loading");
-        parambpl.setVisibility(0);
-        parambpl = this.rUF;
-        k.g(parambpl, "loadingBg");
-        parambpl.setVisibility(0);
-        AppMethodBeat.o(204041);
+        parambty = this.pWs;
+        p.g(parambty, "loading");
+        parambty.setVisibility(0);
+        parambty = this.sRn;
+        p.g(parambty, "loadingBg");
+        parambty.setVisibility(0);
+        AppMethodBeat.o(204994);
         return;
       }
-      parambpl = this.psM;
-      k.g(parambpl, "loading");
-      parambpl.setVisibility(8);
-      parambpl = this.rUF;
-      k.g(parambpl, "loadingBg");
-      parambpl.setVisibility(8);
-      AppMethodBeat.o(204041);
+      parambty = this.pWs;
+      p.g(parambty, "loading");
+      parambty.setVisibility(8);
+      parambty = this.sRn;
+      p.g(parambty, "loadingBg");
+      parambty.setVisibility(8);
+      AppMethodBeat.o(204994);
     }
   }
 }

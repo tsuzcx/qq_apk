@@ -2,10 +2,10 @@ package com.tencent.mm.console.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pz;
+import com.tencent.mm.g.a.qk;
 import com.tencent.mm.modelstat.WatchDogPushReceiver;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class g
   implements com.tencent.mm.pluginsdk.cmd.a
@@ -23,7 +23,7 @@ public final class g
   {
     int i = 0;
     AppMethodBeat.i(20181);
-    if (ac.getLogLevel() > 1)
+    if (ad.getLogLevel() > 1)
     {
       AppMethodBeat.o(20181);
       return false;
@@ -67,25 +67,25 @@ public final class g
       }
       i = 3;
       break label91;
-      WatchDogPushReceiver.aII();
+      WatchDogPushReceiver.aLS();
       continue;
-      paramContext = new pz();
-      paramContext.dtd.action = 1;
-      com.tencent.mm.sdk.b.a.GpY.l(paramContext);
+      paramContext = new qk();
+      paramContext.dFf.action = 1;
+      com.tencent.mm.sdk.b.a.IbL.l(paramContext);
       continue;
-      paramContext = new pz();
-      paramContext.dtd.action = 3;
-      com.tencent.mm.sdk.b.a.GpY.l(paramContext);
+      paramContext = new qk();
+      paramContext.dFf.action = 3;
+      com.tencent.mm.sdk.b.a.IbL.l(paramContext);
       continue;
-      paramContext = new pz();
-      paramContext.dtd.action = 2;
-      com.tencent.mm.sdk.b.a.GpY.l(paramContext);
+      paramContext = new qk();
+      paramContext.dFf.action = 2;
+      com.tencent.mm.sdk.b.a.IbL.l(paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.console.a.g
  * JD-Core Version:    0.7.0.1
  */

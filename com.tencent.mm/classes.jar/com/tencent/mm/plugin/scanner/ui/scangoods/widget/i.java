@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanDotsAnimationControllerFactory;", "", "()V", "create", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanDotsAnimationController;", "type", "", "context", "Landroid/content/Context;", "dotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "Type", "plugin-scan_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanDotsAnimationControllerFactory;", "", "()V", "create", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanDotsAnimationController;", "type", "", "context", "Landroid/content/Context;", "dotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "Type", "plugin-scan_release"})
 public final class i
 {
-  public static final i xhU;
+  public static final i yvV;
   
   static
   {
     AppMethodBeat.i(52288);
-    xhU = new i();
+    yvV = new i();
     AppMethodBeat.o(52288);
   }
   
   public static final e a(int paramInt, Context paramContext, d paramd)
   {
     AppMethodBeat.i(52287);
-    k.h(paramContext, "context");
-    k.h(paramd, "dotsView");
+    p.h(paramContext, "context");
+    p.h(paramd, "dotsView");
     if (paramInt == 1)
     {
       paramContext = (e)new b(paramContext, paramd);

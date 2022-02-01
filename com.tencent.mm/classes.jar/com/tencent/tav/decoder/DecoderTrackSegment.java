@@ -1,7 +1,10 @@
 package com.tencent.tav.decoder;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tav.asset.AssetTrack;
+import com.tencent.tav.asset.AssetTrackSegment;
 import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.coremedia.CMTimeMapping;
 import com.tencent.tav.coremedia.CMTimeRange;
 
 public class DecoderTrackSegment
@@ -14,18 +17,26 @@ public class DecoderTrackSegment
   public DecoderTrackSegment(long paramLong)
   {
     this(new CMTimeRange(CMTime.CMTimeZero, new CMTime((float)paramLong / 1000.0F)), null);
-    AppMethodBeat.i(197795);
-    AppMethodBeat.o(197795);
+    AppMethodBeat.i(218174);
+    AppMethodBeat.o(218174);
+  }
+  
+  public DecoderTrackSegment(AssetTrack paramAssetTrack, AssetTrackSegment paramAssetTrackSegment)
+  {
+    this(paramAssetTrackSegment.getTimeMapping().getSource().clone(), DecoderAssetTrack.create(paramAssetTrack, paramAssetTrackSegment));
+    AppMethodBeat.i(218176);
+    setScaledDuration(paramAssetTrackSegment.getScaleDuration());
+    AppMethodBeat.o(218176);
   }
   
   public DecoderTrackSegment(CMTimeRange paramCMTimeRange, DecoderAssetTrack paramDecoderAssetTrack)
   {
-    AppMethodBeat.i(197796);
+    AppMethodBeat.i(218175);
     this.videoAsset = paramDecoderAssetTrack;
     this.timeRange = paramCMTimeRange;
     this.scaledDuration = paramCMTimeRange.getDuration();
     this.decoderStartTime = CMTime.CMTimeZero;
-    AppMethodBeat.o(197796);
+    AppMethodBeat.o(218175);
   }
   
   public CMTime getDecoderStartTime()
@@ -60,7 +71,7 @@ public class DecoderTrackSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.decoder.DecoderTrackSegment
  * JD-Core Version:    0.7.0.1
  */

@@ -29,25 +29,22 @@ public final class b
   extends com.tencent.matrix.report.b
   implements com.tencent.matrix.b.b
 {
-  final a.b cwC;
-  Intent cwE;
-  public final com.tencent.matrix.resource.b cxC;
-  public final e cxD;
-  final int cxE;
-  private final long cxF;
-  private final long cxG;
-  private final d cxH;
-  public final c cxI;
-  final c.a cxJ;
-  final ConcurrentLinkedQueue<DestroyedActivityInfo> cxK;
-  public b cxL = null;
-  public final Application.ActivityLifecycleCallbacks cxM = new a()
+  final a.b cHx;
+  Intent cHz;
+  private final long cIA;
+  private final long cIB;
+  private final d cIC;
+  public final c cID;
+  final c.a cIE;
+  final ConcurrentLinkedQueue<DestroyedActivityInfo> cIF;
+  public b cIG = null;
+  public final Application.ActivityLifecycleCallbacks cIH = new a()
   {
     public final void onActivityDestroyed(Activity paramAnonymousActivity)
     {
       b localb = b.this;
       String str = paramAnonymousActivity.getClass().getName();
-      if ((!localb.cxC.cuN.cwD) && (localb.cwC != a.b.cwJ) && (localb.cM(str)))
+      if ((!localb.cIx.cFI.cHy) && (localb.cHx != a.b.cHE) && (localb.dP(str)))
       {
         com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "activity leak with name %s had published, just ignore", new Object[] { str });
         return;
@@ -56,22 +53,22 @@ public final class b
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("MATRIX_RESCANARY_REFKEY_").append(str).append('_').append(Long.toHexString(localUUID.getMostSignificantBits())).append(Long.toHexString(localUUID.getLeastSignificantBits()));
       paramAnonymousActivity = new DestroyedActivityInfo(localStringBuilder.toString(), paramAnonymousActivity, str);
-      localb.cxK.add(paramAnonymousActivity);
+      localb.cIF.add(paramAnonymousActivity);
     }
   };
-  public final e.a cxN = new e.a()
+  public final e.a cII = new e.a()
   {
-    public final e.a.a Hq()
+    public final e.a.a IL()
     {
-      if (b.this.cxK.isEmpty())
+      if (b.this.cIF.isEmpty())
       {
         com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "DestroyedActivityInfo isEmpty!", new Object[0]);
-        return e.a.a.cyc;
+        return e.a.a.cIX;
       }
-      if ((Debug.isDebuggerConnected()) && (!b.this.cxC.cuN.cwD))
+      if ((Debug.isDebuggerConnected()) && (!b.this.cIx.cFI.cHy))
       {
         com.tencent.matrix.g.c.w("Matrix.ActivityRefWatcher", "debugger is connected, to avoid fake result, detection was delayed.", new Object[0]);
-        return e.a.a.cyc;
+        return e.a.a.cIX;
       }
       Object localObject1 = new WeakReference(new Object());
       com.tencent.matrix.g.c.v("Matrix.ActivityRefWatcher", "triggering gc...", new Object[0]);
@@ -81,15 +78,15 @@ public final class b
       if (((WeakReference)localObject1).get() != null)
       {
         com.tencent.matrix.g.c.d("Matrix.ActivityRefWatcher", "system ignore our gc request, wait for next detection.", new Object[0]);
-        return e.a.a.cyc;
+        return e.a.a.cIX;
       }
-      localObject1 = b.this.cxK.iterator();
+      localObject1 = b.this.cIF.iterator();
       for (;;)
       {
         if (((Iterator)localObject1).hasNext())
         {
           Object localObject2 = (DestroyedActivityInfo)((Iterator)localObject1).next();
-          if ((!b.this.cxC.cuN.cwD) && (b.this.cM(((DestroyedActivityInfo)localObject2).mActivityName)) && (b.this.cwC != a.b.cwJ))
+          if ((!b.this.cIx.cFI.cHy) && (b.this.dP(((DestroyedActivityInfo)localObject2).mActivityName)) && (b.this.cHx != a.b.cHE))
           {
             com.tencent.matrix.g.c.v("Matrix.ActivityRefWatcher", "activity with key [%s] was already published.", new Object[] { ((DestroyedActivityInfo)localObject2).mActivityName });
             ((Iterator)localObject1).remove();
@@ -102,23 +99,23 @@ public final class b
             continue;
           }
           ((DestroyedActivityInfo)localObject2).mDetectedCount += 1;
-          if ((((DestroyedActivityInfo)localObject2).mDetectedCount < b.this.cxE) && (!b.this.cxC.cuN.cwD))
+          if ((((DestroyedActivityInfo)localObject2).mDetectedCount < b.this.cIz) && (!b.this.cIx.cFI.cHy))
           {
             com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "activity with key [%s] should be recycled but actually still \nexists in %s times, wait for next detection to confirm.", new Object[] { ((DestroyedActivityInfo)localObject2).mKey, Integer.valueOf(((DestroyedActivityInfo)localObject2).mDetectedCount) });
             continue;
           }
-          com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "activity with key [%s] was suspected to be a leaked instance. mode[%s]", new Object[] { ((DestroyedActivityInfo)localObject2).mKey, b.this.cwC });
-          if (b.this.cwC == a.b.cwJ)
+          com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "activity with key [%s] was suspected to be a leaked instance. mode[%s]", new Object[] { ((DestroyedActivityInfo)localObject2).mKey, b.this.cHx });
+          if (b.this.cHx == a.b.cHE)
           {
-            if (!b.this.cM(((DestroyedActivityInfo)localObject2).mActivityName)) {
+            if (!b.this.dP(((DestroyedActivityInfo)localObject2).mActivityName)) {
               localObject3 = new JSONObject();
             }
             try
             {
               ((JSONObject)localObject3).put("activity", ((DestroyedActivityInfo)localObject2).mActivityName);
-              b.this.cL(((DestroyedActivityInfo)localObject2).mActivityName);
-              b.this.cxC.onDetectIssue(new com.tencent.matrix.report.c((JSONObject)localObject3));
-              if ((b.this.cxL == null) || (!b.this.cxL.F(((DestroyedActivityInfo)localObject2).mActivityName, ((DestroyedActivityInfo)localObject2).mKey))) {
+              b.this.dO(((DestroyedActivityInfo)localObject2).mActivityName);
+              b.this.cIx.onDetectIssue(new com.tencent.matrix.report.c((JSONObject)localObject3));
+              if ((b.this.cIG == null) || (!b.this.cIG.G(((DestroyedActivityInfo)localObject2).mActivityName, ((DestroyedActivityInfo)localObject2).mKey))) {
                 continue;
               }
               com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "activity [%s] with key [%s] has been dumped. stop polling", new Object[] { ((DestroyedActivityInfo)localObject2).mActivityName, ((DestroyedActivityInfo)localObject2).mKey });
@@ -132,14 +129,14 @@ public final class b
               }
             }
           }
-          if (b.this.cwC == a.b.cwH)
+          if (b.this.cHx == a.b.cHC)
           {
-            localObject3 = b.this.cxI.Hr();
+            localObject3 = b.this.cID.IM();
             if (localObject3 != null)
             {
-              b.this.cL(((DestroyedActivityInfo)localObject2).mActivityName);
+              b.this.dO(((DestroyedActivityInfo)localObject2).mActivityName);
               localObject2 = new f((File)localObject3, ((DestroyedActivityInfo)localObject2).mKey, ((DestroyedActivityInfo)localObject2).mActivityName);
-              b.this.cxJ.a((f)localObject2);
+              b.this.cIE.a((f)localObject2);
               ((Iterator)localObject1).remove();
               continue;
             }
@@ -147,16 +144,16 @@ public final class b
             ((Iterator)localObject1).remove();
             continue;
           }
-          if (b.this.cwC == a.b.cwI)
+          if (b.this.cHx == a.b.cHD)
           {
             localObject3 = (NotificationManager)b.this.context.getSystemService("notification");
             Object localObject4 = b.this.context.getString(2131762556);
             Object localObject6 = ((DestroyedActivityInfo)localObject2).mActivityName;
-            b.this.cwE.putExtra("activity", ((DestroyedActivityInfo)localObject2).mActivityName);
-            b.this.cwE.putExtra("ref_key", ((DestroyedActivityInfo)localObject2).mKey);
-            Object localObject5 = PendingIntent.getActivity(b.this.context, 0, b.this.cwE, 134217728);
+            b.this.cHz.putExtra("activity", ((DestroyedActivityInfo)localObject2).mActivityName);
+            b.this.cHz.putExtra("ref_key", ((DestroyedActivityInfo)localObject2).mKey);
+            Object localObject5 = PendingIntent.getActivity(b.this.context, 0, b.this.cHz, 134217728);
             localObject6 = new s.c(b.this.context).f((CharSequence)localObject6);
-            ((s.c)localObject6).Fu = ((PendingIntent)localObject5);
+            ((s.c)localObject6).Hl = ((PendingIntent)localObject5);
             localObject4 = ((s.c)localObject6).g((CharSequence)localObject4);
             localObject6 = b.this.context;
             ((s.c)localObject4).as(2131232651).i(System.currentTimeMillis());
@@ -171,17 +168,17 @@ public final class b
             }
             ((NotificationManager)localObject3).notify(272, ((s.c)localObject4).build());
             ((Iterator)localObject1).remove();
-            b.this.cL(((DestroyedActivityInfo)localObject2).mActivityName);
+            b.this.dO(((DestroyedActivityInfo)localObject2).mActivityName);
             com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "show notification for notify activity leak. %s", new Object[] { ((DestroyedActivityInfo)localObject2).mActivityName });
             continue;
           }
           com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "lightweight mode, just report leaked activity name.", new Object[0]);
-          b.this.cL(((DestroyedActivityInfo)localObject2).mActivityName);
+          b.this.dO(((DestroyedActivityInfo)localObject2).mActivityName);
           Object localObject3 = new JSONObject();
           try
           {
             ((JSONObject)localObject3).put("activity", ((DestroyedActivityInfo)localObject2).mActivityName);
-            b.this.cxC.onDetectIssue(new com.tencent.matrix.report.c((JSONObject)localObject3));
+            b.this.cIx.onDetectIssue(new com.tencent.matrix.report.c((JSONObject)localObject3));
           }
           catch (JSONException localJSONException1)
           {
@@ -192,9 +189,12 @@ public final class b
           }
         }
       }
-      return e.a.a.cyc;
+      return e.a.a.cIX;
     }
   };
+  public final com.tencent.matrix.resource.b cIx;
+  public final e cIy;
+  final int cIz;
   
   public b(Application paramApplication, com.tencent.matrix.resource.b paramb)
   {
@@ -204,35 +204,35 @@ public final class b
   private b(Application paramApplication, com.tencent.matrix.resource.b paramb, a parama)
   {
     super(paramApplication, paramb.getTag(), paramb);
-    this.cxC = paramb;
-    paramb = paramb.cuN;
-    HandlerThread localHandlerThread = com.tencent.matrix.g.b.HY();
-    this.cwC = paramb.cwC;
-    this.cxF = paramb.cqF.get(a.a.JJo.name(), com.tencent.matrix.resource.b.a.cwA);
-    this.cxG = paramb.Hk();
-    this.cwE = paramb.cwE;
-    this.cxD = new e(paramb.Hk(), localHandlerThread);
-    this.cxE = paramb.cqF.get(a.a.JJp.name(), 10);
-    this.cxH = new d(paramApplication);
-    this.cxI = new c(paramApplication, this.cxH);
-    this.cxJ = new b.a.1(parama, paramApplication);
-    this.cxK = new ConcurrentLinkedQueue();
+    this.cIx = paramb;
+    paramb = paramb.cFI;
+    HandlerThread localHandlerThread = com.tencent.matrix.g.b.Jt();
+    this.cHx = paramb.cHx;
+    this.cIA = paramb.cBC.get(a.a.LCX.name(), com.tencent.matrix.resource.b.a.cHv);
+    this.cIB = paramb.IF();
+    this.cHz = paramb.cHz;
+    this.cIy = new e(paramb.IF(), localHandlerThread);
+    this.cIz = paramb.cBC.get(a.a.LCY.name(), 10);
+    this.cIC = new d(paramApplication);
+    this.cID = new c(paramApplication, this.cIC);
+    this.cIE = new b.a.1(parama, paramApplication);
+    this.cIF = new ConcurrentLinkedQueue();
   }
   
-  private void Hp()
+  private void IK()
   {
-    this.cxD.Hv();
-    this.cxK.clear();
+    this.cIy.IQ();
+    this.cIF.clear();
   }
   
-  public final void Ho()
+  public final void IJ()
   {
-    Application localApplication = this.cxC.getApplication();
+    Application localApplication = this.cIx.getApplication();
     if (localApplication != null)
     {
-      localApplication.unregisterActivityLifecycleCallbacks(this.cxM);
-      com.tencent.matrix.a.cqa.b(this);
-      Hp();
+      localApplication.unregisterActivityLifecycleCallbacks(this.cIH);
+      com.tencent.matrix.a.cAS.b(this);
+      IK();
     }
   }
   
@@ -240,21 +240,21 @@ public final class b
   {
     if (paramBoolean)
     {
-      com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "we are in foreground, modify scan time[%sms].", new Object[] { Long.valueOf(this.cxG) });
-      this.cxD.Hv();
-      this.cxD.cxX = this.cxG;
-      this.cxD.a(this.cxN, 0);
+      com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "we are in foreground, modify scan time[%sms].", new Object[] { Long.valueOf(this.cIB) });
+      this.cIy.IQ();
+      this.cIy.cIS = this.cIB;
+      this.cIy.a(this.cII, 0);
       return;
     }
-    com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "we are in background, modify scan time[%sms].", new Object[] { Long.valueOf(this.cxF) });
-    this.cxD.cxX = this.cxF;
+    com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "we are in background, modify scan time[%sms].", new Object[] { Long.valueOf(this.cIA) });
+    this.cIy.cIS = this.cIA;
   }
   
   public static final class a {}
   
   public static abstract interface b
   {
-    public abstract boolean F(String paramString1, String paramString2);
+    public abstract boolean G(String paramString1, String paramString2);
   }
 }
 

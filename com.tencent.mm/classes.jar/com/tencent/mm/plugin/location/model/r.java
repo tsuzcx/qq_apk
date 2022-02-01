@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.location.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bi.c;
+import com.tencent.mm.bj.c;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.location.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.util.Iterator;
@@ -15,42 +15,42 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class r
-  implements com.tencent.mm.bi.a
+  implements com.tencent.mm.bj.a
 {
-  private ao handler;
+  private ap handler;
   private List<c> listeners;
   private final String path;
-  private b tYl;
+  private b vaU;
   
   public r()
   {
     AppMethodBeat.i(55772);
     this.listeners = new LinkedList();
-    Object localObject = new e(n.cWY());
+    Object localObject = new e(n.dgk());
     if (!((e)localObject).exists()) {
       ((e)localObject).mkdirs();
     }
-    this.path = (n.cWY() + "trackroominfolist.info");
-    this.handler = new ao(Looper.getMainLooper());
-    if (this.tYl == null)
+    this.path = (n.dgk() + "trackroominfolist.info");
+    this.handler = new ap(Looper.getMainLooper());
+    if (this.vaU == null)
     {
-      if (!i.eA(this.path))
+      if (!i.fv(this.path))
       {
-        this.tYl = new b();
+        this.vaU = new b();
         AppMethodBeat.o(55772);
         return;
       }
       try
       {
-        localObject = i.aU(this.path, 0, -1);
-        this.tYl = ((b)new b().parseFrom((byte[])localObject));
+        localObject = i.aY(this.path, 0, -1);
+        this.vaU = ((b)new b().parseFrom((byte[])localObject));
         AppMethodBeat.o(55772);
         return;
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.TrackRoomListMgr", localException, "", new Object[0]);
-        this.tYl = new b();
+        ad.printErrStackTrace("MicroMsg.TrackRoomListMgr", localException, "", new Object[0]);
+        this.vaU = new b();
       }
     }
     AppMethodBeat.o(55772);
@@ -59,8 +59,8 @@ public final class r
   private boolean a(b paramb)
   {
     AppMethodBeat.i(182049);
-    ac.d("MicroMsg.TrackRoomListMgr", "infoFile infolist size %d", new Object[] { Integer.valueOf(paramb.tWF.size()) });
-    if (paramb.tWF.isEmpty())
+    ad.d("MicroMsg.TrackRoomListMgr", "infoFile infolist size %d", new Object[] { Integer.valueOf(paramb.uZo.size()) });
+    if (paramb.uZo.isEmpty())
     {
       i.deleteFile(this.path);
       AppMethodBeat.o(182049);
@@ -75,13 +75,13 @@ public final class r
     }
     catch (Exception paramb)
     {
-      ac.printErrStackTrace("MicroMsg.TrackRoomListMgr", paramb, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.TrackRoomListMgr", paramb, "", new Object[0]);
       AppMethodBeat.o(182049);
     }
     return false;
   }
   
-  private void ah(final String paramString1, final String paramString2, final String paramString3)
+  private void ao(final String paramString1, final String paramString2, final String paramString3)
   {
     AppMethodBeat.i(55778);
     Iterator localIterator = this.listeners.iterator();
@@ -93,7 +93,7 @@ public final class r
         public final void run()
         {
           AppMethodBeat.i(55771);
-          localc.DG(paramString1);
+          localc.GL(paramString1);
           AppMethodBeat.o(55771);
         }
       });
@@ -102,7 +102,7 @@ public final class r
   }
   
   /* Error */
-  public final LinkedList<String> DE(String paramString)
+  public final LinkedList<String> GJ(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -110,8 +110,8 @@ public final class r
     //   2: ldc 180
     //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 82	com/tencent/mm/plugin/location/model/r:tYl	Lcom/tencent/mm/plugin/location/a/b;
-    //   11: getfield 122	com/tencent/mm/plugin/location/a/b:tWF	Ljava/util/LinkedList;
+    //   8: getfield 82	com/tencent/mm/plugin/location/model/r:vaU	Lcom/tencent/mm/plugin/location/a/b;
+    //   11: getfield 122	com/tencent/mm/plugin/location/a/b:uZo	Ljava/util/LinkedList;
     //   14: invokevirtual 181	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   17: astore_2
     //   18: aload_2
@@ -127,7 +127,7 @@ public final class r
     //   42: invokevirtual 192	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   45: ifeq -27 -> 18
     //   48: aload_3
-    //   49: getfield 195	com/tencent/mm/plugin/location/a/a:dow	Ljava/util/LinkedList;
+    //   49: getfield 195	com/tencent/mm/plugin/location/a/a:dAk	Ljava/util/LinkedList;
     //   52: invokevirtual 198	java/util/LinkedList:clone	()Ljava/lang/Object;
     //   55: checkcast 32	java/util/LinkedList
     //   58: astore_1
@@ -162,10 +162,10 @@ public final class r
     //   68	81	84	finally
   }
   
-  public final boolean DF(String paramString)
+  public final boolean GK(String paramString)
   {
     AppMethodBeat.i(55780);
-    if (DE(paramString).size() > 0)
+    if (GJ(paramString).size() > 0)
     {
       AppMethodBeat.o(55780);
       return true;
@@ -201,10 +201,10 @@ public final class r
         if (paramLinkedList == null) {
           localObject = new LinkedList();
         }
-        ac.i("MicroMsg.TrackRoomListMgr", "updateList talk: %s,  size: %d %f %f", new Object[] { paramString1, Integer.valueOf(((LinkedList)localObject).size()), Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) });
+        ad.i("MicroMsg.TrackRoomListMgr", "updateList talk: %s,  size: %d %f %f", new Object[] { paramString1, Integer.valueOf(((LinkedList)localObject).size()), Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) });
         paramLinkedList = (LinkedList)((LinkedList)localObject).clone();
         boolean bool = paramLinkedList.isEmpty();
-        localObject = this.tYl.tWF.iterator();
+        localObject = this.vaU.uZo.iterator();
         if (((Iterator)localObject).hasNext())
         {
           com.tencent.mm.plugin.location.a.a locala = (com.tencent.mm.plugin.location.a.a)((Iterator)localObject).next();
@@ -213,14 +213,14 @@ public final class r
           }
           if (bool)
           {
-            this.tYl.tWF.remove(locala);
-            a(this.tYl);
-            ah(paramString1, paramString3, paramString4);
+            this.vaU.uZo.remove(locala);
+            a(this.vaU);
+            ao(paramString1, paramString3, paramString4);
             AppMethodBeat.o(55777);
             return;
           }
-          locala.dow = paramLinkedList;
-          locala.tWE = paramString2;
+          locala.dAk = paramLinkedList;
+          locala.uZn = paramString2;
           locala.latitude = paramDouble1;
           locala.longitude = paramDouble2;
           continue;
@@ -232,19 +232,19 @@ public final class r
       finally {}
       Object localObject = new com.tencent.mm.plugin.location.a.a();
       ((com.tencent.mm.plugin.location.a.a)localObject).username = paramString1;
-      ((com.tencent.mm.plugin.location.a.a)localObject).dow = paramLinkedList;
-      ((com.tencent.mm.plugin.location.a.a)localObject).tWE = paramString2;
+      ((com.tencent.mm.plugin.location.a.a)localObject).dAk = paramLinkedList;
+      ((com.tencent.mm.plugin.location.a.a)localObject).uZn = paramString2;
       ((com.tencent.mm.plugin.location.a.a)localObject).latitude = paramDouble1;
       ((com.tencent.mm.plugin.location.a.a)localObject).longitude = paramDouble2;
-      this.tYl.tWF.add(localObject);
+      this.vaU.uZo.add(localObject);
       label262:
-      a(this.tYl);
-      ah(paramString1, paramString3, paramString4);
+      a(this.vaU);
+      ao(paramString1, paramString3, paramString4);
       AppMethodBeat.o(55777);
     }
   }
   
-  public final void aIK()
+  public final void aLU()
   {
     for (;;)
     {
@@ -253,27 +253,27 @@ public final class r
       {
         AppMethodBeat.i(55784);
         LinkedList localLinkedList = new LinkedList();
-        if ((this.tYl.tWF != null) && (!this.tYl.tWF.isEmpty()))
+        if ((this.vaU.uZo != null) && (!this.vaU.uZo.isEmpty()))
         {
-          localObject2 = (com.tencent.mm.plugin.location.a.a[])this.tYl.tWF.toArray(new com.tencent.mm.plugin.location.a.a[0]);
+          localObject2 = (com.tencent.mm.plugin.location.a.a[])this.vaU.uZo.toArray(new com.tencent.mm.plugin.location.a.a[0]);
           int k = localObject2.length;
           j = 0;
           if (j < k)
           {
             Object localObject3 = localObject2[j];
-            if (bs.gY(localObject3.dow)) {
+            if (bt.hj(localObject3.dAk)) {
               break label228;
             }
             int i = 1;
-            Iterator localIterator = localObject3.dow.iterator();
+            Iterator localIterator = localObject3.dAk.iterator();
             if (localIterator.hasNext())
             {
               String str = (String)localIterator.next();
-              ac.d("MicroMsg.TrackRoomListMgr", "member :".concat(String.valueOf(str)));
-              if (!str.equals(u.axw())) {
+              ad.d("MicroMsg.TrackRoomListMgr", "member :".concat(String.valueOf(str)));
+              if (!str.equals(u.aAm())) {
                 break label225;
               }
-              ac.i("MicroMsg.TrackRoomListMgr", "reset list info and remove self location info");
+              ad.i("MicroMsg.TrackRoomListMgr", "reset list info and remove self location info");
               i = 0;
               break label225;
             }
@@ -285,8 +285,8 @@ public final class r
           }
         }
         Object localObject2 = new b();
-        ((b)localObject2).tWF = localLinkedList;
-        ((b)localObject2).tWG = this.tYl.tWG;
+        ((b)localObject2).uZo = localLinkedList;
+        ((b)localObject2).uZp = this.vaU.uZp;
         a((b)localObject2);
         AppMethodBeat.o(55784);
         return;
@@ -299,13 +299,13 @@ public final class r
     }
   }
   
-  public final boolean aJa()
+  public final boolean aMk()
   {
     AppMethodBeat.i(55781);
     String str;
     do
     {
-      Iterator localIterator = this.tYl.tWF.iterator();
+      Iterator localIterator = this.vaU.uZo.iterator();
       Object localObject;
       while (!((Iterator)localObject).hasNext())
       {
@@ -313,29 +313,29 @@ public final class r
           break;
         }
         localObject = (com.tencent.mm.plugin.location.a.a)localIterator.next();
-        ac.d("MicroMsg.TrackRoomListMgr", "info :" + ((com.tencent.mm.plugin.location.a.a)localObject).dow.size());
-        localObject = ((com.tencent.mm.plugin.location.a.a)localObject).dow.iterator();
+        ad.d("MicroMsg.TrackRoomListMgr", "info :" + ((com.tencent.mm.plugin.location.a.a)localObject).dAk.size());
+        localObject = ((com.tencent.mm.plugin.location.a.a)localObject).dAk.iterator();
       }
       str = (String)((Iterator)localObject).next();
-      ac.d("MicroMsg.TrackRoomListMgr", "member :".concat(String.valueOf(str)));
-    } while (!str.equals(u.axw()));
-    ac.i("MicroMsg.TrackRoomListMgr", "now is sharing location..");
+      ad.d("MicroMsg.TrackRoomListMgr", "member :".concat(String.valueOf(str)));
+    } while (!str.equals(u.aAm()));
+    ad.i("MicroMsg.TrackRoomListMgr", "now is sharing location..");
     AppMethodBeat.o(55781);
     return true;
     AppMethodBeat.o(55781);
     return false;
   }
   
-  public final String aJb()
+  public final String aMl()
   {
-    if (this.tYl != null) {
-      return this.tYl.tWG;
+    if (this.vaU != null) {
+      return this.vaU.uZp;
     }
     return "";
   }
   
   /* Error */
-  public final com.tencent.mm.plugin.location.a.a ajO(String paramString)
+  public final com.tencent.mm.plugin.location.a.a aoB(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -343,8 +343,8 @@ public final class r
     //   2: ldc_w 292
     //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 82	com/tencent/mm/plugin/location/model/r:tYl	Lcom/tencent/mm/plugin/location/a/b;
-    //   12: getfield 122	com/tencent/mm/plugin/location/a/b:tWF	Ljava/util/LinkedList;
+    //   9: getfield 82	com/tencent/mm/plugin/location/model/r:vaU	Lcom/tencent/mm/plugin/location/a/b;
+    //   12: getfield 122	com/tencent/mm/plugin/location/a/b:uZo	Ljava/util/LinkedList;
     //   15: invokevirtual 181	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   18: astore_3
     //   19: aload_3
@@ -390,13 +390,13 @@ public final class r
     //   63	69	72	finally
   }
   
-  public final void ajP(String paramString)
+  public final void aoC(String paramString)
   {
     AppMethodBeat.i(55783);
-    if (this.tYl != null) {
-      this.tYl.tWG = paramString;
+    if (this.vaU != null) {
+      this.vaU.uZp = paramString;
     }
-    a(this.tYl);
+    a(this.vaU);
     AppMethodBeat.o(55783);
   }
   
@@ -416,10 +416,10 @@ public final class r
     }
   }
   
-  public final boolean bw(String paramString1, String paramString2)
+  public final boolean bx(String paramString1, String paramString2)
   {
     AppMethodBeat.i(55782);
-    boolean bool = DE(paramString1).contains(paramString2);
+    boolean bool = GJ(paramString1).contains(paramString2);
     AppMethodBeat.o(55782);
     return bool;
   }

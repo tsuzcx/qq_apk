@@ -9,8 +9,8 @@ import java.util.List;
 public class b
   implements com.tencent.mm.vending.c.b<a>
 {
-  protected a iAT;
-  public final a iAU;
+  protected a iUd;
+  public final a iUe;
   
   public b()
   {
@@ -22,8 +22,8 @@ public class b
   private b(a parama)
   {
     AppMethodBeat.i(63437);
-    this.iAU = new a();
-    this.iAT = parama;
+    this.iUe = new a();
+    this.iUd = parama;
     AppMethodBeat.o(63437);
   }
   
@@ -32,15 +32,15 @@ public class b
   {
     public a() {}
     
-    public final String Ua()
+    public final String Wr()
     {
       return "Vending.ANY";
     }
     
-    public final com.tencent.mm.vending.g.c<d<List, String, Boolean>> n(boolean paramBoolean, int paramInt)
+    public final com.tencent.mm.vending.g.c<d<List, String, Boolean>> m(boolean paramBoolean, int paramInt)
     {
       AppMethodBeat.i(63434);
-      com.tencent.mm.vending.g.c localc = g.J(Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt)).c(this);
+      com.tencent.mm.vending.g.c localc = g.L(Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt)).c(this);
       AppMethodBeat.o(63434);
       return localc;
     }
@@ -48,7 +48,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.b.b
  * JD-Core Version:    0.7.0.1
  */

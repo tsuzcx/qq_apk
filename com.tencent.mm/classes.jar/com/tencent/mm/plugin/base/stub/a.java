@@ -17,7 +17,7 @@ public final class a
     super(paramContext, paramString1, paramString2, parama);
   }
   
-  protected final void bHO()
+  protected final void bLZ()
   {
     AppMethodBeat.i(22165);
     h.a(this.context, 2131759960, 2131755906, false, new DialogInterface.OnClickListener()
@@ -25,11 +25,11 @@ public final class a
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(22164);
-        paramAnonymousDialogInterface = b.a.cOr();
+        paramAnonymousDialogInterface = b.a.cWM();
         if (paramAnonymousDialogInterface != null) {
-          paramAnonymousDialogInterface.k(a.this.openId, u.axz(), a.this.appId);
+          paramAnonymousDialogInterface.k(a.this.openId, u.aAp(), a.this.appId);
         }
-        a.this.nmq.iT(false);
+        a.this.nMX.jc(false);
         AppMethodBeat.o(22164);
       }
     });

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.res.Configuration;
 import com.tencent.luggage.sdk.b.a.a.a;
 import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.page.bt;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.plugin.appbrand.page.bs;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -19,18 +19,9 @@ public abstract class a<PAGE extends com.tencent.luggage.sdk.b.a.c>
     super(paramPAGE);
   }
   
-  public com.tencent.luggage.sdk.d.c CO()
+  public void DE()
   {
-    com.tencent.luggage.sdk.b.a.c localc = (com.tencent.luggage.sdk.b.a.c)CM();
-    if (localc == null) {
-      return null;
-    }
-    return localc.CO();
-  }
-  
-  public void Cf()
-  {
-    Iterator localIterator = CN().iterator();
+    Iterator localIterator = Em().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
@@ -40,9 +31,9 @@ public abstract class a<PAGE extends com.tencent.luggage.sdk.b.a.c>
     }
   }
   
-  public void Cg()
+  public void DF()
   {
-    Iterator localIterator = CN().iterator();
+    Iterator localIterator = Em().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
@@ -52,16 +43,25 @@ public abstract class a<PAGE extends com.tencent.luggage.sdk.b.a.c>
     }
   }
   
-  public final <T extends com.tencent.luggage.a.b> T R(Class<T> paramClass)
+  public com.tencent.luggage.sdk.d.c En()
   {
-    return ((com.tencent.luggage.sdk.b.a.c)CM()).K(paramClass);
+    com.tencent.luggage.sdk.b.a.c localc = (com.tencent.luggage.sdk.b.a.c)El();
+    if (localc == null) {
+      return null;
+    }
+    return localc.En();
   }
   
-  public void a(Map<String, Object> paramMap, bt parambt) {}
+  public final <T extends com.tencent.luggage.a.b> T R(Class<T> paramClass)
+  {
+    return ((com.tencent.luggage.sdk.b.a.c)El()).K(paramClass);
+  }
+  
+  public void a(Map<String, Object> paramMap, bs parambs) {}
   
   public void b(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb)
   {
-    Iterator localIterator = CN().iterator();
+    Iterator localIterator = Em().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
@@ -73,7 +73,7 @@ public abstract class a<PAGE extends com.tencent.luggage.sdk.b.a.c>
   
   public final void dispatchConfigurationChanged(Configuration paramConfiguration)
   {
-    Iterator localIterator = CN().iterator();
+    Iterator localIterator = Em().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
@@ -85,7 +85,7 @@ public abstract class a<PAGE extends com.tencent.luggage.sdk.b.a.c>
   
   public void dispatchDestroy()
   {
-    ??? = CN().iterator();
+    ??? = Em().iterator();
     while (((Iterator)???).hasNext())
     {
       Object localObject3 = ((Iterator)???).next();
@@ -93,9 +93,9 @@ public abstract class a<PAGE extends com.tencent.luggage.sdk.b.a.c>
         ((com.tencent.mm.plugin.appbrand.page.b.b)localObject3).onDestroy();
       }
     }
-    synchronized (this.ccV)
+    synchronized (this.cnm)
     {
-      this.ccV.clear();
+      this.cnm.clear();
     }
   }
   
@@ -103,17 +103,17 @@ public abstract class a<PAGE extends com.tencent.luggage.sdk.b.a.c>
   
   public final Context getContext()
   {
-    Context localContext2 = ((com.tencent.luggage.sdk.b.a.c)CM()).getContext();
+    Context localContext2 = ((com.tencent.luggage.sdk.b.a.c)El()).getContext();
     Context localContext1 = localContext2;
     if (localContext2 == null) {
-      localContext1 = ai.getContext();
+      localContext1 = aj.getContext();
     }
     return localContext1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.b.a
  * JD-Core Version:    0.7.0.1
  */

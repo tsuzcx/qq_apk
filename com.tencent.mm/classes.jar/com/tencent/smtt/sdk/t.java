@@ -61,9 +61,9 @@ class t
         paramObject.addFlags(268435456);
         paramBundle = getContext().getApplicationContext();
         paramObject.setPackage(paramBundle.getPackageName());
-        paramObject = new com.tencent.mm.hellhoundlib.b.a().ba(paramObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramBundle, paramObject.aeD(), "com/tencent/smtt/sdk/t", "b", "(Landroid/os/Bundle;Ljava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramBundle.startActivity((Intent)paramObject.lR(0));
+        paramObject = new com.tencent.mm.hellhoundlib.b.a().bc(paramObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramBundle, paramObject.ahp(), "com/tencent/smtt/sdk/t", "b", "(Landroid/os/Bundle;Ljava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramBundle.startActivity((Intent)paramObject.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramBundle, "com/tencent/smtt/sdk/t", "b", "(Landroid/os/Bundle;Ljava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       AppMethodBeat.o(55198);
@@ -186,9 +186,9 @@ class t
         Object localObject = new Intent("android.intent.action.VIEW");
         ((Intent)localObject).addFlags(268435456);
         ((Intent)localObject).setDataAndType(Uri.parse(this.e), "video/*");
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramMediaPlayer, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/smtt/sdk/t", "onError", "(Landroid/media/MediaPlayer;II)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramMediaPlayer.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramMediaPlayer, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/smtt/sdk/t", "onError", "(Landroid/media/MediaPlayer;II)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramMediaPlayer.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramMediaPlayer, "com/tencent/smtt/sdk/t", "onError", "(Landroid/media/MediaPlayer;II)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       AppMethodBeat.o(55202);

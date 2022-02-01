@@ -11,7 +11,7 @@ public abstract interface b
 {
   public abstract void s(IBinder paramIBinder);
   
-  public abstract void uA(int paramInt);
+  public abstract void ve(int paramInt);
   
   public static abstract class a
     extends Binder
@@ -28,7 +28,7 @@ public abstract interface b
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCallback");
-        uA(paramParcel1.readInt());
+        ve(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       }
@@ -55,7 +55,7 @@ public abstract interface b
       
       public final void s(IBinder paramIBinder)
       {
-        AppMethodBeat.i(186912);
+        AppMethodBeat.i(188709);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -70,11 +70,11 @@ public abstract interface b
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(186912);
+          AppMethodBeat.o(188709);
         }
       }
       
-      public final void uA(int paramInt)
+      public final void ve(int paramInt)
       {
         AppMethodBeat.i(48001);
         Parcel localParcel1 = Parcel.obtain();

@@ -49,7 +49,7 @@ public final class jc
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(30.4F, 150.39999F);
       ((Path)localObject2).lineTo(42.400002F, 150.39999F);
@@ -61,7 +61,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(54.400002F, 234.39999F);
       ((Path)localObject2).lineTo(66.400002F, 234.39999F);
@@ -73,7 +73,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(30.4F, 246.39999F);
       ((Path)localObject2).lineTo(42.400002F, 246.39999F);
@@ -88,7 +88,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(246.39999F, 414.39999F);
       ((Path)localObject2).lineTo(234.39999F, 414.39999F);
@@ -103,7 +103,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(30.4F, 258.39999F);
       ((Path)localObject2).lineTo(42.400002F, 258.39999F);
@@ -115,7 +115,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(42.400002F, 402.39999F);
       ((Path)localObject2).lineTo(78.400002F, 402.39999F);
@@ -127,7 +127,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(174.39999F, 30.4F);
       ((Path)localObject2).lineTo(198.39999F, 30.4F);
@@ -139,7 +139,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(174.39999F, 354.39999F);
       ((Path)localObject2).lineTo(186.39999F, 354.39999F);
@@ -151,7 +151,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(54.400002F, 210.39999F);
       ((Path)localObject2).lineTo(66.400002F, 210.39999F);
@@ -163,7 +163,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(222.39999F, 438.39999F);
       ((Path)localObject2).lineTo(234.39999F, 438.39999F);
@@ -175,7 +175,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(18.4F, 18.4F);
       ((Path)localObject2).lineTo(18.4F, 102.4F);
@@ -194,7 +194,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(138.39999F, 18.4F);
       ((Path)localObject2).lineTo(150.39999F, 18.4F);
@@ -206,7 +206,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(114.4F, 29.6F);
       ((Path)localObject2).lineTo(126.4F, 29.6F);
@@ -218,7 +218,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(198.39999F, 150.39999F);
       ((Path)localObject2).lineTo(210.39999F, 150.39999F);
@@ -230,7 +230,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(294.39999F, 18.4F);
       ((Path)localObject2).lineTo(306.39999F, 18.4F);
@@ -242,7 +242,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(306.39999F, 66.400002F);
       ((Path)localObject2).lineTo(318.39999F, 66.400002F);
@@ -254,7 +254,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(354.39999F, 18.4F);
       ((Path)localObject2).lineTo(366.39999F, 18.4F);
@@ -266,7 +266,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(18.4F, 306.39999F);
       ((Path)localObject2).lineTo(30.4F, 306.39999F);
@@ -278,7 +278,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(114.4F, 258.39999F);
       ((Path)localObject2).lineTo(90.400002F, 258.39999F);
@@ -293,7 +293,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(174.39999F, 438.39999F);
       ((Path)localObject2).lineTo(198.39999F, 438.39999F);
@@ -305,7 +305,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(42.400002F, 42.400002F);
       ((Path)localObject2).lineTo(78.400002F, 42.400002F);
@@ -317,7 +317,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(30.4F, 318.39999F);
       ((Path)localObject2).lineTo(42.400002F, 318.39999F);
@@ -329,7 +329,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(162.39999F, 450.39999F);
       ((Path)localObject2).lineTo(174.39999F, 450.39999F);
@@ -341,7 +341,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(126.4F, 222.39999F);
       ((Path)localObject2).lineTo(138.39999F, 222.39999F);
@@ -353,7 +353,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(42.400002F, 318.39999F);
       ((Path)localObject2).lineTo(78.400002F, 318.39999F);
@@ -370,7 +370,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(162.39999F, 342.39999F);
       ((Path)localObject2).lineTo(174.39999F, 342.39999F);
@@ -382,7 +382,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(282.39999F, 330.39999F);
       ((Path)localObject2).lineTo(294.39999F, 330.39999F);
@@ -394,7 +394,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(234.39999F, 54.400002F);
       ((Path)localObject2).lineTo(246.39999F, 54.400002F);
@@ -406,7 +406,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(426.39999F, 342.39999F);
       ((Path)localObject2).lineTo(438.39999F, 342.39999F);
@@ -418,7 +418,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(246.39999F, 42.400002F);
       ((Path)localObject2).lineTo(258.39999F, 42.400002F);
@@ -430,7 +430,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(270.39999F, 450.39999F);
       ((Path)localObject2).lineTo(294.39999F, 450.39999F);
@@ -442,7 +442,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(438.39999F, 354.39999F);
       ((Path)localObject2).lineTo(450.39999F, 354.39999F);
@@ -454,7 +454,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(318.39999F, 354.39999F);
       ((Path)localObject2).lineTo(306.39999F, 354.39999F);
@@ -479,7 +479,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(234.39999F, 42.400002F);
       ((Path)localObject2).lineTo(246.39999F, 42.400002F);
@@ -496,7 +496,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(378.39999F, 378.39999F);
       ((Path)localObject2).lineTo(378.39999F, 462.39999F);
@@ -515,7 +515,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(402.39999F, 342.39999F);
       ((Path)localObject2).lineTo(390.39999F, 342.39999F);
@@ -532,7 +532,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(210.39999F, 18.4F);
       ((Path)localObject2).lineTo(222.39999F, 18.4F);
@@ -544,7 +544,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(174.39999F, 54.400002F);
       ((Path)localObject2).lineTo(174.39999F, 42.400002F);
@@ -559,7 +559,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(258.39999F, 30.4F);
       ((Path)localObject2).lineTo(270.39999F, 30.4F);
@@ -571,7 +571,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(162.39999F, 18.4F);
       ((Path)localObject2).lineTo(174.39999F, 18.4F);
@@ -583,7 +583,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(414.39999F, 354.39999F);
       ((Path)localObject2).lineTo(426.39999F, 354.39999F);
@@ -595,7 +595,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(270.39999F, 18.4F);
       ((Path)localObject2).lineTo(282.39999F, 18.4F);
@@ -607,7 +607,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(414.39999F, 114.4F);
       ((Path)localObject2).lineTo(426.39999F, 114.4F);
@@ -619,7 +619,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(354.39999F, 450.39999F);
       ((Path)localObject2).lineTo(366.39999F, 450.39999F);
@@ -631,7 +631,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(210.39999F, 450.39999F);
       ((Path)localObject2).lineTo(222.39999F, 450.39999F);
@@ -643,7 +643,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(294.39999F, 342.39999F);
       ((Path)localObject2).lineTo(306.39999F, 342.39999F);
@@ -655,7 +655,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(102.4F, 150.39999F);
       ((Path)localObject2).lineTo(114.4F, 150.39999F);
@@ -667,7 +667,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(139.2F, 438.39999F);
       ((Path)localObject2).lineTo(151.2F, 438.39999F);
@@ -679,7 +679,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(18.4F, 378.39999F);
       ((Path)localObject2).lineTo(18.4F, 462.39999F);
@@ -698,7 +698,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(91.199997F, 114.4F);
       ((Path)localObject2).lineTo(127.2F, 114.4F);
@@ -710,7 +710,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(115.2F, 438.39999F);
       ((Path)localObject2).lineTo(127.2F, 438.39999F);
@@ -722,7 +722,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(139.2F, 414.39999F);
       ((Path)localObject2).lineTo(127.2F, 414.39999F);
@@ -739,7 +739,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(258.39999F, 438.39999F);
       ((Path)localObject2).lineTo(270.39999F, 438.39999F);
@@ -751,7 +751,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(426.39999F, 138.39999F);
       ((Path)localObject2).lineTo(438.39999F, 138.39999F);
@@ -763,7 +763,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(414.39999F, 282.39999F);
       ((Path)localObject2).lineTo(426.39999F, 282.39999F);
@@ -775,7 +775,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(402.39999F, 402.39999F);
       ((Path)localObject2).lineTo(438.39999F, 402.39999F);
@@ -787,7 +787,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(90.400002F, 162.39999F);
       ((Path)localObject2).lineTo(102.4F, 162.39999F);
@@ -799,7 +799,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(246.39999F, 450.39999F);
       ((Path)localObject2).lineTo(258.39999F, 450.39999F);
@@ -811,7 +811,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1315861);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(126.4F, 210.39999F);
       ((Path)localObject2).lineTo(138.39999F, 210.39999F);
@@ -840,7 +840,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(174.39999F, 234.39999F);
       ((Path)localObject2).lineTo(174.39999F, 246.39999F);
@@ -885,7 +885,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(270.39999F, 78.400002F);
       ((Path)localObject2).lineTo(294.39999F, 78.400002F);
@@ -902,7 +902,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(198.39999F, 174.39999F);
       ((Path)localObject2).lineTo(210.39999F, 174.39999F);
@@ -914,7 +914,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(186.39999F, 162.39999F);
       ((Path)localObject2).lineTo(198.39999F, 162.39999F);
@@ -926,7 +926,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(66.400002F, 186.39999F);
       ((Path)localObject2).lineTo(78.400002F, 186.39999F);
@@ -938,7 +938,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(90.400002F, 186.39999F);
       ((Path)localObject2).lineTo(102.4F, 186.39999F);
@@ -950,7 +950,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(78.400002F, 174.39999F);
       ((Path)localObject2).lineTo(78.400002F, 150.39999F);
@@ -983,7 +983,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(78.400002F, 174.39999F);
       ((Path)localObject2).lineTo(90.400002F, 174.39999F);
@@ -995,7 +995,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(162.39999F, 126.4F);
       ((Path)localObject2).lineTo(174.39999F, 126.4F);
@@ -1007,7 +1007,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(174.39999F, 102.4F);
       ((Path)localObject2).lineTo(186.39999F, 102.4F);
@@ -1019,7 +1019,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(162.39999F, 102.4F);
       ((Path)localObject2).lineTo(174.39999F, 102.4F);
@@ -1046,7 +1046,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(234.39999F, 102.4F);
       ((Path)localObject2).lineTo(246.39999F, 102.4F);
@@ -1061,7 +1061,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(198.39999F, 150.39999F);
       ((Path)localObject2).lineTo(198.39999F, 138.39999F);
@@ -1096,7 +1096,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(246.39999F, 102.4F);
       ((Path)localObject2).lineTo(258.39999F, 102.4F);
@@ -1108,7 +1108,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(114.4F, 246.39999F);
       ((Path)localObject2).lineTo(114.4F, 198.39999F);
@@ -1127,7 +1127,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(162.39999F, 102.4F);
       ((Path)localObject2).lineTo(151.2F, 102.4F);
@@ -1146,7 +1146,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(139.2F, 90.400002F);
       ((Path)localObject2).lineTo(139.2F, 66.400002F);
@@ -1167,7 +1167,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(127.2F, 126.4F);
       ((Path)localObject2).lineTo(150.39999F, 126.4F);
@@ -1179,7 +1179,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(210.39999F, 186.39999F);
       ((Path)localObject2).lineTo(234.39999F, 186.39999F);
@@ -1191,7 +1191,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(414.39999F, 198.39999F);
       ((Path)localObject2).lineTo(414.39999F, 222.39999F);
@@ -1244,7 +1244,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(414.39999F, 306.39999F);
       ((Path)localObject2).lineTo(426.39999F, 306.39999F);
@@ -1256,7 +1256,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(402.39999F, 282.39999F);
       ((Path)localObject2).lineTo(366.39999F, 282.39999F);
@@ -1335,7 +1335,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(438.39999F, 162.39999F);
       ((Path)localObject2).lineTo(426.39999F, 162.39999F);
@@ -1356,7 +1356,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(378.39999F, 18.4F);
       ((Path)localObject2).lineTo(378.39999F, 102.4F);
@@ -1375,7 +1375,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(366.39999F, 318.39999F);
       ((Path)localObject2).lineTo(390.39999F, 318.39999F);
@@ -1387,7 +1387,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(450.39999F, 126.4F);
       ((Path)localObject2).lineTo(462.39999F, 126.4F);
@@ -1399,7 +1399,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(402.39999F, 42.400002F);
       ((Path)localObject2).lineTo(438.39999F, 42.400002F);
@@ -1411,7 +1411,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(438.39999F, 114.4F);
       ((Path)localObject2).lineTo(450.39999F, 114.4F);
@@ -1423,7 +1423,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(151.2F, 390.39999F);
       ((Path)localObject2).lineTo(163.2F, 390.39999F);
@@ -1435,7 +1435,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(162.39999F, 378.39999F);
       ((Path)localObject2).lineTo(162.39999F, 354.39999F);
@@ -1496,7 +1496,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(90.400002F, 282.39999F);
       ((Path)localObject2).lineTo(102.4F, 282.39999F);
@@ -1508,7 +1508,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(78.400002F, 270.39999F);
       ((Path)localObject2).lineTo(90.400002F, 270.39999F);
@@ -1520,7 +1520,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(78.400002F, 246.39999F);
       ((Path)localObject2).lineTo(66.400002F, 246.39999F);
@@ -1535,7 +1535,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(294.39999F, 426.39999F);
       ((Path)localObject2).lineTo(306.39999F, 426.39999F);
@@ -1547,7 +1547,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(318.39999F, 414.39999F);
       ((Path)localObject2).lineTo(318.39999F, 402.39999F);
@@ -1564,7 +1564,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(246.39999F, 366.39999F);
       ((Path)localObject2).lineTo(258.39999F, 366.39999F);
@@ -1576,7 +1576,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(222.39999F, 342.39999F);
       ((Path)localObject2).lineTo(198.39999F, 342.39999F);
@@ -1631,7 +1631,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(234.39999F, 390.39999F);
       ((Path)localObject2).lineTo(222.39999F, 390.39999F);
@@ -1646,7 +1646,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(294.39999F, 198.39999F);
       ((Path)localObject2).lineTo(306.39999F, 198.39999F);
@@ -1658,7 +1658,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(174.39999F, 294.39999F);
       ((Path)localObject2).lineTo(174.39999F, 282.39999F);
@@ -1683,7 +1683,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(378.39999F, 162.39999F);
       ((Path)localObject2).lineTo(390.39999F, 162.39999F);
@@ -1695,7 +1695,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(342.39999F, 162.39999F);
       ((Path)localObject2).lineTo(342.39999F, 174.39999F);
@@ -1718,7 +1718,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(390.39999F, 174.39999F);
       ((Path)localObject2).lineTo(402.39999F, 174.39999F);
@@ -1730,7 +1730,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(258.39999F, 138.39999F);
       ((Path)localObject2).lineTo(270.39999F, 138.39999F);
@@ -1742,7 +1742,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(258.39999F, 246.39999F);
       ((Path)localObject2).lineTo(270.39999F, 246.39999F);
@@ -1759,7 +1759,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(270.39999F, 198.39999F);
       ((Path)localObject2).lineTo(282.39999F, 198.39999F);
@@ -1771,7 +1771,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(282.39999F, 210.39999F);
       ((Path)localObject2).lineTo(294.39999F, 210.39999F);
@@ -1783,7 +1783,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(270.39999F, 246.39999F);
       ((Path)localObject2).lineTo(282.39999F, 246.39999F);
@@ -1795,7 +1795,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(390.39999F, 150.39999F);
       ((Path)localObject2).lineTo(402.39999F, 150.39999F);
@@ -1807,7 +1807,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(330.39999F, 186.39999F);
       ((Path)localObject2).lineTo(318.39999F, 186.39999F);
@@ -1824,7 +1824,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(318.39999F, 54.400002F);
       ((Path)localObject2).lineTo(318.39999F, 66.400002F);
@@ -1885,7 +1885,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(294.39999F, 78.400002F);
       ((Path)localObject2).lineTo(306.39999F, 78.400002F);
@@ -1897,7 +1897,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(294.39999F, 126.4F);
       ((Path)localObject2).lineTo(306.39999F, 126.4F);
@@ -1909,7 +1909,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(246.39999F, 150.39999F);
       ((Path)localObject2).lineTo(258.39999F, 150.39999F);
@@ -1921,7 +1921,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(390.39999F, 258.39999F);
       ((Path)localObject2).lineTo(402.39999F, 258.39999F);
@@ -1933,7 +1933,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(234.39999F, 162.39999F);
       ((Path)localObject2).lineTo(246.39999F, 162.39999F);
@@ -1945,7 +1945,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(354.39999F, 198.39999F);
       ((Path)localObject2).lineTo(366.39999F, 198.39999F);
@@ -1957,7 +1957,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(402.39999F, 162.39999F);
       ((Path)localObject2).lineTo(414.39999F, 162.39999F);
@@ -1969,7 +1969,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(270.39999F, 126.4F);
       ((Path)localObject2).lineTo(270.39999F, 138.39999F);
@@ -1996,7 +1996,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(402.39999F, 198.39999F);
       ((Path)localObject2).lineTo(390.39999F, 198.39999F);
@@ -2031,7 +2031,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(402.39999F, 270.39999F);
       ((Path)localObject2).lineTo(414.39999F, 270.39999F);
@@ -2043,7 +2043,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(402.39999F, 186.39999F);
       ((Path)localObject2).lineTo(414.39999F, 186.39999F);
@@ -2055,7 +2055,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(294.39999F, 234.39999F);
       ((Path)localObject2).lineTo(330.39999F, 234.39999F);
@@ -2067,7 +2067,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(354.39999F, 270.39999F);
       ((Path)localObject2).lineTo(366.39999F, 270.39999F);
@@ -2079,7 +2079,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(366.39999F, 138.39999F);
       ((Path)localObject2).lineTo(390.39999F, 138.39999F);
@@ -2091,7 +2091,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(414.39999F, 174.39999F);
       ((Path)localObject2).lineTo(426.39999F, 174.39999F);
@@ -2103,7 +2103,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(402.39999F, 150.39999F);
       ((Path)localObject2).lineTo(414.39999F, 150.39999F);
@@ -2120,7 +2120,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(414.39999F, 150.39999F);
       ((Path)localObject2).lineTo(426.39999F, 150.39999F);
@@ -2132,7 +2132,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(210.39999F, 318.39999F);
       ((Path)localObject2).lineTo(210.39999F, 306.39999F);
@@ -2147,7 +2147,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(210.39999F, 318.39999F);
       ((Path)localObject2).lineTo(222.39999F, 318.39999F);
@@ -2159,7 +2159,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(222.39999F, 282.39999F);
       ((Path)localObject2).lineTo(246.39999F, 282.39999F);
@@ -2171,7 +2171,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(222.39999F, 330.39999F);
       ((Path)localObject2).lineTo(234.39999F, 330.39999F);
@@ -2183,7 +2183,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(210.39999F, 294.39999F);
       ((Path)localObject2).lineTo(222.39999F, 294.39999F);
@@ -2195,7 +2195,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(246.39999F, 306.39999F);
       ((Path)localObject2).lineTo(234.39999F, 306.39999F);
@@ -2210,7 +2210,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(246.39999F, 270.39999F);
       ((Path)localObject2).lineTo(282.39999F, 270.39999F);
@@ -2222,7 +2222,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(258.39999F, 330.39999F);
       ((Path)localObject2).lineTo(270.39999F, 330.39999F);
@@ -2234,7 +2234,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      ((Paint)localObject1).setColor(-2171166);
+      ((Paint)localObject1).setColor(-1381654);
       localObject2 = c.n(paramVarArgs);
       ((Path)localObject2).moveTo(294.39999F, 270.39999F);
       ((Path)localObject2).lineTo(306.39999F, 270.39999F);
@@ -2246,7 +2246,7 @@ public final class jc
       localCanvas.restore();
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
-      localPaint1.setColor(-2171166);
+      localPaint1.setColor(-1381654);
       localObject1 = c.n(paramVarArgs);
       ((Path)localObject1).moveTo(234.39999F, 342.39999F);
       ((Path)localObject1).lineTo(258.39999F, 342.39999F);
@@ -2262,7 +2262,7 @@ public final class jc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.jc
  * JD-Core Version:    0.7.0.1
  */

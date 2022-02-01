@@ -7,14 +7,14 @@ import android.widget.OverScroller;
 @Deprecated
 public final class p
 {
-  public OverScroller SC;
+  public OverScroller Ur;
   
   private p(Context paramContext, Interpolator paramInterpolator)
   {
     if (paramInterpolator != null) {}
     for (paramContext = new OverScroller(paramContext, paramInterpolator);; paramContext = new OverScroller(paramContext))
     {
-      this.SC = paramContext;
+      this.Ur = paramContext;
       return;
     }
   }
@@ -28,7 +28,7 @@ public final class p
   @Deprecated
   public final void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.SC.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+    this.Ur.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
   }
 }
 

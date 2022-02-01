@@ -2,91 +2,91 @@ package com.tencent.mm.plugin.fingerprint.b;
 
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.t;
-import com.tencent.mm.g.a.nv;
-import com.tencent.mm.g.a.nv.a;
-import com.tencent.mm.g.a.nv.b;
+import com.tencent.mm.g.a.od;
+import com.tencent.mm.g.a.od.a;
+import com.tencent.mm.g.a.od.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fingerprint.b.a.i;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class a
   implements com.tencent.mm.plugin.fingerprint.d.a
 {
-  protected i sjV;
+  protected i tgx;
   
-  public final void a(nv paramnv, int paramInt, String paramString)
+  public final void a(od paramod, int paramInt, String paramString)
   {
-    ac.i("MicroMsg.BaseFingerprintImp", "hy: onOpenFingerprintAuthFailed");
-    if ((paramnv != null) && (paramnv.dqj.dqn != null))
+    ad.i("MicroMsg.BaseFingerprintImp", "hy: onOpenFingerprintAuthFailed");
+    if ((paramod != null) && (paramod.dBW.dCa != null))
     {
-      paramnv.dqk = new nv.b();
-      paramnv.dqk.errCode = paramInt;
-      paramnv.dqk.djs = "";
-      paramnv.dqk.djt = "";
-      paramnv.dqk.errMsg = paramString;
-      paramnv.dqk.dqp = type();
-      paramnv.dqj.dqn.run();
+      paramod.dBX = new od.b();
+      paramod.dBX.errCode = paramInt;
+      paramod.dBX.dvf = "";
+      paramod.dBX.dvg = "";
+      paramod.dBX.errMsg = paramString;
+      paramod.dBX.dCc = type();
+      paramod.dBW.dCa.run();
     }
   }
   
   public final void a(i parami)
   {
-    this.sjV = parami;
+    this.tgx = parami;
   }
   
-  public final void cGY()
+  public final void cPn()
   {
-    ac.i("MicroMsg.BaseFingerprintImp", "showFingerPrintEntrance");
-    if ((cGZ()) && (!cHf())) {
-      ac.e("MicroMsg.BaseFingerprintImp", "the fingerprint is open ready, but system has none Finger print ids!");
+    ad.i("MicroMsg.BaseFingerprintImp", "showFingerPrintEntrance");
+    if ((cPo()) && (!cPu())) {
+      ad.e("MicroMsg.BaseFingerprintImp", "the fingerprint is open ready, but system has none Finger print ids!");
     }
     do
     {
       return;
-      if ((cHc()) && (!cHn()))
+      if ((cPr()) && (!cPC()))
       {
-        ac.e("MicroMsg.BaseFingerprintImp", "the faceid is open ready, but system has none face ids!");
+        ad.e("MicroMsg.BaseFingerprintImp", "the faceid is open ready, but system has none face ids!");
         return;
       }
-    } while (ae.fJh.fHy == 1);
-    ac.e("MicroMsg.BaseFingerprintImp", "hy: device info not support");
+    } while (ae.gcI.gaY == 1);
+    ad.e("MicroMsg.BaseFingerprintImp", "hy: device info not support");
   }
   
-  public final boolean cGZ()
+  public final boolean cPo()
   {
-    return ((i)g.ab(i.class)).cHy();
+    return ((i)g.ab(i.class)).cPN();
   }
   
-  public boolean cHa()
-  {
-    return false;
-  }
-  
-  public boolean cHb()
+  public boolean cPp()
   {
     return false;
   }
   
-  public final boolean cHc()
+  public boolean cPq()
   {
-    return ((i)g.ab(i.class)).cHz();
+    return false;
   }
   
-  public String cHd()
+  public final boolean cPr()
+  {
+    return ((i)g.ab(i.class)).cPO();
+  }
+  
+  public String cPs()
   {
     return "";
   }
   
-  public final void mh(boolean paramBoolean)
+  public final void my(boolean paramBoolean)
   {
-    ac.i("MicroMsg.BaseFingerprintImp", "hy: set isOpenFp: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    ((i)g.ab(i.class)).mn(paramBoolean);
+    ad.i("MicroMsg.BaseFingerprintImp", "hy: set isOpenFp: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ((i)g.ab(i.class)).mE(paramBoolean);
   }
   
-  public final void mi(boolean paramBoolean)
+  public final void mz(boolean paramBoolean)
   {
-    ac.i("MicroMsg.BaseFingerprintImp", "set is open faceid: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    ((i)g.ab(i.class)).mo(paramBoolean);
+    ad.i("MicroMsg.BaseFingerprintImp", "set is open faceid: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ((i)g.ab(i.class)).mF(paramBoolean);
   }
 }
 

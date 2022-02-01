@@ -1,140 +1,300 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.f;
+import d.a;
+import d.d.d;
+import d.g.b.p;
 import d.l;
-import d.p;
-import d.q;
-import d.v;
-import d.y;
-import kotlinx.coroutines.internal.r;
-import kotlinx.coroutines.internal.w;
+import kotlinx.coroutines.b.i;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"MODE_ATOMIC_DEFAULT", "", "MODE_ATOMIC_DEFAULT$annotations", "()V", "MODE_CANCELLABLE", "MODE_CANCELLABLE$annotations", "MODE_UNDISPATCHED", "MODE_UNDISPATCHED$annotations", "isCancellableMode", "", "(I)Z", "isDispatchedMode", "dispatch", "", "T", "Lkotlinx/coroutines/DispatchedTask;", "mode", "resume", "delegate", "Lkotlin/coroutines/Continuation;", "useMode", "resumeUnconfined", "resumeWithStackTrace", "exception", "", "runUnconfinedEventLoop", "eventLoop", "Lkotlinx/coroutines/EventLoop;", "block", "Lkotlin/Function0;", "kotlinx-coroutines-core"})
-public final class ax
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/DispatchedTask;", "T", "Lkotlinx/coroutines/scheduling/Task;", "Lkotlinx/coroutines/SchedulerTask;", "resumeMode", "", "(I)V", "delegate", "Lkotlin/coroutines/Continuation;", "getDelegate$kotlinx_coroutines_core", "()Lkotlin/coroutines/Continuation;", "cancelResult", "", "state", "", "cause", "", "cancelResult$kotlinx_coroutines_core", "getExceptionalResult", "getExceptionalResult$kotlinx_coroutines_core", "getSuccessfulResult", "getSuccessfulResult$kotlinx_coroutines_core", "(Ljava/lang/Object;)Ljava/lang/Object;", "handleFatalException", "exception", "finallyException", "handleFatalException$kotlinx_coroutines_core", "run", "takeState", "takeState$kotlinx_coroutines_core", "kotlinx-coroutines-core"})
+public abstract class ax<T>
+  extends i
 {
-  private static final void a(aw<?> paramaw)
+  public int NIp;
+  
+  public ax(int paramInt)
   {
-    AppMethodBeat.i(191102);
-    Object localObject = ce.LSl;
-    localObject = ce.geq();
-    if (((bc)localObject).gdU())
-    {
-      ((bc)localObject).b(paramaw);
-      AppMethodBeat.o(191102);
-      return;
-    }
-    ((bc)localObject).zG(true);
-    try
-    {
-      a(paramaw, paramaw.gdt(), 2);
-      boolean bool;
-      do
-      {
-        bool = ((bc)localObject).gdT();
-      } while (bool);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      paramaw.c(localThrowable, null);
-      return;
-    }
-    finally
-    {
-      ((bc)localObject).gdW();
-      AppMethodBeat.o(191102);
-    }
+    this.NIp = paramInt;
   }
   
-  public static final <T> void a(aw<? super T> paramaw, int paramInt)
+  public static Throwable fM(Object paramObject)
   {
-    AppMethodBeat.i(191100);
-    Object localObject = paramaw.gdt();
-    if ((ajb(paramInt)) && ((localObject instanceof at)) && (aja(paramInt) == aja(paramaw.LRu)))
+    Object localObject = null;
+    if (!(paramObject instanceof u)) {
+      paramObject = null;
+    }
+    for (;;)
     {
-      ab localab = ((at)localObject).LRq;
-      localObject = ((d.d.d)localObject).fOf();
-      if (localab.gdB())
-      {
-        localab.a((f)localObject, (Runnable)paramaw);
-        AppMethodBeat.o(191100);
-        return;
+      u localu = (u)paramObject;
+      paramObject = localObject;
+      if (localu != null) {
+        paramObject = localu.cause;
       }
-      a(paramaw);
-      AppMethodBeat.o(191100);
+      return paramObject;
+    }
+  }
+  
+  public void a(Object paramObject, Throwable paramThrowable) {}
+  
+  public final void c(Throwable paramThrowable1, Throwable paramThrowable2)
+  {
+    if ((paramThrowable1 == null) && (paramThrowable2 == null)) {
       return;
     }
-    a(paramaw, (d.d.d)localObject, paramInt);
-    AppMethodBeat.o(191100);
-  }
-  
-  private static <T> void a(aw<? super T> paramaw, d.d.d<? super T> paramd, int paramInt)
-  {
-    AppMethodBeat.i(191101);
-    Object localObject = paramaw.gdn();
-    paramaw = aw.fJ(localObject);
-    if (paramaw != null) {
-      if ((!al.gdE()) || (!(paramd instanceof d.d.b.a.d)))
-      {
-        label32:
-        if (paramaw == null) {
-          break label123;
-        }
-        localObject = p.KTg;
-      }
+    if ((paramThrowable1 != null) && (paramThrowable2 != null)) {
+      a.a(paramThrowable1, paramThrowable2);
     }
-    for (paramaw = p.eI(q.n(paramaw));; paramaw = p.eI(localObject)) {
-      switch (paramInt)
-      {
-      default: 
-        paramaw = (Throwable)new IllegalStateException("Invalid mode ".concat(String.valueOf(paramInt)).toString());
-        AppMethodBeat.o(191101);
-        throw paramaw;
-        paramaw = r.a(paramaw, (d.d.b.a.d)paramd);
-        break label32;
-        paramaw = null;
-        break label32;
-        label123:
-        paramaw = p.KTg;
-      }
-    }
-    paramd.eK(paramaw);
-    AppMethodBeat.o(191101);
-    return;
-    au.a(paramd, paramaw);
-    AppMethodBeat.o(191101);
-    return;
-    if (paramd == null)
+    if (paramThrowable1 == null) {}
+    for (;;)
     {
-      paramaw = new v("null cannot be cast to non-null type kotlinx.coroutines.DispatchedContinuation<T>");
-      AppMethodBeat.o(191101);
-      throw paramaw;
-    }
-    at localat = (at)paramd;
-    paramd = localat.fOf();
-    localObject = w.a(paramd, localat.LRo);
-    try
-    {
-      localat.LRr.eK(paramaw);
-      paramaw = y.KTp;
+      paramThrowable1 = "Fatal exception in coroutines machinery for " + this + ". Please read KDoc to 'handleFatalException' method and report this incident to maintainers";
+      if (paramThrowable2 == null) {
+        p.gfZ();
+      }
+      paramThrowable1 = new al(paramThrowable1, paramThrowable2);
+      ae.b(guT().gfE(), (Throwable)paramThrowable1);
       return;
-    }
-    finally
-    {
-      w.b(paramd, localObject);
-      AppMethodBeat.o(191101);
+      paramThrowable2 = paramThrowable1;
     }
   }
   
-  public static final boolean aja(int paramInt)
+  public <T> T fI(Object paramObject)
   {
-    return paramInt == 1;
+    return paramObject;
   }
   
-  private static boolean ajb(int paramInt)
+  public abstract Object guN();
+  
+  public abstract d<T> guT();
+  
+  /* Error */
+  public final void run()
   {
-    return (paramInt == 0) || (paramInt == 1);
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 121	kotlinx/coroutines/ax:NKX	Lkotlinx/coroutines/b/j;
+    //   4: astore_2
+    //   5: aload_0
+    //   6: invokevirtual 98	kotlinx/coroutines/ax:guT	()Ld/d/d;
+    //   9: astore_1
+    //   10: aload_1
+    //   11: ifnonnull +41 -> 52
+    //   14: new 123	d/v
+    //   17: dup
+    //   18: ldc 125
+    //   20: invokespecial 126	d/v:<init>	(Ljava/lang/String;)V
+    //   23: athrow
+    //   24: astore_3
+    //   25: getstatic 132	d/p:MKe	Ld/p$a;
+    //   28: astore_1
+    //   29: aload_2
+    //   30: invokeinterface 137 1 0
+    //   35: getstatic 143	d/z:MKo	Ld/z;
+    //   38: invokestatic 146	d/p:eL	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   41: astore_1
+    //   42: aload_0
+    //   43: aload_3
+    //   44: aload_1
+    //   45: invokestatic 149	d/p:eK	(Ljava/lang/Object;)Ljava/lang/Throwable;
+    //   48: invokevirtual 151	kotlinx/coroutines/ax:c	(Ljava/lang/Throwable;Ljava/lang/Throwable;)V
+    //   51: return
+    //   52: aload_1
+    //   53: checkcast 153	kotlinx/coroutines/au
+    //   56: astore_1
+    //   57: aload_1
+    //   58: getfield 157	kotlinx/coroutines/au:NIm	Ld/d/d;
+    //   61: astore 5
+    //   63: aload 5
+    //   65: invokeinterface 104 1 0
+    //   70: astore_3
+    //   71: aload_0
+    //   72: invokevirtual 159	kotlinx/coroutines/ax:guN	()Ljava/lang/Object;
+    //   75: astore 6
+    //   77: aload_3
+    //   78: aload_1
+    //   79: getfield 163	kotlinx/coroutines/au:NIj	Ljava/lang/Object;
+    //   82: invokestatic 168	kotlinx/coroutines/internal/x:a	(Ld/d/f;Ljava/lang/Object;)Ljava/lang/Object;
+    //   85: astore 4
+    //   87: aload 6
+    //   89: invokestatic 170	kotlinx/coroutines/ax:fM	(Ljava/lang/Object;)Ljava/lang/Throwable;
+    //   92: astore 7
+    //   94: aload_0
+    //   95: getfield 48	kotlinx/coroutines/ax:NIp	I
+    //   98: invokestatic 176	kotlinx/coroutines/ay:alB	(I)Z
+    //   101: ifeq +129 -> 230
+    //   104: aload_3
+    //   105: getstatic 182	kotlinx/coroutines/br:NIM	Lkotlinx/coroutines/br$b;
+    //   108: checkcast 184	d/d/f$c
+    //   111: invokeinterface 190 2 0
+    //   116: checkcast 178	kotlinx/coroutines/br
+    //   119: astore_1
+    //   120: aload 7
+    //   122: ifnonnull +129 -> 251
+    //   125: aload_1
+    //   126: ifnull +125 -> 251
+    //   129: aload_1
+    //   130: invokeinterface 194 1 0
+    //   135: ifne +116 -> 251
+    //   138: aload_1
+    //   139: invokeinterface 198 1 0
+    //   144: astore_1
+    //   145: aload_0
+    //   146: aload 6
+    //   148: aload_1
+    //   149: checkcast 106	java/lang/Throwable
+    //   152: invokevirtual 200	kotlinx/coroutines/ax:a	(Ljava/lang/Object;Ljava/lang/Throwable;)V
+    //   155: getstatic 132	d/p:MKe	Ld/p$a;
+    //   158: astore 6
+    //   160: invokestatic 205	kotlinx/coroutines/am:gve	()Z
+    //   163: ifeq +11 -> 174
+    //   166: aload 5
+    //   168: instanceof 207
+    //   171: ifne +64 -> 235
+    //   174: aload_1
+    //   175: checkcast 106	java/lang/Throwable
+    //   178: astore_1
+    //   179: aload 5
+    //   181: aload_1
+    //   182: invokestatic 213	d/q:o	(Ljava/lang/Throwable;)Ljava/lang/Object;
+    //   185: invokestatic 146	d/p:eL	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   188: invokeinterface 217 2 0
+    //   193: getstatic 143	d/z:MKo	Ld/z;
+    //   196: astore_1
+    //   197: aload_3
+    //   198: aload 4
+    //   200: invokestatic 220	kotlinx/coroutines/internal/x:b	(Ld/d/f;Ljava/lang/Object;)V
+    //   203: getstatic 132	d/p:MKe	Ld/p$a;
+    //   206: astore_1
+    //   207: aload_2
+    //   208: invokeinterface 137 1 0
+    //   213: getstatic 143	d/z:MKo	Ld/z;
+    //   216: invokestatic 146	d/p:eL	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   219: astore_1
+    //   220: aload_0
+    //   221: aconst_null
+    //   222: aload_1
+    //   223: invokestatic 149	d/p:eK	(Ljava/lang/Object;)Ljava/lang/Throwable;
+    //   226: invokevirtual 151	kotlinx/coroutines/ax:c	(Ljava/lang/Throwable;Ljava/lang/Throwable;)V
+    //   229: return
+    //   230: aconst_null
+    //   231: astore_1
+    //   232: goto -112 -> 120
+    //   235: aload_1
+    //   236: checkcast 106	java/lang/Throwable
+    //   239: aload 5
+    //   241: checkcast 207	d/d/b/a/e
+    //   244: invokestatic 225	kotlinx/coroutines/internal/s:a	(Ljava/lang/Throwable;Ld/d/b/a/e;)Ljava/lang/Throwable;
+    //   247: astore_1
+    //   248: goto -69 -> 179
+    //   251: aload 7
+    //   253: ifnull +63 -> 316
+    //   256: getstatic 132	d/p:MKe	Ld/p$a;
+    //   259: astore_1
+    //   260: aload 5
+    //   262: aload 7
+    //   264: invokestatic 213	d/q:o	(Ljava/lang/Throwable;)Ljava/lang/Object;
+    //   267: invokestatic 146	d/p:eL	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   270: invokeinterface 217 2 0
+    //   275: goto -82 -> 193
+    //   278: astore_1
+    //   279: aload_3
+    //   280: aload 4
+    //   282: invokestatic 220	kotlinx/coroutines/internal/x:b	(Ld/d/f;Ljava/lang/Object;)V
+    //   285: aload_1
+    //   286: athrow
+    //   287: astore_3
+    //   288: getstatic 132	d/p:MKe	Ld/p$a;
+    //   291: astore_1
+    //   292: aload_2
+    //   293: invokeinterface 137 1 0
+    //   298: getstatic 143	d/z:MKo	Ld/z;
+    //   301: invokestatic 146	d/p:eL	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   304: astore_1
+    //   305: aload_0
+    //   306: aconst_null
+    //   307: aload_1
+    //   308: invokestatic 149	d/p:eK	(Ljava/lang/Object;)Ljava/lang/Throwable;
+    //   311: invokevirtual 151	kotlinx/coroutines/ax:c	(Ljava/lang/Throwable;Ljava/lang/Throwable;)V
+    //   314: aload_3
+    //   315: athrow
+    //   316: aload_0
+    //   317: aload 6
+    //   319: invokevirtual 227	kotlinx/coroutines/ax:fI	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   322: astore_1
+    //   323: getstatic 132	d/p:MKe	Ld/p$a;
+    //   326: astore 6
+    //   328: aload 5
+    //   330: aload_1
+    //   331: invokestatic 146	d/p:eL	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   334: invokeinterface 217 2 0
+    //   339: goto -146 -> 193
+    //   342: astore_1
+    //   343: getstatic 132	d/p:MKe	Ld/p$a;
+    //   346: astore_2
+    //   347: aload_1
+    //   348: invokestatic 213	d/q:o	(Ljava/lang/Throwable;)Ljava/lang/Object;
+    //   351: invokestatic 146	d/p:eL	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   354: astore_1
+    //   355: goto -135 -> 220
+    //   358: astore_1
+    //   359: getstatic 132	d/p:MKe	Ld/p$a;
+    //   362: astore_2
+    //   363: aload_1
+    //   364: invokestatic 213	d/q:o	(Ljava/lang/Throwable;)Ljava/lang/Object;
+    //   367: invokestatic 146	d/p:eL	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   370: astore_1
+    //   371: goto -329 -> 42
+    //   374: astore_1
+    //   375: getstatic 132	d/p:MKe	Ld/p$a;
+    //   378: astore_2
+    //   379: aload_1
+    //   380: invokestatic 213	d/q:o	(Ljava/lang/Throwable;)Ljava/lang/Object;
+    //   383: invokestatic 146	d/p:eL	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   386: astore_1
+    //   387: goto -82 -> 305
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	390	0	this	ax
+    //   9	251	1	localObject1	Object
+    //   278	8	1	localObject2	Object
+    //   291	40	1	localObject3	Object
+    //   342	6	1	localThrowable1	Throwable
+    //   354	1	1	localObject4	Object
+    //   358	6	1	localThrowable2	Throwable
+    //   370	1	1	localObject5	Object
+    //   374	6	1	localThrowable3	Throwable
+    //   386	1	1	localObject6	Object
+    //   4	375	2	localObject7	Object
+    //   24	20	3	localThrowable4	Throwable
+    //   70	210	3	localf	d.d.f
+    //   287	28	3	localObject8	Object
+    //   85	196	4	localObject9	Object
+    //   61	268	5	locald	d
+    //   75	252	6	localObject10	Object
+    //   92	171	7	localThrowable5	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   5	10	24	java/lang/Throwable
+    //   14	24	24	java/lang/Throwable
+    //   52	87	24	java/lang/Throwable
+    //   197	203	24	java/lang/Throwable
+    //   279	287	24	java/lang/Throwable
+    //   87	120	278	finally
+    //   129	174	278	finally
+    //   174	179	278	finally
+    //   179	193	278	finally
+    //   193	197	278	finally
+    //   235	248	278	finally
+    //   256	275	278	finally
+    //   316	339	278	finally
+    //   5	10	287	finally
+    //   14	24	287	finally
+    //   52	87	287	finally
+    //   197	203	287	finally
+    //   279	287	287	finally
+    //   203	220	342	java/lang/Throwable
+    //   25	42	358	java/lang/Throwable
+    //   288	305	374	java/lang/Throwable
   }
 }
 

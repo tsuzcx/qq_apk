@@ -10,10 +10,10 @@ public final class AudioAttributesImplBaseParcelizer
   {
     AppMethodBeat.i(107788);
     AudioAttributesImplBase localAudioAttributesImplBase = new AudioAttributesImplBase();
-    localAudioAttributesImplBase.mUsage = parama.aS(localAudioAttributesImplBase.mUsage, 1);
-    localAudioAttributesImplBase.mContentType = parama.aS(localAudioAttributesImplBase.mContentType, 2);
-    localAudioAttributesImplBase.mFlags = parama.aS(localAudioAttributesImplBase.mFlags, 3);
-    localAudioAttributesImplBase.mLegacyStream = parama.aS(localAudioAttributesImplBase.mLegacyStream, 4);
+    localAudioAttributesImplBase.mUsage = parama.aT(localAudioAttributesImplBase.mUsage, 1);
+    localAudioAttributesImplBase.mContentType = parama.aT(localAudioAttributesImplBase.mContentType, 2);
+    localAudioAttributesImplBase.mFlags = parama.aT(localAudioAttributesImplBase.mFlags, 3);
+    localAudioAttributesImplBase.mLegacyStream = parama.aT(localAudioAttributesImplBase.mLegacyStream, 4);
     AppMethodBeat.o(107788);
     return localAudioAttributesImplBase;
   }
@@ -21,16 +21,16 @@ public final class AudioAttributesImplBaseParcelizer
   public static void write(AudioAttributesImplBase paramAudioAttributesImplBase, a parama)
   {
     AppMethodBeat.i(107789);
-    parama.aR(paramAudioAttributesImplBase.mUsage, 1);
-    parama.aR(paramAudioAttributesImplBase.mContentType, 2);
-    parama.aR(paramAudioAttributesImplBase.mFlags, 3);
-    parama.aR(paramAudioAttributesImplBase.mLegacyStream, 4);
+    parama.aS(paramAudioAttributesImplBase.mUsage, 1);
+    parama.aS(paramAudioAttributesImplBase.mContentType, 2);
+    parama.aS(paramAudioAttributesImplBase.mFlags, 3);
+    parama.aS(paramAudioAttributesImplBase.mLegacyStream, 4);
     AppMethodBeat.o(107789);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     androidx.media.AudioAttributesImplBaseParcelizer
  * JD-Core Version:    0.7.0.1
  */

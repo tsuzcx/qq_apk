@@ -18,34 +18,34 @@ public final class WcfSchemeResolver
     AppMethodBeat.o(13337);
   }
   
-  public static WcfSchemeResolver fyA()
+  public static WcfSchemeResolver fPu()
   {
-    return a.JuC;
+    return a.Lmk;
   }
   
-  public final Pair<FileSystem, String> a(SchemeResolver.a parama, Uri paramUri)
+  public final Pair<FileSystem, String> a(SchemeResolver.b paramb, Uri paramUri)
   {
     AppMethodBeat.i(13336);
-    FileSystem localFileSystem = (FileSystem)((c)parama).Jtm.get(paramUri.getAuthority());
-    parama = paramUri.getPath();
-    if (parama == null) {}
-    for (parama = "";; parama = q.m(parama, true, true))
+    FileSystem localFileSystem = (FileSystem)((c)paramb).LkR.get(paramUri.getAuthority());
+    paramb = paramUri.getPath();
+    if (paramb == null) {}
+    for (paramb = "";; paramb = q.o(paramb, true, true))
     {
-      parama = new Pair(localFileSystem, parama);
+      paramb = new Pair(localFileSystem, paramb);
       AppMethodBeat.o(13336);
-      return parama;
+      return paramb;
     }
   }
   
   static final class a
     implements Parcelable.Creator<WcfSchemeResolver>
   {
-    static final WcfSchemeResolver JuC;
+    static final WcfSchemeResolver Lmk;
     
     static
     {
       AppMethodBeat.i(13335);
-      JuC = new WcfSchemeResolver((byte)0);
+      Lmk = new WcfSchemeResolver((byte)0);
       AppMethodBeat.o(13335);
     }
   }

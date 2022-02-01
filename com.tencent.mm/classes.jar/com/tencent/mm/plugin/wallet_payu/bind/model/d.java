@@ -4,29 +4,29 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet.bind.a;
 import com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardDetailUI;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUBankcardDetailUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.a.c;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUCheckPwdUI;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
-import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
 
 public class d
   extends a
 {
-  public final g a(MMActivity paramMMActivity, i parami)
+  public final com.tencent.mm.wallet_core.d.g a(MMActivity paramMMActivity, i parami)
   {
     AppMethodBeat.i(71992);
     if ((paramMMActivity instanceof WalletPayUCheckPwdUI))
     {
-      paramMMActivity = new g(paramMMActivity, parami)
+      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
       {
         public final CharSequence getTips(int paramAnonymousInt)
         {
@@ -50,13 +50,13 @@ public class d
             {
               paramAnonymousString = (c)paramAnonymousn;
               d.a(d.this).putString("payu_reference", paramAnonymousString.token);
-              if (bs.isNullOrNil(paramAnonymousString.token)) {
+              if (bt.isNullOrNil(paramAnonymousString.token)) {
                 break label118;
               }
-              ac.d("MicroMsg.PayUUnbindProcess", "hy: check pwd pass");
+              ad.d("MicroMsg.PayUUnbindProcess", "hy: check pwd pass");
               paramAnonymousString = (Bankcard)d.b(d.this).getParcelable("key_bankcard");
               if (paramAnonymousString != null) {
-                this.JFQ.b(new b(paramAnonymousString.field_bindSerial, d.c(d.this).getString("payu_reference")), true);
+                this.LyU.b(new b(paramAnonymousString.field_bindSerial, d.c(d.this).getString("payu_reference")), true);
               }
             }
           }
@@ -66,7 +66,7 @@ public class d
             {
               AppMethodBeat.o(71987);
               return false;
-              ac.w("MicroMsg.PayUUnbindProcess", "hy: check pwd failed");
+              ad.w("MicroMsg.PayUUnbindProcess", "hy: check pwd failed");
             }
           }
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
@@ -82,7 +82,7 @@ public class d
         {
           AppMethodBeat.i(71988);
           d.f(d.this).putString("key_pwd1", (String)paramAnonymousVarArgs[0]);
-          this.JFQ.b(new c(d.g(d.this).getString("key_pwd1")), true);
+          this.LyU.b(new c(d.g(d.this).getString("key_pwd1")), true);
           AppMethodBeat.o(71988);
           return true;
         }
@@ -113,16 +113,23 @@ public class d
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(71990);
-    if (this.dmf.getInt("key_errcode_payu", -1) == 0) {
+    if (this.dxT.getInt("key_errcode_payu", -1) == 0) {
       t.makeText(paramActivity, 2131765569, 0).show();
     }
     for (;;)
     {
-      e(paramActivity, "mall", ".ui.MallIndexUI");
+      boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzF, false);
+      ad.i("MicroMsg.PayUUnbindProcess", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
+      if (!bool) {
+        break;
+      }
+      e(paramActivity, "mall", ".ui.MallIndexUIv2");
       AppMethodBeat.o(71990);
       return;
       t.makeText(paramActivity, 2131765252, 0).show();
     }
+    e(paramActivity, "mall", ".ui.MallIndexUI");
+    AppMethodBeat.o(71990);
   }
   
   public final boolean c(Activity paramActivity, Bundle paramBundle)

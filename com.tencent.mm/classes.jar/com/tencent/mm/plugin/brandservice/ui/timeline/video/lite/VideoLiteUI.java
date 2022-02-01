@@ -19,19 +19,19 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.e.b;
 import com.tencent.mm.plugin.mmsight.d;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
 @a(32)
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/lite/VideoLiteUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "btnCenterPlayer", "Landroid/widget/ImageView;", "mVideoUrl", "mVideoView", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoView;", "videoLiteControlBar", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/lite/VideoLiteControBar;", "getLayoutId", "", "getUIFlag", "initVideoView", "", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onSwipeBackFinish", "", "onWindowFocusChanged", "hasFocus", "setWindowStyle", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/lite/VideoLiteUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "btnCenterPlayer", "Landroid/widget/ImageView;", "mVideoUrl", "mVideoView", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoView;", "videoLiteControlBar", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/lite/VideoLiteControBar;", "getLayoutId", "", "getUIFlag", "initVideoView", "", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onSwipeBackFinish", "", "onWindowFocusChanged", "hasFocus", "setWindowStyle", "plugin-brandservice_release"})
 public final class VideoLiteUI
   extends MMActivity
 {
   private final String TAG = "MicroMsg.VideoLiteUI";
-  private String mfw;
-  private AppBrandVideoView mfx;
-  private VideoLiteControBar nNv;
-  private ImageView nNw;
+  private String mFX;
+  private AppBrandVideoView mFY;
+  private VideoLiteControBar oqb;
+  private ImageView oqc;
   
   public final int getLayoutId()
   {
@@ -40,180 +40,180 @@ public final class VideoLiteUI
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(199162);
-    k.h(paramConfiguration, "newConfig");
+    AppMethodBeat.i(210111);
+    p.h(paramConfiguration, "newConfig");
     super.onConfigurationChanged(paramConfiguration);
-    VideoLiteControBar localVideoLiteControBar = this.nNv;
+    VideoLiteControBar localVideoLiteControBar = this.oqb;
     if (localVideoLiteControBar != null)
     {
       localVideoLiteControBar.f(paramConfiguration);
-      AppMethodBeat.o(199162);
+      AppMethodBeat.o(210111);
       return;
     }
-    AppMethodBeat.o(199162);
+    AppMethodBeat.o(210111);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(199160);
+    AppMethodBeat.i(210109);
     supportRequestWindowFeature(1);
     super.onCreate(paramBundle);
     setSelfNavigationBarVisible(8);
-    d.nX(true);
+    d.or(true);
     paramBundle = getWindow();
-    k.g(paramBundle, "window");
+    p.g(paramBundle, "window");
     paramBundle.setNavigationBarColor(-16777216);
     paramBundle = getWindow();
-    k.g(paramBundle, "window");
+    p.g(paramBundle, "window");
     paramBundle = paramBundle.getDecorView();
-    k.g(paramBundle, "window.decorView");
+    p.g(paramBundle, "window.decorView");
     paramBundle.setSystemUiVisibility(1284);
-    this.mfw = getIntent().getStringExtra("rawUrl");
-    this.nNw = ((ImageView)findViewById(2131297935));
-    paramBundle = this.nNw;
+    this.mFX = getIntent().getStringExtra("rawUrl");
+    this.oqc = ((ImageView)findViewById(2131297935));
+    paramBundle = this.oqc;
     if (paramBundle != null) {
       paramBundle.setVisibility(8);
     }
     paramBundle = new AppBrandVideoWrapper((Context)this);
-    this.mfx = new AppBrandVideoView((Context)this, (View)paramBundle);
-    this.nNv = new VideoLiteControBar((Context)this);
-    Object localObject = this.nNv;
+    this.mFY = new AppBrandVideoView((Context)this, (View)paramBundle);
+    this.oqb = new VideoLiteControBar((Context)this);
+    Object localObject = this.oqb;
     if (localObject == null) {
-      k.fOy();
+      p.gfZ();
     }
-    ((VideoLiteControBar)localObject).setBtnCloseListener((View.OnClickListener)new a(this));
-    localObject = this.nNv;
+    ((VideoLiteControBar)localObject).setBtnCloseListener((View.OnClickListener)new VideoLiteUI.a(this));
+    localObject = this.oqb;
     if (localObject == null) {
-      k.fOy();
+      p.gfZ();
     }
-    ((VideoLiteControBar)localObject).setOnPlayStatusChangeListener((VideoLiteControBar.a)new b(this));
-    localObject = this.mfx;
+    ((VideoLiteControBar)localObject).setOnPlayStatusChangeListener((VideoLiteControBar.a)new VideoLiteUI.b(this));
+    localObject = this.mFY;
     if (localObject != null) {
-      ((AppBrandVideoView)localObject).a((e.a)this.nNv);
+      ((AppBrandVideoView)localObject).a((e.a)this.oqb);
     }
-    paramBundle.setVideoFooterView((e.b)this.nNv);
+    paramBundle.setVideoFooterView((e.b)this.oqb);
     paramBundle = (FrameLayout)findViewById(2131298740);
     if (paramBundle != null) {
-      paramBundle.addView((View)this.mfx, 0, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+      paramBundle.addView((View)this.mFY, 0, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
     }
-    paramBundle = this.nNw;
+    paramBundle = this.oqc;
     if (paramBundle != null) {
-      paramBundle.setOnClickListener((View.OnClickListener)new c(this));
+      paramBundle.setOnClickListener((View.OnClickListener)new VideoLiteUI.c(this));
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setAutoPlay(true);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setLoop(false);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setMute(false);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setCookieData(null);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setObjectFit("contain");
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setShowDanmakuBtn(false);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setShowMuteBtn(false);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setShowPlayBtn(true);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setShowProgress(true);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setShowFullScreenBtn(false);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setIsShowBasicControls(true);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setIsEnableBottomProgressBar(false);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setShowCenterPlayBtn(false);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setShowControlProgress(true);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
       paramBundle.setPageGesture(true);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null) {
-      paramBundle.gI(true);
+      paramBundle.gP(true);
     }
-    paramBundle = this.mfx;
+    paramBundle = this.mFY;
     if (paramBundle != null)
     {
-      paramBundle.e(this.mfw, false, 0);
-      AppMethodBeat.o(199160);
+      paramBundle.e(this.mFX, false, 0);
+      AppMethodBeat.o(210109);
       return;
     }
-    AppMethodBeat.o(199160);
+    AppMethodBeat.o(210109);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(199165);
+    AppMethodBeat.i(210114);
     super.onDestroy();
-    AppBrandVideoView localAppBrandVideoView = this.mfx;
+    AppBrandVideoView localAppBrandVideoView = this.mFY;
     if (localAppBrandVideoView != null)
     {
       localAppBrandVideoView.onUIDestroy();
-      AppMethodBeat.o(199165);
+      AppMethodBeat.o(210114);
       return;
     }
-    AppMethodBeat.o(199165);
+    AppMethodBeat.o(210114);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(199164);
+    AppMethodBeat.i(210113);
     super.onPause();
-    AppBrandVideoView localAppBrandVideoView = this.mfx;
+    AppBrandVideoView localAppBrandVideoView = this.mFY;
     if (localAppBrandVideoView != null)
     {
-      localAppBrandVideoView.sM(3);
-      AppMethodBeat.o(199164);
+      localAppBrandVideoView.tp(3);
+      AppMethodBeat.o(210113);
       return;
     }
-    AppMethodBeat.o(199164);
+    AppMethodBeat.o(210113);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(199163);
+    AppMethodBeat.i(210112);
     super.onResume();
-    AppBrandVideoView localAppBrandVideoView = this.mfx;
+    AppBrandVideoView localAppBrandVideoView = this.mFY;
     if (localAppBrandVideoView != null)
     {
       localAppBrandVideoView.onUIResume();
-      AppMethodBeat.o(199163);
+      AppMethodBeat.o(210112);
       return;
     }
-    AppMethodBeat.o(199163);
+    AppMethodBeat.o(210112);
   }
   
   public final boolean onSwipeBackFinish()
@@ -223,73 +223,15 @@ public final class VideoLiteUI
   
   public final void onWindowFocusChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(199161);
+    AppMethodBeat.i(210110);
     super.onWindowFocusChanged(paramBoolean);
     Object localObject = getWindow();
-    k.g(localObject, "window");
+    p.g(localObject, "window");
     localObject = ((Window)localObject).getDecorView();
-    k.g(localObject, "window.decorView");
+    p.g(localObject, "window.decorView");
     ((View)localObject).setSystemUiVisibility(1284);
     AppMethodBeat.at(this, paramBoolean);
-    AppMethodBeat.o(199161);
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(VideoLiteUI paramVideoLiteUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(199157);
-      this.nNx.onBackPressed();
-      AppMethodBeat.o(199157);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "isPlay", "", "onPlayStatusChange"})
-  static final class b
-    implements VideoLiteControBar.a
-  {
-    b(VideoLiteUI paramVideoLiteUI) {}
-    
-    public final void jf(boolean paramBoolean)
-    {
-      AppMethodBeat.i(199158);
-      ImageView localImageView = VideoLiteUI.a(this.nNx);
-      if (localImageView != null)
-      {
-        if (paramBoolean) {}
-        for (int i = 8;; i = 0)
-        {
-          localImageView.setVisibility(i);
-          AppMethodBeat.o(199158);
-          return;
-        }
-      }
-      AppMethodBeat.o(199158);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(VideoLiteUI paramVideoLiteUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(199159);
-      paramView = VideoLiteUI.b(this.nNx);
-      if (paramView != null)
-      {
-        paramView.start();
-        AppMethodBeat.o(199159);
-        return;
-      }
-      AppMethodBeat.o(199159);
-    }
+    AppMethodBeat.o(210110);
   }
 }
 

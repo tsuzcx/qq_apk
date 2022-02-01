@@ -9,9 +9,9 @@ import com.tencent.pb.common.c.b;
 public final class j
   extends d
 {
-  public String tmu;
+  public String ukT;
   
-  public final Object cB(byte[] paramArrayOfByte)
+  public final Object cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62530);
     if (paramArrayOfByte != null) {}
@@ -33,7 +33,7 @@ public final class j
     }
   }
   
-  public final String fBB()
+  public final String fSQ()
   {
     return "CsCmd.Cmd_V_CSVoiceMemberWhisperReq";
   }
@@ -45,7 +45,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.j
  * JD-Core Version:    0.7.0.1
  */

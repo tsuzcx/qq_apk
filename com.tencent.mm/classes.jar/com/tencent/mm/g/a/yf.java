@@ -1,16 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class yf
   extends b
 {
-  public a dBI;
-  public b dBJ;
+  public a dMz;
   
   public yf()
   {
@@ -19,25 +15,16 @@ public final class yf
   
   private yf(byte paramByte)
   {
-    AppMethodBeat.i(19848);
-    this.dBI = new a();
-    this.dBJ = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(91222);
+    this.dMz = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19848);
+    AppMethodBeat.o(91222);
   }
   
   public static final class a
   {
-    public String callingPackage;
-    public Context context;
-    public int dfg = 0;
-    public Uri uri;
-  }
-  
-  public static final class b
-  {
-    public Cursor dfh;
+    public int result = 0;
   }
 }
 

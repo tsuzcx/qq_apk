@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public final class c
 {
-  public static void dL(int paramInt1, int paramInt2)
+  public static void dN(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(144492);
     ArrayList localArrayList = new ArrayList();
@@ -26,7 +26,7 @@ public final class c
     AppMethodBeat.o(144492);
   }
   
-  public static void lA(int paramInt)
+  public static void ma(int paramInt)
   {
     AppMethodBeat.i(144491);
     ((a)e.L(a.class)).idkeyStat(762L, paramInt, 1L, false);
@@ -35,7 +35,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c
  * JD-Core Version:    0.7.0.1
  */

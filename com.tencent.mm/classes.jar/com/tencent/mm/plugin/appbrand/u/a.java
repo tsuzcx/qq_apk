@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.appbrand.u;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.o.b.a;
+import com.tencent.mm.plugin.appbrand.jsapi.r.b.a;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
 {
-  private static final Map<Integer, Object> gej;
+  private static final Map<Integer, Object> gxT;
   
   static
   {
     AppMethodBeat.i(48006);
-    gej = new HashMap();
+    gxT = new HashMap();
     AppMethodBeat.o(48006);
   }
   
-  public static void bsT()
+  public static void bwX()
   {
     AppMethodBeat.i(48004);
-    gej.clear();
+    gxT.clear();
     AppMethodBeat.o(48004);
   }
   
-  public static void bsU()
+  public static void bwY()
   {
     AppMethodBeat.i(48005);
-    com.tencent.mm.plugin.appbrand.jsapi.o.b.kIj = new b.a()
+    com.tencent.mm.plugin.appbrand.jsapi.r.b.leC = new b.a()
     {
-      public final void sJ(int paramAnonymousInt)
+      public final void tm(int paramAnonymousInt)
       {
         AppMethodBeat.i(48002);
-        a.uB(paramAnonymousInt);
+        a.vf(paramAnonymousInt);
         AppMethodBeat.o(48002);
       }
     };
     AppMethodBeat.o(48005);
   }
   
-  public static void uB(int paramInt)
+  public static void vf(int paramInt)
   {
     AppMethodBeat.i(48003);
-    if (!gej.containsKey(Integer.valueOf(paramInt)))
+    if (!gxT.containsKey(Integer.valueOf(paramInt)))
     {
       AppMethodBeat.o(48003);
       return;
     }
-    gej.get(Integer.valueOf(paramInt));
+    gxT.get(Integer.valueOf(paramInt));
     AppMethodBeat.o(48003);
   }
 }

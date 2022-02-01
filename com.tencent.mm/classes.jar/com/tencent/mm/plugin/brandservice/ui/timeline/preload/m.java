@@ -2,35 +2,35 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
 
 public final class m
 {
-  public static void eD(String paramString1, String paramString2)
+  public static void eN(String paramString1, String paramString2)
   {
     AppMethodBeat.i(6185);
-    if ((ac.getLogLevel() == 0) && (bt.eWo())) {
-      ap.f(new Runnable()
+    if ((ad.getLogLevel() == 0) && (bu.flY())) {
+      aq.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(6183);
-          Toast.makeText(ai.getContext(), this.hSd, 0).show();
+          Toast.makeText(aj.getContext(), this.ilu, 0).show();
           AppMethodBeat.o(6183);
         }
       });
     }
-    ac.i(paramString1, paramString2);
+    ad.i(paramString1, paramString2);
     AppMethodBeat.o(6185);
   }
   
   public static void showToast(String paramString)
   {
     AppMethodBeat.i(6184);
-    eD("MicroMsg.PreloadUtil", paramString);
+    eN("MicroMsg.PreloadUtil", paramString);
     AppMethodBeat.o(6184);
   }
 }

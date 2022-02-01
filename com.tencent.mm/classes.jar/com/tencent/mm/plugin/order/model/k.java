@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.order.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String ThumbUrl;
-  public String vyA;
+  public String wDU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,8 +17,8 @@ public final class k
       if (this.ThumbUrl != null) {
         paramVarArgs.d(1, this.ThumbUrl);
       }
-      if (this.vyA != null) {
-        paramVarArgs.d(2, this.vyA);
+      if (this.wDU != null) {
+        paramVarArgs.d(2, this.wDU);
       }
       AppMethodBeat.o(91263);
       return 0;
@@ -32,17 +32,17 @@ public final class k
     for (paramInt = f.a.a.b.b.a.e(1, this.ThumbUrl) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.vyA != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.vyA);
+      if (this.wDU != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.wDU);
       }
       AppMethodBeat.o(91263);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(91263);
@@ -58,11 +58,11 @@ public final class k
           AppMethodBeat.o(91263);
           return -1;
         case 1: 
-          localk.ThumbUrl = locala.LVo.readString();
+          localk.ThumbUrl = locala.NPN.readString();
           AppMethodBeat.o(91263);
           return 0;
         }
-        localk.vyA = locala.LVo.readString();
+        localk.wDU = locala.NPN.readString();
         AppMethodBeat.o(91263);
         return 0;
       }
@@ -73,7 +73,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.k
  * JD-Core Version:    0.7.0.1
  */

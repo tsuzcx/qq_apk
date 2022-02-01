@@ -15,7 +15,7 @@
         <ImageView android:layout_gravity="center" android:id="@id/fp1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@raw/sns_comment_silence" android:scaleType="center" />
         <FrameLayout android:id="@id/fnz" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="13.0dip">
             <com.tencent.mm.ui.MMImageView android:layout_gravity="top" android:id="@id/fnw" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" android:maxHeight="60.0dip" />
-            <ImageView android:layout_gravity="bottom|center|left" android:id="@id/fow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginBottom="5.0dip" android:src="@raw/sns_sight_icon_mark" android:scaleType="fitXY" />
+            <ImageView android:layout_gravity="center" android:id="@id/fow" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:src="@raw/shortvideo_play_btn" />
         </FrameLayout>
         <TextView android:textSize="12.0dip" android:textColor="@color/a4d" android:gravity="center" android:layout_gravity="top" android:id="@id/fo2" android:background="@color/a3m" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="13.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="13.0dip" android:maxHeight="60.0dip" android:text="" android:maxLines="3" />
     </LinearLayout>

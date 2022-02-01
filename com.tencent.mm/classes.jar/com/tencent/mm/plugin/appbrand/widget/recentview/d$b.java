@@ -7,9 +7,9 @@ public enum d$b
   static
   {
     AppMethodBeat.i(153259);
-    mNX = new b("TYPE_MENU", 0);
-    mNY = new b("TYPE_CONVERSATION", 1);
-    mNZ = new b[] { mNX, mNY };
+    nou = new b("TYPE_MENU", 0);
+    nov = new b("TYPE_CONVERSATION", 1);
+    now = new b[] { nou, nov };
     AppMethodBeat.o(153259);
   }
   

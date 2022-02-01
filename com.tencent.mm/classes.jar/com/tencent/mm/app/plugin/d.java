@@ -4,24 +4,24 @@ import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.p;
 import com.tencent.mm.pluginsdk.ui.applet.u;
 import com.tencent.mm.pluginsdk.ui.span.a;
 import com.tencent.mm.pluginsdk.ui.span.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 
 public final class d
-  implements o
+  implements p
 {
   private static String a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     AppMethodBeat.i(19665);
-    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)) || (paramInt1 >= paramInt2))
+    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)) || (paramInt1 >= paramInt2))
     {
       AppMethodBeat.o(19665);
       return paramString1;
@@ -39,7 +39,7 @@ public final class d
     }
     catch (Exception paramString1)
     {
-      ac.e("MicroMsg.QrCodeURLHelper", paramString1.getMessage());
+      ad.e("MicroMsg.QrCodeURLHelper", paramString1.getMessage());
       AppMethodBeat.o(19665);
     }
     return "";
@@ -48,8 +48,8 @@ public final class d
   public final boolean a(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener)
   {
     AppMethodBeat.i(19666);
-    ac.d("MicroMsg.QrCodeURLHelper", "tryHandleEvents, url:%s", new Object[] { paramString });
-    if (bs.isNullOrNil(paramString))
+    ad.d("MicroMsg.QrCodeURLHelper", "tryHandleEvents, url:%s", new Object[] { paramString });
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(19666);
       return false;
@@ -73,7 +73,7 @@ public final class d
     return false;
   }
   
-  public final boolean eJ(String paramString)
+  public final boolean fE(String paramString)
   {
     AppMethodBeat.i(19667);
     if ((paramString == null) || (paramString.length() == 0))
@@ -90,10 +90,10 @@ public final class d
     return false;
   }
   
-  public final String w(Context paramContext, String paramString)
+  public final String v(Context paramContext, String paramString)
   {
     AppMethodBeat.i(19664);
-    paramContext = a.bO(paramContext, paramString);
+    paramContext = a.bS(paramContext, paramString);
     if (paramContext.size() == 0)
     {
       AppMethodBeat.o(19664);
@@ -133,7 +133,7 @@ public final class d
     }
     for (;;)
     {
-      ac.d("MicroMsg.QrCodeURLHelper", "formatQRString, result:%s", new Object[] { paramString });
+      ad.d("MicroMsg.QrCodeURLHelper", "formatQRString, result:%s", new Object[] { paramString });
       AppMethodBeat.o(19664);
       return paramString;
       str1 = "<a href=\"%s@tel@\">%s</a>";

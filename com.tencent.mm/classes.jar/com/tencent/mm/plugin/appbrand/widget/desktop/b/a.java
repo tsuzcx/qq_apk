@@ -4,11 +4,13 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.f;
 import d.g;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -16,60 +18,60 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AbsAppBrandDesktopViewStorageWithCache;", "DATA", "DELEGATE_INTERFACE", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/IQueryCache;", "delegate", "(Ljava/lang/Object;)V", "cache", "", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "getDelegate", "()Ljava/lang/Object;", "setDelegate", "Ljava/lang/Object;", "queryCacheConfig", "getQueryCacheConfig", "()Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "queryCacheConfig$delegate", "Lkotlin/Lazy;", "storageChangeListenerSet", "", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "storageChangedListener", "addChangedListener", "", "listener", "addStorageChangedListenerToDelegate", "queryAndCache", "queryByCache", "args", "", "", "([Ljava/lang/Object;)Ljava/lang/Object;", "queryByDelegate", "removeChangedListener", "updateCache", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "event", "", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AbsAppBrandDesktopViewStorageWithCache;", "DATA", "DELEGATE_INTERFACE", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/IQueryCache;", "delegate", "(Ljava/lang/Object;)V", "cache", "", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "getDelegate", "()Ljava/lang/Object;", "setDelegate", "Ljava/lang/Object;", "queryCacheConfig", "getQueryCacheConfig", "()Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "queryCacheConfig$delegate", "Lkotlin/Lazy;", "storageChangeListenerSet", "", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "storageChangedListener", "addChangedListener", "", "listener", "addStorageChangedListenerToDelegate", "queryAndCache", "queryByCache", "args", "", "", "([Ljava/lang/Object;)Ljava/lang/Object;", "queryByDelegate", "removeChangedListener", "updateCache", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "event", "", "Companion", "plugin-appbrand-integration_release"})
 public abstract class a<DATA, DELEGATE_INTERFACE>
   implements h<DATA>
 {
-  public static final a mzw = new a((byte)0);
-  private final Map<n, DATA> aMj;
-  private final Set<k.a> mzs;
-  private final k.a mzt;
-  private final f mzu;
-  DELEGATE_INTERFACE mzv;
+  public static final a nae = new a((byte)0);
+  private final Map<n, DATA> aOa;
+  private final Set<k.a> naa;
+  private final k.a nab;
+  private final f nac;
+  DELEGATE_INTERFACE nad;
   
   public a(DELEGATE_INTERFACE paramDELEGATE_INTERFACE)
   {
-    this.mzv = paramDELEGATE_INTERFACE;
-    this.aMj = ((Map)new LinkedHashMap());
-    this.mzs = ((Set)new LinkedHashSet());
-    this.mzt = ((k.a)new c(this));
-    g(this.mzt);
-    this.mzu = g.K((d.g.a.a)new b(this));
+    this.nad = paramDELEGATE_INTERFACE;
+    this.aOa = ((Map)new LinkedHashMap());
+    this.naa = ((Set)new LinkedHashSet());
+    this.nab = ((k.a)new c(this));
+    g(this.nab);
+    this.nac = g.O((d.g.a.a)new b(this));
   }
   
-  private final n bzu()
+  private final n bDy()
   {
-    return (n)this.mzu.getValue();
+    return (n)this.nac.getValue();
   }
   
-  public final DATA bzv()
+  public final DATA bDz()
   {
-    Object localObject1 = o(bzu().args);
-    synchronized (this.aMj)
+    Object localObject1 = o(bDy().args);
+    synchronized (this.aOa)
     {
-      ac.i("MicroMsg.AbsAppBrandStorageWithCache", "queryAndCache for config: [" + bzu() + ']');
-      this.aMj.put(bzu(), localObject1);
-      y localy = y.KTp;
+      ad.i("MicroMsg.AbsAppBrandStorageWithCache", "queryAndCache for config: [" + bDy() + ']');
+      this.aOa.put(bDy(), localObject1);
+      z localz = z.MKo;
       return localObject1;
     }
   }
   
   public final void e(k.a parama)
   {
-    k.h(parama, "listener");
-    synchronized (this.mzs)
+    p.h(parama, "listener");
+    synchronized (this.naa)
     {
-      this.mzs.add(parama);
+      this.naa.add(parama);
       return;
     }
   }
   
   public final void f(k.a parama)
   {
-    k.h(parama, "listener");
-    synchronized (this.mzs)
+    p.h(parama, "listener");
+    synchronized (this.naa)
     {
-      this.mzs.remove(parama);
+      this.naa.remove(parama);
       return;
     }
   }
@@ -78,21 +80,21 @@ public abstract class a<DATA, DELEGATE_INTERFACE>
   
   protected final DATA n(Object... paramVarArgs)
   {
-    k.h(paramVarArgs, "args");
+    p.h(paramVarArgs, "args");
     n localn = new n(Arrays.copyOf(paramVarArgs, paramVarArgs.length));
-    synchronized (this.aMj)
+    synchronized (this.aOa)
     {
-      paramVarArgs = this.aMj.get(localn);
+      paramVarArgs = this.aOa.get(localn);
       if (paramVarArgs != null)
       {
-        ac.i("MicroMsg.AbsAppBrandStorageWithCache", "cache hit, return cache for config: [" + localn + ']');
+        ad.i("MicroMsg.AbsAppBrandStorageWithCache", "cache hit, return cache for config: [" + localn + ']');
         ??? = paramVarArgs;
         if (paramVarArgs != null) {}
       }
       else
       {
-        ??? = bzv();
-        ac.i("MicroMsg.AbsAppBrandStorageWithCache", "no cache for config: [" + localn + "], do query through delegate");
+        ??? = bDz();
+        ad.i("MicroMsg.AbsAppBrandStorageWithCache", "no cache for config: [" + localn + "], do query through delegate");
       }
       return ???;
     }
@@ -100,12 +102,12 @@ public abstract class a<DATA, DELEGATE_INTERFACE>
   
   protected abstract DATA o(Object[] paramArrayOfObject);
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AbsAppBrandDesktopViewStorageWithCache$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AbsAppBrandDesktopViewStorageWithCache$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "DATA", "DELEGATE_INTERFACE", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "DATA", "DELEGATE_INTERFACE", "invoke"})
   static final class b
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<n>
   {
     b(a parama)
@@ -114,7 +116,7 @@ public abstract class a<DATA, DELEGATE_INTERFACE>
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "DATA", "DELEGATE_INTERFACE", "event", "", "kotlin.jvm.PlatformType", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "DATA", "DELEGATE_INTERFACE", "event", "", "kotlin.jvm.PlatformType", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
   static final class c
     implements k.a
   {
@@ -122,16 +124,16 @@ public abstract class a<DATA, DELEGATE_INTERFACE>
     
     public final void a(String paramString, m paramm)
     {
-      AppMethodBeat.i(187458);
-      ac.i("MicroMsg.AbsAppBrandStorageWithCache", "storage change eventId=" + paramm.jRj);
-      a locala = this.mzx;
-      k.g(paramm, "eventData");
+      AppMethodBeat.i(189689);
+      ad.i("MicroMsg.AbsAppBrandStorageWithCache", "storage change eventId=" + paramm.dtK);
+      a locala = this.naf;
+      p.g(paramm, "eventData");
       a.a(locala, paramm, paramString);
-      AppMethodBeat.o(187458);
+      AppMethodBeat.o(189689);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "DATA", "DELEGATE_INTERFACE", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "DATA", "DELEGATE_INTERFACE", "run"})
   static final class d
     implements Runnable
   {
@@ -139,26 +141,26 @@ public abstract class a<DATA, DELEGATE_INTERFACE>
     
     public final void run()
     {
-      AppMethodBeat.i(187460);
-      this.mzx.bzv();
-      com.tencent.e.h.JZN.aQ((Runnable)new Runnable()
+      AppMethodBeat.i(189691);
+      this.naf.bDz();
+      com.tencent.e.h.LTJ.aP((Runnable)new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(187459);
-          ac.i("MicroMsg.AbsAppBrandStorageWithCache", "notify cache update");
-          synchronized ((Iterable)a.a(this.mzA.mzx))
+          AppMethodBeat.i(189690);
+          ad.i("MicroMsg.AbsAppBrandStorageWithCache", "notify cache update");
+          synchronized ((Iterable)a.a(this.nai.naf))
           {
             Iterator localIterator = ???.iterator();
             if (localIterator.hasNext()) {
-              ((k.a)localIterator.next()).a(this.mzA.mzy, this.mzA.mzz);
+              ((k.a)localIterator.next()).a(this.nai.nag, this.nai.nah);
             }
           }
-          y localy = y.KTp;
-          AppMethodBeat.o(187459);
+          z localz = z.MKo;
+          AppMethodBeat.o(189690);
         }
       });
-      AppMethodBeat.o(187460);
+      AppMethodBeat.o(189691);
     }
   }
 }

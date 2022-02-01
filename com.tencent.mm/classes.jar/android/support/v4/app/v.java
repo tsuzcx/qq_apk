@@ -16,18 +16,18 @@ import java.util.Set;
 
 public final class v
 {
-  private static final Object Gr = new Object();
-  private static String Gs;
-  private static Set<String> Gt = new HashSet();
-  private static v.d Gv;
+  private static final Object Ij = new Object();
+  private static String Ik;
+  private static Set<String> Il = new HashSet();
+  private static v.d In;
   private static final Object sLock = new Object();
-  public final NotificationManager Gu;
+  public final NotificationManager Im;
   public final Context mContext;
   
   private v(Context paramContext)
   {
     this.mContext = paramContext;
-    this.Gu = ((NotificationManager)this.mContext.getSystemService("notification"));
+    this.Im = ((NotificationManager)this.mContext.getSystemService("notification"));
   }
   
   public static v N(Context paramContext)
@@ -38,14 +38,14 @@ public final class v
   public static Set<String> O(Context paramContext)
   {
     Object localObject1 = Settings.Secure.getString(paramContext.getContentResolver(), "enabled_notification_listeners");
-    paramContext = Gr;
+    paramContext = Ij;
     if (localObject1 != null) {}
     for (;;)
     {
       int i;
       try
       {
-        if (!((String)localObject1).equals(Gs))
+        if (!((String)localObject1).equals(Ik))
         {
           String[] arrayOfString = ((String)localObject1).split(":", -1);
           HashSet localHashSet = new HashSet(arrayOfString.length);
@@ -60,13 +60,13 @@ public final class v
           }
           else
           {
-            Gt = localHashSet;
-            Gs = (String)localObject1;
+            Il = localHashSet;
+            Ik = (String)localObject1;
           }
         }
         else
         {
-          localObject1 = Gt;
+          localObject1 = Il;
           return localObject1;
         }
       }
@@ -79,10 +79,10 @@ public final class v
   {
     synchronized (sLock)
     {
-      if (Gv == null) {
-        Gv = new v.d(this.mContext.getApplicationContext());
+      if (In == null) {
+        In = new v.d(this.mContext.getApplicationContext());
       }
-      Gv.b(parame);
+      In.b(parame);
       return;
     }
   }
@@ -90,7 +90,7 @@ public final class v
   public final boolean areNotificationsEnabled()
   {
     if (Build.VERSION.SDK_INT >= 24) {
-      return this.Gu.areNotificationsEnabled();
+      return this.Im.areNotificationsEnabled();
     }
     AppOpsManager localAppOpsManager;
     Object localObject;
@@ -139,7 +139,7 @@ public final class v
   
   public final void cancel(int paramInt)
   {
-    this.Gu.cancel(null, paramInt);
+    this.Im.cancel(null, paramInt);
     if (Build.VERSION.SDK_INT <= 19) {
       a(new a(this.mContext.getPackageName(), paramInt));
     }
@@ -148,7 +148,7 @@ public final class v
   public final int getImportance()
   {
     if (Build.VERSION.SDK_INT >= 24) {
-      return this.Gu.getImportance();
+      return this.Im.getImportance();
     }
     return -1000;
   }
@@ -156,7 +156,7 @@ public final class v
   static final class a
     implements v.e
   {
-    final boolean Gw;
+    final boolean Io;
     final int id;
     final String packageName;
     final String tag;
@@ -166,14 +166,14 @@ public final class v
       this.packageName = paramString;
       this.id = paramInt;
       this.tag = null;
-      this.Gw = false;
+      this.Io = false;
     }
     
     public final void a(o paramo)
     {
-      if (this.Gw)
+      if (this.Io)
       {
-        paramo.t(this.packageName);
+        paramo.s(this.packageName);
         return;
       }
       paramo.b(this.packageName, this.id, this.tag);
@@ -185,7 +185,7 @@ public final class v
       localStringBuilder.append("packageName:").append(this.packageName);
       localStringBuilder.append(", id:").append(this.id);
       localStringBuilder.append(", tag:").append(this.tag);
-      localStringBuilder.append(", all:").append(this.Gw);
+      localStringBuilder.append(", all:").append(this.Io);
       localStringBuilder.append("]");
       return localStringBuilder.toString();
     }
@@ -194,7 +194,7 @@ public final class v
   public static final class b
     implements v.e
   {
-    final Notification Gx;
+    final Notification Ip;
     final int id;
     final String packageName;
     final String tag;
@@ -204,12 +204,12 @@ public final class v
       this.packageName = paramString;
       this.id = paramInt;
       this.tag = null;
-      this.Gx = paramNotification;
+      this.Ip = paramNotification;
     }
     
     public final void a(o paramo)
     {
-      paramo.a(this.packageName, this.id, this.tag, this.Gx);
+      paramo.a(this.packageName, this.id, this.tag, this.Ip);
     }
     
     public final String toString()

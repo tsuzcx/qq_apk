@@ -5,9 +5,8 @@ import com.tencent.liteav.basic.b.e;
 import com.tencent.liteav.basic.b.g;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.log.TXCLog.a;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.liteav.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -48,21 +47,21 @@ public class TXLiveBase
     //   5: aconst_null
     //   6: astore 5
     //   8: sipush 14237
-    //   11: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   14: new 85	java/io/File
+    //   11: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   14: new 82	java/io/File
     //   17: dup
     //   18: aload_0
     //   19: aload_1
-    //   20: invokespecial 88	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   20: invokespecial 85	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   23: astore 7
     //   25: aload 7
-    //   27: invokevirtual 92	java/io/File:exists	()Z
+    //   27: invokevirtual 89	java/io/File:exists	()Z
     //   30: ifeq +11 -> 41
     //   33: aload 7
-    //   35: invokevirtual 95	java/io/File:isFile	()Z
+    //   35: invokevirtual 92	java/io/File:isFile	()Z
     //   38: ifne +11 -> 49
     //   41: sipush 14237
-    //   44: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   44: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   47: aconst_null
     //   48: areturn
     //   49: sipush 1024
@@ -70,8 +69,8 @@ public class TXLiveBase
     //   54: astore 6
     //   56: aload 5
     //   58: astore_1
-    //   59: ldc 97
-    //   61: invokestatic 103	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   59: ldc 94
+    //   61: invokestatic 100	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   64: astore_0
     //   65: aload_0
     //   66: astore_1
@@ -79,10 +78,10 @@ public class TXLiveBase
     //   68: astore_3
     //   69: aload_0
     //   70: astore 4
-    //   72: new 105	java/io/FileInputStream
+    //   72: new 102	java/io/FileInputStream
     //   75: dup
     //   76: aload 7
-    //   78: invokespecial 108	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   78: invokespecial 105	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   81: astore 5
     //   83: aload_0
     //   84: astore_1
@@ -94,7 +93,7 @@ public class TXLiveBase
     //   92: aload 6
     //   94: iconst_0
     //   95: sipush 1024
-    //   98: invokevirtual 112	java/io/FileInputStream:read	([BII)I
+    //   98: invokevirtual 109	java/io/FileInputStream:read	([BII)I
     //   101: istore_2
     //   102: iload_2
     //   103: iconst_m1
@@ -109,22 +108,22 @@ public class TXLiveBase
     //   115: aload 6
     //   117: iconst_0
     //   118: iload_2
-    //   119: invokevirtual 116	java/security/MessageDigest:update	([BII)V
+    //   119: invokevirtual 113	java/security/MessageDigest:update	([BII)V
     //   122: goto -39 -> 83
     //   125: astore_0
     //   126: aload_1
     //   127: astore_0
-    //   128: new 118	java/math/BigInteger
+    //   128: new 115	java/math/BigInteger
     //   131: dup
     //   132: iconst_1
     //   133: aload_0
-    //   134: invokevirtual 122	java/security/MessageDigest:digest	()[B
-    //   137: invokespecial 125	java/math/BigInteger:<init>	(I[B)V
+    //   134: invokevirtual 119	java/security/MessageDigest:digest	()[B
+    //   137: invokespecial 122	java/math/BigInteger:<init>	(I[B)V
     //   140: bipush 16
-    //   142: invokevirtual 129	java/math/BigInteger:toString	(I)Ljava/lang/String;
+    //   142: invokevirtual 126	java/math/BigInteger:toString	(I)Ljava/lang/String;
     //   145: astore_0
     //   146: sipush 14237
-    //   149: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   149: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   152: aload_0
     //   153: areturn
     //   154: aload_0
@@ -134,7 +133,7 @@ public class TXLiveBase
     //   158: aload_0
     //   159: astore 4
     //   161: aload 5
-    //   163: invokevirtual 132	java/io/FileInputStream:close	()V
+    //   163: invokevirtual 129	java/io/FileInputStream:close	()V
     //   166: goto -38 -> 128
     //   169: astore_0
     //   170: aload_3
@@ -257,14 +256,14 @@ public class TXLiveBase
   public static void setLibraryPath(String paramString)
   {
     AppMethodBeat.i(14231);
-    d.b(paramString);
+    f.b(paramString);
     AppMethodBeat.o(14231);
   }
   
   public static void setListener(ITXLiveBaseListener paramITXLiveBaseListener)
   {
     AppMethodBeat.i(14227);
-    TXCLog.setListener(new a(null));
+    TXCLog.setListener(new TXLiveBase.a(null));
     listener = paramITXLiveBaseListener;
     AppMethodBeat.o(14227);
   }
@@ -299,23 +298,10 @@ public class TXLiveBase
     e.a().a(paramContext, paramString1, paramString2);
     AppMethodBeat.o(14225);
   }
-  
-  static class a
-    implements TXCLog.a
-  {
-    public void a(int paramInt, String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(13937);
-      if (TXLiveBase.listener != null) {
-        TXLiveBase.listener.OnLog(paramInt, paramString1, paramString2);
-      }
-      AppMethodBeat.o(13937);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.TXLiveBase
  * JD-Core Version:    0.7.0.1
  */

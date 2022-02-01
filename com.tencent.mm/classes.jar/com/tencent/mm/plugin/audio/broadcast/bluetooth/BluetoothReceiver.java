@@ -7,8 +7,8 @@ import android.content.Intent;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Set;
 
 @k
@@ -18,20 +18,20 @@ public class BluetoothReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(198412);
-    if ((paramContext == null) || (paramIntent == null) || (bs.isNullOrNil(paramIntent.getAction())))
+    AppMethodBeat.i(199815);
+    if ((paramContext == null) || (paramIntent == null) || (bt.isNullOrNil(paramIntent.getAction())))
     {
-      AppMethodBeat.o(198412);
+      AppMethodBeat.o(199815);
       return;
     }
     paramContext = BluetoothAdapter.getDefaultAdapter();
     if (paramContext == null)
     {
-      ac.d("MicroMsg.BluetoothReceiver", "getDefaultAdapter == null");
-      AppMethodBeat.o(198412);
+      ad.d("MicroMsg.BluetoothReceiver", "getDefaultAdapter == null");
+      AppMethodBeat.o(199815);
       return;
     }
-    ac.i("MicroMsg.BluetoothReceiver", "dkbt action :" + paramIntent.getAction());
+    ad.i("MicroMsg.BluetoothReceiver", "dkbt action :" + paramIntent.getAction());
     try
     {
       i = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_STATE", -1);
@@ -40,19 +40,19 @@ public class BluetoothReceiver
         paramContext = paramContext.getBondedDevices();
         if ((paramContext == null) || (paramContext.size() == 0))
         {
-          ac.d("MicroMsg.BluetoothReceiver", "getBondedDevices == null");
-          AppMethodBeat.o(198412);
+          ad.d("MicroMsg.BluetoothReceiver", "getBondedDevices == null");
+          AppMethodBeat.o(199815);
           return;
         }
       }
     }
     catch (Exception paramContext)
     {
-      ac.e("MicroMsg.BluetoothReceiver", "%s", new Object[] { bs.m(paramContext) });
+      ad.e("MicroMsg.BluetoothReceiver", "%s", new Object[] { bt.n(paramContext) });
       paramContext = paramIntent.getAction();
-      if (bs.isNullOrNil(paramContext))
+      if (bt.isNullOrNil(paramContext))
       {
-        AppMethodBeat.o(198412);
+        AppMethodBeat.o(199815);
         return;
       }
       switch (paramContext.hashCode())
@@ -66,7 +66,7 @@ public class BluetoothReceiver
     }
     for (;;)
     {
-      AppMethodBeat.o(198412);
+      AppMethodBeat.o(199815);
       return;
       if (!paramContext.equals("android.media.ACTION_SCO_AUDIO_STATE_UPDATED")) {
         break;
@@ -93,19 +93,19 @@ public class BluetoothReceiver
       }
       i = 4;
       break label214;
-      a.U(paramIntent);
-      AppMethodBeat.o(198412);
-      return;
-      a.V(paramIntent);
-      AppMethodBeat.o(198412);
-      return;
       a.W(paramIntent);
-      AppMethodBeat.o(198412);
+      AppMethodBeat.o(199815);
       return;
       a.X(paramIntent);
-      AppMethodBeat.o(198412);
+      AppMethodBeat.o(199815);
       return;
       a.Y(paramIntent);
+      AppMethodBeat.o(199815);
+      return;
+      a.Z(paramIntent);
+      AppMethodBeat.o(199815);
+      return;
+      a.aa(paramIntent);
     }
   }
 }

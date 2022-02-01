@@ -6,50 +6,50 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.b;
-import com.tencent.mm.g.b.a.ez;
-import com.tencent.mm.plugin.recordvideo.background.e;
-import com.tencent.mm.plugin.recordvideo.ui.editor.d;
+import com.tencent.mm.g.b.a.fy;
+import com.tencent.mm.plugin.recordvideo.background.c;
+import com.tencent.mm.plugin.recordvideo.ui.editor.f;
 import com.tencent.mm.plugin.story.f.d.j;
 import com.tencent.mm.plugin.story.f.e.a;
 import com.tencent.mm.plugin.story.h.h;
-import com.tencent.mm.protocal.protobuf.ddy;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.djl;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import d.g.b.p;
 import d.v;
 import java.util.UUID;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryImageVideoViewMgr;", "", "()V", "TAG", "", "audioFocos", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "currVideoItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "currentSessionId", "isMute", "", "isPlayingVideoItem", "isRequestAudioFocus", "isVideoPause", "isVideoPlaying", "()Z", "setVideoPlaying", "(Z)V", "videoView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/ImageFakeVideoView;", "attachVideoView", "", "parent", "Landroid/view/ViewGroup;", "layoutParams", "Landroid/view/ViewGroup$LayoutParams;", "changeVideoItem", "item", "playing", "checkDetachVideoView", "newParent", "enableReport", "getPlayStatus", "initCreateVideoView", "context", "Landroid/content/Context;", "isVideoNotChangeItem", "onUIDestroy", "onUIPause", "onUIResume", "playVideo", "sameParent", "setMute", "setVideoViewProp", "stopVideo", "detach", "plugin-story_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryImageVideoViewMgr;", "", "()V", "TAG", "", "audioFocos", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "currVideoItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "currentSessionId", "isMute", "", "isPlayingVideoItem", "isRequestAudioFocus", "isVideoPause", "isVideoPlaying", "()Z", "setVideoPlaying", "(Z)V", "videoView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/ImageFakeVideoView;", "attachVideoView", "", "parent", "Landroid/view/ViewGroup;", "layoutParams", "Landroid/view/ViewGroup$LayoutParams;", "changeVideoItem", "item", "playing", "checkDetachVideoView", "newParent", "enableReport", "getPlayStatus", "initCreateVideoView", "context", "Landroid/content/Context;", "isVideoNotChangeItem", "onUIDestroy", "onUIPause", "onUIResume", "playVideo", "sameParent", "setMute", "setVideoViewProp", "stopVideo", "detach", "plugin-story_release"})
 public final class l
 {
+  f BeW;
+  private boolean BeX;
+  private String BeY;
+  private boolean BeZ;
+  private j Bfa;
+  boolean Bfb;
+  private b Bfc;
+  private boolean Bfd;
   final String TAG;
-  boolean ftN;
-  boolean zNA;
-  private b zNB;
-  private boolean zNC;
-  d zNv;
-  private boolean zNw;
-  private String zNx;
-  private boolean zNy;
-  private j zNz;
+  boolean fMP;
   
   public l()
   {
     AppMethodBeat.i(120526);
     this.TAG = "MicroMsg.Gallery.StoryImageVideoViewMgr";
-    this.zNB = new b(ai.getContext());
+    this.Bfc = new b(aj.getContext());
     AppMethodBeat.o(120526);
   }
   
-  private final void dZW()
+  private final void eml()
   {
     AppMethodBeat.i(120522);
-    ac.i(this.TAG, "setVideoViewProp, isMute:" + this.ftN);
-    d locald = this.zNv;
-    if (locald != null)
+    ad.i(this.TAG, "setVideoViewProp, isMute:" + this.fMP);
+    f localf = this.BeW;
+    if (localf != null)
     {
-      locald.setMute(this.ftN);
+      localf.setMute(this.fMP);
       AppMethodBeat.o(120522);
       return;
     }
@@ -59,16 +59,16 @@ public final class l
   private final boolean g(j paramj)
   {
     AppMethodBeat.i(120518);
-    if (paramj.dwR != 0)
+    if (paramj.dJd != 0)
     {
-      localObject = this.zNz;
-      if ((localObject != null) && (((j)localObject).dwR == paramj.dwR))
+      localObject = this.Bfa;
+      if ((localObject != null) && (((j)localObject).dJd == paramj.dJd))
       {
         AppMethodBeat.o(120518);
         return true;
       }
     }
-    Object localObject = (CharSequence)paramj.zuP.Url;
+    Object localObject = (CharSequence)paramj.AMK.Url;
     int i;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0))
     {
@@ -76,19 +76,19 @@ public final class l
       if (i != 0) {
         break label123;
       }
-      localObject = this.zNz;
+      localObject = this.Bfa;
       if (localObject == null) {
         break label118;
       }
-      localObject = ((j)localObject).zuP;
+      localObject = ((j)localObject).AMK;
       if (localObject == null) {
         break label118;
       }
     }
     label118:
-    for (localObject = ((ddy)localObject).Url;; localObject = null)
+    for (localObject = ((djl)localObject).Url;; localObject = null)
     {
-      if (!k.g(localObject, paramj.zuP.Url)) {
+      if (!p.i(localObject, paramj.AMK.Url)) {
         break label123;
       }
       AppMethodBeat.o(120518);
@@ -101,39 +101,39 @@ public final class l
     return false;
   }
   
-  private final void gt(Context paramContext)
+  private final void gw(Context paramContext)
   {
     AppMethodBeat.i(120519);
-    a locala = a.zuX;
-    this.zNv = a.gs(paramContext);
-    this.zNy = false;
+    a locala = a.AMT;
+    this.BeW = a.gv(paramContext);
+    this.BeZ = false;
     AppMethodBeat.o(120519);
   }
   
-  private final void v(ViewGroup paramViewGroup)
+  private final void y(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(120516);
     String str = this.TAG;
     Object localObject1 = new StringBuilder("checkDetachVideoView, videoView:");
-    Object localObject2 = this.zNv;
+    Object localObject2 = this.BeW;
     int i;
     boolean bool;
     if (localObject2 != null)
     {
       i = localObject2.hashCode();
       localObject1 = ((StringBuilder)localObject1).append(i).append(", isPlay:");
-      localObject2 = this.zNv;
+      localObject2 = this.BeW;
       if (localObject2 == null) {
         break label235;
       }
-      bool = ((d)localObject2).isPlaying();
+      bool = ((f)localObject2).isPlaying();
       label69:
       localObject2 = ((StringBuilder)localObject1).append(bool).append(", parent:");
-      localObject1 = this.zNv;
+      localObject1 = this.BeW;
       if (localObject1 == null) {
         break label240;
       }
-      localObject1 = ((d)localObject1).getParent();
+      localObject1 = ((f)localObject1).getParent();
       label100:
       if (localObject1 == null) {
         break label246;
@@ -146,18 +146,18 @@ public final class l
       }
       i = paramViewGroup.hashCode();
       label133:
-      ac.i(str, i + ", isPlayingVideoItem:" + this.zNy);
-      localObject1 = this.zNv;
+      ad.i(str, i + ", isPlayingVideoItem:" + this.BeZ);
+      localObject1 = this.BeW;
       if (localObject1 == null) {
         break label256;
       }
-      localObject1 = ((d)localObject1).getParent();
+      localObject1 = ((f)localObject1).getParent();
       label177:
-      if ((localObject1 == null) || (w(paramViewGroup))) {
+      if ((localObject1 == null) || (z(paramViewGroup))) {
         break label286;
       }
-      rU(false);
-      paramViewGroup = this.zNv;
+      sA(false);
+      paramViewGroup = this.BeW;
       if (paramViewGroup == null) {
         break label262;
       }
@@ -190,78 +190,78 @@ public final class l
       break label177;
     }
     label267:
-    ((ViewGroup)paramViewGroup).removeView((View)this.zNv);
-    this.zNz = null;
+    ((ViewGroup)paramViewGroup).removeView((View)this.BeW);
+    this.Bfa = null;
     label286:
     AppMethodBeat.o(120516);
   }
   
-  private final boolean w(ViewGroup paramViewGroup)
+  private final boolean z(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(120517);
-    Object localObject = this.zNv;
+    Object localObject = this.BeW;
     if (localObject != null) {}
-    for (localObject = ((d)localObject).getParent();; localObject = null)
+    for (localObject = ((f)localObject).getParent();; localObject = null)
     {
-      boolean bool = k.g(localObject, paramViewGroup);
+      boolean bool = p.i(localObject, paramViewGroup);
       AppMethodBeat.o(120517);
       return bool;
     }
   }
   
-  public final void Er()
+  public final void FQ()
   {
     AppMethodBeat.i(120521);
-    ac.m(this.TAG, "playVideo, " + this.zNw + ' ' + this.zNA + ", " + this.zNz, new Object[0]);
-    dZW();
-    this.zNA = true;
-    j localj = this.zNz;
+    ad.m(this.TAG, "playVideo, " + this.BeX + ' ' + this.Bfb + ", " + this.Bfa, new Object[0]);
+    eml();
+    this.Bfb = true;
+    j localj = this.Bfa;
     if (localj != null)
     {
-      boolean bool = this.zNw;
-      this.zNw = false;
+      boolean bool = this.BeX;
+      this.BeX = false;
       if (!bool) {
         break label201;
       }
-      localObject1 = this.zNv;
+      localObject1 = this.BeW;
       if (localObject1 != null) {
-        ((d)localObject1).setAlpha(1.0F);
+        ((f)localObject1).setAlpha(1.0F);
       }
-      localObject1 = this.zNv;
+      localObject1 = this.BeW;
       if (localObject1 != null) {
-        ((d)localObject1).b(localj.zuQ);
+        ((f)localObject1).b(localj.AML);
       }
-      this.zNw = false;
-      if (localj.dWy()) {
-        this.zNy = true;
+      this.BeX = false;
+      if (localj.eiN()) {
+        this.BeZ = true;
       }
-      if (!this.zNC)
+      if (!this.Bfd)
       {
-        this.zNB.requestFocus();
-        this.zNC = true;
+        this.Bfc.requestFocus();
+        this.Bfd = true;
       }
     }
-    Object localObject1 = h.zAU;
-    Object localObject2 = h.dXK();
-    localObject1 = this.zNv;
+    Object localObject1 = h.ASt;
+    Object localObject2 = h.ejZ();
+    localObject1 = this.BeW;
     if (localObject1 != null) {}
-    for (localObject1 = ((d)localObject1).getContext();; localObject1 = null)
+    for (localObject1 = ((f)localObject1).getContext();; localObject1 = null)
     {
-      ((ez)localObject2).jl(ax.iI((Context)localObject1));
+      ((fy)localObject2).kX(ay.iS((Context)localObject1));
       AppMethodBeat.o(120521);
       return;
       label201:
-      this.zNx = UUID.randomUUID().toString();
-      d locald = this.zNv;
-      if (locald == null) {
+      this.BeY = UUID.randomUUID().toString();
+      f localf = this.BeW;
+      if (localf == null) {
         break;
       }
-      localObject2 = localj.zuQ;
+      localObject2 = localj.AML;
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = new e();
+        localObject1 = new c();
       }
-      locald.a((e)localObject1);
+      localf.a((c)localObject1);
       break;
     }
   }
@@ -269,21 +269,21 @@ public final class l
   public final void a(ViewGroup paramViewGroup, ViewGroup.LayoutParams paramLayoutParams)
   {
     AppMethodBeat.i(120514);
-    k.h(paramViewGroup, "parent");
-    boolean bool = w(paramViewGroup);
+    p.h(paramViewGroup, "parent");
+    boolean bool = z(paramViewGroup);
     String str = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("attachVideoView, parent:").append(paramViewGroup.hashCode()).append(", isVideoPause:").append(this.zNw).append(", currentSessionId:").append(this.zNx).append(", isPlayingVideoItem:").append(this.zNy).append(" videoView ");
-    Object localObject = this.zNv;
+    StringBuilder localStringBuilder = new StringBuilder("attachVideoView, parent:").append(paramViewGroup.hashCode()).append(", isVideoPause:").append(this.BeX).append(", currentSessionId:").append(this.BeY).append(", isPlayingVideoItem:").append(this.BeZ).append(" videoView ");
+    Object localObject = this.BeW;
     if (localObject != null)
     {
-      localObject = Integer.valueOf(((d)localObject).hashCode());
-      ac.i(str, localObject + " sameParent " + bool + " this:" + hashCode());
-      v(paramViewGroup);
-      if (this.zNv == null)
+      localObject = Integer.valueOf(((f)localObject).hashCode());
+      ad.i(str, localObject + " sameParent " + bool + " this:" + hashCode());
+      y(paramViewGroup);
+      if (this.BeW == null)
       {
-        localObject = ai.getContext();
-        k.g(localObject, "MMApplicationContext.getContext()");
-        gt((Context)localObject);
+        localObject = aj.getContext();
+        p.g(localObject, "MMApplicationContext.getContext()");
+        gw((Context)localObject);
       }
       if (bool) {
         break label239;
@@ -291,11 +291,11 @@ public final class l
       if (paramLayoutParams != null) {
         break label224;
       }
-      paramViewGroup.addView((View)this.zNv);
+      paramViewGroup.addView((View)this.BeW);
     }
     for (;;)
     {
-      paramViewGroup = this.zNv;
+      paramViewGroup = this.BeW;
       if (paramViewGroup == null) {
         break label260;
       }
@@ -305,12 +305,12 @@ public final class l
       localObject = null;
       break;
       label224:
-      paramViewGroup.addView((View)this.zNv, paramLayoutParams);
+      paramViewGroup.addView((View)this.BeW, paramLayoutParams);
       continue;
       label239:
       if (paramLayoutParams != null)
       {
-        paramViewGroup = this.zNv;
+        paramViewGroup = this.BeW;
         if (paramViewGroup != null) {
           paramViewGroup.setLayoutParams(paramLayoutParams);
         }
@@ -323,18 +323,18 @@ public final class l
   public final void a(j paramj, boolean paramBoolean)
   {
     AppMethodBeat.i(120515);
-    k.h(paramj, "item");
+    p.h(paramj, "item");
     if (!g(paramj)) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.i(this.TAG, "change:" + bool + ' ' + this.zNA + ", " + paramBoolean + ", changeVideoItem: origin: " + this.zNz + ", new: " + paramj + ",  change:" + bool + " this:" + hashCode());
+      ad.i(this.TAG, "change:" + bool + ' ' + this.Bfb + ", " + paramBoolean + ", changeVideoItem: origin: " + this.Bfa + ", new: " + paramj + ",  change:" + bool + " this:" + hashCode());
       if (bool)
       {
-        this.zNz = paramj;
-        if ((this.zNA) || (paramBoolean))
+        this.Bfa = paramj;
+        if ((this.Bfb) || (paramBoolean))
         {
-          rU(false);
-          Er();
+          sA(false);
+          FQ();
         }
       }
       AppMethodBeat.o(120515);
@@ -345,15 +345,15 @@ public final class l
   public final void onUIDestroy()
   {
     AppMethodBeat.i(120525);
-    ac.i(this.TAG, "onUIDestroy " + hashCode());
-    this.zNA = false;
-    v(null);
-    this.zNz = null;
-    this.zNv = null;
-    if (this.zNC)
+    ad.i(this.TAG, "onUIDestroy " + hashCode());
+    this.Bfb = false;
+    y(null);
+    this.Bfa = null;
+    this.BeW = null;
+    if (this.Bfd)
     {
-      this.zNB.YC();
-      this.zNC = false;
+      this.Bfc.abe();
+      this.Bfd = false;
     }
     AppMethodBeat.o(120525);
   }
@@ -361,12 +361,12 @@ public final class l
   public final void onUIPause()
   {
     AppMethodBeat.i(120524);
-    ac.i(this.TAG, "onUIPause " + hashCode());
-    v(null);
-    if (this.zNC)
+    ad.i(this.TAG, "onUIPause " + hashCode());
+    y(null);
+    if (this.Bfd)
     {
-      this.zNB.YC();
-      this.zNC = false;
+      this.Bfc.abe();
+      this.Bfd = false;
     }
     AppMethodBeat.o(120524);
   }
@@ -374,45 +374,45 @@ public final class l
   public final void onUIResume()
   {
     AppMethodBeat.i(120523);
-    ac.i(this.TAG, "onUIResume " + hashCode());
-    if (this.zNA)
+    ad.i(this.TAG, "onUIResume " + hashCode());
+    if (this.Bfb)
     {
-      d locald = this.zNv;
-      if (locald != null) {
-        locald.onUIResume();
+      f localf = this.BeW;
+      if (localf != null) {
+        localf.onUIResume();
       }
-      if (!this.zNC)
+      if (!this.Bfd)
       {
-        this.zNB.requestFocus();
-        this.zNC = true;
+        this.Bfc.requestFocus();
+        this.Bfd = true;
       }
     }
     AppMethodBeat.o(120523);
   }
   
-  public final void rU(boolean paramBoolean)
+  public final void sA(boolean paramBoolean)
   {
     AppMethodBeat.i(120520);
-    ac.i(this.TAG, "stopVideo, detach: ".concat(String.valueOf(paramBoolean)));
-    if (this.zNy)
+    ad.i(this.TAG, "stopVideo, detach: ".concat(String.valueOf(paramBoolean)));
+    if (this.BeZ)
     {
-      this.zNx = null;
-      d locald = this.zNv;
-      if (locald != null) {
-        locald.stop();
+      this.BeY = null;
+      f localf = this.BeW;
+      if (localf != null) {
+        localf.stop();
       }
-      this.zNw = false;
-      if (this.zNC)
+      this.BeX = false;
+      if (this.Bfd)
       {
-        this.zNB.YC();
-        this.zNC = false;
+        this.Bfc.abe();
+        this.Bfd = false;
       }
-      this.zNy = false;
+      this.BeZ = false;
     }
     if (paramBoolean)
     {
-      this.zNA = false;
-      v(null);
+      this.Bfb = false;
+      y(null);
     }
     AppMethodBeat.o(120520);
   }

@@ -6,35 +6,35 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.ui.m;
+import com.tencent.mm.plugin.fts.ui.n;
 
 public final class h
   extends a
 {
-  private b IAf;
-  a IAg;
+  private b Krl;
+  a Krm;
   public String header;
   
   public h(int paramInt)
   {
     super(0, paramInt);
     AppMethodBeat.i(102960);
-    this.IAf = new b();
-    this.IAg = new a();
+    this.Krl = new b();
+    this.Krm = new a();
     AppMethodBeat.o(102960);
   }
   
   public final void a(Context paramContext, a.a parama) {}
   
-  public final a.b aOg()
+  public final a.b aRs()
   {
-    return this.IAf;
+    return this.Krl;
   }
   
   public final class a
     extends a.a
   {
-    public TextView ors;
+    public TextView oUO;
     
     public a()
     {
@@ -54,8 +54,8 @@ public final class h
     {
       AppMethodBeat.i(102958);
       paramContext = LayoutInflater.from(paramContext).inflate(2131495362, paramViewGroup, false);
-      paramViewGroup = (h.a)h.this.IAg;
-      paramViewGroup.ors = ((TextView)paramContext.findViewById(2131300734));
+      paramViewGroup = (h.a)h.this.Krm;
+      paramViewGroup.oUO = ((TextView)paramContext.findViewById(2131300734));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102958);
       return paramContext;
@@ -65,11 +65,11 @@ public final class h
     {
       AppMethodBeat.i(102959);
       paramContext = (h.a)parama;
-      m.a(((h)parama1).header, paramContext.ors);
+      n.a(((h)parama1).header, paramContext.oUO);
       AppMethodBeat.o(102959);
     }
     
-    public final boolean aOh()
+    public final boolean aRt()
     {
       return false;
     }

@@ -1,95 +1,95 @@
 package com.tencent.mm.plugin.finder.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gw;
+import com.tencent.mm.g.a.ha;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.h;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.i;
+import d.g.b.p;
 import d.l;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/api/FinderContactCache;", "", "()V", "cacheItems", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "", "isDebug", "", "()Z", "get", "key", "remove", "", "set", "contact", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/api/FinderContactCache;", "", "()V", "cacheItems", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "", "isDebug", "", "()Z", "get", "key", "remove", "", "set", "contact", "plugin-finder_release"})
 public final class a
 {
-  private final boolean cuo;
-  private final Map<String, f> qWq;
+  private final boolean cFj;
+  private final Map<String, g> rHl;
   
   public a()
   {
     AppMethodBeat.i(165128);
-    this.qWq = Collections.synchronizedMap((Map)new HashMap());
-    if ((h.DEBUG) || (h.IS_FLAVOR_RED) || (h.IS_FLAVOR_PURPLE)) {}
+    this.rHl = Collections.synchronizedMap((Map)new HashMap());
+    if ((i.DEBUG) || (i.IS_FLAVOR_RED) || (i.IS_FLAVOR_PURPLE)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.cuo = bool;
+      this.cFj = bool;
       AppMethodBeat.o(165128);
       return;
     }
   }
   
-  public final void a(String paramString, f paramf)
+  public final void a(String paramString, g paramg)
   {
     Boolean localBoolean = null;
     AppMethodBeat.i(165127);
-    k.h(paramString, "key");
-    k.h(paramf, "contact");
-    if (adg(paramf.getUsername()) == null) {}
+    p.h(paramString, "key");
+    p.h(paramg, "contact");
+    if (agV(paramg.getUsername()) == null) {}
     for (boolean bool = true;; bool = false)
     {
-      Object localObject1 = (f)this.qWq.get(paramString);
+      Object localObject1 = (g)this.rHl.get(paramString);
       Object localObject2;
       label91:
       Object localObject3;
       int i;
       if (localObject1 != null)
       {
-        localObject1 = Integer.valueOf(((f)localObject1).qWA);
-        localObject2 = (f)this.qWq.get(paramString);
+        localObject1 = Integer.valueOf(((g)localObject1).rHv);
+        localObject2 = (g)this.rHl.get(paramString);
         if (localObject2 == null) {
           break label440;
         }
-        localObject2 = ((f)localObject2).qWB;
-        localObject3 = (f)this.qWq.get(paramString);
+        localObject2 = ((g)localObject2).rHw;
+        localObject3 = (g)this.rHl.get(paramString);
         if (localObject3 != null) {
-          localBoolean = Boolean.valueOf(((f)localObject3).qWC);
+          localBoolean = Boolean.valueOf(((g)localObject3).rHx);
         }
         if (!bool)
         {
-          i = paramf.field_follow_Flag;
+          i = paramg.field_follow_Flag;
           if (localObject1 != null) {
             break label446;
           }
         }
         label136:
-        StringBuilder localStringBuilder = new StringBuilder("contact is change new contact ").append(paramf.csa()).append(" oldFlag :").append(localObject1).append(" isFirstUpdate ").append(bool).append(' ');
-        if (!this.cuo) {
+        StringBuilder localStringBuilder = new StringBuilder("contact is change new contact ").append(paramg.cxO()).append(" oldFlag :").append(localObject1).append(" isFirstUpdate ").append(bool).append(' ');
+        if (!this.cFj) {
           break label458;
         }
-        localObject3 = bs.eWi().toString();
+        localObject3 = bt.flS().toString();
         label194:
-        ac.i("Finder.Contact", (String)localObject3);
+        ad.i("Finder.Contact", (String)localObject3);
         label209:
-        localObject3 = this.qWq;
-        k.g(localObject3, "cacheItems");
-        ((Map)localObject3).put(paramString, paramf);
-        localObject3 = (f)this.qWq.get(paramString);
+        localObject3 = this.rHl;
+        p.g(localObject3, "cacheItems");
+        ((Map)localObject3).put(paramString, paramg);
+        localObject3 = (g)this.rHl.get(paramString);
         if (localObject3 != null) {
-          ((f)localObject3).qWA = paramf.field_follow_Flag;
+          ((g)localObject3).rHv = paramg.field_follow_Flag;
         }
-        localObject3 = (f)this.qWq.get(paramString);
+        localObject3 = (g)this.rHl.get(paramString);
         if (localObject3 != null) {
-          ((f)localObject3).qWB = paramf.field_avatarUrl;
+          ((g)localObject3).rHw = paramg.field_avatarUrl;
         }
-        paramString = (f)this.qWq.get(paramString);
+        paramString = (g)this.rHl.get(paramString);
         if (paramString != null) {
-          paramString.qWC = paramf.isNeedShowUnFollow;
+          paramString.rHx = paramg.isNeedShowUnFollow;
         }
-        i = paramf.field_follow_Flag;
+        i = paramg.field_follow_Flag;
         if (localObject1 != null) {
           break label465;
         }
@@ -97,10 +97,10 @@ public final class a
       for (;;)
       {
         label326:
-        paramString = com.tencent.mm.sdk.b.a.GpY;
-        localObject1 = new gw();
-        ((gw)localObject1).dhR.username = paramf.getUsername();
-        ((gw)localObject1).dhR.contact = paramf;
+        paramString = com.tencent.mm.sdk.b.a.IbL;
+        localObject1 = new ha();
+        ((ha)localObject1).dtt.username = paramg.getUsername();
+        ((ha)localObject1).dtt.contact = paramg;
         paramString.l((b)localObject1);
         label440:
         label446:
@@ -108,12 +108,12 @@ public final class a
         label465:
         do
         {
-          if ((k.g(localObject2, paramf.qWB) ^ true))
+          if ((p.i(localObject2, paramg.rHw) ^ true))
           {
-            paramString = com.tencent.mm.sdk.b.a.GpY;
-            localObject1 = new gw();
-            ((gw)localObject1).dhR.username = paramf.getUsername();
-            ((gw)localObject1).dhR.contact = paramf;
+            paramString = com.tencent.mm.sdk.b.a.IbL;
+            localObject1 = new ha();
+            ((ha)localObject1).dtt.username = paramg.getUsername();
+            ((ha)localObject1).dtt.contact = paramg;
             paramString.l((b)localObject1);
           }
           AppMethodBeat.o(165127);
@@ -131,19 +131,19 @@ public final class a
           if (((Integer)localObject1).intValue() != i) {
             break label326;
           }
-        } while (!(k.g(localBoolean, Boolean.valueOf(paramf.isNeedShowUnFollow)) ^ true));
+        } while (!(p.i(localBoolean, Boolean.valueOf(paramg.isNeedShowUnFollow)) ^ true));
       }
     }
   }
   
-  public final f adg(String paramString)
+  public final g agV(String paramString)
   {
     AppMethodBeat.i(165126);
-    k.h(paramString, "key");
-    paramString = (f)this.qWq.get(paramString);
+    p.h(paramString, "key");
+    paramString = (g)this.rHl.get(paramString);
     if (paramString != null)
     {
-      paramString = paramString.csc();
+      paramString = paramString.cxQ();
       AppMethodBeat.o(165126);
       return paramString;
     }
@@ -153,7 +153,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.api.a
  * JD-Core Version:    0.7.0.1
  */

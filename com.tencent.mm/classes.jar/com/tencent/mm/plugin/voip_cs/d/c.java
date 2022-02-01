@@ -3,46 +3,46 @@ package com.tencent.mm.plugin.voip_cs.d;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class c
 {
-  private static int AWi;
-  public static final int rTi;
-  public static final int vaB;
-  public static final int vaH;
-  public static final int vaJ;
-  public static final int vaM;
-  public static final int vas;
-  public static final int vat;
-  public static final int vau;
-  public static final int vaw;
-  public static final int vaz;
+  private static int Cwq;
+  public static final int sPS;
+  public static final int wfB;
+  public static final int wfC;
+  public static final int wfD;
+  public static final int wfF;
+  public static final int wfI;
+  public static final int wfK;
+  public static final int wfQ;
+  public static final int wfS;
+  public static final int wfV;
   
   static
   {
     AppMethodBeat.i(125492);
-    vas = a.fromDPToPix(ai.getContext(), 3);
-    rTi = a.fromDPToPix(ai.getContext(), 4);
-    vat = a.fromDPToPix(ai.getContext(), 8);
-    vau = a.fromDPToPix(ai.getContext(), 10);
-    vaw = a.fromDPToPix(ai.getContext(), 14);
-    vaz = a.fromDPToPix(ai.getContext(), 30);
-    vaB = a.fromDPToPix(ai.getContext(), 32);
-    vaJ = a.fromDPToPix(ai.getContext(), 96);
-    vaH = a.fromDPToPix(ai.getContext(), 76);
-    vaM = a.fromDPToPix(ai.getContext(), 230);
-    AWi = 0;
+    wfB = a.fromDPToPix(aj.getContext(), 3);
+    sPS = a.fromDPToPix(aj.getContext(), 4);
+    wfC = a.fromDPToPix(aj.getContext(), 8);
+    wfD = a.fromDPToPix(aj.getContext(), 10);
+    wfF = a.fromDPToPix(aj.getContext(), 14);
+    wfI = a.fromDPToPix(aj.getContext(), 30);
+    wfK = a.fromDPToPix(aj.getContext(), 32);
+    wfS = a.fromDPToPix(aj.getContext(), 96);
+    wfQ = a.fromDPToPix(aj.getContext(), 76);
+    wfV = a.fromDPToPix(aj.getContext(), 230);
+    Cwq = 0;
     AppMethodBeat.o(125492);
   }
   
-  public static int gE(Context paramContext)
+  public static int gI(Context paramContext)
   {
     AppMethodBeat.i(125491);
-    if (AWi == 0) {
-      AWi = a.ih(paramContext);
+    if (Cwq == 0) {
+      Cwq = a.iq(paramContext);
     }
-    int i = AWi;
+    int i = Cwq;
     AppMethodBeat.o(125491);
     return i;
   }

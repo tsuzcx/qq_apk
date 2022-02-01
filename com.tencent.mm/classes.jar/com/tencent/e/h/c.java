@@ -22,27 +22,27 @@ public final class c
   extends a
   implements Handler.Callback
 {
-  private final Handler Kbc;
-  private final a Kbi;
+  private final Handler LUZ;
+  private final a LVf;
   
   public c(int paramInt)
   {
     AppMethodBeat.i(183358);
-    this.Kbc = d.a("HotPoolLeader", this);
-    this.Kbi = new a(paramInt);
+    this.LUZ = d.a("HotPoolLeader", this);
+    this.LVf = new a(paramInt);
     AppMethodBeat.o(183358);
   }
   
-  protected final a.a fEu()
+  protected final a.a fVM()
   {
-    return this.Kbi;
+    return this.LVf;
   }
   
-  public final List<String> fEv()
+  public final List<String> fVN()
   {
     AppMethodBeat.i(183361);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.Kbi.getQueue().iterator();
+    Iterator localIterator = this.LVf.getQueue().iterator();
     while (localIterator.hasNext())
     {
       Runnable localRunnable = (Runnable)localIterator.next();
@@ -61,22 +61,22 @@ public final class c
   
   public final boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(191086);
+    AppMethodBeat.i(219282);
     paramMessage = paramMessage.obj;
     if ((paramMessage instanceof k))
     {
-      this.Kbi.execute((k)paramMessage);
-      AppMethodBeat.o(191086);
+      this.LVf.execute((k)paramMessage);
+      AppMethodBeat.o(219282);
       return true;
     }
-    AppMethodBeat.o(191086);
+    AppMethodBeat.o(219282);
     return false;
   }
   
   public final boolean isBusy()
   {
     AppMethodBeat.i(183360);
-    if (this.Kbi.getQueue().size() > 0)
+    if (this.LVf.getQueue().size() > 0)
     {
       AppMethodBeat.o(183360);
       return true;
@@ -88,15 +88,15 @@ public final class c
   public final void j(k<?> paramk)
   {
     AppMethodBeat.i(183359);
-    this.Kbc.removeCallbacksAndMessages(paramk);
-    this.Kbi.remove(paramk);
+    this.LUZ.removeCallbacksAndMessages(paramk);
+    this.LVf.remove(paramk);
     AppMethodBeat.o(183359);
   }
   
   public final void onShutdown()
   {
     AppMethodBeat.i(183362);
-    this.Kbi.shutdownNow();
+    this.LVf.shutdownNow();
     AppMethodBeat.o(183362);
   }
   
@@ -108,12 +108,12 @@ public final class c
     {
       super(paramInt, 2147483647L, TimeUnit.HOURS, new LinkedBlockingQueue(), new ThreadFactory()new RejectedExecutionHandler
       {
-        AtomicInteger Kbg;
+        AtomicInteger LVd;
         
         public final Thread newThread(Runnable paramAnonymousRunnable)
         {
           AppMethodBeat.i(183354);
-          paramAnonymousRunnable = com.tencent.e.c.c.a("HotPool#" + this.Kbg.getAndIncrement(), paramAnonymousRunnable, 7);
+          paramAnonymousRunnable = com.tencent.e.c.c.a("HotPool#" + this.LVd.getAndIncrement(), paramAnonymousRunnable, 7);
           AppMethodBeat.o(183354);
           return paramAnonymousRunnable;
         }

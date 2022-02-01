@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class fb
   extends b
 {
-  public a deT;
-  public b deU;
+  public a dql;
   
   public fb()
   {
@@ -16,12 +15,11 @@ public final class fb
   
   private fb(byte paramByte)
   {
-    AppMethodBeat.i(19801);
-    this.deT = new a();
-    this.deU = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(19798);
+    this.dql = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19801);
+    AppMethodBeat.o(19798);
   }
   
   public static final class a
@@ -29,15 +27,10 @@ public final class fb
     public byte[] data;
     public String mac;
   }
-  
-  public static final class b
-  {
-    public boolean ddj;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.g.a.fb
  * JD-Core Version:    0.7.0.1
  */

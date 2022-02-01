@@ -23,12 +23,12 @@ import java.util.concurrent.TimeoutException;
 public class FirebaseMessagingService
   extends zzb
 {
-  private static final Queue<String> bCo;
+  private static final Queue<String> bMC;
   
   static
   {
     AppMethodBeat.i(116785);
-    bCo = new ArrayDeque(10);
+    bMC = new ArrayDeque(10);
     AppMethodBeat.o(116785);
   }
   
@@ -66,7 +66,7 @@ public class FirebaseMessagingService
   public final Intent e(Intent paramIntent)
   {
     AppMethodBeat.i(116780);
-    paramIntent = (Intent)o.wM().bBl.poll();
+    paramIntent = (Intent)o.yj().bLz.poll();
     AppMethodBeat.o(116780);
     return paramIntent;
   }
@@ -182,9 +182,9 @@ public class FirebaseMessagingService
       localObject1 = new Bundle();
       ((Bundle)localObject1).putString("google.message_id", (String)localObject2);
       localObject3 = ai.aq(this);
-      localObject1 = ((ai)localObject3).a(new com.google.firebase.iid.b(((ai)localObject3).wR(), (Bundle)localObject1));
+      localObject1 = ((ai)localObject3).a(new com.google.firebase.iid.b(((ai)localObject3).yo(), (Bundle)localObject1));
       break;
-      if (bCo.contains(localObject2))
+      if (bMC.contains(localObject2))
       {
         if (Log.isLoggable("FirebaseMessaging", 3))
         {
@@ -201,10 +201,10 @@ public class FirebaseMessagingService
         new String("Received duplicate message: ");
         continue;
       }
-      if (bCo.size() >= 10) {
-        bCo.remove();
+      if (bMC.size() >= 10) {
+        bMC.remove();
       }
-      bCo.add(localObject2);
+      bMC.add(localObject2);
       i = 0;
       break label174;
       i = k;
@@ -240,10 +240,10 @@ public class FirebaseMessagingService
         localObject2 = new Bundle();
       }
       ((Bundle)localObject2).remove("android.support.content.wakelockid");
-      if (!"1".equals(c.d((Bundle)localObject2, "gcm.n.e")))
+      if (!"1".equals(c.c((Bundle)localObject2, "gcm.n.e")))
       {
         i = j;
-        if (c.d((Bundle)localObject2, "gcm.n.icon") == null) {}
+        if (c.c((Bundle)localObject2, "gcm.n.icon") == null) {}
       }
       else
       {
@@ -294,7 +294,7 @@ public class FirebaseMessagingService
           if (!"1".equals(paramIntent.getStringExtra("google.c.a.tc"))) {
             break label181;
           }
-          localObject = (com.google.firebase.analytics.connector.a)com.google.firebase.a.wn().w(com.google.firebase.analytics.connector.a.class);
+          localObject = (com.google.firebase.analytics.connector.a)com.google.firebase.a.xK().w(com.google.firebase.analytics.connector.a.class);
           Log.isLoggable("FirebaseMessaging", 3);
           if (localObject != null)
           {

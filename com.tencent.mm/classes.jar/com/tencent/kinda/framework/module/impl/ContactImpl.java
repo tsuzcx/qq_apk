@@ -2,29 +2,29 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.KContact;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 
 public class ContactImpl
   implements KContact
 {
-  private ai contact;
+  private am contact;
   
   public ContactImpl(String paramString)
   {
     AppMethodBeat.i(18620);
-    g.agS();
-    this.contact = ((k)g.ab(k.class)).awB().aNt(paramString);
+    g.ajD();
+    this.contact = ((l)g.ab(l.class)).azp().Bf(paramString);
     AppMethodBeat.o(18620);
   }
   
   public String displayName()
   {
     AppMethodBeat.i(18621);
-    String str = this.contact.aaS();
+    String str = this.contact.adv();
     AppMethodBeat.o(18621);
     return str;
   }

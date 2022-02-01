@@ -21,24 +21,24 @@ import org.xwalk.core.XWalkEnvironment;
 
 public class a
 {
-  static String[] KyB = { "disable_url_watchdog" };
-  private static a Kyw;
-  static boolean Kyx = false;
-  static String Kyy = "";
-  static int Kyz = 0;
-  Map<String, Object> KyA;
+  private static a MoS;
+  static boolean MoT = false;
+  static String MoU = "";
+  static int MoV = 0;
+  static String[] MoX = { "disable_url_watchdog" };
+  Map<String, Object> MoW;
   
   public a()
   {
     AppMethodBeat.i(156676);
-    this.KyA = new HashMap();
+    this.MoW = new HashMap();
     AppMethodBeat.o(156676);
   }
   
-  private static Map<String, String> R(String paramString, Map<String, Object> paramMap)
+  private static Map<String, String> T(String paramString, Map<String, Object> paramMap)
   {
     AppMethodBeat.i(156685);
-    fIN();
+    gaj();
     if ((paramString == null) || (paramString.isEmpty()))
     {
       paramString = new HashMap();
@@ -67,7 +67,7 @@ public class a
     //   5: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_2
     //   9: aload_0
-    //   10: invokevirtual 80	com/tencent/xweb/a:aUs	(Ljava/lang/String;)Ljava/util/Map;
+    //   10: invokevirtual 80	com/tencent/xweb/a:bav	(Ljava/lang/String;)Ljava/util/Map;
     //   13: astore_0
     //   14: aload_0
     //   15: ifnull +7 -> 22
@@ -109,11 +109,11 @@ public class a
   protected static void a(com.tencent.xweb.internal.a.a parama, Map<String, Object> paramMap, String[] paramArrayOfString)
   {
     AppMethodBeat.i(156698);
-    String str2 = parama.KCi;
-    String str1 = parama.KCj;
-    if (parama.KCi.equals("executeCommand"))
+    String str2 = parama.MsD;
+    String str1 = parama.MsE;
+    if (parama.MsD.equals("executeCommand"))
     {
-      parama = aUA(parama.KCj);
+      parama = baD(parama.MsE);
       if ((parama == null) || (parama.length < 2))
       {
         AppMethodBeat.o(156698);
@@ -127,7 +127,7 @@ public class a
       AppMethodBeat.o(156698);
       return;
     }
-    parama = R(str2, paramMap);
+    parama = T(str2, paramMap);
     if ((parama == null) || (parama.isEmpty()))
     {
       parama = new HashMap();
@@ -161,7 +161,7 @@ public class a
     try
     {
       AppMethodBeat.i(156696);
-      fIN().b(paramArrayOfa, paramString, paramBoolean);
+      gaj().b(paramArrayOfa, paramString, paramBoolean);
       AppMethodBeat.o(156696);
       return;
     }
@@ -172,7 +172,48 @@ public class a
     }
   }
   
-  public static String[] aUA(String paramString)
+  public static void aix(int paramInt)
+  {
+    AppMethodBeat.i(156682);
+    XWalkEnvironment.getSharedPreferencesForUpdateConfig().edit().putInt("cStrSpKeyConfigPeriod", paramInt).commit();
+    AppMethodBeat.o(156682);
+  }
+  
+  public static String baA(String paramString)
+  {
+    AppMethodBeat.i(156690);
+    gaj();
+    paramString = mV("setEnabledTraceCategory", paramString);
+    AppMethodBeat.o(156690);
+    return paramString;
+  }
+  
+  public static String baB(String paramString)
+  {
+    AppMethodBeat.i(156691);
+    String str2 = WebView.getCurStrModule();
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "tools";
+    }
+    paramString = mV(paramString, str1);
+    AppMethodBeat.o(156691);
+    return paramString;
+  }
+  
+  protected static boolean baC(String paramString)
+  {
+    AppMethodBeat.i(156694);
+    if ("revertToVersion".equals(paramString))
+    {
+      AppMethodBeat.o(156694);
+      return true;
+    }
+    AppMethodBeat.o(156694);
+    return false;
+  }
+  
+  public static String[] baD(String paramString)
   {
     AppMethodBeat.i(156699);
     String[] arrayOfString = new String[2];
@@ -194,16 +235,16 @@ public class a
     }
   }
   
-  private static WebView.c aUB(String paramString)
+  private static WebView.c baE(String paramString)
   {
     AppMethodBeat.i(156700);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      paramString = WebView.c.KzY;
+      paramString = WebView.c.Mqt;
       AppMethodBeat.o(156700);
       return paramString;
     }
-    WebView.c localc = WebView.c.KzY;
+    WebView.c localc = WebView.c.Mqt;
     try
     {
       paramString = WebView.c.valueOf(paramString);
@@ -219,16 +260,16 @@ public class a
     }
   }
   
-  private static JsRuntime.JsRuntimeType aUC(String paramString)
+  private static JsRuntime.JsRuntimeType baF(String paramString)
   {
     AppMethodBeat.i(156701);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      paramString = JsRuntime.JsRuntimeType.Kzb;
+      paramString = JsRuntime.JsRuntimeType.Mpw;
       AppMethodBeat.o(156701);
       return paramString;
     }
-    JsRuntime.JsRuntimeType localJsRuntimeType = JsRuntime.JsRuntimeType.Kzb;
+    JsRuntime.JsRuntimeType localJsRuntimeType = JsRuntime.JsRuntimeType.Mpw;
     try
     {
       paramString = JsRuntime.JsRuntimeType.valueOf(paramString);
@@ -244,16 +285,16 @@ public class a
     }
   }
   
-  private static WebView.a aUD(String paramString)
+  private static WebView.a baG(String paramString)
   {
     AppMethodBeat.i(156702);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      paramString = WebView.a.KzW;
+      paramString = WebView.a.Mqr;
       AppMethodBeat.o(156702);
       return paramString;
     }
-    WebView.a locala = WebView.a.KzW;
+    WebView.a locala = WebView.a.Mqr;
     try
     {
       paramString = WebView.a.valueOf(paramString);
@@ -269,13 +310,13 @@ public class a
     }
   }
   
-  private static Map<String, String> aUE(String paramString)
+  private static Map<String, String> baH(String paramString)
   {
-    AppMethodBeat.i(205041);
+    AppMethodBeat.i(197049);
     HashMap localHashMap = new HashMap();
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      AppMethodBeat.o(205041);
+      AppMethodBeat.o(197049);
       return localHashMap;
     }
     paramString = paramString.split("~~~");
@@ -293,48 +334,48 @@ public class a
       }
       i += 1;
     }
-    AppMethodBeat.o(205041);
+    AppMethodBeat.o(197049);
     return localHashMap;
   }
   
-  public static WebView.c aUt(String paramString)
+  public static WebView.c baw(String paramString)
   {
     AppMethodBeat.i(156686);
-    fIN();
-    paramString = mx("setwebtype", paramString);
-    fIN();
-    paramString = aUB(paramString);
+    gaj();
+    paramString = mV("setwebtype", paramString);
+    gaj();
+    paramString = baE(paramString);
     AppMethodBeat.o(156686);
     return paramString;
   }
   
-  public static JsRuntime.JsRuntimeType aUu(String paramString)
+  public static JsRuntime.JsRuntimeType bax(String paramString)
   {
     AppMethodBeat.i(156687);
-    fIN();
-    paramString = mx("setjscore", paramString);
-    fIN();
-    paramString = aUC(paramString);
+    gaj();
+    paramString = mV("setjscore", paramString);
+    gaj();
+    paramString = baF(paramString);
     AppMethodBeat.o(156687);
     return paramString;
   }
   
-  public static WebView.a aUv(String paramString)
+  public static WebView.a bay(String paramString)
   {
     AppMethodBeat.i(156688);
-    fIN();
-    paramString = mx("setfullscreenvideo", paramString);
-    fIN();
-    paramString = aUD(paramString);
+    gaj();
+    paramString = mV("setfullscreenvideo", paramString);
+    gaj();
+    paramString = baG(paramString);
     AppMethodBeat.o(156688);
     return paramString;
   }
   
-  public static int aUw(String paramString)
+  public static int baz(String paramString)
   {
     AppMethodBeat.i(156689);
-    fIN();
-    paramString = mx("setTraceSampleRatioInTenThousand", paramString);
+    gaj();
+    paramString = mV("setTraceSampleRatioInTenThousand", paramString);
     if ((TextUtils.isEmpty(paramString)) || (!TextUtils.isDigitsOnly(paramString)))
     {
       AppMethodBeat.o(156689);
@@ -345,48 +386,7 @@ public class a
     return i;
   }
   
-  public static String aUx(String paramString)
-  {
-    AppMethodBeat.i(156690);
-    fIN();
-    paramString = mx("setEnabledTraceCategory", paramString);
-    AppMethodBeat.o(156690);
-    return paramString;
-  }
-  
-  public static String aUy(String paramString)
-  {
-    AppMethodBeat.i(156691);
-    String str2 = WebView.getCurStrModule();
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "tools";
-    }
-    paramString = mx(paramString, str1);
-    AppMethodBeat.o(156691);
-    return paramString;
-  }
-  
-  protected static boolean aUz(String paramString)
-  {
-    AppMethodBeat.i(156694);
-    if ("revertToVersion".equals(paramString))
-    {
-      AppMethodBeat.o(156694);
-      return true;
-    }
-    AppMethodBeat.o(156694);
-    return false;
-  }
-  
-  public static void afX(int paramInt)
-  {
-    AppMethodBeat.i(156682);
-    XWalkEnvironment.getSharedPreferencesForUpdateConfig().edit().putInt("cStrSpKeyConfigPeriod", paramInt).commit();
-    AppMethodBeat.o(156682);
-  }
-  
-  static String bY(Map<String, String> paramMap)
+  static String cb(Map<String, String> paramMap)
   {
     AppMethodBeat.i(156703);
     if (paramMap == null)
@@ -411,32 +411,32 @@ public class a
     return paramMap;
   }
   
-  private static a fIN()
+  private static a gaj()
   {
     try
     {
       AppMethodBeat.i(156677);
-      if (Kyw == null)
+      if (MoS == null)
       {
         locala = new a();
-        Kyw = locala;
-        locala.fIQ();
+        MoS = locala;
+        locala.gam();
       }
-      a locala = Kyw;
+      a locala = MoS;
       AppMethodBeat.o(156677);
       return locala;
     }
     finally {}
   }
   
-  public static void fIO()
+  public static void gak()
   {
     try
     {
       AppMethodBeat.i(185165);
-      Kyw = null;
+      MoS = null;
       Log.i("CommandCfg", "resetCommandCfg ");
-      fIN();
+      gaj();
       AppMethodBeat.o(185165);
       return;
     }
@@ -447,7 +447,7 @@ public class a
     }
   }
   
-  public static int fIS()
+  public static int gao()
   {
     AppMethodBeat.i(156683);
     int i = XWalkEnvironment.getSharedPreferencesForUpdateConfig().getInt("cStrSpKeyConfigPeriod", -1);
@@ -460,14 +460,14 @@ public class a
     return i * 60 * 1000;
   }
   
-  private void fIT()
+  private void gap()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(156705);
-        Object localObject1 = fIP().getAll();
+        Object localObject1 = gal().getAll();
         if ((localObject1 == null) || (((Map)localObject1).size() == 0))
         {
           AppMethodBeat.o(156705);
@@ -480,7 +480,7 @@ public class a
           ((ArrayList)localObject3).add((String)((Map.Entry)((Iterator)localObject1).next()).getKey());
           continue;
         }
-        localEditor = fIP().edit();
+        localEditor = gal().edit();
       }
       finally {}
       SharedPreferences.Editor localEditor;
@@ -497,18 +497,18 @@ public class a
     }
   }
   
-  private void fIU()
+  private void gaq()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(156706);
-        fIT();
-        SharedPreferences.Editor localEditor = fIP().edit();
-        localEditor.putString("cStrTAGConfigVer", Kyy);
-        localEditor.putString("cStrTAGConfigSdkVer", "200601");
-        Iterator localIterator = this.KyA.entrySet().iterator();
+        gap();
+        SharedPreferences.Editor localEditor = gal().edit();
+        localEditor.putString("cStrTAGConfigVer", MoU);
+        localEditor.putString("cStrTAGConfigSdkVer", "200801");
+        Iterator localIterator = this.MoW.entrySet().iterator();
         if (!localIterator.hasNext()) {
           break;
         }
@@ -526,7 +526,7 @@ public class a
                 if (localMap == null) {
                   continue;
                 }
-                localEditor.putString((String)localEntry.getKey(), bY(localMap));
+                localEditor.putString((String)localEntry.getKey(), cb(localMap));
               }
               catch (Exception localException)
               {
@@ -541,26 +541,26 @@ public class a
       finally {}
     }
     localObject1.commit();
-    XWalkEnvironment.addXWalkInitializeLog(fIR());
+    XWalkEnvironment.addXWalkInitializeLog(gan());
     AppMethodBeat.o(156706);
   }
   
   public static String getAbstractInfo()
   {
     AppMethodBeat.i(156680);
-    fIN();
-    String str = fIN().fIR();
+    gaj();
+    String str = gaj().gan();
     AppMethodBeat.o(156680);
     return str;
   }
   
-  public static String mx(String paramString1, String paramString2)
+  public static String mV(String paramString1, String paramString2)
   {
     try
     {
       AppMethodBeat.i(156692);
-      fIN();
-      paramString1 = a(paramString1, paramString2, fIN());
+      gaj();
+      paramString1 = a(paramString1, paramString2, gaj());
       AppMethodBeat.o(156692);
       return paramString1;
     }
@@ -571,60 +571,44 @@ public class a
     }
   }
   
-  public static int my(String paramString1, String paramString2)
+  public static int mW(String paramString1, String paramString2)
   {
     int i = 0;
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(205040);
-        fIN();
-        paramString1 = mx(paramString1, paramString2);
+        AppMethodBeat.i(197048);
+        gaj();
+        paramString1 = mV(paramString1, paramString2);
         if (TextUtils.isEmpty(paramString1))
         {
-          AppMethodBeat.o(205040);
+          AppMethodBeat.o(197048);
           return i;
         }
-        paramString1 = e.aVm(paramString1);
-        if (!paramString1.KDX)
+        paramString1 = e.bbp(paramString1);
+        if (!paramString1.Mux)
         {
-          AppMethodBeat.o(205040);
+          AppMethodBeat.o(197048);
           continue;
         }
         i = paramString1.intValue();
       }
       finally {}
-      AppMethodBeat.o(205040);
+      AppMethodBeat.o(197048);
     }
   }
   
-  final void S(String paramString, Map<String, Object> paramMap)
+  final void U(String paramString, Map<String, Object> paramMap)
   {
     try
     {
       AppMethodBeat.i(156704);
-      Kyy = paramString;
-      this.KyA = paramMap;
-      fIU();
+      MoU = paramString;
+      this.MoW = paramMap;
+      gaq();
       AppMethodBeat.o(156704);
       return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  protected final Map<String, String> aUs(String paramString)
-  {
-    try
-    {
-      AppMethodBeat.i(156684);
-      paramString = R(paramString, this.KyA);
-      AppMethodBeat.o(156684);
-      return paramString;
     }
     finally
     {
@@ -636,7 +620,7 @@ public class a
   protected void b(com.tencent.xweb.internal.a.a[] paramArrayOfa, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(156697);
-    fIN();
+    gaj();
     if (paramString == null)
     {
       AppMethodBeat.o(156697);
@@ -656,7 +640,7 @@ public class a
     localHashMap6.put("setEnabledTraceCategory", localHashMap5);
     if ((paramArrayOfa == null) || (paramArrayOfa.length == 0))
     {
-      S(paramString, localHashMap6);
+      U(paramString, localHashMap6);
       AppMethodBeat.o(156697);
       return;
     }
@@ -671,38 +655,38 @@ public class a
         if (paramBoolean)
         {
           m = j;
-          if (aUz(paramArrayOfa[k].KCi)) {}
+          if (baC(paramArrayOfa[k].MsD)) {}
         }
         else
         {
           m = j;
-          if (paramArrayOfa[k].KCh.fKi())
+          if (paramArrayOfa[k].MsC.gbC())
           {
-            Object localObject = (a)j.g(WebView.c.KzZ).excute("STR_CMD_EXXCUTE_CMD_FROM_CONFIG", new Object[] { paramArrayOfa[k] });
+            Object localObject = (a)j.g(WebView.c.Mqu).excute("STR_CMD_EXXCUTE_CMD_FROM_CONFIG", new Object[] { paramArrayOfa[k] });
             if (localObject != null)
             {
               m = j;
-              if (((a)localObject).KyC) {}
+              if (((a)localObject).MoY) {}
             }
             else
             {
               m = j;
-              if (paramArrayOfa[k].KCj != null)
+              if (paramArrayOfa[k].MsE != null)
               {
                 i = j;
-                if (paramArrayOfa[k].KCi.equals("setConfigPeriod")) {}
+                if (paramArrayOfa[k].MsD.equals("setConfigPeriod")) {}
                 try
                 {
-                  i = Integer.parseInt(paramArrayOfa[k].KCj);
+                  i = Integer.parseInt(paramArrayOfa[k].MsE);
                   m = i;
-                  if (paramArrayOfa[k].KCk != null)
+                  if (paramArrayOfa[k].MsF != null)
                   {
                     m = i;
-                    if (!paramArrayOfa[k].KCk.isEmpty())
+                    if (!paramArrayOfa[k].MsF.isEmpty())
                     {
-                      localObject = paramArrayOfa[k].KCk.split(",");
-                      if (!paramArrayOfa[k].KCi.equals("setwebtype")) {
-                        break label568;
+                      localObject = paramArrayOfa[k].MsF.split(",");
+                      if (!paramArrayOfa[k].MsD.equals("setwebtype")) {
+                        break label570;
                       }
                       j = 0;
                       m = 0;
@@ -718,7 +702,7 @@ public class a
                             n = j;
                             if (!localHashMap1.containsKey(str))
                             {
-                              localHashMap1.put(str, paramArrayOfa[k].KCj);
+                              localHashMap1.put(str, paramArrayOfa[k].MsE);
                               n = 1;
                             }
                           }
@@ -733,16 +717,16 @@ public class a
                 {
                   for (;;)
                   {
-                    Log.e("CommandCfg", "parse pariod cmdvalue to int failed , value is " + paramArrayOfa[k].KCj);
+                    Log.e("CommandCfg", "parse pariod cmdvalue to int failed , value is " + paramArrayOfa[k].MsE);
                     i = j;
                   }
                   m = i;
                   if (j != 0)
                   {
                     m = i;
-                    if (paramArrayOfa[k].KCh.KCx > 0)
+                    if (paramArrayOfa[k].MsC.MsW > 0)
                     {
-                      g.Cf(199L);
+                      g.Fh(199L);
                       m = i;
                     }
                   }
@@ -757,8 +741,8 @@ public class a
         k += 1;
         j = m;
         break;
-        label568:
-        if (paramArrayOfa[k].KCi.equals("setjscore"))
+        label570:
+        if (paramArrayOfa[k].MsD.equals("setjscore"))
         {
           j = 0;
           for (;;)
@@ -769,12 +753,12 @@ public class a
             }
             str = localException[j].trim();
             if ((str != null) && (!str.isEmpty()) && (!localHashMap2.containsKey(str))) {
-              localHashMap2.put(str, paramArrayOfa[k].KCj);
+              localHashMap2.put(str, paramArrayOfa[k].MsE);
             }
             j += 1;
           }
         }
-        if (paramArrayOfa[k].KCi.equals("setfullscreenvideo"))
+        if (paramArrayOfa[k].MsD.equals("setfullscreenvideo"))
         {
           j = 0;
           for (;;)
@@ -785,12 +769,12 @@ public class a
             }
             str = localException[j].trim();
             if ((str != null) && (!str.isEmpty()) && (!localHashMap3.containsKey(str))) {
-              localHashMap3.put(str, paramArrayOfa[k].KCj);
+              localHashMap3.put(str, paramArrayOfa[k].MsE);
             }
             j += 1;
           }
         }
-        if (paramArrayOfa[k].KCi.equals("setTraceSampleRatioInTenThousand"))
+        if (paramArrayOfa[k].MsD.equals("setTraceSampleRatioInTenThousand"))
         {
           j = 0;
           for (;;)
@@ -801,12 +785,12 @@ public class a
             }
             str = localException[j].trim();
             if ((str != null) && (!str.isEmpty()) && (!localHashMap4.containsKey(str))) {
-              localHashMap4.put(str, paramArrayOfa[k].KCj);
+              localHashMap4.put(str, paramArrayOfa[k].MsE);
             }
             j += 1;
           }
         }
-        if (paramArrayOfa[k].KCi.equals("setEnabledTraceCategory"))
+        if (paramArrayOfa[k].MsD.equals("setEnabledTraceCategory"))
         {
           j = 0;
           for (;;)
@@ -817,7 +801,7 @@ public class a
             }
             str = localException[j].trim();
             if ((str != null) && (!str.isEmpty()) && (!localHashMap5.containsKey(str))) {
-              localHashMap5.put(str, paramArrayOfa[k].KCj);
+              localHashMap5.put(str, paramArrayOfa[k].MsE);
             }
             j += 1;
           }
@@ -826,12 +810,28 @@ public class a
         m = i;
       }
     }
-    afX(j);
-    S(paramString, localHashMap6);
+    aix(j);
+    U(paramString, localHashMap6);
     AppMethodBeat.o(156697);
   }
   
-  public SharedPreferences fIP()
+  protected final Map<String, String> bav(String paramString)
+  {
+    try
+    {
+      AppMethodBeat.i(156684);
+      paramString = T(paramString, this.MoW);
+      AppMethodBeat.o(156684);
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public SharedPreferences gal()
   {
     AppMethodBeat.i(156678);
     SharedPreferences localSharedPreferences = XWalkEnvironment.getMMKVSharedTransportOld("XWEB.CMDCFG");
@@ -839,7 +839,7 @@ public class a
     return localSharedPreferences;
   }
   
-  final void fIQ()
+  final void gam()
   {
     int i;
     label88:
@@ -851,15 +851,15 @@ public class a
     try
     {
       AppMethodBeat.i(156679);
-      this.KyA.clear();
-      SharedPreferences localSharedPreferences = fIP();
-      Kyy = localSharedPreferences.getString("cStrTAGConfigVer", "");
+      this.MoW.clear();
+      SharedPreferences localSharedPreferences = gal();
+      MoU = localSharedPreferences.getString("cStrTAGConfigVer", "");
       Object localObject1 = localSharedPreferences.getString("cStrTAGConfigSdkVer", "");
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         break label390;
       }
-      i = e.aVm((String)localObject1).intValue();
-      Kyz = i;
+      i = e.bbp((String)localObject1).intValue();
+      MoV = i;
       if (i >= 200502) {
         break label385;
       }
@@ -897,7 +897,7 @@ public class a
           if (((Map)localObject1).size() != 0) {
             break label359;
           }
-          this.KyA.put(str1, str2);
+          this.MoW.put(str1, str2);
         }
       }
       arrayOfString = str2.split(";");
@@ -921,10 +921,10 @@ public class a
           localHashMap.put(localObject3[0], localObject3[1]);
           break label395;
           label349:
-          localObject3 = aUE(str2);
+          localObject3 = baH(str2);
           break label222;
           label359:
-          this.KyA.put(str1, localObject3);
+          this.MoW.put(str1, localObject3);
           break label135;
           label376:
           AppMethodBeat.o(156679);
@@ -942,7 +942,7 @@ public class a
     }
   }
   
-  public String fIR()
+  public String gan()
   {
     for (;;)
     {
@@ -950,9 +950,9 @@ public class a
       {
         AppMethodBeat.i(156681);
         StringBuilder localStringBuilder = new StringBuilder(512);
-        Object localObject1 = this.KyA.keySet();
-        localStringBuilder.append("strConfig ver = " + Kyy + "\n");
-        localStringBuilder.append("strConfig sdk ver = " + Kyz + "\n");
+        Object localObject1 = this.MoW.keySet();
+        localStringBuilder.append("strConfig ver = " + MoU + "\n");
+        localStringBuilder.append("strConfig sdk ver = " + MoV + "\n");
         if (localObject1 == null)
         {
           localObject1 = localStringBuilder.toString();
@@ -966,7 +966,7 @@ public class a
           if (TextUtils.isEmpty(str3)) {
             continue;
           }
-          String str2 = bY(aUs(str3));
+          String str2 = cb(bav(str3));
           localObject1 = str2;
           if (str2 == null) {
             localObject1 = "";
@@ -985,8 +985,8 @@ public class a
   
   public static final class a
   {
-    public boolean KyC = false;
-    public Object KyD = null;
+    public boolean MoY = false;
+    public Object MoZ = null;
   }
 }
 

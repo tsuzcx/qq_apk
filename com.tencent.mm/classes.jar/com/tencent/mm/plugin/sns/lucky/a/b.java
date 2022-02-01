@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.sns.lucky.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 
 public final class b
 {
-  public static void lA(int paramInt)
+  public static void ma(int paramInt)
   {
     AppMethodBeat.i(95176);
-    h.wUl.idkeyStat(270L, paramInt, 1L, true);
+    g.yhR.idkeyStat(270L, paramInt, 1L, true);
     AppMethodBeat.o(95176);
   }
 }

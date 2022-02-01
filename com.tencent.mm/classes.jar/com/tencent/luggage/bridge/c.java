@@ -10,7 +10,7 @@ final class c
 {
   c(int paramInt, String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    super(b.bWc);
+    super(b.cgr);
     AppMethodBeat.i(140315);
     HashMap localHashMap = new HashMap();
     localHashMap.put("callbackId", Integer.valueOf(paramInt));

@@ -12,27 +12,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import d.g.a.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 import java.util.Random;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "allColorDrawable", "Landroid/graphics/drawable/Drawable;", "blackView", "Landroid/widget/ImageView;", "insetSize", "onColorSelected", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "color", "", "getOnColorSelected", "()Lkotlin/jvm/functions/Function1;", "setOnColorSelected", "(Lkotlin/jvm/functions/Function1;)V", "randomRoot", "randomText", "Landroid/widget/TextView;", "randomView", "selectedColor", "getSelectedColor", "()I", "setSelectedColor", "(I)V", "strokeWidth", "whiteView", "createAllColorDrawable", "Landroid/graphics/drawable/GradientDrawable;", "createDrawable", "insetDrawable", "Landroid/graphics/drawable/InsetDrawable;", "origin", "notifyView", "randowmColor", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "allColorDrawable", "Landroid/graphics/drawable/Drawable;", "blackView", "Landroid/widget/ImageView;", "insetSize", "onColorSelected", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "color", "", "getOnColorSelected", "()Lkotlin/jvm/functions/Function1;", "setOnColorSelected", "(Lkotlin/jvm/functions/Function1;)V", "randomRoot", "randomText", "Landroid/widget/TextView;", "randomView", "selectedColor", "getSelectedColor", "()I", "setSelectedColor", "(I)V", "strokeWidth", "whiteView", "createAllColorDrawable", "Landroid/graphics/drawable/GradientDrawable;", "createDrawable", "insetDrawable", "Landroid/graphics/drawable/InsetDrawable;", "origin", "notifyView", "randowmColor", "plugin-story_release"})
 public final class StoryCommentColorSelector
   extends LinearLayout
 {
-  private int ptv;
+  private final TextView AZA;
+  private d.g.a.b<? super Integer, z> AZB;
+  private final int AZu;
+  private final Drawable AZv;
+  private final ImageView AZw;
+  private final ImageView AZx;
+  private final ImageView AZy;
+  private final LinearLayout AZz;
+  private int pWZ;
   private final int strokeWidth;
-  private final int zHT;
-  private final Drawable zHU;
-  private final ImageView zHV;
-  private final ImageView zHW;
-  private final ImageView zHX;
-  private final LinearLayout zHY;
-  private final TextView zHZ;
-  private b<? super Integer, y> zIa;
   
   public StoryCommentColorSelector(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -45,143 +43,155 @@ public final class StoryCommentColorSelector
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120101);
-    this.ptv = -1;
+    this.pWZ = -1;
     View.inflate(paramContext, 2131495670, (ViewGroup)this);
     setOrientation(0);
     paramAttributeSet = findViewById(2131305293);
-    k.g(paramAttributeSet, "findViewById(R.id.story_…ent_color_selector_white)");
-    this.zHV = ((ImageView)paramAttributeSet);
+    p.g(paramAttributeSet, "findViewById(R.id.story_…ent_color_selector_white)");
+    this.AZw = ((ImageView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305289);
-    k.g(paramAttributeSet, "findViewById(R.id.story_…ent_color_selector_black)");
-    this.zHW = ((ImageView)paramAttributeSet);
+    p.g(paramAttributeSet, "findViewById(R.id.story_…ent_color_selector_black)");
+    this.AZx = ((ImageView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305291);
-    k.g(paramAttributeSet, "findViewById(R.id.story_…lor_selector_random_icon)");
-    this.zHX = ((ImageView)paramAttributeSet);
+    p.g(paramAttributeSet, "findViewById(R.id.story_…lor_selector_random_icon)");
+    this.AZy = ((ImageView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305290);
-    k.g(paramAttributeSet, "findViewById(R.id.story_…nt_color_selector_random)");
-    this.zHY = ((LinearLayout)paramAttributeSet);
+    p.g(paramAttributeSet, "findViewById(R.id.story_…nt_color_selector_random)");
+    this.AZz = ((LinearLayout)paramAttributeSet);
     paramAttributeSet = findViewById(2131305292);
-    k.g(paramAttributeSet, "findViewById(R.id.story_…lor_selector_random_text)");
-    this.zHZ = ((TextView)paramAttributeSet);
-    this.zHV.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    p.g(paramAttributeSet, "findViewById(R.id.story_…lor_selector_random_text)");
+    this.AZA = ((TextView)paramAttributeSet);
+    this.AZw.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120096);
-        this.zIb.setSelectedColor(-1);
-        StoryCommentColorSelector.a(this.zIb);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        this.AZC.setSelectedColor(-1);
+        StoryCommentColorSelector.a(this.AZC);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(120096);
       }
     });
-    this.zHW.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.AZx.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120097);
-        this.zIb.setSelectedColor(-16777216);
-        StoryCommentColorSelector.a(this.zIb);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        this.AZC.setSelectedColor(-16777216);
+        StoryCommentColorSelector.a(this.AZC);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(120097);
       }
     });
-    this.zHY.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.AZz.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120098);
-        this.zIb.setSelectedColor(StoryCommentColorSelector.dZB());
-        StoryCommentColorSelector.a(this.zIb);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        this.AZC.setSelectedColor(StoryCommentColorSelector.elQ());
+        StoryCommentColorSelector.a(this.AZC);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/StoryCommentColorSelector$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(120098);
       }
     });
-    this.strokeWidth = a.fromDPToPix(paramContext, 2);
-    this.zHT = a.fromDPToPix(paramContext, 4);
+    this.strokeWidth = com.tencent.mm.cc.a.fromDPToPix(paramContext, 2);
+    this.AZu = com.tencent.mm.cc.a.fromDPToPix(paramContext, 4);
     paramContext = new GradientDrawable();
     paramContext.setColors(new int[] { -372399, -352965, -15616, -7220480, -16268960, -15683841, -15432210, -10197008, -372399 });
     paramContext.setGradientType(2);
     paramContext.setStroke(this.strokeWidth, -1);
     paramContext.setShape(1);
     paramContext = (Drawable)paramContext;
-    k.h(paramContext, "origin");
-    this.zHU = ((Drawable)new InsetDrawable(paramContext, this.zHT));
-    dZA();
+    p.h(paramContext, "origin");
+    this.AZv = ((Drawable)new InsetDrawable(paramContext, this.AZu));
+    elP();
     AppMethodBeat.o(120101);
   }
   
-  private final void dZA()
+  private final void elP()
   {
     AppMethodBeat.i(120099);
     Object localObject;
-    switch (this.ptv)
+    switch (this.pWZ)
     {
     default: 
-      this.zHV.setSelected(false);
-      this.zHW.setSelected(false);
-      localObject = this.zHX;
-      int i = this.ptv;
+      this.AZw.setSelected(false);
+      this.AZx.setSelected(false);
+      localObject = this.AZy;
+      int i = this.pWZ;
       GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setColor(i);
       localGradientDrawable.setStroke(this.strokeWidth, -1);
       localGradientDrawable.setShape(1);
       ((ImageView)localObject).setImageDrawable((Drawable)localGradientDrawable);
-      this.zHZ.setVisibility(0);
+      this.AZA.setVisibility(0);
     }
     for (;;)
     {
-      localObject = this.zIa;
+      localObject = this.AZB;
       if (localObject == null) {
         break;
       }
-      ((b)localObject).ay(Integer.valueOf(this.ptv));
+      ((d.g.a.b)localObject).invoke(Integer.valueOf(this.pWZ));
       AppMethodBeat.o(120099);
       return;
-      this.zHV.setSelected(true);
-      this.zHW.setSelected(false);
-      this.zHX.setImageDrawable(this.zHU);
-      this.zHZ.setVisibility(8);
+      this.AZw.setSelected(true);
+      this.AZx.setSelected(false);
+      this.AZy.setImageDrawable(this.AZv);
+      this.AZA.setVisibility(8);
       continue;
-      this.zHV.setSelected(false);
-      this.zHW.setSelected(true);
-      this.zHX.setImageDrawable(this.zHU);
-      this.zHZ.setVisibility(8);
+      this.AZw.setSelected(false);
+      this.AZx.setSelected(true);
+      this.AZy.setImageDrawable(this.AZv);
+      this.AZA.setVisibility(8);
     }
     AppMethodBeat.o(120099);
   }
   
-  public static int dZB()
+  public static int elQ()
   {
     AppMethodBeat.i(120100);
     Object localObject = new Random();
-    StoryCommentView.a locala = StoryCommentView.zIR;
-    int i = ((Random)localObject).nextInt(StoryCommentView.dZD().length);
-    localObject = StoryCommentView.zIR;
-    i = StoryCommentView.dZD()[i];
+    StoryCommentView.a locala = StoryCommentView.Bas;
+    int i = ((Random)localObject).nextInt(StoryCommentView.elS().length);
+    localObject = StoryCommentView.Bas;
+    i = StoryCommentView.elS()[i];
     AppMethodBeat.o(120100);
     return i;
   }
   
-  public final b<Integer, y> getOnColorSelected()
+  public final d.g.a.b<Integer, z> getOnColorSelected()
   {
-    return this.zIa;
+    return this.AZB;
   }
   
   public final int getSelectedColor()
   {
-    return this.ptv;
+    return this.pWZ;
   }
   
-  public final void setOnColorSelected(b<? super Integer, y> paramb)
+  public final void setOnColorSelected(d.g.a.b<? super Integer, z> paramb)
   {
-    this.zIa = paramb;
+    this.AZB = paramb;
   }
   
   public final void setSelectedColor(int paramInt)
   {
-    this.ptv = paramInt;
+    this.pWZ = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryCommentColorSelector
  * JD-Core Version:    0.7.0.1
  */

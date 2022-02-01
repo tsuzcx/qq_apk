@@ -18,7 +18,7 @@ public final class a
   
   public static Object a(InputStream paramInputStream, c paramc, int paramInt)
   {
-    switch (1.cxz[paramc.ordinal()])
+    switch (1.cIu[paramc.ordinal()])
     {
     default: 
       return null;
@@ -30,19 +30,19 @@ public final class a
         return Boolean.valueOf(bool);
       }
     case 3: 
-      return Character.valueOf((char)j(paramInputStream));
+      return Character.valueOf((char)n(paramInputStream));
     case 4: 
-      return Float.valueOf(Float.intBitsToFloat(k(paramInputStream)));
+      return Float.valueOf(Float.intBitsToFloat(o(paramInputStream)));
     case 5: 
-      return Double.valueOf(Double.longBitsToDouble(l(paramInputStream)));
+      return Double.valueOf(Double.longBitsToDouble(p(paramInputStream)));
     case 6: 
       return Byte.valueOf((byte)paramInputStream.read());
     case 7: 
-      return Short.valueOf(j(paramInputStream));
+      return Short.valueOf(n(paramInputStream));
     case 8: 
-      return Integer.valueOf(k(paramInputStream));
+      return Integer.valueOf(o(paramInputStream));
     }
-    return Long.valueOf(l(paramInputStream));
+    return Long.valueOf(p(paramInputStream));
   }
   
   public static void a(InputStream paramInputStream, byte[] paramArrayOfByte, long paramLong)
@@ -71,7 +71,7 @@ public final class a
   
   public static void a(OutputStream paramOutputStream, b paramb)
   {
-    paramOutputStream.write(paramb.cxo);
+    paramOutputStream.write(paramb.cIj);
   }
   
   public static int b(InputStream paramInputStream, c paramc, int paramInt)
@@ -120,7 +120,7 @@ public final class a
     }
   }
   
-  public static short j(InputStream paramInputStream)
+  public static short n(InputStream paramInputStream)
   {
     int i = paramInputStream.read();
     int j = paramInputStream.read();
@@ -130,7 +130,7 @@ public final class a
     return (short)(i << 8 | j);
   }
   
-  public static int k(InputStream paramInputStream)
+  public static int o(InputStream paramInputStream)
   {
     int i = paramInputStream.read();
     int j = paramInputStream.read();
@@ -142,7 +142,7 @@ public final class a
     return (i << 24) + (j << 16) + (k << 8) + m;
   }
   
-  public static long l(InputStream paramInputStream)
+  public static long p(InputStream paramInputStream)
   {
     byte[] arrayOfByte = new byte[8];
     a(paramInputStream, arrayOfByte, 8L);
@@ -156,7 +156,7 @@ public final class a
     return (arrayOfByte[7] & 0xFF) + ((l1 << 56) + (l2 << 48) + (l3 << 40) + (l4 << 32) + (l5 << 24) + l6 + l7);
   }
   
-  public static String m(InputStream paramInputStream)
+  public static String q(InputStream paramInputStream)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     for (int i = paramInputStream.read(); i != 0; i = paramInputStream.read()) {

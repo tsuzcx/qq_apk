@@ -17,10 +17,10 @@ public abstract class c<Z>
   
   public final void a(d paramd)
   {
-    if (!j.aY(this.width, this.height)) {
+    if (!j.aZ(this.width, this.height)) {
       throw new IllegalArgumentException("Width and height must both be > 0 or Target#SIZE_ORIGINAL, but given width: " + this.width + " and height: " + this.height + ", either provide dimensions in the constructor or call override()");
     }
-    paramd.aX(this.width, this.height);
+    paramd.aY(this.width, this.height);
   }
 }
 

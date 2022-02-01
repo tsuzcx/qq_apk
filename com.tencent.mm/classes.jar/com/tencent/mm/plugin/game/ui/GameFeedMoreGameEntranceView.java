@@ -7,20 +7,20 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.e;
-import com.tencent.mm.plugin.game.d.af;
-import com.tencent.mm.plugin.game.d.cn;
-import com.tencent.mm.plugin.game.e.a;
+import com.tencent.mm.game.report.f;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.game.d.ah;
+import com.tencent.mm.plugin.game.d.cu;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.model.d;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class GameFeedMoreGameEntranceView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private TextView Up;
-  private d tmX;
+  private TextView Wf;
+  private d ulv;
   
   public GameFeedMoreGameEntranceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,16 +30,21 @@ public class GameFeedMoreGameEntranceView
   public void onClick(View paramView)
   {
     AppMethodBeat.i(42118);
-    if ((this.tmX == null) || (this.tmX.tdg == null))
+    b localb = new b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameFeedMoreGameEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    if ((this.ulv == null) || (this.ulv.uaW == null))
     {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedMoreGameEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42118);
       return;
     }
-    if (!bs.isNullOrNil(this.tmX.tdg.thh))
+    if (!bt.isNullOrNil(this.ulv.uaW.ueY))
     {
-      int i = c.ay(getContext(), this.tmX.tdg.thh);
-      e.a(getContext(), 10, 1024, this.tmX.position, i, this.tmX.tdg.hOf, GameIndexListView.getSourceScene(), a.ae(this.tmX.tdg.thP, "clickType", "card"));
+      int i = c.aB(getContext(), this.ulv.uaW.ueY);
+      f.a(getContext(), 10, 1024, this.ulv.position, i, this.ulv.uaW.iht, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.aj(this.ulv.uaW.ufG, "clickType", "card"));
     }
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedMoreGameEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42118);
   }
   
@@ -47,7 +52,7 @@ public class GameFeedMoreGameEntranceView
   {
     AppMethodBeat.i(42116);
     super.onFinishInflate();
-    this.Up = ((TextView)findViewById(2131302471));
+    this.Wf = ((TextView)findViewById(2131302471));
     setOnClickListener(this);
     AppMethodBeat.o(42116);
   }
@@ -55,26 +60,26 @@ public class GameFeedMoreGameEntranceView
   public void setData(d paramd)
   {
     AppMethodBeat.i(42117);
-    if ((paramd == null) || (paramd.tdg == null) || (paramd.tdg.tiN == null))
+    if ((paramd == null) || (paramd.uaW == null) || (paramd.uaW.ugI == null))
     {
       setVisibility(8);
       AppMethodBeat.o(42117);
       return;
     }
-    this.tmX = paramd;
+    this.ulv = paramd;
     setVisibility(0);
-    this.Up.setText(paramd.tdg.tiN.Desc);
-    if (!this.tmX.tdi)
+    this.Wf.setText(paramd.uaW.ugI.Desc);
+    if (!this.ulv.uaY)
     {
-      a.a(getContext(), 10, 1024, this.tmX.position, this.tmX.tdg.hOf, GameIndexListView.getSourceScene(), a.tu(this.tmX.tdg.thP));
-      this.tmX.tdi = true;
+      com.tencent.mm.plugin.game.e.a.a(getContext(), 10, 1024, this.ulv.position, this.ulv.uaW.iht, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.wk(this.ulv.uaW.ufG));
+      this.ulv.uaY = true;
     }
     AppMethodBeat.o(42117);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView
  * JD-Core Version:    0.7.0.1
  */

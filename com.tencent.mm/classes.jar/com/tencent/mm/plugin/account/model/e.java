@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ud;
-import com.tencent.mm.protocal.protobuf.ue;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.vy;
+import com.tencent.mm.protocal.protobuf.vz;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
   extends n
   implements k
 {
-  private g callback;
-  public String eNf;
-  private b hEg;
+  private f callback;
+  public String ffB;
+  private b hWL;
   
   public e(String paramString)
   {
-    AppMethodBeat.i(193206);
+    AppMethodBeat.i(207102);
     b.a locala = new b.a();
-    ud localud = new ud();
-    localud.eNf = paramString;
-    this.eNf = paramString;
-    locala.hvt = localud;
-    locala.hvu = new ue();
+    vy localvy = new vy();
+    localvy.ffB = paramString;
+    this.ffB = paramString;
+    locala.hNM = localvy;
+    locala.hNN = new vz();
     locala.uri = "/cgi-bin/micromsg-bin/checkaliasvalid";
     locala.funcId = getType();
-    this.hEg = locala.aAz();
-    AppMethodBeat.o(193206);
+    this.hWL = locala.aDC();
+    AppMethodBeat.o(207102);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    AppMethodBeat.i(193207);
-    this.callback = paramg;
-    int i = dispatch(parame, this.hEg, this);
-    AppMethodBeat.o(193207);
+    AppMethodBeat.i(207103);
+    this.callback = paramf;
+    int i = dispatch(parame, this.hWL, this);
+    AppMethodBeat.o(207103);
     return i;
   }
   
@@ -50,15 +50,15 @@ public final class e
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193208);
-    ac.i("MicroMsg.NetSceneCheckAliasValid", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(207104);
+    ad.i("MicroMsg.NetSceneCheckAliasValid", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(193208);
+    AppMethodBeat.o(207104);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.e
  * JD-Core Version:    0.7.0.1
  */

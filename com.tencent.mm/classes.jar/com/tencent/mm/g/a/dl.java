@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class dl
   extends b
 {
-  public a dcW;
+  public a doj;
   
   public dl()
   {
@@ -15,21 +15,24 @@ public final class dl
   
   private dl(byte paramByte)
   {
-    AppMethodBeat.i(115976);
-    this.dcW = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(104416);
+    this.doj = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(115976);
+    AppMethodBeat.o(104416);
   }
   
   public static final class a
   {
-    public String cIZ;
+    public String dok;
+    public String dol;
+    public int progress = 0;
+    public int status = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.dl
  * JD-Core Version:    0.7.0.1
  */

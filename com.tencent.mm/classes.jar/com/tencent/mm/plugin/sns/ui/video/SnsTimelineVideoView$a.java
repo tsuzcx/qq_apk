@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(100387);
-    zjg = new a("AVAILABLE", 0);
-    zjh = new a("ATTACHING", 1);
-    zji = new a("PLAYING", 2);
-    zjj = new a[] { zjg, zjh, zji };
+    ABg = new a("AVAILABLE", 0);
+    ABh = new a("ATTACHING", 1);
+    ABi = new a("PLAYING", 2);
+    ABj = new a[] { ABg, ABh, ABi };
     AppMethodBeat.o(100387);
   }
   

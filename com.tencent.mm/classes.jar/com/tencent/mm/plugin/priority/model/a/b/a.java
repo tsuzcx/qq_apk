@@ -1,53 +1,57 @@
 package com.tencent.mm.plugin.priority.model.a.b;
 
+import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.bi;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.bj;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.priority.PluginPriority;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.hh;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.plugin.record.a.j;
+import com.tencent.mm.plugin.record.b.p;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ho;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
 import com.tencent.wcdb.database.SQLiteStatement;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
-  implements com.tencent.mm.ak.g, com.tencent.mm.ak.h, com.tencent.mm.plugin.record.a.d
+  implements com.tencent.mm.al.f, com.tencent.mm.al.g, com.tencent.mm.plugin.record.a.d
 {
-  public String vEf = "";
-  com.tencent.mm.plugin.record.b.e vEg;
+  public String wLl = "";
+  com.tencent.mm.plugin.record.b.f wLm;
   
-  private static void a(com.tencent.mm.plugin.record.a.i parami, boolean paramBoolean)
+  private static void a(j paramj, boolean paramBoolean)
   {
     AppMethodBeat.i(87832);
-    if ((1 == parami.field_type) && ((parami.field_fileType == com.tencent.mm.i.a.fqr) || (parami.field_fileType == com.tencent.mm.i.a.MediaType_FILE))) {
+    if ((1 == paramj.field_type) && ((paramj.field_fileType == com.tencent.mm.i.a.fIy) || (paramj.field_fileType == com.tencent.mm.i.a.MediaType_FILE))) {
       try
       {
-        long l = Long.valueOf(parami.field_mediaId.split("@")[2]).longValue();
-        bo localbo = ((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().vP(l);
-        ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.comm.a.b.class)).a(true, parami.field_dataId, localbo.field_msgSvrId, paramBoolean);
+        long l = Long.valueOf(paramj.field_mediaId.split("@")[2]).longValue();
+        bu localbu = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().xY(l);
+        ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.comm.a.b.class)).a(true, paramj.field_dataId, localbu.field_msgSvrId, paramBoolean);
         AppMethodBeat.o(87832);
         return;
       }
-      catch (Exception parami) {}
+      catch (Exception paramj) {}
     }
     AppMethodBeat.o(87832);
   }
   
-  public static boolean doG()
+  public static boolean dzi()
   {
     AppMethodBeat.i(87833);
-    if (!ax.isWifi(ai.getContext()))
+    if (!ay.isWifi(aj.getContext()))
     {
       AppMethodBeat.o(87833);
       return false;
@@ -57,7 +61,7 @@ public final class a
     int j = localCalendar.get(12);
     if ((i == 1) && (j >= 30))
     {
-      com.tencent.mm.kernel.g.agP();
+      com.tencent.mm.kernel.g.ajA();
       if (j >= Math.abs(com.tencent.mm.kernel.a.getUin()) % 30 + 30)
       {
         AppMethodBeat.o(87833);
@@ -75,51 +79,51 @@ public final class a
     return false;
   }
   
-  public final void a(int paramInt1, int paramInt2, com.tencent.mm.ak.n paramn)
+  public final void a(int paramInt1, int paramInt2, n paramn)
   {
     AppMethodBeat.i(87830);
-    ac.i("MicroMsg.Priority.C2CFileAutoDownloader", "onSceneProgressEnd %s %s %s", new Object[] { this.vEf, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+    ad.i("MicroMsg.Priority.C2CFileAutoDownloader", "onSceneProgressEnd %s %s %s", new Object[] { this.wLl, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
     AppMethodBeat.o(87830);
   }
   
-  public final void a(int paramInt, com.tencent.mm.plugin.record.a.i parami)
+  public final void a(int paramInt, j paramj)
   {
     AppMethodBeat.i(87831);
-    if (parami.field_dataId.equals(this.vEf)) {
-      switch (parami.field_status)
+    if (paramj.field_dataId.equals(this.wLl)) {
+      switch (paramj.field_status)
       {
       }
     }
     for (;;)
     {
       ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b(this);
-      this.vEf = "";
+      this.wLl = "";
       start();
       AppMethodBeat.o(87831);
       return;
-      a(parami, true);
-      com.tencent.mm.plugin.report.e.wTc.idkeyStat(1241L, 3L, 1L, false);
+      a(paramj, true);
+      com.tencent.mm.plugin.report.e.ygI.idkeyStat(1241L, 3L, 1L, false);
       continue;
-      a(parami, false);
-      com.tencent.mm.plugin.report.e.wTc.idkeyStat(1241L, 5L, 1L, false);
+      a(paramj, false);
+      com.tencent.mm.plugin.report.e.ygI.idkeyStat(1241L, 5L, 1L, false);
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(87829);
-    if ((paramn.equals(this.vEg)) && (this.vEf.equals(String.valueOf(this.vEg.msgId))))
+    if ((paramn.equals(this.wLm)) && (this.wLl.equals(String.valueOf(this.wLm.msgId))))
     {
-      com.tencent.mm.kernel.g.agi().b(221, this);
-      this.vEf = "";
+      com.tencent.mm.kernel.g.aiU().b(221, this);
+      this.wLl = "";
       start();
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        com.tencent.mm.plugin.report.e.wTc.idkeyStat(1241L, 2L, 1L, false);
+        com.tencent.mm.plugin.report.e.ygI.idkeyStat(1241L, 2L, 1L, false);
         AppMethodBeat.o(87829);
         return;
       }
-      com.tencent.mm.plugin.report.e.wTc.idkeyStat(1241L, 4L, 1L, false);
+      com.tencent.mm.plugin.report.e.ygI.idkeyStat(1241L, 4L, 1L, false);
     }
     AppMethodBeat.o(87829);
   }
@@ -127,7 +131,7 @@ public final class a
   public final void start()
   {
     AppMethodBeat.i(87828);
-    ac.i("MicroMsg.Priority.C2CFileAutoDownloader", "start to download next file");
+    ad.i("MicroMsg.Priority.C2CFileAutoDownloader", "start to download next file");
     ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getPriorityTaskRunner().a(new a((byte)0));
     AppMethodBeat.o(87828);
   }
@@ -145,139 +149,133 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(87827);
-      if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pOS, com.tencent.mm.util.c.fwV()) == 0)
+      Object localObject1 = (com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class);
+      Object localObject2 = b.a.qsR;
+      Object localObject3 = com.tencent.mm.util.c.LgD;
+      if (((com.tencent.mm.plugin.expt.b.b)localObject1).a((b.a)localObject2, com.tencent.mm.util.c.fNJ()) == 0)
       {
-        ac.i("MicroMsg.Priority.C2CFileAutoDownloader", "not auto download expt flag");
+        ad.i("MicroMsg.Priority.C2CFileAutoDownloader", "not auto download expt flag");
         AppMethodBeat.o(87827);
         return;
       }
-      if (!a.doG())
+      if (!a.dzi())
       {
-        ac.i("MicroMsg.Priority.C2CFileAutoDownloader", "not auto download condition");
+        ad.i("MicroMsg.Priority.C2CFileAutoDownloader", "not auto download condition");
         AppMethodBeat.o(87827);
         return;
       }
-      if (!bs.isNullOrNil(a.this.vEf))
+      if (!bt.isNullOrNil(a.this.wLl))
       {
-        ac.i("MicroMsg.Priority.C2CFileAutoDownloader", "Downloading %s", new Object[] { a.this.vEf });
+        ad.i("MicroMsg.Priority.C2CFileAutoDownloader", "Downloading %s", new Object[] { a.this.wLl });
         AppMethodBeat.o(87827);
         return;
       }
       long l = ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getFileBgBorderSize();
       float f1 = ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getFileBgBorderPriority();
-      boolean bool = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pPa, com.tencent.mm.util.c.fwW());
-      hh localhh = ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().doM();
+      localObject1 = (com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class);
+      localObject2 = b.a.qsZ;
+      localObject3 = com.tencent.mm.util.c.LgD;
+      boolean bool = ((com.tencent.mm.plugin.expt.b.b)localObject1).a((b.a)localObject2, com.tencent.mm.util.c.fNK());
+      localObject1 = ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().dzo();
       int i;
-      if (localhh == null) {
+      if (localObject1 == null) {
         if (!bool)
         {
-          localhh = ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().a(f1, l);
+          localObject1 = ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().b(f1, l);
           i = 2;
         }
       }
       for (;;)
       {
-        if (localhh == null)
+        if (localObject1 == null)
         {
-          ac.i("MicroMsg.Priority.C2CFileAutoDownloader", "autodownloadfile is null %d %.2f", new Object[] { Long.valueOf(l), Float.valueOf(f1) });
+          ad.i("MicroMsg.Priority.C2CFileAutoDownloader", "autodownloadfile is null %d %.2f", new Object[] { Long.valueOf(l), Float.valueOf(f1) });
           AppMethodBeat.o(87827);
           return;
-          i = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pPb, 20);
-          float f2 = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pPc, 10.0F);
-          localhh = ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().q(i, f2);
+          i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qta, 20);
+          float f2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qtb, 10.0F);
+          localObject1 = ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().r(i, f2);
           i = 3;
         }
         else
         {
-          final bo localbo = ((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().aF(localhh.vTL, localhh.DUD);
-          if ((w.sQ(localbo.field_talker)) && (localbo.field_isSend == 0)) {}
-          final k.b localb;
-          Object localObject2;
-          for (Object localObject1 = bi.ym(localbo.field_content);; localObject1 = localbo.field_content)
+          bu localbu = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().aI(((ho)localObject1).FzS, ((ho)localObject1).FzY);
+          if ((w.vF(localbu.field_talker)) && (localbu.field_isSend == 0)) {}
+          k.b localb;
+          for (localObject2 = bj.Bl(localbu.field_content);; localObject2 = localbu.field_content)
           {
-            localb = k.b.vA((String)localObject1);
+            localb = k.b.yr((String)localObject2);
             if (localb != null) {
               break;
             }
-            ac.i("MicroMsg.Priority.C2CFileAutoDownloader", "appMsgContent is null");
-            localObject1 = ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage();
-            localObject2 = localhh.Id;
-            l = localhh.DUD;
-            ((c)localObject1).vEk.bindString(1, (String)localObject2);
-            ((c)localObject1).vEk.bindLong(2, l);
-            ac.i("MicroMsg.Priority.C2CMsgAutoDownloadFileStorage", "delete %s img %s %s", new Object[] { Integer.valueOf(((c)localObject1).vEk.executeUpdateDelete()), localObject2, Long.valueOf(l) });
+            ad.i("MicroMsg.Priority.C2CFileAutoDownloader", "appMsgContent is null");
+            localObject2 = ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage();
+            localObject3 = ((ho)localObject1).Id;
+            l = ((ho)localObject1).FzY;
+            ((c)localObject2).wLq.bindString(1, (String)localObject3);
+            ((c)localObject2).wLq.bindLong(2, l);
+            ad.i("MicroMsg.Priority.C2CMsgAutoDownloadFileStorage", "delete %s img %s %s", new Object[] { Integer.valueOf(((c)localObject2).wLq.executeUpdateDelete()), localObject3, Long.valueOf(l) });
             AppMethodBeat.o(87827);
             return;
           }
-          if (localhh.DUz == 2)
+          if (((ho)localObject1).FzU == 2)
           {
-            localObject2 = com.tencent.mm.plugin.s.a.bEO().zM(Long.valueOf(localhh.Id).longValue());
-            localObject1 = localObject2;
-            if (localObject2 == null)
+            localObject3 = com.tencent.mm.plugin.s.a.bIX().CB(Long.valueOf(((ho)localObject1).Id).longValue());
+            localObject2 = localObject3;
+            if (localObject3 == null)
             {
-              localObject1 = new com.tencent.mm.pluginsdk.model.app.c();
-              ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath = com.tencent.mm.plugin.priority.a.a.a.aj(com.tencent.mm.loader.j.b.apj(), localb.title, localb.hhG);
-              ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_appId = localb.appId;
-              ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_sdkVer = localb.sdkVer;
-              ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_mediaSvrId = localb.cZa;
-              ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_totalLen = localb.hhF;
-              ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_status = 101L;
-              ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_isUpload = false;
-              ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_createTime = bs.eWj();
-              ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_lastModifyTime = bs.aNx();
-              ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_msgInfoId = Long.valueOf(localhh.Id).longValue();
-              ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_netTimes = 0L;
-              ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_type = localb.hhJ;
-              com.tencent.mm.plugin.s.a.bEO().insert((com.tencent.mm.sdk.e.c)localObject1);
+              localObject2 = new com.tencent.mm.pluginsdk.model.app.c();
+              ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_fileFullPath = com.tencent.mm.plugin.priority.a.a.a.aq(com.tencent.mm.loader.j.b.arX(), localb.title, localb.hzP);
+              ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_appId = localb.appId;
+              ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_sdkVer = localb.sdkVer;
+              ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_mediaSvrId = localb.dks;
+              ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_totalLen = localb.hzO;
+              ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_status = 101L;
+              ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_isUpload = false;
+              ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_createTime = bt.flT();
+              ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_lastModifyTime = bt.aQJ();
+              ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_msgInfoId = Long.valueOf(((ho)localObject1).Id).longValue();
+              ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_netTimes = 0L;
+              ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_type = localb.hzS;
+              com.tencent.mm.plugin.s.a.bIX().insert((com.tencent.mm.sdk.e.c)localObject2);
             }
-            localObject2 = new com.tencent.mm.vfs.e(((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath);
-            if ((((com.tencent.mm.vfs.e)localObject2).exists()) && (((com.tencent.mm.vfs.e)localObject2).length() == ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_totalLen))
+            localObject3 = new com.tencent.mm.vfs.e(((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_fileFullPath);
+            if ((((com.tencent.mm.vfs.e)localObject3).exists()) && (((com.tencent.mm.vfs.e)localObject3).length() == ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_totalLen))
             {
-              ac.i("MicroMsg.Priority.C2CFileAutoDownloader", "file already exist");
-              ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().j(localhh.Id, localhh.DUD, 5);
-              com.tencent.mm.plugin.report.e.wTc.idkeyStat(1241L, 8L, 1L, false);
+              ad.i("MicroMsg.Priority.C2CFileAutoDownloader", "file already exist");
+              ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().l(((ho)localObject1).Id, ((ho)localObject1).FzY, 5);
+              com.tencent.mm.plugin.report.e.ygI.idkeyStat(1241L, 8L, 1L, false);
               AppMethodBeat.o(87827);
               return;
             }
-            ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().j(localhh.Id, localhh.DUD, 2);
-            a.this.vEf = localhh.Id;
-            com.tencent.e.h.JZN.aQ(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(87826);
-                a.this.vEg = new com.tencent.mm.plugin.record.b.e(localbo.field_msgId, localb.cZa, null);
-                a.this.vEg.oJn = true;
-                com.tencent.mm.kernel.g.agi().a(221, a.this);
-                com.tencent.mm.kernel.g.agi().a(a.this.vEg, 0);
-                AppMethodBeat.o(87826);
-              }
-            });
-            com.tencent.mm.plugin.report.e.wTc.idkeyStat(1241L, 0L, 1L, false);
-            if (!bs.isNullOrNil(a.this.vEf))
+            ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage().l(((ho)localObject1).Id, ((ho)localObject1).FzY, 2);
+            a.this.wLl = ((ho)localObject1).Id;
+            h.LTJ.aP(new a.a.1(this, localbu, localb));
+            com.tencent.mm.plugin.report.e.ygI.idkeyStat(1241L, 0L, 1L, false);
+            if (!bt.isNullOrNil(a.this.wLl))
             {
               if (i != 1) {
-                break label1022;
+                break label1048;
               }
-              com.tencent.mm.plugin.report.e.wTc.idkeyStat(1241L, 6L, 1L, false);
+              com.tencent.mm.plugin.report.e.ygI.idkeyStat(1241L, 6L, 1L, false);
             }
           }
           for (;;)
           {
-            ac.i("MicroMsg.Priority.C2CFileAutoDownloader", "downloading file way:%d currentId %s", new Object[] { Integer.valueOf(i), a.this.vEf });
+            ad.i("MicroMsg.Priority.C2CFileAutoDownloader", "downloading file way:%d currentId %s", new Object[] { Integer.valueOf(i), a.this.wLl });
             AppMethodBeat.o(87827);
             return;
-            localObject1 = com.tencent.mm.plugin.record.b.n.aqs(localb.hij).hkS.iterator();
-            while (((Iterator)localObject1).hasNext())
+            localObject2 = p.avr(localb.hAs).hDb.iterator();
+            while (((Iterator)localObject2).hasNext())
             {
-              localObject2 = (agx)((Iterator)localObject1).next();
-              if (((agx)localObject2).dhw.equals(localhh.Id))
+              localObject3 = (ajn)((Iterator)localObject2).next();
+              if (((ajn)localObject3).dsU.equals(((ho)localObject1).Id))
               {
                 ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().a(a.this);
-                if (com.tencent.mm.plugin.record.b.n.b((agx)localObject2, localbo.field_msgId, true))
+                if (p.b((ajn)localObject3, localbu.field_msgId, true))
                 {
-                  a.this.vEf = localhh.Id;
-                  com.tencent.mm.plugin.report.e.wTc.idkeyStat(1241L, 1L, 1L, false);
+                  a.this.wLl = ((ho)localObject1).Id;
+                  com.tencent.mm.plugin.report.e.ygI.idkeyStat(1241L, 1L, 1L, false);
                 }
                 else
                 {
@@ -286,11 +284,11 @@ public final class a
               }
             }
             break;
-            label1022:
+            label1048:
             if (i == 2) {
-              com.tencent.mm.plugin.report.e.wTc.idkeyStat(1241L, 7L, 1L, false);
+              com.tencent.mm.plugin.report.e.ygI.idkeyStat(1241L, 7L, 1L, false);
             } else if (i == 3) {
-              com.tencent.mm.plugin.report.e.wTc.idkeyStat(1241L, 9L, 1L, false);
+              com.tencent.mm.plugin.report.e.ygI.idkeyStat(1241L, 9L, 1L, false);
             }
           }
           i = 1;
@@ -301,7 +299,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.priority.model.a.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,142 +1,43 @@
 package com.tencent.mm.ad;
 
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.WeakHashMap;
+import d.g.b.p;
+import d.l;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/kt/AndroidPairKTX;", "", "()V", "component1", "K", "V", "Landroid/util/Pair;", "(Landroid/util/Pair;)Ljava/lang/Object;", "component2", "libktcomm_release"})
 public final class a
-  implements Application.ActivityLifecycleCallbacks
 {
-  private static final WeakHashMap<Activity, Integer> gmn;
+  public static final a gFJ;
   
   static
   {
-    AppMethodBeat.i(125087);
-    gmn = new WeakHashMap();
-    AppMethodBeat.o(125087);
+    AppMethodBeat.i(153442);
+    gFJ = new a();
+    AppMethodBeat.o(153442);
   }
   
-  public static String aif()
+  public static <K, V> K a(Pair<K, V> paramPair)
   {
-    AppMethodBeat.i(125080);
-    StringBuilder localStringBuilder;
-    Object localObject2;
-    synchronized (gmn)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(gmn.size());
-      localObject2 = new ArrayList();
-    }
-    try
-    {
-      ((List)localObject2).addAll(gmn.keySet());
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Activity localActivity = (Activity)((Iterator)localObject2).next();
-        if (localActivity != null)
-        {
-          localStringBuilder.append("|");
-          localStringBuilder.append(localActivity.getClass().getSimpleName());
-          localStringBuilder.append(":");
-          localStringBuilder.append(gmn.get(localActivity));
-        }
-      }
-      localObject1 = finally;
-      AppMethodBeat.o(125080);
-      throw localObject1;
-    }
-    catch (ConcurrentModificationException localConcurrentModificationException)
-    {
-      for (;;)
-      {
-        ac.w("MicroMsg.ActivityRefDump", "ConcurrentModificationException occur.");
-        localObject1.append("concurrent modification exception");
-      }
-      String str = localObject1.toString();
-      AppMethodBeat.o(125080);
-      return str;
-    }
+    AppMethodBeat.i(153440);
+    p.h(paramPair, "$this$component1");
+    paramPair = paramPair.first;
+    AppMethodBeat.o(153440);
+    return paramPair;
   }
   
-  public final void onActivityCreated(Activity paramActivity, Bundle arg2)
+  public static <K, V> V b(Pair<K, V> paramPair)
   {
-    AppMethodBeat.i(125081);
-    synchronized (gmn)
-    {
-      gmn.put(paramActivity, Integer.valueOf(0));
-      AppMethodBeat.o(125081);
-      return;
-    }
-  }
-  
-  public final void onActivityDestroyed(Activity paramActivity)
-  {
-    AppMethodBeat.i(125082);
-    synchronized (gmn)
-    {
-      gmn.put(paramActivity, Integer.valueOf(5));
-      AppMethodBeat.o(125082);
-      return;
-    }
-  }
-  
-  public final void onActivityPaused(Activity paramActivity)
-  {
-    AppMethodBeat.i(125085);
-    synchronized (gmn)
-    {
-      gmn.put(paramActivity, Integer.valueOf(3));
-      AppMethodBeat.o(125085);
-      return;
-    }
-  }
-  
-  public final void onActivityResumed(Activity paramActivity)
-  {
-    AppMethodBeat.i(125084);
-    synchronized (gmn)
-    {
-      gmn.put(paramActivity, Integer.valueOf(2));
-      AppMethodBeat.o(125084);
-      return;
-    }
-  }
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity)
-  {
-    AppMethodBeat.i(125083);
-    synchronized (gmn)
-    {
-      gmn.put(paramActivity, Integer.valueOf(1));
-      AppMethodBeat.o(125083);
-      return;
-    }
-  }
-  
-  public final void onActivityStopped(Activity paramActivity)
-  {
-    AppMethodBeat.i(125086);
-    synchronized (gmn)
-    {
-      gmn.put(paramActivity, Integer.valueOf(4));
-      AppMethodBeat.o(125086);
-      return;
-    }
+    AppMethodBeat.i(153441);
+    p.h(paramPair, "$this$component2");
+    paramPair = paramPair.second;
+    AppMethodBeat.o(153441);
+    return paramPair;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ad.a
  * JD-Core Version:    0.7.0.1
  */

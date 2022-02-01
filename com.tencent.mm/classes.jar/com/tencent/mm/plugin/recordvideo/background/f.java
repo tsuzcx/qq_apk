@@ -1,309 +1,328 @@
 package com.tencent.mm.plugin.recordvideo.background;
 
-import android.content.ContentValues;
+import android.os.Process;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.hardcoder.WXHardCoderJNI;
+import com.tencent.mm.loader.g.a.g;
+import com.tencent.mm.loader.g.j;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
+import com.tencent.mm.protocal.protobuf.afy;
+import com.tencent.mm.protocal.protobuf.aif;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import d.g.a.r;
+import d.g.b.p;
+import d.g.b.q;
 import d.l;
+import d.z;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/background/VideoEditDataStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "cleanExpiredTask", "", "deleteByTaskId", "taskId", "", "droptable", "", "getByTaskId", "getLastDataIfNoMix", "limitTime", "", "updateByTaskId", "editorData", "Companion", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/background/VideoMixHandler;", "", "()V", "LOOP_WAIT_TIME", "", "MAX_RETRY_TIME", "", "TAG", "", "isRunning", "", "mixQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/plugin/recordvideo/background/VideoMixHandler$MixTask;", "onCallback", "Lkotlin/Function0;", "", "stopFlag", "waitTaskList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/background/VideoMixHandler$WaitTask;", "performCallback", "scene", "taskId", "success", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "resumeBgMix", "startBgMix", "videoEditorData", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "stopBgMix", "MixTask", "WaitTask", "plugin-recordvideo_release"})
 public final class f
-  extends j<e>
 {
-  private static final String[] SQL_CREATE;
-  static final String TABLE = "VideoEditInfo";
-  private static final String TAG = "MicroMsg.VideoEditDataStorage";
-  public static final f.a wmu;
-  final com.tencent.mm.sdk.e.e db;
+  private static boolean isRunning;
+  private static com.tencent.mm.loader.g.d<a> pSn;
+  private static boolean xus;
+  private static ArrayList<b> xut;
+  private static d.g.a.a<z> xuu;
+  public static final f xuv;
   
   static
   {
-    AppMethodBeat.i(75188);
-    wmu = new f.a((byte)0);
-    TAG = "MicroMsg.VideoEditDataStorage";
-    Object localObject = e.wmq;
-    localObject = e.dul();
-    e.a locala = e.wmq;
-    SQL_CREATE = new String[] { j.getCreateSQLs((c.a)localObject, e.dum()) };
-    localObject = e.wmq;
-    TABLE = e.dum();
-    AppMethodBeat.o(75188);
+    AppMethodBeat.i(75235);
+    xuv = new f();
+    xut = new ArrayList();
+    pSn = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new com.tencent.mm.loader.g.a.f((com.tencent.mm.loader.g.a.c)new com.tencent.mm.loader.g.a.a(5), new g(1, (byte)0), 1, "videoMixTask"));
+    AppMethodBeat.o(75235);
   }
   
-  public f(com.tencent.mm.sdk.e.e parame)
+  public static void C(d.g.a.a<z> parama)
   {
-    super(parame, (c.a)localObject1, (String)localObject2, e.dun());
-    AppMethodBeat.i(75187);
-    this.db = parame;
-    AppMethodBeat.o(75187);
+    AppMethodBeat.i(75232);
+    ad.i("MicroMsg.mix_background.VideoMixHandler", "VideoMixHandler stopBgMix!");
+    xuu = parama;
+    xus = true;
+    parama = ((Iterable)xut).iterator();
+    while (parama.hasNext())
+    {
+      d.g.a.a locala = (d.g.a.a)new d((b)parama.next());
+      p.h(locala, "block");
+      aq.aA((Runnable)new com.tencent.mm.ad.e(locala));
+    }
+    xut.clear();
+    if (!isRunning)
+    {
+      parama = xuu;
+      if (parama != null) {
+        parama.invoke();
+      }
+      xuu = null;
+    }
+    AppMethodBeat.o(75232);
   }
   
-  public final int a(String paramString, e parame)
+  public static boolean a(c paramc, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel)
   {
-    AppMethodBeat.i(75184);
-    k.h(paramString, "taskId");
-    k.h(parame, "editorData");
-    parame = parame.convertTo();
-    parame.remove("rowid");
-    int i = this.db.update(TABLE, parame, "taskId=?", new String[] { String.valueOf(paramString) });
-    AppMethodBeat.o(75184);
-    return i;
+    AppMethodBeat.i(75234);
+    if (paramc != null)
+    {
+      ad.i("MicroMsg.mix_background.VideoMixHandler", "start background mix, taskId:" + paramc.field_taskId + ", reyTime:" + paramc.field_mixRetryTime);
+      pSn.a((com.tencent.mm.loader.g.c)new a(paramc, paramCaptureVideoNormalModel), (com.tencent.mm.loader.g.f)new c());
+      AppMethodBeat.o(75234);
+      return true;
+    }
+    AppMethodBeat.o(75234);
+    return true;
   }
   
-  /* Error */
-  public final e aqx(String paramString)
+  public static boolean dET()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: ldc 144
-    //   4: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_1
-    //   8: ldc 114
-    //   10: invokestatic 99	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: getstatic 150	d/g/b/z:KUT	Ld/g/b/z;
-    //   16: astore_3
-    //   17: ldc 152
-    //   19: iconst_3
-    //   20: anewarray 154	java/lang/Object
-    //   23: dup
-    //   24: iconst_0
-    //   25: getstatic 87	com/tencent/mm/plugin/recordvideo/background/f:TABLE	Ljava/lang/String;
-    //   28: aastore
-    //   29: dup
-    //   30: iconst_1
-    //   31: ldc 114
-    //   33: aastore
-    //   34: dup
-    //   35: iconst_2
-    //   36: aload_1
-    //   37: aastore
-    //   38: iconst_3
-    //   39: invokestatic 160	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
-    //   42: invokestatic 164	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   45: astore_1
-    //   46: aload_1
-    //   47: ldc 166
-    //   49: invokestatic 169	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   52: aload_0
-    //   53: aload_1
-    //   54: iconst_0
-    //   55: anewarray 75	java/lang/String
-    //   58: invokevirtual 173	com/tencent/mm/plugin/recordvideo/background/f:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   61: astore_1
-    //   62: aload_1
-    //   63: ifnull +59 -> 122
-    //   66: aload_1
-    //   67: checkcast 175	java/io/Closeable
-    //   70: astore_3
-    //   71: aload_3
-    //   72: checkcast 177	android/database/Cursor
-    //   75: astore_1
-    //   76: aload_1
-    //   77: invokeinterface 181 1 0
-    //   82: ifeq +31 -> 113
-    //   85: new 65	com/tencent/mm/plugin/recordvideo/background/e
-    //   88: dup
-    //   89: invokespecial 183	com/tencent/mm/plugin/recordvideo/background/e:<init>	()V
-    //   92: astore 4
-    //   94: aload 4
-    //   96: aload_1
-    //   97: invokevirtual 187	com/tencent/mm/plugin/recordvideo/background/e:convertFrom	(Landroid/database/Cursor;)V
-    //   100: aload_3
-    //   101: aconst_null
-    //   102: invokestatic 192	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   105: ldc 144
-    //   107: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   110: aload 4
-    //   112: areturn
-    //   113: getstatic 198	d/y:KTp	Ld/y;
-    //   116: astore_1
-    //   117: aload_3
-    //   118: aconst_null
-    //   119: invokestatic 192	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   122: ldc 144
-    //   124: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   127: aconst_null
-    //   128: areturn
-    //   129: astore_2
-    //   130: ldc 144
-    //   132: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   135: aload_2
-    //   136: athrow
-    //   137: astore_1
-    //   138: aload_3
-    //   139: aload_2
-    //   140: invokestatic 192	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   143: ldc 144
-    //   145: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   148: aload_1
-    //   149: athrow
-    //   150: astore_1
-    //   151: goto -13 -> 138
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	154	0	this	f
-    //   0	154	1	paramString	String
-    //   1	1	2	localObject1	Object
-    //   129	11	2	localThrowable	java.lang.Throwable
-    //   16	123	3	localObject2	Object
-    //   92	19	4	locale	e
-    // Exception table:
-    //   from	to	target	type
-    //   71	100	129	java/lang/Throwable
-    //   113	117	129	java/lang/Throwable
-    //   130	137	137	finally
-    //   71	100	150	finally
-    //   113	117	150	finally
+    AppMethodBeat.i(75231);
+    Object localObject = e.xuo;
+    localObject = e.dER();
+    if (localObject != null)
+    {
+      boolean bool = a((c)localObject, null);
+      AppMethodBeat.o(75231);
+      return bool;
+    }
+    ad.d("MicroMsg.mix_background.VideoMixHandler", "mix task is empty");
+    AppMethodBeat.o(75231);
+    return false;
   }
   
-  public final void duq()
+  public static void dEU()
   {
-    AppMethodBeat.i(75186);
-    int i = this.db.delete(TABLE, null, null);
-    ac.i(TAG, "dropTable ".concat(String.valueOf(i)));
-    AppMethodBeat.o(75186);
+    AppMethodBeat.i(75233);
+    ad.i("MicroMsg.mix_background.VideoMixHandler", "VideoMixHandler resumeBgMix!");
+    xus = false;
+    xuu = null;
+    dET();
+    AppMethodBeat.o(75233);
   }
   
-  /* Error */
-  public final e ww(long paramLong)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/background/VideoMixHandler$MixTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "editorData", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "(Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;)V", "getEditorData", "()Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "setEditorData", "(Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;)V", "getModel", "()Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "setModel", "(Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;)V", "startPerformance", "", "call", "", "runMix", "extraConfig", "Lcom/tencent/mm/protocal/protobuf/ExtraConfig;", "setMoovHead", "path", "", "uniqueId", "plugin-recordvideo_release"})
+  static final class a
+    extends com.tencent.mm.loader.g.c
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: ldc 221
-    //   5: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 150	d/g/b/z:KUT	Ld/g/b/z;
-    //   11: astore 4
-    //   13: getstatic 87	com/tencent/mm/plugin/recordvideo/background/f:TABLE	Ljava/lang/String;
-    //   16: astore 4
-    //   18: getstatic 227	com/tencent/mm/plugin/recordvideo/background/e$b:wmt	Lcom/tencent/mm/plugin/recordvideo/background/e$b;
-    //   21: astore 6
-    //   23: invokestatic 231	com/tencent/mm/plugin/recordvideo/background/e$b:bsf	()I
-    //   26: istore_3
-    //   27: getstatic 227	com/tencent/mm/plugin/recordvideo/background/e$b:wmt	Lcom/tencent/mm/plugin/recordvideo/background/e$b;
-    //   30: astore 6
-    //   32: ldc 233
-    //   34: bipush 8
-    //   36: anewarray 154	java/lang/Object
-    //   39: dup
-    //   40: iconst_0
-    //   41: aload 4
-    //   43: aastore
-    //   44: dup
-    //   45: iconst_1
-    //   46: ldc 235
-    //   48: aastore
-    //   49: dup
-    //   50: iconst_2
-    //   51: iload_3
-    //   52: invokestatic 240	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   55: aastore
-    //   56: dup
-    //   57: iconst_3
-    //   58: invokestatic 243	com/tencent/mm/plugin/recordvideo/background/e$b:dup	()I
-    //   61: invokestatic 240	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   64: aastore
-    //   65: dup
-    //   66: iconst_4
-    //   67: ldc 245
-    //   69: aastore
-    //   70: dup
-    //   71: iconst_5
-    //   72: lload_1
-    //   73: invokestatic 250	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   76: aastore
-    //   77: dup
-    //   78: bipush 6
-    //   80: ldc 252
-    //   82: aastore
-    //   83: dup
-    //   84: bipush 7
-    //   86: ldc 245
-    //   88: aastore
-    //   89: bipush 8
-    //   91: invokestatic 160	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
-    //   94: invokestatic 164	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   97: astore 4
-    //   99: aload 4
-    //   101: ldc 166
-    //   103: invokestatic 169	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   106: aload_0
-    //   107: aload 4
-    //   109: iconst_0
-    //   110: anewarray 75	java/lang/String
-    //   113: invokevirtual 173	com/tencent/mm/plugin/recordvideo/background/f:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   116: astore 4
-    //   118: aload 4
-    //   120: ifnull +68 -> 188
-    //   123: aload 4
-    //   125: checkcast 175	java/io/Closeable
-    //   128: astore 6
-    //   130: aload 6
-    //   132: checkcast 177	android/database/Cursor
-    //   135: astore 4
-    //   137: aload 4
-    //   139: invokeinterface 181 1 0
-    //   144: ifeq +33 -> 177
-    //   147: new 65	com/tencent/mm/plugin/recordvideo/background/e
-    //   150: dup
-    //   151: invokespecial 183	com/tencent/mm/plugin/recordvideo/background/e:<init>	()V
-    //   154: astore 7
-    //   156: aload 7
-    //   158: aload 4
-    //   160: invokevirtual 187	com/tencent/mm/plugin/recordvideo/background/e:convertFrom	(Landroid/database/Cursor;)V
-    //   163: aload 6
-    //   165: aconst_null
-    //   166: invokestatic 192	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   169: ldc 221
-    //   171: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   174: aload 7
-    //   176: areturn
-    //   177: getstatic 198	d/y:KTp	Ld/y;
-    //   180: astore 4
-    //   182: aload 6
-    //   184: aconst_null
-    //   185: invokestatic 192	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   188: ldc 221
-    //   190: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   193: aconst_null
-    //   194: areturn
-    //   195: astore 5
-    //   197: ldc 221
-    //   199: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   202: aload 5
-    //   204: athrow
-    //   205: astore 4
-    //   207: aload 6
-    //   209: aload 5
-    //   211: invokestatic 192	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   214: ldc 221
-    //   216: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   219: aload 4
-    //   221: athrow
-    //   222: astore 4
-    //   224: goto -17 -> 207
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	227	0	this	f
-    //   0	227	1	paramLong	long
-    //   26	26	3	i	int
-    //   11	170	4	localObject1	Object
-    //   205	15	4	localObject2	Object
-    //   222	1	4	localObject3	Object
-    //   1	1	5	localObject4	Object
-    //   195	15	5	localThrowable	java.lang.Throwable
-    //   21	187	6	localObject5	Object
-    //   154	21	7	locale	e
-    // Exception table:
-    //   from	to	target	type
-    //   130	163	195	java/lang/Throwable
-    //   177	182	195	java/lang/Throwable
-    //   197	205	205	finally
-    //   130	163	222	finally
-    //   177	182	222	finally
+    int fKU;
+    c xuw;
+    CaptureDataManager.CaptureVideoNormalModel xux;
+    
+    public a(c paramc, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel)
+    {
+      AppMethodBeat.i(75226);
+      this.xuw = paramc;
+      this.xux = paramCaptureVideoNormalModel;
+      AppMethodBeat.o(75226);
+    }
+    
+    public final String aeK()
+    {
+      AppMethodBeat.i(75225);
+      String str = "mixTask_" + this.xuw.field_taskId;
+      AppMethodBeat.o(75225);
+      return str;
+    }
+    
+    public final void call()
+    {
+      AppMethodBeat.i(75224);
+      f localf = f.xuv;
+      if (f.dEW())
+      {
+        ad.i("MicroMsg.mix_background.VideoMixHandler", "running forground task");
+        a(j.hfM);
+        AppMethodBeat.o(75224);
+        return;
+      }
+      h.LTJ.f((Runnable)new a(this), "VideoMixHandler");
+      AppMethodBeat.o(75224);
+    }
+    
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+    static final class a
+      implements Runnable
+    {
+      a(f.a parama) {}
+      
+      public final void run()
+      {
+        AppMethodBeat.i(75222);
+        ad.i("MicroMsg.mix_background.VideoMixHandler", "call background mix " + this.xuy.xuw.field_taskId + ", mixRetryTime:" + this.xuy.xuw.field_mixRetryTime);
+        Object localObject1 = (com.tencent.mm.bx.a)new afy();
+        Object localObject4 = this.xuy.xuw.field_baseItemData;
+        Object localObject3;
+        try
+        {
+          ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject4);
+          localObject1 = (afy)localObject1;
+          if ((localObject1 != null) && (this.xuy.xuw.dEF()))
+          {
+            localObject4 = com.tencent.mm.plugin.recordvideo.d.e.xHl;
+            com.tencent.mm.plugin.recordvideo.d.e.pR(((afy)localObject1).htP);
+          }
+          if (this.xuy.xuw.field_mixRetryTime < 3)
+          {
+            localObject4 = e.xuo;
+            localObject4 = this.xuy.xuw.field_taskId;
+            p.g(localObject4, "editorData.field_taskId");
+            e.avz((String)localObject4);
+            if (localObject1 != null)
+            {
+              localObject1 = e.xuo;
+              localObject1 = this.xuy.xuw.field_taskId;
+              p.g(localObject1, "editorData.field_taskId");
+              localObject1 = e.avy((String)localObject1);
+              if (localObject1 != null)
+              {
+                localObject4 = this.xuy;
+                p.h(localObject1, "<set-?>");
+                ((f.a)localObject4).xuw = ((c)localObject1);
+              }
+            }
+            localObject1 = (com.tencent.mm.bx.a)new aif();
+            localObject4 = this.xuy.xuw.field_extraConfig;
+          }
+        }
+        catch (Exception localException1)
+        {
+          try
+          {
+            ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject4);
+            localObject4 = (aif)localObject1;
+            localObject1 = this.xuy;
+            ad.i("MicroMsg.mix_background.VideoMixHandler", "runMix from VideoMixHandler extraConfig:".concat(String.valueOf(localObject4)));
+            if (localObject4 != null)
+            {
+              Object localObject5 = com.tencent.mm.plugin.recordvideo.background.c.d.xwn;
+              localObject5 = com.tencent.mm.plugin.recordvideo.background.c.d.b(((f.a)localObject1).xuw, (aif)localObject4);
+              boolean bool = WXHardCoderJNI.hcEncodeVideoEnable;
+              int j = WXHardCoderJNI.hcEncodeVideoDelay;
+              int k = WXHardCoderJNI.hcEncodeVideoCPU;
+              int m = WXHardCoderJNI.hcEncodeVideoIO;
+              if (WXHardCoderJNI.hcEncodeVideoThr)
+              {
+                i = Process.myTid();
+                ((f.a)localObject1).fKU = WXHardCoderJNI.startPerformance(bool, j, k, m, i, 35000, 603, WXHardCoderJNI.hcEncodeVideoAction, "MicroMsg.mix_background.VideoMixHandler");
+                ad.i("MicroMsg.mix_background.VideoMixHandler", "hardcoder summerPerformance startPerformance: %s", new Object[] { Integer.valueOf(((f.a)localObject1).fKU) });
+                Object localObject6 = f.xuv;
+                f.pG(true);
+                localObject6 = a.xua;
+                i = ((f.a)localObject1).xuw.field_fromScene;
+                localObject6 = ((f.a)localObject1).xuw.field_taskId;
+                p.g(localObject6, "editorData.field_taskId");
+                a.n(i, (String)localObject6, ((f.a)localObject1).xuw.field_mixRetryTime);
+                long l1 = System.currentTimeMillis();
+                long l2 = System.currentTimeMillis();
+                if (localObject5 != null) {
+                  ((com.tencent.mm.plugin.recordvideo.background.c.c)localObject5).c((r)new f.a.b((f.a)localObject1, l2, l1, (aif)localObject4));
+                }
+                if (localObject5 != null) {
+                  break label600;
+                }
+                if (((f.a)localObject1).xuw.dEF())
+                {
+                  localObject4 = com.tencent.mm.plugin.recordvideo.d.e.xHl;
+                  com.tencent.mm.plugin.recordvideo.d.e.dGQ();
+                }
+                ((f.a)localObject1).a(j.hfL);
+                AppMethodBeat.o(75222);
+                return;
+                localException1 = localException1;
+                ad.l("safeParser", "", new Object[] { localException1 });
+                Object localObject2 = null;
+              }
+            }
+          }
+          catch (Exception localException2)
+          {
+            for (;;)
+            {
+              ad.l("safeParser", "", new Object[] { localException2 });
+              localObject3 = null;
+              continue;
+              int i = 0;
+            }
+            if (localObject3.xuw.dEF())
+            {
+              localObject4 = com.tencent.mm.plugin.recordvideo.d.e.xHl;
+              com.tencent.mm.plugin.recordvideo.d.e.dGQ();
+            }
+            localObject3.a(j.hfL);
+            label600:
+            AppMethodBeat.o(75222);
+            return;
+          }
+        }
+        ad.i("MicroMsg.mix_background.VideoMixHandler", "retry mix taskId:" + this.xuy.xuw.field_taskId + " third and still failed");
+        if ((localObject3 != null) && (this.xuy.xuw.dEF()))
+        {
+          localObject4 = com.tencent.mm.plugin.recordvideo.d.e.xHl;
+          com.tencent.mm.plugin.recordvideo.d.e.pT(localObject3.htP);
+        }
+        this.xuy.a(j.hfL);
+        AppMethodBeat.o(75222);
+      }
+    }
+    
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "mixVideoPath", "", "mixThumbPath", "ret", "", "error", "", "invoke"})
+    static final class b
+      extends q
+      implements r<String, String, Boolean, Integer, z>
+    {
+      b(f.a parama, long paramLong1, long paramLong2, aif paramaif)
+      {
+        super();
+      }
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/background/VideoMixHandler$WaitTask;", "Ljava/lang/Runnable;", "taskId", "", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;)V", "getModel", "()Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "setModel", "(Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;)V", "getTaskId", "()Ljava/lang/String;", "setTaskId", "(Ljava/lang/String;)V", "run", "", "plugin-recordvideo_release"})
+  static final class b
+    implements Runnable
+  {
+    private String taskId;
+    private CaptureDataManager.CaptureVideoNormalModel xux;
+    
+    public b(String paramString, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel)
+    {
+      AppMethodBeat.i(75228);
+      this.taskId = paramString;
+      this.xux = paramCaptureVideoNormalModel;
+      AppMethodBeat.o(75228);
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(75227);
+      Object localObject = f.xuv;
+      f.dEV().remove(this);
+      localObject = e.xuo;
+      localObject = e.avy(this.taskId);
+      f localf = f.xuv;
+      f.a((c)localObject, this.xux);
+      AppMethodBeat.o(75227);
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/recordvideo/background/VideoMixHandler$startBgMix$3$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/recordvideo/background/VideoMixHandler$MixTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-recordvideo_release"})
+  public static final class c
+    implements com.tencent.mm.loader.g.f<f.a>
+  {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  static final class d
+    extends q
+    implements d.g.a.a<z>
+  {
+    d(f.b paramb)
+    {
+      super();
+    }
   }
 }
 

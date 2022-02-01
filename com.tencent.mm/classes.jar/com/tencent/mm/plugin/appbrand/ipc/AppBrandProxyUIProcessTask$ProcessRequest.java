@@ -13,24 +13,24 @@ public abstract class AppBrandProxyUIProcessTask$ProcessRequest
     j(paramParcel);
   }
   
-  protected abstract Class<? extends AppBrandProxyUIProcessTask> bdj();
+  protected abstract Class<? extends AppBrandProxyUIProcessTask> bgN();
   
-  protected boolean ben()
+  protected boolean bhR()
   {
     return false;
   }
   
-  protected String beo()
+  protected String bhS()
   {
     return null;
   }
   
-  protected int bep()
+  protected int bhT()
   {
     return -1;
   }
   
-  protected boolean beq()
+  protected boolean bhU()
   {
     return false;
   }
@@ -46,7 +46,7 @@ public abstract class AppBrandProxyUIProcessTask$ProcessRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest
  * JD-Core Version:    0.7.0.1
  */

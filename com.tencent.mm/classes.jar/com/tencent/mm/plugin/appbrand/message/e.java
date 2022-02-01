@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.appbrand.message;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.a.f.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.messenger.a.e.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Map;
 
 public final class e
-  implements f.a
+  implements e.a
 {
   public final String e(Map<String, String> paramMap, String paramString)
   {
     AppMethodBeat.i(47715);
     if ((paramMap == null) || (paramMap.isEmpty()))
     {
-      ac.w("MicroMsg.WxaSysTemplateMsgDigestHandler", "values map is null or nil");
+      ad.w("MicroMsg.WxaSysTemplateMsgDigestHandler", "values map is null or nil");
       AppMethodBeat.o(47715);
       return "";
     }
-    paramMap = bs.nullAsNil((String)paramMap.get(paramString + ".title"));
+    paramMap = bt.nullAsNil((String)paramMap.get(paramString + ".title"));
     AppMethodBeat.o(47715);
     return paramMap;
   }

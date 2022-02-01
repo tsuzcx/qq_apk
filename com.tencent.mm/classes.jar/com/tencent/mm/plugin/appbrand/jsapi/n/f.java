@@ -1,15 +1,22 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
-import d.l;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.q;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/pip/PipOrientationModeListener;", "", "onModeConfirmed", "", "mode", "Lcom/tencent/mm/plugin/appbrand/jsapi/pip/PipOrientationMode;", "luggage-wxa-app_release"})
-public abstract interface f
+public final class f
+  extends a<q>
 {
-  public abstract void a(e parame);
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "hideTabBar";
+  
+  public final boolean bib()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.n.f
  * JD-Core Version:    0.7.0.1
  */

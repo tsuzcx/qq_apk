@@ -4,16 +4,17 @@ import android.os.Looper;
 import android.os.SystemClock;
 import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.compatible.util.f.a;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,62 +27,62 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class y
 {
-  public static String ibp = null;
+  public static String iuL = null;
   
   public static final class a
-    implements com.tencent.mm.ak.g, t.a
+    implements f, t.a
   {
-    private static int cXd = 0;
-    Queue<String> cWW;
-    Queue<String> cWX;
-    Map<String, f.a> cWY;
-    boolean cWZ;
-    private boolean cXa;
-    int cXb;
-    private long cXc;
-    f.a cXf;
-    private au cXg;
-    private VideoTransPara iay;
-    private VideoTransPara iaz;
-    ao ibq;
-    boolean ibr;
-    private List<w> ibs;
-    Queue<String> ibt;
-    Queue<String> ibu;
-    d ibv;
-    g ibw;
-    ConcurrentHashMap<String, WeakReference<t.a>> ibx;
+    private static int diu = 0;
+    Queue<String> dim;
+    Queue<String> din;
+    Map<String, f.a> dio;
+    boolean dip;
+    private boolean diq;
+    int dis;
+    private long dit;
+    f.a diw;
+    private av dix;
+    private VideoTransPara itU;
+    private VideoTransPara itV;
+    ap iuM;
+    boolean iuN;
+    private List<w> iuO;
+    Queue<String> iuP;
+    Queue<String> iuQ;
+    d iuR;
+    g iuS;
+    ConcurrentHashMap<String, WeakReference<t.a>> iuT;
     private boolean running;
     
     public a()
     {
       AppMethodBeat.i(127042);
-      this.ibr = false;
-      this.cXg = null;
-      this.iay = null;
-      this.iaz = null;
-      this.ibs = new ArrayList();
-      this.cWW = new LinkedList();
-      this.cWX = new LinkedList();
-      this.ibt = new LinkedList();
-      this.ibu = new LinkedList();
-      this.cWY = new HashMap();
-      this.cWZ = false;
-      this.cXa = false;
+      this.iuN = false;
+      this.dix = null;
+      this.itU = null;
+      this.itV = null;
+      this.iuO = new ArrayList();
+      this.dim = new LinkedList();
+      this.din = new LinkedList();
+      this.iuP = new LinkedList();
+      this.iuQ = new LinkedList();
+      this.dio = new HashMap();
+      this.dip = false;
+      this.diq = false;
       this.running = false;
-      this.cXb = 0;
-      this.cXc = 0L;
-      this.ibv = null;
-      this.ibw = null;
-      this.cXf = new f.a();
-      this.ibx = new ConcurrentHashMap();
-      com.tencent.mm.kernel.g.agi().a(149, this);
-      com.tencent.mm.kernel.g.agi().a(150, this);
-      o.aJy().a(this, Looper.getMainLooper());
-      this.ibr = true;
-      a locala = a.aTF("VideoService_runThread");
-      this.ibq = new ao(locala);
-      this.cXg = new au(locala, new au.a()
+      this.dis = 0;
+      this.dit = 0L;
+      this.iuR = null;
+      this.iuS = null;
+      this.diw = new f.a();
+      this.iuT = new ConcurrentHashMap();
+      com.tencent.mm.kernel.g.aiU().a(149, this);
+      com.tencent.mm.kernel.g.aiU().a(150, this);
+      o.aMJ().a(this, Looper.getMainLooper());
+      this.iuN = true;
+      a locala = a.aZF("VideoService_runThread");
+      this.iuM = new ap(locala);
+      this.dix = new av(locala, new av.a()
       {
         public final boolean onTimerExpired()
         {
@@ -99,107 +100,100 @@ public final class y
           return str;
         }
       }, false);
-      ac.i("MicroMsg.VideoService", "create VideoService, start video send thread");
+      ad.i("MicroMsg.VideoService", "create VideoService, start video send thread");
       AppMethodBeat.o(127042);
     }
     
-    private void Ou()
+    private void Qe()
     {
       AppMethodBeat.i(127047);
-      this.cWY.clear();
-      this.cWW.clear();
-      this.cWX.clear();
-      this.ibt.clear();
-      this.ibu.clear();
-      this.cXa = false;
-      this.cWZ = false;
+      this.dio.clear();
+      this.dim.clear();
+      this.din.clear();
+      this.iuP.clear();
+      this.iuQ.clear();
+      this.diq = false;
+      this.dip = false;
       this.running = false;
-      ac.i("MicroMsg.VideoService", "Finish service use time(ms):" + this.cXf.YH());
+      ad.i("MicroMsg.VideoService", "Finish service use time(ms):" + this.diw.abj());
       AppMethodBeat.o(127047);
     }
     
-    private boolean aJU()
+    private boolean aNe()
     {
       AppMethodBeat.i(127045);
-      long l = bs.Gn();
-      if (o.aJy() == null)
+      long l = bt.HI();
+      if (o.aMJ() == null)
       {
-        ac.e("MicroMsg.VideoService", "error, video info storage is null!!");
+        ad.e("MicroMsg.VideoService", "error, video info storage is null!!");
         AppMethodBeat.o(127045);
         return false;
       }
-      Object localObject2;
-      Object localObject1;
-      for (;;)
+      Object localObject3;
+      try
       {
-        String str;
-        try
-        {
-          localObject2 = o.aJy().aJT();
-          localObject1 = o.aJy().aJR();
-          List localList = o.aJy().aJS();
-          if (localObject2 == null) {
-            break;
-          }
-          ac.d("MicroMsg.VideoService", "getNeedRunInfo needSendList size: " + ((List)localObject2).size());
-          localObject2 = ((List)localObject2).iterator();
-          if (!((Iterator)localObject2).hasNext()) {
-            break;
-          }
-          str = (String)((Iterator)localObject2).next();
-          if (this.cWY.containsKey(str))
-          {
-            ac.d("MicroMsg.VideoService", "need sendList File is Already running:".concat(String.valueOf(str)));
-            continue;
-          }
-          this.cWW.offer(str);
+        t localt = o.aMJ();
+        localObject2 = new LinkedList();
+        localObject3 = t.d.iaE.iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          ((List)localObject2).addAll(localt.He(((t.c)((Iterator)localObject3).next()).table));
         }
-        catch (Exception localException)
-        {
-          ac.printErrStackTrace("MicroMsg.VideoService", localException, "getNeedRunInfo error: %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(127045);
-          return false;
-        }
-        this.cWY.put(str, null);
+        localObject3 = o.aMJ().aNc();
       }
-      if (localObject1 != null)
+      catch (Exception localException)
       {
-        ac.d("MicroMsg.VideoService", "getNeedRunInfo needRecvList size: " + ((List)localObject1).size());
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
+        ad.printErrStackTrace("MicroMsg.VideoService", localException, "getNeedRunInfo error: %s", new Object[] { localException.getMessage() });
+        AppMethodBeat.o(127045);
+        return false;
+      }
+      Object localObject1 = o.aMJ().aNd();
+      ad.d("MicroMsg.VideoService", "getNeedRunInfo needSendList size: " + ((List)localObject2).size());
+      Object localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        String str = (String)((Iterator)localObject2).next();
+        if (this.dio.containsKey(str))
         {
-          localObject2 = (String)((Iterator)localObject1).next();
-          if (this.cWY.containsKey(localObject2))
-          {
-            ac.d("MicroMsg.VideoService", "need recvList File is Already running:".concat(String.valueOf(localObject2)));
-          }
-          else
-          {
-            this.cWX.offer(localObject2);
-            this.cWY.put(localObject2, null);
-          }
+          ad.d("MicroMsg.VideoService", "need sendList File is Already running:".concat(String.valueOf(str)));
+        }
+        else
+        {
+          this.dim.offer(str);
+          this.dio.put(str, null);
         }
       }
-      if (localException != null)
+      ad.d("MicroMsg.VideoService", "getNeedRunInfo needRecvList size: " + ((List)localObject3).size());
+      localObject2 = ((List)localObject3).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        ac.d("MicroMsg.VideoService", "getNeedRunInfo online video list size: " + localException.size());
-        Iterator localIterator = localException.iterator();
-        while (localIterator.hasNext())
+        localObject3 = (String)((Iterator)localObject2).next();
+        if (this.dio.containsKey(localObject3))
         {
-          localObject1 = (String)localIterator.next();
-          if (this.cWY.containsKey(localObject1))
-          {
-            ac.d("MicroMsg.VideoService", "online videoList File is Already running:".concat(String.valueOf(localObject1)));
-          }
-          else
-          {
-            this.ibt.offer(localObject1);
-            this.cWY.put(localObject1, null);
-          }
+          ad.d("MicroMsg.VideoService", "need recvList File is Already running:".concat(String.valueOf(localObject3)));
+        }
+        else
+        {
+          this.din.offer(localObject3);
+          this.dio.put(localObject3, null);
         }
       }
-      ac.i("MicroMsg.VideoService", "GetNeedRun cost time[%d] procing[%d] [recv:%d, online:%d, send:%d ]", new Object[] { Long.valueOf(bs.aO(l)), Integer.valueOf(this.cWY.size()), Integer.valueOf(this.cWX.size()), Integer.valueOf(this.ibt.size()), Integer.valueOf(this.cWW.size()) });
-      if (this.cWX.size() + this.cWW.size() + this.ibt.size() != 0)
+      ad.d("MicroMsg.VideoService", "getNeedRunInfo online video list size: " + ((List)localObject1).size());
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        if (this.dio.containsKey(localObject2))
+        {
+          ad.d("MicroMsg.VideoService", "online videoList File is Already running:".concat(String.valueOf(localObject2)));
+        }
+        else
+        {
+          this.iuP.offer(localObject2);
+          this.dio.put(localObject2, null);
+        }
+      }
+      ad.i("MicroMsg.VideoService", "GetNeedRun cost time[%d] procing[%d] [recv:%d, online:%d, send:%d ]", new Object[] { Long.valueOf(bt.aO(l)), Integer.valueOf(this.dio.size()), Integer.valueOf(this.din.size()), Integer.valueOf(this.iuP.size()), Integer.valueOf(this.dim.size()) });
+      if (this.din.size() + this.dim.size() + this.iuP.size() != 0)
       {
         AppMethodBeat.o(127045);
         return true;
@@ -208,17 +202,17 @@ public final class y
       return false;
     }
     
-    public final void Es(String paramString)
+    public final void HH(String paramString)
     {
       AppMethodBeat.i(127051);
-      this.cWY.remove(paramString);
+      this.dio.remove(paramString);
       AppMethodBeat.o(127051);
     }
     
     public final void a(t.a.a parama)
     {
       AppMethodBeat.i(127053);
-      Object localObject = (WeakReference)this.ibx.get(parama.fileName);
+      Object localObject = (WeakReference)this.iuT.get(parama.fileName);
       if (localObject != null)
       {
         localObject = (t.a)((WeakReference)localObject).get();
@@ -226,9 +220,9 @@ public final class y
           ((t.a)localObject).a(parama);
         }
       }
-      localObject = u.Ej(parama.fileName);
+      localObject = u.Hy(parama.fileName);
       if ((localObject != null) && (((s)localObject).status == 199)) {
-        this.ibx.remove(parama.fileName);
+        this.iuT.remove(parama.fileName);
       }
       AppMethodBeat.o(127053);
     }
@@ -236,57 +230,78 @@ public final class y
     public final void a(w paramw)
     {
       AppMethodBeat.i(127043);
-      ac.m("MicroMsg.VideoService", "addVideoMsgSendCallback %s", new Object[] { paramw });
-      if ((paramw != null) && (this.ibs != null) && (!this.ibs.contains(paramw))) {
-        this.ibs.add(paramw);
+      ad.m("MicroMsg.VideoService", "addVideoMsgSendCallback %s", new Object[] { paramw });
+      if ((paramw != null) && (this.iuO != null) && (!this.iuO.contains(paramw))) {
+        this.iuO.add(paramw);
       }
       AppMethodBeat.o(127043);
     }
     
-    public final void a(String paramString, t.a parama)
+    public final void a(final String paramString, t.a parama)
     {
       AppMethodBeat.i(127052);
-      this.ibx.put(paramString, new WeakReference(parama));
-      com.tencent.mm.kernel.g.agU().az(new y.a.4(this, paramString));
+      this.iuT.put(paramString, new WeakReference(parama));
+      com.tencent.mm.kernel.g.ajF().ay(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(127041);
+          u.av(paramString, this.iuV);
+          s locals = u.Hy(paramString);
+          if ((locals != null) && (locals.status != 199))
+          {
+            if (locals.aMX())
+            {
+              ad.i("MicroMsg.VideoService", "start complete online video");
+              u.HF(paramString);
+              AppMethodBeat.o(127041);
+              return;
+            }
+            ad.i("MicroMsg.VideoService", "start complete offline video");
+            u.Ht(paramString);
+          }
+          AppMethodBeat.o(127041);
+        }
+      });
       AppMethodBeat.o(127052);
     }
     
-    public final boolean aJV()
+    public final boolean aNf()
     {
       AppMethodBeat.i(127049);
       boolean bool;
-      if (this.ibv != null)
+      if (this.iuR != null)
       {
-        com.tencent.mm.kernel.g.agi().a(this.ibv);
+        com.tencent.mm.kernel.g.aiU().a(this.iuR);
         bool = true;
         this.running = false;
       }
       for (;;)
       {
-        this.cWY.clear();
-        this.cWW.clear();
-        this.cWX.clear();
-        this.ibt.clear();
-        this.ibu.clear();
+        this.dio.clear();
+        this.dim.clear();
+        this.din.clear();
+        this.iuP.clear();
+        this.iuQ.clear();
         AppMethodBeat.o(127049);
         return bool;
         bool = false;
       }
     }
     
-    public final void aJW()
+    public final void aNg()
     {
       AppMethodBeat.i(127050);
-      com.tencent.mm.kernel.g.agi().a(this.ibv);
-      Ou();
+      com.tencent.mm.kernel.g.aiU().a(this.iuR);
+      Qe();
       AppMethodBeat.o(127050);
     }
     
     public final void b(w paramw)
     {
       AppMethodBeat.i(127044);
-      if ((paramw != null) && (this.ibs != null)) {
-        this.ibs.remove(paramw);
+      if ((paramw != null) && (this.iuO != null)) {
+        this.iuO.remove(paramw);
       }
       AppMethodBeat.o(127044);
     }
@@ -294,25 +309,25 @@ public final class y
     public final void onSceneEnd(final int paramInt1, final int paramInt2, String paramString, final n paramn)
     {
       AppMethodBeat.i(127046);
-      if ((!this.ibr) || (this.ibq == null))
+      if ((!this.iuN) || (this.iuM == null))
       {
-        ac.e("MicroMsg.VideoService", "onSceneEnd error!, handler or thread is null!");
+        ad.e("MicroMsg.VideoService", "onSceneEnd error!, handler or thread is null!");
         AppMethodBeat.o(127046);
         return;
       }
-      this.ibq.post(new Runnable()
+      this.iuM.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(127037);
-          y.a.aBu();
+          y.a.Qf();
           String str;
           int i;
           if (paramn.getType() == 150)
           {
             y.a.b(y.a.this);
             str = ((d)paramn).fileName;
-            y.ibp = str;
+            y.iuL = str;
             i = ((d)paramn).retCode;
             y.a.c(y.a.this);
           }
@@ -323,18 +338,18 @@ public final class y
             if (str != null)
             {
               l1 = l2;
-              if (y.a.this.cWY.get(str) != null)
+              if (y.a.this.dio.get(str) != null)
               {
-                l1 = ((f.a)y.a.this.cWY.get(str)).YH();
-                y.a.this.cWY.remove(str);
+                l1 = ((f.a)y.a.this.dio.get(str)).abj();
+                y.a.this.dio.remove(str);
               }
             }
-            ac.d("MicroMsg.VideoService", "onSceneEnd SceneType:" + paramn.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " file:" + str + " time:" + l1);
+            ad.d("MicroMsg.VideoService", "onSceneEnd SceneType:" + paramn.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " file:" + str + " time:" + l1);
             if ((paramInt1 == 3) && (i != 0))
             {
               y.a.f(y.a.this);
               label232:
-              ac.d("MicroMsg.VideoService", "onSceneEnd  inCnt:" + y.a.cXd + " stop:" + y.a.g(y.a.this) + " running:" + y.a.h(y.a.this) + " recving:" + y.a.i(y.a.this) + " sending:" + y.a.j(y.a.this));
+              ad.d("MicroMsg.VideoService", "onSceneEnd  inCnt:" + y.a.diu + " stop:" + y.a.g(y.a.this) + " running:" + y.a.h(y.a.this) + " recving:" + y.a.i(y.a.this) + " sending:" + y.a.j(y.a.this));
               if (y.a.g(y.a.this) <= 0) {
                 break label490;
               }
@@ -342,7 +357,7 @@ public final class y
             }
             for (;;)
             {
-              y.a.aJX();
+              y.a.Qg();
               AppMethodBeat.o(127037);
               return;
               if (paramn.getType() == 149)
@@ -362,8 +377,8 @@ public final class y
                 i = 0;
                 break;
               }
-              ac.e("MicroMsg.VideoService", "onSceneEnd Error SceneType:" + paramn.getType());
-              y.a.aJX();
+              ad.e("MicroMsg.VideoService", "onSceneEnd Error SceneType:" + paramn.getType());
+              y.a.Qg();
               AppMethodBeat.o(127037);
               return;
               if (paramInt1 == 0) {
@@ -396,19 +411,19 @@ public final class y
     public final void run()
     {
       AppMethodBeat.i(127048);
-      if ((!this.ibr) || (this.ibq == null))
+      if ((!this.iuN) || (this.iuM == null))
       {
-        ac.e("MicroMsg.VideoService", "run error!, handler or thread is null!");
+        ad.e("MicroMsg.VideoService", "run error!, handler or thread is null!");
         AppMethodBeat.o(127048);
         return;
       }
-      this.ibq.post(new Runnable()
+      this.iuM.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(127039);
           long l = System.currentTimeMillis() - y.a.l(y.a.this);
-          ac.d("MicroMsg.VideoService", "Try Run service runningFlag:" + y.a.h(y.a.this) + " timeWait:" + l + " sending:" + y.a.j(y.a.this) + " recving:" + y.a.i(y.a.this));
+          ad.d("MicroMsg.VideoService", "Try Run service runningFlag:" + y.a.h(y.a.this) + " timeWait:" + l + " sending:" + y.a.j(y.a.this) + " recving:" + y.a.i(y.a.this));
           if (y.a.h(y.a.this))
           {
             if (l < 60000L)
@@ -416,7 +431,7 @@ public final class y
               AppMethodBeat.o(127039);
               return;
             }
-            ac.e("MicroMsg.VideoService", "ERR: Try Run service runningFlag:" + y.a.h(y.a.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + y.a.j(y.a.this) + " recving:" + y.a.i(y.a.this));
+            ad.e("MicroMsg.VideoService", "ERR: Try Run service runningFlag:" + y.a.h(y.a.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + y.a.j(y.a.this) + " recving:" + y.a.i(y.a.this));
           }
           y.a.a(y.a.this, 3);
           y.a.m(y.a.this);
@@ -424,8 +439,8 @@ public final class y
           y.a.b(y.a.this);
           y.a.e(y.a.this);
           y.a.c(y.a.this);
-          y.a.this.cXf.fJW = SystemClock.elapsedRealtime();
-          y.a.n(y.a.this).au(10L, 10L);
+          y.a.this.diw.gdx = SystemClock.elapsedRealtime();
+          y.a.n(y.a.this).az(10L, 10L);
           AppMethodBeat.o(127039);
         }
         
@@ -443,7 +458,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelvideo.y
  * JD-Core Version:    0.7.0.1
  */

@@ -12,131 +12,131 @@ import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ap;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/ui/dialog/LiveMicDialog;", "Landroid/support/v7/app/AppCompatDialog;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "commentScrolling", "", "galleryScale", "com/tencent/mm/live/ui/dialog/LiveMicDialog$galleryScale$1", "Lcom/tencent/mm/live/ui/dialog/LiveMicDialog$galleryScale$1;", "galleryScrollHelper", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollHelper;", "hasDispatchCancel", "getMContext", "()Landroid/content/Context;", "setMContext", "mIsActive", "needCancelTouch", "targetView", "Landroid/view/View;", "dispatchTouchEvent", "ev", "Landroid/view/MotionEvent;", "isLandscape", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "setContentView", "view", "wrapSheet", "layoutResId", "", "params", "Landroid/view/ViewGroup$LayoutParams;", "Companion", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/ui/dialog/LiveMicDialog;", "Landroid/support/v7/app/AppCompatDialog;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "commentScrolling", "", "galleryScale", "com/tencent/mm/live/ui/dialog/LiveMicDialog$galleryScale$1", "Lcom/tencent/mm/live/ui/dialog/LiveMicDialog$galleryScale$1;", "galleryScrollHelper", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollHelper;", "hasDispatchCancel", "getMContext", "()Landroid/content/Context;", "setMContext", "mIsActive", "needCancelTouch", "targetView", "Landroid/view/View;", "dispatchTouchEvent", "ev", "Landroid/view/MotionEvent;", "isLandscape", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "setContentView", "view", "wrapSheet", "layoutResId", "", "params", "Landroid/view/ViewGroup$LayoutParams;", "Companion", "plugin-logic_release"})
 public final class a
   extends e
 {
   private static final String TAG = "MicroMsg.LiveMicDialog";
-  public static final a.a gFZ;
-  private com.tencent.mm.ui.j.b fSY;
-  private final b gFV;
-  private boolean gFW;
-  private boolean gFX;
-  private boolean gFY;
+  public static final a.a gZJ;
+  private final b gZF;
+  private boolean gZG;
+  private boolean gZH;
+  private boolean gZI;
+  private com.tencent.mm.ui.j.b gmC;
   private Context mContext;
   private View targetView;
   
   static
   {
-    AppMethodBeat.i(190600);
-    gFZ = new a.a((byte)0);
+    AppMethodBeat.i(212890);
+    gZJ = new a.a((byte)0);
     TAG = "MicroMsg.LiveMicDialog";
-    AppMethodBeat.o(190600);
+    AppMethodBeat.o(212890);
   }
   
   public a(Context paramContext)
   {
     super(paramContext, 2131820861);
-    AppMethodBeat.i(190599);
+    AppMethodBeat.i(212889);
     this.mContext = paramContext;
-    this.gFV = new b(this);
-    gt();
+    this.gZF = new b(this);
+    gK();
     paramContext = getContext();
-    k.g(paramContext, "context");
-    this.fSY = new com.tencent.mm.ui.j.b(paramContext);
-    AppMethodBeat.o(190599);
+    p.g(paramContext, "context");
+    this.gmC = new com.tencent.mm.ui.j.b(paramContext);
+    AppMethodBeat.o(212889);
   }
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(190598);
-    k.h(paramMotionEvent, "ev");
+    AppMethodBeat.i(212888);
+    p.h(paramMotionEvent, "ev");
     switch (paramMotionEvent.getActionMasked())
     {
     case 2: 
     default: 
-      this.fSY.ae(paramMotionEvent);
-      int i = this.fSY.ILj;
+      this.gmC.ag(paramMotionEvent);
+      int i = this.gmC.KCq;
       bool1 = bool2;
       if (i != 1)
       {
         bool1 = bool2;
         if (i != 2)
         {
-          if ((this.gFX) || (this.gFW)) {
+          if ((this.gZH) || (this.gZG)) {
             break label172;
           }
-          bool1 = this.fSY.dispatchTouchEvent(paramMotionEvent);
+          bool1 = this.gmC.dispatchTouchEvent(paramMotionEvent);
         }
       }
       break;
     }
     for (;;)
     {
-      if ((!this.gFX) && (!bool1)) {
+      if ((!this.gZH) && (!bool1)) {
         break label227;
       }
-      if (!this.gFY)
+      if (!this.gZI)
       {
         paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        k.g(paramMotionEvent, "cancelEvent");
+        p.g(paramMotionEvent, "cancelEvent");
         paramMotionEvent.setAction(3);
         super.dispatchTouchEvent(paramMotionEvent);
         paramMotionEvent.recycle();
-        this.gFY = true;
+        this.gZI = true;
       }
-      AppMethodBeat.o(190598);
+      AppMethodBeat.o(212888);
       return true;
-      this.gFY = false;
-      this.gFX = false;
+      this.gZI = false;
+      this.gZH = false;
       break;
       label172:
       bool1 = bool2;
-      if (!this.gFY)
+      if (!this.gZI)
       {
         MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        k.g(localMotionEvent, "cancelEvent");
+        p.g(localMotionEvent, "cancelEvent");
         localMotionEvent.setAction(3);
-        this.fSY.dispatchTouchEvent(localMotionEvent);
+        this.gmC.dispatchTouchEvent(localMotionEvent);
         localMotionEvent.recycle();
-        this.gFY = true;
+        this.gZI = true;
         bool1 = bool2;
       }
     }
     label227:
     boolean bool1 = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(190598);
+    AppMethodBeat.o(212888);
     return bool1;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(190596);
+    AppMethodBeat.i(212886);
     super.onCreate(paramBundle);
     getWindow().setDimAmount(0.0F);
-    AppMethodBeat.o(190596);
+    AppMethodBeat.o(212886);
   }
   
   public final void setContentView(View paramView)
   {
     int i = 0;
-    AppMethodBeat.i(190597);
-    k.h(paramView, "view");
+    AppMethodBeat.i(212887);
+    p.h(paramView, "view");
     Window localWindow = getWindow();
     if (localWindow == null) {
-      k.fOy();
+      p.gfZ();
     }
     localWindow.setGravity(80);
     localWindow.setWindowAnimations(2131820790);
     localWindow.getDecorView().setPadding(0, 0, 0, 0);
     WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
     Resources localResources = this.mContext.getResources();
-    k.g(localResources, "mContext.resources");
+    p.g(localResources, "mContext.resources");
     if (localResources.getConfiguration().orientation == 2) {
       i = 1;
     }
@@ -146,31 +146,31 @@ public final class a
     for (localLayoutParams.height = -1;; localLayoutParams.height = -2)
     {
       localWindow.setAttributes(localLayoutParams);
-      paramView.findViewById(2131307704).setOnClickListener((View.OnClickListener)new a.c(this));
+      paramView.findViewById(2131307704).setOnClickListener((View.OnClickListener)new c(this));
       super.setContentView(paramView);
       this.targetView = paramView;
-      paramView = new com.tencent.mm.search.a.a(paramView, (com.tencent.mm.search.a.b)this.gFV);
-      this.fSY.a((com.tencent.mm.ui.j.a)paramView);
+      paramView = new com.tencent.mm.search.a.a(paramView, (com.tencent.mm.search.a.b)this.gZF);
+      this.gmC.a((com.tencent.mm.ui.j.a)paramView);
       paramView = getWindow();
       if (paramView == null) {
-        k.fOy();
+        p.gfZ();
       }
       paramView.setLayout(-1, -1);
-      AppMethodBeat.o(190597);
+      AppMethodBeat.o(212887);
       return;
       localLayoutParams.width = -1;
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/live/ui/dialog/LiveMicDialog$galleryScale$1", "Lcom/tencent/mm/search/gesture/IOnGalleryScale;", "onBgAlpha", "", "alpha", "", "onGalleryExitFromTop", "plugin-logic_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/ui/dialog/LiveMicDialog$galleryScale$1", "Lcom/tencent/mm/search/gesture/IOnGalleryScale;", "onBgAlpha", "", "alpha", "", "onGalleryExitFromTop", "plugin-logic_release"})
   public static final class b
     implements com.tencent.mm.search.a.b
   {
-    public final void anM()
+    public final void aqy()
     {
       long l1 = 0L;
-      AppMethodBeat.i(190594);
-      View localView = a.a(this.gGa);
+      AppMethodBeat.i(212884);
+      View localView = a.a(this.gZK);
       long l2;
       if (localView != null)
       {
@@ -183,16 +183,16 @@ public final class a
       for (;;)
       {
         localView.animate().translationY(localView.getHeight()).setDuration(l1).withEndAction((Runnable)new a(this)).start();
-        AppMethodBeat.o(190594);
+        AppMethodBeat.o(212884);
         return;
-        AppMethodBeat.o(190594);
+        AppMethodBeat.o(212884);
         return;
         label104:
         l1 = l2;
       }
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/live/ui/dialog/LiveMicDialog$galleryScale$1$onGalleryExitFromTop$1$1"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/live/ui/dialog/LiveMicDialog$galleryScale$1$onGalleryExitFromTop$1$1"})
     static final class a
       implements Runnable
     {
@@ -200,26 +200,46 @@ public final class a
       
       public final void run()
       {
-        AppMethodBeat.i(190593);
-        new ao().post((Runnable)new Runnable()
+        AppMethodBeat.i(212883);
+        new ap().post((Runnable)new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(190592);
-            if (this.gGc.gGb.gGa.isShowing()) {
-              this.gGc.gGb.gGa.cancel();
+            AppMethodBeat.i(212882);
+            if (this.gZM.gZL.gZK.isShowing()) {
+              this.gZM.gZL.gZK.cancel();
             }
-            AppMethodBeat.o(190592);
+            AppMethodBeat.o(212882);
           }
         });
-        AppMethodBeat.o(190593);
+        AppMethodBeat.o(212883);
       }
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class c
+    implements View.OnClickListener
+  {
+    c(a parama) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(212885);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveMicDialog$wrapSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      if (this.gZK.isShowing()) {
+        this.gZK.cancel();
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/dialog/LiveMicDialog$wrapSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(212885);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.ui.dialog.a
  * JD-Core Version:    0.7.0.1
  */

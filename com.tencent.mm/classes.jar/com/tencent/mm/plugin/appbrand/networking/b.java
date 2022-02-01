@@ -1,9 +1,13 @@
 package com.tencent.mm.plugin.appbrand.networking;
 
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.cvp;
+import com.tencent.mm.vending.g.c;
+
 public abstract interface b
   extends com.tencent.luggage.a.b
 {
-  public abstract void a(c paramc);
+  public abstract <Resp extends cvp> c<Resp> a(String paramString, a parama, Class<Resp> paramClass);
 }
 
 

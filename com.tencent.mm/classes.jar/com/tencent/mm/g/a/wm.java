@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class wm
   extends b
 {
-  public a dzo;
+  public a dKN;
+  public b dKO;
   
   public wm()
   {
@@ -15,16 +16,23 @@ public final class wm
   
   private wm(byte paramByte)
   {
-    AppMethodBeat.i(19843);
-    this.dzo = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(149891);
+    this.dKN = new a();
+    this.dKO = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19843);
+    AppMethodBeat.o(149891);
   }
   
   public static final class a
   {
-    public String countryCode;
+    public boolean dKP = false;
+    public boolean dKQ = false;
+  }
+  
+  public static final class b
+  {
+    public String dKR;
   }
 }
 

@@ -3,28 +3,28 @@ package com.tencent.mm.plugin.choosemsgfile.b.b;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
-import com.tencent.mm.g.c.dy;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
 import com.tencent.mm.plugin.choosemsgfile.ui.c;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bu;
 
 public abstract class a<T extends RecyclerView.w>
 {
-  protected int MW;
-  protected int aoe;
-  g ooI;
-  protected int ooJ = 0;
-  public bo ooz;
+  protected int apW;
+  protected int fq;
+  public bu oRU;
+  g oSd;
+  protected int oSe = 0;
   
   public a(g paramg)
   {
-    this.ooI = paramg;
+    this.oSd = paramg;
   }
   
-  public a(g paramg, bo parambo)
+  public a(g paramg, bu parambu)
   {
-    this.ooI = paramg;
-    this.ooz = parambo;
+    this.oSd = paramg;
+    this.oRU = parambu;
   }
   
   public void T(T paramT) {}
@@ -35,29 +35,29 @@ public abstract class a<T extends RecyclerView.w>
   
   public final void a(boolean paramBoolean, a parama, T paramT)
   {
-    this.ooI.a(paramBoolean, parama, paramT);
+    this.oSd.a(paramBoolean, parama, paramT);
   }
   
-  protected final com.tencent.mm.plugin.choosemsgfile.b.d.a bUH()
+  protected final com.tencent.mm.plugin.choosemsgfile.b.d.a bZm()
   {
-    return this.ooI.bUS().bUH();
+    return this.oSd.bZx().bZm();
   }
   
-  public String bUI()
+  public String bZn()
   {
     return "";
   }
   
-  public int bUJ()
+  public int bZo()
   {
     return 0;
   }
   
-  public final void bUK()
+  public final void bZp()
   {
     try
     {
-      this.ooJ = 1;
+      this.oSe = 1;
       return;
     }
     finally
@@ -67,11 +67,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void bUL()
+  public final void bZq()
   {
     try
     {
-      this.ooJ = 3;
+      this.oSe = 3;
       return;
     }
     finally
@@ -81,11 +81,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void bUM()
+  public final void bZr()
   {
     try
     {
-      this.ooJ = 4;
+      this.oSe = 4;
       return;
     }
     finally
@@ -95,11 +95,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void bUN()
+  public final void bZs()
   {
     try
     {
-      this.ooJ = 5;
+      this.oSe = 5;
       return;
     }
     finally
@@ -109,11 +109,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void bUO()
+  public final void bZt()
   {
     try
     {
-      this.ooJ = 0;
+      this.oSe = 0;
       return;
     }
     finally
@@ -123,18 +123,13 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final boolean bj()
-  {
-    return (this.ooJ == 4) || (this.ooJ == 5);
-  }
-  
-  public final void eU(int paramInt1, int paramInt2)
+  public final void eY(int paramInt1, int paramInt2)
   {
     try
     {
-      this.ooJ = 2;
-      this.MW = paramInt1;
-      this.aoe = paramInt2;
+      this.oSe = 2;
+      this.fq = paramInt1;
+      this.apW = paramInt2;
       return;
     }
     finally
@@ -146,15 +141,15 @@ public abstract class a<T extends RecyclerView.w>
   
   public boolean equals(Object paramObject)
   {
-    if ((this.ooz != null) && ((paramObject instanceof bo)) && (paramObject != null)) {
-      return this.ooz.field_msgId == ((bo)paramObject).field_msgId;
+    if ((this.oRU != null) && ((paramObject instanceof bu)) && (paramObject != null)) {
+      return this.oRU.field_msgId == ((bu)paramObject).field_msgId;
     }
     return super.equals(paramObject);
   }
   
   protected final Context getContext()
   {
-    return this.ooI.bUS().getContext();
+    return this.oSd.bZx().getContext();
   }
   
   public String getFileName()
@@ -164,24 +159,29 @@ public abstract class a<T extends RecyclerView.w>
   
   public long getTimeStamp()
   {
-    return this.ooz.field_createTime;
+    return this.oRU.field_createTime;
   }
   
   public abstract int getType();
   
   public final boolean isEnable()
   {
-    return (!this.ooI.bUS().bUH().bj()) || (this.ooI.bUS().bUH().rD(this.ooz.field_msgId));
+    return (!this.oSd.bZx().bZm().isInvalid()) || (this.oSd.bZx().bZm().tC(this.oRU.field_msgId));
+  }
+  
+  public final boolean isInvalid()
+  {
+    return (this.oSe == 4) || (this.oSe == 5);
   }
   
   public String toString()
   {
-    return "MsgItem{msgInfo=" + this.ooz.field_msgId + '}';
+    return "MsgItem{msgInfo=" + this.oRU.field_msgId + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public class SetTextAlignActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetTextAlignActionArg> CREATOR;
-  public String jzJ;
+  public String jTE;
   
   static
   {
@@ -51,7 +51,7 @@ public class SetTextAlignActionArg
       return false;
     }
     paramObject = (SetTextAlignActionArg)paramObject;
-    boolean bool = Objects.equals(this.jzJ, paramObject.jzJ);
+    boolean bool = Objects.equals(this.jTE, paramObject.jTE);
     AppMethodBeat.o(145244);
     return bool;
   }
@@ -60,14 +60,14 @@ public class SetTextAlignActionArg
   {
     AppMethodBeat.i(145241);
     super.h(paramParcel);
-    this.jzJ = paramParcel.readString();
+    this.jTE = paramParcel.readString();
     AppMethodBeat.o(145241);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145245);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jzJ });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jTE });
     AppMethodBeat.o(145245);
     return i;
   }
@@ -76,7 +76,7 @@ public class SetTextAlignActionArg
   {
     AppMethodBeat.i(145242);
     super.parse(paramJSONObject);
-    this.jzJ = paramJSONObject.optJSONArray("data").optString(0);
+    this.jTE = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145242);
   }
   
@@ -84,7 +84,7 @@ public class SetTextAlignActionArg
   {
     AppMethodBeat.i(145243);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jzJ);
+    paramParcel.writeString(this.jTE);
     AppMethodBeat.o(145243);
   }
 }

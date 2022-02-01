@@ -5,14 +5,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   extends n
 {
-  private static final int bJB;
-  private static final char[] bJo;
-  static final int[] bJp;
+  private static final char[] bTB;
+  static final int[] bTC;
+  private static final int bTO;
   
   static
   {
     AppMethodBeat.i(12286);
-    bJo = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%abcd*".toCharArray();
+    bTB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%abcd*".toCharArray();
     int[] arrayOfInt = new int[48];
     arrayOfInt[0] = 276;
     arrayOfInt[1] = 328;
@@ -63,8 +63,8 @@ public final class g
     arrayOfInt[46] = 306;
     arrayOfInt[47] = 350;
     arrayOfInt;
-    bJp = arrayOfInt;
-    bJB = arrayOfInt[47];
+    bTC = arrayOfInt;
+    bTO = arrayOfInt[47];
     AppMethodBeat.o(12286);
   }
 }

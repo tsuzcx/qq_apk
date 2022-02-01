@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class u
   extends b
 {
-  public a cZe;
+  public a dkw;
   
   public u()
   {
@@ -16,15 +16,15 @@ public final class u
   private u(byte paramByte)
   {
     AppMethodBeat.i(149848);
-    this.cZe = new a();
-    this.Gqe = false;
+    this.dkw = new a();
+    this.IbR = false;
     this.callback = null;
     AppMethodBeat.o(149848);
   }
   
   public static final class a
   {
-    public boolean cZf = false;
+    public boolean dkx = false;
     public int scene;
   }
 }

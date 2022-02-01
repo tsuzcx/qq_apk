@@ -5,29 +5,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f$a
 {
-  public long fJW;
+  public long gdx;
   
   public f$a()
   {
     AppMethodBeat.i(155878);
-    this.fJW = SystemClock.elapsedRealtime();
+    this.gdx = SystemClock.elapsedRealtime();
     AppMethodBeat.o(155878);
   }
   
-  public final long YH()
+  public final long abj()
   {
     AppMethodBeat.i(155880);
     long l1 = SystemClock.elapsedRealtime();
-    long l2 = this.fJW;
+    long l2 = this.gdx;
     AppMethodBeat.o(155880);
     return l1 - l2;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(210281);
-    this.fJW = SystemClock.elapsedRealtime();
-    AppMethodBeat.o(210281);
+    AppMethodBeat.i(221317);
+    this.gdx = SystemClock.elapsedRealtime();
+    AppMethodBeat.o(221317);
   }
 }
 

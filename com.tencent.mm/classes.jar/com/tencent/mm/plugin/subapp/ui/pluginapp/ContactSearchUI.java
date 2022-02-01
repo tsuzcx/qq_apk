@@ -17,41 +17,42 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.subapp.b;
-import com.tencent.mm.pluginsdk.j;
 import com.tencent.mm.pluginsdk.k;
-import com.tencent.mm.protocal.protobuf.css;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.protocal.protobuf.cyc;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
 import java.io.IOException;
 
 public class ContactSearchUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
-  private ProgressDialog fts = null;
-  private EditText zTn;
+  private EditText BkS;
+  private ProgressDialog fMu = null;
   
-  private static int axy(String paramString)
+  private static int aCC(String paramString)
   {
     AppMethodBeat.i(29226);
-    if (bs.aLl(paramString))
+    if (bt.aQR(paramString))
     {
       AppMethodBeat.o(29226);
       return 1;
     }
-    if (bs.aLm(paramString))
+    if (bt.aQS(paramString))
     {
       AppMethodBeat.o(29226);
       return 2;
     }
-    if (bs.aLn(paramString))
+    if (bt.aQT(paramString))
     {
       AppMethodBeat.o(29226);
       return 3;
@@ -60,27 +61,27 @@ public class ContactSearchUI
     return 3;
   }
   
-  private void eaV()
+  private void enm()
   {
     AppMethodBeat.i(29224);
-    Object localObject = this.zTn.getText().toString().trim();
+    Object localObject = this.BkS.getText().toString().trim();
     if ((localObject == null) || (((String)localObject).length() <= 0))
     {
-      com.tencent.mm.ui.base.h.l(getContext(), 2131764655, 2131755906);
+      h.l(getContext(), 2131764655, 2131755906);
       AppMethodBeat.o(29224);
       return;
     }
-    ac.d("MicroMsg.ContactSearchUI", "always search contact from internet!!!");
-    localObject = new com.tencent.mm.plugin.messenger.a.g((String)localObject, 1);
-    az.agi().a((n)localObject, 0);
+    ad.d("MicroMsg.ContactSearchUI", "always search contact from internet!!!");
+    localObject = new com.tencent.mm.plugin.messenger.a.f((String)localObject, 1);
+    ba.aiU().a((n)localObject, 0);
     AppCompatActivity localAppCompatActivity = getContext();
     getString(2131755906);
-    this.fts = com.tencent.mm.ui.base.h.b(localAppCompatActivity, getString(2131755224), true, new DialogInterface.OnCancelListener()
+    this.fMu = h.b(localAppCompatActivity, getString(2131755224), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(29219);
-        az.agi().a(this.sCk);
+        ba.aiU().a(this.tyL);
         AppMethodBeat.o(29219);
       }
     });
@@ -96,8 +97,8 @@ public class ContactSearchUI
   {
     AppMethodBeat.i(29223);
     setMMTitle(2131757924);
-    this.zTn = ((EditText)findViewById(2131298712));
-    this.zTn.addTextChangedListener(new TextWatcher()
+    this.BkS = ((EditText)findViewById(2131298712));
+    this.BkS.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -116,13 +117,13 @@ public class ContactSearchUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.zTn.setImeOptions(3);
-    this.zTn.setOnEditorActionListener(new TextView.OnEditorActionListener()
+    this.BkS.setImeOptions(3);
+    this.BkS.setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(29216);
-        if ((paramAnonymousKeyEvent != null) && (paramAnonymousKeyEvent.getKeyCode() == 66) && (!bs.isNullOrNil(ContactSearchUI.a(ContactSearchUI.this).getText().toString().trim()))) {
+        if ((paramAnonymousKeyEvent != null) && (paramAnonymousKeyEvent.getKeyCode() == 66) && (!bt.isNullOrNil(ContactSearchUI.a(ContactSearchUI.this).getText().toString().trim()))) {
           ContactSearchUI.b(ContactSearchUI.this);
         }
         AppMethodBeat.o(29216);
@@ -153,8 +154,8 @@ public class ContactSearchUI
     if (getIntent().getBooleanExtra("from_webview", false))
     {
       String str = getIntent().getStringExtra("userName");
-      this.zTn.setText(str);
-      eaV();
+      this.BkS.setText(str);
+      enm();
     }
     AppMethodBeat.o(29223);
   }
@@ -170,7 +171,7 @@ public class ContactSearchUI
   public void onPause()
   {
     AppMethodBeat.i(29222);
-    az.agi().b(106, this);
+    ba.aiU().b(106, this);
     super.onPause();
     AppMethodBeat.o(29222);
   }
@@ -178,7 +179,7 @@ public class ContactSearchUI
   public void onResume()
   {
     AppMethodBeat.i(29221);
-    az.agi().a(106, this);
+    ba.aiU().a(106, this);
     super.onResume();
     AppMethodBeat.o(29221);
   }
@@ -186,59 +187,59 @@ public class ContactSearchUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(29225);
-    ac.i("MicroMsg.ContactSearchUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.fts != null)
+    ad.i("MicroMsg.ContactSearchUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.fMu != null)
     {
-      this.fts.dismiss();
-      this.fts = null;
+      this.fMu.dismiss();
+      this.fMu = null;
     }
-    if (b.iyy.b(getContext(), paramInt1, paramInt2, paramString))
+    if (b.iRH.b(getContext(), paramInt1, paramInt2, paramString))
     {
       AppMethodBeat.o(29225);
       return;
     }
     if ((paramInt1 == 4) && (paramInt2 == -4))
     {
-      com.tencent.mm.ui.base.h.l(getContext(), 2131755218, 2131755906);
+      h.l(getContext(), 2131755218, 2131755906);
       AppMethodBeat.o(29225);
       return;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
       Toast.makeText(this, getString(2131759561), 0).show();
-      ac.w("MicroMsg.ContactSearchUI", getString(2131759560, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      ad.w("MicroMsg.ContactSearchUI", getString(2131759560, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
       AppMethodBeat.o(29225);
       return;
     }
-    paramString = ((com.tencent.mm.plugin.messenger.a.g)paramn).dcj();
-    if (paramString.ENQ > 0)
+    paramString = ((com.tencent.mm.plugin.messenger.a.f)paramn).dlC();
+    if (paramString.GwU > 0)
     {
       paramn = new Intent();
       paramn.setClass(this, ContactSearchResultUI.class);
       try
       {
         paramn.putExtra("result", paramString.toByteArray());
-        paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramn);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.aeD(), "com/tencent/mm/plugin/subapp/ui/pluginapp/ContactSearchUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramString.lR(0));
+        paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramn);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.ahp(), "com/tencent/mm/plugin/subapp/ui/pluginapp/ContactSearchUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramString.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/pluginapp/ContactSearchUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(29225);
         return;
       }
       catch (IOException paramString)
       {
-        ac.printErrStackTrace("MicroMsg.ContactSearchUI", paramString, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ContactSearchUI", paramString, "", new Object[0]);
         AppMethodBeat.o(29225);
         return;
       }
     }
-    paramn = z.a(paramString.EuE);
+    paramn = z.a(paramString.GbY);
     Intent localIntent = new Intent();
-    ((j)com.tencent.mm.kernel.g.ab(j.class)).a(localIntent, paramString, axy(this.zTn.getText().toString().trim()));
-    if (bs.nullAsNil(paramn).length() > 0)
+    ((k)com.tencent.mm.kernel.g.ab(k.class)).a(localIntent, paramString, aCC(this.BkS.getText().toString().trim()));
+    if (bt.nullAsNil(paramn).length() > 0)
     {
-      if ((paramString.Feq & 0x8) > 0) {
-        com.tencent.mm.plugin.report.service.h.wUl.kvStat(10298, paramn + "," + axy(this.zTn.getText().toString().trim()));
+      if ((paramString.GNU & 0x8) > 0) {
+        com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, paramn + "," + aCC(this.BkS.getText().toString().trim()));
       }
       d.b(this, "profile", ".ui.ContactInfoUI", localIntent);
     }

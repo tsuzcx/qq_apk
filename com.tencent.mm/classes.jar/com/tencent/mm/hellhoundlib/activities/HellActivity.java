@@ -15,7 +15,7 @@ public class HellActivity
   public void finish()
   {
     AppMethodBeat.i(55526);
-    a.aeC().aS(this);
+    a.aho().aU(this);
     super.finish();
     AppMethodBeat.o(55526);
   }
@@ -23,7 +23,7 @@ public class HellActivity
   public void finishActivity(int paramInt)
   {
     AppMethodBeat.i(55527);
-    a.aeC().aS(this);
+    a.aho().aU(this);
     super.finishActivity(paramInt);
     AppMethodBeat.o(55527);
   }
@@ -31,7 +31,7 @@ public class HellActivity
   public void finishActivityFromChild(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(55529);
-    a.aeC().aS(paramActivity);
+    a.aho().aU(paramActivity);
     super.finishActivityFromChild(paramActivity, paramInt);
     AppMethodBeat.o(55529);
   }
@@ -39,7 +39,7 @@ public class HellActivity
   public void finishAffinity()
   {
     AppMethodBeat.i(55528);
-    a.aeC().aS(this);
+    a.aho().aU(this);
     super.finishAffinity();
     AppMethodBeat.o(55528);
   }
@@ -47,7 +47,7 @@ public class HellActivity
   public void finishAndRemoveTask()
   {
     AppMethodBeat.i(55530);
-    a.aeC().aS(this);
+    a.aho().aU(this);
     super.finishAndRemoveTask();
     AppMethodBeat.o(55530);
   }
@@ -55,9 +55,9 @@ public class HellActivity
   public boolean moveTaskToBack(boolean paramBoolean)
   {
     AppMethodBeat.i(55531);
-    a locala = a.aeC();
-    if (locala.gcC != null) {
-      locala.gcC.d(this, paramBoolean);
+    a locala = a.aho();
+    if (locala.gwm != null) {
+      locala.gwm.d(this, paramBoolean);
     }
     paramBoolean = super.moveTaskToBack(paramBoolean);
     AppMethodBeat.o(55531);
@@ -68,14 +68,14 @@ public class HellActivity
   {
     AppMethodBeat.i(55515);
     super.onCreate(paramBundle);
-    a.aeC().e(this, 0);
+    a.aho().f(this, 0);
     AppMethodBeat.o(55515);
   }
   
   protected void onDestroy()
   {
     AppMethodBeat.i(55520);
-    a.aeC().e(this, 5);
+    a.aho().f(this, 5);
     super.onDestroy();
     AppMethodBeat.o(55520);
   }
@@ -84,9 +84,9 @@ public class HellActivity
   {
     AppMethodBeat.i(55516);
     super.onNewIntent(paramIntent);
-    a locala = a.aeC();
-    if ((b.aT(this)) && (locala.gcC != null)) {
-      locala.gcC.c(this, paramIntent);
+    a locala = a.aho();
+    if ((b.aV(this)) && (locala.gwm != null)) {
+      locala.gwm.c(this, paramIntent);
     }
     AppMethodBeat.o(55516);
   }
@@ -95,7 +95,7 @@ public class HellActivity
   {
     AppMethodBeat.i(55518);
     super.onPause();
-    a.aeC().e(this, 3);
+    a.aho().f(this, 3);
     AppMethodBeat.o(55518);
   }
   
@@ -103,7 +103,7 @@ public class HellActivity
   {
     AppMethodBeat.i(55521);
     super.onPostResume();
-    a.aeC().e(this, 6);
+    a.aho().f(this, 6);
     AppMethodBeat.o(55521);
   }
   
@@ -111,7 +111,7 @@ public class HellActivity
   {
     AppMethodBeat.i(55517);
     super.onResume();
-    a.aeC().e(this, 2);
+    a.aho().f(this, 2);
     AppMethodBeat.o(55517);
   }
   
@@ -119,7 +119,7 @@ public class HellActivity
   {
     AppMethodBeat.i(55519);
     super.onStop();
-    a.aeC().e(this, 4);
+    a.aho().f(this, 4);
     AppMethodBeat.o(55519);
   }
   
@@ -132,9 +132,9 @@ public class HellActivity
   public void startActivities(Intent[] paramArrayOfIntent, Bundle paramBundle)
   {
     AppMethodBeat.i(55524);
-    a locala = a.aeC();
-    if ((b.aT(this)) && (locala.gcC != null)) {
-      locala.gcC.a(this, paramArrayOfIntent);
+    a locala = a.aho();
+    if ((b.aV(this)) && (locala.gwm != null)) {
+      locala.gwm.a(this, paramArrayOfIntent);
     }
     super.startActivities(paramArrayOfIntent, paramBundle);
     AppMethodBeat.o(55524);
@@ -143,7 +143,7 @@ public class HellActivity
   public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(55522);
-    a.aeC().a(this, paramIntent);
+    a.aho().a(this, paramIntent);
     super.startActivityForResult(paramIntent, paramInt, paramBundle);
     AppMethodBeat.o(55522);
   }
@@ -151,7 +151,7 @@ public class HellActivity
   public void startActivityFromFragment(Fragment paramFragment, Intent paramIntent, int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(55525);
-    a.aeC().a(this, paramIntent);
+    a.aho().a(this, paramIntent);
     super.startActivityFromFragment(paramFragment, paramIntent, paramInt, paramBundle);
     AppMethodBeat.o(55525);
   }
@@ -159,7 +159,7 @@ public class HellActivity
   public boolean startActivityIfNeeded(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(55523);
-    a.aeC().a(this, paramIntent);
+    a.aho().a(this, paramIntent);
     boolean bool = super.startActivityIfNeeded(paramIntent, paramInt, paramBundle);
     AppMethodBeat.o(55523);
     return bool;

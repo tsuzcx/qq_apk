@@ -1,55 +1,139 @@
 package com.tencent.mm.ui.chatting.h;
 
+import android.os.Bundle;
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.chatting.c.ab;
-import java.util.HashMap;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.chatting.n.e;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class a
+  implements c<bu>
 {
-  public HashMap<Class<? extends ab>, ab> Ifh;
-  private com.tencent.mm.ui.chatting.d.a cLy;
+  private SparseArray<bu> JUV;
+  private com.tencent.mm.ui.chatting.e.a cWM;
   
-  public a(com.tencent.mm.ui.chatting.d.a parama)
+  public a(com.tencent.mm.ui.chatting.e.a parama, SparseArray<bu> paramSparseArray)
   {
-    AppMethodBeat.i(36433);
-    this.Ifh = new HashMap();
-    this.cLy = parama;
-    AppMethodBeat.o(36433);
+    this.cWM = parama;
+    this.JUV = paramSparseArray;
   }
   
-  public final void a(Class<? extends ab> paramClass, ab paramab)
+  public final void a(final d.a parama, final e<bu> parame, final d.d<bu> paramd, final d.b paramb)
   {
-    AppMethodBeat.i(36435);
-    if (this.Ifh.put(paramClass, paramab) != null) {
-      com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.ChattingComponentManager", "[register] %s has register", new Object[] { paramClass });
-    }
-    if ((paramab instanceof com.tencent.mm.ui.chatting.c.ac))
+    AppMethodBeat.i(36418);
+    Object localObject = com.tencent.mm.ui.chatting.l.a.JWq;
+    switch (com.tencent.mm.ui.chatting.l.a.1.JWs[paramd.JVl.ordinal()])
     {
-      long l1 = System.currentTimeMillis();
-      ((com.tencent.mm.ui.chatting.c.ac)paramab).a(this.cLy);
-      long l2 = System.currentTimeMillis();
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ChattingComponentManager", "[install] listener:%s cost:%sms", new Object[] { paramab.getClass().getName(), Long.valueOf(l2 - l1) });
     }
-    AppMethodBeat.o(36435);
+    while (parame == null)
+    {
+      ad.e("MicroMsg.ChattingLoader.ChattingDataCallback", "[load] null == source!");
+      paramb.next();
+      AppMethodBeat.o(36418);
+      return;
+      localObject = ((com.tencent.mm.ui.chatting.l.a)localObject).JWr;
+      localObject[0] += 1;
+      continue;
+      localObject = ((com.tencent.mm.ui.chatting.l.a)localObject).JWr;
+      localObject[1] += 1;
+      continue;
+      localObject = ((com.tencent.mm.ui.chatting.l.a)localObject).JWr;
+      localObject[2] += 1;
+      continue;
+      if ((paramd.JVk != null) && (paramd.JVk.getInt("SCENE") == 1))
+      {
+        localObject = ((com.tencent.mm.ui.chatting.l.a)localObject).JWr;
+        localObject[3] += 1;
+      }
+      else
+      {
+        localObject = ((com.tencent.mm.ui.chatting.l.a)localObject).JWr;
+        localObject[4] += 1;
+      }
+    }
+    parame.a(new d.b()
+    {
+      public final void next()
+      {
+        AppMethodBeat.i(36417);
+        parame.in(paramd.JVm);
+        parame.close();
+        paramd.fTM = parame.fpw();
+        paramd.JVn = paramd.JVm.size();
+        ad.i("MicroMsg.ChattingLoader.ChattingDataCallback", "action：" + parama + " addCount:" + paramd.JVn + " totalCount:" + paramd.fTM);
+        paramb.next();
+        AppMethodBeat.o(36417);
+      }
+    });
+    AppMethodBeat.o(36418);
   }
   
-  public final <T extends ab, V extends Class<T>> T bf(V paramV)
+  public final SparseArray<bu> ii(List<bu> paramList)
   {
-    AppMethodBeat.i(36434);
-    if (!paramV.isInterface())
+    AppMethodBeat.i(36419);
+    Object localObject = paramList;
+    if (paramList == null)
     {
-      paramV = new RuntimeException("[get] " + paramV + " is not a interface!");
-      AppMethodBeat.o(36434);
-      throw paramV;
+      localObject = new LinkedList();
+      ad.e("MicroMsg.ChattingLoader.ChattingDataCallback", "[fillData] list is null!");
     }
-    if (this.Ifh.containsKey(paramV))
+    try
     {
-      paramV = (ab)this.Ifh.get(paramV);
-      AppMethodBeat.o(36434);
-      return paramV;
+      if ((((List)localObject).size() > 0) && (this.cWM != null))
+      {
+        paramList = this.cWM.getTalkerUserName();
+        localbu = (bu)((List)localObject).get(0);
+        if ((localbu != null) && (!bt.isNullOrNil(paramList)) && (!bt.isNullOrNil(localbu.field_talker)) && (!bt.lQ(localbu.field_talker, paramList)))
+        {
+          ad.i("MicroMsg.ChattingLoader.ChattingDataCallback", "talker not equal, chattingContextTalker:%s, msgInfoTalker:%s", new Object[] { localbu.field_talker, paramList });
+          g.yhR.f(18264, new Object[] { localbu.field_talker, paramList });
+          g.yhR.n(1151L, 0L, 1L);
+          paramList = this.JUV;
+          AppMethodBeat.o(36419);
+          return paramList;
+        }
+      }
     }
-    AppMethodBeat.o(36434);
-    return null;
+    catch (Throwable paramList)
+    {
+      bu localbu;
+      ad.printErrStackTrace("MicroMsg.ChattingLoader.ChattingDataCallback", paramList, "fillData Exception", new Object[0]);
+      g.yhR.n(1151L, 1L, 1L);
+      this.JUV.clear();
+      paramList = ((List)localObject).iterator();
+      int i = 0;
+      while (paramList.hasNext())
+      {
+        localObject = this.JUV;
+        localbu = (bu)paramList.next();
+        ((SparseArray)localObject).put(i, localbu);
+        int j = i + 1;
+        i = j;
+        if (localbu != null)
+        {
+          i = j;
+          if (localbu.isText())
+          {
+            i = j;
+            if (localbu.field_content != null)
+            {
+              localbu.setContent(localbu.field_content.replaceAll("‮", ""));
+              i = j;
+            }
+          }
+        }
+      }
+      paramList = this.JUV;
+      AppMethodBeat.o(36419);
+    }
+    return paramList;
   }
 }
 

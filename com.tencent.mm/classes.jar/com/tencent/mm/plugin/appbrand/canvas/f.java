@@ -20,7 +20,7 @@ public final class f
     this.mBitmap = paramBitmap;
   }
   
-  public final void j(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public final void l(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     AppMethodBeat.i(144853);
     Bitmap localBitmap1 = this.mBitmap;
@@ -51,7 +51,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.f
  * JD-Core Version:    0.7.0.1
  */

@@ -6,47 +6,102 @@ import com.tencent.mm.plugin.report.a;
 public final class bo
   extends a
 {
-  public long dCQ = 0L;
-  public long dHY = 0L;
-  public long dNc = 0L;
+  private long dZQ;
+  private String dZR;
+  private long dZS;
+  private long dZT;
+  private String dZU;
+  private long dZV;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(120834);
+    AppMethodBeat.i(209211);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHY);
+    ((StringBuffer)localObject).append(this.dZQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dCQ);
+    ((StringBuffer)localObject).append(this.dZR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNc);
+    ((StringBuffer)localObject).append(this.dZS);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dZT);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dZU);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dZV);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(120834);
+    awz((String)localObject);
+    AppMethodBeat.o(209211);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(120835);
+    AppMethodBeat.i(209212);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.dHY);
+    ((StringBuffer)localObject).append("CtrType:").append(this.dZQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Action:").append(this.dCQ);
+    ((StringBuffer)localObject).append("TipsId:").append(this.dZR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Source:").append(this.dNc);
+    ((StringBuffer)localObject).append("RecallTime:").append(this.dZS);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("TabType:").append(this.dZT);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RevokeId:").append(this.dZU);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RevokeStatus:").append(this.dZV);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(120835);
+    AppMethodBeat.o(209212);
     return localObject;
+  }
+  
+  public final bo ga(long paramLong)
+  {
+    this.dZQ = paramLong;
+    return this;
+  }
+  
+  public final bo gb(long paramLong)
+  {
+    this.dZS = paramLong;
+    return this;
+  }
+  
+  public final bo gc(long paramLong)
+  {
+    this.dZT = paramLong;
+    return this;
+  }
+  
+  public final bo gd(long paramLong)
+  {
+    this.dZV = paramLong;
+    return this;
   }
   
   public final int getId()
   {
-    return 17055;
+    return 20223;
+  }
+  
+  public final bo ko(String paramString)
+  {
+    AppMethodBeat.i(209209);
+    this.dZR = t("TipsId", paramString, true);
+    AppMethodBeat.o(209209);
+    return this;
+  }
+  
+  public final bo kp(String paramString)
+  {
+    AppMethodBeat.i(209210);
+    this.dZU = t("RevokeId", paramString, true);
+    AppMethodBeat.o(209210);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.bo
  * JD-Core Version:    0.7.0.1
  */

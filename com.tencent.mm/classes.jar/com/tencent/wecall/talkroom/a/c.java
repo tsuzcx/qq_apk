@@ -17,10 +17,10 @@ public final class c
     a.b localb = new a.b();
     try
     {
-      localb.JMm = paramString;
+      localb.LFV = paramString;
       localb.reason = paramInt1;
       this.mNetType = 3;
-      this.JLH = paramInt2;
+      this.LFq = paramInt2;
       c(183, localb);
       AppMethodBeat.o(62528);
       return;
@@ -34,7 +34,7 @@ public final class c
     }
   }
   
-  public final Object cB(byte[] paramArrayOfByte)
+  public final Object cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62529);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -57,7 +57,7 @@ public final class c
     }
   }
   
-  public final String fBB()
+  public final String fSQ()
   {
     return "CsCmd.Cmd_V_CSCancelCreateVoiceGroupReq";
   }
@@ -69,7 +69,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -12,11 +12,11 @@ public abstract interface e
   
   public static final class a
   {
-    protected static e DBY;
+    protected static e Fhf;
     
     public static final void a(e parame)
     {
-      DBY = parame;
+      Fhf = parame;
     }
   }
 }

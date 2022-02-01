@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  static final String tWq;
+  static final String uYZ;
   
   static
   {
-    AppMethodBeat.i(192889);
-    tWq = d.a.KKz.name();
-    AppMethodBeat.o(192889);
+    AppMethodBeat.i(213347);
+    uYZ = d.a.MBn.name();
+    AppMethodBeat.o(213347);
   }
 }
 

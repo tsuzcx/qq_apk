@@ -6,14 +6,14 @@ import com.eclipsesource.v8.V8;
 import com.eclipsesource.v8.V8.JavaTaskScheduler;
 import com.eclipsesource.v8.V8Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class h
   extends a
 {
-  private MultiContextNodeJS cMF;
-  public volatile m cMG;
-  private i cMH;
+  private MultiContextNodeJS cXV;
+  private volatile m cXW;
+  private i cXX;
   
   static
   {
@@ -35,32 +35,32 @@ public final class h
     return paramConfig;
   }
   
-  final MultiContextV8 LD()
+  final MultiContextV8 Nl()
   {
     AppMethodBeat.i(144023);
     try
     {
-      this.cMF = MultiContextNodeJS.createMultiContextNodeJS(1, this.cMh, this.cMi, this.cMj);
-      this.cMF.getRuntime().getV8().setNativeJavaCallback(new Runnable()
+      this.cXV = MultiContextNodeJS.createMultiContextNodeJS(1, this.cXv, this.cXw, this.cXy);
+      this.cXV.getRuntime().getV8().setNativeJavaCallback(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(200808);
-          h.a(h.this).LN();
-          AppMethodBeat.o(200808);
+          AppMethodBeat.i(198680);
+          h.a(h.this).Nw();
+          AppMethodBeat.o(198680);
         }
       });
-      this.cMF.getRuntime().getV8().setJavaTaskScheduler(new V8.JavaTaskScheduler()
+      this.cXV.getRuntime().getV8().setJavaTaskScheduler(new V8.JavaTaskScheduler()
       {
         public final void Schedule(Runnable paramAnonymousRunnable)
         {
-          AppMethodBeat.i(200809);
+          AppMethodBeat.i(198681);
           h.a(h.this).u(paramAnonymousRunnable);
-          AppMethodBeat.o(200809);
+          AppMethodBeat.o(198681);
         }
       });
-      this.cMi = null;
-      MultiContextV8 localMultiContextV8 = this.cMF.getRuntime();
+      this.cXw = null;
+      MultiContextV8 localMultiContextV8 = this.cXV.getRuntime();
       AppMethodBeat.o(144023);
       return localMultiContextV8;
     }
@@ -70,63 +70,90 @@ public final class h
     }
   }
   
-  final c LE()
+  final c Nm()
   {
     AppMethodBeat.i(144024);
-    this.cMH = i.a(new i.a()
+    this.cXX = i.a(new i.a()
     {
-      public final boolean LL()
+      public final boolean Nu()
       {
-        AppMethodBeat.i(200810);
+        AppMethodBeat.i(198682);
         boolean bool = h.b(h.this).handleMessage();
-        AppMethodBeat.o(200810);
+        AppMethodBeat.o(198682);
         return bool;
       }
       
       public final void closeUVLoop()
       {
-        AppMethodBeat.i(200812);
+        AppMethodBeat.i(198684);
         if (h.b(h.this) != null) {
           h.b(h.this).closeUVLoop();
         }
-        AppMethodBeat.o(200812);
+        AppMethodBeat.o(198684);
       }
       
       public final void wakeUpUVLoop()
       {
-        AppMethodBeat.i(200811);
+        AppMethodBeat.i(198683);
         if (h.b(h.this) != null) {
           h.b(h.this).wakeUpUVLoop();
         }
-        AppMethodBeat.o(200811);
+        AppMethodBeat.o(198683);
       }
-    }, this.cMo.cMy);
-    i locali = this.cMH;
+    }, this.cXD.cXN);
+    i locali = this.cXX;
     AppMethodBeat.o(144024);
     return locali;
   }
   
-  final void LF()
+  final void Nn()
   {
     AppMethodBeat.i(144025);
-    ac.i("MicroMsg.NodeJSRuntime", "cleanUpRuntimeWhenThreadEnd");
+    ad.i("MicroMsg.NodeJSRuntime", "cleanUpRuntimeWhenThreadEnd");
     try
     {
-      this.cMF.release();
-      ac.i("MicroMsg.NodeJSRuntime", "cleanUpRuntimeWhenThreadEnd done");
+      this.cXV.release();
+      ad.i("MicroMsg.NodeJSRuntime", "cleanUpRuntimeWhenThreadEnd done");
       AppMethodBeat.o(144025);
       return;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.NodeJSRuntime", "cleanUpWhenThreadEnd exp = %s", new Object[] { localException });
+      ad.e("MicroMsg.NodeJSRuntime", "cleanUpWhenThreadEnd exp = %s", new Object[] { localException });
       AppMethodBeat.o(144025);
     }
+  }
+  
+  public final m Nt()
+  {
+    AppMethodBeat.i(198686);
+    if (this.cXW == null) {
+      this.cXW = new m(this, No(), new m.a()
+      {
+        public final V8Context Nr()
+        {
+          AppMethodBeat.i(198685);
+          if (h.b(h.this) == null)
+          {
+            localObject = new IllegalStateException("getMainContext mNodeJS not ready!");
+            AppMethodBeat.o(198685);
+            throw ((Throwable)localObject);
+          }
+          ad.i("MicroMsg.NodeJSRuntime", "getMainContext %s", new Object[] { Integer.valueOf(h.b(h.this).getMainContext().hashCode()) });
+          Object localObject = h.b(h.this).getMainContext();
+          AppMethodBeat.o(198685);
+          return localObject;
+        }
+      });
+    }
+    m localm = this.cXW;
+    AppMethodBeat.o(198686);
+    return localm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.h
  * JD-Core Version:    0.7.0.1
  */

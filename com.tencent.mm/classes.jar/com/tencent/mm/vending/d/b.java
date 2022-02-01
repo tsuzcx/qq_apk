@@ -6,17 +6,17 @@ import java.util.List;
 
 public final class b<T>
 {
-  private volatile List<T> Jqm;
+  private volatile List<T> LhR;
   
   private b(List paramList)
   {
-    this.Jqm = paramList;
+    this.LhR = paramList;
   }
   
   public final T get(int paramInt)
   {
     AppMethodBeat.i(74867);
-    Object localObject = this.Jqm.get(paramInt);
+    Object localObject = this.LhR.get(paramInt);
     AppMethodBeat.o(74867);
     return localObject;
   }
@@ -24,26 +24,26 @@ public final class b<T>
   public final int size()
   {
     AppMethodBeat.i(74866);
-    int i = this.Jqm.size();
+    int i = this.LhR.size();
     AppMethodBeat.o(74866);
     return i;
   }
   
   public static final class a<T>
   {
-    private ArrayList<T> Jqn;
+    private ArrayList<T> LhS;
     
     public a()
     {
       AppMethodBeat.i(74868);
-      this.Jqn = new ArrayList();
+      this.LhS = new ArrayList();
       AppMethodBeat.o(74868);
     }
     
-    private void adP()
+    private void agv()
     {
       AppMethodBeat.i(177475);
-      if (this.Jqn == null)
+      if (this.LhS == null)
       {
         IllegalAccessError localIllegalAccessError = new IllegalAccessError();
         AppMethodBeat.o(177475);
@@ -52,27 +52,27 @@ public final class b<T>
       AppMethodBeat.o(177475);
     }
     
-    public final a<T> E(T... paramVarArgs)
+    public final a<T> F(T... paramVarArgs)
     {
       AppMethodBeat.i(74870);
-      adP();
+      agv();
       int i = 0;
       while (i <= 0)
       {
         T ? = paramVarArgs[0];
-        this.Jqn.add(?);
+        this.LhS.add(?);
         i += 1;
       }
       AppMethodBeat.o(74870);
       return this;
     }
     
-    public final b<T> fxl()
+    public final b<T> fNY()
     {
       AppMethodBeat.i(74871);
-      adP();
-      Object localObject = this.Jqn;
-      this.Jqn = null;
+      agv();
+      Object localObject = this.LhS;
+      this.LhS = null;
       localObject = new b((List)localObject, (byte)0);
       AppMethodBeat.o(74871);
       return localObject;

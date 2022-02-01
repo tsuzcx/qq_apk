@@ -1,7 +1,7 @@
 package com.tencent.mm.pluginsdk.a;
 
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.SmileyInfo;
 import com.tencent.mm.storage.emotion.SmileyPanelConfigInfo;
@@ -11,43 +11,43 @@ import java.util.List;
 
 public abstract interface e
 {
-  public abstract EmojiInfo XM(String paramString);
-  
-  public abstract String XP(String paramString);
-  
-  public abstract void XX(String paramString);
-  
-  public abstract boolean XY(String paramString);
-  
-  public abstract void XZ(String paramString);
-  
-  public abstract void Ya(String paramString);
-  
   public abstract byte[] a(EmojiInfo paramEmojiInfo);
   
-  public abstract boolean acy();
+  public abstract void abD(String paramString);
   
-  public abstract boolean acz();
+  public abstract boolean abE(String paramString);
   
-  public abstract <T> T c(ah.a parama, T paramT);
+  public abstract void abF(String paramString);
   
-  public abstract ArrayList<SmileyInfo> cbR();
+  public abstract void abG(String paramString);
   
-  public abstract ArrayList<SmileyPanelConfigInfo> cbS();
+  public abstract EmojiInfo abs(String paramString);
   
-  public abstract String cbV();
+  public abstract String abv(String paramString);
   
-  public abstract void cbW();
+  public abstract boolean afc();
   
-  public abstract boolean cbX();
+  public abstract boolean afd();
   
-  public abstract List<v> cbY();
+  public abstract <T> T c(al.a parama, T paramT);
   
-  public abstract void cbZ();
+  public abstract void cgA();
   
-  public abstract boolean cca();
+  public abstract boolean cgB();
   
-  public abstract void d(ah.a parama, Object paramObject);
+  public abstract List<v> cgC();
+  
+  public abstract void cgD();
+  
+  public abstract boolean cgE();
+  
+  public abstract ArrayList<SmileyInfo> cgv();
+  
+  public abstract ArrayList<SmileyPanelConfigInfo> cgw();
+  
+  public abstract String cgz();
+  
+  public abstract void d(al.a parama, Object paramObject);
   
   public abstract String getAccPath();
   

@@ -9,17 +9,17 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.a;
 import com.tencent.mm.pluginsdk.ui.ProfileItemView;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class ProfileNormalItemView
   extends ProfileItemView
 {
-  private TextView lfN;
+  private TextView lCL;
   String mTitle;
-  TextView vFY;
-  CharSequence vNf;
-  View.OnClickListener vNg;
-  View vNh;
+  TextView wNe;
+  CharSequence wUo;
+  View.OnClickListener wUp;
+  View wUq;
   
   public ProfileNormalItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,7 +36,7 @@ public class ProfileNormalItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final ProfileNormalItemView Lt(int paramInt)
+  public final ProfileNormalItemView MV(int paramInt)
   {
     AppMethodBeat.i(27383);
     this.mTitle = getContext().getString(paramInt);
@@ -44,35 +44,35 @@ public class ProfileNormalItemView
     return this;
   }
   
-  public final ProfileNormalItemView Lu(int paramInt)
+  public final ProfileNormalItemView MW(int paramInt)
   {
     AppMethodBeat.i(27384);
-    this.vNf = getContext().getString(paramInt);
+    this.wUo = getContext().getString(paramInt);
     AppMethodBeat.o(27384);
     return this;
   }
   
-  public final ProfileNormalItemView Lv(int paramInt)
+  public final ProfileNormalItemView MX(int paramInt)
   {
     AppMethodBeat.i(27385);
-    this.vFY.setTextColor(paramInt);
+    this.wNe.setTextColor(paramInt);
     AppMethodBeat.o(27385);
     return this;
   }
   
-  public final boolean dqG()
+  public final boolean dBj()
   {
     AppMethodBeat.i(27386);
-    this.lfN.setText(this.mTitle);
-    if (bs.aj(this.vNf))
+    this.lCL.setText(this.mTitle);
+    if (bt.ai(this.wUo))
     {
       setVisibility(8);
       AppMethodBeat.o(27386);
       return false;
     }
     setVisibility(0);
-    this.vFY.setText(this.vNf);
-    setOnClickListener(this.vNg);
+    this.wNe.setText(this.wUo);
+    setOnClickListener(this.wUp);
     AppMethodBeat.o(27386);
     return true;
   }
@@ -85,9 +85,9 @@ public class ProfileNormalItemView
   public final void init()
   {
     AppMethodBeat.i(27382);
-    this.lfN = ((TextView)findViewById(2131298680));
-    this.vFY = ((TextView)findViewById(2131298679));
-    this.vNh = findViewById(2131304172);
+    this.lCL = ((TextView)findViewById(2131298680));
+    this.wNe = ((TextView)findViewById(2131298679));
+    this.wUq = findViewById(2131304172);
     AppMethodBeat.o(27382);
   }
 }

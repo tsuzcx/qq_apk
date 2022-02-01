@@ -1,8 +1,13 @@
 package io.flutter.embedding.android;
 
+import android.content.Context;
+import android.view.View;
+
 public abstract interface h
 {
-  public abstract g cWz();
+  public abstract void aV(Runnable paramRunnable);
+  
+  public abstract View lH(Context paramContext);
 }
 
 

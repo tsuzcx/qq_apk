@@ -8,14 +8,14 @@ import java.util.List;
 final class d
   implements ai.a
 {
-  private l.a<b> ahN = new l.b(30);
-  final ArrayList<b> ahO = new ArrayList();
-  final ArrayList<b> ahP = new ArrayList();
-  final a ahQ;
-  Runnable ahR;
-  final boolean ahS;
-  final ai ahT;
-  int ahU = 0;
+  private l.a<b> ajE = new l.b(30);
+  final ArrayList<b> ajF = new ArrayList();
+  final ArrayList<b> ajG = new ArrayList();
+  final a ajH;
+  Runnable ajI;
+  final boolean ajJ;
+  final ai ajK;
+  int ajL = 0;
   
   d(a parama)
   {
@@ -24,36 +24,36 @@ final class d
   
   private d(a parama, byte paramByte)
   {
-    this.ahQ = parama;
-    this.ahS = false;
-    this.ahT = new ai(this);
+    this.ajH = parama;
+    this.ajJ = false;
+    this.ajK = new ai(this);
   }
   
-  private int K(int paramInt1, int paramInt2)
+  private int L(int paramInt1, int paramInt2)
   {
-    int i = this.ahP.size() - 1;
+    int i = this.ajG.size() - 1;
     b localb;
     if (i >= 0)
     {
-      localb = (b)this.ahP.get(i);
+      localb = (b)this.ajG.get(i);
       int k;
       int j;
-      if (localb.CW == 8) {
-        if (localb.ahV < localb.ahX)
+      if (localb.EN == 8) {
+        if (localb.ajM < localb.ajO)
         {
-          k = localb.ahV;
-          j = localb.ahX;
+          k = localb.ajM;
+          j = localb.ajO;
           label64:
           if ((paramInt1 < k) || (paramInt1 > j)) {
             break label195;
           }
-          if (k != localb.ahV) {
+          if (k != localb.ajM) {
             break label151;
           }
           if (paramInt2 != 1) {
             break label131;
           }
-          localb.ahX += 1;
+          localb.ajO += 1;
           label103:
           paramInt1 += 1;
         }
@@ -62,66 +62,66 @@ final class d
       {
         i -= 1;
         break;
-        k = localb.ahX;
-        j = localb.ahV;
+        k = localb.ajO;
+        j = localb.ajM;
         break label64;
         label131:
         if (paramInt2 != 2) {
           break label103;
         }
-        localb.ahX -= 1;
+        localb.ajO -= 1;
         break label103;
         label151:
         if (paramInt2 == 1) {
-          localb.ahV += 1;
+          localb.ajM += 1;
         }
         for (;;)
         {
           paramInt1 -= 1;
           break;
           if (paramInt2 == 2) {
-            localb.ahV -= 1;
+            localb.ajM -= 1;
           }
         }
         label195:
-        if (paramInt1 < localb.ahV)
+        if (paramInt1 < localb.ajM)
         {
           if (paramInt2 == 1)
           {
-            localb.ahV += 1;
-            localb.ahX += 1;
+            localb.ajM += 1;
+            localb.ajO += 1;
             continue;
           }
           if (paramInt2 == 2)
           {
-            localb.ahV -= 1;
-            localb.ahX -= 1;
+            localb.ajM -= 1;
+            localb.ajO -= 1;
           }
         }
         continue;
-        if (localb.ahV <= paramInt1)
+        if (localb.ajM <= paramInt1)
         {
-          if (localb.CW == 1) {
-            paramInt1 -= localb.ahX;
-          } else if (localb.CW == 2) {
-            paramInt1 = localb.ahX + paramInt1;
+          if (localb.EN == 1) {
+            paramInt1 -= localb.ajO;
+          } else if (localb.EN == 2) {
+            paramInt1 = localb.ajO + paramInt1;
           }
         }
         else if (paramInt2 == 1) {
-          localb.ahV += 1;
+          localb.ajM += 1;
         } else if (paramInt2 == 2) {
-          localb.ahV -= 1;
+          localb.ajM -= 1;
         }
       }
     }
-    paramInt2 = this.ahP.size() - 1;
+    paramInt2 = this.ajG.size() - 1;
     if (paramInt2 >= 0)
     {
-      localb = (b)this.ahP.get(paramInt2);
-      if (localb.CW == 8) {
-        if ((localb.ahX == localb.ahV) || (localb.ahX < 0))
+      localb = (b)this.ajG.get(paramInt2);
+      if (localb.EN == 8) {
+        if ((localb.ajO == localb.ajM) || (localb.ajO < 0))
         {
-          this.ahP.remove(paramInt2);
+          this.ajG.remove(paramInt2);
           c(localb);
         }
       }
@@ -129,9 +129,9 @@ final class d
       {
         paramInt2 -= 1;
         break;
-        if (localb.ahX <= 0)
+        if (localb.ajO <= 0)
         {
-          this.ahP.remove(paramInt2);
+          this.ajG.remove(paramInt2);
           c(localb);
         }
       }
@@ -141,17 +141,17 @@ final class d
   
   private void a(b paramb)
   {
-    if ((paramb.CW == 1) || (paramb.CW == 8)) {
+    if ((paramb.EN == 1) || (paramb.EN == 8)) {
       throw new IllegalArgumentException("should not dispatch add or move for pre layout");
     }
-    int i1 = K(paramb.ahV, paramb.CW);
-    int j = paramb.ahV;
+    int i1 = L(paramb.ajM, paramb.EN);
+    int j = paramb.ajM;
     int k;
     int m;
     int n;
     label102:
     int i2;
-    switch (paramb.CW)
+    switch (paramb.EN)
     {
     case 3: 
     default: 
@@ -160,11 +160,11 @@ final class d
       k = 1;
       m = 1;
       n = 1;
-      if (m >= paramb.ahX) {
+      if (m >= paramb.ajO) {
         break label286;
       }
-      i2 = K(paramb.ahV + k * m, paramb.CW);
-      switch (paramb.CW)
+      i2 = L(paramb.ajM + k * m, paramb.EN);
+      switch (paramb.EN)
       {
       case 3: 
       default: 
@@ -196,11 +196,11 @@ final class d
       }
       i = 0;
       break label162;
-      localObject = b(paramb.CW, i1, n, paramb.ahW);
+      localObject = b(paramb.EN, i1, n, paramb.ajN);
       a((b)localObject, j);
       c((b)localObject);
       i = j;
-      if (paramb.CW == 4) {
+      if (paramb.EN == 4) {
         i = j + n;
       }
       n = 1;
@@ -208,11 +208,11 @@ final class d
       j = i;
     }
     label286:
-    Object localObject = paramb.ahW;
+    Object localObject = paramb.ajN;
     c(paramb);
     if (n > 0)
     {
-      paramb = b(paramb.CW, i1, n, localObject);
+      paramb = b(paramb.EN, i1, n, localObject);
       a(paramb, j);
       c(paramb);
     }
@@ -220,23 +220,23 @@ final class d
   
   private void a(b paramb, int paramInt)
   {
-    this.ahQ.d(paramb);
-    switch (paramb.CW)
+    this.ajH.d(paramb);
+    switch (paramb.EN)
     {
     case 3: 
     default: 
       throw new IllegalArgumentException("only remove and update ops can be dispatched in first pass");
     case 2: 
-      this.ahQ.M(paramInt, paramb.ahX);
+      this.ajH.N(paramInt, paramb.ajO);
       return;
     }
-    this.ahQ.d(paramInt, paramb.ahX, paramb.ahW);
+    this.ajH.d(paramInt, paramb.ajO, paramb.ajN);
   }
   
   private void b(b paramb)
   {
-    this.ahP.add(paramb);
-    switch (paramb.CW)
+    this.ajG.add(paramb);
+    switch (paramb.EN)
     {
     case 3: 
     case 5: 
@@ -245,39 +245,39 @@ final class d
     default: 
       throw new IllegalArgumentException("Unknown update op type for ".concat(String.valueOf(paramb)));
     case 1: 
-      this.ahQ.O(paramb.ahV, paramb.ahX);
+      this.ajH.P(paramb.ajM, paramb.ajO);
       return;
     case 8: 
-      this.ahQ.P(paramb.ahV, paramb.ahX);
+      this.ajH.Q(paramb.ajM, paramb.ajO);
       return;
     case 2: 
-      this.ahQ.N(paramb.ahV, paramb.ahX);
+      this.ajH.O(paramb.ajM, paramb.ajO);
       return;
     }
-    this.ahQ.d(paramb.ahV, paramb.ahX, paramb.ahW);
+    this.ajH.d(paramb.ajM, paramb.ajO, paramb.ajN);
   }
   
   private boolean bB(int paramInt)
   {
-    int k = this.ahP.size();
+    int k = this.ajG.size();
     int i = 0;
     while (i < k)
     {
-      b localb = (b)this.ahP.get(i);
-      if (localb.CW == 8)
+      b localb = (b)this.ajG.get(i);
+      if (localb.EN == 8)
       {
-        if (L(localb.ahX, i + 1) == paramInt) {
+        if (M(localb.ajO, i + 1) == paramInt) {
           return true;
         }
       }
-      else if (localb.CW == 1)
+      else if (localb.EN == 1)
       {
-        int m = localb.ahV;
-        int n = localb.ahX;
-        int j = localb.ahV;
+        int m = localb.ajM;
+        int n = localb.ajO;
+        int j = localb.ajM;
         while (j < m + n)
         {
-          if (L(j, i + 1) == paramInt) {
+          if (M(j, i + 1) == paramInt) {
             return true;
           }
           j += 1;
@@ -300,19 +300,19 @@ final class d
     paramList.clear();
   }
   
-  final int L(int paramInt1, int paramInt2)
+  final int M(int paramInt1, int paramInt2)
   {
-    int k = this.ahP.size();
+    int k = this.ajG.size();
     int j = paramInt2;
     paramInt2 = paramInt1;
     paramInt1 = paramInt2;
     b localb;
     if (j < k)
     {
-      localb = (b)this.ahP.get(j);
-      if (localb.CW == 8) {
-        if (localb.ahV == paramInt2) {
-          paramInt1 = localb.ahX;
+      localb = (b)this.ajG.get(j);
+      if (localb.EN == 8) {
+        if (localb.ajM == paramInt2) {
+          paramInt1 = localb.ajO;
         }
       }
     }
@@ -322,30 +322,30 @@ final class d
       paramInt2 = paramInt1;
       break;
       int i = paramInt2;
-      if (localb.ahV < paramInt2) {
+      if (localb.ajM < paramInt2) {
         i = paramInt2 - 1;
       }
       paramInt1 = i;
-      if (localb.ahX <= i)
+      if (localb.ajO <= i)
       {
         paramInt1 = i + 1;
         continue;
         paramInt1 = paramInt2;
-        if (localb.ahV <= paramInt2) {
-          if (localb.CW == 2)
+        if (localb.ajM <= paramInt2) {
+          if (localb.EN == 2)
           {
-            if (paramInt2 < localb.ahV + localb.ahX)
+            if (paramInt2 < localb.ajM + localb.ajO)
             {
               paramInt1 = -1;
               return paramInt1;
             }
-            paramInt1 = paramInt2 - localb.ahX;
+            paramInt1 = paramInt2 - localb.ajO;
           }
           else
           {
             paramInt1 = paramInt2;
-            if (localb.CW == 1) {
-              paramInt1 = paramInt2 + localb.ahX;
+            if (localb.EN == 1) {
+              paramInt1 = paramInt2 + localb.ajO;
             }
           }
         }
@@ -355,38 +355,38 @@ final class d
   
   public final b b(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    b localb = (b)this.ahN.acquire();
+    b localb = (b)this.ajE.acquire();
     if (localb == null) {
       return new b(paramInt1, paramInt2, paramInt3, paramObject);
     }
-    localb.CW = paramInt1;
-    localb.ahV = paramInt2;
-    localb.ahX = paramInt3;
-    localb.ahW = paramObject;
+    localb.EN = paramInt1;
+    localb.ajM = paramInt2;
+    localb.ajO = paramInt3;
+    localb.ajN = paramObject;
     return localb;
   }
   
   final boolean bC(int paramInt)
   {
-    return (this.ahU & paramInt) != 0;
+    return (this.ajL & paramInt) != 0;
   }
   
   final int bD(int paramInt)
   {
-    return L(paramInt, 0);
+    return M(paramInt, 0);
   }
   
   public final int bE(int paramInt)
   {
-    int m = this.ahO.size();
+    int m = this.ajF.size();
     int k = 0;
     int i = paramInt;
     paramInt = i;
     b localb;
     if (k < m)
     {
-      localb = (b)this.ahO.get(k);
-      switch (localb.CW)
+      localb = (b)this.ajF.get(k);
+      switch (localb.EN)
       {
       default: 
         paramInt = i;
@@ -398,32 +398,32 @@ final class d
       i = paramInt;
       break;
       paramInt = i;
-      if (localb.ahV <= i)
+      if (localb.ajM <= i)
       {
-        paramInt = i + localb.ahX;
+        paramInt = i + localb.ajO;
         continue;
         paramInt = i;
-        if (localb.ahV <= i)
+        if (localb.ajM <= i)
         {
-          if (localb.ahV + localb.ahX > i)
+          if (localb.ajM + localb.ajO > i)
           {
             paramInt = -1;
             return paramInt;
           }
-          paramInt = i - localb.ahX;
+          paramInt = i - localb.ajO;
           continue;
-          if (localb.ahV == i)
+          if (localb.ajM == i)
           {
-            paramInt = localb.ahX;
+            paramInt = localb.ajO;
           }
           else
           {
             int j = i;
-            if (localb.ahV < i) {
+            if (localb.ajM < i) {
               j = i - 1;
             }
             paramInt = j;
-            if (localb.ahX <= j) {
+            if (localb.ajO <= j) {
               paramInt = j + 1;
             }
           }
@@ -434,17 +434,17 @@ final class d
   
   public final void c(b paramb)
   {
-    if (!this.ahS)
+    if (!this.ajJ)
     {
-      paramb.ahW = null;
-      this.ahN.release(paramb);
+      paramb.ajN = null;
+      this.ajE.release(paramb);
     }
   }
   
-  final void iB()
+  final void iR()
   {
-    ai localai = this.ahT;
-    ArrayList localArrayList = this.ahO;
+    ai localai = this.ajK;
+    ArrayList localArrayList = this.ajF;
     int i;
     label24:
     label53:
@@ -459,7 +459,7 @@ final class d
       if (i < 0) {
         break label268;
       }
-      if (((b)localArrayList.get(i)).CW != 8) {
+      if (((b)localArrayList.get(i)).EN != 8) {
         break;
       }
       if (j == 0) {
@@ -472,27 +472,27 @@ final class d
       i1 = j + 1;
       localb2 = (b)localArrayList.get(j);
       localb3 = (b)localArrayList.get(i1);
-      switch (localb3.CW)
+      switch (localb3.EN)
       {
       case 3: 
       default: 
         break;
       case 1: 
         i = 0;
-        if (localb2.ahX < localb3.ahV) {
+        if (localb2.ajO < localb3.ajM) {
           i = -1;
         }
         k = i;
-        if (localb2.ahV < localb3.ahV) {
+        if (localb2.ajM < localb3.ajM) {
           k = i + 1;
         }
-        if (localb3.ahV <= localb2.ahV) {
-          localb2.ahV += localb3.ahX;
+        if (localb3.ajM <= localb2.ajM) {
+          localb2.ajM += localb3.ajO;
         }
-        if (localb3.ahV <= localb2.ahX) {
-          localb2.ahX += localb3.ahX;
+        if (localb3.ajM <= localb2.ajO) {
+          localb2.ajO += localb3.ajO;
         }
-        localb3.ahV = (k + localb3.ahV);
+        localb3.ajM = (k + localb3.ajM);
         localArrayList.set(j, localb3);
         localArrayList.set(i1, localb2);
       }
@@ -510,31 +510,31 @@ final class d
       b localb1 = null;
       int m = 0;
       int n;
-      if (localb2.ahV < localb2.ahX)
+      if (localb2.ajM < localb2.ajO)
       {
         n = 0;
         k = n;
         i = m;
-        if (localb3.ahV == localb2.ahV)
+        if (localb3.ajM == localb2.ajM)
         {
           k = n;
           i = m;
-          if (localb3.ahX == localb2.ahX - localb2.ahV)
+          if (localb3.ajO == localb2.ajO - localb2.ajM)
           {
             i = 1;
             k = n;
           }
         }
         label344:
-        if (localb2.ahX >= localb3.ahV) {
+        if (localb2.ajO >= localb3.ajM) {
           break label491;
         }
-        localb3.ahV -= 1;
+        localb3.ajM -= 1;
         label369:
-        if (localb2.ahV > localb3.ahV) {
+        if (localb2.ajM > localb3.ajM) {
           break label567;
         }
-        localb3.ahV += 1;
+        localb3.ajM += 1;
       }
       for (;;)
       {
@@ -543,64 +543,64 @@ final class d
         }
         localArrayList.set(j, localb3);
         localArrayList.remove(i1);
-        localai.apD.c(localb2);
+        localai.arv.c(localb2);
         break;
         n = 1;
         k = n;
         i = m;
-        if (localb3.ahV != localb2.ahX + 1) {
+        if (localb3.ajM != localb2.ajO + 1) {
           break label344;
         }
         k = n;
         i = m;
-        if (localb3.ahX != localb2.ahV - localb2.ahX) {
+        if (localb3.ajO != localb2.ajM - localb2.ajO) {
           break label344;
         }
         i = 1;
         k = n;
         break label344;
         label491:
-        if (localb2.ahX >= localb3.ahV + localb3.ahX) {
+        if (localb2.ajO >= localb3.ajM + localb3.ajO) {
           break label369;
         }
-        localb3.ahX -= 1;
-        localb2.CW = 2;
-        localb2.ahX = 1;
-        if (localb3.ahX != 0) {
+        localb3.ajO -= 1;
+        localb2.EN = 2;
+        localb2.ajO = 1;
+        if (localb3.ajO != 0) {
           break;
         }
         localArrayList.remove(i1);
-        localai.apD.c(localb3);
+        localai.arv.c(localb3);
         break;
         label567:
-        if (localb2.ahV < localb3.ahV + localb3.ahX)
+        if (localb2.ajM < localb3.ajM + localb3.ajO)
         {
-          m = localb3.ahV;
-          n = localb3.ahX;
-          i2 = localb2.ahV;
-          localb1 = localai.apD.b(2, localb2.ahV + 1, m + n - i2, null);
-          localb3.ahX = (localb2.ahV - localb3.ahV);
+          m = localb3.ajM;
+          n = localb3.ajO;
+          i2 = localb2.ajM;
+          localb1 = localai.arv.b(2, localb2.ajM + 1, m + n - i2, null);
+          localb3.ajO = (localb2.ajM - localb3.ajM);
         }
       }
       if (k != 0)
       {
         if (localb1 != null)
         {
-          if (localb2.ahV > localb1.ahV) {
-            localb2.ahV -= localb1.ahX;
+          if (localb2.ajM > localb1.ajM) {
+            localb2.ajM -= localb1.ajO;
           }
-          if (localb2.ahX > localb1.ahV) {
-            localb2.ahX -= localb1.ahX;
+          if (localb2.ajO > localb1.ajM) {
+            localb2.ajO -= localb1.ajO;
           }
         }
-        if (localb2.ahV > localb3.ahV) {
-          localb2.ahV -= localb3.ahX;
+        if (localb2.ajM > localb3.ajM) {
+          localb2.ajM -= localb3.ajO;
         }
-        if (localb2.ahX > localb3.ahV) {
-          localb2.ahX -= localb3.ahX;
+        if (localb2.ajO > localb3.ajM) {
+          localb2.ajO -= localb3.ajO;
         }
         localArrayList.set(j, localb3);
-        if (localb2.ahV == localb2.ahX) {
+        if (localb2.ajM == localb2.ajO) {
           break label958;
         }
         localArrayList.set(i1, localb2);
@@ -611,36 +611,36 @@ final class d
         break;
         if (localb1 != null)
         {
-          if (localb2.ahV >= localb1.ahV) {
-            localb2.ahV -= localb1.ahX;
+          if (localb2.ajM >= localb1.ajM) {
+            localb2.ajM -= localb1.ajO;
           }
-          if (localb2.ahX >= localb1.ahV) {
-            localb2.ahX -= localb1.ahX;
+          if (localb2.ajO >= localb1.ajM) {
+            localb2.ajO -= localb1.ajO;
           }
         }
-        if (localb2.ahV >= localb3.ahV) {
-          localb2.ahV -= localb3.ahX;
+        if (localb2.ajM >= localb3.ajM) {
+          localb2.ajM -= localb3.ajO;
         }
-        if (localb2.ahX < localb3.ahV) {
+        if (localb2.ajO < localb3.ajM) {
           break label780;
         }
-        localb2.ahX -= localb3.ahX;
+        localb2.ajO -= localb3.ajO;
         break label780;
         label958:
         localArrayList.remove(i1);
       }
       localb1 = null;
       Object localObject = null;
-      if (localb2.ahX < localb3.ahV)
+      if (localb2.ajO < localb3.ajM)
       {
-        localb3.ahV -= 1;
+        localb3.ajM -= 1;
         label1002:
-        if (localb2.ahV > localb3.ahV) {
+        if (localb2.ajM > localb3.ajM) {
           break label1149;
         }
-        localb3.ahV += 1;
+        localb3.ajM += 1;
         localArrayList.set(i1, localb2);
-        if (localb3.ahX <= 0) {
+        if (localb3.ajO <= 0) {
           break label1227;
         }
         localArrayList.set(j, localb3);
@@ -655,53 +655,53 @@ final class d
         }
         localArrayList.add(j, localObject);
         break;
-        if (localb2.ahX >= localb3.ahV + localb3.ahX) {
+        if (localb2.ajO >= localb3.ajM + localb3.ajO) {
           break label1002;
         }
-        localb3.ahX -= 1;
-        localb1 = localai.apD.b(4, localb2.ahV, 1, localb3.ahW);
+        localb3.ajO -= 1;
+        localb1 = localai.arv.b(4, localb2.ajM, 1, localb3.ajN);
         break label1002;
         label1149:
-        if (localb2.ahV >= localb3.ahV + localb3.ahX) {
+        if (localb2.ajM >= localb3.ajM + localb3.ajO) {
           break label1027;
         }
-        i = localb3.ahV + localb3.ahX - localb2.ahV;
-        localObject = localai.apD.b(4, localb2.ahV + 1, i, localb3.ahW);
-        localb3.ahX -= i;
+        i = localb3.ajM + localb3.ajO - localb2.ajM;
+        localObject = localai.arv.b(4, localb2.ajM + 1, i, localb3.ajN);
+        localb3.ajO -= i;
         break label1027;
         label1227:
         localArrayList.remove(j);
-        localai.apD.c(localb3);
+        localai.arv.c(localb3);
       }
       label1251:
-      int i4 = this.ahO.size();
+      int i4 = this.ajF.size();
       int i2 = 0;
       if (i2 < i4)
       {
-        localb1 = (b)this.ahO.get(i2);
-        switch (localb1.CW)
+        localb1 = (b)this.ajF.get(i2);
+        switch (localb1.EN)
         {
         }
         for (;;)
         {
-          if (this.ahR != null) {
-            this.ahR.run();
+          if (this.ajI != null) {
+            this.ajI.run();
           }
           i2 += 1;
           break;
           b(localb1);
           continue;
-          int i3 = localb1.ahV;
-          i = localb1.ahV;
-          j = localb1.ahX + i;
+          int i3 = localb1.ajM;
+          i = localb1.ajM;
+          j = localb1.ajO + i;
           i1 = -1;
-          i = localb1.ahV;
+          i = localb1.ajM;
           n = 0;
           if (i < j)
           {
             k = 0;
             m = 0;
-            if ((this.ahQ.bF(i) != null) || (bB(i)))
+            if ((this.ajH.bF(i) != null) || (bB(i)))
             {
               if (i1 == 0)
               {
@@ -738,7 +738,7 @@ final class d
             }
           }
           localObject = localb1;
-          if (n != localb1.ahX)
+          if (n != localb1.ajO)
           {
             c(localb1);
             localObject = b(2, i3, n, null);
@@ -751,21 +751,21 @@ final class d
           {
             b((b)localObject);
             continue;
-            j = localb1.ahV;
+            j = localb1.ajM;
             k = 0;
-            int i5 = localb1.ahV;
-            int i6 = localb1.ahX;
+            int i5 = localb1.ajM;
+            int i6 = localb1.ajO;
             i3 = -1;
-            i = localb1.ahV;
+            i = localb1.ajM;
             if (i < i5 + i6)
             {
-              if ((this.ahQ.bF(i) != null) || (bB(i)))
+              if ((this.ajH.bF(i) != null) || (bB(i)))
               {
                 n = j;
                 i1 = k;
                 if (i3 == 0)
                 {
-                  a(b(4, j, k, localb1.ahW));
+                  a(b(4, j, k, localb1.ajN));
                   i1 = 0;
                   n = i;
                 }
@@ -782,7 +782,7 @@ final class d
                 m = k;
                 if (i3 == 1)
                 {
-                  b(b(4, j, k, localb1.ahW));
+                  b(b(4, j, k, localb1.ajN));
                   m = 0;
                   n = i;
                 }
@@ -793,9 +793,9 @@ final class d
               }
             }
             localObject = localb1;
-            if (k != localb1.ahX)
+            if (k != localb1.ajO)
             {
-              localObject = localb1.ahW;
+              localObject = localb1.ajN;
               c(localb1);
               localObject = b(4, j, k, localObject);
             }
@@ -812,85 +812,85 @@ final class d
           }
         }
       }
-      this.ahO.clear();
+      this.ajF.clear();
       return;
     }
   }
   
-  final void iC()
+  final void iS()
   {
-    int j = this.ahP.size();
+    int j = this.ajG.size();
     int i = 0;
     while (i < j)
     {
-      this.ahQ.e((b)this.ahP.get(i));
+      this.ajH.e((b)this.ajG.get(i));
       i += 1;
     }
-    m(this.ahP);
-    this.ahU = 0;
+    m(this.ajG);
+    this.ajL = 0;
   }
   
-  final boolean iD()
+  final boolean iT()
   {
-    return this.ahO.size() > 0;
+    return this.ajF.size() > 0;
   }
   
-  final void iE()
+  final void iU()
   {
-    iC();
-    int j = this.ahO.size();
+    iS();
+    int j = this.ajF.size();
     int i = 0;
     if (i < j)
     {
-      b localb = (b)this.ahO.get(i);
-      switch (localb.CW)
+      b localb = (b)this.ajF.get(i);
+      switch (localb.EN)
       {
       }
       for (;;)
       {
-        if (this.ahR != null) {
-          this.ahR.run();
+        if (this.ajI != null) {
+          this.ajI.run();
         }
         i += 1;
         break;
-        this.ahQ.e(localb);
-        this.ahQ.O(localb.ahV, localb.ahX);
+        this.ajH.e(localb);
+        this.ajH.P(localb.ajM, localb.ajO);
         continue;
-        this.ahQ.e(localb);
-        this.ahQ.M(localb.ahV, localb.ahX);
+        this.ajH.e(localb);
+        this.ajH.N(localb.ajM, localb.ajO);
         continue;
-        this.ahQ.e(localb);
-        this.ahQ.d(localb.ahV, localb.ahX, localb.ahW);
+        this.ajH.e(localb);
+        this.ajH.d(localb.ajM, localb.ajO, localb.ajN);
         continue;
-        this.ahQ.e(localb);
-        this.ahQ.P(localb.ahV, localb.ahX);
+        this.ajH.e(localb);
+        this.ajH.Q(localb.ajM, localb.ajO);
       }
     }
-    m(this.ahO);
-    this.ahU = 0;
+    m(this.ajF);
+    this.ajL = 0;
   }
   
-  final boolean iF()
+  final boolean iV()
   {
-    return (!this.ahP.isEmpty()) && (!this.ahO.isEmpty());
+    return (!this.ajG.isEmpty()) && (!this.ajF.isEmpty());
   }
   
   final void reset()
   {
-    m(this.ahO);
-    m(this.ahP);
-    this.ahU = 0;
+    m(this.ajF);
+    m(this.ajG);
+    this.ajL = 0;
   }
   
   static abstract interface a
   {
-    public abstract void M(int paramInt1, int paramInt2);
-    
     public abstract void N(int paramInt1, int paramInt2);
     
     public abstract void O(int paramInt1, int paramInt2);
     
     public abstract void P(int paramInt1, int paramInt2);
+    
+    public abstract void Q(int paramInt1, int paramInt2);
     
     public abstract RecyclerView.w bF(int paramInt);
     
@@ -903,17 +903,17 @@ final class d
   
   static final class b
   {
-    int CW;
-    int ahV;
-    Object ahW;
-    int ahX;
+    int EN;
+    int ajM;
+    Object ajN;
+    int ajO;
     
     b(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
     {
-      this.CW = paramInt1;
-      this.ahV = paramInt2;
-      this.ahX = paramInt3;
-      this.ahW = paramObject;
+      this.EN = paramInt1;
+      this.ajM = paramInt2;
+      this.ajO = paramInt3;
+      this.ajN = paramObject;
     }
     
     public final boolean equals(Object paramObject)
@@ -930,35 +930,35 @@ final class d
               return false;
             }
             paramObject = (b)paramObject;
-            if (this.CW != paramObject.CW) {
+            if (this.EN != paramObject.EN) {
               return false;
             }
-          } while ((this.CW == 8) && (Math.abs(this.ahX - this.ahV) == 1) && (this.ahX == paramObject.ahV) && (this.ahV == paramObject.ahX));
-          if (this.ahX != paramObject.ahX) {
+          } while ((this.EN == 8) && (Math.abs(this.ajO - this.ajM) == 1) && (this.ajO == paramObject.ajM) && (this.ajM == paramObject.ajO));
+          if (this.ajO != paramObject.ajO) {
             return false;
           }
-          if (this.ahV != paramObject.ahV) {
+          if (this.ajM != paramObject.ajM) {
             return false;
           }
-          if (this.ahW == null) {
+          if (this.ajN == null) {
             break;
           }
-        } while (this.ahW.equals(paramObject.ahW));
+        } while (this.ajN.equals(paramObject.ajN));
         return false;
-      } while (paramObject.ahW == null);
+      } while (paramObject.ajN == null);
       return false;
     }
     
     public final int hashCode()
     {
-      return (this.CW * 31 + this.ahV) * 31 + this.ahX;
+      return (this.EN * 31 + this.ajM) * 31 + this.ajO;
     }
     
     public final String toString()
     {
       StringBuilder localStringBuilder = new StringBuilder().append(Integer.toHexString(System.identityHashCode(this))).append("[");
       String str;
-      switch (this.CW)
+      switch (this.EN)
       {
       case 3: 
       case 5: 
@@ -969,7 +969,7 @@ final class d
       }
       for (;;)
       {
-        return str + ",s:" + this.ahV + "c:" + this.ahX + ",p:" + this.ahW + "]";
+        return str + ",s:" + this.ajM + "c:" + this.ajO + ",p:" + this.ajN + "]";
         str = "add";
         continue;
         str = "rm";

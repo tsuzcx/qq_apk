@@ -1,64 +1,51 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class btw
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String md5;
-  public String uuid;
+  public String oBW;
+  public String session_id;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169218);
+    AppMethodBeat.i(104816);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.md5 == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: md5");
-        AppMethodBeat.o(169218);
-        throw paramVarArgs;
+      if (this.oBW != null) {
+        paramVarArgs.d(1, this.oBW);
       }
-      if (this.md5 != null) {
-        paramVarArgs.d(1, this.md5);
+      if (this.session_id != null) {
+        paramVarArgs.d(2, this.session_id);
       }
-      if (this.uuid != null) {
-        paramVarArgs.d(2, this.uuid);
-      }
-      AppMethodBeat.o(169218);
+      AppMethodBeat.o(104816);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.md5 == null) {
-        break label322;
+      if (this.oBW == null) {
+        break label274;
       }
     }
-    label322:
-    for (paramInt = f.a.a.b.b.a.e(1, this.md5) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.oBW) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.uuid != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.uuid);
+      if (this.session_id != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.session_id);
       }
-      AppMethodBeat.o(169218);
+      AppMethodBeat.o(104816);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.md5 == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: md5");
-          AppMethodBeat.o(169218);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(169218);
+        AppMethodBeat.o(104816);
         return 0;
       }
       if (paramInt == 3)
@@ -68,25 +55,25 @@ public final class btw
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(169218);
+          AppMethodBeat.o(104816);
           return -1;
         case 1: 
-          localbtw.md5 = locala.LVo.readString();
-          AppMethodBeat.o(169218);
+          localbtw.oBW = locala.NPN.readString();
+          AppMethodBeat.o(104816);
           return 0;
         }
-        localbtw.uuid = locala.LVo.readString();
-        AppMethodBeat.o(169218);
+        localbtw.session_id = locala.NPN.readString();
+        AppMethodBeat.o(104816);
         return 0;
       }
-      AppMethodBeat.o(169218);
+      AppMethodBeat.o(104816);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.btw
  * JD-Core Version:    0.7.0.1
  */

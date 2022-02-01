@@ -5,25 +5,28 @@ import android.os.Parcelable;
 import android.util.Pair;
 import com.tencent.mm.kernel.b.e;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.a.c;
+import com.tencent.mm.opensdk.modelbiz.WXLaunchWxaRedirectingPage.Req;
+import com.tencent.mm.plugin.appbrand.api.c;
 
 @e(c.class)
 public abstract interface f
   extends a
 {
-  public abstract String Hx(String paramString);
+  public abstract String KJ(String paramString);
+  
+  public abstract Pair<Integer, String> a(Context paramContext, WXLaunchWxaRedirectingPage.Req paramReq, String paramString1, String paramString2, String paramString3);
   
   public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4);
   
   public abstract <T extends Parcelable> void a(String paramString, T paramT);
   
-  public abstract void aVd();
+  public abstract void aYx();
   
-  public abstract void aVe();
+  public abstract void aYy();
   
-  public abstract void aVf();
+  public abstract void aYz();
   
-  public abstract Pair<String, Integer> ro(int paramInt);
+  public abstract Pair<String, Integer> rO(int paramInt);
 }
 
 

@@ -15,7 +15,7 @@ import javax.security.auth.x500.X500Principal;
 
 public abstract class a
 {
-  public static String[] ab(String[] paramArrayOfString)
+  public static String[] ad(String[] paramArrayOfString)
   {
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {
       return (String[])paramArrayOfString.clone();
@@ -23,9 +23,9 @@ public abstract class a
     return paramArrayOfString;
   }
   
-  public static a gv(String paramString, int paramInt)
+  public static a gT(String paramString, int paramInt)
   {
-    if (com.tencent.soter.core.a.fDh())
+    if (com.tencent.soter.core.a.fUz())
     {
       if (Build.VERSION.SDK_INT >= 23) {
         return new b(paramString, paramInt);
@@ -36,33 +36,33 @@ public abstract class a
     return new a();
   }
   
-  public abstract a Z(String... paramVarArgs);
+  public abstract a ab(String... paramVarArgs);
   
-  public abstract a aa(String... paramVarArgs);
+  public abstract a ac(String... paramVarArgs);
   
-  public abstract AlgorithmParameterSpec fDo();
+  public abstract AlgorithmParameterSpec fUG();
   
-  public abstract a fDp();
+  public abstract a fUH();
   
   static final class a
     extends a
   {
-    public final a Z(String... paramVarArgs)
+    public final a ab(String... paramVarArgs)
     {
       return null;
     }
     
-    public final a aa(String... paramVarArgs)
+    public final a ac(String... paramVarArgs)
     {
       return null;
     }
     
-    public final AlgorithmParameterSpec fDo()
+    public final AlgorithmParameterSpec fUG()
     {
       return null;
     }
     
-    public final a fDp()
+    public final a fUH()
     {
       return null;
     }
@@ -72,46 +72,46 @@ public abstract class a
   static final class b
     extends a
   {
-    private KeyGenParameterSpec.Builder JVZ;
+    private KeyGenParameterSpec.Builder LPU;
     
     public b(String paramString, int paramInt)
     {
       AppMethodBeat.i(88633);
-      this.JVZ = null;
-      this.JVZ = new KeyGenParameterSpec.Builder(paramString, paramInt);
+      this.LPU = null;
+      this.LPU = new KeyGenParameterSpec.Builder(paramString, paramInt);
       AppMethodBeat.o(88633);
     }
     
     @SuppressLint({"WrongConstant"})
-    public final a Z(String... paramVarArgs)
+    public final a ab(String... paramVarArgs)
     {
       AppMethodBeat.i(88635);
-      this.JVZ.setDigests(paramVarArgs);
+      this.LPU.setDigests(paramVarArgs);
       AppMethodBeat.o(88635);
       return this;
     }
     
     @SuppressLint({"WrongConstant"})
-    public final a aa(String... paramVarArgs)
+    public final a ac(String... paramVarArgs)
     {
       AppMethodBeat.i(88636);
-      this.JVZ.setSignaturePaddings(paramVarArgs);
+      this.LPU.setSignaturePaddings(paramVarArgs);
       AppMethodBeat.o(88636);
       return this;
     }
     
-    public final AlgorithmParameterSpec fDo()
+    public final AlgorithmParameterSpec fUG()
     {
       AppMethodBeat.i(88634);
-      KeyGenParameterSpec localKeyGenParameterSpec = this.JVZ.build();
+      KeyGenParameterSpec localKeyGenParameterSpec = this.LPU.build();
       AppMethodBeat.o(88634);
       return localKeyGenParameterSpec;
     }
     
-    public final a fDp()
+    public final a fUH()
     {
       AppMethodBeat.i(88637);
-      this.JVZ.setUserAuthenticationRequired(true);
+      this.LPU.setUserAuthenticationRequired(true);
       AppMethodBeat.o(88637);
       return this;
     }
@@ -120,31 +120,31 @@ public abstract class a
   static final class c
     extends a
   {
-    private final String JWa;
-    private int JWb;
-    private int JWc;
-    private AlgorithmParameterSpec JWd;
-    private X500Principal JWe;
-    private BigInteger JWf;
-    private Date JWg;
-    private Date JWh;
-    private Date JWi;
-    private Date JWj;
-    private Date JWk;
-    private String[] JWl;
-    private String[] JWm;
-    private String[] JWn;
-    private String[] JWo;
-    private boolean JWp;
-    private boolean JWq;
-    private int JWr;
+    private final String LPV;
+    private int LPW;
+    private int LPX;
+    private AlgorithmParameterSpec LPY;
+    private X500Principal LPZ;
+    private BigInteger LQa;
+    private Date LQb;
+    private Date LQc;
+    private Date LQd;
+    private Date LQe;
+    private Date LQf;
+    private String[] LQg;
+    private String[] LQh;
+    private String[] LQi;
+    private String[] LQj;
+    private boolean LQk;
+    private boolean LQl;
+    private int LQm;
     
     public c(String paramString, int paramInt)
     {
       AppMethodBeat.i(88638);
-      this.JWc = -1;
-      this.JWp = true;
-      this.JWr = -1;
+      this.LPX = -1;
+      this.LQk = true;
+      this.LQm = -1;
       if (paramString == null)
       {
         paramString = new NullPointerException("keystoreAlias == null");
@@ -157,38 +157,38 @@ public abstract class a
         AppMethodBeat.o(88638);
         throw paramString;
       }
-      this.JWa = paramString;
-      this.JWb = paramInt;
+      this.LPV = paramString;
+      this.LPW = paramInt;
       AppMethodBeat.o(88638);
     }
     
-    public final a Z(String... paramVarArgs)
+    public final a ab(String... paramVarArgs)
     {
       AppMethodBeat.i(88639);
-      this.JWl = ab(paramVarArgs);
+      this.LQg = ad(paramVarArgs);
       AppMethodBeat.o(88639);
       return this;
     }
     
-    public final a aa(String... paramVarArgs)
+    public final a ac(String... paramVarArgs)
     {
       AppMethodBeat.i(88640);
-      this.JWn = ab(paramVarArgs);
+      this.LQi = ad(paramVarArgs);
       AppMethodBeat.o(88640);
       return this;
     }
     
-    public final AlgorithmParameterSpec fDo()
+    public final AlgorithmParameterSpec fUG()
     {
       AppMethodBeat.i(88641);
-      AlgorithmParameterSpec localAlgorithmParameterSpec = (AlgorithmParameterSpec)Class.forName("android.security.keystore.KeyGenParameterSpec").getConstructor(new Class[] { String.class, Integer.TYPE, AlgorithmParameterSpec.class, X500Principal.class, BigInteger.class, Date.class, Date.class, Date.class, Date.class, Date.class, Integer.TYPE, [Ljava.lang.String.class, [Ljava.lang.String.class, [Ljava.lang.String.class, [Ljava.lang.String.class, Boolean.TYPE, Boolean.TYPE, Integer.TYPE }).newInstance(new Object[] { this.JWa, Integer.valueOf(this.JWc), this.JWd, this.JWe, this.JWf, this.JWg, this.JWh, this.JWi, this.JWj, this.JWk, Integer.valueOf(this.JWb), this.JWl, this.JWm, this.JWn, this.JWo, Boolean.valueOf(this.JWp), Boolean.valueOf(this.JWq), Integer.valueOf(this.JWr) });
+      AlgorithmParameterSpec localAlgorithmParameterSpec = (AlgorithmParameterSpec)Class.forName("android.security.keystore.KeyGenParameterSpec").getConstructor(new Class[] { String.class, Integer.TYPE, AlgorithmParameterSpec.class, X500Principal.class, BigInteger.class, Date.class, Date.class, Date.class, Date.class, Date.class, Integer.TYPE, [Ljava.lang.String.class, [Ljava.lang.String.class, [Ljava.lang.String.class, [Ljava.lang.String.class, Boolean.TYPE, Boolean.TYPE, Integer.TYPE }).newInstance(new Object[] { this.LPV, Integer.valueOf(this.LPX), this.LPY, this.LPZ, this.LQa, this.LQb, this.LQc, this.LQd, this.LQe, this.LQf, Integer.valueOf(this.LPW), this.LQg, this.LQh, this.LQi, this.LQj, Boolean.valueOf(this.LQk), Boolean.valueOf(this.LQl), Integer.valueOf(this.LQm) });
       AppMethodBeat.o(88641);
       return localAlgorithmParameterSpec;
     }
     
-    public final a fDp()
+    public final a fUH()
     {
-      this.JWq = true;
+      this.LQl = true;
       return this;
     }
   }

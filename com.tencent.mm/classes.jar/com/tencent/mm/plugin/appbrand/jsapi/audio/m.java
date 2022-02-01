@@ -1,35 +1,39 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.v;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkg.Info;
+import com.tencent.mm.plugin.appbrand.appstorage.IWxaFileSystemWithModularizing;
+import com.tencent.mm.plugin.appbrand.appstorage.t;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.Objects;
 
-public final class m
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+public class m
+  extends l
 {
-  public static final int CTRL_INDEX = 481;
-  public static final String NAME = "setInnerAudioOption";
-  
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final WxaPkg.Info e(c paramc, String paramString)
   {
-    AppMethodBeat.i(145774);
-    boolean bool = paramJSONObject.optBoolean("mixWithOther", true);
-    paramJSONObject = new com.tencent.mm.ai.a();
-    paramJSONObject.htl = bool;
-    ac.i("MicroMsg.AudioPlayerHelper", "setAudioContextOption, mixWithOther:%b", new Object[] { Boolean.valueOf(paramJSONObject.htl) });
-    v localv = new v();
-    localv.cZg.action = 19;
-    localv.cZg.cZk = paramJSONObject;
-    com.tencent.mm.plugin.music.b.a.a(localv);
-    paramc.h(paramInt, e("ok", null));
-    AppMethodBeat.o(145774);
+    AppMethodBeat.i(182767);
+    try
+    {
+      if ((paramc.Fg() instanceof t))
+      {
+        paramc = ((IWxaFileSystemWithModularizing)Objects.requireNonNull(((t)paramc.Fg()).av(IWxaFileSystemWithModularizing.class))).openReadPartialInfo(paramString);
+        AppMethodBeat.o(182767);
+        return paramc;
+      }
+    }
+    catch (Exception paramc)
+    {
+      ad.e("MicroMsg.JsApiSetAudioStateWxaApp", "getPkgPath with audioSrc(%s), e=%s", new Object[] { paramString, paramc });
+      AppMethodBeat.o(182767);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.m
  * JD-Core Version:    0.7.0.1
  */

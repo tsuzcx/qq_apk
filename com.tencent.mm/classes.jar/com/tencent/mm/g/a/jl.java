@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class jl
   extends b
 {
-  public a dkU;
+  public a dwm;
   
   public jl()
   {
@@ -15,18 +15,16 @@ public final class jl
   
   private jl(byte paramByte)
   {
-    AppMethodBeat.i(93324);
-    this.dkU = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(155371);
+    this.dwm = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(93324);
+    AppMethodBeat.o(155371);
   }
   
   public static final class a
   {
-    public long dbz;
-    public String dkV;
-    public String dkW;
+    public String dwn;
   }
 }
 

@@ -5,23 +5,23 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.a.a;
 import com.tencent.mm.compatible.a.a.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class b
 {
-  b fJQ;
-  private final String fJR;
+  b gdr;
+  private final String gds;
   Context mContext;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(155865);
     this.mContext = null;
-    this.fJQ = null;
-    this.fJR = "audio_lock";
+    this.gdr = null;
+    this.gds = "audio_lock";
     Context localContext = paramContext;
     if ((paramContext instanceof Activity)) {
-      localContext = ai.getContext();
+      localContext = aj.getContext();
     }
     this.mContext = localContext;
     a.a(8, new a.a()
@@ -29,22 +29,31 @@ public final class b
       public final void run()
       {
         AppMethodBeat.i(155864);
-        b.this.fJQ = new c(b.this.mContext);
+        b.this.gdr = new c(b.this.mContext);
         AppMethodBeat.o(155864);
       }
     });
     AppMethodBeat.o(155865);
   }
   
-  public final boolean YC()
+  public final void a(b.a parama)
+  {
+    AppMethodBeat.i(155868);
+    if (this.gdr != null) {
+      this.gdr.a(parama);
+    }
+    AppMethodBeat.o(155868);
+  }
+  
+  public final boolean abe()
   {
     AppMethodBeat.i(155867);
     try
     {
-      if (this.fJQ == null) {
+      if (this.gdr == null) {
         return false;
       }
-      boolean bool = this.fJQ.YC();
+      boolean bool = this.gdr.abe();
       return bool;
     }
     finally
@@ -53,24 +62,15 @@ public final class b
     }
   }
   
-  public final void a(a parama)
-  {
-    AppMethodBeat.i(155868);
-    if (this.fJQ != null) {
-      this.fJQ.a(parama);
-    }
-    AppMethodBeat.o(155868);
-  }
-  
   public final boolean requestFocus()
   {
     AppMethodBeat.i(155866);
     try
     {
-      if (this.fJQ == null) {
+      if (this.gdr == null) {
         return false;
       }
-      boolean bool = this.fJQ.requestFocus();
+      boolean bool = this.gdr.requestFocus();
       return bool;
     }
     finally
@@ -79,23 +79,18 @@ public final class b
     }
   }
   
-  public static abstract interface a
-  {
-    public abstract void hw(int paramInt);
-  }
-  
   public static abstract interface b
   {
-    public abstract boolean YC();
-    
     public abstract void a(b.a parama);
+    
+    public abstract boolean abe();
     
     public abstract boolean requestFocus();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.util.b
  * JD-Core Version:    0.7.0.1
  */

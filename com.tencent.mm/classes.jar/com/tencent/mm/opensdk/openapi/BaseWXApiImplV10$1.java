@@ -7,7 +7,11 @@ import java.util.concurrent.CountDownLatch;
 class BaseWXApiImplV10$1
   implements Runnable
 {
-  BaseWXApiImplV10$1(BaseWXApiImplV10 paramBaseWXApiImplV10, CountDownLatch paramCountDownLatch) {}
+  BaseWXApiImplV10$1(BaseWXApiImplV10 paramBaseWXApiImplV10, CountDownLatch paramCountDownLatch)
+  {
+    AppMethodBeat.i(196963);
+    AppMethodBeat.o(196963);
+  }
   
   public void run()
   {

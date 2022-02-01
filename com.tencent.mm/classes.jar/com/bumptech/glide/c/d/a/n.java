@@ -9,13 +9,13 @@ import com.bumptech.glide.c.k;
 public final class n
   implements k<Uri, Bitmap>
 {
-  private final e aAt;
-  private final d aJK;
+  private final e aCk;
+  private final d aLB;
   
   public n(d paramd, e parame)
   {
-    this.aJK = paramd;
-    this.aAt = parame;
+    this.aLB = paramd;
+    this.aCk = parame;
   }
 }
 

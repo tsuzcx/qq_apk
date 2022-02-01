@@ -9,15 +9,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class SwitchPhoneItemView
   extends RelativeLayout
 {
-  private TextView BLR;
-  private TextView BLS;
-  ImageView BLT;
-  private int BLU;
+  private TextView Dmj;
+  private TextView Dmk;
+  ImageView Dml;
+  private int Dmm;
   
   public SwitchPhoneItemView(Context paramContext)
   {
@@ -28,8 +28,8 @@ public class SwitchPhoneItemView
   {
     super(paramContext);
     AppMethodBeat.i(71489);
-    this.BLU = 0;
-    this.BLU = paramInt;
+    this.Dmm = 0;
+    this.Dmm = paramInt;
     aM(paramContext);
     AppMethodBeat.o(71489);
   }
@@ -38,7 +38,7 @@ public class SwitchPhoneItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(71490);
-    this.BLU = 0;
+    this.Dmm = 0;
     aM(paramContext);
     AppMethodBeat.o(71490);
   }
@@ -47,7 +47,7 @@ public class SwitchPhoneItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(71491);
-    this.BLU = 0;
+    this.Dmm = 0;
     aM(paramContext);
     AppMethodBeat.o(71491);
   }
@@ -55,12 +55,12 @@ public class SwitchPhoneItemView
   private void aM(Context paramContext)
   {
     AppMethodBeat.i(71492);
-    if (this.BLU > 0) {}
-    for (paramContext = inflate(paramContext, this.BLU, this);; paramContext = inflate(paramContext, 2131496033, this))
+    if (this.Dmm > 0) {}
+    for (paramContext = inflate(paramContext, this.Dmm, this);; paramContext = inflate(paramContext, 2131496033, this))
     {
-      this.BLR = ((TextView)paramContext.findViewById(2131303234));
-      this.BLS = ((TextView)paramContext.findViewById(2131303209));
-      this.BLT = ((ImageView)paramContext.findViewById(2131303208));
+      this.Dmj = ((TextView)paramContext.findViewById(2131303234));
+      this.Dmk = ((TextView)paramContext.findViewById(2131303209));
+      this.Dml = ((ImageView)paramContext.findViewById(2131303208));
       AppMethodBeat.o(71492);
       return;
     }
@@ -69,27 +69,27 @@ public class SwitchPhoneItemView
   public final void a(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
     AppMethodBeat.i(71493);
-    if (!bs.aj(paramCharSequence1)) {
-      this.BLR.setText(paramCharSequence1);
+    if (!bt.ai(paramCharSequence1)) {
+      this.Dmj.setText(paramCharSequence1);
     }
-    while (!bs.aj(paramCharSequence2))
+    while (!bt.ai(paramCharSequence2))
     {
-      this.BLS.setMaxLines(2);
-      this.BLS.setSelected(true);
-      this.BLS.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-      this.BLS.setText(paramCharSequence2);
-      this.BLS.setMovementMethod(LinkMovementMethod.getInstance());
+      this.Dmk.setMaxLines(2);
+      this.Dmk.setSelected(true);
+      this.Dmk.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+      this.Dmk.setText(paramCharSequence2);
+      this.Dmk.setMovementMethod(LinkMovementMethod.getInstance());
       AppMethodBeat.o(71493);
       return;
-      this.BLR.setVisibility(8);
+      this.Dmj.setVisibility(8);
     }
-    this.BLS.setVisibility(8);
+    this.Dmk.setVisibility(8);
     AppMethodBeat.o(71493);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.SwitchPhoneItemView
  * JD-Core Version:    0.7.0.1
  */

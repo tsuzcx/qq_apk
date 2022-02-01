@@ -1,64 +1,69 @@
 package com.tencent.mm.plugin.brandservice.ui.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.v;
+import com.tencent.mm.ai.v;
 import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.e;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.t;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.w;
 
 public final class a
 {
-  public static int nPA;
-  private static long nPB;
-  private static long nPC;
-  private static boolean nPD;
+  public static int osg;
+  private static long osh;
+  private static long osi;
+  private static boolean osj;
   
   static
   {
     AppMethodBeat.i(6235);
-    com.tencent.mm.plugin.brandservice.b.g localg = com.tencent.mm.plugin.brandservice.b.g.nvq;
-    nPA = com.tencent.mm.plugin.brandservice.b.g.bJo();
-    nPB = 43200000L;
-    nPC = 0L;
-    nPD = false;
+    com.tencent.mm.plugin.brandservice.b.g localg = com.tencent.mm.plugin.brandservice.b.g.nWO;
+    osg = com.tencent.mm.plugin.brandservice.b.g.bNH();
+    osh = 43200000L;
+    osi = 0L;
+    osj = false;
     AppMethodBeat.o(6235);
   }
   
-  public static boolean a(t paramt, v paramv)
+  public static boolean Ae(int paramInt)
+  {
+    return (osi & paramInt) != 0L;
+  }
+  
+  public static boolean a(w paramw, v paramv)
   {
     AppMethodBeat.i(6233);
-    if (paramt == null)
+    if (paramw == null)
     {
       AppMethodBeat.o(6233);
       return false;
     }
-    paramt.GCa = e.TA(paramt.field_talker);
+    paramw.Ioo = e.Xh(paramw.field_talker);
     if ((paramv != null) && ((paramv.type == 5) || (paramv.type == 7) || (paramv.type == 10) || (paramv.type == 8)))
     {
       AppMethodBeat.o(6233);
       return true;
     }
-    if (paramt.hc(1))
+    if (paramw.hj(1))
     {
-      ac.d("MicroMsg.BizTimeLineConfigUtil", "biz flag %d return true, bizClientMsgId:%s", new Object[] { Integer.valueOf(paramt.field_bitFlag), paramt.field_bizClientMsgId });
+      ad.d("MicroMsg.BizTimeLineConfigUtil", "biz flag %d return true, bizClientMsgId:%s", new Object[] { Integer.valueOf(paramw.field_bitFlag), paramw.field_bizClientMsgId });
       AppMethodBeat.o(6233);
       return true;
     }
-    if ((zv(2)) && (paramt.GCa))
+    if ((Ae(2)) && (paramw.Ioo))
     {
       AppMethodBeat.o(6233);
       return true;
     }
-    if (zv(1))
+    if (Ae(1))
     {
-      paramt = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt(paramt.field_talker);
-      if ((paramt != null) && (paramt.aaN()))
+      paramw = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramw.field_talker);
+      if ((paramw != null) && (paramw.adq()))
       {
         AppMethodBeat.o(6233);
         return true;
@@ -68,68 +73,63 @@ public final class a
     return false;
   }
   
-  public static long bNF()
+  public static long bSf()
   {
-    if (nPB <= 0L) {
-      nPB = 43200000L;
+    if (osh <= 0L) {
+      osh = 43200000L;
     }
-    return nPB;
+    return osh;
   }
   
-  public static void bNG()
+  public static void bSg()
   {
     AppMethodBeat.i(6234);
-    if (((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.pUL, 0) == 1) {}
+    if (((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qzr, 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      nPD = bool;
-      if (aw.aKU("brandService").decodeInt("BizTimeLineShowDigest", 0) == 1)
+      osj = bool;
+      if (ax.aQA("brandService").decodeInt("BizTimeLineShowDigest", 0) == 1)
       {
-        ac.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest force show");
-        nPD = true;
+        ad.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest force show");
+        osj = true;
       }
-      ac.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest: %b", new Object[] { Boolean.valueOf(nPD) });
+      ad.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest: %b", new Object[] { Boolean.valueOf(osj) });
       AppMethodBeat.o(6234);
       return;
     }
   }
   
-  public static boolean bNH()
+  public static boolean bSh()
   {
-    return nPD;
+    return osj;
   }
   
-  public static boolean bNI()
+  public static boolean bSi()
   {
     return true;
   }
   
-  public static boolean f(t paramt)
+  public static boolean j(w paramw)
   {
     AppMethodBeat.i(6232);
-    boolean bool = a(paramt, null);
+    boolean bool = a(paramw, null);
     AppMethodBeat.o(6232);
     return bool;
   }
   
-  public static void rw(long paramLong)
+  public static void tv(long paramLong)
   {
-    nPB = paramLong;
+    osh = paramLong;
   }
   
-  public static void rx(long paramLong)
+  public static void tw(long paramLong)
   {
-    nPC = paramLong;
-  }
-  
-  public static boolean zv(int paramInt)
-  {
-    return (nPC & paramInt) != 0L;
+    osi = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

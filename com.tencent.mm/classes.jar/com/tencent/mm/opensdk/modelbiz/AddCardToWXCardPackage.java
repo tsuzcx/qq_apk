@@ -25,23 +25,32 @@ public class AddCardToWXCardPackage
     public boolean checkArgs()
     {
       AppMethodBeat.i(3871);
-      if ((this.cardArrary == null) || (this.cardArrary.size() == 0) || (this.cardArrary.size() > 40))
+      Object localObject1 = this.cardArrary;
+      if ((localObject1 != null) && (((List)localObject1).size() != 0) && (this.cardArrary.size() <= 40))
       {
-        AppMethodBeat.o(3871);
-        return false;
-      }
-      Iterator localIterator = this.cardArrary.iterator();
-      while (localIterator.hasNext())
-      {
-        AddCardToWXCardPackage.WXCardItem localWXCardItem = (AddCardToWXCardPackage.WXCardItem)localIterator.next();
-        if ((localWXCardItem == null) || (localWXCardItem.cardId == null) || (localWXCardItem.cardId.length() > 1024) || ((localWXCardItem.cardExtMsg != null) && (localWXCardItem.cardExtMsg.length() > 1024)))
+        localObject1 = this.cardArrary.iterator();
+        while (((Iterator)localObject1).hasNext())
         {
+          Object localObject2 = (AddCardToWXCardPackage.WXCardItem)((Iterator)localObject1).next();
+          if (localObject2 != null)
+          {
+            String str = ((AddCardToWXCardPackage.WXCardItem)localObject2).cardId;
+            if ((str != null) && (str.length() <= 1024))
+            {
+              localObject2 = ((AddCardToWXCardPackage.WXCardItem)localObject2).cardExtMsg;
+              if ((localObject2 == null) || (((String)localObject2).length() <= 1024)) {
+                continue;
+              }
+            }
+          }
           AppMethodBeat.o(3871);
           return false;
         }
+        AppMethodBeat.o(3871);
+        return true;
       }
       AppMethodBeat.o(3871);
-      return true;
+      return false;
     }
     
     public int getType()
@@ -69,7 +78,8 @@ public class AddCardToWXCardPackage
             localJSONStringer.key("card_id");
             localJSONStringer.value(((AddCardToWXCardPackage.WXCardItem)localObject).cardId);
             localJSONStringer.key("card_ext");
-            if (((AddCardToWXCardPackage.WXCardItem)localObject).cardExtMsg == null)
+            String str2 = ((AddCardToWXCardPackage.WXCardItem)localObject).cardExtMsg;
+            if (str2 == null)
             {
               localObject = "";
               localJSONStringer.value(localObject);
@@ -88,7 +98,7 @@ public class AddCardToWXCardPackage
       {
         AppMethodBeat.o(3872);
         return;
-        String str = localException.cardExtMsg;
+        String str1 = localException.cardExtMsg;
         break;
         localJSONStringer.endArray();
         localJSONStringer.endObject();
@@ -113,13 +123,14 @@ public class AddCardToWXCardPackage
     public boolean checkArgs()
     {
       AppMethodBeat.i(3883);
-      if ((this.cardArrary == null) || (this.cardArrary.size() == 0))
+      List localList = this.cardArrary;
+      if ((localList != null) && (localList.size() != 0))
       {
         AppMethodBeat.o(3883);
-        return false;
+        return true;
       }
       AppMethodBeat.o(3883);
-      return true;
+      return false;
     }
     
     public void fromBundle(Bundle paramBundle)
@@ -146,11 +157,9 @@ public class AddCardToWXCardPackage
             i += 1;
           }
           AppMethodBeat.o(3885);
-          return;
         }
         catch (Exception paramBundle) {}
       }
-      AppMethodBeat.o(3885);
     }
     
     public int getType()
@@ -179,9 +188,10 @@ public class AddCardToWXCardPackage
             localJSONStringer.key("card_id");
             localJSONStringer.value(localWXCardItem.cardId);
             localJSONStringer.key("card_ext");
-            if (localWXCardItem.cardExtMsg == null)
+            String str1 = localWXCardItem.cardExtMsg;
+            if (str1 == null)
             {
-              String str1 = "";
+              str1 = "";
               localJSONStringer.value(str1);
               localJSONStringer.key("is_succ");
               localJSONStringer.value(localWXCardItem.cardState);

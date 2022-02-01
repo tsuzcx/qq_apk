@@ -3,7 +3,7 @@ package com.tencent.mm.storage.emotion;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.storage.ba;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -26,57 +26,71 @@ public final class b
     this.db = parame;
   }
   
+  public final void a(ba paramba)
+  {
+    AppMethodBeat.i(183927);
+    Object localObject = paramba.gjN;
+    this.db.delete("EmojiDesignerProduct", "designerUin=? ", new String[] { localObject });
+    paramba = paramba.IKR.iterator();
+    while (paramba.hasNext())
+    {
+      localObject = (a)paramba.next();
+      this.db.insert("EmojiDesignerProduct", "", ((a)localObject).convertTo());
+    }
+    AppMethodBeat.o(183927);
+  }
+  
   /* Error */
-  public final aw YO(int paramInt)
+  public final ba aaX(int paramInt)
   {
     // Byte code:
-    //   0: ldc 52
+    //   0: ldc 111
     //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 54	com/tencent/mm/storage/aw
+    //   5: new 54	com/tencent/mm/storage/ba
     //   8: dup
-    //   9: invokespecial 56	com/tencent/mm/storage/aw:<init>	()V
+    //   9: invokespecial 112	com/tencent/mm/storage/ba:<init>	()V
     //   12: astore 4
     //   14: aload 4
     //   16: iload_1
-    //   17: putfield 60	com/tencent/mm/storage/aw:fQn	I
+    //   17: putfield 58	com/tencent/mm/storage/ba:gjN	I
     //   20: aload_0
     //   21: getfield 45	com/tencent/mm/storage/emotion/b:db	Lcom/tencent/mm/sdk/e/e;
     //   24: ldc 28
     //   26: getstatic 26	com/tencent/mm/storage/emotion/a:info	Lcom/tencent/mm/sdk/e/c$a;
-    //   29: getfield 65	com/tencent/mm/sdk/e/c$a:columns	[Ljava/lang/String;
-    //   32: ldc 67
+    //   29: getfield 117	com/tencent/mm/sdk/e/c$a:columns	[Ljava/lang/String;
+    //   32: ldc 68
     //   34: iconst_1
     //   35: anewarray 20	java/lang/String
     //   38: dup
     //   39: iconst_0
     //   40: iload_1
-    //   41: invokestatic 71	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   41: invokestatic 121	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   44: aastore
     //   45: aconst_null
     //   46: aconst_null
     //   47: aconst_null
-    //   48: invokeinterface 77 8 0
+    //   48: invokeinterface 125 8 0
     //   53: astore 5
     //   55: aload 5
     //   57: ifnull +93 -> 150
     //   60: aload 5
-    //   62: invokeinterface 83 1 0
+    //   62: invokeinterface 130 1 0
     //   67: ifeq +83 -> 150
     //   70: new 22	com/tencent/mm/storage/emotion/a
     //   73: dup
-    //   74: invokespecial 84	com/tencent/mm/storage/emotion/a:<init>	()V
+    //   74: invokespecial 131	com/tencent/mm/storage/emotion/a:<init>	()V
     //   77: astore_2
     //   78: aload_2
     //   79: aload 5
-    //   81: invokevirtual 88	com/tencent/mm/storage/emotion/a:convertFrom	(Landroid/database/Cursor;)V
+    //   81: invokevirtual 135	com/tencent/mm/storage/emotion/a:convertFrom	(Landroid/database/Cursor;)V
     //   84: aload 4
-    //   86: getfield 92	com/tencent/mm/storage/aw:GXD	Ljava/util/LinkedList;
+    //   86: getfield 78	com/tencent/mm/storage/ba:IKR	Ljava/util/LinkedList;
     //   89: aload_2
-    //   90: invokevirtual 98	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   90: invokevirtual 139	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   93: pop
     //   94: goto -34 -> 60
     //   97: astore_3
-    //   98: ldc 52
+    //   98: ldc 111
     //   100: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: aload_3
     //   104: athrow
@@ -86,34 +100,34 @@ public final class b
     //   111: aload_3
     //   112: ifnull +64 -> 176
     //   115: aload 5
-    //   117: invokeinterface 101 1 0
-    //   122: ldc 52
+    //   117: invokeinterface 142 1 0
+    //   122: ldc 111
     //   124: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   127: aload_2
     //   128: athrow
     //   129: astore_2
-    //   130: ldc 103
+    //   130: ldc 144
     //   132: aload_2
-    //   133: ldc 105
+    //   133: ldc 96
     //   135: iconst_0
-    //   136: anewarray 107	java/lang/Object
-    //   139: invokestatic 113	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   142: ldc 52
+    //   136: anewarray 146	java/lang/Object
+    //   139: invokestatic 152	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   142: ldc 111
     //   144: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   147: aload 4
     //   149: areturn
     //   150: aload 5
     //   152: ifnull -10 -> 142
     //   155: aload 5
-    //   157: invokeinterface 101 1 0
+    //   157: invokeinterface 142 1 0
     //   162: goto -20 -> 142
     //   165: astore 5
     //   167: aload_3
     //   168: aload 5
-    //   170: invokevirtual 117	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   170: invokevirtual 156	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   173: goto -51 -> 122
     //   176: aload 5
-    //   178: invokeinterface 101 1 0
+    //   178: invokeinterface 142 1 0
     //   183: goto -61 -> 122
     //   186: astore_2
     //   187: aconst_null
@@ -129,7 +143,7 @@ public final class b
     //   186	1	2	localObject2	Object
     //   97	71	3	localThrowable1	java.lang.Throwable
     //   188	1	3	localObject3	Object
-    //   12	136	4	localaw	aw
+    //   12	136	4	localba	ba
     //   53	103	5	localCursor	android.database.Cursor
     //   165	12	5	localThrowable2	java.lang.Throwable
     // Exception table:
@@ -144,20 +158,6 @@ public final class b
     //   176	183	129	java/lang/Exception
     //   115	122	165	java/lang/Throwable
     //   60	94	186	finally
-  }
-  
-  public final void a(aw paramaw)
-  {
-    AppMethodBeat.i(183927);
-    Object localObject = paramaw.fQn;
-    this.db.delete("EmojiDesignerProduct", "designerUin=? ", new String[] { localObject });
-    paramaw = paramaw.GXD.iterator();
-    while (paramaw.hasNext())
-    {
-      localObject = (a)paramaw.next();
-      this.db.insert("EmojiDesignerProduct", "", ((a)localObject).convertTo());
-    }
-    AppMethodBeat.o(183927);
   }
 }
 

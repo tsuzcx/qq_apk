@@ -11,19 +11,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class AutoFillListPopupWindowBase$a
   extends ListView
 {
-  private boolean akW;
-  private boolean akX;
+  private boolean amN;
+  private boolean amO;
   
   public AutoFillListPopupWindowBase$a(Context paramContext, boolean paramBoolean)
   {
     super(paramContext, null, 2130968938);
     AppMethodBeat.i(136649);
-    this.akX = paramBoolean;
+    this.amO = paramBoolean;
     setCacheColorHint(0);
     AppMethodBeat.o(136649);
   }
   
-  final int ew(int paramInt1, int paramInt2)
+  final int ey(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(136654);
     int i = getListPaddingTop();
@@ -97,7 +97,7 @@ final class AutoFillListPopupWindowBase$a
   public final boolean hasFocus()
   {
     AppMethodBeat.i(136653);
-    if ((this.akX) || (super.hasFocus()))
+    if ((this.amO) || (super.hasFocus()))
     {
       AppMethodBeat.o(136653);
       return true;
@@ -109,7 +109,7 @@ final class AutoFillListPopupWindowBase$a
   public final boolean hasWindowFocus()
   {
     AppMethodBeat.i(136651);
-    if ((this.akX) || (super.hasWindowFocus()))
+    if ((this.amO) || (super.hasWindowFocus()))
     {
       AppMethodBeat.o(136651);
       return true;
@@ -121,7 +121,7 @@ final class AutoFillListPopupWindowBase$a
   public final boolean isFocused()
   {
     AppMethodBeat.i(136652);
-    if ((this.akX) || (super.isFocused()))
+    if ((this.amO) || (super.isFocused()))
     {
       AppMethodBeat.o(136652);
       return true;
@@ -133,7 +133,7 @@ final class AutoFillListPopupWindowBase$a
   public final boolean isInTouchMode()
   {
     AppMethodBeat.i(136650);
-    if (((this.akX) && (this.akW)) || (super.isInTouchMode()))
+    if (((this.amO) && (this.amN)) || (super.isInTouchMode()))
     {
       AppMethodBeat.o(136650);
       return true;

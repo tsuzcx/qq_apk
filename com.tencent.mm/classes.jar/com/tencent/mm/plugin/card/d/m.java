@@ -9,41 +9,41 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.a;
 import com.tencent.mm.loader.c.e.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.aj;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"calculatePopupMenuLocation", "Landroid/graphics/Point;", "anchor", "Landroid/view/View;", "loadImageView", "", "imageView", "Landroid/widget/ImageView;", "url", "", "radius", "", "isRound", "", "defaultRes", "", "width", "height", "plugin-card_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"calculatePopupMenuLocation", "Landroid/graphics/Point;", "anchor", "Landroid/view/View;", "loadImageView", "", "imageView", "Landroid/widget/ImageView;", "url", "", "radius", "", "isRound", "", "defaultRes", "", "width", "height", "plugin-card_release"})
 public final class m
 {
   public static final void a(ImageView paramImageView, String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(206429);
-    k.h(paramImageView, "imageView");
-    k.h(paramString, "url");
+    AppMethodBeat.i(215627);
+    p.h(paramImageView, "imageView");
+    p.h(paramString, "url");
     Object localObject1 = new e.a();
-    Object localObject2 = com.tencent.mm.plugin.card.model.m.UK(paramString);
-    k.g(localObject2, "CardSimpleGetPicStrategy…etPictureStoragePath(url)");
-    ((e.a)localObject1).vh((String)localObject2);
-    ((e.a)localObject1).gKq = true;
-    ((e.a)localObject1).gKC = paramBoolean;
-    ((e.a)localObject1).gKt = paramInt2;
-    ((e.a)localObject1).gKu = paramInt3;
-    ((e.a)localObject1).gKp = true;
+    Object localObject2 = com.tencent.mm.plugin.card.model.m.Yt(paramString);
+    p.g(localObject2, "CardSimpleGetPicStrategy…etPictureStoragePath(url)");
+    ((e.a)localObject1).xY((String)localObject2);
+    ((e.a)localObject1).heb = true;
+    ((e.a)localObject1).hen = paramBoolean;
+    ((e.a)localObject1).hee = paramInt2;
+    ((e.a)localObject1).hef = paramInt3;
+    ((e.a)localObject1).hea = true;
     if (paramInt1 >= 0) {
-      ((e.a)localObject1).gKv = paramInt1;
+      ((e.a)localObject1).heg = paramInt1;
     }
-    localObject1 = ((e.a)localObject1).aot();
-    localObject2 = com.tencent.mm.loader.e.gIC;
-    com.tencent.mm.loader.e.anT().a(paramString, paramImageView, (com.tencent.mm.loader.c.e)localObject1);
-    AppMethodBeat.o(206429);
+    localObject1 = ((e.a)localObject1).arf();
+    localObject2 = com.tencent.mm.loader.e.hcm;
+    com.tencent.mm.loader.e.aqF().a(paramString, paramImageView, (com.tencent.mm.loader.c.e)localObject1);
+    AppMethodBeat.o(215627);
   }
   
-  public static final Point dG(View paramView)
+  public static final Point dJ(View paramView)
   {
     int i = 0;
-    AppMethodBeat.i(206431);
-    k.h(paramView, "anchor");
+    AppMethodBeat.i(215629);
+    p.h(paramView, "anchor");
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
     int m = arrayOfInt[0];
@@ -52,24 +52,24 @@ public final class m
     int j = arrayOfInt[1] + paramView.getHeight();
     if (k < 0)
     {
-      paramView = ai.getContext();
-      k.g(paramView, "MMApplicationContext.getContext()");
+      paramView = aj.getContext();
+      p.g(paramView, "MMApplicationContext.getContext()");
       paramView = paramView.getResources();
-      k.g(paramView, "MMApplicationContext.getContext().resources");
+      p.g(paramView, "MMApplicationContext.getContext().resources");
       if (j <= paramView.getDisplayMetrics().heightPixels) {
         break label148;
       }
-      paramView = ai.getContext();
-      k.g(paramView, "MMApplicationContext.getContext()");
+      paramView = aj.getContext();
+      p.g(paramView, "MMApplicationContext.getContext()");
       paramView = paramView.getResources();
-      k.g(paramView, "MMApplicationContext.getContext().resources");
+      p.g(paramView, "MMApplicationContext.getContext().resources");
       j = paramView.getDisplayMetrics().heightPixels;
     }
     label148:
     for (;;)
     {
       paramView = new Point(n + m, (i + j) / 2);
-      AppMethodBeat.o(206431);
+      AppMethodBeat.o(215629);
       return paramView;
       i = k;
       break;

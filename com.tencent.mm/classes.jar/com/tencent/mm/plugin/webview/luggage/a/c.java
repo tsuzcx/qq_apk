@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.webview.luggage.a;
 
+import com.tencent.luggage.d.d;
 import org.json.JSONObject;
 
 public final class c
-  extends com.tencent.luggage.d.c
+  extends d
 {
-  JSONObject bVY;
+  JSONObject cgn;
   String mName;
   
-  public final JSONObject Aq()
+  public final JSONObject BO()
   {
-    return this.bVY;
+    return this.cgn;
   }
   
   public final String name()

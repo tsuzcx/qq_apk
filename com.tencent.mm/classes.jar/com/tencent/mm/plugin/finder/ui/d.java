@@ -1,66 +1,43 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.app.Activity;
-import android.content.Context;
+import android.support.v7.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.ui.base.preference.MMPreference;
-import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.protocal.protobuf.aot;
+import com.tencent.mm.view.recyclerview.e;
+import d.g.b.p;
 import d.l;
-import d.y;
+import java.util.ArrayList;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/DebugChoicePref;", "Lcom/tencent/mm/ui/base/preference/Preference;", "Lcom/tencent/mm/plugin/finder/ui/IPreferenceEvent;", "activity", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "title", "", "_key", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "_items", "", "_vals", "", "onEvent", "Lkotlin/Function0;", "", "(Lcom/tencent/mm/ui/base/preference/MMPreference;Ljava/lang/String;Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;[Ljava/lang/String;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)V", "get_items", "()[Ljava/lang/String;", "set_items", "([Ljava/lang/String;)V", "[Ljava/lang/String;", "get_key", "()Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "set_key", "(Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;)V", "get_vals", "()Ljava/lang/Object;", "set_vals", "(Ljava/lang/Object;)V", "getActivity", "()Lcom/tencent/mm/ui/base/preference/MMPreference;", "getOnEvent", "()Lkotlin/jvm/functions/Function0;", "operation", "Lcom/tencent/mm/plugin/finder/ui/ChoiceItem;", "getOperation", "()Lcom/tencent/mm/plugin/finder/ui/ChoiceItem;", "setOperation", "(Lcom/tencent/mm/plugin/finder/ui/ChoiceItem;)V", "getTitle", "()Ljava/lang/String;", "doSomething", "refresh", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderSelfFeedLikeListAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "()V", "datalist", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "Lkotlin/collections/ArrayList;", "getItemCount", "", "onBindViewHolder", "", "vh", "position", "onCreateViewHolder", "p0", "Landroid/view/ViewGroup;", "p1", "setLikedContactList", "plugin-finder_release"})
 public final class d
-  extends Preference
-  implements k
+  extends RecyclerView.a<e>
 {
-  private ah.a gFx;
-  private String[] gFy;
-  private Object gFz;
-  private final MMPreference rFu;
-  private a rFw;
-  private final d.g.a.a<y> rFx;
-  private final String title;
+  public ArrayList<aot> sGb;
   
-  public d(MMPreference paramMMPreference, String paramString, ah.a parama, String[] paramArrayOfString, Object paramObject, d.g.a.a<y> parama1)
+  public final int getItemCount()
   {
-    super((Context)paramMMPreference);
-    AppMethodBeat.i(203081);
-    this.rFu = paramMMPreference;
-    this.title = paramString;
-    this.gFx = parama;
-    this.gFy = paramArrayOfString;
-    this.gFz = paramObject;
-    this.rFx = parama1;
-    this.rFw = new a((Activity)this.rFu, this.gFx, this.gFy, this.gFz);
-    setTitle((CharSequence)this.title);
-    setKey(this.title);
-    setSummary((CharSequence)("=>:" + this.rFw.getValue()));
-    this.rFu.getPreferenceScreen().b((Preference)this);
-    AppMethodBeat.o(203081);
-  }
-  
-  public final void cBs()
-  {
-    AppMethodBeat.i(203080);
-    ac.i(m.getTAG(), "doSomething " + this.title);
-    this.rFw.a(this.rFu, (k)this);
-    AppMethodBeat.o(203080);
-  }
-  
-  public final void refresh()
-  {
-    AppMethodBeat.i(203079);
-    setSummary((CharSequence)("=>" + this.rFw.getValue()));
-    this.rFx.invoke();
-    AppMethodBeat.o(203079);
+    AppMethodBeat.i(204139);
+    ArrayList localArrayList = this.sGb;
+    if (localArrayList == null) {
+      p.bcb("datalist");
+    }
+    if (localArrayList == null)
+    {
+      AppMethodBeat.o(204139);
+      return 0;
+    }
+    localArrayList = this.sGb;
+    if (localArrayList == null) {
+      p.bcb("datalist");
+    }
+    int i = localArrayList.size();
+    AppMethodBeat.o(204139);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.d
  * JD-Core Version:    0.7.0.1
  */

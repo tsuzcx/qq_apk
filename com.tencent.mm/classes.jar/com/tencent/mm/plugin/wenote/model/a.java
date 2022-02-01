@@ -13,7 +13,7 @@ public final class a
 {
   public a()
   {
-    super(com.tencent.mm.br.c.aIo("wenote"));
+    super(com.tencent.mm.bs.c.aNR("wenote"));
     AppMethodBeat.i(30285);
     AppMethodBeat.o(30285);
   }
@@ -21,8 +21,8 @@ public final class a
   public final void parallelsDependency()
   {
     AppMethodBeat.i(30286);
-    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).by(g.ad(af.class));
-    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).by(g.ad(com.tencent.mm.plugin.record.a.a.class));
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bA(g.ad(af.class));
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bA(g.ad(com.tencent.mm.plugin.record.a.a.class));
     AppMethodBeat.o(30286);
   }
 }

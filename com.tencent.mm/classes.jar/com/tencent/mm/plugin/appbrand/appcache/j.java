@@ -5,35 +5,35 @@ import com.tencent.mm.compatible.loader.a;
 
 public abstract interface j
 {
-  public static final int[] jlJ = { 0, 10002, 10102, 6 };
-  public static final int[] jlK = { 1, 2, 999, 10000, 10001, 10100, 10101 };
+  public static final int[] jFA = { 1, 2, 999, 10000, 10001, 10100, 10101 };
+  public static final int[] jFz = { 0, 10002, 10102, 6 };
   
   public static enum a
   {
     public static boolean isValid(int paramInt)
     {
-      AppMethodBeat.i(194846);
-      if ((a.contains(j.jlJ, paramInt)) || (a.contains(j.jlK, paramInt)))
+      AppMethodBeat.i(190968);
+      if ((a.contains(j.jFz, paramInt)) || (a.contains(j.jFA, paramInt)))
       {
-        AppMethodBeat.o(194846);
+        AppMethodBeat.o(190968);
         return true;
       }
-      AppMethodBeat.o(194846);
+      AppMethodBeat.o(190968);
       return false;
     }
     
-    public static boolean on(int paramInt)
+    public static boolean oN(int paramInt)
     {
       AppMethodBeat.i(123489);
-      boolean bool = a.contains(j.jlK, paramInt);
+      boolean bool = a.contains(j.jFA, paramInt);
       AppMethodBeat.o(123489);
       return bool;
     }
     
-    public static boolean rq(int paramInt)
+    public static boolean rQ(int paramInt)
     {
       AppMethodBeat.i(123488);
-      boolean bool = a.contains(j.jlJ, paramInt);
+      boolean bool = a.contains(j.jFz, paramInt);
       AppMethodBeat.o(123488);
       return bool;
     }

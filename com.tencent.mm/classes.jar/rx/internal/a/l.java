@@ -12,13 +12,13 @@ import rx.i;
 public final class l<T>
   implements d.a<T>
 {
-  final d<T> McJ;
-  final g McO;
+  final d<T> NXL;
+  final g NXQ;
   
   public l(d<T> paramd, g paramg)
   {
-    this.McO = paramg;
-    this.McJ = paramd;
+    this.NXQ = paramg;
+    this.NXL = paramd;
   }
 }
 

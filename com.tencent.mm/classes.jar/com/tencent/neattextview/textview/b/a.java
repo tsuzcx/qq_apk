@@ -22,10 +22,10 @@ public final class a
   public final void a(Canvas paramCanvas, TextPaint paramTextPaint, List<d> paramList)
   {
     AppMethodBeat.i(39743);
-    iA(paramList);
+    iO(paramList);
     int i = paramTextPaint.getColor();
-    paramTextPaint.setColor(((BackgroundColorSpan)this.JJH).getBackgroundColor());
-    paramList = this.JJG.iterator();
+    paramTextPaint.setColor(((BackgroundColorSpan)this.LDq).getBackgroundColor());
+    paramList = this.LDp.iterator();
     while (paramList.hasNext()) {
       paramCanvas.drawRect((RectF)paramList.next(), paramTextPaint);
     }

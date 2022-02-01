@@ -4,12 +4,20 @@ import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.widget.c.c;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class d
   implements a
 {
-  public final boolean aAF(String paramString)
+  public final boolean Co(long paramLong)
+  {
+    AppMethodBeat.i(116666);
+    boolean bool = c.ah(paramLong, 0);
+    AppMethodBeat.o(116666);
+    return bool;
+  }
+  
+  public final boolean aFZ(String paramString)
   {
     AppMethodBeat.i(116665);
     if (TextUtils.isEmpty(paramString))
@@ -26,10 +34,10 @@ public final class d
     return false;
   }
   
-  public final boolean aAG(String paramString)
+  public final boolean aGa(String paramString)
   {
     AppMethodBeat.i(116667);
-    if (!aAF(paramString))
+    if (!aFZ(paramString))
     {
       AppMethodBeat.o(116667);
       return false;
@@ -37,22 +45,14 @@ public final class d
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("useJs", true);
-    com.tencent.mm.br.d.b(ai.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+    com.tencent.mm.bs.d.b(aj.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(116667);
     return true;
-  }
-  
-  public final boolean zA(long paramLong)
-  {
-    AppMethodBeat.i(116666);
-    boolean bool = c.ac(paramLong, 0);
-    AppMethodBeat.o(116666);
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.c.a.d
  * JD-Core Version:    0.7.0.1
  */

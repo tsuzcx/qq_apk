@@ -5,31 +5,30 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
-import com.tencent.mm.plugin.appbrand.service.p;
+import com.tencent.mm.plugin.appbrand.service.q;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherFolderUI;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherUI;
-import com.tencent.mm.plugin.appbrand.ui.e;
 import com.tencent.mm.plugin.appbrand.ui.recommend.c;
 import com.tencent.mm.plugin.profile.ui.BizBindWxaInfoUI;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.i;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class f
-  implements p
+  implements q
 {
-  public final void G(Context paramContext, int paramInt)
+  public final void H(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(180186);
-    boolean bool = c.bwQ();
+    boolean bool = c.bAW();
     Context localContext;
     Intent localIntent;
     if (paramContext == null)
     {
-      localContext = ai.getContext();
-      localIntent = new Intent(localContext, AppBrandLauncherUI.class).putExtra("extra_start_activity_click_timestamp_ms", bs.eWj()).putExtra("extra_enter_scene", paramInt).putExtra("extra_show_recommend", bool);
+      localContext = aj.getContext();
+      localIntent = new Intent(localContext, AppBrandLauncherUI.class).putExtra("extra_start_activity_click_timestamp_ms", bt.flT()).putExtra("extra_enter_scene", paramInt).putExtra("extra_show_recommend", bool);
       if (!(paramContext instanceof Activity)) {
         break label142;
       }
@@ -38,9 +37,9 @@ public final class f
     for (paramInt = 0;; paramInt = 268435456)
     {
       paramContext = localIntent.addFlags(paramInt);
-      paramContext = new com.tencent.mm.hellhoundlib.b.a().ba(paramContext);
-      com.tencent.mm.hellhoundlib.a.a.a(localContext, paramContext.aeD(), "com/tencent/mm/plugin/appbrand/app/ExportUILauncher", "openLauncherUI", "(Landroid/content/Context;IZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      localContext.startActivity((Intent)paramContext.lR(0));
+      paramContext = new com.tencent.mm.hellhoundlib.b.a().bc(paramContext);
+      com.tencent.mm.hellhoundlib.a.a.a(localContext, paramContext.ahp(), "com/tencent/mm/plugin/appbrand/app/ExportUILauncher", "openLauncherUI", "(Landroid/content/Context;IZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localContext.startActivity((Intent)paramContext.mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/plugin/appbrand/app/ExportUILauncher", "openLauncherUI", "(Landroid/content/Context;IZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(180186);
       return;
@@ -59,9 +58,9 @@ public final class f
     if (!(paramContext instanceof Activity)) {
       localIntent.addFlags(268435456);
     }
-    paramString1 = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.aeD(), "com/tencent/mm/plugin/appbrand/app/ExportUILauncher", "openBizWxaEntryInfoUI", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString1.lR(0));
+    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.ahp(), "com/tencent/mm/plugin/appbrand/app/ExportUILauncher", "openBizWxaEntryInfoUI", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString1.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/app/ExportUILauncher", "openBizWxaEntryInfoUI", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(44128);
   }
@@ -70,12 +69,12 @@ public final class f
   {
     AppMethodBeat.i(44130);
     if (paramContext == null) {
-      paramContext = ai.getContext();
+      paramContext = aj.getContext();
     }
     for (;;)
     {
-      localObject = new Intent().putExtra("extra_show_recents_from_task_bar", true).putExtra("extra_start_activity_click_timestamp_ms", bs.eWj()).putExtra("extra_get_usage_reason", 9).putExtra("extra_desktop_open_session", paramInt2).putExtra("extra_enter_scene", paramInt1);
-      if ((!c.bwQ()) || (!c.bwR())) {
+      localObject = new Intent().putExtra("extra_show_recents_from_task_bar", true).putExtra("extra_start_activity_click_timestamp_ms", bt.flT()).putExtra("extra_get_usage_reason", 9).putExtra("extra_desktop_open_session", paramInt2).putExtra("extra_enter_scene", paramInt1);
+      if ((!c.bAW()) || (!c.bAX())) {
         break;
       }
       AppBrandLauncherFolderUI.m(paramContext, (Intent)localObject);
@@ -87,21 +86,21 @@ public final class f
     for (paramInt1 = 0;; paramInt1 = 268435456)
     {
       localObject = ((Intent)localObject).addFlags(paramInt1);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/appbrand/app/ExportUILauncher", "openRecentsUI", "(Landroid/content/Context;II)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/appbrand/app/ExportUILauncher", "openRecentsUI", "(Landroid/content/Context;II)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/app/ExportUILauncher", "openRecentsUI", "(Landroid/content/Context;II)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(44130);
       return;
     }
   }
   
-  public final void dk(Context paramContext)
+  public final void di(Context paramContext)
   {
     AppMethodBeat.i(44131);
     Context localContext = paramContext;
     if (paramContext == null) {
-      localContext = ai.getContext();
+      localContext = aj.getContext();
     }
     paramContext = new Intent();
     paramContext.putExtra("extra_get_usage_reason", 7);
@@ -110,13 +109,13 @@ public final class f
     AppMethodBeat.o(44131);
   }
   
-  public final boolean dl(Context paramContext)
+  public final boolean dj(Context paramContext)
   {
     AppMethodBeat.i(180187);
-    if ((h.IS_FLAVOR_RED) || (h.IS_FLAVOR_PURPLE))
+    if ((i.IS_FLAVOR_RED) || (i.IS_FLAVOR_PURPLE))
     {
-      e locale = e.mbO;
-      e.dM(paramContext);
+      com.tencent.mm.plugin.appbrand.ui.f localf = com.tencent.mm.plugin.appbrand.ui.f.mBW;
+      com.tencent.mm.plugin.appbrand.ui.f.dL(paramContext);
       AppMethodBeat.o(180187);
       return true;
     }

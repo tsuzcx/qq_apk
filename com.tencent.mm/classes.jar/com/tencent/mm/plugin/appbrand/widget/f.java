@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.be;
+import com.tencent.mm.g.c.bf;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class f
-  extends be
+  extends bf
 {
-  public static c.a hlR;
+  public static c.a hEe;
   
   static
   {
     AppMethodBeat.i(76398);
     c.a locala = new c.a();
-    locala.GvF = new Field[6];
+    locala.IhA = new Field[6];
     locala.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "id";
-    locala.GvH.put("id", "TEXT");
+    locala.IhC.put("id", "TEXT");
     localStringBuilder.append(" id TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "cacheKey";
-    locala.GvH.put("cacheKey", "TEXT");
+    locala.IhC.put("cacheKey", "TEXT");
     localStringBuilder.append(" cacheKey TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "appId";
-    locala.GvH.put("appId", "TEXT");
+    locala.IhC.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "data";
-    locala.GvH.put("data", "TEXT");
+    locala.IhC.put("data", "TEXT");
     localStringBuilder.append(" data TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "interval";
-    locala.GvH.put("interval", "INTEGER");
+    locala.IhC.put("interval", "INTEGER");
     localStringBuilder.append(" interval INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "updateTime";
-    locala.GvH.put("updateTime", "LONG");
+    locala.IhC.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
     locala.columns[6] = "rowid";
     locala.sql = localStringBuilder.toString();
-    hlR = locala;
+    hEe = locala;
     AppMethodBeat.o(76398);
   }
   
   public final c.a getDBInfo()
   {
-    return hlR;
+    return hEe;
   }
 }
 

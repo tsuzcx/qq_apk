@@ -7,26 +7,26 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.au;
 import com.tencent.mm.plugin.account.friend.a.av;
 import com.tencent.mm.plugin.account.friend.a.av.1;
 import com.tencent.mm.plugin.account.friend.a.av.2;
 import com.tencent.mm.plugin.account.friend.widget.RecoverFriendSortView;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 
 public class RecoverFriendUI
   extends MMActivity
 {
-  private av iNA;
+  private av jgJ;
   
   public RecoverFriendUI()
   {
     AppMethodBeat.i(184454);
-    this.iNA = new av(this);
+    this.jgJ = new av(this);
     AppMethodBeat.o(184454);
   }
   
@@ -41,18 +41,18 @@ public class RecoverFriendUI
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("key_session_id");
     String str = getIntent().getStringExtra("key_old_username");
-    this.iNA.sessionId = paramBundle;
-    this.iNA.iLW = str;
+    this.jgJ.sessionId = paramBundle;
+    this.jgJ.jff = str;
     setMMTitle(2131760328);
-    paramBundle = this.iNA;
-    ac.i("MicroMsg.RecoverFriendPresenter", "onUICreate");
-    paramBundle.iLV = ((RecoverFriendSortView)paramBundle.activity.findViewById(2131300301));
-    g.agi().a(3513, paramBundle);
-    paramBundle.qR(au.Gw(paramBundle.iLW));
-    paramBundle.iLV.getScrollBar().setVisibility(8);
-    paramBundle.iLV.getListView().setOnScrollListener(new av.1(paramBundle));
-    paramBundle.iLV.iLW = paramBundle.iLW;
-    paramBundle.iLV.setOnItemClickListener(new av.2(paramBundle));
+    paramBundle = this.jgJ;
+    ad.i("MicroMsg.RecoverFriendPresenter", "onUICreate");
+    paramBundle.jfe = ((RecoverFriendSortView)paramBundle.activity.findViewById(2131300301));
+    g.aiU().a(3513, paramBundle);
+    paramBundle.rr(au.JL(paramBundle.jff));
+    paramBundle.jfe.getScrollBar().setVisibility(8);
+    paramBundle.jfe.getListView().setOnScrollListener(new av.1(paramBundle));
+    paramBundle.jfe.jff = paramBundle.jff;
+    paramBundle.jfe.setOnItemClickListener(new av.2(paramBundle));
     paramBundle.alive();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -71,9 +71,9 @@ public class RecoverFriendUI
   {
     AppMethodBeat.i(184456);
     super.onDestroy();
-    av localav = this.iNA;
-    ac.i("MicroMsg.RecoverFriendPresenter", "onUIDestroy");
-    g.agi().b(3513, localav);
+    av localav = this.jgJ;
+    ad.i("MicroMsg.RecoverFriendPresenter", "onUIDestroy");
+    g.aiU().b(3513, localav);
     localav.dead();
     AppMethodBeat.o(184456);
   }
@@ -86,7 +86,7 @@ public class RecoverFriendUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.RecoverFriendUI
  * JD-Core Version:    0.7.0.1
  */

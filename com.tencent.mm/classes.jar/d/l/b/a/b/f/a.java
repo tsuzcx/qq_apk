@@ -5,9 +5,9 @@ import d.n.n;
 
 public final class a
 {
-  public final boolean Dgz;
-  private final b LbX;
-  private final b Lzh;
+  public final boolean ELj;
+  private final b MSS;
+  private final b Nqe;
   
   static
   {
@@ -24,8 +24,8 @@ public final class a
   public a(b paramb1, b paramb2, boolean paramBoolean)
   {
     AppMethodBeat.i(59263);
-    this.LbX = paramb1;
-    if ((!$assertionsDisabled) && (paramb2.Lzj.Lzo.isEmpty()))
+    this.MSS = paramb1;
+    if ((!$assertionsDisabled) && (paramb2.Nqg.Nql.isEmpty()))
     {
       paramb2 = new StringBuilder("Class name must not be root: ").append(paramb1);
       if (paramBoolean) {}
@@ -36,8 +36,8 @@ public final class a
         throw paramb1;
       }
     }
-    this.Lzh = paramb2;
-    this.Dgz = paramBoolean;
+    this.Nqe = paramb2;
+    this.ELj = paramBoolean;
     AppMethodBeat.o(59263);
   }
   
@@ -48,21 +48,21 @@ public final class a
     AppMethodBeat.o(59264);
   }
   
-  public static a aWA(String paramString)
+  public static a bcD(String paramString)
   {
     AppMethodBeat.i(59272);
-    paramString = dp(paramString, false);
+    paramString = du(paramString, false);
     AppMethodBeat.o(59272);
     return paramString;
   }
   
-  public static a dp(String paramString, boolean paramBoolean)
+  public static a du(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(59273);
     if (paramString == null) {
-      agL(12);
+      ajm(12);
     }
-    String str = n.ng(paramString, "").replace('/', '.');
+    String str = n.nE(paramString, "").replace('/', '.');
     paramString = n.b(paramString, '/', paramString);
     paramString = new a(new b(str), new b(paramString), paramBoolean);
     AppMethodBeat.o(59273);
@@ -73,9 +73,9 @@ public final class a
   {
     AppMethodBeat.i(59262);
     if (paramb == null) {
-      agL(0);
+      ajm(0);
     }
-    paramb = new a(paramb.fZH(), paramb.fZI());
+    paramb = new a(paramb.grg(), paramb.grh());
     AppMethodBeat.o(59262);
     return paramb;
   }
@@ -94,7 +94,7 @@ public final class a
       return false;
     }
     paramObject = (a)paramObject;
-    if ((this.LbX.equals(paramObject.LbX)) && (this.Lzh.equals(paramObject.Lzh)) && (this.Dgz == paramObject.Dgz))
+    if ((this.MSS.equals(paramObject.MSS)) && (this.Nqe.equals(paramObject.Nqe)) && (this.ELj == paramObject.ELj))
     {
       AppMethodBeat.o(59275);
       return true;
@@ -103,57 +103,57 @@ public final class a
     return false;
   }
   
-  public final b fZA()
+  public final b gqZ()
   {
     AppMethodBeat.i(59265);
-    b localb = this.LbX;
+    b localb = this.MSS;
     if (localb == null) {
-      agL(5);
+      ajm(5);
     }
     AppMethodBeat.o(59265);
     return localb;
   }
   
-  public final b fZB()
+  public final b gra()
   {
     AppMethodBeat.i(59266);
-    b localb = this.Lzh;
+    b localb = this.Nqe;
     if (localb == null) {
-      agL(6);
+      ajm(6);
     }
     AppMethodBeat.o(59266);
     return localb;
   }
   
-  public final f fZC()
+  public final f grb()
   {
     AppMethodBeat.i(59267);
-    f localf = this.Lzh.fZI();
+    f localf = this.Nqe.grh();
     if (localf == null) {
-      agL(7);
+      ajm(7);
     }
     AppMethodBeat.o(59267);
     return localf;
   }
   
-  public final a fZD()
+  public final a grc()
   {
     AppMethodBeat.i(59269);
-    Object localObject = this.Lzh.fZH();
-    if (((b)localObject).Lzj.Lzo.isEmpty())
+    Object localObject = this.Nqe.grg();
+    if (((b)localObject).Nqg.Nql.isEmpty())
     {
       AppMethodBeat.o(59269);
       return null;
     }
-    localObject = new a(fZA(), (b)localObject, this.Dgz);
+    localObject = new a(gqZ(), (b)localObject, this.ELj);
     AppMethodBeat.o(59269);
     return localObject;
   }
   
-  public final boolean fZE()
+  public final boolean grd()
   {
     AppMethodBeat.i(59270);
-    if (!this.Lzh.fZH().Lzj.Lzo.isEmpty())
+    if (!this.Nqe.grg().Nqg.Nql.isEmpty())
     {
       AppMethodBeat.o(59270);
       return true;
@@ -162,19 +162,19 @@ public final class a
     return false;
   }
   
-  public final b fZF()
+  public final b gre()
   {
     AppMethodBeat.i(59271);
-    if (this.LbX.Lzj.Lzo.isEmpty())
+    if (this.MSS.Nqg.Nql.isEmpty())
     {
-      localb = this.Lzh;
+      localb = this.Nqe;
       if (localb == null) {
-        agL(9);
+        ajm(9);
       }
       AppMethodBeat.o(59271);
       return localb;
     }
-    b localb = new b(this.LbX.rf() + "." + this.Lzh.rf());
+    b localb = new b(this.MSS.sD() + "." + this.Nqe.sD());
     AppMethodBeat.o(59271);
     return localb;
   }
@@ -182,9 +182,9 @@ public final class a
   public final int hashCode()
   {
     AppMethodBeat.i(59276);
-    int i = this.LbX.hashCode();
-    int j = this.Lzh.hashCode();
-    int k = Boolean.valueOf(this.Dgz).hashCode();
+    int i = this.MSS.hashCode();
+    int j = this.Nqe.hashCode();
+    int k = Boolean.valueOf(this.ELj).hashCode();
     AppMethodBeat.o(59276);
     return (i * 31 + j) * 31 + k;
   }
@@ -193,28 +193,28 @@ public final class a
   {
     AppMethodBeat.i(59268);
     if (paramf == null) {
-      agL(8);
+      ajm(8);
     }
-    paramf = new a(fZA(), this.Lzh.p(paramf), this.Dgz);
+    paramf = new a(gqZ(), this.Nqe.p(paramf), this.ELj);
     AppMethodBeat.o(59268);
     return paramf;
   }
   
-  public final String rf()
+  public final String sD()
   {
     AppMethodBeat.i(59274);
-    if (this.LbX.Lzj.Lzo.isEmpty())
+    if (this.MSS.Nqg.Nql.isEmpty())
     {
-      str = this.Lzh.rf();
+      str = this.Nqe.sD();
       if (str == null) {
-        agL(13);
+        ajm(13);
       }
       AppMethodBeat.o(59274);
       return str;
     }
-    String str = this.LbX.rf().replace('.', '/') + "/" + this.Lzh.rf();
+    String str = this.MSS.sD().replace('.', '/') + "/" + this.Nqe.sD();
     if (str == null) {
-      agL(14);
+      ajm(14);
     }
     AppMethodBeat.o(59274);
     return str;
@@ -223,20 +223,20 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(59277);
-    if (this.LbX.Lzj.Lzo.isEmpty())
+    if (this.MSS.Nqg.Nql.isEmpty())
     {
-      str = "/" + rf();
+      str = "/" + sD();
       AppMethodBeat.o(59277);
       return str;
     }
-    String str = rf();
+    String str = sD();
     AppMethodBeat.o(59277);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.f.a
  * JD-Core Version:    0.7.0.1
  */

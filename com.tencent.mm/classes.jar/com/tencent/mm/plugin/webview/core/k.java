@@ -2,12 +2,10 @@ package com.tencent.mm.plugin.webview.core;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/core/WebViewProgressController;", "", "()V", "delay", "", "mills", "", "finish", "webview-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/core/WebViewProgressController;", "", "()V", "delay", "", "mills", "", "finish", "webview-sdk_release"})
 public class k
 {
-  public void finish() {}
-  
-  public void zB(long paramLong) {}
+  public void Cp(long paramLong) {}
 }
 
 

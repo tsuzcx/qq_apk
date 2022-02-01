@@ -4,7 +4,7 @@ import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.p;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.tmassistantsdk.protocol.jce.DownloadChunkLogInfo;
 import com.tencent.tmassistantsdk.storage.TMAssistantFile;
 import com.tencent.tmassistantsdk.util.GlobalUtil;
@@ -165,7 +165,7 @@ public class DownloadTask
   {
     AppMethodBeat.i(101995);
     if (paramThrowable != null) {
-      ac.printErrStackTrace("_DownloadTask", paramThrowable, "", new Object[0]);
+      ad.printErrStackTrace("_DownloadTask", paramThrowable, "", new Object[0]);
     }
     AppMethodBeat.o(101995);
   }
@@ -605,7 +605,7 @@ public class DownloadTask
     //   1005: ldc_w 259
     //   1008: iconst_0
     //   1009: anewarray 4	java/lang/Object
-    //   1012: invokestatic 265	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1012: invokestatic 265	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1015: lload 6
     //   1017: lstore 4
     //   1019: new 153	com/tencent/tmassistantsdk/downloadservice/StopRequestException
@@ -905,7 +905,7 @@ public class DownloadTask
       }
       catch (UnsupportedOperationException paramHttpGet)
       {
-        ac.printErrStackTrace("_DownloadTask", paramHttpGet, "", new Object[0]);
+        ad.printErrStackTrace("_DownloadTask", paramHttpGet, "", new Object[0]);
         AppMethodBeat.o(101999);
         return;
       }
@@ -1105,7 +1105,7 @@ public class DownloadTask
     //   116: aload_0
     //   117: getfield 47	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
     //   120: getfield 674	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mSecondaryUrl	Ljava/lang/String;
-    //   123: invokestatic 679	com/tencent/mm/plugin/downloader/a/c:Ws	(Ljava/lang/String;)Ljava/lang/String;
+    //   123: invokestatic 679	com/tencent/mm/plugin/downloader/a/c:ZZ	(Ljava/lang/String;)Ljava/lang/String;
     //   126: astore_1
     //   127: aload_0
     //   128: aload_1
@@ -1274,7 +1274,7 @@ public class DownloadTask
     //   499: aload_0
     //   500: getfield 47	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
     //   503: getfield 463	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mRequestURL	Ljava/lang/String;
-    //   506: invokestatic 679	com/tencent/mm/plugin/downloader/a/c:Ws	(Ljava/lang/String;)Ljava/lang/String;
+    //   506: invokestatic 679	com/tencent/mm/plugin/downloader/a/c:ZZ	(Ljava/lang/String;)Ljava/lang/String;
     //   509: astore_1
     //   510: goto -383 -> 127
     //   513: aload_0
@@ -1348,7 +1348,7 @@ public class DownloadTask
     //   662: ldc_w 259
     //   665: iconst_0
     //   666: anewarray 4	java/lang/Object
-    //   669: invokestatic 265	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   669: invokestatic 265	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   672: aload_0
     //   673: invokespecial 776	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
     //   676: istore_2
@@ -1460,7 +1460,7 @@ public class DownloadTask
     //   909: ldc_w 259
     //   912: iconst_0
     //   913: anewarray 4	java/lang/Object
-    //   916: invokestatic 265	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   916: invokestatic 265	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   919: aload_0
     //   920: invokespecial 776	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
     //   923: istore_2
@@ -1535,7 +1535,7 @@ public class DownloadTask
     //   1073: ldc_w 259
     //   1076: iconst_0
     //   1077: anewarray 4	java/lang/Object
-    //   1080: invokestatic 265	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1080: invokestatic 265	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1083: aload_0
     //   1084: invokespecial 776	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
     //   1087: istore_2
@@ -1606,7 +1606,7 @@ public class DownloadTask
     //   1230: ldc_w 259
     //   1233: iconst_0
     //   1234: anewarray 4	java/lang/Object
-    //   1237: invokestatic 265	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1237: invokestatic 265	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1240: aload_0
     //   1241: getfield 47	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
     //   1244: sipush 600
@@ -1668,7 +1668,7 @@ public class DownloadTask
     //   1372: ldc_w 259
     //   1375: iconst_0
     //   1376: anewarray 4	java/lang/Object
-    //   1379: invokestatic 265	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1379: invokestatic 265	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1382: aload_0
     //   1383: getfield 47	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
     //   1386: sipush 607
@@ -1734,7 +1734,7 @@ public class DownloadTask
     //   1521: ldc_w 259
     //   1524: iconst_0
     //   1525: anewarray 4	java/lang/Object
-    //   1528: invokestatic 265	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1528: invokestatic 265	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1531: aload_0
     //   1532: invokespecial 776	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
     //   1535: istore_2
@@ -1816,7 +1816,7 @@ public class DownloadTask
     //   1698: ldc_w 259
     //   1701: iconst_0
     //   1702: anewarray 4	java/lang/Object
-    //   1705: invokestatic 265	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1705: invokestatic 265	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1708: aload_0
     //   1709: getfield 47	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
     //   1712: aload_1
@@ -1944,7 +1944,7 @@ public class DownloadTask
     //   1984: ldc_w 259
     //   1987: iconst_0
     //   1988: anewarray 4	java/lang/Object
-    //   1991: invokestatic 265	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1991: invokestatic 265	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1994: aload_0
     //   1995: invokespecial 776	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
     //   1998: istore_2

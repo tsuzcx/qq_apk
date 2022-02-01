@@ -4,18 +4,17 @@ import android.content.Context;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.luggage.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.ac;
 
 public abstract interface e
   extends ac
 {
-  public abstract boolean bAy();
+  public abstract boolean bEA();
   
-  public abstract void bBa();
+  public abstract void bFc();
   
-  public abstract void bBb();
+  public abstract void bFd();
   
   public abstract View getPanelView();
   
@@ -23,12 +22,12 @@ public abstract interface e
   
   public abstract void setOnTextOperationListener(f paramf);
   
-  public abstract boolean vN(int paramInt);
+  public abstract boolean ws(int paramInt);
   
   public static final class a
     implements e
   {
-    int lzd;
+    int lYB;
     boolean mInLayout;
     private View mView;
     
@@ -49,8 +48,8 @@ public abstract interface e
         protected final void onMeasure(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(136689);
-          if (e.a.this.lzd > 0) {
-            paramAnonymousInt2 = View.MeasureSpec.makeMeasureSpec(e.a.this.lzd, 1073741824);
+          if (e.a.this.lYB > 0) {
+            paramAnonymousInt2 = View.MeasureSpec.makeMeasureSpec(e.a.this.lYB, 1073741824);
           }
           super.onMeasure(paramAnonymousInt1, paramAnonymousInt2);
           AppMethodBeat.o(136689);
@@ -59,12 +58,7 @@ public abstract interface e
       AppMethodBeat.o(136691);
     }
     
-    public final boolean bAu()
-    {
-      return true;
-    }
-    
-    public final boolean bAy()
+    public final boolean bEA()
     {
       AppMethodBeat.i(136694);
       if (Build.VERSION.SDK_INT >= 18)
@@ -78,14 +72,19 @@ public abstract interface e
       return bool;
     }
     
-    public final void bBa()
+    public final boolean bEw()
+    {
+      return true;
+    }
+    
+    public final void bFc()
     {
       AppMethodBeat.i(136692);
       this.mView.setVisibility(0);
       AppMethodBeat.o(136692);
     }
     
-    public final void bBb()
+    public final void bFd()
     {
       AppMethodBeat.i(136693);
       this.mView.setVisibility(4);
@@ -101,26 +100,20 @@ public abstract interface e
     
     public final void setOnTextOperationListener(f paramf) {}
     
-    public final boolean vN(int paramInt)
+    public final boolean ws(int paramInt)
     {
-      if ((paramInt > 0) && (this.lzd != paramInt))
+      if ((paramInt > 0) && (this.lYB != paramInt))
       {
-        this.lzd = paramInt;
+        this.lYB = paramInt;
         return true;
       }
       return false;
     }
   }
-  
-  public static abstract interface b
-    extends b
-  {
-    public abstract e dF(Context paramContext);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.panel.e
  * JD-Core Version:    0.7.0.1
  */

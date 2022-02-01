@@ -306,7 +306,7 @@ public final class b
   
   private static ClassLoader c()
   {
-    AppMethodBeat.i(192409);
+    AppMethodBeat.i(190648);
     try
     {
       Object localObject = Class.forName("dalvik.system.VMStack").getMethod("getCallingClassLoader", new Class[0]);
@@ -315,20 +315,20 @@ public final class b
       if ((localObject instanceof ClassLoader))
       {
         localObject = (ClassLoader)localObject;
-        AppMethodBeat.o(192409);
+        AppMethodBeat.o(190648);
         return localObject;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(192409);
+      AppMethodBeat.o(190648);
     }
     return null;
   }
   
   private Set<String> d()
   {
-    AppMethodBeat.i(192410);
+    AppMethodBeat.i(190649);
     HashSet localHashSet = new HashSet();
     localHashSet.add(this.k.getAbsolutePath());
     String[] arrayOfString = this.f.f;
@@ -343,7 +343,7 @@ public final class b
         i1 += 1;
       }
     }
-    AppMethodBeat.o(192410);
+    AppMethodBeat.o(190649);
     return localHashSet;
   }
   
@@ -451,13 +451,13 @@ public final class b
   
   public final void a(final Bundle paramBundle)
   {
-    AppMethodBeat.i(192408);
+    AppMethodBeat.i(190647);
     Object localObject1 = this.b.b;
     Object localObject2 = this.a;
     if (this.e)
     {
       com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Have started loading component", new Object[] { localObject1, localObject2 });
-      AppMethodBeat.o(192408);
+      AppMethodBeat.o(190647);
       return;
     }
     com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Loading DEPS", new Object[] { localObject1, localObject2 });
@@ -485,19 +485,19 @@ public final class b
     {
       com.tencent.tbs.one.impl.a.f.a("[%s] Loaded DEPS#%d", new Object[] { str, Integer.valueOf(((com.tencent.tbs.one.impl.e.h)localObject1).h.a) });
       ((l)localObject2).a(((com.tencent.tbs.one.impl.e.h)localObject1).h);
-      AppMethodBeat.o(192408);
+      AppMethodBeat.o(190647);
       return;
     }
     if (((com.tencent.tbs.one.impl.e.h)localObject1).i == null) {
       ((com.tencent.tbs.one.impl.e.h)localObject1).i = new h.1((com.tencent.tbs.one.impl.e.h)localObject1, paramBundle);
     }
     ((com.tencent.tbs.one.impl.e.h)localObject1).i.a((l)localObject2);
-    AppMethodBeat.o(192408);
+    AppMethodBeat.o(190647);
   }
   
   public final void a(Bundle paramBundle, TBSOneCallback<File> paramTBSOneCallback)
   {
-    AppMethodBeat.i(192407);
+    AppMethodBeat.i(190646);
     if (this.k != null)
     {
       com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Installed component at %s", new Object[] { this.b.b, this.a, this.k });
@@ -506,7 +506,7 @@ public final class b
         paramTBSOneCallback.onProgressChanged(0, 100);
         paramTBSOneCallback.onCompleted(this.k);
       }
-      AppMethodBeat.o(192407);
+      AppMethodBeat.o(190646);
       return;
     }
     if (paramTBSOneCallback != null)
@@ -515,7 +515,7 @@ public final class b
       this.c.add(paramTBSOneCallback);
     }
     a(paramBundle);
-    AppMethodBeat.o(192407);
+    AppMethodBeat.o(190646);
   }
   
   /* Error */

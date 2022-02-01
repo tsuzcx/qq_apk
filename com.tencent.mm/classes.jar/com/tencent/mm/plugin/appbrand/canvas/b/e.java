@@ -13,12 +13,12 @@ import org.json.JSONObject;
 
 public final class e
 {
-  public Map<String, a> jAl;
+  public Map<String, a> jUg;
   
   public e()
   {
     AppMethodBeat.i(145360);
-    this.jAl = new HashMap();
+    this.jUg = new HashMap();
     a(new h());
     a(new f());
     a(new g());
@@ -33,7 +33,7 @@ public final class e
   private void a(a parama)
   {
     AppMethodBeat.i(145365);
-    this.jAl.put(parama.getMethod(), parama);
+    this.jUg.put(parama.getMethod(), parama);
     AppMethodBeat.o(145365);
   }
   
@@ -42,7 +42,7 @@ public final class e
     AppMethodBeat.i(145364);
     Object localObject = paramJSONObject.optString("method");
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    localObject = (a)this.jAl.get(localObject);
+    localObject = (a)this.jUg.get(localObject);
     if (localObject == null)
     {
       AppMethodBeat.o(145364);
@@ -57,7 +57,7 @@ public final class e
   {
     AppMethodBeat.i(145362);
     Object localObject = paramBasePathActionArg.method;
-    localObject = (a)this.jAl.get(localObject);
+    localObject = (a)this.jUg.get(localObject);
     if (localObject == null)
     {
       AppMethodBeat.o(145362);
@@ -72,7 +72,7 @@ public final class e
   {
     AppMethodBeat.i(145361);
     Path localPath = new Path();
-    paramPathActionArgWrapper = paramPathActionArgWrapper.jzO;
+    paramPathActionArgWrapper = paramPathActionArgWrapper.jTJ;
     if ((paramPathActionArgWrapper == null) || (paramPathActionArgWrapper.size() == 0))
     {
       AppMethodBeat.o(145361);
@@ -114,12 +114,12 @@ public final class e
   
   public static final class a
   {
-    public static e jAm;
+    public static e jUh;
     
     static
     {
       AppMethodBeat.i(145359);
-      jAm = new e();
+      jUh = new e();
       AppMethodBeat.o(145359);
     }
   }

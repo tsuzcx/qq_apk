@@ -4,8 +4,10 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class g$6
   implements View.OnClickListener
@@ -14,13 +16,17 @@ final class g$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(206139);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.JsApiRequestAuthUserAutoFillData", "do know the auth auto fill data protocol");
-    paramView = this.kfC.getContext().getString(2131755329);
-    paramView = paramView + ab.eUO();
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.JsApiRequestAuthUserAutoFillData", "do open url:".concat(String.valueOf(paramView)));
-    ((com.tencent.mm.plugin.appbrand.jsapi.ac)this.kfC.K(com.tencent.mm.plugin.appbrand.jsapi.ac.class)).a(this.kfC.getContext(), paramView, null);
-    AppMethodBeat.o(206139);
+    AppMethodBeat.i(192216);
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiRequestAuthUserAutoFillData$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    ad.i("MicroMsg.JsApiRequestAuthUserAutoFillData", "do know the auth auto fill data protocol");
+    paramView = this.kAq.getContext().getString(2131755329);
+    paramView = paramView + com.tencent.mm.sdk.platformtools.ac.fks();
+    ad.i("MicroMsg.JsApiRequestAuthUserAutoFillData", "do open url:".concat(String.valueOf(paramView)));
+    ((com.tencent.mm.plugin.appbrand.jsapi.ac)this.kAq.K(com.tencent.mm.plugin.appbrand.jsapi.ac.class)).a(this.kAq.getContext(), paramView, null);
+    a.a(this, "com/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiRequestAuthUserAutoFillData$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(192216);
   }
 }
 

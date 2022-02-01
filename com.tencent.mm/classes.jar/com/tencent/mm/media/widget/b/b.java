@@ -16,43 +16,43 @@ import android.renderscript.Type.Builder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.widget.d.a;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camera2/Camera2ImageSaver;", "Ljava/lang/Runnable;", "renderHelper", "Lcom/tencent/mm/media/widget/camera2/RenderScriptImageHelper;", "screenSize", "Landroid/graphics/Point;", "rotate", "", "image", "Landroid/media/Image;", "imageReadyCallback", "Lkotlin/Function1;", "Landroid/graphics/Bitmap;", "", "(Lcom/tencent/mm/media/widget/camera2/RenderScriptImageHelper;Landroid/graphics/Point;ZLandroid/media/Image;Lkotlin/jvm/functions/Function1;)V", "convertBitmapUseRenderScript", "srcHeight", "", "srcWidth", "convertBitmapUseRenderScriptUsePacketYUV", "convertBitmapUseYuvImage", "stream", "Ljava/io/ByteArrayOutputStream;", "getDataFromImage", "", "imageToByteBuffer", "Ljava/nio/ByteBuffer;", "run", "Companion", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/Camera2ImageSaver;", "Ljava/lang/Runnable;", "renderHelper", "Lcom/tencent/mm/media/widget/camera2/RenderScriptImageHelper;", "screenSize", "Landroid/graphics/Point;", "rotate", "", "image", "Landroid/media/Image;", "imageReadyCallback", "Lkotlin/Function1;", "Landroid/graphics/Bitmap;", "", "(Lcom/tencent/mm/media/widget/camera2/RenderScriptImageHelper;Landroid/graphics/Point;ZLandroid/media/Image;Lkotlin/jvm/functions/Function1;)V", "convertBitmapUseRenderScript", "srcHeight", "", "srcWidth", "convertBitmapUseRenderScriptUsePacketYUV", "convertBitmapUseYuvImage", "stream", "Ljava/io/ByteArrayOutputStream;", "getDataFromImage", "", "imageToByteBuffer", "Ljava/nio/ByteBuffer;", "run", "Companion", "plugin-mediaeditor_release"})
 public final class b
   implements Runnable
 {
   private static final String TAG = "MicroMsg.Camera2ImageSaver";
-  public static final b.a gYx;
-  private final f gYo;
-  private final Point gYt;
-  private final boolean gYu;
-  private final Image gYv;
-  private final d.g.a.b<Bitmap, y> gYw;
+  public static final b.a hqD;
+  private final boolean hqA;
+  private final Image hqB;
+  private final d.g.a.b<Bitmap, z> hqC;
+  private final f hqu;
+  private final Point hqz;
   
   static
   {
     AppMethodBeat.i(94072);
-    gYx = new b.a((byte)0);
+    hqD = new b.a((byte)0);
     TAG = "MicroMsg.Camera2ImageSaver";
     AppMethodBeat.o(94072);
   }
   
-  public b(f paramf, Point paramPoint, boolean paramBoolean, Image paramImage, d.g.a.b<? super Bitmap, y> paramb)
+  public b(f paramf, Point paramPoint, boolean paramBoolean, Image paramImage, d.g.a.b<? super Bitmap, z> paramb)
   {
     AppMethodBeat.i(94071);
-    this.gYo = paramf;
-    this.gYt = paramPoint;
-    this.gYu = paramBoolean;
-    this.gYv = paramImage;
-    this.gYw = paramb;
+    this.hqu = paramf;
+    this.hqz = paramPoint;
+    this.hqA = paramBoolean;
+    this.hqB = paramImage;
+    this.hqC = paramb;
     AppMethodBeat.o(94071);
   }
   
@@ -60,16 +60,16 @@ public final class b
   {
     AppMethodBeat.i(94069);
     paramImage = com.tencent.mm.plugin.mmsight.d.e(a(paramImage), paramInt1, paramInt2, 90);
-    k.g(paramImage, "MMSightUtil.rotateNv21(y… srcHeight, srcWidth, 90)");
-    if (this.gYu) {
+    p.g(paramImage, "MMSightUtil.rotateNv21(y… srcHeight, srcWidth, 90)");
+    if (this.hqA) {
       SightVideoJNI.mirrorCameraData(paramImage, paramInt2, paramInt1, true);
     }
-    float f1 = paramInt1 * (this.gYt.x / this.gYt.y);
+    float f1 = paramInt1 * (this.hqz.x / this.hqz.y);
     float f2 = (paramInt2 - f1) / 2.0F;
     Rect localRect = new Rect((int)f2, 0, (int)(f1 + f2), paramInt1);
     new YuvImage(paramImage, 17, paramInt2, paramInt1, null).compressToJpeg(localRect, 100, (OutputStream)paramByteArrayOutputStream);
     paramImage = BitmapFactory.decodeByteArray(paramByteArrayOutputStream.toByteArray(), 0, paramByteArrayOutputStream.size());
-    k.g(paramImage, "BitmapFactory.decodeByte…rray(), 0, stream.size())");
+    p.g(paramImage, "BitmapFactory.decodeByte…rray(), 0, stream.size())");
     AppMethodBeat.o(94069);
     return paramImage;
   }
@@ -84,11 +84,11 @@ public final class b
     paramImage = paramImage.getPlanes();
     byte[] arrayOfByte = new byte[ImageFormat.getBitsPerPixel(i) * (i5 * i6) / 8];
     Object localObject1 = paramImage[0];
-    k.g(localObject1, "planes[0]");
+    p.g(localObject1, "planes[0]");
     localObject1 = new byte[((Image.Plane)localObject1).getRowStride()];
     i = 0;
     int j = 1;
-    k.g(paramImage, "planes");
+    p.g(paramImage, "planes");
     int i7 = paramImage.length;
     int m = 0;
     while (m < i7)
@@ -100,13 +100,13 @@ public final class b
       {
       default: 
         localObject2 = paramImage[m];
-        k.g(localObject2, "planes[i]");
+        p.g(localObject2, "planes[i]");
         localObject2 = ((Image.Plane)localObject2).getBuffer();
         Object localObject3 = paramImage[m];
-        k.g(localObject3, "planes[i]");
+        p.g(localObject3, "planes[i]");
         i8 = localObject3.getRowStride();
         localObject3 = paramImage[m];
-        k.g(localObject3, "planes[i]");
+        p.g(localObject3, "planes[i]");
         i9 = localObject3.getPixelStride();
         if (m != 0) {
           break;
@@ -172,7 +172,7 @@ public final class b
   public final void run()
   {
     AppMethodBeat.i(94068);
-    boolean bool = a.avB();
+    boolean bool = a.ayo();
     for (;;)
     {
       int j;
@@ -180,16 +180,16 @@ public final class b
       Object localObject3;
       try
       {
-        j = this.gYv.getWidth();
-        k = this.gYv.getHeight();
+        j = this.hqB.getWidth();
+        k = this.hqB.getHeight();
         if (!bool) {
           break label1123;
         }
-        localObject3 = this.gYv;
-        if (this.gYo != null) {
+        localObject3 = this.hqB;
+        if (this.hqu != null) {
           continue;
         }
-        ac.e(TAG, "a error happened when use rs and does not init rs helper");
+        ad.e(TAG, "a error happened when use rs and does not init rs helper");
         localObject4 = new ByteArrayOutputStream();
         localObject1 = a((Image)localObject3, j, k, (ByteArrayOutputStream)localObject4);
         ((ByteArrayOutputStream)localObject4).close();
@@ -207,29 +207,29 @@ public final class b
         int n;
         int i1;
         Object localObject7;
-        ac.e(TAG, "take photo use image stream error", new Object[] { localException.getLocalizedMessage() });
+        ad.e(TAG, "take photo use image stream error", new Object[] { localException.getLocalizedMessage() });
         return;
-        long l2 = bs.Gn();
-        Bitmap localBitmap1 = this.gYo.e((Bitmap)localObject6, 270);
-        ac.i(TAG, "op4 cost " + bs.aO(l2));
-        long l1 = bs.aO(l1);
-        ac.i(TAG, "newFunc cost ".concat(String.valueOf(l1)));
+        long l2 = bt.HI();
+        Bitmap localBitmap1 = this.hqu.e((Bitmap)localObject6, 270);
+        ad.i(TAG, "op4 cost " + bt.aO(l2));
+        long l1 = bt.aO(l1);
+        ad.i(TAG, "newFunc cost ".concat(String.valueOf(l1)));
         continue;
       }
       finally
       {
-        this.gYv.close();
+        this.hqB.close();
         AppMethodBeat.o(94068);
       }
-      this.gYw.ay(localObject1);
-      this.gYv.close();
+      this.hqC.invoke(localObject1);
+      this.hqB.close();
       AppMethodBeat.o(94068);
       return;
-      l1 = bs.Gn();
+      l1 = bt.HI();
       i = ((Image)localObject3).getWidth();
       m = ((Image)localObject3).getHeight();
       f1 = i;
-      f2 = this.gYt.x / this.gYt.y;
+      f2 = this.hqz.x / this.hqz.y;
       f1 = (float)Math.ceil((m - f1 * f2) / 2.0F);
       localObject1 = ((Image)localObject3).getPlanes();
       localObject4 = new byte[3][];
@@ -237,7 +237,7 @@ public final class b
       if (i < 3)
       {
         localObject5 = localObject1[i];
-        k.g(localObject5, "planes[it]");
+        p.g(localObject5, "planes[it]");
         localObject5 = ((Image.Plane)localObject5).getBuffer();
         localObject6 = new byte[((ByteBuffer)localObject5).capacity()];
         ((ByteBuffer)localObject5).get((byte[])localObject6);
@@ -247,57 +247,57 @@ public final class b
       else
       {
         localObject6 = (byte[][])localObject4;
-        l2 = bs.Gn();
-        localObject1 = this.gYo;
+        l2 = bt.HI();
+        localObject1 = this.hqu;
         localObject3 = ((Image)localObject3).getPlanes();
-        k.g(localObject3, "image.planes");
+        p.g(localObject3, "image.planes");
         i = (int)f1;
-        k.h(localObject3, "planes");
-        k.h(localObject6, "yuvBytes");
+        p.h(localObject3, "planes");
+        p.h(localObject6, "yuvBytes");
         m = localObject3[0].getRowStride();
         n = localObject3[1].getRowStride();
         i1 = localObject3[1].getPixelStride();
-        localObject3 = new Type.Builder(((f)localObject1).gZE, Element.U8(((f)localObject1).gZE));
+        localObject3 = new Type.Builder(((f)localObject1).hrK, Element.U8(((f)localObject1).hrK));
         ((Type.Builder)localObject3).setX(m).setY(localObject6[0].length / m);
-        localObject3 = Allocation.createTyped(((f)localObject1).gZE, ((Type.Builder)localObject3).create());
+        localObject3 = Allocation.createTyped(((f)localObject1).hrK, ((Type.Builder)localObject3).create());
         ((Allocation)localObject3).copyFrom(localObject6[0]);
-        localObject4 = ((f)localObject1).gZD;
+        localObject4 = ((f)localObject1).hrJ;
         if (localObject4 != null) {
           ((com.tencent.mm.d)localObject4).b((Allocation)localObject3);
         }
-        localObject5 = new Type.Builder(((f)localObject1).gZE, Element.U8(((f)localObject1).gZE));
+        localObject5 = new Type.Builder(((f)localObject1).hrK, Element.U8(((f)localObject1).hrK));
         ((Type.Builder)localObject5).setX(localObject6[1].length);
-        localObject4 = Allocation.createTyped(((f)localObject1).gZE, ((Type.Builder)localObject5).create());
+        localObject4 = Allocation.createTyped(((f)localObject1).hrK, ((Type.Builder)localObject5).create());
         ((Allocation)localObject4).copyFrom(localObject6[1]);
-        localObject7 = ((f)localObject1).gZD;
+        localObject7 = ((f)localObject1).hrJ;
         if (localObject7 != null) {
           ((com.tencent.mm.d)localObject7).c((Allocation)localObject4);
         }
-        localObject5 = Allocation.createTyped(((f)localObject1).gZE, ((Type.Builder)localObject5).create());
+        localObject5 = Allocation.createTyped(((f)localObject1).hrK, ((Type.Builder)localObject5).create());
         ((Allocation)localObject5).copyFrom(localObject6[2]);
-        localObject6 = ((f)localObject1).gZD;
+        localObject6 = ((f)localObject1).hrJ;
         if (localObject6 != null) {
           ((com.tencent.mm.d)localObject6).d((Allocation)localObject5);
         }
-        localObject6 = ((f)localObject1).gZD;
+        localObject6 = ((f)localObject1).hrJ;
         if (localObject6 != null) {
-          ((com.tencent.mm.d)localObject6).Iy();
+          ((com.tencent.mm.d)localObject6).JY();
         }
-        localObject6 = ((f)localObject1).gZD;
+        localObject6 = ((f)localObject1).hrJ;
         if (localObject6 != null) {
           ((com.tencent.mm.d)localObject6).aW(i);
         }
-        localObject6 = ((f)localObject1).gZD;
+        localObject6 = ((f)localObject1).hrJ;
         if (localObject6 != null) {
           ((com.tencent.mm.d)localObject6).aY(n);
         }
-        localObject6 = ((f)localObject1).gZD;
+        localObject6 = ((f)localObject1).hrJ;
         if (localObject6 != null) {
           ((com.tencent.mm.d)localObject6).aX(i1);
         }
         localObject6 = Bitmap.createBitmap(j + 0, k - i * 2, Bitmap.Config.ARGB_8888);
-        localObject7 = Allocation.createFromBitmap(((f)localObject1).gZE, (Bitmap)localObject6, Allocation.MipmapControl.MIPMAP_NONE, 1);
-        localObject1 = ((f)localObject1).gZD;
+        localObject7 = Allocation.createFromBitmap(((f)localObject1).hrK, (Bitmap)localObject6, Allocation.MipmapControl.MIPMAP_NONE, 1);
+        localObject1 = ((f)localObject1).hrJ;
         if (localObject1 != null) {
           ((com.tencent.mm.d)localObject1).e((Allocation)localObject7);
         }
@@ -306,50 +306,50 @@ public final class b
         ((Allocation)localObject4).destroy();
         ((Allocation)localObject5).destroy();
         ((Allocation)localObject7).destroy();
-        k.g(localObject6, "bmp");
-        ac.i(TAG, "op1 cost " + bs.aO(l2));
-        if (this.gYu)
+        p.g(localObject6, "bmp");
+        ad.i(TAG, "op1 cost " + bt.aO(l2));
+        if (this.hqA)
         {
-          l2 = bs.Gn();
-          localObject1 = this.gYo.e((Bitmap)localObject6, 90);
-          ac.i(TAG, "op2 cost " + bs.aO(l2));
-          l2 = bs.Gn();
-          localObject3 = this.gYo;
-          k.h(localObject1, "bitmap");
-          localObject4 = ((f)localObject3).gZD;
+          l2 = bt.HI();
+          localObject1 = this.hqu.e((Bitmap)localObject6, 90);
+          ad.i(TAG, "op2 cost " + bt.aO(l2));
+          l2 = bt.HI();
+          localObject3 = this.hqu;
+          p.h(localObject1, "bitmap");
+          localObject4 = ((f)localObject3).hrJ;
           if (localObject4 != null) {
-            ((com.tencent.mm.d)localObject4).gY(((Bitmap)localObject1).getWidth());
+            ((com.tencent.mm.d)localObject4).hf(((Bitmap)localObject1).getWidth());
           }
-          localObject4 = ((f)localObject3).gZD;
+          localObject4 = ((f)localObject3).hrJ;
           if (localObject4 != null) {
-            ((com.tencent.mm.d)localObject4).gZ(((Bitmap)localObject1).getHeight());
+            ((com.tencent.mm.d)localObject4).hg(((Bitmap)localObject1).getHeight());
           }
-          localObject4 = Allocation.createFromBitmap(((f)localObject3).gZE, (Bitmap)localObject1, Allocation.MipmapControl.MIPMAP_NONE, 1);
+          localObject4 = Allocation.createFromBitmap(((f)localObject3).hrK, (Bitmap)localObject1, Allocation.MipmapControl.MIPMAP_NONE, 1);
           ((Bitmap)localObject1).recycle();
-          localObject5 = ((f)localObject3).gZD;
+          localObject5 = ((f)localObject3).hrJ;
           if (localObject5 != null) {
             ((com.tencent.mm.d)localObject5).a((Allocation)localObject4);
           }
           i = ((Bitmap)localObject1).getHeight();
           localObject1 = Bitmap.createBitmap(((Bitmap)localObject1).getWidth(), i, ((Bitmap)localObject1).getConfig());
-          localObject5 = Allocation.createFromBitmap(((f)localObject3).gZE, (Bitmap)localObject1, Allocation.MipmapControl.MIPMAP_NONE, 1);
-          localObject3 = ((f)localObject3).gZD;
+          localObject5 = Allocation.createFromBitmap(((f)localObject3).hrK, (Bitmap)localObject1, Allocation.MipmapControl.MIPMAP_NONE, 1);
+          localObject3 = ((f)localObject3).hrJ;
           if (localObject3 != null) {
             ((com.tencent.mm.d)localObject3).c((Allocation)localObject5, (Allocation)localObject5);
           }
           ((Allocation)localObject5).copyTo((Bitmap)localObject1);
           ((Allocation)localObject5).destroy();
           ((Allocation)localObject4).destroy();
-          k.g(localObject1, "target");
-          ac.i(TAG, "op3 cost " + bs.aO(l2));
-          l1 = bs.aO(l1);
-          ac.i(TAG, "newFunc cost ".concat(String.valueOf(l1)));
+          p.g(localObject1, "target");
+          ad.i(TAG, "op3 cost " + bt.aO(l2));
+          l1 = bt.aO(l1);
+          ad.i(TAG, "newFunc cost ".concat(String.valueOf(l1)));
         }
         else
         {
           label1123:
           localObject3 = new ByteArrayOutputStream();
-          Bitmap localBitmap2 = a(this.gYv, j, k, (ByteArrayOutputStream)localObject3);
+          Bitmap localBitmap2 = a(this.hqB, j, k, (ByteArrayOutputStream)localObject3);
           ((ByteArrayOutputStream)localObject3).close();
         }
       }
@@ -358,7 +358,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.media.widget.b.b
  * JD-Core Version:    0.7.0.1
  */

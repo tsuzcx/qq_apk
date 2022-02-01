@@ -21,7 +21,7 @@ public class PluginCard
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(112560);
-    if (paramg.ahL()) {
+    if (paramg.akw()) {
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.card.c.b.class, new e(new com.tencent.mm.plugin.card.c.a()));
     }
     AppMethodBeat.o(112560);

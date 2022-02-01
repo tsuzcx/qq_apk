@@ -1,22 +1,22 @@
 package d.l.b.a.b.k.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 
 public final class t<T extends d.l.b.a.b.e.b.a>
 {
-  private final T LIi;
-  private final T LIj;
-  private final d.l.b.a.b.f.a LbB;
+  private final d.l.b.a.b.f.a MSw;
+  private final T Nzg;
+  private final T Nzh;
   private final String filePath;
   
   public t(T paramT1, T paramT2, String paramString, d.l.b.a.b.f.a parama)
   {
     AppMethodBeat.i(60319);
-    this.LIi = paramT1;
-    this.LIj = paramT2;
+    this.Nzg = paramT1;
+    this.Nzh = paramT2;
     this.filePath = paramString;
-    this.LbB = parama;
+    this.MSw = parama;
     AppMethodBeat.o(60319);
   }
   
@@ -28,7 +28,7 @@ public final class t<T extends d.l.b.a.b.e.b.a>
       if ((paramObject instanceof t))
       {
         paramObject = (t)paramObject;
-        if ((!k.g(this.LIi, paramObject.LIi)) || (!k.g(this.LIj, paramObject.LIj)) || (!k.g(this.filePath, paramObject.filePath)) || (!k.g(this.LbB, paramObject.LbB))) {}
+        if ((!p.i(this.Nzg, paramObject.Nzg)) || (!p.i(this.Nzh, paramObject.Nzh)) || (!p.i(this.filePath, paramObject.filePath)) || (!p.i(this.MSw, paramObject.MSw))) {}
       }
     }
     else
@@ -44,13 +44,13 @@ public final class t<T extends d.l.b.a.b.e.b.a>
   {
     int m = 0;
     AppMethodBeat.i(60321);
-    Object localObject = this.LIi;
+    Object localObject = this.Nzg;
     int i;
     int j;
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.LIj;
+      localObject = this.Nzh;
       if (localObject == null) {
         break label105;
       }
@@ -65,7 +65,7 @@ public final class t<T extends d.l.b.a.b.e.b.a>
     label110:
     for (int k = localObject.hashCode();; k = 0)
     {
-      localObject = this.LbB;
+      localObject = this.MSw;
       if (localObject != null) {
         m = localObject.hashCode();
       }
@@ -81,7 +81,7 @@ public final class t<T extends d.l.b.a.b.e.b.a>
   public final String toString()
   {
     AppMethodBeat.i(60320);
-    String str = "IncompatibleVersionErrorData(actualVersion=" + this.LIi + ", expectedVersion=" + this.LIj + ", filePath=" + this.filePath + ", classId=" + this.LbB + ")";
+    String str = "IncompatibleVersionErrorData(actualVersion=" + this.Nzg + ", expectedVersion=" + this.Nzh + ", filePath=" + this.filePath + ", classId=" + this.MSw + ")";
     AppMethodBeat.o(60320);
     return str;
   }

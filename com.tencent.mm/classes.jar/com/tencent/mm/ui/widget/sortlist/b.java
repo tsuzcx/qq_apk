@@ -11,20 +11,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class b
   extends ViewGroup
 {
-  private int Is;
+  private int Kk;
   
   public b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(159747);
-    this.Is = 48;
+    this.Kk = 48;
     setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     AppMethodBeat.o(159747);
   }
   
   public int getGravity()
   {
-    return this.Is;
+    return this.Kk;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -36,7 +36,7 @@ public class b
       AppMethodBeat.o(159748);
       return;
     }
-    if (this.Is == 48)
+    if (this.Kk == 48)
     {
       localView.layout(0, 0, getMeasuredWidth(), localView.getMeasuredHeight());
       AppMethodBeat.o(159748);
@@ -82,7 +82,7 @@ public class b
   
   public void setGravity(int paramInt)
   {
-    this.Is = paramInt;
+    this.Kk = paramInt;
   }
 }
 

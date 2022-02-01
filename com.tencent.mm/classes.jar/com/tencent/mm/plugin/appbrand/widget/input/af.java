@@ -11,10 +11,10 @@ public abstract interface af
     static
     {
       AppMethodBeat.i(131516);
-      mFJ = new a("COMPLETE", 0);
-      mFK = new a("CONFIRM", 1);
-      mFL = new a("CHANGED", 2);
-      mFM = new a[] { mFJ, mFK, mFL };
+      ngh = new a("COMPLETE", 0);
+      ngi = new a("CONFIRM", 1);
+      ngj = new a("CHANGED", 2);
+      ngk = new a[] { ngh, ngi, ngj };
       AppMethodBeat.o(131516);
     }
     
@@ -23,7 +23,7 @@ public abstract interface af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.af
  * JD-Core Version:    0.7.0.1
  */

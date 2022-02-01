@@ -3,8 +3,8 @@ package com.tencent.map.swlocation.api;
 import android.content.Context;
 import android.os.Handler;
 import android.text.TextUtils;
-import com.c.a.a.q;
-import com.c.a.a.t;
+import com.d.a.a.q;
+import com.d.a.a.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SwEngine
@@ -46,7 +46,7 @@ public class SwEngine
   public static void stopContinousLocationUpdate()
   {
     AppMethodBeat.i(87877);
-    t.zc();
+    t.Az();
     AppMethodBeat.o(87877);
   }
 }

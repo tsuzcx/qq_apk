@@ -11,47 +11,47 @@ import junit.framework.Assert;
 
 public class a<T>
 {
-  protected final ConcurrentHashMap<T, a<T>> gjt;
+  protected final ConcurrentHashMap<T, a<T>> gDd;
   
   public a()
   {
     AppMethodBeat.i(158345);
-    this.gjt = new ConcurrentHashMap();
+    this.gDd = new ConcurrentHashMap();
     AppMethodBeat.o(158345);
   }
   
-  private static void bw(T paramT)
+  private static void by(T paramT)
   {
     AppMethodBeat.i(158349);
     Assert.assertNotNull("Found a null object, maybe your component isn't installedor registered.", paramT);
-    Assert.assertFalse("Found a dummy object, maybe your component isn't installed or registered.", f.bm(paramT));
+    Assert.assertFalse("Found a dummy object, maybe your component isn't installed or registered.", f.bo(paramT));
     AppMethodBeat.o(158349);
   }
   
-  protected a<T> bt(T paramT)
+  protected a<T> bv(T paramT)
   {
     AppMethodBeat.i(158346);
-    if (!this.gjt.containsKey(paramT)) {
-      this.gjt.putIfAbsent(paramT, new a(paramT));
+    if (!this.gDd.containsKey(paramT)) {
+      this.gDd.putIfAbsent(paramT, new a(paramT));
     }
-    paramT = (a)this.gjt.get(paramT);
+    paramT = (a)this.gDd.get(paramT);
     AppMethodBeat.o(158346);
     return paramT;
   }
   
-  public final a<T> bu(T paramT)
+  public final a<T> bw(T paramT)
   {
     AppMethodBeat.i(158347);
-    paramT = (a)this.gjt.get(paramT);
+    paramT = (a)this.gDd.get(paramT);
     AppMethodBeat.o(158347);
     return paramT;
   }
   
-  public final boolean bv(T paramT)
+  public final boolean bx(T paramT)
   {
     AppMethodBeat.i(158348);
-    paramT = (a)this.gjt.get(paramT);
-    if ((paramT != null) && ((paramT.ahp()) || (paramT.ahr())))
+    paramT = (a)this.gDd.get(paramT);
+    if ((paramT != null) && ((paramT.aka()) || (paramT.akc())))
     {
       AppMethodBeat.o(158348);
       return true;
@@ -60,46 +60,46 @@ public class a<T>
     return false;
   }
   
-  public final void q(T paramT1, T paramT2)
-  {
-    AppMethodBeat.i(158350);
-    bw(paramT1);
-    bw(paramT2);
-    if (paramT1 == paramT2)
-    {
-      bt(paramT1).ahq();
-      AppMethodBeat.o(158350);
-      return;
-    }
-    bt(paramT1).a(bt(paramT2));
-    AppMethodBeat.o(158350);
-  }
-  
   public void reset(boolean paramBoolean)
   {
     AppMethodBeat.i(158351);
-    Iterator localIterator = this.gjt.entrySet().iterator();
+    Iterator localIterator = this.gDd.entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).gjx = false;
+      ((a)((Map.Entry)localIterator.next()).getValue()).gDh = false;
     }
     AppMethodBeat.o(158351);
   }
   
+  public final void s(T paramT1, T paramT2)
+  {
+    AppMethodBeat.i(158350);
+    by(paramT1);
+    by(paramT2);
+    if (paramT1 == paramT2)
+    {
+      bv(paramT1).akb();
+      AppMethodBeat.o(158350);
+      return;
+    }
+    bv(paramT1).a(bv(paramT2));
+    AppMethodBeat.o(158350);
+  }
+  
   public static class a<T>
   {
-    private HashSet<a> gju;
-    private HashSet<a> gjv;
-    public T gjw;
-    public volatile boolean gjx;
-    private boolean gjy;
+    private HashSet<a> gDe;
+    private HashSet<a> gDf;
+    public T gDg;
+    public volatile boolean gDh;
+    private boolean gDi;
     
     protected a(T paramT)
     {
       AppMethodBeat.i(176013);
-      this.gjx = false;
-      this.gjy = true;
+      this.gDh = false;
+      this.gDi = true;
       Assert.assertNotNull("Subject should not be null!", paramT);
-      this.gjw = paramT;
+      this.gDg = paramT;
       AppMethodBeat.o(176013);
     }
     
@@ -108,11 +108,11 @@ public class a<T>
       try
       {
         AppMethodBeat.i(158341);
-        this.gjy = false;
-        if (this.gju == null) {
-          this.gju = new HashSet(4);
+        this.gDi = false;
+        if (this.gDe == null) {
+          this.gDe = new HashSet(4);
         }
-        this.gju.add(parama);
+        this.gDe.add(parama);
         AppMethodBeat.o(158341);
         return;
       }
@@ -124,10 +124,10 @@ public class a<T>
       try
       {
         AppMethodBeat.i(158342);
-        if (this.gjv == null) {
-          this.gjv = new HashSet(4);
+        if (this.gDf == null) {
+          this.gDf = new HashSet(4);
         }
-        this.gjv.add(parama);
+        this.gDf.add(parama);
         AppMethodBeat.o(158342);
         return;
       }
@@ -143,7 +143,7 @@ public class a<T>
     }
     
     /* Error */
-    public final HashSet<a> ahm()
+    public final HashSet<a> ajX()
     {
       // Byte code:
       //   0: aload_0
@@ -151,7 +151,7 @@ public class a<T>
       //   2: ldc 75
       //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 67	com/tencent/mm/kernel/a/a/a$a:gjv	Ljava/util/HashSet;
+      //   8: getfield 67	com/tencent/mm/kernel/a/a/a$a:gDf	Ljava/util/HashSet;
       //   11: ifnonnull +14 -> 25
       //   14: aconst_null
       //   15: astore_1
@@ -164,7 +164,7 @@ public class a<T>
       //   25: new 57	java/util/HashSet
       //   28: dup
       //   29: aload_0
-      //   30: getfield 67	com/tencent/mm/kernel/a/a/a$a:gjv	Ljava/util/HashSet;
+      //   30: getfield 67	com/tencent/mm/kernel/a/a/a$a:gDf	Ljava/util/HashSet;
       //   33: invokespecial 78	java/util/HashSet:<init>	(Ljava/util/Collection;)V
       //   36: astore_1
       //   37: ldc 75
@@ -188,7 +188,7 @@ public class a<T>
     }
     
     /* Error */
-    public final HashSet<a> ahn()
+    public final HashSet<a> ajY()
     {
       // Byte code:
       //   0: aload_0
@@ -196,7 +196,7 @@ public class a<T>
       //   2: ldc 81
       //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:gju	Ljava/util/HashSet;
+      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:gDe	Ljava/util/HashSet;
       //   11: ifnonnull +14 -> 25
       //   14: aconst_null
       //   15: astore_1
@@ -209,7 +209,7 @@ public class a<T>
       //   25: new 57	java/util/HashSet
       //   28: dup
       //   29: aload_0
-      //   30: getfield 55	com/tencent/mm/kernel/a/a/a$a:gju	Ljava/util/HashSet;
+      //   30: getfield 55	com/tencent/mm/kernel/a/a/a$a:gDe	Ljava/util/HashSet;
       //   33: invokespecial 78	java/util/HashSet:<init>	(Ljava/util/Collection;)V
       //   36: astore_1
       //   37: ldc 81
@@ -233,7 +233,7 @@ public class a<T>
     }
     
     /* Error */
-    public final int aho()
+    public final int ajZ()
     {
       // Byte code:
       //   0: aload_0
@@ -241,7 +241,7 @@ public class a<T>
       //   2: ldc 84
       //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:gju	Ljava/util/HashSet;
+      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:gDe	Ljava/util/HashSet;
       //   11: ifnonnull +14 -> 25
       //   14: iconst_0
       //   15: istore_1
@@ -252,7 +252,7 @@ public class a<T>
       //   23: iload_1
       //   24: ireturn
       //   25: aload_0
-      //   26: getfield 55	com/tencent/mm/kernel/a/a/a$a:gju	Ljava/util/HashSet;
+      //   26: getfield 55	com/tencent/mm/kernel/a/a/a$a:gDe	Ljava/util/HashSet;
       //   29: invokevirtual 87	java/util/HashSet:size	()I
       //   32: istore_1
       //   33: ldc 84
@@ -275,11 +275,11 @@ public class a<T>
       //   25	38	41	finally
     }
     
-    public final boolean ahp()
+    public final boolean aka()
     {
       try
       {
-        boolean bool = this.gjy;
+        boolean bool = this.gDi;
         return bool;
       }
       finally
@@ -289,13 +289,13 @@ public class a<T>
       }
     }
     
-    public final void ahq()
+    public final void akb()
     {
       try
       {
         AppMethodBeat.i(158337);
-        if ((this.gju == null) || (this.gju.size() == 0)) {
-          this.gjy = true;
+        if ((this.gDe == null) || (this.gDe.size() == 0)) {
+          this.gDi = true;
         }
         AppMethodBeat.o(158337);
         return;
@@ -304,7 +304,7 @@ public class a<T>
     }
     
     /* Error */
-    public final boolean ahr()
+    public final boolean akc()
     {
       // Byte code:
       //   0: aload_0
@@ -312,10 +312,10 @@ public class a<T>
       //   2: ldc 93
       //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:gju	Ljava/util/HashSet;
+      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:gDe	Ljava/util/HashSet;
       //   11: ifnull +24 -> 35
       //   14: aload_0
-      //   15: getfield 55	com/tencent/mm/kernel/a/a/a$a:gju	Ljava/util/HashSet;
+      //   15: getfield 55	com/tencent/mm/kernel/a/a/a$a:gDe	Ljava/util/HashSet;
       //   18: invokevirtual 87	java/util/HashSet:size	()I
       //   21: ifle +14 -> 35
       //   24: iconst_1
@@ -353,11 +353,11 @@ public class a<T>
       AppMethodBeat.i(158344);
       if ((paramObject instanceof a))
       {
-        bool = this.gjw.equals(((a)paramObject).gjw);
+        bool = this.gDg.equals(((a)paramObject).gDg);
         AppMethodBeat.o(158344);
         return bool;
       }
-      boolean bool = this.gjw.equals(paramObject);
+      boolean bool = this.gDg.equals(paramObject);
       AppMethodBeat.o(158344);
       return bool;
     }
@@ -365,7 +365,7 @@ public class a<T>
     public int hashCode()
     {
       AppMethodBeat.i(158343);
-      int i = this.gjw.hashCode();
+      int i = this.gDg.hashCode();
       AppMethodBeat.o(158343);
       return i;
     }
@@ -373,7 +373,7 @@ public class a<T>
     public String toString()
     {
       AppMethodBeat.i(158339);
-      String str = "Ref-" + this.gjw.toString();
+      String str = "Ref-" + this.gDg.toString();
       AppMethodBeat.o(158339);
       return str;
     }

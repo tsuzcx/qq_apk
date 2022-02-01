@@ -3,54 +3,64 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cnj
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String FAD;
-  public String FAE;
-  public int FAF;
-  public int FuV;
+  public boolean GzY;
+  public int HgA;
+  public String dxg;
+  public String md5;
+  public String url;
+  public int version;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91667);
+    AppMethodBeat.i(123639);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.FuV);
-      if (this.FAD != null) {
-        paramVarArgs.d(2, this.FAD);
+      paramVarArgs.bt(1, this.GzY);
+      if (this.url != null) {
+        paramVarArgs.d(2, this.url);
       }
-      if (this.FAE != null) {
-        paramVarArgs.d(3, this.FAE);
+      if (this.md5 != null) {
+        paramVarArgs.d(3, this.md5);
       }
-      paramVarArgs.aR(4, this.FAF);
-      AppMethodBeat.o(91667);
+      paramVarArgs.aS(4, this.version);
+      paramVarArgs.aS(5, this.HgA);
+      if (this.dxg != null) {
+        paramVarArgs.d(6, this.dxg);
+      }
+      AppMethodBeat.o(123639);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.FuV) + 0;
+      int i = f.a.a.b.b.a.alV(1) + 0;
       paramInt = i;
-      if (this.FAD != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.FAD);
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.url);
       }
       i = paramInt;
-      if (this.FAE != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.FAE);
+      if (this.md5 != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.md5);
       }
-      paramInt = f.a.a.b.b.a.bx(4, this.FAF);
-      AppMethodBeat.o(91667);
-      return i + paramInt;
+      i = i + f.a.a.b.b.a.bz(4, this.version) + f.a.a.b.b.a.bz(5, this.HgA);
+      paramInt = i;
+      if (this.dxg != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.dxg);
+      }
+      AppMethodBeat.o(123639);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(91667);
+      AppMethodBeat.o(123639);
       return 0;
     }
     if (paramInt == 3)
@@ -60,32 +70,40 @@ public final class cnj
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(91667);
+        AppMethodBeat.o(123639);
         return -1;
       case 1: 
-        localcnj.FuV = locala.LVo.xF();
-        AppMethodBeat.o(91667);
+        localcnj.GzY = locala.NPN.grw();
+        AppMethodBeat.o(123639);
         return 0;
       case 2: 
-        localcnj.FAD = locala.LVo.readString();
-        AppMethodBeat.o(91667);
+        localcnj.url = locala.NPN.readString();
+        AppMethodBeat.o(123639);
         return 0;
       case 3: 
-        localcnj.FAE = locala.LVo.readString();
-        AppMethodBeat.o(91667);
+        localcnj.md5 = locala.NPN.readString();
+        AppMethodBeat.o(123639);
+        return 0;
+      case 4: 
+        localcnj.version = locala.NPN.zc();
+        AppMethodBeat.o(123639);
+        return 0;
+      case 5: 
+        localcnj.HgA = locala.NPN.zc();
+        AppMethodBeat.o(123639);
         return 0;
       }
-      localcnj.FAF = locala.LVo.xF();
-      AppMethodBeat.o(91667);
+      localcnj.dxg = locala.NPN.readString();
+      AppMethodBeat.o(123639);
       return 0;
     }
-    AppMethodBeat.o(91667);
+    AppMethodBeat.o(123639);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cnj
  * JD-Core Version:    0.7.0.1
  */

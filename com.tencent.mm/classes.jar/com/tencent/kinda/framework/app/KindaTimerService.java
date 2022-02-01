@@ -4,9 +4,9 @@ import android.os.Looper;
 import com.tencent.kinda.gen.KTimerService;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 public class KindaTimerService
   implements KTimerService
@@ -14,14 +14,14 @@ public class KindaTimerService
   private static final String TAG = "KindaTimerService";
   private float interval;
   private boolean needThrottle;
-  private au throttleTimerHandler;
+  private av throttleTimerHandler;
   private VoidCallback timeCheckCallback;
-  private au timerHandler;
+  private av timerHandler;
   
   public KindaTimerService()
   {
     AppMethodBeat.i(18522);
-    this.throttleTimerHandler = new au(Looper.getMainLooper(), new au.a()
+    this.throttleTimerHandler = new av(Looper.getMainLooper(), new av.a()
     {
       public boolean onTimerExpired()
       {
@@ -35,7 +35,7 @@ public class KindaTimerService
   {
     AppMethodBeat.i(18523);
     if (this.throttleTimerHandler == null) {
-      this.throttleTimerHandler = new au(Looper.getMainLooper(), new au.a()
+      this.throttleTimerHandler = new av(Looper.getMainLooper(), new av.a()
       {
         public boolean onTimerExpired()
         {
@@ -72,24 +72,24 @@ public class KindaTimerService
   public void startTimeCheck()
   {
     AppMethodBeat.i(18519);
-    if ((this.timerHandler != null) && (!this.timerHandler.eVs())) {
+    if ((this.timerHandler != null) && (!this.timerHandler.fkZ())) {
       this.timerHandler.stopTimer();
     }
-    this.timerHandler = new au(Looper.getMainLooper(), new au.a()
+    this.timerHandler = new av(Looper.getMainLooper(), new av.a()
     {
       public boolean onTimerExpired()
       {
         AppMethodBeat.i(18516);
         KindaTimerService.this.timeCheckCallback.call();
-        ac.d("KindaTimerService", "A callback to C++ from Kinda timer was performed.");
+        ad.d("KindaTimerService", "A callback to C++ from Kinda timer was performed.");
         AppMethodBeat.o(18516);
         return true;
       }
     }, true);
-    au localau = this.timerHandler;
+    av localav = this.timerHandler;
     long l = (this.interval * 1000.0F);
-    localau.au(l, l);
-    ac.d("KindaTimerService", "Kinda timer has started, interval(second): " + this.interval);
+    localav.az(l, l);
+    ad.d("KindaTimerService", "Kinda timer has started, interval(second): " + this.interval);
     AppMethodBeat.o(18519);
   }
   
@@ -99,7 +99,7 @@ public class KindaTimerService
     if (this.timerHandler != null)
     {
       this.timerHandler.stopTimer();
-      ac.d("KindaTimerService", "Kinda timer has stopped.");
+      ad.d("KindaTimerService", "Kinda timer has stopped.");
     }
     AppMethodBeat.o(18520);
   }
@@ -108,7 +108,7 @@ public class KindaTimerService
   {
     AppMethodBeat.i(18521);
     if (this.throttleTimerHandler == null) {
-      this.throttleTimerHandler = new au(Looper.getMainLooper(), new au.a()
+      this.throttleTimerHandler = new av(Looper.getMainLooper(), new av.a()
       {
         public boolean onTimerExpired()
         {

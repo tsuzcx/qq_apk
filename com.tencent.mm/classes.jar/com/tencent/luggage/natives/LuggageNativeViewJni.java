@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class LuggageNativeViewJni
 {
   public static String TAG;
-  public long cbN;
+  public long cme;
   
   static
   {
@@ -18,7 +18,7 @@ public class LuggageNativeViewJni
   public LuggageNativeViewJni()
   {
     AppMethodBeat.i(140466);
-    this.cbN = -1L;
+    this.cme = -1L;
     AppMethodBeat.o(140466);
   }
   
@@ -36,7 +36,7 @@ public class LuggageNativeViewJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.natives.LuggageNativeViewJni
  * JD-Core Version:    0.7.0.1
  */

@@ -10,133 +10,153 @@ import java.util.Map;
 public abstract class ce
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS Finder_MediaCache_media_id ON FinderMediaCacheInfo(mediaId)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_state ON FinderMediaCacheInfo(state)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_origin_media_id ON FinderMediaCacheInfo(originMediaId)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_fileFormat ON FinderMediaCacheInfo(fileFormat)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_updateTime ON FinderMediaCacheInfo(updateTime)" };
-  private static final int eBv;
-  private static final int eFK;
-  private static final int eHj;
-  private static final int eHk;
-  private static final int eHl;
-  private static final int eHm;
-  private static final int eHn;
-  private static final int eHo = "moovReady".hashCode();
-  private static final int enR = "mediaId".hashCode();
-  private static final int eol;
-  private static final int erd = "url".hashCode();
-  private static final int evF = "filePath".hashCode();
-  private static final int fdu = "videoBitrate".hashCode();
-  private static final int fdv = "audioBitrate".hashCode();
-  private static final int fdy = "frameRate".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FinderConversation_sessionId_index ON FinderConversation(sessionId)", "CREATE INDEX IF NOT EXISTS FinderConversation_talker_index ON FinderConversation(talker)", "CREATE INDEX IF NOT EXISTS FinderConversation_username_status ON FinderConversation(status)", "CREATE INDEX IF NOT EXISTS FinderConversation_updateTime_index ON FinderConversation(updateTime)", "CREATE INDEX IF NOT EXISTS FinderConversation_type_index ON FinderConversation(type)", "CREATE INDEX IF NOT EXISTS FinderConversation_scene_index ON FinderConversation(scene)", "CREATE INDEX IF NOT EXISTS FinderConversation_readStatus_index ON FinderConversation(readStatus)" };
+  private static final int eDc;
+  private static final int eEB = "scene".hashCode();
+  private static final int eEm;
+  private static final int eFq;
+  private static final int eIG;
+  private static final int eII;
+  private static final int eIK;
+  private static final int eIL;
+  private static final int eIN;
+  private static final int eIP;
+  private static final int eLf;
+  private static final int eVL = "sessionId".hashCode();
+  private static final int eYt;
+  private static final int eYu;
+  private static final int eYv;
+  private static final int eYw = "readStatus".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eAJ = true;
-  private boolean eFh = true;
-  private boolean eHd = true;
-  private boolean eHe = true;
-  private boolean eHf = true;
-  private boolean eHg = true;
-  private boolean eHh = true;
-  private boolean eHi = true;
-  private boolean enA = true;
-  private boolean eoi = true;
-  private boolean eqZ = true;
-  private boolean evx = true;
-  private boolean fdg = true;
-  private boolean fdh = true;
-  private boolean fdk = true;
-  public int field_audioBitrate;
-  public long field_cacheSize;
-  public String field_fileFormat;
-  public String field_filePath;
-  public int field_frameRate;
-  public boolean field_hasPlayed;
-  public String field_mediaId;
-  public boolean field_moovReady;
-  public String field_originMediaId;
-  public int field_reqFormat;
-  public int field_state;
-  public long field_totalSize;
+  private static final int type_HASHCODE;
+  private boolean __hadSettype = true;
+  private boolean eCZ = true;
+  private boolean eDP = true;
+  private boolean eEz = true;
+  private boolean eFn = true;
+  private boolean eIA = true;
+  private boolean eIr = true;
+  private boolean eIt = true;
+  private boolean eIv = true;
+  private boolean eIw = true;
+  private boolean eIy = true;
+  private boolean eKS = true;
+  private boolean eVx = true;
+  private boolean eYp = true;
+  private boolean eYq = true;
+  private boolean eYr = true;
+  private boolean eYs = true;
+  public int field_actionPermission;
+  public String field_content;
+  public String field_digest;
+  public String field_digestType;
+  public String field_digestUser;
+  public String field_editingMsg;
+  public int field_isSend;
+  public long field_lastMsgID;
+  public long field_placedFlag;
+  public int field_readStatus;
+  public int field_scene;
+  public String field_sessionId;
+  public int field_status;
+  public String field_talker;
+  public int field_type;
+  public int field_unReadCount;
   public long field_updateTime;
-  public String field_url;
-  public int field_videoBitrate;
   
   static
   {
-    eFK = "totalSize".hashCode();
-    eHj = "cacheSize".hashCode();
-    eBv = "state".hashCode();
-    eHk = "hasPlayed".hashCode();
-    eHl = "reqFormat".hashCode();
-    eHm = "originMediaId".hashCode();
-    eHn = "fileFormat".hashCode();
-    eol = "updateTime".hashCode();
+    eLf = "talker".hashCode();
+    eIG = "unReadCount".hashCode();
+    eDc = "status".hashCode();
+    eFq = "updateTime".hashCode();
+    eIK = "digest".hashCode();
+    eIL = "digestUser".hashCode();
+    eYt = "digestType".hashCode();
+    eII = "lastMsgID".hashCode();
+    eEm = "content".hashCode();
+    eIP = "isSend".hashCode();
+    eYu = "placedFlag".hashCode();
+    eIN = "editingMsg".hashCode();
+    type_HASHCODE = "type".hashCode();
+    eYv = "actionPermission".hashCode();
   }
   
-  public static c.a Th()
+  public static c.a Vv()
   {
     c.a locala = new c.a();
-    locala.GvF = new Field[15];
-    locala.columns = new String[16];
+    locala.IhA = new Field[17];
+    locala.columns = new String[18];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "mediaId";
-    locala.GvH.put("mediaId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" mediaId TEXT PRIMARY KEY ");
+    locala.columns[0] = "sessionId";
+    locala.IhC.put("sessionId", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" sessionId TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "mediaId";
-    locala.columns[1] = "url";
-    locala.GvH.put("url", "TEXT");
-    localStringBuilder.append(" url TEXT");
+    locala.IhB = "sessionId";
+    locala.columns[1] = "talker";
+    locala.IhC.put("talker", "TEXT default '' ");
+    localStringBuilder.append(" talker TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[2] = "filePath";
-    locala.GvH.put("filePath", "TEXT");
-    localStringBuilder.append(" filePath TEXT");
+    locala.columns[2] = "unReadCount";
+    locala.IhC.put("unReadCount", "INTEGER default '0' ");
+    localStringBuilder.append(" unReadCount INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[3] = "totalSize";
-    locala.GvH.put("totalSize", "LONG");
-    localStringBuilder.append(" totalSize LONG");
+    locala.columns[3] = "status";
+    locala.IhC.put("status", "INTEGER default '0' ");
+    localStringBuilder.append(" status INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[4] = "cacheSize";
-    locala.GvH.put("cacheSize", "LONG");
-    localStringBuilder.append(" cacheSize LONG");
+    locala.columns[4] = "updateTime";
+    locala.IhC.put("updateTime", "LONG default '0' ");
+    localStringBuilder.append(" updateTime LONG default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[5] = "state";
-    locala.GvH.put("state", "INTEGER");
-    localStringBuilder.append(" state INTEGER");
+    locala.columns[5] = "digest";
+    locala.IhC.put("digest", "TEXT default '' ");
+    localStringBuilder.append(" digest TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[6] = "hasPlayed";
-    locala.GvH.put("hasPlayed", "INTEGER");
-    localStringBuilder.append(" hasPlayed INTEGER");
+    locala.columns[6] = "digestUser";
+    locala.IhC.put("digestUser", "TEXT default '' ");
+    localStringBuilder.append(" digestUser TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[7] = "reqFormat";
-    locala.GvH.put("reqFormat", "INTEGER default '-1' ");
-    localStringBuilder.append(" reqFormat INTEGER default '-1' ");
+    locala.columns[7] = "digestType";
+    locala.IhC.put("digestType", "TEXT default '' ");
+    localStringBuilder.append(" digestType TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[8] = "originMediaId";
-    locala.GvH.put("originMediaId", "TEXT");
-    localStringBuilder.append(" originMediaId TEXT");
+    locala.columns[8] = "lastMsgID";
+    locala.IhC.put("lastMsgID", "LONG");
+    localStringBuilder.append(" lastMsgID LONG");
     localStringBuilder.append(", ");
-    locala.columns[9] = "fileFormat";
-    locala.GvH.put("fileFormat", "TEXT");
-    localStringBuilder.append(" fileFormat TEXT");
+    locala.columns[9] = "content";
+    locala.IhC.put("content", "TEXT");
+    localStringBuilder.append(" content TEXT");
     localStringBuilder.append(", ");
-    locala.columns[10] = "updateTime";
-    locala.GvH.put("updateTime", "LONG");
-    localStringBuilder.append(" updateTime LONG");
+    locala.columns[10] = "isSend";
+    locala.IhC.put("isSend", "INTEGER");
+    localStringBuilder.append(" isSend INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[11] = "moovReady";
-    locala.GvH.put("moovReady", "INTEGER default 'false' ");
-    localStringBuilder.append(" moovReady INTEGER default 'false' ");
+    locala.columns[11] = "placedFlag";
+    locala.IhC.put("placedFlag", "LONG default '0' ");
+    localStringBuilder.append(" placedFlag LONG default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[12] = "videoBitrate";
-    locala.GvH.put("videoBitrate", "INTEGER default '0' ");
-    localStringBuilder.append(" videoBitrate INTEGER default '0' ");
+    locala.columns[12] = "editingMsg";
+    locala.IhC.put("editingMsg", "TEXT");
+    localStringBuilder.append(" editingMsg TEXT");
     localStringBuilder.append(", ");
-    locala.columns[13] = "audioBitrate";
-    locala.GvH.put("audioBitrate", "INTEGER default '0' ");
-    localStringBuilder.append(" audioBitrate INTEGER default '0' ");
+    locala.columns[13] = "type";
+    locala.IhC.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[14] = "frameRate";
-    locala.GvH.put("frameRate", "INTEGER default '0' ");
-    localStringBuilder.append(" frameRate INTEGER default '0' ");
-    locala.columns[15] = "rowid";
+    locala.columns[14] = "actionPermission";
+    locala.IhC.put("actionPermission", "INTEGER");
+    localStringBuilder.append(" actionPermission INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[15] = "scene";
+    locala.IhC.put("scene", "INTEGER");
+    localStringBuilder.append(" scene INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[16] = "readStatus";
+    locala.IhC.put("readStatus", "INTEGER");
+    localStringBuilder.append(" readStatus INTEGER");
+    locala.columns[17] = "rowid";
     locala.sql = localStringBuilder.toString();
     return locala;
   }
@@ -147,18 +167,18 @@ public abstract class ce
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (enR != k) {
+      if (eVL != k) {
         break label65;
       }
-      this.field_mediaId = paramCursor.getString(i);
-      this.enA = true;
+      this.field_sessionId = paramCursor.getString(i);
+      this.eVx = true;
     }
     for (;;)
     {
@@ -166,75 +186,40 @@ public abstract class ce
       break label20;
       break;
       label65:
-      if (erd == k)
-      {
-        this.field_url = paramCursor.getString(i);
-      }
-      else if (evF == k)
-      {
-        this.field_filePath = paramCursor.getString(i);
-      }
-      else if (eFK == k)
-      {
-        this.field_totalSize = paramCursor.getLong(i);
-      }
-      else if (eHj == k)
-      {
-        this.field_cacheSize = paramCursor.getLong(i);
-      }
-      else if (eBv == k)
-      {
-        this.field_state = paramCursor.getInt(i);
-      }
-      else
-      {
-        boolean bool;
-        if (eHk == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_hasPlayed = bool;
-            break;
-          }
-        }
-        if (eHl == k)
-        {
-          this.field_reqFormat = paramCursor.getInt(i);
-        }
-        else if (eHm == k)
-        {
-          this.field_originMediaId = paramCursor.getString(i);
-        }
-        else if (eHn == k)
-        {
-          this.field_fileFormat = paramCursor.getString(i);
-        }
-        else if (eol == k)
-        {
-          this.field_updateTime = paramCursor.getLong(i);
-        }
-        else
-        {
-          if (eHo == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_moovReady = bool;
-              break;
-            }
-          }
-          if (fdu == k) {
-            this.field_videoBitrate = paramCursor.getInt(i);
-          } else if (fdv == k) {
-            this.field_audioBitrate = paramCursor.getInt(i);
-          } else if (fdy == k) {
-            this.field_frameRate = paramCursor.getInt(i);
-          } else if (rowid_HASHCODE == k) {
-            this.systemRowid = paramCursor.getLong(i);
-          }
-        }
+      if (eLf == k) {
+        this.field_talker = paramCursor.getString(i);
+      } else if (eIG == k) {
+        this.field_unReadCount = paramCursor.getInt(i);
+      } else if (eDc == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (eFq == k) {
+        this.field_updateTime = paramCursor.getLong(i);
+      } else if (eIK == k) {
+        this.field_digest = paramCursor.getString(i);
+      } else if (eIL == k) {
+        this.field_digestUser = paramCursor.getString(i);
+      } else if (eYt == k) {
+        this.field_digestType = paramCursor.getString(i);
+      } else if (eII == k) {
+        this.field_lastMsgID = paramCursor.getLong(i);
+      } else if (eEm == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (eIP == k) {
+        this.field_isSend = paramCursor.getInt(i);
+      } else if (eYu == k) {
+        this.field_placedFlag = paramCursor.getLong(i);
+      } else if (eIN == k) {
+        this.field_editingMsg = paramCursor.getString(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (eYv == k) {
+        this.field_actionPermission = paramCursor.getInt(i);
+      } else if (eEB == k) {
+        this.field_scene = paramCursor.getInt(i);
+      } else if (eYw == k) {
+        this.field_readStatus = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -242,62 +227,81 @@ public abstract class ce
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.enA) {
-      localContentValues.put("mediaId", this.field_mediaId);
+    if (this.field_sessionId == null) {
+      this.field_sessionId = "";
     }
-    if (this.eqZ) {
-      localContentValues.put("url", this.field_url);
+    if (this.eVx) {
+      localContentValues.put("sessionId", this.field_sessionId);
     }
-    if (this.evx) {
-      localContentValues.put("filePath", this.field_filePath);
+    if (this.field_talker == null) {
+      this.field_talker = "";
     }
-    if (this.eFh) {
-      localContentValues.put("totalSize", Long.valueOf(this.field_totalSize));
+    if (this.eKS) {
+      localContentValues.put("talker", this.field_talker);
     }
-    if (this.eHd) {
-      localContentValues.put("cacheSize", Long.valueOf(this.field_cacheSize));
+    if (this.eIr) {
+      localContentValues.put("unReadCount", Integer.valueOf(this.field_unReadCount));
     }
-    if (this.eAJ) {
-      localContentValues.put("state", Integer.valueOf(this.field_state));
+    if (this.eCZ) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eHe) {
-      localContentValues.put("hasPlayed", Boolean.valueOf(this.field_hasPlayed));
-    }
-    if (this.eHf) {
-      localContentValues.put("reqFormat", Integer.valueOf(this.field_reqFormat));
-    }
-    if (this.eHg) {
-      localContentValues.put("originMediaId", this.field_originMediaId);
-    }
-    if (this.eHh) {
-      localContentValues.put("fileFormat", this.field_fileFormat);
-    }
-    if (this.eoi) {
+    if (this.eFn) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.eHi) {
-      localContentValues.put("moovReady", Boolean.valueOf(this.field_moovReady));
+    if (this.field_digest == null) {
+      this.field_digest = "";
     }
-    if (this.fdg) {
-      localContentValues.put("videoBitrate", Integer.valueOf(this.field_videoBitrate));
+    if (this.eIv) {
+      localContentValues.put("digest", this.field_digest);
     }
-    if (this.fdh) {
-      localContentValues.put("audioBitrate", Integer.valueOf(this.field_audioBitrate));
+    if (this.field_digestUser == null) {
+      this.field_digestUser = "";
     }
-    if (this.fdk) {
-      localContentValues.put("frameRate", Integer.valueOf(this.field_frameRate));
+    if (this.eIw) {
+      localContentValues.put("digestUser", this.field_digestUser);
+    }
+    if (this.field_digestType == null) {
+      this.field_digestType = "";
+    }
+    if (this.eYp) {
+      localContentValues.put("digestType", this.field_digestType);
+    }
+    if (this.eIt) {
+      localContentValues.put("lastMsgID", Long.valueOf(this.field_lastMsgID));
+    }
+    if (this.eDP) {
+      localContentValues.put("content", this.field_content);
+    }
+    if (this.eIA) {
+      localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
+    }
+    if (this.eYq) {
+      localContentValues.put("placedFlag", Long.valueOf(this.field_placedFlag));
+    }
+    if (this.eIy) {
+      localContentValues.put("editingMsg", this.field_editingMsg);
+    }
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
+    }
+    if (this.eYr) {
+      localContentValues.put("actionPermission", Integer.valueOf(this.field_actionPermission));
+    }
+    if (this.eEz) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    }
+    if (this.eYs) {
+      localContentValues.put("readStatus", Integer.valueOf(this.field_readStatus));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
     }
     return localContentValues;
   }
-  
-  public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.ce
  * JD-Core Version:    0.7.0.1
  */

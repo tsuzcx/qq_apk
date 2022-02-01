@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.topstory.ui.video;
 
 public abstract interface a
 {
-  public abstract void edb();
+  public abstract void ept();
   
-  public abstract void edc();
+  public abstract void epu();
   
-  public abstract int edd();
+  public abstract int epv();
 }
 
 

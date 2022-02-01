@@ -2,11 +2,13 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.lang.ref.WeakReference;
 
 public final class sm
   extends b
 {
-  public a dvy;
+  public a dGY;
+  public b dGZ;
   
   public sm()
   {
@@ -15,17 +17,28 @@ public final class sm
   
   private sm(byte paramByte)
   {
-    AppMethodBeat.i(19834);
-    this.dvy = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(91219);
+    this.dGY = new a();
+    this.dGZ = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19834);
+    AppMethodBeat.o(91219);
   }
   
   public static final class a
   {
-    public String dtD;
-    public int msgType = 0;
+    public WeakReference aWN;
+    public Runnable callback;
+    public String dHa;
+    public int scene;
+    public int type;
+  }
+  
+  public static final class b
+  {
+    public int actionType;
+    public String dHb;
+    public String errMsg;
   }
 }
 

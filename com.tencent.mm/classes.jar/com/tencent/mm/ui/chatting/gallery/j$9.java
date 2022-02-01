@@ -2,8 +2,8 @@ package com.tencent.mm.ui.chatting.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.o.f;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class j$9
   implements Runnable
@@ -13,14 +13,14 @@ final class j$9
   public final void run()
   {
     AppMethodBeat.i(36252);
-    String str = f.dcW();
-    if (!bs.isNullOrNil(str))
+    String str = f.dmq();
+    if (!bt.isNullOrNil(str))
     {
-      h.wUl.kvStat(14092, str);
+      g.yhR.kvStat(14092, str);
       AppMethodBeat.o(36252);
       return;
     }
-    h.wUl.kvStat(14092, "0");
+    g.yhR.kvStat(14092, "0");
     AppMethodBeat.o(36252);
   }
 }

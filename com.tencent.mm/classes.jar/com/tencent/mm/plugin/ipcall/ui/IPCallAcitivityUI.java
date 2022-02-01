@@ -12,38 +12,39 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.ui.MMActivity;
 
 @com.tencent.mm.ui.base.a(3)
 public class IPCallAcitivityUI
   extends MMActivity
 {
-  private boolean tMA = false;
-  private com.tencent.mm.plugin.ipcall.model.h.a tMB;
-  private FrameLayout tMv;
-  private TextView tMw;
-  private TextView tMx;
-  private Button tMy;
-  private CdnImageView tMz;
+  private FrameLayout uPi;
+  private TextView uPj;
+  private TextView uPk;
+  private Button uPl;
+  private CdnImageView uPm;
+  private boolean uPn = false;
+  private com.tencent.mm.plugin.ipcall.model.h.a uPo;
   
   public void finish()
   {
     AppMethodBeat.i(25609);
     super.finish();
     overridePendingTransition(2130771986, 2130772100);
-    if (this.tMA)
+    if (this.uPn)
     {
-      com.tencent.mm.plugin.ipcall.model.f.c.Hh(1);
+      com.tencent.mm.plugin.ipcall.model.f.c.ID(1);
       AppMethodBeat.o(25609);
       return;
     }
-    com.tencent.mm.plugin.ipcall.model.f.c.Hh(0);
+    com.tencent.mm.plugin.ipcall.model.f.c.ID(0);
     AppMethodBeat.o(25609);
   }
   
@@ -60,54 +61,62 @@ public class IPCallAcitivityUI
   public void initView()
   {
     AppMethodBeat.i(25608);
-    this.tMv = ((FrameLayout)findViewById(2131301118));
-    this.tMw = ((TextView)findViewById(2131301124));
-    this.tMx = ((TextView)findViewById(2131301120));
-    this.tMy = ((Button)findViewById(2131301121));
-    this.tMz = ((CdnImageView)findViewById(2131301122));
-    az.ayM();
-    String str = (String)com.tencent.mm.model.c.agA().get(ah.a.GGR, "");
-    if (bs.isNullOrNil(str))
+    this.uPi = ((FrameLayout)findViewById(2131301118));
+    this.uPj = ((TextView)findViewById(2131301124));
+    this.uPk = ((TextView)findViewById(2131301120));
+    this.uPl = ((Button)findViewById(2131301121));
+    this.uPm = ((CdnImageView)findViewById(2131301122));
+    ba.aBQ();
+    String str = (String)com.tencent.mm.model.c.ajl().get(al.a.Itj, "");
+    if (bt.isNullOrNil(str))
     {
-      ac.e("MicroMsg.IPCallAcitivityUI", "xml is empty");
+      ad.e("MicroMsg.IPCallAcitivityUI", "xml is empty");
       finish();
     }
     for (;;)
     {
-      this.tMv.setOnClickListener(new View.OnClickListener()
+      this.uPi.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25603);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/IPCallAcitivityUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           IPCallAcitivityUI.this.finish();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallAcitivityUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(25603);
         }
       });
-      this.tMy.setOnClickListener(new View.OnClickListener()
+      this.uPl.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25604);
-          if (IPCallAcitivityUI.a(IPCallAcitivityUI.this).ndI == 1)
+          Object localObject = new b();
+          ((b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/IPCallAcitivityUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+          if (IPCallAcitivityUI.a(IPCallAcitivityUI.this).nEf == 1)
           {
-            ac.i("MicroMsg.IPCallAcitivityUI", "click activity, go to IPCallPackageUI");
-            Object localObject = new Intent();
+            ad.i("MicroMsg.IPCallAcitivityUI", "click activity, go to IPCallPackageUI");
+            localObject = new Intent();
             ((Intent)localObject).setClass(IPCallAcitivityUI.this.getContext(), IPCallShareCouponUI.class);
             paramAnonymousView = IPCallAcitivityUI.this;
-            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/ipcall/ui/IPCallAcitivityUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/ipcall/ui/IPCallAcitivityUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallAcitivityUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             localObject = new Intent();
             ((Intent)localObject).setClass(IPCallAcitivityUI.this.getContext(), IPCallPackageUI.class);
             paramAnonymousView = IPCallAcitivityUI.this;
-            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/ipcall/ui/IPCallAcitivityUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/ipcall/ui/IPCallAcitivityUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallAcitivityUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
           IPCallAcitivityUI.b(IPCallAcitivityUI.this);
           IPCallAcitivityUI.this.finish();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallAcitivityUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(25604);
         }
       });
@@ -123,18 +132,18 @@ public class IPCallAcitivityUI
       });
       AppMethodBeat.o(25608);
       return;
-      this.tMB = com.tencent.mm.plugin.ipcall.model.h.a.aiK(str);
-      if (this.tMB == null)
+      this.uPo = com.tencent.mm.plugin.ipcall.model.h.a.anx(str);
+      if (this.uPo == null)
       {
-        ac.e("MicroMsg.IPCallAcitivityUI", "mMsgInfo is null");
+        ad.e("MicroMsg.IPCallAcitivityUI", "mMsgInfo is null");
         finish();
       }
       else
       {
-        this.tMw.setText(this.tMB.Title);
-        this.tMx.setText(this.tMB.Desc);
-        this.tMy.setText(this.tMB.tLC);
-        this.tMz.setUrl(this.tMB.ImgUrl);
+        this.uPj.setText(this.uPo.Title);
+        this.uPk.setText(this.uPo.Desc);
+        this.uPl.setText(this.uPo.uOp);
+        this.uPm.setUrl(this.uPo.ImgUrl);
       }
     }
   }
@@ -172,7 +181,7 @@ public class IPCallAcitivityUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallAcitivityUI
  * JD-Core Version:    0.7.0.1
  */

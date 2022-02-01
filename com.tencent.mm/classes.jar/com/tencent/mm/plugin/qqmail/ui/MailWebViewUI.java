@@ -13,30 +13,32 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.plugin.qqmail.b.w.a;
+import com.tencent.mm.plugin.qqmail.c.a;
 import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.WebView;
+import com.tencent.xweb.ac;
 import com.tencent.xweb.z;
 import java.util.Map;
 
 public class MailWebViewUI
   extends MMActivity
 {
-  private String cHn;
-  private d fPa;
-  private ao handler;
-  private MMWebView nKq;
-  private long vVK;
-  private w.a vZf;
+  private String cSr;
+  private d giA;
+  private ap handler;
+  private MMWebView omW;
+  private long xcO;
+  private c.a xgK;
   
   public MailWebViewUI()
   {
     AppMethodBeat.i(123129);
-    this.vZf = new w.a()
+    this.xgK = new c.a()
     {
       public final void onError(int paramAnonymousInt, final String paramAnonymousString)
       {
@@ -68,7 +70,7 @@ public class MailWebViewUI
         AppMethodBeat.o(123120);
       }
     };
-    this.fPa = new d(this);
+    this.giA = new d(this);
     AppMethodBeat.o(123129);
   }
   
@@ -81,21 +83,21 @@ public class MailWebViewUI
   {
     AppMethodBeat.i(123135);
     boolean bool = getIntent().getBooleanExtra("singleColumn", false);
-    this.nKq = MMWebView.a.kv(getContext());
-    this.nKq.setBackgroundDrawable(a.l(this, 2131100695));
-    ((FrameLayout)findViewById(2131298736)).addView(this.nKq);
-    this.nKq.getSettings().setJavaScriptEnabled(true);
+    this.omW = MMWebView.a.kH(getContext());
+    this.omW.setBackgroundDrawable(a.l(this, 2131100695));
+    ((FrameLayout)findViewById(2131298736)).addView(this.omW);
+    this.omW.getSettings().setJavaScriptEnabled(true);
     if (Boolean.valueOf(bool).booleanValue())
     {
-      MMWebView localMMWebView = this.nKq;
+      MMWebView localMMWebView = this.omW;
       if (Build.VERSION.SDK_INT >= 8) {
         localMMWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
       }
     }
-    this.nKq.getSettings().fJB();
-    this.nKq.getSettings().setSupportZoom(true);
-    this.nKq.getSettings().setBuiltInZoomControls(true);
-    this.nKq.setWebViewClient(new com.tencent.xweb.ac()
+    this.omW.getSettings().gaV();
+    this.omW.getSettings().setSupportZoom(true);
+    this.omW.getSettings().setBuiltInZoomControls(true);
+    this.omW.setWebViewClient(new ac()
     {
       public final void a(WebView paramAnonymousWebView, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
@@ -109,7 +111,7 @@ public class MailWebViewUI
         AppMethodBeat.i(123124);
         if (paramAnonymousString.startsWith("weixin://private/getcontentwidth/"))
         {
-          com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.QQMail.WebViewUI", "shouldOverride, url is getContentWidth scheme, url = ".concat(String.valueOf(paramAnonymousString)));
+          ad.d("MicroMsg.QQMail.WebViewUI", "shouldOverride, url is getContentWidth scheme, url = ".concat(String.valueOf(paramAnonymousString)));
           MailWebViewUI.b(MailWebViewUI.this, paramAnonymousString);
           AppMethodBeat.o(123124);
           return true;
@@ -127,7 +129,7 @@ public class MailWebViewUI
         AppMethodBeat.o(123125);
       }
     });
-    this.nKq.setWebChromeClient(new com.tencent.xweb.x()
+    this.omW.setWebChromeClient(new com.tencent.xweb.x()
     {
       public final boolean onConsoleMessage(ConsoleMessage paramAnonymousConsoleMessage)
       {
@@ -135,11 +137,11 @@ public class MailWebViewUI
         if (paramAnonymousConsoleMessage != null) {}
         for (String str = paramAnonymousConsoleMessage.message();; str = null)
         {
-          str = com.tencent.mm.pluginsdk.ui.tools.x.aIg(str);
+          str = com.tencent.mm.pluginsdk.ui.tools.x.aNI(str);
           if (!str.startsWith("weixin://private/getcontentwidth/")) {
             break;
           }
-          com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.QQMail.WebViewUI", "onConsoleMessage, url is getContentWidth scheme, url = ".concat(String.valueOf(str)));
+          ad.d("MicroMsg.QQMail.WebViewUI", "onConsoleMessage, url is getContentWidth scheme, url = ".concat(String.valueOf(str)));
           MailWebViewUI.b(MailWebViewUI.this, str);
           AppMethodBeat.o(123126);
           return true;
@@ -149,7 +151,7 @@ public class MailWebViewUI
         return bool;
       }
     });
-    this.nKq.fuM();
+    this.omW.fLz();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -167,13 +169,13 @@ public class MailWebViewUI
   {
     AppMethodBeat.i(123132);
     super.onCreate(paramBundle);
-    this.handler = new ao();
+    this.handler = new ap();
     initView();
     paramBundle = getIntent().getStringExtra("title");
     if (paramBundle != null) {
       setMMTitle(paramBundle);
     }
-    this.fPa.connect(new Runnable()
+    this.giA.connect(new Runnable()
     {
       public final void run()
       {
@@ -188,10 +190,10 @@ public class MailWebViewUI
   public void onDestroy()
   {
     AppMethodBeat.i(123134);
-    this.nKq.setVisibility(8);
-    this.nKq.destroy();
-    this.nKq = null;
-    this.fPa.release();
+    this.omW.setVisibility(8);
+    this.omW.destroy();
+    this.omW = null;
+    this.giA.release();
     super.onDestroy();
     AppMethodBeat.o(123134);
   }
@@ -215,7 +217,7 @@ public class MailWebViewUI
   public void onStop()
   {
     AppMethodBeat.i(123133);
-    this.nKq.stopLoading();
+    this.omW.stopLoading();
     super.onStop();
     AppMethodBeat.o(123133);
   }
@@ -228,7 +230,7 @@ public class MailWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailWebViewUI
  * JD-Core Version:    0.7.0.1
  */

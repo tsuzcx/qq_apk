@@ -15,7 +15,7 @@ import com.google.android.gms.wearable.WearableListenerService;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.File;
@@ -26,7 +26,7 @@ import java.util.Iterator;
 public class WearDataLayerService
   extends WearableListenerService
 {
-  private static Bundle bX(byte[] paramArrayOfByte)
+  private static Bundle ce(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(30116);
     Bundle localBundle = new Bundle();
@@ -46,7 +46,7 @@ public class WearDataLayerService
     }
     while (m < paramArrayOfByte.length)
     {
-      ac.i("MicroMsg.Wear.WearDataLayerService", "receive data connectType=%d sessionId=%d funId=%d contentLength=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
+      ad.i("MicroMsg.Wear.WearDataLayerService", "receive data connectType=%d sessionId=%d funId=%d contentLength=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
       AppMethodBeat.o(30116);
       return localBundle;
     }
@@ -58,7 +58,7 @@ public class WearDataLayerService
   public void onChannelClosed(Channel paramChannel, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30123);
-    ac.i("MicroMsg.Wear.WearDataLayerService", "onChannelClosed %s %s %d %d", new Object[] { paramChannel.getPath(), paramChannel.getNodeId(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.Wear.WearDataLayerService", "onChannelClosed %s %s %d %d", new Object[] { paramChannel.getPath(), paramChannel.getNodeId(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(30123);
   }
   
@@ -68,8 +68,8 @@ public class WearDataLayerService
     String str1 = paramChannel.getPath();
     String str2 = paramChannel.getNodeId();
     Object localObject = g.getMessageDigest(str1.getBytes());
-    localObject = new File(com.tencent.mm.loader.j.b.app(), (String)localObject);
-    ac.i("MicroMsg.Wear.WearDataLayerService", "onChannelOpened %s %s %s", new Object[] { str1, str2, ((File)localObject).getAbsolutePath() });
+    localObject = new File(com.tencent.mm.loader.j.b.asd(), (String)localObject);
+    ad.i("MicroMsg.Wear.WearDataLayerService", "onChannelOpened %s %s %s", new Object[] { str1, str2, ((File)localObject).getAbsolutePath() });
     if (((File)localObject).exists()) {
       ((File)localObject).delete();
     }
@@ -86,17 +86,17 @@ public class WearDataLayerService
       {
         try
         {
-          paramChannel.receiveFile(new com.tencent.mm.plugin.wear.model.a.a().ewD(), Uri.fromFile((File)localObject), false);
+          paramChannel.receiveFile(new com.tencent.mm.plugin.wear.model.a.a().eKJ(), Uri.fromFile((File)localObject), false);
           AppMethodBeat.o(30120);
           return;
         }
         catch (Exception paramChannel)
         {
-          ac.printErrStackTrace("MicroMsg.Wear.WearDataLayerService", paramChannel, "fuck Xiao Mi", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.Wear.WearDataLayerService", paramChannel, "fuck Xiao Mi", new Object[0]);
           AppMethodBeat.o(30120);
         }
         localIOException = localIOException;
-        ac.printErrStackTrace("MicroMsg.Wear.WearDataLayerService", localIOException, "onChannelOpened", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Wear.WearDataLayerService", localIOException, "onChannelOpened", new Object[0]);
       }
     }
   }
@@ -105,14 +105,14 @@ public class WearDataLayerService
   {
     AppMethodBeat.i(30113);
     super.onCreate();
-    ac.i("MicroMsg.Wear.WearDataLayerService", "onCreate");
+    ad.i("MicroMsg.Wear.WearDataLayerService", "onCreate");
     AppMethodBeat.o(30113);
   }
   
   public void onDataChanged(DataEventBuffer paramDataEventBuffer)
   {
     AppMethodBeat.i(30115);
-    ac.i("MicroMsg.Wear.WearDataLayerService", "onDataChanged %d %s", new Object[] { Integer.valueOf(paramDataEventBuffer.getCount()), paramDataEventBuffer.getStatus() });
+    ad.i("MicroMsg.Wear.WearDataLayerService", "onDataChanged %d %s", new Object[] { Integer.valueOf(paramDataEventBuffer.getCount()), paramDataEventBuffer.getStatus() });
     Iterator localIterator = paramDataEventBuffer.iterator();
     for (;;)
     {
@@ -123,7 +123,7 @@ public class WearDataLayerService
           continue;
         }
         Uri localUri = ((DataEvent)localObject).getDataItem().getUri();
-        if (!com.tencent.mm.plugin.wear.a.b.aAl(localUri.getPath())) {
+        if (!com.tencent.mm.plugin.wear.a.b.aFv(localUri.getPath())) {
           continue;
         }
         localObject = DataMapItem.fromDataItem(((DataEvent)localObject).getDataItem()).getDataMap().getAsset("key_data");
@@ -138,15 +138,15 @@ public class WearDataLayerService
         }
         try
         {
-          ac.i("MicroMsg.Wear.WearDataLayerService", "receive data = %d", new Object[] { Integer.valueOf(localObject.length) });
-          com.tencent.mm.plugin.wear.model.b.a.as(bX((byte[])localObject));
+          ad.i("MicroMsg.Wear.WearDataLayerService", "receive data = %d", new Object[] { Integer.valueOf(localObject.length) });
+          com.tencent.mm.plugin.wear.model.b.a.ax(ce((byte[])localObject));
           new com.tencent.mm.plugin.wear.model.a.a().t(localUri);
         }
         catch (IOException localIOException)
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.Wear.WearDataLayerService", localIOException, "decode data error", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.Wear.WearDataLayerService", localIOException, "decode data error", new Object[0]);
           }
         }
       }
@@ -158,7 +158,7 @@ public class WearDataLayerService
   public void onDestroy()
   {
     AppMethodBeat.i(30114);
-    ac.i("MicroMsg.Wear.WearDataLayerService", "onDestroy");
+    ad.i("MicroMsg.Wear.WearDataLayerService", "onDestroy");
     super.onDestroy();
     AppMethodBeat.o(30114);
   }
@@ -167,18 +167,18 @@ public class WearDataLayerService
   {
     AppMethodBeat.i(30121);
     String str = paramChannel.getPath();
-    ac.i("MicroMsg.Wear.WearDataLayerService", "onInputClosed %s %s %d %d", new Object[] { str, paramChannel.getNodeId(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.Wear.WearDataLayerService", "onInputClosed %s %s %d %d", new Object[] { str, paramChannel.getNodeId(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 0)
     {
       paramChannel = g.getMessageDigest(str.getBytes());
-      paramChannel = new File(com.tencent.mm.loader.j.b.app(), paramChannel);
-      ac.i("MicroMsg.Wear.WearDataLayerService", "onInputClosed %s, %d", new Object[] { paramChannel.getAbsolutePath(), Long.valueOf(paramChannel.length()) });
+      paramChannel = new File(com.tencent.mm.loader.j.b.asd(), paramChannel);
+      ad.i("MicroMsg.Wear.WearDataLayerService", "onInputClosed %s, %d", new Object[] { paramChannel.getAbsolutePath(), Long.valueOf(paramChannel.length()) });
       Bundle localBundle = new Bundle();
       localBundle.putInt("key_connecttype", 1);
-      localBundle.putInt("key_funid", com.tencent.mm.plugin.wear.a.b.aAm(str));
+      localBundle.putInt("key_funid", com.tencent.mm.plugin.wear.a.b.aFw(str));
       localBundle.putInt("key_sessionid", 0);
       localBundle.putByteArray("key_data", paramChannel.getAbsolutePath().getBytes());
-      com.tencent.mm.plugin.wear.model.b.a.as(localBundle);
+      com.tencent.mm.plugin.wear.model.b.a.ax(localBundle);
     }
     AppMethodBeat.o(30121);
   }
@@ -186,19 +186,19 @@ public class WearDataLayerService
   public void onMessageReceived(MessageEvent paramMessageEvent)
   {
     AppMethodBeat.i(30117);
-    ac.i("MicroMsg.Wear.WearDataLayerService", "onMessageReceived %s", new Object[] { paramMessageEvent.getPath() });
-    if (com.tencent.mm.plugin.wear.a.b.aAl(paramMessageEvent.getPath())) {
+    ad.i("MicroMsg.Wear.WearDataLayerService", "onMessageReceived %s", new Object[] { paramMessageEvent.getPath() });
+    if (com.tencent.mm.plugin.wear.a.b.aFv(paramMessageEvent.getPath())) {
       try
       {
         paramMessageEvent = paramMessageEvent.getData();
-        ac.i("MicroMsg.Wear.WearDataLayerService", "receive data = %d", new Object[] { Integer.valueOf(paramMessageEvent.length) });
-        com.tencent.mm.plugin.wear.model.b.a.as(bX(paramMessageEvent));
+        ad.i("MicroMsg.Wear.WearDataLayerService", "receive data = %d", new Object[] { Integer.valueOf(paramMessageEvent.length) });
+        com.tencent.mm.plugin.wear.model.b.a.ax(ce(paramMessageEvent));
         AppMethodBeat.o(30117);
         return;
       }
       catch (IOException paramMessageEvent)
       {
-        ac.printErrStackTrace("MicroMsg.Wear.WearDataLayerService", paramMessageEvent, "decode message error", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Wear.WearDataLayerService", paramMessageEvent, "decode message error", new Object[0]);
       }
     }
     AppMethodBeat.o(30117);
@@ -207,31 +207,31 @@ public class WearDataLayerService
   public void onOutputClosed(Channel paramChannel, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30122);
-    ac.i("MicroMsg.Wear.WearDataLayerService", "onOutputClosed %s %s %d %d", new Object[] { paramChannel.getPath(), paramChannel.getNodeId(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.Wear.WearDataLayerService", "onOutputClosed %s %s %d %d", new Object[] { paramChannel.getPath(), paramChannel.getNodeId(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(30122);
   }
   
   public void onPeerConnected(Node paramNode)
   {
     AppMethodBeat.i(30118);
-    ac.i("MicroMsg.Wear.WearDataLayerService", "onPeerConnected %s", new Object[] { paramNode.getId() });
+    ad.i("MicroMsg.Wear.WearDataLayerService", "onPeerConnected %s", new Object[] { paramNode.getId() });
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_connecttype", 3);
     localBundle.putInt("key_funid", 1);
     localBundle.putByteArray("key_data", paramNode.getId().getBytes());
-    com.tencent.mm.plugin.wear.model.b.a.as(localBundle);
+    com.tencent.mm.plugin.wear.model.b.a.ax(localBundle);
     AppMethodBeat.o(30118);
   }
   
   public void onPeerDisconnected(Node paramNode)
   {
     AppMethodBeat.i(30119);
-    ac.i("MicroMsg.Wear.WearDataLayerService", "onPeerDisconnected %s", new Object[] { paramNode.getId() });
+    ad.i("MicroMsg.Wear.WearDataLayerService", "onPeerDisconnected %s", new Object[] { paramNode.getId() });
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_connecttype", 3);
     localBundle.putInt("key_funid", -1);
     localBundle.putByteArray("key_data", paramNode.getId().getBytes());
-    com.tencent.mm.plugin.wear.model.b.a.as(localBundle);
+    com.tencent.mm.plugin.wear.model.b.a.ax(localBundle);
     AppMethodBeat.o(30119);
   }
 }

@@ -3,12 +3,12 @@ package com.tencent.mm.modelappbrand;
 public abstract class ad
   implements o
 {
+  public abstract void Co(String paramString);
+  
   public final String getName()
   {
     return "makePhoneCall";
   }
-  
-  public abstract void zp(String paramString);
 }
 
 

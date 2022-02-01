@@ -1,7 +1,7 @@
 package d.l.b.a.b.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.d.a.e.a;
 import d.l.b.a.b.d.a.e.i;
 import java.lang.reflect.ParameterizedType;
@@ -16,20 +16,20 @@ public final class l
   extends w
   implements d.l.b.a.b.d.a.e.j
 {
-  private final i LjE;
-  final Type Ljv;
+  private final i NaA;
+  final Type Nar;
   
   public l(Type paramType)
   {
     AppMethodBeat.i(57475);
-    this.Ljv = paramType;
-    paramType = ((l)this).Ljv;
+    this.Nar = paramType;
+    paramType = ((l)this).Nar;
     if ((paramType instanceof Class)) {
       paramType = (i)new j((Class)paramType);
     }
     for (;;)
     {
-      this.LjE = paramType;
+      this.NaA = paramType;
       AppMethodBeat.o(57475);
       return;
       if ((paramType instanceof TypeVariable))
@@ -56,45 +56,45 @@ public final class l
     throw paramType;
   }
   
-  public final Type fTg()
+  public final Type gkF()
   {
-    return this.Ljv;
+    return this.Nar;
   }
   
-  public final Collection<a> fTm()
+  public final Collection<a> gkL()
   {
-    return (Collection)d.a.v.KTF;
+    return (Collection)d.a.v.MKE;
   }
   
-  public final i fTq()
+  public final i gkP()
   {
-    return this.LjE;
+    return this.NaA;
   }
   
-  public final String fTr()
+  public final String gkQ()
   {
     AppMethodBeat.i(57470);
-    Throwable localThrowable = (Throwable)new UnsupportedOperationException("Type not found: " + this.Ljv);
+    Throwable localThrowable = (Throwable)new UnsupportedOperationException("Type not found: " + this.Nar);
     AppMethodBeat.o(57470);
     throw localThrowable;
   }
   
-  public final String fTs()
+  public final String gkR()
   {
     AppMethodBeat.i(57471);
-    String str = this.Ljv.toString();
+    String str = this.Nar.toString();
     AppMethodBeat.o(57471);
     return str;
   }
   
-  public final boolean fTt()
+  public final boolean gkS()
   {
     AppMethodBeat.i(57472);
-    Object localObject = this.Ljv;
+    Object localObject = this.Nar;
     if ((localObject instanceof Class))
     {
       localObject = ((Class)localObject).getTypeParameters();
-      k.g(localObject, "getTypeParameters()");
+      p.g(localObject, "getTypeParameters()");
       if (localObject.length == 0)
       {
         i = 1;
@@ -119,10 +119,10 @@ public final class l
     return false;
   }
   
-  public final List<d.l.b.a.b.d.a.e.v> fTu()
+  public final List<d.l.b.a.b.d.a.e.v> gkT()
   {
     AppMethodBeat.i(57473);
-    Object localObject2 = (Iterable)b.i(this.Ljv);
+    Object localObject2 = (Iterable)b.i(this.Nar);
     Object localObject1 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
@@ -136,14 +136,14 @@ public final class l
   public final a l(d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(57474);
-    k.h(paramb, "fqName");
+    p.h(paramb, "fqName");
     AppMethodBeat.o(57474);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.l
  * JD-Core Version:    0.7.0.1
  */

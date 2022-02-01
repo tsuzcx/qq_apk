@@ -6,52 +6,136 @@ import com.tencent.mm.plugin.report.a;
 public final class m
   extends a
 {
-  public String dFr = "";
-  public long dFs;
-  public long dFt = 0L;
-  public long dFu = 0L;
-  public long dFv = 0L;
+  public int dPT;
+  private String dSe;
+  public int dSf;
+  public int dSg;
+  private String dSh;
+  private String dSi;
+  public int dSj;
+  private String dSk;
+  private String dSl;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(184762);
+    AppMethodBeat.i(217628);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dFr);
+    ((StringBuffer)localObject).append(this.dSe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFs);
+    ((StringBuffer)localObject).append(this.dPT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFt);
+    ((StringBuffer)localObject).append(this.dSf);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFu);
+    ((StringBuffer)localObject).append(this.dSg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFv);
+    ((StringBuffer)localObject).append(this.dSh);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dSi);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dSj);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dSk);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dSl);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(184762);
+    awz((String)localObject);
+    AppMethodBeat.o(217628);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(184763);
+    AppMethodBeat.i(217629);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("roomusrname:").append(this.dFr);
+    ((StringBuffer)localObject).append("RequestId:").append(this.dSe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("exitType:").append(this.dFs);
+    ((StringBuffer)localObject).append("Action:").append(this.dPT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("role:").append(this.dFt);
+    ((StringBuffer)localObject).append("Source:").append(this.dSf);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("topBefore:").append(this.dFu);
+    ((StringBuffer)localObject).append("Scene:").append(this.dSg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("topAfter:").append(this.dFv);
+    ((StringBuffer)localObject).append("MsgId:").append(this.dSh);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("MsgFromUsername:").append(this.dSi);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ChatType:").append(this.dSj);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ChatRoomID:").append(this.dSk);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("PicMD5:").append(this.dSl);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(184763);
+    AppMethodBeat.o(217629);
     return localObject;
+  }
+  
+  public final m RJ()
+  {
+    this.dSg = 67;
+    return this;
+  }
+  
+  public final m gI(String paramString)
+  {
+    AppMethodBeat.i(217623);
+    this.dSe = t("RequestId", paramString, true);
+    AppMethodBeat.o(217623);
+    return this;
+  }
+  
+  public final m gJ(String paramString)
+  {
+    AppMethodBeat.i(217624);
+    this.dSh = t("MsgId", paramString, true);
+    AppMethodBeat.o(217624);
+    return this;
+  }
+  
+  public final m gK(String paramString)
+  {
+    AppMethodBeat.i(217625);
+    this.dSi = t("MsgFromUsername", paramString, true);
+    AppMethodBeat.o(217625);
+    return this;
+  }
+  
+  public final m gL(String paramString)
+  {
+    AppMethodBeat.i(217626);
+    this.dSk = t("ChatRoomID", paramString, true);
+    AppMethodBeat.o(217626);
+    return this;
+  }
+  
+  public final m gM(String paramString)
+  {
+    AppMethodBeat.i(217627);
+    this.dSl = t("PicMD5", paramString, true);
+    AppMethodBeat.o(217627);
+    return this;
   }
   
   public final int getId()
   {
-    return 19437;
+    return 20511;
+  }
+  
+  public final m ig(int paramInt)
+  {
+    this.dPT = paramInt;
+    return this;
+  }
+  
+  public final m ih(int paramInt)
+  {
+    this.dSf = paramInt;
+    return this;
+  }
+  
+  public final m ii(int paramInt)
+  {
+    this.dSj = paramInt;
+    return this;
   }
 }
 

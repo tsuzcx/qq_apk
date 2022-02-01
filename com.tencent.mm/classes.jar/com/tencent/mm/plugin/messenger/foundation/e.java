@@ -1,46 +1,48 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.aq;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.m;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.cb;
+import com.tencent.mm.storagebase.h;
 
 public final class e
-  implements l
+  implements m
 {
-  public final com.tencent.mm.plugin.messenger.foundation.a.a.h a(com.tencent.mm.storagebase.h paramh, bj parambj, bk parambk)
+  public final i a(h paramh, bp parambp, bq parambq)
   {
     AppMethodBeat.i(116895);
-    paramh = new bp(paramh, parambj, parambk);
+    paramh = new bv(paramh, parambp, parambq);
     AppMethodBeat.o(116895);
     return paramh;
   }
   
-  public final bj d(com.tencent.mm.storagebase.h paramh)
+  public final bp c(h paramh)
   {
     AppMethodBeat.i(116893);
-    paramh = new ao(paramh);
+    paramh = new as(paramh);
     AppMethodBeat.o(116893);
     return paramh;
   }
   
-  public final bk e(com.tencent.mm.storagebase.h paramh)
+  public final bq d(h paramh)
   {
     AppMethodBeat.i(116894);
-    paramh = new aq(paramh);
+    paramh = new au(paramh);
     AppMethodBeat.o(116894);
     return paramh;
   }
   
-  public final k f(com.tencent.mm.storagebase.h paramh)
+  public final l e(h paramh)
   {
     AppMethodBeat.i(116896);
-    paramh = new bv(paramh);
+    paramh = new cb(paramh);
     AppMethodBeat.o(116896);
     return paramh;
   }

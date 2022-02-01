@@ -3,70 +3,91 @@ package com.tencent.mm.plugin.appbrand.appcache.b.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/statistitcs/PredownloadGetCodeStatStorage;", "Lcom/tencent/mm/plugin/appbrand/storage/MAutoStorageWithMultiKey;", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/statistitcs/PredownloadGetCodeStats;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "checkReportOnLocalPkgFound", "", "appLaunchInstanceId", "", "appId", "version", "", "packageType", "packageKey", "checkReportOnLocalPkgFoundInternal", "delete", "", "pruneOutdatedRecords", "setSource", "source", "reportId", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/statistitcs/PredownloadGetCodeStatStorage;", "Lcom/tencent/mm/plugin/appbrand/storage/MAutoStorageWithMultiKey;", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/statistitcs/PredownloadGetCodeStats;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "checkReportOnLocalPkgFound", "", "appLaunchInstanceId", "", "appId", "version", "", "packageType", "packageKey", "checkReportOnLocalPkgFoundInternal", "delete", "", "pruneOutdatedRecords", "setSource", "source", "reportId", "Companion", "plugin-appbrand-integration_release"})
 public final class a
   extends com.tencent.mm.plugin.appbrand.y.c<b>
 {
-  public static final String[] hlS;
-  public static final a jqM;
+  public static final String[] hEf;
+  public static final a jKG;
   private final e db;
   
   static
   {
     AppMethodBeat.i(50208);
-    jqM = new a((byte)0);
-    hlS = new String[] { j.getCreateSQLs(b.hlR, "AppBrandWxaPkgPreDownloadStatistics2"), "DROP TABLE IF EXISTS AppBrandWxaPkgPreDownloadStatistics" };
+    jKG = new a((byte)0);
+    hEf = new String[] { j.getCreateSQLs(b.hEe, "AppBrandWxaPkgPreDownloadStatistics2"), "DROP TABLE IF EXISTS AppBrandWxaPkgPreDownloadStatistics" };
     AppMethodBeat.o(50208);
   }
   
   public a(e parame)
   {
-    super(parame, b.hlR, "AppBrandWxaPkgPreDownloadStatistics2", b.INDEX_CREATE);
+    super(parame, b.hEe, "AppBrandWxaPkgPreDownloadStatistics2", b.INDEX_CREATE);
     AppMethodBeat.i(50207);
     this.db = parame;
     AppMethodBeat.o(50207);
   }
   
+  public final boolean CA(String paramString)
+  {
+    AppMethodBeat.i(50203);
+    CharSequence localCharSequence = (CharSequence)paramString;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(50203);
+      return false;
+    }
+    if (this.db.delete("AppBrandWxaPkgPreDownloadStatistics2", "appId=?", new String[] { paramString }) > 0)
+    {
+      AppMethodBeat.o(50203);
+      return true;
+    }
+    AppMethodBeat.o(50203);
+    return false;
+  }
+  
   public final void a(final String paramString1, final String paramString2, final int paramInt1, final int paramInt2, final String paramString3)
   {
     AppMethodBeat.i(162171);
-    com.tencent.mm.ac.c.b("MicroMsg.AppBrand.PredownloadGetCodeStatStorage__report", (d.g.a.a)new b(this, paramString1, paramString2, paramInt1, paramInt2, paramString3));
+    com.tencent.mm.ad.c.b("MicroMsg.AppBrand.PredownloadGetCodeStatStorage__report", (d.g.a.a)new b(this, paramString1, paramString2, paramInt1, paramInt2, paramString3));
     AppMethodBeat.o(162171);
   }
   
   /* Error */
-  public final void aXF()
+  public final void bbd()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: ldc 217
+    //   2: ldc 227
     //   4: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokevirtual 221	com/tencent/mm/plugin/appbrand/appcache/b/d/a:getAll	()Landroid/database/Cursor;
-    //   11: checkcast 223	java/io/Closeable
+    //   8: invokevirtual 231	com/tencent/mm/plugin/appbrand/appcache/b/d/a:getAll	()Landroid/database/Cursor;
+    //   11: checkcast 233	java/io/Closeable
     //   14: astore 4
     //   16: aload 4
-    //   18: checkcast 225	android/database/Cursor
+    //   18: checkcast 235	android/database/Cursor
     //   21: astore_2
     //   22: aload_2
     //   23: ifnull +12 -> 35
     //   26: aload_2
-    //   27: invokeinterface 228 1 0
+    //   27: invokeinterface 238 1 0
     //   32: ifne +19 -> 51
-    //   35: getstatic 234	d/y:KTp	Ld/y;
+    //   35: getstatic 244	d/z:MKo	Ld/z;
     //   38: astore_2
     //   39: aload 4
     //   41: aconst_null
-    //   42: invokestatic 239	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   45: ldc 217
+    //   42: invokestatic 249	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   45: ldc 227
     //   47: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   50: return
-    //   51: new 241	java/util/LinkedList
+    //   51: new 251	java/util/LinkedList
     //   54: dup
-    //   55: invokespecial 242	java/util/LinkedList:<init>	()V
+    //   55: invokespecial 252	java/util/LinkedList:<init>	()V
     //   58: astore 5
     //   60: new 64	com/tencent/mm/plugin/appbrand/appcache/b/d/b
     //   63: dup
@@ -74,26 +95,26 @@ public final class a
     //   67: astore 6
     //   69: aload 6
     //   71: aload_2
-    //   72: invokevirtual 246	com/tencent/mm/plugin/appbrand/appcache/b/d/b:convertFrom	(Landroid/database/Cursor;)V
+    //   72: invokevirtual 256	com/tencent/mm/plugin/appbrand/appcache/b/d/b:convertFrom	(Landroid/database/Cursor;)V
     //   75: aload 5
     //   77: aload 6
-    //   79: invokevirtual 250	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   79: invokevirtual 260	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   82: pop
     //   83: aload_2
-    //   84: invokeinterface 253 1 0
+    //   84: invokeinterface 263 1 0
     //   89: ifne -29 -> 60
     //   92: aload 5
-    //   94: checkcast 255	java/lang/Iterable
-    //   97: invokeinterface 259 1 0
+    //   94: checkcast 265	java/lang/Iterable
+    //   97: invokeinterface 269 1 0
     //   102: astore 5
     //   104: aload 5
-    //   106: invokeinterface 264 1 0
+    //   106: invokeinterface 274 1 0
     //   111: ifeq -76 -> 35
     //   114: aload 5
-    //   116: invokeinterface 268 1 0
+    //   116: invokeinterface 278 1 0
     //   121: checkcast 64	com/tencent/mm/plugin/appbrand/appcache/b/d/b
     //   124: astore 6
-    //   126: new 270	com/tencent/mm/plugin/appbrand/appcache/ab
+    //   126: new 280	com/tencent/mm/plugin/appbrand/appcache/ac
     //   129: dup
     //   130: aload 6
     //   132: getfield 115	com/tencent/mm/plugin/appbrand/appcache/b/d/b:field_appId	Ljava/lang/String;
@@ -101,15 +122,15 @@ public final class a
     //   137: getfield 125	com/tencent/mm/plugin/appbrand/appcache/b/d/b:field_packageKey	Ljava/lang/String;
     //   140: aload 6
     //   142: getfield 122	com/tencent/mm/plugin/appbrand/appcache/b/d/b:field_packageType	I
-    //   145: invokespecial 273	com/tencent/mm/plugin/appbrand/appcache/ab:<init>	(Ljava/lang/String;Ljava/lang/String;I)V
+    //   145: invokespecial 283	com/tencent/mm/plugin/appbrand/appcache/ac:<init>	(Ljava/lang/String;Ljava/lang/String;I)V
     //   148: astore_2
-    //   149: invokestatic 277	com/tencent/mm/plugin/appbrand/app/j:aVC	()Lcom/tencent/mm/plugin/appbrand/appcache/bf;
+    //   149: invokestatic 287	com/tencent/mm/plugin/appbrand/app/j:aYX	()Lcom/tencent/mm/plugin/appbrand/appcache/bg;
     //   152: astore 7
     //   154: aload 7
     //   156: ifnull +96 -> 252
     //   159: aload 7
     //   161: aload_2
-    //   162: invokevirtual 281	com/tencent/mm/plugin/appbrand/appcache/ab:toString	()Ljava/lang/String;
+    //   162: invokevirtual 291	com/tencent/mm/plugin/appbrand/appcache/ac:toString	()Ljava/lang/String;
     //   165: aload 6
     //   167: getfield 119	com/tencent/mm/plugin/appbrand/appcache/b/d/b:field_version	I
     //   170: iconst_0
@@ -117,14 +138,14 @@ public final class a
     //   172: anewarray 62	java/lang/String
     //   175: dup
     //   176: iconst_0
-    //   177: ldc_w 283
+    //   177: ldc_w 293
     //   180: aastore
-    //   181: invokevirtual 288	com/tencent/mm/plugin/appbrand/appcache/bf:a	(Ljava/lang/String;II[Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/appcache/bb;
+    //   181: invokevirtual 298	com/tencent/mm/plugin/appbrand/appcache/bg:a	(Ljava/lang/String;II[Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/appcache/bc;
     //   184: astore_2
     //   185: aload_2
     //   186: ifnull +27 -> 213
     //   189: aload_2
-    //   190: getfield 293	com/tencent/mm/plugin/appbrand/appcache/bb:field_pkgPath	Ljava/lang/String;
+    //   190: getfield 303	com/tencent/mm/plugin/appbrand/appcache/bc:field_pkgPath	Ljava/lang/String;
     //   193: checkcast 105	java/lang/CharSequence
     //   196: astore_2
     //   197: aload_2
@@ -138,19 +159,19 @@ public final class a
     //   216: checkcast 136	com/tencent/mm/sdk/e/c
     //   219: iconst_0
     //   220: anewarray 62	java/lang/String
-    //   223: invokespecial 295	com/tencent/mm/plugin/appbrand/y/c:delete	(Lcom/tencent/mm/sdk/e/c;[Ljava/lang/String;)Z
+    //   223: invokespecial 305	com/tencent/mm/plugin/appbrand/y/c:delete	(Lcom/tencent/mm/sdk/e/c;[Ljava/lang/String;)Z
     //   226: pop
     //   227: goto -123 -> 104
     //   230: astore_3
-    //   231: ldc 217
+    //   231: ldc 227
     //   233: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   236: aload_3
     //   237: athrow
     //   238: astore_2
     //   239: aload 4
     //   241: aload_3
-    //   242: invokestatic 239	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   245: ldc 217
+    //   242: invokestatic 249	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   245: ldc 227
     //   247: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   250: aload_2
     //   251: athrow
@@ -180,7 +201,7 @@ public final class a
     //   14	226	4	localCloseable	java.io.Closeable
     //   58	57	5	localObject6	Object
     //   67	148	6	localb	b
-    //   152	8	7	localbf	com.tencent.mm.plugin.appbrand.appcache.bf
+    //   152	8	7	localbg	com.tencent.mm.plugin.appbrand.appcache.bg
     // Exception table:
     //   from	to	target	type
     //   16	22	230	java/lang/Throwable
@@ -206,39 +227,20 @@ public final class a
     //   213	227	262	finally
   }
   
-  public final void r(String paramString1, String paramString2, int paramInt)
+  public final void s(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(50206);
     a(paramString1, paramString2, paramInt, 0, null);
     AppMethodBeat.o(50206);
   }
   
-  public final boolean zB(String paramString)
-  {
-    AppMethodBeat.i(50203);
-    CharSequence localCharSequence = (CharSequence)paramString;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      AppMethodBeat.o(50203);
-      return false;
-    }
-    if (this.db.delete("AppBrandWxaPkgPreDownloadStatistics2", "appId=?", new String[] { paramString }) > 0)
-    {
-      AppMethodBeat.o(50203);
-      return true;
-    }
-    AppMethodBeat.o(50203);
-    return false;
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/statistitcs/PredownloadGetCodeStatStorage$Companion;", "", "()V", "TABLE_CREATE", "", "", "kotlin.jvm.PlatformType", "[Ljava/lang/String;", "TAG", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/statistitcs/PredownloadGetCodeStatStorage$Companion;", "", "()V", "TABLE_CREATE", "", "", "kotlin.jvm.PlatformType", "[Ljava/lang/String;", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class b
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     b(a parama, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
     {

@@ -24,13 +24,13 @@ import java.util.HashMap;
 public abstract class MatrixJobIntentService
   extends Service
 {
-  static final HashMap<ComponentName, h> EK = new HashMap();
+  static final HashMap<ComponentName, h> GB = new HashMap();
   static final Object sLock = new Object();
-  boolean EI = false;
-  final ArrayList<d> EJ;
-  b cuw;
-  h cux;
-  a cuy;
+  final ArrayList<d> GA;
+  boolean Gz = false;
+  b cFr;
+  h cFs;
+  a cFt;
   boolean mDestroyed = false;
   boolean mStopped = false;
   
@@ -38,15 +38,15 @@ public abstract class MatrixJobIntentService
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.EJ = null;
+      this.GA = null;
       return;
     }
-    this.EJ = new ArrayList();
+    this.GA = new ArrayList();
   }
   
   private static h a(Context paramContext, ComponentName paramComponentName, boolean paramBoolean, int paramInt)
   {
-    h localh = (h)EK.get(paramComponentName);
+    h localh = (h)GB.get(paramComponentName);
     Object localObject = localh;
     if (localh == null)
     {
@@ -60,7 +60,7 @@ public abstract class MatrixJobIntentService
     label69:
     for (paramContext = new g(paramContext, paramComponentName, paramInt);; paramContext = new c(paramContext, paramComponentName))
     {
-      EK.put(paramComponentName, paramContext);
+      GB.put(paramComponentName, paramContext);
       localObject = paramContext;
       return localObject;
     }
@@ -74,7 +74,7 @@ public abstract class MatrixJobIntentService
     synchronized (sLock)
     {
       paramContext = a(paramContext, paramComponentName, true, paramInt);
-      paramContext.gT(paramInt);
+      paramContext.gY(paramInt);
       paramContext.m(paramIntent);
       return;
     }
@@ -85,37 +85,37 @@ public abstract class MatrixJobIntentService
     a(paramContext, new ComponentName(paramContext, paramClass), paramInt, paramIntent);
   }
   
-  final void Hb()
+  final void Iw()
   {
-    if (this.EJ != null) {
-      synchronized (this.EJ)
+    if (this.GA != null) {
+      synchronized (this.GA)
       {
-        this.cuy = null;
-        if ((this.EJ != null) && (!this.EJ.isEmpty())) {
-          bU(false);
+        this.cFt = null;
+        if ((this.GA != null) && (!this.GA.isEmpty())) {
+          bW(false);
         }
         while (this.mDestroyed) {
           return;
         }
-        this.cux.Hg();
+        this.cFs.IB();
       }
     }
   }
   
-  final e Hc()
+  final e Ix()
   {
     ??? = null;
-    if (this.cuw != null) {
-      ??? = this.cuw.Hc();
+    if (this.cFr != null) {
+      ??? = this.cFr.Ix();
     }
-    while (this.EJ == null) {
+    while (this.GA == null) {
       return ???;
     }
-    synchronized (this.EJ)
+    synchronized (this.GA)
     {
-      if ((this.EJ != null) && (!this.EJ.isEmpty()))
+      if ((this.GA != null) && (!this.GA.isEmpty()))
       {
-        e locale = (e)this.EJ.remove(0);
+        e locale = (e)this.GA.remove(0);
         return locale;
       }
     }
@@ -123,15 +123,15 @@ public abstract class MatrixJobIntentService
   }
   
   @TargetApi(11)
-  final void bU(boolean paramBoolean)
+  final void bW(boolean paramBoolean)
   {
-    if (this.cuy == null)
+    if (this.cFt == null)
     {
-      this.cuy = new a();
-      if ((this.cux != null) && (paramBoolean)) {
-        this.cux.Hf();
+      this.cFt = new a();
+      if ((this.cFs != null) && (paramBoolean)) {
+        this.cFs.IA();
       }
-      this.cuy.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+      this.cFt.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
     }
   }
   
@@ -139,8 +139,8 @@ public abstract class MatrixJobIntentService
   
   public IBinder onBind(Intent paramIntent)
   {
-    if (this.cuw != null) {
-      return this.cuw.Hd();
+    if (this.cFr != null) {
+      return this.cFr.Iy();
     }
     return null;
   }
@@ -150,22 +150,22 @@ public abstract class MatrixJobIntentService
     super.onCreate();
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.cuw = new f(this);
-      this.cux = null;
+      this.cFr = new f(this);
+      this.cFs = null;
       return;
     }
-    this.cuw = null;
-    this.cux = a(this, new ComponentName(this, getClass()), false, 0);
+    this.cFr = null;
+    this.cFs = a(this, new ComponentName(this, getClass()), false, 0);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.EJ != null) {
-      synchronized (this.EJ)
+    if (this.GA != null) {
+      synchronized (this.GA)
       {
         this.mDestroyed = true;
-        this.cux.Hg();
+        this.cFs.IB();
         return;
       }
     }
@@ -173,16 +173,16 @@ public abstract class MatrixJobIntentService
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    if (this.EJ != null)
+    if (this.GA != null)
     {
-      this.cux.He();
-      synchronized (this.EJ)
+      this.cFs.Iz();
+      synchronized (this.GA)
       {
-        ArrayList localArrayList2 = this.EJ;
+        ArrayList localArrayList2 = this.GA;
         if (paramIntent != null)
         {
           localArrayList2.add(new d(paramIntent, paramInt2));
-          bU(true);
+          bW(true);
           return 3;
         }
         paramIntent = new Intent();
@@ -199,18 +199,18 @@ public abstract class MatrixJobIntentService
   
   static abstract interface b
   {
-    public abstract MatrixJobIntentService.e Hc();
+    public abstract MatrixJobIntentService.e Ix();
     
-    public abstract IBinder Hd();
+    public abstract IBinder Iy();
   }
   
   static final class c
     extends MatrixJobIntentService.h
   {
-    private final PowerManager.WakeLock cuA;
-    private final PowerManager.WakeLock cuB;
-    boolean cuC;
-    boolean cuD;
+    private final PowerManager.WakeLock cFv;
+    private final PowerManager.WakeLock cFw;
+    boolean cFx;
+    boolean cFy;
     private final Context mContext;
     
     c(Context paramContext, ComponentName paramComponentName)
@@ -220,39 +220,29 @@ public abstract class MatrixJobIntentService
       if (this.mContext.checkPermission("android.permission.WAKE_LOCK", Process.myPid(), Process.myUid()) == 0)
       {
         paramContext = (PowerManager)paramContext.getSystemService("power");
-        this.cuA = paramContext.newWakeLock(1, paramComponentName.getClassName() + ":launch");
-        this.cuA.setReferenceCounted(false);
-        this.cuB = paramContext.newWakeLock(1, paramComponentName.getClassName() + ":run");
-        this.cuB.setReferenceCounted(false);
+        this.cFv = paramContext.newWakeLock(1, paramComponentName.getClassName() + ":launch");
+        this.cFv.setReferenceCounted(false);
+        this.cFw = paramContext.newWakeLock(1, paramComponentName.getClassName() + ":run");
+        this.cFw.setReferenceCounted(false);
         return;
       }
       c.w("Matrix.JobIntentService", "it would be better to grant WAKE_LOCK permission to your app so that tinker can use WakeLock to keep system awake.", new Object[0]);
-      this.cuB = null;
-      this.cuA = null;
+      this.cFw = null;
+      this.cFv = null;
     }
     
-    public final void He()
+    public final void IA()
     {
       try
       {
-        this.cuC = false;
-        return;
-      }
-      finally {}
-    }
-    
-    public final void Hf()
-    {
-      try
-      {
-        if (!this.cuD)
+        if (!this.cFy)
         {
-          this.cuD = true;
-          if (this.cuB != null) {
-            this.cuB.acquire(600000L);
+          this.cFy = true;
+          if (this.cFw != null) {
+            this.cFw.acquire(600000L);
           }
-          if (this.cuA != null) {
-            this.cuA.release();
+          if (this.cFv != null) {
+            this.cFv.release();
           }
         }
         return;
@@ -260,20 +250,30 @@ public abstract class MatrixJobIntentService
       finally {}
     }
     
-    public final void Hg()
+    public final void IB()
     {
       try
       {
-        if (this.cuD)
+        if (this.cFy)
         {
-          if ((this.cuC) && (this.cuA != null)) {
-            this.cuA.acquire(60000L);
+          if ((this.cFx) && (this.cFv != null)) {
+            this.cFv.acquire(60000L);
           }
-          this.cuD = false;
-          if (this.cuB != null) {
-            this.cuB.release();
+          this.cFy = false;
+          if (this.cFw != null) {
+            this.cFw.release();
           }
         }
+        return;
+      }
+      finally {}
+    }
+    
+    public final void Iz()
+    {
+      try
+      {
+        this.cFx = false;
         return;
       }
       finally {}
@@ -288,11 +288,11 @@ public abstract class MatrixJobIntentService
         if (this.mContext.startService(paramIntent) != null) {
           try
           {
-            if (!this.cuC)
+            if (!this.cFx)
             {
-              this.cuC = true;
-              if ((!this.cuD) && (this.cuA != null)) {
-                this.cuA.acquire(60000L);
+              this.cFx = true;
+              if ((!this.cFy) && (this.cFv != null)) {
+                this.cFv.acquire(60000L);
               }
             }
             return;
@@ -311,18 +311,18 @@ public abstract class MatrixJobIntentService
   final class d
     implements MatrixJobIntentService.e
   {
-    final int cuE;
+    final int cFz;
     final Intent mIntent;
     
     d(Intent paramIntent, int paramInt)
     {
       this.mIntent = paramIntent;
-      this.cuE = paramInt;
+      this.cFz = paramInt;
     }
     
     public final void complete()
     {
-      MatrixJobIntentService.this.stopSelf(this.cuE);
+      MatrixJobIntentService.this.stopSelf(this.cFz);
     }
     
     public final Intent getIntent()
@@ -342,31 +342,31 @@ public abstract class MatrixJobIntentService
     extends JobServiceEngine
     implements MatrixJobIntentService.b
   {
-    final MatrixJobIntentService cuF;
-    JobParameters cuG;
+    final MatrixJobIntentService cFA;
+    JobParameters cFB;
     final Object mLock = new Object();
     
     f(MatrixJobIntentService paramMatrixJobIntentService)
     {
       super();
-      this.cuF = paramMatrixJobIntentService;
+      this.cFA = paramMatrixJobIntentService;
     }
     
-    public final MatrixJobIntentService.e Hc()
+    public final MatrixJobIntentService.e Ix()
     {
       synchronized (this.mLock)
       {
-        if (this.cuG == null) {}
+        if (this.cFB == null) {}
         for (;;)
         {
           return null;
           try
           {
-            JobWorkItem localJobWorkItem = this.cuG.dequeueWork();
+            JobWorkItem localJobWorkItem = this.cFB.dequeueWork();
             if ((localJobWorkItem == null) || (localJobWorkItem.getIntent() == null)) {
               continue;
             }
-            localJobWorkItem.getIntent().setExtrasClassLoader(this.cuF.getClassLoader());
+            localJobWorkItem.getIntent().setExtrasClassLoader(this.cFA.getClassLoader());
             return new a(localJobWorkItem);
           }
           catch (Throwable localThrowable)
@@ -378,7 +378,7 @@ public abstract class MatrixJobIntentService
       }
     }
     
-    public final IBinder Hd()
+    public final IBinder Iy()
     {
       return getBinder();
     }
@@ -387,22 +387,22 @@ public abstract class MatrixJobIntentService
     {
       synchronized (this.mLock)
       {
-        this.cuG = paramJobParameters;
-        this.cuF.bU(false);
+        this.cFB = paramJobParameters;
+        this.cFA.bW(false);
         return true;
       }
     }
     
     public final boolean onStopJob(JobParameters arg1)
     {
-      ??? = this.cuF;
-      if (???.cuy != null) {
-        ???.cuy.cancel(???.EI);
+      ??? = this.cFA;
+      if (???.cFt != null) {
+        ???.cFt.cancel(???.Gz);
       }
       ???.mStopped = true;
       synchronized (this.mLock)
       {
-        this.cuG = null;
+        this.cFB = null;
         return true;
       }
     }
@@ -410,19 +410,19 @@ public abstract class MatrixJobIntentService
     final class a
       implements MatrixJobIntentService.e
     {
-      final JobWorkItem cuH;
+      final JobWorkItem cFC;
       
       a(JobWorkItem paramJobWorkItem)
       {
-        this.cuH = paramJobWorkItem;
+        this.cFC = paramJobWorkItem;
       }
       
       public final void complete()
       {
         synchronized (MatrixJobIntentService.f.this.mLock)
         {
-          if (MatrixJobIntentService.f.this.cuG != null) {
-            MatrixJobIntentService.f.this.cuG.completeWork(this.cuH);
+          if (MatrixJobIntentService.f.this.cFB != null) {
+            MatrixJobIntentService.f.this.cFB.completeWork(this.cFC);
           }
           return;
         }
@@ -430,7 +430,7 @@ public abstract class MatrixJobIntentService
       
       public final Intent getIntent()
       {
-        return this.cuH.getIntent();
+        return this.cFC.getIntent();
       }
     }
   }
@@ -438,27 +438,27 @@ public abstract class MatrixJobIntentService
   static final class g
     extends MatrixJobIntentService.h
   {
-    private final JobInfo cuJ;
-    private final JobScheduler cuK;
+    private final JobInfo cFE;
+    private final JobScheduler cFF;
     
     g(Context paramContext, ComponentName paramComponentName, int paramInt)
     {
       super();
-      gT(paramInt);
-      this.cuJ = new JobInfo.Builder(paramInt, this.mComponentName).setOverrideDeadline(0L).build();
-      this.cuK = ((JobScheduler)paramContext.getApplicationContext().getSystemService("jobscheduler"));
+      gY(paramInt);
+      this.cFE = new JobInfo.Builder(paramInt, this.mComponentName).setOverrideDeadline(0L).build();
+      this.cFF = ((JobScheduler)paramContext.getApplicationContext().getSystemService("jobscheduler"));
     }
     
     final void m(Intent paramIntent)
     {
-      this.cuK.enqueue(this.cuJ, new JobWorkItem(paramIntent));
+      this.cFF.enqueue(this.cFE, new JobWorkItem(paramIntent));
     }
   }
   
   static abstract class h
   {
-    boolean cuL;
-    int cuM;
+    boolean cFG;
+    int cFH;
     final ComponentName mComponentName;
     
     h(ComponentName paramComponentName)
@@ -466,23 +466,23 @@ public abstract class MatrixJobIntentService
       this.mComponentName = paramComponentName;
     }
     
-    public void He() {}
+    public void IA() {}
     
-    public void Hf() {}
+    public void IB() {}
     
-    public void Hg() {}
+    public void Iz() {}
     
-    final void gT(int paramInt)
+    final void gY(int paramInt)
     {
-      if (!this.cuL)
+      if (!this.cFG)
       {
-        this.cuL = true;
-        this.cuM = paramInt;
+        this.cFG = true;
+        this.cFH = paramInt;
       }
-      while (this.cuM == paramInt) {
+      while (this.cFH == paramInt) {
         return;
       }
-      throw new IllegalArgumentException("Given job ID " + paramInt + " is different than previous " + this.cuM);
+      throw new IllegalArgumentException("Given job ID " + paramInt + " is different than previous " + this.cFH);
     }
     
     abstract void m(Intent paramIntent);

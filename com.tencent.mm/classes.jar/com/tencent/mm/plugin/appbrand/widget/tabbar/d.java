@@ -6,28 +6,28 @@ import com.tencent.mm.plugin.appbrand.q;
 public abstract class d
 {
   int index = -1;
-  q jiP;
-  String mPt;
-  c mPu;
-  a mPv;
-  protected volatile e mPw;
+  q jCl;
+  String npQ;
+  c npR;
+  a npS;
+  protected volatile e npT;
   
   public d(String paramString, c paramc)
   {
-    this.mPt = paramString;
-    this.mPu = paramc;
+    this.npQ = paramString;
+    this.npR = paramc;
   }
   
   public d(String paramString, c paramc, q paramq)
   {
-    this.mPt = paramString;
-    this.jiP = paramq;
-    this.mPu = paramc;
+    this.npQ = paramString;
+    this.jCl = paramq;
+    this.npR = paramc;
   }
   
   protected final void R(Bitmap paramBitmap)
   {
-    e locale = this.mPw;
+    e locale = this.npT;
     if (locale != null) {
       locale.a(paramBitmap, this);
     }
@@ -35,27 +35,27 @@ public abstract class d
   
   public final void a(a parama)
   {
-    this.mPv = parama;
+    this.npS = parama;
   }
   
   public final void a(e parame)
   {
-    this.mPw = parame;
+    this.npT = parame;
   }
   
-  public abstract void bBJ();
+  public abstract void bFL();
   
-  public final String bBK()
+  public final String bFM()
   {
-    if ((this.mPt == null) || (this.mPt.isEmpty())) {
+    if ((this.npQ == null) || (this.npQ.isEmpty())) {
       return null;
     }
-    return this.mPt;
+    return this.npQ;
   }
   
   public final void cancel()
   {
-    this.mPw = null;
+    this.npT = null;
   }
   
   public final void setIndex(int paramInt)
@@ -70,7 +70,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.tabbar.d
  * JD-Core Version:    0.7.0.1
  */

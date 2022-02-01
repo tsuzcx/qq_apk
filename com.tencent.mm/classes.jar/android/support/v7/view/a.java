@@ -19,7 +19,7 @@ public final class a
     return new a(paramContext);
   }
   
-  public final int hc()
+  public final int hs()
   {
     Configuration localConfiguration = this.mContext.getResources().getConfiguration();
     int i = localConfiguration.screenWidthDp;
@@ -36,12 +36,12 @@ public final class a
     return 2;
   }
   
-  public final boolean hd()
+  public final boolean ht()
   {
     return this.mContext.getResources().getBoolean(2131034112);
   }
   
-  public final boolean he()
+  public final boolean hu()
   {
     return this.mContext.getApplicationInfo().targetSdkVersion < 14;
   }

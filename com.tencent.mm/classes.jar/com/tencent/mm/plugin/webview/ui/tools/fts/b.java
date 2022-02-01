@@ -19,23 +19,23 @@ public final class b
     super(paramContext, paramView1, paramView2, paramView3, paramView4, paramView5, paramView6, paramView7, paramView8);
   }
   
-  private void eFo()
+  private void eUk()
   {
     AppMethodBeat.i(80750);
-    this.CDR.setPadding(this.CDQ, 0, 0, 0);
-    int i = this.vaA;
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.CDR.getLayoutParams();
-    localLayoutParams.leftMargin = (this.vaA - i);
-    localLayoutParams.rightMargin = (this.vaA - i);
-    localLayoutParams.width = (i * 2 + (int)this.CDY[2][0]);
-    this.CDR.setLayoutParams(localLayoutParams);
-    this.CDR.post(new Runnable()
+    this.EhC.setPadding(this.EhB, 0, 0, 0);
+    int i = this.wfJ;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.EhC.getLayoutParams();
+    localLayoutParams.leftMargin = (this.wfJ - i);
+    localLayoutParams.rightMargin = (this.wfJ - i);
+    localLayoutParams.width = (i * 2 + (int)this.EhJ[2][0]);
+    this.EhC.setLayoutParams(localLayoutParams);
+    this.EhC.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(80743);
-        b.this.CDR.setY(b.this.CDY[0][1]);
-        b.this.CDR.setX(b.this.CDY[1][1]);
+        b.this.EhC.setY(b.this.EhJ[0][1]);
+        b.this.EhC.setX(b.this.EhJ[1][1]);
         AppMethodBeat.o(80743);
       }
     });
@@ -45,28 +45,28 @@ public final class b
   public final void a(a.b paramb, boolean paramBoolean)
   {
     AppMethodBeat.i(80748);
-    if (paramb == this.CEa)
+    if (paramb == this.EhL)
     {
       AppMethodBeat.o(80748);
       return;
     }
-    switch (4.CEk[paramb.ordinal()])
+    switch (4.EhV[paramb.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(80748);
       return;
-      eFm();
+      eUi();
       AppMethodBeat.o(80748);
       return;
       if (paramBoolean)
       {
-        eFn();
+        eUj();
         AppMethodBeat.o(80748);
         return;
       }
-      eFo();
+      eUk();
     }
   }
   
@@ -77,16 +77,16 @@ public final class b
     AppMethodBeat.o(80747);
   }
   
-  protected final void eFm()
+  protected final void eUi()
   {
     AppMethodBeat.i(80749);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.CDY[0][0] - this.CDO >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.CEe);
+    if (this.EhJ[0][0] - this.Ehz >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.EhP);
     }
     for (;;)
     {
-      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.CDX, "alpha", new float[] { 0.0F, 1.0F });
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.EhI, "alpha", new float[] { 0.0F, 1.0F });
       AnimatorSet localAnimatorSet = new AnimatorSet();
       localAnimatorSet.playTogether(new Animator[] { localValueAnimator, localObjectAnimator });
       localAnimatorSet.setInterpolator(new DecelerateInterpolator());
@@ -102,8 +102,8 @@ public final class b
         {
           AppMethodBeat.i(80742);
           b.this.isAnimating = false;
-          if (b.this.CEb != null) {
-            b.this.CEb.onAnimationEnd();
+          if (b.this.EhM != null) {
+            b.this.EhM.onAnimationEnd();
           }
           AppMethodBeat.o(80742);
         }
@@ -114,8 +114,8 @@ public final class b
         {
           AppMethodBeat.i(80741);
           b.this.isAnimating = true;
-          if (b.this.CEb != null) {
-            b.this.CEb.onAnimationStart();
+          if (b.this.EhM != null) {
+            b.this.EhM.onAnimationStart();
           }
           AppMethodBeat.o(80741);
         }
@@ -123,20 +123,20 @@ public final class b
       localAnimatorSet.start();
       AppMethodBeat.o(80749);
       return;
-      localValueAnimator.addUpdateListener(this.CEf);
+      localValueAnimator.addUpdateListener(this.EhQ);
     }
   }
   
-  protected final void eFn()
+  protected final void eUj()
   {
     AppMethodBeat.i(80751);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.CDY[0][0] - this.CDO >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.CEc);
+    if (this.EhJ[0][0] - this.Ehz >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.EhN);
     }
     for (;;)
     {
-      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.CDX, "alpha", new float[] { 1.0F, 0.0F });
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.EhI, "alpha", new float[] { 1.0F, 0.0F });
       AnimatorSet localAnimatorSet = new AnimatorSet();
       localAnimatorSet.playTogether(new Animator[] { localValueAnimator, localObjectAnimator });
       localAnimatorSet.setInterpolator(new DecelerateInterpolator());
@@ -152,8 +152,8 @@ public final class b
         {
           AppMethodBeat.i(80745);
           b.this.isAnimating = false;
-          if (b.this.CEb != null) {
-            b.this.CEb.onAnimationEnd();
+          if (b.this.EhM != null) {
+            b.this.EhM.onAnimationEnd();
           }
           AppMethodBeat.o(80745);
         }
@@ -164,8 +164,8 @@ public final class b
         {
           AppMethodBeat.i(80744);
           b.this.isAnimating = true;
-          if (b.this.CEb != null) {
-            b.this.CEb.onAnimationStart();
+          if (b.this.EhM != null) {
+            b.this.EhM.onAnimationStart();
           }
           AppMethodBeat.o(80744);
         }
@@ -173,7 +173,7 @@ public final class b
       localAnimatorSet.start();
       AppMethodBeat.o(80751);
       return;
-      localValueAnimator.addUpdateListener(this.CEd);
+      localValueAnimator.addUpdateListener(this.EhO);
     }
   }
 }

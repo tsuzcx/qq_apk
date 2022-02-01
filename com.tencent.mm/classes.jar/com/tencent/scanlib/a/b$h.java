@@ -8,12 +8,12 @@ import com.tencent.stubs.logger.Log;
 public final class b$h
   extends b.c
 {
-  private f JUX;
+  private f LOR;
   private int rotation;
   
   public b$h(f paramf, int paramInt)
   {
-    this.JUX = paramf;
+    this.LOR = paramf;
     this.rotation = paramInt;
   }
   
@@ -23,9 +23,9 @@ public final class b$h
     try
     {
       Log.i("CameraTask.CameraReOpenTask", "reopen camera");
-      this.JUX.close();
-      this.JUX.aeh(this.rotation);
-      this.JUX.a(new Camera.PreviewCallback()
+      this.LOR.close();
+      this.LOR.agH(this.rotation);
+      this.LOR.a(new Camera.PreviewCallback()
       {
         public final void onPreviewFrame(byte[] paramAnonymousArrayOfByte, Camera paramAnonymousCamera) {}
       });

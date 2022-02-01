@@ -15,24 +15,24 @@ public final class DataSourceInputStream
   
   public DataSourceInputStream(DataSource paramDataSource, DataSpec paramDataSpec)
   {
-    AppMethodBeat.i(193812);
+    AppMethodBeat.i(220594);
     this.opened = false;
     this.closed = false;
     this.dataSource = paramDataSource;
     this.dataSpec = paramDataSpec;
     this.singleByteArray = new byte[1];
-    AppMethodBeat.o(193812);
+    AppMethodBeat.o(220594);
   }
   
   private void checkOpened()
   {
-    AppMethodBeat.i(193818);
+    AppMethodBeat.i(220600);
     if (!this.opened)
     {
       this.dataSource.open(this.dataSpec);
       this.opened = true;
     }
-    AppMethodBeat.o(193818);
+    AppMethodBeat.o(220600);
   }
   
   public final long bytesRead()
@@ -42,46 +42,46 @@ public final class DataSourceInputStream
   
   public final void close()
   {
-    AppMethodBeat.i(193817);
+    AppMethodBeat.i(220599);
     if (!this.closed)
     {
       this.dataSource.close();
       this.closed = true;
     }
-    AppMethodBeat.o(193817);
+    AppMethodBeat.o(220599);
   }
   
   public final void open()
   {
-    AppMethodBeat.i(193813);
+    AppMethodBeat.i(220595);
     checkOpened();
-    AppMethodBeat.o(193813);
+    AppMethodBeat.o(220595);
   }
   
   public final int read()
   {
-    AppMethodBeat.i(193814);
+    AppMethodBeat.i(220596);
     if (read(this.singleByteArray) == -1)
     {
-      AppMethodBeat.o(193814);
+      AppMethodBeat.o(220596);
       return -1;
     }
     int i = this.singleByteArray[0];
-    AppMethodBeat.o(193814);
+    AppMethodBeat.o(220596);
     return i & 0xFF;
   }
   
   public final int read(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193815);
+    AppMethodBeat.i(220597);
     int i = read(paramArrayOfByte, 0, paramArrayOfByte.length);
-    AppMethodBeat.o(193815);
+    AppMethodBeat.o(220597);
     return i;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193816);
+    AppMethodBeat.i(220598);
     if (!this.closed) {}
     for (boolean bool = true;; bool = false)
     {
@@ -91,11 +91,11 @@ public final class DataSourceInputStream
       if (paramInt1 != -1) {
         break;
       }
-      AppMethodBeat.o(193816);
+      AppMethodBeat.o(220598);
       return -1;
     }
     this.totalBytesRead += paramInt1;
-    AppMethodBeat.o(193816);
+    AppMethodBeat.o(220598);
     return paramInt1;
   }
 }

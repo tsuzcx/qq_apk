@@ -8,5 +8,6 @@
     <Preference android:key="fix_tools_db_recover" android:layout="@layout/aop" android:title="@string/cf6" />
     <Preference android:key="fix_tools_search" android:layout="@layout/aop" android:title="@string/cfc" />
     <Preference android:key="fix_tools_matrix" android:layout="@layout/aop" android:title="@string/cfb" />
+    <Preference android:key="fix_force_update" android:layout="@layout/aop" android:title="@string/hv2" />
     <PreferenceCategory />
 </PreferenceScreen>

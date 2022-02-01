@@ -23,15 +23,15 @@ public class c
   public final void a(Canvas paramCanvas, TextPaint paramTextPaint, List<d> paramList)
   {
     AppMethodBeat.i(39744);
-    iA(paramList);
+    iO(paramList);
     if (this.isPressed)
     {
       int i = paramTextPaint.getColor();
       int j = paramTextPaint.bgColor;
       boolean bool = paramTextPaint.isUnderlineText();
-      ((ClickableSpan)this.JJH).updateDrawState(paramTextPaint);
+      ((ClickableSpan)this.LDq).updateDrawState(paramTextPaint);
       paramTextPaint.setColor(paramTextPaint.bgColor);
-      paramList = this.JJG.iterator();
+      paramList = this.LDp.iterator();
       while (paramList.hasNext()) {
         paramCanvas.drawRect((RectF)paramList.next(), paramTextPaint);
       }

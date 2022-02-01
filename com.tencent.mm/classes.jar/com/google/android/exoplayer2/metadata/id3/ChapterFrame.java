@@ -10,12 +10,12 @@ public final class ChapterFrame
   extends Id3Frame
 {
   public static final Parcelable.Creator<ChapterFrame> CREATOR;
-  public final String bjY;
-  public final int bjZ;
-  public final int bka;
-  public final long bkb;
-  public final long bkc;
-  private final Id3Frame[] bkd;
+  public final String but;
+  public final int buu;
+  public final int buv;
+  public final long buw;
+  public final long bux;
+  private final Id3Frame[] buy;
   
   static
   {
@@ -28,17 +28,17 @@ public final class ChapterFrame
   {
     super("CHAP");
     AppMethodBeat.i(92409);
-    this.bjY = paramParcel.readString();
-    this.bjZ = paramParcel.readInt();
-    this.bka = paramParcel.readInt();
-    this.bkb = paramParcel.readLong();
-    this.bkc = paramParcel.readLong();
+    this.but = paramParcel.readString();
+    this.buu = paramParcel.readInt();
+    this.buv = paramParcel.readInt();
+    this.buw = paramParcel.readLong();
+    this.bux = paramParcel.readLong();
     int j = paramParcel.readInt();
-    this.bkd = new Id3Frame[j];
+    this.buy = new Id3Frame[j];
     int i = 0;
     while (i < j)
     {
-      this.bkd[i] = ((Id3Frame)paramParcel.readParcelable(Id3Frame.class.getClassLoader()));
+      this.buy[i] = ((Id3Frame)paramParcel.readParcelable(Id3Frame.class.getClassLoader()));
       i += 1;
     }
     AppMethodBeat.o(92409);
@@ -47,12 +47,12 @@ public final class ChapterFrame
   public ChapterFrame(String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2, Id3Frame[] paramArrayOfId3Frame)
   {
     super("CHAP");
-    this.bjY = paramString;
-    this.bjZ = paramInt1;
-    this.bka = paramInt2;
-    this.bkb = paramLong1;
-    this.bkc = paramLong2;
-    this.bkd = paramArrayOfId3Frame;
+    this.but = paramString;
+    this.buu = paramInt1;
+    this.buv = paramInt2;
+    this.buw = paramLong1;
+    this.bux = paramLong2;
+    this.buy = paramArrayOfId3Frame;
   }
   
   public final int describeContents()
@@ -74,7 +74,7 @@ public final class ChapterFrame
       return false;
     }
     paramObject = (ChapterFrame)paramObject;
-    if ((this.bjZ == paramObject.bjZ) && (this.bka == paramObject.bka) && (this.bkb == paramObject.bkb) && (this.bkc == paramObject.bkc) && (x.g(this.bjY, paramObject.bjY)) && (Arrays.equals(this.bkd, paramObject.bkd)))
+    if ((this.buu == paramObject.buu) && (this.buv == paramObject.buv) && (this.buw == paramObject.buw) && (this.bux == paramObject.bux) && (x.i(this.but, paramObject.but)) && (Arrays.equals(this.buy, paramObject.buy)))
     {
       AppMethodBeat.o(92410);
       return true;
@@ -86,12 +86,12 @@ public final class ChapterFrame
   public final int hashCode()
   {
     AppMethodBeat.i(92411);
-    int j = this.bjZ;
-    int k = this.bka;
-    int m = (int)this.bkb;
-    int n = (int)this.bkc;
-    if (this.bjY != null) {}
-    for (int i = this.bjY.hashCode();; i = 0)
+    int j = this.buu;
+    int k = this.buv;
+    int m = (int)this.buw;
+    int n = (int)this.bux;
+    if (this.but != null) {}
+    for (int i = this.but.hashCode();; i = 0)
     {
       AppMethodBeat.o(92411);
       return i + ((((j + 527) * 31 + k) * 31 + m) * 31 + n) * 31;
@@ -101,13 +101,13 @@ public final class ChapterFrame
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92412);
-    paramParcel.writeString(this.bjY);
-    paramParcel.writeInt(this.bjZ);
-    paramParcel.writeInt(this.bka);
-    paramParcel.writeLong(this.bkb);
-    paramParcel.writeLong(this.bkc);
-    paramParcel.writeInt(this.bkd.length);
-    Id3Frame[] arrayOfId3Frame = this.bkd;
+    paramParcel.writeString(this.but);
+    paramParcel.writeInt(this.buu);
+    paramParcel.writeInt(this.buv);
+    paramParcel.writeLong(this.buw);
+    paramParcel.writeLong(this.bux);
+    paramParcel.writeInt(this.buy.length);
+    Id3Frame[] arrayOfId3Frame = this.buy;
     int i = arrayOfId3Frame.length;
     paramInt = 0;
     while (paramInt < i)

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emojicapture.ui.preview;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$Companion;", "", "()V", "MODE_CAPTURE_EMOJI", "", "MODE_FULLSCREEN", "MODE_RATIO_16_9", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$Companion;", "", "()V", "MODE_CAPTURE_EMOJI", "", "MODE_FULLSCREEN", "MODE_RATIO_16_9", "plugin-emojicapture_release"})
 public final class StickerPreviewView$a {}
 
 

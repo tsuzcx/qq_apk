@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Process;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.RECEIVERCHECK})
 public class MMReceivers$BootReceiver
@@ -23,8 +23,8 @@ public class MMReceivers$BootReceiver
     new StringBuilder("system booted, pid=").append(Process.myPid());
     if (!b.c(paramContext, "auto", true))
     {
-      MMReceivers.AlarmReceiver.bO(paramContext);
-      ac.eUQ();
+      MMReceivers.AlarmReceiver.bN(paramContext);
+      ad.fku();
     }
     AppMethodBeat.o(131889);
   }

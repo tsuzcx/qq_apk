@@ -13,14 +13,14 @@ import android.support.v7.widget.RecyclerView.w;
 import android.support.v7.widget.as;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
-import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recentview.BaseAppBrandRecentView.b;
 import com.tencent.mm.plugin.appbrand.widget.recentview.ConversationAppBrandRecentView;
 import com.tencent.mm.plugin.appbrand.widget.recentview.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -28,89 +28,89 @@ import java.util.List;
 public final class c
   extends as
 {
-  private static TimeInterpolator akg;
-  private ArrayList<RecyclerView.w> akh;
-  private ArrayList<RecyclerView.w> aki;
-  private ArrayList<b> akj;
-  private ArrayList<a> akk;
-  ArrayList<ArrayList<RecyclerView.w>> akl;
-  ArrayList<ArrayList<b>> akm;
-  ArrayList<ArrayList<a>> akn;
-  ArrayList<RecyclerView.w> ako;
-  ArrayList<RecyclerView.w> akp;
-  ArrayList<RecyclerView.w> akq;
-  ArrayList<RecyclerView.w> akr;
-  boolean mwb;
-  public boolean mwc;
-  ConversationAppBrandRecentView mwd;
-  private RecyclerView.f.a mwe;
+  private static TimeInterpolator alX;
+  private ArrayList<RecyclerView.w> alY;
+  private ArrayList<RecyclerView.w> alZ;
+  private ArrayList<b> ama;
+  private ArrayList<a> amb;
+  ArrayList<ArrayList<RecyclerView.w>> amc;
+  ArrayList<ArrayList<b>> amd;
+  ArrayList<ArrayList<a>> ame;
+  ArrayList<RecyclerView.w> amf;
+  ArrayList<RecyclerView.w> amg;
+  ArrayList<RecyclerView.w> amh;
+  ArrayList<RecyclerView.w> ami;
+  boolean mWG;
+  public boolean mWH;
+  ConversationAppBrandRecentView mWI;
+  private RecyclerView.f.a mWJ;
   
   public c(ConversationAppBrandRecentView paramConversationAppBrandRecentView, boolean paramBoolean)
   {
     AppMethodBeat.i(49539);
-    this.mwb = false;
-    this.mwc = false;
-    this.akh = new ArrayList();
-    this.aki = new ArrayList();
-    this.akj = new ArrayList();
-    this.akk = new ArrayList();
-    this.akl = new ArrayList();
-    this.akm = new ArrayList();
-    this.akn = new ArrayList();
-    this.ako = new ArrayList();
-    this.akp = new ArrayList();
-    this.akq = new ArrayList();
-    this.akr = new ArrayList();
-    this.mwe = new RecyclerView.f.a()
+    this.mWG = false;
+    this.mWH = false;
+    this.alY = new ArrayList();
+    this.alZ = new ArrayList();
+    this.ama = new ArrayList();
+    this.amb = new ArrayList();
+    this.amc = new ArrayList();
+    this.amd = new ArrayList();
+    this.ame = new ArrayList();
+    this.amf = new ArrayList();
+    this.amg = new ArrayList();
+    this.amh = new ArrayList();
+    this.ami = new ArrayList();
+    this.mWJ = new RecyclerView.f.a()
     {
-      public final void ld()
+      public final void lv()
       {
         AppMethodBeat.i(49517);
-        if (c.this.mwd != null)
+        if (c.this.mWI != null)
         {
-          ConversationAppBrandRecentView localConversationAppBrandRecentView = c.this.mwd;
-          c.this.mwd.getCurrentPage();
+          ConversationAppBrandRecentView localConversationAppBrandRecentView = c.this.mWI;
+          c.this.mWI.getCurrentPage();
           Object localObject = (LinearLayoutManager)localConversationAppBrandRecentView.getLayoutManager();
-          int i = ((LinearLayoutManager)localObject).jW();
-          int j = ((LinearLayoutManager)localObject).jY();
-          ac.i("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo checkAlphaChange firstPos: %d, lastPos: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          int i = ((LinearLayoutManager)localObject).km();
+          int j = ((LinearLayoutManager)localObject).ko();
+          ad.i("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo checkAlphaChange firstPos: %d, lastPos: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
           if (i <= j)
           {
             localObject = localConversationAppBrandRecentView.ci(i);
-            if ((localObject != null) && (((RecyclerView.w)localObject).asD != null))
+            if ((localObject != null) && (((RecyclerView.w)localObject).auu != null))
             {
-              ((RecyclerView.w)localObject).asD.setScaleX(1.0F);
-              ((RecyclerView.w)localObject).asD.setScaleY(1.0F);
+              ((RecyclerView.w)localObject).auu.setScaleX(1.0F);
+              ((RecyclerView.w)localObject).auu.setScaleY(1.0F);
               if (i != j) {
                 break label145;
               }
-              ((RecyclerView.w)localObject).asD.setAlpha(0.3F);
+              ((RecyclerView.w)localObject).auu.setAlpha(0.3F);
             }
             for (;;)
             {
               i += 1;
               break;
               label145:
-              ((RecyclerView.w)localObject).asD.setAlpha(1.0F);
+              ((RecyclerView.w)localObject).auu.setAlpha(1.0F);
             }
           }
         }
         AppMethodBeat.o(49517);
       }
     };
-    this.mwd = paramConversationAppBrandRecentView;
-    this.mwb = paramBoolean;
+    this.mWI = paramConversationAppBrandRecentView;
+    this.mWG = paramBoolean;
     AppMethodBeat.o(49539);
   }
   
   private void a(a parama)
   {
     AppMethodBeat.i(49546);
-    if (parama.akE != null) {
-      a(parama, parama.akE);
+    if (parama.amv != null) {
+      a(parama, parama.amv);
     }
-    if (parama.akF != null) {
-      a(parama, parama.akF);
+    if (parama.amw != null) {
+      a(parama, parama.amw);
     }
     AppMethodBeat.o(49546);
   }
@@ -122,7 +122,7 @@ public final class c
     while (i >= 0)
     {
       a locala = (a)paramList.get(i);
-      if ((a(locala, paramw)) && (locala.akE == null) && (locala.akF == null)) {
+      if ((a(locala, paramw)) && (locala.amv == null) && (locala.amw == null)) {
         paramList.remove(locala);
       }
       i -= 1;
@@ -133,21 +133,21 @@ public final class c
   private boolean a(a parama, RecyclerView.w paramw)
   {
     AppMethodBeat.i(49547);
-    if (parama.akF == paramw) {
-      parama.akF = null;
+    if (parama.amw == paramw) {
+      parama.amw = null;
     }
     for (;;)
     {
-      paramw.asD.setAlpha(1.0F);
-      paramw.asD.setTranslationX(0.0F);
-      paramw.asD.setTranslationY(0.0F);
+      paramw.auu.setAlpha(1.0F);
+      paramw.auu.setTranslationX(0.0F);
+      paramw.auu.setTranslationY(0.0F);
       n(paramw);
       AppMethodBeat.o(49547);
       return true;
-      if (parama.akE != paramw) {
+      if (parama.amv != paramw) {
         break;
       }
-      parama.akE = null;
+      parama.amv = null;
     }
     AppMethodBeat.o(49547);
     return false;
@@ -156,10 +156,10 @@ public final class c
   private void e(RecyclerView.w paramw)
   {
     AppMethodBeat.i(49549);
-    if (akg == null) {
-      akg = new ValueAnimator().getInterpolator();
+    if (alX == null) {
+      alX = new ValueAnimator().getInterpolator();
     }
-    paramw.asD.animate().setInterpolator(akg);
+    paramw.auu.animate().setInterpolator(alX);
     d(paramw);
     AppMethodBeat.o(49549);
   }
@@ -170,7 +170,7 @@ public final class c
     int i = paramList.size() - 1;
     while (i >= 0)
     {
-      ((RecyclerView.w)paramList.get(i)).asD.animate().cancel();
+      ((RecyclerView.w)paramList.get(i)).auu.animate().cancel();
       i -= 1;
     }
     AppMethodBeat.o(49553);
@@ -179,9 +179,9 @@ public final class c
   public final boolean a(RecyclerView.w paramw, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(49543);
-    View localView = paramw.asD;
-    paramInt1 = (int)paramw.asD.getTranslationX() + paramInt1;
-    paramInt2 = (int)paramw.asD.getTranslationY() + paramInt2;
+    View localView = paramw.auu;
+    paramInt1 = (int)paramw.auu.getTranslationX() + paramInt1;
+    paramInt2 = (int)paramw.auu.getTranslationY() + paramInt2;
     e(paramw);
     int i = paramInt3 - paramInt1;
     int j = paramInt4 - paramInt2;
@@ -197,10 +197,10 @@ public final class c
     if (j != 0) {
       localView.setTranslationY(-j);
     }
-    ac.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateMove holder %s", new Object[] { ((BaseAppBrandRecentView.b)paramw).titleTv.getText() });
-    paramw.asD.setScaleX(1.0F);
-    paramw.asD.setScaleY(1.0F);
-    this.akj.add(new b(paramw, paramInt1, paramInt2, paramInt3, paramInt4));
+    ad.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateMove holder %s", new Object[] { ((BaseAppBrandRecentView.b)paramw).titleTv.getText() });
+    paramw.auu.setScaleX(1.0F);
+    paramw.auu.setScaleY(1.0F);
+    this.ama.add(new b(paramw, paramInt1, paramInt2, paramInt3, paramInt4));
     AppMethodBeat.o(49543);
     return true;
   }
@@ -214,25 +214,25 @@ public final class c
       AppMethodBeat.o(49544);
       return bool;
     }
-    int i = ConversationAppBrandRecentView.bw(paramw1.asD);
-    ac.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateChange %s, pos: %d", new Object[] { ((BaseAppBrandRecentView.b)paramw2).titleTv.getText(), Integer.valueOf(i) });
-    float f1 = paramw1.asD.getTranslationX();
-    float f2 = paramw1.asD.getTranslationY();
-    float f3 = paramw1.asD.getAlpha();
+    int i = ConversationAppBrandRecentView.bw(paramw1.auu);
+    ad.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateChange %s, pos: %d", new Object[] { ((BaseAppBrandRecentView.b)paramw2).titleTv.getText(), Integer.valueOf(i) });
+    float f1 = paramw1.auu.getTranslationX();
+    float f2 = paramw1.auu.getTranslationY();
+    float f3 = paramw1.auu.getAlpha();
     e(paramw1);
     i = (int)(paramInt3 - paramInt1 - f1);
     int j = (int)(paramInt4 - paramInt2 - f2);
-    paramw1.asD.setTranslationX(f1);
-    paramw1.asD.setTranslationY(f2);
-    paramw1.asD.setAlpha(f3);
+    paramw1.auu.setTranslationX(f1);
+    paramw1.auu.setTranslationY(f2);
+    paramw1.auu.setAlpha(f3);
     if (paramw2 != null)
     {
       e(paramw2);
-      paramw2.asD.setTranslationX(-i);
-      paramw2.asD.setTranslationY(-j);
-      paramw2.asD.setAlpha(0.0F);
+      paramw2.auu.setTranslationX(-i);
+      paramw2.auu.setTranslationY(-j);
+      paramw2.auu.setAlpha(0.0F);
     }
-    this.akk.add(new a(paramw1, paramw2, paramInt1, paramInt2, paramInt3, paramInt4));
+    this.amb.add(new a(paramw1, paramw2, paramInt1, paramInt2, paramInt3, paramInt4));
     AppMethodBeat.o(49544);
     return true;
   }
@@ -252,9 +252,9 @@ public final class c
   public final boolean b(RecyclerView.w paramw)
   {
     AppMethodBeat.i(49541);
-    ac.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateRemove %s", new Object[] { ((BaseAppBrandRecentView.b)paramw).titleTv.getText() });
+    ad.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateRemove %s", new Object[] { ((BaseAppBrandRecentView.b)paramw).titleTv.getText() });
     e(paramw);
-    this.akh.add(paramw);
+    this.alY.add(paramw);
     AppMethodBeat.o(49541);
     return true;
   }
@@ -263,36 +263,36 @@ public final class c
   {
     AppMethodBeat.i(49542);
     e(paramw);
-    ac.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateAdd holder %s", new Object[] { ((BaseAppBrandRecentView.b)paramw).titleTv.getText() });
-    int j = ConversationAppBrandRecentView.bw(paramw.asD);
-    if (j < this.mwd.getDataCount()) {}
+    ad.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateAdd holder %s", new Object[] { ((BaseAppBrandRecentView.b)paramw).titleTv.getText() });
+    int j = ConversationAppBrandRecentView.bw(paramw.auu);
+    if (j < this.mWI.getDataCount()) {}
     for (int i = 1; i == 0; i = 0)
     {
-      ac.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateAdd not valid item");
-      ((BaseAppBrandRecentView.b)paramw).asD.setVisibility(4);
+      ad.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateAdd not valid item");
+      ((BaseAppBrandRecentView.b)paramw).auu.setVisibility(4);
       AppMethodBeat.o(49542);
       return true;
     }
-    if (this.mwd.wl(j))
+    if (this.mWI.wQ(j))
     {
-      ac.d("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateAdd last position %d of currentPage: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(this.mwd.getCurrentPage()) });
-      i = (int)paramw.asD.getX();
-      j = (int)d.ea(ai.getContext());
-      i = d.dY(ai.getContext()) + (i + j);
-      j = (int)paramw.asD.getY();
-      int k = (int)paramw.asD.getX();
-      int m = (int)paramw.asD.getY();
-      ac.d("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateLastItemOfPage fromX: %d, toX: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
-      paramw.asD.setVisibility(0);
-      paramw.asD.animate().alpha(0.3F).setDuration(0L).setListener(null).start();
+      ad.d("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateAdd last position %d of currentPage: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(this.mWI.getCurrentPage()) });
+      i = (int)paramw.auu.getX();
+      j = (int)d.ea(aj.getContext());
+      i = d.dY(aj.getContext()) + (i + j);
+      j = (int)paramw.auu.getY();
+      int k = (int)paramw.auu.getX();
+      int m = (int)paramw.auu.getY();
+      ad.d("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateLastItemOfPage fromX: %d, toX: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
+      paramw.auu.setVisibility(0);
+      paramw.auu.animate().alpha(0.3F).setDuration(0L).setListener(null).start();
       boolean bool = a(paramw, i, j, k, m);
       AppMethodBeat.o(49542);
       return bool;
     }
-    paramw.asD.setAlpha(0.0F);
-    paramw.asD.setScaleX(0.8F);
-    paramw.asD.setScaleY(0.8F);
-    this.aki.add(paramw);
+    paramw.auu.setAlpha(0.0F);
+    paramw.auu.setScaleX(0.8F);
+    paramw.auu.setScaleY(0.8F);
+    this.alZ.add(paramw);
     AppMethodBeat.o(49542);
     return true;
   }
@@ -300,52 +300,52 @@ public final class c
   public final void d(RecyclerView.w paramw)
   {
     AppMethodBeat.i(49548);
-    View localView = paramw.asD;
+    View localView = paramw.auu;
     localView.animate().cancel();
-    int i = this.akj.size() - 1;
+    int i = this.ama.size() - 1;
     while (i >= 0)
     {
-      if (((b)this.akj.get(i)).akK == paramw)
+      if (((b)this.ama.get(i)).amB == paramw)
       {
         localView.setTranslationY(0.0F);
         localView.setTranslationX(0.0F);
         x(paramw);
-        this.akj.remove(i);
+        this.ama.remove(i);
       }
       i -= 1;
     }
-    a(this.akk, paramw);
-    if (this.akh.remove(paramw))
+    a(this.amb, paramw);
+    if (this.alY.remove(paramw))
     {
       localView.setAlpha(1.0F);
       w(paramw);
     }
-    if (this.aki.remove(paramw))
+    if (this.alZ.remove(paramw))
     {
       localView.setAlpha(1.0F);
       n(paramw);
     }
-    i = this.akn.size() - 1;
+    i = this.ame.size() - 1;
     ArrayList localArrayList;
     while (i >= 0)
     {
-      localArrayList = (ArrayList)this.akn.get(i);
+      localArrayList = (ArrayList)this.ame.get(i);
       a(localArrayList, paramw);
       if (localArrayList.isEmpty()) {
-        this.akn.remove(i);
+        this.ame.remove(i);
       }
       i -= 1;
     }
-    i = this.akm.size() - 1;
+    i = this.amd.size() - 1;
     if (i >= 0)
     {
-      localArrayList = (ArrayList)this.akm.get(i);
+      localArrayList = (ArrayList)this.amd.get(i);
       int j = localArrayList.size() - 1;
       for (;;)
       {
         if (j >= 0)
         {
-          if (((b)localArrayList.get(j)).akK != paramw) {
+          if (((b)localArrayList.get(j)).amB != paramw) {
             break label299;
           }
           localView.setTranslationY(0.0F);
@@ -353,7 +353,7 @@ public final class c
           x(paramw);
           localArrayList.remove(j);
           if (localArrayList.isEmpty()) {
-            this.akm.remove(i);
+            this.amd.remove(i);
           }
         }
         i -= 1;
@@ -362,32 +362,32 @@ public final class c
         j -= 1;
       }
     }
-    i = this.akl.size() - 1;
+    i = this.amc.size() - 1;
     while (i >= 0)
     {
-      localArrayList = (ArrayList)this.akl.get(i);
+      localArrayList = (ArrayList)this.amc.get(i);
       if (localArrayList.remove(paramw))
       {
         localView.setAlpha(1.0F);
         n(paramw);
         if (localArrayList.isEmpty()) {
-          this.akl.remove(i);
+          this.amc.remove(i);
         }
       }
       i -= 1;
     }
-    this.akq.remove(paramw);
-    this.ako.remove(paramw);
-    this.akr.remove(paramw);
-    this.akp.remove(paramw);
-    jf();
+    this.amh.remove(paramw);
+    this.amf.remove(paramw);
+    this.ami.remove(paramw);
+    this.amg.remove(paramw);
+    jv();
     AppMethodBeat.o(49548);
   }
   
   public final boolean isRunning()
   {
     AppMethodBeat.i(49550);
-    if ((!this.aki.isEmpty()) || (!this.akk.isEmpty()) || (!this.akj.isEmpty()) || (!this.akh.isEmpty()) || (!this.akp.isEmpty()) || (!this.akq.isEmpty()) || (!this.ako.isEmpty()) || (!this.akr.isEmpty()) || (!this.akm.isEmpty()) || (!this.akl.isEmpty()) || (!this.akn.isEmpty()))
+    if ((!this.alZ.isEmpty()) || (!this.amb.isEmpty()) || (!this.ama.isEmpty()) || (!this.alY.isEmpty()) || (!this.amg.isEmpty()) || (!this.amh.isEmpty()) || (!this.amf.isEmpty()) || (!this.ami.isEmpty()) || (!this.amd.isEmpty()) || (!this.amc.isEmpty()) || (!this.ame.isEmpty()))
     {
       AppMethodBeat.o(49550);
       return true;
@@ -396,27 +396,27 @@ public final class c
     return false;
   }
   
-  public final void je()
+  public final void ju()
   {
     AppMethodBeat.i(49540);
-    a(this.mwe);
+    a(this.mWJ);
     int i;
     int j;
     label39:
     int k;
-    if (!this.akh.isEmpty())
+    if (!this.alY.isEmpty())
     {
       i = 1;
-      if (this.akj.isEmpty()) {
+      if (this.ama.isEmpty()) {
         break label95;
       }
       j = 1;
-      if (this.akk.isEmpty()) {
+      if (this.amb.isEmpty()) {
         break label100;
       }
       k = 1;
       label52:
-      if (this.aki.isEmpty()) {
+      if (this.alZ.isEmpty()) {
         break label106;
       }
     }
@@ -438,7 +438,7 @@ public final class c
       break label52;
     }
     label112:
-    Object localObject1 = this.akh.iterator();
+    Object localObject1 = this.alY.iterator();
     Object localObject2;
     final View localView;
     final ViewPropertyAnimator localViewPropertyAnimator;
@@ -446,11 +446,11 @@ public final class c
     if (((Iterator)localObject1).hasNext())
     {
       localObject2 = (RecyclerView.w)((Iterator)localObject1).next();
-      localView = ((RecyclerView.w)localObject2).asD;
+      localView = ((RecyclerView.w)localObject2).auu;
       localViewPropertyAnimator = localView.animate();
-      this.akq.add(localObject2);
-      n = ConversationAppBrandRecentView.bw(((RecyclerView.w)localObject2).asD);
-      if (n - 1 != e.wq(this.mwd.getCurrentPage())) {
+      this.amh.add(localObject2);
+      n = ConversationAppBrandRecentView.bw(((RecyclerView.w)localObject2).auu);
+      if (n - 1 != e.wV(this.mWI.getCurrentPage())) {
         break label632;
       }
     }
@@ -464,61 +464,61 @@ public final class c
     label632:
     for (float f = 0.3F;; f = 0.0F)
     {
-      ac.d("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateRemoveImpl %s, pos: %d, targetAlpha: %f", new Object[] { ((BaseAppBrandRecentView.b)localObject2).titleTv.getText(), Integer.valueOf(n), Float.valueOf(f) });
-      localViewPropertyAnimator.setDuration(kY()).alpha(f).setListener(new AnimatorListenerAdapter()
+      ad.d("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateRemoveImpl %s, pos: %d, targetAlpha: %f", new Object[] { ((BaseAppBrandRecentView.b)localObject2).titleTv.getText(), Integer.valueOf(n), Float.valueOf(f) });
+      localViewPropertyAnimator.setDuration(lq()).alpha(f).setListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(49526);
-          ac.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateRemoveImpl onAnimationCancel");
+          ad.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateRemoveImpl onAnimationCancel");
           AppMethodBeat.o(49526);
         }
         
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(49525);
-          ac.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateRemoveImpl onAnimationEnd, pos: %d", new Object[] { Integer.valueOf(n) });
+          ad.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateRemoveImpl onAnimationEnd, pos: %d", new Object[] { Integer.valueOf(n) });
           localViewPropertyAnimator.setListener(null);
           localView.setAlpha(1.0F);
-          c.this.w(this.akw);
-          c.this.akq.remove(this.akw);
-          c.this.jf();
+          c.this.w(this.amn);
+          c.this.amh.remove(this.amn);
+          c.this.jv();
           AppMethodBeat.o(49525);
         }
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(49524);
-          c.this.A(this.akw);
+          c.this.A(this.amn);
           AppMethodBeat.o(49524);
         }
       }).start();
       break;
-      this.akh.clear();
+      this.alY.clear();
       long l1;
       long l2;
       if (j != 0)
       {
         localObject1 = new ArrayList();
-        ((ArrayList)localObject1).addAll(this.akj);
-        this.akm.add(localObject1);
-        this.akj.clear();
+        ((ArrayList)localObject1).addAll(this.ama);
+        this.amd.add(localObject1);
+        this.ama.clear();
         localObject2 = new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(49521);
-            Iterator localIterator = this.aks.iterator();
+            Iterator localIterator = this.amj.iterator();
             if (localIterator.hasNext())
             {
               Object localObject = (c.b)localIterator.next();
               c localc = c.this;
-              RecyclerView.w localw = ((c.b)localObject).akK;
-              int k = ((c.b)localObject).akG;
-              int i = ((c.b)localObject).akH;
-              int m = ((c.b)localObject).akI;
-              int j = ((c.b)localObject).akJ;
-              localObject = localw.asD;
+              RecyclerView.w localw = ((c.b)localObject).amB;
+              int k = ((c.b)localObject).amx;
+              int i = ((c.b)localObject).amy;
+              int m = ((c.b)localObject).amz;
+              int j = ((c.b)localObject).amA;
+              localObject = localw.auu;
               k = m - k;
               i = j - i;
               if (k != 0) {
@@ -528,56 +528,56 @@ public final class c
                 ((View)localObject).animate().translationY(0.0F);
               }
               ViewPropertyAnimator localViewPropertyAnimator = ((View)localObject).animate();
-              localc.akp.add(localw);
-              j = ConversationAppBrandRecentView.bw(localw.asD);
+              localc.amg.add(localw);
+              j = ConversationAppBrandRecentView.bw(localw.auu);
               float f2 = 1.0F;
               boolean bool;
               label170:
               float f1;
-              if (j < localc.mwd.getDataCount())
+              if (j < localc.mWI.getDataCount())
               {
                 bool = true;
                 if (bool) {
                   break label310;
                 }
                 f1 = 0.0F;
-                localw.asD.setVisibility(4);
+                localw.auu.setVisibility(4);
               }
               for (;;)
               {
-                ac.d("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateMoveImpl position: %d, %s, isValid: %b, targetAlpha: %f, deltaX: %d, lastPosOfPage: %d", new Object[] { Integer.valueOf(j), ((BaseAppBrandRecentView.b)localw).titleTv.getText(), Boolean.valueOf(bool), Float.valueOf(f1), Integer.valueOf(k), Integer.valueOf(e.wq(localc.mwd.getCurrentPage())) });
-                localViewPropertyAnimator.alpha(f1).setDuration(localc.arm).setListener(new c.11(localc, localw, k, (View)localObject, i, bool, f1, localViewPropertyAnimator)).start();
+                ad.d("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateMoveImpl position: %d, %s, isValid: %b, targetAlpha: %f, deltaX: %d, lastPosOfPage: %d", new Object[] { Integer.valueOf(j), ((BaseAppBrandRecentView.b)localw).titleTv.getText(), Boolean.valueOf(bool), Float.valueOf(f1), Integer.valueOf(k), Integer.valueOf(e.wV(localc.mWI.getCurrentPage())) });
+                localViewPropertyAnimator.alpha(f1).setDuration(localc.ate).setListener(new c.11(localc, localw, k, (View)localObject, i, bool, f1, localViewPropertyAnimator)).start();
                 break;
                 bool = false;
                 break label170;
                 label310:
-                if ((e.wq(localc.mwd.getCurrentPage()) == j) && (k > 0))
+                if ((e.wV(localc.mWI.getCurrentPage()) == j) && (k > 0))
                 {
-                  localw.asD.setVisibility(0);
+                  localw.auu.setVisibility(0);
                   f1 = 0.3F;
                 }
                 else
                 {
                   f1 = f2;
-                  if (e.wq(localc.mwd.getCurrentPage()) == j)
+                  if (e.wV(localc.mWI.getCurrentPage()) == j)
                   {
                     f1 = f2;
                     if (k < 0)
                     {
-                      localw.asD.setVisibility(0);
+                      localw.auu.setVisibility(0);
                       f1 = 0.3F;
                     }
                   }
                 }
               }
             }
-            this.aks.clear();
-            c.this.akm.remove(this.aks);
+            this.amj.clear();
+            c.this.amd.remove(this.amj);
             AppMethodBeat.o(49521);
           }
         };
         if (i != 0) {
-          t.a(((b)((ArrayList)localObject1).get(0)).akK.asD, (Runnable)localObject2, kY());
+          t.a(((b)((ArrayList)localObject1).get(0)).amB.auu, (Runnable)localObject2, lq());
         }
       }
       else
@@ -585,22 +585,22 @@ public final class c
         if (k != 0)
         {
           localObject1 = new ArrayList();
-          ((ArrayList)localObject1).addAll(this.akk);
-          this.akn.add(localObject1);
-          this.akk.clear();
+          ((ArrayList)localObject1).addAll(this.amb);
+          this.ame.add(localObject1);
+          this.amb.clear();
           localObject2 = new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(49522);
-              Iterator localIterator = this.aku.iterator();
+              Iterator localIterator = this.aml.iterator();
               while (localIterator.hasNext())
               {
                 c.a locala = (c.a)localIterator.next();
                 if (locala != null)
                 {
                   c localc = c.this;
-                  Object localObject3 = locala.akE;
+                  Object localObject3 = locala.amv;
                   Object localObject1;
                   label62:
                   Object localObject2;
@@ -611,18 +611,18 @@ public final class c
                   if (localObject3 == null)
                   {
                     localObject1 = null;
-                    localObject2 = locala.akF;
+                    localObject2 = locala.amw;
                     if (localObject2 == null) {
                       break label318;
                     }
-                    localObject2 = ((RecyclerView.w)localObject2).asD;
-                    ac.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateChangeImpl %s", new Object[] { ((BaseAppBrandRecentView.b)localObject3).titleTv.getText() });
+                    localObject2 = ((RecyclerView.w)localObject2).auu;
+                    ad.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateChangeImpl %s", new Object[] { ((BaseAppBrandRecentView.b)localObject3).titleTv.getText() });
                     if (localObject1 != null)
                     {
-                      localObject3 = ((View)localObject1).animate().setDuration(localc.arn);
-                      localc.akr.add(locala.akE);
-                      ((ViewPropertyAnimator)localObject3).translationX(locala.akI - locala.akG);
-                      ((ViewPropertyAnimator)localObject3).translationY(locala.akJ - locala.akH);
+                      localObject3 = ((View)localObject1).animate().setDuration(localc.atf);
+                      localc.ami.add(locala.amv);
+                      ((ViewPropertyAnimator)localObject3).translationX(locala.amz - locala.amx);
+                      ((ViewPropertyAnimator)localObject3).translationY(locala.amA - locala.amy);
                       ((ViewPropertyAnimator)localObject3).alpha(0.0F).setListener(new c.2(localc, locala, (ViewPropertyAnimator)localObject3, (View)localObject1)).start();
                     }
                     if (localObject2 == null) {
@@ -630,7 +630,7 @@ public final class c
                     }
                     i = ConversationAppBrandRecentView.bw((View)localObject2);
                     f = 1.0F;
-                    if (i >= localc.mwd.getDataCount()) {
+                    if (i >= localc.mWI.getDataCount()) {
                       break label324;
                     }
                     bool = true;
@@ -643,10 +643,10 @@ public final class c
                   for (;;)
                   {
                     localObject1 = ((View)localObject2).animate();
-                    localc.akr.add(locala.akF);
-                    ((ViewPropertyAnimator)localObject1).translationX(0.0F).translationY(0.0F).alpha(f).setDuration(localc.arn).setListener(new c.3(localc, locala, (ViewPropertyAnimator)localObject1, (View)localObject2, f, bool)).start();
+                    localc.ami.add(locala.amw);
+                    ((ViewPropertyAnimator)localObject1).translationX(0.0F).translationY(0.0F).alpha(f).setDuration(localc.atf).setListener(new c.3(localc, locala, (ViewPropertyAnimator)localObject1, (View)localObject2, f, bool)).start();
                     break;
-                    localObject1 = ((RecyclerView.w)localObject3).asD;
+                    localObject1 = ((RecyclerView.w)localObject3).auu;
                     break label62;
                     label318:
                     localObject2 = null;
@@ -655,52 +655,52 @@ public final class c
                     bool = false;
                     break label231;
                     label330:
-                    int j = ((LinearLayoutManager)localc.mwd.getLayoutManager()).jY();
-                    ac.d("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateChangeImpl lastVisiblePos: %d, position: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+                    int j = ((LinearLayoutManager)localc.mWI.getLayoutManager()).ko();
+                    ad.d("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateChangeImpl lastVisiblePos: %d, position: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
                     if (j == i) {
                       f = 0.3F;
                     }
                   }
                 }
               }
-              this.aku.clear();
-              c.this.akn.remove(this.aku);
+              this.aml.clear();
+              c.this.ame.remove(this.aml);
               AppMethodBeat.o(49522);
             }
           };
           if (i == 0) {
             break label590;
           }
-          t.a(((a)((ArrayList)localObject1).get(0)).akE.asD, (Runnable)localObject2, kY());
+          t.a(((a)((ArrayList)localObject1).get(0)).amv.auu, (Runnable)localObject2, lq());
         }
         if (m == 0) {
           break label625;
         }
         localObject1 = new ArrayList();
-        ((ArrayList)localObject1).addAll(this.aki);
-        this.akl.add(localObject1);
-        this.aki.clear();
+        ((ArrayList)localObject1).addAll(this.alZ);
+        this.amc.add(localObject1);
+        this.alZ.clear();
         localObject2 = new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(49523);
-            Iterator localIterator = this.akv.iterator();
+            Iterator localIterator = this.amm.iterator();
             while (localIterator.hasNext())
             {
               RecyclerView.w localw = (RecyclerView.w)localIterator.next();
               c localc = c.this;
-              ac.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateAddImpl holder %s", new Object[] { ((BaseAppBrandRecentView.b)localw).titleTv.getText() });
-              View localView = localw.asD;
+              ad.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateAddImpl holder %s", new Object[] { ((BaseAppBrandRecentView.b)localw).titleTv.getText() });
+              View localView = localw.auu;
               ViewPropertyAnimator localViewPropertyAnimator = localView.animate();
-              localc.ako.add(localw);
+              localc.amf.add(localw);
               int i = ConversationAppBrandRecentView.bw(localView);
-              if ((localc.mwc) && (i == 1))
+              if ((localc.mWH) && (i == 1))
               {
-                ac.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateFirstItemInserted holder %s", new Object[] { ((BaseAppBrandRecentView.b)localw).titleTv.getText() });
-                localView = localw.asD;
+                ad.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateFirstItemInserted holder %s", new Object[] { ((BaseAppBrandRecentView.b)localw).titleTv.getText() });
+                localView = localw.auu;
                 localViewPropertyAnimator = localView.animate();
-                if (ConversationAppBrandRecentView.bw(localw.asD) < localc.mwd.getDataCount()) {}
+                if (ConversationAppBrandRecentView.bw(localw.auu) < localc.mWI.getDataCount()) {}
                 for (i = 1;; i = 0)
                 {
                   if (i != 0) {
@@ -715,65 +715,65 @@ public final class c
                 localView.setScaleX(1.0F);
                 localView.setScaleY(1.0F);
                 ((BaseAppBrandRecentView.b)localw).titleTv.setAlpha(0.0F);
-                ((BaseAppBrandRecentView.b)localw).mxB.setAlpha(0.0F);
-                ((BaseAppBrandRecentView.b)localw).mxB.setScaleX(1.0F);
-                ((BaseAppBrandRecentView.b)localw).mxB.setScaleY(1.0F);
+                ((BaseAppBrandRecentView.b)localw).noe.setAlpha(0.0F);
+                ((BaseAppBrandRecentView.b)localw).noe.setScaleX(1.0F);
+                ((BaseAppBrandRecentView.b)localw).noe.setScaleY(1.0F);
                 ((BaseAppBrandRecentView.b)localw).titleTv.animate().alpha(1.0F).setDuration(150L).setListener(null).start();
-                ((BaseAppBrandRecentView.b)localw).mxB.animate().alpha(1.0F).scaleX(1.2F).scaleY(1.2F).setDuration(150L).withEndAction(new c.8(localc, localw, localView, localViewPropertyAnimator)).start();
+                ((BaseAppBrandRecentView.b)localw).noe.animate().alpha(1.0F).scaleX(1.2F).scaleY(1.2F).setDuration(150L).withEndAction(new c.8(localc, localw, localView, localViewPropertyAnimator)).start();
               }
-              else if ((localc.mwb) && (i == localc.mwd.getDataCount() - 1))
+              else if ((localc.mWG) && (i == localc.mWI.getDataCount() - 1))
               {
-                ac.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo lastItemAnimateAddImpl holder %s", new Object[] { ((BaseAppBrandRecentView.b)localw).titleTv.getText() });
-                localView = localw.asD;
+                ad.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo lastItemAnimateAddImpl holder %s", new Object[] { ((BaseAppBrandRecentView.b)localw).titleTv.getText() });
+                localView = localw.auu;
                 localViewPropertyAnimator = localView.animate();
                 localView.setVisibility(0);
                 localView.setAlpha(1.0F);
                 localView.setScaleX(1.0F);
                 localView.setScaleY(1.0F);
                 ((BaseAppBrandRecentView.b)localw).titleTv.setAlpha(0.0F);
-                ((BaseAppBrandRecentView.b)localw).mxB.setAlpha(0.0F);
-                ((BaseAppBrandRecentView.b)localw).mxB.setScaleX(1.0F);
-                ((BaseAppBrandRecentView.b)localw).mxB.setScaleY(1.0F);
+                ((BaseAppBrandRecentView.b)localw).noe.setAlpha(0.0F);
+                ((BaseAppBrandRecentView.b)localw).noe.setScaleX(1.0F);
+                ((BaseAppBrandRecentView.b)localw).noe.setScaleY(1.0F);
                 ((BaseAppBrandRecentView.b)localw).titleTv.animate().alpha(1.0F).setDuration(150L).setListener(null).start();
-                ((BaseAppBrandRecentView.b)localw).mxB.animate().alpha(1.0F).scaleX(1.2F).scaleY(1.2F).setDuration(150L).withEndAction(new c.10(localc, localw, localView, localViewPropertyAnimator)).start();
+                ((BaseAppBrandRecentView.b)localw).noe.animate().alpha(1.0F).scaleX(1.2F).scaleY(1.2F).setDuration(150L).withEndAction(new c.10(localc, localw, localView, localViewPropertyAnimator)).start();
               }
               else
               {
                 boolean bool;
                 label574:
                 float f;
-                if (i < localc.mwd.getDataCount())
+                if (i < localc.mWI.getDataCount())
                 {
                   bool = true;
                   if (bool) {
                     break label695;
                   }
-                  localw.asD.setVisibility(4);
+                  localw.auu.setVisibility(4);
                   f = 0.0F;
                 }
                 for (;;)
                 {
-                  ac.d("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateAddImpl pos: %d, targetAlpha: %f, customItemCount: %d, dataCount: %d", new Object[] { Integer.valueOf(i), Float.valueOf(f), Integer.valueOf(localc.mwd.getCustomItemCount()), Integer.valueOf(localc.mwd.getDataCount()) });
-                  localViewPropertyAnimator.alpha(f).scaleX(1.0F).scaleY(1.0F).setDuration(localc.kX()).setListener(new c.9(localc, localw, localView, i, bool, localViewPropertyAnimator)).start();
+                  ad.d("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateAddImpl pos: %d, targetAlpha: %f, customItemCount: %d, dataCount: %d", new Object[] { Integer.valueOf(i), Float.valueOf(f), Integer.valueOf(localc.mWI.getCustomItemCount()), Integer.valueOf(localc.mWI.getDataCount()) });
+                  localViewPropertyAnimator.alpha(f).scaleX(1.0F).scaleY(1.0F).setDuration(localc.lp()).setListener(new c.9(localc, localw, localView, i, bool, localViewPropertyAnimator)).start();
                   break;
                   bool = false;
                   break label574;
                   label695:
-                  if (localc.mwd.wl(i))
+                  if (localc.mWI.wQ(i))
                   {
-                    localw.asD.setVisibility(0);
+                    localw.auu.setVisibility(0);
                     f = 0.3F;
                   }
                   else
                   {
-                    localw.asD.setVisibility(0);
+                    localw.auu.setVisibility(0);
                     f = 1.0F;
                   }
                 }
               }
             }
-            this.akv.clear();
-            c.this.akl.remove(this.akv);
+            this.amm.clear();
+            c.this.amc.remove(this.amm);
             AppMethodBeat.o(49523);
           }
         };
@@ -783,19 +783,19 @@ public final class c
         if (i == 0) {
           break label600;
         }
-        l1 = kY();
+        l1 = lq();
         if (j == 0) {
           break label606;
         }
-        l2 = this.arm;
+        l2 = this.ate;
         if (k == 0) {
           break label612;
         }
       }
-      for (long l3 = this.arn;; l3 = 0L)
+      for (long l3 = this.atf;; l3 = 0L)
       {
         l2 = Math.max(l2, l3);
-        t.a(((RecyclerView.w)((ArrayList)localObject1).get(0)).asD, (Runnable)localObject2, l1 + l2);
+        t.a(((RecyclerView.w)((ArrayList)localObject1).get(0)).auu, (Runnable)localObject2, l1 + l2);
         AppMethodBeat.o(49540);
         return;
         ((Runnable)localObject2).run();
@@ -813,149 +813,149 @@ public final class c
     }
   }
   
-  final void jf()
+  final void jv()
   {
     AppMethodBeat.i(49551);
     if (!isRunning()) {
-      lc();
+      lu();
     }
     AppMethodBeat.o(49551);
   }
   
-  public final void jg()
+  public final void jw()
   {
     AppMethodBeat.i(49552);
-    int i = this.akj.size() - 1;
+    int i = this.ama.size() - 1;
     Object localObject1;
     Object localObject2;
     while (i >= 0)
     {
-      localObject1 = (b)this.akj.get(i);
-      localObject2 = ((b)localObject1).akK.asD;
+      localObject1 = (b)this.ama.get(i);
+      localObject2 = ((b)localObject1).amB.auu;
       ((View)localObject2).setTranslationY(0.0F);
       ((View)localObject2).setTranslationX(0.0F);
-      x(((b)localObject1).akK);
-      this.akj.remove(i);
+      x(((b)localObject1).amB);
+      this.ama.remove(i);
       i -= 1;
     }
-    i = this.akh.size() - 1;
+    i = this.alY.size() - 1;
     while (i >= 0)
     {
-      w((RecyclerView.w)this.akh.get(i));
-      this.akh.remove(i);
+      w((RecyclerView.w)this.alY.get(i));
+      this.alY.remove(i);
       i -= 1;
     }
-    i = this.aki.size() - 1;
+    i = this.alZ.size() - 1;
     while (i >= 0)
     {
-      localObject1 = (RecyclerView.w)this.aki.get(i);
-      ((RecyclerView.w)localObject1).asD.setAlpha(1.0F);
+      localObject1 = (RecyclerView.w)this.alZ.get(i);
+      ((RecyclerView.w)localObject1).auu.setAlpha(1.0F);
       n((RecyclerView.w)localObject1);
-      this.aki.remove(i);
+      this.alZ.remove(i);
       i -= 1;
     }
-    i = this.akk.size() - 1;
+    i = this.amb.size() - 1;
     while (i >= 0)
     {
-      a((a)this.akk.get(i));
+      a((a)this.amb.get(i));
       i -= 1;
     }
-    this.akk.clear();
+    this.amb.clear();
     if (!isRunning())
     {
       AppMethodBeat.o(49552);
       return;
     }
-    i = this.akm.size() - 1;
+    i = this.amd.size() - 1;
     int j;
     while (i >= 0)
     {
-      localObject1 = (ArrayList)this.akm.get(i);
+      localObject1 = (ArrayList)this.amd.get(i);
       j = ((ArrayList)localObject1).size() - 1;
       while (j >= 0)
       {
         localObject2 = (b)((ArrayList)localObject1).get(j);
-        View localView = ((b)localObject2).akK.asD;
+        View localView = ((b)localObject2).amB.auu;
         localView.setTranslationY(0.0F);
         localView.setTranslationX(0.0F);
-        x(((b)localObject2).akK);
+        x(((b)localObject2).amB);
         ((ArrayList)localObject1).remove(j);
         if (((ArrayList)localObject1).isEmpty()) {
-          this.akm.remove(localObject1);
+          this.amd.remove(localObject1);
         }
         j -= 1;
       }
       i -= 1;
     }
-    i = this.akl.size() - 1;
+    i = this.amc.size() - 1;
     while (i >= 0)
     {
-      localObject1 = (ArrayList)this.akl.get(i);
+      localObject1 = (ArrayList)this.amc.get(i);
       j = ((ArrayList)localObject1).size() - 1;
       while (j >= 0)
       {
         localObject2 = (RecyclerView.w)((ArrayList)localObject1).get(j);
-        ((RecyclerView.w)localObject2).asD.setAlpha(1.0F);
+        ((RecyclerView.w)localObject2).auu.setAlpha(1.0F);
         n((RecyclerView.w)localObject2);
         ((ArrayList)localObject1).remove(j);
         if (((ArrayList)localObject1).isEmpty()) {
-          this.akl.remove(localObject1);
+          this.amc.remove(localObject1);
         }
         j -= 1;
       }
       i -= 1;
     }
-    i = this.akn.size() - 1;
+    i = this.ame.size() - 1;
     while (i >= 0)
     {
-      localObject1 = (ArrayList)this.akn.get(i);
+      localObject1 = (ArrayList)this.ame.get(i);
       j = ((ArrayList)localObject1).size() - 1;
       while (j >= 0)
       {
         a((a)((ArrayList)localObject1).get(j));
         if (((ArrayList)localObject1).isEmpty()) {
-          this.akn.remove(localObject1);
+          this.ame.remove(localObject1);
         }
         j -= 1;
       }
       i -= 1;
     }
-    n(this.akq);
-    n(this.akp);
-    n(this.ako);
-    n(this.akr);
-    lc();
+    n(this.amh);
+    n(this.amg);
+    n(this.amf);
+    n(this.ami);
+    lu();
     AppMethodBeat.o(49552);
   }
   
   static final class a
   {
-    public RecyclerView.w akE;
-    public RecyclerView.w akF;
-    public int akG;
-    public int akH;
-    public int akI;
-    public int akJ;
+    public int amA;
+    public RecyclerView.w amv;
+    public RecyclerView.w amw;
+    public int amx;
+    public int amy;
+    public int amz;
     
     private a(RecyclerView.w paramw1, RecyclerView.w paramw2)
     {
-      this.akE = paramw1;
-      this.akF = paramw2;
+      this.amv = paramw1;
+      this.amw = paramw2;
     }
     
     a(RecyclerView.w paramw1, RecyclerView.w paramw2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
       this(paramw1, paramw2);
-      this.akG = paramInt1;
-      this.akH = paramInt2;
-      this.akI = paramInt3;
-      this.akJ = paramInt4;
+      this.amx = paramInt1;
+      this.amy = paramInt2;
+      this.amz = paramInt3;
+      this.amA = paramInt4;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(49538);
-      String str = "ChangeInfo{oldHolder=" + this.akE + ", newHolder=" + this.akF + ", fromX=" + this.akG + ", fromY=" + this.akH + ", toX=" + this.akI + ", toY=" + this.akJ + '}';
+      String str = "ChangeInfo{oldHolder=" + this.amv + ", newHolder=" + this.amw + ", fromX=" + this.amx + ", fromY=" + this.amy + ", toX=" + this.amz + ", toY=" + this.amA + '}';
       AppMethodBeat.o(49538);
       return str;
     }
@@ -963,25 +963,25 @@ public final class c
   
   static final class b
   {
-    public int akG;
-    public int akH;
-    public int akI;
-    public int akJ;
-    public RecyclerView.w akK;
+    public int amA;
+    public RecyclerView.w amB;
+    public int amx;
+    public int amy;
+    public int amz;
     
     b(RecyclerView.w paramw, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
-      this.akK = paramw;
-      this.akG = paramInt1;
-      this.akH = paramInt2;
-      this.akI = paramInt3;
-      this.akJ = paramInt4;
+      this.amB = paramw;
+      this.amx = paramInt1;
+      this.amy = paramInt2;
+      this.amz = paramInt3;
+      this.amA = paramInt4;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.c
  * JD-Core Version:    0.7.0.1
  */

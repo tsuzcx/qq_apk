@@ -4,6 +4,7 @@ import android.opengl.GLES20;
 import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.basic.d.h.a;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.liteav.beauty.b.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
@@ -26,7 +27,7 @@ public class TXCSWVideoEncoder
   {
     AppMethodBeat.i(14849);
     TAG = TXCSWVideoEncoder.class.getSimpleName();
-    com.tencent.liteav.basic.util.d.f();
+    f.f();
     nativeClassInit();
     AppMethodBeat.o(14849);
   }
@@ -110,21 +111,26 @@ public class TXCSWVideoEncoder
   private long pushVideoFrameInternal(final int paramInt1, int paramInt2, int paramInt3, long paramLong, final boolean paramBoolean)
   {
     AppMethodBeat.i(14846);
+    Object localObject2 = this.mResizeFilter;
+    h localh = this.mRawFrameFilter;
+    Object localObject1;
     if (this.mGLContextExternal != null)
     {
       this.mInputWidth = paramInt2;
       this.mInputHeight = paramInt3;
-      if (this.mResizeFilter == null)
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        this.mResizeFilter = new h();
-        this.mResizeFilter.a();
-        this.mResizeFilter.a(true);
+        localObject1 = new h();
+        this.mResizeFilter = ((h)localObject1);
+        ((h)localObject1).a();
+        ((h)localObject1).a(true);
       }
-      this.mResizeFilter.a(this.mOutputWidth, this.mOutputHeight);
+      ((h)localObject1).a(this.mOutputWidth, this.mOutputHeight);
       GLES20.glViewport(0, 0, this.mOutputWidth, this.mOutputHeight);
       int k;
       int i;
-      if (this.mResizeFilter != null)
+      if (localObject1 != null)
       {
         k = (720 - this.mRotation) % 360;
         if ((k != 90) && (k != 270)) {
@@ -135,25 +141,25 @@ public class TXCSWVideoEncoder
           break label281;
         }
       }
-      int[] arrayOfInt;
       label272:
       label281:
       for (int j = this.mOutputWidth;; j = this.mOutputHeight)
       {
-        this.mResizeFilter.a(paramInt2, paramInt3, k, null, i / j, false, false);
-        this.mResizeFilter.b(paramInt1);
-        if (this.mResizeFilter != null) {
-          paramInt1 = this.mResizeFilter.l();
+        ((h)localObject1).a(paramInt2, paramInt3, k, null, i / j, false, false);
+        ((h)localObject1).b(paramInt1);
+        if (localObject1 != null) {
+          paramInt1 = ((h)localObject1).l();
         }
-        arrayOfInt = new int[1];
+        localObject2 = new int[1];
         this.mPTS = paramLong;
-        if (this.mRawFrameFilter != null) {
-          break label323;
+        if (localh != null) {
+          break label376;
         }
         TXCLog.i(TAG, "pushVideoFrameInternal->create mRawFrameFilter");
-        this.mRawFrameFilter = new o(1);
-        this.mRawFrameFilter.a(true);
-        if (this.mRawFrameFilter.a()) {
+        localObject1 = new o(1);
+        this.mRawFrameFilter = ((h)localObject1);
+        ((h)localObject1).a(true);
+        if (((h)localObject1).a()) {
           break label290;
         }
         TXCLog.i(TAG, "pushVideoFrameInternal->destroy mRawFrameFilter, init failed!");
@@ -164,8 +170,8 @@ public class TXCSWVideoEncoder
         break;
       }
       label290:
-      this.mRawFrameFilter.a(this.mOutputWidth, this.mOutputHeight);
-      this.mRawFrameFilter.a(new h.a()
+      ((h)localObject1).a(this.mOutputWidth, this.mOutputHeight);
+      ((h)localObject1).a(new h.a()
       {
         public void a(int paramAnonymousInt)
         {
@@ -185,21 +191,25 @@ public class TXCSWVideoEncoder
           }
         }
       });
-      label323:
-      if (this.mRawFrameFilter == null)
+    }
+    for (;;)
+    {
+      if (localObject1 == null)
       {
         AppMethodBeat.o(14846);
         return 10000004L;
       }
       GLES20.glViewport(0, 0, this.mOutputWidth, this.mOutputHeight);
-      this.mRawFrameFilter.b(paramInt1);
-      paramInt1 = arrayOfInt[0];
+      ((h)localObject1).b(paramInt1);
+      paramInt1 = localObject2[0];
       if (paramInt1 != 0) {
         callDelegate(paramInt1);
       }
+      AppMethodBeat.o(14846);
+      return 0L;
+      label376:
+      localObject1 = localh;
     }
-    AppMethodBeat.o(14846);
-    return 0L;
   }
   
   public void enableNearestRPS(int paramInt)
@@ -400,6 +410,8 @@ public class TXCSWVideoEncoder
     this.mOutputHeight = j;
     this.mInputWidth = i;
     this.mInputHeight = j;
+    this.mRawFrameFilter = null;
+    this.mResizeFilter = null;
     try
     {
       this.mNativeEncoder = nativeInit(new WeakReference(this));

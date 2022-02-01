@@ -1,105 +1,68 @@
 package com.tencent.mm.plugin.appbrand.jsapi.s;
 
+import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.game.g.b.5;
-import com.tencent.mm.plugin.appbrand.game.g.b.6;
-import com.tencent.mm.plugin.appbrand.game.g.b.7;
-import com.tencent.mm.plugin.appbrand.game.g.b.8;
-import com.tencent.mm.plugin.appbrand.jsapi.file.ar;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
-import org.json.JSONException;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
+import d.l;
+import java.util.Collections;
+import java.util.Map;
 import org.json.JSONObject;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"REFERRER_HEADER_NAME", "", "TAG", "buildHeaders", "", "referrer", "updateReferrers", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "referrerPolicyContainer", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/IReferrerPolicyContainer;", "data", "Lorg/json/JSONObject;", "luggage-commons_release"})
 public final class d
-  extends b
 {
-  public static final int CTRL_INDEX = 687;
-  public static final String NAME = "operateMediaTrack";
-  
-  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
+  public static final Map<String, String> Qv(String paramString)
   {
-    AppMethodBeat.i(46760);
-    ac.i("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaTrack", "hy: %s %s", new Object[] { "operateMediaTrack", paramJSONObject.toString() });
-    Object localObject1 = paramJSONObject.optString("operationType");
-    Object localObject2;
-    if (((String)localObject1).equalsIgnoreCase("get"))
+    AppMethodBeat.i(187570);
+    Map localMap = null;
+    if (paramString != null) {
+      localMap = Collections.singletonMap("Referer", paramString);
+    }
+    AppMethodBeat.o(187570);
+    return localMap;
+  }
+  
+  public static final String a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, b paramb, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(187569);
+    p.h(paramb, "referrerPolicyContainer");
+    p.h(paramJSONObject, "data");
+    if (paramc == null)
     {
-      localObject1 = paramJSONObject.optString("source");
-      if (bs.isNullOrNil((String)localObject1))
-      {
-        paramc.h(paramInt, e(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() }), null));
-        AppMethodBeat.o(46760);
-        return;
-      }
-      try
-      {
-        paramJSONObject.put("filePath", q.B(paramc.getRuntime().Dz().IS((String)localObject1).fxV()));
-        localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
-        localObject2 = new com.tencent.mm.plugin.appbrand.game.g.d() {};
-        ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jTB.postToWorker(new b.5((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, (com.tencent.mm.plugin.appbrand.game.g.d)localObject2));
-        AppMethodBeat.o(46760);
-        return;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        AppMethodBeat.o(46760);
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        AppMethodBeat.o(46760);
-        return;
-      }
+      ad.w("MicroMsg.AppBrand.Referrers", "updateReferrers, component is null");
+      AppMethodBeat.o(187569);
+      return null;
     }
-    if (((String)localObject1).equalsIgnoreCase("create"))
+    a locala = (a)e.K(a.class);
+    if (locala == null)
     {
-      localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
-      paramc = new com.tencent.mm.plugin.appbrand.game.g.d() {};
-      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jTB.postToWorker(new b.6((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
-      AppMethodBeat.o(46760);
-      return;
+      ad.w("MicroMsg.AppBrand.Referrers", "updateReferrers, referrerHelper is null");
+      AppMethodBeat.o(187569);
+      return null;
     }
-    if (((String)localObject1).equalsIgnoreCase("update")) {
-      try
-      {
-        localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
-        localObject2 = new com.tencent.mm.plugin.appbrand.game.g.d() {};
-        ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jTB.postToWorker(new b.7((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, (com.tencent.mm.plugin.appbrand.game.g.d)localObject2));
-        AppMethodBeat.o(46760);
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        AppMethodBeat.o(46760);
-        return;
-      }
+    if (paramb.getReferrerPolicy() == null) {
+      paramb.setReferrerPolicy(locala.bmo());
     }
-    if (((String)localObject1).equalsIgnoreCase("remove"))
+    paramJSONObject = locala.a(paramJSONObject, paramc);
+    if (paramJSONObject != null) {
+      paramb.setReferrerPolicy(paramJSONObject);
+    }
+    ad.i("MicroMsg.AppBrand.Referrers", "updateReferrers, referrerPolicy: " + paramb.getReferrerPolicy());
+    if (c.lfc == paramb.getReferrerPolicy())
     {
-      localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
-      paramc = new com.tencent.mm.plugin.appbrand.game.g.d() {};
-      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jTB.postToWorker(new b.8((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
-      AppMethodBeat.o(46760);
-      return;
+      AppMethodBeat.o(187569);
+      return null;
     }
-    ac.e("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaTrack", "hy: invalid operate type: %s", new Object[] { localObject1 });
-    paramc.h(paramInt, e(String.format("fail: not valid operate type: %s", new Object[] { localObject1 }), null));
-    AppMethodBeat.o(46760);
+    paramc = locala.y(paramc);
+    ad.i("MicroMsg.AppBrand.Referrers", "updateReferrers, mReferrer: ".concat(String.valueOf(paramc)));
+    AppMethodBeat.o(187569);
+    return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.s.d
  * JD-Core Version:    0.7.0.1
  */

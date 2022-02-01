@@ -12,8 +12,8 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class aj
 {
-  static boolean KAA = false;
-  static boolean KAz = false;
+  static boolean MqU = false;
+  static boolean MqV = false;
   
   public static void a(Context paramContext, IXWebLogClient paramIXWebLogClient)
   {
@@ -36,11 +36,11 @@ public final class aj
       if (paramISharedPreferenceProvider != null) {
         ah.setSharedPreferenceProvider(paramISharedPreferenceProvider);
       }
-      ll(paramContext);
+      ly(paramContext);
       if (paramWebViewExtensionListener != null) {
-        j.g(WebView.c.KzZ).initCallback(paramWebViewExtensionListener);
+        j.g(WebView.c.Mqu).initCallback(paramWebViewExtensionListener);
       }
-      XWebCoreContentProvider.fJN();
+      XWebCoreContentProvider.gbh();
       AppMethodBeat.o(156943);
       return;
     }
@@ -55,7 +55,7 @@ public final class aj
     //   2: monitorenter
     //   3: ldc 76
     //   5: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 11	com/tencent/xweb/aj:KAz	Z
+    //   8: getstatic 11	com/tencent/xweb/aj:MqU	Z
     //   11: ifeq +12 -> 23
     //   14: ldc 76
     //   16: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -63,15 +63,15 @@ public final class aj
     //   21: monitorexit
     //   22: return
     //   23: iconst_1
-    //   24: putstatic 11	com/tencent/xweb/aj:KAz	Z
-    //   27: getstatic 57	com/tencent/xweb/WebView$c:KzZ	Lcom/tencent/xweb/WebView$c;
+    //   24: putstatic 11	com/tencent/xweb/aj:MqU	Z
+    //   27: getstatic 57	com/tencent/xweb/WebView$c:Mqu	Lcom/tencent/xweb/WebView$c;
     //   30: invokestatic 63	com/tencent/xweb/internal/j:g	(Lcom/tencent/xweb/WebView$c;)Lcom/tencent/xweb/internal/j$a;
     //   33: astore_0
     //   34: aload_0
     //   35: ifnull +9 -> 44
     //   38: aload_0
     //   39: invokeinterface 78 1 0
-    //   44: getstatic 81	com/tencent/xweb/WebView$c:KAa	Lcom/tencent/xweb/WebView$c;
+    //   44: getstatic 81	com/tencent/xweb/WebView$c:Mqv	Lcom/tencent/xweb/WebView$c;
     //   47: invokestatic 63	com/tencent/xweb/internal/j:g	(Lcom/tencent/xweb/WebView$c;)Lcom/tencent/xweb/internal/j$a;
     //   50: astore_0
     //   51: aload_0
@@ -100,7 +100,7 @@ public final class aj
     //   61	66	69	finally
   }
   
-  private static void ll(Context paramContext)
+  private static void ly(Context paramContext)
   {
     for (;;)
     {
@@ -112,7 +112,7 @@ public final class aj
           AppMethodBeat.o(156945);
           return;
         }
-        if (KAA)
+        if (MqV)
         {
           AppMethodBeat.o(156945);
           continue;
@@ -120,15 +120,15 @@ public final class aj
         XWalkEnvironment.init(paramContext);
       }
       finally {}
-      j.a locala = j.g(WebView.c.KzZ);
+      j.a locala = j.g(WebView.c.Mqu);
       if (locala != null) {
         locala.initEnviroment(paramContext);
       }
-      locala = j.g(WebView.c.KAa);
+      locala = j.g(WebView.c.Mqv);
       if (locala != null) {
         locala.initEnviroment(paramContext);
       }
-      KAA = true;
+      MqV = true;
       AppMethodBeat.o(156945);
     }
   }

@@ -4,25 +4,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum k$c
 {
-  private final String KNn;
+  private final String MEk;
   
   static
   {
     AppMethodBeat.i(10260);
-    KOu = new c("CHARACTERS", 0, "TextCapitalization.characters");
-    KOv = new c("WORDS", 1, "TextCapitalization.words");
-    KOw = new c("SENTENCES", 2, "TextCapitalization.sentences");
-    KOx = new c("NONE", 3, "TextCapitalization.none");
-    KOy = new c[] { KOu, KOv, KOw, KOx };
+    MFr = new c("CHARACTERS", 0, "TextCapitalization.characters");
+    MFs = new c("WORDS", 1, "TextCapitalization.words");
+    MFt = new c("SENTENCES", 2, "TextCapitalization.sentences");
+    MFu = new c("NONE", 3, "TextCapitalization.none");
+    MFv = new c[] { MFr, MFs, MFt, MFu };
     AppMethodBeat.o(10260);
   }
   
   private k$c(String paramString)
   {
-    this.KNn = paramString;
+    this.MEk = paramString;
   }
   
-  static c aVT(String paramString)
+  static c bbW(String paramString)
   {
     AppMethodBeat.i(10259);
     c[] arrayOfc = values();
@@ -31,7 +31,7 @@ public enum k$c
     while (i < j)
     {
       c localc = arrayOfc[i];
-      if (localc.KNn.equals(paramString))
+      if (localc.MEk.equals(paramString))
       {
         AppMethodBeat.o(10259);
         return localc;
@@ -45,7 +45,7 @@ public enum k$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     io.flutter.embedding.engine.c.k.c
  * JD-Core Version:    0.7.0.1
  */

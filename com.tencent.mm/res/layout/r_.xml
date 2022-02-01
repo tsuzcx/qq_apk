@@ -11,6 +11,6 @@
             <TextView android:textSize="@dimen/gx" android:textColor="@color/a0t" android:ellipsize="end" android:gravity="center|left" android:id="@id/f_k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:singleLine="true" style="@style/m3" />
         </LinearLayout>
         <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="3.0" />
-        <ImageButton android:layout_gravity="center_vertical" android:id="@id/a9d" android:background="@null" android:focusableInTouchMode="false" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/nb" />
+        <ImageButton android:layout_gravity="center_vertical" android:id="@id/a9d" android:background="@null" android:focusableInTouchMode="false" android:layout_width="@dimen/ap" android:layout_height="@dimen/an" android:src="@drawable/nb" />
     </LinearLayout>
 </merge>

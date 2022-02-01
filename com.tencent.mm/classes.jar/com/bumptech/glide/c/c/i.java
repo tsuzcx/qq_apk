@@ -2,7 +2,7 @@ package com.bumptech.glide.c.c;
 
 public abstract interface i
 {
-  public abstract String oV();
+  public abstract String pn();
 }
 
 

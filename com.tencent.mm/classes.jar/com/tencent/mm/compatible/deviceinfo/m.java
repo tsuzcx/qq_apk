@@ -1,41 +1,41 @@
 package com.tencent.mm.compatible.deviceinfo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class m
 {
-  static int fGK = 0;
-  static String fGL = null;
+  static int gaj = 0;
+  static String gak = null;
   
-  public static int XE()
+  public static int aaf()
   {
     int m = 15;
     AppMethodBeat.i(155662);
     int i;
     int j;
     int k;
-    if (n.XK())
+    if (n.aal())
     {
       i = 7;
       j = i;
-      if (ae.fJc.fGN)
+      if (ae.gcD.gam)
       {
         j = i;
-        if (ae.fJc.fGP == 0)
+        if (ae.gcD.gao == 0)
         {
-          ac.d("MicroMsg.CpuChecker", "disable armv6 by server ");
+          ad.d("MicroMsg.CpuChecker", "disable armv6 by server ");
           j = i & 0xFFFFFFFD;
         }
       }
       k = j;
-      if (ae.fJc.fGN)
+      if (ae.gcD.gam)
       {
         k = j;
-        if (ae.fJc.fGO == 0)
+        if (ae.gcD.gan == 0)
         {
-          ac.d("MicroMsg.CpuChecker", "disable armv7 by server ");
+          ad.d("MicroMsg.CpuChecker", "disable armv7 by server ");
           k = j & 0xFFFFFFFB;
         }
       }
@@ -45,7 +45,7 @@ public final class m
       }
       j = 15;
       label98:
-      i = bs.getInt(XF(), 0) / 1000;
+      i = bt.getInt(aag(), 0) / 1000;
       if (j < 8) {
         break label199;
       }
@@ -71,10 +71,10 @@ public final class m
       for (;;)
       {
         i = (k + (j << 4) << 8) + i;
-        fGK = i;
+        gaj = i;
         AppMethodBeat.o(155662);
         return i;
-        if (n.XL())
+        if (n.aam())
         {
           i = 3;
           break;
@@ -108,7 +108,7 @@ public final class m
   }
   
   /* Error */
-  public static String XF()
+  public static String aag()
   {
     // Byte code:
     //   0: ldc 82
@@ -151,9 +151,9 @@ public final class m
     //   62: ldc 105
     //   64: iconst_0
     //   65: anewarray 4	java/lang/Object
-    //   68: invokestatic 109	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   68: invokestatic 109	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   71: aload_1
-    //   72: invokestatic 112	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   72: invokestatic 112	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   75: ldc 82
     //   77: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   80: ldc 114
@@ -164,7 +164,7 @@ public final class m
     //   86: invokevirtual 119	java/lang/String:trim	()Ljava/lang/String;
     //   89: astore_2
     //   90: aload_1
-    //   91: invokestatic 112	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   91: invokestatic 112	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   94: ldc 82
     //   96: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: aload_2
@@ -173,7 +173,7 @@ public final class m
     //   102: aconst_null
     //   103: astore_0
     //   104: aload_0
-    //   105: invokestatic 112	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   105: invokestatic 112	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   108: ldc 82
     //   110: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: aload_1
@@ -213,7 +213,7 @@ public final class m
   }
   
   /* Error */
-  public static String XG()
+  public static String aah()
   {
     // Byte code:
     //   0: ldc 123
@@ -256,9 +256,9 @@ public final class m
     //   62: ldc 105
     //   64: iconst_0
     //   65: anewarray 4	java/lang/Object
-    //   68: invokestatic 109	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   68: invokestatic 109	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   71: aload_1
-    //   72: invokestatic 112	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   72: invokestatic 112	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   75: ldc 123
     //   77: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   80: ldc 114
@@ -269,7 +269,7 @@ public final class m
     //   86: invokevirtual 119	java/lang/String:trim	()Ljava/lang/String;
     //   89: astore_2
     //   90: aload_1
-    //   91: invokestatic 112	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   91: invokestatic 112	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   94: ldc 123
     //   96: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: aload_2
@@ -278,7 +278,7 @@ public final class m
     //   102: aconst_null
     //   103: astore_0
     //   104: aload_0
-    //   105: invokestatic 112	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   105: invokestatic 112	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   108: ldc 123
     //   110: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: aload_1
@@ -319,7 +319,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.m
  * JD-Core Version:    0.7.0.1
  */

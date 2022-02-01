@@ -11,38 +11,38 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.chatting.e.b.a;
-import com.tencent.mm.ui.chatting.e.b.b;
-import com.tencent.mm.ui.chatting.j.a;
+import com.tencent.mm.ui.chatting.f.b.a;
+import com.tencent.mm.ui.chatting.f.b.b;
+import com.tencent.mm.ui.chatting.k.a;
 
 public class AppBrandHistoryListUI
   extends MMActivity
   implements b.b
 {
-  private b.a HZS;
-  private RecyclerView alu;
-  private String fzK;
-  private TextView fzM;
-  private ProgressDialog opZ;
+  private b.a JPh;
+  private RecyclerView anl;
+  private String fTa;
+  private TextView fTc;
+  private ProgressDialog oTu;
   
-  private void ji(boolean paramBoolean)
+  private void jt(boolean paramBoolean)
   {
     AppMethodBeat.i(35874);
-    ac.i("MicroMsg.AppBrandHistoryListUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.i("MicroMsg.AppBrandHistoryListUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      this.opZ = p.a(this, getString(2131760709), true, 0, null);
+      this.oTu = p.a(this, getString(2131760709), true, 0, null);
       AppMethodBeat.o(35874);
       return;
     }
-    if ((this.opZ != null) && (this.opZ.isShowing()))
+    if ((this.oTu != null) && (this.oTu.isShowing()))
     {
-      this.opZ.dismiss();
-      this.opZ = null;
+      this.oTu.dismiss();
+      this.oTu = null;
     }
     AppMethodBeat.o(35874);
   }
@@ -50,28 +50,28 @@ public class AppBrandHistoryListUI
   public final void B(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(35872);
-    ji(false);
-    ac.i("MicroMsg.AppBrandHistoryListUI", "[onDataLoaded] isFirst:%s addCount:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    jt(false);
+    ad.i("MicroMsg.AppBrandHistoryListUI", "[onDataLoaded] isFirst:%s addCount:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     if (paramInt <= 0)
     {
-      this.fzM.setVisibility(0);
-      this.alu.setVisibility(8);
-      this.fzM.setText(getString(2131757279));
+      this.fTc.setVisibility(0);
+      this.anl.setVisibility(8);
+      this.fTc.setText(getString(2131757279));
       AppMethodBeat.o(35872);
       return;
     }
-    this.fzM.setVisibility(8);
-    this.alu.setVisibility(0);
-    this.alu.getAdapter().ao(0, paramInt);
+    this.fTc.setVisibility(8);
+    this.anl.setVisibility(0);
+    this.anl.getAdapter().ap(0, paramInt);
     AppMethodBeat.o(35872);
   }
   
-  public final void cN(String paramString, boolean paramBoolean) {}
+  public final void cS(String paramString, boolean paramBoolean) {}
   
-  public final void fpd()
+  public final void fFI()
   {
     AppMethodBeat.i(35871);
-    ji(true);
+    jt(true);
     AppMethodBeat.o(35871);
   }
   
@@ -84,12 +84,12 @@ public class AppBrandHistoryListUI
   {
     AppMethodBeat.i(35869);
     setMMTitle(getString(2131757040));
-    this.fzM = ((TextView)findViewById(2131304436));
-    this.alu = ((RecyclerView)findViewById(2131300757));
-    this.alu.setBackgroundColor(-1);
-    this.alu.setLayoutManager(this.HZS.bUW());
-    this.alu.setAdapter(this.HZS.aQt(this.fzK));
-    this.alu.setHasFixedSize(true);
+    this.fTc = ((TextView)findViewById(2131304436));
+    this.anl = ((RecyclerView)findViewById(2131300757));
+    this.anl.setBackgroundColor(-1);
+    this.anl.setLayoutManager(this.JPh.bZB());
+    this.anl.setAdapter(this.JPh.aWm(this.fTa));
+    this.anl.setHasFixedSize(true);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -107,17 +107,17 @@ public class AppBrandHistoryListUI
   {
     AppMethodBeat.i(35868);
     super.onCreate(paramBundle);
-    this.fzK = getIntent().getStringExtra("Chat_User");
+    this.fTa = getIntent().getStringExtra("Chat_User");
     new a(this).a(this);
     initView();
-    this.HZS.foZ();
-    if (w.sQ(this.fzK))
+    this.JPh.fFE();
+    if (w.vF(this.fTa))
     {
-      h.wUl.f(14562, new Object[] { this.fzK, Integer.valueOf(0) });
+      g.yhR.f(14562, new Object[] { this.fTa, Integer.valueOf(0) });
       AppMethodBeat.o(35868);
       return;
     }
-    h.wUl.f(14562, new Object[] { this.fzK, Integer.valueOf(1) });
+    g.yhR.f(14562, new Object[] { this.fTa, Integer.valueOf(1) });
     AppMethodBeat.o(35868);
   }
   
@@ -125,14 +125,14 @@ public class AppBrandHistoryListUI
   {
     AppMethodBeat.i(35870);
     super.onDestroy();
-    this.HZS.onDetach();
+    this.JPh.onDetach();
     AppMethodBeat.o(35870);
   }
   
   public final void onFinish()
   {
     AppMethodBeat.i(35873);
-    ac.i("MicroMsg.AppBrandHistoryListUI", "[onRefreshed]");
+    ad.i("MicroMsg.AppBrandHistoryListUI", "[onRefreshed]");
     finish();
     AppMethodBeat.o(35873);
   }

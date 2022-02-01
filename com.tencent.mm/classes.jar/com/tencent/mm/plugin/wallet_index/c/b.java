@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.wallet_index.c;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b
 {
-  public int BPy = 0;
-  public int tAT;
-  public String tAU;
+  public int DpQ = 0;
+  public int uDC;
+  public String uDD;
   
   private b(int paramInt, String paramString)
   {
-    this.tAT = paramInt;
-    this.tAU = paramString;
+    this.uDC = paramInt;
+    this.uDD = paramString;
   }
   
-  public static b cj(int paramInt, String paramString)
+  public static b cr(int paramInt, String paramString)
   {
     int m = 6;
     int k = 2131766347;
@@ -34,11 +34,11 @@ public final class b
     }
     for (;;)
     {
-      ac.i("MicroMsg.IapResult", "code : " + paramInt + ", errMsg : " + str + ", convert to errCode : " + i);
-      if (!bs.isNullOrNil(str)) {
+      ad.i("MicroMsg.IapResult", "code : " + paramInt + ", errMsg : " + str + ", convert to errCode : " + i);
+      if (!bt.isNullOrNil(str)) {
         break;
       }
-      paramString = new b(i, ai.getContext().getString(j));
+      paramString = new b(i, aj.getContext().getString(j));
       AppMethodBeat.o(71810);
       return paramString;
       j = k;
@@ -117,16 +117,16 @@ public final class b
     return paramString;
   }
   
-  public final boolean euS()
+  public final boolean eIY()
   {
-    return (this.tAT == 104) || (this.tAT == 100000002);
+    return (this.uDC == 104) || (this.uDC == 100000002);
   }
   
-  public final boolean euT()
+  public final boolean eIZ()
   {
     AppMethodBeat.i(71811);
-    if (this.tAT == 0) {}
-    for (int i = 1; (i == 0) && (!euS()); i = 0)
+    if (this.uDC == 0) {}
+    for (int i = 1; (i == 0) && (!eIY()); i = 0)
     {
       AppMethodBeat.o(71811);
       return true;
@@ -138,7 +138,7 @@ public final class b
   public final String toString()
   {
     AppMethodBeat.i(71812);
-    String str = "IapResult: " + this.tAU;
+    String str = "IapResult: " + this.uDD;
     AppMethodBeat.o(71812);
     return str;
   }

@@ -2,12 +2,14 @@ package com.tencent.mm.live.ui;
 
 import android.view.View;
 import d.g.a.b;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
 final class LiveUIB$a
-  extends d.g.b.l
-  implements b<View, y>
+  extends q
+  implements b<View, z>
 {
   LiveUIB$a(LiveUIB paramLiveUIB)
   {
@@ -16,7 +18,7 @@ final class LiveUIB$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.live.ui.LiveUIB.a
  * JD-Core Version:    0.7.0.1
  */

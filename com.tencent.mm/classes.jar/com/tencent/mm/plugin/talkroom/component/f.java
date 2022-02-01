@@ -4,31 +4,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.c;
 import com.tencent.mm.audio.b.c.a;
 import com.tencent.mm.plugin.talkroom.model.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class f
   extends d.a
 {
-  private c cVe;
-  private c.a cWj;
-  private v2engine zVe;
-  private short zVf;
-  private short zVg;
+  private v2engine BmI;
+  private short BmJ;
+  private short BmK;
+  private c dgu;
+  private c.a dhz;
   
   public f(v2engine paramv2engine)
   {
     AppMethodBeat.i(29395);
-    this.cWj = new c.a()
+    this.dhz = new c.a()
     {
-      public final void cf(int paramAnonymousInt1, int paramAnonymousInt2) {}
+      public final void ch(int paramAnonymousInt1, int paramAnonymousInt2) {}
       
       public final void u(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
       {
         AppMethodBeat.i(29394);
-        ac.d("MicroMsg.MicRecoder", "pcm len: ".concat(String.valueOf(paramAnonymousInt)));
+        ad.d("MicroMsg.MicRecoder", "pcm len: ".concat(String.valueOf(paramAnonymousInt)));
         if (paramAnonymousInt <= 0)
         {
-          ac.e("MicroMsg.MicRecoder", "pcm data too low");
+          ad.e("MicroMsg.MicRecoder", "pcm data too low");
           AppMethodBeat.o(29394);
           return;
         }
@@ -36,58 +36,58 @@ public final class f
         paramAnonymousInt = f.a(f.this).Send(paramAnonymousArrayOfByte, (short)paramAnonymousInt);
         if (paramAnonymousInt < 0)
         {
-          ac.e("MicroMsg.MicRecoder", "send failed, ret: ".concat(String.valueOf(paramAnonymousInt)));
+          ad.e("MicroMsg.MicRecoder", "send failed, ret: ".concat(String.valueOf(paramAnonymousInt)));
           AppMethodBeat.o(29394);
           return;
         }
         AppMethodBeat.o(29394);
       }
     };
-    this.zVe = paramv2engine;
+    this.BmI = paramv2engine;
     AppMethodBeat.o(29395);
   }
   
-  public final void aIL()
+  public final void aLV()
   {
     AppMethodBeat.i(29397);
-    this.cVe = new c(a.zVt, 1, 2);
-    this.cVe.t(8, false);
-    this.cVe.cVR = this.cWj;
-    this.cVe.hH(20);
-    this.cVe.Og();
-    this.zVg = 0;
-    this.zVf = 0;
+    this.dgu = new c(a.BmX, 1, 2);
+    this.dgu.t(8, false);
+    this.dgu.dhh = this.dhz;
+    this.dgu.hO(20);
+    this.dgu.PP();
+    this.BmK = 0;
+    this.BmJ = 0;
     AppMethodBeat.o(29397);
   }
   
-  public final void ebj()
+  public final void enA()
   {
     AppMethodBeat.i(29396);
-    if (this.cVe != null)
+    if (this.dgu != null)
     {
-      this.cVe.NX();
-      this.cVe = null;
+      this.dgu.PG();
+      this.dgu = null;
     }
     AppMethodBeat.o(29396);
   }
   
-  public final int ebk()
+  public final int enB()
   {
-    if (this.zVg < this.zVf) {
-      this.zVg = this.zVf;
+    if (this.BmK < this.BmJ) {
+      this.BmK = this.BmJ;
     }
-    if (this.zVg == 0) {
+    if (this.BmK == 0) {
       return 0;
     }
-    int i = (short)(this.zVf * 100 / this.zVg);
-    this.zVf = 0;
+    int i = (short)(this.BmJ * 100 / this.BmK);
+    this.BmJ = 0;
     return i;
   }
   
   public final void release()
   {
     AppMethodBeat.i(29398);
-    ebj();
+    enA();
     AppMethodBeat.o(29398);
   }
   
@@ -95,7 +95,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.f
  * JD-Core Version:    0.7.0.1
  */

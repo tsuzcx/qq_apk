@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.chatroom.a;
 
-import com.tencent.mm.protocal.protobuf.ua;
+import com.tencent.mm.protocal.protobuf.vv;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract interface b
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract boolean GN(String paramString);
-  
-  public abstract boolean a(String paramString1, String paramString2, ua paramua, String paramString3, com.tencent.mm.j.a.a.a parama, com.tencent.mm.sdk.b.b paramb);
+  public abstract boolean a(String paramString1, String paramString2, vv paramvv, String paramString3, com.tencent.mm.k.a.a.a parama, com.tencent.mm.sdk.b.b paramb);
   
   public abstract boolean a(String paramString1, ArrayList<String> paramArrayList, String paramString2);
   
-  public abstract String ae(List<String> paramList);
+  public abstract String af(List<String> paramList);
   
-  public abstract List<String> vZ(String paramString);
+  public abstract List<String> yQ(String paramString);
   
-  public abstract int wb(String paramString);
+  public abstract int yS(String paramString);
+  
+  public abstract boolean yV(String paramString);
 }
 
 

@@ -1,85 +1,33 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.content.Intent;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.w;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.report.service.h;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mm.plugin.report.service.g;
+import d.g.b.p;
+import d.l;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizFastRejectTool;", "", "()V", "KEY_MSG_ID", "", "KEY_MSG_RANK", "SCENE_BIZ_REJECT_PROFILE_SET", "", "TAG", "TYPE_BIZ_REJECT_TYPE_REJECT", "reportBizReject", "", "brandUserName", "actionTime", "", "scene", "sceneNote", "actionType", "plugin-brandservice_release"})
 public final class a
-  extends RecyclerView.a<a>
 {
-  private long foF;
-  private c fze;
-  List<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> nyB;
-  Set<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> nyC;
-  MutableLiveData<Set<com.tencent.mm.plugin.brandservice.ui.timeline.b.a>> nyD;
-  private int nyE;
-  private long nyF;
+  public static final a oaa;
   
-  public a(List<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> paramList, MutableLiveData<Set<com.tencent.mm.plugin.brandservice.ui.timeline.b.a>> paramMutableLiveData, long paramLong1, long paramLong2, int paramInt)
+  static
   {
-    AppMethodBeat.i(5840);
-    this.nyB = paramList;
-    this.nyC = new HashSet();
-    this.nyD = paramMutableLiveData;
-    paramMutableLiveData.setValue(this.nyC);
-    paramList = new c.a();
-    paramList.hKL = 2131231342;
-    paramList.hKw = true;
-    paramList.gLt = true;
-    this.fze = paramList.aFT();
-    this.nyF = paramLong1;
-    this.foF = paramLong2;
-    this.nyE = paramInt;
-    AppMethodBeat.o(5840);
+    AppMethodBeat.i(6535);
+    oaa = new a();
+    AppMethodBeat.o(6535);
   }
   
-  public final int getItemCount()
+  public static void r(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(5841);
-    int i = this.nyB.size();
-    AppMethodBeat.o(5841);
-    return i;
-  }
-  
-  static final class a
-    extends RecyclerView.w
-  {
-    ImageView iKw;
-    CheckBox nyJ;
-    TextView nyK;
-    TextView nyL;
-    TextView nyM;
-    
-    public a(View paramView)
-    {
-      super();
-      AppMethodBeat.i(5839);
-      this.nyJ = ((CheckBox)paramView.findViewById(2131301220));
-      this.nyK = ((TextView)paramView.findViewById(2131306109));
-      this.nyL = ((TextView)paramView.findViewById(2131306147));
-      this.nyM = ((TextView)paramView.findViewById(2131306119));
-      this.iKw = ((ImageView)paramView.findViewById(2131301204));
-      AppMethodBeat.o(5839);
-    }
+    AppMethodBeat.i(209672);
+    p.h(paramString, "brandUserName");
+    g.yhR.f(17748, new Object[] { paramString, Long.valueOf(paramLong1), Integer.valueOf(0), Long.valueOf(paramLong2), Integer.valueOf(0) });
+    AppMethodBeat.o(209672);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.a
  * JD-Core Version:    0.7.0.1
  */

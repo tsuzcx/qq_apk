@@ -36,28 +36,28 @@ public class TbsOneGreyInfoHelper
   
   static TBSOneManager a(Context paramContext)
   {
-    AppMethodBeat.i(192452);
+    AppMethodBeat.i(190691);
     String str = "default";
     if (is64BitImpl()) {
       str = "default_64";
     }
     paramContext = TBSOneManager.getInstance(paramContext, str);
-    AppMethodBeat.o(192452);
+    AppMethodBeat.o(190691);
     return paramContext;
   }
   
   private static int b(Context paramContext)
   {
-    AppMethodBeat.i(192453);
+    AppMethodBeat.i(190692);
     if (g != -1)
     {
       i = g;
-      AppMethodBeat.o(192453);
+      AppMethodBeat.o(190692);
       return i;
     }
     int i = paramContext.getSharedPreferences("one_config", 0).getInt("one_enable", 0);
     g = i;
-    AppMethodBeat.o(192453);
+    AppMethodBeat.o(190692);
     return i;
   }
   
@@ -371,50 +371,50 @@ public class TbsOneGreyInfoHelper
   
   public static boolean is64BitImpl()
   {
-    AppMethodBeat.i(192454);
+    AppMethodBeat.i(190693);
     try
     {
       int i = Build.VERSION.SDK_INT;
       if (i < 21)
       {
-        AppMethodBeat.o(192454);
+        AppMethodBeat.o(190693);
         return false;
       }
       Object localObject1 = Class.forName("dalvik.system.VMRuntime");
       if (localObject1 == null)
       {
-        AppMethodBeat.o(192454);
+        AppMethodBeat.o(190693);
         return false;
       }
       Object localObject2 = ((Class)localObject1).getDeclaredMethod("getRuntime", new Class[0]);
       if (localObject2 == null)
       {
-        AppMethodBeat.o(192454);
+        AppMethodBeat.o(190693);
         return false;
       }
       localObject2 = ((Method)localObject2).invoke(null, new Object[0]);
       if (localObject2 == null)
       {
-        AppMethodBeat.o(192454);
+        AppMethodBeat.o(190693);
         return false;
       }
       localObject1 = ((Class)localObject1).getDeclaredMethod("is64Bit", new Class[0]);
       if (localObject1 == null)
       {
-        AppMethodBeat.o(192454);
+        AppMethodBeat.o(190693);
         return false;
       }
       localObject1 = ((Method)localObject1).invoke(localObject2, new Object[0]);
       if ((localObject1 instanceof Boolean))
       {
         boolean bool = ((Boolean)localObject1).booleanValue();
-        AppMethodBeat.o(192454);
+        AppMethodBeat.o(190693);
         return bool;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(192454);
+      AppMethodBeat.o(190693);
     }
     return false;
   }

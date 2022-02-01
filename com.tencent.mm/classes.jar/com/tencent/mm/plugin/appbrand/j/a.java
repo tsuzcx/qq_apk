@@ -1,102 +1,78 @@
 package com.tencent.mm.plugin.appbrand.j;
 
-import android.graphics.SurfaceTexture;
-import com.tencent.luggage.k.a.a.b.b;
-import com.tencent.luggage.k.a.a.b.b.12;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.xweb.skia_canvas.external_texture.ISkiaCanvasExternalTextureHandler;
-import com.tencent.xweb.skia_canvas.external_texture.SkiaCanvasExternalTexturePlugin.PluginLoadResult;
-import com.tencent.xweb.skia_canvas.external_texture.SkiaCanvasExternalTexturePluginWithSurfaceTextureDelegate;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.plugin.appbrand.appusage.y;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public class a
-  extends SkiaCanvasExternalTexturePluginWithSurfaceTextureDelegate
+final class a
+  implements k.a
 {
-  private static a jPb;
-  private Map<Integer, b> jPc;
-  
-  private a()
+  public final void a(String paramString, m paramm)
   {
-    AppMethodBeat.i(139394);
-    this.jPc = new ConcurrentHashMap();
-    AppMethodBeat.o(139394);
-  }
-  
-  public static a bcU()
-  {
-    AppMethodBeat.i(139395);
-    if (jPb == null) {}
-    try
+    AppMethodBeat.i(45009);
+    if (j.aYV() == null)
     {
-      if (jPb == null) {
-        jPb = new a();
-      }
-      a locala = jPb;
-      AppMethodBeat.o(139395);
-      return locala;
-    }
-    finally
-    {
-      AppMethodBeat.o(139395);
-    }
-  }
-  
-  public final void a(int paramInt1, b paramb, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3, String paramString)
-  {
-    AppMethodBeat.i(177195);
-    if ((paramSurfaceTexture != null) && ((paramInt2 != 0) || (paramInt3 != 0)))
-    {
-      ac.i("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "registerMediaPlayer, id:%s, width:%s, height:%s, surface:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramSurfaceTexture.hashCode()) });
-      this.jPc.put(Integer.valueOf(paramInt1), paramb);
-      registerInstance(paramInt1, paramString, paramInt2, paramInt3, paramSurfaceTexture);
-    }
-    AppMethodBeat.o(177195);
-  }
-  
-  public void onPluginInstanceDestroy(ISkiaCanvasExternalTextureHandler paramISkiaCanvasExternalTextureHandler, int paramInt, String paramString)
-  {
-    AppMethodBeat.i(177198);
-    ac.i("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "onPluginInstanceDestroy, id:%s appTag:%s", new Object[] { Integer.valueOf(paramInt), paramString });
-    super.onPluginInstanceDestroy(paramISkiaCanvasExternalTextureHandler, paramInt, paramString);
-    AppMethodBeat.o(177198);
-  }
-  
-  public SkiaCanvasExternalTexturePlugin.PluginLoadResult onPluginInstanceLoad(ISkiaCanvasExternalTextureHandler paramISkiaCanvasExternalTextureHandler, String paramString1, int paramInt, String paramString2)
-  {
-    AppMethodBeat.i(177197);
-    ac.i("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "onPluginInstanceLoad, type:%s, id:%s appTag:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
-    paramISkiaCanvasExternalTextureHandler = super.onPluginInstanceLoad(paramISkiaCanvasExternalTextureHandler, paramString1, paramInt, paramString2);
-    AppMethodBeat.o(177197);
-    return paramISkiaCanvasExternalTextureHandler;
-  }
-  
-  public void replaceDisplaySurface(int paramInt, String paramString, SurfaceTexture paramSurfaceTexture)
-  {
-    AppMethodBeat.i(177196);
-    paramString = (b)this.jPc.get(Integer.valueOf(paramInt));
-    if ((paramString != null) && (paramSurfaceTexture != null))
-    {
-      ac.w("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "replaceDisplaySurface, surface:%s", new Object[] { Integer.valueOf(paramSurfaceTexture.hashCode()) });
-      paramString.k(new b.12(paramString, paramSurfaceTexture));
-      AppMethodBeat.o(177196);
+      ad.w("MicroMsg.AppBrandSearchStorageChangeListener", "onNotifyChange by SysConfigStorage, but sLayoutStorage is null.");
+      AppMethodBeat.o(45009);
       return;
     }
-    ac.w("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "replaceDisplaySurface, video plugin handler or surface texture is null");
-    AppMethodBeat.o(177196);
-  }
-  
-  public boolean supportType(String paramString)
-  {
-    AppMethodBeat.i(139398);
-    if (paramString.equals("video"))
+    switch (paramm.dtK)
     {
-      AppMethodBeat.o(139398);
-      return true;
     }
-    AppMethodBeat.o(139398);
-    return false;
+    for (;;)
+    {
+      AppMethodBeat.o(45009);
+      return;
+      LinkedList localLinkedList = new LinkedList();
+      if ("batch".equals(paramString))
+      {
+        if ((paramm.obj != null) && ((paramm.obj instanceof List)))
+        {
+          paramString = ((List)paramm.obj).iterator();
+          while (paramString.hasNext())
+          {
+            paramm = (String)paramString.next();
+            localLinkedList.addAll(j.aYV().MI(paramm));
+          }
+        }
+      }
+      else
+      {
+        localLinkedList.addAll(j.aYV().MI(paramm.obj.toString()));
+        if (!localLinkedList.isEmpty())
+        {
+          j.aYV().doNotify("batch", 3, localLinkedList);
+          AppMethodBeat.o(45009);
+          return;
+          localLinkedList = new LinkedList();
+          if ("batch".equals(paramString))
+          {
+            if ((paramm.obj != null) && ((paramm.obj instanceof List)))
+            {
+              paramString = ((List)paramm.obj).iterator();
+              while (paramString.hasNext())
+              {
+                paramm = (String)paramString.next();
+                localLinkedList.addAll(j.aYV().MI(paramm));
+              }
+            }
+          }
+          else
+          {
+            localLinkedList.addAll(j.aYV().MI(paramm.obj.toString()));
+            if (!localLinkedList.isEmpty()) {
+              j.aYV().doNotify("batch", 5, localLinkedList);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

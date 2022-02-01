@@ -1,14 +1,40 @@
 package com.tencent.mm.plugin.appbrand.jsapi.r;
 
-import com.tencent.mm.plugin.appbrand.jsapi.h;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.MenuItem;
+import com.tencent.luggage.h.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.aw;
+import com.tencent.mm.plugin.appbrand.page.bc;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.b;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class b
+  extends a<q>
 {
-  public String data;
-  public h kJq;
-  public com.tencent.mm.plugin.appbrand.jsapi.b kJr;
-  public String path;
-  public long startTime;
+  private static final int CTRL_INDEX = 107;
+  private static final String NAME = "showActionSheet";
+  public static a leC;
+  
+  public static abstract interface a
+  {
+    public abstract void tm(int paramInt);
+  }
 }
 
 

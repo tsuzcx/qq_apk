@@ -2,7 +2,7 @@ package com.tenpay.android.wechat;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tenpay.ndk.Encrypt;
 import java.lang.reflect.Field;
 import java.security.MessageDigest;
@@ -84,7 +84,7 @@ public class TenpayUtil
     {
       while (i < paramString.length() - 1)
       {
-        int k = bs.aLy(paramString.substring(i, i + 1));
+        int k = bt.aRe(paramString.substring(i, i + 1));
         int m = new int[] { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 }[i];
         j += k * m;
         i += 1;
@@ -227,7 +227,7 @@ public class TenpayUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tenpay.android.wechat.TenpayUtil
  * JD-Core Version:    0.7.0.1
  */

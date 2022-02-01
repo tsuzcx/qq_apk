@@ -8,32 +8,13 @@ public abstract class be
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int enO;
-  private static final int eol = "updateTime".hashCode();
-  private static final int eot;
-  private static final int ewX = "id".hashCode();
-  private static final int ezx = "cacheKey".hashCode();
-  private static final int ezy;
+  private static final int eQR = "bakLogId".hashCode();
+  private static final int eQS = "valueStr".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean enx = true;
-  private boolean eoi = true;
-  private boolean eop = true;
-  private boolean ewT = true;
-  private boolean ezv = true;
-  private boolean ezw = true;
-  public String field_appId;
-  public String field_cacheKey;
-  public String field_data;
-  public String field_id;
-  public int field_interval;
-  public long field_updateTime;
-  
-  static
-  {
-    enO = "appId".hashCode();
-    eot = "data".hashCode();
-    ezy = "interval".hashCode();
-  }
+  private boolean eQP;
+  private boolean eQQ;
+  public int field_bakLogId;
+  public String field_valueStr;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -48,10 +29,10 @@ public abstract class be
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ewX != k) {
+      if (eQR != k) {
         break label60;
       }
-      this.field_id = paramCursor.getString(i);
+      this.field_bakLogId = paramCursor.getInt(i);
     }
     for (;;)
     {
@@ -59,16 +40,8 @@ public abstract class be
       break label20;
       break;
       label60:
-      if (ezx == k) {
-        this.field_cacheKey = paramCursor.getString(i);
-      } else if (enO == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (eot == k) {
-        this.field_data = paramCursor.getString(i);
-      } else if (ezy == k) {
-        this.field_interval = paramCursor.getInt(i);
-      } else if (eol == k) {
-        this.field_updateTime = paramCursor.getLong(i);
+      if (eQS == k) {
+        this.field_valueStr = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -78,23 +51,11 @@ public abstract class be
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ewT) {
-      localContentValues.put("id", this.field_id);
+    if (this.eQP) {
+      localContentValues.put("bakLogId", Integer.valueOf(this.field_bakLogId));
     }
-    if (this.ezv) {
-      localContentValues.put("cacheKey", this.field_cacheKey);
-    }
-    if (this.enx) {
-      localContentValues.put("appId", this.field_appId);
-    }
-    if (this.eop) {
-      localContentValues.put("data", this.field_data);
-    }
-    if (this.ezw) {
-      localContentValues.put("interval", Integer.valueOf(this.field_interval));
-    }
-    if (this.eoi) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.eQQ) {
+      localContentValues.put("valueStr", this.field_valueStr);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

@@ -10,9 +10,9 @@ public abstract interface a
   
   public abstract void a(g paramg);
   
-  public abstract long aw(String paramString);
-  
   public abstract void b(g paramg);
+  
+  public abstract long bp(String paramString);
   
   public abstract g d(String paramString, long paramLong);
   
@@ -24,9 +24,9 @@ public abstract interface a
   
   public abstract void f(String paramString, long paramLong);
   
-  public abstract long vi();
-  
   public abstract void w(File paramFile);
+  
+  public abstract long wF();
   
   public static class a
     extends IOException

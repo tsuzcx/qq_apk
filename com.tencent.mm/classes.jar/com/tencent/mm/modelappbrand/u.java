@@ -1,126 +1,64 @@
 package com.tencent.mm.modelappbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.do;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.g.b.a.ej;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class u
 {
-  private static Map<String, Long> hsf;
-  private static Map<String, Long> hsg;
-  private static Map<String, Long> hsh;
-  private static Map<String, Long> hsi;
-  private static Map<String, a> hsj;
+  private static Map<String, Long> hKA;
+  private static Map<String, a> hKB;
+  private static Map<String, Long> hKx;
+  private static Map<String, Long> hKy;
+  private static Map<String, Long> hKz;
   
   static
   {
     AppMethodBeat.i(76390);
-    hsf = new HashMap();
-    hsg = new HashMap();
-    hsh = new HashMap();
-    hsi = new HashMap();
-    hsj = new HashMap();
+    hKx = new HashMap();
+    hKy = new HashMap();
+    hKz = new HashMap();
+    hKA = new HashMap();
+    hKB = new HashMap();
     AppMethodBeat.o(76390);
   }
   
-  public static void I(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(76388);
-    ac.i("SearchWidgetStartTrace", "drawEnd %s,succ %s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    if (paramBoolean)
-    {
-      if (hsf.containsKey(paramString)) {}
-      for (long l = ((Long)hsf.get(paramString)).longValue(); l > 0L; l = 0L)
-      {
-        System.currentTimeMillis();
-        AppMethodBeat.o(76388);
-        return;
-      }
-      ac.e("SearchWidgetStartTrace", "can't find widget Recv timestamp for appid %s", new Object[] { paramString });
-    }
-    AppMethodBeat.o(76388);
-  }
-  
-  public static void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
-  {
-    AppMethodBeat.i(76379);
-    a locala2 = (a)hsj.get(paramString1);
-    a locala1 = locala2;
-    if (locala2 == null) {
-      locala1 = new a();
-    }
-    locala1.djj = paramString2;
-    locala1.cFI = paramInt1;
-    locala1.hsl = paramInt2;
-    locala1.hsk = paramString3;
-    hsj.put(paramString1, locala1);
-    AppMethodBeat.o(76379);
-  }
-  
-  public static void aAM()
-  {
-    AppMethodBeat.i(76389);
-    ac.i("SearchWidgetStartTrace", "hasInitData %s", new Object[] { Boolean.TRUE });
-    AppMethodBeat.o(76389);
-  }
-  
-  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(76386);
-    ac.e("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
-    AppMethodBeat.o(76386);
-  }
-  
-  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(76385);
-    ac.i("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
-    AppMethodBeat.o(76385);
-  }
-  
-  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(76384);
-    ac.i("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
-    AppMethodBeat.o(76384);
-  }
-  
-  public static void zg(String paramString)
+  public static void Cf(String paramString)
   {
     AppMethodBeat.i(76378);
-    Object localObject = (a)hsj.get(paramString);
+    Object localObject = (a)hKB.get(paramString);
     if (localObject != null)
     {
-      if (((a)localObject).hsm)
+      if (((a)localObject).hKE)
       {
         i("SearchWidgetStartTrace", "do not report draw succ agagin", new Object[0]);
         AppMethodBeat.o(76378);
         return;
       }
-      ((a)localObject).hsm = true;
+      ((a)localObject).hKE = true;
     }
-    v.lA(20);
-    localObject = new do().ly(zj(paramString));
-    ((do)localObject).dSn = zh(paramString);
-    ((do)localObject).dSk = 12L;
-    ((do)localObject).dSm = 1L;
-    paramString = ((do)localObject).lx(paramString);
-    paramString.dSl = System.currentTimeMillis();
-    paramString.lz(ax.iH(ai.getContext())).aHZ();
+    v.ma(20);
+    localObject = new ej().nF(Ci(paramString));
+    ((ej)localObject).ehS = Cg(paramString);
+    ((ej)localObject).ehP = 12L;
+    ((ej)localObject).ehR = 1L;
+    paramString = ((ej)localObject).nE(paramString);
+    paramString.ehQ = System.currentTimeMillis();
+    paramString.nG(ay.iR(aj.getContext())).aLk();
     AppMethodBeat.o(76378);
   }
   
-  public static int zh(String paramString)
+  public static int Cg(String paramString)
   {
     AppMethodBeat.i(76380);
-    paramString = (a)hsj.get(paramString);
+    paramString = (a)hKB.get(paramString);
     if (paramString != null)
     {
-      int i = paramString.cFI;
+      int i = paramString.cQN;
       AppMethodBeat.o(76380);
       return i;
     }
@@ -128,21 +66,21 @@ public final class u
     return 0;
   }
   
-  public static boolean zi(String paramString)
+  public static boolean Ch(String paramString)
   {
     AppMethodBeat.i(76381);
-    boolean bool = hsj.containsKey(paramString);
+    boolean bool = hKB.containsKey(paramString);
     AppMethodBeat.o(76381);
     return bool;
   }
   
-  public static String zj(String paramString)
+  public static String Ci(String paramString)
   {
     AppMethodBeat.i(76382);
-    a locala = (a)hsj.get(paramString);
+    a locala = (a)hKB.get(paramString);
     if (locala != null)
     {
-      paramString = locala.hsk;
+      paramString = locala.hKC;
       AppMethodBeat.o(76382);
       return paramString;
     }
@@ -150,13 +88,13 @@ public final class u
     return paramString;
   }
   
-  public static int zk(String paramString)
+  public static int Cj(String paramString)
   {
     AppMethodBeat.i(76383);
-    paramString = (a)hsj.get(paramString);
+    paramString = (a)hKB.get(paramString);
     if (paramString != null)
     {
-      int i = paramString.hsl;
+      int i = paramString.hKD;
       AppMethodBeat.o(76383);
       return i;
     }
@@ -164,20 +102,82 @@ public final class u
     return 0;
   }
   
-  public static void zl(String paramString)
+  public static void Ck(String paramString)
   {
     AppMethodBeat.i(76387);
-    ac.i("SearchWidgetStartTrace", "realInsert %s", new Object[] { paramString });
+    ad.i("SearchWidgetStartTrace", "realInsert %s", new Object[] { paramString });
     AppMethodBeat.o(76387);
+  }
+  
+  public static void I(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(76388);
+    ad.i("SearchWidgetStartTrace", "drawEnd %s,succ %s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
+    {
+      if (hKx.containsKey(paramString)) {}
+      for (long l = ((Long)hKx.get(paramString)).longValue(); l > 0L; l = 0L)
+      {
+        System.currentTimeMillis();
+        AppMethodBeat.o(76388);
+        return;
+      }
+      ad.e("SearchWidgetStartTrace", "can't find widget Recv timestamp for appid %s", new Object[] { paramString });
+    }
+    AppMethodBeat.o(76388);
+  }
+  
+  public static void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
+  {
+    AppMethodBeat.i(76379);
+    a locala2 = (a)hKB.get(paramString1);
+    a locala1 = locala2;
+    if (locala2 == null) {
+      locala1 = new a();
+    }
+    locala1.duW = paramString2;
+    locala1.cQN = paramInt1;
+    locala1.hKD = paramInt2;
+    locala1.hKC = paramString3;
+    hKB.put(paramString1, locala1);
+    AppMethodBeat.o(76379);
+  }
+  
+  public static void aDP()
+  {
+    AppMethodBeat.i(76389);
+    ad.i("SearchWidgetStartTrace", "hasInitData %s", new Object[] { Boolean.TRUE });
+    AppMethodBeat.o(76389);
+  }
+  
+  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(76386);
+    ad.e("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
+    AppMethodBeat.o(76386);
+  }
+  
+  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(76385);
+    ad.i("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
+    AppMethodBeat.o(76385);
+  }
+  
+  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(76384);
+    ad.i("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
+    AppMethodBeat.o(76384);
   }
   
   public static final class a
   {
-    public int cFI;
-    public String djj;
-    public String hsk;
-    public int hsl;
-    public boolean hsm;
+    public int cQN;
+    public String duW;
+    public String hKC;
+    public int hKD;
+    public boolean hKE;
   }
 }
 

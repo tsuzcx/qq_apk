@@ -11,20 +11,20 @@ import java.util.Map;
 public final class e
   extends ContextWrapper
 {
-  static final k<?, ?> aAN;
-  final Map<Class<?>, k<?, ?>> aAD;
-  public final int aAI;
-  final com.bumptech.glide.f.e aAJ;
-  private final Handler aAO;
-  private final com.bumptech.glide.f.a.b aAP;
-  final j aAs;
-  public final h aAx;
-  public final com.bumptech.glide.c.b.a.b aAy;
+  static final k<?, ?> aCE;
+  final com.bumptech.glide.f.e aCA;
+  private final Handler aCF;
+  private final com.bumptech.glide.f.a.b aCG;
+  final j aCj;
+  public final h aCo;
+  public final com.bumptech.glide.c.b.a.b aCp;
+  final Map<Class<?>, k<?, ?>> aCu;
+  public final int aCz;
   
   static
   {
     AppMethodBeat.i(76783);
-    aAN = new b();
+    aCE = new b();
     AppMethodBeat.o(76783);
   }
   
@@ -32,14 +32,14 @@ public final class e
   {
     super(paramContext.getApplicationContext());
     AppMethodBeat.i(76782);
-    this.aAy = paramb;
-    this.aAx = paramh;
-    this.aAP = paramb1;
-    this.aAJ = parame;
-    this.aAD = paramMap;
-    this.aAs = paramj;
-    this.aAI = paramInt;
-    this.aAO = new Handler(Looper.getMainLooper());
+    this.aCp = paramb;
+    this.aCo = paramh;
+    this.aCG = paramb1;
+    this.aCA = parame;
+    this.aCu = paramMap;
+    this.aCj = paramj;
+    this.aCz = paramInt;
+    this.aCF = new Handler(Looper.getMainLooper());
     AppMethodBeat.o(76782);
   }
 }

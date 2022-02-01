@@ -18,6 +18,7 @@ import android.os.Parcelable;
 import android.os.Process;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.smtt.sdk.g;
 import java.util.Arrays;
 import java.util.List;
@@ -33,6 +34,7 @@ public abstract class ChildProcessService
   private static final String TAG = "ChildProcessService";
   private static boolean sCreateCalled;
   public static boolean use_isolated_process;
+  private byte _hellAccFlag_;
   private final Semaphore mActivitySemaphore = new Semaphore(1);
   private boolean mBindToCallerCheck;
   private final IChildProcessService.Stub mBinder = new IChildProcessService.Stub()
@@ -167,61 +169,61 @@ public abstract class ChildProcessService
     //   3: istore_1
     //   4: iload_1
     //   5: aload_0
-    //   6: getfield 78	com/tencent/smtt/sandbox/ChildProcessService:mLazilyLoadedLibraryNames	[Ljava/lang/CharSequence;
+    //   6: getfield 80	com/tencent/smtt/sandbox/ChildProcessService:mLazilyLoadedLibraryNames	[Ljava/lang/CharSequence;
     //   9: arraylength
     //   10: if_icmpge +123 -> 133
     //   13: aload_0
-    //   14: getfield 78	com/tencent/smtt/sandbox/ChildProcessService:mLazilyLoadedLibraryNames	[Ljava/lang/CharSequence;
+    //   14: getfield 80	com/tencent/smtt/sandbox/ChildProcessService:mLazilyLoadedLibraryNames	[Ljava/lang/CharSequence;
     //   17: iload_1
     //   18: aaload
     //   19: astore 4
     //   21: aload_0
-    //   22: getfield 76	com/tencent/smtt/sandbox/ChildProcessService:mLazilyLoadedLibraryFDs	[Landroid/os/ParcelFileDescriptor;
+    //   22: getfield 78	com/tencent/smtt/sandbox/ChildProcessService:mLazilyLoadedLibraryFDs	[Landroid/os/ParcelFileDescriptor;
     //   25: iload_1
     //   26: aaload
     //   27: astore 5
     //   29: iconst_4
     //   30: newarray byte
     //   32: astore 6
-    //   34: new 146	java/io/FileInputStream
+    //   34: new 148	java/io/FileInputStream
     //   37: dup
     //   38: aload 5
-    //   40: invokevirtual 152	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-    //   43: invokespecial 155	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
+    //   40: invokevirtual 154	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   43: invokespecial 157	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
     //   46: astore_3
     //   47: aload_3
     //   48: aload 6
-    //   50: invokevirtual 161	java/io/InputStream:read	([B)I
+    //   50: invokevirtual 163	java/io/InputStream:read	([B)I
     //   53: pop
     //   54: aload_3
-    //   55: invokevirtual 164	java/io/InputStream:close	()V
+    //   55: invokevirtual 166	java/io/InputStream:close	()V
     //   58: ldc 21
-    //   60: new 166	java/lang/StringBuilder
+    //   60: new 168	java/lang/StringBuilder
     //   63: dup
-    //   64: ldc 168
-    //   66: invokespecial 171	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   64: ldc 170
+    //   66: invokespecial 173	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   69: aload 4
-    //   71: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   74: ldc 177
-    //   76: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   74: ldc 179
+    //   76: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: aload 5
-    //   81: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   84: ldc 182
-    //   86: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   84: ldc 184
+    //   86: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   89: aload 5
-    //   91: invokevirtual 186	android/os/ParcelFileDescriptor:getFd	()I
-    //   94: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   97: ldc 191
-    //   99: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: new 193	java/lang/String
+    //   91: invokevirtual 188	android/os/ParcelFileDescriptor:getFd	()I
+    //   94: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   97: ldc 193
+    //   99: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: new 195	java/lang/String
     //   105: dup
     //   106: aload 6
-    //   108: invokespecial 196	java/lang/String:<init>	([B)V
-    //   111: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   108: invokespecial 198	java/lang/String:<init>	([B)V
+    //   111: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: invokevirtual 202	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   117: iconst_0
-    //   118: anewarray 67	java/lang/Object
-    //   121: invokestatic 206	com/tencent/smtt/sandbox/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   118: anewarray 69	java/lang/Object
+    //   121: invokestatic 208	com/tencent/smtt/sandbox/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   124: iload_1
     //   125: iconst_1
     //   126: iadd
@@ -232,13 +234,13 @@ public abstract class ChildProcessService
     //   133: aload_2
     //   134: ifnull +7 -> 141
     //   137: aload_2
-    //   138: invokevirtual 164	java/io/InputStream:close	()V
+    //   138: invokevirtual 166	java/io/InputStream:close	()V
     //   141: return
     //   142: astore_2
     //   143: aload_3
     //   144: ifnull -3 -> 141
     //   147: aload_3
-    //   148: invokevirtual 164	java/io/InputStream:close	()V
+    //   148: invokevirtual 166	java/io/InputStream:close	()V
     //   151: return
     //   152: astore_2
     //   153: return
@@ -246,7 +248,7 @@ public abstract class ChildProcessService
     //   155: aload_3
     //   156: ifnull +7 -> 163
     //   159: aload_3
-    //   160: invokevirtual 164	java/io/InputStream:close	()V
+    //   160: invokevirtual 166	java/io/InputStream:close	()V
     //   163: aload_2
     //   164: athrow
     //   165: astore_2
@@ -451,6 +453,8 @@ public abstract class ChildProcessService
     Log.d("ChildProcessService", "starting mMainThread thread @pid: " + Process.myPid());
     this.mMainThread = new Thread(new Runnable()
     {
+      private byte _hellAccFlag_;
+      
       static
       {
         AppMethodBeat.i(53764);
@@ -504,7 +508,11 @@ public abstract class ChildProcessService
           if (!bool)
           {
             Log.e("ChildProcessService", "@mMainThread loadNativeLibrary failed!", new Object[0]);
-            System.exit(-1);
+            ??? = c.a(-1, new com.tencent.mm.hellhoundlib.b.a());
+            Object localObject3 = new Object();
+            com.tencent.mm.hellhoundlib.a.a.a(localObject3, ((com.tencent.mm.hellhoundlib.b.a)???).ahp(), "com/tencent/smtt/sandbox/ChildProcessService$2", "run", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+            System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).mq(0)).intValue());
+            com.tencent.mm.hellhoundlib.a.a.a(localObject3, "com/tencent/smtt/sandbox/ChildProcessService$2", "run", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
             ChildProcessService.this.mDelegate.initCommandLine(ChildProcessService.this.mCommandLineParams);
           }
           synchronized (ChildProcessService.this.mLibraryInitializedLock)
@@ -540,10 +548,10 @@ public abstract class ChildProcessService
         {
           localFileDescriptorInfo = ChildProcessService.this.mFdInfos[i];
           if (localSparseArray == null) {
-            break label712;
+            break label786;
           }
           ??? = (String)localSparseArray.get(localFileDescriptorInfo.id);
-          break label700;
+          break label774;
           if (localFileDescriptorInfo.fd != null) {
             arrayOfInt2[i] = localFileDescriptorInfo.fd.detachFd();
           }
@@ -551,9 +559,9 @@ public abstract class ChildProcessService
           arrayOfLong2[i] = localFileDescriptorInfo.size;
           i += 1;
         }
-        label700:
-        label712:
-        label715:
+        label774:
+        label786:
+        label789:
         for (;;)
         {
           arrayOfInt1[i] = localFileDescriptorInfo.id;
@@ -576,7 +584,7 @@ public abstract class ChildProcessService
           for (;;)
           {
             if (??? == null) {
-              break label715;
+              break label789;
             }
             arrayOfString[i] = ???;
             break;
@@ -595,7 +603,11 @@ public abstract class ChildProcessService
     Log.i("ChildProcessService", "Destroying ChildProcessService pid=%d", new Object[] { Integer.valueOf(Process.myPid()) });
     if (this.mActivitySemaphore.tryAcquire())
     {
-      System.exit(0);
+      ??? = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
+      Object localObject2 = new Object();
+      com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)???).ahp(), "com/tencent/smtt/sandbox/ChildProcessService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+      System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).mq(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/smtt/sandbox/ChildProcessService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
       return;
     }
     synchronized (this.mLibraryInitializedLock)
@@ -605,7 +617,7 @@ public abstract class ChildProcessService
         while (!this.mLibraryInitialized) {
           this.mLibraryInitializedLock.wait();
         }
-        localObject2 = finally;
+        localObject3 = finally;
       }
       catch (InterruptedException localInterruptedException)
       {

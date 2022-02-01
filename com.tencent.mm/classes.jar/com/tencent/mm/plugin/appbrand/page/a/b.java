@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.appbrand.page.a;
 public abstract interface b
   extends c, d
 {
-  public static final b lGt = new b()
+  public static final b mfW = new b()
   {
-    public final c.a brA()
+    public final c.a bvC()
     {
-      return c.lGu;
+      return c.mfX;
     }
     
     public final void destroy() {}
@@ -23,7 +23,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.a.b
  * JD-Core Version:    0.7.0.1
  */

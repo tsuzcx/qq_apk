@@ -6,60 +6,54 @@ import com.tencent.mm.plugin.report.a;
 public final class br
   extends a
 {
-  public long dHY;
-  private String dNh = "";
-  public long dNi = 0L;
-  public long dNj = 0L;
+  private long dPl;
+  private long dYD;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(184627);
+    AppMethodBeat.i(209229);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dNh);
+    ((StringBuffer)localObject).append(this.dYD);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHY);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNi);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNj);
+    ((StringBuffer)localObject).append(this.dPl);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(184627);
+    awz((String)localObject);
+    AppMethodBeat.o(209229);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(184628);
+    AppMethodBeat.i(209230);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Roomid:").append(this.dNh);
+    ((StringBuffer)localObject).append("Type:").append(this.dYD);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.dHY);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Result:").append(this.dNi);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ErrCode:").append(this.dNj);
+    ((StringBuffer)localObject).append("Action:").append(this.dPl);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(184628);
+    AppMethodBeat.o(209230);
     return localObject;
   }
   
   public final int getId()
   {
-    return 19353;
+    return 19952;
   }
   
-  public final br jN(String paramString)
+  public final br gx(long paramLong)
   {
-    AppMethodBeat.i(184626);
-    this.dNh = t("Roomid", paramString, true);
-    AppMethodBeat.o(184626);
+    this.dYD = paramLong;
+    return this;
+  }
+  
+  public final br gy(long paramLong)
+  {
+    this.dPl = paramLong;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.br
  * JD-Core Version:    0.7.0.1
  */

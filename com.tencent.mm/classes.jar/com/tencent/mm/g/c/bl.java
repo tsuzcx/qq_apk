@@ -8,13 +8,13 @@ public abstract class bl
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eCo = "designerIDAndType".hashCode();
-  private static final int eng = "content".hashCode();
+  private static final int eTG = "desc".hashCode();
+  private static final int eTK = "groupID".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eCn = true;
-  private boolean emI = true;
-  public byte[] field_content;
-  public String field_designerIDAndType;
+  private boolean eTC = true;
+  private boolean eTJ = true;
+  public String field_desc;
+  public String field_groupID;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,20 +29,19 @@ public abstract class bl
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eCo != k) {
-        break label65;
+      if (eTK != k) {
+        break label60;
       }
-      this.field_designerIDAndType = paramCursor.getString(i);
-      this.eCn = true;
+      this.field_groupID = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eng == k) {
-        this.field_content = paramCursor.getBlob(i);
+      label60:
+      if (eTG == k) {
+        this.field_desc = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +51,11 @@ public abstract class bl
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eCn) {
-      localContentValues.put("designerIDAndType", this.field_designerIDAndType);
+    if (this.eTJ) {
+      localContentValues.put("groupID", this.field_groupID);
     }
-    if (this.emI) {
-      localContentValues.put("content", this.field_content);
+    if (this.eTC) {
+      localContentValues.put("desc", this.field_desc);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

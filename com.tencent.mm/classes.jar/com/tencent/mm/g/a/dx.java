@@ -1,13 +1,15 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import org.json.JSONArray;
 
 public final class dx
   extends b
 {
-  public a ddF;
-  public b ddG;
+  public a doQ;
+  public b doR;
   
   public dx()
   {
@@ -16,26 +18,24 @@ public final class dx
   
   private dx(byte paramByte)
   {
-    AppMethodBeat.i(115988);
-    this.ddF = new a();
-    this.ddG = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(115985);
+    this.doQ = new a();
+    this.doR = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(115988);
+    AppMethodBeat.o(115985);
   }
   
   public static final class a
   {
-    public String cIZ;
-    public String ddH;
-    public String ddh;
-    public int type;
+    public Context context;
+    public String doD;
   }
   
   public static final class b
   {
-    public boolean ddI;
-    public String ddJ;
+    public boolean doF;
+    public JSONArray doS;
   }
 }
 

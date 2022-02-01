@@ -1,68 +1,66 @@
 package com.tencent.mm.modelstat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.bi;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.bj;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
-import com.tencent.mm.modelsns.f;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
 
 public final class a
 {
-  public static void a(bo parambo, a parama)
+  public static void a(bu parambu, a parama)
   {
     AppMethodBeat.i(20656);
-    if (bs.isNullOrNil(parambo.eSk))
+    if (bt.isNullOrNil(parambu.fkz))
     {
       AppMethodBeat.o(20656);
       return;
     }
-    f localf = new f();
-    localf.n("20ExpIdStr", parambo.eSk + ",");
-    localf.n("21OpType", parama.value + ",");
-    localf.n("22msgId", parambo.field_msgSvrId + ",");
-    localf.n("23MessageType", parambo.getType() + ",");
+    com.tencent.mm.modelsns.g localg = new com.tencent.mm.modelsns.g();
+    localg.m("20ExpIdStr", parambu.fkz + ",");
+    localg.m("21OpType", parama.value + ",");
+    localg.m("22msgId", parambu.field_msgSvrId + ",");
+    localg.m("23MessageType", parambu.getType() + ",");
     int i;
-    if (parambo.cKN())
+    if (parambu.cTc())
     {
-      parama = k.b.az(parambo.field_content, parambo.field_reserved);
+      parama = k.b.aA(parambu.field_content, parambu.field_reserved);
       if (parama == null) {
         i = 0;
       }
     }
     for (;;)
     {
-      parama = parambo.field_talker;
-      localf.n("24AppMsgInnerType", i + ",");
-      localf.n("25curUsername", parama + ",");
+      parama = parambu.field_talker;
+      localg.m("24AppMsgInnerType", i + ",");
+      localg.m("25curUsername", parama + ",");
       String str = "";
-      if (parambo.field_isSend == 1) {
-        parama = u.axw();
+      if (parambu.field_isSend == 1) {
+        parama = u.aAm();
       }
       for (;;)
       {
-        localf.n("26msgPostUserName", parama + ",");
-        localf.n("27MediaState", parambo.eSl + ",");
-        ac.v("MicroMsg.ChattingExpUtil", "report logbuffer(13564): [chatting_exp]" + localf.PS());
-        h.wUl.f(13564, new Object[] { localf });
+        localg.m("26msgPostUserName", parama + ",");
+        localg.m("27MediaState", parambu.fkA + ",");
+        ad.v("MicroMsg.ChattingExpUtil", "report logbuffer(13564): [chatting_exp]" + localg.RE());
+        com.tencent.mm.plugin.report.service.g.yhR.f(13564, new Object[] { localg });
         AppMethodBeat.o(20656);
         return;
         i = parama.type;
         break;
-        if ((parama != null) && (w.sQ(parama)))
+        if ((parama != null) && (w.vF(parama)))
         {
           parama = str;
-          if (parambo.field_content != null)
+          if (parambu.field_content != null)
           {
-            i = bi.yi(parambo.field_content);
+            i = bj.Bh(parambu.field_content);
             parama = str;
             if (i != -1) {
-              parama = parambo.field_content.substring(0, i).trim();
+              parama = parambu.field_content.substring(0, i).trim();
             }
           }
         }
@@ -78,9 +76,9 @@ public final class a
     static
     {
       AppMethodBeat.i(20655);
-      hUA = new a("Expose", 0, 1);
-      hUB = new a("Click", 1, 2);
-      hUC = new a[] { hUA, hUB };
+      inV = new a("Expose", 0, 1);
+      inW = new a("Click", 1, 2);
+      inX = new a[] { inV, inW };
       AppMethodBeat.o(20655);
     }
     
@@ -92,7 +90,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelstat.a
  * JD-Core Version:    0.7.0.1
  */

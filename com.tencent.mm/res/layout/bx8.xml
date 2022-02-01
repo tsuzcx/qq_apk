@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:id="@id/i5u" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView android:id="@id/i5v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="4.0dip" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" />
+    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/i5w" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="12.0dip" />
+    <ImageView android:id="@id/i5y" android:layout_width="fill_parent" android:layout_height="0.0dip" android:scaleType="centerCrop" app:layout_constraintBottom_toTopOf="@id/i5w" app:layout_constraintHeight_default="frt" app:layout_constraintTop_toTopOf="ea8" />
+    <ImageView android:id="@id/i5x" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/shortvideo_play_btn" app:layout_constraintBottom_toBottomOf="@id/i5y" app:layout_constraintEnd_toEndOf="@id/i5y" app:layout_constraintStart_toStartOf="@id/i5y" app:layout_constraintTop_toTopOf="@id/i5y" />
+</android.support.constraint.ConstraintLayout>

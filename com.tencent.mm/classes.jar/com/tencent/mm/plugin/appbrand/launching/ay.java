@@ -1,58 +1,39 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.vg;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.g.c.dx;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class ay
-  extends j<ax>
+  extends dx
 {
-  public static final String[] hlS;
+  public static final c.a jGU;
   
   static
   {
-    AppMethodBeat.i(186841);
-    hlS = new String[] { j.getCreateSQLs(ax.jmW, "WxaJsApiPluginInfo") };
-    AppMethodBeat.o(186841);
+    AppMethodBeat.i(146070);
+    c.a locala = new c.a();
+    locala.IhA = new Field[2];
+    locala.columns = new String[3];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "appId";
+    locala.IhC.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "launchPB";
+    locala.IhC.put("launchPB", "BLOB");
+    localStringBuilder.append(" launchPB BLOB");
+    locala.columns[2] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    jGU = locala;
+    AppMethodBeat.o(146070);
   }
   
-  public ay(e parame)
+  public final c.a getDBInfo()
   {
-    super(parame, ax.jmW, "WxaJsApiPluginInfo", ax.INDEX_CREATE);
-  }
-  
-  public final vg Ou(String paramString)
-  {
-    AppMethodBeat.i(186840);
-    try
-    {
-      ax localax = new ax();
-      localax.field_appId = paramString;
-      if (get(localax, new String[0]))
-      {
-        ac.i("MicroMsg.LaunchWxaJsApiPluginInfoStorage", "found info with appId(%s)", new Object[] { paramString });
-        vg localvg = new vg();
-        localvg.parseFrom(localax.field_permissionProtoBlob);
-        int i = localvg.Epw.xy.length;
-        if (i > 0)
-        {
-          AppMethodBeat.o(186840);
-          return localvg;
-        }
-        ac.i("MicroMsg.LaunchWxaJsApiPluginInfoStorage", "found info with appId(%s) but jsapi_control_bytes invalid", new Object[] { paramString });
-      }
-      AppMethodBeat.o(186840);
-      return null;
-    }
-    catch (Exception localException)
-    {
-      ac.printErrStackTrace("MicroMsg.LaunchWxaJsApiPluginInfoStorage", localException, "get with appId(%s)", new Object[] { paramString });
-      AppMethodBeat.o(186840);
-    }
-    return null;
+    return jGU;
   }
 }
 

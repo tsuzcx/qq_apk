@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.appcamera;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/appcamera/AppRecordViewImpl$Companion;", "", "()V", "DOUBLE_CLICK_TIME_LIMIT", "", "TAG", "", "getTAG", "()Ljava/lang/String;", "ZOOM_DISTANCE_THREASHOLD", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/appcamera/AppRecordViewImpl$Companion;", "", "()V", "DOUBLE_CLICK_TIME_LIMIT", "", "TAG", "", "getTAG", "()Ljava/lang/String;", "ZOOM_DISTANCE_THREASHOLD", "plugin-recordvideo_release"})
 public final class d$a {}
 
 

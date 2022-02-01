@@ -8,7 +8,9 @@ public abstract interface e
   
   public abstract int generateId();
   
-  public abstract ByteBuffer getBuffer(int paramInt);
+  public abstract ByteBuffer getBuffer(int paramInt, boolean paramBoolean);
+  
+  public abstract void releaseDirectByteBuffer(ByteBuffer paramByteBuffer);
   
   public abstract void setBuffer(int paramInt, ByteBuffer paramByteBuffer);
   
@@ -16,7 +18,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.e
  * JD-Core Version:    0.7.0.1
  */

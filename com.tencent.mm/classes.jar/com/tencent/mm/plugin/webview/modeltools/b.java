@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bk;
+import com.tencent.mm.g.a.bn;
 import com.tencent.mm.sdk.b.c;
 
 public final class b {}

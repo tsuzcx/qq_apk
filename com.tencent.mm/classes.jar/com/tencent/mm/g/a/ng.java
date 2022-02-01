@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ng
   extends b
 {
+  public a dBh;
+  
   public ng()
   {
     this((byte)0);
@@ -12,8 +16,17 @@ public final class ng
   
   private ng(byte paramByte)
   {
-    this.Gqe = false;
+    AppMethodBeat.i(77797);
+    this.dBh = new a();
+    this.IbR = false;
     this.callback = null;
+    AppMethodBeat.o(77797);
+  }
+  
+  public static final class a
+  {
+    public String dBi;
+    public Bundle params;
   }
 }
 

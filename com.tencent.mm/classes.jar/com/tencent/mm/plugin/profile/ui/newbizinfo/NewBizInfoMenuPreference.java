@@ -16,22 +16,20 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.plugin.profile.ui.newbizinfo.b.g;
-import com.tencent.mm.plugin.profile.ui.newbizinfo.c.b;
 import com.tencent.mm.plugin.profile.ui.newbizinfo.c.c;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.nu;
-import com.tencent.mm.protocal.protobuf.nw;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.protocal.protobuf.oz;
+import com.tencent.mm.protocal.protobuf.pb;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.am;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aj;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.tools.o;
 import java.util.Iterator;
@@ -41,26 +39,28 @@ import java.util.List;
 public class NewBizInfoMenuPreference
   extends Preference
 {
-  private ai contact;
-  private MMActivity iMV;
-  private int iMg;
+  private am contact;
+  private long enterTime;
+  private MMActivity fLP;
+  private int jfq;
   private int lineHeight;
-  private boolean pDN;
+  private boolean qhs;
   private int state;
-  private LinearLayout vOA;
-  private List<nw> vOB;
-  private nu vOC;
+  private LinearLayout wVJ;
+  private List<pb> wVK;
+  private oz wVL;
   
   public NewBizInfoMenuPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27526);
     this.state = 0;
-    this.pDN = false;
+    this.qhs = false;
     this.lineHeight = 0;
-    this.iMg = 0;
-    this.iMV = ((MMActivity)paramContext);
-    this.pDN = false;
+    this.jfq = 0;
+    this.enterTime = 0L;
+    this.fLP = ((MMActivity)paramContext);
+    this.qhs = false;
     AppMethodBeat.o(27526);
   }
   
@@ -69,23 +69,24 @@ public class NewBizInfoMenuPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27527);
     this.state = 0;
-    this.pDN = false;
+    this.qhs = false;
     this.lineHeight = 0;
-    this.iMg = 0;
-    this.iMV = ((MMActivity)paramContext);
-    this.pDN = false;
+    this.jfq = 0;
+    this.enterTime = 0L;
+    this.fLP = ((MMActivity)paramContext);
+    this.qhs = false;
     AppMethodBeat.o(27527);
   }
   
-  private View a(nw paramnw)
+  private View a(pb parampb)
   {
     AppMethodBeat.i(27531);
-    View localView = View.inflate(this.iMV, 2131493605, null);
+    View localView = View.inflate(this.fLP, 2131493605, null);
     TextView localTextView = (TextView)localView.findViewById(2131302727);
     ImageView localImageView = (ImageView)localView.findViewById(2131302726);
     this.lineHeight = ((int)localTextView.getTextSize());
-    ak(localImageView, (int)localTextView.getTextSize() * 3 / 4);
-    switch (paramnw.type)
+    al(localImageView, (int)localTextView.getTextSize() * 3 / 4);
+    switch (parampb.type)
     {
     case 1: 
     case 3: 
@@ -95,18 +96,18 @@ public class NewBizInfoMenuPreference
     case 2: 
       for (;;)
       {
-        localTextView.setText(k.c(this.iMV, paramnw.name));
-        o.gD(localView);
+        localTextView.setText(k.c(this.fLP, parampb.name));
+        o.gU(localView);
         AppMethodBeat.o(27531);
         return localView;
         localImageView.setVisibility(0);
-        localImageView.setImageDrawable(am.k(this.iMV, 2131689769, this.iMV.getResources().getColor(2131099735)));
+        localImageView.setImageDrawable(ao.k(this.fLP, 2131689769, this.fLP.getResources().getColor(2131099735)));
         continue;
         localImageView.setVisibility(8);
       }
     }
     localImageView.setVisibility(0);
-    if (aj.DT()) {}
+    if (al.isDarkMode()) {}
     for (int i = 2131231205;; i = 2131231204)
     {
       localImageView.setImageResource(i);
@@ -114,7 +115,7 @@ public class NewBizInfoMenuPreference
     }
   }
   
-  private static void ak(View paramView, int paramInt)
+  private static void al(View paramView, int paramInt)
   {
     AppMethodBeat.i(27532);
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
@@ -124,88 +125,24 @@ public class NewBizInfoMenuPreference
     AppMethodBeat.o(27532);
   }
   
-  private void cYk()
-  {
-    AppMethodBeat.i(27530);
-    this.vOA.removeAllViews();
-    int i = 0;
-    while (i < this.vOB.size())
-    {
-      Object localObject2 = (nw)this.vOB.get(i);
-      Object localObject1 = a((nw)localObject2);
-      ((View)localObject1).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(27523);
-          if (this.vOD == null)
-          {
-            ac.w("MicroMsg.NewBizInfoServicePreference", "onClick serviceInfo is null, err");
-            AppMethodBeat.o(27523);
-            return;
-          }
-          c.K(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, 1100, NewBizInfoMenuPreference.b(NewBizInfoMenuPreference.this));
-          ac.i("MicroMsg.NewBizInfoServicePreference", "onClick serviceInfo.type:%d", new Object[] { Integer.valueOf(this.vOD.type) });
-          switch (this.vOD.type)
-          {
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(27523);
-            return;
-            NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this, this.vOD);
-            AppMethodBeat.o(27523);
-            return;
-            g.a(this.vOD, NewBizInfoMenuPreference.c(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username);
-            b.b(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, String.valueOf(this.vOD.id), this.vOD.key, b.vQJ, this.vOD.name, b.gL(NewBizInfoMenuPreference.d(NewBizInfoMenuPreference.this).indexOf(this.vOD), -1), this.vOD.Bvz);
-            AppMethodBeat.o(27523);
-            return;
-            g.b(this.vOD, NewBizInfoMenuPreference.c(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username);
-            b.b(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, String.valueOf(this.vOD.id), this.vOD.key, b.vQJ, this.vOD.name, b.gL(NewBizInfoMenuPreference.d(NewBizInfoMenuPreference.this).indexOf(this.vOD), -1), this.vOD.value);
-          }
-        }
-      });
-      this.vOA.addView((View)localObject1);
-      localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject2).height = -2;
-      ((LinearLayout.LayoutParams)localObject2).width = -1;
-      ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-      ((LinearLayout.LayoutParams)localObject2).gravity = 16;
-      ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      if (i != this.vOB.size() - 1)
-      {
-        localObject1 = new ImageView(this.iMV);
-        ((ImageView)localObject1).setBackgroundColor(ao.aJ(this.iMV, 2130968587));
-        this.vOA.addView((View)localObject1);
-        localObject2 = (LinearLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
-        ((LinearLayout.LayoutParams)localObject2).height = this.lineHeight;
-        ((LinearLayout.LayoutParams)localObject2).width = Math.round(this.iMV.getResources().getDisplayMetrics().density * 0.5F);
-        ((LinearLayout.LayoutParams)localObject2).gravity = 16;
-        ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(27530);
-  }
-  
-  private void dqE()
+  private void dBh()
   {
     AppMethodBeat.i(27534);
-    if ((this.vOC != null) && (this.vOC.DZs != null))
+    if ((this.wVL != null) && (this.wVL.FEO != null))
     {
       this.state = 4;
       AppMethodBeat.o(27534);
       return;
     }
-    if (this.vOC != null)
+    if (this.wVL != null)
     {
-      if ((this.vOC != null) && (this.vOB != null) && (this.vOB.size() <= 0))
+      if ((this.wVL != null) && (this.wVK != null) && (this.wVK.size() <= 0))
       {
         this.state = 2;
         AppMethodBeat.o(27534);
         return;
       }
-      if ((this.vOC != null) && (this.vOB != null) && (this.vOB.size() > 0))
+      if ((this.wVL != null) && (this.wVK != null) && (this.wVK.size() > 0))
       {
         this.state = 3;
         AppMethodBeat.o(27534);
@@ -218,48 +155,116 @@ public class NewBizInfoMenuPreference
     AppMethodBeat.o(27534);
   }
   
+  private void dhw()
+  {
+    AppMethodBeat.i(27530);
+    this.wVJ.removeAllViews();
+    int i = 0;
+    while (i < this.wVK.size())
+    {
+      Object localObject2 = (pb)this.wVK.get(i);
+      Object localObject1 = a((pb)localObject2);
+      ((View)localObject1).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(27523);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMenuPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          if (this.wVM == null)
+          {
+            ad.w("MicroMsg.NewBizInfoServicePreference", "onClick serviceInfo is null, err");
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMenuPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(27523);
+            return;
+          }
+          c.b(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, 1100, NewBizInfoMenuPreference.b(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.c(NewBizInfoMenuPreference.this));
+          ad.i("MicroMsg.NewBizInfoServicePreference", "onClick serviceInfo.type:%d", new Object[] { Integer.valueOf(this.wVM.type) });
+          switch (this.wVM.type)
+          {
+          }
+          for (;;)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMenuPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(27523);
+            return;
+            NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this, this.wVM);
+            continue;
+            g.a(this.wVM, NewBizInfoMenuPreference.d(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username);
+            com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.b(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, String.valueOf(this.wVM.id), this.wVM.key, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.wXT, this.wVM.name, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.hd(NewBizInfoMenuPreference.e(NewBizInfoMenuPreference.this).indexOf(this.wVM), -1), this.wVM.CVO);
+            continue;
+            g.b(this.wVM, NewBizInfoMenuPreference.d(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username);
+            com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.b(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, String.valueOf(this.wVM.id), this.wVM.key, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.wXT, this.wVM.name, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.hd(NewBizInfoMenuPreference.e(NewBizInfoMenuPreference.this).indexOf(this.wVM), -1), this.wVM.value);
+          }
+        }
+      });
+      this.wVJ.addView((View)localObject1);
+      localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
+      ((LinearLayout.LayoutParams)localObject2).height = -2;
+      ((LinearLayout.LayoutParams)localObject2).width = -1;
+      ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
+      ((LinearLayout.LayoutParams)localObject2).gravity = 16;
+      ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      if (i != this.wVK.size() - 1)
+      {
+        localObject1 = new ImageView(this.fLP);
+        ((ImageView)localObject1).setBackgroundColor(this.fLP.getResources().getColor(2131099736));
+        this.wVJ.addView((View)localObject1);
+        localObject2 = (LinearLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
+        ((LinearLayout.LayoutParams)localObject2).height = this.lineHeight;
+        ((LinearLayout.LayoutParams)localObject2).width = Math.round(this.fLP.getResources().getDisplayMetrics().density * 0.5F);
+        ((LinearLayout.LayoutParams)localObject2).gravity = 16;
+        ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(27530);
+  }
+  
   private void initView()
   {
     AppMethodBeat.i(27529);
-    if ((!this.pDN) || (this.vOA == null))
+    if ((!this.qhs) || (this.wVJ == null))
     {
       AppMethodBeat.o(27529);
       return;
     }
     if ((this.state != 1) && (this.state != 2) && (this.state == 3))
     {
-      this.vOA.setVisibility(0);
-      cYk();
+      this.wVJ.setVisibility(0);
+      dhw();
       AppMethodBeat.o(27529);
       return;
     }
-    this.vOA.setVisibility(8);
+    this.wVJ.setVisibility(8);
     AppMethodBeat.o(27529);
   }
   
-  public final void a(nu paramnu, ai paramai, int paramInt)
+  public final void a(oz paramoz, am paramam, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(27533);
-    if ((paramnu == null) || (paramnu.EdL == null))
+    AppMethodBeat.i(193318);
+    if ((paramoz == null) || (paramoz.FKk == null))
     {
-      AppMethodBeat.o(27533);
+      AppMethodBeat.o(193318);
       return;
     }
-    this.contact = paramai;
-    this.vOC = paramnu;
-    this.vOB = a.a(paramnu.EdL);
-    this.iMg = paramInt;
-    dqE();
+    this.contact = paramam;
+    this.wVL = paramoz;
+    this.wVK = a.a(paramoz.FKk);
+    this.jfq = paramInt;
+    this.enterTime = paramLong;
+    dBh();
     initView();
-    AppMethodBeat.o(27533);
+    AppMethodBeat.o(193318);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27528);
     super.onBindView(paramView);
-    this.vOA = ((LinearLayout)paramView.findViewById(2131298599));
-    this.pDN = true;
+    this.wVJ = ((LinearLayout)paramView.findViewById(2131298599));
+    this.qhs = true;
     initView();
     AppMethodBeat.o(27528);
   }

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.fav.ui;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class n
 {
@@ -38,15 +38,15 @@ public final class n
     return paramContext;
   }
   
-  public static boolean acX(String paramString)
+  public static boolean agM(String paramString)
   {
     AppMethodBeat.i(106958);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(106958);
       return false;
     }
-    if (!paramString.equals(ai.getContext().getResources().getString(2131760739)))
+    if (!paramString.equals(aj.getContext().getResources().getString(2131760739)))
     {
       AppMethodBeat.o(106958);
       return true;

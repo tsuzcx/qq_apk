@@ -12,17 +12,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class l
   extends RecyclerView.w
 {
-  public TextView iBM;
-  public LinearLayout opd;
-  public ProgressBar ope;
+  public TextView iUW;
+  public LinearLayout oSy;
+  public ProgressBar oSz;
   
   private l(View paramView)
   {
     super(paramView);
     AppMethodBeat.i(123297);
-    this.opd = ((LinearLayout)paramView.findViewById(2131298738));
-    this.iBM = ((TextView)paramView.findViewById(2131298933));
-    this.ope = ((ProgressBar)paramView.findViewById(2131303528));
+    this.oSy = ((LinearLayout)paramView.findViewById(2131298738));
+    this.iUW = ((TextView)paramView.findViewById(2131298933));
+    this.oSz = ((ProgressBar)paramView.findViewById(2131303528));
     AppMethodBeat.o(123297);
   }
   
@@ -36,7 +36,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.l
  * JD-Core Version:    0.7.0.1
  */

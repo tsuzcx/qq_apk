@@ -11,21 +11,21 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.freewifi.g;
 import com.tencent.mm.plugin.freewifi.model.FreeWifiNetworkReceiver;
 import com.tencent.mm.plugin.freewifi.model.FreeWifiNetworkReceiver.a;
 import com.tencent.mm.plugin.freewifi.model.FreeWifiNetworkReceiver.b;
 import com.tencent.mm.plugin.freewifi.model.j;
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 
 @Deprecated
@@ -33,34 +33,34 @@ public abstract class FreeWifiActivateStateUI
   extends MMActivity
   implements FreeWifiNetworkReceiver.a, FreeWifiNetworkReceiver.b
 {
-  protected int cGY;
-  protected int dbL;
-  private int dea = 1;
-  protected String nJQ;
+  protected int cSc;
+  protected int dnh;
+  private int dpw = 1;
+  protected String omw;
   protected String ssid;
-  private FreeWifiStateView sso;
-  private TextView ssp;
-  private TextView ssq;
-  private Button ssr;
-  protected Button sss;
-  protected String sst;
-  protected FreeWifiNetworkReceiver ssu;
-  protected boolean ssv = false;
-  private boolean ssw = false;
-  private au ssx = new au(new au.a()
+  private FreeWifiStateView toQ;
+  private TextView toR;
+  private TextView toS;
+  private Button toT;
+  protected Button toU;
+  protected String toV;
+  protected FreeWifiNetworkReceiver toW;
+  protected boolean toX = false;
+  private boolean toY = false;
+  private av toZ = new av(new av.a()
   {
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(24969);
-      if (!bs.isNullOrNil(FreeWifiActivateStateUI.this.ssid))
+      if (!bt.isNullOrNil(FreeWifiActivateStateUI.this.ssid))
       {
-        FreeWifiActivateStateUI.a(FreeWifiActivateStateUI.this, FreeWifiActivateStateUI.this.cJM());
-        ac.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now auth time out, ssid is %s, the connect state is %d", new Object[] { FreeWifiActivateStateUI.this.ssid, Integer.valueOf(FreeWifiActivateStateUI.a(FreeWifiActivateStateUI.this)) });
+        FreeWifiActivateStateUI.a(FreeWifiActivateStateUI.this, FreeWifiActivateStateUI.this.cSb());
+        ad.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now auth time out, ssid is %s, the connect state is %d", new Object[] { FreeWifiActivateStateUI.this.ssid, Integer.valueOf(FreeWifiActivateStateUI.a(FreeWifiActivateStateUI.this)) });
         FreeWifiActivateStateUI.b(FreeWifiActivateStateUI.this).stopTimer();
         if (FreeWifiActivateStateUI.a(FreeWifiActivateStateUI.this) != 2)
         {
-          FreeWifiActivateStateUI.this.cJQ();
-          FreeWifiActivateStateUI.this.cJO();
+          FreeWifiActivateStateUI.this.cSf();
+          FreeWifiActivateStateUI.this.cSd();
           com.tencent.mm.plugin.freewifi.model.d.a(FreeWifiActivateStateUI.this.ssid, 3, FreeWifiActivateStateUI.this.getIntent());
         }
       }
@@ -68,12 +68,12 @@ public abstract class FreeWifiActivateStateUI
       return false;
     }
   }, false);
-  private au ssy = new au(new au.a()
+  private av tpa = new av(new av.a()
   {
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(24970);
-      if (com.tencent.mm.plugin.freewifi.model.d.afs(FreeWifiActivateStateUI.this.ssid))
+      if (com.tencent.mm.plugin.freewifi.model.d.ajQ(FreeWifiActivateStateUI.this.ssid))
       {
         FreeWifiActivateStateUI.this.a(NetworkInfo.State.CONNECTED);
         FreeWifiActivateStateUI.b(FreeWifiActivateStateUI.this).stopTimer();
@@ -84,38 +84,38 @@ public abstract class FreeWifiActivateStateUI
       return true;
     }
   }, true);
-  private k.a ssz = new k.a()
+  private k.a tpb = new k.a()
   {
-    public final void a(String paramAnonymousString, m paramAnonymousm)
+    public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
     {
       AppMethodBeat.i(24971);
-      FreeWifiActivateStateUI.a(FreeWifiActivateStateUI.this, FreeWifiActivateStateUI.this.cJM());
-      FreeWifiActivateStateUI.this.BY(FreeWifiActivateStateUI.a(FreeWifiActivateStateUI.this));
+      FreeWifiActivateStateUI.a(FreeWifiActivateStateUI.this, FreeWifiActivateStateUI.this.cSb());
+      FreeWifiActivateStateUI.this.CH(FreeWifiActivateStateUI.a(FreeWifiActivateStateUI.this));
       AppMethodBeat.o(24971);
     }
   };
   
-  private void cJR()
+  private void cSg()
   {
-    this.ssu = new FreeWifiNetworkReceiver();
+    this.toW = new FreeWifiNetworkReceiver();
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
     localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
-    registerReceiver(this.ssu, localIntentFilter);
+    registerReceiver(this.toW, localIntentFilter);
   }
   
-  private void cJT()
+  private void cSi()
   {
-    ac.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "start auth now, isAuting : %b", new Object[] { Boolean.valueOf(this.ssv) });
-    if (this.ssv)
+    ad.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "start auth now, isAuting : %b", new Object[] { Boolean.valueOf(this.toX) });
+    if (this.toX)
     {
-      ac.d("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now it is authing");
+      ad.d("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now it is authing");
       return;
     }
-    this.ssx.au(60000L, 60000L);
-    this.ssy.au(1000L, 1000L);
-    aQH();
-    this.ssv = true;
+    this.toZ.az(60000L, 60000L);
+    this.tpa.az(1000L, 1000L);
+    aTT();
+    this.toX = true;
   }
   
   private void goBack()
@@ -124,76 +124,76 @@ public abstract class FreeWifiActivateStateUI
     if (getIntent().getBooleanExtra("free_wifi_jump_to_main_ui", false))
     {
       Intent localIntent = new Intent();
-      g.iyx.h(localIntent, this);
+      g.iRG.h(localIntent, this);
     }
   }
   
-  protected final void BY(int paramInt)
+  protected final void CH(int paramInt)
   {
-    this.sso.setOnClickListener(null);
-    ac.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "Current connection state : %d", new Object[] { Integer.valueOf(paramInt) });
+    this.toQ.setOnClickListener(null);
+    ad.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "Current connection state : %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     default: 
-      this.sso.setImageResource(2131232440);
-      this.ssp.setText(2131757569);
-      if (this.dbL == 3) {
-        this.ssq.setText(getString(2131761229, new Object[] { this.ssid }));
+      this.toQ.setImageResource(2131232440);
+      this.toR.setText(2131757569);
+      if (this.dnh == 3) {
+        this.toS.setText(getString(2131761229, new Object[] { this.ssid }));
       }
       break;
     }
     for (;;)
     {
-      this.ssr.setVisibility(8);
+      this.toT.setVisibility(8);
       return;
-      this.sso.setImageResource(2131232440);
-      this.sso.setState(3);
-      this.sso.pGo = 2;
-      this.ssp.setText(2131757573);
-      this.ssr.setVisibility(0);
-      this.ssr.setText(2131759649);
-      this.ssx.stopTimer();
-      this.ssy.stopTimer();
+      this.toQ.setImageResource(2131232440);
+      this.toQ.setState(3);
+      this.toQ.qjT = 2;
+      this.toR.setText(2131757573);
+      this.toT.setVisibility(0);
+      this.toT.setText(2131759649);
+      this.toZ.stopTimer();
+      this.tpa.stopTimer();
       return;
-      this.sso.setImageResource(2131232438);
-      this.sso.setState(2);
-      this.ssp.setText(2131757568);
-      this.ssr.setVisibility(0);
-      this.ssr.setText(2131759607);
-      this.ssx.stopTimer();
-      this.ssy.stopTimer();
-      if ((this.dbL == 1) || (this.dbL == 5) || (this.dbL == 4))
+      this.toQ.setImageResource(2131232438);
+      this.toQ.setState(2);
+      this.toR.setText(2131757568);
+      this.toT.setVisibility(0);
+      this.toT.setText(2131759607);
+      this.toZ.stopTimer();
+      this.tpa.stopTimer();
+      if ((this.dnh == 1) || (this.dnh == 5) || (this.dnh == 4))
       {
-        this.ssr.setVisibility(4);
-        com.tencent.mm.plugin.freewifi.g.c localc = j.cJk().afA(this.ssid);
-        if ((localc != null) && (!bs.isNullOrNil(localc.field_showUrl)) && (!this.ssw))
+        this.toT.setVisibility(4);
+        com.tencent.mm.plugin.freewifi.g.c localc = j.cRz().ajY(this.ssid);
+        if ((localc != null) && (!bt.isNullOrNil(localc.field_showUrl)) && (!this.toY))
         {
-          this.ssw = true;
-          ap.n(new FreeWifiActivateStateUI.9(this, localc), 1000L);
+          this.toY = true;
+          aq.o(new FreeWifiActivateStateUI.9(this, localc), 1000L);
         }
       }
       c.report();
       return;
-      this.sso.setImageResource(2131232440);
-      this.sso.setState(1);
-      this.ssp.setText(2131757569);
+      this.toQ.setImageResource(2131232440);
+      this.toQ.setState(1);
+      this.toR.setText(2131757569);
       continue;
-      this.ssx.stopTimer();
-      this.ssy.stopTimer();
-      this.sso.setImageResource(2131232439);
-      this.sso.setState(3);
-      this.ssp.setText(2131759635);
-      this.ssp.setVisibility(0);
-      this.ssq.setText(2131759636);
-      this.ssq.setVisibility(0);
+      this.toZ.stopTimer();
+      this.tpa.stopTimer();
+      this.toQ.setImageResource(2131232439);
+      this.toQ.setState(3);
+      this.toR.setText(2131759635);
+      this.toR.setVisibility(0);
+      this.toS.setText(2131759636);
+      this.toS.setVisibility(0);
       continue;
-      this.ssq.setText(getString(2131757572, new Object[] { this.ssid }));
+      this.toS.setText(getString(2131757572, new Object[] { this.ssid }));
     }
   }
   
-  public final void Fu(int paramInt)
+  public final void GJ(int paramInt)
   {
-    ac.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now wifi state : %d", new Object[] { Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now wifi state : %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     case 0: 
@@ -202,50 +202,50 @@ public abstract class FreeWifiActivateStateUI
     default: 
       return;
     }
-    cJO();
-    cJS();
+    cSd();
+    cSh();
   }
   
-  protected abstract void aQH();
+  protected abstract void aTT();
   
-  protected abstract void cJL();
+  protected abstract void cSa();
   
-  protected abstract int cJM();
+  protected abstract int cSb();
   
-  protected final void cJO()
+  protected final void cSd()
   {
-    if (this.ssu != null)
+    if (this.toW != null)
     {
-      ac.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now unregister wifi state change receiver");
-      this.ssu.squ = null;
+      ad.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now unregister wifi state change receiver");
+      this.toW.tmW = null;
     }
   }
   
-  protected final void cJP()
+  protected final void cSe()
   {
-    if (this.ssu == null) {
-      cJR();
+    if (this.toW == null) {
+      cSg();
     }
-    this.ssu.sqv = this;
+    this.toW.tmX = this;
   }
   
-  protected final void cJQ()
+  protected final void cSf()
   {
-    if (this.ssu != null)
+    if (this.toW != null)
     {
-      ac.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now unregister network changed receiver");
-      this.ssu.sqv = null;
+      ad.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now unregister network changed receiver");
+      this.toW.tmX = null;
     }
   }
   
-  protected final void cJS()
+  protected final void cSh()
   {
     if (!com.tencent.mm.plugin.freewifi.model.d.isWifiEnabled())
     {
-      this.ssx.au(60000L, 60000L);
-      this.ssy.au(1000L, 1000L);
-      ac.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "wifi is not enable, enable it");
-      j.cJn().cIW().post(new Runnable()
+      this.toZ.az(60000L, 60000L);
+      this.tpa.az(1000L, 1000L);
+      ad.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "wifi is not enable, enable it");
+      j.cRC().cRl().post(new Runnable()
       {
         public final void run()
         {
@@ -256,30 +256,30 @@ public abstract class FreeWifiActivateStateUI
       });
       return;
     }
-    this.dea = cJM();
-    ac.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now before connect, the connect state : %d", new Object[] { Integer.valueOf(this.dea) });
-    if (this.dea != 2)
+    this.dpw = cSb();
+    ad.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now before connect, the connect state : %d", new Object[] { Integer.valueOf(this.dpw) });
+    if (this.dpw != 2)
     {
-      this.ssx.au(60000L, 60000L);
-      this.ssy.au(1000L, 1000L);
-      if (com.tencent.mm.plugin.freewifi.model.d.afs(this.ssid))
+      this.toZ.az(60000L, 60000L);
+      this.tpa.az(1000L, 1000L);
+      if (com.tencent.mm.plugin.freewifi.model.d.ajQ(this.ssid))
       {
-        cJT();
+        cSi();
         return;
       }
-      j.cJn().cIW().post(new Runnable()
+      j.cRC().cRl().post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(24976);
-          ac.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now network ssid is not wechat freewifi :%s", new Object[] { FreeWifiActivateStateUI.this.ssid });
-          FreeWifiActivateStateUI.this.cJL();
+          ad.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now network ssid is not wechat freewifi :%s", new Object[] { FreeWifiActivateStateUI.this.ssid });
+          FreeWifiActivateStateUI.this.cSa();
           AppMethodBeat.o(24976);
         }
       });
       return;
     }
-    BY(this.dea);
+    CH(this.dpw);
   }
   
   public int getForceOrientation()
@@ -295,36 +295,41 @@ public abstract class FreeWifiActivateStateUI
   public void initView()
   {
     setBackBtn(new FreeWifiActivateStateUI.4(this));
-    this.sso = ((FreeWifiStateView)findViewById(2131300248));
-    this.ssp = ((TextView)findViewById(2131300249));
-    this.ssq = ((TextView)findViewById(2131300250));
-    if (this.dbL == 3) {
-      this.ssq.setText(getString(2131761229, new Object[] { this.ssid }));
+    this.toQ = ((FreeWifiStateView)findViewById(2131300248));
+    this.toR = ((TextView)findViewById(2131300249));
+    this.toS = ((TextView)findViewById(2131300250));
+    if (this.dnh == 3) {
+      this.toS.setText(getString(2131761229, new Object[] { this.ssid }));
     }
     for (;;)
     {
-      this.ssr = ((Button)findViewById(2131303749));
-      this.ssr.setOnClickListener(new View.OnClickListener()
+      this.toT = ((Button)findViewById(2131303749));
+      this.toT.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(24973);
-          if (FreeWifiActivateStateUI.this.cJM() == 2)
-          {
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiActivateStateUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          if (FreeWifiActivateStateUI.this.cSb() == 2) {
             FreeWifiActivateStateUI.this.finish();
+          }
+          for (;;)
+          {
+            a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiActivateStateUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(24973);
             return;
+            com.tencent.mm.plugin.freewifi.model.d.a(FreeWifiActivateStateUI.this.ssid, 1, FreeWifiActivateStateUI.this.getIntent());
+            FreeWifiActivateStateUI.this.toX = false;
+            FreeWifiActivateStateUI.this.cSh();
           }
-          com.tencent.mm.plugin.freewifi.model.d.a(FreeWifiActivateStateUI.this.ssid, 1, FreeWifiActivateStateUI.this.getIntent());
-          FreeWifiActivateStateUI.this.ssv = false;
-          FreeWifiActivateStateUI.this.cJS();
-          AppMethodBeat.o(24973);
         }
       });
-      this.sss = ((Button)findViewById(2131300737));
-      this.sss.setOnClickListener(new FreeWifiActivateStateUI.6(this));
+      this.toU = ((Button)findViewById(2131300737));
+      this.toU.setOnClickListener(new FreeWifiActivateStateUI.6(this));
       return;
-      this.ssq.setText(getString(2131757572, new Object[] { this.ssid }));
+      this.toS.setText(getString(2131757572, new Object[] { this.ssid }));
     }
   }
   
@@ -332,15 +337,15 @@ public abstract class FreeWifiActivateStateUI
   {
     super.onCreate(paramBundle);
     this.ssid = getIntent().getStringExtra("free_wifi_ssid");
-    this.sst = getIntent().getStringExtra("free_wifi_mid");
-    this.nJQ = getIntent().getStringExtra("free_wifi_url");
-    this.dbL = getIntent().getIntExtra("free_wifi_source", 1);
-    this.cGY = getIntent().getIntExtra("free_wifi_channel_id", 0);
-    switch (this.dbL)
+    this.toV = getIntent().getStringExtra("free_wifi_mid");
+    this.omw = getIntent().getStringExtra("free_wifi_url");
+    this.dnh = getIntent().getIntExtra("free_wifi_source", 1);
+    this.cSc = getIntent().getIntExtra("free_wifi_channel_id", 0);
+    switch (this.dnh)
     {
     default: 
-      if (bs.isNullOrNil(this.ssid)) {
-        ac.e("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "ssid is null");
+      if (bt.isNullOrNil(this.ssid)) {
+        ad.e("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "ssid is null");
       }
       break;
     case 2: 
@@ -352,30 +357,30 @@ public abstract class FreeWifiActivateStateUI
       {
         label134:
         initView();
-        j.cJk().add(this.ssz);
+        j.cRz().add(this.tpb);
         return;
-        paramBundle = j.cJk().cJK();
+        paramBundle = j.cRz().cRZ();
         if (paramBundle != null)
         {
           this.ssid = paramBundle.field_ssid;
-          this.sst = paramBundle.field_mid;
-          this.nJQ = paramBundle.field_url;
-          ac.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "source from mainui banner, ssid : %s, mid : %s, url : %s", new Object[] { this.ssid, this.sst, this.nJQ });
+          this.toV = paramBundle.field_mid;
+          this.omw = paramBundle.field_url;
+          ad.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "source from mainui banner, ssid : %s, mid : %s, url : %s", new Object[] { this.ssid, this.toV, this.omw });
           break;
         }
-        ac.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "there is no connect sucessfull wifi info");
+        ad.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "there is no connect sucessfull wifi info");
         break;
-        if (!bs.isNullOrNil(this.ssid)) {
+        if (!bt.isNullOrNil(this.ssid)) {
           break label252;
         }
-        ac.e("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "ssid is null");
+        ad.e("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "ssid is null");
       }
       label252:
-      paramBundle = j.cJk().afA(this.ssid);
+      paramBundle = j.cRz().ajY(this.ssid);
       if (paramBundle == null)
       {
         paramBundle = new com.tencent.mm.plugin.freewifi.g.c();
-        paramBundle.field_ssidmd5 = ah.dg(this.ssid);
+        paramBundle.field_ssidmd5 = ai.ee(this.ssid);
         paramBundle.field_ssid = this.ssid;
         paramBundle.field_connectState = 1;
       }
@@ -383,17 +388,17 @@ public abstract class FreeWifiActivateStateUI
     }
     for (int i = 1;; i = 0)
     {
-      paramBundle.field_url = this.nJQ;
-      paramBundle.field_mid = this.sst;
+      paramBundle.field_url = this.omw;
+      paramBundle.field_mid = this.toV;
       paramBundle.field_wifiType = getIntent().getIntExtra("free_wifi_auth_type", 2);
       if (i != 0)
       {
-        j.cJk().insert(paramBundle);
+        j.cRz().insert(paramBundle);
         break;
       }
-      j.cJk().update(paramBundle, new String[0]);
+      j.cRz().update(paramBundle, new String[0]);
       break;
-      ac.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "ssid : %s, mid : %s, source : %d", new Object[] { this.ssid, this.sst, Integer.valueOf(this.dbL) });
+      ad.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "ssid : %s, mid : %s, source : %d", new Object[] { this.ssid, this.toV, Integer.valueOf(this.dnh) });
       break label134;
     }
   }
@@ -401,15 +406,15 @@ public abstract class FreeWifiActivateStateUI
   public void onDestroy()
   {
     super.onDestroy();
-    j.cJk().remove(this.ssz);
-    cJO();
-    cJQ();
-    if (this.ssu != null) {
-      unregisterReceiver(this.ssu);
+    j.cRz().remove(this.tpb);
+    cSd();
+    cSf();
+    if (this.toW != null) {
+      unregisterReceiver(this.toW);
     }
-    this.ssx.stopTimer();
-    this.ssy.stopTimer();
-    j.cJn().release();
+    this.toZ.stopTimer();
+    this.tpa.stopTimer();
+    j.cRC().release();
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -425,8 +430,8 @@ public abstract class FreeWifiActivateStateUI
   public void onResume()
   {
     super.onResume();
-    if (!bs.isNullOrNil(this.ssid)) {
-      cJS();
+    if (!bt.isNullOrNil(this.ssid)) {
+      cSh();
     }
   }
   
@@ -438,7 +443,7 @@ public abstract class FreeWifiActivateStateUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiActivateStateUI
  * JD-Core Version:    0.7.0.1
  */

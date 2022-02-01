@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.protocal.protobuf.bze;
-import com.tencent.mm.protocal.protobuf.bzf;
+import com.tencent.mm.al.a;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.protocal.protobuf.cdv;
+import com.tencent.mm.protocal.protobuf.cdw;
 
 public final class j
-  extends c<bzf>
+  extends a<cdw>
 {
   public j(int paramInt)
   {
     AppMethodBeat.i(68407);
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new bze();
-    ((b.a)localObject).hvu = new bzf();
+    ((b.a)localObject).hNM = new cdv();
+    ((b.a)localObject).hNN = new cdw();
     ((b.a)localObject).funcId = 1830;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/onclickredeem";
-    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).hNO = 0;
     ((b.a)localObject).respCmdId = 0;
-    localObject = ((b.a)localObject).aAz();
-    bze localbze = (bze)((b)localObject).hvr.hvw;
-    localbze.ErG = paramInt;
-    localbze.AYl = ae.eon();
-    this.rr = ((b)localObject);
+    localObject = ((b.a)localObject).aDC();
+    cdv localcdv = (cdv)((b)localObject).hNK.hNQ;
+    localcdv.uxm = paramInt;
+    localcdv.Cyu = ae.eCl();
+    c((b)localObject);
     AppMethodBeat.o(68407);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.j
  * JD-Core Version:    0.7.0.1
  */

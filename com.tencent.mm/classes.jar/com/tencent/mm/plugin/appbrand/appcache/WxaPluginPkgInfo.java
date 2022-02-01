@@ -80,9 +80,9 @@ public class WxaPluginPkgInfo
   public long lastModified()
   {
     AppMethodBeat.i(178562);
-    if (i.eA(this.pkgPath))
+    if (i.fv(this.pkgPath))
     {
-      long l = i.aSq(this.pkgPath);
+      long l = i.aYp(this.pkgPath);
       AppMethodBeat.o(178562);
       return l;
     }

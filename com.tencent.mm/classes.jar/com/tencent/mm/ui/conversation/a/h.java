@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.account.ui.FacebookFriendUI;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
 import java.lang.ref.WeakReference;
 
 public final class h
@@ -24,15 +24,19 @@ public final class h
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38782);
-          az.ayM();
-          c.agA().set(65833, Integer.valueOf(0));
-          paramAnonymousView = (Context)h.this.Dsc.get();
-          Object localObject = new Intent((Context)h.this.Dsc.get(), FacebookFriendUI.class);
-          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/conversation/banner/FackbookTipsBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/FackbookTipsBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          ba.aBQ();
+          c.ajl().set(65833, Integer.valueOf(0));
+          paramAnonymousView = (Context)h.this.EXg.get();
+          localObject = new Intent((Context)h.this.EXg.get(), FacebookFriendUI.class);
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/conversation/banner/FackbookTipsBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/ui/conversation/banner/FackbookTipsBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           h.this.view.setVisibility(8);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/FackbookTipsBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(38782);
         }
       });
@@ -45,7 +49,7 @@ public final class h
   public final int getLayoutId()
   {
     AppMethodBeat.i(38784);
-    com.tencent.mm.aw.b.aGd();
+    com.tencent.mm.ax.b.aJm();
     AppMethodBeat.o(38784);
     return -1;
   }

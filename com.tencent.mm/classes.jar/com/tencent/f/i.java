@@ -6,20 +6,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  private static i Kue;
-  private Context GX;
+  private static i Mkf;
+  private Context IR;
   private boolean mStarted;
   
-  private static i fHz()
+  private static i fYQ()
   {
     AppMethodBeat.i(62809);
-    if (Kue == null) {}
+    if (Mkf == null) {}
     try
     {
-      if (Kue == null) {
-        Kue = new i();
+      if (Mkf == null) {
+        Mkf = new i();
       }
-      i locali = Kue;
+      i locali = Mkf;
       AppMethodBeat.o(62809);
       return locali;
     }
@@ -29,13 +29,13 @@ public final class i
     }
   }
   
-  public static void ld(Context paramContext)
+  public static void lq(Context paramContext)
   {
     AppMethodBeat.i(62810);
-    i locali = fHz();
+    i locali = fYQ();
     if (!locali.mStarted)
     {
-      locali.GX = paramContext;
+      locali.IR = paramContext;
       paramContext = new d("EventCenter", com.tencent.f.a.b.class.getName());
       try
       {
@@ -56,7 +56,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.f.i
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.canvas.action.arg.a.d;
 import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
 import com.tencent.mm.plugin.appbrand.dynamic.d.b.b;
 import com.tencent.mm.sdk.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import org.json.JSONObject;
@@ -14,15 +14,15 @@ import org.json.JSONObject;
 public abstract class a
   implements e<DrawCanvasArg>
 {
-  protected DrawCanvasArg jNb;
-  protected String jNc;
-  protected BlockingQueue<b> jNd = new LinkedBlockingQueue(100);
-  protected BlockingQueue<Runnable> jNe = new LinkedBlockingQueue(100);
-  protected volatile long jNf;
-  protected volatile long jNg;
-  protected int jNh;
-  protected int jNi;
-  protected boolean jNj;
+  protected DrawCanvasArg khm;
+  protected String khn;
+  protected BlockingQueue<b> kho = new LinkedBlockingQueue(100);
+  protected BlockingQueue<Runnable> khp = new LinkedBlockingQueue(100);
+  protected volatile long khq;
+  protected volatile long khr;
+  protected int khs;
+  protected int kht;
+  protected boolean khu;
   protected Thread workerThread = new Thread(new Runnable()
   {
     /* Error */
@@ -32,7 +32,7 @@ public abstract class a
       //   0: ldc 22
       //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   6: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
       //   9: getfield 32	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:workerThread	Ljava/lang/Thread;
       //   12: invokevirtual 38	java/lang/Thread:isInterrupted	()Z
       //   15: ifeq +9 -> 24
@@ -40,56 +40,56 @@ public abstract class a
       //   20: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   23: return
       //   24: aload_0
-      //   25: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-      //   28: getfield 45	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:jNd	Ljava/util/concurrent/BlockingQueue;
+      //   25: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   28: getfield 45	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:kho	Ljava/util/concurrent/BlockingQueue;
       //   31: invokeinterface 51 1 0
       //   36: checkcast 53	com/tencent/mm/plugin/appbrand/dynamic/d/b/b
       //   39: astore_1
       //   40: aload_1
       //   41: astore_2
       //   42: aload_0
-      //   43: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-      //   46: getfield 45	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:jNd	Ljava/util/concurrent/BlockingQueue;
+      //   43: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   46: getfield 45	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:kho	Ljava/util/concurrent/BlockingQueue;
       //   49: invokeinterface 57 1 0
       //   54: iconst_2
       //   55: if_icmplt +82 -> 137
       //   58: aload_1
       //   59: astore_2
       //   60: aload_0
-      //   61: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-      //   64: getfield 61	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:jNf	J
+      //   61: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   64: getfield 61	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:khq	J
       //   67: lconst_0
       //   68: lcmp
       //   69: ifle +68 -> 137
       //   72: aload_1
       //   73: astore_2
       //   74: aload_1
-      //   75: getfield 64	com/tencent/mm/plugin/appbrand/dynamic/d/b/b:jMQ	J
+      //   75: getfield 64	com/tencent/mm/plugin/appbrand/dynamic/d/b/b:khb	J
       //   78: aload_0
-      //   79: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-      //   82: getfield 67	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:jNg	J
+      //   79: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   82: getfield 67	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:khr	J
       //   85: lcmp
       //   86: ifge +51 -> 137
       //   89: aload_0
-      //   90: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   90: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
       //   93: astore_1
       //   94: aload_1
       //   95: aload_1
-      //   96: getfield 71	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:jNh	I
+      //   96: getfield 71	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:khs	I
       //   99: iconst_1
       //   100: iadd
-      //   101: putfield 71	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:jNh	I
+      //   101: putfield 71	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:khs	I
       //   104: aload_0
-      //   105: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-      //   108: getfield 45	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:jNd	Ljava/util/concurrent/BlockingQueue;
+      //   105: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   108: getfield 45	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:kho	Ljava/util/concurrent/BlockingQueue;
       //   111: invokeinterface 74 1 0
       //   116: checkcast 53	com/tencent/mm/plugin/appbrand/dynamic/d/b/b
       //   119: astore_2
       //   120: aload_2
       //   121: astore_1
       //   122: aload_0
-      //   123: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-      //   126: getfield 45	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:jNd	Ljava/util/concurrent/BlockingQueue;
+      //   123: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   126: getfield 45	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:kho	Ljava/util/concurrent/BlockingQueue;
       //   129: invokeinterface 57 1 0
       //   134: ifgt -62 -> 72
       //   137: aload_2
@@ -97,13 +97,13 @@ public abstract class a
       //   141: aload_2
       //   142: invokevirtual 76	com/tencent/mm/plugin/appbrand/dynamic/d/b/b:run	()V
       //   145: aload_0
-      //   146: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   146: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
       //   149: aload_2
-      //   150: getfield 64	com/tencent/mm/plugin/appbrand/dynamic/d/b/b:jMQ	J
-      //   153: putfield 61	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:jNf	J
+      //   150: getfield 64	com/tencent/mm/plugin/appbrand/dynamic/d/b/b:khb	J
+      //   153: putfield 61	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:khq	J
       //   156: aload_0
-      //   157: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-      //   160: getfield 80	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:jNj	Z
+      //   157: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   160: getfield 80	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:khu	Z
       //   163: ifeq +59 -> 222
       //   166: ldc 82
       //   168: ldc 84
@@ -111,8 +111,8 @@ public abstract class a
       //   171: anewarray 4	java/lang/Object
       //   174: invokestatic 89	com/tencent/mm/modelappbrand/u:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   177: aload_0
-      //   178: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-      //   181: getfield 92	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:jNe	Ljava/util/concurrent/BlockingQueue;
+      //   178: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   181: getfield 92	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:khp	Ljava/util/concurrent/BlockingQueue;
       //   184: invokeinterface 51 1 0
       //   189: checkcast 6	java/lang/Runnable
       //   192: astore_1
@@ -121,16 +121,16 @@ public abstract class a
       //   197: aload_1
       //   198: invokeinterface 93 1 0
       //   203: aload_0
-      //   204: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   204: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
       //   207: iconst_0
-      //   208: putfield 80	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:jNj	Z
+      //   208: putfield 80	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:khu	Z
       //   211: ldc 82
       //   213: ldc 95
       //   215: iconst_0
       //   216: anewarray 4	java/lang/Object
       //   219: invokestatic 89	com/tencent/mm/modelappbrand/u:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   222: aload_0
-      //   223: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:jNk	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+      //   223: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:khv	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
       //   226: getfield 32	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:workerThread	Ljava/lang/Thread;
       //   229: invokevirtual 38	java/lang/Thread:isInterrupted	()Z
       //   232: ifne +69 -> 301
@@ -143,7 +143,7 @@ public abstract class a
       //   248: ldc 103
       //   250: iconst_0
       //   251: anewarray 4	java/lang/Object
-      //   254: invokestatic 109	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   254: invokestatic 109	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   257: ldc 22
       //   259: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   262: return
@@ -153,7 +153,7 @@ public abstract class a
       //   267: ldc 103
       //   269: iconst_0
       //   270: anewarray 4	java/lang/Object
-      //   273: invokestatic 109	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   273: invokestatic 109	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   276: ldc 22
       //   278: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   281: return
@@ -163,7 +163,7 @@ public abstract class a
       //   286: ldc 103
       //   288: iconst_0
       //   289: anewarray 4	java/lang/Object
-      //   292: invokestatic 109	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   292: invokestatic 109	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   295: ldc 22
       //   297: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   300: return
@@ -193,25 +193,25 @@ public abstract class a
     this.workerThread.start();
   }
   
-  public final boolean Ln(String paramString)
+  public final boolean OH(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while ((this.jNc != null) && (this.jNc.hashCode() == paramString.hashCode())) {
+    while ((this.khn != null) && (this.khn.hashCode() == paramString.hashCode())) {
       return false;
     }
     return true;
   }
   
-  public final void U(Runnable paramRunnable)
+  public final void T(Runnable paramRunnable)
   {
     try
     {
-      this.jNe.put(paramRunnable);
+      this.khp.put(paramRunnable);
       return;
     }
     catch (InterruptedException paramRunnable)
     {
-      ac.printErrStackTrace("BaseDrawCanvasWithObj", paramRunnable, "", new Object[0]);
+      ad.printErrStackTrace("BaseDrawCanvasWithObj", paramRunnable, "", new Object[0]);
     }
   }
   
@@ -219,60 +219,60 @@ public abstract class a
   {
     try
     {
-      this.jNd.put(paramb);
-      this.jNg = paramb.jMQ;
-      this.jNi += 1;
+      this.kho.put(paramb);
+      this.khr = paramb.khb;
+      this.kht += 1;
       return;
     }
     catch (InterruptedException paramb)
     {
-      ac.printErrStackTrace("BaseDrawCanvasWithObj", paramb, "", new Object[0]);
+      ad.printErrStackTrace("BaseDrawCanvasWithObj", paramb, "", new Object[0]);
     }
   }
   
   public DrawCanvasArg b(JSONObject paramJSONObject, String paramString)
   {
-    DrawCanvasArg localDrawCanvasArg2 = (DrawCanvasArg)d.aZT().jzS.acquire();
+    DrawCanvasArg localDrawCanvasArg2 = (DrawCanvasArg)d.bds().jTN.acquire();
     DrawCanvasArg localDrawCanvasArg1 = localDrawCanvasArg2;
     if (localDrawCanvasArg2 == null) {
       localDrawCanvasArg1 = new DrawCanvasArg();
     }
-    localDrawCanvasArg1.jAn = paramJSONObject.optBoolean("reserve");
-    localDrawCanvasArg1.jAo = paramString;
-    localDrawCanvasArg1.jAp = paramJSONObject.optLong("__invoke_jsapi_timestamp");
+    localDrawCanvasArg1.jUi = paramJSONObject.optBoolean("reserve");
+    localDrawCanvasArg1.jUj = paramString;
+    localDrawCanvasArg1.jUk = paramJSONObject.optLong("__invoke_jsapi_timestamp");
     return localDrawCanvasArg1;
   }
   
-  public final void bcy()
+  public final void bgc()
   {
-    this.jNj = true;
+    this.khu = true;
   }
   
   public final void reset()
   {
-    this.jNc = null;
-    u.i("BaseDrawCanvasWithObj", "drop frame %d times, allFrame %d ", new Object[] { Integer.valueOf(this.jNh), Integer.valueOf(this.jNi) });
-    this.jNi = 0;
-    this.jNh = 0;
-    this.jNf = 0L;
+    this.khn = null;
+    u.i("BaseDrawCanvasWithObj", "drop frame %d times, allFrame %d ", new Object[] { Integer.valueOf(this.khs), Integer.valueOf(this.kht) });
+    this.kht = 0;
+    this.khs = 0;
+    this.khq = 0L;
     this.workerThread.interrupt();
-    for (Runnable localRunnable = (Runnable)this.jNe.poll(); localRunnable != null; localRunnable = (Runnable)this.jNe.poll()) {
+    for (Runnable localRunnable = (Runnable)this.khp.poll(); localRunnable != null; localRunnable = (Runnable)this.khp.poll()) {
       if (localRunnable != null) {
         localRunnable.run();
       }
     }
-    this.jNe.clear();
-    this.jNd.clear();
-    if (this.jNb != null)
+    this.khp.clear();
+    this.kho.clear();
+    if (this.khm != null)
     {
-      this.jNb.reset();
-      this.jNb = null;
+      this.khm.reset();
+      this.khm = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.b.a.a
  * JD-Core Version:    0.7.0.1
  */

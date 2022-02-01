@@ -5,7 +5,7 @@ import java.io.InputStream;
 public abstract interface d
   extends b
 {
-  public abstract InputStream aoS();
+  public abstract InputStream arF();
 }
 
 

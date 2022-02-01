@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class r
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String hiu;
+  public String hAD;
   public String value;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -14,8 +14,8 @@ public final class r
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.hiu != null) {
-        paramVarArgs.d(1, this.hiu);
+      if (this.hAD != null) {
+        paramVarArgs.d(1, this.hAD);
       }
       if (this.value != null) {
         paramVarArgs.d(2, this.value);
@@ -24,12 +24,12 @@ public final class r
       return 0;
     }
     if (paramInt == 1) {
-      if (this.hiu == null) {
+      if (this.hAD == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.hiu) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.hAD) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.value != null) {
@@ -40,9 +40,9 @@ public final class r
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(153079);
@@ -58,11 +58,11 @@ public final class r
           AppMethodBeat.o(153079);
           return -1;
         case 1: 
-          localr.hiu = locala.LVo.readString();
+          localr.hAD = locala.NPN.readString();
           AppMethodBeat.o(153079);
           return 0;
         }
-        localr.value = locala.LVo.readString();
+        localr.value = locala.NPN.readString();
         AppMethodBeat.o(153079);
         return 0;
       }
@@ -73,7 +73,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.c.b.r
  * JD-Core Version:    0.7.0.1
  */

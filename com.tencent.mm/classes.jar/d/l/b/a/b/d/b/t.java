@@ -2,6 +2,7 @@ package d.l.b.a.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
+import d.g.b.p;
 import d.l.b.a.b.a.g;
 import d.l.b.a.b.a.g.a;
 import d.l.b.a.b.b.ai;
@@ -20,8 +21,8 @@ public final class t
   public static final k V(ab paramab)
   {
     AppMethodBeat.i(58246);
-    d.g.b.k.h(paramab, "$this$mapToJvmType");
-    paramab = (k)aa.a(paramab, (l)m.Lse, y.Lsw, (w)x.Lsl);
+    p.h(paramab, "$this$mapToJvmType");
+    paramab = (k)aa.a(paramab, (l)m.Njb, y.Njt, (w)x.Nji);
     AppMethodBeat.o(58246);
     return paramab;
   }
@@ -29,7 +30,7 @@ public final class t
   private static String a(d.l.b.a.b.b.t paramt, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(58241);
-    d.g.b.k.h(paramt, "$this$computeJvmDescriptor");
+    p.h(paramt, "$this$computeJvmDescriptor");
     StringBuilder localStringBuilder = new StringBuilder();
     Object localObject1;
     if (paramBoolean2)
@@ -44,25 +45,25 @@ public final class t
     {
       localStringBuilder.append((String)localObject1);
       localStringBuilder.append("(");
-      localObject1 = paramt.fQU().iterator();
+      localObject1 = paramt.gis().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (av)((Iterator)localObject1).next();
-        d.g.b.k.g(localObject2, "parameter");
-        localObject2 = ((av)localObject2).fRV();
-        d.g.b.k.g(localObject2, "parameter.type");
+        p.g(localObject2, "parameter");
+        localObject2 = ((av)localObject2).gju();
+        p.g(localObject2, "parameter.type");
         a(localStringBuilder, (ab)localObject2);
       }
       label119:
-      localObject1 = paramt.fRf().rf();
-      d.g.b.k.g(localObject1, "name.asString()");
+      localObject1 = paramt.giD().sD();
+      p.g(localObject1, "name.asString()");
     }
     localStringBuilder.append(")");
     int i;
     if (paramBoolean1)
     {
       localObject1 = (d.l.b.a.b.b.a)paramt;
-      d.g.b.k.h(localObject1, "descriptor");
+      p.h(localObject1, "descriptor");
       if (!(localObject1 instanceof d.l.b.a.b.b.k)) {
         break label206;
       }
@@ -75,19 +76,19 @@ public final class t
     for (;;)
     {
       paramt = localStringBuilder.toString();
-      d.g.b.k.g(paramt, "StringBuilder().apply(builderAction).toString()");
+      p.g(paramt, "StringBuilder().apply(builderAction).toString()");
       AppMethodBeat.o(58241);
       return paramt;
       label206:
-      localObject2 = ((d.l.b.a.b.b.a)localObject1).fQS();
+      localObject2 = ((d.l.b.a.b.b.a)localObject1).giq();
       if (localObject2 == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
       if (g.C((ab)localObject2))
       {
-        localObject2 = ((d.l.b.a.b.b.a)localObject1).fQS();
+        localObject2 = ((d.l.b.a.b.b.a)localObject1).giq();
         if (localObject2 == null) {
-          d.g.b.k.fOy();
+          p.gfZ();
         }
         if ((!bc.aF((ab)localObject2)) && (!(localObject1 instanceof ai)))
         {
@@ -98,11 +99,11 @@ public final class t
       i = 0;
       break;
       label274:
-      paramt = paramt.fQS();
+      paramt = paramt.giq();
       if (paramt == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
-      d.g.b.k.g(paramt, "returnType!!");
+      p.g(paramt, "returnType!!");
       a(localStringBuilder, paramt);
     }
   }
@@ -118,25 +119,25 @@ public final class t
   {
     Object localObject2 = null;
     AppMethodBeat.i(58243);
-    d.g.b.k.h(parama, "f");
+    p.h(parama, "f");
     if (!(parama instanceof d.l.b.a.b.b.t))
     {
       AppMethodBeat.o(58243);
       return false;
     }
-    if ((((d.l.b.a.b.b.t)parama).fQU().size() != 1) || (d.l.b.a.b.d.a.t.r((d.l.b.a.b.b.b)parama)) || ((d.g.b.k.g(((d.l.b.a.b.b.t)parama).fRf().rf(), "remove") ^ true)))
+    if ((((d.l.b.a.b.b.t)parama).gis().size() != 1) || (d.l.b.a.b.d.a.t.r((d.l.b.a.b.b.b)parama)) || ((p.i(((d.l.b.a.b.b.t)parama).giD().sD(), "remove") ^ true)))
     {
       AppMethodBeat.o(58243);
       return false;
     }
-    Object localObject1 = ((d.l.b.a.b.b.t)parama).fRq();
-    d.g.b.k.g(localObject1, "f.original");
-    localObject1 = ((d.l.b.a.b.b.t)localObject1).fQU();
-    d.g.b.k.g(localObject1, "f.original.valueParameters");
-    localObject1 = j.iS((List)localObject1);
-    d.g.b.k.g(localObject1, "f.original.valueParameters.single()");
-    localObject1 = ((av)localObject1).fRV();
-    d.g.b.k.g(localObject1, "f.original.valueParameters.single().type");
+    Object localObject1 = ((d.l.b.a.b.b.t)parama).giP();
+    p.g(localObject1, "f.original");
+    localObject1 = ((d.l.b.a.b.b.t)localObject1).gis();
+    p.g(localObject1, "f.original.valueParameters");
+    localObject1 = j.jg((List)localObject1);
+    p.g(localObject1, "f.original.valueParameters.single()");
+    localObject1 = ((av)localObject1).gju();
+    p.g(localObject1, "f.original.valueParameters.single().type");
     Object localObject3 = V((ab)localObject1);
     localObject1 = localObject3;
     if (!(localObject3 instanceof k.c)) {
@@ -145,9 +146,9 @@ public final class t
     localObject3 = (k.c)localObject1;
     localObject1 = localObject2;
     if (localObject3 != null) {
-      localObject1 = ((k.c)localObject3).Lsd;
+      localObject1 = ((k.c)localObject3).Nja;
     }
-    if (localObject1 != d.l.b.a.b.j.e.d.LFZ)
+    if (localObject1 != d.l.b.a.b.j.e.d.NwX)
     {
       AppMethodBeat.o(58243);
       return false;
@@ -158,18 +159,18 @@ public final class t
       AppMethodBeat.o(58243);
       return false;
     }
-    localObject1 = parama.fRq();
-    d.g.b.k.g(localObject1, "overridden.original");
-    localObject1 = ((d.l.b.a.b.b.t)localObject1).fQU();
-    d.g.b.k.g(localObject1, "overridden.original.valueParameters");
-    localObject1 = j.iS((List)localObject1);
-    d.g.b.k.g(localObject1, "overridden.original.valueParameters.single()");
-    localObject1 = ((av)localObject1).fRV();
-    d.g.b.k.g(localObject1, "overridden.original.valueParameters.single().type");
+    localObject1 = parama.giP();
+    p.g(localObject1, "overridden.original");
+    localObject1 = ((d.l.b.a.b.b.t)localObject1).gis();
+    p.g(localObject1, "overridden.original.valueParameters");
+    localObject1 = j.jg((List)localObject1);
+    p.g(localObject1, "overridden.original.valueParameters.single()");
+    localObject1 = ((av)localObject1).gju();
+    p.g(localObject1, "overridden.original.valueParameters.single().type");
     localObject1 = V((ab)localObject1);
-    parama = parama.fPU();
-    d.g.b.k.g(parama, "overridden.containingDeclaration");
-    if ((d.g.b.k.g(d.l.b.a.b.j.d.a.q(parama), g.KZg.Laf.fZG())) && ((localObject1 instanceof k.b)) && (d.g.b.k.g(((k.b)localObject1).Lsc, "java/lang/Object")))
+    parama = parama.ghs();
+    p.g(parama, "overridden.containingDeclaration");
+    if ((p.i(d.l.b.a.b.j.d.a.q(parama), g.MQb.MRa.grf())) && ((localObject1 instanceof k.b)) && (p.i(((k.b)localObject1).NiZ, "java/lang/Object")))
     {
       AppMethodBeat.o(58243);
       return true;
@@ -181,14 +182,14 @@ public final class t
   public static final String c(d.l.b.a.b.b.a parama)
   {
     AppMethodBeat.i(58244);
-    d.g.b.k.h(parama, "$this$computeJvmSignature");
-    Object localObject1 = v.Lsj;
+    p.h(parama, "$this$computeJvmSignature");
+    Object localObject1 = v.Njg;
     if (c.m((d.l.b.a.b.b.l)parama))
     {
       AppMethodBeat.o(58244);
       return null;
     }
-    Object localObject2 = parama.fPU();
+    Object localObject2 = parama.ghs();
     localObject1 = localObject2;
     if (!(localObject2 instanceof e)) {
       localObject1 = null;
@@ -199,14 +200,14 @@ public final class t
       AppMethodBeat.o(58244);
       return null;
     }
-    localObject1 = ((e)localObject2).fRf();
-    d.g.b.k.g(localObject1, "classDescriptor.name");
-    if (((f)localObject1).Lzs)
+    localObject1 = ((e)localObject2).giD();
+    p.g(localObject1, "classDescriptor.name");
+    if (((f)localObject1).Nqp)
     {
       AppMethodBeat.o(58244);
       return null;
     }
-    localObject1 = parama.fQT();
+    localObject1 = parama.gir();
     parama = (d.l.b.a.b.b.a)localObject1;
     if (!(localObject1 instanceof am)) {
       parama = null;
@@ -224,7 +225,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.b.t
  * JD-Core Version:    0.7.0.1
  */

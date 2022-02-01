@@ -5,22 +5,22 @@ import d.a.u;
 import d.l;
 import java.util.Iterator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/sequences/EmptySequence;", "Lkotlin/sequences/Sequence;", "", "Lkotlin/sequences/DropTakeSequence;", "()V", "drop", "n", "", "iterator", "", "take", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/sequences/EmptySequence;", "Lkotlin/sequences/Sequence;", "", "Lkotlin/sequences/DropTakeSequence;", "()V", "drop", "n", "", "iterator", "", "take", "kotlin-stdlib"})
 public final class d
   implements c, h
 {
-  public static final d LPA;
+  public static final d NGv;
   
   static
   {
     AppMethodBeat.i(129495);
-    LPA = new d();
+    NGv = new d();
     AppMethodBeat.o(129495);
   }
   
   public final Iterator iterator()
   {
-    return (Iterator)u.KTE;
+    return (Iterator)u.MKD;
   }
 }
 

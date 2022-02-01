@@ -7,37 +7,35 @@ import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.a;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.config.k;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
+import com.tencent.mm.plugin.appbrand.jsapi.ac;
 import com.tencent.mm.plugin.appbrand.jsapi.auth.entity.MMUserAvatarInfo;
-import com.tencent.mm.plugin.appbrand.o.d;
-import com.tencent.mm.plugin.appbrand.o.e.a;
+import com.tencent.mm.plugin.appbrand.n.e.a;
 import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.r.a.c;
+import com.tencent.mm.plugin.appbrand.permission.a.b.a;
+import com.tencent.mm.plugin.appbrand.permission.f;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.widget.dialog.i;
 import com.tencent.mm.plugin.appbrand.widget.dialog.i.b;
 import com.tencent.mm.plugin.appbrand.widget.dialog.o.a;
 import com.tencent.mm.plugin.appbrand.widget.dialog.o.b;
 import com.tencent.mm.plugin.appbrand.widget.dialog.o.c;
-import com.tencent.mm.protocal.protobuf.bmb;
-import com.tencent.mm.protocal.protobuf.bmx;
-import com.tencent.mm.protocal.protobuf.csf;
-import com.tencent.mm.protocal.protobuf.dn;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.view.TouchableLayout;
-import com.tencent.mm.view.TouchableLayout.a;
-import d.y;
+import com.tencent.mm.protocal.protobuf.bql;
+import com.tencent.mm.protocal.protobuf.brh;
+import com.tencent.mm.protocal.protobuf.cxm;
+import com.tencent.mm.protocal.protobuf.do;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.z;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,16 +45,16 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public final class JsApiOperateWXData
-  extends h
+  extends i
 {
   public static final int CTRL_INDEX = 79;
   public static final String NAME = "operateWXData";
-  private final k keA;
+  private final m kzj;
   
   public JsApiOperateWXData()
   {
     AppMethodBeat.i(174777);
-    this.keA = new k();
+    this.kzj = new m();
     AppMethodBeat.o(174777);
   }
   
@@ -70,8 +68,8 @@ public final class JsApiOperateWXData
     }
     try
     {
-      OperateWXDataTask.bfo();
-      String[] arrayOfString = OperateWXDataTask.aeY().allKeys();
+      OperateWXDataTask.biR();
+      String[] arrayOfString = OperateWXDataTask.ahK().allKeys();
       if (arrayOfString == null)
       {
         AppMethodBeat.o(46104);
@@ -83,7 +81,7 @@ public final class JsApiOperateWXData
       {
         String str = arrayOfString[i];
         if ((!TextUtils.isEmpty(str)) && (str.startsWith(paramString))) {
-          OperateWXDataTask.aeY().remove(str);
+          OperateWXDataTask.ahK().remove(str);
         }
         i += 1;
       }
@@ -92,14 +90,14 @@ public final class JsApiOperateWXData
     }
     catch (Throwable localThrowable)
     {
-      ac.e("MicroMsg.AppBrand.JsApiOperateWXData", "clear(%s) e=%s", new Object[] { paramString, localThrowable });
+      ad.e("MicroMsg.AppBrand.JsApiOperateWXData", "clear(%s) e=%s", new Object[] { paramString, localThrowable });
       AppMethodBeat.o(46104);
     }
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.h paramh, JSONObject paramJSONObject, int paramInt, e parame)
+  public final void a(com.tencent.mm.plugin.appbrand.d paramd, JSONObject paramJSONObject, int paramInt, e parame)
   {
-    AppMethodBeat.i(46103);
+    AppMethodBeat.i(188298);
     for (;;)
     {
       try
@@ -107,42 +105,42 @@ public final class JsApiOperateWXData
         String str = paramJSONObject.getString("data");
         boolean bool = paramJSONObject.optBoolean("isImportant");
         paramJSONObject = new OperateWXDataTask();
-        paramJSONObject.appId = paramh.getAppId();
-        paramJSONObject.kdE = "operateWXData";
-        com.tencent.mm.plugin.appbrand.config.k localk = paramh.getRuntime().DI();
+        paramJSONObject.appId = paramd.getAppId();
+        paramJSONObject.kyl = "operateWXData";
+        k localk = paramd.getRuntime().Fh();
         if (localk != null) {
-          paramJSONObject.hxM = localk.jEg.jpa;
+          paramJSONObject.hQh = localk.jYh.jIU;
         }
-        paramJSONObject.kdA = this;
-        paramJSONObject.kdB = paramh;
-        paramJSONObject.keC = str;
-        paramJSONObject.keL = bool;
-        paramJSONObject.jOT = paramInt;
-        paramJSONObject.kdC = parame;
-        paramJSONObject.keH = new HashMap();
-        parame = a.GW(paramJSONObject.appId);
+        paramJSONObject.kyh = this;
+        paramJSONObject.kyi = paramd;
+        paramJSONObject.kzl = str;
+        paramJSONObject.kzu = bool;
+        paramJSONObject.kje = paramInt;
+        paramJSONObject.kyj = parame;
+        paramJSONObject.kzq = new HashMap();
+        parame = com.tencent.mm.plugin.appbrand.a.Kl(paramJSONObject.appId);
         if (parame != null) {
-          paramJSONObject.jZF = parame.scene;
+          paramJSONObject.kub = parame.scene;
         }
-        if ((paramh instanceof com.tencent.mm.plugin.appbrand.q))
+        if ((paramd instanceof com.tencent.mm.plugin.appbrand.q))
         {
-          paramJSONObject.kdS = 1;
-          paramJSONObject.bej();
+          paramJSONObject.kyA = 1;
+          paramJSONObject.bhN();
           AppBrandMainProcessService.a(paramJSONObject);
-          AppMethodBeat.o(46103);
+          AppMethodBeat.o(188298);
           return;
         }
       }
       catch (Exception paramJSONObject)
       {
-        ac.e("MicroMsg.AppBrand.JsApiOperateWXData", "Exception %s", new Object[] { paramJSONObject.getMessage() });
-        paramh.h(paramInt, e("fail", null));
-        parame.bfe();
-        AppMethodBeat.o(46103);
+        ad.e("MicroMsg.AppBrand.JsApiOperateWXData", "Exception %s", new Object[] { paramJSONObject.getMessage() });
+        paramd.h(paramInt, e("fail", null));
+        parame.biH();
+        AppMethodBeat.o(188298);
         return;
       }
-      if ((paramh instanceof aa)) {
-        paramJSONObject.kdS = 2;
+      if ((paramd instanceof aa)) {
+        paramJSONObject.kyA = 2;
       }
     }
   }
@@ -151,44 +149,45 @@ public final class JsApiOperateWXData
     extends MainProcessTask
   {
     public static final Parcelable.Creator<OperateWXDataTask> CREATOR;
-    private static final aw keB;
+    private static final ax kzk;
     public String appId;
-    public int hxM;
-    public int jOT;
-    int jZF;
-    h kdA;
-    com.tencent.mm.plugin.appbrand.jsapi.h kdB;
-    e kdC;
-    public String kdE;
-    public String kdF;
-    public int kdG;
-    public String kdH;
-    public String kdI;
-    public String kdJ;
-    public String kdK;
-    public boolean kdL;
-    public String kdM;
-    public String kdN;
-    public String kdO;
-    public int kdP;
-    public String kdR;
-    int kdS;
-    public String keC;
-    public String keD;
-    public String keE;
-    public int keF;
-    public String keG;
-    public Map<String, byte[]> keH;
-    public MMUserAvatarInfo keI;
-    int keJ;
-    private boolean keK;
-    boolean keL;
+    public int cgiErrorCode;
+    public int hQh;
+    public int kje;
+    int kub;
+    int kyA;
+    transient i kyh;
+    transient com.tencent.mm.plugin.appbrand.d kyi;
+    transient e kyj;
+    public String kyl;
+    public String kym;
+    public int kyn;
+    public String kyo;
+    public String kyp;
+    public String kyq;
+    public String kyr;
+    public boolean kys;
+    public String kyt;
+    public String kyu;
+    public String kyv;
+    public int kyw;
+    public String kyy;
+    public String kzl;
+    public String kzm;
+    public String kzn;
+    public int kzo;
+    public String kzp;
+    public Map<String, byte[]> kzq;
+    public MMUserAvatarInfo kzr;
+    int kzs;
+    private boolean kzt;
+    boolean kzu;
     public String mAppName;
     
     static
     {
       AppMethodBeat.i(46102);
-      keB = aw.aKT("MicroMsg.AppBrand.JsApiOperateWXData");
+      kzk = ax.aQz("MicroMsg.AppBrand.JsApiOperateWXData");
       CREATOR = new Parcelable.Creator() {};
       AppMethodBeat.o(46102);
     }
@@ -196,16 +195,16 @@ public final class JsApiOperateWXData
     public OperateWXDataTask()
     {
       AppMethodBeat.i(174776);
-      this.kdO = "";
-      this.kdN = "";
+      this.kyv = "";
+      this.kyu = "";
       AppMethodBeat.o(174776);
     }
     
     public OperateWXDataTask(Parcel paramParcel)
     {
       AppMethodBeat.i(46085);
-      this.kdO = "";
-      this.kdN = "";
+      this.kyv = "";
+      this.kyu = "";
       e(paramParcel);
       AppMethodBeat.o(46085);
     }
@@ -214,68 +213,68 @@ public final class JsApiOperateWXData
     {
       AppMethodBeat.i(46092);
       if (!paramBoolean) {
-        ac.d("MicroMsg.AppBrand.JsApiOperateWXData", "scene: OperateWxData");
+        ad.d("MicroMsg.AppBrand.JsApiOperateWXData", "scene: OperateWxData");
       }
-      for (paramString1 = new com.tencent.mm.plugin.appbrand.o.e(paramString1, paramString2, paramString3, paramInt1, paramInt3, paramInt2, this.jZF, new e.a() {});; paramString1 = new d(paramString1, paramString2, paramString3, paramInt1, paramInt3, paramInt2, this.jZF, new e.a() {}))
+      for (paramString1 = new com.tencent.mm.plugin.appbrand.n.e(paramString1, paramString2, paramString3, paramInt1, paramInt3, paramInt2, this.kub, new e.a() {});; paramString1 = new com.tencent.mm.plugin.appbrand.n.d(paramString1, paramString2, paramString3, paramInt1, paramInt3, paramInt2, this.kub, new e.a() {}))
       {
-        paramString1.ua(this.kdS);
-        com.tencent.mm.kernel.g.agi().a(paramString1, 0);
+        paramString1.uE(this.kyA);
+        com.tencent.mm.kernel.g.aiU().a(paramString1, 0);
         AppMethodBeat.o(46092);
         return;
-        ac.d("MicroMsg.AppBrand.JsApiOperateWXData", "scene: OperateImportantWxData");
+        ad.d("MicroMsg.AppBrand.JsApiOperateWXData", "scene: OperateImportantWxData");
       }
     }
     
-    static void bfo() {}
+    static void biR() {}
     
-    final void a(int paramInt1, int paramInt2, String paramString1, com.tencent.mm.plugin.appbrand.o.e parame, String paramString2, a parama)
+    final void a(int paramInt1, int paramInt2, String paramString1, com.tencent.mm.plugin.appbrand.n.e parame, String paramString2, a parama)
     {
       AppMethodBeat.i(46093);
-      ac.d("MicroMsg.AppBrand.JsApiOperateWXData", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1 });
+      ad.d("MicroMsg.AppBrand.JsApiOperateWXData", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1 });
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        parama.bZ(String.format("cgi fail(%d,%d)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+        parama.bC(String.format("cgi fail(%d,%d)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0);
         AppMethodBeat.o(46093);
         return;
       }
       if (parame != null)
       {
-        if (this.kdG == 2)
+        if (this.kyn == 2)
         {
-          ac.d("MicroMsg.AppBrand.JsApiOperateWXData", "press reject button");
+          ad.d("MicroMsg.AppBrand.JsApiOperateWXData", "press reject button");
           AppMethodBeat.o(46093);
           return;
         }
         if (parame.rr == null) {}
-        for (paramString1 = null; paramString1.FbT == null; paramString1 = (bmx)parame.rr.hvs.hvw)
+        for (paramString1 = null; paramString1.GLs == null; paramString1 = (brh)parame.rr.hNL.hNQ)
         {
-          ac.d("MicroMsg.AppBrand.JsApiOperateWXData", "JsApiBaseResponse is null, enterData:".concat(String.valueOf(paramString2)));
-          parama.bZ("cgi fail response null");
+          ad.d("MicroMsg.AppBrand.JsApiOperateWXData", "JsApiBaseResponse is null, enterData:".concat(String.valueOf(paramString2)));
+          parama.bC("cgi fail response null", 0);
           AppMethodBeat.o(46093);
           return;
         }
-        paramInt1 = paramString1.FbT.dfm;
-        parame = paramString1.FbT.dfn;
-        Object localObject = paramString1.Fcf;
+        paramInt1 = paramString1.GLs.dqI;
+        parame = paramString1.GLs.dqJ;
+        Object localObject = paramString1.GLF;
         LinkedList localLinkedList = new LinkedList();
         if (localObject != null) {
           localLinkedList.add(localObject);
         }
-        localObject = paramString1.tkL;
-        String str = paramString1.DOl;
-        ac.d("MicroMsg.AppBrand.JsApiOperateWXData", "stev NetSceneJSOperateWxData jsErrcode %d", new Object[] { Integer.valueOf(paramInt1) });
+        localObject = paramString1.uiR;
+        String str = paramString1.Fts;
+        ad.d("MicroMsg.AppBrand.JsApiOperateWXData", "stev NetSceneJSOperateWxData jsErrcode %d", new Object[] { Integer.valueOf(paramInt1) });
         if (paramInt1 == -12000)
         {
-          this.kdI = paramString1.FbX;
-          this.kdK = paramString1.FbW;
-          this.kdJ = paramString1.FbV;
-          if (paramString1.FbY != null)
+          this.kyp = paramString1.GLx;
+          this.kyr = paramString1.GLw;
+          this.kyq = paramString1.GLv;
+          if (paramString1.GLy != null)
           {
-            this.kdL = paramString1.FbY.DQA;
-            this.kdM = paramString1.FbY.DQB;
+            this.kys = paramString1.GLy.FvP;
+            this.kyt = paramString1.GLy.FvQ;
           }
-          if (paramString1.Fci != null) {
-            this.keI = new MMUserAvatarInfo(paramString1.Fci);
+          if (paramString1.GLI != null) {
+            this.kzr = new MMUserAvatarInfo(paramString1.GLI);
           }
           parama.a(localLinkedList, (String)localObject, str);
           AppMethodBeat.o(46093);
@@ -283,93 +282,93 @@ public final class JsApiOperateWXData
         }
         if (paramInt1 == 0)
         {
-          if (paramString1.ncy == null)
+          if (paramString1.nCV == null)
           {
-            ac.d("MicroMsg.AppBrand.JsApiOperateWXData", "Data is null, enterData:".concat(String.valueOf(paramString2)));
-            parama.bZ("internal error");
+            ad.d("MicroMsg.AppBrand.JsApiOperateWXData", "Data is null, enterData:".concat(String.valueOf(paramString2)));
+            parama.bC("internal error", paramInt1);
             AppMethodBeat.o(46093);
             return;
           }
-          paramString1 = paramString1.ncy.eQU();
-          ac.d("MicroMsg.AppBrand.JsApiOperateWXData", "resp data %s", new Object[] { paramString1 });
+          paramString1 = paramString1.nCV.ffY();
+          ad.d("MicroMsg.AppBrand.JsApiOperateWXData", "resp data %s", new Object[] { paramString1 });
           parama.onSuccess(paramString1);
           AppMethodBeat.o(46093);
           return;
         }
-        ac.e("MicroMsg.AppBrand.JsApiOperateWXData", "onSceneEnd NetSceneJSOperateWxData Failed %s", new Object[] { parame });
-        parama.bZ(parame);
+        ad.e("MicroMsg.AppBrand.JsApiOperateWXData", "onSceneEnd NetSceneJSOperateWxData Failed %s", new Object[] { parame });
+        parama.bC(parame, paramInt1);
       }
       AppMethodBeat.o(46093);
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       AppMethodBeat.i(46086);
       a local1 = new a()
       {
-        public final void a(LinkedList<csf> paramAnonymousLinkedList, String paramAnonymousString1, String paramAnonymousString2)
+        public final void a(LinkedList<cxm> paramAnonymousLinkedList, String paramAnonymousString1, String paramAnonymousString2)
         {
           AppMethodBeat.i(46068);
-          ac.d("MicroMsg.AppBrand.JsApiOperateWXData", "onConfirm !");
-          JsApiOperateWXData.OperateWXDataTask.this.kdP = paramAnonymousLinkedList.size();
+          ad.d("MicroMsg.AppBrand.JsApiOperateWXData", "onConfirm !");
+          JsApiOperateWXData.OperateWXDataTask.this.kyw = paramAnonymousLinkedList.size();
           int i = 0;
-          while (i < JsApiOperateWXData.OperateWXDataTask.this.kdP)
+          while (i < JsApiOperateWXData.OperateWXDataTask.this.kyw)
           {
-            csf localcsf = (csf)paramAnonymousLinkedList.get(i);
+            cxm localcxm = (cxm)paramAnonymousLinkedList.get(i);
             try
             {
-              JsApiOperateWXData.OperateWXDataTask.this.keH.put(String.valueOf(i), localcsf.toByteArray());
+              JsApiOperateWXData.OperateWXDataTask.this.kzq.put(String.valueOf(i), localcxm.toByteArray());
               i += 1;
             }
             catch (IOException paramAnonymousLinkedList)
             {
-              ac.e("MicroMsg.AppBrand.JsApiOperateWXData", "IOException %s", new Object[] { paramAnonymousLinkedList.getMessage() });
-              ac.printErrStackTrace("MicroMsg.AppBrand.JsApiOperateWXData", paramAnonymousLinkedList, "", new Object[0]);
-              JsApiOperateWXData.OperateWXDataTask.this.kdF = "fail";
+              ad.e("MicroMsg.AppBrand.JsApiOperateWXData", "IOException %s", new Object[] { paramAnonymousLinkedList.getMessage() });
+              ad.printErrStackTrace("MicroMsg.AppBrand.JsApiOperateWXData", paramAnonymousLinkedList, "", new Object[0]);
+              JsApiOperateWXData.OperateWXDataTask.this.kym = "fail";
               JsApiOperateWXData.OperateWXDataTask.d(JsApiOperateWXData.OperateWXDataTask.this);
               AppMethodBeat.o(46068);
               return;
             }
           }
           JsApiOperateWXData.OperateWXDataTask.this.mAppName = paramAnonymousString1;
-          JsApiOperateWXData.OperateWXDataTask.this.kdH = paramAnonymousString2;
-          JsApiOperateWXData.OperateWXDataTask.this.kdF = "needConfirm";
+          JsApiOperateWXData.OperateWXDataTask.this.kyo = paramAnonymousString2;
+          JsApiOperateWXData.OperateWXDataTask.this.kym = "needConfirm";
           if (paramAnonymousLinkedList.size() > 0)
           {
-            paramAnonymousString1 = (csf)paramAnonymousLinkedList.get(0);
+            paramAnonymousString1 = (cxm)paramAnonymousLinkedList.get(0);
             paramAnonymousString2 = JsApiOperateWXData.OperateWXDataTask.this;
-            if (paramAnonymousString1.FEH == null)
+            if (paramAnonymousString1.HoW == null)
             {
               paramAnonymousLinkedList = "";
-              paramAnonymousString2.kdR = paramAnonymousLinkedList;
-              if (!"scope.userInfo".equals(paramAnonymousString1.EdG)) {
+              paramAnonymousString2.kyy = paramAnonymousLinkedList;
+              if (!"scope.userInfo".equals(paramAnonymousString1.FKf)) {
                 break label299;
               }
-              JsApiOperateWXData.OperateWXDataTask.this.kdO = u.axy();
+              JsApiOperateWXData.OperateWXDataTask.this.kyv = u.aAo();
               paramAnonymousString1 = new StringBuilder("userNickName=");
-              if (JsApiOperateWXData.OperateWXDataTask.this.kdO != null) {
+              if (JsApiOperateWXData.OperateWXDataTask.this.kyv != null) {
                 break label288;
               }
             }
             label288:
-            for (paramAnonymousLinkedList = "";; paramAnonymousLinkedList = JsApiOperateWXData.OperateWXDataTask.this.kdO)
+            for (paramAnonymousLinkedList = "";; paramAnonymousLinkedList = JsApiOperateWXData.OperateWXDataTask.this.kyv)
             {
-              ac.i("MicroMsg.AppBrand.JsApiOperateWXData", paramAnonymousLinkedList);
-              paramAnonymousLinkedList = u.axw();
-              paramAnonymousString1 = g.kdw;
+              ad.i("MicroMsg.AppBrand.JsApiOperateWXData", paramAnonymousLinkedList);
+              paramAnonymousLinkedList = u.aAm();
+              paramAnonymousString1 = g.kxX;
               g.a.a(paramAnonymousLinkedList, new g.b()
               {
-                public final void HH(String paramAnonymous2String)
+                public final void KZ(String paramAnonymous2String)
                 {
                   AppMethodBeat.i(46065);
-                  JsApiOperateWXData.OperateWXDataTask.this.kdN = paramAnonymous2String;
+                  JsApiOperateWXData.OperateWXDataTask.this.kyu = paramAnonymous2String;
                   JsApiOperateWXData.OperateWXDataTask.e(JsApiOperateWXData.OperateWXDataTask.this);
                   AppMethodBeat.o(46065);
                 }
               });
               AppMethodBeat.o(46068);
               return;
-              paramAnonymousLinkedList = paramAnonymousString1.FEH;
+              paramAnonymousLinkedList = paramAnonymousString1.HoW;
               break;
             }
             label299:
@@ -381,24 +380,25 @@ public final class JsApiOperateWXData
           AppMethodBeat.o(46068);
         }
         
-        public final void bZ(String paramAnonymousString)
+        public final void bC(String paramAnonymousString, int paramAnonymousInt)
         {
-          AppMethodBeat.i(46067);
-          ac.e("MicroMsg.AppBrand.JsApiOperateWXData", "onFailure !");
-          JsApiOperateWXData.OperateWXDataTask.this.kdF = "fail:".concat(String.valueOf(paramAnonymousString));
+          AppMethodBeat.i(188295);
+          ad.e("MicroMsg.AppBrand.JsApiOperateWXData", "onFailure !");
+          JsApiOperateWXData.OperateWXDataTask.this.kym = "fail:".concat(String.valueOf(paramAnonymousString));
+          JsApiOperateWXData.OperateWXDataTask.this.cgiErrorCode = paramAnonymousInt;
           JsApiOperateWXData.OperateWXDataTask.c(JsApiOperateWXData.OperateWXDataTask.this);
-          AppMethodBeat.o(46067);
+          AppMethodBeat.o(188295);
         }
         
         public final void onSuccess(String paramAnonymousString)
         {
           AppMethodBeat.i(46066);
-          ac.d("MicroMsg.AppBrand.JsApiOperateWXData", "onSuccess !");
+          ad.d("MicroMsg.AppBrand.JsApiOperateWXData", "onSuccess !");
           try
           {
-            JsApiOperateWXData.OperateWXDataTask.this.keE = org.apache.commons.b.g.a(new String[] { JsApiOperateWXData.OperateWXDataTask.this.appId, JsApiOperateWXData.OperateWXDataTask.a(JsApiOperateWXData.OperateWXDataTask.this), JsApiOperateWXData.OperateWXDataTask.this.jOT, bs.Gn() }, "$");
-            JsApiOperateWXData.OperateWXDataTask.aeY().putString(JsApiOperateWXData.OperateWXDataTask.this.keE, paramAnonymousString).commit();
-            if (TextUtils.isEmpty(JsApiOperateWXData.OperateWXDataTask.aeY().getString(JsApiOperateWXData.OperateWXDataTask.this.keE, null)))
+            JsApiOperateWXData.OperateWXDataTask.this.kzn = org.apache.commons.b.g.a(new String[] { JsApiOperateWXData.OperateWXDataTask.this.appId, JsApiOperateWXData.OperateWXDataTask.a(JsApiOperateWXData.OperateWXDataTask.this), JsApiOperateWXData.OperateWXDataTask.this.kje, bt.HI() }, "$");
+            JsApiOperateWXData.OperateWXDataTask.ahK().putString(JsApiOperateWXData.OperateWXDataTask.this.kzn, paramAnonymousString).commit();
+            if (TextUtils.isEmpty(JsApiOperateWXData.OperateWXDataTask.ahK().getString(JsApiOperateWXData.OperateWXDataTask.this.kzn, null)))
             {
               IOException localIOException = new IOException("write data failed");
               AppMethodBeat.o(46066);
@@ -407,276 +407,287 @@ public final class JsApiOperateWXData
           }
           catch (Throwable localThrowable)
           {
-            ac.e("MicroMsg.AppBrand.JsApiOperateWXData", "runInMainProcess::onSuccess, write to XProcessStore failed, appId[%s], callbackId[%d] e=%s", new Object[] { JsApiOperateWXData.OperateWXDataTask.this.appId, Integer.valueOf(JsApiOperateWXData.OperateWXDataTask.this.jOT), localThrowable });
-            JsApiOperateWXData.OperateWXDataTask.this.keE = null;
-            JsApiOperateWXData.qP(1L);
-            if (TextUtils.isEmpty(JsApiOperateWXData.OperateWXDataTask.this.keE)) {
-              JsApiOperateWXData.OperateWXDataTask.this.keD = paramAnonymousString;
+            ad.e("MicroMsg.AppBrand.JsApiOperateWXData", "runInMainProcess::onSuccess, write to XProcessStore failed, appId[%s], callbackId[%d] e=%s", new Object[] { JsApiOperateWXData.OperateWXDataTask.this.appId, Integer.valueOf(JsApiOperateWXData.OperateWXDataTask.this.kje), localThrowable });
+            JsApiOperateWXData.OperateWXDataTask.this.kzn = null;
+            JsApiOperateWXData.sO(1L);
+            if (TextUtils.isEmpty(JsApiOperateWXData.OperateWXDataTask.this.kzn)) {
+              JsApiOperateWXData.OperateWXDataTask.this.kzm = paramAnonymousString;
             }
             for (;;)
             {
-              JsApiOperateWXData.OperateWXDataTask.this.kdF = "ok";
+              JsApiOperateWXData.OperateWXDataTask.this.kym = "ok";
               JsApiOperateWXData.OperateWXDataTask.b(JsApiOperateWXData.OperateWXDataTask.this);
               AppMethodBeat.o(46066);
               return;
-              JsApiOperateWXData.qP(0L);
-              if (TextUtils.isEmpty(JsApiOperateWXData.OperateWXDataTask.this.keE)) {
-                JsApiOperateWXData.OperateWXDataTask.this.keD = paramAnonymousString;
+              JsApiOperateWXData.sO(0L);
+              if (TextUtils.isEmpty(JsApiOperateWXData.OperateWXDataTask.this.kzn)) {
+                JsApiOperateWXData.OperateWXDataTask.this.kzm = paramAnonymousString;
               }
             }
           }
           finally
           {
-            if (TextUtils.isEmpty(JsApiOperateWXData.OperateWXDataTask.this.keE)) {
-              JsApiOperateWXData.OperateWXDataTask.this.keD = paramAnonymousString;
+            if (TextUtils.isEmpty(JsApiOperateWXData.OperateWXDataTask.this.kzn)) {
+              JsApiOperateWXData.OperateWXDataTask.this.kzm = paramAnonymousString;
             }
             AppMethodBeat.o(46066);
           }
         }
       };
-      if (this.kdE.equals("operateWXData"))
+      if (this.kyl.equals("operateWXData"))
       {
-        a(this.appId, this.keC, "", this.hxM, this.kdG, 0, local1, this.keL);
+        a(this.appId, this.kzl, "", this.hQh, this.kyn, 0, local1, this.kzu);
         AppMethodBeat.o(46086);
         return;
       }
-      if (this.kdE.equals("operateWXDataConfirm")) {
-        a(this.appId, this.keC, this.keG, this.hxM, this.kdG, this.keF, local1, this.keL);
+      if (this.kyl.equals("operateWXDataConfirm")) {
+        a(this.appId, this.kzl, this.kzp, this.hQh, this.kyn, this.kzo, local1, this.kzu);
       }
       AppMethodBeat.o(46086);
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(46088);
-      bek();
-      if (!this.kdB.isRunning())
+      bhO();
+      if (!this.kyi.isRunning())
       {
-        this.kdC.bfe();
+        this.kyj.biH();
         AppMethodBeat.o(46088);
         return;
       }
       Object localObject2;
       Object localObject1;
-      if (this.kdF.equals("ok"))
+      if (this.kym.equals("ok"))
       {
         localObject2 = new HashMap();
-        String str = this.keD;
+        String str = this.kzm;
         localObject1 = str;
-        if (!TextUtils.isEmpty(this.keE)) {
+        if (!TextUtils.isEmpty(this.kzn)) {
           localObject1 = str;
         }
         try
         {
-          str = keB.getString(this.keE, "");
+          str = kzk.getString(this.kzn, "");
           localObject1 = str;
-          keB.remove(this.keE);
+          kzk.remove(this.kzn);
           localObject1 = str;
-          JsApiOperateWXData.qP(2L);
+          JsApiOperateWXData.sO(2L);
           localObject1 = str;
         }
         catch (Throwable localThrowable)
         {
           for (;;)
           {
-            ac.e("MicroMsg.AppBrand.JsApiOperateWXData", "runInClientProcess loginResult ok, get data from XProcessStore failed, appId[%s], callbackId[%d], e=%s", new Object[] { this.appId, Integer.valueOf(this.jOT), localThrowable });
-            JsApiOperateWXData.qP(3L);
+            ad.e("MicroMsg.AppBrand.JsApiOperateWXData", "runInClientProcess loginResult ok, get data from XProcessStore failed, appId[%s], callbackId[%d], e=%s", new Object[] { this.appId, Integer.valueOf(this.kje), localThrowable });
+            JsApiOperateWXData.sO(3L);
           }
         }
         ((Map)localObject2).put("data", localObject1);
-        this.kdB.h(this.jOT, this.kdA.k("ok", (Map)localObject2));
-        this.kdC.bfe();
+        this.kyi.h(this.kje, this.kyh.m("ok", (Map)localObject2));
+        this.kyj.biH();
         AppMethodBeat.o(46088);
         return;
       }
-      if (this.kdF.contains("fail"))
+      if (this.kym.contains("fail"))
       {
-        this.kdA.b(this.kdB, this.jOT, this.kdF);
-        this.kdC.bfe();
+        localObject1 = new HashMap();
+        ((Map)localObject1).put("err_code", Integer.valueOf(this.cgiErrorCode));
+        this.kyi.h(this.kje, this.kyh.m(this.kym, (Map)localObject1));
+        this.kyj.biH();
         AppMethodBeat.o(46088);
         return;
       }
-      if (this.kdF.equals("needConfirm"))
+      if (this.kym.equals("needConfirm"))
       {
         localObject1 = new LinkedList();
         int i = 0;
-        while (i < this.kdP)
+        while (i < this.kyw)
         {
-          byte[] arrayOfByte = (byte[])this.keH.get(String.valueOf(i));
-          localObject2 = new csf();
+          byte[] arrayOfByte = (byte[])this.kzq.get(String.valueOf(i));
+          localObject2 = new cxm();
           try
           {
-            ((csf)localObject2).parseFrom(arrayOfByte);
+            ((cxm)localObject2).parseFrom(arrayOfByte);
             ((LinkedList)localObject1).add(localObject2);
             i += 1;
           }
           catch (IOException localIOException)
           {
-            ac.e("MicroMsg.AppBrand.JsApiOperateWXData", "IOException %s", new Object[] { localIOException.getMessage() });
-            ac.printErrStackTrace("MicroMsg.AppBrand.JsApiOperateWXData", localIOException, "", new Object[0]);
-            this.kdA.b(this.kdB, this.jOT, "fail");
-            this.kdC.bfe();
+            ad.e("MicroMsg.AppBrand.JsApiOperateWXData", "IOException %s", new Object[] { localIOException.getMessage() });
+            ad.printErrStackTrace("MicroMsg.AppBrand.JsApiOperateWXData", localIOException, "", new Object[0]);
+            this.kyh.b(this.kyi, this.kje, "fail");
+            this.kyj.biH();
             AppMethodBeat.o(46088);
             return;
           }
         }
         if (localIOException.size() > 0)
         {
-          ap.f(new Runnable()
+          this.kyi.M(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(180209);
-              Object localObject1 = (csf)localIOException.getFirst();
+              Object localObject1 = (cxm)localIOException.getFirst();
               Object localObject2 = new i.b()
               {
                 public final void a(int paramAnonymous2Int1, ArrayList<String> paramAnonymous2ArrayList, int paramAnonymous2Int2)
                 {
                   AppMethodBeat.i(180203);
-                  ac.i("MicroMsg.AppBrand.JsApiOperateWXData", "stev onRevMsg resultCode %d", new Object[] { Integer.valueOf(paramAnonymous2Int1) });
+                  ad.i("MicroMsg.AppBrand.JsApiOperateWXData", "stev onRevMsg resultCode %d", new Object[] { Integer.valueOf(paramAnonymous2Int1) });
                   switch (paramAnonymous2Int1)
                   {
                   default: 
-                    ac.d("MicroMsg.AppBrand.JsApiOperateWXData", "press back button!");
-                    JsApiOperateWXData.OperateWXDataTask.this.kdA.b(JsApiOperateWXData.OperateWXDataTask.this.kdB, JsApiOperateWXData.OperateWXDataTask.this.jOT, "fail auth cancel");
-                    JsApiOperateWXData.OperateWXDataTask.this.kdC.bfe();
+                    ad.d("MicroMsg.AppBrand.JsApiOperateWXData", "press back button!");
+                    JsApiOperateWXData.OperateWXDataTask.this.kyh.b(JsApiOperateWXData.OperateWXDataTask.this.kyi, JsApiOperateWXData.OperateWXDataTask.this.kje, "fail auth cancel");
+                    JsApiOperateWXData.OperateWXDataTask.this.kyj.biH();
                     AppMethodBeat.o(180203);
                     return;
                   }
-                  JsApiOperateWXData.OperateWXDataTask.this.kdE = "operateWXDataConfirm";
+                  JsApiOperateWXData.OperateWXDataTask.this.kyl = "operateWXDataConfirm";
                   JsApiOperateWXData.OperateWXDataTask localOperateWXDataTask = JsApiOperateWXData.OperateWXDataTask.this;
                   if (paramAnonymous2ArrayList.size() > 0) {}
                   for (paramAnonymous2ArrayList = (String)paramAnonymous2ArrayList.get(0);; paramAnonymous2ArrayList = "")
                   {
-                    localOperateWXDataTask.keG = paramAnonymous2ArrayList;
-                    JsApiOperateWXData.OperateWXDataTask.this.kdG = paramAnonymous2Int1;
-                    JsApiOperateWXData.OperateWXDataTask.this.keF = paramAnonymous2Int2;
+                    localOperateWXDataTask.kzp = paramAnonymous2ArrayList;
+                    JsApiOperateWXData.OperateWXDataTask.this.kyn = paramAnonymous2Int1;
+                    JsApiOperateWXData.OperateWXDataTask.this.kzo = paramAnonymous2Int2;
                     AppBrandMainProcessService.a(JsApiOperateWXData.OperateWXDataTask.this);
                     if (paramAnonymous2Int1 != 2) {
                       break;
                     }
-                    JsApiOperateWXData.OperateWXDataTask.this.kdA.b(JsApiOperateWXData.OperateWXDataTask.this.kdB, JsApiOperateWXData.OperateWXDataTask.this.jOT, "fail auth deny");
-                    JsApiOperateWXData.OperateWXDataTask.this.kdC.bfe();
+                    JsApiOperateWXData.OperateWXDataTask.this.kyh.b(JsApiOperateWXData.OperateWXDataTask.this.kyi, JsApiOperateWXData.OperateWXDataTask.this.kje, "fail auth deny");
+                    JsApiOperateWXData.OperateWXDataTask.this.kyj.biH();
                     AppMethodBeat.o(180203);
                     return;
                   }
                 }
               };
-              boolean bool;
-              if ((JsApiOperateWXData.OperateWXDataTask.this.kdB.getRuntime().getWindowAndroid() != null) && (JsApiOperateWXData.OperateWXDataTask.this.kdB.getRuntime().getWindowAndroid().aTx()))
+              localObject2 = b.a.a(JsApiOperateWXData.OperateWXDataTask.this.kyi, (com.tencent.mm.plugin.appbrand.permission.a.b.c)localObject2);
+              ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setAppBrandName(JsApiOperateWXData.OperateWXDataTask.this.mAppName);
+              ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setRequestDesc(((cxm)localObject1).Desc);
+              ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setApplyWording(JsApiOperateWXData.OperateWXDataTask.this.kyp);
+              ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setNegativeButtonText(JsApiOperateWXData.OperateWXDataTask.this.kyq);
+              ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setPositiveButtonText(JsApiOperateWXData.OperateWXDataTask.this.kyr);
+              ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setIconUrl(JsApiOperateWXData.OperateWXDataTask.this.kyo);
+              if ((JsApiOperateWXData.OperateWXDataTask.this.kys) && (!TextUtils.isEmpty(JsApiOperateWXData.OperateWXDataTask.this.kyt)))
               {
-                bool = true;
-                localObject2 = new i(h.c(JsApiOperateWXData.OperateWXDataTask.this.kdB), (i.b)localObject2, bool);
-                ((i)localObject2).RP(JsApiOperateWXData.OperateWXDataTask.this.mAppName);
-                ((i)localObject2).RQ(((csf)localObject1).Desc);
-                ((i)localObject2).RS(JsApiOperateWXData.OperateWXDataTask.this.kdI);
-                ((i)localObject2).Us(JsApiOperateWXData.OperateWXDataTask.this.kdJ);
-                ((i)localObject2).asC(JsApiOperateWXData.OperateWXDataTask.this.kdK);
-                ((i)localObject2).qV(JsApiOperateWXData.OperateWXDataTask.this.kdH);
-                if ((!JsApiOperateWXData.OperateWXDataTask.this.kdL) || (TextUtils.isEmpty(JsApiOperateWXData.OperateWXDataTask.this.kdM))) {
-                  break label333;
-                }
-                ((i)localObject2).hW(true);
-                ((i)localObject2).b(new View.OnClickListener()
+                ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).hb(true);
+                ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setExplainOnClickListener(new View.OnClickListener()
                 {
                   public final void onClick(View paramAnonymous2View)
                   {
                     AppMethodBeat.i(180204);
-                    JsApiOperateWXData.OperateWXDataTask.this.kdB.aSs().b(new com.tencent.mm.plugin.appbrand.phonenumber.k(JsApiOperateWXData.OperateWXDataTask.this.kdB.aSs(), JsApiOperateWXData.OperateWXDataTask.this.kdB, JsApiOperateWXData.OperateWXDataTask.this.kdM, h.c(JsApiOperateWXData.OperateWXDataTask.this.kdB), this.kdX.ijA.getMeasuredHeight()));
+                    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+                    localb.bd(paramAnonymous2View);
+                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/jsapi/auth/JsApiOperateWXData$OperateWXDataTask$2$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+                    this.kyF.a(JsApiOperateWXData.OperateWXDataTask.this.kyi, JsApiOperateWXData.OperateWXDataTask.this.kyt, (ac)JsApiOperateWXData.OperateWXDataTask.this.kyi.K(ac.class)).h(JsApiOperateWXData.OperateWXDataTask.this.kyi);
+                    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/jsapi/auth/JsApiOperateWXData$OperateWXDataTask$2$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                     AppMethodBeat.o(180204);
                   }
                 });
-                label192:
-                if (!TextUtils.isEmpty(JsApiOperateWXData.OperateWXDataTask.this.kdR)) {
-                  ((i)localObject2).RR(JsApiOperateWXData.OperateWXDataTask.this.kdR);
+                if (!TextUtils.isEmpty(JsApiOperateWXData.OperateWXDataTask.this.kyy)) {
+                  ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setSimpleDetailDesc(JsApiOperateWXData.OperateWXDataTask.this.kyy);
                 }
-                if (!"scope.userInfo".equals(((csf)localObject1).EdG)) {
-                  break label414;
+                if (!"scope.userInfo".equals(((cxm)localObject1).FKf)) {
+                  break label373;
                 }
-                if (JsApiOperateWXData.OperateWXDataTask.this.keI == null) {
-                  break label341;
+                if (JsApiOperateWXData.OperateWXDataTask.this.kzr == null) {
+                  break label303;
                 }
-                localObject1 = new com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b(JsApiOperateWXData.OperateWXDataTask.this.kdB.getContext(), JsApiOperateWXData.OperateWXDataTask.this.keI, ((csf)localObject1).EdG, new com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b.c()
+                localObject1 = new com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b(JsApiOperateWXData.OperateWXDataTask.this.kyi.getContext(), JsApiOperateWXData.OperateWXDataTask.this.kzr, ((cxm)localObject1).FKf, new com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b.c()
                 {
-                  public final void a(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2, String paramAnonymous2String1, String paramAnonymous2String2, d.g.a.m<? super Activity, ? super String, y> paramAnonymous2m)
+                  public final void a(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2, String paramAnonymous2String1, String paramAnonymous2String2, d.g.a.m<? super Activity, ? super String, z> paramAnonymous2m)
                   {
                     AppMethodBeat.i(180205);
                     if ((paramAnonymous2Boolean1) || (paramAnonymous2Boolean2))
                     {
                       if (!paramAnonymous2Boolean1)
                       {
-                        this.kdX.aBP(paramAnonymous2String1);
-                        this.kdX.MP(JsApiOperateWXData.OperateWXDataTask.this.kdB.getContext().getResources().getColor(2131099660));
+                        this.kyF.setFunctionButtonText(paramAnonymous2String1);
+                        this.kyF.setFunctionButtonTextColor(JsApiOperateWXData.OperateWXDataTask.this.kyi.getContext().getResources().getColor(2131099660));
                       }
                       for (;;)
                       {
-                        JsApiOperateWXData.OperateWXDataTask.a(JsApiOperateWXData.OperateWXDataTask.this, this.kdX, false, paramAnonymous2m);
+                        JsApiOperateWXData.OperateWXDataTask.a(JsApiOperateWXData.OperateWXDataTask.this, this.kyF, false, paramAnonymous2m);
                         AppMethodBeat.o(180205);
                         return;
-                        this.kdX.aBP("");
+                        this.kyF.setFunctionButtonText("");
                       }
                     }
-                    this.kdX.aBP(paramAnonymous2String2);
-                    this.kdX.MP(JsApiOperateWXData.OperateWXDataTask.this.kdB.getContext().getResources().getColor(2131100547));
-                    JsApiOperateWXData.OperateWXDataTask.a(JsApiOperateWXData.OperateWXDataTask.this, this.kdX, true, paramAnonymous2m);
+                    this.kyF.setFunctionButtonText(paramAnonymous2String2);
+                    this.kyF.setFunctionButtonTextColor(JsApiOperateWXData.OperateWXDataTask.this.kyi.getContext().getResources().getColor(2131100547));
+                    JsApiOperateWXData.OperateWXDataTask.a(JsApiOperateWXData.OperateWXDataTask.this, this.kyF, true, paramAnonymous2m);
                     AppMethodBeat.o(180205);
                   }
                   
-                  public final void bj(List<o.a> paramAnonymous2List)
+                  public final void bl(List<o.a> paramAnonymous2List)
                   {
                     AppMethodBeat.i(180206);
-                    this.kdX.bG(paramAnonymous2List);
+                    this.kyF.setSelectListItem(paramAnonymous2List);
                     AppMethodBeat.o(180206);
                   }
                 });
-                ((i)localObject2).a(new o.b()
+                ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setItemCheckedListener(new o.b()
                 {
                   public final void a(o.a paramAnonymous2a)
                   {
                     AppMethodBeat.i(180207);
-                    this.keP.b(paramAnonymous2a);
+                    this.kzy.b(paramAnonymous2a);
                     AppMethodBeat.o(180207);
                   }
                 });
-                ((i)localObject2).a(new o.c()
+                ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setOnListItemLongClickListener(new o.c()
                 {
                   public final void a(View paramAnonymous2View, o.a paramAnonymous2a, int paramAnonymous2Int)
                   {
+                    int j = 0;
                     AppMethodBeat.i(180208);
-                    paramAnonymous2a = this.keP;
-                    TouchableLayout.a locala = TouchableLayout.JyS;
-                    int i = TouchableLayout.fyY();
-                    locala = TouchableLayout.JyS;
-                    paramAnonymous2a.a(paramAnonymous2View, paramAnonymous2Int, i, TouchableLayout.fyZ());
-                    AppMethodBeat.o(180208);
+                    paramAnonymous2a = this.kyF.getLastPointerDownTouchEvent();
+                    int i;
+                    if (paramAnonymous2a == null)
+                    {
+                      i = 0;
+                      if (paramAnonymous2a != null) {
+                        break label60;
+                      }
+                    }
+                    for (;;)
+                    {
+                      this.kzy.a(paramAnonymous2View, paramAnonymous2Int, i, j);
+                      AppMethodBeat.o(180208);
+                      return;
+                      i = Math.round(paramAnonymous2a.getRawX());
+                      break;
+                      label60:
+                      j = Math.round(paramAnonymous2a.getRawY());
+                    }
                   }
                 });
               }
               for (;;)
               {
-                JsApiOperateWXData.OperateWXDataTask.this.kdB.aSs().b((com.tencent.mm.plugin.appbrand.widget.dialog.k)localObject2);
+                ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).h(JsApiOperateWXData.OperateWXDataTask.this.kyi);
                 AppMethodBeat.o(180209);
                 return;
-                bool = false;
+                ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).hb(false);
                 break;
-                label333:
-                ((i)localObject2).hW(false);
-                break label192;
-                label341:
+                label303:
                 ArrayList localArrayList = new ArrayList();
-                localArrayList.add(new o.a(JsApiOperateWXData.OperateWXDataTask.this.kdO, JsApiOperateWXData.OperateWXDataTask.this.kdB.getContext().getResources().getString(2131755946), ((csf)localObject1).EdG, com.tencent.mm.aj.e.Ae(JsApiOperateWXData.OperateWXDataTask.this.kdN), (byte)0));
-                ((i)localObject2).bG(localArrayList);
+                localArrayList.add(new o.a(JsApiOperateWXData.OperateWXDataTask.this.kyv, JsApiOperateWXData.OperateWXDataTask.this.kyi.getContext().getResources().getString(2131755946), ((cxm)localObject1).FKf, com.tencent.mm.ak.e.Dd(JsApiOperateWXData.OperateWXDataTask.this.kyu), (byte)0));
+                ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setSelectListItem(localArrayList);
                 continue;
-                label414:
-                ((i)localObject2).aBQ(((csf)localObject1).EdG);
+                label373:
+                ((com.tencent.mm.plugin.appbrand.permission.a.b)localObject2).setScope(((cxm)localObject1).FKf);
               }
             }
           });
           AppMethodBeat.o(46088);
           return;
         }
-        this.kdA.b(this.kdB, this.jOT, "fail");
-        this.kdC.bfe();
+        this.kyh.b(this.kyi, this.kje, "fail");
+        this.kyj.biH();
       }
       AppMethodBeat.o(46088);
     }
@@ -686,50 +697,51 @@ public final class JsApiOperateWXData
       boolean bool2 = true;
       AppMethodBeat.i(46090);
       this.appId = paramParcel.readString();
-      this.kdF = paramParcel.readString();
+      this.kym = paramParcel.readString();
       this.mAppName = paramParcel.readString();
-      this.kdH = paramParcel.readString();
-      this.keC = paramParcel.readString();
-      this.keD = paramParcel.readString();
-      this.keE = paramParcel.readString();
-      this.jOT = paramParcel.readInt();
-      this.kdE = paramParcel.readString();
-      this.keG = paramParcel.readString();
-      this.kdP = paramParcel.readInt();
-      this.keH = paramParcel.readHashMap(HashMap.class.getClassLoader());
-      this.hxM = paramParcel.readInt();
-      this.kdG = paramParcel.readInt();
-      this.jZF = paramParcel.readInt();
-      this.kdS = paramParcel.readInt();
-      this.kdO = paramParcel.readString();
-      this.kdN = paramParcel.readString();
-      this.kdK = paramParcel.readString();
-      this.kdJ = paramParcel.readString();
-      this.kdI = paramParcel.readString();
-      this.keI = ((MMUserAvatarInfo)paramParcel.readParcelable(MMUserAvatarInfo.class.getClassLoader()));
-      this.keJ = paramParcel.readInt();
+      this.kyo = paramParcel.readString();
+      this.kzl = paramParcel.readString();
+      this.kzm = paramParcel.readString();
+      this.kzn = paramParcel.readString();
+      this.kje = paramParcel.readInt();
+      this.kyl = paramParcel.readString();
+      this.kzp = paramParcel.readString();
+      this.kyw = paramParcel.readInt();
+      this.kzq = paramParcel.readHashMap(HashMap.class.getClassLoader());
+      this.hQh = paramParcel.readInt();
+      this.kyn = paramParcel.readInt();
+      this.kub = paramParcel.readInt();
+      this.kyA = paramParcel.readInt();
+      this.kyv = paramParcel.readString();
+      this.kyu = paramParcel.readString();
+      this.kyr = paramParcel.readString();
+      this.kyq = paramParcel.readString();
+      this.kyp = paramParcel.readString();
+      this.kzr = ((MMUserAvatarInfo)paramParcel.readParcelable(MMUserAvatarInfo.class.getClassLoader()));
+      this.kzs = paramParcel.readInt();
       if (paramParcel.readInt() == 1)
       {
         bool1 = true;
-        this.keK = bool1;
-        this.keF = paramParcel.readInt();
+        this.kzt = bool1;
+        this.kzo = paramParcel.readInt();
         if (paramParcel.readInt() != 1) {
-          break label288;
+          break label296;
         }
         bool1 = true;
         label240:
-        this.keL = bool1;
+        this.kzu = bool1;
         if (paramParcel.readInt() != 1) {
-          break label293;
+          break label301;
         }
       }
-      label288:
-      label293:
+      label296:
+      label301:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.kdL = bool1;
-        this.kdM = paramParcel.readString();
-        this.kdR = paramParcel.readString();
+        this.kys = bool1;
+        this.kyt = paramParcel.readString();
+        this.kyy = paramParcel.readString();
+        this.cgiErrorCode = paramParcel.readInt();
         AppMethodBeat.o(46090);
         return;
         bool1 = false;
@@ -739,14 +751,14 @@ public final class JsApiOperateWXData
       }
     }
     
-    public final void gg(boolean paramBoolean)
+    public final void gl(boolean paramBoolean)
     {
       AppMethodBeat.i(46087);
-      super.gg(paramBoolean);
+      super.gl(paramBoolean);
       if (paramBoolean) {}
       for (long l = 4L;; l = 5L)
       {
-        JsApiOperateWXData.qP(l);
+        JsApiOperateWXData.sO(l);
         AppMethodBeat.o(46087);
         return;
       }
@@ -757,50 +769,51 @@ public final class JsApiOperateWXData
       int i = 1;
       AppMethodBeat.i(46091);
       paramParcel.writeString(this.appId);
-      paramParcel.writeString(this.kdF);
+      paramParcel.writeString(this.kym);
       paramParcel.writeString(this.mAppName);
-      paramParcel.writeString(this.kdH);
-      paramParcel.writeString(this.keC);
-      paramParcel.writeString(this.keD);
-      paramParcel.writeString(this.keE);
-      paramParcel.writeInt(this.jOT);
-      paramParcel.writeString(this.kdE);
-      paramParcel.writeString(this.keG);
-      paramParcel.writeInt(this.kdP);
-      paramParcel.writeMap(this.keH);
-      paramParcel.writeInt(this.hxM);
-      paramParcel.writeInt(this.kdG);
-      paramParcel.writeInt(this.jZF);
-      paramParcel.writeInt(this.kdS);
-      paramParcel.writeString(this.kdO);
-      paramParcel.writeString(this.kdN);
-      paramParcel.writeString(this.kdK);
-      paramParcel.writeString(this.kdJ);
-      paramParcel.writeString(this.kdI);
-      paramParcel.writeParcelable(this.keI, paramInt);
-      paramParcel.writeInt(this.keJ);
-      if (this.keK)
+      paramParcel.writeString(this.kyo);
+      paramParcel.writeString(this.kzl);
+      paramParcel.writeString(this.kzm);
+      paramParcel.writeString(this.kzn);
+      paramParcel.writeInt(this.kje);
+      paramParcel.writeString(this.kyl);
+      paramParcel.writeString(this.kzp);
+      paramParcel.writeInt(this.kyw);
+      paramParcel.writeMap(this.kzq);
+      paramParcel.writeInt(this.hQh);
+      paramParcel.writeInt(this.kyn);
+      paramParcel.writeInt(this.kub);
+      paramParcel.writeInt(this.kyA);
+      paramParcel.writeString(this.kyv);
+      paramParcel.writeString(this.kyu);
+      paramParcel.writeString(this.kyr);
+      paramParcel.writeString(this.kyq);
+      paramParcel.writeString(this.kyp);
+      paramParcel.writeParcelable(this.kzr, paramInt);
+      paramParcel.writeInt(this.kzs);
+      if (this.kzt)
       {
         paramInt = 1;
         paramParcel.writeInt(paramInt);
-        paramParcel.writeInt(this.keF);
-        if (!this.keL) {
-          break label271;
+        paramParcel.writeInt(this.kzo);
+        if (!this.kzu) {
+          break label279;
         }
         paramInt = 1;
         label224:
         paramParcel.writeInt(paramInt);
-        if (!this.kdL) {
-          break label276;
+        if (!this.kys) {
+          break label284;
         }
       }
-      label271:
-      label276:
+      label279:
+      label284:
       for (paramInt = i;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.kdM);
-        paramParcel.writeString(this.kdR);
+        paramParcel.writeString(this.kyt);
+        paramParcel.writeString(this.kyy);
+        paramParcel.writeInt(this.cgiErrorCode);
         AppMethodBeat.o(46091);
         return;
         paramInt = 0;
@@ -812,9 +825,9 @@ public final class JsApiOperateWXData
     
     public static abstract interface a
     {
-      public abstract void a(LinkedList<csf> paramLinkedList, String paramString1, String paramString2);
+      public abstract void a(LinkedList<cxm> paramLinkedList, String paramString1, String paramString2);
       
-      public abstract void bZ(String paramString);
+      public abstract void bC(String paramString, int paramInt);
       
       public abstract void onSuccess(String paramString);
     }
@@ -822,7 +835,7 @@ public final class JsApiOperateWXData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.JsApiOperateWXData
  * JD-Core Version:    0.7.0.1
  */

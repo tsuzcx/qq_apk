@@ -2,28 +2,31 @@ package com.tencent.mm.plugin.fts.ui.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.ui.b.c;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.plugin.fts.ui.n;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 
 public final class d
   extends m
 {
-  public x sCD;
-  public CharSequence sDV;
-  private a sDW;
+  public CharSequence tAK;
+  private a tAL;
+  public ab tzs;
   
   public d(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112060);
-    this.sDW = new a();
+    this.tAL = new a();
     AppMethodBeat.o(112060);
   }
   
@@ -31,41 +34,41 @@ public final class d
   {
     AppMethodBeat.i(112061);
     super.a(paramContext, parama, paramVarArgs);
-    ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(this.jPN.talker);
-    if (localai == null) {
-      parama = com.tencent.mm.plugin.fts.a.d.acr(this.jPN.sxG);
+    am localam = ((l)g.ab(l.class)).azp().Bf(this.kjY.talker);
+    if (localam == null) {
+      parama = com.tencent.mm.plugin.fts.a.d.agg(this.kjY.tuh);
     }
     for (;;)
     {
-      if (!bs.isNullOrNil(parama)) {
-        this.sDV = com.tencent.mm.pluginsdk.ui.span.k.d(paramContext, parama, b.c.sBG);
+      if (!bt.isNullOrNil(parama)) {
+        this.tAK = k.d(paramContext, parama, b.c.tyh);
       }
       AppMethodBeat.o(112061);
       return;
-      if (bs.isNullOrNil(localai.field_conRemark))
+      if (bt.isNullOrNil(localam.field_conRemark))
       {
-        if (this.sCD != null)
+        if (this.tzs != null)
         {
-          paramVarArgs = this.sCD.wk(this.jPN.talker);
+          paramVarArgs = this.tzs.zf(this.kjY.talker);
           parama = paramVarArgs;
-          if (bs.isNullOrNil(paramVarArgs)) {
-            parama = localai.field_nickname;
+          if (bt.isNullOrNil(paramVarArgs)) {
+            parama = localam.field_nickname;
           }
         }
         else
         {
-          parama = localai.field_nickname;
+          parama = localam.field_nickname;
         }
       }
       else {
-        parama = localai.field_conRemark;
+        parama = localam.field_conRemark;
       }
     }
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a.b adW()
+  public final com.tencent.mm.plugin.fts.a.d.a.a.b agC()
   {
-    return this.sDW;
+    return this.tAL;
   }
   
   public final class a
@@ -81,18 +84,18 @@ public final class d
       AppMethodBeat.i(112059);
       paramContext = (d)parama1;
       parama = (m.a)parama;
-      com.tencent.mm.plugin.fts.ui.m.p(parama.jPT, d.this.szt);
-      if (bs.isNullOrNil(paramContext.jPN.talker)) {
-        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fuY, paramContext.jPN.sxG);
+      n.p(parama.kke, d.this.tvU);
+      if (bt.isNullOrNil(paramContext.kjY.talker)) {
+        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fOf, paramContext.kjY.tuh);
       }
       for (;;)
       {
-        com.tencent.mm.plugin.fts.ui.m.a(paramContext.sDV, parama.fuZ);
-        com.tencent.mm.plugin.fts.ui.m.a(paramContext.gIg, parama.fAy);
-        com.tencent.mm.plugin.fts.ui.m.a(paramContext.sEO, parama.fAz);
+        n.a(paramContext.tAK, parama.fOg);
+        n.a(paramContext.hbQ, parama.fTO);
+        n.a(paramContext.tBG, parama.fTP);
         AppMethodBeat.o(112059);
         return;
-        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fuY, paramContext.jPN.talker);
+        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fOf, paramContext.kjY.talker);
       }
     }
   }

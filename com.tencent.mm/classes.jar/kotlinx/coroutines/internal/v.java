@@ -2,12 +2,14 @@ package kotlinx.coroutines.internal;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"systemProp", "", "propertyName", "", "defaultValue", "", "minValue", "maxValue", "", "kotlinx-coroutines-core"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"AVAILABLE_PROCESSORS", "", "getAVAILABLE_PROCESSORS", "()I", "systemProp", "", "propertyName", "kotlinx-coroutines-core"})
 public final class v
 {
-  public static final boolean aXh(String arg0) {}
+  private static final int NKf;
   
-  public static final long e(String arg0, long arg1, long arg3, long arg5) {}
+  public static final String bdj(String arg0) {}
+  
+  public static final int gwi() {}
 }
 
 

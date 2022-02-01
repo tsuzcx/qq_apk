@@ -7,29 +7,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   implements com.tencent.f.b.b
 {
-  private f Kua;
-  d Kub;
-  b Kuc;
-  a Kud;
+  private f Mkb;
+  d Mkc;
+  b Mkd;
+  a Mke;
   int mReferenceCount = 0;
   int mState;
   
   public g(f paramf, d paramd)
   {
-    this.Kua = paramf;
-    this.Kub = paramd;
+    this.Mkb = paramf;
+    this.Mkc = paramd;
   }
   
   public final void start()
   {
     AppMethodBeat.i(62798);
-    this.Kua.a(this);
+    this.Mkb.a(this);
     AppMethodBeat.o(62798);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.f.g
  * JD-Core Version:    0.7.0.1
  */

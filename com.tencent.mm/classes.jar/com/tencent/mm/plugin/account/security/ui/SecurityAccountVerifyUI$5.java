@@ -12,7 +12,7 @@ final class SecurityAccountVerifyUI$5
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(125602);
-    SecurityAccountVerifyUI.f(this.iPC);
+    SecurityAccountVerifyUI.f(this.jiK);
     AppMethodBeat.o(125602);
     return true;
   }

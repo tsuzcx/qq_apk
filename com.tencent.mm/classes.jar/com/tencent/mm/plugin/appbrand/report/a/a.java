@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.appbrand.report.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.keylogger.f;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.i;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/report/keystep/AppBrandKeyStepUtils;", "", "()V", "OPEN", "", "()Z", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/report/keystep/AppBrandKeyStepUtils;", "", "()V", "OPEN", "", "()Z", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a lSn;
+  public static final a msd;
   
   static
   {
-    AppMethodBeat.i(187376);
-    lSn = new a();
-    AppMethodBeat.o(187376);
+    AppMethodBeat.i(189587);
+    msd = new a();
+    AppMethodBeat.o(189587);
   }
   
-  public static final boolean btm()
+  public static final boolean bxr()
   {
-    AppMethodBeat.i(187375);
-    if ((f.Og("WeAppLaunch")) || (h.DEBUG) || (h.IS_FLAVOR_RED) || (bt.eWo()))
+    AppMethodBeat.i(189586);
+    if ((f.RE("WeAppLaunch")) || (i.DEBUG) || (i.IS_FLAVOR_RED) || (bu.flY()))
     {
-      AppMethodBeat.o(187375);
+      AppMethodBeat.o(189586);
       return true;
     }
-    AppMethodBeat.o(187375);
+    AppMethodBeat.o(189586);
     return false;
   }
 }

@@ -46,20 +46,20 @@ public class IOCanaryJniBridge
     if (parama != null) {}
     try
     {
-      if (parama.GT())
+      if (parama.Io())
       {
         enableDetector(0);
-        setConfig(0, parama.cqF.get(a.a.JIT.name(), 500) * 1000L);
+        setConfig(0, parama.cBC.get(a.a.LCC.name(), 500) * 1000L);
       }
-      if (parama.GV())
+      if (parama.Iq())
       {
         enableDetector(1);
-        setConfig(1, parama.cqF.get(a.a.JIV.name(), 4096));
+        setConfig(1, parama.cBC.get(a.a.LCE.name(), 4096));
       }
-      if (parama.GU())
+      if (parama.Ip())
       {
         enableDetector(2);
-        setConfig(2, parama.cqF.get(a.a.JIY.name(), 5));
+        setConfig(2, parama.cBC.get(a.a.LCH.name(), 5));
       }
       doHook();
       sIsTryInstall = true;

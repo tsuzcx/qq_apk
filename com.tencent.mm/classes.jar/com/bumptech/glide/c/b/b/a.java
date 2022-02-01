@@ -11,7 +11,7 @@ public abstract interface a
   
   public static abstract interface a
   {
-    public abstract a oI();
+    public abstract a pa();
   }
   
   public static abstract interface b

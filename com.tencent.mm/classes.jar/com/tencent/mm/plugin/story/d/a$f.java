@@ -4,12 +4,12 @@ import com.tencent.mm.plugin.story.ui.album.c;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IView;", "", "onBubbleFail", "", "onIsAll", "onLoadFinish", "datas", "", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumInfo;", "onStoryPostFail", "list", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IView;", "", "onBubbleFail", "", "onIsAll", "onLoadFinish", "datas", "", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumInfo;", "onStoryPostFail", "list", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "plugin-story_release"})
 public abstract interface a$f
 {
-  public abstract void dVc();
+  public abstract void ehr();
   
-  public abstract void fQ(List<c> paramList);
+  public abstract void gb(List<c> paramList);
 }
 
 

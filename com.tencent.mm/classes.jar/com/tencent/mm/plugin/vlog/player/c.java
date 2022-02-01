@@ -1,295 +1,304 @@
 package com.tencent.mm.plugin.vlog.player;
 
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.vlog.model.r;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.coremedia.CMTimeRange;
-import com.tencent.tav.player.Callback;
-import com.tencent.tav.player.IPlayer.PlayerListener;
-import com.tencent.tav.player.IPlayer.PlayerStatus;
-import com.tencent.tav.player.OnCompositionUpdateListener;
-import com.tencent.tav.player.Player;
-import com.tencent.tav.player.PlayerItem;
-import com.tencent.tav.player.PlayerLayer;
-import com.tencent.tavkit.composition.TAVSource;
-import d.g.b.k;
+import com.tencent.mm.plugin.vlog.model.aa;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.a.a;
+import d.g.a.m;
+import d.g.b.p;
+import d.g.b.q;
 import d.l;
+import d.z;
+import java.nio.IntBuffer;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/player/VLogCompositionPlayer;", "", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "(Lcom/tencent/mm/plugin/vlog/model/VLogComposition;)V", "flushSurfaceTick", "", "player", "Lcom/tencent/tav/player/Player;", "playerCallback", "Lcom/tencent/mm/plugin/vlog/player/VLogCompositionPlayer$Companion$PlayerCallback;", "playerItem", "Lcom/tencent/tav/player/PlayerItem;", "playerLayer", "Lcom/tencent/tav/player/PlayerLayer;", "source", "Lcom/tencent/tavkit/composition/TAVSource;", "surfaceHeight", "", "surfaceWidth", "currentPositionTimeMs", "initPlayerCallback", "", "isPlaying", "", "muteOrigin", "mute", "pause", "refreshSurface", "release", "seekTo", "timeMs", "setLoop", "loop", "setPlayRange", "start", "end", "setPlayerCallback", "callback", "setSurface", "surface", "Landroid/view/Surface;", "width", "height", "setSurfaceTexture", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "stop", "updateComposition", "updateDisplaySize", "videoDurationMs", "Companion", "plugin-vlog_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/player/VLogDirector;", "", "width", "", "height", "textureWidth", "textureHeight", "widthScale", "", "heightScale", "loop", "", "previewPlay", "(IIIIFFZZ)V", "(IIZZ)V", "cropRect", "Landroid/graphics/Rect;", "drawCount", "durationMs", "getDurationMs", "()I", "setDurationMs", "(I)V", "getHeight", "lastPlayTime", "", "getLoop", "()Z", "setLoop", "(Z)V", "nextDrawTimeDelay", "onEnd", "Lkotlin/Function1;", "", "getOnEnd", "()Lkotlin/jvm/functions/Function1;", "setOnEnd", "(Lkotlin/jvm/functions/Function1;)V", "onProgress", "Lkotlin/Function2;", "getOnProgress", "()Lkotlin/jvm/functions/Function2;", "setOnProgress", "(Lkotlin/jvm/functions/Function2;)V", "prepared", "pts", "getPts", "()J", "setPts", "(J)V", "render", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcBlend;", "scriptReader", "Lcom/tencent/mm/plugin/vlog/player/VLogScriptReader;", "snapShotCallback", "Ljava/nio/IntBuffer;", "Lkotlin/ParameterName;", "name", "buffer", "getSnapShotCallback", "setSnapShotCallback", "vLogSurface", "Lcom/tencent/mm/plugin/vlog/player/VLogSurface;", "getWidth", "drawPreloadFrame", "getNextPtsStep", "getSize", "Landroid/util/Size;", "pause", "playNextFrame", "blendBitmap", "Landroid/graphics/Bitmap;", "withSnapshot", "drawCallback", "Lkotlin/Function0;", "preloadOneFrame", "release", "reset", "resetPts", "resume", "setCallback", "setCropRect", "rect", "setFrameRate", "videoFps", "imageFps", "setMute", "mute", "setScript", "scriptModel", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "musicUrl", "", "setSnapshotCallback", "callback", "setVLogSurface", "updateDrawSize", "videoDecodeEnd", "Companion", "plugin-vlog_release"})
 public final class c
 {
-  public static final c.a ApA;
-  r AmR;
-  TAVSource Aon;
-  a.a Apy;
-  public long Apz;
-  public Player player;
-  PlayerItem playerItem;
-  PlayerLayer playerLayer;
-  int surfaceHeight;
-  int surfaceWidth;
+  public static final a BIj;
+  private long AAY;
+  private i BIb;
+  private com.tencent.mm.media.j.b.b BIc;
+  public k BId;
+  public m<? super Long, ? super Long, z> BIe;
+  public d.g.a.b<? super Long, z> BIf;
+  public d.g.a.b<? super IntBuffer, z> BIg;
+  public long BIh;
+  private final boolean BIi;
+  private boolean bdb;
+  private int gKJ;
+  private int gKK;
+  private int gfZ;
+  public final int height;
+  private Rect hmm;
+  int imR;
+  private boolean loop;
+  private float lzb;
+  private float lzc;
+  long pts;
+  public final int width;
   
   static
   {
-    AppMethodBeat.i(207679);
-    ApA = new c.a((byte)0);
-    AppMethodBeat.o(207679);
+    AppMethodBeat.i(195925);
+    BIj = new a((byte)0);
+    AppMethodBeat.o(195925);
   }
   
-  public c(r paramr)
+  public c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(207678);
-    this.AmR = paramr;
-    this.Aon = this.AmR.buildSource();
-    this.playerItem = new PlayerItem(this.Aon.getAsset());
-    this.playerItem.setVideoComposition(this.Aon.getVideoComposition());
-    this.playerItem.setAudioMix(this.Aon.getAudioMix());
-    this.player = new Player(this.playerItem);
-    paramr = this.player;
-    if (paramr != null) {
-      paramr.setPlayRange(this.AmR.efA());
-    }
-    paramr = this.player;
-    if (paramr != null) {
-      paramr.setPlayerListener((IPlayer.PlayerListener)new b(this));
-    }
-    ac.i("MicroMsg.VLogCompositionPlayer", "create player, composition:" + this.AmR);
-    AppMethodBeat.o(207678);
+    this(paramInt1, paramInt2, false, false);
+    AppMethodBeat.i(195924);
+    this.lzb = paramFloat1;
+    this.lzc = paramFloat2;
+    this.gKJ = paramInt3;
+    this.gKK = paramInt4;
+    ad.i("MicroMsg.VLogDirector", "create VLogDirector, scale:[" + paramFloat1 + ", " + paramFloat2 + "], texture:[" + paramInt3 + ", " + paramInt4 + ']');
+    AppMethodBeat.o(195924);
   }
   
-  public final long efR()
+  private c(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(207677);
-    Object localObject = this.player;
-    if (localObject != null)
+    AppMethodBeat.i(195923);
+    this.width = paramInt1;
+    this.height = paramInt2;
+    this.loop = paramBoolean1;
+    this.BIi = paramBoolean2;
+    this.BIb = new i(this.BIi);
+    this.lzb = 1.0F;
+    this.lzc = 1.0F;
+    this.pts = -1L;
+    AppMethodBeat.o(195923);
+  }
+  
+  private final void esH()
+  {
+    this.pts = 0L;
+    this.gfZ = 0;
+  }
+  
+  public final void a(final aa paramaa, int paramInt, String paramString)
+  {
+    AppMethodBeat.i(195913);
+    p.h(paramaa, "scriptModel");
+    p.h(paramString, "musicUrl");
+    ad.i("MicroMsg.VLogDirector", hashCode() + "  setScript  durationMs :" + paramInt + "  musicUrl:" + paramString);
+    this.imR = paramInt;
+    esH();
+    this.bdb = true;
+    paramString = this.BId;
+    if (paramString != null)
     {
-      localObject = ((Player)localObject).currentTime();
-      if (localObject == null) {}
+      paramString.h((a)new h(this, paramaa));
+      AppMethodBeat.o(195913);
+      return;
     }
-    for (long l = ((CMTime)localObject).getTimeUs();; l = 0L)
+    AppMethodBeat.o(195913);
+  }
+  
+  public final void a(final k paramk)
+  {
+    AppMethodBeat.i(195917);
+    p.h(paramk, "vLogSurface");
+    ad.i("MicroMsg.VLogDirector", hashCode() + " setSurface");
+    this.BId = paramk;
+    paramk.h((a)new i(this, paramk));
+    AppMethodBeat.o(195917);
+  }
+  
+  public final void cS(final int paramInt1, final int paramInt2)
+  {
+    AppMethodBeat.i(195918);
+    ad.i("MicroMsg.VLogDirector", hashCode() + " updateDrawSize:[" + paramInt1 + ", " + paramInt2 + ']');
+    k localk = this.BId;
+    if (localk != null)
     {
-      l /= 1000L;
-      AppMethodBeat.o(207677);
-      return l;
+      localk.h((a)new j(this, paramInt1, paramInt2));
+      AppMethodBeat.o(195918);
+      return;
     }
+    AppMethodBeat.o(195918);
+  }
+  
+  public final void esF()
+  {
+    AppMethodBeat.i(195915);
+    i locali = this.BIb;
+    locali.BIH = 33L;
+    locali.BII = 33L;
+    ad.i("MicroMsg.VLogScriptReader", "videoPtsStep :" + locali.BIH + " imagePtsStep:" + locali.BII);
+    AppMethodBeat.o(195915);
+  }
+  
+  public final void esG()
+  {
+    AppMethodBeat.i(195919);
+    k localk = this.BId;
+    if (localk != null)
+    {
+      localk.h((a)new b(this));
+      AppMethodBeat.o(195919);
+      return;
+    }
+    AppMethodBeat.o(195919);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(207674);
-    ac.i("MicroMsg.VLogCompositionPlayer", "release");
-    Player localPlayer = this.player;
-    if (localPlayer != null) {
-      localPlayer.release();
+    AppMethodBeat.i(195921);
+    ad.m("MicroMsg.VLogDirector", "VLogRelease into VLogDirector#release 1", new Object[0]);
+    Object localObject = this.BId;
+    if (localObject != null)
+    {
+      ad.d("MicroMsg.VLogDirector", "VLogRelease into VLogDirector#release 2");
+      ((k)localObject).h((a)new e(this));
     }
-    this.playerLayer = null;
-    this.player = null;
-    AppMethodBeat.o(207674);
+    localObject = this.BId;
+    if (localObject != null) {
+      ((k)localObject).release();
+    }
+    localObject = e.BIv;
+    e.clearCache();
+    AppMethodBeat.o(195921);
   }
   
-  public final void seekTo(long paramLong)
+  public final void setCropRect(Rect paramRect)
   {
-    AppMethodBeat.i(207675);
-    ac.i("MicroMsg.VLogCompositionPlayer", "seekTo:".concat(String.valueOf(paramLong)));
-    Player localPlayer = this.player;
-    if (localPlayer != null)
+    AppMethodBeat.i(195916);
+    if (paramRect != null)
     {
-      localPlayer.seekToTime(CMTime.fromMs(paramLong), (Callback)new c.c(paramLong));
-      AppMethodBeat.o(207675);
+      ad.i("MicroMsg.VLogDirector", "setCropRect:" + paramRect + ", width:" + this.width + ", height:" + this.height + ", textureWidth:" + this.gKJ + ", textureHeight:" + this.gKK);
+      this.hmm = new Rect(paramRect);
+      paramRect = this.BIc;
+      if (paramRect != null)
+      {
+        paramRect.hnr = this.hmm;
+        AppMethodBeat.o(195916);
+        return;
+      }
+    }
+    AppMethodBeat.o(195916);
+  }
+  
+  public final void setMute(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(195922);
+    k localk = this.BId;
+    if (localk != null)
+    {
+      localk.h((a)new g(this, paramBoolean));
+      AppMethodBeat.o(195922);
       return;
     }
-    AppMethodBeat.o(207675);
+    AppMethodBeat.o(195922);
   }
   
-  public final void setLoop(boolean paramBoolean)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/player/VLogDirector$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
+  public static final class a {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$drawPreloadFrame$1$1"})
+  static final class b
+    extends q
+    implements a<z>
   {
-    AppMethodBeat.i(207676);
-    ac.i("MicroMsg.VLogCompositionPlayer", "setLoop:".concat(String.valueOf(paramBoolean)));
-    Player localPlayer = this.player;
-    if (localPlayer != null)
+    b(c paramc)
     {
-      localPlayer.setLoop(paramBoolean);
-      AppMethodBeat.o(207676);
-      return;
-    }
-    AppMethodBeat.o(207676);
-  }
-  
-  public final void sl(boolean paramBoolean)
-  {
-    AppMethodBeat.i(207672);
-    Player localPlayer = this.player;
-    if (localPlayer != null)
-    {
-      if (paramBoolean) {}
-      for (float f = 0.0F;; f = 1.0F)
-      {
-        localPlayer.setVolume(f);
-        AppMethodBeat.o(207672);
-        return;
-      }
-    }
-    AppMethodBeat.o(207672);
-  }
-  
-  public final void start()
-  {
-    AppMethodBeat.i(207673);
-    ac.i("MicroMsg.VLogCompositionPlayer", "start");
-    Player localPlayer = this.player;
-    if (localPlayer != null)
-    {
-      localPlayer.play();
-      AppMethodBeat.o(207673);
-      return;
-    }
-    AppMethodBeat.o(207673);
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/player/VLogCompositionPlayer$Companion$PlayerCallback;", "", "onPlayCompleted", "", "onPlayError", "onPlayFirstFrame", "onPlayProgress", "timeMs", "", "onPlayStarted", "onPlayStop", "plugin-vlog_release"})
-  public static abstract interface a$a
-  {
-    public abstract void cDC();
-    
-    public abstract void cDD();
-    
-    public abstract void cDE();
-    
-    public abstract void cDF();
-    
-    public abstract void cDG();
-    
-    public abstract void vm(long paramLong);
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/player/VLogCompositionPlayer$Companion$PlayerFrameCallback;", "Lcom/tencent/mm/plugin/vlog/player/VLogCompositionPlayer$Companion$PlayerCallback;", "onFrame", "", "plugin-vlog_release"})
-  public static abstract interface a$b
-    extends c.a.a
-  {
-    public abstract void cDH();
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/vlog/player/VLogCompositionPlayer$initPlayerCallback$1", "Lcom/tencent/tav/player/IPlayer$PlayerListener;", "onPositionChanged", "", "position", "Lcom/tencent/tav/coremedia/CMTime;", "onStatusChanged", "status", "Lcom/tencent/tav/player/IPlayer$PlayerStatus;", "plugin-vlog_release"})
-  public static final class b
-    implements IPlayer.PlayerListener
-  {
-    public final void onPositionChanged(CMTime paramCMTime)
-    {
-      AppMethodBeat.i(207669);
-      c.a.a locala = c.a(this.ApB);
-      if (locala != null) {
-        if (paramCMTime == null) {
-          break label89;
-        }
-      }
-      label89:
-      for (long l = paramCMTime.getTimeUs();; l = 0L)
-      {
-        locala.vm(l / 1000L);
-        if (paramCMTime == null) {
-          break;
-        }
-        if (paramCMTime.getTimeUs() != c.b(this.ApB).efA().getStartUs()) {
-          break label100;
-        }
-        paramCMTime = c.a(this.ApB);
-        if (paramCMTime == null) {
-          break label100;
-        }
-        paramCMTime.cDC();
-        AppMethodBeat.o(207669);
-        return;
-      }
-      AppMethodBeat.o(207669);
-      return;
-      label100:
-      AppMethodBeat.o(207669);
-    }
-    
-    public final void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
-    {
-      AppMethodBeat.i(207668);
-      ac.i("MicroMsg.VLogCompositionPlayer", "onStatusChanged:".concat(String.valueOf(paramPlayerStatus)));
-      if (paramPlayerStatus == IPlayer.PlayerStatus.PLAYING)
-      {
-        paramPlayerStatus = c.a(this.ApB);
-        if (paramPlayerStatus != null)
-        {
-          paramPlayerStatus.cDC();
-          AppMethodBeat.o(207668);
-          return;
-        }
-        AppMethodBeat.o(207668);
-        return;
-      }
-      if (paramPlayerStatus == IPlayer.PlayerStatus.STOPPED)
-      {
-        paramPlayerStatus = c.a(this.ApB);
-        if (paramPlayerStatus != null)
-        {
-          paramPlayerStatus.cDD();
-          AppMethodBeat.o(207668);
-          return;
-        }
-        AppMethodBeat.o(207668);
-        return;
-      }
-      if (paramPlayerStatus == IPlayer.PlayerStatus.FINISHED)
-      {
-        paramPlayerStatus = c.a(this.ApB);
-        if (paramPlayerStatus != null)
-        {
-          paramPlayerStatus.cDE();
-          AppMethodBeat.o(207668);
-          return;
-        }
-        AppMethodBeat.o(207668);
-        return;
-      }
-      if (paramPlayerStatus == IPlayer.PlayerStatus.ERROR)
-      {
-        paramPlayerStatus = c.a(this.ApB);
-        if (paramPlayerStatus != null)
-        {
-          paramPlayerStatus.cDG();
-          AppMethodBeat.o(207668);
-          return;
-        }
-      }
-      AppMethodBeat.o(207668);
+      super();
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "player", "Lcom/tencent/tav/player/Player;", "kotlin.jvm.PlatformType", "success", "", "onUpdated"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$pause$1$1"})
+  public static final class c
+    extends q
+    implements a<z>
+  {
+    public c(c paramc)
+    {
+      super();
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$playNextFrame$1$1"})
   static final class d
-    implements OnCompositionUpdateListener
+    extends q
+    implements a<z>
   {
-    d(r paramr) {}
-    
-    public final void onUpdated(Player paramPlayer, boolean paramBoolean)
+    d(k paramk, c paramc, Bitmap paramBitmap, boolean paramBoolean)
     {
-      AppMethodBeat.i(207671);
-      StringBuilder localStringBuilder = new StringBuilder("on composition update, success:").append(paramBoolean).append(", position:");
-      CMTime localCMTime = paramPlayer.position();
-      k.g(localCMTime, "player.position()");
-      ac.i("MicroMsg.VLogCompositionPlayer", localCMTime.getTimeUs() / 1000L);
-      if (paramPlayer != null) {
-        paramPlayer.play();
-      }
-      if (paramPlayer != null)
-      {
-        paramPlayer.seekToTime(this.shn.efA().getStart());
-        AppMethodBeat.o(207671);
-        return;
-      }
-      AppMethodBeat.o(207671);
+      super();
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$release$1$1"})
+  static final class e
+    extends q
+    implements a<z>
+  {
+    e(c paramc)
+    {
+      super();
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$resume$1$1"})
+  public static final class f
+    extends q
+    implements a<z>
+  {
+    public f(c paramc)
+    {
+      super();
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$setMute$1$1"})
+  static final class g
+    extends q
+    implements a<z>
+  {
+    g(c paramc, boolean paramBoolean)
+    {
+      super();
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  static final class h
+    extends q
+    implements a<z>
+  {
+    h(c paramc, aa paramaa)
+    {
+      super();
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  static final class i
+    extends q
+    implements a<z>
+  {
+    i(c paramc, k paramk)
+    {
+      super();
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  static final class j
+    extends q
+    implements a<z>
+  {
+    j(c paramc, int paramInt1, int paramInt2)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.player.c
  * JD-Core Version:    0.7.0.1
  */

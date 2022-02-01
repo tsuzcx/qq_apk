@@ -5,12 +5,12 @@ import rx.j;
 
 public final class d
 {
-  private static final a MgS;
+  private static final a ObU;
   
   static
   {
     AppMethodBeat.i(90455);
-    MgS = new a();
+    ObU = new a();
     AppMethodBeat.o(90455);
   }
   
@@ -22,25 +22,25 @@ public final class d
     return parama;
   }
   
-  public static j ggY()
+  public static j gzC()
   {
     AppMethodBeat.i(90453);
-    a locala = a.ggW();
+    a locala = a.gzA();
     AppMethodBeat.o(90453);
     return locala;
   }
   
-  public static j ggZ()
+  public static j gzD()
   {
-    return MgS;
+    return ObU;
   }
   
   static final class a
     implements j
   {
-    public final void ggm() {}
+    public final void gyQ() {}
     
-    public final boolean ggn()
+    public final boolean gyR()
     {
       return true;
     }

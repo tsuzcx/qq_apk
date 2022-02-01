@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.appbrand.jsapi.a;
 import android.content.Context;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.canvas.b;
 import com.tencent.mm.plugin.appbrand.canvas.widget.AppBrandDrawableView;
 import com.tencent.mm.plugin.appbrand.canvas.widget.MCanvasView;
+import com.tencent.mm.plugin.appbrand.canvas.widget.a;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.f.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public final class g
-  extends com.tencent.mm.plugin.appbrand.jsapi.base.a
+  extends com.tencent.mm.plugin.appbrand.jsapi.base.b
 {
   public static final int CTRL_INDEX = 67;
   public static final String NAME = "insertCanvas";
@@ -31,8 +31,8 @@ public final class g
     AppMethodBeat.i(145539);
     paramJSONObject = parame.getContext();
     final AppBrandDrawableView localAppBrandDrawableView = new AppBrandDrawableView(paramJSONObject);
-    localAppBrandDrawableView.getDrawContext().jzh = ((com.tencent.mm.plugin.appbrand.canvas.e)parame.K(com.tencent.mm.plugin.appbrand.canvas.e.class));
-    localAppBrandDrawableView.getDrawContext().ccU = parame;
+    localAppBrandDrawableView.getDrawContext().jTe = ((com.tencent.mm.plugin.appbrand.canvas.e)parame.K(com.tencent.mm.plugin.appbrand.canvas.e.class));
+    localAppBrandDrawableView.getDrawContext().cnl = parame;
     localAppBrandDrawableView.setContentDescription(paramJSONObject.getString(2131755285));
     parame.a(new f.b()
     {
@@ -40,11 +40,11 @@ public final class g
       {
         AppMethodBeat.i(161176);
         AppBrandDrawableView localAppBrandDrawableView = localAppBrandDrawableView;
-        ac.v("MicroMsg.MCanvasView", "onPause :%s", new Object[] { Integer.valueOf(localAppBrandDrawableView.hashCode()) });
-        b localb = localAppBrandDrawableView.jAy;
-        localb.jyL = 0L;
-        localb.jyI.S(localb.jyJ);
-        localAppBrandDrawableView.bac();
+        ad.v("MicroMsg.MCanvasView", "onPause :%s", new Object[] { Integer.valueOf(localAppBrandDrawableView.hashCode()) });
+        com.tencent.mm.plugin.appbrand.canvas.b localb = localAppBrandDrawableView.jUt;
+        localb.jSI = 0L;
+        localb.jSF.R(localb.jSG);
+        localAppBrandDrawableView.bdB();
         AppMethodBeat.o(161176);
       }
     });
@@ -62,19 +62,19 @@ public final class g
     return parame;
   }
   
-  public final boolean bfu()
+  public final boolean biX()
   {
     return true;
   }
   
-  public final boolean bfv()
+  public final boolean biY()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.a.g
  * JD-Core Version:    0.7.0.1
  */

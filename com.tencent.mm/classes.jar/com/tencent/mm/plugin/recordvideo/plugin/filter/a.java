@@ -7,61 +7,63 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
 import com.tencent.mm.plugin.recordvideo.plugin.t;
-import com.tencent.mm.ui.am;
-import d.g.b.k;
+import com.tencent.mm.plugin.recordvideo.plugin.t.a;
+import com.tencent.mm.ui.ao;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/filter/EditPhotoFilterPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "viewGroup", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "filterPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin;", "isSelected", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "view", "Landroid/widget/ImageView;", "getViewGroup", "()Landroid/view/ViewGroup;", "setViewGroup", "(Landroid/view/ViewGroup;)V", "checkFilterStatus", "", "name", "", "onClick", "v", "Landroid/view/View;", "release", "reset", "setPreImage", "bitmap", "Landroid/graphics/Bitmap;", "setVisibility", "visibility", "", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/filter/EditPhotoFilterPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "viewGroup", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "filterPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin;", "isSelected", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "view", "Landroid/widget/ImageView;", "getViewGroup", "()Landroid/view/ViewGroup;", "setViewGroup", "(Landroid/view/ViewGroup;)V", "checkFilterStatus", "", "name", "", "onClick", "v", "Landroid/view/View;", "release", "reset", "setPreImage", "bitmap", "Landroid/graphics/Bitmap;", "setVisibility", "visibility", "", "plugin-recordvideo_release"})
 public final class a
   implements View.OnClickListener, t
 {
   private boolean isSelected;
-  private final ImageView qSI;
-  private d rTT;
-  private ViewGroup wsT;
-  public final PhotoFilterPlugin wuS;
+  private final ImageView rCL;
+  private d sQE;
+  private ViewGroup xAT;
+  public final PhotoFilterPlugin xCO;
   
   public a(ViewGroup paramViewGroup, d paramd)
   {
     AppMethodBeat.i(163448);
-    this.wsT = paramViewGroup;
-    this.rTT = paramd;
-    paramViewGroup = this.wsT.findViewById(2131299960);
-    k.g(paramViewGroup, "viewGroup.findViewById(R.id.filter_layout)");
-    this.wuS = ((PhotoFilterPlugin)paramViewGroup);
-    this.wuS.setStatus(this.rTT);
-    paramViewGroup = this.wsT.findViewById(2131299276);
-    k.g(paramViewGroup, "viewGroup.findViewById(R.id.editor_add_filter)");
-    this.qSI = ((ImageView)paramViewGroup);
-    this.qSI.setVisibility(0);
-    this.qSI.setImageDrawable(am.k(this.qSI.getContext(), 2131690571, -1));
-    this.qSI.setOnClickListener((View.OnClickListener)this);
+    this.xAT = paramViewGroup;
+    this.sQE = paramd;
+    paramViewGroup = this.xAT.findViewById(2131299960);
+    p.g(paramViewGroup, "viewGroup.findViewById(R.id.filter_layout)");
+    this.xCO = ((PhotoFilterPlugin)paramViewGroup);
+    this.xCO.setStatus(this.sQE);
+    paramViewGroup = this.xAT.findViewById(2131299276);
+    p.g(paramViewGroup, "viewGroup.findViewById(R.id.editor_add_filter)");
+    this.rCL = ((ImageView)paramViewGroup);
+    this.rCL.setVisibility(0);
+    this.rCL.setImageDrawable(ao.k(this.rCL.getContext(), 2131690571, -1));
+    this.rCL.setOnClickListener((View.OnClickListener)this);
     AppMethodBeat.o(163448);
   }
   
-  private void dwg()
+  private void dGC()
   {
     AppMethodBeat.i(163444);
     if (this.isSelected)
     {
-      this.wuS.setVisibility(0);
+      this.xCO.setVisibility(0);
       AppMethodBeat.o(163444);
       return;
     }
-    this.wuS.setVisibility(4);
+    this.xCO.setVisibility(4);
     AppMethodBeat.o(163444);
   }
   
-  public final boolean alO()
+  public final boolean aoB()
   {
     return false;
   }
   
-  public final void awk() {}
+  public final void ayX() {}
   
   public final String name()
   {
@@ -73,26 +75,30 @@ public final class a
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(163443);
+    b localb = new b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/plugin/filter/EditPhotoFilterPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
     boolean bool;
     if (!this.isSelected)
     {
       bool = true;
       this.isSelected = bool;
       if (!this.isSelected) {
-        break label72;
+        break label113;
       }
-      this.qSI.setImageDrawable(am.k(this.qSI.getContext(), 2131690571, this.qSI.getResources().getColor(2131099777)));
+      this.rCL.setImageDrawable(ao.k(this.rCL.getContext(), 2131690571, this.rCL.getResources().getColor(2131099777)));
     }
     for (;;)
     {
-      dwg();
+      dGC();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/filter/EditPhotoFilterPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(163443);
       return;
       bool = false;
       break;
-      label72:
-      d.b.a(this.rTT, d.c.wxh);
-      this.qSI.setImageDrawable(am.k(this.qSI.getContext(), 2131690571, -1));
+      label113:
+      d.b.a(this.sQE, d.c.xFq);
+      this.rCL.setImageDrawable(ao.k(this.rCL.getContext(), 2131690571, -1));
     }
   }
   
@@ -100,13 +106,22 @@ public final class a
   
   public final void onPause() {}
   
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(200370);
+    p.h(paramArrayOfString, "permissions");
+    p.h(paramArrayOfInt, "grantResults");
+    t.a.a(paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(200370);
+  }
+  
   public final void onResume() {}
   
   public final void release()
   {
     AppMethodBeat.i(163447);
-    com.tencent.mm.x.a locala = com.tencent.mm.x.a.fZG;
-    com.tencent.mm.x.a.stop();
+    com.tencent.mm.y.a locala = com.tencent.mm.y.a.gtc;
+    com.tencent.mm.y.a.stop();
     AppMethodBeat.o(163447);
   }
   
@@ -114,22 +129,22 @@ public final class a
   {
     AppMethodBeat.i(163445);
     this.isSelected = false;
-    dwg();
-    d.b.a(this.rTT, d.c.wxh);
-    this.qSI.setImageDrawable(am.k(this.qSI.getContext(), 2131690571, -1));
+    dGC();
+    d.b.a(this.sQE, d.c.xFq);
+    this.rCL.setImageDrawable(ao.k(this.rCL.getContext(), 2131690571, -1));
     AppMethodBeat.o(163445);
   }
   
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(163446);
-    this.qSI.setVisibility(paramInt);
+    this.rCL.setVisibility(paramInt);
     AppMethodBeat.o(163446);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.filter.a
  * JD-Core Version:    0.7.0.1
  */

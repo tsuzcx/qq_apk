@@ -1,65 +1,67 @@
 package com.tencent.mm.plugin.finder.storage.logic;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.i;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.model.ce;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.model.cf;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.finder.api.b;
-import com.tencent.mm.plugin.finder.api.b.a;
-import com.tencent.mm.plugin.finder.api.f;
-import com.tencent.mm.plugin.finder.storage.t;
+import com.tencent.mm.plugin.finder.api.c;
+import com.tencent.mm.plugin.finder.api.c.a;
+import com.tencent.mm.plugin.finder.api.g;
+import com.tencent.mm.plugin.finder.model.m;
+import com.tencent.mm.plugin.finder.storage.ab;
+import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.air;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.alh;
+import com.tencent.mm.protocal.protobuf.aqy;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.l;
 import java.util.LinkedList;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/logic/FinderCommentLogic;", "", "()V", "DEFAULT_PAGE_COUNT", "", "TAG", "", "createLocalComment", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "objectId", "", "objectNonceId", "username", "feedUsername", "replyCommentId", "replyContent", "replyUsername", "replyNickname", "content", "nickname", "scene", "localCommentId", "replyFinder", "", "rootComment", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IJZLcom/tencent/mm/protocal/protobuf/FinderCommentInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "transformFinderCommentInfoToLocalFinderCommentObject", "info", "feedId", "rootCommentId", "transformLevel1Comment", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "level1CommentInfo", "transformLevel2Comment", "level2CommentInfo", "transformLevel2CommentFromLevel1", "", "level1Comment", "transformLocalFinderCommentObject", "local", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/logic/FinderCommentLogic;", "", "()V", "DEFAULT_PAGE_COUNT", "", "TAG", "", "createLocalComment", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "objectId", "", "objectNonceId", "username", "feedUsername", "replyCommentId", "replyContent", "replyUsername", "replyNickname", "content", "nickname", "scene", "localCommentId", "replyFinder", "", "rootComment", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "reason", "(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IJZLcom/tencent/mm/protocal/protobuf/FinderCommentInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;I)Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "transformFinderCommentInfoToLocalFinderCommentObject", "info", "feedId", "rootCommentId", "transformLevel1Comment", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "level1CommentInfo", "transformLevel2Comment", "level2CommentInfo", "transformLevel2CommentFromLevel1", "", "level1Comment", "transformLocalFinderCommentObject", "local", "transformLocalFinderCommentObjectToFinderCommentInfo", "plugin-finder_release"})
 public final class a
 {
-  public static final a rFj;
+  public static final a sAq;
   
   static
   {
     AppMethodBeat.i(167088);
-    rFj = new a();
+    sAq = new a();
     AppMethodBeat.o(167088);
   }
   
-  public static t a(long paramLong1, String paramString1, String paramString2, String paramString3, Long paramLong, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt, long paramLong2, boolean paramBoolean, FinderCommentInfo paramFinderCommentInfo, anm paramanm)
+  public static ab a(long paramLong1, String paramString1, String paramString2, String paramString3, Long paramLong, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt1, long paramLong2, boolean paramBoolean, FinderCommentInfo paramFinderCommentInfo, aqy paramaqy, int paramInt2)
   {
-    AppMethodBeat.i(203054);
-    d.g.b.k.h(paramString1, "objectNonceId");
-    d.g.b.k.h(paramString2, "username");
-    d.g.b.k.h(paramString3, "feedUsername");
-    d.g.b.k.h(paramString8, "nickname");
-    t localt = new t();
-    localt.field_actionType = 1;
-    localt.field_feedId = paramLong1;
-    localt.field_objectNonceId = paramString1;
-    localt.field_localCommentId = paramLong2;
-    localt.field_actionInfo.EDq.displayid = 0L;
+    AppMethodBeat.i(221545);
+    d.g.b.p.h(paramString1, "objectNonceId");
+    d.g.b.p.h(paramString2, "username");
+    d.g.b.p.h(paramString3, "feedUsername");
+    d.g.b.p.h(paramString8, "nickname");
+    ab localab = new ab();
+    localab.field_actionType = 1;
+    localab.field_feedId = paramLong1;
+    localab.field_objectNonceId = paramString1;
+    localab.field_localCommentId = paramLong2;
+    localab.field_actionInfo.Gla.displayid = 0L;
     Object localObject;
     int i;
     if (paramFinderCommentInfo != null)
     {
       paramLong1 = paramFinderCommentInfo.commentId;
-      localt.uQ(paramLong1);
-      if (paramInt != 1) {
-        break label577;
+      localab.wR(paramLong1);
+      if (paramInt1 != 1) {
+        break label587;
       }
-      localt.setUsername(paramString2);
-      paramString1 = b.qWt;
-      paramString1 = u.axE();
-      d.g.b.k.g(paramString1, "ConfigStorageLogic.getMyFinderUsername()");
-      paramString1 = b.a.adh(paramString1);
+      localab.setUsername(paramString2);
+      paramString1 = c.rHn;
+      paramString1 = u.aAu();
+      d.g.b.p.g(paramString1, "ConfigStorageLogic.getMyFinderUsername()");
+      paramString1 = c.a.agW(paramString1);
       if (paramString1 != null)
       {
-        localObject = paramString1.crZ();
+        localObject = paramString1.cxL();
         paramString1 = (String)localObject;
         if (localObject != null) {}
       }
@@ -67,61 +69,61 @@ public final class a
       {
         paramString1 = "";
       }
-      localt.aef(paramString1);
+      localab.aiz(paramString1);
       if (paramString7 != null)
       {
-        d.g.b.k.h(paramString7, "value");
-        localt.field_actionInfo.EDq.content = paramString7;
+        d.g.b.p.h(paramString7, "value");
+        localab.field_actionInfo.Gla.content = paramString7;
       }
-      d.g.b.k.h(paramString8, "value");
-      localt.field_actionInfo.EDq.nickname = paramString8;
-      localt.uR(ce.azH() / 1000L);
-      if (!d.g.b.k.g(paramString2, paramString3)) {
-        break label702;
+      d.g.b.p.h(paramString8, "value");
+      localab.field_actionInfo.Gla.nickname = paramString8;
+      localab.wS(cf.aCK() / 1000L);
+      if (!d.g.b.p.i(paramString2, paramString3)) {
+        break label712;
       }
       i = 2;
       label221:
-      localt.Ei(i);
-      localt.field_state = 1;
+      localab.Fp(i);
+      localab.field_state = 1;
       if (paramLong != null)
       {
         ((Number)paramLong).longValue();
         paramLong1 = paramLong.longValue();
-        localt.field_actionInfo.EDq.replyCommentId = paramLong1;
+        localab.field_actionInfo.Gla.replyCommentId = paramLong1;
         paramString1 = paramString4;
         if (paramString4 == null) {
           paramString1 = "";
         }
-        d.g.b.k.h(paramString1, "value");
-        localt.field_actionInfo.EDq.reply_content = paramString1;
+        d.g.b.p.h(paramString1, "value");
+        localab.field_actionInfo.Gla.reply_content = paramString1;
         if (paramString5 != null) {
-          break label754;
+          break label764;
         }
       }
     }
-    label577:
-    label754:
+    label587:
+    label764:
     for (paramString1 = "";; paramString1 = paramString5) {
       for (;;)
       {
-        d.g.b.k.h(paramString1, "value");
-        localt.field_actionInfo.EDq.reply_username = paramString1;
+        d.g.b.p.h(paramString1, "value");
+        localab.field_actionInfo.Gla.reply_username = paramString1;
         paramString1 = paramString6;
         if (paramString6 == null) {
           paramString1 = "";
         }
-        d.g.b.k.h(paramString1, "value");
-        localt.field_actionInfo.EDq.replyNickname = paramString1;
-        if (bs.lr(paramString5, paramString3)) {
-          localt.Ei(localt.cAO() | 0x4);
+        d.g.b.p.h(paramString1, "value");
+        localab.field_actionInfo.Gla.replyNickname = paramString1;
+        if (bt.lQ(paramString5, paramString3)) {
+          localab.Fp(localab.cIK() | 0x4);
         }
         if (paramBoolean) {
-          localt.Ei(localt.cAO() | 0x10);
+          localab.Fp(localab.cIK() | 0x10);
         }
         if (paramFinderCommentInfo != null)
         {
-          paramString2 = localt.field_actionInfo;
-          paramString1 = (com.tencent.mm.bw.a)new FinderCommentInfo();
+          paramString2 = localab.field_actionInfo;
+          paramString1 = (com.tencent.mm.bx.a)new FinderCommentInfo();
           paramString3 = paramFinderCommentInfo.toByteArray();
         }
         try
@@ -142,51 +144,51 @@ public final class a
               }
               paramString1.lastBuffer = null;
               paramString1.displayid = 0L;
-              paramString2.EDt = paramString1;
+              paramString2.Gld = paramString1;
               paramString1 = String.valueOf(paramLong2);
-              d.g.b.k.h(paramString1, "value");
-              localt.field_actionInfo.EDq.client_id = paramString1;
-              localt.field_scene = paramInt;
-              localt.field_postTime = System.currentTimeMillis();
-              localt.field_tryCount = 0L;
-              localt.field_actionInfo.contextObj = paramanm;
-              localt.field_actionInfo.EDq.extFlag = 1;
-              AppMethodBeat.o(203054);
-              return localt;
+              d.g.b.p.h(paramString1, "value");
+              localab.field_actionInfo.Gla.client_id = paramString1;
+              localab.field_scene = paramInt1;
+              localab.field_postTime = System.currentTimeMillis();
+              localab.field_tryCount = 0L;
+              localab.field_actionInfo.rIl = paramaqy;
+              localab.field_actionInfo.Oer = paramInt2;
+              localab.field_actionInfo.Gla.extFlag = 1;
+              AppMethodBeat.o(221545);
+              return localab;
               paramLong1 = 0L;
               break;
-              paramString1 = u.axw();
-              d.g.b.k.g(paramString1, "ConfigStorageLogic.getUsernameFromUserInfo()");
-              localt.setUsername(paramString1);
-              paramString1 = p.aBw().Ak(localt.getUsername());
+              paramString1 = u.aAm();
+              d.g.b.p.g(paramString1, "ConfigStorageLogic.getUsernameFromUserInfo()");
+              localab.setUsername(paramString1);
+              paramString1 = com.tencent.mm.ak.p.aEx().Dj(localab.getUsername());
               if (paramString1 != null)
               {
-                localObject = (CharSequence)paramString1.aBo();
+                localObject = (CharSequence)paramString1.aEq();
                 if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
-                  break label681;
+                  break label691;
                 }
                 i = 1;
-                label637:
                 if (i == 0) {
-                  break label687;
+                  break label697;
                 }
-                paramString1 = paramString1.aBp();
-                d.g.b.k.g(paramString1, "imgFlag.smallUrl");
+                paramString1 = paramString1.aEr();
+                d.g.b.p.g(paramString1, "imgFlag.smallUrl");
               }
               for (;;)
               {
-                localt.aef(paramString1);
-                if (!bs.isNullOrNil(localt.cAL())) {
+                localab.aiz(paramString1);
+                if (!bt.isNullOrNil(localab.cIH())) {
                   break;
                 }
-                localt.aef("");
+                localab.aiz("");
                 break;
                 i = 0;
-                break label637;
-                paramString1 = paramString1.aBo();
-                d.g.b.k.g(paramString1, "imgFlag.bigUrl");
+                break label647;
+                paramString1 = paramString1.aEq();
+                d.g.b.p.g(paramString1, "imgFlag.bigUrl");
               }
-              if (paramInt == 1)
+              if (paramInt1 == 1)
               {
                 i = 8;
                 break label221;
@@ -199,7 +201,7 @@ public final class a
         {
           for (;;)
           {
-            ac.l("safeParser", "", new Object[] { paramString1 });
+            ad.l("safeParser", "", new Object[] { paramString1 });
             paramString1 = null;
             continue;
             i = 0;
@@ -211,45 +213,74 @@ public final class a
     }
   }
   
-  private static t a(FinderCommentInfo paramFinderCommentInfo, long paramLong1, long paramLong2)
+  private static ab a(FinderCommentInfo paramFinderCommentInfo, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(178424);
-    d.g.b.k.h(paramFinderCommentInfo, "info");
-    t localt = new t();
-    localt.field_feedId = paramLong1;
-    localt.field_state = 2;
-    localt.field_actionInfo.EDq = paramFinderCommentInfo;
-    localt.uQ(paramLong2);
+    d.g.b.p.h(paramFinderCommentInfo, "info");
+    ab localab = new ab();
+    localab.field_feedId = paramLong1;
+    localab.field_state = 2;
+    localab.field_actionInfo.Gla = paramFinderCommentInfo;
+    localab.wR(paramLong2);
     AppMethodBeat.o(178424);
-    return localt;
+    return localab;
   }
   
-  public static com.tencent.mm.plugin.finder.model.l b(t paramt)
+  public static m b(ab paramab)
   {
     AppMethodBeat.i(167085);
-    d.g.b.k.h(paramt, "local");
-    paramt = new com.tencent.mm.plugin.finder.model.l(paramt);
-    paramt.ruH = com.tencent.mm.pluginsdk.ui.span.k.c(ai.getContext(), (CharSequence)paramt.ruO.getContent());
+    d.g.b.p.h(paramab, "local");
+    paramab = new m(paramab);
+    paramab.ska = k.c(aj.getContext(), (CharSequence)paramab.skh.getContent());
     AppMethodBeat.o(167085);
-    return paramt;
+    return paramab;
   }
   
-  public static com.tencent.mm.plugin.finder.model.l b(FinderCommentInfo paramFinderCommentInfo, long paramLong)
+  public static m b(FinderCommentInfo paramFinderCommentInfo, long paramLong)
   {
     AppMethodBeat.i(178426);
-    d.g.b.k.h(paramFinderCommentInfo, "level1CommentInfo");
+    d.g.b.p.h(paramFinderCommentInfo, "level1CommentInfo");
     paramFinderCommentInfo = b(a(paramFinderCommentInfo, paramLong, 0L));
     AppMethodBeat.o(178426);
     return paramFinderCommentInfo;
   }
   
-  public static com.tencent.mm.plugin.finder.model.l b(FinderCommentInfo paramFinderCommentInfo, long paramLong1, long paramLong2)
+  public static m b(FinderCommentInfo paramFinderCommentInfo, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(178427);
-    d.g.b.k.h(paramFinderCommentInfo, "level2CommentInfo");
+    d.g.b.p.h(paramFinderCommentInfo, "level2CommentInfo");
     paramFinderCommentInfo = b(a(paramFinderCommentInfo, paramLong1, paramLong2));
     AppMethodBeat.o(178427);
     return paramFinderCommentInfo;
+  }
+  
+  public static FinderCommentInfo c(ab paramab)
+  {
+    AppMethodBeat.i(221546);
+    d.g.b.p.h(paramab, "local");
+    FinderCommentInfo localFinderCommentInfo = new FinderCommentInfo();
+    localFinderCommentInfo.username = paramab.getUsername();
+    localFinderCommentInfo.displayid = paramab.field_actionInfo.Gla.displayid;
+    localFinderCommentInfo.commentId = paramab.cIG();
+    localFinderCommentInfo.content = paramab.getContent();
+    localFinderCommentInfo.createtime = paramab.cII();
+    localFinderCommentInfo.deleteFlag = paramab.field_actionInfo.Gla.deleteFlag;
+    localFinderCommentInfo.replyCommentId = paramab.field_actionInfo.Gla.replyCommentId;
+    localFinderCommentInfo.nickname = paramab.VC();
+    localFinderCommentInfo.headUrl = paramab.cIH();
+    localFinderCommentInfo.replyNickname = paramab.cIJ();
+    localFinderCommentInfo.likeCount = paramab.getLikeCount();
+    localFinderCommentInfo.likeFlag = paramab.getLikeFlag();
+    localFinderCommentInfo.expandCommentCount = paramab.field_actionInfo.Gla.expandCommentCount;
+    localFinderCommentInfo.continueFlag = paramab.field_actionInfo.Gla.continueFlag;
+    localFinderCommentInfo.displayFlag = paramab.cIK();
+    localFinderCommentInfo.blacklist_flag = paramab.eQt();
+    localFinderCommentInfo.reply_content = paramab.cIL();
+    localFinderCommentInfo.reply_username = paramab.cIM();
+    localFinderCommentInfo.client_id = paramab.cIN();
+    localFinderCommentInfo.extFlag = paramab.cIO();
+    AppMethodBeat.o(221546);
+    return localFinderCommentInfo;
   }
 }
 

@@ -4,8 +4,8 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.plugin.topstory.a.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -18,13 +18,13 @@ final class PluginTopStory$a
   public final void run()
   {
     AppMethodBeat.i(88409);
-    ac.i("MicroMsg.TopStory.PluginTopStory", "Delete sdcard ftsrecommendVideo folder %b", new Object[] { Boolean.valueOf(i.cU(b.aph() + "ftsrecommendVideo/", true)) });
-    ac.i("MicroMsg.TopStory.PluginTopStory", "Delete sdcard topstory folder %b", new Object[] { Boolean.valueOf(i.cU(b.aph() + "topstory/", true)) });
-    ac.i("MicroMsg.TopStory.PluginTopStory", "Delete sdcard cache topstory folder %b", new Object[] { Boolean.valueOf(i.cU(ai.getContext().getCacheDir() + "topstory/", true)) });
-    Object localObject1 = new e(h.ecs());
+    ad.i("MicroMsg.TopStory.PluginTopStory", "Delete sdcard ftsrecommendVideo folder %b", new Object[] { Boolean.valueOf(i.cZ(b.arU() + "ftsrecommendVideo/", true)) });
+    ad.i("MicroMsg.TopStory.PluginTopStory", "Delete sdcard topstory folder %b", new Object[] { Boolean.valueOf(i.cZ(b.arU() + "topstory/", true)) });
+    ad.i("MicroMsg.TopStory.PluginTopStory", "Delete sdcard cache topstory folder %b", new Object[] { Boolean.valueOf(i.cZ(aj.getContext().getCacheDir() + "topstory/", true)) });
+    Object localObject1 = new e(h.eoJ());
     if (((e)localObject1).exists())
     {
-      localObject1 = ((e)localObject1).fxX();
+      localObject1 = ((e)localObject1).fOM();
       if (localObject1 != null)
       {
         int j = localObject1.length;
@@ -32,18 +32,18 @@ final class PluginTopStory$a
         while (i < j)
         {
           Object localObject2 = localObject1[i];
-          boolean bool = i.cU(q.B(localObject2.fxV()), true);
-          ac.i("MicroMsg.TopStory.PluginTopStory", "Delete Cache File %s %b", new Object[] { q.B(localObject2.fxV()), Boolean.valueOf(bool) });
+          boolean bool = i.cZ(q.B(localObject2.fOK()), true);
+          ad.i("MicroMsg.TopStory.PluginTopStory", "Delete Cache File %s %b", new Object[] { q.B(localObject2.fOK()), Boolean.valueOf(bool) });
           i += 1;
         }
       }
-      i.aSh(h.ecs() + ".nomedia/");
+      i.aYg(h.eoJ() + ".nomedia/");
       AppMethodBeat.o(88409);
       return;
     }
-    i.aSh(h.ecs());
-    i.aSh(h.ecs() + ".nomedia/");
-    ac.i("MicroMsg.TopStory.PluginTopStory", "Create TopStoryCacheFolder");
+    i.aYg(h.eoJ());
+    i.aYg(h.eoJ() + ".nomedia/");
+    ad.i("MicroMsg.TopStory.PluginTopStory", "Create TopStoryCacheFolder");
     AppMethodBeat.o(88409);
   }
 }

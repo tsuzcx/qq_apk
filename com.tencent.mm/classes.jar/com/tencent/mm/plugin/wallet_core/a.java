@@ -18,7 +18,7 @@ public final class a
     AppMethodBeat.o(163871);
   }
   
-  public final com.tencent.mm.pluginsdk.b.a gF(Context paramContext)
+  public final com.tencent.mm.pluginsdk.b.a gJ(Context paramContext)
   {
     AppMethodBeat.i(69863);
     paramContext = new b(paramContext);
@@ -26,11 +26,11 @@ public final class a
     return paramContext;
   }
   
-  public final com.tencent.mm.pluginsdk.b.a gG(Context paramContext)
+  public final com.tencent.mm.pluginsdk.b.a gK(Context paramContext)
   {
-    AppMethodBeat.i(207266);
+    AppMethodBeat.i(199294);
     paramContext = new com.tencent.mm.plugin.wallet_core.ui.a(paramContext);
-    AppMethodBeat.o(207266);
+    AppMethodBeat.o(199294);
     return paramContext;
   }
 }

@@ -5,60 +5,60 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cf.e;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class b
   extends a
 {
-  private static final int mHE;
-  private static final int mHF;
+  private static final int nic;
+  private static final int nid;
   
   static
   {
     AppMethodBeat.i(49928);
-    mHE = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 48);
-    mHF = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 43);
+    nic = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 48);
+    nid = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 43);
     AppMethodBeat.o(49928);
   }
   
-  private int bAY()
+  private int bFa()
   {
     AppMethodBeat.i(49922);
-    c localc = this.mHC;
-    if (localc.mHW <= 1) {
-      localc.mHW = c.bBf()[0];
+    c localc = this.nia;
+    if (localc.niu <= 1) {
+      localc.niu = c.bFh()[0];
     }
-    int i = localc.mHW;
+    int i = localc.niu;
     AppMethodBeat.o(49922);
     return i;
   }
   
-  public final int bAV()
+  public final int bEX()
   {
     AppMethodBeat.i(49923);
-    int i = this.mHC.bAO().bAQ();
+    int i = this.nia.bEQ().bES();
     AppMethodBeat.o(49923);
     return i;
   }
   
-  public final int bAW()
+  public final int bEY()
   {
     AppMethodBeat.i(49924);
-    int i = bAX();
+    int i = bEZ();
     int j = getRowCount();
     AppMethodBeat.o(49924);
     return i * j;
   }
   
-  public final int bAX()
+  public final int bEZ()
   {
     AppMethodBeat.i(49926);
-    if (this.mHC.mHR)
+    if (this.nia.nip)
     {
       AppMethodBeat.o(49926);
       return 7;
     }
-    int i = bAY() / mHF;
+    int i = bFa() / nid;
     AppMethodBeat.o(49926);
     return i;
   }
@@ -66,13 +66,13 @@ public final class b
   public final int getPageCount()
   {
     AppMethodBeat.i(49925);
-    if (bAW() <= 0)
+    if (bEY() <= 0)
     {
       AppMethodBeat.o(49925);
       return 0;
     }
-    int i = bAV();
-    int j = bAW();
+    int i = bEX();
+    int j = bEY();
     i = (int)Math.ceil(i / j);
     AppMethodBeat.o(49925);
     return i;
@@ -81,7 +81,7 @@ public final class b
   public final int getRowCount()
   {
     int i = 3;
-    int j = this.mHC.mHV / mHE;
+    int j = this.nia.nit / nic;
     if (j > 3) {}
     for (;;)
     {
@@ -97,22 +97,22 @@ public final class b
   public final int getRowSpacing()
   {
     AppMethodBeat.i(49927);
-    int i = (this.mHC.mHV - mHE * getRowCount()) / (getRowCount() + 1);
+    int i = (this.nia.nit - nic * getRowCount()) / (getRowCount() + 1);
     AppMethodBeat.o(49927);
     return i;
   }
   
-  public final View vX(int paramInt)
+  public final View wC(int paramInt)
   {
     AppMethodBeat.i(49921);
-    Object localObject1 = this.mHB;
-    Object localObject2 = this.mHC;
+    Object localObject1 = this.nhZ;
+    Object localObject2 = this.nia;
     d locald = new d();
     locald.mIndex = paramInt;
-    locald.mHX = this;
+    locald.niv = this;
     locald.mContext = ((Context)localObject1);
-    locald.mHC = ((c)localObject2);
-    if ((locald.mContext == null) || (locald.mHX == null))
+    locald.nia = ((c)localObject2);
+    if ((locald.mContext == null) || (locald.niv == null))
     {
       AppMethodBeat.o(49921);
       return null;
@@ -120,24 +120,24 @@ public final class b
     localObject1 = View.inflate(locald.mContext, 2131493107, null);
     if ((localObject1 instanceof AppBrandSmileyGrid))
     {
-      ((AppBrandSmileyGrid)localObject1).setPanelManager(locald.mHC);
+      ((AppBrandSmileyGrid)localObject1).setPanelManager(locald.nia);
       localObject2 = (AppBrandSmileyGrid)localObject1;
       paramInt = locald.mIndex;
-      int i = locald.mHX.bAV();
-      int j = locald.mHX.bAW();
-      int k = locald.mHX.bAX();
-      int m = locald.mHX.getRowCount();
-      int n = locald.mHX.getRowSpacing();
+      int i = locald.niv.bEX();
+      int j = locald.niv.bEY();
+      int k = locald.niv.bEZ();
+      int m = locald.niv.getRowCount();
+      int n = locald.niv.getRowSpacing();
       ((AppBrandSmileyGrid)localObject2).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       ((AppBrandSmileyGrid)localObject2).setBackgroundResource(0);
       ((AppBrandSmileyGrid)localObject2).setStretchMode(2);
-      ((AppBrandSmileyGrid)localObject2).setOnItemClickListener(((AppBrandSmileyGrid)localObject2).auB);
-      ((AppBrandSmileyGrid)localObject2).mHJ = paramInt;
-      ((AppBrandSmileyGrid)localObject2).mHH = i;
-      ((AppBrandSmileyGrid)localObject2).mHI = j;
-      ((AppBrandSmileyGrid)localObject2).mHK = n;
-      ((AppBrandSmileyGrid)localObject2).mHL = k;
-      ((AppBrandSmileyGrid)localObject2).mHM = m;
+      ((AppBrandSmileyGrid)localObject2).setOnItemClickListener(((AppBrandSmileyGrid)localObject2).awt);
+      ((AppBrandSmileyGrid)localObject2).nih = paramInt;
+      ((AppBrandSmileyGrid)localObject2).nif = i;
+      ((AppBrandSmileyGrid)localObject2).nig = j;
+      ((AppBrandSmileyGrid)localObject2).nii = n;
+      ((AppBrandSmileyGrid)localObject2).nij = k;
+      ((AppBrandSmileyGrid)localObject2).nik = m;
       ((AppBrandSmileyGrid)localObject2).setNumColumns(k);
       i = ((AppBrandSmileyGrid)localObject2).getRowSpacing();
       j = com.tencent.mm.cc.a.fromDPToPix(((AppBrandSmileyGrid)localObject2).getContext(), 6);
@@ -147,9 +147,9 @@ public final class b
         paramInt = com.tencent.mm.cc.a.fromDPToPix(((AppBrandSmileyGrid)localObject2).getContext(), 6);
       }
       ((AppBrandSmileyGrid)localObject2).setPadding(j, paramInt, k, 0);
-      ((AppBrandSmileyGrid)localObject2).mHG = new AppBrandSmileyGrid.a((AppBrandSmileyGrid)localObject2, (byte)0);
-      ((AppBrandSmileyGrid)localObject2).setAdapter(((AppBrandSmileyGrid)localObject2).mHG);
-      ((AppBrandSmileyGrid)localObject2).mHG.notifyDataSetChanged();
+      ((AppBrandSmileyGrid)localObject2).nie = new AppBrandSmileyGrid.a((AppBrandSmileyGrid)localObject2, (byte)0);
+      ((AppBrandSmileyGrid)localObject2).setAdapter(((AppBrandSmileyGrid)localObject2).nie);
+      ((AppBrandSmileyGrid)localObject2).nie.notifyDataSetChanged();
     }
     AppMethodBeat.o(49921);
     return localObject1;

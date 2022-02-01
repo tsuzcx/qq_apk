@@ -90,7 +90,7 @@ public final class c
       AppMethodBeat.o(145352);
       return false;
     }
-    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.kr, paramBasePathActionArg.jzM, paramBasePathActionArg.jzN);
+    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.mh, paramBasePathActionArg.jTH, paramBasePathActionArg.jTI);
     AppMethodBeat.o(145352);
     return bool;
   }
@@ -108,7 +108,7 @@ public final class c
     return bool;
   }
   
-  public final BasePathActionArg baa()
+  public final BasePathActionArg bdz()
   {
     AppMethodBeat.i(145353);
     PathArcToActionArg localPathArcToActionArg = new PathArcToActionArg();

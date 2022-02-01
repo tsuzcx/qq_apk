@@ -9,13 +9,13 @@ import java.io.BufferedOutputStream;
 
 public final class k
 {
-  public static boolean AMa = false;
+  public static boolean Clo = false;
   static BufferedOutputStream mOutputStream = null;
   
-  public static boolean fIJ()
+  public static boolean gaa()
   {
     AppMethodBeat.i(62691);
-    if (getNetType(c.AMx) == 4)
+    if (getNetType(c.ClL) == 4)
     {
       AppMethodBeat.o(62691);
       return true;
@@ -81,7 +81,7 @@ public final class k
     return 2;
   }
   
-  public static int lf(Context paramContext)
+  public static int ls(Context paramContext)
   {
     AppMethodBeat.i(62689);
     try
@@ -140,7 +140,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.k
  * JD-Core Version:    0.7.0.1
  */

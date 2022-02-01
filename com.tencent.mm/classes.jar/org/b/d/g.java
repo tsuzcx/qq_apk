@@ -12,8 +12,8 @@ import org.b.g.e;
 
 public final class g
 {
-  private String Mbp;
-  private InputStream aDF;
+  private String NWr;
+  private InputStream aFw;
   public int code;
   private Map<String, String> headers;
   
@@ -52,7 +52,7 @@ public final class g
     //   59: astore_1
     //   60: aload_0
     //   61: aload_1
-    //   62: putfield 50	org/b/d/g:aDF	Ljava/io/InputStream;
+    //   62: putfield 50	org/b/d/g:aFw	Ljava/io/InputStream;
     //   65: ldc 21
     //   67: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: return
@@ -107,14 +107,14 @@ public final class g
   public final String getBody()
   {
     AppMethodBeat.i(40513);
-    if (this.Mbp != null)
+    if (this.NWr != null)
     {
-      str = this.Mbp;
+      str = this.NWr;
       AppMethodBeat.o(40513);
       return str;
     }
-    this.Mbp = e.X(this.aDF);
-    String str = this.Mbp;
+    this.NWr = e.aa(this.aFw);
+    String str = this.NWr;
     AppMethodBeat.o(40513);
     return str;
   }

@@ -2,19 +2,21 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class w$a$a
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
-  public static final a krn;
+  public static final a kMJ;
   
   static
   {
     AppMethodBeat.i(147937);
-    krn = new a();
+    kMJ = new a();
     AppMethodBeat.o(147937);
   }
   

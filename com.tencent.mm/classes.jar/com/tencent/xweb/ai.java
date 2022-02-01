@@ -5,18 +5,18 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class ai
 {
-  static String KAw;
-  static boolean KAx = true;
-  static boolean KAy;
+  static String MqR;
+  static boolean MqS = true;
+  static boolean MqT;
   
-  public static void aVc(String paramString)
+  public static void bbf(String paramString)
   {
     try
     {
-      AppMethodBeat.i(205078);
+      AppMethodBeat.i(197089);
       XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setEmbedInstallLibDir: ".concat(String.valueOf(paramString)));
-      KAw = paramString;
-      AppMethodBeat.o(205078);
+      MqR = paramString;
+      AppMethodBeat.o(197089);
       return;
     }
     finally
@@ -27,17 +27,17 @@ public final class ai
   }
   
   /* Error */
-  public static String fJU()
+  public static String gbo()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc 51
     //   5: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 45	com/tencent/xweb/ai:KAw	Ljava/lang/String;
+    //   8: getstatic 45	com/tencent/xweb/ai:MqR	Ljava/lang/String;
     //   11: invokestatic 57	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   14: ifne +17 -> 31
-    //   17: getstatic 45	com/tencent/xweb/ai:KAw	Ljava/lang/String;
+    //   17: getstatic 45	com/tencent/xweb/ai:MqR	Ljava/lang/String;
     //   20: astore_0
     //   21: ldc 51
     //   23: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -68,12 +68,12 @@ public final class ai
   }
   
   /* Error */
-  public static boolean fJV()
+  public static boolean gbp()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 76	com/tencent/xweb/ai:KAy	Z
+    //   3: getstatic 76	com/tencent/xweb/ai:MqT	Z
     //   6: istore_0
     //   7: iload_0
     //   8: ifeq +10 -> 18
@@ -100,14 +100,14 @@ public final class ai
     //   3	7	23	finally
   }
   
-  public static void yU(boolean paramBoolean)
+  public static void zH(boolean paramBoolean)
   {
     try
     {
-      AppMethodBeat.i(205080);
+      AppMethodBeat.i(197091);
       XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setIsEmbedDirReady: ".concat(String.valueOf(paramBoolean)));
-      KAx = paramBoolean;
-      AppMethodBeat.o(205080);
+      MqS = paramBoolean;
+      AppMethodBeat.o(197091);
       return;
     }
     finally
@@ -117,14 +117,14 @@ public final class ai
     }
   }
   
-  public static void yV(boolean paramBoolean)
+  public static void zI(boolean paramBoolean)
   {
     try
     {
-      AppMethodBeat.i(205081);
+      AppMethodBeat.i(197092);
       XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setForbidDownloadCode: ".concat(String.valueOf(paramBoolean)));
-      KAy = paramBoolean;
-      AppMethodBeat.o(205081);
+      MqT = paramBoolean;
+      AppMethodBeat.o(197092);
       return;
     }
     finally

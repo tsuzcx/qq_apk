@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class u$g
 {
-  final Object lBB;
-  final Object lBC;
+  final Object mbc;
+  final Object mbd;
   
   u$g(Object paramObject1, Object paramObject2)
   {
-    this.lBB = paramObject1;
-    this.lBC = paramObject2;
+    this.mbc = paramObject1;
+    this.mbd = paramObject2;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(176580);
-    String str = "PageSwitchResult{enterAnimation=" + this.lBB + ", exitAnimation=" + this.lBC + '}';
+    String str = "PageSwitchResult{enterAnimation=" + this.mbc + ", exitAnimation=" + this.mbd + '}';
     AppMethodBeat.o(176580);
     return str;
   }

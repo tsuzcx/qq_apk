@@ -1,166 +1,93 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.msgsubscription.SubscribeMsgRequestDialogUiData;
-import com.tencent.mm.msgsubscription.SubscribeMsgRequestDialogUiData.ItemUiData;
-import com.tencent.mm.msgsubscription.SubscribeMsgRequestResult;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cgc;
-import com.tencent.mm.protocal.protobuf.dfh;
-import com.tencent.mm.protocal.protobuf.dfi;
-import com.tencent.mm.protocal.protobuf.dfj;
-import com.tencent.mm.protocal.protobuf.dfl;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.protocal.protobuf.bbs;
+import com.tencent.mm.protocal.protobuf.bbt;
+import com.tencent.mm.protocal.protobuf.cdi;
+import com.tencent.mm.protocal.protobuf.cdj;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class g
   extends n
   implements k
 {
-  private int actionType;
-  private com.tencent.mm.ak.g callback;
-  private boolean igL;
-  public byte[] ihA;
-  public List<dfh> ihv;
-  private String ihy;
-  public SubscribeMsgRequestDialogUiData ihz;
-  private com.tencent.mm.ak.b rr;
-  private String userName;
-  public b ysm;
+  private f callback;
+  public String jsonString;
+  private b rr;
   
   public g(String paramString)
   {
-    this.userName = paramString;
-    this.actionType = 2;
+    AppMethodBeat.i(97154);
+    b.a locala = new b.a();
+    locala.hNM = new cdi();
+    locala.hNN = new cdj();
+    locala.uri = "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_officialsync";
+    locala.funcId = 2721;
+    this.rr = locala.aDC();
+    ((cdi)this.rr.hNK.hNQ).GXw = paramString;
+    ad.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: syncBuffer:".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(97154);
   }
   
-  public g(String paramString, boolean paramBoolean)
+  public g(String paramString1, String paramString2, String paramString3)
   {
-    this.userName = paramString;
-    this.actionType = 6;
-    this.igL = paramBoolean;
-  }
-  
-  public final g dLA()
-  {
-    int i = 1;
-    AppMethodBeat.i(179134);
+    AppMethodBeat.i(97153);
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new dfi();
-    ((b.a)localObject).hvu = new dfj();
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/bizattr/subscribemsg";
-    this.rr = ((b.a)localObject).aAz();
-    if ((this.rr.hvr.hvw instanceof dfi)) {
-      localObject = (dfi)this.rr.hvr.hvw;
-    }
-    switch (this.actionType)
-    {
-    case 4: 
-    default: 
-    case 2: 
-    case 3: 
-    case 5: 
-      for (;;)
-      {
-        AppMethodBeat.o(179134);
-        return this;
-        ((dfi)localObject).EaV = this.userName;
-        ((dfi)localObject).Edq = this.actionType;
-        ((dfi)localObject).tiT.addAll(this.ihv);
-        if (!bs.isNullOrNil(this.ihy)) {
-          ((dfi)localObject).FOG = this.ihy;
-        }
-      }
-    }
-    ((dfi)localObject).EaV = this.userName;
-    ((dfi)localObject).Edq = this.actionType;
-    ((dfi)localObject).Ebf = 1;
-    if (this.igL) {}
-    for (;;)
-    {
-      ((dfi)localObject).FOA = i;
-      ((dfi)localObject).tiT.addAll(this.ihv);
-      if (this.actionType != 6) {
-        break;
-      }
-      ((dfi)localObject).Buffer = new com.tencent.mm.bw.b(this.ihA);
-      ((dfi)localObject).FOH = new cgc();
-      ((dfi)localObject).FOH.Ful = this.ihz.igs;
-      ((dfi)localObject).FOH.fZz = this.ihz.opType;
-      Iterator localIterator = this.ihz.igt.iterator();
-      while (localIterator.hasNext())
-      {
-        SubscribeMsgRequestDialogUiData.ItemUiData localItemUiData = (SubscribeMsgRequestDialogUiData.ItemUiData)localIterator.next();
-        dfl localdfl = new dfl();
-        localdfl.Fhh = localItemUiData.hiK;
-        localdfl.FOy = localItemUiData.igB;
-        ((dfi)localObject).FOH.Fum.add(localdfl);
-      }
-      break;
-      i = 0;
-    }
+    ((b.a)localObject).hNM = new bbs();
+    ((b.a)localObject).hNN = new bbt();
+    ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/getgamecanvasinfo";
+    ((b.a)localObject).funcId = 1337;
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (bbs)this.rr.hNK.hNQ;
+    ((bbs)localObject).iht = paramString1;
+    ((bbs)localObject).GyE = paramString2;
+    ((bbs)localObject).GyF = paramString3;
+    ad.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: shareType:" + paramString2 + " sharedAppId :" + paramString1);
+    AppMethodBeat.o(97153);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(179133);
-    this.callback = paramg;
+    AppMethodBeat.i(97156);
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(179133);
+    AppMethodBeat.o(97156);
     return i;
   }
   
   public final int getType()
   {
-    return 2920;
+    AppMethodBeat.i(97155);
+    int i = this.rr.getType();
+    AppMethodBeat.o(97155);
+    return i;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(179135);
-    ac.i("NetSceneSubscribeInfo", "errType=" + paramInt2 + ", errCode=" + paramInt3 + ", errMsg=" + paramString);
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(97157);
+    ad.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString + " sceneType: " + getType());
+    if (getType() == 1337) {
+      this.jsonString = ((bbt)((b)paramq).hNL.hNQ).GuC;
     }
-    AppMethodBeat.o(179135);
-  }
-  
-  public static final class a
-  {
-    public static g a(String paramString, List<String> paramList, g.b paramb)
+    for (;;)
     {
-      AppMethodBeat.i(179132);
-      paramString = new g(paramString);
-      paramString.ysm = paramb;
-      if (paramString.ihv == null) {
-        paramString.ihv = new ArrayList();
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(97157);
+      return;
+      if (getType() == 2721) {
+        this.jsonString = ((cdj)((b)paramq).hNL.hNQ).GXx;
       }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        paramb = (String)paramList.next();
-        dfh localdfh = new dfh();
-        localdfh.Fhh = paramb;
-        paramString.ihv.add(localdfh);
-      }
-      AppMethodBeat.o(179132);
-      return paramString;
     }
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void c(SubscribeMsgRequestResult paramSubscribeMsgRequestResult);
   }
 }
 

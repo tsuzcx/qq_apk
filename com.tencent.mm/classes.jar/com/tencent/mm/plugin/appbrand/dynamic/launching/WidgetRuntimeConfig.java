@@ -10,10 +10,10 @@ public class WidgetRuntimeConfig
 {
   public static final Parcelable.Creator<WidgetRuntimeConfig> CREATOR;
   public String appId;
-  public int jNL = 32;
-  public boolean jNM = false;
-  public boolean jNN = true;
-  public int jNu;
+  public int khF;
+  public int khW = 32;
+  public boolean khX = false;
+  public boolean khY = true;
   
   static
   {
@@ -32,13 +32,13 @@ public class WidgetRuntimeConfig
     int i = 1;
     AppMethodBeat.i(121411);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.jNu);
-    paramParcel.writeInt(this.jNL);
-    if (this.jNM)
+    paramParcel.writeInt(this.khF);
+    paramParcel.writeInt(this.khW);
+    if (this.khX)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.jNN) {
+      if (!this.khY) {
         break label70;
       }
     }

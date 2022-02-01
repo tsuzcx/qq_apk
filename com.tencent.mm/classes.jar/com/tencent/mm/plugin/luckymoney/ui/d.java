@@ -29,20 +29,20 @@ public final class d
     {
       paramView = this.mInflater.inflate(2131494648, paramViewGroup, false);
       paramViewGroup = new a();
-      paramViewGroup.tqQ = ((TextView)paramView.findViewById(2131301854));
-      paramViewGroup.uhg = ((TextView)paramView.findViewById(2131301855));
-      paramViewGroup.uhh = ((TextView)paramView.findViewById(2131301850));
-      paramViewGroup.uhs = ((ImageView)paramView.findViewById(2131301852));
+      paramViewGroup.upn = ((TextView)paramView.findViewById(2131301854));
+      paramViewGroup.vjQ = ((TextView)paramView.findViewById(2131301855));
+      paramViewGroup.vjR = ((TextView)paramView.findViewById(2131301850));
+      paramViewGroup.vkc = ((ImageView)paramView.findViewById(2131301852));
       paramView.setTag(paramViewGroup);
-      localt = HW(paramInt);
-      z.a(this.mContext, paramViewGroup.tqQ, localt.umG);
-      paramViewGroup.uhg.setText(localt.umI);
-      paramViewGroup.uhh.setText(this.mContext.getString(2131760940, new Object[] { com.tencent.mm.wallet_core.ui.e.C(localt.umH / 100.0D) }));
-      if (localt.dBz != 1) {
+      localt = Js(paramInt);
+      z.a(this.mContext, paramViewGroup.upn, localt.vpm);
+      paramViewGroup.vjQ.setText(localt.vpo);
+      paramViewGroup.vjR.setText(this.mContext.getString(2131760940, new Object[] { com.tencent.mm.wallet_core.ui.e.C(localt.vpn / 100.0D) }));
+      if (localt.dNM != 1) {
         break label202;
       }
-      paramViewGroup.uhs.setImageResource(2131233028);
-      paramViewGroup.uhs.setVisibility(0);
+      paramViewGroup.vkc.setImageResource(2131233028);
+      paramViewGroup.vkc.setVisibility(0);
     }
     for (;;)
     {
@@ -51,31 +51,31 @@ public final class d
       paramViewGroup = (a)paramView.getTag();
       break;
       label202:
-      if (localt.dBz == 2)
+      if (localt.dNM == 2)
       {
-        paramViewGroup.uhs.setImageResource(2131233017);
-        paramViewGroup.uhs.setVisibility(0);
+        paramViewGroup.vkc.setImageResource(2131233017);
+        paramViewGroup.vkc.setVisibility(0);
       }
       else
       {
-        paramViewGroup.uhs.setVisibility(8);
+        paramViewGroup.vkc.setVisibility(8);
       }
     }
   }
   
   final class a
   {
-    TextView tqQ;
-    TextView uhg;
-    TextView uhh;
-    ImageView uhs;
+    TextView upn;
+    TextView vjQ;
+    TextView vjR;
+    ImageView vkc;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.d
  * JD-Core Version:    0.7.0.1
  */

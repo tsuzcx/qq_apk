@@ -15,87 +15,87 @@ public final class c
   {
     AppMethodBeat.i(151651);
     c.a locala = new c.a();
-    locala.GvF = new Field[20];
+    locala.IhA = new Field[20];
     locala.columns = new String[21];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appId";
-    locala.GvH.put("appId", "TEXT");
+    locala.IhC.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "sdkVer";
-    locala.GvH.put("sdkVer", "LONG");
+    locala.IhC.put("sdkVer", "LONG");
     localStringBuilder.append(" sdkVer LONG");
     localStringBuilder.append(", ");
     locala.columns[2] = "mediaSvrId";
-    locala.GvH.put("mediaSvrId", "TEXT");
+    locala.IhC.put("mediaSvrId", "TEXT");
     localStringBuilder.append(" mediaSvrId TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "mediaId";
-    locala.GvH.put("mediaId", "TEXT");
+    locala.IhC.put("mediaId", "TEXT");
     localStringBuilder.append(" mediaId TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "clientAppDataId";
-    locala.GvH.put("clientAppDataId", "TEXT");
+    locala.IhC.put("clientAppDataId", "TEXT");
     localStringBuilder.append(" clientAppDataId TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "type";
-    locala.GvH.put("type", "LONG");
+    locala.IhC.put("type", "LONG");
     localStringBuilder.append(" type LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "totalLen";
-    locala.GvH.put("totalLen", "LONG");
+    locala.IhC.put("totalLen", "LONG");
     localStringBuilder.append(" totalLen LONG");
     localStringBuilder.append(", ");
     locala.columns[7] = "offset";
-    locala.GvH.put("offset", "LONG");
+    locala.IhC.put("offset", "LONG");
     localStringBuilder.append(" offset LONG");
     localStringBuilder.append(", ");
     locala.columns[8] = "status";
-    locala.GvH.put("status", "LONG");
+    locala.IhC.put("status", "LONG");
     localStringBuilder.append(" status LONG");
     localStringBuilder.append(", ");
     locala.columns[9] = "isUpload";
-    locala.GvH.put("isUpload", "INTEGER");
+    locala.IhC.put("isUpload", "INTEGER");
     localStringBuilder.append(" isUpload INTEGER");
     localStringBuilder.append(", ");
     locala.columns[10] = "createTime";
-    locala.GvH.put("createTime", "LONG");
+    locala.IhC.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     localStringBuilder.append(", ");
     locala.columns[11] = "lastModifyTime";
-    locala.GvH.put("lastModifyTime", "LONG");
+    locala.IhC.put("lastModifyTime", "LONG");
     localStringBuilder.append(" lastModifyTime LONG");
     localStringBuilder.append(", ");
     locala.columns[12] = "fileFullPath";
-    locala.GvH.put("fileFullPath", "TEXT");
+    locala.IhC.put("fileFullPath", "TEXT");
     localStringBuilder.append(" fileFullPath TEXT");
     localStringBuilder.append(", ");
     locala.columns[13] = "fullXml";
-    locala.GvH.put("fullXml", "TEXT");
+    locala.IhC.put("fullXml", "TEXT");
     localStringBuilder.append(" fullXml TEXT");
     localStringBuilder.append(", ");
     locala.columns[14] = "msgInfoId";
-    locala.GvH.put("msgInfoId", "LONG");
+    locala.IhC.put("msgInfoId", "LONG");
     localStringBuilder.append(" msgInfoId LONG");
     localStringBuilder.append(", ");
     locala.columns[15] = "netTimes";
-    locala.GvH.put("netTimes", "LONG");
+    locala.IhC.put("netTimes", "LONG");
     localStringBuilder.append(" netTimes LONG");
     localStringBuilder.append(", ");
     locala.columns[16] = "isUseCdn";
-    locala.GvH.put("isUseCdn", "INTEGER");
+    locala.IhC.put("isUseCdn", "INTEGER");
     localStringBuilder.append(" isUseCdn INTEGER");
     localStringBuilder.append(", ");
     locala.columns[17] = "signature";
-    locala.GvH.put("signature", "TEXT");
+    locala.IhC.put("signature", "TEXT");
     localStringBuilder.append(" signature TEXT");
     localStringBuilder.append(", ");
     locala.columns[18] = "fakeAeskey";
-    locala.GvH.put("fakeAeskey", "TEXT");
+    locala.IhC.put("fakeAeskey", "TEXT");
     localStringBuilder.append(" fakeAeskey TEXT");
     localStringBuilder.append(", ");
     locala.columns[19] = "fakeSignature";
-    locala.GvH.put("fakeSignature", "TEXT");
+    locala.IhC.put("fakeSignature", "TEXT");
     localStringBuilder.append(" fakeSignature TEXT");
     locala.columns[20] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -108,7 +108,7 @@ public final class c
     this.field_netTimes = 0L;
   }
   
-  public final boolean cOg()
+  public final boolean cWz()
   {
     if (this.field_totalLen <= 0L) {}
     while (this.field_offset != this.field_totalLen) {
@@ -124,7 +124,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.c
  * JD-Core Version:    0.7.0.1
  */

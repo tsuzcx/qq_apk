@@ -1,60 +1,57 @@
 package com.tencent.mm.plugin.finder.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.g.e;
-import com.tencent.mm.plugin.finder.utils.n;
-import com.tencent.mm.plugin.vlog.model.r;
-import com.tencent.mm.plugin.vlog.model.t;
-import com.tencent.mm.plugin.vlog.model.t.a;
-import com.tencent.mm.protocal.protobuf.bqs;
-import com.tencent.mm.protocal.protobuf.yo;
-import d.g.a.a;
+import com.tencent.mm.plugin.vlog.model.v;
+import com.tencent.mm.protocal.protobuf.aan;
+import com.tencent.mm.protocal.protobuf.bvf;
+import com.tencent.mm.videocomposition.a.a;
+import com.tencent.mm.videocomposition.h;
 import d.g.a.b;
-import d.g.b.k;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/FinderVideoThumbFetcherFactory;", "", "()V", "getThumbFetcher", "Lcom/tencent/mm/plugin/vlog/ui/thumb/ITrackThumbFetcher;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "width", "", "height", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/FinderVideoThumbFetcherFactory;", "", "()V", "getThumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "width", "", "height", "plugin-finder_release"})
 public final class m
 {
-  public static final m rTs;
+  public static final m sQc;
   
   static
   {
-    AppMethodBeat.i(203909);
-    rTs = new m();
-    AppMethodBeat.o(203909);
+    AppMethodBeat.i(204861);
+    sQc = new m();
+    AppMethodBeat.o(204861);
   }
   
-  public static com.tencent.mm.plugin.vlog.ui.thumb.c a(bqs parambqs, int paramInt1, int paramInt2)
+  public static com.tencent.mm.videocomposition.c f(bvf parambvf)
   {
-    AppMethodBeat.i(203908);
-    k.h(parambqs, "media");
-    Object localObject1 = parambqs.FfQ;
-    Object localObject2 = n.rPN;
-    if ((!n.c(parambqs)) && (localObject1 != null))
+    AppMethodBeat.i(204860);
+    d.g.b.p.h(parambvf, "media");
+    Object localObject1 = parambvf.GPu;
+    Object localObject2 = com.tencent.mm.plugin.finder.utils.p.sMo;
+    if ((!com.tencent.mm.plugin.finder.utils.p.d(parambvf)) && (localObject1 != null))
     {
-      parambqs = com.tencent.mm.plugin.vlog.model.c.a((yo)localObject1);
-      parambqs.hY(paramInt1, paramInt2);
-      localObject1 = com.tencent.mm.plugin.vlog.model.c.b((yo)localObject1);
-      ((e)localObject1).start();
-      parambqs.D((b)localObject1);
-      long l = parambqs.efB();
-      localObject2 = t.Aop;
-      parambqs = (com.tencent.mm.plugin.vlog.ui.thumb.c)new s(l, (com.tencent.mm.plugin.vlog.ui.thumb.c)t.a.f(parambqs), (a)new a((e)localObject1));
-      AppMethodBeat.o(203908);
-      return parambqs;
+      parambvf = com.tencent.mm.plugin.vlog.model.f.a((aan)localObject1);
+      localObject1 = com.tencent.mm.plugin.vlog.model.f.b((aan)localObject1);
+      ((com.tencent.mm.plugin.recordvideo.ui.editor.b.c)localObject1).start();
+      parambvf.E((b)localObject1);
+      long l = parambvf.BGk.getPlayStart();
+      localObject2 = com.tencent.mm.videocomposition.a.Lmq;
+      parambvf = (com.tencent.mm.videocomposition.c)new s(l, (com.tencent.mm.videocomposition.c)a.a.b(parambvf.getComposition()), (d.g.a.a)new a((com.tencent.mm.plugin.recordvideo.ui.editor.b.c)localObject1));
+      AppMethodBeat.o(204860);
+      return parambvf;
     }
-    parambqs = (com.tencent.mm.plugin.vlog.ui.thumb.c)new f(parambqs);
-    AppMethodBeat.o(203908);
-    return parambqs;
+    parambvf = (com.tencent.mm.videocomposition.c)new f(parambvf);
+    AppMethodBeat.o(204860);
+    return parambvf;
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class a
-    extends d.g.b.l
-    implements a<y>
+    extends q
+    implements d.g.a.a<z>
   {
-    a(e parame)
+    a(com.tencent.mm.plugin.recordvideo.ui.editor.b.c paramc)
     {
       super();
     }
@@ -62,7 +59,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.m
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.os.Parcelable.Creator;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class ReportStorageSizeTask
   extends MainProcessTask
@@ -20,32 +20,32 @@ public class ReportStorageSizeTask
     AppMethodBeat.o(43984);
   }
   
-  public final void aLq()
+  public final void aOA()
   {
     AppMethodBeat.i(43981);
-    com.tencent.e.h.JZN.aS(new com.tencent.e.i.h()
+    com.tencent.e.h.LTJ.aR(new com.tencent.e.i.h()
     {
       public final String getKey()
       {
-        AppMethodBeat.i(186276);
+        AppMethodBeat.i(187937);
         String str = "MicroMsg.AppBrand.ReportStorageSizeTask#" + ReportStorageSizeTask.b(ReportStorageSizeTask.this);
-        AppMethodBeat.o(186276);
+        AppMethodBeat.o(187937);
         return str;
       }
       
       public final void run()
       {
-        AppMethodBeat.i(186275);
+        AppMethodBeat.i(187936);
         try
         {
           ReportStorageSizeTask.a(ReportStorageSizeTask.this);
-          AppMethodBeat.o(186275);
+          AppMethodBeat.o(187936);
           return;
         }
         catch (Throwable localThrowable)
         {
-          ac.e("MicroMsg.AppBrand.ReportStorageSizeTask", "doReport appId:%s, e:%s", new Object[] { ReportStorageSizeTask.b(ReportStorageSizeTask.this), localThrowable });
-          AppMethodBeat.o(186275);
+          ad.e("MicroMsg.AppBrand.ReportStorageSizeTask", "doReport appId:%s, e:%s", new Object[] { ReportStorageSizeTask.b(ReportStorageSizeTask.this), localThrowable });
+          AppMethodBeat.o(187936);
         }
       }
     });

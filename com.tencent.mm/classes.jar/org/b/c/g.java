@@ -11,14 +11,14 @@ import org.b.g.d;
 public final class g
   implements a, f
 {
-  private static final Pattern Mbd;
-  private static final Pattern Mbe;
+  private static final Pattern NWf;
+  private static final Pattern NWg;
   
   static
   {
     AppMethodBeat.i(40507);
-    Mbd = Pattern.compile("oauth_token=([^&]+)");
-    Mbe = Pattern.compile("oauth_token_secret=([^&]*)");
+    NWf = Pattern.compile("oauth_token=([^&]+)");
+    NWg = Pattern.compile("oauth_token_secret=([^&]*)");
     AppMethodBeat.o(40507);
   }
   
@@ -37,11 +37,11 @@ public final class g
     throw paramString;
   }
   
-  public final i aXE(String paramString)
+  public final i bea(String paramString)
   {
     AppMethodBeat.i(40508);
-    d.np(paramString, "Response body is incorrect. Can't extract a token from an empty string");
-    paramString = new i(g(paramString, Mbd), g(paramString, Mbe), paramString);
+    d.nO(paramString, "Response body is incorrect. Can't extract a token from an empty string");
+    paramString = new i(g(paramString, NWf), g(paramString, NWg), paramString);
     AppMethodBeat.o(40508);
     return paramString;
   }

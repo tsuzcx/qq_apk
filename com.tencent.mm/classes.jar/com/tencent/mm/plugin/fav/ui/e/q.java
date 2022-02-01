@@ -9,25 +9,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.o;
-import com.tencent.mm.pluginsdk.e;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.ahf;
-import com.tencent.mm.protocal.protobuf.ahg;
-import com.tencent.mm.protocal.protobuf.ahn;
-import com.tencent.mm.protocal.protobuf.ahp;
-import com.tencent.mm.protocal.protobuf.aic;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.pluginsdk.f;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajv;
+import com.tencent.mm.protocal.protobuf.ajw;
+import com.tencent.mm.protocal.protobuf.akd;
+import com.tencent.mm.protocal.protobuf.akf;
+import com.tencent.mm.protocal.protobuf.aks;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class q
   extends b
 {
-  private final int qTc;
+  private final int rDf;
   
   public q(o paramo)
   {
     super(paramo);
     AppMethodBeat.i(107493);
-    this.qTc = a.au(paramo.context, 2131165358);
+    this.rDf = a.ax(paramo.context, 2131165358);
     AppMethodBeat.o(107493);
   }
   
@@ -41,45 +41,45 @@ public final class q
     {
       paramViewGroup = new a();
       localObject1 = a(View.inflate((Context)localObject1, 2131493955, null), paramViewGroup, paramg);
-      paramViewGroup.lzC = ((ImageView)((View)localObject1).findViewById(2131299794));
-      paramViewGroup.qTu = ((ImageView)((View)localObject1).findViewById(2131299798));
-      paramViewGroup.iCg = ((TextView)((View)localObject1).findViewById(2131299848));
-      paramViewGroup.iCg.setMaxLines(2);
+      paramViewGroup.lZa = ((ImageView)((View)localObject1).findViewById(2131299794));
+      paramViewGroup.rDx = ((ImageView)((View)localObject1).findViewById(2131299798));
+      paramViewGroup.iVq = ((TextView)((View)localObject1).findViewById(2131299848));
+      paramViewGroup.iVq.setMaxLines(2);
       a(paramViewGroup, paramg);
-      agx localagx1 = com.tencent.mm.plugin.fav.a.b.c(paramg);
-      aic localaic = paramg.field_favProto.EAK;
-      localTextView = paramViewGroup.iCg;
-      agx localagx2 = com.tencent.mm.plugin.fav.a.b.c(paramg);
+      ajn localajn1 = com.tencent.mm.plugin.fav.a.b.c(paramg);
+      aks localaks = paramg.field_favProto.Giw;
+      localTextView = paramViewGroup.iVq;
+      ajn localajn2 = com.tencent.mm.plugin.fav.a.b.c(paramg);
       paramView = "";
-      if (localaic != null) {
-        paramView = localaic.title;
+      if (localaks != null) {
+        paramView = localaks.title;
       }
       localObject2 = paramView;
-      if (bs.isNullOrNil(paramView))
+      if (bt.isNullOrNil(paramView))
       {
         localObject2 = paramView;
-        if (localagx2 != null) {
-          localObject2 = localagx2.title;
+        if (localajn2 != null) {
+          localObject2 = localajn2.title;
         }
       }
-      if (!bs.isNullOrNil((String)localObject2)) {
+      if (!bt.isNullOrNil((String)localObject2)) {
         break label311;
       }
       localTextView.setVisibility(8);
       label176:
-      int j = e.aFI(localagx1.Ezu);
-      paramView = this.qLn;
-      localObject2 = paramViewGroup.lzC;
+      int j = f.aLi(localajn1.Ghg);
+      paramView = this.rvp;
+      localObject2 = paramViewGroup.lZa;
       int i = j;
-      if (j == e.eKg()) {
+      if (j == f.eYU()) {
         i = 2131689584;
       }
-      paramView.a((ImageView)localObject2, localagx1, paramg, i, this.qTc, this.qTc);
-      if (((paramg.field_favProto.CoY == null) || (paramg.field_favProto.CoY.hgY != 5)) && ((localaic == null) || (bs.isNullOrNil(localaic.ECq)))) {
+      paramView.a((ImageView)localObject2, localajn1, paramg, i, this.rDf, this.rDf);
+      if (((paramg.field_favProto.DSw == null) || (paramg.field_favProto.DSw.hzh != 5)) && ((localaks == null) || (bt.isNullOrNil(localaks.Gkc)))) {
         break label327;
       }
-      paramViewGroup.qTu.setImageResource(2131232278);
-      paramViewGroup.qTu.setVisibility(0);
+      paramViewGroup.rDx.setImageResource(2131691166);
+      paramViewGroup.rDx.setVisibility(0);
     }
     for (;;)
     {
@@ -93,21 +93,21 @@ public final class q
       localTextView.setVisibility(0);
       break label176;
       label327:
-      paramViewGroup.qTu.setVisibility(8);
+      paramViewGroup.rDx.setVisibility(8);
     }
   }
   
-  public final void a(View paramView, ahp paramahp)
+  public final void a(View paramView, akf paramakf)
   {
     AppMethodBeat.i(107496);
     a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    Object localObject = locala.lzC;
-    com.tencent.mm.plugin.fav.a.g localg = locala.qJy;
-    if ((localg.field_favProto == null) || (localg.field_favProto.CoY == null) || (localg.field_favProto.CoY.hgY < 0)) {}
+    Object localObject = locala.lZa;
+    com.tencent.mm.plugin.fav.a.g localg = locala.rtA;
+    if ((localg.field_favProto == null) || (localg.field_favProto.DSw == null) || (localg.field_favProto.DSw.hzh < 0)) {}
     for (;;)
     {
-      ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.qJy, paramahp);
+      ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.rtA, paramakf);
       AppMethodBeat.o(107496);
       return;
       int[] arrayOfInt = new int[2];
@@ -116,12 +116,12 @@ public final class q
         int i = ((View)localObject).getWidth();
         int j = ((View)localObject).getHeight();
         ((View)localObject).getLocationInWindow(arrayOfInt);
-        localObject = localg.field_favProto.CoY;
-        ((ahf)localObject).EBB = new ahg();
-        ((ahf)localObject).EBB.left = arrayOfInt[0];
-        ((ahf)localObject).EBB.top = arrayOfInt[1];
-        ((ahf)localObject).EBB.width = i;
-        ((ahf)localObject).EBB.height = j;
+        localObject = localg.field_favProto.DSw;
+        ((ajv)localObject).Gjn = new ajw();
+        ((ajv)localObject).Gjn.left = arrayOfInt[0];
+        ((ajv)localObject).Gjn.top = arrayOfInt[1];
+        ((ajv)localObject).Gjn.width = i;
+        ((ajv)localObject).Gjn.height = j;
       }
     }
   }
@@ -131,9 +131,9 @@ public final class q
     AppMethodBeat.i(107495);
     try
     {
-      if (!bs.isNullOrNil(paramb.qJy.field_favProto.EAK.ECq))
+      if (!bt.isNullOrNil(paramb.rtA.field_favProto.Giw.Gkc))
       {
-        paramb.iMz.setText(2131764521);
+        paramb.jfJ.setText(2131764521);
         AppMethodBeat.o(107495);
         return;
       }
@@ -150,14 +150,14 @@ public final class q
   public static final class a
     extends b.b
   {
-    TextView iCg;
-    ImageView lzC;
-    ImageView qTu;
+    TextView iVq;
+    ImageView lZa;
+    ImageView rDx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.e.q
  * JD-Core Version:    0.7.0.1
  */

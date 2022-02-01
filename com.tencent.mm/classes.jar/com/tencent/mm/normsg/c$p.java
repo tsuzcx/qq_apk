@@ -2,6 +2,7 @@ package com.tencent.mm.normsg;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Process;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.CountDownLatch;
@@ -12,14 +13,23 @@ public final class c$p
   {
     AppMethodBeat.i(62426);
     String str = new StringBuilder("gsmron").reverse().toString();
-    if (Looper.myLooper() == Looper.getMainLooper())
+    if (Process.myPid() == Process.myTid())
     {
       System.loadLibrary(str);
       AppMethodBeat.o(62426);
       return;
     }
-    CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    new Handler(Looper.getMainLooper()).postAtFrontOfQueue(new c.p.1(str, localCountDownLatch));
+    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    new Handler(Looper.getMainLooper()).postAtFrontOfQueue(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(62425);
+        System.loadLibrary(this.iHg);
+        localCountDownLatch.countDown();
+        AppMethodBeat.o(62425);
+      }
+    });
     try
     {
       localCountDownLatch.await();
@@ -100,7 +110,11 @@ public final class c$p
   
   public static native byte[] ee();
   
-  static native String ef();
+  public static native String ef();
+  
+  public static native String eg();
+  
+  public static native String eh();
 }
 
 

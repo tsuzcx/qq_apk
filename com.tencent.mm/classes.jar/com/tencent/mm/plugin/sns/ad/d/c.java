@@ -2,200 +2,200 @@ package com.tencent.mm.plugin.sns.ad.d;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ak;
 import com.tencent.mm.plugin.sns.storage.a;
 import com.tencent.mm.plugin.sns.storage.b;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.storage.q;
 import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.protocal.protobuf.bw;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public final class c
 {
-  public String dgl;
-  private String dyy;
-  public int fMu;
-  boolean gNN;
+  private String aQj;
+  public String drH;
+  public int gfU;
+  boolean hhJ;
   int position;
   public int sceneType;
   public SnsObject snsobj;
-  private View xIA;
-  private int xIB;
-  private int xIC;
-  public String xID;
-  long xIE;
-  private a xIF;
-  b xIG;
-  int xIH;
-  private int xII;
-  int xIJ;
-  private int xIK;
-  long xIL;
-  long xIM;
-  private int xIN;
-  private int xIO;
-  long xIP;
-  private int xIQ;
-  private int xIR;
-  long xIS;
-  private int xIT;
-  private int xIU;
-  long xIV;
-  private int xIW;
-  private int xIX;
-  long xIY;
-  int xIZ;
-  boolean xIu;
-  public View xIv;
-  public View xIw;
-  public int xIx;
-  public int xIy;
-  public int xIz;
-  int xJa;
-  int xJb;
-  int xJc;
-  int xJd;
-  int xJe;
-  boolean xJf;
+  boolean yXJ;
+  public View yXK;
+  public View yXL;
+  public int yXM;
+  public int yXN;
+  public int yXO;
+  private View yXP;
+  private int yXQ;
+  private int yXR;
+  public String yXS;
+  long yXT;
+  private a yXU;
+  b yXV;
+  int yXW;
+  private int yXX;
+  int yXY;
+  private int yXZ;
+  long yYa;
+  long yYb;
+  private int yYc;
+  private int yYd;
+  long yYe;
+  private int yYf;
+  private int yYg;
+  long yYh;
+  private int yYi;
+  private int yYj;
+  long yYk;
+  private int yYl;
+  private int yYm;
+  long yYn;
+  int yYo;
+  int yYp;
+  int yYq;
+  int yYr;
+  int yYs;
+  int yYt;
+  boolean yYu;
   
   public c(a parama, String paramString, long paramLong, View paramView1, int paramInt1, View paramView2, int paramInt2, int paramInt3, SnsObject paramSnsObject, int paramInt4, b paramb)
   {
     AppMethodBeat.i(94975);
-    this.xIu = false;
+    this.yXJ = false;
     this.sceneType = 1;
     this.position = 0;
-    this.xIx = 0;
-    this.fMu = 0;
-    this.xIy = 0;
-    this.xIB = 0;
-    this.xID = "";
-    this.xIE = 0L;
-    this.xIF = null;
-    this.dyy = "";
-    this.xIH = -10086;
-    this.xII = -10086;
-    this.xIJ = -10086;
-    this.xIK = -10086;
-    this.xIL = 0L;
-    this.xIM = 0L;
-    this.xIN = -10086;
-    this.xIO = -10086;
-    this.xIP = 0L;
-    this.xIQ = -10086;
-    this.xIR = -10086;
-    this.xIS = 0L;
-    this.xIT = -10086;
-    this.xIU = -10086;
-    this.xIV = 0L;
-    this.xIW = -10086;
-    this.xIX = -10086;
-    this.xIY = 0L;
-    this.xIZ = 0;
-    this.xJa = -1;
-    this.xJb = -1;
-    this.xJc = 0;
-    this.xJd = 0;
-    this.gNN = false;
-    this.xJe = 0;
-    this.dgl = "";
-    this.xJf = false;
+    this.yXM = 0;
+    this.gfU = 0;
+    this.yXN = 0;
+    this.yXQ = 0;
+    this.yXS = "";
+    this.yXT = 0L;
+    this.yXU = null;
+    this.aQj = "";
+    this.yXW = -10086;
+    this.yXX = -10086;
+    this.yXY = -10086;
+    this.yXZ = -10086;
+    this.yYa = 0L;
+    this.yYb = 0L;
+    this.yYc = -10086;
+    this.yYd = -10086;
+    this.yYe = 0L;
+    this.yYf = -10086;
+    this.yYg = -10086;
+    this.yYh = 0L;
+    this.yYi = -10086;
+    this.yYj = -10086;
+    this.yYk = 0L;
+    this.yYl = -10086;
+    this.yYm = -10086;
+    this.yYn = 0L;
+    this.yYo = 0;
+    this.yYp = -1;
+    this.yYq = -1;
+    this.yYr = 0;
+    this.yYs = 0;
+    this.hhJ = false;
+    this.yYt = 0;
+    this.drH = "";
+    this.yYu = false;
     this.position = paramInt4;
-    this.xIv = paramView1;
+    this.yXK = paramView1;
     this.snsobj = paramSnsObject;
-    this.xIG = paramb;
-    this.xIF = parama;
+    this.yXV = paramb;
+    this.yXU = parama;
     this.sceneType = paramInt3;
     if (parama == null)
     {
       paramView1 = "";
-      this.dyy = paramView1;
+      this.aQj = paramView1;
       if (parama != null) {
         break label359;
       }
     }
     label359:
-    for (parama = "";; parama = bs.bG(parama.dtx, ""))
+    for (parama = "";; parama = bt.bI(parama.dFy, ""))
     {
-      this.xID = parama;
-      this.dgl = paramString;
-      this.xIE = paramLong;
-      this.xIz = paramInt1;
-      this.xIA = paramView2;
-      this.xIB = paramInt2;
-      if (this.xIv != null) {
-        this.xIw = this.xIv.findViewById(2131296590);
+      this.yXS = parama;
+      this.drH = paramString;
+      this.yXT = paramLong;
+      this.yXO = paramInt1;
+      this.yXP = paramView2;
+      this.yXQ = paramInt2;
+      if (this.yXK != null) {
+        this.yXL = this.yXK.findViewById(2131296590);
       }
       initView();
       AppMethodBeat.o(94975);
       return;
-      paramView1 = bs.bG(parama.dyy, "");
+      paramView1 = bt.bI(parama.aQj, "");
       break;
     }
   }
   
-  private void hg(int paramInt1, int paramInt2)
+  private void hx(int paramInt1, int paramInt2)
   {
     int i = 1;
-    if (paramInt1 >= this.xIy)
+    if (paramInt1 >= this.yXN)
     {
-      this.xJf = true;
+      this.yYu = true;
       i = 0;
     }
-    if ((paramInt2 >= this.xIy) && (i != 0)) {
-      this.xJf = false;
+    if ((paramInt2 >= this.yXN) && (i != 0)) {
+      this.yYu = false;
     }
   }
   
   private void initView()
   {
     AppMethodBeat.i(94976);
-    if ((this.fMu == 0) && (this.xIv != null))
+    if ((this.gfU == 0) && (this.yXK != null))
     {
-      this.fMu = this.xIv.getHeight();
-      if ((this.xIw != null) && (this.xIw.getVisibility() == 0)) {
-        this.xIx = this.xIw.getHeight();
+      this.gfU = this.yXK.getHeight();
+      if ((this.yXL != null) && (this.yXL.getVisibility() == 0)) {
+        this.yXM = this.yXL.getHeight();
       }
-      if (this.fMu == 0)
+      if (this.gfU == 0)
       {
         AppMethodBeat.o(94976);
         return;
       }
-      this.xIC = 0;
-      if (this.xIA != null) {
-        this.xIC = this.xIA.getBottom();
+      this.yXR = 0;
+      if (this.yXP != null) {
+        this.yXR = this.yXP.getBottom();
       }
-      this.fMu -= this.xIx;
-      this.xIy = (this.fMu / 2);
-      this.xIz = (this.xIz - this.xIC - this.xIB);
-      ac.i("MicroMsg.AdViewStatic", "viewHeight " + this.fMu + " SCREEN_HEIGHT: " + this.xIz + " abottom: " + this.xIC + " stHeight: " + this.xIB + " commentViewHeight:" + this.xIx);
+      this.gfU -= this.yXM;
+      this.yXN = (this.gfU / 2);
+      this.yXO = (this.yXO - this.yXR - this.yXQ);
+      ad.i("MicroMsg.AdViewStatic", "viewHeight " + this.gfU + " SCREEN_HEIGHT: " + this.yXO + " abottom: " + this.yXR + " stHeight: " + this.yXQ + " commentViewHeight:" + this.yXM);
     }
     AppMethodBeat.o(94976);
   }
   
-  public final bw dFF()
+  public final bw dRx()
   {
     AppMethodBeat.i(94978);
     bw localbw = new bw();
-    Object localObject = af.dHR().xK(this.xIE);
+    Object localObject = ag.dUe().Ai(this.yXT);
     if (localObject != null)
     {
-      localObject = aj.t((p)localObject);
+      localObject = ak.v((p)localObject);
       if (localObject != null)
       {
-        localbw.DPk = ((SnsObject)localObject).CommentUserList.size();
-        localbw.DPj = ((SnsObject)localObject).LikeUserList.size();
+        localbw.Fuu = ((SnsObject)localObject).CommentUserList.size();
+        localbw.Fut = ((SnsObject)localObject).LikeUserList.size();
         AppMethodBeat.o(94978);
         return localbw;
       }
     }
     if (this.snsobj != null)
     {
-      localbw.DPk = this.snsobj.CommentUserListCount;
-      localbw.DPj = this.snsobj.LikeUserListCount;
+      localbw.Fuu = this.snsobj.CommentUserListCount;
+      localbw.Fut = this.snsobj.LikeUserListCount;
       AppMethodBeat.o(94978);
       return localbw;
     }
@@ -203,12 +203,12 @@ public final class c
     return null;
   }
   
-  public final boolean dFG()
+  public final boolean dRy()
   {
-    return this.xJe == 1;
+    return this.yYt == 1;
   }
   
-  public final void qF(boolean paramBoolean)
+  public final void ri(boolean paramBoolean)
   {
     AppMethodBeat.i(94977);
     int m;
@@ -216,131 +216,131 @@ public final class c
     label1107:
     label1137:
     StringBuilder localStringBuilder;
-    if (this.xIv != null)
+    if (this.yXK != null)
     {
       initView();
-      if ((this.gNN) || (this.fMu <= 0))
+      if ((this.hhJ) || (this.gfU <= 0))
       {
         AppMethodBeat.o(94977);
         return;
       }
-      this.xIu = true;
+      this.yXJ = true;
       localObject = new int[2];
-      this.xIv.getLocationOnScreen((int[])localObject);
-      m = localObject[1] - this.xIC - this.xIB;
-      k = m + this.fMu;
-      if ((m < 0) || (k < 0) || (k > this.xIz)) {
+      this.yXK.getLocationOnScreen((int[])localObject);
+      m = localObject[1] - this.yXR - this.yXQ;
+      k = m + this.gfU;
+      if ((m < 0) || (k < 0) || (k > this.yXO)) {
         break label1310;
       }
-      this.xJe = 1;
-      if ((this.xIH == -10086) && (this.xII == -10086))
+      this.yYt = 1;
+      if ((this.yXW == -10086) && (this.yXX == -10086))
       {
-        this.xIH = m;
-        this.xII = k;
+        this.yXW = m;
+        this.yXX = k;
       }
-      this.xIJ = m;
-      this.xIK = k;
-      ac.i("MicroMsg.AdViewStatic", "get top " + m + " bottom " + k + " body_half: " + this.xIy + "| " + (this.fMu + m) + "  firsttop " + this.xIH + " endtop " + this.xIJ);
+      this.yXY = m;
+      this.yXZ = k;
+      ad.i("MicroMsg.AdViewStatic", "get top " + m + " bottom " + k + " body_half: " + this.yXN + "| " + (this.gfU + m) + "  firsttop " + this.yXW + " endtop " + this.yXY);
       int n;
       int i1;
       if (m < 0)
       {
-        n = m + this.fMu;
-        i1 = this.fMu - n;
-        ac.i("MicroMsg.AdViewStatic", "top " + m + " screen in " + n + " out: " + i1);
+        n = m + this.gfU;
+        i1 = this.gfU - n;
+        ad.i("MicroMsg.AdViewStatic", "top " + m + " screen in " + n + " out: " + i1);
         j = 1;
         i = j;
-        if (n >= this.xIy)
+        if (n >= this.yXN)
         {
           i = j;
-          if (this.xIN == -10086)
+          if (this.yYc == -10086)
           {
-            this.xIN = m;
-            this.xIO = k;
-            this.xIP = System.currentTimeMillis();
+            this.yYc = m;
+            this.yYd = k;
+            this.yYe = System.currentTimeMillis();
             i = 0;
-            ac.i("MicroMsg.AdViewStatic", "up first touch half" + n + " top " + m + " viewhieght " + this.fMu + " inscreenval: " + n + " outscreenval: " + i1);
-            ac.d("MicroMsg.AdViewStatic", "halfExposure old 0, begin:" + this.xIP + ", hash=" + hashCode());
+            ad.i("MicroMsg.AdViewStatic", "up first touch half" + n + " top " + m + " viewhieght " + this.gfU + " inscreenval: " + n + " outscreenval: " + i1);
+            ad.d("MicroMsg.AdViewStatic", "halfExposure old 0, begin:" + this.yYe + ", hash=" + hashCode());
           }
         }
-        if ((i1 >= this.xIy) && (this.xIQ == -10086) && (i != 0) && (this.xIP > 0L))
+        if ((i1 >= this.yXN) && (this.yYf == -10086) && (i != 0) && (this.yYe > 0L))
         {
-          this.xIQ = m;
-          this.xIR = k;
-          this.xIS = System.currentTimeMillis();
-          ac.i("MicroMsg.AdViewStatic", "down first touch half" + n + " bottom " + k + " viewhieght " + this.fMu + " inscreenval: " + n + " outscreenval: " + i1);
-          ac.d("MicroMsg.AdViewStatic", "halfExposure old 0, end:" + (this.xIS - this.xIP) + ", hash=" + hashCode());
+          this.yYf = m;
+          this.yYg = k;
+          this.yYh = System.currentTimeMillis();
+          ad.i("MicroMsg.AdViewStatic", "down first touch half" + n + " bottom " + k + " viewhieght " + this.gfU + " inscreenval: " + n + " outscreenval: " + i1);
+          ad.d("MicroMsg.AdViewStatic", "halfExposure old 0, end:" + (this.yYh - this.yYe) + ", hash=" + hashCode());
         }
-        hg(n, i1);
+        hx(n, i1);
       }
-      if (k > this.xIz)
+      if (k > this.yXO)
       {
         j = 1;
-        n = k - this.xIz;
-        i1 = this.fMu - n;
-        ac.i("MicroMsg.AdViewStatic", "bottom " + k + " screen in " + i1 + " out: " + n);
+        n = k - this.yXO;
+        i1 = this.gfU - n;
+        ad.i("MicroMsg.AdViewStatic", "bottom " + k + " screen in " + i1 + " out: " + n);
         i = j;
-        if (i1 >= this.xIy)
+        if (i1 >= this.yXN)
         {
           i = j;
-          if (this.xIN == -10086)
+          if (this.yYc == -10086)
           {
-            this.xIN = m;
-            this.xIO = k;
-            this.xIP = System.currentTimeMillis();
+            this.yYc = m;
+            this.yYd = k;
+            this.yYe = System.currentTimeMillis();
             i = 0;
-            ac.i("MicroMsg.AdViewStatic", "up first touch half" + n + " top " + m + " viewhieght " + this.fMu + " inscreenval: " + i1 + " outscreenval: " + n);
-            ac.d("MicroMsg.AdViewStatic", "halfExposure old 1, begin:" + this.xIP + ", hash=" + hashCode());
+            ad.i("MicroMsg.AdViewStatic", "up first touch half" + n + " top " + m + " viewhieght " + this.gfU + " inscreenval: " + i1 + " outscreenval: " + n);
+            ad.d("MicroMsg.AdViewStatic", "halfExposure old 1, begin:" + this.yYe + ", hash=" + hashCode());
           }
         }
-        if ((n >= this.xIy) && (this.xIQ == -10086) && (i != 0) && (this.xIP > 0L))
+        if ((n >= this.yXN) && (this.yYf == -10086) && (i != 0) && (this.yYe > 0L))
         {
-          this.xIQ = m;
-          this.xIR = k;
-          this.xIS = System.currentTimeMillis();
-          ac.i("MicroMsg.AdViewStatic", "down first touch half" + n + " bottom " + k + " viewhieght " + this.fMu + " inscreenval: " + i1 + " outscreenval: " + n);
-          ac.d("MicroMsg.AdViewStatic", "halfExposure old 1, end:" + (this.xIS - this.xIP) + ", hash=" + hashCode());
+          this.yYf = m;
+          this.yYg = k;
+          this.yYh = System.currentTimeMillis();
+          ad.i("MicroMsg.AdViewStatic", "down first touch half" + n + " bottom " + k + " viewhieght " + this.gfU + " inscreenval: " + i1 + " outscreenval: " + n);
+          ad.d("MicroMsg.AdViewStatic", "halfExposure old 1, end:" + (this.yYh - this.yYe) + ", hash=" + hashCode());
         }
-        hg(i1, n);
+        hx(i1, n);
       }
-      if ((m < 0) || (k > this.xIz)) {
+      if ((m < 0) || (k > this.yXO)) {
         break label1318;
       }
-      if (this.xIV == 0L)
+      if (this.yYk == 0L)
       {
-        this.xIT = m;
-        this.xIU = k;
-        this.xIV = System.currentTimeMillis();
-        ac.d("MicroMsg.AdViewStatic", "fullExposure old, begin:" + this.xIV + ", hash=" + hashCode());
+        this.yYi = m;
+        this.yYj = k;
+        this.yYk = System.currentTimeMillis();
+        ad.d("MicroMsg.AdViewStatic", "fullExposure old, begin:" + this.yYk + ", hash=" + hashCode());
       }
       if (m >= 0) {
         break label1401;
       }
       int i = -m;
-      if ((this.xJa == -1) || (this.xJa > i)) {
-        this.xJa = i;
+      if ((this.yYp == -1) || (this.yYp > i)) {
+        this.yYp = i;
       }
-      if (k <= this.xIz) {
+      if (k <= this.yXO) {
         break label1409;
       }
-      i = k - this.xIz;
-      if ((this.xJb == -1) || (this.xJb > i)) {
-        this.xJb = i;
+      i = k - this.yXO;
+      if ((this.yYq == -1) || (this.yYq > i)) {
+        this.yYq = i;
       }
       label1175:
-      int j = this.fMu;
+      int j = this.gfU;
       i = j;
       if (m < 0) {
         i = j + m;
       }
       j = i;
-      if (k > this.xIz) {
-        j = i - (k - this.xIz);
+      if (k > this.yXO) {
+        j = i - (k - this.yXO);
       }
-      if ((this.xIZ == -1) || (this.xIZ < j)) {
-        this.xIZ = j;
+      if ((this.yYo == -1) || (this.yYo < j)) {
+        this.yYo = j;
       }
-      localStringBuilder = new StringBuilder("unreadtop: ").append(this.xJa).append(" unreadBottom:").append(this.xJb).append(" readHeight: ").append(this.xIZ);
+      localStringBuilder = new StringBuilder("unreadtop: ").append(this.yYp).append(" unreadBottom:").append(this.yYq).append(" readHeight: ").append(this.yYo);
       if (!paramBoolean) {
         break label1417;
       }
@@ -349,25 +349,25 @@ public final class c
     label1417:
     for (Object localObject = " isScrooIde";; localObject = "")
     {
-      ac.i("MicroMsg.AdViewStatic", (String)localObject);
+      ad.i("MicroMsg.AdViewStatic", (String)localObject);
       AppMethodBeat.o(94977);
       return;
       label1310:
-      this.xJe = 0;
+      this.yYt = 0;
       break;
       label1318:
-      if ((this.xIY != 0L) || (this.xIV == 0L)) {
+      if ((this.yYn != 0L) || (this.yYk == 0L)) {
         break label1107;
       }
-      this.xIW = m;
-      this.xIX = k;
-      this.xIY = System.currentTimeMillis();
-      ac.d("MicroMsg.AdViewStatic", "fullExposure old, end:" + (this.xIY - this.xIV) + ", hash=" + hashCode());
+      this.yYl = m;
+      this.yYm = k;
+      this.yYn = System.currentTimeMillis();
+      ad.d("MicroMsg.AdViewStatic", "fullExposure old, end:" + (this.yYn - this.yYk) + ", hash=" + hashCode());
       break label1107;
       label1401:
-      this.xJa = 0;
+      this.yYp = 0;
       break label1137;
-      this.xJb = 0;
+      this.yYq = 0;
       break label1175;
     }
   }

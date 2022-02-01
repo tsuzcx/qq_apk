@@ -23,7 +23,7 @@ public class TPMediaDrmProxy
   
   private TPMediaDrmProxy(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193786);
+    AppMethodBeat.i(220568);
     try
     {
       l1 = longFromBytes(paramArrayOfByte, 0, false);
@@ -53,42 +53,42 @@ public class TPMediaDrmProxy
     {
       public void onEvent(MediaDrm paramAnonymousMediaDrm, byte[] paramAnonymousArrayOfByte1, int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte2)
       {
-        AppMethodBeat.i(193785);
+        AppMethodBeat.i(220567);
         if (paramAnonymousMediaDrm == TPMediaDrmProxy.this.mMediaDrm) {
           TPMediaDrmProxy.access$100(TPMediaDrmProxy.this, paramAnonymousArrayOfByte1, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousArrayOfByte2);
         }
-        AppMethodBeat.o(193785);
+        AppMethodBeat.o(220567);
       }
     });
     this.mMediaDrm = localMediaDrm;
     this.mUUID = paramArrayOfByte;
-    AppMethodBeat.o(193786);
+    AppMethodBeat.o(220568);
   }
   
   public static TPMediaDrmProxy createMediaDrmProxyByUUID(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193787);
+    AppMethodBeat.i(220569);
     if (Build.VERSION.SDK_INT < 18)
     {
-      AppMethodBeat.o(193787);
+      AppMethodBeat.o(220569);
       return null;
     }
     try
     {
       paramArrayOfByte = new TPMediaDrmProxy(paramArrayOfByte);
-      AppMethodBeat.o(193787);
+      AppMethodBeat.o(220569);
       return paramArrayOfByte;
     }
     catch (UnsupportedSchemeException paramArrayOfByte)
     {
-      AppMethodBeat.o(193787);
+      AppMethodBeat.o(220569);
     }
     return null;
   }
   
   private static boolean isCryptoSchemeSupportedWithMimeType(byte[] paramArrayOfByte, String paramString)
   {
-    AppMethodBeat.i(193788);
+    AppMethodBeat.i(220570);
     long l1;
     long l2;
     boolean bool;
@@ -99,22 +99,22 @@ public class TPMediaDrmProxy
       if (Build.VERSION.SDK_INT >= 19)
       {
         bool = MediaDrm.isCryptoSchemeSupported(new UUID(l1, l2), paramString);
-        AppMethodBeat.o(193788);
+        AppMethodBeat.o(220570);
         return bool;
       }
     }
     catch (Exception paramArrayOfByte)
     {
-      AppMethodBeat.o(193788);
+      AppMethodBeat.o(220570);
       return false;
     }
     if (Build.VERSION.SDK_INT == 18)
     {
       bool = MediaDrm.isCryptoSchemeSupported(new UUID(l1, l2));
-      AppMethodBeat.o(193788);
+      AppMethodBeat.o(220570);
       return bool;
     }
-    AppMethodBeat.o(193788);
+    AppMethodBeat.o(220570);
     return false;
   }
   
@@ -140,14 +140,14 @@ public class TPMediaDrmProxy
   
   public void closeSession(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193791);
+    AppMethodBeat.i(220573);
     this.mMediaDrm.closeSession(paramArrayOfByte);
-    AppMethodBeat.o(193791);
+    AppMethodBeat.o(220573);
   }
   
   public KeyRequest getKeyRequest(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString, int paramInt)
   {
-    AppMethodBeat.i(193795);
+    AppMethodBeat.i(220577);
     for (;;)
     {
       try
@@ -157,14 +157,14 @@ public class TPMediaDrmProxy
         {
           paramInt = paramArrayOfByte1.getRequestType();
           paramArrayOfByte1 = new KeyRequest(paramInt, paramArrayOfByte1.getData(), 0);
-          AppMethodBeat.o(193795);
+          AppMethodBeat.o(220577);
           return paramArrayOfByte1;
         }
       }
       catch (NotProvisionedException paramArrayOfByte1)
       {
         paramArrayOfByte1 = new KeyRequest(-1, null, -1);
-        AppMethodBeat.o(193795);
+        AppMethodBeat.o(220577);
         return paramArrayOfByte1;
       }
       paramInt = 0;
@@ -173,40 +173,40 @@ public class TPMediaDrmProxy
   
   public MediaCrypto getMediaCrypto(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193790);
+    AppMethodBeat.i(220572);
     try
     {
       paramArrayOfByte = new MediaCrypto(this.mUUID, paramArrayOfByte);
-      AppMethodBeat.o(193790);
+      AppMethodBeat.o(220572);
       return paramArrayOfByte;
     }
     catch (MediaCryptoException paramArrayOfByte)
     {
-      AppMethodBeat.o(193790);
+      AppMethodBeat.o(220572);
     }
     return null;
   }
   
   public String getPropertyString(String paramString)
   {
-    AppMethodBeat.i(193797);
+    AppMethodBeat.i(220579);
     paramString = this.mMediaDrm.getPropertyString(paramString);
-    AppMethodBeat.o(193797);
+    AppMethodBeat.o(220579);
     return paramString;
   }
   
-  public ProvisionRequest getProvisionRequest()
+  public TPMediaDrmProxy.ProvisionRequest getProvisionRequest()
   {
-    AppMethodBeat.i(193793);
+    AppMethodBeat.i(220575);
     Object localObject = this.mMediaDrm.getProvisionRequest();
-    localObject = new ProvisionRequest(((MediaDrm.ProvisionRequest)localObject).getDefaultUrl(), ((MediaDrm.ProvisionRequest)localObject).getData());
-    AppMethodBeat.o(193793);
+    localObject = new TPMediaDrmProxy.ProvisionRequest(((MediaDrm.ProvisionRequest)localObject).getDefaultUrl(), ((MediaDrm.ProvisionRequest)localObject).getData());
+    AppMethodBeat.o(220575);
     return localObject;
   }
   
   public DrmSessionId openSession()
   {
-    AppMethodBeat.i(193789);
+    AppMethodBeat.i(220571);
     Object localObject = null;
     i = 0;
     try
@@ -229,65 +229,65 @@ public class TPMediaDrmProxy
       }
     }
     localObject = new DrmSessionId(i, (byte[])localObject);
-    AppMethodBeat.o(193789);
+    AppMethodBeat.o(220571);
     return localObject;
   }
   
   public int provideKeyResponse(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(193796);
+    AppMethodBeat.i(220578);
     try
     {
       this.mMediaDrm.provideKeyResponse(paramArrayOfByte1, paramArrayOfByte2);
-      AppMethodBeat.o(193796);
+      AppMethodBeat.o(220578);
       return 0;
     }
     catch (NotProvisionedException paramArrayOfByte1)
     {
-      AppMethodBeat.o(193796);
+      AppMethodBeat.o(220578);
       return -1;
     }
     catch (DeniedByServerException paramArrayOfByte1)
     {
-      AppMethodBeat.o(193796);
+      AppMethodBeat.o(220578);
     }
     return -2;
   }
   
   public int provideProvisionResponse(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193794);
+    AppMethodBeat.i(220576);
     try
     {
       this.mMediaDrm.provideProvisionResponse(paramArrayOfByte);
-      AppMethodBeat.o(193794);
+      AppMethodBeat.o(220576);
       return 0;
     }
     catch (DeniedByServerException paramArrayOfByte)
     {
-      AppMethodBeat.o(193794);
+      AppMethodBeat.o(220576);
     }
     return -1;
   }
   
   public void release()
   {
-    AppMethodBeat.i(193792);
+    AppMethodBeat.i(220574);
     if (Build.VERSION.SDK_INT >= 28)
     {
       this.mMediaDrm.close();
-      AppMethodBeat.o(193792);
+      AppMethodBeat.o(220574);
       return;
     }
     this.mMediaDrm.release();
-    AppMethodBeat.o(193792);
+    AppMethodBeat.o(220574);
   }
   
   public void setPropertyString(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193798);
+    AppMethodBeat.i(220580);
     this.mMediaDrm.setPropertyString(paramString1, paramString2);
-    AppMethodBeat.o(193798);
+    AppMethodBeat.o(220580);
   }
   
   public static final class DrmSessionId
@@ -315,22 +315,10 @@ public class TPMediaDrmProxy
       this.mStatus = paramInt2;
     }
   }
-  
-  public static final class ProvisionRequest
-  {
-    byte[] mData;
-    String mDefaultUrl;
-    
-    ProvisionRequest(String paramString, byte[] paramArrayOfByte)
-    {
-      this.mDefaultUrl = paramString;
-      this.mData = paramArrayOfByte;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.core.drm.TPMediaDrmProxy
  * JD-Core Version:    0.7.0.1
  */

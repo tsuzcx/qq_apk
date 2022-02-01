@@ -4,13 +4,13 @@ import android.view.View.OnClickListener;
 import d.g.a.b;
 import d.l;
 
-@l(fNY={1, 1, 16})
+@l(gfx={1, 1, 16})
 final class e
   implements View.OnClickListener
 {
   e(b paramb)
   {
-    this.gIs = paramb;
+    this.hcc = paramb;
   }
 }
 

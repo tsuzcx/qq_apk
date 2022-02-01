@@ -94,9 +94,9 @@ public class IssueAlertBehaviour
         ((Intent)localObject).addFlags(268435456);
         ((Intent)localObject).putExtra("db_label", IssueAlertBehaviour.this.mConcernedDbPath);
         Context localContext = IssueAlertBehaviour.this.mContext;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/sqlitelint/behaviour/alert/IssueAlertBehaviour$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/sqlitelint/behaviour/alert/IssueAlertBehaviour$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/sqlitelint/behaviour/alert/IssueAlertBehaviour$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(52901);
       }

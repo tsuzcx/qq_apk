@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class vn
   extends b
 {
-  public a dyn;
-  
   public vn()
   {
     this((byte)0);
@@ -15,19 +12,8 @@ public final class vn
   
   private vn(byte paramByte)
   {
-    AppMethodBeat.i(91221);
-    this.dyn = new a();
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91221);
-  }
-  
-  public static final class a
-  {
-    public boolean dyo;
-    public boolean dyp = false;
-    public int dyq = 0;
-    public int scene;
   }
 }
 

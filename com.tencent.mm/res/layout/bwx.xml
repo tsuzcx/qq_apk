@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/bh5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="5.0" android:layout_alignParentBottom="true">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/bgy" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/amc" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/bgr" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/amc" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/bgz" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/amc" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/bh7" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/amc" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/i1u" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/amc" android:layout_weight="1.0" />
+        <RelativeLayout android:gravity="center" android:id="@id/bgq" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/amc" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/bgo" android:layout_width="@dimen/amc" android:layout_height="@dimen/amc" />
+            <ImageView android:id="@id/bgp" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_alignBottom="@id/bgo" android:layout_alignEnd="@id/bgo" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center" android:id="@id/i1s" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/amc" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/i1r" android:layout_width="@dimen/amc" android:layout_height="@dimen/amc" />
+            <ImageView android:id="@id/i1t" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_alignBottom="@id/i1r" android:layout_alignEnd="@id/i1r" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

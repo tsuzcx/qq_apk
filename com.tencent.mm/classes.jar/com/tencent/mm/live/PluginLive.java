@@ -3,74 +3,71 @@ package com.tencent.mm.live;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.AppForegroundDelegate;
-import com.tencent.mm.g.a.la;
-import com.tencent.mm.g.a.rn;
-import com.tencent.mm.kernel.b.f;
+import com.tencent.mm.g.a.lj;
+import com.tencent.mm.g.a.rz;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.live.b.g.d;
-import com.tencent.mm.live.b.h;
-import com.tencent.mm.live.b.i;
 import com.tencent.mm.live.b.j;
 import com.tencent.mm.live.core.core.b.d;
 import com.tencent.mm.live.core.core.b.e;
-import com.tencent.mm.model.cc;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.protocal.protobuf.bqd;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.model.cd;
+import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.protocal.protobuf.buq;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.storagebase.h.b;
-import d.g.b.k;
-import d.g.b.v.d;
+import d.g.b.p;
+import d.g.b.y.d;
+import d.l;
 import d.v;
-import d.y;
 import java.util.HashMap;
 import java.util.Map;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/PluginLive;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/live/IPluginLive;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "Lcom/tencent/mm/kernel/api/bucket/ICollectDBFactoryBucket;", "()V", "appForegroundListener", "com/tencent/mm/live/PluginLive$appForegroundListener$1", "Lcom/tencent/mm/live/PluginLive$appForegroundListener$1;", "liveStatusMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "liveSysMsgReceiver", "Lcom/tencent/mm/live/model/LiveSysMsgReceiver;", "logoutEvent", "Lcom/tencent/mm/sdk/event/IListener;", "revokeMsgListener", "collectDatabaseFactory", "Lcom/tencent/mm/storagebase/SqliteDB$IFactory;", "curLiveId", "execute", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "forceStopCurLive", "context", "Landroid/content/Context;", "getLiveTipsBarStorage", "Lcom/tencent/mm/live/model/storage/LiveTipsBarStorage;", "getLivingRoomId", "", "isAnchorLiving", "", "isFloatMode", "isVisitorLiving", "isVisitorMicing", "liveEntranceJumper", "Lcom/tencent/mm/live/api/ILiveEntranceJumper;", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "refreshLiveStatus", "liveId", "roomId", "callback", "Lcom/tencent/mm/live/IPluginLive$LiveStatusCallback;", "Companion", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/PluginLive;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/live/IPluginLive;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "Lcom/tencent/mm/kernel/api/bucket/ICollectDBFactoryBucket;", "()V", "appForegroundListener", "com/tencent/mm/live/PluginLive$appForegroundListener$1", "Lcom/tencent/mm/live/PluginLive$appForegroundListener$1;", "liveStatusMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "liveSysMsgReceiver", "Lcom/tencent/mm/live/model/LiveSysMsgReceiver;", "logoutEvent", "Lcom/tencent/mm/sdk/event/IListener;", "revokeMsgListener", "collectDatabaseFactory", "Lcom/tencent/mm/storagebase/SqliteDB$IFactory;", "curLiveId", "execute", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "forceStopCurLive", "context", "Landroid/content/Context;", "getLiveTipsBarStorage", "Lcom/tencent/mm/live/model/storage/LiveTipsBarStorage;", "getLivingRoomId", "", "isAnchorLiving", "", "isFloatMode", "isVisitorLiving", "isVisitorMicing", "liveEntranceJumper", "Lcom/tencent/mm/live/api/ILiveEntranceJumper;", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "refreshLiveStatus", "liveId", "roomId", "callback", "Lcom/tencent/mm/live/IPluginLive$LiveStatusCallback;", "Companion", "plugin-logic_release"})
 public final class PluginLive
-  extends f
+  extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.c, a
 {
-  public static final PluginLive.a gmy;
-  private final com.tencent.mm.sdk.b.c<?> foi;
-  private final j gmu;
-  private final HashMap<Long, Integer> gmv;
-  private final com.tencent.mm.sdk.b.c<?> gmw;
-  private final b gmx;
+  public static final PluginLive.a gGh;
+  private final com.tencent.mm.sdk.b.c<?> fGq;
+  private final j gGd;
+  private final HashMap<Long, Integer> gGe;
+  private final com.tencent.mm.sdk.b.c<?> gGf;
+  private final b gGg;
   
   static
   {
-    AppMethodBeat.i(189721);
-    gmy = new PluginLive.a((byte)0);
-    AppMethodBeat.o(189721);
+    AppMethodBeat.i(212007);
+    gGh = new PluginLive.a((byte)0);
+    AppMethodBeat.o(212007);
   }
   
   public PluginLive()
   {
-    AppMethodBeat.i(189720);
-    this.gmu = new j();
-    this.gmv = new HashMap();
-    this.gmw = ((com.tencent.mm.sdk.b.c)new d(this));
-    this.gmx = new b();
-    this.foi = ((com.tencent.mm.sdk.b.c)new f());
-    AppMethodBeat.o(189720);
+    AppMethodBeat.i(212006);
+    this.gGd = new j();
+    this.gGe = new HashMap();
+    this.gGf = ((com.tencent.mm.sdk.b.c)new d(this));
+    this.gGg = new b();
+    this.fGq = ((com.tencent.mm.sdk.b.c)new f());
+    AppMethodBeat.o(212006);
   }
   
   public final HashMap<Integer, h.b> collectDatabaseFactory()
   {
-    AppMethodBeat.i(189712);
+    AppMethodBeat.i(211998);
     HashMap localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf("LiveTipsBar".hashCode()), c.gmz);
-    AppMethodBeat.o(189712);
+    localHashMap.put(Integer.valueOf("LiveTipsBar".hashCode()), PluginLive.c.gGi);
+    AppMethodBeat.o(211998);
     return localHashMap;
   }
   
   public final long curLiveId()
   {
-    AppMethodBeat.i(189715);
-    com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.guG;
-    long l = com.tencent.mm.live.b.g.akF().DMV;
-    AppMethodBeat.o(189715);
+    AppMethodBeat.i(212001);
+    com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.gOr;
+    long l = com.tencent.mm.live.b.g.ans().Fsa;
+    AppMethodBeat.o(212001);
     return l;
   }
   
@@ -78,362 +75,354 @@ public final class PluginLive
   
   public final void forceStopCurLive(Context paramContext)
   {
-    AppMethodBeat.i(189719);
-    k.h(paramContext, "context");
-    ac.m("MicroMsg.PluginLive", "forceStopCurLive", new Object[0]);
-    Object localObject = com.tencent.mm.live.core.core.a.b.gnC;
-    if (com.tencent.mm.live.core.core.a.b.a.aiN())
+    AppMethodBeat.i(212005);
+    p.h(paramContext, "context");
+    ad.m("MicroMsg.PluginLive", "forceStopCurLive", new Object[0]);
+    Object localObject = com.tencent.mm.live.core.core.a.b.gHl;
+    if (com.tencent.mm.live.core.core.a.b.a.alz())
     {
-      localObject = i.gvw;
-      i.alC();
-      localObject = com.tencent.mm.live.b.c.a.gxp;
-      com.tencent.mm.live.b.c.a.alK();
-      localObject = com.tencent.mm.live.core.core.a.b.gnC;
-      paramContext = (com.tencent.mm.live.core.core.trtc.a)com.tencent.mm.live.core.core.a.b.a.ct(paramContext);
+      localObject = com.tencent.mm.live.b.i.gPh;
+      com.tencent.mm.live.b.i.aop();
+      localObject = com.tencent.mm.live.b.c.a.gRa;
+      com.tencent.mm.live.b.c.a.aox();
+      localObject = com.tencent.mm.live.core.core.a.b.gHl;
+      paramContext = (com.tencent.mm.live.core.core.trtc.a)com.tencent.mm.live.core.core.a.b.a.cq(paramContext);
     }
     while (paramContext != null)
     {
-      paramContext.aiu();
-      AppMethodBeat.o(189719);
+      paramContext.alg();
+      AppMethodBeat.o(212005);
       return;
-      localObject = com.tencent.mm.live.core.core.c.b.gqt;
-      if (com.tencent.mm.live.core.core.c.b.a.aiN())
+      localObject = com.tencent.mm.live.core.core.c.b.gKd;
+      if (com.tencent.mm.live.core.core.c.b.a.alz())
       {
-        localObject = com.tencent.mm.live.core.core.c.b.gqt;
-        paramContext = (com.tencent.mm.live.core.core.trtc.a)com.tencent.mm.live.core.core.c.b.a.cu(paramContext);
+        localObject = com.tencent.mm.live.core.core.c.b.gKd;
+        paramContext = (com.tencent.mm.live.core.core.trtc.a)com.tencent.mm.live.core.core.c.b.a.cr(paramContext);
       }
       else
       {
         paramContext = null;
       }
     }
-    AppMethodBeat.o(189719);
+    AppMethodBeat.o(212005);
   }
   
   public final com.tencent.mm.live.b.c.c getLiveTipsBarStorage()
   {
-    AppMethodBeat.i(189708);
+    AppMethodBeat.i(211994);
     com.tencent.mm.live.b.c.c localc = com.tencent.mm.live.b.c.c.getLiveTipsBarStorage();
-    AppMethodBeat.o(189708);
+    AppMethodBeat.o(211994);
     return localc;
   }
   
   public final String getLivingRoomId()
   {
-    AppMethodBeat.i(189711);
-    Object localObject = com.tencent.mm.live.b.g.guG;
-    localObject = com.tencent.mm.live.b.g.akA();
-    AppMethodBeat.o(189711);
+    AppMethodBeat.i(211997);
+    Object localObject = com.tencent.mm.live.b.g.gOr;
+    localObject = com.tencent.mm.live.b.g.anm();
+    AppMethodBeat.o(211997);
     return localObject;
   }
   
   public final boolean isAnchorLiving()
   {
-    AppMethodBeat.i(189713);
-    Object localObject = com.tencent.mm.live.b.g.guG;
-    if (com.tencent.mm.live.b.g.akF().DMV != 0L)
+    AppMethodBeat.i(211999);
+    Object localObject = com.tencent.mm.live.b.g.gOr;
+    if (com.tencent.mm.live.b.g.ans().Fsa != 0L)
     {
-      localObject = com.tencent.mm.live.b.g.guG;
-      if (!com.tencent.mm.live.b.g.akT().guO)
+      localObject = com.tencent.mm.live.b.g.gOr;
+      if (!com.tencent.mm.live.b.g.anG().gOz)
       {
-        localObject = com.tencent.mm.live.b.g.guG;
-        if (!com.tencent.mm.live.b.g.akT().guQ)
+        localObject = com.tencent.mm.live.b.g.gOr;
+        if (!com.tencent.mm.live.b.g.anG().gOB)
         {
-          localObject = com.tencent.mm.live.core.core.a.b.gnC;
-          if (com.tencent.mm.live.core.core.a.b.a.aiN())
+          localObject = com.tencent.mm.live.core.core.a.b.gHl;
+          if (com.tencent.mm.live.core.core.a.b.a.alz())
           {
-            AppMethodBeat.o(189713);
+            AppMethodBeat.o(211999);
             return true;
           }
         }
       }
     }
-    AppMethodBeat.o(189713);
+    AppMethodBeat.o(211999);
     return false;
   }
   
   public final boolean isFloatMode()
   {
-    AppMethodBeat.i(189717);
-    Object localObject = com.tencent.mm.live.core.core.c.b.gqt;
+    AppMethodBeat.i(212003);
+    Object localObject = com.tencent.mm.live.core.core.c.b.gKd;
     boolean bool;
-    if (com.tencent.mm.live.core.core.c.b.a.aiN())
+    if (com.tencent.mm.live.core.core.c.b.a.alz())
     {
-      localObject = com.tencent.mm.live.core.core.c.b.gqt;
-      localObject = ai.getContext();
-      k.g(localObject, "MMApplicationContext.getContext()");
-      bool = com.tencent.mm.live.core.core.c.b.a.cu((Context)localObject).goL.isFloatMode();
-      AppMethodBeat.o(189717);
+      localObject = com.tencent.mm.live.core.core.c.b.gKd;
+      localObject = aj.getContext();
+      p.g(localObject, "MMApplicationContext.getContext()");
+      bool = com.tencent.mm.live.core.core.c.b.a.cr((Context)localObject).gIt.isFloatMode();
+      AppMethodBeat.o(212003);
       return bool;
     }
-    localObject = com.tencent.mm.live.core.core.a.b.gnC;
-    if (com.tencent.mm.live.core.core.a.b.a.aiN())
+    localObject = com.tencent.mm.live.core.core.a.b.gHl;
+    if (com.tencent.mm.live.core.core.a.b.a.alz())
     {
-      localObject = com.tencent.mm.live.core.core.a.b.gnC;
-      localObject = ai.getContext();
-      k.g(localObject, "MMApplicationContext.getContext()");
-      bool = com.tencent.mm.live.core.core.a.b.a.ct((Context)localObject).goL.isFloatMode();
-      AppMethodBeat.o(189717);
+      localObject = com.tencent.mm.live.core.core.a.b.gHl;
+      localObject = aj.getContext();
+      p.g(localObject, "MMApplicationContext.getContext()");
+      bool = com.tencent.mm.live.core.core.a.b.a.cq((Context)localObject).gIt.isFloatMode();
+      AppMethodBeat.o(212003);
       return bool;
     }
-    AppMethodBeat.o(189717);
+    AppMethodBeat.o(212003);
     return false;
   }
   
   public final boolean isVisitorLiving()
   {
-    AppMethodBeat.i(189714);
-    Object localObject = com.tencent.mm.live.b.g.guG;
-    if (com.tencent.mm.live.b.g.akF().DMV != 0L)
+    AppMethodBeat.i(212000);
+    Object localObject = com.tencent.mm.live.b.g.gOr;
+    if (com.tencent.mm.live.b.g.ans().Fsa != 0L)
     {
-      localObject = com.tencent.mm.live.b.g.guG;
-      if (!com.tencent.mm.live.b.g.akT().guO)
+      localObject = com.tencent.mm.live.b.g.gOr;
+      if (!com.tencent.mm.live.b.g.anG().gOz)
       {
-        localObject = com.tencent.mm.live.b.g.guG;
-        if (!com.tencent.mm.live.b.g.akT().guQ)
+        localObject = com.tencent.mm.live.b.g.gOr;
+        if (!com.tencent.mm.live.b.g.anG().gOB)
         {
-          localObject = com.tencent.mm.live.core.core.c.b.gqt;
-          if (com.tencent.mm.live.core.core.c.b.a.aiN())
+          localObject = com.tencent.mm.live.core.core.c.b.gKd;
+          if (com.tencent.mm.live.core.core.c.b.a.alz())
           {
-            AppMethodBeat.o(189714);
+            AppMethodBeat.o(212000);
             return true;
           }
         }
       }
     }
-    AppMethodBeat.o(189714);
+    AppMethodBeat.o(212000);
     return false;
   }
   
   public final boolean isVisitorMicing()
   {
-    AppMethodBeat.i(189716);
-    Object localObject = com.tencent.mm.live.b.g.guG;
-    if (com.tencent.mm.live.b.g.akF().DMV != 0L)
+    AppMethodBeat.i(212002);
+    Object localObject = com.tencent.mm.live.b.g.gOr;
+    if (com.tencent.mm.live.b.g.ans().Fsa != 0L)
     {
-      localObject = com.tencent.mm.live.core.core.c.b.gqt;
-      if (com.tencent.mm.live.core.core.c.b.a.aiN())
+      localObject = com.tencent.mm.live.core.core.c.b.gKd;
+      if (com.tencent.mm.live.core.core.c.b.a.alz())
       {
-        localObject = com.tencent.mm.live.core.core.c.b.gqt;
-        localObject = ai.getContext();
-        k.g(localObject, "MMApplicationContext.getContext()");
-        if (com.tencent.mm.live.core.core.c.b.a.cu((Context)localObject).aiU())
+        localObject = com.tencent.mm.live.core.core.c.b.gKd;
+        localObject = aj.getContext();
+        p.g(localObject, "MMApplicationContext.getContext()");
+        if (com.tencent.mm.live.core.core.c.b.a.cr((Context)localObject).alG())
         {
-          AppMethodBeat.o(189716);
+          AppMethodBeat.o(212002);
           return true;
         }
       }
     }
-    AppMethodBeat.o(189716);
+    AppMethodBeat.o(212002);
     return false;
   }
   
   public final com.tencent.mm.live.api.a liveEntranceJumper()
   {
-    return (com.tencent.mm.live.api.a)h.guS;
+    return (com.tencent.mm.live.api.a)com.tencent.mm.live.b.h.gOD;
   }
   
   public final void onAccountInitialized(e.c paramc)
   {
-    AppMethodBeat.i(189709);
-    ac.i("MicroMsg.PluginLive", "onAccountInitialized");
-    com.tencent.mm.sdk.b.a.GpY.c(this.gmw);
-    paramc = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)paramc).getSysCmdMsgExtension().a("ApplyLiveMic", (p)this.gmu);
-    paramc = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)paramc).getSysCmdMsgExtension().a("AcceptLiveMic", (p)this.gmu);
-    paramc = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)paramc).getSysCmdMsgExtension().a("CloseLive", (p)this.gmu);
-    paramc = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)paramc).getSysCmdMsgExtension().a("CloseLiveMic", (p)this.gmu);
-    paramc = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)paramc).getSysCmdMsgExtension().a("CloseApplyLiveMic", (p)this.gmu);
-    paramc = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)paramc).getSysCmdMsgExtension().a("BanLiveComment", (p)this.gmu);
-    paramc = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)paramc).getSysCmdMsgExtension().a("LiveMicSucc", (p)this.gmu);
-    paramc = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)paramc).getSysCmdMsgExtension().a("OnlineLiveList", (p)this.gmu);
-    AppForegroundDelegate.cHM.a((com.tencent.mm.app.n)this.gmx);
-    this.foi.alive();
-    AppMethodBeat.o(189709);
+    AppMethodBeat.i(211995);
+    ad.i("MicroMsg.PluginLive", "onAccountInitialized");
+    com.tencent.mm.sdk.b.a.IbL.c(this.gGf);
+    paramc = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)paramc).getSysCmdMsgExtension().a("ApplyLiveMic", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    paramc = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)paramc).getSysCmdMsgExtension().a("AcceptLiveMic", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    paramc = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)paramc).getSysCmdMsgExtension().a("CloseLive", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    paramc = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)paramc).getSysCmdMsgExtension().a("CloseLiveMic", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    paramc = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)paramc).getSysCmdMsgExtension().a("CloseApplyLiveMic", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    paramc = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)paramc).getSysCmdMsgExtension().a("BanLiveComment", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    paramc = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)paramc).getSysCmdMsgExtension().a("LiveMicSucc", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    paramc = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(paramc, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)paramc).getSysCmdMsgExtension().a("OnlineLiveList", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    AppForegroundDelegate.cSQ.a((com.tencent.mm.app.n)this.gGg);
+    this.fGq.alive();
+    AppMethodBeat.o(211995);
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(189710);
-    ac.i("MicroMsg.PluginLive", "onAccountRelease");
-    com.tencent.mm.sdk.b.a.GpY.d(this.gmw);
-    com.tencent.mm.kernel.b.a locala = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)locala).getSysCmdMsgExtension().b("ApplyLiveMic", (p)this.gmu);
-    locala = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)locala).getSysCmdMsgExtension().b("AcceptLiveMic", (p)this.gmu);
-    locala = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)locala).getSysCmdMsgExtension().b("CloseLive", (p)this.gmu);
-    locala = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)locala).getSysCmdMsgExtension().b("CloseLiveMic", (p)this.gmu);
-    locala = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)locala).getSysCmdMsgExtension().b("CloseApplyLiveMic", (p)this.gmu);
-    locala = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)locala).getSysCmdMsgExtension().b("BanLiveComment", (p)this.gmu);
-    locala = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)locala).getSysCmdMsgExtension().b("LiveMicSucc", (p)this.gmu);
-    locala = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class);
-    k.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)locala).getSysCmdMsgExtension().b("OnlineLiveList", (p)this.gmu);
-    AppForegroundDelegate.cHM.b((com.tencent.mm.app.n)this.gmx);
-    this.foi.dead();
-    AppMethodBeat.o(189710);
+    AppMethodBeat.i(211996);
+    ad.i("MicroMsg.PluginLive", "onAccountRelease");
+    com.tencent.mm.sdk.b.a.IbL.d(this.gGf);
+    com.tencent.mm.kernel.b.a locala = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)locala).getSysCmdMsgExtension().b("ApplyLiveMic", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    locala = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)locala).getSysCmdMsgExtension().b("AcceptLiveMic", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    locala = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)locala).getSysCmdMsgExtension().b("CloseLive", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    locala = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)locala).getSysCmdMsgExtension().b("CloseLiveMic", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    locala = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)locala).getSysCmdMsgExtension().b("CloseApplyLiveMic", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    locala = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)locala).getSysCmdMsgExtension().b("BanLiveComment", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    locala = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)locala).getSysCmdMsgExtension().b("LiveMicSucc", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    locala = com.tencent.mm.kernel.g.ad(r.class);
+    p.g(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
+    ((r)locala).getSysCmdMsgExtension().b("OnlineLiveList", (com.tencent.mm.plugin.messenger.foundation.a.q)this.gGd);
+    AppForegroundDelegate.cSQ.b((com.tencent.mm.app.n)this.gGg);
+    this.fGq.dead();
+    AppMethodBeat.o(211996);
   }
   
   public final void refreshLiveStatus(final long paramLong, String paramString, a.a parama)
   {
-    AppMethodBeat.i(189718);
-    k.h(paramString, "roomId");
-    Object localObject = (Integer)this.gmv.get(Long.valueOf(paramLong));
+    AppMethodBeat.i(212004);
+    p.h(paramString, "roomId");
+    Object localObject = (Integer)this.gGe.get(Long.valueOf(paramLong));
     if ((localObject != null) && (((Integer)localObject).intValue() == 1))
     {
       if (parama != null)
       {
         parama.c(paramLong, ((Integer)localObject).intValue());
-        AppMethodBeat.o(189718);
+        AppMethodBeat.o(212004);
         return;
       }
-      AppMethodBeat.o(189718);
+      AppMethodBeat.o(212004);
       return;
     }
-    localObject = com.tencent.mm.kernel.g.agi();
-    k.g(localObject, "MMKernel.getNetSceneQueue()");
-    if (((com.tencent.mm.ak.q)localObject).agm() != null)
+    localObject = com.tencent.mm.kernel.g.aiU();
+    p.g(localObject, "MMKernel.getNetSceneQueue()");
+    if (((com.tencent.mm.al.q)localObject).aiY() != null)
     {
       paramString = new com.tencent.mm.live.b.a.b(paramLong, paramString, true);
-      localObject = com.tencent.mm.kernel.g.agi();
-      k.g(localObject, "MMKernel.getNetSceneQueue()");
-      paramString.doScene(((com.tencent.mm.ak.q)localObject).agm(), (com.tencent.mm.ak.g)new e(this, paramLong, parama));
-      AppMethodBeat.o(189718);
+      localObject = com.tencent.mm.kernel.g.aiU();
+      p.g(localObject, "MMKernel.getNetSceneQueue()");
+      paramString.doScene(((com.tencent.mm.al.q)localObject).aiY(), (com.tencent.mm.al.f)new e(this, paramLong, parama));
+      AppMethodBeat.o(212004);
       return;
     }
     if (parama != null)
     {
       parama.c(paramLong, 0);
-      AppMethodBeat.o(189718);
+      AppMethodBeat.o(212004);
       return;
     }
-    AppMethodBeat.o(189718);
+    AppMethodBeat.o(212004);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/live/PluginLive$appForegroundListener$1", "Lcom/tencent/mm/app/IAppForegroundListener;", "onAppBackground", "", "activity", "", "onAppForeground", "plugin-logic_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/PluginLive$appForegroundListener$1", "Lcom/tencent/mm/app/IAppForegroundListener;", "onAppBackground", "", "activity", "", "onAppForeground", "plugin-logic_release"})
   public static final class b
     implements com.tencent.mm.app.n
   {
     public final void onAppBackground(String paramString)
     {
-      AppMethodBeat.i(189701);
+      AppMethodBeat.i(211987);
       paramString = new StringBuilder("onAppBackground liveId:");
-      com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.guG;
-      paramString = paramString.append(com.tencent.mm.live.b.g.akF().DMV).append(" liveName:");
-      localg = com.tencent.mm.live.b.g.guG;
-      ac.i("MicroMsg.PluginLive", com.tencent.mm.live.b.g.akF().Eud);
-      AppMethodBeat.o(189701);
+      com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.gOr;
+      paramString = paramString.append(com.tencent.mm.live.b.g.ans().Fsa).append(" liveName:");
+      localg = com.tencent.mm.live.b.g.gOr;
+      ad.i("MicroMsg.PluginLive", com.tencent.mm.live.b.g.ans().Gbw);
+      AppMethodBeat.o(211987);
     }
     
     public final void onAppForeground(String paramString)
     {
-      AppMethodBeat.i(189702);
+      AppMethodBeat.i(211988);
       paramString = new StringBuilder("onAppForeground liveId:");
-      Object localObject = com.tencent.mm.live.b.g.guG;
-      paramString = paramString.append(com.tencent.mm.live.b.g.akF().DMV).append(" liveName:");
-      localObject = com.tencent.mm.live.b.g.guG;
-      localObject = paramString.append(com.tencent.mm.live.b.g.akF().Eud).append(" jumpName:");
-      paramString = com.tencent.mm.live.b.g.guG;
-      paramString = com.tencent.mm.live.b.g.akJ();
+      Object localObject = com.tencent.mm.live.b.g.gOr;
+      paramString = paramString.append(com.tencent.mm.live.b.g.ans().Fsa).append(" liveName:");
+      localObject = com.tencent.mm.live.b.g.gOr;
+      localObject = paramString.append(com.tencent.mm.live.b.g.ans().Gbw).append(" jumpName:");
+      paramString = com.tencent.mm.live.b.g.gOr;
+      paramString = com.tencent.mm.live.b.g.anw();
       if (paramString != null)
       {
-        paramString = paramString.gnV;
+        paramString = paramString.gHE;
         if (paramString == null) {}
       }
       for (paramString = paramString.name;; paramString = null)
       {
-        ac.i("MicroMsg.PluginLive", paramString);
-        AppMethodBeat.o(189702);
+        ad.i("MicroMsg.PluginLive", paramString);
+        AppMethodBeat.o(211988);
         return;
       }
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
-  static final class c
-    implements h.b
-  {
-    public static final c gmz;
-    
-    static
-    {
-      AppMethodBeat.i(189703);
-      gmz = new c();
-      AppMethodBeat.o(189703);
-    }
-    
-    public final String[] getSQLs()
-    {
-      return com.tencent.mm.live.b.c.c.SQL_CREATE;
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/live/PluginLive$logoutEvent$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/LogoutEvent;", "callback", "", "event", "plugin-logic_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/PluginLive$logoutEvent$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/LogoutEvent;", "callback", "", "event", "plugin-logic_release"})
   public static final class d
-    extends com.tencent.mm.sdk.b.c<la>
+    extends com.tencent.mm.sdk.b.c<lj>
   {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd"})
   static final class e
-    implements com.tencent.mm.ak.g
+    implements com.tencent.mm.al.f
   {
     e(PluginLive paramPluginLive, long paramLong, a.a parama) {}
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.n paramn)
+    public final void onSceneEnd(final int paramInt1, final int paramInt2, String paramString, final com.tencent.mm.al.n paramn)
     {
-      AppMethodBeat.i(189706);
-      paramn.setHasCallbackToQueue(true);
-      paramString = new v.d();
-      paramString.KUO = 0;
-      if ((paramInt1 == 0) && (paramInt2 == 0))
+      AppMethodBeat.i(211992);
+      com.tencent.e.h.LTJ.aR((Runnable)new Runnable()
       {
-        if (paramn == null)
+        public final void run()
         {
-          paramString = new v("null cannot be cast to non-null type com.tencent.mm.live.model.cgi.NetSceneGetLiveInfo");
-          AppMethodBeat.o(189706);
-          throw paramString;
+          AppMethodBeat.i(221638);
+          paramn.setHasCallbackToQueue(true);
+          Object localObject1 = new y.d();
+          ((y.d)localObject1).MLT = 0;
+          if ((paramInt1 == 0) && (paramInt2 == 0))
+          {
+            Object localObject2 = paramn;
+            if (localObject2 == null)
+            {
+              localObject1 = new v("null cannot be cast to non-null type com.tencent.mm.live.model.cgi.NetSceneGetLiveInfo");
+              AppMethodBeat.o(221638);
+              throw ((Throwable)localObject1);
+            }
+            localObject2 = ((com.tencent.mm.live.b.a.b)localObject2).ans();
+            if ((localObject2 == null) || (((buq)localObject2).oxQ != 0))
+            {
+              ((y.d)localObject1).MLT = 1;
+              com.tencent.mm.live.b.c.c.getLiveTipsBarStorage().rn(this.gGm.gGk);
+            }
+            ((Map)PluginLive.access$getLiveStatusMap$p(this.gGm.gGj)).put(Long.valueOf(this.gGm.gGk), Integer.valueOf(((y.d)localObject1).MLT));
+          }
+          com.tencent.mm.ad.c.g((d.g.a.a)new PluginLive.e.1.1(this, (y.d)localObject1));
+          AppMethodBeat.o(221638);
         }
-        paramn = ((com.tencent.mm.live.b.a.b)paramn).akF();
-        if ((paramn == null) || (paramn.nUv != 0)) {
-          paramString.KUO = 1;
-        }
-        ((Map)PluginLive.access$getLiveStatusMap$p(this.gmA)).put(Long.valueOf(paramLong), Integer.valueOf(paramString.KUO));
-      }
-      com.tencent.mm.ac.c.g((d.g.a.a)new d.g.b.l(paramString) {});
-      AppMethodBeat.o(189706);
+      });
+      AppMethodBeat.o(211992);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/live/PluginLive$revokeMsgListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/RevokeMsgEvent;", "callback", "", "event", "plugin-logic_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/PluginLive$revokeMsgListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/RevokeMsgEvent;", "callback", "", "event", "plugin-logic_release"})
   public static final class f
-    extends com.tencent.mm.sdk.b.c<rn>
+    extends com.tencent.mm.sdk.b.c<rz>
   {}
 }
 

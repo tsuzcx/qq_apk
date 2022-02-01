@@ -39,7 +39,7 @@ public final class e
         {
           public final void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
           {
-            AppMethodBeat.i(191284);
+            AppMethodBeat.i(195076);
             CountDownLatch localCountDownLatch = new CountDownLatch(1);
             paramContext.onModuleSDKCrashed(paramAnonymousThrowable);
             try
@@ -49,7 +49,7 @@ public final class e
               if (e.this.a != null) {
                 e.this.a.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
               }
-              AppMethodBeat.o(191284);
+              AppMethodBeat.o(195076);
               return;
             }
             catch (InterruptedException localInterruptedException)

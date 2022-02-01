@@ -5,41 +5,41 @@ import android.graphics.drawable.GradientDrawable;
 
 final class a
 {
-  private final MaterialCardView gf;
+  private final MaterialCardView hW;
   int strokeColor;
   int strokeWidth;
   
   public a(MaterialCardView paramMaterialCardView)
   {
-    this.gf = paramMaterialCardView;
+    this.hW = paramMaterialCardView;
   }
   
-  private Drawable aL()
+  private Drawable bb()
   {
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(this.gf.getRadius());
+    localGradientDrawable.setCornerRadius(this.hW.getRadius());
     if (this.strokeColor != -1) {
       localGradientDrawable.setStroke(this.strokeWidth, this.strokeColor);
     }
     return localGradientDrawable;
   }
   
-  final void aK()
+  final void ba()
   {
-    this.gf.setForeground(aL());
+    this.hW.setForeground(bb());
   }
   
-  final void aM()
+  final void bc()
   {
-    int i = this.gf.getContentPaddingLeft();
+    int i = this.hW.getContentPaddingLeft();
     int j = this.strokeWidth;
-    int k = this.gf.getContentPaddingTop();
+    int k = this.hW.getContentPaddingTop();
     int m = this.strokeWidth;
-    int n = this.gf.getContentPaddingRight();
+    int n = this.hW.getContentPaddingRight();
     int i1 = this.strokeWidth;
-    int i2 = this.gf.getContentPaddingBottom();
+    int i2 = this.hW.getContentPaddingBottom();
     int i3 = this.strokeWidth;
-    this.gf.setContentPadding(i + j, k + m, n + i1, i2 + i3);
+    this.hW.setContentPadding(i + j, k + m, n + i1, i2 + i3);
   }
 }
 

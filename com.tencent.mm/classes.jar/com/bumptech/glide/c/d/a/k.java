@@ -6,28 +6,28 @@ import java.io.File;
 
 final class k
 {
-  private static final File aJF;
-  private static volatile k aJI;
-  private volatile int aJG;
-  private volatile boolean aJH = true;
+  private static final File aLw;
+  private static volatile k aLz;
+  private volatile int aLx;
+  private volatile boolean aLy = true;
   
   static
   {
     AppMethodBeat.i(77410);
-    aJF = new File("/proc/self/fd");
+    aLw = new File("/proc/self/fd");
     AppMethodBeat.o(77410);
   }
   
-  static k ph()
+  static k pz()
   {
     AppMethodBeat.i(77408);
-    if (aJI == null) {}
+    if (aLz == null) {}
     try
     {
-      if (aJI == null) {
-        aJI = new k();
+      if (aLz == null) {
+        aLz = new k();
       }
-      k localk = aJI;
+      k localk = aLz;
       AppMethodBeat.o(77408);
       return localk;
     }
@@ -37,27 +37,27 @@ final class k
     }
   }
   
-  final boolean pi()
+  final boolean pA()
   {
     boolean bool = false;
     try
     {
       AppMethodBeat.i(77409);
-      int i = this.aJG + 1;
-      this.aJG = i;
+      int i = this.aLx + 1;
+      this.aLx = i;
       if (i >= 50)
       {
-        this.aJG = 0;
-        i = aJF.list().length;
+        this.aLx = 0;
+        i = aLw.list().length;
         if (i < 700) {
           bool = true;
         }
-        this.aJH = bool;
-        if ((!this.aJH) && (Log.isLoggable("Downsampler", 5))) {
+        this.aLy = bool;
+        if ((!this.aLy) && (Log.isLoggable("Downsampler", 5))) {
           new StringBuilder("Excluding HARDWARE bitmap config because we're over the file descriptor limit, file descriptors ").append(i).append(", limit 700");
         }
       }
-      bool = this.aJH;
+      bool = this.aLy;
       AppMethodBeat.o(77409);
       return bool;
     }

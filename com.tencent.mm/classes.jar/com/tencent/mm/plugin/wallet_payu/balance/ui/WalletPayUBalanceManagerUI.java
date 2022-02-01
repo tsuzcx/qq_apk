@@ -3,33 +3,33 @@ package com.tencent.mm.plugin.wallet_payu.balance.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceManagerUI;
 import com.tencent.mm.plugin.wallet_core.c.b.a;
-import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.an;
 
 public class WalletPayUBalanceManagerUI
   extends WalletBalanceManagerUI
 {
-  public final void eoA()
-  {
-    AppMethodBeat.i(71968);
-    startActivity(WalletPayUBalanceSaveUI.class);
-    AppMethodBeat.o(71968);
-  }
-  
-  public final void eoz()
+  public final void eCy()
   {
     AppMethodBeat.i(71966);
-    s.epp();
-    if (s.epq().AZp == null) {}
+    s.eDp();
+    if (s.eDq().CzB == null) {}
     for (boolean bool = true;; bool = false)
     {
       doSceneProgress(new a(), bool);
       AppMethodBeat.o(71966);
       return;
     }
+  }
+  
+  public final void eCz()
+  {
+    AppMethodBeat.i(71968);
+    startActivity(WalletPayUBalanceSaveUI.class);
+    AppMethodBeat.o(71968);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -43,7 +43,7 @@ public class WalletPayUBalanceManagerUI
   {
     AppMethodBeat.i(71967);
     if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramn instanceof a))) {
-      hj(false);
+      hq(false);
     }
     AppMethodBeat.o(71967);
     return false;

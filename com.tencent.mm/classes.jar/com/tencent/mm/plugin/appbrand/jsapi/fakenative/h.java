@@ -9,12 +9,12 @@ import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 public final class h
   extends l
 {
-  public static final h kqS;
+  public static final h kMo;
   
   static
   {
     AppMethodBeat.i(46298);
-    kqS = new h();
+    kMo = new h();
     AppMethodBeat.o(46298);
   }
   

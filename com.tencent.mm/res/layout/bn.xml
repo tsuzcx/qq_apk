@@ -12,7 +12,7 @@
             <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/e8d" android:background="@drawable/amv" android:paddingRight="36.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxEms="4" android:singleLine="true" android:layout_toLeftOf="@id/b2t" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
             <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="10.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/e8d">
                 <com.tencent.mm.ui.chatting.view.AvatarImageView android:id="@id/fg" android:layout_marginRight="10.0dip" android:importantForAccessibility="no" style="@style/gj" />
-                <com.tencent.mm.ui.AddressView android:id="@id/dy5" android:background="?rd" android:paddingRight="@dimen/b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <com.tencent.mm.ui.AddressView android:id="@id/dy5" android:background="@drawable/amv" android:paddingRight="@dimen/b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

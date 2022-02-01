@@ -13,15 +13,15 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.downloader.b.a;
 import com.tencent.mm.plugin.downloader.b.a.c;
 import com.tencent.mm.plugin.downloader_app.api.DownloadWidgetTaskInfo;
 import com.tencent.mm.plugin.downloader_app.api.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -31,25 +31,25 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class DownloadProgressImageView
   extends AppCompatImageView
 {
-  private a.c CkQ;
-  private List<DownloadTaskInfo> CkR;
-  private DownloadTaskInfo CkS;
-  private long kbu;
+  private a.c DNV;
+  private List<DownloadTaskInfo> DNW;
+  private DownloadTaskInfo DNX;
+  private long kvQ;
   private Paint mPaint;
   
   public DownloadProgressImageView(final Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(175733);
-    this.kbu = -1L;
-    this.CkR = new CopyOnWriteArrayList();
-    ac.i("MicroMsg.DownloadProgressImageView", "init");
+    this.kvQ = -1L;
+    this.DNW = new CopyOnWriteArrayList();
+    ad.i("MicroMsg.DownloadProgressImageView", "init");
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
     this.mPaint.setStyle(Paint.Style.STROKE);
-    this.CkQ = new a.c()
+    this.DNV = new a.c()
     {
-      public final void X(Bundle paramAnonymousBundle)
+      public final void Z(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(175717);
         int k;
@@ -116,23 +116,27 @@ public class DownloadProgressImageView
       public final void run()
       {
         AppMethodBeat.i(175718);
-        paramContext.bek();
-        DownloadProgressImageView.a(DownloadProgressImageView.this, paramContext.CkW);
+        paramContext.bhO();
+        DownloadProgressImageView.a(DownloadProgressImageView.this, paramContext.DOb);
         DownloadProgressImageView.b(DownloadProgressImageView.this);
         AppMethodBeat.o(175718);
       }
     };
-    paramContext.bej();
+    paramContext.bhN();
     AppBrandMainProcessService.a(paramContext);
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(175719);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/DownloadProgressImageView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("view_task", true);
         paramAnonymousView.putExtra("from_scene", 3);
         ((c)g.ab(c.class)).a(DownloadProgressImageView.this.getContext(), paramAnonymousView, null);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/luggage/DownloadProgressImageView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(175719);
       }
     });
@@ -143,7 +147,7 @@ public class DownloadProgressImageView
   {
     AppMethodBeat.i(175734);
     super.onAttachedToWindow();
-    a.a(this.CkQ);
+    com.tencent.mm.plugin.downloader.b.a.a(this.DNV);
     AppMethodBeat.o(175734);
   }
   
@@ -151,7 +155,7 @@ public class DownloadProgressImageView
   {
     AppMethodBeat.i(175735);
     super.onDetachedFromWindow();
-    a.b(this.CkQ);
+    com.tencent.mm.plugin.downloader.b.a.b(this.DNV);
     AppMethodBeat.o(175735);
   }
   
@@ -212,7 +216,7 @@ public class DownloadProgressImageView
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetDownloadWidgeInfoTask> CREATOR;
-    public ArrayList<DownloadProgressImageView.DownloadTaskInfo> CkW;
+    public ArrayList<DownloadProgressImageView.DownloadTaskInfo> DOb;
     public Runnable callback;
     
     static
@@ -225,19 +229,19 @@ public class DownloadProgressImageView
     public GetDownloadWidgeInfoTask()
     {
       AppMethodBeat.i(175726);
-      this.CkW = new ArrayList();
+      this.DOb = new ArrayList();
       AppMethodBeat.o(175726);
     }
     
     private GetDownloadWidgeInfoTask(Parcel paramParcel)
     {
       AppMethodBeat.i(175727);
-      this.CkW = new ArrayList();
+      this.DOb = new ArrayList();
       e(paramParcel);
       AppMethodBeat.o(175727);
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       AppMethodBeat.i(175730);
       if (g.ab(c.class) == null)
@@ -245,10 +249,10 @@ public class DownloadProgressImageView
         AppMethodBeat.o(175730);
         return;
       }
-      Object localObject = ((c)g.ab(c.class)).bYc();
-      if (bs.gY((List)localObject))
+      Object localObject = ((c)g.ab(c.class)).ccG();
+      if (bt.hj((List)localObject))
       {
-        bet();
+        bhX();
         AppMethodBeat.o(175730);
         return;
       }
@@ -260,13 +264,13 @@ public class DownloadProgressImageView
         localDownloadTaskInfo.appId = localDownloadWidgetTaskInfo.appId;
         localDownloadTaskInfo.state = localDownloadWidgetTaskInfo.state;
         localDownloadTaskInfo.progress = localDownloadWidgetTaskInfo.progress;
-        this.CkW.add(localDownloadTaskInfo);
+        this.DOb.add(localDownloadTaskInfo);
       }
-      bet();
+      bhX();
       AppMethodBeat.o(175730);
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(175731);
       if (this.callback != null) {
@@ -278,14 +282,14 @@ public class DownloadProgressImageView
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(175728);
-      this.CkW = paramParcel.readArrayList(DownloadProgressImageView.DownloadTaskInfo.class.getClassLoader());
+      this.DOb = paramParcel.readArrayList(DownloadProgressImageView.DownloadTaskInfo.class.getClassLoader());
       AppMethodBeat.o(175728);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(175729);
-      paramParcel.writeList(this.CkW);
+      paramParcel.writeList(this.DOb);
       AppMethodBeat.o(175729);
     }
   }

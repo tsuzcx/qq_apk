@@ -11,13 +11,13 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.af.a.a;
 
 public class MMVerticalTextView
   extends View
 {
-  Rect HAx;
-  private TextPaint awy;
+  Rect Joo;
+  private TextPaint ayp;
   private int direction;
   private String mText;
   
@@ -25,12 +25,12 @@ public class MMVerticalTextView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142251);
-    this.HAx = new Rect();
-    this.awy = new TextPaint();
-    this.awy.setAntiAlias(true);
-    this.awy.setTextSize(15.0F);
-    this.awy.setColor(-16777216);
-    this.awy.setTextAlign(Paint.Align.CENTER);
+    this.Joo = new Rect();
+    this.ayp = new TextPaint();
+    this.ayp.setAntiAlias(true);
+    this.ayp.setTextSize(15.0F);
+    this.ayp.setColor(-16777216);
+    this.ayp.setTextAlign(Paint.Align.CENTER);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.verticaltextview);
     int i = paramAttributeSet.getResourceId(1, 0);
     if (i != 0) {
@@ -38,12 +38,12 @@ public class MMVerticalTextView
     }
     i = paramAttributeSet.getDimensionPixelOffset(4, 15);
     if (i > 0) {
-      this.awy.setTextSize(i);
+      this.ayp.setTextSize(i);
     }
-    this.awy.setColor(paramAttributeSet.getColor(3, -16777216));
+    this.ayp.setColor(paramAttributeSet.getColor(3, -16777216));
     this.direction = paramAttributeSet.getInt(0, 0);
     boolean bool = paramAttributeSet.getBoolean(2, false);
-    this.awy.setFakeBoldText(bool);
+    this.ayp.setFakeBoldText(bool);
     paramAttributeSet.recycle();
     requestLayout();
     invalidate();
@@ -59,16 +59,16 @@ public class MMVerticalTextView
     int j;
     if (this.direction == 0)
     {
-      j = (getWidth() >> 1) - (this.HAx.height() >> 1);
+      j = (getWidth() >> 1) - (this.Joo.height() >> 1);
       localPath.moveTo(j, 0.0F);
       localPath.lineTo(j, i);
     }
     for (;;)
     {
-      paramCanvas.drawTextOnPath(this.mText, localPath, 0.0F, 0.0F, this.awy);
+      paramCanvas.drawTextOnPath(this.mText, localPath, 0.0F, 0.0F, this.ayp);
       AppMethodBeat.o(142256);
       return;
-      j = (getWidth() >> 1) + (this.HAx.height() >> 1);
+      j = (getWidth() >> 1) + (this.Joo.height() >> 1);
       localPath.moveTo(j, i);
       localPath.lineTo(j, 0.0F);
     }
@@ -77,7 +77,7 @@ public class MMVerticalTextView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142255);
-    this.awy.getTextBounds(this.mText, 0, this.mText.length(), this.HAx);
+    this.ayp.getTextBounds(this.mText, 0, this.mText.length(), this.Joo);
     int j = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     if (j == 1073741824) {}
@@ -92,13 +92,13 @@ public class MMVerticalTextView
         setMeasuredDimension(paramInt1, paramInt2);
         AppMethodBeat.o(142255);
         return;
-        i = this.HAx.height();
+        i = this.Joo.height();
         if (j != -2147483648) {
           break label138;
         }
         paramInt1 = Math.min(i, paramInt1);
         break;
-        i = (int)Math.ceil(this.awy.measureText(this.mText));
+        i = (int)Math.ceil(this.ayp.measureText(this.mText));
         if (j == -2147483648) {
           paramInt2 = Math.min(i, paramInt2);
         } else {
@@ -122,7 +122,7 @@ public class MMVerticalTextView
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(142254);
-    this.awy.setColor(paramInt);
+    this.ayp.setColor(paramInt);
     invalidate();
     AppMethodBeat.o(142254);
   }
@@ -130,7 +130,7 @@ public class MMVerticalTextView
   public void setTextSize(int paramInt)
   {
     AppMethodBeat.i(142253);
-    this.awy.setTextSize(paramInt);
+    this.ayp.setTextSize(paramInt);
     requestLayout();
     invalidate();
     AppMethodBeat.o(142253);
@@ -138,7 +138,7 @@ public class MMVerticalTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMVerticalTextView
  * JD-Core Version:    0.7.0.1
  */

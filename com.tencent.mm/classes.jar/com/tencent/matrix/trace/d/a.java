@@ -2,27 +2,27 @@ package com.tencent.matrix.trace.d;
 
 public final class a
 {
-  public int brJ;
+  public int bCc;
+  public int cKC;
+  public int cKD;
   public int count = 1;
-  public int czG;
-  public int czH;
   
   public a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.czG = paramInt1;
-    this.czH = paramInt2;
-    this.brJ = paramInt3;
+    this.cKC = paramInt1;
+    this.cKD = paramInt2;
+    this.bCc = paramInt3;
   }
   
   public final void aT(long paramLong)
   {
     this.count += 1;
-    this.czH = ((int)(this.czH + paramLong));
+    this.cKD = ((int)(this.cKD + paramLong));
   }
   
   public final String toString()
   {
-    return this.brJ + "," + this.czG + "," + this.count + "," + this.czH;
+    return this.bCc + "," + this.cKC + "," + this.count + "," + this.cKD;
   }
 }
 

@@ -1,26 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
-import android.content.Context;
-import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.u;
+import org.json.JSONObject;
 
-public abstract interface h<PipVideoContainer extends View>
+public final class h
+  extends a<d>
 {
-  public abstract d El();
-  
-  public abstract PipVideoContainer aI(Context paramContext);
-  
-  public abstract void c(PipVideoContainer paramPipVideoContainer, Runnable paramRunnable);
-  
-  public abstract void cq(PipVideoContainer paramPipVideoContainer);
-  
-  public abstract void cr(PipVideoContainer paramPipVideoContainer);
-  
-  public abstract void d(PipVideoContainer paramPipVideoContainer, Runnable paramRunnable);
-  
-  public static abstract interface a<OriginVideoContainer extends g, PipVideoContainer extends View>
-  {
-    public abstract h<PipVideoContainer> a(OriginVideoContainer paramOriginVideoContainer);
-  }
+  public static final int CTRL_INDEX = 15;
+  public static final String NAME = "navigateBack";
 }
 
 

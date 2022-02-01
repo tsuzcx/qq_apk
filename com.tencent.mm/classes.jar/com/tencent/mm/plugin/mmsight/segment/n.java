@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bk.e;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.bl.e;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class n
 {
   public static d m(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(107690);
-    ac.i("MicroMsg.ThumbFetcherFactory", "get thumb fetcher, ish265: %s", new Object[] { Boolean.valueOf(e.Et(paramString)) });
+    ad.i("MicroMsg.ThumbFetcherFactory", "get thumb fetcher, ish265: %s", new Object[] { Boolean.valueOf(e.HI(paramString)) });
     k localk = new k();
     localk.init(paramString, paramInt1, paramInt2, paramInt3);
     AppMethodBeat.o(107690);

@@ -2,7 +2,7 @@ package com.tencent.mm.choosemsgfile.compat;
 
 public abstract interface b$a
 {
-  public abstract void co(int paramInt1, int paramInt2);
+  public abstract void cq(int paramInt1, int paramInt2);
   
   public abstract void r(int paramInt, String paramString);
 }

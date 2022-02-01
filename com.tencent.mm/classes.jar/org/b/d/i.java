@@ -7,7 +7,7 @@ import org.b.g.d;
 public final class i
   implements Serializable
 {
-  public final String FjO;
+  public final String GTp;
   private final String rawResponse;
   public final String token;
   
@@ -22,7 +22,7 @@ public final class i
     d.j(paramString1, "Token can't be null");
     d.j(paramString2, "Secret can't be null");
     this.token = paramString1;
-    this.FjO = paramString2;
+    this.GTp = paramString2;
     this.rawResponse = paramString3;
     AppMethodBeat.o(40536);
   }
@@ -41,7 +41,7 @@ public final class i
       return false;
     }
     paramObject = (i)paramObject;
-    if ((this.token.equals(paramObject.token)) && (this.FjO.equals(paramObject.FjO)))
+    if ((this.token.equals(paramObject.token)) && (this.GTp.equals(paramObject.GTp)))
     {
       AppMethodBeat.o(40538);
       return true;
@@ -54,7 +54,7 @@ public final class i
   {
     AppMethodBeat.i(40539);
     int i = this.token.hashCode();
-    int j = this.FjO.hashCode();
+    int j = this.GTp.hashCode();
     AppMethodBeat.o(40539);
     return i * 31 + j;
   }
@@ -62,7 +62,7 @@ public final class i
   public final String toString()
   {
     AppMethodBeat.i(40537);
-    String str = String.format("Token[%s , %s]", new Object[] { this.token, this.FjO });
+    String str = String.format("Token[%s , %s]", new Object[] { this.token, this.GTp });
     AppMethodBeat.o(40537);
     return str;
   }

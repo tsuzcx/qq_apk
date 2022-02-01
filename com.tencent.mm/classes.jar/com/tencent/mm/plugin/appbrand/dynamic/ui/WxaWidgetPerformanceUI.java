@@ -10,8 +10,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
@@ -24,9 +25,9 @@ import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 public class WxaWidgetPerformanceUI
   extends MMActivity
 {
-  MMSwitchBtn jOt;
-  MMSwitchBtn jOu;
-  MMSwitchBtn jOv;
+  MMSwitchBtn kiE;
+  MMSwitchBtn kiF;
+  MMSwitchBtn kiG;
   
   public void finish()
   {
@@ -79,21 +80,25 @@ public class WxaWidgetPerformanceUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121499);
-        Object localObject = c.JD("jsapi_draw_canvas").toString();
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/dynamic/ui/WxaWidgetPerformanceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        localObject = c.MW("jsapi_draw_canvas").toString();
         paramAnonymousView = new StringBuilder();
         if ((localObject != null) && (((String)localObject).length() > 0))
         {
-          int i = c.cz("jsapi_draw_canvas", "__invoke_jsapi_data_size");
+          int i = c.cB("jsapi_draw_canvas", "__invoke_jsapi_data_size");
           paramAnonymousView.append("data size :").append(i).append("\n").append((String)localObject);
         }
         localObject = (IPCString)h.a("com.tencent.mm:support", new IPCString("widget_launch"), WxaWidgetPerformanceUI.e.class);
         if (localObject != null) {
           paramAnonymousView.append("\n\n").append(localObject);
         }
-        if (f.bae()) {
-          paramAnonymousView.append("\n\n").append(f.baf());
+        if (f.bdD()) {
+          paramAnonymousView.append("\n\n").append(f.bdE());
         }
-        this.jOx.setText(paramAnonymousView.toString());
+        this.kiI.setText(paramAnonymousView.toString());
+        a.a(this, "com/tencent/mm/plugin/appbrand/dynamic/ui/WxaWidgetPerformanceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(121499);
       }
     });
@@ -102,15 +107,19 @@ public class WxaWidgetPerformanceUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121500);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/dynamic/ui/WxaWidgetPerformanceUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         h.a("com.tencent.mm:support", null, WxaWidgetPerformanceUI.a.class, null);
         c.clear();
         f.reset();
-        this.jOx.setText(c.JD("jsapi_draw_canvas").toString());
+        this.kiI.setText(c.MW("jsapi_draw_canvas").toString());
+        a.a(this, "com/tencent/mm/plugin/appbrand/dynamic/ui/WxaWidgetPerformanceUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(121500);
       }
     });
     localObject = (MMSwitchBtn)findViewById(2131303021);
-    boolean bool = c.bad();
+    boolean bool = c.bdC();
     ((MMSwitchBtn)localObject).setCheck(bool);
     ((MMSwitchBtn)localObject).setSwitchListener(new MMSwitchBtn.a()
     {
@@ -118,19 +127,19 @@ public class WxaWidgetPerformanceUI
       {
         AppMethodBeat.i(121501);
         h.a("com.tencent.mm:support", new IPCBoolean(paramAnonymousBoolean), WxaWidgetPerformanceUI.d.class, null);
-        c.fT(paramAnonymousBoolean);
+        c.fX(paramAnonymousBoolean);
         paramBundle.setEnabled(paramAnonymousBoolean);
-        WxaWidgetPerformanceUI.this.jOt.setEnabled(paramAnonymousBoolean);
-        WxaWidgetPerformanceUI.this.jOu.setEnabled(paramAnonymousBoolean);
-        WxaWidgetPerformanceUI.this.jOv.setEnabled(paramAnonymousBoolean);
+        WxaWidgetPerformanceUI.this.kiE.setEnabled(paramAnonymousBoolean);
+        WxaWidgetPerformanceUI.this.kiF.setEnabled(paramAnonymousBoolean);
+        WxaWidgetPerformanceUI.this.kiG.setEnabled(paramAnonymousBoolean);
         AppMethodBeat.o(121501);
       }
     });
     paramBundle.setEnabled(bool);
-    this.jOt = ((MMSwitchBtn)findViewById(2131298446));
-    this.jOt.setEnabled(bool);
-    this.jOt.setCheck(c.JG("jsapi_draw_canvas"));
-    this.jOt.setSwitchListener(new MMSwitchBtn.a()
+    this.kiE = ((MMSwitchBtn)findViewById(2131298446));
+    this.kiE.setEnabled(bool);
+    this.kiE.setCheck(c.MZ("jsapi_draw_canvas"));
+    this.kiE.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
@@ -138,18 +147,18 @@ public class WxaWidgetPerformanceUI
         h.a("com.tencent.mm:support", new IPCBoolean(paramAnonymousBoolean), WxaWidgetPerformanceUI.b.class, null);
         if (paramAnonymousBoolean)
         {
-          c.JE("jsapi_draw_canvas");
+          c.MX("jsapi_draw_canvas");
           AppMethodBeat.o(121502);
           return;
         }
-        c.JF("jsapi_draw_canvas");
+        c.MY("jsapi_draw_canvas");
         AppMethodBeat.o(121502);
       }
     });
-    this.jOu = ((MMSwitchBtn)findViewById(2131298492));
-    this.jOu.setEnabled(bool);
-    this.jOu.setCheck(c.JG("widget_launch"));
-    this.jOu.setSwitchListener(new MMSwitchBtn.a()
+    this.kiF = ((MMSwitchBtn)findViewById(2131298492));
+    this.kiF.setEnabled(bool);
+    this.kiF.setCheck(c.MZ("widget_launch"));
+    this.kiF.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
@@ -157,23 +166,23 @@ public class WxaWidgetPerformanceUI
         h.a("com.tencent.mm:support", new IPCBoolean(paramAnonymousBoolean), WxaWidgetPerformanceUI.c.class, null);
         if (paramAnonymousBoolean)
         {
-          c.JE("widget_launch");
+          c.MX("widget_launch");
           AppMethodBeat.o(121503);
           return;
         }
-        c.JF("widget_launch");
+        c.MY("widget_launch");
         AppMethodBeat.o(121503);
       }
     });
-    this.jOv = ((MMSwitchBtn)findViewById(2131298491));
-    this.jOv.setEnabled(bool);
-    this.jOv.setCheck(f.bae());
-    this.jOv.setSwitchListener(new MMSwitchBtn.a()
+    this.kiG = ((MMSwitchBtn)findViewById(2131298491));
+    this.kiG.setEnabled(bool);
+    this.kiG.setCheck(f.bdD());
+    this.kiG.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(121504);
-        f.fU(paramAnonymousBoolean);
+        f.fY(paramAnonymousBoolean);
         AppMethodBeat.o(121504);
       }
     });
@@ -186,12 +195,24 @@ public class WxaWidgetPerformanceUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
+  static class a
+    implements com.tencent.mm.ipcinvoker.b<IPCVoid, IPCVoid>
+  {}
+  
   static class b
-    implements b<IPCBoolean, IPCVoid>
+    implements com.tencent.mm.ipcinvoker.b<IPCBoolean, IPCVoid>
   {}
   
   static class c
-    implements b<IPCBoolean, IPCVoid>
+    implements com.tencent.mm.ipcinvoker.b<IPCBoolean, IPCVoid>
+  {}
+  
+  static class d
+    implements com.tencent.mm.ipcinvoker.b<IPCBoolean, IPCVoid>
+  {}
+  
+  static class e
+    implements k<IPCString, IPCString>
   {}
 }
 

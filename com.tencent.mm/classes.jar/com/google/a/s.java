@@ -10,26 +10,26 @@ public abstract class s<T>
 {
   public abstract void a(a parama, T paramT);
   
-  public final k ag(T paramT)
+  public final k aj(T paramT)
   {
     e locale;
     try
     {
       locale = new e();
       a(locale, paramT);
-      if (!locale.bEu.isEmpty()) {
-        throw new IllegalStateException("Expected one JSON element but was " + locale.bEu);
+      if (!locale.bOI.isEmpty()) {
+        throw new IllegalStateException("Expected one JSON element but was " + locale.bOI);
       }
     }
     catch (IOException paramT)
     {
       throw new l(paramT);
     }
-    paramT = locale.bEw;
+    paramT = locale.bOK;
     return paramT;
   }
   
-  public final s<T> xe()
+  public final s<T> yB()
   {
     new s()
     {
@@ -38,7 +38,7 @@ public abstract class s<T>
         AppMethodBeat.i(107843);
         if (paramAnonymousT == null)
         {
-          paramAnonymousa.xv();
+          paramAnonymousa.yS();
           AppMethodBeat.o(107843);
           return;
         }
@@ -50,7 +50,7 @@ public abstract class s<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.a.s
  * JD-Core Version:    0.7.0.1
  */

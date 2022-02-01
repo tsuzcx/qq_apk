@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cgk;
-import com.tencent.mm.protocal.protobuf.cgl;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.clj;
+import com.tencent.mm.protocal.protobuf.clk;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class ag
   extends n
   implements k
 {
-  private g callback;
+  private f callback;
   public String content;
-  public String dtD;
-  public String jBX;
-  public String nWQ;
-  public String nWR;
-  public boolean nWS;
-  public String nWT;
-  public String nWU;
-  public String nWV;
-  public String nWW;
+  public String dFE;
+  public String jVX;
+  public String oAk;
+  public String oAl;
+  public boolean oAm;
+  public String oAn;
+  public String oAo;
+  public String oAp;
+  public String oAq;
   private final b rr;
   public int status;
   
@@ -36,24 +36,24 @@ public final class ag
   {
     AppMethodBeat.i(112855);
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new cgk();
-    ((b.a)localObject).hvu = new cgl();
+    ((b.a)localObject).hNM = new clj();
+    ((b.a)localObject).hNN = new clk();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/preacceptgiftcard";
     ((b.a)localObject).funcId = 1171;
-    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).hNO = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (cgk)this.rr.hvr.hvw;
-    ((cgk)localObject).DMq = paramInt;
-    ((cgk)localObject).DMr = paramString1;
-    ((cgk)localObject).DMs = paramString2;
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (clj)this.rr.hNK.hNQ;
+    ((clj)localObject).Frv = paramInt;
+    ((clj)localObject).Frw = paramString1;
+    ((clj)localObject).Frx = paramString2;
     AppMethodBeat.o(112855);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(112857);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(112857);
     return i;
@@ -67,22 +67,22 @@ public final class ag
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112856);
-    ac.i("MicroMsg.NetScenePreAcceptGiftCard", "onGYNetEnd, errType = %d, errCode = %d ,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ad.i("MicroMsg.NetScenePreAcceptGiftCard", "onGYNetEnd, errType = %d, errCode = %d ,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (cgl)this.rr.hvs.hvw;
-      this.dtD = paramq.DMv;
-      this.nWQ = paramq.DMw;
+      paramq = (clk)this.rr.hNL.hNQ;
+      this.dFE = paramq.FrA;
+      this.oAk = paramq.FrB;
       this.status = paramq.status;
       this.content = paramq.content;
-      this.nWR = paramq.nWi;
-      this.jBX = paramq.FnQ;
-      this.nWS = paramq.nWS;
-      this.nWT = paramq.Fut;
-      this.nWU = paramq.Fuu;
-      this.nWV = paramq.Fuv;
-      this.nWW = paramq.Fuw;
-      ac.d("MicroMsg.NetScenePreAcceptGiftCard", "fromUserName:%s, fromUserHeadImgUrl:%s, status:%d, content:%s,buttonWording:%s, backgroundColor:%s, ignore:%b", new Object[] { this.dtD, this.nWQ, Integer.valueOf(this.status), this.content, this.nWR, this.jBX, Boolean.valueOf(this.nWS) });
+      this.oAl = paramq.ozC;
+      this.jVX = paramq.GXz;
+      this.oAm = paramq.oAm;
+      this.oAn = paramq.Hey;
+      this.oAo = paramq.Hez;
+      this.oAp = paramq.HeA;
+      this.oAq = paramq.HeB;
+      ad.d("MicroMsg.NetScenePreAcceptGiftCard", "fromUserName:%s, fromUserHeadImgUrl:%s, status:%d, content:%s,buttonWording:%s, backgroundColor:%s, ignore:%b", new Object[] { this.dFE, this.oAk, Integer.valueOf(this.status), this.content, this.oAl, this.jVX, Boolean.valueOf(this.oAm) });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112856);
@@ -90,7 +90,7 @@ public final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.ag
  * JD-Core Version:    0.7.0.1
  */

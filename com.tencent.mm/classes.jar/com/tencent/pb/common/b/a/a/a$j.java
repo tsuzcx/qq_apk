@@ -9,19 +9,19 @@ public final class a$j
   public int action = 0;
   public String groupId = "";
   public int roomId = 0;
-  public long tIG = 0L;
   public long timestamp = 0L;
+  public long uLt = 0L;
   
   public a$j()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
-    paramb.bw(1, this.action);
-    paramb.bv(2, this.roomId);
-    paramb.n(3, this.tIG);
+    paramb.by(1, this.action);
+    paramb.bx(2, this.roomId);
+    paramb.n(3, this.uLt);
     if (!this.groupId.equals("")) {
       paramb.d(4, this.groupId);
     }
@@ -31,9 +31,9 @@ public final class a$j
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT() + b.by(1, this.action) + b.bx(2, this.roomId) + b.p(3, this.tIG);
+    int j = super.zq() + b.bA(1, this.action) + b.bz(2, this.roomId) + b.p(3, this.uLt);
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(4, this.groupId);
@@ -47,7 +47,7 @@ public final class a$j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.j
  * JD-Core Version:    0.7.0.1
  */

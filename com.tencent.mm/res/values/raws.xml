@@ -159,9 +159,9 @@
     <item type="raw" name="app_brand_nearby_icon">false</item>
     <item type="raw" name="app_brand_nearby_more_arrow">false</item>
     <item type="raw" name="app_brand_nearby_refresh">false</item>
-    <item type="raw" name="app_brand_profile_game_original">false</item>
+    <item type="raw" name="checkbox_selected_grey_dark_small">false</item>
     <item type="raw" name="app_brand_profile_preview_video_play_btn">false</item>
-    <item type="raw" name="app_brand_profile_trading_guarantee_ic">false</item>
+    <item type="raw" name="checkbox_selected_grey_small">false</item>
     <item type="raw" name="app_brand_pulldown_loading_darkversion">false</item>
     <item type="raw" name="app_brand_pulldown_loading_lightversion">false</item>
     <item type="raw" name="app_brand_recommend_music_icon">false</item>
@@ -181,9 +181,9 @@
     <item type="raw" name="app_brand_single_page_mode_footer_corner_right">false</item>
     <item type="raw" name="app_brand_star_delete">false</item>
     <item type="raw" name="app_brand_star_option_icon">false</item>
-    <item type="raw" name="app_brand_trading_guarantee_icon_dm">false</item>
-    <item type="raw" name="app_brand_trading_guarantee_icon_gray">false</item>
-    <item type="raw" name="app_brand_trading_guarantee_icon_green">false</item>
+    <item type="raw" name="checkbox_selected_red_small">false</item>
+    <item type="raw" name="checkbox_selected_small">false</item>
+    <item type="raw" name="ic_filled_bell">false</item>
     <item type="raw" name="app_brand_video_brightness_icon">false</item>
     <item type="raw" name="app_brand_video_cover_play_btn">false</item>
     <item type="raw" name="app_brand_video_danmaku_hided_btn">false</item>
@@ -721,11 +721,12 @@
     <item type="raw" name="finder_feed_retransmission">false</item>
     <item type="raw" name="finder_loading">false</item>
     <item type="raw" name="finder_no_permission_post_camera">false</item>
-    <item type="raw" name="finder_profile_multi_image_icon">false</item>
+    <item type="raw" name="default_avatar_round">false</item>
     <item type="raw" name="finder_share_icon">false</item>
     <item type="raw" name="finder_suggest_hot">false</item>
     <item type="raw" name="finder_topic_icon_filled">false</item>
     <item type="raw" name="findmore_appbrand_icon">false</item>
+    <item type="raw" name="app_brand_destop_view_third_party_running_flag">false</item>
     <item type="raw" name="fireworks">false</item>
     <item type="raw" name="fix_tools_entry">false</item>
     <item type="raw" name="fix_tools_failed">false</item>
@@ -2073,5 +2074,65 @@
     <item type="raw" name="sns_ad_feedback_no_interesting">false</item>
     <item type="raw" name="sns_ad_feedback_right_arrow">false</item>
     <item type="raw" name="sns_ad_feedback_trangle">false</item>
-    <item type="raw" name="APKTOOL_DUMMY_2d8" />
+    <item type="raw" name="app_brand_third_party_running_flag">false</item>
+    <item type="raw" name="appbrand_trading_guarantee_icon_gray">false</item>
+    <item type="raw" name="appbrand_trading_guarantee_icon_white">false</item>
+    <item type="raw" name="face_agreement_icon">false</item>
+    <item type="raw" name="finder_icons_filled_share">false</item>
+    <item type="raw" name="finder_message_contact">false</item>
+    <item type="raw" name="finder_unlike_toast_icon">false</item>
+    <item type="raw" name="brand_100_loading_60_60">false</item>
+    <item type="raw" name="diehua">false</item>
+    <item type="raw" name="ic_filled_loading_fail">false</item>
+    <item type="raw" name="icons_filled_addsticker">false</item>
+    <item type="raw" name="icons_filled_allselect">false</item>
+    <item type="raw" name="icons_filled_continued_form">false</item>
+    <item type="raw" name="icons_filled_makesticker">false</item>
+    <item type="raw" name="icons_filled_message">false</item>
+    <item type="raw" name="icons_filled_multiple_choice">false</item>
+    <item type="raw" name="icons_filled_open">false</item>
+    <item type="raw" name="icons_filled_otherapp">false</item>
+    <item type="raw" name="icons_filled_othersticker">false</item>
+    <item type="raw" name="icons_filled_quote">false</item>
+    <item type="raw" name="icons_filled_resume">false</item>
+    <item type="raw" name="icons_filled_sticker_album">false</item>
+    <item type="raw" name="fangda">false</item>
+    <item type="raw" name="icons_pop_arrow">false</item>
+    <item type="raw" name="msg_tip_dark_bg">false</item>
+    <item type="raw" name="msg_tip_light_bg">false</item>
+    <item type="raw" name="offline_entrance_f2f_collect_hk">false</item>
+    <item type="raw" name="spinner_48_outer_holo">false</item>
+    <item type="raw" name="spinner_76_outer_holo">false</item>
+    <item type="raw" name="spinner_white_48_outer_holo">false</item>
+    <item type="raw" name="ic_filled_bell_dark">false</item>
+    <item type="raw" name="ic_filled_thumbs">false</item>
+    <item type="raw" name="ic_filled_thumbs_dark">false</item>
+    <item type="raw" name="icons_outlined_wechat_search_one_search">false</item>
+    <item type="raw" name="finder_fav_anim_start">false</item>
+    <item type="raw" name="finder_filled_like_lock">false</item>
+    <item type="raw" name="finder_outlined_like_lock">false</item>
+    <item type="raw" name="icon_below_arrow">false</item>
+    <item type="raw" name="icon_filled_video_call_off">false</item>
+    <item type="raw" name="icons_filled_caption">false</item>
+    <item type="raw" name="icons_filled_gift">false</item>
+    <item type="raw" name="icons_filled_magic">false</item>
+    <item type="raw" name="icons_filled_scissor">false</item>
+    <item type="raw" name="icons_filled_star_identify_enterprise">false</item>
+    <item type="raw" name="icons_filled_transform">false</item>
+    <item type="raw" name="icons_outline_change_speed">false</item>
+    <item type="raw" name="icons_outlined_open">false</item>
+    <item type="raw" name="shanbai">false</item>
+    <item type="raw" name="shangyi">false</item>
+    <item type="raw" name="shanhei">false</item>
+    <item type="raw" name="shortvideo_play_btn_pressed">false</item>
+    <item type="raw" name="shortvideo_play_icon_err">false</item>
+    <item type="raw" name="suoxiao">false</item>
+    <item type="raw" name="wu">false</item>
+    <item type="raw" name="xiayi">false</item>
+    <item type="raw" name="youyi">false</item>
+    <item type="raw" name="youzhuan">false</item>
+    <item type="raw" name="zuoyi">false</item>
+    <item type="raw" name="zuozhuan">false</item>
+    <item type="raw" name="finder_bubble_arrow">false</item>
+    <item type="raw" name="loading_brand">false</item>
 </resources>

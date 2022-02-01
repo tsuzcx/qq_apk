@@ -5,49 +5,47 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.Parcelable;
-import com.tencent.luggage.d.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mr;
-import com.tencent.mm.g.a.mr.a;
+import com.tencent.mm.g.a.mz;
+import com.tencent.mm.g.a.mz.a;
 import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
-import com.tencent.mm.ipcinvoker.p;
-import com.tencent.mm.plugin.game.luggage.f;
-import com.tencent.mm.plugin.game.luggage.f.a;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.game.luggage.f.f;
+import com.tencent.mm.plugin.game.luggage.h;
+import com.tencent.mm.plugin.game.luggage.h.a;
+import com.tencent.mm.plugin.game.luggage.i;
 import com.tencent.mm.plugin.wepkg.model.BaseWepkgProcessTask;
 import com.tencent.mm.plugin.wepkg.model.WepkgCrossProcessTask;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashSet;
 import java.util.Set;
 
 public class av
-  extends c<mr>
+  extends com.tencent.mm.sdk.b.c<mz>
 {
-  private static volatile String dxX;
-  private static volatile long tgA;
-  private static Set<String> tgB;
-  private static Set<String> tgC;
-  private static volatile long tgz;
-  private long tgD;
-  private b tgE;
+  private static volatile String dKk;
+  private static volatile long ueq;
+  private static volatile long uer;
+  private static Set<String> ues;
+  private static Set<String> uet;
+  private long ueu;
+  private b uev;
   
   static
   {
     AppMethodBeat.i(41650);
-    tgB = new HashSet();
-    tgC = new HashSet();
+    ues = new HashSet();
+    uet = new HashSet();
     AppMethodBeat.o(41650);
   }
   
   public av()
   {
     AppMethodBeat.i(161130);
-    this.__eventId = mr.class.getName().hashCode();
+    this.__eventId = mz.class.getName().hashCode();
     AppMethodBeat.o(161130);
   }
   
@@ -61,36 +59,36 @@ public class av
       try
       {
         AppMethodBeat.i(41643);
-        ac.d("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "preLoadWePkgAndWebCore, preload: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+        ad.d("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "preLoadWePkgAndWebCore, preload: %b", new Object[] { Boolean.valueOf(paramBoolean) });
         boolean bool = paramBundle.getBoolean("is_luggage", false);
         str1 = paramBundle.getString("call_raw_url");
         str2 = paramBundle.getString("float_layer_url");
-        localGameWebPerformanceInfo = GameWebPerformanceInfo.tq(str1);
+        localGameWebPerformanceInfo = GameWebPerformanceInfo.wg(str1);
         if (!bool) {
           break label282;
         }
-        k localk = f.agW(str1);
-        if (localk != null)
+        com.tencent.luggage.d.p localp = h.alt(str1);
+        if (localp != null)
         {
           if (paramBoolean)
           {
-            ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "has preloaded webcore, return");
+            ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "has preloaded webcore, return");
             paramBundle.putBoolean("has_preload_webcore", true);
             a(paramd, paramBundle);
             AppMethodBeat.o(41643);
             return;
           }
-          p.z(new Runnable()
+          com.tencent.mm.ipcinvoker.p.z(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(41633);
-              ((com.tencent.mm.plugin.game.luggage.d.e)this.sWM.AN()).onResume();
-              ((com.tencent.mm.plugin.game.luggage.d.e)this.sWM.AN()).setBlockNetworkImage(false);
+              ((f)this.tTv.Cm()).onResume();
+              ((f)this.tTv.Cm()).setBlockNetworkImage(false);
               AppMethodBeat.o(41633);
             }
           });
-          com.tencent.mm.plugin.game.luggage.e.a(localk, str1, true);
+          com.tencent.mm.plugin.game.luggage.g.a(localp, str1, true);
           continue;
         }
         if (!paramBoolean) {
@@ -98,43 +96,43 @@ public class av
         }
       }
       finally {}
-      if (localGameWebPerformanceInfo.fYT != 0L)
+      if (localGameWebPerformanceInfo.gsp != 0L)
       {
-        paramd.bc(paramBundle);
+        paramd.be(paramBundle);
         AppMethodBeat.o(41643);
       }
-      else if (!aht(str1))
+      else if (!alV(str1))
       {
-        ac.d("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "wepkg is not exists, return");
-        GameWebPerformanceInfo.ts(str1);
+        ad.d("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "wepkg is not exists, return");
+        GameWebPerformanceInfo.wi(str1);
         a(paramd, paramBundle);
         AppMethodBeat.o(41643);
       }
       else
       {
-        aht(str2);
-        localGameWebPerformanceInfo.fYL = 1;
-        localGameWebPerformanceInfo.fYW = System.currentTimeMillis();
-        h.wUl.n(939L, 0L, 1L);
-        f.a(com.tencent.mm.plugin.game.luggage.g.class, str1, new f.a()
+        alV(str2);
+        localGameWebPerformanceInfo.gsh = 1;
+        localGameWebPerformanceInfo.gss = System.currentTimeMillis();
+        com.tencent.mm.plugin.report.service.g.yhR.n(939L, 0L, 1L);
+        h.a(i.class, str1, new h.a()
         {
-          public final void Am()
+          public final void BJ()
           {
             AppMethodBeat.i(41635);
-            ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "preLoadWePkgAndWebCore end, time = %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-            p.z(new Runnable()
+            ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "preLoadWePkgAndWebCore end, time = %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+            com.tencent.mm.ipcinvoker.p.z(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(41634);
-                k localk = f.agW(av.7.this.tgJ);
-                if (localk != null)
+                com.tencent.luggage.d.p localp = h.alt(av.7.this.ueA);
+                if (localp != null)
                 {
-                  ((com.tencent.mm.plugin.game.luggage.d.e)localk.AN()).setBlockNetworkImage(true);
-                  ((com.tencent.mm.plugin.game.luggage.d.e)localk.AN()).onPause();
+                  ((f)localp.Cm()).setBlockNetworkImage(true);
+                  ((f)localp.Cm()).onPause();
                 }
-                av.7.this.sWL.fYX = System.currentTimeMillis();
-                av.b(av.7.this.tgK, av.7.this.cLw);
+                av.7.this.tTu.gst = System.currentTimeMillis();
+                av.b(av.7.this.ueB, av.7.this.cWK);
                 AppMethodBeat.o(41634);
               }
             });
@@ -144,70 +142,70 @@ public class av
         AppMethodBeat.o(41643);
         continue;
         label257:
-        aht(str2);
-        aht(str1);
+        alV(str2);
+        alV(str1);
         a(paramd, paramBundle);
         AppMethodBeat.o(41643);
         continue;
         label282:
-        aht(str2);
-        aht(str1);
+        alV(str2);
+        alV(str1);
         a(paramd, paramBundle);
         AppMethodBeat.o(41643);
       }
     }
   }
   
-  private void a(final mr parammr, Bundle paramBundle)
+  private void a(final mz parammz, Bundle paramBundle)
   {
     boolean bool = false;
     try
     {
       AppMethodBeat.i(41642);
-      ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "turnPage");
-      ap.aB(this.tgE);
-      ap.n(new Runnable()
+      ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "turnPage");
+      aq.aA(this.uev);
+      aq.o(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(41631);
-          ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "interval:%sms, allow enter url:%s", new Object[] { Integer.valueOf(1000), av.dxX });
-          av.ahu("");
+          ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "interval:%sms, allow enter url:%s", new Object[] { Integer.valueOf(1000), av.dKk });
+          av.alW("");
           AppMethodBeat.o(41631);
         }
       }, 1000L);
-      if (parammr == null) {
+      if (parammz == null) {
         AppMethodBeat.o(41642);
       }
       for (;;)
       {
         return;
-        if (bs.isNullOrNil(parammr.dph.group)) {
+        if (bt.isNullOrNil(parammz.dAU.group)) {
           break label125;
         }
-        if (!tgB.contains(parammr.dph.group)) {
+        if (!ues.contains(parammz.dAU.group)) {
           break;
         }
-        tgB.remove(parammr.dph.group);
+        ues.remove(parammz.dAU.group);
         AppMethodBeat.o(41642);
       }
-      tgB.add(parammr.dph.group);
+      ues.add(parammz.dAU.group);
     }
     finally {}
     label125:
     final Context localContext;
     label144:
     String str;
-    if (parammr.dph.context != null)
+    if (parammz.dAU.context != null)
     {
-      localContext = parammr.dph.context;
-      if (parammr.dph.intent == null) {
-        parammr.dph.intent = new Intent();
+      localContext = parammz.dAU.context;
+      if (parammz.dAU.intent == null) {
+        parammz.dAU.intent = new Intent();
       }
-      str = parammr.dph.intent.getStringExtra("rawUrl");
-      ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "turn page, start web ui, time: " + System.currentTimeMillis());
-      parammr.dph.intent.putExtra("start_activity_time", System.currentTimeMillis());
-      switch (parammr.dph.type)
+      str = parammz.dAU.intent.getStringExtra("rawUrl");
+      ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "turn page, start web ui, time: " + System.currentTimeMillis());
+      parammz.dAU.intent.putExtra("start_activity_time", System.currentTimeMillis());
+      switch (parammz.dAU.type)
       {
       }
     }
@@ -215,20 +213,20 @@ public class av
     {
       for (;;)
       {
-        long l = System.currentTimeMillis() - tgz;
-        ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "turn to GameWebViewUI time:%d", new Object[] { Long.valueOf(l) });
+        long l = System.currentTimeMillis() - ueq;
+        ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "turn to GameWebViewUI time:%d", new Object[] { Long.valueOf(l) });
         try
         {
-          parammr.dph.context = null;
+          parammz.dAU.context = null;
           label293:
-          com.tencent.mm.plugin.wepkg.utils.a.b("preloadWebTime", str, com.tencent.mm.plugin.wepkg.utils.d.aFy(str), null, -1L, l, null);
+          com.tencent.mm.plugin.wepkg.utils.a.b("preloadWebTime", str, com.tencent.mm.plugin.wepkg.utils.d.aKY(str), null, -1L, l, null);
           AppMethodBeat.o(41642);
           break;
-          localContext = ai.getContext();
+          localContext = aj.getContext();
           break label144;
-          com.tencent.mm.br.d.b(localContext, "webview", ".ui.tools.WebViewUI", parammr.dph.intent);
+          com.tencent.mm.bs.d.b(localContext, "webview", ".ui.tools.WebViewUI", parammz.dAU.intent);
           continue;
-          com.tencent.mm.br.d.b(localContext, "webview", ".ui.tools.TransparentWebViewUI", parammr.dph.intent);
+          com.tencent.mm.bs.d.b(localContext, "webview", ".ui.tools.TransparentWebViewUI", parammz.dAU.intent);
           continue;
           if (paramBundle != null) {
             bool = paramBundle.getBoolean("has_preload_webcore", false);
@@ -238,18 +236,18 @@ public class av
             public final void run()
             {
               AppMethodBeat.i(41632);
-              com.tencent.mm.br.d.b(localContext, "webview", ".ui.tools.WebViewUI", parammr.dph.intent);
+              com.tencent.mm.bs.d.b(localContext, "webview", ".ui.tools.WebViewUI", parammz.dAU.intent);
               AppMethodBeat.o(41632);
             }
           };
           if (bool) {}
           for (l = 100L;; l = 0L)
           {
-            p.postDelayed(paramBundle, l);
+            com.tencent.mm.ipcinvoker.p.postDelayed(paramBundle, l);
             break;
           }
         }
-        catch (Exception parammr)
+        catch (Exception parammz)
         {
           break label293;
         }
@@ -261,41 +259,41 @@ public class av
   {
     AppMethodBeat.i(41645);
     if (paramd != null) {
-      paramd.bc(paramBundle);
+      paramd.be(paramBundle);
     }
     AppMethodBeat.o(41645);
   }
   
-  private boolean a(final mr parammr)
+  private boolean a(final mz parammz)
   {
     AppMethodBeat.i(41641);
-    ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "callback, type = %d", new Object[] { Integer.valueOf(parammr.dph.type) });
-    if (parammr.dph.intent == null)
+    ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "callback, type = %d", new Object[] { Integer.valueOf(parammz.dAU.type) });
+    if (parammz.dAU.intent == null)
     {
       AppMethodBeat.o(41641);
       return false;
     }
-    if (parammr.dph.type == 3)
+    if (parammz.dAU.type == 3)
     {
-      ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "interval: %d, lastActionTime: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - this.tgD), Long.valueOf(this.tgD) });
-      if (System.currentTimeMillis() - this.tgD < 500L)
+      ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "interval: %d, lastActionTime: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - this.ueu), Long.valueOf(this.ueu) });
+      if (System.currentTimeMillis() - this.ueu < 500L)
       {
-        ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "interval smaller than 500 ms, return");
+        ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "interval smaller than 500 ms, return");
         AppMethodBeat.o(41641);
         return false;
       }
     }
-    this.tgD = System.currentTimeMillis();
-    switch (parammr.dph.type)
+    this.ueu = System.currentTimeMillis();
+    switch (parammz.dAU.type)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(41641);
       return false;
-      int i = parammr.dph.type;
+      int i = parammz.dAU.type;
       int j = hashCode();
-      int k = parammr.hashCode();
+      int k = parammz.hashCode();
       long l = Thread.currentThread().getId();
       boolean bool;
       label222:
@@ -303,12 +301,12 @@ public class av
       if (Thread.currentThread() == Looper.getMainLooper().getThread())
       {
         bool = true;
-        ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "on NotifyGameWebviewOperationListener operation listener, type:%d, hashcode:%s, event hashcode:%s, threadId:%s, isUIThead:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l), Boolean.valueOf(bool) });
+        ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "on NotifyGameWebviewOperationListener operation listener, type:%d, hashcode:%s, event hashcode:%s, threadId:%s, isUIThead:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l), Boolean.valueOf(bool) });
         localObject1 = "";
       }
       try
       {
-        str = parammr.dph.intent.getStringExtra("rawUrl");
+        str = parammz.dAU.intent.getStringExtra("rawUrl");
         localObject1 = str;
       }
       catch (Exception localException)
@@ -317,39 +315,39 @@ public class av
         label296:
         break label296;
       }
-      str = parammr.dph.intent.getStringExtra("game_float_layer_url");
+      str = parammz.dAU.intent.getStringExtra("game_float_layer_url");
       try
       {
-        if (bs.nullAsNil(dxX).equalsIgnoreCase((String)localObject1))
+        if (bt.nullAsNil(dKk).equalsIgnoreCase((String)localObject1))
         {
-          ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "forbid to open same page two times");
+          ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "forbid to open same page two times");
           return false;
           bool = false;
           break label222;
         }
-        dxX = (String)localObject1;
-        tgz = System.currentTimeMillis();
-        tgA = System.currentTimeMillis();
-        if (ai.ciE()) {
-          com.tencent.mm.plugin.wepkg.utils.b.DbS = com.tencent.mm.plugin.game.commlib.a.cOw();
+        dKk = (String)localObject1;
+        ueq = System.currentTimeMillis();
+        uer = System.currentTimeMillis();
+        if (aj.cnC()) {
+          com.tencent.mm.plugin.wepkg.utils.b.EFR = com.tencent.mm.plugin.game.commlib.a.cWR();
         }
-        if (com.tencent.mm.plugin.wepkg.utils.d.aFB((String)localObject1))
+        if (com.tencent.mm.plugin.wepkg.utils.d.aLb((String)localObject1))
         {
-          ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "exist pkgid:%s, to reload", new Object[] { com.tencent.mm.plugin.wepkg.utils.d.aFy((String)localObject1) });
-          Object localObject2 = com.tencent.mm.b.g.getMessageDigest(bs.nullAsNil((String)localObject1).getBytes()) + "_" + System.currentTimeMillis();
-          parammr.dph.group = ((String)localObject2);
-          this.tgE = new b(parammr);
-          ap.n(this.tgE, 500L);
+          ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "exist pkgid:%s, to reload", new Object[] { com.tencent.mm.plugin.wepkg.utils.d.aKY((String)localObject1) });
+          Object localObject2 = com.tencent.mm.b.g.getMessageDigest(bt.nullAsNil((String)localObject1).getBytes()) + "_" + System.currentTimeMillis();
+          parammz.dAU.group = ((String)localObject2);
+          this.uev = new b(parammz);
+          aq.o(this.uev, 500L);
           localObject2 = new Bundle();
-          ((Bundle)localObject2).putBoolean("is_wepkg_disable", com.tencent.mm.plugin.wepkg.utils.b.DbS);
+          ((Bundle)localObject2).putBoolean("is_wepkg_disable", com.tencent.mm.plugin.wepkg.utils.b.EFR);
           ((Bundle)localObject2).putString("call_raw_url", (String)localObject1);
-          if (!bs.isNullOrNil(str)) {
+          if (!bt.isNullOrNil(str)) {
             ((Bundle)localObject2).putString("float_layer_url", str);
           }
-          if (parammr.dph.type == 2) {
+          if (parammz.dAU.type == 2) {
             ((Bundle)localObject2).putBoolean("is_luggage", true);
           }
-          com.tencent.mm.plugin.game.luggage.a.b((Parcelable)localObject2, a.class, new com.tencent.mm.ipcinvoker.d() {});
+          com.tencent.mm.plugin.game.luggage.b.b((Parcelable)localObject2, a.class, new com.tencent.mm.ipcinvoker.d() {});
           continue;
         }
       }
@@ -357,28 +355,28 @@ public class av
       {
         AppMethodBeat.o(41641);
       }
-      ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "dont have pkgid or disable wepkg, normal turn page. disableWepkg:" + com.tencent.mm.plugin.wepkg.utils.b.DbS);
-      a(parammr, null);
+      ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "dont have pkgid or disable wepkg, normal turn page. disableWepkg:" + com.tencent.mm.plugin.wepkg.utils.b.EFR);
+      a(parammz, null);
       continue;
-      parammr = parammr.dph.intent.getStringExtra("rawUrl");
-      if ((!tgC.contains(parammr)) && (com.tencent.mm.plugin.wepkg.utils.d.aFB(parammr)))
+      parammz = parammz.dAU.intent.getStringExtra("rawUrl");
+      if ((!uet.contains(parammz)) && (com.tencent.mm.plugin.wepkg.utils.d.aLb(parammz)))
       {
-        tgC.add(parammr);
+        uet.add(parammz);
         localObject1 = new Bundle();
-        ((Bundle)localObject1).putString("call_raw_url", parammr);
+        ((Bundle)localObject1).putString("call_raw_url", parammz);
         ((Bundle)localObject1).putBoolean("preload_webcore", true);
         ((Bundle)localObject1).putBoolean("is_luggage", true);
-        com.tencent.mm.plugin.game.luggage.a.b((Parcelable)localObject1, a.class, new com.tencent.mm.ipcinvoker.d() {});
-        p.postDelayed(new Runnable()
+        com.tencent.mm.plugin.game.luggage.b.b((Parcelable)localObject1, a.class, new com.tencent.mm.ipcinvoker.d() {});
+        com.tencent.mm.ipcinvoker.p.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(41630);
-            if (av.beW().contains(parammr))
+            if (av.bdb().contains(parammz))
             {
-              ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "preload webcore, time out");
-              av.beW().remove(parammr);
-              h.wUl.n(939L, 3L, 1L);
+              ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "preload webcore, time out");
+              av.bdb().remove(parammz);
+              com.tencent.mm.plugin.report.service.g.yhR.n(939L, 3L, 1L);
             }
             AppMethodBeat.o(41630);
           }
@@ -387,20 +385,20 @@ public class av
     }
   }
   
-  private static boolean aht(String paramString)
+  private static boolean alV(String paramString)
   {
     AppMethodBeat.i(41644);
-    if ((bs.isNullOrNil(paramString)) || (!com.tencent.mm.plugin.wepkg.utils.d.aFB(paramString)))
+    if ((bt.isNullOrNil(paramString)) || (!com.tencent.mm.plugin.wepkg.utils.d.aLb(paramString)))
     {
       AppMethodBeat.o(41644);
       return false;
     }
-    ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "preloadWePkg, url: %s", new Object[] { paramString });
-    GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.tq(paramString);
-    localGameWebPerformanceInfo.fYU = System.currentTimeMillis();
-    paramString = com.tencent.mm.plugin.wepkg.b.aEQ(paramString);
-    localGameWebPerformanceInfo.fYV = System.currentTimeMillis();
-    if ((paramString != null) && (paramString.eJc()))
+    ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "preloadWePkg, url: %s", new Object[] { paramString });
+    GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.wg(paramString);
+    localGameWebPerformanceInfo.gsq = System.currentTimeMillis();
+    paramString = com.tencent.mm.plugin.wepkg.c.aKq(paramString);
+    localGameWebPerformanceInfo.gsr = System.currentTimeMillis();
+    if ((paramString != null) && (paramString.eXV()))
     {
       AppMethodBeat.o(41644);
       return true;
@@ -416,19 +414,19 @@ public class av
   final class b
     implements Runnable
   {
-    private final mr tgP;
+    private final mz ueG;
     
-    public b(mr parammr)
+    public b(mz parammz)
     {
-      this.tgP = parammr;
+      this.ueG = parammz;
     }
     
     public final void run()
     {
       AppMethodBeat.i(41640);
-      ac.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "time out, turn page");
-      av.a(av.this, this.tgP, null);
-      h.wUl.n(939L, 2L, 1L);
+      ad.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "time out, turn page");
+      av.a(av.this, this.ueG, null);
+      com.tencent.mm.plugin.report.service.g.yhR.n(939L, 2L, 1L);
       AppMethodBeat.o(41640);
     }
   }

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.az;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ap;
+import com.tencent.mm.g.c.ba;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.at;
 
 public final class a
 {
-  public static long a(ap paramap, int paramInt, long paramLong)
+  public static long a(at paramat, int paramInt, long paramLong)
   {
     AppMethodBeat.i(43075);
-    if (paramap == null)
+    if (paramat == null)
     {
       AppMethodBeat.o(43075);
       return 0L;
@@ -21,35 +21,35 @@ public final class a
       switch (paramInt)
       {
       default: 
-        paramLong = a(paramap, paramLong);
+        paramLong = a(paramat, paramLong);
         AppMethodBeat.o(43075);
         return paramLong;
-        paramLong = bs.eWj();
+        paramLong = bt.flT();
       }
     }
-    paramLong = a(paramap, paramLong);
+    paramLong = a(paramat, paramLong);
     AppMethodBeat.o(43075);
     return paramLong | 0x0;
-    paramLong = a(paramap, paramLong);
+    paramLong = a(paramat, paramLong);
     AppMethodBeat.o(43075);
     return paramLong & 0xFFFFFFFF;
-    paramLong = a(paramap, paramLong);
+    paramLong = a(paramat, paramLong);
     AppMethodBeat.o(43075);
     return paramLong & 0x0;
-    paramLong = a(paramap, paramLong);
+    paramLong = a(paramat, paramLong);
     AppMethodBeat.o(43075);
     return paramLong | 0x0;
-    paramLong = a(paramap, paramLong);
+    paramLong = a(paramat, paramLong);
     AppMethodBeat.o(43075);
     return paramLong & 0xFFFFFFFF;
-    paramLong = a(paramap, paramLong);
+    paramLong = a(paramat, paramLong);
     AppMethodBeat.o(43075);
     return paramLong & 0x0;
   }
   
-  public static long a(ap paramap, long paramLong)
+  public static long a(at paramat, long paramLong)
   {
-    return paramap.field_flag & 0x0 | 0xFFFFFFFF & paramLong;
+    return paramat.field_flag & 0x0 | 0xFFFFFFFF & paramLong;
   }
 }
 

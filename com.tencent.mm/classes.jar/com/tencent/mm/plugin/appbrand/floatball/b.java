@@ -6,14 +6,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandTaskProxyUI;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.ball.service.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class b
   extends com.tencent.mm.plugin.ball.service.f
 {
-  private AppBrandTaskProxyUI jPi = null;
-  private String jPj = "";
+  private AppBrandTaskProxyUI kjt = null;
+  private String kju = "";
   private String mFilePath = "";
   
   public b(com.tencent.mm.plugin.ball.a.f paramf)
@@ -24,110 +24,110 @@ public final class b
   public final void a(BallInfo paramBallInfo)
   {
     AppMethodBeat.i(174722);
-    ac.i("MicroMsg.AppBrandFilesFloatBallHelper", "onCreate with exist ballInfo");
-    this.nfN = paramBallInfo;
-    bGr();
+    ad.i("MicroMsg.AppBrandFilesFloatBallHelper", "onCreate with exist ballInfo");
+    this.nGj = paramBallInfo;
+    bKC();
     AppMethodBeat.o(174722);
   }
   
   public final void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, AppBrandTaskProxyUI paramAppBrandTaskProxyUI)
   {
     AppMethodBeat.i(174721);
-    ac.i("MicroMsg.AppBrandFilesFloatBallHelper", "onCreate, filePath:%s fileExt:%s ", new Object[] { paramString1, paramString2 });
+    ad.i("MicroMsg.AppBrandFilesFloatBallHelper", "onCreate, filePath:%s fileExt:%s ", new Object[] { paramString1, paramString2 });
     this.mFilePath = paramString1;
-    this.jPj = paramString2;
-    this.jPi = paramAppBrandTaskProxyUI;
-    super.aa(4, com.tencent.mm.plugin.ball.f.b.ST(paramString1));
-    bGv().nfG = 4;
-    bGv().nfF = 10;
-    bGr();
-    if (this.nfN.hSN != null)
+    this.kju = paramString2;
+    this.kjt = paramAppBrandTaskProxyUI;
+    super.ac(4, com.tencent.mm.plugin.ball.f.b.Wq(paramString1));
+    bKG().nGc = 4;
+    bKG().nGb = 10;
+    bKC();
+    if (this.nGj.ime != null)
     {
-      this.nfN.hSN.putBoolean("ifAppAttachDownloadUI", false);
-      this.nfN.hSN.putString("filePath", paramString1);
-      this.nfN.hSN.putString("fileExt", paramString2);
-      this.nfN.hSN.putString("appId", paramString3);
-      this.nfN.hSN.putString("processName", paramString4);
-      this.nfN.hSN.putBoolean("showMenu", paramBoolean);
-      this.nfN.hSN.putInt("sence", 0);
-      bGr();
+      this.nGj.ime.putBoolean("ifAppAttachDownloadUI", false);
+      this.nGj.ime.putString("filePath", paramString1);
+      this.nGj.ime.putString("fileExt", paramString2);
+      this.nGj.ime.putString("appId", paramString3);
+      this.nGj.ime.putString("processName", paramString4);
+      this.nGj.ime.putBoolean("showMenu", paramBoolean);
+      this.nGj.ime.putInt("sence", 0);
+      bKC();
     }
     AppMethodBeat.o(174721);
   }
   
-  public final boolean bcV()
+  public final boolean bgA()
   {
     return true;
   }
   
-  public final boolean bcW()
-  {
-    return true;
-  }
-  
-  public final void bcZ()
+  public final void bgD()
   {
     AppMethodBeat.i(44959);
-    ac.i("MicroMsg.AppBrandFilesFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, filePath:%s", new Object[] { this.mFilePath });
-    super.bcZ();
-    if ((this.ngF != null) && (this.ngF.getActivity() != null)) {
-      this.ngF.getActivity().finish();
+    ad.i("MicroMsg.AppBrandFilesFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, filePath:%s", new Object[] { this.mFilePath });
+    super.bgD();
+    if ((this.nHb != null) && (this.nHb.getActivity() != null)) {
+      this.nHb.getActivity().finish();
     }
     AppMethodBeat.o(44959);
   }
   
-  public final void bda()
+  public final void bgE()
   {
     AppMethodBeat.i(44960);
-    ac.i("MicroMsg.AppBrandFilesFloatBallHelper", "onReceivedBallInfoRemovedEvent, filePath:%s", new Object[] { this.mFilePath });
-    super.bda();
+    ad.i("MicroMsg.AppBrandFilesFloatBallHelper", "onReceivedBallInfoRemovedEvent, filePath:%s", new Object[] { this.mFilePath });
+    super.bgE();
     AppMethodBeat.o(44960);
   }
   
-  public final boolean bde()
+  public final boolean bgI()
   {
     return true;
   }
   
-  public final void ga(boolean paramBoolean)
+  public final boolean bgz()
+  {
+    return true;
+  }
+  
+  public final void gf(boolean paramBoolean)
   {
     AppMethodBeat.i(44961);
     if (paramBoolean)
     {
-      ac.i("MicroMsg.AppBrandFilesFloatBallHelper", "onMenuFloatBallSelected, enter float ball");
-      iN(false);
-      bGq();
-      this.jPi.b(null);
+      ad.i("MicroMsg.AppBrandFilesFloatBallHelper", "onMenuFloatBallSelected, enter float ball");
+      iW(false);
+      bKB();
+      this.kjt.b(null);
       AppMethodBeat.o(44961);
       return;
     }
-    ac.i("MicroMsg.AppBrandFilesFloatBallHelper", "onMenuFloatBallSelected, exit float ball");
-    bGp();
-    if (this.ngF.getActivity() != null)
+    ad.i("MicroMsg.AppBrandFilesFloatBallHelper", "onMenuFloatBallSelected, exit float ball");
+    bKA();
+    if (this.nHb.getActivity() != null)
     {
       Runnable local1 = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(174720);
-          com.tencent.mm.ui.widget.snackbar.b.n(b.this.ngF.getActivity(), b.this.ngF.getActivity().getString(2131755252));
+          com.tencent.mm.ui.widget.snackbar.b.n(b.this.nHb.getActivity(), b.this.nHb.getActivity().getString(2131755252));
           AppMethodBeat.o(174720);
         }
       };
-      if (ap.isMainThread())
+      if (aq.isMainThread())
       {
         local1.run();
         AppMethodBeat.o(44961);
         return;
       }
-      ap.f(local1);
+      aq.f(local1);
     }
     AppMethodBeat.o(44961);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.floatball.b
  * JD-Core Version:    0.7.0.1
  */

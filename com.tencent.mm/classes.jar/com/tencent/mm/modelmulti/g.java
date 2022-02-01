@@ -1,63 +1,64 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.l;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.l;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.w.a;
 import com.tencent.mm.protocal.w.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class g
   extends n
   implements k
 {
-  private com.tencent.mm.ak.g callback;
-  public long hLz = -1L;
-  private byte[] hMd;
-  private com.tencent.mm.network.q hwy;
+  private f callback;
+  private com.tencent.mm.network.q hON;
+  private byte[] ieX;
+  public long iet = -1L;
   private int uin = 0;
   
   public g(long paramLong, byte[] paramArrayOfByte)
   {
-    this.hLz = paramLong;
-    this.hMd = paramArrayOfByte;
+    this.iet = paramLong;
+    this.ieX = paramArrayOfByte;
   }
   
   public g(long paramLong, byte[] paramArrayOfByte, int paramInt)
   {
-    this.hLz = paramLong;
-    this.hMd = paramArrayOfByte;
+    this.iet = paramLong;
+    this.ieX = paramArrayOfByte;
     this.uin = paramInt;
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(132563);
-    if (bs.cv(this.hMd))
+    if (bt.cC(this.ieX))
     {
-      ac.e("MicroMsg.NetSceneNotifyData", "dkpush %s", new Object[] { "get keyBuf failed" });
+      ad.e("MicroMsg.NetSceneNotifyData", "dkpush %s", new Object[] { "get keyBuf failed" });
       AppMethodBeat.o(132563);
       return -1;
     }
     if (this.uin == 0) {
-      this.hwy = new a();
+      this.hON = new a();
     }
     for (;;)
     {
-      ac.i("MicroMsg.NetSceneNotifyData", "doScene now:%d buf:%s", new Object[] { Long.valueOf(this.hLz), bs.ct(this.hMd) });
-      ((w.a)this.hwy.getReqObj()).hDR = this.hLz;
-      ((w.a)this.hwy.getReqObj()).dht = this.hMd;
-      this.callback = paramg;
-      int i = dispatch(parame, this.hwy, this);
+      ad.i("MicroMsg.NetSceneNotifyData", "doScene now:%d buf:%s", new Object[] { Long.valueOf(this.iet), bt.cA(this.ieX) });
+      ((w.a)this.hON.getReqObj()).hWw = this.iet;
+      ((w.a)this.hON.getReqObj()).dsR = this.ieX;
+      this.callback = paramf;
+      int i = dispatch(parame, this.hON, this);
       AppMethodBeat.o(132563);
       return i;
-      this.hwy = new b();
-      ((b)this.hwy).uin = this.uin;
+      this.hON = new b();
+      ((b)this.hON).uin = this.uin;
     }
   }
   
@@ -69,7 +70,7 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132564);
-    ac.i("MicroMsg.NetSceneNotifyData", "onGYNetEnd [%d,%d] %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ad.i("MicroMsg.NetSceneNotifyData", "onGYNetEnd [%d,%d] %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(132564);
   }
@@ -77,14 +78,14 @@ public final class g
   public static final class a
     extends l
   {
-    private final w.a hMe;
-    private final w.b hMf;
+    private final w.a ieY;
+    private final w.b ieZ;
     
     public a()
     {
       AppMethodBeat.i(132560);
-      this.hMe = new w.a();
-      this.hMf = new w.b();
+      this.ieY = new w.a();
+      this.ieZ = new w.b();
       AppMethodBeat.o(132560);
     }
     
@@ -107,15 +108,15 @@ public final class g
   public static final class b
     implements com.tencent.mm.network.q
   {
-    private final w.a hMe;
-    private final w.b hMf;
+    private final w.a ieY;
+    private final w.b ieZ;
     int uin;
     
     public b()
     {
       AppMethodBeat.i(132561);
-      this.hMe = new w.a();
-      this.hMf = new w.b();
+      this.ieY = new w.a();
+      this.ieZ = new w.b();
       AppMethodBeat.o(132561);
     }
     
@@ -134,6 +135,11 @@ public final class g
       return 0;
     }
     
+    public final int getNewExtFlags()
+    {
+      return 0;
+    }
+    
     public final int getOptions()
     {
       return 0;
@@ -142,11 +148,11 @@ public final class g
     public final l.d getReqObj()
     {
       AppMethodBeat.i(132562);
-      this.hMe.setDeviceID(com.tencent.mm.compatible.deviceinfo.q.XX());
-      this.hMe.setDeviceType(d.gMK);
-      this.hMe.setClientVersion(d.DIc);
-      this.hMe.setUin(this.uin);
-      w.a locala = this.hMe;
+      this.ieY.setDeviceID(com.tencent.mm.compatible.deviceinfo.q.aay());
+      this.ieY.setDeviceType(d.hgH);
+      this.ieY.setClientVersion(d.Fnj);
+      this.ieY.setUin(this.uin);
+      w.a locala = this.ieY;
       AppMethodBeat.o(132562);
       return locala;
     }
@@ -154,6 +160,11 @@ public final class g
     public final int getTimeOut()
     {
       return 0;
+    }
+    
+    public final byte[] getTransHeader()
+    {
+      return null;
     }
     
     public final int getType()
@@ -176,7 +187,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelmulti.g
  * JD-Core Version:    0.7.0.1
  */

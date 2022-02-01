@@ -5,13 +5,13 @@ import android.os.IBinder;
 
 final class v$c
 {
-  final IBinder Gy;
+  final IBinder Iq;
   final ComponentName componentName;
   
   v$c(ComponentName paramComponentName, IBinder paramIBinder)
   {
     this.componentName = paramComponentName;
-    this.Gy = paramIBinder;
+    this.Iq = paramIBinder;
   }
 }
 

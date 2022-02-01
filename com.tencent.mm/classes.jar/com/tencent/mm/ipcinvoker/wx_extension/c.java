@@ -3,21 +3,21 @@ package com.tencent.mm.ipcinvoker.wx_extension;
 import android.os.Parcel;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
 import com.tencent.mmkv.MMKV;
 import org.apache.commons.b.g;
 
 public final class c
   implements com.tencent.mm.ipcinvoker.extension.a
 {
-  static aw JW()
+  static ax Lv()
   {
     AppMethodBeat.i(146411);
-    aw localaw = a.aeY();
+    ax localax = a.ahK();
     AppMethodBeat.o(146411);
-    return localaw;
+    return localax;
   }
   
   public final void a(Object paramObject, Parcel paramParcel)
@@ -31,27 +31,27 @@ public final class c
       AppMethodBeat.o(146412);
       return;
     }
-    Object localObject = (com.tencent.mm.bw.a)paramObject;
+    Object localObject = (com.tencent.mm.bx.a)paramObject;
     paramParcel.writeString(localObject.getClass().getName());
     for (;;)
     {
       try
       {
-        localObject = ((com.tencent.mm.bw.a)localObject).toByteArray();
-        localaw = a.aeY();
+        localObject = ((com.tencent.mm.bx.a)localObject).toByteArray();
+        localax = a.ahK();
         i = k;
         if (localObject.length > 102400)
         {
           i = k;
-          if (localaw == null) {}
+          if (localax == null) {}
         }
         try
         {
-          long l = localaw.GsS.totalSize();
+          long l = localax.IeH.totalSize();
           if (l < 20971520L) {
             continue;
           }
-          ac.e("MicroMsg.XIPC.MMProtoBufTransfer", "mmkv totalSize[%d] too large, skip use mmkv", new Object[] { Long.valueOf(l) });
+          ad.e("MicroMsg.XIPC.MMProtoBufTransfer", "mmkv totalSize[%d] too large, skip use mmkv", new Object[] { Long.valueOf(l) });
           i = k;
         }
         catch (Throwable paramObject)
@@ -59,7 +59,7 @@ public final class c
           for (;;)
           {
             byte[] arrayOfByte;
-            ac.printErrStackTrace("MicroMsg.XIPC.MMProtoBufTransfer", paramObject, "encode bytes to mmkv", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.XIPC.MMProtoBufTransfer", paramObject, "encode bytes to mmkv", new Object[0]);
             i = k;
             continue;
             i = 0;
@@ -76,13 +76,13 @@ public final class c
       }
       catch (Exception localException)
       {
-        aw localaw;
-        ac.e("MicroMsg.XIPC.MMProtoBufTransfer", "writeToParcel, e = %s", new Object[] { localException });
+        ax localax;
+        ad.e("MicroMsg.XIPC.MMProtoBufTransfer", "writeToParcel, e = %s", new Object[] { localException });
         arrayOfByte = new byte[0];
         continue;
-        paramObject = g.a(new String[] { ai.getProcessName(), paramObject.getClass().getName(), paramObject.hashCode(), SystemClock.elapsedRealtimeNanos() }, "$");
-        localaw.encode(paramObject, arrayOfByte);
-        if (!localaw.containsKey(paramObject)) {
+        paramObject = g.a(new String[] { aj.getProcessName(), paramObject.getClass().getName(), paramObject.hashCode(), SystemClock.elapsedRealtimeNanos() }, "$");
+        localax.encode(paramObject, arrayOfByte);
+        if (!localax.containsKey(paramObject)) {
           break;
         }
       }
@@ -91,9 +91,9 @@ public final class c
     }
   }
   
-  public final boolean be(Object paramObject)
+  public final boolean bg(Object paramObject)
   {
-    return paramObject instanceof com.tencent.mm.bw.a;
+    return paramObject instanceof com.tencent.mm.bx.a;
   }
   
   /* Error */
@@ -118,11 +118,11 @@ public final class c
     //   30: aload 4
     //   32: invokestatic 161	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   35: ifne +219 -> 254
-    //   38: invokestatic 26	com/tencent/mm/ipcinvoker/wx_extension/c$a:aeY	()Lcom/tencent/mm/sdk/platformtools/aw;
+    //   38: invokestatic 26	com/tencent/mm/ipcinvoker/wx_extension/c$a:ahK	()Lcom/tencent/mm/sdk/platformtools/ax;
     //   41: astore 5
     //   43: aload 5
     //   45: aload 4
-    //   47: invokevirtual 165	com/tencent/mm/sdk/platformtools/aw:decodeBytes	(Ljava/lang/String;)[B
+    //   47: invokevirtual 165	com/tencent/mm/sdk/platformtools/ax:decodeBytes	(Ljava/lang/String;)[B
     //   50: astore_1
     //   51: aload_1
     //   52: ifnonnull +54 -> 106
@@ -136,10 +136,10 @@ public final class c
     //   66: iconst_0
     //   67: aload 5
     //   69: aastore
-    //   70: invokestatic 88	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   70: invokestatic 88	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   73: aload 5
     //   75: aload 4
-    //   77: invokevirtual 170	com/tencent/mm/sdk/platformtools/aw:removeValueForKey	(Ljava/lang/String;)V
+    //   77: invokevirtual 170	com/tencent/mm/sdk/platformtools/ax:removeValueForKey	(Ljava/lang/String;)V
     //   80: aload_1
     //   81: ifnull +18 -> 99
     //   84: aload_1
@@ -147,7 +147,7 @@ public final class c
     //   86: ldc 171
     //   88: if_icmplt +11 -> 99
     //   91: aload 5
-    //   93: getfield 64	com/tencent/mm/sdk/platformtools/aw:GsS	Lcom/tencent/mmkv/MMKV;
+    //   93: getfield 64	com/tencent/mm/sdk/platformtools/ax:IeH	Lcom/tencent/mmkv/MMKV;
     //   96: invokevirtual 174	com/tencent/mmkv/MMKV:trim	()V
     //   99: ldc 152
     //   101: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -155,7 +155,7 @@ public final class c
     //   105: areturn
     //   106: aload 5
     //   108: aload 4
-    //   110: invokevirtual 170	com/tencent/mm/sdk/platformtools/aw:removeValueForKey	(Ljava/lang/String;)V
+    //   110: invokevirtual 170	com/tencent/mm/sdk/platformtools/ax:removeValueForKey	(Ljava/lang/String;)V
     //   113: aload_1
     //   114: astore_2
     //   115: aload_1
@@ -167,20 +167,20 @@ public final class c
     //   123: ldc 171
     //   125: if_icmplt +13 -> 138
     //   128: aload 5
-    //   130: getfield 64	com/tencent/mm/sdk/platformtools/aw:GsS	Lcom/tencent/mmkv/MMKV;
+    //   130: getfield 64	com/tencent/mm/sdk/platformtools/ax:IeH	Lcom/tencent/mmkv/MMKV;
     //   133: invokevirtual 174	com/tencent/mmkv/MMKV:trim	()V
     //   136: aload_1
     //   137: astore_2
     //   138: aload_3
     //   139: invokestatic 180	org/a/a:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   142: invokestatic 184	org/a/a:bD	(Ljava/lang/Class;)Lorg/a/a;
-    //   145: invokevirtual 188	org/a/a:gfN	()Lorg/a/a;
+    //   142: invokestatic 184	org/a/a:bF	(Ljava/lang/Class;)Lorg/a/a;
+    //   145: invokevirtual 188	org/a/a:gyr	()Lorg/a/a;
     //   148: getfield 192	org/a/a:object	Ljava/lang/Object;
-    //   151: checkcast 43	com/tencent/mm/bw/a
+    //   151: checkcast 43	com/tencent/mm/bx/a
     //   154: astore_1
     //   155: aload_1
     //   156: aload_2
-    //   157: invokevirtual 196	com/tencent/mm/bw/a:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   157: invokevirtual 196	com/tencent/mm/bx/a:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   160: pop
     //   161: ldc 152
     //   163: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -196,10 +196,10 @@ public final class c
     //   176: ldc 198
     //   178: iconst_0
     //   179: anewarray 4	java/lang/Object
-    //   182: invokestatic 147	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   182: invokestatic 147	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   185: aload 5
     //   187: aload 4
-    //   189: invokevirtual 170	com/tencent/mm/sdk/platformtools/aw:removeValueForKey	(Ljava/lang/String;)V
+    //   189: invokevirtual 170	com/tencent/mm/sdk/platformtools/ax:removeValueForKey	(Ljava/lang/String;)V
     //   192: aload_1
     //   193: ifnull +18 -> 211
     //   196: aload_1
@@ -207,7 +207,7 @@ public final class c
     //   198: ldc 171
     //   200: if_icmplt +11 -> 211
     //   203: aload 5
-    //   205: getfield 64	com/tencent/mm/sdk/platformtools/aw:GsS	Lcom/tencent/mmkv/MMKV;
+    //   205: getfield 64	com/tencent/mm/sdk/platformtools/ax:IeH	Lcom/tencent/mmkv/MMKV;
     //   208: invokevirtual 174	com/tencent/mmkv/MMKV:trim	()V
     //   211: ldc 152
     //   213: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -218,7 +218,7 @@ public final class c
     //   220: astore_2
     //   221: aload 5
     //   223: aload 4
-    //   225: invokevirtual 170	com/tencent/mm/sdk/platformtools/aw:removeValueForKey	(Ljava/lang/String;)V
+    //   225: invokevirtual 170	com/tencent/mm/sdk/platformtools/ax:removeValueForKey	(Ljava/lang/String;)V
     //   228: aload_2
     //   229: ifnull +18 -> 247
     //   232: aload_2
@@ -226,7 +226,7 @@ public final class c
     //   234: ldc 171
     //   236: if_icmplt +11 -> 247
     //   239: aload 5
-    //   241: getfield 64	com/tencent/mm/sdk/platformtools/aw:GsS	Lcom/tencent/mmkv/MMKV;
+    //   241: getfield 64	com/tencent/mm/sdk/platformtools/ax:IeH	Lcom/tencent/mmkv/MMKV;
     //   244: invokevirtual 174	com/tencent/mmkv/MMKV:trim	()V
     //   247: ldc 152
     //   249: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -249,7 +249,7 @@ public final class c
     //   279: iconst_0
     //   280: aload_1
     //   281: aastore
-    //   282: invokestatic 88	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   282: invokestatic 88	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   285: aconst_null
     //   286: astore_1
     //   287: goto -126 -> 161
@@ -279,7 +279,7 @@ public final class c
     //   168	8	3	localThrowable3	Throwable
     //   302	1	3	localThrowable4	Throwable
     //   28	196	4	str2	String
-    //   41	199	5	localaw	aw
+    //   41	199	5	localax	ax
     // Exception table:
     //   from	to	target	type
     //   43	51	168	java/lang/Throwable
@@ -300,12 +300,12 @@ public final class c
   
   static final class a
   {
-    private static final aw geD;
+    private static final ax gyn;
     
     static
     {
       AppMethodBeat.i(146410);
-      geD = aw.aKT("MicroMsg_XIPC_MMProtoBufTransfer");
+      gyn = ax.aQz("MicroMsg_XIPC_MMProtoBufTransfer");
       AppMethodBeat.o(146410);
     }
   }

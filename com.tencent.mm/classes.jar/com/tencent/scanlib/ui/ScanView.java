@@ -43,16 +43,16 @@ public abstract class ScanView
   extends FrameLayout
   implements Camera.AutoFocusCallback, Camera.PreviewCallback, TextureView.SurfaceTextureListener
 {
-  protected static int JVJ = 80;
-  protected static int JVL = 1000;
-  public f JVI;
-  private long JVK;
-  private b JVM = new b(Looper.myLooper());
-  private a JVN = new a(Looper.myLooper());
-  protected TextureView aTL;
+  protected static int LPE = 80;
+  protected static int LPG = 1000;
+  public f LPD;
+  private long LPF;
+  private b LPH = new b(Looper.myLooper());
+  private a LPI = new a(Looper.myLooper());
+  protected TextureView bef;
   private int screenOrientation;
   protected SurfaceTexture surfaceTexture;
-  private long xfU;
+  private long ytW;
   
   public ScanView(Context paramContext)
   {
@@ -69,96 +69,96 @@ public abstract class ScanView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void BR(long paramLong)
+  public final void ET(long paramLong)
   {
-    long l1 = System.currentTimeMillis() - this.JVK;
-    if (l1 > JVL)
+    long l1 = System.currentTimeMillis() - this.LPF;
+    if (l1 > LPG)
     {
-      this.JVN.removeMessages(0);
-      this.JVN.sendEmptyMessageDelayed(0, paramLong);
+      this.LPI.removeMessages(0);
+      this.LPI.sendEmptyMessageDelayed(0, paramLong);
       return;
     }
-    long l2 = JVL;
-    this.JVN.removeMessages(0);
-    this.JVN.sendEmptyMessageDelayed(0, l2 - l1 + paramLong);
+    long l2 = LPG;
+    this.LPI.removeMessages(0);
+    this.LPI.sendEmptyMessageDelayed(0, l2 - l1 + paramLong);
   }
   
   public void a(b.b.a parama)
   {
     Log.i("ScanView", "try open camera");
-    if (!this.JVI.isOpen())
+    if (!this.LPD.isOpen())
     {
       Log.i("ScanView", "camera is not open");
       int i = ((Activity)getContext()).getWindowManager().getDefaultDisplay().getRotation();
-      c localc = c.fCX();
-      b.g localg = new b.g(this.JVI, i);
-      localc.JVa.submit(new c.1(localc, localg, parama));
+      c localc = c.fUp();
+      b.g localg = new b.g(this.LPD, i);
+      localc.LOU.submit(new c.1(localc, localg, parama));
     }
     do
     {
       return;
       Log.i("ScanView", "camera is already open!");
     } while (parama == null);
-    parama.dAJ();
+    parama.dMh();
   }
   
   public final void a(b.c.a parama)
   {
     int i = ((Activity)getContext()).getWindowManager().getDefaultDisplay().getRotation();
     Log.i("ScanView", "try reopen camera ".concat(String.valueOf(i)));
-    c localc = c.fCX();
-    b.h localh = new b.h(this.JVI, i);
-    localc.JVa.submit(new c.5(localc, localh, parama));
+    c localc = c.fUp();
+    b.h localh = new b.h(this.LPD, i);
+    localc.LOU.submit(new c.5(localc, localh, parama));
   }
   
   public final void a(final b.d.a parama)
   {
     Log.i("ScanView", "try start preview");
-    if ((this.JVI.isOpen()) && (!this.JVI.cDz()) && (this.surfaceTexture != null))
+    if ((this.LPD.isOpen()) && (!this.LPD.cLT()) && (this.surfaceTexture != null))
     {
-      c localc = c.fCX();
-      b.i locali = new b.i(this.JVI, this.surfaceTexture);
+      c localc = c.fUp();
+      b.i locali = new b.i(this.LPD, this.surfaceTexture);
       parama = new b.d.a()
       {
-        public final void dAI()
+        public final void dMg()
         {
           AppMethodBeat.i(3604);
-          if ((ScanView.this.JVI.isOpen()) && (ScanView.this.JVI.cDz()) && (ScanView.this.surfaceTexture != null))
+          if ((ScanView.this.LPD.isOpen()) && (ScanView.this.LPD.cLT()) && (ScanView.this.surfaceTexture != null))
           {
-            ScanView.this.aTL.setTransform(ScanView.a(ScanView.this, ScanView.this.JVI.fCS(), new Point(ScanView.this.aTL.getWidth(), ScanView.this.aTL.getHeight())));
+            ScanView.this.bef.setTransform(ScanView.a(ScanView.this, ScanView.this.LPD.fUk(), new Point(ScanView.this.bef.getWidth(), ScanView.this.bef.getHeight())));
             if (parama != null) {
-              parama.dAI();
+              parama.dMg();
             }
           }
           AppMethodBeat.o(3604);
         }
       };
-      localc.JVa.submit(new c.2(localc, locali, parama));
+      localc.LOU.submit(new c.2(localc, locali, parama));
     }
   }
   
-  public final void auj()
+  public final void awW()
   {
     Log.i("ScanView", "try close camera");
-    if (this.JVI.isOpen())
+    if (this.LPD.isOpen())
     {
-      c localc = c.fCX();
-      b.f localf = new b.f(this.JVI);
-      localc.JVa.submit(new c.4(localc, localf));
+      c localc = c.fUp();
+      b.f localf = new b.f(this.LPD);
+      localc.LOU.submit(new c.4(localc, localf));
     }
   }
   
-  protected void dAx()
+  protected void dLV()
   {
-    this.JVI = new a();
+    this.LPD = new a();
   }
   
   protected void init()
   {
-    this.aTL = new TextureView(getContext());
-    this.aTL.setSurfaceTextureListener(this);
-    addView(this.aTL, new FrameLayout.LayoutParams(-1, -1));
-    dAx();
+    this.bef = new TextureView(getContext());
+    this.bef.setSurfaceTextureListener(this);
+    addView(this.bef, new FrameLayout.LayoutParams(-1, -1));
+    dLV();
     this.screenOrientation = getResources().getConfiguration().orientation;
     a(null);
   }
@@ -172,21 +172,21 @@ public abstract class ScanView
   {
     super.onConfigurationChanged(paramConfiguration);
     Log.i("ScanView", "onConfigurationChanged %d,%d", new Object[] { Integer.valueOf(paramConfiguration.orientation), Integer.valueOf(this.screenOrientation) });
-    if ((paramConfiguration.orientation != this.screenOrientation) && (this.JVI != null))
+    if ((paramConfiguration.orientation != this.screenOrientation) && (this.LPD != null))
     {
       this.screenOrientation = paramConfiguration.orientation;
       a(new b.c.a()
       {
-        public final void dAJ()
+        public final void dMh()
         {
           AppMethodBeat.i(174609);
-          ScanView.this.JVI.l(new Point(ScanView.this.aTL.getWidth(), ScanView.this.aTL.getHeight()));
+          ScanView.this.LPD.l(new Point(ScanView.this.bef.getWidth(), ScanView.this.bef.getHeight()));
           ScanView.this.a(new b.d.a()
           {
-            public final void dAI()
+            public final void dMg()
             {
               AppMethodBeat.i(174608);
-              ScanView.this.wE(0L);
+              ScanView.this.zb(0L);
               AppMethodBeat.o(174608);
             }
           });
@@ -205,14 +205,14 @@ public abstract class ScanView
   public void onDestroy()
   {
     Log.i("ScanView", "onDestroy");
-    this.aTL.setSurfaceTextureListener(null);
+    this.bef.setSurfaceTextureListener(null);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     stopPreview();
-    auj();
+    awW();
   }
   
   public void onPause()
@@ -222,7 +222,7 @@ public abstract class ScanView
   
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    this.xfU = 0L;
+    this.ytW = 0L;
   }
   
   public void onResume()
@@ -239,15 +239,15 @@ public abstract class ScanView
   {
     Log.i("ScanView", "surface available, %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     this.surfaceTexture = paramSurfaceTexture;
-    if (this.JVI.isOpen())
+    if (this.LPD.isOpen())
     {
-      this.JVI.l(new Point(paramInt1, paramInt2));
+      this.LPD.l(new Point(paramInt1, paramInt2));
       a(new b.d.a()
       {
-        public final void dAI()
+        public final void dMg()
         {
           AppMethodBeat.i(174606);
-          ScanView.this.wE(0L);
+          ScanView.this.zb(0L);
           AppMethodBeat.o(174606);
         }
       });
@@ -255,16 +255,16 @@ public abstract class ScanView
     }
     a(new b.b.a()
     {
-      public final void dAJ()
+      public final void dMh()
       {
         AppMethodBeat.i(3606);
-        ScanView.this.JVI.l(new Point(paramInt1, paramInt2));
+        ScanView.this.LPD.l(new Point(paramInt1, paramInt2));
         ScanView.this.a(new b.d.a()
         {
-          public final void dAI()
+          public final void dMg()
           {
             AppMethodBeat.i(174607);
-            ScanView.this.wE(0L);
+            ScanView.this.zb(0L);
             AppMethodBeat.o(174607);
           }
         });
@@ -289,26 +289,26 @@ public abstract class ScanView
   public void stopPreview()
   {
     Log.i("ScanView", "try stop preview");
-    if (this.JVI.isOpen())
+    if (this.LPD.isOpen())
     {
-      c localc = c.fCX();
-      b.j localj = new b.j(this.JVI);
-      localc.JVa.submit(new c.3(localc, localj));
+      c localc = c.fUp();
+      b.j localj = new b.j(this.LPD);
+      localc.LOU.submit(new c.3(localc, localj));
     }
   }
   
-  public void wE(long paramLong)
+  public void zb(long paramLong)
   {
-    long l1 = System.currentTimeMillis() - this.xfU;
-    if (l1 > JVJ)
+    long l1 = System.currentTimeMillis() - this.ytW;
+    if (l1 > LPE)
     {
-      this.JVM.removeMessages(0);
-      this.JVM.sendEmptyMessageDelayed(0, paramLong);
+      this.LPH.removeMessages(0);
+      this.LPH.sendEmptyMessageDelayed(0, paramLong);
       return;
     }
-    long l2 = JVJ;
-    this.JVM.removeMessages(0);
-    this.JVM.sendEmptyMessageDelayed(0, l2 - l1 + paramLong);
+    long l2 = LPE;
+    this.LPH.removeMessages(0);
+    this.LPH.sendEmptyMessageDelayed(0, l2 - l1 + paramLong);
   }
   
   final class a
@@ -323,12 +323,12 @@ public abstract class ScanView
     {
       AppMethodBeat.i(3607);
       ScanView.b(ScanView.this, System.currentTimeMillis());
-      if (ScanView.this.JVI.cDz())
+      if (ScanView.this.LPD.cLT())
       {
-        if (!"auto".equals(ScanView.this.JVI.getFocusMode())) {
-          ScanView.this.JVI.setFocusMode("auto");
+        if (!"auto".equals(ScanView.this.LPD.getFocusMode())) {
+          ScanView.this.LPD.setFocusMode("auto");
         }
-        ScanView.this.JVI.autoFocus(ScanView.this);
+        ScanView.this.LPD.autoFocus(ScanView.this);
         Log.i("ScanView", "do auto focus");
       }
       AppMethodBeat.o(3607);
@@ -348,8 +348,8 @@ public abstract class ScanView
       AppMethodBeat.i(3608);
       ScanView.a(ScanView.this, System.currentTimeMillis());
       Log.i("ScanView", "take one shot");
-      if (ScanView.this.JVI.cDz()) {
-        ScanView.this.JVI.a(ScanView.this);
+      if (ScanView.this.LPD.cLT()) {
+        ScanView.this.LPD.a(ScanView.this);
       }
       AppMethodBeat.o(3608);
     }

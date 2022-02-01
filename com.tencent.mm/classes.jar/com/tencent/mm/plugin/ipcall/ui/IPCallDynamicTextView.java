@@ -7,37 +7,37 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class IPCallDynamicTextView
   extends TextView
 {
-  private ao mHandler;
+  private ap mHandler;
   private int mHeight;
   private String mValue;
-  private double tOA;
-  private double tOB;
-  private double tOC;
-  private boolean tOD;
-  private int tOE;
-  private int tOF;
-  DecimalFormat tOG;
-  private String tOH;
-  private String tOI;
-  private int tOz;
+  private int uRm;
+  private double uRn;
+  private double uRo;
+  private double uRp;
+  private boolean uRq;
+  private int uRr;
+  private int uRs;
+  DecimalFormat uRt;
+  private String uRu;
+  private String uRv;
   
   public IPCallDynamicTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(25761);
-    this.tOE = 4000;
-    this.tOF = 50;
-    this.tOG = new DecimalFormat("0.00");
-    this.tOH = "";
-    this.tOI = "";
-    this.mHandler = new ao()
+    this.uRr = 4000;
+    this.uRs = 50;
+    this.uRt = new DecimalFormat("0.00");
+    this.uRu = "";
+    this.uRv = "";
+    this.mHandler = new ap()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -71,12 +71,12 @@ public class IPCallDynamicTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(25762);
-    this.tOE = 4000;
-    this.tOF = 50;
-    this.tOG = new DecimalFormat("0.00");
-    this.tOH = "";
-    this.tOI = "";
-    this.mHandler = new ao()
+    this.uRr = 4000;
+    this.uRs = 50;
+    this.uRt = new DecimalFormat("0.00");
+    this.uRu = "";
+    this.uRv = "";
+    this.mHandler = new ap()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -106,7 +106,7 @@ public class IPCallDynamicTextView
     AppMethodBeat.o(25762);
   }
   
-  public static String ajc(String paramString)
+  public static String anP(String paramString)
   {
     AppMethodBeat.i(25765);
     String str1 = "";
@@ -155,7 +155,7 @@ public class IPCallDynamicTextView
   
   public void setLocHeight(int paramInt)
   {
-    this.tOz = paramInt;
+    this.uRm = paramInt;
   }
   
   public final void setValue(String paramString1, String paramString2)
@@ -169,15 +169,15 @@ public class IPCallDynamicTextView
     }
     try
     {
-      this.tOB = Double.parseDouble(ajc(paramString1));
-      this.tOH = "";
+      this.uRo = Double.parseDouble(anP(paramString1));
+      this.uRu = "";
       i = 0;
       while ((i < paramString2.length()) && (!Character.isDigit(paramString2.charAt(i))))
       {
-        this.tOH += paramString2.charAt(i);
+        this.uRu += paramString2.charAt(i);
         i += 1;
       }
-      this.tOI = "";
+      this.uRv = "";
     }
     catch (NumberFormatException paramString1)
     {
@@ -188,16 +188,16 @@ public class IPCallDynamicTextView
     int i = paramString2.length() - 1;
     while ((i > 0) && (!Character.isDigit(paramString2.charAt(i))))
     {
-      this.tOI += paramString2.charAt(i);
+      this.uRv += paramString2.charAt(i);
       i -= 1;
     }
-    paramString1 = paramString2.substring(this.tOH.length(), paramString2.length() - this.tOI.length());
+    paramString1 = paramString2.substring(this.uRu.length(), paramString2.length() - this.uRv.length());
     try
     {
-      this.tOC = Double.parseDouble(paramString1);
+      this.uRp = Double.parseDouble(paramString1);
       this.mValue = paramString2;
-      this.tOA = ((this.tOC - this.tOB) / (this.tOE / this.tOF));
-      if (this.tOA == 0.0D)
+      this.uRn = ((this.uRp - this.uRo) / (this.uRr / this.uRs));
+      if (this.uRn == 0.0D)
       {
         setText(paramString2);
         AppMethodBeat.o(25764);
@@ -210,7 +210,7 @@ public class IPCallDynamicTextView
       AppMethodBeat.o(25764);
       return;
     }
-    this.tOA = new BigDecimal(this.tOA).setScale(2, 4).doubleValue();
+    this.uRn = new BigDecimal(this.uRn).setScale(2, 4).doubleValue();
     if (isShown()) {
       this.mHandler.sendEmptyMessage(1);
     }
@@ -219,7 +219,7 @@ public class IPCallDynamicTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallDynamicTextView
  * JD-Core Version:    0.7.0.1
  */

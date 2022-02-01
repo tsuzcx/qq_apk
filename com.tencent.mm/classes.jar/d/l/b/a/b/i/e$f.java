@@ -2,19 +2,19 @@ package d.l.b.a.b.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
-import d.g.b.l;
+import d.g.b.q;
 import d.l.b.a.b.b.av;
 
 final class e$f
-  extends l
+  extends q
   implements b<av, String>
 {
-  public static final f LCD;
+  public static final f NtB;
   
   static
   {
     AppMethodBeat.i(59707);
-    LCD = new f();
+    NtB = new f();
     AppMethodBeat.o(59707);
   }
   

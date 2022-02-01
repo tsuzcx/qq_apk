@@ -5,18 +5,18 @@ import java.util.concurrent.Future;
 
 public final class a$a
 {
-  public final Future<b> CZM;
-  public final b HdZ;
+  public final Future<b> EDL;
+  public final b IRp;
   
   public a$a(b paramb, Future<b> paramFuture)
   {
-    this.HdZ = paramb;
-    this.CZM = paramFuture;
+    this.IRp = paramb;
+    this.EDL = paramFuture;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.toolkit.frontia.a.a
  * JD-Core Version:    0.7.0.1
  */

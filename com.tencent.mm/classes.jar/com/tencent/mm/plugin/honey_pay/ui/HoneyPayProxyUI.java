@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.honey_pay.a.l;
 import com.tencent.mm.plugin.honey_pay.a.m;
-import com.tencent.mm.protocal.protobuf.bkc;
-import com.tencent.mm.protocal.protobuf.bkd;
-import com.tencent.mm.protocal.protobuf.cjm;
-import com.tencent.mm.protocal.protobuf.cjo;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.bom;
+import com.tencent.mm.protocal.protobuf.bon;
+import com.tencent.mm.protocal.protobuf.com;
+import com.tencent.mm.protocal.protobuf.coo;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.c.r;
 import com.tencent.mm.wallet_core.c.r.a;
@@ -20,10 +20,10 @@ import com.tencent.mm.wallet_core.c.r.a;
 public class HoneyPayProxyUI
   extends HoneyPayBaseUI
 {
-  private String tCZ;
-  private boolean tEJ;
+  private String uFI;
+  private boolean uHs;
   
-  protected final void cSW() {}
+  protected final void dcd() {}
   
   public int getLayoutId()
   {
@@ -36,20 +36,20 @@ public class HoneyPayProxyUI
     super.onCreate(paramBundle);
     addSceneEndListener(2876);
     addSceneEndListener(2613);
-    this.tEJ = getIntent().getBooleanExtra("key_is_payer", false);
-    this.tCZ = getIntent().getStringExtra("key_card_no");
-    ac.i(this.TAG, "is payer: %s", new Object[] { Boolean.valueOf(this.tEJ) });
-    if (this.tEJ)
+    this.uHs = getIntent().getBooleanExtra("key_is_payer", false);
+    this.uFI = getIntent().getStringExtra("key_card_no");
+    ad.i(this.TAG, "is payer: %s", new Object[] { Boolean.valueOf(this.uHs) });
+    if (this.uHs)
     {
-      ac.i(this.TAG, "do qry payer detail");
-      paramBundle = new l(this.tCZ);
-      paramBundle.r(this);
+      ad.i(this.TAG, "do qry payer detail");
+      paramBundle = new l(this.uFI);
+      paramBundle.t(this);
       doSceneProgress(paramBundle, true);
       AppMethodBeat.o(64818);
       return;
     }
-    paramBundle = new m(this.tCZ);
-    paramBundle.r(this);
+    paramBundle = new m(this.uFI);
+    paramBundle.t(this);
     doSceneProgress(paramBundle, true);
     AppMethodBeat.o(64818);
   }
@@ -79,10 +79,10 @@ public class HoneyPayProxyUI
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
         {
           AppMethodBeat.i(64815);
-          if (paramString.tCJ.Euc != null) {
-            ac.i(HoneyPayProxyUI.this.TAG, "state: %s", new Object[] { Integer.valueOf(paramString.tCJ.Euc.state) });
+          if (paramString.uFs.Gbv != null) {
+            ad.i(HoneyPayProxyUI.this.TAG, "state: %s", new Object[] { Integer.valueOf(paramString.uFs.Gbv.state) });
           }
-          HoneyPayProxyUI.a(HoneyPayProxyUI.this, paramString.tCJ);
+          HoneyPayProxyUI.a(HoneyPayProxyUI.this, paramString.uFs);
           HoneyPayProxyUI.this.finish();
           AppMethodBeat.o(64815);
         }
@@ -111,16 +111,16 @@ public class HoneyPayProxyUI
           public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
           {
             AppMethodBeat.i(64817);
-            ac.i(HoneyPayProxyUI.this.TAG, "state: %s", new Object[] { Integer.valueOf(paramString.tCK.EPK.state) });
-            if (paramString.tCK.EPK.state == 1) {
-              HoneyPayProxyUI.a(HoneyPayProxyUI.this, paramString.tCK);
+            ad.i(HoneyPayProxyUI.this.TAG, "state: %s", new Object[] { Integer.valueOf(paramString.uFt.Gzb.state) });
+            if (paramString.uFt.Gzb.state == 1) {
+              HoneyPayProxyUI.a(HoneyPayProxyUI.this, paramString.uFt);
             }
             for (;;)
             {
               HoneyPayProxyUI.this.finish();
               AppMethodBeat.o(64817);
               return;
-              HoneyPayProxyUI.b(HoneyPayProxyUI.this, paramString.tCK);
+              HoneyPayProxyUI.b(HoneyPayProxyUI.this, paramString.uFt);
             }
           }
         }).b(new r.a()

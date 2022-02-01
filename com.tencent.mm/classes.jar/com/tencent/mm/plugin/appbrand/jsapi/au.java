@@ -1,161 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.graphics.Rect;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.plugin.appbrand.r.a.c;
-import com.tencent.mm.plugin.appbrand.r.a.c.d;
-import com.tencent.mm.plugin.appbrand.ui.x;
-import com.tencent.mm.plugin.appbrand.ui.x.a;
-import com.tencent.mm.plugin.appbrand.ui.x.b;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.service.c;
+import d.l;
 
-public class au
-  extends y<d>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiFunctionalPageStartGame;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+public final class au
+  extends a<c>
 {
-  public static final int CTRL_INDEX = 466;
-  public static final String NAME = "getMenuButtonBoundingClientRect";
-  private static boolean jXS = false;
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "functionalPageStartGame";
+  public static final a ksh;
   
-  private String c(d paramd)
+  static
   {
-    AppMethodBeat.i(139841);
-    Object localObject2 = cl.i(paramd);
-    if (localObject2 != null) {}
-    for (;;)
-    {
-      try
-      {
-        localObject1 = new int[2];
-        ((aa)localObject2).bqy().getCapsuleView().getLocationInWindow((int[])localObject1);
-        i = ((aa)localObject2).bqy().getCapsuleView().getWidth();
-        j = ((aa)localObject2).bqy().getCapsuleView().getHeight();
-        k = localObject1[1];
-        m = localObject1[0];
-        if (m == 0)
-        {
-          ac.e("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectLegacy with appId[%s] left==0, return null", new Object[] { ((aa)localObject2).getAppId() });
-          localObject1 = null;
-          if (localObject1 == null) {}
-        }
-      }
-      catch (Exception localException1)
-      {
-        int i;
-        int j;
-        int k;
-        int m;
-        localObject1 = null;
-      }
-      try
-      {
-        if (jXS) {
-          j(cl.j(paramd));
-        }
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = j(cl.j(paramd));
-        }
-        if (localObject2 == null) {
-          break label232;
-        }
-        paramd = k("ok", (Map)localObject2);
-        AppMethodBeat.o(139841);
-        return paramd;
-      }
-      catch (Exception localException2)
-      {
-        break label213;
-      }
-      Object localObject1 = k(new Rect(m, k, i + m, j + k));
-      ac.i("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectLegacy with appId[%s] return %s", new Object[] { ((aa)localObject2).getAppId(), localObject1 });
-      continue;
-      label213:
-      ac.e("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectLegacy e=%s", new Object[] { localException1 });
-      continue;
-      label232:
-      paramd = e("fail:internal error", null);
-      AppMethodBeat.o(139841);
-      return paramd;
-      localObject1 = null;
-    }
+    AppMethodBeat.i(189060);
+    ksh = new a((byte)0);
+    AppMethodBeat.o(189060);
   }
   
-  public static void gi(boolean paramBoolean)
-  {
-    jXS = paramBoolean;
-  }
-  
-  private static int i(q paramq)
-  {
-    AppMethodBeat.i(182224);
-    paramq = paramq.jgX.getStatusBar();
-    if ((paramq == null) || (8 == paramq.visibility))
-    {
-      AppMethodBeat.o(182224);
-      return 0;
-    }
-    int i = paramq.height;
-    AppMethodBeat.o(182224);
-    return i;
-  }
-  
-  private Map<String, Object> j(q paramq)
-  {
-    AppMethodBeat.i(182225);
-    Object localObject2 = h(paramq);
-    if (localObject2 == null)
-    {
-      ac.e("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectFallback with appId[%s] NULL IMenuButtonLayoutPropertiesService", new Object[] { paramq.getAppId() });
-      AppMethodBeat.o(182225);
-      return null;
-    }
-    int m = i(paramq);
-    Object localObject1 = ((x)localObject2).bvH();
-    localObject2 = ((x)localObject2).Cq();
-    int k = com.tencent.mm.plugin.appbrand.utils.ad.i(paramq)[0];
-    int i = ((x.b)localObject1).width;
-    int j = ((x.b)localObject1).height;
-    m += ((x.a)localObject2).top;
-    k -= ((x.a)localObject2).right;
-    localObject1 = k(new Rect(k - i, m, k, j + m));
-    ac.i("MicroMsg.JsApiGetMenuButtonBoundingClientRect", "getBoundingRectFallback with appId[%s] return %s", new Object[] { paramq.getAppId(), localObject1 });
-    AppMethodBeat.o(182225);
-    return localObject1;
-  }
-  
-  private static Map<String, Object> k(Rect paramRect)
-  {
-    AppMethodBeat.i(182226);
-    paramRect.left = g.vc(paramRect.left);
-    paramRect.top = g.vc(paramRect.top);
-    paramRect.right = g.vc(paramRect.right);
-    paramRect.bottom = g.vc(paramRect.bottom);
-    HashMap localHashMap = new HashMap(6);
-    localHashMap.put("left", Integer.valueOf(paramRect.left));
-    localHashMap.put("top", Integer.valueOf(paramRect.top));
-    localHashMap.put("right", Integer.valueOf(paramRect.right));
-    localHashMap.put("bottom", Integer.valueOf(paramRect.bottom));
-    localHashMap.put("width", Integer.valueOf(paramRect.width()));
-    localHashMap.put("height", Integer.valueOf(paramRect.height()));
-    AppMethodBeat.o(182226);
-    return localHashMap;
-  }
-  
-  protected x h(q paramq)
-  {
-    AppMethodBeat.i(177248);
-    paramq = (x)paramq.K(x.class);
-    AppMethodBeat.o(177248);
-    return paramq;
-  }
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiFunctionalPageStartGame$Companion;", "", "()V", "CTRL_INDEX", "", "DEFAULT_URL", "", "NAME", "plugin-appbrand-integration_release"})
+  public static final class a {}
 }
 
 

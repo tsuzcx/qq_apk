@@ -1,26 +1,18 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.j.a.a.a;
-import com.tencent.mm.protocal.protobuf.ua;
+import com.tencent.mm.k.a.a.a;
+import com.tencent.mm.protocal.protobuf.vv;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class r
   implements com.tencent.mm.plugin.chatroom.a.b
 {
-  public final boolean GN(String paramString)
-  {
-    AppMethodBeat.i(210532);
-    boolean bool = q.GN(paramString);
-    AppMethodBeat.o(210532);
-    return bool;
-  }
-  
-  public final boolean a(String paramString1, String paramString2, ua paramua, String paramString3, a parama, com.tencent.mm.sdk.b.b paramb)
+  public final boolean a(String paramString1, String paramString2, vv paramvv, String paramString3, a parama, com.tencent.mm.sdk.b.b paramb)
   {
     AppMethodBeat.i(101781);
-    boolean bool = q.a(paramString1, paramString2, paramua, 0, -1, paramString3, parama, paramb);
+    boolean bool = q.a(paramString1, paramString2, paramvv, 0, -1, paramString3, parama, paramb);
     AppMethodBeat.o(101781);
     return bool;
   }
@@ -33,7 +25,7 @@ public final class r
     return bool;
   }
   
-  public final String ae(List<String> paramList)
+  public final String af(List<String> paramList)
   {
     AppMethodBeat.i(101779);
     paramList = q.e(paramList, -1);
@@ -41,20 +33,28 @@ public final class r
     return paramList;
   }
   
-  public final List<String> vZ(String paramString)
+  public final List<String> yQ(String paramString)
   {
     AppMethodBeat.i(101776);
-    paramString = q.vZ(paramString);
+    paramString = q.yQ(paramString);
     AppMethodBeat.o(101776);
     return paramString;
   }
   
-  public final int wb(String paramString)
+  public final int yS(String paramString)
   {
     AppMethodBeat.i(101777);
-    int i = q.wb(paramString);
+    int i = q.yS(paramString);
     AppMethodBeat.o(101777);
     return i;
+  }
+  
+  public final boolean yV(String paramString)
+  {
+    AppMethodBeat.i(219250);
+    boolean bool = q.yV(paramString);
+    AppMethodBeat.o(219250);
+    return bool;
   }
 }
 

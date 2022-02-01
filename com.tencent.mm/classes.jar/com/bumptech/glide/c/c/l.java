@@ -2,7 +2,7 @@ package com.bumptech.glide.c.c;
 
 public abstract interface l
 {
-  public abstract boolean oW();
+  public abstract boolean po();
 }
 
 

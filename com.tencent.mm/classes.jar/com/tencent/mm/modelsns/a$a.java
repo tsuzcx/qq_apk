@@ -4,27 +4,27 @@ import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.h.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
 
 public final class a$a
 {
-  public String hTt;
-  public String hTu;
-  public String hTv;
-  public int hTw = -1;
-  public int hTx = -1;
+  public String imO;
+  public String imP;
+  public String imQ;
+  public int imR = -1;
   public int videoBitRate = -1;
   public int videoFrameRate = -1;
   public int videoHeight = -1;
+  public int videoIFrameInterval = -1;
   public int videoWidth = -1;
   
-  public static a Dm(String paramString)
+  public static a Gr(String paramString)
   {
     AppMethodBeat.i(20650);
     c localc = new c();
     a locala = new a();
-    locala.hTt = paramString;
+    locala.imO = paramString;
     for (;;)
     {
       int i;
@@ -33,8 +33,8 @@ public final class a$a
       Object localObject6;
       try
       {
-        localc.sI(i.k(paramString, false));
-        int j = localc.fKr.getTrackCount();
+        localc.vx(i.k(paramString, false));
+        int j = localc.gdS.getTrackCount();
         i = 0;
         localObject2 = null;
         str1 = null;
@@ -45,13 +45,13 @@ public final class a$a
           localMediaFormat = localc.getTrackFormat(i);
           if (!localMediaFormat.containsKey("mime"))
           {
-            ac.i("MicroMsg.ShareSnsImpl", "find video mime : not found.");
+            ad.i("MicroMsg.ShareSnsImpl", "find video mime : not found.");
             localObject5 = localObject2;
             localObject6 = str1;
             break label528;
           }
           str2 = localMediaFormat.getString("mime");
-          ac.i("MicroMsg.ShareSnsImpl", "find video mime : %s", new Object[] { str2 });
+          ad.i("MicroMsg.ShareSnsImpl", "find video mime : %s", new Object[] { str2 });
           localObject5 = localObject2;
           localObject6 = str1;
           if (str2 == null) {
@@ -75,7 +75,7 @@ public final class a$a
             continue;
           }
           i = 0;
-          locala.hTw = i;
+          locala.imR = i;
           if (((MediaFormat)localObject4).containsKey("height")) {
             continue;
           }
@@ -90,7 +90,7 @@ public final class a$a
             continue;
           }
           str1 = "";
-          locala.hTu = str1;
+          locala.imP = str1;
           if (((MediaFormat)localObject4).containsKey("bitrate")) {
             continue;
           }
@@ -100,7 +100,7 @@ public final class a$a
             continue;
           }
           i = 0;
-          locala.hTx = i;
+          locala.videoIFrameInterval = i;
           if (((MediaFormat)localObject4).containsKey("frame-rate")) {
             continue;
           }
@@ -113,22 +113,22 @@ public final class a$a
             continue;
           }
           str1 = "";
-          locala.hTv = str1;
+          locala.imQ = str1;
         }
-        localc.fKr.release();
+        localc.gdS.release();
       }
       catch (Exception localException)
       {
         String str1;
         MediaFormat localMediaFormat;
         String str2;
-        ac.i("MicroMsg.ShareSnsImpl", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { paramString, localException.getMessage() });
-        localc.fKr.release();
+        ad.i("MicroMsg.ShareSnsImpl", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { paramString, localException.getMessage() });
+        localc.gdS.release();
         continue;
       }
       finally
       {
-        localc.fKr.release();
+        localc.gdS.release();
         AppMethodBeat.o(20650);
       }
       AppMethodBeat.o(20650);

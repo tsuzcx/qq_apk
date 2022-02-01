@@ -2,74 +2,74 @@ package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.ab;
+import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.protocal.protobuf.bzf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.cdw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.wallet_core.c.aa;
 import d.n.d;
 import java.io.IOException;
 
 public final class v
 {
-  private static v AXu;
-  private bzf AXv;
+  private static v CxD;
+  private cdw CxE;
   
-  public static v eok()
+  public static v eCj()
   {
     AppMethodBeat.i(68491);
-    if (AXu == null) {
-      AXu = new v();
+    if (CxD == null) {
+      CxD = new v();
     }
-    v localv = AXu;
+    v localv = CxD;
     AppMethodBeat.o(68491);
     return localv;
   }
   
-  public final void a(bzf parambzf)
+  public final void a(cdw paramcdw)
   {
     AppMethodBeat.i(68492);
-    ac.i("MicroMsg.LqtOnClickRedeemCache", "setCache OnClickRedeemRes balance %s, bank_balance %s, lq_balance %s", new Object[] { Integer.valueOf(parambzf.Foc), Integer.valueOf(parambzf.Foe), Integer.valueOf(parambzf.Fod) });
-    this.AXv = parambzf;
-    if (parambzf != null) {}
+    ad.i("MicroMsg.LqtOnClickRedeemCache", "setCache OnClickRedeemRes balance %s, bank_balance %s, lq_balance %s", new Object[] { Integer.valueOf(paramcdw.GXO), Integer.valueOf(paramcdw.GXQ), Integer.valueOf(paramcdw.GXP) });
+    this.CxE = paramcdw;
+    if (paramcdw != null) {}
     try
     {
-      parambzf = new String(parambzf.toByteArray(), d.ISO_8859_1);
-      ((a)g.ad(a.class)).getWalletCacheStg().set(ah.a.GQs, parambzf);
-      if (ab.iwI)
+      paramcdw = new String(paramcdw.toByteArray(), d.ISO_8859_1);
+      ((a)g.ad(a.class)).getWalletCacheStg().set(al.a.ICM, paramcdw);
+      if (ac.iPQ)
       {
-        this.AXv.Foc = 100000000;
-        this.AXv.Foe = 50000000;
-        this.AXv.Fod = 50000000;
+        this.CxE.GXO = 100000000;
+        this.CxE.GXQ = 50000000;
+        this.CxE.GXP = 50000000;
       }
       AppMethodBeat.o(68492);
       return;
     }
-    catch (IOException parambzf)
+    catch (IOException paramcdw)
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.LqtOnClickRedeemCache", parambzf, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.LqtOnClickRedeemCache", paramcdw, "", new Object[0]);
       }
     }
   }
   
-  public final bzf eol()
+  public final cdw eCk()
   {
     AppMethodBeat.i(182502);
     Object localObject;
-    if (this.AXv == null)
+    if (this.CxE == null)
     {
-      ac.d("MicroMsg.LqtOnClickRedeemCache", "cache is null");
-      localObject = (String)((a)g.ad(a.class)).getWalletCacheStg().get(ah.a.GQs, "");
-      if (bs.isNullOrNil((String)localObject)) {}
+      ad.d("MicroMsg.LqtOnClickRedeemCache", "cache is null");
+      localObject = (String)((a)g.ad(a.class)).getWalletCacheStg().get(al.a.ICM, "");
+      if (bt.isNullOrNil((String)localObject)) {}
     }
     try
     {
-      this.AXv = ((bzf)new bzf().parseFrom(((String)localObject).getBytes(d.ISO_8859_1)));
-      localObject = this.AXv;
+      this.CxE = ((cdw)new cdw().parseFrom(((String)localObject).getBytes(d.ISO_8859_1)));
+      localObject = this.CxE;
       AppMethodBeat.o(182502);
       return localObject;
     }
@@ -77,7 +77,7 @@ public final class v
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.LqtOnClickRedeemCache", localIOException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.LqtOnClickRedeemCache", localIOException, "", new Object[0]);
       }
     }
   }

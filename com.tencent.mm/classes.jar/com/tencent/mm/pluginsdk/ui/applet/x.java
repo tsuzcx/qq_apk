@@ -1,24 +1,24 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.aw.a.a.c;
 
 public abstract interface x
 {
-  public abstract boolean aHd(String paramString);
+  public abstract boolean aMG(String paramString);
   
-  public abstract Object aHe(String paramString);
+  public abstract Object aMH(String paramString);
   
-  public abstract c aHf(String paramString);
+  public abstract c aMI(String paramString);
   
-  public abstract String dJ(Object paramObject);
+  public abstract String dM(Object paramObject);
   
-  public abstract String dK(Object paramObject);
+  public abstract String dN(Object paramObject);
   
-  public abstract String dL(Object paramObject);
+  public abstract String dO(Object paramObject);
   
   public static final class a
   {
-    public static x DrP = null;
+    public static x EWT = null;
   }
 }
 

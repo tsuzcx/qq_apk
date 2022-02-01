@@ -46,6 +46,12 @@ public class MMNativeNetComm
   static final int ectServer = 8;
   static final int ectSocket = 4;
   
+  static class AccountInfo
+  {
+    public int uin;
+    public String username;
+  }
+  
   static class NetCmd
   {
     public static final int EBoth = 3;
@@ -119,7 +125,7 @@ public class MMNativeNetComm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.network.MMNativeNetComm
  * JD-Core Version:    0.7.0.1
  */

@@ -5,16 +5,16 @@ import android.support.v4.view.ViewPager;
 public final class TabLayout$i
   implements TabLayout.c
 {
-  private final ViewPager sO;
+  private final ViewPager uH;
   
   public TabLayout$i(ViewPager paramViewPager)
   {
-    this.sO = paramViewPager;
+    this.uH = paramViewPager;
   }
   
   public final void f(TabLayout.f paramf)
   {
-    this.sO.setCurrentItem(paramf.position);
+    this.uH.setCurrentItem(paramf.position);
   }
   
   public final void g(TabLayout.f paramf) {}
@@ -23,7 +23,7 @@ public final class TabLayout$i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.widget.TabLayout.i
  * JD-Core Version:    0.7.0.1
  */

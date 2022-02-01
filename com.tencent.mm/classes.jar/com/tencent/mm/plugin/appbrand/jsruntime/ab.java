@@ -4,23 +4,23 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.al;
+import com.tencent.mm.model.am;
 import com.tencent.mm.plugin.appbrand.app.PluginAppBrand;
 import com.tencent.mm.plugin.appbrand.appstorage.k;
 import com.tencent.mm.vfs.i;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsruntime/V8CodeCacheDirectoryTransfer;", "Lcom/tencent/mm/model/IDataTransfer;", "()V", "getTag", "", "needTransfer", "", "sVer", "", "transfer", "", "transferIfNeed", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsruntime/V8CodeCacheDirectoryTransfer;", "Lcom/tencent/mm/model/IDataTransfer;", "()V", "getTag", "", "needTransfer", "", "sVer", "", "transfer", "", "transferIfNeed", "Companion", "plugin-appbrand-integration_release"})
 public final class ab
-  extends al
+  extends am
 {
   @Deprecated
-  public static final a leV;
+  public static final a lBU;
   
   static
   {
     AppMethodBeat.i(50726);
-    leV = new a((byte)0);
+    lBU = new a((byte)0);
     AppMethodBeat.o(50726);
   }
   
@@ -29,7 +29,7 @@ public final class ab
     return "MicroMsg.AppBrand.V8CodeCacheDirectoryTransfer";
   }
   
-  public final boolean nP(int paramInt)
+  public final boolean op(int paramInt)
   {
     AppMethodBeat.i(50725);
     if (!PluginAppBrand.getProcessSharedPrefs().getBoolean("MicroMsg.AppBrand.V8CodeCacheDirectoryTransfer_transfer_finished", false))
@@ -45,15 +45,15 @@ public final class ab
   public final void transfer(int paramInt)
   {
     AppMethodBeat.i(50724);
-    i.deleteDir(ac.bmF());
-    String str1 = ac.bmE();
+    i.deleteDir(ac.bqq());
+    String str1 = ac.bqp();
     if (str1 != null)
     {
-      String str2 = ac.bmD();
-      if ((i.eA(str1)) && (!i.eA(str2)) && (!k.cn(str1, str2)))
+      String str2 = ac.bqo();
+      if ((i.fv(str1)) && (!i.fv(str2)) && (!k.cp(str1, str2)))
       {
-        i.aSh(str2);
-        i.mb(str1, str2);
+        i.aYg(str2);
+        i.mB(str1, str2);
       }
       i.deleteDir(str1);
     }
@@ -61,7 +61,7 @@ public final class ab
     AppMethodBeat.o(50724);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsruntime/V8CodeCacheDirectoryTransfer$Companion;", "", "()V", "PREF_KEY_TRANSFER_FINISHED", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsruntime/V8CodeCacheDirectoryTransfer$Companion;", "", "()V", "PREF_KEY_TRANSFER_FINISHED", "", "TAG", "plugin-appbrand-integration_release"})
   static final class a {}
 }
 

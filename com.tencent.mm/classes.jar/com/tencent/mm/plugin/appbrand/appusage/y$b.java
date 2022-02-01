@@ -8,7 +8,7 @@ final class y$b
 {
   y$b(e parame)
   {
-    super(parame, y.a.hlR, "AppBrandLauncherLayoutItem", y.a.INDEX_CREATE);
+    super(parame, y.a.hEe, "AppBrandLauncherLayoutItem", y.a.INDEX_CREATE);
   }
 }
 

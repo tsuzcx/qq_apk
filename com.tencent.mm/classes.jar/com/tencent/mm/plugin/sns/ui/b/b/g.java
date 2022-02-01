@@ -8,8 +8,8 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
-import com.tencent.mm.plugin.sns.ui.item.i.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.sns.ui.item.k.a;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,10 +17,10 @@ import java.util.Iterator;
 public final class g
   extends a
 {
-  AnimatorSet xhG;
-  private ValueAnimator zaW;
-  private ValueAnimator zaX;
-  i.a zby;
+  private ValueAnimator AsN;
+  private ValueAnimator AsO;
+  k.a Atp;
+  AnimatorSet yvH;
   
   public g(MMActivity paramMMActivity, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
@@ -28,9 +28,9 @@ public final class g
     try
     {
       this.activity = paramMMActivity;
-      this.zby = ((i.a)paramBaseViewHolder);
-      this.zaW = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.zaW.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.Atp = ((k.a)paramBaseViewHolder);
+      this.AsN = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.AsN.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -38,73 +38,73 @@ public final class g
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
           if (f != 0.0F)
           {
-            g.this.zby.yGK.setScaleX(f);
-            g.this.zby.yGK.setScaleY(f);
-            g.this.zby.yGK.setAlpha(f);
+            g.this.Atp.zYc.setScaleX(f);
+            g.this.Atp.zYc.setScaleY(f);
+            g.this.Atp.zYc.setAlpha(f);
           }
           AppMethodBeat.o(99977);
         }
       });
-      this.zaW.setDuration(400L);
-      this.zaW.addListener(new AnimatorListenerAdapter()
+      this.AsN.setDuration(400L);
+      this.AsN.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(99978);
-          if (g.this.zby.fYC)
+          if (g.this.Atp.grY)
           {
-            ac.i("MicroMsg.SphereCardAdBackAnimation", "holder is busy");
-            paramAnonymousAnimator = g.this.xhG.getChildAnimations().iterator();
+            ad.i("MicroMsg.SphereCardAdBackAnimation", "holder is busy");
+            paramAnonymousAnimator = g.this.yvH.getChildAnimations().iterator();
             while (paramAnonymousAnimator.hasNext()) {
               ((Animator)paramAnonymousAnimator.next()).cancel();
             }
             AppMethodBeat.o(99978);
             return;
           }
-          g.this.zby.fYC = true;
-          g.this.zby.rXY.setAlpha(0.0F);
-          g.this.zby.zbW.setAlpha(0.0F);
+          g.this.Atp.grY = true;
+          g.this.Atp.sUS.setAlpha(0.0F);
+          g.this.Atp.AtN.setAlpha(0.0F);
           AppMethodBeat.o(99978);
         }
       });
-      this.zaX = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.zaX.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.AsO = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.AsO.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(99979);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          g.this.zby.rXY.setAlpha(f);
-          g.this.zby.zbW.setAlpha(f);
+          g.this.Atp.sUS.setAlpha(f);
+          g.this.Atp.AtN.setAlpha(f);
           AppMethodBeat.o(99979);
         }
       });
-      this.zaX.setDuration(100L);
-      this.zaX.setStartDelay(300L);
-      this.xhG = new AnimatorSet();
-      this.xhG.playTogether(new Animator[] { this.zaW, this.zaX });
-      this.xhG.addListener(new AnimatorListenerAdapter()
+      this.AsO.setDuration(100L);
+      this.AsO.setStartDelay(300L);
+      this.yvH = new AnimatorSet();
+      this.yvH.playTogether(new Animator[] { this.AsN, this.AsO });
+      this.yvH.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(99981);
-          ac.i("MicroMsg.SphereCardAdBackAnimation", "onAnimation end");
-          g.this.zby.yGK.setScaleX(1.0F);
-          g.this.zby.yGK.setScaleY(1.0F);
-          g.this.zby.yGK.setAlpha(1.0F);
-          g.this.zby.rXY.setAlpha(1.0F);
-          g.this.zby.zbW.setAlpha(1.0F);
-          if (g.this.zaU != null) {
-            g.this.zaU.onAnimationEnd();
+          ad.i("MicroMsg.SphereCardAdBackAnimation", "onAnimation end");
+          g.this.Atp.zYc.setScaleX(1.0F);
+          g.this.Atp.zYc.setScaleY(1.0F);
+          g.this.Atp.zYc.setAlpha(1.0F);
+          g.this.Atp.sUS.setAlpha(1.0F);
+          g.this.Atp.AtN.setAlpha(1.0F);
+          if (g.this.AsL != null) {
+            g.this.AsL.onAnimationEnd();
           }
-          g.this.zby.fYC = false;
+          g.this.Atp.grY = false;
           AppMethodBeat.o(99981);
         }
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(99980);
-          ac.i("MicroMsg.SphereCardAdBackAnimation", "onAnimation start");
+          ad.i("MicroMsg.SphereCardAdBackAnimation", "onAnimation start");
           AppMethodBeat.o(99980);
         }
       });
@@ -113,18 +113,18 @@ public final class g
     }
     catch (Throwable paramMMActivity)
     {
-      ac.e("MicroMsg.SphereCardAdBackAnimation", "init exp=" + paramMMActivity.toString());
+      ad.e("MicroMsg.SphereCardAdBackAnimation", "init exp=" + paramMMActivity.toString());
       AppMethodBeat.o(99982);
     }
   }
   
-  public final void xV(long paramLong)
+  public final void At(long paramLong)
   {
     AppMethodBeat.i(99983);
-    if ((this.xhG != null) && (!this.xhG.isStarted()))
+    if ((this.yvH != null) && (!this.yvH.isStarted()))
     {
-      this.xhG.setStartDelay(paramLong);
-      this.xhG.start();
+      this.yvH.setStartDelay(paramLong);
+      this.yvH.start();
     }
     AppMethodBeat.o(99983);
   }

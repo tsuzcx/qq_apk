@@ -3,6 +3,7 @@ package com.tencent.kinda.framework.widget.base;
 import android.content.Context;
 import android.content.res.Resources;
 import android.widget.EditText;
+import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
 import com.tencent.kinda.gen.KCardTypePickerView;
 import com.tencent.kinda.gen.KCardTypePickerViewOnSelectCallback;
 import com.tencent.kinda.gen.Option;
@@ -31,7 +32,7 @@ public class KindaCardTypePickerView
     this.mEditText.setInputType(0);
     this.mEditText.setFocusable(false);
     this.mEditText.setBackground(null);
-    this.mEditText.setTextSize(16.0F);
+    this.mEditText.setTextSize(0, MMKViewUtil.dpToPx(paramContext, 17.0F));
     this.mEditText.setPadding(0, 0, 0, 0);
     this.mContext = paramContext;
     this.mEditText.setHintTextColor(paramContext.getResources().getColor(2131099732));
@@ -83,7 +84,7 @@ public class KindaCardTypePickerView
         localArrayList.add(((Option)localIterator.next()).mContent);
       }
       this.mOptionPiker = new c(this.mContext, localArrayList);
-      this.mOptionPiker.Jjt = new c.a()
+      this.mOptionPiker.LaQ = new c.a()
       {
         public void onResult(boolean paramAnonymousBoolean, Object paramAnonymousObject1, Object paramAnonymousObject2)
         {
@@ -93,14 +94,14 @@ public class KindaCardTypePickerView
           {
             paramAnonymousObject1 = (String)paramAnonymousObject1;
             KindaCardTypePickerView.this.mEditText.setText(paramAnonymousObject1);
-            KindaCardTypePickerView.access$202(KindaCardTypePickerView.this, KindaCardTypePickerView.this.mOptionPiker.fvY());
-            KindaCardTypePickerView.this.mCallBack.onSelect(KindaCardTypePickerView.this.mOptionPiker.fvY());
+            KindaCardTypePickerView.access$202(KindaCardTypePickerView.this, KindaCardTypePickerView.this.mOptionPiker.fMM());
+            KindaCardTypePickerView.this.mCallBack.onSelect(KindaCardTypePickerView.this.mOptionPiker.fMM());
           }
           AppMethodBeat.o(18887);
         }
       };
       if (this.selected != -1) {
-        this.mOptionPiker.adc(this.selected);
+        this.mOptionPiker.afD(this.selected);
       }
       this.mOptionPiker.show();
     }

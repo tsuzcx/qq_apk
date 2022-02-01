@@ -1,33 +1,33 @@
 package com.tencent.mm.loader.e.c;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.loader.e.b.g;
+import com.tencent.mm.loader.f;
 import com.tencent.mm.loader.h.e;
 
 public final class c
   extends b<Bitmap>
 {
-  private boolean gLt = true;
-  private float gLu;
+  private boolean hfi = true;
+  private float hfj;
   
   public c()
   {
-    this.gLu = 0.1F;
+    this.hfj = 0.1F;
   }
   
   public c(float paramFloat)
   {
-    this.gLu = paramFloat;
+    this.hfj = paramFloat;
   }
   
-  public final e<? extends Bitmap> a(g<?> paramg, com.tencent.mm.loader.f<?, Bitmap> paramf, e<Bitmap> parame)
+  public final e<? extends Bitmap> a(com.tencent.mm.loader.e.b.g<?> paramg, f<?, Bitmap> paramf, e<Bitmap> parame)
   {
     paramg = (Bitmap)parame.value;
     paramf = paramg;
-    if (this.gLt)
+    if (this.hfi)
     {
       paramf = paramg;
-      if (this.gLu == 0.0F)
+      if (this.hfj == 0.0F)
       {
         paramf = paramg;
         if (paramg.getWidth() != paramg.getHeight())
@@ -37,17 +37,17 @@ public final class c
           if (j <= 0) {
             i = Math.max(paramg.getWidth(), paramg.getHeight());
           }
-          paramf = com.tencent.mm.sdk.platformtools.f.b(paramg, i, i, true);
+          paramf = com.tencent.mm.sdk.platformtools.g.b(paramg, i, i, true);
         }
       }
-      paramf = com.tencent.mm.sdk.platformtools.f.a(paramf, false, paramf.getWidth() * this.gLu);
+      paramf = com.tencent.mm.sdk.platformtools.g.a(paramf, false, paramf.getWidth() * this.hfj);
     }
     return new e(paramf);
   }
   
-  public final String vi(String paramString)
+  public final String xZ(String paramString)
   {
-    return String.format("_round_%s_", new Object[] { Integer.valueOf((int)this.gLu) });
+    return String.format("_round_%s_", new Object[] { Integer.valueOf((int)this.hfj) });
   }
 }
 

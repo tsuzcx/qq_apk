@@ -9,7 +9,7 @@ public abstract interface f
   
   public static final class a
   {
-    public static f CMm;
+    public static f Eqm;
   }
 }
 

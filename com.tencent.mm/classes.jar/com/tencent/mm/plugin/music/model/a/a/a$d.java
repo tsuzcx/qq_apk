@@ -7,7 +7,7 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.music.model.e.c;
 import com.tencent.mm.plugin.music.model.e.d;
 import com.tencent.mm.plugin.music.model.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a$d
   implements k<IPCString, IPCString>
@@ -17,12 +17,12 @@ public final class a$d
     AppMethodBeat.i(63072);
     try
     {
-      ac.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getMusicMIMETypeByMusicId Task, musicId:%s", new Object[] { paramIPCString });
+      ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getMusicMIMETypeByMusicId Task, musicId:%s", new Object[] { paramIPCString });
       paramIPCString = paramIPCString.value;
-      paramIPCString = f.diV().anL(paramIPCString);
+      paramIPCString = f.dth().asK(paramIPCString);
       if (paramIPCString == null)
       {
-        ac.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "getMusicMIMETypeByMusicId pMusic is null!'");
+        ad.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "getMusicMIMETypeByMusicId pMusic is null!'");
         paramIPCString = null;
       }
       for (;;)
@@ -30,10 +30,10 @@ public final class a$d
         paramIPCString = new IPCString(paramIPCString);
         AppMethodBeat.o(63072);
         return paramIPCString;
-        ac.i("MicroMsg.Music.MusicDataSourceMainProcessImp", "music field_pieceFileMIMEType:%s", new Object[] { paramIPCString.field_pieceFileMIMEType });
+        ad.i("MicroMsg.Music.MusicDataSourceMainProcessImp", "music field_pieceFileMIMEType:%s", new Object[] { paramIPCString.field_pieceFileMIMEType });
         if (TextUtils.isEmpty(paramIPCString.field_pieceFileMIMEType))
         {
-          ac.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "field_pieceFileMIMEType is null!'");
+          ad.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "field_pieceFileMIMEType is null!'");
           paramIPCString = null;
         }
         else
@@ -45,7 +45,7 @@ public final class a$d
     }
     catch (Exception paramIPCString)
     {
-      ac.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc getMusicMIMETypeByMusicId task", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc getMusicMIMETypeByMusicId task", new Object[0]);
       paramIPCString = new IPCString("");
       AppMethodBeat.o(63072);
     }

@@ -23,15 +23,15 @@ public abstract interface f
   
   public static final class c
   {
-    public final f.b aRH;
-    public final int aRI;
-    public final Object aRJ;
+    public final f.b bcc;
+    public final int bcd;
+    public final Object bce;
     
     public c(f.b paramb, int paramInt, Object paramObject)
     {
-      this.aRH = paramb;
-      this.aRI = paramInt;
-      this.aRJ = paramObject;
+      this.bcc = paramb;
+      this.bcd = paramInt;
+      this.bce = paramObject;
     }
   }
 }

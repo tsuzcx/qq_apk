@@ -1,47 +1,48 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.chf;
-import com.tencent.mm.protocal.protobuf.chg;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.cme;
+import com.tencent.mm.protocal.protobuf.cmf;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class g
   extends n
   implements k
 {
-  private com.tencent.mm.ak.g callback;
-  private b gvE;
-  private chf iOo;
+  private f callback;
+  private b gPp;
+  private cme jhx;
   
   public g(int paramInt, String paramString)
   {
     AppMethodBeat.i(127832);
     b.a locala = new b.a();
-    locala.hvt = new chf();
-    locala.hvu = new chg();
+    locala.hNM = new cme();
+    locala.hNN = new cmf();
     locala.funcId = getType();
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
     locala.uri = "/cgi-bin/micromsg-bin/privacypolicychoise";
-    this.gvE = locala.aAz();
-    this.iOo = ((chf)this.gvE.hvr.hvw);
-    this.iOo.Fvv = paramInt;
-    this.iOo.iKc = paramString;
+    this.gPp = locala.aDC();
+    this.jhx = ((cme)this.gPp.hNK.hNQ);
+    this.jhx.HfA = paramInt;
+    this.jhx.jdl = paramString;
     AppMethodBeat.o(127832);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(127833);
-    this.callback = paramg;
-    int i = dispatch(parame, this.gvE, this);
+    this.callback = paramf;
+    int i = dispatch(parame, this.gPp, this);
     AppMethodBeat.o(127833);
     return i;
   }
@@ -54,7 +55,7 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(127834);
-    ac.i("MicroMsg.NetScenePrivacyPolicyChoice", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ad.i("MicroMsg.NetScenePrivacyPolicyChoice", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

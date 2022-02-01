@@ -2,111 +2,39 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.cvx;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.dbj;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
 {
-  public static void a(cvx paramcvx)
+  public static dbj cqj()
   {
+    AppMethodBeat.i(122153);
+    byte[] arrayOfByte = b.getBytes("mkv_k_hellsionpgcldc");
+    if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
+    {
+      ad.e("HABBYGE-MALI.HellSessionPageCloudConfigDao", "HellSessionPageCloudConfigDao read(): NULL");
+      AppMethodBeat.o(122153);
+      return null;
+    }
+    dbj localdbj = new dbj();
     try
     {
-      AppMethodBeat.i(122152);
-      try
-      {
-        b.o("mkv_k_hellsionpgcldc", paramcvx.toByteArray());
-        AppMethodBeat.o(122152);
-      }
-      catch (Exception paramcvx)
-      {
-        for (;;)
-        {
-          ac.printErrStackTrace("HellSessionPageCloudConfigDao", paramcvx, "habbyge-mali, HellSessionPageCloudConfigDao writeBack", new Object[0]);
-          AppMethodBeat.o(122152);
-        }
-      }
-      return;
+      localdbj.parseFrom(arrayOfByte);
+      AppMethodBeat.o(122153);
+      return localdbj;
     }
-    finally {}
-  }
-  
-  /* Error */
-  public static cvx ckV()
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc 47
-    //   5: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: ldc 17
-    //   10: invokestatic 51	com/tencent/mm/plugin/expt/hellhound/core/a/b:getBytes	(Ljava/lang/String;)[B
-    //   13: astore_1
-    //   14: aload_1
-    //   15: ifnull +8 -> 23
-    //   18: aload_1
-    //   19: arraylength
-    //   20: ifgt +22 -> 42
-    //   23: ldc 33
-    //   25: ldc 53
-    //   27: invokestatic 57	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   30: ldc 47
-    //   32: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   35: aconst_null
-    //   36: astore_0
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: aload_0
-    //   41: areturn
-    //   42: new 19	com/tencent/mm/protocal/protobuf/cvx
-    //   45: dup
-    //   46: invokespecial 61	com/tencent/mm/protocal/protobuf/cvx:<init>	()V
-    //   49: astore_0
-    //   50: aload_0
-    //   51: aload_1
-    //   52: invokevirtual 65	com/tencent/mm/protocal/protobuf/cvx:parseFrom	([B)Lcom/tencent/mm/bw/a;
-    //   55: pop
-    //   56: ldc 47
-    //   58: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   61: goto -24 -> 37
-    //   64: astore_0
-    //   65: ldc 2
-    //   67: monitorexit
-    //   68: aload_0
-    //   69: athrow
-    //   70: astore_0
-    //   71: ldc 33
-    //   73: aload_0
-    //   74: ldc 67
-    //   76: iconst_0
-    //   77: anewarray 4	java/lang/Object
-    //   80: invokestatic 41	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   83: ldc 47
-    //   85: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   88: aconst_null
-    //   89: astore_0
-    //   90: goto -53 -> 37
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   36	15	0	localcvx	cvx
-    //   64	5	0	localObject1	Object
-    //   70	4	0	localIOException	java.io.IOException
-    //   89	1	0	localObject2	Object
-    //   13	39	1	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   3	14	64	finally
-    //   18	23	64	finally
-    //   23	35	64	finally
-    //   42	50	64	finally
-    //   50	56	64	finally
-    //   56	61	64	finally
-    //   71	88	64	finally
-    //   50	56	70	java/io/IOException
+    catch (Exception localException)
+    {
+      ad.printErrStackTrace("HABBYGE-MALI.HellSessionPageCloudConfigDao", localException, "HellSessionPageCloudConfigDao read", new Object[0]);
+      AppMethodBeat.o(122153);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.e
  * JD-Core Version:    0.7.0.1
  */

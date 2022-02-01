@@ -5,16 +5,16 @@ import com.tencent.mm.vending.e.c;
 
 public final class a
 {
-  public c<com.tencent.mm.vending.e.a> Jph;
-  public c<com.tencent.mm.vending.e.a> Jpi;
-  public c<com.tencent.mm.vending.e.a> Jpj;
+  public c<com.tencent.mm.vending.e.a> LgM;
+  public c<com.tencent.mm.vending.e.a> LgN;
+  public c<com.tencent.mm.vending.e.a> LgO;
   
   public a()
   {
     AppMethodBeat.i(74934);
-    this.Jph = new c();
-    this.Jpi = new c();
-    this.Jpj = new c();
+    this.LgM = new c();
+    this.LgN = new c();
+    this.LgO = new c();
     AppMethodBeat.o(74934);
   }
 }

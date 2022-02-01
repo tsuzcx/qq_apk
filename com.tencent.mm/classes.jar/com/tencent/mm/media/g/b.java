@@ -1,62 +1,89 @@
 package com.tencent.mm.media.g;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.l;
-import java.util.Iterator;
-import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/mix/EditorFrameDrawer;", "", "editorItems", "", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "(Ljava/util/List;)V", "currFrameTime", "", "drawFrame", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/globject/GLLeakIDKeyReport;", "", "()V", "FBO_STEP", "", "ID", "", "KEY_ABSSURFACERENDERER", "KEY_FADEDRAWER", "KEY_GLTEXTURERENDERPROC", "KEY_GLTEXTURERENDERPROCBLEND", "KEY_GLTEXTURERENDERPROCYUVTORGB", "KEY_IMAGEDRAWER", "KEY_LIVE", "KEY_MULTITALK", "KEY_MULTI_VIDEO", "KEY_OTHER", "KEY_SCRIPTRENDER", "KEY_STICKERPREVIEWRENDER", "KEY_VLOGREMUXSURFACE", "KEY_VLogScriptTexCache", "KEY_VOIP", "KEY_XEFFECT_RENDERER", "KEY_XLABEFFECT", "NOT_DEFINED", "TAG", "", "markGLFBOCreated", "", "markGLFBOLeaked", "markGLFBOLeakedInErrorTid", "markGLFBOLeakedScene", "key", "markGLTextureCreated", "markGLTextureLeaked", "markGLTextureLeakedInErrorTid", "markGLTextureLeakedScene", "plugin-mediaeditor_release"})
 public final class b
 {
-  private long gPk;
-  private final List<com.tencent.mm.media.editor.a.b> gSw;
+  public static final b hkk;
   
-  public b(List<com.tencent.mm.media.editor.a.b> paramList)
+  static
   {
-    AppMethodBeat.i(93718);
-    this.gSw = paramList;
-    AppMethodBeat.o(93718);
+    AppMethodBeat.i(93693);
+    hkk = new b();
+    AppMethodBeat.o(93693);
   }
   
-  public final long a(Canvas paramCanvas, Paint paramPaint)
+  public static void atD()
   {
-    AppMethodBeat.i(93717);
-    k.h(paramCanvas, "canvas");
-    k.h(paramPaint, "paint");
-    if (this.gSw.size() <= 0)
-    {
-      AppMethodBeat.o(93717);
-      return 0L;
-    }
-    Iterator localIterator = this.gSw.iterator();
-    long l1 = 9223372036854775807L;
-    if (localIterator.hasNext())
-    {
-      com.tencent.mm.media.editor.a.b localb = (com.tencent.mm.media.editor.a.b)localIterator.next();
-      long l2 = localb.pn(this.gPk);
-      localb.draw(paramCanvas, paramPaint);
-      if (l2 >= l1) {
-        break label121;
-      }
-      l1 = l2;
-    }
-    label121:
-    for (;;)
-    {
-      break;
-      this.gPk = l1;
-      l1 = this.gPk;
-      AppMethodBeat.o(93717);
-      return l1;
-    }
+    AppMethodBeat.i(93685);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureCreated");
+    g.yhR.n(1184L, 0L, 1L);
+    AppMethodBeat.o(93685);
+  }
+  
+  public static void atE()
+  {
+    AppMethodBeat.i(93686);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureLeaked");
+    g.yhR.n(1184L, 1L, 1L);
+    AppMethodBeat.o(93686);
+  }
+  
+  public static void atF()
+  {
+    AppMethodBeat.i(93688);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOCreated");
+    g.yhR.n(1184L, 100L, 1L);
+    AppMethodBeat.o(93688);
+  }
+  
+  public static void atG()
+  {
+    AppMethodBeat.i(93689);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOLeaked");
+    g.yhR.n(1184L, 101L, 1L);
+    AppMethodBeat.o(93689);
+  }
+  
+  public static void atH()
+  {
+    AppMethodBeat.i(93691);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureLeakedInErrorTid");
+    g.yhR.n(1184L, 200L, 1L);
+    AppMethodBeat.o(93691);
+  }
+  
+  public static void atI()
+  {
+    AppMethodBeat.i(93692);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOLeakedInErrorTid");
+    g.yhR.n(1184L, 201L, 1L);
+    AppMethodBeat.o(93692);
+  }
+  
+  public static void ro(long paramLong)
+  {
+    AppMethodBeat.i(93687);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureLeakedScene key:".concat(String.valueOf(paramLong)));
+    g.yhR.n(1184L, paramLong, 1L);
+    AppMethodBeat.o(93687);
+  }
+  
+  public static void rp(long paramLong)
+  {
+    AppMethodBeat.i(93690);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOLeakedScene key:".concat(String.valueOf(paramLong)));
+    g.yhR.n(1184L, 100L + paramLong, 1L);
+    AppMethodBeat.o(93690);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.media.g.b
  * JD-Core Version:    0.7.0.1
  */

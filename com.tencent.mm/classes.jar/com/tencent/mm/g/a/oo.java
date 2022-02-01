@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class oo
   extends b
 {
-  public a dqW;
+  public a dCw;
+  public b dCx;
   
   public oo()
   {
@@ -15,16 +17,27 @@ public final class oo
   
   private oo(byte paramByte)
   {
-    AppMethodBeat.i(149878);
-    this.dqW = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(91210);
+    this.dCw = new a();
+    this.dCx = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(149878);
+    AppMethodBeat.o(91210);
   }
   
   public static final class a
   {
-    public byte[] content;
+    public int channel;
+    public Context context;
+    public int scene;
+    public String source;
+    public int sourceType = 0;
+    public String url;
+  }
+  
+  public static final class b
+  {
+    public int ret = 0;
   }
 }
 

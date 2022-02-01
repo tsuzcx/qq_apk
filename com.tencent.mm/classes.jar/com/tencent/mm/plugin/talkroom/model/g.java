@@ -8,96 +8,89 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.ah;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.ai;
 import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.talkroom.component.TalkRoomService;
 import com.tencent.mm.plugin.talkroom.component.a.a;
 import com.tencent.mm.plugin.talkroom.component.b.a;
 import com.tencent.mm.plugin.talkroom.component.c.a;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.protocal.protobuf.dgq;
-import com.tencent.mm.protocal.protobuf.dgr;
-import com.tencent.mm.protocal.protobuf.dgs;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.ag.a;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bc;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.protocal.protobuf.dmd;
+import com.tencent.mm.protocal.protobuf.dme;
+import com.tencent.mm.protocal.protobuf.dmf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ah.a;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bq;
 import java.net.InetAddress;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class g
-  implements com.tencent.mm.ak.g, com.tencent.mm.bh.a, com.tencent.mm.bh.c, com.tencent.mm.model.ai
+  implements com.tencent.mm.al.f, com.tencent.mm.bi.a, com.tencent.mm.bi.c, com.tencent.mm.model.aj
 {
-  public static final int[] zWN = { 80, 8080, 16285 };
-  public static final byte[][] zWO;
-  private final ServiceConnection onI;
+  public static final int[] Bor = { 80, 8080, 16285 };
+  public static final byte[][] Bos = { { 101, -30, 76, 27 }, { 112, 64, -19, -29 }, { 120, -52, -55, -58 } };
+  private int Boc;
+  private int Bod;
+  private boolean Boe;
+  public String Bof;
+  private int Bog;
+  private int Boh;
+  private int Boi;
+  private LinkedList<dmd> Boj;
+  private com.tencent.mm.plugin.talkroom.component.a Bok;
+  private com.tencent.mm.plugin.talkroom.component.b Bol;
+  private com.tencent.mm.plugin.talkroom.component.e Bom;
+  private com.tencent.mm.plugin.talkroom.component.d Bon;
+  private ah Boo;
+  private av Bop;
+  private i Boq;
+  public boolean Bot;
+  private final ServiceConnection oRd;
   private int roomId;
   private int state;
-  private long tIG;
-  private boolean zWA;
-  public String zWB;
-  private int zWC;
-  private int zWD;
-  private int zWE;
-  private LinkedList<dgq> zWF;
-  private com.tencent.mm.plugin.talkroom.component.a zWG;
-  private com.tencent.mm.plugin.talkroom.component.b zWH;
-  private com.tencent.mm.plugin.talkroom.component.e zWI;
-  private com.tencent.mm.plugin.talkroom.component.d zWJ;
-  private ag zWK;
-  private au zWL;
-  private i zWM;
-  public boolean zWP;
-  private int zWy;
-  private int zWz;
-  
-  static
-  {
-    byte[] arrayOfByte1 = { 101, -30, 76, 27 };
-    byte[] arrayOfByte2 = { 120, -52, -55, -58 };
-    zWO = new byte[][] { arrayOfByte1, { 112, 64, -19, -29 }, arrayOfByte2 };
-  }
+  private long uLt;
   
   public g()
   {
     AppMethodBeat.i(29493);
-    this.zWy = 0;
-    this.zWz = 0;
+    this.Boc = 0;
+    this.Bod = 0;
     this.state = 0;
-    this.zWA = false;
-    this.zWF = new LinkedList();
-    this.zWM = new i();
-    this.onI = new ServiceConnection()
+    this.Boe = false;
+    this.Boj = new LinkedList();
+    this.Boq = new i();
+    this.oRd = new ServiceConnection()
     {
       public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
       {
         AppMethodBeat.i(29483);
-        ac.i("MicroMsg.TalkRoomServer", "onServiceConnected ");
+        ad.i("MicroMsg.TalkRoomServer", "onServiceConnected ");
         if (paramAnonymousIBinder == null)
         {
-          g.a(g.this).q("enterTalkRoom bindServie or protocalInit failed", 3, -1);
+          g.a(g.this).s("enterTalkRoom bindServie or protocalInit failed", 3, -1);
           AppMethodBeat.o(29483);
           return;
         }
         g.a(g.this, a.a.C(paramAnonymousIBinder));
         if (g.b(g.this) >= 2) {
-          new ao(Looper.getMainLooper()).post(new Runnable()
+          new ap(Looper.getMainLooper()).post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(29482);
-              g.this.sb(true);
+              g.this.sH(true);
               AppMethodBeat.o(29482);
             }
           });
@@ -108,39 +101,39 @@ public final class g
       public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
       {
         AppMethodBeat.i(29484);
-        ac.i("MicroMsg.TalkRoomServer", "onServiceDisconnected ");
+        ad.i("MicroMsg.TalkRoomServer", "onServiceDisconnected ");
         AppMethodBeat.o(29484);
       }
     };
-    this.zWP = false;
+    this.Bot = false;
     TalkRoomReceiver.init();
     AppMethodBeat.o(29493);
   }
   
-  private void Rd(final int paramInt)
+  private void SN(final int paramInt)
   {
     AppMethodBeat.i(29510);
-    if (this.zWG != null) {
+    if (this.Bok != null) {
       try
       {
-        ebD();
+        enU();
         AppMethodBeat.o(29510);
         return;
       }
       catch (RemoteException localRemoteException)
       {
-        ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
         AppMethodBeat.o(29510);
         return;
       }
     }
     if (paramInt == 0)
     {
-      this.zWM.q("bind talkroomService timeout", 3, -1);
+      this.Boq.s("bind talkroomService timeout", 3, -1);
       AppMethodBeat.o(29510);
       return;
     }
-    new ao().postDelayed(new Runnable()
+    new ap().postDelayed(new Runnable()
     {
       public final void run()
       {
@@ -152,21 +145,21 @@ public final class g
     AppMethodBeat.o(29510);
   }
   
-  private void Re(int paramInt)
+  private void SO(int paramInt)
   {
     AppMethodBeat.i(29513);
-    if (paramInt > this.zWC)
+    if (paramInt > this.Bog)
     {
-      this.zWC = paramInt;
+      this.Bog = paramInt;
       if (this.state >= 3) {
-        this.zWM.pF(311);
+        this.Boq.qh(311);
       }
-      ebC();
+      enT();
     }
     AppMethodBeat.o(29513);
   }
   
-  private static String Rf(int paramInt)
+  private static String SP(int paramInt)
   {
     AppMethodBeat.i(29516);
     try
@@ -177,7 +170,7 @@ public final class g
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.TalkRoomServer", localException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.TalkRoomServer", localException, "", new Object[0]);
       AppMethodBeat.o(29516);
     }
     return null;
@@ -186,12 +179,12 @@ public final class g
   private int a(PByteArray paramPByteArray, String paramString)
   {
     AppMethodBeat.i(29520);
-    if (this.zWG != null)
+    if (this.Bok != null)
     {
       int[] arrayOfInt = new int[1];
       try
       {
-        paramPByteArray.value = this.zWG.d(arrayOfInt, paramString);
+        paramPByteArray.value = this.Bok.d(arrayOfInt, paramString);
         int i = arrayOfInt[0];
         AppMethodBeat.o(29520);
         return i;
@@ -201,7 +194,7 @@ public final class g
         for (;;)
         {
           arrayOfInt[0] = -99999;
-          ac.printErrStackTrace("MicroMsg.TalkRoomServer", paramPByteArray, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.TalkRoomServer", paramPByteArray, "", new Object[0]);
         }
       }
     }
@@ -209,290 +202,48 @@ public final class g
     return -99;
   }
   
-  private void ebB()
-  {
-    AppMethodBeat.i(29503);
-    if (this.zWI != null) {}
-    try
-    {
-      this.zWI.release();
-      this.zWI = null;
-      if (this.zWJ == null) {}
-    }
-    catch (RemoteException localRemoteException1)
-    {
-      try
-      {
-        this.zWJ.release();
-        this.zWJ = null;
-        if (this.zWK != null)
-        {
-          this.zWK.stopTimer();
-          this.zWK = null;
-        }
-        if (this.zWL != null)
-        {
-          this.zWL.stopTimer();
-          this.zWL = null;
-        }
-        AppMethodBeat.o(29503);
-        return;
-        localRemoteException1 = localRemoteException1;
-        ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException1, "", new Object[0]);
-      }
-      catch (RemoteException localRemoteException2)
-      {
-        for (;;)
-        {
-          ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException2, "", new Object[0]);
-        }
-      }
-    }
-  }
-  
-  private void ebC()
-  {
-    AppMethodBeat.i(29508);
-    try
-    {
-      b.ebp().ebw();
-      if (this.zWJ != null) {
-        this.zWJ.ebj();
-      }
-      if (this.zWI != null) {
-        this.zWI.dOc();
-      }
-      this.state = 2;
-      AppMethodBeat.o(29508);
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
-      AppMethodBeat.o(29508);
-    }
-  }
-  
-  private void ebD()
-  {
-    AppMethodBeat.i(29511);
-    this.state = 1;
-    this.zWA = false;
-    if (!ebE())
-    {
-      AppMethodBeat.o(29511);
-      return;
-    }
-    ebB();
-    ebG();
-    ebF();
-    if (this.zWK != null)
-    {
-      ac.w("MicroMsg.TalkRoomServer", "enter talkroom not first time");
-      AppMethodBeat.o(29511);
-      return;
-    }
-    this.zWK = new ag(new ag.a()
-    {
-      public final boolean onTimerExpired()
-      {
-        AppMethodBeat.i(29491);
-        if ((g.e(g.this) == 0) || (bs.isNullOrNil(g.g(g.this))))
-        {
-          ac.w("MicroMsg.TalkRoomServer", "talkNoopTimer error: roomId %d, talkUsername %s", new Object[] { Integer.valueOf(g.e(g.this)), g.g(g.this) });
-          g.h(g.this);
-          AppMethodBeat.o(29491);
-          return false;
-        }
-        Object localObject = g.g(g.this);
-        int i = g.e(g.this);
-        long l = g.f(g.this);
-        g localg = g.this;
-        g.g(g.this);
-        localObject = new com.tencent.mm.plugin.talkroom.b.e((String)localObject, i, l, localg.ebx());
-        com.tencent.mm.model.az.agi().a((n)localObject, 0);
-        AppMethodBeat.o(29491);
-        return true;
-      }
-    });
-    this.zWK.eUT();
-    AppMethodBeat.o(29511);
-  }
-  
-  private boolean ebE()
-  {
-    AppMethodBeat.i(29512);
-    int i = -99999;
-    try
-    {
-      int j = this.zWG.ebh();
-      i = j;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
-      }
-      AppMethodBeat.o(29512);
-    }
-    ac.i("MicroMsg.TalkRoomServer", "engine.protocalInit");
-    if ((i < 0) && (i != -3))
-    {
-      this.zWG = null;
-      ac.f("MicroMsg.TalkRoomServer", "engine.protocalInit error %d", new Object[] { Integer.valueOf(i) });
-      this.zWM.q("enterTalkRoom protocalInit failed", 3, -1);
-      AppMethodBeat.o(29512);
-      return false;
-    }
-    return true;
-  }
-  
-  private void ebF()
-  {
-    AppMethodBeat.i(29515);
-    if (this.zWG == null)
-    {
-      ac.e("MicroMsg.TalkRoomServer", "the engine should not be null.");
-      AppMethodBeat.o(29515);
-      return;
-    }
-    this.zWI = this.zWG.a(new c.a()
-    {
-      public final void z(int paramAnonymousInt1, int paramAnonymousInt2, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(29492);
-        if (paramAnonymousBoolean)
-        {
-          g.b(g.this, 0);
-          g.a(g.this).DD("");
-          AppMethodBeat.o(29492);
-          return;
-        }
-        g.c(g.this, paramAnonymousInt2);
-        if (g.i(g.this) == paramAnonymousInt1)
-        {
-          AppMethodBeat.o(29492);
-          return;
-        }
-        g.b(g.this, paramAnonymousInt1);
-        String str = g.this.eby();
-        if ((!g.j(g.this)) && (str == null))
-        {
-          g.k(g.this);
-          paramAnonymousInt1 = g.e(g.this);
-          long l = g.f(g.this);
-          Object localObject = g.g(g.this);
-          g localg = g.this;
-          g.g(g.this);
-          localObject = new com.tencent.mm.plugin.talkroom.b.c(paramAnonymousInt1, l, (String)localObject, localg.ebx());
-          com.tencent.mm.model.az.agi().a((n)localObject, 0);
-          localObject = b.ebp();
-          ((f)localObject).zWd += 1;
-          localObject = b.ebp();
-          ((f)localObject).zWe += 1;
-        }
-        g.a(g.this).DD(str);
-        bc.aF(com.tencent.mm.sdk.platformtools.ai.getContext(), 2131764376);
-        AppMethodBeat.o(29492);
-      }
-    });
-    this.zWI.start();
-    this.zWJ = this.zWG.ebi();
-    this.zWJ.start();
-    AppMethodBeat.o(29515);
-  }
-  
-  private void ebG()
-  {
-    AppMethodBeat.i(29517);
-    if (this.zWF.size() == 0)
-    {
-      ac.e("MicroMsg.TalkRoomServer", "engine. talk relay addr list is empty");
-      this.zWM.j(3, -1, "engine.talk relay addr list empty");
-      AppMethodBeat.o(29517);
-      return;
-    }
-    int[] arrayOfInt1 = new int[this.zWF.size()];
-    int[] arrayOfInt2 = new int[this.zWF.size()];
-    String[] arrayOfString = new String[this.zWF.size()];
-    ac.i("MicroMsg.TalkRoomServer", "talk relay addr cnt %d", new Object[] { Integer.valueOf(this.zWF.size()) });
-    int i = 0;
-    while (i < this.zWF.size())
-    {
-      arrayOfInt1[i] = ((dgq)this.zWF.get(i)).FPR;
-      arrayOfInt2[i] = ((dgq)this.zWF.get(i)).FvP;
-      arrayOfString[i] = ((dgq)this.zWF.get(i)).FPS;
-      ac.i("MicroMsg.TalkRoomServer", "add talk relay addr [%s][%s][%d]", new Object[] { Rf(((dgq)this.zWF.get(i)).FPR), ((dgq)this.zWF.get(i)).FPS, Integer.valueOf(((dgq)this.zWF.get(i)).FvP) });
-      i += 1;
-    }
-    ac.i("MicroMsg.TalkRoomServer", "engine.Open myRoomMemId %d, roomId %d, roomKey %d", new Object[] { Integer.valueOf(this.zWD), Integer.valueOf(this.roomId), Long.valueOf(this.tIG) });
-    try
-    {
-      com.tencent.mm.plugin.talkroom.component.a locala = this.zWG;
-      com.tencent.mm.plugin.talkroom.component.b localb = this.zWH;
-      com.tencent.mm.model.az.ayM();
-      i = locala.a(localb, com.tencent.mm.model.c.getUin(), this.zWD, this.roomId, this.tIG, arrayOfInt1, arrayOfInt2, 0, arrayOfString);
-      if ((i < 0) && (i != -3))
-      {
-        ac.e("MicroMsg.TalkRoomServer", "engine.Open error %d", new Object[] { Integer.valueOf(i) });
-        this.zWM.j(3, i, "engine.Open error");
-      }
-      AppMethodBeat.o(29517);
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
-        i = -99999;
-      }
-    }
-  }
-  
-  private boolean ebz()
+  private boolean enQ()
   {
     AppMethodBeat.i(29499);
-    if (ebx() == 1) {
-      b(b.ebl().zVH);
+    if (enO() == 1) {
+      b(b.enC().Bnl);
     }
-    while (this.zWz > 0)
+    while (this.Bod > 0)
     {
-      ac.i("MicroMsg.TalkRoomServer", "addListener has init before");
+      ad.i("MicroMsg.TalkRoomServer", "addListener has init before");
       AppMethodBeat.o(29499);
       return true;
-      a(b.ebl().zVH);
+      a(b.enC().Bnl);
     }
-    com.tencent.mm.model.az.agi().a(332, this);
-    com.tencent.mm.model.az.agi().a(334, this);
-    com.tencent.mm.model.az.agi().a(336, this);
-    com.tencent.mm.model.az.agi().a(335, this);
-    b.ebn().a(this);
-    com.tencent.mm.model.az.Lt().a(this);
-    this.zWz = 1;
-    if (this.zWG != null) {}
+    com.tencent.mm.model.ba.aiU().a(332, this);
+    com.tencent.mm.model.ba.aiU().a(334, this);
+    com.tencent.mm.model.ba.aiU().a(336, this);
+    com.tencent.mm.model.ba.aiU().a(335, this);
+    b.enE().a(this);
+    com.tencent.mm.model.ba.Nb().a(this);
+    this.Bod = 1;
+    if (this.Bok != null) {}
     try
     {
-      this.zWG.Close();
-      this.zWG.uninitLive();
-      Intent localIntent = new Intent(com.tencent.mm.sdk.platformtools.ai.getContext(), TalkRoomService.class);
-      com.tencent.mm.sdk.platformtools.ai.getContext().bindService(localIntent, this.onI, 1);
-      this.zWH = new b.a()
+      this.Bok.Close();
+      this.Bok.uninitLive();
+      Intent localIntent = new Intent(com.tencent.mm.sdk.platformtools.aj.getContext(), TalkRoomService.class);
+      com.tencent.mm.sdk.platformtools.aj.getContext().bindService(localIntent, this.oRd, 1);
+      this.Bol = new b.a()
       {
         public final void keep_OnError(int paramAnonymousInt)
         {
           AppMethodBeat.i(29488);
-          ac.e("MicroMsg.TalkRoomServer", "engineCallback OnError: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          b.ebp().ebu();
-          b.ebp().zVV = 1;
-          g.a(g.this).q("component OnError ".concat(String.valueOf(paramAnonymousInt)), 99, paramAnonymousInt);
-          new ao(Looper.getMainLooper()).post(new Runnable()
+          ad.e("MicroMsg.TalkRoomServer", "engineCallback OnError: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          b.enG().enL();
+          b.enG().Bnz = 1;
+          g.a(g.this).s("component OnError ".concat(String.valueOf(paramAnonymousInt)), 99, paramAnonymousInt);
+          new ap(Looper.getMainLooper()).post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(29486);
-              g.this.ebA();
+              g.this.enR();
               AppMethodBeat.o(29486);
             }
           });
@@ -502,15 +253,15 @@ public final class g
         public final void keep_OnOpenSuccess()
         {
           AppMethodBeat.i(29487);
-          ac.i("MicroMsg.TalkRoomServer", "OnOpenSuccess");
+          ad.i("MicroMsg.TalkRoomServer", "OnOpenSuccess");
           if (g.b(g.this) != 1)
           {
-            ac.w("MicroMsg.TalkRoomServer", "has exit the talkroom state:%d", new Object[] { Integer.valueOf(g.b(g.this)) });
+            ad.w("MicroMsg.TalkRoomServer", "has exit the talkroom state:%d", new Object[] { Integer.valueOf(g.b(g.this)) });
             AppMethodBeat.o(29487);
             return;
           }
-          b.ebp().ebu();
-          new ao(Looper.getMainLooper()).post(new Runnable()
+          b.enG().enL();
+          new ap(Looper.getMainLooper()).post(new Runnable()
           {
             public final void run()
             {
@@ -520,7 +271,7 @@ public final class g
             }
           });
           g.d(g.this);
-          g.a(g.this).aIR();
+          g.a(g.this).aMb();
           AppMethodBeat.o(29487);
         }
       };
@@ -531,7 +282,249 @@ public final class g
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+      }
+    }
+  }
+  
+  private void enS()
+  {
+    AppMethodBeat.i(29503);
+    if (this.Bom != null) {}
+    try
+    {
+      this.Bom.release();
+      this.Bom = null;
+      if (this.Bon == null) {}
+    }
+    catch (RemoteException localRemoteException1)
+    {
+      try
+      {
+        this.Bon.release();
+        this.Bon = null;
+        if (this.Boo != null)
+        {
+          this.Boo.stopTimer();
+          this.Boo = null;
+        }
+        if (this.Bop != null)
+        {
+          this.Bop.stopTimer();
+          this.Bop = null;
+        }
+        AppMethodBeat.o(29503);
+        return;
+        localRemoteException1 = localRemoteException1;
+        ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException1, "", new Object[0]);
+      }
+      catch (RemoteException localRemoteException2)
+      {
+        for (;;)
+        {
+          ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException2, "", new Object[0]);
+        }
+      }
+    }
+  }
+  
+  private void enT()
+  {
+    AppMethodBeat.i(29508);
+    try
+    {
+      b.enG().enN();
+      if (this.Bon != null) {
+        this.Bon.enA();
+      }
+      if (this.Bom != null) {
+        this.Bom.eaq();
+      }
+      this.state = 2;
+      AppMethodBeat.o(29508);
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+      AppMethodBeat.o(29508);
+    }
+  }
+  
+  private void enU()
+  {
+    AppMethodBeat.i(29511);
+    this.state = 1;
+    this.Boe = false;
+    if (!enV())
+    {
+      AppMethodBeat.o(29511);
+      return;
+    }
+    enS();
+    enX();
+    enW();
+    if (this.Boo != null)
+    {
+      ad.w("MicroMsg.TalkRoomServer", "enter talkroom not first time");
+      AppMethodBeat.o(29511);
+      return;
+    }
+    this.Boo = new ah(new ah.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(29491);
+        if ((g.e(g.this) == 0) || (bt.isNullOrNil(g.g(g.this))))
+        {
+          ad.w("MicroMsg.TalkRoomServer", "talkNoopTimer error: roomId %d, talkUsername %s", new Object[] { Integer.valueOf(g.e(g.this)), g.g(g.this) });
+          g.h(g.this);
+          AppMethodBeat.o(29491);
+          return false;
+        }
+        Object localObject = g.g(g.this);
+        int i = g.e(g.this);
+        long l = g.f(g.this);
+        g localg = g.this;
+        g.g(g.this);
+        localObject = new com.tencent.mm.plugin.talkroom.b.e((String)localObject, i, l, localg.enO());
+        com.tencent.mm.model.ba.aiU().a((n)localObject, 0);
+        AppMethodBeat.o(29491);
+        return true;
+      }
+    });
+    this.Boo.fky();
+    AppMethodBeat.o(29511);
+  }
+  
+  private boolean enV()
+  {
+    AppMethodBeat.i(29512);
+    int i = -99999;
+    try
+    {
+      int j = this.Bok.eny();
+      i = j;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+      }
+      AppMethodBeat.o(29512);
+    }
+    ad.i("MicroMsg.TalkRoomServer", "engine.protocalInit");
+    if ((i < 0) && (i != -3))
+    {
+      this.Bok = null;
+      ad.f("MicroMsg.TalkRoomServer", "engine.protocalInit error %d", new Object[] { Integer.valueOf(i) });
+      this.Boq.s("enterTalkRoom protocalInit failed", 3, -1);
+      AppMethodBeat.o(29512);
+      return false;
+    }
+    return true;
+  }
+  
+  private void enW()
+  {
+    AppMethodBeat.i(29515);
+    if (this.Bok == null)
+    {
+      ad.e("MicroMsg.TalkRoomServer", "the engine should not be null.");
+      AppMethodBeat.o(29515);
+      return;
+    }
+    this.Bom = this.Bok.a(new c.a()
+    {
+      public final void z(int paramAnonymousInt1, int paramAnonymousInt2, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(29492);
+        if (paramAnonymousBoolean)
+        {
+          g.b(g.this, 0);
+          g.a(g.this).GI("");
+          AppMethodBeat.o(29492);
+          return;
+        }
+        g.c(g.this, paramAnonymousInt2);
+        if (g.i(g.this) == paramAnonymousInt1)
+        {
+          AppMethodBeat.o(29492);
+          return;
+        }
+        g.b(g.this, paramAnonymousInt1);
+        String str = g.this.enP();
+        if ((!g.j(g.this)) && (str == null))
+        {
+          g.k(g.this);
+          paramAnonymousInt1 = g.e(g.this);
+          long l = g.f(g.this);
+          Object localObject = g.g(g.this);
+          g localg = g.this;
+          g.g(g.this);
+          localObject = new com.tencent.mm.plugin.talkroom.b.c(paramAnonymousInt1, l, (String)localObject, localg.enO());
+          com.tencent.mm.model.ba.aiU().a((n)localObject, 0);
+          localObject = b.enG();
+          ((f)localObject).BnH += 1;
+          localObject = b.enG();
+          ((f)localObject).BnI += 1;
+        }
+        g.a(g.this).GI(str);
+        bd.aI(com.tencent.mm.sdk.platformtools.aj.getContext(), 2131764376);
+        AppMethodBeat.o(29492);
+      }
+    });
+    this.Bom.start();
+    this.Bon = this.Bok.enz();
+    this.Bon.start();
+    AppMethodBeat.o(29515);
+  }
+  
+  private void enX()
+  {
+    AppMethodBeat.i(29517);
+    if (this.Boj.size() == 0)
+    {
+      ad.e("MicroMsg.TalkRoomServer", "engine. talk relay addr list is empty");
+      this.Boq.j(3, -1, "engine.talk relay addr list empty");
+      AppMethodBeat.o(29517);
+      return;
+    }
+    int[] arrayOfInt1 = new int[this.Boj.size()];
+    int[] arrayOfInt2 = new int[this.Boj.size()];
+    String[] arrayOfString = new String[this.Boj.size()];
+    ad.i("MicroMsg.TalkRoomServer", "talk relay addr cnt %d", new Object[] { Integer.valueOf(this.Boj.size()) });
+    int i = 0;
+    while (i < this.Boj.size())
+    {
+      arrayOfInt1[i] = ((dmd)this.Boj.get(i)).HAw;
+      arrayOfInt2[i] = ((dmd)this.Boj.get(i)).HfV;
+      arrayOfString[i] = ((dmd)this.Boj.get(i)).HAx;
+      ad.i("MicroMsg.TalkRoomServer", "add talk relay addr [%s][%s][%d]", new Object[] { SP(((dmd)this.Boj.get(i)).HAw), ((dmd)this.Boj.get(i)).HAx, Integer.valueOf(((dmd)this.Boj.get(i)).HfV) });
+      i += 1;
+    }
+    ad.i("MicroMsg.TalkRoomServer", "engine.Open myRoomMemId %d, roomId %d, roomKey %d", new Object[] { Integer.valueOf(this.Boh), Integer.valueOf(this.roomId), Long.valueOf(this.uLt) });
+    try
+    {
+      com.tencent.mm.plugin.talkroom.component.a locala = this.Bok;
+      com.tencent.mm.plugin.talkroom.component.b localb = this.Bol;
+      com.tencent.mm.model.ba.aBQ();
+      i = locala.a(localb, com.tencent.mm.model.c.getUin(), this.Boh, this.roomId, this.uLt, arrayOfInt1, arrayOfInt2, 0, arrayOfString);
+      if ((i < 0) && (i != -3))
+      {
+        ad.e("MicroMsg.TalkRoomServer", "engine.Open error %d", new Object[] { Integer.valueOf(i) });
+        this.Boq.j(3, i, "engine.Open error");
+      }
+      AppMethodBeat.o(29517);
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+        i = -99999;
       }
     }
   }
@@ -539,26 +532,26 @@ public final class g
   private void removeListener()
   {
     AppMethodBeat.i(29500);
-    this.zWz = 0;
-    com.tencent.mm.model.az.agi().b(332, this);
-    com.tencent.mm.model.az.agi().b(334, this);
-    com.tencent.mm.model.az.agi().b(336, this);
-    com.tencent.mm.model.az.agi().b(335, this);
-    b.ebn().b(this);
-    com.tencent.mm.model.az.Lt().b(this);
-    b(b.ebl().zVH);
+    this.Bod = 0;
+    com.tencent.mm.model.ba.aiU().b(332, this);
+    com.tencent.mm.model.ba.aiU().b(334, this);
+    com.tencent.mm.model.ba.aiU().b(336, this);
+    com.tencent.mm.model.ba.aiU().b(335, this);
+    b.enE().b(this);
+    com.tencent.mm.model.ba.Nb().b(this);
+    b(b.enC().Bnl);
     int j = -99999;
     int i = j;
-    if (this.zWG != null) {}
+    if (this.Bok != null) {}
     try
     {
-      i = this.zWG.uninitLive();
-      com.tencent.mm.sdk.platformtools.ai.getContext().unbindService(this.onI);
-      Intent localIntent = new Intent(com.tencent.mm.sdk.platformtools.ai.getContext(), TalkRoomService.class);
-      com.tencent.mm.sdk.platformtools.ai.getContext().stopService(localIntent);
-      this.zWG = null;
+      i = this.Bok.uninitLive();
+      com.tencent.mm.sdk.platformtools.aj.getContext().unbindService(this.oRd);
+      Intent localIntent = new Intent(com.tencent.mm.sdk.platformtools.aj.getContext(), TalkRoomService.class);
+      com.tencent.mm.sdk.platformtools.aj.getContext().stopService(localIntent);
+      this.Bok = null;
       if (i < 0) {
-        ac.e("MicroMsg.TalkRoomServer", "engine.uninitLive error %d", new Object[] { Integer.valueOf(i) });
+        ad.e("MicroMsg.TalkRoomServer", "engine.uninitLive error %d", new Object[] { Integer.valueOf(i) });
       }
       AppMethodBeat.o(29500);
       return;
@@ -567,23 +560,23 @@ public final class g
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
         i = j;
       }
     }
   }
   
-  private void sa(boolean paramBoolean)
+  private void sG(boolean paramBoolean)
   {
     AppMethodBeat.i(29504);
-    if (bs.isNullOrNil(this.zWB))
+    if (bt.isNullOrNil(this.Bof))
     {
       AppMethodBeat.o(29504);
       return;
     }
-    com.tencent.mm.model.az.ayM();
-    ap localap = com.tencent.mm.model.c.awG().aNI(this.zWB);
-    if (localap == null)
+    com.tencent.mm.model.ba.aBQ();
+    at localat = com.tencent.mm.model.c.azv().aTz(this.Bof);
+    if (localat == null)
     {
       AppMethodBeat.o(29504);
       return;
@@ -591,22 +584,22 @@ public final class g
     if (paramBoolean) {}
     for (int i = 5;; i = 6)
     {
-      localap.ov(com.tencent.mm.plugin.messenger.foundation.a.a.a.a(localap, i, localap.field_conversationTime));
-      com.tencent.mm.model.az.ayM();
-      com.tencent.mm.model.c.awG().a(localap, this.zWB);
+      localat.qv(com.tencent.mm.plugin.messenger.foundation.a.a.a.a(localat, i, localat.field_conversationTime));
+      com.tencent.mm.model.ba.aBQ();
+      com.tencent.mm.model.c.azv().a(localat, this.Bof);
       AppMethodBeat.o(29504);
       return;
     }
   }
   
   /* Error */
-  public final void a(com.tencent.mm.bh.d paramd)
+  public final void a(com.tencent.mm.bi.d paramd)
   {
     // Byte code:
     //   0: sipush 29497
     //   3: invokestatic 98	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 116	com/tencent/mm/plugin/talkroom/model/g:zWM	Lcom/tencent/mm/plugin/talkroom/model/i;
+    //   7: getfield 116	com/tencent/mm/plugin/talkroom/model/g:Boq	Lcom/tencent/mm/plugin/talkroom/model/i;
     //   10: astore_2
     //   11: aload_1
     //   12: monitorenter
@@ -618,10 +611,10 @@ public final class g
     //   26: aload_1
     //   27: monitorexit
     //   28: aload_0
-    //   29: getfield 116	com/tencent/mm/plugin/talkroom/model/g:zWM	Lcom/tencent/mm/plugin/talkroom/model/i;
+    //   29: getfield 116	com/tencent/mm/plugin/talkroom/model/g:Boq	Lcom/tencent/mm/plugin/talkroom/model/i;
     //   32: aload_0
-    //   33: invokevirtual 543	com/tencent/mm/plugin/talkroom/model/g:eby	()Ljava/lang/String;
-    //   36: invokevirtual 547	com/tencent/mm/plugin/talkroom/model/i:DD	(Ljava/lang/String;)V
+    //   33: invokevirtual 543	com/tencent/mm/plugin/talkroom/model/g:enP	()Ljava/lang/String;
+    //   36: invokevirtual 547	com/tencent/mm/plugin/talkroom/model/i:GI	(Ljava/lang/String;)V
     //   39: sipush 29497
     //   42: invokestatic 131	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   45: return
@@ -643,7 +636,7 @@ public final class g
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	73	0	this	g
-    //   0	73	1	paramd	com.tencent.mm.bh.d
+    //   0	73	1	paramd	com.tencent.mm.bi.d
     //   10	37	2	locali	i
     //   62	10	2	localObject	Object
     // Exception table:
@@ -653,99 +646,166 @@ public final class g
     //   63	65	62	finally
   }
   
-  public final void aIL()
+  public final void aBx()
+  {
+    AppMethodBeat.i(29522);
+    ad.v("MicroMsg.TalkRoomServer", "yy talkroom onResume");
+    if (bt.isNullOrNil(this.Bof)) {
+      ad.d("MicroMsg.TalkRoomServer", "pause");
+    }
+    i locali;
+    i.3 local3;
+    for (;;)
+    {
+      this.Bot = false;
+      locali = this.Boq;
+      local3 = new i.3(locali);
+      if (Looper.myLooper() != Looper.getMainLooper()) {
+        break;
+      }
+      local3.run();
+      AppMethodBeat.o(29522);
+      return;
+      enT();
+    }
+    locali.handler.post(local3);
+    AppMethodBeat.o(29522);
+  }
+  
+  public final void aBy()
+  {
+    AppMethodBeat.i(29523);
+    ad.v("MicroMsg.TalkRoomServer", "yy talkroom onPause");
+    try
+    {
+      if (bt.isNullOrNil(this.Bof)) {
+        ad.d("MicroMsg.TalkRoomServer", "pause");
+      }
+      for (;;)
+      {
+        this.Bot = true;
+        i locali = this.Boq;
+        local2 = new i.2(locali);
+        if (Looper.myLooper() != Looper.getMainLooper()) {
+          break;
+        }
+        local2.run();
+        AppMethodBeat.o(29523);
+        return;
+        if (this.Bon != null) {
+          this.Bon.enA();
+        }
+        if (this.Bom != null) {
+          this.Bom.cxw();
+        }
+        this.state = 2;
+      }
+    }
+    catch (RemoteException localRemoteException)
+    {
+      i.2 local2;
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+      }
+      localRemoteException.handler.post(local2);
+      AppMethodBeat.o(29523);
+    }
+  }
+  
+  public final void aLV()
   {
     AppMethodBeat.i(29509);
-    ac.i("MicroMsg.TalkRoomServer", "resumeRecord in state %d", new Object[] { Integer.valueOf(this.state) });
+    ad.i("MicroMsg.TalkRoomServer", "resumeRecord in state %d", new Object[] { Integer.valueOf(this.state) });
     if (this.state != 4)
     {
       AppMethodBeat.o(29509);
       return;
     }
-    f localf = b.ebp();
-    localf.zWw = true;
-    localf.zWv = bs.Gn();
+    f localf = b.enG();
+    localf.Boa = true;
+    localf.BnZ = bt.HI();
     try
     {
-      this.zWJ.aIL();
+      this.Bon.aLV();
       AppMethodBeat.o(29509);
       return;
     }
     catch (RemoteException localRemoteException)
     {
-      ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
       AppMethodBeat.o(29509);
     }
   }
   
-  public final short aIM()
+  public final short aLW()
   {
     AppMethodBeat.i(29518);
-    if (this.zWJ == null)
+    if (this.Bon == null)
     {
       AppMethodBeat.o(29518);
       return 0;
     }
     try
     {
-      int i = this.zWJ.ebk();
+      int i = this.Bon.enB();
       short s = (short)i;
       AppMethodBeat.o(29518);
       return s;
     }
     catch (RemoteException localRemoteException)
     {
-      ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
       AppMethodBeat.o(29518);
     }
     return 0;
   }
   
-  public final short aIN()
+  public final short aLX()
   {
     AppMethodBeat.i(29519);
-    if (this.zWI == null)
+    if (this.Bom == null)
     {
       AppMethodBeat.o(29519);
       return 0;
     }
     try
     {
-      int i = this.zWI.ebk();
+      int i = this.Bom.enB();
       short s = (short)i;
       AppMethodBeat.o(29519);
       return s;
     }
     catch (RemoteException localRemoteException)
     {
-      ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
       AppMethodBeat.o(29519);
     }
     return 0;
   }
   
-  public final boolean aIO()
+  public final boolean aLY()
   {
     AppMethodBeat.i(29505);
-    ac.i("MicroMsg.TalkRoomServer", "seizeMic");
+    ad.i("MicroMsg.TalkRoomServer", "seizeMic");
     if (this.state != 2)
     {
-      ac.i("MicroMsg.TalkRoomServer", "seizeMic  not int the appropriate state");
+      ad.i("MicroMsg.TalkRoomServer", "seizeMic  not int the appropriate state");
       if (this.state == 0) {
-        this.zWM.j(3, -1, "seizeMic in outside room state");
+        this.Boq.j(3, -1, "seizeMic in outside room state");
       }
       AppMethodBeat.o(29505);
       return false;
     }
-    if (this.zWI != null) {}
+    if (this.Bom != null) {}
     try
     {
-      this.zWI.crK();
+      this.Bom.cxw();
       this.state = 3;
-      com.tencent.mm.plugin.talkroom.b.d locald = new com.tencent.mm.plugin.talkroom.b.d(this.roomId, this.tIG, 1, this.zWB, ebx());
-      com.tencent.mm.model.az.agi().a(locald, 0);
-      b.ebp().zWu = bs.Gn();
-      b.ebp().zWx = true;
+      com.tencent.mm.plugin.talkroom.b.d locald = new com.tencent.mm.plugin.talkroom.b.d(this.roomId, this.uLt, 1, this.Bof, enO());
+      com.tencent.mm.model.ba.aiU().a(locald, 0);
+      b.enG().BnY = bt.HI();
+      b.enG().Bob = true;
       AppMethodBeat.o(29505);
       return true;
     }
@@ -753,69 +813,69 @@ public final class g
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
       }
     }
   }
   
-  public final void aIP()
+  public final void aLZ()
   {
     AppMethodBeat.i(29506);
-    ac.i("MicroMsg.TalkRoomServer", "putAwayMic");
-    Object localObject = b.ebp();
-    if ((((f)localObject).zWx) && (!((f)localObject).zWw)) {
-      ((f)localObject).zWr += 1;
+    ad.i("MicroMsg.TalkRoomServer", "putAwayMic");
+    Object localObject = b.enG();
+    if ((((f)localObject).Bob) && (!((f)localObject).Boa)) {
+      ((f)localObject).BnV += 1;
     }
-    ((f)localObject).zWw = false;
-    ((f)localObject).zWx = false;
+    ((f)localObject).Boa = false;
+    ((f)localObject).Bob = false;
     if (this.state < 3)
     {
-      ac.w("MicroMsg.TalkRoomServer", "putAwayMic  err, isnot getting or has not got mic");
+      ad.w("MicroMsg.TalkRoomServer", "putAwayMic  err, isnot getting or has not got mic");
       AppMethodBeat.o(29506);
       return;
     }
-    if (this.zWL != null)
+    if (this.Bop != null)
     {
-      this.zWL.stopTimer();
-      this.zWL = null;
+      this.Bop.stopTimer();
+      this.Bop = null;
     }
-    ebC();
-    localObject = new com.tencent.mm.plugin.talkroom.b.d(this.roomId, this.tIG, 2, this.zWB, ebx());
-    com.tencent.mm.model.az.agi().a((n)localObject, 0);
+    enT();
+    localObject = new com.tencent.mm.plugin.talkroom.b.d(this.roomId, this.uLt, 2, this.Bof, enO());
+    com.tencent.mm.model.ba.aiU().a((n)localObject, 0);
     AppMethodBeat.o(29506);
   }
   
-  public final boolean aIQ()
+  public final boolean aMa()
   {
-    return this.zWP;
+    return this.Bot;
   }
   
-  public final void ap(String paramString, int paramInt)
+  public final void ar(String paramString, int paramInt)
   {
     AppMethodBeat.i(29501);
-    ac.i("MicroMsg.TalkRoomServer", "enterTalkRoom %s scene %d", new Object[] { paramString, Integer.valueOf(paramInt) });
-    this.zWy = paramInt;
-    ebz();
-    if (paramString.equals(this.zWB))
+    ad.i("MicroMsg.TalkRoomServer", "enterTalkRoom %s scene %d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    this.Boc = paramInt;
+    enQ();
+    if (paramString.equals(this.Bof))
     {
-      ac.d("MicroMsg.TalkRoomServer", "enterTalkRoom %s has enter the talkroom", new Object[] { paramString });
+      ad.d("MicroMsg.TalkRoomServer", "enterTalkRoom %s has enter the talkroom", new Object[] { paramString });
       if (this.state == 2) {
-        this.zWM.aIR();
+        this.Boq.aMb();
       }
       AppMethodBeat.o(29501);
       return;
     }
-    ac.d("MicroMsg.TalkRoomServer", "%s enter the talkroom", new Object[] { paramString });
-    this.zWB = paramString;
-    Object localObject = new com.tencent.mm.plugin.talkroom.b.a(this.zWB, ebx());
-    com.tencent.mm.model.az.agi().a((n)localObject, 0);
-    b.ebl().zVJ = new f();
-    b.ebp().zWs = bs.Gn();
-    b.ebp().zWp = paramString;
-    if (ebx() == 0) {
-      b.ebl().zVH.uaQ = true;
+    ad.d("MicroMsg.TalkRoomServer", "%s enter the talkroom", new Object[] { paramString });
+    this.Bof = paramString;
+    Object localObject = new com.tencent.mm.plugin.talkroom.b.a(this.Bof, enO());
+    com.tencent.mm.model.ba.aiU().a((n)localObject, 0);
+    b.enC().Bnn = new f();
+    b.enG().BnW = bt.HI();
+    b.enG().BnT = paramString;
+    if (enO() == 0) {
+      b.enC().Bnl.vdz = true;
     }
-    localObject = this.zWM;
+    localObject = this.Boq;
     paramString = new i.11((i)localObject, paramString);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
@@ -827,77 +887,10 @@ public final class g
     AppMethodBeat.o(29501);
   }
   
-  public final void ayt()
-  {
-    AppMethodBeat.i(29522);
-    ac.v("MicroMsg.TalkRoomServer", "yy talkroom onResume");
-    if (bs.isNullOrNil(this.zWB)) {
-      ac.d("MicroMsg.TalkRoomServer", "pause");
-    }
-    i locali;
-    i.3 local3;
-    for (;;)
-    {
-      this.zWP = false;
-      locali = this.zWM;
-      local3 = new i.3(locali);
-      if (Looper.myLooper() != Looper.getMainLooper()) {
-        break;
-      }
-      local3.run();
-      AppMethodBeat.o(29522);
-      return;
-      ebC();
-    }
-    locali.handler.post(local3);
-    AppMethodBeat.o(29522);
-  }
-  
-  public final void ayu()
-  {
-    AppMethodBeat.i(29523);
-    ac.v("MicroMsg.TalkRoomServer", "yy talkroom onPause");
-    try
-    {
-      if (bs.isNullOrNil(this.zWB)) {
-        ac.d("MicroMsg.TalkRoomServer", "pause");
-      }
-      for (;;)
-      {
-        this.zWP = true;
-        i locali = this.zWM;
-        local2 = new i.2(locali);
-        if (Looper.myLooper() != Looper.getMainLooper()) {
-          break;
-        }
-        local2.run();
-        AppMethodBeat.o(29523);
-        return;
-        if (this.zWJ != null) {
-          this.zWJ.ebj();
-        }
-        if (this.zWI != null) {
-          this.zWI.crK();
-        }
-        this.state = 2;
-      }
-    }
-    catch (RemoteException localRemoteException)
-    {
-      i.2 local2;
-      for (;;)
-      {
-        ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
-      }
-      localRemoteException.handler.post(local2);
-      AppMethodBeat.o(29523);
-    }
-  }
-  
-  public final void b(com.tencent.mm.bh.d paramd)
+  public final void b(com.tencent.mm.bi.d paramd)
   {
     AppMethodBeat.i(29498);
-    i locali = this.zWM;
+    i locali = this.Boq;
     try
     {
       locali.callbacks.remove(paramd);
@@ -909,72 +902,102 @@ public final class g
     }
   }
   
-  public final List cXc()
+  public final List dgo()
   {
     AppMethodBeat.i(29495);
-    LinkedList localLinkedList = b.ebn().axD(this.zWB);
+    LinkedList localLinkedList = b.enE().aCH(this.Bof);
     AppMethodBeat.o(29495);
     return localLinkedList;
   }
   
-  public final void ebA()
+  public final int enO()
+  {
+    AppMethodBeat.i(29494);
+    if ((this.Boc == 1) || ((com.tencent.mm.bj.d.iru != null) && (com.tencent.mm.bj.d.iru.GK(this.Bof))))
+    {
+      AppMethodBeat.o(29494);
+      return 1;
+    }
+    AppMethodBeat.o(29494);
+    return 0;
+  }
+  
+  public final String enP()
+  {
+    AppMethodBeat.i(29496);
+    Object localObject = b.enE().aCH(this.Bof).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      dme localdme = (dme)((Iterator)localObject).next();
+      if (localdme.HAy == this.Boi)
+      {
+        localObject = localdme.nDo;
+        AppMethodBeat.o(29496);
+        return localObject;
+      }
+    }
+    AppMethodBeat.o(29496);
+    return null;
+  }
+  
+  public final void enR()
   {
     AppMethodBeat.i(29502);
-    ac.i("MicroMsg.TalkRoomServer", "exitTalkRoom");
-    sa(false);
-    if (bs.isNullOrNil(this.zWB))
+    ad.i("MicroMsg.TalkRoomServer", "exitTalkRoom");
+    sG(false);
+    if (bt.isNullOrNil(this.Bof))
     {
-      ac.i("MicroMsg.TalkRoomServer", "exitTalkRoom: has exited");
+      ad.i("MicroMsg.TalkRoomServer", "exitTalkRoom: has exited");
       AppMethodBeat.o(29502);
       return;
     }
-    b.ebp().exitRoom();
+    b.enG().exitRoom();
     this.state = 0;
-    this.zWA = false;
+    this.Boe = false;
     int i = this.roomId;
-    long l = this.tIG;
+    long l = this.uLt;
     Object localObject1;
     if (this.roomId != 0) {
-      localObject1 = this.zWB;
+      localObject1 = this.Bof;
     }
     for (;;)
     {
-      localObject1 = new com.tencent.mm.plugin.talkroom.b.b(i, l, (String)localObject1, ebx());
-      com.tencent.mm.model.az.agi().a((n)localObject1, 0);
-      if (this.zWG != null) {}
+      localObject1 = new com.tencent.mm.plugin.talkroom.b.b(i, l, (String)localObject1, enO());
+      com.tencent.mm.model.ba.aiU().a((n)localObject1, 0);
+      if (this.Bok != null) {}
       try
       {
-        i = this.zWG.Close();
+        i = this.Bok.Close();
         if (i < 0) {
-          ac.e("MicroMsg.TalkRoomServer", "engine.Close error %d", new Object[] { Integer.valueOf(i) });
+          ad.e("MicroMsg.TalkRoomServer", "engine.Close error %d", new Object[] { Integer.valueOf(i) });
         }
         Object localObject2 = new PByteArray();
-        if (a((PByteArray)localObject2, v.wk(this.zWB)) == 0)
+        if (a((PByteArray)localObject2, v.zf(this.Bof)) == 0)
         {
           localObject1 = new String(((PByteArray)localObject2).value);
-          ac.i("MicroMsg.TalkRoomServer", "getStatis==> pba.len %d, info: %s", new Object[] { Integer.valueOf(((PByteArray)localObject2).value.length), localObject1 });
+          ad.i("MicroMsg.TalkRoomServer", "getStatis==> pba.len %d, info: %s", new Object[] { Integer.valueOf(((PByteArray)localObject2).value.length), localObject1 });
           localObject2 = new LinkedList();
-          dgs localdgs = new dgs();
-          localdgs.Fdx = 10402;
-          localdgs.FPU = new crm().aJV((String)localObject1);
-          localObject1 = new dgs();
-          ((dgs)localObject1).Fdx = 10404;
-          ((dgs)localObject1).FPU = new crm().aJV(b.ebp().toString());
-          ((LinkedList)localObject2).add(localdgs);
+          dmf localdmf = new dmf();
+          localdmf.GNa = 10402;
+          localdmf.HAz = new cwt().aPy((String)localObject1);
+          localObject1 = new dmf();
+          ((dmf)localObject1).GNa = 10404;
+          ((dmf)localObject1).HAz = new cwt().aPy(b.enG().toString());
+          ((LinkedList)localObject2).add(localdmf);
           ((LinkedList)localObject2).add(localObject1);
-          localObject1 = new com.tencent.mm.plugin.talkroom.b.g((LinkedList)localObject2, ebx());
-          com.tencent.mm.model.az.agi().a((n)localObject1, 0);
+          localObject1 = new com.tencent.mm.plugin.talkroom.b.g((LinkedList)localObject2, enO());
+          com.tencent.mm.model.ba.aiU().a((n)localObject1, 0);
         }
-        this.zWB = "";
+        this.Bof = "";
         this.roomId = 0;
-        this.tIG = 0L;
-        this.zWC = 0;
-        this.zWD = 0;
-        this.zWE = 0;
-        this.zWF.clear();
-        ebB();
-        this.zWM.aIT();
-        b.ebl().zVH.ebr();
+        this.uLt = 0L;
+        this.Bog = 0;
+        this.Boh = 0;
+        this.Boi = 0;
+        this.Boj.clear();
+        enS();
+        this.Boq.aMd();
+        b.enC().Bnl.enI();
         removeListener();
         AppMethodBeat.o(29502);
         return;
@@ -984,52 +1007,22 @@ public final class g
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException, "", new Object[0]);
           i = -99999;
         }
       }
     }
   }
   
-  public final int ebx()
-  {
-    AppMethodBeat.i(29494);
-    if ((this.zWy == 1) || ((com.tencent.mm.bi.d.hXY != null) && (com.tencent.mm.bi.d.hXY.DF(this.zWB))))
-    {
-      AppMethodBeat.o(29494);
-      return 1;
-    }
-    AppMethodBeat.o(29494);
-    return 0;
-  }
-  
-  public final String eby()
-  {
-    AppMethodBeat.i(29496);
-    Object localObject = b.ebn().axD(this.zWB).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      dgr localdgr = (dgr)((Iterator)localObject).next();
-      if (localdgr.FPT == this.zWE)
-      {
-        localObject = localdgr.ncR;
-        AppMethodBeat.o(29496);
-        return localObject;
-      }
-    }
-    AppMethodBeat.o(29496);
-    return null;
-  }
-  
   public final void h(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(29521);
-    if (!paramString1.equals(this.zWB))
+    if (!paramString1.equals(this.Bof))
     {
       AppMethodBeat.o(29521);
       return;
     }
-    paramString1 = this.zWM;
+    paramString1 = this.Boq;
     paramString2 = new i.10(paramString1, paramString2, paramString3);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
@@ -1044,11 +1037,11 @@ public final class g
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(29507);
-    ac.i("MicroMsg.TalkRoomServer", "type:%d  errType:%d  errCode:%d", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.TalkRoomServer", "type:%d  errType:%d  errCode:%d", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     paramString = (com.tencent.mm.plugin.talkroom.b.f)paramn;
-    if ((paramString.ebH() == null) || (!paramString.ebH().equals(this.zWB)))
+    if ((paramString.enY() == null) || (!paramString.enY().equals(this.Bof)))
     {
-      ac.w("MicroMsg.TalkRoomServer", "%s, now :%s this is the old sceneEnd, abandon it!!", new Object[] { paramString.ebH(), this.zWB });
+      ad.w("MicroMsg.TalkRoomServer", "%s, now :%s this is the old sceneEnd, abandon it!!", new Object[] { paramString.enY(), this.Bof });
       AppMethodBeat.o(29507);
       return;
     }
@@ -1056,12 +1049,12 @@ public final class g
     {
       if (paramn.getType() == 332)
       {
-        b.ebp().Rc(2);
+        b.enG().SM(2);
         if (paramInt1 == 4) {
-          b.ebp().zWq = paramInt2;
+          b.enG().BnU = paramInt2;
         }
-        this.zWM.q("cgi enter failed : errType:" + paramInt1 + " errCode:" + paramInt2, paramInt1, paramInt2);
-        ebA();
+        this.Boq.s("cgi enter failed : errType:" + paramInt1 + " errCode:" + paramInt2, paramInt1, paramInt2);
+        enR();
         AppMethodBeat.o(29507);
         return;
       }
@@ -1072,33 +1065,33 @@ public final class g
           AppMethodBeat.o(29507);
           return;
         }
-        paramString = b.ebp();
-        paramString.zVZ += 1;
-        paramString.zWu = 0L;
-        ebC();
-        ac.w("MicroMsg.TalkRoomServer", "onSceneEnd SeizeMicFailed");
+        paramString = b.enG();
+        paramString.BnD += 1;
+        paramString.BnY = 0L;
+        enT();
+        ad.w("MicroMsg.TalkRoomServer", "onSceneEnd SeizeMicFailed");
         if ((paramInt1 == 4) && ((paramInt2 == 311) || (paramInt2 == 340)))
         {
-          this.zWM.pF(paramInt2);
+          this.Boq.qh(paramInt2);
           AppMethodBeat.o(29507);
           return;
         }
-        this.zWM.j(paramInt1, paramInt2, "TalkMicAction failed!!");
+        this.Boq.j(paramInt1, paramInt2, "TalkMicAction failed!!");
         AppMethodBeat.o(29507);
         return;
       }
       if (paramn.getType() == 336)
       {
-        this.zWA = false;
-        this.zWM.j(paramInt1, paramInt2, "TalkGetMember failed!!");
-        ebA();
+        this.Boe = false;
+        this.Boq.j(paramInt1, paramInt2, "TalkGetMember failed!!");
+        enR();
         AppMethodBeat.o(29507);
         return;
       }
       if (paramn.getType() == 335)
       {
-        this.zWM.j(paramInt1, paramInt2, "TalkNoop failed!!");
-        ebA();
+        this.Boq.j(paramInt1, paramInt2, "TalkNoop failed!!");
+        enR();
         AppMethodBeat.o(29507);
         return;
       }
@@ -1106,21 +1099,21 @@ public final class g
     Object localObject;
     if (paramn.getType() == 332)
     {
-      b.ebp().Rc(1);
+      b.enG().SM(1);
       paramn = (com.tencent.mm.plugin.talkroom.b.a)paramn;
       this.roomId = paramn.roomId;
-      this.tIG = paramn.tIG;
-      this.zWC = paramn.zWC;
-      this.zWD = paramn.zWD;
-      this.zWF = paramn.zWF;
-      localObject = b.ebp();
+      this.uLt = paramn.uLt;
+      this.Bog = paramn.Bog;
+      this.Boh = paramn.Boh;
+      this.Boj = paramn.Boj;
+      localObject = b.enG();
       paramInt1 = this.roomId;
-      long l = this.tIG;
+      long l = this.uLt;
       ((f)localObject).roomId = paramInt1;
-      ((f)localObject).tIG = l;
-      paramn = paramn.zWX;
-      b.ebn().a(this.zWB, paramn, null, null, paramString.ebI());
-      Rd(100);
+      ((f)localObject).uLt = l;
+      paramn = paramn.BoB;
+      b.enE().a(this.Bof, paramn, null, null, paramString.enZ());
+      SN(100);
       AppMethodBeat.o(29507);
       return;
     }
@@ -1129,37 +1122,37 @@ public final class g
       paramString = (com.tencent.mm.plugin.talkroom.b.d)paramn;
       if (paramString.actionType == 1)
       {
-        paramn = b.ebp();
-        if (paramn.zWu != 0L)
+        paramn = b.enG();
+        if (paramn.BnY != 0L)
         {
-          paramn.zVX = ((bs.aO(paramn.zWu) + paramn.zVX * paramn.zWt) / (paramn.zWt + 1));
-          paramn.zWt += 1;
-          paramn.zVY += 1;
-          paramn.zWu = 0L;
+          paramn.BnB = ((bt.aO(paramn.BnY) + paramn.BnB * paramn.BnX) / (paramn.BnX + 1));
+          paramn.BnX += 1;
+          paramn.BnC += 1;
+          paramn.BnY = 0L;
         }
-        ac.i("MicroMsg.TalkRoomServer", "dealWithSeizeMic seize Mic successFul");
-        if (paramString.zWC < this.zWC)
+        ad.i("MicroMsg.TalkRoomServer", "dealWithSeizeMic seize Mic successFul");
+        if (paramString.Bog < this.Bog)
         {
-          ac.w("MicroMsg.TalkRoomServer", "micSeq is smaller seizeSeq %d, now %d", new Object[] { Integer.valueOf(paramString.zWC), Integer.valueOf(this.zWC) });
-          ebC();
-          this.zWM.pF(311);
+          ad.w("MicroMsg.TalkRoomServer", "micSeq is smaller seizeSeq %d, now %d", new Object[] { Integer.valueOf(paramString.Bog), Integer.valueOf(this.Bog) });
+          enT();
+          this.Boq.qh(311);
           AppMethodBeat.o(29507);
           return;
         }
-        this.zWC = paramString.zWC;
+        this.Bog = paramString.Bog;
         paramInt1 = -99999;
         try
         {
-          paramInt2 = this.zWG.SetCurrentMicId(this.zWC);
+          paramInt2 = this.Bok.SetCurrentMicId(this.Bog);
           paramInt1 = paramInt2;
         }
         catch (RemoteException paramString)
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.TalkRoomServer", paramString, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.TalkRoomServer", paramString, "", new Object[0]);
           }
-          paramString = this.zWM;
+          paramString = this.Boq;
           paramn = new i.6(paramString);
           if (Looper.myLooper() != Looper.getMainLooper()) {
             break label861;
@@ -1167,7 +1160,7 @@ public final class g
         }
         if (this.state != 3)
         {
-          ac.i("MicroMsg.TalkRoomServer", "dealWithSeizeMic not in getting mic state");
+          ad.i("MicroMsg.TalkRoomServer", "dealWithSeizeMic not in getting mic state");
           AppMethodBeat.o(29507);
           return;
         }
@@ -1176,11 +1169,11 @@ public final class g
         {
           this.state = 4;
           if (paramInt1 < 0) {
-            ac.e("MicroMsg.TalkRoomServer", "SetCurrentMicId err: %d ", new Object[] { Integer.valueOf(paramInt1) });
+            ad.e("MicroMsg.TalkRoomServer", "SetCurrentMicId err: %d ", new Object[] { Integer.valueOf(paramInt1) });
           }
-          if (this.zWL == null)
+          if (this.Bop == null)
           {
-            this.zWL = new au(new au.a()
+            this.Bop = new av(new av.a()
             {
               public final boolean onTimerExpired()
               {
@@ -1190,13 +1183,13 @@ public final class g
                 Object localObject = g.g(g.this);
                 g localg = g.this;
                 g.g(g.this);
-                localObject = new com.tencent.mm.plugin.talkroom.b.d(i, l, 1, (String)localObject, localg.ebx());
-                com.tencent.mm.model.az.agi().a((n)localObject, 0);
+                localObject = new com.tencent.mm.plugin.talkroom.b.d(i, l, 1, (String)localObject, localg.enO());
+                com.tencent.mm.model.ba.aiU().a((n)localObject, 0);
                 AppMethodBeat.o(29489);
                 return true;
               }
             }, true);
-            this.zWL.au(5000L, 5000L);
+            this.Bop.az(5000L, 5000L);
           }
           AppMethodBeat.o(29507);
           return;
@@ -1204,37 +1197,37 @@ public final class g
           paramString.handler.post(paramn);
         }
       }
-      ac.i("MicroMsg.TalkRoomServer", "putaway Mic successFul");
+      ad.i("MicroMsg.TalkRoomServer", "putaway Mic successFul");
       AppMethodBeat.o(29507);
       return;
     }
     if (paramn.getType() == 336)
     {
       localObject = (com.tencent.mm.plugin.talkroom.b.c)paramn;
-      LinkedList localLinkedList = ((com.tencent.mm.plugin.talkroom.b.c)localObject).zWX;
-      b.ebn().a(this.zWB, localLinkedList, null, null, paramString.ebI());
-      Re(((com.tencent.mm.plugin.talkroom.b.c)localObject).zWC);
-      this.zWA = false;
-      this.zWM.DD(eby());
+      LinkedList localLinkedList = ((com.tencent.mm.plugin.talkroom.b.c)localObject).BoB;
+      b.enE().a(this.Bof, localLinkedList, null, null, paramString.enZ());
+      SO(((com.tencent.mm.plugin.talkroom.b.c)localObject).Bog);
+      this.Boe = false;
+      this.Boq.GI(enP());
     }
     if ((paramn.getType() == 335) && (this.state == 0)) {
-      this.zWM.j(3, -1, "talknoop success but in outside room state");
+      this.Boq.j(3, -1, "talknoop success but in outside room state");
     }
     AppMethodBeat.o(29507);
   }
   
-  public final void sb(boolean paramBoolean)
+  public final void sH(boolean paramBoolean)
   {
     AppMethodBeat.i(29514);
-    ac.i("MicroMsg.TalkRoomServer", "reConnect talkRoomUsername: %s", new Object[] { this.zWB });
-    if ((bs.isNullOrNil(this.zWB)) || (this.state < 2))
+    ad.i("MicroMsg.TalkRoomServer", "reConnect talkRoomUsername: %s", new Object[] { this.Bof });
+    if ((bt.isNullOrNil(this.Bof)) || (this.state < 2))
     {
       AppMethodBeat.o(29514);
       return;
     }
-    b.ebp().ebv();
+    b.enG().enM();
     if (paramBoolean) {
-      if (!ebE())
+      if (!enV())
       {
         AppMethodBeat.o(29514);
         return;
@@ -1242,34 +1235,34 @@ public final class g
     }
     try
     {
-      ebF();
-      ebC();
+      enW();
+      enT();
       this.state = 1;
     }
     catch (RemoteException localRemoteException1)
     {
       try
       {
-        if (this.zWG != null) {
-          this.zWG.Close();
+        if (this.Bok != null) {
+          this.Bok.Close();
         }
         if (this.roomId != 0) {
-          ebG();
+          enX();
         }
         if (!paramBoolean) {
-          this.zWM.aIW();
+          this.Boq.aMg();
         }
         AppMethodBeat.o(29514);
         return;
         localRemoteException1 = localRemoteException1;
-        ac.e("MicroMsg.TalkRoomServer", localRemoteException1.toString());
-        ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException1, "", new Object[0]);
+        ad.e("MicroMsg.TalkRoomServer", localRemoteException1.toString());
+        ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException1, "", new Object[0]);
       }
       catch (RemoteException localRemoteException2)
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException2, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.TalkRoomServer", localRemoteException2, "", new Object[0]);
         }
       }
     }
@@ -1277,7 +1270,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.g
  * JD-Core Version:    0.7.0.1
  */

@@ -4,60 +4,60 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.b.d;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
 import d.g.a.a;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;", "", "()V", "value", "", "canSend", "getCanSend", "()Z", "setCanSend", "(Z)V", "hasCapture", "getHasCapture", "setHasCapture", "hasCaptureEntrance", "getHasCaptureEntrance", "setHasCaptureEntrance", "hasCustom", "getHasCustom", "setHasCustom", "hasCustomEntrance", "getHasCustomEntrance", "setHasCustomEntrance", "hasSendBtn", "getHasSendBtn", "setHasSendBtn", "hasSetting", "getHasSetting", "setHasSetting", "hasSmiley", "getHasSmiley", "setHasSmiley", "hasStore", "getHasStore", "setHasStore", "hasSysCustom", "getHasSysCustom", "setHasSysCustom", "scene", "", "getScene", "()I", "setScene", "(I)V", "sendListeners", "Ljava/util/LinkedList;", "Lkotlin/Function0;", "", "addSendListener", "listener", "refreshSend", "removeSendListener", "Companion", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;", "", "()V", "value", "", "canSend", "getCanSend", "()Z", "setCanSend", "(Z)V", "hasCapture", "getHasCapture", "setHasCapture", "hasCaptureEntrance", "getHasCaptureEntrance", "setHasCaptureEntrance", "hasCustom", "getHasCustom", "setHasCustom", "hasCustomEntrance", "getHasCustomEntrance", "setHasCustomEntrance", "hasSendBtn", "getHasSendBtn", "setHasSendBtn", "hasSetting", "getHasSetting", "setHasSetting", "hasSmiley", "getHasSmiley", "setHasSmiley", "hasStore", "getHasStore", "setHasStore", "hasSysCustom", "getHasSysCustom", "setHasSysCustom", "scene", "", "getScene", "()I", "setScene", "(I)V", "sendListeners", "Ljava/util/LinkedList;", "Lkotlin/Function0;", "", "addSendListener", "listener", "refreshSend", "removeSendListener", "Companion", "plugin-emojisdk_release"})
 public final class i
 {
-  public static final i.a fRB;
-  public final LinkedList<a<y>> fRA;
-  public boolean fRq;
-  public boolean fRr;
-  public boolean fRs;
-  public boolean fRt;
-  public boolean fRu;
-  public boolean fRv;
-  public boolean fRw;
-  public boolean fRx;
-  public boolean fRy;
-  public boolean fRz;
+  public static final i.a glb;
+  public boolean gkQ;
+  public boolean gkR;
+  public boolean gkS;
+  public boolean gkT;
+  public boolean gkU;
+  public boolean gkV;
+  public boolean gkW;
+  public boolean gkX;
+  public boolean gkY;
+  public boolean gkZ;
+  public final LinkedList<a<z>> gla;
   public int scene;
   
   static
   {
     AppMethodBeat.i(105543);
-    fRB = new i.a((byte)0);
+    glb = new i.a((byte)0);
     AppMethodBeat.o(105543);
   }
   
   public i()
   {
     AppMethodBeat.i(105542);
-    this.scene = ChatFooterPanel.Dnj;
-    this.fRr = true;
-    this.fRs = true;
-    this.fRt = true;
-    this.fRv = true;
-    this.fRx = true;
-    this.fRz = true;
-    this.fRA = new LinkedList();
+    this.scene = ChatFooterPanel.ESo;
+    this.gkR = true;
+    this.gkS = true;
+    this.gkT = true;
+    this.gkV = true;
+    this.gkX = true;
+    this.gkZ = true;
+    this.gla = new LinkedList();
     AppMethodBeat.o(105542);
   }
   
-  public static final boolean lw(int paramInt)
+  public static final boolean lV(int paramInt)
   {
     AppMethodBeat.i(105544);
     Object localObject = g.ad(d.class);
-    k.g(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
+    p.g(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
     localObject = ((d)localObject).getProvider();
-    k.g(localObject, "MMKernel.plugin(IPluginEmoji::class.java).provider");
-    if ((((com.tencent.mm.pluginsdk.a.e)localObject).acz()) && ((paramInt == ChatFooterPanel.Dnk) || (paramInt == ChatFooterPanel.Dnp) || (paramInt == ChatFooterPanel.Dnq) || (paramInt == ChatFooterPanel.Dnr)))
+    p.g(localObject, "MMKernel.plugin(IPluginEmoji::class.java).provider");
+    if ((((com.tencent.mm.pluginsdk.a.e)localObject).afd()) && ((paramInt == ChatFooterPanel.ESp) || (paramInt == ChatFooterPanel.ESu) || (paramInt == ChatFooterPanel.ESv) || (paramInt == ChatFooterPanel.ESw)))
     {
       AppMethodBeat.o(105544);
       return true;
@@ -66,20 +66,20 @@ public final class i
     return false;
   }
   
-  public static final boolean lx(int paramInt)
+  public static final boolean lW(int paramInt)
   {
-    return paramInt == ChatFooterPanel.Dnk;
+    return paramInt == ChatFooterPanel.ESp;
   }
   
-  public final void acN()
+  public final void afr()
   {
     AppMethodBeat.i(105541);
     Object localObject1;
-    if (this.scene == ChatFooterPanel.Dnk)
+    if (this.scene == ChatFooterPanel.ESp)
     {
-      localObject1 = g.agR();
-      k.g(localObject1, "MMKernel.storage()");
-      Object localObject2 = ((com.tencent.mm.kernel.e)localObject1).agA().get(66832, Boolean.FALSE);
+      localObject1 = g.ajC();
+      p.g(localObject1, "MMKernel.storage()");
+      Object localObject2 = ((com.tencent.mm.kernel.e)localObject1).ajl().get(66832, Boolean.FALSE);
       localObject1 = localObject2;
       if (!(localObject2 instanceof Boolean)) {
         localObject1 = null;
@@ -92,30 +92,30 @@ public final class i
     label82:
     for (boolean bool = ((Boolean)localObject1).booleanValue();; bool = false)
     {
-      if (bool != this.fRy) {
-        dp(bool);
+      if (bool != this.gkY) {
+        dr(bool);
       }
       AppMethodBeat.o(105541);
       return;
     }
   }
   
-  public final void dp(boolean paramBoolean)
+  public final void dr(boolean paramBoolean)
   {
     AppMethodBeat.i(105539);
-    this.fRy = paramBoolean;
-    Iterator localIterator = ((Iterable)this.fRA).iterator();
+    this.gkY = paramBoolean;
+    Iterator localIterator = ((Iterable)this.gla).iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).invoke();
     }
     AppMethodBeat.o(105539);
   }
   
-  public final void f(a<y> parama)
+  public final void f(a<z> parama)
   {
     AppMethodBeat.i(105540);
-    k.h(parama, "listener");
-    this.fRA.remove(parama);
+    p.h(parama, "listener");
+    this.gla.remove(parama);
     AppMethodBeat.o(105540);
   }
 }

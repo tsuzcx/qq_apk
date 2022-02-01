@@ -6,37 +6,37 @@ import java.util.List;
 public final class a<T>
   implements e
 {
-  private List<T> hqR;
+  private List<T> hJj;
   
   public a(List<T> paramList)
   {
-    this.hqR = paramList;
+    this.hJj = paramList;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(199820);
-    if ((paramInt >= 0) && (paramInt < this.hqR.size()))
+    AppMethodBeat.i(192766);
+    if ((paramInt >= 0) && (paramInt < this.hJj.size()))
     {
-      Object localObject = this.hqR.get(paramInt);
-      AppMethodBeat.o(199820);
+      Object localObject = this.hJj.get(paramInt);
+      AppMethodBeat.o(192766);
       return localObject;
     }
-    AppMethodBeat.o(199820);
+    AppMethodBeat.o(192766);
     return "";
   }
   
   public final int getItemsCount()
   {
-    AppMethodBeat.i(199822);
-    int i = this.hqR.size();
-    AppMethodBeat.o(199822);
+    AppMethodBeat.i(192768);
+    int i = this.hJj.size();
+    AppMethodBeat.o(192768);
     return i;
   }
   
-  public final String qk(int paramInt)
+  public final String qL(int paramInt)
   {
-    AppMethodBeat.i(199821);
+    AppMethodBeat.i(192767);
     Object localObject2 = getItem(paramInt);
     Object localObject1;
     if (localObject2 == null) {
@@ -45,7 +45,7 @@ public final class a<T>
     for (;;)
     {
       localObject1 = (String)localObject1;
-      AppMethodBeat.o(199821);
+      AppMethodBeat.o(192767);
       return localObject1;
       localObject1 = localObject2;
       if (!(localObject2 instanceof String)) {

@@ -1,23 +1,29 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import android.content.Context;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.g.a.tc;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.g.a.tu;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bke;
-import com.tencent.mm.protocal.protobuf.bkf;
+import com.tencent.mm.protocal.protobuf.boo;
+import com.tencent.mm.protocal.protobuf.bop;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.wallet_core.c.m;
 import com.tencent.mm.wallet_core.c.w;
 import java.util.Arrays;
@@ -28,32 +34,32 @@ import org.json.JSONObject;
 public abstract class ab
   extends w
 {
-  private com.tencent.mm.ak.g callback;
+  private f callback;
   public m jumpRemind;
   b rr;
-  public a umZ;
+  public a vpF;
   
-  public abstract String bVR();
+  public abstract String cau();
   
-  public int bVS()
+  public int cav()
   {
     return -1;
   }
   
-  public int doScene(e parame, com.tencent.mm.ak.g paramg)
+  public int doScene(e parame, f paramf)
   {
-    this.callback = paramg;
-    if (this.umZ != null)
+    this.callback = paramf;
+    if (this.vpF != null)
     {
-      ac.i("MicroMsg.NetSceneLuckyMoneyBase", "do fack response: %s", new Object[] { bVR() });
-      return this.umZ.a(this.rr, this);
+      ad.i("MicroMsg.NetSceneLuckyMoneyBase", "do fack response: %s", new Object[] { cau() });
+      return this.vpF.a(this.rr, this);
     }
     return dispatch(parame, this.rr, this);
   }
   
   public int getCgicmdForKV()
   {
-    return bVS();
+    return cav();
   }
   
   public final boolean isJumpRemind()
@@ -63,16 +69,16 @@ public abstract class ab
   
   public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
-    ac.i("MicroMsg.NetSceneLuckyMoneyBase", "Cmd : " + bVS() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
-    paramq = (bkf)((b)paramq).hvs.hvw;
+    ad.i("MicroMsg.NetSceneLuckyMoneyBase", "Cmd : " + cav() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
+    paramq = (bop)((b)paramq).hNL.hNQ;
     int i;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramInt1 = paramq.EZR;
-      String str = z.b(paramq.EZQ);
-      if ((paramInt1 == 0) && (!bs.isNullOrNil(str)))
+      paramInt1 = paramq.GJq;
+      String str = z.b(paramq.GJp);
+      if ((paramInt1 == 0) && (!bt.isNullOrNil(str)))
       {
-        i = paramq.dcp;
+        i = paramq.dnL;
         for (;;)
         {
           try
@@ -81,36 +87,36 @@ public abstract class ab
             paramInt1 = localJSONObject.getInt("retcode");
             paramArrayOfByte = paramq.errorMsg;
             paramq = paramArrayOfByte;
-            if (bs.isNullOrNil(paramArrayOfByte)) {
+            if (bt.isNullOrNil(paramArrayOfByte)) {
               paramq = localJSONObject.optString("retmsg");
             }
-            this.jumpRemind = m.bA(localJSONObject);
+            this.jumpRemind = m.bJ(localJSONObject);
             if ((!localJSONObject.has("showmess")) || (paramInt1 == 268502454)) {
               continue;
             }
-            ac.i("MicroMsg.NetSceneLuckyMoneyBase", "has alert item");
+            ad.i("MicroMsg.NetSceneLuckyMoneyBase", "has alert item");
             paramq = aq.a(null, localJSONObject);
-            paramArrayOfByte = new tc();
-            paramArrayOfByte.dvZ.dwa = paramq;
-            a.GpY.l(paramArrayOfByte);
+            paramArrayOfByte = new tu();
+            paramArrayOfByte.dIj.dIk = paramq;
+            a.IbL.l(paramArrayOfByte);
           }
           catch (Exception paramString)
           {
             JSONObject localJSONObject;
             label270:
-            ac.printErrStackTrace("MicroMsg.NetSceneLuckyMoneyBase", paramString, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.NetSceneLuckyMoneyBase", paramString, "", new Object[0]);
             paramInt2 = 1000;
             paramInt3 = 2;
-            paramString = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131765224);
+            paramString = aj.getContext().getString(2131765224);
             continue;
             paramInt2 = 1000;
             if (i != 0) {
               break label485;
             }
           }
-          ac.i("MicroMsg.NetSceneLuckyMoneyBase", "Cmd : " + bVS() + ", tenpayErrType : " + i + ", resp = " + str);
+          ad.i("MicroMsg.NetSceneLuckyMoneyBase", "Cmd : " + cav() + ", tenpayErrType : " + i + ", resp = " + str);
           if (paramInt2 != 0) {
-            ac.e("MicroMsg.NetSceneLuckyMoneyBase", "Cmd : " + bVS() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
+            ad.e("MicroMsg.NetSceneLuckyMoneyBase", "Cmd : " + cav() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
           }
           this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
           return;
@@ -129,16 +135,16 @@ public abstract class ab
       break;
       paramInt2 = 1000;
       paramInt3 = 2;
-      paramString = paramq.EZS;
+      paramString = paramq.GJr;
       break label270;
-      paramString = bv.L(paramString, "e");
+      paramString = bw.M(paramString, "e");
       if (paramString != null)
       {
-        ac.d("MicroMsg.NetSceneLuckyMoneyBase", "CDN error!");
+        ad.d("MicroMsg.NetSceneLuckyMoneyBase", "CDN error!");
         paramString = (String)paramString.get(".e.Content");
         break label270;
       }
-      paramString = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131765224);
+      paramString = aj.getContext().getString(2131765224);
       break label270;
     }
   }
@@ -147,29 +153,29 @@ public abstract class ab
   
   public final void setRequestData(Map<String, String> paramMap)
   {
-    Object localObject1 = u.axw();
-    com.tencent.mm.kernel.g.agS();
-    localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt((String)localObject1);
+    Object localObject1 = u.aAm();
+    g.ajD();
+    localObject1 = ((l)g.ab(l.class)).azp().Bf((String)localObject1);
     if (localObject1 != null)
     {
-      paramMap.put("province", ((com.tencent.mm.storage.ai)localObject1).fai());
-      paramMap.put("city", ((com.tencent.mm.storage.ai)localObject1).getCityCode());
+      paramMap.put("province", ((am)localObject1).fql());
+      paramMap.put("city", ((am)localObject1).getCityCode());
     }
     if (this.rr == null)
     {
       localObject1 = new b.a();
-      ((b.a)localObject1).hvt = new bke();
-      ((b.a)localObject1).hvu = new bkf();
-      ((b.a)localObject1).uri = bVR();
+      ((b.a)localObject1).hNM = new boo();
+      ((b.a)localObject1).hNN = new bop();
+      ((b.a)localObject1).uri = cau();
       ((b.a)localObject1).funcId = getType();
-      ((b.a)localObject1).reqCmdId = 0;
+      ((b.a)localObject1).hNO = 0;
       ((b.a)localObject1).respCmdId = 0;
-      this.rr = ((b.a)localObject1).aAz();
+      this.rr = ((b.a)localObject1).aDC();
       this.rr.setIsUserCmd(true);
     }
-    localObject1 = (bke)this.rr.hvr.hvw;
-    ((bke)localObject1).EZN = bVS();
-    ((bke)localObject1).EZO = 1;
+    localObject1 = (boo)this.rr.hNK.hNQ;
+    ((boo)localObject1).GJm = cav();
+    ((boo)localObject1).GJn = 1;
     Object[] arrayOfObject = paramMap.keySet().toArray();
     Arrays.sort(arrayOfObject);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -180,7 +186,7 @@ public abstract class ab
       Object localObject2 = arrayOfObject[i];
       String str = (String)paramMap.get(localObject2);
       k = j;
-      if (!bs.isNullOrNil(str))
+      if (!bt.isNullOrNil(str))
       {
         if (j != 0) {
           localStringBuilder.append("&");
@@ -192,19 +198,19 @@ public abstract class ab
       }
       i += 1;
     }
-    ac.i("MicroMsg.NetSceneLuckyMoneyBase", "Cmd : " + ((bke)localObject1).EZN + ", req = " + localStringBuilder.toString());
+    ad.i("MicroMsg.NetSceneLuckyMoneyBase", "Cmd : " + ((boo)localObject1).GJm + ", req = " + localStringBuilder.toString());
     paramMap = localStringBuilder.toString().getBytes();
-    ((bke)localObject1).EZP = new SKBuiltinBuffer_t().setBuffer(paramMap);
+    ((boo)localObject1).GJo = new SKBuiltinBuffer_t().setBuffer(paramMap);
   }
   
   public static abstract interface a
   {
-    public abstract int a(b paramb, com.tencent.mm.network.k paramk);
+    public abstract int a(b paramb, k paramk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.ab
  * JD-Core Version:    0.7.0.1
  */

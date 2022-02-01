@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.core.BaseWebViewController;
 import com.tencent.mm.plugin.webview.core.BaseWebViewController.c;
 import com.tencent.mm.plugin.webview.core.h;
-import com.tencent.mm.plugin.webview.model.ax;
+import com.tencent.mm.plugin.webview.model.ay;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.util.HashSet;
@@ -14,54 +14,54 @@ import java.util.HashSet;
 public final class b
   implements x
 {
-  private static final HashSet<String> CcE;
+  private static final HashSet<String> DFE;
   
   static
   {
-    AppMethodBeat.i(188272);
+    AppMethodBeat.i(207806);
     HashSet localHashSet = new HashSet();
-    CcE = localHashSet;
+    DFE = localHashSet;
     localHashSet.add("preVerifyJSAPI");
-    CcE.add("openUrlWithExtraWebview");
-    CcE.add("getInstallState");
-    CcE.add("launchApplication");
-    CcE.add("getBrandWCPayRequest");
-    CcE.add("geoLocation");
-    CcE.add("profile");
-    CcE.add("installDownloadTask");
-    CcE.add("pauseDownloadTask");
-    CcE.add("addDownloadTask");
-    CcE.add("addDownloadTaskStraight");
-    CcE.add("resumeDownloadTask");
-    CcE.add("queryDownloadTask");
-    CcE.add("addContact");
-    CcE.add("quicklyAddBrandContact");
-    AppMethodBeat.o(188272);
+    DFE.add("openUrlWithExtraWebview");
+    DFE.add("getInstallState");
+    DFE.add("launchApplication");
+    DFE.add("getBrandWCPayRequest");
+    DFE.add("geoLocation");
+    DFE.add("profile");
+    DFE.add("installDownloadTask");
+    DFE.add("pauseDownloadTask");
+    DFE.add("addDownloadTask");
+    DFE.add("addDownloadTaskStraight");
+    DFE.add("resumeDownloadTask");
+    DFE.add("queryDownloadTask");
+    DFE.add("addContact");
+    DFE.add("quicklyAddBrandContact");
+    AppMethodBeat.o(207806);
   }
   
   public final BaseWebViewController a(MMWebView paramMMWebView)
   {
-    AppMethodBeat.i(188271);
-    paramMMWebView = new h(paramMMWebView, new ax(), new BaseWebViewController.c((byte)0), CcE);
-    AppMethodBeat.o(188271);
+    AppMethodBeat.i(207804);
+    paramMMWebView = new h(paramMMWebView, new ay(), new BaseWebViewController.c((byte)0), DFE);
+    AppMethodBeat.o(207804);
     return paramMMWebView;
   }
   
-  public final f j(MMWebView paramMMWebView)
+  public final f b(MMWebView paramMMWebView)
   {
-    AppMethodBeat.i(210022);
+    AppMethodBeat.i(207805);
     try
     {
       if ((paramMMWebView instanceof MMWebViewWithJsApi))
       {
         paramMMWebView = ((MMWebViewWithJsApi)paramMMWebView).getJsapi();
-        AppMethodBeat.o(210022);
+        AppMethodBeat.o(207805);
         return paramMMWebView;
       }
     }
     catch (Throwable paramMMWebView)
     {
-      AppMethodBeat.o(210022);
+      AppMethodBeat.o(207805);
     }
     return null;
   }

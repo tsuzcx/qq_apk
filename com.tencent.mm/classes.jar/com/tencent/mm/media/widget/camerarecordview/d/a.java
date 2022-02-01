@@ -6,16 +6,16 @@ import com.tencent.mm.media.widget.camerarecordview.preview.e;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "", "enableCameraOrientationFit", "", "getCameraPreviewView", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "getContext", "Landroid/content/Context;", "getDaemonVideoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "getEncodeConfig", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getPreviewRenderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRecordRenderer", "getRecordScene", "", "getRecorder", "Lcom/tencent/mm/media/widget/recorder/IMediaRecorder;", "getResolutionLimit", "getVideoTransPara", "isMute", "useCpuCrop", "useDaemonRecorder", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "", "enableCameraOrientationFit", "", "getCameraPreviewView", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "getContext", "Landroid/content/Context;", "getDaemonVideoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "getEncodeConfig", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getPreviewRenderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRecordRenderer", "getRecordScene", "", "getRecorder", "Lcom/tencent/mm/media/widget/recorder/IMediaRecorder;", "getResolutionLimit", "getVideoTransPara", "isMute", "useCpuCrop", "useDaemonRecorder", "plugin-mediaeditor_release"})
 public abstract interface a
 {
-  public abstract boolean Nw();
+  public abstract boolean Pf();
   
-  public abstract boolean auW();
+  public abstract boolean axJ();
   
-  public abstract boolean auX();
+  public abstract boolean axK();
   
-  public abstract boolean auY();
+  public abstract boolean axL();
   
   public abstract e getCameraPreviewView();
   
@@ -25,9 +25,9 @@ public abstract interface a
   
   public abstract com.tencent.mm.media.widget.camerarecordview.b.a getEncodeConfig();
   
-  public abstract com.tencent.mm.media.i.a getPreviewRenderer();
+  public abstract com.tencent.mm.media.j.a getPreviewRenderer();
   
-  public abstract com.tencent.mm.media.i.a getRecordRenderer();
+  public abstract com.tencent.mm.media.j.a getRecordRenderer();
   
   public abstract int getRecordScene();
   
@@ -39,7 +39,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.media.widget.camerarecordview.d.a
  * JD-Core Version:    0.7.0.1
  */

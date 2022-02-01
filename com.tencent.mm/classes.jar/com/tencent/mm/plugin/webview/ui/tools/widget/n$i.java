@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
 final class n$i
   implements Runnable
 {
@@ -16,8 +16,8 @@ final class n$i
   public final void run()
   {
     AppMethodBeat.i(182679);
-    n.g(this.CNx);
-    Object localObject = this.CNx.getContext().getSystemService("input_method");
+    n.g(this.Erx);
+    Object localObject = this.Erx.getContext().getSystemService("input_method");
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
@@ -27,7 +27,7 @@ final class n$i
     localObject = (InputMethodManager)localObject;
     if (localObject != null)
     {
-      ((InputMethodManager)localObject).showSoftInput((View)n.b(this.CNx), 0);
+      ((InputMethodManager)localObject).showSoftInput((View)n.b(this.Erx), 0);
       AppMethodBeat.o(182679);
       return;
     }

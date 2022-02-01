@@ -36,27 +36,25 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.h.a;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.luckymoney.a.a.a;
+import com.tencent.mm.plugin.luckymoney.a.c;
+import com.tencent.mm.plugin.luckymoney.a.d;
 import com.tencent.mm.plugin.luckymoney.ui.HorizontalLayoutManager;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyDetailUI;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.cne;
-import com.tencent.mm.protocal.protobuf.cng;
-import com.tencent.mm.protocal.protobuf.dds;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.protocal.protobuf.csh;
+import com.tencent.mm.protocal.protobuf.csj;
+import com.tencent.mm.protocal.protobuf.djf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.widget.RoundCornerImageView;
 import com.tencent.mm.view.MediaBannerIndicator;
 import com.tencent.mm.view.RecyclerHorizontalViewPager;
 import com.tencent.mm.view.RecyclerHorizontalViewPager.b;
-import com.tencent.mm.view.RecyclerHorizontalViewPager.c;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -68,108 +66,114 @@ public class EnvelopeAppBarLayout
   extends AppBarLayout
   implements LifecycleObserver
 {
-  private int anV;
-  private int sKb;
-  private TextView upA;
-  private ViewGroup upB;
-  private View upC;
-  private ImageView upD;
-  private ImageView upE;
-  private ImageView upF;
-  private ViewGroup upG;
-  private ViewGroup upH;
-  private ProgressBar upI;
-  public LuckyMoneyDetailUI upJ;
-  private int upK;
-  private int upL;
-  private int upM;
-  private int upN;
-  private int upO;
-  private int upP;
-  private int upQ;
-  private EnvelopeStoryBehavior upR;
-  private ArrayList<b> upS;
-  private EnvelopeStoryVideoManager upT;
-  private cng upU;
-  private String upV;
-  private String upW;
-  private String upX;
-  public int upY;
-  private boolean upZ;
-  private View upm;
-  private ImageView upn;
-  private RecyclerHorizontalViewPager upo;
-  private RecyclerView upp;
-  private TouchCoordinatorLayout upq;
-  private ViewGroup upr;
-  private ViewGroup ups;
-  private MediaBannerIndicator upt;
-  private TextView upu;
-  private RoundCornerImageView upv;
-  private TextView upw;
-  private TextView upx;
-  private TextView upy;
-  private TextView upz;
-  public boolean uqa;
-  private boolean uqb;
-  private ValueAnimator uqc;
-  private ObjectAnimator uqd;
-  private ValueAnimator uqe;
-  private AnimatorSet uqf;
-  private AppBarLayout.b uqg;
-  private final float uqh;
-  private final float uqi;
-  private boolean uqj;
-  private boolean uqk;
-  private int uql;
-  private boolean uqm;
-  private boolean uqn;
-  private boolean uqo;
-  private boolean uqp;
-  private boolean uqq;
-  private boolean uqr;
-  private View.OnClickListener uqs;
-  private int uqt;
+  private int apN;
+  private int tGM;
+  private View vrQ;
+  private ImageView vrR;
+  private RecyclerHorizontalViewPager vrS;
+  private RecyclerView vrT;
+  private TouchCoordinatorLayout vrU;
+  private ViewGroup vrV;
+  private ViewGroup vrW;
+  private MediaBannerIndicator vrX;
+  private TextView vrY;
+  private RoundCornerImageView vrZ;
+  private String vsA;
+  private String vsB;
+  public int vsC;
+  private boolean vsD;
+  public boolean vsE;
+  private boolean vsF;
+  private ValueAnimator vsG;
+  private ObjectAnimator vsH;
+  private ValueAnimator vsI;
+  private AnimatorSet vsJ;
+  private AppBarLayout.b vsK;
+  private final float vsL;
+  private final float vsM;
+  private final float vsN;
+  private boolean vsO;
+  private boolean vsP;
+  private int vsQ;
+  private boolean vsR;
+  private boolean vsS;
+  private boolean vsT;
+  private boolean vsU;
+  private boolean vsV;
+  private boolean vsW;
+  private View.OnClickListener vsX;
+  private int vsY;
+  private TextView vsa;
+  private TextView vsb;
+  private TextView vsc;
+  private TextView vsd;
+  private TextView vse;
+  private ViewGroup vsf;
+  private View vsg;
+  private ImageView vsh;
+  private ImageView vsi;
+  private ImageView vsj;
+  private ViewGroup vsk;
+  private ViewGroup vsl;
+  private ProgressBar vsm;
+  public LuckyMoneyDetailUI vsn;
+  private int vso;
+  private int vsp;
+  private int vsq;
+  private int vsr;
+  private int vss;
+  private int vst;
+  private int vsu;
+  private EnvelopeStoryBehavior vsv;
+  private ArrayList<EnvelopeAppBarLayout.b> vsw;
+  private EnvelopeStoryVideoManager vsx;
+  private csj vsy;
+  private String vsz;
   
   public EnvelopeAppBarLayout(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(163595);
-    this.upN = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 130);
-    this.upO = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 120);
-    this.upP = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 250);
-    this.upQ = (this.upP - this.upO);
-    this.anV = 0;
-    this.upS = new ArrayList();
-    this.upZ = true;
-    this.uqa = false;
-    this.uqb = false;
-    this.uqh = 1.335F;
-    this.uqi = 0.6F;
-    this.uqj = false;
-    this.uqk = false;
-    this.uqm = false;
-    this.uqn = false;
-    this.uqo = false;
-    this.uqp = false;
-    this.uqq = false;
-    this.uqr = false;
-    this.uqs = new View.OnClickListener()
+    this.vsr = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 130);
+    this.vss = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 120);
+    this.vst = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 420);
+    this.vsu = (this.vst - this.vss);
+    this.apN = 0;
+    this.vsw = new ArrayList();
+    this.vsD = true;
+    this.vsE = false;
+    this.vsF = false;
+    this.vsL = 1.335F;
+    this.vsM = 1.0F;
+    this.vsN = 0.6F;
+    this.vsO = false;
+    this.vsP = false;
+    this.vsR = false;
+    this.vsS = false;
+    this.vsT = false;
+    this.vsU = false;
+    this.vsV = false;
+    this.vsW = false;
+    this.vsX = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(163578);
-        if ((!EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this)) && (EnvelopeAppBarLayout.this.upY == 2))
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/story/EnvelopeAppBarLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if ((!EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this)) && (EnvelopeAppBarLayout.this.vsC == 2))
         {
           EnvelopeAppBarLayout.this.b(true, true, true);
           EnvelopeAppBarLayout.b(EnvelopeAppBarLayout.this);
-          com.tencent.mm.plugin.luckymoney.a.d.tn(5);
-          com.tencent.mm.plugin.luckymoney.a.c.bn(6, EnvelopeAppBarLayout.c(EnvelopeAppBarLayout.this));
+          d.tQ(5);
+          c.br(6, EnvelopeAppBarLayout.c(EnvelopeAppBarLayout.this));
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/story/EnvelopeAppBarLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(163578);
       }
     };
-    this.uqt = ai.getResources().getDimensionPixelSize(2131166499);
+    this.vsY = aj.getResources().getDimensionPixelSize(2131166499);
     init();
     AppMethodBeat.o(163595);
   }
@@ -178,65 +182,70 @@ public class EnvelopeAppBarLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(163596);
-    this.upN = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 130);
-    this.upO = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 120);
-    this.upP = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 250);
-    this.upQ = (this.upP - this.upO);
-    this.anV = 0;
-    this.upS = new ArrayList();
-    this.upZ = true;
-    this.uqa = false;
-    this.uqb = false;
-    this.uqh = 1.335F;
-    this.uqi = 0.6F;
-    this.uqj = false;
-    this.uqk = false;
-    this.uqm = false;
-    this.uqn = false;
-    this.uqo = false;
-    this.uqp = false;
-    this.uqq = false;
-    this.uqr = false;
-    this.uqs = new View.OnClickListener()
+    this.vsr = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 130);
+    this.vss = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 120);
+    this.vst = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 420);
+    this.vsu = (this.vst - this.vss);
+    this.apN = 0;
+    this.vsw = new ArrayList();
+    this.vsD = true;
+    this.vsE = false;
+    this.vsF = false;
+    this.vsL = 1.335F;
+    this.vsM = 1.0F;
+    this.vsN = 0.6F;
+    this.vsO = false;
+    this.vsP = false;
+    this.vsR = false;
+    this.vsS = false;
+    this.vsT = false;
+    this.vsU = false;
+    this.vsV = false;
+    this.vsW = false;
+    this.vsX = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(163578);
-        if ((!EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this)) && (EnvelopeAppBarLayout.this.upY == 2))
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/story/EnvelopeAppBarLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if ((!EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this)) && (EnvelopeAppBarLayout.this.vsC == 2))
         {
           EnvelopeAppBarLayout.this.b(true, true, true);
           EnvelopeAppBarLayout.b(EnvelopeAppBarLayout.this);
-          com.tencent.mm.plugin.luckymoney.a.d.tn(5);
-          com.tencent.mm.plugin.luckymoney.a.c.bn(6, EnvelopeAppBarLayout.c(EnvelopeAppBarLayout.this));
+          d.tQ(5);
+          c.br(6, EnvelopeAppBarLayout.c(EnvelopeAppBarLayout.this));
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/story/EnvelopeAppBarLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(163578);
       }
     };
-    this.uqt = ai.getResources().getDimensionPixelSize(2131166499);
+    this.vsY = aj.getResources().getDimensionPixelSize(2131166499);
     init();
     AppMethodBeat.o(163596);
   }
   
-  private void cZA()
+  private void diM()
   {
     AppMethodBeat.i(163599);
-    this.upr.setOnClickListener(this.uqs);
-    this.upn.setOnClickListener(this.uqs);
+    this.vrV.setOnClickListener(this.vsX);
+    this.vrR.setOnClickListener(this.vsX);
     AppMethodBeat.o(163599);
   }
   
-  private void cZB()
+  private void diN()
   {
     AppMethodBeat.i(163600);
     Object localObject = new Rect();
     getWindowVisibleDisplayFrame((Rect)localObject);
-    this.upK = (((Rect)localObject).right - ((Rect)localObject).left);
-    this.upL = ((int)(this.upK * 1.335F));
-    this.upn.setMinimumHeight(this.upL);
-    localObject = new AppBarLayout.LayoutParams(this.upL);
-    ((AppBarLayout.LayoutParams)localObject).lz = 3;
-    this.upm.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.upm.setMinimumHeight(this.upO);
+    this.vso = (((Rect)localObject).right - ((Rect)localObject).left);
+    this.vsp = ((int)(this.vso * 1.335F));
+    this.vrR.setMinimumHeight(this.vsp);
+    localObject = new AppBarLayout.LayoutParams(this.vsp);
+    ((AppBarLayout.LayoutParams)localObject).ns = 3;
+    this.vrQ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.vrQ.setMinimumHeight(this.vss);
     postDelayed(new Runnable()
     {
       public final void run()
@@ -250,16 +259,16 @@ public class EnvelopeAppBarLayout
     AppMethodBeat.o(163600);
   }
   
-  private boolean cZC()
+  private boolean diO()
   {
     AppMethodBeat.i(163601);
-    com.tencent.mm.view.recyclerview.e locale = (com.tencent.mm.view.recyclerview.e)this.upo.ci(this.anV);
+    com.tencent.mm.view.recyclerview.e locale = (com.tencent.mm.view.recyclerview.e)this.vrS.ci(this.apN);
     if (locale == null)
     {
       AppMethodBeat.o(163601);
       return false;
     }
-    if (((b)locale.JCq).uqG.FNo == 2)
+    if (((EnvelopeAppBarLayout.b)locale.Lvw).vtl.HxZ == 2)
     {
       AppMethodBeat.o(163601);
       return true;
@@ -279,59 +288,64 @@ public class EnvelopeAppBarLayout
       {
         AppMethodBeat.i(163584);
         Object localObject = (CoordinatorLayout.d)EnvelopeAppBarLayout.this.getLayoutParams();
-        EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this, (EnvelopeStoryBehavior)((CoordinatorLayout.d)localObject).oH);
-        EnvelopeAppBarLayout.d(EnvelopeAppBarLayout.this).uqa = EnvelopeAppBarLayout.this.uqa;
+        EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this, (EnvelopeStoryBehavior)((CoordinatorLayout.d)localObject).qA);
+        EnvelopeAppBarLayout.d(EnvelopeAppBarLayout.this).vsE = EnvelopeAppBarLayout.this.vsE;
         localObject = EnvelopeAppBarLayout.d(EnvelopeAppBarLayout.this);
-        if (EnvelopeAppBarLayout.this.upY == 1) {}
+        if (EnvelopeAppBarLayout.this.vsC == 1) {}
         for (boolean bool = true;; bool = false)
         {
-          ((EnvelopeStoryBehavior)localObject).uqP = bool;
-          EnvelopeAppBarLayout.d(EnvelopeAppBarLayout.this).uqQ = EnvelopeAppBarLayout.e(EnvelopeAppBarLayout.this);
+          ((EnvelopeStoryBehavior)localObject).vtu = bool;
+          EnvelopeAppBarLayout.d(EnvelopeAppBarLayout.this).vtv = EnvelopeAppBarLayout.e(EnvelopeAppBarLayout.this);
           EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this, (TouchCoordinatorLayout)EnvelopeAppBarLayout.this.getParent());
           EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this, EnvelopeAppBarLayout.f(EnvelopeAppBarLayout.this).findViewById(2131301755));
           EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this, (RecyclerView)EnvelopeAppBarLayout.f(EnvelopeAppBarLayout.this).findViewById(2131301770));
           EnvelopeAppBarLayout.f(EnvelopeAppBarLayout.this).a(new View.OnTouchListener()
           {
-            float rYu;
-            float tmJ;
-            long uqv;
-            boolean uqw = false;
+            float aTL;
+            float aTM;
+            long vta;
+            boolean vtb = false;
             
             public final boolean onTouch(View paramAnonymous2View, MotionEvent paramAnonymous2MotionEvent)
             {
               AppMethodBeat.i(163583);
+              com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+              localb.bd(paramAnonymous2View);
+              localb.bd(paramAnonymous2MotionEvent);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/story/EnvelopeAppBarLayout$2$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
               if (EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this))
               {
                 if (paramAnonymous2MotionEvent.getActionMasked() != 0) {
-                  break label108;
+                  break label159;
                 }
                 paramAnonymous2View = new Rect();
                 EnvelopeAppBarLayout.g(EnvelopeAppBarLayout.this).getGlobalVisibleRect(paramAnonymous2View);
                 if (!paramAnonymous2View.contains((int)paramAnonymous2MotionEvent.getRawX(), (int)paramAnonymous2MotionEvent.getRawY())) {
-                  break label100;
+                  break label151;
                 }
-                this.rYu = paramAnonymous2MotionEvent.getRawX();
-                this.tmJ = paramAnonymous2MotionEvent.getRawY();
-                this.uqv = bs.Gn();
-                this.uqw = true;
+                this.aTL = paramAnonymous2MotionEvent.getRawX();
+                this.aTM = paramAnonymous2MotionEvent.getRawY();
+                this.vta = bt.HI();
+                this.vtb = true;
               }
               for (;;)
               {
+                com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/luckymoney/story/EnvelopeAppBarLayout$2$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
                 AppMethodBeat.o(163583);
                 return false;
-                label100:
-                this.uqw = false;
+                label151:
+                this.vtb = false;
                 continue;
-                label108:
-                if ((paramAnonymous2MotionEvent.getActionMasked() == 1) && (this.uqw) && (bs.aO(this.uqv) < 500L))
+                label159:
+                if ((paramAnonymous2MotionEvent.getActionMasked() == 1) && (this.vtb) && (bt.aO(this.vta) < 500L))
                 {
                   paramAnonymous2View = new Rect();
                   EnvelopeAppBarLayout.g(EnvelopeAppBarLayout.this).getGlobalVisibleRect(paramAnonymous2View);
                   int i = (int)paramAnonymous2MotionEvent.getRawX();
                   int j = (int)paramAnonymous2MotionEvent.getRawY();
-                  if ((Math.abs(i - this.rYu) <= 20.0F) && (Math.abs(j - this.tmJ) <= 20.0F) && (paramAnonymous2View.contains(i, j)))
+                  if ((Math.abs(i - this.aTL) <= 20.0F) && (Math.abs(j - this.aTM) <= 20.0F) && (paramAnonymous2View.contains(i, j)))
                   {
-                    ac.i("MicroMsg.EnvelopeAppBarLayout", "click collapse view");
+                    ad.i("MicroMsg.EnvelopeAppBarLayout", "click collapse view");
                     EnvelopeAppBarLayout.h(EnvelopeAppBarLayout.this);
                     EnvelopeAppBarLayout.this.postDelayed(new Runnable()
                     {
@@ -347,29 +361,23 @@ public class EnvelopeAppBarLayout
               }
             }
           });
-          EnvelopeAppBarLayout.g(EnvelopeAppBarLayout.this).setOnTouchListener(new View.OnTouchListener()
-          {
-            public final boolean onTouch(View paramAnonymous2View, MotionEvent paramAnonymous2MotionEvent)
-            {
-              return false;
-            }
-          });
+          EnvelopeAppBarLayout.g(EnvelopeAppBarLayout.this).setOnTouchListener(new EnvelopeAppBarLayout.7.2(this));
           EnvelopeAppBarLayout.i(EnvelopeAppBarLayout.this);
           AppMethodBeat.o(163584);
           return;
         }
       }
     });
-    this.upT = new EnvelopeStoryVideoManager();
+    this.vsx = new EnvelopeStoryVideoManager();
     initView();
-    this.uqg = new AppBarLayout.b()
+    this.vsK = new AppBarLayout.b()
     {
-      private int uqz = 0;
+      private int vte = 0;
       
       public final void c(AppBarLayout paramAnonymousAppBarLayout, int paramAnonymousInt)
       {
         AppMethodBeat.i(163585);
-        ac.d("MicroMsg.EnvelopeAppBarLayout", "offset: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ad.d("MicroMsg.EnvelopeAppBarLayout", "offset: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
         paramAnonymousInt = Math.abs(paramAnonymousInt);
         int i = paramAnonymousAppBarLayout.getTotalScrollRange() - paramAnonymousInt;
         float f1 = i / (paramAnonymousAppBarLayout.getTotalScrollRange() * 1.0F);
@@ -387,13 +395,13 @@ public class EnvelopeAppBarLayout
         {
           if (EnvelopeAppBarLayout.o(EnvelopeAppBarLayout.this) != null)
           {
-            if (EnvelopeAppBarLayout.this.upY != 2) {
+            if (EnvelopeAppBarLayout.this.vsC != 2) {
               break label259;
             }
             EnvelopeAppBarLayout.o(EnvelopeAppBarLayout.this).setAlpha(f2);
           }
           label146:
-          if ((paramAnonymousAppBarLayout.getTotalScrollRange() - paramAnonymousInt != 0) || (this.uqz == paramAnonymousInt)) {
+          if ((paramAnonymousAppBarLayout.getTotalScrollRange() - paramAnonymousInt != 0) || (this.vte == paramAnonymousInt)) {
             break label346;
           }
           EnvelopeAppBarLayout.q(EnvelopeAppBarLayout.this);
@@ -403,7 +411,7 @@ public class EnvelopeAppBarLayout
           if (EnvelopeAppBarLayout.g(EnvelopeAppBarLayout.this) != null) {
             EnvelopeAppBarLayout.g(EnvelopeAppBarLayout.this).setAlpha((float)(f1 * 0.7D));
           }
-          this.uqz = paramAnonymousInt;
+          this.vte = paramAnonymousInt;
           AppMethodBeat.o(163585);
           return;
           int j = paramAnonymousAppBarLayout.getTotalScrollRange();
@@ -412,10 +420,10 @@ public class EnvelopeAppBarLayout
           EnvelopeAppBarLayout.m(EnvelopeAppBarLayout.this).setAlpha(f3);
           break;
           label259:
-          if (EnvelopeAppBarLayout.this.upY != 1) {
+          if (EnvelopeAppBarLayout.this.vsC != 1) {
             break label146;
           }
-          ac.d("MicroMsg.EnvelopeAppBarLayout", "distance: %s", new Object[] { Integer.valueOf(i) });
+          ad.d("MicroMsg.EnvelopeAppBarLayout", "distance: %s", new Object[] { Integer.valueOf(i) });
           if (i <= EnvelopeAppBarLayout.p(EnvelopeAppBarLayout.this))
           {
             f2 = i / (EnvelopeAppBarLayout.p(EnvelopeAppBarLayout.this) * 1.0F);
@@ -425,87 +433,65 @@ public class EnvelopeAppBarLayout
           EnvelopeAppBarLayout.o(EnvelopeAppBarLayout.this).setAlpha(1.0F);
           break label146;
           label346:
-          if ((paramAnonymousInt == 0) && (this.uqz != paramAnonymousInt)) {
+          if ((paramAnonymousInt == 0) && (this.vte != paramAnonymousInt)) {
             EnvelopeAppBarLayout.r(EnvelopeAppBarLayout.this);
           }
         }
       }
     };
-    a(this.uqg);
+    a(this.vsK);
     AppMethodBeat.o(163597);
   }
   
   private void initView()
   {
     AppMethodBeat.i(163598);
-    this.upm = findViewById(2131305332);
-    this.upr = ((ViewGroup)findViewById(2131301776));
-    this.ups = ((ViewGroup)findViewById(2131301779));
-    this.upn = ((ImageView)findViewById(2131305413));
-    this.upI = ((ProgressBar)findViewById(2131305414));
-    this.upo = ((RecyclerHorizontalViewPager)findViewById(2131305482));
-    this.upt = ((MediaBannerIndicator)findViewById(2131305333));
-    this.upu = ((TextView)findViewById(2131305345));
-    this.upv = ((RoundCornerImageView)findViewById(2131305462));
-    this.upw = ((TextView)findViewById(2131305502));
-    this.upx = ((TextView)findViewById(2131307252));
-    this.upG = ((ViewGroup)findViewById(2131305490));
-    this.upy = ((TextView)findViewById(2131301777));
-    this.upz = ((TextView)findViewById(2131307211));
-    this.upB = ((ViewGroup)findViewById(2131307212));
-    this.upA = ((TextView)findViewById(2131305489));
-    this.upD = ((ImageView)findViewById(2131301775));
-    this.upE = ((ImageView)findViewById(2131305411));
-    this.upF = ((ImageView)findViewById(2131305412));
-    this.upv.shadowRadius = 4;
-    this.upv.shadowColor = getResources().getColor(2131099670);
-    this.upt.setSelectDrawable(getResources().getDrawable(2131233139));
-    this.upt.setUnSelectDrawable(getResources().getDrawable(2131233140));
-    this.upt.setIndicatorWidth(getResources().getDimensionPixelSize(2131165303));
+    this.vrQ = findViewById(2131305332);
+    this.vrV = ((ViewGroup)findViewById(2131301776));
+    this.vrW = ((ViewGroup)findViewById(2131301779));
+    this.vrR = ((ImageView)findViewById(2131305413));
+    this.vsm = ((ProgressBar)findViewById(2131305414));
+    this.vrS = ((RecyclerHorizontalViewPager)findViewById(2131305482));
+    this.vrX = ((MediaBannerIndicator)findViewById(2131305333));
+    this.vrY = ((TextView)findViewById(2131305345));
+    this.vrZ = ((RoundCornerImageView)findViewById(2131305462));
+    this.vsa = ((TextView)findViewById(2131305502));
+    this.vsb = ((TextView)findViewById(2131307252));
+    this.vsk = ((ViewGroup)findViewById(2131305490));
+    this.vsc = ((TextView)findViewById(2131301777));
+    this.vsd = ((TextView)findViewById(2131307211));
+    this.vsf = ((ViewGroup)findViewById(2131307212));
+    this.vse = ((TextView)findViewById(2131305489));
+    this.vsh = ((ImageView)findViewById(2131301775));
+    this.vsi = ((ImageView)findViewById(2131305411));
+    this.vsj = ((ImageView)findViewById(2131305412));
+    this.vrZ.shadowRadius = 4;
+    this.vrZ.shadowColor = getResources().getColor(2131099670);
+    this.vrX.setSelectDrawable(getResources().getDrawable(2131233139));
+    this.vrX.setUnSelectDrawable(getResources().getDrawable(2131233140));
+    this.vrX.setIndicatorWidth(getResources().getDimensionPixelSize(2131165303));
     getContext();
     Object localObject = new HorizontalLayoutManager();
-    this.upo.setHasFixedSize(true);
-    this.upo.setItemViewCacheSize(4);
-    final com.tencent.mm.plugin.luckymoney.scaledLayout.a locala = new com.tencent.mm.plugin.luckymoney.scaledLayout.a();
+    this.vrS.setHasFixedSize(true);
+    this.vrS.setItemViewCacheSize(4);
+    com.tencent.mm.plugin.luckymoney.scaledLayout.a locala = new com.tencent.mm.plugin.luckymoney.scaledLayout.a();
     locala.context = getContext();
-    locala.uot = true;
-    this.upo.setSnapHelper(locala);
-    this.upo.setOnInterceptTouchEvent(new RecyclerHorizontalViewPager.c()
-    {
-      public final boolean b(MotionEvent paramAnonymousMotionEvent, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(163589);
-        if (paramAnonymousMotionEvent.getAction() == 0) {
-          locala.uos = com.tencent.mm.plugin.luckymoney.scaledLayout.a.h(this.uqC);
-        }
-        AppMethodBeat.o(163589);
-        return paramAnonymousBoolean;
-      }
-      
-      public final void k(MotionEvent paramAnonymousMotionEvent) {}
-    });
-    ((HorizontalLayoutManager)localObject).oOD = 1;
+    locala.vqX = true;
+    this.vrS.setSnapHelper(locala);
+    this.vrS.setOnInterceptTouchEvent(new EnvelopeAppBarLayout.12(this, locala, (HorizontalLayoutManager)localObject));
+    ((HorizontalLayoutManager)localObject).psl = 1;
     ((HorizontalLayoutManager)localObject).aw(true);
-    ((LinearLayoutManager)localObject).aoA = 3;
+    ((LinearLayoutManager)localObject).aqs = 3;
     ((HorizontalLayoutManager)localObject).setOrientation(0);
-    this.upo.setLayoutManager((RecyclerView.i)localObject);
-    localObject = new WxRecyclerAdapter(new com.tencent.mm.view.recyclerview.c()
-    {
-      public final com.tencent.mm.view.recyclerview.b<?> Ac(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(163590);
-        EnvelopeAppBarLayout.a locala = new EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this);
-        AppMethodBeat.o(163590);
-        return locala;
-      }
-    }, this.upS, false);
-    this.upo.setAdapter((RecyclerView.a)localObject);
-    this.upo.setPageChangeListener(new RecyclerHorizontalViewPager.b()
+    this.vrS.setLayoutManager((RecyclerView.i)localObject);
+    localObject = new WxRecyclerAdapter(new EnvelopeAppBarLayout.13(this), this.vsw, false);
+    this.vrS.setAdapter((RecyclerView.a)localObject);
+    this.vrS.setPageChangeListener(new RecyclerHorizontalViewPager.b()
     {
       public final void ad(int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(163591);
-        ac.i("MicroMsg.EnvelopeAppBarLayout", "on page change: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
+        ad.i("MicroMsg.EnvelopeAppBarLayout", "on page change: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
         com.tencent.mm.view.recyclerview.e locale;
         EnvelopeAppBarLayout.b localb;
         if (paramAnonymousBoolean)
@@ -515,273 +501,282 @@ public class EnvelopeAppBarLayout
             AppMethodBeat.o(163591);
             return;
           }
-          EnvelopeAppBarLayout.this.cZz();
+          EnvelopeAppBarLayout.this.diL();
           EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this, paramAnonymousInt);
           locale = (com.tencent.mm.view.recyclerview.e)EnvelopeAppBarLayout.v(EnvelopeAppBarLayout.this).ci(paramAnonymousInt);
           if (locale != null)
           {
             paramAnonymousBoolean = EnvelopeAppBarLayout.w(EnvelopeAppBarLayout.this);
-            localb = (EnvelopeAppBarLayout.b)locale.JCq;
+            localb = (EnvelopeAppBarLayout.b)locale.Lvw;
             if (!paramAnonymousBoolean) {
               break label206;
             }
-            localb.cZD();
+            localb.diP();
           }
         }
         for (;;)
         {
-          EnvelopeAppBarLayout.x(EnvelopeAppBarLayout.this).a(EnvelopeAppBarLayout.this.getContext(), (FrameLayout)locale.adJ(2131301783), (ImageView)locale.adJ(2131301780), (ProgressBar)locale.adJ(2131301781), localb.uqG.FNp, localb.videoWidth, localb.videoHeight, paramAnonymousInt, paramAnonymousBoolean);
-          com.tencent.mm.plugin.luckymoney.a.d.tn(6);
-          b.urx += 1;
+          EnvelopeAppBarLayout.x(EnvelopeAppBarLayout.this).a(EnvelopeAppBarLayout.this.getContext(), (FrameLayout)locale.Gd(2131301783), (ImageView)locale.Gd(2131301780), (ProgressBar)locale.Gd(2131301781), localb.vtl.Hya, localb.videoWidth, localb.videoHeight, paramAnonymousInt, paramAnonymousBoolean);
+          d.tQ(6);
+          b.vua += 1;
           EnvelopeAppBarLayout.y(EnvelopeAppBarLayout.this).setCurrentIndex(paramAnonymousInt);
           AppMethodBeat.o(163591);
           return;
           label206:
-          b.urA += 1;
+          b.vud += 1;
         }
       }
     });
     AppMethodBeat.o(163598);
   }
   
-  private void tg(int paramInt)
+  private void tK(int paramInt)
   {
     AppMethodBeat.i(163607);
-    this.upY = paramInt;
-    switch (this.upY)
+    this.vsC = paramInt;
+    switch (this.vsC)
     {
     default: 
       AppMethodBeat.o(163607);
       return;
     case 0: 
-      this.upZ = true;
-      this.uqa = true;
-      this.upr.setVisibility(8);
-      this.upF.setVisibility(8);
-      if (aj.DT())
+      this.vsD = true;
+      this.vsE = true;
+      this.vrV.setVisibility(8);
+      this.vsj.setVisibility(8);
+      if (al.isDarkMode())
       {
-        this.upE.setImageResource(2131690387);
+        this.vsi.setImageResource(2131690387);
         AppMethodBeat.o(163607);
         return;
       }
-      this.upE.setImageResource(2131690386);
+      this.vsi.setImageResource(2131690386);
       AppMethodBeat.o(163607);
       return;
     case 1: 
-      this.upZ = true;
-      this.uqa = true;
-      this.upr.setVisibility(0);
-      this.upD.setVisibility(8);
-      this.upn.setVisibility(0);
-      this.upF.setVisibility(8);
+      this.vsD = true;
+      this.vsE = true;
+      this.vrV.setVisibility(0);
+      this.vsh.setVisibility(8);
+      this.vrR.setVisibility(0);
+      this.vsj.setVisibility(8);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-      localLayoutParams.bottomMargin = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 32);
-      this.upB.setLayoutParams(localLayoutParams);
-      if (aj.DT())
+      localLayoutParams.bottomMargin = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 32);
+      this.vsf.setLayoutParams(localLayoutParams);
+      if (al.isDarkMode())
       {
-        this.upE.setImageResource(2131690387);
+        this.vsi.setImageResource(2131690387);
         AppMethodBeat.o(163607);
         return;
       }
-      this.upE.setImageResource(2131690386);
+      this.vsi.setImageResource(2131690386);
       AppMethodBeat.o(163607);
       return;
     }
-    this.upZ = false;
-    this.uqa = false;
-    this.upr.setVisibility(0);
-    this.upD.setVisibility(0);
-    this.upF.setVisibility(0);
-    this.upF.setAlpha(0.0F);
-    if (aj.DT()) {
-      this.upE.setImageResource(2131690387);
+    this.vsD = false;
+    this.vsE = false;
+    this.vrV.setVisibility(0);
+    this.vsh.setVisibility(0);
+    this.vsj.setVisibility(0);
+    this.vsj.setAlpha(0.0F);
+    if (al.isDarkMode()) {
+      this.vsi.setImageResource(2131690387);
     }
     for (;;)
     {
-      com.tencent.mm.plugin.luckymoney.a.c.bn(4, this.upW);
+      c.br(4, this.vsA);
       break;
-      this.upE.setImageResource(2131690386);
+      this.vsi.setImageResource(2131690386);
     }
   }
   
-  public final void a(cng paramcng, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  public final void a(csj paramcsj, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(207103);
-    if (bs.isNullOrNil(this.upW))
+    AppMethodBeat.i(199009);
+    if (bt.isNullOrNil(this.vsA))
     {
-      tg(0);
-      this.upL = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 502);
-      paramcng = new AppBarLayout.LayoutParams(this.upL);
-      paramcng.lz = 3;
-      this.upm.setMinimumHeight(this.upO);
-      this.upm.setLayoutParams(paramcng);
+      tK(0);
+      this.vsp = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 502);
+      paramcsj = new AppBarLayout.LayoutParams(this.vsp);
+      paramcsj.ns = 3;
+      this.vrQ.setMinimumHeight(this.vss);
+      this.vrQ.setLayoutParams(paramcsj);
     }
     for (;;)
     {
-      ac.i("MicroMsg.EnvelopeAppBarLayout", "set envelope story: %s", new Object[] { Integer.valueOf(this.upY) });
-      AppMethodBeat.o(207103);
+      ad.i("MicroMsg.EnvelopeAppBarLayout", "set envelope story: %s", new Object[] { Integer.valueOf(this.vsC) });
+      AppMethodBeat.o(199009);
       return;
-      if (paramcng != null) {
+      if (paramcsj != null) {
         break;
       }
-      tg(1);
-      cZB();
-      this.upy.setText(paramString2);
-      a.urv = paramString2;
+      tK(1);
+      diN();
+      this.vsc.setText(paramString2);
+      a.vtY = paramString2;
     }
-    this.upU = paramcng;
-    this.upV = paramString1;
-    this.uqr = paramBoolean;
-    this.upu.setText(this.upU.description);
-    this.upw.setText(this.upU.FAr);
-    this.upy.setText(this.upU.title);
-    a.urv = this.upU.FAr;
-    if (paramcng.FAw != null) {
-      paramInt = paramcng.FAw.hhv;
+    this.vsy = paramcsj;
+    this.vsz = paramString1;
+    this.vsW = paramBoolean;
+    this.vrY.setText(this.vsy.description);
+    this.vsa.setText(this.vsy.HkF);
+    this.vsc.setText(this.vsy.title);
+    a.vtY = this.vsy.HkF;
+    if (paramcsj.HkK != null) {
+      paramInt = paramcsj.HkK.hzE;
     }
     if (paramInt == 2)
     {
-      this.upz.setVisibility(0);
-      this.upx.setVisibility(0);
-      if (this.upU.nWg != 2) {
+      this.vsd.setVisibility(0);
+      this.vsb.setVisibility(0);
+      if (this.vsy.ozA != 2) {
         break label479;
       }
-      if (!bs.isNullOrNil(this.upU.FAu))
+      if (!bt.isNullOrNil(this.vsy.HkI))
       {
-        if (!this.uqo)
+        if (!this.vsT)
         {
-          com.tencent.mm.plugin.luckymoney.a.c.bn(11, this.upW);
-          this.uqo = true;
+          c.br(11, this.vsA);
+          this.vsT = true;
         }
-        com.tencent.mm.wallet_core.ui.e.aT(this.upG, 100);
-        b.urF = 1;
-        this.upG.setOnClickListener(new View.OnClickListener()
+        com.tencent.mm.wallet_core.ui.e.aW(this.vsk, 100);
+        b.vui = 1;
+        this.vsk.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(174332);
-            ac.d("MicroMsg.EnvelopeAppBarLayout", "go to profile");
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/story/EnvelopeAppBarLayout$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            ad.d("MicroMsg.EnvelopeAppBarLayout", "go to profile");
             if (EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this))
             {
-              com.tencent.mm.wallet_core.ui.e.cm(EnvelopeAppBarLayout.this.getContext(), EnvelopeAppBarLayout.z(EnvelopeAppBarLayout.this).FAu);
-              com.tencent.mm.plugin.luckymoney.a.d.tn(7);
-              com.tencent.mm.plugin.luckymoney.a.c.bn(13, EnvelopeAppBarLayout.c(EnvelopeAppBarLayout.this));
-              b.urG += 1;
+              com.tencent.mm.wallet_core.ui.e.cr(EnvelopeAppBarLayout.this.getContext(), EnvelopeAppBarLayout.z(EnvelopeAppBarLayout.this).HkI);
+              d.tQ(7);
+              c.br(13, EnvelopeAppBarLayout.c(EnvelopeAppBarLayout.this));
+              b.vuj += 1;
             }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/story/EnvelopeAppBarLayout$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(174332);
           }
         });
-        this.upA.setText(2131760853);
+        this.vse.setText(2131760853);
       }
       label317:
-      if (bs.isNullOrNil(paramcng.hhs)) {
+      if (bt.isNullOrNil(paramcsj.hzB)) {
         break label555;
       }
-      ((com.tencent.mm.plugin.luckymoney.a.a)g.ab(com.tencent.mm.plugin.luckymoney.a.a.class)).a(this.upv, paramcng.hhs, paramcng.hht, paramString1);
-      this.upv.setVisibility(0);
+      ((com.tencent.mm.plugin.luckymoney.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.luckymoney.a.a.class)).a(this.vrZ, paramcsj.hzB, paramcsj.hzC, paramString1);
+      this.vrZ.setVisibility(0);
       label362:
-      this.upS.clear();
-      if (paramcng.FAs.isEmpty()) {
-        break label1267;
+      this.vsw.clear();
+      if (paramcsj.HkG.isEmpty()) {
+        break label1279;
       }
-      b.urE = 1;
-      a.urw = 2;
-      paramcng = paramcng.FAs.iterator();
+      b.vuh = 1;
+      a.vtZ = 2;
+      paramcsj = paramcsj.HkG.iterator();
     }
     for (;;)
     {
-      if (!paramcng.hasNext()) {
+      if (!paramcsj.hasNext()) {
         break label580;
       }
-      paramString1 = (dds)paramcng.next();
-      paramString2 = new b();
-      paramString2.uqG = paramString1;
-      this.upS.add(paramString2);
-      if (paramString1.FNo == 2)
+      paramString1 = (djf)paramcsj.next();
+      paramString2 = new EnvelopeAppBarLayout.b(this);
+      paramString2.vtl = paramString1;
+      this.vsw.add(paramString2);
+      if (paramString1.HxZ == 2)
       {
-        this.sKb += 1;
+        this.tGM += 1;
         continue;
-        this.upz.setVisibility(8);
-        this.upx.setVisibility(8);
+        this.vsd.setVisibility(8);
+        this.vsb.setVisibility(8);
         break;
         label479:
-        if (this.upU.nWg == 3)
+        if (this.vsy.ozA == 3)
         {
-          if (!this.uqp)
+          if (!this.vsU)
           {
-            com.tencent.mm.plugin.luckymoney.a.c.bn(12, this.upW);
-            this.uqp = true;
+            c.br(12, this.vsA);
+            this.vsU = true;
           }
-          this.upG.setOnClickListener(new View.OnClickListener()
+          this.vsk.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
-              AppMethodBeat.i(207099);
-              ac.d("MicroMsg.EnvelopeAppBarLayout", "go to mini app");
+              AppMethodBeat.i(199004);
+              com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+              localb.bd(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/story/EnvelopeAppBarLayout$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+              ad.d("MicroMsg.EnvelopeAppBarLayout", "go to mini app");
               if (EnvelopeAppBarLayout.a(EnvelopeAppBarLayout.this))
               {
-                com.tencent.mm.wallet_core.ui.e.v(EnvelopeAppBarLayout.z(EnvelopeAppBarLayout.this).FAu, EnvelopeAppBarLayout.z(EnvelopeAppBarLayout.this).FAt, 0, 1100);
-                com.tencent.mm.plugin.luckymoney.a.d.tn(7);
-                com.tencent.mm.plugin.luckymoney.a.c.bn(14, EnvelopeAppBarLayout.c(EnvelopeAppBarLayout.this));
-                b.urG += 1;
+                com.tencent.mm.wallet_core.ui.e.v(EnvelopeAppBarLayout.z(EnvelopeAppBarLayout.this).HkI, EnvelopeAppBarLayout.z(EnvelopeAppBarLayout.this).HkH, 0, 1100);
+                d.tQ(7);
+                c.br(14, EnvelopeAppBarLayout.c(EnvelopeAppBarLayout.this));
+                b.vuj += 1;
               }
-              AppMethodBeat.o(207099);
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/story/EnvelopeAppBarLayout$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(199004);
             }
           });
-          this.upA.setText(2131760854);
+          this.vse.setText(2131760854);
           break label317;
         }
-        this.upG.setVisibility(8);
-        b.urF = 0;
+        this.vsk.setVisibility(8);
+        b.vui = 0;
         break label317;
         label555:
-        this.upv.setVisibility(8);
+        this.vrZ.setVisibility(8);
         break label362;
       }
-      this.uql += 1;
+      this.vsQ += 1;
     }
     label580:
-    this.upt.setCount(this.upS.size());
-    tg(2);
-    paramcng = new Rect();
-    getWindowVisibleDisplayFrame(paramcng);
-    this.upK = (paramcng.right - paramcng.left);
-    this.upL = ((int)(this.upK * 1.667F));
-    paramInt = (int)(this.upK * 1.335F);
-    this.upM = (this.upL - paramInt);
-    this.upn.setMinimumHeight(paramInt);
-    paramcng = new AppBarLayout.LayoutParams(this.upL);
-    paramcng.lz = 3;
-    this.upm.setLayoutParams(paramcng);
-    this.upm.setMinimumHeight(this.upP);
+    this.vrX.setCount(this.vsw.size());
+    tK(2);
+    paramcsj = new Rect();
+    getWindowVisibleDisplayFrame(paramcsj);
+    this.vso = (paramcsj.right - paramcsj.left);
+    this.vsp = ((int)(this.vso * 1.667F));
+    paramInt = (int)(this.vso * 1.335F);
+    this.vsq = (this.vsp - paramInt);
+    this.vrR.setMinimumHeight(paramInt);
+    paramcsj = new AppBarLayout.LayoutParams(this.vsp);
+    paramcsj.ns = 3;
+    this.vrQ.setLayoutParams(paramcsj);
+    this.vst = ((int)(this.vso * 1.0F));
+    this.vrQ.setMinimumHeight(this.vst);
     setExpanded(false);
-    if (this.uqr)
+    if (this.vsW)
     {
-      paramInt = ((Integer)g.agR().agA().get(ah.a.GQq, Integer.valueOf(0))).intValue();
-      label742:
-      ac.i("MicroMsg.EnvelopeAppBarLayout", "show first guide: %s", new Object[] { Integer.valueOf(paramInt) });
-      if ((paramInt >= 3) || (this.upY != 2)) {
-        break label1215;
+      paramInt = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.ICK, Integer.valueOf(0))).intValue();
+      label754:
+      ad.i("MicroMsg.EnvelopeAppBarLayout", "show first guide: %s", new Object[] { Integer.valueOf(paramInt) });
+      if ((paramInt >= 3) || (this.vsC != 2)) {
+        break label1227;
       }
       paramInt = 1;
-      label780:
+      label792:
       if (paramInt != 0)
       {
-        this.uqq = true;
-        this.upH = ((ViewGroup)findViewById(2131301778));
-        this.upH.setVisibility(0);
-        this.upr.setVisibility(4);
-        this.uqc = new ValueAnimator();
-        this.uqc.setDuration(700L);
-        this.uqc.setInterpolator(new AccelerateDecelerateInterpolator());
-        this.uqc.setIntValues(new int[] { 0, this.upN });
-        this.uqd = new ObjectAnimator();
-        this.uqd.setPropertyName("alpha");
-        this.uqd.setFloatValues(new float[] { 1.0F, 0.0F });
-        this.uqd.setTarget(this.upH);
-        this.uqd.setDuration(300L);
-        this.uqd.setStartDelay(200L);
-        this.uqd.addListener(new Animator.AnimatorListener()
+        this.vsV = true;
+        this.vsl = ((ViewGroup)findViewById(2131301778));
+        this.vsl.setVisibility(0);
+        this.vrV.setVisibility(4);
+        this.vsG = new ValueAnimator();
+        this.vsG.setDuration(700L);
+        this.vsG.setInterpolator(new AccelerateDecelerateInterpolator());
+        this.vsG.setIntValues(new int[] { 0, this.vsr });
+        this.vsH = new ObjectAnimator();
+        this.vsH.setPropertyName("alpha");
+        this.vsH.setFloatValues(new float[] { 1.0F, 0.0F });
+        this.vsH.setTarget(this.vsl);
+        this.vsH.setDuration(300L);
+        this.vsH.setStartDelay(200L);
+        this.vsH.addListener(new Animator.AnimatorListener()
         {
           public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
           
@@ -797,24 +792,24 @@ public class EnvelopeAppBarLayout
             AppMethodBeat.o(163586);
           }
         });
-        this.uqe = new ValueAnimator();
-        this.uqe.setInterpolator(android.support.design.a.a.eT);
-        this.uqe.setStartDelay(200L);
-        this.uqe.setDuration(300L);
-        this.uqe.setIntValues(new int[] { this.upN, 0 });
-        paramcng = new ValueAnimator.AnimatorUpdateListener()
+        this.vsI = new ValueAnimator();
+        this.vsI.setInterpolator(android.support.design.a.a.gM);
+        this.vsI.setStartDelay(200L);
+        this.vsI.setDuration(300L);
+        this.vsI.setIntValues(new int[] { this.vsr, 0 });
+        paramcsj = new ValueAnimator.AnimatorUpdateListener()
         {
-          int uqA = 0;
+          int vtf = 0;
           
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
             AppMethodBeat.i(163587);
-            ac.d("MicroMsg.EnvelopeAppBarLayout", "animate value: " + paramAnonymousValueAnimator.getAnimatedValue());
+            ad.d("MicroMsg.EnvelopeAppBarLayout", "animate value: " + paramAnonymousValueAnimator.getAnimatedValue());
             int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
-            int j = i - this.uqA;
-            this.uqA = i;
+            int j = i - this.vtf;
+            this.vtf = i;
             float f = (EnvelopeAppBarLayout.s(EnvelopeAppBarLayout.this) - i) / (EnvelopeAppBarLayout.s(EnvelopeAppBarLayout.this) * 1.0F);
-            if (EnvelopeAppBarLayout.this.upY == 2) {
+            if (EnvelopeAppBarLayout.this.vsC == 2) {
               EnvelopeAppBarLayout.m(EnvelopeAppBarLayout.this).setAlpha(f);
             }
             EnvelopeAppBarLayout.this.offsetTopAndBottom(j);
@@ -828,11 +823,11 @@ public class EnvelopeAppBarLayout
             AppMethodBeat.o(163587);
           }
         };
-        this.uqc.addUpdateListener(paramcng);
-        this.uqe.addUpdateListener(paramcng);
-        this.uqf = new AnimatorSet();
-        this.uqf.playSequentially(new Animator[] { this.uqc, this.uqd, this.uqe });
-        this.uqf.addListener(new Animator.AnimatorListener()
+        this.vsG.addUpdateListener(paramcsj);
+        this.vsI.addUpdateListener(paramcsj);
+        this.vsJ = new AnimatorSet();
+        this.vsJ.playSequentially(new Animator[] { this.vsG, this.vsH, this.vsI });
+        this.vsJ.addListener(new Animator.AnimatorListener()
         {
           public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
           
@@ -841,7 +836,7 @@ public class EnvelopeAppBarLayout
             AppMethodBeat.i(163588);
             EnvelopeAppBarLayout.t(EnvelopeAppBarLayout.this).setVisibility(8);
             if (EnvelopeAppBarLayout.f(EnvelopeAppBarLayout.this) != null) {
-              EnvelopeAppBarLayout.f(EnvelopeAppBarLayout.this).urI = false;
+              EnvelopeAppBarLayout.f(EnvelopeAppBarLayout.this).vul = false;
             }
             AppMethodBeat.o(163588);
           }
@@ -854,87 +849,87 @@ public class EnvelopeAppBarLayout
         {
           public final void run()
           {
-            AppMethodBeat.i(207100);
+            AppMethodBeat.i(199005);
             if (EnvelopeAppBarLayout.f(EnvelopeAppBarLayout.this) != null) {
-              EnvelopeAppBarLayout.f(EnvelopeAppBarLayout.this).urI = true;
+              EnvelopeAppBarLayout.f(EnvelopeAppBarLayout.this).vul = true;
             }
             EnvelopeAppBarLayout.A(EnvelopeAppBarLayout.this).setStartDelay(700L);
             EnvelopeAppBarLayout.A(EnvelopeAppBarLayout.this).start();
-            AppMethodBeat.o(207100);
+            AppMethodBeat.o(199005);
           }
         });
-        if (!this.uqr) {
-          break label1221;
+        if (!this.vsW) {
+          break label1233;
         }
-        paramInt = ((Integer)g.agR().agA().get(ah.a.GQq, Integer.valueOf(0))).intValue();
-        g.agR().agA().set(ah.a.GQq, Integer.valueOf(paramInt + 1));
+        paramInt = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.ICK, Integer.valueOf(0))).intValue();
+        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.ICK, Integer.valueOf(paramInt + 1));
       }
     }
     for (;;)
     {
-      this.upo.getAdapter().arg.notifyChanged();
+      this.vrS.getAdapter().asY.notifyChanged();
       break;
-      paramInt = ((Integer)g.agR().agA().get(ah.a.GQp, Integer.valueOf(0))).intValue();
-      break label742;
-      label1215:
+      paramInt = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.ICJ, Integer.valueOf(0))).intValue();
+      break label754;
+      label1227:
       paramInt = 0;
-      break label780;
-      label1221:
-      paramInt = ((Integer)g.agR().agA().get(ah.a.GQp, Integer.valueOf(0))).intValue();
-      g.agR().agA().set(ah.a.GQp, Integer.valueOf(paramInt + 1));
+      break label792;
+      label1233:
+      paramInt = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.ICJ, Integer.valueOf(0))).intValue();
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.ICJ, Integer.valueOf(paramInt + 1));
       continue;
-      label1267:
-      tg(1);
-      cZB();
+      label1279:
+      tK(1);
+      diN();
     }
   }
   
-  public final void cZz()
+  public final void diL()
   {
     AppMethodBeat.i(182455);
     Object localObject1;
     Object localObject2;
     int i;
-    if (this.anV >= 0)
+    if (this.apN >= 0)
     {
-      if (bs.isNullOrNil(b.sessionId))
+      if (bt.isNullOrNil(b.sessionId))
       {
         AppMethodBeat.o(182455);
         return;
       }
-      localObject1 = (com.tencent.mm.view.recyclerview.e)this.upo.ci(this.anV);
+      localObject1 = (com.tencent.mm.view.recyclerview.e)this.vrS.ci(this.apN);
       if (localObject1 != null)
       {
-        boolean bool = cZC();
-        localObject1 = (b)((com.tencent.mm.view.recyclerview.e)localObject1).JCq;
+        boolean bool = diO();
+        localObject1 = (EnvelopeAppBarLayout.b)((com.tencent.mm.view.recyclerview.e)localObject1).Lvw;
         if (bool)
         {
-          localObject2 = this.upT;
-          i = this.anV;
-          localObject2 = (EnvelopeStoryVideoManager.c)((EnvelopeStoryVideoManager)localObject2).uqU.get(Integer.valueOf(i));
+          localObject2 = this.vsx;
+          i = this.apN;
+          localObject2 = (EnvelopeStoryVideoManager.c)((EnvelopeStoryVideoManager)localObject2).vtz.get(Integer.valueOf(i));
           if (localObject2 == null)
           {
             AppMethodBeat.o(182455);
             return;
           }
-          ((EnvelopeStoryVideoManager.c)localObject2).urk = ((EnvelopeStoryVideoManager.c)localObject2).uro.getCurrPosSec();
-          if (((EnvelopeStoryVideoManager.c)localObject2).urn.get() == 1) {
-            i = (int)(((EnvelopeStoryVideoManager.c)localObject2).urk - ((EnvelopeStoryVideoManager.c)localObject2).urj);
+          ((EnvelopeStoryVideoManager.c)localObject2).vtO = ((EnvelopeStoryVideoManager.c)localObject2).vtR.getCurrPosSec();
+          if (((EnvelopeStoryVideoManager.c)localObject2).vtQ.get() == 1) {
+            i = (int)(((EnvelopeStoryVideoManager.c)localObject2).vtO - ((EnvelopeStoryVideoManager.c)localObject2).vtN);
           }
         }
       }
     }
     for (;;)
     {
-      h.wUl.f(19270, new Object[] { Integer.valueOf(2), this.upV, ((EnvelopeStoryVideoManager.c)localObject2).urn, "", ((b)localObject1).uqG.FNp, Integer.valueOf(i), b.sessionId });
+      com.tencent.mm.plugin.report.service.g.yhR.f(19270, new Object[] { Integer.valueOf(2), this.vsz, ((EnvelopeStoryVideoManager.c)localObject2).vtQ, "", ((EnvelopeAppBarLayout.b)localObject1).vtl.Hya, Integer.valueOf(i), b.sessionId });
       AppMethodBeat.o(182455);
       return;
-      if (((EnvelopeStoryVideoManager.c)localObject2).urn.get() > 1)
+      if (((EnvelopeStoryVideoManager.c)localObject2).vtQ.get() > 1)
       {
-        i = ((EnvelopeStoryVideoManager.c)localObject2).urn.get();
-        i = (int)(((EnvelopeStoryVideoManager.c)localObject2).urf - ((EnvelopeStoryVideoManager.c)localObject2).urj + ((EnvelopeStoryVideoManager.c)localObject2).urk + (i - 1) * ((EnvelopeStoryVideoManager.c)localObject2).urf);
+        i = ((EnvelopeStoryVideoManager.c)localObject2).vtQ.get();
+        i = (int)(((EnvelopeStoryVideoManager.c)localObject2).vtK - ((EnvelopeStoryVideoManager.c)localObject2).vtN + ((EnvelopeStoryVideoManager.c)localObject2).vtO + (i - 1) * ((EnvelopeStoryVideoManager.c)localObject2).vtK);
         continue;
-        h.wUl.f(19270, new Object[] { Integer.valueOf(1), this.upV, Integer.valueOf(0), ((b)localObject1).uqG.FNp, "", Integer.valueOf(0), b.sessionId });
+        com.tencent.mm.plugin.report.service.g.yhR.f(19270, new Object[] { Integer.valueOf(1), this.vsz, Integer.valueOf(0), ((EnvelopeAppBarLayout.b)localObject1).vtl.Hya, "", Integer.valueOf(0), b.sessionId });
         AppMethodBeat.o(182455);
       }
       else
@@ -944,21 +939,21 @@ public class EnvelopeAppBarLayout
     }
   }
   
-  public final void hz(String paramString1, String paramString2)
+  public final void hL(String paramString1, String paramString2)
   {
     AppMethodBeat.i(163608);
-    if ((bs.isNullOrNil(this.upW)) && (!bs.isNullOrNil(paramString1)))
+    if ((bt.isNullOrNil(this.vsA)) && (!bt.isNullOrNil(paramString1)))
     {
-      this.upW = paramString1;
-      this.upX = paramString2;
-      this.upI.setVisibility(0);
-      ((com.tencent.mm.plugin.luckymoney.a.a)g.ab(com.tencent.mm.plugin.luckymoney.a.a.class)).a(this.upn, this.upW, this.upX, this.upV, this.upL, this.upK, 0, new a.a()
+      this.vsA = paramString1;
+      this.vsB = paramString2;
+      this.vsm.setVisibility(0);
+      ((com.tencent.mm.plugin.luckymoney.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.luckymoney.a.a.class)).a(this.vrR, this.vsA, this.vsB, this.vsz, this.vsp, this.vso, 0, new a.a()
       {
-        public final void iB(boolean paramAnonymousBoolean)
+        public final void iK(boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(207101);
+          AppMethodBeat.i(199006);
           EnvelopeAppBarLayout.B(EnvelopeAppBarLayout.this).setVisibility(8);
-          AppMethodBeat.o(207101);
+          AppMethodBeat.o(199006);
         }
       });
     }
@@ -976,12 +971,12 @@ public class EnvelopeAppBarLayout
   public void onUIDestroy()
   {
     AppMethodBeat.i(163604);
-    cZz();
-    this.upT.cZJ();
-    if ((this.upY == 1) || (this.upY == 2)) {
-      b.tn(3);
+    diL();
+    this.vsx.diV();
+    if ((this.vsC == 1) || (this.vsC == 2)) {
+      b.tQ(3);
     }
-    com.tencent.mm.plugin.luckymoney.a.d.tn(11);
+    d.tQ(11);
     AppMethodBeat.o(163604);
   }
   
@@ -990,84 +985,19 @@ public class EnvelopeAppBarLayout
   
   public void setActivityLifeCycle(LuckyMoneyDetailUI paramLuckyMoneyDetailUI)
   {
-    AppMethodBeat.i(207102);
-    paramLuckyMoneyDetailUI.getLifecycle().addObserver(this.upT);
+    AppMethodBeat.i(199008);
+    paramLuckyMoneyDetailUI.getLifecycle().addObserver(this.vsx);
     paramLuckyMoneyDetailUI.getLifecycle().addObserver(this);
-    this.upJ = paramLuckyMoneyDetailUI;
-    EnvelopeStoryVideoManager localEnvelopeStoryVideoManager = this.upT;
-    localEnvelopeStoryVideoManager.nTA = paramLuckyMoneyDetailUI;
-    ap.f(new EnvelopeStoryVideoManager.1(localEnvelopeStoryVideoManager));
-    AppMethodBeat.o(207102);
-  }
-  
-  final class a
-    extends com.tencent.mm.view.recyclerview.b<EnvelopeAppBarLayout.b>
-  {
-    a() {}
-    
-    public final void a(RecyclerView paramRecyclerView, com.tencent.mm.view.recyclerview.e parame, int paramInt) {}
-    
-    public final int getLayoutId()
-    {
-      return 2131494637;
-    }
-  }
-  
-  final class b
-    implements com.tencent.mm.view.recyclerview.a
-  {
-    public dds uqG;
-    public int videoHeight = -1;
-    public int videoWidth = -1;
-    
-    b() {}
-    
-    public final int bTF()
-    {
-      return 0;
-    }
-    
-    public final void cZD()
-    {
-      AppMethodBeat.i(163594);
-      if ((this.videoHeight > 0) && (this.videoWidth > 0))
-      {
-        AppMethodBeat.o(163594);
-        return;
-      }
-      float f = this.uqG.height / (this.uqG.width * 1.0F);
-      if (f > 1.667F)
-      {
-        this.videoHeight = EnvelopeAppBarLayout.D(EnvelopeAppBarLayout.this);
-        this.videoWidth = ((int)(EnvelopeAppBarLayout.D(EnvelopeAppBarLayout.this) / f));
-      }
-      for (;;)
-      {
-        ac.d("MicroMsg.EnvelopeAppBarLayout", "video size: %s, %s", new Object[] { Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight) });
-        AppMethodBeat.o(163594);
-        return;
-        if (f < 1.667F)
-        {
-          this.videoWidth = EnvelopeAppBarLayout.E(EnvelopeAppBarLayout.this);
-          this.videoHeight = ((int)(f * EnvelopeAppBarLayout.E(EnvelopeAppBarLayout.this)));
-        }
-        else
-        {
-          this.videoHeight = EnvelopeAppBarLayout.D(EnvelopeAppBarLayout.this);
-          this.videoWidth = EnvelopeAppBarLayout.E(EnvelopeAppBarLayout.this);
-        }
-      }
-    }
-    
-    public final long lx()
-    {
-      return 0L;
-    }
+    this.vsn = paramLuckyMoneyDetailUI;
+    EnvelopeStoryVideoManager localEnvelopeStoryVideoManager = this.vsx;
+    localEnvelopeStoryVideoManager.owV = paramLuckyMoneyDetailUI;
+    aq.f(new EnvelopeStoryVideoManager.1(localEnvelopeStoryVideoManager));
+    AppMethodBeat.o(199008);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.EnvelopeAppBarLayout
  * JD-Core Version:    0.7.0.1
  */

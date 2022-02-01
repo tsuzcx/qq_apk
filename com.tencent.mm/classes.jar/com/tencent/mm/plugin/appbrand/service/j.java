@@ -5,9 +5,9 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface j
   extends a
 {
-  public abstract boolean bua();
+  public abstract boolean byf();
   
-  public abstract int bub();
+  public abstract int byg();
 }
 
 

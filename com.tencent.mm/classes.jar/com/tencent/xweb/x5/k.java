@@ -6,70 +6,70 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k
   extends android.webkit.WebHistoryItem
 {
-  private com.tencent.smtt.sdk.WebHistoryItem KEN;
+  private com.tencent.smtt.sdk.WebHistoryItem Mvn;
   
   public k(com.tencent.smtt.sdk.WebHistoryItem paramWebHistoryItem)
   {
-    this.KEN = paramWebHistoryItem;
+    this.Mvn = paramWebHistoryItem;
   }
   
   protected final android.webkit.WebHistoryItem clone()
   {
-    AppMethodBeat.i(208896);
-    k localk = new k(this.KEN);
-    AppMethodBeat.o(208896);
+    AppMethodBeat.i(195527);
+    k localk = new k(this.Mvn);
+    AppMethodBeat.o(195527);
     return localk;
   }
   
   public final Bitmap getFavicon()
   {
-    AppMethodBeat.i(208895);
-    if (this.KEN == null)
+    AppMethodBeat.i(195526);
+    if (this.Mvn == null)
     {
-      AppMethodBeat.o(208895);
+      AppMethodBeat.o(195526);
       return null;
     }
-    Bitmap localBitmap = this.KEN.getFavicon();
-    AppMethodBeat.o(208895);
+    Bitmap localBitmap = this.Mvn.getFavicon();
+    AppMethodBeat.o(195526);
     return localBitmap;
   }
   
   public final String getOriginalUrl()
   {
-    AppMethodBeat.i(208893);
-    if (this.KEN == null)
+    AppMethodBeat.i(195524);
+    if (this.Mvn == null)
     {
-      AppMethodBeat.o(208893);
+      AppMethodBeat.o(195524);
       return null;
     }
-    String str = this.KEN.getOriginalUrl();
-    AppMethodBeat.o(208893);
+    String str = this.Mvn.getOriginalUrl();
+    AppMethodBeat.o(195524);
     return str;
   }
   
   public final String getTitle()
   {
-    AppMethodBeat.i(208894);
-    if (this.KEN == null)
+    AppMethodBeat.i(195525);
+    if (this.Mvn == null)
     {
-      AppMethodBeat.o(208894);
+      AppMethodBeat.o(195525);
       return null;
     }
-    String str = this.KEN.getTitle();
-    AppMethodBeat.o(208894);
+    String str = this.Mvn.getTitle();
+    AppMethodBeat.o(195525);
     return str;
   }
   
   public final String getUrl()
   {
-    AppMethodBeat.i(208892);
-    if (this.KEN == null)
+    AppMethodBeat.i(195523);
+    if (this.Mvn == null)
     {
-      AppMethodBeat.o(208892);
+      AppMethodBeat.o(195523);
       return null;
     }
-    String str = this.KEN.getUrl();
-    AppMethodBeat.o(208892);
+    String str = this.Mvn.getUrl();
+    AppMethodBeat.o(195523);
     return str;
   }
 }

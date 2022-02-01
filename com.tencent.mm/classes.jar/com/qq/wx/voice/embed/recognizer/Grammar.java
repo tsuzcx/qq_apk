@@ -47,13 +47,13 @@ public class Grammar
         localObject = ((StringBuffer)localObject).toString();
         AppMethodBeat.o(76762);
         return localObject;
-        ((d)this.e.get(i)).bLu = a(((d)this.e.get(i)).userName);
-        ((d)this.e.get(i)).bLv = a(((d)this.e.get(i)).bLs);
-        ((d)this.e.get(i)).bLw = a(((d)this.e.get(i)).bLt);
+        ((d)this.e.get(i)).bVH = a(((d)this.e.get(i)).userName);
+        ((d)this.e.get(i)).bVI = a(((d)this.e.get(i)).bVF);
+        ((d)this.e.get(i)).bVJ = a(((d)this.e.get(i)).bVG);
         i += 1;
         break;
       }
-      String str = ((d)this.e.get(i)).bLu;
+      String str = ((d)this.e.get(i)).bVH;
       if (!str.isEmpty())
       {
         if (((StringBuffer)localObject).length() > 0) {
@@ -61,7 +61,7 @@ public class Grammar
         }
         ((StringBuffer)localObject).append(str);
       }
-      str = ((d)this.e.get(i)).bLv;
+      str = ((d)this.e.get(i)).bVI;
       if (!str.isEmpty())
       {
         if (((StringBuffer)localObject).length() > 0) {
@@ -69,7 +69,7 @@ public class Grammar
         }
         ((StringBuffer)localObject).append(str);
       }
-      str = ((d)this.e.get(i)).bLw;
+      str = ((d)this.e.get(i)).bVJ;
       if (!str.isEmpty())
       {
         if (((StringBuffer)localObject).length() > 0) {
@@ -168,17 +168,17 @@ public class Grammar
       {
         AppMethodBeat.o(76767);
         return 0;
-        if (((d)this.e.get(i)).bLu.compareTo(this.b.name) == 0)
+        if (((d)this.e.get(i)).bVH.compareTo(this.b.name) == 0)
         {
           parama.name = ((d)this.e.get(i)).userName;
         }
-        else if (((d)this.e.get(i)).bLv.compareTo(this.b.name) == 0)
+        else if (((d)this.e.get(i)).bVI.compareTo(this.b.name) == 0)
         {
           parama.name = ((d)this.e.get(i)).userName;
         }
         else
         {
-          if (((d)this.e.get(i)).bLw.compareTo(this.b.name) != 0) {
+          if (((d)this.e.get(i)).bVJ.compareTo(this.b.name) != 0) {
             break;
           }
           parama.name = ((d)this.e.get(i)).userName;
@@ -299,7 +299,7 @@ public class Grammar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.qq.wx.voice.embed.recognizer.Grammar
  * JD-Core Version:    0.7.0.1
  */

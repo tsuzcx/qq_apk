@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.ui.recents;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,19 +15,54 @@ final class m
     super(paramArrayList1, paramArrayList2);
   }
   
-  public final boolean H(int paramInt1, int paramInt2)
+  public final Object h(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(49227);
+    if (paramInt1 >= this.mMq.size())
+    {
+      AppMethodBeat.o(49227);
+      return null;
+    }
+    Bundle localBundle = new Bundle();
+    if ((this.mMq.get(paramInt1) instanceof AppBrandRecentTaskInfo))
+    {
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.mMq.get(paramInt1);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.mMr.get(paramInt2);
+      if (localAppBrandRecentTaskInfo1.jPn != localAppBrandRecentTaskInfo2.jPn) {
+        localBundle.putBoolean("star", localAppBrandRecentTaskInfo2.jPn);
+      }
+      if (!bt.nullAsNil(localAppBrandRecentTaskInfo1.jPm).equals(bt.nullAsNil(localAppBrandRecentTaskInfo2.jPm))) {
+        localBundle.putString("icon", localAppBrandRecentTaskInfo2.jPm);
+      }
+      if (!bt.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(bt.nullAsNil(localAppBrandRecentTaskInfo2.appName))) {
+        localBundle.putString("nick_name", localAppBrandRecentTaskInfo2.appName);
+      }
+      if (!bt.nullAsNil(localAppBrandRecentTaskInfo1.jQd).equals(bt.nullAsNil(localAppBrandRecentTaskInfo2.jQd))) {
+        localBundle.putString("third_party_app_using_desc", localAppBrandRecentTaskInfo2.jQd);
+      }
+    }
+    if (localBundle.size() <= 0)
+    {
+      AppMethodBeat.o(49227);
+      return null;
+    }
+    AppMethodBeat.o(49227);
+    return localBundle;
+  }
+  
+  public final boolean i(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49225);
-    if (!this.mlO.get(paramInt1).getClass().equals(this.mlP.get(paramInt2).getClass()))
+    if (!this.mMq.get(paramInt1).getClass().equals(this.mMr.get(paramInt2).getClass()))
     {
       AppMethodBeat.o(49225);
       return false;
     }
-    if ((this.mlO.get(paramInt1) instanceof AppBrandRecentTaskInfo))
+    if ((this.mMq.get(paramInt1) instanceof AppBrandRecentTaskInfo))
     {
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.mlO.get(paramInt1);
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.mlP.get(paramInt2);
-      if ((localAppBrandRecentTaskInfo1.joY == localAppBrandRecentTaskInfo2.joY) && (localAppBrandRecentTaskInfo1.cYF.equals(localAppBrandRecentTaskInfo2.cYF)))
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.mMq.get(paramInt1);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.mMr.get(paramInt2);
+      if ((localAppBrandRecentTaskInfo1.dPf == localAppBrandRecentTaskInfo2.dPf) && (localAppBrandRecentTaskInfo1.djX.equals(localAppBrandRecentTaskInfo2.djX)))
       {
         AppMethodBeat.o(49225);
         return true;
@@ -39,14 +74,14 @@ final class m
     return false;
   }
   
-  public final boolean I(int paramInt1, int paramInt2)
+  public final boolean j(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49226);
-    if ((this.mlO.get(paramInt1) instanceof AppBrandRecentTaskInfo))
+    if ((this.mMq.get(paramInt1) instanceof AppBrandRecentTaskInfo))
     {
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.mlO.get(paramInt1);
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.mlP.get(paramInt2);
-      if ((localAppBrandRecentTaskInfo1.jvu == localAppBrandRecentTaskInfo2.jvu) && (bs.nullAsNil(localAppBrandRecentTaskInfo1.jvt).equals(localAppBrandRecentTaskInfo2.jvt)) && (bs.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(localAppBrandRecentTaskInfo2.appName)))
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.mMq.get(paramInt1);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.mMr.get(paramInt2);
+      if ((localAppBrandRecentTaskInfo1.jPn == localAppBrandRecentTaskInfo2.jPn) && (bt.nullAsNil(localAppBrandRecentTaskInfo1.jPm).equals(localAppBrandRecentTaskInfo2.jPm)) && (bt.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(localAppBrandRecentTaskInfo2.appName)))
       {
         AppMethodBeat.o(49226);
         return true;
@@ -56,38 +91,6 @@ final class m
     }
     AppMethodBeat.o(49226);
     return true;
-  }
-  
-  public final Object J(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(49227);
-    if (paramInt1 >= this.mlO.size())
-    {
-      AppMethodBeat.o(49227);
-      return null;
-    }
-    Bundle localBundle = new Bundle();
-    if ((this.mlO.get(paramInt1) instanceof AppBrandRecentTaskInfo))
-    {
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.mlO.get(paramInt1);
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.mlP.get(paramInt2);
-      if (localAppBrandRecentTaskInfo1.jvu != localAppBrandRecentTaskInfo2.jvu) {
-        localBundle.putBoolean("star", localAppBrandRecentTaskInfo2.jvu);
-      }
-      if (!bs.nullAsNil(localAppBrandRecentTaskInfo1.jvt).equals(bs.nullAsNil(localAppBrandRecentTaskInfo2.jvt))) {
-        localBundle.putString("icon", localAppBrandRecentTaskInfo2.jvt);
-      }
-      if (!bs.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(bs.nullAsNil(localAppBrandRecentTaskInfo2.appName))) {
-        localBundle.putString("nick_name", localAppBrandRecentTaskInfo2.appName);
-      }
-    }
-    if (localBundle.size() <= 0)
-    {
-      AppMethodBeat.o(49227);
-      return null;
-    }
-    AppMethodBeat.o(49227);
-    return localBundle;
   }
 }
 

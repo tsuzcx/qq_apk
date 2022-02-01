@@ -5,29 +5,30 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.modelsimple.k;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
 public final class i
-  implements com.tencent.mm.ak.g
+  implements f
 {
   Context context;
-  p sue;
+  p tqG;
   String url;
-  au vNQ;
-  k xho;
+  av wUZ;
+  k yvp;
   
   public i(Context paramContext)
   {
     AppMethodBeat.i(52017);
-    this.vNQ = new au(new au.a()
+    this.wUZ = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
@@ -35,13 +36,13 @@ public final class i
         i locali = i.this;
         Context localContext = i.this.context;
         i.this.context.getString(2131755906);
-        locali.sue = h.b(localContext, i.this.context.getString(2131755936), true, new DialogInterface.OnCancelListener()
+        locali.tqG = h.b(localContext, i.this.context.getString(2131755936), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
             AppMethodBeat.i(52015);
-            com.tencent.mm.kernel.g.agi().a(i.this.xho);
-            i.this.sue = null;
+            com.tencent.mm.kernel.g.aiU().a(i.this.yvp);
+            i.this.tqG = null;
             AppMethodBeat.o(52015);
           }
         });
@@ -62,40 +63,40 @@ public final class i
     localIntent.putExtra("vertical_scroll", true);
     localIntent.putExtra("geta8key_session_id", paramInt);
     localIntent.putExtra("geta8key_cookie", paramArrayOfByte);
-    com.tencent.mm.plugin.scanner.g.iyx.i(localIntent, this.context);
+    com.tencent.mm.plugin.scanner.g.iRG.i(localIntent, this.context);
     AppMethodBeat.o(52018);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(52019);
-    this.vNQ.stopTimer();
-    if (this.sue != null) {
-      this.sue.dismiss();
+    this.wUZ.stopTimer();
+    if (this.tqG != null) {
+      this.tqG.dismiss();
     }
-    com.tencent.mm.kernel.g.agi().b(233, this);
+    com.tencent.mm.kernel.g.aiU().b(233, this);
     paramString = (k)paramn;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramn = paramString.aHg();
+      paramn = paramString.aKr();
       if ((paramn == null) || (paramn.length() == 0))
       {
-        b(this.url, paramString.aHo(), paramString.aHq());
+        b(this.url, paramString.aKz(), paramString.aKB());
         AppMethodBeat.o(52019);
         return;
       }
-      b(paramn, paramString.aHo(), paramString.aHq());
+      b(paramn, paramString.aKz(), paramString.aKB());
       AppMethodBeat.o(52019);
       return;
     }
-    ac.e("MicroMsg.scanner.ViewMMURL", "getA8Key fail, errType = " + paramInt1 + ", errCode = " + paramInt2);
-    b(this.url, paramString.aHo(), paramString.aHq());
+    ad.e("MicroMsg.scanner.ViewMMURL", "getA8Key fail, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    b(this.url, paramString.aKz(), paramString.aKB());
     AppMethodBeat.o(52019);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.i
  * JD-Core Version:    0.7.0.1
  */

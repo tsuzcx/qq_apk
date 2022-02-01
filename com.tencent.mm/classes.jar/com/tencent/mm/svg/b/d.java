@@ -2,11 +2,11 @@ package com.tencent.mm.svg.b;
 
 public final class d
 {
-  private static a Hdu = null;
+  private static a IQK = null;
   
-  public static void fed() {}
+  public static void ful() {}
   
-  public static void fee() {}
+  public static void fum() {}
   
   public static abstract interface a {}
 }

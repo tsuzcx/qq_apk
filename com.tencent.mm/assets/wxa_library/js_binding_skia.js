@@ -1,8 +1,6 @@
 
 ;(function(global) {
     try {
-        global.binding("skiacanvas", "preload");
-
         NativeGlobal = typeof NativeGlobal === 'object' ? NativeGlobal : {};
 
         // new
@@ -13,6 +11,8 @@
         NativeGlobal.SkiaImageData = global.ImageData;
         NativeGlobal.SkiaPath2D = global.Path2D;
         NativeGlobal.SkiaCanvasLoadNewFont = global.skiacanvasLoadNewFont;
+        NativeGlobal.SkiaCanvasRequestAnimationFrame = global.skiacanvasRequestAnimationFrame;
+        NativeGlobal.SkiaCanvasCancelAnimationFrame = global.skiacanvasCancelAnimationFrame;
 
         //NativeGlobal.globalSkiaCanvasView = new global.CanvasView(3);
         //console.log("skia globalSkiaCanvasView", NativeGlobal.globalSkiaCanvasView.id);

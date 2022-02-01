@@ -6,12 +6,12 @@ import java.io.Serializable;
 public final class e<K, V>
   implements Serializable
 {
-  public final K aGF;
+  public final K aIw;
   public final V value;
   
   public e(K paramK, V paramV)
   {
-    this.aGF = paramK;
+    this.aIw = paramK;
     this.value = paramV;
   }
   
@@ -24,9 +24,9 @@ public final class e<K, V>
       return false;
     }
     paramObject = (e)paramObject;
-    if (this.aGF == null)
+    if (this.aIw == null)
     {
-      if (paramObject.aGF != null) {
+      if (paramObject.aIw != null) {
         break label73;
       }
       if (this.value != null) {
@@ -40,7 +40,7 @@ public final class e<K, V>
     {
       AppMethodBeat.o(61439);
       return true;
-      if (this.aGF.equals(paramObject.aGF)) {
+      if (this.aIw.equals(paramObject.aIw)) {
         break;
       }
       label73:
@@ -58,7 +58,7 @@ public final class e<K, V>
     int j = 0;
     AppMethodBeat.i(61440);
     int i;
-    if (this.aGF == null)
+    if (this.aIw == null)
     {
       i = 0;
       if (this.value != null) {
@@ -69,7 +69,7 @@ public final class e<K, V>
     {
       AppMethodBeat.o(61440);
       return i ^ j;
-      i = this.aGF.hashCode();
+      i = this.aIw.hashCode();
       break;
       label43:
       j = this.value.hashCode();
@@ -79,7 +79,7 @@ public final class e<K, V>
   public final String toString()
   {
     AppMethodBeat.i(61441);
-    String str = this.aGF + "=" + this.value;
+    String str = this.aIw + "=" + this.value;
     AppMethodBeat.o(61441);
     return str;
   }

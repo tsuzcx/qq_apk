@@ -1,164 +1,136 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.widget.Toast;
+import android.app.Activity;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.g.a.cc;
-import com.tencent.mm.g.a.cc.b;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.base.model.c;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.plugin.appbrand.r.a.a;
+import com.tencent.mm.plugin.appbrand.r.a.c;
+import com.tencent.mm.plugin.appbrand.r.a.d.b;
+import com.tencent.mm.plugin.appbrand.r.a.e;
+import com.tencent.mm.plugin.appbrand.r.a.e.b;
+import d.g.b.p;
+import d.l;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/WindowFullscreenHandlerViewImpl;", "Lcom/tencent/mm/plugin/appbrand/platform/window/AbsWindowFullscreenHandler;", "windowAndroid", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;", "containerProvider", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowFullscreenHandler$FullScreenViewContainerProvider;", "activity", "Landroid/app/Activity;", "(Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;Lcom/tencent/mm/plugin/appbrand/platform/window/WindowFullscreenHandler$FullScreenViewContainerProvider;Landroid/app/Activity;)V", "getActivity", "()Landroid/app/Activity;", "setActivity", "(Landroid/app/Activity;)V", "isInFullScreen", "", "()Z", "setInFullScreen", "(Z)V", "lastActivityOrientation", "", "lastWindowOrientation", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "getWindowAndroid", "()Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;", "enterFullscreen", "", "view", "Landroid/view/View;", "direction", "exitFullscreen", "parserOrientation", "orientation", "", "release", "setRequestedFullscreenDirection", "luggage-wxa-app_release"})
 public final class as
-  extends av
+  extends a
 {
-  protected final void a(Context paramContext, Intent paramIntent, boolean paramBoolean)
+  private Activity activity;
+  private e.b jBA;
+  private int jBB;
+  boolean jBC;
+  private final c jBD;
+  
+  public as(c paramc, d.b paramb, Activity paramActivity)
   {
-    AppMethodBeat.i(43999);
-    if (!paramBoolean)
+    super(paramc, paramb);
+    AppMethodBeat.i(197496);
+    this.jBD = paramc;
+    this.activity = paramActivity;
+    this.jBA = e.b.moG;
+    this.jBB = 1;
+    AppMethodBeat.o(197496);
+  }
+  
+  public final void O(View paramView, int paramInt)
+  {
+    AppMethodBeat.i(197493);
+    p.h(paramView, "view");
+    super.O(paramView, paramInt);
+    rK(paramInt);
+    bwJ();
+    this.jBC = true;
+    AppMethodBeat.o(197493);
+  }
+  
+  public final boolean aXV()
+  {
+    AppMethodBeat.i(197495);
+    boolean bool = this.moC;
+    if (bool) {
+      this.jBC = false;
+    }
+    if (super.aXV())
     {
-      h.wUl.idkeyStat(443L, 3L, 1L, false);
-      if (Build.VERSION.SDK_INT >= 26)
+      if (e.b.c(this.jBA)) {
+        this.jBD.setSoftOrientation("landscape");
+      }
+      for (;;)
       {
-        String str = c.eu(x.getStringExtra(paramIntent, "id"), q.getAndroidId());
-        if (!com.tencent.mm.ah.m.vC(str))
+        if (this.activity != null)
         {
-          ac.e("MiroMsg.WxaLauncherShortcutEntry", "jump to Wxa with androidId decode failed, username %s invalid , try to decode with imei", new Object[] { str });
-          if (com.tencent.mm.ah.m.vC(c.SY(x.getStringExtra(paramIntent, "id"))))
-          {
-            b(paramContext, paramIntent, false);
-            AppMethodBeat.o(43999);
-            return;
+          Activity localActivity = this.activity;
+          if (localActivity == null) {
+            p.gfZ();
           }
-          Toast.makeText(paramContext, paramContext.getString(2131766299), 1).show();
+          localActivity.setRequestedOrientation(this.jBB);
         }
+        bwK();
+        AppMethodBeat.o(197495);
+        return true;
+        this.jBD.setSoftOrientation("portrait");
       }
     }
-    AppMethodBeat.o(43999);
+    if (bool)
+    {
+      this.moC = false;
+      bwK();
+      AppMethodBeat.o(197495);
+      return true;
+    }
+    AppMethodBeat.o(197495);
+    return false;
   }
   
-  protected final void b(final Context paramContext, Intent paramIntent, final boolean paramBoolean)
+  public final void rK(int paramInt)
   {
-    AppMethodBeat.i(44000);
-    super.b(paramContext, paramIntent, paramBoolean);
-    if (paramBoolean) {}
-    final int i;
-    final WxaAttributes localWxaAttributes;
-    for (String str = c.eu(x.getStringExtra(paramIntent, "id"), q.getAndroidId());; str = c.SY(x.getStringExtra(paramIntent, "id")))
+    AppMethodBeat.i(197492);
+    this.moC = true;
+    if ((paramInt == 90) || (paramInt == -90)) {}
+    for (Object localObject1 = "landscape";; localObject1 = "portrait")
     {
-      i = x.getIntExtra(paramIntent, "ext_info_1", 0);
-      localObject1 = x.getStringExtra(paramIntent, "digest");
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label247;
-      }
-      try
+      Object localObject2 = this.jBD.getOrientationHandler();
+      p.g(localObject2, "windowAndroid.orientationHandler");
+      localObject2 = ((e)localObject2).aXN();
+      p.g(localObject2, "windowAndroid.orientatio…andler.currentOrientation");
+      this.jBA = ((e.b)localObject2);
+      this.jBD.setSoftOrientation((String)localObject1);
+      if ((this.activity != null) && (p.i(localObject1, "landscape")))
       {
-        localWxaAttributes = ((com.tencent.mm.plugin.appbrand.service.m)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.m.class)).Ka(str);
-        if (localWxaAttributes != null) {
-          break;
+        localObject1 = this.activity;
+        if (localObject1 == null) {
+          p.gfZ();
         }
-        ac.e("MiroMsg.WxaLauncherShortcutEntry", "no such WeApp(%s)", new Object[] { str });
-        AppMethodBeat.o(44000);
-        return;
-      }
-      catch (NullPointerException paramContext)
-      {
-        ac.e("MiroMsg.WxaLauncherShortcutEntry", "query attrs with username[%s], e=%s", new Object[] { str, paramContext });
-        AppMethodBeat.o(44000);
-        return;
-      }
-    }
-    Object localObject2 = localWxaAttributes.field_nickname;
-    if (!((String)localObject1).equals(com.tencent.mm.b.g.getMessageDigest(((String)localObject2 + localWxaAttributes.field_roundedSquareIconURL + localWxaAttributes.field_brandIconURL + localWxaAttributes.field_bigHeadURL).getBytes())))
-    {
-      ac.i("MiroMsg.WxaLauncherShortcutEntry", "update shortcut for wxa(%s)", new Object[] { str });
-      if (paramContext != null) {
-        break label270;
-      }
-      ac.e("MicroMsg.AppBrandShortcutManager", "remove fail, context or username is null.");
-    }
-    for (;;)
-    {
-      ap.n(new Runnable()
-      {
-        public final void run()
+        if (!e.b.c(e.b.vc(((Activity)localObject1).getRequestedOrientation())))
         {
-          AppMethodBeat.i(43997);
-          com.tencent.mm.kernel.g.agP();
-          int i = com.tencent.mm.kernel.a.getUin();
-          Object localObject = localWxaAttributes.field_roundedSquareIconURL;
-          String str1 = localWxaAttributes.field_brandIconURL;
-          String str2 = localWxaAttributes.field_bigHeadURL;
-          String str3 = localWxaAttributes.field_nickname;
-          String str4 = localWxaAttributes.field_appId;
-          String str5 = localWxaAttributes.field_username;
-          localObject = new t.a(i, new String[] { localObject, str1, str2 }, str3, str4, str5);
-          t.a(paramContext, (t.a)localObject, i, paramBoolean);
-          AppMethodBeat.o(43997);
+          localObject1 = this.activity;
+          if (localObject1 == null) {
+            p.gfZ();
+          }
+          this.jBB = ((Activity)localObject1).getRequestedOrientation();
+          localObject1 = this.activity;
+          if (localObject1 == null) {
+            p.gfZ();
+          }
+          ((Activity)localObject1).setRequestedOrientation(6);
         }
-      }, 1000L);
-      label247:
-      paramIntent.putExtra("type", 0);
-      paramIntent.putExtra("id", "");
-      AppMethodBeat.o(44000);
+      }
+      AppMethodBeat.o(197492);
       return;
-      label270:
-      if (paramIntent == null)
-      {
-        ac.e("MicroMsg.AppBrandShortcutManager", "remove fail, intent is null");
-      }
-      else
-      {
-        localObject1 = new cc();
-        ((cc)localObject1).dbE.username = str;
-        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
-        if (((cc)localObject1).dbF.ccP != null) {
-          break;
-        }
-        ac.e("MicroMsg.AppBrandShortcutManager", "no such WeApp(%s)", new Object[] { str });
-      }
-    }
-    if (TextUtils.isEmpty(((cc)localObject1).dbF.nickname)) {}
-    for (Object localObject1 = str;; localObject1 = ((cc)localObject1).dbF.nickname)
-    {
-      localObject2 = new Intent("com.android.launcher.action.UNINSTALL_SHORTCUT");
-      ((Intent)localObject2).putExtra("android.intent.extra.shortcut.NAME", (String)localObject1);
-      ((Intent)localObject2).putExtra("duplicate", false);
-      ((Intent)localObject2).putExtra("android.intent.extra.shortcut.INTENT", paramIntent);
-      com.tencent.mm.plugin.base.model.b.q(paramContext, (Intent)localObject2);
-      ac.i("MicroMsg.AppBrandShortcutManager", "remove shortcut %s", new Object[] { str });
-      break;
     }
   }
   
-  public final int getType()
+  public final void release()
   {
-    return 1;
-  }
-  
-  public final void k(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(43998);
-    h.wUl.idkeyStat(443L, 2L, 1L, false);
-    super.k(paramContext, paramIntent);
-    AppMethodBeat.o(43998);
-  }
-  
-  protected final int z(Intent paramIntent)
-  {
-    return 1023;
+    AppMethodBeat.i(197494);
+    super.release();
+    this.activity = null;
+    AppMethodBeat.o(197494);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.as
  * JD-Core Version:    0.7.0.1
  */

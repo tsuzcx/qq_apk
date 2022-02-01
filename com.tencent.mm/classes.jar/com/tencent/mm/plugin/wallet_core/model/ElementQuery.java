@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -13,171 +13,171 @@ import org.json.JSONObject;
 public class ElementQuery
   implements Parcelable
 {
-  public static String BvO;
   public static final Parcelable.Creator<ElementQuery> CREATOR;
-  public int BoU;
-  public String BtG;
-  public String BvP;
-  public boolean BvQ;
-  public boolean BvR;
-  public boolean BvS;
-  public boolean BvT;
-  public String BvU;
-  public String BvV;
-  public boolean BvW;
-  public int BvX;
-  public int BvY;
-  public String BvZ;
-  public String Bwa;
-  public String Bwb;
-  public String Bwc;
-  public String Bwd;
-  public String Bwe;
-  public boolean Bwf;
-  public boolean Bwg;
-  public boolean Bwh;
-  public boolean Bwi;
-  public boolean Bwj;
-  public boolean Bwk;
-  public boolean Bwl;
-  public boolean Bwm;
-  public boolean Bwn;
-  public String Bwo;
-  private List<Integer> Bwp;
-  public boolean Bwq;
-  public String Bwr;
-  public int Bws;
-  public ArrayList<CreTypeRuleInfo> Bwt;
-  public boolean Bwu;
-  public JSONObject cFq;
-  public String cZz;
-  public String tGS;
-  public String vwo;
+  public static String CWe;
+  public int CPj;
+  public String CTV;
+  public boolean CWA;
+  public boolean CWB;
+  public boolean CWC;
+  public boolean CWD;
+  public String CWE;
+  private List<Integer> CWF;
+  public boolean CWG;
+  public String CWH;
+  public int CWI;
+  public ArrayList<CreTypeRuleInfo> CWJ;
+  public boolean CWK;
+  public String CWf;
+  public boolean CWg;
+  public boolean CWh;
+  public boolean CWi;
+  public boolean CWj;
+  public String CWk;
+  public String CWl;
+  public boolean CWm;
+  public int CWn;
+  public int CWo;
+  public String CWp;
+  public String CWq;
+  public String CWr;
+  public String CWs;
+  public String CWt;
+  public String CWu;
+  public boolean CWv;
+  public boolean CWw;
+  public boolean CWx;
+  public boolean CWy;
+  public boolean CWz;
+  public JSONObject cQv;
+  public String dkR;
+  public String uJF;
+  public String wBI;
   
   static
   {
     AppMethodBeat.i(70274);
-    BvO = "bind_serial";
+    CWe = "bind_serial";
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(70274);
   }
   
   public ElementQuery()
   {
-    this.Bwp = null;
-    this.Bwu = false;
+    this.CWF = null;
+    this.CWK = false;
   }
   
   public ElementQuery(Parcel paramParcel)
   {
     AppMethodBeat.i(70272);
-    this.Bwp = null;
-    this.Bwu = false;
-    this.vwo = paramParcel.readString();
-    this.tGS = paramParcel.readString();
-    this.BvP = paramParcel.readString();
+    this.CWF = null;
+    this.CWK = false;
+    this.wBI = paramParcel.readString();
+    this.uJF = paramParcel.readString();
+    this.CWf = paramParcel.readString();
     if (1 == paramParcel.readInt())
     {
       bool1 = true;
-      this.BvQ = bool1;
+      this.CWg = bool1;
       if (1 != paramParcel.readInt()) {
         break label437;
       }
       bool1 = true;
       label70:
-      this.BvR = bool1;
+      this.CWh = bool1;
       if (1 != paramParcel.readInt()) {
         break label442;
       }
       bool1 = true;
       label85:
-      this.BvS = bool1;
+      this.CWi = bool1;
       if (1 != paramParcel.readInt()) {
         break label447;
       }
       bool1 = true;
       label100:
-      this.BvT = bool1;
-      this.BvV = paramParcel.readString();
-      this.vwo = paramParcel.readString();
+      this.CWj = bool1;
+      this.CWl = paramParcel.readString();
+      this.wBI = paramParcel.readString();
       if (1 != paramParcel.readInt()) {
         break label452;
       }
       bool1 = true;
       label131:
-      this.BvW = bool1;
-      this.BvX = paramParcel.readInt();
-      this.BvY = paramParcel.readInt();
-      this.cZz = paramParcel.readString();
-      this.BvZ = paramParcel.readString();
-      this.Bwa = paramParcel.readString();
-      this.Bwb = paramParcel.readString();
-      this.Bwe = paramParcel.readString();
-      this.Bwd = paramParcel.readString();
-      this.Bwc = paramParcel.readString();
+      this.CWm = bool1;
+      this.CWn = paramParcel.readInt();
+      this.CWo = paramParcel.readInt();
+      this.dkR = paramParcel.readString();
+      this.CWp = paramParcel.readString();
+      this.CWq = paramParcel.readString();
+      this.CWr = paramParcel.readString();
+      this.CWu = paramParcel.readString();
+      this.CWt = paramParcel.readString();
+      this.CWs = paramParcel.readString();
       if (1 != paramParcel.readInt()) {
         break label457;
       }
       bool1 = true;
       label218:
-      this.Bwf = bool1;
+      this.CWv = bool1;
       if (1 != paramParcel.readInt()) {
         break label462;
       }
       bool1 = true;
       label233:
-      this.Bwg = bool1;
+      this.CWw = bool1;
       if (1 != paramParcel.readInt()) {
         break label467;
       }
       bool1 = true;
       label248:
-      this.Bwh = bool1;
+      this.CWx = bool1;
       if (1 != paramParcel.readInt()) {
         break label472;
       }
       bool1 = true;
       label263:
-      this.Bwi = bool1;
+      this.CWy = bool1;
       if (1 != paramParcel.readInt()) {
         break label477;
       }
       bool1 = true;
       label278:
-      this.Bwj = bool1;
+      this.CWz = bool1;
       if (1 != paramParcel.readInt()) {
         break label482;
       }
       bool1 = true;
       label293:
-      this.Bwk = bool1;
+      this.CWA = bool1;
       if (1 != paramParcel.readInt()) {
         break label487;
       }
       bool1 = true;
       label308:
-      this.Bwm = bool1;
+      this.CWC = bool1;
       if (1 != paramParcel.readInt()) {
         break label492;
       }
       bool1 = true;
       label323:
-      this.Bwl = bool1;
+      this.CWB = bool1;
       if (1 != paramParcel.readInt()) {
         break label497;
       }
       bool1 = true;
       label338:
-      this.Bwn = bool1;
-      this.BoU = paramParcel.readInt();
-      this.Bwo = paramParcel.readString();
+      this.CWD = bool1;
+      this.CPj = paramParcel.readInt();
+      this.CWE = paramParcel.readString();
       if (1 != paramParcel.readInt()) {
         break label502;
       }
       bool1 = true;
       label369:
-      this.Bwu = bool1;
-      this.BtG = paramParcel.readString();
+      this.CWK = bool1;
+      this.CTV = paramParcel.readString();
       if (1 != paramParcel.readInt()) {
         break label507;
       }
@@ -199,10 +199,10 @@ public class ElementQuery
     label507:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.Bwq = bool1;
-      this.Bwr = paramParcel.readString();
-      this.Bws = paramParcel.readInt();
-      this.Bwt = paramParcel.readArrayList(CreTypeRuleInfo.class.getClassLoader());
+      this.CWG = bool1;
+      this.CWH = paramParcel.readString();
+      this.CWI = paramParcel.readInt();
+      this.CWJ = paramParcel.readArrayList(CreTypeRuleInfo.class.getClassLoader());
       AppMethodBeat.o(70272);
       return;
       bool1 = false;
@@ -238,7 +238,7 @@ public class ElementQuery
     }
   }
   
-  public static ArrayList<CreTypeRuleInfo> aY(JSONObject paramJSONObject)
+  public static ArrayList<CreTypeRuleInfo> bg(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70271);
     ArrayList localArrayList = new ArrayList();
@@ -251,7 +251,7 @@ public class ElementQuery
         int i = 0;
         while (i < j)
         {
-          CreTypeRuleInfo localCreTypeRuleInfo = CreTypeRuleInfo.aW(paramJSONObject.optJSONObject(i));
+          CreTypeRuleInfo localCreTypeRuleInfo = CreTypeRuleInfo.be(paramJSONObject.optJSONObject(i));
           if (localCreTypeRuleInfo != null) {
             localArrayList.add(localCreTypeRuleInfo);
           }
@@ -268,41 +268,41 @@ public class ElementQuery
     return 0;
   }
   
-  public final boolean eqT()
+  public final boolean eET()
   {
-    return 2 == this.BvY;
+    return 2 == this.CWo;
   }
   
-  public final boolean erh()
+  public final boolean eFh()
   {
-    return 1 == this.BvY;
+    return 1 == this.CWo;
   }
   
-  public final List<Integer> eri()
+  public final List<Integer> eFi()
   {
     AppMethodBeat.i(70270);
     Object localObject;
-    if (this.Bwp != null)
+    if (this.CWF != null)
     {
-      localObject = this.Bwp;
+      localObject = this.CWF;
       AppMethodBeat.o(70270);
       return localObject;
     }
-    if (!bs.isNullOrNil(this.Bwo))
+    if (!bt.isNullOrNil(this.CWE))
     {
-      this.Bwp = new ArrayList();
-      localObject = this.Bwo.split("\\|");
+      this.CWF = new ArrayList();
+      localObject = this.CWE.split("\\|");
       int j = localObject.length;
       int i = 0;
       while (i < j)
       {
-        int k = bs.getInt(localObject[i], 0);
+        int k = bt.getInt(localObject[i], 0);
         if (k > 0) {
-          this.Bwp.add(Integer.valueOf(k));
+          this.CWF.add(Integer.valueOf(k));
         }
         i += 1;
       }
-      localObject = this.Bwp;
+      localObject = this.CWF;
       AppMethodBeat.o(70270);
       return localObject;
     }
@@ -313,7 +313,7 @@ public class ElementQuery
   public final boolean isError()
   {
     AppMethodBeat.i(70269);
-    boolean bool = "0".equals(bs.bG(this.Bwa, "").trim());
+    boolean bool = "0".equals(bt.bI(this.CWq, "").trim());
     AppMethodBeat.o(70269);
     return bool;
   }
@@ -322,112 +322,112 @@ public class ElementQuery
   {
     int i = 1;
     AppMethodBeat.i(70273);
-    paramParcel.writeString(bs.bG(this.vwo, ""));
-    paramParcel.writeString(bs.bG(this.tGS, ""));
-    paramParcel.writeString(bs.bG(this.BvP, ""));
-    if (this.BvQ)
+    paramParcel.writeString(bt.bI(this.wBI, ""));
+    paramParcel.writeString(bt.bI(this.uJF, ""));
+    paramParcel.writeString(bt.bI(this.CWf, ""));
+    if (this.CWg)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.BvR) {
+      if (!this.CWh) {
         break label464;
       }
       paramInt = 1;
       label70:
       paramParcel.writeInt(paramInt);
-      if (!this.BvS) {
+      if (!this.CWi) {
         break label469;
       }
       paramInt = 1;
       label84:
       paramParcel.writeInt(paramInt);
-      if (!this.BvT) {
+      if (!this.CWj) {
         break label474;
       }
       paramInt = 1;
       label98:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(bs.bG(this.BvV, ""));
-      paramParcel.writeString(bs.bG(this.vwo, ""));
-      if (!this.BvW) {
+      paramParcel.writeString(bt.bI(this.CWl, ""));
+      paramParcel.writeString(bt.bI(this.wBI, ""));
+      if (!this.CWm) {
         break label479;
       }
       paramInt = 1;
       label138:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.BvX);
-      paramParcel.writeInt(this.BvY);
-      paramParcel.writeString(bs.bG(this.cZz, ""));
-      paramParcel.writeString(bs.bG(this.BvZ, ""));
-      paramParcel.writeString(bs.bG(this.Bwa, ""));
-      paramParcel.writeString(bs.bG(this.Bwb, ""));
-      paramParcel.writeString(bs.bG(this.Bwe, ""));
-      paramParcel.writeString(bs.bG(this.Bwd, ""));
-      paramParcel.writeString(bs.bG(this.Bwc, ""));
-      if (!this.Bwf) {
+      paramParcel.writeInt(this.CWn);
+      paramParcel.writeInt(this.CWo);
+      paramParcel.writeString(bt.bI(this.dkR, ""));
+      paramParcel.writeString(bt.bI(this.CWp, ""));
+      paramParcel.writeString(bt.bI(this.CWq, ""));
+      paramParcel.writeString(bt.bI(this.CWr, ""));
+      paramParcel.writeString(bt.bI(this.CWu, ""));
+      paramParcel.writeString(bt.bI(this.CWt, ""));
+      paramParcel.writeString(bt.bI(this.CWs, ""));
+      if (!this.CWv) {
         break label484;
       }
       paramInt = 1;
       label259:
       paramParcel.writeInt(paramInt);
-      if (!this.Bwg) {
+      if (!this.CWw) {
         break label489;
       }
       paramInt = 1;
       label273:
       paramParcel.writeInt(paramInt);
-      if (!this.Bwh) {
+      if (!this.CWx) {
         break label494;
       }
       paramInt = 1;
       label287:
       paramParcel.writeInt(paramInt);
-      if (!this.Bwi) {
+      if (!this.CWy) {
         break label499;
       }
       paramInt = 1;
       label301:
       paramParcel.writeInt(paramInt);
-      if (!this.Bwj) {
+      if (!this.CWz) {
         break label504;
       }
       paramInt = 1;
       label315:
       paramParcel.writeInt(paramInt);
-      if (!this.Bwk) {
+      if (!this.CWA) {
         break label509;
       }
       paramInt = 1;
       label329:
       paramParcel.writeInt(paramInt);
-      if (!this.Bwm) {
+      if (!this.CWC) {
         break label514;
       }
       paramInt = 1;
       label343:
       paramParcel.writeInt(paramInt);
-      if (!this.Bwl) {
+      if (!this.CWB) {
         break label519;
       }
       paramInt = 1;
       label357:
       paramParcel.writeInt(paramInt);
-      if (!this.Bwn) {
+      if (!this.CWD) {
         break label524;
       }
       paramInt = 1;
       label371:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.BoU);
-      paramParcel.writeString(this.Bwo);
-      if (!this.Bwu) {
+      paramParcel.writeInt(this.CPj);
+      paramParcel.writeString(this.CWE);
+      if (!this.CWK) {
         break label529;
       }
       paramInt = 1;
       label401:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.BtG);
-      if (!this.Bwq) {
+      paramParcel.writeString(this.CTV);
+      if (!this.CWG) {
         break label534;
       }
     }
@@ -439,9 +439,9 @@ public class ElementQuery
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.Bwr);
-      paramParcel.writeInt(this.Bws);
-      paramParcel.writeList(this.Bwt);
+      paramParcel.writeString(this.CWH);
+      paramParcel.writeInt(this.CWI);
+      paramParcel.writeList(this.CWJ);
       AppMethodBeat.o(70273);
       return;
       paramInt = 0;

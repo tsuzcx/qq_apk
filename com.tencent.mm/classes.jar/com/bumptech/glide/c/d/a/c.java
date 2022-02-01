@@ -11,27 +11,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   implements l<Bitmap>
 {
-  public static final i<Integer> aJb;
-  public static final i<Bitmap.CompressFormat> aJc;
-  private final b aAy;
+  public static final i<Integer> aKS;
+  public static final i<Bitmap.CompressFormat> aKT;
+  private final b aCp;
   
   static
   {
     AppMethodBeat.i(77355);
-    aJb = i.b("com.bumptech.glide.load.resource.bitmap.BitmapEncoder.CompressionQuality", Integer.valueOf(90));
-    aJc = i.Q("com.bumptech.glide.load.resource.bitmap.BitmapEncoder.CompressionFormat");
+    aKS = i.b("com.bumptech.glide.load.resource.bitmap.BitmapEncoder.CompressionQuality", Integer.valueOf(90));
+    aKT = i.P("com.bumptech.glide.load.resource.bitmap.BitmapEncoder.CompressionFormat");
     AppMethodBeat.o(77355);
   }
   
   @Deprecated
   public c()
   {
-    this.aAy = null;
+    this.aCp = null;
   }
   
   public c(b paramb)
   {
-    this.aAy = paramb;
+    this.aCp = paramb;
   }
   
   /* Error */
@@ -45,7 +45,7 @@ public final class c
     //   11: checkcast 72	android/graphics/Bitmap
     //   14: astore 11
     //   16: aload_3
-    //   17: getstatic 47	com/bumptech/glide/c/d/a/c:aJc	Lcom/bumptech/glide/c/i;
+    //   17: getstatic 47	com/bumptech/glide/c/d/a/c:aKT	Lcom/bumptech/glide/c/i;
     //   20: invokevirtual 77	com/bumptech/glide/c/j:a	(Lcom/bumptech/glide/c/i;)Ljava/lang/Object;
     //   23: checkcast 79	android/graphics/Bitmap$CompressFormat
     //   26: astore 8
@@ -57,10 +57,10 @@ public final class c
     //   39: aload 11
     //   41: invokevirtual 86	android/graphics/Bitmap:getHeight	()I
     //   44: pop
-    //   45: invokestatic 92	com/bumptech/glide/h/e:pY	()J
+    //   45: invokestatic 92	com/bumptech/glide/h/e:qq	()J
     //   48: lstore 5
     //   50: aload_3
-    //   51: getstatic 39	com/bumptech/glide/c/d/a/c:aJb	Lcom/bumptech/glide/c/i;
+    //   51: getstatic 39	com/bumptech/glide/c/d/a/c:aKS	Lcom/bumptech/glide/c/i;
     //   54: invokevirtual 77	com/bumptech/glide/c/j:a	(Lcom/bumptech/glide/c/i;)Ljava/lang/Object;
     //   57: checkcast 27	java/lang/Integer
     //   60: invokevirtual 95	java/lang/Integer:intValue	()I
@@ -77,7 +77,7 @@ public final class c
     //   81: aload 10
     //   83: astore 9
     //   85: aload_0
-    //   86: getfield 57	com/bumptech/glide/c/d/a/c:aAy	Lcom/bumptech/glide/c/b/a/b;
+    //   86: getfield 57	com/bumptech/glide/c/d/a/c:aCp	Lcom/bumptech/glide/c/b/a/b;
     //   89: ifnull +24 -> 113
     //   92: aload 10
     //   94: astore_1
@@ -87,7 +87,7 @@ public final class c
     //   102: dup
     //   103: aload 10
     //   105: aload_0
-    //   106: getfield 57	com/bumptech/glide/c/d/a/c:aAy	Lcom/bumptech/glide/c/b/a/b;
+    //   106: getfield 57	com/bumptech/glide/c/d/a/c:aCp	Lcom/bumptech/glide/c/b/a/b;
     //   109: invokespecial 105	com/bumptech/glide/c/a/c:<init>	(Ljava/io/OutputStream;Lcom/bumptech/glide/c/b/a/b;)V
     //   112: astore_2
     //   113: aload_2
@@ -133,7 +133,7 @@ public final class c
     //   194: ldc 158
     //   196: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   199: aload_3
-    //   200: getstatic 47	com/bumptech/glide/c/d/a/c:aJc	Lcom/bumptech/glide/c/i;
+    //   200: getstatic 47	com/bumptech/glide/c/d/a/c:aKT	Lcom/bumptech/glide/c/i;
     //   203: invokevirtual 77	com/bumptech/glide/c/j:a	(Lcom/bumptech/glide/c/i;)Ljava/lang/Object;
     //   206: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   209: ldc 160
@@ -243,7 +243,7 @@ public final class c
   
   public final com.bumptech.glide.c.c b(j paramj)
   {
-    return com.bumptech.glide.c.c.aDb;
+    return com.bumptech.glide.c.c.aES;
   }
 }
 

@@ -5,16 +5,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends n
 {
-  static final char[] bJo;
-  static final int[] bJp;
-  private static final char[] bJq;
+  static final char[] bTB;
+  static final int[] bTC;
+  private static final char[] bTD;
   
   static
   {
     AppMethodBeat.i(12390);
-    bJo = "0123456789-$:/.+ABCD".toCharArray();
-    bJp = new int[] { 3, 6, 9, 96, 18, 66, 33, 36, 48, 72, 12, 24, 69, 81, 84, 21, 26, 41, 11, 14 };
-    bJq = new char[] { 65, 66, 67, 68 };
+    bTB = "0123456789-$:/.+ABCD".toCharArray();
+    bTC = new int[] { 3, 6, 9, 96, 18, 66, 33, 36, 48, 72, 12, 24, 69, 81, 84, 21, 26, 41, 11, 14 };
+    bTD = new char[] { 65, 66, 67, 68 };
     AppMethodBeat.o(12390);
   }
   

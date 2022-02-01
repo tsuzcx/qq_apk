@@ -3,136 +3,136 @@ package com.tencent.mm.plugin.sns.k;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cs;
-import com.tencent.mm.g.a.cs.a;
-import com.tencent.mm.g.a.gt;
-import com.tencent.mm.g.a.gt.a;
+import com.tencent.mm.g.a.cv;
+import com.tencent.mm.g.a.cv.a;
+import com.tencent.mm.g.a.gw;
+import com.tencent.mm.g.a.gw.a;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.sight.base.e;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.model.an;
-import com.tencent.mm.plugin.sns.model.au;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ak;
+import com.tencent.mm.plugin.sns.model.ao;
+import com.tencent.mm.plugin.sns.model.av;
 import com.tencent.mm.plugin.sns.storage.h;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.storage.x;
-import com.tencent.mm.plugin.websearch.api.aa;
+import com.tencent.mm.plugin.websearch.api.ae;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.aha;
-import com.tencent.mm.protocal.protobuf.ahf;
-import com.tencent.mm.protocal.protobuf.ahn;
-import com.tencent.mm.protocal.protobuf.aht;
-import com.tencent.mm.protocal.protobuf.aic;
-import com.tencent.mm.protocal.protobuf.bsj;
-import com.tencent.mm.protocal.protobuf.btz;
-import com.tencent.mm.protocal.protobuf.bub;
-import com.tencent.mm.protocal.protobuf.deu;
-import com.tencent.mm.protocal.protobuf.dyo;
-import com.tencent.mm.protocal.protobuf.zf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.protocal.protobuf.abf;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajq;
+import com.tencent.mm.protocal.protobuf.ajv;
+import com.tencent.mm.protocal.protobuf.akd;
+import com.tencent.mm.protocal.protobuf.akj;
+import com.tencent.mm.protocal.protobuf.aks;
+import com.tencent.mm.protocal.protobuf.bww;
+import com.tencent.mm.protocal.protobuf.byn;
+import com.tencent.mm.protocal.protobuf.byp;
+import com.tencent.mm.protocal.protobuf.dkh;
+import com.tencent.mm.protocal.protobuf.eeq;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.g;
 import com.tencent.mm.vfs.i;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class a
 {
-  public static void a(agx paramagx, p paramp)
+  public static void a(ajn paramajn, p paramp)
   {
     AppMethodBeat.i(97662);
     if (paramp != null) {
-      a(paramagx, paramp.dLV());
+      a(paramajn, paramp.dYl());
     }
     AppMethodBeat.o(97662);
   }
   
-  private static void a(agx paramagx, TimeLineObject paramTimeLineObject)
+  public static void a(ajn paramajn, TimeLineObject paramTimeLineObject)
   {
     AppMethodBeat.i(97661);
-    if ((paramagx != null) && (paramTimeLineObject != null) && (!bs.isNullOrNil(paramTimeLineObject.yAj))) {
-      paramagx.aJa(paramTimeLineObject.yAj);
+    if ((paramajn != null) && (paramTimeLineObject != null) && (!bt.isNullOrNil(paramTimeLineObject.zRz))) {
+      paramajn.aOD(paramTimeLineObject.zRz);
     }
     AppMethodBeat.o(97661);
   }
   
-  public static boolean a(cs paramcs, p paramp)
+  public static boolean a(cv paramcv, p paramp)
   {
     AppMethodBeat.i(97654);
     if (paramp == null)
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill sight favorite event fail, event is null or tlObj is null");
-      paramcs.dck.dcp = 2131758885;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill sight favorite event fail, event is null or tlObj is null");
+      paramcv.dnG.dnL = 2131758885;
       AppMethodBeat.o(97654);
       return false;
     }
-    ahn localahn = new ahn();
-    Object localObject2 = new aht();
-    TimeLineObject localTimeLineObject = paramp.dLV();
-    btz localbtz = (btz)localTimeLineObject.FQo.Etz.get(0);
-    if ((paramp.Pe(32)) && (localTimeLineObject.FQo.Ety == 15))
+    akd localakd = new akd();
+    Object localObject2 = new akj();
+    TimeLineObject localTimeLineObject = paramp.dYl();
+    byn localbyn = (byn)localTimeLineObject.HAT.GaQ.get(0);
+    if ((paramp.QM(32)) && (localTimeLineObject.HAT.GaP == 15))
     {
-      localTimeLineObject.FQt.hkb = paramp.dFQ().dtx;
-      localTimeLineObject.FQt.hkc = localTimeLineObject.Id;
+      localTimeLineObject.HAY.hCk = paramp.dRK().dFy;
+      localTimeLineObject.HAY.hCl = localTimeLineObject.Id;
     }
-    Object localObject1 = String.format("%s#%s", new Object[] { com.tencent.mm.plugin.sns.data.q.wW(paramp.field_snsId), localbtz.Id });
-    ((aht)localObject2).aJC(paramp.field_userName);
-    ((aht)localObject2).aJD(u.axw());
-    ((aht)localObject2).XV(2);
-    ((aht)localObject2).zY(bs.eWj());
-    ((aht)localObject2).aJH(paramp.getSnsId());
-    ((aht)localObject2).aJE((String)localObject1);
-    localahn.a((aht)localObject2);
-    localObject2 = new agx();
-    ((agx)localObject2).aIU((String)localObject1);
-    localObject1 = an.jc(af.getAccSnsPath(), localbtz.Id);
-    Object localObject4 = com.tencent.mm.plugin.sns.data.q.i(localbtz);
-    Object localObject3 = com.tencent.mm.plugin.sns.data.q.d(localbtz);
-    if (bs.isNullOrNil(au.a(paramp.dMu(), localbtz)))
+    Object localObject1 = String.format("%s#%s", new Object[] { com.tencent.mm.plugin.sns.data.q.zw(paramp.field_snsId), localbyn.Id });
+    ((akj)localObject2).aPf(paramp.field_userName);
+    ((akj)localObject2).aPg(u.aAm());
+    ((akj)localObject2).ZR(2);
+    ((akj)localObject2).CM(bt.flT());
+    ((akj)localObject2).aPk(paramp.getSnsId());
+    ((akj)localObject2).aPh((String)localObject1);
+    localakd.a((akj)localObject2);
+    localObject2 = new ajn();
+    ((ajn)localObject2).aOx((String)localObject1);
+    localObject1 = ao.jo(ag.getAccSnsPath(), localbyn.Id);
+    Object localObject4 = com.tencent.mm.plugin.sns.data.q.i(localbyn);
+    Object localObject3 = com.tencent.mm.plugin.sns.data.q.d(localbyn);
+    if (bt.isNullOrNil(av.a(paramp.dYK(), localbyn)))
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "this sight had no download finish, can not favorite.");
-      paramcs.dck.dcp = 2131758902;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "this sight had no download finish, can not favorite.");
+      paramcv.dnG.dnL = 2131758902;
       AppMethodBeat.o(97654);
       return false;
     }
-    if (!i.eA((String)localObject1 + (String)localObject4))
+    if (!i.fv((String)localObject1 + (String)localObject4))
     {
-      ac.i("MicroMsg.Sns.GetFavDataSource", "fav error sight: " + i.eA(new StringBuilder().append((String)localObject1).append((String)localObject4).toString()) + " thumb:" + i.eA(new StringBuilder().append((String)localObject1).append((String)localObject3).toString()));
-      paramcs.dck.dcp = 2131758902;
+      ad.i("MicroMsg.Sns.GetFavDataSource", "fav error sight: " + i.fv(new StringBuilder().append((String)localObject1).append((String)localObject4).toString()) + " thumb:" + i.fv(new StringBuilder().append((String)localObject1).append((String)localObject3).toString()));
+      paramcv.dnG.dnL = 2131758902;
       AppMethodBeat.o(97654);
       return false;
     }
     int j;
     int i;
     Bitmap localBitmap;
-    if (!i.eA((String)localObject1 + (String)localObject3))
+    if (!i.fv((String)localObject1 + (String)localObject3))
     {
       int k = 320;
       int m = 240;
       j = m;
       i = k;
-      if (localbtz.Fjk != null)
+      if (localbyn.GSL != null)
       {
         j = m;
         i = k;
-        if (localbtz.Fjk.FjZ > 0.0F)
+        if (localbyn.GSL.GTA > 0.0F)
         {
           j = m;
           i = k;
-          if (localbtz.Fjk.FjY > 0.0F)
+          if (localbyn.GSL.GTz > 0.0F)
           {
-            i = (int)localbtz.Fjk.FjY;
-            j = (int)localbtz.Fjk.FjZ;
+            i = (int)localbyn.GSL.GTz;
+            j = (int)localbyn.GSL.GTA;
           }
         }
       }
-      localBitmap = e.as((String)localObject1 + (String)localObject4, i, j);
+      localBitmap = e.av((String)localObject1 + (String)localObject4, i, j);
       if (localBitmap == null)
       {
-        ac.i("MicroMsg.Sns.GetFavDataSource", "fav error on get thumb:" + i.eA(new StringBuilder().append((String)localObject1).append((String)localObject3).toString()));
-        paramcs.dck.dcp = 2131758902;
+        ad.i("MicroMsg.Sns.GetFavDataSource", "fav error on get thumb:" + i.fv(new StringBuilder().append((String)localObject1).append((String)localObject3).toString()));
+        paramcv.dnG.dnL = 2131758902;
         AppMethodBeat.o(97654);
         return false;
       }
@@ -141,501 +141,501 @@ public final class a
     {
       try
       {
-        f.a(localBitmap, 60, Bitmap.CompressFormat.JPEG, (String)localObject1 + (String)localObject3, true);
-        ((agx)localObject2).aIQ((String)localObject1 + (String)localObject4);
-        ((agx)localObject2).aIR((String)localObject1 + (String)localObject3);
-        if (bs.isNullOrNil(localbtz.Fjs))
+        g.a(localBitmap, 60, Bitmap.CompressFormat.JPEG, (String)localObject1 + (String)localObject3, true);
+        ((ajn)localObject2).aOt((String)localObject1 + (String)localObject4);
+        ((ajn)localObject2).aOu((String)localObject1 + (String)localObject3);
+        if (bt.isNullOrNil(localbyn.GST))
         {
-          localObject1 = localTimeLineObject.FQl;
-          ((agx)localObject2).aIC((String)localObject1);
-          ((agx)localObject2).aJb(localTimeLineObject.yCb);
-          if (!bs.isNullOrNil(localTimeLineObject.yCb))
+          localObject1 = localTimeLineObject.HAQ;
+          ((ajn)localObject2).aOf((String)localObject1);
+          ((ajn)localObject2).aOE(localTimeLineObject.zTv);
+          if (!bt.isNullOrNil(localTimeLineObject.zTv))
           {
-            localObject1 = bv.L(localTimeLineObject.yCb, "adxml");
+            localObject1 = bw.M(localTimeLineObject.zTv, "adxml");
             if (((Map)localObject1).size() > 0)
             {
-              ((agx)localObject2).aIC(bs.bG((String)((Map)localObject1).get(".adxml.adCanvasInfo.shareTitle"), ""));
-              ((agx)localObject2).aID(bs.bG((String)((Map)localObject1).get(".adxml.adCanvasInfo.shareDesc"), ""));
+              ((ajn)localObject2).aOf(bt.bI((String)((Map)localObject1).get(".adxml.adCanvasInfo.shareTitle"), ""));
+              ((ajn)localObject2).aOg(bt.bI((String)((Map)localObject1).get(".adxml.adCanvasInfo.shareDesc"), ""));
             }
           }
           j = 4;
-          if (!paramp.Pe(32)) {
+          if (!paramp.QM(32)) {
             break label1254;
           }
-          localObject3 = paramp.dFR();
-          localObject4 = new aha();
-          if (!bs.isNullOrNil(localbtz.Fjs)) {
+          localObject3 = paramp.dRL();
+          localObject4 = new ajq();
+          if (!bt.isNullOrNil(localbyn.GST)) {
             break label1224;
           }
-          localObject1 = localTimeLineObject.FQl;
-          ((aha)localObject4).hjX = ((String)localObject1);
-          ((aha)localObject4).EBs = localbtz.yYY;
-          ((aha)localObject4).hjV = localbtz.Fjo;
-          ((aha)localObject4).hkb = localTimeLineObject.FQt.hkb;
-          ((aha)localObject4).hkc = localTimeLineObject.FQt.hkc;
-          if (bs.isNullOrNil(((aha)localObject4).hkc)) {
-            ((aha)localObject4).hkc = localTimeLineObject.Id;
+          localObject1 = localTimeLineObject.HAQ;
+          ((ajq)localObject4).hCg = ((String)localObject1);
+          ((ajq)localObject4).Gje = localbyn.AqM;
+          ((ajq)localObject4).hCe = localbyn.GSP;
+          ((ajq)localObject4).hCk = localTimeLineObject.HAY.hCk;
+          ((ajq)localObject4).hCl = localTimeLineObject.HAY.hCl;
+          if (bt.isNullOrNil(((ajq)localObject4).hCl)) {
+            ((ajq)localObject4).hCl = localTimeLineObject.Id;
           }
-          if (!bs.isNullOrNil(localbtz.Fjr)) {
+          if (!bt.isNullOrNil(localbyn.GSS)) {
             break label1234;
           }
-          localObject1 = localbtz.Fjh;
-          ((aha)localObject4).hka = ((String)localObject1);
-          if ((localObject3 != null) && (((com.tencent.mm.plugin.sns.storage.b)localObject3).yfC == 0))
+          localObject1 = localbyn.GSI;
+          ((ajq)localObject4).hCj = ((String)localObject1);
+          if ((localObject3 != null) && (((com.tencent.mm.plugin.sns.storage.b)localObject3).zvE == 0))
           {
-            ((aha)localObject4).hjZ = ((com.tencent.mm.plugin.sns.storage.b)localObject3).yfE;
-            ((aha)localObject4).hjY = ((com.tencent.mm.plugin.sns.storage.b)localObject3).yfD;
+            ((ajq)localObject4).hCi = ((com.tencent.mm.plugin.sns.storage.b)localObject3).zvG;
+            ((ajq)localObject4).hCh = ((com.tencent.mm.plugin.sns.storage.b)localObject3).zvF;
           }
-          ((agx)localObject2).a((aha)localObject4);
+          ((ajn)localObject2).a((ajq)localObject4);
           i = 16;
           j = 15;
-          ((agx)localObject2).XM(j);
-          localObject1 = e.asx(((agx)localObject2).EzD);
+          ((ajn)localObject2).ZI(j);
+          localObject1 = e.axx(((ajn)localObject2).Ghp);
           if (localObject1 == null) {
             break label1244;
           }
-          ((agx)localObject2).XL(((com.tencent.mm.plugin.sight.base.a)localObject1).getVideoDuration());
+          ((ajn)localObject2).ZH(((com.tencent.mm.plugin.sight.base.a)localObject1).getVideoDuration());
           localObject1 = new LinkedList();
           ((LinkedList)localObject1).add(localObject2);
-          localahn.bk((LinkedList)localObject1);
-          paramcs.dck.dcm = localahn;
-          paramcs.dck.type = i;
-          a((agx)localObject2, paramp);
-          ac.i("MicroMsg.Sns.GetFavDataSource", "fill event Info sight dataType %d eventType %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+          localakd.bl((LinkedList)localObject1);
+          paramcv.dnG.dnI = localakd;
+          paramcv.dnG.type = i;
+          a((ajn)localObject2, paramp);
+          ad.i("MicroMsg.Sns.GetFavDataSource", "fill event Info sight dataType %d eventType %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
           AppMethodBeat.o(97654);
           return true;
         }
       }
       catch (Exception paramp)
       {
-        ac.printErrStackTrace("MicroMsg.Sns.GetFavDataSource", paramp, "save bmp error %s", new Object[] { paramp.getMessage() });
-        ac.i("MicroMsg.Sns.GetFavDataSource", "fav error on save thumb:" + i.eA(new StringBuilder().append((String)localObject1).append((String)localObject3).toString()));
-        paramcs.dck.dcp = 2131758902;
+        ad.printErrStackTrace("MicroMsg.Sns.GetFavDataSource", paramp, "save bmp error %s", new Object[] { paramp.getMessage() });
+        ad.i("MicroMsg.Sns.GetFavDataSource", "fav error on save thumb:" + i.fv(new StringBuilder().append((String)localObject1).append((String)localObject3).toString()));
+        paramcv.dnG.dnL = 2131758902;
         AppMethodBeat.o(97654);
         return false;
       }
-      localObject1 = localbtz.Fjs;
+      localObject1 = localbyn.GST;
       continue;
       label1224:
-      localObject1 = localbtz.Fjs;
+      localObject1 = localbyn.GST;
       continue;
       label1234:
-      localObject1 = localbtz.Fjr;
+      localObject1 = localbyn.GSS;
       continue;
       label1244:
-      ((agx)localObject2).XL(1);
+      ((ajn)localObject2).ZH(1);
       continue;
       label1254:
       i = 4;
     }
   }
   
-  public static boolean a(cs paramcs, p paramp, String paramString)
+  public static boolean a(cv paramcv, p paramp, String paramString)
   {
     AppMethodBeat.i(97659);
-    if ((paramcs == null) || (bs.isNullOrNil(paramString)))
+    if ((paramcv == null) || (bt.isNullOrNil(paramString)))
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or media id is null");
-      if (paramcs != null) {
-        paramcs.dck.dcp = 2131758885;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or media id is null");
+      if (paramcv != null) {
+        paramcv.dnG.dnL = 2131758885;
       }
       AppMethodBeat.o(97659);
       return false;
     }
     if (paramp == null)
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo is null");
-      paramcs.dck.dcp = 2131758886;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo is null");
+      paramcv.dnG.dnL = 2131758886;
       AppMethodBeat.o(97659);
       return false;
     }
-    btz localbtz = aj.a(paramp, paramString);
-    if (localbtz == null)
+    byn localbyn = ak.a(paramp, paramString);
+    if (localbyn == null)
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, mediaObj is null");
-      paramcs.dck.dcp = 2131758886;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, mediaObj is null");
+      paramcv.dnG.dnL = 2131758886;
       AppMethodBeat.o(97659);
       return false;
     }
-    String str = String.format("%s#%s", new Object[] { com.tencent.mm.plugin.sns.data.q.wW(paramp.field_snsId), paramString });
-    ahn localahn = new ahn();
-    aht localaht = new aht();
-    agx localagx = new agx();
-    ac.i("MicroMsg.Sns.GetFavDataSource", "fav sns image, from %s", new Object[] { paramp.field_userName });
-    localaht.aJC(paramp.field_userName);
-    localaht.aJD(u.axw());
-    localaht.XV(2);
-    localaht.zY(paramp.field_createTime * 1000L);
-    localaht.aJH(paramp.getSnsId());
-    localaht.aJE(str);
-    localagx.aIU(str);
-    localagx.aIQ(an.jc(af.getAccSnsPath(), paramString) + com.tencent.mm.plugin.sns.data.q.k(localbtz));
-    if (paramp.dLV() != null)
+    String str = String.format("%s#%s", new Object[] { com.tencent.mm.plugin.sns.data.q.zw(paramp.field_snsId), paramString });
+    akd localakd = new akd();
+    akj localakj = new akj();
+    ajn localajn = new ajn();
+    ad.i("MicroMsg.Sns.GetFavDataSource", "fav sns image, from %s", new Object[] { paramp.field_userName });
+    localakj.aPf(paramp.field_userName);
+    localakj.aPg(u.aAm());
+    localakj.ZR(2);
+    localakj.CM(paramp.field_createTime * 1000L);
+    localakj.aPk(paramp.getSnsId());
+    localakj.aPh(str);
+    localajn.aOx(str);
+    localajn.aOt(ao.jo(ag.getAccSnsPath(), paramString) + com.tencent.mm.plugin.sns.data.q.k(localbyn));
+    if (paramp.dYl() != null)
     {
-      localagx.aJb(paramp.dLV().yCb);
-      if (!bs.isNullOrNil(paramp.dLV().yCb))
+      localajn.aOE(paramp.dYl().zTv);
+      if (!bt.isNullOrNil(paramp.dYl().zTv))
       {
-        paramString = bv.L(paramp.dLV().yCb, "adxml");
+        paramString = bw.M(paramp.dYl().zTv, "adxml");
         if (paramString.size() > 0)
         {
-          localagx.aIC(bs.bG((String)paramString.get(".adxml.adCanvasInfo.shareTitle"), ""));
-          localagx.aID(bs.bG((String)paramString.get(".adxml.adCanvasInfo.shareDesc"), ""));
+          localajn.aOf(bt.bI((String)paramString.get(".adxml.adCanvasInfo.shareTitle"), ""));
+          localajn.aOg(bt.bI((String)paramString.get(".adxml.adCanvasInfo.shareDesc"), ""));
         }
       }
     }
-    a(localagx, paramp);
-    paramString = an.jc(af.getAccSnsPath(), localbtz.Id) + com.tencent.mm.plugin.sns.data.q.d(localbtz);
-    if ((!i.eA(localagx.EzD)) && (paramp.field_userName.endsWith(af.dHx())))
+    a(localajn, paramp);
+    paramString = ao.jo(ag.getAccSnsPath(), localbyn.Id) + com.tencent.mm.plugin.sns.data.q.d(localbyn);
+    if ((!i.fv(localajn.Ghp)) && (paramp.field_userName.endsWith(ag.dTJ())))
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, mediaObj is null");
-      paramcs.dck.dcp = 2131758886;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, mediaObj is null");
+      paramcv.dnG.dnL = 2131758886;
       AppMethodBeat.o(97659);
       return false;
     }
-    if (i.eA(paramString)) {
-      localagx.aIR(paramString);
+    if (i.fv(paramString)) {
+      localajn.aOu(paramString);
     }
     for (;;)
     {
-      localagx.XM(2);
-      localahn.nxC.add(localagx);
-      localahn.a(localaht);
-      paramcs.dck.dcm = localahn;
-      paramcs.dck.type = 2;
+      localajn.ZI(2);
+      localakd.nZa.add(localajn);
+      localakd.a(localakj);
+      paramcv.dnG.dnI = localakd;
+      paramcv.dnG.type = 2;
       AppMethodBeat.o(97659);
       return true;
-      localagx.vz(true);
-      localagx.aIL(localbtz.Fjh);
-      paramp = new aic();
-      paramp.aJS(localbtz.Fjh);
-      localahn.b(paramp);
+      localajn.wl(true);
+      localajn.aOo(localbyn.GSI);
+      paramp = new aks();
+      paramp.aPv(localbyn.GSI);
+      localakd.b(paramp);
     }
   }
   
-  public static boolean a(cs paramcs, String paramString)
+  public static boolean a(cv paramcv, String paramString)
   {
     int i = 0;
     AppMethodBeat.i(97663);
-    if ((paramcs == null) || (!x.avq(paramString)))
+    if ((paramcv == null) || (!x.aAx(paramString)))
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or snsId error or url is null");
-      if (paramcs != null) {
-        paramcs.dck.dcp = 2131758885;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or snsId error or url is null");
+      if (paramcv != null) {
+        paramcv.dnG.dnL = 2131758885;
       }
       AppMethodBeat.o(97663);
       return false;
     }
-    if (af.dHA())
+    if (ag.dTN())
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, sns core is invalid");
-      paramcs.dck.dcp = 2131758903;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, sns core is invalid");
+      paramcv.dnG.dnL = 2131758903;
       AppMethodBeat.o(97663);
       return false;
     }
-    Object localObject1 = h.auT(paramString);
+    Object localObject1 = h.aAa(paramString);
     if (localObject1 == null)
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo is null");
-      paramcs.dck.dcp = 2131758886;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo is null");
+      paramcv.dnG.dnL = 2131758886;
       AppMethodBeat.o(97663);
       return false;
     }
     paramString = "0";
-    Object localObject2 = aj.a((p)localObject1, 0);
+    Object localObject2 = ak.b((p)localObject1, 0);
     if (localObject2 != null) {
-      paramString = ((btz)localObject2).Id;
+      paramString = ((byn)localObject2).Id;
     }
-    String str = String.format("%s#%s", new Object[] { com.tencent.mm.plugin.sns.data.q.wW(((p)localObject1).field_snsId), paramString });
-    localObject2 = new aht();
-    paramString = ((p)localObject1).dLV();
+    String str = String.format("%s#%s", new Object[] { com.tencent.mm.plugin.sns.data.q.zw(((p)localObject1).field_snsId), paramString });
+    localObject2 = new akj();
+    paramString = ((p)localObject1).dYl();
     if (paramString == null)
     {
-      ac.i("MicroMsg.Sns.GetFavDataSource", "fav NoteLink, tlObj is null , return");
+      ad.i("MicroMsg.Sns.GetFavDataSource", "fav NoteLink, tlObj is null , return");
       AppMethodBeat.o(97663);
       return false;
     }
-    ac.i("MicroMsg.Sns.GetFavDataSource", "fav NoteLink, from %s", new Object[] { ((p)localObject1).field_userName });
-    ((aht)localObject2).aJC(((p)localObject1).field_userName);
-    ((aht)localObject2).aJD(u.axw());
-    ((aht)localObject2).XV(2);
-    ((aht)localObject2).zY(((p)localObject1).field_createTime * 1000L);
-    ((aht)localObject2).aJH(((p)localObject1).getSnsId());
-    ((aht)localObject2).aJE(str);
-    localObject1 = new gt();
-    ((gt)localObject1).dhx.type = 30;
-    ((gt)localObject1).dhx.dhE = 4;
-    ((gt)localObject1).dhx.desc = paramString.FQo.EtB;
-    com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
-    ((gt)localObject1).dhx.dcm.a((aht)localObject2);
-    paramcs.dck.dcm = ((gt)localObject1).dhx.dcm;
-    if (paramcs.dck.dcm != null)
+    ad.i("MicroMsg.Sns.GetFavDataSource", "fav NoteLink, from %s", new Object[] { ((p)localObject1).field_userName });
+    ((akj)localObject2).aPf(((p)localObject1).field_userName);
+    ((akj)localObject2).aPg(u.aAm());
+    ((akj)localObject2).ZR(2);
+    ((akj)localObject2).CM(((p)localObject1).field_createTime * 1000L);
+    ((akj)localObject2).aPk(((p)localObject1).getSnsId());
+    ((akj)localObject2).aPh(str);
+    localObject1 = new gw();
+    ((gw)localObject1).dsV.type = 30;
+    ((gw)localObject1).dsV.dtc = 4;
+    ((gw)localObject1).dsV.desc = paramString.HAT.GaS;
+    com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
+    ((gw)localObject1).dsV.dnI.a((akj)localObject2);
+    paramcv.dnG.dnI = ((gw)localObject1).dsV.dnI;
+    if (paramcv.dnG.dnI != null)
     {
-      localObject1 = paramcs.dck.dcm.nxC;
+      localObject1 = paramcv.dnG.dnI.nZa;
       if (localObject1 != null) {
         while (i < ((LinkedList)localObject1).size())
         {
-          localObject2 = (agx)((LinkedList)localObject1).get(i);
+          localObject2 = (ajn)((LinkedList)localObject1).get(i);
           if (localObject2 != null)
           {
-            ((agx)localObject2).vy(true);
-            ((agx)localObject2).vz(true);
+            ((ajn)localObject2).wk(true);
+            ((ajn)localObject2).wl(true);
           }
           i += 1;
         }
       }
     }
-    paramcs.dck.desc = paramString.FQo.Title;
-    paramcs.dck.type = 18;
+    paramcv.dnG.desc = paramString.HAT.Title;
+    paramcv.dnG.type = 18;
     AppMethodBeat.o(97663);
     return true;
   }
   
-  public static boolean a(cs paramcs, String paramString, int paramInt)
+  public static boolean a(cv paramcv, String paramString, int paramInt)
   {
     AppMethodBeat.i(97660);
-    if ((x.avr(paramString)) || (paramInt < 0))
+    if ((x.aAy(paramString)) || (paramInt < 0))
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or snsId error or position errro");
-      paramcs.dck.dcp = 2131758885;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or snsId error or position errro");
+      paramcv.dnG.dnL = 2131758885;
       AppMethodBeat.o(97660);
       return false;
     }
-    if (af.dHA())
+    if (ag.dTN())
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, sns core is invalid");
-      paramcs.dck.dcp = 2131758903;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, sns core is invalid");
+      paramcv.dnG.dnL = 2131758903;
       AppMethodBeat.o(97660);
       return false;
     }
-    paramString = af.dHR().auT(paramString);
+    paramString = ag.dUe().aAa(paramString);
     if (paramString == null)
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo is null");
-      paramcs.dck.dcp = 2131758886;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo is null");
+      paramcv.dnG.dnL = 2131758886;
       AppMethodBeat.o(97660);
       return false;
     }
-    btz localbtz = aj.a(paramString, paramInt);
-    if (localbtz == null)
+    byn localbyn = ak.b(paramString, paramInt);
+    if (localbyn == null)
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, media obj is null");
-      paramcs.dck.dcp = 2131758886;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, media obj is null");
+      paramcv.dnG.dnL = 2131758886;
       AppMethodBeat.o(97660);
       return false;
     }
-    boolean bool = a(paramcs, paramString, localbtz.Id);
+    boolean bool = a(paramcv, paramString, localbyn.Id);
     AppMethodBeat.o(97660);
     return bool;
   }
   
-  public static boolean a(cs paramcs, String paramString, CharSequence paramCharSequence)
+  public static boolean a(cv paramcv, String paramString, CharSequence paramCharSequence)
   {
     AppMethodBeat.i(97658);
-    if ((x.avr(paramString)) || (paramCharSequence == null))
+    if ((x.aAy(paramString)) || (paramCharSequence == null))
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or snsId error or text is null");
-      paramcs.dck.dcp = 2131758885;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or snsId error or text is null");
+      paramcv.dnG.dnL = 2131758885;
       AppMethodBeat.o(97658);
       return false;
     }
-    if (af.dHA())
+    if (ag.dTN())
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, sns core is invalid");
-      paramcs.dck.dcp = 2131758903;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, sns core is invalid");
+      paramcv.dnG.dnL = 2131758903;
       AppMethodBeat.o(97658);
       return false;
     }
-    paramString = af.dHR().auT(paramString);
+    paramString = ag.dUe().aAa(paramString);
     if (paramString == null)
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo is null");
-      paramcs.dck.dcp = 2131758886;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo is null");
+      paramcv.dnG.dnL = 2131758886;
       AppMethodBeat.o(97658);
       return false;
     }
     if (0L == paramString.field_snsId)
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo.field_snsId is 0");
-      paramcs.dck.dcp = 2131758884;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo.field_snsId is 0");
+      paramcv.dnG.dnL = 2131758884;
       AppMethodBeat.o(97658);
       return false;
     }
-    String str = String.format("%s#0", new Object[] { com.tencent.mm.plugin.sns.data.q.wW(paramString.field_snsId) });
-    ahn localahn = new ahn();
-    aht localaht = new aht();
-    ac.i("MicroMsg.Sns.GetFavDataSource", "fav sns text, from %s", new Object[] { paramString.field_userName });
-    localaht.aJC(paramString.field_userName);
-    localaht.aJD(u.axw());
-    localaht.XV(2);
-    localaht.zY(paramString.field_createTime * 1000L);
-    localaht.aJH(paramString.getSnsId());
-    localaht.aJE(str);
-    localahn.a(localaht);
-    paramcs.dck.dcm = localahn;
-    paramcs.dck.desc = paramCharSequence.toString();
-    paramcs.dck.type = 1;
+    String str = String.format("%s#0", new Object[] { com.tencent.mm.plugin.sns.data.q.zw(paramString.field_snsId) });
+    akd localakd = new akd();
+    akj localakj = new akj();
+    ad.i("MicroMsg.Sns.GetFavDataSource", "fav sns text, from %s", new Object[] { paramString.field_userName });
+    localakj.aPf(paramString.field_userName);
+    localakj.aPg(u.aAm());
+    localakj.ZR(2);
+    localakj.CM(paramString.field_createTime * 1000L);
+    localakj.aPk(paramString.getSnsId());
+    localakj.aPh(str);
+    localakd.a(localakj);
+    paramcv.dnG.dnI = localakd;
+    paramcv.dnG.desc = paramCharSequence.toString();
+    paramcv.dnG.type = 1;
     AppMethodBeat.o(97658);
     return true;
   }
   
-  public static boolean a(cs paramcs, String paramString1, String paramString2)
+  public static boolean a(cv paramcv, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210270);
-    boolean bool = b(paramcs, paramString1, paramString2);
-    AppMethodBeat.o(210270);
+    AppMethodBeat.i(221350);
+    boolean bool = b(paramcv, paramString1, paramString2);
+    AppMethodBeat.o(221350);
     return bool;
   }
   
-  private static boolean a(ahn paramahn, TimeLineObject paramTimeLineObject, aic paramaic)
+  private static boolean a(akd paramakd, TimeLineObject paramTimeLineObject, aks paramaks)
   {
     AppMethodBeat.i(97657);
-    if ((paramTimeLineObject.FQo.EtC == null) || (paramTimeLineObject.FQo.EtC.hkQ == -1))
+    if ((paramTimeLineObject.HAT.GaT == null) || (paramTimeLineObject.HAT.GaT.hCZ == -1))
     {
       AppMethodBeat.o(97657);
       return false;
     }
-    bsj localbsj = paramTimeLineObject.FQo.EtC;
-    ahf localahf = new ahf();
-    paramahn.f(localahf);
-    localahf.hha = paramTimeLineObject.FQo.EtC.hha;
-    localahf.hgY = localbsj.hkQ;
-    localahf.hhb = localbsj.hhb;
-    localahf.hgZ = localbsj.hgZ;
-    localahf.duration = localbsj.duration;
-    localahf.hhc = localbsj.hhc;
-    localahf.hhd = localbsj.hhd;
-    localahf.videoWidth = localbsj.videoWidth;
-    localahf.videoHeight = localbsj.videoHeight;
-    localahf.ddo = paramTimeLineObject.FQp;
-    localahf.hkV = paramTimeLineObject.DpN;
-    localahf.hld = localbsj.coverUrl;
-    paramaic.aJQ(localbsj.desc);
+    bww localbww = paramTimeLineObject.HAT.GaT;
+    ajv localajv = new ajv();
+    paramakd.f(localajv);
+    localajv.hzj = paramTimeLineObject.HAT.GaT.hzj;
+    localajv.hzh = localbww.hCZ;
+    localajv.hzk = localbww.hzk;
+    localajv.hzi = localbww.hzi;
+    localajv.duration = localbww.duration;
+    localajv.hzl = localbww.hzl;
+    localajv.hzm = localbww.hzm;
+    localajv.videoWidth = localbww.videoWidth;
+    localajv.videoHeight = localbww.videoHeight;
+    localajv.doK = paramTimeLineObject.HAU;
+    localajv.hDe = paramTimeLineObject.EUR;
+    localajv.hDm = localbww.coverUrl;
+    paramaks.aPt(localbww.desc);
     AppMethodBeat.o(97657);
     return true;
   }
   
-  public static boolean b(cs paramcs, String paramString1, String paramString2)
+  public static boolean b(cv paramcv, String paramString1, String paramString2)
   {
     AppMethodBeat.i(97656);
-    if ((paramcs == null) || (!x.avq(paramString2)) || (paramString1 == null))
+    if ((paramcv == null) || (!x.aAx(paramString2)) || (paramString1 == null))
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or snsId error or url is null");
-      if (paramcs != null) {
-        paramcs.dck.dcp = 2131758885;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or snsId error or url is null");
+      if (paramcv != null) {
+        paramcv.dnG.dnL = 2131758885;
       }
       AppMethodBeat.o(97656);
       return false;
     }
-    if (af.dHA())
+    if (ag.dTN())
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, sns core is invalid");
-      paramcs.dck.dcp = 2131758903;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, sns core is invalid");
+      paramcv.dnG.dnL = 2131758903;
       AppMethodBeat.o(97656);
       return false;
     }
-    Object localObject1 = h.auT(paramString2);
+    Object localObject1 = h.aAa(paramString2);
     if (localObject1 == null)
     {
-      ac.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo is null");
-      paramcs.dck.dcp = 2131758886;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, snsInfo is null");
+      paramcv.dnG.dnL = 2131758886;
       AppMethodBeat.o(97656);
       return false;
     }
-    if ((((p)localObject1).dLV().FQo != null) && (((p)localObject1).dLV().FQo.Ety == 26))
+    if ((((p)localObject1).dYl().HAT != null) && (((p)localObject1).dYl().HAT.GaP == 26))
     {
-      boolean bool = a(paramcs, paramString2);
+      boolean bool = a(paramcv, paramString2);
       AppMethodBeat.o(97656);
       return bool;
     }
     paramString2 = "0";
-    Object localObject2 = aj.a((p)localObject1, 0);
+    Object localObject2 = ak.b((p)localObject1, 0);
     if (localObject2 != null) {
-      paramString2 = ((btz)localObject2).Id;
+      paramString2 = ((byn)localObject2).Id;
     }
-    Object localObject3 = String.format("%s#%s", new Object[] { com.tencent.mm.plugin.sns.data.q.wW(((p)localObject1).field_snsId), paramString2 });
-    paramString2 = new ahn();
-    aht localaht = new aht();
-    ac.i("MicroMsg.Sns.GetFavDataSource", "fav sns url, from %s", new Object[] { ((p)localObject1).field_userName });
-    localaht.aJC(((p)localObject1).field_userName);
-    localaht.aJD(u.axw());
-    localaht.XV(2);
-    localaht.zY(((p)localObject1).field_createTime * 1000L);
-    localaht.aJH(((p)localObject1).getSnsId());
-    localaht.aJE((String)localObject3);
-    localaht.aJJ(paramString1);
-    paramString1 = new agx();
-    paramString1.aIU((String)localObject3);
+    Object localObject3 = String.format("%s#%s", new Object[] { com.tencent.mm.plugin.sns.data.q.zw(((p)localObject1).field_snsId), paramString2 });
+    paramString2 = new akd();
+    akj localakj = new akj();
+    ad.i("MicroMsg.Sns.GetFavDataSource", "fav sns url, from %s", new Object[] { ((p)localObject1).field_userName });
+    localakj.aPf(((p)localObject1).field_userName);
+    localakj.aPg(u.aAm());
+    localakj.ZR(2);
+    localakj.CM(((p)localObject1).field_createTime * 1000L);
+    localakj.aPk(((p)localObject1).getSnsId());
+    localakj.aPh((String)localObject3);
+    localakj.aPm(paramString1);
+    paramString1 = new ajn();
+    paramString1.aOx((String)localObject3);
     if (localObject2 != null)
     {
-      localObject3 = an.jc(af.getAccSnsPath(), ((btz)localObject2).Id) + com.tencent.mm.plugin.sns.data.q.d((btz)localObject2);
-      if (i.eA((String)localObject3)) {
-        paramString1.aIR((String)localObject3);
+      localObject3 = ao.jo(ag.getAccSnsPath(), ((byn)localObject2).Id) + com.tencent.mm.plugin.sns.data.q.d((byn)localObject2);
+      if (i.fv((String)localObject3)) {
+        paramString1.aOu((String)localObject3);
       }
     }
     for (;;)
     {
-      paramString1.XM(5);
-      localObject1 = ((p)localObject1).dLV();
-      paramString1.aIC(((TimeLineObject)localObject1).FQo.Title);
-      paramString1.aID(((TimeLineObject)localObject1).FQo.Desc);
-      paramString1.aJb(((TimeLineObject)localObject1).yCb);
-      if (!bs.isNullOrNil(((TimeLineObject)localObject1).yCb))
+      paramString1.ZI(5);
+      localObject1 = ((p)localObject1).dYl();
+      paramString1.aOf(((TimeLineObject)localObject1).HAT.Title);
+      paramString1.aOg(((TimeLineObject)localObject1).HAT.Desc);
+      paramString1.aOE(((TimeLineObject)localObject1).zTv);
+      if (!bt.isNullOrNil(((TimeLineObject)localObject1).zTv))
       {
-        localObject2 = bv.L(((TimeLineObject)localObject1).yCb, "adxml");
+        localObject2 = bw.M(((TimeLineObject)localObject1).zTv, "adxml");
         if (((Map)localObject2).size() > 0)
         {
-          paramString1.aIC(bs.bG((String)((Map)localObject2).get(".adxml.adCanvasInfo.shareTitle"), ""));
-          paramString1.aID(bs.bG((String)((Map)localObject2).get(".adxml.adCanvasInfo.shareDesc"), ""));
+          paramString1.aOf(bt.bI((String)((Map)localObject2).get(".adxml.adCanvasInfo.shareTitle"), ""));
+          paramString1.aOg(bt.bI((String)((Map)localObject2).get(".adxml.adCanvasInfo.shareDesc"), ""));
         }
       }
       a(paramString1, (TimeLineObject)localObject1);
-      paramString1.vy(true);
-      paramString2.nxC.add(paramString1);
-      localObject2 = new aic();
-      ((aic)localObject2).XX(((TimeLineObject)localObject1).hhK);
-      ((aic)localObject2).aJP(paramString1.title);
-      if ((((TimeLineObject)localObject1).xXT != null) && (!bs.isNullOrNil(((TimeLineObject)localObject1).xXT.BYK)))
+      paramString1.wk(true);
+      paramString2.nZa.add(paramString1);
+      localObject2 = new aks();
+      ((aks)localObject2).ZT(((TimeLineObject)localObject1).hzT);
+      ((aks)localObject2).aPs(paramString1.title);
+      if ((((TimeLineObject)localObject1).znS != null) && (!bt.isNullOrNil(((TimeLineObject)localObject1).znS.DBG)))
       {
-        paramString1 = new aa();
-        paramString1.BYK = ((TimeLineObject)localObject1).xXT.BYK;
-        paramString1.BYL = ((TimeLineObject)localObject1).xXT.BYL;
-        paramString1.BYM = ((TimeLineObject)localObject1).xXT.BYM;
-        paramString1.BYN = ((TimeLineObject)localObject1).xXT.BYN;
-        paramString1.BYO = ((TimeLineObject)localObject1).xXT.BYO;
-        paramString1.pBl = ((TimeLineObject)localObject1).xXT.pBl;
-        paramString1.pBm = ((TimeLineObject)localObject1).xXT.pBm;
-        paramString1.tcG = ((TimeLineObject)localObject1).xXT.tcG;
-        paramString1.BYP = ((TimeLineObject)localObject1).xXT.BYP;
-        paramString1.BYQ = ((TimeLineObject)localObject1).xXT.BYQ;
-        paramString1.BYR = ((TimeLineObject)localObject1).xXT.BYR;
-        paramString1.source = ((TimeLineObject)localObject1).xXT.source;
-        paramString1.kRU = ((TimeLineObject)localObject1).xXT.kRU;
-        paramString1.BYS = ((TimeLineObject)localObject1).xXT.BYS;
-        paramString1.BYT = ((TimeLineObject)localObject1).xXT.BYT;
-        paramString1.BYU = ((TimeLineObject)localObject1).xXT.BYU;
-        paramString1.BYV = ((TimeLineObject)localObject1).xXT.BYV;
-        paramString1.BYW = ((TimeLineObject)localObject1).xXT.BYW;
-        paramString1.thumbUrl = ((TimeLineObject)localObject1).xXT.thumbUrl;
-        paramString1.BYX = ((TimeLineObject)localObject1).xXT.BYX;
+        paramString1 = new ae();
+        paramString1.DBG = ((TimeLineObject)localObject1).znS.DBG;
+        paramString1.DBH = ((TimeLineObject)localObject1).znS.DBH;
+        paramString1.DBI = ((TimeLineObject)localObject1).znS.DBI;
+        paramString1.DBJ = ((TimeLineObject)localObject1).znS.DBJ;
+        paramString1.DBK = ((TimeLineObject)localObject1).znS.DBK;
+        paramString1.qeQ = ((TimeLineObject)localObject1).znS.qeQ;
+        paramString1.qeR = ((TimeLineObject)localObject1).znS.qeR;
+        paramString1.uaw = ((TimeLineObject)localObject1).znS.uaw;
+        paramString1.DBL = ((TimeLineObject)localObject1).znS.DBL;
+        paramString1.DBM = ((TimeLineObject)localObject1).znS.DBM;
+        paramString1.DBN = ((TimeLineObject)localObject1).znS.DBN;
+        paramString1.source = ((TimeLineObject)localObject1).znS.source;
+        paramString1.lox = ((TimeLineObject)localObject1).znS.lox;
+        paramString1.DBO = ((TimeLineObject)localObject1).znS.DBO;
+        paramString1.DBP = ((TimeLineObject)localObject1).znS.DBP;
+        paramString1.DBQ = ((TimeLineObject)localObject1).znS.DBQ;
+        paramString1.DBR = ((TimeLineObject)localObject1).znS.DBR;
+        paramString1.DBS = ((TimeLineObject)localObject1).znS.DBS;
+        paramString1.thumbUrl = ((TimeLineObject)localObject1).znS.thumbUrl;
+        paramString1.DBT = ((TimeLineObject)localObject1).znS.DBT;
         localObject3 = new StringBuilder();
         paramString1.a((StringBuilder)localObject3, null, null, null, 0, 0);
-        ((aic)localObject2).aJU(((StringBuilder)localObject3).toString());
+        ((aks)localObject2).aPx(((StringBuilder)localObject3).toString());
       }
-      paramString2.b((aic)localObject2);
-      a(paramString2, (TimeLineObject)localObject1, (aic)localObject2);
-      paramString2.a(localaht);
-      paramcs.dck.dcm = paramString2;
-      paramcs.dck.desc = ((TimeLineObject)localObject1).FQo.Title;
-      paramcs.dck.type = 5;
+      paramString2.b((aks)localObject2);
+      a(paramString2, (TimeLineObject)localObject1, (aks)localObject2);
+      paramString2.a(localakj);
+      paramcv.dnG.dnI = paramString2;
+      paramcv.dnG.desc = ((TimeLineObject)localObject1).HAT.Title;
+      paramcv.dnG.type = 5;
       AppMethodBeat.o(97656);
       return true;
-      paramString1.vz(true);
-      paramString1.aIL(((btz)localObject2).Fjh);
-      localObject3 = new aic();
-      ((aic)localObject3).aJS(((btz)localObject2).Fjh);
-      paramString2.b((aic)localObject3);
+      paramString1.wl(true);
+      paramString1.aOo(((byn)localObject2).GSI);
+      localObject3 = new aks();
+      ((aks)localObject3).aPv(((byn)localObject2).GSI);
+      paramString2.b((aks)localObject3);
       continue;
-      paramString1.vz(true);
+      paramString1.wl(true);
     }
   }
 }

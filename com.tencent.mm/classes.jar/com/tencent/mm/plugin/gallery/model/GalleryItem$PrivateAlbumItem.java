@@ -3,38 +3,38 @@ package com.tencent.mm.plugin.gallery.model;
 public class GalleryItem$PrivateAlbumItem
   extends GalleryItem.AlbumItem
 {
-  public s.a sKq;
+  public s.a tHb;
   
   public GalleryItem$PrivateAlbumItem(s.a parama)
   {
-    super(parama.sJZ, parama.sKW);
-    this.sKq = parama;
+    super(parama.tGK, parama.tHG);
+    this.tHb = parama;
   }
   
-  public final String auN()
+  public final String axA()
   {
-    return this.sKq.sKY;
+    return this.tHb.tHI;
   }
   
-  public final String cMQ()
+  public final String cVj()
   {
-    return this.sKq.sKY;
+    return this.tHb.tHI;
   }
   
-  public final long cMR()
+  public final long cVk()
   {
-    return this.sKq.sKX;
+    return this.tHb.tHH;
   }
   
-  public final int cMS()
+  public final int cVl()
   {
     int j = 1;
-    s.b localb = this.sKq.sKZ;
+    s.b localb = this.tHb.tHJ;
     int i = j;
     if (localb != null)
     {
       i = j;
-      if (localb.sLb) {
+      if (localb.tHL) {
         i = 2;
       }
     }
@@ -43,7 +43,7 @@ public class GalleryItem$PrivateAlbumItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.GalleryItem.PrivateAlbumItem
  * JD-Core Version:    0.7.0.1
  */

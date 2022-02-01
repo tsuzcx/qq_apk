@@ -11,17 +11,17 @@ import java.io.IOException;
 public abstract class l<T>
   implements d<T>
 {
-  private final ContentResolver aDI;
+  private final ContentResolver aFz;
   private T data;
   private final Uri uri;
   
   public l(ContentResolver paramContentResolver, Uri paramUri)
   {
-    this.aDI = paramContentResolver;
+    this.aFz = paramContentResolver;
     this.uri = paramUri;
   }
   
-  protected abstract void Q(T paramT);
+  protected abstract void R(T paramT);
   
   protected abstract T a(Uri paramUri, ContentResolver paramContentResolver);
   
@@ -29,8 +29,8 @@ public abstract class l<T>
   {
     try
     {
-      this.data = a(this.uri, this.aDI);
-      parama.R(this.data);
+      this.data = a(this.uri, this.aFz);
+      parama.S(this.data);
       return;
     }
     catch (FileNotFoundException paramg)
@@ -47,15 +47,15 @@ public abstract class l<T>
     if (this.data != null) {}
     try
     {
-      Q(this.data);
+      R(this.data);
       return;
     }
     catch (IOException localIOException) {}
   }
   
-  public final a nV()
+  public final a on()
   {
-    return a.aCP;
+    return a.aEG;
   }
 }
 

@@ -9,14 +9,14 @@ public final class l
 {
   public l()
   {
-    super(q.ltV.ordinal());
+    super(r.lTe.ordinal());
     AppMethodBeat.i(47647);
     AppMethodBeat.o(47647);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.l
  * JD-Core Version:    0.7.0.1
  */

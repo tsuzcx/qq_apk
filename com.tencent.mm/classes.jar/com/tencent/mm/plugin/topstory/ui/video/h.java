@@ -7,19 +7,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.br.d;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.protocal.protobuf.cyv;
-import com.tencent.mm.protocal.protobuf.dil;
-import com.tencent.mm.protocal.protobuf.dio;
-import com.tencent.mm.protocal.protobuf.dyo;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.websearch.api.ae;
+import com.tencent.mm.protocal.protobuf.dei;
+import com.tencent.mm.protocal.protobuf.doa;
+import com.tencent.mm.protocal.protobuf.dod;
+import com.tencent.mm.protocal.protobuf.eeq;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.widget.a.e.b;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -30,59 +30,63 @@ public abstract class h
   extends RecyclerView.w
   implements a
 {
-  public b AcC;
-  private boolean AcD;
-  protected View.OnClickListener iu = new View.OnClickListener()
+  public dod Brz;
+  public b Bun;
+  private boolean Buo;
+  protected View.OnClickListener km = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
       AppMethodBeat.i(126072);
-      h.this.fr(paramAnonymousView);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramAnonymousView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      h.this.fE(paramAnonymousView);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(126072);
     }
   };
-  public dio zZN;
   
   public h(View paramView, b paramb)
   {
     super(paramView);
-    this.AcC = paramb;
-    fq(paramView);
+    this.Bun = paramb;
+    fD(paramView);
   }
   
   protected final void a(final b paramb, final Context paramContext, final f paramf, final int paramInt)
   {
-    final dio localdio = paramb.edt().Rw(paramInt);
-    ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.edh(), localdio, paramInt, 5, "");
-    if (localdio != null)
+    final dod localdod = paramb.epL().Tg(paramInt);
+    ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.epz(), localdod, paramInt, 5, "");
+    if (localdod != null)
     {
-      if (this.AcC.edj().een())
+      if (this.Bun.epB().eqE())
       {
-        this.AcC.edj().crK();
-        this.AcD = true;
+        this.Bun.epB().cxw();
+        this.Buo = true;
       }
       com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(paramContext, 1, false);
-      locale.ISu = new n.c()
+      locale.KJy = new n.d()
       {
         public final void onCreateMMMenu(l paramAnonymousl)
         {
           AppMethodBeat.i(126073);
-          paramAnonymousl.aJ(0, 2131764701, 2131689831);
-          paramAnonymousl.aJ(1, 2131764702, 2131689817);
+          paramAnonymousl.aL(0, 2131764701, 2131689831);
+          paramAnonymousl.aL(1, 2131764702, 2131689817);
           AppMethodBeat.o(126073);
         }
       };
-      locale.ISv = new n.d()
+      locale.KJz = new n.e()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
           AppMethodBeat.i(126074);
           if (h.a(h.this))
           {
-            h.this.AcC.edj().dOc();
+            h.this.Bun.epB().eaq();
             h.b(h.this);
           }
-          h.this.AcC.edr();
+          h.this.Bun.epJ();
           Context localContext;
           Object localObject2;
           Object localObject3;
@@ -90,19 +94,19 @@ public abstract class h
           LinkedList localLinkedList;
           if (paramAnonymousMenuItem.getItemId() == 1)
           {
-            paramf.bOb();
-            paramAnonymousMenuItem = p.Aee;
+            paramf.bSC();
+            paramAnonymousMenuItem = p.BvQ;
             localContext = paramContext;
-            localObject2 = localdio;
-            localObject3 = paramb.edh();
+            localObject2 = localdod;
+            localObject3 = paramb.epz();
             if ((localObject2 != null) && (localObject3 != null))
             {
-              paramAnonymousMenuItem.Aef = ((dio)localObject2);
+              paramAnonymousMenuItem.BvR = ((dod)localObject2);
               localObject1 = new Intent();
-              ((Intent)localObject1).putExtra("Ksnsupload_title", ((dio)localObject2).pBm);
-              ((Intent)localObject1).putExtra("Ksnsupload_imgurl", ((dio)localObject2).BYP);
-              ((Intent)localObject1).putExtra("Ksnsupload_link", ((dio)localObject2).pBl);
-              if (!bs.isNullOrNil(((dio)localObject2).tcG)) {
+              ((Intent)localObject1).putExtra("Ksnsupload_title", ((dod)localObject2).qeR);
+              ((Intent)localObject1).putExtra("Ksnsupload_imgurl", ((dod)localObject2).DBL);
+              ((Intent)localObject1).putExtra("Ksnsupload_link", ((dod)localObject2).qeQ);
+              if (!bt.isNullOrNil(((dod)localObject2).uaw)) {
                 break label555;
               }
               paramAnonymousMenuItem = localContext.getString(2131762231);
@@ -110,35 +114,35 @@ public abstract class h
             for (;;)
             {
               ((Intent)localObject1).putExtra("KContentObjDesc", paramAnonymousMenuItem);
-              ((Intent)localObject1).putExtra("KlinkThumb_url", ((dio)localObject2).BYP);
+              ((Intent)localObject1).putExtra("KlinkThumb_url", ((dod)localObject2).DBL);
               ((Intent)localObject1).putExtra("Ksnsupload_source", 1);
               ((Intent)localObject1).putExtra("Ksnsupload_type", 16);
               ((Intent)localObject1).putExtra("need_result", true);
-              paramAnonymousMenuItem = new dyo();
-              paramAnonymousMenuItem.BYK = ((dio)localObject2).sVF;
-              paramAnonymousMenuItem.BYL = ((dio)localObject2).FRQ;
-              paramAnonymousMenuItem.BYM = ((dil)localObject3).jKB;
-              paramAnonymousMenuItem.BYN = ((dio)localObject2).FRP;
-              paramAnonymousMenuItem.BYO = 100201L;
-              paramAnonymousMenuItem.pBl = ((dio)localObject2).pBl;
-              paramAnonymousMenuItem.pBm = ((dio)localObject2).pBm;
-              paramAnonymousMenuItem.tcG = ((dio)localObject2).tcG;
-              paramAnonymousMenuItem.BYP = ((dio)localObject2).BYP;
-              paramAnonymousMenuItem.BYQ = ((dio)localObject2).BYQ;
-              paramAnonymousMenuItem.BYR = ((dio)localObject2).BYR;
-              paramAnonymousMenuItem.source = ((dio)localObject2).source;
-              paramAnonymousMenuItem.kRU = ((dio)localObject2).kRU;
-              paramAnonymousMenuItem.BYS = ((dio)localObject2).BYS;
-              paramAnonymousMenuItem.BYT = ((dio)localObject2).BYT;
+              paramAnonymousMenuItem = new eeq();
+              paramAnonymousMenuItem.DBG = ((dod)localObject2).tSk;
+              paramAnonymousMenuItem.DBH = ((dod)localObject2).HCw;
+              paramAnonymousMenuItem.DBI = ((doa)localObject3).keN;
+              paramAnonymousMenuItem.DBJ = ((dod)localObject2).HCv;
+              paramAnonymousMenuItem.DBK = 100201L;
+              paramAnonymousMenuItem.qeQ = ((dod)localObject2).qeQ;
+              paramAnonymousMenuItem.qeR = ((dod)localObject2).qeR;
+              paramAnonymousMenuItem.uaw = ((dod)localObject2).uaw;
+              paramAnonymousMenuItem.DBL = ((dod)localObject2).DBL;
+              paramAnonymousMenuItem.DBM = ((dod)localObject2).DBM;
+              paramAnonymousMenuItem.DBN = ((dod)localObject2).DBN;
+              paramAnonymousMenuItem.source = ((dod)localObject2).source;
+              paramAnonymousMenuItem.lox = ((dod)localObject2).lox;
+              paramAnonymousMenuItem.DBO = ((dod)localObject2).DBO;
+              paramAnonymousMenuItem.DBP = ((dod)localObject2).DBP;
               localLinkedList = new LinkedList();
-              localLinkedList.addAll(((dil)localObject3).BYq);
-              localLinkedList.addAll(((dio)localObject2).BYq);
-              paramAnonymousMenuItem.BYU = p.gp(localLinkedList).toString();
-              paramAnonymousMenuItem.BYV = com.tencent.mm.plugin.topstory.a.h.go(((dio)localObject2).sVE).toString();
-              paramAnonymousMenuItem.BYW = ((dio)localObject2).FRY;
-              paramAnonymousMenuItem.thumbUrl = ((dio)localObject2).FRN;
-              if ((p.k((dio)localObject2)) && (((dil)localObject3).FRB != null)) {
-                paramAnonymousMenuItem.BYX = ((dil)localObject3).FRB.title;
+              localLinkedList.addAll(((doa)localObject3).DBj);
+              localLinkedList.addAll(((dod)localObject2).DBj);
+              paramAnonymousMenuItem.DBQ = p.gA(localLinkedList).toString();
+              paramAnonymousMenuItem.DBR = com.tencent.mm.plugin.topstory.a.h.gz(((dod)localObject2).tSj).toString();
+              paramAnonymousMenuItem.DBS = ((dod)localObject2).HCE;
+              paramAnonymousMenuItem.thumbUrl = ((dod)localObject2).HCt;
+              if ((p.k((dod)localObject2)) && (((doa)localObject3).HCh != null)) {
+                paramAnonymousMenuItem.DBT = ((doa)localObject3).HCh.title;
               }
               try
               {
@@ -147,17 +151,17 @@ public abstract class h
                   ((Intent)localObject1).putExtra("KWebSearchInfo", paramAnonymousMenuItem);
                 }
                 d.b(localContext, "sns", ".ui.SnsUploadUI", (Intent)localObject1, 1024);
-                ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.edh(), localdio, paramInt, 7, "");
+                ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.epz(), localdod, paramInt, 7, "");
                 AppMethodBeat.o(126074);
                 return;
                 label555:
-                paramAnonymousMenuItem = ((dio)localObject2).tcG;
+                paramAnonymousMenuItem = ((dod)localObject2).uaw;
               }
               catch (IOException paramAnonymousMenuItem)
               {
                 for (;;)
                 {
-                  ac.printErrStackTrace("MicroMsg.TopStory.TopStoryVideoShareMgr", paramAnonymousMenuItem, "", new Object[0]);
+                  ad.printErrStackTrace("MicroMsg.TopStory.TopStoryVideoShareMgr", paramAnonymousMenuItem, "", new Object[0]);
                   paramAnonymousMenuItem = null;
                 }
               }
@@ -165,50 +169,50 @@ public abstract class h
           }
           if (paramAnonymousMenuItem.getItemId() == 0)
           {
-            paramf.bOb();
-            paramAnonymousMenuItem = p.Aee;
+            paramf.bSC();
+            paramAnonymousMenuItem = p.BvQ;
             localContext = paramContext;
-            localObject1 = localdio;
-            localObject2 = paramb.edh();
-            paramAnonymousMenuItem.Aef = ((dio)localObject1);
+            localObject1 = localdod;
+            localObject2 = paramb.epz();
+            paramAnonymousMenuItem.BvR = ((dod)localObject1);
             localObject3 = new k.b();
             ((k.b)localObject3).type = 5;
-            ((k.b)localObject3).title = ((dio)localObject1).pBm;
-            if (!bs.isNullOrNil(((dio)localObject1).tcG)) {
+            ((k.b)localObject3).title = ((dod)localObject1).qeR;
+            if (!bt.isNullOrNil(((dod)localObject1).uaw)) {
               break label1082;
             }
           }
           label1082:
-          for (paramAnonymousMenuItem = localContext.getString(2131762231);; paramAnonymousMenuItem = ((dio)localObject1).tcG)
+          for (paramAnonymousMenuItem = localContext.getString(2131762231);; paramAnonymousMenuItem = ((dod)localObject1).uaw)
           {
             ((k.b)localObject3).description = paramAnonymousMenuItem;
-            ((k.b)localObject3).url = ((dio)localObject1).pBl;
-            ((k.b)localObject3).thumburl = ((dio)localObject1).BYP;
-            paramAnonymousMenuItem = new aa();
-            paramAnonymousMenuItem.BYK = ((dio)localObject1).sVF;
-            paramAnonymousMenuItem.BYL = ((dio)localObject1).FRQ;
-            paramAnonymousMenuItem.BYM = ((dil)localObject2).jKB;
-            paramAnonymousMenuItem.BYN = ((dio)localObject1).FRP;
-            paramAnonymousMenuItem.BYO = 100201L;
-            paramAnonymousMenuItem.pBl = ((dio)localObject1).pBl;
-            paramAnonymousMenuItem.pBm = ((dio)localObject1).pBm;
-            paramAnonymousMenuItem.tcG = ((dio)localObject1).tcG;
-            paramAnonymousMenuItem.BYP = ((dio)localObject1).BYP;
-            paramAnonymousMenuItem.BYQ = ((dio)localObject1).BYQ;
-            paramAnonymousMenuItem.BYR = ((dio)localObject1).BYR;
-            paramAnonymousMenuItem.source = ((dio)localObject1).source;
-            paramAnonymousMenuItem.kRU = ((dio)localObject1).kRU;
-            paramAnonymousMenuItem.BYS = ((dio)localObject1).BYS;
-            paramAnonymousMenuItem.BYT = ((dio)localObject1).BYT;
+            ((k.b)localObject3).url = ((dod)localObject1).qeQ;
+            ((k.b)localObject3).thumburl = ((dod)localObject1).DBL;
+            paramAnonymousMenuItem = new ae();
+            paramAnonymousMenuItem.DBG = ((dod)localObject1).tSk;
+            paramAnonymousMenuItem.DBH = ((dod)localObject1).HCw;
+            paramAnonymousMenuItem.DBI = ((doa)localObject2).keN;
+            paramAnonymousMenuItem.DBJ = ((dod)localObject1).HCv;
+            paramAnonymousMenuItem.DBK = 100201L;
+            paramAnonymousMenuItem.qeQ = ((dod)localObject1).qeQ;
+            paramAnonymousMenuItem.qeR = ((dod)localObject1).qeR;
+            paramAnonymousMenuItem.uaw = ((dod)localObject1).uaw;
+            paramAnonymousMenuItem.DBL = ((dod)localObject1).DBL;
+            paramAnonymousMenuItem.DBM = ((dod)localObject1).DBM;
+            paramAnonymousMenuItem.DBN = ((dod)localObject1).DBN;
+            paramAnonymousMenuItem.source = ((dod)localObject1).source;
+            paramAnonymousMenuItem.lox = ((dod)localObject1).lox;
+            paramAnonymousMenuItem.DBO = ((dod)localObject1).DBO;
+            paramAnonymousMenuItem.DBP = ((dod)localObject1).DBP;
             localLinkedList = new LinkedList();
-            localLinkedList.addAll(((dil)localObject2).BYq);
-            localLinkedList.addAll(((dio)localObject1).BYq);
-            paramAnonymousMenuItem.BYU = p.gp(localLinkedList).toString();
-            paramAnonymousMenuItem.BYV = com.tencent.mm.plugin.topstory.a.h.go(((dio)localObject1).sVE).toString();
-            paramAnonymousMenuItem.BYW = ((dio)localObject1).FRY;
-            paramAnonymousMenuItem.thumbUrl = ((dio)localObject1).FRN;
-            if ((p.k((dio)localObject1)) && (((dil)localObject2).FRB != null)) {
-              paramAnonymousMenuItem.BYX = ((dil)localObject2).FRB.title;
+            localLinkedList.addAll(((doa)localObject2).DBj);
+            localLinkedList.addAll(((dod)localObject1).DBj);
+            paramAnonymousMenuItem.DBQ = p.gA(localLinkedList).toString();
+            paramAnonymousMenuItem.DBR = com.tencent.mm.plugin.topstory.a.h.gz(((dod)localObject1).tSj).toString();
+            paramAnonymousMenuItem.DBS = ((dod)localObject1).HCE;
+            paramAnonymousMenuItem.thumbUrl = ((dod)localObject1).HCt;
+            if ((p.k((dod)localObject1)) && (((doa)localObject2).HCh != null)) {
+              paramAnonymousMenuItem.DBT = ((doa)localObject2).HCh.title;
             }
             ((k.b)localObject3).a(paramAnonymousMenuItem);
             paramAnonymousMenuItem = k.b.a((k.b)localObject3, null, null);
@@ -219,91 +223,91 @@ public abstract class h
             ((Intent)localObject1).putExtra("Retr_go_to_chattingUI", false);
             ((Intent)localObject1).putExtra("Retr_show_success_tips", true);
             d.c(localContext, ".ui.transmit.MsgRetransmitUI", (Intent)localObject1, 2048);
-            ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.edh(), localdio, paramInt, 6, "");
+            ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.epz(), localdod, paramInt, 6, "");
             AppMethodBeat.o(126074);
             return;
           }
         }
       };
-      locale.Ihj = new e.b()
+      locale.JXC = new e.b()
       {
         public final void onDismiss()
         {
           AppMethodBeat.i(126075);
           if (h.a(h.this))
           {
-            h.this.AcC.edj().dOc();
+            h.this.Bun.epB().eaq();
             h.b(h.this);
           }
-          h.this.AcC.edr();
+          h.this.Bun.epJ();
           AppMethodBeat.o(126075);
         }
       };
-      locale.cED();
+      locale.cMW();
     }
   }
   
-  public final void d(dio paramdio)
+  public final void d(dod paramdod)
   {
-    this.zZN = paramdio;
-    ac.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "onBindItemHolder %s", new Object[] { paramdio.title });
-    edO();
+    this.Brz = paramdod;
+    ad.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "onBindItemHolder %s", new Object[] { paramdod.title });
+    eqg();
   }
   
-  public boolean edN()
+  public void ept()
+  {
+    this.Bun.ept();
+  }
+  
+  public void epu()
+  {
+    this.Bun.epu();
+  }
+  
+  public int epv()
+  {
+    return lN() - this.Bun.epH().getHeadersCount();
+  }
+  
+  public boolean eqf()
   {
     return false;
   }
   
-  public abstract void edO();
+  public abstract void eqg();
   
-  public abstract f edP();
+  public abstract f eqh();
   
-  public void edb()
+  public void fD(View paramView) {}
+  
+  protected void fE(View paramView)
   {
-    this.AcC.edb();
-  }
-  
-  public void edc()
-  {
-    this.AcC.edc();
-  }
-  
-  public int edd()
-  {
-    return lv() - this.AcC.edp().getHeadersCount();
-  }
-  
-  public void fq(View paramView) {}
-  
-  protected void fr(View paramView)
-  {
-    if (this.AcC.edm() != edd())
+    if (this.Bun.epE() != epv())
     {
-      this.AcC.edf().Aeb = 2;
-      this.AcC.Rn(edd());
-      com.tencent.mm.plugin.websearch.api.a.a.lA(4);
-      this.AcC.edf().j(this.zZN);
-      ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.AcC.edh(), this.zZN, edd(), 2, "");
+      this.Bun.epx().BvN = 2;
+      this.Bun.SX(epv());
+      com.tencent.mm.plugin.websearch.api.a.a.ma(4);
+      this.Bun.epx().j(this.Brz);
+      ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.Bun.epz(), this.Brz, epv(), 2, "");
     }
     do
     {
       return;
-      fs(paramView);
-    } while (!edN());
-    edc();
-    this.AcC.edc();
-    edb();
-    this.AcC.edb();
+      fF(paramView);
+    } while (!eqf());
+    epu();
+    this.Bun.epu();
+    ept();
+    this.Bun.ept();
   }
   
-  public void fs(View paramView) {}
+  public void fF(View paramView) {}
   
   public abstract View getWowView();
   
-  public void sd(boolean paramBoolean)
+  public void sJ(boolean paramBoolean)
   {
-    this.AcC.a(this.zZN);
+    this.Bun.a(this.Brz);
   }
 }
 

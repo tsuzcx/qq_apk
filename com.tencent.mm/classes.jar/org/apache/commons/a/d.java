@@ -5,28 +5,28 @@ import java.io.File;
 
 public final class d
 {
-  public static final String LXY;
-  private static final char LXZ;
-  private static final char LYa;
+  public static final String NSx;
+  private static final char NSy;
+  private static final char NSz;
   
   static
   {
     AppMethodBeat.i(10303);
-    LXY = Character.toString('.');
+    NSx = Character.toString('.');
     char c = File.separatorChar;
-    LXZ = c;
+    NSy = c;
     if (c == '\\') {}
     for (int i = 1; i != 0; i = 0)
     {
-      LYa = '/';
+      NSz = '/';
       AppMethodBeat.o(10303);
       return;
     }
-    LYa = '\\';
+    NSz = '\\';
     AppMethodBeat.o(10303);
   }
   
-  private static int aXl(String paramString)
+  private static int bdF(String paramString)
   {
     AppMethodBeat.i(10298);
     if (paramString == null)
@@ -138,7 +138,7 @@ public final class d
     return 0;
   }
   
-  private static int aXm(String paramString)
+  private static int bdG(String paramString)
   {
     AppMethodBeat.i(10299);
     if (paramString == null)
@@ -151,7 +151,7 @@ public final class d
     return i;
   }
   
-  private static void aXn(String paramString)
+  private static void bdH(String paramString)
   {
     AppMethodBeat.i(10301);
     int j = paramString.length();
@@ -187,7 +187,7 @@ public final class d
       return "";
       int j = paramString.lastIndexOf('.');
       i = j;
-      if (aXm(paramString) > j) {
+      if (bdG(paramString) > j) {
         i = -1;
       }
     }
@@ -204,8 +204,8 @@ public final class d
       AppMethodBeat.o(10300);
       return null;
     }
-    aXn(paramString);
-    paramString = paramString.substring(aXm(paramString) + 1);
+    bdH(paramString);
+    paramString = paramString.substring(bdG(paramString) + 1);
     AppMethodBeat.o(10300);
     return paramString;
   }
@@ -215,10 +215,10 @@ public final class d
     return (paramChar == '/') || (paramChar == '\\');
   }
   
-  public static String nk(String paramString1, String paramString2)
+  public static String nJ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(10297);
-    int i = aXl(paramString2);
+    int i = bdF(paramString2);
     if (i < 0)
     {
       AppMethodBeat.o(10297);
@@ -256,20 +256,20 @@ public final class d
   private static String normalize(String paramString)
   {
     AppMethodBeat.i(10296);
-    int i = LXZ;
+    int i = NSy;
     if (paramString == null)
     {
       AppMethodBeat.o(10296);
       return null;
     }
-    aXn(paramString);
+    bdH(paramString);
     int m = paramString.length();
     if (m == 0)
     {
       AppMethodBeat.o(10296);
       return paramString;
     }
-    int i3 = aXl(paramString);
+    int i3 = bdF(paramString);
     if (i3 < 0)
     {
       AppMethodBeat.o(10296);
@@ -277,9 +277,9 @@ public final class d
     }
     char[] arrayOfChar = new char[m + 2];
     paramString.getChars(0, paramString.length(), arrayOfChar, 0);
-    if (i == LXZ) {}
+    if (i == NSy) {}
     int k;
-    for (int j = LYa;; j = LXZ)
+    for (int j = NSz;; j = NSy)
     {
       k = 0;
       while (k < arrayOfChar.length)
@@ -446,7 +446,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.a.d
  * JD-Core Version:    0.7.0.1
  */

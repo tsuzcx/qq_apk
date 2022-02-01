@@ -11,15 +11,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends ContextThemeWrapper
 {
-  private static final b cfS;
-  private Resources cfQ;
-  private LayoutInflater cfR;
-  private final b cfT;
+  private static final b cqi;
+  private Resources cqg;
+  private LayoutInflater cqh;
+  private final b cqj;
   
   static
   {
     AppMethodBeat.i(169479);
-    cfS = new b()
+    cqi = new b()
     {
       public final DisplayMetrics a(DisplayMetrics paramAnonymousDisplayMetrics, Configuration paramAnonymousConfiguration)
       {
@@ -39,16 +39,16 @@ public final class a
     super.attachBaseContext(paramContext);
     paramContext = paramb;
     if (paramb == null) {
-      paramContext = cfS;
+      paramContext = cqi;
     }
-    this.cfT = paramContext;
+    this.cqj = paramContext;
     AppMethodBeat.o(169474);
   }
   
   private DisplayMetrics a(DisplayMetrics paramDisplayMetrics, Configuration paramConfiguration)
   {
     AppMethodBeat.i(169477);
-    paramDisplayMetrics = this.cfT.a(paramDisplayMetrics, paramConfiguration);
+    paramDisplayMetrics = this.cqj.a(paramDisplayMetrics, paramConfiguration);
     AppMethodBeat.o(169477);
     return paramDisplayMetrics;
   }
@@ -58,12 +58,12 @@ public final class a
     AppMethodBeat.i(169476);
     if (getAssets() != null)
     {
-      if (this.cfQ == null)
+      if (this.cqg == null)
       {
         localResources = super.getResources();
-        this.cfQ = new a.a(this, localResources, a(localResources.getDisplayMetrics(), localResources.getConfiguration()));
+        this.cqg = new a.a(this, localResources, a(localResources.getDisplayMetrics(), localResources.getConfiguration()));
       }
-      localResources = this.cfQ;
+      localResources = this.cqg;
       AppMethodBeat.o(169476);
       return localResources;
     }
@@ -77,14 +77,14 @@ public final class a
     AppMethodBeat.i(169475);
     if ("layout_inflater".equals(paramString))
     {
-      if (this.cfR != null)
+      if (this.cqh != null)
       {
-        paramString = this.cfR;
+        paramString = this.cqh;
         AppMethodBeat.o(169475);
         return paramString;
       }
       paramString = (LayoutInflater)super.getSystemService("layout_inflater");
-      this.cfR = paramString;
+      this.cqh = paramString;
       AppMethodBeat.o(169475);
       return paramString;
     }
@@ -100,7 +100,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.g.a
  * JD-Core Version:    0.7.0.1
  */

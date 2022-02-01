@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/StayTimeStatistics;", "", "sessionId", "", "pageName", "stayTimeMs", "", "enterTimeMs", "exitTimeMs", "clickTabContextId", "sid", "reportType", "", "isPoi", "", "(Ljava/lang/String;Ljava/lang/String;JJJLjava/lang/String;Ljava/lang/String;IZ)V", "getClickTabContextId", "()Ljava/lang/String;", "setClickTabContextId", "(Ljava/lang/String;)V", "getEnterTimeMs", "()J", "setEnterTimeMs", "(J)V", "getExitTimeMs", "setExitTimeMs", "()Z", "setPoi", "(Z)V", "getPageName", "setPageName", "getReportType", "()I", "setReportType", "(I)V", "getSessionId", "setSessionId", "getSid", "setSid", "getStayTimeMs", "setStayTimeMs", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-expt_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/StayTimeStatistics;", "", "sessionId", "", "pageName", "stayTimeMs", "", "enterTimeMs", "exitTimeMs", "clickTabContextId", "sid", "reportType", "", "isPoi", "", "(Ljava/lang/String;Ljava/lang/String;JJJLjava/lang/String;Ljava/lang/String;IZ)V", "getClickTabContextId", "()Ljava/lang/String;", "setClickTabContextId", "(Ljava/lang/String;)V", "getEnterTimeMs", "()J", "setEnterTimeMs", "(J)V", "getExitTimeMs", "setExitTimeMs", "()Z", "setPoi", "(Z)V", "getPageName", "setPageName", "getReportType", "()I", "setReportType", "(I)V", "getSessionId", "setSessionId", "getSid", "setSid", "getStayTimeMs", "setStayTimeMs", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-expt_release"})
 public final class b
 {
-  public int dtw;
-  public String qoi = null;
-  public long qoj = -1L;
-  public long qok = -1L;
-  public long qol = -1L;
-  public String qom = null;
-  public String qon = null;
-  public boolean qoo;
+  public int dFx;
+  public String dtL = null;
+  public long qXg = -1L;
+  public long qXh = -1L;
+  public long qXi = -1L;
+  public String qXj = null;
+  public String qXk = null;
+  public boolean qXl;
   public String sessionId = null;
   
   public b(byte paramByte)
@@ -24,27 +24,27 @@ public final class b
   
   private b(int paramInt)
   {
-    this.dtw = paramInt;
-    this.qoo = false;
+    this.dFx = paramInt;
+    this.qXl = false;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(195521);
+    AppMethodBeat.i(210867);
     if (this != paramObject)
     {
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((!k.g(this.sessionId, paramObject.sessionId)) || (!k.g(this.qoi, paramObject.qoi)) || (this.qoj != paramObject.qoj) || (this.qok != paramObject.qok) || (this.qol != paramObject.qol) || (!k.g(this.qom, paramObject.qom)) || (!k.g(this.qon, paramObject.qon)) || (this.dtw != paramObject.dtw) || (this.qoo != paramObject.qoo)) {}
+        if ((!p.i(this.sessionId, paramObject.sessionId)) || (!p.i(this.dtL, paramObject.dtL)) || (this.qXg != paramObject.qXg) || (this.qXh != paramObject.qXh) || (this.qXi != paramObject.qXi) || (!p.i(this.qXj, paramObject.qXj)) || (!p.i(this.qXk, paramObject.qXk)) || (this.dFx != paramObject.dFx) || (this.qXl != paramObject.qXl)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(195521);
+      AppMethodBeat.o(210867);
       return true;
     }
-    AppMethodBeat.o(195521);
+    AppMethodBeat.o(210867);
     return false;
   }
   
@@ -55,9 +55,9 @@ public final class b
   
   public final String toString()
   {
-    AppMethodBeat.i(195519);
-    String str = "StayTimeStatistics(sessionId=" + this.sessionId + ", pageName=" + this.qoi + ", stayTimeMs=" + this.qoj + ", enterTimeMs=" + this.qok + ", exitTimeMs=" + this.qol + ", clickTabContextId=" + this.qom + ", sid=" + this.qon + ", reportType=" + this.dtw + ", isPoi=" + this.qoo + ")";
-    AppMethodBeat.o(195519);
+    AppMethodBeat.i(210865);
+    String str = "StayTimeStatistics(sessionId=" + this.sessionId + ", pageName=" + this.dtL + ", stayTimeMs=" + this.qXg + ", enterTimeMs=" + this.qXh + ", exitTimeMs=" + this.qXi + ", clickTabContextId=" + this.qXj + ", sid=" + this.qXk + ", reportType=" + this.dFx + ", isPoi=" + this.qXl + ")";
+    AppMethodBeat.o(210865);
     return str;
   }
 }

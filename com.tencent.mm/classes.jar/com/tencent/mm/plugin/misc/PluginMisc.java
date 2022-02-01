@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.misc;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.plugin.messenger.foundation.a.r;
 import com.tencent.mm.plugin.misc.b.b;
 
 public class PluginMisc
@@ -12,7 +12,7 @@ public class PluginMisc
   public void dependency()
   {
     AppMethodBeat.i(127603);
-    dependsOn(q.class);
+    dependsOn(r.class);
     AppMethodBeat.o(127603);
   }
   
@@ -20,7 +20,7 @@ public class PluginMisc
   {
     AppMethodBeat.i(127604);
     com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.misc.a.a.class, new b());
-    pin(com.tencent.mm.plugin.misc.b.a.dcO());
+    pin(com.tencent.mm.plugin.misc.b.a.dmi());
     AppMethodBeat.o(127604);
   }
   

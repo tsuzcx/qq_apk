@@ -2,9 +2,9 @@ package com.google.c.e.a;
 
 public final class d
 {
-  public final int bJZ;
-  public final int bKa;
-  public final int bKb;
+  public final int bUm;
+  public final int bUn;
+  public final int bUo;
   public final int maxRows;
 }
 

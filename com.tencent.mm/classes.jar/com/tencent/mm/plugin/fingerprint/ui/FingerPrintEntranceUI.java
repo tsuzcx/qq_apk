@@ -6,10 +6,10 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fingerprint.d.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
@@ -26,15 +26,15 @@ public class FingerPrintEntranceUI
     int j = 1;
     AppMethodBeat.i(64554);
     super.onCreate(paramBundle);
-    ac.i("MicroMsg.FingerPrintEntranceUI", "onCreate");
+    ad.i("MicroMsg.FingerPrintEntranceUI", "onCreate");
     int i;
-    if (com.tencent.mm.plugin.fingerprint.b.d.cHv())
+    if (com.tencent.mm.plugin.fingerprint.b.d.cPK())
     {
-      ac.i("MicroMsg.FingerPrintEntranceUI", "will call showSetFingerPrintGuide()");
-      ac.i("MicroMsg.FingerPrintEntranceUI", "hy: has standard action starting to fingerprint setting");
+      ad.i("MicroMsg.FingerPrintEntranceUI", "will call showSetFingerPrintGuide()");
+      ad.i("MicroMsg.FingerPrintEntranceUI", "hy: has standard action starting to fingerprint setting");
       paramBundle = getResources().getString(2131764315);
       Resources localResources = getResources();
-      if (((a)g.ab(a.class)).cHh())
+      if (((a)g.ab(a.class)).cPw())
       {
         i = 2131756750;
         h.a(this, paramBundle, "", localResources.getString(i), getString(2131755691), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
@@ -42,7 +42,7 @@ public class FingerPrintEntranceUI
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(64550);
-            ac.i("MicroMsg.FingerPrintEntranceUI", "user click the button to set system fingerprint");
+            ad.i("MicroMsg.FingerPrintEntranceUI", "user click the button to set system fingerprint");
             FingerPrintEntranceUI.a(FingerPrintEntranceUI.this);
             FingerPrintEntranceUI.this.finish();
             AppMethodBeat.o(64550);
@@ -56,7 +56,7 @@ public class FingerPrintEntranceUI
             AppMethodBeat.o(64551);
           }
         });
-        com.tencent.mm.plugin.fingerprint.b.d.cHr();
+        com.tencent.mm.plugin.fingerprint.b.d.cPG();
         i = j;
       }
     }
@@ -64,23 +64,23 @@ public class FingerPrintEntranceUI
     {
       if (i == 0)
       {
-        ac.e("MicroMsg.FingerPrintEntranceUI", "finish FingerPrintEntranceUI");
+        ad.e("MicroMsg.FingerPrintEntranceUI", "finish FingerPrintEntranceUI");
         finish();
       }
       AppMethodBeat.o(64554);
       return;
       i = 2131755835;
       break;
-      if (!com.tencent.mm.plugin.fingerprint.b.d.cHq())
+      if (!com.tencent.mm.plugin.fingerprint.b.d.cPF())
       {
-        ac.i("MicroMsg.FingerPrintEntranceUI", "will showOpenFingerPrintPayGuide()");
+        ad.i("MicroMsg.FingerPrintEntranceUI", "will showOpenFingerPrintPayGuide()");
         h.a(this, getResources().getString(2131764314), "", getResources().getString(2131756748), getString(2131755691), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(64552);
-            ac.i("MicroMsg.FingerPrintEntranceUI", "user click the button to open fingerprint pay");
-            com.tencent.mm.br.d.N(FingerPrintEntranceUI.this, "wallet", ".pwd.ui.WalletPasswordSettingUI");
+            ad.i("MicroMsg.FingerPrintEntranceUI", "user click the button to open fingerprint pay");
+            com.tencent.mm.bs.d.Q(FingerPrintEntranceUI.this, "wallet", ".pwd.ui.WalletPasswordSettingUI");
             FingerPrintEntranceUI.this.finish();
             AppMethodBeat.o(64552);
           }
@@ -93,7 +93,7 @@ public class FingerPrintEntranceUI
             AppMethodBeat.o(64553);
           }
         });
-        com.tencent.mm.plugin.fingerprint.b.d.cHp();
+        com.tencent.mm.plugin.fingerprint.b.d.cPE();
         i = j;
       }
       else

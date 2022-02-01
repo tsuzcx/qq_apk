@@ -23,76 +23,76 @@ import java.util.List;
 
 public final class MediaControllerCompat
 {
-  final b Kw;
-  private final MediaSessionCompat.Token Kx;
-  private final HashSet<a> Ky = new HashSet();
+  final b Mm;
+  private final MediaSessionCompat.Token Mn;
+  private final HashSet<a> Mo = new HashSet();
   
   public MediaControllerCompat(Context paramContext, MediaSessionCompat.Token paramToken)
   {
     if (paramToken == null) {
       throw new IllegalArgumentException("sessionToken must not be null");
     }
-    this.Kx = paramToken;
+    this.Mn = paramToken;
     if (Build.VERSION.SDK_INT >= 24)
     {
-      this.Kw = new d(paramContext, paramToken);
+      this.Mm = new d(paramContext, paramToken);
       return;
     }
     if (Build.VERSION.SDK_INT >= 23)
     {
-      this.Kw = new c(paramContext, paramToken);
+      this.Mm = new c(paramContext, paramToken);
       return;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.Kw = new MediaControllerImplApi21(paramContext, paramToken);
+      this.Mm = new MediaControllerImplApi21(paramContext, paramToken);
       return;
     }
-    this.Kw = new e(paramToken);
+    this.Mm = new e(paramToken);
   }
   
   static class MediaControllerImplApi21
     implements MediaControllerCompat.b
   {
-    protected final Object KE;
-    final List<MediaControllerCompat.a> KF = new ArrayList();
-    HashMap<MediaControllerCompat.a, a> KG = new HashMap();
-    final MediaSessionCompat.Token KH;
+    protected final Object Mu;
+    final List<MediaControllerCompat.a> Mv = new ArrayList();
+    HashMap<MediaControllerCompat.a, a> Mw = new HashMap();
+    final MediaSessionCompat.Token Mx;
     final Object mLock = new Object();
     
     public MediaControllerImplApi21(Context paramContext, MediaSessionCompat.Token paramToken)
     {
-      this.KH = paramToken;
-      this.KE = new MediaController(paramContext, (MediaSession.Token)this.KH.KT);
-      if (this.KE == null) {
+      this.Mx = paramToken;
+      this.Mu = new MediaController(paramContext, (MediaSession.Token)this.Mx.ML);
+      if (this.Mu == null) {
         throw new RemoteException();
       }
-      if (this.KH.KU == null)
+      if (this.Mx.MM == null)
       {
         paramContext = new ExtraBinderRequestResultReceiver(this);
-        ((MediaController)this.KE).sendCommand("android.support.v4.media.session.command.GET_EXTRA_BINDER", null, paramContext);
+        ((MediaController)this.Mu).sendCommand("android.support.v4.media.session.command.GET_EXTRA_BINDER", null, paramContext);
       }
     }
     
     public final boolean dispatchMediaButtonEvent(KeyEvent paramKeyEvent)
     {
-      return ((MediaController)this.KE).dispatchMediaButtonEvent(paramKeyEvent);
+      return ((MediaController)this.Mu).dispatchMediaButtonEvent(paramKeyEvent);
     }
     
     static class ExtraBinderRequestResultReceiver
       extends ResultReceiver
     {
-      private WeakReference<MediaControllerCompat.MediaControllerImplApi21> KI;
+      private WeakReference<MediaControllerCompat.MediaControllerImplApi21> My;
       
       ExtraBinderRequestResultReceiver(MediaControllerCompat.MediaControllerImplApi21 paramMediaControllerImplApi21)
       {
         super();
-        this.KI = new WeakReference(paramMediaControllerImplApi21);
+        this.My = new WeakReference(paramMediaControllerImplApi21);
       }
       
       protected void onReceiveResult(int paramInt, Bundle paramBundle)
       {
-        MediaControllerCompat.MediaControllerImplApi21 localMediaControllerImplApi21 = (MediaControllerCompat.MediaControllerImplApi21)this.KI.get();
+        MediaControllerCompat.MediaControllerImplApi21 localMediaControllerImplApi21 = (MediaControllerCompat.MediaControllerImplApi21)this.My.get();
         if ((localMediaControllerImplApi21 == null) || (paramBundle == null)) {
           return;
         }
@@ -100,21 +100,21 @@ public final class MediaControllerCompat
         MediaControllerCompat.MediaControllerImplApi21.a locala1;
         synchronized (localMediaControllerImplApi21.mLock)
         {
-          localMediaControllerImplApi21.KH.KU = b.a.d(c.c(paramBundle, "android.support.v4.media.session.EXTRA_BINDER"));
-          localMediaControllerImplApi21.KH.KV = paramBundle.getBundle("android.support.v4.media.session.SESSION_TOKEN2_BUNDLE");
-          if (localMediaControllerImplApi21.KH.KU == null) {
+          localMediaControllerImplApi21.Mx.MM = b.a.d(c.b(paramBundle, "android.support.v4.media.session.EXTRA_BINDER"));
+          localMediaControllerImplApi21.Mx.MN = paramBundle.getBundle("android.support.v4.media.session.SESSION_TOKEN2_BUNDLE");
+          if (localMediaControllerImplApi21.Mx.MM == null) {
             break label177;
           }
-          paramBundle = localMediaControllerImplApi21.KF.iterator();
+          paramBundle = localMediaControllerImplApi21.Mv.iterator();
           if (paramBundle.hasNext())
           {
             locala = (MediaControllerCompat.a)paramBundle.next();
             locala1 = new MediaControllerCompat.MediaControllerImplApi21.a(locala);
-            localMediaControllerImplApi21.KG.put(locala, locala1);
-            locala.KB = locala1;
+            localMediaControllerImplApi21.Mw.put(locala, locala1);
+            locala.Mr = locala1;
           }
         }
-        localMediaControllerImplApi21.KF.clear();
+        localMediaControllerImplApi21.Mv.clear();
         label177:
       }
     }
@@ -162,27 +162,27 @@ public final class MediaControllerCompat
   public static abstract class a
     implements IBinder.DeathRecipient
   {
-    a KA;
-    a KB;
-    final Object Kz;
+    final Object Mp;
+    a Mq;
+    a Mr;
     
     public a()
     {
       if (Build.VERSION.SDK_INT >= 21)
       {
-        this.Kz = new c.b(new b(this));
+        this.Mp = new c.b(new b(this));
         return;
       }
       c localc = new c(this);
-      this.KB = localc;
-      this.Kz = localc;
+      this.Mr = localc;
+      this.Mp = localc;
     }
     
     final void a(int paramInt, Object paramObject, Bundle paramBundle)
     {
-      if (this.KA != null)
+      if (this.Mq != null)
       {
-        paramObject = this.KA.obtainMessage(paramInt, paramObject);
+        paramObject = this.Mq.obtainMessage(paramInt, paramObject);
         paramObject.setData(paramBundle);
         paramObject.sendToTarget();
       }
@@ -191,11 +191,11 @@ public final class MediaControllerCompat
     final class a
       extends Handler
     {
-      boolean KC;
+      boolean Ms;
       
       public final void handleMessage(Message paramMessage)
       {
-        if (!this.KC) {
+        if (!this.Ms) {
           return;
         }
         switch (paramMessage.what)
@@ -240,62 +240,62 @@ public final class MediaControllerCompat
     static final class b
       implements c.a
     {
-      private final WeakReference<MediaControllerCompat.a> KD;
+      private final WeakReference<MediaControllerCompat.a> Mt;
       
       b(MediaControllerCompat.a parama)
       {
-        this.KD = new WeakReference(parama);
+        this.Mt = new WeakReference(parama);
       }
       
-      public final void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+      public final void d(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
       {
-        if ((MediaControllerCompat.a)this.KD.get() != null) {
+        if ((MediaControllerCompat.a)this.Mt.get() != null) {
           new MediaControllerCompat.f(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
         }
       }
       
-      public final void eH()
+      public final void eY()
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
-        if ((locala != null) && (locala.KB != null)) {
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
+        if ((locala != null) && (locala.Mr != null)) {
           int i = Build.VERSION.SDK_INT;
         }
       }
       
-      public final void eI()
+      public final void eZ()
       {
-        this.KD.get();
+        this.Mt.get();
       }
       
-      public final void eJ()
+      public final void fa()
       {
-        this.KD.get();
+        this.Mt.get();
       }
       
       public final void onQueueChanged(List<?> paramList)
       {
-        if ((MediaControllerCompat.a)this.KD.get() != null) {
+        if ((MediaControllerCompat.a)this.Mt.get() != null) {
           MediaSessionCompat.QueueItem.l(paramList);
         }
       }
       
       public final void onSessionDestroyed()
       {
-        this.KD.get();
-      }
-      
-      public final void w(Object paramObject)
-      {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
-        if ((locala != null) && (locala.KB == null)) {
-          PlaybackStateCompat.A(paramObject);
-        }
+        this.Mt.get();
       }
       
       public final void x(Object paramObject)
       {
-        if ((MediaControllerCompat.a)this.KD.get() != null) {
-          MediaMetadataCompat.v(paramObject);
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
+        if ((locala != null) && (locala.Mr == null)) {
+          PlaybackStateCompat.B(paramObject);
+        }
+      }
+      
+      public final void y(Object paramObject)
+      {
+        if ((MediaControllerCompat.a)this.Mt.get() != null) {
+          MediaMetadataCompat.w(paramObject);
         }
       }
     }
@@ -303,18 +303,18 @@ public final class MediaControllerCompat
     static class c
       extends a.a
     {
-      private final WeakReference<MediaControllerCompat.a> KD;
+      private final WeakReference<MediaControllerCompat.a> Mt;
       
       c(MediaControllerCompat.a parama)
       {
-        this.KD = new WeakReference(parama);
+        this.Mt = new WeakReference(parama);
       }
       
       public final void G(boolean paramBoolean) {}
       
       public final void H(boolean paramBoolean)
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
         if (locala != null) {
           locala.a(11, Boolean.valueOf(paramBoolean), null);
         }
@@ -322,7 +322,7 @@ public final class MediaControllerCompat
       
       public void a(MediaMetadataCompat paramMediaMetadataCompat)
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
         if (locala != null) {
           locala.a(3, paramMediaMetadataCompat, null);
         }
@@ -330,14 +330,14 @@ public final class MediaControllerCompat
       
       public void a(ParcelableVolumeInfo paramParcelableVolumeInfo)
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
         if (locala != null) {
           if (paramParcelableVolumeInfo == null) {
             break label55;
           }
         }
         label55:
-        for (paramParcelableVolumeInfo = new MediaControllerCompat.f(paramParcelableVolumeInfo.KW, paramParcelableVolumeInfo.KX, paramParcelableVolumeInfo.KY, paramParcelableVolumeInfo.KZ, paramParcelableVolumeInfo.La);; paramParcelableVolumeInfo = null)
+        for (paramParcelableVolumeInfo = new MediaControllerCompat.f(paramParcelableVolumeInfo.MO, paramParcelableVolumeInfo.MP, paramParcelableVolumeInfo.MQ, paramParcelableVolumeInfo.MR, paramParcelableVolumeInfo.MS);; paramParcelableVolumeInfo = null)
         {
           locala.a(4, paramParcelableVolumeInfo, null);
           return;
@@ -346,7 +346,7 @@ public final class MediaControllerCompat
       
       public final void a(PlaybackStateCompat paramPlaybackStateCompat)
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
         if (locala != null) {
           locala.a(2, paramPlaybackStateCompat, null);
         }
@@ -354,7 +354,7 @@ public final class MediaControllerCompat
       
       public final void aA(int paramInt)
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
         if (locala != null) {
           locala.a(9, Integer.valueOf(paramInt), null);
         }
@@ -362,7 +362,7 @@ public final class MediaControllerCompat
       
       public final void aB(int paramInt)
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
         if (locala != null) {
           locala.a(12, Integer.valueOf(paramInt), null);
         }
@@ -370,15 +370,15 @@ public final class MediaControllerCompat
       
       public final void d(String paramString, Bundle paramBundle)
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
         if (locala != null) {
           locala.a(1, paramString, paramBundle);
         }
       }
       
-      public final void ex()
+      public final void eO()
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
         if (locala != null) {
           locala.a(13, null, null);
         }
@@ -386,7 +386,7 @@ public final class MediaControllerCompat
       
       public void onExtrasChanged(Bundle paramBundle)
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
         if (locala != null) {
           locala.a(7, paramBundle, null);
         }
@@ -394,7 +394,7 @@ public final class MediaControllerCompat
       
       public void onQueueChanged(List<MediaSessionCompat.QueueItem> paramList)
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
         if (locala != null) {
           locala.a(5, paramList, null);
         }
@@ -402,7 +402,7 @@ public final class MediaControllerCompat
       
       public void onQueueTitleChanged(CharSequence paramCharSequence)
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
         if (locala != null) {
           locala.a(6, paramCharSequence, null);
         }
@@ -410,7 +410,7 @@ public final class MediaControllerCompat
       
       public void onSessionDestroyed()
       {
-        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.KD.get();
+        MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Mt.get();
         if (locala != null) {
           locala.a(8, null, null);
         }
@@ -444,11 +444,11 @@ public final class MediaControllerCompat
   static final class e
     implements MediaControllerCompat.b
   {
-    private b KJ;
+    private b Mz;
     
     public e(MediaSessionCompat.Token paramToken)
     {
-      this.KJ = b.a.d((IBinder)paramToken.KT);
+      this.Mz = b.a.d((IBinder)paramToken.ML);
     }
     
     public final boolean dispatchMediaButtonEvent(KeyEvent paramKeyEvent)
@@ -458,7 +458,7 @@ public final class MediaControllerCompat
       }
       try
       {
-        this.KJ.a(paramKeyEvent);
+        this.Mz.a(paramKeyEvent);
         label25:
         return false;
       }
@@ -471,19 +471,19 @@ public final class MediaControllerCompat
   
   public static final class f
   {
-    private final int KK;
-    private final int KL;
-    private final int KM;
-    private final int KN;
-    private final int KO;
+    private final int MA;
+    private final int MC;
+    private final int MD;
+    private final int MF;
+    private final int MG;
     
     f(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
     {
-      this.KK = paramInt1;
-      this.KL = paramInt2;
-      this.KM = paramInt3;
-      this.KN = paramInt4;
-      this.KO = paramInt5;
+      this.MA = paramInt1;
+      this.MC = paramInt2;
+      this.MD = paramInt3;
+      this.MF = paramInt4;
+      this.MG = paramInt5;
     }
   }
 }

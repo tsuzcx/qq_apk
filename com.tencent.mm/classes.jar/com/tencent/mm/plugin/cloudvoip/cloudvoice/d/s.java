@@ -5,8 +5,8 @@ import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.a;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.b;
-import com.tencent.mm.protocal.protobuf.dqc;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.dvt;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.wxmm.v2conference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,37 +24,37 @@ public final class s
   boolean mStarted;
   private HandlerThread mThread;
   Timer mTimer;
-  private j osL;
-  int owb;
-  int owc;
-  public final Map<String, c> owd;
-  private boolean owe;
+  private j oWh;
+  int oZw;
+  int oZx;
+  public final Map<String, c> oZy;
+  private boolean oZz;
   
   public s(j paramj)
   {
     AppMethodBeat.i(90942);
-    this.osL = null;
+    this.oWh = null;
     this.mThread = null;
-    this.owb = 0;
-    this.owc = 0;
+    this.oZw = 0;
+    this.oZx = 0;
     this.mTimer = null;
-    this.frameData = new byte[l.bVu().defaultHeight * l.bVu().defaultWidth * 4];
-    this.owd = new HashMap();
+    this.frameData = new byte[l.bZY().defaultHeight * l.bZY().defaultWidth * 4];
+    this.oZy = new HashMap();
     this.mStarted = false;
-    this.owe = true;
-    this.osL = paramj;
+    this.oZz = true;
+    this.oWh = paramj;
     AppMethodBeat.o(90942);
   }
   
-  private b Wf(String paramString)
+  private b ZM(String paramString)
   {
     AppMethodBeat.i(90945);
-    if (this.osL == null)
+    if (this.oWh == null)
     {
       AppMethodBeat.o(90945);
       return null;
     }
-    Object localObject = this.osL.ots;
+    Object localObject = this.oWh.oWO;
     if (localObject == null)
     {
       AppMethodBeat.o(90945);
@@ -74,29 +74,29 @@ public final class s
     return null;
   }
   
-  final dqc We(String paramString)
+  final dvt ZL(String paramString)
   {
     AppMethodBeat.i(184492);
-    ac.d("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "getVideoSize");
+    ad.d("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "getVideoSize");
     c localc;
-    synchronized (this.owd)
+    synchronized (this.oZy)
     {
-      localc = (c)this.owd.get(paramString);
+      localc = (c)this.oZy.get(paramString);
       if (localc == null)
       {
         AppMethodBeat.o(184492);
         return null;
       }
     }
-    paramString = new dqc();
-    paramString.EsY = localc.getMemberId();
-    if (localc.bVo())
+    paramString = new dvt();
+    paramString.Gan = localc.getMemberId();
+    if (localc.bZT())
     {
       ??? = (i)localc;
       if (((i)???).getHeight() > ((i)???).getWidth()) {}
       for (i = ((i)???).getHeight();; i = ((i)???).getWidth())
       {
-        paramString.FXp = i;
+        paramString.HIe = i;
         AppMethodBeat.o(184492);
         return paramString;
       }
@@ -105,7 +105,7 @@ public final class s
     if (((t)???).getHeight() > ((t)???).getWidth()) {}
     for (int i = ((t)???).getHeight();; i = ((t)???).getWidth())
     {
-      paramString.FXp = i;
+      paramString.HIe = i;
       break;
     }
   }
@@ -113,43 +113,43 @@ public final class s
   public final c a(Context paramContext, JSONObject arg2)
   {
     AppMethodBeat.i(90944);
-    if (p.otZ.ouf != p.d.ovS)
+    if (p.oXv.oXB != p.d.oZn)
     {
-      ac.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "newView failed, not in room, data:" + ???.toString());
+      ad.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "newView failed, not in room, data:" + ???.toString());
       AppMethodBeat.o(90944);
       return null;
     }
     String str = ???.optString("openId", "");
-    Object localObject = Wf(str);
+    Object localObject = ZM(str);
     if (localObject == null)
     {
-      ac.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "newView failed, not found member, data:" + ???.toString());
+      ad.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "newView failed, not found member, data:" + ???.toString());
       AppMethodBeat.o(90944);
       return null;
     }
-    ac.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "new View, mid:" + ((b)localObject).osF + " data:" + ???.toString());
+    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "new View, mid:" + ((b)localObject).oWb + " data:" + ???.toString());
     if (???.optString("type", "camera").equals("camera")) {
-      if (this.owe) {
+      if (this.oZz) {
         paramContext = new n(paramContext, (b)localObject);
       }
     }
     for (;;)
     {
-      if (paramContext.bVo())
+      if (paramContext.bZT())
       {
-        ??? = p.otZ;
-        ac.i("MicroMsg.OpenVoice.OpenVoiceService", "onCameraStart");
-        ???.ag(new p.15(???));
+        ??? = p.oXv;
+        ad.i("MicroMsg.OpenVoice.OpenVoiceService", "onCameraStart");
+        ???.af(new p.16(???));
       }
-      synchronized (this.owd)
+      synchronized (this.oZy)
       {
-        localObject = (c)this.owd.get(str);
+        localObject = (c)this.oZy.get(str);
         if (localObject != null)
         {
           ((c)localObject).uint();
-          this.owd.remove(str);
+          this.oZy.remove(str);
         }
-        this.owd.put(str, paramContext);
+        this.oZy.put(str, paramContext);
         AppMethodBeat.o(90944);
         return paramContext;
         paramContext = new i(paramContext, (b)localObject);
@@ -159,10 +159,10 @@ public final class s
     }
   }
   
-  public final boolean bVC()
+  public final boolean caf()
   {
     AppMethodBeat.i(90943);
-    ac.e("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "startPlay");
+    ad.e("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "startPlay");
     try
     {
       try
@@ -197,43 +197,43 @@ public final class s
                   if (j < 2)
                   {
                     s.this.frameData[0] = i;
-                    ??? = p.otZ;
-                    j = p.aO(s.this.frameData);
-                    int n = l.bVu().field_remoteImgLength;
-                    int i1 = l.bVu().field_remoteImgHeight;
-                    int i2 = l.bVu().field_remoteImgWidth;
-                    int i3 = l.bVu().field_remoteImgMember;
+                    ??? = p.oXv;
+                    j = p.aR(s.this.frameData);
+                    int n = l.bZY().field_remoteImgLength;
+                    int i1 = l.bZY().field_remoteImgHeight;
+                    int i2 = l.bZY().field_remoteImgWidth;
+                    int i3 = l.bZY().field_remoteImgMember;
                     ??? = s.this;
-                    int i4 = ((s)???).owb + 1;
-                    ((s)???).owb = i4;
+                    int i4 = ((s)???).oZw + 1;
+                    ((s)???).oZw = i4;
                     if (i4 % 100 == 0) {
-                      ac.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "GetVideo, mark:" + (i - 1) + " ret:" + j + ", len:" + s.this.frameData.length + ", rLen:" + n + ", rHeight:" + i1 + ", rWidth:" + i2 + ", rMid:" + i3 + ", drawCnt:" + s.this.owc);
+                      ad.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "GetVideo, mark:" + (i - 1) + " ret:" + j + ", len:" + s.this.frameData.length + ", rLen:" + n + ", rHeight:" + i1 + ", rWidth:" + i2 + ", rMid:" + i3 + ", drawCnt:" + s.this.oZx);
                     }
                     if ((j <= 0) || (n <= 0) || (i1 <= 0) || (i2 <= 0)) {
                       break label518;
                     }
                     a locala = new a();
-                    locala.osD = s.this.frameData;
-                    locala.cGX = n;
+                    locala.oVZ = s.this.frameData;
+                    locala.cSb = n;
                     locala.width = i2;
                     locala.height = i1;
-                    locala.osE = i3;
-                    synchronized (s.this.owd)
+                    locala.oWa = i3;
+                    synchronized (s.this.oZy)
                     {
-                      Object localObject3 = s.this.owd.entrySet().iterator();
+                      Object localObject3 = s.this.oZy.entrySet().iterator();
                       if (!((Iterator)localObject3).hasNext()) {
                         break label513;
                       }
                       c localc = (c)((Map.Entry)((Iterator)localObject3).next()).getValue();
-                      if ((localc == null) || (localc.bVo()) || (localc.getMemberId() != locala.osE)) {
+                      if ((localc == null) || (localc.bZT()) || (localc.getMemberId() != locala.oWa)) {
                         continue;
                       }
                       localc.a(locala);
                       localObject3 = s.this;
-                      ((s)localObject3).owc += 1;
+                      ((s)localObject3).oZx += 1;
                       j = 1;
                       if (j == 0) {
-                        ac.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "thread handler, mid:" + locala.osE + " not found");
+                        ad.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "thread handler, mid:" + locala.oWa + " not found");
                       }
                       j = i;
                       m = 1;
@@ -246,7 +246,7 @@ public final class s
               }
               catch (Exception localException)
               {
-                ac.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceVideoMgr", localException, "timer task crash", new Object[0]);
+                ad.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceVideoMgr", localException, "timer task crash", new Object[0]);
                 AppMethodBeat.o(90941);
                 return;
               }
@@ -274,7 +274,7 @@ public final class s
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "startPlay error:" + localException.toString());
+      ad.e("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "startPlay error:" + localException.toString());
       AppMethodBeat.o(90943);
     }
   }
@@ -291,7 +291,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.s
  * JD-Core Version:    0.7.0.1
  */

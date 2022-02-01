@@ -23,11 +23,11 @@ public class LockStepNative
   @Keep
   public LockStepNative(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(197171);
+    AppMethodBeat.i(220926);
     this.mNativeInst = 0L;
     this.initCallBackFlag = false;
     this.mNativeInst = initBindingLockStep(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(197171);
+    AppMethodBeat.o(220926);
   }
   
   private native void destoryBindingLockStep(long paramLong);
@@ -182,7 +182,7 @@ public class LockStepNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.game.liblockstep.LockStepNative
  * JD-Core Version:    0.7.0.1
  */

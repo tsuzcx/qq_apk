@@ -6,8 +6,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.g;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 final class b$1
@@ -15,62 +15,62 @@ final class b$1
 {
   b$1(WeImageView paramWeImageView, String paramString, TextView paramTextView) {}
   
-  public final void asD(String paramString)
+  public final void axG(String paramString)
   {
-    AppMethodBeat.i(200666);
+    AppMethodBeat.i(198605);
     try
     {
-      String str = (String)this.zkS.getTag(2131304892);
+      String str = (String)this.ACW.getTag(2131304892);
       if (TextUtils.isEmpty(str)) {
         str = "";
       }
       while ((!TextUtils.isEmpty(paramString)) && (paramString.equals(str)))
       {
-        paramString = f.decodeFile(paramString, null);
+        paramString = g.decodeFile(paramString, null);
         if (paramString != null)
         {
-          this.zkS.setImageBitmap(paramString);
-          this.zkS.setVisibility(0);
-          if ((this.zkP != null) && ((this.zkP.getLayoutParams() instanceof LinearLayout.LayoutParams))) {
-            ((LinearLayout.LayoutParams)this.zkP.getLayoutParams()).leftMargin = 0;
+          this.ACW.setImageBitmap(paramString);
+          this.ACW.setVisibility(0);
+          if ((this.ogz != null) && ((this.ogz.getLayoutParams() instanceof LinearLayout.LayoutParams))) {
+            ((LinearLayout.LayoutParams)this.ogz.getLayoutParams()).leftMargin = 0;
           }
-          ac.d("SnsCardAdTagUtils", "onDownloaded succ, hash=" + this.zkS.hashCode());
-          AppMethodBeat.o(200666);
+          ad.d("SnsCardAdTagUtils", "onDownloaded succ, hash=" + this.ACW.hashCode());
+          AppMethodBeat.o(198605);
           return;
-          str = h.js("adId", str);
+          str = h.jF("adId", str);
         }
         else
         {
-          ac.e("SnsCardAdTagUtils", "onDownloaded, bitmap==null");
-          AppMethodBeat.o(200666);
+          ad.e("SnsCardAdTagUtils", "onDownloaded, bitmap==null");
+          AppMethodBeat.o(198605);
           return;
         }
       }
     }
     catch (Throwable paramString)
     {
-      ac.e("SnsCardAdTagUtils", "onDownloaded, exp=" + paramString.toString());
-      AppMethodBeat.o(200666);
+      ad.e("SnsCardAdTagUtils", "onDownloaded, exp=" + paramString.toString());
+      AppMethodBeat.o(198605);
       return;
     }
-    ac.d("SnsCardAdTagUtils", "onDownloaded, url changed");
-    AppMethodBeat.o(200666);
+    ad.d("SnsCardAdTagUtils", "onDownloaded, url changed");
+    AppMethodBeat.o(198605);
   }
   
-  public final void dFC() {}
+  public final void dRW() {}
   
-  public final void dFD()
+  public final void dRX()
   {
-    AppMethodBeat.i(200665);
-    this.zkS.setTag(2131304892, "");
-    this.zkS.setVisibility(8);
-    ac.e("SnsCardAdTagUtils", "onDownloadError, hash=" + this.zkS.hashCode() + ", url=" + this.xLY);
-    AppMethodBeat.o(200665);
+    AppMethodBeat.i(198604);
+    this.ACW.setTag(2131304892, "");
+    this.ACW.setVisibility(8);
+    ad.e("SnsCardAdTagUtils", "onDownloadError, hash=" + this.ACW.hashCode() + ", url=" + this.zbw);
+    AppMethodBeat.o(198604);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.b.1
  * JD-Core Version:    0.7.0.1
  */

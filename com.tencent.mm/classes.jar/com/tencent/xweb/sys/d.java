@@ -14,16 +14,16 @@ import com.tencent.xweb.o;
 public final class d
   implements e
 {
-  WebViewClient KDw;
-  WebChromeClient KDx;
-  WebView KDy;
+  WebViewClient MtW;
+  WebChromeClient MtX;
+  WebView MtY;
   
   public d(WebView paramWebView)
   {
     AppMethodBeat.i(153668);
-    this.KDy = paramWebView;
-    this.KDw = new WebViewClient();
-    this.KDx = new WebChromeClient();
+    this.MtY = paramWebView;
+    this.MtW = new WebViewClient();
+    this.MtX = new WebChromeClient();
     AppMethodBeat.o(153668);
   }
   
@@ -49,7 +49,7 @@ public final class d
   public final void y(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(153669);
-    this.KDw.onPageStarted(this.KDy, paramString, paramBitmap);
+    this.MtW.onPageStarted(this.MtY, paramString, paramBitmap);
     AppMethodBeat.o(153669);
   }
 }

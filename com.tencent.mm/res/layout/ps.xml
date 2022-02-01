@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:gravity="center" android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/jv" android:textColor="@color/s5" android:id="@id/i1a" android:paddingLeft="7.0dip" android:paddingRight="7.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bq" android:layout_marginBottom="@dimen/bq" android:text="@string/hxs" />
     <TextView android:id="@id/ao5" android:layout_marginBottom="@dimen/i_" style="@style/gx" />
     <LinearLayout android:gravity="center" style="@style/go">
         <com.tencent.mm.ui.widget.MMNeat7extView android:gravity="center" android:id="@id/ala" android:background="@drawable/l4" android:paddingLeft="@dimen/hk" android:paddingRight="@dimen/hk" android:clickable="true" android:layout_marginLeft="@dimen/hd" android:layout_marginRight="@dimen/hd" style="@style/gz" />

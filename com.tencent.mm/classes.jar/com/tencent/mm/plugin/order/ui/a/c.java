@@ -14,20 +14,20 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class c
   extends Preference
 {
-  Bitmap hua;
+  Bitmap hMs;
   View.OnClickListener mOnClickListener;
   private View mView;
-  private TextView vuv;
-  private ImageView vzw;
-  String vzx;
+  private ImageView wEQ;
+  String wER;
+  private TextView wzO;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66805);
     this.mView = null;
-    this.vzx = "";
-    this.hua = null;
+    this.wER = "";
+    this.hMs = null;
     setLayoutResource(2131494706);
     AppMethodBeat.o(66805);
   }
@@ -48,20 +48,20 @@ public final class c
   {
     AppMethodBeat.i(66807);
     super.onBindView(paramView);
-    this.vuv = ((TextView)paramView.findViewById(2131302027));
-    this.vzw = ((ImageView)paramView.findViewById(2131302026));
-    this.vuv.setText(this.vzx);
-    this.vzw.setImageBitmap(this.hua);
-    this.vzw.setOnClickListener(this.mOnClickListener);
-    if ((this.vzx != null) && (this.vzx.length() > 48)) {
-      this.vuv.setTextSize(0, a.au(this.mContext, 2131165466));
+    this.wzO = ((TextView)paramView.findViewById(2131302027));
+    this.wEQ = ((ImageView)paramView.findViewById(2131302026));
+    this.wzO.setText(this.wER);
+    this.wEQ.setImageBitmap(this.hMs);
+    this.wEQ.setOnClickListener(this.mOnClickListener);
+    if ((this.wER != null) && (this.wER.length() > 48)) {
+      this.wzO.setTextSize(0, a.ax(this.mContext, 2131165466));
     }
     AppMethodBeat.o(66807);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.c
  * JD-Core Version:    0.7.0.1
  */

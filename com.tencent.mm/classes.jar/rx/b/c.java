@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static final a Mcs;
+  private static final a NXu;
   
   static
   {
     AppMethodBeat.i(90078);
-    Mcs = new a();
+    NXu = new a();
     AppMethodBeat.o(90078);
   }
   
-  public static <T0, T1, T2, T3, T4, T5, T6, T7, T8> a<T0, T1, T2, T3, T4, T5, T6, T7, T8> ggp()
+  public static <T0, T1, T2, T3, T4, T5, T6, T7, T8> a<T0, T1, T2, T3, T4, T5, T6, T7, T8> gyT()
   {
-    return Mcs;
+    return NXu;
   }
   
   public static final class a<T0, T1, T2, T3, T4, T5, T6, T7, T8>
@@ -23,12 +23,12 @@ public final class c
   {
     public final void call() {}
     
-    public final void co(T0 paramT0) {}
+    public final void cq(T0 paramT0) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     rx.b.c
  * JD-Core Version:    0.7.0.1
  */

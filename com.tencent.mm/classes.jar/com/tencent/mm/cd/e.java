@@ -10,33 +10,33 @@ import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.e.a.a;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.svg.b.b;
 
 public final class e
 {
-  com.tencent.mm.svg.a.a njc;
+  com.tencent.mm.svg.a.a nJy;
   
   static
   {
     AppMethodBeat.i(141247);
     com.tencent.mm.compatible.e.a.a(new a());
-    b.wh(ai.getContext().getSharedPreferences("wechat_svg_debug", g.YK()).getBoolean("open_tag", false));
+    b.wT(aj.getContext().getSharedPreferences("wechat_svg_debug", g.abm()).getBoolean("open_tag", false));
     AppMethodBeat.o(141247);
   }
   
   public e()
   {
     AppMethodBeat.i(141244);
-    this.njc = new com.tencent.mm.svg.a.a();
+    this.nJy = new com.tencent.mm.svg.a.a();
     AppMethodBeat.o(141244);
   }
   
-  public static void vB(boolean paramBoolean)
+  public static void wn(boolean paramBoolean)
   {
     AppMethodBeat.i(141246);
-    ai.getContext().getSharedPreferences("wechat_svg_debug", g.YK()).edit().putBoolean("open_tag", paramBoolean).commit();
-    b.wh(paramBoolean);
+    aj.getContext().getSharedPreferences("wechat_svg_debug", g.abm()).edit().putBoolean("open_tag", paramBoolean).commit();
+    b.wT(paramBoolean);
     AppMethodBeat.o(141246);
   }
   
@@ -44,7 +44,7 @@ public final class e
   {
     AppMethodBeat.i(141245);
     Drawable localDrawable = null;
-    if (this.njc.i(paramResources, paramInt)) {
+    if (this.nJy.i(paramResources, paramInt)) {
       localDrawable = com.tencent.mm.svg.a.a.g(paramResources, paramInt);
     }
     AppMethodBeat.o(141245);
@@ -54,19 +54,19 @@ public final class e
   public static final class a
     implements a.a
   {
-    com.tencent.mm.svg.a.a njc;
+    com.tencent.mm.svg.a.a nJy;
     
     public a()
     {
       AppMethodBeat.i(141242);
-      this.njc = new com.tencent.mm.svg.a.a();
+      this.nJy = new com.tencent.mm.svg.a.a();
       AppMethodBeat.o(141242);
     }
     
     public final Bitmap decodeResource(Resources paramResources, int paramInt, BitmapFactory.Options paramOptions)
     {
       AppMethodBeat.i(141243);
-      if (this.njc.i(paramResources, paramInt))
+      if (this.nJy.i(paramResources, paramInt))
       {
         float f = 0.0F;
         if (paramOptions != null) {

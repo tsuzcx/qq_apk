@@ -622,11 +622,14 @@ public class SharePatchFileUtil
   
   public static File getPatchDirectory(Context paramContext)
   {
-    paramContext = paramContext.getApplicationInfo();
-    if (paramContext == null) {
+    ApplicationInfo localApplicationInfo = paramContext.getApplicationInfo();
+    if (localApplicationInfo == null) {
       return null;
     }
-    return new File(paramContext.dataDir, "tinker");
+    if (("oppo".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.VERSION.SDK_INT == 22)) {}
+    for (paramContext = "wc_tinker_dir";; paramContext = "tinker") {
+      return new File(localApplicationInfo.dataDir, paramContext);
+    }
   }
   
   public static File getPatchInfoFile(String paramString)
@@ -845,14 +848,14 @@ public class SharePatchFileUtil
     //   17: ifnonnull +5 -> 22
     //   20: iconst_0
     //   21: ireturn
-    //   22: ldc_w 428
+    //   22: ldc_w 430
     //   25: astore 6
     //   27: aload_0
-    //   28: invokevirtual 363	java/io/File:getName	()Ljava/lang/String;
-    //   31: invokestatic 430	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:isRawDexFile	(Ljava/lang/String;)Z
+    //   28: invokevirtual 375	java/io/File:getName	()Ljava/lang/String;
+    //   31: invokestatic 432	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:isRawDexFile	(Ljava/lang/String;)Z
     //   34: ifeq +14 -> 48
     //   37: aload_0
-    //   38: invokestatic 432	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:getMD5	(Ljava/io/File;)Ljava/lang/String;
+    //   38: invokestatic 434	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:getMD5	(Ljava/io/File;)Ljava/lang/String;
     //   41: astore_0
     //   42: aload_2
     //   43: aload_0
@@ -872,7 +875,7 @@ public class SharePatchFileUtil
     //   71: ldc 8
     //   73: new 87	java/lang/StringBuilder
     //   76: dup
-    //   77: ldc_w 434
+    //   77: ldc_w 436
     //   80: invokespecial 92	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   83: aload_0
     //   84: invokevirtual 196	java/io/File:getAbsolutePath	()Ljava/lang/String;
@@ -915,7 +918,7 @@ public class SharePatchFileUtil
     //   157: ldc 8
     //   159: new 87	java/lang/StringBuilder
     //   162: dup
-    //   163: ldc_w 436
+    //   163: ldc_w 438
     //   166: invokespecial 92	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   169: aload_0
     //   170: invokevirtual 196	java/io/File:getAbsolutePath	()Ljava/lang/String;
@@ -939,7 +942,7 @@ public class SharePatchFileUtil
     //   205: ldc 8
     //   207: new 87	java/lang/StringBuilder
     //   210: dup
-    //   211: ldc_w 438
+    //   211: ldc_w 440
     //   214: invokespecial 92	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   217: aload_0
     //   218: invokevirtual 196	java/io/File:getAbsolutePath	()Ljava/lang/String;

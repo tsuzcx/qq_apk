@@ -11,16 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.k;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.t;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.u;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.c;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.c.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.c.b;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
-import com.tencent.mm.plugin.sns.ui.as;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.sns.ui.av;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -39,63 +39,73 @@ public final class a
 {
   int bgColor;
   private Context context;
-  private LinearLayoutManager ylx;
-  int yrA;
-  g yry;
-  private LinkedHashMap<String, k> yrz;
+  private LinearLayoutManager zCm;
+  g zII;
+  private LinkedHashMap<String, l> zIJ;
+  int zIK;
   
   public a(g paramg, int paramInt, Context paramContext, LinearLayoutManager paramLinearLayoutManager)
   {
     AppMethodBeat.i(97063);
-    this.ylx = paramLinearLayoutManager;
-    this.yry = paramg;
-    this.yrz = new LinkedHashMap();
+    this.zCm = paramLinearLayoutManager;
+    this.zII = paramg;
+    this.zIJ = new LinkedHashMap();
     this.bgColor = paramInt;
     this.context = paramContext;
     AppMethodBeat.o(97063);
   }
   
-  private k OU(int paramInt)
+  private l QC(int paramInt)
   {
     AppMethodBeat.i(97073);
-    Object localObject = (x)this.yry.yuw.get(paramInt);
-    localObject = (k)this.yrz.get(((x)localObject).yjs);
+    Object localObject = (x)this.zII.zLJ.get(paramInt);
+    localObject = (l)this.zIJ.get(((x)localObject).zAg);
     AppMethodBeat.o(97073);
     return localObject;
   }
   
-  public final void OP(int paramInt)
+  public final void QA(int paramInt)
+  {
+    AppMethodBeat.i(97072);
+    l locall = QC(paramInt);
+    if (i.QD(locall.dWS().type)) {
+      ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a)locall).dWG();
+    }
+    AppMethodBeat.o(97072);
+  }
+  
+  public final void Qx(int paramInt)
   {
     AppMethodBeat.i(97074);
-    if ((paramInt < 0) || (paramInt >= this.yry.yuw.size()))
+    if ((paramInt < 0) || (paramInt >= this.zII.zLJ.size()))
     {
-      ac.w("MicroMsg.ContentAdapter", "endExposure index[%d], size[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.yry.yuw.size()) });
+      ad.w("MicroMsg.ContentAdapter", "endExposure index[%d], size[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.zII.zLJ.size()) });
       AppMethodBeat.o(97074);
       return;
     }
-    Object localObject = (x)this.yry.yuw.get(paramInt);
-    localObject = (k)this.yrz.get(((x)localObject).yjs);
+    Object localObject = (x)this.zII.zLJ.get(paramInt);
+    localObject = (l)this.zIJ.get(((x)localObject).zAg);
     if (localObject != null) {
-      ((k)localObject).dJZ();
+      ((l)localObject).dRn();
     }
     AppMethodBeat.o(97074);
   }
   
-  public final boolean OQ(int paramInt)
+  public final boolean Qy(int paramInt)
   {
     AppMethodBeat.i(97067);
-    if ((paramInt < this.ylx.jW()) || (paramInt > this.ylx.jY()))
+    if ((paramInt < this.zCm.km()) || (paramInt > this.zCm.ko()))
     {
-      ac.v("MicroMsg.ContentAdapter", "index %d not visible");
+      ad.v("MicroMsg.ContentAdapter", "index %d not visible");
       AppMethodBeat.o(97067);
       return false;
     }
-    Object localObject = (x)this.yry.yuw.get(paramInt);
-    localObject = (k)this.yrz.get(((x)localObject).yjs);
+    Object localObject = (x)this.zII.zLJ.get(paramInt);
+    localObject = (l)this.zIJ.get(((x)localObject).zAg);
     if (localObject != null)
     {
-      ac.d("MicroMsg.ContentAdapter", "comp %s, isExposure %s", new Object[] { localObject, Boolean.valueOf(((k)localObject).dKC()) });
-      boolean bool = ((k)localObject).dKC();
+      ad.d("MicroMsg.ContentAdapter", "comp %s, isExposure %s", new Object[] { localObject, Boolean.valueOf(((l)localObject).dWU()) });
+      boolean bool = ((l)localObject).dWU();
       AppMethodBeat.o(97067);
       return bool;
     }
@@ -103,22 +113,12 @@ public final class a
     return false;
   }
   
-  public final boolean OR(int paramInt)
+  public final boolean Qz(int paramInt)
   {
     AppMethodBeat.i(97070);
-    boolean bool = i.OV(((x)this.yry.yuw.get(paramInt)).type);
+    boolean bool = i.QD(((x)this.zII.zLJ.get(paramInt)).type);
     AppMethodBeat.o(97070);
     return bool;
-  }
-  
-  public final void OS(int paramInt)
-  {
-    AppMethodBeat.i(97072);
-    k localk = OU(paramInt);
-    if (i.OV(localk.dKA().type)) {
-      ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a)localk).dKt();
-    }
-    AppMethodBeat.o(97072);
   }
   
   public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
@@ -132,20 +132,20 @@ public final class a
   public final void a(int paramInt, c paramc)
   {
     AppMethodBeat.i(97071);
-    Object localObject = (x)this.yry.yuw.get(paramInt);
-    k localk = (k)this.yrz.get(((x)localObject).yjs);
-    if (localk != null)
+    Object localObject = (x)this.zII.zLJ.get(paramInt);
+    l locall = (l)this.zIJ.get(((x)localObject).zAg);
+    if (locall != null)
     {
-      localk.dJY();
-      localk.dKa();
+      locall.dRm();
+      locall.dWm();
       if ((((x)localObject).type == 61) || (((x)localObject).type == 62))
       {
         localObject = new ArrayList();
-        paramc = paramc.ylw.entrySet().iterator();
+        paramc = paramc.zCl.entrySet().iterator();
         while (paramc.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)paramc.next();
-          if (((c.a)localEntry.getValue()).yhR) {
+          if (((c.a)localEntry.getValue()).zxZ) {
             ((List)localObject).add(localEntry.getKey());
           }
         }
@@ -153,16 +153,16 @@ public final class a
         while (paramc.hasNext())
         {
           int i = ((Integer)paramc.next()).intValue();
-          if ((i != paramInt) && (OQ(i)))
+          if ((i != paramInt) && (Qy(i)))
           {
-            localObject = OU(i);
+            localObject = QC(i);
             if ((localObject instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a))
             {
               localObject = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a)localObject;
-              if ((((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a)localObject).yhN) && (this.yry.sWJ) && (i == 0)) {
-                ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a)localk).dJV();
-              } else if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a)localk).yhN) {
-                ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a)localObject).dJV();
+              if ((((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a)localObject).zxU) && (this.zII.tTr) && (i == 0)) {
+                ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a)locall).dWl();
+              } else if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a)locall).zxU) {
+                ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a)localObject).dWl();
               }
             }
           }
@@ -175,25 +175,25 @@ public final class a
   public final void a(RecyclerView.w paramw, int paramInt)
   {
     AppMethodBeat.i(97065);
-    ac.i("MicroMsg.ContentAdapter", "display page " + this.yry.id + ", pos " + paramInt);
+    ad.i("MicroMsg.ContentAdapter", "display page " + this.zII.id + ", pos " + paramInt);
     a locala = (a)paramw;
     a.a(locala).removeAllViews();
-    x localx = (x)this.yry.yuw.get(paramInt);
-    paramw = (k)this.yrz.get(localx.yjs);
+    x localx = (x)this.zII.zLJ.get(paramInt);
+    paramw = (l)this.zIJ.get(localx.zAg);
     int j = this.bgColor;
     int i = j;
-    if (localx.yjx != null)
+    if (localx.zAl != null)
     {
       i = j;
-      if (localx.yjx.length() <= 0) {}
+      if (localx.zAl.length() <= 0) {}
     }
     try
     {
-      i = Color.parseColor(localx.yjx);
+      i = Color.parseColor(localx.zAl);
       a.a(locala).setBackgroundColor(i);
       if (paramw != null)
       {
-        paramw.a((x)this.yry.yuw.get(paramInt));
+        paramw.a((x)this.zII.zLJ.get(paramInt));
         if (paramw != null)
         {
           paramw = paramw.getView();
@@ -204,12 +204,12 @@ public final class a
         }
         if (paramInt == 0)
         {
-          paramw = (k)dLn().iterator().next();
-          if ((paramw != null) && ((paramw instanceof t)))
+          paramw = (l)dXE().iterator().next();
+          if ((paramw != null) && ((paramw instanceof u)))
           {
             HashMap localHashMap = new HashMap();
-            localHashMap.put("startIndex", Integer.valueOf(this.yrA));
-            paramw.aJ(localHashMap);
+            localHashMap.put("startIndex", Integer.valueOf(this.zIK));
+            paramw.aM(localHashMap);
           }
         }
         AppMethodBeat.o(97065);
@@ -220,15 +220,15 @@ public final class a
     {
       for (;;)
       {
-        ac.e("MicroMsg.ContentAdapter", "parse cellBackgroundColor error: %s", new Object[] { localx.yjx });
+        ad.e("MicroMsg.ContentAdapter", "parse cellBackgroundColor error: %s", new Object[] { localx.zAl });
         i = j;
         continue;
-        k localk = as.a(a.a(locala).getContext(), localx, a.a(locala), i);
-        paramw = localk;
-        if (localk != null)
+        l locall = av.a(a.a(locala).getContext(), localx, a.a(locala), i);
+        paramw = locall;
+        if (locall != null)
         {
-          this.yrz.put(localx.yjs, localk);
-          paramw = localk;
+          this.zIJ.put(localx.zAg, locall);
+          paramw = locall;
         }
       }
     }
@@ -237,22 +237,22 @@ public final class a
   public final void a(g paramg)
   {
     AppMethodBeat.i(97076);
-    if (this.yry != paramg)
+    if (this.zII != paramg)
     {
-      this.yry = paramg;
-      this.arg.notifyChanged();
+      this.zII = paramg;
+      this.asY.notifyChanged();
     }
     AppMethodBeat.o(97076);
   }
   
-  public final k dLl()
+  public final l dXC()
   {
     AppMethodBeat.i(97068);
     try
     {
-      int i = this.ylx.jY();
-      Object localObject = (x)this.yry.yuw.get(i);
-      localObject = (k)this.yrz.get(((x)localObject).yjs);
+      int i = this.zCm.ko();
+      Object localObject = (x)this.zII.zLJ.get(i);
+      localObject = (l)this.zIJ.get(((x)localObject).zAg);
       AppMethodBeat.o(97068);
       return localObject;
     }
@@ -263,14 +263,14 @@ public final class a
     return null;
   }
   
-  public final k dLm()
+  public final l dXD()
   {
     AppMethodBeat.i(97069);
     try
     {
-      int i = this.ylx.jY();
-      Object localObject = (x)this.yry.yuw.get(i - 1);
-      localObject = (k)this.yrz.get(((x)localObject).yjs);
+      int i = this.zCm.ko();
+      Object localObject = (x)this.zII.zLJ.get(i - 1);
+      localObject = (l)this.zIJ.get(((x)localObject).zAg);
       AppMethodBeat.o(97069);
       return localObject;
     }
@@ -281,16 +281,16 @@ public final class a
     return null;
   }
   
-  public final Collection<k> dLn()
+  public final Collection<l> dXE()
   {
     AppMethodBeat.i(97077);
-    if (this.yrz == null)
+    if (this.zIJ == null)
     {
       localObject = Collections.EMPTY_LIST;
       AppMethodBeat.o(97077);
       return localObject;
     }
-    Object localObject = this.yrz.values();
+    Object localObject = this.zIJ.values();
     AppMethodBeat.o(97077);
     return localObject;
   }
@@ -298,7 +298,7 @@ public final class a
   public final int getItemCount()
   {
     AppMethodBeat.i(97066);
-    int i = this.yry.yuw.size();
+    int i = this.zII.zLJ.size();
     AppMethodBeat.o(97066);
     return i;
   }
@@ -311,9 +311,9 @@ public final class a
   public final void onDestroy()
   {
     AppMethodBeat.i(97075);
-    Iterator localIterator = this.yrz.entrySet().iterator();
+    Iterator localIterator = this.zIJ.entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((k)((Map.Entry)localIterator.next()).getValue()).dJX();
+      ((l)((Map.Entry)localIterator.next()).getValue()).dRo();
     }
     AppMethodBeat.o(97075);
   }
@@ -321,20 +321,20 @@ public final class a
   public final class a
     extends RecyclerView.w
   {
-    private LinearLayout mAr;
+    private LinearLayout naZ;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(97062);
-      this.mAr = ((LinearLayout)paramView.findViewById(2131298739));
+      this.naZ = ((LinearLayout)paramView.findViewById(2131298739));
       AppMethodBeat.o(97062);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.adapter.a
  * JD-Core Version:    0.7.0.1
  */

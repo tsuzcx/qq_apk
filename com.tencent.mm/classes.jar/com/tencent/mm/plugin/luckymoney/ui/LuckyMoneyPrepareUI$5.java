@@ -12,14 +12,14 @@ final class LuckyMoneyPrepareUI$5
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(65831);
-    LuckyMoneyPrepareUI.u(this.uyl);
+    LuckyMoneyPrepareUI.u(this.vAO);
     AppMethodBeat.o(65831);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyPrepareUI.5
  * JD-Core Version:    0.7.0.1
  */

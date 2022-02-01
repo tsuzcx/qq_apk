@@ -31,7 +31,7 @@ public final class h
     //   42: aload_0
     //   43: getfield 43	com/google/android/exoplayer2/h/j:uri	Landroid/net/Uri;
     //   46: aload_0
-    //   47: getfield 47	com/google/android/exoplayer2/h/j:buv	[B
+    //   47: getfield 47	com/google/android/exoplayer2/h/j:bEK	[B
     //   50: lload_1
     //   51: aload_0
     //   52: getfield 51	com/google/android/exoplayer2/h/j:position	J
@@ -54,7 +54,7 @@ public final class h
     //   84: invokeinterface 72 2 0
     //   89: lstore 9
     //   91: aload 7
-    //   93: getfield 75	com/google/android/exoplayer2/h/a/h$a:aMd	J
+    //   93: getfield 75	com/google/android/exoplayer2/h/a/h$a:aNU	J
     //   96: ldc2_w 55
     //   99: lcmp
     //   100: ifne +180 -> 280
@@ -67,7 +67,7 @@ public final class h
     //   116: aload 11
     //   118: getfield 54	com/google/android/exoplayer2/h/j:absoluteStreamPosition	J
     //   121: ladd
-    //   122: putfield 75	com/google/android/exoplayer2/h/a/h$a:aMd	J
+    //   122: putfield 75	com/google/android/exoplayer2/h/a/h$a:aNU	J
     //   125: goto +155 -> 280
     //   128: lload 9
     //   130: lload_3
@@ -104,7 +104,7 @@ public final class h
     //   193: iconst_m1
     //   194: if_icmpne +48 -> 242
     //   197: aload 7
-    //   199: getfield 75	com/google/android/exoplayer2/h/a/h$a:aMd	J
+    //   199: getfield 75	com/google/android/exoplayer2/h/a/h$a:aNU	J
     //   202: ldc2_w 55
     //   205: lcmp
     //   206: ifne +16 -> 222
@@ -113,7 +113,7 @@ public final class h
     //   213: getfield 54	com/google/android/exoplayer2/h/j:absoluteStreamPosition	J
     //   216: lload 9
     //   218: ladd
-    //   219: putfield 75	com/google/android/exoplayer2/h/a/h$a:aMd	J
+    //   219: putfield 75	com/google/android/exoplayer2/h/a/h$a:aNU	J
     //   222: aload 5
     //   224: invokestatic 37	com/google/android/exoplayer2/i/x:a	(Lcom/google/android/exoplayer2/h/g;)V
     //   227: ldc 11
@@ -130,11 +130,11 @@ public final class h
     //   248: lstore 9
     //   250: aload 7
     //   252: aload 7
-    //   254: getfield 91	com/google/android/exoplayer2/h/a/h$a:bvO	J
+    //   254: getfield 91	com/google/android/exoplayer2/h/a/h$a:bGc	J
     //   257: iload 8
     //   259: i2l
     //   260: ladd
-    //   261: putfield 91	com/google/android/exoplayer2/h/a/h$a:bvO	J
+    //   261: putfield 91	com/google/android/exoplayer2/h/a/h$a:bGc	J
     //   264: goto -136 -> 128
     //   267: astore_0
     //   268: aload 5
@@ -201,9 +201,9 @@ public final class h
   
   public static final class a
   {
-    public volatile long aMd = -1L;
-    public volatile long bvN;
-    public volatile long bvO;
+    public volatile long aNU = -1L;
+    public volatile long bGb;
+    public volatile long bGc;
   }
 }
 

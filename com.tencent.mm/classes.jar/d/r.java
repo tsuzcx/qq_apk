@@ -5,30 +5,30 @@ import d.g.a.a;
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/SafePublicationLazyImpl;", "T", "Lkotlin/Lazy;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "initializer", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)V", "_value", "", "final", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "toString", "", "writeReplace", "Companion", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/SafePublicationLazyImpl;", "T", "Lkotlin/Lazy;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "initializer", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)V", "_value", "", "final", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "toString", "", "writeReplace", "Companion", "kotlin-stdlib"})
 final class r<T>
   implements f<T>, Serializable
 {
-  private static final AtomicReferenceFieldUpdater<r<?>, Object> KTl;
-  public static final a KTm;
-  private volatile a<? extends T> KTi;
-  private volatile Object KTj;
-  private final Object KTk;
+  private static final AtomicReferenceFieldUpdater<r<?>, Object> MKj;
+  public static final a MKk;
+  private volatile a<? extends T> MKg;
+  private volatile Object MKh;
+  private final Object MKi;
   
   static
   {
     AppMethodBeat.i(129580);
-    KTm = new a((byte)0);
-    KTl = AtomicReferenceFieldUpdater.newUpdater(r.class, Object.class, "KTj");
+    MKk = new a((byte)0);
+    MKj = AtomicReferenceFieldUpdater.newUpdater(r.class, Object.class, "MKh");
     AppMethodBeat.o(129580);
   }
   
   public r(a<? extends T> parama)
   {
     AppMethodBeat.i(129579);
-    this.KTi = parama;
-    this.KTj = w.KTo;
-    this.KTk = w.KTo;
+    this.MKg = parama;
+    this.MKh = x.MKn;
+    this.MKi = x.MKn;
     AppMethodBeat.o(129579);
   }
   
@@ -43,24 +43,24 @@ final class r<T>
   public final T getValue()
   {
     AppMethodBeat.i(129576);
-    Object localObject = this.KTj;
-    if (localObject != w.KTo)
+    Object localObject = this.MKh;
+    if (localObject != x.MKn)
     {
       AppMethodBeat.o(129576);
       return localObject;
     }
-    localObject = this.KTi;
+    localObject = this.MKg;
     if (localObject != null)
     {
       localObject = ((a)localObject).invoke();
-      if (KTl.compareAndSet(this, w.KTo, localObject))
+      if (MKj.compareAndSet(this, x.MKn, localObject))
       {
-        this.KTi = null;
+        this.MKg = null;
         AppMethodBeat.o(129576);
         return localObject;
       }
     }
-    localObject = this.KTj;
+    localObject = this.MKh;
     AppMethodBeat.o(129576);
     return localObject;
   }
@@ -68,7 +68,7 @@ final class r<T>
   public final String toString()
   {
     AppMethodBeat.i(129577);
-    if (this.KTj != w.KTo) {}
+    if (this.MKh != x.MKn) {}
     for (int i = 1; i != 0; i = 0)
     {
       String str = String.valueOf(getValue());
@@ -79,7 +79,7 @@ final class r<T>
     return "Lazy value not initialized yet.";
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/SafePublicationLazyImpl$Companion;", "", "()V", "valueUpdater", "Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;", "Lkotlin/SafePublicationLazyImpl;", "kotlin.jvm.PlatformType", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/SafePublicationLazyImpl$Companion;", "", "()V", "valueUpdater", "Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;", "Lkotlin/SafePublicationLazyImpl;", "kotlin.jvm.PlatformType", "kotlin-stdlib"})
   public static final class a {}
 }
 

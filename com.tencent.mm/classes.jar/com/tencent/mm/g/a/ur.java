@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ur
   extends b
 {
-  public a dxn;
-  public b dxo;
+  public a dIT;
   
   public ur()
   {
@@ -16,25 +15,18 @@ public final class ur
   
   private ur(byte paramByte)
   {
-    AppMethodBeat.i(127410);
-    this.dxn = new a();
-    this.dxo = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(125642);
+    this.dIT = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(127410);
+    AppMethodBeat.o(125642);
   }
   
   public static final class a
   {
-    public boolean dxp;
-    public String dxq;
-    public cs dxr;
-    public String url;
-  }
-  
-  public static final class b
-  {
-    public boolean dbS = false;
+    public boolean dIU;
+    public int key;
+    public int value;
   }
 }
 

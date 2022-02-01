@@ -1,19 +1,21 @@
 package com.tencent.liteav.audio.impl;
 
 import com.tencent.liteav.audio.c;
+import com.tencent.liteav.audio.d;
 import com.tencent.liteav.basic.e.b;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 public class TXCJitter
 {
   private static final String TAG = "TXCJitter";
-  private static WeakReference<com.tencent.liteav.audio.d> mAudioCoreDataListener;
+  private static WeakReference<d> mAudioCoreDataListener;
   protected float mAutoAdjustMaxCache = 5.0F;
   protected float mAutoAdjustMinCache = 1.0F;
   protected float mCacheTime = 5.0F;
-  protected WeakReference<com.tencent.liteav.audio.d> mDataListener;
+  protected WeakReference<d> mDataListener;
   protected boolean mEnableVolumeLevelCal = false;
   protected WeakReference<c> mEventListener;
   protected boolean mIsAutoAdjustCache = true;
@@ -29,7 +31,7 @@ public class TXCJitter
   static
   {
     AppMethodBeat.i(16498);
-    com.tencent.liteav.basic.util.d.f();
+    f.f();
     mAudioCoreDataListener = null;
     AppMethodBeat.o(16498);
   }
@@ -71,7 +73,7 @@ public class TXCJitter
     AppMethodBeat.i(16478);
     if (mAudioCoreDataListener != null)
     {
-      com.tencent.liteav.audio.d locald = (com.tencent.liteav.audio.d)mAudioCoreDataListener.get();
+      d locald = (d)mAudioCoreDataListener.get();
       if (locald != null) {
         locald.onAudioPlayPcmData(null, paramArrayOfByte, paramLong, paramInt1, paramInt2);
       }
@@ -79,7 +81,7 @@ public class TXCJitter
     AppMethodBeat.o(16478);
   }
   
-  public static void setAudioCorePlayListener(com.tencent.liteav.audio.d paramd)
+  public static void setAudioCorePlayListener(d paramd)
   {
     boolean bool2 = false;
     AppMethodBeat.i(16477);
@@ -245,7 +247,7 @@ public class TXCJitter
     AppMethodBeat.i(16492);
     if (this.mDataListener != null)
     {
-      com.tencent.liteav.audio.d locald = (com.tencent.liteav.audio.d)this.mDataListener.get();
+      d locald = (d)this.mDataListener.get();
       if (locald != null) {
         locald.onAudioPlayPcmData(this.mUserID, paramArrayOfByte, paramLong, paramInt1, paramInt2);
       }
@@ -283,7 +285,7 @@ public class TXCJitter
     AppMethodBeat.o(16479);
   }
   
-  public void setDataListener(com.tencent.liteav.audio.d paramd)
+  public void setDataListener(d paramd)
   {
     boolean bool2 = false;
     AppMethodBeat.i(16491);

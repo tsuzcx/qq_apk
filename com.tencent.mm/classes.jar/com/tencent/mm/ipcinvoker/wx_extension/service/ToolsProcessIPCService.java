@@ -6,17 +6,17 @@ import com.tencent.mm.ipcinvoker.BaseIPCService;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class ToolsProcessIPCService
   extends BaseIPCService
 {
-  static int geL = 0;
-  private static a geM;
+  static int gyv = 0;
+  private static a gyw;
   
   public static void a(a parama)
   {
-    geM = parama;
+    gyw = parama;
   }
   
   public static <T extends b<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean a(InputType paramInputType, Class<T> paramClass)
@@ -24,7 +24,7 @@ public class ToolsProcessIPCService
     AppMethodBeat.i(146441);
     boolean bool2 = h.a("com.tencent.mm:tools", paramInputType, paramClass, null);
     boolean bool1 = bool2;
-    if (!afc()) {
+    if (!ahO()) {
       if ((!h.a("com.tencent.mm:toolsmp", paramInputType, paramClass, null)) || (!bool2)) {
         break label46;
       }
@@ -42,7 +42,7 @@ public class ToolsProcessIPCService
     boolean bool3 = true;
     AppMethodBeat.i(146440);
     boolean bool1;
-    if (ai.aKN(ai.getPackageName() + ":tools")) {
+    if (aj.aQt(aj.getPackageName() + ":tools")) {
       if (h.a("com.tencent.mm:tools", paramInputType, paramClass, paramd)) {
         bool1 = true;
       }
@@ -50,10 +50,10 @@ public class ToolsProcessIPCService
     for (;;)
     {
       boolean bool2 = bool1;
-      if (!afc())
+      if (!ahO())
       {
         bool2 = bool1;
-        if (ai.aKN(ai.getPackageName() + ":toolsmp")) {
+        if (aj.aQt(aj.getPackageName() + ":toolsmp")) {
           if ((!h.a("com.tencent.mm:toolsmp", paramInputType, paramClass, paramd)) || (!bool1)) {
             break label121;
           }
@@ -80,26 +80,26 @@ public class ToolsProcessIPCService
     return bool;
   }
   
-  public static boolean afc()
+  public static boolean ahO()
   {
     AppMethodBeat.i(146439);
     boolean bool;
-    if (geL == 0)
+    if (gyv == 0)
     {
-      a locala = geM;
+      a locala = gyw;
       if (locala == null) {
         break label47;
       }
-      bool = locala.afc();
+      bool = locala.ahO();
       if (!bool) {
         break label52;
       }
     }
     label47:
     label52:
-    for (geL = 1;; geL = -1)
+    for (gyv = 1;; gyv = -1)
     {
-      if (geL <= 0) {
+      if (gyv <= 0) {
         break label59;
       }
       AppMethodBeat.o(146439);
@@ -119,12 +119,12 @@ public class ToolsProcessIPCService
   
   public static abstract interface a
   {
-    public abstract boolean afc();
+    public abstract boolean ahO();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService
  * JD-Core Version:    0.7.0.1
  */

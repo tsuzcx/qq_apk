@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class j
 {
-  private int mBC;
-  ValueAnimator rT;
+  ValueAnimator animator;
+  private int rZx;
   View view;
   
   public j(View paramView)
@@ -28,14 +28,19 @@ final class j
       AppMethodBeat.o(131496);
       return;
     }
-    this.mBC = paramInt;
+    if ((isRunning()) && (this.rZx == paramInt))
+    {
+      AppMethodBeat.o(131496);
+      return;
+    }
+    this.rZx = paramInt;
     if (((this.view.getBackground() instanceof ColorDrawable)) && (((ColorDrawable)this.view.getBackground()).getColor() == paramInt))
     {
       if (paramRunnable != null) {
         paramRunnable.run();
       }
-      if (this.rT != null) {
-        this.rT.cancel();
+      if (this.animator != null) {
+        this.animator.cancel();
       }
       AppMethodBeat.o(131496);
       return;
@@ -44,7 +49,7 @@ final class j
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        j.this.rT = null;
+        j.this.animator = null;
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
@@ -53,25 +58,25 @@ final class j
         if (paramRunnable != null) {
           paramRunnable.run();
         }
-        j.this.rT = null;
+        j.this.animator = null;
         AppMethodBeat.o(131494);
       }
     };
-    if ((this.rT != null) && (this.rT.isStarted()) && (this.rT.isRunning()) && (this.mBC == paramInt))
+    if ((this.animator != null) && (this.animator.isStarted()) && (this.animator.isRunning()) && (this.rZx == paramInt))
     {
-      this.rT.addListener(paramRunnable);
+      this.animator.addListener(paramRunnable);
       AppMethodBeat.o(131496);
       return;
     }
-    if (this.rT != null) {
-      this.rT.cancel();
+    if (this.animator != null) {
+      this.animator.cancel();
     }
     if ((this.view.getBackground() instanceof ColorDrawable)) {}
     for (paramInt = ((ColorDrawable)this.view.getBackground()).getColor();; paramInt = 0)
     {
-      this.rT = ValueAnimator.ofObject(new ArgbEvaluator(), new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.mBC) });
-      this.rT.addListener(paramRunnable);
-      this.rT.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.animator = ValueAnimator.ofObject(new ArgbEvaluator(), new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.rZx) });
+      this.animator.addListener(paramRunnable);
+      this.animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -82,7 +87,7 @@ final class j
           AppMethodBeat.o(131495);
         }
       });
-      this.rT.start();
+      this.animator.start();
       AppMethodBeat.o(131496);
       return;
     }
@@ -91,8 +96,8 @@ final class j
   final void cancel()
   {
     AppMethodBeat.i(131497);
-    if (this.rT != null) {
-      this.rT.cancel();
+    if (this.animator != null) {
+      this.animator.cancel();
     }
     AppMethodBeat.o(131497);
   }
@@ -100,7 +105,7 @@ final class j
   final boolean isRunning()
   {
     AppMethodBeat.i(131498);
-    if ((this.rT != null) && (this.rT.isRunning()))
+    if ((this.animator != null) && (this.animator.isRunning()))
     {
       AppMethodBeat.o(131498);
       return true;
@@ -111,7 +116,7 @@ final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.j
  * JD-Core Version:    0.7.0.1
  */

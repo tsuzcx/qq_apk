@@ -4,10 +4,10 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.wx_extension.a.a;
 import com.tencent.mm.ipcinvoker.wx_extension.a.a.a;
-import com.tencent.mm.plugin.appbrand.jsapi.f.a.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.plugin.appbrand.jsapi.i.a.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.al;
 import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,33 +15,33 @@ import org.json.JSONObject;
 public final class n
   extends com.tencent.luggage.f.a.b
 {
-  public static Integer lqO;
+  public static Integer lOl;
   
   private static int getMapType()
   {
     AppMethodBeat.i(47493);
-    if (lqO != null)
+    if (lOl != null)
     {
-      i = lqO.intValue();
+      i = lOl.intValue();
       AppMethodBeat.o(47493);
       return i;
     }
-    Object localObject = a.a.geG;
-    localObject = a.tJ("100487");
+    Object localObject = a.a.gyq;
+    localObject = a.wz("100487");
     if ((localObject == null) || (!((com.tencent.mm.storage.c)localObject).isValid()))
     {
-      ac.i("MicroMsg.WxaMapViewFactory", "[sMapType] item is null");
+      ad.i("MicroMsg.WxaMapViewFactory", "[sMapType] item is null");
       AppMethodBeat.o(47493);
       return 1;
     }
-    lqO = Integer.valueOf(bs.getInt((String)((com.tencent.mm.storage.c)localObject).eYV().get("MapType"), 1));
-    ac.i("MicroMsg.WxaMapViewFactory", "sMapType:%d", new Object[] { lqO });
-    int i = lqO.intValue();
+    lOl = Integer.valueOf(bt.getInt((String)((com.tencent.mm.storage.c)localObject).foF().get("MapType"), 1));
+    ad.i("MicroMsg.WxaMapViewFactory", "sMapType:%d", new Object[] { lOl });
+    int i = lOl.intValue();
     AppMethodBeat.o(47493);
     return i;
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.f.a.b a(Context paramContext, String paramString, Map<String, Object> paramMap)
+  public final com.tencent.mm.plugin.appbrand.jsapi.i.a.b a(Context paramContext, String paramString, Map<String, Object> paramMap)
   {
     int i = 0;
     AppMethodBeat.i(47495);
@@ -52,13 +52,13 @@ public final class n
     }
     int k = f.a(paramMap, "mapType", getMapType());
     int j = f.a(paramMap, "enableDarkMode", 0);
-    if (!aj.DT()) {}
+    if (!al.isDarkMode()) {}
     for (;;)
     {
       paramMap.put("enableDarkMode", Integer.valueOf(i));
       if (k == 2)
       {
-        paramContext = new com.tencent.mm.plugin.appbrand.jsapi.z.d.b(paramContext, paramString, paramMap);
+        paramContext = new com.tencent.mm.plugin.appbrand.jsapi.ac.d.b(paramContext, paramString, paramMap);
         AppMethodBeat.o(47495);
         return paramContext;
       }
@@ -69,7 +69,7 @@ public final class n
     }
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.f.a.b b(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject)
+  public final com.tencent.mm.plugin.appbrand.jsapi.i.a.b b(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(47494);
     if (paramJSONObject != null) {}
@@ -79,7 +79,7 @@ public final class n
       {
         paramJSONObject.put("mapType", getMapType());
         bool = paramJSONObject.optBoolean("enableDarkMode", false);
-        if (aj.DT()) {
+        if (al.isDarkMode()) {
           continue;
         }
         bool = false;
@@ -87,7 +87,7 @@ public final class n
       catch (JSONException localJSONException)
       {
         boolean bool;
-        ac.m("MicroMsg.WxaMapViewFactory", "", new Object[] { localJSONException });
+        ad.m("MicroMsg.WxaMapViewFactory", "", new Object[] { localJSONException });
         continue;
         if (!bool) {
           continue;
@@ -105,7 +105,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.n
  * JD-Core Version:    0.7.0.1
  */

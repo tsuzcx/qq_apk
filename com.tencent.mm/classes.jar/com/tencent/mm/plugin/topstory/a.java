@@ -10,12 +10,12 @@ import java.util.Map;
 public final class a
   implements d
 {
-  Map<String, List<Object>> zYQ;
+  Map<String, List<Object>> BqC;
   
   public a()
   {
     AppMethodBeat.i(88416);
-    this.zYQ = Collections.synchronizedMap(new HashMap());
+    this.BqC = Collections.synchronizedMap(new HashMap());
     AppMethodBeat.o(88416);
   }
 }

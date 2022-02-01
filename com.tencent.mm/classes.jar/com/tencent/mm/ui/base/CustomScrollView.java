@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CustomScrollView
   extends ScrollView
 {
-  private a HuF;
+  private a Jiv;
   
   public CustomScrollView(Context paramContext)
   {
@@ -29,15 +29,15 @@ public class CustomScrollView
   {
     AppMethodBeat.i(159150);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.HuF != null) {
-      this.HuF.a(this, paramInt2, paramInt4);
+    if (this.Jiv != null) {
+      this.Jiv.a(this, paramInt2, paramInt4);
     }
     AppMethodBeat.o(159150);
   }
   
   public void setOnScrollChangeListener(a parama)
   {
-    this.HuF = parama;
+    this.Jiv = parama;
   }
   
   public static abstract interface a
@@ -47,7 +47,7 @@ public class CustomScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.CustomScrollView
  * JD-Core Version:    0.7.0.1
  */

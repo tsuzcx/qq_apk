@@ -5,15 +5,15 @@ import com.tencent.thumbplayer.b.p;
 
 final class d$h
 {
-  a KiG;
-  long KiR;
-  p KiS;
+  a MbV;
+  long Mcg;
+  p Mch;
   int mode;
   String url;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.g.d.h
  * JD-Core Version:    0.7.0.1
  */

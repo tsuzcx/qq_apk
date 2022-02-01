@@ -5,6 +5,7 @@ import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
@@ -12,96 +13,97 @@ import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.handoff.a.a;
 import com.tencent.mm.plugin.handoff.model.HandOff;
 import com.tencent.mm.pluginsdk.model.app.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 import d.u;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy;", "Lcom/tencent/mm/plugin/handoff/api/IHandOffService;", "()V", "add", "", "handOff", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "addHandOffFromBall", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "addWindowFromBall", "allList", "cache", "cancelUpload", "id", "", "del", "key", "delAllFloatingWindow", "fixHandOffIfNeed", "getHandOffById", "getHandOffByKey", "mod", "modFromBallInfo", "onAppBackground", "onAppForeground", "onFileCreate", "onFileDestroy", "onQBFileCreate", "onQBFileDestroy", "onQBFileUpdate", "onWebViewCreate", "onWebViewDestroy", "restoreFromBallInfoList", "ballInfoList", "", "uploadFail", "arg", "uploadStart", "", "info", "Lcom/tencent/mm/pluginsdk/model/app/AppAttachInfo;", "uploadSuccess", "appId", "sdkVersion", "", "mediaId", "cdnURL", "aesKey", "uploading", "uploadedSize", "", "upsert", "AddHandOffFromBallTask", "AddTask", "AddWindowFromBallTask", "AllListTask", "CancelUploadTask", "Companion", "DelAllFloatingWindowTask", "DelTask", "FixHandOffTask", "GetCacheTask", "GetHandOffByIdTask", "GetHandOffByKeyTask", "ModFromBallInfoTask", "ModTask", "OnFileCreateTask", "OnFileDestroyTask", "OnWebViewCreateTask", "OnWebViewDestroyTask", "SetCacheTask", "UploadFail", "UploadSuccessCDNTask", "UploadSuccessCGITask", "UploadingTask", "UpsertTask", "plugin-handoff_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy;", "Lcom/tencent/mm/plugin/handoff/api/IHandOffService;", "()V", "add", "", "handOff", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "addHandOffFromBall", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "addWindowFromBall", "allList", "cache", "cancelUpload", "id", "", "del", "key", "delAllFloatingWindow", "fixHandOffIfNeed", "getHandOffById", "getHandOffByKey", "mod", "modFromBallInfo", "onAppBackground", "onAppForeground", "onFileCreate", "onFileDestroy", "onQBFileCreate", "onQBFileDestroy", "onQBFileUpdate", "onWebViewCreate", "onWebViewDestroy", "restoreFromBallInfoList", "ballInfoList", "", "uploadFail", "arg", "uploadStart", "", "info", "Lcom/tencent/mm/pluginsdk/model/app/AppAttachInfo;", "uploadSuccess", "appId", "sdkVersion", "", "mediaId", "cdnURL", "aesKey", "uploading", "uploadedSize", "", "upsert", "AddHandOffFromBallTask", "AddTask", "AddWindowFromBallTask", "AllListTask", "CancelUploadTask", "Companion", "DelAllFloatingWindowTask", "DelTask", "FixHandOffTask", "GetCacheTask", "GetHandOffByIdTask", "GetHandOffByKeyTask", "ModFromBallInfoTask", "ModTask", "OnFileCreateTask", "OnFileDestroyTask", "OnWebViewCreateTask", "OnWebViewDestroyTask", "SetCacheTask", "UploadFail", "UploadSuccessCDNTask", "UploadSuccessCGITask", "UploadingTask", "UpsertTask", "plugin-handoff_release"})
 public final class b
   implements a
 {
-  public static final d tBx;
+  public static final d uEg;
   
   static
   {
     AppMethodBeat.i(10428);
-    tBx = new d((byte)0);
+    uEg = new d((byte)0);
     AppMethodBeat.o(10428);
-  }
-  
-  public final void I(BallInfo paramBallInfo)
-  {
-    AppMethodBeat.i(10412);
-    d.g.b.k.h(paramBallInfo, "ballInfo");
-    h.a("com.tencent.mm", (Parcelable)paramBallInfo, a.class, (d)t.tBy);
-    AppMethodBeat.o(10412);
   }
   
   public final void J(BallInfo paramBallInfo)
   {
+    AppMethodBeat.i(10412);
+    p.h(paramBallInfo, "ballInfo");
+    h.a("com.tencent.mm", (Parcelable)paramBallInfo, a.class, (d)t.uEh);
+    AppMethodBeat.o(10412);
+  }
+  
+  public final void K(BallInfo paramBallInfo)
+  {
     AppMethodBeat.i(10413);
-    d.g.b.k.h(paramBallInfo, "ballInfo");
-    h.a("com.tencent.mm", (Parcelable)paramBallInfo, i.class, (d)z.tBE);
+    p.h(paramBallInfo, "ballInfo");
+    h.a("com.tencent.mm", (Parcelable)paramBallInfo, i.class, (d)z.uEn);
     AppMethodBeat.o(10413);
   }
   
   public final void a(HandOff paramHandOff)
   {
     AppMethodBeat.i(10407);
-    d.g.b.k.h(paramHandOff, "handOff");
-    h.a("com.tencent.mm", (Parcelable)paramHandOff, l.class, (d)ac.tBH);
+    p.h(paramHandOff, "handOff");
+    h.a("com.tencent.mm", (Parcelable)paramHandOff, l.class, (d)ac.uEq);
     AppMethodBeat.o(10407);
   }
   
   public final boolean a(String paramString, c paramc)
   {
     AppMethodBeat.i(10417);
-    d.g.b.k.h(paramString, "id");
-    d.g.b.k.h(paramc, "info");
-    ac.w("HandOffServiceProxy", "uploadStart should only be called in MM process!");
+    p.h(paramString, "id");
+    p.h(paramc, "info");
+    ad.w("HandOffServiceProxy", "uploadStart should only be called in MM process!");
     AppMethodBeat.o(10417);
     return false;
   }
   
-  public final void ag(String paramString1, String paramString2, String paramString3)
+  public final void an(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(10420);
-    d.g.b.k.h(paramString1, "id");
-    d.g.b.k.h(paramString2, "cdnURL");
-    d.g.b.k.h(paramString3, "aesKey");
+    p.h(paramString1, "id");
+    p.h(paramString2, "cdnURL");
+    p.h(paramString3, "aesKey");
     Bundle localBundle = new Bundle();
-    u.Q("id", paramString1);
-    u.Q("cdnURL", paramString2);
-    u.Q("aesKey", paramString3);
-    h.a("com.tencent.mm", (Parcelable)localBundle, p.class, (d)af.tBK);
+    u.S("id", paramString1);
+    u.S("cdnURL", paramString2);
+    u.S("aesKey", paramString3);
+    h.a("com.tencent.mm", (Parcelable)localBundle, p.class, (d)af.uEt);
     AppMethodBeat.o(10420);
   }
   
-  public final HandOff aip(String paramString)
+  public final HandOff anc(String paramString)
   {
     AppMethodBeat.i(10411);
-    d.g.b.k.h(paramString, "id");
+    p.h(paramString, "id");
     paramString = (HandOff)h.a("com.tencent.mm", (Parcelable)new IPCString(paramString), h.class);
     AppMethodBeat.o(10411);
     return paramString;
   }
   
-  public final void aiq(String paramString)
+  public final void and(String paramString)
   {
     AppMethodBeat.i(10422);
-    d.g.b.k.h(paramString, "id");
-    h.a("com.tencent.mm", (Parcelable)new IPCString(paramString), c.class, (d)w.tBB);
+    p.h(paramString, "id");
+    h.a("com.tencent.mm", (Parcelable)new IPCString(paramString), c.class, (d)w.uEk);
     AppMethodBeat.o(10422);
   }
   
-  public final boolean aw(String paramString, long paramLong)
+  public final boolean az(String paramString, long paramLong)
   {
     AppMethodBeat.i(10418);
-    d.g.b.k.h(paramString, "id");
+    p.h(paramString, "id");
     Bundle localBundle = new Bundle();
-    u.Q("id", paramString);
-    u.Q("uploadedSize", Long.valueOf(paramLong));
+    u.S("id", paramString);
+    u.S("uploadedSize", Long.valueOf(paramLong));
     boolean bool = ((IPCBoolean)h.a("com.tencent.mm", (Parcelable)localBundle, r.class)).value;
     AppMethodBeat.o(10418);
     return bool;
@@ -110,34 +112,42 @@ public final class b
   public final void b(HandOff paramHandOff)
   {
     AppMethodBeat.i(10408);
-    d.g.b.k.h(paramHandOff, "handOff");
-    h.a("com.tencent.mm", (Parcelable)paramHandOff, m.class, (d)ad.tBI);
+    p.h(paramHandOff, "handOff");
+    h.a("com.tencent.mm", (Parcelable)paramHandOff, m.class, (d)ad.uEr);
     AppMethodBeat.o(10408);
   }
   
   public final void c(HandOff paramHandOff)
   {
     AppMethodBeat.i(10409);
-    d.g.b.k.h(paramHandOff, "handOff");
-    h.a("com.tencent.mm", (Parcelable)paramHandOff, j.class, (d)aa.tBF);
+    p.h(paramHandOff, "handOff");
+    h.a("com.tencent.mm", (Parcelable)paramHandOff, j.class, (d)aa.uEo);
     AppMethodBeat.o(10409);
   }
   
-  public final void cSC()
+  public final void d(HandOff paramHandOff)
+  {
+    AppMethodBeat.i(10410);
+    p.h(paramHandOff, "handOff");
+    h.a("com.tencent.mm", (Parcelable)paramHandOff, k.class, (d)ab.uEp);
+    AppMethodBeat.o(10410);
+  }
+  
+  public final void dbJ()
   {
     AppMethodBeat.i(10405);
-    h.a("com.tencent.mm", (Parcelable)new IPCVoid(), f.class, (d)y.tBD);
+    h.a("com.tencent.mm", (Parcelable)new IPCVoid(), f.class, (d)y.uEm);
     AppMethodBeat.o(10405);
   }
   
-  public final void cSD()
+  public final void dbK()
   {
     AppMethodBeat.i(10416);
-    h.a("com.tencent.mm", (Parcelable)new IPCVoid(), b.class, (d)u.tBz);
+    h.a("com.tencent.mm", (Parcelable)new IPCVoid(), b.class, (d)u.uEi);
     AppMethodBeat.o(10416);
   }
   
-  public final HandOff cSE()
+  public final HandOff dbL()
   {
     AppMethodBeat.i(10424);
     HandOff localHandOff = (HandOff)h.a("com.tencent.mm", (Parcelable)new IPCVoid(), g.class);
@@ -145,391 +155,383 @@ public final class b
     return localHandOff;
   }
   
-  public final void d(HandOff paramHandOff)
-  {
-    AppMethodBeat.i(10410);
-    d.g.b.k.h(paramHandOff, "handOff");
-    h.a("com.tencent.mm", (Parcelable)paramHandOff, k.class, (d)ab.tBG);
-    AppMethodBeat.o(10410);
-  }
-  
-  public final void dV(List<? extends BallInfo> paramList)
-  {
-    AppMethodBeat.i(10406);
-    d.g.b.k.h(paramList, "ballInfoList");
-    AppMethodBeat.o(10406);
-  }
-  
   public final void del(String paramString)
   {
     AppMethodBeat.i(10415);
-    d.g.b.k.h(paramString, "key");
-    h.a("com.tencent.mm", (Parcelable)new IPCString(paramString), e.class, (d)x.tBC);
+    p.h(paramString, "key");
+    h.a("com.tencent.mm", (Parcelable)new IPCString(paramString), e.class, (d)x.uEl);
     AppMethodBeat.o(10415);
   }
   
   public final void e(HandOff paramHandOff)
   {
     AppMethodBeat.i(10414);
-    d.g.b.k.h(paramHandOff, "handOff");
-    h.a("com.tencent.mm", (Parcelable)paramHandOff, s.class, (d)ah.tBM);
+    p.h(paramHandOff, "handOff");
+    h.a("com.tencent.mm", (Parcelable)paramHandOff, s.class, (d)ah.uEv);
     AppMethodBeat.o(10414);
+  }
+  
+  public final void ei(List<? extends BallInfo> paramList)
+  {
+    AppMethodBeat.i(10406);
+    p.h(paramList, "ballInfoList");
+    AppMethodBeat.o(10406);
   }
   
   public final void f(HandOff paramHandOff)
   {
     AppMethodBeat.i(10423);
-    h.a("com.tencent.mm", (Parcelable)paramHandOff, n.class, (d)v.tBA);
+    h.a("com.tencent.mm", (Parcelable)paramHandOff, n.class, (d)v.uEj);
     AppMethodBeat.o(10423);
   }
   
   public final void f(String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(10421);
-    d.g.b.k.h(paramString1, "id");
-    d.g.b.k.h(paramString2, "appId");
-    d.g.b.k.h(paramString3, "mediaId");
+    p.h(paramString1, "id");
+    p.h(paramString2, "appId");
+    p.h(paramString3, "mediaId");
     Bundle localBundle = new Bundle();
-    u.Q("id", paramString1);
-    u.Q("appId", paramString2);
-    u.Q("sdkVersion", Integer.valueOf(paramInt));
-    u.Q("mediaId", paramString3);
-    h.a("com.tencent.mm", (Parcelable)localBundle, q.class, (d)ag.tBL);
+    u.S("id", paramString1);
+    u.S("appId", paramString2);
+    u.S("sdkVersion", Integer.valueOf(paramInt));
+    u.S("mediaId", paramString3);
+    h.a("com.tencent.mm", (Parcelable)localBundle, q.class, (d)ag.uEu);
     AppMethodBeat.o(10421);
   }
   
   public final void g(HandOff paramHandOff)
   {
     AppMethodBeat.i(10425);
-    d.g.b.k.h(paramHandOff, "handOff");
+    p.h(paramHandOff, "handOff");
     AppMethodBeat.o(10425);
   }
   
   public final void h(HandOff paramHandOff)
   {
     AppMethodBeat.i(10426);
-    d.g.b.k.h(paramHandOff, "handOff");
+    p.h(paramHandOff, "handOff");
     AppMethodBeat.o(10426);
   }
   
-  public final void hf(String paramString1, String paramString2)
+  public final void hr(String paramString1, String paramString2)
   {
     AppMethodBeat.i(10419);
-    d.g.b.k.h(paramString1, "id");
-    d.g.b.k.h(paramString2, "arg");
+    p.h(paramString1, "id");
+    p.h(paramString2, "arg");
     Bundle localBundle = new Bundle();
-    u.Q("id", paramString1);
-    u.Q("arg", paramString2);
-    h.a("com.tencent.mm", (Parcelable)localBundle, o.class, (d)ae.tBJ);
+    u.S("id", paramString1);
+    u.S("arg", paramString2);
+    h.a("com.tencent.mm", (Parcelable)localBundle, o.class, (d)ae.uEs);
     AppMethodBeat.o(10419);
   }
   
   public final void i(HandOff paramHandOff)
   {
     AppMethodBeat.i(10427);
-    d.g.b.k.h(paramHandOff, "handOff");
+    p.h(paramHandOff, "handOff");
     AppMethodBeat.o(10427);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$AddWindowFromBallTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "ballInfo", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$AddWindowFromBallTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "ballInfo", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class a
     implements com.tencent.mm.ipcinvoker.b<BallInfo, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class aa<T>
     implements d<ResultType>
   {
-    public static final aa tBF;
+    public static final aa uEo;
     
     static
     {
       AppMethodBeat.i(10397);
-      tBF = new aa();
+      uEo = new aa();
       AppMethodBeat.o(10397);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class ab<T>
     implements d<ResultType>
   {
-    public static final ab tBG;
+    public static final ab uEp;
     
     static
     {
       AppMethodBeat.i(10398);
-      tBG = new ab();
+      uEp = new ab();
       AppMethodBeat.o(10398);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class ac<T>
     implements d<ResultType>
   {
-    public static final ac tBH;
+    public static final ac uEq;
     
     static
     {
       AppMethodBeat.i(10399);
-      tBH = new ac();
+      uEq = new ac();
       AppMethodBeat.o(10399);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class ad<T>
     implements d<ResultType>
   {
-    public static final ad tBI;
+    public static final ad uEr;
     
     static
     {
       AppMethodBeat.i(10400);
-      tBI = new ad();
+      uEr = new ad();
       AppMethodBeat.o(10400);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class ae<T>
     implements d<ResultType>
   {
-    public static final ae tBJ;
+    public static final ae uEs;
     
     static
     {
       AppMethodBeat.i(10401);
-      tBJ = new ae();
+      uEs = new ae();
       AppMethodBeat.o(10401);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class af<T>
     implements d<ResultType>
   {
-    public static final af tBK;
+    public static final af uEt;
     
     static
     {
       AppMethodBeat.i(10402);
-      tBK = new af();
+      uEt = new af();
       AppMethodBeat.o(10402);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class ag<T>
     implements d<ResultType>
   {
-    public static final ag tBL;
+    public static final ag uEu;
     
     static
     {
       AppMethodBeat.i(10403);
-      tBL = new ag();
+      uEu = new ag();
       AppMethodBeat.o(10403);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class ah<T>
     implements d<ResultType>
   {
-    public static final ah tBM;
+    public static final ah uEv;
     
     static
     {
       AppMethodBeat.i(10404);
-      tBM = new ah();
+      uEv = new ah();
       AppMethodBeat.o(10404);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$AllListTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$AllListTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class b
     implements com.tencent.mm.ipcinvoker.b<IPCVoid, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$CancelUploadTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "id", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$CancelUploadTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "id", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class c
     implements com.tencent.mm.ipcinvoker.b<IPCString, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$Companion;", "", "()V", "TAG", "", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$Companion;", "", "()V", "TAG", "", "plugin-handoff_release"})
   public static final class d {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$DelTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "key", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$DelTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "key", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class e
     implements com.tencent.mm.ipcinvoker.b<IPCString, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$FixHandOffTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$FixHandOffTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class f
     implements com.tencent.mm.ipcinvoker.b<IPCVoid, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$GetCacheTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "()V", "invoke", "data", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$GetCacheTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "()V", "invoke", "data", "plugin-handoff_release"})
   public static final class g
-    implements com.tencent.mm.ipcinvoker.k<IPCVoid, HandOff>
+    implements k<IPCVoid, HandOff>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$GetHandOffByIdTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "()V", "invoke", "id", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$GetHandOffByIdTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "()V", "invoke", "id", "plugin-handoff_release"})
   public static final class h
-    implements com.tencent.mm.ipcinvoker.k<IPCString, HandOff>
+    implements k<IPCString, HandOff>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$ModFromBallInfoTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "ballInfo", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$ModFromBallInfoTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "ballInfo", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class i
     implements com.tencent.mm.ipcinvoker.b<BallInfo, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$OnFileCreateTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$OnFileCreateTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class j
     implements com.tencent.mm.ipcinvoker.b<HandOff, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$OnFileDestroyTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$OnFileDestroyTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class k
     implements com.tencent.mm.ipcinvoker.b<HandOff, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$OnWebViewCreateTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$OnWebViewCreateTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class l
     implements com.tencent.mm.ipcinvoker.b<HandOff, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$OnWebViewDestroyTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$OnWebViewDestroyTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class m
     implements com.tencent.mm.ipcinvoker.b<HandOff, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$SetCacheTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$SetCacheTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class n
     implements com.tencent.mm.ipcinvoker.b<HandOff, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UploadFail;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UploadFail;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class o
     implements com.tencent.mm.ipcinvoker.b<Bundle, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UploadSuccessCDNTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UploadSuccessCDNTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class p
     implements com.tencent.mm.ipcinvoker.b<Bundle, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UploadSuccessCGITask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UploadSuccessCGITask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class q
     implements com.tencent.mm.ipcinvoker.b<Bundle, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UploadingTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "data", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UploadingTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "data", "plugin-handoff_release"})
   public static final class r
-    implements com.tencent.mm.ipcinvoker.k<Bundle, IPCBoolean>
+    implements k<Bundle, IPCBoolean>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UpsertTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UpsertTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
   public static final class s
     implements com.tencent.mm.ipcinvoker.b<HandOff, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class t<T>
     implements d<ResultType>
   {
-    public static final t tBy;
+    public static final t uEh;
     
     static
     {
       AppMethodBeat.i(10390);
-      tBy = new t();
+      uEh = new t();
       AppMethodBeat.o(10390);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class u<T>
     implements d<ResultType>
   {
-    public static final u tBz;
+    public static final u uEi;
     
     static
     {
       AppMethodBeat.i(10391);
-      tBz = new u();
+      uEi = new u();
       AppMethodBeat.o(10391);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class v<T>
     implements d<ResultType>
   {
-    public static final v tBA;
+    public static final v uEj;
     
     static
     {
       AppMethodBeat.i(10392);
-      tBA = new v();
+      uEj = new v();
       AppMethodBeat.o(10392);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class w<T>
     implements d<ResultType>
   {
-    public static final w tBB;
+    public static final w uEk;
     
     static
     {
       AppMethodBeat.i(10393);
-      tBB = new w();
+      uEk = new w();
       AppMethodBeat.o(10393);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class x<T>
     implements d<ResultType>
   {
-    public static final x tBC;
+    public static final x uEl;
     
     static
     {
       AppMethodBeat.i(10394);
-      tBC = new x();
+      uEl = new x();
       AppMethodBeat.o(10394);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class y<T>
     implements d<ResultType>
   {
-    public static final y tBD;
+    public static final y uEm;
     
     static
     {
       AppMethodBeat.i(10395);
-      tBD = new y();
+      uEm = new y();
       AppMethodBeat.o(10395);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class z<T>
     implements d<ResultType>
   {
-    public static final z tBE;
+    public static final z uEn;
     
     static
     {
       AppMethodBeat.i(10396);
-      tBE = new z();
+      uEn = new z();
       AppMethodBeat.o(10396);
     }
   }

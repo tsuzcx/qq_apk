@@ -8,29 +8,31 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import java.util.List;
 
 public class FavSearchActionView
   extends LinearLayout
 {
-  public FavTagPanel qOc;
-  public List<Integer> qPw;
-  public a qUA;
-  private ImageButton qUx;
-  public List<String> qUy;
-  public List<String> qUz;
+  private ImageButton rEL;
+  public List<String> rEM;
+  public List<String> rEN;
+  public a rEO;
+  public FavTagPanel ryb;
+  public List<Integer> rzv;
   
   public FavSearchActionView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(107534);
-    this.qPw = new LinkedList();
-    this.qUy = new LinkedList();
-    this.qUz = new LinkedList();
+    this.rzv = new LinkedList();
+    this.rEM = new LinkedList();
+    this.rEN = new LinkedList();
     AppMethodBeat.o(107534);
   }
   
@@ -92,7 +94,7 @@ public class FavSearchActionView
     return paramContext;
   }
   
-  public static Integer ap(Context paramContext, String paramString)
+  public static Integer ao(Context paramContext, String paramString)
   {
     AppMethodBeat.i(107541);
     if (paramContext == null)
@@ -144,56 +146,56 @@ public class FavSearchActionView
     return Integer.valueOf(-1);
   }
   
-  private void crC()
+  private void cxo()
   {
     AppMethodBeat.i(107538);
-    if ((this.qPw.isEmpty()) && (this.qUy.isEmpty()))
+    if ((this.rzv.isEmpty()) && (this.rEM.isEmpty()))
     {
-      this.qOc.setEditHint(getResources().getString(2131755882));
+      this.ryb.setEditHint(getResources().getString(2131755882));
       AppMethodBeat.o(107538);
       return;
     }
-    this.qOc.setEditHint("");
+    this.ryb.setEditHint("");
     AppMethodBeat.o(107538);
   }
   
   public final void ac(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(107539);
-    this.qPw.clear();
-    this.qPw.add(Integer.valueOf(paramInt));
-    if (this.qOc == null)
+    this.rzv.clear();
+    this.rzv.add(Integer.valueOf(paramInt));
+    if (this.ryb == null)
     {
       AppMethodBeat.o(107539);
       return;
     }
-    crC();
-    this.qOc.setType(T(getContext(), paramInt));
-    if (this.qUA == null)
+    cxo();
+    this.ryb.setType(T(getContext(), paramInt));
+    if (this.rEO == null)
     {
       AppMethodBeat.o(107539);
       return;
     }
-    adc(this.qOc.getEditText());
+    agR(this.ryb.getEditText());
     if (paramBoolean) {
-      this.qUA.a(this.qPw, this.qUz, this.qUy, false);
+      this.rEO.a(this.rzv, this.rEN, this.rEM, false);
     }
-    h.wUl.f(11126, new Object[] { Integer.valueOf(1) });
+    g.yhR.f(11126, new Object[] { Integer.valueOf(1) });
     AppMethodBeat.o(107539);
   }
   
-  public final void adc(String paramString)
+  public final void agR(String paramString)
   {
     AppMethodBeat.i(107536);
-    this.qUz.clear();
-    paramString = bs.bG(paramString, "").split(" ");
+    this.rEN.clear();
+    paramString = bt.bI(paramString, "").split(" ");
     int j = paramString.length;
     int i = 0;
     while (i < j)
     {
       String str = paramString[i];
-      if (!bs.isNullOrNil(str)) {
-        this.qUz.add(str);
+      if (!bt.isNullOrNil(str)) {
+        this.rEN.add(str);
       }
       i += 1;
     }
@@ -203,62 +205,54 @@ public class FavSearchActionView
   public List<String> getSearchKeys()
   {
     AppMethodBeat.i(107537);
-    if (this.qOc != null) {
-      adc(this.qOc.getEditText());
+    if (this.ryb != null) {
+      agR(this.ryb.getEditText());
     }
-    List localList = this.qUz;
+    List localList = this.rEN;
     AppMethodBeat.o(107537);
     return localList;
   }
   
   public List<String> getSearchTags()
   {
-    return this.qUy;
+    return this.rEM;
   }
   
   protected void onFinishInflate()
   {
     AppMethodBeat.i(107535);
     super.onFinishInflate();
-    this.qUx = ((ImageButton)findViewById(2131304401));
-    this.qOc = ((FavTagPanel)findViewById(2131299843));
-    if (this.qOc != null)
+    this.rEL = ((ImageButton)findViewById(2131304401));
+    this.ryb = ((FavTagPanel)findViewById(2131299843));
+    if (this.ryb != null)
     {
-      this.qOc.setEditTextColor(getResources().getColor(2131100021));
-      this.qOc.setTagTipsDrawable(0);
-      this.qOc.setTagHighlineBG(0);
-      this.qOc.setTagSelectedBG(0);
-      this.qOc.setTagSelectedTextColorRes(2131101171);
-      this.qOc.setTagNormalBG(0);
-      this.qOc.setTagNormalTextColorRes(2131101179);
-      this.qOc.setEditHint(getResources().getString(2131755882));
-      this.qOc.wR(true);
-      this.qOc.HzG = false;
-      this.qOc.HzH = true;
-      this.qOc.setCallBack(new FavTagPanel.a()
+      this.ryb.setEditTextColor(getResources().getColor(2131100021));
+      this.ryb.setTagTipsDrawable(0);
+      this.ryb.setTagHighlineBG(0);
+      this.ryb.setTagSelectedBG(0);
+      this.ryb.setTagSelectedTextColorRes(2131101171);
+      this.ryb.setTagNormalBG(0);
+      this.ryb.setTagNormalTextColorRes(2131101179);
+      this.ryb.setEditHint(getResources().getString(2131755882));
+      this.ryb.xC(true);
+      this.ryb.Jnx = false;
+      this.ryb.Jny = true;
+      this.ryb.setCallBack(new FavTagPanel.a()
       {
         public final void C(boolean paramAnonymousBoolean, int paramAnonymousInt) {}
         
-        public final void YA(String paramAnonymousString)
-        {
-          AppMethodBeat.i(107530);
-          FavSearchActionView.a(FavSearchActionView.this, paramAnonymousString);
-          FavSearchActionView.d(FavSearchActionView.this).a(FavSearchActionView.e(FavSearchActionView.this), FavSearchActionView.f(FavSearchActionView.this), FavSearchActionView.b(FavSearchActionView.this), false);
-          AppMethodBeat.o(107530);
-        }
-        
-        public final void Yw(String paramAnonymousString)
+        public final void acc(String paramAnonymousString)
         {
           AppMethodBeat.i(107527);
-          ac.d("MicroMsg.FavSearchActionView", "unselected tag %s", new Object[] { paramAnonymousString });
+          ad.d("MicroMsg.FavSearchActionView", "unselected tag %s", new Object[] { paramAnonymousString });
           FavSearchActionView.a(FavSearchActionView.this).removeTag(paramAnonymousString);
-          Yy(paramAnonymousString);
+          ace(paramAnonymousString);
           AppMethodBeat.o(107527);
         }
         
-        public final void Yx(String paramAnonymousString) {}
+        public final void acd(String paramAnonymousString) {}
         
-        public final void Yy(String paramAnonymousString)
+        public final void ace(String paramAnonymousString)
         {
           AppMethodBeat.i(107528);
           FavSearchActionView.a(FavSearchActionView.this, FavSearchActionView.a(FavSearchActionView.this).getEditText());
@@ -273,7 +267,7 @@ public class FavSearchActionView
           AppMethodBeat.o(107528);
         }
         
-        public final void Yz(String paramAnonymousString)
+        public final void acf(String paramAnonymousString)
         {
           AppMethodBeat.i(107529);
           FavSearchActionView.a(FavSearchActionView.this, FavSearchActionView.a(FavSearchActionView.this).getEditText());
@@ -287,13 +281,21 @@ public class FavSearchActionView
           AppMethodBeat.o(107529);
         }
         
-        public final void add(String paramAnonymousString)
+        public final void acg(String paramAnonymousString)
+        {
+          AppMethodBeat.i(107530);
+          FavSearchActionView.a(FavSearchActionView.this, paramAnonymousString);
+          FavSearchActionView.d(FavSearchActionView.this).a(FavSearchActionView.e(FavSearchActionView.this), FavSearchActionView.f(FavSearchActionView.this), FavSearchActionView.b(FavSearchActionView.this), false);
+          AppMethodBeat.o(107530);
+        }
+        
+        public final void agS(String paramAnonymousString)
         {
           AppMethodBeat.i(107532);
-          ac.d("MicroMsg.FavSearchActionView", "unselected type %s", new Object[] { paramAnonymousString });
+          ad.d("MicroMsg.FavSearchActionView", "unselected type %s", new Object[] { paramAnonymousString });
           FavSearchActionView.a(FavSearchActionView.this);
           FavSearchActionView.a(FavSearchActionView.this, FavSearchActionView.a(FavSearchActionView.this).getEditText());
-          FavSearchActionView.e(FavSearchActionView.this).remove(FavSearchActionView.ap(FavSearchActionView.this.getContext(), paramAnonymousString));
+          FavSearchActionView.e(FavSearchActionView.this).remove(FavSearchActionView.ao(FavSearchActionView.this.getContext(), paramAnonymousString));
           FavSearchActionView.c(FavSearchActionView.this);
           if (FavSearchActionView.d(FavSearchActionView.this) != null) {
             FavSearchActionView.d(FavSearchActionView.this).a(FavSearchActionView.e(FavSearchActionView.this), FavSearchActionView.f(FavSearchActionView.this), FavSearchActionView.b(FavSearchActionView.this), true);
@@ -301,7 +303,7 @@ public class FavSearchActionView
           AppMethodBeat.o(107532);
         }
         
-        public final void cep()
+        public final void ciS()
         {
           AppMethodBeat.i(107531);
           if (FavSearchActionView.d(FavSearchActionView.this) == null)
@@ -309,28 +311,33 @@ public class FavSearchActionView
             AppMethodBeat.o(107531);
             return;
           }
-          FavSearchActionView.d(FavSearchActionView.this).aPb();
+          FavSearchActionView.d(FavSearchActionView.this).aSn();
           AppMethodBeat.o(107531);
         }
       });
     }
-    if (this.qUx != null) {
-      this.qUx.setOnClickListener(new View.OnClickListener()
+    if (this.rEL != null) {
+      this.rEL.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107533);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/fav/ui/widget/FavSearchActionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           if (FavSearchActionView.d(FavSearchActionView.this) == null)
           {
+            a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavSearchActionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107533);
             return;
           }
-          FavSearchActionView.a(FavSearchActionView.this).fiP();
-          FavSearchActionView.a(FavSearchActionView.this).fiK();
+          FavSearchActionView.a(FavSearchActionView.this).fze();
+          FavSearchActionView.a(FavSearchActionView.this).fyZ();
           FavSearchActionView.f(FavSearchActionView.this).clear();
           FavSearchActionView.b(FavSearchActionView.this).clear();
           FavSearchActionView.d(FavSearchActionView.this).a(FavSearchActionView.e(FavSearchActionView.this), FavSearchActionView.f(FavSearchActionView.this), FavSearchActionView.b(FavSearchActionView.this), true);
           FavSearchActionView.c(FavSearchActionView.this);
+          a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavSearchActionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(107533);
         }
       });
@@ -340,7 +347,7 @@ public class FavSearchActionView
   
   public void setOnSearchChangedListener(a parama)
   {
-    this.qUA = parama;
+    this.rEO = parama;
   }
   
   public static abstract interface a
@@ -349,12 +356,12 @@ public class FavSearchActionView
     
     public abstract void a(List<Integer> paramList, List<String> paramList1, List<String> paramList2, boolean paramBoolean);
     
-    public abstract void aPb();
+    public abstract void aSn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView
  * JD-Core Version:    0.7.0.1
  */

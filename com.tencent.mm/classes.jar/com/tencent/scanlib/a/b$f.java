@@ -6,11 +6,11 @@ import com.tencent.stubs.logger.Log;
 public final class b$f
   extends b.a
 {
-  private f JUX;
+  private f LOR;
   
   public b$f(f paramf)
   {
-    this.JUX = paramf;
+    this.LOR = paramf;
   }
   
   private Void call()
@@ -18,9 +18,9 @@ public final class b$f
     AppMethodBeat.i(174582);
     try
     {
-      if (this.JUX.isOpen())
+      if (this.LOR.isOpen())
       {
-        this.JUX.close();
+        this.LOR.close();
         Log.i("CameraTask.DefaultCloseTask", "close camera");
       }
       AppMethodBeat.o(174582);

@@ -6,39 +6,39 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sns.data.a;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.pluginsdk.ui.span.p.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.ui.aq;
 
 public class AsyncTextView
   extends TextView
   implements Runnable
 {
   private Context context;
-  private int oeH;
+  private int oIb;
   private String userName;
-  private boolean yxA;
-  private String yxB;
-  private p.a yxC;
-  private boolean yxD;
-  private com.tencent.mm.n.b yxE;
-  private int yxF;
-  private String yxz;
+  private String zOL;
+  private boolean zOM;
+  private String zON;
+  private p.a zOO;
+  private boolean zOP;
+  private com.tencent.mm.o.b zOQ;
+  private int zOR;
   
   public AsyncTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(97770);
-    this.yxE = null;
-    this.yxF = 0;
+    this.zOQ = null;
+    this.zOR = 0;
     init(paramContext);
     AppMethodBeat.o(97770);
   }
@@ -47,8 +47,8 @@ public class AsyncTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(97769);
-    this.yxE = null;
-    this.yxF = 0;
+    this.zOQ = null;
+    this.zOR = 0;
     init(paramContext);
     AppMethodBeat.o(97769);
   }
@@ -57,7 +57,7 @@ public class AsyncTextView
   {
     AppMethodBeat.i(97771);
     this.context = paramContext;
-    this.yxF = ao.fromDPToPix(paramContext, 14);
+    this.zOR = aq.fromDPToPix(paramContext, 14);
     AppMethodBeat.o(97771);
   }
   
@@ -65,12 +65,12 @@ public class AsyncTextView
   {
     AppMethodBeat.i(97772);
     this.userName = paramString1;
-    this.yxz = paramString2;
-    this.oeH = paramInt;
-    this.yxA = paramBoolean1;
-    this.yxB = paramString3;
-    this.yxC = parama;
-    this.yxD = paramBoolean2;
+    this.zOL = paramString2;
+    this.oIb = paramInt;
+    this.zOM = paramBoolean1;
+    this.zON = paramString3;
+    this.zOO = parama;
+    this.zOP = paramBoolean2;
     run();
     AppMethodBeat.o(97772);
   }
@@ -102,7 +102,7 @@ public class AsyncTextView
     }
     catch (Throwable paramCanvas)
     {
-      ac.printErrStackTrace("MicroMsg.AsyncTextView", paramCanvas, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.AsyncTextView", paramCanvas, "", new Object[0]);
       AppMethodBeat.o(97775);
     }
   }
@@ -145,7 +145,7 @@ public class AsyncTextView
     if ((getTag() instanceof String))
     {
       localObject1 = (String)getTag();
-      if ((!bs.T(new String[] { localObject1, this.userName })) && (!this.yxA) && (((String)localObject1).equals(this.userName)))
+      if ((!bt.V(new String[] { localObject1, this.userName })) && (!this.zOM) && (((String)localObject1).equals(this.userName)))
       {
         AppMethodBeat.o(97773);
         return;
@@ -153,26 +153,26 @@ public class AsyncTextView
     }
     int j;
     int i;
-    if ((this.yxE != null) && (ai.aNc(this.yxE.field_username)) && ("3552365301".equals(this.yxE.field_openImAppid)))
+    if ((this.zOQ != null) && (am.aSQ(this.zOQ.field_username)) && ("3552365301".equals(this.zOQ.field_openImAppid)))
     {
-      j = this.yxz.length();
-      localObject1 = " @" + ((com.tencent.mm.openim.a.b)g.ab(com.tencent.mm.openim.a.b.class)).bB(this.yxE.field_openImAppid, this.yxE.field_descWordingId);
-      this.yxz += (String)localObject1;
+      j = this.zOL.length();
+      localObject1 = " @" + ((com.tencent.mm.openim.a.b)g.ab(com.tencent.mm.openim.a.b.class)).bC(this.zOQ.field_openImAppid, this.zOQ.field_descWordingId);
+      this.zOL += (String)localObject1;
       i = ((String)localObject1).length() + j;
     }
     for (;;)
     {
-      if (this.oeH == 10) {}
+      if (this.oIb == 10) {}
       for (int k = 3;; k = 2)
       {
-        localObject1 = new p(new a(this.yxA, this.userName, this.yxB, 1), this.yxC, k);
+        localObject1 = new p(new a(this.zOM, this.userName, this.zON, 1), this.zOO, k);
         Object localObject2 = getContext();
-        String str = this.yxz;
+        String str = this.zOL;
         getTextSize();
         localObject2 = new l(k.c((Context)localObject2, str, k));
-        ((l)localObject2).a(localObject1, this.yxz);
+        ((l)localObject2).a(localObject1, this.zOL);
         if ((j != i) && (i > j) && (j >= 0)) {
-          ((l)localObject2).setSpan(((com.tencent.mm.openim.a.b)g.ab(com.tencent.mm.openim.a.b.class)).f(this.context, this.yxE.field_openImAppid, this.yxF), j, i, 33);
+          ((l)localObject2).setSpan(((com.tencent.mm.openim.a.b)g.ab(com.tencent.mm.openim.a.b.class)).f(this.context, this.zOQ.field_openImAppid, this.zOR), j, i, 33);
         }
         setText((CharSequence)localObject2, TextView.BufferType.SPANNABLE);
         setTag(this.userName);
@@ -184,14 +184,14 @@ public class AsyncTextView
     }
   }
   
-  public void setContactInfo(com.tencent.mm.n.b paramb)
+  public void setContactInfo(com.tencent.mm.o.b paramb)
   {
-    this.yxE = paramb;
+    this.zOQ = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.AsyncTextView
  * JD-Core Version:    0.7.0.1
  */

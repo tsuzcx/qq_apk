@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import junit.framework.Assert;
 
 public class AsyncMaskImageView
@@ -20,8 +22,8 @@ public class AsyncMaskImageView
   private boolean enable;
   private int g;
   private int r;
-  ao yxu;
-  Runnable yxv;
+  ap zOG;
+  Runnable zOH;
   
   public AsyncMaskImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,8 +34,8 @@ public class AsyncMaskImageView
     this.g = 0;
     this.b = 0;
     this.enable = true;
-    this.yxu = new ao();
-    this.yxv = new Runnable()
+    this.zOG = new ap();
+    this.zOH = new Runnable()
     {
       public final void run()
       {
@@ -48,27 +50,37 @@ public class AsyncMaskImageView
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(97754);
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        ((b)localObject).bd(paramAnonymousMotionEvent);
+        a.b("com/tencent/mm/plugin/sns/ui/AsyncMaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahq());
         if (!AsyncMaskImageView.a(AsyncMaskImageView.this))
         {
+          a.a(false, this, "com/tencent/mm/plugin/sns/ui/AsyncMaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(97754);
           return false;
         }
-        AsyncMaskImageView localAsyncMaskImageView = AsyncMaskImageView.this;
+        localObject = AsyncMaskImageView.this;
         switch (paramAnonymousMotionEvent.getAction())
         {
+        case 2: 
+        default: 
+          if ((((AsyncMaskImageView)localObject).isClickable()) || (((AsyncMaskImageView)localObject).isLongClickable())) {
+            break;
+          }
         }
-        while ((!localAsyncMaskImageView.isClickable()) && (!localAsyncMaskImageView.isLongClickable()))
+        for (boolean bool = true;; bool = false)
         {
+          a.a(bool, this, "com/tencent/mm/plugin/sns/ui/AsyncMaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(97754);
-          return true;
+          return bool;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
-          localAsyncMaskImageView.yxu.removeCallbacks(localAsyncMaskImageView.yxv);
-          continue;
-          localAsyncMaskImageView.yxu.post(localAsyncMaskImageView.yxv);
+          ((AsyncMaskImageView)localObject).zOG.removeCallbacks(((AsyncMaskImageView)localObject).zOH);
+          break;
+          ((AsyncMaskImageView)localObject).zOG.post(((AsyncMaskImageView)localObject).zOH);
+          break;
         }
-        AppMethodBeat.o(97754);
-        return false;
       }
     });
     AppMethodBeat.o(97755);
@@ -78,7 +90,7 @@ public class AsyncMaskImageView
   {
     AppMethodBeat.i(97758);
     super.onAttachedToWindow();
-    ac.d("MicroMsg.MaskImageView", "onAttachedToWindow");
+    ad.d("MicroMsg.MaskImageView", "onAttachedToWindow");
     AppMethodBeat.o(97758);
   }
   
@@ -86,7 +98,7 @@ public class AsyncMaskImageView
   {
     AppMethodBeat.i(97759);
     super.onDetachedFromWindow();
-    ac.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
+    ad.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
     AppMethodBeat.o(97759);
   }
   
@@ -115,7 +127,7 @@ public class AsyncMaskImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.AsyncMaskImageView
  * JD-Core Version:    0.7.0.1
  */

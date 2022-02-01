@@ -4,41 +4,28 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.config.w.c;
-import com.tencent.mm.plugin.appbrand.z.l;
-import com.tencent.mm.plugin.appbrand.z.l.a;
+import com.tencent.mm.plugin.appbrand.config.x.c;
+import com.tencent.mm.plugin.appbrand.z.m;
+import com.tencent.mm.plugin.appbrand.z.m.a;
 import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class j
   extends k
 {
-  private static volatile j juz = null;
+  private static volatile j jOs = null;
   
-  public static boolean aYB()
-  {
-    AppMethodBeat.i(44485);
-    if (!g.agM())
-    {
-      AppMethodBeat.o(44485);
-      return false;
-    }
-    boolean bool = ((Boolean)g.agR().agA().get(ah.a.GJa, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(44485);
-    return bool;
-  }
-  
-  public static j aYz()
+  public static j bbX()
   {
     AppMethodBeat.i(44482);
-    if (juz == null) {}
+    if (jOs == null) {}
     try
     {
-      if (juz == null) {
-        juz = new j();
+      if (jOs == null) {
+        jOs = new j();
       }
-      j localj = juz;
+      j localj = jOs;
       AppMethodBeat.o(44482);
       return localj;
     }
@@ -48,9 +35,22 @@ public final class j
     }
   }
   
+  public static boolean bbZ()
+  {
+    AppMethodBeat.i(44485);
+    if (!g.ajx())
+    {
+      AppMethodBeat.o(44485);
+      return false;
+    }
+    boolean bool = ((Boolean)g.ajC().ajl().get(al.a.Ivs, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(44485);
+    return bool;
+  }
+  
   public static void release()
   {
-    juz = null;
+    jOs = null;
   }
   
   public final void a(long paramLong, boolean paramBoolean, Bundle paramBundle, int paramInt1, int paramInt2)
@@ -62,8 +62,8 @@ public final class j
   
   public final void a(final long paramLong1, final boolean paramBoolean, Bundle paramBundle, final int paramInt1, final int paramInt2, final int paramInt3, final long paramLong2, final a parama)
   {
-    AppMethodBeat.i(186337);
-    l.bxj().postToWorker(new Runnable()
+    AppMethodBeat.i(188027);
+    m.bBp().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -71,22 +71,22 @@ public final class j
         j localj = j.this;
         int j = paramInt1;
         int k = paramInt2;
-        if ((paramBoolean & v.aYU())) {}
+        if ((paramBoolean & v.bcs())) {}
         for (int i = 2;; i = 0)
         {
-          j.a(localj, j, k, i | 0x1, paramLong1, paramBoolean, paramInt3, paramLong2, parama, this.juG);
+          j.a(localj, j, k, i | 0x1, paramLong1, paramBoolean, paramInt3, paramLong2, parama, this.jOz);
           AppMethodBeat.o(44480);
           return;
         }
       }
     });
-    AppMethodBeat.o(186337);
+    AppMethodBeat.o(188027);
   }
   
-  public final void aYA()
+  public final void bbY()
   {
     AppMethodBeat.i(44483);
-    l.bxj().postToWorker(new Runnable()
+    m.bBp().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -100,7 +100,7 @@ public final class j
   
   public static abstract interface a
   {
-    public abstract void done();
+    public abstract void n(boolean paramBoolean, String paramString);
   }
 }
 

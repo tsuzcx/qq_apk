@@ -2,22 +2,13 @@ package d.l;
 
 import d.g.a.a;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/reflect/KProperty0;", "R", "Lkotlin/reflect/KProperty;", "Lkotlin/Function0;", "getter", "Lkotlin/reflect/KProperty0$Getter;", "getGetter", "()Lkotlin/reflect/KProperty0$Getter;", "get", "()Ljava/lang/Object;", "getDelegate", "", "Getter", "kotlin-stdlib"})
-public abstract interface l<R>
-  extends a<R>, k<R>
-{
-  public abstract a<R> fOC();
-  
-  public abstract R get();
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/reflect/KProperty0$Getter;", "R", "Lkotlin/reflect/KProperty$Getter;", "Lkotlin/Function0;", "kotlin-stdlib"})
-  public static abstract interface a<R>
-    extends a<R>, k.a<R>
-  {}
-}
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/reflect/KProperty0;", "R", "Lkotlin/reflect/KProperty;", "Lkotlin/Function0;", "getter", "Lkotlin/reflect/KProperty0$Getter;", "getGetter", "()Lkotlin/reflect/KProperty0$Getter;", "get", "()Ljava/lang/Object;", "getDelegate", "", "Getter", "kotlin-stdlib"})
+public abstract interface l
+  extends a, k
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     d.l.l
  * JD-Core Version:    0.7.0.1
  */

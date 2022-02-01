@@ -4,24 +4,24 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
 import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public final class c
 {
-  private static boolean Hef = false;
-  public static a Heg = null;
+  private static boolean IRv = false;
+  public static a IRw = null;
   
-  static boolean YD()
+  static boolean abf()
   {
     AppMethodBeat.i(145594);
     try
     {
-      if ((Environment.getExternalStorageState().equals("mounted")) && (ai.getContext().getExternalCacheDir() != null) && (ai.getContext().getExternalCacheDir().canWrite()))
+      if ((Environment.getExternalStorageState().equals("mounted")) && (aj.getContext().getExternalCacheDir() != null) && (aj.getContext().getExternalCacheDir().canWrite()))
       {
         AppMethodBeat.o(145594);
         return true;
@@ -36,7 +36,7 @@ public final class c
     return false;
   }
   
-  public static void Zf(int paramInt)
+  public static void abo(int paramInt)
   {
     AppMethodBeat.i(145593);
     final boolean bool1;
@@ -53,26 +53,26 @@ public final class c
     }
     for (;;)
     {
-      ac.d("MicroMsg.MemoryDumpOperation", "hprof operate: dump:%b, checkWifi:%b, uploadSingal:%b,uploadAll:%b,", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool3), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+      ad.d("MicroMsg.MemoryDumpOperation", "hprof operate: dump:%b, checkWifi:%b, uploadSingal:%b,uploadAll:%b,", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool3), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
       Executors.newSingleThreadExecutor().execute(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(145592);
-          if (c.Hef)
+          if (c.IRv)
           {
-            ac.w("MicroMsg.MemoryDumpOperation", "Hprof is mUploading");
+            ad.w("MicroMsg.MemoryDumpOperation", "Hprof is mUploading");
             AppMethodBeat.o(145592);
             return;
           }
-          if (this.Heh) {}
-          for (String str = b.aL(true, false);; str = null)
+          if (this.IRx) {}
+          for (String str = b.aS(true, false);; str = null)
           {
             Process.setThreadPriority(10);
-            boolean bool = ax.isWifi(ai.getContext());
+            boolean bool = ay.isWifi(aj.getContext());
             if ((bool3) && (!bool))
             {
-              ac.w("MicroMsg.MemoryDumpOperation", "Hprof no wifi");
+              ad.w("MicroMsg.MemoryDumpOperation", "Hprof no wifi");
               AppMethodBeat.o(145592);
               return;
             }
@@ -80,12 +80,12 @@ public final class c
             for (;;)
             {
               c.access$002(true);
-              c.CU(str);
+              c.FZ(str);
               c.access$002(false);
               AppMethodBeat.o(145592);
               return;
               if (bool1) {
-                str = b.Hee;
+                str = b.IRu;
               } else {
                 str = null;
               }
@@ -95,7 +95,7 @@ public final class c
       });
       AppMethodBeat.o(145593);
       return;
-      ac.i("MicroMsg.MemoryDumpOperation", "GC NOW.");
+      ad.i("MicroMsg.MemoryDumpOperation", "GC NOW.");
       System.gc();
       bool1 = false;
       bool2 = false;

@@ -7,9 +7,9 @@ public enum l
   static
   {
     AppMethodBeat.i(57695);
-    LmK = new l("SUPERTYPE", 0);
-    LmL = new l("COMMON", 1);
-    LmM = new l[] { LmK, LmL };
+    NdH = new l("SUPERTYPE", 0);
+    NdI = new l("COMMON", 1);
+    NdJ = new l[] { NdH, NdI };
     AppMethodBeat.o(57695);
   }
   

@@ -9,38 +9,38 @@ import java.util.Arrays;
 
 final class g
 {
-  private static final byte[] bKh;
-  private static final byte[] bKi;
-  private static final byte[] bKj;
-  private static final byte[] bKk;
-  private static final Charset bKl;
+  private static final byte[] bUu;
+  private static final byte[] bUv;
+  private static final byte[] bUw;
+  private static final byte[] bUx;
+  private static final Charset bUy;
   
   static
   {
     int j = 0;
     AppMethodBeat.i(12403);
-    bKh = new byte[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 38, 13, 9, 44, 58, 35, 45, 46, 36, 47, 43, 37, 42, 61, 94, 0, 32, 0, 0, 0 };
-    bKi = new byte[] { 59, 60, 62, 64, 91, 92, 93, 95, 96, 126, 33, 13, 9, 44, 58, 10, 45, 46, 36, 47, 34, 124, 42, 40, 41, 63, 123, 125, 39, 0 };
-    bKj = new byte[''];
-    bKk = new byte[''];
-    bKl = Charset.forName("ISO-8859-1");
-    Arrays.fill(bKj, (byte)-1);
+    bUu = new byte[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 38, 13, 9, 44, 58, 35, 45, 46, 36, 47, 43, 37, 42, 61, 94, 0, 32, 0, 0, 0 };
+    bUv = new byte[] { 59, 60, 62, 64, 91, 92, 93, 95, 96, 126, 33, 13, 9, 44, 58, 10, 45, 46, 36, 47, 34, 124, 42, 40, 41, 63, 123, 125, 39, 0 };
+    bUw = new byte[''];
+    bUx = new byte[''];
+    bUy = Charset.forName("ISO-8859-1");
+    Arrays.fill(bUw, (byte)-1);
     int i = 0;
-    while (i < bKh.length)
+    while (i < bUu.length)
     {
-      int k = bKh[i];
+      int k = bUu[i];
       if (k > 0) {
-        bKj[k] = ((byte)i);
+        bUw[k] = ((byte)i);
       }
       i += 1;
     }
-    Arrays.fill(bKk, (byte)-1);
+    Arrays.fill(bUx, (byte)-1);
     i = j;
-    while (i < bKi.length)
+    while (i < bUv.length)
     {
-      j = bKi[i];
+      j = bUv[i];
       if (j > 0) {
-        bKk[j] = ((byte)i);
+        bUx[j] = ((byte)i);
       }
       i += 1;
     }
@@ -60,10 +60,10 @@ final class g
       switch (paramInt3)
       {
       default: 
-        if (!m(i)) {
+        if (!o(i)) {
           break label520;
         }
-        localStringBuilder.append((char)bKk[i]);
+        localStringBuilder.append((char)bUx[i]);
         k = j + 1;
         j = k;
       }
@@ -88,7 +88,7 @@ final class g
       {
         paramInt1 += 1;
         break label108;
-        if (j(i))
+        if (l(i))
         {
           if (i == 32)
           {
@@ -98,22 +98,22 @@ final class g
           localStringBuilder.append((char)(i - 65));
           break label81;
         }
-        if (k(i))
+        if (m(i))
         {
           localStringBuilder.append('\033');
           paramInt3 = 1;
           break;
         }
-        if (l(i))
+        if (n(i))
         {
           paramInt3 = 2;
           localStringBuilder.append('\034');
           break;
         }
         localStringBuilder.append('\035');
-        localStringBuilder.append((char)bKk[i]);
+        localStringBuilder.append((char)bUx[i]);
         break label81;
-        if (k(i))
+        if (m(i))
         {
           if (i == 32)
           {
@@ -123,46 +123,46 @@ final class g
           localStringBuilder.append((char)(i - 97));
           break label81;
         }
-        if (j(i))
+        if (l(i))
         {
           localStringBuilder.append('\033');
           localStringBuilder.append((char)(i - 65));
           break label81;
         }
-        if (l(i))
+        if (n(i))
         {
           paramInt3 = 2;
           localStringBuilder.append('\034');
           break;
         }
         localStringBuilder.append('\035');
-        localStringBuilder.append((char)bKk[i]);
+        localStringBuilder.append((char)bUx[i]);
         break label81;
-        if (l(i))
+        if (n(i))
         {
-          localStringBuilder.append((char)bKj[i]);
+          localStringBuilder.append((char)bUw[i]);
           break label81;
         }
-        if (j(i))
+        if (l(i))
         {
           localStringBuilder.append('\034');
           paramInt3 = 0;
           break;
         }
-        if (k(i))
+        if (m(i))
         {
           localStringBuilder.append('\033');
           paramInt3 = 1;
           break;
         }
-        if ((paramInt1 + j + 1 < paramInt2) && (m(paramCharSequence.charAt(paramInt1 + j + 1))))
+        if ((paramInt1 + j + 1 < paramInt2) && (o(paramCharSequence.charAt(paramInt1 + j + 1))))
         {
           paramInt3 = 3;
           localStringBuilder.append('\031');
           break;
         }
         localStringBuilder.append('\035');
-        localStringBuilder.append((char)bKk[i]);
+        localStringBuilder.append((char)bUx[i]);
         break label81;
         localStringBuilder.append('\035');
         paramInt3 = 0;
@@ -235,9 +235,9 @@ final class g
     int i1;
     if (paramCharset == null)
     {
-      localCharset = bKl;
+      localCharset = bUy;
       i1 = paramString.length();
-      if (paramc != c.bJV) {
+      if (paramc != c.bUi) {
         break label242;
       }
       a(paramString, 0, i1, localStringBuilder, 0);
@@ -248,15 +248,15 @@ final class g
       AppMethodBeat.o(12396);
       return paramString;
       localCharset = paramCharset;
-      if (bKl.equals(paramCharset)) {
+      if (bUy.equals(paramCharset)) {
         break;
       }
-      com.google.c.b.c localc = com.google.c.b.c.bl(paramCharset.name());
+      com.google.c.b.c localc = com.google.c.b.c.ce(paramCharset.name());
       localCharset = paramCharset;
       if (localc == null) {
         break;
       }
-      i = localc.bIq[0];
+      i = localc.bSE[0];
       if ((i >= 0) && (i < 900))
       {
         localStringBuilder.append('Ο');
@@ -283,14 +283,14 @@ final class g
       AppMethodBeat.o(12396);
       throw paramString;
       label242:
-      if (paramc == c.bJW)
+      if (paramc == c.bUj)
       {
         paramString = paramString.getBytes(localCharset);
         a(paramString, paramString.length, 1, localStringBuilder);
       }
       else
       {
-        if (paramc != c.bJX) {
+        if (paramc != c.bUk) {
           break label296;
         }
         localStringBuilder.append('Ά');
@@ -546,24 +546,24 @@ final class g
     return (paramChar >= '0') && (paramChar <= '9');
   }
   
-  private static boolean j(char paramChar)
+  private static boolean l(char paramChar)
   {
     return (paramChar == ' ') || ((paramChar >= 'A') && (paramChar <= 'Z'));
   }
   
-  private static boolean k(char paramChar)
+  private static boolean m(char paramChar)
   {
     return (paramChar == ' ') || ((paramChar >= 'a') && (paramChar <= 'z'));
   }
   
-  private static boolean l(char paramChar)
+  private static boolean n(char paramChar)
   {
-    return bKj[paramChar] != -1;
+    return bUw[paramChar] != -1;
   }
   
-  private static boolean m(char paramChar)
+  private static boolean o(char paramChar)
   {
-    return bKk[paramChar] != -1;
+    return bUx[paramChar] != -1;
   }
 }
 

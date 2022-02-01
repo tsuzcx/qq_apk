@@ -15,7 +15,7 @@ import java.util.Map;
 public class FabTransformationSheetBehavior
   extends FabTransformationBehavior
 {
-  private Map<View, Integer> kY;
+  private Map<View, Integer> mP;
   
   public FabTransformationSheetBehavior() {}
   
@@ -32,14 +32,14 @@ public class FabTransformationSheetBehavior
       localObject = (CoordinatorLayout)localObject;
       int k = ((CoordinatorLayout)localObject).getChildCount();
       if ((Build.VERSION.SDK_INT >= 16) && (paramBoolean1)) {
-        this.kY = new HashMap(k);
+        this.mP = new HashMap(k);
       }
       int i = 0;
       if (i < k)
       {
         View localView = ((CoordinatorLayout)localObject).getChildAt(i);
         int j;
-        if (((localView.getLayoutParams() instanceof CoordinatorLayout.d)) && ((((CoordinatorLayout.d)localView.getLayoutParams()).oH instanceof FabTransformationScrimBehavior)))
+        if (((localView.getLayoutParams() instanceof CoordinatorLayout.d)) && ((((CoordinatorLayout.d)localView.getLayoutParams()).qA instanceof FabTransformationScrimBehavior)))
         {
           j = 1;
           label103:
@@ -48,8 +48,8 @@ public class FabTransformationSheetBehavior
             if (paramBoolean1) {
               break label176;
             }
-            if ((this.kY != null) && (this.kY.containsKey(localView))) {
-              t.p(localView, ((Integer)this.kY.get(localView)).intValue());
+            if ((this.mP != null) && (this.mP.containsKey(localView))) {
+              t.p(localView, ((Integer)this.mP.get(localView)).intValue());
             }
           }
         }
@@ -61,13 +61,13 @@ public class FabTransformationSheetBehavior
           break label103;
           label176:
           if (Build.VERSION.SDK_INT >= 16) {
-            this.kY.put(localView, Integer.valueOf(localView.getImportantForAccessibility()));
+            this.mP.put(localView, Integer.valueOf(localView.getImportantForAccessibility()));
           }
           t.p(localView, 4);
         }
       }
       if (!paramBoolean1) {
-        this.kY = null;
+        this.mP = null;
       }
     }
     return super.a(paramView1, paramView2, paramBoolean1, paramBoolean2);
@@ -79,8 +79,8 @@ public class FabTransformationSheetBehavior
     for (int i = 2130837519;; i = 2130837518)
     {
       FabTransformationBehavior.a locala = new FabTransformationBehavior.a();
-      locala.kT = h.k(paramContext, i);
-      locala.kU = new j();
+      locala.mK = h.k(paramContext, i);
+      locala.mL = new j();
       return locala;
     }
   }

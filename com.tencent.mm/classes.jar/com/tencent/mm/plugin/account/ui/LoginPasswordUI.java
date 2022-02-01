@@ -1,6 +1,8 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -16,10 +18,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.q;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.modelsimple.s;
 import com.tencent.mm.platformtools.x;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.MMFormInputView;
 import com.tencent.mm.ui.base.h;
 
@@ -27,40 +34,40 @@ public class LoginPasswordUI
   extends LoginHistoryUI
 {
   private static String TAG = "LoginPasswordUI";
-  private x iSu;
+  private x jlC;
   
   public LoginPasswordUI()
   {
     AppMethodBeat.i(169130);
-    this.iSu = new x();
+    this.jlC = new x();
     AppMethodBeat.o(169130);
   }
   
-  protected final void aQH()
+  protected final void aTT()
   {
     AppMethodBeat.i(128183);
-    super.aQH();
+    super.aTT();
     if ((isFinishing()) || (getWindow() == null))
     {
-      ac.e(TAG, "LoginHistoryUI is finishing");
+      ad.e(TAG, "LoginHistoryUI is finishing");
       AppMethodBeat.o(128183);
       return;
     }
-    this.iRj.iJl = this.iRC.getText().toString();
-    if (this.iRj.account.equals(""))
+    this.jkr.jcu = this.jkK.getText().toString();
+    if (this.jkr.account.equals(""))
     {
       h.l(this, 2131764665, 2131760766);
       AppMethodBeat.o(128183);
       return;
     }
-    if (this.iRj.iJl.equals(""))
+    if (this.jkr.jcu.equals(""))
     {
       h.l(this, 2131764658, 2131760766);
       AppMethodBeat.o(128183);
       return;
     }
     hideVKB();
-    this.iSu.b(this, new Runnable()
+    this.jlC.b(this, new Runnable()
     {
       public final void run()
       {
@@ -76,24 +83,24 @@ public class LoginPasswordUI
   {
     AppMethodBeat.i(128182);
     super.onCreate(paramBundle);
-    if (this.iSb)
+    if (this.jlj)
     {
       AppMethodBeat.o(128182);
       return;
     }
-    this.iMo = 2;
-    this.iRY.setVisibility(0);
-    this.iRD.setVisibility(0);
-    this.iRC.setTypeface(Typeface.DEFAULT);
-    this.iRC.setTransformationMethod(new PasswordTransformationMethod());
-    this.iRC.setOnEditorActionListener(new TextView.OnEditorActionListener()
+    this.jfy = 2;
+    this.jlg.setVisibility(0);
+    this.jkL.setVisibility(0);
+    this.jkK.setTypeface(Typeface.DEFAULT);
+    this.jkK.setTransformationMethod(new PasswordTransformationMethod());
+    this.jkK.setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(128176);
         if ((paramAnonymousInt == 6) || (paramAnonymousInt == 5))
         {
-          LoginPasswordUI.this.aQH();
+          LoginPasswordUI.this.aTT();
           AppMethodBeat.o(128176);
           return true;
         }
@@ -101,33 +108,40 @@ public class LoginPasswordUI
         return false;
       }
     });
-    this.iRC.setOnKeyListener(new View.OnKeyListener()
+    this.jkK.setOnKeyListener(new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(128177);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.bd(paramAnonymousKeyEvent);
+        a.b("com/tencent/mm/plugin/account/ui/LoginPasswordUI$2", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahq());
         if ((66 == paramAnonymousInt) && (paramAnonymousKeyEvent.getAction() == 0))
         {
-          LoginPasswordUI.this.aQH();
+          LoginPasswordUI.this.aTT();
+          a.a(true, this, "com/tencent/mm/plugin/account/ui/LoginPasswordUI$2", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
           AppMethodBeat.o(128177);
           return true;
         }
+        a.a(false, this, "com/tencent/mm/plugin/account/ui/LoginPasswordUI$2", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
         AppMethodBeat.o(128177);
         return false;
       }
     });
-    this.iRC.addTextChangedListener(new TextWatcher()
+    this.jkK.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(128178);
-        if (LoginPasswordUI.this.iRC.getText().toString().length() > 0)
+        if (LoginPasswordUI.this.jkK.getText().toString().length() > 0)
         {
-          LoginPasswordUI.this.iRD.setEnabled(true);
+          LoginPasswordUI.this.jkL.setEnabled(true);
           AppMethodBeat.o(128178);
           return;
         }
-        LoginPasswordUI.this.iRD.setEnabled(false);
+        LoginPasswordUI.this.jkL.setEnabled(false);
         AppMethodBeat.o(128178);
       }
       
@@ -135,45 +149,49 @@ public class LoginPasswordUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    if (this.iRC.getText().toString().length() > 0) {
-      this.iRD.setEnabled(true);
+    if (this.jkK.getText().toString().length() > 0) {
+      this.jkL.setEnabled(true);
     }
     for (;;)
     {
-      this.iRD.setOnClickListener(new View.OnClickListener()
+      this.jkL.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(128179);
-          LoginPasswordUI.this.aQH();
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/account/ui/LoginPasswordUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          LoginPasswordUI.this.aTT();
+          a.a(this, "com/tencent/mm/plugin/account/ui/LoginPasswordUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(128179);
         }
       });
-      this.iPp = getIntent().getStringExtra("auth_ticket");
-      if (!bs.isNullOrNil(this.iPp))
+      this.jiy = getIntent().getStringExtra("auth_ticket");
+      if (!bt.isNullOrNil(this.jiy))
       {
-        this.iRB.setText(bs.nullAsNil(f.aQM()));
-        this.iRC.setText(bs.nullAsNil(f.aQN()));
-        new ao().postDelayed(new Runnable()
+        this.jkJ.setText(bt.nullAsNil(f.aTY()));
+        this.jkK.setText(bt.nullAsNil(f.aTZ()));
+        new ap().postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(128180);
-            LoginPasswordUI.this.aQH();
+            LoginPasswordUI.this.aTT();
             AppMethodBeat.o(128180);
           }
         }, 500L);
       }
       AppMethodBeat.o(128182);
       return;
-      this.iRD.setEnabled(false);
+      this.jkL.setEnabled(false);
     }
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(169131);
-    this.iSu.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
+    this.jlC.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(169131);
   }
   

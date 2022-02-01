@@ -12,7 +12,7 @@ import java.io.File;
 
 public final class b
 {
-  public static boolean c(ApplicationLike paramApplicationLike)
+  public static boolean d(ApplicationLike paramApplicationLike)
   {
     if ((paramApplicationLike == null) || (paramApplicationLike.getApplication() == null)) {
       throw new TinkerRuntimeException("tinkerApplication is null");
@@ -25,7 +25,7 @@ public final class b
     return true;
   }
   
-  public static String d(ApplicationLike paramApplicationLike)
+  public static String e(ApplicationLike paramApplicationLike)
   {
     if ((paramApplicationLike == null) || (paramApplicationLike.getApplication() == null)) {
       throw new TinkerRuntimeException("tinkerApplication is null");
@@ -47,7 +47,7 @@ public final class b
     return str;
   }
   
-  public static void e(ApplicationLike paramApplicationLike)
+  public static void f(ApplicationLike paramApplicationLike)
   {
     if ((paramApplicationLike == null) || (paramApplicationLike.getApplication() == null)) {
       throw new TinkerRuntimeException("tinkerApplication is null");

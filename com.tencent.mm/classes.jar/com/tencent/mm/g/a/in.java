@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class in
   extends b
 {
-  public a djL;
-  public b djM;
+  public a dva;
+  public b dvb;
   
   public in()
   {
@@ -16,27 +16,31 @@ public final class in
   
   private in(byte paramByte)
   {
-    AppMethodBeat.i(155368);
-    this.djL = new a();
-    this.djM = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(91206);
+    this.dva = new a();
+    this.dvb = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(155368);
+    AppMethodBeat.o(91206);
   }
   
   public static final class a
   {
-    public String djN;
+    public boolean dvc = false;
+    public int dvd = 0;
+    public String dve;
   }
   
   public static final class b
   {
-    public String userName;
+    public boolean dpX = false;
+    public String dvf;
+    public String dvg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.in
  * JD-Core Version:    0.7.0.1
  */

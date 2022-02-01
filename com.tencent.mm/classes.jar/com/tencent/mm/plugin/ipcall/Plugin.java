@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.ipcall;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
   implements d
 {
-  b tHq;
+  b uKd;
   
   public Plugin()
   {
     AppMethodBeat.i(25326);
-    this.tHq = new b();
+    this.uKd = new b();
     AppMethodBeat.o(25326);
   }
   
-  public m createApplication()
+  public n createApplication()
   {
-    return this.tHq;
+    return this.uKd;
   }
   
-  public aw createSubCore()
+  public ax createSubCore()
   {
     AppMethodBeat.i(25327);
-    i locali = i.cUt();
+    i locali = i.ddE();
     AppMethodBeat.o(25327);
     return locali;
   }

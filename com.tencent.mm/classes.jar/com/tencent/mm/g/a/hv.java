@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class hv
   extends b
 {
-  public a diT;
+  public a dur;
   
   public hv()
   {
@@ -16,27 +15,22 @@ public final class hv
   
   private hv(byte paramByte)
   {
-    AppMethodBeat.i(116030);
-    this.diT = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(140986);
+    this.dur = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116030);
+    AppMethodBeat.o(140986);
   }
   
   public static final class a
   {
-    public int actionCode;
-    public String appId;
-    public Context context;
-    public String extMsg;
-    public String messageAction;
-    public String messageExt;
-    public int scene;
+    public float dus = 0.0F;
+    public float dut = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.hv
  * JD-Core Version:    0.7.0.1
  */

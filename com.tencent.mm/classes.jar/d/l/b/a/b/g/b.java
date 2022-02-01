@@ -2,8 +2,8 @@ package d.l.b.a.b.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.g.b.f;
-import d.g.b.k;
+import d.g.b.i;
+import d.g.b.p;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
@@ -11,7 +11,7 @@ import java.util.Set;
 public final class b
   implements d.g.b.a.a, Collection<a>
 {
-  final Set<a> LzF;
+  final Set<a> NqC;
   
   public final boolean addAll(Collection<? extends a> paramCollection)
   {
@@ -38,8 +38,8 @@ public final class b
       return false;
     }
     paramObject = (a)paramObject;
-    k.h(paramObject, "element");
-    boolean bool = this.LzF.contains(paramObject);
+    p.h(paramObject, "element");
+    boolean bool = this.NqC.contains(paramObject);
     AppMethodBeat.o(59345);
     return bool;
   }
@@ -47,8 +47,8 @@ public final class b
   public final boolean containsAll(Collection<? extends Object> paramCollection)
   {
     AppMethodBeat.i(59346);
-    k.h(paramCollection, "elements");
-    boolean bool = this.LzF.containsAll(paramCollection);
+    p.h(paramCollection, "elements");
+    boolean bool = this.NqC.containsAll(paramCollection);
     AppMethodBeat.o(59346);
     return bool;
   }
@@ -66,7 +66,7 @@ public final class b
       AppMethodBeat.o(59342);
       return false;
     }
-    if ((k.g(this.LzF, ((b)paramObject).LzF) ^ true))
+    if ((p.i(this.NqC, ((b)paramObject).NqC) ^ true))
     {
       AppMethodBeat.o(59342);
       return false;
@@ -78,7 +78,7 @@ public final class b
   public final int hashCode()
   {
     AppMethodBeat.i(59343);
-    int i = this.LzF.hashCode();
+    int i = this.NqC.hashCode();
     AppMethodBeat.o(59343);
     return i;
   }
@@ -86,7 +86,7 @@ public final class b
   public final boolean isEmpty()
   {
     AppMethodBeat.i(59347);
-    boolean bool = this.LzF.isEmpty();
+    boolean bool = this.NqC.isEmpty();
     AppMethodBeat.o(59347);
     return bool;
   }
@@ -94,7 +94,7 @@ public final class b
   public final Iterator<a> iterator()
   {
     AppMethodBeat.i(59348);
-    Iterator localIterator = this.LzF.iterator();
+    Iterator localIterator = this.NqC.iterator();
     AppMethodBeat.o(59348);
     return localIterator;
   }
@@ -126,7 +126,7 @@ public final class b
   public final Object[] toArray()
   {
     AppMethodBeat.i(59355);
-    Object[] arrayOfObject = f.s(this);
+    Object[] arrayOfObject = i.t(this);
     AppMethodBeat.o(59355);
     return arrayOfObject;
   }
@@ -134,7 +134,7 @@ public final class b
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
     AppMethodBeat.i(59356);
-    paramArrayOfT = f.a(this, paramArrayOfT);
+    paramArrayOfT = i.a(this, paramArrayOfT);
     AppMethodBeat.o(59356);
     return paramArrayOfT;
   }
@@ -142,8 +142,8 @@ public final class b
   public final String toString()
   {
     AppMethodBeat.i(59341);
-    k.h(this, "$this$presentableDescription");
-    String str = j.a((Iterable)this.LzF, (CharSequence)"/", null, null, 0, null, null, 62);
+    p.h(this, "$this$presentableDescription");
+    String str = j.a((Iterable)this.NqC, (CharSequence)"/", null, null, 0, null, null, 62);
     AppMethodBeat.o(59341);
     return str;
   }

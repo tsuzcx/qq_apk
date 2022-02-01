@@ -59,7 +59,7 @@ public class TXLivePusher
   public int getMusicDuration(String paramString)
   {
     AppMethodBeat.i(13596);
-    int i = this.mTXTxLivePusherImpl.d(paramString);
+    int i = this.mTXTxLivePusherImpl.c(paramString);
     AppMethodBeat.o(13596);
     return i;
   }
@@ -75,7 +75,7 @@ public class TXLivePusher
   public void onLogRecord(String paramString)
   {
     AppMethodBeat.i(13617);
-    this.mTXTxLivePusherImpl.f(paramString);
+    this.mTXTxLivePusherImpl.e(paramString);
     AppMethodBeat.o(13617);
   }
   
@@ -97,7 +97,7 @@ public class TXLivePusher
   public boolean playBGM(String paramString)
   {
     AppMethodBeat.i(13592);
-    boolean bool = this.mTXTxLivePusherImpl.c(paramString);
+    boolean bool = this.mTXTxLivePusherImpl.b(paramString);
     AppMethodBeat.o(13592);
     return bool;
   }
@@ -163,14 +163,14 @@ public class TXLivePusher
     AppMethodBeat.o(13611);
   }
   
-  public void setAudioVolumeEvaluationListener(TXLivePusher.ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
+  public void setAudioVolumeEvaluationListener(ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
   {
     AppMethodBeat.i(182243);
     this.mTXTxLivePusherImpl.a(paramITXAudioVolumeEvaluationListener);
     AppMethodBeat.o(182243);
   }
   
-  public void setBGMNofify(TXLivePusher.OnBGMNotify paramOnBGMNotify)
+  public void setBGMNofify(OnBGMNotify paramOnBGMNotify)
   {
     AppMethodBeat.i(13591);
     this.mTXTxLivePusherImpl.a(paramOnBGMNotify);
@@ -180,7 +180,7 @@ public class TXLivePusher
   public void setBGMPitch(float paramFloat)
   {
     AppMethodBeat.i(13599);
-    this.mTXTxLivePusherImpl.e(paramFloat);
+    this.mTXTxLivePusherImpl.d(paramFloat);
     AppMethodBeat.o(13599);
   }
   
@@ -195,7 +195,7 @@ public class TXLivePusher
   public boolean setBGMVolume(float paramFloat)
   {
     AppMethodBeat.i(13597);
-    boolean bool = this.mTXTxLivePusherImpl.c(paramFloat);
+    boolean bool = this.mTXTxLivePusherImpl.b(paramFloat);
     AppMethodBeat.o(13597);
     return bool;
   }
@@ -262,10 +262,11 @@ public class TXLivePusher
     AppMethodBeat.o(13583);
   }
   
+  @Deprecated
   public void setFilter(Bitmap paramBitmap)
   {
     AppMethodBeat.i(13579);
-    this.mTXTxLivePusherImpl.a(paramBitmap);
+    getBeautyManager().setFilter(paramBitmap);
     AppMethodBeat.o(13579);
   }
   
@@ -276,19 +277,20 @@ public class TXLivePusher
     AppMethodBeat.o(13614);
   }
   
+  @Deprecated
   @TargetApi(18)
   public boolean setGreenScreenFile(String paramString)
   {
     AppMethodBeat.i(13587);
-    boolean bool = this.mTXTxLivePusherImpl.b(paramString);
+    getBeautyManager().setGreenScreenFile(paramString);
     AppMethodBeat.o(13587);
-    return bool;
+    return true;
   }
   
   public boolean setMicVolume(float paramFloat)
   {
     AppMethodBeat.i(13598);
-    boolean bool = this.mTXTxLivePusherImpl.d(paramFloat);
+    boolean bool = this.mTXTxLivePusherImpl.c(paramFloat);
     AppMethodBeat.o(13598);
     return bool;
   }
@@ -353,10 +355,11 @@ public class TXLivePusher
     AppMethodBeat.o(13600);
   }
   
+  @Deprecated
   public void setSpecialRatio(float paramFloat)
   {
     AppMethodBeat.i(13580);
-    this.mTXTxLivePusherImpl.b(paramFloat);
+    getBeautyManager().setFilterStrength(paramFloat);
     AppMethodBeat.o(13580);
   }
   
@@ -410,7 +413,7 @@ public class TXLivePusher
     return bool;
   }
   
-  public void snapshot(TXLivePusher.ITXSnapshotListener paramITXSnapshotListener)
+  public void snapshot(ITXSnapshotListener paramITXSnapshotListener)
   {
     AppMethodBeat.i(13606);
     this.mTXTxLivePusherImpl.a(paramITXSnapshotListener);
@@ -435,7 +438,7 @@ public class TXLivePusher
   public int startRecord(String paramString)
   {
     AppMethodBeat.i(13604);
-    int i = this.mTXTxLivePusherImpl.e(paramString);
+    int i = this.mTXTxLivePusherImpl.d(paramString);
     AppMethodBeat.o(13604);
     return i;
   }
@@ -503,6 +506,25 @@ public class TXLivePusher
     public abstract void onRecordPcmData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3);
     
     public abstract void onRecordRawPcmData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean);
+  }
+  
+  public static abstract interface ITXAudioVolumeEvaluationListener
+  {
+    public abstract void onAudioVolumeEvaluationNotify(int paramInt);
+  }
+  
+  public static abstract interface ITXSnapshotListener
+  {
+    public abstract void onSnapshot(Bitmap paramBitmap);
+  }
+  
+  public static abstract interface OnBGMNotify
+  {
+    public abstract void onBGMComplete(int paramInt);
+    
+    public abstract void onBGMProgress(long paramLong1, long paramLong2);
+    
+    public abstract void onBGMStart();
   }
   
   public static abstract interface VideoCustomProcessListener

@@ -15,13 +15,13 @@ import java.io.InputStream;
 public final class o
   implements k<InputStream, Bitmap>
 {
-  private final b aDH;
-  private final h aJd;
+  private final b aFy;
+  private final h aKU;
   
   public o(h paramh, b paramb)
   {
-    this.aJd = paramh;
-    this.aDH = paramb;
+    this.aKU = paramh;
+    this.aFy = paramb;
   }
   
   private u<Bitmap> a(InputStream paramInputStream, int paramInt1, int paramInt2, j paramj)
@@ -37,7 +37,7 @@ public final class o
       a locala = new a(paramInputStream, locald);
       try
       {
-        paramj = this.aJd.a(localg, paramInt1, paramInt2, paramj, locala);
+        paramj = this.aKU.a(localg, paramInt1, paramInt2, paramj, locala);
         return paramj;
       }
       finally
@@ -49,26 +49,26 @@ public final class o
         paramInputStream.release();
         AppMethodBeat.o(77432);
       }
-      paramInputStream = new m(paramInputStream, this.aDH);
+      paramInputStream = new m(paramInputStream, this.aFy);
     }
   }
   
   static final class a
     implements h.a
   {
-    private final m aDG;
-    private final d aJL;
+    private final m aFx;
+    private final d aLC;
     
     a(m paramm, d paramd)
     {
-      this.aDG = paramm;
-      this.aJL = paramd;
+      this.aFx = paramm;
+      this.aLC = paramd;
     }
     
     public final void a(e parame, Bitmap paramBitmap)
     {
       AppMethodBeat.i(77431);
-      IOException localIOException = this.aJL.aMh;
+      IOException localIOException = this.aLC.aNY;
       if (localIOException != null)
       {
         if (paramBitmap != null) {
@@ -80,10 +80,10 @@ public final class o
       AppMethodBeat.o(77431);
     }
     
-    public final void pg()
+    public final void py()
     {
       AppMethodBeat.i(77430);
-      this.aDG.pk();
+      this.aFx.pC();
       AppMethodBeat.o(77430);
     }
   }

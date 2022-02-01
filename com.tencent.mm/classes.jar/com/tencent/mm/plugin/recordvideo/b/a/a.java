@@ -2,59 +2,61 @@ package com.tencent.mm.plugin.recordvideo.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.recordvideo.b.h;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.i;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig$StoryBasicConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/IRecordBasicConfig;", "()V", "enableFavorite", "", "enableImage2Video", "enableLyrics", "enableMusic", "enableSnsNotify", "enableTips", "getDurationFromAlbum", "", "getElementName", "Lcom/tencent/mm/plugin/recordvideo/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "StoryBasicConfig", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig$StoryBasicConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/IRecordBasicConfig;", "()V", "enableFavorite", "", "enableImage2Video", "enableLyrics", "enableMusic", "enableSnsNotify", "enableTips", "getDurationFromAlbum", "", "getElementName", "Lcom/tencent/mm/plugin/recordvideo/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "StoryBasicConfig", "plugin-recordvideo_release"})
 public final class a
-  extends com.tencent.mm.plugin.recordvideo.b.h<a>
+  extends h<a>
 {
-  public static final a wpS;
+  public static final a xxI;
   
   static
   {
     AppMethodBeat.i(75393);
-    wpS = new a();
+    xxI = new a();
     AppMethodBeat.o(75393);
   }
   
-  public final void aqo()
+  public final void atd()
   {
     boolean bool2 = true;
     AppMethodBeat.i(75390);
-    a locala = (a)aqm();
-    if (U("StoryEditVideoBgmSwitch", 1) == 1)
+    a locala = (a)atb();
+    if (Y("StoryEditVideoBgmSwitch", 1) == 1)
     {
       bool1 = true;
-      locala.wqe = bool1;
-      int i = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 1);
-      ((a)aqm()).wqf = (i * 100);
-      ((a)aqm()).wqg = (i * 100);
-      if ((!com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) && (!com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_PURPLE) && (!com.tencent.mm.sdk.platformtools.h.DEBUG)) {
+      locala.xxU = bool1;
+      int i = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 1);
+      ((a)atb()).xxV = (i * 100);
+      ((a)atb()).xxW = (i * 100);
+      if ((!i.IS_FLAVOR_RED) && (!i.IS_FLAVOR_PURPLE) && (!i.DEBUG)) {
         break label294;
       }
-      ((a)aqm()).wpT = true;
-      ((a)aqm()).wpU = true;
-      ((a)aqm()).wpV = true;
-      ((a)aqm()).wpY = true;
-      ((a)aqm()).wpX = true;
-      locala = (a)aqm();
+      ((a)atb()).xxJ = true;
+      ((a)atb()).xxK = true;
+      ((a)atb()).xxL = true;
+      ((a)atb()).xxO = true;
+      ((a)atb()).xxN = true;
+      locala = (a)atb();
       bool1 = true;
       label155:
-      locala.wqa = bool1;
-      ((a)aqm()).wqb = U("StoryFeaturedExpiredTime", 15552000);
-      ((a)aqm()).wqc = ((b)g.ab(b.class)).a(b.a.pNb, 10);
-      locala = (a)aqm();
-      if (((b)g.ab(b.class)).a(b.a.pMX, 1) != 1) {
+      locala.xxQ = bool1;
+      ((a)atb()).xxR = Y("StoryFeaturedExpiredTime", 15552000);
+      ((a)atb()).xxS = ((b)g.ab(b.class)).a(b.a.qqY, 10);
+      locala = (a)atb();
+      if (((b)g.ab(b.class)).a(b.a.qqU, 1) != 1) {
         break label549;
       }
       bool1 = true;
       label239:
-      locala.wpW = bool1;
-      locala = (a)aqm();
-      if (((b)g.ab(b.class)).a(b.a.pNe, 1) != 1) {
+      locala.xxM = bool1;
+      locala = (a)atb();
+      if (((b)g.ab(b.class)).a(b.a.qrb, 1) != 1) {
         break label554;
       }
     }
@@ -62,47 +64,47 @@ public final class a
     label554:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      locala.wpZ = bool1;
+      locala.xxP = bool1;
       AppMethodBeat.o(75390);
       return;
       bool1 = false;
       break;
-      locala = (a)aqm();
-      if (((b)g.ab(b.class)).a(b.a.pMU, 0) == 1)
+      locala = (a)atb();
+      if (((b)g.ab(b.class)).a(b.a.qqR, 0) == 1)
       {
         bool1 = true;
         label326:
-        locala.wpT = bool1;
-        locala = (a)aqm();
-        if (((b)g.ab(b.class)).a(b.a.pMV, 0) != 1) {
+        locala.xxJ = bool1;
+        locala = (a)atb();
+        if (((b)g.ab(b.class)).a(b.a.qqS, 0) != 1) {
           break label524;
         }
         bool1 = true;
         label364:
-        locala.wpU = bool1;
-        locala = (a)aqm();
-        if (((b)g.ab(b.class)).a(b.a.pMW, 0) != 1) {
+        locala.xxK = bool1;
+        locala = (a)atb();
+        if (((b)g.ab(b.class)).a(b.a.qqT, 0) != 1) {
           break label529;
         }
         bool1 = true;
-        locala.wpV = bool1;
-        locala = (a)aqm();
-        if (((b)g.ab(b.class)).a(b.a.pMZ, 1) != 1) {
+        locala.xxL = bool1;
+        locala = (a)atb();
+        if (((b)g.ab(b.class)).a(b.a.qqW, 1) != 1) {
           break label534;
         }
         bool1 = true;
         label440:
-        locala.wpY = bool1;
-        locala = (a)aqm();
-        if (((b)g.ab(b.class)).a(b.a.pMY, 1) != 1) {
+        locala.xxO = bool1;
+        locala = (a)atb();
+        if (((b)g.ab(b.class)).a(b.a.qqV, 1) != 1) {
           break label539;
         }
       }
       for (bool1 = true;; bool1 = false)
       {
-        locala.wpX = bool1;
-        locala = (a)aqm();
-        if (((b)g.ab(b.class)).a(b.a.pNd, 0) != 1) {
+        locala.xxN = bool1;
+        locala = (a)atb();
+        if (((b)g.ab(b.class)).a(b.a.qra, 0) != 1) {
           break label544;
         }
         bool1 = true;
@@ -123,39 +125,39 @@ public final class a
     }
   }
   
-  public final boolean dve()
+  public final boolean dFA()
+  {
+    AppMethodBeat.i(200291);
+    boolean bool = ((a)ate()).xxP;
+    AppMethodBeat.o(200291);
+    return bool;
+  }
+  
+  public final boolean dFz()
   {
     AppMethodBeat.i(75391);
-    boolean bool = ((a)aqp()).wpU;
+    boolean bool = ((a)ate()).xxK;
     AppMethodBeat.o(75391);
     return bool;
   }
   
-  public final boolean dvf()
-  {
-    AppMethodBeat.i(75392);
-    boolean bool = ((a)aqp()).wpW;
-    AppMethodBeat.o(75392);
-    return bool;
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig$StoryBasicConfig;", "", "repeatMD5", "", "showMusicIcon", "", "albumThumbHeight", "albumThumbWidth", "(IZII)V", "getAlbumThumbHeight", "()I", "setAlbumThumbHeight", "(I)V", "getAlbumThumbWidth", "setAlbumThumbWidth", "durationFromAlbum", "getDurationFromAlbum", "setDurationFromAlbum", "enableBlurMouth", "getEnableBlurMouth", "()Z", "setEnableBlurMouth", "(Z)V", "enableFavorite", "getEnableFavorite", "setEnableFavorite", "enableImage2Video", "getEnableImage2Video", "setEnableImage2Video", "enableLyrics", "getEnableLyrics", "setEnableLyrics", "enableMusic", "getEnableMusic", "setEnableMusic", "enableReply", "getEnableReply", "setEnableReply", "enableSnsNotify", "getEnableSnsNotify", "setEnableSnsNotify", "enableTips", "getEnableTips", "setEnableTips", "favExpiredTime", "getFavExpiredTime", "setFavExpiredTime", "getRepeatMD5", "setRepeatMD5", "getShowMusicIcon", "setShowMusicIcon", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig$StoryBasicConfig;", "", "repeatMD5", "", "showMusicIcon", "", "albumThumbHeight", "albumThumbWidth", "(IZII)V", "getAlbumThumbHeight", "()I", "setAlbumThumbHeight", "(I)V", "getAlbumThumbWidth", "setAlbumThumbWidth", "durationFromAlbum", "getDurationFromAlbum", "setDurationFromAlbum", "enableBlurMouth", "getEnableBlurMouth", "()Z", "setEnableBlurMouth", "(Z)V", "enableFavorite", "getEnableFavorite", "setEnableFavorite", "enableImage2Video", "getEnableImage2Video", "setEnableImage2Video", "enableLyrics", "getEnableLyrics", "setEnableLyrics", "enableMusic", "getEnableMusic", "setEnableMusic", "enableReply", "getEnableReply", "setEnableReply", "enableSnsNotify", "getEnableSnsNotify", "setEnableSnsNotify", "enableTips", "getEnableTips", "setEnableTips", "favExpiredTime", "getFavExpiredTime", "setFavExpiredTime", "getRepeatMD5", "setRepeatMD5", "getShowMusicIcon", "setShowMusicIcon", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-recordvideo_release"})
   public static final class a
   {
-    boolean wpT;
-    boolean wpU;
-    boolean wpV;
-    boolean wpW;
-    boolean wpX;
-    public boolean wpY;
-    public boolean wpZ = true;
-    boolean wqa;
-    int wqb = 15552000;
-    public int wqc = 10;
-    private int wqd = 2;
-    boolean wqe = true;
-    int wqf = 0;
-    int wqg = 0;
+    boolean xxJ;
+    boolean xxK;
+    boolean xxL;
+    public boolean xxM;
+    boolean xxN;
+    public boolean xxO;
+    boolean xxP = true;
+    boolean xxQ;
+    int xxR = 15552000;
+    public int xxS = 10;
+    private int xxT = 2;
+    boolean xxU = true;
+    int xxV = 0;
+    int xxW = 0;
     
     public final boolean equals(Object paramObject)
     {
@@ -164,7 +166,7 @@ public final class a
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.wqd != paramObject.wqd) || (this.wqe != paramObject.wqe) || (this.wqf != paramObject.wqf) || (this.wqg != paramObject.wqg)) {}
+          if ((this.xxT != paramObject.xxT) || (this.xxU != paramObject.xxU) || (this.xxV != paramObject.xxV) || (this.xxW != paramObject.xxW)) {}
         }
       }
       else {
@@ -181,7 +183,7 @@ public final class a
     public final String toString()
     {
       AppMethodBeat.i(75388);
-      String str = "StoryBasicConfig(repeatMD5=" + this.wqd + ", showMusicIcon=" + this.wqe + ", albumThumbHeight=" + this.wqf + ", albumThumbWidth=" + this.wqg + ")";
+      String str = "StoryBasicConfig(repeatMD5=" + this.xxT + ", showMusicIcon=" + this.xxU + ", albumThumbHeight=" + this.xxV + ", albumThumbWidth=" + this.xxW + ")";
       AppMethodBeat.o(75388);
       return str;
     }

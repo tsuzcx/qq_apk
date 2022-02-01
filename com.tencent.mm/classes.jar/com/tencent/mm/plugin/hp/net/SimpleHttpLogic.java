@@ -13,9 +13,9 @@ public class SimpleHttpLogic
   
   public static boolean packRequest(byte[] paramArrayOfByte, PByteArray paramPByteArray)
   {
-    AppMethodBeat.i(189695);
+    AppMethodBeat.i(218908);
     boolean bool = pack(paramArrayOfByte, paramPByteArray, new byte[10], 0, new byte[10], "defaultid", 0, 3777, 1234567, new byte[10], new byte[10], 0, 6, 0);
-    AppMethodBeat.o(189695);
+    AppMethodBeat.o(218908);
     return bool;
   }
   
@@ -25,11 +25,11 @@ public class SimpleHttpLogic
   
   public static boolean unpackResponse(byte[] paramArrayOfByte, PByteArray paramPByteArray)
   {
-    AppMethodBeat.i(189696);
+    AppMethodBeat.i(218909);
     PInt localPInt = new PInt(-100);
     boolean bool = unpack(paramPByteArray, paramArrayOfByte, new byte[10], new PByteArray(), localPInt, new PInt(0), new PInt(0), new PInt(255));
     b.i("simple", "unpack ret is " + localPInt.value + " unpack result " + bool, new Object[0]);
-    AppMethodBeat.o(189696);
+    AppMethodBeat.o(218909);
     return bool;
   }
   
@@ -49,7 +49,7 @@ public class SimpleHttpLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.net.SimpleHttpLogic
  * JD-Core Version:    0.7.0.1
  */

@@ -16,10 +16,10 @@ import com.tencent.mm.model.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.e;
-import com.tencent.mm.plugin.wallet_core.model.s;
+import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.utils.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b
 {
@@ -32,18 +32,18 @@ public final class b
     {
       localView = View.inflate(paramContext, paramInt, null);
       paramView = new a();
-      paramView.Bfh = ((ImageView)localView.findViewById(2131297121));
-      paramView.Bfd = ((TextView)localView.findViewById(2131297130));
-      paramView.Bfe = ((TextView)localView.findViewById(2131297177));
-      paramView.Bfc = ((TextView)localView.findViewById(2131297159));
-      paramView.Bfi = ((TextView)localView.findViewById(2131297158));
-      paramView.Bff = ((ViewGroup)localView.findViewById(2131306688));
-      paramView.Bfg = ((ImageView)localView.findViewById(2131297168));
-      paramView.Bfj = ((TextView)localView.findViewById(2131297153));
-      paramView.BLF = ((ViewGroup)localView.findViewById(2131297155));
-      paramView.BLG = ((TextView)localView.findViewById(2131297140));
-      paramView.BLH = ((ImageView)localView.findViewById(2131297169));
-      paramView.BLI = ((TextView)localView.findViewById(2131297173));
+      paramView.CFw = ((ImageView)localView.findViewById(2131297121));
+      paramView.CFs = ((TextView)localView.findViewById(2131297130));
+      paramView.CFt = ((TextView)localView.findViewById(2131297177));
+      paramView.CFr = ((TextView)localView.findViewById(2131297159));
+      paramView.CFx = ((TextView)localView.findViewById(2131297158));
+      paramView.CFu = ((ViewGroup)localView.findViewById(2131306688));
+      paramView.CFv = ((ImageView)localView.findViewById(2131297168));
+      paramView.CFy = ((TextView)localView.findViewById(2131297153));
+      paramView.DlX = ((ViewGroup)localView.findViewById(2131297155));
+      paramView.DlY = ((TextView)localView.findViewById(2131297140));
+      paramView.DlZ = ((ImageView)localView.findViewById(2131297169));
+      paramView.Dma = ((TextView)localView.findViewById(2131297173));
       localView.setTag(paramView);
       localObject = paramView;
     }
@@ -62,70 +62,70 @@ public final class b
     AppMethodBeat.i(71479);
     if (paramBankcard.field_bankcardState == 1)
     {
-      parama.Bfi.setVisibility(0);
+      parama.CFx.setVisibility(0);
       if (!paramBoolean) {
         break label195;
       }
-      parama.BLI.setText(paramContext.getString(2131765063));
-      parama.BLI.setVisibility(0);
+      parama.Dma.setText(paramContext.getString(2131765063));
+      parama.Dma.setVisibility(0);
       label47:
-      parama.Bfd.setVisibility(0);
-      parama.Bfd.setText(paramBankcard.field_bankName);
-      if (!u.axL()) {
+      parama.CFs.setVisibility(0);
+      parama.CFs.setText(paramBankcard.field_bankName);
+      if (!u.aAB()) {
         break label239;
       }
-      parama.Bfe.setVisibility(8);
+      parama.CFt.setVisibility(8);
       label81:
-      if (parama.Bfc != null) {
-        parama.Bfc.setText(paramBankcard.field_bankcardTail);
+      if (parama.CFr != null) {
+        parama.CFr.setText(paramBankcard.field_bankcardTail);
       }
-      if ((bs.isNullOrNil(paramBankcard.field_card_bottom_wording)) || (parama.BLG == null)) {
+      if ((bt.isNullOrNil(paramBankcard.field_card_bottom_wording)) || (parama.DlY == null)) {
         break label313;
       }
-      parama.BLG.setText(paramBankcard.field_card_bottom_wording);
-      parama.BLF.setVisibility(0);
+      parama.DlY.setText(paramBankcard.field_card_bottom_wording);
+      parama.DlX.setVisibility(0);
     }
     for (;;)
     {
-      parama1.a(paramContext, paramBankcard, parama.Bfh, parama.Bff, parama.Bfg, parama.BLI);
-      if (parama.Bfj != null)
+      parama1.a(paramContext, paramBankcard, parama.CFw, parama.CFu, parama.CFv, parama.Dma);
+      if (parama.CFy != null)
       {
-        s.ery();
-        parama.Bfj.setVisibility(8);
+        t.eFy();
+        parama.CFy.setVisibility(8);
       }
       AppMethodBeat.o(71479);
       return;
-      parama.Bfi.setVisibility(8);
+      parama.CFx.setVisibility(8);
       break;
       label195:
-      if (!bs.isNullOrNil(paramBankcard.field_card_state_name))
+      if (!bt.isNullOrNil(paramBankcard.field_card_state_name))
       {
-        parama.BLI.setText(paramBankcard.field_card_state_name);
-        parama.BLI.setVisibility(0);
+        parama.Dma.setText(paramBankcard.field_card_state_name);
+        parama.Dma.setVisibility(0);
         break label47;
       }
-      parama.BLI.setVisibility(8);
+      parama.Dma.setVisibility(8);
       break label47;
       label239:
-      if (!bs.isNullOrNil(paramBankcard.field_bankcardTypeName))
+      if (!bt.isNullOrNil(paramBankcard.field_bankcardTypeName))
       {
-        parama.Bfe.setText(paramBankcard.field_bankcardTypeName);
+        parama.CFt.setText(paramBankcard.field_bankcardTypeName);
         break label81;
       }
-      if (paramBankcard.eqQ())
+      if (paramBankcard.eEQ())
       {
-        parama.Bfe.setText(2131765997);
+        parama.CFt.setText(2131765997);
         break label81;
       }
-      if (paramBankcard.eqT())
+      if (paramBankcard.eET())
       {
-        parama.Bfe.setText(2131765221);
+        parama.CFt.setText(2131765221);
         break label81;
       }
-      parama.Bfe.setText(2131765241);
+      parama.CFt.setText(2131765241);
       break label81;
       label313:
-      parama.BLF.setVisibility(8);
+      parama.DlX.setVisibility(8);
     }
   }
   
@@ -153,8 +153,8 @@ public final class b
     }
     catch (Exception paramContext)
     {
-      ac.f("MicroMsg.BankcardListAdapter", paramContext.getMessage());
-      ac.printErrStackTrace("MicroMsg.BankcardListAdapter", paramContext, "", new Object[0]);
+      ad.f("MicroMsg.BankcardListAdapter", paramContext.getMessage());
+      ad.printErrStackTrace("MicroMsg.BankcardListAdapter", paramContext, "", new Object[0]);
       AppMethodBeat.o(71480);
     }
     return null;
@@ -163,20 +163,20 @@ public final class b
   static final class a
     implements u.a
   {
-    public e BLE;
-    public ViewGroup BLF = null;
-    public TextView BLG = null;
-    public ImageView BLH = null;
-    public TextView BLI = null;
-    public TextView Bfc = null;
-    public TextView Bfd = null;
-    public TextView Bfe = null;
-    public ViewGroup Bff = null;
-    public ImageView Bfg = null;
-    public ImageView Bfh = null;
-    public TextView Bfi = null;
-    public TextView Bfj = null;
-    public TextView Bfk = null;
+    public TextView CFr = null;
+    public TextView CFs = null;
+    public TextView CFt = null;
+    public ViewGroup CFu = null;
+    public ImageView CFv = null;
+    public ImageView CFw = null;
+    public TextView CFx = null;
+    public TextView CFy = null;
+    public TextView CFz = null;
+    public e DlW;
+    public ViewGroup DlX = null;
+    public TextView DlY = null;
+    public ImageView DlZ = null;
+    public TextView Dma = null;
     
     public final void k(String paramString, final Bitmap paramBitmap)
     {
@@ -185,32 +185,32 @@ public final class b
       if (paramBitmap == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ac.d("MicroMsg.BankcardListAdapter", bool);
-        if (this.BLE != null) {
+        ad.d("MicroMsg.BankcardListAdapter", bool);
+        if (this.DlW != null) {
           break;
         }
         AppMethodBeat.o(71477);
         return;
       }
-      if (paramString.equals(this.BLE.vkI)) {
-        this.Bfh.post(new Runnable()
+      if (paramString.equals(this.DlW.wqa)) {
+        this.CFw.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(71475);
-            b.a.this.Bfh.setImageBitmap(paramBitmap);
-            b.a.this.Bff.invalidate();
+            b.a.this.CFw.setImageBitmap(paramBitmap);
+            b.a.this.CFu.invalidate();
             AppMethodBeat.o(71475);
           }
         });
       }
-      if ((paramString.equals(this.BLE.BuQ)) && (this.Bfg != null)) {
-        this.Bfg.post(new Runnable()
+      if ((paramString.equals(this.DlW.CVf)) && (this.CFv != null)) {
+        this.CFv.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(71476);
-            b.a.this.Bfg.setImageBitmap(paramBitmap);
+            b.a.this.CFv.setImageBitmap(paramBitmap);
             AppMethodBeat.o(71476);
           }
         });

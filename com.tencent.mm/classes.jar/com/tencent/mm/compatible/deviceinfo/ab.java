@@ -4,16 +4,16 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class ab
 {
-  private static ab fIZ = null;
+  private static ab gcA = null;
   
-  public static int Yu()
+  public static int aaW()
   {
     AppMethodBeat.i(155821);
-    NetworkInfo localNetworkInfo = ((ConnectivityManager)ai.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
+    NetworkInfo localNetworkInfo = ((ConnectivityManager)aj.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
     if (localNetworkInfo == null)
     {
       AppMethodBeat.o(155821);
@@ -54,7 +54,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.ab
  * JD-Core Version:    0.7.0.1
  */

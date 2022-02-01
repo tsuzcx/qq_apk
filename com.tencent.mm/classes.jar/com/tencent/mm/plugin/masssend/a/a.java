@@ -5,84 +5,84 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public int cGX;
+  public int cSb;
   public long createTime;
-  int drx;
+  int dDp;
   public String filename;
-  String hTZ;
-  String hpv;
-  String hpw;
-  int iaF;
-  long iaH;
+  String hHN;
+  String hHO;
+  String inu;
+  int iub;
+  long iud;
   public int msgType;
   int status;
-  String uEb;
-  public String uEc;
-  public int uEd;
-  public int uEe;
-  int uEf;
-  int uEg;
-  public int uEh;
+  String vHb;
+  public String vHc;
+  public int vHd;
+  public int vHe;
+  int vHf;
+  int vHg;
+  public int vHh;
   public int videoSource;
   
   public a()
   {
     AppMethodBeat.i(26343);
-    this.drx = -1;
-    this.hTZ = "";
+    this.dDp = -1;
+    this.inu = "";
     this.status = 0;
     this.createTime = 0L;
-    this.iaH = 0L;
+    this.iud = 0L;
     this.filename = "";
-    this.uEb = "";
-    this.uEc = "";
-    this.uEd = 0;
+    this.vHb = "";
+    this.vHc = "";
+    this.vHd = 0;
     this.msgType = 0;
-    this.uEe = 0;
-    this.uEf = 0;
-    this.cGX = 0;
-    this.iaF = 0;
-    this.uEg = 0;
+    this.vHe = 0;
+    this.vHf = 0;
+    this.cSb = 0;
+    this.iub = 0;
+    this.vHg = 0;
     this.videoSource = 0;
-    this.uEh = 0;
-    this.hpv = "";
-    this.hpw = "";
+    this.vHh = 0;
+    this.hHN = "";
+    this.hHO = "";
     AppMethodBeat.o(26343);
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(26344);
-    this.hTZ = paramCursor.getString(0);
+    this.inu = paramCursor.getString(0);
     this.status = paramCursor.getInt(1);
     this.createTime = paramCursor.getLong(2);
-    this.iaH = paramCursor.getLong(3);
+    this.iud = paramCursor.getLong(3);
     this.filename = paramCursor.getString(4);
-    this.uEb = paramCursor.getString(5);
-    this.uEc = paramCursor.getString(6);
-    this.uEd = paramCursor.getInt(7);
+    this.vHb = paramCursor.getString(5);
+    this.vHc = paramCursor.getString(6);
+    this.vHd = paramCursor.getInt(7);
     this.msgType = paramCursor.getInt(8);
-    this.uEe = paramCursor.getInt(9);
-    this.uEf = paramCursor.getInt(10);
-    this.cGX = paramCursor.getInt(11);
-    this.iaF = paramCursor.getInt(12);
-    this.uEg = paramCursor.getInt(13);
+    this.vHe = paramCursor.getInt(9);
+    this.vHf = paramCursor.getInt(10);
+    this.cSb = paramCursor.getInt(11);
+    this.iub = paramCursor.getInt(12);
+    this.vHg = paramCursor.getInt(13);
     this.videoSource = paramCursor.getInt(14);
-    this.uEh = paramCursor.getInt(15);
-    this.hpv = paramCursor.getString(16);
-    this.hpw = paramCursor.getString(17);
+    this.vHh = paramCursor.getInt(15);
+    this.hHN = paramCursor.getString(16);
+    this.hHO = paramCursor.getString(17);
     AppMethodBeat.o(26344);
   }
   
-  public final String dbq()
+  public final String dkK()
   {
-    if (this.hTZ == null) {
+    if (this.inu == null) {
       return "";
     }
-    return this.hTZ;
+    return this.inu;
   }
   
-  public final String dbr()
+  public final String dkL()
   {
     if (this.filename == null) {
       return "";
@@ -90,20 +90,20 @@ public final class a
     return this.filename;
   }
   
-  public final String dbs()
+  public final String dkM()
   {
-    if (this.uEb == null) {
+    if (this.vHb == null) {
       return "";
     }
-    return this.uEb;
+    return this.vHb;
   }
   
-  public final String dbt()
+  public final String dkN()
   {
-    if (this.uEc == null) {
+    if (this.vHc == null) {
       return "";
     }
-    return this.uEc;
+    return this.vHc;
   }
 }
 

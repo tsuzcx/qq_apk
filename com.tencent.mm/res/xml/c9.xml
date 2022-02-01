@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceTitleCategory android:title="@string/f50" />
+    <PreferenceTitleCategory android:key="settings_auto_mul_terminal_sync_tip" android:title="@string/f50" />
     <CheckBoxPreference android:defaultValue="false" android:key="settings_auto_mul_terminal_sync" android:title="@string/f4z" />
-    <PreferenceTitleCategory android:title="@string/fb_" />
+    <PreferenceTitleCategory android:key="settings_take_photo_auto_save_tip" android:title="@string/fb_" />
     <CheckBoxPreference android:defaultValue="false" android:key="settings_take_photo_auto_save_photo" android:title="@string/fb9" />
     <CheckBoxPreference android:defaultValue="false" android:key="settings_take_photo_auto_save_video" android:title="@string/fba" />
     <PreferenceTitleCategory android:key="settings_sns_auto_play_tip" android:title="@string/fa9" />

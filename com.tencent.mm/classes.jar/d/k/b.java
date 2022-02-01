@@ -5,19 +5,19 @@ import d.e.c;
 import d.g.b.a.a;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/ranges/IntProgression;", "", "", "start", "endInclusive", "step", "(III)V", "first", "getFirst", "()I", "last", "getLast", "getStep", "equals", "", "other", "", "hashCode", "isEmpty", "iterator", "Lkotlin/collections/IntIterator;", "toString", "", "Companion", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/IntProgression;", "", "", "start", "endInclusive", "step", "(III)V", "first", "getFirst", "()I", "last", "getLast", "getStep", "equals", "", "other", "", "hashCode", "isEmpty", "iterator", "Lkotlin/collections/IntIterator;", "toString", "", "Companion", "kotlin-stdlib"})
 public class b
   implements a, Iterable<Integer>
 {
-  public static final a KVd;
-  public final int KVb;
-  public final int KVc;
-  public final int kar;
+  public static final a MMj;
+  public final int MMh;
+  public final int MMi;
+  public final int kuN;
   
   static
   {
     AppMethodBeat.i(129297);
-    KVd = new a((byte)0);
+    MMj = new a((byte)0);
     AppMethodBeat.o(129297);
   }
   
@@ -36,7 +36,7 @@ public class b
       AppMethodBeat.o(129296);
       throw localThrowable;
     }
-    this.KVb = paramInt1;
+    this.MMh = paramInt1;
     int i;
     if (paramInt3 > 0) {
       if (paramInt1 >= paramInt2) {
@@ -45,18 +45,18 @@ public class b
     }
     for (;;)
     {
-      this.KVc = i;
-      this.kar = paramInt3;
+      this.MMi = i;
+      this.kuN = paramInt3;
       AppMethodBeat.o(129296);
       return;
-      i = paramInt2 - c.aX(paramInt2, paramInt1, paramInt3);
+      i = paramInt2 - c.aY(paramInt2, paramInt1, paramInt3);
       continue;
       if (paramInt3 >= 0) {
         break;
       }
       i = paramInt2;
       if (paramInt1 > paramInt2) {
-        i = paramInt2 + c.aX(paramInt1, paramInt2, -paramInt3);
+        i = paramInt2 + c.aY(paramInt1, paramInt2, -paramInt3);
       }
     }
     Throwable localThrowable = (Throwable)new IllegalArgumentException("Step is zero.");
@@ -67,7 +67,7 @@ public class b
   public boolean equals(Object paramObject)
   {
     AppMethodBeat.i(129293);
-    if (((paramObject instanceof b)) && (((isEmpty()) && (((b)paramObject).isEmpty())) || ((this.KVb == ((b)paramObject).KVb) && (this.KVc == ((b)paramObject).KVc) && (this.kar == ((b)paramObject).kar))))
+    if (((paramObject instanceof b)) && (((isEmpty()) && (((b)paramObject).isEmpty())) || ((this.MMh == ((b)paramObject).MMh) && (this.MMi == ((b)paramObject).MMi) && (this.kuN == ((b)paramObject).kuN))))
     {
       AppMethodBeat.o(129293);
       return true;
@@ -84,19 +84,19 @@ public class b
       AppMethodBeat.o(129294);
       return -1;
     }
-    int i = this.KVb;
-    int j = this.KVc;
-    int k = this.kar;
+    int i = this.MMh;
+    int j = this.MMi;
+    int k = this.kuN;
     AppMethodBeat.o(129294);
     return (i * 31 + j) * 31 + k;
   }
   
   public boolean isEmpty()
   {
-    if (this.kar > 0) {
-      if (this.KVb <= this.KVc) {}
+    if (this.kuN > 0) {
+      if (this.MMh <= this.MMi) {}
     }
-    while (this.KVb < this.KVc)
+    while (this.MMh < this.MMi)
     {
       return true;
       return false;
@@ -107,21 +107,21 @@ public class b
   public String toString()
   {
     AppMethodBeat.i(129295);
-    if (this.kar > 0)
+    if (this.kuN > 0)
     {
-      str = this.KVb + ".." + this.KVc + " step " + this.kar;
+      str = this.MMh + ".." + this.MMi + " step " + this.kuN;
       AppMethodBeat.o(129295);
       return str;
     }
-    String str = this.KVb + " downTo " + this.KVc + " step " + -this.kar;
+    String str = this.MMh + " downTo " + this.MMi + " step " + -this.kuN;
     AppMethodBeat.o(129295);
     return str;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/ranges/IntProgression$Companion;", "", "()V", "fromClosedRange", "Lkotlin/ranges/IntProgression;", "rangeStart", "", "rangeEnd", "step", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/IntProgression$Companion;", "", "()V", "fromClosedRange", "Lkotlin/ranges/IntProgression;", "rangeStart", "", "rangeEnd", "step", "kotlin-stdlib"})
   public static final class a
   {
-    public static b aY(int paramInt1, int paramInt2, int paramInt3)
+    public static b aZ(int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(129305);
       b localb = new b(paramInt1, paramInt2, paramInt3);

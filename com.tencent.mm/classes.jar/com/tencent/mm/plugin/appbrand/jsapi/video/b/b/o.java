@@ -16,14 +16,14 @@ import java.net.URLConnection;
 public final class o
   implements t
 {
-  private final Resources aIP;
-  private long bus;
-  private AssetFileDescriptor buu;
+  private final Resources aKG;
+  private long bEH;
+  private AssetFileDescriptor bEJ;
   private InputStream inputStream;
-  private String kPQ;
-  private final s kQh;
-  private long kQi;
-  private long kQj;
+  private final s lmH;
+  private long lmI;
+  private long lmJ;
+  private String lmq;
   private String mimeType;
   private boolean opened;
   private Uri uri;
@@ -35,114 +35,114 @@ public final class o
   
   private o(Context paramContext, byte paramByte)
   {
-    AppMethodBeat.i(194256);
+    AppMethodBeat.i(206068);
     this.mimeType = null;
-    this.kQi = -1L;
-    this.kQj = -1L;
-    this.kPQ = "";
-    this.aIP = paramContext.getResources();
-    this.kQh = null;
-    AppMethodBeat.o(194256);
+    this.lmI = -1L;
+    this.lmJ = -1L;
+    this.lmq = "";
+    this.aKG = paramContext.getResources();
+    this.lmH = null;
+    AppMethodBeat.o(206068);
   }
   
-  public final void No(String paramString)
+  public final void QL(String paramString)
   {
-    this.kPQ = paramString;
+    this.lmq = paramString;
   }
   
   public final long a(g paramg)
   {
     long l1 = -1L;
-    AppMethodBeat.i(194257);
+    AppMethodBeat.i(206069);
     try
     {
       this.uri = paramg.uri;
       if (!TextUtils.equals("android.resource", this.uri.getScheme()))
       {
         paramg = new a("URI must use scheme android.resource");
-        AppMethodBeat.o(194257);
+        AppMethodBeat.o(206069);
         throw paramg;
       }
     }
     catch (IOException paramg)
     {
       paramg = new a(paramg);
-      AppMethodBeat.o(194257);
+      AppMethodBeat.o(206069);
       throw paramg;
     }
     try
     {
       int i = Integer.parseInt(this.uri.getLastPathSegment());
-      this.buu = this.aIP.openRawResourceFd(i);
-      this.kQi = this.buu.getLength();
-      this.kQj = (this.kQi - paramg.position);
-      this.inputStream = new FileInputStream(this.buu.getFileDescriptor());
+      this.bEJ = this.aKG.openRawResourceFd(i);
+      this.lmI = this.bEJ.getLength();
+      this.lmJ = (this.lmI - paramg.position);
+      this.inputStream = new FileInputStream(this.bEJ.getFileDescriptor());
       if (this.inputStream.markSupported()) {
         this.mimeType = URLConnection.guessContentTypeFromStream(this.inputStream);
       }
-      this.inputStream.skip(this.buu.getStartOffset());
+      this.inputStream.skip(this.bEJ.getStartOffset());
       if (this.inputStream.skip(paramg.position) < paramg.position)
       {
         paramg = new EOFException();
-        AppMethodBeat.o(194257);
+        AppMethodBeat.o(206069);
         throw paramg;
       }
     }
     catch (NumberFormatException paramg)
     {
       paramg = new a("Resource identifier must be an integer.");
-      AppMethodBeat.o(194257);
+      AppMethodBeat.o(206069);
       throw paramg;
     }
     if (paramg.length != -1L)
     {
-      this.bus = paramg.length;
+      this.bEH = paramg.length;
       this.opened = true;
-      if (this.kQh != null) {
-        this.kQh.onTransferStart();
+      if (this.lmH != null) {
+        this.lmH.onTransferStart();
       }
-      l1 = this.bus;
-      AppMethodBeat.o(194257);
+      l1 = this.bEH;
+      AppMethodBeat.o(206069);
       return l1;
     }
-    long l2 = this.buu.getLength();
+    long l2 = this.bEJ.getLength();
     if (l2 == -1L) {}
     for (;;)
     {
-      this.bus = l1;
+      this.bEH = l1;
       break;
       l1 = paramg.position;
       l1 = l2 - l1;
     }
   }
   
-  public final long aXm()
-  {
-    return this.kQi;
-  }
-  
   public final long available()
   {
-    return this.kQj;
+    return this.lmJ;
   }
   
-  public final c bjR()
+  public final long baK()
   {
-    AppMethodBeat.i(194261);
+    return this.lmI;
+  }
+  
+  public final c bnC()
+  {
+    AppMethodBeat.i(206073);
     if (TextUtils.isEmpty(this.mimeType))
     {
-      localc = c.kQP;
-      AppMethodBeat.o(194261);
+      localc = c.lnq;
+      AppMethodBeat.o(206073);
       return localc;
     }
-    c localc = c.Nr(this.mimeType);
-    AppMethodBeat.o(194261);
+    c localc = c.QO(this.mimeType);
+    AppMethodBeat.o(206073);
     return localc;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(194258);
+    AppMethodBeat.i(206070);
     this.uri = null;
     try
     {
@@ -152,36 +152,36 @@ public final class o
       this.inputStream = null;
       try
       {
-        if (this.buu != null) {
-          this.buu.close();
+        if (this.bEJ != null) {
+          this.bEJ.close();
         }
         return;
       }
       catch (IOException localIOException1)
       {
         a locala1 = new a(localIOException1);
-        AppMethodBeat.o(194258);
+        AppMethodBeat.o(206070);
         throw locala1;
       }
       finally
       {
-        this.buu = null;
+        this.bEJ = null;
         if (this.opened)
         {
           this.opened = false;
-          if (this.kQh != null) {
-            this.kQh.onTransferEnd();
+          if (this.lmH != null) {
+            this.lmH.onTransferEnd();
           }
         }
-        AppMethodBeat.o(194258);
+        AppMethodBeat.o(206070);
       }
-      AppMethodBeat.o(194258);
+      AppMethodBeat.o(206070);
       return;
     }
     catch (IOException localIOException2)
     {
       a locala2 = new a(localIOException2);
-      AppMethodBeat.o(194258);
+      AppMethodBeat.o(206070);
       throw locala2;
     }
     finally
@@ -189,93 +189,93 @@ public final class o
       this.inputStream = null;
       try
       {
-        if (this.buu != null) {
-          this.buu.close();
+        if (this.bEJ != null) {
+          this.bEJ.close();
         }
         throw localObject2;
       }
       catch (IOException localIOException3)
       {
         a locala3 = new a(localIOException3);
-        AppMethodBeat.o(194258);
+        AppMethodBeat.o(206070);
         throw locala3;
       }
       finally
       {
-        this.buu = null;
+        this.bEJ = null;
         if (this.opened)
         {
           this.opened = false;
-          if (this.kQh != null) {
-            this.kQh.onTransferEnd();
+          if (this.lmH != null) {
+            this.lmH.onTransferEnd();
           }
         }
-        AppMethodBeat.o(194258);
+        AppMethodBeat.o(206070);
       }
     }
   }
   
   public final String getUri()
   {
-    AppMethodBeat.i(194260);
+    AppMethodBeat.i(206072);
     if (this.uri != null)
     {
       String str = this.uri.toString();
-      AppMethodBeat.o(194260);
+      AppMethodBeat.o(206072);
       return str;
     }
-    AppMethodBeat.o(194260);
+    AppMethodBeat.o(206072);
     return null;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194259);
+    AppMethodBeat.i(206071);
     if (paramInt2 == 0)
     {
-      AppMethodBeat.o(194259);
+      AppMethodBeat.o(206071);
       return 0;
     }
-    if (this.bus == 0L)
+    if (this.bEH == 0L)
     {
-      AppMethodBeat.o(194259);
+      AppMethodBeat.o(206071);
       return -1;
     }
     try
     {
-      if (this.bus == -1L) {}
+      if (this.bEH == -1L) {}
       for (;;)
       {
         paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, paramInt2);
         if (paramInt1 != -1) {
           break label134;
         }
-        if (this.bus == -1L) {
+        if (this.bEH == -1L) {
           break;
         }
         paramArrayOfByte = new a(new EOFException());
-        AppMethodBeat.o(194259);
+        AppMethodBeat.o(206071);
         throw paramArrayOfByte;
-        long l = Math.min(this.bus, paramInt2);
+        long l = Math.min(this.bEH, paramInt2);
         paramInt2 = (int)l;
       }
-      AppMethodBeat.o(194259);
+      AppMethodBeat.o(206071);
     }
     catch (IOException paramArrayOfByte)
     {
       paramArrayOfByte = new a(paramArrayOfByte);
-      AppMethodBeat.o(194259);
+      AppMethodBeat.o(206071);
       throw paramArrayOfByte;
     }
     return -1;
     label134:
-    if (this.bus != -1L) {
-      this.bus -= paramInt1;
+    if (this.bEH != -1L) {
+      this.bEH -= paramInt1;
     }
-    if (this.kQh != null) {
-      this.kQh.sS(paramInt1);
+    if (this.lmH != null) {
+      this.lmH.tv(paramInt1);
     }
-    AppMethodBeat.o(194259);
+    AppMethodBeat.o(206071);
     return paramInt1;
   }
   

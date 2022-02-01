@@ -5,11 +5,11 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.i.d;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class WebViewJSSDKUpFileItem
   extends WebViewJSSDKFileItem
 {
   public static final Parcelable.Creator<WebViewJSSDKUpFileItem> CREATOR;
-  public String CkB;
+  public String DNG;
   public int fileType = -1;
   
   static
@@ -41,21 +41,21 @@ public class WebViewJSSDKUpFileItem
     super.d(paramd);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(this.fileType);
-    localArrayList.add(this.CkB);
+    localArrayList.add(this.DNG);
     localArrayList.add(paramd.field_fileId);
     localArrayList.add(paramd.field_aesKey);
     localArrayList.add(paramd.field_fileLength);
-    Context localContext = ai.getContext();
-    if (ax.isWifi(localContext)) {
+    Context localContext = aj.getContext();
+    if (ay.isWifi(localContext)) {
       localArrayList.add("1");
     }
     for (;;)
     {
-      ac.d("MicroMsg.WebViewJSSDKVoiceItem", "fileType=%d, initUrl=%s, field_fileId=%s", new Object[] { Integer.valueOf(this.fileType), this.CkB, paramd.field_fileId });
-      paramd = h.wUl;
-      h.k(12018, localArrayList);
-      paramd = this.jAH;
-      if (!bs.isNullOrNil(paramd))
+      ad.d("MicroMsg.WebViewJSSDKVoiceItem", "fileType=%d, initUrl=%s, field_fileId=%s", new Object[] { Integer.valueOf(this.fileType), this.DNG, paramd.field_fileId });
+      paramd = g.yhR;
+      g.l(12018, localArrayList);
+      paramd = this.jUC;
+      if (!bt.isNullOrNil(paramd))
       {
         paramd = new e(paramd);
         if (paramd.exists()) {
@@ -64,13 +64,15 @@ public class WebViewJSSDKUpFileItem
       }
       AppMethodBeat.o(79018);
       return;
-      if (ax.is3G(localContext)) {
+      if (ay.is3G(localContext)) {
         localArrayList.add("4");
-      } else if (ax.is4G(localContext)) {
+      } else if (ay.is4G(localContext)) {
         localArrayList.add("5");
-      } else if (ax.is2G(localContext)) {
+      } else if (ay.is5G(localContext)) {
+        localArrayList.add("6");
+      } else if (ay.is2G(localContext)) {
         localArrayList.add("3");
-      } else if (ax.isWap(localContext)) {
+      } else if (ay.isWap(localContext)) {
         localArrayList.add("2");
       } else {
         localArrayList.add("0");
@@ -83,20 +85,20 @@ public class WebViewJSSDKUpFileItem
     return 0;
   }
   
-  public final WebViewJSSDKFileItem fcG()
+  public final WebViewJSSDKFileItem fts()
   {
     AppMethodBeat.i(79017);
-    this.dgl = aw.aBZ(this.jAH);
+    this.drH = ax.aHA(this.jUC);
     AppMethodBeat.o(79017);
     return this;
   }
   
-  public final String fcH()
+  public final String ftt()
   {
     return "file";
   }
   
-  public final String fda()
+  public final String ftu()
   {
     return "nomal";
   }

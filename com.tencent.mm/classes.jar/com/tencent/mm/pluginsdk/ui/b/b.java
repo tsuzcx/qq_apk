@@ -7,20 +7,20 @@ import java.lang.ref.WeakReference;
 public abstract class b
   implements a
 {
-  public WeakReference<Context> Dsc = null;
-  public boolean gRm = false;
+  public WeakReference<Context> EXg = null;
+  public boolean hjE = false;
   public boolean isFirst = false;
   public View view = null;
   
   public b(Context paramContext)
   {
-    this.Dsc = new WeakReference(paramContext);
+    this.EXg = new WeakReference(paramContext);
     if (getLayoutId() > 0) {
       this.view = View.inflate(paramContext, getLayoutId(), null);
     }
   }
   
-  public boolean bvU()
+  public boolean bAa()
   {
     return (this.view != null) && (this.view.getVisibility() == 0);
   }

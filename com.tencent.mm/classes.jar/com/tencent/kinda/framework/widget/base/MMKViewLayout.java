@@ -14,7 +14,7 @@ import com.tencent.kinda.gen.KView;
 import com.tencent.kinda.gen.KViewLayout;
 import com.tencent.kinda.gen.Wrap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 
 public class MMKViewLayout<Layout extends ViewGroup>
@@ -46,7 +46,7 @@ public class MMKViewLayout<Layout extends ViewGroup>
       paramKView = KindaAnimatorViewProxy.unWrapRealObj(paramKView);
       if ((paramKView instanceof MMKView))
       {
-        ac.l("MMKViewLayout", "%s addview this %s | child %s | childparent %s | childCount: %s", new Object[] { this, getView(), ((MMKView)paramKView).getView(), ((MMKView)paramKView).getView().getParent(), Integer.valueOf(this.childList.size()) });
+        ad.l("MMKViewLayout", "%s addview this %s | child %s | childparent %s | childCount: %s", new Object[] { this, getView(), ((MMKView)paramKView).getView(), ((MMKView)paramKView).getView().getParent(), Integer.valueOf(this.childList.size()) });
         if ((getView() instanceof YogaLayout)) {
           ((YogaLayout)getView()).addView(((MMKView)paramKView).getView(), ((MMKView)paramKView).node());
         }
@@ -58,7 +58,7 @@ public class MMKViewLayout<Layout extends ViewGroup>
           ((ViewGroup)getView()).addView(((MMKView)paramKView).getView());
         }
       }
-      ac.e("MMKViewLayout", "error error %s child %s %s", new Object[] { getView(), paramKView, Boolean.valueOf(paramKView instanceof MMKView) });
+      ad.e("MMKViewLayout", "error error %s child %s %s", new Object[] { getView(), paramKView, Boolean.valueOf(paramKView instanceof MMKView) });
     }
     AppMethodBeat.o(19268);
   }
@@ -160,10 +160,10 @@ public class MMKViewLayout<Layout extends ViewGroup>
   
   public void setFocusableInTouchMode(boolean paramBoolean)
   {
-    AppMethodBeat.i(207415);
+    AppMethodBeat.i(199534);
     ((ViewGroup)getView()).setFocusable(true);
     ((ViewGroup)getView()).setFocusableInTouchMode(true);
-    AppMethodBeat.o(207415);
+    AppMethodBeat.o(199534);
   }
   
   public void setJustifyContent(Justify paramJustify)

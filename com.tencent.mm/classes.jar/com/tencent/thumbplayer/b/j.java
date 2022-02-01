@@ -6,32 +6,32 @@ import com.tencent.thumbplayer.a.a.c.g;
 
 public final class j
 {
-  private static final SparseArray<String> Kfm;
-  public c.g Kfn;
-  private int Kfo = 1;
+  private static final SparseArray<String> LZh;
+  public c.g LZi;
+  private int LZj = 1;
   private int mCurState = 1;
-  private int mxk = 1;
+  private int mXO = 1;
   
   static
   {
-    AppMethodBeat.i(187836);
+    AppMethodBeat.i(191857);
     SparseArray localSparseArray = new SparseArray();
-    Kfm = localSparseArray;
+    LZh = localSparseArray;
     localSparseArray.put(1, "IDLE");
-    Kfm.put(2, "INITIALIZED");
-    Kfm.put(3, "PREPARING");
-    Kfm.put(4, "PREPARED");
-    Kfm.put(5, "START");
-    Kfm.put(6, "PAUSE");
-    Kfm.put(7, "COMPLETE");
-    Kfm.put(8, "STOPPED");
-    Kfm.put(9, "ERROR");
-    Kfm.put(10, "RELEASED");
-    AppMethodBeat.o(187836);
+    LZh.put(2, "INITIALIZED");
+    LZh.put(3, "PREPARING");
+    LZh.put(4, "PREPARED");
+    LZh.put(5, "START");
+    LZh.put(6, "PAUSE");
+    LZh.put(7, "COMPLETE");
+    LZh.put(8, "STOPPED");
+    LZh.put(9, "ERROR");
+    LZh.put(10, "RELEASED");
+    AppMethodBeat.o(191857);
   }
   
   /* Error */
-  public final boolean aeI(int paramInt)
+  public final boolean ahi(int paramInt)
   {
     // Byte code:
     //   0: aload_0
@@ -72,22 +72,22 @@ public final class j
   {
     try
     {
-      AppMethodBeat.i(187834);
+      AppMethodBeat.i(191855);
       if (this.mCurState != paramInt)
       {
-        this.Kfo = this.mCurState;
+        this.LZj = this.mCurState;
         this.mCurState = paramInt;
-        if (this.Kfn != null) {
-          this.Kfn.fI(this.Kfo, this.mCurState);
+        if (this.LZi != null) {
+          this.LZi.fW(this.LZj, this.mCurState);
         }
       }
-      AppMethodBeat.o(187834);
+      AppMethodBeat.o(191855);
       return;
     }
     finally {}
   }
   
-  public final int fFg()
+  public final int fWx()
   {
     try
     {
@@ -105,12 +105,12 @@ public final class j
   {
     try
     {
-      AppMethodBeat.i(187835);
-      String str1 = (String)Kfm.get(this.mCurState);
-      String str2 = (String)Kfm.get(this.Kfo);
-      String str3 = (String)Kfm.get(this.mxk);
+      AppMethodBeat.i(191856);
+      String str1 = (String)LZh.get(this.mCurState);
+      String str2 = (String)LZh.get(this.LZj);
+      String str3 = (String)LZh.get(this.mXO);
       str1 = "state[ cur : " + str1 + " , pre : " + str2 + " , last : " + str3 + " ]";
-      AppMethodBeat.o(187835);
+      AppMethodBeat.o(191856);
       return str1;
     }
     finally
@@ -122,7 +122,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.b.j
  * JD-Core Version:    0.7.0.1
  */

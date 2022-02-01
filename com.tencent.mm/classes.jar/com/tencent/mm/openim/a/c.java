@@ -2,7 +2,7 @@ package com.tencent.mm.openim.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 import java.util.List;
 import org.json.JSONArray;
@@ -11,16 +11,16 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public List<a> inZ;
+  public List<a> iHw;
   
   public c()
   {
     AppMethodBeat.i(120689);
-    this.inZ = new LinkedList();
+    this.iHw = new LinkedList();
     AppMethodBeat.o(120689);
   }
   
-  public final c Fo(String paramString)
+  public final c IE(String paramString)
   {
     AppMethodBeat.i(120690);
     try
@@ -36,28 +36,28 @@ public final class c
       {
         JSONObject localJSONObject = paramString.getJSONObject(i);
         a locala = new a();
-        this.inZ.add(locala.s(localJSONObject));
+        this.iHw.add(locala.s(localJSONObject));
         i += 1;
       }
       return this;
     }
     catch (JSONException paramString)
     {
-      ac.printErrStackTrace("MicroMsg.OpenIMCustomDetail", paramString, "parse", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.OpenIMCustomDetail", paramString, "parse", new Object[0]);
       AppMethodBeat.o(120690);
     }
   }
   
   public static final class a
   {
-    public List<c.b> ioa;
+    public List<c.b> iHx;
     public String title;
     
     public a()
     {
       AppMethodBeat.i(120686);
       this.title = "";
-      this.ioa = new LinkedList();
+      this.iHx = new LinkedList();
       AppMethodBeat.o(120686);
     }
     
@@ -76,12 +76,12 @@ public final class c
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
         c.b localb = new c.b();
-        List localList = this.ioa;
-        localb.drM = localJSONObject.optString("icon");
+        List localList = this.iHx;
+        localb.dDH = localJSONObject.optString("icon");
         localb.desc = localJSONObject.optString("desc");
-        localb.iob = localJSONObject.optInt("desc_type");
+        localb.iHy = localJSONObject.optInt("desc_type");
         localb.action = localJSONObject.optInt("action");
-        localb.ioc = localJSONObject.optString("action_param");
+        localb.iHz = localJSONObject.optString("action_param");
         localList.add(localb);
         i += 1;
       }
@@ -93,17 +93,17 @@ public final class c
   public static final class b
   {
     public int action;
+    public String dDH;
     String desc;
-    public String drM;
-    public int iob;
-    public String ioc;
+    public int iHy;
+    public String iHz;
     
-    public final String Fp(String paramString)
+    public final String IF(String paramString)
     {
       AppMethodBeat.i(120688);
-      if (this.iob == 1)
+      if (this.iHy == 1)
       {
-        paramString = ((b)g.ab(b.class)).bB(paramString, this.desc);
+        paramString = ((b)g.ab(b.class)).bC(paramString, this.desc);
         AppMethodBeat.o(120688);
         return paramString;
       }

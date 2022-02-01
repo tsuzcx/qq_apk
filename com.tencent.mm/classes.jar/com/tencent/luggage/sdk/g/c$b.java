@@ -2,20 +2,22 @@ package com.tencent.luggage.sdk.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.m;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "invoke"})
 final class c$b
-  extends d.g.b.l
-  implements m<Long, Long, y>
+  extends q
+  implements m<Long, Long, z>
 {
-  public static final b cfx;
+  public static final b cpN;
   
   static
   {
-    AppMethodBeat.i(193262);
-    cfx = new b();
-    AppMethodBeat.o(193262);
+    AppMethodBeat.i(197478);
+    cpN = new b();
+    AppMethodBeat.o(197478);
   }
   
   c$b()

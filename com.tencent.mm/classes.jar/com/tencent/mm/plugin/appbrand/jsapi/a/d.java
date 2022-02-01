@@ -6,15 +6,13 @@ import android.graphics.Bitmap.Config;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.canvas.f;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.e.a;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.z.i;
-import com.tencent.mm.plugin.appbrand.z.l;
-import com.tencent.mm.plugin.appbrand.z.l.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.appbrand.z.m.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.q;
 import java.io.IOException;
 import java.util.HashMap;
@@ -61,61 +59,61 @@ public class d
   public void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(145531);
-    l.bxj().postToWorker(new Runnable()
+    com.tencent.mm.plugin.appbrand.z.m.bBp().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(145530);
         if (!paramc.isRunning())
         {
-          ac.w("MicroMsg.JsApiCanvasToTempFilePath", "invoke JsApi insertView failed, current page view is null.");
+          ad.w("MicroMsg.JsApiCanvasToTempFilePath", "invoke JsApi insertView failed, current page view is null.");
           paramc.h(paramInt, d.this.e("fail", null));
           AppMethodBeat.o(145530);
           return;
         }
-        com.tencent.mm.plugin.appbrand.jsapi.e locale = ((com.tencent.mm.plugin.appbrand.jsapi.base.f)paramc.K(com.tencent.mm.plugin.appbrand.jsapi.base.f.class)).c(paramc, paramJSONObject);
+        com.tencent.mm.plugin.appbrand.jsapi.e locale = ((com.tencent.mm.plugin.appbrand.jsapi.base.g)paramc.K(com.tencent.mm.plugin.appbrand.jsapi.base.g.class)).c(paramc, paramJSONObject);
         if (locale == null)
         {
-          ac.w("MicroMsg.JsApiCanvasToTempFilePath", "invoke JsApi canvasToTempFilePath failed, component view is null.");
+          ad.w("MicroMsg.JsApiCanvasToTempFilePath", "invoke JsApi canvasToTempFilePath failed, component view is null.");
           paramc.h(paramInt, d.this.e("fail:page is null", null));
           AppMethodBeat.o(145530);
           return;
         }
         d locald = d.this;
         JSONObject localJSONObject = paramJSONObject;
-        com.tencent.mm.plugin.appbrand.jsapi.base.g localg = new com.tencent.mm.plugin.appbrand.jsapi.base.g(paramc, paramInt);
+        com.tencent.mm.plugin.appbrand.jsapi.base.i locali = new com.tencent.mm.plugin.appbrand.jsapi.base.i(paramc, paramInt);
         int i;
         try
         {
           i = localJSONObject.getInt("canvasId");
-          View localView1 = locale.fC(localJSONObject.optBoolean("independent", false)).getViewById(i);
+          View localView1 = locale.fG(localJSONObject.optBoolean("independent", false)).getViewById(i);
           if (localView1 == null)
           {
-            ac.w("MicroMsg.JsApiCanvasToTempFilePath", "get view by viewId(%s) return null.", new Object[] { Integer.valueOf(i) });
-            localg.LV(locald.e("fail:get canvas by canvasId failed", null));
+            ad.w("MicroMsg.JsApiCanvasToTempFilePath", "get view by viewId(%s) return null.", new Object[] { Integer.valueOf(i) });
+            locali.Pr(locald.e("fail:get canvas by canvasId failed", null));
             AppMethodBeat.o(145530);
             return;
           }
         }
         catch (JSONException localJSONException)
         {
-          ac.w("MicroMsg.JsApiCanvasToTempFilePath", "canvasId do not exist. exception : %s", new Object[] { localJSONException });
-          localg.LV(locald.e("fail:canvasId do not exist", null));
+          ad.w("MicroMsg.JsApiCanvasToTempFilePath", "canvasId do not exist. exception : %s", new Object[] { localJSONException });
+          locali.Pr(locald.e("fail:canvasId do not exist", null));
           AppMethodBeat.o(145530);
           return;
         }
         if (!(localJSONException instanceof CoverViewContainer))
         {
-          ac.w("MicroMsg.JsApiCanvasToTempFilePath", "the view(%s) is not a instance of CoverViewContainer.", new Object[] { Integer.valueOf(i) });
-          localg.LV(locald.e("fail:the view is not a instance of CoverViewContainer", null));
+          ad.w("MicroMsg.JsApiCanvasToTempFilePath", "the view(%s) is not a instance of CoverViewContainer.", new Object[] { Integer.valueOf(i) });
+          locali.Pr(locald.e("fail:the view is not a instance of CoverViewContainer", null));
           AppMethodBeat.o(145530);
           return;
         }
         View localView2 = (View)((CoverViewContainer)localJSONException).ax(View.class);
         if (localView2 == null)
         {
-          ac.w("MicroMsg.JsApiCanvasToTempFilePath", "getTargetView return null, viewId(%s).", new Object[] { Integer.valueOf(i) });
-          localg.LV(locald.e("fail:target view is null.", null));
+          ad.w("MicroMsg.JsApiCanvasToTempFilePath", "getTargetView return null, viewId(%s).", new Object[] { Integer.valueOf(i) });
+          locali.Pr(locald.e("fail:target view is null.", null));
           AppMethodBeat.o(145530);
           return;
         }
@@ -147,27 +145,27 @@ public class d
               break label1411;
             }
             f2 = k - f4;
-            f5 = bs.getFloat(localJSONObject.optString("destWidth"), f1);
-            f6 = bs.getFloat(localJSONObject.optString("destHeight"), f2);
+            f5 = bt.getFloat(localJSONObject.optString("destWidth"), f1);
+            f6 = bt.getFloat(localJSONObject.optString("destHeight"), f2);
             if (((int)f3 < 0) || ((int)f4 < 0) || ((int)f1 <= 0) || ((int)f2 <= 0) || ((int)(f3 + f1) > j) || ((int)(f4 + f2) > k) || ((int)f5 <= 0) || ((int)f6 <= 0))
             {
-              ac.e("MicroMsg.JsApiCanvasToTempFilePath", "illegal arguments(x : %s, y : %s, width : %s, height : %s) failed, viewId(%s).", new Object[] { Float.valueOf(f3), Float.valueOf(f4), Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i) });
-              localg.LV(locald.e("fail:illegal arguments", null));
+              ad.e("MicroMsg.JsApiCanvasToTempFilePath", "illegal arguments(x : %s, y : %s, width : %s, height : %s) failed, viewId(%s).", new Object[] { Float.valueOf(f3), Float.valueOf(f4), Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i) });
+              locali.Pr(locald.e("fail:illegal arguments", null));
               AppMethodBeat.o(145530);
               return;
             }
           }
           catch (Exception localException1)
           {
-            ac.w("MicroMsg.JsApiCanvasToTempFilePath", "create bitmap failed, viewId(%s). Exception : %s", new Object[] { Integer.valueOf(i), localException1 });
-            localg.LV(locald.e("fail:create bitmap failed", null));
+            ad.w("MicroMsg.JsApiCanvasToTempFilePath", "create bitmap failed, viewId(%s). Exception : %s", new Object[] { Integer.valueOf(i), localException1 });
+            locali.Pr(locald.e("fail:create bitmap failed", null));
             AppMethodBeat.o(145530);
             return;
           }
           catch (Throwable localThrowable1)
           {
-            ac.w("MicroMsg.JsApiCanvasToTempFilePath", "create bitmap failed, viewId(%s). Throwable : %s", new Object[] { Integer.valueOf(i), localThrowable1 });
-            localg.LV(locald.e("fail:create bitmap failed", null));
+            ad.w("MicroMsg.JsApiCanvasToTempFilePath", "create bitmap failed, viewId(%s). Throwable : %s", new Object[] { Integer.valueOf(i), localThrowable1 });
+            locali.Pr(locald.e("fail:create bitmap failed", null));
             AppMethodBeat.o(145530);
             return;
           }
@@ -176,7 +174,7 @@ public class d
           int n;
           if ((localThrowable1 instanceof com.tencent.mm.plugin.appbrand.canvas.widget.a))
           {
-            ((com.tencent.mm.plugin.appbrand.canvas.widget.a)localThrowable1).h(new com.tencent.mm.plugin.appbrand.canvas.f((Bitmap)localObject2));
+            ((com.tencent.mm.plugin.appbrand.canvas.widget.a)localThrowable1).h(new f((Bitmap)localObject2));
             if (f1 == j)
             {
               localObject1 = localObject2;
@@ -198,7 +196,7 @@ public class d
             try
             {
               localObject1 = Bitmap.createBitmap((Bitmap)localObject2, j, k, m, n, null, false);
-              ac.i("MicroMsg.JsApiCanvasToTempFilePath", "bitmap recycle %s", new Object[] { localObject2 });
+              ad.i("MicroMsg.JsApiCanvasToTempFilePath", "bitmap recycle %s", new Object[] { localObject2 });
               ((Bitmap)localObject2).recycle();
               if (f1 == f5)
               {
@@ -213,82 +211,82 @@ public class d
             }
             catch (Exception localException2)
             {
-              ac.w("MicroMsg.JsApiCanvasToTempFilePath", "create bitmap failed, viewId(%s). Exception : %s", new Object[] { Integer.valueOf(i), localException2 });
-              localg.LV(locald.e("fail:create bitmap failed", null));
+              ad.w("MicroMsg.JsApiCanvasToTempFilePath", "create bitmap failed, viewId(%s). Exception : %s", new Object[] { Integer.valueOf(i), localException2 });
+              locali.Pr(locald.e("fail:create bitmap failed", null));
               AppMethodBeat.o(145530);
               return;
             }
             catch (Throwable localThrowable2)
             {
-              ac.w("MicroMsg.JsApiCanvasToTempFilePath", "create bitmap failed, viewId(%s). Throwable : %s", new Object[] { Integer.valueOf(i), localThrowable2 });
-              localg.LV(locald.e("fail:create bitmap failed", null));
+              ad.w("MicroMsg.JsApiCanvasToTempFilePath", "create bitmap failed, viewId(%s). Throwable : %s", new Object[] { Integer.valueOf(i), localThrowable2 });
+              locali.Pr(locald.e("fail:create bitmap failed", null));
               AppMethodBeat.o(145530);
               return;
             }
             try
             {
               localObject2 = Bitmap.createScaledBitmap((Bitmap)localObject1, j, k, false);
-              ac.i("MicroMsg.JsApiCanvasToTempFilePath", "bitmap recycle %s", new Object[] { localObject1 });
+              ad.i("MicroMsg.JsApiCanvasToTempFilePath", "bitmap recycle %s", new Object[] { localObject1 });
               ((Bitmap)localObject1).recycle();
               localCompressFormat = d.L(localJSONObject);
               if (localCompressFormat != Bitmap.CompressFormat.JPEG) {
                 break label1160;
               }
               localObject1 = "jpg";
-              localObject3 = locale.DH().IU("canvas_" + i + "." + (String)localObject1);
+              localObject3 = locale.Fg().Ml("canvas_" + i + "." + (String)localObject1);
               if (localObject3 != null) {
                 break label1168;
               }
-              ac.e("MicroMsg.JsApiCanvasToTempFilePath", "toTempFilePath, alloc file failed");
-              localg.LV(locald.e("fail alloc file failed", null));
+              ad.e("MicroMsg.JsApiCanvasToTempFilePath", "toTempFilePath, alloc file failed");
+              locali.Pr(locald.e("fail alloc file failed", null));
               AppMethodBeat.o(145530);
               return;
             }
             catch (Exception localException3)
             {
-              ac.w("MicroMsg.JsApiCanvasToTempFilePath", "create bitmap failed, viewId(%s). Exception : %s", new Object[] { Integer.valueOf(i), localException3 });
-              localg.LV(locald.e("fail:create bitmap failed", null));
+              ad.w("MicroMsg.JsApiCanvasToTempFilePath", "create bitmap failed, viewId(%s). Exception : %s", new Object[] { Integer.valueOf(i), localException3 });
+              locali.Pr(locald.e("fail:create bitmap failed", null));
               AppMethodBeat.o(145530);
               return;
             }
             catch (Throwable localThrowable3)
             {
-              ac.w("MicroMsg.JsApiCanvasToTempFilePath", "create bitmap failed, viewId(%s). Throwable : %s", new Object[] { Integer.valueOf(i), localThrowable3 });
-              localg.LV(locald.e("fail:create bitmap failed", null));
+              ad.w("MicroMsg.JsApiCanvasToTempFilePath", "create bitmap failed, viewId(%s). Throwable : %s", new Object[] { Integer.valueOf(i), localThrowable3 });
+              locali.Pr(locald.e("fail:create bitmap failed", null));
               AppMethodBeat.o(145530);
               return;
             }
-            ((View)localObject1).draw(new com.tencent.mm.plugin.appbrand.canvas.f((Bitmap)localObject2));
+            ((View)localObject1).draw(new f((Bitmap)localObject2));
             break;
             str = "png";
           }
           label1168:
-          Object localObject3 = q.B(((com.tencent.mm.vfs.e)localObject3).fxV());
-          ac.d("MicroMsg.JsApiCanvasToTempFilePath", "toTempFilePath, savePath = %s", new Object[] { localObject3 });
+          Object localObject3 = q.B(((com.tencent.mm.vfs.e)localObject3).fOK());
+          ad.d("MicroMsg.JsApiCanvasToTempFilePath", "toTempFilePath, savePath = %s", new Object[] { localObject3 });
           try
           {
-            com.tencent.mm.sdk.platformtools.f.a((Bitmap)localObject2, d.K(localJSONObject), localCompressFormat, (String)localObject3, true);
-            localObject2 = new i();
-            locale.DH().a(new com.tencent.mm.vfs.e((String)localObject3), str, true, (i)localObject2);
-            str = (String)((i)localObject2).value;
-            ac.d("MicroMsg.JsApiCanvasToTempFilePath", "toTempFilePath, returnPath = %s", new Object[] { str });
+            com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject2, d.K(localJSONObject), localCompressFormat, (String)localObject3, true);
+            localObject2 = new com.tencent.mm.plugin.appbrand.z.i();
+            locale.Fg().a(new com.tencent.mm.vfs.e((String)localObject3), str, true, (com.tencent.mm.plugin.appbrand.z.i)localObject2);
+            str = (String)((com.tencent.mm.plugin.appbrand.z.i)localObject2).value;
+            ad.d("MicroMsg.JsApiCanvasToTempFilePath", "toTempFilePath, returnPath = %s", new Object[] { str });
             localObject2 = new HashMap();
             ((Map)localObject2).put("tempFilePath", str);
-            localg.LV(locald.k("ok", (Map)localObject2));
+            locali.Pr(locald.m("ok", (Map)localObject2));
             AppMethodBeat.o(145530);
             return;
           }
           catch (IOException localIOException)
           {
-            ac.w("MicroMsg.JsApiCanvasToTempFilePath", "save bitmap to file failed, viewId(%s). exception : %s", new Object[] { Integer.valueOf(i), localIOException });
-            localg.LV(locald.e("fail:write file failed", null));
+            ad.w("MicroMsg.JsApiCanvasToTempFilePath", "save bitmap to file failed, viewId(%s). exception : %s", new Object[] { Integer.valueOf(i), localIOException });
+            locali.Pr(locald.e("fail:write file failed", null));
             AppMethodBeat.o(145530);
             return;
           }
           catch (Throwable localThrowable4)
           {
-            ac.w("MicroMsg.JsApiCanvasToTempFilePath", "save bitmap to file failed, viewId(%s). throwable : %s", new Object[] { Integer.valueOf(i), localThrowable4 });
-            localg.LV(locald.e("fail:write file failed", null));
+            ad.w("MicroMsg.JsApiCanvasToTempFilePath", "save bitmap to file failed, viewId(%s). throwable : %s", new Object[] { Integer.valueOf(i), localThrowable4 });
+            locali.Pr(locald.e("fail:write file failed", null));
             AppMethodBeat.o(145530);
             return;
           }
@@ -300,7 +298,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.a.d
  * JD-Core Version:    0.7.0.1
  */

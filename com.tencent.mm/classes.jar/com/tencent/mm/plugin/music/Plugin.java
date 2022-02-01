@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.music;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.plugin.music.model.f;
 import com.tencent.mm.pluginsdk.b.d;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
   implements d
 {
-  public m createApplication()
+  public n createApplication()
   {
     AppMethodBeat.i(62933);
     com.tencent.mm.plugin.music.model.c localc = new com.tencent.mm.plugin.music.model.c();
@@ -17,7 +17,7 @@ public class Plugin
     return localc;
   }
   
-  public aw createSubCore()
+  public ax createSubCore()
   {
     AppMethodBeat.i(62934);
     f localf = new f();
@@ -32,7 +32,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.music.Plugin
  * JD-Core Version:    0.7.0.1
  */

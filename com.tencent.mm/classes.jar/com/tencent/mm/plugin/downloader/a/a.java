@@ -4,29 +4,29 @@ public final class a
 {
   public static int DOWNLOAD_ERR_URL_INVALID = 700;
   public static int SERVICE_INVALID;
-  public static int oFA;
-  public static int oFB;
-  public static int oFC;
-  public static int oFD = 801;
-  public static int oFE = 802;
-  public static int oFF = 803;
-  public static int oFG = 804;
-  public static int oFH = 805;
-  public static int oFI = 806;
-  public static int oFJ = 901;
-  public static int oFu = 101;
-  public static int oFv = 102;
-  public static int oFw = 103;
-  public static int oFx = 104;
-  public static int oFy = 201;
-  public static int oFz = 202;
+  public static int piY = 101;
+  public static int piZ = 102;
+  public static int pja = 103;
+  public static int pjb = 104;
+  public static int pjc = 201;
+  public static int pjd = 202;
+  public static int pje;
+  public static int pjf;
+  public static int pjg;
+  public static int pjh = 801;
+  public static int pji = 802;
+  public static int pjj = 803;
+  public static int pjk = 804;
+  public static int pjl = 805;
+  public static int pjm = 806;
+  public static int pjn = 901;
   
   static
   {
     SERVICE_INVALID = 203;
-    oFA = 204;
-    oFB = 205;
-    oFC = 206;
+    pje = 204;
+    pjf = 205;
+    pjg = 206;
   }
 }
 

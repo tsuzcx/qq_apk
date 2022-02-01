@@ -1,94 +1,66 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.d;
-import com.tencent.mm.plugin.game.luggage.d.f;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bo;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.HashMap;
+import com.tencent.mm.plugin.game.luggage.f.g;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.plugin.wepkg.model.h;
+import com.tencent.mm.plugin.wepkg.model.h.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class m
-  extends bo<f>
+  extends bq<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
-  
-  public final void b(com.tencent.luggage.d.a<f>.a parama)
+  public final void a(Context paramContext, String paramString, final bq.a parama)
   {
-    AppMethodBeat.i(83073);
-    ac.i("MicroMsg.JsApiGetWePkgAuthResult", "invoke");
-    if (((f)parama.bWR).eAq())
+    AppMethodBeat.i(83072);
+    ad.i("MicroMsg.JsApiGetLocalWePkgInfo", "invokeInMM");
+    aq.f(new Runnable()
     {
-      ac.i("MicroMsg.JsApiGetWePkgAuthResult", "gettingA8Key");
-      parama.a("auth_result_not_return", null);
-      AppMethodBeat.o(83073);
-      return;
-    }
-    String str = ((f)parama.bWR).eAr();
-    boolean bool = ((f)parama.bWR).sYk;
-    if (bs.isNullOrNil(str)) {
-      if (bs.isNullOrNil(d.sWG))
+      public final void run()
       {
-        ac.i("MicroMsg.LuggageGameUinKeyHolder", "fullUrl is null");
-        i = 0;
-        if (i == 0) {
-          break label260;
-        }
-        str = d.sWG;
-      }
-    }
-    label260:
-    for (int i = 1;; i = 0)
-    {
-      if (bs.isNullOrNil(str))
-      {
-        parama.a("full_url_empty", null);
-        AppMethodBeat.o(83073);
-        return;
-        if (com.tencent.mm.plugin.game.commlib.a.cOy() <= 0)
+        AppMethodBeat.i(83071);
+        h.a(new h.a()
         {
-          i = 0;
-          break;
-        }
-        if (System.currentTimeMillis() / 1000L - d.Lf > com.tencent.mm.plugin.game.commlib.a.cOy())
-        {
-          ac.i("MicroMsg.LuggageGameUinKeyHolder", "updateTime bigger that one hour");
-          i = 0;
-          break;
-        }
-        ac.d("MicroMsg.LuggageGameUinKeyHolder", "hasValidCache");
-        i = 1;
-        break;
+          public final void av(JSONObject paramAnonymous2JSONObject)
+          {
+            AppMethodBeat.i(83070);
+            JSONObject localJSONObject = new JSONObject();
+            try
+            {
+              localJSONObject.put("wepkg_info", paramAnonymous2JSONObject);
+              label21:
+              m.1.this.pou.f(null, localJSONObject);
+              AppMethodBeat.o(83070);
+              return;
+            }
+            catch (JSONException paramAnonymous2JSONObject)
+            {
+              break label21;
+            }
+          }
+        });
+        AppMethodBeat.o(83071);
       }
-      HashMap localHashMap = new HashMap();
-      if (bool) {
-        localHashMap.put("set_cookie", Integer.valueOf(1));
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          localHashMap.put("used_cache_uinkey", Integer.valueOf(1));
-        }
-        localHashMap.put("full_url", str);
-        parama.c("", localHashMap);
-        AppMethodBeat.o(83073);
-        return;
-        localHashMap.put("set_cookie", Integer.valueOf(0));
-      }
-    }
+    });
+    AppMethodBeat.o(83072);
   }
   
-  public final int bYk()
+  public final void b(b.a parama) {}
+  
+  public final int ccO()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "getWePkgAuthResult";
+    return "getLocalWePkgInfo";
   }
 }
 

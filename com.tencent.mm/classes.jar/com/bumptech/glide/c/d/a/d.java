@@ -11,14 +11,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   implements q, u<Bitmap>
 {
-  private final e aAt;
+  private final e aCk;
   private final Bitmap bitmap;
   
   public d(Bitmap paramBitmap, e parame)
   {
     AppMethodBeat.i(77357);
     this.bitmap = ((Bitmap)i.checkNotNull(paramBitmap, "Bitmap must not be null"));
-    this.aAt = ((e)i.checkNotNull(parame, "BitmapPool must not be null"));
+    this.aCk = ((e)i.checkNotNull(parame, "BitmapPool must not be null"));
     AppMethodBeat.o(77357);
   }
   
@@ -50,7 +50,7 @@ public final class d
     AppMethodBeat.o(77360);
   }
   
-  public final Class<Bitmap> oy()
+  public final Class<Bitmap> oQ()
   {
     return Bitmap.class;
   }
@@ -58,7 +58,7 @@ public final class d
   public final void recycle()
   {
     AppMethodBeat.i(77359);
-    this.aAt.g(this.bitmap);
+    this.aCk.g(this.bitmap);
     AppMethodBeat.o(77359);
   }
 }

@@ -9,36 +9,27 @@ import com.tencent.liteav.basic.d.g;
 import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.beauty.b.k;
-import com.tencent.liteav.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.trtc.TRTCCloudDef.TRTCTexture;
 import com.tencent.trtc.TRTCCloudDef.TRTCVideoFrame;
+import java.util.concurrent.CountDownLatch;
 
 public class TRTCCustomTextureUtil
 {
-  private static final String TAG;
-  private c mCaptureAndEnc;
+  private static final String TAG = "TRTCCustomTextureUtil";
+  private com.tencent.liteav.c mCaptureAndEnc;
   private Object mEGLContext;
   private HandlerThread mEGLThread;
-  private Object mGLLock;
   private g mGLThreadHandler;
   private k mI4202RGBAFilter;
   private long mLastGLThreadId;
   private h mRotateFilter;
   
-  static
-  {
-    AppMethodBeat.i(15599);
-    TAG = TRTCCustomTextureUtil.class.getSimpleName();
-    AppMethodBeat.o(15599);
-  }
-  
-  public TRTCCustomTextureUtil(c paramc)
+  public TRTCCustomTextureUtil(com.tencent.liteav.c paramc)
   {
     AppMethodBeat.i(15588);
     this.mGLThreadHandler = null;
     this.mEGLThread = null;
-    this.mGLLock = new Object();
     this.mEGLContext = null;
     this.mI4202RGBAFilter = null;
     this.mCaptureAndEnc = paramc;
@@ -48,7 +39,7 @@ public class TRTCCustomTextureUtil
   private void apiLog(String paramString)
   {
     AppMethodBeat.i(15595);
-    TXCLog.i(TAG, "trtc_api ".concat(String.valueOf(paramString)));
+    TXCLog.i("TRTCCustomTextureUtil", "trtc_api ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(15595);
   }
   
@@ -190,68 +181,65 @@ public class TRTCCustomTextureUtil
       if (this.mGLThreadHandler != null)
       {
         GLES20.glFinish();
+        final g localg = this.mGLThreadHandler;
         this.mGLThreadHandler.post(new Runnable()
         {
           public void run()
           {
             int j = 3;
             AppMethodBeat.i(15662);
-            g localg = TRTCCustomTextureUtil.this.mGLThreadHandler;
-            if (localg != null)
+            localg.d();
+            if (localg.d)
             {
-              localg.d();
-              if (localg.d)
+              if (paramTRTCVideoFrame.texture != null)
               {
-                if (paramTRTCVideoFrame.texture != null)
-                {
-                  paramTRTCVideoFrame.texture.textureId = TRTCCustomTextureUtil.access$100(TRTCCustomTextureUtil.this, paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame);
-                  TRTCCustomTextureUtil.this.mCaptureAndEnc.a(paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, localg.e, paramTRTCVideoFrame.timestamp, paramTRTCVideoFrame.rotation);
-                  AppMethodBeat.o(15662);
-                }
+                paramTRTCVideoFrame.texture.textureId = TRTCCustomTextureUtil.access$000(TRTCCustomTextureUtil.this, paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame);
+                TRTCCustomTextureUtil.this.mCaptureAndEnc.a(paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, localg.e.e(), paramTRTCVideoFrame.timestamp, paramTRTCVideoFrame.rotation);
+                AppMethodBeat.o(15662);
               }
-              else
+            }
+            else
+            {
+              if (paramTRTCVideoFrame.texture != null)
               {
-                if (paramTRTCVideoFrame.texture != null)
+                paramTRTCVideoFrame.texture.textureId = TRTCCustomTextureUtil.access$000(TRTCCustomTextureUtil.this, paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame);
+                TRTCCustomTextureUtil.this.mCaptureAndEnc.a(paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, localg.g.d(), paramTRTCVideoFrame.timestamp, paramTRTCVideoFrame.rotation);
+                AppMethodBeat.o(15662);
+                return;
+              }
+              int i;
+              if (paramTRTCVideoFrame.pixelFormat == 1) {
+                i = 1;
+              }
+              for (;;)
+              {
+                if (TRTCCustomTextureUtil.this.mI4202RGBAFilter == null)
                 {
-                  paramTRTCVideoFrame.texture.textureId = TRTCCustomTextureUtil.access$100(TRTCCustomTextureUtil.this, paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame);
-                  TRTCCustomTextureUtil.this.mCaptureAndEnc.a(paramTRTCVideoFrame.texture.textureId, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, localg.g, paramTRTCVideoFrame.timestamp, paramTRTCVideoFrame.rotation);
-                  AppMethodBeat.o(15662);
-                  return;
-                }
-                int i;
-                if (paramTRTCVideoFrame.pixelFormat == 1) {
-                  i = 1;
-                }
-                for (;;)
-                {
-                  if (TRTCCustomTextureUtil.this.mI4202RGBAFilter == null)
-                  {
-                    localk = new k(i);
-                    localk.a(true);
-                    if (!localk.a()) {
-                      TXCLog.e(TRTCCustomTextureUtil.TAG, "mI4202RGBAFilter init failed!!, break init");
-                    }
-                    localk.a(paramTRTCVideoFrame.width, paramTRTCVideoFrame.height);
-                    TRTCCustomTextureUtil.access$302(TRTCCustomTextureUtil.this, localk);
+                  localk = new k(i);
+                  localk.a(true);
+                  if (!localk.a()) {
+                    TXCLog.e("TRTCCustomTextureUtil", "mI4202RGBAFilter init failed!!, break init");
                   }
-                  k localk = TRTCCustomTextureUtil.this.mI4202RGBAFilter;
-                  if (localk == null) {
-                    break;
-                  }
-                  GLES20.glViewport(0, 0, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height);
-                  localk.a(paramTRTCVideoFrame.data);
-                  i = localk.q();
-                  i = TRTCCustomTextureUtil.access$100(TRTCCustomTextureUtil.this, i, paramTRTCVideoFrame);
-                  TRTCCustomTextureUtil.this.mCaptureAndEnc.a(i, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, localg.f.d(), paramTRTCVideoFrame.timestamp, paramTRTCVideoFrame.rotation);
-                  AppMethodBeat.o(15662);
-                  return;
+                  localk.a(paramTRTCVideoFrame.width, paramTRTCVideoFrame.height);
+                  TRTCCustomTextureUtil.access$202(TRTCCustomTextureUtil.this, localk);
+                }
+                k localk = TRTCCustomTextureUtil.this.mI4202RGBAFilter;
+                if (localk == null) {
+                  break;
+                }
+                GLES20.glViewport(0, 0, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height);
+                localk.a(paramTRTCVideoFrame.data);
+                i = localk.q();
+                i = TRTCCustomTextureUtil.access$000(TRTCCustomTextureUtil.this, i, paramTRTCVideoFrame);
+                TRTCCustomTextureUtil.this.mCaptureAndEnc.a(i, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, localg.g.d(), paramTRTCVideoFrame.timestamp, paramTRTCVideoFrame.rotation);
+                AppMethodBeat.o(15662);
+                return;
+                i = j;
+                if (paramTRTCVideoFrame.pixelFormat == 4) {
                   i = j;
-                  if (paramTRTCVideoFrame.pixelFormat == 4) {
-                    i = j;
-                  }
                 }
-                TRTCCustomTextureUtil.this.mCaptureAndEnc.a(paramTRTCVideoFrame.data, i, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, localg.f.d(), paramTRTCVideoFrame.timestamp, paramTRTCVideoFrame.rotation);
               }
+              TRTCCustomTextureUtil.this.mCaptureAndEnc.a(paramTRTCVideoFrame.data, i, paramTRTCVideoFrame.width, paramTRTCVideoFrame.height, localg.g.d(), paramTRTCVideoFrame.timestamp, paramTRTCVideoFrame.rotation);
             }
             AppMethodBeat.o(15662);
           }
@@ -273,6 +261,7 @@ public class TRTCCustomTextureUtil
       AppMethodBeat.o(15593);
       return;
     }
+    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
     for (;;)
     {
       try
@@ -286,42 +275,57 @@ public class TRTCCustomTextureUtil
           {
             apiLog("CustomCapture buffer start egl10 thread");
             this.mGLThreadHandler.d = false;
-            this.mGLThreadHandler.g = null;
+            this.mGLThreadHandler.h = null;
             this.mGLThreadHandler.a = 1280;
             this.mGLThreadHandler.b = 720;
             this.mGLThreadHandler.sendEmptyMessage(100);
+            this.mGLThreadHandler.post(new Runnable()
+            {
+              public void run()
+              {
+                AppMethodBeat.i(15729);
+                TXCLog.i("TRTCCustomTextureUtil", "GLContext create finished!");
+                localCountDownLatch.countDown();
+                AppMethodBeat.o(15729);
+              }
+            });
           }
-        }
-        else
-        {
-          return;
-        }
-        if (paramTRTCVideoFrame.texture.eglContext10 != null)
-        {
-          apiLog("CustomCapture texture start egl10 thread");
-          this.mGLThreadHandler.d = false;
-          this.mGLThreadHandler.g = paramTRTCVideoFrame.texture.eglContext10;
-          this.mGLThreadHandler.a = 1280;
-          this.mGLThreadHandler.b = 720;
-          this.mGLThreadHandler.sendEmptyMessage(100);
-          continue;
-        }
-        if (paramTRTCVideoFrame.texture.eglContext14 == null) {
-          continue;
         }
       }
       finally
       {
         AppMethodBeat.o(15593);
       }
-      if (Build.VERSION.SDK_INT >= 17)
+      try
       {
-        apiLog("CustomCapture texture start egl14 thread");
-        this.mGLThreadHandler.d = true;
-        this.mGLThreadHandler.e = paramTRTCVideoFrame.texture.eglContext14;
+        localCountDownLatch.await();
+        AppMethodBeat.o(15593);
+        return;
+      }
+      catch (InterruptedException paramTRTCVideoFrame)
+      {
+        Thread.currentThread().interrupt();
+        AppMethodBeat.o(15593);
+      }
+      if (paramTRTCVideoFrame.texture.eglContext10 != null)
+      {
+        apiLog("CustomCapture texture start egl10 thread");
+        this.mGLThreadHandler.d = false;
+        this.mGLThreadHandler.h = paramTRTCVideoFrame.texture.eglContext10;
         this.mGLThreadHandler.a = 1280;
         this.mGLThreadHandler.b = 720;
         this.mGLThreadHandler.sendEmptyMessage(100);
+      }
+      else if ((paramTRTCVideoFrame.texture.eglContext14 != null) && (Build.VERSION.SDK_INT >= 17))
+      {
+        apiLog("CustomCapture texture start egl14 thread");
+        this.mGLThreadHandler.d = true;
+        this.mGLThreadHandler.f = paramTRTCVideoFrame.texture.eglContext14;
+        this.mGLThreadHandler.a = 1280;
+        this.mGLThreadHandler.b = 720;
+        this.mGLThreadHandler.sendEmptyMessage(100);
+        continue;
+        localCountDownLatch.countDown();
       }
     }
   }
@@ -341,7 +345,7 @@ public class TRTCCustomTextureUtil
         {
           public void run()
           {
-            AppMethodBeat.i(15729);
+            AppMethodBeat.i(187401);
             if (localh != null) {
               localh.d();
             }
@@ -350,10 +354,10 @@ public class TRTCCustomTextureUtil
             }
             if (TRTCCustomTextureUtil.this.mCaptureAndEnc != null)
             {
-              TRTCCustomTextureUtil.access$500(TRTCCustomTextureUtil.this, "CustomCapture release");
-              TRTCCustomTextureUtil.this.mCaptureAndEnc.s();
+              TRTCCustomTextureUtil.access$300(TRTCCustomTextureUtil.this, "CustomCapture release");
+              TRTCCustomTextureUtil.this.mCaptureAndEnc.r();
             }
-            AppMethodBeat.o(15729);
+            AppMethodBeat.o(187401);
           }
         });
         g.a(this.mGLThreadHandler, this.mEGLThread);

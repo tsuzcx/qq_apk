@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.report.service;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public int ID;
-  public int wTD;
-  public int wTE;
-  public boolean wTF;
+  public int yhn;
+  public int yho;
+  public boolean yhp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -16,28 +16,28 @@ public final class b
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.ID);
-      paramVarArgs.aR(2, this.wTD);
-      paramVarArgs.aR(3, this.wTE);
-      paramVarArgs.bl(4, this.wTF);
+      paramVarArgs.aS(1, this.ID);
+      paramVarArgs.aS(2, this.yhn);
+      paramVarArgs.aS(3, this.yho);
+      paramVarArgs.bt(4, this.yhp);
       AppMethodBeat.o(143818);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bx(1, this.ID);
-      int i = f.a.a.b.b.a.bx(2, this.wTD);
-      int j = f.a.a.b.b.a.bx(3, this.wTE);
-      int k = f.a.a.b.b.a.fK(4);
+      paramInt = f.a.a.b.b.a.bz(1, this.ID);
+      int i = f.a.a.b.b.a.bz(2, this.yhn);
+      int j = f.a.a.b.b.a.bz(3, this.yho);
+      int k = f.a.a.b.b.a.alV(4);
       AppMethodBeat.o(143818);
-      return paramInt + 0 + i + j + (k + 1);
+      return paramInt + 0 + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(143818);
@@ -53,19 +53,19 @@ public final class b
         AppMethodBeat.o(143818);
         return -1;
       case 1: 
-        localb.ID = locala.LVo.xF();
+        localb.ID = locala.NPN.zc();
         AppMethodBeat.o(143818);
         return 0;
       case 2: 
-        localb.wTD = locala.LVo.xF();
+        localb.yhn = locala.NPN.zc();
         AppMethodBeat.o(143818);
         return 0;
       case 3: 
-        localb.wTE = locala.LVo.xF();
+        localb.yho = locala.NPN.zc();
         AppMethodBeat.o(143818);
         return 0;
       }
-      localb.wTF = locala.LVo.fZX();
+      localb.yhp = locala.NPN.grw();
       AppMethodBeat.o(143818);
       return 0;
     }

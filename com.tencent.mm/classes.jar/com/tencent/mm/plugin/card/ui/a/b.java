@@ -10,19 +10,19 @@ public final class b
     super(paramMMActivity);
   }
   
-  public final boolean bTb()
+  public final boolean bXG()
   {
     return true;
   }
   
-  public final boolean bTc()
+  public final boolean bXH()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.f;
 import java.util.ArrayList;
@@ -18,11 +18,11 @@ final class EmojiCustomUI$9
   {
     AppMethodBeat.i(108868);
     int i = 0;
-    while (i < this.pfx.size())
+    while (i < this.pIZ.size())
     {
-      ac.i("MicroMsg.emoji.EmojiCustomUI", "delete md5List md5:%s", new Object[] { this.pfx.get(i) });
-      EmojiInfo localEmojiInfo = k.getEmojiStorageMgr().GXZ.aOT((String)this.pfx.get(i));
-      h.wUl.f(10613, new Object[] { this.pfx.get(i), localEmojiInfo.field_groupId, localEmojiInfo.field_designerID, localEmojiInfo.field_activityid });
+      ad.i("MicroMsg.emoji.EmojiCustomUI", "delete md5List md5:%s", new Object[] { this.pIZ.get(i) });
+      EmojiInfo localEmojiInfo = k.getEmojiStorageMgr().ILn.aUK((String)this.pIZ.get(i));
+      g.yhR.f(10613, new Object[] { this.pIZ.get(i), localEmojiInfo.field_groupId, localEmojiInfo.field_designerID, localEmojiInfo.field_activityid });
       i += 1;
     }
     AppMethodBeat.o(108868);

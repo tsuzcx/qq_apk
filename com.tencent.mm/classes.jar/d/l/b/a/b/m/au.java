@@ -3,7 +3,7 @@ package d.l.b.a.b.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.ae;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.as;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,22 +14,22 @@ import java.util.Map;
 public abstract class au
   extends ay
 {
-  public static final a LLE = new a((byte)0);
+  public static final a NCz = new a((byte)0);
   
   public static final ay a(at paramat, List<? extends av> paramList)
   {
     return a.a(paramat, paramList);
   }
   
-  public static final au cg(Map<at, ? extends av> paramMap)
+  public static final au cj(Map<at, ? extends av> paramMap)
   {
-    return a.ch(paramMap);
+    return a.ck(paramMap);
   }
   
   public final av O(ab paramab)
   {
-    k.h(paramab, "key");
-    return d(paramab.gbz());
+    p.h(paramab, "key");
+    return d(paramab.gsZ());
   }
   
   public abstract av d(at paramat);
@@ -39,19 +39,19 @@ public abstract class au
     public static ay a(at paramat, List<? extends av> paramList)
     {
       AppMethodBeat.i(60835);
-      k.h(paramat, "typeConstructor");
-      k.h(paramList, "arguments");
+      p.h(paramat, "typeConstructor");
+      p.h(paramList, "arguments");
       Object localObject = paramat.getParameters();
-      k.g(localObject, "typeConstructor.parameters");
-      as localas = (as)j.iR((List)localObject);
+      p.g(localObject, "typeConstructor.parameters");
+      as localas = (as)j.jf((List)localObject);
       boolean bool;
       if (localas != null) {
-        bool = localas.fRa();
+        bool = localas.giy();
       }
       while (bool)
       {
         paramat = paramat.getParameters();
-        k.g(paramat, "typeConstructor.parameters");
+        p.g(paramat, "typeConstructor.parameters");
         localObject = (Iterable)paramat;
         paramat = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
         localObject = ((Iterable)localObject).iterator();
@@ -60,14 +60,14 @@ public abstract class au
           if (((Iterator)localObject).hasNext())
           {
             localas = (as)((Iterator)localObject).next();
-            k.g(localas, "it");
-            paramat.add(localas.fPW());
+            p.g(localas, "it");
+            paramat.add(localas.ghu());
             continue;
             bool = false;
             break;
           }
         }
-        paramat = (ay)ch(ae.y((Iterable)j.b((Iterable)paramat, (Iterable)paramList)));
+        paramat = (ay)ck(ae.A((Iterable)j.c((Iterable)paramat, (Iterable)paramList)));
         AppMethodBeat.o(60835);
         return paramat;
       }
@@ -79,16 +79,16 @@ public abstract class au
     public static ay ay(ab paramab)
     {
       AppMethodBeat.i(60834);
-      k.h(paramab, "kotlinType");
-      paramab = a(paramab.gbz(), paramab.gbw());
+      p.h(paramab, "kotlinType");
+      paramab = a(paramab.gsZ(), paramab.gsW());
       AppMethodBeat.o(60834);
       return paramab;
     }
     
-    public static au ch(Map<at, ? extends av> paramMap)
+    public static au ck(Map<at, ? extends av> paramMap)
     {
       AppMethodBeat.i(60833);
-      k.h(paramMap, "map");
+      p.h(paramMap, "map");
       paramMap = (au)new a(paramMap);
       AppMethodBeat.o(60833);
       return paramMap;
@@ -102,21 +102,21 @@ public abstract class au
       public final av d(at paramat)
       {
         AppMethodBeat.i(60831);
-        k.h(paramat, "key");
-        paramat = (av)this.LLF.get(paramat);
+        p.h(paramat, "key");
+        paramat = (av)this.NCA.get(paramat);
         AppMethodBeat.o(60831);
         return paramat;
       }
       
-      public final boolean gct()
+      public final boolean gtT()
       {
-        return this.LLG;
+        return this.NCB;
       }
       
       public final boolean isEmpty()
       {
         AppMethodBeat.i(60832);
-        boolean bool = this.LLF.isEmpty();
+        boolean bool = this.NCA.isEmpty();
         AppMethodBeat.o(60832);
         return bool;
       }
@@ -125,7 +125,7 @@ public abstract class au
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.au
  * JD-Core Version:    0.7.0.1
  */

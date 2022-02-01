@@ -14,10 +14,10 @@ public class URLSpanNoUnderline
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    AppMethodBeat.i(206145);
+    AppMethodBeat.i(192222);
     super.updateDrawState(paramTextPaint);
     paramTextPaint.setUnderlineText(false);
-    AppMethodBeat.o(206145);
+    AppMethodBeat.o(192222);
   }
 }
 

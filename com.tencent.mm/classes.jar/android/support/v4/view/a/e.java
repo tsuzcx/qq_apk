@@ -4,16 +4,16 @@ import android.view.accessibility.AccessibilityRecord;
 
 public final class e
 {
-  private final AccessibilityRecord PZ;
+  private final AccessibilityRecord RO;
   
   @Deprecated
   private e(Object paramObject)
   {
-    this.PZ = ((AccessibilityRecord)paramObject);
+    this.RO = ((AccessibilityRecord)paramObject);
   }
   
   @Deprecated
-  public static e fl()
+  public static e fC()
   {
     return new e(AccessibilityRecord.obtain());
   }
@@ -34,46 +34,46 @@ public final class e
           return false;
         }
         paramObject = (e)paramObject;
-        if (this.PZ != null) {
+        if (this.RO != null) {
           break;
         }
-      } while (paramObject.PZ == null);
+      } while (paramObject.RO == null);
       return false;
-    } while (this.PZ.equals(paramObject.PZ));
+    } while (this.RO.equals(paramObject.RO));
     return false;
   }
   
   @Deprecated
   public final int hashCode()
   {
-    if (this.PZ == null) {
+    if (this.RO == null) {
       return 0;
     }
-    return this.PZ.hashCode();
+    return this.RO.hashCode();
   }
   
   @Deprecated
   public final void setFromIndex(int paramInt)
   {
-    this.PZ.setFromIndex(paramInt);
+    this.RO.setFromIndex(paramInt);
   }
   
   @Deprecated
   public final void setItemCount(int paramInt)
   {
-    this.PZ.setItemCount(paramInt);
+    this.RO.setItemCount(paramInt);
   }
   
   @Deprecated
   public final void setScrollable(boolean paramBoolean)
   {
-    this.PZ.setScrollable(paramBoolean);
+    this.RO.setScrollable(paramBoolean);
   }
   
   @Deprecated
   public final void setToIndex(int paramInt)
   {
-    this.PZ.setToIndex(paramInt);
+    this.RO.setToIndex(paramInt);
   }
 }
 

@@ -4,7 +4,7 @@ import android.media.session.MediaSession.Token;
 
 final class d
 {
-  public static Object z(Object paramObject)
+  public static Object A(Object paramObject)
   {
     if ((paramObject instanceof MediaSession.Token)) {
       return paramObject;

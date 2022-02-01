@@ -10,40 +10,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private int JRF;
-  private com.tencent.d.c.a.c JRH;
+  private int LLx;
+  private com.tencent.d.c.a.c LLz;
   private Context mContext;
   private String mVersionName;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(138316);
-    this.JRH = null;
+    this.LLz = null;
     this.mVersionName = null;
-    this.JRF = -1;
+    this.LLx = -1;
     this.mContext = paramContext;
-    paramContext = i.cu(paramContext, paramContext.getPackageName());
+    paramContext = i.cz(paramContext, paramContext.getPackageName());
     this.mVersionName = paramContext.versionName;
-    this.JRF = paramContext.versionCode;
+    this.LLx = paramContext.versionCode;
     AppMethodBeat.o(138316);
   }
   
   private com.tencent.d.c.a.c a(com.tencent.d.e.a.b.a parama)
   {
     AppMethodBeat.i(138318);
-    if (this.JRH == null)
+    if (this.LLz == null)
     {
-      this.JRH = new com.tencent.d.c.a.c();
-      this.JRH.JRS = 82;
-      this.JRH.JRX = this.JRF;
-      this.JRH.JRP = parama.channel;
-      this.JRH.JRO = parama.JRO;
+      this.LLz = new com.tencent.d.c.a.c();
+      this.LLz.LLJ = 82;
+      this.LLz.LLO = this.LLx;
+      this.LLz.LLH = parama.channel;
+      this.LLz.LLG = parama.LLG;
     }
     try
     {
       String[] arrayOfString = this.mVersionName.trim().split("[\\.]");
       if ((arrayOfString == null) || (arrayOfString.length < 3)) {
-        break label334;
+        break label329;
       }
       k = Integer.parseInt(arrayOfString[0]);
       j = Integer.parseInt(arrayOfString[1]);
@@ -59,27 +59,27 @@ public final class c
         int k = 0;
       }
     }
-    this.JRH.JRT = new com.tencent.d.c.a.b();
-    this.JRH.JRT.JRL = k;
-    this.JRH.JRT.JRM = j;
-    this.JRH.JRT.JRN = i;
-    this.JRH.JRU = 0;
-    this.JRH.JRW = d.getSDKVersion();
-    this.JRH.imei = aTg(parama.imei);
-    this.JRH.imsi = aTg(parama.imsi);
-    this.JRH.JRQ = aTg(Build.MODEL);
-    this.JRH.yeO = aTg(d.kK(this.mContext));
-    this.JRH.JSc = aTg(d.yD(true));
-    this.JRH.JSd = aTg(d.yD(false));
-    this.JRH.JRV = 0;
-    this.JRH.JRR = getNetworkType();
-    this.JRH.guid = aTg(d.kM(this.mContext));
-    parama = this.JRH;
+    this.LLz.LLK = new com.tencent.d.c.a.b();
+    this.LLz.LLK.LLD = k;
+    this.LLz.LLK.LLE = j;
+    this.LLz.LLK.LLF = i;
+    this.LLz.LLL = 0;
+    this.LLz.LLN = d.getSDKVersion();
+    this.LLz.imei = aZg(parama.imei);
+    this.LLz.imsi = aZg(parama.imsi);
+    this.LLz.FtF = aZg(Build.MODEL);
+    this.LLz.zuP = aZg(d.kX(this.mContext));
+    this.LLz.LLT = aZg(d.zq(true));
+    this.LLz.LLU = aZg(d.zq(false));
+    this.LLz.LLM = 0;
+    this.LLz.LLI = getNetworkType();
+    this.LLz.guid = aZg("");
+    parama = this.LLz;
     AppMethodBeat.o(138318);
     return parama;
   }
   
-  private static String aTg(String paramString)
+  private static String aZg(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -93,7 +93,7 @@ public final class c
     AppMethodBeat.i(138319);
     try
     {
-      if (d.kL(this.mContext) == d.a.JUG)
+      if (d.kY(this.mContext) == d.a.LOz)
       {
         AppMethodBeat.o(138319);
         return 2;
@@ -115,13 +115,13 @@ public final class c
     try
     {
       l locall = new l();
-      locall.fCQ();
-      locall.aTp(paramString1);
-      locall.aTq(paramString2);
-      locall.aTo("UTF-8");
+      locall.fUi();
+      locall.aZp(paramString1);
+      locall.aZq(paramString2);
+      locall.aZo("UTF-8");
       locall.put("userInfo", a(parama));
       locall.put("req", parama);
-      paramString1 = com.tencent.d.f.b.compress(locall.JT());
+      paramString1 = com.tencent.d.f.b.compress(locall.Ls());
       if (paramString1 == null)
       {
         paramString1 = new RuntimeException("compress data fail");
@@ -137,7 +137,7 @@ public final class c
     {
       AppMethodBeat.o(138317);
       return paramString1;
-      paramString1 = com.tencent.d.f.c.n(paramString1, com.tencent.d.f.c.fCL());
+      paramString1 = com.tencent.d.f.c.n(paramString1, com.tencent.d.f.c.fUd());
     }
   }
 }

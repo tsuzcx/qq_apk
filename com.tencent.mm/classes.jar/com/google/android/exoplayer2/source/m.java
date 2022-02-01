@@ -4,9 +4,9 @@ public abstract interface m
 {
   public abstract boolean X(long paramLong);
   
-  public abstract long tL();
+  public abstract long vk();
   
-  public abstract long tM();
+  public abstract long vl();
   
   public static abstract interface a<T extends m>
   {
@@ -15,7 +15,7 @@ public abstract interface m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.source.m
  * JD-Core Version:    0.7.0.1
  */

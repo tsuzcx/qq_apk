@@ -2,31 +2,31 @@ package com.tencent.mm.pluginsdk.model;
 
 import android.os.FileObserver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class u
   extends FileObserver
 {
-  private a DhF;
-  private String xqk;
+  private a EMq;
+  private String yEN;
   
   public u(String paramString, a parama)
   {
     super(paramString);
     AppMethodBeat.i(151647);
-    ac.i("MicroMsg.ScreenshotObserver", "observer  ".concat(String.valueOf(paramString)));
-    this.DhF = parama;
+    ad.i("MicroMsg.ScreenshotObserver", "observer  ".concat(String.valueOf(paramString)));
+    this.EMq = parama;
     AppMethodBeat.o(151647);
   }
   
   public final void onEvent(int paramInt, String paramString)
   {
     AppMethodBeat.i(151648);
-    if ((paramString != null) && (paramInt == 8) && ((this.xqk == null) || (!paramString.equalsIgnoreCase(this.xqk))))
+    if ((paramString != null) && (paramInt == 8) && ((this.yEN == null) || (!paramString.equalsIgnoreCase(this.yEN))))
     {
-      this.xqk = paramString;
-      this.DhF.dow();
-      ac.i("MicroMsg.ScreenshotObserver", "Send event to listener. ".concat(String.valueOf(paramString)));
+      this.yEN = paramString;
+      this.EMq.dyR();
+      ad.i("MicroMsg.ScreenshotObserver", "Send event to listener. ".concat(String.valueOf(paramString)));
     }
     AppMethodBeat.o(151648);
   }
@@ -47,7 +47,7 @@ public final class u
   
   public static abstract interface a
   {
-    public abstract void dow();
+    public abstract void dyR();
   }
 }
 

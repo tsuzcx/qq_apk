@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.appbrand.w;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.az;
+import com.tencent.mm.g.c.ba;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.w;
-import com.tencent.mm.n.b;
+import com.tencent.mm.o.b;
 import com.tencent.mm.plugin.appbrand.service.e;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.storage.bk.a;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bq.a;
 
 public final class a
-  implements bk.a
+  implements bq.a
 {
-  public final void a(ap paramap, bk parambk)
+  public final void a(at paramat, bq parambq)
   {
     AppMethodBeat.i(48310);
-    if ((paramap != null) && (!bs.isNullOrNil(paramap.field_username)))
+    if ((paramat != null) && (!bt.isNullOrNil(paramat.field_username)))
     {
-      parambk = paramap.field_username;
-      ai localai = ((k)g.ab(k.class)).awB().aNt(parambk);
-      if ((localai == null) || ((int)localai.fLJ == 0))
+      parambq = paramat.field_username;
+      am localam = ((l)g.ab(l.class)).azp().Bf(parambq);
+      if ((localam == null) || ((int)localam.gfj == 0))
       {
-        ac.e("MicroMsg.AppBrandConversionExtension", "contact is null or contactId is 0 for %s", new Object[] { parambk });
+        ad.e("MicroMsg.AppBrandConversionExtension", "contact is null or contactId is 0 for %s", new Object[] { parambq });
         AppMethodBeat.o(48310);
         return;
       }
-      if ((ai.vC(parambk)) && (!w.wT(parambk)))
+      if ((am.yt(parambq)) && (!w.zQ(parambq)))
       {
-        ac.i("MicroMsg.AppBrandConversionExtension", "this conversation is a app brand contact!");
-        paramap.qT("appbrandcustomerservicemsg");
-        ((e)g.ab(e.class)).c(paramap);
+        ad.i("MicroMsg.AppBrandConversionExtension", "this conversation is a app brand contact!");
+        paramat.tD("appbrandcustomerservicemsg");
+        ((e)g.ab(e.class)).c(paramat);
         AppMethodBeat.o(48310);
         return;
       }
-      if (w.xp(parambk))
+      if (w.Am(parambq))
       {
-        ac.i("MicroMsg.AppBrandConversionExtension", "appBrandSuperConv is created");
-        paramap.qT(null);
+        ad.i("MicroMsg.AppBrandConversionExtension", "appBrandSuperConv is created");
+        paramat.tD(null);
       }
     }
     AppMethodBeat.o(48310);

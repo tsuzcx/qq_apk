@@ -15,7 +15,7 @@ final class LoginUI$9
     AppMethodBeat.i(128210);
     if ((paramInt == 6) || (paramInt == 5))
     {
-      LoginUI.e(this.iSO);
+      LoginUI.e(this.jlW);
       AppMethodBeat.o(128210);
       return true;
     }
@@ -25,7 +25,7 @@ final class LoginUI$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginUI.9
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,13 @@ package com.tencent.mm.emoji.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/search/SuggestWordInfo;", "", "wordVersion", "", "wordType", "", "wordSize", "preloadSessionId", "", "(JIILjava/lang/String;)V", "getPreloadSessionId", "()Ljava/lang/String;", "setPreloadSessionId", "(Ljava/lang/String;)V", "getWordSize", "()I", "setWordSize", "(I)V", "getWordType", "setWordType", "getWordVersion", "()J", "setWordVersion", "(J)V", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/search/SuggestWordInfo;", "", "wordVersion", "", "wordType", "", "wordSize", "preloadSessionId", "", "(JIILjava/lang/String;)V", "getPreloadSessionId", "()Ljava/lang/String;", "setPreloadSessionId", "(Ljava/lang/String;)V", "getWordSize", "()I", "setWordSize", "(I)V", "getWordType", "setWordType", "getWordVersion", "()J", "setWordVersion", "(J)V", "plugin-emojisdk_release"})
 public final class m
 {
-  public int fSL;
-  public long fSM;
-  public int fSW;
-  public String fSX;
+  public int gmA;
+  public String gmB;
+  public int gmp;
+  public long gmq;
   
   public m()
   {
@@ -18,12 +18,12 @@ public final class m
   
   private m(long paramLong, int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(209859);
-    this.fSM = paramLong;
-    this.fSL = paramInt1;
-    this.fSW = paramInt2;
-    this.fSX = paramString;
-    AppMethodBeat.o(209859);
+    AppMethodBeat.i(218984);
+    this.gmq = paramLong;
+    this.gmp = paramInt1;
+    this.gmA = paramInt2;
+    this.gmB = paramString;
+    AppMethodBeat.o(218984);
   }
 }
 

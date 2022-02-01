@@ -12,9 +12,9 @@ final class e
     d.a.a locala = new d.a.a();
     try
     {
-      locala.fFt = w.e(paramLooper);
-      locala.duc = 0;
-      if (locala.fFt == null)
+      locala.fYS = w.e(paramLooper);
+      locala.dGc = 0;
+      if (locala.fYS == null)
       {
         AppMethodBeat.o(155648);
         return null;
@@ -31,7 +31,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.e
  * JD-Core Version:    0.7.0.1
  */

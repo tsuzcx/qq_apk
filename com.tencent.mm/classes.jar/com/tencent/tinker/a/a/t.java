@@ -6,18 +6,18 @@ import java.util.Arrays;
 public final class t
   extends s.a.a<t>
 {
-  public static final t Kof = new t(0, i.Knm);
-  public short[] Kog;
+  public static final t Med = new t(0, i.Mdk);
+  public short[] Mee;
   
   public t(int paramInt, short[] paramArrayOfShort)
   {
     super(paramInt);
-    this.Kog = paramArrayOfShort;
+    this.Mee = paramArrayOfShort;
   }
   
   private int b(t paramt)
   {
-    return c.a(this.Kog, paramt.Kog);
+    return c.a(this.Mee, paramt.Mee);
   }
   
   public final boolean equals(Object paramObject)
@@ -31,12 +31,12 @@ public final class t
   
   public final int hashCode()
   {
-    return Arrays.hashCode(this.Kog);
+    return Arrays.hashCode(this.Mee);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.a.a.t
  * JD-Core Version:    0.7.0.1
  */

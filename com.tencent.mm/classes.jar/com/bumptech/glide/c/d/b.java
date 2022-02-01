@@ -9,18 +9,18 @@ import java.security.MessageDigest;
 public final class b<T>
   implements m<T>
 {
-  private static final m<?> aIZ;
+  private static final m<?> aKQ;
   
   static
   {
     AppMethodBeat.i(77347);
-    aIZ = new b();
+    aKQ = new b();
     AppMethodBeat.o(77347);
   }
   
-  public static <T> b<T> pa()
+  public static <T> b<T> ps()
   {
-    return (b)aIZ;
+    return (b)aKQ;
   }
   
   public final u<T> a(Context paramContext, u<T> paramu, int paramInt1, int paramInt2)

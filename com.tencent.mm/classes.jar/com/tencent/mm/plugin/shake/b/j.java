@@ -15,20 +15,20 @@ public final class j
   {
     AppMethodBeat.i(28145);
     c.a locala = new c.a();
-    locala.GvF = new Field[3];
+    locala.IhA = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.GvH.put("username", "TEXT default ''  PRIMARY KEY ");
+    locala.IhC.put("username", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "username";
+    locala.IhB = "username";
     locala.columns[1] = "lastshaketime";
-    locala.GvH.put("lastshaketime", "INTEGER default '0' ");
+    locala.IhC.put("lastshaketime", "INTEGER default '0' ");
     localStringBuilder.append(" lastshaketime INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "isshowed";
-    locala.GvH.put("isshowed", "INTEGER default 'false' ");
+    locala.IhC.put("isshowed", "INTEGER default 'false' ");
     localStringBuilder.append(" isshowed INTEGER default 'false' ");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

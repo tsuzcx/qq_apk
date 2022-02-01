@@ -1,35 +1,35 @@
 package com.tencent.mm.kiss.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class a
 {
-  private static a gkD;
-  public ao mHandler;
+  private static a gEn;
+  public ap mHandler;
   
   static
   {
     AppMethodBeat.i(140995);
-    gkD = new a();
+    gEn = new a();
     AppMethodBeat.o(140995);
   }
   
   private a()
   {
     AppMethodBeat.i(140994);
-    this.mHandler = new ao("InflateThread");
+    this.mHandler = new ap("InflateThread");
     AppMethodBeat.o(140994);
   }
   
-  public static a ahQ()
+  public static a akB()
   {
-    return gkD;
+    return gEn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.kiss.a.a
  * JD-Core Version:    0.7.0.1
  */

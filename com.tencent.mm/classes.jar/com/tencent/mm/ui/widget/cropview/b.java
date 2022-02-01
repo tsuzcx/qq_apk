@@ -2,10 +2,10 @@ package com.tencent.mm.ui.widget.cropview;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/widget/cropview/IBorderVisibilityCallback;", "", "onVisibility", "", "isShow", "", "libmmui_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/widget/cropview/IBorderVisibilityCallback;", "", "onVisibility", "", "isShow", "", "libmmui_release"})
 public abstract interface b
 {
-  public abstract void yb(boolean paramBoolean);
+  public abstract void yN(boolean paramBoolean);
 }
 
 

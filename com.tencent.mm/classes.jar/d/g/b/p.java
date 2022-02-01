@@ -1,54 +1,129 @@
 package d.g.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import d.e;
+import d.y;
+import java.util.Arrays;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/jvm/internal/PackageReference;", "Lkotlin/jvm/internal/ClassBasedDeclarationContainer;", "jClass", "Ljava/lang/Class;", "moduleName", "", "(Ljava/lang/Class;Ljava/lang/String;)V", "getJClass", "()Ljava/lang/Class;", "members", "", "Lkotlin/reflect/KCallable;", "getMembers", "()Ljava/util/Collection;", "equals", "", "other", "", "hashCode", "", "toString", "kotlin-stdlib"})
-public final class p
-  implements d
+public class p
 {
-  private final Class<?> KUC;
-  private final String ceF;
-  
-  public p(Class<?> paramClass, String paramString)
+  public static String C(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(129334);
-    this.KUC = paramClass;
-    this.ceF = paramString;
-    AppMethodBeat.o(129334);
+    AppMethodBeat.i(128973);
+    paramString = paramString + paramObject;
+    AppMethodBeat.o(128973);
+    return paramString;
   }
   
-  public final boolean equals(Object paramObject)
+  public static boolean a(Float paramFloat)
   {
-    AppMethodBeat.i(129331);
-    if (((paramObject instanceof p)) && (k.g(this.KUC, ((p)paramObject).KUC)))
+    AppMethodBeat.i(128979);
+    if ((paramFloat != null) && (paramFloat.floatValue() == 0.0F))
     {
-      AppMethodBeat.o(129331);
+      AppMethodBeat.o(128979);
       return true;
     }
-    AppMethodBeat.o(129331);
+    AppMethodBeat.o(128979);
     return false;
   }
   
-  public final Class<?> fOt()
+  static <T extends Throwable> T b(T paramT, String paramString)
   {
-    return this.KUC;
+    AppMethodBeat.i(128981);
+    StackTraceElement[] arrayOfStackTraceElement = paramT.getStackTrace();
+    int k = arrayOfStackTraceElement.length;
+    int j = -1;
+    int i = 0;
+    while (i < k)
+    {
+      if (paramString.equals(arrayOfStackTraceElement[i].getClassName())) {
+        j = i;
+      }
+      i += 1;
+    }
+    paramT.setStackTrace((StackTraceElement[])Arrays.copyOfRange(arrayOfStackTraceElement, j + 1, k));
+    AppMethodBeat.o(128981);
+    return paramT;
   }
   
-  public final int hashCode()
+  public static void bcb(String paramString)
   {
-    AppMethodBeat.i(129332);
-    int i = this.KUC.hashCode();
-    AppMethodBeat.o(129332);
-    return i;
+    AppMethodBeat.i(128975);
+    paramString = (y)p(new y("lateinit property " + paramString + " has not been initialized"));
+    AppMethodBeat.o(128975);
+    throw paramString;
   }
   
-  public final String toString()
+  public static int compare(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(129333);
-    String str = this.KUC.toString() + " (Kotlin reflection is not available)";
-    AppMethodBeat.o(129333);
-    return str;
+    if (paramInt1 < paramInt2) {
+      return -1;
+    }
+    if (paramInt1 == paramInt2) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public static void g(Object paramObject, String paramString)
+  {
+    AppMethodBeat.i(128976);
+    if (paramObject == null)
+    {
+      paramObject = (IllegalStateException)p(new IllegalStateException(paramString + " must not be null"));
+      AppMethodBeat.o(128976);
+      throw paramObject;
+    }
+    AppMethodBeat.o(128976);
+  }
+  
+  public static void gfZ()
+  {
+    AppMethodBeat.i(128974);
+    e locale = (e)p(new e());
+    AppMethodBeat.o(128974);
+    throw locale;
+  }
+  
+  public static void h(Object paramObject, String paramString)
+  {
+    AppMethodBeat.i(128977);
+    if (paramObject == null)
+    {
+      Object localObject = java.lang.Thread.currentThread().getStackTrace()[3];
+      paramObject = ((StackTraceElement)localObject).getClassName();
+      localObject = ((StackTraceElement)localObject).getMethodName();
+      paramObject = (IllegalArgumentException)p(new IllegalArgumentException("Parameter specified as non-null is null: method " + paramObject + "." + (String)localObject + ", parameter " + paramString));
+      AppMethodBeat.o(128977);
+      throw paramObject;
+    }
+    AppMethodBeat.o(128977);
+  }
+  
+  public static boolean i(Object paramObject1, Object paramObject2)
+  {
+    AppMethodBeat.i(128978);
+    if (paramObject1 == null)
+    {
+      if (paramObject2 == null)
+      {
+        AppMethodBeat.o(128978);
+        return true;
+      }
+      AppMethodBeat.o(128978);
+      return false;
+    }
+    boolean bool = paramObject1.equals(paramObject2);
+    AppMethodBeat.o(128978);
+    return bool;
+  }
+  
+  private static <T extends Throwable> T p(T paramT)
+  {
+    AppMethodBeat.i(128980);
+    paramT = b(paramT, p.class.getName());
+    AppMethodBeat.o(128980);
+    return paramT;
   }
 }
 

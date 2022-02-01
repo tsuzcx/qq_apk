@@ -5,7 +5,7 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.finder.feed.ui.FinderProfileUI;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public final class h
@@ -30,7 +30,7 @@ public final class h
       return;
     }
     Object localObject = paramJSONObject.optString("username", "");
-    if (bs.isNullOrNil((String)localObject))
+    if (bt.isNullOrNil((String)localObject))
     {
       paramc.h(paramInt, "fail:username is null");
       AppMethodBeat.o(163962);
@@ -38,7 +38,7 @@ public final class h
     }
     paramJSONObject = new Intent(paramc.getContext(), FinderProfileUI.class);
     paramJSONObject.putExtra("finder_username", (String)localObject);
-    localObject = com.tencent.mm.plugin.finder.utils.a.rOv;
+    localObject = com.tencent.mm.plugin.finder.utils.a.sKD;
     com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI(paramc.getContext(), paramJSONObject);
     AppMethodBeat.o(163962);
   }

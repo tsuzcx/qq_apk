@@ -5,62 +5,62 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.sortview.a.a;
 import com.tencent.mm.ui.base.sortview.a.b;
 
 public final class f
   extends com.tencent.mm.ui.base.sortview.a
 {
-  private static a.b nvR;
-  int MW;
-  long nvV;
-  String nvW;
-  String nxK;
+  private static a.b nXp;
+  int fq;
+  long nXt;
+  String nXu;
+  String nZi;
   
   public f(long paramLong, int paramInt, String paramString)
   {
     super(2, null);
-    this.nvV = paramLong;
-    this.nvW = paramString;
-    this.MW = paramInt;
+    this.nXt = paramLong;
+    this.nXu = paramString;
+    this.fq = paramInt;
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
-    this.nxK = "";
+    this.nZi = "";
   }
   
-  public final a.b bJw()
+  public final a.b bNP()
   {
     AppMethodBeat.i(5757);
-    if (nvR == null) {
-      nvR = new a.b()
+    if (nXp == null) {
+      nXp = new a.b()
       {
         public final void a(Context paramAnonymousContext, a.a paramAnonymousa, com.tencent.mm.ui.base.sortview.a paramAnonymousVarArgs)
         {
           AppMethodBeat.i(5755);
           if ((paramAnonymousContext == null) || (paramAnonymousa == null) || (paramAnonymousVarArgs == null))
           {
-            ac.e("MicroMsg.ReadMoreBtnDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
+            ad.e("MicroMsg.ReadMoreBtnDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
             AppMethodBeat.o(5755);
             return;
           }
           if (!(paramAnonymousa instanceof f.a))
           {
-            ac.e("MicroMsg.ReadMoreBtnDataItem", "The ViewHolder is not a instance of MoreBtnViewHolder.");
+            ad.e("MicroMsg.ReadMoreBtnDataItem", "The ViewHolder is not a instance of MoreBtnViewHolder.");
             AppMethodBeat.o(5755);
             return;
           }
           if (!(paramAnonymousVarArgs instanceof f))
           {
-            ac.e("MicroMsg.ReadMoreBtnDataItem", "The DataItem is not a instance of MoreBtnDataItem.");
+            ad.e("MicroMsg.ReadMoreBtnDataItem", "The DataItem is not a instance of MoreBtnDataItem.");
             AppMethodBeat.o(5755);
             return;
           }
           paramAnonymousContext = (f.a)paramAnonymousa;
           paramAnonymousa = (f)paramAnonymousVarArgs;
-          paramAnonymousContext.lzD.setText(paramAnonymousa.nxK);
+          paramAnonymousContext.lZb.setText(paramAnonymousa.nZi);
           AppMethodBeat.o(5755);
         }
         
@@ -68,7 +68,7 @@ public final class f
         {
           AppMethodBeat.i(5756);
           if ((paramAnonymousView != null) && (paramAnonymousa != null) && ((paramAnonymousa instanceof f.a))) {
-            ((f.a)paramAnonymousa).lzD = ((TextView)paramAnonymousView.findViewById(2131305885));
+            ((f.a)paramAnonymousa).lZb = ((TextView)paramAnonymousView.findViewById(2131305885));
           }
           AppMethodBeat.o(5756);
         }
@@ -86,14 +86,14 @@ public final class f
           {
             paramAnonymousa = (f)paramAnonymousa;
             paramAnonymousVarArgs = new Intent(paramAnonymousContext, BizSearchDetailPageUI.class);
-            paramAnonymousVarArgs.putExtra("keyword", paramAnonymousa.nvW);
-            paramAnonymousVarArgs.putExtra("businessType", paramAnonymousa.nvV);
-            paramAnonymousVarArgs.putExtra("offset", paramAnonymousa.MW);
+            paramAnonymousVarArgs.putExtra("keyword", paramAnonymousa.nXu);
+            paramAnonymousVarArgs.putExtra("businessType", paramAnonymousa.nXt);
+            paramAnonymousVarArgs.putExtra("offset", paramAnonymousa.fq);
             paramAnonymousVarArgs.putExtra("showEditText", true);
             paramAnonymousVarArgs.putExtra("fromScene", i);
-            paramAnonymousa = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousVarArgs);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousContext, paramAnonymousa.aeD(), "com/tencent/mm/plugin/brandservice/ui/ReadMoreBtnDataItem$1", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/ui/base/sortview/BaseDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousContext.startActivity((Intent)paramAnonymousa.lR(0));
+            paramAnonymousa = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousVarArgs);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousContext, paramAnonymousa.ahp(), "com/tencent/mm/plugin/brandservice/ui/ReadMoreBtnDataItem$1", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/ui/base/sortview/BaseDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousContext.startActivity((Intent)paramAnonymousa.mq(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousContext, "com/tencent/mm/plugin/brandservice/ui/ReadMoreBtnDataItem$1", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/ui/base/sortview/BaseDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             AppMethodBeat.o(5753);
             return true;
@@ -112,12 +112,12 @@ public final class f
         }
       };
     }
-    a.b localb = nvR;
+    a.b localb = nXp;
     AppMethodBeat.o(5757);
     return localb;
   }
   
-  public final a.a bJx()
+  public final a.a bNQ()
   {
     AppMethodBeat.i(5758);
     a locala = new a();
@@ -128,12 +128,12 @@ public final class f
   public static final class a
     implements a.a
   {
-    public TextView lzD;
+    public TextView lZb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.f
  * JD-Core Version:    0.7.0.1
  */

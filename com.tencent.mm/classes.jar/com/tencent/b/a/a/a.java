@@ -6,31 +6,31 @@ import org.json.JSONObject;
 
 final class a
 {
-  public static String cDd = "ts";
-  public static String cDe = "times";
-  public static String cDf = "mfreq";
-  public static String cDg = "mdays";
-  long cCZ;
-  int cDa;
-  int cDb;
-  int cDc;
+  public static String cOi = "ts";
+  public static String cOj = "times";
+  public static String cOk = "mfreq";
+  public static String cOl = "mdays";
+  long cOe;
+  int cOf;
+  int cOg;
+  int cOh;
   
   a()
   {
-    this.cCZ = 0L;
-    this.cDa = 0;
-    this.cDb = 100;
-    this.cDc = 3;
+    this.cOe = 0L;
+    this.cOf = 0;
+    this.cOg = 100;
+    this.cOh = 3;
   }
   
   a(String paramString)
   {
     AppMethodBeat.i(87622);
-    this.cCZ = 0L;
-    this.cDa = 0;
-    this.cDb = 100;
-    this.cDc = 3;
-    if (!s.jdMethod_do(paramString))
+    this.cOe = 0L;
+    this.cOf = 0;
+    this.cOg = 100;
+    this.cOh = 3;
+    if (!s.ek(paramString))
     {
       AppMethodBeat.o(87622);
       return;
@@ -38,25 +38,25 @@ final class a
     try
     {
       paramString = new JSONObject(paramString);
-      if (!paramString.isNull(cDd)) {
-        this.cCZ = paramString.getLong(cDd);
+      if (!paramString.isNull(cOi)) {
+        this.cOe = paramString.getLong(cOi);
       }
-      if (!paramString.isNull(cDf)) {
-        this.cDb = paramString.getInt(cDf);
+      if (!paramString.isNull(cOk)) {
+        this.cOg = paramString.getInt(cOk);
       }
-      if (!paramString.isNull(cDe)) {
-        this.cDa = paramString.getInt(cDe);
+      if (!paramString.isNull(cOj)) {
+        this.cOf = paramString.getInt(cOj);
       }
-      if (!paramString.isNull(cDg))
+      if (!paramString.isNull(cOl))
       {
-        this.cDc = paramString.getInt(cDg);
+        this.cOh = paramString.getInt(cOl);
         AppMethodBeat.o(87622);
         return;
       }
     }
     catch (JSONException paramString)
     {
-      s.Il();
+      s.JL();
       AppMethodBeat.o(87622);
     }
   }
@@ -67,10 +67,10 @@ final class a
     Object localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put(cDd, this.cCZ);
-      ((JSONObject)localObject).put(cDe, this.cDa);
-      ((JSONObject)localObject).put(cDf, this.cDb);
-      ((JSONObject)localObject).put(cDg, this.cDc);
+      ((JSONObject)localObject).put(cOi, this.cOe);
+      ((JSONObject)localObject).put(cOj, this.cOf);
+      ((JSONObject)localObject).put(cOk, this.cOg);
+      ((JSONObject)localObject).put(cOl, this.cOh);
       localObject = ((JSONObject)localObject).toString();
       AppMethodBeat.o(87623);
       return localObject;
@@ -79,14 +79,14 @@ final class a
     {
       for (;;)
       {
-        s.Il();
+        s.JL();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.b.a.a.a
  * JD-Core Version:    0.7.0.1
  */

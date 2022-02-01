@@ -1,6 +1,7 @@
 package com.tencent.rtmp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -114,7 +115,7 @@ public class TXLivePlayer
     AppMethodBeat.o(14025);
   }
   
-  public void setAudioVolumeEvaluationListener(TXLivePlayer.ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
+  public void setAudioVolumeEvaluationListener(ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
   {
     AppMethodBeat.i(14027);
     this.mTXLivePlayerImpl.a(paramITXAudioVolumeEvaluationListener);
@@ -207,6 +208,14 @@ public class TXLivePlayer
     AppMethodBeat.o(14030);
   }
   
+  public int setVideoRenderListener(ITXLivePlayVideoRenderListener paramITXLivePlayVideoRenderListener, Object paramObject)
+  {
+    AppMethodBeat.i(187544);
+    int i = this.mTXLivePlayerImpl.a(paramITXLivePlayVideoRenderListener, paramObject);
+    AppMethodBeat.o(187544);
+    return i;
+  }
+  
   public void setVolume(int paramInt)
   {
     AppMethodBeat.i(14024);
@@ -214,7 +223,7 @@ public class TXLivePlayer
     AppMethodBeat.o(14024);
   }
   
-  public void snapshot(TXLivePlayer.ITXSnapshotListener paramITXSnapshotListener)
+  public void snapshot(ITXSnapshotListener paramITXSnapshotListener)
   {
     AppMethodBeat.i(14033);
     this.mTXLivePlayerImpl.a(paramITXSnapshotListener);
@@ -268,9 +277,32 @@ public class TXLivePlayer
     public abstract void onPcmDataAvailable(byte[] paramArrayOfByte, long paramLong);
   }
   
+  public static abstract interface ITXAudioVolumeEvaluationListener
+  {
+    public abstract void onAudioVolumeEvaluationNotify(int paramInt);
+  }
+  
+  public static abstract interface ITXLivePlayVideoRenderListener
+  {
+    public abstract void onRenderVideoFrame(TXLivePlayer.TXLiteAVTexture paramTXLiteAVTexture);
+  }
+  
+  public static abstract interface ITXSnapshotListener
+  {
+    public abstract void onSnapshot(Bitmap paramBitmap);
+  }
+  
   public static abstract interface ITXVideoRawDataListener
   {
     public abstract void onVideoRawDataAvailable(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
+  }
+  
+  public static class TXLiteAVTexture
+  {
+    public Object eglContext;
+    public int height;
+    public int textureId;
+    public int width;
   }
 }
 

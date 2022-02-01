@@ -2,57 +2,58 @@ package com.tencent.mm.plugin.shake.b;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.g.a.lv;
-import com.tencent.mm.g.a.qp;
-import com.tencent.mm.g.a.sy;
-import com.tencent.mm.g.a.vl;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.model.cc;
-import com.tencent.mm.model.cc.a;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.c;
+import com.tencent.mm.g.a.ra;
+import com.tencent.mm.g.a.tp;
+import com.tencent.mm.g.a.we;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.ca;
+import com.tencent.mm.model.cd;
+import com.tencent.mm.model.cd.a;
 import com.tencent.mm.model.w;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.shake.d.a.o;
-import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.protocal.protobuf.cv;
 import com.tencent.mm.sdk.b.b;
 import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bj.a;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.storage.bk.a;
-import com.tencent.mm.storage.by;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bp.a;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bq.a;
+import com.tencent.mm.storage.ce;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class m
-  implements aw
+  implements ax
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.sdk.b.c frK;
-  private bk.a hnP;
-  private ao mHandler;
-  private com.tencent.mm.sdk.b.c vco;
-  private bj.a viU;
-  private e xxp;
-  private g xxq;
-  private com.tencent.mm.plugin.shake.c.a.f xxr;
-  private com.tencent.mm.plugin.shake.c.a.d xxs;
-  private o xxt;
-  private n xxu;
-  com.tencent.mm.pluginsdk.c.d xxv;
-  private cc.a xxw;
-  private com.tencent.mm.sdk.b.c xxx;
-  private cc.a xxy;
-  private cc.a xxz;
+  private com.tencent.mm.sdk.b.c fJT;
+  private bq.a hGh;
+  private ap mHandler;
+  private com.tencent.mm.sdk.b.c whK;
+  private bp.a won;
+  private e yMa;
+  private g yMb;
+  private com.tencent.mm.plugin.shake.c.a.f yMc;
+  private com.tencent.mm.plugin.shake.c.a.d yMd;
+  private o yMe;
+  private n yMf;
+  com.tencent.mm.pluginsdk.c.d yMg;
+  private cd.a yMh;
+  private com.tencent.mm.sdk.b.c yMi;
+  private cd.a yMj;
+  private cd.a yMk;
   
   static
   {
@@ -87,115 +88,125 @@ public final class m
   public m()
   {
     AppMethodBeat.i(28163);
-    this.mHandler = new ao(Looper.getMainLooper());
-    this.xxu = new n();
-    this.xxv = new com.tencent.mm.pluginsdk.c.d()
+    this.mHandler = new ap(Looper.getMainLooper());
+    this.yMf = new n();
+    this.yMg = new com.tencent.mm.pluginsdk.c.d()
     {
-      public final b agM(String paramAnonymousString)
+      public final b alj(String paramAnonymousString)
       {
         AppMethodBeat.i(28149);
-        sy localsy = new sy();
-        localsy.dvR.cZV = paramAnonymousString;
+        tp localtp = new tp();
+        localtp.dIa.dln = paramAnonymousString;
         AppMethodBeat.o(28149);
-        return localsy;
+        return localtp;
       }
       
-      public final k cOj()
+      public final k cWC()
       {
         AppMethodBeat.i(28150);
-        g localg = m.dDm();
+        g localg = m.dOP();
         AppMethodBeat.o(28150);
         return localg;
       }
     };
-    this.frK = new com.tencent.mm.sdk.b.c() {};
-    this.xxw = new cc.a()
+    this.fJT = new com.tencent.mm.sdk.b.c() {};
+    this.yMh = new cd.a()
     {
-      public final void a(f.a paramAnonymousa)
+      public final void a(e.a paramAnonymousa)
       {
         AppMethodBeat.i(28161);
-        m.dDs();
-        if (m.dDp() != null)
+        m.dOV();
+        if (m.dOS() != null)
         {
-          m.dDs();
-          m.dDp();
-          Object localObject = z.a(paramAnonymousa.fXi.DPV);
-          ac.v("MicroMsg.ShakeMsgMgr", "func[onResvMsg] content:".concat(String.valueOf(localObject)));
-          if (bs.isNullOrNil((String)localObject))
+          m.dOV();
+          m.dOS();
+          Object localObject = z.a(paramAnonymousa.gqE.Fvk);
+          ad.v("MicroMsg.ShakeMsgMgr", "func[onResvMsg] content:".concat(String.valueOf(localObject)));
+          if (bt.isNullOrNil((String)localObject))
           {
-            ac.d("MicroMsg.ShakeMsgMgr", "func[onResvMsg] Msg content empty");
+            ad.d("MicroMsg.ShakeMsgMgr", "func[onResvMsg] Msg content empty");
             AppMethodBeat.o(28161);
             return;
           }
-          localObject = bv.L((String)localObject, "sysmsg");
-          int i = bs.getInt((String)((Map)localObject).get(".sysmsg.shake.$type"), 0);
+          localObject = bw.M((String)localObject, "sysmsg");
+          int i = bt.getInt((String)((Map)localObject).get(".sysmsg.shake.$type"), 0);
           switch (i)
           {
           default: 
-            ac.d("MicroMsg.ShakeMsgMgr", "Unrecognized type :".concat(String.valueOf(i)));
+            ad.d("MicroMsg.ShakeMsgMgr", "Unrecognized type :".concat(String.valueOf(i)));
             AppMethodBeat.o(28161);
             return;
           }
           f localf = new f();
-          i = bs.getInt((String)((Map)localObject).get(".sysmsg.shake.shaketv.msgtype"), 0);
+          i = bt.getInt((String)((Map)localObject).get(".sysmsg.shake.shaketv.msgtype"), 0);
           if (i == 0)
           {
             localf.field_type = 1;
             localf.field_subtype = i;
-            localf.field_svrid = paramAnonymousa.fXi.vTQ;
-            localf.field_createtime = bs.aNx();
+            localf.field_svrid = paramAnonymousa.gqE.xbt;
+            localf.field_createtime = bt.aQJ();
             localf.field_tag = ((String)((Map)localObject).get(".sysmsg.shake.shaketv.jumpurl"));
             localf.field_status = 0;
             localf.field_title = ((String)((Map)localObject).get(".sysmsg.shake.shaketv.title"));
             localf.field_thumburl = ((String)((Map)localObject).get(".sysmsg.shake.shaketv.iconurl"));
             localf.field_desc = ((String)((Map)localObject).get(".sysmsg.shake.shaketv.desc"));
-            localf.field_reserved1 = bs.nullAsNil((String)((Map)localObject).get(".sysmsg.shake.shaketv.pid"));
-            m.dDm().a(localf);
+            localf.field_reserved1 = bt.nullAsNil((String)((Map)localObject).get(".sysmsg.shake.shaketv.pid"));
+            m.dOP().a(localf);
             AppMethodBeat.o(28161);
             return;
           }
-          ac.w("MicroMsg.ShakeMsgMgr", "Unknown subType:".concat(String.valueOf(i)));
+          ad.w("MicroMsg.ShakeMsgMgr", "Unknown subType:".concat(String.valueOf(i)));
           AppMethodBeat.o(28161);
           return;
         }
-        ac.w("MicroMsg.SubCoreShake", "func[onRecieveMsg] getShakeMsgMgr null");
+        ad.w("MicroMsg.SubCoreShake", "func[onRecieveMsg] getShakeMsgMgr null");
         AppMethodBeat.o(28161);
       }
       
-      public final void a(f.c paramAnonymousc) {}
+      public final void a(e.c paramAnonymousc) {}
     };
-    this.viU = new bj.a()
+    this.won = new bp.a()
     {
-      public final void a(bj paramAnonymousbj, ai paramAnonymousai)
+      public final am Bf(String paramAnonymousString)
+      {
+        return null;
+      }
+      
+      public final void a(bp paramAnonymousbp, am paramAnonymousam)
       {
         AppMethodBeat.i(28162);
-        if ((paramAnonymousbj != null) && (paramAnonymousai != null) && (paramAnonymousai.aaH())) {
-          m.dDl().asj(paramAnonymousai.field_username);
+        if ((paramAnonymousbp != null) && (paramAnonymousam != null) && (paramAnonymousam.adk())) {
+          m.dOO().axj(paramAnonymousam.field_username);
         }
         AppMethodBeat.o(28162);
       }
+      
+      public final int b(am paramAnonymousam, boolean paramAnonymousBoolean)
+      {
+        return 0;
+      }
     };
-    this.hnP = new bk.a()
+    this.hGh = new bq.a()
     {
-      public final void a(com.tencent.mm.storage.ap paramAnonymousap, bk paramAnonymousbk)
+      public final void a(at paramAnonymousat, bq paramAnonymousbq)
       {
         AppMethodBeat.i(28151);
-        if ((paramAnonymousap != null) && (w.xk(paramAnonymousap.field_username))) {
-          paramAnonymousap.setUsername("");
+        if ((paramAnonymousat != null) && (w.Ah(paramAnonymousat.field_username))) {
+          paramAnonymousat.setUsername("");
         }
         AppMethodBeat.o(28151);
       }
     };
-    this.xxx = new com.tencent.mm.sdk.b.c() {};
-    this.xxy = new cc.a()
+    this.yMi = new com.tencent.mm.sdk.b.c() {};
+    this.yMj = new cd.a()
     {
-      public final void a(final f.a paramAnonymousa)
+      public final void a(final e.a paramAnonymousa)
       {
         AppMethodBeat.i(28154);
-        final String str = z.a(paramAnonymousa.fXi.DPV);
+        final String str = z.a(paramAnonymousa.gqE.Fvk);
         if ((str == null) || (str.length() == 0))
         {
-          ac.e("MicroMsg.SubCoreShake", "onReceiveMsg, ShakeCardEntranceMsg msgContent is null");
+          ad.e("MicroMsg.SubCoreShake", "onReceiveMsg, ShakeCardEntranceMsg msgContent is null");
           AppMethodBeat.o(28154);
           return;
         }
@@ -204,24 +215,24 @@ public final class m
           public final void run()
           {
             AppMethodBeat.i(28153);
-            m.dDq().k(str, paramAnonymousa.fXi.vTQ, 0);
+            m.dOT().m(str, paramAnonymousa.gqE.xbt, 0);
             AppMethodBeat.o(28153);
           }
         });
         AppMethodBeat.o(28154);
       }
       
-      public final void a(f.c paramAnonymousc) {}
+      public final void a(e.c paramAnonymousc) {}
     };
-    this.xxz = new cc.a()
+    this.yMk = new cd.a()
     {
-      public final void a(final f.a paramAnonymousa)
+      public final void a(final e.a paramAnonymousa)
       {
         AppMethodBeat.i(28156);
-        final String str = z.a(paramAnonymousa.fXi.DPV);
+        final String str = z.a(paramAnonymousa.gqE.Fvk);
         if ((str == null) || (str.length() == 0))
         {
-          ac.e("MicroMsg.SubCoreShake", "onReceiveMsg, ShakeCardRedDotMsg msgContent is null");
+          ad.e("MicroMsg.SubCoreShake", "onReceiveMsg, ShakeCardRedDotMsg msgContent is null");
           AppMethodBeat.o(28156);
           return;
         }
@@ -230,26 +241,26 @@ public final class m
           public final void run()
           {
             AppMethodBeat.i(28155);
-            m.dDq().k(str, paramAnonymousa.fXi.vTQ, 1);
+            m.dOT().m(str, paramAnonymousa.gqE.xbt, 1);
             AppMethodBeat.o(28155);
           }
         });
         AppMethodBeat.o(28156);
       }
       
-      public final void a(f.c paramAnonymousc) {}
+      public final void a(e.c paramAnonymousc) {}
     };
-    this.vco = new com.tencent.mm.sdk.b.c() {};
+    this.whK = new m.6(this);
     AppMethodBeat.o(28163);
   }
   
-  public static String Cw(String paramString)
+  public static String FA(String paramString)
   {
     AppMethodBeat.i(28172);
-    if (com.tencent.mm.model.az.agM())
+    if (com.tencent.mm.model.ba.ajx())
     {
-      com.tencent.mm.model.az.ayM();
-      paramString = String.format("%s/Sk_%s", new Object[] { com.tencent.mm.model.c.awR(), com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) });
+      com.tencent.mm.model.ba.aBQ();
+      paramString = String.format("%s/Sk_%s", new Object[] { com.tencent.mm.model.c.azG(), com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) });
       AppMethodBeat.o(28172);
       return paramString;
     }
@@ -257,114 +268,114 @@ public final class m
     return "";
   }
   
-  private static m dDk()
+  private static m dON()
   {
     AppMethodBeat.i(28164);
-    com.tencent.mm.model.az.ayG();
-    m localm2 = (m)bz.yz("plugin.shake");
+    com.tencent.mm.model.ba.aBK();
+    m localm2 = (m)ca.By("plugin.shake");
     m localm1 = localm2;
     if (localm2 == null)
     {
       localm1 = new m();
-      com.tencent.mm.model.az.ayG().a("plugin.shake", localm1);
+      com.tencent.mm.model.ba.aBK().a("plugin.shake", localm1);
     }
     AppMethodBeat.o(28164);
     return localm1;
   }
   
-  public static e dDl()
+  public static e dOO()
   {
     AppMethodBeat.i(28165);
-    com.tencent.mm.kernel.g.agP().afT();
-    if (dDk().xxp == null)
+    com.tencent.mm.kernel.g.ajA().aiF();
+    if (dON().yMa == null)
     {
-      localObject = dDk();
-      com.tencent.mm.model.az.ayM();
-      ((m)localObject).xxp = new e(com.tencent.mm.model.c.agw());
+      localObject = dON();
+      com.tencent.mm.model.ba.aBQ();
+      ((m)localObject).yMa = new e(com.tencent.mm.model.c.getDataDB());
     }
-    Object localObject = dDk().xxp;
+    Object localObject = dON().yMa;
     AppMethodBeat.o(28165);
     return localObject;
   }
   
-  public static g dDm()
+  public static g dOP()
   {
     AppMethodBeat.i(28166);
-    com.tencent.mm.kernel.g.agP().afT();
-    if (dDk().xxq == null)
+    com.tencent.mm.kernel.g.ajA().aiF();
+    if (dON().yMb == null)
     {
-      localObject = dDk();
-      com.tencent.mm.model.az.ayM();
-      ((m)localObject).xxq = new g(com.tencent.mm.model.c.agw());
+      localObject = dON();
+      com.tencent.mm.model.ba.aBQ();
+      ((m)localObject).yMb = new g(com.tencent.mm.model.c.getDataDB());
     }
-    Object localObject = dDk().xxq;
+    Object localObject = dON().yMb;
     AppMethodBeat.o(28166);
     return localObject;
   }
   
-  public static o dDn()
+  public static o dOQ()
   {
     AppMethodBeat.i(28167);
-    com.tencent.mm.kernel.g.agP().afT();
-    if (dDk().xxt == null)
+    com.tencent.mm.kernel.g.ajA().aiF();
+    if (dON().yMe == null)
     {
-      localObject = dDk();
-      com.tencent.mm.model.az.ayM();
-      ((m)localObject).xxt = new o(com.tencent.mm.model.c.agw());
+      localObject = dON();
+      com.tencent.mm.model.ba.aBQ();
+      ((m)localObject).yMe = new o(com.tencent.mm.model.c.getDataDB());
     }
-    Object localObject = dDk().xxt;
+    Object localObject = dON().yMe;
     AppMethodBeat.o(28167);
     return localObject;
   }
   
-  public static void dDo()
+  public static void dOR()
   {
     AppMethodBeat.i(28169);
-    dDl().dDa();
-    com.tencent.mm.bj.d.aJg().aZf();
+    dOO().dOD();
+    com.tencent.mm.bk.d.aMq().bcD();
     AppMethodBeat.o(28169);
   }
   
-  public static i dDp()
+  public static i dOS()
   {
     AppMethodBeat.i(28171);
-    com.tencent.mm.kernel.g.agP().afT();
-    i locali = i.xxe;
+    com.tencent.mm.kernel.g.ajA().aiF();
+    i locali = i.yLP;
     AppMethodBeat.o(28171);
     return locali;
   }
   
-  public static com.tencent.mm.plugin.shake.c.a.f dDq()
+  public static com.tencent.mm.plugin.shake.c.a.f dOT()
   {
     AppMethodBeat.i(28174);
-    com.tencent.mm.kernel.g.agP().afT();
-    if (dDk().xxr == null) {
-      dDk().xxr = new com.tencent.mm.plugin.shake.c.a.f();
+    com.tencent.mm.kernel.g.ajA().aiF();
+    if (dON().yMc == null) {
+      dON().yMc = new com.tencent.mm.plugin.shake.c.a.f();
     }
-    com.tencent.mm.plugin.shake.c.a.f localf = dDk().xxr;
+    com.tencent.mm.plugin.shake.c.a.f localf = dON().yMc;
     AppMethodBeat.o(28174);
     return localf;
   }
   
-  public static com.tencent.mm.plugin.shake.c.a.d dDr()
+  public static com.tencent.mm.plugin.shake.c.a.d dOU()
   {
     AppMethodBeat.i(28175);
-    com.tencent.mm.kernel.g.agP().afT();
-    if (dDk().xxs == null) {
-      dDk().xxs = new com.tencent.mm.plugin.shake.c.a.d();
+    com.tencent.mm.kernel.g.ajA().aiF();
+    if (dON().yMd == null) {
+      dON().yMd = new com.tencent.mm.plugin.shake.c.a.d();
     }
-    com.tencent.mm.plugin.shake.c.a.d locald = dDk().xxs;
+    com.tencent.mm.plugin.shake.c.a.d locald = dON().yMd;
     AppMethodBeat.o(28175);
     return locald;
   }
   
-  public static String iL(String paramString1, String paramString2)
+  public static String iY(String paramString1, String paramString2)
   {
     AppMethodBeat.i(28173);
-    if ((com.tencent.mm.model.az.agM()) && (!bs.isNullOrNil(paramString1)))
+    if ((com.tencent.mm.model.ba.ajx()) && (!bt.isNullOrNil(paramString1)))
     {
-      com.tencent.mm.model.az.ayM();
-      paramString1 = String.format("%s/Sk%s_%s", new Object[] { com.tencent.mm.model.c.awR(), paramString2, com.tencent.mm.b.g.getMessageDigest(paramString1.getBytes()) });
+      com.tencent.mm.model.ba.aBQ();
+      paramString1 = String.format("%s/Sk%s_%s", new Object[] { com.tencent.mm.model.c.azG(), paramString2, com.tencent.mm.b.g.getMessageDigest(paramString1.getBytes()) });
       AppMethodBeat.o(28173);
       return paramString1;
     }
@@ -382,27 +393,27 @@ public final class m
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(28170);
-    com.tencent.mm.pluginsdk.n.a.DfE = new h();
-    com.tencent.mm.model.az.ayM();
-    com.tencent.mm.model.c.awG().c(this.hnP);
-    com.tencent.mm.sdk.b.a.GpY.c(this.frK);
-    com.tencent.mm.sdk.b.a.GpY.c(this.xxx);
-    com.tencent.mm.sdk.b.a.GpY.c(this.xxu);
-    com.tencent.mm.sdk.b.a.GpY.c(this.vco);
-    com.tencent.mm.model.az.ayM();
-    com.tencent.mm.model.c.awB().a(this.viU);
-    com.tencent.mm.model.az.agU().az(new Runnable()
+    com.tencent.mm.pluginsdk.o.a.EJA = new h();
+    com.tencent.mm.model.ba.aBQ();
+    com.tencent.mm.model.c.azv().c(this.hGh);
+    com.tencent.mm.sdk.b.a.IbL.c(this.fJT);
+    com.tencent.mm.sdk.b.a.IbL.c(this.yMi);
+    com.tencent.mm.sdk.b.a.IbL.c(this.yMf);
+    com.tencent.mm.sdk.b.a.IbL.c(this.whK);
+    com.tencent.mm.model.ba.aBQ();
+    com.tencent.mm.model.c.azp().a(this.won);
+    com.tencent.mm.model.ba.ajF().ay(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(28159);
-        if (!com.tencent.mm.model.az.agM())
+        if (!com.tencent.mm.model.ba.ajx())
         {
           AppMethodBeat.o(28159);
           return;
         }
-        com.tencent.mm.model.az.ayM();
-        bs.z(com.tencent.mm.model.c.awR(), "Sk", 604800000L);
+        com.tencent.mm.model.ba.aBQ();
+        bt.n(com.tencent.mm.model.c.azG(), "Sk", 604800000L);
         AppMethodBeat.o(28159);
       }
       
@@ -414,29 +425,29 @@ public final class m
         return str;
       }
     });
-    com.tencent.mm.model.az.getSysCmdMsgExtension().a("shake", this.xxw, true);
-    com.tencent.mm.model.az.getSysCmdMsgExtension().a("ShakeCardEntrance", this.xxy, true);
-    com.tencent.mm.model.az.getSysCmdMsgExtension().a("ShakeCardRedDot", this.xxz, true);
-    this.xxr = null;
-    this.xxs = null;
+    com.tencent.mm.model.ba.getSysCmdMsgExtension().a("shake", this.yMh, true);
+    com.tencent.mm.model.ba.getSysCmdMsgExtension().a("ShakeCardEntrance", this.yMj, true);
+    com.tencent.mm.model.ba.getSysCmdMsgExtension().a("ShakeCardRedDot", this.yMk, true);
+    this.yMc = null;
+    this.yMd = null;
     AppMethodBeat.o(28170);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(28168);
-    com.tencent.mm.model.az.ayM();
-    com.tencent.mm.model.c.awG().d(this.hnP);
-    com.tencent.mm.sdk.b.a.GpY.d(this.frK);
-    com.tencent.mm.sdk.b.a.GpY.d(this.xxx);
-    com.tencent.mm.sdk.b.a.GpY.d(this.xxu);
-    com.tencent.mm.sdk.b.a.GpY.d(this.vco);
-    com.tencent.mm.model.az.ayM();
-    com.tencent.mm.model.c.awB().b(this.viU);
-    com.tencent.mm.model.az.getSysCmdMsgExtension().b("shake", this.xxw, true);
-    com.tencent.mm.model.az.getSysCmdMsgExtension().b("ShakeCardEntrance", this.xxy, true);
-    com.tencent.mm.model.az.getSysCmdMsgExtension().b("ShakeCardRedDot", this.xxz, true);
-    com.tencent.mm.pluginsdk.n.a.DfE = null;
+    com.tencent.mm.model.ba.aBQ();
+    com.tencent.mm.model.c.azv().d(this.hGh);
+    com.tencent.mm.sdk.b.a.IbL.d(this.fJT);
+    com.tencent.mm.sdk.b.a.IbL.d(this.yMi);
+    com.tencent.mm.sdk.b.a.IbL.d(this.yMf);
+    com.tencent.mm.sdk.b.a.IbL.d(this.whK);
+    com.tencent.mm.model.ba.aBQ();
+    com.tencent.mm.model.c.azp().b(this.won);
+    com.tencent.mm.model.ba.getSysCmdMsgExtension().b("shake", this.yMh, true);
+    com.tencent.mm.model.ba.getSysCmdMsgExtension().b("ShakeCardEntrance", this.yMj, true);
+    com.tencent.mm.model.ba.getSysCmdMsgExtension().b("ShakeCardRedDot", this.yMk, true);
+    com.tencent.mm.pluginsdk.o.a.EJA = null;
     AppMethodBeat.o(28168);
   }
   

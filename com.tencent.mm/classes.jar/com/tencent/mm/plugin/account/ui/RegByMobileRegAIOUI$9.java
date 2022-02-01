@@ -13,8 +13,8 @@ final class RegByMobileRegAIOUI$9
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(128522);
-    RegByMobileRegAIOUI.v(this.iWa);
-    a.IL("RE200_250");
+    RegByMobileRegAIOUI.v(this.jpj);
+    a.Ma("RE200_250");
     AppMethodBeat.o(128522);
   }
 }

@@ -7,34 +7,34 @@ import java.util.concurrent.Callable;
 public final class c
   implements a
 {
-  private a cnw;
+  private a cyb;
   
   public c(a parama)
   {
-    this.cnw = parama;
+    this.cyb = parama;
   }
   
-  public final boolean AU()
+  public final boolean Ct()
   {
     AppMethodBeat.i(139999);
-    boolean bool = this.cnw.AU();
+    boolean bool = this.cyb.Ct();
     AppMethodBeat.o(139999);
     return bool;
   }
   
-  public final String AV()
+  public final String Cu()
   {
     AppMethodBeat.i(185066);
-    String str = this.cnw.AV();
+    String str = this.cyb.Cu();
     AppMethodBeat.o(185066);
     return str;
   }
   
   public final void a(Runnable paramRunnable, boolean paramBoolean)
   {
-    AppMethodBeat.i(190913);
-    this.cnw.a(paramRunnable, paramBoolean);
-    AppMethodBeat.o(190913);
+    AppMethodBeat.i(215081);
+    this.cyb.a(paramRunnable, paramBoolean);
+    AppMethodBeat.o(215081);
   }
   
   public final <T> T b(Callable<T> paramCallable)
@@ -50,26 +50,26 @@ public final class c
   public final void p(Runnable paramRunnable)
   {
     AppMethodBeat.i(140001);
-    if (this.cnw.AU())
+    if (this.cyb.Ct())
     {
       paramRunnable.run();
       AppMethodBeat.o(140001);
       return;
     }
-    this.cnw.a(paramRunnable, false);
+    this.cyb.a(paramRunnable, false);
     AppMethodBeat.o(140001);
   }
   
   public final void post(Runnable paramRunnable)
   {
-    AppMethodBeat.i(210240);
+    AppMethodBeat.i(221621);
     a(paramRunnable, false);
-    AppMethodBeat.o(210240);
+    AppMethodBeat.o(221621);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.magicbrush.handler.c
  * JD-Core Version:    0.7.0.1
  */

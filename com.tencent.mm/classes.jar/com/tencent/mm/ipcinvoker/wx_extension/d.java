@@ -17,7 +17,7 @@ public final class d
     AppMethodBeat.o(146414);
   }
   
-  public final boolean be(Object paramObject)
+  public final boolean bg(Object paramObject)
   {
     return paramObject instanceof Parcel;
   }

@@ -1,288 +1,321 @@
 package com.tencent.mm.plugin.finder.viewmodel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.pluginsdk.g.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.plugin.finder.model.al;
+import com.tencent.mm.plugin.finder.model.c;
+import com.tencent.mm.pluginsdk.i.i;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.ui.component.UIComponentPlugin;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "()V", "caches", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$Cache;", "currentTabType", "getCurrentTabType", "()I", "setCurrentTabType", "(I)V", "isNeedCheckShowCollapsibleTip", "", "isNeedShowDoubleClickTip", "clearTipCache", "", "get", "tabType", "getBusinessInfoKey", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "getLastTabType", "incrementCollapsibleTipCount", "count", "incrementDoubleClickTipCount", "isAutoRefresh", "isShowCollapsibleTip", "isShowDoubleClickTip", "markFocusTabType", "markUnFocusTabType", "onCleared", "resetCache", "store", "lastExitPosition", "lastExitFromTopPx", "lastDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lkotlin/collections/ArrayList;", "lastSectionDataList", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "storeLastTabType", "source", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$LastTabTypeSource;", "Cache", "Companion", "LastTabTypeSource", "RefreshState", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "()V", "caches", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$Cache;", "currentTabType", "getCurrentTabType", "()I", "setCurrentTabType", "(I)V", "isEnableStoreLastTabType", "", "isNeedCheckShowCollapsibleTip", "isNeedShowDoubleClickTip", "refreshExpired", "clearTipCache", "", "get", "tabType", "getBusinessInfoKey", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "getLastRedDotTabType", "getTargetEnterTabType", "incrementCollapsibleTipCount", "count", "incrementDoubleClickTipCount", "isAutoRefresh", "isShowCollapsibleTip", "isShowDoubleClickTip", "markFocusTabType", "markUnFocusTabType", "onCleared", "resetCache", "store", "lastExitPosition", "lastExitFromTopPx", "lastDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "lastSectionDataList", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "storeLastTabType", "source", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$LastTabTypeSource;", "Cache", "Companion", "LastTabTypeSource", "RefreshState", "plugin-finder_release"})
 public final class FinderHomeTabStateVM
   extends UIComponentPlugin<PluginFinder>
 {
-  public static final FinderHomeTabStateVM.b sbT;
-  private final ConcurrentHashMap<Integer, a> sbP;
-  public int sbQ;
-  private boolean sbR;
-  public boolean sbS;
+  public static final b sZl;
+  public final ConcurrentHashMap<Integer, a> sZf;
+  public int sZg;
+  private int sZh;
+  private boolean sZi;
+  private boolean sZj;
+  public boolean sZk;
   
   static
   {
-    AppMethodBeat.i(204395);
-    sbT = new FinderHomeTabStateVM.b((byte)0);
-    AppMethodBeat.o(204395);
+    AppMethodBeat.i(205410);
+    sZl = new b((byte)0);
+    AppMethodBeat.o(205410);
   }
   
   public FinderHomeTabStateVM()
   {
-    AppMethodBeat.i(204394);
-    this.sbP = new ConcurrentHashMap();
-    this.sbR = true;
-    this.sbS = true;
-    AppMethodBeat.o(204394);
+    AppMethodBeat.i(205409);
+    this.sZf = new ConcurrentHashMap();
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
+    this.sZh = ((Number)com.tencent.mm.plugin.finder.storage.b.cGt().value()).intValue();
+    localb = com.tencent.mm.plugin.finder.storage.b.sxa;
+    this.sZi = com.tencent.mm.plugin.finder.storage.b.cGG();
+    this.sZj = true;
+    this.sZk = true;
+    AppMethodBeat.o(205409);
   }
   
-  public static ah.a EX(int paramInt)
+  public static al.a Gl(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return ah.a.GUl;
+      return al.a.IGR;
     case 3: 
-      return ah.a.GUm;
+      return al.a.IGS;
     case 1: 
-      return ah.a.GUl;
+      return al.a.IGR;
     case 4: 
-      return ah.a.GUo;
+      return al.a.IGU;
     }
-    return ah.a.GUn;
+    return al.a.IGT;
   }
   
-  public static void a(int paramInt, FinderHomeTabStateVM.c paramc)
+  private static int cOd()
   {
-    AppMethodBeat.i(204382);
-    k.h(paramc, "source");
-    StringBuilder localStringBuilder = new StringBuilder("[storeLastTabType] tabType=").append(paramInt).append(" source=").append(paramc).append(" isEnableStoreLastTabType=");
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-    ac.i("Finder.TlTabStateVM", com.tencent.mm.plugin.finder.storage.b.cAm());
-    if (paramc == FinderHomeTabStateVM.c.scb)
+    AppMethodBeat.i(205397);
+    com.tencent.mm.kernel.e locale = g.ajC();
+    p.g(locale, "MMKernel.storage()");
+    int i = locale.ajl().getInt(al.a.IGQ, -1);
+    AppMethodBeat.o(205397);
+    return i;
+  }
+  
+  public static void cOf()
+  {
+    AppMethodBeat.i(205406);
+    com.tencent.mm.kernel.e locale = g.ajC();
+    p.g(locale, "MMKernel.storage()");
+    int i = locale.ajl().getInt(al.a.IGV, 0);
+    locale = g.ajC();
+    p.g(locale, "MMKernel.storage()");
+    locale.ajl().set(al.a.IGV, Integer.valueOf(i + 1));
+    AppMethodBeat.o(205406);
+  }
+  
+  public static void fY(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(205407);
+    com.tencent.mm.kernel.e locale = g.ajC();
+    p.g(locale, "MMKernel.storage()");
+    int i = locale.ajl().getInt(Gl(paramInt1), 0);
+    locale = g.ajC();
+    p.g(locale, "MMKernel.storage()");
+    locale.ajl().set(Gl(paramInt1), Integer.valueOf(i + paramInt2));
+    AppMethodBeat.o(205407);
+  }
+  
+  public final boolean Gg(int paramInt)
+  {
+    AppMethodBeat.i(205399);
+    a locala = Gi(paramInt);
+    d locald = locala.sZr;
+    if (locald == d.sZz)
     {
-      paramc = g.agR();
-      k.g(paramc, "MMKernel.storage()");
-      paramc.agA().set(ah.a.GUk, Integer.valueOf(paramInt));
-      AppMethodBeat.o(204382);
-      return;
-    }
-    if (paramc == FinderHomeTabStateVM.c.sca)
-    {
-      paramc = g.agR();
-      k.g(paramc, "MMKernel.storage()");
-      paramc.agA().set(ah.a.GUj, Integer.valueOf(paramInt));
-      paramc = g.agR();
-      k.g(paramc, "MMKernel.storage()");
-      paramc.agA().set(ah.a.GUk, Integer.valueOf(-1));
-    }
-    AppMethodBeat.o(204382);
-  }
-  
-  public static void cFL()
-  {
-    AppMethodBeat.i(204391);
-    e locale = g.agR();
-    k.g(locale, "MMKernel.storage()");
-    int i = locale.agA().getInt(ah.a.GUp, 0);
-    locale = g.agR();
-    k.g(locale, "MMKernel.storage()");
-    locale.agA().set(ah.a.GUp, Integer.valueOf(i + 1));
-    AppMethodBeat.o(204391);
-  }
-  
-  public static void fK(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(204392);
-    e locale = g.agR();
-    k.g(locale, "MMKernel.storage()");
-    int i = locale.agA().getInt(EX(paramInt1), 0);
-    locale = g.agR();
-    k.g(locale, "MMKernel.storage()");
-    locale.agA().set(EX(paramInt1), Integer.valueOf(i + paramInt2));
-    AppMethodBeat.o(204392);
-  }
-  
-  public final boolean ES(int paramInt)
-  {
-    AppMethodBeat.i(204383);
-    a locala = EU(paramInt);
-    Object localObject = locala.sbZ;
-    if (localObject == d.scg)
-    {
-      AppMethodBeat.o(204383);
+      AppMethodBeat.o(205399);
       return true;
     }
-    if ((localObject == d.scf) || (localObject == d.sci))
+    if ((locald == d.sZy) || (locald == d.sZB))
     {
-      long l1 = System.currentTimeMillis();
-      long l2 = locala.sbY;
-      localObject = com.tencent.mm.plugin.finder.storage.b.rCU;
-      if (l1 - l2 > com.tencent.mm.plugin.finder.storage.b.czK())
+      if (System.currentTimeMillis() - locala.sZq > this.sZh)
       {
-        locala.a(d.sch);
-        AppMethodBeat.o(204383);
+        locala.a(d.sZA);
+        AppMethodBeat.o(205399);
         return true;
       }
     }
-    else if (localObject == d.sch)
+    else if (locald == d.sZA)
     {
-      AppMethodBeat.o(204383);
+      AppMethodBeat.o(205399);
       return true;
     }
-    locala.a(d.sci);
-    AppMethodBeat.o(204383);
+    locala.a(d.sZB);
+    AppMethodBeat.o(205399);
     return false;
   }
   
-  public final void ET(int paramInt)
+  public final void Gh(int paramInt)
   {
-    AppMethodBeat.i(204385);
-    a locala = EU(paramInt);
-    locala.a(d.scf);
-    locala.sbY = System.currentTimeMillis();
-    ac.i("Finder.TlTabStateVM", "[markUnFocusTabType] tabType=".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(204385);
+    AppMethodBeat.i(205401);
+    a locala = Gi(paramInt);
+    locala.a(d.sZy);
+    locala.sZq = System.currentTimeMillis();
+    ad.i("Finder.TlTabStateVM", "[markUnFocusTabType] tabType=".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(205401);
   }
   
-  public final a EU(int paramInt)
+  public final a Gi(int paramInt)
   {
-    AppMethodBeat.i(204387);
-    if (this.sbP.get(Integer.valueOf(paramInt)) == null) {
-      ((Map)this.sbP).put(Integer.valueOf(paramInt), new a(paramInt));
+    AppMethodBeat.i(205403);
+    if (this.sZf.get(Integer.valueOf(paramInt)) == null) {
+      ((Map)this.sZf).put(Integer.valueOf(paramInt), new a(paramInt));
     }
-    Object localObject = this.sbP.get(Integer.valueOf(paramInt));
+    Object localObject = this.sZf.get(Integer.valueOf(paramInt));
     if (localObject == null) {
-      k.fOy();
+      p.gfZ();
     }
     localObject = (a)localObject;
-    AppMethodBeat.o(204387);
+    AppMethodBeat.o(205403);
     return localObject;
   }
   
-  public final boolean EV(int paramInt)
+  public final boolean Gj(int paramInt)
   {
-    AppMethodBeat.i(204390);
-    if (!this.sbR)
+    AppMethodBeat.i(205405);
+    if (!this.sZj)
     {
-      AppMethodBeat.o(204390);
+      AppMethodBeat.o(205405);
       return false;
     }
-    e locale = g.agR();
-    k.g(locale, "MMKernel.storage()");
-    if (locale.agA().getInt(EX(paramInt), 0) < 3)
+    com.tencent.mm.kernel.e locale = g.ajC();
+    p.g(locale, "MMKernel.storage()");
+    if (locale.ajl().getInt(Gl(paramInt), 0) < 3)
     {
-      AppMethodBeat.o(204390);
+      AppMethodBeat.o(205405);
       return true;
     }
-    this.sbR = false;
-    AppMethodBeat.o(204390);
+    this.sZj = false;
+    AppMethodBeat.o(205405);
     return false;
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, ArrayList<BaseFinderFeed> paramArrayList, ArrayList<com.tencent.mm.plugin.finder.model.b> paramArrayList1)
+  public final void a(int paramInt1, int paramInt2, int paramInt3, ArrayList<al> paramArrayList, ArrayList<c> paramArrayList1)
   {
-    AppMethodBeat.i(204380);
-    k.h(paramArrayList, "lastDataList");
-    k.h(paramArrayList1, "lastSectionDataList");
-    a locala = EU(paramInt1);
-    locala.sbW = paramInt2;
-    locala.sbX = paramInt3;
-    List localList = (List)paramArrayList;
-    k.h(localList, "<set-?>");
-    locala.sbU = localList;
-    localList = (List)paramArrayList1;
-    k.h(localList, "<set-?>");
-    locala.sbV = localList;
-    if ((paramArrayList.isEmpty()) && (paramArrayList1.isEmpty())) {}
-    for (paramArrayList = d.scg;; paramArrayList = d.scf)
+    AppMethodBeat.i(205395);
+    p.h(paramArrayList, "lastDataList");
+    p.h(paramArrayList1, "lastSectionDataList");
+    Object localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
+    this.sZh = ((Number)com.tencent.mm.plugin.finder.storage.b.cGt().value()).intValue();
+    localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
+    this.sZi = com.tencent.mm.plugin.finder.storage.b.cGG();
+    localObject1 = ((Iterable)paramArrayList).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      locala.a(paramArrayList);
-      ac.i("Finder.TlTabStateVM", "[store] tabType=" + paramInt1 + " lastExitPosition=" + paramInt2 + " lastExitFromTopPx=" + paramInt3 + " refreshState=" + locala.sbZ + "current=" + h.formatTime("yyyy-MM-dd HH:mm:ss", locala.sbY / 1000L));
-      AppMethodBeat.o(204380);
+      localObject2 = (al)((Iterator)localObject1).next();
+      if ((localObject2 instanceof BaseFinderFeed)) {
+        ((BaseFinderFeed)localObject2).cCH();
+      }
+    }
+    localObject1 = Gi(paramInt1);
+    ((a)localObject1).sZo = paramInt2;
+    ((a)localObject1).sZp = paramInt3;
+    ((a)localObject1).dN((List)paramArrayList);
+    Object localObject2 = (List)paramArrayList1;
+    p.h(localObject2, "<set-?>");
+    ((a)localObject1).sZn = ((List)localObject2);
+    if ((paramArrayList.isEmpty()) && (paramArrayList1.isEmpty())) {}
+    for (paramArrayList = d.sZz;; paramArrayList = d.sZy)
+    {
+      ((a)localObject1).a(paramArrayList);
+      ad.i("Finder.TlTabStateVM", "[store] tabType=" + paramInt1 + " lastExitPosition=" + paramInt2 + " lastExitFromTopPx=" + paramInt3 + " refreshState=" + ((a)localObject1).sZr + ' ' + "current=" + i.formatTime("yyyy-MM-dd HH:mm:ss", ((a)localObject1).sZq / 1000L));
+      AppMethodBeat.o(205395);
       return;
     }
   }
   
-  public final void ae()
+  public final void a(int paramInt, c paramc)
   {
-    AppMethodBeat.i(204388);
-    super.ae();
-    AppMethodBeat.o(204388);
+    AppMethodBeat.i(205398);
+    p.h(paramc, "source");
+    ad.i("Finder.TlTabStateVM", "[storeLastTabType] tabType=" + paramInt + " source=" + paramc + " isEnableStoreLastTabType=" + this.sZi);
+    if ((paramc == c.sZt) || (paramc == c.sZw))
+    {
+      paramc = g.ajC();
+      p.g(paramc, "MMKernel.storage()");
+      paramc.ajl().set(al.a.IGQ, Integer.valueOf(paramInt));
+      AppMethodBeat.o(205398);
+      return;
+    }
+    if (paramc == c.sZs)
+    {
+      paramc = g.ajC();
+      p.g(paramc, "MMKernel.storage()");
+      paramc.ajl().set(al.a.IGP, Integer.valueOf(paramInt));
+      paramc = g.ajC();
+      p.g(paramc, "MMKernel.storage()");
+      paramc.ajl().set(al.a.IGQ, Integer.valueOf(-1));
+    }
+    AppMethodBeat.o(205398);
   }
   
-  public final int cFJ()
+  public final void af()
   {
-    int i = 4;
-    AppMethodBeat.i(204386);
-    Object localObject = g.agR();
-    k.g(localObject, "MMKernel.storage()");
-    int k = ((e)localObject).agA().getInt(ah.a.GUj, 4);
-    localObject = com.tencent.mm.plugin.finder.storage.b.rCU;
-    if (com.tencent.mm.plugin.finder.storage.b.cAm()) {
-      i = k;
-    }
-    if (ES(k))
+    AppMethodBeat.i(205404);
+    super.af();
+    AppMethodBeat.o(205404);
+  }
+  
+  public final int fsM()
+  {
+    AppMethodBeat.i(221578);
+    Object localObject = g.ajC();
+    p.g(localObject, "MMKernel.storage()");
+    int k = ((com.tencent.mm.kernel.e)localObject).ajl().getInt(al.a.IGP, 4);
+    int i;
+    int m;
+    if (this.sZi)
     {
-      localObject = g.agR();
-      k.g(localObject, "MMKernel.storage()");
-      int m = ((e)localObject).agA().getInt(ah.a.GUk, -1);
-      if (m == -1) {}
-      for (int j = i;; j = m)
-      {
-        ac.i("Finder.TlTabStateVM", "[getLastTabType] autoRefresh... ret=" + j + " lastRedType=" + m + " lastExitTabType=" + k + " defaultServerTabType=" + i);
-        AppMethodBeat.o(204386);
-        return j;
+      i = k;
+      if (!Gg(k)) {
+        break label172;
       }
+      m = cOd();
+      if (m != -1) {
+        break label166;
+      }
+      localObject = g.ad(PluginFinder.class);
+      p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
+      int n = ((PluginFinder)localObject).getRedDotManager().czP();
+      j = n;
+      if (n != -1) {}
     }
-    ac.i("Finder.TlTabStateVM", "[getLastTabType] no autoRefresh... lastExitTabType=".concat(String.valueOf(k)));
-    AppMethodBeat.o(204386);
+    label166:
+    for (int j = i;; j = m)
+    {
+      ad.i("Finder.TlTabStateVM", "[getLastTabType] autoRefresh... ret=" + j + " lastRedType=" + m + " lastExitTabType=" + k + " defaultServerTabType=" + i);
+      AppMethodBeat.o(221578);
+      return j;
+      i = 4;
+      break;
+    }
+    label172:
+    ad.i("Finder.TlTabStateVM", "[getLastTabType] no autoRefresh... lastExitTabType=".concat(String.valueOf(k)));
+    AppMethodBeat.o(221578);
     return k;
   }
   
-  public final void cFK()
-  {
-    AppMethodBeat.i(204389);
-    a(4, FinderHomeTabStateVM.c.scc);
-    this.sbP.clear();
-    AppMethodBeat.o(204389);
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$Cache;", "", "tabType", "", "(I)V", "lastDataList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getLastDataList", "()Ljava/util/List;", "setLastDataList", "(Ljava/util/List;)V", "lastExitFromTopPx", "getLastExitFromTopPx", "()I", "setLastExitFromTopPx", "lastExitPosition", "getLastExitPosition", "setLastExitPosition", "lastExitTime", "", "getLastExitTime", "()J", "setLastExitTime", "(J)V", "lastSectionDataList", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "getLastSectionDataList", "setLastSectionDataList", "refreshState", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$RefreshState;", "getRefreshState", "()Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$RefreshState;", "setRefreshState", "(Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$RefreshState;)V", "getTabType", "component1", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$Cache;", "", "tabType", "", "(I)V", "lastDataList", "", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "getLastDataList", "()Ljava/util/List;", "setLastDataList", "(Ljava/util/List;)V", "lastExitFromTopPx", "getLastExitFromTopPx", "()I", "setLastExitFromTopPx", "lastExitPosition", "getLastExitPosition", "setLastExitPosition", "lastExitTime", "", "getLastExitTime", "()J", "setLastExitTime", "(J)V", "lastSectionDataList", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "getLastSectionDataList", "setLastSectionDataList", "refreshState", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$RefreshState;", "getRefreshState", "()Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$RefreshState;", "setRefreshState", "(Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$RefreshState;)V", "getTabType", "component1", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
   public static final class a
   {
-    private final int diw;
-    public List<? extends BaseFinderFeed> sbU;
-    public List<com.tencent.mm.plugin.finder.model.b> sbV;
-    public int sbW;
-    public int sbX;
-    long sbY;
-    FinderHomeTabStateVM.d sbZ;
+    private final int duh;
+    public List<? extends al> sZm;
+    public List<c> sZn;
+    public int sZo;
+    public int sZp;
+    public long sZq;
+    FinderHomeTabStateVM.d sZr;
     
     public a(int paramInt)
     {
-      AppMethodBeat.i(204372);
-      this.diw = paramInt;
-      this.sbU = ((List)new LinkedList());
-      this.sbV = ((List)new LinkedList());
-      this.sbZ = FinderHomeTabStateVM.d.scg;
-      AppMethodBeat.o(204372);
+      AppMethodBeat.i(205387);
+      this.duh = paramInt;
+      this.sZm = ((List)new LinkedList());
+      this.sZn = ((List)new LinkedList());
+      this.sZr = FinderHomeTabStateVM.d.sZz;
+      AppMethodBeat.o(205387);
     }
     
     public final void a(FinderHomeTabStateVM.d paramd)
     {
-      AppMethodBeat.i(204371);
-      k.h(paramd, "<set-?>");
-      this.sbZ = paramd;
-      AppMethodBeat.o(204371);
+      AppMethodBeat.i(205386);
+      p.h(paramd, "<set-?>");
+      this.sZr = paramd;
+      AppMethodBeat.o(205386);
+    }
+    
+    public final void dN(List<? extends al> paramList)
+    {
+      AppMethodBeat.i(205385);
+      p.h(paramList, "<set-?>");
+      this.sZm = paramList;
+      AppMethodBeat.o(205385);
     }
     
     public final boolean equals(Object paramObject)
@@ -292,7 +325,7 @@ public final class FinderHomeTabStateVM
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if (this.diw != paramObject.diw) {}
+          if (this.duh != paramObject.duh) {}
         }
       }
       else {
@@ -303,34 +336,60 @@ public final class FinderHomeTabStateVM
     
     public final int hashCode()
     {
-      return this.diw;
+      return this.duh;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(204373);
-      String str = "Cache(tabType=" + this.diw + ")";
-      AppMethodBeat.o(204373);
+      AppMethodBeat.i(205388);
+      String str = "Cache(tabType=" + this.duh + ")";
+      AppMethodBeat.o(205388);
       return str;
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$RefreshState;", "", "(Ljava/lang/String;I)V", "Default", "HardRefresh", "Timeout", "InCacheTime", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class b {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$LastTabTypeSource;", "", "(Ljava/lang/String;I)V", "SOURCE_EXIT", "SOURCE_RED_DOT", "SOURCE_RESET", "SOURCE_MULTI_TAB_NEW", "SOURCE_RED_DOT_REVOKE", "plugin-finder_release"})
+  public static enum c
+  {
+    static
+    {
+      AppMethodBeat.i(205389);
+      c localc1 = new c("SOURCE_EXIT", 0);
+      sZs = localc1;
+      c localc2 = new c("SOURCE_RED_DOT", 1);
+      sZt = localc2;
+      c localc3 = new c("SOURCE_RESET", 2);
+      sZu = localc3;
+      c localc4 = new c("SOURCE_MULTI_TAB_NEW", 3);
+      sZv = localc4;
+      c localc5 = new c("SOURCE_RED_DOT_REVOKE", 4);
+      sZw = localc5;
+      sZx = new c[] { localc1, localc2, localc3, localc4, localc5 };
+      AppMethodBeat.o(205389);
+    }
+    
+    private c() {}
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$RefreshState;", "", "(Ljava/lang/String;I)V", "Default", "HardRefresh", "Timeout", "InCacheTime", "plugin-finder_release"})
   public static enum d
   {
     static
     {
-      AppMethodBeat.i(204377);
+      AppMethodBeat.i(205392);
       d locald1 = new d("Default", 0);
-      scf = locald1;
+      sZy = locald1;
       d locald2 = new d("HardRefresh", 1);
-      scg = locald2;
+      sZz = locald2;
       d locald3 = new d("Timeout", 2);
-      sch = locald3;
+      sZA = locald3;
       d locald4 = new d("InCacheTime", 3);
-      sci = locald4;
-      scj = new d[] { locald1, locald2, locald3, locald4 };
-      AppMethodBeat.o(204377);
+      sZB = locald4;
+      sZC = new d[] { locald1, locald2, locald3, locald4 };
+      AppMethodBeat.o(205392);
     }
     
     private d() {}
@@ -338,7 +397,7 @@ public final class FinderHomeTabStateVM
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.FinderHomeTabStateVM
  * JD-Core Version:    0.7.0.1
  */

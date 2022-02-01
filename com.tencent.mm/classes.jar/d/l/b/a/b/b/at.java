@@ -3,9 +3,9 @@ package d.l.b.a.b.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
 import d.a.v;
-import d.aa;
+import d.ac;
 import d.g.a.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.m.ab;
 import d.l.b.a.b.m.u;
 import d.m.h;
@@ -25,22 +25,22 @@ public final class at
       AppMethodBeat.o(56894);
       return null;
     }
-    int j = parami.fQm().size() + paramInt;
-    if (!parami.fQd())
+    int j = parami.ghK().size() + paramInt;
+    if (!parami.ghB())
     {
-      if ((j == paramab.gbw().size()) || (d.l.b.a.b.j.c.m((l)parami))) {}
-      for (int i = 1; (aa.KTq) && (i == 0); i = 0)
+      if ((j == paramab.gsW().size()) || (d.l.b.a.b.j.c.m((l)parami))) {}
+      for (int i = 1; (ac.MKp) && (i == 0); i = 0)
       {
-        paramab = (Throwable)new AssertionError(paramab.gbw().size() - j + " trailing arguments were found in " + paramab + " type");
+        paramab = (Throwable)new AssertionError(paramab.gsW().size() - j + " trailing arguments were found in " + paramab + " type");
         AppMethodBeat.o(56894);
         throw paramab;
       }
-      paramab = new af(parami, paramab.gbw().subList(paramInt, paramab.gbw().size()), null);
+      paramab = new af(parami, paramab.gsW().subList(paramInt, paramab.gsW().size()), null);
       AppMethodBeat.o(56894);
       return paramab;
     }
-    List localList = paramab.gbw().subList(paramInt, j);
-    l locall2 = parami.fPU();
+    List localList = paramab.gsW().subList(paramInt, j);
+    l locall2 = parami.ghs();
     l locall1 = locall2;
     if (!(locall2 instanceof i)) {
       locall1 = null;
@@ -54,19 +54,19 @@ public final class at
   {
     Object localObject2 = null;
     AppMethodBeat.i(56893);
-    k.h(parami, "$this$computeConstructorTypeParameters");
-    List localList = parami.fQm();
-    k.g(localList, "declaredTypeParameters");
-    if ((!parami.fQd()) && (!(parami.fPU() instanceof a)))
+    p.h(parami, "$this$computeConstructorTypeParameters");
+    List localList = parami.ghK();
+    p.g(localList, "declaredTypeParameters");
+    if ((!parami.ghB()) && (!(parami.ghs() instanceof a)))
     {
       AppMethodBeat.o(56893);
       return localList;
     }
     Object localObject1 = d.l.b.a.b.j.d.a.H((l)parami);
-    Object localObject3 = (b)a.Lef;
-    k.h(localObject1, "$this$takeWhile");
-    k.h(localObject3, "predicate");
-    localObject3 = d.m.i.c(d.m.i.c(d.m.i.a((h)new o((h)localObject1, (b)localObject3), (b)b.Leg), (b)c.Leh));
+    Object localObject3 = (b)at.a.MVa;
+    p.h(localObject1, "$this$takeWhile");
+    p.h(localObject3, "predicate");
+    localObject3 = d.m.i.c(d.m.i.c(d.m.i.a((h)new o((h)localObject1, (b)localObject3), (b)at.b.MVb), (b)at.c.MVc));
     Object localObject4 = d.l.b.a.b.j.d.a.H((l)parami).iterator();
     do
     {
@@ -81,7 +81,7 @@ public final class at
       localObject1 = localObject2;
       if (localObject4 != null)
       {
-        localObject4 = ((e)localObject4).fPW();
+        localObject4 = ((e)localObject4).ghu();
         localObject1 = localObject2;
         if (localObject4 != null) {
           localObject1 = ((d.l.b.a.b.m.at)localObject4).getParameters();
@@ -89,13 +89,13 @@ public final class at
       }
       localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = (List)v.KTF;
+        localObject2 = (List)v.MKE;
       }
       if ((!((List)localObject3).isEmpty()) || (!((List)localObject2).isEmpty())) {
         break;
       }
-      parami = parami.fQm();
-      k.g(parami, "declaredTypeParameters");
+      parami = parami.ghK();
+      p.g(parami, "declaredTypeParameters");
       AppMethodBeat.o(56893);
       return parami;
       localObject1 = null;
@@ -106,7 +106,7 @@ public final class at
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (as)((Iterator)localObject2).next();
-      k.g(localObject3, "it");
+      p.g(localObject3, "it");
       ((Collection)localObject1).add(new c((as)localObject3, (l)parami, localList.size()));
     }
     parami = (List)localObject1;
@@ -114,67 +114,10 @@ public final class at
     AppMethodBeat.o(56893);
     return parami;
   }
-  
-  static final class a
-    extends d.g.b.l
-    implements b<l, Boolean>
-  {
-    public static final a Lef;
-    
-    static
-    {
-      AppMethodBeat.i(56888);
-      Lef = new a();
-      AppMethodBeat.o(56888);
-    }
-    
-    a()
-    {
-      super();
-    }
-  }
-  
-  static final class b
-    extends d.g.b.l
-    implements b<l, Boolean>
-  {
-    public static final b Leg;
-    
-    static
-    {
-      AppMethodBeat.i(56890);
-      Leg = new b();
-      AppMethodBeat.o(56890);
-    }
-    
-    b()
-    {
-      super();
-    }
-  }
-  
-  static final class c
-    extends d.g.b.l
-    implements b<l, h<? extends as>>
-  {
-    public static final c Leh;
-    
-    static
-    {
-      AppMethodBeat.i(56892);
-      Leh = new c();
-      AppMethodBeat.o(56892);
-    }
-    
-    c()
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.at
  * JD-Core Version:    0.7.0.1
  */

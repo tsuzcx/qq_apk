@@ -3,37 +3,37 @@ package com.tencent.mm.plugin.webview.a;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public final class a
-  implements m
+  implements n
 {
-  public static l iyx;
-  public static k iyy;
+  public static m iRG;
+  public static l iRH;
   
-  public static void ag(Runnable paramRunnable)
+  public static void af(Runnable paramRunnable)
   {
     AppMethodBeat.i(77826);
     if (0L > 0L)
     {
-      h.JZN.a(paramRunnable, 0L, "WebViewWorkerThread");
+      h.LTJ.a(paramRunnable, 0L, "WebViewWorkerThread");
       AppMethodBeat.o(77826);
       return;
     }
-    h.JZN.f(paramRunnable, "WebViewWorkerThread");
+    h.LTJ.f(paramRunnable, "WebViewWorkerThread");
     AppMethodBeat.o(77826);
-  }
-  
-  public final void a(k paramk)
-  {
-    iyy = paramk;
   }
   
   public final void a(l paraml)
   {
-    iyx = paraml;
+    iRH = paraml;
+  }
+  
+  public final void a(m paramm)
+  {
+    iRG = paramm;
   }
 }
 

@@ -4,118 +4,118 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public class BindCardOrder
   implements Parcelable
 {
-  public static int Bvc;
-  public static int Bvd;
-  public static int Bve;
   public static final Parcelable.Creator<BindCardOrder> CREATOR;
-  private String Bvb;
-  public int Bvf;
-  public String Bvg;
-  public String Bvh;
-  public String Bvi;
-  public String Bvj;
-  public String Bvk;
-  public int Bvl;
-  public int Bvm;
-  public r Bvn;
-  public r.a Bvo;
-  public r.b Bvp;
-  public String cZz;
+  public static int CVr;
+  public static int CVs;
+  public static int CVt;
+  public int CVA;
+  public int CVB;
+  public s CVC;
+  public s.a CVD;
+  public s.b CVE;
+  private String CVq;
+  public int CVu;
+  public String CVv;
+  public String CVw;
+  public String CVx;
+  public String CVy;
+  public String CVz;
+  public String dkR;
   public int jumpType;
   
   static
   {
     AppMethodBeat.i(70242);
-    Bvc = 1;
-    Bvd = 2;
-    Bve = 6;
+    CVr = 1;
+    CVs = 2;
+    CVt = 6;
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(70242);
   }
   
   public BindCardOrder()
   {
-    this.Bvb = "";
-    this.Bvg = "";
-    this.Bvh = "";
-    this.Bvi = "";
-    this.Bvj = "";
-    this.Bvk = "";
+    this.CVq = "";
+    this.CVv = "";
+    this.CVw = "";
+    this.CVx = "";
+    this.CVy = "";
+    this.CVz = "";
   }
   
   protected BindCardOrder(Parcel paramParcel)
   {
     AppMethodBeat.i(70239);
-    this.Bvb = "";
-    this.Bvg = "";
-    this.Bvh = "";
-    this.Bvi = "";
-    this.Bvj = "";
-    this.Bvk = "";
-    this.Bvb = paramParcel.readString();
+    this.CVq = "";
+    this.CVv = "";
+    this.CVw = "";
+    this.CVx = "";
+    this.CVy = "";
+    this.CVz = "";
+    this.CVq = paramParcel.readString();
     try
     {
-      aT(new JSONObject(this.Bvb));
+      bb(new JSONObject(this.CVq));
       AppMethodBeat.o(70239);
       return;
     }
     catch (Exception paramParcel)
     {
-      ac.printErrStackTrace("MicroMsg.BindCardOrder", paramParcel, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.BindCardOrder", paramParcel, "", new Object[0]);
       AppMethodBeat.o(70239);
     }
   }
   
-  public final void aT(JSONObject paramJSONObject)
+  public final void bb(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70241);
     if (paramJSONObject == null) {}
     for (Object localObject = "";; localObject = paramJSONObject.toString())
     {
-      this.Bvb = ((String)localObject);
-      ac.i("MicroMsg.BindCardOrder", "feed json %s", new Object[] { this.Bvb });
+      this.CVq = ((String)localObject);
+      ad.i("MicroMsg.BindCardOrder", "feed json %s", new Object[] { this.CVq });
       try
       {
-        this.Bvf = paramJSONObject.optInt("show_bind_succ_page", 0);
-        this.Bvg = paramJSONObject.optString("bind_succ_btn_wording", "");
-        this.Bvh = paramJSONObject.optString("bind_succ_remind_wording", "");
+        this.CVu = paramJSONObject.optInt("show_bind_succ_page", 0);
+        this.CVv = paramJSONObject.optString("bind_succ_btn_wording", "");
+        this.CVw = paramJSONObject.optString("bind_succ_remind_wording", "");
         this.jumpType = paramJSONObject.optInt("jump_type", 0);
-        this.Bvk = paramJSONObject.optString("bind_serial");
+        this.CVz = paramJSONObject.optString("bind_serial");
         localObject = paramJSONObject.optJSONObject("activity_info");
-        this.Bvn = new r();
+        this.CVC = new s();
         if (localObject != null) {
-          this.Bvn.bb((JSONObject)localObject);
+          this.CVC.bk((JSONObject)localObject);
         }
         localObject = paramJSONObject.optJSONObject("h5_info");
         if (localObject != null)
         {
-          this.Bvo = new r.a();
-          this.Bvo.bb((JSONObject)localObject);
+          this.CVD = new s.a();
+          this.CVD.bk((JSONObject)localObject);
         }
         localObject = paramJSONObject.optJSONObject("native_info");
         if (localObject != null)
         {
-          this.Bvo = new r.a();
-          this.Bvo.bb((JSONObject)localObject);
+          this.CVD = new s.a();
+          this.CVD.bk((JSONObject)localObject);
         }
         paramJSONObject = paramJSONObject.optJSONObject("tinyapp_info");
         if (paramJSONObject != null)
         {
-          this.Bvp = new r.b();
-          this.Bvp.bb(paramJSONObject);
+          this.CVE = new s.b();
+          this.CVE.bk(paramJSONObject);
         }
         AppMethodBeat.o(70241);
         return;
       }
       catch (Exception paramJSONObject)
       {
-        ac.printErrStackTrace("MicroMsg.BindCardOrder", paramJSONObject, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.BindCardOrder", paramJSONObject, "", new Object[0]);
         AppMethodBeat.o(70241);
       }
     }
@@ -126,25 +126,25 @@ public class BindCardOrder
     return 0;
   }
   
-  public final boolean eqY()
+  public final boolean eEY()
   {
-    return (this.jumpType == Bvc) && (this.Bvo != null);
+    return (this.jumpType == CVr) && (this.CVD != null);
   }
   
-  public final boolean eqZ()
+  public final boolean eEZ()
   {
-    return (this.jumpType == Bvd) && (this.Bvp != null);
+    return (this.jumpType == CVs) && (this.CVE != null);
   }
   
-  public final boolean era()
+  public final boolean eFa()
   {
-    return (this.jumpType == Bve) && (this.Bvo != null);
+    return (this.jumpType == CVt) && (this.CVD != null);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70240);
-    paramParcel.writeString(this.Bvb);
+    paramParcel.writeString(this.CVq);
     AppMethodBeat.o(70240);
   }
 }

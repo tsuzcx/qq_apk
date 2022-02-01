@@ -4,23 +4,23 @@ import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.d.k;
 import com.tencent.mm.d.l;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 import java.io.RandomAccessFile;
 
 public final class g
 {
-  private static final k cHj;
+  private static final k cSn;
   
   static
   {
     AppMethodBeat.i(88881);
-    cHj = new k(101010256L);
+    cSn = new k(101010256L);
     AppMethodBeat.o(88881);
   }
   
-  public static byte[] Wv(String paramString)
+  public static byte[] aac(String paramString)
   {
     AppMethodBeat.i(88880);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -28,11 +28,11 @@ public final class g
       AppMethodBeat.o(88880);
       return null;
     }
-    RandomAccessFile localRandomAccessFile1 = i.cY(paramString, false);
+    RandomAccessFile localRandomAccessFile1 = i.dd(paramString, false);
     if (localRandomAccessFile1.length() == 0L)
     {
       localRandomAccessFile1.close();
-      ac.i("MicroMsg.Channel.ZipEocdCommentTool", "apk file length is zero");
+      ad.i("MicroMsg.Channel.ZipEocdCommentTool", "apk file length is zero");
       AppMethodBeat.o(88880);
       return null;
     }
@@ -41,7 +41,7 @@ public final class g
       try
       {
         paramString = new com.tencent.mm.vfs.e(paramString);
-        localRandomAccessFile2 = i.cY(q.B(paramString.mUri), false);
+        localRandomAccessFile2 = i.dd(q.B(paramString.mUri), false);
         localRandomAccessFile2.seek(((Long)e.H(paramString).second).longValue() + 22L - 2L);
         paramString = new byte[2];
         localRandomAccessFile2.readFully(paramString);
@@ -56,7 +56,7 @@ public final class g
       {
         RandomAccessFile localRandomAccessFile2;
         int i;
-        ac.e("MicroMsg.Channel.ZipEocdCommentTool", "readComment, error: %s", new Object[] { paramString.getMessage() });
+        ad.e("MicroMsg.Channel.ZipEocdCommentTool", "readComment, error: %s", new Object[] { paramString.getMessage() });
         paramString = null;
         continue;
       }

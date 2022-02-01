@@ -13,7 +13,7 @@ public class JsApiClearStorageTask
 {
   public static final Parcelable.Creator<JsApiClearStorageTask> CREATOR;
   public String appId;
-  public int kMr;
+  public int liU;
   
   static
   {
@@ -31,16 +31,16 @@ public class JsApiClearStorageTask
     AppMethodBeat.o(147235);
   }
   
-  public final void aLq()
+  public final void aOA()
   {
     AppMethodBeat.i(147236);
     if (e.K(a.class) == null) {}
-    for (d locald = null; locald == null; locald = ((a)e.K(a.class)).CJ())
+    for (d locald = null; locald == null; locald = ((a)e.K(a.class)).Ei())
     {
       AppMethodBeat.o(147236);
       return;
     }
-    locald.S(this.kMr, this.appId);
+    locald.U(this.liU, this.appId);
     AppMethodBeat.o(147236);
   }
   
@@ -48,7 +48,7 @@ public class JsApiClearStorageTask
   {
     AppMethodBeat.i(147237);
     this.appId = paramParcel.readString();
-    this.kMr = paramParcel.readInt();
+    this.liU = paramParcel.readInt();
     AppMethodBeat.o(147237);
   }
   
@@ -56,7 +56,7 @@ public class JsApiClearStorageTask
   {
     AppMethodBeat.i(147238);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.kMr);
+    paramParcel.writeInt(this.liU);
     AppMethodBeat.o(147238);
   }
 }

@@ -14,24 +14,24 @@ public class e
   implements a
 {
   private static final String TAG;
-  private int[] aCA;
-  private final int[] aCB;
-  private final a.a aCC;
-  private short[] aCD;
-  private byte[] aCE;
-  private byte[] aCF;
-  private byte[] aCG;
-  private int[] aCH;
-  private int aCI;
-  private Bitmap aCJ;
-  private boolean aCK;
-  private int aCL;
-  private int aCM;
-  private Boolean aCN;
-  private Bitmap.Config aCO;
-  private byte[] aCx;
-  private ByteBuffer aCy;
-  private c aCz;
+  private Bitmap aEA;
+  private boolean aEB;
+  private int aEC;
+  private int aED;
+  private Boolean aEE;
+  private Bitmap.Config aEF;
+  private byte[] aEo;
+  private ByteBuffer aEp;
+  private c aEq;
+  private int[] aEr;
+  private final int[] aEs;
+  private final a.a aEt;
+  private short[] aEu;
+  private byte[] aEv;
+  private byte[] aEw;
+  private byte[] aEx;
+  private int[] aEy;
+  private int aEz;
   private int sampleSize;
   private int status;
   
@@ -45,10 +45,10 @@ public class e
   private e(a.a parama)
   {
     AppMethodBeat.i(3477);
-    this.aCB = new int[256];
-    this.aCO = Bitmap.Config.ARGB_8888;
-    this.aCC = parama;
-    this.aCz = new c();
+    this.aEs = new int[256];
+    this.aEF = Bitmap.Config.ARGB_8888;
+    this.aEt = parama;
+    this.aEq = new c();
     AppMethodBeat.o(3477);
   }
   
@@ -63,43 +63,43 @@ public class e
   private Bitmap a(b paramb1, b paramb2)
   {
     AppMethodBeat.i(3484);
-    int[] arrayOfInt = this.aCH;
+    int[] arrayOfInt = this.aEy;
     if (paramb2 == null)
     {
-      if (this.aCJ != null) {
-        this.aCC.f(this.aCJ);
+      if (this.aEA != null) {
+        this.aEt.f(this.aEA);
       }
-      this.aCJ = null;
+      this.aEA = null;
       Arrays.fill(arrayOfInt, 0);
     }
-    if ((paramb2 != null) && (paramb2.aCm == 3) && (this.aCJ == null)) {
+    if ((paramb2 != null) && (paramb2.aEd == 3) && (this.aEA == null)) {
       Arrays.fill(arrayOfInt, 0);
     }
     int j;
     int k;
     int m;
-    if ((paramb2 != null) && (paramb2.aCm > 0))
+    if ((paramb2 != null) && (paramb2.aEd > 0))
     {
-      if (paramb2.aCm == 2)
+      if (paramb2.aEd == 2)
       {
         j = 0;
-        if (!paramb1.aCl)
+        if (!paramb1.aEc)
         {
-          j = this.aCz.bgColor;
+          j = this.aEq.bgColor;
           i = j;
-          if (paramb1.aCp != null)
+          if (paramb1.aEg != null)
           {
             i = j;
-            if (this.aCz.aCv == paramb1.aCn) {
+            if (this.aEq.aEm == paramb1.aEe) {
               i = 0;
             }
           }
-          n = paramb2.aCj / this.sampleSize;
-          j = paramb2.aCh / this.sampleSize;
-          i1 = paramb2.aCi / this.sampleSize;
-          k = paramb2.aCg / this.sampleSize;
-          m = j * this.aCM + k;
-          i2 = this.aCM;
+          n = paramb2.aEa / this.sampleSize;
+          j = paramb2.aDY / this.sampleSize;
+          i1 = paramb2.aDZ / this.sampleSize;
+          k = paramb2.aDX / this.sampleSize;
+          m = j * this.aED + k;
+          i2 = this.aED;
           j = m;
         }
         for (;;)
@@ -116,24 +116,24 @@ public class e
               k += 1;
               continue;
               i = j;
-              if (this.aCI != 0) {
+              if (this.aEz != 0) {
                 break;
               }
-              this.aCN = Boolean.TRUE;
+              this.aEE = Boolean.TRUE;
               i = j;
               break;
             }
           }
-          j += this.aCM;
+          j += this.aED;
         }
       }
-      if ((paramb2.aCm == 3) && (this.aCJ != null)) {
-        this.aCJ.getPixels(arrayOfInt, 0, this.aCM, 0, 0, this.aCM, this.aCL);
+      if ((paramb2.aEd == 3) && (this.aEA != null)) {
+        this.aEA.getPixels(arrayOfInt, 0, this.aED, 0, 0, this.aED, this.aEC);
       }
     }
     label321:
     if (paramb1 != null) {
-      this.aCy.position(paramb1.aCo);
+      this.aEp.position(paramb1.aEf);
     }
     if (paramb1 == null) {}
     Object localObject1;
@@ -141,25 +141,25 @@ public class e
     byte[] arrayOfByte;
     int i12;
     int i13;
-    for (int i9 = this.aCz.width * this.aCz.height;; i9 = paramb1.aCi * paramb1.aCj)
+    for (int i9 = this.aEq.width * this.aEq.height;; i9 = paramb1.aDZ * paramb1.aEa)
     {
-      if ((this.aCG == null) || (this.aCG.length < i9)) {
-        this.aCG = this.aCC.dk(i9);
+      if ((this.aEx == null) || (this.aEx.length < i9)) {
+        this.aEx = this.aEt.dk(i9);
       }
-      paramb2 = this.aCG;
-      if (this.aCD == null) {
-        this.aCD = new short[4096];
+      paramb2 = this.aEx;
+      if (this.aEu == null) {
+        this.aEu = new short[4096];
       }
-      localObject1 = this.aCD;
-      if (this.aCE == null) {
-        this.aCE = new byte[4096];
+      localObject1 = this.aEu;
+      if (this.aEv == null) {
+        this.aEv = new byte[4096];
       }
-      localObject2 = this.aCE;
-      if (this.aCF == null) {
-        this.aCF = new byte[4097];
+      localObject2 = this.aEv;
+      if (this.aEw == null) {
+        this.aEw = new byte[4097];
       }
-      arrayOfByte = this.aCF;
-      i12 = nS();
+      arrayOfByte = this.aEw;
+      i12 = ok();
       i13 = 1 << i12;
       m = i13 + 2;
       i3 = -1;
@@ -173,7 +173,7 @@ public class e
         i += 1;
       }
     }
-    Object localObject3 = this.aCx;
+    Object localObject3 = this.aEo;
     int i8 = 0;
     int i7 = 0;
     int i5 = 0;
@@ -194,7 +194,7 @@ public class e
         if (n != 0) {
           break label1002;
         }
-        i11 = nS();
+        i11 = ok();
         if (i11 > 0) {
           break label971;
         }
@@ -204,32 +204,32 @@ public class e
       {
         this.status = 3;
         Arrays.fill(paramb2, i2, i9, (byte)0);
-        if ((!paramb1.aCk) && (this.sampleSize == 1)) {
+        if ((!paramb1.aEb) && (this.sampleSize == 1)) {
           break label2087;
         }
-        localObject2 = this.aCH;
-        int i15 = paramb1.aCj / this.sampleSize;
-        int i16 = paramb1.aCh / this.sampleSize;
-        int i17 = paramb1.aCi / this.sampleSize;
-        int i18 = paramb1.aCg / this.sampleSize;
+        localObject2 = this.aEy;
+        int i15 = paramb1.aEa / this.sampleSize;
+        int i16 = paramb1.aDY / this.sampleSize;
+        int i17 = paramb1.aDZ / this.sampleSize;
+        int i18 = paramb1.aDX / this.sampleSize;
         k = 1;
         n = 8;
         j = 0;
-        if (this.aCI != 0) {
+        if (this.aEz != 0) {
           break label1371;
         }
         i6 = 1;
         i19 = this.sampleSize;
-        int i20 = this.aCM;
-        int i21 = this.aCL;
-        arrayOfByte = this.aCG;
-        localObject3 = this.aCA;
-        paramb2 = this.aCN;
+        int i20 = this.aED;
+        int i21 = this.aEC;
+        arrayOfByte = this.aEx;
+        localObject3 = this.aEr;
+        paramb2 = this.aEE;
         i1 = 0;
         if (i1 >= i15) {
           break label1960;
         }
-        if (!paramb1.aCk) {
+        if (!paramb1.aEb) {
           break label2342;
         }
         m = n;
@@ -266,7 +266,7 @@ public class e
           }
           i7 = i2 + i20;
           label899:
-          i2 = paramb1.aCi * (i1 * i19);
+          i2 = paramb1.aDZ * (i1 * i19);
           if (n == 0) {
             break label1453;
           }
@@ -287,7 +287,7 @@ public class e
             paramb2 = (b)localObject1;
           }
           label971:
-          this.aCy.get(this.aCx, 0, Math.min(i11, this.aCy.remaining()));
+          this.aEp.get(this.aEo, 0, Math.min(i11, this.aEp.remaining()));
         }
       }
       int i10 = 0;
@@ -427,7 +427,7 @@ public class e
               m = i2;
               localObject1 = paramb2;
             } while (i8 >= i7);
-            int i23 = paramb1.aCi;
+            int i23 = paramb1.aDZ;
             i5 = 0;
             i4 = 0;
             i3 = 0;
@@ -436,10 +436,10 @@ public class e
             i9 = m;
             int i24;
             int i14;
-            while ((i9 < this.sampleSize + m) && (i9 < this.aCG.length) && (i9 < i22))
+            while ((i9 < this.sampleSize + m) && (i9 < this.aEx.length) && (i9 < i22))
             {
-              i10 = this.aCG[i9];
-              i24 = this.aCA[(i10 & 0xFF)];
+              i10 = this.aEx[i9];
+              i24 = this.aEr[(i10 & 0xFF)];
               i14 = n;
               i13 = i2;
               i12 = i3;
@@ -467,10 +467,10 @@ public class e
             i3 = i2;
             i2 = n;
             n = i10;
-            while ((n < m + i23 + this.sampleSize) && (n < this.aCG.length) && (n < i22))
+            while ((n < m + i23 + this.sampleSize) && (n < this.aEx.length) && (n < i22))
             {
-              i10 = this.aCG[n];
-              i24 = this.aCA[(i10 & 0xFF)];
+              i10 = this.aEx[n];
+              i24 = this.aEr[(i10 & 0xFF)];
               i14 = i2;
               i13 = i3;
               i12 = i4;
@@ -513,7 +513,7 @@ public class e
                 paramb2 = Boolean.TRUE;
                 continue;
                 label1960:
-                if (this.aCN == null) {
+                if (this.aEE == null) {
                   if (paramb2 != null) {
                     break label2078;
                   }
@@ -521,31 +521,31 @@ public class e
                 label2078:
                 for (boolean bool = false;; bool = paramb2.booleanValue())
                 {
-                  this.aCN = Boolean.valueOf(bool);
-                  if ((this.aCK) && ((paramb1.aCm == 0) || (paramb1.aCm == 1)))
+                  this.aEE = Boolean.valueOf(bool);
+                  if ((this.aEB) && ((paramb1.aEd == 0) || (paramb1.aEd == 1)))
                   {
-                    if (this.aCJ == null) {
-                      this.aCJ = nT();
+                    if (this.aEA == null) {
+                      this.aEA = ol();
                     }
-                    this.aCJ.setPixels(arrayOfInt, 0, this.aCM, 0, 0, this.aCM, this.aCL);
+                    this.aEA.setPixels(arrayOfInt, 0, this.aED, 0, 0, this.aED, this.aEC);
                   }
-                  paramb1 = nT();
-                  paramb1.setPixels(arrayOfInt, 0, this.aCM, 0, 0, this.aCM, this.aCL);
+                  paramb1 = ol();
+                  paramb1.setPixels(arrayOfInt, 0, this.aED, 0, 0, this.aED, this.aEC);
                   AppMethodBeat.o(3484);
                   return paramb1;
                 }
                 label2087:
-                paramb2 = this.aCH;
-                i4 = paramb1.aCj;
-                i5 = paramb1.aCh;
-                i6 = paramb1.aCi;
-                i7 = paramb1.aCg;
-                if (this.aCI == 0)
+                paramb2 = this.aEy;
+                i4 = paramb1.aEa;
+                i5 = paramb1.aDY;
+                i6 = paramb1.aDZ;
+                i7 = paramb1.aDX;
+                if (this.aEz == 0)
                 {
                   j = 1;
-                  i8 = this.aCM;
-                  localObject1 = this.aCG;
-                  localObject2 = this.aCA;
+                  i8 = this.aED;
+                  localObject1 = this.aEx;
+                  localObject2 = this.aEr;
                   k = 0;
                   i = -1;
                   label2149:
@@ -564,7 +564,7 @@ public class e
                 label2336:
                 for (;;)
                 {
-                  i1 = k * paramb1.aCi;
+                  i1 = k * paramb1.aDZ;
                   if (n < m)
                   {
                     i3 = localObject1[i1];
@@ -592,10 +592,10 @@ public class e
                   k += 1;
                   break label2149;
                   label2298:
-                  if ((this.aCN == null) && (j != 0) && (i != -1)) {}
+                  if ((this.aEE == null) && (j != 0) && (i != -1)) {}
                   for (bool = true;; bool = false)
                   {
-                    this.aCN = Boolean.valueOf(bool);
+                    this.aEE = Boolean.valueOf(bool);
                     break;
                   }
                 }
@@ -639,41 +639,41 @@ public class e
     finally {}
     paramInt = Integer.highestOneBit(paramInt);
     this.status = 0;
-    this.aCz = paramc;
-    this.aCI = -1;
-    this.aCy = paramByteBuffer.asReadOnlyBuffer();
-    this.aCy.position(0);
-    this.aCy.order(ByteOrder.LITTLE_ENDIAN);
-    this.aCK = false;
-    paramByteBuffer = paramc.aCs.iterator();
+    this.aEq = paramc;
+    this.aEz = -1;
+    this.aEp = paramByteBuffer.asReadOnlyBuffer();
+    this.aEp.position(0);
+    this.aEp.order(ByteOrder.LITTLE_ENDIAN);
+    this.aEB = false;
+    paramByteBuffer = paramc.aEj.iterator();
     while (paramByteBuffer.hasNext()) {
-      if (((b)paramByteBuffer.next()).aCm == 3) {
-        this.aCK = true;
+      if (((b)paramByteBuffer.next()).aEd == 3) {
+        this.aEB = true;
       }
     }
     this.sampleSize = paramInt;
-    this.aCM = (paramc.width / paramInt);
-    this.aCL = (paramc.height / paramInt);
-    this.aCG = this.aCC.dk(paramc.width * paramc.height);
-    this.aCH = this.aCC.dl(this.aCM * this.aCL);
+    this.aED = (paramc.width / paramInt);
+    this.aEC = (paramc.height / paramInt);
+    this.aEx = this.aEt.dk(paramc.width * paramc.height);
+    this.aEy = this.aEt.dl(this.aED * this.aEC);
     AppMethodBeat.o(3482);
   }
   
-  private int nS()
+  private int ok()
   {
     AppMethodBeat.i(3485);
-    int i = this.aCy.get();
+    int i = this.aEp.get();
     AppMethodBeat.o(3485);
     return i & 0xFF;
   }
   
-  private Bitmap nT()
+  private Bitmap ol()
   {
     AppMethodBeat.i(3486);
-    if ((this.aCN == null) || (this.aCN.booleanValue())) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = this.aCO)
+    if ((this.aEE == null) || (this.aEE.booleanValue())) {}
+    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = this.aEF)
     {
-      localObject = this.aCC.a(this.aCM, this.aCL, (Bitmap.Config)localObject);
+      localObject = this.aEt.a(this.aED, this.aEC, (Bitmap.Config)localObject);
       ((Bitmap)localObject).setHasAlpha(true);
       AppMethodBeat.o(3486);
       return localObject;
@@ -689,100 +689,100 @@ public class e
       AppMethodBeat.o(3483);
       throw paramConfig;
     }
-    this.aCO = paramConfig;
+    this.aEF = paramConfig;
     AppMethodBeat.o(3483);
   }
   
   public final void advance()
   {
-    this.aCI = ((this.aCI + 1) % this.aCz.frameCount);
+    this.aEz = ((this.aEz + 1) % this.aEq.frameCount);
   }
   
   public final void clear()
   {
     AppMethodBeat.i(3481);
-    this.aCz = null;
-    if (this.aCG != null) {
-      this.aCC.k(this.aCG);
+    this.aEq = null;
+    if (this.aEx != null) {
+      this.aEt.k(this.aEx);
     }
-    if (this.aCH != null) {
-      this.aCC.o(this.aCH);
+    if (this.aEy != null) {
+      this.aEt.o(this.aEy);
     }
-    if (this.aCJ != null) {
-      this.aCC.f(this.aCJ);
+    if (this.aEA != null) {
+      this.aEt.f(this.aEA);
     }
-    this.aCJ = null;
-    this.aCy = null;
-    this.aCN = null;
-    if (this.aCx != null) {
-      this.aCC.k(this.aCx);
+    this.aEA = null;
+    this.aEp = null;
+    this.aEE = null;
+    if (this.aEo != null) {
+      this.aEt.k(this.aEo);
     }
     AppMethodBeat.o(3481);
   }
   
   public final ByteBuffer getData()
   {
-    return this.aCy;
+    return this.aEp;
   }
   
   public final int getFrameCount()
   {
-    return this.aCz.frameCount;
+    return this.aEq.frameCount;
   }
   
-  public final int nH()
+  public final int nZ()
   {
     AppMethodBeat.i(3478);
-    if ((this.aCz.frameCount <= 0) || (this.aCI < 0))
+    if ((this.aEq.frameCount <= 0) || (this.aEz < 0))
     {
       AppMethodBeat.o(3478);
       return 0;
     }
-    int k = this.aCI;
+    int k = this.aEz;
     int j = -1;
     int i = j;
     if (k >= 0)
     {
       i = j;
-      if (k < this.aCz.frameCount) {
-        i = ((b)this.aCz.aCs.get(k)).delay;
+      if (k < this.aEq.frameCount) {
+        i = ((b)this.aEq.aEj.get(k)).delay;
       }
     }
     AppMethodBeat.o(3478);
     return i;
   }
   
-  public final int nI()
+  public final int oa()
   {
-    return this.aCI;
+    return this.aEz;
   }
   
-  public final void nJ()
+  public final void ob()
   {
-    this.aCI = -1;
+    this.aEz = -1;
   }
   
-  public final int nK()
+  public final int oc()
   {
     AppMethodBeat.i(3479);
-    int i = this.aCy.limit();
-    int j = this.aCG.length;
-    int k = this.aCH.length;
+    int i = this.aEp.limit();
+    int j = this.aEx.length;
+    int k = this.aEy.length;
     AppMethodBeat.o(3479);
     return i + j + k * 4;
   }
   
-  public final Bitmap nL()
+  public final Bitmap od()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(3480);
-        if ((this.aCz.frameCount <= 0) || (this.aCI < 0))
+        if ((this.aEq.frameCount <= 0) || (this.aEz < 0))
         {
           if (Log.isLoggable(TAG, 3)) {
-            new StringBuilder("Unable to decode frame, frameCount=").append(this.aCz.frameCount).append(", framePointer=").append(this.aCI);
+            new StringBuilder("Unable to decode frame, frameCount=").append(this.aEq.frameCount).append(", framePointer=").append(this.aEz);
           }
           this.status = 1;
         }
@@ -797,23 +797,23 @@ public class e
           return localObject1;
         }
         this.status = 0;
-        if (this.aCx == null) {
-          this.aCx = this.aCC.dk(255);
+        if (this.aEo == null) {
+          this.aEo = this.aEt.dk(255);
         }
-        b localb = (b)this.aCz.aCs.get(this.aCI);
-        int i = this.aCI - 1;
+        b localb = (b)this.aEq.aEj.get(this.aEz);
+        int i = this.aEz - 1;
         if (i >= 0)
         {
-          localObject1 = (b)this.aCz.aCs.get(i);
+          localObject1 = (b)this.aEq.aEj.get(i);
           int[] arrayOfInt;
-          if (localb.aCp != null)
+          if (localb.aEg != null)
           {
-            arrayOfInt = localb.aCp;
-            this.aCA = arrayOfInt;
-            if (this.aCA == null)
+            arrayOfInt = localb.aEg;
+            this.aEr = arrayOfInt;
+            if (this.aEr == null)
             {
               if (Log.isLoggable(TAG, 3)) {
-                new StringBuilder("No valid color table found for frame #").append(this.aCI);
+                new StringBuilder("No valid color table found for frame #").append(this.aEz);
               }
               this.status = 1;
               AppMethodBeat.o(3480);
@@ -822,14 +822,14 @@ public class e
           }
           else
           {
-            arrayOfInt = this.aCz.aCq;
+            arrayOfInt = this.aEq.aEh;
             continue;
           }
-          if (localb.aCl)
+          if (localb.aEc)
           {
-            System.arraycopy(this.aCA, 0, this.aCB, 0, this.aCA.length);
-            this.aCA = this.aCB;
-            this.aCA[localb.aCn] = 0;
+            System.arraycopy(this.aEr, 0, this.aEs, 0, this.aEr.length);
+            this.aEr = this.aEs;
+            this.aEr[localb.aEe] = 0;
           }
           localObject1 = a(localb, (b)localObject1);
           AppMethodBeat.o(3480);

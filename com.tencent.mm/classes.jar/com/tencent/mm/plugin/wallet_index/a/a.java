@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.wallet_index.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.plugin.wallet_index.c.n;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
-  implements aw
+  implements ax
 {
-  private n BPo;
+  private n DpG;
   
   public a()
   {
     AppMethodBeat.i(71797);
-    this.BPo = new n();
+    this.DpG = new n();
     AppMethodBeat.o(71797);
   }
   
@@ -28,16 +28,16 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(71798);
-    com.tencent.mm.sdk.b.a.GpY.c(this.BPo.BPJ);
-    com.tencent.mm.sdk.b.a.GpY.c(this.BPo.BPK);
+    com.tencent.mm.sdk.b.a.IbL.c(this.DpG.Dqb);
+    com.tencent.mm.sdk.b.a.IbL.c(this.DpG.Dqc);
     AppMethodBeat.o(71798);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(71799);
-    com.tencent.mm.sdk.b.a.GpY.d(this.BPo.BPJ);
-    com.tencent.mm.sdk.b.a.GpY.d(this.BPo.BPK);
+    com.tencent.mm.sdk.b.a.IbL.d(this.DpG.Dqb);
+    com.tencent.mm.sdk.b.a.IbL.d(this.DpG.Dqc);
     AppMethodBeat.o(71799);
   }
   

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.ui.collection;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.i;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"TAG", "", "OPEN_TEST_ENTRY", "", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"TAG", "", "OPEN_TEST_ENTRY", "", "plugin-appbrand-integration_release"})
 public final class a
 {
-  static final boolean bwe()
+  static final boolean bAk()
   {
     AppMethodBeat.i(175226);
-    if ((h.DEBUG) || (h.IS_FLAVOR_RED) || (bt.eWo()))
+    if ((i.DEBUG) || (i.IS_FLAVOR_RED) || (bu.flY()))
     {
       AppMethodBeat.o(175226);
       return true;

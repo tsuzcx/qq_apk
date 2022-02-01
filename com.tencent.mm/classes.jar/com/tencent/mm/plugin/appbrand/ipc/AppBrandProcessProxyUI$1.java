@@ -18,13 +18,13 @@ final class AppBrandProcessProxyUI$1
     AppMethodBeat.i(45385);
     if (paramBundle == null)
     {
-      this.jUS.a(null);
+      this.kpg.a(null);
       AppMethodBeat.o(45385);
       return;
     }
     paramBundle.setClassLoader(AppBrandProcessProxyUI.class.getClassLoader());
     paramBundle = (AppBrandProxyUIProcessTask.ProcessResult)paramBundle.getParcelable("key_result_parcel");
-    this.jUS.a(paramBundle);
+    this.kpg.a(paramBundle);
     AppMethodBeat.o(45385);
   }
 }

@@ -5,26 +5,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class c
 {
-  private static volatile c bYq;
-  public g bYr;
+  private static volatile c ciI;
+  public g ciJ;
   
   protected c()
   {
     AppMethodBeat.i(130470);
-    this.bYr = new com.tencent.luggage.game.c.c();
+    this.ciJ = new com.tencent.luggage.game.c.c();
     AppMethodBeat.o(130470);
   }
   
-  public static c AX()
+  public static c Cw()
   {
     AppMethodBeat.i(130471);
-    if (bYq == null) {}
+    if (ciI == null) {}
     try
     {
-      if (bYq == null) {
-        bYq = new c();
+      if (ciI == null) {
+        ciI = new c();
       }
-      c localc = bYq;
+      c localc = ciI;
       AppMethodBeat.o(130471);
       return localc;
     }

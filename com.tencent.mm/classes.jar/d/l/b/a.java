@@ -2,8 +2,7 @@ package d.l.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.g.b.k;
-import d.g.b.w;
+import d.g.b.z;
 import d.l;
 import d.l.b;
 import d.l.b.a.b.b.e;
@@ -11,31 +10,30 @@ import d.l.b.a.b.b.f;
 import d.l.b.a.b.b.h;
 import d.l.b.a.b.m.ab;
 import d.l.b.a.b.m.at;
-import d.l.b.a.u;
-import d.l.b.a.x;
+import d.l.b.a.t;
+import d.l.b.a.w;
 import d.l.c;
 import d.l.o;
-import d.l.p;
 import d.v;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fNY={1, 1, 15}, fNZ={""}, fOa={"jvmErasure", "Lkotlin/reflect/KClass;", "Lkotlin/reflect/KClassifier;", "getJvmErasure", "(Lkotlin/reflect/KClassifier;)Lkotlin/reflect/KClass;", "Lkotlin/reflect/KType;", "jvmErasure$annotations", "(Lkotlin/reflect/KType;)V", "(Lkotlin/reflect/KType;)Lkotlin/reflect/KClass;", "kotlin-reflection"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"jvmErasure", "Lkotlin/reflect/KClass;", "Lkotlin/reflect/KClassifier;", "getJvmErasure", "(Lkotlin/reflect/KClassifier;)Lkotlin/reflect/KClass;", "Lkotlin/reflect/KType;", "jvmErasure$annotations", "(Lkotlin/reflect/KType;)V", "(Lkotlin/reflect/KType;)Lkotlin/reflect/KClass;", "kotlin-reflection"})
 public final class a
 {
   public static final b<?> a(c paramc)
   {
     AppMethodBeat.i(56267);
-    k.h(paramc, "$this$jvmErasure");
+    d.g.b.p.h(paramc, "$this$jvmErasure");
     if ((paramc instanceof b))
     {
       paramc = (b)paramc;
       AppMethodBeat.o(56267);
       return paramc;
     }
-    if ((paramc instanceof p))
+    if ((paramc instanceof d.l.p))
     {
-      List localList = ((p)paramc).fOJ();
+      List localList = ((d.l.p)paramc).ggj();
       Iterator localIterator = ((Iterable)localList).iterator();
       Object localObject;
       int i;
@@ -49,13 +47,13 @@ public final class a
           AppMethodBeat.o(56267);
           throw paramc;
         }
-        h localh = ((u)paramc).KXI.gbz().fQq();
+        h localh = ((t)paramc).MOF.gsZ().ghO();
         paramc = localh;
         if (!(localh instanceof e)) {
           paramc = null;
         }
         paramc = (e)paramc;
-        if ((paramc != null) && (paramc.fPY() != f.Ldx) && (paramc.fPY() != f.LdA))
+        if ((paramc != null) && (paramc.ghw() != f.MUs) && (paramc.ghw() != f.MUv))
         {
           i = 1;
           label166:
@@ -69,7 +67,7 @@ public final class a
         localObject = (o)paramc;
         paramc = (c)localObject;
         if (localObject == null) {
-          paramc = (o)j.iP(localList);
+          paramc = (o)j.jd(localList);
         }
         if (paramc != null)
         {
@@ -78,7 +76,7 @@ public final class a
             break label255;
           }
         }
-        paramc = w.bn(Object.class);
+        paramc = z.bp(Object.class);
         AppMethodBeat.o(56267);
         return paramc;
         i = 0;
@@ -87,7 +85,7 @@ public final class a
         break;
       }
     }
-    paramc = (Throwable)new x("Cannot calculate JVM erasure for type: ".concat(String.valueOf(paramc)));
+    paramc = (Throwable)new w("Cannot calculate JVM erasure for type: ".concat(String.valueOf(paramc)));
     AppMethodBeat.o(56267);
     throw paramc;
     label255:
@@ -98,8 +96,8 @@ public final class a
   private static b<?> a(o paramo)
   {
     AppMethodBeat.i(56266);
-    k.h(paramo, "$this$jvmErasure");
-    Object localObject = paramo.fOI();
+    d.g.b.p.h(paramo, "$this$jvmErasure");
+    Object localObject = paramo.ggi();
     if (localObject != null)
     {
       localObject = a((c)localObject);
@@ -107,7 +105,7 @@ public final class a
     }
     else
     {
-      paramo = (Throwable)new x("Cannot calculate JVM erasure for type: ".concat(String.valueOf(paramo)));
+      paramo = (Throwable)new w("Cannot calculate JVM erasure for type: ".concat(String.valueOf(paramo)));
       AppMethodBeat.o(56266);
       throw paramo;
     }
@@ -117,7 +115,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a
  * JD-Core Version:    0.7.0.1
  */

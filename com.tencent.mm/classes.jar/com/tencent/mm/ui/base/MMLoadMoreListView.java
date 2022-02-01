@@ -9,25 +9,25 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class MMLoadMoreListView
   extends ListView
 {
-  private a Hyd;
-  private boolean Hye;
-  private boolean Hyf;
-  private TextView Hyg;
-  private View pfa;
+  private a JlT;
+  private boolean JlU;
+  private boolean JlV;
+  private TextView JlW;
+  private View pIC;
   
   public MMLoadMoreListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142039);
-    this.pfa = null;
-    this.Hyd = null;
-    this.Hye = false;
-    this.Hyf = false;
+    this.pIC = null;
+    this.JlT = null;
+    this.JlU = false;
+    this.JlV = false;
     init();
     AppMethodBeat.o(142039);
   }
@@ -36,45 +36,45 @@ public class MMLoadMoreListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142040);
-    this.pfa = null;
-    this.Hyd = null;
-    this.Hye = false;
-    this.Hyf = false;
+    this.pIC = null;
+    this.JlT = null;
+    this.JlU = false;
+    this.JlV = false;
     init();
     AppMethodBeat.o(142040);
   }
   
-  private void fiu()
+  private void fyJ()
   {
     AppMethodBeat.i(142041);
-    this.pfa = View.inflate(getContext(), 2131494788, null);
-    this.Hyg = ((TextView)this.pfa.findViewById(2131300212));
-    this.pfa.setVisibility(8);
+    this.pIC = View.inflate(getContext(), 2131494788, null);
+    this.JlW = ((TextView)this.pIC.findViewById(2131300212));
+    this.pIC.setVisibility(8);
     AppMethodBeat.o(142041);
   }
   
   private void init()
   {
     AppMethodBeat.i(142042);
-    if (this.pfa == null)
+    if (this.pIC == null)
     {
-      fiu();
-      addFooterView(this.pfa);
-      this.pfa.setVisibility(8);
+      fyJ();
+      addFooterView(this.pIC);
+      this.pIC.setVisibility(8);
     }
     AppMethodBeat.o(142042);
   }
   
-  public final void fiv()
+  public final void fyK()
   {
     AppMethodBeat.i(142043);
-    if (this.pfa == null) {
-      fiu();
+    if (this.pIC == null) {
+      fyJ();
     }
     try
     {
-      removeFooterView(this.pfa);
-      addFooterView(this.pfa);
+      removeFooterView(this.pIC);
+      addFooterView(this.pIC);
       AppMethodBeat.o(142043);
       return;
     }
@@ -84,10 +84,10 @@ public class MMLoadMoreListView
     }
   }
   
-  public final void fiw()
+  public final void fyL()
   {
     AppMethodBeat.i(142044);
-    this.Hye = true;
+    this.JlU = true;
     setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
@@ -98,7 +98,7 @@ public class MMLoadMoreListView
         }
         for (;;)
         {
-          ac.d("MMLoadMoreListView", "newpoi scroll2Top %s", new Object[] { MMLoadMoreListView.b(MMLoadMoreListView.this) });
+          ad.d("MMLoadMoreListView", "newpoi scroll2Top %s", new Object[] { MMLoadMoreListView.b(MMLoadMoreListView.this) });
           AppMethodBeat.o(142038);
           return;
           MMLoadMoreListView.a(MMLoadMoreListView.this, false);
@@ -109,7 +109,7 @@ public class MMLoadMoreListView
       {
         AppMethodBeat.i(142037);
         if ((paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1) && (MMLoadMoreListView.a(MMLoadMoreListView.this) != null)) {
-          MMLoadMoreListView.a(MMLoadMoreListView.this).Xa();
+          MMLoadMoreListView.a(MMLoadMoreListView.this).Zt();
         }
         AppMethodBeat.o(142037);
       }
@@ -117,32 +117,32 @@ public class MMLoadMoreListView
     AppMethodBeat.o(142044);
   }
   
-  public final void fix()
+  public final void fyM()
   {
     AppMethodBeat.i(142048);
-    if (this.pfa != null)
+    if (this.pIC != null)
     {
-      this.Hyg.setVisibility(8);
-      this.pfa.setVisibility(8);
+      this.JlW.setVisibility(8);
+      this.pIC.setVisibility(8);
     }
     AppMethodBeat.o(142048);
   }
   
-  public final void fiy()
+  public final void fyN()
   {
     AppMethodBeat.i(142049);
-    if (this.pfa.getParent() == null) {
-      fiv();
+    if (this.pIC.getParent() == null) {
+      fyK();
     }
-    this.Hyg.setVisibility(0);
-    this.pfa.setVisibility(0);
+    this.JlW.setVisibility(0);
+    this.pIC.setVisibility(0);
     AppMethodBeat.o(142049);
   }
   
-  public final void fiz()
+  public final void fyO()
   {
     AppMethodBeat.i(142050);
-    removeFooterView(this.pfa);
+    removeFooterView(this.pIC);
     AppMethodBeat.o(142050);
   }
   
@@ -161,25 +161,25 @@ public class MMLoadMoreListView
   public void setFooterTips(String paramString)
   {
     AppMethodBeat.i(142047);
-    this.Hyg.setText(paramString);
+    this.JlW.setText(paramString);
     AppMethodBeat.o(142047);
   }
   
   public void setOnFootrClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(142046);
-    this.Hyg.setOnClickListener(paramOnClickListener);
+    this.JlW.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(142046);
   }
   
   public void setOnLoadMoreListener(a parama)
   {
-    this.Hyd = parama;
+    this.JlT = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void Xa();
+    public abstract void Zt();
   }
 }
 

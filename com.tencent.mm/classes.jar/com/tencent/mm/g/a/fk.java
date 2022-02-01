@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class fk
   extends b
 {
-  public a dfc;
+  public a dqw;
   
   public fk()
   {
@@ -16,26 +15,21 @@ public final class fk
   
   private fk(byte paramByte)
   {
-    AppMethodBeat.i(19803);
-    this.dfc = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(55661);
+    this.dqw = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19803);
+    AppMethodBeat.o(55661);
   }
   
   public static final class a
   {
-    public String[] cYr;
-    public Context context;
-    public int dbL = -1;
-    public String dfd;
-    public int op = 0;
-    public String[] selectionArgs;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.fk
  * JD-Core Version:    0.7.0.1
  */

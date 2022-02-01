@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
@@ -20,7 +20,7 @@ public final class c
     return l;
   }
   
-  public static boolean FL(String paramString)
+  public static boolean Ja(String paramString)
   {
     AppMethodBeat.i(133852);
     if (isNullOrNil(paramString))
@@ -52,7 +52,7 @@ public final class c
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
           }
         }
       }
@@ -64,7 +64,7 @@ public final class c
       int j = readInt(arrayOfByte, 4);
       str = paramString;
       localObject = paramString;
-      int k = a.bat;
+      int k = a.bkO;
       if ((j == k) && (i > 0))
       {
         if (paramString != null) {}
@@ -78,7 +78,7 @@ public final class c
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
           }
         }
       }
@@ -93,7 +93,7 @@ public final class c
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
         }
       }
       try
@@ -106,14 +106,14 @@ public final class c
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.AtomUtil", localIOException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.AtomUtil", localIOException, "", new Object[0]);
         }
       }
     }
     catch (Exception paramString)
     {
       localObject = str;
-      ac.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
       if (str != null) {}
       try
       {
@@ -125,7 +125,7 @@ public final class c
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
         }
       }
     }
@@ -160,14 +160,14 @@ public final class c
         int i;
         int j;
         int k;
-        ac.printErrStackTrace("MicroMsg.AtomUtil", paramRandomAccessFile, "", new Object[0]);
-        ac.e("MicroMsg.AtomUtil", "find Atom error: " + paramRandomAccessFile.toString());
+        ad.printErrStackTrace("MicroMsg.AtomUtil", paramRandomAccessFile, "", new Object[0]);
+        ad.e("MicroMsg.AtomUtil", "find Atom error: " + paramRandomAccessFile.toString());
         Object localObject1 = localObject2;
         continue;
       }
       AppMethodBeat.o(133856);
       return localObject1;
-      if ((k == a.baU) || (k == a.baY))
+      if ((k == a.blp) || (k == a.blt))
       {
         i = paramRandomAccessFile.read(paramArrayOfByte);
       }
@@ -193,7 +193,7 @@ public final class c
     l += paramRandomAccessFile.skipBytes((int)paramLong);
     if (l != paramLong)
     {
-      ac.w("MicroMsg.AtomUtil", "can not skip.skip: " + paramLong + " trueSkip : " + l);
+      ad.w("MicroMsg.AtomUtil", "can not skip.skip: " + paramLong + " trueSkip : " + l);
       AppMethodBeat.o(133857);
       return false;
     }
@@ -201,7 +201,12 @@ public final class c
     return true;
   }
   
-  public static int aQ(String paramString)
+  public static long an(byte[] paramArrayOfByte)
+  {
+    return (paramArrayOfByte[0] & 0xFF) << 56 | (paramArrayOfByte[1] & 0xFF) << 48 | (paramArrayOfByte[2] & 0xFF) << 40 | (paramArrayOfByte[3] & 0xFF) << 32 | (paramArrayOfByte[4] & 0xFF) << 24 | (paramArrayOfByte[5] & 0xFF) << 16 | (paramArrayOfByte[6] & 0xFF) << 8 | paramArrayOfByte[7] & 0xFF;
+  }
+  
+  public static int bJ(String paramString)
   {
     AppMethodBeat.i(133854);
     int k = paramString.length();
@@ -214,11 +219,6 @@ public final class c
     }
     AppMethodBeat.o(133854);
     return i;
-  }
-  
-  public static long an(byte[] paramArrayOfByte)
-  {
-    return (paramArrayOfByte[0] & 0xFF) << 56 | (paramArrayOfByte[1] & 0xFF) << 48 | (paramArrayOfByte[2] & 0xFF) << 40 | (paramArrayOfByte[3] & 0xFF) << 32 | (paramArrayOfByte[4] & 0xFF) << 24 | (paramArrayOfByte[5] & 0xFF) << 16 | (paramArrayOfByte[6] & 0xFF) << 8 | paramArrayOfByte[7] & 0xFF;
   }
   
   public static boolean isNullOrNil(String paramString)
@@ -243,7 +243,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.a.c
  * JD-Core Version:    0.7.0.1
  */

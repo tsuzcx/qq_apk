@@ -54,11 +54,19 @@ public final class le
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
       localObject2 = c.n(paramVarArgs);
-      ((Path)localObject2).moveTo(17.969849F, 25.0F);
-      ((Path)localObject2).cubicTo(18.729898F, 24.232233F, 19.200001F, 23.171574F, 19.200001F, 22.0F);
-      ((Path)localObject2).cubicTo(19.200001F, 20.828426F, 18.729898F, 19.767767F, 17.969849F, 19.0F);
-      ((Path)localObject2).lineTo(15.0F, 22.0F);
+      ((Path)localObject2).moveTo(21.434671F, 15.5F);
+      ((Path)localObject2).cubicTo(23.081448F, 17.163496F, 24.1F, 19.461592F, 24.1F, 22.0F);
+      ((Path)localObject2).cubicTo(24.1F, 24.538408F, 23.081448F, 26.836504F, 21.434671F, 28.5F);
+      ((Path)localObject2).lineTo(19.949747F, 27.0F);
+      ((Path)localObject2).cubicTo(21.255392F, 25.681099F, 22.0F, 23.902777F, 22.0F, 22.0F);
+      ((Path)localObject2).cubicTo(22.0F, 20.097223F, 21.255392F, 18.318901F, 19.949747F, 17.0F);
+      ((Path)localObject2).lineTo(21.434671F, 15.5F);
+      ((Path)localObject2).close();
+      ((Path)localObject2).moveTo(17.969849F, 19.0F);
+      ((Path)localObject2).cubicTo(18.729898F, 19.767767F, 19.200001F, 20.828426F, 19.200001F, 22.0F);
+      ((Path)localObject2).cubicTo(19.200001F, 23.171574F, 18.729898F, 24.232233F, 17.969849F, 25.0F);
       ((Path)localObject2).lineTo(17.969849F, 25.0F);
+      ((Path)localObject2).lineTo(15.0F, 22.0F);
       ((Path)localObject2).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject2, 2);
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
@@ -70,7 +78,7 @@ public final class le
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.le
  * JD-Core Version:    0.7.0.1
  */

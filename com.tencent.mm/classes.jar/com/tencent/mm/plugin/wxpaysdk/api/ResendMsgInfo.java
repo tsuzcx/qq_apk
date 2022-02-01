@@ -9,11 +9,11 @@ public class ResendMsgInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ResendMsgInfo> CREATOR;
-  public String DdI;
+  public String EHI;
   public String description;
+  public String kzK;
+  public String kzL;
   public String title;
-  public String unW;
-  public String unX;
   
   static
   {
@@ -28,10 +28,10 @@ public class ResendMsgInfo
   {
     AppMethodBeat.i(117565);
     this.title = paramParcel.readString();
-    this.DdI = paramParcel.readString();
+    this.EHI = paramParcel.readString();
     this.description = paramParcel.readString();
-    this.unW = paramParcel.readString();
-    this.unX = paramParcel.readString();
+    this.kzK = paramParcel.readString();
+    this.kzL = paramParcel.readString();
     AppMethodBeat.o(117565);
   }
   
@@ -43,7 +43,7 @@ public class ResendMsgInfo
   public String toString()
   {
     AppMethodBeat.i(117563);
-    String str = "ResendMsgInfo{title='" + this.title + '\'' + ", pic='" + this.DdI + '\'' + ", description='" + this.description + '\'' + ", left_button_wording='" + this.unW + '\'' + ", right_button_wording='" + this.unX + '\'' + '}';
+    String str = "ResendMsgInfo{title='" + this.title + '\'' + ", pic='" + this.EHI + '\'' + ", description='" + this.description + '\'' + ", left_button_wording='" + this.kzK + '\'' + ", right_button_wording='" + this.kzL + '\'' + '}';
     AppMethodBeat.o(117563);
     return str;
   }
@@ -52,10 +52,10 @@ public class ResendMsgInfo
   {
     AppMethodBeat.i(117564);
     paramParcel.writeString(this.title);
-    paramParcel.writeString(this.DdI);
+    paramParcel.writeString(this.EHI);
     paramParcel.writeString(this.description);
-    paramParcel.writeString(this.unW);
-    paramParcel.writeString(this.unX);
+    paramParcel.writeString(this.kzK);
+    paramParcel.writeString(this.kzL);
     AppMethodBeat.o(117564);
   }
 }

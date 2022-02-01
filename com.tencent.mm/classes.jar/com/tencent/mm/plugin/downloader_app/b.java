@@ -4,21 +4,21 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.al;
 
 public final class b
 {
   public static void e(ImageView paramImageView, String paramString)
   {
     AppMethodBeat.i(183798);
-    if ((paramImageView == null) || (bs.isNullOrNil(paramString)))
+    if ((paramImageView == null) || (bt.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(183798);
       return;
     }
     String str = paramString;
-    if (aj.DT()) {
+    if (al.isDarkMode()) {
       str = paramString + "_dark";
     }
     paramImageView.setImageResource(paramImageView.getResources().getIdentifier(str, "raw", paramImageView.getContext().getPackageName()));

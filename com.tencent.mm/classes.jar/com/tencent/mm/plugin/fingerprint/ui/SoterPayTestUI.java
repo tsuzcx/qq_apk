@@ -6,16 +6,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import com.tencent.soter.a.b.c;
 
 public class SoterPayTestUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements f
 {
   public int getLayoutId()
   {
@@ -31,11 +33,15 @@ public class SoterPayTestUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64557);
-        ac.i("MicroMsg.SoterPayTestUI", "hy: start get challenge");
-        com.tencent.mm.kernel.g.agS();
-        com.tencent.mm.kernel.g.agQ().ghe.a(1586, SoterPayTestUI.this);
-        com.tencent.mm.kernel.g.agS();
-        com.tencent.mm.kernel.g.agQ().ghe.a(new com.tencent.mm.plugin.fingerprint.c.a(0), 0);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fingerprint/ui/SoterPayTestUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        ad.i("MicroMsg.SoterPayTestUI", "hy: start get challenge");
+        g.ajD();
+        g.ajB().gAO.a(1586, SoterPayTestUI.this);
+        g.ajD();
+        g.ajB().gAO.a(new com.tencent.mm.plugin.fingerprint.c.a(0), 0);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fingerprint/ui/SoterPayTestUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(64557);
       }
     });
@@ -44,8 +50,12 @@ public class SoterPayTestUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64558);
-        ac.i("MicroMsg.SoterPayTestUI", "hy: regen and upload ask");
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fingerprint/ui/SoterPayTestUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        ad.i("MicroMsg.SoterPayTestUI", "hy: regen and upload ask");
         com.tencent.soter.a.a.a(new com.tencent.soter.a.b.b() {}, false, null);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fingerprint/ui/SoterPayTestUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(64558);
       }
     });
@@ -54,6 +64,10 @@ public class SoterPayTestUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64559);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fingerprint/ui/SoterPayTestUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fingerprint/ui/SoterPayTestUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(64559);
       }
     });
@@ -63,10 +77,10 @@ public class SoterPayTestUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(64561);
-    ac.i("MicroMsg.SoterPayTestUI", "hy: on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ad.i("MicroMsg.SoterPayTestUI", "hy: on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     t.makeText(this, String.format("on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }), 1).show();
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(paramn.getType(), this);
+    g.ajD();
+    g.ajB().gAO.b(paramn.getType(), this);
     AppMethodBeat.o(64561);
   }
   

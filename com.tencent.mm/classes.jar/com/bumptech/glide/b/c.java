@@ -6,13 +6,13 @@ import java.util.List;
 
 public final class c
 {
-  int[] aCq;
-  b aCr;
-  final List<b> aCs;
-  boolean aCt;
-  int aCu;
-  int aCv;
-  int aCw;
+  int[] aEh;
+  b aEi;
+  final List<b> aEj;
+  boolean aEk;
+  int aEl;
+  int aEm;
+  int aEn;
   int bgColor;
   public int frameCount;
   public int height;
@@ -23,10 +23,10 @@ public final class c
   public c()
   {
     AppMethodBeat.i(3467);
-    this.aCq = null;
+    this.aEh = null;
     this.status = 0;
     this.frameCount = 0;
-    this.aCs = new ArrayList();
+    this.aEj = new ArrayList();
     this.loopCount = -1;
     AppMethodBeat.o(3467);
   }

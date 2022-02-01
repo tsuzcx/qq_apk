@@ -3,9 +3,9 @@ package android.support.a;
 public final class d
   extends b<d>
 {
-  private e eo = null;
-  private float ep = 3.4028235E+38F;
-  private boolean eq = false;
+  private e gh = null;
+  private float gi = 3.4028235E+38F;
+  private boolean gj = false;
   
   public <K> d(K paramK, c<K> paramc)
   {
@@ -15,49 +15,49 @@ public final class d
   public <K> d(K paramK, c<K> paramc, byte paramByte)
   {
     super(paramK, paramc);
-    this.eo = new e(1.0F);
+    this.gh = new e(1.0F);
   }
   
   public final d a(e parame)
   {
-    this.eo = parame;
+    this.gh = parame;
     return this;
   }
   
-  public final e ar()
+  public final e aH()
   {
-    return this.eo;
+    return this.gh;
   }
   
   final boolean e(long paramLong)
   {
-    if (this.eq)
+    if (this.gj)
     {
-      if (this.ep != 3.4028235E+38F)
+      if (this.gi != 3.4028235E+38F)
       {
-        this.eo.ey = this.ep;
-        this.ep = 3.4028235E+38F;
+        this.gh.gr = this.gi;
+        this.gi = 3.4028235E+38F;
       }
-      this.ed = ((float)this.eo.ey);
-      this.ec = 0.0F;
-      this.eq = false;
+      this.fX = ((float)this.gh.gr);
+      this.fW = 0.0F;
+      this.gj = false;
       return true;
     }
     Object localObject;
-    if (this.ep != 3.4028235E+38F)
+    if (this.gi != 3.4028235E+38F)
     {
-      localObject = this.eo.a(this.ed, this.ec, paramLong / 2L);
-      this.eo.ey = this.ep;
-      this.ep = 3.4028235E+38F;
-      localObject = this.eo.a(((b.a)localObject).ed, ((b.a)localObject).ec, paramLong / 2L);
-      this.ed = ((b.a)localObject).ed;
-      this.ec = ((b.a)localObject).ec;
-      this.ed = Math.max(this.ed, this.ei);
-      this.ed = Math.min(this.ed, this.eh);
-      float f1 = this.ed;
-      float f2 = this.ec;
-      localObject = this.eo;
-      if ((Math.abs(f2) >= ((e)localObject).eu) || (Math.abs(f1 - (float)((e)localObject).ey) >= ((e)localObject).et)) {
+      localObject = this.gh.a(this.fX, this.fW, paramLong / 2L);
+      this.gh.gr = this.gi;
+      this.gi = 3.4028235E+38F;
+      localObject = this.gh.a(((b.a)localObject).fX, ((b.a)localObject).fW, paramLong / 2L);
+      this.fX = ((b.a)localObject).fX;
+      this.fW = ((b.a)localObject).fW;
+      this.fX = Math.max(this.fX, this.gc);
+      this.fX = Math.min(this.fX, this.gb);
+      float f1 = this.fX;
+      float f2 = this.fW;
+      localObject = this.gh;
+      if ((Math.abs(f2) >= ((e)localObject).gn) || (Math.abs(f1 - (float)((e)localObject).gr) >= ((e)localObject).gm)) {
         break label306;
       }
     }
@@ -67,12 +67,12 @@ public final class d
       if (i == 0) {
         break label312;
       }
-      this.ed = ((float)this.eo.ey);
-      this.ec = 0.0F;
+      this.fX = ((float)this.gh.gr);
+      this.fW = 0.0F;
       return true;
-      localObject = this.eo.a(this.ed, this.ec, paramLong);
-      this.ed = ((b.a)localObject).ed;
-      this.ec = ((b.a)localObject).ec;
+      localObject = this.gh.a(this.fX, this.fW, paramLong);
+      this.fX = ((b.a)localObject).fX;
+      this.fW = ((b.a)localObject).fW;
       break;
     }
     label312:
@@ -81,19 +81,19 @@ public final class d
   
   public final void start()
   {
-    if (this.eo == null) {
+    if (this.gh == null) {
       throw new UnsupportedOperationException("Incomplete SpringAnimation: Either final position or a spring force needs to be set.");
     }
-    double d = (float)this.eo.ey;
-    if (d > this.eh) {
+    double d = (float)this.gh.gr;
+    if (d > this.gb) {
       throw new UnsupportedOperationException("Final position of the spring cannot be greater than the max value.");
     }
-    if (d < this.ei) {
+    if (d < this.gc) {
       throw new UnsupportedOperationException("Final position of the spring cannot be less than the min value.");
     }
-    e locale = this.eo;
-    locale.et = Math.abs(this.ej * 0.75F);
-    locale.eu = (locale.et * 62.5D);
+    e locale = this.gh;
+    locale.gm = Math.abs(this.gd * 0.75F);
+    locale.gn = (locale.gm * 62.5D);
     super.start();
   }
 }

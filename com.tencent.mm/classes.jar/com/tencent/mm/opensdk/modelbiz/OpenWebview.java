@@ -17,18 +17,19 @@ public class OpenWebview
     public boolean checkArgs()
     {
       AppMethodBeat.i(3910);
-      if ((this.url == null) || (this.url.length() < 0))
+      String str = this.url;
+      if ((str != null) && (str.length() >= 0))
       {
+        if (this.url.length() > 10240)
+        {
+          AppMethodBeat.o(3910);
+          return false;
+        }
         AppMethodBeat.o(3910);
-        return false;
-      }
-      if (this.url.length() > 10240)
-      {
-        AppMethodBeat.o(3910);
-        return false;
+        return true;
       }
       AppMethodBeat.o(3910);
-      return true;
+      return false;
     }
     
     public void fromBundle(Bundle paramBundle)

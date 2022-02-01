@@ -6,9 +6,9 @@ public abstract interface e
 {
   public abstract void a(String paramString, TimeLineObject paramTimeLineObject);
   
-  public abstract void atC(String paramString);
+  public abstract void ayH(String paramString);
   
-  public abstract void dHh();
+  public abstract void bwZ();
 }
 
 

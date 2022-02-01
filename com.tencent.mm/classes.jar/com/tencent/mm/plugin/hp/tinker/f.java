@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.hp.tinker;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.tinker.loader.shareutil.SharePatchInfo;
 import java.io.File;
 import java.util.List;
@@ -20,7 +20,7 @@ public final class f
   {
     AppMethodBeat.i(117493);
     super.a(paramFile, paramSharePatchInfo, paramString);
-    com.tencent.mm.plugin.hp.b.b.cTe();
+    com.tencent.mm.plugin.hp.b.b.dcl();
     AppMethodBeat.o(117493);
   }
   
@@ -28,7 +28,7 @@ public final class f
   {
     AppMethodBeat.i(117492);
     super.a(paramFile1, paramFile2, paramString, paramInt);
-    com.tencent.mm.plugin.hp.b.b.GW(paramInt);
+    com.tencent.mm.plugin.hp.b.b.Is(paramInt);
     AppMethodBeat.o(117492);
   }
   
@@ -52,17 +52,17 @@ public final class f
   {
     AppMethodBeat.i(117491);
     super.a(paramFile, paramBoolean, paramLong);
-    ac.i("Tinker.TinkerPatchReporter", "onPatchResult start");
+    ad.i("Tinker.TinkerPatchReporter", "onPatchResult start");
     com.tencent.mm.plugin.hp.b.b.w(paramLong, paramBoolean);
-    ac.eUR();
+    ad.fkv();
     AppMethodBeat.o(117491);
   }
   
-  public final void ar(Intent paramIntent)
+  public final void aw(Intent paramIntent)
   {
     AppMethodBeat.i(117486);
-    super.ar(paramIntent);
-    com.tencent.mm.plugin.hp.b.b.aq(paramIntent);
+    super.aw(paramIntent);
+    com.tencent.mm.plugin.hp.b.b.av(paramIntent);
     AppMethodBeat.o(117486);
   }
   
@@ -70,7 +70,7 @@ public final class f
   {
     AppMethodBeat.i(117489);
     super.b(paramFile, paramString1, paramString2);
-    com.tencent.mm.plugin.hp.b.b.cTd();
+    com.tencent.mm.plugin.hp.b.b.dck();
     AppMethodBeat.o(117489);
   }
   
@@ -78,7 +78,7 @@ public final class f
   {
     AppMethodBeat.i(117490);
     super.e(paramFile, paramInt);
-    com.tencent.mm.plugin.hp.b.b.GV(paramInt);
+    com.tencent.mm.plugin.hp.b.b.Ir(paramInt);
     AppMethodBeat.o(117490);
   }
 }

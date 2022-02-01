@@ -20,10 +20,10 @@ public class VideoCompositionRenderContext
   
   public VideoCompositionRenderContext(RenderContext paramRenderContext)
   {
-    AppMethodBeat.i(197681);
+    AppMethodBeat.i(218049);
     this.renderContext = paramRenderContext;
     this.size = new CGSize(paramRenderContext.width(), paramRenderContext.height());
-    AppMethodBeat.o(197681);
+    AppMethodBeat.o(218049);
   }
   
   public RectF getEdgeWidths()
@@ -58,14 +58,14 @@ public class VideoCompositionRenderContext
   
   public TextureInfo newTextureInfo()
   {
-    AppMethodBeat.i(197682);
+    AppMethodBeat.i(218050);
     if (this.videoTexture == null)
     {
       RenderContext.checkEglError("newSampleBuffer");
       this.videoTexture = new TextureInfo(RenderContext.createTexture(3553), 3553, (int)this.size.width, (int)this.size.height, 0);
     }
     TextureInfo localTextureInfo = this.videoTexture;
-    AppMethodBeat.o(197682);
+    AppMethodBeat.o(218050);
     return localTextureInfo;
   }
   
@@ -76,15 +76,15 @@ public class VideoCompositionRenderContext
   
   public String toString()
   {
-    AppMethodBeat.i(197683);
+    AppMethodBeat.i(218051);
     String str = "VideoCompositionRenderContext{size=" + this.size + ", renderContext=" + this.renderContext + '}';
-    AppMethodBeat.o(197683);
+    AppMethodBeat.o(218051);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.core.compositing.VideoCompositionRenderContext
  * JD-Core Version:    0.7.0.1
  */

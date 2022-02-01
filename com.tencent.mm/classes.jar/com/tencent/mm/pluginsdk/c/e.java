@@ -1,29 +1,29 @@
 package com.tencent.mm.pluginsdk.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vl;
+import com.tencent.mm.g.a.we;
 import com.tencent.mm.sdk.b.a;
 
 public final class e
 {
-  public static vl aFP(String paramString)
+  public static we aLp(String paramString)
   {
     AppMethodBeat.i(151625);
-    vl localvl = new vl();
-    localvl.dyl.dgm = 1;
-    localvl.dyl.dym = paramString;
-    a.GpY.l(localvl);
+    we localwe = new we();
+    localwe.dKy.drI = 1;
+    localwe.dKy.dKz = paramString;
+    a.IbL.l(localwe);
     AppMethodBeat.o(151625);
-    return localvl;
+    return localwe;
   }
   
-  public static void aFQ(String paramString)
+  public static void aLq(String paramString)
   {
     AppMethodBeat.i(151626);
-    vl localvl = new vl();
-    localvl.dyl.dgm = 2;
-    localvl.dyl.dym = paramString;
-    a.GpY.l(localvl);
+    we localwe = new we();
+    localwe.dKy.drI = 2;
+    localwe.dKy.dKz = paramString;
+    a.IbL.l(localwe);
     AppMethodBeat.o(151626);
   }
 }

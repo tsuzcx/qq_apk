@@ -6,7 +6,7 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class QualitySession
   implements Parcelable
@@ -14,11 +14,11 @@ public class QualitySession
   public static final Parcelable.Creator<QualitySession> CREATOR;
   public String appId;
   public int apptype;
-  public int lTR;
-  public int lVs;
-  public long lVt;
-  public int lVu;
-  public final String lht;
+  public final String lEv;
+  public int mtG;
+  public int mvi;
+  public long mvj;
+  public boolean mvk;
   public int scene;
   
   static
@@ -31,43 +31,48 @@ public class QualitySession
   protected QualitySession(Parcel paramParcel)
   {
     AppMethodBeat.i(48228);
-    this.lVt = 0L;
-    this.lVu = 0;
-    this.lht = paramParcel.readString();
+    this.mvj = 0L;
+    this.mvk = false;
+    this.lEv = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.lTR = paramParcel.readInt();
+    this.mtG = paramParcel.readInt();
     this.apptype = paramParcel.readInt();
     this.scene = paramParcel.readInt();
-    this.lVs = paramParcel.readInt();
-    this.lVt = paramParcel.readLong();
-    this.lVu = paramParcel.readInt();
-    ac.i("MicroMsg.AppBrand.QualitySession", "secondary <init> instanceId[%s] apptype[%d] scene[%d] appversion[%d]", new Object[] { this.lht, Integer.valueOf(this.apptype), Integer.valueOf(this.scene), Integer.valueOf(this.lVs) });
-    AppMethodBeat.o(48228);
+    this.mvi = paramParcel.readInt();
+    this.mvj = paramParcel.readLong();
+    if (paramParcel.readByte() > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.mvk = bool;
+      ad.i("MicroMsg.AppBrand.QualitySession", "secondary <init> instanceId[%s] apptype[%d] scene[%d] appversion[%d] UIReadyT[%d] isNewUser[%b]", new Object[] { this.lEv, Integer.valueOf(this.apptype), Integer.valueOf(this.scene), Integer.valueOf(this.mvi), Long.valueOf(this.mvj), Boolean.valueOf(this.mvk) });
+      AppMethodBeat.o(48228);
+      return;
+    }
   }
   
   public QualitySession(String paramString, AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(48226);
-    this.lVt = 0L;
-    this.lVu = 0;
-    this.lht = paramString;
+    this.mvj = 0L;
+    this.mvk = false;
+    this.lEv = paramString;
     this.appId = paramAppBrandInitConfigWC.appId;
-    switch (paramAppBrandInitConfigWC.joY)
+    switch (paramAppBrandInitConfigWC.dPf)
     {
     }
     for (;;)
     {
-      this.apptype = (paramAppBrandInitConfigWC.cca + 1000);
+      this.apptype = (paramAppBrandInitConfigWC.cmr + 1000);
       this.scene = paramAppBrandStatObject.scene;
-      this.lVs = paramAppBrandInitConfigWC.aBM;
-      ac.i("MicroMsg.AppBrand.QualitySession", "primary <init> instanceId[%s] apptype[%d] scene[%d] appversion[%d]", new Object[] { this.lht, Integer.valueOf(this.apptype), Integer.valueOf(this.scene), Integer.valueOf(this.lVs) });
+      this.mvi = paramAppBrandInitConfigWC.aDD;
+      ad.i("MicroMsg.AppBrand.QualitySession", "primary <init> instanceId[%s] apptype[%d] scene[%d] appversion[%d]", new Object[] { this.lEv, Integer.valueOf(this.apptype), Integer.valueOf(this.scene), Integer.valueOf(this.mvi) });
       AppMethodBeat.o(48226);
       return;
-      this.lTR = 1;
+      this.mtG = 1;
       continue;
-      this.lTR = 2;
+      this.mtG = 2;
       continue;
-      this.lTR = 3;
+      this.mtG = 3;
     }
   }
   
@@ -79,15 +84,20 @@ public class QualitySession
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(48227);
-    paramParcel.writeString(this.lht);
+    paramParcel.writeString(this.lEv);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.lTR);
+    paramParcel.writeInt(this.mtG);
     paramParcel.writeInt(this.apptype);
     paramParcel.writeInt(this.scene);
-    paramParcel.writeInt(this.lVs);
-    paramParcel.writeLong(this.lVt);
-    paramParcel.writeInt(this.lVu);
-    AppMethodBeat.o(48227);
+    paramParcel.writeInt(this.mvi);
+    paramParcel.writeLong(this.mvj);
+    if (this.mvk) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramParcel.writeByte((byte)paramInt);
+      AppMethodBeat.o(48227);
+      return;
+    }
   }
 }
 

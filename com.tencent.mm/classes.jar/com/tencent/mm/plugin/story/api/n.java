@@ -11,23 +11,23 @@ public abstract interface n
 {
   public abstract AbsStoryGallery a(Context paramContext, n.a parama, String paramString);
   
-  public abstract void d(ViewGroup paramViewGroup, View paramView, int paramInt);
+  public abstract void b(ViewGroup paramViewGroup, View paramView, int paramInt);
   
-  public abstract void fm(View paramView);
+  public abstract void fA(View paramView);
   
-  public abstract void fn(View paramView);
+  public abstract void fB(View paramView);
   
-  public abstract void fo(View paramView);
+  public abstract void fz(View paramView);
   
-  public abstract AbsStoryMuteView go(Context paramContext);
+  public abstract AbsStoryMuteView gr(Context paramContext);
   
-  public abstract AbsStoryHeaderTipView gp(Context paramContext);
+  public abstract AbsStoryHeaderTipView gs(Context paramContext);
   
-  public abstract i gq(Context paramContext);
+  public abstract i gt(Context paramContext);
   
   public abstract MMFragment instantiateAlbumFragment(Context paramContext, Bundle paramBundle);
   
-  public abstract Drawable rB(boolean paramBoolean);
+  public abstract Drawable sh(boolean paramBoolean);
 }
 
 

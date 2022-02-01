@@ -1,67 +1,67 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ma;
-import com.tencent.mm.g.a.ma.a;
+import com.tencent.mm.g.a.mj;
+import com.tencent.mm.g.a.mj.a;
 import com.tencent.mm.sdk.b.c;
 
 public final class e
-  extends c<ma>
+  extends c<mj>
   implements f.a
 {
-  private ma iJg;
+  private mj jcp;
   
   public e()
   {
     AppMethodBeat.i(161741);
-    this.__eventId = ma.class.getName().hashCode();
+    this.__eventId = mj.class.getName().hashCode();
     AppMethodBeat.o(161741);
   }
   
-  public final void aPh()
+  public final void aSt()
   {
     AppMethodBeat.i(110173);
-    if ((this.iJg != null) && (this.iJg.dod.dof != null))
+    if ((this.jcp != null) && (this.jcp.dzR.dzT != null))
     {
-      this.iJg.doe.dbS = false;
-      this.iJg.dod.dof.run();
-      this.iJg = null;
+      this.jcp.dzS.dno = false;
+      this.jcp.dzR.dzT.run();
+      this.jcp = null;
     }
     AppMethodBeat.o(110173);
   }
   
-  public final boolean dy(int paramInt1, int paramInt2)
+  public final boolean dA(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(110172);
-    if (this.iJg == null)
+    if (this.jcp == null)
     {
       AppMethodBeat.o(110172);
       return false;
     }
-    if (this.iJg.dod.dof == null)
+    if (this.jcp.dzR.dzT == null)
     {
-      this.iJg = null;
+      this.jcp = null;
       AppMethodBeat.o(110172);
       return false;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.iJg.doe.dbS = true;
-      this.iJg.dod.dof.run();
-      this.iJg = null;
+      this.jcp.dzS.dno = true;
+      this.jcp.dzR.dzT.run();
+      this.jcp = null;
       AppMethodBeat.o(110172);
       return true;
     }
-    this.iJg.doe.dbS = false;
-    this.iJg.dod.dof.run();
-    this.iJg = null;
+    this.jcp.dzS.dno = false;
+    this.jcp.dzR.dzT.run();
+    this.jcp = null;
     AppMethodBeat.o(110172);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.e
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.websearch.ui.WebSearchDotPercentIndicator;
 import com.tencent.mm.plugin.websearch.ui.WebSearchWebVideoViewControlBar;
 import com.tencent.mm.plugin.websearch.ui.WebSearchWebVideoViewControlBar.2;
@@ -28,12 +28,12 @@ import com.tencent.mm.plugin.webview.fts.c.b.a;
 import com.tencent.mm.plugin.webview.fts.c.c;
 import com.tencent.mm.plugin.webview.fts.c.d;
 import com.tencent.mm.plugin.webview.fts.c.d.1;
-import com.tencent.mm.pluginsdk.ui.h.b;
-import com.tencent.mm.pluginsdk.ui.h.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.pluginsdk.ui.i.b;
+import com.tencent.mm.pluginsdk.ui.i.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.math.BigDecimal;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,56 +41,56 @@ import org.json.JSONObject;
 public class FtsWebVideoView
   extends RelativeLayout
 {
-  private ImageView Aci;
-  private ImageView Cat;
-  private TextView CiA;
-  private boolean CiB;
-  private a CiC;
-  private a CiD;
-  private d CiE;
-  private b.a CiF;
-  private int CiG;
-  private boolean CiH;
-  private long CiI;
-  private View CiJ;
-  private View CiK;
-  private FtsWebVideoView.c CiL;
-  public BroadcastReceiver CiM;
-  private FtsWebVideoView.b Cir;
-  public FtsVideoWrapper Cis;
-  public WebSearchWebVideoViewControlBar Cit;
-  private View Ciu;
-  private View Civ;
-  private WebSearchDotPercentIndicator Ciw;
-  private View Cix;
-  private Button Ciy;
-  private TextView Ciz;
-  private boolean chR;
-  public boolean ftN;
+  private ImageView BtT;
+  private ImageView DDr;
+  public WebSearchWebVideoViewControlBar DLA;
+  private View DLB;
+  private View DLC;
+  private WebSearchDotPercentIndicator DLD;
+  private View DLE;
+  private Button DLF;
+  private TextView DLG;
+  private TextView DLH;
+  private boolean DLI;
+  private a DLJ;
+  private a DLK;
+  private d DLL;
+  private b.a DLM;
+  private int DLN;
+  private boolean DLO;
+  private long DLP;
+  private View DLQ;
+  private View DLR;
+  private FtsWebVideoView.c DLS;
+  public BroadcastReceiver DLT;
+  private FtsWebVideoView.b DLy;
+  public FtsVideoWrapper DLz;
+  private boolean csg;
+  public boolean fMP;
   private boolean isLoading;
-  private boolean kOA;
-  private boolean kOB;
-  private String kOD;
-  private TextView kOd;
-  private LinearLayout kOj;
-  private TextView kOl;
-  private ImageView kOm;
-  private ImageView kOn;
-  private String kOr;
-  private int kOs;
-  private boolean kOu;
-  private boolean kOw;
+  private TextView lkG;
+  private LinearLayout lkM;
+  private TextView lkO;
+  private ImageView lkP;
+  private ImageView lkQ;
+  private String lkU;
+  private int lkV;
+  private boolean lkX;
+  private boolean lkZ;
+  private boolean lld;
+  private boolean lle;
+  private String llg;
   private String mAppId;
-  private int nRp;
+  private int otW;
   private String url;
   
   public FtsWebVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(78077);
-    this.Cir = FtsWebVideoView.b.CiO;
-    this.CiL = FtsWebVideoView.c.CiS;
-    this.CiM = new BroadcastReceiver()
+    this.DLy = FtsWebVideoView.b.DLV;
+    this.DLS = FtsWebVideoView.c.DLZ;
+    this.DLT = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
@@ -109,9 +109,9 @@ public class FtsWebVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(78078);
-    this.Cir = FtsWebVideoView.b.CiO;
-    this.CiL = FtsWebVideoView.c.CiS;
-    this.CiM = new BroadcastReceiver()
+    this.DLy = FtsWebVideoView.b.DLV;
+    this.DLS = FtsWebVideoView.c.DLZ;
+    this.DLT = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
@@ -130,9 +130,9 @@ public class FtsWebVideoView
   {
     super(paramContext);
     AppMethodBeat.i(78076);
-    this.Cir = FtsWebVideoView.b.CiO;
-    this.CiL = FtsWebVideoView.c.CiS;
-    this.CiM = new BroadcastReceiver()
+    this.DLy = FtsWebVideoView.b.DLV;
+    this.DLS = FtsWebVideoView.c.DLZ;
+    this.DLT = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
@@ -148,11 +148,11 @@ public class FtsWebVideoView
     AppMethodBeat.o(78076);
   }
   
-  private boolean bed()
+  private boolean bhH()
   {
     AppMethodBeat.i(78116);
-    ac.i("MicroMsg.FtsWebVideoView", "isLive %b %b", new Object[] { Boolean.valueOf(this.kOA), Boolean.valueOf(this.Cis.bed()) });
-    if ((this.kOA) || (this.Cis.bed()))
+    ad.i("MicroMsg.FtsWebVideoView", "isLive %b %b", new Object[] { Boolean.valueOf(this.lld), Boolean.valueOf(this.DLz.bhH()) });
+    if ((this.lld) || (this.DLz.bhH()))
     {
       AppMethodBeat.o(78116);
       return true;
@@ -161,26 +161,15 @@ public class FtsWebVideoView
     return false;
   }
   
-  private void biY()
+  private void bmK()
   {
     AppMethodBeat.i(78106);
-    this.CiC = new a(getContext(), this, new a.b()
+    this.DLJ = new a(getContext(), this, new a.b()
     {
-      public final void aA(float paramAnonymousFloat)
-      {
-        AppMethodBeat.i(78058);
-        ac.d("MicroMsg.FtsWebVideoView", "onAdjustBrightness:".concat(String.valueOf(paramAnonymousFloat)));
-        FtsWebVideoView.j(FtsWebVideoView.this).setPercent(paramAnonymousFloat);
-        FtsWebVideoView.k(FtsWebVideoView.this).setText(2131759739);
-        FtsWebVideoView.l(FtsWebVideoView.this).setImageResource(2131690267);
-        FtsWebVideoView.m(FtsWebVideoView.this).setVisibility(0);
-        AppMethodBeat.o(78058);
-      }
-      
-      public final void az(float paramAnonymousFloat)
+      public final void aC(float paramAnonymousFloat)
       {
         AppMethodBeat.i(78057);
-        ac.d("MicroMsg.FtsWebVideoView", "onAdjustVolume:".concat(String.valueOf(paramAnonymousFloat)));
+        ad.d("MicroMsg.FtsWebVideoView", "onAdjustVolume:".concat(String.valueOf(paramAnonymousFloat)));
         FtsWebVideoView.j(FtsWebVideoView.this).setPercent(paramAnonymousFloat);
         FtsWebVideoView.k(FtsWebVideoView.this).setText(2131759742);
         FtsWebVideoView.l(FtsWebVideoView.this).setImageResource(2131690275);
@@ -188,52 +177,63 @@ public class FtsWebVideoView
         AppMethodBeat.o(78057);
       }
       
-      public final void bjj()
+      public final void aD(float paramAnonymousFloat)
+      {
+        AppMethodBeat.i(78058);
+        ad.d("MicroMsg.FtsWebVideoView", "onAdjustBrightness:".concat(String.valueOf(paramAnonymousFloat)));
+        FtsWebVideoView.j(FtsWebVideoView.this).setPercent(paramAnonymousFloat);
+        FtsWebVideoView.k(FtsWebVideoView.this).setText(2131759739);
+        FtsWebVideoView.l(FtsWebVideoView.this).setImageResource(2131690267);
+        FtsWebVideoView.m(FtsWebVideoView.this).setVisibility(0);
+        AppMethodBeat.o(78058);
+      }
+      
+      public final void bmV()
       {
         AppMethodBeat.i(78050);
-        ac.d("MicroMsg.FtsWebVideoView", "onSingleTap");
+        ad.d("MicroMsg.FtsWebVideoView", "onSingleTap");
         if (FtsWebVideoView.e(FtsWebVideoView.this)) {
-          FtsWebVideoView.c(FtsWebVideoView.this).ue(FtsWebVideoView.f(FtsWebVideoView.this));
+          FtsWebVideoView.c(FtsWebVideoView.this).uS(FtsWebVideoView.f(FtsWebVideoView.this));
         }
         AppMethodBeat.o(78050);
       }
       
-      public final void bjk()
+      public final void bmW()
       {
         AppMethodBeat.i(78051);
-        ac.d("MicroMsg.FtsWebVideoView", "onDoubleTap");
+        ad.d("MicroMsg.FtsWebVideoView", "onDoubleTap");
         AppMethodBeat.o(78051);
       }
       
-      public final void bjl()
+      public final void bmX()
       {
         AppMethodBeat.i(78052);
-        if (FtsWebVideoView.d(FtsWebVideoView.this).bed())
+        if (FtsWebVideoView.d(FtsWebVideoView.this).bhH())
         {
-          ac.i("MicroMsg.FtsWebVideoView", "onStartDragProgress isLive: no seek");
+          ad.i("MicroMsg.FtsWebVideoView", "onStartDragProgress isLive: no seek");
           AppMethodBeat.o(78052);
           return;
         }
         FtsWebVideoView.g(FtsWebVideoView.this).setVisibility(0);
-        FtsWebVideoView.c(FtsWebVideoView.this).eet();
+        FtsWebVideoView.c(FtsWebVideoView.this).eqK();
         AppMethodBeat.o(78052);
       }
       
-      public final void bjm()
+      public final void bmY()
       {
         AppMethodBeat.i(78059);
         FtsWebVideoView.m(FtsWebVideoView.this).setVisibility(8);
         AppMethodBeat.o(78059);
       }
       
-      public final void bjn()
+      public final void bmZ()
       {
         AppMethodBeat.i(78060);
         FtsWebVideoView.m(FtsWebVideoView.this).setVisibility(8);
         AppMethodBeat.o(78060);
       }
       
-      public final boolean edy()
+      public final boolean epQ()
       {
         AppMethodBeat.i(78055);
         if (FtsWebVideoView.i(FtsWebVideoView.this))
@@ -253,17 +253,17 @@ public class FtsWebVideoView
         return i;
       }
       
-      public final int j(int paramAnonymousInt, float paramAnonymousFloat)
+      public final int k(int paramAnonymousInt, float paramAnonymousFloat)
       {
         int j = 0;
         AppMethodBeat.i(78053);
-        if (FtsWebVideoView.d(FtsWebVideoView.this).bed())
+        if (FtsWebVideoView.d(FtsWebVideoView.this).bhH())
         {
-          ac.i("MicroMsg.FtsWebVideoView", "onDragProgress isLive: no seek");
+          ad.i("MicroMsg.FtsWebVideoView", "onDragProgress isLive: no seek");
           AppMethodBeat.o(78053);
           return 0;
         }
-        ac.i("MicroMsg.FtsWebVideoView", "onDragProgress:" + paramAnonymousInt + "/" + paramAnonymousFloat);
+        ad.i("MicroMsg.FtsWebVideoView", "onDragProgress:" + paramAnonymousInt + "/" + paramAnonymousFloat);
         paramAnonymousFloat /= FtsWebVideoView.this.getMeasuredWidth();
         int i = FtsWebVideoView.d(FtsWebVideoView.this).getVideoDurationSec();
         paramAnonymousInt = getCurrentPosition();
@@ -273,8 +273,8 @@ public class FtsWebVideoView
         }
         for (;;)
         {
-          String str = c.qn(i * 1000L);
-          FtsWebVideoView.g(FtsWebVideoView.this).setText(c.qn(paramAnonymousInt * 1000L) + "/" + str);
+          String str = c.sm(i * 1000L);
+          FtsWebVideoView.g(FtsWebVideoView.this).setText(c.sm(paramAnonymousInt * 1000L) + "/" + str);
           AppMethodBeat.o(78053);
           return paramAnonymousInt;
           if (paramAnonymousInt > i) {
@@ -283,22 +283,22 @@ public class FtsWebVideoView
         }
       }
       
-      public final void k(int paramAnonymousInt, float paramAnonymousFloat)
+      public final void l(int paramAnonymousInt, float paramAnonymousFloat)
       {
         AppMethodBeat.i(78054);
-        FtsWebVideoView.c(FtsWebVideoView.this).eeu();
+        FtsWebVideoView.c(FtsWebVideoView.this).eqL();
         FtsWebVideoView.g(FtsWebVideoView.this).setVisibility(8);
-        ac.i("MicroMsg.FtsWebVideoView", "onEndDragProgress: dragPosition=%d currentPositon=%d totalDistanceX=%s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(FtsWebVideoView.d(FtsWebVideoView.this).getCurrPosSec()), Float.valueOf(paramAnonymousFloat) });
-        if (FtsWebVideoView.d(FtsWebVideoView.this).bed())
+        ad.i("MicroMsg.FtsWebVideoView", "onEndDragProgress: dragPosition=%d currentPositon=%d totalDistanceX=%s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(FtsWebVideoView.d(FtsWebVideoView.this).getCurrPosSec()), Float.valueOf(paramAnonymousFloat) });
+        if (FtsWebVideoView.d(FtsWebVideoView.this).bhH())
         {
-          ac.i("MicroMsg.FtsWebVideoView", "onEndDragProgress isLive: no seek");
+          ad.i("MicroMsg.FtsWebVideoView", "onEndDragProgress isLive: no seek");
           AppMethodBeat.o(78054);
           return;
         }
         FtsWebVideoView.this.U(paramAnonymousInt, false);
-        FtsWebVideoView.c(FtsWebVideoView.this).eeu();
+        FtsWebVideoView.c(FtsWebVideoView.this).eqL();
         if (FtsWebVideoView.h(FtsWebVideoView.this) != null) {
-          FtsWebVideoView.h(FtsWebVideoView.this).ezD();
+          FtsWebVideoView.h(FtsWebVideoView.this).eOs();
         }
         AppMethodBeat.o(78054);
       }
@@ -306,20 +306,20 @@ public class FtsWebVideoView
     AppMethodBeat.o(78106);
   }
   
-  private void bja()
+  private void bmM()
   {
     AppMethodBeat.i(78107);
-    this.Cis.setIMMVideoViewCallback(new h.b()
+    this.DLz.setIMMVideoViewCallback(new i.b()
     {
       public final void c(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(78061);
-        ac.i("MicroMsg.FtsWebVideoView", "onError errorMsg=%s what=%d extra=%d", new Object[] { paramAnonymousString3, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        h.wUl.f(14911, new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), FtsWebVideoView.n(FtsWebVideoView.this), ax.iH(FtsWebVideoView.this.getContext()) });
+        ad.i("MicroMsg.FtsWebVideoView", "onError errorMsg=%s what=%d extra=%d", new Object[] { paramAnonymousString3, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        g.yhR.f(14911, new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), FtsWebVideoView.n(FtsWebVideoView.this), ay.iR(FtsWebVideoView.this.getContext()) });
         if (FtsWebVideoView.h(FtsWebVideoView.this) != null)
         {
           paramAnonymousString1 = FtsWebVideoView.h(FtsWebVideoView.this);
-          ac.e("MicroMsg.JsApiVideoCallback", "onError what %d, extra %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+          ad.e("MicroMsg.JsApiVideoCallback", "onError what %d, extra %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
           paramAnonymousString1.clean();
         }
         try
@@ -327,7 +327,7 @@ public class FtsWebVideoView
           paramAnonymousString2 = new JSONObject();
           paramAnonymousString2.put("errCode", paramAnonymousInt1);
           paramAnonymousString2.put("errMsg", String.valueOf(paramAnonymousInt2));
-          paramAnonymousString1.bq(paramAnonymousString1.a(7, paramAnonymousString2));
+          paramAnonymousString1.bz(paramAnonymousString1.a(7, paramAnonymousString2));
           FtsWebVideoView.this.pause();
           FtsWebVideoView.a(FtsWebVideoView.this, FtsWebVideoView.this.getContext().getString(2131764672, new Object[] { paramAnonymousInt1 + ":" + paramAnonymousInt2 }), FtsWebVideoView.this.getContext().getString(2131764699));
           AppMethodBeat.o(78061);
@@ -337,7 +337,7 @@ public class FtsWebVideoView
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.JsApiVideoCallback", paramAnonymousString1, null, new Object[0]);
+            ad.printErrStackTrace("MicroMsg.JsApiVideoCallback", paramAnonymousString1, null, new Object[0]);
           }
         }
       }
@@ -345,8 +345,8 @@ public class FtsWebVideoView
       public final void d(String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(78064);
-        ac.i("MicroMsg.FtsWebVideoView", "onGetVideoSize width=%d height=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        if (FtsWebVideoView.s(FtsWebVideoView.this) == FtsWebVideoView.b.CiO)
+        ad.i("MicroMsg.FtsWebVideoView", "onGetVideoSize width=%d height=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        if (FtsWebVideoView.s(FtsWebVideoView.this) == FtsWebVideoView.b.DLV)
         {
           paramAnonymousString2 = FtsWebVideoView.this;
           if (paramAnonymousInt1 >= paramAnonymousInt2) {
@@ -354,40 +354,40 @@ public class FtsWebVideoView
           }
         }
         label92:
-        for (paramAnonymousString1 = FtsWebVideoView.b.CiQ;; paramAnonymousString1 = FtsWebVideoView.b.CiP)
+        for (paramAnonymousString1 = FtsWebVideoView.b.DLX;; paramAnonymousString1 = FtsWebVideoView.b.DLW)
         {
           FtsWebVideoView.a(paramAnonymousString2, paramAnonymousString1);
-          ac.i("MicroMsg.FtsWebVideoView", "onGetVideoSize adjust direction from AUTO to %s", new Object[] { FtsWebVideoView.s(FtsWebVideoView.this) });
+          ad.i("MicroMsg.FtsWebVideoView", "onGetVideoSize adjust direction from AUTO to %s", new Object[] { FtsWebVideoView.s(FtsWebVideoView.this) });
           AppMethodBeat.o(78064);
           return;
         }
       }
       
-      public final void jdMethod_do(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dq(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(78062);
-        ac.i("MicroMsg.FtsWebVideoView", "onPrepared");
+        ad.i("MicroMsg.FtsWebVideoView", "onPrepared");
         paramAnonymousString1 = FtsWebVideoView.o(FtsWebVideoView.this);
-        paramAnonymousString1.kVr = -1;
-        paramAnonymousString1.kVs = 0;
-        paramAnonymousString1.kVq = 0.0F;
-        FtsWebVideoView.c(FtsWebVideoView.this).ue(FtsWebVideoView.f(FtsWebVideoView.this));
+        paramAnonymousString1.lsq = -1;
+        paramAnonymousString1.lsr = 0;
+        paramAnonymousString1.lsp = 0.0F;
+        FtsWebVideoView.c(FtsWebVideoView.this).uS(FtsWebVideoView.f(FtsWebVideoView.this));
         AppMethodBeat.o(78062);
       }
       
-      public final void dp(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dr(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(78063);
-        ac.i("MicroMsg.FtsWebVideoView", "onVideoEnded");
+        ad.i("MicroMsg.FtsWebVideoView", "onVideoEnded");
         if (FtsWebVideoView.h(FtsWebVideoView.this) != null)
         {
           paramAnonymousString1 = FtsWebVideoView.h(FtsWebVideoView.this);
-          ac.d("MicroMsg.JsApiVideoCallback", "onVideoEnded %s", new Object[] { paramAnonymousString1.toString() });
-          paramAnonymousString1.bky();
+          ad.d("MicroMsg.JsApiVideoCallback", "onVideoEnded %s", new Object[] { paramAnonymousString1.toString() });
+          paramAnonymousString1.boj();
         }
         try
         {
-          paramAnonymousString1.bq(paramAnonymousString1.a(3, null));
+          paramAnonymousString1.bz(paramAnonymousString1.a(3, null));
           if (FtsWebVideoView.p(FtsWebVideoView.this))
           {
             FtsWebVideoView.this.U(0, true);
@@ -399,7 +399,7 @@ public class FtsWebVideoView
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.JsApiVideoCallback", paramAnonymousString1, null, new Object[0]);
+            ad.printErrStackTrace("MicroMsg.JsApiVideoCallback", paramAnonymousString1, null, new Object[0]);
           }
           FtsWebVideoView.this.U(0, false);
           FtsWebVideoView.this.pause();
@@ -410,50 +410,50 @@ public class FtsWebVideoView
         }
       }
       
-      public final void dq(String paramAnonymousString1, String paramAnonymousString2)
+      public final void ds(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(78065);
-        ac.i("MicroMsg.FtsWebVideoView", "onVideoPause");
+        ad.i("MicroMsg.FtsWebVideoView", "onVideoPause");
         if ((FtsWebVideoView.h(FtsWebVideoView.this) != null) && (FtsWebVideoView.h(FtsWebVideoView.this) != null))
         {
           paramAnonymousString1 = FtsWebVideoView.h(FtsWebVideoView.this);
-          ac.d("MicroMsg.JsApiVideoCallback", "onVideoPause %s", new Object[] { paramAnonymousString1.toString() });
-          paramAnonymousString1.bky();
+          ad.d("MicroMsg.JsApiVideoCallback", "onVideoPause %s", new Object[] { paramAnonymousString1.toString() });
+          paramAnonymousString1.boj();
           try
           {
-            paramAnonymousString1.bq(paramAnonymousString1.a(2, null));
+            paramAnonymousString1.bz(paramAnonymousString1.a(2, null));
             AppMethodBeat.o(78065);
             return;
           }
           catch (JSONException paramAnonymousString1)
           {
-            ac.printErrStackTrace("MicroMsg.JsApiVideoCallback", paramAnonymousString1, null, new Object[0]);
+            ad.printErrStackTrace("MicroMsg.JsApiVideoCallback", paramAnonymousString1, null, new Object[0]);
           }
         }
         AppMethodBeat.o(78065);
       }
       
-      public final void dr(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dt(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(78066);
-        ac.i("MicroMsg.FtsWebVideoView", "onVideoPlay, isLive:%b", new Object[] { Boolean.valueOf(FtsWebVideoView.t(FtsWebVideoView.this)) });
+        ad.i("MicroMsg.FtsWebVideoView", "onVideoPlay, isLive:%b", new Object[] { Boolean.valueOf(FtsWebVideoView.t(FtsWebVideoView.this)) });
         if (FtsWebVideoView.h(FtsWebVideoView.this) != null)
         {
           paramAnonymousString1 = FtsWebVideoView.h(FtsWebVideoView.this);
-          ac.d("MicroMsg.JsApiVideoCallback", "onVideoPlay %s", new Object[] { paramAnonymousString1.toString() });
-          paramAnonymousString1.kTl = 0;
-          if (paramAnonymousString1.kTk == null) {
-            paramAnonymousString1.kTk = new au(new d.1(paramAnonymousString1), true);
+          ad.d("MicroMsg.JsApiVideoCallback", "onVideoPlay %s", new Object[] { paramAnonymousString1.toString() });
+          paramAnonymousString1.lpO = 0;
+          if (paramAnonymousString1.lpN == null) {
+            paramAnonymousString1.lpN = new av(new d.1(paramAnonymousString1), true);
           }
-          paramAnonymousString1.kTk.au(250L, 250L);
+          paramAnonymousString1.lpN.az(250L, 250L);
         }
         try
         {
-          paramAnonymousString1.bq(paramAnonymousString1.a(1, null));
+          paramAnonymousString1.bz(paramAnonymousString1.a(1, null));
           if ((FtsWebVideoView.u(FtsWebVideoView.this) > 0L) && (FtsWebVideoView.u(FtsWebVideoView.this) != 9223372036854775807L))
           {
             long l = System.currentTimeMillis() - FtsWebVideoView.u(FtsWebVideoView.this);
-            h.wUl.f(14909, new Object[] { Long.valueOf(l), Long.valueOf(System.currentTimeMillis()), Long.valueOf(l), ax.iH(FtsWebVideoView.this.getContext()), FtsWebVideoView.n(FtsWebVideoView.this) });
+            g.yhR.f(14909, new Object[] { Long.valueOf(l), Long.valueOf(System.currentTimeMillis()), Long.valueOf(l), ay.iR(FtsWebVideoView.this.getContext()), FtsWebVideoView.n(FtsWebVideoView.this) });
           }
           AppMethodBeat.o(78066);
           return;
@@ -462,59 +462,59 @@ public class FtsWebVideoView
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.JsApiVideoCallback", paramAnonymousString1, null, new Object[0]);
+            ad.printErrStackTrace("MicroMsg.JsApiVideoCallback", paramAnonymousString1, null, new Object[0]);
           }
         }
       }
       
-      public final void ds(String paramAnonymousString1, String paramAnonymousString2)
+      public final void du(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(78067);
-        ac.i("MicroMsg.FtsWebVideoView", "onVideoWaiting");
-        FtsWebVideoView.c(FtsWebVideoView.this).eet();
+        ad.i("MicroMsg.FtsWebVideoView", "onVideoWaiting");
+        FtsWebVideoView.c(FtsWebVideoView.this).eqK();
         FtsWebVideoView.a(FtsWebVideoView.this, true);
         AppMethodBeat.o(78067);
       }
       
-      public final void dt(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dv(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(78068);
-        ac.i("MicroMsg.FtsWebVideoView", "onVideoWaitingEnd");
+        ad.i("MicroMsg.FtsWebVideoView", "onVideoWaitingEnd");
         FtsWebVideoView.a(FtsWebVideoView.this, false);
-        FtsWebVideoView.c(FtsWebVideoView.this).eeu();
-        FtsWebVideoView.c(FtsWebVideoView.this).bjC();
+        FtsWebVideoView.c(FtsWebVideoView.this).eqL();
+        FtsWebVideoView.c(FtsWebVideoView.this).bno();
         AppMethodBeat.o(78068);
       }
       
-      public final void eJ(String paramAnonymousString1, String paramAnonymousString2) {}
+      public final void eT(String paramAnonymousString1, String paramAnonymousString2) {}
     });
     AppMethodBeat.o(78107);
   }
   
-  private void ezv()
+  private void eOk()
   {
     AppMethodBeat.i(78084);
-    if (bjb())
+    if (bmN())
     {
-      this.Cat.setVisibility(0);
+      this.DDr.setVisibility(0);
       AppMethodBeat.o(78084);
       return;
     }
-    this.Cat.setVisibility(8);
+    this.DDr.setVisibility(8);
     AppMethodBeat.o(78084);
   }
   
-  private void ezw()
+  private void eOl()
   {
     AppMethodBeat.i(78090);
-    this.Ciu.setVisibility(8);
+    this.DLB.setVisibility(8);
     AppMethodBeat.o(78090);
   }
   
-  private boolean ezx()
+  private boolean eOm()
   {
     AppMethodBeat.i(78110);
-    if ((this.kOu) && (!ezy()))
+    if ((this.lkX) && (!eOn()))
     {
       AppMethodBeat.o(78110);
       return true;
@@ -523,10 +523,10 @@ public class FtsWebVideoView
     return false;
   }
   
-  private boolean ezy()
+  private boolean eOn()
   {
     AppMethodBeat.i(78111);
-    if (this.Ciu.getVisibility() == 0)
+    if (this.DLB.getVisibility() == 0)
     {
       AppMethodBeat.o(78111);
       return true;
@@ -535,91 +535,109 @@ public class FtsWebVideoView
     return false;
   }
   
-  private void ezz()
+  private void eOo()
   {
     AppMethodBeat.i(78114);
-    this.Cit = new WebSearchWebVideoViewControlBar(getContext());
-    this.Cit.setVisibility(8);
-    this.Cit.setEnterFullScreenBtnClickListener(new View.OnClickListener()
+    this.DLA = new WebSearchWebVideoViewControlBar(getContext());
+    this.DLA.setVisibility(8);
+    this.DLA.setEnterFullScreenBtnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78069);
-        if (!FtsWebVideoView.this.bjb()) {}
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (!FtsWebVideoView.this.bmN()) {}
         for (boolean bool = true;; bool = false)
         {
-          FtsWebVideoView.this.ug(bool);
+          FtsWebVideoView.this.uU(bool);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(78069);
           return;
         }
       }
     });
-    this.Cit.setExitFullScreenBtnClickListener(new View.OnClickListener()
+    this.DLA.setExitFullScreenBtnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78037);
-        if (!FtsWebVideoView.this.bjb()) {}
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (!FtsWebVideoView.this.bmN()) {}
         for (boolean bool = true;; bool = false)
         {
-          FtsWebVideoView.this.ug(bool);
+          FtsWebVideoView.this.uU(bool);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(78037);
           return;
         }
       }
     });
-    this.Cit.setMuteBtnOnClickListener(new View.OnClickListener()
+    this.DLA.setMuteBtnOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78038);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         FtsWebVideoView.v(FtsWebVideoView.this);
-        FtsWebVideoView.c(FtsWebVideoView.this).bjC();
+        FtsWebVideoView.c(FtsWebVideoView.this).bno();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(78038);
       }
     });
-    this.Cit.setIplaySeekCallback(new com.tencent.mm.plugin.sight.decode.ui.b()
+    this.DLA.setIplaySeekCallback(new com.tencent.mm.plugin.sight.decode.ui.b()
     {
-      public final void anR()
+      public final void aqD()
       {
         AppMethodBeat.i(78039);
-        ac.i("MicroMsg.FtsWebVideoView", "onSeekPre");
-        FtsWebVideoView.c(FtsWebVideoView.this).bOg();
+        ad.i("MicroMsg.FtsWebVideoView", "onSeekPre");
+        FtsWebVideoView.c(FtsWebVideoView.this).bSH();
         AppMethodBeat.o(78039);
       }
       
-      public final void nn(int paramAnonymousInt)
+      public final void nM(int paramAnonymousInt)
       {
         AppMethodBeat.i(78040);
-        ac.i("MicroMsg.FtsWebVideoView", "onSeekTo %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ad.i("MicroMsg.FtsWebVideoView", "onSeekTo %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         FtsWebVideoView.this.U(paramAnonymousInt, false);
-        FtsWebVideoView.c(FtsWebVideoView.this).bjC();
+        FtsWebVideoView.c(FtsWebVideoView.this).bno();
         if (FtsWebVideoView.h(FtsWebVideoView.this) != null) {
-          FtsWebVideoView.h(FtsWebVideoView.this).ezD();
+          FtsWebVideoView.h(FtsWebVideoView.this).eOs();
         }
         AppMethodBeat.o(78040);
       }
     });
-    this.Cit.setOnPlayButtonClickListener(new View.OnClickListener()
+    this.DLA.setOnPlayButtonClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78041);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (FtsWebVideoView.d(FtsWebVideoView.this).isPlaying())
         {
-          FtsWebVideoView.c(FtsWebVideoView.this).bOg();
+          FtsWebVideoView.c(FtsWebVideoView.this).bSH();
           FtsWebVideoView.this.pause();
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(78041);
           return;
+          FtsWebVideoView.c(FtsWebVideoView.this).bno();
+          FtsWebVideoView.this.start(true);
         }
-        FtsWebVideoView.c(FtsWebVideoView.this).bjC();
-        FtsWebVideoView.this.start(true);
-        AppMethodBeat.o(78041);
       }
     });
-    this.Cit.setStatePorter(new WebSearchWebVideoViewControlBar.a()
+    this.DLA.setStatePorter(new WebSearchWebVideoViewControlBar.a()
     {
-      public final int bjh()
+      public final int bmT()
       {
         AppMethodBeat.i(78042);
         int i = FtsWebVideoView.d(FtsWebVideoView.this).getCacheTimeSec();
@@ -627,7 +645,7 @@ public class FtsWebVideoView
         return i;
       }
       
-      public final int bji()
+      public final int bmU()
       {
         AppMethodBeat.i(78043);
         int i = FtsWebVideoView.d(FtsWebVideoView.this).getVideoDurationSec();
@@ -635,7 +653,7 @@ public class FtsWebVideoView
         return i;
       }
       
-      public final int exQ()
+      public final int eMH()
       {
         AppMethodBeat.i(78044);
         int i = FtsWebVideoView.d(FtsWebVideoView.this).getCurrPosMs();
@@ -643,36 +661,36 @@ public class FtsWebVideoView
         return i;
       }
     });
-    this.Cis.setVideoFooterView(this.Cit);
+    this.DLz.setVideoFooterView(this.DLA);
     AppMethodBeat.o(78114);
   }
   
-  private boolean gM(final Context paramContext)
+  private boolean gR(final Context paramContext)
   {
     AppMethodBeat.i(78080);
-    Object localObject = this.CiL;
-    if (ax.isConnected(paramContext))
+    Object localObject = this.DLS;
+    if (ay.isConnected(paramContext))
     {
-      if ((!this.CiH) && (!ax.isWifi(paramContext)))
+      if ((!this.DLO) && (!ay.isWifi(paramContext)))
       {
         pause();
-        this.CiL = FtsWebVideoView.c.CiT;
-        this.Cit.setVisibility(8);
+        this.DLS = FtsWebVideoView.c.DMa;
+        this.DLA.setVisibility(8);
         localObject = getNetUnavailableTip();
         String str = paramContext.getString(2131764669);
         paramContext.getString(2131764666);
-        kp((String)localObject, str);
+        kN((String)localObject, str);
         AppMethodBeat.o(78080);
         return false;
       }
     }
     else
     {
-      if (localObject == FtsWebVideoView.c.CiU)
+      if (localObject == FtsWebVideoView.c.DMb)
       {
-        this.CiJ.setVisibility(0);
-        this.CiK.setVisibility(8);
-        this.Ciu.setVisibility(0);
+        this.DLQ.setVisibility(0);
+        this.DLR.setVisibility(8);
+        this.DLB.setVisibility(0);
         postDelayed(new Runnable()
         {
           public final void run()
@@ -687,19 +705,19 @@ public class FtsWebVideoView
       {
         AppMethodBeat.o(78080);
         return false;
-        gN(paramContext);
+        gS(paramContext);
       }
     }
     AppMethodBeat.o(78080);
     return true;
   }
   
-  private void gN(Context paramContext)
+  private void gS(Context paramContext)
   {
     AppMethodBeat.i(78081);
-    this.CiL = FtsWebVideoView.c.CiU;
+    this.DLS = FtsWebVideoView.c.DMb;
     pause();
-    kp(paramContext.getString(2131764685), paramContext.getString(2131764699));
+    kN(paramContext.getString(2131764685), paramContext.getString(2131764699));
     AppMethodBeat.o(78081);
   }
   
@@ -707,14 +725,14 @@ public class FtsWebVideoView
   {
     AppMethodBeat.i(78082);
     Object localObject;
-    if (this.CiG == 0)
+    if (this.DLN == 0)
     {
       localObject = getContext().getString(2131764687);
       AppMethodBeat.o(78082);
       return localObject;
     }
     Context localContext = getContext();
-    long l = this.CiG;
+    long l = this.DLN;
     if (l < 0L) {
       localObject = "";
     }
@@ -741,121 +759,137 @@ public class FtsWebVideoView
   {
     AppMethodBeat.i(78079);
     LayoutInflater.from(paramContext).inflate(2131494226, this);
-    this.Cis = ((FtsVideoWrapper)findViewById(2131306410));
-    this.kOd = ((TextView)findViewById(2131303515));
-    this.Ciu = findViewById(2131305866);
-    this.Civ = findViewById(2131305891);
-    this.kOj = ((LinearLayout)findViewById(2131296505));
-    this.Ciw = ((WebSearchDotPercentIndicator)findViewById(2131296506));
-    this.kOl = ((TextView)findViewById(2131296502));
-    this.kOm = ((ImageView)findViewById(2131296504));
-    this.kOn = ((ImageView)findViewById(2131298813));
-    this.CiJ = findViewById(2131306352);
-    this.CiK = findViewById(2131305892);
-    this.Ciw.setDotsNum(8);
-    this.Aci = ((ImageView)findViewById(2131298815));
-    this.Cix = findViewById(2131298829);
-    this.Ciz = ((TextView)findViewById(2131305867));
-    this.Ciy = ((Button)findViewById(2131305868));
-    this.CiA = ((TextView)findViewById(2131305870));
-    this.Cat = ((ImageView)findViewById(2131299599));
-    this.Ciz.setOnClickListener(new View.OnClickListener()
+    this.DLz = ((FtsVideoWrapper)findViewById(2131306410));
+    this.lkG = ((TextView)findViewById(2131303515));
+    this.DLB = findViewById(2131305866);
+    this.DLC = findViewById(2131305891);
+    this.lkM = ((LinearLayout)findViewById(2131296505));
+    this.DLD = ((WebSearchDotPercentIndicator)findViewById(2131296506));
+    this.lkO = ((TextView)findViewById(2131296502));
+    this.lkP = ((ImageView)findViewById(2131296504));
+    this.lkQ = ((ImageView)findViewById(2131298813));
+    this.DLQ = findViewById(2131306352);
+    this.DLR = findViewById(2131305892);
+    this.DLD.setDotsNum(8);
+    this.BtT = ((ImageView)findViewById(2131298815));
+    this.DLE = findViewById(2131298829);
+    this.DLG = ((TextView)findViewById(2131305867));
+    this.DLF = ((Button)findViewById(2131305868));
+    this.DLH = ((TextView)findViewById(2131305870));
+    this.DDr = ((ImageView)findViewById(2131299599));
+    this.DLG.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78036);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         FtsWebVideoView.this.pause();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(78036);
       }
     });
-    this.Cat.setOnClickListener(new View.OnClickListener()
+    this.DDr.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78045);
-        if (!FtsWebVideoView.this.bjb()) {}
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (!FtsWebVideoView.this.bmN()) {}
         for (boolean bool = true;; bool = false)
         {
-          FtsWebVideoView.this.ug(bool);
+          FtsWebVideoView.this.uU(bool);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(78045);
           return;
         }
       }
     });
-    this.Ciy.setOnClickListener(new View.OnClickListener()
+    this.DLF.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78046);
-        if (FtsWebVideoView.a(FtsWebVideoView.this) == FtsWebVideoView.c.CiT) {
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (FtsWebVideoView.a(FtsWebVideoView.this) == FtsWebVideoView.c.DMa) {
           FtsWebVideoView.b(FtsWebVideoView.this);
         }
         FtsWebVideoView.this.start(true);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(78046);
       }
     });
-    this.Cix.setOnClickListener(new View.OnClickListener()
+    this.DLE.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78047);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         FtsWebVideoView.this.start(true);
-        FtsWebVideoView.c(FtsWebVideoView.this).bjC();
+        FtsWebVideoView.c(FtsWebVideoView.this).bno();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(78047);
       }
     });
-    biY();
-    bja();
-    ezz();
-    paramContext.registerReceiver(this.CiM, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
-    ezw();
+    bmK();
+    bmM();
+    eOo();
+    paramContext.registerReceiver(this.DLT, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+    eOl();
     AppMethodBeat.o(78079);
   }
   
-  private void kp(String paramString1, String paramString2)
+  private void kN(String paramString1, String paramString2)
   {
     AppMethodBeat.i(78083);
-    ezw();
-    this.CiJ.setVisibility(8);
-    this.CiK.setVisibility(0);
-    this.Cit.setVisibility(8);
-    this.Ciu.setVisibility(0);
+    eOl();
+    this.DLQ.setVisibility(8);
+    this.DLR.setVisibility(0);
+    this.DLA.setVisibility(8);
+    this.DLB.setVisibility(0);
     if (!TextUtils.isEmpty(paramString1))
     {
-      this.CiA.setText(paramString1);
-      this.CiA.setVisibility(0);
+      this.DLH.setText(paramString1);
+      this.DLH.setVisibility(0);
       if (TextUtils.isEmpty(paramString2)) {
         break label139;
       }
-      this.Ciy.setText(paramString2);
-      this.Ciy.setVisibility(0);
+      this.DLF.setText(paramString2);
+      this.DLF.setVisibility(0);
     }
     for (;;)
     {
-      this.Civ.setVisibility(0);
-      this.Cix.setVisibility(8);
-      this.Ciz.setVisibility(8);
-      ezv();
+      this.DLC.setVisibility(0);
+      this.DLE.setVisibility(8);
+      this.DLG.setVisibility(8);
+      eOk();
       AppMethodBeat.o(78083);
       return;
-      this.CiA.setVisibility(8);
+      this.DLH.setVisibility(8);
       break;
       label139:
-      this.Ciy.setVisibility(8);
+      this.DLF.setVisibility(8);
     }
   }
   
   private void setCover(String paramString)
   {
     AppMethodBeat.i(78097);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(78097);
       return;
     }
-    if (!bs.isNullOrNil(this.kOD))
+    if (!bt.isNullOrNil(this.llg))
     {
-      ac.i("MicroMsg.FtsWebVideoView", "setCover mCoverUrl not null");
+      ad.i("MicroMsg.FtsWebVideoView", "setCover mCoverUrl not null");
       AppMethodBeat.o(78097);
       return;
     }
@@ -865,59 +899,59 @@ public class FtsWebVideoView
   public final void U(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(78094);
-    ac.i("MicroMsg.FtsWebVideoView", "seek to position=%d current=%d isLive=%b", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.Cis.getCurrPosSec()), Boolean.valueOf(this.kOA) });
-    if (bed())
+    ad.i("MicroMsg.FtsWebVideoView", "seek to position=%d current=%d isLive=%b", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.DLz.getCurrPosSec()), Boolean.valueOf(this.lld) });
+    if (bhH())
     {
       AppMethodBeat.o(78094);
       return;
     }
     if (paramBoolean)
     {
-      this.Cis.c(paramInt, paramBoolean);
+      this.DLz.c(paramInt, paramBoolean);
       AppMethodBeat.o(78094);
       return;
     }
-    this.Cis.o(paramInt);
+    this.DLz.o(paramInt);
     AppMethodBeat.o(78094);
   }
   
-  public final boolean bjb()
+  public final boolean bmN()
   {
     AppMethodBeat.i(78113);
-    if (this.CiD == null)
+    if (this.DLK == null)
     {
-      ac.w("MicroMsg.FtsWebVideoView", "isInFullScreen mFullScreenDelegate null");
+      ad.w("MicroMsg.FtsWebVideoView", "isInFullScreen mFullScreenDelegate null");
       AppMethodBeat.o(78113);
       return false;
     }
-    boolean bool = this.CiD.isFullScreen();
+    boolean bool = this.DLK.isFullScreen();
     AppMethodBeat.o(78113);
     return bool;
   }
   
-  public final void cA(String paramString, int paramInt)
+  public final void cD(String paramString, int paramInt)
   {
     AppMethodBeat.i(78093);
-    ac.i("MicroMsg.FtsWebVideoView", "setVideoPath path=%s isLive=%s", new Object[] { paramString, Boolean.FALSE });
+    ad.i("MicroMsg.FtsWebVideoView", "setVideoPath path=%s isLive=%s", new Object[] { paramString, Boolean.FALSE });
     this.url = paramString;
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      ac.v("MicroMsg.FtsWebVideoView", "setVideoPath videoPath empty");
+      ad.v("MicroMsg.FtsWebVideoView", "setVideoPath videoPath empty");
       AppMethodBeat.o(78093);
       return;
     }
     stop();
-    this.kOA = false;
-    this.Cis.c(false, paramString, paramInt);
-    if (this.Cit != null) {
-      this.Cit.setVideoTotalTime(paramInt);
+    this.lld = false;
+    this.DLz.c(false, paramString, paramInt);
+    if (this.DLA != null) {
+      this.DLA.setVideoTotalTime(paramInt);
     }
-    if (this.nRp > 0) {
-      this.Cis.o(this.nRp);
+    if (this.otW > 0) {
+      this.DLz.o(this.otW);
     }
-    if (this.chR)
+    if (this.csg)
     {
-      ac.i("MicroMsg.FtsWebVideoView", "setVideoPath autoPlay");
+      ad.i("MicroMsg.FtsWebVideoView", "setVideoPath autoPlay");
       start(false);
     }
     if (paramString.startsWith("wxfile://")) {
@@ -926,19 +960,19 @@ public class FtsWebVideoView
     AppMethodBeat.o(78093);
   }
   
-  public final void gJ(boolean paramBoolean)
+  public final void gQ(boolean paramBoolean)
   {
     AppMethodBeat.i(78115);
-    if (this.CiE == null)
+    if (this.DLL == null)
     {
       AppMethodBeat.o(78115);
       return;
     }
-    if (this.Cir == FtsWebVideoView.b.CiQ) {}
+    if (this.DLy == FtsWebVideoView.b.DLX) {}
     for (String str = "vertical";; str = "horizontal")
     {
-      this.CiE.d(this.kOs, paramBoolean, str);
-      ezv();
+      this.DLL.d(this.lkV, paramBoolean, str);
+      eOk();
       AppMethodBeat.o(78115);
       return;
     }
@@ -946,18 +980,18 @@ public class FtsWebVideoView
   
   public d getCallback()
   {
-    return this.CiE;
+    return this.DLL;
   }
   
   public String getCookieData()
   {
-    return this.kOr;
+    return this.lkU;
   }
   
   public int getCurrPosMs()
   {
     AppMethodBeat.i(78101);
-    int i = this.Cis.getCurrPosMs();
+    int i = this.DLz.getCurrPosMs();
     AppMethodBeat.o(78101);
     return i;
   }
@@ -965,7 +999,7 @@ public class FtsWebVideoView
   public int getCurrPosSec()
   {
     AppMethodBeat.i(78100);
-    int i = this.Cis.getCurrPosSec();
+    int i = this.DLz.getCurrPosSec();
     AppMethodBeat.o(78100);
     return i;
   }
@@ -980,70 +1014,73 @@ public class FtsWebVideoView
   
   public b.a getUiLifecycleListener()
   {
-    return this.CiF;
+    return this.DLM;
   }
   
   public int getVideoSizeByte()
   {
-    return this.CiG;
+    return this.DLN;
   }
   
   public int getmVideoPlayerId()
   {
-    return this.kOs;
+    return this.lkV;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(78108);
-    if ((this.kOw) || (bjb()))
+    if ((this.lkZ) || (bmN()))
     {
       a locala;
-      if (this.CiC != null)
+      if (this.DLJ != null)
       {
-        locala = this.CiC;
-        if (locala.Cik.edy())
+        locala = this.DLJ;
+        if (locala.DLr.epQ())
         {
           int i = paramMotionEvent.getActionMasked();
           if (i == 0)
           {
-            locala.kVq = paramMotionEvent.getRawX();
-            locala.KO = ((AudioManager)locala.mContext.getSystemService("audio")).getStreamVolume(3);
-            locala.kNg = c.dy(locala.mContext);
+            locala.lsp = paramMotionEvent.getRawX();
+            locala.MG = ((AudioManager)locala.mContext.getSystemService("audio")).getStreamVolume(3);
+            locala.ljJ = c.dw(locala.mContext);
           }
-          locala.kVo.onTouchEvent(paramMotionEvent);
+          GestureDetector localGestureDetector = locala.lsn;
+          com.tencent.mm.hellhoundlib.b.a locala1 = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+          com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala1.ahp(), "com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoPlayerGestureController", "handleTouchEvent", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+          com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala1.mq(0)), "com/tencent/mm/plugin/webview/fts/ui/FtsWebVideoPlayerGestureController", "handleTouchEvent", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
           if ((i != 1) && (i != 3)) {
-            break label182;
+            break label258;
           }
-          if (locala.Cij != a.a.Cip) {
-            break label190;
+          if (locala.DLq != a.a.DLw) {
+            break label266;
           }
-          locala.Cik.k(locala.kVs, paramMotionEvent.getRawX() - locala.kVq);
-          locala.kVr = -1;
-          locala.kVs = 0;
-          locala.kVq = 0.0F;
+          locala.DLr.l(locala.lsr, paramMotionEvent.getRawX() - locala.lsp);
+          locala.lsq = -1;
+          locala.lsr = 0;
+          locala.lsp = 0.0F;
         }
       }
       for (;;)
       {
-        locala.Cij = a.a.Cim;
-        label182:
+        locala.DLq = a.a.DLt;
+        label258:
         AppMethodBeat.o(78108);
         return true;
-        label190:
-        if (locala.Cij == a.a.Cin)
+        label266:
+        if (locala.DLq == a.a.DLu)
         {
           ((AudioManager)locala.mContext.getSystemService("audio")).getStreamMaxVolume(3);
-          locala.Cik.bjm();
+          locala.DLr.bmY();
         }
-        else if (locala.Cij == a.a.Cio)
+        else if (locala.DLq == a.a.DLv)
         {
-          locala.Cik.bjn();
+          locala.DLr.bmZ();
         }
       }
     }
-    if ((paramMotionEvent.getAction() == 0) && (ezx())) {
-      this.Cit.ue(this.isLoading);
+    if ((paramMotionEvent.getAction() == 0) && (eOm())) {
+      this.DLA.uS(this.isLoading);
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
     AppMethodBeat.o(78108);
@@ -1053,26 +1090,26 @@ public class FtsWebVideoView
   public final void pause()
   {
     AppMethodBeat.i(78091);
-    ac.i("MicroMsg.FtsWebVideoView", "pause");
-    ezw();
-    if (!this.Cis.isPlaying())
+    ad.i("MicroMsg.FtsWebVideoView", "pause");
+    eOl();
+    if (!this.DLz.isPlaying())
     {
       AppMethodBeat.o(78091);
       return;
     }
-    this.Cis.pause();
+    this.DLz.pause();
     AppMethodBeat.o(78091);
   }
   
   public void setAllowMobileNetPlay(boolean paramBoolean)
   {
-    this.CiH = paramBoolean;
+    this.DLO = paramBoolean;
   }
   
   public void setAppId(String paramString)
   {
     AppMethodBeat.i(78085);
-    ac.i("MicroMsg.FtsWebVideoView", "setAppId appid=%s", new Object[] { paramString });
+    ad.i("MicroMsg.FtsWebVideoView", "setAppId appid=%s", new Object[] { paramString });
     this.mAppId = paramString;
     AppMethodBeat.o(78085);
   }
@@ -1080,40 +1117,40 @@ public class FtsWebVideoView
   public void setAutoPlay(boolean paramBoolean)
   {
     AppMethodBeat.i(78086);
-    ac.i("MicroMsg.FtsWebVideoView", "setAutoPlay =%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.chR = paramBoolean;
+    ad.i("MicroMsg.FtsWebVideoView", "setAutoPlay =%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.csg = paramBoolean;
     AppMethodBeat.o(78086);
   }
   
   public void setCallback(d paramd)
   {
-    this.CiE = paramd;
+    this.DLL = paramd;
   }
   
   public void setCookieData(String paramString)
   {
-    this.kOr = paramString;
+    this.lkU = paramString;
   }
   
   public final void setCover$16da05f7(String paramString)
   {
     AppMethodBeat.i(78096);
-    ac.i("MicroMsg.FtsWebVideoView", "setCover coverUrl=%s", new Object[] { paramString });
-    if (bs.isNullOrNil(paramString))
+    ad.i("MicroMsg.FtsWebVideoView", "setCover coverUrl=%s", new Object[] { paramString });
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(78096);
       return;
     }
-    this.kOD = paramString;
-    com.tencent.mm.modelappbrand.a.b.aAS().a(this.kOn, paramString, null, null);
+    this.llg = paramString;
+    com.tencent.mm.modelappbrand.a.b.aDV().a(this.lkQ, paramString, null, null);
     AppMethodBeat.o(78096);
   }
   
   public void setDisableScroll(boolean paramBoolean)
   {
     AppMethodBeat.i(78103);
-    ac.i("MicroMsg.FtsWebVideoView", "setDisableScroll isDisableScroll=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.CiB = paramBoolean;
+    ad.i("MicroMsg.FtsWebVideoView", "setDisableScroll isDisableScroll=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.DLI = paramBoolean;
     AppMethodBeat.o(78103);
   }
   
@@ -1122,7 +1159,7 @@ public class FtsWebVideoView
     AppMethodBeat.i(78087);
     if (paramInt <= 0)
     {
-      ac.i("MicroMsg.FtsWebVideoView", "setDuration error duration=%d", new Object[] { Integer.valueOf(paramInt) });
+      ad.i("MicroMsg.FtsWebVideoView", "setDuration error duration=%d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(78087);
       return;
     }
@@ -1131,214 +1168,214 @@ public class FtsWebVideoView
   
   public void setFullScreenDelegate(a parama)
   {
-    this.CiD = parama;
+    this.DLK = parama;
   }
   
   public void setFullScreenDirection(String paramString)
   {
     AppMethodBeat.i(78102);
-    ac.i("MicroMsg.FtsWebVideoView", "setFullScreenDirection %s", new Object[] { paramString });
+    ad.i("MicroMsg.FtsWebVideoView", "setFullScreenDirection %s", new Object[] { paramString });
     if ("horizontal".equalsIgnoreCase(paramString))
     {
-      this.Cir = FtsWebVideoView.b.CiP;
+      this.DLy = FtsWebVideoView.b.DLW;
       AppMethodBeat.o(78102);
       return;
     }
     if ("vertical".equalsIgnoreCase(paramString))
     {
-      this.Cir = FtsWebVideoView.b.CiQ;
+      this.DLy = FtsWebVideoView.b.DLX;
       AppMethodBeat.o(78102);
       return;
     }
-    this.Cir = FtsWebVideoView.b.CiO;
+    this.DLy = FtsWebVideoView.b.DLV;
     AppMethodBeat.o(78102);
   }
   
   public void setInitialTime(int paramInt)
   {
     AppMethodBeat.i(78105);
-    ac.i("MicroMsg.FtsWebVideoView", "setInitialTime initialTime=%d", new Object[] { Integer.valueOf(paramInt) });
-    this.nRp = paramInt;
+    ad.i("MicroMsg.FtsWebVideoView", "setInitialTime initialTime=%d", new Object[] { Integer.valueOf(paramInt) });
+    this.otW = paramInt;
     AppMethodBeat.o(78105);
   }
   
   public void setIsShowBasicControls(boolean paramBoolean)
   {
     AppMethodBeat.i(78095);
-    ac.i("MicroMsg.FtsWebVideoView", "setIsShowBasicControls isShowBasicControls=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.kOu = paramBoolean;
+    ad.i("MicroMsg.FtsWebVideoView", "setIsShowBasicControls isShowBasicControls=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.lkX = paramBoolean;
     AppMethodBeat.o(78095);
   }
   
   public void setLoop(boolean paramBoolean)
   {
     AppMethodBeat.i(78088);
-    ac.i("MicroMsg.FtsWebVideoView", "setLoop loop=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.kOB = paramBoolean;
+    ad.i("MicroMsg.FtsWebVideoView", "setLoop loop=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.lle = paramBoolean;
     AppMethodBeat.o(78088);
   }
   
   public void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(78099);
-    ac.i("MicroMsg.FtsWebVideoView", "setMute isMute=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.ftN = paramBoolean;
-    this.Cis.setMute(paramBoolean);
+    ad.i("MicroMsg.FtsWebVideoView", "setMute isMute=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.fMP = paramBoolean;
+    this.DLz.setMute(paramBoolean);
     if (paramBoolean)
     {
-      this.Cit.aas();
+      this.DLA.acU();
       AppMethodBeat.o(78099);
       return;
     }
-    this.Cit.exP();
+    this.DLA.eMG();
     AppMethodBeat.o(78099);
   }
   
   public void setObjectFit(String paramString)
   {
     AppMethodBeat.i(78098);
-    ac.i("MicroMsg.FtsWebVideoView", "setObjectFit objectFit=%s", new Object[] { paramString });
+    ad.i("MicroMsg.FtsWebVideoView", "setObjectFit objectFit=%s", new Object[] { paramString });
     if ("fill".equalsIgnoreCase(paramString))
     {
-      this.Cis.setScaleType(h.e.DnI);
-      this.kOn.setScaleType(ImageView.ScaleType.FIT_XY);
+      this.DLz.setScaleType(i.e.ESN);
+      this.lkQ.setScaleType(ImageView.ScaleType.FIT_XY);
       AppMethodBeat.o(78098);
       return;
     }
     if ("cover".equalsIgnoreCase(paramString))
     {
-      this.Cis.setScaleType(h.e.DnK);
-      this.kOn.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      this.DLz.setScaleType(i.e.ESP);
+      this.lkQ.setScaleType(ImageView.ScaleType.CENTER_CROP);
       AppMethodBeat.o(78098);
       return;
     }
-    this.Cis.setScaleType(h.e.DnJ);
-    this.kOn.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.DLz.setScaleType(i.e.ESO);
+    this.lkQ.setScaleType(ImageView.ScaleType.FIT_CENTER);
     AppMethodBeat.o(78098);
   }
   
   public void setPageGesture(boolean paramBoolean)
   {
     AppMethodBeat.i(78104);
-    ac.i("MicroMsg.FtsWebVideoView", "setPageGesture pageGesture=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.kOw = paramBoolean;
+    ad.i("MicroMsg.FtsWebVideoView", "setPageGesture pageGesture=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.lkZ = paramBoolean;
     AppMethodBeat.o(78104);
   }
   
   public void setUiLifecycleListener(b.a parama)
   {
-    this.CiF = parama;
+    this.DLM = parama;
   }
   
   public void setVideoPlayerId(int paramInt)
   {
-    this.kOs = paramInt;
+    this.lkV = paramInt;
   }
   
   public void setVideoSizeByte(int paramInt)
   {
-    this.CiG = paramInt;
+    this.DLN = paramInt;
   }
   
   public final void start(boolean paramBoolean)
   {
     AppMethodBeat.i(78089);
-    ac.i("MicroMsg.FtsWebVideoView", "start");
-    ezw();
-    if ((paramBoolean) && (!gM(getContext())))
+    ad.i("MicroMsg.FtsWebVideoView", "start");
+    eOl();
+    if ((paramBoolean) && (!gR(getContext())))
     {
-      ac.i("MicroMsg.FtsWebVideoView", "start network is not wifi");
+      ad.i("MicroMsg.FtsWebVideoView", "start network is not wifi");
       AppMethodBeat.o(78089);
       return;
     }
-    this.CiL = FtsWebVideoView.c.CiS;
-    if (this.Cis.isPlaying())
+    this.DLS = FtsWebVideoView.c.DLZ;
+    if (this.DLz.isPlaying())
     {
       AppMethodBeat.o(78089);
       return;
     }
-    if (this.kOu)
+    if (this.lkX)
     {
-      WebSearchWebVideoViewControlBar localWebSearchWebVideoViewControlBar = this.Cit;
-      if (localWebSearchWebVideoViewControlBar.kOQ == null) {
-        localWebSearchWebVideoViewControlBar.kOQ = new au(new WebSearchWebVideoViewControlBar.2(localWebSearchWebVideoViewControlBar), true);
+      WebSearchWebVideoViewControlBar localWebSearchWebVideoViewControlBar = this.DLA;
+      if (localWebSearchWebVideoViewControlBar.llt == null) {
+        localWebSearchWebVideoViewControlBar.llt = new av(new WebSearchWebVideoViewControlBar.2(localWebSearchWebVideoViewControlBar), true);
       }
-      localWebSearchWebVideoViewControlBar.bkW();
-      localWebSearchWebVideoViewControlBar.kOQ.stopTimer();
-      localWebSearchWebVideoViewControlBar.kOQ.au(500L, 500L);
+      localWebSearchWebVideoViewControlBar.boH();
+      localWebSearchWebVideoViewControlBar.llt.stopTimer();
+      localWebSearchWebVideoViewControlBar.llt.az(500L, 500L);
     }
-    this.Cis.start();
-    if (this.CiI == 0L)
+    this.DLz.start();
+    if (this.DLP == 0L)
     {
-      this.CiI = System.currentTimeMillis();
+      this.DLP = System.currentTimeMillis();
       AppMethodBeat.o(78089);
       return;
     }
-    this.CiI = 9223372036854775807L;
+    this.DLP = 9223372036854775807L;
     AppMethodBeat.o(78089);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(78092);
-    ac.i("MicroMsg.FtsWebVideoView", "stop");
-    if (!this.Cis.isPlaying())
+    ad.i("MicroMsg.FtsWebVideoView", "stop");
+    if (!this.DLz.isPlaying())
     {
       AppMethodBeat.o(78092);
       return;
     }
-    this.Cis.stop();
-    WebSearchWebVideoViewControlBar localWebSearchWebVideoViewControlBar = this.Cit;
-    if (localWebSearchWebVideoViewControlBar.kOQ != null) {
-      localWebSearchWebVideoViewControlBar.kOQ.stopTimer();
+    this.DLz.stop();
+    WebSearchWebVideoViewControlBar localWebSearchWebVideoViewControlBar = this.DLA;
+    if (localWebSearchWebVideoViewControlBar.llt != null) {
+      localWebSearchWebVideoViewControlBar.llt.stopTimer();
     }
     AppMethodBeat.o(78092);
   }
   
-  public final void ug(boolean paramBoolean)
+  public final void uU(boolean paramBoolean)
   {
     boolean bool = false;
     AppMethodBeat.i(78112);
-    ac.i("MicroMsg.FtsWebVideoView", "operateFullScreen toFullScreen=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (this.CiD == null)
+    ad.i("MicroMsg.FtsWebVideoView", "operateFullScreen toFullScreen=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (this.DLK == null)
     {
-      ac.w("MicroMsg.FtsWebVideoView", "operateFullScreen mFullScreenDelegate null");
+      ad.w("MicroMsg.FtsWebVideoView", "operateFullScreen mFullScreenDelegate null");
       AppMethodBeat.o(78112);
       return;
     }
-    if (paramBoolean == bjb())
+    if (paramBoolean == bmN())
     {
-      ac.i("MicroMsg.FtsWebVideoView", "operateFullScreen current same");
+      ad.i("MicroMsg.FtsWebVideoView", "operateFullScreen current same");
       AppMethodBeat.o(78112);
       return;
     }
     if (paramBoolean)
     {
-      Object localObject = this.CiD;
+      Object localObject = this.DLK;
       paramBoolean = bool;
-      if (this.Cir != FtsWebVideoView.b.CiQ) {
+      if (this.DLy != FtsWebVideoView.b.DLX) {
         paramBoolean = true;
       }
-      ((a)localObject).uh(paramBoolean);
-      localObject = this.Cit;
-      ((WebSearchWebVideoViewControlBar)localObject).kUU = true;
-      ((WebSearchWebVideoViewControlBar)localObject).bkS();
-      gJ(true);
+      ((a)localObject).uV(paramBoolean);
+      localObject = this.DLA;
+      ((WebSearchWebVideoViewControlBar)localObject).lrS = true;
+      ((WebSearchWebVideoViewControlBar)localObject).boD();
+      gQ(true);
       AppMethodBeat.o(78112);
       return;
     }
-    this.CiD.bha();
-    this.Cit.bha();
+    this.DLK.bkF();
+    this.DLA.bkF();
     AppMethodBeat.o(78112);
   }
   
   public static abstract interface a
   {
-    public abstract void bha();
+    public abstract void bkF();
     
     public abstract boolean isFullScreen();
     
-    public abstract void uh(boolean paramBoolean);
+    public abstract void uV(boolean paramBoolean);
   }
 }
 

@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ax;
 import d.g.a.a;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
 final class z$a
-  extends d.g.b.l
-  implements a<aw>
+  extends q
+  implements a<ax>
 {
-  public static final a lLK;
+  public static final a mly;
   
   static
   {
     AppMethodBeat.i(169649);
-    lLK = new a();
+    mly = new a();
     AppMethodBeat.o(169649);
   }
   

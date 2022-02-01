@@ -1,9 +1,6 @@
 package com.tencent.mm.ui.matrix;
 
 import android.app.Activity;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
@@ -13,21 +10,18 @@ import android.os.Debug;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.ViewPropertyAnimator;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.resource.analyzer.model.c;
 import com.tencent.matrix.resource.analyzer.model.d.a;
-import com.tencent.matrix.resource.analyzer.model.g;
+import com.tencent.matrix.resource.analyzer.model.h;
 import com.tencent.matrix.resource.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
@@ -40,21 +34,21 @@ import org.json.JSONObject;
 public class ManualDumpActivity
   extends MMActivity
 {
-  private String IKh;
-  private String IKi;
-  private TextView IKj;
-  private TextView IKk;
-  private boolean IKl;
-  private e IKm;
-  private ao hBR;
+  private String KBo;
+  private String KBp;
+  private TextView KBq;
+  private TextView KBr;
+  private boolean KBs;
+  private e KBt;
+  private ap hUx;
   
   public ManualDumpActivity()
   {
     AppMethodBeat.i(38869);
-    this.IKh = null;
-    this.IKi = null;
-    this.hBR = new ao(Looper.getMainLooper());
-    this.IKl = false;
+    this.KBo = null;
+    this.KBp = null;
+    this.hUx = new ap(Looper.getMainLooper());
+    this.KBs = false;
     AppMethodBeat.o(38869);
   }
   
@@ -62,17 +56,17 @@ public class ManualDumpActivity
   {
     AppMethodBeat.i(169898);
     if (paramBoolean.booleanValue()) {
-      paramBoolean = c.k(Build.VERSION.SDK_INT, Build.MANUFACTURER).Hh();
+      paramBoolean = c.k(Build.VERSION.SDK_INT, Build.MANUFACTURER).IC();
     }
     try
     {
       for (;;)
       {
-        parame = new g(parame);
+        parame = new com.tencent.matrix.resource.analyzer.model.g(parame);
         parame = new com.tencent.matrix.resource.analyzer.a(paramString, paramBoolean).a(parame);
         AppMethodBeat.o(169898);
         return parame;
-        paramBoolean = c.l(Build.VERSION.SDK_INT, Build.MANUFACTURER).Hh();
+        paramBoolean = c.l(Build.VERSION.SDK_INT, Build.MANUFACTURER).IC();
       }
     }
     catch (IOException parame)
@@ -100,19 +94,19 @@ public class ManualDumpActivity
   public void onClick(View paramView)
   {
     AppMethodBeat.i(38872);
-    Object localObject = (com.tencent.matrix.resource.b)com.tencent.matrix.b.Gq().V(com.tencent.matrix.resource.b.class);
+    Object localObject = (com.tencent.matrix.resource.b)com.tencent.matrix.b.HL().V(com.tencent.matrix.resource.b.class);
     if (localObject == null)
     {
       AppMethodBeat.o(38872);
       return;
     }
-    localObject = ((com.tencent.matrix.resource.b)localObject).cuO;
+    localObject = ((com.tencent.matrix.resource.b)localObject).cFJ;
     if (localObject == null)
     {
       AppMethodBeat.o(38872);
       return;
     }
-    if (((com.tencent.matrix.resource.e.b)localObject).cxI == null)
+    if (((com.tencent.matrix.resource.e.b)localObject).cID == null)
     {
       AppMethodBeat.o(38872);
       return;
@@ -136,20 +130,20 @@ public class ManualDumpActivity
             if (ManualDumpActivity.b(ManualDumpActivity.this) == null)
             {
               l = System.currentTimeMillis();
-              localObject = new d(ai.getContext());
-              ManualDumpActivity.a(ManualDumpActivity.this, e.U(((d)localObject).Hs()));
+              localObject = new d(aj.getContext());
+              ManualDumpActivity.a(ManualDumpActivity.this, e.X(((d)localObject).IN()));
             }
             try
             {
-              Debug.dumpHprofData(q.B(ManualDumpActivity.b(ManualDumpActivity.this).fxV()));
-              ac.i("ManualDumpActivity", String.format("cost=%sms refString=%s path=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), ManualDumpActivity.c(ManualDumpActivity.this), q.B(ManualDumpActivity.b(ManualDumpActivity.this).fxV()) }));
+              Debug.dumpHprofData(q.B(ManualDumpActivity.b(ManualDumpActivity.this).fOK()));
+              ad.i("ManualDumpActivity", String.format("cost=%sms refString=%s path=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), ManualDumpActivity.c(ManualDumpActivity.this), q.B(ManualDumpActivity.b(ManualDumpActivity.this).fOK()) }));
               ManualDumpActivity.e(ManualDumpActivity.this).post(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(38865);
-                  ManualDumpActivity.d(ManualDumpActivity.this).setText(q.B(ManualDumpActivity.b(ManualDumpActivity.this).fxV()));
-                  ManualDumpActivity.3.this.IKo.setVisibility(0);
+                  ManualDumpActivity.d(ManualDumpActivity.this).setText(q.B(ManualDumpActivity.b(ManualDumpActivity.this).fOK()));
+                  ManualDumpActivity.3.this.KBv.setVisibility(0);
                   AppMethodBeat.o(38865);
                 }
               });
@@ -161,23 +155,23 @@ public class ManualDumpActivity
                   AppMethodBeat.i(38866);
                   Object localObject;
                   HashMap localHashMap;
-                  if ((this.IKr.cuR) && (this.IKr.cuT != null))
+                  if ((this.KBy.cFM) && (this.KBy.cFO != null))
                   {
                     ManualDumpActivity.a(ManualDumpActivity.this).setTextColor(ManualDumpActivity.this.getResources().getColor(17170457));
-                    localObject = this.IKr.cuT.toString();
+                    localObject = this.KBy.cFO.toString();
                     ManualDumpActivity.a(ManualDumpActivity.this).setText((CharSequence)localObject);
-                    ac.i("ManualDumpActivity", (String)localObject);
-                    ManualDumpActivity.3.this.IKo.setVisibility(8);
+                    ad.i("ManualDumpActivity", (String)localObject);
+                    ManualDumpActivity.3.this.KBv.setVisibility(8);
                     localHashMap = new HashMap();
                     localHashMap.put("stack", localObject);
                     localHashMap.put("isHardAnalyze", Boolean.valueOf(ManualDumpActivity.f(ManualDumpActivity.this)));
-                    com.tencent.mm.plugin.report.service.h.wUl.f(18573, new Object[] { this.IKr.mClassName, localHashMap, Integer.valueOf(0), Integer.valueOf(1000), Integer.valueOf(0) });
-                    ac.i("ManualDumpActivity", (String)localObject);
+                    com.tencent.mm.plugin.report.service.g.yhR.f(18573, new Object[] { this.KBy.mClassName, localHashMap, Integer.valueOf(0), Integer.valueOf(1000), Integer.valueOf(0) });
+                    ad.i("ManualDumpActivity", (String)localObject);
                     Toast.makeText(ManualDumpActivity.this.getContext(), "已成功上报", 1).show();
                     AppMethodBeat.o(38866);
                     return;
                   }
-                  if (this.IKr.cuU != null)
+                  if (this.KBy.cFP != null)
                   {
                     if (ManualDumpActivity.f(ManualDumpActivity.this))
                     {
@@ -185,14 +179,14 @@ public class ManualDumpActivity
                       localObject = new JSONObject();
                       try
                       {
-                        this.IKr.m((JSONObject)localObject);
+                        this.KBy.m((JSONObject)localObject);
                         ManualDumpActivity.a(ManualDumpActivity.this).setText(((JSONObject)localObject).toString());
-                        ManualDumpActivity.3.this.IKo.setVisibility(8);
+                        ManualDumpActivity.3.this.KBv.setVisibility(8);
                         localHashMap = new HashMap();
                         localHashMap.put("stack", ((JSONObject)localObject).toString());
                         localHashMap.put("isHardAnalyze", Boolean.valueOf(ManualDumpActivity.f(ManualDumpActivity.this)));
-                        com.tencent.mm.plugin.report.service.h.wUl.f(18573, new Object[] { this.IKr.mClassName, localHashMap, Integer.valueOf(0), Integer.valueOf(1000), Integer.valueOf(1) });
-                        ac.i("ManualDumpActivity", ((JSONObject)localObject).toString());
+                        com.tencent.mm.plugin.report.service.g.yhR.f(18573, new Object[] { this.KBy.mClassName, localHashMap, Integer.valueOf(0), Integer.valueOf(1000), Integer.valueOf(1) });
+                        ad.i("ManualDumpActivity", ((JSONObject)localObject).toString());
                         Toast.makeText(ManualDumpActivity.this.getContext(), "已成功上报", 1).show();
                         AppMethodBeat.o(38866);
                         return;
@@ -201,7 +195,7 @@ public class ManualDumpActivity
                       {
                         for (;;)
                         {
-                          ac.printErrStackTrace("ManualDumpActivity", localJSONException, "", new Object[0]);
+                          ad.printErrStackTrace("ManualDumpActivity", localJSONException, "", new Object[0]);
                         }
                       }
                     }
@@ -212,7 +206,7 @@ public class ManualDumpActivity
                   }
                   ManualDumpActivity.a(ManualDumpActivity.this).setTextColor(ManualDumpActivity.this.getResources().getColor(17170453));
                   ManualDumpActivity.a(ManualDumpActivity.this).setText("not found!");
-                  ManualDumpActivity.3.this.IKo.setVisibility(8);
+                  ManualDumpActivity.3.this.KBv.setVisibility(8);
                   AppMethodBeat.o(38866);
                 }
               });
@@ -223,7 +217,7 @@ public class ManualDumpActivity
             {
               for (;;)
               {
-                ac.printErrStackTrace("ManualDumpActivity", localIOException, "", new Object[0]);
+                ad.printErrStackTrace("ManualDumpActivity", localIOException, "", new Object[0]);
               }
             }
           }
@@ -239,32 +233,13 @@ public class ManualDumpActivity
     AppMethodBeat.i(38870);
     super.onCreate(paramBundle);
     setMMTitle("Activity Leak");
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(38863);
-        ManualDumpActivity.this.finish();
-        AppMethodBeat.o(38863);
-        return true;
-      }
-    });
-    this.IKj = ((TextView)findViewById(2131301376));
-    this.IKk = ((TextView)findViewById(2131300860));
-    this.IKj.setOnLongClickListener(new View.OnLongClickListener()
-    {
-      public final boolean onLongClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(38864);
-        ((ClipboardManager)ai.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, ManualDumpActivity.a(ManualDumpActivity.this).getText().toString()));
-        com.tencent.mm.ui.base.h.cg(ManualDumpActivity.this, ManualDumpActivity.this.getString(2131755702));
-        AppMethodBeat.o(38864);
-        return true;
-      }
-    });
-    this.IKi = getIntent().getStringExtra("activity");
-    this.IKh = getIntent().getStringExtra("ref_key");
-    ((TextView)findViewById(2131301375)).setText(this.IKi);
+    setBackBtn(new ManualDumpActivity.1(this));
+    this.KBq = ((TextView)findViewById(2131301376));
+    this.KBr = ((TextView)findViewById(2131300860));
+    this.KBq.setOnLongClickListener(new ManualDumpActivity.2(this));
+    this.KBp = getIntent().getStringExtra("activity");
+    this.KBo = getIntent().getStringExtra("ref_key");
+    ((TextView)findViewById(2131301375)).setText(this.KBp);
     AppMethodBeat.o(38870);
   }
   

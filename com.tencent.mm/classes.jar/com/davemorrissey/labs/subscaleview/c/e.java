@@ -5,10 +5,10 @@ import android.graphics.Rect;
 
 public final class e
 {
-  public Rect aMF;
-  public boolean aMG;
-  public Rect aMH;
-  public Rect aMI;
+  public Rect aWW;
+  public boolean aWX;
+  public Rect aWY;
+  public Rect aWZ;
   public Bitmap bitmap;
   public int sampleSize;
   public boolean visible;

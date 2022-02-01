@@ -4,7 +4,7 @@ import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class i
   implements d.a
@@ -13,11 +13,11 @@ final class i
   {
     AppMethodBeat.i(155652);
     d.a.a locala = new d.a.a();
-    locala.fFt = null;
+    locala.fYS = null;
     try
     {
-      locala.fFt = w.b(paramInt, paramLooper);
-      if (locala.fFt == null)
+      locala.fYS = w.b(paramInt, paramLooper);
+      if (locala.fYS == null)
       {
         AppMethodBeat.o(155652);
         return null;
@@ -28,12 +28,12 @@ final class i
       AppMethodBeat.o(155652);
       return null;
     }
-    locala.duc = 0;
-    ac.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.hasVRInfo " + ae.fJd.fEM);
-    ac.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRFaceRotate " + ae.fJd.fEN);
-    ac.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRFaceDisplayOrientation " + ae.fJd.fEO);
-    ac.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRBackRotate " + ae.fJd.fEP);
-    ac.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRBackDisplayOrientation " + ae.fJd.fEQ);
+    locala.dGc = 0;
+    ad.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.hasVRInfo " + ae.gcE.fYl);
+    ad.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRFaceRotate " + ae.gcE.fYm);
+    ad.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRFaceDisplayOrientation " + ae.gcE.fYn);
+    ad.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRBackRotate " + ae.gcE.fYo);
+    ad.d("CameraUtilImplConfig", "SrvDeviceInfo.mCameraInfo.mVRBackDisplayOrientation " + ae.gcE.fYp);
     if (getNumberOfCameras() > 1) {}
     for (;;)
     {
@@ -41,36 +41,36 @@ final class i
       {
         paramLooper = new Camera.CameraInfo();
         Camera.getCameraInfo(paramInt, paramLooper);
-        ac.d("CameraUtilImplConfig", "info.facing " + paramLooper.facing);
+        ad.d("CameraUtilImplConfig", "info.facing " + paramLooper.facing);
         if (paramLooper.facing != 1) {
           continue;
         }
-        if ((ae.fJd.fEM) && (ae.fJd.fEN != -1)) {
-          locala.duc = ae.fJd.fEN;
+        if ((ae.gcE.fYl) && (ae.gcE.fYm != -1)) {
+          locala.dGc = ae.gcE.fYm;
         }
-        if ((ae.fJd.fEM) && (ae.fJd.fEO != -1)) {
-          locala.fFt.setDisplayOrientation(ae.fJd.fEO);
+        if ((ae.gcE.fYl) && (ae.gcE.fYn != -1)) {
+          locala.fYS.setDisplayOrientation(ae.gcE.fYn);
         }
       }
       catch (Exception paramLooper)
       {
-        ac.printErrStackTrace("CameraUtilImplConfig", paramLooper, "", new Object[0]);
+        ad.printErrStackTrace("CameraUtilImplConfig", paramLooper, "", new Object[0]);
         continue;
       }
       AppMethodBeat.o(155652);
       return locala;
-      if ((ae.fJd.fEM) && (ae.fJd.fEP != -1)) {
-        locala.duc = ae.fJd.fEP;
+      if ((ae.gcE.fYl) && (ae.gcE.fYo != -1)) {
+        locala.dGc = ae.gcE.fYo;
       }
-      if ((ae.fJd.fEM) && (ae.fJd.fEQ != -1))
+      if ((ae.gcE.fYl) && (ae.gcE.fYp != -1))
       {
-        locala.fFt.setDisplayOrientation(ae.fJd.fEQ);
+        locala.fYS.setDisplayOrientation(ae.gcE.fYp);
         continue;
-        if ((ae.fJd.fEM) && (ae.fJd.fEP != -1)) {
-          locala.duc = ae.fJd.fEP;
+        if ((ae.gcE.fYl) && (ae.gcE.fYo != -1)) {
+          locala.dGc = ae.gcE.fYo;
         }
-        if ((ae.fJd.fEM) && (ae.fJd.fEQ != -1)) {
-          locala.fFt.setDisplayOrientation(ae.fJd.fEQ);
+        if ((ae.gcE.fYl) && (ae.gcE.fYp != -1)) {
+          locala.fYS.setDisplayOrientation(ae.gcE.fYp);
         }
       }
     }
@@ -79,15 +79,15 @@ final class i
   public static int getNumberOfCameras()
   {
     AppMethodBeat.i(155651);
-    if ((ae.fJd.fES) && (ae.fJd.fER != -1))
+    if ((ae.gcE.fYr) && (ae.gcE.fYq != -1))
     {
-      i = ae.fJd.fER;
-      ac.d("CameraUtilImplConfig", "mVRCameraNum ".concat(String.valueOf(i)));
+      i = ae.gcE.fYq;
+      ad.d("CameraUtilImplConfig", "mVRCameraNum ".concat(String.valueOf(i)));
       AppMethodBeat.o(155651);
       return i;
     }
     int i = d.getNumberOfCameras();
-    ac.d("CameraUtilImplConfig", "getNumberOfCameras ".concat(String.valueOf(i)));
+    ad.d("CameraUtilImplConfig", "getNumberOfCameras ".concat(String.valueOf(i)));
     if (i > 1)
     {
       AppMethodBeat.o(155651);
@@ -99,7 +99,7 @@ final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.i
  * JD-Core Version:    0.7.0.1
  */

@@ -1,90 +1,233 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.database.Cursor;
+import android.os.StatFs;
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.loader.a;
-import com.tencent.mm.plugin.appbrand.appstorage.m;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.g.b.a.hu;
+import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.plugin.appbrand.config.v;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
 
 public final class ab
 {
-  private static String[] jmU = { "__APP__", "__WITHOUT_PLUGINCODE__", "__WITHOUT_MULTI_PLUGINCODE__", "__PLUGINCODE__" };
-  private final String appId;
-  private final String ceF;
-  private volatile String jmT;
+  private static final byte[] jGL = new byte[0];
   
-  public ab(String paramString)
+  public static b a(long paramLong, a parama)
   {
-    this.appId = paramString;
-    this.ceF = null;
-  }
-  
-  public ab(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(146000);
-    this.appId = paramString1;
-    this.ceF = Ia(paramString2);
-    AppMethodBeat.o(146000);
-  }
-  
-  public ab(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(146002);
-    switch (paramInt)
+    AppMethodBeat.i(44310);
+    if (paramLong <= 0L)
     {
-    default: 
-      this.ceF = Ia(paramString2);
+      parama = b.jGN;
+      AppMethodBeat.o(44310);
+      return parama;
     }
-    for (;;)
+    Object localObject1 = new StatFs(ay.baz());
+    int i = ((StatFs)localObject1).getAvailableBlocks();
+    long l = ((StatFs)localObject1).getBlockSize() * i;
+    if ((l < 0L) || (l > paramLong))
     {
-      this.appId = paramString1;
-      AppMethodBeat.o(146002);
-      return;
-      this.ceF = "";
-      continue;
-      this.ceF = (Ia(paramString2) + '$' + "__WITHOUT_PLUGINCODE__");
-      continue;
-      this.ceF = (Ia(paramString2) + '$' + "__WITHOUT_MULTI_PLUGINCODE__");
-      continue;
-      this.ceF = "__PLUGINCODE__";
-      continue;
-      this.ceF = "__WITHOUT_PLUGINCODE__";
-      continue;
-      this.ceF = "__WITHOUT_MULTI_PLUGINCODE__";
+      parama = b.jGN;
+      AppMethodBeat.o(44310);
+      return parama;
     }
-  }
-  
-  private static String Ia(String paramString)
-  {
-    AppMethodBeat.i(146001);
-    if ((bs.isNullOrNil(paramString)) || (a.contains(jmU, paramString)))
+    localObject1 = (ah)j.T(ah.class);
+    if (localObject1 == null)
     {
-      AppMethodBeat.o(146001);
-      return paramString;
+      ad.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, lruStorage NULL", new Object[] { Long.valueOf(paramLong) });
+      parama = b.jGP;
+      AppMethodBeat.o(44310);
+      return parama;
     }
-    paramString = m.IY(paramString);
-    AppMethodBeat.o(146001);
-    return paramString;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(146003);
-    StringBuilder localStringBuilder;
-    if (bs.isNullOrNil(this.jmT))
+    Object localObject4 = String.format(Locale.US, " %s, %s ASC", new Object[] { "hit", "hitTimeMS" });
+    Object localObject3 = new LinkedList();
+    synchronized (jGL)
     {
-      localStringBuilder = new StringBuilder().append(this.appId);
-      if (!bs.isNullOrNil(this.ceF)) {
-        break label67;
+      localObject4 = ((ah)localObject1).db.a("PkgUsageLRURecord", new String[] { "appId", "type" }, null, null, null, null, (String)localObject4, 2);
+      if (localObject4 == null)
+      {
+        parama = b.jGP;
+        AppMethodBeat.o(44310);
+        return parama;
+      }
+      if (!((Cursor)localObject4).moveToFirst())
+      {
+        ((Cursor)localObject4).close();
+        parama = b.jGP;
+        AppMethodBeat.o(44310);
+        return parama;
+      }
+      try
+      {
+        boolean bool;
+        do
+        {
+          ((LinkedList)localObject3).add(Pair.create(((Cursor)localObject4).getString(0), Integer.valueOf(((Cursor)localObject4).getInt(1))));
+          bool = ((Cursor)localObject4).moveToNext();
+        } while (bool);
+        ((Cursor)localObject4).close();
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ad.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy, read from cursor e = %s", new Object[] { localException });
+          ((Cursor)localObject4).close();
+        }
+        parama = finally;
+        AppMethodBeat.o(44310);
+        throw parama;
+      }
+      finally
+      {
+        ((Cursor)localObject4).close();
+        AppMethodBeat.o(44310);
+      }
+      ??? = j.aYX();
+      if (??? == null)
+      {
+        ad.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, pkgStorage NULL", new Object[] { Long.valueOf(paramLong) });
+        parama = b.jGP;
+        AppMethodBeat.o(44310);
+        return parama;
       }
     }
-    label67:
-    for (String str = "";; str = "$" + this.ceF)
+    a(parama);
+    localObject3 = ((LinkedList)localObject3).iterator();
+    l = 0L;
+    i = 0;
+    while (((Iterator)localObject3).hasNext())
     {
-      this.jmT = str;
-      str = this.jmT;
-      AppMethodBeat.o(146003);
-      return str;
+      localObject4 = (Pair)((Iterator)localObject3).next();
+      Iterator localIterator = ((bg)???).a((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue(), bg.a.jIO, new String[] { "pkgPath" }).iterator();
+      while (localIterator.hasNext())
+      {
+        bc localbc = (bc)localIterator.next();
+        l = i.aYo(localbc.field_pkgPath) + l;
+        i.deleteFile(localbc.field_pkgPath);
+        i += 1;
+        ((ah)localObject1).aJ((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue());
+        a(parama);
+        if (l >= paramLong)
+        {
+          parama = new hu();
+          parama.eto = 3L;
+          parama.etq = i;
+          parama.etm = 1L;
+          parama.aLk();
+          parama = b.jGO;
+          AppMethodBeat.o(44310);
+          return parama;
+        }
+      }
     }
+    parama = b.jGP;
+    AppMethodBeat.o(44310);
+    return parama;
+  }
+  
+  private static void a(a parama)
+  {
+    AppMethodBeat.i(44311);
+    if ((parama != null) && (parama.aVB()))
+    {
+      parama = new InterruptedException();
+      AppMethodBeat.o(44311);
+      throw parama;
+    }
+    AppMethodBeat.o(44311);
+  }
+  
+  public static void aI(String arg0, int paramInt)
+  {
+    AppMethodBeat.i(44308);
+    if (bt.isNullOrNil(???))
+    {
+      AppMethodBeat.o(44308);
+      return;
+    }
+    String str = v.NE(???);
+    if (bt.isNullOrNil(str))
+    {
+      AppMethodBeat.o(44308);
+      return;
+    }
+    ah localah = (ah)j.T(ah.class);
+    if (localah == null)
+    {
+      AppMethodBeat.o(44308);
+      return;
+    }
+    synchronized (jGL)
+    {
+      ag localag = new ag();
+      localag.field_appId = str;
+      localag.field_type = paramInt;
+      if (localah.get(localag, ag.jFa))
+      {
+        localag.field_hit += 1;
+        localag.field_hitTimeMS = bt.flT();
+        localah.update(localag, ag.jFa);
+        AppMethodBeat.o(44308);
+        return;
+      }
+      localag.field_hit = 1;
+      localag.field_hitTimeMS = bt.flT();
+      localah.insert(localag);
+    }
+  }
+  
+  public static b sD(long paramLong)
+  {
+    AppMethodBeat.i(44309);
+    try
+    {
+      b localb1 = a(paramLong, a.jGM);
+      AppMethodBeat.o(44309);
+      return localb1;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      ad.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimOffSize with dummy check, get interrupted, e = %s", new Object[] { localInterruptedException });
+      b localb2 = b.jGP;
+      AppMethodBeat.o(44309);
+      return localb2;
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public static final a jGM = new a()
+    {
+      public final boolean aVB()
+      {
+        return false;
+      }
+    };
+    
+    public abstract boolean aVB();
+  }
+  
+  public static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(44307);
+      jGN = new b("NO_NEED", 0);
+      jGO = new b("TRIMMED", 1);
+      jGP = new b("TRIM_FAIL", 2);
+      jGQ = new b[] { jGN, jGO, jGP };
+      AppMethodBeat.o(44307);
+    }
+    
+    private b() {}
   }
 }
 

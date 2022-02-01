@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.sns.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.protocal.protobuf.agu;
-import com.tencent.mm.protocal.protobuf.aqa;
-import com.tencent.mm.protocal.protobuf.dhf;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.ajk;
+import com.tencent.mm.protocal.protobuf.atu;
+import com.tencent.mm.protocal.protobuf.dmu;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -15,28 +15,28 @@ public final class c
   public static int a(long paramLong1, long paramLong2, String paramString)
   {
     AppMethodBeat.i(95454);
-    paramString = af.dHV().auW(paramString);
-    Object localObject = paramString.EIX;
-    ac.i("MicroMsg.FaultLogic", "getLastReqTimeByMinId fault.count %s", new Object[] { Integer.valueOf(paramString.EIX.size()) });
+    paramString = ag.dUi().aAd(paramString);
+    Object localObject = paramString.GrO;
+    ad.i("MicroMsg.FaultLogic", "getLastReqTimeByMinId fault.count %s", new Object[] { Integer.valueOf(paramString.GrO.size()) });
     if (((LinkedList)localObject).isEmpty())
     {
       AppMethodBeat.o(95454);
       return 0;
     }
-    paramString = (agu)((LinkedList)localObject).getFirst();
-    if ((paramLong1 == 0L) || (ai(paramString.EyT, paramLong1) > 0L))
+    paramString = (ajk)((LinkedList)localObject).getFirst();
+    if ((paramLong1 == 0L) || (al(paramString.GgF, paramLong1) > 0L))
     {
-      ac.e("MicroMsg.FaultLogic", "has a fault  minId:" + paramLong2 + " fault.min:" + paramString.EyT);
+      ad.e("MicroMsg.FaultLogic", "has a fault  minId:" + paramLong2 + " fault.min:" + paramString.GgF);
       AppMethodBeat.o(95454);
       return 0;
     }
-    if ((paramLong2 != 0L) && (ai(paramString.EyS, paramLong2) < 0L))
+    if ((paramLong2 != 0L) && (al(paramString.GgE, paramLong2) < 0L))
     {
-      ac.e("MicroMsg.FaultLogic", ":" + paramLong2 + " fault.max:" + paramString.EyS);
+      ad.e("MicroMsg.FaultLogic", ":" + paramLong2 + " fault.max:" + paramString.GgE);
       AppMethodBeat.o(95454);
       return 0;
     }
-    paramString = paramString.EyU;
+    paramString = paramString.GgG;
     if (paramString.isEmpty())
     {
       AppMethodBeat.o(95454);
@@ -46,15 +46,15 @@ public final class c
     int i = 2147483647;
     while (paramString.hasNext())
     {
-      localObject = (dhf)paramString.next();
-      if ((paramLong2 == 0L) || (ai(paramLong2, ((dhf)localObject).FQx) >= 0L))
+      localObject = (dmu)paramString.next();
+      if ((paramLong2 == 0L) || (al(paramLong2, ((dmu)localObject).HBc) >= 0L))
       {
         int j = i;
-        if (((dhf)localObject).FQy < i) {
-          j = ((dhf)localObject).FQy;
+        if (((dmu)localObject).HBd < i) {
+          j = ((dmu)localObject).HBd;
         }
         i = j;
-        if (ai(paramLong1, ((dhf)localObject).FQx) >= 0L)
+        if (al(paramLong1, ((dmu)localObject).HBc) >= 0L)
         {
           if (j == 2147483647)
           {
@@ -66,58 +66,58 @@ public final class c
         }
       }
     }
-    ac.i("MicroMsg.FaultLogic", "should not to hear  minId:".concat(String.valueOf(paramLong1)));
+    ad.i("MicroMsg.FaultLogic", "should not to hear  minId:".concat(String.valueOf(paramLong1)));
     AppMethodBeat.o(95454);
     return 0;
   }
   
-  private static agu a(agu paramagu1, agu paramagu2)
+  private static ajk a(ajk paramajk1, ajk paramajk2)
   {
     AppMethodBeat.i(95453);
-    agu localagu = new agu();
-    if (ai(paramagu1.EyS, paramagu2.EyS) > 0L)
+    ajk localajk = new ajk();
+    if (al(paramajk1.GgE, paramajk2.GgE) > 0L)
     {
-      localagu.EyS = paramagu1.EyS;
-      if (ai(paramagu1.EyT, paramagu2.EyT) >= 0L) {
+      localajk.GgE = paramajk1.GgE;
+      if (al(paramajk1.GgF, paramajk2.GgF) >= 0L) {
         break label132;
       }
-      localagu.EyT = paramagu1.EyT;
+      localajk.GgF = paramajk1.GgF;
       label64:
-      paramagu1 = paramagu1.EyU;
-      paramagu2 = paramagu2.EyU.iterator();
+      paramajk1 = paramajk1.GgG;
+      paramajk2 = paramajk2.GgG.iterator();
     }
     for (;;)
     {
-      if (!paramagu2.hasNext()) {
+      if (!paramajk2.hasNext()) {
         break label639;
       }
-      dhf localdhf1 = (dhf)paramagu2.next();
-      if (paramagu1.isEmpty())
+      dmu localdmu1 = (dmu)paramajk2.next();
+      if (paramajk1.isEmpty())
       {
-        ac.e("MicroMsg.FaultLogic", "fault's segments should not empty!!");
-        paramagu1.addFirst(localdhf1);
+        ad.e("MicroMsg.FaultLogic", "fault's segments should not empty!!");
+        paramajk1.addFirst(localdmu1);
         continue;
-        localagu.EyS = paramagu2.EyS;
+        localajk.GgE = paramajk2.GgE;
         break;
         label132:
-        localagu.EyT = paramagu2.EyT;
+        localajk.GgF = paramajk2.GgF;
         break label64;
       }
-      long l1 = localdhf1.FQx;
-      int i = paramagu1.size() - 1;
+      long l1 = localdmu1.HBc;
+      int i = paramajk1.size() - 1;
       label158:
       label183:
       int j;
       if (i >= 0) {
-        if (ai(l1, ((dhf)paramagu1.get(i)).FQw) <= 0L)
+        if (al(l1, ((dmu)paramajk1.get(i)).HBb) <= 0L)
         {
-          l1 = localdhf1.FQw;
+          l1 = localdmu1.HBb;
           j = 0;
           label192:
-          if (j >= paramagu1.size()) {
+          if (j >= paramajk1.size()) {
             break label254;
           }
-          if (ai(l1, ((dhf)paramagu1.get(j)).FQx) < 0L) {
+          if (al(l1, ((dmu)paramajk1.get(j)).HBc) < 0L) {
             break label247;
           }
         }
@@ -127,7 +127,7 @@ public final class c
         if (i != -1) {
           break label262;
         }
-        paramagu1.addFirst(localdhf1);
+        paramajk1.addFirst(localdmu1);
         break;
         i -= 1;
         break label158;
@@ -137,24 +137,24 @@ public final class c
         j += 1;
         break label192;
         label254:
-        j = paramagu1.size();
+        j = paramajk1.size();
       }
       label262:
-      if (j == paramagu1.size())
+      if (j == paramajk1.size())
       {
-        paramagu1.addLast(localdhf1);
+        paramajk1.addLast(localdmu1);
       }
       else
       {
-        dhf localdhf2 = (dhf)paramagu1.get(j);
+        dmu localdmu2 = (dmu)paramajk1.get(j);
         int k = i;
         int m = j;
-        dhf localdhf3;
-        if (ai(localdhf1.FQw, localdhf2.FQw) < 0L)
+        dmu localdmu3;
+        if (al(localdmu1.HBb, localdmu2.HBb) < 0L)
         {
-          localdhf3 = new dhf();
-          localdhf3.FQw = localdhf2.FQw;
-          l1 = localdhf1.FQw;
+          localdmu3 = new dmu();
+          localdmu3.HBb = localdmu2.HBb;
+          l1 = localdmu1.HBb;
           if (l1 != 9223372036854775807L) {
             break label493;
           }
@@ -162,57 +162,57 @@ public final class c
         label493:
         for (l1 = -9223372036854775808L;; l1 += 1L)
         {
-          localdhf3.FQx = l1;
-          localdhf3.FQy = localdhf2.FQy;
-          paramagu1.add(j, localdhf3);
+          localdmu3.HBc = l1;
+          localdmu3.HBd = localdmu2.HBd;
+          paramajk1.add(j, localdmu3);
           k = i + 1;
           m = j + 1;
-          localdhf2 = (dhf)paramagu1.get(k);
+          localdmu2 = (dmu)paramajk1.get(k);
           i = k;
-          if (ai(localdhf1.FQx, localdhf2.FQx) > 0L)
+          if (al(localdmu1.HBc, localdmu2.HBc) > 0L)
           {
-            localdhf3 = new dhf();
-            localdhf3.FQx = localdhf2.FQx;
-            localdhf3.FQw = xc(localdhf1.FQx);
-            localdhf3.FQy = localdhf2.FQy;
-            paramagu1.add(k + 1, localdhf3);
+            localdmu3 = new dmu();
+            localdmu3.HBc = localdmu2.HBc;
+            localdmu3.HBb = zB(localdmu1.HBc);
+            localdmu3.HBd = localdmu2.HBd;
+            paramajk1.add(k + 1, localdmu3);
             i = k;
           }
           while (i >= m)
           {
-            paramagu1.remove(i);
+            paramajk1.remove(i);
             i -= 1;
           }
         }
-        paramagu1.add(m, localdhf1);
-        if (paramagu1.size() > 100)
+        paramajk1.add(m, localdmu1);
+        if (paramajk1.size() > 100)
         {
-          long l2 = ((dhf)paramagu1.getLast()).FQx;
-          l1 = ((dhf)paramagu1.getLast()).FQw;
-          for (i = ((dhf)paramagu1.getLast()).FQy; paramagu1.size() >= 100; i = j)
+          long l2 = ((dmu)paramajk1.getLast()).HBc;
+          l1 = ((dmu)paramajk1.getLast()).HBb;
+          for (i = ((dmu)paramajk1.getLast()).HBd; paramajk1.size() >= 100; i = j)
           {
-            localdhf1 = (dhf)paramagu1.removeLast();
-            l1 = localdhf1.FQw;
+            localdmu1 = (dmu)paramajk1.removeLast();
+            l1 = localdmu1.HBb;
             j = i;
-            if (localdhf1.FQy < i) {
-              j = localdhf1.FQy;
+            if (localdmu1.HBd < i) {
+              j = localdmu1.HBd;
             }
           }
-          localdhf1 = new dhf();
-          localdhf1.FQw = l1;
-          localdhf1.FQx = l2;
-          localdhf1.FQy = i;
-          paramagu1.addLast(localdhf1);
+          localdmu1 = new dmu();
+          localdmu1.HBb = l1;
+          localdmu1.HBc = l2;
+          localdmu1.HBd = i;
+          paramajk1.addLast(localdmu1);
         }
       }
     }
     label639:
-    localagu.EyU = paramagu1;
+    localajk.GgG = paramajk1;
     AppMethodBeat.o(95453);
-    return localagu;
+    return localajk;
   }
   
-  private static long ai(long paramLong1, long paramLong2)
+  private static long al(long paramLong1, long paramLong2)
   {
     if (((paramLong1 > 0L) && (paramLong2 > 0L)) || ((paramLong1 < 0L) && (paramLong2 < 0L))) {
       return paramLong1 - paramLong2;
@@ -231,66 +231,66 @@ public final class c
       AppMethodBeat.o(95452);
       return;
     }
-    Object localObject1 = af.dHV().auW(paramString);
+    Object localObject1 = ag.dUi().aAd(paramString);
     if (localObject1 == null) {
-      localObject1 = new aqa();
+      localObject1 = new atu();
     }
     for (;;)
     {
-      if ((paramLong1 == 0L) && (((aqa)localObject1).EIX.isEmpty()))
+      if ((paramLong1 == 0L) && (((atu)localObject1).GrO.isEmpty()))
       {
         AppMethodBeat.o(95452);
         return;
       }
       long l = paramLong1;
       if (paramLong1 == 0L) {
-        l = ((agu)((aqa)localObject1).EIX.getFirst()).EyS;
+        l = ((ajk)((atu)localObject1).GrO.getFirst()).GgE;
       }
-      Object localObject2 = new agu();
-      ((agu)localObject2).EyS = l;
-      ((agu)localObject2).EyT = paramLong2;
-      Object localObject3 = new dhf();
-      ((dhf)localObject3).FQw = l;
-      ((dhf)localObject3).FQx = paramLong2;
-      ((dhf)localObject3).FQy = paramInt;
-      ((agu)localObject2).EyU.add(localObject3);
+      Object localObject2 = new ajk();
+      ((ajk)localObject2).GgE = l;
+      ((ajk)localObject2).GgF = paramLong2;
+      Object localObject3 = new dmu();
+      ((dmu)localObject3).HBb = l;
+      ((dmu)localObject3).HBc = paramLong2;
+      ((dmu)localObject3).HBd = paramInt;
+      ((ajk)localObject2).GgG.add(localObject3);
       for (;;)
       {
-        if (!((aqa)localObject1).EIX.isEmpty())
+        if (!((atu)localObject1).GrO.isEmpty())
         {
-          localObject3 = (agu)((aqa)localObject1).EIX.getFirst();
-          if (ai(((agu)localObject2).EyT, ((agu)localObject3).EyS) > 0L) {
-            ac.e("MicroMsg.FaultLogic", "has a fault: newerMin:" + ((agu)localObject2).EyT + " fault.Max" + ((agu)localObject3).EyS);
+          localObject3 = (ajk)((atu)localObject1).GrO.getFirst();
+          if (al(((ajk)localObject2).GgF, ((ajk)localObject3).GgE) > 0L) {
+            ad.e("MicroMsg.FaultLogic", "has a fault: newerMin:" + ((ajk)localObject2).GgF + " fault.Max" + ((ajk)localObject3).GgE);
           }
         }
         else
         {
-          ((aqa)localObject1).EIX.addFirst(localObject2);
-          while (((aqa)localObject1).EIX.size() > 100) {
-            ((aqa)localObject1).EIX.removeLast();
+          ((atu)localObject1).GrO.addFirst(localObject2);
+          while (((atu)localObject1).GrO.size() > 100) {
+            ((atu)localObject1).GrO.removeLast();
           }
         }
-        ((aqa)localObject1).EIX.removeFirst();
-        localObject2 = a((agu)localObject3, (agu)localObject2);
+        ((atu)localObject1).GrO.removeFirst();
+        localObject2 = a((ajk)localObject3, (ajk)localObject2);
       }
-      if (((aqa)localObject1).EIX.size() > 0) {
-        ac.d("MicroMsg.FaultLogic", "min " + ((agu)((aqa)localObject1).EIX.get(0)).EyT + " max " + ((agu)((aqa)localObject1).EIX.get(0)).EyS);
+      if (((atu)localObject1).GrO.size() > 0) {
+        ad.d("MicroMsg.FaultLogic", "min " + ((ajk)((atu)localObject1).GrO.get(0)).GgF + " max " + ((ajk)((atu)localObject1).GrO.get(0)).GgE);
       }
-      localObject2 = af.dHV().auY(paramString);
+      localObject2 = ag.dUi().aAf(paramString);
       try
       {
         ((n)localObject2).field_userName = paramString;
-        ((n)localObject2).field_faultS = ((aqa)localObject1).toByteArray();
-        af.dHV().c((n)localObject2);
+        ((n)localObject2).field_faultS = ((atu)localObject1).toByteArray();
+        ag.dUi().c((n)localObject2);
         label389:
-        if (((aqa)localObject1).EIX.size() > 1)
+        if (((atu)localObject1).GrO.size() > 1)
         {
-          ac.d("MicroMsg.FaultLogic", "fault size : " + ((aqa)localObject1).EIX.size());
-          paramString = ((aqa)localObject1).EIX.iterator();
+          ad.d("MicroMsg.FaultLogic", "fault size : " + ((atu)localObject1).GrO.size());
+          paramString = ((atu)localObject1).GrO.iterator();
           while (paramString.hasNext())
           {
-            localObject1 = (agu)paramString.next();
-            ac.d("MicroMsg.FaultLogic", "min - max " + ((agu)localObject1).EyT + " " + ((agu)localObject1).EyS);
+            localObject1 = (ajk)paramString.next();
+            ad.d("MicroMsg.FaultLogic", "min - max " + ((ajk)localObject1).GgF + " " + ((ajk)localObject1).GgE);
           }
         }
         AppMethodBeat.o(95452);
@@ -303,7 +303,7 @@ public final class c
     }
   }
   
-  public static long xc(long paramLong)
+  public static long zB(long paramLong)
   {
     if (paramLong == -9223372036854775808L) {
       return 9223372036854775807L;

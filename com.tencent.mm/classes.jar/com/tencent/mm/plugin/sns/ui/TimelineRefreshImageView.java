@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.reflect.Field;
 
 public class TimelineRefreshImageView
@@ -40,15 +40,15 @@ public class TimelineRefreshImageView
           continue;
         }
         localObject = "cache is null";
-        ac.d("MicroMsg.TimelineRefreshImageView", (String)localObject);
+        ad.d("MicroMsg.TimelineRefreshImageView", (String)localObject);
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.TimelineRefreshImageView", localException, "", new Object[0]);
-        ac.e("MicroMsg.TimelineRefreshImageView", "checkIfCanReuseDrawingCache error: %s", new Object[] { localException.getMessage() });
+        ad.printErrStackTrace("MicroMsg.TimelineRefreshImageView", localException, "", new Object[0]);
+        ad.e("MicroMsg.TimelineRefreshImageView", "checkIfCanReuseDrawingCache error: %s", new Object[] { localException.getMessage() });
         continue;
       }
-      ac.d("MicroMsg.TimelineRefreshImageView", "buildDrawingCache, autoScale: %s, width: %s, height: %s, hash: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(getWidth()), Integer.valueOf(getHeight()), Integer.valueOf(hashCode()) });
+      ad.d("MicroMsg.TimelineRefreshImageView", "buildDrawingCache, autoScale: %s, width: %s, height: %s, hash: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(getWidth()), Integer.valueOf(getHeight()), Integer.valueOf(hashCode()) });
       super.buildDrawingCache(paramBoolean);
       AppMethodBeat.o(99765);
       return;
@@ -62,7 +62,7 @@ public class TimelineRefreshImageView
   {
     AppMethodBeat.i(99766);
     super.destroyDrawingCache();
-    ac.d("MicroMsg.TimelineRefreshImageView", "destroyDrawingCache, width: %s, height: %s, hash: %s", new Object[] { Integer.valueOf(getWidth()), Integer.valueOf(getHeight()), Integer.valueOf(hashCode()) });
+    ad.d("MicroMsg.TimelineRefreshImageView", "destroyDrawingCache, width: %s, height: %s, hash: %s", new Object[] { Integer.valueOf(getWidth()), Integer.valueOf(getHeight()), Integer.valueOf(hashCode()) });
     AppMethodBeat.o(99766);
   }
 }

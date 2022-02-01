@@ -9,60 +9,58 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.ap.b;
 import com.tencent.mm.plugin.appbrand.appusage.ap.c;
 import com.tencent.mm.plugin.appbrand.report.AppBrandLauncherDesktopReporter;
-import com.tencent.mm.plugin.appbrand.report.d;
-import com.tencent.mm.plugin.appbrand.service.n;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.aen;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.plugin.appbrand.report.e;
+import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.protocal.protobuf.agw;
+import com.tencent.mm.sdk.platformtools.ax;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import d.g.a.a;
-import d.g.b.u;
-import d.g.b.w;
+import d.g.b.p;
+import d.g.b.q;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderEveryoneUsing;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherListHeaderFolderEntrance;", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceInfoUpdateReceiver;", "activity", "Landroid/support/v4/app/FragmentActivity;", "viewGroup", "Landroid/view/ViewGroup;", "(Landroid/support/v4/app/FragmentActivity;Landroid/view/ViewGroup;)V", "configKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getConfigKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "configKV$delegate", "Lkotlin/Lazy;", "getEntranceId", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "getTitle", "", "onAttached", "", "onClick", "v", "Landroid/view/View;", "onEntranceInfoUpdate", "info", "Lcom/tencent/mm/protocal/protobuf/EntranceInfo;", "setIConRes", "imageView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderEveryoneUsing;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherListHeaderFolderEntrance;", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceInfoUpdateReceiver;", "activity", "Landroid/support/v4/app/FragmentActivity;", "viewGroup", "Landroid/view/ViewGroup;", "(Landroid/support/v4/app/FragmentActivity;Landroid/view/ViewGroup;)V", "configKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getConfigKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "configKV$delegate", "Lkotlin/Lazy;", "getEntranceId", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "getTitle", "", "onAttached", "", "onClick", "v", "Landroid/view/View;", "onEntranceInfoUpdate", "info", "Lcom/tencent/mm/protocal/protobuf/EntranceInfo;", "setIConRes", "imageView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "Companion", "plugin-appbrand-integration_release"})
 public final class c
   extends f
   implements ap.c
 {
-  public static final a miL;
-  private final d.f miK;
+  public static final a mJm;
+  private final d.f mJl;
   
   static
   {
-    AppMethodBeat.i(187419);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(c.class), "configKV", "getConfigKV()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;")) };
-    miL = new a((byte)0);
-    AppMethodBeat.o(187419);
+    AppMethodBeat.i(189639);
+    mJm = new a((byte)0);
+    AppMethodBeat.o(189639);
   }
   
   public c(FragmentActivity paramFragmentActivity, ViewGroup paramViewGroup)
   {
     super(paramFragmentActivity, paramViewGroup);
-    AppMethodBeat.i(187426);
-    this.miK = d.g.K((a)c.b.miM);
-    AppMethodBeat.o(187426);
+    AppMethodBeat.i(189638);
+    this.mJl = d.g.O((a)b.mJn);
+    AppMethodBeat.o(189638);
   }
   
-  private final aw bwr()
+  private final ax bAx()
   {
-    AppMethodBeat.i(187420);
-    aw localaw = (aw)this.miK.getValue();
-    AppMethodBeat.o(187420);
-    return localaw;
+    AppMethodBeat.i(189632);
+    ax localax = (ax)this.mJl.getValue();
+    AppMethodBeat.o(189632);
+    return localax;
   }
   
-  public final void a(aen paramaen)
+  public final void a(agw paramagw)
   {
     boolean bool = true;
-    AppMethodBeat.i(187425);
-    d.g.b.k.h(paramaen, "info");
-    aw localaw = bwr();
-    if (paramaen.Exm == 1) {}
+    AppMethodBeat.i(189637);
+    p.h(paramagw, "info");
+    ax localax = bAx();
+    if (paramagw.GeP == 1) {}
     for (;;)
     {
-      localaw.putBoolean("key_show_appbrand_launcher_header_everyone_using_entrance", bool);
-      AppMethodBeat.o(187425);
+      localax.putBoolean("key_show_appbrand_launcher_header_everyone_using_entrance", bool);
+      AppMethodBeat.o(189637);
       return;
       bool = false;
     }
@@ -70,58 +68,78 @@ public final class c
   
   protected final void a(WeImageView paramWeImageView)
   {
-    AppMethodBeat.i(187423);
-    d.g.b.k.h(paramWeImageView, "imageView");
+    AppMethodBeat.i(189635);
+    p.h(paramWeImageView, "imageView");
     paramWeImageView.setVisibility(0);
     paramWeImageView.setImageResource(2131690506);
     FragmentActivity localFragmentActivity = getActivity();
-    d.g.b.k.g(localFragmentActivity, "activity");
+    p.g(localFragmentActivity, "activity");
     paramWeImageView.setIconColor(localFragmentActivity.getResources().getColor(2131099689));
-    AppMethodBeat.o(187423);
+    AppMethodBeat.o(189635);
   }
   
-  public final ap.b aZe()
+  public final void bAu()
   {
-    return ap.b.jwp;
+    AppMethodBeat.i(189636);
+    super.bAu();
+    hL(bAx().getBoolean("key_show_appbrand_launcher_header_everyone_using_entrance", true));
+    AppMethodBeat.o(189636);
   }
   
-  public final void bwo()
+  public final ap.b bcC()
   {
-    AppMethodBeat.i(187424);
-    super.bwo();
-    hB(bwr().getBoolean("key_show_appbrand_launcher_header_everyone_using_entrance", true));
-    AppMethodBeat.o(187424);
+    return ap.b.jQl;
   }
   
   protected final String getTitle()
   {
-    AppMethodBeat.i(187421);
+    AppMethodBeat.i(189633);
     String str = getActivity().getString(2131755615);
-    AppMethodBeat.o(187421);
+    AppMethodBeat.o(189633);
     return str;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(187422);
+    AppMethodBeat.i(189634);
     super.onClick(paramView);
-    paramView = new com.tencent.mm.plugin.appbrand.a.f();
+    paramView = new com.tencent.mm.plugin.appbrand.api.f();
     paramView.username = "gh_a9a5bb48a181@app";
-    paramView.hxM = 0;
+    paramView.hQh = 0;
     paramView.version = 0;
     paramView.scene = 1001;
-    paramView.cYP = "";
-    ((n)com.tencent.mm.kernel.g.ab(n.class)).a((Context)getActivity(), paramView);
-    paramView = d.lRj;
+    paramView.dkh = "";
+    ((o)com.tencent.mm.kernel.g.ab(o.class)).a((Context)getActivity(), paramView);
+    paramView = e.mqZ;
     paramView = getActivity();
-    d.g.b.k.g(paramView, "activity");
-    paramView = d.b(paramView);
-    h.wUl.f(19468, new Object[] { Integer.valueOf(9), "", "", "", "", "", Long.valueOf(paramView.mSessionId) });
-    AppMethodBeat.o(187422);
+    p.g(paramView, "activity");
+    paramView = e.b(paramView);
+    com.tencent.mm.plugin.report.service.g.yhR.f(19468, new Object[] { Integer.valueOf(9), "", "", "", "", "", Long.valueOf(paramView.mSessionId) });
+    AppMethodBeat.o(189634);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderEveryoneUsing$Companion;", "", "()V", "KEY_WANT_SHOW_ENTRY", "", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderEveryoneUsing$Companion;", "", "()V", "KEY_WANT_SHOW_ENTRY", "", "plugin-appbrand-integration_release"})
   public static final class a {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "invoke"})
+  static final class b
+    extends q
+    implements a<ax>
+  {
+    public static final b mJn;
+    
+    static
+    {
+      AppMethodBeat.i(189631);
+      mJn = new b();
+      AppMethodBeat.o(189631);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
 }
 
 

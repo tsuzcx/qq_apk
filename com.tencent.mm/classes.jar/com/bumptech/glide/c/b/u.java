@@ -6,7 +6,7 @@ public abstract interface u<Z>
   
   public abstract int getSize();
   
-  public abstract Class<Z> oy();
+  public abstract Class<Z> oQ();
   
   public abstract void recycle();
 }

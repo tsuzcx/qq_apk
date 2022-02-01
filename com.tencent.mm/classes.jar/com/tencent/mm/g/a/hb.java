@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hb
   extends b
 {
-  public a dhZ;
+  public a dtu;
   
   public hb()
   {
@@ -15,25 +15,22 @@ public final class hb
   
   private hb(byte paramByte)
   {
-    AppMethodBeat.i(136974);
-    this.dhZ = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(168878);
+    this.dtu = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(136974);
+    AppMethodBeat.o(168878);
   }
   
   public static final class a
   {
-    public String appId;
-    public String ddh;
-    public String dia;
-    public int dib;
-    public String dic;
+    public long dnz;
+    public long id;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.hb
  * JD-Core Version:    0.7.0.1
  */

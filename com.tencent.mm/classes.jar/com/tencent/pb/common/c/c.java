@@ -5,28 +5,28 @@ import android.net.Uri;
 
 public final class c
 {
-  public static Context AMx;
-  private static final Uri AMy = Uri.parse("content://com.lbe.security.miui.permmgr/active");
+  public static Context ClL;
+  private static final Uri ClM = Uri.parse("content://com.lbe.security.miui.permmgr/active");
   private static boolean DEBUG = false;
-  private static String DIa;
-  public static boolean JPK;
-  public static long JPL;
-  public static String JPM;
-  public static int JPN;
+  private static String Fnh;
+  public static boolean LJv;
+  public static long LJw;
+  public static String LJx;
+  public static int LJy;
   private static int SDK_VERSION;
   private static String sImei;
-  public static int xJs;
+  public static int yYH;
   
   static
   {
-    AMx = null;
-    JPK = false;
-    JPL = 0L;
-    JPM = null;
+    ClL = null;
+    LJv = false;
+    LJw = 0L;
+    LJx = null;
     SDK_VERSION = -1;
-    DIa = null;
-    xJs = 320;
-    JPN = 480;
+    Fnh = null;
+    yYH = 320;
+    LJy = 480;
     sImei = null;
   }
 }

@@ -1,80 +1,66 @@
 package com.tencent.mm.plugin.finder.loader;
 
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/loader/FinderDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/loader/FinderCoverImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "url", "", "(Ljava/lang/String;)V", "uniqueValue", "getDecodeKey", "getMediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "plugin-finder_release"})
 public final class e
-  extends com.tencent.mm.loader.b.a.a<j>
+  implements k
 {
-  public final boolean a(com.tencent.mm.loader.h.a.a<j> parama, com.tencent.mm.loader.c.e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  public final String sis;
+  private final String url;
+  
+  public e(String paramString)
   {
-    AppMethodBeat.i(166312);
-    k.h(parama, "url");
-    k.h(parame, "opts");
-    k.h(paramf, "reaper");
-    AppMethodBeat.o(166312);
-    return true;
+    AppMethodBeat.i(166310);
+    this.url = paramString;
+    this.sis = ("finder_cover_" + ai.ee(this.url));
+    AppMethodBeat.o(166310);
   }
   
-  public final boolean a(com.tencent.mm.loader.h.a.a<j> parama, com.tencent.mm.loader.h.f<?> paramf, com.tencent.mm.loader.c.e parame, com.tencent.mm.loader.f<?, Bitmap> paramf1)
+  public final String aeA()
   {
-    AppMethodBeat.i(166311);
-    k.h(parama, "url");
-    k.h(paramf, "httpResponse");
-    k.h(parame, "opts");
-    k.h(paramf1, "reaper");
-    AppMethodBeat.o(166311);
-    return true;
+    return this.sis;
   }
   
-  public final com.tencent.mm.loader.h.b.a b(com.tencent.mm.loader.h.a.a<j> parama, com.tencent.mm.loader.c.e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  public final String akW()
   {
-    AppMethodBeat.i(166314);
-    k.h(parama, "url");
-    k.h(parame, "opts");
-    k.h(paramf, "reaper");
-    parame = c(parama, parame, paramf);
-    ac.v("Finder.Loader", "url " + parama + " and path " + parame + " fileret " + i.eA(parame) + " type " + ((j)parama.value()).cwj());
-    if (i.eA(parame))
-    {
-      parama = com.tencent.mm.loader.h.b.a.vk(parame);
-      AppMethodBeat.o(166314);
-      return parama;
-    }
-    if (((j)parama.value()).cwj() == m.rDR)
-    {
-      if (i.eA(((j)parama.value()).aik()))
-      {
-        parama = com.tencent.mm.loader.h.b.a.vk(((j)parama.value()).aik());
-        AppMethodBeat.o(166314);
-        return parama;
-      }
-    }
-    else if (i.eA(((j)parama.value()).getUrl()))
-    {
-      parama = com.tencent.mm.loader.h.b.a.vk(((j)parama.value()).getUrl());
-      AppMethodBeat.o(166314);
-      return parama;
-    }
-    AppMethodBeat.o(166314);
-    return null;
+    return this.url;
   }
   
-  public final String c(com.tencent.mm.loader.h.a.a<j> parama, com.tencent.mm.loader.c.e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  public final String cCA()
   {
-    AppMethodBeat.i(166313);
-    k.h(parama, "url");
-    k.h(parame, "opts");
-    k.h(paramf, "reaper");
-    parama = ((j)parama.value()).getPath();
-    AppMethodBeat.o(166313);
-    return parama;
+    return "";
+  }
+  
+  public final com.tencent.mm.plugin.finder.storage.r cCx()
+  {
+    return com.tencent.mm.plugin.finder.storage.r.syD;
+  }
+  
+  public final String cCy()
+  {
+    return "";
+  }
+  
+  public final String cCz()
+  {
+    return "";
+  }
+  
+  public final String getPath()
+  {
+    AppMethodBeat.i(166309);
+    Object localObject = com.tencent.mm.plugin.finder.utils.r.sNc;
+    localObject = com.tencent.mm.plugin.finder.utils.r.a(this);
+    AppMethodBeat.o(166309);
+    return localObject;
+  }
+  
+  public final String getUrl()
+  {
+    return this.url;
   }
 }
 

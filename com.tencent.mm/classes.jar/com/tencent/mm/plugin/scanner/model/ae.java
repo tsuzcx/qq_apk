@@ -1,254 +1,77 @@
 package com.tencent.mm.plugin.scanner.model;
 
+import android.graphics.Bitmap;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.List;
+import d.g.b.p;
+import d.l;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/ScanTranslationDataHelper;", "", "()V", "TAG", "", "translateBitmapMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Landroid/graphics/Bitmap;", "clear", "", "doClear", "getTranslateBitmap", "path", "saveTranslateBitmap", "bitmap", "scan-translation_release"})
 public final class ae
 {
-  public static ae xaP;
-  public String bLs;
-  public String exO;
-  public String koE;
-  public String kow;
-  public String title;
-  public String url;
-  public c xaA;
-  c xaB;
-  public String xaC;
-  public a xaD;
-  public a xaE;
-  public a xaF;
-  public a xaG;
-  public List<String> xaH;
-  public List<String> xaI;
-  public List<String> xaJ;
-  public List<String> xaK;
-  public List<String> xaL;
-  public String xaM;
-  public String xaN;
-  public String xaO;
-  public b xay;
-  c xaz;
+  private static ConcurrentHashMap<String, Bitmap> yot;
+  public static final ae you;
   
-  public static final class a
+  static
   {
-    private String country;
-    private String hEv;
-    private String hUi;
-    private String koI;
-    private String koJ;
-    private String xaQ;
-    private String xaR;
-    
-    public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
-    {
-      AppMethodBeat.i(51651);
-      String str = paramString1;
-      if (paramString1 == null) {
-        str = "";
-      }
-      this.xaQ = str;
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      this.xaR = paramString1;
-      paramString1 = paramString3;
-      if (paramString3 == null) {
-        paramString1 = "";
-      }
-      this.koI = paramString1;
-      paramString1 = paramString4;
-      if (paramString4 == null) {
-        paramString1 = "";
-      }
-      this.hEv = paramString1;
-      paramString1 = paramString5;
-      if (paramString5 == null) {
-        paramString1 = "";
-      }
-      this.hUi = paramString1;
-      paramString1 = paramString6;
-      if (paramString6 == null) {
-        paramString1 = "";
-      }
-      this.koJ = paramString1;
-      paramString1 = paramString7;
-      if (paramString7 == null) {
-        paramString1 = "";
-      }
-      this.country = paramString1;
-      AppMethodBeat.o(51651);
-    }
-    
-    public final String bgx()
-    {
-      AppMethodBeat.i(51652);
-      if ((bs.aLj(this.xaQ)) || (bs.aLj(this.xaR)) || (bs.aLj(this.koI)) || (bs.aLj(this.hEv)) || (bs.aLj(this.hUi)) || (bs.aLj(this.country)))
-      {
-        localObject = new StringBuilder();
-        if (this.country.length() > 0)
-        {
-          ((StringBuilder)localObject).append(this.country);
-          ((StringBuilder)localObject).append("\n");
-        }
-        if (this.hUi.length() > 0) {
-          ((StringBuilder)localObject).append(this.hUi + " ");
-        }
-        if (this.hEv.length() > 0) {
-          ((StringBuilder)localObject).append(this.hEv);
-        }
-        if ((this.hUi.length() > 0) || (this.hEv.length() > 0)) {
-          ((StringBuilder)localObject).append("\n");
-        }
-        if (this.koI.length() > 0)
-        {
-          ((StringBuilder)localObject).append(this.koI + " ");
-          ((StringBuilder)localObject).append("\n");
-        }
-        if (this.xaR.length() > 0)
-        {
-          ((StringBuilder)localObject).append(this.xaR);
-          ((StringBuilder)localObject).append("\n");
-        }
-        if (this.xaQ.length() > 0)
-        {
-          ((StringBuilder)localObject).append(this.xaQ);
-          ((StringBuilder)localObject).append("\n");
-        }
-        if (this.koJ.length() > 0) {
-          ((StringBuilder)localObject).append(this.koJ);
-        }
-        str = ((StringBuilder)localObject).toString();
-        localObject = str;
-        if (str.endsWith("\n")) {
-          localObject = str.substring(0, str.length() - 1);
-        }
-        AppMethodBeat.o(51652);
-        return localObject;
-      }
-      Object localObject = new StringBuilder();
-      if (this.xaQ.length() > 0)
-      {
-        ((StringBuilder)localObject).append(this.xaQ);
-        ((StringBuilder)localObject).append("\n");
-      }
-      if (this.xaR.length() > 0)
-      {
-        ((StringBuilder)localObject).append(this.xaR);
-        ((StringBuilder)localObject).append("\n");
-      }
-      if (this.koI.length() > 0)
-      {
-        ((StringBuilder)localObject).append(this.koI);
-        ((StringBuilder)localObject).append("\n");
-      }
-      if (this.hEv.length() > 0) {
-        ((StringBuilder)localObject).append(this.hEv + " ");
-      }
-      if (this.hUi.length() > 0) {
-        ((StringBuilder)localObject).append(this.hUi + " ");
-      }
-      if (this.koJ.length() > 0) {
-        ((StringBuilder)localObject).append(this.koJ);
-      }
-      if ((this.hEv.length() > 0) || (this.hUi.length() > 0)) {
-        ((StringBuilder)localObject).append("\n");
-      }
-      if (this.country.length() > 0) {
-        ((StringBuilder)localObject).append(this.country);
-      }
-      String str = ((StringBuilder)localObject).toString();
-      localObject = str;
-      if (str.endsWith("\n")) {
-        localObject = str.substring(0, str.length() - 1);
-      }
-      AppMethodBeat.o(51652);
-      return localObject;
-    }
+    AppMethodBeat.i(120966);
+    you = new ae();
+    yot = new ConcurrentHashMap();
+    AppMethodBeat.o(120966);
   }
   
-  public static final class b
+  public static final Bitmap awK(String paramString)
   {
-    private String firstName;
-    private String lastName;
-    private String middleName;
-    
-    public b(String paramString1, String paramString2, String paramString3)
-    {
-      AppMethodBeat.i(51653);
-      String str = paramString1;
-      if (paramString1 == null) {
-        str = "";
-      }
-      this.firstName = str;
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      this.middleName = paramString1;
-      paramString1 = paramString3;
-      if (paramString3 == null) {
-        paramString1 = "";
-      }
-      this.lastName = paramString1;
-      AppMethodBeat.o(51653);
-    }
-    
-    public final String bgx()
-    {
-      AppMethodBeat.i(51654);
-      Object localObject = new StringBuilder();
-      if ((bs.aLj(this.firstName)) || (bs.aLj(this.middleName)) || (bs.aLj(this.lastName)))
-      {
-        if (this.lastName.trim().length() > 0) {
-          ((StringBuilder)localObject).append(this.lastName);
-        }
-        if (this.middleName.trim().length() > 0) {
-          ((StringBuilder)localObject).append(this.middleName);
-        }
-        if (this.firstName.trim().length() > 0) {
-          ((StringBuilder)localObject).append(this.firstName);
-        }
-      }
-      for (;;)
-      {
-        localObject = ((StringBuilder)localObject).toString();
-        AppMethodBeat.o(51654);
-        return localObject;
-        if (this.firstName.trim().length() > 0) {
-          ((StringBuilder)localObject).append(this.firstName);
-        }
-        if (this.middleName.trim().length() > 0)
-        {
-          ((StringBuilder)localObject).append(" ");
-          ((StringBuilder)localObject).append(this.middleName);
-        }
-        if (this.lastName.trim().length() > 0)
-        {
-          ((StringBuilder)localObject).append(" ");
-          ((StringBuilder)localObject).append(this.lastName);
-        }
-      }
-    }
+    AppMethodBeat.i(120964);
+    p.h(paramString, "path");
+    paramString = (Bitmap)yot.get(paramString);
+    AppMethodBeat.o(120964);
+    return paramString;
   }
   
-  public static final class c
+  public static final void clear()
   {
-    public String gSN;
-    public String xaS;
+    AppMethodBeat.i(120965);
+    h.LTJ.aR((Runnable)a.yov);
+    AppMethodBeat.o(120965);
+  }
+  
+  public static final void r(String paramString, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(120963);
+    p.h(paramString, "path");
+    ((Map)yot).put(paramString, paramBitmap);
+    AppMethodBeat.o(120963);
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  static final class a
+    implements Runnable
+  {
+    public static final a yov;
     
-    public c(String paramString1, String paramString2)
+    static
     {
-      this.gSN = paramString1;
-      this.xaS = paramString2;
+      AppMethodBeat.i(120962);
+      yov = new a();
+      AppMethodBeat.o(120962);
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(120961);
+      ae localae = ae.you;
+      ae.dLp();
+      AppMethodBeat.o(120961);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.ae
  * JD-Core Version:    0.7.0.1
  */

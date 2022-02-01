@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends com.tencent.mm.sdk.b.b
 {
-  public a cYi;
+  public a djA;
   
   public b()
   {
@@ -15,16 +15,16 @@ public final class b
   private b(byte paramByte)
   {
     AppMethodBeat.i(93321);
-    this.cYi = new a();
-    this.Gqe = false;
+    this.djA = new a();
+    this.IbR = false;
     this.callback = null;
     AppMethodBeat.o(93321);
   }
   
   public static final class a
   {
-    public int bPH = 0;
-    public String cYj;
+    public int bZU = 0;
+    public String djB;
   }
 }
 

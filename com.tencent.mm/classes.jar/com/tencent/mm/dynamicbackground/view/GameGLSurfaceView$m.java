@@ -16,7 +16,7 @@ final class GameGLSurfaceView$m
     AppMethodBeat.o(103048);
   }
   
-  private void eZ()
+  private void fq()
   {
     AppMethodBeat.i(103052);
     if (this.mBuilder.length() > 0)
@@ -30,14 +30,14 @@ final class GameGLSurfaceView$m
   public final void close()
   {
     AppMethodBeat.i(103049);
-    eZ();
+    fq();
     AppMethodBeat.o(103049);
   }
   
   public final void flush()
   {
     AppMethodBeat.i(103050);
-    eZ();
+    fq();
     AppMethodBeat.o(103050);
   }
   
@@ -49,7 +49,7 @@ final class GameGLSurfaceView$m
     {
       char c = paramArrayOfChar[(paramInt1 + i)];
       if (c == '\n') {
-        eZ();
+        fq();
       }
       for (;;)
       {
@@ -63,7 +63,7 @@ final class GameGLSurfaceView$m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.view.GameGLSurfaceView.m
  * JD-Core Version:    0.7.0.1
  */

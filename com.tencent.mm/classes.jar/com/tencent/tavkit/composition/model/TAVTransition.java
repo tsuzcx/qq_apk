@@ -16,11 +16,11 @@ public class TAVTransition
   
   public TAVTransition(CMTime paramCMTime)
   {
-    AppMethodBeat.i(192070);
+    AppMethodBeat.i(219867);
     this.duration = paramCMTime;
     this.audioTransition = new EmptyAudioTransition(paramCMTime);
     this.videoTransition = new EmptyVideoTransition(paramCMTime);
-    AppMethodBeat.o(192070);
+    AppMethodBeat.o(219867);
   }
   
   public TAVAudioTransition getAudioTransition()
@@ -96,9 +96,9 @@ public class TAVTransition
     
     public String effectId()
     {
-      AppMethodBeat.i(192069);
+      AppMethodBeat.i(219866);
       String str = toString();
-      AppMethodBeat.o(192069);
+      AppMethodBeat.o(219866);
       return str;
     }
     
@@ -110,7 +110,7 @@ public class TAVTransition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.composition.model.TAVTransition
  * JD-Core Version:    0.7.0.1
  */

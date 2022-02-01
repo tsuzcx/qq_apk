@@ -8,58 +8,58 @@ import rx.d.a;
 public final class a<T>
   extends b<T, T>
 {
-  private final rx.internal.a.c<T> McA;
-  final c<T> MgA;
+  private final rx.internal.a.c<T> NXC;
+  final c<T> ObC;
   
   public a(d.a<T> parama, c<T> paramc)
   {
     super(parama);
     AppMethodBeat.i(90423);
-    this.McA = rx.internal.a.c.ggs();
-    this.MgA = paramc;
+    this.NXC = rx.internal.a.c.gyW();
+    this.ObC = paramc;
     AppMethodBeat.o(90423);
   }
   
-  public final void gd(T paramT)
-  {
-    AppMethodBeat.i(90426);
-    c.b[] arrayOfb = ((c.a)this.MgA.get()).MgI;
-    int j = arrayOfb.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfb[i].gd(paramT);
-      i += 1;
-    }
-    AppMethodBeat.o(90426);
-  }
-  
-  public final void ggi()
+  public final void gyM()
   {
     AppMethodBeat.i(90424);
-    if (this.MgA.active)
+    if (this.ObC.active)
     {
-      Object localObject = rx.internal.a.c.ggt();
-      c.b[] arrayOfb = this.MgA.gg(localObject);
+      Object localObject = rx.internal.a.c.gyX();
+      c.b[] arrayOfb = this.ObC.gC(localObject);
       int j = arrayOfb.length;
       int i = 0;
       while (i < j)
       {
-        arrayOfb[i].gh(localObject);
+        arrayOfb[i].gD(localObject);
         i += 1;
       }
     }
     AppMethodBeat.o(90424);
   }
   
+  public final void gz(T paramT)
+  {
+    AppMethodBeat.i(90426);
+    c.b[] arrayOfb = ((c.a)this.ObC.get()).ObK;
+    int j = arrayOfb.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfb[i].gz(paramT);
+      i += 1;
+    }
+    AppMethodBeat.o(90426);
+  }
+  
   public final void onError(Throwable paramThrowable)
   {
     AppMethodBeat.i(90425);
-    if (this.MgA.active)
+    if (this.ObC.active)
     {
-      Object localObject2 = rx.internal.a.c.L(paramThrowable);
+      Object localObject2 = rx.internal.a.c.M(paramThrowable);
       paramThrowable = null;
-      c.b[] arrayOfb = this.MgA.gg(localObject2);
+      c.b[] arrayOfb = this.ObC.gC(localObject2);
       int j = arrayOfb.length;
       int i = 0;
       for (;;)
@@ -69,7 +69,7 @@ public final class a<T>
           Object localObject1 = arrayOfb[i];
           try
           {
-            ((c.b)localObject1).gh(localObject2);
+            ((c.b)localObject1).gD(localObject2);
             i += 1;
           }
           catch (Throwable localThrowable)
@@ -86,7 +86,7 @@ public final class a<T>
           }
         }
       }
-      rx.a.b.jl(paramThrowable);
+      rx.a.b.jz(paramThrowable);
     }
     AppMethodBeat.o(90425);
   }

@@ -7,18 +7,18 @@ import com.tencent.xweb.j;
 public final class c$b
   implements j
 {
-  HttpAuthHandler KDp;
+  HttpAuthHandler MtP;
   
   public c$b(HttpAuthHandler paramHttpAuthHandler)
   {
-    this.KDp = paramHttpAuthHandler;
+    this.MtP = paramHttpAuthHandler;
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(208875);
-    this.KDp.cancel();
-    AppMethodBeat.o(208875);
+    AppMethodBeat.i(195506);
+    this.MtP.cancel();
+    AppMethodBeat.o(195506);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$Companion;", "", "()V", "KEY_APP_ID", "", "KEY_IS_STATE_OPEN", "KEY_NICKNAME", "KEY_RESULT_IS_OPEN", "KEY_RESULT_SELECTED_USER_ID", "KEY_RESULT_USER_INFO_LIST_BEEN_MODIFIED", "KEY_USER_INFO", "TAG", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$Companion;", "", "()V", "KEY_APP_ID", "", "KEY_IS_STATE_OPEN", "KEY_NICKNAME", "KEY_RESULT_IS_OPEN", "KEY_RESULT_SELECTED_USER_ID", "KEY_RESULT_USER_INFO_LIST_BEEN_MODIFIED", "KEY_USER_INFO", "TAG", "plugin-appbrand-integration_release"})
 public final class AppBrandUserInfoAuthorizeUI$a {}
 
 

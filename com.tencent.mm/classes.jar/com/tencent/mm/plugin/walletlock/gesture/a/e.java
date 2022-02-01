@@ -6,9 +6,9 @@ import com.tencent.mm.b.p;
 import com.tencent.mm.jni.utils.UtilsJni;
 import com.tencent.mm.model.u;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cdj;
-import com.tencent.mm.protocal.protobuf.cdk;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.cii;
+import com.tencent.mm.protocal.protobuf.cij;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
@@ -17,49 +17,49 @@ public final class e
   public static void a(g paramg)
   {
     AppMethodBeat.i(129783);
-    if (paramg.BUn == -1L)
+    if (paramg.DuH == -1L)
     {
       AppMethodBeat.o(129783);
       return;
     }
     long l = SystemClock.elapsedRealtime();
-    if (l < paramg.BUn)
+    if (l < paramg.DuH)
     {
-      paramg.BUn = l;
-      paramg.BUo += l;
-      ac.d("MicroMsg.GestureUtil", String.format("Rebooted, need to add additional %d ms, now elapsed %d ms", new Object[] { Long.valueOf(l), Long.valueOf(paramg.BUo) }));
+      paramg.DuH = l;
+      paramg.DuI += l;
+      ad.d("MicroMsg.GestureUtil", String.format("Rebooted, need to add additional %d ms, now elapsed %d ms", new Object[] { Long.valueOf(l), Long.valueOf(paramg.DuI) }));
       AppMethodBeat.o(129783);
       return;
     }
-    paramg.BUo = (l - paramg.BUn + paramg.BUo);
-    paramg.BUn = l;
+    paramg.DuI = (l - paramg.DuH + paramg.DuI);
+    paramg.DuH = l;
     AppMethodBeat.o(129783);
   }
   
-  public static boolean b(cdj paramcdj)
+  public static boolean b(cii paramcii)
   {
     AppMethodBeat.i(129778);
-    if ((paramcdj == null) || (paramcdj.Fsd == null) || (paramcdj.Fsd.getBuffer() == null))
+    if ((paramcii == null) || (paramcii.Hcj == null) || (paramcii.Hcj.getBuffer() == null))
     {
       AppMethodBeat.o(129778);
       return false;
     }
-    byte[] arrayOfByte = paramcdj.Fsd.getBufferToBytes();
+    byte[] arrayOfByte = paramcii.Hcj.getBufferToBytes();
     if ((arrayOfByte.length == 0) || ((arrayOfByte.length & 0x1) != 0))
     {
       AppMethodBeat.o(129778);
       return false;
     }
-    long l = new p(paramcdj.uin).longValue();
-    arrayOfByte = bR(arrayOfByte);
+    long l = new p(paramcii.uin).longValue();
+    arrayOfByte = bY(arrayOfByte);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramcdj.version);
-    if (paramcdj.Fsb.hasBuffer()) {
-      localStringBuilder.append(new String(paramcdj.Fsb.getBufferToBytes()));
+    localStringBuilder.append(paramcii.version);
+    if (paramcii.Hch.hasBuffer()) {
+      localStringBuilder.append(new String(paramcii.Hch.getBufferToBytes()));
     }
     localStringBuilder.append(l);
-    int i = UtilsJni.doEcdsaVerify(a.BUj, localStringBuilder.toString().getBytes(), arrayOfByte);
-    ac.d("MicroMsg.GestureUtil", String.format("verifyPatternBuffer, ret:%d", new Object[] { Integer.valueOf(i) }));
+    int i = UtilsJni.doEcdsaVerify(a.DuD, localStringBuilder.toString().getBytes(), arrayOfByte);
+    ad.d("MicroMsg.GestureUtil", String.format("verifyPatternBuffer, ret:%d", new Object[] { Integer.valueOf(i) }));
     if (i == 1)
     {
       AppMethodBeat.o(129778);
@@ -69,37 +69,37 @@ public final class e
     return false;
   }
   
-  public static boolean b(cdk paramcdk)
+  public static boolean b(cij paramcij)
   {
     AppMethodBeat.i(129779);
-    if ((paramcdk == null) || (paramcdk.Fsf == null) || (paramcdk.Fsf.getBuffer() == null))
+    if ((paramcij == null) || (paramcij.Hcl == null) || (paramcij.Hcl.getBuffer() == null))
     {
       AppMethodBeat.o(129779);
       return false;
     }
-    byte[] arrayOfByte = paramcdk.Fsf.getBufferToBytes();
+    byte[] arrayOfByte = paramcij.Hcl.getBufferToBytes();
     if ((arrayOfByte.length == 0) || ((arrayOfByte.length & 0x1) != 0))
     {
       AppMethodBeat.o(129779);
       return false;
     }
-    arrayOfByte = bR(arrayOfByte);
-    com.tencent.mm.kernel.g.agP();
+    arrayOfByte = bY(arrayOfByte);
+    com.tencent.mm.kernel.g.ajA();
     long l = new p(com.tencent.mm.kernel.a.getUin()).longValue();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramcdk.Fse);
+    localStringBuilder.append(paramcij.Hck);
     localStringBuilder.append(l);
-    int i = UtilsJni.doEcdsaVerify(a.BUj, localStringBuilder.toString().getBytes(), arrayOfByte);
-    if (((i != 1) && (paramcdk.Fsg == 1)) || ((i == 1) && (paramcdk.Fsg == 0))) {}
+    int i = UtilsJni.doEcdsaVerify(a.DuD, localStringBuilder.toString().getBytes(), arrayOfByte);
+    if (((i != 1) && (paramcij.Hcm == 1)) || ((i == 1) && (paramcij.Hcm == 0))) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.d("MicroMsg.GestureUtil", String.format("verifyPatternInfo, verifyRes:%d ret:%b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) }));
+      ad.d("MicroMsg.GestureUtil", String.format("verifyPatternInfo, verifyRes:%d ret:%b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) }));
       AppMethodBeat.o(129779);
       return bool;
     }
   }
   
-  private static byte[] bR(byte[] paramArrayOfByte)
+  private static byte[] bY(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(129780);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
@@ -114,7 +114,7 @@ public final class e
     return paramArrayOfByte;
   }
   
-  public static String bS(byte[] paramArrayOfByte)
+  public static String bZ(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(129785);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -134,20 +134,20 @@ public final class e
     return paramArrayOfByte;
   }
   
-  public static boolean evy()
+  public static boolean eJE()
   {
     int k = -1;
     AppMethodBeat.i(129781);
-    if ((!com.tencent.mm.kernel.g.agM()) || (com.tencent.mm.kernel.a.afS()))
+    if ((!com.tencent.mm.kernel.g.ajx()) || (com.tencent.mm.kernel.a.aiE()))
     {
-      ac.w("MicroMsg.GestureUtil", "not login !!");
+      ad.w("MicroMsg.GestureUtil", "not login !!");
       AppMethodBeat.o(129781);
       return false;
     }
-    cdk localcdk = d.evF();
-    cdj localcdj = d.evE();
+    cij localcij = d.eJL();
+    cii localcii = d.eJK();
     int j;
-    if (localcdk == null) {
+    if (localcij == null) {
       j = 1;
     }
     for (;;)
@@ -158,40 +158,40 @@ public final class e
       label67:
       label74:
       boolean bool2;
-      if (localcdj == null)
+      if (localcii == null)
       {
         i = 1;
         if (j != 0) {
           break label241;
         }
-        bool1 = b(localcdk);
-        if (localcdk != null) {
+        bool1 = b(localcij);
+        if (localcij != null) {
           break label246;
         }
         j = -1;
-        ac.i("MicroMsg.GestureUtil", "tom isUserSetWalletLock serverInfo:%s status:%d  svrinfoValid:%s", new Object[] { localcdk, Integer.valueOf(j), Boolean.valueOf(bool1) });
+        ad.i("MicroMsg.GestureUtil", "tom isUserSetWalletLock serverInfo:%s status:%d  svrinfoValid:%s", new Object[] { localcij, Integer.valueOf(j), Boolean.valueOf(bool1) });
         if (i != 0) {
           break label255;
         }
-        bool2 = b(localcdj);
+        bool2 = b(localcii);
         label115:
-        if (localcdj != null) {
+        if (localcii != null) {
           break label261;
         }
         i = k;
         label122:
-        ac.i("MicroMsg.GestureUtil", "tom isUserSetWalletLock localBuff:%s status:%d  localBuffValid:%s", new Object[] { localcdj, Integer.valueOf(i), Boolean.valueOf(bool2) });
+        ad.i("MicroMsg.GestureUtil", "tom isUserSetWalletLock localBuff:%s status:%d  localBuffValid:%s", new Object[] { localcii, Integer.valueOf(i), Boolean.valueOf(bool2) });
         if ((bool1) && (!bool2)) {
           break label404;
         }
       }
       try
       {
-        ac.i("MicroMsg.GestureUtil", "Both info & buff are valid, choose one to trust.");
-        if (localcdk.Fse > localcdj.version)
+        ad.i("MicroMsg.GestureUtil", "Both info & buff are valid, choose one to trust.");
+        if (localcij.Hck > localcii.version)
         {
-          ac.i("MicroMsg.GestureUtil", "srvInfoVer:%d, localBuffVer:%d, srvInfo wins.", new Object[] { Integer.valueOf(localcdk.Fse), Integer.valueOf(localcdj.version) });
-          if (localcdk.Fsg == 1)
+          ad.i("MicroMsg.GestureUtil", "srvInfoVer:%d, localBuffVer:%d, srvInfo wins.", new Object[] { Integer.valueOf(localcij.Hck), Integer.valueOf(localcii.version) });
+          if (localcij.Hcm == 1)
           {
             AppMethodBeat.o(129781);
             return true;
@@ -203,13 +203,13 @@ public final class e
             bool1 = false;
             break label67;
             label246:
-            j = localcdk.Fsg;
+            j = localcij.Hcm;
             break label74;
             label255:
             bool2 = false;
             break label115;
             label261:
-            i = localcdj.Fsc;
+            i = localcii.Hci;
             break label122;
           }
           else
@@ -220,10 +220,10 @@ public final class e
         }
         else
         {
-          if (localcdk.Fse == localcdj.version)
+          if (localcij.Hck == localcii.version)
           {
-            ac.i("MicroMsg.GestureUtil", "srvInfoVer:%d, localBuffVer:%d, draw.", new Object[] { Integer.valueOf(localcdk.Fse), Integer.valueOf(localcdj.version) });
-            if (localcdk.Fsg == 1)
+            ad.i("MicroMsg.GestureUtil", "srvInfoVer:%d, localBuffVer:%d, draw.", new Object[] { Integer.valueOf(localcij.Hck), Integer.valueOf(localcii.version) });
+            if (localcij.Hcm == 1)
             {
               AppMethodBeat.o(129781);
               return true;
@@ -231,8 +231,8 @@ public final class e
             AppMethodBeat.o(129781);
             return false;
           }
-          ac.i("MicroMsg.GestureUtil", "srvInfoVer:%d, localBuffVer:%d, localBuff wins.", new Object[] { Integer.valueOf(localcdk.Fse), Integer.valueOf(localcdj.version) });
-          if (localcdj.Fsc == 1)
+          ad.i("MicroMsg.GestureUtil", "srvInfoVer:%d, localBuffVer:%d, localBuff wins.", new Object[] { Integer.valueOf(localcij.Hck), Integer.valueOf(localcii.version) });
+          if (localcii.Hci == 1)
           {
             AppMethodBeat.o(129781);
             return true;
@@ -244,12 +244,12 @@ public final class e
       catch (Exception localException)
       {
         label404:
-        ac.printErrStackTrace("MicroMsg.GestureUtil", localException, "isUserSetWalletLock throw an exception.", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.GestureUtil", localException, "isUserSetWalletLock throw an exception.", new Object[0]);
         AppMethodBeat.o(129781);
       }
     }
-    ac.i("MicroMsg.GestureUtil", "Info is valid but buf is invalid, we trust info this time.");
-    if (localcdk.Fsg == 1)
+    ad.i("MicroMsg.GestureUtil", "Info is valid but buf is invalid, we trust info this time.");
+    if (localcij.Hcm == 1)
     {
       AppMethodBeat.o(129781);
       return true;
@@ -258,8 +258,8 @@ public final class e
     return false;
     if (bool2)
     {
-      ac.i("MicroMsg.GestureUtil", "Info is invalid but buff is valid, we trust buff this time.");
-      if (localcdj.Fsc == 1)
+      ad.i("MicroMsg.GestureUtil", "Info is invalid but buff is valid, we trust buff this time.");
+      if (localcii.Hci == 1)
       {
         AppMethodBeat.o(129781);
         return true;
@@ -267,13 +267,13 @@ public final class e
       AppMethodBeat.o(129781);
       return false;
     }
-    ac.w("MicroMsg.GestureUtil", "Both buff & info are invalid, do not activate this time and wait for next sync.");
+    ad.w("MicroMsg.GestureUtil", "Both buff & info are invalid, do not activate this time and wait for next sync.");
     AppMethodBeat.o(129781);
     return false;
     return false;
   }
   
-  public static byte[] gD(List<f> paramList)
+  public static byte[] gP(List<f> paramList)
   {
     AppMethodBeat.i(129782);
     if (paramList == null)
@@ -288,8 +288,8 @@ public final class e
     while (i < j)
     {
       f localf = (f)paramList.get(i);
-      int k = localf.BUk;
-      localObject[i] = ((byte)(localf.BUl + k * 3 + 1));
+      int k = localf.DuE;
+      localObject[i] = ((byte)(localf.DuF + k * 3 + 1));
       i += 1;
     }
     paramList = new StringBuilder();
@@ -300,7 +300,7 @@ public final class e
       i += 1;
     }
     paramList = paramList.toString();
-    localObject = u.axw();
+    localObject = u.aAm();
     localObject = com.tencent.mm.b.g.getMessageDigest((com.tencent.mm.b.g.getMessageDigest(paramList.getBytes()) + (String)localObject).getBytes());
     paramList = com.tencent.mm.b.g.getMessageDigest(((String)localObject + paramList).getBytes()).getBytes();
     AppMethodBeat.o(129782);

@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.music.h;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.f;
+import com.tencent.mm.az.f;
 import com.tencent.mm.plugin.music.e.a;
 import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
 {
-  public static boolean Kb(int paramInt)
+  public static boolean LD(int paramInt)
   {
     AppMethodBeat.i(137449);
     switch (paramInt)
     {
     default: 
-      a locala = k.diO().veU;
-      if ((locala != null) && (locala.JI(paramInt)))
+      a locala = k.dta().wkp;
+      if ((locala != null) && (locala.Lk(paramInt)))
       {
         AppMethodBeat.o(137449);
         return true;
@@ -44,7 +44,7 @@ public final class c
       AppMethodBeat.o(137450);
       return false;
     }
-    ac.d("MicroMsg.Music.MusicPlayerSupport", "protocol:%s", new Object[] { paramf.protocol });
+    ad.d("MicroMsg.Music.MusicPlayerSupport", "protocol:%s", new Object[] { paramf.protocol });
     if ("hls".equalsIgnoreCase(paramf.protocol))
     {
       AppMethodBeat.o(137450);

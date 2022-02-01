@@ -8,45 +8,28 @@ public abstract class ea
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eBC;
-  private static final int eBv = "state".hashCode();
-  private static final int eSA;
-  private static final int eSB;
-  private static final int eSC;
-  private static final int eSD;
-  private static final int eSz = "wxGroupId".hashCode();
-  private static final int emY;
-  private static final int ewB;
+  private static final int eTf = "thumbUrl".hashCode();
+  private static final int fiY = "liveId".hashCode();
+  private static final int fiZ = "hostRoomId".hashCode();
+  private static final int fja = "liveName".hashCode();
+  private static final int fjb = "anchorUsername".hashCode();
+  private static final int fjc = "isSender".hashCode();
+  private static final int fjd = "timeStamp".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eAJ = true;
-  private boolean eAQ = true;
-  private boolean eSu = true;
-  private boolean eSv = true;
-  private boolean eSw = true;
-  private boolean eSx = true;
-  private boolean eSy = true;
-  private boolean emB = true;
-  private boolean ewc = true;
-  public long field_createTime;
-  public String field_groupId;
-  public String field_inviteUserName;
-  public int field_memberCount;
-  public int field_roomId;
-  public long field_roomKey;
-  public int field_routeId;
-  public int field_state;
-  public String field_wxGroupId;
-  
-  static
-  {
-    eBC = "groupId".hashCode();
-    eSA = "roomId".hashCode();
-    eSB = "roomKey".hashCode();
-    eSC = "routeId".hashCode();
-    eSD = "inviteUserName".hashCode();
-    ewB = "memberCount".hashCode();
-    emY = "createTime".hashCode();
-  }
+  private boolean eSt = true;
+  private boolean fiS = true;
+  private boolean fiT = true;
+  private boolean fiU = true;
+  private boolean fiV = true;
+  private boolean fiW = true;
+  private boolean fiX = true;
+  public String field_anchorUsername;
+  public String field_hostRoomId;
+  public boolean field_isSender;
+  public long field_liveId;
+  public String field_liveName;
+  public String field_thumbUrl;
+  public long field_timeStamp;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -54,18 +37,18 @@ public abstract class ea
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eSz != k) {
+      if (fiY != k) {
         break label65;
       }
-      this.field_wxGroupId = paramCursor.getString(i);
-      this.eSu = true;
+      this.field_liveId = paramCursor.getLong(i);
+      this.fiS = true;
     }
     for (;;)
     {
@@ -73,24 +56,38 @@ public abstract class ea
       break label20;
       break;
       label65:
-      if (eBC == k) {
-        this.field_groupId = paramCursor.getString(i);
-      } else if (eSA == k) {
-        this.field_roomId = paramCursor.getInt(i);
-      } else if (eSB == k) {
-        this.field_roomKey = paramCursor.getLong(i);
-      } else if (eSC == k) {
-        this.field_routeId = paramCursor.getInt(i);
-      } else if (eSD == k) {
-        this.field_inviteUserName = paramCursor.getString(i);
-      } else if (ewB == k) {
-        this.field_memberCount = paramCursor.getInt(i);
-      } else if (emY == k) {
-        this.field_createTime = paramCursor.getLong(i);
-      } else if (eBv == k) {
-        this.field_state = paramCursor.getInt(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      if (fiZ == k)
+      {
+        this.field_hostRoomId = paramCursor.getString(i);
+      }
+      else if (fja == k)
+      {
+        this.field_liveName = paramCursor.getString(i);
+      }
+      else if (eTf == k)
+      {
+        this.field_thumbUrl = paramCursor.getString(i);
+      }
+      else if (fjb == k)
+      {
+        this.field_anchorUsername = paramCursor.getString(i);
+      }
+      else
+      {
+        if (fjc == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (boolean bool = true;; bool = false)
+          {
+            this.field_isSender = bool;
+            break;
+          }
+        }
+        if (fjd == k) {
+          this.field_timeStamp = paramCursor.getLong(i);
+        } else if (rowid_HASHCODE == k) {
+          this.systemRowid = paramCursor.getLong(i);
+        }
       }
     }
   }
@@ -98,32 +95,38 @@ public abstract class ea
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eSu) {
-      localContentValues.put("wxGroupId", this.field_wxGroupId);
+    if (this.fiS) {
+      localContentValues.put("liveId", Long.valueOf(this.field_liveId));
     }
-    if (this.eAQ) {
-      localContentValues.put("groupId", this.field_groupId);
+    if (this.field_hostRoomId == null) {
+      this.field_hostRoomId = "";
     }
-    if (this.eSv) {
-      localContentValues.put("roomId", Integer.valueOf(this.field_roomId));
+    if (this.fiT) {
+      localContentValues.put("hostRoomId", this.field_hostRoomId);
     }
-    if (this.eSw) {
-      localContentValues.put("roomKey", Long.valueOf(this.field_roomKey));
+    if (this.field_liveName == null) {
+      this.field_liveName = "";
     }
-    if (this.eSx) {
-      localContentValues.put("routeId", Integer.valueOf(this.field_routeId));
+    if (this.fiU) {
+      localContentValues.put("liveName", this.field_liveName);
     }
-    if (this.eSy) {
-      localContentValues.put("inviteUserName", this.field_inviteUserName);
+    if (this.field_thumbUrl == null) {
+      this.field_thumbUrl = "";
     }
-    if (this.ewc) {
-      localContentValues.put("memberCount", Integer.valueOf(this.field_memberCount));
+    if (this.eSt) {
+      localContentValues.put("thumbUrl", this.field_thumbUrl);
     }
-    if (this.emB) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.field_anchorUsername == null) {
+      this.field_anchorUsername = "";
     }
-    if (this.eAJ) {
-      localContentValues.put("state", Integer.valueOf(this.field_state));
+    if (this.fiV) {
+      localContentValues.put("anchorUsername", this.field_anchorUsername);
+    }
+    if (this.fiW) {
+      localContentValues.put("isSender", Boolean.valueOf(this.field_isSender));
+    }
+    if (this.fiX) {
+      localContentValues.put("timeStamp", Long.valueOf(this.field_timeStamp));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

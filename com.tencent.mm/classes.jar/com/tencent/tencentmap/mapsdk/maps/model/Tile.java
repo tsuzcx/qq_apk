@@ -39,10 +39,15 @@ public final class Tile
     AppMethodBeat.o(181088);
     return localObject;
   }
+  
+  public final byte[] getData()
+  {
+    return this.mData;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.Tile
  * JD-Core Version:    0.7.0.1
  */

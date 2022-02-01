@@ -16,29 +16,29 @@ import java.util.TimeZone;
 
 final class b
 {
-  static a cDh;
-  Integer cDi;
-  String cDj;
+  static a cOm;
+  Integer cOn;
+  String cOo;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(87628);
-    this.cDi = null;
-    this.cDj = null;
+    this.cOn = null;
+    this.cOo = null;
     try
     {
       aU(paramContext);
       TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
       if (localTelephonyManager != null) {
-        this.cDi = Integer.valueOf(localTelephonyManager.getNetworkType());
+        this.cOn = Integer.valueOf(localTelephonyManager.getNetworkType());
       }
-      this.cDj = s.bf(paramContext);
+      this.cOo = s.bf(paramContext);
       AppMethodBeat.o(87628);
       return;
     }
     catch (Throwable paramContext)
     {
-      s.Il();
+      s.JL();
       AppMethodBeat.o(87628);
     }
   }
@@ -48,10 +48,10 @@ final class b
     try
     {
       AppMethodBeat.i(87627);
-      if (cDh == null) {
-        cDh = new a(paramContext.getApplicationContext(), (byte)0);
+      if (cOm == null) {
+        cOm = new a(paramContext.getApplicationContext(), (byte)0);
       }
-      paramContext = cDh;
+      paramContext = cOm;
       AppMethodBeat.o(87627);
       return paramContext;
     }
@@ -60,20 +60,20 @@ final class b
   
   static final class a
   {
-    String aTm;
     String appVersion;
-    String cDk;
-    DisplayMetrics cDl;
-    int cDm;
-    String cDn;
-    String cDo;
-    String cDp;
-    String cDq;
-    int cDr;
-    String cDs;
-    String cDt;
+    String cOp;
+    DisplayMetrics cOq;
+    int cOr;
+    String cOs;
+    String cOt;
+    String cOu;
+    String cOv;
+    int cOw;
+    String cOx;
+    String cOy;
     Context ctx;
     String imsi;
+    String language;
     String model;
     String packageName;
     String timezone;
@@ -81,36 +81,36 @@ final class b
     private a(Context paramContext)
     {
       AppMethodBeat.i(87626);
-      this.cDk = "2.21";
-      this.cDm = Build.VERSION.SDK_INT;
+      this.cOp = "2.21";
+      this.cOr = Build.VERSION.SDK_INT;
       this.model = Build.MODEL;
-      this.cDn = Build.MANUFACTURER;
-      this.aTm = Locale.getDefault().getLanguage();
-      this.cDo = "WX";
-      this.cDr = 0;
+      this.cOs = Build.MANUFACTURER;
+      this.language = Locale.getDefault().getLanguage();
+      this.cOt = "WX";
+      this.cOw = 0;
       this.packageName = null;
       this.ctx = null;
-      this.cDs = null;
-      this.cDt = null;
+      this.cOx = null;
+      this.cOy = null;
       this.ctx = paramContext.getApplicationContext();
       try
       {
         this.appVersion = this.ctx.getPackageManager().getPackageInfo(this.ctx.getPackageName(), 0).versionName;
-        this.cDl = new DisplayMetrics();
-        ((WindowManager)this.ctx.getApplicationContext().getSystemService("window")).getDefaultDisplay().getMetrics(this.cDl);
+        this.cOq = new DisplayMetrics();
+        ((WindowManager)this.ctx.getApplicationContext().getSystemService("window")).getDefaultDisplay().getMetrics(this.cOq);
         if (s.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
         {
           paramContext = (TelephonyManager)paramContext.getSystemService("phone");
           if (paramContext != null)
           {
-            this.cDp = paramContext.getSimOperator();
+            this.cOu = paramContext.getSimOperator();
             this.imsi = paramContext.getSubscriberId();
           }
         }
         this.timezone = TimeZone.getDefault().getID();
-        this.cDq = s.be(this.ctx);
+        this.cOv = s.be(this.ctx);
         this.packageName = this.ctx.getPackageName();
-        this.cDt = s.In();
+        this.cOy = s.JN();
         AppMethodBeat.o(87626);
         return;
       }
@@ -118,7 +118,7 @@ final class b
       {
         for (;;)
         {
-          s.Il();
+          s.JL();
         }
       }
     }
@@ -126,7 +126,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

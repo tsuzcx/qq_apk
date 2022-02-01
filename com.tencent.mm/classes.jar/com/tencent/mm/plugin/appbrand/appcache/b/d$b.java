@@ -2,20 +2,22 @@ package com.tencent.mm.plugin.appbrand.appcache.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class d$b
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
-  public static final b jpZ;
+  public static final b jJT;
   
   static
   {
-    AppMethodBeat.i(187077);
-    jpZ = new b();
-    AppMethodBeat.o(187077);
+    AppMethodBeat.i(188967);
+    jJT = new b();
+    AppMethodBeat.o(188967);
   }
   
   d$b()

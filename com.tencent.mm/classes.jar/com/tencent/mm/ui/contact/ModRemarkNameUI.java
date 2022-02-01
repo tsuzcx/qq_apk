@@ -18,65 +18,61 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.az;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.pluginsdk.ui.tools.j.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bz;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.cf;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMTagPanel;
-import com.tencent.mm.ui.tools.f;
 import com.tencent.mm.ui.widget.MMEditText.b;
 import java.util.ArrayList;
 
 public class ModRemarkNameUI
   extends MMActivity
-  implements g
+  implements com.tencent.mm.al.f
 {
-  private TextView IuP;
-  private View IuQ;
-  private View IuR;
-  private MMTagPanel IuZ;
-  private TextView Iva;
-  private EditText IwZ;
-  private int Ixa;
-  private String Ixb;
-  private TextView Ixc;
-  private EditText Ixd;
-  private TextView Ixe;
-  private String Ixf;
-  private boolean Ixg;
-  private a Ixh;
-  private View Ixi;
-  private TextView Ixj;
-  private ai contact;
-  private String drG;
-  private String iAC;
-  private int iMg;
-  private String vJW;
-  private ArrayList<String> vJn;
-  private bz wbZ;
+  private MMTagPanel KlF;
+  private TextView KlG;
+  private TextView Klv;
+  private View Klw;
+  private View Klx;
+  private EditText KnH;
+  private int KnI;
+  private String KnJ;
+  private TextView KnK;
+  private EditText KnL;
+  private TextView KnM;
+  private String KnN;
+  private boolean KnO;
+  private a KnP;
+  private View KnQ;
+  private TextView KnR;
+  private am contact;
+  private String dDy;
+  private String iTM;
+  private int jfq;
+  private ArrayList<String> wQw;
+  private String wRf;
+  private cf xjI;
   
   public ModRemarkNameUI()
   {
     AppMethodBeat.i(37872);
-    this.Ixb = "";
-    this.iAC = "";
-    this.Ixc = null;
-    this.Ixd = null;
-    this.Ixe = null;
-    this.Ixf = "";
-    this.Ixg = false;
-    this.iMg = 9;
-    this.Ixh = new a((byte)0);
+    this.KnJ = "";
+    this.iTM = "";
+    this.KnK = null;
+    this.KnL = null;
+    this.KnM = null;
+    this.KnN = "";
+    this.KnO = false;
+    this.jfq = 9;
+    this.KnP = new a((byte)0);
     AppMethodBeat.o(37872);
   }
   
@@ -88,24 +84,24 @@ public class ModRemarkNameUI
   public void initView()
   {
     AppMethodBeat.i(37874);
-    this.drG = getIntent().getStringExtra("Contact_User");
-    if ((this.drG != null) && (this.drG.length() > 0))
+    this.dDy = getIntent().getStringExtra("Contact_User");
+    if ((this.dDy != null) && (this.dDy.length() > 0))
     {
-      az.ayM();
-      this.contact = com.tencent.mm.model.c.awB().aNt(this.drG);
-      az.ayM();
-      this.wbZ = com.tencent.mm.model.c.awC().alK(this.drG);
-      if ((this.contact == null) || (bs.isNullOrNil(this.contact.field_username)))
+      ba.aBQ();
+      this.contact = com.tencent.mm.model.c.azp().Bf(this.dDy);
+      ba.aBQ();
+      this.xjI = com.tencent.mm.model.c.azq().aqz(this.dDy);
+      if ((this.contact == null) || (bt.isNullOrNil(this.contact.field_username)))
       {
-        this.contact = new ai(this.drG);
-        this.contact.qj(bs.nullAsNil(this.Ixb));
-        this.contact.qh(bs.nullAsNil(this.iAC));
+        this.contact = new am(this.dDy);
+        this.contact.sT(bt.nullAsNil(this.KnJ));
+        this.contact.sR(bt.nullAsNil(this.iTM));
       }
     }
-    this.IwZ = ((EditText)findViewById(2131298627));
+    this.KnH = ((EditText)findViewById(2131298627));
     Object localObject1 = new MMEditText.b()
     {
-      public final void aQv()
+      public final void aTH()
       {
         AppMethodBeat.i(37864);
         if (ModRemarkNameUI.a(ModRemarkNameUI.this).getText().toString().trim().length() > 0) {
@@ -115,28 +111,28 @@ public class ModRemarkNameUI
       }
     };
     Object localObject2 = new j.a();
-    ((j.a)localObject2).DFq = ((MMEditText.b)localObject1);
-    this.IwZ.addTextChangedListener((TextWatcher)localObject2);
-    com.tencent.mm.ui.tools.b.c.d(this.IwZ).acw(32).a(null);
-    if ((this.contact != null) && (this.Ixa != 3))
+    ((j.a)localObject2).Fkv = ((MMEditText.b)localObject1);
+    this.KnH.addTextChangedListener((TextWatcher)localObject2);
+    com.tencent.mm.ui.tools.b.c.d(this.KnH).aeU(32).a(null);
+    if ((this.contact != null) && (this.KnI != 3))
     {
-      if (this.Ixa == 4)
+      if (this.KnI == 4)
       {
-        this.IwZ.setText(k.b(this, bs.nullAsNil(this.Ixb), this.IwZ.getTextSize()));
-        this.IwZ.setSelection(this.IwZ.getText().length());
+        this.KnH.setText(k.b(this, bt.nullAsNil(this.KnJ), this.KnH.getTextSize()));
+        this.KnH.setSelection(this.KnH.getText().length());
       }
     }
     else
     {
-      if (this.Ixa != 0) {
-        break label1118;
+      if ((this.KnI != 0) || (am.ail(this.dDy))) {
+        break label1128;
       }
       setMMTitle(2131757731);
-      localObject1 = com.tencent.mm.plugin.account.a.getAddrUploadStg().Gf(this.contact.field_username);
-      if ((localObject1 != null) && (!bs.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject1).aPm())) && (!((com.tencent.mm.plugin.account.friend.a.a)localObject1).aPm().equals(this.IwZ.getText()))) {
-        break label988;
+      localObject1 = com.tencent.mm.plugin.account.a.getAddrUploadStg().Ju(this.contact.field_username);
+      if ((localObject1 != null) && (!bt.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject1).aSy())) && (!((com.tencent.mm.plugin.account.friend.a.a)localObject1).aSy().equals(this.KnH.getText()))) {
+        break label998;
       }
-      label326:
+      label336:
       addTextOptionMenu(0, getString(2131755880), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -157,8 +153,8 @@ public class ModRemarkNameUI
           }
         }
       });
-      if ((this.IwZ == null) || (this.IwZ.getText().toString().trim().length() <= 0)) {
-        break label1251;
+      if ((this.KnH == null) || (this.KnH.getText().toString().trim().length() <= 0)) {
+        break label1293;
       }
       enableOptionMenu(true);
     }
@@ -174,112 +170,122 @@ public class ModRemarkNameUI
           return true;
         }
       });
-      this.Ixc = ((TextView)findViewById(2131298634));
-      this.Ixd = ((EditText)findViewById(2131298626));
-      this.Ixe = ((TextView)findViewById(2131307005));
-      this.IuR = findViewById(2131298625);
-      com.tencent.mm.ui.tools.b.c.d(this.Ixd).acw(800).a(null);
-      this.Ixe.setText(f.cM(800, this.Ixd.getEditableText().toString()));
-      this.Ixd.append(k.b(this, bs.nullAsNil(this.Ixf), this.Ixd.getTextSize()));
-      this.Ixc.append(k.b(this, bs.nullAsNil(this.Ixf), this.Ixc.getTextSize()));
-      if (this.wbZ != null)
+      this.KnK = ((TextView)findViewById(2131298634));
+      this.KnL = ((EditText)findViewById(2131298626));
+      this.KnM = ((TextView)findViewById(2131307005));
+      this.Klx = findViewById(2131298625);
+      com.tencent.mm.ui.tools.b.c.d(this.KnL).aeU(800).a(null);
+      this.KnM.setText(com.tencent.mm.ui.tools.f.cU(800, this.KnL.getEditableText().toString()));
+      this.KnL.append(k.b(this, bt.nullAsNil(this.KnN), this.KnL.getTextSize()));
+      this.KnK.append(k.b(this, bt.nullAsNil(this.KnN), this.KnK.getTextSize()));
+      if (this.xjI != null)
       {
-        this.Ixd.setText(k.b(this, bs.nullAsNil(this.wbZ.field_conDescription), this.Ixd.getTextSize()));
-        this.Ixc.setText(k.b(this, bs.nullAsNil(this.wbZ.field_conDescription), this.Ixd.getTextSize()));
+        this.KnL.setText(k.b(this, bt.nullAsNil(this.xjI.field_conDescription), this.KnL.getTextSize()));
+        this.KnK.setText(k.b(this, bt.nullAsNil(this.xjI.field_conDescription), this.KnL.getTextSize()));
       }
-      this.Ixd.addTextChangedListener(new b((byte)0));
-      this.Ixc.setOnClickListener(new View.OnClickListener()
+      this.KnL.addTextChangedListener(new b((byte)0));
+      this.KnK.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(37867);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/ModRemarkNameUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           ModRemarkNameUI.f(ModRemarkNameUI.this).setVisibility(0);
           ModRemarkNameUI.g(ModRemarkNameUI.this).setVisibility(8);
           ModRemarkNameUI.h(ModRemarkNameUI.this).requestFocus();
           ModRemarkNameUI.this.showVKB();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/ModRemarkNameUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(37867);
         }
       });
       AppMethodBeat.o(37874);
       return;
-      if (!bs.isNullOrNil(this.contact.field_conRemark))
+      if (!bt.isNullOrNil(this.contact.field_conRemark))
       {
-        if ((this.Ixa == 0) && (!bs.isNullOrNil(this.iAC)))
+        if ((this.KnI == 0) && (!bt.isNullOrNil(this.iTM)))
         {
-          this.IwZ.setText(k.b(this, this.iAC, this.IwZ.getTextSize()));
+          this.KnH.setText(k.b(this, this.iTM, this.KnH.getTextSize()));
           break;
         }
-        this.IwZ.setText(k.b(this, bs.nullAsNil(this.contact.field_conRemark), this.IwZ.getTextSize()));
+        this.KnH.setText(k.b(this, bt.nullAsNil(this.contact.field_conRemark), this.KnH.getTextSize()));
         break;
       }
-      if (!bs.isNullOrNil(this.iAC))
+      if (!bt.isNullOrNil(this.iTM))
       {
-        this.IwZ.setText(k.b(this, bs.nullAsNil(this.iAC), this.IwZ.getTextSize()));
+        this.KnH.setText(k.b(this, bt.nullAsNil(this.iTM), this.KnH.getTextSize()));
         break;
       }
-      if (!bs.isNullOrNil(this.contact.field_nickname))
+      if (!bt.isNullOrNil(this.contact.field_nickname))
       {
-        if ((this.Ixa == 0) && (!bs.isNullOrNil(this.Ixb)) && (!com.tencent.mm.n.b.ln(this.contact.field_type)))
+        if ((this.KnI == 0) && (!bt.isNullOrNil(this.KnJ)) && (!com.tencent.mm.o.b.lM(this.contact.field_type)))
         {
-          this.IwZ.setText(k.b(this, bs.nullAsNil(this.Ixb), this.IwZ.getTextSize()));
+          this.KnH.setText(k.b(this, bt.nullAsNil(this.KnJ), this.KnH.getTextSize()));
           break;
         }
-        this.IwZ.setText(k.b(this, bs.nullAsNil(this.contact.field_nickname), this.IwZ.getTextSize()));
+        this.KnH.setText(k.b(this, bt.nullAsNil(this.contact.field_nickname), this.KnH.getTextSize()));
         break;
       }
-      if (!bs.isNullOrNil(this.Ixb))
+      if (!bt.isNullOrNil(this.KnJ))
       {
-        this.IwZ.setText(k.b(this, bs.nullAsNil(this.Ixb), this.IwZ.getTextSize()));
+        this.KnH.setText(k.b(this, bt.nullAsNil(this.KnJ), this.KnH.getTextSize()));
         break;
       }
       localObject1 = this.contact.field_nickname;
-      if ((bs.isNullOrNil((String)localObject1)) || (((String)localObject1).length() > 50)) {}
+      if ((bt.isNullOrNil((String)localObject1)) || (((String)localObject1).length() > 50)) {}
       for (int i = 0;; i = 1)
       {
         if (i == 0) {
-          break label976;
+          break label986;
         }
-        this.IwZ.setText(k.b(this, bs.nullAsNil(this.contact.aaS()), this.IwZ.getTextSize()));
+        this.KnH.setText(k.b(this, bt.nullAsNil(this.contact.adv()), this.KnH.getTextSize()));
         break;
       }
-      label976:
-      this.IwZ.setText("");
+      label986:
+      this.KnH.setText("");
       break;
-      label988:
-      this.IuP = ((TextView)findViewById(2131302425));
-      this.IuQ = findViewById(2131302419);
-      this.IuQ.setVisibility(0);
-      this.IuP.setText(bs.nullAsNil(getString(2131757816, new Object[] { ((com.tencent.mm.plugin.account.friend.a.a)localObject1).aPm() })));
+      label998:
+      this.Klv = ((TextView)findViewById(2131302425));
+      this.Klw = findViewById(2131302419);
+      this.Klw.setVisibility(0);
+      this.Klv.setText(bt.nullAsNil(getString(2131757816, new Object[] { ((com.tencent.mm.plugin.account.friend.a.a)localObject1).aSy() })));
       localObject2 = new l(getString(2131766242));
-      ((l)localObject2).setSpan(new c(((com.tencent.mm.plugin.account.friend.a.a)localObject1).aPm()), 0, ((l)localObject2).length(), 17);
-      this.IuP.append(" ");
-      this.IuP.append((CharSequence)localObject2);
-      this.IuP.setMovementMethod(LinkMovementMethod.getInstance());
-      break label326;
-      label1118:
-      if (this.Ixa == 3)
+      ((l)localObject2).setSpan(new c(((com.tencent.mm.plugin.account.friend.a.a)localObject1).aSy()), 0, ((l)localObject2).length(), 17);
+      this.Klv.append(" ");
+      this.Klv.append((CharSequence)localObject2);
+      this.Klv.setMovementMethod(LinkMovementMethod.getInstance());
+      break label336;
+      label1128:
+      if (this.KnI == 3)
       {
         setMMTitle(2131764345);
-        this.IwZ.setHint("");
-        if (!bs.isNullOrNil(this.Ixb)) {
-          this.IwZ.setText(this.Ixb);
+        this.KnH.setHint("");
+        if (!bt.isNullOrNil(this.KnJ)) {
+          this.KnH.setText(this.KnJ);
         }
         localObject1 = (TextView)findViewById(2131298628);
         ((TextView)localObject1).setText(2131763093);
         ((TextView)localObject1).setVisibility(0);
         findViewById(2131302420).setVisibility(8);
-        break label326;
+        break label336;
       }
-      if (this.Ixa != 4) {
-        break label326;
+      if (this.KnI == 4)
+      {
+        setMMTitle(2131762651);
+        this.KnH.setHint("");
+        localObject1 = (TextView)findViewById(2131298628);
+        ((TextView)localObject1).setText(2131762702);
+        ((TextView)localObject1).setVisibility(0);
+        break label336;
       }
-      setMMTitle(2131762651);
-      this.IwZ.setHint("");
-      localObject1 = (TextView)findViewById(2131298628);
-      ((TextView)localObject1).setText(2131762702);
-      ((TextView)localObject1).setVisibility(0);
-      break label326;
-      label1251:
+      if (!am.ail(this.dDy)) {
+        break label336;
+      }
+      setMMTitle(2131764345);
+      findViewById(2131301288).setVisibility(8);
+      break label336;
+      label1293:
       enableOptionMenu(false);
     }
   }
@@ -289,26 +295,26 @@ public class ModRemarkNameUI
     int j = 0;
     AppMethodBeat.i(37873);
     super.onCreate(paramBundle);
-    this.iMg = getIntent().getIntExtra("Contact_Scene", 9);
-    this.Ixa = getIntent().getIntExtra("Contact_mode_name_type", 0);
-    this.Ixb = bs.nullAsNil(getIntent().getStringExtra("Contact_Nick"));
-    this.iAC = bs.nullAsNil(getIntent().getStringExtra("Contact_RemarkName"));
-    this.Ixg = getIntent().getBooleanExtra("Contact_ModStrangerRemark", true);
+    this.jfq = getIntent().getIntExtra("Contact_Scene", 9);
+    this.KnI = getIntent().getIntExtra("Contact_mode_name_type", 0);
+    this.KnJ = bt.nullAsNil(getIntent().getStringExtra("Contact_Nick"));
+    this.iTM = bt.nullAsNil(getIntent().getStringExtra("Contact_RemarkName"));
+    this.KnO = getIntent().getBooleanExtra("Contact_ModStrangerRemark", true);
     initView();
-    this.Ixj = ((TextView)findViewById(2131298624));
-    this.Ixi = findViewById(2131298622);
+    this.KnR = ((TextView)findViewById(2131298624));
+    this.KnQ = findViewById(2131298622);
     int i;
-    if (this.Ixa != 0)
+    if (this.KnI != 0)
     {
-      this.Ixi.setVisibility(8);
-      this.Ixj.setVisibility(8);
-      this.IuZ = ((MMTagPanel)findViewById(2131298623));
-      this.IuZ.setPanelClickable(false);
-      this.Iva = ((TextView)findViewById(2131298621));
-      this.Iva.setText(2131761304);
-      this.IuZ.setOnClickListener(this.Ixh);
-      this.Iva.setOnClickListener(this.Ixh);
-      if ((this.contact == null) || (!ai.aNc(this.contact.field_username))) {
+      this.KnQ.setVisibility(8);
+      this.KnR.setVisibility(8);
+      this.KlF = ((MMTagPanel)findViewById(2131298623));
+      this.KlF.setPanelClickable(false);
+      this.KlG = ((TextView)findViewById(2131298621));
+      this.KlG.setText(2131761304);
+      this.KlF.setOnClickListener(this.KnP);
+      this.KlG.setOnClickListener(this.KnP);
+      if ((this.contact == null) || (!am.aSQ(this.contact.field_username))) {
         break label274;
       }
       i = 1;
@@ -317,18 +323,18 @@ public class ModRemarkNameUI
     {
       if (i != 0)
       {
-        if (this.IwZ == null)
+        if (this.KnH == null)
         {
           AppMethodBeat.o(37873);
           return;
-          this.Ixi.setVisibility(0);
-          this.Ixj.setVisibility(0);
+          this.KnQ.setVisibility(0);
+          this.KnR.setVisibility(0);
           break;
           label274:
           i = 0;
           continue;
         }
-        paramBundle = (ViewGroup)this.IwZ.getParent();
+        paramBundle = (ViewGroup)this.KnH.getParent();
         int k = paramBundle.getChildCount();
         i = j;
         while (i < k)
@@ -356,40 +362,40 @@ public class ModRemarkNameUI
   {
     AppMethodBeat.i(37875);
     super.onResume();
-    az.ayM();
-    this.wbZ = com.tencent.mm.model.c.awC().alK(this.drG);
-    if (this.wbZ != null)
+    ba.aBQ();
+    this.xjI = com.tencent.mm.model.c.azq().aqz(this.dDy);
+    if (this.xjI != null)
     {
-      this.vJW = this.wbZ.field_contactLabels;
-      this.vJn = ((ArrayList)com.tencent.mm.plugin.label.a.a.cWd().ajB(this.vJW));
+      this.wRf = this.xjI.field_contactLabels;
+      this.wQw = ((ArrayList)com.tencent.mm.plugin.label.a.a.dfo().aon(this.wRf));
     }
-    if (!bs.isNullOrNil(this.vJW))
+    if (!bt.isNullOrNil(this.wRf))
     {
-      this.IuZ.setVisibility(0);
-      this.Iva.setVisibility(8);
-      if ((this.vJn != null) && (!this.vJn.isEmpty()))
+      this.KlF.setVisibility(0);
+      this.KlG.setVisibility(8);
+      if ((this.wQw != null) && (!this.wQw.isEmpty()))
       {
-        this.IuZ.a(this.vJn, this.vJn);
+        this.KlF.a(this.wQw, this.wQw);
         AppMethodBeat.o(37875);
       }
     }
     else
     {
-      this.IuZ.setVisibility(8);
-      this.Iva.setVisibility(0);
+      this.KlF.setVisibility(8);
+      this.KlG.setVisibility(0);
     }
     AppMethodBeat.o(37875);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
   {
     AppMethodBeat.i(37877);
-    ac.i("MiroMsg.ModRemarkName", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ad.i("MiroMsg.ModRemarkName", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (paramn.getType() == 44)
     {
       if ((paramInt1 != 0) && (paramInt2 < 0))
       {
-        ac.d("MiroMsg.ModRemarkName", "addRoomCard Error!");
+        ad.d("MiroMsg.ModRemarkName", "addRoomCard Error!");
         Toast.makeText(this, getString(2131762691, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
       }
       finish();
@@ -411,7 +417,11 @@ public class ModRemarkNameUI
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(37868);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/ModRemarkNameUI$LabelEditOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
       ModRemarkNameUI.k(ModRemarkNameUI.this);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/ModRemarkNameUI$LabelEditOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(37868);
     }
   }
@@ -419,19 +429,19 @@ public class ModRemarkNameUI
   final class b
     implements TextWatcher
   {
-    private int xpu = 800;
+    private int yDX = 800;
     
     private b() {}
     
     public final void afterTextChanged(Editable paramEditable)
     {
       AppMethodBeat.i(37869);
-      this.xpu = f.cM(800, paramEditable.toString());
-      if (this.xpu < 0) {
-        this.xpu = 0;
+      this.yDX = com.tencent.mm.ui.tools.f.cU(800, paramEditable.toString());
+      if (this.yDX < 0) {
+        this.yDX = 0;
       }
       if (ModRemarkNameUI.i(ModRemarkNameUI.this) != null) {
-        ModRemarkNameUI.i(ModRemarkNameUI.this).setText(this.xpu);
+        ModRemarkNameUI.i(ModRemarkNameUI.this).setText(this.yDX);
       }
       ModRemarkNameUI.j(ModRemarkNameUI.this);
       AppMethodBeat.o(37869);
@@ -445,17 +455,17 @@ public class ModRemarkNameUI
   final class c
     extends ClickableSpan
   {
-    public String iAC;
+    public String iTM;
     
     public c(String paramString)
     {
-      this.iAC = paramString;
+      this.iTM = paramString;
     }
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(37870);
-      ModRemarkNameUI.a(ModRemarkNameUI.this).setText(k.b(ModRemarkNameUI.this, bs.nullAsNil(this.iAC), ModRemarkNameUI.a(ModRemarkNameUI.this).getTextSize()));
+      ModRemarkNameUI.a(ModRemarkNameUI.this).setText(k.b(ModRemarkNameUI.this, bt.nullAsNil(this.iTM), ModRemarkNameUI.a(ModRemarkNameUI.this).getTextSize()));
       ModRemarkNameUI.a(ModRemarkNameUI.this).setSelection(ModRemarkNameUI.a(ModRemarkNameUI.this).getText().length());
       ModRemarkNameUI.l(ModRemarkNameUI.this).setVisibility(8);
       AppMethodBeat.o(37870);

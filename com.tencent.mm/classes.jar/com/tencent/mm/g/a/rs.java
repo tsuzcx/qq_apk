@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.storage.bu;
 
 public final class rs
   extends b
 {
-  public a duF;
+  public a dGp;
   
   public rs()
   {
@@ -16,24 +16,21 @@ public final class rs
   
   private rs(byte paramByte)
   {
-    AppMethodBeat.i(19832);
-    this.duF = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19829);
+    this.dGp = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19832);
+    AppMethodBeat.o(19829);
   }
   
   public static final class a
   {
-    public String[] cYr;
-    public Context context;
-    public boolean duG = false;
-    public String[] selectionArgs;
+    public bu dku;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.rs
  * JD-Core Version:    0.7.0.1
  */

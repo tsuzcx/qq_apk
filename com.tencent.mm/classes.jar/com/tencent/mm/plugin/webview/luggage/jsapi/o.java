@@ -2,28 +2,28 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class o
-  extends bo<f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  public final void b(a<f>.a parama)
+  public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78547);
-    ac.i("MicroMsg.JsApiDisableBounceScroll", "invoke");
-    JSONArray localJSONArray = parama.bWS.bVY.optJSONArray("place");
+    ad.i("MicroMsg.JsApiDisableBounceScroll", "invoke");
+    JSONArray localJSONArray = paramb.chh.cgn.optJSONArray("place");
     if (localJSONArray == null)
     {
-      ac.i("MicroMsg.JsApiDisableBounceScroll", "placeArray is null");
-      parama.a("fail", null);
+      ad.i("MicroMsg.JsApiDisableBounceScroll", "placeArray is null");
+      paramb.a("fail", null);
       AppMethodBeat.o(78547);
       return;
     }
@@ -43,18 +43,18 @@ public class o
       break;
       if (i == 0)
       {
-        parama.a("", null);
+        paramb.a("", null);
         AppMethodBeat.o(78547);
         return;
       }
-      ((f)parama.bWR).eAp();
-      parama.a("", null);
+      ((g)paramb.chg).ePf();
+      paramb.a("", null);
       AppMethodBeat.o(78547);
       return;
     }
   }
   
-  public final int bYk()
+  public final int ccO()
   {
     return 0;
   }

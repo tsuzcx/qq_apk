@@ -35,11 +35,11 @@ public class CopyOnWriteFileSystem
   implements Handler.Callback
 {
   public static final Parcelable.Creator<CopyOnWriteFileSystem> CREATOR;
-  private final long JrU;
-  private volatile String JrV;
-  private final HashSet<String> JrW;
-  private final HashSet<String> JrX;
-  private final Handler JrY;
+  private volatile String LjA;
+  private final HashSet<String> LjB;
+  private final HashSet<String> LjC;
+  private final Handler LjD;
+  private final long Ljz;
   
   static
   {
@@ -52,48 +52,48 @@ public class CopyOnWriteFileSystem
   {
     super(paramParcel);
     AppMethodBeat.i(13068);
-    this.JrV = null;
-    this.JrW = new HashSet();
-    this.JrX = new HashSet();
+    this.LjA = null;
+    this.LjB = new HashSet();
+    this.LjC = new HashSet();
     q.a(paramParcel, CopyOnWriteFileSystem.class, 1);
-    this.JrU = paramParcel.readLong();
-    this.JrY = new Handler(a.ghk().KgB.getLooper(), this);
+    this.Ljz = paramParcel.readLong();
+    this.LjD = new Handler(a.gzU().OfA.getLooper(), this);
     AppMethodBeat.o(13068);
   }
   
   /* Error */
-  private String aSi(String paramString)
+  private String aYh(String paramString)
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore_2
     //   2: sipush 13071
-    //   5: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 50	com/tencent/mm/vfs/CopyOnWriteFileSystem:JrV	Ljava/lang/String;
+    //   9: getfield 49	com/tencent/mm/vfs/CopyOnWriteFileSystem:LjA	Ljava/lang/String;
     //   12: ifnonnull +11 -> 23
     //   15: sipush 13071
-    //   18: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   18: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: aconst_null
     //   22: areturn
-    //   23: new 101	java/lang/StringBuilder
+    //   23: new 100	java/lang/StringBuilder
     //   26: dup
-    //   27: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   27: invokespecial 101	java/lang/StringBuilder:<init>	()V
     //   30: aload_0
-    //   31: getfield 106	com/tencent/mm/vfs/CopyOnWriteFileSystem:JrA	Lcom/tencent/mm/vfs/FileSystem;
-    //   34: checkcast 108	com/tencent/mm/vfs/NativeFileSystem
+    //   31: getfield 105	com/tencent/mm/vfs/CopyOnWriteFileSystem:Ljf	Lcom/tencent/mm/vfs/FileSystem;
+    //   34: checkcast 107	com/tencent/mm/vfs/NativeFileSystem
     //   37: aload_1
     //   38: iconst_0
-    //   39: invokevirtual 112	com/tencent/mm/vfs/NativeFileSystem:cV	(Ljava/lang/String;Z)Ljava/lang/String;
-    //   42: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 111	com/tencent/mm/vfs/NativeFileSystem:da	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   42: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   45: sipush 8203
-    //   48: invokevirtual 119	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   51: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   48: invokevirtual 118	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   51: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   54: astore 6
-    //   56: new 125	java/io/FileInputStream
+    //   56: new 124	java/io/FileInputStream
     //   59: dup
     //   60: aload 6
-    //   62: invokespecial 128	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   62: invokespecial 127	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   65: astore 4
     //   67: aload 4
     //   69: astore_1
@@ -111,7 +111,7 @@ public class CopyOnWriteFileSystem
     //   92: sipush 4096
     //   95: iload_2
     //   96: isub
-    //   97: invokevirtual 132	java/io/FileInputStream:read	([BII)I
+    //   97: invokevirtual 131	java/io/FileInputStream:read	([BII)I
     //   100: istore_3
     //   101: iload_3
     //   102: iconst_m1
@@ -123,26 +123,26 @@ public class CopyOnWriteFileSystem
     //   110: goto -33 -> 77
     //   113: aload 4
     //   115: astore_1
-    //   116: new 134	java/lang/String
+    //   116: new 133	java/lang/String
     //   119: dup
     //   120: aload 5
     //   122: iconst_0
     //   123: iload_2
-    //   124: invokespecial 137	java/lang/String:<init>	([BII)V
+    //   124: invokespecial 136	java/lang/String:<init>	([BII)V
     //   127: astore 5
     //   129: aload 4
-    //   131: invokestatic 141	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   131: invokestatic 140	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
     //   134: sipush 13071
-    //   137: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   137: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   140: aload 5
     //   142: areturn
     //   143: astore_1
     //   144: aconst_null
     //   145: astore_1
     //   146: aload_1
-    //   147: invokestatic 141	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   147: invokestatic 140	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
     //   150: sipush 13071
-    //   153: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   153: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   156: aconst_null
     //   157: areturn
     //   158: astore 5
@@ -150,26 +150,26 @@ public class CopyOnWriteFileSystem
     //   161: astore 4
     //   163: aload 4
     //   165: astore_1
-    //   166: ldc 143
+    //   166: ldc 142
     //   168: aload 5
-    //   170: ldc 145
+    //   170: ldc 144
     //   172: aload 6
-    //   174: invokestatic 149	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   177: invokevirtual 152	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   180: invokestatic 158	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   174: invokestatic 148	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   177: invokevirtual 151	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   180: invokestatic 157	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
     //   183: aload 4
-    //   185: invokestatic 141	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   185: invokestatic 140	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
     //   188: sipush 13071
-    //   191: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   191: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   194: aconst_null
     //   195: areturn
     //   196: astore 4
     //   198: aconst_null
     //   199: astore_1
     //   200: aload_1
-    //   201: invokestatic 141	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   201: invokestatic 140	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
     //   204: sipush 13071
-    //   207: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   207: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   210: aload 4
     //   212: athrow
     //   213: astore 4
@@ -210,7 +210,7 @@ public class CopyOnWriteFileSystem
     //   116	129	223	java/io/FileNotFoundException
   }
   
-  private static String aSj(String paramString)
+  private static String aYi(String paramString)
   {
     AppMethodBeat.i(13089);
     paramString = paramString.substring(0, paramString.length() - 1);
@@ -218,17 +218,17 @@ public class CopyOnWriteFileSystem
     return paramString;
   }
   
-  private boolean cX(String paramString, boolean paramBoolean)
+  private boolean dc(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(13075);
-    String str1 = aSi(paramString);
+    String str1 = aYh(paramString);
     if (str1 == null)
     {
       AppMethodBeat.o(13075);
       return false;
     }
     String str2 = str1 + '‌';
-    int i = go(str2, -1);
+    int i = gL(str2, -1);
     if (!paramBoolean) {
       if (i == 0)
       {
@@ -240,48 +240,48 @@ public class CopyOnWriteFileSystem
     {
       AppMethodBeat.o(13075);
       return true;
-      paramString = ((NativeFileSystem)this.JrA).cV(paramString, true);
+      paramString = ((NativeFileSystem)this.Ljf).da(paramString, true);
       if (i == 0)
       {
         if (!new File(str1).renameTo(new File(paramString)))
         {
-          lU(str1, paramString);
+          mu(str1, paramString);
           new File(str1).delete();
         }
         new File(str2).delete();
       }
       else
       {
-        lU(str1, paramString);
+        mu(str1, paramString);
       }
     }
   }
   
   /* Error */
-  private static int go(String paramString, int paramInt)
+  private static int gL(String paramString, int paramInt)
   {
     // Byte code:
     //   0: sipush 13088
-    //   3: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc 191
+    //   3: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 190
     //   8: istore_2
-    //   9: new 193	java/io/RandomAccessFile
+    //   9: new 192	java/io/RandomAccessFile
     //   12: dup
     //   13: aload_0
-    //   14: ldc 195
-    //   16: invokespecial 197	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   14: ldc 194
+    //   16: invokespecial 196	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: astore 11
-    //   21: getstatic 203	android/os/Build$VERSION:SDK_INT	I
+    //   21: getstatic 202	android/os/Build$VERSION:SDK_INT	I
     //   24: bipush 21
     //   26: if_icmplt +88 -> 114
     //   29: aload 11
-    //   31: invokestatic 206	com/tencent/mm/vfs/CopyOnWriteFileSystem$a:i	(Ljava/io/RandomAccessFile;)J
+    //   31: invokestatic 205	com/tencent/mm/vfs/CopyOnWriteFileSystem$a:i	(Ljava/io/RandomAccessFile;)J
     //   34: lstore 4
     //   36: lload 4
-    //   38: invokestatic 210	com/tencent/mm/vfs/CopyOnWriteFileSystem$b:lock	(J)V
+    //   38: invokestatic 209	com/tencent/mm/vfs/CopyOnWriteFileSystem$b:lock	(J)V
     //   41: aload 11
-    //   43: invokevirtual 214	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
-    //   46: invokevirtual 219	java/nio/channels/FileChannel:lock	()Ljava/nio/channels/FileLock;
+    //   43: invokevirtual 213	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
+    //   46: invokevirtual 218	java/nio/channels/FileChannel:lock	()Ljava/nio/channels/FileLock;
     //   49: astore_0
     //   50: aload_0
     //   51: astore 13
@@ -290,8 +290,8 @@ public class CopyOnWriteFileSystem
     //   57: aload 11
     //   59: astore 12
     //   61: aload 11
-    //   63: invokevirtual 214	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
-    //   66: invokevirtual 222	java/nio/channels/FileChannel:size	()J
+    //   63: invokevirtual 213	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
+    //   66: invokevirtual 221	java/nio/channels/FileChannel:size	()J
     //   69: lstore 8
     //   71: lload 8
     //   73: l2i
@@ -301,25 +301,25 @@ public class CopyOnWriteFileSystem
     //   79: aload_0
     //   80: ifnull +7 -> 87
     //   83: aload_0
-    //   84: invokevirtual 227	java/nio/channels/FileLock:release	()V
+    //   84: invokevirtual 226	java/nio/channels/FileLock:release	()V
     //   87: lload 4
-    //   89: ldc2_w 228
+    //   89: ldc2_w 227
     //   92: lcmp
     //   93: ifeq +8 -> 101
     //   96: lload 4
-    //   98: invokestatic 232	com/tencent/mm/vfs/CopyOnWriteFileSystem$b:unlock	(J)V
+    //   98: invokestatic 231	com/tencent/mm/vfs/CopyOnWriteFileSystem$b:unlock	(J)V
     //   101: aload 11
-    //   103: invokestatic 141	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   103: invokestatic 140	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
     //   106: sipush 13088
-    //   109: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   112: iload_2
     //   113: ireturn
     //   114: aload_0
-    //   115: invokevirtual 235	java/lang/String:hashCode	()I
+    //   115: invokevirtual 234	java/lang/String:hashCode	()I
     //   118: i2l
     //   119: lstore 4
     //   121: aload_0
-    //   122: invokevirtual 163	java/lang/String:length	()I
+    //   122: invokevirtual 162	java/lang/String:length	()I
     //   125: istore_3
     //   126: lload 4
     //   128: iload_3
@@ -347,21 +347,21 @@ public class CopyOnWriteFileSystem
     //   162: istore_2
     //   163: aload 11
     //   165: lload 8
-    //   167: invokevirtual 238	java/io/RandomAccessFile:setLength	(J)V
+    //   167: invokevirtual 237	java/io/RandomAccessFile:setLength	(J)V
     //   170: aload_0
     //   171: ifnull +7 -> 178
     //   174: aload_0
-    //   175: invokevirtual 227	java/nio/channels/FileLock:release	()V
+    //   175: invokevirtual 226	java/nio/channels/FileLock:release	()V
     //   178: lload 4
-    //   180: ldc2_w 228
+    //   180: ldc2_w 227
     //   183: lcmp
     //   184: ifeq +8 -> 192
     //   187: lload 4
-    //   189: invokestatic 232	com/tencent/mm/vfs/CopyOnWriteFileSystem$b:unlock	(J)V
+    //   189: invokestatic 231	com/tencent/mm/vfs/CopyOnWriteFileSystem$b:unlock	(J)V
     //   192: aload 11
-    //   194: invokestatic 141	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   194: invokestatic 140	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
     //   197: sipush 13088
-    //   200: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   200: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   203: iload_1
     //   204: ireturn
     //   205: iload_1
@@ -371,7 +371,7 @@ public class CopyOnWriteFileSystem
     //   212: astore 10
     //   214: aconst_null
     //   215: astore_0
-    //   216: ldc2_w 228
+    //   216: ldc2_w 227
     //   219: lstore 4
     //   221: aconst_null
     //   222: astore 11
@@ -381,47 +381,47 @@ public class CopyOnWriteFileSystem
     //   229: lstore 6
     //   231: aload 11
     //   233: astore 12
-    //   235: ldc 143
+    //   235: ldc 142
     //   237: aload 10
-    //   239: ldc 240
-    //   241: invokestatic 243	com/tencent/stubs/logger/Log:e	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   239: ldc 239
+    //   241: invokestatic 242	com/tencent/stubs/logger/Log:e	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
     //   244: aload_0
     //   245: ifnull +7 -> 252
     //   248: aload_0
-    //   249: invokevirtual 227	java/nio/channels/FileLock:release	()V
+    //   249: invokevirtual 226	java/nio/channels/FileLock:release	()V
     //   252: lload 4
-    //   254: ldc2_w 228
+    //   254: ldc2_w 227
     //   257: lcmp
     //   258: ifeq +8 -> 266
     //   261: lload 4
-    //   263: invokestatic 232	com/tencent/mm/vfs/CopyOnWriteFileSystem$b:unlock	(J)V
+    //   263: invokestatic 231	com/tencent/mm/vfs/CopyOnWriteFileSystem$b:unlock	(J)V
     //   266: aload 11
-    //   268: invokestatic 141	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   268: invokestatic 140	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
     //   271: sipush 13088
-    //   274: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   274: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   277: iload_2
     //   278: ireturn
     //   279: astore_0
     //   280: aconst_null
     //   281: astore 10
-    //   283: ldc2_w 228
+    //   283: ldc2_w 227
     //   286: lstore 4
     //   288: aconst_null
     //   289: astore 11
     //   291: aload 10
     //   293: ifnull +8 -> 301
     //   296: aload 10
-    //   298: invokevirtual 227	java/nio/channels/FileLock:release	()V
+    //   298: invokevirtual 226	java/nio/channels/FileLock:release	()V
     //   301: lload 4
-    //   303: ldc2_w 228
+    //   303: ldc2_w 227
     //   306: lcmp
     //   307: ifeq +8 -> 315
     //   310: lload 4
-    //   312: invokestatic 232	com/tencent/mm/vfs/CopyOnWriteFileSystem$b:unlock	(J)V
+    //   312: invokestatic 231	com/tencent/mm/vfs/CopyOnWriteFileSystem$b:unlock	(J)V
     //   315: aload 11
-    //   317: invokestatic 141	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   317: invokestatic 140	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
     //   320: sipush 13088
-    //   323: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   323: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   326: aload_0
     //   327: athrow
     //   328: astore_0
@@ -435,7 +435,7 @@ public class CopyOnWriteFileSystem
     //   345: astore_0
     //   346: aconst_null
     //   347: astore 10
-    //   349: ldc2_w 228
+    //   349: ldc2_w 227
     //   352: lstore 4
     //   354: goto -63 -> 291
     //   357: astore_0
@@ -453,7 +453,7 @@ public class CopyOnWriteFileSystem
     //   380: astore 10
     //   382: aconst_null
     //   383: astore_0
-    //   384: ldc2_w 228
+    //   384: ldc2_w 227
     //   387: lstore 4
     //   389: goto -165 -> 224
     //   392: astore 10
@@ -502,7 +502,7 @@ public class CopyOnWriteFileSystem
     //   163	170	399	java/io/IOException
   }
   
-  private static void lU(String paramString1, String paramString2)
+  private static void mu(String paramString1, String paramString2)
   {
     AppMethodBeat.i(13074);
     try
@@ -520,7 +520,16 @@ public class CopyOnWriteFileSystem
     }
   }
   
-  public final ReadableByteChannel aSc(String paramString)
+  public final boolean CA(String paramString)
+  {
+    AppMethodBeat.i(13082);
+    boolean bool1 = dc(paramString, false);
+    boolean bool2 = ((NativeFileSystem)this.Ljf).CA(paramString);
+    AppMethodBeat.o(13082);
+    return bool2 | bool1;
+  }
+  
+  public final ReadableByteChannel aYb(String paramString)
   {
     AppMethodBeat.i(13073);
     paramString = openRead(paramString);
@@ -535,27 +544,27 @@ public class CopyOnWriteFileSystem
     return paramString;
   }
   
-  public final ByteChannel aSd(String paramString)
+  public final ByteChannel aYc(String paramString)
   {
     AppMethodBeat.i(13078);
-    cX(paramString, true);
-    paramString = ((NativeFileSystem)this.JrA).aSd(paramString);
+    dc(paramString, true);
+    paramString = ((NativeFileSystem)this.Ljf).aYc(paramString);
     AppMethodBeat.o(13078);
     return paramString;
   }
   
-  public final FileSystem.b aSe(String paramString)
+  public final FileSystem.b aYd(String paramString)
   {
     AppMethodBeat.i(13070);
-    paramString = ((NativeFileSystem)this.JrA).aSe(paramString);
+    paramString = ((NativeFileSystem)this.Ljf).aYd(paramString);
     AppMethodBeat.o(13070);
     return paramString;
   }
   
-  public final boolean aSf(String paramString)
+  public final boolean aYe(String paramString)
   {
     AppMethodBeat.i(13079);
-    if ((((NativeFileSystem)this.JrA).aSf(paramString)) || (((NativeFileSystem)this.JrA).aSf(paramString + '​')))
+    if ((((NativeFileSystem)this.Ljf).aYe(paramString)) || (((NativeFileSystem)this.Ljf).aYe(paramString + '​')))
     {
       AppMethodBeat.o(13079);
       return true;
@@ -564,29 +573,29 @@ public class CopyOnWriteFileSystem
     return false;
   }
   
-  public final FileSystem.a aSg(String paramString)
+  public final FileSystem.a aYf(String paramString)
   {
     AppMethodBeat.i(13080);
-    Object localObject1 = ((NativeFileSystem)this.JrA).aSg(paramString);
+    Object localObject1 = ((NativeFileSystem)this.Ljf).aYf(paramString);
     if (localObject1 != null)
     {
       AppMethodBeat.o(13080);
       return localObject1;
     }
-    Object localObject2 = ((NativeFileSystem)this.JrA).aSg(paramString + '​');
+    Object localObject2 = ((NativeFileSystem)this.Ljf).aYf(paramString + '​');
     if (localObject2 == null)
     {
       AppMethodBeat.o(13080);
       return null;
     }
-    paramString = aSj(((FileSystem.a)localObject2).Gnx);
-    localObject1 = aSi(paramString);
+    paramString = aYi(((FileSystem.a)localObject2).HZk);
+    localObject1 = aYh(paramString);
     if (localObject1 == null)
     {
       AppMethodBeat.o(13080);
       return null;
     }
-    localObject2 = aSj(((FileSystem.a)localObject2).name);
+    localObject2 = aYi(((FileSystem.a)localObject2).name);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramString = a.a((String)localObject1, this, paramString, (String)localObject2);
@@ -611,27 +620,27 @@ public class CopyOnWriteFileSystem
     return false;
   }
   
-  public final void bS(Map<String, String> arg1)
+  public final void bY(Map<String, String> arg1)
   {
     AppMethodBeat.i(13086);
-    ((NativeFileSystem)this.JrA).bS(???);
-    ??? = ((NativeFileSystem)this.JrA).JsQ;
+    ((NativeFileSystem)this.Ljf).bY(???);
+    ??? = ((NativeFileSystem)this.Ljf).Lkv;
     if (??? != null)
     {
       ??? = ??? + '/' + ".cow/";
-      if (!???.equals(((NativeFileSystem)this.JrA).cV(".cow/", false)))
+      if (!???.equals(((NativeFileSystem)this.Ljf).da(".cow/", false)))
       {
-        ??? = new RuntimeException("realPath is illegal with filesystem: " + ((NativeFileSystem)this.JrA).toString());
+        ??? = new RuntimeException("realPath is illegal with filesystem: " + ((NativeFileSystem)this.Ljf).toString());
         AppMethodBeat.o(13086);
         throw ???;
       }
-      if (!???.equals(this.JrV))
+      if (!???.equals(this.LjA))
       {
-        this.JrV = ???;
-        new File(this.JrV).mkdirs();
-        synchronized (this.JrW)
+        this.LjA = ???;
+        new File(this.LjA).mkdirs();
+        synchronized (this.LjB)
         {
-          this.JrW.clear();
+          this.LjB.clear();
           AppMethodBeat.o(13086);
           return;
         }
@@ -640,10 +649,10 @@ public class CopyOnWriteFileSystem
     AppMethodBeat.o(13086);
   }
   
-  public final WritableByteChannel cR(String paramString, boolean paramBoolean)
+  public final WritableByteChannel cW(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(13077);
-    paramString = cS(paramString, paramBoolean);
+    paramString = cX(paramString, paramBoolean);
     if ((paramString instanceof FileOutputStream))
     {
       paramString = ((FileOutputStream)paramString).getChannel();
@@ -655,16 +664,16 @@ public class CopyOnWriteFileSystem
     return paramString;
   }
   
-  public final OutputStream cS(String paramString, boolean paramBoolean)
+  public final OutputStream cX(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(13076);
-    cX(paramString, paramBoolean);
-    paramString = ((NativeFileSystem)this.JrA).cS(paramString, paramBoolean);
+    dc(paramString, paramBoolean);
+    paramString = ((NativeFileSystem)this.Ljf).cX(paramString, paramBoolean);
     AppMethodBeat.o(13076);
     return paramString;
   }
   
-  public final Iterable<FileSystem.a> cT(String paramString, boolean paramBoolean)
+  public final Iterable<FileSystem.a> cY(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(13083);
     paramString = new UnsupportedOperationException();
@@ -672,39 +681,20 @@ public class CopyOnWriteFileSystem
     throw paramString;
   }
   
-  public final boolean cU(String paramString, boolean paramBoolean)
+  public final boolean cZ(String paramString, boolean paramBoolean)
   {
     return false;
   }
   
-  public final String cV(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(13084);
-    String str = ((NativeFileSystem)this.JrA).cV(paramString, paramBoolean);
-    if ((paramBoolean) || (new File(str).exists()))
-    {
-      AppMethodBeat.o(13084);
-      return str;
-    }
-    paramString = aSi(paramString);
-    if (new File(paramString).exists())
-    {
-      AppMethodBeat.o(13084);
-      return paramString;
-    }
-    AppMethodBeat.o(13084);
-    return str;
-  }
-  
-  public final boolean ch(String paramString, long paramLong)
+  public final boolean cn(String paramString, long paramLong)
   {
     AppMethodBeat.i(13081);
-    if (((NativeFileSystem)this.JrA).ch(paramString, paramLong))
+    if (((NativeFileSystem)this.Ljf).cn(paramString, paramLong))
     {
       AppMethodBeat.o(13081);
       return true;
     }
-    boolean bool = ((NativeFileSystem)this.JrA).ch(paramString + '​', paramLong);
+    boolean bool = ((NativeFileSystem)this.Ljf).cn(paramString + '​', paramLong);
     AppMethodBeat.o(13081);
     return bool;
   }
@@ -715,40 +705,59 @@ public class CopyOnWriteFileSystem
     if ((paramFileSystem instanceof CopyOnWriteFileSystem))
     {
       paramFileSystem = (CopyOnWriteFileSystem)paramFileSystem;
-      Object localObject = ((NativeFileSystem)paramFileSystem.JrA).aSg(paramString2);
+      Object localObject = ((NativeFileSystem)paramFileSystem.Ljf).aYf(paramString2);
       if (localObject == null)
       {
-        localObject = paramFileSystem.aSi(paramString2);
+        localObject = paramFileSystem.aYh(paramString2);
         if (localObject == null)
         {
           paramString1 = new FileNotFoundException("File not found: ".concat(String.valueOf(paramString2)));
           AppMethodBeat.o(13085);
           throw paramString1;
         }
-        zB(paramString1);
-        go((String)localObject + '‌', 1);
-        l = ((NativeFileSystem)this.JrA).d(paramString1 + '​', paramFileSystem.JrA, paramString2 + '​');
+        CA(paramString1);
+        gL((String)localObject + '‌', 1);
+        l = ((NativeFileSystem)this.Ljf).d(paramString1 + '​', paramFileSystem.Ljf, paramString2 + '​');
         AppMethodBeat.o(13085);
         return l;
       }
-      if (((FileSystem.a)localObject).size >= this.JrU)
+      if (((FileSystem.a)localObject).size >= this.Ljz)
       {
         AppMethodBeat.o(13085);
         return -1L;
       }
-      l = ((NativeFileSystem)this.JrA).d(paramString1, paramFileSystem.JrA, paramString2);
+      l = ((NativeFileSystem)this.Ljf).d(paramString1, paramFileSystem.Ljf, paramString2);
       AppMethodBeat.o(13085);
       return l;
     }
-    long l = ((NativeFileSystem)this.JrA).d(paramString1, paramFileSystem, paramString2);
+    long l = ((NativeFileSystem)this.Ljf).d(paramString1, paramFileSystem, paramString2);
     AppMethodBeat.o(13085);
     return l;
   }
   
-  public final int fxC()
+  public final String da(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(13084);
+    String str = ((NativeFileSystem)this.Ljf).da(paramString, paramBoolean);
+    if ((paramBoolean) || (new File(str).exists()))
+    {
+      AppMethodBeat.o(13084);
+      return str;
+    }
+    paramString = aYh(paramString);
+    if (new File(paramString).exists())
+    {
+      AppMethodBeat.o(13084);
+      return paramString;
+    }
+    AppMethodBeat.o(13084);
+    return str;
+  }
+  
+  public final int fOp()
   {
     AppMethodBeat.i(13069);
-    int i = ((NativeFileSystem)this.JrA).fxC();
+    int i = ((NativeFileSystem)this.Ljf).fOp();
     AppMethodBeat.o(13069);
     return i;
   }
@@ -763,19 +772,19 @@ public class CopyOnWriteFileSystem
     AppMethodBeat.i(13072);
     try
     {
-      Object localObject = ((NativeFileSystem)this.JrA).openRead(paramString);
+      Object localObject = ((NativeFileSystem)this.Ljf).openRead(paramString);
       if (localObject != null)
       {
         AppMethodBeat.o(13072);
         return localObject;
       }
-      localObject = new FileNotFoundException("Filesystem returns null for path: " + paramString + ", FS: " + ((NativeFileSystem)this.JrA).toString());
+      localObject = new FileNotFoundException("Filesystem returns null for path: " + paramString + ", FS: " + ((NativeFileSystem)this.Ljf).toString());
       AppMethodBeat.o(13072);
       throw ((Throwable)localObject);
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      paramString = aSi(paramString);
+      paramString = aYh(paramString);
       if (paramString != null)
       {
         paramString = new NativeFileSystem.c(paramString);
@@ -792,17 +801,8 @@ public class CopyOnWriteFileSystem
     AppMethodBeat.i(13087);
     super.writeToParcel(paramParcel, paramInt);
     q.b(paramParcel, CopyOnWriteFileSystem.class, 1);
-    paramParcel.writeLong(this.JrU);
+    paramParcel.writeLong(this.Ljz);
     AppMethodBeat.o(13087);
-  }
-  
-  public final boolean zB(String paramString)
-  {
-    AppMethodBeat.i(13082);
-    boolean bool1 = cX(paramString, false);
-    boolean bool2 = ((NativeFileSystem)this.JrA).zB(paramString);
-    AppMethodBeat.o(13082);
-    return bool2 | bool1;
   }
   
   @TargetApi(21)
@@ -848,57 +848,10 @@ public class CopyOnWriteFileSystem
       }
     }
   }
-  
-  static final class b
-  {
-    private static final HashSet<Long> JrZ;
-    
-    static
-    {
-      AppMethodBeat.i(13067);
-      JrZ = new HashSet();
-      AppMethodBeat.o(13067);
-    }
-    
-    static void lock(long paramLong)
-    {
-      AppMethodBeat.i(13065);
-      synchronized (JrZ)
-      {
-        for (;;)
-        {
-          boolean bool = JrZ.add(Long.valueOf(paramLong));
-          if (bool) {
-            break;
-          }
-          try
-          {
-            JrZ.wait();
-          }
-          catch (InterruptedException localInterruptedException) {}
-        }
-        AppMethodBeat.o(13065);
-        return;
-      }
-    }
-    
-    static void unlock(long paramLong)
-    {
-      AppMethodBeat.i(13066);
-      synchronized (JrZ)
-      {
-        if (JrZ.remove(Long.valueOf(paramLong))) {
-          JrZ.notifyAll();
-        }
-        AppMethodBeat.o(13066);
-        return;
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.CopyOnWriteFileSystem
  * JD-Core Version:    0.7.0.1
  */

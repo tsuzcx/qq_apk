@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.a;
 
 @a(7)
@@ -22,8 +22,8 @@ public class AppBrandProxyTransparentUI
   {
     AppMethodBeat.i(45408);
     super.onCreate(paramBundle);
-    ac.i("MicroMsg.AppBrandProxyTransparentUI", "onCreate");
-    aj.b(getWindow());
+    ad.i("MicroMsg.AppBrandProxyTransparentUI", "onCreate");
+    al.b(getWindow());
     try
     {
       paramBundle = Class.forName(getIntent().getStringExtra("task_class_name"));
@@ -34,10 +34,10 @@ public class AppBrandProxyTransparentUI
       {
         paramBundle.a(this, new AppBrandProxyTransparentUIProcessTask.a()
         {
-          public final void beh()
+          public final void bhL()
           {
             AppMethodBeat.i(45407);
-            ac.i("MicroMsg.AppBrandProxyTransparentUI", "onResult");
+            ad.i("MicroMsg.AppBrandProxyTransparentUI", "onResult");
             Intent localIntent = new Intent();
             localIntent.putExtra("task_object", paramBundle);
             localIntent.putExtra("task_id", str);
@@ -54,7 +54,7 @@ public class AppBrandProxyTransparentUI
     {
       for (;;)
       {
-        ac.e("MicroMsg.AppBrandProxyTransparentUI", "ClassNotFoundException");
+        ad.e("MicroMsg.AppBrandProxyTransparentUI", "ClassNotFoundException");
         setResult(1);
         finish();
       }
@@ -68,7 +68,7 @@ public class AppBrandProxyTransparentUI
   {
     AppMethodBeat.i(45409);
     super.onDestroy();
-    ac.i("MicroMsg.AppBrandProxyTransparentUI", "onDestroy");
+    ad.i("MicroMsg.AppBrandProxyTransparentUI", "onDestroy");
     AppMethodBeat.o(45409);
   }
   

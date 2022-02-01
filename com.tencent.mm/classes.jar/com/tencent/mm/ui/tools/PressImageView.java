@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ap;
 import junit.framework.Assert;
 
 public class PressImageView
@@ -18,8 +20,8 @@ public class PressImageView
   private int b;
   private int g;
   private int r;
-  private ao yxu;
-  private Runnable yxv;
+  private ap zOG;
+  private Runnable zOH;
   
   public PressImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,8 +31,8 @@ public class PressImageView
     this.r = 0;
     this.g = 0;
     this.b = 0;
-    this.yxu = new ao();
-    this.yxv = new Runnable()
+    this.zOG = new ap();
+    this.zOH = new Runnable()
     {
       public final void run()
       {
@@ -45,21 +47,30 @@ public class PressImageView
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(143212);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        a.b("com/tencent/mm/ui/tools/PressImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
         switch (paramAnonymousMotionEvent.getAction())
         {
+        case 2: 
+        default: 
+          if ((PressImageView.this.isClickable()) || (PressImageView.this.isLongClickable())) {
+            break;
+          }
         }
-        while ((!PressImageView.this.isClickable()) && (!PressImageView.this.isLongClickable()))
+        for (boolean bool = true;; bool = false)
         {
+          a.a(bool, this, "com/tencent/mm/ui/tools/PressImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(143212);
-          return true;
+          return bool;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
           PressImageView.b(PressImageView.this).removeCallbacks(PressImageView.a(PressImageView.this));
-          continue;
+          break;
           PressImageView.b(PressImageView.this).post(PressImageView.a(PressImageView.this));
+          break;
         }
-        AppMethodBeat.o(143212);
-        return false;
       }
     });
     AppMethodBeat.o(143213);
@@ -85,7 +96,7 @@ public class PressImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.PressImageView
  * JD-Core Version:    0.7.0.1
  */

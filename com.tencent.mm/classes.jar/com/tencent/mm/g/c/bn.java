@@ -8,12 +8,15 @@ public abstract class bn
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eAf = "productID".hashCode();
-  private static final int eng = "content".hashCode();
+  private static final int eEm = "content".hashCode();
+  private static final int eRD = "productID".hashCode();
+  private static final int eTO = "lan".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean emI = true;
-  private boolean ezF = true;
+  private boolean eDP = true;
+  private boolean eRd = true;
+  private boolean eTN = true;
   public byte[] field_content;
+  public String field_lan;
   public String field_productID;
   
   public void convertFrom(Cursor paramCursor)
@@ -29,11 +32,11 @@ public abstract class bn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eAf != k) {
+      if (eRD != k) {
         break label65;
       }
       this.field_productID = paramCursor.getString(i);
-      this.ezF = true;
+      this.eRd = true;
     }
     for (;;)
     {
@@ -41,8 +44,10 @@ public abstract class bn
       break label20;
       break;
       label65:
-      if (eng == k) {
+      if (eEm == k) {
         this.field_content = paramCursor.getBlob(i);
+      } else if (eTO == k) {
+        this.field_lan = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +57,17 @@ public abstract class bn
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ezF) {
+    if (this.eRd) {
       localContentValues.put("productID", this.field_productID);
     }
-    if (this.emI) {
+    if (this.eDP) {
       localContentValues.put("content", this.field_content);
+    }
+    if (this.field_lan == null) {
+      this.field_lan = "";
+    }
+    if (this.eTN) {
+      localContentValues.put("lan", this.field_lan);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

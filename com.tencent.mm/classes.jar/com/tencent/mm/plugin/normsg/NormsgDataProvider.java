@@ -10,8 +10,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.normsg.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class NormsgDataProvider
   extends ContentProvider
@@ -25,7 +24,21 @@ public final class NormsgDataProvider
     AppMethodBeat.o(148937);
   }
   
-  private String aom(String paramString)
+  public static String G(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(148934);
+    paramContext = paramContext.getContentResolver().call(CONTENT_URI, "m0", paramString, null);
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getString("result", "");
+      AppMethodBeat.o(148934);
+      return paramContext;
+    }
+    AppMethodBeat.o(148934);
+    return "";
+  }
+  
+  private String atl(String paramString)
   {
     AppMethodBeat.i(148935);
     try
@@ -42,69 +55,55 @@ public final class NormsgDataProvider
     return "";
   }
   
-  private static boolean dku()
+  public static boolean cQ(Context paramContext)
   {
-    AppMethodBeat.i(206472);
-    try
-    {
-      boolean bool = b.vor.dkG();
-      AppMethodBeat.o(206472);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(206472);
-    }
-    return false;
-  }
-  
-  public static String getAPKName(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(148934);
-    paramContext = paramContext.getContentResolver().call(CONTENT_URI, "m0", paramString, null);
-    if (paramContext != null)
-    {
-      paramContext = paramContext.getString("result", "");
-      AppMethodBeat.o(148934);
-      return paramContext;
-    }
-    AppMethodBeat.o(148934);
-    return "";
-  }
-  
-  public static boolean getPhoneState(Context paramContext)
-  {
-    AppMethodBeat.i(206471);
+    AppMethodBeat.i(219052);
     paramContext = paramContext.getContentResolver().call(CONTENT_URI, "m1", null, null);
     if (paramContext != null)
     {
       boolean bool = paramContext.getBoolean("result", false);
-      AppMethodBeat.o(206471);
+      AppMethodBeat.o(219052);
       return bool;
     }
-    AppMethodBeat.o(206471);
+    AppMethodBeat.o(219052);
+    return false;
+  }
+  
+  private static boolean duG()
+  {
+    AppMethodBeat.i(219053);
+    try
+    {
+      boolean bool = com.tencent.mm.plugin.normsg.a.b.wtJ.duS();
+      AppMethodBeat.o(219053);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(219053);
+    }
     return false;
   }
   
   public final Bundle call(String paramString1, String paramString2, Bundle paramBundle)
   {
     AppMethodBeat.i(148936);
-    ac.i("MicroMsg.NormsgDP", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
+    ad.i("MicroMsg.NormsgDP", "invoke method: %s, with arg: %s, extras: %s", new Object[] { paramString1, paramString2, paramBundle });
     if ("m0".equals(paramString1))
     {
       paramString1 = new Bundle();
-      paramString1.putString("result", aom(paramString2));
+      paramString1.putString("result", atl(paramString2));
       AppMethodBeat.o(148936);
       return paramString1;
     }
     if ("m1".equals(paramString1))
     {
       paramString1 = new Bundle();
-      paramString1.putBoolean("result", dku());
+      paramString1.putBoolean("result", duG());
       AppMethodBeat.o(148936);
       return paramString1;
     }
-    ac.w("MicroMsg.NormsgDP", "unknown method: %s", new Object[] { paramString1 });
+    ad.w("MicroMsg.NormsgDP", "unknown method: %s", new Object[] { paramString1 });
     AppMethodBeat.o(148936);
     return null;
   }
@@ -126,6 +125,9 @@ public final class NormsgDataProvider
   
   public final boolean onCreate()
   {
+    AppMethodBeat.i(219051);
+    com.tencent.mm.plugin.normsg.a.b.a(b.wty);
+    AppMethodBeat.o(219051);
     return true;
   }
   
@@ -141,7 +143,7 @@ public final class NormsgDataProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.NormsgDataProvider
  * JD-Core Version:    0.7.0.1
  */

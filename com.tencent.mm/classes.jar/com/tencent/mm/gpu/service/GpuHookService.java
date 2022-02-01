@@ -5,13 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.plugin.rubbishbin.JNIExceptionHandler;
 import com.tencent.mm.plugin.rubbishbin.JNIExceptionHandlerImpl;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,14 +23,14 @@ public abstract class GpuHookService
   extends Service
   implements Runnable
 {
-  private int gaC = 1000;
-  private int gaD = 0;
-  private Thread gaE;
-  private a gaF;
-  private String gaG = "default";
+  private int gub = 1000;
+  private int guc = 0;
+  private Thread gud;
+  private a gue;
+  private String guf = "default";
   private int repeatMode = 1;
   
-  public static void G(Context paramContext, String paramString)
+  public static void F(Context paramContext, String paramString)
   {
     try
     {
@@ -42,58 +44,59 @@ public abstract class GpuHookService
     catch (Exception paramContext) {}
   }
   
-  public abstract void ael();
+  public abstract void agS();
   
   public IBinder onBind(Intent paramIntent)
   {
-    ac.e("Gpu.GpuHookService", "start GpuHookService of bindService");
+    ad.e("Gpu.GpuHookService", "start GpuHookService of bindService");
+    new Handler(Looper.myLooper()).postDelayed(new GpuHookService.1(this), 120000L);
     return null;
   }
   
   public void onCreate()
   {
-    ac.e("Gpu.GpuHookService", "GpuHookService create start");
-    if (this.gaF == null)
+    ad.e("Gpu.GpuHookService", "GpuHookService create start");
+    if (this.gue == null)
     {
-      ac.e("Gpu.GpuHookService", "exceptionHandler init");
-      this.gaF = new a(this);
+      ad.e("Gpu.GpuHookService", "exceptionHandler init");
+      this.gue = new a(this);
     }
-    Thread.setDefaultUncaughtExceptionHandler(this.gaF);
-    this.gaE = new Thread(this);
+    Thread.setDefaultUncaughtExceptionHandler(this.gue);
+    this.gud = new Thread(this);
     JNIExceptionHandlerImpl.initJNIExceptionHandler(this, "Gpu.GpuHookService");
     JNIExceptionHandler.init();
-    ac.e("Gpu.GpuHookService", "GpuHookService create finish");
+    ad.e("Gpu.GpuHookService", "GpuHookService create finish");
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    ac.e("Gpu.GpuHookService", "GpuHookService startCommand start");
+    ad.e("Gpu.GpuHookService", "GpuHookService startCommand start");
     if (paramIntent != null)
     {
-      this.gaD = paramIntent.getIntExtra("exec_time", 0);
-      this.gaC = paramIntent.getIntExtra("interval", -1);
-      this.gaG = paramIntent.getStringExtra("exec_tag");
+      this.guc = paramIntent.getIntExtra("exec_time", 0);
+      this.gub = paramIntent.getIntExtra("interval", -1);
+      this.guf = paramIntent.getStringExtra("exec_tag");
     }
-    this.gaE.setName(this.gaG);
-    JNIExceptionHandler.INSTANCE.setReportExecutionTag(this.gaG);
-    switch (this.gaD)
+    this.gud.setName(this.guf);
+    JNIExceptionHandler.INSTANCE.setReportExecutionTag(this.guf);
+    switch (this.guc)
     {
     }
-    for (this.repeatMode = 1; this.gaC == -1; this.repeatMode = this.gaD)
+    for (this.repeatMode = 1; this.gub == -1; this.repeatMode = this.guc)
     {
       stopSelf();
       return super.onStartCommand(paramIntent, paramInt1, paramInt2);
     }
-    if (!this.gaE.isAlive()) {
-      h.JZN.aV(this);
+    if (!this.gud.isAlive()) {
+      h.LTJ.aU(this);
     }
-    ac.e("Gpu.GpuHookService", "GpuHookService startCommand finish");
+    ad.e("Gpu.GpuHookService", "GpuHookService startCommand finish");
     return super.onStartCommand(paramIntent, paramInt1, paramInt2);
   }
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = getSharedPreferences("sp_gpuhook_service", g.YK());
+    SharedPreferences localSharedPreferences = getSharedPreferences("sp_gpuhook_service", g.abm());
     Object localObject = Calendar.getInstance().getTime();
     String str1 = new SimpleDateFormat("yyyyMMdd").format((Date)localObject);
     String str2 = localSharedPreferences.getString("LastExecDate", "00000000");
@@ -103,20 +106,20 @@ public abstract class GpuHookService
       localSharedPreferences.edit().putString("GpuHookTag", "N/A").putString("LastExecDate", str1).apply();
       localObject = "N/A";
     }
-    if ((Objects.equals(localObject, this.gaG)) && (this.repeatMode != -1))
+    if ((Objects.equals(localObject, this.guf)) && (this.repeatMode != -1))
     {
-      if (localSharedPreferences.getInt("GpuHookCount", this.gaD) <= 0)
+      if (localSharedPreferences.getInt("GpuHookCount", this.guc) <= 0)
       {
         this.repeatMode = 0;
         stopSelf();
       }
     }
     else {
-      localSharedPreferences.edit().putInt("GpuHookCount", this.gaD).apply();
+      localSharedPreferences.edit().putInt("GpuHookCount", this.guc).apply();
     }
-    localSharedPreferences.edit().putString("GpuHookTag", this.gaG).apply();
-    this.gaD = localSharedPreferences.getInt("GpuHookCount", this.gaD);
-    ac.i("Gpu.GpuHookService", "[sunny]dt:%s,cnt:%d,t:%s", new Object[] { str1, Integer.valueOf(this.gaD), this.gaG });
+    localSharedPreferences.edit().putString("GpuHookTag", this.guf).apply();
+    this.guc = localSharedPreferences.getInt("GpuHookCount", this.guc);
+    ad.i("Gpu.GpuHookService", "[sunny]dt:%s,cnt:%d,t:%s", new Object[] { str1, Integer.valueOf(this.guc), this.guf });
     for (;;)
     {
       if (this.repeatMode == 0) {
@@ -126,14 +129,14 @@ public abstract class GpuHookService
       {
         stopSelf();
         return;
-        this.gaD -= 1;
-        localSharedPreferences.edit().putInt("GpuHookCount", this.gaD).apply();
-        ac.i("Gpu.GpuHookService", "e!");
-        ael();
-      } while ((this.gaD == 0) && (this.repeatMode != -1));
+        this.guc -= 1;
+        localSharedPreferences.edit().putInt("GpuHookCount", this.guc).apply();
+        ad.i("Gpu.GpuHookService", "e!");
+        agS();
+      } while ((this.guc == 0) && (this.repeatMode != -1));
       try
       {
-        Thread.sleep(this.gaC);
+        Thread.sleep(this.gub);
       }
       catch (InterruptedException localInterruptedException) {}
     }

@@ -5,45 +5,34 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 public final class g
   extends com.tencent.mm.plugin.topstory.ui.video.g
 {
-  private View AfV;
-  private a AfW;
-  au Afd;
+  av BwP;
+  private View BxH;
+  private a BxI;
   
   public g(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(126476);
-    this.AfV = this.contentView.findViewById(2131300326);
+    this.BxH = this.contentView.findViewById(2131300326);
     AppMethodBeat.o(126476);
   }
   
-  public final void bOg()
+  public final void bSH()
   {
     AppMethodBeat.i(126481);
-    if (this.Afd != null) {
-      this.Afd.stopTimer();
+    if (this.BwP != null) {
+      this.BwP.stopTimer();
     }
     AppMethodBeat.o(126481);
   }
   
-  public final void bjC()
-  {
-    AppMethodBeat.i(126482);
-    if (this.Afd != null)
-    {
-      this.Afd.stopTimer();
-      this.Afd.au(2000L, 2000L);
-    }
-    AppMethodBeat.o(126482);
-  }
-  
-  public final boolean bjw()
+  public final boolean bni()
   {
     AppMethodBeat.i(126478);
     if (getVisibility() == 0)
@@ -55,34 +44,45 @@ public final class g
     return false;
   }
   
-  public final void bkN()
+  public final void bno()
+  {
+    AppMethodBeat.i(126482);
+    if (this.BwP != null)
+    {
+      this.BwP.stopTimer();
+      this.BwP.az(2000L, 2000L);
+    }
+    AppMethodBeat.o(126482);
+  }
+  
+  public final void boy()
   {
     AppMethodBeat.i(126487);
-    super.bkN();
-    if (this.AfW != null) {
-      this.AfW.update(this.mPosition, getVideoTotalTime());
+    super.boy();
+    if (this.BxI != null) {
+      this.BxI.update(this.mPosition, getVideoTotalTime());
     }
     AppMethodBeat.o(126487);
   }
   
-  public final void eet()
+  public final void eqK()
   {
     AppMethodBeat.i(126484);
-    this.kUw.setVisibility(8);
+    this.lru.setVisibility(8);
     AppMethodBeat.o(126484);
   }
   
-  public final void eeu()
+  public final void eqL()
   {
     AppMethodBeat.i(126485);
-    this.kUw.setVisibility(0);
+    this.lru.setVisibility(0);
     AppMethodBeat.o(126485);
   }
   
   public final int getBarPointWidth()
   {
     AppMethodBeat.i(126483);
-    int i = this.kUv.getWidth();
+    int i = this.lrt.getWidth();
     AppMethodBeat.o(126483);
     return i;
   }
@@ -94,21 +94,21 @@ public final class g
   
   public final void hide()
   {
-    AppMethodBeat.i(210288);
+    AppMethodBeat.i(221368);
     setVisibility(8);
-    AppMethodBeat.o(210288);
+    AppMethodBeat.o(221368);
   }
   
   public final void setFullScreenBtnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(126477);
-    this.AfV.setOnClickListener(paramOnClickListener);
+    this.BxH.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(126477);
   }
   
   public final void setOnUpdateProgressLenListener(a parama)
   {
-    this.AfW = parama;
+    this.BxI = parama;
   }
   
   public final void setVisibility(int paramInt)
@@ -117,14 +117,14 @@ public final class g
     super.setVisibility(paramInt);
     if ((paramInt == 8) || (paramInt == 4))
     {
-      if (this.AfW != null)
+      if (this.BxI != null)
       {
-        this.AfW.ees();
+        this.BxI.eqJ();
         AppMethodBeat.o(126486);
       }
     }
-    else if ((paramInt == 0) && (this.AfW != null)) {
-      this.AfW.eer();
+    else if ((paramInt == 0) && (this.BxI != null)) {
+      this.BxI.eqI();
     }
     AppMethodBeat.o(126486);
   }
@@ -133,9 +133,9 @@ public final class g
   {
     AppMethodBeat.i(126480);
     setVisibility(0);
-    eeu();
-    if (this.Afd == null) {
-      this.Afd = new au(new au.a()
+    eqL();
+    if (this.BwP == null) {
+      this.BwP = new av(new av.a()
       {
         public final boolean onTimerExpired()
         {
@@ -147,16 +147,16 @@ public final class g
         }
       }, false);
     }
-    this.Afd.stopTimer();
-    this.Afd.au(2000L, 2000L);
+    this.BwP.stopTimer();
+    this.BwP.az(2000L, 2000L);
     AppMethodBeat.o(126480);
   }
   
   public static abstract interface a
   {
-    public abstract void eer();
+    public abstract void eqI();
     
-    public abstract void ees();
+    public abstract void eqJ();
     
     public abstract void update(int paramInt1, int paramInt2);
   }

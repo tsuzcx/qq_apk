@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.groupsolitaire.c.a;
 
 public abstract interface c
 {
-  public abstract void aik(String paramString);
+  public abstract void amX(String paramString);
   
   public abstract void c(a parama, String paramString);
   

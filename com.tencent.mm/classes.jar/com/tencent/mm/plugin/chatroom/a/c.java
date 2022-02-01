@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.chatroom.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.model.aj;
+import com.tencent.mm.model.ak;
 import com.tencent.mm.storagebase.h;
 
 public abstract interface c
   extends a
 {
-  public abstract boolean VR(String paramString);
+  public abstract boolean ZA(String paramString);
   
-  public abstract aj awK();
+  public abstract ak azz();
   
-  public abstract aj c(h paramh);
+  public abstract ak b(h paramh);
   
   public abstract void setDebugMode(boolean paramBoolean);
 }

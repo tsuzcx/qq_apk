@@ -6,26 +6,26 @@ import android.media.MediaFormat;
 import com.tencent.e.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.h.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 
 @TargetApi(16)
 public final class t
   implements h
 {
+  public MediaFormat audioFormat;
   public String path;
   public int position;
-  public MediaFormat sLm;
-  public MediaFormat sLn;
-  public GalleryItem.VideoMediaItem sLo;
-  public a sLp;
+  public GalleryItem.VideoMediaItem tHV;
+  public a tHW;
+  public MediaFormat videoFormat;
   
   public t(String paramString, int paramInt, GalleryItem.VideoMediaItem paramVideoMediaItem, a parama)
   {
     this.path = paramString;
     this.position = paramInt;
-    this.sLo = paramVideoMediaItem;
-    this.sLp = parama;
+    this.tHV = paramVideoMediaItem;
+    this.tHW = parama;
   }
   
   public final boolean equals(Object paramObject)
@@ -54,40 +54,40 @@ public final class t
       int i;
       try
       {
-        localc.sI(this.path);
-        int j = localc.fKr.getTrackCount();
+        localc.vx(this.path);
+        int j = localc.gdS.getTrackCount();
         i = 0;
         if (i < j)
         {
           localObject1 = localc.getTrackFormat(i);
           if (!((MediaFormat)localObject1).containsKey("mime"))
           {
-            ac.d("VideoAnalysisTask", "find video mime : not found.");
+            ad.d("VideoAnalysisTask", "find video mime : not found.");
             break label602;
           }
           localObject3 = ((MediaFormat)localObject1).getString("mime");
-          ac.d("VideoAnalysisTask", "find video mime : %s", new Object[] { localObject3 });
+          ad.d("VideoAnalysisTask", "find video mime : %s", new Object[] { localObject3 });
           if (localObject3 == null) {
             break label602;
           }
           if (!((String)localObject3).startsWith("video/")) {
             continue;
           }
-          if (this.sLm == null) {
-            this.sLm = ((MediaFormat)localObject1);
+          if (this.videoFormat == null) {
+            this.videoFormat = ((MediaFormat)localObject1);
           }
-          if ((this.sLn == null) || (this.sLm == null)) {
+          if ((this.audioFormat == null) || (this.videoFormat == null)) {
             break label602;
           }
         }
-        if (this.sLo == null) {
+        if (this.tHV == null) {
           continue;
         }
-        if (this.sLm == null) {
+        if (this.videoFormat == null) {
           continue;
         }
-        localObject1 = this.sLo;
-        if (this.sLm.containsKey("durationUs")) {
+        localObject1 = this.tHV;
+        if (this.videoFormat.containsKey("durationUs")) {
           continue;
         }
         i = 0;
@@ -96,96 +96,96 @@ public final class t
       {
         Object localObject1;
         Object localObject3;
-        ac.d("VideoAnalysisTask", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { this.path, localException.getMessage() });
-        localc.fKr.release();
+        ad.d("VideoAnalysisTask", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { this.path, localException.getMessage() });
+        localc.gdS.release();
         continue;
-        i = (int)(this.sLm.getLong("durationUs") / 1000L);
+        i = (int)(this.videoFormat.getLong("durationUs") / 1000L);
         continue;
-        i = this.sLm.getInteger("height");
+        i = this.videoFormat.getInteger("height");
         continue;
-        i = this.sLm.getInteger("width");
+        i = this.videoFormat.getInteger("width");
         continue;
-        String str = this.sLm.getString("mime");
+        String str = this.videoFormat.getString("mime");
         continue;
-        i = this.sLm.getInteger("bitrate");
+        i = this.videoFormat.getInteger("bitrate");
         continue;
-        i = this.sLm.getInteger("i-frame-interval");
+        i = this.videoFormat.getInteger("i-frame-interval");
         continue;
-        i = this.sLm.getInteger("frame-rate");
+        i = this.videoFormat.getInteger("frame-rate");
         continue;
-        str = this.sLn.getString("mime");
+        str = this.audioFormat.getString("mime");
         continue;
       }
       finally
       {
-        localc.fKr.release();
+        localc.gdS.release();
         AppMethodBeat.o(111378);
       }
-      ((GalleryItem.VideoMediaItem)localObject1).hTw = i;
-      localObject1 = this.sLo;
-      if (!this.sLm.containsKey("height"))
+      ((GalleryItem.VideoMediaItem)localObject1).imR = i;
+      localObject1 = this.tHV;
+      if (!this.videoFormat.containsKey("height"))
       {
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoHeight = i;
-        localObject1 = this.sLo;
-        if (this.sLm.containsKey("width")) {
+        localObject1 = this.tHV;
+        if (this.videoFormat.containsKey("width")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoWidth = i;
-        localObject3 = this.sLo;
-        if (this.sLm.containsKey("mime")) {
+        localObject3 = this.tHV;
+        if (this.videoFormat.containsKey("mime")) {
           continue;
         }
         localObject1 = "";
-        ((GalleryItem.VideoMediaItem)localObject3).hTu = ((String)localObject1);
-        localObject1 = this.sLo;
-        if (this.sLm.containsKey("bitrate")) {
+        ((GalleryItem.VideoMediaItem)localObject3).imP = ((String)localObject1);
+        localObject1 = this.tHV;
+        if (this.videoFormat.containsKey("bitrate")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoBitRate = i;
-        localObject1 = this.sLo;
-        if (this.sLm.containsKey("i-frame-interval")) {
+        localObject1 = this.tHV;
+        if (this.videoFormat.containsKey("i-frame-interval")) {
           continue;
         }
         i = 0;
-        ((GalleryItem.VideoMediaItem)localObject1).hTx = i;
-        localObject1 = this.sLo;
-        if (this.sLm.containsKey("frame-rate")) {
+        ((GalleryItem.VideoMediaItem)localObject1).videoIFrameInterval = i;
+        localObject1 = this.tHV;
+        if (this.videoFormat.containsKey("frame-rate")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoFrameRate = i;
-        if (this.sLn != null)
+        if (this.audioFormat != null)
         {
-          localObject3 = this.sLo;
-          if (this.sLn.containsKey("mime")) {
+          localObject3 = this.tHV;
+          if (this.audioFormat.containsKey("mime")) {
             continue;
           }
           localObject1 = "";
-          ((GalleryItem.VideoMediaItem)localObject3).hTv = ((String)localObject1);
+          ((GalleryItem.VideoMediaItem)localObject3).imQ = ((String)localObject1);
         }
-        localc.fKr.release();
-        if (this.sLp != null) {
+        localc.gdS.release();
+        if (this.tHW != null) {
           break label585;
         }
-        ac.d("VideoAnalysisTask", "video analysis end. observer == null, position = [%d], mediaItem = [%s]", new Object[] { Integer.valueOf(this.position), this.sLo });
+        ad.d("VideoAnalysisTask", "video analysis end. observer == null, position = [%d], mediaItem = [%s]", new Object[] { Integer.valueOf(this.position), this.tHV });
         AppMethodBeat.o(111378);
         return;
-        if ((!((String)localObject3).startsWith("audio/")) || (this.sLn != null)) {
+        if ((!((String)localObject3).startsWith("audio/")) || (this.audioFormat != null)) {
           continue;
         }
-        this.sLn = ((MediaFormat)localObject1);
+        this.audioFormat = ((MediaFormat)localObject1);
       }
       label585:
-      ap.f(new Runnable()
+      aq.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(111377);
-          if (t.this.sLp != null) {
-            t.this.sLp.a(t.this);
+          if (t.this.tHW != null) {
+            t.this.tHW.a(t.this);
           }
           AppMethodBeat.o(111377);
         }

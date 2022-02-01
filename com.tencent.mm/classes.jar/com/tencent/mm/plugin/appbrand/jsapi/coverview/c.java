@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -13,15 +12,18 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.base.d;
+import com.tencent.mm.plugin.appbrand.jsapi.base.i;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class c
-  extends com.tencent.mm.plugin.appbrand.jsapi.base.c
+  extends d
 {
   public static final int CTRL_INDEX = 342;
   public static final String NAME = "animateCoverView";
@@ -34,7 +36,7 @@ public final class c
     return i;
   }
   
-  public final boolean b(e parame, int paramInt, final View paramView, JSONObject paramJSONObject, final com.tencent.mm.plugin.appbrand.jsapi.base.g paramg)
+  public final boolean b(e parame, int paramInt, View paramView, JSONObject paramJSONObject, final i parami)
   {
     AppMethodBeat.i(137520);
     int i = -1;
@@ -44,8 +46,8 @@ public final class c
       try
       {
         parame = paramJSONObject.getJSONObject("finalStyle");
-        float f1 = com.tencent.mm.plugin.appbrand.z.g.a(parame, "left", com.tencent.mm.plugin.appbrand.z.g.aF(paramView.getX()));
-        float f2 = com.tencent.mm.plugin.appbrand.z.g.a(parame, "top", com.tencent.mm.plugin.appbrand.z.g.aF(paramView.getY()));
+        float f1 = g.a(parame, "left", g.aI(paramView.getX()));
+        float f2 = g.a(parame, "top", g.aI(paramView.getY()));
         float f3 = (float)parame.optDouble("opacity", paramView.getAlpha());
         float f4 = (float)parame.optDouble("rotate", paramView.getRotation());
         float f5 = (float)parame.optDouble("scaleX", paramView.getScaleX());
@@ -53,9 +55,9 @@ public final class c
         if (!parame.has("width")) {
           break label638;
         }
-        paramInt = com.tencent.mm.plugin.appbrand.z.g.a(parame, "width", com.tencent.mm.plugin.appbrand.z.g.vd(paramView.getWidth()));
+        paramInt = g.a(parame, "width", g.vI(paramView.getWidth()));
         if (parame.has("height")) {
-          i = com.tencent.mm.plugin.appbrand.z.g.a(parame, "height", com.tencent.mm.plugin.appbrand.z.g.vd(paramView.getWidth()));
+          i = g.a(parame, "height", g.vI(paramView.getWidth()));
         }
         int j = paramJSONObject.optInt("duration", 300);
         str = paramJSONObject.optString("easing", "linear");
@@ -87,7 +89,7 @@ public final class c
             public final void onAnimationEnd(Animator paramAnonymousAnimator)
             {
               AppMethodBeat.i(137518);
-              paramg.LV(c.this.e("ok", null));
+              parami.Pr(c.this.e("ok", null));
               AppMethodBeat.o(137518);
             }
           });
@@ -102,33 +104,13 @@ public final class c
           {
             paramJSONObject = ValueAnimator.ofInt(new int[] { paramView.getWidth(), paramInt });
             parame.add(paramJSONObject);
-            paramJSONObject.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-            {
-              public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
-              {
-                AppMethodBeat.i(206794);
-                paramAnonymousValueAnimator = (Integer)paramAnonymousValueAnimator.getAnimatedValue();
-                paramView.getLayoutParams().width = paramAnonymousValueAnimator.intValue();
-                paramView.requestLayout();
-                AppMethodBeat.o(206794);
-              }
-            });
+            paramJSONObject.addUpdateListener(new c.2(this, paramView));
           }
           if (i != -1)
           {
             paramJSONObject = ValueAnimator.ofInt(new int[] { paramView.getHeight(), i });
             parame.add(paramJSONObject);
-            paramJSONObject.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-            {
-              public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
-              {
-                AppMethodBeat.i(206795);
-                paramAnonymousValueAnimator = (Integer)paramAnonymousValueAnimator.getAnimatedValue();
-                paramView.getLayoutParams().height = paramAnonymousValueAnimator.intValue();
-                paramView.requestLayout();
-                AppMethodBeat.o(206795);
-              }
-            });
+            paramJSONObject.addUpdateListener(new c.3(this, paramView));
           }
           localAnimatorSet.playTogether(parame);
           localAnimatorSet.start();
@@ -138,8 +120,8 @@ public final class c
       }
       catch (JSONException parame)
       {
-        ac.w("MicroMsg.JsApiAnimateCoverView", "get finalStyle error : %s", new Object[] { Log.getStackTraceString(parame) });
-        paramg.LV(e("fail:missing finalStyle", null));
+        ad.w("MicroMsg.JsApiAnimateCoverView", "get finalStyle error : %s", new Object[] { Log.getStackTraceString(parame) });
+        parami.Pr(e("fail:missing finalStyle", null));
         AppMethodBeat.o(137520);
         return false;
       }
@@ -161,14 +143,14 @@ public final class c
     }
   }
   
-  public final boolean bft()
+  public final boolean biW()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.c
  * JD-Core Version:    0.7.0.1
  */

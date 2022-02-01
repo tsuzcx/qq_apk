@@ -7,17 +7,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.af.a.a;
 
 public final class PluginTextPreference
   extends Preference
 {
-  public int HFB;
-  private TextView fxS;
+  public int Jts;
+  private TextView fRf;
   private String text;
   private int textColor;
-  private ImageView vLg;
   public int visibility;
+  private ImageView wSp;
   
   public PluginTextPreference(Context paramContext)
   {
@@ -33,18 +33,18 @@ public final class PluginTextPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142627);
-    this.vLg = null;
-    this.fxS = null;
+    this.wSp = null;
+    this.fRf = null;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.PluginTextPreference);
     setLayoutResource(paramContext.getResourceId(1, 2131494840));
-    this.HFB = paramContext.getResourceId(0, 0);
+    this.Jts = paramContext.getResourceId(0, 0);
     this.text = paramContext.getString(2);
     this.textColor = paramContext.getColor(3, -7039852);
     paramContext.recycle();
     AppMethodBeat.o(142627);
   }
   
-  public final void aal(int paramInt)
+  public final void acv(int paramInt)
   {
     AppMethodBeat.i(142628);
     this.text = this.mContext.getString(paramInt);
@@ -55,12 +55,12 @@ public final class PluginTextPreference
   {
     AppMethodBeat.i(142629);
     super.onBindView(paramView);
-    this.vLg = ((ImageView)paramView.findViewById(2131300943));
-    this.vLg.setImageResource(this.HFB);
-    this.vLg.setVisibility(this.visibility);
-    this.fxS = ((TextView)paramView.findViewById(2131305744));
-    this.fxS.setText(this.text);
-    this.fxS.setTextColor(this.textColor);
+    this.wSp = ((ImageView)paramView.findViewById(2131300943));
+    this.wSp.setImageResource(this.Jts);
+    this.wSp.setVisibility(this.visibility);
+    this.fRf = ((TextView)paramView.findViewById(2131305744));
+    this.fRf.setText(this.text);
+    this.fRf.setTextColor(this.textColor);
     AppMethodBeat.o(142629);
   }
 }

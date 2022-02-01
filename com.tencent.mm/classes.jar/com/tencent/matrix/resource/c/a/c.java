@@ -5,30 +5,30 @@ import java.util.Map;
 
 public enum c
 {
-  private static Map<Integer, c> bVi;
+  private static Map<Integer, c> cfw;
   private int mId;
   private int mSize;
   
   static
   {
     int i = 0;
-    cxp = new c("OBJECT", 0, 2, 0);
-    cxq = new c("BOOLEAN", 1, 4, 1);
-    cxr = new c("CHAR", 2, 5, 2);
-    cxs = new c("FLOAT", 3, 6, 4);
-    cxt = new c("DOUBLE", 4, 7, 8);
-    cxu = new c("BYTE", 5, 8, 1);
-    cxv = new c("SHORT", 6, 9, 2);
-    cxw = new c("INT", 7, 10, 4);
-    cxx = new c("LONG", 8, 11, 8);
-    cxy = new c[] { cxp, cxq, cxr, cxs, cxt, cxu, cxv, cxw, cxx };
-    bVi = new HashMap();
+    cIk = new c("OBJECT", 0, 2, 0);
+    cIl = new c("BOOLEAN", 1, 4, 1);
+    cIm = new c("CHAR", 2, 5, 2);
+    cIn = new c("FLOAT", 3, 6, 4);
+    cIo = new c("DOUBLE", 4, 7, 8);
+    cIp = new c("BYTE", 5, 8, 1);
+    cIq = new c("SHORT", 6, 9, 2);
+    cIr = new c("INT", 7, 10, 4);
+    cIs = new c("LONG", 8, 11, 8);
+    cIt = new c[] { cIk, cIl, cIm, cIn, cIo, cIp, cIq, cIr, cIs };
+    cfw = new HashMap();
     c[] arrayOfc = values();
     int j = arrayOfc.length;
     while (i < j)
     {
       c localc = arrayOfc[i];
-      bVi.put(Integer.valueOf(localc.mId), localc);
+      cfw.put(Integer.valueOf(localc.mId), localc);
       i += 1;
     }
   }
@@ -39,9 +39,9 @@ public enum c
     this.mSize = paramInt2;
   }
   
-  public static c gU(int paramInt)
+  public static c gZ(int paramInt)
   {
-    return (c)bVi.get(Integer.valueOf(paramInt));
+    return (c)cfw.get(Integer.valueOf(paramInt));
   }
   
   public final int getSize(int paramInt)

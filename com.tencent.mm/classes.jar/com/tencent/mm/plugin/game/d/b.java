@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String Desc;
   public String Title;
-  public String thg;
-  public String thh;
+  public String ueX;
+  public String ueY;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -28,11 +28,11 @@ public final class b
       if (this.Desc != null) {
         paramVarArgs.d(2, this.Desc);
       }
-      if (this.thg != null) {
-        paramVarArgs.d(3, this.thg);
+      if (this.ueX != null) {
+        paramVarArgs.d(3, this.ueX);
       }
-      if (this.thh != null) {
-        paramVarArgs.d(4, this.thh);
+      if (this.ueY != null) {
+        paramVarArgs.d(4, this.ueY);
       }
       AppMethodBeat.o(41707);
       return 0;
@@ -50,21 +50,21 @@ public final class b
         paramInt = i + f.a.a.b.b.a.e(2, this.Desc);
       }
       i = paramInt;
-      if (this.thg != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.thg);
+      if (this.ueX != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.ueX);
       }
       paramInt = i;
-      if (this.thh != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.thh);
+      if (this.ueY != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.ueY);
       }
       AppMethodBeat.o(41707);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         if (this.Title == null)
@@ -86,19 +86,19 @@ public final class b
           AppMethodBeat.o(41707);
           return -1;
         case 1: 
-          localb.Title = locala.LVo.readString();
+          localb.Title = locala.NPN.readString();
           AppMethodBeat.o(41707);
           return 0;
         case 2: 
-          localb.Desc = locala.LVo.readString();
+          localb.Desc = locala.NPN.readString();
           AppMethodBeat.o(41707);
           return 0;
         case 3: 
-          localb.thg = locala.LVo.readString();
+          localb.ueX = locala.NPN.readString();
           AppMethodBeat.o(41707);
           return 0;
         }
-        localb.thh = locala.LVo.readString();
+        localb.ueY = locala.NPN.readString();
         AppMethodBeat.o(41707);
         return 0;
       }
@@ -109,7 +109,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.b
  * JD-Core Version:    0.7.0.1
  */

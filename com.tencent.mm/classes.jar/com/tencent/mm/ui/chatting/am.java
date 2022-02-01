@@ -1,38 +1,39 @@
 package com.tencent.mm.ui.chatting;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.av.f;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.bi;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.compatible.util.e;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bj;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
+import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.plugin.gallery.model.n;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.d;
 import com.tencent.mm.pluginsdk.model.app.m;
-import com.tencent.mm.protocal.protobuf.agv;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.agy;
-import com.tencent.mm.protocal.protobuf.agz;
-import com.tencent.mm.protocal.protobuf.ahe;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.storage.bo.b;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.protocal.protobuf.ajl;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajo;
+import com.tencent.mm.protocal.protobuf.ajp;
+import com.tencent.mm.protocal.protobuf.aju;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bu.b;
 import com.tencent.wework.api.IWWAPI;
 import com.tencent.wework.api.WWAPIFactory;
 import com.tencent.wework.api.model.WWMediaConversation;
@@ -57,49 +58,49 @@ import java.util.List;
 
 public final class am
 {
-  private static String Kgq = null;
+  private static String JEt = null;
   
-  private static WWMediaMergedConvs a(agx paramagx, bo parambo, com.tencent.mm.storage.ai paramai, boolean paramBoolean)
+  private static WWMediaMergedConvs a(ajn paramajn, bu parambu, com.tencent.mm.storage.am paramam, boolean paramBoolean)
   {
     AppMethodBeat.i(34927);
     WWMediaMergedConvs localWWMediaMergedConvs = new WWMediaMergedConvs();
-    if (paramagx == null)
+    if (paramajn == null)
     {
       AppMethodBeat.o(34927);
       return localWWMediaMergedConvs;
     }
-    paramagx = com.tencent.mm.plugin.record.b.n.aqs(paramagx.EAp);
-    if (paramagx == null)
+    paramajn = com.tencent.mm.plugin.record.b.p.avr(paramajn.Gib);
+    if (paramajn == null)
     {
       AppMethodBeat.o(34927);
       return localWWMediaMergedConvs;
     }
-    localWWMediaMergedConvs.title = paramagx.title;
-    Iterator localIterator = paramagx.hkS.iterator();
+    localWWMediaMergedConvs.title = paramajn.title;
+    Iterator localIterator = paramajn.hDb.iterator();
     if (localIterator.hasNext())
     {
-      agx localagx = (agx)localIterator.next();
+      ajn localajn = (ajn)localIterator.next();
       WWMediaConversation localWWMediaConversation = new WWMediaConversation();
-      paramagx = localagx.EAb;
-      if (bs.isNullOrNil(localagx.EAA)) {
-        localWWMediaConversation.name = paramagx;
+      paramajn = localajn.GhN;
+      if (bt.isNullOrNil(localajn.Gim)) {
+        localWWMediaConversation.name = paramajn;
       }
       for (;;)
       {
         try
         {
-          paramagx = localagx.EzZ.EAG;
-          if (!paramagx.EBf) {
+          paramajn = localajn.GhL.Gis;
+          if (!paramajn.GiR) {
             continue;
           }
-          paramagx = paramagx.dng;
-          paramagx = com.tencent.mm.aj.c.a(paramagx, false, -1, null);
+          paramajn = paramajn.dyU;
+          paramajn = com.tencent.mm.ak.c.a(paramajn, false, -1, null);
           ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-          paramagx.compress(Bitmap.CompressFormat.JPEG, 50, localByteArrayOutputStream);
-          localWWMediaConversation.Kyp = localByteArrayOutputStream.toByteArray();
+          paramajn.compress(Bitmap.CompressFormat.JPEG, 50, localByteArrayOutputStream);
+          localWWMediaConversation.Mot = localByteArrayOutputStream.toByteArray();
           localByteArrayOutputStream.close();
         }
-        catch (Exception paramagx)
+        catch (Exception paramajn)
         {
           long l1;
           continue;
@@ -107,23 +108,23 @@ public final class am
         l1 = 0L;
         try
         {
-          long l2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(localagx.EAd).getTime();
+          long l2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(localajn.GhP).getTime();
           l1 = l2;
         }
-        catch (ParseException paramagx)
+        catch (ParseException paramajn)
         {
           continue;
         }
-        localWWMediaConversation.wTQ = l1;
-        localWWMediaConversation.Kyq = a(paramai, localagx, parambo, paramBoolean);
+        localWWMediaConversation.rak = l1;
+        localWWMediaConversation.Mou = a(paramam, localajn, parambu, paramBoolean);
         localWWMediaMergedConvs.a(localWWMediaConversation);
         break;
-        localWWMediaConversation.name = (paramagx + localagx.EAA);
+        localWWMediaConversation.name = (paramajn + localajn.Gim);
         continue;
-        if (paramagx.EBk) {
-          paramagx = paramagx.EBj;
+        if (paramajn.GiW) {
+          paramajn = paramajn.GiV;
         } else {
-          paramagx = "";
+          paramajn = "";
         }
       }
     }
@@ -131,17 +132,17 @@ public final class am
     return localWWMediaMergedConvs;
   }
   
-  private static WWMediaMergedConvs a(bo parambo, com.tencent.mm.storage.ai paramai, boolean paramBoolean)
+  private static WWMediaMergedConvs a(bu parambu, com.tencent.mm.storage.am paramam, boolean paramBoolean)
   {
     AppMethodBeat.i(34928);
-    Object localObject1 = parambo.field_content;
-    if (w.sQ(parambo.field_talker)) {
-      localObject1 = bi.ym(parambo.field_content);
+    Object localObject1 = parambu.field_content;
+    if (w.vF(parambu.field_talker)) {
+      localObject1 = bj.Bl(parambu.field_content);
     }
-    localObject1 = k.b.vA((String)localObject1);
+    localObject1 = k.b.yr((String)localObject1);
     if (localObject1 != null) {}
     Object localObject2;
-    for (localObject1 = com.tencent.mm.plugin.record.b.n.aqs(((k.b)localObject1).hij);; localObject2 = null)
+    for (localObject1 = com.tencent.mm.plugin.record.b.p.avr(((k.b)localObject1).hAs);; localObject2 = null)
     {
       WWMediaMergedConvs localWWMediaMergedConvs = new WWMediaMergedConvs();
       if (localObject1 == null)
@@ -150,28 +151,28 @@ public final class am
         return localWWMediaMergedConvs;
       }
       localWWMediaMergedConvs.title = ((com.tencent.mm.protocal.b.a.c)localObject1).title;
-      Iterator localIterator = ((com.tencent.mm.protocal.b.a.c)localObject1).hkS.iterator();
+      Iterator localIterator = ((com.tencent.mm.protocal.b.a.c)localObject1).hDb.iterator();
       if (localIterator.hasNext())
       {
-        agx localagx = (agx)localIterator.next();
+        ajn localajn = (ajn)localIterator.next();
         WWMediaConversation localWWMediaConversation = new WWMediaConversation();
-        localObject1 = localagx.EAb;
-        if (bs.isNullOrNil(localagx.EAA)) {
+        localObject1 = localajn.GhN;
+        if (bt.isNullOrNil(localajn.Gim)) {
           localWWMediaConversation.name = ((String)localObject1);
         }
         for (;;)
         {
           try
           {
-            localObject1 = localagx.EzZ.EAG;
-            if (!((agz)localObject1).EBf) {
+            localObject1 = localajn.GhL.Gis;
+            if (!((ajp)localObject1).GiR) {
               continue;
             }
-            localObject1 = ((agz)localObject1).dng;
-            localObject1 = com.tencent.mm.aj.c.a((String)localObject1, false, -1, null);
+            localObject1 = ((ajp)localObject1).dyU;
+            localObject1 = com.tencent.mm.ak.c.a((String)localObject1, false, -1, null);
             ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
             ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, 50, localByteArrayOutputStream);
-            localWWMediaConversation.Kyp = localByteArrayOutputStream.toByteArray();
+            localWWMediaConversation.Mot = localByteArrayOutputStream.toByteArray();
             localByteArrayOutputStream.close();
           }
           catch (Exception localException)
@@ -182,21 +183,21 @@ public final class am
           l1 = 0L;
           try
           {
-            long l2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(localagx.EAd).getTime();
+            long l2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(localajn.GhP).getTime();
             l1 = l2;
           }
           catch (ParseException localParseException)
           {
             continue;
           }
-          localWWMediaConversation.wTQ = l1;
-          localWWMediaConversation.Kyq = a(paramai, localagx, parambo, paramBoolean);
+          localWWMediaConversation.rak = l1;
+          localWWMediaConversation.Mou = a(paramam, localajn, parambu, paramBoolean);
           localWWMediaMergedConvs.a(localWWMediaConversation);
           break;
-          localWWMediaConversation.name = ((String)localObject1 + localagx.EAA);
+          localWWMediaConversation.name = ((String)localObject1 + localajn.Gim);
           continue;
-          if (((agz)localObject1).EBk) {
-            localObject1 = ((agz)localObject1).EBj;
+          if (((ajp)localObject1).GiW) {
+            localObject1 = ((ajp)localObject1).GiV;
           } else {
             localObject1 = "";
           }
@@ -207,193 +208,194 @@ public final class am
     }
   }
   
-  private static WWMediaMessage.WWMediaObject a(com.tencent.mm.storage.ai paramai, agx paramagx, bo parambo, boolean paramBoolean)
+  private static WWMediaMessage.WWMediaObject a(com.tencent.mm.storage.am paramam, ajn paramajn, bu parambu, boolean paramBoolean)
   {
     AppMethodBeat.i(34923);
-    int i = paramagx.dataType;
+    int i = paramajn.dataType;
     if (i == 1)
     {
-      paramai = new WWMediaText(paramagx.desc);
+      paramam = new WWMediaText(paramajn.desc);
       AppMethodBeat.o(34923);
-      return paramai;
+      return paramam;
     }
     if (i == 2)
     {
-      long l = parambo.field_msgId;
-      if (!com.tencent.mm.compatible.util.e.YD()) {
-        paramagx = null;
+      long l = parambu.field_msgId;
+      if (!e.abf()) {
+        paramajn = null;
       }
-      while (bs.isNullOrNil(paramagx))
+      while (bt.isNullOrNil(paramajn))
       {
-        ac.i("MicroMsg.SendToWeWorkHelper", "FAV_DATA_TYPE_IMG not exist!");
+        ad.i("MicroMsg.SendToWeWorkHelper", "FAV_DATA_TYPE_IMG not exist!");
         AppMethodBeat.o(34923);
         return null;
-        parambo = com.tencent.mm.plugin.record.b.n.c(paramagx, l);
-        paramai = parambo;
-        if (bs.isNullOrNil(parambo)) {
-          paramai = com.tencent.mm.plugin.record.b.n.f(paramagx, l);
+        parambu = com.tencent.mm.plugin.record.b.p.c(paramajn, l);
+        paramam = parambu;
+        if (bt.isNullOrNil(parambu)) {
+          paramam = com.tencent.mm.plugin.record.b.p.f(paramajn, l);
         }
-        if (!bs.isNullOrNil(paramai))
+        if (!bt.isNullOrNil(paramam))
         {
-          paramagx = paramai;
-          if (i.eA(paramai)) {}
+          paramajn = paramam;
+          if (com.tencent.mm.vfs.i.fv(paramam)) {}
         }
         else
         {
-          ac.d("MicroMsg.RecordMsgImgService", "getPath file not exist, path[%s]", new Object[] { paramai });
-          paramagx = null;
+          ad.d("MicroMsg.RecordMsgImgService", "getPath file not exist, path[%s]", new Object[] { paramam });
+          paramajn = null;
         }
       }
-      paramai = new WWMediaImage();
-      paramai.filePath = aXK(paramagx);
-      ac.i("MicroMsg.SendToWeWorkHelper", "send img2, path:%s", new Object[] { paramai.filePath });
+      paramam = new WWMediaImage();
+      paramam.filePath = aVW(paramajn);
+      ad.i("MicroMsg.SendToWeWorkHelper", "send img2, path:%s", new Object[] { paramam.filePath });
       AppMethodBeat.o(34923);
-      return paramai;
+      return paramam;
     }
     if (i == 4)
     {
-      paramai = com.tencent.mm.plugin.record.b.n.c(paramagx, parambo.field_msgId);
-      if ((bs.isNullOrNil(paramai)) || (!com.tencent.mm.pluginsdk.h.a.d.a.eA(paramai)))
+      paramam = com.tencent.mm.plugin.record.b.p.c(paramajn, parambu.field_msgId);
+      if ((bt.isNullOrNil(paramam)) || (!com.tencent.mm.pluginsdk.j.a.d.a.fv(paramam)))
       {
-        ac.i("MicroMsg.SendToWeWorkHelper", "FAV_DATA_TYPE_VIDEO not exist!");
+        ad.i("MicroMsg.SendToWeWorkHelper", "FAV_DATA_TYPE_VIDEO not exist!");
         AppMethodBeat.o(34923);
         return null;
       }
-      paramagx = new WWMediaVideo();
-      paramagx.filePath = aXK(paramai);
-      ac.i("MicroMsg.SendToWeWorkHelper", "send video2, path:%s", new Object[] { paramagx.filePath });
+      paramajn = new WWMediaVideo();
+      paramajn.filePath = aVW(paramam);
+      ad.i("MicroMsg.SendToWeWorkHelper", "send video2, path:%s", new Object[] { paramajn.filePath });
       AppMethodBeat.o(34923);
-      return paramagx;
+      return paramajn;
     }
     if (i == 6)
     {
-      paramai = new WWMediaLocation();
-      if (paramagx.EzZ == null)
+      paramam = new WWMediaLocation();
+      if (paramajn.GhL == null)
       {
-        ac.i("MicroMsg.SendToWeWorkHelper", "FAV_DATA_TYPE_LOC not exist!");
+        ad.i("MicroMsg.SendToWeWorkHelper", "FAV_DATA_TYPE_LOC not exist!");
         AppMethodBeat.o(34923);
         return null;
       }
-      parambo = paramagx.EzZ.EAI;
-      if (parambo == null)
+      parambu = paramajn.GhL.Giu;
+      if (parambu == null)
       {
-        ac.w("MicroMsg.SendToWeWorkHelper", "location error, locItem null, dataid[%s]", new Object[] { paramagx.dhw });
+        ad.w("MicroMsg.SendToWeWorkHelper", "location error, locItem null, dataid[%s]", new Object[] { paramajn.dsU });
         AppMethodBeat.o(34923);
         return null;
       }
-      paramai.title = parambo.dry;
-      paramai.hEt = parambo.label;
-      paramai.longitude = parambo.lng;
-      paramai.latitude = parambo.lat;
-      paramai.Kyr = parambo.dmN;
+      paramam.title = parambu.dDq;
+      paramam.hWY = parambu.label;
+      paramam.longitude = parambu.lng;
+      paramam.latitude = parambu.lat;
+      paramam.Mov = parambu.dyB;
       AppMethodBeat.o(34923);
-      return paramai;
+      return paramam;
     }
     if (i == 8)
     {
-      paramai = com.tencent.mm.plugin.record.b.n.c(paramagx, parambo.field_msgId);
-      if (bs.isNullOrNil(paramai))
+      paramam = com.tencent.mm.plugin.record.b.p.c(paramajn, parambu.field_msgId);
+      if (bt.isNullOrNil(paramam))
       {
-        ac.w("MicroMsg.SendToWeWorkHelper", "FAV_DATA_TYPE_FILE title == null, dataid[%s]", new Object[] { paramagx.dhw });
+        ad.w("MicroMsg.SendToWeWorkHelper", "FAV_DATA_TYPE_FILE title == null, dataid[%s]", new Object[] { paramajn.dsU });
         AppMethodBeat.o(34923);
         return null;
       }
-      if (com.tencent.mm.pluginsdk.h.a.d.a.fD(paramai) > 104857600L)
+      i = com.tencent.mm.n.b.aci();
+      if (com.tencent.mm.pluginsdk.j.a.d.a.gy(paramam) > i)
       {
-        paramai = new a((byte)0);
+        paramam = new a((byte)0);
         AppMethodBeat.o(34923);
-        throw paramai;
+        throw paramam;
       }
-      parambo = new WWMediaFile();
-      parambo.fileName = paramagx.title;
-      parambo.filePath = aXK(paramai);
-      parambo.fIM();
+      parambu = new WWMediaFile();
+      parambu.fileName = paramajn.title;
+      parambu.filePath = aVW(paramam);
+      parambu.setContentLengthLimit(i);
       AppMethodBeat.o(34923);
-      return parambo;
+      return parambu;
     }
     if (i == 17)
     {
-      paramai = a(paramagx, parambo, paramai, paramBoolean);
+      paramam = a(paramajn, parambu, paramam, paramBoolean);
       AppMethodBeat.o(34923);
-      return paramai;
+      return paramam;
     }
     if (i == 19)
     {
-      paramai = paramagx.EzZ.EAX;
-      paramagx = new WWMediaMiniProgram();
-      paramagx.username = paramai.username;
-      paramagx.path = paramai.cYQ;
-      paramagx.iconUrl = paramai.iconUrl;
-      paramagx.Kyt = new byte[1];
-      paramagx.name = paramai.EyV;
-      paramagx.title = "";
-      paramagx.type = paramai.type;
-      ac.d("MicroMsg.SendToWeWorkHelper", "WWMediaMiniProgram[username:%s path:%s iconUrl:%s hdImageData:%s name:%s title:%s]", new Object[] { paramagx.username, paramagx.path, paramagx.iconUrl, Integer.valueOf(paramagx.Kyt.length), paramagx.name, paramagx.title });
+      paramam = paramajn.GhL.GiJ;
+      paramajn = new WWMediaMiniProgram();
+      paramajn.username = paramam.username;
+      paramajn.path = paramam.dki;
+      paramajn.iconUrl = paramam.iconUrl;
+      paramajn.Mox = new byte[1];
+      paramajn.name = paramam.GgH;
+      paramajn.title = "";
+      paramajn.type = paramam.type;
+      ad.d("MicroMsg.SendToWeWorkHelper", "WWMediaMiniProgram[username:%s path:%s iconUrl:%s hdImageData:%s name:%s title:%s]", new Object[] { paramajn.username, paramajn.path, paramajn.iconUrl, Integer.valueOf(paramajn.Mox.length), paramajn.name, paramajn.title });
       AppMethodBeat.o(34923);
-      return paramagx;
+      return paramajn;
     }
-    ac.e("MicroMsg.SendToWeWorkHelper", "unsupport msg type: %d", new Object[] { Integer.valueOf(i) });
+    ad.e("MicroMsg.SendToWeWorkHelper", "unsupport msg type: %d", new Object[] { Integer.valueOf(i) });
     AppMethodBeat.o(34923);
     return null;
   }
   
-  private static WWMediaMessage.WWMediaObject a(com.tencent.mm.storage.ai paramai, bo parambo, boolean paramBoolean)
+  private static WWMediaMessage.WWMediaObject a(com.tencent.mm.storage.am paramam, bu parambu, boolean paramBoolean)
   {
     AppMethodBeat.i(34922);
-    int i = parambo.getType();
+    int i = parambu.getType();
     if (i == 1)
     {
-      paramai = new WWMediaText(j.x(parambo.field_content, parambo.field_isSend, paramBoolean));
+      paramam = new WWMediaText(j.x(parambu.field_content, parambu.field_isSend, paramBoolean));
       AppMethodBeat.o(34922);
-      return paramai;
+      return paramam;
     }
     if (i == 3)
     {
-      paramai = bx(parambo);
+      paramam = bB(parambu);
       AppMethodBeat.o(34922);
-      return paramai;
+      return paramam;
     }
     if (i == 43)
     {
-      paramai = new WWMediaVideo();
-      parambo = com.tencent.mm.modelvideo.u.Ej(parambo.field_imgPath);
-      com.tencent.mm.modelvideo.o.aJy();
-      paramai.filePath = aXK(t.DV(parambo.getFileName()));
-      ac.i("MicroMsg.SendToWeWorkHelper", "send video2, path:%s", new Object[] { paramai.filePath });
+      paramam = new WWMediaVideo();
+      parambu = com.tencent.mm.modelvideo.u.Hy(parambu.field_imgPath);
+      o.aMJ();
+      paramam.filePath = aVW(t.Hh(parambu.getFileName()));
+      ad.i("MicroMsg.SendToWeWorkHelper", "send video2, path:%s", new Object[] { paramam.filePath });
       AppMethodBeat.o(34922);
-      return paramai;
+      return paramam;
     }
     if (i == 48)
     {
-      paramai = new WWMediaLocation();
-      parambo = j.x(parambo.field_content, parambo.field_isSend, paramBoolean);
-      az.ayM();
-      parambo = com.tencent.mm.model.c.awD().alx(parambo);
-      paramai.title = parambo.gPy;
-      paramai.hEt = parambo.label;
-      paramai.longitude = parambo.tWJ;
-      paramai.latitude = parambo.tWI;
-      paramai.Kyr = parambo.dmN;
+      paramam = new WWMediaLocation();
+      parambu = j.x(parambu.field_content, parambu.field_isSend, paramBoolean);
+      ba.aBQ();
+      parambu = com.tencent.mm.model.c.azs().aql(parambu);
+      paramam.title = parambu.jDf;
+      paramam.hWY = parambu.label;
+      paramam.longitude = parambu.uZs;
+      paramam.latitude = parambu.uZr;
+      paramam.Mov = parambu.dyB;
       AppMethodBeat.o(34922);
-      return paramai;
+      return paramam;
     }
     if ((i == 49) || (i == 268435505))
     {
-      paramai = b(paramai, parambo, paramBoolean);
+      paramam = b(paramam, parambu, paramBoolean);
       AppMethodBeat.o(34922);
-      return paramai;
+      return paramam;
     }
-    ac.e("MicroMsg.SendToWeWorkHelper", "unsupport msg type: %d", new Object[] { Integer.valueOf(i) });
+    ad.e("MicroMsg.SendToWeWorkHelper", "unsupport msg type: %d", new Object[] { Integer.valueOf(i) });
     AppMethodBeat.o(34922);
     return null;
   }
   
-  private static WWMediaMessage.WWMediaObject a(com.tencent.mm.storage.ai paramai, List<bo> paramList, boolean paramBoolean)
+  private static WWMediaMessage.WWMediaObject a(com.tencent.mm.storage.am paramam, List<bu> paramList, boolean paramBoolean)
   {
     AppMethodBeat.i(34924);
     WWMediaMergedConvs localWWMediaMergedConvs = new WWMediaMergedConvs();
-    Object localObject3 = paramai.field_username;
-    Object localObject1 = com.tencent.mm.sdk.platformtools.ai.getContext();
+    Object localObject3 = paramam.field_username;
+    Object localObject1 = aj.getContext();
     if (paramBoolean) {
       localObject1 = ((Context)localObject1).getString(2131762236);
     }
@@ -407,29 +409,29 @@ public final class am
       Object localObject4;
       if (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (bo)((Iterator)localObject1).next();
+        localObject2 = (bu)((Iterator)localObject1).next();
         localObject3 = new WWMediaConversation();
-        if (((dy)localObject2).field_isSend == 1)
+        if (((ei)localObject2).field_isSend == 1)
         {
-          paramList = com.tencent.mm.model.u.axw();
-          localObject4 = com.tencent.mm.openim.room.a.a.H(((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt(paramList));
-          ((WWMediaConversation)localObject3).name = (v.wj(paramList) + bs.nullAsNil((String)localObject4));
+          paramList = com.tencent.mm.model.u.aAm();
+          localObject4 = com.tencent.mm.openim.room.a.a.H(((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramList));
+          ((WWMediaConversation)localObject3).name = (v.ze(paramList) + bt.nullAsNil((String)localObject4));
         }
       }
       try
       {
-        paramList = com.tencent.mm.aj.c.a(paramList, false, -1, null);
+        paramList = com.tencent.mm.ak.c.a(paramList, false, -1, null);
         localObject4 = new ByteArrayOutputStream();
         paramList.compress(Bitmap.CompressFormat.JPEG, 50, (OutputStream)localObject4);
-        ((WWMediaConversation)localObject3).Kyp = ((ByteArrayOutputStream)localObject4).toByteArray();
+        ((WWMediaConversation)localObject3).Mot = ((ByteArrayOutputStream)localObject4).toByteArray();
         ((ByteArrayOutputStream)localObject4).close();
         label191:
-        ((WWMediaConversation)localObject3).wTQ = ((dy)localObject2).field_createTime;
-        ((WWMediaConversation)localObject3).Kyq = a(paramai, (bo)localObject2, paramBoolean);
+        ((WWMediaConversation)localObject3).rak = ((ei)localObject2).field_createTime;
+        ((WWMediaConversation)localObject3).Mou = a(paramam, (bu)localObject2, paramBoolean);
         localWWMediaMergedConvs.a((WWMediaConversation)localObject3);
         break label50;
-        localObject2 = com.tencent.mm.model.u.axy();
-        localObject3 = v.wj((String)localObject3);
+        localObject2 = com.tencent.mm.model.u.aAo();
+        localObject3 = v.ze((String)localObject3);
         if (((String)localObject2).equals(localObject3))
         {
           localObject1 = ((Context)localObject1).getString(2131758964, new Object[] { localObject2 });
@@ -439,10 +441,10 @@ public final class am
         continue;
         if (!paramBoolean)
         {
-          paramList = ((dy)localObject2).field_talker;
+          paramList = ((ei)localObject2).field_talker;
           break label92;
         }
-        paramList = bi.yl(((dy)localObject2).field_content);
+        paramList = bj.Bk(((ei)localObject2).field_content);
         break label92;
         AppMethodBeat.o(34924);
         return localWWMediaMergedConvs;
@@ -454,75 +456,89 @@ public final class am
     }
   }
   
-  private static void a(Context paramContext, com.tencent.mm.storage.ai paramai, List<bo> paramList, boolean paramBoolean)
+  public static void a(Context paramContext, com.tencent.mm.storage.am paramam, List<bu> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(34921);
-    IWWAPI localIWWAPI = WWAPIFactory.lg(paramContext);
-    try
+    AppMethodBeat.i(193870);
+    if ((paramList == null) || (paramList.size() == 0))
     {
-      if (paramList.size() == 1) {}
-      for (paramai = a(paramai, (bo)paramList.get(0), paramBoolean);; paramai = a(paramai, paramList, paramBoolean))
-      {
-        localIWWAPI.a(paramai);
-        AppMethodBeat.o(34921);
-        return;
-      }
+      AppMethodBeat.o(193870);
       return;
     }
-    catch (a paramai)
+    if (j.hV(paramList))
     {
-      com.tencent.mm.ui.base.h.l(paramContext, 2131763074, 2131755906);
-      AppMethodBeat.o(34921);
+      ad.w("MicroMsg.SendToWeWorkHelper", "isContainUndownloadFile");
+      com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131757940), "", new am.1(), null);
+      AppMethodBeat.o(193870);
+      return;
     }
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext()) {
+      if (!ab.bn((bu)localIterator.next()))
+      {
+        com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131766957), "", paramContext.getString(2131766205), null);
+        AppMethodBeat.o(193870);
+        return;
+      }
+    }
+    if (!j.a(true, paramList, paramam.field_username, null))
+    {
+      ad.w("MicroMsg.SendToWeWorkHelper", "handleInvalidSendToFriendMsg");
+      com.tencent.mm.ui.base.h.e(paramContext, paramContext.getString(2131760349), "", paramContext.getString(2131762559), paramContext.getString(2131755691), new am.2(paramContext, paramam, paramList, paramBoolean), null);
+      AppMethodBeat.o(193870);
+      return;
+    }
+    b(paramContext, paramam, paramList, paramBoolean);
+    AppMethodBeat.o(193870);
   }
   
-  private static String aXK(String paramString)
+  private static String aVW(String paramString)
   {
-    AppMethodBeat.i(210132);
-    if ((!bs.isNullOrNil(paramString)) && (paramString.contains("image2"))) {
+    AppMethodBeat.i(193871);
+    if ((!bt.isNullOrNil(paramString)) && (paramString.contains("image2"))) {
       try
       {
         Object localObject = new StringBuilder();
-        if (Kgq == null) {
-          Kgq = new File(b.apc()).getPath() + "/Tencent/WeixinWork/share";
+        if (JEt == null) {
+          JEt = new File(com.tencent.mm.loader.j.b.arP()).getPath() + "/Tencent/WeixinWork/share";
         }
-        localObject = Kgq + paramString.substring(paramString.indexOf("image2") + 6);
+        localObject = JEt + paramString.substring(paramString.indexOf("image2") + 6);
         String str = new File((String)localObject).getParentFile().getAbsolutePath();
-        if (i.eA((String)localObject)) {
-          i.deleteFile((String)localObject);
+        if (com.tencent.mm.vfs.i.fv((String)localObject)) {
+          com.tencent.mm.vfs.i.deleteFile((String)localObject);
         }
-        if (!i.eA(str)) {
-          i.aSh(str);
+        if (!com.tencent.mm.vfs.i.fv(str)) {
+          com.tencent.mm.vfs.i.aYg(str);
         }
-        com.tencent.mm.sdk.platformtools.o.C(paramString, (String)localObject, false);
-        ac.i("MicroMsg.SendToWeWorkHelper", "getTempFilePath org:%s new:%s %s", new Object[] { paramString, localObject, bs.eWi().toString() });
-        AppMethodBeat.o(210132);
+        com.tencent.mm.sdk.platformtools.p.C(paramString, (String)localObject, false);
+        ad.i("MicroMsg.SendToWeWorkHelper", "getTempFilePath org:%s new:%s %s", new Object[] { paramString, localObject, bt.flS().toString() });
+        AppMethodBeat.o(193871);
         return localObject;
       }
       catch (Exception localException)
       {
-        ac.e("MicroMsg.SendToWeWorkHelper", "getTempFilePath(%s) Exception:%s %s", new Object[] { paramString, localException.getClass().getSimpleName(), localException.getMessage() });
+        ad.e("MicroMsg.SendToWeWorkHelper", "getTempFilePath(%s) Exception:%s %s", new Object[] { paramString, localException.getClass().getSimpleName(), localException.getMessage() });
       }
     }
-    AppMethodBeat.o(210132);
+    AppMethodBeat.o(193871);
     return paramString;
   }
   
-  private static WWMediaMessage.WWMediaObject b(com.tencent.mm.storage.ai paramai, bo parambo, boolean paramBoolean)
+  private static WWMediaMessage.WWMediaObject b(com.tencent.mm.storage.am paramam, bu parambu, boolean paramBoolean)
   {
     AppMethodBeat.i(34926);
-    Object localObject2 = parambo.field_content;
+    Object localObject2 = parambu.field_content;
     Object localObject1 = localObject2;
+    int i;
     if (paramBoolean)
     {
-      int i = parambo.field_content.indexOf(':');
+      i = parambu.field_content.indexOf(':');
       localObject1 = localObject2;
       if (i != -1) {
-        localObject1 = parambo.field_content.substring(i + 1);
+        localObject1 = parambu.field_content.substring(i + 1);
       }
     }
     if (localObject1 != null) {}
-    for (localObject1 = k.b.az((String)localObject1, parambo.field_reserved);; localObject1 = null)
+    for (localObject1 = k.b.aA((String)localObject1, parambu.field_reserved);; localObject1 = null)
     {
       if (localObject1 == null)
       {
@@ -535,160 +551,151 @@ public final class am
         AppMethodBeat.o(34926);
         return null;
       case 5: 
-        paramai = new WWMediaLink();
-        paramai.webpageUrl = ((k.b)localObject1).url;
-        paramai.title = ((k.b)localObject1).title;
-        paramai.description = ((k.b)localObject1).description;
-        paramai.setThumbImage(com.tencent.mm.av.o.aFx().a(parambo.field_imgPath, com.tencent.mm.cc.a.getDensity(null), false));
+        paramam = new WWMediaLink();
+        paramam.webpageUrl = ((k.b)localObject1).url;
+        paramam.title = ((k.b)localObject1).title;
+        paramam.description = ((k.b)localObject1).description;
+        paramam.setThumbImage(q.aIF().a(parambu.field_imgPath, com.tencent.mm.cc.a.getDensity(null), false));
       }
       try
       {
-        parambo = com.tencent.mm.av.o.aFx().a(parambo.field_imgPath, com.tencent.mm.cc.a.getDensity(null), false);
+        parambu = q.aIF().a(parambu.field_imgPath, com.tencent.mm.cc.a.getDensity(null), false);
         localObject1 = new ByteArrayOutputStream();
-        parambo.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject1);
-        paramai.thumbData = ((ByteArrayOutputStream)localObject1).toByteArray();
+        parambu.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject1);
+        paramam.thumbData = ((ByteArrayOutputStream)localObject1).toByteArray();
         ((ByteArrayOutputStream)localObject1).close();
         label249:
         AppMethodBeat.o(34926);
-        return paramai;
-        if ((((k.b)localObject1).cZa != null) && (((k.b)localObject1).cZa.length() > 0))
+        return paramam;
+        if ((((k.b)localObject1).dks != null) && (((k.b)localObject1).dks.length() > 0))
         {
-          paramai = ap.bEO().aGd(((k.b)localObject1).cZa);
-          if ((paramai != null) && (paramai.cOg()))
+          paramam = ao.bIX().aLD(((k.b)localObject1).dks);
+          if ((paramam != null) && (paramam.cWz()))
           {
-            paramai = paramai.field_fileFullPath;
-            if (!i.eA(paramai))
+            paramam = paramam.field_fileFullPath;
+            if (!com.tencent.mm.vfs.i.fv(paramam))
             {
-              ac.i("MicroMsg.SendToWeWorkHelper", "Img not exist, bigImgPath: %s, msgId: %d, msgSvrId: %d", new Object[] { paramai, Long.valueOf(parambo.field_msgId), Long.valueOf(parambo.field_msgSvrId) });
+              ad.i("MicroMsg.SendToWeWorkHelper", "Img not exist, bigImgPath: %s, msgId: %d, msgSvrId: %d", new Object[] { paramam, Long.valueOf(parambu.field_msgId), Long.valueOf(parambu.field_msgSvrId) });
               AppMethodBeat.o(34926);
               return null;
             }
-            parambo = new WWMediaImage();
-            parambo.filePath = aXK(paramai);
-            ac.i("MicroMsg.SendToWeWorkHelper", "send img2, path:%s", new Object[] { parambo.filePath });
+            parambu = new WWMediaImage();
+            parambu.filePath = aVW(paramam);
+            ad.i("MicroMsg.SendToWeWorkHelper", "send img2, path:%s", new Object[] { parambu.filePath });
             AppMethodBeat.o(34926);
-            return parambo;
+            return parambu;
           }
         }
         AppMethodBeat.o(34926);
         return null;
-        localObject2 = m.aGn(((k.b)localObject1).cZa);
-        paramai = (com.tencent.mm.storage.ai)localObject2;
+        localObject2 = m.aLN(((k.b)localObject1).dks);
+        paramam = (com.tencent.mm.storage.am)localObject2;
         if (localObject2 == null) {
-          paramai = ap.bEO().zM(parambo.field_msgId);
+          paramam = ao.bIX().CB(parambu.field_msgId);
         }
-        if (paramai.field_totalLen > 104857600L)
+        i = com.tencent.mm.n.b.aci();
+        if (paramam.field_totalLen > i)
         {
-          paramai = new a((byte)0);
+          paramam = new a((byte)0);
           AppMethodBeat.o(34926);
-          throw paramai;
+          throw paramam;
         }
-        parambo = new WWMediaFile();
-        parambo.fileName = ((k.b)localObject1).title;
-        parambo.filePath = aXK(paramai.field_fileFullPath);
-        parambo.fIM();
+        parambu = new WWMediaFile();
+        parambu.fileName = ((k.b)localObject1).title;
+        parambu.filePath = aVW(paramam.field_fileFullPath);
+        parambu.setContentLengthLimit(i);
         AppMethodBeat.o(34926);
-        return parambo;
-        paramai = a(parambo, paramai, paramBoolean);
+        return parambu;
+        paramam = a(parambu, paramam, paramBoolean);
         AppMethodBeat.o(34926);
-        return paramai;
-        if (((k.b)localObject1).hkg == 3)
+        return paramam;
+        if (((k.b)localObject1).hCp == 3)
         {
           AppMethodBeat.o(34926);
           return null;
         }
-        paramai = new WWMediaMiniProgram();
-        paramai.username = ((k.b)localObject1).hke;
-        paramai.path = ((k.b)localObject1).hkd;
-        paramai.iconUrl = ((k.b)localObject1).hks;
-        parambo = com.tencent.mm.av.o.aFx().b(parambo.field_imgPath, false, true);
-        if (com.tencent.mm.pluginsdk.h.a.d.a.eA(parambo)) {}
+        paramam = new WWMediaMiniProgram();
+        paramam.username = ((k.b)localObject1).hCn;
+        paramam.path = ((k.b)localObject1).hCm;
+        paramam.iconUrl = ((k.b)localObject1).hCB;
+        parambu = q.aIF().c(parambu.field_imgPath, false, true);
+        if (com.tencent.mm.pluginsdk.j.a.d.a.fv(parambu)) {}
         for (;;)
         {
           try
           {
-            parambo = com.tencent.mm.plugin.gallery.model.n.agt(parambo);
+            parambu = n.akR(parambu);
             localObject2 = new ByteArrayOutputStream();
-            parambo.compress(Bitmap.CompressFormat.JPEG, 70, (OutputStream)localObject2);
-            paramai.Kyt = ((ByteArrayOutputStream)localObject2).toByteArray();
+            parambu.compress(Bitmap.CompressFormat.JPEG, 70, (OutputStream)localObject2);
+            paramam.Mox = ((ByteArrayOutputStream)localObject2).toByteArray();
             ((ByteArrayOutputStream)localObject2).close();
-            if (paramai.Kyt.length > 1048576)
+            if (paramam.Mox.length > 1048576)
             {
-              ac.i("MicroMsg.SendToWeWorkHelper", "miniProgram.hdImageData.length > 1M");
-              paramai.Kyt = new byte[1];
+              ad.i("MicroMsg.SendToWeWorkHelper", "miniProgram.hdImageData.length > 1M");
+              paramam.Mox = new byte[1];
             }
-            paramai.name = ((k.b)localObject1).dvm;
-            paramai.title = ((k.b)localObject1).title;
-            paramai.type = ((k.b)localObject1).hkg;
-            ac.d("MicroMsg.SendToWeWorkHelper", "WWMediaMiniProgram[username:%s path:%s iconUrl:%s hdImageData:%s name:%s title:%s]", new Object[] { paramai.username, paramai.path, paramai.iconUrl, Integer.valueOf(paramai.Kyt.length), paramai.name, paramai.title });
+            paramam.name = ((k.b)localObject1).dHp;
+            paramam.title = ((k.b)localObject1).title;
+            paramam.type = ((k.b)localObject1).hCp;
+            ad.d("MicroMsg.SendToWeWorkHelper", "WWMediaMiniProgram[username:%s path:%s iconUrl:%s hdImageData:%s name:%s title:%s]", new Object[] { paramam.username, paramam.path, paramam.iconUrl, Integer.valueOf(paramam.Mox.length), paramam.name, paramam.title });
             AppMethodBeat.o(34926);
-            return paramai;
+            return paramam;
           }
-          catch (Exception parambo)
+          catch (Exception parambu)
           {
-            ac.i("MicroMsg.SendToWeWorkHelper", "WWMediaMiniProgram.hdImageData Exception:%s", new Object[] { parambo.getMessage() });
+            ad.i("MicroMsg.SendToWeWorkHelper", "WWMediaMiniProgram.hdImageData Exception:%s", new Object[] { parambu.getMessage() });
           }
-          paramai.Kyt = new byte[1];
+          paramam.Mox = new byte[1];
         }
       }
-      catch (Exception parambo)
+      catch (Exception parambu)
       {
         break label249;
       }
     }
   }
   
-  public static void b(Context paramContext, final com.tencent.mm.storage.ai paramai, final List<bo> paramList, final boolean paramBoolean)
+  private static void b(Context paramContext, com.tencent.mm.storage.am paramam, List<bu> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(210131);
-    if ((paramList == null) || (paramList.size() == 0))
+    AppMethodBeat.i(34921);
+    IWWAPI localIWWAPI = WWAPIFactory.lt(paramContext);
+    try
     {
-      AppMethodBeat.o(210131);
-      return;
-    }
-    if (j.hJ(paramList))
-    {
-      ac.w("MicroMsg.SendToWeWorkHelper", "isContainUndownloadFile");
-      com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131757940), "", new am.1(), null);
-      AppMethodBeat.o(210131);
-      return;
-    }
-    if (!j.a(true, paramList, paramai.field_username, null))
-    {
-      ac.w("MicroMsg.SendToWeWorkHelper", "handleInvalidSendToFriendMsg");
-      com.tencent.mm.ui.base.h.d(paramContext, paramContext.getString(2131760349), "", paramContext.getString(2131762559), paramContext.getString(2131755691), new DialogInterface.OnClickListener()
+      if (paramList.size() == 1) {}
+      for (paramam = a(paramam, (bu)paramList.get(0), paramBoolean);; paramam = a(paramam, paramList, paramBoolean))
       {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(34920);
-          am.c(this.val$context, paramai, paramList, paramBoolean);
-          AppMethodBeat.o(34920);
-        }
-      }, null);
-      AppMethodBeat.o(210131);
+        localIWWAPI.a(paramam);
+        AppMethodBeat.o(34921);
+        return;
+      }
+      int i;
       return;
     }
-    a(paramContext, paramai, paramList, paramBoolean);
-    AppMethodBeat.o(210131);
+    catch (a paramam)
+    {
+      i = com.tencent.mm.n.b.aci() / 1048576;
+      com.tencent.mm.ui.base.h.c(paramContext, paramContext.getResources().getString(2131767168, new Object[] { Integer.valueOf(i) }), paramContext.getResources().getString(2131755906), true);
+      AppMethodBeat.o(34921);
+    }
   }
   
-  private static WWMediaMessage.WWMediaObject bx(bo parambo)
+  private static WWMediaMessage.WWMediaObject bB(bu parambu)
   {
     AppMethodBeat.i(34925);
-    if (parambo.field_msgId > 0L) {}
-    for (Object localObject1 = com.tencent.mm.av.o.aFx().qg(parambo.field_msgId);; localObject1 = null)
+    if (parambu.field_msgId > 0L) {}
+    for (Object localObject1 = q.aIF().G(parambu.field_talker, parambu.field_msgId);; localObject1 = null)
     {
       Object localObject2;
       if (localObject1 != null)
       {
         localObject2 = localObject1;
-        if (((com.tencent.mm.av.e)localObject1).dcd > 0L) {}
+        if (((com.tencent.mm.aw.g)localObject1).dnz > 0L) {}
       }
       else
       {
         localObject2 = localObject1;
-        if (parambo.field_msgSvrId > 0L) {
-          localObject2 = com.tencent.mm.av.o.aFx().qf(parambo.field_msgSvrId);
+        if (parambu.field_msgSvrId > 0L) {
+          localObject2 = q.aIF().F(parambu.field_talker, parambu.field_msgSvrId);
         }
       }
       if (localObject2 == null)
@@ -696,28 +703,28 @@ public final class am
         AppMethodBeat.o(34925);
         return null;
       }
-      parambo = com.tencent.mm.av.o.aFx().p(f.c((com.tencent.mm.av.e)localObject2), "", "");
+      parambu = q.aIF().o(com.tencent.mm.aw.h.c((com.tencent.mm.aw.g)localObject2), "", "");
       localObject1 = new WWMediaImage();
-      ((WWMediaImage)localObject1).filePath = aXK(parambo);
-      ac.i("MicroMsg.SendToWeWorkHelper", "send img2, path:%s", new Object[] { ((WWMediaImage)localObject1).filePath });
+      ((WWMediaImage)localObject1).filePath = aVW(parambu);
+      ad.i("MicroMsg.SendToWeWorkHelper", "send img2, path:%s", new Object[] { ((WWMediaImage)localObject1).filePath });
       AppMethodBeat.o(34925);
       return localObject1;
     }
   }
   
-  public static boolean lL(Context paramContext)
+  public static boolean dG(Context paramContext)
   {
-    AppMethodBeat.i(210129);
-    boolean bool = WWAPIFactory.lg(paramContext).fIK();
-    AppMethodBeat.o(210129);
+    AppMethodBeat.i(193868);
+    boolean bool = WWAPIFactory.lt(paramContext).gab();
+    AppMethodBeat.o(193868);
     return bool;
   }
   
-  public static String lM(Context paramContext)
+  public static String kk(Context paramContext)
   {
-    AppMethodBeat.i(210130);
-    paramContext = WWAPIFactory.lg(paramContext).fIL();
-    AppMethodBeat.o(210130);
+    AppMethodBeat.i(193869);
+    paramContext = WWAPIFactory.lt(paramContext).gac();
+    AppMethodBeat.o(193869);
     return paramContext;
   }
   
@@ -727,7 +734,7 @@ public final class am
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.am
  * JD-Core Version:    0.7.0.1
  */

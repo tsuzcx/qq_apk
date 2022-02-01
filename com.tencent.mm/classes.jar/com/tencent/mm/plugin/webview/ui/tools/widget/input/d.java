@@ -4,8 +4,8 @@ import android.content.Context;
 
 public final class d
 {
-  c COP;
-  a COX;
+  c EsP;
+  a EsX;
   Context mContext;
   int mIndex;
 }

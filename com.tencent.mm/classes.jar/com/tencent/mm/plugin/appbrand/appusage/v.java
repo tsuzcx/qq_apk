@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.appbrand.appusage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
-import com.tencent.mm.protocal.protobuf.bht;
-import com.tencent.mm.protocal.protobuf.bhu;
-import com.tencent.mm.protocal.protobuf.eaa;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.bmb;
+import com.tencent.mm.protocal.protobuf.bmc;
+import com.tencent.mm.protocal.protobuf.ege;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.storagebase.h;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -25,15 +25,15 @@ import java.util.concurrent.TimeUnit;
 
 public enum v
 {
-  private static Integer jvA;
-  private static final long jvB;
+  private static Integer jPu;
+  private static final long jPv;
   
   static
   {
     AppMethodBeat.i(44596);
-    jvC = new v[0];
-    jvA = null;
-    jvB = TimeUnit.DAYS.toSeconds(1L);
+    jPw = new v[0];
+    jPu = null;
+    jPv = TimeUnit.DAYS.toSeconds(1L);
     AppMethodBeat.o(44596);
   }
   
@@ -42,26 +42,26 @@ public enum v
     AppMethodBeat.i(44595);
     if (paramb == null)
     {
-      ac.e("MicroMsg.AppBrandStarListLogic[collection]", "onResp, NULL CommReqResp");
+      ad.e("MicroMsg.AppBrandStarListLogic[collection]", "onResp, NULL CommReqResp");
       AppMethodBeat.o(44595);
       return;
     }
-    if ((((bht)paramb.hvr.hvw).condition & 0x2) == 0)
+    if ((((bmb)paramb.hNK.hNQ).condition & 0x2) == 0)
     {
       AppMethodBeat.o(44595);
       return;
     }
-    paramb = (bhu)paramb.hvs.hvw;
-    ac.i("MicroMsg.AppBrandStarListLogic[collection]", "onResp, errType %d, errCode %d, errMsg %s, ticket %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramLong });
+    paramb = (bmc)paramb.hNL.hNQ;
+    ad.i("MicroMsg.AppBrandStarListLogic[collection]", "onResp, errType %d, errCode %d, errMsg %s, ticket %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramLong });
     if ((paramInt2 == 0) && (paramInt3 == 0) && (paramb != null))
     {
       if (j.T(u.class) != null)
       {
-        ((u)j.T(u.class)).a(eaa.class, paramb.EXf, paramLong);
-        w.a(paramInt1, paramb.EXf);
+        ((u)j.T(u.class)).a(ege.class, paramb.GGC, paramLong);
+        w.a(paramInt1, paramb.GGC);
       }
-      paramString = g.agR().agA();
-      paramLong = ah.a.GIX;
+      paramString = g.ajC().ajl();
+      paramLong = al.a.Ivp;
       if ((paramb.status & 0x1) <= 0) {
         break label187;
       }
@@ -75,37 +75,37 @@ public enum v
     }
   }
   
-  public static boolean aYU()
+  public static boolean bcs()
   {
     return true;
   }
   
-  public static boolean aYV()
+  public static boolean bct()
   {
     return true;
   }
   
-  public static int aYW()
+  public static int bcu()
   {
     AppMethodBeat.i(44594);
-    if (jvA != null)
+    if (jPu != null)
     {
-      i = jvA.intValue();
+      i = jPu.intValue();
       AppMethodBeat.o(44594);
       return i;
     }
-    int i = AppBrandGlobalSystemConfig.bat().jCG;
+    int i = AppBrandGlobalSystemConfig.bdT().jWC;
     AppMethodBeat.o(44594);
     return i;
   }
   
-  public static void rA(int paramInt)
+  public static void sa(int paramInt)
   {
     AppMethodBeat.i(44593);
-    jvA = Integer.valueOf(paramInt);
+    jPu = Integer.valueOf(paramInt);
     u localu = (u)j.T(u.class);
-    Object localObject1 = localu.jvw;
-    Object localObject2 = String.format(Locale.US, "%s desc limit %d offset %d", new Object[] { "orderSequence", Long.valueOf(9223372036854775807L), Integer.valueOf(aYW()) });
+    Object localObject1 = localu.jPq;
+    Object localObject2 = String.format(Locale.US, "%s desc limit %d offset %d", new Object[] { "orderSequence", Long.valueOf(9223372036854775807L), Integer.valueOf(bcu()) });
     localObject2 = ((h)localObject1).query("AppBrandStarApp", new String[] { "rowid" }, null, null, null, null, (String)localObject2);
     if (localObject2 == null)
     {
@@ -123,17 +123,17 @@ public enum v
     for (;;)
     {
       ((Cursor)localObject2).close();
-      if (!bs.gY((List)localObject1))
+      if (!bt.hj((List)localObject1))
       {
         localObject2 = new String[1];
-        long l = localu.jvw.vE(Thread.currentThread().getId());
+        long l = localu.jPq.xO(Thread.currentThread().getId());
         localObject1 = ((LinkedList)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2[0] = ((String)((Iterator)localObject1).next());
-          localu.jvw.delete("AppBrandStarApp", "rowid=?", (String[])localObject2);
+          localu.jPq.delete("AppBrandStarApp", "rowid=?", (String[])localObject2);
         }
-        localu.jvw.qL(l);
+        localu.jPq.sJ(l);
         localu.doNotify("batch", 5, null);
       }
       AppMethodBeat.o(44593);

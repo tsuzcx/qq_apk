@@ -14,12 +14,12 @@ import java.util.Set;
 public class SupportRequestManagerFragment
   extends Fragment
 {
-  j aBl;
-  final a aKK;
-  final m aKL;
-  private final Set<SupportRequestManagerFragment> aKM;
-  private SupportRequestManagerFragment aLa;
-  Fragment aLb;
+  j aDc;
+  final a aMB;
+  final m aMC;
+  private final Set<SupportRequestManagerFragment> aMD;
+  private SupportRequestManagerFragment aMR;
+  Fragment aMS;
   
   public SupportRequestManagerFragment()
   {
@@ -32,19 +32,19 @@ public class SupportRequestManagerFragment
   private SupportRequestManagerFragment(a parama)
   {
     AppMethodBeat.i(77582);
-    this.aKL = new SupportRequestManagerFragment.a(this);
-    this.aKM = new HashSet();
-    this.aKK = parama;
+    this.aMC = new SupportRequestManagerFragment.a(this);
+    this.aMD = new HashSet();
+    this.aMB = parama;
     AppMethodBeat.o(77582);
   }
   
-  private void pw()
+  private void pO()
   {
     AppMethodBeat.i(77583);
-    if (this.aLa != null)
+    if (this.aMR != null)
     {
-      this.aLa.aKM.remove(this);
-      this.aLa = null;
+      this.aMR.aMD.remove(this);
+      this.aMR = null;
     }
     AppMethodBeat.o(77583);
   }
@@ -56,10 +56,10 @@ public class SupportRequestManagerFragment
     try
     {
       paramContext = getActivity();
-      pw();
-      this.aLa = c.ad(paramContext).aAz.a(paramContext.getSupportFragmentManager(), l.l(paramContext));
-      if (!equals(this.aLa)) {
-        this.aLa.aKM.add(this);
+      pO();
+      this.aMR = c.ad(paramContext).aCq.a(paramContext.getSupportFragmentManager(), l.l(paramContext));
+      if (!equals(this.aMR)) {
+        this.aMR.aMD.add(this);
       }
       AppMethodBeat.o(77584);
       return;
@@ -75,8 +75,8 @@ public class SupportRequestManagerFragment
   {
     AppMethodBeat.i(77588);
     super.onDestroy();
-    this.aKK.onDestroy();
-    pw();
+    this.aMB.onDestroy();
+    pO();
     AppMethodBeat.o(77588);
   }
   
@@ -84,8 +84,8 @@ public class SupportRequestManagerFragment
   {
     AppMethodBeat.i(77585);
     super.onDetach();
-    this.aLb = null;
-    pw();
+    this.aMS = null;
+    pO();
     AppMethodBeat.o(77585);
   }
   
@@ -93,7 +93,7 @@ public class SupportRequestManagerFragment
   {
     AppMethodBeat.i(77586);
     super.onStart();
-    this.aKK.onStart();
+    this.aMB.onStart();
     AppMethodBeat.o(77586);
   }
   
@@ -101,7 +101,7 @@ public class SupportRequestManagerFragment
   {
     AppMethodBeat.i(77587);
     super.onStop();
-    this.aKK.onStop();
+    this.aMB.onStop();
     AppMethodBeat.o(77587);
   }
   
@@ -116,7 +116,7 @@ public class SupportRequestManagerFragment
       localObject = localObject + "}";
       AppMethodBeat.o(77589);
       return localObject;
-      localObject = this.aLb;
+      localObject = this.aMS;
     }
   }
 }

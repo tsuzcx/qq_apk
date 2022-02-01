@@ -6,18 +6,18 @@ import com.tencent.mm.plugin.appbrand.utils.l;
 abstract interface r
   extends q
 {
-  public abstract String HV(String paramString);
+  public abstract String Ln(String paramString);
   
   public abstract <T> T f(String paramString, Class<T> paramClass);
   
   public static final class a
   {
-    static r jma;
+    static r jFQ;
     
     static
     {
       AppMethodBeat.i(178520);
-      jma = (r)l.g("IWxaPkgRuntimeReaderEx.DUMMY", r.class);
+      jFQ = (r)l.g("IWxaPkgRuntimeReaderEx.DUMMY", r.class);
       AppMethodBeat.o(178520);
     }
   }

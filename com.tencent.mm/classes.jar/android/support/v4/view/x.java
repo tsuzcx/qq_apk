@@ -12,14 +12,14 @@ import java.lang.ref.WeakReference;
 
 public final class x
 {
-  private WeakReference<View> Pb;
-  Runnable Pc = null;
-  Runnable Pd = null;
-  int Pe = -1;
+  private WeakReference<View> QQ;
+  Runnable QR = null;
+  Runnable QS = null;
+  int QT = -1;
   
   x(View paramView)
   {
-    this.Pb = new WeakReference(paramView);
+    this.QQ = new WeakReference(paramView);
   }
   
   private void a(final View paramView, final y paramy)
@@ -50,34 +50,16 @@ public final class x
   
   public final x A(float paramFloat)
   {
-    View localView = (View)this.Pb.get();
-    if (localView != null) {
-      localView.animate().alpha(paramFloat);
-    }
-    return this;
-  }
-  
-  public final x B(float paramFloat)
-  {
-    View localView = (View)this.Pb.get();
-    if (localView != null) {
-      localView.animate().translationY(paramFloat);
-    }
-    return this;
-  }
-  
-  public final x C(float paramFloat)
-  {
-    View localView = (View)this.Pb.get();
+    View localView = (View)this.QQ.get();
     if (localView != null) {
       localView.animate().scaleX(paramFloat);
     }
     return this;
   }
   
-  public final x D(float paramFloat)
+  public final x B(float paramFloat)
   {
-    View localView = (View)this.Pb.get();
+    View localView = (View)this.QQ.get();
     if (localView != null) {
       localView.animate().scaleY(paramFloat);
     }
@@ -86,7 +68,7 @@ public final class x
   
   public final x a(final aa paramaa)
   {
-    final View localView = (View)this.Pb.get();
+    final View localView = (View)this.QQ.get();
     if ((localView != null) && (Build.VERSION.SDK_INT >= 19))
     {
       ValueAnimator.AnimatorUpdateListener local2 = null;
@@ -95,7 +77,7 @@ public final class x
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
-            paramaa.fj();
+            paramaa.fA();
           }
         };
       }
@@ -106,7 +88,7 @@ public final class x
   
   public final x a(y paramy)
   {
-    View localView = (View)this.Pb.get();
+    View localView = (View)this.QQ.get();
     if (localView != null)
     {
       if (Build.VERSION.SDK_INT >= 16) {
@@ -123,7 +105,7 @@ public final class x
   
   public final x a(Interpolator paramInterpolator)
   {
-    View localView = (View)this.Pb.get();
+    View localView = (View)this.QQ.get();
     if (localView != null) {
       localView.animate().setInterpolator(paramInterpolator);
     }
@@ -132,7 +114,7 @@ public final class x
   
   public final void cancel()
   {
-    View localView = (View)this.Pb.get();
+    View localView = (View)this.QQ.get();
     if (localView != null) {
       localView.animate().cancel();
     }
@@ -140,7 +122,7 @@ public final class x
   
   public final long getDuration()
   {
-    View localView = (View)this.Pb.get();
+    View localView = (View)this.QQ.get();
     if (localView != null) {
       return localView.animate().getDuration();
     }
@@ -149,7 +131,7 @@ public final class x
   
   public final x j(long paramLong)
   {
-    View localView = (View)this.Pb.get();
+    View localView = (View)this.QQ.get();
     if (localView != null) {
       localView.animate().setDuration(paramLong);
     }
@@ -158,7 +140,7 @@ public final class x
   
   public final x k(long paramLong)
   {
-    View localView = (View)this.Pb.get();
+    View localView = (View)this.QQ.get();
     if (localView != null) {
       localView.animate().setStartDelay(paramLong);
     }
@@ -167,33 +149,51 @@ public final class x
   
   public final void start()
   {
-    View localView = (View)this.Pb.get();
+    View localView = (View)this.QQ.get();
     if (localView != null) {
       localView.animate().start();
     }
   }
   
+  public final x y(float paramFloat)
+  {
+    View localView = (View)this.QQ.get();
+    if (localView != null) {
+      localView.animate().alpha(paramFloat);
+    }
+    return this;
+  }
+  
+  public final x z(float paramFloat)
+  {
+    View localView = (View)this.QQ.get();
+    if (localView != null) {
+      localView.animate().translationY(paramFloat);
+    }
+    return this;
+  }
+  
   static final class a
     implements y
   {
-    x Pi;
-    boolean Pj;
+    x QX;
+    boolean QY;
     
     a(x paramx)
     {
-      this.Pi = paramx;
+      this.QX = paramx;
     }
     
     public final void aH(View paramView)
     {
-      this.Pj = false;
-      if (this.Pi.Pe >= 0) {
+      this.QY = false;
+      if (this.QX.QT >= 0) {
         paramView.setLayerType(2, null);
       }
-      if (this.Pi.Pc != null)
+      if (this.QX.QR != null)
       {
-        localObject = this.Pi.Pc;
-        this.Pi.Pc = null;
+        localObject = this.QX.QR;
+        this.QX.QR = null;
         ((Runnable)localObject).run();
       }
       Object localObject = paramView.getTag(2113929216);
@@ -209,17 +209,17 @@ public final class x
     
     public final void aI(View paramView)
     {
-      if (this.Pi.Pe >= 0)
+      if (this.QX.QT >= 0)
       {
-        paramView.setLayerType(this.Pi.Pe, null);
-        this.Pi.Pe = -1;
+        paramView.setLayerType(this.QX.QT, null);
+        this.QX.QT = -1;
       }
-      if ((Build.VERSION.SDK_INT >= 16) || (!this.Pj))
+      if ((Build.VERSION.SDK_INT >= 16) || (!this.QY))
       {
-        if (this.Pi.Pd != null)
+        if (this.QX.QS != null)
         {
-          localObject = this.Pi.Pd;
-          this.Pi.Pd = null;
+          localObject = this.QX.QS;
+          this.QX.QS = null;
           ((Runnable)localObject).run();
         }
         localObject = paramView.getTag(2113929216);
@@ -233,7 +233,7 @@ public final class x
         if (localObject != null) {
           ((y)localObject).aI(paramView);
         }
-        this.Pj = true;
+        this.QY = true;
         return;
       }
     }

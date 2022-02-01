@@ -14,84 +14,84 @@ import com.tencent.mm.compatible.deviceinfo.aa;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.h.c;
 import com.tencent.mm.plugin.finder.view.FinderVideoFrameView;
-import com.tencent.mm.plugin.finder.view.h;
-import com.tencent.mm.plugin.finder.view.h.a;
-import com.tencent.mm.protocal.protobuf.bqs;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.plugin.finder.view.j;
+import com.tencent.mm.plugin.finder.view.j.a;
+import com.tencent.mm.protocal.protobuf.bvf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.vfs.i;
 import d.g.a.a;
 import d.g.a.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 import java.io.FileDescriptor;
 import java.io.RandomAccessFile;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/FinderNormalVideoCoverPreview;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoCoverPreview;", "context", "Landroid/content/Context;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "frameView", "Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameView;", "seeker", "Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameSeeker;", "destroy", "", "getBitmap", "Landroid/graphics/Bitmap;", "width", "", "height", "getView", "Landroid/view/View;", "seekTo", "timeMs", "", "start", "onReady", "Lkotlin/Function0;", "onDestroy", "onSeekFrame", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "frameUs", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/FinderNormalVideoCoverPreview;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoCoverPreview;", "context", "Landroid/content/Context;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "frameView", "Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameView;", "seeker", "Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameSeeker;", "destroy", "", "getBitmap", "Landroid/graphics/Bitmap;", "width", "", "height", "getView", "Landroid/view/View;", "seekTo", "timeMs", "", "start", "onReady", "Lkotlin/Function0;", "onDestroy", "onSeekFrame", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "frameUs", "plugin-finder_release"})
 public final class e
   implements n
 {
-  private FinderVideoFrameView rQO;
-  private h rQP;
+  private FinderVideoFrameView sNo;
+  private j sNp;
   
-  public e(Context paramContext, bqs parambqs)
+  public e(Context paramContext, bvf parambvf)
   {
-    AppMethodBeat.i(203706);
-    this.rQO = new FinderVideoFrameView(paramContext);
-    paramContext = parambqs.url;
-    k.g(paramContext, "media.url");
-    this.rQP = new h(paramContext, this.rQO.getTextureView());
-    AppMethodBeat.o(203706);
+    AppMethodBeat.i(204615);
+    this.sNo = new FinderVideoFrameView(paramContext);
+    paramContext = parambvf.url;
+    p.g(paramContext, "media.url");
+    this.sNp = new j(paramContext, this.sNo.getTextureView());
+    AppMethodBeat.o(204615);
   }
   
-  public final void a(a<y> parama1, a<y> parama2, b<? super Long, y> paramb)
+  public final void a(a<z> parama1, a<z> parama2, b<? super Long, z> paramb)
   {
-    AppMethodBeat.i(203702);
-    k.h(parama1, "onReady");
-    k.h(parama2, "onDestroy");
-    k.h(paramb, "onSeekFrame");
-    h localh = this.rQP;
-    k.h(parama1, "onTextureReady");
-    k.h(parama2, "onTextureDestroy");
-    k.h(paramb, "onSeekFrame");
-    Object localObject = d.gy("FinderVideoFrameSeeker_renderThread" + localh.hashCode(), -2);
-    k.g(localObject, "SpecialThreadFactory.cre…READ_PRIORITY_FOREGROUND)");
-    localh.rZs = ((HandlerThread)localObject);
-    localObject = localh.rZs;
+    AppMethodBeat.i(204611);
+    p.h(parama1, "onReady");
+    p.h(parama2, "onDestroy");
+    p.h(paramb, "onSeekFrame");
+    j localj = this.sNp;
+    p.h(parama1, "onTextureReady");
+    p.h(parama2, "onTextureDestroy");
+    p.h(paramb, "onSeekFrame");
+    Object localObject = d.gW("FinderVideoFrameSeeker_renderThread" + localj.hashCode(), -2);
+    p.g(localObject, "SpecialThreadFactory.cre…READ_PRIORITY_FOREGROUND)");
+    localj.sWo = ((HandlerThread)localObject);
+    localObject = localj.sWo;
     if (localObject == null) {
-      k.aVY("ht");
+      p.bcb("ht");
     }
     ((HandlerThread)localObject).start();
-    localObject = localh.rZs;
+    localObject = localj.sWo;
     if (localObject == null) {
-      k.aVY("ht");
+      p.bcb("ht");
     }
-    localh.handler = new ao(((HandlerThread)localObject).getLooper());
-    localh.cSi = new c();
-    localh.rZr = new c();
-    localObject = i.cY(localh.path, false);
-    k.g(localObject, "raf");
+    localj.handler = new ap(((HandlerThread)localObject).getLooper());
+    localj.ddy = new c();
+    localj.sWn = new c();
+    localObject = i.dd(localj.path, false);
+    p.g(localObject, "raf");
     FileDescriptor localFileDescriptor = ((RandomAccessFile)localObject).getFD();
     c localc;
     int j;
     int i;
-    if (ae.fJf.fIY == 1)
+    if (ae.gcG.gcz == 1)
     {
-      localc = localh.cSi;
+      localc = localj.ddy;
       if (localc == null) {
-        k.aVY("extractor");
+        p.bcb("extractor");
       }
-      localc.setDataSource(localFileDescriptor, 0L, i.aSp(localh.path));
-      localc = localh.rZr;
+      localc.setDataSource(localFileDescriptor, 0L, i.aYo(localj.path));
+      localc = localj.sWn;
       if (localc == null) {
-        k.aVY("frameFlagExtractor");
+        p.bcb("frameFlagExtractor");
       }
-      localc.setDataSource(localFileDescriptor, 0L, i.aSp(localh.path));
+      localc.setDataSource(localFileDescriptor, 0L, i.aYo(localj.path));
       ((RandomAccessFile)localObject).close();
-      localObject = localh.cSi;
+      localObject = localj.ddy;
       if (localObject == null) {
-        k.aVY("extractor");
+        p.bcb("extractor");
       }
       j = ((c)localObject).getTrackCount();
       i = 0;
@@ -100,51 +100,51 @@ public final class e
     {
       if (i < j)
       {
-        localObject = localh.cSi;
+        localObject = localj.ddy;
         if (localObject == null) {
-          k.aVY("extractor");
+          p.bcb("extractor");
         }
         localObject = ((c)localObject).getTrackFormat(i);
-        k.g(localObject, "extractor.getTrackFormat(i)");
-        localh.mediaFormat = ((MediaFormat)localObject);
-        localObject = localh.mediaFormat;
+        p.g(localObject, "extractor.getTrackFormat(i)");
+        localj.mediaFormat = ((MediaFormat)localObject);
+        localObject = localj.mediaFormat;
         if (localObject == null) {
-          k.aVY("mediaFormat");
+          p.bcb("mediaFormat");
         }
         localObject = ((MediaFormat)localObject).getString("mime");
-        k.g(localObject, "mediaFormat.getString(MediaFormat.KEY_MIME)");
-        localh.mime = ((String)localObject);
-        localObject = localh.mime;
+        p.g(localObject, "mediaFormat.getString(MediaFormat.KEY_MIME)");
+        localj.mime = ((String)localObject);
+        localObject = localj.mime;
         if (localObject == null) {
-          k.aVY("mime");
+          p.bcb("mime");
         }
-        if (d.n.n.nb((String)localObject, "video/"))
+        if (d.n.n.nz((String)localObject, "video/"))
         {
-          localObject = localh.cSi;
+          localObject = localj.ddy;
           if (localObject == null) {
-            k.aVY("extractor");
+            p.bcb("extractor");
           }
           ((c)localObject).selectTrack(i);
-          localObject = localh.rZr;
+          localObject = localj.sWn;
           if (localObject == null) {
-            k.aVY("frameFlagExtractor");
+            p.bcb("frameFlagExtractor");
           }
           ((c)localObject).selectTrack(i);
         }
       }
       else
       {
-        localh.aTL.setSurfaceTextureListener((TextureView.SurfaceTextureListener)new h.a(localh, parama2, paramb, parama1));
-        AppMethodBeat.o(203702);
+        localj.bef.setSurfaceTextureListener((TextureView.SurfaceTextureListener)new j.a(localj, parama2, paramb, parama1));
+        AppMethodBeat.o(204611);
         return;
-        localc = localh.cSi;
+        localc = localj.ddy;
         if (localc == null) {
-          k.aVY("extractor");
+          p.bcb("extractor");
         }
         localc.setDataSource(localFileDescriptor);
-        localc = localh.rZr;
+        localc = localj.sWn;
         if (localc == null) {
-          k.aVY("frameFlagExtractor");
+          p.bcb("frameFlagExtractor");
         }
         localc.setDataSource(localFileDescriptor);
         break;
@@ -155,97 +155,97 @@ public final class e
   
   public final void destroy()
   {
-    AppMethodBeat.i(203704);
-    Object localObject = this.rQP;
-    ((h)localObject).releaseDecoder();
-    c localc = ((h)localObject).cSi;
+    AppMethodBeat.i(204613);
+    Object localObject = this.sNp;
+    ((j)localObject).releaseDecoder();
+    c localc = ((j)localObject).ddy;
     if (localc == null) {
-      k.aVY("extractor");
+      p.bcb("extractor");
     }
     localc.release();
-    localc = ((h)localObject).rZr;
+    localc = ((j)localObject).sWn;
     if (localc == null) {
-      k.aVY("frameFlagExtractor");
+      p.bcb("frameFlagExtractor");
     }
     localc.release();
-    localObject = ((h)localObject).rZs;
+    localObject = ((j)localObject).sWo;
     if (localObject == null) {
-      k.aVY("ht");
+      p.bcb("ht");
     }
     ((HandlerThread)localObject).quit();
-    AppMethodBeat.o(203704);
+    AppMethodBeat.o(204613);
   }
   
   public final Bitmap getBitmap()
   {
-    AppMethodBeat.i(203705);
-    Bitmap localBitmap = this.rQO.getTextureView().getBitmap();
-    AppMethodBeat.o(203705);
+    AppMethodBeat.i(204614);
+    Bitmap localBitmap = this.sNo.getTextureView().getBitmap();
+    AppMethodBeat.o(204614);
     return localBitmap;
   }
   
   public final View getView()
   {
-    return (View)this.rQO;
+    return (View)this.sNo;
   }
   
   public final void seekTo(long paramLong)
   {
-    AppMethodBeat.i(203703);
-    Object localObject2 = this.rQP;
-    synchronized (((h)localObject2).lock)
+    AppMethodBeat.i(204612);
+    Object localObject2 = this.sNp;
+    synchronized (((j)localObject2).lock)
     {
-      ((h)localObject2).rZt = paramLong;
-      Object localObject4 = ((h)localObject2).rZr;
+      ((j)localObject2).sWp = paramLong;
+      Object localObject4 = ((j)localObject2).sWn;
       if (localObject4 == null) {
-        k.aVY("frameFlagExtractor");
+        p.bcb("frameFlagExtractor");
       }
-      ((c)localObject4).seekTo(((h)localObject2).rZt * 1000L, 0);
-      localObject4 = ((h)localObject2).rZr;
+      ((c)localObject4).seekTo(((j)localObject2).sWp * 1000L, 0);
+      localObject4 = ((j)localObject2).sWn;
       if (localObject4 == null) {
-        k.aVY("frameFlagExtractor");
+        p.bcb("frameFlagExtractor");
       }
       long l = ((c)localObject4).getSampleTime();
-      if ((l == ((h)localObject2).rZu) && (((h)localObject2).rZw >= 0L) && (((h)localObject2).rZw < paramLong * 1000L))
+      if ((l == ((j)localObject2).sWq) && (((j)localObject2).sWs >= 0L) && (((j)localObject2).sWs < paramLong * 1000L))
       {
-        ac.i(((h)localObject2).TAG, "lxl same taget~");
-        if (!((h)localObject2).gbe)
+        ad.i(((j)localObject2).TAG, "lxl same taget~");
+        if (!((j)localObject2).guO)
         {
-          localObject4 = ((h)localObject2).decoder;
+          localObject4 = ((j)localObject2).decoder;
           if (localObject4 != null) {
             ((MediaCodec)localObject4).start();
           }
-          ((h)localObject2).gbe = true;
+          ((j)localObject2).guO = true;
         }
-        ((h)localObject2).lock.notify();
-        localObject2 = y.KTp;
-        AppMethodBeat.o(203703);
+        ((j)localObject2).lock.notify();
+        localObject2 = z.MKo;
+        AppMethodBeat.o(204612);
         return;
       }
-      ((h)localObject2).rZu = l;
-      localObject4 = ((h)localObject2).cSi;
+      ((j)localObject2).sWq = l;
+      localObject4 = ((j)localObject2).ddy;
       if (localObject4 == null) {
-        k.aVY("extractor");
+        p.bcb("extractor");
       }
-      ((c)localObject4).seekTo(((h)localObject2).rZt * 1000L, 0);
-      if (((h)localObject2).gbe)
+      ((c)localObject4).seekTo(((j)localObject2).sWp * 1000L, 0);
+      if (((j)localObject2).guO)
       {
-        localObject4 = ((h)localObject2).decoder;
+        localObject4 = ((j)localObject2).decoder;
         if (localObject4 != null) {
           ((MediaCodec)localObject4).flush();
         }
-        localObject4 = ((h)localObject2).decoder;
+        localObject4 = ((j)localObject2).decoder;
         if (localObject4 != null) {
           ((MediaCodec)localObject4).start();
         }
       }
-      ac.i(((h)localObject2).TAG, "lxl change taget, start sync time:" + ((h)localObject2).rZu / 1000L + ", target time:" + paramLong + ", flush:" + ((h)localObject2).gbe);
+      ad.i(((j)localObject2).TAG, "lxl change taget, start sync time:" + ((j)localObject2).sWq / 1000L + ", target time:" + paramLong + ", flush:" + ((j)localObject2).guO);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.e
  * JD-Core Version:    0.7.0.1
  */

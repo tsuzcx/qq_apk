@@ -3,20 +3,21 @@ package com.tencent.mm.storagebase;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class c
 {
-  private static f.a Hbk = null;
-  private static long Hbl = 0L;
-  private static int Hbm = 0;
+  private static long IOA = 0L;
+  private static int IOB = 0;
+  private static f.a IOz;
   private static int index;
   private static boolean on = false;
   
   static
   {
     index = 0;
+    IOz = null;
   }
   
   static void a(String paramString, Cursor paramCursor, long paramLong)
@@ -27,7 +28,7 @@ final class c
       AppMethodBeat.o(133329);
       return;
     }
-    long l = Hbk.YH();
+    long l = IOz.abj();
     Object localObject1 = "Thread:[" + Thread.currentThread().getId() + "," + Thread.currentThread().getName() + "]";
     Object localObject2 = (String)localObject1 + "[" + index + "][" + l + "]";
     localObject1 = localObject2;
@@ -38,10 +39,10 @@ final class c
     if (paramCursor != null)
     {
       r(paramCursor);
-      localObject2 = (String)localObject1 + "[cuCnt:" + Hbm + ",cuTime:" + Hbl + "]";
+      localObject2 = (String)localObject1 + "[cuCnt:" + IOB + ",cuTime:" + IOA + "]";
     }
     paramString = (String)localObject2 + "[" + paramString + "]--";
-    ac.v("MicroMsg.dbtest", paramString + bs.eWi());
+    ad.v("MicroMsg.dbtest", paramString + bt.flS());
     AppMethodBeat.o(133329);
   }
   
@@ -53,7 +54,7 @@ final class c
       AppMethodBeat.o(133327);
       return;
     }
-    Hbk = new f.a();
+    IOz = new f.a();
     index += 1;
     AppMethodBeat.o(133327);
   }
@@ -62,7 +63,7 @@ final class c
   {
     AppMethodBeat.i(133326);
     if (on) {
-      ac.e("MicroMsg.DKTest", "exception:%s", new Object[] { bs.m(paramException) });
+      ad.e("MicroMsg.DKTest", "exception:%s", new Object[] { bt.n(paramException) });
     }
     AppMethodBeat.o(133326);
   }
@@ -80,16 +81,16 @@ final class c
       AppMethodBeat.o(133328);
       return;
     }
-    Hbm = paramCursor.getCount();
+    IOB = paramCursor.getCount();
     f.a locala = new f.a();
     int i = 0;
-    while (i < Hbm)
+    while (i < IOB)
     {
       paramCursor.moveToPosition(i);
       i += 1;
     }
     paramCursor.moveToPosition(-1);
-    Hbl = locala.YH();
+    IOA = locala.abj();
     AppMethodBeat.o(133328);
   }
 }

@@ -5,50 +5,50 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.model.bh.b;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.model.bi.b;
 import com.tencent.mm.pluginsdk.ui.b.a;
 import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class k
   extends b
 {
-  LinearLayout IHq;
+  LinearLayout Kyy;
   
   public k(final Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(38799);
-    this.IHq = null;
-    this.IHq = new LinearLayout(paramContext);
-    this.IHq.setVisibility(8);
-    bh.ayS().hoe = new bh.b()
+    this.Kyy = null;
+    this.Kyy = new LinearLayout(paramContext);
+    this.Kyy.setVisibility(8);
+    bi.aBW().hGw = new bi.b()
     {
       public final void onNotify()
       {
         AppMethodBeat.i(38798);
-        k.this.IHq.post(new Runnable()
+        k.this.Kyy.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(38797);
-            if (k.this.IHq != null)
+            if (k.this.Kyy != null)
             {
-              k.this.IHq.setVisibility(8);
-              k.this.IHq.removeAllViews();
+              k.this.Kyy.setVisibility(8);
+              k.this.Kyy.removeAllViews();
             }
-            a locala = e.a(k.1.this.val$context, e.a.IGZ, null);
+            a locala = e.a(k.1.this.val$context, e.a.Kyf, null);
             Object localObject = locala;
             if (locala == null) {
-              localObject = e.a(k.1.this.val$context, e.a.IGQ, null);
+              localObject = e.a(k.1.this.val$context, e.a.KxW, null);
             }
             if ((localObject != null) && (((a)localObject).getView() != null))
             {
-              ac.i("MicroMsg.MainFrameAndAbtestBanner", "summerinit MainFrameBannerStorage onNotify banner[%s], view[%s]", new Object[] { localObject, ((a)localObject).getView() });
-              k.this.IHq.setVisibility(0);
+              ad.i("MicroMsg.MainFrameAndAbtestBanner", "summerinit MainFrameBannerStorage onNotify banner[%s], view[%s]", new Object[] { localObject, ((a)localObject).getView() });
+              k.this.Kyy.setVisibility(0);
               localObject = ((a)localObject).getView();
-              k.this.IHq.addView((View)localObject, new LinearLayout.LayoutParams(-1, -2));
+              k.this.Kyy.addView((View)localObject, new LinearLayout.LayoutParams(-1, -2));
             }
             AppMethodBeat.o(38797);
           }
@@ -56,14 +56,14 @@ public final class k
         AppMethodBeat.o(38798);
       }
     };
-    bh.ayS().hoe.onNotify();
+    bi.aBW().hGw.onNotify();
     AppMethodBeat.o(38799);
   }
   
-  public final boolean bvU()
+  public final boolean bAa()
   {
     AppMethodBeat.i(38800);
-    if ((this.IHq != null) && (this.IHq.getVisibility() == 0))
+    if ((this.Kyy != null) && (this.Kyy.getVisibility() == 0))
     {
       AppMethodBeat.o(38800);
       return true;
@@ -75,7 +75,7 @@ public final class k
   public final void destroy()
   {
     AppMethodBeat.i(38801);
-    bh.ayS().hoe = null;
+    bi.aBW().hGw = null;
     AppMethodBeat.o(38801);
   }
   
@@ -86,7 +86,7 @@ public final class k
   
   public final View getView()
   {
-    return this.IHq;
+    return this.Kyy;
   }
 }
 

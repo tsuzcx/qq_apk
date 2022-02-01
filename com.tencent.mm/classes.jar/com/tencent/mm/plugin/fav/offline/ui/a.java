@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.s;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.t;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import java.util.ArrayList;
@@ -18,12 +18,12 @@ import java.util.List;
 public final class a
 {
   private Context context;
-  private com.tencent.mm.plugin.fav.offline.b.a qKT;
+  private com.tencent.mm.plugin.fav.offline.b.a ruV;
   
   public a(Context paramContext, com.tencent.mm.plugin.fav.offline.b.a parama)
   {
     this.context = paramContext;
-    this.qKT = parama;
+    this.ruV = parama;
   }
   
   @android.webkit.JavascriptInterface
@@ -34,31 +34,31 @@ public final class a
     Object localObject1 = new e(Uri.parse(paramString));
     if (!((e)localObject1).exists())
     {
-      ac.i("MicroMsg.offline.FavOfflineJavaObj", "doImgPreview() currentPath:%s no exist", new Object[] { paramString });
+      ad.i("MicroMsg.offline.FavOfflineJavaObj", "doImgPreview() currentPath:%s no exist", new Object[] { paramString });
       AppMethodBeat.o(73574);
       return;
     }
-    if (s.aKD(q.B(((e)localObject1).mUri)))
+    if (t.aQj(q.B(((e)localObject1).mUri)))
     {
-      ac.d("MicroMsg.offline.FavOfflineJavaObj", "doImgPreview() currentPath:%s is a gif", new Object[] { paramString });
+      ad.d("MicroMsg.offline.FavOfflineJavaObj", "doImgPreview() currentPath:%s is a gif", new Object[] { paramString });
       AppMethodBeat.o(73574);
       return;
     }
-    ac.i("MicroMsg.offline.FavOfflineJavaObj", "doImgPreview() currentPath:%s", new Object[] { paramString });
-    Object localObject2 = bs.lp(this.qKT.field_imgPaths, ",");
+    ad.i("MicroMsg.offline.FavOfflineJavaObj", "doImgPreview() currentPath:%s", new Object[] { paramString });
+    Object localObject2 = bt.lO(this.ruV.field_imgPaths, ",");
     ArrayList localArrayList = new ArrayList();
     int j = 0;
     int k = 0;
     int i = 0;
     if (j < ((List)localObject2).size())
     {
-      String str = this.qKT.field_imgDirPath + "/" + (String)((List)localObject2).get(j);
+      String str = this.ruV.field_imgDirPath + "/" + (String)((List)localObject2).get(j);
       int m = k;
       int n = i;
-      if (!s.aKD(str))
+      if (!t.aQj(str))
       {
         localArrayList.add(str);
-        if ((k != 0) || (bs.isNullOrNil(paramString)) || (!paramString.endsWith((String)((List)localObject2).get(j)))) {
+        if ((k != 0) || (bt.isNullOrNil(paramString)) || (!paramString.endsWith((String)((List)localObject2).get(j)))) {
           break label252;
         }
         m = 1;
@@ -87,7 +87,7 @@ public final class a
     while (i < localArrayList.size())
     {
       localObject2[i] = ((String)localArrayList.get(i));
-      if (bs.lr((String)localArrayList.get(i), ((e)localObject1).getName())) {
+      if (bt.lQ((String)localArrayList.get(i), ((e)localObject1).getName())) {
         j = i;
       }
       i += 1;
@@ -107,7 +107,7 @@ public final class a
     paramString.putInt("stat_scene", 4);
     paramString.putString("stat_url", "");
     ((Intent)localObject1).putExtra("_stat_obj", paramString);
-    com.tencent.mm.plugin.webview.a.a.iyx.q((Intent)localObject1, this.context);
+    com.tencent.mm.plugin.webview.a.a.iRG.q((Intent)localObject1, this.context);
     AppMethodBeat.o(73574);
   }
 }

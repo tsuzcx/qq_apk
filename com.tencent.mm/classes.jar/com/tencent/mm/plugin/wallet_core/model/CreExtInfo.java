@@ -10,10 +10,10 @@ public class CreExtInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<CreExtInfo> CREATOR;
-  public int Bvt;
-  public int Bvu;
-  public int Bvv;
-  public int Bvw;
+  public int CVI;
+  public int CVJ;
+  public int CVK;
+  public int CVL;
   
   static
   {
@@ -27,23 +27,23 @@ public class CreExtInfo
   protected CreExtInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(70247);
-    this.Bvt = paramParcel.readInt();
-    this.Bvu = paramParcel.readInt();
-    this.Bvv = paramParcel.readInt();
-    this.Bvw = paramParcel.readInt();
+    this.CVI = paramParcel.readInt();
+    this.CVJ = paramParcel.readInt();
+    this.CVK = paramParcel.readInt();
+    this.CVL = paramParcel.readInt();
     AppMethodBeat.o(70247);
   }
   
-  public static CreExtInfo aV(JSONObject paramJSONObject)
+  public static CreExtInfo bd(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70249);
     if (paramJSONObject != null)
     {
       CreExtInfo localCreExtInfo = new CreExtInfo();
-      localCreExtInfo.Bvt = paramJSONObject.optInt("need_creid_renewal", 0);
-      localCreExtInfo.Bvu = paramJSONObject.optInt("need_birth_date", 0);
-      localCreExtInfo.Bvv = paramJSONObject.optInt("need_cre_expire_date", 0);
-      localCreExtInfo.Bvw = paramJSONObject.optInt("need_show_cre_type", 0);
+      localCreExtInfo.CVI = paramJSONObject.optInt("need_creid_renewal", 0);
+      localCreExtInfo.CVJ = paramJSONObject.optInt("need_birth_date", 0);
+      localCreExtInfo.CVK = paramJSONObject.optInt("need_cre_expire_date", 0);
+      localCreExtInfo.CVL = paramJSONObject.optInt("need_show_cre_type", 0);
       AppMethodBeat.o(70249);
       return localCreExtInfo;
     }
@@ -59,10 +59,10 @@ public class CreExtInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70248);
-    paramParcel.writeInt(this.Bvt);
-    paramParcel.writeInt(this.Bvu);
-    paramParcel.writeInt(this.Bvv);
-    paramParcel.writeInt(this.Bvw);
+    paramParcel.writeInt(this.CVI);
+    paramParcel.writeInt(this.CVJ);
+    paramParcel.writeInt(this.CVK);
+    paramParcel.writeInt(this.CVL);
     AppMethodBeat.o(70248);
   }
 }

@@ -12,7 +12,7 @@ public class ClickFlowReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(19873);
-    c.aIr().j(paramIntent);
+    c.aLB().j(paramIntent);
     AppMethodBeat.o(19873);
   }
 }

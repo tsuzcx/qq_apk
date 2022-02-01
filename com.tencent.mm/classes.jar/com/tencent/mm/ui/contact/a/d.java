@@ -4,33 +4,33 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aj;
+import com.tencent.mm.model.ak;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.am;
 
 public final class d
   extends f
 {
-  public CharSequence IzJ;
-  public boolean IzK;
-  private a IzL;
-  public ai contact;
+  public CharSequence KqP;
+  public boolean KqQ;
+  private a KqR;
+  public am contact;
   
-  public d(int paramInt, ai paramai)
+  public d(int paramInt, am paramam)
   {
     super(paramInt);
     AppMethodBeat.i(102941);
-    this.IzL = new a();
-    this.contact = paramai;
-    if (paramai.exL == 1) {}
+    this.KqR = new a();
+    this.contact = paramam;
+    if (paramam.ePk == 1) {}
     for (;;)
     {
-      this.IzK = bool;
+      this.KqQ = bool;
       AppMethodBeat.o(102941);
       return;
       bool = false;
@@ -42,20 +42,20 @@ public final class d
     boolean bool = true;
     AppMethodBeat.i(102942);
     super.a(paramContext, parama);
-    if (this.contact.exL == 1) {}
+    if (this.contact.ePk == 1) {}
     for (;;)
     {
-      this.IzK = bool;
-      this.IzJ = ((c)g.ab(c.class)).awK().xO(this.contact.field_username).wk(this.contact.field_username);
+      this.KqQ = bool;
+      this.KqP = ((c)g.ab(c.class)).azz().AO(this.contact.field_username).zf(this.contact.field_username);
       AppMethodBeat.o(102942);
       return;
       bool = false;
     }
   }
   
-  public final a.b aOg()
+  public final a.b aRs()
   {
-    return this.IzL;
+    return this.KqR;
   }
   
   final class a
@@ -71,21 +71,21 @@ public final class d
       AppMethodBeat.i(102940);
       super.a(paramContext, parama, parama1, paramBoolean1, paramBoolean2);
       parama = (f.a)parama;
-      if (!bs.aj(d.this.IzJ))
+      if (!bt.ai(d.this.KqP))
       {
-        parama.ijE.setVisibility(0);
-        d.this.IzJ = k.b(paramContext, d.this.IzJ, com.tencent.mm.cc.a.au(paramContext, 2131165517));
-        paramContext = parama.ijE;
-        parama = parama.ijE.getContext().getResources();
-        if (d.this.IzK) {}
+        parama.iCV.setVisibility(0);
+        d.this.KqP = k.b(paramContext, d.this.KqP, com.tencent.mm.cc.a.ax(paramContext, 2131165517));
+        paramContext = parama.iCV;
+        parama = parama.iCV.getContext().getResources();
+        if (d.this.KqQ) {}
         for (int i = 2131757636;; i = 2131757635)
         {
-          paramContext.setText(parama.getString(i, new Object[] { d.this.IzJ }));
+          paramContext.setText(parama.getString(i, new Object[] { d.this.KqP }));
           AppMethodBeat.o(102940);
           return;
         }
       }
-      parama.ijE.setVisibility(8);
+      parama.iCV.setVisibility(8);
       AppMethodBeat.o(102940);
     }
   }

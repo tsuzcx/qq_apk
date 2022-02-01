@@ -8,14 +8,22 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.plugin.lite.jsapi.a;
+import com.tencent.mm.plugin.lite.jsapi.a.3;
+import com.tencent.mm.plugin.lite.jsapi.a.a;
 import com.tencent.mm.plugin.lite.jsapi.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.ui.ar;
 import java.lang.reflect.Constructor;
 import java.util.Iterator;
 import java.util.List;
@@ -38,34 +46,34 @@ public class LiteAppCenter
   
   static
   {
-    AppMethodBeat.i(208142);
+    AppMethodBeat.i(214607);
     System.loadLibrary("wechatlv");
     sCommApi = new ConcurrentHashMap();
     sAppLevelApi = new ConcurrentHashMap();
-    AppMethodBeat.o(208142);
+    AppMethodBeat.o(214607);
   }
   
   private static native void addJsApi(String paramString);
   
   public static void addJsApi(String paramString, Class<? extends a> paramClass)
   {
-    AppMethodBeat.i(208127);
+    AppMethodBeat.i(214592);
     if (sCommApi.containsKey(paramString))
     {
       paramString = new RuntimeException(paramString + " has been exists");
-      AppMethodBeat.o(208127);
+      AppMethodBeat.o(214592);
       throw paramString;
     }
     sCommApi.put(paramString, paramClass);
     addJsApi(paramString);
-    AppMethodBeat.o(208127);
+    AppMethodBeat.o(214592);
   }
   
   private static native void addJsApi(String paramString1, String paramString2);
   
   public static void addJsApi(String paramString1, String paramString2, Class<? extends a> paramClass)
   {
-    AppMethodBeat.i(208129);
+    AppMethodBeat.i(214594);
     Map localMap = (Map)sAppLevelApi.get(paramString1);
     Object localObject = localMap;
     if (localMap == null)
@@ -76,45 +84,57 @@ public class LiteAppCenter
     if (((Map)localObject).containsKey(paramString2))
     {
       paramString1 = new RuntimeException(paramString1 + ":" + paramString2 + " has been exists");
-      AppMethodBeat.o(208129);
+      AppMethodBeat.o(214594);
       throw paramString1;
     }
     ((Map)localObject).put(paramString2, paramClass);
     addJsApi(paramString1, paramString2);
-    AppMethodBeat.o(208129);
+    AppMethodBeat.o(214594);
   }
   
-  public static void addJsApi(String paramString, Map<String, Class<? extends a>> paramMap)
+  public static void addJsApi(String paramString, Map<String, Class> paramMap)
   {
-    AppMethodBeat.i(208130);
+    AppMethodBeat.i(214595);
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)paramMap.next();
+      if (!a.class.isAssignableFrom((Class)localEntry.getValue()))
+      {
+        paramString = new RuntimeException(paramString + ":api must be subclass of LiteAppJsApi");
+        AppMethodBeat.o(214595);
+        throw paramString;
+      }
       addJsApi(paramString, (String)localEntry.getKey(), (Class)localEntry.getValue());
     }
-    AppMethodBeat.o(208130);
+    AppMethodBeat.o(214595);
   }
   
-  public static void addJsApi(Map<String, Class<? extends a>> paramMap)
+  public static void addJsApi(Map<String, Class> paramMap)
   {
-    AppMethodBeat.i(208128);
+    AppMethodBeat.i(214593);
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)paramMap.next();
+      if (!a.class.isAssignableFrom((Class)localEntry.getValue()))
+      {
+        paramMap = new RuntimeException("api must be subclass of LiteAppJsApi");
+        AppMethodBeat.o(214593);
+        throw paramMap;
+      }
       addJsApi((String)localEntry.getKey(), (Class)localEntry.getValue());
     }
-    AppMethodBeat.o(208128);
+    AppMethodBeat.o(214593);
   }
   
   private static boolean getAppInfo(String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(208136);
+    AppMethodBeat.i(214601);
     if ((paramArrayOfString == null) || (paramArrayOfString.length != 2))
     {
-      ac.e("MicroMsg.LiteAppCenter", "info invalid");
-      AppMethodBeat.o(208136);
+      ad.e("MicroMsg.LiteAppCenter", "info invalid");
+      AppMethodBeat.o(214601);
       return false;
     }
     if (mCallback != null)
@@ -122,42 +142,48 @@ public class LiteAppCenter
       paramString = mCallback.getAppInfo(paramString);
       if ((paramString == null) || (paramString.length != paramArrayOfString.length))
       {
-        AppMethodBeat.o(208136);
+        AppMethodBeat.o(214601);
         return false;
       }
       paramArrayOfString[0] = paramString[0];
       paramArrayOfString[1] = paramString[1];
     }
-    AppMethodBeat.o(208136);
+    AppMethodBeat.o(214601);
     return false;
   }
   
   public static native String getAuthUrl(String paramString1, String paramString2, String paramString3);
   
+  public static native String getBaseLibBuildType();
+  
+  public static native String getBaseLibVersion();
+  
+  public static native String getLiteAppVersion(String paramString1, String paramString2, String paramString3);
+  
   private static String getSystemInfo()
   {
-    AppMethodBeat.i(208139);
+    AppMethodBeat.i(214604);
     Object localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("brand", Build.MANUFACTURER);
       ((JSONObject)localObject).put("model", Build.MODEL);
-      ((JSONObject)localObject).put("language", ab.iC(ai.getContext()));
+      ((JSONObject)localObject).put("language", ac.iM(aj.getContext()));
       ((JSONObject)localObject).put("platform", "Android");
       ((JSONObject)localObject).put("system", "Android " + Build.VERSION.RELEASE);
-      ((JSONObject)localObject).put("version", com.tencent.mm.sdk.platformtools.h.gMJ);
-      float f = ai.getContext().getResources().getDisplayMetrics().density;
+      ((JSONObject)localObject).put("version", i.hgG);
+      float f = aj.getContext().getResources().getDisplayMetrics().density;
       ((JSONObject)localObject).put("pixelRatio", f);
-      ((JSONObject)localObject).put("navigationBarHeight", ap.ej(ai.getContext()) / f);
-      ((JSONObject)localObject).put("statusBarHeight", ap.jL(ai.getContext()) / f);
-      ((JSONObject)localObject).put("titleBarHeight", ap.dT(ai.getContext()) / f);
+      ((JSONObject)localObject).put("navigationBarHeight", ar.ej(aj.getContext()) / f);
+      ((JSONObject)localObject).put("statusBarHeight", ar.jW(aj.getContext()) / f);
+      ((JSONObject)localObject).put("titleBarHeight", ar.dT(aj.getContext()) / f);
       localObject = ((JSONObject)localObject).toString();
-      AppMethodBeat.o(208139);
+      AppMethodBeat.o(214604);
       return localObject;
     }
     catch (JSONException localJSONException)
     {
-      AppMethodBeat.o(208139);
+      AppMethodBeat.o(214604);
     }
     return "";
   }
@@ -165,13 +191,13 @@ public class LiteAppCenter
   private static String getUserAgent()
   {
     int i = 0;
-    AppMethodBeat.i(208140);
+    AppMethodBeat.i(214605);
     Object localObject2 = "NoNet";
     for (;;)
     {
       try
       {
-        Object localObject3 = (ConnectivityManager)ai.getContext().getSystemService("connectivity");
+        Object localObject3 = (ConnectivityManager)aj.getContext().getSystemService("connectivity");
         Object localObject1 = localObject2;
         if (localObject3 != null)
         {
@@ -193,20 +219,20 @@ public class LiteAppCenter
             }
             localObject2 = "arm64";
           }
-          localObject3 = ai.getContext().getPackageManager().getPackageInfo(ai.getPackageName(), 0);
+          localObject3 = aj.getContext().getPackageManager().getPackageInfo(aj.getPackageName(), 0);
           localObject4 = ((PackageInfo)localObject3).versionName;
           i = ((PackageInfo)localObject3).versionCode;
           String str2 = Build.VERSION.RELEASE;
           String str3 = Build.MODEL;
           String str4 = Build.ID;
-          String str5 = com.tencent.mm.sdk.platformtools.h.gMJ;
-          String str6 = ab.eUO();
-          if (com.tencent.mm.sdk.platformtools.h.gMM)
+          String str5 = i.hgG;
+          String str6 = ac.fks();
+          if (i.hgJ)
           {
             localObject3 = "arm64";
             localObject1 = String.format("Mozilla/5.0 (Linux; Android %s; %s Build/%s; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/66.0.3359.126 MQQBrowser/6.2 TBS/045140 Mobile Safari/537.36 MMWEBID/3371 MicroMessenger/%s.%d(%s) Process/lite NetType/%s Language/%s ABI/%s WeChat/%s", new Object[] { str2, str3, str4, localObject4, Integer.valueOf(i), str5, localObject1, str6, localObject2, localObject3 });
-            ac.i("MicroMsg.LiteAppCenter", "get user agent:".concat(String.valueOf(localObject1)));
-            AppMethodBeat.o(208140);
+            ad.i("MicroMsg.LiteAppCenter", "get user agent:".concat(String.valueOf(localObject1)));
+            AppMethodBeat.o(214605);
             return localObject1;
             localObject1 = "WIFI";
             continue;
@@ -220,7 +246,7 @@ public class LiteAppCenter
       catch (Exception localException)
       {
         str1 = System.getProperty("http.agent");
-        AppMethodBeat.o(208140);
+        AppMethodBeat.o(214605);
         return str1;
       }
       continue;
@@ -232,60 +258,76 @@ public class LiteAppCenter
   
   private static void invokeJsApi(JsApi paramJsApi)
   {
-    AppMethodBeat.i(208133);
-    ac.i("MicroMsg.LiteAppCenter", "invokeJsApi:".concat(String.valueOf(paramJsApi)));
+    AppMethodBeat.i(214598);
+    ad.i("MicroMsg.LiteAppCenter", "invokeJsApi:".concat(String.valueOf(paramJsApi)));
+    label460:
     for (;;)
     {
+      JSONObject localJSONObject;
       try
       {
         if (paramJsApi.appId == null)
         {
-          ac.e("MicroMsg.LiteAppCenter", "invalid api ".concat(String.valueOf(paramJsApi)));
-          AppMethodBeat.o(208133);
+          ad.e("MicroMsg.LiteAppCenter", "invalid api ".concat(String.valueOf(paramJsApi)));
+          AppMethodBeat.o(214598);
           return;
         }
         if ((paramJsApi.method == null) || (paramJsApi.param == null))
         {
-          ac.e("MicroMsg.LiteAppCenter", "invalid api ".concat(String.valueOf(paramJsApi)));
+          ad.e("MicroMsg.LiteAppCenter", "invalid api ".concat(String.valueOf(paramJsApi)));
           if (paramJsApi.callbackId > 0L) {
-            jsApiCallback(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId, "{result: false, data: {msg: 'invalid api'}}", false);
+            jsApiCallback(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId, "{result: false, errMsg: \"invalid api\", data: {}}", false);
           }
-          AppMethodBeat.o(208133);
+          AppMethodBeat.o(214598);
           return;
         }
-        Object localObject = null;
+        Object localObject1 = null;
         if (sAppLevelApi.containsKey(paramJsApi.appId)) {
-          localObject = (Class)((Map)sAppLevelApi.get(paramJsApi.appId)).get(paramJsApi.method);
+          localObject1 = (Class)((Map)sAppLevelApi.get(paramJsApi.appId)).get(paramJsApi.method);
         }
-        if (localObject == null)
+        if (localObject1 != null) {
+          break label460;
+        }
+        localObject1 = (Class)sCommApi.get(paramJsApi.method);
+        if (localObject1 == null)
         {
-          localObject = (Class)sCommApi.get(paramJsApi.method);
-          if (localObject == null)
-          {
-            ac.e("MicroMsg.LiteAppCenter", "not found api ".concat(String.valueOf(paramJsApi)));
-            if (paramJsApi.callbackId > 0L) {
-              jsApiCallback(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId, "{result: false, data: {msg: 'not found'}}", false);
-            }
-            AppMethodBeat.o(208133);
-            return;
+          ad.e("MicroMsg.LiteAppCenter", "not found api ".concat(String.valueOf(paramJsApi)));
+          if (paramJsApi.callbackId > 0L) {
+            jsApiCallback(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId, "{result: false, errMsg:\"not found\" ,data: {}}", false);
           }
-          b localb = new b(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId);
-          localObject = (a)((Class)localObject).getConstructor(new Class[0]).newInstance(new Object[0]);
-          ((a)localObject).setCallback(localb);
-          ((a)localObject).invokeJsApi(paramJsApi.appId, new JSONObject(paramJsApi.param));
-          AppMethodBeat.o(208133);
+          AppMethodBeat.o(214598);
+          return;
+        }
+        localObject2 = new b(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId);
+        localObject1 = (a)((Class)localObject1).getConstructor(new Class[0]).newInstance(new Object[0]);
+        ((a)localObject1).uYy = ((b)localObject2);
+        localObject3 = paramJsApi.appId;
+        localJSONObject = new JSONObject(paramJsApi.param);
+        if (((a)localObject1).cXg() == 0)
+        {
+          ((a)localObject1).uYz = new a.a();
+          ((a)localObject1).uYz.uYy = ((a)localObject1).uYy;
+          ((a)localObject1).j((String)localObject3, localJSONObject);
+          AppMethodBeat.o(214598);
           return;
         }
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.LiteAppCenter", localException, "invokeJsApi", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.LiteAppCenter", localException, "invokeJsApi", new Object[0]);
         if (paramJsApi.callbackId > 0L) {
-          jsApiCallback(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId, "{result: false, data: {msg: 'exception'}}", false);
+          jsApiCallback(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId, "{result: false, errMsg:\"exception\" data: {}}", false);
         }
-        AppMethodBeat.o(208133);
+        AppMethodBeat.o(214598);
         return;
       }
+      Object localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("data", localJSONObject.toString());
+      ((Bundle)localObject2).putString("appId", (String)localObject3);
+      Object localObject3 = new a.3(localException);
+      h.a(aj.getPackageName(), (Parcelable)localObject2, localException.getClass(), (d)localObject3);
+      AppMethodBeat.o(214598);
+      return;
     }
   }
   
@@ -293,20 +335,20 @@ public class LiteAppCenter
   
   private static void navigateBack()
   {
-    AppMethodBeat.i(208141);
+    AppMethodBeat.i(214606);
     if (mUICallback != null) {
       mUICallback.navigateBack();
     }
-    AppMethodBeat.o(208141);
+    AppMethodBeat.o(214606);
   }
   
   private static void onCheckSumFail(String paramString, List<String> paramList)
   {
-    AppMethodBeat.i(208132);
+    AppMethodBeat.i(214597);
     if (mCallback != null) {
       mCallback.onCheckSumFail(paramString, paramList);
     }
-    AppMethodBeat.o(208132);
+    AppMethodBeat.o(214597);
   }
   
   public static native void preloadIndexView(String paramString1, String paramString2, String paramString3);
@@ -317,16 +359,16 @@ public class LiteAppCenter
   
   private static void reportIdKey(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(208138);
-    com.tencent.mm.plugin.report.service.h.wUl.n(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(208138);
+    AppMethodBeat.i(214603);
+    g.yhR.n(paramLong1, paramLong2, paramLong3);
+    AppMethodBeat.o(214603);
   }
   
   private static void reportKv(int paramInt, String paramString)
   {
-    AppMethodBeat.i(208137);
-    com.tencent.mm.plugin.report.service.h.wUl.kvStat(paramInt, paramString);
-    AppMethodBeat.o(208137);
+    AppMethodBeat.i(214602);
+    g.yhR.kvStat(paramInt, paramString);
+    AppMethodBeat.o(214602);
   }
   
   public static native void setAuthInfo(String paramString1, String paramString2, Map<String, String> paramMap1, Map<String, String> paramMap2);
@@ -342,29 +384,29 @@ public class LiteAppCenter
   
   public static void setPath(String paramString)
   {
-    AppMethodBeat.i(208131);
+    AppMethodBeat.i(214596);
     setPath(paramString, new HostInfo());
-    AppMethodBeat.o(208131);
+    AppMethodBeat.o(214596);
   }
   
   private static native void setPath(String paramString, HostInfo paramHostInfo);
   
   private static void setTitle(String paramString)
   {
-    AppMethodBeat.i(208134);
+    AppMethodBeat.i(214599);
     if (mUICallback != null) {
       mUICallback.setTitle(paramString);
     }
-    AppMethodBeat.o(208134);
+    AppMethodBeat.o(214599);
   }
   
   private static void setTitleAlpha(int paramInt)
   {
-    AppMethodBeat.i(208135);
+    AppMethodBeat.i(214600);
     if (mUICallback != null) {
       mUICallback.setTitleAlpha(paramInt);
     }
-    AppMethodBeat.o(208135);
+    AppMethodBeat.o(214600);
   }
   
   public static void setUICallback(ILiteAppUICallback paramILiteAppUICallback)
@@ -397,19 +439,19 @@ public class LiteAppCenter
     
     HostInfo()
     {
-      AppMethodBeat.i(208125);
+      AppMethodBeat.i(214590);
       this.system = "Android";
       this.systemVersion = ("Android " + Build.VERSION.RELEASE);
-      this.appVersion = com.tencent.mm.sdk.platformtools.h.gMJ;
-      this.appRevision = com.tencent.mm.sdk.platformtools.h.REV;
-      this.appBranch = com.tencent.mm.sdk.platformtools.h.BUILD_TAG;
-      this.appBuildJob = com.tencent.mm.sdk.platformtools.h.HOSTNAME;
-      this.appBuildTime = com.tencent.mm.sdk.platformtools.h.TIME;
-      if (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) {}
+      this.appVersion = i.hgG;
+      this.appRevision = i.REV;
+      this.appBranch = i.BUILD_TAG;
+      this.appBuildJob = i.HOSTNAME;
+      this.appBuildTime = i.TIME;
+      if (i.IS_FLAVOR_RED) {}
       for (String str = "red";; str = "release")
       {
         this.appFlavor = str;
-        AppMethodBeat.o(208125);
+        AppMethodBeat.o(214590);
         return;
       }
     }
@@ -452,11 +494,11 @@ public class LiteAppCenter
     
     public String toString()
     {
-      AppMethodBeat.i(208126);
+      AppMethodBeat.i(214591);
       Object localObject = new StringBuffer();
       ((StringBuffer)localObject).append("appid:").append(this.appId).append(" appPtr:").append(this.appPtr).append(" pageId:").append(this.pageId).append(" method:").append(this.method).append(" param:").append(this.param).append(" callback:").append(this.callbackId);
       localObject = ((StringBuffer)localObject).toString();
-      AppMethodBeat.o(208126);
+      AppMethodBeat.o(214591);
       return localObject;
     }
   }

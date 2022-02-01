@@ -11,61 +11,61 @@ public final class b
   extends x
   implements com.tencent.mm.plugin.appbrand.y.b
 {
-  static final c.a hlR;
-  static final String[] jlk;
+  static final c.a hEe;
+  static final String[] jFa;
   
   static
   {
     AppMethodBeat.i(44430);
-    jlk = new String[] { "appId", "version", "packageType", "packageKey" };
+    jFa = new String[] { "appId", "version", "packageType", "packageKey" };
     Object localObject1 = new c.a();
-    ((c.a)localObject1).GvF = new Field[7];
+    ((c.a)localObject1).IhA = new Field[7];
     ((c.a)localObject1).columns = new String[8];
     Object localObject2 = new StringBuilder();
     ((c.a)localObject1).columns[0] = "appId";
-    ((c.a)localObject1).GvH.put("appId", "TEXT");
+    ((c.a)localObject1).IhC.put("appId", "TEXT");
     ((StringBuilder)localObject2).append(" appId TEXT");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[1] = "version";
-    ((c.a)localObject1).GvH.put("version", "INTEGER");
+    ((c.a)localObject1).IhC.put("version", "INTEGER");
     ((StringBuilder)localObject2).append(" version INTEGER");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[2] = "packageType";
-    ((c.a)localObject1).GvH.put("packageType", "INTEGER");
+    ((c.a)localObject1).IhC.put("packageType", "INTEGER");
     ((StringBuilder)localObject2).append(" packageType INTEGER");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[3] = "packageKey";
-    ((c.a)localObject1).GvH.put("packageKey", "TEXT");
+    ((c.a)localObject1).IhC.put("packageKey", "TEXT");
     ((StringBuilder)localObject2).append(" packageKey TEXT");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[4] = "source";
-    ((c.a)localObject1).GvH.put("source", "INTEGER default '0' ");
+    ((c.a)localObject1).IhC.put("source", "INTEGER default '0' ");
     ((StringBuilder)localObject2).append(" source INTEGER default '0' ");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[5] = "hitCount";
-    ((c.a)localObject1).GvH.put("hitCount", "INTEGER default '0' ");
+    ((c.a)localObject1).IhC.put("hitCount", "INTEGER default '0' ");
     ((StringBuilder)localObject2).append(" hitCount INTEGER default '0' ");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[6] = "reportId";
-    ((c.a)localObject1).GvH.put("reportId", "INTEGER default '0' ");
+    ((c.a)localObject1).IhC.put("reportId", "INTEGER default '0' ");
     ((StringBuilder)localObject2).append(" reportId INTEGER default '0' ");
     ((c.a)localObject1).columns[7] = "rowid";
     ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    hlR = (c.a)localObject1;
+    hEe = (c.a)localObject1;
     localObject1 = new StringBuilder();
-    localObject2 = hlR;
-    ((c.a)localObject2).sql += b.a.r(jlk);
+    localObject2 = hEe;
+    ((c.a)localObject2).sql += b.a.r(jFa);
     AppMethodBeat.o(44430);
   }
   
   public final c.a getDBInfo()
   {
-    return hlR;
+    return hEe;
   }
   
   public final String[] getKeys()
   {
-    return jlk;
+    return jFa;
   }
 }
 

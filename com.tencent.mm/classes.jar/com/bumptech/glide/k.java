@@ -6,9 +6,9 @@ import com.bumptech.glide.f.b.c;
 public abstract class k<CHILD extends k<CHILD, TranscodeType>, TranscodeType>
   implements Cloneable
 {
-  c<? super TranscodeType> aBI = a.pV();
+  c<? super TranscodeType> aDz = a.qn();
   
-  public final CHILD nx()
+  public final CHILD nP()
   {
     try
     {

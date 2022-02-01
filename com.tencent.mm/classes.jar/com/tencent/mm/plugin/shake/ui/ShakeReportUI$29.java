@@ -1,0 +1,30 @@
+package com.tencent.mm.plugin.shake.ui;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+
+final class ShakeReportUI$29
+  implements View.OnClickListener
+{
+  ShakeReportUI$29(ShakeReportUI paramShakeReportUI) {}
+  
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(28480);
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/shake/ui/ShakeReportUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    ShakeReportUI.a(this.yQi, paramView);
+    a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(28480);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeReportUI.29
+ * JD-Core Version:    0.7.0.1
+ */

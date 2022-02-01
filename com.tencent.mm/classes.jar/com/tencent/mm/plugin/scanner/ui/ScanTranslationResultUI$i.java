@@ -4,11 +4,11 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "valueAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "valueAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
 final class ScanTranslationResultUI$i
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -17,7 +17,7 @@ final class ScanTranslationResultUI$i
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     AppMethodBeat.i(162357);
-    k.g(paramValueAnimator, "valueAnimator");
+    p.g(paramValueAnimator, "valueAnimator");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
     if (paramValueAnimator == null)
     {
@@ -27,15 +27,15 @@ final class ScanTranslationResultUI$i
     }
     float f = ((Float)paramValueAnimator).floatValue();
     if (f <= 0.1F) {
-      ScanTranslationResultUI.k(this.xfp).setAlpha(f * 10.0F);
+      ScanTranslationResultUI.k(this.ytr).setAlpha(f * 10.0F);
     }
     for (;;)
     {
-      ScanTranslationResultUI.k(this.xfp).setTranslationY(f * (ScanTranslationResultUI.l(this.xfp) - ScanTranslationResultUI.k(this.xfp).getHeight()));
+      ScanTranslationResultUI.k(this.ytr).setTranslationY(f * (ScanTranslationResultUI.l(this.ytr) - ScanTranslationResultUI.k(this.ytr).getHeight()));
       AppMethodBeat.o(162357);
       return;
       if (f >= 0.9F) {
-        ScanTranslationResultUI.k(this.xfp).setAlpha((1.0F - f) * 10.0F);
+        ScanTranslationResultUI.k(this.ytr).setAlpha((1.0F - f) * 10.0F);
       }
     }
   }

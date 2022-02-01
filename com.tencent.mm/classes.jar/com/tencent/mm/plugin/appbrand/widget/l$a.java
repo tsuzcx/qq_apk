@@ -39,6 +39,7 @@ public final class l$a
   public static final int[] DesignTheme = { 2130968690, 2130968691 };
   public static final int[] DragSortListView = { 2130968785, 2130968800, 2130968928, 2130968929, 2130968930, 2130968931, 2130968939, 2130969008, 2130969009, 2130969010, 2130969305, 2130969409, 2130969410, 2130969411, 2130969459, 2130969464, 2130969614, 2130969619 };
   public static final int[] DrawerArrowToggle = { 2130968656, 2130968657, 2130968673, 2130968801, 2130968936, 2130969035, 2130969467, 2130969571 };
+  public static final int[] EllipsizeLayout = { 2130969713 };
   public static final int[] FloatingActionButton = { 2130968671, 2130968672, 2130968683, 2130968952, 2130968995, 2130968996, 2130969049, 2130969061, 2130969300, 2130969389, 2130969416, 2130969452, 2130969617 };
   public static final int[] FloatingActionButton_Behavior_Layout = { 2130968676 };
   public static final int[] FlowLayout = { 2130969060, 2130969121, 2130969232, 2130969620 };
@@ -94,7 +95,7 @@ public final class l$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.l.a
  * JD-Core Version:    0.7.0.1
  */

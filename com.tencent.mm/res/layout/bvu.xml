@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:src="@raw/icons_filled_error" app:iconColor="@color/Yellow" />
+        <TextView android:textSize="@dimen/gy" android:textColor="@color/y4" android:gravity="center_horizontal" android:id="@id/i6q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:layout_marginStart="@dimen/c8" android:layout_marginEnd="@dimen/c8" />
+        <TextView android:textSize="@dimen/q" android:textColor="@color/y4" android:gravity="center_horizontal" android:id="@id/i6p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:layout_marginStart="@dimen/c_" android:layout_marginEnd="@dimen/c_" />
+    </LinearLayout>
+    <Button android:layout_gravity="bottom|center" android:id="@id/i0n" android:layout_marginBottom="@dimen/bv" android:text="@string/hah" style="@style/od" />
+</FrameLayout>

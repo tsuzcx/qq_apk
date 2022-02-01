@@ -13,8 +13,8 @@ public class AppCompatRadioButton
   extends RadioButton
   implements r
 {
-  private final l ahZ;
-  private final f aif = new f(this);
+  private final l ajQ;
+  private final f ajW = new f(this);
   
   public AppCompatRadioButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,33 +24,33 @@ public class AppCompatRadioButton
   public AppCompatRadioButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(aw.ac(paramContext), paramAttributeSet, paramInt);
-    this.aif.a(paramAttributeSet, paramInt);
-    this.ahZ = new l(this);
-    this.ahZ.a(paramAttributeSet, paramInt);
+    this.ajW.a(paramAttributeSet, paramInt);
+    this.ajQ = new l(this);
+    this.ajQ.a(paramAttributeSet, paramInt);
   }
   
   public int getCompoundPaddingLeft()
   {
     int j = super.getCompoundPaddingLeft();
     int i = j;
-    if (this.aif != null) {
-      i = this.aif.bH(j);
+    if (this.ajW != null) {
+      i = this.ajW.bH(j);
     }
     return i;
   }
   
   public ColorStateList getSupportButtonTintList()
   {
-    if (this.aif != null) {
-      return this.aif.aih;
+    if (this.ajW != null) {
+      return this.ajW.ajY;
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportButtonTintMode()
   {
-    if (this.aif != null) {
-      return this.aif.aii;
+    if (this.ajW != null) {
+      return this.ajW.ajZ;
     }
     return null;
   }
@@ -63,22 +63,22 @@ public class AppCompatRadioButton
   public void setButtonDrawable(Drawable paramDrawable)
   {
     super.setButtonDrawable(paramDrawable);
-    if (this.aif != null) {
-      this.aif.iJ();
+    if (this.ajW != null) {
+      this.ajW.iZ();
     }
   }
   
   public void setSupportButtonTintList(ColorStateList paramColorStateList)
   {
-    if (this.aif != null) {
-      this.aif.setSupportButtonTintList(paramColorStateList);
+    if (this.ajW != null) {
+      this.ajW.setSupportButtonTintList(paramColorStateList);
     }
   }
   
   public void setSupportButtonTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.aif != null) {
-      this.aif.setSupportButtonTintMode(paramMode);
+    if (this.ajW != null) {
+      this.ajW.setSupportButtonTintMode(paramMode);
     }
   }
 }

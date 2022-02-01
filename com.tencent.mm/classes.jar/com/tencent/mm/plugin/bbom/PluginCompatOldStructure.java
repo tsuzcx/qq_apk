@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.bs.c;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.d;
 
@@ -12,12 +12,12 @@ public class PluginCompatOldStructure
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(22433);
-    if (((h)com.tencent.mm.kernel.g.agO().agp()).ahL())
+    if (((h)com.tencent.mm.kernel.g.ajz().ajb()).akw())
     {
-      new l.1().alone();
-      new l.2().alone();
-      new l.3().alone();
-      new l.4().alone();
+      new m.1().alone();
+      new m.2().alone();
+      new m.3().alone();
+      new m.4().alone();
       c.b("profile", null);
       c.b("setting", null);
       c.b("subapp", null);
@@ -79,6 +79,7 @@ public class PluginCompatOldStructure
       c.b("finder", null);
       c.b("groupcollect", null);
       c.b("editor", null);
+      c.b("gamelife", null);
     }
     AppMethodBeat.o(22433);
   }

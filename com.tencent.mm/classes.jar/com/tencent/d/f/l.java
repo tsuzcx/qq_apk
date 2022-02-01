@@ -10,39 +10,39 @@ import java.util.Set;
 
 public final class l
 {
-  static HashMap<String, byte[]> JUR = null;
-  protected String JUN;
-  protected RequestPacket JUO;
-  protected HashMap<String, byte[]> JUP;
-  private HashMap<String, Object> JUQ;
+  static HashMap<String, byte[]> LOL = null;
+  protected String LOH;
+  protected RequestPacket LOI;
+  protected HashMap<String, byte[]> LOJ;
+  private HashMap<String, Object> LOK;
   
   public l()
   {
     AppMethodBeat.i(138485);
-    this.JUN = "UTF-8";
-    this.JUO = new RequestPacket();
-    this.JUP = new HashMap();
-    this.JUQ = new HashMap();
-    this.JUO.iVersion = 3;
+    this.LOH = "UTF-8";
+    this.LOI = new RequestPacket();
+    this.LOJ = new HashMap();
+    this.LOK = new HashMap();
+    this.LOI.iVersion = 3;
     AppMethodBeat.o(138485);
   }
   
-  public final byte[] JT()
+  public final byte[] Ls()
   {
     AppMethodBeat.i(138487);
-    if (this.JUO.sServantName == null) {
-      this.JUO.sServantName = "";
+    if (this.LOI.sServantName == null) {
+      this.LOI.sServantName = "";
     }
-    if (this.JUO.sFuncName == null) {
-      this.JUO.sFuncName = "";
+    if (this.LOI.sFuncName == null) {
+      this.LOI.sFuncName = "";
     }
     Object localObject = new JceOutputStream(0);
-    ((JceOutputStream)localObject).setServerEncoding(this.JUN);
-    ((JceOutputStream)localObject).write(this.JUP, 0);
-    this.JUO.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+    ((JceOutputStream)localObject).setServerEncoding(this.LOH);
+    ((JceOutputStream)localObject).write(this.LOJ, 0);
+    this.LOI.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
     localObject = new JceOutputStream(0);
-    ((JceOutputStream)localObject).setServerEncoding(this.JUN);
-    this.JUO.writeTo((JceOutputStream)localObject);
+    ((JceOutputStream)localObject).setServerEncoding(this.LOH);
+    this.LOI.writeTo((JceOutputStream)localObject);
     localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
     int i = localObject.length;
     ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
@@ -52,24 +52,24 @@ public final class l
     return localObject;
   }
   
-  public final void aTo(String paramString)
+  public final void aZo(String paramString)
   {
-    this.JUN = paramString;
+    this.LOH = paramString;
   }
   
-  public final void aTp(String paramString)
+  public final void aZp(String paramString)
   {
-    this.JUO.sServantName = paramString;
+    this.LOI.sServantName = paramString;
   }
   
-  public final void aTq(String paramString)
+  public final void aZq(String paramString)
   {
-    this.JUO.sFuncName = paramString;
+    this.LOI.sFuncName = paramString;
   }
   
-  public final void fCQ()
+  public final void fUi()
   {
-    this.JUO.iRequestId = 3;
+    this.LOI.iRequestId = 3;
   }
   
   public final <T> void put(String paramString, T paramT)
@@ -82,10 +82,10 @@ public final class l
       throw paramString;
     }
     JceOutputStream localJceOutputStream = new JceOutputStream();
-    localJceOutputStream.setServerEncoding(this.JUN);
+    localJceOutputStream.setServerEncoding(this.LOH);
     localJceOutputStream.write(paramT, 0);
     paramT = JceUtil.getJceBufArray(localJceOutputStream.getByteBuffer());
-    this.JUP.put(paramString, paramT);
+    this.LOJ.put(paramString, paramT);
     AppMethodBeat.o(138486);
   }
 }

@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.an;
+import com.tencent.mm.ui.ap;
 import com.tencent.toybrick.c.f;
 import com.tencent.toybrick.c.g;
 import com.tencent.toybrick.d.a.a;
@@ -18,22 +18,21 @@ import com.tencent.toybrick.e.b.1;
 import com.tencent.toybrick.e.c;
 import com.tencent.toybrick.e.c.b;
 import com.tencent.toybrick.e.c.d;
-import com.tencent.toybrick.f.a;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class b
-  extends RecyclerView.a<a>
+  extends RecyclerView.a<com.tencent.toybrick.f.a>
   implements View.OnClickListener
 {
-  public ArrayList<g> Ksh;
-  public LinkedList<g> Ksi;
-  public HashMap<g, Integer> Ksj;
-  private SparseArray<g> Ksk;
-  private com.tencent.toybrick.e.b Ksl;
-  public a.a Ksm;
+  public ArrayList<g> Mii;
+  public LinkedList<g> Mij;
+  public HashMap<g, Integer> Mik;
+  private SparseArray<g> Mil;
+  private com.tencent.toybrick.e.b Mim;
+  public a.a Min;
   private Context mContext;
   
   public b(Context paramContext, a.a parama)
@@ -41,30 +40,30 @@ public final class b
     AppMethodBeat.i(159919);
     a(new a((byte)0));
     this.mContext = paramContext;
-    this.Ksm = parama;
-    paramContext = parama.Kti;
+    this.Min = parama;
+    paramContext = parama.Mjj;
     parama = paramContext.iterator();
     int i = 0;
     while (parama.hasNext())
     {
-      ((g)parama.next()).bzd = i;
+      ((g)parama.next()).bJr = i;
       i += 1;
     }
-    this.Ksi = paramContext;
-    this.Ksk = new SparseArray();
-    this.Ksj = new HashMap();
-    this.Ksh = new ArrayList();
-    this.Ksl = new com.tencent.toybrick.e.b(this);
-    paramContext = this.Ksl;
-    paramContext.mMainHandler.removeCallbacks(paramContext.Ktq);
+    this.Mij = paramContext;
+    this.Mil = new SparseArray();
+    this.Mik = new HashMap();
+    this.Mii = new ArrayList();
+    this.Mim = new com.tencent.toybrick.e.b(this);
+    paramContext = this.Mim;
+    paramContext.mMainHandler.removeCallbacks(paramContext.Mjr);
     parama = paramContext.mMainHandler;
     b.1 local1 = new b.1(paramContext);
-    paramContext.Ktq = local1;
+    paramContext.Mjr = local1;
     parama.post(local1);
     AppMethodBeat.o(159919);
   }
   
-  private a afM(int paramInt)
+  private com.tencent.toybrick.f.a aim(int paramInt)
   {
     AppMethodBeat.i(159921);
     long l = System.currentTimeMillis();
@@ -73,22 +72,22 @@ public final class b
       Object localObject1 = LayoutInflater.from(this.mContext).inflate(paramInt, null);
       ((View)localObject1).setLayoutParams(new RecyclerView.LayoutParams(-1, -2));
       ((View)localObject1).setOnClickListener(this);
-      localObject1 = ((g)this.Ksk.get(paramInt)).gY((View)localObject1);
+      localObject1 = ((g)this.Mil.get(paramInt)).hp((View)localObject1);
       return localObject1;
     }
     finally
     {
-      an.d("VerticalToyAdapter", "[onCreateViewHolder] cost:%sms toyBrick:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), ((g)this.Ksk.get(paramInt)).KsU });
+      ap.d("VerticalToyAdapter", "[onCreateViewHolder] cost:%sms toyBrick:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), ((g)this.Mil.get(paramInt)).MiV });
       AppMethodBeat.o(159921);
     }
   }
   
-  public final g afN(int paramInt)
+  public final g ain(int paramInt)
   {
     AppMethodBeat.i(159924);
-    if (this.Ksh.size() > paramInt)
+    if (this.Mii.size() > paramInt)
     {
-      g localg = (g)this.Ksh.get(paramInt);
+      g localg = (g)this.Mii.get(paramInt);
       AppMethodBeat.o(159924);
       return localg;
     }
@@ -99,7 +98,7 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(159922);
-    int i = this.Ksh.size();
+    int i = this.Mii.size();
     AppMethodBeat.o(159922);
     return i;
   }
@@ -107,9 +106,9 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(159920);
-    g localg = afN(paramInt);
+    g localg = ain(paramInt);
     paramInt = localg.getLayoutResource();
-    this.Ksk.put(paramInt, localg);
+    this.Mil.put(paramInt, localg);
     AppMethodBeat.o(159920);
     return paramInt;
   }
@@ -117,7 +116,11 @@ public final class b
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(159923);
-    afN(((a)paramView.getTag()).lv());
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/toybrick/adapter/VerticalToyAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    ain(((com.tencent.toybrick.f.a)paramView.getTag()).lN());
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/toybrick/adapter/VerticalToyAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(159923);
   }
   
@@ -126,14 +129,14 @@ public final class b
   {
     private a() {}
     
-    public final void as(int paramInt1, int paramInt2)
+    public final void at(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(159918);
-      super.as(paramInt1, paramInt2);
-      an.d("NotifyObserver", "[onItemRangeChanged] positionStart:%d, itemCount:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      g localg = b.this.afN(paramInt1);
-      if ((localg != null) && (localg.KsV != null)) {
-        c.execute(new c.d(c.Ktz, localg, localg.KsV, new c.b() {}));
+      super.at(paramInt1, paramInt2);
+      ap.d("NotifyObserver", "[onItemRangeChanged] positionStart:%d, itemCount:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      g localg = b.this.ain(paramInt1);
+      if ((localg != null) && (localg.MiW != null)) {
+        c.execute(new c.d(c.MjA, localg, localg.MiW, new c.b() {}));
       }
       AppMethodBeat.o(159918);
     }
@@ -141,7 +144,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.toybrick.b.b
  * JD-Core Version:    0.7.0.1
  */

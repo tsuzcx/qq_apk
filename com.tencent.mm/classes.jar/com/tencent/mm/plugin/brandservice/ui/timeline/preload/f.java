@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
-import com.tencent.mm.protocal.protobuf.ari;
+import com.tencent.mm.protocal.protobuf.ave;
 
 public final class f
-  extends ari
+  extends ave
 {
   public String extInfo = "";
 }

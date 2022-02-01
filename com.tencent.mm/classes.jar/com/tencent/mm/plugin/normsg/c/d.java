@@ -6,7 +6,26 @@ public final class d
 {
   private static final char[] HEX_DIGITS = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public static String aon(String paramString)
+  public static String A(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(149089);
+    char[] arrayOfChar = new char[(paramInt2 - paramInt1) * 2];
+    int i = 0;
+    while (paramInt1 < paramInt2)
+    {
+      int j = paramArrayOfByte[paramInt1];
+      int k = i + 1;
+      arrayOfChar[i] = HEX_DIGITS[(j >>> 4 & 0xF)];
+      i = k + 1;
+      arrayOfChar[k] = HEX_DIGITS[(j & 0xF)];
+      paramInt1 += 1;
+    }
+    paramArrayOfByte = new String(arrayOfChar);
+    AppMethodBeat.o(149089);
+    return paramArrayOfByte;
+  }
+  
+  public static String atn(String paramString)
   {
     AppMethodBeat.i(149090);
     StringBuilder localStringBuilder = new StringBuilder(paramString.length());
@@ -70,25 +89,6 @@ public final class d
         AppMethodBeat.o(149090);
       }
     }
-  }
-  
-  public static String z(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(149089);
-    char[] arrayOfChar = new char[(paramInt2 - paramInt1) * 2];
-    int i = 0;
-    while (paramInt1 < paramInt2)
-    {
-      int j = paramArrayOfByte[paramInt1];
-      int k = i + 1;
-      arrayOfChar[i] = HEX_DIGITS[(j >>> 4 & 0xF)];
-      i = k + 1;
-      arrayOfChar[k] = HEX_DIGITS[(j & 0xF)];
-      paramInt1 += 1;
-    }
-    paramArrayOfByte = new String(arrayOfChar);
-    AppMethodBeat.o(149089);
-    return paramArrayOfByte;
   }
 }
 

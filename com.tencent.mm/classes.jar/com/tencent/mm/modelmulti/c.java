@@ -1,89 +1,93 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.b;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bvb;
-import com.tencent.mm.protocal.protobuf.bvc;
-import com.tencent.mm.protocal.protobuf.jw;
-import com.tencent.mm.protocal.protobuf.jx;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.protocal.protobuf.bzq;
+import com.tencent.mm.protocal.protobuf.bzr;
+import com.tencent.mm.protocal.protobuf.kf;
+import com.tencent.mm.protocal.protobuf.kg;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class c
   extends n
-  implements com.tencent.mm.network.k
+  implements k
 {
-  private List<String> aPu;
-  private com.tencent.mm.ak.g callback;
-  private final int hLG;
-  private final int hLH;
-  private final int hLI;
-  private final int hLJ;
-  private final int hLK;
-  public List<String> hLL;
-  private int hLM;
-  public int hLN;
+  private List<String> aZO;
+  private f callback;
+  private final int ieA;
+  private final int ieB;
+  private final int ieC;
+  private final int ieD;
+  private final int ieE;
+  public List<String> ieF;
+  private int ieG;
+  public int ieH;
   private int index;
   public int op;
-  private com.tencent.mm.ak.b rr;
+  private com.tencent.mm.al.b rr;
   private int type;
   
   public c(List<String> paramList, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(209602);
-    this.hLG = 1000;
-    this.hLH = 0;
-    this.hLI = 1;
-    this.hLJ = 2;
-    this.hLK = 3;
-    this.hLL = new LinkedList();
-    this.aPu = paramList;
+    AppMethodBeat.i(217575);
+    this.ieA = 1000;
+    this.ieB = 0;
+    this.ieC = 1;
+    this.ieD = 2;
+    this.ieE = 3;
+    this.ieF = new LinkedList();
+    this.aZO = paramList;
     this.type = 8388608;
     this.op = paramInt1;
     this.index = 0;
-    this.hLN = paramList.size();
-    this.hLM = paramInt2;
-    AppMethodBeat.o(209602);
+    this.ieH = paramList.size();
+    this.ieG = paramInt2;
+    AppMethodBeat.o(217575);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(209603);
-    this.callback = paramg;
-    paramg = new b.a();
-    paramg.uri = "/cgi-bin/micromsg-bin/batchmodcontacttype";
-    paramg.funcId = 3990;
-    paramg.reqCmdId = 0;
-    paramg.respCmdId = 0;
-    paramg.hvt = new jw();
-    paramg.hvu = new jx();
-    this.rr = paramg.aAz();
-    paramg = (jw)this.rr.hvr.hvw;
-    paramg.DXl = new LinkedList();
+    AppMethodBeat.i(217576);
+    this.callback = paramf;
+    paramf = new b.a();
+    paramf.uri = "/cgi-bin/micromsg-bin/batchmodcontacttype";
+    paramf.funcId = 3990;
+    paramf.hNO = 0;
+    paramf.respCmdId = 0;
+    paramf.hNM = new kf();
+    paramf.hNN = new kg();
+    this.rr = paramf.aDC();
+    paramf = (kf)this.rr.hNK.hNQ;
+    paramf.FCH = new LinkedList();
     int i = 0;
-    while ((i < this.hLM) && (this.aPu.size() > 0))
+    while ((i < this.ieG) && (this.aZO.size() > 0))
     {
-      bvb localbvb = new bvb();
-      localbvb.ncR = ((String)this.aPu.remove(0));
-      localbvb.FkY = this.type;
-      localbvb.FkZ = this.op;
-      paramg.DXl.add(localbvb);
+      bzq localbzq = new bzq();
+      localbzq.nDo = ((String)this.aZO.remove(0));
+      localbzq.GUG = this.type;
+      localbzq.GUH = this.op;
+      paramf.FCH.add(localbzq);
       i += 1;
     }
-    paramg.DXk = paramg.DXl.size();
+    paramf.FCG = paramf.FCH.size();
     i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(209603);
+    AppMethodBeat.o(217576);
     return i;
   }
   
@@ -94,32 +98,32 @@ public final class c
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(209604);
-    ac.i("MicroMsg.NetSceneBatchModContactType", "errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(217577);
+    ad.i("MicroMsg.NetSceneBatchModContactType", "errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     int i;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = ((jx)this.rr.hvs.hvw).DXn.iterator();
+      paramq = ((kg)this.rr.hNL.hNQ).FCJ.iterator();
       paramInt1 = 0;
       while (paramq.hasNext())
       {
-        paramArrayOfByte = (bvc)paramq.next();
+        paramArrayOfByte = (bzr)paramq.next();
         if (paramArrayOfByte.Ret == 0)
         {
-          com.tencent.mm.kernel.g.agS();
-          ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramArrayOfByte.Fla.ncR);
-          if ((localai != null) && (com.tencent.mm.n.b.ln(localai.field_type)))
+          g.ajD();
+          am localam = ((l)g.ab(l.class)).azp().Bf(paramArrayOfByte.GUI.nDo);
+          if ((localam != null) && (com.tencent.mm.o.b.lM(localam.field_type)))
           {
-            if (paramArrayOfByte.Fla.FkZ == 1) {
-              localai.aaw();
+            if (paramArrayOfByte.GUI.GUH == 1) {
+              localam.acY();
             }
             for (;;)
             {
-              com.tencent.mm.kernel.g.agS();
-              ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().c(localai.field_username, localai);
-              this.hLL.add(localai.field_username);
+              g.ajD();
+              ((l)g.ab(l.class)).azp().c(localam.field_username, localam);
+              this.ieF.add(localam.field_username);
               break;
-              localai.aax();
+              localam.acZ();
             }
           }
         }
@@ -132,14 +136,14 @@ public final class c
       if (paramInt1 == 0)
       {
         i = paramInt1;
-        if (this.aPu.size() > 0)
+        if (this.aZO.size() > 0)
         {
           if (doScene(dispatcher(), this.callback) < 0)
           {
-            ac.e("MicroMsg.NetSceneBatchModContactType", "onGYNetEnd : doScene fail");
+            ad.e("MicroMsg.NetSceneBatchModContactType", "onGYNetEnd : doScene fail");
             this.callback.onSceneEnd(3, -1, "", this);
           }
-          AppMethodBeat.o(209604);
+          AppMethodBeat.o(217577);
         }
       }
     }
@@ -152,7 +156,7 @@ public final class c
       paramInt3 = -3500;
     }
     paramq.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(209604);
+    AppMethodBeat.o(217577);
   }
   
   public final int securityLimitCount()
@@ -162,12 +166,12 @@ public final class c
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    return n.b.hwa;
+    return n.b.hOp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelmulti.c
  * JD-Core Version:    0.7.0.1
  */

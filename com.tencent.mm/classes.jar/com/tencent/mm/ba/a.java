@@ -1,122 +1,109 @@
 package com.tencent.mm.ba;
 
-import android.util.SparseArray;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
-import com.tencent.mm.protocal.protobuf.cbu;
-import com.tencent.mm.protocal.protobuf.cbv;
-import com.tencent.mm.protocal.protobuf.cbw;
-import com.tencent.mm.protocal.protobuf.xv;
-import com.tencent.mm.protocal.protobuf.xw;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
+import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
+import junit.framework.Assert;
 
-public final class a
-  implements com.tencent.mm.plugin.messenger.foundation.a.a.g
+public abstract class a
 {
-  SparseArray<LinkedList<g.a>> hOS;
+  public static String ihM = "";
+  public static String ihN = "";
+  public String TEXT;
+  public String TYPE;
+  public bu dBd;
+  public String ihO = "";
+  public String ihP;
+  public LinkedList<String> ihQ = new LinkedList();
+  public LinkedList<Integer> ihR = new LinkedList();
+  public LinkedList<Integer> ihS = new LinkedList();
+  public Map<String, String> values;
   
-  public a()
+  public a(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(116837);
-    this.hOS = new SparseArray();
-    AppMethodBeat.o(116837);
+    this.values = paramMap;
   }
   
-  public final void a(int paramInt, g.a parama)
+  public a(Map<String, String> paramMap, bu parambu)
   {
-    AppMethodBeat.i(116839);
-    if (this.hOS.indexOfKey(paramInt) < 0) {
-      this.hOS.put(paramInt, new LinkedList());
-    }
-    ((LinkedList)this.hOS.get(paramInt)).add(parama);
-    AppMethodBeat.o(116839);
+    this.values = paramMap;
+    this.dBd = parambu;
   }
   
-  public final void a(final j.b paramb)
+  protected abstract boolean aAc();
+  
+  public final boolean aJR()
   {
-    AppMethodBeat.i(116838);
-    if ((com.tencent.mm.kernel.g.agQ().ghe == null) || (com.tencent.mm.kernel.g.agQ().ghe.hwg == null))
+    if ((this.values != null) && (this.values.size() > 0))
     {
-      AppMethodBeat.o(116838);
-      return;
-    }
-    Object localObject = new ArrayList(1);
-    ((ArrayList)localObject).add(paramb);
-    localObject = new b((List)localObject);
-    com.tencent.mm.kernel.g.agS();
-    ((b)localObject).doScene(com.tencent.mm.kernel.g.agQ().ghe.hwg, new com.tencent.mm.ak.g()
-    {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
-      {
-        paramAnonymousInt1 = -1;
-        AppMethodBeat.i(116836);
-        if (paramAnonymousn.getType() != 681)
-        {
-          AppMethodBeat.o(116836);
-          return;
-        }
-        if (((b)paramAnonymousn).hOV == null)
-        {
-          AppMethodBeat.o(116836);
-          return;
-        }
-        ((b)paramAnonymousn).hOV.getReqObjImp();
-        paramAnonymousString = ((b.c)((b)paramAnonymousn).hOV.getRespObj()).hPa;
-        paramAnonymousInt2 = ((xv)((b.b)((b)paramAnonymousn).hOV.getReqObj()).hOZ.Fnk.ncM.getLast()).ErL;
-        if ((paramAnonymousString == null) || (paramAnonymousString.FpR == null) || (paramAnonymousString.FpR.EKK == null))
-        {
-          paramAnonymousString = (List)a.this.hOS.get(paramAnonymousInt2);
-          if (paramAnonymousString != null)
-          {
-            paramAnonymousString = paramAnonymousString.iterator();
-            while (paramAnonymousString.hasNext()) {
-              ((g.a)paramAnonymousString.next()).a(-1, paramb);
-            }
-          }
-          AppMethodBeat.o(116836);
-          return;
-        }
-        if (paramAnonymousString.FpR.EKK.size() > 0) {
-          paramAnonymousInt1 = ((Integer)paramAnonymousString.FpR.EKK.getLast()).intValue();
-        }
-        if (paramAnonymousString.FpR.FpS.size() > 0) {
-          paramAnonymousString.FpR.FpS.getLast();
-        }
-        if (paramAnonymousString.FpR.FpS.size() > 0) {
-          paramAnonymousString.FpR.FpS.getLast();
-        }
-        paramAnonymousString = (List)a.this.hOS.get(paramAnonymousInt2);
-        if (paramAnonymousString != null)
-        {
-          paramAnonymousString = paramAnonymousString.iterator();
-          while (paramAnonymousString.hasNext()) {
-            ((g.a)paramAnonymousString.next()).a(paramAnonymousInt1, paramb);
-          }
-        }
-        AppMethodBeat.o(116836);
+      if (this.values.containsKey(".sysmsg.$type")) {
+        this.TYPE = ((String)this.values.get(".sysmsg.$type"));
       }
-    });
-    AppMethodBeat.o(116838);
+      ihM = ".sysmsg." + this.TYPE + ".text";
+      if (this.values.containsKey(ihM)) {
+        this.TEXT = ((String)this.values.get(ihM));
+      }
+      ihN = ".sysmsg." + this.TYPE + ".link.scene";
+      if (this.values.containsKey(ihN)) {
+        this.ihP = ((String)this.values.get(ihN));
+      }
+      return aAc();
+    }
+    ad.e("MicroMsg.BaseNewXmlMsg", "values == null || values.size() == 0 ");
+    return false;
   }
   
-  public final void b(int paramInt, g.a parama)
+  public static abstract class a
   {
-    AppMethodBeat.i(116840);
-    if (this.hOS.indexOfKey(paramInt) >= 0) {
-      ((LinkedList)this.hOS.get(paramInt)).remove(parama);
+    private static HashMap<String, a> ihT = new HashMap();
+    
+    public static void a(String paramString, a parama)
+    {
+      Assert.assertNotNull(paramString);
+      Assert.assertNotNull(parama);
+      synchronized (ihT)
+      {
+        ihT.put(paramString.toLowerCase(), parama);
+        return;
+      }
     }
-    AppMethodBeat.o(116840);
+    
+    public static a b(Map<String, String> paramMap, bu parambu)
+    {
+      if (paramMap == null)
+      {
+        ad.e("MicroMsg.BaseNewXmlMsg", "values is null !!!");
+        return null;
+      }
+      String str = bt.bI((String)paramMap.get(".sysmsg.$type"), "");
+      synchronized (ihT)
+      {
+        a locala = (a)ihT.get(str.toLowerCase());
+        if (locala == null)
+        {
+          ad.w("MicroMsg.BaseNewXmlMsg", "TYPE %s is unDefine", new Object[] { str });
+          return null;
+        }
+        paramMap = locala.a(paramMap, parambu);
+        return paramMap;
+      }
+    }
+    
+    public abstract a a(Map<String, String> paramMap, bu parambu);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a(View paramView, bu parambu, a parama, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ba.a
  * JD-Core Version:    0.7.0.1
  */

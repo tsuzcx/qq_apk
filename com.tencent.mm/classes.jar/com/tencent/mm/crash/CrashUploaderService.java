@@ -7,12 +7,10 @@ import com.tencent.mm.b.c;
 import com.tencent.mm.b.g;
 import com.tencent.mm.b.s;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.service.MMIntentService;
 import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -28,18 +26,18 @@ import org.apache.http.impl.client.DefaultHttpClient;
 public class CrashUploaderService
   extends MMIntentService
 {
-  static final HashMap<String, Integer> fLM;
+  static final HashMap<String, Integer> gfm;
   
   static
   {
     AppMethodBeat.i(145677);
     HashMap localHashMap = new HashMap(16);
-    fLM = localHashMap;
+    gfm = localHashMap;
     localHashMap.put("exception", Integer.valueOf(10001));
-    fLM.put("anr", Integer.valueOf(10002));
-    fLM.put("handler", Integer.valueOf(10003));
-    fLM.put("sql", Integer.valueOf(10004));
-    fLM.put("permission", Integer.valueOf(10005));
+    gfm.put("anr", Integer.valueOf(10002));
+    gfm.put("handler", Integer.valueOf(10003));
+    gfm.put("sql", Integer.valueOf(10004));
+    gfm.put("permission", Integer.valueOf(10005));
     AppMethodBeat.o(145677);
   }
   
@@ -47,10 +45,10 @@ public class CrashUploaderService
   {
     super("CrashUploaderService");
     AppMethodBeat.i(145673);
-    if (h.DEBUG)
+    if (com.tencent.mm.sdk.platformtools.i.DEBUG)
     {
-      ac.e("MicroMsg.CrashUploaderService", "CrashUploaderService Name : %s", new Object[] { CrashUploaderService.class.getName() });
-      Assert.assertTrue("CrashUploaderService name mismatch!!!", ".crash.CrashUploaderService".equals(CrashUploaderService.class.getName()));
+      ad.e("MicroMsg.CrashUploaderService", "CrashUploaderService Name : %s", new Object[] { CrashUploaderService.class.getName() });
+      Assert.assertTrue("CrashUploaderService name mismatch!!!", CrashUploaderService.class.getName().endsWith(".crash.CrashUploaderService"));
     }
     AppMethodBeat.o(145673);
   }
@@ -63,7 +61,7 @@ public class CrashUploaderService
     byte[] arrayOfByte = s.compress(paramArrayOfByte);
     paramArrayOfByte = new PByteArray();
     c.a(paramArrayOfByte, arrayOfByte, str.getBytes());
-    paramString2 = new StringBuilder().append(paramString3).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(paramInt)).append("&devicetype=").append(paramString2).append("&filelength=").append(i).append("&sum=").append(str).append("&reporttype=1&NewReportType=").append(bs.m((Integer)fLM.get(paramString4)));
+    paramString2 = new StringBuilder().append(paramString3).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(paramInt)).append("&devicetype=").append(paramString2).append("&filelength=").append(i).append("&sum=").append(str).append("&reporttype=1&NewReportType=").append(bt.n((Integer)gfm.get(paramString4)));
     if ((paramString1 != null) && (!paramString1.equals(""))) {
       paramString2.append("&username=").append(paramString1);
     }
@@ -74,13 +72,13 @@ public class CrashUploaderService
       paramArrayOfByte = new ByteArrayEntity(paramArrayOfByte.value);
       paramArrayOfByte.setContentType("binary/octet-stream");
       paramString2.setEntity(paramArrayOfByte);
-      ac.i("MicroMsg.CrashUploaderService", bs.convertStreamToString(paramString1.execute(paramString2).getEntity().getContent()));
+      ad.i("MicroMsg.CrashUploaderService", bt.convertStreamToString(paramString1.execute(paramString2).getEntity().getContent()));
       AppMethodBeat.o(145676);
       return true;
     }
     catch (Exception paramString1)
     {
-      ac.printErrStackTrace("MicroMsg.CrashUploaderService", paramString1, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.CrashUploaderService", paramString1, "", new Object[0]);
       AppMethodBeat.o(145676);
     }
     return false;
@@ -93,7 +91,7 @@ public class CrashUploaderService
     if (!new e(paramString1).exists())
     {
       localStringBuilder = new StringBuilder();
-      if ((!bs.isNullOrNil(paramString3)) && (!paramString3.equals("0"))) {
+      if ((!bt.isNullOrNil(paramString3)) && (!paramString3.equals("0"))) {
         break label212;
       }
       paramString3 = Build.DEVICE + Build.FINGERPRINT + Build.MANUFACTURER + Build.MODEL;
@@ -101,13 +99,13 @@ public class CrashUploaderService
     }
     for (;;)
     {
-      localStringBuilder.append(ac.getSysInfo());
+      localStringBuilder.append(ad.getSysInfo());
       localStringBuilder.append(" BRAND:[" + Build.BRAND + "] ");
       localStringBuilder.append("\n");
       paramString3 = localStringBuilder.toString().getBytes();
-      i.e(paramString1, paramString3, paramString3.length);
+      com.tencent.mm.vfs.i.e(paramString1, paramString3, paramString3.length);
       paramString2 = (paramString2 + "\n").getBytes();
-      i.e(paramString1, paramString2, paramString2.length);
+      com.tencent.mm.vfs.i.e(paramString1, paramString2, paramString2.length);
       AppMethodBeat.o(145675);
       return;
       label212:
@@ -161,7 +159,7 @@ public class CrashUploaderService
       paramIntent = "exception";
     }
     localObject1 = str1 + "," + str3 + "_" + i + "_" + Build.CPU_ABI + ",";
-    localObject1 = (String)localObject1 + "exception,time_" + bs.aNx() + ",error_" + (String)localObject4;
+    localObject1 = (String)localObject1 + "exception,time_" + bt.aQJ() + ",error_" + (String)localObject4;
     for (;;)
     {
       try
@@ -191,13 +189,13 @@ public class CrashUploaderService
         ((e)localObject2).delete();
       }
       i((String)localObject3, (String)localObject1, str2);
-      localObject1 = i.aU((String)localObject3, 0, -1);
-      if (!bs.cv((byte[])localObject1)) {
+      localObject1 = com.tencent.mm.vfs.i.aY((String)localObject3, 0, -1);
+      if (!bt.cC((byte[])localObject1)) {
         continue;
       }
       AppMethodBeat.o(145674);
       return;
-      localObject4 = ((e)localObject4).fxX();
+      localObject4 = ((e)localObject4).fOM();
       if (localObject4 != null)
       {
         k = localObject4.length;
@@ -205,7 +203,7 @@ public class CrashUploaderService
         if (j < k)
         {
           localSimpleDateFormat = localObject4[j];
-          if (bs.Ap(localSimpleDateFormat.lastModified()) > 2592000000L) {
+          if (bt.Df(localSimpleDateFormat.lastModified()) > 2592000000L) {
             localSimpleDateFormat.delete();
           }
           j += 1;
@@ -220,7 +218,7 @@ public class CrashUploaderService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.crash.CrashUploaderService
  * JD-Core Version:    0.7.0.1
  */

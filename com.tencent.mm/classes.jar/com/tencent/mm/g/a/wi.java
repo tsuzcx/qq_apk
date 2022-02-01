@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class wi
   extends b
 {
-  public a dzi;
+  public a dKF;
+  public b dKG;
   
   public wi()
   {
@@ -15,30 +16,27 @@ public final class wi
   
   private wi(byte paramByte)
   {
-    AppMethodBeat.i(140991);
-    this.dzi = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19840);
+    this.dKF = new a();
+    this.dKG = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(140991);
+    AppMethodBeat.o(19840);
   }
   
   public static final class a
   {
-    public String Title;
-    public int cZW = 0;
-    public int cZX = 0;
-    public int cZY = 0;
-    public int cZZ = 0;
-    public String daa;
-    public String desc;
-    public int position = 0;
-    public String url;
-    public boolean visible = false;
+    public int dDA = 0;
+    public String dDy;
+    public int dDz = 0;
+    public int opType = 0;
   }
+  
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.wi
  * JD-Core Version:    0.7.0.1
  */

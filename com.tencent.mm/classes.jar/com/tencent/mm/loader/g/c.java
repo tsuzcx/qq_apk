@@ -1,25 +1,25 @@
 package com.tencent.mm.loader.g;
 
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/loader/IWorkTask;", "", "()V", "<set-?>", "Lcom/tencent/mm/loader/loader/ITaskLoader;", "loader", "getLoader", "()Lcom/tencent/mm/loader/loader/ITaskLoader;", "watch", "Lcom/tencent/mm/loader/loader/WorkTaskWrap$IWorkTaskWrap;", "call", "", "callback", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "uniqueId", "", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/loader/IWorkTask;", "", "()V", "<set-?>", "Lcom/tencent/mm/loader/loader/ITaskLoader;", "loader", "getLoader", "()Lcom/tencent/mm/loader/loader/ITaskLoader;", "watch", "Lcom/tencent/mm/loader/loader/WorkTaskWrap$IWorkTaskWrap;", "call", "", "callback", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "uniqueId", "", "libimageloader_release"})
 public abstract class c
 {
-  protected b gLv;
-  i.a gLw;
+  protected b hfk;
+  k.a hfl;
   
-  public final void a(h paramh)
+  public final void a(j paramj)
   {
-    k.h(paramh, "status");
-    i.a locala = this.gLw;
+    p.h(paramj, "status");
+    k.a locala = this.hfl;
     if (locala == null) {
-      k.aVY("watch");
+      p.bcb("watch");
     }
-    locala.b(this, paramh);
+    locala.b(this, paramj);
   }
   
-  public abstract String acg();
+  public abstract String aeK();
   
   public abstract void call();
 }

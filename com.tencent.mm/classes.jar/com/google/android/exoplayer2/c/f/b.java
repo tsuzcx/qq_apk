@@ -10,15 +10,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements h
 {
-  private final String aTm;
-  private Format aTo;
-  private com.google.android.exoplayer2.c.m aYi;
-  private final l bfZ;
-  private final com.google.android.exoplayer2.i.m bga;
-  private String bgb;
-  private int bgc;
-  private boolean bgd;
-  private long bge;
+  private Format bdI;
+  private com.google.android.exoplayer2.c.m biD;
+  private final l bqt;
+  private final com.google.android.exoplayer2.i.m bqu;
+  private String bqv;
+  private int bqw;
+  private boolean bqx;
+  private long bqy;
+  private final String language;
   private int sampleSize;
   private int state;
   long timeUs;
@@ -31,20 +31,20 @@ public final class b
   public b(String paramString)
   {
     AppMethodBeat.i(92197);
-    this.bfZ = new l(new byte[8]);
-    this.bga = new com.google.android.exoplayer2.i.m(this.bfZ.data);
+    this.bqt = new l(new byte[8]);
+    this.bqu = new com.google.android.exoplayer2.i.m(this.bqt.data);
     this.state = 0;
-    this.aTm = paramString;
+    this.language = paramString;
     AppMethodBeat.o(92197);
   }
   
   private boolean a(com.google.android.exoplayer2.i.m paramm, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(92200);
-    int i = Math.min(paramm.vy(), 8 - this.bgc);
-    paramm.readBytes(paramArrayOfByte, this.bgc, i);
-    this.bgc = (i + this.bgc);
-    if (this.bgc == 8)
+    int i = Math.min(paramm.wV(), 8 - this.bqw);
+    paramm.readBytes(paramArrayOfByte, this.bqw, i);
+    this.bqw = (i + this.bqw);
+    if (this.bqw == 8)
     {
       AppMethodBeat.o(92200);
       return true;
@@ -53,46 +53,31 @@ public final class b
     return false;
   }
   
-  private void ti()
-  {
-    AppMethodBeat.i(92202);
-    this.bfZ.setPosition(0);
-    a.a locala = a.a(this.bfZ);
-    if ((this.aTo == null) || (locala.channelCount != this.aTo.channelCount) || (locala.sampleRate != this.aTo.sampleRate) || (locala.mimeType != this.aTo.aSY))
-    {
-      this.aTo = Format.a(this.bgb, locala.mimeType, -1, -1, locala.channelCount, locala.sampleRate, null, null, this.aTm);
-      this.aYi.f(this.aTo);
-    }
-    this.sampleSize = locala.aUr;
-    this.bge = (1000000L * locala.sampleCount / this.aTo.sampleRate);
-    AppMethodBeat.o(92202);
-  }
-  
   private boolean u(com.google.android.exoplayer2.i.m paramm)
   {
     AppMethodBeat.i(92201);
-    if (paramm.vy() > 0)
+    if (paramm.wV() > 0)
     {
-      if (!this.bgd)
+      if (!this.bqx)
       {
         if (paramm.readUnsignedByte() == 11) {}
         for (bool = true;; bool = false)
         {
-          this.bgd = bool;
+          this.bqx = bool;
           break;
         }
       }
       int i = paramm.readUnsignedByte();
       if (i == 119)
       {
-        this.bgd = false;
+        this.bqx = false;
         AppMethodBeat.o(92201);
         return true;
       }
       if (i == 11) {}
       for (boolean bool = true;; bool = false)
       {
-        this.bgd = bool;
+        this.bqx = bool;
         break;
       }
     }
@@ -100,12 +85,27 @@ public final class b
     return false;
   }
   
+  private void uH()
+  {
+    AppMethodBeat.i(92202);
+    this.bqt.setPosition(0);
+    a.a locala = a.a(this.bqt);
+    if ((this.bdI == null) || (locala.channelCount != this.bdI.channelCount) || (locala.sampleRate != this.bdI.sampleRate) || (locala.mimeType != this.bdI.bdt))
+    {
+      this.bdI = Format.a(this.bqv, locala.mimeType, -1, -1, locala.channelCount, locala.sampleRate, null, null, this.language);
+      this.biD.f(this.bdI);
+    }
+    this.sampleSize = locala.beL;
+    this.bqy = (1000000L * locala.sampleCount / this.bdI.sampleRate);
+    AppMethodBeat.o(92202);
+  }
+  
   public final void a(g paramg, v.d paramd)
   {
     AppMethodBeat.i(92198);
-    paramd.ts();
-    this.bgb = paramd.tt();
-    this.aYi = paramg.dW(paramd.getTrackId());
+    paramd.uR();
+    this.bqv = paramd.uS();
+    this.biD = paramg.eb(paramd.getTrackId());
     AppMethodBeat.o(92198);
   }
   
@@ -117,7 +117,7 @@ public final class b
   public final void t(com.google.android.exoplayer2.i.m paramm)
   {
     AppMethodBeat.i(92199);
-    while (paramm.vy() > 0) {
+    while (paramm.wV() > 0) {
       switch (this.state)
       {
       default: 
@@ -126,28 +126,28 @@ public final class b
         if (u(paramm))
         {
           this.state = 1;
-          this.bga.data[0] = 11;
-          this.bga.data[1] = 119;
-          this.bgc = 2;
+          this.bqu.data[0] = 11;
+          this.bqu.data[1] = 119;
+          this.bqw = 2;
         }
         break;
       case 1: 
-        if (a(paramm, this.bga.data))
+        if (a(paramm, this.bqu.data))
         {
-          ti();
-          this.bga.setPosition(0);
-          this.aYi.a(this.bga, 8);
+          uH();
+          this.bqu.setPosition(0);
+          this.biD.a(this.bqu, 8);
           this.state = 2;
         }
         break;
       case 2: 
-        int i = Math.min(paramm.vy(), this.sampleSize - this.bgc);
-        this.aYi.a(paramm, i);
-        this.bgc = (i + this.bgc);
-        if (this.bgc == this.sampleSize)
+        int i = Math.min(paramm.wV(), this.sampleSize - this.bqw);
+        this.biD.a(paramm, i);
+        this.bqw = (i + this.bqw);
+        if (this.bqw == this.sampleSize)
         {
-          this.aYi.a(this.timeUs, 1, this.sampleSize, 0, null);
-          this.timeUs += this.bge;
+          this.biD.a(this.timeUs, 1, this.sampleSize, 0, null);
+          this.timeUs += this.bqy;
           this.state = 0;
         }
         break;
@@ -156,18 +156,18 @@ public final class b
     AppMethodBeat.o(92199);
   }
   
-  public final void tg()
+  public final void uF()
   {
     this.state = 0;
-    this.bgc = 0;
-    this.bgd = false;
+    this.bqw = 0;
+    this.bqx = false;
   }
   
-  public final void th() {}
+  public final void uG() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.b
  * JD-Core Version:    0.7.0.1
  */

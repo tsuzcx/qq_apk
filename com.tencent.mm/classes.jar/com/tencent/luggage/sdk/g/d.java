@@ -2,40 +2,40 @@ package com.tencent.luggage.sdk.g;
 
 import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.b.b;
-import com.tencent.mm.plugin.appbrand.b.c.a;
+import com.tencent.mm.plugin.appbrand.a.b;
+import com.tencent.mm.plugin.appbrand.a.c.a;
 import d.g.a.a;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningStateController$OnRunningStateChangedListener;", "()V", "mEventInvokeMap", "Landroid/util/ArrayMap;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningState;", "Lkotlin/Function0;", "", "Lcom/tencent/luggage/sdk/wxa_ktx/LifecycleEventInvoke;", "onBackground", "callback", "onDestroy", "onForeground", "onRunningStateChanged", "appId", "", "state", "onSuspend", "registerCallback", "luggage-wechat-full-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningStateController$OnRunningStateChangedListener;", "()V", "mEventInvokeMap", "Landroid/util/ArrayMap;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningState;", "Lkotlin/Function0;", "", "Lcom/tencent/luggage/sdk/wxa_ktx/LifecycleEventInvoke;", "onBackground", "callback", "onDestroy", "onForeground", "onRunningStateChanged", "appId", "", "state", "onSuspend", "registerCallback", "luggage-wechat-full-sdk_release"})
 public final class d
   implements c.a
 {
-  private final ArrayMap<b, a<y>> cfy;
+  private final ArrayMap<b, a<z>> cpO;
   
   public d()
   {
     AppMethodBeat.i(147859);
-    this.cfy = new ArrayMap();
+    this.cpO = new ArrayMap();
     AppMethodBeat.o(147859);
   }
   
-  public final void a(b paramb, a<y> parama)
+  public final void a(b paramb, a<z> parama)
   {
     AppMethodBeat.i(147857);
-    ((Map)this.cfy).put(paramb, parama);
+    ((Map)this.cpO).put(paramb, parama);
     AppMethodBeat.o(147857);
   }
   
-  public final void a(a<y> parama)
+  public final void a(a<z> parama)
   {
-    AppMethodBeat.i(206205);
-    k.h(parama, "callback");
-    a(b.jqV, parama);
-    AppMethodBeat.o(206205);
+    AppMethodBeat.i(192337);
+    p.h(parama, "callback");
+    a(b.jKP, parama);
+    AppMethodBeat.o(192337);
   }
   
   public final void a(String paramString, b paramb)
@@ -53,7 +53,7 @@ public final class d
       AppMethodBeat.o(147856);
       return;
     }
-    paramString = (a)this.cfy.get(paramb);
+    paramString = (a)this.cpO.get(paramb);
     if (paramString != null)
     {
       paramString.invoke();
@@ -63,11 +63,11 @@ public final class d
     AppMethodBeat.o(147856);
   }
   
-  public final void b(a<y> parama)
+  public final void b(a<z> parama)
   {
     AppMethodBeat.i(147858);
-    k.h(parama, "callback");
-    a(b.jqX, parama);
+    p.h(parama, "callback");
+    a(b.jKR, parama);
     AppMethodBeat.o(147858);
   }
 }

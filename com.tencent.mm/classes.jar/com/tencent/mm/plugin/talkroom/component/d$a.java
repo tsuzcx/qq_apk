@@ -43,12 +43,12 @@ public abstract class d$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IMicRecoder_AIDL");
-      ebj();
+      enA();
       paramParcel2.writeNoException();
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IMicRecoder_AIDL");
-      aIL();
+      aLV();
       paramParcel2.writeNoException();
       return true;
     case 3: 
@@ -58,7 +58,7 @@ public abstract class d$a
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IMicRecoder_AIDL");
-      paramInt1 = ebk();
+      paramInt1 = enB();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -79,7 +79,7 @@ public abstract class d$a
       this.mRemote = paramIBinder;
     }
     
-    public final void aIL()
+    public final void aLV()
     {
       AppMethodBeat.i(29385);
       Parcel localParcel1 = Parcel.obtain();
@@ -104,7 +104,7 @@ public abstract class d$a
       return this.mRemote;
     }
     
-    public final void ebj()
+    public final void enA()
     {
       AppMethodBeat.i(29384);
       Parcel localParcel1 = Parcel.obtain();
@@ -124,7 +124,7 @@ public abstract class d$a
       }
     }
     
-    public final int ebk()
+    public final int enB()
     {
       AppMethodBeat.i(29387);
       Parcel localParcel1 = Parcel.obtain();
@@ -188,7 +188,7 @@ public abstract class d$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.d.a
  * JD-Core Version:    0.7.0.1
  */

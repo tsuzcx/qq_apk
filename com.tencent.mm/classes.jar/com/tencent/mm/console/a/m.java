@@ -8,10 +8,9 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.pluginsdk.n.c.a;
-import com.tencent.mm.pluginsdk.n.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.pluginsdk.o.c.a;
+import com.tencent.mm.pluginsdk.o.e;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.h;
 
 public final class m
@@ -30,7 +29,7 @@ public final class m
   {
     int i = 0;
     AppMethodBeat.i(20193);
-    if (ac.getLogLevel() > 1)
+    if (ad.getLogLevel() > 1)
     {
       AppMethodBeat.o(20193);
       return false;
@@ -69,14 +68,14 @@ public final class m
       }
       i = 2;
       break label83;
-      n.e.DfF.ewx();
+      o.e.EJB.eKD();
       continue;
       paramArrayOfString = new TextView(paramContext);
-      paramArrayOfString.setText(n.e.DfF.eww());
+      paramArrayOfString.setText(o.e.EJB.eKC());
       paramArrayOfString.setGravity(19);
       paramArrayOfString.setTextSize(1, 10.0F);
       paramArrayOfString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-      paramArrayOfString.setTextColor(ao.aJ(paramContext, 2130968584));
+      paramArrayOfString.setTextColor(paramContext.getResources().getColor(2131099732));
       paramArrayOfString.setTypeface(Typeface.MONOSPACE);
       i = paramContext.getResources().getDimensionPixelSize(2131165480);
       paramArrayOfString.setPadding(i, i, i, i);
@@ -86,7 +85,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.console.a.m
  * JD-Core Version:    0.7.0.1
  */

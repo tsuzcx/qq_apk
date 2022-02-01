@@ -14,46 +14,46 @@ import java.util.Stack;
 public final class d
   implements a
 {
-  public c ccU;
-  public final y.b ggi;
-  public com.tencent.mm.plugin.appbrand.canvas.a.a jzb;
-  public com.tencent.mm.plugin.appbrand.canvas.a.a jzc;
-  private Stack<com.tencent.mm.plugin.appbrand.canvas.a.a> jzd;
-  private Stack<com.tencent.mm.plugin.appbrand.canvas.a.a> jze;
-  public Paint jzf;
-  public Paint jzg;
-  public e jzh;
-  private a jzi;
-  boolean jzj;
+  public c cnl;
+  public final y.b gzS;
+  public com.tencent.mm.plugin.appbrand.canvas.a.a jSY;
+  public com.tencent.mm.plugin.appbrand.canvas.a.a jSZ;
+  private Stack<com.tencent.mm.plugin.appbrand.canvas.a.a> jTa;
+  private Stack<com.tencent.mm.plugin.appbrand.canvas.a.a> jTb;
+  public Paint jTc;
+  public Paint jTd;
+  public e jTe;
+  private a jTf;
+  boolean jTg;
   
   public d(a parama)
   {
     AppMethodBeat.i(144848);
-    this.jzf = new Paint();
-    this.ggi = new y.b();
-    this.jzj = true;
-    this.jzi = parama;
-    if (this.jzj)
+    this.jTc = new Paint();
+    this.gzS = new y.b();
+    this.jTg = true;
+    this.jTf = parama;
+    if (this.jTg)
     {
-      parama = i.aZY().aZQ();
-      this.jzb = parama;
-      if (!this.jzj) {
+      parama = i.bdx().bdp();
+      this.jSY = parama;
+      if (!this.jTg) {
         break label196;
       }
     }
     label196:
-    for (parama = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.aZU().aZQ();; parama = new com.tencent.mm.plugin.appbrand.canvas.a.a())
+    for (parama = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.bdt().bdp();; parama = new com.tencent.mm.plugin.appbrand.canvas.a.a())
     {
-      this.jzc = parama;
-      this.jzb.setStyle(Paint.Style.STROKE);
-      this.jzc.setStyle(Paint.Style.FILL);
-      this.jzb.setAntiAlias(true);
-      this.jzc.setAntiAlias(true);
-      this.jzb.setStrokeWidth(g.ve(1));
-      this.jzc.setStrokeWidth(g.ve(1));
-      this.jzd = new Stack();
-      this.jze = new Stack();
-      this.jzf.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+      this.jSZ = parama;
+      this.jSY.setStyle(Paint.Style.STROKE);
+      this.jSZ.setStyle(Paint.Style.FILL);
+      this.jSY.setAntiAlias(true);
+      this.jSZ.setAntiAlias(true);
+      this.jSY.setStrokeWidth(g.vJ(1));
+      this.jSZ.setStrokeWidth(g.vJ(1));
+      this.jTa = new Stack();
+      this.jTb = new Stack();
+      this.jTc.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
       AppMethodBeat.o(144848);
       return;
       parama = new com.tencent.mm.plugin.appbrand.canvas.a.a();
@@ -64,45 +64,45 @@ public final class d
   public final void invalidate()
   {
     AppMethodBeat.i(144852);
-    this.jzi.invalidate();
+    this.jTf.invalidate();
     AppMethodBeat.o(144852);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(144849);
-    this.jzd.clear();
-    this.jze.clear();
-    this.jzb.reset();
-    this.jzc.reset();
-    this.jzb.setStyle(Paint.Style.STROKE);
-    this.jzc.setStyle(Paint.Style.FILL);
-    this.jzb.setAntiAlias(true);
-    this.jzc.setAntiAlias(true);
-    this.jzb.setStrokeWidth(g.ve(1));
-    this.jzc.setStrokeWidth(g.ve(1));
+    this.jTa.clear();
+    this.jTb.clear();
+    this.jSY.reset();
+    this.jSZ.reset();
+    this.jSY.setStyle(Paint.Style.STROKE);
+    this.jSZ.setStyle(Paint.Style.FILL);
+    this.jSY.setAntiAlias(true);
+    this.jSZ.setAntiAlias(true);
+    this.jSY.setStrokeWidth(g.vJ(1));
+    this.jSZ.setStrokeWidth(g.vJ(1));
     AppMethodBeat.o(144849);
   }
   
   public final void restore()
   {
     AppMethodBeat.i(144851);
-    if (this.jzd.isEmpty())
+    if (this.jTa.isEmpty())
     {
       AppMethodBeat.o(144851);
       return;
     }
-    com.tencent.mm.plugin.appbrand.canvas.a.a locala1 = this.jzb;
-    com.tencent.mm.plugin.appbrand.canvas.a.a locala2 = this.jzc;
-    this.jzb = ((com.tencent.mm.plugin.appbrand.canvas.a.a)this.jzd.pop());
-    this.jzc = ((com.tencent.mm.plugin.appbrand.canvas.a.a)this.jze.pop());
-    if (this.jzj)
+    com.tencent.mm.plugin.appbrand.canvas.a.a locala1 = this.jSY;
+    com.tencent.mm.plugin.appbrand.canvas.a.a locala2 = this.jSZ;
+    this.jSY = ((com.tencent.mm.plugin.appbrand.canvas.a.a)this.jTa.pop());
+    this.jSZ = ((com.tencent.mm.plugin.appbrand.canvas.a.a)this.jTb.pop());
+    if (this.jTg)
     {
-      if (this.jzb != locala1) {
-        i.aZY().a(locala1);
+      if (this.jSY != locala1) {
+        i.bdx().a(locala1);
       }
-      if (this.jzc != locala2) {
-        com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.aZU().a(locala2);
+      if (this.jSZ != locala2) {
+        com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.bdt().a(locala2);
       }
     }
     AppMethodBeat.o(144851);
@@ -111,31 +111,31 @@ public final class d
   public final void save()
   {
     AppMethodBeat.i(144850);
-    com.tencent.mm.plugin.appbrand.canvas.a.a locala = this.jzb;
-    this.jzd.push(this.jzb);
-    if (this.jzj)
+    com.tencent.mm.plugin.appbrand.canvas.a.a locala = this.jSY;
+    this.jTa.push(this.jSY);
+    if (this.jTg)
     {
-      this.jzb = i.aZY().aZQ();
-      locala.b(this.jzb);
-      if (this.jzb == null) {
-        this.jzb = locala;
+      this.jSY = i.bdx().bdp();
+      locala.b(this.jSY);
+      if (this.jSY == null) {
+        this.jSY = locala;
       }
-      locala = this.jzc;
-      this.jze.push(this.jzc);
-      if (!this.jzj) {
+      locala = this.jSZ;
+      this.jTb.push(this.jSZ);
+      if (!this.jTg) {
         break label132;
       }
     }
     label132:
-    for (this.jzc = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.aZU().aZQ();; this.jzc = locala.aZZ())
+    for (this.jSZ = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.bdt().bdp();; this.jSZ = locala.bdy())
     {
-      locala.b(this.jzc);
-      if (this.jzc == null) {
-        this.jzc = locala;
+      locala.b(this.jSZ);
+      if (this.jSZ == null) {
+        this.jSZ = locala;
       }
       AppMethodBeat.o(144850);
       return;
-      this.jzb = locala.aZZ();
+      this.jSY = locala.bdy();
       break;
     }
   }

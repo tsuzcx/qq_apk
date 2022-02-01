@@ -5,40 +5,40 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class c
   extends a<Bitmap>
 {
-  private static int hem;
-  public static final c hen;
+  private static int hwu;
+  public static final c hwv;
   
   static
   {
     AppMethodBeat.i(156415);
-    hem = 20971520;
-    hen = new c();
+    hwu = 20971520;
+    hwv = new c();
     AppMethodBeat.o(156415);
   }
   
   private c()
   {
     AppMethodBeat.i(156401);
-    int i = ((ActivityManager)ai.getContext().getSystemService("activity")).getLargeMemoryClass();
-    ac.i("MicroMsg.BitmapPool", "BitmapPool %dMB", new Object[] { Integer.valueOf(i) });
+    int i = ((ActivityManager)aj.getContext().getSystemService("activity")).getLargeMemoryClass();
+    ad.i("MicroMsg.BitmapPool", "BitmapPool %dMB", new Object[] { Integer.valueOf(i) });
     if (i > 256) {
-      hem = 20971520;
+      hwu = 20971520;
     }
     for (;;)
     {
-      MV();
+      OE();
       AppMethodBeat.o(156401);
       return;
       if (i > 128) {
-        hem = 10485760;
+        hwu = 10485760;
       } else {
-        hem = 5242880;
+        hwu = 5242880;
       }
     }
   }
@@ -51,7 +51,7 @@ public final class c
       AppMethodBeat.o(156404);
       return Integer.valueOf(0);
     }
-    if (d.la(19)) {}
+    if (d.lz(19)) {}
     for (int i = paramBitmap.getByteCount();; i = paramBitmap.getAllocationByteCount())
     {
       AppMethodBeat.o(156404);
@@ -67,20 +67,20 @@ public final class c
     return Integer.valueOf(i * 4);
   }
   
-  protected final long avH()
+  protected final long ayu()
   {
-    return hem;
+    return hwu;
   }
   
-  protected final long avI()
+  protected final long ayv()
   {
     return 1048576L;
   }
   
-  public final void avJ()
+  public final void ayw()
   {
     AppMethodBeat.i(156406);
-    super.avJ();
+    super.ayw();
     AppMethodBeat.o(156406);
   }
   
@@ -142,7 +142,7 @@ public final class c
     //   85: iconst_4
     //   86: aload_1
     //   87: aastore
-    //   88: invokestatic 177	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   88: invokestatic 177	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   91: ldc 158
     //   93: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   96: aload_2
@@ -173,8 +173,8 @@ public final class c
       AppMethodBeat.i(156405);
       if ((paramBitmap != null) && (paramBitmap.isMutable()) && (!paramBitmap.isRecycled()))
       {
-        ac.i("MicroMsg.BitmapPool", "release: %s", new Object[] { paramBitmap });
-        super.bJ(paramBitmap);
+        ad.i("MicroMsg.BitmapPool", "release: %s", new Object[] { paramBitmap });
+        super.bL(paramBitmap);
       }
       AppMethodBeat.o(156405);
       return;

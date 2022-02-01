@@ -18,7 +18,7 @@ public abstract class k
     {
       Object localObject = new StringWriter();
       a locala = new a((Writer)localObject);
-      locala.bCU = true;
+      locala.bNi = true;
       com.google.a.b.k.a(this, locala);
       localObject = ((StringWriter)localObject).toString();
       return localObject;
@@ -29,17 +29,17 @@ public abstract class k
     }
   }
   
-  public Number xa()
+  public Number yx()
   {
     throw new UnsupportedOperationException(getClass().getSimpleName());
   }
   
-  public String xb()
+  public String yy()
   {
     throw new UnsupportedOperationException(getClass().getSimpleName());
   }
   
-  public final p xc()
+  public final p yz()
   {
     if ((this instanceof p)) {
       return (p)this;
@@ -49,7 +49,7 @@ public abstract class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.a.k
  * JD-Core Version:    0.7.0.1
  */

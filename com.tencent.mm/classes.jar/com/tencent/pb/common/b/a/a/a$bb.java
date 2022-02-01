@@ -6,50 +6,50 @@ import com.google.b.a.e;
 public final class a$bb
   extends e
 {
-  public int ADE = 0;
-  public long ADF = 0L;
-  public int JPw = 0;
+  public int CcE = 0;
+  public long CcF = 0L;
+  public int LJi = 0;
   
   public a$bb()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.ADE != 0) {
-      paramb.bv(1, this.ADE);
+    if (this.CcE != 0) {
+      paramb.bx(1, this.CcE);
     }
-    if (this.ADF != 0L) {
-      paramb.n(2, this.ADF);
+    if (this.CcF != 0L) {
+      paramb.n(2, this.CcF);
     }
-    if (this.JPw != 0) {
-      paramb.bw(3, this.JPw);
+    if (this.LJi != 0) {
+      paramb.by(3, this.LJi);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.ADE != 0) {
-      i = j + b.bx(1, this.ADE);
+    if (this.CcE != 0) {
+      i = j + b.bz(1, this.CcE);
     }
     j = i;
-    if (this.ADF != 0L) {
-      j = i + b.p(2, this.ADF);
+    if (this.CcF != 0L) {
+      j = i + b.p(2, this.CcF);
     }
     i = j;
-    if (this.JPw != 0) {
-      i = j + b.by(3, this.JPw);
+    if (this.LJi != 0) {
+      i = j + b.bA(3, this.LJi);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.bb
  * JD-Core Version:    0.7.0.1
  */

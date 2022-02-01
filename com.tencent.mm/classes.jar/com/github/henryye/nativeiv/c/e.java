@@ -7,7 +7,7 @@ import java.io.InputStream;
 
 public final class e
 {
-  public static InputStream h(InputStream paramInputStream)
+  public static InputStream l(InputStream paramInputStream)
   {
     AppMethodBeat.i(127399);
     Object localObject = paramInputStream;
@@ -26,7 +26,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.github.henryye.nativeiv.c.e
  * JD-Core Version:    0.7.0.1
  */

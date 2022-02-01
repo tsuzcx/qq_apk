@@ -26,55 +26,55 @@ import java.util.ArrayList;
 public final class c
   implements o
 {
-  public Drawable iH;
-  h iL;
   public int id;
-  final View.OnClickListener iu = new View.OnClickListener()
+  h kC;
+  public ColorStateList kR;
+  public NavigationMenuView kW;
+  public LinearLayout kX;
+  private o.a kY;
+  public b kZ;
+  final View.OnClickListener km = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
       paramAnonymousView = (NavigationMenuItemView)paramAnonymousView;
       c.this.q(true);
       paramAnonymousView = paramAnonymousView.getItemData();
-      boolean bool = c.this.iL.a(paramAnonymousView, c.this, 0);
+      boolean bool = c.this.kC.a(paramAnonymousView, c.this, 0);
       if ((paramAnonymousView != null) && (paramAnonymousView.isCheckable()) && (bool)) {
-        c.this.ji.d(paramAnonymousView);
+        c.this.kZ.d(paramAnonymousView);
       }
       c.this.q(false);
       c.this.p(false);
     }
   };
-  public ColorStateList ja;
-  public NavigationMenuView jf;
-  public LinearLayout jg;
-  private o.a jh;
-  public b ji;
-  boolean jj;
-  public ColorStateList jk;
-  public int jl;
-  public int jm;
-  public int jn;
-  int jo;
+  public Drawable ky;
+  boolean la;
   public LayoutInflater layoutInflater;
+  public ColorStateList lb;
+  public int lc;
+  public int ld;
+  public int le;
+  int lf;
   int textAppearance;
   
   public final void a(Context paramContext, h paramh)
   {
     this.layoutInflater = LayoutInflater.from(paramContext);
-    this.iL = paramh;
-    this.jo = paramContext.getResources().getDimensionPixelOffset(2131166120);
+    this.kC = paramh;
+    this.lf = paramContext.getResources().getDimensionPixelOffset(2131166120);
   }
   
   public final void a(h paramh, boolean paramBoolean)
   {
-    if (this.jh != null) {
-      this.jh.a(paramh, paramBoolean);
+    if (this.kY != null) {
+      this.kY.a(paramh, paramBoolean);
     }
   }
   
   public final void a(o.a parama)
   {
-    this.jh = parama;
+    this.kY = parama;
   }
   
   public final boolean a(u paramu)
@@ -87,7 +87,7 @@ public final class c
     return false;
   }
   
-  public final boolean bo()
+  public final boolean bD()
   {
     return false;
   }
@@ -99,7 +99,7 @@ public final class c
   
   public final void d(j paramj)
   {
-    this.ji.d(paramj);
+    this.kZ.d(paramj);
   }
   
   public final int getId()
@@ -115,19 +115,19 @@ public final class c
       paramParcelable = (Bundle)paramParcelable;
       Object localObject1 = paramParcelable.getSparseParcelableArray("android:menu:list");
       if (localObject1 != null) {
-        this.jf.restoreHierarchyState((SparseArray)localObject1);
+        this.kW.restoreHierarchyState((SparseArray)localObject1);
       }
       Object localObject2 = paramParcelable.getBundle("android:menu:adapter");
       if (localObject2 != null)
       {
-        localObject1 = this.ji;
+        localObject1 = this.kZ;
         int k = ((Bundle)localObject2).getInt("android:menu:checked", 0);
         int m;
         int i;
         if (k != 0)
         {
-          ((b)localObject1).iO = true;
-          m = ((b)localObject1).jq.size();
+          ((b)localObject1).kF = true;
+          m = ((b)localObject1).lh.size();
           i = 0;
         }
         for (;;)
@@ -135,10 +135,10 @@ public final class c
           Object localObject3;
           if (i < m)
           {
-            localObject3 = (d)((b)localObject1).jq.get(i);
+            localObject3 = (d)((b)localObject1).lh.get(i);
             if ((localObject3 instanceof f))
             {
-              localObject3 = ((f)localObject3).js;
+              localObject3 = ((f)localObject3).lj;
               if ((localObject3 != null) && (((j)localObject3).getItemId() == k)) {
                 ((b)localObject1).d((j)localObject3);
               }
@@ -146,20 +146,20 @@ public final class c
           }
           else
           {
-            ((b)localObject1).iO = false;
-            ((b)localObject1).bp();
+            ((b)localObject1).kF = false;
+            ((b)localObject1).bE();
             localObject2 = ((Bundle)localObject2).getSparseParcelableArray("android:menu:action_views");
             if (localObject2 == null) {
               break;
             }
-            k = ((b)localObject1).jq.size();
+            k = ((b)localObject1).lh.size();
             i = j;
             while (i < k)
             {
-              localObject3 = (d)((b)localObject1).jq.get(i);
+              localObject3 = (d)((b)localObject1).lh.get(i);
               if ((localObject3 instanceof f))
               {
-                Object localObject4 = ((f)localObject3).js;
+                Object localObject4 = ((f)localObject3).lj;
                 if (localObject4 != null)
                 {
                   localObject3 = ((j)localObject4).getActionView();
@@ -180,7 +180,7 @@ public final class c
       }
       paramParcelable = paramParcelable.getSparseParcelableArray("android:menu:header");
       if (paramParcelable != null) {
-        this.jg.restoreHierarchyState(paramParcelable);
+        this.kX.restoreHierarchyState(paramParcelable);
       }
     }
   }
@@ -189,19 +189,19 @@ public final class c
   {
     Bundle localBundle = new Bundle();
     SparseArray localSparseArray;
-    if (this.jf != null)
+    if (this.kW != null)
     {
       localSparseArray = new SparseArray();
-      this.jf.saveHierarchyState(localSparseArray);
+      this.kW.saveHierarchyState(localSparseArray);
       localBundle.putSparseParcelableArray("android:menu:list", localSparseArray);
     }
-    if (this.ji != null) {
-      localBundle.putBundle("android:menu:adapter", this.ji.bq());
+    if (this.kZ != null) {
+      localBundle.putBundle("android:menu:adapter", this.kZ.bF());
     }
-    if (this.jg != null)
+    if (this.kX != null)
     {
       localSparseArray = new SparseArray();
-      this.jg.saveHierarchyState(localSparseArray);
+      this.kX.saveHierarchyState(localSparseArray);
       localBundle.putSparseParcelableArray("android:menu:header", localSparseArray);
     }
     return localBundle;
@@ -209,55 +209,55 @@ public final class c
   
   public final void p(boolean paramBoolean)
   {
-    if (this.ji != null)
+    if (this.kZ != null)
     {
-      b localb = this.ji;
-      localb.bp();
-      localb.arg.notifyChanged();
+      b localb = this.kZ;
+      localb.bE();
+      localb.asY.notifyChanged();
     }
   }
   
   public final void q(boolean paramBoolean)
   {
-    if (this.ji != null) {
-      this.ji.iO = paramBoolean;
+    if (this.kZ != null) {
+      this.kZ.kF = paramBoolean;
     }
   }
   
   public final void setItemBackground(Drawable paramDrawable)
   {
-    this.iH = paramDrawable;
+    this.ky = paramDrawable;
     p(false);
   }
   
   public final void setItemHorizontalPadding(int paramInt)
   {
-    this.jl = paramInt;
+    this.lc = paramInt;
     p(false);
   }
   
   public final void setItemIconPadding(int paramInt)
   {
-    this.jm = paramInt;
+    this.ld = paramInt;
     p(false);
   }
   
   public final void setItemIconTintList(ColorStateList paramColorStateList)
   {
-    this.ja = paramColorStateList;
+    this.kR = paramColorStateList;
     p(false);
   }
   
   public final void setItemTextAppearance(int paramInt)
   {
     this.textAppearance = paramInt;
-    this.jj = true;
+    this.la = true;
     p(false);
   }
   
   public final void setItemTextColor(ColorStateList paramColorStateList)
   {
-    this.jk = paramColorStateList;
+    this.lb = paramColorStateList;
     p(false);
   }
   
@@ -273,36 +273,36 @@ public final class c
   public final class b
     extends RecyclerView.a<c.j>
   {
-    boolean iO;
-    final ArrayList<c.d> jq = new ArrayList();
-    public j jr;
+    boolean kF;
+    final ArrayList<c.d> lh = new ArrayList();
+    public j li;
     
     public b()
     {
-      bp();
+      bE();
     }
     
-    private void g(int paramInt1, int paramInt2)
+    private void n(int paramInt1, int paramInt2)
     {
       while (paramInt1 < paramInt2)
       {
-        ((c.f)this.jq.get(paramInt1)).iX = true;
+        ((c.f)this.lh.get(paramInt1)).kO = true;
         paramInt1 += 1;
       }
     }
     
-    final void bp()
+    final void bE()
     {
-      if (this.iO) {
+      if (this.kF) {
         return;
       }
-      this.iO = true;
-      this.jq.clear();
-      this.jq.add(new c.c());
+      this.kF = true;
+      this.lh.clear();
+      this.lh.add(new c.c());
       int j = -1;
       int i = 0;
       boolean bool1 = false;
-      int i2 = c.this.iL.hF().size();
+      int i2 = c.this.kC.hV().size();
       int n = 0;
       Object localObject;
       int k;
@@ -311,7 +311,7 @@ public final class c
       {
         if (n < i2)
         {
-          localObject = (j)c.this.iL.hF().get(n);
+          localObject = (j)c.this.kC.hV().get(n);
           if (((j)localObject).isChecked()) {
             d((j)localObject);
           }
@@ -324,11 +324,11 @@ public final class c
             if (localSubMenu.hasVisibleItems())
             {
               if (n != 0) {
-                this.jq.add(new c.e(c.this.jo, 0));
+                this.lh.add(new c.e(c.this.lf, 0));
               }
-              this.jq.add(new c.f((j)localObject));
+              this.lh.add(new c.f((j)localObject));
               k = 0;
-              int i3 = this.jq.size();
+              int i3 = this.lh.size();
               int i4 = localSubMenu.size();
               int i1 = 0;
               while (i1 < i4)
@@ -351,13 +351,13 @@ public final class c
                   if (((j)localObject).isChecked()) {
                     d((j)localObject);
                   }
-                  this.jq.add(new c.f(localj));
+                  this.lh.add(new c.f(localj));
                 }
                 i1 += 1;
                 k = m;
               }
               if (k != 0) {
-                g(i3, this.jq.size());
+                n(i3, this.lh.size());
               }
             }
             k = j;
@@ -373,7 +373,7 @@ public final class c
             k = ((j)localObject).getGroupId();
             if (k != j)
             {
-              j = this.jq.size();
+              j = this.lh.size();
               if (((j)localObject).getIcon() != null)
               {
                 bool2 = true;
@@ -383,7 +383,7 @@ public final class c
                 if (n != 0)
                 {
                   i = j + 1;
-                  this.jq.add(new c.e(c.this.jo, c.this.jo));
+                  this.lh.add(new c.e(c.this.lf, c.this.lf));
                   bool1 = bool2;
                 }
               }
@@ -394,8 +394,8 @@ public final class c
       for (;;)
       {
         localObject = new c.f((j)localObject);
-        ((c.f)localObject).iX = bool1;
-        this.jq.add(localObject);
+        ((c.f)localObject).kO = bool1;
+        this.lh.add(localObject);
         j = i;
         i = k;
         break;
@@ -404,30 +404,30 @@ public final class c
         if ((!bool1) && (((j)localObject).getIcon() != null))
         {
           bool1 = true;
-          g(i, this.jq.size());
+          n(i, this.lh.size());
           continue;
-          this.iO = false;
+          this.kF = false;
           return;
         }
       }
     }
     
-    public final Bundle bq()
+    public final Bundle bF()
     {
       Bundle localBundle = new Bundle();
-      if (this.jr != null) {
-        localBundle.putInt("android:menu:checked", this.jr.getItemId());
+      if (this.li != null) {
+        localBundle.putInt("android:menu:checked", this.li.getItemId());
       }
       SparseArray localSparseArray = new SparseArray();
-      int j = this.jq.size();
+      int j = this.lh.size();
       int i = 0;
       if (i < j)
       {
-        Object localObject = (c.d)this.jq.get(i);
+        Object localObject = (c.d)this.lh.get(i);
         j localj;
         if ((localObject instanceof c.f))
         {
-          localj = ((c.f)localObject).js;
+          localj = ((c.f)localObject).lj;
           if (localj == null) {
             break label132;
           }
@@ -451,19 +451,19 @@ public final class c
     
     public final void d(j paramj)
     {
-      if ((this.jr == paramj) || (!paramj.isCheckable())) {
+      if ((this.li == paramj) || (!paramj.isCheckable())) {
         return;
       }
-      if (this.jr != null) {
-        this.jr.setChecked(false);
+      if (this.li != null) {
+        this.li.setChecked(false);
       }
-      this.jr = paramj;
+      this.li = paramj;
       paramj.setChecked(true);
     }
     
     public final int getItemCount()
     {
-      return this.jq.size();
+      return this.lh.size();
     }
     
     public final long getItemId(int paramInt)
@@ -473,7 +473,7 @@ public final class c
     
     public final int getItemViewType(int paramInt)
     {
-      c.d locald = (c.d)this.jq.get(paramInt);
+      c.d locald = (c.d)this.lh.get(paramInt);
       if ((locald instanceof c.e)) {
         return 2;
       }
@@ -482,7 +482,7 @@ public final class c
       }
       if ((locald instanceof c.f))
       {
-        if (((c.f)locald).js.hasSubMenu()) {
+        if (((c.f)locald).lj.hasSubMenu()) {
           return 1;
         }
         return 0;
@@ -513,12 +513,12 @@ public final class c
   static final class f
     implements c.d
   {
-    boolean iX;
-    final j js;
+    boolean kO;
+    final j lj;
     
     f(j paramj)
     {
-      this.js = paramj;
+      this.lj = paramj;
     }
   }
   
@@ -528,7 +528,7 @@ public final class c
     public g(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
     {
       super();
-      this.asD.setOnClickListener(paramOnClickListener);
+      this.auu.setOnClickListener(paramOnClickListener);
     }
   }
   

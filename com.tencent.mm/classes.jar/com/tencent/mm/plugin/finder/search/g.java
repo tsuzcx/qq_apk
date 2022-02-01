@@ -15,126 +15,137 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.utils.p;
-import com.tencent.mm.protocal.protobuf.anp;
-import com.tencent.mm.protocal.protobuf.anq;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.finder.utils.r;
+import com.tencent.mm.protocal.protobuf.arb;
+import com.tencent.mm.protocal.protobuf.arc;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.vfs.e;
-import d.g.a.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
-import d.y;
+import d.z;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "Lcom/tencent/mm/plugin/finder/search/OnHistoryUpdateListener;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "onHistoryClickListener", "Lkotlin/Function1;", "", "", "(Lcom/tencent/mm/ui/MMActivity;Lkotlin/jvm/functions/Function1;)V", "footer", "Landroid/view/View;", "historyAdapter", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryAdapter;", "historyLV", "Landroid/widget/ListView;", "onDestroy", "onTextChange", "query", "onTextSearch", "update", "updateHistoryFooter", "HistoryAdapter", "HistoryDataManager", "HistoryItemHolder", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "Lcom/tencent/mm/plugin/finder/search/OnHistoryUpdateListener;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "onHistoryClickListener", "Lkotlin/Function1;", "", "", "(Lcom/tencent/mm/ui/MMActivity;Lkotlin/jvm/functions/Function1;)V", "footer", "Landroid/view/View;", "historyAdapter", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryAdapter;", "historyLV", "Landroid/widget/ListView;", "onDestroy", "onTextChange", "query", "onTextSearch", "update", "updateHistoryFooter", "HistoryAdapter", "HistoryDataManager", "HistoryItemHolder", "plugin-finder_release"})
 public final class g
   implements i
 {
-  View ofC;
-  private ListView rBm;
-  private a rBn;
+  View oIV;
+  private ListView stD;
+  private a stE;
   
-  public g(MMActivity paramMMActivity, b<? super String, y> paramb)
+  public g(MMActivity paramMMActivity, d.g.a.b<? super String, z> paramb)
   {
     AppMethodBeat.i(166864);
     View localView = paramMMActivity.findViewById(2131300754);
-    k.g(localView, "activity.findViewById(R.id.history_lv)");
-    this.rBm = ((ListView)localView);
-    localView = LayoutInflater.from((Context)paramMMActivity).inflate(2131494102, (ViewGroup)this.rBm, false);
-    k.g(localView, "LayoutInflater.from(acti…footer, historyLV, false)");
-    this.ofC = localView;
-    cxN();
-    this.rBm.addFooterView(this.ofC);
-    this.rBn = new a();
-    this.rBm.setAdapter((ListAdapter)this.rBn);
-    this.ofC.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    p.g(localView, "activity.findViewById(R.id.history_lv)");
+    this.stD = ((ListView)localView);
+    localView = LayoutInflater.from((Context)paramMMActivity).inflate(2131494102, (ViewGroup)this.stD, false);
+    p.g(localView, "LayoutInflater.from(acti…footer, historyLV, false)");
+    this.oIV = localView;
+    cEK();
+    this.stD.addFooterView(this.oIV);
+    this.stE = new a();
+    this.stD.setAdapter((ListAdapter)this.stE);
+    this.oIV.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(166844);
-        this.rBo.ofC.setVisibility(8);
-        paramAnonymousView = g.b.rBt;
-        g.b.rBr.ncM.clear();
-        g.b.cxQ();
-        g.b.cxP();
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        this.stF.oIV.setVisibility(8);
+        paramAnonymousView = g.b.stK;
+        g.b.stI.nDj.clear();
+        g.b.cEN();
+        g.b.cEM();
+        a.a(this, "com/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(166844);
       }
     });
-    this.rBm.setOnItemClickListener((AdapterView.OnItemClickListener)new AdapterView.OnItemClickListener()
+    this.stD.setOnItemClickListener((AdapterView.OnItemClickListener)new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(166845);
-        paramAnonymousAdapterView = this.rBp;
-        paramAnonymousView = g.b.rBt;
-        paramAnonymousView = ((anq)g.b.cxO().ncM.get(paramAnonymousInt)).query;
-        k.g(paramAnonymousView, "HistoryDataManager.searc…tory.List[position].query");
-        paramAnonymousAdapterView.ay(paramAnonymousView);
-        paramAnonymousAdapterView = g.b.rBt;
-        paramAnonymousAdapterView = ((anq)g.b.cxO().ncM.get(paramAnonymousInt)).query;
-        k.g(paramAnonymousAdapterView, "HistoryDataManager.searc…tory.List[position].query");
-        g.b.adX(paramAnonymousAdapterView);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        a.b("com/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        paramAnonymousAdapterView = this.stG;
+        paramAnonymousView = g.b.stK;
+        paramAnonymousView = ((arc)g.b.cEL().nDj.get(paramAnonymousInt)).query;
+        p.g(paramAnonymousView, "HistoryDataManager.searc…tory.List[position].query");
+        paramAnonymousAdapterView.invoke(paramAnonymousView);
+        paramAnonymousAdapterView = g.b.stK;
+        paramAnonymousAdapterView = ((arc)g.b.cEL().nDj.get(paramAnonymousInt)).query;
+        p.g(paramAnonymousAdapterView, "HistoryDataManager.searc…tory.List[position].query");
+        g.b.ahW(paramAnonymousAdapterView);
+        a.a(this, "com/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(166845);
       }
     });
-    this.rBm.setOnTouchListener((View.OnTouchListener)new g.3(paramMMActivity));
-    paramMMActivity = b.rBt;
+    this.stD.setOnTouchListener((View.OnTouchListener)new g.3(paramMMActivity));
+    paramMMActivity = b.stK;
     b.a((i)this);
     AppMethodBeat.o(166864);
   }
   
-  public final void adW(String paramString)
+  public final void ahV(String paramString)
   {
     AppMethodBeat.i(166860);
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
-      this.rBm.setVisibility(8);
+      this.stD.setVisibility(8);
       AppMethodBeat.o(166860);
       return;
     }
-    this.rBm.setVisibility(0);
+    this.stD.setVisibility(0);
     AppMethodBeat.o(166860);
   }
   
-  public final void adX(String paramString)
+  public final void ahW(String paramString)
   {
     AppMethodBeat.i(166862);
     if (paramString != null)
     {
-      b localb = b.rBt;
-      b.adX(paramString);
-      this.ofC.setVisibility(0);
+      b localb = b.stK;
+      b.ahW(paramString);
+      this.oIV.setVisibility(0);
       AppMethodBeat.o(166862);
       return;
     }
     AppMethodBeat.o(166862);
   }
   
-  public final void cxN()
+  public final void cEK()
   {
     AppMethodBeat.i(166863);
-    b localb = b.rBt;
-    if (b.cxO().ncM.isEmpty())
+    b localb = b.stK;
+    if (b.cEL().nDj.isEmpty())
     {
-      this.ofC.setVisibility(8);
+      this.oIV.setVisibility(8);
       AppMethodBeat.o(166863);
       return;
     }
-    this.ofC.setVisibility(0);
+    this.oIV.setVisibility(0);
     AppMethodBeat.o(166863);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(166859);
-    b localb = b.rBt;
+    b localb = b.stK;
     b.b((i)this);
     AppMethodBeat.o(166859);
   }
@@ -142,19 +153,19 @@ public final class g
   public final void update()
   {
     AppMethodBeat.i(166861);
-    this.rBn.notifyDataSetChanged();
+    this.stE.notifyDataSetChanged();
     AppMethodBeat.o(166861);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryAdapter;", "Landroid/widget/BaseAdapter;", "(Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;)V", "getCount", "", "getItem", "", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryAdapter;", "Landroid/widget/BaseAdapter;", "(Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;)V", "getCount", "", "getItem", "", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "plugin-finder_release"})
   public final class a
     extends BaseAdapter
   {
     public final int getCount()
     {
       AppMethodBeat.i(166850);
-      g.b localb = g.b.rBt;
-      int i = g.b.cxO().ncM.size();
+      g.b localb = g.b.stK;
+      int i = g.b.cEL().nDj.size();
       AppMethodBeat.o(166850);
       return i;
     }
@@ -162,9 +173,9 @@ public final class g
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(166849);
-      Object localObject = g.b.rBt;
-      localObject = g.b.cxO().ncM.get(paramInt);
-      k.g(localObject, "HistoryDataManager.searchHistory.List[position]");
+      Object localObject = g.b.stK;
+      localObject = g.b.cEL().nDj.get(paramInt);
+      p.g(localObject, "HistoryDataManager.searchHistory.List[position]");
       AppMethodBeat.o(166849);
       return localObject;
     }
@@ -181,35 +192,35 @@ public final class g
       if (paramView == null)
       {
         if (paramViewGroup == null) {
-          k.fOy();
+          p.gfZ();
         }
         paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494103, paramViewGroup, false);
-        paramViewGroup = new g.c(this.rBo);
+        paramViewGroup = new g.c(this.stF);
         localObject = paramView.findViewById(2131298778);
-        k.g(localObject, "contentView.findViewById(R.id.content_tv)");
+        p.g(localObject, "contentView.findViewById(R.id.content_tv)");
         localObject = (TextView)localObject;
-        k.h(localObject, "<set-?>");
-        paramViewGroup.fAy = ((TextView)localObject);
+        p.h(localObject, "<set-?>");
+        paramViewGroup.fTO = ((TextView)localObject);
         localObject = paramView.findViewById(2131298373);
-        k.g(localObject, "contentView.findViewById(R.id.close_iv)");
+        p.g(localObject, "contentView.findViewById(R.id.close_iv)");
         localObject = (ImageView)localObject;
-        k.h(localObject, "<set-?>");
-        paramViewGroup.rBv = ((ImageView)localObject);
-        k.g(paramView, "contentView");
+        p.h(localObject, "<set-?>");
+        paramViewGroup.stM = ((ImageView)localObject);
+        p.g(paramView, "contentView");
         paramView.setTag(paramViewGroup);
       }
       for (;;)
       {
-        localObject = g.b.rBt;
-        localObject = ((anq)g.b.cxO().ncM.get(paramInt)).query;
-        TextView localTextView = paramViewGroup.fAy;
+        localObject = g.b.stK;
+        localObject = ((arc)g.b.cEL().nDj.get(paramInt)).query;
+        TextView localTextView = paramViewGroup.fTO;
         if (localTextView == null) {
-          k.aVY("contentTV");
+          p.bcb("contentTV");
         }
         localTextView.setText((CharSequence)localObject);
-        paramViewGroup = paramViewGroup.rBv;
+        paramViewGroup = paramViewGroup.stM;
         if (paramViewGroup == null) {
-          k.aVY("closeIV");
+          p.bcb("closeIV");
         }
         paramViewGroup.setOnClickListener((View.OnClickListener)new a(this, paramInt));
         AppMethodBeat.o(166848);
@@ -225,7 +236,7 @@ public final class g
       }
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
@@ -234,42 +245,46 @@ public final class g
       public final void onClick(View paramView)
       {
         AppMethodBeat.i(166847);
-        paramView = g.b.rBt;
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramView);
+        a.b("com/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        paramView = g.b.stK;
         int i = paramInt;
-        g.b.rBr.ncM.remove(i);
-        g.b.cxQ();
-        g.b.cxP();
-        this.rBq.rBo.cxN();
+        g.b.stI.nDj.remove(i);
+        g.b.cEN();
+        g.b.cEM();
+        this.stH.stF.cEK();
+        a.a(this, "com/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(166847);
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryDataManager;", "", "()V", "TAG", "", "listenerMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/finder/search/OnHistoryUpdateListener;", "Lkotlin/collections/HashMap;", "searchHistory", "Lcom/tencent/mm/protocal/protobuf/FinderSearchHistory;", "getSearchHistory", "()Lcom/tencent/mm/protocal/protobuf/FinderSearchHistory;", "setSearchHistory", "(Lcom/tencent/mm/protocal/protobuf/FinderSearchHistory;)V", "addListener", "", "listener", "notifyUpdate", "onTextSearch", "query", "readFromFile", "removeAll", "removeListener", "removeQueryAtPosition", "position", "saveToFile", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryDataManager;", "", "()V", "TAG", "", "listenerMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/finder/search/OnHistoryUpdateListener;", "Lkotlin/collections/HashMap;", "searchHistory", "Lcom/tencent/mm/protocal/protobuf/FinderSearchHistory;", "getSearchHistory", "()Lcom/tencent/mm/protocal/protobuf/FinderSearchHistory;", "setSearchHistory", "(Lcom/tencent/mm/protocal/protobuf/FinderSearchHistory;)V", "addListener", "", "listener", "notifyUpdate", "onTextSearch", "query", "readFromFile", "removeAll", "removeListener", "removeQueryAtPosition", "position", "saveToFile", "plugin-finder_release"})
   public static final class b
   {
-    static anp rBr;
-    private static HashMap<Integer, i> rBs;
-    public static final b rBt;
+    static arb stI;
+    private static HashMap<Integer, i> stJ;
+    public static final b stK;
     
     static
     {
       AppMethodBeat.i(166858);
-      rBt = new b();
-      rBr = new anp();
-      rBs = new HashMap();
+      stK = new b();
+      stI = new arb();
+      stJ = new HashMap();
       Object localObject = new StringBuilder();
-      p localp = p.rQw;
-      localObject = com.tencent.mm.vfs.i.aU(p.cDu() + "search-history.info", 0, -1);
+      r localr = r.sNc;
+      localObject = com.tencent.mm.vfs.i.aY(r.cLO() + "search-history.info", 0, -1);
       try
       {
-        rBr.parseFrom((byte[])localObject);
+        stI.parseFrom((byte[])localObject);
         AppMethodBeat.o(166858);
         return;
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("Finder.FinderSearchHistoryLogic", (Throwable)localException, "", new Object[0]);
+        ad.printErrStackTrace("Finder.FinderSearchHistoryLogic", (Throwable)localException, "", new Object[0]);
         AppMethodBeat.o(166858);
       }
     }
@@ -277,38 +292,38 @@ public final class g
     public static void a(i parami)
     {
       AppMethodBeat.i(166853);
-      k.h(parami, "listener");
-      ((Map)rBs).put(Integer.valueOf(parami.hashCode()), parami);
+      p.h(parami, "listener");
+      ((Map)stJ).put(Integer.valueOf(parami.hashCode()), parami);
       AppMethodBeat.o(166853);
     }
     
-    public static void adX(String paramString)
+    public static void ahW(String paramString)
     {
       AppMethodBeat.i(166856);
-      k.h(paramString, "query");
-      anq localanq = new anq();
-      localanq.timestamp = System.currentTimeMillis();
-      localanq.query = paramString;
+      p.h(paramString, "query");
+      arc localarc = new arc();
+      localarc.timestamp = System.currentTimeMillis();
+      localarc.query = paramString;
       int i = 0;
-      LinkedList localLinkedList = rBr.ncM;
-      k.g(localLinkedList, "searchHistory.List");
+      LinkedList localLinkedList = stI.nDj;
+      p.g(localLinkedList, "searchHistory.List");
       int j = ((Collection)localLinkedList).size();
       for (;;)
       {
         if (i < j)
         {
-          if (k.g(((anq)rBr.ncM.get(i)).query, paramString)) {
-            rBr.ncM.remove(i);
+          if (p.i(((arc)stI.nDj.get(i)).query, paramString)) {
+            stI.nDj.remove(i);
           }
         }
         else
         {
-          rBr.ncM.addFirst(localanq);
-          if (rBr.ncM.size() > 20) {
-            rBr.ncM.removeLast();
+          stI.nDj.addFirst(localarc);
+          if (stI.nDj.size() > 20) {
+            stI.nDj.removeLast();
           }
-          cxQ();
-          cxP();
+          cEN();
+          cEM();
           AppMethodBeat.o(166856);
           return;
         }
@@ -319,43 +334,43 @@ public final class g
     public static void b(i parami)
     {
       AppMethodBeat.i(166854);
-      k.h(parami, "listener");
-      rBs.remove(Integer.valueOf(parami.hashCode()));
+      p.h(parami, "listener");
+      stJ.remove(Integer.valueOf(parami.hashCode()));
       AppMethodBeat.o(166854);
     }
     
-    public static anp cxO()
+    public static arb cEL()
     {
-      return rBr;
+      return stI;
     }
     
-    static void cxP()
+    static void cEM()
     {
       AppMethodBeat.i(166855);
-      h.JZN.aS((Runnable)a.rBu);
+      h.LTJ.aR((Runnable)a.stL);
       AppMethodBeat.o(166855);
     }
     
-    static void cxQ()
+    static void cEN()
     {
       AppMethodBeat.i(166857);
-      Iterator localIterator = rBs.values().iterator();
+      Iterator localIterator = stJ.values().iterator();
       while (localIterator.hasNext()) {
         ((i)localIterator.next()).update();
       }
       AppMethodBeat.o(166857);
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
-      public static final a rBu;
+      public static final a stL;
       
       static
       {
         AppMethodBeat.i(166852);
-        rBu = new a();
+        stL = new a();
         AppMethodBeat.o(166852);
       }
       
@@ -363,30 +378,30 @@ public final class g
       {
         AppMethodBeat.i(166851);
         Object localObject1 = new StringBuilder();
-        Object localObject2 = p.rQw;
-        localObject1 = p.cDu() + "search-history.info";
+        Object localObject2 = r.sNc;
+        localObject1 = r.cLO() + "search-history.info";
         localObject2 = new e((String)localObject1);
-        Object localObject3 = g.b.rBt;
-        localObject3 = g.b.cxO().toByteArray();
-        if (!com.tencent.mm.vfs.i.eA(((e)localObject2).fxU().toString())) {
-          com.tencent.mm.vfs.i.aSh(((e)localObject2).fxU().toString());
+        Object localObject3 = g.b.stK;
+        localObject3 = g.b.cEL().toByteArray();
+        if (!com.tencent.mm.vfs.i.fv(((e)localObject2).fOJ().toString())) {
+          com.tencent.mm.vfs.i.aYg(((e)localObject2).fOJ().toString());
         }
-        com.tencent.mm.vfs.i.B((String)localObject1, (byte[])localObject3);
+        com.tencent.mm.vfs.i.C((String)localObject1, (byte[])localObject3);
         AppMethodBeat.o(166851);
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryItemHolder;", "", "(Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;)V", "closeIV", "Landroid/widget/ImageView;", "getCloseIV", "()Landroid/widget/ImageView;", "setCloseIV", "(Landroid/widget/ImageView;)V", "contentTV", "Landroid/widget/TextView;", "getContentTV", "()Landroid/widget/TextView;", "setContentTV", "(Landroid/widget/TextView;)V", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryItemHolder;", "", "(Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;)V", "closeIV", "Landroid/widget/ImageView;", "getCloseIV", "()Landroid/widget/ImageView;", "setCloseIV", "(Landroid/widget/ImageView;)V", "contentTV", "Landroid/widget/TextView;", "getContentTV", "()Landroid/widget/TextView;", "setContentTV", "(Landroid/widget/TextView;)V", "plugin-finder_release"})
   public final class c
   {
-    public TextView fAy;
-    public ImageView rBv;
+    public TextView fTO;
+    public ImageView stM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.search.g
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,9 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public long dBN;
+  public long dOa;
   public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -17,7 +17,7 @@ public final class j
       if (this.username != null) {
         paramVarArgs.d(1, this.username);
       }
-      paramVarArgs.aO(2, this.dBN);
+      paramVarArgs.aY(2, this.dOa);
       AppMethodBeat.o(91321);
       return 0;
     }
@@ -29,15 +29,15 @@ public final class j
     label258:
     for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.p(2, this.dBN);
+      int i = f.a.a.b.b.a.p(2, this.dOa);
       AppMethodBeat.o(91321);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(91321);
@@ -53,11 +53,11 @@ public final class j
           AppMethodBeat.o(91321);
           return -1;
         case 1: 
-          localj.username = locala.LVo.readString();
+          localj.username = locala.NPN.readString();
           AppMethodBeat.o(91321);
           return 0;
         }
-        localj.dBN = locala.LVo.xG();
+        localj.dOa = locala.NPN.zd();
         AppMethodBeat.o(91321);
         return 0;
       }
@@ -68,7 +68,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.j
  * JD-Core Version:    0.7.0.1
  */

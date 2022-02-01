@@ -3,48 +3,46 @@ package d.l.b.a.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.f;
 import d.g;
-import d.g.b.l;
-import d.g.b.u;
-import d.g.b.w;
+import d.g.b.q;
+import d.k;
 import d.l.b.a.b.b.ac;
 
 public abstract interface a
 {
-  public static final a KYM = a.KYO;
+  public static final a MPH = a.MPJ;
   
-  public abstract ac fPv();
+  public abstract ac ggT();
   
   public static final class a
   {
-    private static final f KYN;
+    private static final f MPI;
     
     static
     {
       AppMethodBeat.i(56649);
-      $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(a.class), "Instance", "getInstance()Lorg/jetbrains/kotlin/builtins/BuiltInsLoader;")) };
-      KYO = new a();
-      KYN = g.a(d.k.KTd, (d.g.a.a)a.KYP);
+      MPJ = new a();
+      MPI = g.a(k.MKb, (d.g.a.a)a.MPK);
       AppMethodBeat.o(56649);
     }
     
-    public static a fPw()
+    public static a ggU()
     {
       AppMethodBeat.i(56650);
-      a locala = (a)KYN.getValue();
+      a locala = (a)MPI.getValue();
       AppMethodBeat.o(56650);
       return locala;
     }
     
     static final class a
-      extends l
+      extends q
       implements d.g.a.a<a>
     {
-      public static final a KYP;
+      public static final a MPK;
       
       static
       {
         AppMethodBeat.i(56648);
-        KYP = new a();
+        MPK = new a();
         AppMethodBeat.o(56648);
       }
       

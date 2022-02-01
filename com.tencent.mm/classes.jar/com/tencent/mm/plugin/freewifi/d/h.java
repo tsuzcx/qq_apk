@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.freewifi.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.protocal.protobuf.apy;
-import com.tencent.mm.protocal.protobuf.bbw;
-import com.tencent.mm.protocal.protobuf.bbx;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.protocal.protobuf.ats;
+import com.tencent.mm.protocal.protobuf.bga;
+import com.tencent.mm.protocal.protobuf.bgb;
 
 public final class h
   extends c
@@ -15,33 +15,33 @@ public final class h
   public h(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(24860);
-    cJr();
-    bbw localbbw = (bbw)this.rr.hvr.hvw;
-    localbbw.appId = paramString1;
-    localbbw.sud = paramInt;
-    localbbw.ddJ = paramString2;
+    cRG();
+    bga localbga = (bga)this.rr.hNK.hNQ;
+    localbga.appId = paramString1;
+    localbga.tqF = paramInt;
+    localbga.dpf = paramString2;
     AppMethodBeat.o(24860);
   }
   
-  protected final void cJr()
+  protected final void cRG()
   {
     AppMethodBeat.i(24859);
     b.a locala = new b.a();
-    locala.hvt = new bbw();
-    locala.hvu = new bbx();
+    locala.hNM = new bga();
+    locala.hNN = new bgb();
     locala.uri = "/cgi-bin/mmo2o-bin/getpcfrontpage";
     locala.funcId = 1760;
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aAz();
+    this.rr = locala.aDC();
     AppMethodBeat.o(24859);
   }
   
-  public final apy cJv()
+  public final ats cRK()
   {
-    bbx localbbx = (bbx)this.rr.hvs.hvw;
-    if (localbbx != null) {
-      return localbbx.DLO;
+    bgb localbgb = (bgb)this.rr.hNL.hNQ;
+    if (localbgb != null) {
+      return localbgb.FqT;
     }
     return null;
   }
@@ -53,7 +53,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.d.h
  * JD-Core Version:    0.7.0.1
  */

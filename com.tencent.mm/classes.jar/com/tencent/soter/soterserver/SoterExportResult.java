@@ -9,9 +9,9 @@ public class SoterExportResult
   implements Parcelable
 {
   public static final Parcelable.Creator<SoterExportResult> CREATOR;
-  public byte[] JWY;
-  public int JWZ;
-  public int bPH;
+  public byte[] LQT;
+  public int LQU;
+  public int bZU;
   
   static
   {
@@ -25,9 +25,9 @@ public class SoterExportResult
   public SoterExportResult(Parcel paramParcel)
   {
     AppMethodBeat.i(88744);
-    this.bPH = paramParcel.readInt();
-    this.JWY = paramParcel.createByteArray();
-    this.JWZ = paramParcel.readInt();
+    this.bZU = paramParcel.readInt();
+    this.LQT = paramParcel.createByteArray();
+    this.LQU = paramParcel.readInt();
     AppMethodBeat.o(88744);
   }
   
@@ -39,15 +39,15 @@ public class SoterExportResult
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(88745);
-    paramParcel.writeInt(this.bPH);
-    paramParcel.writeByteArray(this.JWY);
-    paramParcel.writeInt(this.JWZ);
+    paramParcel.writeInt(this.bZU);
+    paramParcel.writeByteArray(this.LQT);
+    paramParcel.writeInt(this.LQU);
     AppMethodBeat.o(88745);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.soter.soterserver.SoterExportResult
  * JD-Core Version:    0.7.0.1
  */

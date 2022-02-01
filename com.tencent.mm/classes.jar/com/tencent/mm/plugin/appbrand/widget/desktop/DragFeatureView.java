@@ -27,39 +27,26 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.appbrand.widget.desktop.b.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class DragFeatureView
   extends FrameLayout
   implements GestureDetector.OnGestureListener, View.OnTouchListener
 {
-  private RecyclerView alu;
-  private Rect cQb = new Rect();
+  private RecyclerView anl;
   private boolean canScroll = true;
-  private GestureDetector kVo;
+  private Rect dbr = new Rect();
+  private GestureDetector lsn;
   Paint mPaint = new Paint();
   protected Rect mRect = new Rect();
-  private Vibrator mtQ;
-  private boolean mvO = false;
-  protected int mxF;
-  private Runnable mxG;
-  private j mxH;
-  private RecyclerView.w mxI;
-  int mxJ = -1;
-  private View mxK;
-  protected Rect mxL = new Rect();
-  protected Rect mxM = new Rect();
-  private boolean mxN = true;
-  private LinearLayout mxO;
-  private ImageView mxP;
-  private TextView mxQ;
-  private boolean mxR = false;
-  private g mxS = null;
-  private boolean mxT = false;
-  private Runnable mxU;
-  private Animator.AnimatorListener mxV = new Animator.AnimatorListener()
+  private Vibrator mUw;
+  private boolean mWt = false;
+  private h mYA = null;
+  private boolean mYB = false;
+  private Runnable mYC;
+  private Animator.AnimatorListener mYD = new Animator.AnimatorListener()
   {
     public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
     
@@ -81,6 +68,19 @@ public abstract class DragFeatureView
     
     public final void onAnimationStart(Animator paramAnonymousAnimator) {}
   };
+  protected int mYn;
+  private Runnable mYo;
+  private j mYp;
+  private RecyclerView.w mYq;
+  int mYr = -1;
+  private View mYs;
+  protected Rect mYt = new Rect();
+  protected Rect mYu = new Rect();
+  private boolean mYv = true;
+  private LinearLayout mYw;
+  private ImageView mYx;
+  private TextView mYy;
+  private boolean mYz = false;
   
   public DragFeatureView(Context paramContext)
   {
@@ -100,31 +100,31 @@ public abstract class DragFeatureView
     init(paramContext);
   }
   
-  private boolean J(float paramFloat1, float paramFloat2)
+  private boolean L(float paramFloat1, float paramFloat2)
   {
     return (getRubbishRect().contains((int)paramFloat1, (int)paramFloat2)) || (getRubbishRect().top < (int)paramFloat2);
   }
   
-  private void bzb()
+  private void bDf()
   {
     try
     {
-      this.mxQ.setText(2131755381);
-      this.mxQ.setTextSize(1, getRubbishViewTextSize());
-      this.mxP.setImageResource(2131230962);
-      this.mxO.setBackgroundColor(getContext().getResources().getColor(2131099935));
+      this.mYy.setText(2131755381);
+      this.mYy.setTextSize(1, getRubbishViewTextSize());
+      this.mYx.setImageResource(2131230962);
+      this.mYw.setBackgroundColor(getContext().getResources().getColor(2131099935));
       return;
     }
     catch (Exception localException) {}
   }
   
-  private View bzc()
+  private View bDg()
   {
     LinearLayout localLinearLayout = new LinearLayout(getContext());
     localLinearLayout.setOrientation(1);
     localLinearLayout.setGravity(17);
     localLinearLayout.setBackgroundColor(getContext().getResources().getColor(2131099935));
-    Object localObject1 = new FrameLayout.LayoutParams(-1, this.mxF);
+    Object localObject1 = new FrameLayout.LayoutParams(-1, this.mYn);
     ((FrameLayout.LayoutParams)localObject1).gravity = 80;
     localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     localLinearLayout.setId(2131304271);
@@ -133,7 +133,7 @@ public abstract class DragFeatureView
     ((ImageView)localObject1).setImageResource(2131230962);
     ((ImageView)localObject1).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
     Object localObject2 = new LinearLayout.LayoutParams(-2, -2);
-    ac.i("MicroMsg.DragFeatureView", "alvinluo rubbishView icon size: %d,%d", new Object[] { Integer.valueOf(((ImageView)localObject1).getMeasuredWidth()), Integer.valueOf(((ImageView)localObject1).getMeasuredHeight()) });
+    ad.i("MicroMsg.DragFeatureView", "alvinluo rubbishView icon size: %d,%d", new Object[] { Integer.valueOf(((ImageView)localObject1).getMeasuredWidth()), Integer.valueOf(((ImageView)localObject1).getMeasuredHeight()) });
     ((LinearLayout.LayoutParams)localObject2).width = ((int)(((ImageView)localObject1).getMeasuredWidth() * d.eb(getContext())));
     ((LinearLayout.LayoutParams)localObject2).height = ((int)(((ImageView)localObject1).getMeasuredHeight() * d.eb(getContext())));
     ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
@@ -141,14 +141,14 @@ public abstract class DragFeatureView
     ((TextView)localObject2).setText(2131755381);
     ((TextView)localObject2).setTextSize(1, getRubbishViewTextSize());
     ((TextView)localObject2).setTextColor(getContext().getResources().getColor(2131101182));
-    ((TextView)localObject2).setPadding(0, a.fromDPToPix(getContext(), 4), 0, 0);
+    ((TextView)localObject2).setPadding(0, com.tencent.mm.cc.a.fromDPToPix(getContext(), 4), 0, 0);
     ((TextView)localObject2).setGravity(17);
     ((TextView)localObject2).setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     localLinearLayout.addView((View)localObject1);
     localLinearLayout.addView((View)localObject2);
-    this.mxO = localLinearLayout;
-    this.mxP = ((ImageView)localObject1);
-    this.mxQ = ((TextView)localObject2);
+    this.mYw = localLinearLayout;
+    this.mYx = ((ImageView)localObject1);
+    this.mYy = ((TextView)localObject2);
     return localLinearLayout;
   }
   
@@ -157,21 +157,21 @@ public abstract class DragFeatureView
     return 12.0F * d.eb(getContext());
   }
   
-  private void hU(final boolean paramBoolean)
+  private void ie(final boolean paramBoolean)
   {
-    if (this.mxU == null)
+    if (this.mYC == null)
     {
       Runnable local2 = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(49645);
-          ac.i("MicroMsg.DragFeatureView", "alvinluo handleAttachEdge isTop: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+          ad.i("MicroMsg.DragFeatureView", "alvinluo handleAttachEdge isTop: %b", new Object[] { Boolean.valueOf(paramBoolean) });
           RecyclerView localRecyclerView = DragFeatureView.this.getRecyclerView();
           if (paramBoolean)
           {
             i = -10;
-            ac.i("MicroMsg.DragFeatureView", "alvinluo handleAttachEdge canScroll: %b", new Object[] { Boolean.valueOf(localRecyclerView.canScrollVertically(i)) });
+            ad.i("MicroMsg.DragFeatureView", "alvinluo handleAttachEdge canScroll: %b", new Object[] { Boolean.valueOf(localRecyclerView.canScrollVertically(i)) });
             localRecyclerView = DragFeatureView.this.getRecyclerView();
             if (!paramBoolean) {
               break label111;
@@ -189,96 +189,96 @@ public abstract class DragFeatureView
           }
         }
       };
-      this.mxU = local2;
+      this.mYC = local2;
       postDelayed(local2, 250L);
     }
   }
   
   private void init(Context paramContext)
   {
-    this.mxF = ((int)getResources().getDimension(2131166753));
+    this.mYn = ((int)getResources().getDimension(2131166753));
     setVisibility(8);
-    this.kVo = new GestureDetector(paramContext, this);
-    this.mtQ = ((Vibrator)paramContext.getSystemService("vibrator"));
-    addView(bzc());
+    this.lsn = new GestureDetector(paramContext, this);
+    this.mUw = ((Vibrator)paramContext.getSystemService("vibrator"));
+    addView(bDg());
   }
   
   private void setItemDragCallback(j paramj)
   {
-    this.mxH = paramj;
+    this.mYp = paramj;
   }
   
   protected abstract j N(RecyclerView.w paramw);
   
-  public void draw(Canvas paramCanvas)
+  protected RecyclerView.w d(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    super.draw(paramCanvas);
-    this.mPaint.setStyle(Paint.Style.FILL);
-    this.mPaint.setColor(-65536);
-    if (this.mxL != null) {
-      paramCanvas.drawRect(this.mxL, this.mPaint);
-    }
-    this.mPaint.setColor(-16711936);
-    if (this.mxM != null) {
-      paramCanvas.drawRect(this.mxM, this.mPaint);
-    }
-  }
-  
-  protected RecyclerView.w e(float paramFloat1, float paramFloat2, boolean paramBoolean)
-  {
-    if (this.mxL.contains((int)paramFloat1, (int)paramFloat2)) {
+    if (this.mYt.contains((int)paramFloat1, (int)paramFloat2)) {
       return null;
     }
     int i = 0;
     while (i < getRecyclerView().getChildCount())
     {
       RecyclerView.w localw = getRecyclerView().bh(getRecyclerView().getChildAt(i));
-      localw.asD.getGlobalVisibleRect(this.mRect);
+      localw.auu.getGlobalVisibleRect(this.mRect);
       if (this.mRect.contains((int)paramFloat1, (int)paramFloat2)) {
         return localw;
       }
       i += 1;
     }
-    if (this.mxM.contains((int)paramFloat1, (int)paramFloat2)) {
+    if (this.mYu.contains((int)paramFloat1, (int)paramFloat2)) {
       return null;
     }
     return null;
   }
   
+  public void draw(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
+    this.mPaint.setStyle(Paint.Style.FILL);
+    this.mPaint.setColor(-65536);
+    if (this.mYt != null) {
+      paramCanvas.drawRect(this.mYt, this.mPaint);
+    }
+    this.mPaint.setColor(-16711936);
+    if (this.mYu != null) {
+      paramCanvas.drawRect(this.mYu, this.mPaint);
+    }
+  }
+  
+  public final void gB(boolean paramBoolean)
+  {
+    ad.i("MicroMsg.DragFeatureView", "alvinluo enableScroll %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.canScroll = paramBoolean;
+  }
+  
   public Rect getBottomScrollRect()
   {
-    return this.mxL;
+    return this.mYt;
   }
   
   public j getItemDragCallback()
   {
-    return this.mxH;
+    return this.mYp;
   }
   
-  public g getRecyclerScrollComputer()
+  public h getRecyclerScrollComputer()
   {
-    return this.mxS;
+    return this.mYA;
   }
   
   public RecyclerView getRecyclerView()
   {
-    return this.alu;
+    return this.anl;
   }
   
   public Rect getRubbishRect()
   {
-    return this.cQb;
+    return this.dbr;
   }
   
   public Rect getTopScrollRect()
   {
-    return this.mxM;
-  }
-  
-  public final void gv(boolean paramBoolean)
-  {
-    ac.i("MicroMsg.DragFeatureView", "alvinluo enableScroll %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.canScroll = paramBoolean;
+    return this.mYu;
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
@@ -294,63 +294,79 @@ public abstract class DragFeatureView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    getGlobalVisibleRect(this.mxL);
-    this.mxL.set(this.mxL.left, this.mxL.bottom - this.mxF * 2, this.mxL.right, this.mxL.bottom - this.mxF);
-    getRecyclerView().getGlobalVisibleRect(this.mxM);
-    this.mxM.set(this.mxM.left, 0, this.mxM.right, this.mxM.top + this.mxF);
-    findViewById(2131304271).getGlobalVisibleRect(this.cQb);
+    getGlobalVisibleRect(this.mYt);
+    this.mYt.set(this.mYt.left, this.mYt.bottom - this.mYn * 2, this.mYt.right, this.mYt.bottom - this.mYn);
+    getRecyclerView().getGlobalVisibleRect(this.mYu);
+    this.mYu.set(this.mYu.left, 0, this.mYu.right, this.mYu.top + this.mYn);
+    findViewById(2131304271).getGlobalVisibleRect(this.dbr);
   }
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
+    Object localObject1 = new b();
+    ((b)localObject1).bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, ((b)localObject1).ahq());
     for (;;)
     {
       try
       {
-        if (this.mxR)
+        if (this.mYz)
         {
-          ac.w("MicroMsg.DragFeatureView", "alvinluo DragFeatureView onLongPress is in long press and ignore");
-          this.mxR = false;
+          ad.w("MicroMsg.DragFeatureView", "alvinluo DragFeatureView onLongPress is in long press and ignore");
+          this.mYz = false;
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
           return;
         }
-        this.mxR = true;
-        RecyclerView.w localw = e(paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), true);
-        setItemDragCallback(N(localw));
-        if (localw == null) {
-          break label215;
+        this.mYz = true;
+        localObject1 = d(paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), true);
+        setItemDragCallback(N((RecyclerView.w)localObject1));
+        if (localObject1 == null) {
+          continue;
         }
-        j localj = this.mxH;
+        localObject2 = this.mYp;
         getRecyclerView();
-        if (!localj.O(localw)) {
-          break label215;
+        if (!((j)localObject2).O((RecyclerView.w)localObject1)) {
+          continue;
         }
-        this.mxK = this.mxH.g(getRecyclerView(), localw);
-        if (this.mxK != null)
-        {
-          setVisibility(8);
-          this.mxJ = localw.lv();
-          this.mxI = localw;
-          this.mtQ.vibrate(30L);
-          setRubbishViewVisible(0);
-          setVisibility(0);
-          paramMotionEvent.setAction(0);
-          this.kVo.onTouchEvent(paramMotionEvent);
-          paramMotionEvent.setAction(3);
-          this.kVo.onTouchEvent(paramMotionEvent);
-          return;
+        this.mYs = this.mYp.g(getRecyclerView(), (RecyclerView.w)localObject1);
+        if (this.mYs == null) {
+          continue;
         }
+        setVisibility(8);
+        this.mYr = ((RecyclerView.w)localObject1).lN();
+        this.mYq = ((RecyclerView.w)localObject1);
+        this.mUw.vibrate(30L);
+        setRubbishViewVisible(0);
+        setVisibility(0);
+        paramMotionEvent.setAction(0);
+        localObject1 = this.lsn;
+        localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "onLongPress", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+        com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((GestureDetector)localObject1).onTouchEvent((MotionEvent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0)), "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "onLongPress", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+        paramMotionEvent.setAction(3);
+        localObject1 = this.lsn;
+        localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "onLongPress", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+        com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((GestureDetector)localObject1).onTouchEvent((MotionEvent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0)), "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "onLongPress", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.DragFeatureView", localException, "alvinluo onLongPress exception", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.DragFeatureView", localException, "alvinluo onLongPress exception", new Object[0]);
         paramMotionEvent.setAction(0);
-        this.kVo.onTouchEvent(paramMotionEvent);
+        GestureDetector localGestureDetector = this.lsn;
+        Object localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "onLongPress", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+        com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0)), "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "onLongPress", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
         paramMotionEvent.setAction(3);
-        this.kVo.onTouchEvent(paramMotionEvent);
-        return;
+        localGestureDetector = this.lsn;
+        paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, paramMotionEvent.ahp(), "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "onLongPress", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+        com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)paramMotionEvent.mq(0)), "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "onLongPress", "(Landroid/view/MotionEvent;)V", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+        continue;
       }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
+      return;
       setRubbishViewVisible(8);
-      label215:
       setVisibility(8);
     }
   }
@@ -371,27 +387,27 @@ public abstract class DragFeatureView
     }
     for (;;)
     {
-      paramMotionEvent1 = e(paramMotionEvent2.getRawX(), paramMotionEvent2.getRawY(), false);
+      paramMotionEvent1 = d(paramMotionEvent2.getRawX(), paramMotionEvent2.getRawY(), false);
       if (this.canScroll) {
         break;
       }
-      paramMotionEvent2 = this.mxH;
+      paramMotionEvent2 = this.mYp;
       getRecyclerView();
-      paramMotionEvent2.a(this.mxK, paramFloat1, paramFloat2, paramMotionEvent1, i);
+      paramMotionEvent2.a(this.mYs, paramFloat1, paramFloat2, paramMotionEvent1, i);
       return false;
       if (f1 > this.mRect.right)
       {
         i = 4;
       }
-      else if (this.mxL.contains((int)f1, (int)f2))
+      else if (this.mYt.contains((int)f1, (int)f2))
       {
         i = 2;
       }
-      else if (this.mxM.contains((int)f1, (int)f2))
+      else if (this.mYu.contains((int)f1, (int)f2))
       {
         i = 1;
       }
-      else if (J(f1, f2))
+      else if (L(f1, f2))
       {
         i = 6;
       }
@@ -403,7 +419,7 @@ public abstract class DragFeatureView
           if (i >= getRecyclerView().getChildCount()) {
             break label272;
           }
-          getRecyclerView().bh(getRecyclerView().getChildAt(i)).asD.getGlobalVisibleRect(this.mRect);
+          getRecyclerView().bh(getRecyclerView().getChildAt(i)).auu.getGlobalVisibleRect(this.mRect);
           if (this.mRect.contains((int)f1, (int)f2))
           {
             i = 5;
@@ -425,34 +441,34 @@ public abstract class DragFeatureView
       if (paramMotionEvent1 == null) {
         break label535;
       }
-      j = paramMotionEvent1.asH;
+      j = paramMotionEvent1.auy;
       label308:
-      ac.v("MicroMsg.DragFeatureView", "alvinluo onScroll currentArea: %d, viewHolder == null: %b, x: %f, y: %f, itemViewType: %d", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(j) });
+      ad.v("MicroMsg.DragFeatureView", "alvinluo onScroll currentArea: %d, viewHolder == null: %b, x: %f, y: %f, itemViewType: %d", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(j) });
       if ((i != 1) && (i != 2) && (i != 6)) {
         break label615;
       }
       if (!getTopScrollRect().contains((int)paramMotionEvent2.getRawX(), (int)paramMotionEvent2.getRawY())) {
         break label541;
       }
-      hU(true);
+      ie(true);
       label404:
-      paramMotionEvent2 = this.mxH;
+      paramMotionEvent2 = this.mYp;
       getRecyclerView();
-      paramMotionEvent2.a(this.mxK, paramFloat1, paramFloat2, paramMotionEvent1, i);
+      paramMotionEvent2.a(this.mYs, paramFloat1, paramFloat2, paramMotionEvent1, i);
       if ((i != 1) && (i != 2))
       {
-        removeCallbacks(this.mxU);
-        this.mxU = null;
+        removeCallbacks(this.mYC);
+        this.mYC = null;
       }
       if ((Math.abs(paramFloat1) >= 3.0F) || (Math.abs(paramFloat2) >= 3.0F))
       {
-        removeCallbacks(this.mxG);
-        paramMotionEvent2 = this.mxH;
+        removeCallbacks(this.mYo);
+        paramMotionEvent2 = this.mYp;
         getRecyclerView();
         if ((!paramMotionEvent2.P(paramMotionEvent1)) || (i == 2)) {
           break label663;
         }
-        this.mxH.m(getRecyclerView());
+        this.mYp.m(getRecyclerView());
       }
     }
     for (;;)
@@ -466,38 +482,38 @@ public abstract class DragFeatureView
       label541:
       if (getBottomScrollRect().contains((int)paramMotionEvent2.getRawX(), (int)paramMotionEvent2.getRawY()))
       {
-        hU(false);
+        ie(false);
         break label404;
       }
       if (!getRubbishRect().contains((int)paramMotionEvent2.getRawX(), (int)paramMotionEvent2.getRawY())) {
         break label404;
       }
-      removeCallbacks(this.mxG);
-      removeCallbacks(this.mxU);
-      this.mxU = null;
+      removeCallbacks(this.mYo);
+      removeCallbacks(this.mYC);
+      this.mYC = null;
       break label404;
       label615:
       if ((i != 3) && (i != 4))
       {
-        paramMotionEvent2 = this.mxH;
+        paramMotionEvent2 = this.mYp;
         getRecyclerView();
         if (!paramMotionEvent2.P(paramMotionEvent1)) {
           break label404;
         }
       }
-      this.mxH.m(getRecyclerView());
+      this.mYp.m(getRecyclerView());
       break label404;
       label663:
-      if ((paramMotionEvent1 != null) && (paramMotionEvent1.asH == 7))
+      if ((paramMotionEvent1 != null) && (paramMotionEvent1.auy == 7))
       {
         paramMotionEvent1 = new a(paramMotionEvent1);
-        this.mxG = paramMotionEvent1;
+        this.mYo = paramMotionEvent1;
         postDelayed(paramMotionEvent1, 50L);
       }
       else
       {
         paramMotionEvent1 = new a(paramMotionEvent1);
-        this.mxG = paramMotionEvent1;
+        this.mYo = paramMotionEvent1;
         postDelayed(paramMotionEvent1, 150L);
       }
     }
@@ -507,12 +523,22 @@ public abstract class DragFeatureView
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
+    b localb = new b();
+    localb.bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
     return false;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!this.mxN) {
+    b localb = new b();
+    localb.bd(paramView);
+    localb.bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    if (!this.mYv)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       return false;
     }
     switch (paramMotionEvent.getAction())
@@ -520,17 +546,21 @@ public abstract class DragFeatureView
     }
     for (;;)
     {
-      this.kVo.onTouchEvent(paramMotionEvent);
+      paramView = this.lsn;
+      paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramView, paramMotionEvent.ahp(), "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      com.tencent.mm.hellhoundlib.a.a.a(paramView, paramView.onTouchEvent((MotionEvent)paramMotionEvent.mq(0)), "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       return true;
-      if (J(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))
+      if (L(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))
       {
-        this.mxJ = -1;
-        this.mvO = false;
-        this.mxH.h(getRecyclerView(), this.mxI);
-        removeCallbacks(this.mxG);
-        removeCallbacks(this.mxU);
-        if (this.mxK != null) {
-          this.mxK.animate().alpha(0.0F).scaleX(0.0F).scaleY(0.0F).setListener(new Animator.AnimatorListener()
+        this.mYr = -1;
+        this.mWt = false;
+        this.mYp.h(getRecyclerView(), this.mYq);
+        removeCallbacks(this.mYo);
+        removeCallbacks(this.mYC);
+        if (this.mYs != null) {
+          this.mYs.animate().alpha(0.0F).scaleX(0.0F).scaleY(0.0F).setListener(new Animator.AnimatorListener()
           {
             public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
             
@@ -551,13 +581,13 @@ public abstract class DragFeatureView
       }
       else
       {
-        removeCallbacks(this.mxG);
-        removeCallbacks(this.mxU);
+        removeCallbacks(this.mYo);
+        removeCallbacks(this.mYC);
         setRubbishViewVisible(8);
-        int i = this.mxJ;
-        this.mxJ = -1;
-        this.mvO = false;
-        this.mxH.a(getRecyclerView(), this.mxI, i, new Runnable()
+        int i = this.mYr;
+        this.mYr = -1;
+        this.mWt = false;
+        this.mYp.a(getRecyclerView(), this.mYq, i, new Runnable()
         {
           public final void run()
           {
@@ -569,16 +599,16 @@ public abstract class DragFeatureView
           }
         });
         continue;
-        if (J(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))
+        if (L(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))
         {
-          this.mxO.setBackgroundColor(getContext().getResources().getColor(2131099936));
-          this.mxQ.setText(2131755386);
-          this.mxQ.setTextSize(2, getRubbishViewTextSize());
-          this.mxP.setImageResource(2131230964);
+          this.mYw.setBackgroundColor(getContext().getResources().getColor(2131099936));
+          this.mYy.setText(2131755386);
+          this.mYy.setTextSize(2, getRubbishViewTextSize());
+          this.mYx.setImageResource(2131230964);
         }
         else
         {
-          bzb();
+          bDf();
         }
       }
     }
@@ -586,12 +616,12 @@ public abstract class DragFeatureView
   
   public void setRecyclerView(RecyclerView paramRecyclerView)
   {
-    this.alu = paramRecyclerView;
+    this.anl = paramRecyclerView;
   }
   
-  public void setRecyclerViewScrollComputer(g paramg)
+  public void setRecyclerViewScrollComputer(h paramh)
   {
-    this.mxS = paramg;
+    this.mYA = paramh;
   }
   
   protected void setRubbishViewVisible(int paramInt)
@@ -602,56 +632,56 @@ public abstract class DragFeatureView
     }
     if (paramInt == 0)
     {
-      localView.animate().translationY(0.0F).setDuration(300L).setListener(this.mxV).start();
+      localView.animate().translationY(0.0F).setDuration(300L).setListener(this.mYD).start();
       return;
     }
-    this.mxT = true;
-    localView.animate().translationY(localView.getHeight()).setDuration(300L).setListener(this.mxV).start();
+    this.mYB = true;
+    localView.animate().translationY(localView.getHeight()).setDuration(300L).setListener(this.mYD).start();
   }
   
   public void setTouchEnabled(boolean paramBoolean)
   {
-    this.mxN = paramBoolean;
+    this.mYv = paramBoolean;
   }
   
   final class a
     implements Runnable
   {
-    final RecyclerView.w akK;
+    final RecyclerView.w amB;
     
     a(RecyclerView.w paramw)
     {
-      this.akK = paramw;
+      this.amB = paramw;
     }
     
     public final void run()
     {
       AppMethodBeat.i(49648);
-      if (this.akK == null)
+      if (this.amB == null)
       {
         AppMethodBeat.o(49648);
         return;
       }
       int i = DragFeatureView.a(DragFeatureView.this);
-      int j = this.akK.lv();
+      int j = this.amB.lN();
       if ((j < 0) && (i < 0))
       {
         AppMethodBeat.o(49648);
         return;
       }
-      if (DragFeatureView.b(DragFeatureView.this) != this.akK) {}
+      if (DragFeatureView.b(DragFeatureView.this) != this.amB) {}
       for (boolean bool = true;; bool = false)
       {
         j localj = DragFeatureView.c(DragFeatureView.this);
         DragFeatureView.this.getRecyclerView();
         DragFeatureView.b(DragFeatureView.this);
-        ac.i("MicroMsg.DragFeatureView", "alvinluo move run %b, onMove: %b, from: %d, to: %d", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(localj.R(this.akK)), Integer.valueOf(i), Integer.valueOf(j) });
-        if (DragFeatureView.b(DragFeatureView.this) != this.akK)
+        ad.i("MicroMsg.DragFeatureView", "alvinluo move run %b, onMove: %b, from: %d, to: %d", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(localj.R(this.amB)), Integer.valueOf(i), Integer.valueOf(j) });
+        if (DragFeatureView.b(DragFeatureView.this) != this.amB)
         {
           localj = DragFeatureView.c(DragFeatureView.this);
           DragFeatureView.this.getRecyclerView();
           DragFeatureView.b(DragFeatureView.this);
-          if ((localj.R(this.akK)) && (DragFeatureView.c(DragFeatureView.this).a(DragFeatureView.this.getRecyclerView(), DragFeatureView.b(DragFeatureView.this), this.akK, i, j))) {
+          if ((localj.R(this.amB)) && (DragFeatureView.c(DragFeatureView.this).a(DragFeatureView.this.getRecyclerView(), DragFeatureView.b(DragFeatureView.this), this.amB, i, j))) {
             DragFeatureView.a(DragFeatureView.this, j);
           }
         }
@@ -663,7 +693,7 @@ public abstract class DragFeatureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.DragFeatureView
  * JD-Core Version:    0.7.0.1
  */

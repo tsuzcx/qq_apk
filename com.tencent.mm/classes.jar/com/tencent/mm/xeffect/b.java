@@ -1,39 +1,83 @@
 package com.tencent.mm.xeffect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
+@l(gfx={1, 1, 15}, gfy={""}, gfz={"Lcom/tencent/mm/xeffect/PAGLayoutInfo;", "", "translateX", "", "translateY", "scale", "", "rotate", "(IIFF)V", "getRotate", "()F", "setRotate", "(F)V", "getScale", "setScale", "getTranslateX", "()I", "setTranslateX", "(I)V", "getTranslateY", "setTranslateY", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "renderlib_release"})
 public final class b
 {
-  public static b JIb;
+  float kRD;
+  float scale;
+  int translateX;
+  int translateY;
   
-  static
+  public b()
   {
-    AppMethodBeat.i(197170);
-    JIb = new a((byte)0);
-    AppMethodBeat.o(197170);
+    this(0, 0, 0.0F, 15);
   }
   
-  public static void x(String paramString, Object... paramVarArgs)
+  public b(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(197169);
-    JIb.x(paramString, paramVarArgs);
-    AppMethodBeat.o(197169);
+    this.translateX = paramInt1;
+    this.translateY = paramInt2;
+    this.scale = paramFloat1;
+    this.kRD = paramFloat2;
   }
   
-  static final class a
-    implements b.b
+  public final boolean equals(Object paramObject)
   {
-    public final void x(String paramString, Object... paramVarArgs)
+    AppMethodBeat.i(220317);
+    if (this != paramObject)
     {
-      AppMethodBeat.i(197168);
-      String.format(paramString, paramVarArgs);
-      AppMethodBeat.o(197168);
+      if (!(paramObject instanceof b)) {
+        break label101;
+      }
+      paramObject = (b)paramObject;
+      if (this.translateX != paramObject.translateX) {
+        break label91;
+      }
+      i = 1;
+      if (i == 0) {
+        break label101;
+      }
+      if (this.translateY != paramObject.translateY) {
+        break label96;
+      }
     }
+    label91:
+    label96:
+    for (int i = 1;; i = 0)
+    {
+      if ((i == 0) || (Float.compare(this.scale, paramObject.scale) != 0) || (Float.compare(this.kRD, paramObject.kRD) != 0)) {
+        break label101;
+      }
+      AppMethodBeat.o(220317);
+      return true;
+      i = 0;
+      break;
+    }
+    label101:
+    AppMethodBeat.o(220317);
+    return false;
   }
   
-  public static abstract interface b
+  public final int hashCode()
   {
-    public abstract void x(String paramString, Object... paramVarArgs);
+    AppMethodBeat.i(220316);
+    int i = this.translateX;
+    int j = this.translateY;
+    int k = Float.floatToIntBits(this.scale);
+    int m = Float.floatToIntBits(this.kRD);
+    AppMethodBeat.o(220316);
+    return ((i * 31 + j) * 31 + k) * 31 + m;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(220315);
+    String str = "PAGLayoutInfo(translateX=" + this.translateX + ", translateY=" + this.translateY + ", scale=" + this.scale + ", rotate=" + this.kRD + ")";
+    AppMethodBeat.o(220315);
+    return str;
   }
 }
 

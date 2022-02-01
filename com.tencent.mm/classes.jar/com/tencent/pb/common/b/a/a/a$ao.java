@@ -7,47 +7,47 @@ import com.google.b.a.e;
 public final class a$ao
   extends e
 {
-  private static volatile ao[] JOd;
-  public int osF = 0;
+  private static volatile ao[] LHN;
+  public int oWb = 0;
   
   public a$ao()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
-  public static ao[] fBL()
+  public static ao[] fTa()
   {
-    if (JOd == null) {}
-    synchronized (c.bGz)
+    if (LHN == null) {}
+    synchronized (c.bQN)
     {
-      if (JOd == null) {
-        JOd = new ao[0];
+      if (LHN == null) {
+        LHN = new ao[0];
       }
-      return JOd;
+      return LHN;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.osF != 0) {
-      paramb.bw(1, this.osF);
+    if (this.oWb != 0) {
+      paramb.by(1, this.oWb);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.osF != 0) {
-      i = j + b.by(1, this.osF);
+    if (this.oWb != 0) {
+      i = j + b.bA(1, this.oWb);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ao
  * JD-Core Version:    0.7.0.1
  */

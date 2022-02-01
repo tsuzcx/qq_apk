@@ -9,7 +9,7 @@ import com.tencent.xweb.internal.e;
 
 public class ac
 {
-  public e Kzu;
+  public e MpP;
   
   public WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
@@ -29,9 +29,9 @@ public class ac
   
   public void a(WebView paramWebView, j paramj, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(205070);
+    AppMethodBeat.i(197081);
     paramj.cancel();
-    AppMethodBeat.o(205070);
+    AppMethodBeat.o(197081);
   }
   
   public void a(WebView paramWebView, r paramr, SslError paramSslError)
@@ -43,8 +43,6 @@ public class ac
     AppMethodBeat.o(156921);
   }
   
-  public void a(WebView paramWebView, String paramString, boolean paramBoolean) {}
-  
   public boolean a(WebView paramWebView, String paramString)
   {
     return false;
@@ -55,14 +53,16 @@ public class ac
   public void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(156919);
-    if (this.Kzu == null)
+    if (this.MpP == null)
     {
       AppMethodBeat.o(156919);
       return;
     }
-    this.Kzu.y(paramString, paramBitmap);
+    this.MpP.y(paramString, paramBitmap);
     AppMethodBeat.o(156919);
   }
+  
+  public void b(WebView paramWebView, String paramString, boolean paramBoolean) {}
   
   public boolean b(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {

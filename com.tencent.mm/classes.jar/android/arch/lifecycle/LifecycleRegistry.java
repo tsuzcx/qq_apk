@@ -29,7 +29,7 @@ public class LifecycleRegistry
     this.cB = Lifecycle.State.INITIALIZED;
   }
   
-  private boolean T()
+  private boolean U()
   {
     if (this.cA.mSize == 0) {
       return true;
@@ -39,7 +39,7 @@ public class LifecycleRegistry
     return (localState1 == localState2) && (this.cB == localState2);
   }
   
-  private void U()
+  private void V()
   {
     this.cG.remove(this.cG.size() - 1);
   }
@@ -97,7 +97,7 @@ public class LifecycleRegistry
   
   private void a(LifecycleOwner paramLifecycleOwner)
   {
-    b.d locald = this.cA.R();
+    b.d locald = this.cA.S();
     while ((locald.hasNext()) && (!this.cF))
     {
       Map.Entry localEntry = (Map.Entry)locald.next();
@@ -106,7 +106,7 @@ public class LifecycleRegistry
       {
         b(localObserverWithState.cB);
         localObserverWithState.a(paramLifecycleOwner, c(localObserverWithState.cB));
-        U();
+        V();
       }
     }
   }
@@ -160,7 +160,7 @@ public class LifecycleRegistry
           {
             b(b((Lifecycle.Event)localObject));
             localObserverWithState.a(paramLifecycleOwner, (Lifecycle.Event)localObject);
-            U();
+            V();
             break;
             localObject = Lifecycle.Event.ON_STOP;
             continue;
@@ -195,7 +195,7 @@ public class LifecycleRegistry
     if (localLifecycleOwner == null) {
       return;
     }
-    while (!T())
+    while (!U())
     {
       this.cF = false;
       if (this.cB.compareTo(((ObserverWithState)this.cA.bQ.getValue()).cB) < 0) {
@@ -239,7 +239,7 @@ public class LifecycleRegistry
       {
         b(localObserverWithState.cB);
         localObserverWithState.a(localLifecycleOwner, c(localObserverWithState.cB));
-        U();
+        V();
         localState = a(paramLifecycleObserver);
       }
     }
@@ -281,7 +281,7 @@ public class LifecycleRegistry
     
     ObserverWithState(LifecycleObserver paramLifecycleObserver, Lifecycle.State paramState)
     {
-      this.cI = Lifecycling.d(paramLifecycleObserver);
+      this.cI = Lifecycling.e(paramLifecycleObserver);
       this.cB = paramState;
     }
     

@@ -6,28 +6,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d
 {
-  private final c[] bLI;
-  final f bLJ;
-  char bLK = '\000';
-  char bLL = '\000';
-  char[] bLM;
-  int bLN;
-  float bLO;
-  float bLP;
-  float bLQ;
-  float bLR;
-  float bLS;
-  float bLT;
-  float bLU;
-  float bLV;
-  int bLW;
+  private final c[] bVV;
+  final f bVW;
+  char bVX = '\000';
+  char bVY = '\000';
+  char[] bVZ;
+  int bWa;
+  float bWb;
+  float bWc;
+  float bWd;
+  float bWe;
+  float bWf;
+  float bWg;
+  float bWh;
+  float bWi;
+  int bWj;
   int endIndex;
   int startIndex;
   
   d(c[] paramArrayOfc, f paramf)
   {
-    this.bLI = paramArrayOfc;
-    this.bLJ = paramf;
+    this.bVV = paramArrayOfc;
+    this.bVW = paramf;
   }
   
   static boolean a(Canvas paramCanvas, Paint paramPaint, char[] paramArrayOfChar, int paramInt, float paramFloat)
@@ -43,30 +43,30 @@ final class d
     return false;
   }
   
-  final void o(char paramChar)
+  final void q(char paramChar)
   {
     int m = 0;
     AppMethodBeat.i(39845);
-    this.bLL = paramChar;
-    this.bLQ = this.bLR;
-    this.bLS = this.bLJ.p(paramChar);
-    this.bLT = Math.max(this.bLQ, this.bLS);
-    this.bLM = null;
+    this.bVY = paramChar;
+    this.bWd = this.bWe;
+    this.bWf = this.bVW.r(paramChar);
+    this.bWg = Math.max(this.bWd, this.bWf);
+    this.bVZ = null;
     int k = 0;
-    while (k < this.bLI.length)
+    while (k < this.bVV.length)
     {
-      Object localObject = this.bLI[k];
-      paramChar = this.bLK;
-      char c = this.bLL;
-      TickerView.a locala = this.bLJ.bMc;
-      int n = ((c)localObject).n(paramChar);
-      int i1 = ((c)localObject).n(c);
+      Object localObject = this.bVV[k];
+      paramChar = this.bVX;
+      char c = this.bVY;
+      TickerView.a locala = this.bVW.bWp;
+      int n = ((c)localObject).p(paramChar);
+      int i1 = ((c)localObject).p(c);
       if ((n < 0) || (i1 < 0))
       {
         localObject = null;
         if (localObject != null)
         {
-          this.bLM = this.bLI[k].bLE;
+          this.bVZ = this.bVV[k].bVR;
           this.startIndex = ((c.a)localObject).startIndex;
           this.endIndex = ((c.a)localObject).endIndex;
         }
@@ -75,7 +75,7 @@ final class d
       else
       {
         int j;
-        switch (c.1.bLG[locala.ordinal()])
+        switch (c.1.bVT[locala.ordinal()])
         {
         default: 
           j = n;
@@ -87,7 +87,7 @@ final class d
           break;
           if (c == 0)
           {
-            i = ((c)localObject).bLE.length;
+            i = ((c)localObject).bVR.length;
             j = n;
           }
           else
@@ -96,14 +96,14 @@ final class d
             j = n;
             if (i1 < n)
             {
-              i = i1 + ((c)localObject).bLD;
+              i = i1 + ((c)localObject).bVQ;
               j = n;
               continue;
               i = i1;
               j = n;
               if (n < i1)
               {
-                j = n + ((c)localObject).bLD;
+                j = n + ((c)localObject).bVQ;
                 i = i1;
                 continue;
                 i = i1;
@@ -117,9 +117,9 @@ final class d
                     {
                       i = i1;
                       j = n;
-                      if (((c)localObject).bLD - n + i1 < n - i1)
+                      if (((c)localObject).bVQ - n + i1 < n - i1)
                       {
-                        i = i1 + ((c)localObject).bLD;
+                        i = i1 + ((c)localObject).bVQ;
                         j = n;
                       }
                     }
@@ -131,9 +131,9 @@ final class d
                       {
                         i = i1;
                         j = n;
-                        if (((c)localObject).bLD - i1 + n < i1 - n)
+                        if (((c)localObject).bVQ - i1 + n < i1 - n)
                         {
-                          j = n + ((c)localObject).bLD;
+                          j = n + ((c)localObject).bVQ;
                           i = i1;
                         }
                       }
@@ -146,11 +146,11 @@ final class d
         }
       }
     }
-    if (this.bLM == null)
+    if (this.bVZ == null)
     {
-      if (this.bLK == this.bLL)
+      if (this.bVX == this.bVY)
       {
-        this.bLM = new char[] { this.bLK };
+        this.bVZ = new char[] { this.bVX };
         this.endIndex = 0;
         this.startIndex = 0;
       }
@@ -168,36 +168,36 @@ final class d
     label555:
     for (int i = 1;; i = -1)
     {
-      this.bLW = i;
-      this.bLV = this.bLU;
-      this.bLU = 0.0F;
+      this.bWj = i;
+      this.bWi = this.bWh;
+      this.bWh = 0.0F;
       AppMethodBeat.o(39845);
       return;
-      this.bLM = new char[] { this.bLK, this.bLL };
+      this.bVZ = new char[] { this.bVX, this.bVY };
       this.startIndex = 0;
       this.endIndex = 1;
       break;
     }
   }
   
-  final float yv()
+  final float zS()
   {
     AppMethodBeat.i(39846);
-    yw();
-    float f = this.bLR;
+    zT();
+    float f = this.bWe;
     AppMethodBeat.o(39846);
     return f;
   }
   
-  final void yw()
+  final void zT()
   {
     AppMethodBeat.i(39847);
-    float f = this.bLJ.p(this.bLL);
-    if ((this.bLR == this.bLS) && (this.bLS != f))
+    float f = this.bVW.r(this.bVY);
+    if ((this.bWe == this.bWf) && (this.bWf != f))
     {
-      this.bLS = f;
-      this.bLR = f;
-      this.bLT = f;
+      this.bWf = f;
+      this.bWe = f;
+      this.bWg = f;
     }
     AppMethodBeat.o(39847);
   }

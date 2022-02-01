@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.label.ui.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.MMTagPanel;
 
 public class MMLabelPanel
@@ -19,10 +19,10 @@ public class MMLabelPanel
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void crD()
+  public final void cxp()
   {
     AppMethodBeat.i(26338);
-    ac.d("MicroMsg.Label.MMLabelPanel", "cpan[onPreDelTag]");
+    ad.d("MicroMsg.Label.MMLabelPanel", "cpan[onPreDelTag]");
     if (getTagCount() > 0)
     {
       AppMethodBeat.o(26338);

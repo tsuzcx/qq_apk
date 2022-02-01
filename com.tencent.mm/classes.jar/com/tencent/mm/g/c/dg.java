@@ -8,16 +8,19 @@ public abstract class dg
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eNU = "countryCode".hashCode();
-  private static final int eNV = "callTimeCount".hashCode();
-  private static final int eNW = "lastCallTime".hashCode();
+  private static final int eNH = "chatroomname".hashCode();
+  private static final int feU = "stickToollist".hashCode();
+  private static final int feV = "recentUseToolList".hashCode();
+  private static final int feW = "queryState".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eNR = true;
-  private boolean eNS = true;
-  private boolean eNT = true;
-  public long field_callTimeCount;
-  public int field_countryCode;
-  public long field_lastCallTime;
+  private boolean eNh = true;
+  private boolean feR = true;
+  private boolean feS = true;
+  private boolean feT = true;
+  public String field_chatroomname;
+  public int field_queryState;
+  public String field_recentUseToolList;
+  public String field_stickToollist;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +35,11 @@ public abstract class dg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eNU != k) {
+      if (eNH != k) {
         break label65;
       }
-      this.field_countryCode = paramCursor.getInt(i);
-      this.eNR = true;
+      this.field_chatroomname = paramCursor.getString(i);
+      this.eNh = true;
     }
     for (;;)
     {
@@ -44,10 +47,12 @@ public abstract class dg
       break label20;
       break;
       label65:
-      if (eNV == k) {
-        this.field_callTimeCount = paramCursor.getLong(i);
-      } else if (eNW == k) {
-        this.field_lastCallTime = paramCursor.getLong(i);
+      if (feU == k) {
+        this.field_stickToollist = paramCursor.getString(i);
+      } else if (feV == k) {
+        this.field_recentUseToolList = paramCursor.getString(i);
+      } else if (feW == k) {
+        this.field_queryState = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -57,14 +62,20 @@ public abstract class dg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eNR) {
-      localContentValues.put("countryCode", Integer.valueOf(this.field_countryCode));
+    if (this.field_chatroomname == null) {
+      this.field_chatroomname = "群username";
     }
-    if (this.eNS) {
-      localContentValues.put("callTimeCount", Long.valueOf(this.field_callTimeCount));
+    if (this.eNh) {
+      localContentValues.put("chatroomname", this.field_chatroomname);
     }
-    if (this.eNT) {
-      localContentValues.put("lastCallTime", Long.valueOf(this.field_lastCallTime));
+    if (this.feR) {
+      localContentValues.put("stickToollist", this.field_stickToollist);
+    }
+    if (this.feS) {
+      localContentValues.put("recentUseToolList", this.field_recentUseToolList);
+    }
+    if (this.feT) {
+      localContentValues.put("queryState", Integer.valueOf(this.field_queryState));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -74,7 +85,7 @@ public abstract class dg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.dg
  * JD-Core Version:    0.7.0.1
  */

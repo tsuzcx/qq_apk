@@ -16,21 +16,23 @@ import com.tencent.mm.cl.a.a;
 public class WeImageView
   extends AppCompatImageView
 {
-  private int DGC;
-  private int JhK;
-  private float JhL;
-  private int JhM;
-  private boolean JhN;
+  private int FlJ;
+  private int KYY;
+  private float KYZ;
+  private int KZa;
+  private boolean KZb;
+  private boolean KZc;
   private int mAlpha;
   
   public WeImageView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(159411);
-    this.JhL = 1.0F;
+    this.KYZ = 1.0F;
     this.mAlpha = 255;
-    this.JhM = 255;
-    this.JhN = true;
+    this.KZa = 255;
+    this.KZb = true;
+    this.KZc = false;
     init(paramContext, null);
     AppMethodBeat.o(159411);
   }
@@ -39,10 +41,11 @@ public class WeImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159412);
-    this.JhL = 1.0F;
+    this.KYZ = 1.0F;
     this.mAlpha = 255;
-    this.JhM = 255;
-    this.JhN = true;
+    this.KZa = 255;
+    this.KZb = true;
+    this.KZc = false;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(159412);
   }
@@ -51,10 +54,11 @@ public class WeImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159413);
-    this.JhL = 1.0F;
+    this.KYZ = 1.0F;
     this.mAlpha = 255;
-    this.JhM = 255;
-    this.JhN = true;
+    this.KZa = 255;
+    this.KZb = true;
+    this.KZc = false;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(159413);
   }
@@ -62,23 +66,23 @@ public class WeImageView
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(159415);
-    this.JhK = paramContext.getResources().getColor(2131099732);
+    this.KYY = paramContext.getResources().getColor(2131099732);
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WeImageView);
-      this.DGC = paramContext.getColor(1, this.JhK);
-      this.JhL = paramContext.getFloat(0, 1.0F);
+      this.FlJ = paramContext.getColor(1, this.KYY);
+      this.KYZ = paramContext.getFloat(0, 1.0F);
       paramContext.recycle();
       AppMethodBeat.o(159415);
       return;
     }
-    this.DGC = this.JhK;
+    this.FlJ = this.KYY;
     AppMethodBeat.o(159415);
   }
   
   public void drawableStateChanged()
   {
-    AppMethodBeat.i(199709);
+    AppMethodBeat.i(192641);
     super.drawableStateChanged();
     int i = this.mAlpha;
     if (isPressed()) {
@@ -86,14 +90,14 @@ public class WeImageView
     }
     for (;;)
     {
-      if (i != this.JhM)
+      if (i != this.KZa)
       {
-        this.JhM = i;
+        this.KZa = i;
         if (getDrawable() != null) {
           getDrawable().setAlpha(i);
         }
       }
-      AppMethodBeat.o(199709);
+      AppMethodBeat.o(192641);
       return;
       if (isEnabled()) {
         i = this.mAlpha;
@@ -105,43 +109,60 @@ public class WeImageView
   {
     AppMethodBeat.i(159416);
     super.onDraw(paramCanvas);
-    if ((getDrawable() != null) && (this.JhN))
+    if ((this.KZc) && (this.KZb))
     {
-      int i = this.DGC;
-      if (this.DGC != 0) {
-        i = this.DGC & 0xFFFFFF | 0xFF000000;
+      getDrawable().mutate().clearColorFilter();
+      this.KZc = false;
+      this.KZb = false;
+      AppMethodBeat.o(159416);
+      return;
+    }
+    if ((getDrawable() != null) && (this.KZb))
+    {
+      int i = this.FlJ;
+      if (this.FlJ != 0) {
+        i = this.FlJ & 0xFFFFFF | 0xFF000000;
       }
-      int j = Color.alpha(this.DGC);
-      if (this.JhL != 1.0F) {
-        j = (int)(255.0F * this.JhL);
+      int j = Color.alpha(this.FlJ);
+      if (this.KYZ != 1.0F) {
+        j = (int)(255.0F * this.KYZ);
       }
       paramCanvas = new PorterDuffColorFilter(i, PorterDuff.Mode.SRC_ATOP);
       getDrawable().mutate().setColorFilter(paramCanvas);
-      if (this.DGC != 0)
+      if (this.FlJ != 0)
       {
         this.mAlpha = j;
         getDrawable().setAlpha(j);
       }
-      this.JhN = false;
+      this.KZb = false;
     }
     AppMethodBeat.o(159416);
+  }
+  
+  public void setClearColorFilter(boolean paramBoolean)
+  {
+    AppMethodBeat.i(192640);
+    this.KZc = paramBoolean;
+    this.KZb = true;
+    invalidate();
+    AppMethodBeat.o(192640);
   }
   
   public void setIconColor(int paramInt)
   {
     AppMethodBeat.i(159414);
-    this.DGC = paramInt;
-    this.JhN = true;
+    this.FlJ = paramInt;
+    this.KZb = true;
     invalidate();
     AppMethodBeat.o(159414);
   }
   
-  public final void v(int paramInt, float paramFloat)
+  public final void x(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(186015);
-    this.DGC = paramInt;
-    this.JhL = paramFloat;
-    this.JhN = true;
+    this.FlJ = paramInt;
+    this.KYZ = paramFloat;
+    this.KZb = true;
     invalidate();
     AppMethodBeat.o(186015);
   }

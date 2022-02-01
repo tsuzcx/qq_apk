@@ -8,25 +8,25 @@ import org.json.JSONObject;
 public final class a
   extends com.tencent.mm.wallet_core.e.a.a
 {
-  public String BBs;
-  public String BRd;
-  public String BRn;
-  public String BRo;
-  public String BRp;
-  public String dAC;
+  public String DbK;
+  public String DrG;
+  public String DrH;
+  public String DrI;
+  public String Drw;
+  public String dMP;
   public String description;
   public String pin;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
     AppMethodBeat.i(71973);
-    this.BRn = paramString1;
-    this.BBs = paramString2;
-    this.dAC = paramString3;
-    this.BRo = paramString4;
-    this.BRp = paramString5;
+    this.DrG = paramString1;
+    this.DbK = paramString2;
+    this.dMP = paramString3;
+    this.DrH = paramString4;
+    this.DrI = paramString5;
     this.description = paramString6;
-    this.BRd = paramString7;
+    this.Drw = paramString7;
     this.pin = paramString8;
     HashMap localHashMap = new HashMap();
     localHashMap.put("bank_type", paramString1);
@@ -41,7 +41,7 @@ public final class a
     AppMethodBeat.o(71973);
   }
   
-  public final int eqK()
+  public final int eEK()
   {
     return 0;
   }

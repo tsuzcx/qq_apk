@@ -8,11 +8,11 @@ import android.view.animation.LinearInterpolator;
 
 public final class a
 {
-  public static final TimeInterpolator eP = new LinearInterpolator();
-  public static final TimeInterpolator eQ = new b();
-  public static final TimeInterpolator eR = new android.support.v4.view.b.a();
-  public static final TimeInterpolator eS = new c();
-  public static final TimeInterpolator eT = new DecelerateInterpolator();
+  public static final TimeInterpolator gI = new LinearInterpolator();
+  public static final TimeInterpolator gJ = new b();
+  public static final TimeInterpolator gK = new android.support.v4.view.b.a();
+  public static final TimeInterpolator gL = new c();
+  public static final TimeInterpolator gM = new DecelerateInterpolator();
   
   public static int b(int paramInt1, int paramInt2, float paramFloat)
   {

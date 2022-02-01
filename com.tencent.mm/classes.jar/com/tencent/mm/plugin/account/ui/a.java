@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
@@ -15,58 +14,38 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends BaseAdapter
 {
-  private LayoutInflater iMw;
-  private String[] iPG;
-  private Drawable iPH;
-  private View.OnTouchListener iPI;
+  private LayoutInflater jfG;
+  private String[] jiO;
+  private Drawable jiP;
+  private View.OnTouchListener jiQ;
   private Context mContext;
   
   public a(Context paramContext, String[] paramArrayOfString)
   {
     AppMethodBeat.i(127865);
-    this.iPH = null;
-    this.iPI = new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(127864);
-        if (paramAnonymousMotionEvent.getAction() == 0)
-        {
-          ((TextView)paramAnonymousView.findViewById(2131296639)).setTextColor(a.a(a.this).getResources().getColor(2131100212));
-          AppMethodBeat.o(127864);
-          return false;
-        }
-        if (paramAnonymousMotionEvent.getAction() == 1)
-        {
-          ((TextView)paramAnonymousView.findViewById(2131296639)).setTextColor(a.a(a.this).getResources().getColor(2131101182));
-          AppMethodBeat.o(127864);
-          return false;
-        }
-        AppMethodBeat.o(127864);
-        return false;
-      }
-    };
-    this.iPG = paramArrayOfString;
+    this.jiP = null;
+    this.jiQ = new a.1(this);
+    this.jiO = paramArrayOfString;
     this.mContext = paramContext;
-    this.iMw = LayoutInflater.from(paramContext);
-    this.iPH = paramContext.getResources().getDrawable(2131234063);
-    this.iPH.setBounds(0, 0, this.iPH.getIntrinsicWidth(), this.iPH.getIntrinsicHeight());
+    this.jfG = LayoutInflater.from(paramContext);
+    this.jiP = paramContext.getResources().getDrawable(2131234063);
+    this.jiP.setBounds(0, 0, this.jiP.getIntrinsicWidth(), this.jiP.getIntrinsicHeight());
     AppMethodBeat.o(127865);
   }
   
-  private boolean qU(int paramInt)
+  private boolean ru(int paramInt)
   {
-    return paramInt == this.iPG.length - 1;
+    return paramInt == this.jiO.length - 1;
   }
   
   public final int getCount()
   {
-    return this.iPG.length;
+    return this.jiO.length;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.iPG[paramInt];
+    return this.jiO[paramInt];
   }
   
   public final long getItemId(int paramInt)
@@ -80,15 +59,15 @@ public final class a
     AppMethodBeat.i(127866);
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = this.iMw.inflate(2131492956, null);
+      paramViewGroup = this.jfG.inflate(2131492956, null);
     }
     paramView = (TextView)paramViewGroup.findViewById(2131296639);
-    paramViewGroup.setOnTouchListener(this.iPI);
+    paramViewGroup.setOnTouchListener(this.jiQ);
     int i;
     if (paramInt == 0)
     {
       i = 1;
-      if ((i == 0) || (!qU(paramInt))) {
+      if ((i == 0) || (!ru(paramInt))) {
         break label110;
       }
       paramView.setPadding(25, 0, 25, 10);
@@ -97,7 +76,7 @@ public final class a
     }
     for (;;)
     {
-      paramView.setText(this.iPG[paramInt]);
+      paramView.setText(this.jiO[paramInt]);
       AppMethodBeat.o(127866);
       return paramViewGroup;
       i = 0;
@@ -111,11 +90,11 @@ public final class a
         }
         paramView.setPadding(25, 0, 10, 10);
         paramView.setCompoundDrawablePadding(10);
-        paramView.setCompoundDrawables(null, null, this.iPH, null);
+        paramView.setCompoundDrawables(null, null, this.jiP, null);
         break;
       }
       label160:
-      if (qU(paramInt))
+      if (ru(paramInt))
       {
         paramView.setPadding(0, 0, 25, 10);
         paramView.setCompoundDrawablePadding(0);
@@ -125,7 +104,7 @@ public final class a
       {
         paramView.setPadding(0, 0, 10, 10);
         paramView.setCompoundDrawablePadding(10);
-        paramView.setCompoundDrawables(null, null, this.iPH, null);
+        paramView.setCompoundDrawables(null, null, this.jiP, null);
       }
     }
   }

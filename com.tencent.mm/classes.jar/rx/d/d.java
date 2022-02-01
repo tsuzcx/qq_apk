@@ -7,7 +7,7 @@ import rx.j;
 public abstract class d
 {
   @Deprecated
-  public static <T> Throwable P(Throwable paramThrowable)
+  public static <T> Throwable Q(Throwable paramThrowable)
   {
     return paramThrowable;
   }

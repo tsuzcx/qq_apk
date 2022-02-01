@@ -11,14 +11,14 @@ import rx.i;
 public final class f
   implements d.a<Long>
 {
-  final TimeUnit McN;
-  final g McO;
+  final TimeUnit NXP;
+  final g NXQ;
   final long time = 10L;
   
   public f(TimeUnit paramTimeUnit, g paramg)
   {
-    this.McN = paramTimeUnit;
-    this.McO = paramg;
+    this.NXP = paramTimeUnit;
+    this.NXQ = paramg;
   }
 }
 

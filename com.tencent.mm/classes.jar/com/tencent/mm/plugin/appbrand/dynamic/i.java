@@ -8,52 +8,52 @@ import java.util.Map;
 
 public final class i
 {
-  private static final i jKX;
-  private Map<String, String> jKW;
+  private static final i kfi;
+  private Map<String, String> kfh;
   
   static
   {
     AppMethodBeat.i(121183);
-    jKX = new i();
+    kfi = new i();
     AppMethodBeat.o(121183);
   }
   
   public i()
   {
     AppMethodBeat.i(121178);
-    this.jKW = new HashMap();
+    this.kfh = new HashMap();
     AppMethodBeat.o(121178);
   }
   
-  public static i bcg()
+  public static i bfK()
   {
-    return jKX;
+    return kfi;
   }
   
-  public final String La(String paramString)
+  public final String Ou(String paramString)
   {
     AppMethodBeat.i(121180);
-    paramString = (String)this.jKW.get(paramString);
+    paramString = (String)this.kfh.get(paramString);
     AppMethodBeat.o(121180);
     return paramString;
   }
   
-  public final void Lb(String paramString)
+  public final void Ov(String paramString)
   {
     AppMethodBeat.i(121181);
-    this.jKW.remove(paramString);
+    this.kfh.remove(paramString);
     AppMethodBeat.o(121181);
   }
   
-  public final Collection<String> bch()
+  public final Collection<String> bfL()
   {
     AppMethodBeat.i(121182);
-    Collection localCollection = this.jKW.values();
+    Collection localCollection = this.kfh.values();
     AppMethodBeat.o(121182);
     return localCollection;
   }
   
-  public final void cG(String paramString1, String paramString2)
+  public final void cI(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121179);
     if (TextUtils.isEmpty(paramString2))
@@ -61,7 +61,7 @@ public final class i
       AppMethodBeat.o(121179);
       return;
     }
-    this.jKW.put(paramString1, paramString2);
+    this.kfh.put(paramString1, paramString2);
     AppMethodBeat.o(121179);
   }
 }

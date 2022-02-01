@@ -14,62 +14,62 @@ import android.graphics.Paint.Style;
 import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.model.ScanPoint;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.a.e;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "context", "Landroid/content/Context;", "dotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;)V", "alphaAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "animationListener", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView$AnimationListener;", "animatorListener", "com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView$animatorListener$1", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView$animatorListener$1;", "animatorSet", "Landroid/animation/AnimatorSet;", "centerCount", "", "getCenterCount", "()I", "setCenterCount", "(I)V", "centerList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "Lkotlin/collections/ArrayList;", "getCenterList", "()Ljava/util/ArrayList;", "setCenterList", "(Ljava/util/ArrayList;)V", "duration", "", "isAnimating", "", "paint", "Landroid/graphics/Paint;", "radius", "", "sizeAnimator", "viewHeight", "getViewHeight", "setViewHeight", "viewWidth", "getViewWidth", "setViewWidth", "draw", "", "canvas", "Landroid/graphics/Canvas;", "onViewSizeChanged", "width", "height", "release", "setAnimationDots", "points", "", "pointCount", "([Lcom/tencent/mm/plugin/scanner/model/ScanPoint;I)V", "setDuration", "startAnimation", "listener", "stopAnimation", "updateViewSize", "forceUpdateDotsCenter", "Companion", "plugin-scan_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "context", "Landroid/content/Context;", "dotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;)V", "alphaAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "animationListener", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView$AnimationListener;", "animatorListener", "com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView$animatorListener$1", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView$animatorListener$1;", "animatorSet", "Landroid/animation/AnimatorSet;", "centerCount", "", "getCenterCount", "()I", "setCenterCount", "(I)V", "centerList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "Lkotlin/collections/ArrayList;", "getCenterList", "()Ljava/util/ArrayList;", "setCenterList", "(Ljava/util/ArrayList;)V", "duration", "", "isAnimating", "", "paint", "Landroid/graphics/Paint;", "radius", "", "sizeAnimator", "viewHeight", "getViewHeight", "setViewHeight", "viewWidth", "getViewWidth", "setViewWidth", "draw", "", "canvas", "Landroid/graphics/Canvas;", "onViewSizeChanged", "width", "height", "release", "setAnimationDots", "points", "", "pointCount", "([Lcom/tencent/mm/plugin/scanner/model/ScanPoint;I)V", "setDuration", "startAnimation", "listener", "stopAnimation", "updateViewSize", "forceUpdateDotsCenter", "Companion", "plugin-scan_release"})
 public final class g
   implements c
 {
-  public static final g.c xhM;
+  public static final g.c yvN;
   private long duration;
-  private int fMt;
-  private int fMu;
+  private int gfT;
+  private int gfU;
   private boolean isAnimating;
   private Paint paint;
   private float radius;
-  private final ValueAnimator xhE;
-  private final ValueAnimator xhF;
-  private AnimatorSet xhG;
-  private d xhH;
-  private c.a xhI;
-  private int xhJ;
-  private ArrayList<ScanPoint> xhK;
-  private final d xhL;
+  private final ValueAnimator yvF;
+  private final ValueAnimator yvG;
+  private AnimatorSet yvH;
+  private d yvI;
+  private c.a yvJ;
+  private int yvK;
+  private ArrayList<ScanPoint> yvL;
+  private final d yvM;
   
   static
   {
     AppMethodBeat.i(52274);
-    xhM = new g.c((byte)0);
+    yvN = new g.c((byte)0);
     AppMethodBeat.o(52274);
   }
   
   public g(Context paramContext, d paramd)
   {
     AppMethodBeat.i(52273);
-    this.xhL = paramd;
+    this.yvM = paramd;
     this.radius = paramContext.getResources().getDimension(2131166764);
     paramd = ValueAnimator.ofFloat(new float[] { 0.0F, this.radius });
     paramd.setInterpolator((TimeInterpolator)new LinearInterpolator());
     paramd.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new a(this));
-    this.xhE = paramd;
+    this.yvF = paramd;
     paramd = ValueAnimator.ofFloat(new float[] { -1.0F, 1.0F });
     paramd.setInterpolator((TimeInterpolator)new LinearInterpolator());
     paramd.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new b(this));
-    this.xhF = paramd;
+    this.yvG = paramd;
     paramd = new Paint();
     paramd.setColor(paramContext.getResources().getColor(2131099828));
     paramd.setStyle(Paint.Style.FILL);
     paramd.setAntiAlias(true);
     this.paint = paramd;
-    this.xhH = new d(this);
-    this.xhK = new ArrayList();
+    this.yvI = new d(this);
+    this.yvL = new ArrayList();
     this.duration = 700L;
     AppMethodBeat.o(52273);
   }
@@ -77,18 +77,18 @@ public final class g
   public final void a(c.a parama)
   {
     AppMethodBeat.i(52270);
-    k.h(parama, "listener");
-    ac.v("MicroMsg.ScanAnimationDotsGroupView", "alvinluo startAnimation %d", new Object[] { Integer.valueOf(hashCode()) });
-    this.xhI = parama;
-    this.xhG = new AnimatorSet();
-    parama = this.xhG;
+    p.h(parama, "listener");
+    ad.v("MicroMsg.ScanAnimationDotsGroupView", "alvinluo startAnimation %d", new Object[] { Integer.valueOf(hashCode()) });
+    this.yvJ = parama;
+    this.yvH = new AnimatorSet();
+    parama = this.yvH;
     if (parama == null) {
-      k.fOy();
+      p.gfZ();
     }
     parama.setDuration(this.duration);
     parama.removeAllListeners();
-    parama.addListener((Animator.AnimatorListener)this.xhH);
-    parama.playTogether(new Animator[] { (Animator)this.xhE, (Animator)this.xhF });
+    parama.addListener((Animator.AnimatorListener)this.yvI);
+    parama.playTogether(new Animator[] { (Animator)this.yvF, (Animator)this.yvG });
     parama.start();
     AppMethodBeat.o(52270);
   }
@@ -96,21 +96,21 @@ public final class g
   public final void a(ScanPoint[] paramArrayOfScanPoint, int paramInt)
   {
     AppMethodBeat.i(52269);
-    k.h(paramArrayOfScanPoint, "points");
-    this.xhJ = paramInt;
-    int i = this.xhJ;
+    p.h(paramArrayOfScanPoint, "points");
+    this.yvK = paramInt;
+    int i = this.yvK;
     paramInt = 0;
     ScanPoint localScanPoint2;
     ScanPoint localScanPoint1;
     if (paramInt < i)
     {
       localScanPoint2 = (ScanPoint)e.f(paramArrayOfScanPoint, paramInt);
-      localScanPoint1 = (ScanPoint)j.C((List)this.xhK, paramInt);
+      localScanPoint1 = (ScanPoint)j.E((List)this.yvL, paramInt);
       if (localScanPoint1 != null) {
         break label152;
       }
       localScanPoint1 = new ScanPoint();
-      this.xhK.add(localScanPoint1);
+      this.yvL.add(localScanPoint1);
     }
     label140:
     label152:
@@ -148,11 +148,11 @@ public final class g
       AppMethodBeat.o(52267);
       return;
     }
-    int j = this.xhJ;
+    int j = this.yvK;
     int i = 0;
     while (i < j)
     {
-      ScanPoint localScanPoint = (ScanPoint)j.C((List)this.xhK, i);
+      ScanPoint localScanPoint = (ScanPoint)j.E((List)this.yvL, i);
       if (localScanPoint == null)
       {
         AppMethodBeat.o(52267);
@@ -174,8 +174,8 @@ public final class g
   public final void release()
   {
     AppMethodBeat.i(52272);
-    this.xhJ = 0;
-    this.xhK.clear();
+    this.yvK = 0;
+    this.yvL.clear();
     AppMethodBeat.o(52272);
   }
   
@@ -187,8 +187,8 @@ public final class g
   public final void stopAnimation()
   {
     AppMethodBeat.i(52271);
-    ac.v("MicroMsg.ScanAnimationDotsGroupView", "alvinluo stopAnimation");
-    AnimatorSet localAnimatorSet = this.xhG;
+    ad.v("MicroMsg.ScanAnimationDotsGroupView", "alvinluo stopAnimation");
+    AnimatorSet localAnimatorSet = this.yvH;
     if (localAnimatorSet != null)
     {
       localAnimatorSet.cancel();
@@ -201,38 +201,38 @@ public final class g
   public final void v(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(52268);
-    ac.v("MicroMsg.ScanAnimationDotsGroupView", "alvinluo setViewSize width: %d, height: %d, forceUpdateDotsCenter: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) });
-    if (((this.fMt != paramInt1) || (this.fMu != paramInt2) || (paramBoolean)) && (paramInt1 != 0) && (paramInt2 != 0)) {}
+    ad.v("MicroMsg.ScanAnimationDotsGroupView", "alvinluo setViewSize width: %d, height: %d, forceUpdateDotsCenter: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) });
+    if (((this.gfT != paramInt1) || (this.gfU != paramInt2) || (paramBoolean)) && (paramInt1 != 0) && (paramInt2 != 0)) {}
     for (int i = 1;; i = 0)
     {
-      this.fMt = paramInt1;
-      this.fMu = paramInt2;
+      this.gfT = paramInt1;
+      this.gfU = paramInt2;
       if (i == 0) {
         break;
       }
-      paramInt2 = this.fMt;
-      i = this.fMu;
-      int j = this.xhJ;
+      paramInt2 = this.gfT;
+      i = this.gfU;
+      int j = this.yvK;
       paramInt1 = 0;
       while (paramInt1 < j)
       {
-        ScanPoint localScanPoint2 = (ScanPoint)j.C((List)this.xhK, paramInt1);
+        ScanPoint localScanPoint2 = (ScanPoint)j.E((List)this.yvL, paramInt1);
         ScanPoint localScanPoint1 = localScanPoint2;
         if (localScanPoint2 == null)
         {
           localScanPoint1 = new ScanPoint();
-          this.xhK.add(localScanPoint1);
+          this.yvL.add(localScanPoint1);
         }
         localScanPoint1.setX(paramInt2 * localScanPoint1.getXFactor());
         localScanPoint1.setY(i * localScanPoint1.getYFactor());
-        ac.d("MicroMsg.ScanAnimationDotsGroupView", "alvinluo onViewSizeChanged i: %d, %f, %f", new Object[] { Integer.valueOf(paramInt1), Float.valueOf(localScanPoint1.getX()), Float.valueOf(localScanPoint1.getY()) });
+        ad.d("MicroMsg.ScanAnimationDotsGroupView", "alvinluo onViewSizeChanged i: %d, %f, %f", new Object[] { Integer.valueOf(paramInt1), Float.valueOf(localScanPoint1.getX()), Float.valueOf(localScanPoint1.getY()) });
         paramInt1 += 1;
       }
     }
     AppMethodBeat.o(52268);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView$sizeAnimator$1$1"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView$sizeAnimator$1$1"})
   static final class a
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -241,7 +241,7 @@ public final class g
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
       AppMethodBeat.i(52262);
-      k.g(paramValueAnimator, "animation");
+      p.g(paramValueAnimator, "animation");
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null)
       {
@@ -250,13 +250,13 @@ public final class g
         throw paramValueAnimator;
       }
       float f = ((Float)paramValueAnimator).floatValue();
-      g.a(this.xhN, f);
-      g.a(this.xhN).refreshView();
+      g.a(this.yvO, f);
+      g.a(this.yvO).refreshView();
       AppMethodBeat.o(52262);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView$alphaAnimator$1$1"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView$alphaAnimator$1$1"})
   static final class b
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -265,7 +265,7 @@ public final class g
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
       AppMethodBeat.i(52263);
-      k.g(paramValueAnimator, "animation");
+      p.g(paramValueAnimator, "animation");
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null)
       {
@@ -275,37 +275,37 @@ public final class g
       }
       float f = ((Float)paramValueAnimator).floatValue();
       if (f <= 0.0F) {
-        g.b(this.xhN).setAlpha((int)((f + 1.0F) * 255.0F));
+        g.b(this.yvO).setAlpha((int)((f + 1.0F) * 255.0F));
       }
       for (;;)
       {
-        g.a(this.xhN).refreshView();
+        g.a(this.yvO).refreshView();
         AppMethodBeat.o(52263);
         return;
-        g.b(this.xhN).setAlpha((int)((1.0F - f) * 255.0F));
+        g.b(this.yvO).setAlpha((int)((1.0F - f) * 255.0F));
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView$animatorListener$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsGroupView$animatorListener$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class d
     implements Animator.AnimatorListener
   {
     public final void onAnimationCancel(Animator paramAnimator)
     {
       AppMethodBeat.i(52265);
-      g.a(this.xhN, false);
+      g.a(this.yvO, false);
       AppMethodBeat.o(52265);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(52264);
-      g.a(this.xhN, false);
-      paramAnimator = g.c(this.xhN);
+      g.a(this.yvO, false);
+      paramAnimator = g.c(this.yvO);
       if (paramAnimator != null)
       {
-        paramAnimator.a((c)this.xhN);
+        paramAnimator.a((c)this.yvO);
         AppMethodBeat.o(52264);
         return;
       }
@@ -317,8 +317,8 @@ public final class g
     public final void onAnimationStart(Animator paramAnimator)
     {
       AppMethodBeat.i(52266);
-      g.a(this.xhN, true);
-      g.c(this.xhN);
+      g.a(this.yvO, true);
+      g.c(this.yvO);
       AppMethodBeat.o(52266);
     }
   }

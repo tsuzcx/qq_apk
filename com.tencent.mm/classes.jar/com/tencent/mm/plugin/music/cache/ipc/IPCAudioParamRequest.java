@@ -9,10 +9,10 @@ public class IPCAudioParamRequest
   implements Parcelable
 {
   public static final Parcelable.Creator<IPCAudioParamRequest> CREATOR;
-  public String dnX;
-  public byte[] hOu;
+  public String dzL;
+  public byte[] ihI;
   public String mimeType;
-  public int vej;
+  public int wjF;
   
   static
   {
@@ -23,25 +23,25 @@ public class IPCAudioParamRequest
   
   public IPCAudioParamRequest()
   {
-    this.dnX = "";
-    this.vej = 0;
+    this.dzL = "";
+    this.wjF = 0;
     this.mimeType = "";
   }
   
   public IPCAudioParamRequest(Parcel paramParcel)
   {
     AppMethodBeat.i(137208);
-    this.dnX = "";
-    this.vej = 0;
+    this.dzL = "";
+    this.wjF = 0;
     this.mimeType = "";
-    this.dnX = paramParcel.readString();
-    this.vej = paramParcel.readInt();
+    this.dzL = paramParcel.readString();
+    this.wjF = paramParcel.readInt();
     this.mimeType = paramParcel.readString();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.hOu = new byte[i];
-      paramParcel.readByteArray(this.hOu);
+      this.ihI = new byte[i];
+      paramParcel.readByteArray(this.ihI);
     }
     AppMethodBeat.o(137208);
   }
@@ -54,13 +54,13 @@ public class IPCAudioParamRequest
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(137209);
-    paramParcel.writeString(this.dnX);
-    paramParcel.writeInt(this.vej);
+    paramParcel.writeString(this.dzL);
+    paramParcel.writeInt(this.wjF);
     paramParcel.writeString(this.mimeType);
-    if (this.hOu != null)
+    if (this.ihI != null)
     {
-      paramParcel.writeInt(this.hOu.length);
-      paramParcel.writeByteArray(this.hOu);
+      paramParcel.writeInt(this.ihI.length);
+      paramParcel.writeByteArray(this.ihI);
       AppMethodBeat.o(137209);
       return;
     }

@@ -10,9 +10,9 @@ import com.tencent.wecall.talkroom.model.c;
 public final class b
   extends d
 {
-  public long AMc;
-  public int tOL;
-  public String tmu;
+  public long Clq;
+  public int uRy;
+  public String ukT;
   
   public b(String paramString, int paramInt, long paramLong, String[] paramArrayOfString)
   {
@@ -22,15 +22,15 @@ public final class b
     try
     {
       locala.groupId = paramString;
-      this.tmu = paramString;
-      locala.ADE = paramInt;
-      this.tOL = paramInt;
-      locala.ADF = paramLong;
-      this.AMc = paramLong;
-      locala.JMl = paramArrayOfString;
-      locala.ADE = paramInt;
+      this.ukT = paramString;
+      locala.CcE = paramInt;
+      this.uRy = paramInt;
+      locala.CcF = paramLong;
+      this.Clq = paramLong;
+      locala.LFU = paramArrayOfString;
+      locala.CcE = paramInt;
       this.mNetType = 3;
-      this.JLH = c.fIe().aUe(paramString);
+      this.LFq = c.fZv().bac(paramString);
       c(145, locala);
       AppMethodBeat.o(62533);
       return;
@@ -44,7 +44,7 @@ public final class b
     }
   }
   
-  public final Object cB(byte[] paramArrayOfByte)
+  public final Object cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62534);
     if (paramArrayOfByte != null) {}
@@ -66,7 +66,7 @@ public final class b
     }
   }
   
-  public final String fBB()
+  public final String fSQ()
   {
     return "CsCmd.Cmd_V_CSAddVoiceGroupMemberReq";
   }
@@ -78,7 +78,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.b
  * JD-Core Version:    0.7.0.1
  */

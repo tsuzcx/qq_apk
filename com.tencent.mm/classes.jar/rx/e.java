@@ -2,9 +2,9 @@ package rx;
 
 public abstract interface e<T>
 {
-  public abstract void gd(T paramT);
+  public abstract void gyM();
   
-  public abstract void ggi();
+  public abstract void gz(T paramT);
   
   public abstract void onError(Throwable paramThrowable);
 }

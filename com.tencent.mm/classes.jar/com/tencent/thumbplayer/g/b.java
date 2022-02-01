@@ -1,14 +1,12 @@
 package com.tencent.thumbplayer.g;
 
-import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.thumbplayer.b.a.a;
-import com.tencent.thumbplayer.b.d;
-import com.tencent.thumbplayer.b.e;
+import com.tencent.thumbplayer.b.f;
 import com.tencent.thumbplayer.b.i.b;
 import com.tencent.thumbplayer.b.i.c;
 import com.tencent.thumbplayer.b.i.d;
@@ -16,7 +14,6 @@ import com.tencent.thumbplayer.b.k;
 import com.tencent.thumbplayer.b.n;
 import com.tencent.thumbplayer.b.p;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
-import com.tencent.thumbplayer.utils.h;
 import java.util.Map;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
@@ -25,204 +22,210 @@ import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 public final class b
   implements ITPPlayListener
 {
-  d.k Kif;
-  private d.i Kig;
-  private d.e Kih;
-  private long Kii;
-  private String Kij;
-  private Object Kik;
-  private Object Kil;
-  private Object Kim;
-  private b Kin;
-  private a Kio;
-  private h Kip;
+  private Object MbA;
+  private Object MbB;
+  private b MbC;
+  private b.a MbD;
+  private com.tencent.thumbplayer.utils.e MbE;
+  d.k Mbu;
+  private d.i Mbv;
+  private d.e Mbw;
+  long Mbx;
+  private String Mby;
+  private Object Mbz;
   private Looper mLooper;
   
   b(Looper paramLooper, b paramb)
   {
-    AppMethodBeat.i(188055);
+    AppMethodBeat.i(192078);
     this.mLooper = paramLooper;
-    this.Kio = new a(paramLooper);
-    this.Kin = paramb;
-    this.Kip = new h();
-    this.Kif = new d.k();
-    this.Kig = new d.i();
-    this.Kih = new d.e();
-    AppMethodBeat.o(188055);
+    this.MbD = new b.a(this, paramLooper);
+    this.MbC = paramb;
+    this.MbE = new com.tencent.thumbplayer.utils.e();
+    this.Mbu = new d.k();
+    this.Mbv = new d.i();
+    this.Mbw = new d.e();
+    AppMethodBeat.o(192078);
   }
   
-  private void I(int paramInt1, int paramInt2, boolean paramBoolean)
+  private void J(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(188085);
+    AppMethodBeat.i(192107);
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      yN(paramBoolean);
-      AppMethodBeat.o(188085);
+      zA(paramBoolean);
+      AppMethodBeat.o(192107);
       return;
-      this.Kif.width = this.Kin.fFZ();
+      this.Mbu.width = this.MbC.fXp();
       continue;
-      this.Kif.height = this.Kin.fGa();
+      this.Mbu.height = this.MbC.fXq();
       continue;
-      this.Kig.KiT = this.Kin.fGb();
+      this.Mbv.Mci = this.MbC.fXr();
       continue;
-      this.Kii = this.Kin.aeT(paramInt2);
+      this.Mbx = this.MbC.aht(paramInt2);
       continue;
-      this.Kij = this.Kin.aeU(paramInt2);
+      this.Mby = this.MbC.ahu(paramInt2);
       continue;
-      this.Kih.KiN = this.Kin.fGc();
+      this.Mbw.Mcc = this.MbC.fXs();
     }
   }
   
   private void a(Message paramMessage, boolean paramBoolean)
   {
-    AppMethodBeat.i(188084);
+    AppMethodBeat.i(192106);
     if ((paramMessage.what != 83) && (paramMessage.what != 73) && (paramMessage.what != 74)) {
-      com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayerInternal.java]", "internalMessage " + aeW(paramMessage.what));
+      com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayerInternal.java]", "internalMessage " + ahw(paramMessage.what));
     }
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(188084);
+      AppMethodBeat.o(192106);
       return;
-      this.Kin.c((com.tencent.thumbplayer.b.f)paramMessage.obj);
-      AppMethodBeat.o(188084);
+      this.MbC.c((f)paramMessage.obj);
+      AppMethodBeat.o(192106);
       return;
-      this.Kin.l((Surface)paramMessage.obj);
-      AppMethodBeat.o(188084);
+      this.MbC.l((Surface)paramMessage.obj);
+      AppMethodBeat.o(192106);
       return;
-      this.Kin.a((d.b)paramMessage.obj);
-      AppMethodBeat.o(188084);
+      this.MbC.a((d.b)paramMessage.obj);
+      AppMethodBeat.o(192106);
       return;
-      this.Kin.b((p)paramMessage.obj);
-      AppMethodBeat.o(188084);
+      this.MbC.b((p)paramMessage.obj);
+      AppMethodBeat.o(192106);
       return;
-      this.Kin.b(((d.j)paramMessage.obj).KiU, ((d.j)paramMessage.obj).KiV);
-      AppMethodBeat.o(188084);
+      this.MbC.b(((d.j)paramMessage.obj).Mcj, ((d.j)paramMessage.obj).Mck);
+      AppMethodBeat.o(192106);
       return;
       paramMessage = (d.f)paramMessage.obj;
       if (paramMessage != null)
       {
-        this.Kin.a(paramMessage.url, paramMessage.mimeType, paramMessage.name, paramMessage.KiO);
-        AppMethodBeat.o(188084);
+        this.MbC.a(paramMessage.url, paramMessage.mimeType, paramMessage.name, paramMessage.Mcd);
+        AppMethodBeat.o(192106);
         return;
         paramMessage = (d.a)paramMessage.obj;
         if (paramMessage != null)
         {
-          this.Kin.a(paramMessage.url, paramMessage.name, paramMessage.KiD);
-          AppMethodBeat.o(188084);
+          this.MbC.a(paramMessage.url, paramMessage.name, paramMessage.MbS);
+          AppMethodBeat.o(192106);
           return;
-          this.Kin.aL(paramMessage.arg1, paramMessage.arg2);
-          AppMethodBeat.o(188084);
+          this.MbC.aV(paramMessage.arg1, paramMessage.arg2);
+          AppMethodBeat.o(192106);
           return;
-          this.Kin.aM(paramMessage.arg1, paramMessage.arg2);
-          AppMethodBeat.o(188084);
+          this.MbC.aW(paramMessage.arg1, paramMessage.arg2);
+          AppMethodBeat.o(192106);
           return;
-          this.Kin.fFQ();
-          AppMethodBeat.o(188084);
+          this.MbC.fXh();
+          AppMethodBeat.o(192106);
           return;
-          this.Kin.fFR();
-          AppMethodBeat.o(188084);
+          this.MbC.fXi();
+          AppMethodBeat.o(192106);
           return;
-          this.Kin.fFS();
-          AppMethodBeat.o(188084);
+          this.MbC.fXj();
+          AppMethodBeat.o(192106);
           return;
-          this.Kin.fFT();
-          yN(paramBoolean);
-          AppMethodBeat.o(188084);
+          this.MbC.fXk();
+          zA(paramBoolean);
+          AppMethodBeat.o(192106);
           return;
-          this.Kin.fFU();
-          yN(paramBoolean);
-          AppMethodBeat.o(188084);
+          this.MbC.fXl();
+          zA(paramBoolean);
+          AppMethodBeat.o(192106);
           return;
-          this.Kin.fFV();
-          yN(paramBoolean);
-          this.Kio.removeCallbacksAndMessages(null);
-          AppMethodBeat.o(188084);
+          this.MbC.fXm();
+          zA(paramBoolean);
+          this.MbD.removeCallbacksAndMessages(null);
+          AppMethodBeat.o(192106);
           return;
-          this.Kin.kF(paramMessage.arg1, paramMessage.arg2);
-          AppMethodBeat.o(188084);
+          this.MbC.kU(paramMessage.arg1, paramMessage.arg2);
+          AppMethodBeat.o(192106);
           return;
-          this.Kin.yL(((Boolean)paramMessage.obj).booleanValue());
-          AppMethodBeat.o(188084);
+          this.MbC.zy(((Boolean)paramMessage.obj).booleanValue());
+          AppMethodBeat.o(192106);
           return;
-          this.Kin.cf(((Float)paramMessage.obj).floatValue());
-          AppMethodBeat.o(188084);
+          this.MbC.ck(((Float)paramMessage.obj).floatValue());
+          AppMethodBeat.o(192106);
           return;
-          this.Kin.cg(((Float)paramMessage.obj).floatValue());
-          AppMethodBeat.o(188084);
+          this.MbC.cl(((Float)paramMessage.obj).floatValue());
+          AppMethodBeat.o(192106);
           return;
           paramMessage = (d.c)paramMessage.obj;
           if (paramMessage != null)
           {
-            this.Kin.d(paramMessage.Kcy, paramMessage.KiH, paramMessage.KiI);
-            AppMethodBeat.o(188084);
+            this.MbC.d(paramMessage.LWu, paramMessage.MbW, paramMessage.MbX);
+            AppMethodBeat.o(192106);
             return;
-            this.Kin.yM(((Boolean)paramMessage.obj).booleanValue());
-            AppMethodBeat.o(188084);
+            this.MbC.zz(((Boolean)paramMessage.obj).booleanValue());
+            AppMethodBeat.o(192106);
             return;
             paramMessage = (d.h)paramMessage.obj;
             if (paramMessage != null)
             {
               if (!TextUtils.isEmpty(paramMessage.url))
               {
-                this.Kin.a(paramMessage.url, paramMessage.KiR, paramMessage.KiS, paramMessage.mode);
-                AppMethodBeat.o(188084);
+                this.MbC.a(paramMessage.url, paramMessage.Mcg, paramMessage.Mch, paramMessage.mode);
+                AppMethodBeat.o(192106);
                 return;
               }
-              this.Kin.a(paramMessage.KiG, paramMessage.KiR, paramMessage.KiS, paramMessage.mode);
-              AppMethodBeat.o(188084);
+              this.MbC.a(paramMessage.MbV, paramMessage.Mcg, paramMessage.Mch, paramMessage.mode);
+              AppMethodBeat.o(192106);
               return;
-              this.Kin.aN(paramMessage.arg1, paramMessage.arg2);
-              AppMethodBeat.o(188084);
+              this.MbC.aX(paramMessage.arg1, paramMessage.arg2);
+              AppMethodBeat.o(192106);
               return;
-              I(paramMessage.what, paramMessage.arg1, paramBoolean);
-              AppMethodBeat.o(188084);
+              J(paramMessage.what, paramMessage.arg1, paramBoolean);
+              AppMethodBeat.o(192106);
               return;
-              this.Kin.fGd();
-              AppMethodBeat.o(188084);
+              this.MbC.fXt();
+              AppMethodBeat.o(192106);
               return;
-              this.Kin.R(paramMessage.arg1, paramMessage.arg2, (String)paramMessage.obj);
-              AppMethodBeat.o(188084);
+              this.MbC.T(paramMessage.arg1, paramMessage.arg2, (String)paramMessage.obj);
+              AppMethodBeat.o(192106);
               return;
-              this.Kin.aTN((String)paramMessage.obj);
-              AppMethodBeat.o(188084);
+              this.MbC.aZN((String)paramMessage.obj);
+              AppMethodBeat.o(192106);
               return;
               paramMessage = (i.b)paramMessage.obj;
-              this.Kin.bc(paramMessage.url, paramMessage.Kfe, paramMessage.Kfd);
-              AppMethodBeat.o(188084);
+              this.MbC.bl(paramMessage.url, paramMessage.LZa, paramMessage.LYZ);
+              AppMethodBeat.o(192106);
               return;
-              this.Kin.aeV(paramMessage.arg1);
-              AppMethodBeat.o(188084);
+              this.MbC.ahv(paramMessage.arg1);
+              AppMethodBeat.o(192106);
               return;
               paramMessage = (i.d)paramMessage.obj;
-              this.Kin.mu(paramMessage.Kfk, paramMessage.Kfl);
-              AppMethodBeat.o(188084);
+              this.MbC.mS(paramMessage.LZf, paramMessage.LZg);
+              AppMethodBeat.o(192106);
               return;
-              this.Kin.bU((Map)paramMessage.obj);
-              AppMethodBeat.o(188084);
+              this.MbC.ca((Map)paramMessage.obj);
+              AppMethodBeat.o(192106);
               return;
               paramMessage = (d.d)paramMessage.obj;
-              this.Kik = this.Kin.a(paramMessage.aRI, paramMessage.KiJ, paramMessage.KiL);
-              yN(paramBoolean);
-              AppMethodBeat.o(188084);
+              this.Mbz = this.MbC.a(paramMessage.bcd, paramMessage.MbY, paramMessage.Mca);
+              zA(paramBoolean);
+              AppMethodBeat.o(192106);
               return;
               ((Long)paramMessage.obj).longValue();
-              this.Kil = null;
-              yN(paramBoolean);
-              AppMethodBeat.o(188084);
+              this.MbA = null;
+              zA(paramBoolean);
+              AppMethodBeat.o(192106);
               return;
               paramMessage = (i.c)paramMessage.obj;
-              this.Kin.b((int)paramMessage.Kfg, paramMessage.Kfh, paramMessage.Kfi, paramMessage.Kfj);
-              AppMethodBeat.o(188084);
+              this.MbC.b((int)paramMessage.LZc, paramMessage.LZd, paramMessage.LZe, paramMessage.EKH);
+              AppMethodBeat.o(192106);
               return;
               paramMessage = paramMessage.obj;
-              this.Kim = null;
-              yN(paramBoolean);
+              this.MbB = null;
+              zA(paramBoolean);
+              AppMethodBeat.o(192106);
+              return;
+              this.MbC.fXf();
+              AppMethodBeat.o(192106);
+              return;
+              this.MbC.fXg();
             }
           }
         }
@@ -230,9 +233,9 @@ public final class b
     }
   }
   
-  private static String aeW(int paramInt)
+  private static String ahw(int paramInt)
   {
-    AppMethodBeat.i(188081);
+    AppMethodBeat.i(192103);
     switch (paramInt)
     {
     case 2: 
@@ -246,8 +249,6 @@ public final class b
     case 38: 
     case 39: 
     case 40: 
-    case 41: 
-    case 42: 
     case 43: 
     case 44: 
     case 45: 
@@ -280,233 +281,239 @@ public final class b
     case 72: 
     default: 
       String str = "[tpPlayer] -> ".concat(String.valueOf(paramInt));
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return str;
     case 1: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> set player params";
     case 4: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> set surface";
     case 5: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> set data source";
     case 6: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> set subtitle source";
     case 7: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> add audio source";
     case 8: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> add select track";
     case 36: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> deselect track";
     case 10: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> prepare async";
     case 11: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> start";
     case 12: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> pause";
     case 13: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> stop";
     case 14: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> reset";
     case 15: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> release";
     case 16: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> seek to";
     case 17: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> set output mute";
     case 18: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> set audio gain ratio";
     case 19: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> set speed ratio";
     case 35: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> set loopback";
     case 21: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> get video width";
     case 22: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> get video height";
     case 23: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> get track info";
     case 27: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> get property long";
     case 28: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> get property string";
     case 29: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> set video info";
     case 30: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> capture video";
     case 31: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> switch def";
     case 32: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> select program";
     case 33: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> get program";
     case 20: 
-      AppMethodBeat.o(188081);
+      AppMethodBeat.o(192103);
       return "[tpPlayer] -> set loopback with param";
+    case 73: 
+      AppMethodBeat.o(192103);
+      return "[tpPlayer] -> cdn info update";
+    case 41: 
+      AppMethodBeat.o(192103);
+      return "[tpPlayer] -> pauseDownload";
     }
-    AppMethodBeat.o(188081);
-    return "[tpPlayer] -> cdn info update";
+    AppMethodBeat.o(192103);
+    return "[tpPlayer] -> resumeDownload";
   }
   
-  private boolean fGj()
+  private void fXA()
   {
-    AppMethodBeat.i(188075);
+    AppMethodBeat.i(192098);
+    if (!fXz()) {
+      this.MbE.readLock().unlock();
+    }
+    AppMethodBeat.o(192098);
+  }
+  
+  private void fXB()
+  {
+    AppMethodBeat.i(192099);
+    if (!fXz()) {
+      this.MbE.readLock().lock();
+    }
+    AppMethodBeat.o(192099);
+  }
+  
+  private void fXF()
+  {
+    AppMethodBeat.i(192105);
+    this.MbE.fXL();
+    AppMethodBeat.o(192105);
+  }
+  
+  private boolean fXz()
+  {
+    AppMethodBeat.i(192097);
     if (Looper.myLooper() == this.mLooper)
     {
-      AppMethodBeat.o(188075);
+      AppMethodBeat.o(192097);
       return true;
     }
-    AppMethodBeat.o(188075);
+    AppMethodBeat.o(192097);
     return false;
   }
   
-  private void fGk()
+  private void zA(boolean paramBoolean)
   {
-    AppMethodBeat.i(188076);
-    if (!fGj()) {
-      this.Kip.readLock().unlock();
-    }
-    AppMethodBeat.o(188076);
-  }
-  
-  private void fGl()
-  {
-    AppMethodBeat.i(188077);
-    if (!fGj()) {
-      this.Kip.readLock().lock();
-    }
-    AppMethodBeat.o(188077);
-  }
-  
-  private void fGp()
-  {
-    AppMethodBeat.i(188083);
-    this.Kip.fGz();
-    AppMethodBeat.o(188083);
-  }
-  
-  private void yN(boolean paramBoolean)
-  {
-    AppMethodBeat.i(188080);
+    AppMethodBeat.i(192102);
     if (paramBoolean) {
-      this.Kip.writeLock().lock();
+      this.MbE.writeLock().lock();
     }
     if (paramBoolean) {
-      this.Kip.Kmx.signalAll();
+      this.MbE.Mcv.signalAll();
     }
     if (paramBoolean) {
-      this.Kip.writeLock().unlock();
+      this.MbE.writeLock().unlock();
     }
-    AppMethodBeat.o(188080);
+    AppMethodBeat.o(192102);
   }
   
   final void a(int paramInt1, int paramInt2, int paramInt3, Object paramObject, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(188074);
-    fGl();
-    if (this.Kio == null)
+    AppMethodBeat.i(192096);
+    fXB();
+    if (this.MbD == null)
     {
-      com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayerInternal.java]", aeW(paramInt1) + " , send failed , handler null");
-      fGk();
-      AppMethodBeat.o(188074);
+      com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayerInternal.java]", ahw(paramInt1) + " , send failed , handler null");
+      fXA();
+      AppMethodBeat.o(192096);
       return;
     }
     if ((paramBoolean1) && (paramObject == null))
     {
-      com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayerInternal.java]", aeW(paramInt1) + ", send failed , params null");
-      fGk();
-      AppMethodBeat.o(188074);
+      com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayerInternal.java]", ahw(paramInt1) + ", send failed , params null");
+      fXA();
+      AppMethodBeat.o(192096);
       return;
     }
     if (paramBoolean2) {
-      this.Kio.removeMessages(paramInt1);
+      this.MbD.removeMessages(paramInt1);
     }
-    Message localMessage = this.Kio.obtainMessage();
+    Message localMessage = this.MbD.obtainMessage();
     localMessage.what = paramInt1;
     localMessage.arg1 = paramInt2;
     localMessage.arg2 = paramInt3;
     localMessage.obj = paramObject;
-    if (fGj()) {
+    if (fXz()) {
       a(localMessage, false);
     }
     for (;;)
     {
-      fGk();
-      AppMethodBeat.o(188074);
+      fXA();
+      AppMethodBeat.o(192096);
       return;
-      this.Kio.sendMessageDelayed(localMessage, 0L);
+      this.MbD.sendMessageDelayed(localMessage, 0L);
     }
   }
   
-  final void fGm()
+  final void fXC()
   {
-    AppMethodBeat.i(188078);
-    if (!fGj()) {
-      this.Kip.writeLock().lock();
+    AppMethodBeat.i(192100);
+    if (!fXz()) {
+      this.MbE.writeLock().lock();
     }
-    AppMethodBeat.o(188078);
+    AppMethodBeat.o(192100);
   }
   
-  final void fGn()
+  final void fXD()
   {
-    AppMethodBeat.i(188079);
-    if (!fGj()) {
-      this.Kip.writeLock().unlock();
+    AppMethodBeat.i(192101);
+    if (!fXz()) {
+      this.MbE.writeLock().unlock();
     }
-    AppMethodBeat.o(188079);
+    AppMethodBeat.o(192101);
   }
   
-  final void fGo()
+  final void fXE()
   {
-    AppMethodBeat.i(188082);
-    if (fGj())
+    AppMethodBeat.i(192104);
+    if (fXz())
     {
-      AppMethodBeat.o(188082);
+      AppMethodBeat.o(192104);
       return;
     }
-    fGp();
-    AppMethodBeat.o(188082);
+    fXF();
+    AppMethodBeat.o(192104);
   }
   
   public final long getAdvRemainTime()
   {
-    AppMethodBeat.i(188071);
+    AppMethodBeat.i(192093);
     try
     {
-      long l = this.Kin.fGg();
-      AppMethodBeat.o(188071);
+      long l = this.MbC.fXw();
+      AppMethodBeat.o(192093);
       return l;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayerInternal.java]", localThrowable);
-      AppMethodBeat.o(188071);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayerInternal.java]", localThrowable);
+      AppMethodBeat.o(192093);
     }
     return 0L;
   }
@@ -518,42 +525,42 @@ public final class b
   
   public final int getCurrentPlayClipNo()
   {
-    AppMethodBeat.i(188070);
+    AppMethodBeat.i(192092);
     try
     {
-      int i = this.Kin.fGf();
-      AppMethodBeat.o(188070);
+      int i = this.MbC.fXv();
+      AppMethodBeat.o(192092);
       return i;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayerInternal.java]", localThrowable);
-      AppMethodBeat.o(188070);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayerInternal.java]", localThrowable);
+      AppMethodBeat.o(192092);
     }
     return 0;
   }
   
   public final long getCurrentPosition()
   {
-    AppMethodBeat.i(188069);
+    AppMethodBeat.i(192091);
     long l = getCurrentPositionMs();
-    AppMethodBeat.o(188069);
+    AppMethodBeat.o(192091);
     return l;
   }
   
   final long getCurrentPositionMs()
   {
-    AppMethodBeat.i(188057);
+    AppMethodBeat.i(192080);
     try
     {
-      long l = this.Kin.fFX();
-      AppMethodBeat.o(188057);
+      long l = this.MbC.fXo();
+      AppMethodBeat.o(192080);
       return l;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayerInternal.java]", localThrowable);
-      AppMethodBeat.o(188057);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayerInternal.java]", localThrowable);
+      AppMethodBeat.o(192080);
     }
     return 0L;
   }
@@ -570,146 +577,146 @@ public final class b
   
   final long getDurationMs()
   {
-    AppMethodBeat.i(188056);
+    AppMethodBeat.i(192079);
     try
     {
-      long l = this.Kin.fFW();
-      AppMethodBeat.o(188056);
+      long l = this.MbC.fXn();
+      AppMethodBeat.o(192079);
       return l;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayerInternal.java]", localThrowable);
-      AppMethodBeat.o(188056);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayerInternal.java]", localThrowable);
+      AppMethodBeat.o(192079);
     }
     return 0L;
   }
   
   public final Object getPlayInfo(long paramLong)
   {
-    AppMethodBeat.i(188072);
-    fGm();
+    AppMethodBeat.i(192094);
+    fXC();
     a(82, 0, 0, Long.valueOf(paramLong), false, false);
-    fGo();
-    fGn();
-    Object localObject = this.Kil;
-    AppMethodBeat.o(188072);
+    fXE();
+    fXD();
+    Object localObject = this.MbA;
+    AppMethodBeat.o(192094);
     return localObject;
   }
   
   public final Object getPlayInfo(String paramString)
   {
-    AppMethodBeat.i(188073);
-    fGm();
+    AppMethodBeat.i(192095);
+    fXC();
     a(84, 0, 0, paramString, false, false);
-    fGo();
-    fGn();
-    paramString = this.Kim;
-    AppMethodBeat.o(188073);
+    fXE();
+    fXD();
+    paramString = this.MbB;
+    AppMethodBeat.o(192095);
     return paramString;
   }
   
   public final long getPlayerBufferLength()
   {
-    AppMethodBeat.i(188068);
+    AppMethodBeat.i(192090);
     try
     {
-      long l = this.Kin.fGe();
-      AppMethodBeat.o(188068);
+      long l = this.MbC.fXu();
+      AppMethodBeat.o(192090);
       return l;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayerInternal.java]", localThrowable);
-      AppMethodBeat.o(188068);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayerInternal.java]", localThrowable);
+      AppMethodBeat.o(192090);
     }
     return 0L;
   }
   
   public final void onDownloadCdnUrlExpired(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(188065);
+    AppMethodBeat.i(192087);
     a(76, 0, 0, paramMap, false, false);
-    AppMethodBeat.o(188065);
+    AppMethodBeat.o(192087);
   }
   
   public final void onDownloadCdnUrlInfoUpdate(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(188064);
+    AppMethodBeat.i(192086);
     i.b localb = new i.b();
     localb.url = paramString1;
-    localb.Kfe = paramString2;
-    localb.Kfd = paramString3;
-    localb.Kff = paramString4;
+    localb.LZa = paramString2;
+    localb.LYZ = paramString3;
+    localb.LZb = paramString4;
     a(73, 0, 0, localb, false, false);
-    AppMethodBeat.o(188064);
+    AppMethodBeat.o(192086);
   }
   
   public final void onDownloadCdnUrlUpdate(String paramString)
   {
-    AppMethodBeat.i(188063);
+    AppMethodBeat.i(192085);
     a(72, 0, 0, paramString, false, false);
-    AppMethodBeat.o(188063);
+    AppMethodBeat.o(192085);
   }
   
   public final void onDownloadError(int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(188061);
+    AppMethodBeat.i(192083);
     a(71, paramInt1, paramInt2, paramString, false, false);
-    AppMethodBeat.o(188061);
+    AppMethodBeat.o(192083);
   }
   
   public final void onDownloadFinish()
   {
-    AppMethodBeat.i(188060);
+    AppMethodBeat.i(192082);
     a(70, 0, 0, null, false, false);
-    AppMethodBeat.o(188060);
+    AppMethodBeat.o(192082);
   }
   
   public final void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(188059);
+    AppMethodBeat.i(192081);
     i.c localc = new i.c();
-    localc.Kfg = paramInt1;
-    localc.Kfh = paramInt2;
-    localc.Kfi = paramLong1;
-    localc.Kfj = paramLong2;
+    localc.LZc = paramInt1;
+    localc.LZd = paramInt2;
+    localc.LZe = paramLong1;
+    localc.EKH = paramLong2;
     a(83, 0, 0, localc, false, false);
-    AppMethodBeat.o(188059);
+    AppMethodBeat.o(192081);
   }
   
   public final void onDownloadProtocolUpdate(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(188067);
+    AppMethodBeat.i(192089);
     i.d locald = new i.d();
-    locald.Kfl = paramString2;
-    locald.Kfk = paramString1;
+    locald.LZg = paramString2;
+    locald.LZf = paramString1;
     a(75, 0, 0, locald, false, false);
-    AppMethodBeat.o(188067);
+    AppMethodBeat.o(192089);
   }
   
   public final void onDownloadStatusUpdate(int paramInt)
   {
-    AppMethodBeat.i(188066);
+    AppMethodBeat.i(192088);
     a(74, paramInt, 0, null, false, false);
-    AppMethodBeat.o(188066);
+    AppMethodBeat.o(192088);
   }
   
   public final Object onPlayCallback(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    AppMethodBeat.i(188062);
-    fGm();
+    AppMethodBeat.i(192084);
+    fXC();
     d.d locald = new d.d();
-    locald.aRI = paramInt;
-    locald.KiJ = paramObject1;
-    locald.KiK = paramObject2;
-    locald.KiL = paramObject3;
-    locald.KiM = paramObject4;
+    locald.bcd = paramInt;
+    locald.MbY = paramObject1;
+    locald.MbZ = paramObject2;
+    locald.Mca = paramObject3;
+    locald.Mcb = paramObject4;
     a(77, 0, 0, locald, false, false);
-    fGo();
-    fGn();
-    paramObject1 = this.Kik;
-    AppMethodBeat.o(188062);
+    fXE();
+    fXD();
+    paramObject1 = this.Mbz;
+    AppMethodBeat.o(192084);
     return paramObject1;
   }
   
@@ -728,25 +735,9 @@ public final class b
     return 0;
   }
   
-  final class a
-    extends Handler
-  {
-    a(Looper paramLooper)
-    {
-      super();
-    }
-    
-    public final void handleMessage(Message paramMessage)
-    {
-      AppMethodBeat.i(188054);
-      b.a(b.this, paramMessage);
-      AppMethodBeat.o(188054);
-    }
-  }
-  
   public static abstract interface b
   {
-    public abstract void R(int paramInt1, int paramInt2, String paramString);
+    public abstract void T(int paramInt1, int paramInt2, String paramString);
     
     public abstract Object a(int paramInt, Object paramObject1, Object paramObject2);
     
@@ -760,84 +751,88 @@ public final class b
     
     public abstract void a(String paramString1, String paramString2, String paramString3, com.tencent.thumbplayer.b.b.b paramb);
     
-    public abstract void aL(int paramInt, long paramLong);
+    public abstract void aV(int paramInt, long paramLong);
     
-    public abstract void aM(int paramInt, long paramLong);
+    public abstract void aW(int paramInt, long paramLong);
     
-    public abstract void aN(int paramInt, long paramLong);
+    public abstract void aX(int paramInt, long paramLong);
     
-    public abstract void aTN(String paramString);
+    public abstract void aZN(String paramString);
     
-    public abstract long aeT(int paramInt);
+    public abstract long aht(int paramInt);
     
-    public abstract String aeU(int paramInt);
+    public abstract String ahu(int paramInt);
     
-    public abstract void aeV(int paramInt);
+    public abstract void ahv(int paramInt);
     
     public abstract void b(int paramInt1, int paramInt2, long paramLong1, long paramLong2);
     
-    public abstract void b(e parame, d paramd);
+    public abstract void b(com.tencent.thumbplayer.b.e parame, com.tencent.thumbplayer.b.d paramd);
     
     public abstract void b(p paramp);
     
-    public abstract void bU(Map<String, String> paramMap);
+    public abstract void bl(String paramString1, String paramString2, String paramString3);
     
-    public abstract void bc(String paramString1, String paramString2, String paramString3);
+    public abstract void c(f paramf);
     
-    public abstract void c(com.tencent.thumbplayer.b.f paramf);
+    public abstract void ca(Map<String, String> paramMap);
     
-    public abstract void cf(float paramFloat);
+    public abstract void ck(float paramFloat);
     
-    public abstract void cg(float paramFloat);
+    public abstract void cl(float paramFloat);
     
     public abstract void d(boolean paramBoolean, long paramLong1, long paramLong2);
     
-    public abstract void fFQ();
+    public abstract void fXf();
     
-    public abstract void fFR();
+    public abstract void fXg();
     
-    public abstract void fFS();
+    public abstract void fXh();
     
-    public abstract void fFT();
+    public abstract void fXi();
     
-    public abstract void fFU();
+    public abstract void fXj();
     
-    public abstract void fFV();
+    public abstract void fXk();
     
-    public abstract long fFW();
+    public abstract void fXl();
     
-    public abstract long fFX();
+    public abstract void fXm();
     
-    public abstract int fFZ();
+    public abstract long fXn();
     
-    public abstract int fGa();
+    public abstract long fXo();
     
-    public abstract n[] fGb();
+    public abstract int fXp();
     
-    public abstract k[] fGc();
+    public abstract int fXq();
     
-    public abstract void fGd();
+    public abstract n[] fXr();
     
-    public abstract long fGe();
+    public abstract k[] fXs();
     
-    public abstract int fGf();
+    public abstract void fXt();
     
-    public abstract long fGg();
+    public abstract long fXu();
     
-    public abstract void kF(int paramInt1, int paramInt2);
+    public abstract int fXv();
+    
+    public abstract long fXw();
+    
+    public abstract void kU(int paramInt1, int paramInt2);
     
     public abstract void l(Surface paramSurface);
     
-    public abstract void mu(String paramString1, String paramString2);
+    public abstract void mS(String paramString1, String paramString2);
     
-    public abstract void yL(boolean paramBoolean);
+    public abstract void zy(boolean paramBoolean);
     
-    public abstract void yM(boolean paramBoolean);
+    public abstract void zz(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.g.b
  * JD-Core Version:    0.7.0.1
  */

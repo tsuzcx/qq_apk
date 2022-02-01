@@ -6,7 +6,7 @@ public abstract interface b
 {
   public abstract void a(d.a parama);
   
-  public abstract boolean fCu();
+  public abstract boolean fTK();
 }
 
 

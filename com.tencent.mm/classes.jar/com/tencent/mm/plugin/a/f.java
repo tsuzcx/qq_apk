@@ -5,24 +5,24 @@ import com.tencent.mm.pointers.PInt;
 
 public abstract interface f
 {
-  public abstract boolean F(String paramString, long paramLong);
+  public abstract boolean L(String paramString, long paramLong);
   
   public abstract boolean a(int paramInt1, int paramInt2, PInt paramPInt1, PInt paramPInt2);
   
-  public abstract int aNC();
+  public abstract int aQO();
   
-  public abstract int aND();
+  public abstract int aQP();
   
   @TargetApi(5)
   public abstract boolean b(int paramInt, PInt paramPInt1, PInt paramPInt2);
   
-  public abstract int dw(int paramInt1, int paramInt2);
+  public abstract int dy(int paramInt1, int paramInt2);
   
   public abstract void release();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ final class SnsBaseGalleryUI$1
   public final void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(98481);
-    SnsBaseGalleryUI.a(this.yIG).setAlpha(0.0F);
+    SnsBaseGalleryUI.a(this.Aaa).setAlpha(0.0F);
     AppMethodBeat.o(98481);
   }
   
   public final void onAnimationStart(Animator paramAnimator)
   {
     AppMethodBeat.i(98480);
-    SnsBaseGalleryUI.a(this.yIG).setAlpha(0.0F);
+    SnsBaseGalleryUI.a(this.Aaa).setAlpha(0.0F);
     AppMethodBeat.o(98480);
   }
 }

@@ -18,61 +18,61 @@ import java.util.List;
 final class a
   extends RecyclerView.a<RecyclerView.w>
 {
-  private static ViewGroup.LayoutParams mOr;
-  RecyclerView.a abe;
-  private ViewGroup mOs;
-  private ViewGroup mOt;
-  List<View> mOu;
-  private List<View> mOv;
-  b mOw;
-  c mOx;
-  RecyclerView.c mOy;
+  private static ViewGroup.LayoutParams noO;
+  RecyclerView.a acW;
+  private ViewGroup noP;
+  private ViewGroup noQ;
+  List<View> noR;
+  private List<View> noS;
+  b noT;
+  c noU;
+  RecyclerView.c noV;
   
   static
   {
     AppMethodBeat.i(131553);
-    mOr = new ViewGroup.LayoutParams(-1, -2);
+    noO = new ViewGroup.LayoutParams(-1, -2);
     AppMethodBeat.o(131553);
   }
   
   a()
   {
     AppMethodBeat.i(131542);
-    this.mOu = new LinkedList();
-    this.mOv = new LinkedList();
-    this.mOy = new RecyclerView.c()
+    this.noR = new LinkedList();
+    this.noS = new LinkedList();
+    this.noV = new RecyclerView.c()
     {
-      public final void as(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void at(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(131533);
         if (a.a(a.this).isEmpty()) {}
         for (int i = 0;; i = 1)
         {
-          a.this.ao(i + paramAnonymousInt1, paramAnonymousInt2);
+          a.this.ap(i + paramAnonymousInt1, paramAnonymousInt2);
           AppMethodBeat.o(131533);
-          return;
-        }
-      }
-      
-      public final void at(int paramAnonymousInt1, int paramAnonymousInt2)
-      {
-        AppMethodBeat.i(131535);
-        if (a.a(a.this).isEmpty()) {}
-        for (int i = 0;; i = 1)
-        {
-          a.this.aq(i + paramAnonymousInt1, paramAnonymousInt2);
-          AppMethodBeat.o(131535);
           return;
         }
       }
       
       public final void au(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(131536);
+        AppMethodBeat.i(131535);
         if (a.a(a.this).isEmpty()) {}
         for (int i = 0;; i = 1)
         {
           a.this.ar(i + paramAnonymousInt1, paramAnonymousInt2);
+          AppMethodBeat.o(131535);
+          return;
+        }
+      }
+      
+      public final void av(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(131536);
+        if (a.a(a.this).isEmpty()) {}
+        for (int i = 0;; i = 1)
+        {
+          a.this.as(i + paramAnonymousInt1, paramAnonymousInt2);
           AppMethodBeat.o(131536);
           return;
         }
@@ -106,7 +106,7 @@ final class a
           }
           for (;;)
           {
-            locala.ap(paramAnonymousInt3 + paramAnonymousInt1, i + paramAnonymousInt2);
+            locala.aq(paramAnonymousInt3 + paramAnonymousInt1, i + paramAnonymousInt2);
             AppMethodBeat.o(169241);
             return;
             paramAnonymousInt3 = 1;
@@ -115,14 +115,14 @@ final class a
             i = 1;
           }
         }
-        a.this.arg.notifyChanged();
+        a.this.asY.notifyChanged();
         AppMethodBeat.o(169241);
       }
       
       public final void onChanged()
       {
         AppMethodBeat.i(131532);
-        a.this.arg.notifyChanged();
+        a.this.asY.notifyChanged();
         AppMethodBeat.o(131532);
       }
     };
@@ -135,14 +135,14 @@ final class a
     Iterator localIterator;
     if (paramInt == 2147483646)
     {
-      if (this.mOs != null) {
-        this.mOs.removeAllViews();
+      if (this.noP != null) {
+        this.noP.removeAllViews();
       }
       paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131495734, paramViewGroup, false);
-      this.mOs = paramViewGroup;
-      localIterator = this.mOv.iterator();
+      this.noP = paramViewGroup;
+      localIterator = this.noS.iterator();
       while (localIterator.hasNext()) {
-        paramViewGroup.addView((View)localIterator.next(), mOr);
+        paramViewGroup.addView((View)localIterator.next(), noO);
       }
       paramViewGroup = new a(paramViewGroup);
       AppMethodBeat.o(131548);
@@ -150,20 +150,20 @@ final class a
     }
     if (paramInt == 2147483647)
     {
-      if (this.mOt != null) {
-        this.mOt.removeAllViews();
+      if (this.noQ != null) {
+        this.noQ.removeAllViews();
       }
       paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131495734, paramViewGroup, false);
-      this.mOt = paramViewGroup;
-      localIterator = this.mOu.iterator();
+      this.noQ = paramViewGroup;
+      localIterator = this.noR.iterator();
       while (localIterator.hasNext()) {
-        paramViewGroup.addView((View)localIterator.next(), mOr);
+        paramViewGroup.addView((View)localIterator.next(), noO);
       }
       paramViewGroup = new a(paramViewGroup);
       AppMethodBeat.o(131548);
       return paramViewGroup;
     }
-    paramViewGroup = this.abe.a(paramViewGroup, paramInt);
+    paramViewGroup = this.acW.a(paramViewGroup, paramInt);
     AppMethodBeat.o(131548);
     return paramViewGroup;
   }
@@ -171,46 +171,55 @@ final class a
   public final void a(final RecyclerView.w paramw, final int paramInt)
   {
     AppMethodBeat.i(131546);
-    if ((!this.mOu.isEmpty()) && (paramInt == 0))
+    if ((!this.noR.isEmpty()) && (paramInt == 0))
     {
       AppMethodBeat.o(131546);
       return;
     }
-    if ((!this.mOv.isEmpty()) && (paramInt == getItemCount() - 1))
+    if ((!this.noS.isEmpty()) && (paramInt == getItemCount() - 1))
     {
       AppMethodBeat.o(131546);
       return;
     }
-    if (this.mOu.isEmpty()) {}
+    if (this.noR.isEmpty()) {}
     for (int i = 0;; i = 1)
     {
       paramInt -= i;
-      this.abe.a(paramw, paramInt);
-      if (this.mOw != null) {
-        paramw.asD.setOnClickListener(new View.OnClickListener()
+      this.acW.a(paramw, paramInt);
+      if (this.noT != null) {
+        paramw.auu.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(131538);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/recyclerview/FixedRecyclerViewAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
             if (a.b(a.this) != null) {
-              a.b(a.this).R(paramw.asD, paramInt);
+              a.b(a.this).R(paramw.auu, paramInt);
             }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/recyclerview/FixedRecyclerViewAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(131538);
           }
         });
       }
-      if (this.mOx != null) {
-        paramw.asD.setOnLongClickListener(new View.OnLongClickListener()
+      if (this.noU != null) {
+        paramw.auu.setOnLongClickListener(new View.OnLongClickListener()
         {
           public final boolean onLongClick(View paramAnonymousView)
           {
             AppMethodBeat.i(131539);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/recyclerview/FixedRecyclerViewAdapter$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
             if (a.c(a.this) != null)
             {
-              boolean bool = a.c(a.this).S(paramw.asD, paramInt);
+              boolean bool = a.c(a.this).S(paramw.auu, paramInt);
+              com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/appbrand/widget/recyclerview/FixedRecyclerViewAdapter$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
               AppMethodBeat.o(131539);
               return bool;
             }
+            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/appbrand/widget/recyclerview/FixedRecyclerViewAdapter$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
             AppMethodBeat.o(131539);
             return false;
           }
@@ -224,46 +233,55 @@ final class a
   public final void a(final RecyclerView.w paramw, final int paramInt, List<Object> paramList)
   {
     AppMethodBeat.i(131547);
-    if ((!this.mOu.isEmpty()) && (paramInt == 0))
+    if ((!this.noR.isEmpty()) && (paramInt == 0))
     {
       AppMethodBeat.o(131547);
       return;
     }
-    if ((!this.mOv.isEmpty()) && (paramInt == getItemCount() - 1))
+    if ((!this.noS.isEmpty()) && (paramInt == getItemCount() - 1))
     {
       AppMethodBeat.o(131547);
       return;
     }
-    if (this.mOu.isEmpty()) {}
+    if (this.noR.isEmpty()) {}
     for (int i = 0;; i = 1)
     {
       paramInt -= i;
-      this.abe.a(paramw, paramInt, paramList);
-      if (this.mOw != null) {
-        paramw.asD.setOnClickListener(new View.OnClickListener()
+      this.acW.a(paramw, paramInt, paramList);
+      if (this.noT != null) {
+        paramw.auu.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(131540);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/recyclerview/FixedRecyclerViewAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
             if (a.b(a.this) != null) {
-              a.b(a.this).R(paramw.asD, paramInt);
+              a.b(a.this).R(paramw.auu, paramInt);
             }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/recyclerview/FixedRecyclerViewAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(131540);
           }
         });
       }
-      if (this.mOx != null) {
-        paramw.asD.setOnLongClickListener(new View.OnLongClickListener()
+      if (this.noU != null) {
+        paramw.auu.setOnLongClickListener(new View.OnLongClickListener()
         {
           public final boolean onLongClick(View paramAnonymousView)
           {
             AppMethodBeat.i(131541);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/recyclerview/FixedRecyclerViewAdapter$5", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
             if (a.c(a.this) != null)
             {
-              boolean bool = a.c(a.this).S(paramw.asD, paramInt);
+              boolean bool = a.c(a.this).S(paramw.auu, paramInt);
+              com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/appbrand/widget/recyclerview/FixedRecyclerViewAdapter$5", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
               AppMethodBeat.o(131541);
               return bool;
             }
+            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/appbrand/widget/recyclerview/FixedRecyclerViewAdapter$5", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
             AppMethodBeat.o(131541);
             return false;
           }
@@ -277,15 +295,15 @@ final class a
   public final void addFooterView(View paramView)
   {
     AppMethodBeat.i(131550);
-    this.mOv.add(paramView);
-    ao(getItemCount() - 1, 1);
+    this.noS.add(paramView);
+    ap(getItemCount() - 1, 1);
     AppMethodBeat.o(131550);
   }
   
-  public final int bBE()
+  public final int bFG()
   {
     AppMethodBeat.i(131549);
-    int i = this.mOv.size();
+    int i = this.noS.size();
     AppMethodBeat.o(131549);
     return i;
   }
@@ -293,31 +311,31 @@ final class a
   public final void c(int paramInt, View paramView)
   {
     AppMethodBeat.i(131551);
-    this.mOv.add(paramInt, paramView);
-    ao(getItemCount() - 1, 1);
+    this.noS.add(paramInt, paramView);
+    ap(getItemCount() - 1, 1);
     AppMethodBeat.o(131551);
   }
   
-  public final void ds(View paramView)
+  public final void du(View paramView)
   {
     AppMethodBeat.i(131552);
-    this.mOv.remove(paramView);
-    ao(getItemCount() - 1, 1);
+    this.noS.remove(paramView);
+    ap(getItemCount() - 1, 1);
     AppMethodBeat.o(131552);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(131545);
-    if (this.abe == null) {}
-    for (int j = 0;; j = this.abe.getItemCount())
+    if (this.acW == null) {}
+    for (int j = 0;; j = this.acW.getItemCount())
     {
       int i = j;
-      if (!this.mOu.isEmpty()) {
+      if (!this.noR.isEmpty()) {
         i = j + 1;
       }
       j = i;
-      if (!this.mOv.isEmpty()) {
+      if (!this.noS.isEmpty()) {
         j = i + 1;
       }
       AppMethodBeat.o(131545);
@@ -341,14 +359,14 @@ final class a
       AppMethodBeat.o(131544);
       return l;
     }
-    if (!this.abe.arh)
+    if (!this.acW.asZ)
     {
       l = paramInt;
       AppMethodBeat.o(131544);
       return l;
     }
-    RecyclerView.a locala = this.abe;
-    if (this.mOu.isEmpty()) {}
+    RecyclerView.a locala = this.acW;
+    if (this.noR.isEmpty()) {}
     for (int i = 0;; i = 1)
     {
       l = locala.getItemId(paramInt - i);
@@ -360,18 +378,18 @@ final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(131543);
-    if ((!this.mOu.isEmpty()) && (paramInt == 0))
+    if ((!this.noR.isEmpty()) && (paramInt == 0))
     {
       AppMethodBeat.o(131543);
       return 2147483647;
     }
-    if ((!this.mOv.isEmpty()) && (paramInt == getItemCount() - 1))
+    if ((!this.noS.isEmpty()) && (paramInt == getItemCount() - 1))
     {
       AppMethodBeat.o(131543);
       return 2147483646;
     }
-    RecyclerView.a locala = this.abe;
-    if (this.mOu.isEmpty()) {}
+    RecyclerView.a locala = this.acW;
+    if (this.noR.isEmpty()) {}
     for (int i = 0;; i = 1)
     {
       paramInt = locala.getItemViewType(paramInt - i);
@@ -391,7 +409,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recyclerview.a
  * JD-Core Version:    0.7.0.1
  */

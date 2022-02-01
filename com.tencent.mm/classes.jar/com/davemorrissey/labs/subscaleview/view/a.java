@@ -4,28 +4,26 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
+import com.tencent.mm.vfs.e;
 
 public final class a
 {
-  final Integer aMM;
-  public boolean aMN;
-  public int aMO;
-  public int aMP;
-  public Rect aMQ;
-  boolean aMR;
+  private final e aXd;
+  final Integer aXe;
+  public boolean aXf;
+  public int aXg;
+  public int aXh;
+  public Rect aXi;
+  boolean aXj;
   public final Bitmap bitmap;
-  public final Uri uri;
   
   a(int paramInt)
   {
     AppMethodBeat.i(157373);
     this.bitmap = null;
-    this.uri = null;
-    this.aMM = Integer.valueOf(paramInt);
-    this.aMN = true;
+    this.aXd = null;
+    this.aXe = Integer.valueOf(paramInt);
+    this.aXf = true;
     AppMethodBeat.o(157373);
   }
   
@@ -33,45 +31,24 @@ public final class a
   {
     AppMethodBeat.i(157371);
     this.bitmap = paramBitmap;
-    this.uri = null;
-    this.aMM = null;
-    this.aMN = false;
-    this.aMO = paramBitmap.getWidth();
-    this.aMP = paramBitmap.getHeight();
-    this.aMR = true;
+    this.aXd = null;
+    this.aXe = null;
+    this.aXf = false;
+    this.aXg = paramBitmap.getWidth();
+    this.aXh = paramBitmap.getHeight();
+    this.aXj = true;
     AppMethodBeat.o(157371);
   }
   
-  private a(Uri paramUri)
+  private a(e parame)
   {
-    AppMethodBeat.i(157372);
-    String str = paramUri.toString();
-    Uri localUri1 = paramUri;
-    if (str.startsWith("file:///"))
-    {
-      localUri1 = paramUri;
-      if (new File(str.substring(7)).exists()) {}
-    }
-    try
-    {
-      localUri1 = Uri.parse(URLDecoder.decode(str, "UTF-8"));
-      this.bitmap = null;
-      this.uri = localUri1;
-      this.aMM = null;
-      this.aMN = true;
-      AppMethodBeat.o(157372);
-      return;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
-      {
-        Uri localUri2 = paramUri;
-      }
-    }
+    this.bitmap = null;
+    this.aXd = parame;
+    this.aXe = null;
+    this.aXf = true;
   }
   
-  public static a W(String paramString)
+  public static a aP(String paramString)
   {
     AppMethodBeat.i(157374);
     if (paramString == null)
@@ -80,16 +57,7 @@ public final class a
       AppMethodBeat.o(157374);
       throw paramString;
     }
-    String str = paramString;
-    if (!paramString.contains("://"))
-    {
-      str = paramString;
-      if (paramString.startsWith("/")) {
-        str = paramString.substring(1);
-      }
-      str = "file:///".concat(String.valueOf(str));
-    }
-    paramString = new a(Uri.parse(str));
+    paramString = new a(new e(paramString));
     AppMethodBeat.o(157374);
     return paramString;
   }
@@ -108,15 +76,23 @@ public final class a
     return paramBitmap;
   }
   
-  public final a ql()
+  public final Uri getUri()
   {
-    this.aMN = true;
+    if (this.aXd == null) {
+      return null;
+    }
+    return this.aXd.mUri;
+  }
+  
+  public final a rJ()
+  {
+    this.aXf = true;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.davemorrissey.labs.subscaleview.view.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,92 +6,129 @@ import com.tencent.mm.plugin.report.a;
 public final class ew
   extends a
 {
-  private long dGn = 0L;
-  private long dVO = 0L;
-  private long dVP = 0L;
-  private int dVQ = 0;
-  private long dVR = 0L;
-  private long dVS = 0L;
-  private long dVT = 0L;
-  private long dVU = 0L;
-  private long dVV = 0L;
-  private long dVW = 0L;
-  private long dVX = 0L;
-  private long dVY = 0L;
-  private long dVZ = 0L;
+  public String dUR;
+  public long dUX;
+  public long eca;
+  private String ejk;
+  public long ejl;
+  public long ejm;
+  public long ejn;
+  public long ejo;
+  public long ejp;
+  public long ejq;
+  public long ejr;
+  public long ejs;
+  public long ejt;
+  public long eju;
+  public long ejv;
+  public long ejw;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(118498);
+    AppMethodBeat.i(94828);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dVO);
+    ((StringBuffer)localObject).append(this.ejk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVP);
+    ((StringBuffer)localObject).append(this.eca);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVQ);
+    ((StringBuffer)localObject).append(this.dUR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dGn);
+    ((StringBuffer)localObject).append(this.dUX);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVR);
+    ((StringBuffer)localObject).append(this.ejl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVS);
+    ((StringBuffer)localObject).append(this.ejm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVT);
+    ((StringBuffer)localObject).append(this.ejn);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVU);
+    ((StringBuffer)localObject).append(this.ejo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVV);
+    ((StringBuffer)localObject).append(this.ejp);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVW);
+    ((StringBuffer)localObject).append(this.ejq);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVX);
+    ((StringBuffer)localObject).append(this.ejr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVY);
+    ((StringBuffer)localObject).append(this.ejs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVZ);
+    ((StringBuffer)localObject).append(this.ejt);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eju);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ejv);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ejw);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(118498);
+    awz((String)localObject);
+    AppMethodBeat.o(94828);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(118499);
+    AppMethodBeat.i(94829);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ImageCount:").append(this.dVO);
+    ((StringBuffer)localObject).append("ToUsername:").append(this.ejk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RemuxCostTime:").append(this.dVP);
+    ((StringBuffer)localObject).append("Source:").append(this.eca);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RemuxSucc:").append(this.dVQ);
+    ((StringBuffer)localObject).append("FeedId:").append(this.dUR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoSize:").append(this.dGn);
+    ((StringBuffer)localObject).append("FeedType:").append(this.dUX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("BitRateMode:").append(this.dVR);
+    ((StringBuffer)localObject).append("IfAddText:").append(this.ejl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Fps:").append(this.dVS);
+    ((StringBuffer)localObject).append("FeedMediaCount:").append(this.ejm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("BitRate:").append(this.dVT);
+    ((StringBuffer)localObject).append("IsClickedFromAlbum:").append(this.ejn);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IFrameInterval:").append(this.dVU);
+    ((StringBuffer)localObject).append("IsClickIntoDetail:").append(this.ejo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ContainMusic:").append(this.dVV);
+    ((StringBuffer)localObject).append("BrowsedPicCountAtDetail:").append(this.ejp);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OutputWidth:").append(this.dVW);
+    ((StringBuffer)localObject).append("BrowsedPicCountAtGallery:").append(this.ejq);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OutputHeight:").append(this.dVX);
+    ((StringBuffer)localObject).append("BrowseTimeAtDetail:").append(this.ejr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SupportCQ:").append(this.dVY);
+    ((StringBuffer)localObject).append("BrowseTimeAtGallery:").append(this.ejs);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("useX264:").append(this.dVZ);
+    ((StringBuffer)localObject).append("CanViewCommentCount:").append(this.ejt);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("CanViewLikeCount:").append(this.eju);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("CommentFlag:").append(this.ejv);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("LikeFlag:").append(this.ejw);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118499);
+    AppMethodBeat.o(94829);
     return localObject;
+  }
+  
+  public final ew Tl()
+  {
+    this.ejl = 1L;
+    return this;
   }
   
   public final int getId()
   {
-    return 17653;
+    return 18849;
+  }
+  
+  public final ew od(String paramString)
+  {
+    AppMethodBeat.i(94826);
+    this.ejk = t("ToUsername", paramString, true);
+    AppMethodBeat.o(94826);
+    return this;
+  }
+  
+  public final ew oe(String paramString)
+  {
+    AppMethodBeat.i(94827);
+    this.dUR = t("FeedId", paramString, true);
+    AppMethodBeat.o(94827);
+    return this;
   }
 }
 

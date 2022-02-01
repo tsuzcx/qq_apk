@@ -1,16 +1,18 @@
 package android.support.v7.d;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.util.SparseBooleanArray;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 public final class b
 {
-  static final b Zr = new b()
+  static final b abg = new b()
   {
     public final boolean e(float[] paramAnonymousArrayOfFloat)
     {
@@ -49,19 +51,19 @@ public final class b
       return false;
     }
   };
-  private final List<b.d> Zm;
-  private final List<c> Zn;
-  private final Map<c, b.d> Zo;
-  private final SparseBooleanArray Zp;
-  public final b.d Zq;
+  private final List<d> abb;
+  private final List<c> abc;
+  private final Map<c, d> abd;
+  private final SparseBooleanArray abe;
+  public final d abf;
   
-  b(List<b.d> paramList, List<c> paramList1)
+  b(List<d> paramList, List<c> paramList1)
   {
-    this.Zm = paramList;
-    this.Zn = paramList1;
-    this.Zp = new SparseBooleanArray();
-    this.Zo = new android.support.v4.e.a();
-    this.Zq = gK();
+    this.abb = paramList;
+    this.abc = paramList1;
+    this.abe = new SparseBooleanArray();
+    this.abd = new android.support.v4.e.a();
+    this.abf = hb();
   }
   
   public static a d(Bitmap paramBitmap)
@@ -69,19 +71,19 @@ public final class b
     return new a(paramBitmap);
   }
   
-  private b.d gK()
+  private d hb()
   {
     int j = -2147483648;
     Object localObject = null;
-    int k = this.Zm.size();
+    int k = this.abb.size();
     int i = 0;
     if (i < k)
     {
-      b.d locald = (b.d)this.Zm.get(i);
-      if (locald.Ze <= j) {
+      d locald = (d)this.abb.get(i);
+      if (locald.aaT <= j) {
         break label67;
       }
-      j = locald.Ze;
+      j = locald.aaT;
       localObject = locald;
     }
     label67:
@@ -93,9 +95,9 @@ public final class b
     }
   }
   
-  final void gJ()
+  final void ha()
   {
-    int m = this.Zn.size();
+    int m = this.abc.size();
     int i = 0;
     c localc;
     float f1;
@@ -106,16 +108,16 @@ public final class b
     Object localObject;
     Map localMap;
     label179:
-    b.d locald;
+    d locald;
     if (i < m)
     {
-      localc = (c)this.Zn.get(i);
+      localc = (c)this.abc.get(i);
       f1 = 0.0F;
       j = 0;
-      k = localc.ZP.length;
+      k = localc.abF.length;
       while (j < k)
       {
-        f3 = localc.ZP[j];
+        f3 = localc.abF[j];
         f2 = f1;
         if (f3 > 0.0F) {
           f2 = f1 + f3;
@@ -126,57 +128,57 @@ public final class b
       if (f1 != 0.0F)
       {
         j = 0;
-        k = localc.ZP.length;
+        k = localc.abF.length;
         while (j < k)
         {
-          if (localc.ZP[j] > 0.0F)
+          if (localc.abF[j] > 0.0F)
           {
-            localObject = localc.ZP;
+            localObject = localc.abF;
             localObject[j] /= f1;
           }
           j += 1;
         }
       }
-      localMap = this.Zo;
+      localMap = this.abd;
       f1 = 0.0F;
       localObject = null;
-      int n = this.Zm.size();
+      int n = this.abb.size();
       j = 0;
       if (j < n)
       {
-        locald = (b.d)this.Zm.get(j);
-        float[] arrayOfFloat = locald.gN();
-        if ((arrayOfFloat[1] >= localc.ZN[0]) && (arrayOfFloat[1] <= localc.ZN[2]) && (arrayOfFloat[2] >= localc.ZO[0]) && (arrayOfFloat[2] <= localc.ZO[2]) && (!this.Zp.get(locald.ZC)))
+        locald = (d)this.abb.get(j);
+        float[] arrayOfFloat = locald.he();
+        if ((arrayOfFloat[1] >= localc.abD[0]) && (arrayOfFloat[1] <= localc.abD[2]) && (arrayOfFloat[2] >= localc.abE[0]) && (arrayOfFloat[2] <= localc.abE[2]) && (!this.abe.get(locald.abs)))
         {
           k = 1;
           label287:
           if (k == 0) {
             break label531;
           }
-          arrayOfFloat = locald.gN();
+          arrayOfFloat = locald.he();
           f2 = 0.0F;
           f3 = 0.0F;
-          if (this.Zq == null) {
+          if (this.abf == null) {
             break label470;
           }
-          k = this.Zq.Ze;
+          k = this.abf.aaT;
           label319:
-          if (localc.ZP[0] > 0.0F) {
-            f2 = localc.ZP[0] * (1.0F - Math.abs(arrayOfFloat[1] - localc.ZN[1]));
+          if (localc.abF[0] > 0.0F) {
+            f2 = localc.abF[0] * (1.0F - Math.abs(arrayOfFloat[1] - localc.abD[1]));
           }
-          if (localc.ZP[1] > 0.0F) {
-            f3 = localc.ZP[1] * (1.0F - Math.abs(arrayOfFloat[2] - localc.ZO[1]));
+          if (localc.abF[1] > 0.0F) {
+            f3 = localc.abF[1] * (1.0F - Math.abs(arrayOfFloat[2] - localc.abE[1]));
           }
-          if (localc.ZP[2] <= 0.0F) {
+          if (localc.abF[2] <= 0.0F) {
             break label534;
           }
-          f4 = localc.ZP[2];
+          f4 = localc.abF[2];
         }
       }
     }
     label531:
     label534:
-    for (float f4 = locald.Ze / k * f4;; f4 = 0.0F)
+    for (float f4 = locald.aaT / k * f4;; f4 = 0.0F)
     {
       f2 = f4 + (f2 + f3);
       if ((localObject == null) || (f2 > f1))
@@ -193,13 +195,13 @@ public final class b
         label470:
         k = 1;
         break label319;
-        if ((localObject != null) && (localc.ZQ)) {
-          this.Zp.append(((b.d)localObject).ZC, true);
+        if ((localObject != null) && (localc.abG)) {
+          this.abe.append(((d)localObject).abs, true);
         }
         localMap.put(localc, localObject);
         i += 1;
         break;
-        this.Zp.clear();
+        this.abe.clear();
         return;
       }
     }
@@ -207,13 +209,13 @@ public final class b
   
   public static final class a
   {
-    private final List<b.d> Zm;
-    private final List<c> Zn = new ArrayList();
-    private int Zs = 16;
-    private int Zt = 12544;
-    private int Zu = -1;
-    private final List<b.b> Zv = new ArrayList();
-    private Rect Zw;
+    private final List<b.d> abb;
+    private final List<c> abc = new ArrayList();
+    private int abh = 16;
+    private int abj = 12544;
+    private int abk = -1;
+    private final List<b.b> abl = new ArrayList();
+    private Rect abm;
     public final Bitmap mBitmap;
     
     public a(Bitmap paramBitmap)
@@ -221,15 +223,15 @@ public final class b
       if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
         throw new IllegalArgumentException("Bitmap is not valid");
       }
-      this.Zv.add(b.Zr);
+      this.abl.add(b.abg);
       this.mBitmap = paramBitmap;
-      this.Zm = null;
-      this.Zn.add(c.ZH);
-      this.Zn.add(c.ZI);
-      this.Zn.add(c.ZJ);
-      this.Zn.add(c.ZK);
-      this.Zn.add(c.ZL);
-      this.Zn.add(c.ZM);
+      this.abb = null;
+      this.abc.add(c.abx);
+      this.abc.add(c.aby);
+      this.abc.add(c.abz);
+      this.abc.add(c.abA);
+      this.abc.add(c.abB);
+      this.abc.add(c.abC);
     }
     
     private int[] e(Bitmap paramBitmap)
@@ -239,21 +241,21 @@ public final class b
       int k = paramBitmap.getHeight();
       int[] arrayOfInt = new int[j * k];
       paramBitmap.getPixels(arrayOfInt, 0, j, 0, 0, j, k);
-      if (this.Zw == null) {
+      if (this.abm == null) {
         return arrayOfInt;
       }
-      k = this.Zw.width();
-      int m = this.Zw.height();
+      k = this.abm.width();
+      int m = this.abm.height();
       paramBitmap = new int[k * m];
       while (i < m)
       {
-        System.arraycopy(arrayOfInt, (this.Zw.top + i) * j + this.Zw.left, paramBitmap, i * k, k);
+        System.arraycopy(arrayOfInt, (this.abm.top + i) * j + this.abm.left, paramBitmap, i * k, k);
         i += 1;
       }
       return paramBitmap;
     }
     
-    public final b gL()
+    public final b hc()
     {
       double d2;
       int i;
@@ -264,17 +266,17 @@ public final class b
       {
         localObject1 = this.mBitmap;
         d2 = -1.0D;
-        if (this.Zt > 0)
+        if (this.abj > 0)
         {
           i = ((Bitmap)localObject1).getWidth() * ((Bitmap)localObject1).getHeight();
           d1 = d2;
-          if (i > this.Zt) {
-            d1 = Math.sqrt(this.Zt / i);
+          if (i > this.abj) {
+            d1 = Math.sqrt(this.abj / i);
           }
           if (d1 > 0.0D) {
             break label323;
           }
-          localObject2 = this.Zw;
+          localObject2 = this.abm;
           if ((localObject1 != this.mBitmap) && (localObject2 != null))
           {
             d1 = ((Bitmap)localObject1).getWidth() / this.mBitmap.getWidth();
@@ -284,8 +286,8 @@ public final class b
             ((Rect)localObject2).bottom = Math.min((int)Math.ceil(d1 * ((Rect)localObject2).bottom), ((Bitmap)localObject1).getHeight());
           }
           int[] arrayOfInt = e((Bitmap)localObject1);
-          i = this.Zs;
-          if (!this.Zv.isEmpty()) {
+          i = this.abh;
+          if (!this.abl.isEmpty()) {
             break label358;
           }
           localObject2 = null;
@@ -296,29 +298,29 @@ public final class b
           }
         }
       }
-      for (Object localObject1 = ((a)localObject2).YX;; localObject1 = this.Zm)
+      for (Object localObject1 = ((a)localObject2).aaM;; localObject1 = this.abb)
       {
-        localObject1 = new b((List)localObject1, this.Zn);
-        ((b)localObject1).gJ();
+        localObject1 = new b((List)localObject1, this.abc);
+        ((b)localObject1).ha();
         return localObject1;
         d1 = d2;
-        if (this.Zu <= 0) {
+        if (this.abk <= 0) {
           break;
         }
         i = Math.max(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight());
         d1 = d2;
-        if (i <= this.Zu) {
+        if (i <= this.abk) {
           break;
         }
-        d1 = this.Zu / i;
+        d1 = this.abk / i;
         break;
         label323:
         localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, (int)Math.ceil(((Bitmap)localObject1).getWidth() * d1), (int)Math.ceil(d1 * ((Bitmap)localObject1).getHeight()), false);
         break label67;
         label358:
-        localObject2 = (b.b[])this.Zv.toArray(new b.b[this.Zv.size()]);
+        localObject2 = (b.b[])this.abl.toArray(new b.b[this.abl.size()]);
         break label216;
-        if (this.Zm == null) {
+        if (this.abb == null) {
           break label403;
         }
       }
@@ -336,10 +338,119 @@ public final class b
   {
     public abstract void a(b paramb);
   }
+  
+  public static final class d
+  {
+    final int aaT;
+    private final int abp;
+    private final int abq;
+    private final int abr;
+    public final int abs;
+    private boolean abt;
+    private int abu;
+    private int abv;
+    private float[] abw;
+    
+    public d(int paramInt1, int paramInt2)
+    {
+      this.abp = Color.red(paramInt1);
+      this.abq = Color.green(paramInt1);
+      this.abr = Color.blue(paramInt1);
+      this.abs = paramInt1;
+      this.aaT = paramInt2;
+    }
+    
+    private void hg()
+    {
+      int j;
+      if (!this.abt)
+      {
+        i = android.support.v4.graphics.b.d(-1, this.abs, 4.5F);
+        j = android.support.v4.graphics.b.d(-1, this.abs, 3.0F);
+        if ((i != -1) && (j != -1))
+        {
+          this.abv = android.support.v4.graphics.b.x(-1, i);
+          this.abu = android.support.v4.graphics.b.x(-1, j);
+          this.abt = true;
+        }
+      }
+      else
+      {
+        return;
+      }
+      int m = android.support.v4.graphics.b.d(-16777216, this.abs, 4.5F);
+      int k = android.support.v4.graphics.b.d(-16777216, this.abs, 3.0F);
+      if ((m != -1) && (k != -1))
+      {
+        this.abv = android.support.v4.graphics.b.x(-16777216, m);
+        this.abu = android.support.v4.graphics.b.x(-16777216, k);
+        this.abt = true;
+        return;
+      }
+      if (i != -1)
+      {
+        i = android.support.v4.graphics.b.x(-1, i);
+        this.abv = i;
+        if (j == -1) {
+          break label175;
+        }
+      }
+      label175:
+      for (int i = android.support.v4.graphics.b.x(-1, j);; i = android.support.v4.graphics.b.x(-16777216, k))
+      {
+        this.abu = i;
+        this.abt = true;
+        return;
+        i = android.support.v4.graphics.b.x(-16777216, m);
+        break;
+      }
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      if (this == paramObject) {}
+      do
+      {
+        return true;
+        if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+          return false;
+        }
+        paramObject = (d)paramObject;
+      } while ((this.aaT == paramObject.aaT) && (this.abs == paramObject.abs));
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      return this.abs * 31 + this.aaT;
+    }
+    
+    public final float[] he()
+    {
+      if (this.abw == null) {
+        this.abw = new float[3];
+      }
+      android.support.v4.graphics.b.a(this.abp, this.abq, this.abr, this.abw);
+      return this.abw;
+    }
+    
+    public final int hf()
+    {
+      hg();
+      return this.abv;
+    }
+    
+    public final String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder(getClass().getSimpleName()).append(" [RGB: #").append(Integer.toHexString(this.abs)).append(']').append(" [HSL: ").append(Arrays.toString(he())).append(']').append(" [Population: ").append(this.aaT).append(']').append(" [Title Text: #");
+      hg();
+      return Integer.toHexString(this.abu) + ']' + " [Body Text: #" + Integer.toHexString(hf()) + ']';
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v7.d.b
  * JD-Core Version:    0.7.0.1
  */

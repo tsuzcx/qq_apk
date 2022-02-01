@@ -1,17 +1,17 @@
 package com.tencent.mm.loader.b.a;
 
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.io.OutputStream;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/cache/disk/DiskFunction;", "", "()V", "TAG", "", "compress", "", "bm", "Landroid/graphics/Bitmap;", "format", "Landroid/graphics/Bitmap$CompressFormat;", "quality", "", "stream", "Ljava/io/OutputStream;", "obtainOutputStream", "filePath", "save", "data", "", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/cache/disk/DiskFunction;", "", "()V", "TAG", "", "compress", "", "bm", "Landroid/graphics/Bitmap;", "format", "Landroid/graphics/Bitmap$CompressFormat;", "quality", "", "stream", "Ljava/io/OutputStream;", "obtainOutputStream", "filePath", "save", "data", "", "libimageloader_release"})
 public final class c
 {
   private static final String TAG = "MicroMsg.Loader.DiskFunction";
-  public static final c gJp = new c();
+  public static final c hda = new c();
   
   /* Error */
   public static boolean a(String paramString, OutputStream paramOutputStream)
@@ -21,107 +21,127 @@ public final class c
     //   1: astore_3
     //   2: aload_0
     //   3: ldc 97
-    //   5: invokestatic 57	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   5: invokestatic 57	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   8: aload_1
     //   9: ldc 59
-    //   11: invokestatic 57	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   11: invokestatic 57	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   14: aload_0
-    //   15: invokestatic 103	com/tencent/mm/vfs/i:eA	(Ljava/lang/String;)Z
-    //   18: ifeq +74 -> 92
+    //   15: invokestatic 103	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
+    //   18: ifeq +106 -> 124
     //   21: aload_0
     //   22: invokestatic 107	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   25: astore_0
-    //   26: aload_0
-    //   27: ifnull +65 -> 92
-    //   30: aload_0
-    //   31: checkcast 109	java/io/Closeable
-    //   34: astore 4
-    //   36: aload 4
-    //   38: checkcast 111	java/io/InputStream
-    //   41: astore_0
-    //   42: sipush 4096
-    //   45: newarray byte
-    //   47: astore 5
-    //   49: aload_0
-    //   50: aload 5
-    //   52: invokevirtual 115	java/io/InputStream:read	([B)I
-    //   55: istore_2
-    //   56: iload_2
-    //   57: iconst_m1
-    //   58: if_icmpeq +26 -> 84
-    //   61: aload_1
-    //   62: aload 5
-    //   64: iconst_0
-    //   65: iload_2
-    //   66: invokevirtual 121	java/io/OutputStream:write	([BII)V
-    //   69: goto -20 -> 49
-    //   72: astore_1
-    //   73: aload_1
-    //   74: athrow
-    //   75: astore_0
-    //   76: aload 4
-    //   78: aload_1
-    //   79: invokestatic 126	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   82: aload_0
-    //   83: athrow
-    //   84: aload 4
-    //   86: aconst_null
-    //   87: invokestatic 126	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   90: iconst_1
-    //   91: ireturn
-    //   92: iconst_0
-    //   93: ireturn
-    //   94: astore_0
-    //   95: aload_3
-    //   96: astore_1
-    //   97: goto -21 -> 76
+    //   25: astore 4
+    //   27: aload 4
+    //   29: ifnull +95 -> 124
+    //   32: aload 4
+    //   34: checkcast 109	java/io/Closeable
+    //   37: astore 4
+    //   39: aload 4
+    //   41: checkcast 111	java/io/InputStream
+    //   44: astore 5
+    //   46: sipush 4096
+    //   49: newarray byte
+    //   51: astore 6
+    //   53: aload 5
+    //   55: aload 6
+    //   57: invokevirtual 115	java/io/InputStream:read	([B)I
+    //   60: istore_2
+    //   61: iload_2
+    //   62: iconst_m1
+    //   63: if_icmpeq +63 -> 126
+    //   66: aload_1
+    //   67: aload 6
+    //   69: iconst_0
+    //   70: iload_2
+    //   71: invokevirtual 121	java/io/OutputStream:write	([BII)V
+    //   74: goto -21 -> 53
+    //   77: astore_3
+    //   78: aload_3
+    //   79: athrow
+    //   80: astore_1
+    //   81: aload 4
+    //   83: aload_3
+    //   84: invokestatic 126	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   87: aload_1
+    //   88: athrow
+    //   89: astore_1
+    //   90: getstatic 132	com/tencent/mm/plugin/report/e:ygI	Lcom/tencent/mm/plugin/report/e;
+    //   93: ldc2_w 133
+    //   96: ldc2_w 135
+    //   99: lconst_1
+    //   100: iconst_0
+    //   101: invokevirtual 140	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
+    //   104: getstatic 41	com/tencent/mm/loader/b/a/c:TAG	Ljava/lang/String;
+    //   107: aload_1
+    //   108: ldc 142
+    //   110: aload_0
+    //   111: invokestatic 148	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   114: invokevirtual 152	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   117: iconst_0
+    //   118: anewarray 4	java/lang/Object
+    //   121: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   124: iconst_0
+    //   125: ireturn
+    //   126: aload 4
+    //   128: aconst_null
+    //   129: invokestatic 126	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   132: iconst_1
+    //   133: ireturn
+    //   134: astore_1
+    //   135: goto -54 -> 81
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	100	0	paramString	String
-    //   0	100	1	paramOutputStream	OutputStream
-    //   55	11	2	i	int
-    //   1	95	3	localObject	Object
-    //   34	51	4	localCloseable	java.io.Closeable
-    //   47	16	5	arrayOfByte	byte[]
+    //   0	138	0	paramString	String
+    //   0	138	1	paramOutputStream	OutputStream
+    //   60	11	2	i	int
+    //   1	1	3	localObject1	Object
+    //   77	7	3	localThrowable	java.lang.Throwable
+    //   25	102	4	localObject2	Object
+    //   44	10	5	localInputStream	java.io.InputStream
+    //   51	17	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   36	49	72	java/lang/Throwable
-    //   49	56	72	java/lang/Throwable
-    //   61	69	72	java/lang/Throwable
-    //   73	75	75	finally
-    //   36	49	94	finally
-    //   49	56	94	finally
-    //   61	69	94	finally
+    //   39	53	77	java/lang/Throwable
+    //   53	61	77	java/lang/Throwable
+    //   66	74	77	java/lang/Throwable
+    //   78	80	80	finally
+    //   21	27	89	java/lang/Throwable
+    //   32	39	89	java/lang/Throwable
+    //   81	89	89	java/lang/Throwable
+    //   126	132	89	java/lang/Throwable
+    //   39	53	134	finally
+    //   53	61	134	finally
+    //   66	74	134	finally
   }
   
   public static boolean a(byte[] paramArrayOfByte, OutputStream paramOutputStream)
   {
-    k.h(paramArrayOfByte, "data");
-    k.h(paramOutputStream, "stream");
+    p.h(paramArrayOfByte, "data");
+    p.h(paramOutputStream, "stream");
     paramOutputStream.write(paramArrayOfByte);
     return true;
   }
   
-  public static OutputStream vg(String paramString)
+  public static OutputStream xX(String paramString)
   {
-    k.h(paramString, "filePath");
+    p.h(paramString, "filePath");
     if (((CharSequence)paramString).length() == 0) {}
     for (int i = 1; i != 0; i = 0) {
       return null;
     }
     try
     {
-      e locale = new e(paramString).fxU();
+      e locale = new e(paramString).fOJ();
       if (locale != null) {
         locale.mkdirs();
       }
-      paramString = i.zA(paramString);
+      paramString = i.Cz(paramString);
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ac.e(TAG, "obtainOutputStream:%s", new Object[] { paramString });
+        ad.e(TAG, "obtainOutputStream:%s", new Object[] { paramString });
         paramString = null;
       }
     }

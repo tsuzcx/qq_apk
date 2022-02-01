@@ -5,20 +5,20 @@ public abstract interface q
 {
   public abstract void a(f paramf);
   
-  public abstract s<? extends q> fUP();
+  public abstract s<? extends q> gmo();
   
-  public abstract a fUT();
+  public abstract a gms();
   
-  public abstract a fUU();
+  public abstract a gmt();
   
-  public abstract int xS();
+  public abstract int zp();
   
   public static abstract interface a
     extends r, Cloneable
   {
     public abstract a d(e parame, g paramg);
     
-    public abstract q fVd();
+    public abstract q gmC();
   }
 }
 

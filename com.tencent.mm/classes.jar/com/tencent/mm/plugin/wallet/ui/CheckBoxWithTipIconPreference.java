@@ -11,10 +11,10 @@ import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 public class CheckBoxWithTipIconPreference
   extends CheckBoxPreference
 {
-  private TextView Bod;
-  private int Boe;
-  private String Bof;
-  private int Bog;
+  private TextView COs;
+  private int COt;
+  private String COu;
+  private int COv;
   
   public CheckBoxWithTipIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,35 +25,35 @@ public class CheckBoxWithTipIconPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(69843);
-    this.Boe = -1;
-    this.Bof = "";
-    this.Bog = 8;
+    this.COt = -1;
+    this.COu = "";
+    this.COv = 8;
     setLayoutResource(2131494891);
     AppMethodBeat.o(69843);
   }
   
-  public final void TD(int paramInt)
+  public final void Vv(int paramInt)
   {
     AppMethodBeat.i(69846);
-    this.Bog = paramInt;
-    if (this.Bod != null) {
-      this.Bod.setVisibility(paramInt);
+    this.COv = paramInt;
+    if (this.COs != null) {
+      this.COs.setVisibility(paramInt);
     }
     AppMethodBeat.o(69846);
   }
   
-  public final void eU(String paramString, int paramInt)
+  public final void fn(String paramString, int paramInt)
   {
     AppMethodBeat.i(69845);
-    this.Boe = paramInt;
-    this.Bof = paramString;
-    if (this.Bod != null)
+    this.COt = paramInt;
+    this.COu = paramString;
+    if (this.COs != null)
     {
-      if (this.Boe > 0) {
-        this.Bod.setBackgroundResource(this.Boe);
+      if (this.COt > 0) {
+        this.COs.setBackgroundResource(this.COt);
       }
-      if (!TextUtils.isEmpty(this.Bof)) {
-        this.Bod.setText(this.Bof);
+      if (!TextUtils.isEmpty(this.COu)) {
+        this.COs.setText(this.COu);
       }
     }
     AppMethodBeat.o(69845);
@@ -63,9 +63,9 @@ public class CheckBoxWithTipIconPreference
   {
     AppMethodBeat.i(69844);
     super.onBindView(paramView);
-    this.Bod = ((TextView)paramView.findViewById(2131305883));
-    eU(this.Bof, this.Boe);
-    TD(this.Bog);
+    this.COs = ((TextView)paramView.findViewById(2131305883));
+    fn(this.COu, this.COt);
+    Vv(this.COv);
     AppMethodBeat.o(69844);
   }
 }

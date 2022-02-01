@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.s.b;
 import java.util.HashSet;
@@ -21,14 +21,14 @@ import java.util.List;
 public class SelectDelMemberUI
   extends SelectMemberUI
 {
-  private int fxp;
+  private int fQC;
   
-  private void WT()
+  private void Zm()
   {
     AppMethodBeat.i(12935);
-    if (this.fzY.size() > 0)
+    if (this.fTo.size() > 0)
     {
-      updateOptionMenuText(1, getString(2131758039) + "(" + this.fzY.size() + ")");
+      updateOptionMenuText(1, getString(2131758039) + "(" + this.fTo.size() + ")");
       enableOptionMenu(1, true);
       AppMethodBeat.o(12935);
       return;
@@ -38,33 +38,33 @@ public class SelectDelMemberUI
     AppMethodBeat.o(12935);
   }
   
-  protected final void WQ()
+  protected final void Zj()
   {
     AppMethodBeat.i(12929);
-    super.WQ();
-    this.fxp = getIntent().getIntExtra("room_member_count", 0);
+    super.Zj();
+    this.fQC = getIntent().getIntExtra("room_member_count", 0);
     AppMethodBeat.o(12929);
   }
   
-  public final boolean WR()
+  public final boolean Zk()
   {
     return true;
   }
   
-  protected final HashSet<String> WU()
+  protected final HashSet<String> Zn()
   {
     AppMethodBeat.i(12932);
-    HashSet localHashSet = super.WU();
-    if (WZ().xB(u.axw()))
+    HashSet localHashSet = super.Zn();
+    if (Zs().Az(u.aAm()))
     {
       AppMethodBeat.o(12932);
       return localHashSet;
     }
-    Iterator localIterator = WZ().aDl().iterator();
+    Iterator localIterator = Zs().aGo().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if ((WZ().aMU(str)) || (WZ().xB(str))) {
+      if ((Zs().aSH(str)) || (Zs().Az(str))) {
         localHashSet.add(str);
       }
     }
@@ -76,7 +76,7 @@ public class SelectDelMemberUI
   {
     AppMethodBeat.i(12934);
     super.a(paramView, paramInt, paramLong);
-    ((SelectMemberUI.c)paramView.getTag()).fAn.performClick();
+    ((SelectMemberUI.c)paramView.getTag()).fTD.performClick();
     AppMethodBeat.o(12934);
   }
   
@@ -92,7 +92,7 @@ public class SelectDelMemberUI
   {
     AppMethodBeat.i(12930);
     super.initView();
-    setMMTitle(getString(2131762697) + "(" + this.fxp + ")");
+    setMMTitle(getString(2131762697) + "(" + this.fQC + ")");
     addTextOptionMenu(1, getString(2131758039), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -104,7 +104,7 @@ public class SelectDelMemberUI
           {
             AppMethodBeat.i(12927);
             paramAnonymous2DialogInterface = new Intent();
-            paramAnonymous2DialogInterface.putExtra("Select_Contact", bs.n(SelectDelMemberUI.a(SelectDelMemberUI.this), ","));
+            paramAnonymous2DialogInterface.putExtra("Select_Contact", bt.m(SelectDelMemberUI.a(SelectDelMemberUI.this), ","));
             SelectDelMemberUI.this.setResult(-1, paramAnonymous2DialogInterface);
             SelectDelMemberUI.this.finish();
             AppMethodBeat.o(12927);
@@ -116,8 +116,8 @@ public class SelectDelMemberUI
         AppMethodBeat.o(12928);
         return false;
       }
-    }, null, s.b.Hon);
-    WT();
+    }, null, s.b.JbT);
+    Zm();
     AppMethodBeat.o(12930);
   }
   
@@ -131,7 +131,7 @@ public class SelectDelMemberUI
   {
     AppMethodBeat.i(12933);
     super.v(paramInt, paramBoolean);
-    WT();
+    Zm();
     AppMethodBeat.o(12933);
   }
 }

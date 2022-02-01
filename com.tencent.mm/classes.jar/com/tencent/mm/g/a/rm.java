@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.sdk.b.b;
 
 public final class rm
   extends b
 {
-  public a duw;
-  
   public rm()
   {
     this((byte)0);
@@ -16,16 +12,8 @@ public final class rm
   
   private rm(byte paramByte)
   {
-    AppMethodBeat.i(125630);
-    this.duw = new a();
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(125630);
-  }
-  
-  public static final class a
-  {
-    public SnsObject dkD;
   }
 }
 

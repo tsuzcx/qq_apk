@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center_horizontal" android:id="@id/f3y" android:src="@drawable/aq9" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/s2" />
+    <com.tencent.mm.plugin.patmsg.ui.AvatarPatTipImageView android:gravity="center_horizontal" android:id="@id/f3y" android:src="@drawable/aq9" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/s2" />
     <ImageView android:gravity="center" android:id="@id/f39" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dr" android:layout_alignLeft="@id/f3y" android:layout_alignTop="@id/f3y" />
     <ImageView android:id="@id/f3a" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_alignRight="@id/f3y" android:layout_alignBottom="@id/f3y" />
     <ImageView android:id="@id/f3_" android:visibility="gone" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/b0k" android:layout_alignRight="@id/f3y" android:layout_alignBottom="@id/f3y" />

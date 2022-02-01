@@ -1,29 +1,29 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.l;
+import com.tencent.mm.al.l;
 
 public final class r$a
   extends l
 {
-  private r.b DJe;
-  private r.c DJf;
-  private boolean vou;
+  private r.b Fol;
+  private r.c Fom;
+  private boolean wtN;
   
   public r$a(boolean paramBoolean)
   {
     AppMethodBeat.i(149112);
-    this.vou = true;
-    this.vou = paramBoolean;
-    this.DJe = new r.b(this.vou);
-    this.DJf = new r.c();
+    this.wtN = true;
+    this.wtN = paramBoolean;
+    this.Fol = new r.b(this.wtN);
+    this.Fom = new r.c();
     AppMethodBeat.o(149112);
   }
   
   public final int getOptions()
   {
     AppMethodBeat.i(149113);
-    if (this.vou)
+    if (this.wtN)
     {
       AppMethodBeat.o(149113);
       return 1;
@@ -35,7 +35,7 @@ public final class r$a
   
   public final int getType()
   {
-    if (this.vou) {
+    if (this.wtN) {
       return 3944;
     }
     return 836;
@@ -43,7 +43,7 @@ public final class r$a
   
   public final String getUri()
   {
-    if (this.vou) {
+    if (this.wtN) {
       return "/cgi-bin/micromsg-bin/fpfreshnl";
     }
     return "/cgi-bin/micromsg-bin/fpfresh";
@@ -51,7 +51,7 @@ public final class r$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.r.a
  * JD-Core Version:    0.7.0.1
  */

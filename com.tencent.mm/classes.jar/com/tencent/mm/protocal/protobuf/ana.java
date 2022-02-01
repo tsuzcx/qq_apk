@@ -1,95 +1,108 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ana
-  extends com.tencent.mm.bw.a
+  extends cvp
 {
-  public int EGe;
-  public float EGf;
-  public int EGg;
-  public int EGh;
-  public int rvF;
-  public int rvG;
+  public FinderContact contact;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(184205);
+    AppMethodBeat.i(168965);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.rvF);
-      paramVarArgs.aR(2, this.rvG);
-      paramVarArgs.aR(3, this.EGe);
-      paramVarArgs.x(4, this.EGf);
-      paramVarArgs.aR(5, this.EGg);
-      paramVarArgs.aR(6, this.EGh);
-      AppMethodBeat.o(184205);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.b.b.a.bx(1, this.rvF);
-      int i = f.a.a.b.b.a.bx(2, this.rvG);
-      int j = f.a.a.b.b.a.bx(3, this.EGe);
-      int k = f.a.a.b.b.a.fK(4);
-      int m = f.a.a.b.b.a.bx(5, this.EGg);
-      int n = f.a.a.b.b.a.bx(6, this.EGh);
-      AppMethodBeat.o(184205);
-      return paramInt + 0 + i + j + (k + 4) + m + n;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
-        }
-      }
-      AppMethodBeat.o(184205);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      ana localana = (ana)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.BaseResponse != null)
       {
-      default: 
-        AppMethodBeat.o(184205);
-        return -1;
-      case 1: 
-        localana.rvF = locala.LVo.xF();
-        AppMethodBeat.o(184205);
-        return 0;
-      case 2: 
-        localana.rvG = locala.LVo.xF();
-        AppMethodBeat.o(184205);
-        return 0;
-      case 3: 
-        localana.EGe = locala.LVo.xF();
-        AppMethodBeat.o(184205);
-        return 0;
-      case 4: 
-        localana.EGf = Float.intBitsToFloat(locala.LVo.gaa());
-        AppMethodBeat.o(184205);
-        return 0;
-      case 5: 
-        localana.EGg = locala.LVo.xF();
-        AppMethodBeat.o(184205);
-        return 0;
+        paramVarArgs.lC(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      localana.EGh = locala.LVo.xF();
-      AppMethodBeat.o(184205);
+      if (this.contact != null)
+      {
+        paramVarArgs.lC(2, this.contact.computeSize());
+        this.contact.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(168965);
       return 0;
     }
-    AppMethodBeat.o(184205);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label466;
+      }
+    }
+    label466:
+    for (paramInt = f.a.a.a.lB(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.contact != null) {
+        i = paramInt + f.a.a.a.lB(2, this.contact.computeSize());
+      }
+      AppMethodBeat.o(168965);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cvp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gxE();
+          }
+        }
+        AppMethodBeat.o(168965);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        ana localana = (ana)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(168965);
+          return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localana.BaseResponse = ((BaseResponse)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(168965);
+          return 0;
+        }
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new FinderContact();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localana.contact = ((FinderContact)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(168965);
+        return 0;
+      }
+      AppMethodBeat.o(168965);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ana
  * JD-Core Version:    0.7.0.1
  */

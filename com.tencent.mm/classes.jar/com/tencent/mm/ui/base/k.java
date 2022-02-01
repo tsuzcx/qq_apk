@@ -9,27 +9,27 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class k
   extends AlertDialog
 {
-  public AdapterView.OnItemClickListener DEe;
-  private CharSequence Fm;
-  private View ijA;
+  public AdapterView.OnItemClickListener Fjk;
+  private CharSequence Hd;
+  private View iCR;
   private Context mContext;
   private ListView mListView;
-  public BaseAdapter oao;
+  public BaseAdapter oDI;
   
   public k(Context paramContext)
   {
     super(paramContext, 2131821723);
     AppMethodBeat.i(142033);
     this.mContext = paramContext;
-    if (a.id(this.mContext)) {}
-    for (this.ijA = View.inflate(this.mContext, 2131494799, null);; this.ijA = View.inflate(this.mContext, 2131494798, null))
+    if (a.im(this.mContext)) {}
+    for (this.iCR = View.inflate(this.mContext, 2131494799, null);; this.iCR = View.inflate(this.mContext, 2131494798, null))
     {
-      this.mListView = ((ListView)this.ijA.findViewById(2131301443));
+      this.mListView = ((ListView)this.iCR.findViewById(2131301443));
       AppMethodBeat.o(142033);
       return;
     }
@@ -46,7 +46,7 @@ public final class k
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.MMListDialog", "dismiss exception, e = " + localException.getMessage());
+      ad.e("MicroMsg.MMListDialog", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(142036);
     }
   }
@@ -55,7 +55,7 @@ public final class k
   {
     AppMethodBeat.i(142034);
     super.onCreate(paramBundle);
-    setContentView(this.ijA);
+    setContentView(this.iCR);
     AppMethodBeat.o(142034);
   }
   
@@ -63,23 +63,23 @@ public final class k
   {
     if (paramCharSequence != null)
     {
-      this.Fm = paramCharSequence;
+      this.Hd = paramCharSequence;
       return;
     }
-    this.Fm = null;
+    this.Hd = null;
   }
   
   public final void show()
   {
     AppMethodBeat.i(142035);
-    if (this.Fm != null) {
-      this.Fm.length();
+    if (this.Hd != null) {
+      this.Hd.length();
     }
-    if (this.DEe != null) {
-      this.mListView.setOnItemClickListener(this.DEe);
+    if (this.Fjk != null) {
+      this.mListView.setOnItemClickListener(this.Fjk);
     }
-    if (this.oao != null) {
-      this.mListView.setAdapter(this.oao);
+    if (this.oDI != null) {
+      this.mListView.setAdapter(this.oDI);
     }
     super.show();
     AppMethodBeat.o(142035);

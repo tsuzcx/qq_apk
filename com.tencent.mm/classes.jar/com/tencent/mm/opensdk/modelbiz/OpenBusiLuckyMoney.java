@@ -20,33 +20,38 @@ public class OpenBusiLuckyMoney
     public boolean checkArgs()
     {
       AppMethodBeat.i(3850);
-      if ((this.appId == null) || (this.appId.length() <= 0))
+      String str = this.appId;
+      if ((str != null) && (str.length() > 0))
       {
-        AppMethodBeat.o(3850);
-        return false;
-      }
-      if ((this.timeStamp == null) || (this.timeStamp.length() <= 0))
-      {
-        AppMethodBeat.o(3850);
-        return false;
-      }
-      if ((this.nonceStr == null) || (this.nonceStr.length() <= 0))
-      {
-        AppMethodBeat.o(3850);
-        return false;
-      }
-      if ((this.signType == null) || (this.signType.length() <= 0))
-      {
-        AppMethodBeat.o(3850);
-        return false;
-      }
-      if ((this.signature == null) || (this.signature.length() <= 0))
-      {
+        str = this.timeStamp;
+        if ((str != null) && (str.length() > 0))
+        {
+          str = this.nonceStr;
+          if ((str != null) && (str.length() > 0))
+          {
+            str = this.signType;
+            if ((str != null) && (str.length() > 0))
+            {
+              str = this.signature;
+              if ((str != null) && (str.length() > 0))
+              {
+                AppMethodBeat.o(3850);
+                return true;
+              }
+              AppMethodBeat.o(3850);
+              return false;
+            }
+            AppMethodBeat.o(3850);
+            return false;
+          }
+          AppMethodBeat.o(3850);
+          return false;
+        }
         AppMethodBeat.o(3850);
         return false;
       }
       AppMethodBeat.o(3850);
-      return true;
+      return false;
     }
     
     public int getType()

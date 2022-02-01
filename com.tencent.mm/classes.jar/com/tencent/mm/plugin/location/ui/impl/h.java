@@ -16,13 +16,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.g.a.xh;
-import com.tencent.mm.g.a.xh.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.g.a.yb;
+import com.tencent.mm.g.a.yb.a;
 import com.tencent.mm.model.u;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.location.model.LocationInfo;
-import com.tencent.mm.plugin.location.model.f;
 import com.tencent.mm.plugin.location.model.q.a;
 import com.tencent.mm.plugin.location.model.q.b;
 import com.tencent.mm.plugin.location.ui.MyLocationButton;
@@ -32,21 +31,18 @@ import com.tencent.mm.plugin.location.ui.VolumeMeter;
 import com.tencent.mm.plugin.location.ui.g.a;
 import com.tencent.mm.plugin.location.ui.i;
 import com.tencent.mm.plugin.location.ui.j;
-import com.tencent.mm.plugin.location.ui.j.3;
-import com.tencent.mm.plugin.location.ui.j.4;
 import com.tencent.mm.plugin.location.ui.j.5;
 import com.tencent.mm.plugin.location.ui.j.a;
 import com.tencent.mm.plugin.location.ui.k.a;
 import com.tencent.mm.plugin.location.ui.l;
-import com.tencent.mm.protocal.protobuf.bng;
-import com.tencent.mm.protocal.protobuf.cgf;
-import com.tencent.mm.protocal.protobuf.cno;
-import com.tencent.mm.protocal.protobuf.dok;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.brq;
+import com.tencent.mm.protocal.protobuf.cle;
+import com.tencent.mm.protocal.protobuf.csr;
+import com.tencent.mm.protocal.protobuf.dub;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.a.d.a;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -58,66 +54,66 @@ public final class h
   extends k
   implements j.a
 {
-  private b.a fnd;
-  private com.tencent.mm.sdk.b.c oCV;
-  private View uak;
-  private k.a ubF;
-  private Button ueK;
-  MyLocationButton ueL;
-  private TipSayingWidget ueM;
-  com.tencent.mm.plugin.location.ui.k ueN;
-  com.tencent.mm.plugin.location.model.q ueO;
-  j ueP;
-  i ueQ;
-  private com.tencent.mm.plugin.location.ui.g ueR;
-  private com.tencent.mm.modelgeo.d ueS;
-  private ShareHeader ueT;
-  private String ueU;
-  private long ueV;
-  private long ueW;
-  private q.b ueX;
-  private q.a ueY;
-  private HashMap<String, dok> ueZ;
+  private b.a fFl;
+  private com.tencent.mm.sdk.b.c pgq;
+  private View vcT;
+  private k.a veo;
+  private com.tencent.mm.plugin.location.ui.g vhA;
+  private com.tencent.mm.modelgeo.d vhB;
+  private ShareHeader vhC;
+  private String vhD;
+  private long vhE;
+  private long vhF;
+  private q.b vhG;
+  private q.a vhH;
+  private HashMap<String, dub> vhI;
+  private Button vht;
+  MyLocationButton vhu;
+  private TipSayingWidget vhv;
+  com.tencent.mm.plugin.location.ui.k vhw;
+  com.tencent.mm.plugin.location.model.q vhx;
+  j vhy;
+  i vhz;
   private PowerManager.WakeLock wakeLock;
   
   public h(Activity paramActivity)
   {
     super(paramActivity);
     AppMethodBeat.i(56125);
-    this.ueV = 0L;
-    this.ueW = 0L;
-    this.ubF = new k.a() {};
-    this.ueX = new q.b()
+    this.vhE = 0L;
+    this.vhF = 0L;
+    this.veo = new k.a() {};
+    this.vhG = new q.b()
     {
-      public final void a(cno paramAnonymouscno)
+      public final void a(csr paramAnonymouscsr)
       {
         AppMethodBeat.i(56114);
-        h.a(h.this, paramAnonymouscno);
+        h.a(h.this, paramAnonymouscsr);
         AppMethodBeat.o(56114);
       }
       
-      public final void cXg()
+      public final void dgs()
       {
         AppMethodBeat.i(56113);
-        ac.i("MicroMsg.ShareMapUI", "onJoinSucess");
-        com.tencent.mm.plugin.location.model.q localq = h.this.ueO;
-        localq.tXZ = true;
-        localq.cXd();
-        localq.cXe();
-        h.this.ueN.nC(true);
-        if (h.this.ueQ != null) {
-          h.this.ueQ.cXx();
+        ad.i("MicroMsg.ShareMapUI", "onJoinSucess");
+        com.tencent.mm.plugin.location.model.q localq = h.this.vhx;
+        localq.vaI = true;
+        localq.dgp();
+        localq.dgq();
+        h.this.vhw.nW(true);
+        if (h.this.vhz != null) {
+          h.this.vhz.dgJ();
         }
         AppMethodBeat.o(56113);
       }
       
-      public final void cXh()
+      public final void dgt()
       {
         AppMethodBeat.i(56116);
-        h.this.ueN.nC(false);
-        h.this.ueO.stop();
-        h.this.ueO.HA(3);
-        i.cXz();
+        h.this.vhw.nW(false);
+        h.this.vhx.stop();
+        h.this.vhx.IW(3);
+        i.dgL();
         h.this.activity.finish();
         h.this.activity.overridePendingTransition(2130772107, 2130772109);
         AppMethodBeat.o(56116);
@@ -126,13 +122,13 @@ public final class h
       public final void onError(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(56115);
-        ac.v("MicroMsg.ShareMapUI", "onError type %d msg %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-        com.tencent.mm.plugin.report.service.h.wUl.f(10997, new Object[] { "7", "", Integer.valueOf(0), Integer.valueOf(0) });
-        j localj = h.this.ueP;
-        ac.d("MicroMsg.TrackPoiDialogMgr", "showErrorDialog, errMsg=%s", new Object[] { paramAnonymousString });
-        Context localContext = ai.getContext();
+        ad.v("MicroMsg.ShareMapUI", "onError type %d msg %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        com.tencent.mm.plugin.report.service.g.yhR.f(10997, new Object[] { "7", "", Integer.valueOf(0), Integer.valueOf(0) });
+        j localj = h.this.vhy;
+        ad.d("MicroMsg.TrackPoiDialogMgr", "showErrorDialog, errMsg=%s", new Object[] { paramAnonymousString });
+        Context localContext = aj.getContext();
         Object localObject = null;
-        if (bs.isNullOrNil(paramAnonymousString)) {
+        if (bt.isNullOrNil(paramAnonymousString)) {
           if (paramAnonymousInt == 0) {
             paramAnonymousString = localContext.getString(2131760719);
           }
@@ -156,20 +152,20 @@ public final class h
         }
       }
     };
-    this.ueY = new q.a()
+    this.vhH = new q.a()
     {
-      public final void bsL()
+      public final void bwP()
       {
         AppMethodBeat.i(56117);
         h localh = h.this;
         d.a locala = new d.a(localh.activity);
-        locala.acJ(2131764536);
-        locala.acM(2131755835).b(new h.2(localh));
-        locala.fvp().show();
+        locala.afi(2131764536);
+        locala.afl(2131755835).c(new h.2(localh));
+        locala.fMb().show();
         AppMethodBeat.o(56117);
       }
     };
-    this.fnd = new b.a()
+    this.fFl = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -179,178 +175,182 @@ public final class h
           AppMethodBeat.o(56118);
           return false;
         }
-        ac.d("MicroMsg.ShareMapUI", "onGetLocation, latitude=%f, longtitude=%f, speed=%f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1), Double.valueOf(paramAnonymousDouble1) });
-        if ((f.v(paramAnonymousDouble1)) && (!h.this.ueN.ubv))
+        ad.d("MicroMsg.ShareMapUI", "onGetLocation, latitude=%f, longtitude=%f, speed=%f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1), Double.valueOf(paramAnonymousDouble1) });
+        if ((com.tencent.mm.plugin.location.model.f.v(paramAnonymousDouble1)) && (!h.this.vhw.vee))
         {
-          ac.d("MicroMsg.ShareMapUI", "set driving mode");
-          h.this.ueN.uby = false;
-          h.this.ueN.nB(true);
-          h.this.ueL.cXk();
+          ad.d("MicroMsg.ShareMapUI", "set driving mode");
+          h.this.vhw.veh = false;
+          h.this.vhw.nV(true);
+          h.this.vhu.dgw();
         }
         AppMethodBeat.o(56118);
         return true;
       }
     };
-    this.oCV = new com.tencent.mm.sdk.b.c()
+    this.pgq = new com.tencent.mm.sdk.b.c()
     {
-      private boolean a(xh paramAnonymousxh)
+      private boolean a(yb paramAnonymousyb)
       {
         AppMethodBeat.i(56119);
-        if (!com.tencent.mm.kernel.g.agM())
+        if (!com.tencent.mm.kernel.g.ajx())
         {
           AppMethodBeat.o(56119);
           return false;
         }
-        if (paramAnonymousxh.dAb.dgL == 3)
+        if (paramAnonymousyb.dMo.dsi == 3)
         {
-          h.this.ueN.nC(false);
-          h.this.ueO.stop();
-          h.this.ueO.HA(2);
-          i.cXz();
+          h.this.vhw.nW(false);
+          h.this.vhx.stop();
+          h.this.vhx.IW(2);
+          i.dgL();
           h.this.activity.finish();
         }
         AppMethodBeat.o(56119);
         return true;
       }
     };
-    this.ueZ = new HashMap();
-    this.ueO = com.tencent.mm.plugin.location.model.n.cWV();
-    this.ueS = com.tencent.mm.modelgeo.d.aEL();
+    this.vhI = new HashMap();
+    this.vhx = com.tencent.mm.plugin.location.model.n.dgh();
+    this.vhB = com.tencent.mm.modelgeo.d.aHQ();
     AppMethodBeat.o(56125);
   }
   
-  private void cYb()
+  private void dhn()
   {
     AppMethodBeat.i(56133);
     hideVKB();
-    this.ueN.nC(false);
-    this.ueO.stop();
-    this.ueO.HA(3);
-    i.cXz();
-    this.ueO.tYf = this.uco.tZg.getZoom();
+    this.vhw.nW(false);
+    this.vhx.stop();
+    this.vhx.IW(3);
+    i.dgL();
+    this.vhx.vaO = this.veY.vbP.getZoom();
     this.activity.finish();
     AppMethodBeat.o(56133);
   }
   
-  public final void HB(int paramInt)
+  public final void IX(int paramInt)
   {
     AppMethodBeat.i(56135);
     if (paramInt == 0)
     {
-      com.tencent.mm.plugin.report.service.h.wUl.f(10997, new Object[] { "8", "", Integer.valueOf(0), Integer.valueOf(0) });
-      cYb();
+      com.tencent.mm.plugin.report.service.g.yhR.f(10997, new Object[] { "8", "", Integer.valueOf(0), Integer.valueOf(0) });
+      dhn();
       AppMethodBeat.o(56135);
       return;
     }
     if (paramInt == 1)
     {
-      com.tencent.mm.plugin.report.service.h.wUl.f(10997, new Object[] { "8", "", Integer.valueOf(0), Integer.valueOf(0) });
-      cYb();
+      com.tencent.mm.plugin.report.service.g.yhR.f(10997, new Object[] { "8", "", Integer.valueOf(0), Integer.valueOf(0) });
+      dhn();
       AppMethodBeat.o(56135);
       return;
     }
     if (paramInt == 2) {
-      cYb();
+      dhn();
     }
     AppMethodBeat.o(56135);
   }
   
-  public final void cXB()
+  public final void dgN()
   {
     AppMethodBeat.i(56132);
-    this.ueO.tYf = this.uco.tZg.getZoom();
+    this.vhx.vaO = this.veY.vbP.getZoom();
     this.activity.finish();
     AppMethodBeat.o(56132);
   }
   
-  public final void cXC()
+  public final void dgO()
   {
     AppMethodBeat.i(56134);
-    this.ueN.nC(false);
-    this.ueO.stop();
-    this.ueO.HA(0);
-    i.cXz();
+    this.vhw.nW(false);
+    this.vhx.stop();
+    this.vhx.IW(0);
+    i.dgL();
     this.activity.finish();
     AppMethodBeat.o(56134);
   }
   
-  protected final void cXJ()
+  protected final void dgV()
   {
     AppMethodBeat.i(56131);
-    super.cXJ();
+    super.dgV();
     AppMethodBeat.o(56131);
   }
   
-  final void cXK()
+  final void dgW()
   {
     AppMethodBeat.i(56127);
-    super.cXK();
+    super.dgW();
     this.wakeLock = ((PowerManager)this.activity.getSystemService("power")).newWakeLock(26, "Track Lock");
-    if (this.ufH != null)
+    if (this.vir != null)
     {
-      localObject1 = this.ufH;
-      ((l)localObject1).ucd.setVisibility(4);
+      localObject1 = this.vir;
+      ((l)localObject1).veN.setVisibility(4);
       ((l)localObject1).isVisible = false;
     }
     findViewById(2131300707).setVisibility(8);
-    this.ueL = ((MyLocationButton)findViewById(2131301520));
-    this.ueL.setProgressBar(this.uco.tZg);
-    this.ueL.cXj();
-    this.ueL.setOnClickListener(new View.OnClickListener()
+    this.vhu = ((MyLocationButton)findViewById(2131301520));
+    this.vhu.setProgressBar(this.veY.vbP);
+    this.vhu.dgv();
+    this.vhu.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(56121);
-        h.this.ueL.cXj();
-        h.this.ueN.uby = true;
-        h.this.ueN.a(h.this.uco.tZg);
-        h.this.ueN.nB(false);
-        com.tencent.mm.plugin.report.service.h.wUl.f(10997, new Object[] { "6", "", Integer.valueOf(0), Integer.valueOf(0) });
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/location/ui/impl/ShareMapUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        h.this.vhu.dgv();
+        h.this.vhw.veh = true;
+        h.this.vhw.a(h.this.veY.vbP);
+        h.this.vhw.nV(false);
+        com.tencent.mm.plugin.report.service.g.yhR.f(10997, new Object[] { "6", "", Integer.valueOf(0), Integer.valueOf(0) });
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/location/ui/impl/ShareMapUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(56121);
       }
     });
-    this.uak = findViewById(2131300706);
-    this.ueT = ((ShareHeader)findViewById(2131304743));
-    this.ueT.setVisibility(0);
-    this.ueR = new com.tencent.mm.plugin.location.ui.g(this.activity, this.ueT.getHeaderBar(), this.uak, this.tYc, this.uco.tZg);
-    this.ueR.uar = new g.a()
+    this.vcT = findViewById(2131300706);
+    this.vhC = ((ShareHeader)findViewById(2131304743));
+    this.vhC.setVisibility(0);
+    this.vhA = new com.tencent.mm.plugin.location.ui.g(this.activity, this.vhC.getHeaderBar(), this.vcT, this.vaL, this.veY.vbP);
+    this.vhA.vda = new g.a()
     {
-      public final void ajV(String paramAnonymousString)
+      public final void aoI(String paramAnonymousString)
       {
         AppMethodBeat.i(56122);
-        Object localObject = (TrackPoint)h.this.uco.tZg.getViewByItag(paramAnonymousString);
+        Object localObject = (TrackPoint)h.this.veY.vbP.getViewByItag(paramAnonymousString);
         if (localObject != null)
         {
           ((TrackPoint)localObject).set2Top();
-          h.this.uco.tZg.invalidate();
-          localObject = h.this.ueN;
-          if (bs.isNullOrNil(paramAnonymousString)) {
+          h.this.veY.vbP.invalidate();
+          localObject = h.this.vhw;
+          if (bt.isNullOrNil(paramAnonymousString)) {
             break label234;
           }
-          if ((((com.tencent.mm.plugin.location.ui.k)localObject).tXX == null) || (!paramAnonymousString.equals(((com.tencent.mm.plugin.location.ui.k)localObject).tXX.Username))) {
+          if ((((com.tencent.mm.plugin.location.ui.k)localObject).vaG == null) || (!paramAnonymousString.equals(((com.tencent.mm.plugin.location.ui.k)localObject).vaG.Username))) {
             break label150;
           }
-          paramAnonymousString = new com.tencent.mm.plugin.location.model.d(((com.tencent.mm.plugin.location.ui.k)localObject).tXX.FWg.Ecf, ((com.tencent.mm.plugin.location.ui.k)localObject).tXX.FWg.Ecg);
+          paramAnonymousString = new com.tencent.mm.plugin.location.model.d(((com.tencent.mm.plugin.location.ui.k)localObject).vaG.HGW.FIb, ((com.tencent.mm.plugin.location.ui.k)localObject).vaG.HGW.FIc);
         }
         for (;;)
         {
           if (paramAnonymousString != null) {
-            h.this.uco.tZg.getIController().animateTo(paramAnonymousString.tWI, paramAnonymousString.tWJ);
+            h.this.veY.vbP.getIController().animateTo(paramAnonymousString.uZr, paramAnonymousString.uZs);
           }
           AppMethodBeat.o(56122);
           return;
           label150:
-          if ((((com.tencent.mm.plugin.location.ui.k)localObject).ubn != null) && (((com.tencent.mm.plugin.location.ui.k)localObject).ubn.size() > 0))
+          if ((((com.tencent.mm.plugin.location.ui.k)localObject).vdW != null) && (((com.tencent.mm.plugin.location.ui.k)localObject).vdW.size() > 0))
           {
-            localObject = ((com.tencent.mm.plugin.location.ui.k)localObject).ubn.iterator();
+            localObject = ((com.tencent.mm.plugin.location.ui.k)localObject).vdW.iterator();
             for (;;)
             {
               if (((Iterator)localObject).hasNext())
               {
-                dok localdok = (dok)((Iterator)localObject).next();
-                if (localdok.Username.equals(paramAnonymousString))
+                dub localdub = (dub)((Iterator)localObject).next();
+                if (localdub.Username.equals(paramAnonymousString))
                 {
-                  paramAnonymousString = new com.tencent.mm.plugin.location.model.d(localdok.FWg.Ecf, localdok.FWg.Ecg);
+                  paramAnonymousString = new com.tencent.mm.plugin.location.model.d(localdub.HGW.FIb, localdub.HGW.FIc);
                   break;
                 }
               }
@@ -361,57 +361,39 @@ public final class h
         }
       }
     };
-    this.ueO.tYe = this.ueY;
-    if (this.ueN == null) {
-      this.ueN = new com.tencent.mm.plugin.location.ui.k(this.activity, this.uco.tZg, true);
+    this.vhx.vaN = this.vhH;
+    if (this.vhw == null) {
+      this.vhw = new com.tencent.mm.plugin.location.ui.k(this.activity, this.veY.vbP, true);
     }
-    this.ueN.ubF = this.ubF;
-    this.ueN.ubt = false;
-    this.ueP = new j(this.activity, this);
-    this.ueM = ((TipSayingWidget)findViewById(2131304298));
-    this.ueK = ((Button)findViewById(2131304751));
-    this.ueK.setVisibility(0);
-    this.ueQ = new i(this.activity, this.ueK);
-    this.ueQ.ubc = this.ueR;
-    this.ueT.setOnLeftClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(56123);
-        paramAnonymousView = h.this.ueP;
-        com.tencent.mm.ui.base.h.d(paramAnonymousView.mContext, paramAnonymousView.mResources.getString(2131760734), "", paramAnonymousView.mResources.getString(2131755728), paramAnonymousView.mResources.getString(2131755691), new j.3(paramAnonymousView), new j.4(paramAnonymousView));
-        AppMethodBeat.o(56123);
-      }
-    });
-    this.ueT.setOnRightClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(56124);
-        com.tencent.mm.plugin.report.service.h.wUl.f(10997, new Object[] { "11", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-        h.this.ueP.cXA();
-        AppMethodBeat.o(56124);
-      }
-    });
+    this.vhw.veo = this.veo;
+    this.vhw.vec = false;
+    this.vhy = new j(this.activity, this);
+    this.vhv = ((TipSayingWidget)findViewById(2131304298));
+    this.vht = ((Button)findViewById(2131304751));
+    this.vht.setVisibility(0);
+    this.vhz = new i(this.activity, this.vht);
+    this.vhz.vdL = this.vhA;
+    this.vhC.setOnLeftClickListener(new h.9(this));
+    this.vhC.setOnRightClickListener(new h.10(this));
     ((LocationManager)this.activity.getSystemService("location")).isProviderEnabled("gps");
-    Object localObject1 = this.ueO;
-    Object localObject2 = this.ucm;
-    ((com.tencent.mm.plugin.location.model.q)localObject1).tYh = System.currentTimeMillis();
-    ((com.tencent.mm.plugin.location.model.q)localObject1).hxT = com.tencent.mm.modelgeo.d.aEL();
-    ((com.tencent.mm.plugin.location.model.q)localObject1).hxT.b(((com.tencent.mm.plugin.location.model.q)localObject1).fnd, true);
-    if (((com.tencent.mm.plugin.location.model.q)localObject1).tXU == null) {
-      ((com.tencent.mm.plugin.location.model.q)localObject1).tXU = com.tencent.mm.plugin.location.model.n.cWX();
+    Object localObject1 = this.vhx;
+    Object localObject2 = this.veW;
+    ((com.tencent.mm.plugin.location.model.q)localObject1).vaQ = System.currentTimeMillis();
+    ((com.tencent.mm.plugin.location.model.q)localObject1).hQo = com.tencent.mm.modelgeo.d.aHQ();
+    ((com.tencent.mm.plugin.location.model.q)localObject1).hQo.b(((com.tencent.mm.plugin.location.model.q)localObject1).fFl, true);
+    if (((com.tencent.mm.plugin.location.model.q)localObject1).vaD == null) {
+      ((com.tencent.mm.plugin.location.model.q)localObject1).vaD = com.tencent.mm.plugin.location.model.n.dgj();
     }
-    ((com.tencent.mm.plugin.location.model.q)localObject1).tXU.a(((com.tencent.mm.plugin.location.model.q)localObject1).tYj);
+    ((com.tencent.mm.plugin.location.model.q)localObject1).vaD.a(((com.tencent.mm.plugin.location.model.q)localObject1).vaS);
     if (localObject2 != null) {
-      ((com.tencent.mm.plugin.location.model.q)localObject1).tXY = ((LocationInfo)localObject2);
+      ((com.tencent.mm.plugin.location.model.q)localObject1).vaH = ((LocationInfo)localObject2);
     }
     if (((com.tencent.mm.plugin.location.model.q)localObject1).isStart)
     {
-      ac.i("MicorMsg.TrackRefreshManager", "start location " + ((com.tencent.mm.plugin.location.model.q)localObject1).tXY.tWI + " " + ((com.tencent.mm.plugin.location.model.q)localObject1).tXY.tWJ);
-      localObject1 = this.ueO;
-      localObject2 = this.ueX;
-      Iterator localIterator = ((com.tencent.mm.plugin.location.model.q)localObject1).tXV.iterator();
+      ad.i("MicorMsg.TrackRefreshManager", "start location " + ((com.tencent.mm.plugin.location.model.q)localObject1).vaH.uZr + " " + ((com.tencent.mm.plugin.location.model.q)localObject1).vaH.uZs);
+      localObject1 = this.vhx;
+      localObject2 = this.vhG;
+      Iterator localIterator = ((com.tencent.mm.plugin.location.model.q)localObject1).vaE.iterator();
       WeakReference localWeakReference;
       do
       {
@@ -423,41 +405,41 @@ public final class h
     }
     for (;;)
     {
-      this.ueU = this.activity.getIntent().getStringExtra("fromWhereShare");
-      ac.d("MicroMsg.ShareMapUI", "fromWhere=%s", new Object[] { this.ueU });
-      if (!this.ueO.cWZ()) {
+      this.vhD = this.activity.getIntent().getStringExtra("fromWhereShare");
+      ad.d("MicroMsg.ShareMapUI", "fromWhere=%s", new Object[] { this.vhD });
+      if (!this.vhx.dgl()) {
         break label829;
       }
-      ac.i("MicroMsg.ShareMapUI", "has join");
-      this.ueN.nC(true);
-      this.ueQ.cXx();
+      ad.i("MicroMsg.ShareMapUI", "has join");
+      this.vhw.nW(true);
+      this.vhz.dgJ();
       AppMethodBeat.o(56127);
       return;
-      ((com.tencent.mm.plugin.location.model.q)localObject1).tXW = 1;
-      ((com.tencent.mm.plugin.location.model.q)localObject1).tXX = new dok();
-      ((com.tencent.mm.plugin.location.model.q)localObject1).tXX.FWg = new cgf();
-      ((com.tencent.mm.plugin.location.model.q)localObject1).tXX.FWg.Ecg = -1000.0D;
-      ((com.tencent.mm.plugin.location.model.q)localObject1).tXX.FWg.Ecf = -1000.0D;
-      ac.i("MicorMsg.TrackRefreshManager", "start location imp " + ((com.tencent.mm.plugin.location.model.q)localObject1).tXY.tWI + " " + ((com.tencent.mm.plugin.location.model.q)localObject1).tXY.tWJ);
-      com.tencent.mm.kernel.g.agi().a(492, (com.tencent.mm.ak.g)localObject1);
-      com.tencent.mm.kernel.g.agi().a(490, (com.tencent.mm.ak.g)localObject1);
-      com.tencent.mm.kernel.g.agi().a(491, (com.tencent.mm.ak.g)localObject1);
-      ((com.tencent.mm.plugin.location.model.q)localObject1).cLV = false;
+      ((com.tencent.mm.plugin.location.model.q)localObject1).vaF = 1;
+      ((com.tencent.mm.plugin.location.model.q)localObject1).vaG = new dub();
+      ((com.tencent.mm.plugin.location.model.q)localObject1).vaG.HGW = new cle();
+      ((com.tencent.mm.plugin.location.model.q)localObject1).vaG.HGW.FIc = -1000.0D;
+      ((com.tencent.mm.plugin.location.model.q)localObject1).vaG.HGW.FIb = -1000.0D;
+      ad.i("MicorMsg.TrackRefreshManager", "start location imp " + ((com.tencent.mm.plugin.location.model.q)localObject1).vaH.uZr + " " + ((com.tencent.mm.plugin.location.model.q)localObject1).vaH.uZs);
+      com.tencent.mm.kernel.g.aiU().a(492, (com.tencent.mm.al.f)localObject1);
+      com.tencent.mm.kernel.g.aiU().a(490, (com.tencent.mm.al.f)localObject1);
+      com.tencent.mm.kernel.g.aiU().a(491, (com.tencent.mm.al.f)localObject1);
+      ((com.tencent.mm.plugin.location.model.q)localObject1).cXj = false;
       ((com.tencent.mm.plugin.location.model.q)localObject1).isStart = true;
       break;
-      ((com.tencent.mm.plugin.location.model.q)localObject1).tXV.add(new WeakReference(localObject2));
+      ((com.tencent.mm.plugin.location.model.q)localObject1).vaE.add(new WeakReference(localObject2));
     }
     label829:
-    localObject2 = this.ueO;
-    localObject1 = this.tYc;
+    localObject2 = this.vhx;
+    localObject1 = this.vaL;
     int i;
-    if (!bs.isNullOrNil(this.ueU)) {
-      if (this.ueU.equals("fromBanner"))
+    if (!bt.isNullOrNil(this.vhD)) {
+      if (this.vhD.equals("fromBanner"))
       {
         i = 0;
-        ac.i("MicorMsg.TrackRefreshManager", "track join %s", new Object[] { localObject1 });
-        ((com.tencent.mm.plugin.location.model.q)localObject2).tYc = ((String)localObject1);
-        localObject2 = u.axw();
+        ad.i("MicorMsg.TrackRefreshManager", "track join %s", new Object[] { localObject1 });
+        ((com.tencent.mm.plugin.location.model.q)localObject2).vaL = ((String)localObject1);
+        localObject2 = u.aAm();
         if (!((String)localObject1).contains("@chatroom")) {
           break label1014;
         }
@@ -466,23 +448,23 @@ public final class h
     for (;;)
     {
       localObject1 = new com.tencent.mm.plugin.location.model.a.b((String)localObject1);
-      ((bng)((com.tencent.mm.plugin.location.model.a.b)localObject1).rr.hvr.hvw).Scene = i;
-      com.tencent.mm.kernel.g.agi().a((com.tencent.mm.ak.n)localObject1, 0);
+      ((brq)((com.tencent.mm.plugin.location.model.a.b)localObject1).rr.hNK.hNQ).Scene = i;
+      com.tencent.mm.kernel.g.aiU().a((com.tencent.mm.al.n)localObject1, 0);
       AppMethodBeat.o(56127);
       return;
-      if (!this.ueU.equals("fromPluginLocation"))
+      if (!this.vhD.equals("fromPluginLocation"))
       {
-        if (this.ueU.equals("fromPluginTalk"))
+        if (this.vhD.equals("fromPluginTalk"))
         {
           i = 2;
           break;
         }
-        if (this.ueU.equals("fromTrackButton"))
+        if (this.vhD.equals("fromTrackButton"))
         {
           i = 3;
           break;
         }
-        if (this.ueU.equals("fromMessage"))
+        if (this.vhD.equals("fromMessage"))
         {
           i = 4;
           break;
@@ -499,29 +481,29 @@ public final class h
     }
   }
   
-  public final boolean cXL()
+  public final boolean dgX()
   {
     return true;
   }
   
-  public final void cYc()
+  public final void dho()
   {
     AppMethodBeat.i(56138);
-    super.cYc();
-    if (this.ueN != null)
+    super.dho();
+    if (this.vhw != null)
     {
-      this.ueN.uby = false;
-      this.ueN.nB(false);
-      this.ueL.cXk();
+      this.vhw.veh = false;
+      this.vhw.nV(false);
+      this.vhu.dgw();
     }
     AppMethodBeat.o(56138);
   }
   
-  protected final void cYd()
+  protected final void dhp()
   {
     AppMethodBeat.i(56139);
-    super.cYd();
-    com.tencent.mm.plugin.report.service.h.wUl.f(10997, new Object[] { "1", "", Integer.valueOf(0), Integer.valueOf(0) });
+    super.dhp();
+    com.tencent.mm.plugin.report.service.g.yhR.f(10997, new Object[] { "1", "", Integer.valueOf(0), Integer.valueOf(0) });
     AppMethodBeat.o(56139);
   }
   
@@ -536,8 +518,8 @@ public final class h
   public final void onBackPressed()
   {
     AppMethodBeat.i(56136);
-    com.tencent.mm.plugin.report.service.h.wUl.f(10997, new Object[] { "11", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-    this.ueP.cXA();
+    com.tencent.mm.plugin.report.service.g.yhR.f(10997, new Object[] { "11", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+    this.vhy.dgM();
     AppMethodBeat.o(56136);
   }
   
@@ -545,9 +527,9 @@ public final class h
   {
     AppMethodBeat.i(56126);
     super.onCreate(paramBundle);
-    ac.i("MicroMsg.ShareMapUI", "onCreate");
-    this.ueV = System.currentTimeMillis();
-    a.GpY.c(this.oCV);
+    ad.i("MicroMsg.ShareMapUI", "onCreate");
+    this.vhE = System.currentTimeMillis();
+    com.tencent.mm.sdk.b.a.IbL.c(this.pgq);
     AppMethodBeat.o(56126);
   }
   
@@ -555,71 +537,71 @@ public final class h
   {
     AppMethodBeat.i(56130);
     super.onDestroy();
-    Object localObject = this.ueO;
-    q.b localb = this.ueX;
-    Iterator localIterator = ((com.tencent.mm.plugin.location.model.q)localObject).tXV.iterator();
+    Object localObject = this.vhx;
+    q.b localb = this.vhG;
+    Iterator localIterator = ((com.tencent.mm.plugin.location.model.q)localObject).vaE.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if ((localWeakReference != null) && (localWeakReference.get() != null) && (((q.b)localWeakReference.get()).equals(localb))) {
-        ((com.tencent.mm.plugin.location.model.q)localObject).tXV.remove(localWeakReference);
+        ((com.tencent.mm.plugin.location.model.q)localObject).vaE.remove(localWeakReference);
       }
     }
-    a.GpY.d(this.oCV);
-    this.ueO.tYe = null;
-    if (this.ueQ != null)
+    com.tencent.mm.sdk.b.a.IbL.d(this.pgq);
+    this.vhx.vaN = null;
+    if (this.vhz != null)
     {
-      localObject = this.ueQ;
-      ((i)localObject).ubb.b((com.tencent.mm.bh.d)localObject);
-      localObject = ((i)localObject).uaO;
-      ((VolumeMeter)localObject).ubL.removeCallbacks((Runnable)localObject);
-      ((VolumeMeter)localObject).ubL.post(((VolumeMeter)localObject).ubZ);
+      localObject = this.vhz;
+      ((i)localObject).vdK.b((com.tencent.mm.bi.d)localObject);
+      localObject = ((i)localObject).vdx;
+      ((VolumeMeter)localObject).vev.removeCallbacks((Runnable)localObject);
+      ((VolumeMeter)localObject).vev.post(((VolumeMeter)localObject).veJ);
     }
-    if (this.ueN != null) {
-      this.ueN.destroy();
+    if (this.vhw != null) {
+      this.vhw.destroy();
     }
-    if (this.ueL != null)
+    if (this.vhu != null)
     {
-      localObject = this.ueL;
-      com.tencent.mm.modelgeo.d.aEL().c(((MyLocationButton)localObject).fnd);
+      localObject = this.vhu;
+      com.tencent.mm.modelgeo.d.aHQ().c(((MyLocationButton)localObject).fFl);
     }
-    ac.i("MicroMsg.ShareMapUI", "onDestory");
+    ad.i("MicroMsg.ShareMapUI", "onDestory");
     AppMethodBeat.o(56130);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(56129);
-    ac.i("MicroMsg.ShareMapUI", "pause");
+    ad.i("MicroMsg.ShareMapUI", "pause");
     super.onPause();
     this.wakeLock.release();
-    com.tencent.mm.plugin.location.model.q localq = this.ueO;
-    ac.d("MicorMsg.TrackRefreshManager", "pause isShared:" + localq.tXZ);
-    if (!localq.tXZ)
+    com.tencent.mm.plugin.location.model.q localq = this.vhx;
+    ad.d("MicorMsg.TrackRefreshManager", "pause isShared:" + localq.vaI);
+    if (!localq.vaI)
     {
-      localq.hxT.c(localq.fnd);
-      localq.tXU.b(localq.tYj);
-      localq.tYa = true;
-      localq.tYg = true;
+      localq.hQo.c(localq.fFl);
+      localq.vaD.b(localq.vaS);
+      localq.vaJ = true;
+      localq.vaP = true;
     }
-    localq = this.ueO;
-    com.tencent.mm.plugin.k.d locald = this.uco.tZg;
-    localq.tYb = localq.tXW;
-    localq.tXW = 0;
-    ac.d("MicorMsg.TrackRefreshManager", "saveStatus pause_save_upload_status: " + localq.tYb);
-    if (localq.cXf())
+    localq = this.vhx;
+    com.tencent.mm.plugin.k.d locald = this.veY.vbP;
+    localq.vaK = localq.vaF;
+    localq.vaF = 0;
+    ad.d("MicorMsg.TrackRefreshManager", "saveStatus pause_save_upload_status: " + localq.vaK);
+    if (localq.dgr())
     {
-      localq.tWI = (locald.getMapCenterX() * 1.0D / 1000000.0D);
-      localq.tWJ = (locald.getMapCenterY() * 1.0D / 1000000.0D);
-      localq.tWK = locald.getZoom();
+      localq.uZr = (locald.getMapCenterX() * 1.0D / 1000000.0D);
+      localq.uZs = (locald.getMapCenterY() * 1.0D / 1000000.0D);
+      localq.uZt = locald.getZoom();
     }
-    com.tencent.mm.plugin.report.service.h.wUl.f(10997, new Object[] { "17", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis() - this.ueV) });
-    this.ueV = System.currentTimeMillis();
-    if (this.ueS != null) {
-      this.ueS.c(this.fnd);
+    com.tencent.mm.plugin.report.service.g.yhR.f(10997, new Object[] { "17", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis() - this.vhE) });
+    this.vhE = System.currentTimeMillis();
+    if (this.vhB != null) {
+      this.vhB.c(this.fFl);
     }
-    if (this.ueN != null) {
-      this.ueN.onPause();
+    if (this.vhw != null) {
+      this.vhw.onPause();
     }
     AppMethodBeat.o(56129);
   }
@@ -627,47 +609,47 @@ public final class h
   public final void onResume()
   {
     AppMethodBeat.i(56128);
-    ac.i("MicroMsg.ShareMapUI", "resume");
+    ad.i("MicroMsg.ShareMapUI", "resume");
     super.onResume();
     this.wakeLock.acquire();
-    com.tencent.mm.plugin.location.model.q localq = this.ueO;
-    ac.d("MicorMsg.TrackRefreshManager", "resume isPuase:" + localq.tYa);
-    if (localq.tYa)
+    com.tencent.mm.plugin.location.model.q localq = this.vhx;
+    ad.d("MicorMsg.TrackRefreshManager", "resume isPuase:" + localq.vaJ);
+    if (localq.vaJ)
     {
-      localq.tYh = System.currentTimeMillis();
-      localq.hxT.a(localq.fnd);
-      localq.tXU.a(localq.tYj);
+      localq.vaQ = System.currentTimeMillis();
+      localq.hQo.a(localq.fFl);
+      localq.vaD.a(localq.vaS);
     }
-    localq.tYa = false;
-    localq.cXb();
-    localq = this.ueO;
-    com.tencent.mm.plugin.k.d locald = this.uco.tZg;
-    localq.tXW = localq.tYb;
-    ac.d("MicorMsg.TrackRefreshManager", "resumeStatus upload_status  " + localq.tXW + " %f %f %d ", new Object[] { Double.valueOf(localq.tWI), Double.valueOf(localq.tWJ), Integer.valueOf(localq.tWK) });
-    if ((localq.tWI != -1000.0D) && (localq.tWJ != -1000.0D) && (localq.tWK != -1))
+    localq.vaJ = false;
+    localq.dgn();
+    localq = this.vhx;
+    com.tencent.mm.plugin.k.d locald = this.veY.vbP;
+    localq.vaF = localq.vaK;
+    ad.d("MicorMsg.TrackRefreshManager", "resumeStatus upload_status  " + localq.vaF + " %f %f %d ", new Object[] { Double.valueOf(localq.uZr), Double.valueOf(localq.uZs), Integer.valueOf(localq.uZt) });
+    if ((localq.uZr != -1000.0D) && (localq.uZs != -1000.0D) && (localq.uZt != -1))
     {
-      locald.getIController().setCenter(localq.tWI, localq.tWJ);
-      locald.getIController().setZoom(localq.tWK);
+      locald.getIController().setCenter(localq.uZr, localq.uZs);
+      locald.getIController().setZoom(localq.uZt);
     }
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        this.ueL.setAnimToSelf(false);
-        this.ueL.cXk();
-        this.ueN.uby = false;
-        this.ueN.ubs = true;
+        this.vhu.setAnimToSelf(false);
+        this.vhu.dgw();
+        this.vhw.veh = false;
+        this.vhw.veb = true;
       }
-      localq = this.ueO;
-      locald = this.uco.tZg;
-      if (localq.tYf != -1) {
-        locald.getIController().setZoom(localq.tYf);
+      localq = this.vhx;
+      locald = this.veY.vbP;
+      if (localq.vaO != -1) {
+        locald.getIController().setZoom(localq.vaO);
       }
-      if (this.ueS != null) {
-        this.ueS.a(this.fnd);
+      if (this.vhB != null) {
+        this.vhB.a(this.fFl);
       }
-      if (this.ueN != null) {
-        this.ueN.onResume();
+      if (this.vhw != null) {
+        this.vhw.onResume();
       }
       AppMethodBeat.o(56128);
       return;

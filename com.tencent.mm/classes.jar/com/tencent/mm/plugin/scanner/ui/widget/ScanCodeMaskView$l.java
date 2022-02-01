@@ -6,12 +6,12 @@ import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.util.Iterator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$2$2"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$2$2"})
 final class ScanCodeMaskView$l
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -20,7 +20,7 @@ final class ScanCodeMaskView$l
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     AppMethodBeat.i(52387);
-    k.g(paramValueAnimator, "animation");
+    p.g(paramValueAnimator, "animation");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
     if (paramValueAnimator == null)
     {
@@ -29,22 +29,22 @@ final class ScanCodeMaskView$l
       throw paramValueAnimator;
     }
     float f = ((Float)paramValueAnimator).floatValue();
-    ScanCodeMaskView.g(this.xjJ).setAlpha(1.0F - f);
-    paramValueAnimator = ScanCodeMaskView.h(this.xjJ);
+    ScanCodeMaskView.g(this.yxL).setAlpha(1.0F - f);
+    paramValueAnimator = ScanCodeMaskView.h(this.yxL);
     if (paramValueAnimator != null) {
       paramValueAnimator.setAlpha(1.0F - f);
     }
-    paramValueAnimator = (Iterable)ScanCodeMaskView.e(this.xjJ);
+    paramValueAnimator = (Iterable)ScanCodeMaskView.e(this.yxL);
     int i = 0;
     paramValueAnimator = paramValueAnimator.iterator();
     while (paramValueAnimator.hasNext())
     {
       Object localObject = paramValueAnimator.next();
       if (i < 0) {
-        j.fOc();
+        j.gfB();
       }
       localObject = (View)localObject;
-      if (i < ScanCodeMaskView.i(this.xjJ))
+      if (i < ScanCodeMaskView.i(this.yxL))
       {
         ((View)localObject).setAlpha(f);
         ((View)localObject).setScaleX(f);
@@ -52,8 +52,8 @@ final class ScanCodeMaskView$l
       }
       i += 1;
     }
-    if (ScanCodeMaskView.j(this.xjJ)) {
-      ScanCodeMaskView.k(this.xjJ).setAlpha(f);
+    if (ScanCodeMaskView.j(this.yxL)) {
+      ScanCodeMaskView.k(this.yxL).setAlpha(f);
     }
     AppMethodBeat.o(52387);
   }

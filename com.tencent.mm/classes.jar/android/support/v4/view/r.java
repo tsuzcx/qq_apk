@@ -6,11 +6,11 @@ import android.view.PointerIcon;
 
 public final class r
 {
-  Object OC;
+  Object Qt;
   
   private r(Object paramObject)
   {
-    this.OC = paramObject;
+    this.Qt = paramObject;
   }
   
   public static r W(Context paramContext)

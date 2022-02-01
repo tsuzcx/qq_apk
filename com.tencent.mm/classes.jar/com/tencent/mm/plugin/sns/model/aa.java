@@ -12,36 +12,36 @@ import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
 import com.tencent.mm.pluginsdk.model.m;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.concurrent.ExecutorService;
 
 public final class aa
 {
-  public static boolean tYS;
-  public static char[] xSN;
-  private ao handler;
-  public boolean xSK;
-  public long xSL;
-  private int xSM;
+  public static boolean vbB;
+  public static char[] ziH;
+  private ap handler;
+  public boolean ziE;
+  public long ziF;
+  private int ziG;
   
   static
   {
     int i = 0;
-    tYS = false;
-    xSN = new char[36];
+    vbB = false;
+    ziH = new char[36];
     int j = 48;
     while (j <= 57)
     {
-      xSN[i] = ((char)j);
+      ziH[i] = ((char)j);
       j += 1;
       i += 1;
     }
     j = 97;
     while (j <= 122)
     {
-      xSN[i] = ((char)j);
+      ziH[i] = ((char)j);
       j += 1;
       i += 1;
     }
@@ -50,10 +50,10 @@ public final class aa
   public aa()
   {
     AppMethodBeat.i(95695);
-    this.xSK = false;
-    this.xSL = 0L;
-    this.xSM = 0;
-    this.handler = new ao(Looper.getMainLooper())
+    this.ziE = false;
+    this.ziF = 0L;
+    this.ziG = 0;
+    this.handler = new ap(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -61,8 +61,8 @@ public final class aa
         super.handleMessage(paramAnonymousMessage);
         if ((aa.a(aa.this) >= 5) || (System.currentTimeMillis() - aa.b(aa.this) > 300000L))
         {
-          ac.d("MicroMsg.RemoveSnsTask", "cleanCount: " + aa.a(aa.this));
-          aa.tYS = false;
+          ad.d("MicroMsg.RemoveSnsTask", "cleanCount: " + aa.a(aa.this));
+          aa.vbB = false;
           AppMethodBeat.o(95689);
           return;
         }
@@ -71,7 +71,7 @@ public final class aa
           AppMethodBeat.o(95689);
           return;
         }
-        if (aa.tYS) {
+        if (aa.vbB) {
           new aa.a(aa.this).x(new String[] { "" });
         }
         AppMethodBeat.o(95689);
@@ -97,64 +97,64 @@ public final class aa
     private String key;
     private SharedPreferences sp;
     private String username;
-    private String xSP;
-    PInt xSQ;
-    PInt xSR;
-    private String xSS;
+    private String ziJ;
+    PInt ziK;
+    PInt ziL;
+    private String ziM;
     
     public a()
     {
       AppMethodBeat.i(95690);
       this.sp = null;
-      this.xSP = "";
+      this.ziJ = "";
       this.key = "";
-      this.xSQ = new PInt();
-      this.xSR = new PInt();
-      this.sp = ai.getContext().getSharedPreferences("preferences_remove_task", 0);
-      g.agS();
-      if (!g.agP().afY())
+      this.ziK = new PInt();
+      this.ziL = new PInt();
+      this.sp = aj.getContext().getSharedPreferences("preferences_remove_task", 0);
+      g.ajD();
+      if (!g.ajA().aiK())
       {
         AppMethodBeat.o(95690);
         return;
       }
-      this.username = u.axw();
-      this.xSP = ("remove_key_base" + this.username);
+      this.username = u.aAm();
+      this.ziJ = ("remove_key_base" + this.username);
       this.key = ("remove_key" + this.username);
-      g.agS();
-      if (!g.agP().afY())
+      g.ajD();
+      if (!g.ajA().aiK())
       {
         AppMethodBeat.o(95690);
         return;
       }
-      if (af.dHA())
+      if (ag.dTN())
       {
         AppMethodBeat.o(95690);
         return;
       }
-      if (af.agw() == null)
+      if (ag.getDataDB() == null)
       {
         AppMethodBeat.o(95690);
         return;
       }
-      if (af.dHV() == null)
+      if (ag.dUi() == null)
       {
         AppMethodBeat.o(95690);
         return;
       }
-      n localn = af.dHV().auY(this.username);
+      n localn = ag.dUi().aAf(this.username);
       if (localn != null) {
-        this.xSS = localn.field_bgId;
+        this.ziM = localn.field_bgId;
       }
-      ac.d("MicroMsg.RemoveSnsTask", "my bgid %s", new Object[] { this.xSS });
+      ad.d("MicroMsg.RemoveSnsTask", "my bgid %s", new Object[] { this.ziM });
       aa.a(aa.this, true);
       AppMethodBeat.o(95690);
     }
     
-    private Boolean dHl()
+    private Boolean dTx()
     {
       AppMethodBeat.i(95691);
-      ac.d("MicroMsg.RemoveSnsTask", "simpleCleans sns");
-      if (!aa.tYS)
+      ad.d("MicroMsg.RemoveSnsTask", "simpleCleans sns");
+      if (!aa.vbB)
       {
         localObject = Boolean.FALSE;
         AppMethodBeat.o(95691);
@@ -166,26 +166,26 @@ public final class aa
         AppMethodBeat.o(95691);
         return localObject;
       }
-      if (af.dHA())
+      if (ag.dTN())
       {
-        aa.tYS = false;
+        aa.vbB = false;
         localObject = Boolean.FALSE;
         AppMethodBeat.o(95691);
         return localObject;
       }
-      this.xSQ.value = this.sp.getInt(this.xSP, 0);
-      this.xSR.value = this.sp.getInt(this.key, 0);
-      Object localObject = af.getAccSnsPath();
+      this.ziK.value = this.sp.getInt(this.ziJ, 0);
+      this.ziL.value = this.sp.getInt(this.key, 0);
+      Object localObject = ag.getAccSnsPath();
       try
       {
         long l = System.currentTimeMillis();
-        if (!aa.au((String)localObject + aa.xSN[(this.xSQ.value % 36)] + "/" + aa.xSN[(this.xSR.value % 36)], this.xSS, this.username))
+        if (!aa.aB((String)localObject + aa.ziH[(this.ziK.value % 36)] + "/" + aa.ziH[(this.ziL.value % 36)], this.ziM, this.username))
         {
           localObject = Boolean.FALSE;
           AppMethodBeat.o(95691);
           return localObject;
         }
-        ac.d("MicroMsg.RemoveSnsTask", "clean sns uses time : " + (System.currentTimeMillis() - l) + " " + this.xSQ.value + " " + this.xSR.value);
+        ad.d("MicroMsg.RemoveSnsTask", "clean sns uses time : " + (System.currentTimeMillis() - l) + " " + this.ziK.value + " " + this.ziL.value);
       }
       catch (Exception localException)
       {
@@ -197,10 +197,10 @@ public final class aa
       return localObject;
     }
     
-    public final ExecutorService dBu()
+    public final ExecutorService dCe()
     {
       AppMethodBeat.i(179088);
-      ExecutorService localExecutorService = af.dHD();
+      ExecutorService localExecutorService = ag.dTQ();
       AppMethodBeat.o(179088);
       return localExecutorService;
     }

@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.wallet_core.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.wallet_core.c.ah;
 import com.tencent.mm.plugin.wallet_core.c.x;
-import com.tencent.mm.plugin.wallet_core.model.u;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.wallet_core.model.v;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.g;
@@ -16,8 +16,8 @@ import com.tencent.mm.wallet_core.d.i;
 public class p
   extends d
 {
-  private String BoR;
-  private String iTR;
+  private String CPg;
+  private String jmZ;
   private int scene;
   private String token;
   
@@ -29,7 +29,7 @@ public class p
       public final boolean A(Object... paramAnonymousVarArgs)
       {
         AppMethodBeat.i(70968);
-        ac.i("MicroMsg.WalletJSApiVerifyCodeProcess", "resend sms");
+        ad.i("MicroMsg.WalletJSApiVerifyCodeProcess", "resend sms");
         paramAnonymousVarArgs = new x(p.c(p.this), p.a(p.this), '\000');
         parami.a(paramAnonymousVarArgs, true, 1);
         AppMethodBeat.o(70968);
@@ -43,10 +43,10 @@ public class p
         {
           if ((paramAnonymousn instanceof ah))
           {
-            ac.i("MicroMsg.WalletJSApiVerifyCodeProcess", "send sms succ");
+            ad.i("MicroMsg.WalletJSApiVerifyCodeProcess", "send sms succ");
             paramAnonymousString = (ah)paramAnonymousn;
-            paramAnonymousn = p.this.dmf;
-            paramAnonymousn.putString("key_jsapi_token", paramAnonymousString.Bpa);
+            paramAnonymousn = p.this.dxT;
+            paramAnonymousn.putString("key_jsapi_token", paramAnonymousString.CPp);
             p.this.b(paramMMActivity, paramAnonymousn);
             AppMethodBeat.o(70969);
             return true;
@@ -60,7 +60,7 @@ public class p
           return false;
         }
         if ((paramAnonymousn instanceof ah)) {
-          ac.e("MicroMsg.WalletJSApiVerifyCodeProcess", "send sms fail,errType=" + paramAnonymousInt1 + ",errCode=" + paramAnonymousInt2 + ",errMsg=" + paramAnonymousString);
+          ad.e("MicroMsg.WalletJSApiVerifyCodeProcess", "send sms fail,errType=" + paramAnonymousInt1 + ",errCode=" + paramAnonymousInt2 + ",errMsg=" + paramAnonymousString);
         }
         AppMethodBeat.o(70969);
         return false;
@@ -71,15 +71,15 @@ public class p
         AppMethodBeat.i(70967);
         if (paramAnonymousVarArgs.length == 2)
         {
-          paramAnonymousVarArgs = (u)paramAnonymousVarArgs[1];
+          paramAnonymousVarArgs = (v)paramAnonymousVarArgs[1];
           paramAnonymousVarArgs.token = p.a(p.this);
-          ac.i("MicroMsg.WalletJSApiVerifyCodeProcess", "do NetSceneTenpayVerifySmsByPasswd");
+          ad.i("MicroMsg.WalletJSApiVerifyCodeProcess", "do NetSceneTenpayVerifySmsByPasswd");
           paramAnonymousVarArgs = new ah(paramAnonymousVarArgs, p.b(p.this));
           parami.a(paramAnonymousVarArgs, true, 1);
           AppMethodBeat.o(70967);
           return true;
         }
-        ac.e("MicroMsg.WalletJSApiVerifyCodeProcess", "arguments is error");
+        ad.e("MicroMsg.WalletJSApiVerifyCodeProcess", "arguments is error");
         AppMethodBeat.o(70967);
         return false;
       }
@@ -91,9 +91,9 @@ public class p
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(70970);
-    ac.i("MicroMsg.WalletJSApiVerifyCodeProcess", "start WalletJSApiVerifyCodeProcess");
-    this.BoR = paramBundle.getString("key_relation_key");
-    this.iTR = paramBundle.getString("key_pwd1");
+    ad.i("MicroMsg.WalletJSApiVerifyCodeProcess", "start WalletJSApiVerifyCodeProcess");
+    this.CPg = paramBundle.getString("key_relation_key");
+    this.jmZ = paramBundle.getString("key_pwd1");
     this.token = paramBundle.getString("key_jsapi_token");
     this.scene = paramBundle.getInt("key_verify_scene");
     b(paramActivity, WalletVerifyCodeUI.class, paramBundle);
@@ -106,7 +106,7 @@ public class p
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(70971);
-    ac.i("MicroMsg.WalletJSApiVerifyCodeProcess", "end WalletJSApiVerifyCodeProcess");
+    ad.i("MicroMsg.WalletJSApiVerifyCodeProcess", "end WalletJSApiVerifyCodeProcess");
     if (this.scene == 8)
     {
       a(paramActivity, "wallet", ".pay.ui.WalletLoanRepaymentUI", -1, null, false);
@@ -122,7 +122,7 @@ public class p
     return false;
   }
   
-  public final String cHN()
+  public final String cQc()
   {
     return null;
   }

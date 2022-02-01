@@ -24,7 +24,7 @@ public abstract class LiveData<T>
       synchronized (LiveData.a(LiveData.this))
       {
         Object localObject2 = LiveData.b(LiveData.this);
-        LiveData.a(LiveData.this, LiveData.W());
+        LiveData.a(LiveData.this, LiveData.X());
         LiveData.this.setValue(localObject2);
         return;
       }
@@ -38,7 +38,7 @@ public abstract class LiveData<T>
     do
     {
       return;
-      if (!paramLiveData.X())
+      if (!paramLiveData.Y())
       {
         paramLiveData.l(false);
         return;
@@ -71,7 +71,7 @@ public abstract class LiveData<T>
       }
       this.cS = false;
       return;
-      b.d locald = this.cO.R();
+      b.d locald = this.cO.S();
       do
       {
         localLiveData = paramLiveData;
@@ -84,14 +84,14 @@ public abstract class LiveData<T>
     }
   }
   
-  private static void j(String paramString)
+  private static void h(String paramString)
   {
     if (!a.P().bK.isMainThread()) {
       throw new IllegalStateException("Cannot invoke " + paramString + " on a background thread");
     }
   }
   
-  protected void V() {}
+  protected void W() {}
   
   public T getValue()
   {
@@ -167,18 +167,18 @@ public abstract class LiveData<T>
   
   public void removeObserver(Observer<T> paramObserver)
   {
-    j("removeObserver");
+    h("removeObserver");
     paramObserver = (ObserverWrapper)this.cO.remove(paramObserver);
     if (paramObserver == null) {
       return;
     }
-    paramObserver.Y();
+    paramObserver.Z();
     paramObserver.l(false);
   }
   
   public void removeObservers(LifecycleOwner paramLifecycleOwner)
   {
-    j("removeObservers");
+    h("removeObservers");
     Iterator localIterator = this.cO.iterator();
     while (localIterator.hasNext())
     {
@@ -191,7 +191,7 @@ public abstract class LiveData<T>
   
   protected void setValue(T paramT)
   {
-    j("setValue");
+    h("setValue");
     this.cR += 1;
     this.mData = paramT;
     b(null);
@@ -205,7 +205,7 @@ public abstract class LiveData<T>
       super(localObserver);
     }
     
-    final boolean X()
+    final boolean Y()
     {
       return true;
     }
@@ -223,12 +223,12 @@ public abstract class LiveData<T>
       this.cW = paramObserver;
     }
     
-    final boolean X()
+    final boolean Y()
     {
       return this.cW.getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED);
     }
     
-    final void Y()
+    final void Z()
     {
       this.cW.getLifecycle().removeObserver(this);
     }
@@ -245,7 +245,7 @@ public abstract class LiveData<T>
         LiveData.this.removeObserver(this.cX);
         return;
       }
-      l(X());
+      l(Y());
     }
   }
   
@@ -261,9 +261,9 @@ public abstract class LiveData<T>
       this.cX = localObject;
     }
     
-    abstract boolean X();
+    abstract boolean Y();
     
-    void Y() {}
+    void Z() {}
     
     boolean c(LifecycleOwner paramLifecycleOwner)
     {
@@ -297,7 +297,7 @@ public abstract class LiveData<T>
           LiveData.this.onActive();
         }
         if ((LiveData.c(LiveData.this) == 0) && (!this.mActive)) {
-          LiveData.this.V();
+          LiveData.this.W();
         }
         if (!this.mActive) {
           break;

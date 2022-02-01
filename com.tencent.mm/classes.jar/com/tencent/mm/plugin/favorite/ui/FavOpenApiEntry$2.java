@@ -6,7 +6,7 @@ import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
 import com.tencent.mm.pluginsdk.ui.tools.o;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.y;
 
 final class FavOpenApiEntry$2
   implements y.a
@@ -18,15 +18,15 @@ final class FavOpenApiEntry$2
     AppMethodBeat.i(24618);
     if (paramBoolean)
     {
-      o.a(x.getIntExtra(this.qVk.getIntent(), "_mmessage_sdkVersion", 0), FavOpenApiEntry.c(this.qVk), this.qVm);
-      FavOpenApiEntry.b(this.qVk, this.qVm);
-      paramString = ReportUtil.c(this.qVk.getIntent().getExtras(), 0);
-      ReportUtil.a(this.qVk, paramString, false);
+      o.a(y.getIntExtra(this.rFy.getIntent(), "_mmessage_sdkVersion", 0), FavOpenApiEntry.c(this.rFy), this.rFA);
+      FavOpenApiEntry.b(this.rFy, this.rFA);
+      paramString = ReportUtil.d(this.rFy.getIntent().getExtras(), 0);
+      ReportUtil.a(this.rFy, paramString, false);
       AppMethodBeat.o(24618);
       return;
     }
-    this.qVk.finish();
-    ReportUtil.a(this.qVk, ReportUtil.c(this.qVk.getIntent().getExtras(), 0), true);
+    this.rFy.finish();
+    ReportUtil.a(this.rFy, ReportUtil.d(this.rFy.getIntent().getExtras(), 0), true);
     AppMethodBeat.o(24618);
   }
 }

@@ -2,21 +2,21 @@ package com.tencent.mm.sdk.b;
 
 public abstract class b
 {
-  protected boolean Gqe;
-  private int Gqf = 0;
+  protected boolean IbR;
+  private int IbS = 0;
   public Runnable callback = null;
   
   final int __getEventID()
   {
-    if (this.Gqf == 0) {
-      this.Gqf = getClass().getName().hashCode();
+    if (this.IbS == 0) {
+      this.IbS = getClass().getName().hashCode();
     }
-    return this.Gqf;
+    return this.IbS;
   }
   
-  public final boolean eUo()
+  public final boolean fjR()
   {
-    return this.Gqe;
+    return this.IbR;
   }
 }
 

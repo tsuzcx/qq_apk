@@ -1,7 +1,6 @@
 package com.tencent.liteav.audio;
 
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
@@ -29,7 +28,7 @@ public class TXCUGCBGMPlayer
   static
   {
     AppMethodBeat.i(16297);
-    d.f();
+    com.tencent.liteav.basic.util.f.f();
     AppMethodBeat.o(16297);
   }
   

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -22,7 +22,7 @@ public final class al
     AppMethodBeat.o(65295);
   }
   
-  public final String bVR()
+  public final String cau()
   {
     return "/cgi-bin/mmpay-bin/deletelistwxhb";
   }
@@ -35,13 +35,13 @@ public final class al
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(65296);
-    ac.i("NetSceneLuckyMoneyMyRecordDelete", "onGYNetEnd");
+    ad.i("NetSceneLuckyMoneyMyRecordDelete", "onGYNetEnd");
     AppMethodBeat.o(65296);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.al
  * JD-Core Version:    0.7.0.1
  */

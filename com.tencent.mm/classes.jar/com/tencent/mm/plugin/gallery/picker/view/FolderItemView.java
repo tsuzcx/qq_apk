@@ -11,21 +11,21 @@ import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.a.b;
 import com.tencent.mm.ui.z;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/gallery/picker/view/FolderItemView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "holder", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "getHolder", "()Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "setHolder", "(Lcom/tencent/mm/ui/base/adapter/ViewWrapper;)V", "getLayoutId", "onCovert", "", "media", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "loader", "Lcom/tencent/mm/loader/Loader;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "isSelected", "", "plugin-gallery_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/view/FolderItemView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "holder", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "getHolder", "()Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "setHolder", "(Lcom/tencent/mm/ui/base/adapter/ViewWrapper;)V", "getLayoutId", "onCovert", "", "media", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "loader", "Lcom/tencent/mm/loader/Loader;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "isSelected", "", "plugin-gallery_release"})
 public final class FolderItemView
   extends FrameLayout
 {
-  public b sMR;
+  public b tJz;
   
   public FolderItemView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(164917);
-    paramContext = z.jD(getContext()).inflate(getLayoutId(), (ViewGroup)this);
-    k.g(paramContext, "view");
+    paramContext = z.jO(getContext()).inflate(getLayoutId(), (ViewGroup)this);
+    p.g(paramContext, "view");
     paramContext.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -2));
     AppMethodBeat.o(164917);
   }
@@ -34,8 +34,8 @@ public final class FolderItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164918);
-    paramContext = z.jD(getContext()).inflate(getLayoutId(), (ViewGroup)this);
-    k.g(paramContext, "view");
+    paramContext = z.jO(getContext()).inflate(getLayoutId(), (ViewGroup)this);
+    p.g(paramContext, "view");
     paramContext.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -2));
     AppMethodBeat.o(164918);
   }
@@ -44,8 +44,8 @@ public final class FolderItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164919);
-    paramContext = z.jD(getContext()).inflate(getLayoutId(), (ViewGroup)this);
-    k.g(paramContext, "view");
+    paramContext = z.jO(getContext()).inflate(getLayoutId(), (ViewGroup)this);
+    p.g(paramContext, "view");
     paramContext.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -2));
     AppMethodBeat.o(164919);
   }
@@ -53,9 +53,9 @@ public final class FolderItemView
   public final b getHolder()
   {
     AppMethodBeat.i(164915);
-    b localb = this.sMR;
+    b localb = this.tJz;
     if (localb == null) {
-      k.aVY("holder");
+      p.bcb("holder");
     }
     AppMethodBeat.o(164915);
     return localb;
@@ -69,14 +69,14 @@ public final class FolderItemView
   public final void setHolder(b paramb)
   {
     AppMethodBeat.i(164916);
-    k.h(paramb, "<set-?>");
-    this.sMR = paramb;
+    p.h(paramb, "<set-?>");
+    this.tJz = paramb;
     AppMethodBeat.o(164916);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.view.FolderItemView
  * JD-Core Version:    0.7.0.1
  */

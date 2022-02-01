@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.f.f;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,13 +15,13 @@ import org.json.JSONException;
 public class GameTabGalleryUI
   extends MMActivity
 {
-  private static final int taq;
-  private m tar;
+  private static final int tYg;
+  private m tYh;
   
   static
   {
     AppMethodBeat.i(41075);
-    taq = "GameTabGalleryUI".hashCode() & 0xFFFF;
+    tYg = "GameTabGalleryUI".hashCode() & 0xFFFF;
     AppMethodBeat.o(41075);
   }
   
@@ -34,7 +34,7 @@ public class GameTabGalleryUI
   {
     AppMethodBeat.i(41074);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 == taq) && (paramInt2 == -1))
+    if ((paramInt1 == tYg) && (paramInt2 == -1))
     {
       setResult(paramInt2, paramIntent);
       finish();
@@ -46,20 +46,20 @@ public class GameTabGalleryUI
   {
     AppMethodBeat.i(41070);
     super.onCreate(paramBundle);
-    this.tar = new m(getContext(), taq);
+    this.tYh = new m(getContext(), tYg);
     boolean bool = getIntent().getBooleanExtra("game_haowan_ignore_video_preview", true);
-    this.tar.setIgnoreVideoPreview(bool);
+    this.tYh.setIgnoreVideoPreview(bool);
     Object localObject = getIntent().getStringExtra("game_haowan_local_albums_info");
     paramBundle = new JSONArray();
-    if (!bs.isNullOrNil((String)localObject)) {}
+    if (!bt.isNullOrNil((String)localObject)) {}
     for (;;)
     {
       try
       {
         localObject = new JSONArray((String)localObject);
         paramBundle = (Bundle)localObject;
-        this.tar.setLocalAlbumInfos(paramBundle);
-        setContentView(this.tar);
+        this.tYh.setLocalAlbumInfos(paramBundle);
+        setContentView(this.tYh);
         setMMTitle(2131759882);
         setBackBtn(new MenuItem.OnMenuItemClickListener()
         {

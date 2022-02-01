@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vj
   extends b
 {
-  public a dyj;
+  public a dJv;
   
   public vj()
   {
@@ -15,21 +15,25 @@ public final class vj
   
   private vj(byte paramByte)
   {
-    AppMethodBeat.i(91220);
-    this.dyj = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(125650);
+    this.dJv = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91220);
+    AppMethodBeat.o(125650);
   }
   
   public static final class a
   {
-    public boolean dyk = false;
+    public int dJw;
+    public boolean dJx;
+    public int dJy;
+    public String drH;
+    public int dsi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.vj
  * JD-Core Version:    0.7.0.1
  */

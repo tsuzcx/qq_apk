@@ -48,31 +48,29 @@ public final class ana
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
       localObject = c.n(paramVarArgs);
-      ((Path)localObject).moveTo(42.0F, 9.0F);
-      ((Path)localObject).lineTo(42.0F, 15.0F);
-      ((Path)localObject).lineTo(15.0F, 15.0F);
-      ((Path)localObject).lineTo(15.0F, 57.0F);
-      ((Path)localObject).lineTo(57.0F, 57.0F);
-      ((Path)localObject).lineTo(57.0F, 30.0F);
-      ((Path)localObject).lineTo(63.0F, 30.0F);
-      ((Path)localObject).lineTo(63.0F, 60.0F);
-      ((Path)localObject).cubicTo(63.0F, 61.656853F, 61.656853F, 63.0F, 60.0F, 63.0F);
-      ((Path)localObject).lineTo(12.0F, 63.0F);
-      ((Path)localObject).cubicTo(10.343145F, 63.0F, 9.0F, 61.656853F, 9.0F, 60.0F);
-      ((Path)localObject).lineTo(9.0F, 12.0F);
-      ((Path)localObject).cubicTo(9.0F, 10.343145F, 10.343145F, 9.0F, 12.0F, 9.0F);
-      ((Path)localObject).lineTo(42.0F, 9.0F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(59.821098F, 10.06066F);
-      ((Path)localObject).lineTo(61.942421F, 12.18198F);
-      ((Path)localObject).cubicTo(62.528206F, 12.767767F, 62.528206F, 13.717514F, 61.942421F, 14.303301F);
-      ((Path)localObject).lineTo(33.942829F, 42.302895F);
-      ((Path)localObject).lineTo(27.965082F, 45.242802F);
-      ((Path)localObject).cubicTo(27.519051F, 45.462166F, 26.979641F, 45.278412F, 26.760279F, 44.832382F);
-      ((Path)localObject).cubicTo(26.637094F, 44.581913F, 26.637094F, 44.288467F, 26.760279F, 44.037998F);
-      ((Path)localObject).lineTo(29.700188F, 38.060253F);
-      ((Path)localObject).lineTo(57.69978F, 10.06066F);
-      ((Path)localObject).cubicTo(58.285564F, 9.474874F, 59.235313F, 9.474874F, 59.821098F, 10.06066F);
+      ((Path)localObject).moveTo(51.012886F, 38.972252F);
+      ((Path)localObject).lineTo(50.305111F, 38.983707F);
+      ((Path)localObject).cubicTo(48.165051F, 38.983707F, 46.919781F, 37.413818F, 47.724277F, 35.603878F);
+      ((Path)localObject).cubicTo(48.275196F, 34.318401F, 49.518124F, 33.325638F, 50.986015F, 32.999577F);
+      ((Path)localObject).cubicTo(54.913383F, 32.05159F, 57.581791F, 28.982149F, 57.581791F, 25.413738F);
+      ((Path)localObject).cubicTo(57.581791F, 21.087517F, 53.451355F, 17.561981F, 48.292332F, 17.561981F);
+      ((Path)localObject).cubicTo(43.133308F, 17.561981F, 39.002876F, 21.087517F, 39.002876F, 25.413738F);
+      ((Path)localObject).lineTo(39.002876F, 46.979233F);
+      ((Path)localObject).cubicTo(39.002876F, 54.574989F, 32.213692F, 60.69297F, 23.851439F, 60.69297F);
+      ((Path)localObject).cubicTo(15.489182F, 60.69297F, 8.7F, 54.574989F, 8.7F, 46.979233F);
+      ((Path)localObject).cubicTo(8.7F, 40.318993F, 13.957028F, 34.633987F, 21.119808F, 33.553036F);
+      ((Path)localObject).lineTo(21.694889F, 33.553036F);
+      ((Path)localObject).cubicTo(23.315079F, 33.553036F, 24.482109F, 34.522938F, 24.482107F, 35.908073F);
+      ((Path)localObject).cubicTo(24.482798F, 36.145412F, 24.477034F, 36.255089F, 24.4536F, 36.395687F);
+      ((Path)localObject).cubicTo(24.42201F, 36.58522F, 24.360502F, 36.766632F, 24.275721F, 36.932861F);
+      ((Path)localObject).cubicTo(23.759354F, 38.137722F, 22.439314F, 39.180859F, 21.013983F, 39.537167F);
+      ((Path)localObject).cubicTo(17.11499F, 40.478302F, 14.418211F, 43.529003F, 14.418211F, 46.979233F);
+      ((Path)localObject).cubicTo(14.418211F, 51.305454F, 18.548643F, 54.83099F, 23.707668F, 54.83099F);
+      ((Path)localObject).cubicTo(28.866692F, 54.83099F, 32.997124F, 51.305454F, 32.997124F, 46.979233F);
+      ((Path)localObject).lineTo(32.997124F, 25.413738F);
+      ((Path)localObject).cubicTo(32.997124F, 17.817982F, 39.786308F, 11.7F, 48.148563F, 11.7F);
+      ((Path)localObject).cubicTo(56.510818F, 11.7F, 63.299999F, 17.817982F, 63.299999F, 25.413738F);
+      ((Path)localObject).cubicTo(63.299999F, 32.109337F, 58.16663F, 37.728123F, 51.012886F, 38.972252F);
       ((Path)localObject).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
       localCanvas.drawPath((Path)localObject, localPaint);
@@ -83,7 +81,7 @@ public final class ana
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.ana
  * JD-Core Version:    0.7.0.1
  */

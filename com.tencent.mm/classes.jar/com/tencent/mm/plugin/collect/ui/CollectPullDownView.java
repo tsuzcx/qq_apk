@@ -21,7 +21,7 @@ public class CollectPullDownView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void bWW()
+  public final void cbz()
   {
     AppMethodBeat.i(64191);
     View localView1 = inflate(this.context, 2131493556, null);
@@ -33,7 +33,7 @@ public class CollectPullDownView
   
   public void setLoadDataEnd(boolean paramBoolean)
   {
-    this.HyE = paramBoolean;
+    this.Jmv = paramBoolean;
   }
 }
 

@@ -1,107 +1,76 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.net.Uri;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
-import com.tencent.luggage.d.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
-import com.tencent.mm.plugin.appbrand.service.n;
-import com.tencent.mm.sdk.platformtools.ac;
-import org.json.JSONException;
+import com.tencent.mm.compatible.util.q;
+import com.tencent.mm.g.a.vm;
+import com.tencent.mm.g.a.vm.a;
+import com.tencent.mm.g.a.vm.b;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public class an
-  extends bo<com.tencent.mm.plugin.webview.luggage.f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
-  
-  public final void b(a<com.tencent.mm.plugin.webview.luggage.f>.a parama)
+  public final void a(Context paramContext, String paramString, bq.a parama)
   {
-    AppMethodBeat.i(78592);
-    ac.i("MicroMsg.JsApiOpenWeAppPage", "invokeInOwn %s", new Object[] { parama.bWS.bVY });
-    String str3 = parama.bWS.bVY.optString("userName");
-    String str2 = parama.bWS.bVY.optString("relativeURL");
-    String str1 = str2;
-    if (str2.contains("render_data")) {
-      str1 = str2;
-    }
-    try
+    AppMethodBeat.i(78591);
+    ad.i("MicroMsg.JsApiOpenWeApp", "invokeInMM");
+    paramString = com.tencent.mm.plugin.webview.luggage.c.b.Pe(paramString);
+    if (paramString == null)
     {
-      new StringBuilder();
-      str1 = str2;
-      localObject = new JSONObject(Uri.parse(str2).getQueryParameter("widgetData"));
-      str1 = str2;
-      ((JSONObject)localObject).remove("render_data");
-      str1 = str2;
-      str2 = str2.replaceAll("(widgetData=.*&)|(widgetData=.*$)", "&");
-      str1 = str2;
-      str2 = str2 + "&widgetData=" + ((JSONObject)localObject).toString();
-      str1 = str2;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        Object localObject;
-        int i;
-        int j;
-        int k;
-        String str4;
-        com.tencent.mm.plugin.appbrand.a.f localf;
-        String str5;
-        String str6;
-        String str7;
-        ac.printErrStackTrace("MicroMsg.JsApiOpenWeAppPage", localJSONException, "", new Object[0]);
-        continue;
-        if (k == 3) {
-          localf.scene = 1005;
-        } else if (k == 16) {
-          localf.scene = 1042;
-        } else if (k == 20) {
-          localf.scene = 1053;
-        } else {
-          localf.scene = 1000;
-        }
-      }
-    }
-    i = parama.bWS.bVY.optInt("appVersion", 0);
-    str2 = parama.bWS.bVY.optString("searchId");
-    localObject = parama.bWS.bVY.optString("docId");
-    j = parama.bWS.bVY.optInt("position", 1);
-    k = parama.bWS.bVY.optInt("scene", 1000);
-    str4 = parama.bWS.bVY.optString("privateExtraData");
-    localf = new com.tencent.mm.plugin.appbrand.a.f();
-    if ((k == 201) || (k == 14) || (k == 22))
-    {
-      localf.scene = 1006;
-      str5 = parama.bWS.bVY.optString("statSessionId");
-      str6 = parama.bWS.bVY.optString("statKeywordId");
-      str7 = parama.bWS.bVY.optString("subScene");
-      localf.cYP = (str5 + ":" + str6 + ":" + str2 + ":" + (String)localObject + ":" + j + ":" + str7);
-      localf.jjo = new AppBrandLaunchReferrer();
-      localf.jjo.jDR = str4;
-      localf.username = str3;
-      localf.version = i;
-      localf.jjf = str1;
-      ((n)g.ab(n.class)).a(((com.tencent.mm.plugin.webview.luggage.f)parama.bWR).mContext, localf);
-      parama.a("", null);
-      AppMethodBeat.o(78592);
+      parama.f("fail_invalid_data", null);
+      AppMethodBeat.o(78591);
       return;
     }
+    String str1 = paramString.optString("currentUrl");
+    String str2 = paramString.optString("preVerifyAppId");
+    vm localvm = new vm();
+    localvm.dJF.context = paramContext;
+    localvm.dJF.userName = paramString.optString("userName");
+    localvm.dJF.appId = paramString.optString("appId");
+    localvm.dJF.dJH = paramString.optString("relativeURL");
+    localvm.dJF.aDD = paramString.optInt("appVersion", 0);
+    localvm.dJF.scene = paramString.optInt("scene", 1018);
+    localvm.dJF.dkh = paramString.optString("sceneNote");
+    if (bt.isNullOrNil(localvm.dJF.dkh)) {
+      localvm.dJF.dkh = q.encode(bt.nullAsNil(str1));
+    }
+    localvm.dJF.dJJ = paramString.optString("downloadURL");
+    localvm.dJF.dJI = paramString.optInt("openType", 0);
+    localvm.dJF.dJK = paramString.optString("checkSumMd5");
+    localvm.dJF.dJM = false;
+    localvm.dJF.dJN.hKu = paramString.optString("extJsonInfo");
+    localvm.dJF.dJS = str2;
+    if (bt.isNullOrNil(localvm.dJF.dJS)) {
+      localvm.dJF.dJS = paramString.optString("sourceAppId");
+    }
+    localvm.dJF.dJT = str1;
+    localvm.dJF.dJU = paramString.optString("privateExtraData");
+    a.IbL.l(localvm);
+    if (localvm.dJG.dJY)
+    {
+      parama.f(null, null);
+      AppMethodBeat.o(78591);
+      return;
+    }
+    parama.f(bt.nullAsNil(localvm.dJG.dJZ), null);
+    AppMethodBeat.o(78591);
   }
   
-  public final int bYk()
+  public final void b(com.tencent.luggage.d.b<g>.a paramb) {}
+  
+  public final int ccO()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "openWeAppPage";
+    return "openWeApp";
   }
 }
 

@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cqn;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.protocal.protobuf.cvs;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,10 +16,10 @@ public class FTSLocalPageRelevantView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private String jKB = null;
+  private String keN = null;
   private String query = null;
-  private b sGf = null;
-  private List<cqn> sGg = null;
+  private b tCY = null;
+  private List<cvs> tCZ = null;
   
   public FTSLocalPageRelevantView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,8 +41,8 @@ public class FTSLocalPageRelevantView
   
   public String getSearchId()
   {
-    if (this.jKB != null) {
-      return this.jKB;
+    if (this.keN != null) {
+      return this.keN;
     }
     return "";
   }
@@ -49,16 +51,16 @@ public class FTSLocalPageRelevantView
   {
     AppMethodBeat.i(112265);
     Object localObject = new StringBuilder("");
-    if (this.sGg != null)
+    if (this.tCZ != null)
     {
-      Iterator localIterator = this.sGg.iterator();
+      Iterator localIterator = this.tCZ.iterator();
       while (localIterator.hasNext())
       {
-        cqn localcqn = (cqn)localIterator.next();
+        cvs localcvs = (cvs)localIterator.next();
         if (((StringBuilder)localObject).length() > 0) {
           ((StringBuilder)localObject).append("|");
         }
-        ((StringBuilder)localObject).append(localcqn.FtK);
+        ((StringBuilder)localObject).append(localcvs.HdP);
       }
     }
     localObject = ((StringBuilder)localObject).toString();
@@ -69,15 +71,19 @@ public class FTSLocalPageRelevantView
   public void onClick(View paramView)
   {
     AppMethodBeat.i(112264);
-    if ((this.sGf != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof a))) {
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/fts/ui/widget/FTSLocalPageRelevantView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    if ((this.tCY != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof a))) {
       paramView.getTag();
     }
+    a.a(this, "com/tencent/mm/plugin/fts/ui/widget/FTSLocalPageRelevantView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(112264);
   }
   
   public void setOnRelevantClickListener(b paramb)
   {
-    this.sGf = paramb;
+    this.tCY = paramb;
   }
   
   final class a {}

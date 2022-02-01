@@ -14,33 +14,33 @@ public class FlutterActivity
   extends HellActivity
   implements a.a, m, FlutterView.b
 {
-  private final a KJQ;
-  private final b KJR;
-  private final FlutterView.b KJS;
-  private final m KJT;
+  private final a MAC;
+  private final b MAD;
+  private final FlutterView.b MAE;
+  private final m MAF;
   
   public FlutterActivity()
   {
     AppMethodBeat.i(9605);
-    this.KJQ = new a(this, this);
-    this.KJR = this.KJQ;
-    this.KJS = this.KJQ;
-    this.KJT = this.KJQ;
+    this.MAC = new a(this, this);
+    this.MAD = this.MAC;
+    this.MAE = this.MAC;
+    this.MAF = this.MAC;
     AppMethodBeat.o(9605);
   }
   
-  public final boolean aVE(String paramString)
+  public final boolean bbH(String paramString)
   {
     AppMethodBeat.i(9606);
-    boolean bool = this.KJT.aVE(paramString);
+    boolean bool = this.MAF.bbH(paramString);
     AppMethodBeat.o(9606);
     return bool;
   }
   
-  public final m.c dq(String paramString)
+  public final m.c em(String paramString)
   {
     AppMethodBeat.i(9607);
-    paramString = this.KJT.dq(paramString);
+    paramString = this.MAF.em(paramString);
     AppMethodBeat.o(9607);
     return paramString;
   }
@@ -48,7 +48,7 @@ public class FlutterActivity
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(9617);
-    if (!this.KJR.onActivityResult(paramInt1, paramInt2, paramIntent)) {
+    if (!this.MAD.onActivityResult(paramInt1, paramInt2, paramIntent)) {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
     AppMethodBeat.o(9617);
@@ -57,7 +57,7 @@ public class FlutterActivity
   public void onBackPressed()
   {
     AppMethodBeat.i(9612);
-    if (!this.KJR.onBackPressed()) {
+    if (!this.MAD.onBackPressed()) {
       super.onBackPressed();
     }
     AppMethodBeat.o(9612);
@@ -67,7 +67,7 @@ public class FlutterActivity
   {
     AppMethodBeat.i(9622);
     super.onConfigurationChanged(paramConfiguration);
-    this.KJR.onConfigurationChanged(paramConfiguration);
+    this.MAD.onConfigurationChanged(paramConfiguration);
     AppMethodBeat.o(9622);
   }
   
@@ -75,14 +75,14 @@ public class FlutterActivity
   {
     AppMethodBeat.i(9608);
     super.onCreate(paramBundle);
-    this.KJR.fMJ();
+    this.MAD.geg();
     AppMethodBeat.o(9608);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(9611);
-    this.KJR.onDestroy();
+    this.MAD.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(9611);
   }
@@ -90,14 +90,14 @@ public class FlutterActivity
   public void onLowMemory()
   {
     AppMethodBeat.i(9621);
-    this.KJR.onLowMemory();
+    this.MAD.onLowMemory();
     AppMethodBeat.o(9621);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(9618);
-    this.KJR.onNewIntent(paramIntent);
+    this.MAD.onNewIntent(paramIntent);
     AppMethodBeat.o(9618);
   }
   
@@ -105,7 +105,7 @@ public class FlutterActivity
   {
     AppMethodBeat.i(9614);
     super.onPause();
-    this.KJR.onPause();
+    this.MAD.onPause();
     AppMethodBeat.o(9614);
   }
   
@@ -113,14 +113,14 @@ public class FlutterActivity
   {
     AppMethodBeat.i(9615);
     super.onPostResume();
-    this.KJR.onPostResume();
+    this.MAD.onPostResume();
     AppMethodBeat.o(9615);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(9616);
-    this.KJR.a(paramInt, paramArrayOfString, paramArrayOfInt);
+    this.MAD.a(paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(9616);
   }
   
@@ -128,7 +128,7 @@ public class FlutterActivity
   {
     AppMethodBeat.i(9610);
     super.onResume();
-    this.KJR.onResume();
+    this.MAD.onResume();
     AppMethodBeat.o(9610);
   }
   
@@ -136,14 +136,14 @@ public class FlutterActivity
   {
     AppMethodBeat.i(9609);
     super.onStart();
-    this.KJR.onStart();
+    this.MAD.onStart();
     AppMethodBeat.o(9609);
   }
   
   public void onStop()
   {
     AppMethodBeat.i(9613);
-    this.KJR.onStop();
+    this.MAD.onStop();
     super.onStop();
     AppMethodBeat.o(9613);
   }
@@ -151,14 +151,14 @@ public class FlutterActivity
   public void onTrimMemory(int paramInt)
   {
     AppMethodBeat.i(9620);
-    this.KJR.onTrimMemory(paramInt);
+    this.MAD.onTrimMemory(paramInt);
     AppMethodBeat.o(9620);
   }
   
   public void onUserLeaveHint()
   {
     AppMethodBeat.i(9619);
-    this.KJR.onUserLeaveHint();
+    this.MAD.onUserLeaveHint();
     AppMethodBeat.o(9619);
   }
   

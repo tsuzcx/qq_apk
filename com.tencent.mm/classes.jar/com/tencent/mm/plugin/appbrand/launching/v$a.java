@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.appbrand.launching;
 import android.os.Parcelable;
 import com.tencent.luggage.sdk.launching.a;
 import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.plugin.appbrand.a.f;
+import com.tencent.mm.plugin.appbrand.api.f;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "result", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "onWXAppResult", "com/tencent/mm/plugin/appbrand/launching/ExportWxaInstrumentation$toInternalParcel$1$2"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "onWXAppResult", "com/tencent/mm/plugin/appbrand/launching/ExportWxaInstrumentation$toInternalParcel$1$2"})
 final class v$a<R extends Parcelable>
   implements a<IPCString>
 {

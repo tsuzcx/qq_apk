@@ -1,7 +1,7 @@
 package f.a.a.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.bx.b;
 import java.io.UnsupportedEncodingException;
 
 public final class a
@@ -10,13 +10,37 @@ public final class a
   private final int limit;
   private int position;
   
-  public a(byte[] paramArrayOfByte, int paramInt)
+  private a(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(2425);
     this.buffer = paramArrayOfByte;
     this.position = 0;
     this.limit = (paramInt + 0);
     AppMethodBeat.o(2425);
+  }
+  
+  public static int alT(int paramInt)
+  {
+    AppMethodBeat.i(215632);
+    paramInt = fN(paramInt);
+    AppMethodBeat.o(215632);
+    return paramInt + 8;
+  }
+  
+  public static int alU(int paramInt)
+  {
+    AppMethodBeat.i(215633);
+    paramInt = fN(paramInt);
+    AppMethodBeat.o(215633);
+    return paramInt + 4;
+  }
+  
+  public static int alV(int paramInt)
+  {
+    AppMethodBeat.i(215634);
+    paramInt = fN(paramInt);
+    AppMethodBeat.o(215634);
+    return paramInt + 1;
   }
   
   public static int ax(long paramLong)
@@ -59,29 +83,29 @@ public final class a
       AppMethodBeat.o(2437);
       return 0;
     }
-    paramInt = fK(paramInt);
-    int i = fM(paramb.xy.length);
-    int j = paramb.xy.length;
+    paramInt = fN(paramInt);
+    int i = fP(paramb.zr.length);
+    int j = paramb.zr.length;
     AppMethodBeat.o(2437);
     return paramInt + i + j;
   }
   
-  public static int bx(int paramInt1, int paramInt2)
+  public static int bz(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2435);
     if (paramInt2 >= 0)
     {
-      paramInt1 = fK(paramInt1);
-      paramInt2 = fM(paramInt2);
+      paramInt1 = fN(paramInt1);
+      paramInt2 = fP(paramInt2);
       AppMethodBeat.o(2435);
       return paramInt1 + paramInt2;
     }
-    paramInt1 = fK(paramInt1);
+    paramInt1 = fN(paramInt1);
     AppMethodBeat.o(2435);
     return paramInt1 + 10;
   }
   
-  private void c(byte paramByte)
+  private void d(byte paramByte)
   {
     byte[] arrayOfByte = this.buffer;
     int i = this.position;
@@ -89,7 +113,15 @@ public final class a
     arrayOfByte[i] = paramByte;
   }
   
-  private void cY(byte[] paramArrayOfByte)
+  public static a de(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(215630);
+    paramArrayOfByte = new a(paramArrayOfByte, paramArrayOfByte.length);
+    AppMethodBeat.o(215630);
+    return paramArrayOfByte;
+  }
+  
+  private void df(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(2438);
     if (paramArrayOfByte == null)
@@ -112,8 +144,8 @@ public final class a
     try
     {
       paramString = paramString.getBytes("UTF-8");
-      paramInt = fK(paramInt);
-      int i = fM(paramString.length);
+      paramInt = fN(paramInt);
+      int i = fP(paramString.length);
       int j = paramString.length;
       AppMethodBeat.o(2436);
       return j + (paramInt + i);
@@ -126,15 +158,15 @@ public final class a
     }
   }
   
-  public static int fK(int paramInt)
+  public static int fN(int paramInt)
   {
     AppMethodBeat.i(2441);
-    paramInt = fM(f.a.a.b.a.bA(paramInt, 0));
+    paramInt = fP(f.a.a.b.a.bC(paramInt, 0));
     AppMethodBeat.o(2441);
     return paramInt;
   }
   
-  public static int fM(int paramInt)
+  public static int fP(int paramInt)
   {
     if ((paramInt & 0xFFFFFF80) == 0) {
       return 1;
@@ -154,7 +186,7 @@ public final class a
   public static int p(int paramInt, long paramLong)
   {
     AppMethodBeat.i(2434);
-    paramInt = fK(paramInt);
+    paramInt = fN(paramInt);
     int i = ax(paramLong);
     AppMethodBeat.o(2434);
     return paramInt + i;
@@ -195,61 +227,65 @@ public final class a
       AppMethodBeat.o(2432);
       return;
     }
-    bz(paramInt, 2);
+    bB(paramInt, 2);
     paramb = paramb.toByteArray();
-    fL(paramb.length);
-    cY(paramb);
+    fO(paramb.length);
+    df(paramb);
     AppMethodBeat.o(2432);
+  }
+  
+  public final void alS(int paramInt)
+  {
+    AppMethodBeat.i(215631);
+    fO(paramInt);
+    AppMethodBeat.o(215631);
   }
   
   public final void aw(long paramLong)
   {
     AppMethodBeat.i(2443);
-    for (;;)
+    while ((0xFFFFFF80 & paramLong) != 0L)
     {
-      if ((0xFFFFFF80 & paramLong) == 0L)
-      {
-        c((byte)(int)paramLong);
-        AppMethodBeat.o(2443);
-        return;
-      }
-      c((byte)((int)paramLong & 0x7F | 0x80));
+      d((byte)((int)paramLong & 0x7F | 0x80));
       paramLong >>>= 7;
     }
+    d((byte)(int)paramLong);
+    AppMethodBeat.o(2443);
   }
   
-  public final void bk(int paramInt, boolean paramBoolean)
+  public final void bB(int paramInt1, int paramInt2)
   {
-    int i = 0;
+    AppMethodBeat.i(2440);
+    fO(f.a.a.b.a.bC(paramInt1, paramInt2));
+    AppMethodBeat.o(2440);
+  }
+  
+  public final void bs(int paramInt, boolean paramBoolean)
+  {
     AppMethodBeat.i(2430);
-    bz(paramInt, 0);
-    paramInt = i;
-    if (paramBoolean) {
-      paramInt = 1;
+    bB(paramInt, 0);
+    if (paramBoolean)
+    {
+      d((byte)1);
+      AppMethodBeat.o(2430);
+      return;
     }
-    c((byte)paramInt);
+    d((byte)0);
     AppMethodBeat.o(2430);
   }
   
-  public final void bv(int paramInt1, int paramInt2)
+  public final void bx(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2429);
-    bz(paramInt1, 0);
+    bB(paramInt1, 0);
     if (paramInt2 >= 0)
     {
-      fL(paramInt2);
+      fO(paramInt2);
       AppMethodBeat.o(2429);
       return;
     }
     aw(paramInt2);
     AppMethodBeat.o(2429);
-  }
-  
-  public final void bz(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(2440);
-    fL(f.a.a.b.a.bA(paramInt1, paramInt2));
-    AppMethodBeat.o(2440);
   }
   
   public final void d(int paramInt, String paramString)
@@ -260,70 +296,66 @@ public final class a
       AppMethodBeat.o(2431);
       return;
     }
-    bz(paramInt, 2);
+    bB(paramInt, 2);
     paramString = paramString.getBytes("UTF-8");
-    fL(paramString.length);
-    cY(paramString);
+    fO(paramString.length);
+    df(paramString);
     AppMethodBeat.o(2431);
   }
   
   public final void e(int paramInt, double paramDouble)
   {
     AppMethodBeat.i(2426);
-    bz(paramInt, 1);
+    bB(paramInt, 1);
     long l = Double.doubleToLongBits(paramDouble);
-    c((byte)((int)l & 0xFF));
-    c((byte)((int)(l >> 8) & 0xFF));
-    c((byte)((int)(l >> 16) & 0xFF));
-    c((byte)((int)(l >> 24) & 0xFF));
-    c((byte)((int)(l >> 32) & 0xFF));
-    c((byte)((int)(l >> 40) & 0xFF));
-    c((byte)((int)(l >> 48) & 0xFF));
-    c((byte)((int)(l >> 56) & 0xFF));
+    d((byte)((int)l & 0xFF));
+    d((byte)((int)(l >> 8) & 0xFF));
+    d((byte)((int)(l >> 16) & 0xFF));
+    d((byte)((int)(l >> 24) & 0xFF));
+    d((byte)((int)(l >> 32) & 0xFF));
+    d((byte)((int)(l >> 40) & 0xFF));
+    d((byte)((int)(l >> 48) & 0xFF));
+    d((byte)((int)(l >> 56) & 0xFF));
     AppMethodBeat.o(2426);
   }
   
-  public final void fL(int paramInt)
+  public final void fO(int paramInt)
   {
     AppMethodBeat.i(2442);
-    for (;;)
+    while ((paramInt & 0xFFFFFF80) != 0)
     {
-      if ((paramInt & 0xFFFFFF80) == 0)
-      {
-        c((byte)paramInt);
-        AppMethodBeat.o(2442);
-        return;
-      }
-      c((byte)(paramInt & 0x7F | 0x80));
+      d((byte)(paramInt & 0x7F | 0x80));
       paramInt >>>= 7;
     }
+    d((byte)paramInt);
+    AppMethodBeat.o(2442);
   }
   
-  public final void ln(int paramInt1, int paramInt2)
+  public final void lC(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2433);
-    bz(paramInt1, 2);
-    fL(paramInt2);
+    bB(paramInt1, 2);
+    fO(paramInt2);
     AppMethodBeat.o(2433);
   }
   
   public final void n(int paramInt, long paramLong)
   {
     AppMethodBeat.i(2428);
-    bz(paramInt, 0);
+    bB(paramInt, 0);
     aw(paramLong);
     AppMethodBeat.o(2428);
   }
   
-  public final void x(int paramInt, float paramFloat)
+  public final void z(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(2427);
-    bz(paramInt, 5);
+    bB(paramInt, 5);
     paramInt = Float.floatToIntBits(paramFloat);
-    c((byte)(paramInt & 0xFF));
-    c((byte)(paramInt >> 8 & 0xFF));
-    c((byte)(paramInt >> 16 & 0xFF));
-    c((byte)(paramInt >> 24 & 0xFF));
+    d((byte)(paramInt & 0xFF));
+    d((byte)(paramInt >> 8 & 0xFF));
+    d((byte)(paramInt >> 16 & 0xFF));
+    d((byte)(paramInt >> 24 & 0xFF));
     AppMethodBeat.o(2427);
   }
 }

@@ -8,18 +8,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMReceivers$SandBoxProcessReceiver
   extends BroadcastReceiver
 {
-  private static MMReceivers.a fmd = null;
+  private static MMReceivers.a fEk = null;
   
   public static void a(MMReceivers.a parama)
   {
-    fmd = parama;
+    fEk = parama;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(131892);
-    if (fmd != null) {
-      fmd.onReceive(paramContext, paramIntent);
+    if (fEk != null) {
+      fEk.onReceive(paramContext, paramIntent);
     }
     AppMethodBeat.o(131892);
   }

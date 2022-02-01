@@ -11,6 +11,11 @@ public abstract interface d
   public abstract void a(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener, Bundle paramBundle);
   
   public abstract void a(Context paramContext, List<String> paramList, e.b paramb);
+  
+  public static final class a
+  {
+    public static d Fhe;
+  }
 }
 
 

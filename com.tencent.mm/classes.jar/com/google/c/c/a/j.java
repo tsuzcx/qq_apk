@@ -43,24 +43,24 @@ public final class j
     f localf = new f();
     b localb = new b();
     h localh = new h(paramString);
-    localh.bIP = paraml;
-    localh.bIQ = paramb1;
-    localh.bIR = paramb2;
+    localh.bTc = paraml;
+    localh.bTd = paramb1;
+    localh.bTe = paramb2;
     int i;
     if ((paramString.startsWith("[)>\03605\035")) && (paramString.endsWith("\036\004")))
     {
-      localh.e('ì');
-      localh.bIV = 2;
+      localh.g('ì');
+      localh.bTi = 2;
       localh.pos += 7;
       i = j;
     }
-    while (localh.ya())
+    while (localh.zx())
     {
       new g[] { locala, localc, localm, localn, localf, localb }[i].a(localh);
-      if (localh.bIT >= 0)
+      if (localh.bTg >= 0)
       {
-        i = localh.bIT;
-        localh.bIT = -1;
+        i = localh.bTg;
+        localh.bTg = -1;
         continue;
         i = j;
         if (paramString.startsWith("[)>\03606\035"))
@@ -68,21 +68,21 @@ public final class j
           i = j;
           if (paramString.endsWith("\036\004"))
           {
-            localh.e('í');
-            localh.bIV = 2;
+            localh.g('í');
+            localh.bTi = 2;
             localh.pos += 7;
             i = j;
           }
         }
       }
     }
-    int k = localh.bIS.length();
-    localh.yd();
-    j = localh.bIU.bJd;
+    int k = localh.bTf.length();
+    localh.zA();
+    j = localh.bTh.bTq;
     if ((k < j) && (i != 0) && (i != 5)) {
-      localh.e('þ');
+      localh.g('þ');
     }
-    paramString = localh.bIS;
+    paramString = localh.bTf;
     if (paramString.length() < j) {
       paramString.append('');
     }
@@ -97,7 +97,7 @@ public final class j
         i -= 254;
       }
     }
-    paramString = localh.bIS.toString();
+    paramString = localh.bTf.toString();
     AppMethodBeat.o(12385);
     return paramString;
   }
@@ -220,7 +220,7 @@ public final class j
                   break label635;
                 }
                 arrayOfFloat[2] += 0.6666667F;
-                if (!g(c)) {
+                if (!i(c)) {
                   break label670;
                 }
                 arrayOfFloat[3] += 0.6666667F;
@@ -250,7 +250,7 @@ public final class j
                 }
                 AppMethodBeat.o(12386);
                 return 0;
-                if (f(c))
+                if (h(c))
                 {
                   arrayOfFloat[0] = ((float)Math.ceil(arrayOfFloat[0]));
                   arrayOfFloat[0] += 2.0F;
@@ -261,7 +261,7 @@ public final class j
                 break label278;
                 paramInt2 = 0;
                 break label310;
-                if (f(c))
+                if (h(c))
                 {
                   arrayOfFloat[1] += 2.666667F;
                   break label325;
@@ -270,14 +270,14 @@ public final class j
                 break label325;
                 paramInt2 = 0;
                 break label357;
-                if (f(c))
+                if (h(c))
                 {
                   arrayOfFloat[2] += 2.666667F;
                   break label372;
                 }
                 arrayOfFloat[2] += 1.333333F;
                 break label372;
-                if (f(c))
+                if (h(c))
                 {
                   arrayOfFloat[3] += 4.333334F;
                   break label390;
@@ -286,7 +286,7 @@ public final class j
                 break label390;
                 paramInt2 = 0;
                 break label404;
-                if (f(c)) {
+                if (h(c)) {
                   arrayOfFloat[4] += 4.25F;
                 } else {
                   arrayOfFloat[4] += 3.25F;
@@ -339,12 +339,12 @@ public final class j
     while (paramInt1 < paramCharSequence.length())
     {
       c = paramCharSequence.charAt(paramInt1);
-      if (h(c))
+      if (j(c))
       {
         AppMethodBeat.o(12386);
         return 3;
       }
-      if (!g(c)) {
+      if (!i(c)) {
         break;
       }
       paramInt1 += 1;
@@ -353,15 +353,15 @@ public final class j
     return 1;
   }
   
-  static boolean f(char paramChar)
+  static boolean h(char paramChar)
   {
     return (paramChar >= '') && (paramChar <= 'ÿ');
   }
   
-  private static boolean g(char paramChar)
+  private static boolean i(char paramChar)
   {
     AppMethodBeat.i(12388);
-    if ((h(paramChar)) || (paramChar == ' ') || ((paramChar >= '0') && (paramChar <= '9')) || ((paramChar >= 'A') && (paramChar <= 'Z')))
+    if ((j(paramChar)) || (paramChar == ' ') || ((paramChar >= '0') && (paramChar <= '9')) || ((paramChar >= 'A') && (paramChar <= 'Z')))
     {
       AppMethodBeat.o(12388);
       return true;
@@ -370,12 +370,17 @@ public final class j
     return false;
   }
   
-  private static boolean h(char paramChar)
+  static boolean isDigit(char paramChar)
+  {
+    return (paramChar >= '0') && (paramChar <= '9');
+  }
+  
+  private static boolean j(char paramChar)
   {
     return (paramChar == '\r') || (paramChar == '*') || (paramChar == '>');
   }
   
-  static void i(char paramChar)
+  static void k(char paramChar)
   {
     AppMethodBeat.i(12389);
     Object localObject = Integer.toHexString(paramChar);
@@ -383,11 +388,6 @@ public final class j
     localObject = new IllegalArgumentException("Illegal character: " + paramChar + " (0x" + (String)localObject + ')');
     AppMethodBeat.o(12389);
     throw ((Throwable)localObject);
-  }
-  
-  static boolean isDigit(char paramChar)
-  {
-    return (paramChar >= '0') && (paramChar <= '9');
   }
   
   private static int w(byte[] paramArrayOfByte)
@@ -404,7 +404,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.c.c.a.j
  * JD-Core Version:    0.7.0.1
  */

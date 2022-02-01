@@ -191,112 +191,105 @@ public class a
   public static final String TAG_Y_CB_CR_POSITIONING = "YCbCrPositioning";
   public static final String TAG_Y_CB_CR_SUB_SAMPLING = "YCbCrSubSampling";
   public static final String TAG_Y_RESOLUTION = "YResolution";
-  public static final int[] wA;
-  static final byte[] wB;
-  private static final byte[] wC;
-  private static final byte[] wD;
-  private static SimpleDateFormat wE;
-  static final String[] wF;
-  static final int[] wG;
-  static final byte[] wH;
-  private static final d[] wI;
-  private static final d[] wJ;
-  private static final d[] wK;
-  private static final d[] wL;
-  private static final d[] wM;
-  private static final d[] wN;
-  private static final d[] wO;
-  private static final d[] wP;
-  private static final d[] wQ;
-  static final d[][] wR;
-  private static final d[] wS;
-  private static final d wT;
-  private static final d wU;
-  private static final HashMap<Integer, d>[] wV;
-  private static final HashMap<String, d>[] wW;
-  private static final HashSet<String> wX;
-  private static final HashMap<Integer, Integer> wY;
-  static final Charset wZ;
-  private static final List<Integer> ww = Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(6), Integer.valueOf(3), Integer.valueOf(8) });
-  private static final List<Integer> wx = Arrays.asList(new Integer[] { Integer.valueOf(2), Integer.valueOf(7), Integer.valueOf(4), Integer.valueOf(5) });
-  public static final int[] wy = { 8, 8, 8 };
-  public static final int[] wz = { 4 };
-  static final byte[] xa;
-  private static final Pattern xs = Pattern.compile(".*[1-9].*");
-  private static final Pattern xt = Pattern.compile("^([0-9][0-9]):([0-9][0-9]):([0-9][0-9])$");
-  private final String xb;
-  private final AssetManager.AssetInputStream xc;
-  private int xd;
-  private final HashMap<String, c>[] xe = new HashMap[wR.length];
-  private Set<Integer> xf = new HashSet(wR.length);
-  private ByteOrder xg = ByteOrder.BIG_ENDIAN;
-  private boolean xh;
-  private int xi;
-  private int xj;
-  private byte[] xk;
-  private int xl;
-  private int xm;
-  private int xn;
-  private int xo;
-  private int xp;
-  private int xq;
-  private boolean xr;
+  private static final d[] yA;
+  private static final d[] yB;
+  private static final d[] yC;
+  private static final d[] yD;
+  private static final d[] yE;
+  private static final d[] yF;
+  private static final d[] yG;
+  private static final d[] yH;
+  private static final d[] yI;
+  static final d[][] yJ;
+  private static final d[] yK;
+  private static final d yL;
+  private static final d yM;
+  private static final HashMap<Integer, d>[] yN;
+  private static final HashMap<String, d>[] yO;
+  private static final HashSet<String> yP;
+  private static final HashMap<Integer, Integer> yQ;
+  static final Charset yR;
+  static final byte[] yS;
+  private static final List<Integer> yo = Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(6), Integer.valueOf(3), Integer.valueOf(8) });
+  private static final List<Integer> yp = Arrays.asList(new Integer[] { Integer.valueOf(2), Integer.valueOf(7), Integer.valueOf(4), Integer.valueOf(5) });
+  public static final int[] yq = { 8, 8, 8 };
+  public static final int[] yr = { 4 };
+  public static final int[] ys = { 8 };
+  static final byte[] yt = { -1, -40, -1 };
+  private static final byte[] yu = { 79, 76, 89, 77, 80, 0 };
+  private static final byte[] yv = { 79, 76, 89, 77, 80, 85, 83, 0, 73, 73 };
+  private static SimpleDateFormat yw;
+  static final String[] yx = { "", "BYTE", "STRING", "USHORT", "ULONG", "URATIONAL", "SBYTE", "UNDEFINED", "SSHORT", "SLONG", "SRATIONAL", "SINGLE", "DOUBLE" };
+  static final int[] yy = { 0, 1, 1, 2, 4, 8, 1, 1, 2, 4, 8, 4, 8, 1 };
+  static final byte[] yz = { 65, 83, 67, 73, 73, 0, 0, 0 };
+  private static final Pattern zl = Pattern.compile(".*[1-9].*");
+  private static final Pattern zm = Pattern.compile("^([0-9][0-9]):([0-9][0-9]):([0-9][0-9])$");
+  private final String yT;
+  private final AssetManager.AssetInputStream yU;
+  private int yV;
+  private final HashMap<String, c>[] yW = new HashMap[yJ.length];
+  private Set<Integer> yX = new HashSet(yJ.length);
+  private ByteOrder yY = ByteOrder.BIG_ENDIAN;
+  private boolean yZ;
+  private int za;
+  private int zb;
+  private byte[] zc;
+  private int zd;
+  private int ze;
+  private int zf;
+  private int zg;
+  private int zi;
+  private int zj;
+  private boolean zk;
   
   static
   {
-    wA = new int[] { 8 };
-    wB = new byte[] { -1, -40, -1 };
-    wC = new byte[] { 79, 76, 89, 77, 80, 0 };
-    wD = new byte[] { 79, 76, 89, 77, 80, 85, 83, 0, 73, 73 };
-    wF = new String[] { "", "BYTE", "STRING", "USHORT", "ULONG", "URATIONAL", "SBYTE", "UNDEFINED", "SSHORT", "SLONG", "SRATIONAL", "SINGLE", "DOUBLE" };
-    wG = new int[] { 0, 1, 1, 2, 4, 8, 1, 1, 2, 4, 8, 4, 8, 1 };
-    wH = new byte[] { 65, 83, 67, 73, 73, 0, 0, 0 };
-    wI = new d[] { new d("NewSubfileType", 254, 4), new d("SubfileType", 255, 4), new d("ImageWidth", 256), new d("ImageLength", 257), new d("BitsPerSample", 258, 3), new d("Compression", 259, 3), new d("PhotometricInterpretation", 262, 3), new d("ImageDescription", 270, 2), new d("Make", 271, 2), new d("Model", 272, 2), new d("StripOffsets", 273), new d("Orientation", 274, 3), new d("SamplesPerPixel", 277, 3), new d("RowsPerStrip", 278), new d("StripByteCounts", 279), new d("XResolution", 282, 5), new d("YResolution", 283, 5), new d("PlanarConfiguration", 284, 3), new d("ResolutionUnit", 296, 3), new d("TransferFunction", 301, 3), new d("Software", 305, 2), new d("DateTime", 306, 2), new d("Artist", 315, 2), new d("WhitePoint", 318, 5), new d("PrimaryChromaticities", 319, 5), new d("SubIFDPointer", 330, 4), new d("JPEGInterchangeFormat", 513, 4), new d("JPEGInterchangeFormatLength", 514, 4), new d("YCbCrCoefficients", 529, 5), new d("YCbCrSubSampling", 530, 3), new d("YCbCrPositioning", 531, 3), new d("ReferenceBlackWhite", 532, 5), new d("Copyright", 33432, 2), new d("ExifIFDPointer", 34665, 4), new d("GPSInfoIFDPointer", 34853, 4), new d("SensorTopBorder", 4, 4), new d("SensorLeftBorder", 5, 4), new d("SensorBottomBorder", 6, 4), new d("SensorRightBorder", 7, 4), new d("ISO", 23, 3), new d("JpgFromRaw", 46, 7) };
-    wJ = new d[] { new d("ExposureTime", 33434, 5), new d("FNumber", 33437, 5), new d("ExposureProgram", 34850, 3), new d("SpectralSensitivity", 34852, 2), new d("PhotographicSensitivity", 34855, 3), new d("OECF", 34856, 7), new d("ExifVersion", 36864, 2), new d("DateTimeOriginal", 36867, 2), new d("DateTimeDigitized", 36868, 2), new d("ComponentsConfiguration", 37121, 7), new d("CompressedBitsPerPixel", 37122, 5), new d("ShutterSpeedValue", 37377, 10), new d("ApertureValue", 37378, 5), new d("BrightnessValue", 37379, 10), new d("ExposureBiasValue", 37380, 10), new d("MaxApertureValue", 37381, 5), new d("SubjectDistance", 37382, 5), new d("MeteringMode", 37383, 3), new d("LightSource", 37384, 3), new d("Flash", 37385, 3), new d("FocalLength", 37386, 5), new d("SubjectArea", 37396, 3), new d("MakerNote", 37500, 7), new d("UserComment", 37510, 7), new d("SubSecTime", 37520, 2), new d("SubSecTimeOriginal", 37521, 2), new d("SubSecTimeDigitized", 37522, 2), new d("FlashpixVersion", 40960, 7), new d("ColorSpace", 40961, 3), new d("PixelXDimension", 40962), new d("PixelYDimension", 40963), new d("RelatedSoundFile", 40964, 2), new d("InteroperabilityIFDPointer", 40965, 4), new d("FlashEnergy", 41483, 5), new d("SpatialFrequencyResponse", 41484, 7), new d("FocalPlaneXResolution", 41486, 5), new d("FocalPlaneYResolution", 41487, 5), new d("FocalPlaneResolutionUnit", 41488, 3), new d("SubjectLocation", 41492, 3), new d("ExposureIndex", 41493, 5), new d("SensingMethod", 41495, 3), new d("FileSource", 41728, 7), new d("SceneType", 41729, 7), new d("CFAPattern", 41730, 7), new d("CustomRendered", 41985, 3), new d("ExposureMode", 41986, 3), new d("WhiteBalance", 41987, 3), new d("DigitalZoomRatio", 41988, 5), new d("FocalLengthIn35mmFilm", 41989, 3), new d("SceneCaptureType", 41990, 3), new d("GainControl", 41991, 3), new d("Contrast", 41992, 3), new d("Saturation", 41993, 3), new d("Sharpness", 41994, 3), new d("DeviceSettingDescription", 41995, 7), new d("SubjectDistanceRange", 41996, 3), new d("ImageUniqueID", 42016, 2), new d("DNGVersion", 50706, 1), new d("DefaultCropSize", 50720) };
-    wK = new d[] { new d("GPSVersionID", 0, 1), new d("GPSLatitudeRef", 1, 2), new d("GPSLatitude", 2, 5), new d("GPSLongitudeRef", 3, 2), new d("GPSLongitude", 4, 5), new d("GPSAltitudeRef", 5, 1), new d("GPSAltitude", 6, 5), new d("GPSTimeStamp", 7, 5), new d("GPSSatellites", 8, 2), new d("GPSStatus", 9, 2), new d("GPSMeasureMode", 10, 2), new d("GPSDOP", 11, 5), new d("GPSSpeedRef", 12, 2), new d("GPSSpeed", 13, 5), new d("GPSTrackRef", 14, 2), new d("GPSTrack", 15, 5), new d("GPSImgDirectionRef", 16, 2), new d("GPSImgDirection", 17, 5), new d("GPSMapDatum", 18, 2), new d("GPSDestLatitudeRef", 19, 2), new d("GPSDestLatitude", 20, 5), new d("GPSDestLongitudeRef", 21, 2), new d("GPSDestLongitude", 22, 5), new d("GPSDestBearingRef", 23, 2), new d("GPSDestBearing", 24, 5), new d("GPSDestDistanceRef", 25, 2), new d("GPSDestDistance", 26, 5), new d("GPSProcessingMethod", 27, 7), new d("GPSAreaInformation", 28, 7), new d("GPSDateStamp", 29, 2), new d("GPSDifferential", 30, 3) };
-    wL = new d[] { new d("InteroperabilityIndex", 1, 2) };
-    wM = new d[] { new d("NewSubfileType", 254, 4), new d("SubfileType", 255, 4), new d("ThumbnailImageWidth", 256), new d("ThumbnailImageLength", 257), new d("BitsPerSample", 258, 3), new d("Compression", 259, 3), new d("PhotometricInterpretation", 262, 3), new d("ImageDescription", 270, 2), new d("Make", 271, 2), new d("Model", 272, 2), new d("StripOffsets", 273), new d("Orientation", 274, 3), new d("SamplesPerPixel", 277, 3), new d("RowsPerStrip", 278), new d("StripByteCounts", 279), new d("XResolution", 282, 5), new d("YResolution", 283, 5), new d("PlanarConfiguration", 284, 3), new d("ResolutionUnit", 296, 3), new d("TransferFunction", 301, 3), new d("Software", 305, 2), new d("DateTime", 306, 2), new d("Artist", 315, 2), new d("WhitePoint", 318, 5), new d("PrimaryChromaticities", 319, 5), new d("SubIFDPointer", 330, 4), new d("JPEGInterchangeFormat", 513, 4), new d("JPEGInterchangeFormatLength", 514, 4), new d("YCbCrCoefficients", 529, 5), new d("YCbCrSubSampling", 530, 3), new d("YCbCrPositioning", 531, 3), new d("ReferenceBlackWhite", 532, 5), new d("Copyright", 33432, 2), new d("ExifIFDPointer", 34665, 4), new d("GPSInfoIFDPointer", 34853, 4), new d("DNGVersion", 50706, 1), new d("DefaultCropSize", 50720) };
+    yA = new d[] { new d("NewSubfileType", 254, 4), new d("SubfileType", 255, 4), new d("ImageWidth", 256), new d("ImageLength", 257), new d("BitsPerSample", 258, 3), new d("Compression", 259, 3), new d("PhotometricInterpretation", 262, 3), new d("ImageDescription", 270, 2), new d("Make", 271, 2), new d("Model", 272, 2), new d("StripOffsets", 273), new d("Orientation", 274, 3), new d("SamplesPerPixel", 277, 3), new d("RowsPerStrip", 278), new d("StripByteCounts", 279), new d("XResolution", 282, 5), new d("YResolution", 283, 5), new d("PlanarConfiguration", 284, 3), new d("ResolutionUnit", 296, 3), new d("TransferFunction", 301, 3), new d("Software", 305, 2), new d("DateTime", 306, 2), new d("Artist", 315, 2), new d("WhitePoint", 318, 5), new d("PrimaryChromaticities", 319, 5), new d("SubIFDPointer", 330, 4), new d("JPEGInterchangeFormat", 513, 4), new d("JPEGInterchangeFormatLength", 514, 4), new d("YCbCrCoefficients", 529, 5), new d("YCbCrSubSampling", 530, 3), new d("YCbCrPositioning", 531, 3), new d("ReferenceBlackWhite", 532, 5), new d("Copyright", 33432, 2), new d("ExifIFDPointer", 34665, 4), new d("GPSInfoIFDPointer", 34853, 4), new d("SensorTopBorder", 4, 4), new d("SensorLeftBorder", 5, 4), new d("SensorBottomBorder", 6, 4), new d("SensorRightBorder", 7, 4), new d("ISO", 23, 3), new d("JpgFromRaw", 46, 7) };
+    yB = new d[] { new d("ExposureTime", 33434, 5), new d("FNumber", 33437, 5), new d("ExposureProgram", 34850, 3), new d("SpectralSensitivity", 34852, 2), new d("PhotographicSensitivity", 34855, 3), new d("OECF", 34856, 7), new d("ExifVersion", 36864, 2), new d("DateTimeOriginal", 36867, 2), new d("DateTimeDigitized", 36868, 2), new d("ComponentsConfiguration", 37121, 7), new d("CompressedBitsPerPixel", 37122, 5), new d("ShutterSpeedValue", 37377, 10), new d("ApertureValue", 37378, 5), new d("BrightnessValue", 37379, 10), new d("ExposureBiasValue", 37380, 10), new d("MaxApertureValue", 37381, 5), new d("SubjectDistance", 37382, 5), new d("MeteringMode", 37383, 3), new d("LightSource", 37384, 3), new d("Flash", 37385, 3), new d("FocalLength", 37386, 5), new d("SubjectArea", 37396, 3), new d("MakerNote", 37500, 7), new d("UserComment", 37510, 7), new d("SubSecTime", 37520, 2), new d("SubSecTimeOriginal", 37521, 2), new d("SubSecTimeDigitized", 37522, 2), new d("FlashpixVersion", 40960, 7), new d("ColorSpace", 40961, 3), new d("PixelXDimension", 40962), new d("PixelYDimension", 40963), new d("RelatedSoundFile", 40964, 2), new d("InteroperabilityIFDPointer", 40965, 4), new d("FlashEnergy", 41483, 5), new d("SpatialFrequencyResponse", 41484, 7), new d("FocalPlaneXResolution", 41486, 5), new d("FocalPlaneYResolution", 41487, 5), new d("FocalPlaneResolutionUnit", 41488, 3), new d("SubjectLocation", 41492, 3), new d("ExposureIndex", 41493, 5), new d("SensingMethod", 41495, 3), new d("FileSource", 41728, 7), new d("SceneType", 41729, 7), new d("CFAPattern", 41730, 7), new d("CustomRendered", 41985, 3), new d("ExposureMode", 41986, 3), new d("WhiteBalance", 41987, 3), new d("DigitalZoomRatio", 41988, 5), new d("FocalLengthIn35mmFilm", 41989, 3), new d("SceneCaptureType", 41990, 3), new d("GainControl", 41991, 3), new d("Contrast", 41992, 3), new d("Saturation", 41993, 3), new d("Sharpness", 41994, 3), new d("DeviceSettingDescription", 41995, 7), new d("SubjectDistanceRange", 41996, 3), new d("ImageUniqueID", 42016, 2), new d("DNGVersion", 50706, 1), new d("DefaultCropSize", 50720) };
+    yC = new d[] { new d("GPSVersionID", 0, 1), new d("GPSLatitudeRef", 1, 2), new d("GPSLatitude", 2, 5), new d("GPSLongitudeRef", 3, 2), new d("GPSLongitude", 4, 5), new d("GPSAltitudeRef", 5, 1), new d("GPSAltitude", 6, 5), new d("GPSTimeStamp", 7, 5), new d("GPSSatellites", 8, 2), new d("GPSStatus", 9, 2), new d("GPSMeasureMode", 10, 2), new d("GPSDOP", 11, 5), new d("GPSSpeedRef", 12, 2), new d("GPSSpeed", 13, 5), new d("GPSTrackRef", 14, 2), new d("GPSTrack", 15, 5), new d("GPSImgDirectionRef", 16, 2), new d("GPSImgDirection", 17, 5), new d("GPSMapDatum", 18, 2), new d("GPSDestLatitudeRef", 19, 2), new d("GPSDestLatitude", 20, 5), new d("GPSDestLongitudeRef", 21, 2), new d("GPSDestLongitude", 22, 5), new d("GPSDestBearingRef", 23, 2), new d("GPSDestBearing", 24, 5), new d("GPSDestDistanceRef", 25, 2), new d("GPSDestDistance", 26, 5), new d("GPSProcessingMethod", 27, 7), new d("GPSAreaInformation", 28, 7), new d("GPSDateStamp", 29, 2), new d("GPSDifferential", 30, 3) };
+    yD = new d[] { new d("InteroperabilityIndex", 1, 2) };
+    yE = new d[] { new d("NewSubfileType", 254, 4), new d("SubfileType", 255, 4), new d("ThumbnailImageWidth", 256), new d("ThumbnailImageLength", 257), new d("BitsPerSample", 258, 3), new d("Compression", 259, 3), new d("PhotometricInterpretation", 262, 3), new d("ImageDescription", 270, 2), new d("Make", 271, 2), new d("Model", 272, 2), new d("StripOffsets", 273), new d("Orientation", 274, 3), new d("SamplesPerPixel", 277, 3), new d("RowsPerStrip", 278), new d("StripByteCounts", 279), new d("XResolution", 282, 5), new d("YResolution", 283, 5), new d("PlanarConfiguration", 284, 3), new d("ResolutionUnit", 296, 3), new d("TransferFunction", 301, 3), new d("Software", 305, 2), new d("DateTime", 306, 2), new d("Artist", 315, 2), new d("WhitePoint", 318, 5), new d("PrimaryChromaticities", 319, 5), new d("SubIFDPointer", 330, 4), new d("JPEGInterchangeFormat", 513, 4), new d("JPEGInterchangeFormatLength", 514, 4), new d("YCbCrCoefficients", 529, 5), new d("YCbCrSubSampling", 530, 3), new d("YCbCrPositioning", 531, 3), new d("ReferenceBlackWhite", 532, 5), new d("Copyright", 33432, 2), new d("ExifIFDPointer", 34665, 4), new d("GPSInfoIFDPointer", 34853, 4), new d("DNGVersion", 50706, 1), new d("DefaultCropSize", 50720) };
     TAG_RAF_IMAGE_SIZE = new d("StripOffsets", 273, 3);
-    wN = new d[] { new d("ThumbnailImage", 256, 7), new d("CameraSettingsIFDPointer", 8224, 4), new d("ImageProcessingIFDPointer", 8256, 4) };
-    wO = new d[] { new d("PreviewImageStart", 257, 4), new d("PreviewImageLength", 258, 4) };
-    wP = new d[] { new d("AspectFrame", 4371, 3) };
-    wQ = new d[] { new d("ColorSpace", 55, 3) };
-    wR = new d[][] { wI, wJ, wK, wL, wM, wI, wN, wO, wP, wQ };
-    wS = new d[] { new d("SubIFDPointer", 330, 4), new d("ExifIFDPointer", 34665, 4), new d("GPSInfoIFDPointer", 34853, 4), new d("InteroperabilityIFDPointer", 40965, 4), new d("CameraSettingsIFDPointer", 8224, 1), new d("ImageProcessingIFDPointer", 8256, 1) };
-    wT = new d("JPEGInterchangeFormat", 513, 4);
-    wU = new d("JPEGInterchangeFormatLength", 514, 4);
-    wV = new HashMap[wR.length];
-    wW = new HashMap[wR.length];
-    wX = new HashSet(Arrays.asList(new String[] { "FNumber", "DigitalZoomRatio", "ExposureTime", "SubjectDistance", "GPSTimeStamp" }));
-    wY = new HashMap();
-    wZ = Charset.forName("US-ASCII");
-    xa = "".getBytes(wZ);
+    yF = new d[] { new d("ThumbnailImage", 256, 7), new d("CameraSettingsIFDPointer", 8224, 4), new d("ImageProcessingIFDPointer", 8256, 4) };
+    yG = new d[] { new d("PreviewImageStart", 257, 4), new d("PreviewImageLength", 258, 4) };
+    yH = new d[] { new d("AspectFrame", 4371, 3) };
+    yI = new d[] { new d("ColorSpace", 55, 3) };
+    yJ = new d[][] { yA, yB, yC, yD, yE, yA, yF, yG, yH, yI };
+    yK = new d[] { new d("SubIFDPointer", 330, 4), new d("ExifIFDPointer", 34665, 4), new d("GPSInfoIFDPointer", 34853, 4), new d("InteroperabilityIFDPointer", 40965, 4), new d("CameraSettingsIFDPointer", 8224, 1), new d("ImageProcessingIFDPointer", 8256, 1) };
+    yL = new d("JPEGInterchangeFormat", 513, 4);
+    yM = new d("JPEGInterchangeFormatLength", 514, 4);
+    yN = new HashMap[yJ.length];
+    yO = new HashMap[yJ.length];
+    yP = new HashSet(Arrays.asList(new String[] { "FNumber", "DigitalZoomRatio", "ExposureTime", "SubjectDistance", "GPSTimeStamp" }));
+    yQ = new HashMap();
+    yR = Charset.forName("US-ASCII");
+    yS = "".getBytes(yR);
     Object localObject1 = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
-    wE = (SimpleDateFormat)localObject1;
+    yw = (SimpleDateFormat)localObject1;
     ((SimpleDateFormat)localObject1).setTimeZone(TimeZone.getTimeZone("UTC"));
     int i = 0;
-    while (i < wR.length)
+    while (i < yJ.length)
     {
-      wV[i] = new HashMap();
-      wW[i] = new HashMap();
-      localObject1 = wR[i];
+      yN[i] = new HashMap();
+      yO[i] = new HashMap();
+      localObject1 = yJ[i];
       int k = localObject1.length;
       int j = 0;
       while (j < k)
       {
         Object localObject2 = localObject1[j];
-        wV[i].put(Integer.valueOf(localObject2.number), localObject2);
-        wW[i].put(localObject2.name, localObject2);
+        yN[i].put(Integer.valueOf(localObject2.number), localObject2);
+        yO[i].put(localObject2.name, localObject2);
         j += 1;
       }
       i += 1;
     }
-    wY.put(Integer.valueOf(wS[0].number), Integer.valueOf(5));
-    wY.put(Integer.valueOf(wS[1].number), Integer.valueOf(1));
-    wY.put(Integer.valueOf(wS[2].number), Integer.valueOf(2));
-    wY.put(Integer.valueOf(wS[3].number), Integer.valueOf(3));
-    wY.put(Integer.valueOf(wS[4].number), Integer.valueOf(7));
-    wY.put(Integer.valueOf(wS[5].number), Integer.valueOf(8));
+    yQ.put(Integer.valueOf(yK[0].number), Integer.valueOf(5));
+    yQ.put(Integer.valueOf(yK[1].number), Integer.valueOf(1));
+    yQ.put(Integer.valueOf(yK[2].number), Integer.valueOf(2));
+    yQ.put(Integer.valueOf(yK[3].number), Integer.valueOf(3));
+    yQ.put(Integer.valueOf(yK[4].number), Integer.valueOf(7));
+    yQ.put(Integer.valueOf(yK[5].number), Integer.valueOf(8));
   }
   
   public a(InputStream paramInputStream)
@@ -304,9 +297,9 @@ public class a
     if (paramInputStream == null) {
       throw new IllegalArgumentException("inputStream cannot be null");
     }
-    this.xb = null;
+    this.yT = null;
     if ((paramInputStream instanceof AssetManager.AssetInputStream)) {}
-    for (this.xc = ((AssetManager.AssetInputStream)paramInputStream);; this.xc = null)
+    for (this.yU = ((AssetManager.AssetInputStream)paramInputStream);; this.yU = null)
     {
       b(paramInputStream);
       return;
@@ -318,8 +311,8 @@ public class a
     if (paramString == null) {
       throw new IllegalArgumentException("filename cannot be null");
     }
-    this.xc = null;
-    this.xb = paramString;
+    this.yU = null;
+    this.yT = paramString;
     try
     {
       FileInputStream localFileInputStream = new FileInputStream(paramString);
@@ -342,9 +335,9 @@ public class a
   
   private int a(b paramb)
   {
-    int[] arrayOfInt = new int[wR.length];
-    Object localObject1 = new int[wR.length];
-    Object localObject2 = wS;
+    int[] arrayOfInt = new int[yJ.length];
+    Object localObject1 = new int[yJ.length];
+    Object localObject2 = yK;
     int j = localObject2.length;
     int i = 0;
     while (i < j)
@@ -352,43 +345,43 @@ public class a
       removeAttribute(localObject2[i].name);
       i += 1;
     }
-    removeAttribute(wT.name);
-    removeAttribute(wU.name);
+    removeAttribute(yL.name);
+    removeAttribute(yM.name);
     i = 0;
     int k;
-    while (i < wR.length)
+    while (i < yJ.length)
     {
-      localObject2 = this.xe[i].entrySet().toArray();
+      localObject2 = this.yW[i].entrySet().toArray();
       k = localObject2.length;
       j = 0;
       while (j < k)
       {
         Map.Entry localEntry = (Map.Entry)localObject2[j];
         if (localEntry.getValue() == null) {
-          this.xe[i].remove(localEntry.getKey());
+          this.yW[i].remove(localEntry.getKey());
         }
         j += 1;
       }
       i += 1;
     }
-    if (!this.xe[1].isEmpty()) {
-      this.xe[0].put(wS[1].name, c.a(0L, this.xg));
+    if (!this.yW[1].isEmpty()) {
+      this.yW[0].put(yK[1].name, c.a(0L, this.yY));
     }
-    if (!this.xe[2].isEmpty()) {
-      this.xe[0].put(wS[2].name, c.a(0L, this.xg));
+    if (!this.yW[2].isEmpty()) {
+      this.yW[0].put(yK[2].name, c.a(0L, this.yY));
     }
-    if (!this.xe[3].isEmpty()) {
-      this.xe[1].put(wS[3].name, c.a(0L, this.xg));
+    if (!this.yW[3].isEmpty()) {
+      this.yW[1].put(yK[3].name, c.a(0L, this.yY));
     }
-    if (this.xh)
+    if (this.yZ)
     {
-      this.xe[4].put(wT.name, c.a(0L, this.xg));
-      this.xe[4].put(wU.name, c.a(this.xj, this.xg));
+      this.yW[4].put(yL.name, c.a(0L, this.yY));
+      this.yW[4].put(yM.name, c.a(this.zb, this.yY));
     }
     j = 0;
-    if (j < wR.length)
+    if (j < yJ.length)
     {
-      localObject2 = this.xe[j].entrySet().iterator();
+      localObject2 = this.yW[j].entrySet().iterator();
       i = 0;
       label370:
       if (((Iterator)localObject2).hasNext())
@@ -410,57 +403,57 @@ public class a
       break;
       i = 8;
       j = 0;
-      while (j < wR.length)
+      while (j < yJ.length)
       {
         k = i;
-        if (!this.xe[j].isEmpty())
+        if (!this.yW[j].isEmpty())
         {
           arrayOfInt[j] = i;
-          k = i + (this.xe[j].size() * 12 + 2 + 4 + localObject1[j]);
+          k = i + (this.yW[j].size() * 12 + 2 + 4 + localObject1[j]);
         }
         j += 1;
         i = k;
       }
       j = i;
-      if (this.xh)
+      if (this.yZ)
       {
-        this.xe[4].put(wT.name, c.a(i, this.xg));
-        this.xi = (i + 6);
-        j = i + this.xj;
+        this.yW[4].put(yL.name, c.a(i, this.yY));
+        this.za = (i + 6);
+        j = i + this.zb;
       }
       int m = j + 8;
-      if (!this.xe[1].isEmpty()) {
-        this.xe[0].put(wS[1].name, c.a(arrayOfInt[1], this.xg));
+      if (!this.yW[1].isEmpty()) {
+        this.yW[0].put(yK[1].name, c.a(arrayOfInt[1], this.yY));
       }
-      if (!this.xe[2].isEmpty()) {
-        this.xe[0].put(wS[2].name, c.a(arrayOfInt[2], this.xg));
+      if (!this.yW[2].isEmpty()) {
+        this.yW[0].put(yK[2].name, c.a(arrayOfInt[2], this.yY));
       }
-      if (!this.xe[3].isEmpty()) {
-        this.xe[1].put(wS[3].name, c.a(arrayOfInt[3], this.xg));
+      if (!this.yW[3].isEmpty()) {
+        this.yW[1].put(yK[3].name, c.a(arrayOfInt[3], this.yY));
       }
       paramb.writeShort((short)m);
-      paramb.write(xa);
+      paramb.write(yS);
       short s;
-      if (this.xg == ByteOrder.BIG_ENDIAN)
+      if (this.yY == ByteOrder.BIG_ENDIAN)
       {
         s = 19789;
         paramb.writeShort(s);
-        paramb.xv = this.xg;
+        paramb.zo = this.yY;
         paramb.writeShort((short)42);
         paramb.writeInt(8);
         i = 0;
       }
       for (;;)
       {
-        if (i >= wR.length) {
+        if (i >= yJ.length) {
           break label1106;
         }
-        if (!this.xe[i].isEmpty())
+        if (!this.yW[i].isEmpty())
         {
-          paramb.writeShort((short)this.xe[i].size());
+          paramb.writeShort((short)this.yW[i].size());
           j = arrayOfInt[i];
-          k = this.xe[i].size();
-          localObject1 = this.xe[i].entrySet().iterator();
+          k = this.yW[i].size();
+          localObject1 = this.yW[i].entrySet().iterator();
           j = j + 2 + k * 12 + 4;
           for (;;)
           {
@@ -468,12 +461,12 @@ public class a
               break label990;
             }
             localObject2 = (Map.Entry)((Iterator)localObject1).next();
-            int n = ((d)wW[i].get(((Map.Entry)localObject2).getKey())).number;
+            int n = ((d)yO[i].get(((Map.Entry)localObject2).getKey())).number;
             localObject2 = (c)((Map.Entry)localObject2).getValue();
             k = ((c)localObject2).size();
             paramb.writeShort((short)n);
             paramb.writeShort((short)((c)localObject2).format);
-            paramb.writeInt(((c)localObject2).xx);
+            paramb.writeInt(((c)localObject2).zq);
             if (k > 4)
             {
               paramb.writeInt((int)j);
@@ -482,7 +475,7 @@ public class a
               s = 18761;
               break;
             }
-            paramb.write(((c)localObject2).xy);
+            paramb.write(((c)localObject2).zr);
             if (k < 4) {
               while (k < 4)
               {
@@ -491,17 +484,17 @@ public class a
               }
             }
           }
-          if ((i == 0) && (!this.xe[4].isEmpty())) {
+          if ((i == 0) && (!this.yW[4].isEmpty())) {
             paramb.writeInt((int)arrayOfInt[4]);
           }
           for (;;)
           {
-            localObject1 = this.xe[i].entrySet().iterator();
+            localObject1 = this.yW[i].entrySet().iterator();
             while (((Iterator)localObject1).hasNext())
             {
               localObject2 = (c)((Map.Entry)((Iterator)localObject1).next()).getValue();
-              if (((c)localObject2).xy.length > 4) {
-                paramb.write(((c)localObject2).xy, 0, ((c)localObject2).xy.length);
+              if (((c)localObject2).zr.length > 4) {
+                paramb.write(((c)localObject2).zr, 0, ((c)localObject2).zr.length);
               }
             }
             paramb.writeInt(0);
@@ -509,10 +502,10 @@ public class a
         }
         i += 1;
       }
-      if (this.xh) {
+      if (this.yZ) {
         paramb.write(getThumbnailBytes());
       }
-      paramb.xv = ByteOrder.BIG_ENDIAN;
+      paramb.zo = ByteOrder.BIG_ENDIAN;
       return m;
     }
   }
@@ -524,19 +517,19 @@ public class a
     d(parama, 0);
     d(parama, 5);
     d(parama, 4);
-    dl();
-    if (this.xd == 8)
+    dA();
+    if (this.yV == 8)
     {
-      parama = (c)this.xe[1].get("MakerNote");
+      parama = (c)this.yW[1].get("MakerNote");
       if (parama != null)
       {
-        parama = new a(parama.xy);
-        parama.xv = this.xg;
+        parama = new a(parama.zr);
+        parama.zo = this.yY;
         parama.seek(6L);
         b(parama, 9);
-        parama = (c)this.xe[9].get("ColorSpace");
+        parama = (c)this.yW[9].get("ColorSpace");
         if (parama != null) {
-          this.xe[1].put("ColorSpace", parama);
+          this.yW[1].put("ColorSpace", parama);
         }
       }
     }
@@ -544,10 +537,10 @@ public class a
   
   private void a(a parama, int paramInt)
   {
-    this.xg = c(parama);
-    parama.xv = this.xg;
+    this.yY = c(parama);
+    parama.zo = this.yY;
     int i = parama.readUnsignedShort();
-    if ((this.xd != 7) && (this.xd != 10) && (i != 42)) {
+    if ((this.yV != 7) && (this.yV != 10) && (i != 42)) {
       throw new IOException("Invalid start code: " + Integer.toHexString(i));
     }
     i = parama.readInt();
@@ -562,7 +555,7 @@ public class a
   
   private void a(a parama, int paramInt1, int paramInt2)
   {
-    parama.xv = ByteOrder.BIG_ENDIAN;
+    parama.zo = ByteOrder.BIG_ENDIAN;
     parama.seek(paramInt1);
     int i = parama.readByte();
     if (i != -1) {
@@ -611,13 +604,13 @@ public class a
         k -= 6;
         paramInt1 = k;
         i = j;
-        if (!Arrays.equals(arrayOfByte, xa)) {
+        if (!Arrays.equals(arrayOfByte, yS)) {
           continue;
         }
         if (k <= 0) {
           throw new IOException("Invalid exif");
         }
-        this.xm = j;
+        this.ze = j;
         arrayOfByte = new byte[k];
         if (parama.read(arrayOfByte) != k) {
           throw new IOException("Invalid exif");
@@ -634,15 +627,15 @@ public class a
         }
         if (getAttribute("UserComment") == null)
         {
-          this.xe[1].put("UserComment", c.o(new String(arrayOfByte, wZ)));
+          this.yW[1].put("UserComment", c.n(new String(arrayOfByte, yR)));
           paramInt1 = 0;
           i = j;
           continue;
           if (parama.skipBytes(1) != 1) {
             throw new IOException("Invalid SOFx");
           }
-          this.xe[paramInt2].put("ImageLength", c.a(parama.readUnsignedShort(), this.xg));
-          this.xe[paramInt2].put("ImageWidth", c.a(parama.readUnsignedShort(), this.xg));
+          this.yW[paramInt2].put("ImageLength", c.a(parama.readUnsignedShort(), this.yY));
+          this.yW[paramInt2].put("ImageWidth", c.a(parama.readUnsignedShort(), this.yY));
           paramInt1 = k - 5;
           i = j;
         }
@@ -654,7 +647,7 @@ public class a
         }
         paramInt1 += i;
         break;
-        parama.xv = this.xg;
+        parama.zo = this.yY;
         return;
       }
       paramInt1 = 0;
@@ -671,33 +664,33 @@ public class a
     int i;
     if ((localc != null) && (paramHashMap != null))
     {
-      j = localc.b(this.xg);
-      k = Math.min(paramHashMap.b(this.xg), parama.available() - j);
-      if ((this.xd != 4) && (this.xd != 9) && (this.xd != 10)) {
+      j = localc.b(this.yY);
+      k = Math.min(paramHashMap.b(this.yY), parama.available() - j);
+      if ((this.yV != 4) && (this.yV != 9) && (this.yV != 10)) {
         break label158;
       }
-      i = j + this.xm;
+      i = j + this.ze;
     }
     for (;;)
     {
       if ((i > 0) && (k > 0))
       {
-        this.xh = true;
-        this.xi = i;
-        this.xj = k;
-        if ((this.xb == null) && (this.xc == null))
+        this.yZ = true;
+        this.za = i;
+        this.zb = k;
+        if ((this.yT == null) && (this.yU == null))
         {
           paramHashMap = new byte[k];
           parama.seek(i);
           parama.readFully(paramHashMap);
-          this.xk = paramHashMap;
+          this.zc = paramHashMap;
         }
       }
       return;
       label158:
       i = j;
-      if (this.xd == 7) {
-        i = j + this.xn;
+      if (this.yV == 7) {
+        i = j + this.zf;
       }
     }
   }
@@ -708,8 +701,8 @@ public class a
     paramHashMap = (c)paramHashMap.get("ImageWidth");
     if ((localc != null) && (paramHashMap != null))
     {
-      int i = localc.b(this.xg);
-      int j = paramHashMap.b(this.xg);
+      int i = localc.b(this.yY);
+      int j = paramHashMap.b(this.yY);
       if ((i <= 512) && (j <= 512)) {
         return true;
       }
@@ -737,7 +730,7 @@ public class a
     int j = ByteBuffer.wrap(arrayOfByte).getInt();
     a(parama, i, 5);
     parama.seek(j);
-    parama.xv = ByteOrder.BIG_ENDIAN;
+    parama.zo = ByteOrder.BIG_ENDIAN;
     j = parama.readInt();
     i = 0;
     for (;;)
@@ -751,10 +744,10 @@ public class a
         {
           i = parama.readShort();
           j = parama.readShort();
-          parama = c.a(i, this.xg);
-          localObject = c.a(j, this.xg);
-          this.xe[0].put("ImageLength", parama);
-          this.xe[0].put("ImageWidth", localObject);
+          parama = c.a(i, this.yY);
+          localObject = c.a(j, this.yY);
+          this.yW[0].put("ImageLength", parama);
+          this.yW[0].put("ImageWidth", localObject);
         }
       }
       else
@@ -769,7 +762,7 @@ public class a
   private void b(a parama, int paramInt)
   {
     int j = paramInt;
-    this.xf.add(Integer.valueOf(parama.mPosition));
+    this.yX.add(Integer.valueOf(parama.mPosition));
     if (parama.mPosition + 2 > parama.mLength) {}
     label33:
     int n;
@@ -792,13 +785,13 @@ public class a
       i = parama.readUnsignedShort();
       i2 = parama.readInt();
       l3 = 4L + parama.mPosition;
-      locald = (d)wV[j].get(Integer.valueOf(i1));
+      locald = (d)yN[j].get(Integer.valueOf(i1));
       l1 = 0L;
       m = 0;
       if (locald == null) {
         break label972;
       }
-      if ((i <= 0) || (i >= wG.length))
+      if ((i <= 0) || (i >= yy.length))
       {
         paramInt = i;
         i = m;
@@ -816,16 +809,16 @@ public class a
         break;
         if (!locald.an(i))
         {
-          new StringBuilder("Skip the tag entry since data format (").append(wF[i]).append(") is unexpected for tag: ").append(locald.name);
+          new StringBuilder("Skip the tag entry since data format (").append(yx[i]).append(") is unexpected for tag: ").append(locald.name);
           paramInt = i;
           i = m;
           break label147;
         }
         paramInt = i;
         if (i == 7) {
-          paramInt = locald.xz;
+          paramInt = locald.zt;
         }
-        l1 = i2 * wG[paramInt];
+        l1 = i2 * yy[paramInt];
         if ((l1 < 0L) || (l1 > 2147483647L))
         {
           i = m;
@@ -836,12 +829,12 @@ public class a
         if (l1 > 4L)
         {
           i = parama.readInt();
-          if (this.xd != 7) {
+          if (this.yV != 7) {
             break label603;
           }
           if ("MakerNote".equals(locald.name))
           {
-            this.xn = i;
+            this.zf = i;
             label312:
             if (i + l1 > parama.mLength) {
               break label634;
@@ -851,7 +844,7 @@ public class a
         }
         else
         {
-          localObject = (Integer)wY.get(Integer.valueOf(i1));
+          localObject = (Integer)yQ.get(Integer.valueOf(i1));
           if (localObject == null) {
             break label718;
           }
@@ -870,7 +863,7 @@ public class a
             label424:
             if ((l1 > 0L) && (l1 < parama.mLength))
             {
-              if (this.xf.contains(Integer.valueOf((int)l1))) {
+              if (this.yX.contains(Integer.valueOf((int)l1))) {
                 break label682;
               }
               parama.seek(l1);
@@ -886,20 +879,20 @@ public class a
           if ((j != 6) || (!"ThumbnailImage".equals(locald.name))) {
             break label312;
           }
-          this.xo = i;
-          this.xp = i2;
-          localObject = c.a(6, this.xg);
-          c localc1 = c.a(this.xo, this.xg);
-          c localc2 = c.a(this.xp, this.xg);
-          this.xe[4].put("Compression", localObject);
-          this.xe[4].put("JPEGInterchangeFormat", localc1);
-          this.xe[4].put("JPEGInterchangeFormatLength", localc2);
+          this.zg = i;
+          this.zi = i2;
+          localObject = c.a(6, this.yY);
+          c localc1 = c.a(this.zg, this.yY);
+          c localc2 = c.a(this.zi, this.yY);
+          this.yW[4].put("Compression", localObject);
+          this.yW[4].put("JPEGInterchangeFormat", localc1);
+          this.yW[4].put("JPEGInterchangeFormatLength", localc2);
           break label312;
           label603:
-          if ((this.xd != 10) || (!"JpgFromRaw".equals(locald.name))) {
+          if ((this.yV != 10) || (!"JpgFromRaw".equals(locald.name))) {
             break label312;
           }
-          this.xq = i;
+          this.zj = i;
           break label312;
           label634:
           parama.seek(l3);
@@ -908,7 +901,7 @@ public class a
           break label424;
           l1 = parama.readShort();
           break label424;
-          l1 = parama.dm();
+          l1 = parama.dB();
           break label424;
           l1 = parama.readInt();
           break label424;
@@ -919,12 +912,12 @@ public class a
         Object localObject = new byte[(int)l1];
         parama.readFully((byte[])localObject);
         localObject = new c(paramInt, i2, (byte[])localObject);
-        this.xe[j].put(locald.name, localObject);
+        this.yW[j].put(locald.name, localObject);
         if ("DNGVersion".equals(locald.name)) {
-          this.xd = 3;
+          this.yV = 3;
         }
-        if (((!"Make".equals(locald.name)) && (!"Model".equals(locald.name))) || ((((c)localObject).c(this.xg).contains("PENTAX")) || (("Compression".equals(locald.name)) && (((c)localObject).b(this.xg) == 65535)))) {
-          this.xd = 8;
+        if (((!"Make".equals(locald.name)) && (!"Model".equals(locald.name))) || ((((c)localObject).c(this.yY).contains("PENTAX")) || (("Compression".equals(locald.name)) && (((c)localObject).b(this.yY) == 65535)))) {
+          this.yV = 8;
         }
         if (parama.mPosition != l3) {
           parama.seek(l3);
@@ -934,16 +927,16 @@ public class a
         break label33;
       }
       paramInt = parama.readInt();
-      if ((paramInt <= 0L) || (paramInt >= parama.mLength) || (this.xf.contains(Integer.valueOf(paramInt)))) {
+      if ((paramInt <= 0L) || (paramInt >= parama.mLength) || (this.yX.contains(Integer.valueOf(paramInt)))) {
         break label33;
       }
       parama.seek(paramInt);
-      if (this.xe[4].isEmpty())
+      if (this.yW[4].isEmpty())
       {
         j = 4;
         break;
       }
-      if (!this.xe[5].isEmpty()) {
+      if (!this.yW[5].isEmpty()) {
         break label33;
       }
       j = 5;
@@ -960,8 +953,8 @@ public class a
     Object localObject2 = (c)paramHashMap.get("StripByteCounts");
     if ((localObject1 != null) && (localObject2 != null))
     {
-      paramHashMap = g(((c)localObject1).a(this.xg));
-      localObject1 = g(((c)localObject2).a(this.xg));
+      paramHashMap = h(((c)localObject1).a(this.yY));
+      localObject1 = h(((c)localObject2).a(this.yY));
       if (paramHashMap != null) {
         break label66;
       }
@@ -995,9 +988,9 @@ public class a
       j += arrayOfByte.length;
       i += 1;
     }
-    this.xh = true;
-    this.xk = ((byte[])localObject2);
-    this.xj = localObject2.length;
+    this.yZ = true;
+    this.zc = ((byte[])localObject2);
+    this.zb = localObject2.length;
   }
   
   private void b(InputStream paramInputStream)
@@ -1005,9 +998,9 @@ public class a
     int i = 0;
     try
     {
-      while (i < wR.length)
+      while (i < yJ.length)
       {
-        this.xe[i] = new HashMap();
+        this.yW[i] = new HashMap();
         i += 1;
       }
       paramInputStream = new BufferedInputStream(paramInputStream, 5000);
@@ -1020,9 +1013,9 @@ public class a
         break label254;
       }
       i = 4;
-      this.xd = i;
+      this.yV = i;
       paramInputStream = new a(paramInputStream);
-      switch (this.xd)
+      switch (this.yV)
       {
       }
     }
@@ -1031,16 +1024,16 @@ public class a
       for (;;)
       {
         label168:
-        this.xr = false;
+        this.zk = false;
         return;
         b(paramInputStream);
       }
     }
     finally
     {
-      dk();
+      dz();
     }
-    Object localObject1 = this.xe[4];
+    Object localObject1 = this.yW[4];
     Object localObject2 = (c)((HashMap)localObject1).get("Compression");
     label244:
     label254:
@@ -1049,14 +1042,14 @@ public class a
     int j;
     if (localObject2 != null)
     {
-      this.xl = ((c)localObject2).b(this.xg);
-      switch (this.xl)
+      this.zd = ((c)localObject2).b(this.yY);
+      switch (this.zd)
       {
       case 6: 
         for (;;)
         {
-          this.xr = true;
-          dk();
+          this.zk = true;
+          dz();
           return;
           if (g((byte[])localObject1))
           {
@@ -1064,8 +1057,8 @@ public class a
             break;
           }
           localObject2 = new a((byte[])localObject1);
-          this.xg = c((a)localObject2);
-          ((a)localObject2).xv = this.xg;
+          this.yY = c((a)localObject2);
+          ((a)localObject2).zo = this.yY;
           i = ((a)localObject2).readShort();
           ((a)localObject2).close();
           if (i == 20306) {
@@ -1076,8 +1069,8 @@ public class a
           }
           break label1016;
           localObject1 = new a((byte[])localObject1);
-          this.xg = c((a)localObject1);
-          ((a)localObject1).xv = this.xg;
+          this.yY = c((a)localObject1);
+          ((a)localObject1).zo = this.yY;
           i = ((a)localObject1).readShort();
           ((a)localObject1).close();
           if (i != 85) {
@@ -1088,59 +1081,59 @@ public class a
           a(paramInputStream, 0, 0);
           break label168;
           a(paramInputStream);
-          localObject1 = (c)this.xe[1].get("MakerNote");
+          localObject1 = (c)this.yW[1].get("MakerNote");
           if (localObject1 == null) {
             break label168;
           }
-          localObject1 = new a(((c)localObject1).xy);
-          ((a)localObject1).xv = this.xg;
-          localObject2 = new byte[wC.length];
+          localObject1 = new a(((c)localObject1).zr);
+          ((a)localObject1).zo = this.yY;
+          localObject2 = new byte[yu.length];
           ((a)localObject1).readFully((byte[])localObject2);
           ((a)localObject1).seek(0L);
-          localObject3 = new byte[wD.length];
+          localObject3 = new byte[yv.length];
           ((a)localObject1).readFully((byte[])localObject3);
-          if (Arrays.equals((byte[])localObject2, wC)) {
+          if (Arrays.equals((byte[])localObject2, yu)) {
             ((a)localObject1).seek(8L);
           }
           for (;;)
           {
             b((a)localObject1, 6);
-            localObject1 = (c)this.xe[7].get("PreviewImageStart");
-            localObject2 = (c)this.xe[7].get("PreviewImageLength");
+            localObject1 = (c)this.yW[7].get("PreviewImageStart");
+            localObject2 = (c)this.yW[7].get("PreviewImageLength");
             if ((localObject1 != null) && (localObject2 != null))
             {
-              this.xe[5].put("JPEGInterchangeFormat", localObject1);
-              this.xe[5].put("JPEGInterchangeFormatLength", localObject2);
+              this.yW[5].put("JPEGInterchangeFormat", localObject1);
+              this.yW[5].put("JPEGInterchangeFormatLength", localObject2);
             }
-            localObject1 = (c)this.xe[8].get("AspectFrame");
+            localObject1 = (c)this.yW[8].get("AspectFrame");
             if (localObject1 == null) {
               break;
             }
-            localObject1 = (int[])((c)localObject1).a(this.xg);
+            localObject1 = (int[])((c)localObject1).a(this.yY);
             if ((localObject1 != null) && (localObject1.length == 4)) {
               break label1053;
             }
             new StringBuilder("Invalid aspect frame values. frame=").append(Arrays.toString((int[])localObject1));
             break;
-            if (Arrays.equals((byte[])localObject3, wD)) {
+            if (Arrays.equals((byte[])localObject3, yv)) {
               ((a)localObject1).seek(12L);
             }
           }
-          localObject1 = c.a(j, this.xg);
-          localObject2 = c.a(i, this.xg);
-          this.xe[0].put("ImageWidth", localObject1);
-          this.xe[0].put("ImageLength", localObject2);
+          localObject1 = c.a(j, this.yY);
+          localObject2 = c.a(i, this.yY);
+          this.yW[0].put("ImageWidth", localObject1);
+          this.yW[0].put("ImageLength", localObject2);
           break label168;
           a(paramInputStream);
-          if ((c)this.xe[0].get("JpgFromRaw") != null) {
-            a(paramInputStream, this.xq, 5);
+          if ((c)this.yW[0].get("JpgFromRaw") != null) {
+            a(paramInputStream, this.zj, 5);
           }
-          localObject1 = (c)this.xe[0].get("ISO");
-          localObject2 = (c)this.xe[1].get("PhotographicSensitivity");
+          localObject1 = (c)this.yW[0].get("ISO");
+          localObject2 = (c)this.yW[1].get("PhotographicSensitivity");
           if ((localObject1 == null) || (localObject2 != null)) {
             break label168;
           }
-          this.xe[1].put("PhotographicSensitivity", localObject1);
+          this.yW[1].put("PhotographicSensitivity", localObject1);
           break label168;
           a(paramInputStream);
           break label168;
@@ -1152,8 +1145,8 @@ public class a
         localObject2 = (c)((HashMap)localObject1).get("BitsPerSample");
         if (localObject2 != null)
         {
-          localObject2 = (int[])((c)localObject2).a(this.xg);
-          if (Arrays.equals(wy, (int[])localObject2)) {
+          localObject2 = (int[])((c)localObject2).a(this.yY);
+          if (Arrays.equals(yq, (int[])localObject2)) {
             i = 1;
           }
         }
@@ -1167,19 +1160,19 @@ public class a
       }
       b(paramInputStream, (HashMap)localObject1);
       break label244;
-      if (this.xd == 3)
+      if (this.yV == 3)
       {
         localObject3 = (c)((HashMap)localObject1).get("PhotometricInterpretation");
         if (localObject3 != null)
         {
-          i = ((c)localObject3).b(this.xg);
-          if ((i != 1) || (!Arrays.equals((int[])localObject2, wA)))
+          i = ((c)localObject3).b(this.yY);
+          if ((i != 1) || (!Arrays.equals((int[])localObject2, ys)))
           {
-            if ((i != 6) || (!Arrays.equals((int[])localObject2, wy))) {
+            if ((i != 6) || (!Arrays.equals((int[])localObject2, yq))) {
               break label1137;
             }
             break label1132;
-            this.xl = 6;
+            this.zd = 6;
             a(paramInputStream, (HashMap)localObject1);
             break label244;
             break label168;
@@ -1283,7 +1276,7 @@ public class a
           if (paramInputStream.read(arrayOfByte2) != 6) {
             throw new IOException("Invalid exif");
           }
-          if (Arrays.equals(arrayOfByte2, xa))
+          if (Arrays.equals(arrayOfByte2, yS))
           {
             if (paramInputStream.skipBytes(j - 6) == j - 6) {
               continue;
@@ -1346,13 +1339,13 @@ public class a
   
   private void c(a parama, int paramInt)
   {
-    c localc1 = (c)this.xe[paramInt].get("ImageLength");
-    c localc2 = (c)this.xe[paramInt].get("ImageWidth");
+    c localc1 = (c)this.yW[paramInt].get("ImageLength");
+    c localc2 = (c)this.yW[paramInt].get("ImageWidth");
     if ((localc1 == null) || (localc2 == null))
     {
-      localc1 = (c)this.xe[paramInt].get("JPEGInterchangeFormat");
+      localc1 = (c)this.yW[paramInt].get("JPEGInterchangeFormat");
       if (localc1 != null) {
-        a(parama, localc1.b(this.xg), paramInt);
+        a(parama, localc1.b(this.yY), paramInt);
       }
     }
   }
@@ -1390,15 +1383,15 @@ public class a
   
   private void d(a parama, int paramInt)
   {
-    c localc1 = (c)this.xe[paramInt].get("DefaultCropSize");
-    c localc2 = (c)this.xe[paramInt].get("SensorTopBorder");
-    c localc3 = (c)this.xe[paramInt].get("SensorLeftBorder");
-    c localc4 = (c)this.xe[paramInt].get("SensorBottomBorder");
-    c localc5 = (c)this.xe[paramInt].get("SensorRightBorder");
+    c localc1 = (c)this.yW[paramInt].get("DefaultCropSize");
+    c localc2 = (c)this.yW[paramInt].get("SensorTopBorder");
+    c localc3 = (c)this.yW[paramInt].get("SensorLeftBorder");
+    c localc4 = (c)this.yW[paramInt].get("SensorBottomBorder");
+    c localc5 = (c)this.yW[paramInt].get("SensorRightBorder");
     if (localc1 != null) {
       if (localc1.format == 5)
       {
-        parama = (e[])localc1.a(this.xg);
+        parama = (e[])localc1.a(this.yY);
         if ((parama == null) || (parama.length != 2)) {
           new StringBuilder("Invalid crop size values. cropSize=").append(Arrays.toString(parama));
         }
@@ -1411,82 +1404,82 @@ public class a
     do
     {
       return;
-      localc1 = c.a(parama[0], this.xg);
-      for (parama = c.a(parama[1], this.xg);; parama = c.a(parama[1], this.xg))
+      localc1 = c.a(parama[0], this.yY);
+      for (parama = c.a(parama[1], this.yY);; parama = c.a(parama[1], this.yY))
       {
-        this.xe[paramInt].put("ImageWidth", localc1);
-        this.xe[paramInt].put("ImageLength", parama);
+        this.yW[paramInt].put("ImageWidth", localc1);
+        this.yW[paramInt].put("ImageLength", parama);
         return;
-        parama = (int[])localc1.a(this.xg);
+        parama = (int[])localc1.a(this.yY);
         if ((parama == null) || (parama.length != 2))
         {
           new StringBuilder("Invalid crop size values. cropSize=").append(Arrays.toString(parama));
           return;
         }
-        localc1 = c.a(parama[0], this.xg);
+        localc1 = c.a(parama[0], this.yY);
       }
       if ((localc2 == null) || (localc3 == null) || (localc4 == null) || (localc5 == null)) {
         break;
       }
-      i = localc2.b(this.xg);
-      j = localc4.b(this.xg);
-      k = localc5.b(this.xg);
-      m = localc3.b(this.xg);
+      i = localc2.b(this.yY);
+      j = localc4.b(this.yY);
+      k = localc5.b(this.yY);
+      m = localc3.b(this.yY);
     } while ((j <= i) || (k <= m));
-    parama = c.a(j - i, this.xg);
-    localc1 = c.a(k - m, this.xg);
-    this.xe[paramInt].put("ImageLength", parama);
-    this.xe[paramInt].put("ImageWidth", localc1);
+    parama = c.a(j - i, this.yY);
+    localc1 = c.a(k - m, this.yY);
+    this.yW[paramInt].put("ImageLength", parama);
+    this.yW[paramInt].put("ImageWidth", localc1);
     return;
     c(parama, paramInt);
   }
   
-  private void dk()
+  private void dA()
+  {
+    t(0, 5);
+    t(0, 4);
+    t(5, 4);
+    c localc1 = (c)this.yW[1].get("PixelXDimension");
+    c localc2 = (c)this.yW[1].get("PixelYDimension");
+    if ((localc1 != null) && (localc2 != null))
+    {
+      this.yW[0].put("ImageWidth", localc1);
+      this.yW[0].put("ImageLength", localc2);
+    }
+    if ((this.yW[4].isEmpty()) && (a(this.yW[5])))
+    {
+      this.yW[4] = this.yW[5];
+      this.yW[5] = new HashMap();
+    }
+    a(this.yW[4]);
+  }
+  
+  private void dz()
   {
     String str = getAttribute("DateTimeOriginal");
     if ((str != null) && (getAttribute("DateTime") == null)) {
-      this.xe[0].put("DateTime", c.o(str));
+      this.yW[0].put("DateTime", c.n(str));
     }
     if (getAttribute("ImageWidth") == null) {
-      this.xe[0].put("ImageWidth", c.a(0L, this.xg));
+      this.yW[0].put("ImageWidth", c.a(0L, this.yY));
     }
     if (getAttribute("ImageLength") == null) {
-      this.xe[0].put("ImageLength", c.a(0L, this.xg));
+      this.yW[0].put("ImageLength", c.a(0L, this.yY));
     }
     if (getAttribute("Orientation") == null) {
-      this.xe[0].put("Orientation", c.a(0L, this.xg));
+      this.yW[0].put("Orientation", c.a(0L, this.yY));
     }
     if (getAttribute("LightSource") == null) {
-      this.xe[1].put("LightSource", c.a(0L, this.xg));
+      this.yW[1].put("LightSource", c.a(0L, this.yY));
     }
-  }
-  
-  private void dl()
-  {
-    m(0, 5);
-    m(0, 4);
-    m(5, 4);
-    c localc1 = (c)this.xe[1].get("PixelXDimension");
-    c localc2 = (c)this.xe[1].get("PixelYDimension");
-    if ((localc1 != null) && (localc2 != null))
-    {
-      this.xe[0].put("ImageWidth", localc1);
-      this.xe[0].put("ImageLength", localc2);
-    }
-    if ((this.xe[4].isEmpty()) && (a(this.xe[5])))
-    {
-      this.xe[4] = this.xe[5];
-      this.xe[5] = new HashMap();
-    }
-    a(this.xe[4]);
   }
   
   private static boolean f(byte[] paramArrayOfByte)
   {
     int i = 0;
-    while (i < wB.length)
+    while (i < yt.length)
     {
-      if (paramArrayOfByte[i] != wB[i]) {
+      if (paramArrayOfByte[i] != yt[i]) {
         return false;
       }
       i += 1;
@@ -1508,57 +1501,37 @@ public class a
     return true;
   }
   
-  private static long[] g(Object paramObject)
-  {
-    if ((paramObject instanceof int[]))
-    {
-      paramObject = (int[])paramObject;
-      long[] arrayOfLong = new long[paramObject.length];
-      int i = 0;
-      while (i < paramObject.length)
-      {
-        arrayOfLong[i] = paramObject[i];
-        i += 1;
-      }
-      return arrayOfLong;
-    }
-    if ((paramObject instanceof long[])) {
-      return (long[])paramObject;
-    }
-    return null;
-  }
-  
   /* Error */
   private byte[] getThumbnailBytes()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 904	android/support/e/a:xh	Z
+    //   1: getfield 904	android/support/e/a:yZ	Z
     //   4: ifne +5 -> 9
     //   7: aconst_null
     //   8: areturn
     //   9: aload_0
-    //   10: getfield 1081	android/support/e/a:xk	[B
+    //   10: getfield 1081	android/support/e/a:zc	[B
     //   13: ifnull +8 -> 21
     //   16: aload_0
-    //   17: getfield 1081	android/support/e/a:xk	[B
+    //   17: getfield 1081	android/support/e/a:zc	[B
     //   20: areturn
     //   21: aload_0
-    //   22: getfield 857	android/support/e/a:xc	Landroid/content/res/AssetManager$AssetInputStream;
+    //   22: getfield 857	android/support/e/a:yU	Landroid/content/res/AssetManager$AssetInputStream;
     //   25: ifnull +44 -> 69
     //   28: aload_0
-    //   29: getfield 857	android/support/e/a:xc	Landroid/content/res/AssetManager$AssetInputStream;
+    //   29: getfield 857	android/support/e/a:yU	Landroid/content/res/AssetManager$AssetInputStream;
     //   32: astore_1
     //   33: aload_1
-    //   34: invokevirtual 1320	java/io/InputStream:markSupported	()Z
+    //   34: invokevirtual 1319	java/io/InputStream:markSupported	()Z
     //   37: ifeq +26 -> 63
     //   40: aload_1
-    //   41: invokevirtual 1321	java/io/InputStream:reset	()V
+    //   41: invokevirtual 1320	java/io/InputStream:reset	()V
     //   44: aload_1
     //   45: ifnonnull +52 -> 97
-    //   48: new 1323	java/io/FileNotFoundException
+    //   48: new 1322	java/io/FileNotFoundException
     //   51: dup
-    //   52: invokespecial 1324	java/io/FileNotFoundException:<init>	()V
+    //   52: invokespecial 1323	java/io/FileNotFoundException:<init>	()V
     //   55: athrow
     //   56: astore_2
     //   57: aload_1
@@ -1570,12 +1543,12 @@ public class a
     //   67: aconst_null
     //   68: areturn
     //   69: aload_0
-    //   70: getfield 853	android/support/e/a:xb	Ljava/lang/String;
+    //   70: getfield 853	android/support/e/a:yT	Ljava/lang/String;
     //   73: ifnull +115 -> 188
     //   76: new 863	java/io/FileInputStream
     //   79: dup
     //   80: aload_0
-    //   81: getfield 853	android/support/e/a:xb	Ljava/lang/String;
+    //   81: getfield 853	android/support/e/a:yT	Ljava/lang/String;
     //   84: invokespecial 864	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   87: astore_1
     //   88: goto -44 -> 44
@@ -1585,17 +1558,17 @@ public class a
     //   94: goto -37 -> 57
     //   97: aload_1
     //   98: aload_0
-    //   99: getfield 925	android/support/e/a:xi	I
+    //   99: getfield 925	android/support/e/a:za	I
     //   102: i2l
-    //   103: invokevirtual 1328	java/io/InputStream:skip	(J)J
+    //   103: invokevirtual 1327	java/io/InputStream:skip	(J)J
     //   106: aload_0
-    //   107: getfield 925	android/support/e/a:xi	I
+    //   107: getfield 925	android/support/e/a:za	I
     //   110: i2l
     //   111: lcmp
     //   112: ifeq +21 -> 133
     //   115: new 994	java/io/IOException
     //   118: dup
-    //   119: ldc_w 1330
+    //   119: ldc_w 1329
     //   122: invokespecial 1012	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   125: athrow
     //   126: astore_2
@@ -1604,23 +1577,23 @@ public class a
     //   131: aload_2
     //   132: athrow
     //   133: aload_0
-    //   134: getfield 906	android/support/e/a:xj	I
+    //   134: getfield 906	android/support/e/a:zb	I
     //   137: newarray byte
     //   139: astore_2
     //   140: aload_1
     //   141: aload_2
-    //   142: invokevirtual 1288	java/io/InputStream:read	([B)I
+    //   142: invokevirtual 1289	java/io/InputStream:read	([B)I
     //   145: aload_0
-    //   146: getfield 906	android/support/e/a:xj	I
+    //   146: getfield 906	android/support/e/a:zb	I
     //   149: if_icmpeq +14 -> 163
     //   152: new 994	java/io/IOException
     //   155: dup
-    //   156: ldc_w 1330
+    //   156: ldc_w 1329
     //   159: invokespecial 1012	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   162: athrow
     //   163: aload_0
     //   164: aload_2
-    //   165: putfield 1081	android/support/e/a:xk	[B
+    //   165: putfield 1081	android/support/e/a:zc	[B
     //   168: aload_1
     //   169: invokestatic 868	android/support/e/a:closeQuietly	(Ljava/io/Closeable;)V
     //   172: aload_2
@@ -1666,16 +1639,36 @@ public class a
     //   33	44	184	java/io/IOException
   }
   
-  private c l(String paramString)
+  private static long[] h(Object paramObject)
+  {
+    if ((paramObject instanceof int[]))
+    {
+      paramObject = (int[])paramObject;
+      long[] arrayOfLong = new long[paramObject.length];
+      int i = 0;
+      while (i < paramObject.length)
+      {
+        arrayOfLong[i] = paramObject[i];
+        i += 1;
+      }
+      return arrayOfLong;
+    }
+    if ((paramObject instanceof long[])) {
+      return (long[])paramObject;
+    }
+    return null;
+  }
+  
+  private c k(String paramString)
   {
     String str = paramString;
     if ("ISOSpeedRatings".equals(paramString)) {
       str = "PhotographicSensitivity";
     }
     int i = 0;
-    while (i < wR.length)
+    while (i < yJ.length)
     {
-      paramString = (c)this.xe[i].get(str);
+      paramString = (c)this.yW[i].get(str);
       if (paramString != null) {
         return paramString;
       }
@@ -1684,44 +1677,14 @@ public class a
     return null;
   }
   
-  private void m(int paramInt1, int paramInt2)
-  {
-    if ((this.xe[paramInt1].isEmpty()) || (this.xe[paramInt2].isEmpty())) {}
-    int i;
-    int j;
-    int k;
-    int m;
-    do
-    {
-      c localc1;
-      c localc2;
-      do
-      {
-        return;
-        localObject1 = (c)this.xe[paramInt1].get("ImageLength");
-        localObject2 = (c)this.xe[paramInt1].get("ImageWidth");
-        localc1 = (c)this.xe[paramInt2].get("ImageLength");
-        localc2 = (c)this.xe[paramInt2].get("ImageWidth");
-      } while ((localObject1 == null) || (localObject2 == null) || (localc1 == null) || (localc2 == null));
-      i = ((c)localObject1).b(this.xg);
-      j = ((c)localObject2).b(this.xg);
-      k = localc1.b(this.xg);
-      m = localc2.b(this.xg);
-    } while ((i >= k) || (j >= m));
-    Object localObject1 = this.xe[paramInt1];
-    Object localObject2 = this.xe;
-    localObject2[paramInt1] = localObject2[paramInt2];
-    this.xe[paramInt2] = localObject1;
-  }
-  
-  private static Pair<Integer, Integer> n(String paramString)
+  private static Pair<Integer, Integer> m(String paramString)
   {
     Object localObject;
     int i;
     if (paramString.contains(","))
     {
       String[] arrayOfString = paramString.split(",", -1);
-      paramString = n(arrayOfString[0]);
+      paramString = m(arrayOfString[0]);
       if (((Integer)paramString.first).intValue() == 2) {
         localObject = paramString;
       }
@@ -1731,7 +1694,7 @@ public class a
         i = 1;
         localObject = paramString;
       } while (i >= arrayOfString.length);
-      localObject = n(arrayOfString[i]);
+      localObject = m(arrayOfString[i]);
       if ((!((Integer)((Pair)localObject).first).equals(paramString.first)) && (!((Integer)((Pair)localObject).second).equals(paramString.first))) {
         break label550;
       }
@@ -1819,20 +1782,50 @@ public class a
   private void removeAttribute(String paramString)
   {
     int i = 0;
-    while (i < wR.length)
+    while (i < yJ.length)
     {
-      this.xe[i].remove(paramString);
+      this.yW[i].remove(paramString);
       i += 1;
     }
   }
   
+  private void t(int paramInt1, int paramInt2)
+  {
+    if ((this.yW[paramInt1].isEmpty()) || (this.yW[paramInt2].isEmpty())) {}
+    int i;
+    int j;
+    int k;
+    int m;
+    do
+    {
+      c localc1;
+      c localc2;
+      do
+      {
+        return;
+        localObject1 = (c)this.yW[paramInt1].get("ImageLength");
+        localObject2 = (c)this.yW[paramInt1].get("ImageWidth");
+        localc1 = (c)this.yW[paramInt2].get("ImageLength");
+        localc2 = (c)this.yW[paramInt2].get("ImageWidth");
+      } while ((localObject1 == null) || (localObject2 == null) || (localc1 == null) || (localc2 == null));
+      i = ((c)localObject1).b(this.yY);
+      j = ((c)localObject2).b(this.yY);
+      k = localc1.b(this.yY);
+      m = localc2.b(this.yY);
+    } while ((i >= k) || (j >= m));
+    Object localObject1 = this.yW[paramInt1];
+    Object localObject2 = this.yW;
+    localObject2[paramInt1] = localObject2[paramInt2];
+    this.yW[paramInt2] = localObject1;
+  }
+  
   public final String getAttribute(String paramString)
   {
-    c localc = l(paramString);
+    c localc = k(paramString);
     if (localc != null)
     {
-      if (!wX.contains(paramString)) {
-        return localc.c(this.xg);
+      if (!yP.contains(paramString)) {
+        return localc.c(this.yY);
       }
       if (paramString.equals("GPSTimeStamp"))
       {
@@ -1841,18 +1834,18 @@ public class a
           new StringBuilder("GPS Timestamp format is not rational. format=").append(localc.format);
           return null;
         }
-        paramString = (e[])localc.a(this.xg);
+        paramString = (e[])localc.a(this.yY);
         if ((paramString == null) || (paramString.length != 3))
         {
           new StringBuilder("Invalid GPS Timestamp array. array=").append(Arrays.toString(paramString));
           return null;
         }
-        return String.format("%02d:%02d:%02d", new Object[] { Integer.valueOf((int)((float)paramString[0].xB / (float)paramString[0].xC)), Integer.valueOf((int)((float)paramString[1].xB / (float)paramString[1].xC)), Integer.valueOf((int)((float)paramString[2].xB / (float)paramString[2].xC)) });
+        return String.format("%02d:%02d:%02d", new Object[] { Integer.valueOf((int)((float)paramString[0].zv / (float)paramString[0].zw)), Integer.valueOf((int)((float)paramString[1].zv / (float)paramString[1].zw)), Integer.valueOf((int)((float)paramString[2].zv / (float)paramString[2].zw)) });
       }
     }
     try
     {
-      paramString = localc.a(this.xg);
+      paramString = localc.a(this.yY);
       if (paramString == null) {
         throw new NumberFormatException("NULL can't be converted to a double value");
       }
@@ -1900,7 +1893,7 @@ public class a
             break;
           }
           paramString = paramString[0];
-          d = paramString.xB / paramString.xC;
+          d = paramString.zv / paramString.zw;
         }
       }
       throw new NumberFormatException("There are more than one component");
@@ -1912,15 +1905,15 @@ public class a
     return null;
   }
   
-  public final int m(String paramString)
+  public final int l(String paramString)
   {
-    paramString = l(paramString);
+    paramString = k(paramString);
     if (paramString == null) {
       return 1;
     }
     try
     {
-      int i = paramString.b(this.xg);
+      int i = paramString.b(this.yY);
       return i;
     }
     catch (NumberFormatException paramString) {}
@@ -1932,31 +1925,31 @@ public class a
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 1222	android/support/e/a:xr	Z
+    //   1: getfield 1222	android/support/e/a:zk	Z
     //   4: ifeq +11 -> 15
     //   7: aload_0
-    //   8: getfield 977	android/support/e/a:xd	I
+    //   8: getfield 977	android/support/e/a:yV	I
     //   11: iconst_4
     //   12: if_icmpeq +14 -> 26
     //   15: new 994	java/io/IOException
     //   18: dup
-    //   19: ldc_w 1417
+    //   19: ldc_w 1419
     //   22: invokespecial 1012	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   25: athrow
     //   26: aload_0
-    //   27: getfield 853	android/support/e/a:xb	Ljava/lang/String;
+    //   27: getfield 853	android/support/e/a:yT	Ljava/lang/String;
     //   30: ifnonnull +14 -> 44
     //   33: new 994	java/io/IOException
     //   36: dup
-    //   37: ldc_w 1419
+    //   37: ldc_w 1421
     //   40: invokespecial 1012	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   43: athrow
     //   44: aload_0
-    //   45: getfield 1220	android/support/e/a:xl	I
+    //   45: getfield 1220	android/support/e/a:zd	I
     //   48: bipush 6
     //   50: if_icmpeq +12 -> 62
     //   53: aload_0
-    //   54: getfield 1220	android/support/e/a:xl	I
+    //   54: getfield 1220	android/support/e/a:zd	I
     //   57: bipush 7
     //   59: if_icmpne +93 -> 152
     //   62: aload_0
@@ -1964,36 +1957,36 @@ public class a
     //   66: astore_1
     //   67: aload_0
     //   68: aload_1
-    //   69: putfield 1081	android/support/e/a:xk	[B
-    //   72: new 1421	java/io/File
+    //   69: putfield 1081	android/support/e/a:zc	[B
+    //   72: new 1423	java/io/File
     //   75: dup
     //   76: new 996	java/lang/StringBuilder
     //   79: dup
     //   80: invokespecial 1096	java/lang/StringBuilder:<init>	()V
     //   83: aload_0
-    //   84: getfield 853	android/support/e/a:xb	Ljava/lang/String;
+    //   84: getfield 853	android/support/e/a:yT	Ljava/lang/String;
     //   87: invokevirtual 1007	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: ldc_w 1423
+    //   90: ldc_w 1425
     //   93: invokevirtual 1007	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   96: invokevirtual 1011	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   99: invokespecial 1424	java/io/File:<init>	(Ljava/lang/String;)V
+    //   99: invokespecial 1426	java/io/File:<init>	(Ljava/lang/String;)V
     //   102: astore 4
-    //   104: new 1421	java/io/File
+    //   104: new 1423	java/io/File
     //   107: dup
     //   108: aload_0
-    //   109: getfield 853	android/support/e/a:xb	Ljava/lang/String;
-    //   112: invokespecial 1424	java/io/File:<init>	(Ljava/lang/String;)V
+    //   109: getfield 853	android/support/e/a:yT	Ljava/lang/String;
+    //   112: invokespecial 1426	java/io/File:<init>	(Ljava/lang/String;)V
     //   115: aload 4
-    //   117: invokevirtual 1428	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   117: invokevirtual 1430	java/io/File:renameTo	(Ljava/io/File;)Z
     //   120: ifne +37 -> 157
     //   123: new 994	java/io/IOException
     //   126: dup
     //   127: new 996	java/lang/StringBuilder
     //   130: dup
-    //   131: ldc_w 1430
+    //   131: ldc_w 1432
     //   134: invokespecial 999	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   137: aload 4
-    //   139: invokevirtual 1433	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   139: invokevirtual 1435	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   142: invokevirtual 1007	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   145: invokevirtual 1011	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   148: invokespecial 1012	java/io/IOException:<init>	(Ljava/lang/String;)V
@@ -2004,28 +1997,28 @@ public class a
     //   157: new 863	java/io/FileInputStream
     //   160: dup
     //   161: aload 4
-    //   163: invokespecial 1436	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   163: invokespecial 1438	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   166: astore_3
-    //   167: new 1438	java/io/FileOutputStream
+    //   167: new 1440	java/io/FileOutputStream
     //   170: dup
     //   171: aload_0
-    //   172: getfield 853	android/support/e/a:xb	Ljava/lang/String;
-    //   175: invokespecial 1439	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   172: getfield 853	android/support/e/a:yT	Ljava/lang/String;
+    //   175: invokespecial 1441	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   178: astore_2
     //   179: aload_0
     //   180: aload_3
     //   181: aload_2
-    //   182: invokespecial 1441	android/support/e/a:b	(Ljava/io/InputStream;Ljava/io/OutputStream;)V
+    //   182: invokespecial 1443	android/support/e/a:b	(Ljava/io/InputStream;Ljava/io/OutputStream;)V
     //   185: aload_3
     //   186: invokestatic 868	android/support/e/a:closeQuietly	(Ljava/io/Closeable;)V
     //   189: aload_2
     //   190: invokestatic 868	android/support/e/a:closeQuietly	(Ljava/io/Closeable;)V
     //   193: aload 4
-    //   195: invokevirtual 1444	java/io/File:delete	()Z
+    //   195: invokevirtual 1446	java/io/File:delete	()Z
     //   198: pop
     //   199: aload_0
     //   200: aconst_null
-    //   201: putfield 1081	android/support/e/a:xk	[B
+    //   201: putfield 1081	android/support/e/a:zc	[B
     //   204: return
     //   205: astore_1
     //   206: aconst_null
@@ -2037,7 +2030,7 @@ public class a
     //   214: aload_2
     //   215: invokestatic 868	android/support/e/a:closeQuietly	(Ljava/io/Closeable;)V
     //   218: aload 4
-    //   220: invokevirtual 1444	java/io/File:delete	()Z
+    //   220: invokevirtual 1446	java/io/File:delete	()Z
     //   223: pop
     //   224: aload_1
     //   225: athrow
@@ -2074,12 +2067,12 @@ public class a
     if (paramString2 != null)
     {
       paramString1 = paramString2;
-      if (wX.contains(str))
+      if (yP.contains(str))
       {
         if (!str.equals("GPSTimeStamp")) {
           break label221;
         }
-        paramString1 = xt.matcher(paramString2);
+        paramString1 = zm.matcher(paramString2);
         if (!paramString1.find())
         {
           new StringBuilder("Invalid value for ").append(str).append(" : ").append(paramString2);
@@ -2090,16 +2083,16 @@ public class a
     }
     int j = 0;
     label154:
-    if (j < wR.length) {
-      if ((j != 4) || (this.xh))
+    if (j < yJ.length) {
+      if ((j != 4) || (this.yZ))
       {
-        paramString2 = (d)wW[j].get(str);
+        paramString2 = (d)yO[j].get(str);
         if (paramString2 != null)
         {
           if (paramString1 != null) {
             break label267;
           }
-          this.xe[j].remove(str);
+          this.yW[j].remove(str);
         }
       }
     }
@@ -2122,10 +2115,10 @@ public class a
         }
       }
       label267:
-      Object localObject1 = n(paramString1);
+      Object localObject1 = m(paramString1);
       int i;
-      if ((paramString2.xz == ((Integer)((Pair)localObject1).first).intValue()) || (paramString2.xz == ((Integer)((Pair)localObject1).second).intValue())) {
-        i = paramString2.xz;
+      if ((paramString2.zt == ((Integer)((Pair)localObject1).first).intValue()) || (paramString2.zt == ((Integer)((Pair)localObject1).second).intValue())) {
+        i = paramString2.zt;
       }
       label314:
       Object localObject2;
@@ -2137,43 +2130,43 @@ public class a
       default: 
         break;
       case 1: 
-        localObject1 = this.xe[j];
+        localObject1 = this.yW[j];
         if ((paramString1.length() == 1) && (paramString1.charAt(0) >= '0') && (paramString1.charAt(0) <= '1')) {}
         for (paramString2 = new c(1, 1, new byte[] { (byte)(paramString1.charAt(0) - '0') });; paramString2 = new c(1, paramString2.length, paramString2))
         {
           ((HashMap)localObject1).put(str, paramString2);
           break;
-          if ((paramString2.xA != -1) && ((paramString2.xA == ((Integer)((Pair)localObject1).first).intValue()) || (paramString2.xA == ((Integer)((Pair)localObject1).second).intValue())))
+          if ((paramString2.zu != -1) && ((paramString2.zu == ((Integer)((Pair)localObject1).first).intValue()) || (paramString2.zu == ((Integer)((Pair)localObject1).second).intValue())))
           {
-            i = paramString2.xA;
+            i = paramString2.zu;
             break label314;
           }
-          if ((paramString2.xz == 1) || (paramString2.xz == 7) || (paramString2.xz == 2))
+          if ((paramString2.zt == 1) || (paramString2.zt == 7) || (paramString2.zt == 2))
           {
-            i = paramString2.xz;
+            i = paramString2.zt;
             break label314;
           }
-          localObject2 = new StringBuilder("Given tag (").append(str).append(") value didn't match with one of expected formats: ").append(wF[paramString2.xz]);
-          if (paramString2.xA == -1)
+          localObject2 = new StringBuilder("Given tag (").append(str).append(") value didn't match with one of expected formats: ").append(yx[paramString2.zt]);
+          if (paramString2.zu == -1)
           {
             paramString2 = "";
-            localObject2 = ((StringBuilder)localObject2).append(paramString2).append(" (guess: ").append(wF[((Integer)localObject1.first).intValue()]);
+            localObject2 = ((StringBuilder)localObject2).append(paramString2).append(" (guess: ").append(yx[((Integer)localObject1.first).intValue()]);
             if (((Integer)((Pair)localObject1).second).intValue() != -1) {
               break label679;
             }
           }
-          for (paramString2 = "";; paramString2 = ", " + wF[((Integer)localObject1.second).intValue()])
+          for (paramString2 = "";; paramString2 = ", " + yx[((Integer)localObject1.second).intValue()])
           {
             ((StringBuilder)localObject2).append(paramString2).append(")");
             break;
-            paramString2 = ", " + wF[paramString2.xA];
+            paramString2 = ", " + yx[paramString2.zu];
             break label584;
           }
-          paramString2 = paramString1.getBytes(wZ);
+          paramString2 = paramString1.getBytes(yR);
         }
       case 2: 
       case 7: 
-        this.xe[j].put(str, c.o(paramString1));
+        this.yW[j].put(str, c.n(paramString1));
         break;
       case 3: 
         paramString2 = paramString1.split(",", -1);
@@ -2184,7 +2177,7 @@ public class a
           localObject1[i] = Integer.parseInt(paramString2[i]);
           i += 1;
         }
-        this.xe[j].put(str, c.a((int[])localObject1, this.xg));
+        this.yW[j].put(str, c.a((int[])localObject1, this.yY));
         break;
       case 9: 
         paramString2 = paramString1.split(",", -1);
@@ -2195,7 +2188,7 @@ public class a
           localObject1[i] = Integer.parseInt(paramString2[i]);
           i += 1;
         }
-        this.xe[j].put(str, c.b((int[])localObject1, this.xg));
+        this.yW[j].put(str, c.b((int[])localObject1, this.yY));
         break;
       case 4: 
         paramString2 = paramString1.split(",", -1);
@@ -2206,7 +2199,7 @@ public class a
           localObject1[i] = Long.parseLong(paramString2[i]);
           i += 1;
         }
-        this.xe[j].put(str, c.a((long[])localObject1, this.xg));
+        this.yW[j].put(str, c.a((long[])localObject1, this.yY));
         break;
       case 5: 
         paramString2 = paramString1.split(",", -1);
@@ -2218,7 +2211,7 @@ public class a
           localObject1[i] = new e(Double.parseDouble(localObject2[0]), Double.parseDouble(localObject2[1]));
           i += 1;
         }
-        this.xe[j].put(str, c.a((e[])localObject1, this.xg));
+        this.yW[j].put(str, c.a((e[])localObject1, this.yY));
         break;
       case 10: 
         paramString2 = paramString1.split(",", -1);
@@ -2230,7 +2223,7 @@ public class a
           localObject1[i] = new e(Double.parseDouble(localObject2[0]), Double.parseDouble(localObject2[1]));
           i += 1;
         }
-        this.xe[j].put(str, c.b((e[])localObject1, this.xg));
+        this.yW[j].put(str, c.b((e[])localObject1, this.yY));
         break;
       case 12: 
         label584:
@@ -2243,7 +2236,7 @@ public class a
           localObject1[i] = Double.parseDouble(paramString2[i]);
           i += 1;
         }
-        this.xe[j].put(str, c.a((double[])localObject1, this.xg));
+        this.yW[j].put(str, c.a((double[])localObject1, this.yY));
       }
     }
   }
@@ -2256,15 +2249,15 @@ public class a
     private static final ByteOrder LITTLE_ENDIAN = ByteOrder.LITTLE_ENDIAN;
     final int mLength;
     int mPosition;
-    private DataInputStream xu;
-    ByteOrder xv = ByteOrder.BIG_ENDIAN;
+    private DataInputStream zn;
+    ByteOrder zo = ByteOrder.BIG_ENDIAN;
     
     public a(InputStream paramInputStream)
     {
-      this.xu = new DataInputStream(paramInputStream);
-      this.mLength = this.xu.available();
+      this.zn = new DataInputStream(paramInputStream);
+      this.mLength = this.zn.available();
       this.mPosition = 0;
-      this.xu.mark(this.mLength);
+      this.zn.mark(this.mLength);
     }
     
     public a(byte[] paramArrayOfByte)
@@ -2274,10 +2267,10 @@ public class a
     
     public final int available()
     {
-      return this.xu.available();
+      return this.zn.available();
     }
     
-    public final long dm()
+    public final long dB()
     {
       return readInt() & 0xFFFFFFFF;
     }
@@ -2285,12 +2278,12 @@ public class a
     public final int read()
     {
       this.mPosition += 1;
-      return this.xu.read();
+      return this.zn.read();
     }
     
     public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
     {
-      paramInt1 = this.xu.read(paramArrayOfByte, paramInt1, paramInt2);
+      paramInt1 = this.zn.read(paramArrayOfByte, paramInt1, paramInt2);
       this.mPosition += paramInt1;
       return paramInt1;
     }
@@ -2298,7 +2291,7 @@ public class a
     public final boolean readBoolean()
     {
       this.mPosition += 1;
-      return this.xu.readBoolean();
+      return this.zn.readBoolean();
     }
     
     public final byte readByte()
@@ -2307,7 +2300,7 @@ public class a
       if (this.mPosition > this.mLength) {
         throw new EOFException();
       }
-      int i = this.xu.read();
+      int i = this.zn.read();
       if (i < 0) {
         throw new EOFException();
       }
@@ -2317,7 +2310,7 @@ public class a
     public final char readChar()
     {
       this.mPosition += 2;
-      return this.xu.readChar();
+      return this.zn.readChar();
     }
     
     public final double readDouble()
@@ -2336,7 +2329,7 @@ public class a
       if (this.mPosition > this.mLength) {
         throw new EOFException();
       }
-      if (this.xu.read(paramArrayOfByte, 0, paramArrayOfByte.length) != paramArrayOfByte.length) {
+      if (this.zn.read(paramArrayOfByte, 0, paramArrayOfByte.length) != paramArrayOfByte.length) {
         throw new IOException("Couldn't read up to the length of buffer");
       }
     }
@@ -2347,7 +2340,7 @@ public class a
       if (this.mPosition > this.mLength) {
         throw new EOFException();
       }
-      if (this.xu.read(paramArrayOfByte, paramInt1, paramInt2) != paramInt2) {
+      if (this.zn.read(paramArrayOfByte, paramInt1, paramInt2) != paramInt2) {
         throw new IOException("Couldn't read up to the length of buffer");
       }
     }
@@ -2358,20 +2351,20 @@ public class a
       if (this.mPosition > this.mLength) {
         throw new EOFException();
       }
-      int i = this.xu.read();
-      int j = this.xu.read();
-      int k = this.xu.read();
-      int m = this.xu.read();
+      int i = this.zn.read();
+      int j = this.zn.read();
+      int k = this.zn.read();
+      int m = this.zn.read();
       if ((i | j | k | m) < 0) {
         throw new EOFException();
       }
-      if (this.xv == LITTLE_ENDIAN) {
+      if (this.zo == LITTLE_ENDIAN) {
         return i + ((j << 8) + ((k << 16) + (m << 24)));
       }
-      if (this.xv == BIG_ENDIAN) {
+      if (this.zo == BIG_ENDIAN) {
         return (i << 24) + (j << 16) + (k << 8) + m;
       }
-      throw new IOException("Invalid byte order: " + this.xv);
+      throw new IOException("Invalid byte order: " + this.zo);
     }
     
     public final String readLine()
@@ -2385,19 +2378,19 @@ public class a
       if (this.mPosition > this.mLength) {
         throw new EOFException();
       }
-      int i = this.xu.read();
-      int j = this.xu.read();
-      int k = this.xu.read();
-      int m = this.xu.read();
-      int n = this.xu.read();
-      int i1 = this.xu.read();
-      int i2 = this.xu.read();
-      int i3 = this.xu.read();
+      int i = this.zn.read();
+      int j = this.zn.read();
+      int k = this.zn.read();
+      int m = this.zn.read();
+      int n = this.zn.read();
+      int i1 = this.zn.read();
+      int i2 = this.zn.read();
+      int i3 = this.zn.read();
       if ((i | j | k | m | n | i1 | i2 | i3) < 0) {
         throw new EOFException();
       }
       long l1;
-      if (this.xv == LITTLE_ENDIAN)
+      if (this.zo == LITTLE_ENDIAN)
       {
         l1 = i3;
         long l2 = i2;
@@ -2408,12 +2401,12 @@ public class a
         long l7 = j;
         return i + ((l6 << 16) + ((l4 << 32) + ((l2 << 48) + (l1 << 56) + (l3 << 40)) + (l5 << 24)) + (l7 << 8));
       }
-      if (this.xv == BIG_ENDIAN)
+      if (this.zo == BIG_ENDIAN)
       {
         l1 = i;
         return (j << 48) + (l1 << 56) + (k << 40) + (m << 32) + (n << 24) + (i1 << 16) + (i2 << 8) + i3;
       }
-      throw new IOException("Invalid byte order: " + this.xv);
+      throw new IOException("Invalid byte order: " + this.zo);
     }
     
     public final short readShort()
@@ -2422,30 +2415,30 @@ public class a
       if (this.mPosition > this.mLength) {
         throw new EOFException();
       }
-      int i = this.xu.read();
-      int j = this.xu.read();
+      int i = this.zn.read();
+      int j = this.zn.read();
       if ((i | j) < 0) {
         throw new EOFException();
       }
-      if (this.xv == LITTLE_ENDIAN) {
+      if (this.zo == LITTLE_ENDIAN) {
         return (short)(i + (j << 8));
       }
-      if (this.xv == BIG_ENDIAN) {
+      if (this.zo == BIG_ENDIAN) {
         return (short)((i << 8) + j);
       }
-      throw new IOException("Invalid byte order: " + this.xv);
+      throw new IOException("Invalid byte order: " + this.zo);
     }
     
     public final String readUTF()
     {
       this.mPosition += 2;
-      return this.xu.readUTF();
+      return this.zn.readUTF();
     }
     
     public final int readUnsignedByte()
     {
       this.mPosition += 1;
-      return this.xu.readUnsignedByte();
+      return this.zn.readUnsignedByte();
     }
     
     public final int readUnsignedShort()
@@ -2454,18 +2447,18 @@ public class a
       if (this.mPosition > this.mLength) {
         throw new EOFException();
       }
-      int i = this.xu.read();
-      int j = this.xu.read();
+      int i = this.zn.read();
+      int j = this.zn.read();
       if ((i | j) < 0) {
         throw new EOFException();
       }
-      if (this.xv == LITTLE_ENDIAN) {
+      if (this.zo == LITTLE_ENDIAN) {
         return i + (j << 8);
       }
-      if (this.xv == BIG_ENDIAN) {
+      if (this.zo == BIG_ENDIAN) {
         return (i << 8) + j;
       }
-      throw new IOException("Invalid byte order: " + this.xv);
+      throw new IOException("Invalid byte order: " + this.zo);
     }
     
     public final void seek(long paramLong)
@@ -2473,8 +2466,8 @@ public class a
       if (this.mPosition > paramLong)
       {
         this.mPosition = 0;
-        this.xu.reset();
-        this.xu.mark(this.mLength);
+        this.zn.reset();
+        this.zn.mark(this.mLength);
       }
       while (skipBytes((int)paramLong) != (int)paramLong)
       {
@@ -2488,7 +2481,7 @@ public class a
       int i = Math.min(paramInt, this.mLength - this.mPosition);
       paramInt = 0;
       while (paramInt < i) {
-        paramInt += this.xu.skipBytes(i - paramInt);
+        paramInt += this.zn.skipBytes(i - paramInt);
       }
       this.mPosition += paramInt;
       return paramInt;
@@ -2498,75 +2491,75 @@ public class a
   static final class b
     extends FilterOutputStream
   {
-    ByteOrder xv;
-    private final OutputStream xw;
+    ByteOrder zo;
+    private final OutputStream zp;
     
     public b(OutputStream paramOutputStream, ByteOrder paramByteOrder)
     {
       super();
-      this.xw = paramOutputStream;
-      this.xv = paramByteOrder;
+      this.zp = paramOutputStream;
+      this.zo = paramByteOrder;
     }
     
     public final void write(byte[] paramArrayOfByte)
     {
-      this.xw.write(paramArrayOfByte);
+      this.zp.write(paramArrayOfByte);
     }
     
     public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
     {
-      this.xw.write(paramArrayOfByte, paramInt1, paramInt2);
+      this.zp.write(paramArrayOfByte, paramInt1, paramInt2);
     }
     
     public final void writeByte(int paramInt)
     {
-      this.xw.write(paramInt);
+      this.zp.write(paramInt);
     }
     
     public final void writeInt(int paramInt)
     {
-      if (this.xv == ByteOrder.LITTLE_ENDIAN)
+      if (this.zo == ByteOrder.LITTLE_ENDIAN)
       {
-        this.xw.write(paramInt >>> 0 & 0xFF);
-        this.xw.write(paramInt >>> 8 & 0xFF);
-        this.xw.write(paramInt >>> 16 & 0xFF);
-        this.xw.write(paramInt >>> 24 & 0xFF);
+        this.zp.write(paramInt >>> 0 & 0xFF);
+        this.zp.write(paramInt >>> 8 & 0xFF);
+        this.zp.write(paramInt >>> 16 & 0xFF);
+        this.zp.write(paramInt >>> 24 & 0xFF);
       }
-      while (this.xv != ByteOrder.BIG_ENDIAN) {
+      while (this.zo != ByteOrder.BIG_ENDIAN) {
         return;
       }
-      this.xw.write(paramInt >>> 24 & 0xFF);
-      this.xw.write(paramInt >>> 16 & 0xFF);
-      this.xw.write(paramInt >>> 8 & 0xFF);
-      this.xw.write(paramInt >>> 0 & 0xFF);
+      this.zp.write(paramInt >>> 24 & 0xFF);
+      this.zp.write(paramInt >>> 16 & 0xFF);
+      this.zp.write(paramInt >>> 8 & 0xFF);
+      this.zp.write(paramInt >>> 0 & 0xFF);
     }
     
     public final void writeShort(short paramShort)
     {
-      if (this.xv == ByteOrder.LITTLE_ENDIAN)
+      if (this.zo == ByteOrder.LITTLE_ENDIAN)
       {
-        this.xw.write(paramShort >>> 0 & 0xFF);
-        this.xw.write(paramShort >>> 8 & 0xFF);
+        this.zp.write(paramShort >>> 0 & 0xFF);
+        this.zp.write(paramShort >>> 8 & 0xFF);
       }
-      while (this.xv != ByteOrder.BIG_ENDIAN) {
+      while (this.zo != ByteOrder.BIG_ENDIAN) {
         return;
       }
-      this.xw.write(paramShort >>> 8 & 0xFF);
-      this.xw.write(paramShort >>> 0 & 0xFF);
+      this.zp.write(paramShort >>> 8 & 0xFF);
+      this.zp.write(paramShort >>> 0 & 0xFF);
     }
   }
   
   static final class c
   {
     public final int format;
-    public final int xx;
-    public final byte[] xy;
+    public final int zq;
+    public final byte[] zr;
     
     c(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
     {
       this.format = paramInt1;
-      this.xx = paramInt2;
-      this.xy = paramArrayOfByte;
+      this.zq = paramInt2;
+      this.zr = paramArrayOfByte;
     }
     
     public static c a(int paramInt, ByteOrder paramByteOrder)
@@ -2586,7 +2579,7 @@ public class a
     
     public static c a(double[] paramArrayOfDouble, ByteOrder paramByteOrder)
     {
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.wG[12] * paramArrayOfDouble.length]);
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.yy[12] * paramArrayOfDouble.length]);
       localByteBuffer.order(paramByteOrder);
       int j = paramArrayOfDouble.length;
       int i = 0;
@@ -2600,7 +2593,7 @@ public class a
     
     public static c a(int[] paramArrayOfInt, ByteOrder paramByteOrder)
     {
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.wG[3] * paramArrayOfInt.length]);
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.yy[3] * paramArrayOfInt.length]);
       localByteBuffer.order(paramByteOrder);
       int j = paramArrayOfInt.length;
       int i = 0;
@@ -2614,7 +2607,7 @@ public class a
     
     public static c a(long[] paramArrayOfLong, ByteOrder paramByteOrder)
     {
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.wG[4] * paramArrayOfLong.length]);
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.yy[4] * paramArrayOfLong.length]);
       localByteBuffer.order(paramByteOrder);
       int j = paramArrayOfLong.length;
       int i = 0;
@@ -2628,15 +2621,15 @@ public class a
     
     public static c a(a.e[] paramArrayOfe, ByteOrder paramByteOrder)
     {
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.wG[5] * paramArrayOfe.length]);
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.yy[5] * paramArrayOfe.length]);
       localByteBuffer.order(paramByteOrder);
       int j = paramArrayOfe.length;
       int i = 0;
       while (i < j)
       {
         paramByteOrder = paramArrayOfe[i];
-        localByteBuffer.putInt((int)paramByteOrder.xB);
-        localByteBuffer.putInt((int)paramByteOrder.xC);
+        localByteBuffer.putInt((int)paramByteOrder.zv);
+        localByteBuffer.putInt((int)paramByteOrder.zw);
         i += 1;
       }
       return new c(5, paramArrayOfe.length, localByteBuffer.array());
@@ -2644,7 +2637,7 @@ public class a
     
     public static c b(int[] paramArrayOfInt, ByteOrder paramByteOrder)
     {
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.wG[9] * paramArrayOfInt.length]);
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.yy[9] * paramArrayOfInt.length]);
       localByteBuffer.order(paramByteOrder);
       int j = paramArrayOfInt.length;
       int i = 0;
@@ -2658,23 +2651,23 @@ public class a
     
     public static c b(a.e[] paramArrayOfe, ByteOrder paramByteOrder)
     {
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.wG[10] * paramArrayOfe.length]);
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(new byte[a.yy[10] * paramArrayOfe.length]);
       localByteBuffer.order(paramByteOrder);
       int j = paramArrayOfe.length;
       int i = 0;
       while (i < j)
       {
         paramByteOrder = paramArrayOfe[i];
-        localByteBuffer.putInt((int)paramByteOrder.xB);
-        localByteBuffer.putInt((int)paramByteOrder.xC);
+        localByteBuffer.putInt((int)paramByteOrder.zv);
+        localByteBuffer.putInt((int)paramByteOrder.zw);
         i += 1;
       }
       return new c(10, paramArrayOfe.length, localByteBuffer.array());
     }
     
-    public static c o(String paramString)
+    public static c n(String paramString)
     {
-      paramString = (paramString + '\000').getBytes(a.wZ);
+      paramString = (paramString + '\000').getBytes(a.yR);
       return new c(2, paramString.length, paramString);
     }
     
@@ -2703,12 +2696,12 @@ public class a
       //   25: new 111	android/support/e/a$a
       //   28: dup
       //   29: aload_0
-      //   30: getfield 23	android/support/e/a$c:xy	[B
+      //   30: getfield 23	android/support/e/a$c:zr	[B
       //   33: invokespecial 114	android/support/e/a$a:<init>	([B)V
       //   36: astore 12
       //   38: aload 12
       //   40: aload_1
-      //   41: putfield 118	android/support/e/a$a:xv	Ljava/nio/ByteOrder;
+      //   41: putfield 118	android/support/e/a$a:zo	Ljava/nio/ByteOrder;
       //   44: aload_0
       //   45: getfield 19	android/support/e/a$c:format	I
       //   48: istore 11
@@ -2719,17 +2712,17 @@ public class a
       //   121: aconst_null
       //   122: areturn
       //   123: aload_0
-      //   124: getfield 23	android/support/e/a$c:xy	[B
+      //   124: getfield 23	android/support/e/a$c:zr	[B
       //   127: arraylength
       //   128: iconst_1
       //   129: if_icmpne +57 -> 186
       //   132: aload_0
-      //   133: getfield 23	android/support/e/a$c:xy	[B
+      //   133: getfield 23	android/support/e/a$c:zr	[B
       //   136: iconst_0
       //   137: baload
       //   138: iflt +48 -> 186
       //   141: aload_0
-      //   142: getfield 23	android/support/e/a$c:xy	[B
+      //   142: getfield 23	android/support/e/a$c:zr	[B
       //   145: iconst_0
       //   146: baload
       //   147: iconst_1
@@ -2741,7 +2734,7 @@ public class a
       //   158: dup
       //   159: iconst_0
       //   160: aload_0
-      //   161: getfield 23	android/support/e/a$c:xy	[B
+      //   161: getfield 23	android/support/e/a$c:zr	[B
       //   164: iconst_0
       //   165: baload
       //   166: bipush 48
@@ -2760,8 +2753,8 @@ public class a
       //   186: new 102	java/lang/String
       //   189: dup
       //   190: aload_0
-      //   191: getfield 23	android/support/e/a$c:xy	[B
-      //   194: getstatic 100	android/support/e/a:wZ	Ljava/nio/charset/Charset;
+      //   191: getfield 23	android/support/e/a$c:zr	[B
+      //   194: getstatic 100	android/support/e/a:yR	Ljava/nio/charset/Charset;
       //   197: invokespecial 127	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
       //   200: astore_1
       //   201: aload 12
@@ -2772,8 +2765,8 @@ public class a
       //   210: aload_1
       //   211: areturn
       //   212: aload_0
-      //   213: getfield 21	android/support/e/a$c:xx	I
-      //   216: getstatic 130	android/support/e/a:wH	[B
+      //   213: getfield 21	android/support/e/a$c:zq	I
+      //   216: getstatic 130	android/support/e/a:yz	[B
       //   219: arraylength
       //   220: if_icmplt +540 -> 760
       //   223: iconst_0
@@ -2781,14 +2774,14 @@ public class a
       //   225: iload 4
       //   227: istore_3
       //   228: iload_2
-      //   229: getstatic 130	android/support/e/a:wH	[B
+      //   229: getstatic 130	android/support/e/a:yz	[B
       //   232: arraylength
       //   233: if_icmpge +19 -> 252
       //   236: aload_0
-      //   237: getfield 23	android/support/e/a$c:xy	[B
+      //   237: getfield 23	android/support/e/a$c:zr	[B
       //   240: iload_2
       //   241: baload
-      //   242: getstatic 130	android/support/e/a:wH	[B
+      //   242: getstatic 130	android/support/e/a:yz	[B
       //   245: iload_2
       //   246: baload
       //   247: if_icmpeq +525 -> 772
@@ -2796,7 +2789,7 @@ public class a
       //   251: istore_3
       //   252: iload_3
       //   253: ifeq +507 -> 760
-      //   256: getstatic 130	android/support/e/a:wH	[B
+      //   256: getstatic 130	android/support/e/a:yz	[B
       //   259: arraylength
       //   260: istore_2
       //   261: new 84	java/lang/StringBuilder
@@ -2805,10 +2798,10 @@ public class a
       //   268: astore_1
       //   269: iload_2
       //   270: aload_0
-      //   271: getfield 21	android/support/e/a$c:xx	I
+      //   271: getfield 21	android/support/e/a$c:zq	I
       //   274: if_icmpge +53 -> 327
       //   277: aload_0
-      //   278: getfield 23	android/support/e/a$c:xy	[B
+      //   278: getfield 23	android/support/e/a$c:zr	[B
       //   281: iload_2
       //   282: baload
       //   283: istore_3
@@ -2846,12 +2839,12 @@ public class a
       //   341: aload_1
       //   342: areturn
       //   343: aload_0
-      //   344: getfield 21	android/support/e/a$c:xx	I
+      //   344: getfield 21	android/support/e/a$c:zq	I
       //   347: newarray int
       //   349: astore_1
       //   350: iload_2
       //   351: aload_0
-      //   352: getfield 21	android/support/e/a$c:xx	I
+      //   352: getfield 21	android/support/e/a$c:zq	I
       //   355: if_icmpge +18 -> 373
       //   358: aload_1
       //   359: iload_2
@@ -2871,19 +2864,19 @@ public class a
       //   382: aload_1
       //   383: areturn
       //   384: aload_0
-      //   385: getfield 21	android/support/e/a$c:xx	I
+      //   385: getfield 21	android/support/e/a$c:zq	I
       //   388: newarray long
       //   390: astore_1
       //   391: iload_3
       //   392: istore_2
       //   393: iload_2
       //   394: aload_0
-      //   395: getfield 21	android/support/e/a$c:xx	I
+      //   395: getfield 21	android/support/e/a$c:zq	I
       //   398: if_icmpge +18 -> 416
       //   401: aload_1
       //   402: iload_2
       //   403: aload 12
-      //   405: invokevirtual 138	android/support/e/a$a:dm	()J
+      //   405: invokevirtual 138	android/support/e/a$a:dB	()J
       //   408: lastore
       //   409: iload_2
       //   410: iconst_1
@@ -2898,23 +2891,23 @@ public class a
       //   425: aload_1
       //   426: areturn
       //   427: aload_0
-      //   428: getfield 21	android/support/e/a$c:xx	I
+      //   428: getfield 21	android/support/e/a$c:zq	I
       //   431: anewarray 36	android/support/e/a$e
       //   434: astore_1
       //   435: iload 5
       //   437: istore_2
       //   438: iload_2
       //   439: aload_0
-      //   440: getfield 21	android/support/e/a$c:xx	I
+      //   440: getfield 21	android/support/e/a$c:zq	I
       //   443: if_icmpge +30 -> 473
       //   446: aload_1
       //   447: iload_2
       //   448: new 36	android/support/e/a$e
       //   451: dup
       //   452: aload 12
-      //   454: invokevirtual 138	android/support/e/a$a:dm	()J
+      //   454: invokevirtual 138	android/support/e/a$a:dB	()J
       //   457: aload 12
-      //   459: invokevirtual 138	android/support/e/a$a:dm	()J
+      //   459: invokevirtual 138	android/support/e/a$a:dB	()J
       //   462: invokespecial 141	android/support/e/a$e:<init>	(JJ)V
       //   465: aastore
       //   466: iload_2
@@ -2930,14 +2923,14 @@ public class a
       //   482: aload_1
       //   483: areturn
       //   484: aload_0
-      //   485: getfield 21	android/support/e/a$c:xx	I
+      //   485: getfield 21	android/support/e/a$c:zq	I
       //   488: newarray int
       //   490: astore_1
       //   491: iload 6
       //   493: istore_2
       //   494: iload_2
       //   495: aload_0
-      //   496: getfield 21	android/support/e/a$c:xx	I
+      //   496: getfield 21	android/support/e/a$c:zq	I
       //   499: if_icmpge +18 -> 517
       //   502: aload_1
       //   503: iload_2
@@ -2957,14 +2950,14 @@ public class a
       //   526: aload_1
       //   527: areturn
       //   528: aload_0
-      //   529: getfield 21	android/support/e/a$c:xx	I
+      //   529: getfield 21	android/support/e/a$c:zq	I
       //   532: newarray int
       //   534: astore_1
       //   535: iload 7
       //   537: istore_2
       //   538: iload_2
       //   539: aload_0
-      //   540: getfield 21	android/support/e/a$c:xx	I
+      //   540: getfield 21	android/support/e/a$c:zq	I
       //   543: if_icmpge +18 -> 561
       //   546: aload_1
       //   547: iload_2
@@ -2984,14 +2977,14 @@ public class a
       //   570: aload_1
       //   571: areturn
       //   572: aload_0
-      //   573: getfield 21	android/support/e/a$c:xx	I
+      //   573: getfield 21	android/support/e/a$c:zq	I
       //   576: anewarray 36	android/support/e/a$e
       //   579: astore_1
       //   580: iload 8
       //   582: istore_2
       //   583: iload_2
       //   584: aload_0
-      //   585: getfield 21	android/support/e/a$c:xx	I
+      //   585: getfield 21	android/support/e/a$c:zq	I
       //   588: if_icmpge +32 -> 620
       //   591: aload_1
       //   592: iload_2
@@ -3018,14 +3011,14 @@ public class a
       //   629: aload_1
       //   630: areturn
       //   631: aload_0
-      //   632: getfield 21	android/support/e/a$c:xx	I
+      //   632: getfield 21	android/support/e/a$c:zq	I
       //   635: newarray double
       //   637: astore_1
       //   638: iload 9
       //   640: istore_2
       //   641: iload_2
       //   642: aload_0
-      //   643: getfield 21	android/support/e/a$c:xx	I
+      //   643: getfield 21	android/support/e/a$c:zq	I
       //   646: if_icmpge +19 -> 665
       //   649: aload_1
       //   650: iload_2
@@ -3046,14 +3039,14 @@ public class a
       //   674: aload_1
       //   675: areturn
       //   676: aload_0
-      //   677: getfield 21	android/support/e/a$c:xx	I
+      //   677: getfield 21	android/support/e/a$c:zq	I
       //   680: newarray double
       //   682: astore_1
       //   683: iload 10
       //   685: istore_2
       //   686: iload_2
       //   687: aload_0
-      //   688: getfield 21	android/support/e/a$c:xx	I
+      //   688: getfield 21	android/support/e/a$c:zq	I
       //   691: if_icmpge +18 -> 709
       //   694: aload_1
       //   695: iload_2
@@ -3298,9 +3291,9 @@ public class a
         i = m;
         while (i < localObject.length)
         {
-          paramByteOrder.append(localObject[i].xB);
+          paramByteOrder.append(localObject[i].zv);
           paramByteOrder.append('/');
-          paramByteOrder.append(localObject[i].xC);
+          paramByteOrder.append(localObject[i].zw);
           if (i + 1 != localObject.length) {
             paramByteOrder.append(",");
           }
@@ -3313,12 +3306,12 @@ public class a
     
     public final int size()
     {
-      return a.wG[this.format] * this.xx;
+      return a.yy[this.format] * this.zq;
     }
     
     public final String toString()
     {
-      return "(" + a.wF[this.format] + ", data length:" + this.xy.length + ")";
+      return "(" + a.yx[this.format] + ", data length:" + this.zr.length + ")";
     }
   }
   
@@ -3326,29 +3319,29 @@ public class a
   {
     public final String name;
     public final int number;
-    public final int xA;
-    public final int xz;
+    public final int zt;
+    public final int zu;
     
     d(String paramString, int paramInt)
     {
       this.name = paramString;
       this.number = paramInt;
-      this.xz = 3;
-      this.xA = 4;
+      this.zt = 3;
+      this.zu = 4;
     }
     
     d(String paramString, int paramInt1, int paramInt2)
     {
       this.name = paramString;
       this.number = paramInt1;
-      this.xz = paramInt2;
-      this.xA = -1;
+      this.zt = paramInt2;
+      this.zu = -1;
     }
     
     final boolean an(int paramInt)
     {
-      if ((this.xz == 7) || (paramInt == 7)) {}
-      while ((this.xz == paramInt) || (this.xA == paramInt) || (((this.xz == 4) || (this.xA == 4)) && ((paramInt == 3) || (((this.xz == 9) || (this.xA == 9)) && ((paramInt == 8) || (((this.xz == 12) || (this.xA == 12)) && (paramInt == 11))))))) {
+      if ((this.zt == 7) || (paramInt == 7)) {}
+      while ((this.zt == paramInt) || (this.zu == paramInt) || (((this.zt == 4) || (this.zu == 4)) && ((paramInt == 3) || (((this.zt == 9) || (this.zu == 9)) && ((paramInt == 8) || (((this.zt == 12) || (this.zu == 12)) && (paramInt == 11))))))) {
         return true;
       }
       return false;
@@ -3357,8 +3350,8 @@ public class a
   
   static final class e
   {
-    public final long xB;
-    public final long xC;
+    public final long zv;
+    public final long zw;
     
     e(double paramDouble)
     {
@@ -3369,23 +3362,23 @@ public class a
     {
       if (paramLong2 == 0L)
       {
-        this.xB = 0L;
-        this.xC = 1L;
+        this.zv = 0L;
+        this.zw = 1L;
         return;
       }
-      this.xB = paramLong1;
-      this.xC = paramLong2;
+      this.zv = paramLong1;
+      this.zw = paramLong2;
     }
     
     public final String toString()
     {
-      return this.xB + "/" + this.xC;
+      return this.zv + "/" + this.zw;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.e.a
  * JD-Core Version:    0.7.0.1
  */

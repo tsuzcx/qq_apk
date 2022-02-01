@@ -30,59 +30,151 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.bk;
-import com.tencent.mm.plugin.ball.f.f;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.modelsimple.y;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.protocal.protobuf.cbo;
+import com.tencent.mm.protocal.protobuf.ctd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.AllRemindMsgUI;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.CustomScrollView;
 import com.tencent.mm.ui.base.CustomScrollView.a;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.base.v;
+import com.tencent.mm.ui.chatting.view.c.a;
 import com.tencent.mm.ui.widget.textview.a.a;
+import com.tencent.recovery.wx.util.NetUtil;
+import java.io.IOException;
 
 @com.tencent.mm.ui.base.a(3)
 public class TextPreviewUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
-  private boolean Dzu = false;
-  private TextView HNW = null;
-  private int HQJ;
-  private com.tencent.mm.ui.widget.textview.a HQK;
-  private com.tencent.mm.ui.widget.b.a HQL;
-  private CharSequence HQM;
-  private View HQN;
-  private View HQO;
-  private View HQP;
-  private CustomScrollView HQQ;
-  private final int HQR = 1;
-  private final int HQS = 2;
-  private boolean HQT = false;
-  private ToolsBar HQU;
-  private View HQV;
-  private TextView Up = null;
+  private int Bd;
+  private boolean FeD = false;
+  private TextView JBL = null;
+  private com.tencent.mm.ui.widget.textview.a JEA;
+  private com.tencent.mm.ui.widget.b.a JEB;
+  private CharSequence JEC;
+  private View JED;
+  private View JEE;
+  private View JEF;
+  private CustomScrollView JEG;
+  private final int JEH = 1;
+  private final int JEI = 2;
+  private boolean JEJ = false;
+  private ToolsBar JEK;
+  private View JEL;
+  private int JEz;
+  private TextView Wf = null;
   private int bottom = 0;
-  private bo dpq;
-  private final int nyc = 0;
+  private bu dBd;
+  private final int nZA = 0;
   private CharSequence text = null;
-  private Animation xEu;
-  private Animation xEv;
-  private int zl;
+  private Animation yTe;
+  private Animation yTf;
   
-  private void by(bo parambo)
+  private void bC(final bu parambu)
   {
     AppMethodBeat.i(34950);
-    com.tencent.mm.ui.chatting.view.c localc = new com.tencent.mm.ui.chatting.view.c(getContext());
-    localc.Ihv = new TextPreviewUI.4(this, localc, parambo);
+    final com.tencent.mm.ui.chatting.view.c localc = new com.tencent.mm.ui.chatting.view.c(getContext());
+    localc.JXQ = new c.a()
+    {
+      public final void DQ(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(193878);
+        localc.hide();
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(795L, 1L, 1L, false);
+        if (!NetUtil.isConnected(TextPreviewUI.this.getContext()))
+        {
+          h.c(TextPreviewUI.this.getContext(), TextPreviewUI.this.getString(2131761535), TextPreviewUI.this.getString(2131762410), true);
+          AppMethodBeat.o(193878);
+          return;
+        }
+        ctd localctd = new ctd();
+        localctd.qex = ((int)(paramAnonymousLong / 1000L));
+        localctd.nEf = 1;
+        localctd.HfH = 1;
+        for (;;)
+        {
+          try
+          {
+            cbo localcbo = new cbo();
+            localcbo.nDo = parambu.field_talker;
+            localcbo.xbt = parambu.field_msgSvrId;
+            localTextPreviewUI = TextPreviewUI.this;
+            localObject2 = parambu;
+            if ((!((bu)localObject2).isText()) && (!((bu)localObject2).frJ())) {
+              continue;
+            }
+            localObject2 = ((ei)localObject2).field_content;
+            i = bj.Bh((String)localObject2);
+            localObject1 = localObject2;
+            if (i != -1) {
+              localObject1 = ((String)localObject2).substring(i + 1).trim();
+            }
+            localcbo.Title = ((String)localObject1);
+            localctd.Gcf = new com.tencent.mm.bx.b(localcbo.toByteArray());
+          }
+          catch (IOException localIOException)
+          {
+            TextPreviewUI localTextPreviewUI;
+            Object localObject2;
+            int i;
+            Object localObject1;
+            ad.e("MicroMsg.TextPreviewUI", "[onOk] %s", new Object[] { localIOException.toString() });
+            continue;
+          }
+          localObject1 = new y(1, localctd);
+          ba.aiU().a((n)localObject1, 0);
+          AppMethodBeat.o(193878);
+          return;
+          if ((((bu)localObject2).frQ()) || (((bu)localObject2).frR()))
+          {
+            localObject1 = ((ei)localObject2).field_content;
+            i = ((ei)localObject2).field_content.indexOf(':');
+            if (i != -1) {
+              localObject1 = ((ei)localObject2).field_content.substring(i + 1);
+            }
+            if (localObject1 != null)
+            {
+              localObject1 = k.b.aA((String)localObject1, ((ei)localObject2).field_reserved);
+              if ((localObject1 != null) && ((((k.b)localObject1).type == 53) || (((k.b)localObject1).type == 57)))
+              {
+                localObject1 = ((k.b)localObject1).title;
+                continue;
+              }
+            }
+          }
+          localObject1 = AllRemindMsgUI.a(localTextPreviewUI.getContext(), ((bu)localObject2).getType(), ((ei)localObject2).field_content, ((ei)localObject2).field_isSend);
+          ad.i("MicroMsg.TextPreviewUI", "[getRemindTitle] msgId:%s type:%s title:%s", new Object[] { Long.valueOf(((ei)localObject2).field_msgId), Integer.valueOf(((bu)localObject2).getType()), localObject1 });
+        }
+      }
+      
+      public final void onCancel()
+      {
+        AppMethodBeat.i(193879);
+        localc.hide();
+        AppMethodBeat.o(193879);
+      }
+    };
     localc.show();
     AppMethodBeat.o(34950);
   }
@@ -105,35 +197,35 @@ public class TextPreviewUI
     requestWindowFeature(1);
     super.onCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
-    if (d.kZ(19)) {
+    if (d.ly(19)) {
       getWindow().setFlags(67109888, 67109888);
     }
-    this.HQN = findViewById(2131305741);
+    this.JED = findViewById(2131305741);
     this.text = getIntent().getCharSequenceExtra("key_chat_text");
-    this.HQJ = getIntent().getIntExtra("key_msg_type", 0);
+    this.JEz = getIntent().getIntExtra("key_msg_type", 0);
     long l = getIntent().getLongExtra("Chat_Msg_Id", 0L);
-    az.ayM();
-    this.dpq = com.tencent.mm.model.c.awD().vP(l);
-    this.Up = ((TextView)findViewById(2131300329));
-    this.HNW = ((TextView)findViewById(2131300330));
+    ba.aBQ();
+    this.dBd = com.tencent.mm.model.c.azs().xY(l);
+    this.Wf = ((TextView)findViewById(2131300329));
+    this.JBL = ((TextView)findViewById(2131300330));
     Object localObject = this.text;
-    TextView localTextView = this.HNW;
+    TextView localTextView = this.JBL;
     paramBundle = (Bundle)localObject;
     if ((localObject instanceof SpannableString))
     {
       localTextView.setText(((SpannableString)localObject).toString());
-      k.m(localTextView, 1);
+      k.n(localTextView, 1);
       paramBundle = localTextView.getText();
     }
     this.text = paramBundle;
-    paramBundle = this.Up;
-    localObject = com.tencent.mm.cf.g.eXw();
+    paramBundle = this.Wf;
+    localObject = com.tencent.mm.cf.g.fng();
     getContext();
-    paramBundle.setText(((com.tencent.mm.cf.g)localObject).b(this.text, this.Up.getTextSize()));
-    this.HQO = findViewById(2131301274);
-    this.HQP = this.HQO.findViewById(2131301241);
-    this.HQQ = ((CustomScrollView)findViewById(2131300328));
-    this.Up.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+    paramBundle.setText(((com.tencent.mm.cf.g)localObject).b(this.text, this.Wf.getTextSize()));
+    this.JEE = findViewById(2131301274);
+    this.JEF = this.JEE.findViewById(2131301241);
+    this.JEG = ((CustomScrollView)findViewById(2131300328));
+    this.Wf.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
     {
       public final boolean onPreDraw()
       {
@@ -146,45 +238,50 @@ public class TextPreviewUI
         return false;
       }
     });
-    this.xEv = AnimationUtils.loadAnimation(getContext(), 2130772108);
-    this.xEu = AnimationUtils.loadAnimation(getContext(), 2130772106);
-    this.HQL = new com.tencent.mm.ui.widget.b.a(getContext(), this.Up);
-    this.HQL.JiS = true;
-    this.HQL.JiR = new View.OnCreateContextMenuListener()
+    this.yTf = AnimationUtils.loadAnimation(getContext(), 2130772108);
+    this.yTe = AnimationUtils.loadAnimation(getContext(), 2130772106);
+    this.JEB = new com.tencent.mm.ui.widget.b.a(getContext(), this.Wf);
+    this.JEB.Lal = true;
+    this.JEB.Lao = false;
+    this.JEB.Laj = new n.c()
     {
-      public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
+      public final void a(l paramAnonymousl, View paramAnonymousView)
       {
-        AppMethodBeat.i(34937);
+        AppMethodBeat.i(193881);
         TextPreviewUI.b(TextPreviewUI.b(TextPreviewUI.this), 7, 0);
-        paramAnonymousContextMenu.clear();
-        paramAnonymousContextMenu.add(0, 0, 0, TextPreviewUI.this.getResources().getString(2131755701));
-        int i = bk.D(TextPreviewUI.b(TextPreviewUI.this));
-        if ((i <= 0) || (i >= com.tencent.mm.ui.widget.textview.b.gQ(TextPreviewUI.a(TextPreviewUI.this)).length())) {
-          paramAnonymousContextMenu.add(1, 1, 0, TextPreviewUI.this.getResources().getString(2131761224));
+        paramAnonymousl.clear();
+        paramAnonymousl.a(0, TextPreviewUI.this.getResources().getString(2131755701), 2131690381);
+        int i = bl.F(TextPreviewUI.b(TextPreviewUI.this));
+        if ((i <= 0) || (i >= com.tencent.mm.ui.widget.textview.b.hh(TextPreviewUI.a(TextPreviewUI.this)).length())) {
+          paramAnonymousl.a(1, TextPreviewUI.this.getResources().getString(2131761224), 2131691572);
         }
-        paramAnonymousContextMenu.add(1, 2, 0, TextPreviewUI.this.getResources().getString(2131761223));
-        AppMethodBeat.o(34937);
+        paramAnonymousl.a(2, TextPreviewUI.this.getResources().getString(2131761223), 2131690478);
+        AppMethodBeat.o(193881);
       }
     };
-    this.HQL.ISv = new n.d()
+    this.JEB.Lai = new View.OnCreateContextMenuListener()
+    {
+      public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo) {}
+    };
+    this.JEB.KJz = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
-        AppMethodBeat.i(34939);
+        AppMethodBeat.i(193883);
         switch (paramAnonymousMenuItem.getItemId())
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(34939);
+          AppMethodBeat.o(193883);
           return;
-          ((ClipboardManager)ai.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(TextPreviewUI.c(TextPreviewUI.this), TextPreviewUI.c(TextPreviewUI.this)));
+          ((ClipboardManager)aj.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(TextPreviewUI.c(TextPreviewUI.this), TextPreviewUI.c(TextPreviewUI.this)));
           if (TextPreviewUI.d(TextPreviewUI.this) != null)
           {
-            TextPreviewUI.d(TextPreviewUI.this).fwF();
-            TextPreviewUI.d(TextPreviewUI.this).Jot = true;
-            TextPreviewUI.d(TextPreviewUI.this).Jou = true;
-            TextPreviewUI.d(TextPreviewUI.this).fwE();
+            TextPreviewUI.d(TextPreviewUI.this).fNt();
+            TextPreviewUI.d(TextPreviewUI.this).LfQ = true;
+            TextPreviewUI.d(TextPreviewUI.this).LfR = true;
+            TextPreviewUI.d(TextPreviewUI.this).fNs();
           }
           paramAnonymousMenuItem = TextPreviewUI.b(TextPreviewUI.this);
           if (TextPreviewUI.c(TextPreviewUI.this) == null) {}
@@ -192,118 +289,136 @@ public class TextPreviewUI
           {
             TextPreviewUI.b(paramAnonymousMenuItem, 8, paramAnonymousInt);
             Toast.makeText(TextPreviewUI.this.getContext(), 2131755702, 0).show();
-            AppMethodBeat.o(34939);
+            AppMethodBeat.o(193883);
             return;
           }
           if (TextPreviewUI.d(TextPreviewUI.this) != null)
           {
-            TextPreviewUI.d(TextPreviewUI.this).fwE();
-            TextPreviewUI.d(TextPreviewUI.this).fwI();
-            TextPreviewUI.d(TextPreviewUI.this).kc(0, TextPreviewUI.a(TextPreviewUI.this).getText().length());
-            TextPreviewUI.d(TextPreviewUI.this).Jot = false;
-            TextPreviewUI.d(TextPreviewUI.this).Jou = false;
-            TextPreviewUI.d(TextPreviewUI.this).fwH();
+            TextPreviewUI.d(TextPreviewUI.this).fNs();
+            TextPreviewUI.d(TextPreviewUI.this).fNw();
+            TextPreviewUI.d(TextPreviewUI.this).kp(0, TextPreviewUI.a(TextPreviewUI.this).getText().length());
+            TextPreviewUI.d(TextPreviewUI.this).LfQ = false;
+            TextPreviewUI.d(TextPreviewUI.this).LfR = false;
+            TextPreviewUI.d(TextPreviewUI.this).fNv();
           }
           TextPreviewUI.b(TextPreviewUI.b(TextPreviewUI.this), 10, 0);
-          ap.n(new Runnable()
+          com.tencent.mm.sdk.platformtools.aq.o(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(34938);
+              AppMethodBeat.i(193882);
               if (TextPreviewUI.d(TextPreviewUI.this) != null) {
-                TextPreviewUI.d(TextPreviewUI.this).fwM();
+                TextPreviewUI.d(TextPreviewUI.this).fNA();
               }
-              AppMethodBeat.o(34938);
+              AppMethodBeat.o(193882);
             }
           }, 100L);
-          AppMethodBeat.o(34939);
+          AppMethodBeat.o(193883);
           return;
           TextPreviewUI.b(TextPreviewUI.b(TextPreviewUI.this), 9, 0);
-          TextPreviewUI.f(TextPreviewUI.this.getContext(), TextPreviewUI.c(TextPreviewUI.this));
+          TextPreviewUI.e(TextPreviewUI.this.getContext(), TextPreviewUI.c(TextPreviewUI.this));
         }
       }
     };
-    if ((this.HQK == null) && (!bk.x(this.dpq)) && (!bk.y(this.dpq)))
+    if ((this.JEA == null) && (!bl.z(this.dBd)) && (!bl.A(this.dBd)))
     {
-      paramBundle = new a.a(this.Up, this.HQL);
-      paramBundle.Jok = 2131100846;
-      paramBundle.Jol = 2131100195;
-      this.HQK = paramBundle.fwN();
-      this.HQK.Joc = new v()
+      paramBundle = new a.a(this.Wf, this.JEB);
+      paramBundle.LfH = 2131100846;
+      paramBundle.LfI = 2131100195;
+      paramBundle.Lgc = com.tencent.mm.ui.aq.fromDPToPix(getContext(), 20);
+      this.JEA = paramBundle.fNB();
+      this.JEA.Lfz = new v()
       {
         public final void an(CharSequence paramAnonymousCharSequence)
         {
-          AppMethodBeat.i(34940);
+          AppMethodBeat.i(193884);
           TextPreviewUI.a(TextPreviewUI.this, paramAnonymousCharSequence);
-          AppMethodBeat.o(34940);
+          AppMethodBeat.o(193884);
         }
       };
     }
-    this.HQN.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(34941);
-        if ((TextPreviewUI.d(TextPreviewUI.this) != null) && ((!TextPreviewUI.d(TextPreviewUI.this).Jot) || (!TextPreviewUI.d(TextPreviewUI.this).Jou)))
-        {
-          TextPreviewUI.d(TextPreviewUI.this).fwF();
-          TextPreviewUI.d(TextPreviewUI.this).Jot = true;
-          TextPreviewUI.d(TextPreviewUI.this).Jou = true;
-          TextPreviewUI.d(TextPreviewUI.this).fwE();
-          AppMethodBeat.o(34941);
-          return;
-        }
-        TextPreviewUI.this.finish();
-        AppMethodBeat.o(34941);
-      }
-    });
-    this.Up.setOnClickListener(new View.OnClickListener()
+    this.JED.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(34942);
-        if ((TextPreviewUI.d(TextPreviewUI.this) != null) && ((!TextPreviewUI.d(TextPreviewUI.this).Jot) || (!TextPreviewUI.d(TextPreviewUI.this).Jou)))
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/TextPreviewUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if ((TextPreviewUI.d(TextPreviewUI.this) != null) && ((!TextPreviewUI.d(TextPreviewUI.this).LfQ) || (!TextPreviewUI.d(TextPreviewUI.this).LfR)))
         {
-          TextPreviewUI.d(TextPreviewUI.this).fwF();
-          TextPreviewUI.d(TextPreviewUI.this).Jot = true;
-          TextPreviewUI.d(TextPreviewUI.this).Jou = true;
-          TextPreviewUI.d(TextPreviewUI.this).fwE();
+          TextPreviewUI.d(TextPreviewUI.this).fNt();
+          TextPreviewUI.d(TextPreviewUI.this).LfQ = true;
+          TextPreviewUI.d(TextPreviewUI.this).LfR = true;
+          TextPreviewUI.d(TextPreviewUI.this).fNs();
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/TextPreviewUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(34942);
           return;
+          TextPreviewUI.this.finish();
         }
-        TextPreviewUI.this.finish();
-        AppMethodBeat.o(34942);
       }
     });
-    if (!bs.isNullOrNil(bk.B(this.dpq)))
+    this.Wf.setOnClickListener(new View.OnClickListener()
     {
-      this.HQO.setVisibility(0);
-      this.HQP.setOnClickListener(new TextPreviewUI.13(this));
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(34943);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/TextPreviewUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if ((TextPreviewUI.d(TextPreviewUI.this) != null) && ((!TextPreviewUI.d(TextPreviewUI.this).LfQ) || (!TextPreviewUI.d(TextPreviewUI.this).LfR)))
+        {
+          TextPreviewUI.d(TextPreviewUI.this).fNt();
+          TextPreviewUI.d(TextPreviewUI.this).LfQ = true;
+          TextPreviewUI.d(TextPreviewUI.this).LfR = true;
+          TextPreviewUI.d(TextPreviewUI.this).fNs();
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/TextPreviewUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(34943);
+          return;
+          TextPreviewUI.this.finish();
+        }
+      }
+    });
+    if (!bt.isNullOrNil(bl.D(this.dBd)))
+    {
+      this.JEE.setVisibility(0);
+      this.JEF.setOnClickListener(new TextPreviewUI.15(this));
     }
-    label724:
+    label773:
     for (;;)
     {
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(34944);
+          AppMethodBeat.i(193886);
           TextPreviewUI.this.finish();
-          AppMethodBeat.o(34944);
+          AppMethodBeat.o(193886);
           return true;
         }
       });
-      this.HQQ.setOnTouchListener(new View.OnTouchListener()
+      this.JEG.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
-          AppMethodBeat.i(34945);
+          AppMethodBeat.i(193875);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          localb.bd(paramAnonymousMotionEvent);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/TextPreviewUI$10", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
           switch (paramAnonymousMotionEvent.getAction())
           {
           }
           for (;;)
           {
-            AppMethodBeat.o(34945);
+            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/chatting/TextPreviewUI$10", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+            AppMethodBeat.o(193875);
             return false;
             TextPreviewUI.a(TextPreviewUI.this, true);
             continue;
@@ -318,11 +433,11 @@ public class TextPreviewUI
           }
         }
       });
-      this.HQQ.setOnScrollChangeListener(new CustomScrollView.a()
+      this.JEG.setOnScrollChangeListener(new CustomScrollView.a()
       {
         public final void a(ScrollView paramAnonymousScrollView, int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          AppMethodBeat.i(34930);
+          AppMethodBeat.i(193876);
           TextPreviewUI.f(TextPreviewUI.this);
           int i;
           if (paramAnonymousScrollView.getChildAt(0).getMeasuredHeight() == paramAnonymousScrollView.getHeight() + paramAnonymousScrollView.getScrollY())
@@ -340,7 +455,7 @@ public class TextPreviewUI
           while (!TextPreviewUI.i(TextPreviewUI.this))
           {
             TextPreviewUI.b(TextPreviewUI.this, paramAnonymousInt1 - paramAnonymousInt2);
-            AppMethodBeat.o(34930);
+            AppMethodBeat.o(193876);
             return;
             i = 0;
             break;
@@ -358,55 +473,32 @@ public class TextPreviewUI
           }
         }
       });
-      az.agi().a(525, this);
+      ba.aiU().a(525, this);
       AppMethodBeat.o(34946);
       return;
-      if ((!bk.x(this.dpq)) && (!bk.y(this.dpq)))
+      if ((!bl.z(this.dBd)) && (!bl.A(this.dBd)))
       {
-        if (this.HQJ == 1) {}
+        if (this.JEz == 1) {}
         for (int i = 1;; i = 0)
         {
           if (i != 0) {
-            break label724;
+            break label773;
           }
-          paramBundle = (ViewStub)findViewById(2131306449);
-          if (paramBundle != null) {
-            this.HQV = paramBundle.inflate();
+          if (!am.ail(this.dBd.field_talker))
+          {
+            paramBundle = (ViewStub)findViewById(2131306449);
+            if (paramBundle != null) {
+              this.JEL = paramBundle.inflate();
+            }
+            this.JEK = ((ToolsBar)findViewById(2131305987));
+            this.JEK.setVisibility(0);
           }
-          this.HQU = ((ToolsBar)findViewById(2131305987));
-          this.HQU.setVisibility(0);
-          if (this.HQU == null) {
+          if (this.JEK == null) {
             break;
           }
-          this.HQU.b(0, new View.OnClickListener()
-          {
-            public final void onClick(View paramAnonymousView)
-            {
-              AppMethodBeat.i(34934);
-              if (TextPreviewUI.b(TextPreviewUI.this) != null) {
-                TextPreviewUI.f(TextPreviewUI.this.getContext(), TextPreviewUI.k(TextPreviewUI.this).toString());
-              }
-              AppMethodBeat.o(34934);
-            }
-          });
-          this.HQU.b(1, new View.OnClickListener()
-          {
-            public final void onClick(View paramAnonymousView)
-            {
-              AppMethodBeat.i(34935);
-              TextPreviewUI.l(TextPreviewUI.this);
-              AppMethodBeat.o(34935);
-            }
-          });
-          this.HQU.b(2, new View.OnClickListener()
-          {
-            public final void onClick(View paramAnonymousView)
-            {
-              AppMethodBeat.i(34936);
-              TextPreviewUI.b(TextPreviewUI.this, TextPreviewUI.b(TextPreviewUI.this));
-              AppMethodBeat.o(34936);
-            }
-          });
+          this.JEK.b(0, new TextPreviewUI.6(this));
+          this.JEK.b(1, new TextPreviewUI.7(this));
+          this.JEK.b(2, new TextPreviewUI.8(this));
           break;
         }
       }
@@ -417,7 +509,7 @@ public class TextPreviewUI
   {
     AppMethodBeat.i(34951);
     super.onDestroy();
-    az.agi().b(525, this);
+    ba.aiU().b(525, this);
     AppMethodBeat.o(34951);
   }
   
@@ -425,7 +517,7 @@ public class TextPreviewUI
   {
     AppMethodBeat.i(34948);
     super.onPause();
-    f.e(false, true, true);
+    com.tencent.mm.plugin.ball.f.f.e(false, true, true);
     AppMethodBeat.o(34948);
   }
   
@@ -433,14 +525,14 @@ public class TextPreviewUI
   {
     AppMethodBeat.i(34947);
     super.onResume();
-    f.e(true, true, true);
-    if (this.HQK != null)
+    com.tencent.mm.plugin.ball.f.f.e(true, true, true);
+    if (this.JEA != null)
     {
-      if (!this.HQK.Jot) {
-        this.HQK.fwM();
+      if (!this.JEA.LfQ) {
+        this.JEA.fNA();
       }
-      if (!this.HQK.Jou) {
-        this.HQK.fwH();
+      if (!this.JEA.LfR) {
+        this.JEA.fNv();
       }
     }
     AppMethodBeat.o(34947);
@@ -457,21 +549,21 @@ public class TextPreviewUI
         AppMethodBeat.o(34952);
         return;
       }
-      ac.i("MicroMsg.TextPreviewUI", "set msg remind!");
+      ad.i("MicroMsg.TextPreviewUI", "set msg remind!");
       com.tencent.mm.ui.widget.snackbar.b.a(getContext(), getContext().getResources().getString(2131760231), "", null);
       AppMethodBeat.o(34952);
       return;
     }
     if (paramn.getType() == 525)
     {
-      ac.e("MicroMsg.TextPreviewUI", "[setMsgRemind] scene type:%s errCode:%s, errType:%s, errMsg:%s", new Object[] { Integer.valueOf(525), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), bs.nullAsNil(paramString) });
+      ad.e("MicroMsg.TextPreviewUI", "[setMsgRemind] scene type:%s errCode:%s, errType:%s, errMsg:%s", new Object[] { Integer.valueOf(525), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), bt.nullAsNil(paramString) });
       AppCompatActivity localAppCompatActivity = getContext();
       paramn = paramString;
-      if (bs.isNullOrNil(paramString)) {
+      if (bt.isNullOrNil(paramString)) {
         paramn = getResources().getString(2131762409);
       }
-      com.tencent.mm.ui.base.h.c(localAppCompatActivity, paramn, getContext().getResources().getString(2131762410), true);
-      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(795L, 4L, 1L, false);
+      h.c(localAppCompatActivity, paramn, getContext().getResources().getString(2131762410), true);
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(795L, 4L, 1L, false);
     }
     AppMethodBeat.o(34952);
   }
@@ -484,7 +576,7 @@ public class TextPreviewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.TextPreviewUI
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,19 @@ public abstract class gc
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int enO = "appId".hashCode();
-  private static final int eok = "username".hashCode();
-  private static final int epZ = "openId".hashCode();
+  private static final int eSc = "count".hashCode();
+  private static final int ftL = "tagId".hashCode();
+  private static final int ftM = "tagName".hashCode();
+  private static final int ftN = "memberList".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean enx = true;
-  private boolean eoh = true;
-  private boolean epD = true;
-  public String field_appId;
-  public String field_openId;
-  public String field_username;
+  private boolean eRC = true;
+  public int field_count;
+  public String field_memberList;
+  public long field_tagId;
+  public String field_tagName;
+  private boolean ftI = true;
+  private boolean ftJ = true;
+  private boolean ftK = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,22 +35,23 @@ public abstract class gc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (epZ != k) {
-        break label65;
+      if (ftL != k) {
+        break label60;
       }
-      this.field_openId = paramCursor.getString(i);
-      this.epD = true;
+      this.field_tagId = paramCursor.getLong(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (enO == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (eok == k) {
-        this.field_username = paramCursor.getString(i);
+      label60:
+      if (ftM == k) {
+        this.field_tagName = paramCursor.getString(i);
+      } else if (eSc == k) {
+        this.field_count = paramCursor.getInt(i);
+      } else if (ftN == k) {
+        this.field_memberList = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -57,14 +61,23 @@ public abstract class gc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.epD) {
-      localContentValues.put("openId", this.field_openId);
+    if (this.ftI) {
+      localContentValues.put("tagId", Long.valueOf(this.field_tagId));
     }
-    if (this.enx) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.field_tagName == null) {
+      this.field_tagName = "";
     }
-    if (this.eoh) {
-      localContentValues.put("username", this.field_username);
+    if (this.ftJ) {
+      localContentValues.put("tagName", this.field_tagName);
+    }
+    if (this.eRC) {
+      localContentValues.put("count", Integer.valueOf(this.field_count));
+    }
+    if (this.field_memberList == null) {
+      this.field_memberList = "";
+    }
+    if (this.ftK) {
+      localContentValues.put("memberList", this.field_memberList);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

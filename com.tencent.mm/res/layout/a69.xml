@@ -2,6 +2,6 @@
 <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/dme" android:layout_width="wrap_content" android:layout_height="wrap_content" app:cornerRadius="4.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView android:id="@id/g8w" android:visibility="gone" android:layout_width="120.0dip" android:layout_height="120.0dip" android:scaleType="fitCenter" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|left|top" android:id="@id/cov" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ci" android:src="@raw/icons_filled_album" app:iconColor="@color/aj" />
     <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f01" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ci" android:src="@raw/finder_feed_retransmission" app:iconColor="@color/aj" />
+    <View android:id="@id/i33" android:background="@drawable/c_0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/cc" />
 </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

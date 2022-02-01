@@ -37,9 +37,9 @@ import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.widget.input.autofill.e;
 import com.tencent.mm.pointers.PBool;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -49,30 +49,30 @@ public abstract class y
   extends EditText
   implements com.tencent.mm.plugin.appbrand.widget.base.c, ab
 {
-  private volatile int mCW = -1;
-  InputConnection mEJ;
-  boolean mFi = false;
-  private final com.tencent.mm.plugin.appbrand.widget.input.autofill.b mFj;
-  private final Map<ab.a, Object> mFk = new a();
-  private final Map<View.OnFocusChangeListener, Object> mFl = new a();
-  private final Map<ab.c, Object> mFm = new a();
-  private final a mFn = new a((byte)0);
-  private final PasswordTransformationMethod mFo = new m();
-  private final z mFp = new z(this);
-  private boolean mFq;
-  private int mFr = 0;
-  private boolean mFs = false;
-  private final int[] mFt = new int[2];
-  private boolean mFu = false;
-  private ab.b mFv;
-  char mFw = '\000';
+  private volatile int ndw = -1;
+  boolean nfG = false;
+  private final com.tencent.mm.plugin.appbrand.widget.input.autofill.b nfH;
+  private final Map<ab.a, Object> nfI = new a();
+  private final Map<View.OnFocusChangeListener, Object> nfJ = new a();
+  private final Map<ab.c, Object> nfK = new a();
+  private final a nfL = new a((byte)0);
+  private final PasswordTransformationMethod nfM = new m();
+  private final z nfN = new z(this);
+  private boolean nfO;
+  private int nfP = 0;
+  private boolean nfQ = false;
+  private final int[] nfR = new int[2];
+  private boolean nfS = false;
+  private ab.b nfT;
+  char nfU = '\000';
+  InputConnection nfi;
   
   public y(Context paramContext)
   {
     super(paramContext);
     setBackgroundDrawable(null);
     setIncludeFontPadding(false);
-    vR(3);
+    ww(3);
     setSingleLine(true);
     setTextCursorDrawable(2131231042);
     setTextIsSelectable(true);
@@ -82,7 +82,7 @@ public abstract class y
       setLineSpacing(0.0F, 1.0F);
     }
     setTypeface(Typeface.SANS_SERIF);
-    super.addTextChangedListener(this.mFn);
+    super.addTextChangedListener(this.nfL);
     super.setPadding(0, 0, 0, 0);
     super.setEditableFactory(new Editable.Factory()
     {
@@ -95,10 +95,10 @@ public abstract class y
         return paramAnonymousCharSequence;
       }
     });
-    if (bAp()) {}
-    for (this.mFj = new com.tencent.mm.plugin.appbrand.widget.input.autofill.b(this);; this.mFj = null)
+    if (bEr()) {}
+    for (this.nfH = new com.tencent.mm.plugin.appbrand.widget.input.autofill.b(this);; this.nfH = null)
     {
-      this.mFq = true;
+      this.nfO = true;
       return;
     }
   }
@@ -120,7 +120,7 @@ public abstract class y
     localEditable.replace(0, localEditable.length(), paramCharSequence);
   }
   
-  private void vR(int paramInt)
+  private void ww(int paramInt)
   {
     setGravity(getGravity() & 0xFF7FFFFC & 0xFF7FFFFA | paramInt);
     paramInt = getGravity();
@@ -135,7 +135,7 @@ public abstract class y
         localSpannable.setSpan(new AlignmentSpan.Standard((Layout.Alignment)localObject), 0, getHint().length(), 18);
         super.setHint(localSpannable);
         if (Build.VERSION.SDK_INT >= 17) {
-          switch (3.btl[localObject.ordinal()])
+          switch (3.bDB[localObject.ordinal()])
           {
           default: 
             paramInt = 5;
@@ -161,40 +161,40 @@ public abstract class y
   public final void A(aa paramaa)
   {
     Object localObject;
-    if (this.mFj != null)
+    if (this.nfH != null)
     {
-      localObject = this.mFj.mGO;
-      ((com.tencent.mm.plugin.appbrand.widget.input.autofill.c)localObject).mGZ = paramaa;
+      localObject = this.nfH.nhm;
+      ((com.tencent.mm.plugin.appbrand.widget.input.autofill.c)localObject).nhx = paramaa;
       paramaa = k.w(paramaa);
-      localObject = ((com.tencent.mm.plugin.appbrand.widget.input.autofill.c)localObject).mGY;
+      localObject = ((com.tencent.mm.plugin.appbrand.widget.input.autofill.c)localObject).nhw;
       if (localObject != null) {
         break label35;
       }
     }
     label35:
-    while (paramaa.mDw.containsKey(localObject)) {
+    while (paramaa.ndV.containsKey(localObject)) {
       return;
     }
-    paramaa.mDw.put(localObject, paramaa);
+    paramaa.ndV.put(localObject, paramaa);
   }
   
   public final void B(aa paramaa)
   {
-    if (this.mFj != null)
+    if (this.nfH != null)
     {
-      com.tencent.mm.plugin.appbrand.widget.input.autofill.c localc = this.mFj.mGO;
-      k.w(paramaa).a(localc.mGY);
+      com.tencent.mm.plugin.appbrand.widget.input.autofill.c localc = this.nfH.nhm;
+      k.w(paramaa).a(localc.nhw);
     }
   }
   
   public final void D(CharSequence paramCharSequence)
   {
-    bAK();
+    bEM();
     C(paramCharSequence);
-    bAL();
+    bEN();
   }
   
-  public void K(float paramFloat1, float paramFloat2)
+  public void M(float paramFloat1, float paramFloat2)
   {
     throw new IllegalStateException("Should implement performClick(float, float) in this class!");
   }
@@ -202,18 +202,18 @@ public abstract class y
   public final void a(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
     if (paramOnFocusChangeListener != null) {
-      this.mFl.put(paramOnFocusChangeListener, this);
+      this.nfJ.put(paramOnFocusChangeListener, this);
     }
   }
   
   public final void a(ab.a parama)
   {
-    this.mFk.put(parama, this);
+    this.nfI.put(parama, this);
   }
   
   public final void a(ab.c paramc)
   {
-    this.mFm.put(paramc, this);
+    this.nfK.put(paramc, this);
   }
   
   protected final boolean a(int paramInt, Rect paramRect)
@@ -223,81 +223,81 @@ public abstract class y
   
   public void addTextChangedListener(TextWatcher paramTextWatcher)
   {
-    a locala = this.mFn;
+    a locala = this.nfL;
     if (paramTextWatcher != null) {
-      locala.mFz.put(paramTextWatcher, locala);
+      locala.nfX.put(paramTextWatcher, locala);
     }
   }
   
   public final void b(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
     if (paramOnFocusChangeListener != null) {
-      this.mFl.remove(paramOnFocusChangeListener);
+      this.nfJ.remove(paramOnFocusChangeListener);
     }
   }
   
-  public final int bAF()
-  {
-    return vS(getLineCount()) + getPaddingBottom();
-  }
-  
-  public final void bAG()
-  {
-    vR(3);
-  }
-  
-  public final void bAH()
-  {
-    vR(5);
-  }
-  
-  public final void bAI()
-  {
-    vR(1);
-  }
-  
-  final void bAJ()
-  {
-    bAK();
-    setText(getEditableText());
-    bAL();
-  }
-  
-  final void bAK()
-  {
-    this.mFr += 1;
-  }
-  
-  final void bAL()
-  {
-    this.mFr = Math.max(0, this.mFr - 1);
-  }
-  
-  protected final void bAM()
-  {
-    super.clearFocus();
-  }
-  
-  public boolean bAp()
-  {
-    return true;
-  }
-  
-  protected abstract void bAq();
-  
-  public boolean bAs()
-  {
-    return this.mFs;
-  }
-  
-  public boolean bym()
+  public boolean bCr()
   {
     return false;
   }
   
+  public final int bEH()
+  {
+    return wx(getLineCount()) + getPaddingBottom();
+  }
+  
+  public final void bEI()
+  {
+    ww(3);
+  }
+  
+  public final void bEJ()
+  {
+    ww(5);
+  }
+  
+  public final void bEK()
+  {
+    ww(1);
+  }
+  
+  final void bEL()
+  {
+    bEM();
+    setText(getEditableText());
+    bEN();
+  }
+  
+  final void bEM()
+  {
+    this.nfP += 1;
+  }
+  
+  final void bEN()
+  {
+    this.nfP = Math.max(0, this.nfP - 1);
+  }
+  
+  protected final void bEO()
+  {
+    super.clearFocus();
+  }
+  
+  public boolean bEr()
+  {
+    return true;
+  }
+  
+  protected abstract void bEs();
+  
+  public boolean bEu()
+  {
+    return this.nfQ;
+  }
+  
   Editable c(Editable paramEditable)
   {
-    return this.mFp.c(paramEditable);
+    return this.nfN.c(paramEditable);
   }
   
   public void clearFocus()
@@ -312,24 +312,24 @@ public abstract class y
   
   public final void destroy()
   {
-    this.mFk.clear();
-    this.mFm.clear();
-    this.mFl.clear();
-    this.mFn.mFz.clear();
-    if (this.mFj != null)
+    this.nfI.clear();
+    this.nfK.clear();
+    this.nfJ.clear();
+    this.nfL.nfX.clear();
+    if (this.nfH != null)
     {
-      com.tencent.mm.plugin.appbrand.widget.input.autofill.b localb = this.mFj;
-      com.tencent.mm.plugin.appbrand.widget.input.autofill.c localc = localb.mGO;
-      k.w(localc.mGZ).a(localc.mGY);
-      localb.mGR = null;
-      localb.mGM.dismiss();
+      com.tencent.mm.plugin.appbrand.widget.input.autofill.b localb = this.nfH;
+      com.tencent.mm.plugin.appbrand.widget.input.autofill.c localc = localb.nhm;
+      k.w(localc.nhx).a(localc.nhw);
+      localb.nhp = null;
+      localb.nhk.dismiss();
     }
     super.setOnFocusChangeListener(null);
   }
   
   public com.tencent.mm.plugin.appbrand.widget.input.autofill.b getAutoFillController()
   {
-    return this.mFj;
+    return this.nfH;
   }
   
   public int getAutofillType()
@@ -339,12 +339,12 @@ public abstract class y
   
   public int getInputId()
   {
-    return this.mCW;
+    return this.ndw;
   }
   
   public char getLastKeyPressed()
   {
-    return this.mFw;
+    return this.nfU;
   }
   
   public final View getView()
@@ -355,14 +355,14 @@ public abstract class y
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (!this.mFk.isEmpty())
+    if (!this.nfI.isEmpty())
     {
-      paramConfiguration = (ab.a[])this.mFk.keySet().toArray(new ab.a[this.mFk.size()]);
+      paramConfiguration = (ab.a[])this.nfI.keySet().toArray(new ab.a[this.nfI.size()]);
       int j = paramConfiguration.length;
       int i = 0;
       while (i < j)
       {
-        paramConfiguration[i].ie();
+        paramConfiguration[i].iv();
         i += 1;
       }
     }
@@ -374,13 +374,13 @@ public abstract class y
     if (localInputConnection == null) {
       return null;
     }
-    this.mEJ = new InputConnectionWrapper(localInputConnection, localInputConnection)
+    this.nfi = new InputConnectionWrapper(localInputConnection, localInputConnection)
     {
       public final boolean commitText(CharSequence paramAnonymousCharSequence, int paramAnonymousInt)
       {
         AppMethodBeat.i(136557);
         if (!TextUtils.isEmpty(paramAnonymousCharSequence)) {
-          y.this.mFw = paramAnonymousCharSequence.charAt(paramAnonymousCharSequence.length() - 1);
+          y.this.nfU = paramAnonymousCharSequence.charAt(paramAnonymousCharSequence.length() - 1);
         }
         boolean bool = super.commitText(paramAnonymousCharSequence, paramAnonymousInt);
         AppMethodBeat.o(136557);
@@ -390,7 +390,7 @@ public abstract class y
       public final boolean deleteSurroundingText(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(136558);
-        y.this.mFw = '\b';
+        y.this.nfU = '\b';
         boolean bool = super.deleteSurroundingText(paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(136558);
         return bool;
@@ -407,9 +407,9 @@ public abstract class y
           if ((bool2) && (y.b(y.this) == this) && (bool1))
           {
             localObject = y.c(y.this);
-            ((z)localObject).jdu.removeCallbacks(((z)localObject).mFH);
-            if (((z)localObject).mFF) {
-              ((z)localObject).mFH.run();
+            ((z)localObject).jwD.removeCallbacks(((z)localObject).ngf);
+            if (((z)localObject).ngd) {
+              ((z)localObject).ngf.run();
             }
           }
           AppMethodBeat.o(136559);
@@ -421,7 +421,7 @@ public abstract class y
       {
         AppMethodBeat.i(136556);
         if (!TextUtils.isEmpty(paramAnonymousCharSequence)) {
-          y.this.mFw = paramAnonymousCharSequence.charAt(paramAnonymousCharSequence.length() - 1);
+          y.this.nfU = paramAnonymousCharSequence.charAt(paramAnonymousCharSequence.length() - 1);
         }
         boolean bool = super.setComposingText(paramAnonymousCharSequence, paramAnonymousInt);
         AppMethodBeat.o(136556);
@@ -429,8 +429,10 @@ public abstract class y
       }
     };
     paramEditorInfo.imeOptions |= 0x10000000;
-    paramEditorInfo.imeOptions &= 0xBFFFFFFF;
-    return this.mEJ;
+    if (getImeOptions() != 0) {
+      paramEditorInfo.imeOptions &= 0xBFFFFFFF;
+    }
+    return this.nfi;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -445,11 +447,11 @@ public abstract class y
       clearComposingText();
     }
     if (paramBoolean) {
-      bAq();
+      bEs();
     }
-    if (!this.mFl.isEmpty())
+    if (!this.nfJ.isEmpty())
     {
-      paramRect = (View.OnFocusChangeListener[])this.mFl.keySet().toArray(new View.OnFocusChangeListener[this.mFl.size()]);
+      paramRect = (View.OnFocusChangeListener[])this.nfJ.keySet().toArray(new View.OnFocusChangeListener[this.nfJ.size()]);
       int i = paramRect.length;
       paramInt = 0;
       while (paramInt < i)
@@ -463,19 +465,19 @@ public abstract class y
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     if (paramInt == 67) {
-      this.mFw = '\b';
+      this.nfU = '\b';
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
     if ((bool) && (paramInt == 66)) {
-      this.mFw = '\n';
+      this.nfU = '\n';
     }
-    this.mFu = bool;
+    this.nfS = bool;
     return bool;
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((!this.mFu) && (this.mFv != null) && (this.mFv.vI(paramInt))) {
+    if ((!this.nfS) && (this.nfT != null) && (this.nfT.wn(paramInt))) {
       return true;
     }
     return super.onKeyUp(paramInt, paramKeyEvent);
@@ -483,17 +485,17 @@ public abstract class y
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    ac.v("MicroMsg.AppBrand.WebEditText", "[scrollUp] input onLayout");
+    ad.v("MicroMsg.AppBrand.WebEditText", "[scrollUp] input onLayout");
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    ac.v("MicroMsg.AppBrand.WebEditText", "[scrollUp] input onMeasure");
+    ad.v("MicroMsg.AppBrand.WebEditText", "[scrollUp] input onMeasure");
     super.onMeasure(paramInt1, paramInt2);
-    if (!this.mFm.isEmpty())
+    if (!this.nfK.isEmpty())
     {
-      Object[] arrayOfObject = this.mFm.keySet().toArray();
+      Object[] arrayOfObject = this.nfK.keySet().toArray();
       paramInt2 = arrayOfObject.length;
       paramInt1 = 0;
       while (paramInt1 < paramInt2)
@@ -501,7 +503,7 @@ public abstract class y
         ab.c localc = (ab.c)arrayOfObject[paramInt1];
         getMeasuredWidth();
         getMeasuredHeight();
-        localc.bAr();
+        localc.bEt();
         paramInt1 += 1;
       }
     }
@@ -509,9 +511,9 @@ public abstract class y
   
   public void removeTextChangedListener(TextWatcher paramTextWatcher)
   {
-    a locala = this.mFn;
+    a locala = this.nfL;
     if (paramTextWatcher != null) {
-      locala.mFz.remove(paramTextWatcher);
+      locala.nfX.remove(paramTextWatcher);
     }
   }
   
@@ -530,7 +532,7 @@ public abstract class y
     catch (RuntimeException localRuntimeException)
     {
       boolean bool;
-      ac.e("MicroMsg.AppBrand.WebEditText", "requestFocus e=%s", new Object[] { localRuntimeException });
+      ad.e("MicroMsg.AppBrand.WebEditText", "requestFocus e=%s", new Object[] { localRuntimeException });
       try
       {
         bool = super.requestFocus(paramInt, paramRect);
@@ -538,7 +540,7 @@ public abstract class y
       }
       catch (RuntimeException paramRect)
       {
-        ac.e("MicroMsg.AppBrand.WebEditText", "requestFocus try again e=%s", new Object[] { paramRect });
+        ad.e("MicroMsg.AppBrand.WebEditText", "requestFocus try again e=%s", new Object[] { paramRect });
       }
     }
     return false;
@@ -546,12 +548,12 @@ public abstract class y
   
   public void setFixed(boolean paramBoolean)
   {
-    this.mFs = paramBoolean;
+    this.nfQ = paramBoolean;
   }
   
   public void setInputId(int paramInt)
   {
-    this.mCW = paramInt;
+    this.ndw = paramInt;
   }
   
   public void setInputType(int paramInt)
@@ -580,13 +582,13 @@ public abstract class y
   
   public void setOnComposingDismissedListener(com.tencent.mm.plugin.appbrand.widget.input.c.b paramb)
   {
-    this.mFp.mFG = paramb;
+    this.nfN.nge = paramb;
   }
   
   @Deprecated
   public void setOnFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    if (this.mFl == null)
+    if (this.nfJ == null)
     {
       super.setOnFocusChangeListener(paramOnFocusChangeListener);
       return;
@@ -596,18 +598,18 @@ public abstract class y
   
   public void setOnKeyUpPostImeListener(ab.b paramb)
   {
-    this.mFv = paramb;
+    this.nfT = paramb;
   }
   
   public void setPasswordMode(boolean paramBoolean)
   {
-    bAK();
-    this.mFi = paramBoolean;
+    bEM();
+    this.nfG = paramBoolean;
     if (paramBoolean) {}
-    for (PasswordTransformationMethod localPasswordTransformationMethod = this.mFo;; localPasswordTransformationMethod = null)
+    for (PasswordTransformationMethod localPasswordTransformationMethod = this.nfM;; localPasswordTransformationMethod = null)
     {
       setTransformationMethod(localPasswordTransformationMethod);
-      bAL();
+      bEN();
       return;
     }
   }
@@ -658,7 +660,7 @@ public abstract class y
     }
     catch (Exception localException)
     {
-      ac.d("MicroMsg.AppBrand.WebEditText", "setTextCursorDrawable, exp = %s", new Object[] { bs.m(localException) });
+      ad.d("MicroMsg.AppBrand.WebEditText", "setTextCursorDrawable, exp = %s", new Object[] { bt.n(localException) });
     }
   }
   
@@ -687,22 +689,22 @@ public abstract class y
     return String.format(Locale.US, "[%s|%s]", new Object[] { getClass().getSimpleName(), Integer.valueOf(getInputId()) });
   }
   
-  public final int vS(int paramInt)
+  public final int wx(int paramInt)
   {
     int i = getPaddingTop() + (int)(paramInt * (getLineHeight() + getLineSpacingExtra()));
-    ac.d("MicroMsg.AppBrand.WebEditText", "calculateLinePosition, lineNumber %d, returnHeight %d, layout %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), getLayout() });
+    ad.d("MicroMsg.AppBrand.WebEditText", "calculateLinePosition, lineNumber %d, returnHeight %d, layout %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), getLayout() });
     return i;
   }
   
   final class a
     implements TextWatcher
   {
-    final Map<TextWatcher, Object> mFz;
+    final Map<TextWatcher, Object> nfX;
     
     private a()
     {
       AppMethodBeat.i(136562);
-      this.mFz = new a();
+      this.nfX = new a();
       AppMethodBeat.o(136562);
     }
     
@@ -738,17 +740,17 @@ public abstract class y
     public final void afterTextChanged(Editable paramEditable)
     {
       AppMethodBeat.i(136566);
-      f.bzU();
+      f.bDW();
       Object localObject;
       final int i;
       final int j;
-      if (f.bzV())
+      if (f.bDX())
       {
         localObject = new PBool();
         PInt localPInt = new PInt();
         final String str = y.a(paramEditable, (PBool)localObject, localPInt);
         i = localPInt.value;
-        if ((((PBool)localObject).value) && (!bs.isNullOrNil(str)))
+        if ((((PBool)localObject).value) && (!bt.isNullOrNil(str)))
         {
           j = Selection.getSelectionEnd(paramEditable);
           final boolean bool = y.d(y.this);
@@ -770,7 +772,7 @@ public abstract class y
                 }
                 catch (Exception localException)
                 {
-                  ac.e("MicroMsg.AppBrand.WebEditText", "replace softBank to unicode, setSelection ", new Object[] { localException });
+                  ad.e("MicroMsg.AppBrand.WebEditText", "replace softBank to unicode, setSelection ", new Object[] { localException });
                   AppMethodBeat.o(136561);
                 }
                 y.this.setText(str);
@@ -784,9 +786,9 @@ public abstract class y
       if (!y.d(y.this))
       {
         y.e(y.this);
-        if (!this.mFz.isEmpty())
+        if (!this.nfX.isEmpty())
         {
-          localObject = (TextWatcher[])this.mFz.keySet().toArray(new TextWatcher[this.mFz.size()]);
+          localObject = (TextWatcher[])this.nfX.keySet().toArray(new TextWatcher[this.nfX.size()]);
           j = localObject.length;
           i = 0;
           while (i < j)
@@ -802,9 +804,9 @@ public abstract class y
     public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(136564);
-      if ((!y.d(y.this)) && (!this.mFz.isEmpty()))
+      if ((!y.d(y.this)) && (!this.nfX.isEmpty()))
       {
-        TextWatcher[] arrayOfTextWatcher = (TextWatcher[])this.mFz.keySet().toArray(new TextWatcher[this.mFz.size()]);
+        TextWatcher[] arrayOfTextWatcher = (TextWatcher[])this.nfX.keySet().toArray(new TextWatcher[this.nfX.size()]);
         int j = arrayOfTextWatcher.length;
         int i = 0;
         while (i < j)
@@ -824,9 +826,9 @@ public abstract class y
         a(paramCharSequence, paramInt1, paramInt3, StyleSpan.class);
         a(paramCharSequence, paramInt1, paramInt3, RelativeSizeSpan.class);
         a(paramCharSequence, paramInt1, paramInt3, AlignmentSpan.class);
-        if (!this.mFz.isEmpty())
+        if (!this.nfX.isEmpty())
         {
-          TextWatcher[] arrayOfTextWatcher = (TextWatcher[])this.mFz.keySet().toArray(new TextWatcher[this.mFz.size()]);
+          TextWatcher[] arrayOfTextWatcher = (TextWatcher[])this.nfX.keySet().toArray(new TextWatcher[this.nfX.size()]);
           int j = arrayOfTextWatcher.length;
           int i = 0;
           while (i < j)
@@ -842,7 +844,7 @@ public abstract class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.y
  * JD-Core Version:    0.7.0.1
  */

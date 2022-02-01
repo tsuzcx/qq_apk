@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.sns.b;
 
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.av;
 
 public abstract interface k
 {
-  public abstract void a(au paramau);
+  public abstract void a(av paramav);
   
-  public abstract void b(au paramau);
+  public abstract void b(av paramav);
 }
 
 

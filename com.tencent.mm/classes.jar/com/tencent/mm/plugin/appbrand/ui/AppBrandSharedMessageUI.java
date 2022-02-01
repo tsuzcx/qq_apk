@@ -13,14 +13,16 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView;
 import com.tencent.mm.ui.MMActivity;
 
 public class AppBrandSharedMessageUI
   extends MMActivity
 {
+  private MRecyclerView mED;
   private ListView mListView;
-  private MRecyclerView mek;
   
   public int getLayoutId()
   {
@@ -32,15 +34,26 @@ public class AppBrandSharedMessageUI
     AppMethodBeat.i(48788);
     super.onCreate(paramBundle);
     this.mListView = ((ListView)findViewById(2131301452));
-    this.mek = ((MRecyclerView)findViewById(2131298926));
+    this.mED = ((MRecyclerView)findViewById(2131298926));
     this.mListView.setAdapter(new b(getLayoutInflater()));
     this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
-      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong) {}
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(188902);
+        b localb = new b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+        AppMethodBeat.o(188902);
+      }
     });
-    this.mek.setLayoutManager(new LinearLayoutManager(1));
-    this.mek.setAdapter(new a());
-    this.mek.addHeaderView(getLayoutInflater().inflate(2131493057, null));
+    this.mED.setLayoutManager(new LinearLayoutManager(1));
+    this.mED.setAdapter(new a());
+    this.mED.addHeaderView(getLayoutInflater().inflate(2131493057, null));
     AppMethodBeat.o(48788);
   }
   
@@ -120,7 +133,7 @@ public class AppBrandSharedMessageUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandSharedMessageUI
  * JD-Core Version:    0.7.0.1
  */

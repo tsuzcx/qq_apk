@@ -6,23 +6,23 @@ import java.util.LinkedList;
 public abstract class a
 {
   private static String TAG = "MicroMsg.BackupBaseModel";
-  private static LinkedList<a> mRR = new LinkedList();
+  private static LinkedList<a> nsq = new LinkedList();
   
   public static void a(a parama)
   {
-    mRR.add(parama);
+    nsq.add(parama);
   }
   
-  public static void bCJ()
+  public static void bGR()
   {
-    Iterator localIterator = mRR.iterator();
+    Iterator localIterator = nsq.iterator();
     while (localIterator.hasNext()) {
-      ((a)localIterator.next()).bCK();
+      ((a)localIterator.next()).bGS();
     }
-    mRR.clear();
+    nsq.clear();
   }
   
-  public abstract void bCK();
+  public abstract void bGS();
 }
 
 

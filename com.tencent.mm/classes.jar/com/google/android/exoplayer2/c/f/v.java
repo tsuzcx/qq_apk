@@ -14,39 +14,39 @@ public abstract interface v
   
   public abstract void a(u paramu, g paramg, d paramd);
   
-  public abstract void tg();
+  public abstract void uF();
   
   public static final class a
   {
-    public final String aTm;
-    public final byte[] biu;
+    public final byte[] bsO;
+    public final String language;
     public final int type;
     
     public a(String paramString, int paramInt, byte[] paramArrayOfByte)
     {
-      this.aTm = paramString;
+      this.language = paramString;
       this.type = paramInt;
-      this.biu = paramArrayOfByte;
+      this.bsO = paramArrayOfByte;
     }
   }
   
   public static final class b
   {
-    public final String aTm;
-    public final List<v.a> biv;
-    public final byte[] biw;
+    public final List<v.a> bsP;
+    public final byte[] bsQ;
+    public final String language;
     public final int streamType;
     
     public b(int paramInt, String paramString, List<v.a> paramList, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(92300);
       this.streamType = paramInt;
-      this.aTm = paramString;
+      this.language = paramString;
       if (paramList == null) {}
       for (paramString = Collections.emptyList();; paramString = Collections.unmodifiableList(paramList))
       {
-        this.biv = paramString;
-        this.biw = paramArrayOfByte;
+        this.bsP = paramString;
+        this.bsQ = paramArrayOfByte;
         AppMethodBeat.o(92300);
         return;
       }
@@ -57,15 +57,15 @@ public abstract interface v
   {
     public abstract v a(int paramInt, v.b paramb);
     
-    public abstract SparseArray<v> to();
+    public abstract SparseArray<v> uN();
   }
   
   public static final class d
   {
-    private String bgl;
-    private final String bix;
-    private final int biy;
-    private final int biz;
+    private String bqF;
+    private final String bsR;
+    private final int bsS;
+    private final int bsT;
     private int trackId;
     
     public d(int paramInt1, int paramInt2)
@@ -79,16 +79,16 @@ public abstract interface v
       if (paramInt1 != -2147483648) {}
       for (String str = paramInt1 + "/";; str = "")
       {
-        this.bix = str;
-        this.biy = paramInt2;
-        this.biz = paramInt3;
+        this.bsR = str;
+        this.bsS = paramInt2;
+        this.bsT = paramInt3;
         this.trackId = -2147483648;
         AppMethodBeat.o(92301);
         return;
       }
     }
     
-    private void tu()
+    private void uT()
     {
       AppMethodBeat.i(92305);
       if (this.trackId == -2147483648)
@@ -103,30 +103,30 @@ public abstract interface v
     public final int getTrackId()
     {
       AppMethodBeat.i(92303);
-      tu();
+      uT();
       int i = this.trackId;
       AppMethodBeat.o(92303);
       return i;
     }
     
-    public final void ts()
+    public final void uR()
     {
       AppMethodBeat.i(92302);
       if (this.trackId == -2147483648) {}
-      for (int i = this.biy;; i = this.trackId + this.biz)
+      for (int i = this.bsS;; i = this.trackId + this.bsT)
       {
         this.trackId = i;
-        this.bgl = (this.bix + this.trackId);
+        this.bqF = (this.bsR + this.trackId);
         AppMethodBeat.o(92302);
         return;
       }
     }
     
-    public final String tt()
+    public final String uS()
     {
       AppMethodBeat.i(92304);
-      tu();
-      String str = this.bgl;
+      uT();
+      String str = this.bqF;
       AppMethodBeat.o(92304);
       return str;
     }
@@ -134,7 +134,7 @@ public abstract interface v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.v
  * JD-Core Version:    0.7.0.1
  */

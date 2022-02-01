@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 public abstract class f<E>
   extends d
 {
-  private final int DF;
+  private final int Fw;
   final Activity mActivity;
   final Context mContext;
   final FragmentManagerImpl mFragmentManager = new FragmentManagerImpl();
@@ -25,7 +25,7 @@ public abstract class f<E>
     this.mActivity = paramActivity;
     this.mContext = ((Context)m.checkNotNull(paramContext, "context == null"));
     this.mHandler = ((Handler)m.checkNotNull(paramHandler, "handler == null"));
-    this.DF = 0;
+    this.Fw = 0;
   }
   
   f(FragmentActivity paramFragmentActivity)
@@ -39,9 +39,9 @@ public abstract class f<E>
       throw new IllegalStateException("Starting activity with a requestCode requires a FragmentActivity host");
     }
     paramFragment = this.mContext;
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramFragment, paramIntent.aeD(), "android/support/v4/app/FragmentHostCallback", "onStartActivityFromFragment", "(Landroid/support/v4/app/Fragment;Landroid/content/Intent;ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramFragment.startActivity((Intent)paramIntent.lR(0));
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramFragment, paramIntent.ahp(), "android/support/v4/app/FragmentHostCallback", "onStartActivityFromFragment", "(Landroid/support/v4/app/Fragment;Landroid/content/Intent;ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramFragment.startActivity((Intent)paramIntent.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramFragment, "android/support/v4/app/FragmentHostCallback", "onStartActivityFromFragment", "(Landroid/support/v4/app/Fragment;Landroid/content/Intent;ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   
@@ -57,12 +57,12 @@ public abstract class f<E>
   
   public void a(String paramString, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
   
-  public boolean dL()
+  public boolean ea()
   {
     return true;
   }
   
-  public void dM() {}
+  public void eb() {}
   
   void onAttachFragment(Fragment paramFragment) {}
   
@@ -80,7 +80,7 @@ public abstract class f<E>
   
   public int onGetWindowAnimations()
   {
-    return this.DF;
+    return this.Fw;
   }
   
   public boolean onHasView()
@@ -93,7 +93,7 @@ public abstract class f<E>
     return true;
   }
   
-  public boolean r(String paramString)
+  public boolean q(String paramString)
   {
     return false;
   }

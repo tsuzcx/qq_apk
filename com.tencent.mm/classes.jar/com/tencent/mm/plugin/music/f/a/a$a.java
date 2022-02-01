@@ -2,25 +2,25 @@ package com.tencent.mm.plugin.music.f.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 
 final class a$a
   implements c
 {
-  private HashMap<String, Boolean> vgV;
+  private HashMap<String, Boolean> wmq;
   
   private a$a()
   {
     AppMethodBeat.i(137394);
-    this.vgV = new HashMap();
+    this.wmq = new HashMap();
     AppMethodBeat.o(137394);
   }
   
-  public final boolean anI(String paramString)
+  public final boolean asH(String paramString)
   {
     AppMethodBeat.i(137397);
-    if (this.vgV.containsKey(paramString))
+    if (this.wmq.containsKey(paramString))
     {
       AppMethodBeat.o(137397);
       return true;
@@ -32,7 +32,7 @@ final class a$a
   public final String findLibPath(String paramString)
   {
     AppMethodBeat.i(137396);
-    ac.i("MicroMsg.Audio.AudioPlayerUtils", "findLibPath %s", new Object[] { paramString });
+    ad.i("MicroMsg.Audio.AudioPlayerUtils", "findLibPath %s", new Object[] { paramString });
     String str = paramString;
     if (!paramString.startsWith("lib")) {
       str = "lib".concat(String.valueOf(paramString));
@@ -50,17 +50,17 @@ final class a$a
     AppMethodBeat.i(137395);
     if (TextUtils.isEmpty(paramString))
     {
-      ac.e("MicroMsg.Audio.AudioPlayerUtils", "LoadLibrary lib_name is null");
+      ad.e("MicroMsg.Audio.AudioPlayerUtils", "LoadLibrary lib_name is null");
       AppMethodBeat.o(137395);
       return false;
     }
-    if ((this.vgV.containsKey(paramString)) && (((Boolean)this.vgV.get(paramString)).booleanValue()))
+    if ((this.wmq.containsKey(paramString)) && (((Boolean)this.wmq.get(paramString)).booleanValue()))
     {
-      ac.e("MicroMsg.Audio.AudioPlayerUtils", "LoadLibrary lib_name %s is loaded", new Object[] { paramString });
+      ad.e("MicroMsg.Audio.AudioPlayerUtils", "LoadLibrary lib_name %s is loaded", new Object[] { paramString });
       AppMethodBeat.o(137395);
       return true;
     }
-    this.vgV.put(paramString, Boolean.TRUE);
+    this.wmq.put(paramString, Boolean.TRUE);
     System.loadLibrary(paramString);
     AppMethodBeat.o(137395);
     return true;

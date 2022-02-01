@@ -16,14 +16,14 @@ import com.tencent.mm.plugin.fav.a.n;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.ui.FavChatVoiceView;
 import com.tencent.mm.plugin.fav.ui.j;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.ahn;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.akd;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.vfs.i;
@@ -33,40 +33,40 @@ public class FavoriteVoiceDetailUI
   extends BaseFavDetailReportUI
   implements k.a
 {
-  private n qJS;
-  private com.tencent.mm.plugin.fav.a.g qJy;
-  private long qQU;
-  private FavChatVoiceView qRA;
+  private long rAU;
+  private FavChatVoiceView rBA;
+  private com.tencent.mm.plugin.fav.a.g rtA;
+  private n rtU;
   
   public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
   {
     AppMethodBeat.i(107288);
-    this.qJy = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().tH(this.qQU);
-    if (this.qJy == null)
+    this.rtA = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vE(this.rAU);
+    if (this.rtA == null)
     {
-      ac.w("MicroMsg.FavoriteDetailUI", "on notify changed, get fav item info error");
+      ad.w("MicroMsg.FavoriteDetailUI", "on notify changed, get fav item info error");
       finish();
       AppMethodBeat.o(107288);
       return;
     }
-    if (this.qJy.field_itemStatus != 10)
+    if (this.rtA.field_itemStatus != 10)
     {
       AppMethodBeat.o(107288);
       return;
     }
-    if ((paramm == null) || (paramm.GvR == null))
+    if ((paramm == null) || (paramm.IhM == null))
     {
       AppMethodBeat.o(107288);
       return;
     }
-    if (this.qJy.field_favProto.nxC.size() > 0)
+    if (this.rtA.field_favProto.nZa.size() > 0)
     {
-      paramm = b.c(this.qJy);
+      paramm = b.c(this.rtA);
       paramString = b.d(paramm);
-      int i = b.act(paramm.Ezu);
-      ac.i("MicroMsg.FavoriteDetailUI", "on notify changed, favVoiceView.updateInfo");
-      paramm = com.tencent.mm.plugin.fav.ui.m.F(this, (int)b.tx(paramm.duration)).toString();
-      this.qRA.y(paramString, i, paramm);
+      int i = b.agi(paramm.Ghg);
+      ad.i("MicroMsg.FavoriteDetailUI", "on notify changed, favVoiceView.updateInfo");
+      paramm = com.tencent.mm.plugin.fav.ui.m.G(this, (int)b.vu(paramm.duration)).toString();
+      this.rBA.z(paramString, i, paramm);
     }
     AppMethodBeat.o(107288);
   }
@@ -81,11 +81,11 @@ public class FavoriteVoiceDetailUI
     AppMethodBeat.i(107284);
     super.onCreate(paramBundle);
     setMMTitle(getString(2131758856));
-    this.qQU = getIntent().getLongExtra("key_detail_info_id", -1L);
-    this.qJy = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().tH(this.qQU);
-    if (this.qJy == null)
+    this.rAU = getIntent().getLongExtra("key_detail_info_id", -1L);
+    this.rtA = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vE(this.rAU);
+    if (this.rtA == null)
     {
-      ac.w("MicroMsg.FavoriteDetailUI", "get fav item info error");
+      ad.w("MicroMsg.FavoriteDetailUI", "get fav item info error");
       finish();
     }
     for (;;)
@@ -93,19 +93,19 @@ public class FavoriteVoiceDetailUI
       ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().add(this);
       AppMethodBeat.o(107284);
       return;
-      H(this.qJy);
-      this.qJS = new n();
-      this.qRA = ((FavChatVoiceView)findViewById(2131299769));
-      this.qRA.setVoiceHelper(this.qJS);
-      a.a(this, this.qJy);
-      Object localObject = b.c(this.qJy);
-      paramBundle = b.d((agx)localObject);
-      int i = b.act(((agx)localObject).Ezu);
-      if (!i.eA(paramBundle)) {
-        b.m(this.qJy);
+      H(this.rtA);
+      this.rtU = new n();
+      this.rBA = ((FavChatVoiceView)findViewById(2131299769));
+      this.rBA.setVoiceHelper(this.rtU);
+      a.a(this, this.rtA);
+      Object localObject = b.c(this.rtA);
+      paramBundle = b.d((ajn)localObject);
+      int i = b.agi(((ajn)localObject).Ghg);
+      if (!i.fv(paramBundle)) {
+        b.m(this.rtA);
       }
-      localObject = com.tencent.mm.plugin.fav.ui.m.F(this, (int)b.tx(((agx)localObject).duration)).toString();
-      this.qRA.y(paramBundle, i, (String)localObject);
+      localObject = com.tencent.mm.plugin.fav.ui.m.G(this, (int)b.vu(((ajn)localObject).duration)).toString();
+      this.rBA.z(paramBundle, i, (String)localObject);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -122,18 +122,18 @@ public class FavoriteVoiceDetailUI
         {
           AppMethodBeat.i(107283);
           paramAnonymousMenuItem = new e(FavoriteVoiceDetailUI.this.getContext(), 1, false);
-          paramAnonymousMenuItem.ISu = new n.c()
+          paramAnonymousMenuItem.KJy = new n.d()
           {
             public final void onCreateMMMenu(l paramAnonymous2l)
             {
               AppMethodBeat.i(107279);
               paramAnonymous2l.c(0, FavoriteVoiceDetailUI.this.getString(2131758875));
-              paramAnonymous2l.jw(2, 2131758988);
+              paramAnonymous2l.jI(2, 2131758988);
               paramAnonymous2l.c(1, FavoriteVoiceDetailUI.this.getContext().getString(2131755707));
               AppMethodBeat.o(107279);
             }
           };
-          paramAnonymousMenuItem.ISv = new n.d()
+          paramAnonymousMenuItem.KJz = new n.e()
           {
             public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
             {
@@ -149,8 +149,8 @@ public class FavoriteVoiceDetailUI
                 paramAnonymous2MenuItem.putExtra("key_fav_scene", 2);
                 paramAnonymous2MenuItem.putExtra("key_fav_item_id", FavoriteVoiceDetailUI.a(FavoriteVoiceDetailUI.this).field_localId);
                 b.b(FavoriteVoiceDetailUI.this.getContext(), ".ui.FavTagEditUI", paramAnonymous2MenuItem);
-                paramAnonymous2MenuItem = FavoriteVoiceDetailUI.this.qPM;
-                paramAnonymous2MenuItem.qIB += 1;
+                paramAnonymous2MenuItem = FavoriteVoiceDetailUI.this.rzL;
+                paramAnonymous2MenuItem.rsC += 1;
                 AppMethodBeat.o(107282);
                 return;
                 h.a(FavoriteVoiceDetailUI.this.getContext(), FavoriteVoiceDetailUI.this.getString(2131755709), "", new DialogInterface.OnClickListener()
@@ -166,9 +166,9 @@ public class FavoriteVoiceDetailUI
                       public final void run()
                       {
                         AppMethodBeat.i(107280);
-                        FavoriteVoiceDetailUI.this.qPM.qIC = true;
+                        FavoriteVoiceDetailUI.this.rzL.rsD = true;
                         paramAnonymous3DialogInterface.dismiss();
-                        ac.d("MicroMsg.FavoriteDetailUI", "do del fav voice, local id %d, fav id %d", new Object[] { Long.valueOf(l1), Long.valueOf(this.qRF) });
+                        ad.d("MicroMsg.FavoriteDetailUI", "do del fav voice, local id %d, fav id %d", new Object[] { Long.valueOf(l1), Long.valueOf(this.rBF) });
                         FavoriteVoiceDetailUI.this.finish();
                         AppMethodBeat.o(107280);
                       }
@@ -178,11 +178,11 @@ public class FavoriteVoiceDetailUI
                 }, null);
                 AppMethodBeat.o(107282);
                 return;
-                j.a(FavoriteVoiceDetailUI.this, FavoriteVoiceDetailUI.b(FavoriteVoiceDetailUI.this), FavoriteVoiceDetailUI.this.qPM);
+                j.a(FavoriteVoiceDetailUI.this, FavoriteVoiceDetailUI.b(FavoriteVoiceDetailUI.this), FavoriteVoiceDetailUI.this.rzL);
               }
             }
           };
-          paramAnonymousMenuItem.cED();
+          paramAnonymousMenuItem.cMW();
           AppMethodBeat.o(107283);
           return true;
         }
@@ -194,11 +194,11 @@ public class FavoriteVoiceDetailUI
   {
     AppMethodBeat.i(107285);
     super.onDestroy();
-    if (this.qRA != null) {
-      this.qRA.stopPlay();
+    if (this.rBA != null) {
+      this.rBA.stopPlay();
     }
-    if (this.qJS != null) {
-      this.qJS.destroy();
+    if (this.rtU != null) {
+      this.rtU.destroy();
     }
     ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().remove(this);
     AppMethodBeat.o(107285);
@@ -208,7 +208,7 @@ public class FavoriteVoiceDetailUI
   {
     AppMethodBeat.i(107287);
     super.onPause();
-    this.qJS.pause();
+    this.rtU.pause();
     AppMethodBeat.o(107287);
   }
   
@@ -227,7 +227,7 @@ public class FavoriteVoiceDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.detail.FavoriteVoiceDetailUI
  * JD-Core Version:    0.7.0.1
  */

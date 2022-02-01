@@ -10,15 +10,15 @@ import java.util.WeakHashMap;
 
 public final class n
 {
-  public final Set<b> aKY;
-  public final List<b> aKZ;
+  public final Set<b> aMP;
+  public final List<b> aMQ;
   public boolean isPaused;
   
   public n()
   {
     AppMethodBeat.i(77577);
-    this.aKY = Collections.newSetFromMap(new WeakHashMap());
-    this.aKZ = new ArrayList();
+    this.aMP = Collections.newSetFromMap(new WeakHashMap());
+    this.aMQ = new ArrayList();
     AppMethodBeat.o(77577);
   }
   
@@ -31,9 +31,9 @@ public final class n
       AppMethodBeat.o(77578);
       return true;
     }
-    boolean bool3 = this.aKY.remove(paramb);
+    boolean bool3 = this.aMP.remove(paramb);
     boolean bool1 = bool2;
-    if (!this.aKZ.remove(paramb)) {
+    if (!this.aMQ.remove(paramb)) {
       if (!bool3) {
         break label82;
       }
@@ -56,7 +56,7 @@ public final class n
   public final String toString()
   {
     AppMethodBeat.i(77579);
-    String str = super.toString() + "{numRequests=" + this.aKY.size() + ", isPaused=" + this.isPaused + "}";
+    String str = super.toString() + "{numRequests=" + this.aMP.size() + ", isPaused=" + this.isPaused + "}";
     AppMethodBeat.o(77579);
     return str;
   }

@@ -14,14 +14,14 @@ import java.util.List;
 
 public final class e
 {
-  private static final List<WeakReference<ControlBoardPanel>> mPW;
-  private static final ControlBoardPanel.a mPX;
+  private static final List<WeakReference<ControlBoardPanel>> nqv;
+  private static final ControlBoardPanel.a nqw;
   
   static
   {
     AppMethodBeat.i(121642);
-    mPW = new LinkedList();
-    mPX = new ControlBoardPanel.a()
+    nqv = new LinkedList();
+    nqw = new ControlBoardPanel.a()
     {
       public final void a(ControlBoardPanel paramAnonymousControlBoardPanel, boolean paramAnonymousBoolean)
       {
@@ -43,9 +43,9 @@ public final class e
     if (paramContext != null)
     {
       i = 0;
-      if (i < mPW.size())
+      if (i < nqv.size())
       {
-        localObject = (WeakReference)mPW.get(i);
+        localObject = (WeakReference)nqv.get(i);
         if (localObject != null)
         {
           localObject = (ControlBoardPanel)((WeakReference)localObject).get();
@@ -56,28 +56,28 @@ public final class e
               break label242;
             }
             paramContext = new ControlBoardPanel(paramContext);
-            mPW.add(new WeakReference(paramContext));
+            nqv.add(new WeakReference(paramContext));
           }
         }
       }
     }
     for (;;)
     {
-      localObject = mPX;
-      if (!paramContext.mQg)
+      localObject = nqw;
+      if (!paramContext.nqF)
       {
-        paramContext.mQg = true;
+        paramContext.nqF = true;
         Activity localActivity = (Activity)paramContext.getContext();
-        paramContext.mQf = new WindowManager.LayoutParams(-2, -2, 1003, 520, -3);
-        paramContext.mQf.y = a.u(localActivity);
-        paramContext.mQf.token = localActivity.getWindow().getDecorView().getWindowToken();
-        paramContext.mQf.gravity = 51;
-        paramContext.mQf.softInputMode = 16;
-        paramContext.mQe.addView(paramContext, paramContext.mQf);
+        paramContext.nqE = new WindowManager.LayoutParams(-2, -2, 1003, 520, -3);
+        paramContext.nqE.y = a.u(localActivity);
+        paramContext.nqE.token = localActivity.getWindow().getDecorView().getWindowToken();
+        paramContext.nqE.gravity = 51;
+        paramContext.nqE.softInputMode = 16;
+        paramContext.nqD.addView(paramContext, paramContext.nqE);
         paramContext.reset();
-        paramContext.mPX = ((ControlBoardPanel.a)localObject);
-        if (paramContext.mPX != null) {
-          paramContext.mPX.a(paramContext, true);
+        paramContext.nqw = ((ControlBoardPanel.a)localObject);
+        if (paramContext.nqw != null) {
+          paramContext.nqw.a(paramContext, true);
         }
       }
       AppMethodBeat.o(121640);

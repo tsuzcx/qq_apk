@@ -9,162 +9,166 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.live.b.g;
-import com.tencent.mm.protocal.protobuf.bqd;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.buq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/plugin/LiveReadyPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "COUNT_DOWN_END", "", "COUNT_DOWN_START", "cancelBtn", "Landroid/widget/Button;", "kotlin.jvm.PlatformType", "countDownTv", "Landroid/widget/TextView;", "curCountDown", "timerHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "onBackPress", "", "reset", "", "setTextWithAnim", "setVisible", "visible", "startCountDown", "startLive", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stopCountDown", "unMount", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveReadyPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "COUNT_DOWN_END", "", "COUNT_DOWN_START", "cancelBtn", "Landroid/widget/Button;", "kotlin.jvm.PlatformType", "countDownTv", "Landroid/widget/TextView;", "curCountDown", "timerHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "onBackPress", "", "reset", "", "setTextWithAnim", "setVisible", "visible", "startCountDown", "startLive", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stopCountDown", "unMount", "plugin-logic_release"})
 public final class aq
   extends a
 {
-  private final int gCW;
-  final int gCX;
-  private final Button gCY;
-  private final TextView gCZ;
-  int gDa;
-  final b gzb;
-  final au timerHandler;
+  final b gSM;
+  private final int gWG;
+  final int gWH;
+  private final Button gWI;
+  private final TextView gWJ;
+  int gWK;
+  final av timerHandler;
   
   public aq(ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(190273);
-    this.gzb = paramb;
-    this.gCW = 3;
-    this.gCY = ((Button)paramViewGroup.findViewById(2131307722));
-    this.gCZ = ((TextView)paramViewGroup.findViewById(2131307724));
-    this.gDa = this.gCW;
-    this.timerHandler = new au((au.a)new a(this), true);
-    this.gCY.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    AppMethodBeat.i(212563);
+    this.gSM = paramb;
+    this.gWG = 3;
+    this.gWI = ((Button)paramViewGroup.findViewById(2131307722));
+    this.gWJ = ((TextView)paramViewGroup.findViewById(2131307724));
+    this.gWK = this.gWG;
+    this.timerHandler = new av((av.a)new a(this), true);
+    this.gWI.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(190264);
-        this.gDb.timerHandler.stopTimer();
-        this.gDb.reset();
-        paramAnonymousView = g.guG;
-        g.a(new bqd());
-        b.b.a(this.gDb.gzb, b.c.gxG);
-        b.b.a(this.gDb.gzb, b.c.gyA);
-        AppMethodBeat.o(190264);
+        AppMethodBeat.i(212554);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveReadyPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        this.gWL.timerHandler.stopTimer();
+        this.gWL.reset();
+        paramAnonymousView = g.gOr;
+        g.a(new buq());
+        b.b.a(this.gWL.gSM, b.c.gRr);
+        b.b.a(this.gWL.gSM, b.c.gSl);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveReadyPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(212554);
       }
     });
-    AppMethodBeat.o(190273);
+    AppMethodBeat.o(212563);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(190270);
-    k.h(paramc, "status");
+    AppMethodBeat.i(212560);
+    p.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (ar.cfA[paramc.ordinal()])
+    switch (ar.cpQ[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(190270);
+      AppMethodBeat.o(212560);
       return;
-      nj(0);
-      amf();
-      this.timerHandler.au(1000L, 1000L);
-      AppMethodBeat.o(190270);
+      nI(0);
+      aoS();
+      this.timerHandler.az(1000L, 1000L);
+      AppMethodBeat.o(212560);
       return;
-      nj(8);
-      AppMethodBeat.o(190270);
+      nI(8);
+      AppMethodBeat.o(212560);
       return;
-      paramc = g.guG;
-      g.dM(true);
-      com.tencent.mm.live.d.a.amx();
+      paramc = g.gOr;
+      g.dO(true);
+      com.tencent.mm.live.d.a.apk();
     }
   }
   
-  public final void alN()
+  public final void aoA()
   {
-    AppMethodBeat.i(190271);
+    AppMethodBeat.i(212561);
     this.timerHandler.stopTimer();
     reset();
-    AppMethodBeat.o(190271);
+    AppMethodBeat.o(212561);
   }
   
-  public final boolean alO()
+  public final boolean aoB()
   {
-    AppMethodBeat.i(190272);
-    if (this.gnb.getVisibility() == 0)
+    AppMethodBeat.i(212562);
+    if (this.gGK.getVisibility() == 0)
     {
       this.timerHandler.stopTimer();
       reset();
-      g localg = g.guG;
-      g.a(new bqd());
-      b.b.a(this.gzb, b.c.gxG);
-      AppMethodBeat.o(190272);
+      g localg = g.gOr;
+      g.a(new buq());
+      b.b.a(this.gSM, b.c.gRr);
+      AppMethodBeat.o(212562);
       return true;
     }
-    AppMethodBeat.o(190272);
+    AppMethodBeat.o(212562);
     return false;
   }
   
-  final void amf()
+  final void aoS()
   {
-    AppMethodBeat.i(190268);
-    TextView localTextView = this.gCZ;
-    k.g(localTextView, "countDownTv");
-    localTextView.setText((CharSequence)String.valueOf(this.gDa));
-    localTextView = this.gCZ;
-    k.g(localTextView, "countDownTv");
+    AppMethodBeat.i(212558);
+    TextView localTextView = this.gWJ;
+    p.g(localTextView, "countDownTv");
+    localTextView.setText((CharSequence)String.valueOf(this.gWK));
+    localTextView = this.gWJ;
+    p.g(localTextView, "countDownTv");
     localTextView.setScaleX(1.5F);
-    localTextView = this.gCZ;
-    k.g(localTextView, "countDownTv");
+    localTextView = this.gWJ;
+    p.g(localTextView, "countDownTv");
     localTextView.setScaleY(1.5F);
-    this.gCZ.animate().scaleX(1.0F).scaleY(1.0F).setDuration(200L).start();
-    AppMethodBeat.o(190268);
+    this.gWJ.animate().scaleX(1.0F).scaleY(1.0F).setDuration(200L).start();
+    AppMethodBeat.o(212558);
   }
   
-  public final void nj(int paramInt)
+  public final void nI(int paramInt)
   {
-    AppMethodBeat.i(190269);
-    super.nj(paramInt);
+    AppMethodBeat.i(212559);
+    super.nI(paramInt);
     if ((paramInt == 8) || (paramInt == 4))
     {
       this.timerHandler.stopTimer();
       reset();
     }
-    AppMethodBeat.o(190269);
+    AppMethodBeat.o(212559);
   }
   
   final void reset()
   {
-    AppMethodBeat.i(190267);
-    TextView localTextView = this.gCZ;
-    k.g(localTextView, "countDownTv");
+    AppMethodBeat.i(212557);
+    TextView localTextView = this.gWJ;
+    p.g(localTextView, "countDownTv");
     localTextView.setScaleX(1.0F);
-    localTextView = this.gCZ;
-    k.g(localTextView, "countDownTv");
+    localTextView = this.gWJ;
+    p.g(localTextView, "countDownTv");
     localTextView.setScaleY(1.0F);
-    this.gDa = this.gCW;
-    AppMethodBeat.o(190267);
+    this.gWK = this.gWG;
+    AppMethodBeat.o(212557);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onTimerExpired"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onTimerExpired"})
   static final class a
-    implements au.a
+    implements av.a
   {
     a(aq paramaq) {}
     
     public final boolean onTimerExpired()
     {
-      AppMethodBeat.i(190266);
-      if (this.gDb.gDa > this.gDb.gCX)
+      AppMethodBeat.i(212556);
+      if (this.gWL.gWK > this.gWL.gWH)
       {
-        aq localaq = this.gDb;
-        localaq.gDa -= 1;
-        this.gDb.amf();
-        AppMethodBeat.o(190266);
+        aq localaq = this.gWL;
+        localaq.gWK -= 1;
+        this.gWL.aoS();
+        AppMethodBeat.o(212556);
         return true;
       }
-      b.b.a(this.gDb.gzb, b.c.gyD);
-      AppMethodBeat.o(190266);
+      b.b.a(this.gWL.gSM, b.c.gSo);
+      AppMethodBeat.o(212556);
       return false;
     }
   }

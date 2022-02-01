@@ -1,13 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory />
-    <CheckBoxPreference android:key="expt_total_flag" android:layout="@layout/aop" android:persistent="false" android:title="@string/bvh" />
-    <CheckBoxPreference android:key="expt_open_tp_player_flag" android:layout="@layout/aop" android:persistent="false" android:title="@string/hhk" />
-    <PreferenceCategory />
-    <CheckBoxPreference android:key="expt_close_preload_flag" android:layout="@layout/aop" android:persistent="false" android:title="@string/hsm" />
-    <PreferenceCategory />
-    <CheckBoxPreference android:key="expt_reset_template_flag" android:layout="@layout/aop" android:persistent="false" android:title="@string/hsn" />
-    <PreferenceCategory />
-    <CheckBoxPreference android:key="expt_apply_local_template" android:layout="@layout/aop" android:persistent="false" android:title="@string/bve" />
-    <PreferenceCategory />
-</PreferenceScreen>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />

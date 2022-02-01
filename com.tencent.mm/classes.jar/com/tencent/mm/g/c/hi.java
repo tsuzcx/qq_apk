@@ -8,43 +8,22 @@ public abstract class hi
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eIk;
-  private static final int emY = "createTime".hashCode();
-  private static final int epe;
-  private static final int fkB = "RecordId".hashCode();
-  private static final int fkC = "AppId".hashCode();
-  private static final int fkD = "AppName".hashCode();
-  private static final int fkE;
-  private static final int fkF;
-  private static final int fkG;
+  private static final int fBu = "jsExceptionCount".hashCode();
+  private static final int fBv = "crashCount".hashCode();
+  private static final int fBw = "beginTimestamp".hashCode();
+  private static final int fBx = "pkgVersion".hashCode();
+  private static final int fnB = "appid".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eIc;
-  private boolean emB;
-  private boolean eoZ;
-  public String field_AppId;
-  public String field_AppName;
-  public String field_BriefIntro;
-  public String field_IconUrl;
-  public String field_RecordId;
-  public String field_UserName;
-  public long field_createTime;
-  public int field_debugType;
-  public boolean field_isSync;
-  private boolean fkA;
-  private boolean fkv;
-  private boolean fkw;
-  private boolean fkx;
-  private boolean fky;
-  private boolean fkz;
-  
-  static
-  {
-    eIk = "UserName".hashCode();
-    fkE = "IconUrl".hashCode();
-    fkF = "BriefIntro".hashCode();
-    fkG = "isSync".hashCode();
-    epe = "debugType".hashCode();
-  }
+  private boolean fBq = true;
+  private boolean fBr = true;
+  private boolean fBs = true;
+  private boolean fBt = true;
+  public String field_appid;
+  public long field_beginTimestamp;
+  public int field_crashCount;
+  public int field_jsExceptionCount;
+  public int field_pkgVersion;
+  private boolean fnz = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -52,18 +31,18 @@ public abstract class hi
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fkB != k) {
+      if (fnB != k) {
         break label65;
       }
-      this.field_RecordId = paramCursor.getString(i);
-      this.fkv = true;
+      this.field_appid = paramCursor.getString(i);
+      this.fnz = true;
     }
     for (;;)
     {
@@ -71,44 +50,16 @@ public abstract class hi
       break label20;
       break;
       label65:
-      if (fkC == k)
-      {
-        this.field_AppId = paramCursor.getString(i);
-      }
-      else if (fkD == k)
-      {
-        this.field_AppName = paramCursor.getString(i);
-      }
-      else if (eIk == k)
-      {
-        this.field_UserName = paramCursor.getString(i);
-      }
-      else if (fkE == k)
-      {
-        this.field_IconUrl = paramCursor.getString(i);
-      }
-      else if (fkF == k)
-      {
-        this.field_BriefIntro = paramCursor.getString(i);
-      }
-      else
-      {
-        if (fkG == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_isSync = bool;
-            break;
-          }
-        }
-        if (epe == k) {
-          this.field_debugType = paramCursor.getInt(i);
-        } else if (emY == k) {
-          this.field_createTime = paramCursor.getLong(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      if (fBu == k) {
+        this.field_jsExceptionCount = paramCursor.getInt(i);
+      } else if (fBv == k) {
+        this.field_crashCount = paramCursor.getInt(i);
+      } else if (fBw == k) {
+        this.field_beginTimestamp = paramCursor.getLong(i);
+      } else if (fBx == k) {
+        this.field_pkgVersion = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -116,32 +67,20 @@ public abstract class hi
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fkv) {
-      localContentValues.put("RecordId", this.field_RecordId);
+    if (this.fnz) {
+      localContentValues.put("appid", this.field_appid);
     }
-    if (this.fkw) {
-      localContentValues.put("AppId", this.field_AppId);
+    if (this.fBq) {
+      localContentValues.put("jsExceptionCount", Integer.valueOf(this.field_jsExceptionCount));
     }
-    if (this.fkx) {
-      localContentValues.put("AppName", this.field_AppName);
+    if (this.fBr) {
+      localContentValues.put("crashCount", Integer.valueOf(this.field_crashCount));
     }
-    if (this.eIc) {
-      localContentValues.put("UserName", this.field_UserName);
+    if (this.fBs) {
+      localContentValues.put("beginTimestamp", Long.valueOf(this.field_beginTimestamp));
     }
-    if (this.fky) {
-      localContentValues.put("IconUrl", this.field_IconUrl);
-    }
-    if (this.fkz) {
-      localContentValues.put("BriefIntro", this.field_BriefIntro);
-    }
-    if (this.fkA) {
-      localContentValues.put("isSync", Boolean.valueOf(this.field_isSync));
-    }
-    if (this.eoZ) {
-      localContentValues.put("debugType", Integer.valueOf(this.field_debugType));
-    }
-    if (this.emB) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.fBt) {
+      localContentValues.put("pkgVersion", Integer.valueOf(this.field_pkgVersion));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

@@ -1,20 +1,20 @@
 package com.tencent.mm.sticker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/StickerElement;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "active", "", "getActive", "()I", "setActive", "(I)V", "adjust", "", "getAdjust", "()Z", "setAdjust", "(Z)V", "len", "getLen", "setLen", "name", "", "getName", "()Ljava/lang/String;", "setName", "(Ljava/lang/String;)V", "pendantType", "getPendantType", "setPendantType", "pos", "", "getPos", "()[D", "setPos", "([D)V", "segment", "getSegment", "setSegment", "fromJson", "jsonObj", "Lorg/json/JSONObject;", "toJson", "plugin-sticker_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/StickerElement;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "active", "", "getActive", "()I", "setActive", "(I)V", "adjust", "", "getAdjust", "()Z", "setAdjust", "(Z)V", "len", "getLen", "setLen", "name", "", "getName", "()Ljava/lang/String;", "setName", "(Ljava/lang/String;)V", "pendantType", "getPendantType", "setPendantType", "pos", "", "getPos", "()[D", "setPos", "([D)V", "segment", "getSegment", "setSegment", "fromJson", "jsonObj", "Lorg/json/JSONObject;", "toJson", "plugin-sticker_release"})
 public final class d
   extends a
 {
-  public int GzR;
-  private int GzS;
-  int GzT;
-  private boolean GzU;
-  private double[] GzV;
+  public int IlL;
+  private int IlM;
+  int IlN;
+  private boolean IlO;
+  private double[] IlP;
   private int len;
   private String name;
   
@@ -22,27 +22,27 @@ public final class d
   {
     AppMethodBeat.i(105892);
     this.name = "";
-    this.GzR = -1;
-    this.GzS = -1;
-    this.GzV = new double[0];
+    this.IlL = -1;
+    this.IlM = -1;
+    this.IlP = new double[0];
     AppMethodBeat.o(105892);
   }
   
-  public final a by(JSONObject paramJSONObject)
+  public final a bH(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(105890);
-    k.h(paramJSONObject, "jsonObj");
+    p.h(paramJSONObject, "jsonObj");
     this.len = paramJSONObject.optInt("len");
-    this.GzR = paramJSONObject.optInt("active", this.GzR);
-    this.GzS = paramJSONObject.optInt("segtype", this.GzS);
-    this.GzT = paramJSONObject.optInt("pendant_type", this.GzT);
-    this.GzU = paramJSONObject.optBoolean("adjust", this.GzU);
+    this.IlL = paramJSONObject.optInt("active", this.IlL);
+    this.IlM = paramJSONObject.optInt("segtype", this.IlM);
+    this.IlN = paramJSONObject.optInt("pendant_type", this.IlN);
+    this.IlO = paramJSONObject.optBoolean("adjust", this.IlO);
     Object localObject = paramJSONObject.optJSONArray("pos");
     if (localObject != null) {}
-    for (localObject = b.P((JSONArray)localObject);; localObject = this.GzV)
+    for (localObject = b.Q((JSONArray)localObject);; localObject = this.IlP)
     {
-      this.GzV = ((double[])localObject);
-      paramJSONObject = super.by(paramJSONObject);
+      this.IlP = ((double[])localObject);
+      paramJSONObject = super.bH(paramJSONObject);
       AppMethodBeat.o(105890);
       return paramJSONObject;
     }
@@ -51,7 +51,7 @@ public final class d
   public final void setName(String paramString)
   {
     AppMethodBeat.i(105889);
-    k.h(paramString, "<set-?>");
+    p.h(paramString, "<set-?>");
     this.name = paramString;
     AppMethodBeat.o(105889);
   }
@@ -61,12 +61,12 @@ public final class d
     AppMethodBeat.i(105891);
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("len", this.len);
-    localJSONObject.put("active", this.GzR);
-    if ((this.GzS >= 0) || (this.GzT == 2)) {
+    localJSONObject.put("active", this.IlL);
+    if ((this.IlM >= 0) || (this.IlN == 2)) {
       localJSONObject.put("segtype", 0);
     }
-    localJSONObject.put("pos", b.c(this.GzV));
-    if ((this.GzT == 1) || (this.GzT == 2)) {
+    localJSONObject.put("pos", b.c(this.IlP));
+    if ((this.IlN == 1) || (this.IlN == 2)) {
       localJSONObject.put("adjust", true);
     }
     AppMethodBeat.o(105891);

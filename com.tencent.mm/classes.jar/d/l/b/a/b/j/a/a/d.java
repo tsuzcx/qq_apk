@@ -1,8 +1,8 @@
 package d.l.b.a.b.j.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
-import d.g.b.l;
+import d.g.b.p;
+import d.g.b.q;
 import d.l.b.a.b.b.as;
 import d.l.b.a.b.m.ab;
 import d.l.b.a.b.m.ae;
@@ -18,22 +18,22 @@ public final class d
   static final av a(av paramav, as paramas)
   {
     AppMethodBeat.i(60037);
-    if ((paramas == null) || (paramav.gcC() == bh.LLV))
+    if ((paramas == null) || (paramav.gud() == bh.NCP))
     {
       AppMethodBeat.o(60037);
       return paramav;
     }
-    if (paramas.fRg() == paramav.gcC())
+    if (paramas.giF() == paramav.gud())
     {
-      if (paramav.gcB())
+      if (paramav.guc())
       {
-        paramas = d.l.b.a.b.l.b.LJP;
-        k.g(paramas, "LockBasedStorageManager.NO_LOCKS");
+        paramas = d.l.b.a.b.l.b.NAN;
+        p.g(paramas, "LockBasedStorageManager.NO_LOCKS");
         paramav = (av)new ax((ab)new ae(paramas, (d.g.a.a)new a(paramav)));
         AppMethodBeat.o(60037);
         return paramav;
       }
-      paramav = (av)new ax(paramav.fRV());
+      paramav = (av)new ax(paramav.gju());
       AppMethodBeat.o(60037);
       return paramav;
     }
@@ -45,8 +45,8 @@ public final class d
   public static final boolean ae(ab paramab)
   {
     AppMethodBeat.i(60035);
-    k.h(paramab, "$this$isCaptured");
-    boolean bool = paramab.gbz() instanceof b;
+    p.h(paramab, "$this$isCaptured");
+    boolean bool = paramab.gsZ() instanceof b;
     AppMethodBeat.o(60035);
     return bool;
   }
@@ -54,14 +54,14 @@ public final class d
   private static ab b(av paramav)
   {
     AppMethodBeat.i(60034);
-    k.h(paramav, "typeProjection");
+    p.h(paramav, "typeProjection");
     paramav = (ab)new a(paramav);
     AppMethodBeat.o(60034);
     return paramav;
   }
   
   static final class a
-    extends l
+    extends q
     implements d.g.a.a<ab>
   {
     a(av paramav)
@@ -82,11 +82,11 @@ public final class d
     {
       Object localObject = null;
       AppMethodBeat.i(60033);
-      k.h(paramab, "key");
+      p.h(paramab, "key");
       av localav = super.O(paramab);
       if (localav != null)
       {
-        paramab = paramab.gbz().fQq();
+        paramab = paramab.gsZ().ghO();
         if ((paramab instanceof as)) {
           break label65;
         }
@@ -103,15 +103,15 @@ public final class d
       }
     }
     
-    public final boolean gbB()
+    public final boolean gtb()
     {
-      return this.LFr;
+      return this.Nwp;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.a.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.label;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.oq;
-import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.oz;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
 
 public final class d
-  extends com.tencent.mm.sdk.b.c<oq>
+  extends com.tencent.mm.sdk.b.c<oz>
 {
   public d()
   {
     AppMethodBeat.i(161391);
-    this.__eventId = oq.class.getName().hashCode();
+    this.__eventId = oz.class.getName().hashCode();
     AppMethodBeat.o(161391);
   }
   
-  private static boolean aGM()
+  private static boolean aJX()
   {
     AppMethodBeat.i(26134);
-    az.ayM();
-    long l = ((Long)com.tencent.mm.model.c.agA().get(209408, Long.valueOf(0L))).longValue();
+    ba.aBQ();
+    long l = ((Long)com.tencent.mm.model.c.ajl().get(209408, Long.valueOf(0L))).longValue();
     if (System.currentTimeMillis() - l > 86400000L) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        ac.i("MicroMsg.Label.PostTaskGetContactLabelListener", "cpan[callback] get contact label list.");
-        az.agi().a(new com.tencent.mm.plugin.label.b.c(), 0);
-        az.ayM();
-        com.tencent.mm.model.c.agA().set(209408, Long.valueOf(System.currentTimeMillis() - 86400000L + 1800000L));
+        ad.i("MicroMsg.Label.PostTaskGetContactLabelListener", "cpan[callback] get contact label list.");
+        ba.aiU().a(new com.tencent.mm.plugin.label.b.c(), 0);
+        ba.aBQ();
+        com.tencent.mm.model.c.ajl().set(209408, Long.valueOf(System.currentTimeMillis() - 86400000L + 1800000L));
       }
       AppMethodBeat.o(26134);
       return false;

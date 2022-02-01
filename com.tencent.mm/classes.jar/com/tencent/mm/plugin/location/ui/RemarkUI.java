@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cs;
-import com.tencent.mm.g.a.cs.a;
+import com.tencent.mm.g.a.cv;
+import com.tencent.mm.g.a.cv.a;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.tools.MMTextInputUI;
 
 public class RemarkUI
@@ -28,15 +28,15 @@ public class RemarkUI
     label150:
     for (paramCharSequence = "";; paramCharSequence = paramCharSequence.toString())
     {
-      ac.i("MicroMsg.MMTextInputUI", "same remark[%s]", new Object[] { paramCharSequence });
+      ad.i("MicroMsg.MMTextInputUI", "same remark[%s]", new Object[] { paramCharSequence });
       if (!paramCharSequence.equals(getIntent().getStringExtra("kRemark")))
       {
-        cs localcs = new cs();
-        localcs.dck.type = -2;
-        localcs.dck.dbZ = Long.toString(l);
-        localcs.dck.desc = paramCharSequence;
-        ac.d("MicroMsg.MMTextInputUI", "update location remark, favlocalid is %s, remark is %s", new Object[] { localcs.dck.dbZ, localcs.dck.desc });
-        a.GpY.l(localcs);
+        cv localcv = new cv();
+        localcv.dnG.type = -2;
+        localcv.dnG.dnv = Long.toString(l);
+        localcv.dnG.desc = paramCharSequence;
+        ad.d("MicroMsg.MMTextInputUI", "update location remark, favlocalid is %s, remark is %s", new Object[] { localcv.dnG.dnv, localcv.dnG.desc });
+        a.IbL.l(localcv);
       }
       AppMethodBeat.o(55884);
       return;
@@ -54,7 +54,7 @@ public class RemarkUI
     super.onCreate(paramBundle);
     setMMTitle(2131760726);
     paramBundle = getIntent().getStringExtra("Kwebmap_locaion");
-    if (bs.isNullOrNil(paramBundle))
+    if (bt.isNullOrNil(paramBundle))
     {
       findViewById(2131301528).setVisibility(8);
       AppMethodBeat.o(55883);
@@ -72,7 +72,7 @@ public class RemarkUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.RemarkUI
  * JD-Core Version:    0.7.0.1
  */

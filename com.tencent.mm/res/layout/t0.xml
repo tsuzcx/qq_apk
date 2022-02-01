@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
         <ImageView android:id="@id/gb6" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" />
-        <TextView android:textSize="@dimen/bf" android:textColor="?i" android:ellipsize="end" android:id="@id/gbs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:maxLines="1" android:layout_toRightOf="@id/gb6" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/bf" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/gbs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:maxLines="1" android:layout_toRightOf="@id/gb6" android:layout_centerVertical="true" />
     </RelativeLayout>
     <ImageView android:layout_gravity="center|right" android:id="@id/cpf" android:padding="@dimen/jn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrows_down" />
 </LinearLayout>

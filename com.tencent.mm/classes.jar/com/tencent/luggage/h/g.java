@@ -7,9 +7,9 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ab;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -17,26 +17,26 @@ import java.util.Enumeration;
 
 public final class g
 {
-  public static String DS()
+  public static String Fs()
   {
     i = 0;
-    AppMethodBeat.i(200929);
+    AppMethodBeat.i(187602);
     try
     {
-      int j = ab.Yu();
+      int j = ab.aaW();
       i = j;
     }
     catch (Exception localException1)
     {
       for (;;)
       {
-        ac.e("Luggage.LuggageNetUtil", "getSelfIp, call NetworkDetailInfo.getNetType(), exp = %s", new Object[] { localException1 });
+        ad.e("Luggage.LuggageNetUtil", "getSelfIp, call NetworkDetailInfo.getNetType(), exp = %s", new Object[] { localException1 });
       }
       if (i != 1) {
         break label63;
       }
-      Object localObject1 = aD(ai.getContext());
-      AppMethodBeat.o(200929);
+      Object localObject1 = aD(aj.getContext());
+      AppMethodBeat.o(187602);
       return localObject1;
       InetAddress localInetAddress;
       try
@@ -58,38 +58,38 @@ public final class g
           }
           localInetAddress = (InetAddress)((Enumeration)localObject2).nextElement();
         } while ((localInetAddress == null) || (localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
-        if (bs.isNullOrNil(localInetAddress.getHostAddress()))
+        if (bt.isNullOrNil(localInetAddress.getHostAddress()))
         {
-          AppMethodBeat.o(200929);
+          AppMethodBeat.o(187602);
           return "127.0.0.1";
         }
       }
       catch (Exception localException2)
       {
-        AppMethodBeat.o(200929);
+        AppMethodBeat.o(187602);
         return "127.0.0.1";
       }
       String str = localInetAddress.getHostAddress();
-      AppMethodBeat.o(200929);
+      AppMethodBeat.o(187602);
       return str;
     }
     if (i == 0)
     {
-      AppMethodBeat.o(200929);
+      AppMethodBeat.o(187602);
       return "127.0.0.1";
     }
   }
   
   public static String aD(Context paramContext)
   {
-    AppMethodBeat.i(200928);
+    AppMethodBeat.i(187601);
     paramContext = (WifiManager)paramContext.getSystemService("wifi");
     try
     {
       paramContext = paramContext.getConnectionInfo();
       if (paramContext == null)
       {
-        AppMethodBeat.o(200928);
+        AppMethodBeat.o(187601);
         return "127.0.0.1";
       }
     }
@@ -101,14 +101,14 @@ public final class g
       }
       int i = paramContext.getIpAddress();
       paramContext = String.format("%d.%d.%d.%d", new Object[] { Integer.valueOf(i & 0xFF), Integer.valueOf(i >> 8 & 0xFF), Integer.valueOf(i >> 16 & 0xFF), Integer.valueOf(i >> 24 & 0xFF) });
-      AppMethodBeat.o(200928);
+      AppMethodBeat.o(187601);
     }
     return paramContext;
   }
   
   public static boolean aE(Context paramContext)
   {
-    AppMethodBeat.i(200930);
+    AppMethodBeat.i(187603);
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
     if (paramContext != null)
     {
@@ -117,7 +117,7 @@ public final class g
     }
     for (boolean bool = paramContext.isConnected();; bool = false)
     {
-      AppMethodBeat.o(200930);
+      AppMethodBeat.o(187603);
       return bool;
     }
   }

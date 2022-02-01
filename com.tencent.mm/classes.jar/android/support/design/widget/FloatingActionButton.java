@@ -36,20 +36,20 @@ public class FloatingActionButton
   implements android.support.design.c.a, android.support.v4.view.s, android.support.v4.widget.s
 {
   private int borderWidth;
-  private PorterDuff.Mode fP;
-  private ColorStateList fQ;
-  private ColorStateList fS;
-  private ColorStateList pf;
-  private PorterDuff.Mode pg;
-  private int ph;
-  private int pi;
-  private int pj;
-  boolean pk;
-  final Rect pl = new Rect();
-  private final Rect pm = new Rect();
-  private final android.support.v7.widget.i pn;
-  private final c po;
-  private h pp;
+  private PorterDuff.Mode hG;
+  private ColorStateList hH;
+  private ColorStateList hJ;
+  private ColorStateList qY;
+  private PorterDuff.Mode qZ;
+  private int ra;
+  private int rb;
+  private int rc;
+  boolean rd;
+  final Rect re = new Rect();
+  private final Rect rf = new Rect();
+  private final android.support.v7.widget.i rg;
+  private final c rh;
+  private h ri;
   private int size;
   
   public FloatingActionButton(Context paramContext, AttributeSet paramAttributeSet)
@@ -61,36 +61,36 @@ public class FloatingActionButton
   {
     super(paramContext, paramAttributeSet, paramInt);
     TypedArray localTypedArray = android.support.design.internal.f.a(paramContext, paramAttributeSet, a.a.FloatingActionButton, paramInt, 2131821637, new int[0]);
-    this.fQ = android.support.design.d.a.b(paramContext, localTypedArray, 0);
-    this.fP = android.support.design.internal.g.a(localTypedArray.getInt(1, -1), null);
-    this.fS = android.support.design.d.a.b(paramContext, localTypedArray, 10);
+    this.hH = android.support.design.d.a.b(paramContext, localTypedArray, 0);
+    this.hG = android.support.design.internal.g.a(localTypedArray.getInt(1, -1), null);
+    this.hJ = android.support.design.d.a.b(paramContext, localTypedArray, 10);
     this.size = localTypedArray.getInt(5, -1);
-    this.ph = localTypedArray.getDimensionPixelSize(4, 0);
+    this.ra = localTypedArray.getDimensionPixelSize(4, 0);
     this.borderWidth = localTypedArray.getDimensionPixelSize(2, 0);
     float f1 = localTypedArray.getDimension(3, 0.0F);
     float f2 = localTypedArray.getDimension(7, 0.0F);
     float f3 = localTypedArray.getDimension(9, 0.0F);
-    this.pk = localTypedArray.getBoolean(12, false);
-    this.pj = localTypedArray.getDimensionPixelSize(8, 0);
+    this.rd = localTypedArray.getBoolean(12, false);
+    this.rc = localTypedArray.getDimensionPixelSize(8, 0);
     android.support.design.a.h localh = android.support.design.a.h.a(paramContext, localTypedArray, 11);
     paramContext = android.support.design.a.h.a(paramContext, localTypedArray, 6);
     localTypedArray.recycle();
-    this.pn = new android.support.v7.widget.i(this);
-    this.pn.a(paramAttributeSet, paramInt);
-    this.po = new c(this);
-    getImpl().a(this.fQ, this.fP, this.fS, this.borderWidth);
+    this.rg = new android.support.v7.widget.i(this);
+    this.rg.a(paramAttributeSet, paramInt);
+    this.rh = new c(this);
+    getImpl().a(this.hH, this.hG, this.hJ, this.borderWidth);
     getImpl().setElevation(f1);
-    getImpl().r(f2);
-    getImpl().s(f3);
+    getImpl().p(f2);
+    getImpl().q(f3);
     paramAttributeSet = getImpl();
-    paramInt = this.pj;
-    if (paramAttributeSet.pj != paramInt)
+    paramInt = this.rc;
+    if (paramAttributeSet.rc != paramInt)
     {
-      paramAttributeSet.pj = paramInt;
-      paramAttributeSet.ck();
+      paramAttributeSet.rc = paramInt;
+      paramAttributeSet.cA();
     }
-    getImpl().gP = localh;
-    getImpl().gQ = paramContext;
+    getImpl().iK = localh;
+    getImpl().iL = paramContext;
     setScaleType(ImageView.ScaleType.MATRIX);
   }
   
@@ -102,19 +102,19 @@ public class FloatingActionButton
     new h.d() {};
   }
   
-  private void ci()
+  private void cy()
   {
     Drawable localDrawable = getDrawable();
     if (localDrawable == null) {
       return;
     }
-    if (this.pf == null)
+    if (this.qY == null)
     {
       android.support.v4.graphics.drawable.a.h(localDrawable);
       return;
     }
-    int i = this.pf.getColorForState(getDrawableState(), 0);
-    PorterDuff.Mode localMode2 = this.pg;
+    int i = this.qY.getColorForState(getDrawableState(), 0);
+    PorterDuff.Mode localMode2 = this.qZ;
     PorterDuff.Mode localMode1 = localMode2;
     if (localMode2 == null) {
       localMode1 = PorterDuff.Mode.SRC_IN;
@@ -143,34 +143,34 @@ public class FloatingActionButton
   {
     Object localObject = getImpl();
     h.d locald = c(parama);
-    if (!((h)localObject).cs())
+    if (!((h)localObject).cI())
     {
-      if (((h)localObject).pw != null) {
-        ((h)localObject).pw.cancel();
+      if (((h)localObject).rp != null) {
+        ((h)localObject).rp.cancel();
       }
-      if (((h)localObject).ct())
+      if (((h)localObject).cJ())
       {
-        if (((h)localObject).pN.getVisibility() != 0)
+        if (((h)localObject).rH.getVisibility() != 0)
         {
-          ((h)localObject).pN.setAlpha(0.0F);
-          ((h)localObject).pN.setScaleY(0.0F);
-          ((h)localObject).pN.setScaleX(0.0F);
-          ((h)localObject).t(0.0F);
+          ((h)localObject).rH.setAlpha(0.0F);
+          ((h)localObject).rH.setScaleY(0.0F);
+          ((h)localObject).rH.setScaleX(0.0F);
+          ((h)localObject).r(0.0F);
         }
-        if (((h)localObject).gP != null) {}
-        for (parama = ((h)localObject).gP;; parama = ((h)localObject).px)
+        if (((h)localObject).iK != null) {}
+        for (parama = ((h)localObject).iK;; parama = ((h)localObject).rq)
         {
           parama = ((h)localObject).a(parama, 1.0F, 1.0F, 1.0F);
           parama.addListener(new h.2((h)localObject, locald));
-          if (((h)localObject).pI == null) {
+          if (((h)localObject).rC == null) {
             break;
           }
-          localObject = ((h)localObject).pI.iterator();
+          localObject = ((h)localObject).rC.iterator();
           while (((Iterator)localObject).hasNext()) {
             parama.addListener((Animator.AnimatorListener)((Iterator)localObject).next());
           }
-          if (((h)localObject).px == null) {
-            ((h)localObject).px = android.support.design.a.h.k(((h)localObject).pN.getContext(), 2130837507);
+          if (((h)localObject).rq == null) {
+            ((h)localObject).rq = android.support.design.a.h.k(((h)localObject).rH.getContext(), 2130837507);
           }
         }
         parama.start();
@@ -180,11 +180,11 @@ public class FloatingActionButton
     {
       return;
     }
-    ((h)localObject).pN.e(0, false);
-    ((h)localObject).pN.setAlpha(1.0F);
-    ((h)localObject).pN.setScaleY(1.0F);
-    ((h)localObject).pN.setScaleX(1.0F);
-    ((h)localObject).t(1.0F);
+    ((h)localObject).rH.e(0, false);
+    ((h)localObject).rH.setAlpha(1.0F);
+    ((h)localObject).rH.setScaleY(1.0F);
+    ((h)localObject).rH.setScaleX(1.0F);
+    ((h)localObject).r(1.0F);
   }
   
   final void b(a parama)
@@ -192,44 +192,44 @@ public class FloatingActionButton
     int i = 1;
     Object localObject = getImpl();
     h.d locald = c(parama);
-    if (((h)localObject).pN.getVisibility() == 0) {
-      if (((h)localObject).pv == 1)
+    if (((h)localObject).rH.getVisibility() == 0) {
+      if (((h)localObject).ro == 1)
       {
         if (i != 0) {
           break label186;
         }
-        if (((h)localObject).pw != null) {
-          ((h)localObject).pw.cancel();
+        if (((h)localObject).rp != null) {
+          ((h)localObject).rp.cancel();
         }
-        if (!((h)localObject).ct()) {
+        if (!((h)localObject).cJ()) {
           break label187;
         }
-        if (((h)localObject).gQ == null) {
+        if (((h)localObject).iL == null) {
           break label150;
         }
       }
     }
-    for (parama = ((h)localObject).gQ;; parama = ((h)localObject).py)
+    for (parama = ((h)localObject).iL;; parama = ((h)localObject).rs)
     {
       parama = ((h)localObject).a(parama, 0.0F, 0.0F, 0.0F);
       parama.addListener(new h.1((h)localObject, locald));
-      if (((h)localObject).pJ == null) {
+      if (((h)localObject).rD == null) {
         break label182;
       }
-      localObject = ((h)localObject).pJ.iterator();
+      localObject = ((h)localObject).rD.iterator();
       while (((Iterator)localObject).hasNext()) {
         parama.addListener((Animator.AnimatorListener)((Iterator)localObject).next());
       }
       i = 0;
       break;
-      if (((h)localObject).pv != 2) {
+      if (((h)localObject).ro != 2) {
         break;
       }
       i = 0;
       break;
       label150:
-      if (((h)localObject).py == null) {
-        ((h)localObject).py = android.support.design.a.h.k(((h)localObject).pN.getContext(), 2130837506);
+      if (((h)localObject).rs == null) {
+        ((h)localObject).rs = android.support.design.a.h.k(((h)localObject).rH.getContext(), 2130837506);
       }
     }
     label182:
@@ -237,7 +237,7 @@ public class FloatingActionButton
     label186:
     return;
     label187:
-    ((h)localObject).pN.e(4, false);
+    ((h)localObject).rH.e(4, false);
   }
   
   @Deprecated
@@ -253,17 +253,17 @@ public class FloatingActionButton
     return bool;
   }
   
-  public final boolean bk()
+  public final boolean bz()
   {
-    return this.po.hW;
+    return this.rh.jR;
   }
   
   public final void c(Rect paramRect)
   {
-    paramRect.left += this.pl.left;
-    paramRect.top += this.pl.top;
-    paramRect.right -= this.pl.right;
-    paramRect.bottom -= this.pl.bottom;
+    paramRect.left += this.re.left;
+    paramRect.top += this.re.top;
+    paramRect.right -= this.re.right;
+    paramRect.bottom -= this.re.bottom;
   }
   
   protected void drawableStateChanged()
@@ -274,12 +274,12 @@ public class FloatingActionButton
   
   public ColorStateList getBackgroundTintList()
   {
-    return this.fQ;
+    return this.hH;
   }
   
   public PorterDuff.Mode getBackgroundTintMode()
   {
-    return this.fP;
+    return this.hG;
   }
   
   public float getCompatElevation()
@@ -289,37 +289,37 @@ public class FloatingActionButton
   
   public float getCompatHoveredFocusedTranslationZ()
   {
-    return getImpl().pF;
+    return getImpl().rz;
   }
   
   public float getCompatPressedTranslationZ()
   {
-    return getImpl().pG;
+    return getImpl().rA;
   }
   
   public Drawable getContentBackground()
   {
-    return getImpl().pE;
+    return getImpl().ry;
   }
   
   public int getCustomSize()
   {
-    return this.ph;
+    return this.ra;
   }
   
   public int getExpandedComponentIdHint()
   {
-    return this.po.hX;
+    return this.rh.jS;
   }
   
   public android.support.design.a.h getHideMotionSpec()
   {
-    return getImpl().gQ;
+    return getImpl().iL;
   }
   
   public h getImpl()
   {
-    if (this.pp == null) {
+    if (this.ri == null) {
       if (Build.VERSION.SDK_INT < 21) {
         break label42;
       }
@@ -327,28 +327,28 @@ public class FloatingActionButton
     label42:
     for (Object localObject = new i(this, new b());; localObject = new h(this, new b()))
     {
-      this.pp = ((h)localObject);
-      return this.pp;
+      this.ri = ((h)localObject);
+      return this.ri;
     }
   }
   
   @Deprecated
   public int getRippleColor()
   {
-    if (this.fS != null) {
-      return this.fS.getDefaultColor();
+    if (this.hJ != null) {
+      return this.hJ.getDefaultColor();
     }
     return 0;
   }
   
   public ColorStateList getRippleColorStateList()
   {
-    return this.fS;
+    return this.hJ;
   }
   
   public android.support.design.a.h getShowMotionSpec()
   {
-    return getImpl().gP;
+    return getImpl().iK;
   }
   
   public int getSize()
@@ -362,8 +362,8 @@ public class FloatingActionButton
     Resources localResources;
     for (;;)
     {
-      if (this.ph != 0) {
-        return this.ph;
+      if (this.ra != 0) {
+        return this.ra;
       }
       localResources = getResources();
       switch (i)
@@ -395,35 +395,35 @@ public class FloatingActionButton
   
   public ColorStateList getSupportImageTintList()
   {
-    return this.pf;
+    return this.qY;
   }
   
   public PorterDuff.Mode getSupportImageTintMode()
   {
-    return this.pg;
+    return this.qZ;
   }
   
   public boolean getUseCompatPadding()
   {
-    return this.pk;
+    return this.rd;
   }
   
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    getImpl().cl();
+    getImpl().cB();
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     h localh = getImpl();
-    if (localh.co())
+    if (localh.cE())
     {
-      if (localh.pQ == null) {
-        localh.pQ = new h.3(localh);
+      if (localh.rK == null) {
+        localh.rK = new h.3(localh);
       }
-      localh.pN.getViewTreeObserver().addOnPreDrawListener(localh.pQ);
+      localh.rH.getViewTreeObserver().addOnPreDrawListener(localh.rK);
     }
   }
   
@@ -431,20 +431,20 @@ public class FloatingActionButton
   {
     super.onDetachedFromWindow();
     h localh = getImpl();
-    if (localh.pQ != null)
+    if (localh.rK != null)
     {
-      localh.pN.getViewTreeObserver().removeOnPreDrawListener(localh.pQ);
-      localh.pQ = null;
+      localh.rH.getViewTreeObserver().removeOnPreDrawListener(localh.rK);
+      localh.rK = null;
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = getSizeDimension();
-    this.pi = ((i - this.pj) / 2);
-    getImpl().cn();
+    this.rb = ((i - this.rc) / 2);
+    getImpl().cD();
     paramInt1 = Math.min(resolveAdjustedSize(i, paramInt1), resolveAdjustedSize(i, paramInt2));
-    setMeasuredDimension(this.pl.left + paramInt1 + this.pl.right, paramInt1 + this.pl.top + this.pl.bottom);
+    setMeasuredDimension(this.re.left + paramInt1 + this.re.right, paramInt1 + this.re.top + this.re.bottom);
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
@@ -459,32 +459,32 @@ public class FloatingActionButton
       {
         return;
         localObject = (ExtendableSavedState)paramParcelable;
-        super.onRestoreInstanceState(((AbsSavedState)localObject).Nj);
-        paramParcelable = this.po;
-        localObject = (Bundle)((ExtendableSavedState)localObject).kD.get("expandableWidgetHelper");
-        paramParcelable.hW = ((Bundle)localObject).getBoolean("expanded", false);
-        paramParcelable.hX = ((Bundle)localObject).getInt("expandedComponentIdHint", 0);
-      } while (!paramParcelable.hW);
-      localObject = paramParcelable.hV.getParent();
+        super.onRestoreInstanceState(((AbsSavedState)localObject).Pa);
+        paramParcelable = this.rh;
+        localObject = (Bundle)((ExtendableSavedState)localObject).mt.get("expandableWidgetHelper");
+        paramParcelable.jR = ((Bundle)localObject).getBoolean("expanded", false);
+        paramParcelable.jS = ((Bundle)localObject).getInt("expandedComponentIdHint", 0);
+      } while (!paramParcelable.jR);
+      localObject = paramParcelable.jQ.getParent();
     } while (!(localObject instanceof CoordinatorLayout));
-    ((CoordinatorLayout)localObject).r(paramParcelable.hV);
+    ((CoordinatorLayout)localObject).r(paramParcelable.jQ);
   }
   
   protected Parcelable onSaveInstanceState()
   {
     ExtendableSavedState localExtendableSavedState = new ExtendableSavedState(super.onSaveInstanceState());
-    n localn = localExtendableSavedState.kD;
-    c localc = this.po;
+    n localn = localExtendableSavedState.mt;
+    c localc = this.rh;
     Bundle localBundle = new Bundle();
-    localBundle.putBoolean("expanded", localc.hW);
-    localBundle.putInt("expandedComponentIdHint", localc.hX);
+    localBundle.putBoolean("expanded", localc.jR);
+    localBundle.putInt("expandedComponentIdHint", localc.jS);
     localn.put("expandableWidgetHelper", localBundle);
     return localExtendableSavedState;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent.getAction() == 0) && (b(this.pm)) && (!this.pm.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))) {
+    if ((paramMotionEvent.getAction() == 0) && (b(this.rf)) && (!this.rf.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))) {
       return false;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -498,27 +498,27 @@ public class FloatingActionButton
   
   public void setBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.fQ != paramColorStateList)
+    if (this.hH != paramColorStateList)
     {
-      this.fQ = paramColorStateList;
+      this.hH = paramColorStateList;
       h localh = getImpl();
-      if (localh.pB != null) {
-        android.support.v4.graphics.drawable.a.a(localh.pB, paramColorStateList);
+      if (localh.rv != null) {
+        android.support.v4.graphics.drawable.a.a(localh.rv, paramColorStateList);
       }
-      if (localh.pD != null) {
-        localh.pD.c(paramColorStateList);
+      if (localh.rx != null) {
+        localh.rx.c(paramColorStateList);
       }
     }
   }
   
   public void setBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.fP != paramMode)
+    if (this.hG != paramMode)
     {
-      this.fP = paramMode;
+      this.hG = paramMode;
       h localh = getImpl();
-      if (localh.pB != null) {
-        android.support.v4.graphics.drawable.a.a(localh.pB, paramMode);
+      if (localh.rv != null) {
+        android.support.v4.graphics.drawable.a.a(localh.rv, paramMode);
       }
     }
   }
@@ -535,7 +535,7 @@ public class FloatingActionButton
   
   public void setCompatHoveredFocusedTranslationZ(float paramFloat)
   {
-    getImpl().r(paramFloat);
+    getImpl().p(paramFloat);
   }
   
   public void setCompatHoveredFocusedTranslationZResource(int paramInt)
@@ -545,7 +545,7 @@ public class FloatingActionButton
   
   public void setCompatPressedTranslationZ(float paramFloat)
   {
-    getImpl().s(paramFloat);
+    getImpl().q(paramFloat);
   }
   
   public void setCompatPressedTranslationZResource(int paramInt)
@@ -558,17 +558,17 @@ public class FloatingActionButton
     if (paramInt < 0) {
       throw new IllegalArgumentException("Custom size must be non-negative");
     }
-    this.ph = paramInt;
+    this.ra = paramInt;
   }
   
   public void setExpandedComponentIdHint(int paramInt)
   {
-    this.po.hX = paramInt;
+    this.rh.jS = paramInt;
   }
   
   public void setHideMotionSpec(android.support.design.a.h paramh)
   {
-    getImpl().gQ = paramh;
+    getImpl().iL = paramh;
   }
   
   public void setHideMotionSpecResource(int paramInt)
@@ -579,12 +579,12 @@ public class FloatingActionButton
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    getImpl().ck();
+    getImpl().cA();
   }
   
   public void setImageResource(int paramInt)
   {
-    this.pn.setImageResource(paramInt);
+    this.rg.setImageResource(paramInt);
   }
   
   public void setRippleColor(int paramInt)
@@ -594,16 +594,16 @@ public class FloatingActionButton
   
   public void setRippleColor(ColorStateList paramColorStateList)
   {
-    if (this.fS != paramColorStateList)
+    if (this.hJ != paramColorStateList)
     {
-      this.fS = paramColorStateList;
-      getImpl().setRippleColor(this.fS);
+      this.hJ = paramColorStateList;
+      getImpl().setRippleColor(this.hJ);
     }
   }
   
   public void setShowMotionSpec(android.support.design.a.h paramh)
   {
-    getImpl().gP = paramh;
+    getImpl().iK = paramh;
   }
   
   public void setShowMotionSpecResource(int paramInt)
@@ -613,7 +613,7 @@ public class FloatingActionButton
   
   public void setSize(int paramInt)
   {
-    this.ph = 0;
+    this.ra = 0;
     if (paramInt != this.size)
     {
       this.size = paramInt;
@@ -633,48 +633,48 @@ public class FloatingActionButton
   
   public void setSupportImageTintList(ColorStateList paramColorStateList)
   {
-    if (this.pf != paramColorStateList)
+    if (this.qY != paramColorStateList)
     {
-      this.pf = paramColorStateList;
-      ci();
+      this.qY = paramColorStateList;
+      cy();
     }
   }
   
   public void setSupportImageTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.pg != paramMode)
+    if (this.qZ != paramMode)
     {
-      this.pg = paramMode;
-      ci();
+      this.qZ = paramMode;
+      cy();
     }
   }
   
   public void setUseCompatPadding(boolean paramBoolean)
   {
-    if (this.pk != paramBoolean)
+    if (this.rd != paramBoolean)
     {
-      this.pk = paramBoolean;
-      getImpl().cm();
+      this.rd = paramBoolean;
+      getImpl().cC();
     }
   }
   
   protected static class BaseBehavior<T extends FloatingActionButton>
     extends CoordinatorLayout.Behavior<T>
   {
-    private Rect kK;
-    private FloatingActionButton.a ps;
-    private boolean pt;
+    private Rect mA;
+    private FloatingActionButton.a rl;
+    private boolean rm;
     
     public BaseBehavior()
     {
-      this.pt = true;
+      this.rm = true;
     }
     
     public BaseBehavior(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.FloatingActionButton_Behavior_Layout);
-      this.pt = paramContext.getBoolean(0, true);
+      this.rm = paramContext.getBoolean(0, true);
       paramContext.recycle();
     }
     
@@ -683,28 +683,28 @@ public class FloatingActionButton
       if (!a(paramAppBarLayout, paramFloatingActionButton)) {
         return false;
       }
-      if (this.kK == null) {
-        this.kK = new Rect();
+      if (this.mA == null) {
+        this.mA = new Rect();
       }
-      Rect localRect = this.kK;
+      Rect localRect = this.mA;
       f.a(paramCoordinatorLayout, paramAppBarLayout, localRect);
       if (localRect.bottom <= paramAppBarLayout.getMinimumHeightForVisibleOverlappingContent()) {
-        paramFloatingActionButton.b(this.ps);
+        paramFloatingActionButton.b(this.rl);
       }
       for (;;)
       {
         return true;
-        paramFloatingActionButton.a(this.ps);
+        paramFloatingActionButton.a(this.rl);
       }
     }
     
     private boolean a(View paramView, FloatingActionButton paramFloatingActionButton)
     {
       CoordinatorLayout.d locald = (CoordinatorLayout.d)paramFloatingActionButton.getLayoutParams();
-      if (!this.pt) {
+      if (!this.rm) {
         return false;
       }
-      if (locald.oK != paramView.getId()) {
+      if (locald.qD != paramView.getId()) {
         return false;
       }
       return paramFloatingActionButton.getUserSetVisibility() == 0;
@@ -719,12 +719,12 @@ public class FloatingActionButton
       int i = paramView.getTop();
       int j = paramFloatingActionButton.getHeight() / 2;
       if (i < locald.topMargin + j) {
-        paramFloatingActionButton.b(this.ps);
+        paramFloatingActionButton.b(this.rl);
       }
       for (;;)
       {
         return true;
-        paramFloatingActionButton.a(this.ps);
+        paramFloatingActionButton.a(this.rl);
       }
     }
     
@@ -732,15 +732,15 @@ public class FloatingActionButton
     {
       paramView = paramView.getLayoutParams();
       if ((paramView instanceof CoordinatorLayout.d)) {
-        return ((CoordinatorLayout.d)paramView).oH instanceof BottomSheetBehavior;
+        return ((CoordinatorLayout.d)paramView).qA instanceof BottomSheetBehavior;
       }
       return false;
     }
     
     public void a(CoordinatorLayout.d paramd)
     {
-      if (paramd.oM == 0) {
-        paramd.oM = 80;
+      if (paramd.qF == 0) {
+        paramd.qF = 80;
       }
     }
     
@@ -764,7 +764,7 @@ public class FloatingActionButton
       {
         label65:
         paramCoordinatorLayout.f(paramFloatingActionButton, paramInt);
-        localObject1 = paramFloatingActionButton.pl;
+        localObject1 = paramFloatingActionButton.re;
         if ((localObject1 != null) && (((Rect)localObject1).centerX() > 0) && (((Rect)localObject1).centerY() > 0))
         {
           localObject2 = (CoordinatorLayout.d)paramFloatingActionButton.getLayoutParams();
@@ -813,7 +813,7 @@ public class FloatingActionButton
     
     public boolean a(CoordinatorLayout paramCoordinatorLayout, FloatingActionButton paramFloatingActionButton, Rect paramRect)
     {
-      paramCoordinatorLayout = paramFloatingActionButton.pl;
+      paramCoordinatorLayout = paramFloatingActionButton.re;
       paramRect.set(paramFloatingActionButton.getLeft() + paramCoordinatorLayout.left, paramFloatingActionButton.getTop() + paramCoordinatorLayout.top, paramFloatingActionButton.getRight() - paramCoordinatorLayout.right, paramFloatingActionButton.getBottom() - paramCoordinatorLayout.bottom);
       return true;
     }
@@ -851,14 +851,14 @@ public class FloatingActionButton
   {
     b() {}
     
-    public final boolean cj()
+    public final boolean cz()
     {
-      return FloatingActionButton.this.pk;
+      return FloatingActionButton.this.rd;
     }
     
     public final void e(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
-      FloatingActionButton.this.pl.set(paramInt1, paramInt2, paramInt3, paramInt4);
+      FloatingActionButton.this.re.set(paramInt1, paramInt2, paramInt3, paramInt4);
       FloatingActionButton localFloatingActionButton = FloatingActionButton.this;
       localFloatingActionButton.setPadding(FloatingActionButton.a(localFloatingActionButton) + paramInt1, FloatingActionButton.a(FloatingActionButton.this) + paramInt2, FloatingActionButton.a(FloatingActionButton.this) + paramInt3, FloatingActionButton.a(FloatingActionButton.this) + paramInt4);
     }

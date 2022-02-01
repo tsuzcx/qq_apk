@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vu
   extends b
 {
-  public a dyG;
+  public a dKl;
   
   public vu()
   {
@@ -15,17 +15,19 @@ public final class vu
   
   private vu(byte paramByte)
   {
-    AppMethodBeat.i(149892);
-    this.dyG = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(116050);
+    this.dKl = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(149892);
+    AppMethodBeat.o(116050);
   }
   
   public static final class a
   {
-    public boolean dyH = false;
-    public boolean dyI = false;
+    public String dKm;
+    public long dKn;
+    public String dKo;
+    public int drI;
   }
 }
 

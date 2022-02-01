@@ -22,26 +22,26 @@ public class CompositionUtils
   
   private static void checkScaleTimeRange(MutableCompositionTrack paramMutableCompositionTrack, CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2)
   {
-    AppMethodBeat.i(192168);
+    AppMethodBeat.i(219970);
     if ((!CMTime.CMTimeInvalid.equalsTo(paramCMTimeRange1.getDuration())) && (!paramCMTimeRange2.getDuration().equalsTo(paramCMTimeRange1.getDuration()))) {
       paramMutableCompositionTrack.scaleTimeRange(new CMTimeRange(paramCMTimeRange1.getStart(), paramCMTimeRange2.getDuration()), paramCMTimeRange1.getDuration());
     }
-    AppMethodBeat.o(192168);
+    AppMethodBeat.o(219970);
   }
   
   public static TAVEmptyResource createEmptyResource(CMTime paramCMTime)
   {
-    AppMethodBeat.i(192169);
+    AppMethodBeat.i(219971);
     TAVEmptyResource localTAVEmptyResource = new TAVEmptyResource(paramCMTime);
     localTAVEmptyResource.setDuration(paramCMTime);
     localTAVEmptyResource.setScaledDuration(paramCMTime);
-    AppMethodBeat.o(192169);
+    AppMethodBeat.o(219971);
     return localTAVEmptyResource;
   }
   
   public static void insertTimeRangeToTrack(TrackInfo paramTrackInfo, MutableCompositionTrack paramMutableCompositionTrack, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(192167);
+    AppMethodBeat.i(219969);
     try
     {
       CMTimeRange localCMTimeRange = paramTrackInfo.getSelectedTimeRange();
@@ -49,28 +49,28 @@ public class CompositionUtils
       {
         paramMutableCompositionTrack.insertTimeRange(localCMTimeRange, paramTrackInfo.getTrack(), paramCMTimeRange.getStart());
         checkScaleTimeRange(paramMutableCompositionTrack, paramCMTimeRange, localCMTimeRange);
-        AppMethodBeat.o(192167);
+        AppMethodBeat.o(219969);
         return;
       }
       if (paramTrackInfo.getCompositionTrackSegment(paramCMTimeRange) != null)
       {
         paramMutableCompositionTrack.insertCompositionTrackSegment(paramTrackInfo.getCompositionTrackSegment(paramCMTimeRange));
-        AppMethodBeat.o(192167);
+        AppMethodBeat.o(219969);
         return;
       }
     }
     catch (Exception paramTrackInfo)
     {
-      AppMethodBeat.o(192167);
+      AppMethodBeat.o(219969);
       return;
     }
     Logger.e("CompositionUtils", "insertTimeRangeToTrack: TrackInfo track and segment are null !!!");
-    AppMethodBeat.o(192167);
+    AppMethodBeat.o(219969);
   }
   
   public static MutableCompositionTrack mutableTrackCompatibleWithTimeRange(MutableComposition paramMutableComposition, CMTimeRange paramCMTimeRange, int paramInt)
   {
-    AppMethodBeat.i(192163);
+    AppMethodBeat.i(219965);
     paramMutableComposition = paramMutableComposition.tracksWithMediaType(paramInt).iterator();
     while (paramMutableComposition.hasNext())
     {
@@ -78,40 +78,40 @@ public class CompositionUtils
       CMTimeRange localCMTimeRange = TAVTimeUtil.getIntersection(localMutableCompositionTrack.getTimeRange(), paramCMTimeRange);
       if ((localCMTimeRange == null) || (localCMTimeRange.getDuration().getTimeSeconds() <= 0.0F))
       {
-        AppMethodBeat.o(192163);
+        AppMethodBeat.o(219965);
         return localMutableCompositionTrack;
       }
     }
-    AppMethodBeat.o(192163);
+    AppMethodBeat.o(219965);
     return null;
   }
   
   public static void reloadAudioStartTimeWithTransitionableAudio(List<? extends TAVTransitionableAudio> paramList)
   {
-    AppMethodBeat.i(192165);
+    AppMethodBeat.i(219967);
     reloadStartTimeWithTransitionable(paramList, new TransitionTimeCalculator()
     {
       public final CMTime transition(int paramAnonymousInt)
       {
-        AppMethodBeat.i(192162);
+        AppMethodBeat.i(219964);
         Object localObject = ((TAVTransitionableAudio)this.val$transitionableAudios.get(paramAnonymousInt)).getAudioTransition();
         if (localObject != null)
         {
           localObject = ((TAVAudioTransition)localObject).getDuration();
-          AppMethodBeat.o(192162);
+          AppMethodBeat.o(219964);
           return localObject;
         }
         localObject = CMTime.CMTimeZero;
-        AppMethodBeat.o(192162);
+        AppMethodBeat.o(219964);
         return localObject;
       }
     });
-    AppMethodBeat.o(192165);
+    AppMethodBeat.o(219967);
   }
   
   private static void reloadStartTimeWithTransitionable(List<? extends TAVCompositionTimeRange> paramList, TransitionTimeCalculator paramTransitionTimeCalculator)
   {
-    AppMethodBeat.i(192166);
+    AppMethodBeat.i(219968);
     CMTime localCMTime1 = CMTime.CMTimeZero;
     Object localObject3 = CMTime.CMTimeZero;
     int i = 0;
@@ -147,32 +147,32 @@ public class CompositionUtils
         localObject3 = localObject1;
         break;
       }
-      AppMethodBeat.o(192166);
+      AppMethodBeat.o(219968);
       return;
     }
   }
   
   public static void reloadVideoStartTimeWithTransitionableVideo(List<? extends TAVTransitionableVideo> paramList)
   {
-    AppMethodBeat.i(192164);
+    AppMethodBeat.i(219966);
     reloadStartTimeWithTransitionable(paramList, new TransitionTimeCalculator()
     {
       public final CMTime transition(int paramAnonymousInt)
       {
-        AppMethodBeat.i(192161);
+        AppMethodBeat.i(219963);
         Object localObject = ((TAVTransitionableVideo)this.val$transitionableVideos.get(paramAnonymousInt)).getVideoTransition();
         if (localObject != null)
         {
           localObject = ((TAVVideoTransition)localObject).getDuration();
-          AppMethodBeat.o(192161);
+          AppMethodBeat.o(219963);
           return localObject;
         }
         localObject = CMTime.CMTimeZero;
-        AppMethodBeat.o(192161);
+        AppMethodBeat.o(219963);
         return localObject;
       }
     });
-    AppMethodBeat.o(192164);
+    AppMethodBeat.o(219966);
   }
   
   static abstract interface TransitionTimeCalculator
@@ -182,7 +182,7 @@ public class CompositionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.utils.CompositionUtils
  * JD-Core Version:    0.7.0.1
  */

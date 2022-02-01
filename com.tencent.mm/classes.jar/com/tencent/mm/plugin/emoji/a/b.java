@@ -6,26 +6,26 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.z;
 
 public final class b
 {
   private final String TAG;
-  public View jja;
+  public View jCI;
   public Context mContext;
-  public String oXi;
-  public ImageView oXj;
-  public ImageView oXk;
-  public TextView oel;
+  public TextView oHF;
+  public String pAS;
+  public ImageView pAT;
+  public ImageView pAU;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(108295);
     this.TAG = "MicroMsg.emoji.BaseEmojiStoreItemViewHolder";
     this.mContext = paramContext;
-    this.jja = z.jD(this.mContext).inflate(2131493814, null);
-    cbC();
+    this.jCI = z.jO(this.mContext).inflate(2131493814, null);
+    cgg();
     AppMethodBeat.o(108295);
   }
   
@@ -34,23 +34,23 @@ public final class b
     AppMethodBeat.i(108296);
     this.TAG = "MicroMsg.emoji.BaseEmojiStoreItemViewHolder";
     this.mContext = paramContext;
-    this.jja = paramView;
-    cbC();
+    this.jCI = paramView;
+    cgg();
     AppMethodBeat.o(108296);
   }
   
-  private void cbC()
+  private void cgg()
   {
     AppMethodBeat.i(108297);
-    if (this.jja == null)
+    if (this.jCI == null)
     {
-      ac.w("MicroMsg.emoji.BaseEmojiStoreItemViewHolder", "initView failed. root is null.");
+      ad.w("MicroMsg.emoji.BaseEmojiStoreItemViewHolder", "initView failed. root is null.");
       AppMethodBeat.o(108297);
       return;
     }
-    this.oXj = ((ImageView)this.jja.findViewById(2131301154));
-    this.oel = ((TextView)this.jja.findViewById(2131301198));
-    this.oXk = ((ImageView)this.jja.findViewById(2131301152));
+    this.pAT = ((ImageView)this.jCI.findViewById(2131301154));
+    this.oHF = ((TextView)this.jCI.findViewById(2131301198));
+    this.pAU = ((ImageView)this.jCI.findViewById(2131301152));
     AppMethodBeat.o(108297);
   }
 }

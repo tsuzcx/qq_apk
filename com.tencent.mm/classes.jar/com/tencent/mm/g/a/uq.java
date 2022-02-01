@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class uq
   extends b
 {
-  public a dxj;
+  public a dIR;
   
   public uq()
   {
@@ -15,20 +15,16 @@ public final class uq
   
   private uq(byte paramByte)
   {
-    AppMethodBeat.i(125650);
-    this.dxj = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(125641);
+    this.dIR = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(125650);
+    AppMethodBeat.o(125641);
   }
   
   public static final class a
   {
-    public int dgL;
-    public String dgl;
-    public int dxk;
-    public boolean dxl;
-    public int dxm;
+    public boolean dIS;
   }
 }
 

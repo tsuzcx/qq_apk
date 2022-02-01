@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class az
   extends b
 {
-  public a daB;
+  public a dlT;
   
   public az()
   {
@@ -15,17 +15,16 @@ public final class az
   
   private az(byte paramByte)
   {
-    AppMethodBeat.i(116458);
-    this.daB = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(115971);
+    this.dlT = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116458);
+    AppMethodBeat.o(115971);
   }
   
   public static final class a
   {
-    public String daC;
-    public String username;
+    public int index;
   }
 }
 

@@ -2,63 +2,64 @@ package com.tencent.mm.plugin.bbom;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.al.af;
-import com.tencent.mm.al.e;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.am.ag;
+import com.tencent.mm.am.e;
 import com.tencent.mm.api.c.b;
-import com.tencent.mm.g.a.fh;
-import com.tencent.mm.g.a.il;
-import com.tencent.mm.g.a.ks;
-import com.tencent.mm.g.a.ks.a;
-import com.tencent.mm.g.a.lp;
-import com.tencent.mm.g.a.me;
-import com.tencent.mm.g.a.op;
-import com.tencent.mm.g.a.vs;
-import com.tencent.mm.g.a.vt;
-import com.tencent.mm.g.a.vt.b;
-import com.tencent.mm.g.a.wb;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.b;
+import com.tencent.mm.g.a.fk;
+import com.tencent.mm.g.a.it;
+import com.tencent.mm.g.a.lb;
+import com.tencent.mm.g.a.lb.a;
+import com.tencent.mm.g.a.ly;
+import com.tencent.mm.g.a.mn;
+import com.tencent.mm.g.a.oy;
+import com.tencent.mm.g.a.wl;
+import com.tencent.mm.g.a.wm;
+import com.tencent.mm.g.a.wm.b;
+import com.tencent.mm.g.a.wu;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.b;
 import com.tencent.mm.model.q;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
 import com.tencent.mm.platformtools.t;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.plugin.sns.b.l;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
 import com.tencent.mm.plugin.sns.b.o;
+import com.tencent.mm.pluginsdk.ui.span.j.a;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.aaf;
-import com.tencent.mm.protocal.protobuf.bva;
-import com.tencent.mm.protocal.protobuf.bvd;
-import com.tencent.mm.protocal.protobuf.bvs;
-import com.tencent.mm.protocal.protobuf.cfj;
-import com.tencent.mm.protocal.protobuf.cfk;
-import com.tencent.mm.protocal.protobuf.dbt;
-import com.tencent.mm.protocal.protobuf.ua;
-import com.tencent.mm.protocal.protobuf.ub;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.bc;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.protocal.protobuf.acf;
+import com.tencent.mm.protocal.protobuf.bzp;
+import com.tencent.mm.protocal.protobuf.bzs;
+import com.tencent.mm.protocal.protobuf.cai;
+import com.tencent.mm.protocal.protobuf.cki;
+import com.tencent.mm.protocal.protobuf.ckj;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.protocal.protobuf.dhg;
+import com.tencent.mm.protocal.protobuf.vv;
+import com.tencent.mm.protocal.protobuf.vw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bi;
 import com.tencent.mm.storage.bk;
-import com.tencent.mm.storage.bk.b;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.storage.bm;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.storage.bx;
-import com.tencent.mm.storage.by;
-import com.tencent.mm.storage.bz;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bq.b;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bs;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.cd;
+import com.tencent.mm.storage.ce;
+import com.tencent.mm.storage.cf;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -70,48 +71,48 @@ import junit.framework.Assert;
 import org.json.JSONObject;
 
 public final class c
-  implements com.tencent.mm.ak.g, com.tencent.mm.plugin.messenger.foundation.a.c
+  implements com.tencent.mm.al.f, com.tencent.mm.plugin.messenger.foundation.a.d
 {
-  private static int nnJ = -1;
+  private static int nOw = -1;
   
-  private static void K(com.tencent.mm.storage.ai paramai)
+  private static void K(am paramam)
   {
     AppMethodBeat.i(22341);
-    if ((paramai != null) && (com.tencent.mm.al.f.AQ(paramai.field_username)) && (!com.tencent.mm.al.f.so(paramai.field_username)))
+    if ((paramam != null) && (com.tencent.mm.am.g.DP(paramam.field_username)) && (!com.tencent.mm.am.g.vd(paramam.field_username)))
     {
-      com.tencent.mm.model.az.ayM();
-      ap localap = com.tencent.mm.model.c.awG().aNI(paramai.field_username);
-      paramai = af.aCW().AE(paramai.field_username);
-      if (!com.tencent.mm.al.f.AT(paramai.field_username))
+      com.tencent.mm.model.ba.aBQ();
+      at localat = com.tencent.mm.model.c.azv().aTz(paramam.field_username);
+      paramam = ag.aFZ().DD(paramam.field_username);
+      if (!com.tencent.mm.am.g.DS(paramam.field_username))
       {
         AppMethodBeat.o(22341);
         return;
       }
-      if (localap == null)
+      if (localat == null)
       {
-        localap = new ap(paramai.field_username);
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "Enterprise belong %s, userName: %s", new Object[] { paramai.IV(), paramai.field_username });
-        localap.qT(bs.nullAsNil(paramai.IV()));
-        localap.faH();
-        com.tencent.mm.model.az.ayM();
-        com.tencent.mm.model.c.awG().e(localap);
+        localat = new at(paramam.field_username);
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "Enterprise belong %s, userName: %s", new Object[] { paramam.Kv(), paramam.field_username });
+        localat.tD(bt.nullAsNil(paramam.Kv()));
+        localat.fqK();
+        com.tencent.mm.model.ba.aBQ();
+        com.tencent.mm.model.c.azv().e(localat);
       }
     }
     AppMethodBeat.o(22341);
   }
   
-  public static boolean Ta(String paramString)
+  public static boolean Wx(String paramString)
   {
     AppMethodBeat.i(22339);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(22339);
       return false;
     }
-    Matcher localMatcher = com.tencent.mm.pluginsdk.ui.span.j.a.DCm.matcher(paramString);
+    Matcher localMatcher = j.a.Fht.matcher(paramString);
     if (localMatcher.find())
     {
-      if (bs.lr(paramString, localMatcher.group(0)))
+      if (bt.lQ(paramString, localMatcher.group(0)))
       {
         AppMethodBeat.o(22339);
         return true;
@@ -123,124 +124,124 @@ public final class c
     return false;
   }
   
-  private static void a(bva parambva, String paramString, com.tencent.mm.storage.ai paramai, boolean paramBoolean)
+  private static void a(bzp parambzp, String paramString, am paramam, boolean paramBoolean)
   {
     AppMethodBeat.i(22337);
-    Object localObject = u.axw();
+    Object localObject = u.aAm();
     if ((localObject != null) && (!((String)localObject).equals(paramString)))
     {
-      localObject = af.aCW().AE(paramString);
+      localObject = ag.aFZ().DD(paramString);
       ((com.tencent.mm.api.c)localObject).field_username = paramString;
-      ((com.tencent.mm.api.c)localObject).field_brandList = parambva.iKd;
-      parambva = parambva.Fex;
-      if (parambva != null)
+      ((com.tencent.mm.api.c)localObject).field_brandList = parambzp.jdm;
+      parambzp = parambzp.GOb;
+      if (parambzp != null)
       {
-        ((com.tencent.mm.api.c)localObject).field_brandFlag = parambva.iKh;
-        ((com.tencent.mm.api.c)localObject).field_brandInfo = parambva.iKj;
-        ((com.tencent.mm.api.c)localObject).field_brandIconURL = parambva.iKk;
+        ((com.tencent.mm.api.c)localObject).field_brandFlag = parambzp.jdq;
+        ((com.tencent.mm.api.c)localObject).field_brandInfo = parambzp.jds;
+        ((com.tencent.mm.api.c)localObject).field_brandIconURL = parambzp.jdt;
         if (paramBoolean)
         {
-          ((com.tencent.mm.api.c)localObject).field_extInfo = parambva.iKi;
-          ac.i("MicroMsg.BigBallContactAssemblerImpl", "update extInfo=%s", new Object[] { ((com.tencent.mm.api.c)localObject).field_extInfo });
+          ((com.tencent.mm.api.c)localObject).field_extInfo = parambzp.jdr;
+          ad.i("MicroMsg.BigBallContactAssemblerImpl", "update extInfo=%s", new Object[] { ((com.tencent.mm.api.c)localObject).field_extInfo });
           ((com.tencent.mm.api.c)localObject).field_attrSyncVersion = null;
           ((com.tencent.mm.api.c)localObject).field_incrementUpdateTime = 0L;
-          ac.i("MicroMsg.BigBallContactAssemblerImpl", "Reset biz(%s) Attribute syncVersion and incUpdateTime.", new Object[] { paramString });
+          ad.i("MicroMsg.BigBallContactAssemblerImpl", "Reset biz(%s) Attribute syncVersion and incUpdateTime.", new Object[] { paramString });
         }
-        if (!bs.isNullOrNil(((com.tencent.mm.api.c)localObject).field_extInfo)) {
-          ((com.tencent.mm.api.c)localObject).bV(true);
+        if (!bt.isNullOrNil(((com.tencent.mm.api.c)localObject).field_extInfo)) {
+          ((com.tencent.mm.api.c)localObject).bX(true);
         }
       }
-      if ((((com.tencent.mm.api.c)localObject).bV(false) != null) && (((com.tencent.mm.api.c)localObject).bV(false).getServiceType() == 3) && (((com.tencent.mm.api.c)localObject).bV(false).Jq() != null) && (!bs.isNullOrNil(((com.tencent.mm.api.c)localObject).IV())))
+      if ((((com.tencent.mm.api.c)localObject).bX(false) != null) && (((com.tencent.mm.api.c)localObject).bX(false).getServiceType() == 3) && (((com.tencent.mm.api.c)localObject).bX(false).KP() != null) && (!bt.isNullOrNil(((com.tencent.mm.api.c)localObject).Kv())))
       {
-        ((com.tencent.mm.api.c)localObject).field_enterpriseFather = ((com.tencent.mm.api.c)localObject).IV();
-        ac.d("MicroMsg.BigBallContactAssemblerImpl", "saveBizInfo, %s set enterpriseFather %s", new Object[] { paramString, ((com.tencent.mm.api.c)localObject).field_enterpriseFather });
+        ((com.tencent.mm.api.c)localObject).field_enterpriseFather = ((com.tencent.mm.api.c)localObject).Kv();
+        ad.d("MicroMsg.BigBallContactAssemblerImpl", "saveBizInfo, %s set enterpriseFather %s", new Object[] { paramString, ((com.tencent.mm.api.c)localObject).field_enterpriseFather });
       }
-      if (!af.aCW().g((com.tencent.mm.api.c)localObject)) {
-        af.aCW().f((com.tencent.mm.api.c)localObject);
+      if (!ag.aFZ().g((com.tencent.mm.api.c)localObject)) {
+        ag.aFZ().f((com.tencent.mm.api.c)localObject);
       }
-      paramai.jN(((com.tencent.mm.api.c)localObject).field_type);
+      paramam.kl(((com.tencent.mm.api.c)localObject).field_type);
     }
     AppMethodBeat.o(22337);
   }
   
-  public static boolean a(com.tencent.mm.storage.ai paramai, bva parambva, boolean paramBoolean)
+  public static boolean a(am paramam, bzp parambzp, boolean paramBoolean)
   {
     AppMethodBeat.i(22338);
-    if ((paramai == null) || (bs.isNullOrNil(paramai.field_username)))
+    if ((paramam == null) || (bt.isNullOrNil(paramam.field_username)))
     {
-      ac.e("MicroMsg.BigBallContactAssemblerImpl", "dkinit dealModContactExtInfo failed invalid contact");
+      ad.e("MicroMsg.BigBallContactAssemblerImpl", "dkinit dealModContactExtInfo failed invalid contact");
       AppMethodBeat.o(22338);
       return false;
     }
-    String str = paramai.field_username;
-    Object localObject1 = paramai.field_encryptUsername;
-    Object localObject2 = com.tencent.mm.aj.c.a(str, parambva);
-    p.aBw().b((com.tencent.mm.aj.i)localObject2);
-    localObject2 = parambva.Few;
-    if ((!paramai.field_username.endsWith("@chatroom")) && (localObject2 != null))
+    String str = paramam.field_username;
+    Object localObject1 = paramam.field_encryptUsername;
+    Object localObject2 = com.tencent.mm.ak.c.a(str, parambzp);
+    p.aEx().b((com.tencent.mm.ak.i)localObject2);
+    localObject2 = parambzp.GOa;
+    if ((!paramam.field_username.endsWith("@chatroom")) && (localObject2 != null))
     {
-      ac.i("MicroMsg.BigBallContactAssemblerImpl", "SnsFlag modcontact " + ((dbt)localObject2).iKe + " " + parambva.EuE);
-      ac.i("MicroMsg.BigBallContactAssemblerImpl", "SnsBg modcontact " + ((dbt)localObject2).iKf);
-      ac.i("MicroMsg.BigBallContactAssemblerImpl", "SnsBgId modcontact " + ((dbt)localObject2).iKg);
-      ac.i("MicroMsg.BigBallContactAssemblerImpl", "SnsBgId modcontact " + ((dbt)localObject2).FLb);
-      ac.i("MicroMsg.BigBallContactAssemblerImpl", "SnsBgId modcontact " + ((dbt)localObject2).FLc);
-      if (o.xMb != null) {
-        o.xMb.a(paramai.field_username, (dbt)localObject2);
+      ad.i("MicroMsg.BigBallContactAssemblerImpl", "SnsFlag modcontact " + ((dhg)localObject2).jdn + " " + parambzp.GbY);
+      ad.i("MicroMsg.BigBallContactAssemblerImpl", "SnsBg modcontact " + ((dhg)localObject2).jdo);
+      ad.i("MicroMsg.BigBallContactAssemblerImpl", "SnsBgId modcontact " + ((dhg)localObject2).jdp);
+      ad.i("MicroMsg.BigBallContactAssemblerImpl", "SnsBgId modcontact " + ((dhg)localObject2).HvJ);
+      ad.i("MicroMsg.BigBallContactAssemblerImpl", "SnsBgId modcontact " + ((dhg)localObject2).HvK);
+      if (o.zbT != null) {
+        o.zbT.a(paramam.field_username, (dhg)localObject2);
       }
     }
     boolean bool;
-    if (com.tencent.mm.n.b.ln(paramai.field_type))
+    if (com.tencent.mm.o.b.lM(paramam.field_type))
     {
-      bool = com.tencent.mm.bj.d.aJe().fQ(str, 1);
+      bool = com.tencent.mm.bk.d.aMo().gn(str, 1);
       if (!bool) {
         break label429;
       }
-      ac.d("MicroMsg.BigBallContactAssemblerImpl", "fmsgConversation updateState succ, user = ".concat(String.valueOf(str)));
+      ad.d("MicroMsg.BigBallContactAssemblerImpl", "fmsgConversation updateState succ, user = ".concat(String.valueOf(str)));
     }
     for (;;)
     {
-      ac.i("MicroMsg.BigBallContactAssemblerImpl", "processModContact, update state(ADDED) FMessageConversation, ret = ".concat(String.valueOf(bool)));
-      if ((com.tencent.mm.n.b.ln(paramai.field_type)) && ((paramai.getSource() == 10) || (paramai.getSource() == 13)))
+      ad.i("MicroMsg.BigBallContactAssemblerImpl", "processModContact, update state(ADDED) FMessageConversation, ret = ".concat(String.valueOf(bool)));
+      if ((com.tencent.mm.o.b.lM(paramam.field_type)) && ((paramam.getSource() == 10) || (paramam.getSource() == 13)))
       {
-        t.l(com.tencent.mm.sdk.platformtools.ai.getContext(), paramai.field_username, paramai.field_encryptUsername);
-        localObject1 = com.tencent.mm.plugin.account.a.getAddrUploadStg().Gf(paramai.field_encryptUsername);
-        if ((localObject1 != null) && (!bs.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject1).iJS)))
+        t.m(aj.getContext(), paramam.field_username, paramam.field_encryptUsername);
+        localObject1 = com.tencent.mm.plugin.account.a.getAddrUploadStg().Ju(paramam.field_encryptUsername);
+        if ((localObject1 != null) && (!bt.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject1).jdb)))
         {
-          ((com.tencent.mm.plugin.account.friend.a.a)localObject1).username = paramai.field_username;
-          ac.d("MicroMsg.BigBallContactAssemblerImpl", "account sync: update addr ".concat(String.valueOf(com.tencent.mm.plugin.account.a.getAddrUploadStg().a(((com.tencent.mm.plugin.account.friend.a.a)localObject1).iJS, (com.tencent.mm.plugin.account.friend.a.a)localObject1))));
+          ((com.tencent.mm.plugin.account.friend.a.a)localObject1).username = paramam.field_username;
+          ad.d("MicroMsg.BigBallContactAssemblerImpl", "account sync: update addr ".concat(String.valueOf(com.tencent.mm.plugin.account.a.getAddrUploadStg().a(((com.tencent.mm.plugin.account.friend.a.a)localObject1).jdb, (com.tencent.mm.plugin.account.friend.a.a)localObject1))));
         }
       }
-      a(parambva, str, paramai, paramBoolean);
+      a(parambzp, str, paramam, paramBoolean);
       AppMethodBeat.o(22338);
       return true;
       label429:
-      bool = com.tencent.mm.bj.d.aJe().fQ((String)localObject1, 1);
-      ac.d("MicroMsg.BigBallContactAssemblerImpl", "fmsgConversation updateState succ, encryptUser = ".concat(String.valueOf(localObject1)));
+      bool = com.tencent.mm.bk.d.aMo().gn((String)localObject1, 1);
+      ad.d("MicroMsg.BigBallContactAssemblerImpl", "fmsgConversation updateState succ, encryptUser = ".concat(String.valueOf(localObject1)));
     }
   }
   
-  private static boolean a(com.tencent.mm.storage.ai paramai, bz parambz)
+  private static boolean a(am paramam, cf paramcf)
   {
     AppMethodBeat.i(22340);
     boolean bool2 = false;
-    if (!bs.isNullOrNil(parambz.field_conDescription)) {
-      paramai.qH(parambz.field_conDescription);
+    if (!bt.isNullOrNil(paramcf.field_conDescription)) {
+      paramam.tr(paramcf.field_conDescription);
     }
     boolean bool1 = bool2;
-    if (!w.wF(paramai.field_username))
+    if (!w.zC(paramam.field_username))
     {
       bool1 = bool2;
-      if (com.tencent.mm.n.b.ln(paramai.field_type))
+      if (com.tencent.mm.o.b.lM(paramam.field_type))
       {
         bool2 = true;
         bool1 = bool2;
-        if (!bs.isNullOrNil(parambz.field_conDescription))
+        if (!bt.isNullOrNil(paramcf.field_conDescription))
         {
-          bvd localbvd = new bvd();
-          localbvd.Flc = paramai.field_username;
-          localbvd.Desc = parambz.field_conDescription;
-          com.tencent.mm.model.az.ayM();
-          com.tencent.mm.model.c.awA().c(new com.tencent.mm.plugin.messenger.foundation.a.a.j.a(54, localbvd));
+          bzs localbzs = new bzs();
+          localbzs.GUK = paramam.field_username;
+          localbzs.Desc = paramcf.field_conDescription;
+          com.tencent.mm.model.ba.aBQ();
+          com.tencent.mm.model.c.azo().c(new k.a(54, localbzs));
           bool1 = bool2;
         }
       }
@@ -249,19 +250,19 @@ public final class c
     return bool1;
   }
   
-  private static void co(String paramString, int paramInt)
+  private static void cr(String paramString, int paramInt)
   {
     AppMethodBeat.i(22342);
-    bl[] arrayOfbl = null;
-    bx[] arrayOfbx;
+    br[] arrayOfbr = null;
+    cd[] arrayOfcd;
     Object localObject1;
-    bd[] arrayOfbd;
+    bh[] arrayOfbh;
     if ((paramInt == 26) || (paramInt == 27) || (paramInt == 28) || (paramInt == 29))
     {
-      ac.d("MicroMsg.BigBallContactAssemblerImpl", "initAddContent, scene is shake");
-      arrayOfbx = com.tencent.mm.bj.d.aJg().aOG(paramString);
-      localObject1 = com.tencent.mm.pluginsdk.ui.preference.b.a(com.tencent.mm.sdk.platformtools.ai.getContext(), arrayOfbx);
-      arrayOfbd = null;
+      ad.d("MicroMsg.BigBallContactAssemblerImpl", "initAddContent, scene is shake");
+      arrayOfcd = com.tencent.mm.bk.d.aMq().aUx(paramString);
+      localObject1 = com.tencent.mm.pluginsdk.ui.preference.b.a(aj.getContext(), arrayOfcd);
+      arrayOfbh = null;
     }
     while (localObject1 == null)
     {
@@ -269,36 +270,36 @@ public final class c
       return;
       if (paramInt == 18)
       {
-        ac.d("MicroMsg.BigBallContactAssemblerImpl", "initAddContent, scene is lbs");
-        arrayOfbl = com.tencent.mm.bj.d.aJf().aOh(paramString);
-        localObject1 = com.tencent.mm.pluginsdk.ui.preference.b.a(com.tencent.mm.sdk.platformtools.ai.getContext(), arrayOfbl);
-        arrayOfbx = null;
-        arrayOfbd = null;
+        ad.d("MicroMsg.BigBallContactAssemblerImpl", "initAddContent, scene is lbs");
+        arrayOfbr = com.tencent.mm.bk.d.aMp().aTY(paramString);
+        localObject1 = com.tencent.mm.pluginsdk.ui.preference.b.a(aj.getContext(), arrayOfbr);
+        arrayOfcd = null;
+        arrayOfbh = null;
       }
       else
       {
-        arrayOfbd = com.tencent.mm.bj.d.aJd().aOe(paramString);
-        localObject1 = com.tencent.mm.pluginsdk.ui.preference.b.a(com.tencent.mm.sdk.platformtools.ai.getContext(), arrayOfbd);
-        arrayOfbx = null;
+        arrayOfbh = com.tencent.mm.bk.d.aMn().aTV(paramString);
+        localObject1 = com.tencent.mm.pluginsdk.ui.preference.b.a(aj.getContext(), arrayOfbh);
+        arrayOfcd = null;
       }
     }
     paramInt = 0;
     int k = localObject1.length;
     int i = 0;
     Object localObject2;
-    bo localbo;
+    bu localbu;
     int m;
     int j;
     if (i < k)
     {
       localObject2 = localObject1[i];
-      localbo = new bo();
-      localbo.setContent(localObject2.hlf);
-      m = w.xt(localObject2.username);
-      if (arrayOfbd != null)
+      localbu = new bu();
+      localbu.setContent(localObject2.hDo);
+      m = w.Ar(localObject2.username);
+      if (arrayOfbh != null)
       {
         j = paramInt + 1;
-        localbo.oA(arrayOfbd[paramInt].field_createTime);
+        localbu.qA(arrayOfbh[paramInt].field_createTime);
         paramInt = j;
       }
     }
@@ -307,16 +308,16 @@ public final class c
     for (;;)
     {
       label215:
-      localbo.re(localObject2.username);
-      localbo.setType(m);
+      localbu.tN(localObject2.username);
+      localbu.setType(m);
       label252:
       long l;
-      if (localObject2.dBE)
+      if (localObject2.dNR)
       {
-        localbo.setStatus(2);
-        localbo.jT(1);
-        com.tencent.mm.model.az.ayM();
-        l = com.tencent.mm.model.c.awD().ap(localbo);
+        localbu.setStatus(2);
+        localbu.kr(1);
+        com.tencent.mm.model.ba.aBQ();
+        l = com.tencent.mm.model.c.azs().as(localbu);
         if (l == -1L) {
           break label384;
         }
@@ -324,67 +325,67 @@ public final class c
       for (boolean bool = true;; bool = false)
       {
         Assert.assertTrue(bool);
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "new msg inserted to db , local id = ".concat(String.valueOf(l)));
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "new msg inserted to db , local id = ".concat(String.valueOf(l)));
         i += 1;
         break;
-        if (arrayOfbl != null)
+        if (arrayOfbr != null)
         {
           j = paramInt + 1;
-          localbo.oA(arrayOfbl[paramInt].field_createtime * 1000L);
+          localbu.qA(arrayOfbr[paramInt].field_createtime * 1000L);
           paramInt = j;
           break label215;
         }
-        if (arrayOfbx == null) {
+        if (arrayOfcd == null) {
           break label533;
         }
         j = paramInt + 1;
-        localbo.oA(arrayOfbx[paramInt].field_createtime * 1000L);
+        localbu.qA(arrayOfcd[paramInt].field_createtime * 1000L);
         paramInt = j;
         break label215;
-        localbo.setStatus(6);
-        localbo.jT(0);
+        localbu.setStatus(6);
+        localbu.kr(0);
         break label252;
       }
-      localObject1 = new bo();
-      if (arrayOfbd != null) {
-        ((bo)localObject1).oA(arrayOfbd[0].field_createTime + 1L);
+      localObject1 = new bu();
+      if (arrayOfbh != null) {
+        ((bu)localObject1).qA(arrayOfbh[0].field_createTime + 1L);
       }
       for (;;)
       {
-        ((bo)localObject1).re(paramString);
-        ((bo)localObject1).setContent(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131764537));
-        ((bo)localObject1).setType(10000);
-        ((bo)localObject1).setStatus(6);
-        ((bo)localObject1).jT(0);
-        com.tencent.mm.model.az.ayM();
-        com.tencent.mm.model.c.awD().ap((bo)localObject1);
+        ((bu)localObject1).tN(paramString);
+        ((bu)localObject1).setContent(aj.getContext().getString(2131764537));
+        ((bu)localObject1).setType(10000);
+        ((bu)localObject1).setStatus(6);
+        ((bu)localObject1).kr(0);
+        com.tencent.mm.model.ba.aBQ();
+        com.tencent.mm.model.c.azs().as((bu)localObject1);
         AppMethodBeat.o(22342);
         return;
-        if (arrayOfbl != null) {
-          ((bo)localObject1).oA(arrayOfbl[0].field_createtime * 1000L + 1L);
-        } else if (arrayOfbx != null) {
-          ((bo)localObject1).oA(arrayOfbx[0].field_createtime * 1000L + 1L);
+        if (arrayOfbr != null) {
+          ((bu)localObject1).qA(arrayOfbr[0].field_createtime * 1000L + 1L);
+        } else if (arrayOfcd != null) {
+          ((bu)localObject1).qA(arrayOfcd[0].field_createtime * 1000L + 1L);
         }
       }
     }
   }
   
-  public final void a(com.tencent.mm.storage.ai paramai1, com.tencent.mm.storage.ai paramai2, bva parambva, byte[] paramArrayOfByte, boolean paramBoolean)
+  public final void a(am paramam1, am paramam2, bzp parambzp, byte[] paramArrayOfByte, boolean paramBoolean)
   {
     AppMethodBeat.i(22335);
-    String str2 = paramai1.field_username;
-    String str1 = paramai1.field_encryptUsername;
-    if ((paramai2 != null) && (!bs.nullAsNil(paramai2.eyg).equals(bs.nullAsNil(parambva.FkT))))
+    String str2 = paramam1.field_username;
+    String str1 = paramam1.field_encryptUsername;
+    if ((paramam2 != null) && (!bt.nullAsNil(paramam2.ePE).equals(bt.nullAsNil(parambzp.GUB))))
     {
-      com.tencent.mm.bd.c.aGS();
-      com.tencent.mm.bd.c.Da(str2);
+      com.tencent.mm.be.c.aKd();
+      com.tencent.mm.be.c.Gf(str2);
     }
-    if (!bs.cv(paramArrayOfByte))
+    if (!bt.cC(paramArrayOfByte))
     {
-      if (com.tencent.mm.storage.ai.YI(paramai1.field_verifyFlag)) {
-        a(parambva, str2, paramai1, true);
+      if (am.aaR(paramam1.field_verifyFlag)) {
+        a(parambzp, str2, paramam1, true);
       }
-      if ((paramai2 == null) || (com.tencent.mm.n.b.ln(paramai2.field_type)) || (!com.tencent.mm.n.b.ln(paramai1.field_type))) {
+      if ((paramam2 == null) || (com.tencent.mm.o.b.lM(paramam2.field_type)) || (!com.tencent.mm.o.b.lM(paramam1.field_type))) {
         break label1964;
       }
     }
@@ -393,83 +394,83 @@ public final class c
     label1964:
     for (int j = 1;; j = 0)
     {
-      if ((j != 0) && (w.wF(str2))) {
-        com.tencent.mm.plugin.report.service.h.wUl.dB(931, 22);
+      if ((j != 0) && (w.zC(str2))) {
+        com.tencent.mm.plugin.report.service.g.yhR.dD(931, 22);
       }
-      Object localObject1 = paramai1.field_username;
-      if (parambva.FkU == null) {}
+      Object localObject1 = paramam1.field_username;
+      if (parambzp.GUC == null) {}
       StringBuffer localStringBuffer;
-      for (paramArrayOfByte = "";; paramArrayOfByte = Integer.valueOf(bs.m(Integer.valueOf(parambva.FkU.FtQ.size()))))
+      for (paramArrayOfByte = "";; paramArrayOfByte = Integer.valueOf(bt.n(Integer.valueOf(parambzp.GUC.HdV.size()))))
       {
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "username:%s PhoneNumList size:%s mergePhoneSw:%s", new Object[] { localObject1, paramArrayOfByte, Integer.valueOf(nnJ) });
-        if (nnJ == -1) {
-          nnJ = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pZn, 0);
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "username:%s PhoneNumList size:%s mergePhoneSw:%s", new Object[] { localObject1, paramArrayOfByte, Integer.valueOf(nOw) });
+        if (nOw == -1) {
+          nOw = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qEz, 0);
         }
-        if (nnJ != 1) {
+        if (nOw != 1) {
           break label1318;
         }
         localStringBuffer = new StringBuffer();
-        if ((parambva.FkU == null) || (parambva.FkU.FtQ == null)) {
+        if ((parambzp.GUC == null) || (parambzp.GUC.HdV == null)) {
           break label335;
         }
-        paramArrayOfByte = parambva.FkU.FtQ.iterator();
+        paramArrayOfByte = parambzp.GUC.HdV.iterator();
         while (paramArrayOfByte.hasNext())
         {
-          localObject1 = (cfj)paramArrayOfByte.next();
-          if (((cfj)localObject1).FtP != null) {
-            localStringBuffer.append(((cfj)localObject1).FtP).append("，");
+          localObject1 = (cki)paramArrayOfByte.next();
+          if (((cki)localObject1).HdU != null) {
+            localStringBuffer.append(((cki)localObject1).HdU).append("，");
           }
         }
-        a(paramai1, parambva, true);
+        a(paramam1, parambzp, true);
         break;
       }
       label335:
-      ac.i("MicroMsg.BigBallContactAssemblerImpl", "username:%s, phoneList %s", new Object[] { paramai1.field_username, localStringBuffer.toString() });
+      ad.i("MicroMsg.BigBallContactAssemblerImpl", "username:%s, phoneList %s", new Object[] { paramam1.field_username, localStringBuffer.toString() });
       localObject1 = null;
       paramArrayOfByte = null;
       int m = 0;
-      if (paramai2 != null)
+      if (paramam2 != null)
       {
-        localObject1 = paramai2.eyl;
-        paramArrayOfByte = com.tencent.mm.n.a.a(paramai2, (String)localObject1);
+        localObject1 = paramam2.ePJ;
+        paramArrayOfByte = com.tencent.mm.o.a.a(paramam2, (String)localObject1);
       }
       Object localObject2;
       Object localObject3;
       if (localObject1 != null)
       {
-        paramai2 = paramArrayOfByte;
+        paramam2 = paramArrayOfByte;
         localObject2 = localObject1;
         if (!((String)localObject1).equals("")) {}
       }
       else
       {
-        com.tencent.mm.model.az.ayM();
-        localObject3 = com.tencent.mm.model.c.awC().alK(str1);
-        paramai2 = paramArrayOfByte;
+        com.tencent.mm.model.ba.aBQ();
+        localObject3 = com.tencent.mm.model.c.azq().aqz(str1);
+        paramam2 = paramArrayOfByte;
         localObject2 = localObject1;
         if (localObject3 != null)
         {
-          localObject1 = ((bz)localObject3).field_conPhone;
-          paramai2 = paramArrayOfByte;
+          localObject1 = ((cf)localObject3).field_conPhone;
+          paramam2 = paramArrayOfByte;
           localObject2 = localObject1;
           if (localObject1 != null)
           {
-            paramai2 = ((String)localObject1).split(",");
+            paramam2 = ((String)localObject1).split(",");
             localObject2 = localObject1;
           }
         }
       }
-      ac.i("MicroMsg.BigBallContactAssemblerImpl", "username:%s, oldPhoneList %s", new Object[] { paramai1.field_username, bs.nullAsNil((String)localObject2) });
+      ad.i("MicroMsg.BigBallContactAssemblerImpl", "username:%s, oldPhoneList %s", new Object[] { paramam1.field_username, bt.nullAsNil((String)localObject2) });
       int i;
-      if ((paramai2 != null) && (paramai2.length > 0))
+      if ((paramam2 != null) && (paramam2.length > 0))
       {
-        paramArrayOfByte = com.tencent.mm.n.a.ai(localStringBuffer.toString(), "，");
-        int i2 = paramai2.length;
+        paramArrayOfByte = com.tencent.mm.o.a.aj(localStringBuffer.toString(), "，");
+        int i2 = paramam2.length;
         int k = 0;
         i = 0;
         while (k < i2)
         {
-          localObject1 = paramai2[k];
+          localObject1 = paramam2[k];
           int n = i;
           int i1 = m;
           if (paramArrayOfByte != null)
@@ -481,7 +482,7 @@ public final class c
               i1 = paramArrayOfByte.length;
               n = 0;
               while (n < i1) {
-                if (!bs.lr((String)localObject1, paramArrayOfByte[n]))
+                if (!bt.lQ((String)localObject1, paramArrayOfByte[n]))
                 {
                   i = 1;
                   n += 1;
@@ -497,7 +498,7 @@ public final class c
               {
                 n = i;
                 i1 = m;
-                if (Ta((String)localObject1))
+                if (Wx((String)localObject1))
                 {
                   localStringBuffer.append((String)localObject1).append("，");
                   i1 = 1;
@@ -512,38 +513,38 @@ public final class c
         }
         if (m != 0)
         {
-          paramai2 = new bvs();
-          paramai2.Flc = paramai1.field_username;
-          paramArrayOfByte = new cfk();
-          localObject1 = com.tencent.mm.n.a.ai(localStringBuffer.toString(), "，");
+          paramam2 = new cai();
+          paramam2.GUK = paramam1.field_username;
+          paramArrayOfByte = new ckj();
+          localObject1 = com.tencent.mm.o.a.aj(localStringBuffer.toString(), "，");
           if ((localObject1 != null) && (localObject1.length > 0))
           {
-            paramArrayOfByte.ncL = localObject1.length;
-            paramArrayOfByte.FtQ = new LinkedList();
+            paramArrayOfByte.nDi = localObject1.length;
+            paramArrayOfByte.HdV = new LinkedList();
             k = localObject1.length;
             i = 0;
             while (i < k)
             {
               localObject2 = localObject1[i];
-              localObject3 = new cfj();
-              ((cfj)localObject3).FtP = ((String)localObject2);
-              paramArrayOfByte.FtQ.add(localObject3);
+              localObject3 = new cki();
+              ((cki)localObject3).HdU = ((String)localObject2);
+              paramArrayOfByte.HdV.add(localObject3);
               i += 1;
             }
-            paramai2.FkU = paramArrayOfByte;
-            com.tencent.mm.model.az.ayM();
-            com.tencent.mm.model.c.awA().c(new com.tencent.mm.plugin.messenger.foundation.a.a.j.a(60, paramai2));
+            paramam2.GUC = paramArrayOfByte;
+            com.tencent.mm.model.ba.aBQ();
+            com.tencent.mm.model.c.azo().c(new k.a(60, paramam2));
           }
         }
-        if ((j != 0) && (15 == parambva.sVo) && (!bs.isNullOrNil(paramai1.field_username)))
+        if ((j != 0) && (15 == parambzp.tRT) && (!bt.isNullOrNil(paramam1.field_username)))
         {
-          paramai2 = com.tencent.mm.plugin.account.a.getAddrUploadStg().Gf(paramai1.field_username);
-          if (paramai2 != null)
+          paramam2 = com.tencent.mm.plugin.account.a.getAddrUploadStg().Ju(paramam1.field_username);
+          if (paramam2 != null)
           {
-            paramArrayOfByte = com.tencent.mm.n.a.ai(localStringBuffer.toString(), "，");
-            localObject1 = com.tencent.mm.plugin.report.service.h.wUl;
-            localObject2 = paramai1.field_username;
-            if (!bs.isNullOrNil(paramai2.JC())) {
+            paramArrayOfByte = com.tencent.mm.o.a.aj(localStringBuffer.toString(), "，");
+            localObject1 = com.tencent.mm.plugin.report.service.g.yhR;
+            localObject2 = paramam1.field_username;
+            if (!bt.isNullOrNil(paramam2.Lb())) {
               break label1291;
             }
             j = 0;
@@ -551,60 +552,60 @@ public final class c
               break label1297;
             }
             i = 0;
-            ((com.tencent.mm.plugin.report.service.h)localObject1).f(12040, new Object[] { localObject2, Integer.valueOf(3), Integer.valueOf(j), Integer.valueOf(i) });
+            ((com.tencent.mm.plugin.report.service.g)localObject1).f(12040, new Object[] { localObject2, Integer.valueOf(3), Integer.valueOf(j), Integer.valueOf(i) });
           }
         }
       }
-      ac.i("MicroMsg.BigBallContactAssemblerImpl", "username:%s, phoneList %s", new Object[] { paramai1.field_username, localStringBuffer.toString() });
-      paramai2 = localStringBuffer.toString();
+      ad.i("MicroMsg.BigBallContactAssemblerImpl", "username:%s, phoneList %s", new Object[] { paramam1.field_username, localStringBuffer.toString() });
+      paramam2 = localStringBuffer.toString();
       label998:
-      paramai2 = bs.bG(paramai2, "");
-      ac.i("MicroMsg.BigBallContactAssemblerImpl", paramai2);
-      paramai1.qN(paramai2);
-      if ((!w.sQ(str2)) && (parambva.ENw != null)) {
-        q.a(str2, parambva.ENw);
+      paramam2 = bt.bI(paramam2, "");
+      ad.i("MicroMsg.BigBallContactAssemblerImpl", paramam2);
+      paramam1.tx(paramam2);
+      if ((!w.vF(str2)) && (parambzp.GwB != null)) {
+        q.a(str2, parambzp.GwB);
       }
       boolean bool1 = false;
-      com.tencent.mm.model.az.ayM();
-      paramArrayOfByte = com.tencent.mm.model.c.awC().alK(paramai1.field_username);
-      if (!bs.isNullOrNil(paramai1.field_conRemark))
+      com.tencent.mm.model.ba.aBQ();
+      paramArrayOfByte = com.tencent.mm.model.c.azq().aqz(paramam1.field_username);
+      if (!bt.isNullOrNil(paramam1.field_conRemark))
       {
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "remark is set");
-        if ((paramArrayOfByte != null) && (!bs.isNullOrNil(paramai1.eyf)) && (!paramai1.eyf.equals(paramArrayOfByte.field_conDescription))) {
-          a(paramai1, paramArrayOfByte);
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "remark is set");
+        if ((paramArrayOfByte != null) && (!bt.isNullOrNil(paramam1.ePD)) && (!paramam1.ePD.equals(paramArrayOfByte.field_conDescription))) {
+          a(paramam1, paramArrayOfByte);
         }
       }
       for (bool1 = false;; bool1 = paramBoolean)
       {
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "username:%s needModContact %s encryptUser:%s", new Object[] { paramai1.field_username, Boolean.valueOf(bool1), str1 });
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "username:%s needModContact %s encryptUser:%s", new Object[] { paramam1.field_username, Boolean.valueOf(bool1), str1 });
         if (bool1) {
-          w.B(paramai1);
+          w.B(paramam1);
         }
-        paramai2 = null;
-        com.tencent.mm.model.az.ayM();
-        paramArrayOfByte = com.tencent.mm.model.c.awC().alK(paramai1.field_encryptUsername);
+        paramam2 = null;
+        com.tencent.mm.model.ba.aBQ();
+        paramArrayOfByte = com.tencent.mm.model.c.azq().aqz(paramam1.field_encryptUsername);
         if (paramArrayOfByte != null) {
-          paramai2 = paramArrayOfByte.field_contactLabels;
+          paramam2 = paramArrayOfByte.field_contactLabels;
         }
-        parambva = paramai2;
-        if (bs.isNullOrNil(paramai2))
+        parambzp = paramam2;
+        if (bt.isNullOrNil(paramam2))
         {
-          com.tencent.mm.model.az.ayM();
-          localObject1 = com.tencent.mm.model.c.awC().alK(paramai1.field_username);
-          parambva = paramai2;
+          com.tencent.mm.model.ba.aBQ();
+          localObject1 = com.tencent.mm.model.c.azq().aqz(paramam1.field_username);
+          parambzp = paramam2;
           paramArrayOfByte = (byte[])localObject1;
           if (localObject1 != null)
           {
-            parambva = ((bz)localObject1).field_contactLabels;
+            parambzp = ((cf)localObject1).field_contactLabels;
             paramArrayOfByte = (byte[])localObject1;
           }
         }
-        if (!bs.isNullOrNil(parambva))
+        if (!bt.isNullOrNil(parambzp))
         {
-          com.tencent.mm.plugin.label.a.a.cWd().hq(paramai1.field_username, parambva);
+          com.tencent.mm.plugin.label.a.a.dfo().hC(paramam1.field_username, parambzp);
           paramArrayOfByte.field_contactLabels = "";
-          com.tencent.mm.model.az.ayM();
-          com.tencent.mm.model.c.awC().replace(paramArrayOfByte);
+          com.tencent.mm.model.ba.aBQ();
+          com.tencent.mm.model.c.azq().replace(paramArrayOfByte);
         }
         AppMethodBeat.o(22335);
         return;
@@ -617,120 +618,120 @@ public final class c
         }
         i = paramArrayOfByte.length;
         break label925;
-        paramai2 = new StringBuffer();
-        if ((parambva.FkU != null) && (parambva.FkU.FtQ != null))
+        paramam2 = new StringBuffer();
+        if ((parambzp.GUC != null) && (parambzp.GUC.HdV != null))
         {
-          paramArrayOfByte = parambva.FkU.FtQ.iterator();
+          paramArrayOfByte = parambzp.GUC.HdV.iterator();
           while (paramArrayOfByte.hasNext())
           {
-            localObject1 = (cfj)paramArrayOfByte.next();
-            if (((cfj)localObject1).FtP != null) {
-              paramai2.append(((cfj)localObject1).FtP).append("，");
+            localObject1 = (cki)paramArrayOfByte.next();
+            if (((cki)localObject1).HdU != null) {
+              paramam2.append(((cki)localObject1).HdU).append("，");
             }
           }
         }
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "username:%s, phoneList %s", new Object[] { paramai1.field_username, paramai2.toString() });
-        paramai2 = paramai2.toString();
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "username:%s, phoneList %s", new Object[] { paramam1.field_username, paramam2.toString() });
+        paramam2 = paramam2.toString();
         break label998;
         if (paramArrayOfByte != null)
         {
-          paramai2 = paramArrayOfByte;
-          if (!bs.isNullOrNil(paramArrayOfByte.field_encryptUsername)) {}
+          paramam2 = paramArrayOfByte;
+          if (!bt.isNullOrNil(paramArrayOfByte.field_encryptUsername)) {}
         }
         else
         {
-          ac.i("MicroMsg.BigBallContactAssemblerImpl", "try get stranger again");
-          paramai2 = paramArrayOfByte;
-          if (!bs.isNullOrNil(str1))
+          ad.i("MicroMsg.BigBallContactAssemblerImpl", "try get stranger again");
+          paramam2 = paramArrayOfByte;
+          if (!bt.isNullOrNil(str1))
           {
-            com.tencent.mm.model.az.ayM();
-            paramai2 = com.tencent.mm.model.c.awC().alK(str1);
+            com.tencent.mm.model.ba.aBQ();
+            paramam2 = com.tencent.mm.model.c.azq().aqz(str1);
           }
         }
         paramBoolean = bool1;
-        if (paramai2 != null)
+        if (paramam2 != null)
         {
           paramBoolean = bool1;
-          if (!bs.isNullOrNil(paramai2.field_encryptUsername))
+          if (!bt.isNullOrNil(paramam2.field_encryptUsername))
           {
-            ac.i("MicroMsg.BigBallContactAssemblerImpl", "mod stranger remark : " + paramai2.field_encryptUsername);
-            paramai1.qh(paramai2.field_conRemark);
-            paramai1.qn(com.tencent.mm.platformtools.f.Fv(paramai2.field_conRemark));
-            paramai1.qo(com.tencent.mm.platformtools.f.Fw(paramai2.field_conRemark));
-            paramBoolean = a(paramai1, paramai2);
+            ad.i("MicroMsg.BigBallContactAssemblerImpl", "mod stranger remark : " + paramam2.field_encryptUsername);
+            paramam1.sR(paramam2.field_conRemark);
+            paramam1.sX(com.tencent.mm.platformtools.f.IL(paramam2.field_conRemark));
+            paramam1.sY(com.tencent.mm.platformtools.f.IM(paramam2.field_conRemark));
+            paramBoolean = a(paramam1, paramam2);
           }
         }
-        switch (paramai1.getSource())
+        switch (paramam1.getSource())
         {
         }
       }
-      paramai2 = null;
-      if ((parambva != null) && (!bs.isNullOrNil(parambva.FkN)))
+      paramam2 = null;
+      if ((parambzp != null) && (!bt.isNullOrNil(parambzp.GUv)))
       {
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "MobileHash[%s],MobileFullHash[%s]", new Object[] { parambva.FkN, parambva.FkO });
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "MobileHash[%s],MobileFullHash[%s]", new Object[] { parambzp.GUv, parambzp.GUw });
         paramArrayOfByte = com.tencent.mm.plugin.account.a.getAddrUploadStg();
-        paramai2 = parambva.FkN;
-        localObject1 = parambva.FkO;
-        parambva = paramArrayOfByte.Gi(paramai2);
-        paramai2 = parambva;
-        if (parambva == null) {
-          paramai2 = paramArrayOfByte.Gi((String)localObject1);
+        paramam2 = parambzp.GUv;
+        localObject1 = parambzp.GUw;
+        parambzp = paramArrayOfByte.Jx(paramam2);
+        paramam2 = parambzp;
+        if (parambzp == null) {
+          paramam2 = paramArrayOfByte.Jx((String)localObject1);
         }
-        if (paramai2 != null) {
+        if (paramam2 != null) {
           break label1919;
         }
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "dealWithRemark-> addr == null");
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "dealWithRemark-> addr == null");
       }
       for (;;)
       {
         bool1 = paramBoolean;
-        if (paramai2 == null) {
+        if (paramam2 == null) {
           break;
         }
         bool1 = paramBoolean;
-        if (bs.isNullOrNil(paramai2.aPm())) {
+        if (bt.isNullOrNil(paramam2.aSy())) {
           break;
         }
         bool1 = paramBoolean;
-        if (!paramai2.aPt()) {
+        if (!paramam2.aSF()) {
           break;
         }
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "remarkName RealName[%s], User[%s], remarkChange[%s]", new Object[] { paramai2.aPm(), paramai2.getUsername(), Boolean.valueOf(paramBoolean) });
-        paramai2.username = paramai1.field_username;
-        paramai2.status = 2;
-        paramai2.aPs();
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "remarkName RealName[%s], User[%s], remarkChange[%s]", new Object[] { paramam2.aSy(), paramam2.getUsername(), Boolean.valueOf(paramBoolean) });
+        paramam2.username = paramam1.field_username;
+        paramam2.status = 2;
+        paramam2.aSE();
         boolean bool2 = paramBoolean;
         if (!paramBoolean)
         {
-          paramai1.qh(paramai2.aPm());
-          paramai1.qn(com.tencent.mm.platformtools.f.Fv(paramai2.aPm()));
-          paramai1.qo(com.tencent.mm.platformtools.f.Fw(paramai2.aPm()));
+          paramam1.sR(paramam2.aSy());
+          paramam1.sX(com.tencent.mm.platformtools.f.IL(paramam2.aSy()));
+          paramam1.sY(com.tencent.mm.platformtools.f.IM(paramam2.aSy()));
           bool2 = true;
         }
         bool1 = bool2;
-        if (!com.tencent.mm.n.b.ln(paramai1.field_type)) {
+        if (!com.tencent.mm.o.b.lM(paramam1.field_type)) {
           break;
         }
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "updateAddrUp RealName[%s], User[%s], remarkChange[%s]", new Object[] { paramai2.aPm(), paramai2.getUsername(), Boolean.valueOf(bool2) });
-        com.tencent.mm.plugin.account.a.getAddrUploadStg().a(paramai2.JC(), paramai2);
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "updateAddrUp RealName[%s], User[%s], remarkChange[%s]", new Object[] { paramam2.aSy(), paramam2.getUsername(), Boolean.valueOf(bool2) });
+        com.tencent.mm.plugin.account.a.getAddrUploadStg().a(paramam2.Lb(), paramam2);
         bool1 = bool2;
         break;
-        if (bs.isNullOrNil(str1)) {
+        if (bt.isNullOrNil(str1)) {
           break label1694;
         }
-        paramai2 = com.tencent.mm.plugin.account.a.getAddrUploadStg().Gf(str1);
+        paramam2 = com.tencent.mm.plugin.account.a.getAddrUploadStg().Ju(str1);
         break label1694;
         label1919:
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "remarkName RealName[%s], User[%s], needSetRemark[%s]", new Object[] { bs.nullAsNil(paramai2.aPm()), bs.nullAsNil(paramai2.getUsername()), Boolean.valueOf(paramai2.aPt()) });
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "remarkName RealName[%s], User[%s], needSetRemark[%s]", new Object[] { bt.nullAsNil(paramam2.aSy()), bt.nullAsNil(paramam2.getUsername()), Boolean.valueOf(paramam2.aSF()) });
       }
     }
   }
   
-  public final void b(com.tencent.mm.storage.ai paramai1, com.tencent.mm.storage.ai paramai2, bva parambva, byte[] paramArrayOfByte, boolean paramBoolean)
+  public final void b(am paramam1, am paramam2, bzp parambzp, byte[] paramArrayOfByte, boolean paramBoolean)
   {
     AppMethodBeat.i(22336);
-    paramArrayOfByte = paramai1.field_username;
-    Object localObject2 = paramai1.field_encryptUsername;
+    paramArrayOfByte = paramam1.field_username;
+    Object localObject2 = paramam1.field_encryptUsername;
     Object localObject1;
     Object localObject3;
     label138:
@@ -741,26 +742,26 @@ public final class c
     Object localObject4;
     int n;
     int i1;
-    if (w.sQ(paramArrayOfByte))
+    if (w.vF(paramArrayOfByte))
     {
-      if (parambva.ENw != null)
+      if (parambzp.GwB != null)
       {
-        localObject1 = parambva.ENw.Eob;
-        if (com.tencent.mm.bi.d.hXZ != null) {
-          break label1873;
+        localObject1 = parambzp.GwB.FVk;
+        if (com.tencent.mm.bj.d.irv != null) {
+          break label2001;
         }
         i = 0;
         if (i == 0)
         {
-          localObject1 = parambva.ENw.Eob;
-          localObject3 = new vt();
-          ((vt)localObject3).dyB.dyD = true;
-          com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject3);
-          if ((!bs.isNullOrNil(paramArrayOfByte)) && (w.sQ(paramArrayOfByte)) && (!bs.isNullOrNil(((vt)localObject3).dyC.dyF)) && (paramArrayOfByte.equals(((vt)localObject3).dyC.dyF))) {
-            break label2143;
+          localObject1 = parambzp.GwB.FVk;
+          localObject3 = new wm();
+          ((wm)localObject3).dKN.dKP = true;
+          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject3);
+          if ((!bt.isNullOrNil(paramArrayOfByte)) && (w.vF(paramArrayOfByte)) && (!bt.isNullOrNil(((wm)localObject3).dKO.dKR)) && (paramArrayOfByte.equals(((wm)localObject3).dKO.dKR))) {
+            break label2271;
           }
         }
-        localObject1 = parambva.ENw.Eob;
+        localObject1 = parambzp.GwB.FVk;
         if (localObject1 != null)
         {
           localObject1 = ((LinkedList)localObject1).iterator();
@@ -769,61 +770,61 @@ public final class c
             if (!((Iterator)localObject1).hasNext()) {
               break;
             }
-            localObject3 = (ub)((Iterator)localObject1).next();
-          } while ((bs.isNullOrNil(((ub)localObject3).ncR)) || (!((ub)localObject3).ncR.equals(u.axw())));
+            localObject3 = (vw)((Iterator)localObject1).next();
+          } while ((bt.isNullOrNil(((vw)localObject3).nDo)) || (!((vw)localObject3).nDo.equals(u.aAm())));
         }
         i = 0;
         if (i != 0)
         {
-          ((com.tencent.mm.plugin.multitalk.model.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.multitalk.model.a.class)).amj(paramArrayOfByte);
-          ((com.tencent.mm.live.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.live.a.class)).forceStopCurLive(com.tencent.mm.sdk.platformtools.ai.getContext());
+          ((com.tencent.mm.plugin.multitalk.model.d)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.multitalk.model.d.class)).arf(paramArrayOfByte);
+          ((com.tencent.mm.live.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.live.a.class)).forceStopCurLive(aj.getContext());
         }
       }
-      if (parambva.ENw != null) {
-        break label2292;
+      if (parambzp.GwB != null) {
+        break label2420;
       }
       i = 0;
-      localObject1 = parambva.FkI;
-      localObject3 = parambva.FkH;
-      k = parambva.FkS;
-      m = parambva.FkR;
-      localObject4 = parambva.tlX;
-      n = parambva.FkQ;
-      i1 = parambva.FkV;
-      if (parambva.ENw != null) {
-        break label2304;
+      localObject1 = parambzp.GUq;
+      localObject3 = parambzp.GUp;
+      k = parambzp.GUA;
+      m = parambzp.GUz;
+      localObject4 = parambzp.ukw;
+      n = parambzp.GUy;
+      i1 = parambzp.GUD;
+      if (parambzp.GwB != null) {
+        break label2432;
       }
     }
-    label2304:
-    for (int j = -1;; j = parambva.ENw.Eoc)
+    label2432:
+    for (int j = -1;; j = parambzp.GwB.FVl)
     {
-      ac.i("MicroMsg.BigBallContactAssemblerImpl", "processModContact chatroom:%s count:%d ChatRoomData:%s owner:%s type:%d max:%d upgrader:%s chatroomVersion:%d chatroomInfoVersion:%s infomask:%d ", new Object[] { paramArrayOfByte, Integer.valueOf(i), localObject1, localObject3, Integer.valueOf(k), Integer.valueOf(m), localObject4, Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(j) });
-      if ((parambva.ENw != null) && (parambva.ENw.fsB != 0))
+      ad.i("MicroMsg.BigBallContactAssemblerImpl", "processModContact chatroom:%s count:%d ChatRoomData:%s owner:%s type:%d max:%d upgrader:%s chatroomVersion:%d chatroomInfoVersion:%s infomask:%d ", new Object[] { paramArrayOfByte, Integer.valueOf(i), localObject1, localObject3, Integer.valueOf(k), Integer.valueOf(m), localObject4, Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(j) });
+      if ((parambzp.GwB != null) && (parambzp.GwB.fLb != 0))
       {
-        localObject1 = new com.tencent.mm.j.a.a.a();
-        ((com.tencent.mm.j.a.a.a)localObject1).type = parambva.FkS;
-        ((com.tencent.mm.j.a.a.a)localObject1).maxCount = parambva.FkR;
-        ((com.tencent.mm.j.a.a.a)localObject1).fBT = parambva.tlX;
-        ((com.tencent.mm.j.a.a.a)localObject1).fBU = parambva.FkQ;
-        if (parambva.ENw.Eoc == 0) {
-          ((com.tencent.mm.j.a.a.a)localObject1).doy = parambva.FkQ;
+        localObject1 = new com.tencent.mm.k.a.a.a();
+        ((com.tencent.mm.k.a.a.a)localObject1).type = parambzp.GUA;
+        ((com.tencent.mm.k.a.a.a)localObject1).maxCount = parambzp.GUz;
+        ((com.tencent.mm.k.a.a.a)localObject1).fVh = parambzp.ukw;
+        ((com.tencent.mm.k.a.a.a)localObject1).fVi = parambzp.GUy;
+        if (parambzp.GwB.FVl == 0) {
+          ((com.tencent.mm.k.a.a.a)localObject1).dAm = parambzp.GUy;
         }
-        localObject3 = new me();
-        ((me)localObject3).dox.chatroomName = paramArrayOfByte;
-        ((me)localObject3).dox.doy = ((com.tencent.mm.j.a.a.a)localObject1).doy;
-        q.a(paramArrayOfByte, parambva.FkH, parambva.ENw, parambva.FkW, parambva.FkV, u.axw(), (com.tencent.mm.j.a.a.a)localObject1, (com.tencent.mm.sdk.b.b)localObject3);
+        localObject3 = new mn();
+        ((mn)localObject3).dAl.chatroomName = paramArrayOfByte;
+        ((mn)localObject3).dAl.dAm = ((com.tencent.mm.k.a.a.a)localObject1).dAm;
+        q.a(paramArrayOfByte, parambzp.GUp, parambzp.GwB, parambzp.GUE, parambzp.GUD, u.aAm(), (com.tencent.mm.k.a.a.a)localObject1, (com.tencent.mm.sdk.b.b)localObject3);
       }
       try
       {
-        bool1 = ((k)com.tencent.mm.kernel.g.ab(k.class)).awG().Gt(paramArrayOfByte);
-        bool2 = q.GN(paramArrayOfByte);
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "processModContact chatroom:%s isExistConversation:%s isNeedUpdateChatRoomInfo:%s", new Object[] { paramArrayOfByte, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        bool1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azv().JI(paramArrayOfByte);
+        bool2 = q.yV(paramArrayOfByte);
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "processModContact chatroom:%s isExistConversation:%s isNeedUpdateChatRoomInfo:%s", new Object[] { paramArrayOfByte, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
         if ((bool1) && (bool2))
         {
-          localObject1 = new il();
-          ((il)localObject1).djE.djF = paramArrayOfByte;
-          com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
-          q.aa(paramArrayOfByte, parambva.FkS);
+          localObject1 = new it();
+          ((it)localObject1).dvr.dvs = paramArrayOfByte;
+          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
+          q.ad(paramArrayOfByte, parambzp.GUA);
         }
       }
       catch (Exception localException)
@@ -833,54 +834,56 @@ public final class c
           boolean bool1;
           boolean bool2;
           long l;
-          ac.e("MicroMsg.BigBallContactAssemblerImpl", "processModContact chatroom:%s, exception:%s %s", new Object[] { paramArrayOfByte, localException.getClass().getSimpleName(), localException.getMessage() });
+          ad.e("MicroMsg.BigBallContactAssemblerImpl", "processModContact chatroom:%s, exception:%s %s", new Object[] { paramArrayOfByte, localException.getClass().getSimpleName(), localException.getMessage() });
           continue;
-          if ((paramai1.fad()) && (com.tencent.mm.al.f.AO(paramai1.field_username)) && (paramai1 != null) && (paramai1.fad()) && (com.tencent.mm.al.f.AO(paramai1.field_username)))
+          if ((paramam1.fqg()) && (com.tencent.mm.am.g.DN(paramam1.field_username)) && (paramam1 != null) && (paramam1.fqg()) && (com.tencent.mm.am.g.DN(paramam1.field_username)))
           {
-            ac.i("MicroMsg.BigBallContactAssemblerImpl", "dealPlaceSubscribeBizToTop uct : " + paramai1.field_username);
-            com.tencent.mm.model.az.ayM();
-            ap localap = com.tencent.mm.model.c.awG().aNI(paramai1.field_username);
-            af.aCW().AE(paramai1.field_username);
-            if (localap == null)
+            ad.i("MicroMsg.BigBallContactAssemblerImpl", "dealPlaceSubscribeBizToTop uct : " + paramam1.field_username);
+            com.tencent.mm.model.ba.aBQ();
+            at localat = com.tencent.mm.model.c.azv().aTz(paramam1.field_username);
+            ag.aFZ().DD(paramam1.field_username);
+            if (localat == null)
             {
-              com.tencent.mm.model.az.ayM();
-              if (com.tencent.mm.model.c.awG().aNI("officialaccounts") == null)
+              com.tencent.mm.model.ba.aBQ();
+              if (com.tencent.mm.model.c.azv().aTz("officialaccounts") == null)
               {
-                localap = new ap("officialaccounts");
-                localap.faH();
-                com.tencent.mm.model.az.ayM();
-                com.tencent.mm.model.c.awG().e(localap);
+                localat = new at("officialaccounts");
+                localat.fqK();
+                com.tencent.mm.model.ba.aBQ();
+                com.tencent.mm.model.c.azv().e(localat);
               }
-              localap = new ap(paramai1.field_username);
-              localap.qT("officialaccounts");
-              com.tencent.mm.model.az.ayM();
-              com.tencent.mm.model.c.awG().e(localap);
+              localat = new at(paramam1.field_username);
+              localat.tD("officialaccounts");
+              com.tencent.mm.model.ba.aBQ();
+              com.tencent.mm.model.c.azv().e(localat);
               continue;
-              if (((paramai2 == null) || ((paramai2.field_type & 0x800) != (paramai1.field_type & 0x800))) && (com.tencent.mm.al.f.AQ(paramai1.field_username)) && (!com.tencent.mm.al.f.so(paramai1.field_username)))
+              if (((paramam2 == null) || ((paramam2.field_type & 0x800) != (paramam1.field_type & 0x800))) && (com.tencent.mm.am.g.DP(paramam1.field_username)) && (!com.tencent.mm.am.g.vd(paramam1.field_username)))
               {
-                K(paramai1);
+                K(paramam1);
                 continue;
-                if (com.tencent.mm.al.f.AT(paramai1.field_username))
+                ad.i("MicroMsg.BigBallContactAssemblerImpl", "update stranger ok, encryptUsername:%s, friendUsernname:%s", new Object[] { paramArrayOfByte.field_encryptUsername, parambzp.GtU });
+                continue;
+                if (com.tencent.mm.am.g.DS(paramam1.field_username))
                 {
-                  com.tencent.mm.model.az.ayM();
-                  if (com.tencent.mm.model.c.awG().aNI(paramai1.field_username) == null)
+                  com.tencent.mm.model.ba.aBQ();
+                  if (com.tencent.mm.model.c.azv().aTz(paramam1.field_username) == null)
                   {
-                    paramArrayOfByte = af.aCW().AE(paramai1.field_username);
-                    localap = new ap(paramai1.field_username);
-                    ac.i("MicroMsg.BigBallContactAssemblerImpl", "Enterprise belong %s, userName: %s", new Object[] { paramArrayOfByte.IV(), paramai1.field_username });
-                    localap.qT(bs.nullAsNil(paramArrayOfByte.IV()));
-                    localap.faH();
-                    com.tencent.mm.model.az.ayM();
-                    com.tencent.mm.model.c.awG().e(localap);
+                    paramArrayOfByte = ag.aFZ().DD(paramam1.field_username);
+                    localat = new at(paramam1.field_username);
+                    ad.i("MicroMsg.BigBallContactAssemblerImpl", "Enterprise belong %s, userName: %s", new Object[] { paramArrayOfByte.Kv(), paramam1.field_username });
+                    localat.tD(bt.nullAsNil(paramArrayOfByte.Kv()));
+                    localat.fqK();
+                    com.tencent.mm.model.ba.aBQ();
+                    com.tencent.mm.model.c.azv().e(localat);
                     continue;
                     i = 0;
                     continue;
-                    if ((paramai2 == null) || ((paramai2.field_type & 0x8) != (paramai1.field_type & 0x8)))
+                    if ((paramam2 == null) || ((paramam2.field_type & 0x8) != (paramam1.field_type & 0x8)))
                     {
-                      com.tencent.mm.model.az.ayM();
-                      com.tencent.mm.model.c.awG().c(new String[] { paramai1.field_username }, "");
+                      com.tencent.mm.model.ba.aBQ();
+                      com.tencent.mm.model.c.azv().c(new String[] { paramam1.field_username }, "");
                       continue;
-                      paramai2.faH();
+                      paramam2.fqK();
                       continue;
                       bool1 = false;
                     }
@@ -891,187 +894,202 @@ public final class c
           }
         }
       }
-      if ((!com.tencent.mm.n.b.ln(paramai1.field_type)) && (!paramai1.aaF()) && (!com.tencent.mm.storage.ai.ww(paramai1.field_username)) && (!w.sQ(paramai1.field_username)))
+      if ((!com.tencent.mm.o.b.lM(paramam1.field_type)) && (!paramam1.adi()) && (!am.zs(paramam1.field_username)) && (!w.vF(paramam1.field_username)) && (!am.ail(paramam1.field_username)))
       {
-        ac.w("MicroMsg.BigBallContactAssemblerImpl", "processModContact delChatContact now user:%s ,type:%d", new Object[] { paramai1.field_username, Integer.valueOf(paramai1.field_type) });
-        com.tencent.mm.model.az.ayM();
-        com.tencent.mm.model.c.awG().aNG(paramai1.field_username);
+        ad.w("MicroMsg.BigBallContactAssemblerImpl", "processModContact delChatContact now user:%s ,type:%d", new Object[] { paramam1.field_username, Integer.valueOf(paramam1.field_type) });
+        com.tencent.mm.model.ba.aBQ();
+        com.tencent.mm.model.c.azv().aTx(paramam1.field_username);
       }
-      if ((paramai1.field_type & 0x800) == 0) {
-        break label2543;
+      if ((paramam1.field_type & 0x800) == 0) {
+        break label2671;
       }
-      if ((paramai2 == null) || ((paramai2.field_type & 0x800) != (paramai1.field_type & 0x800)))
+      if ((paramam2 == null) || ((paramam2.field_type & 0x800) != (paramam1.field_type & 0x800)))
       {
-        if ((!com.tencent.mm.al.f.AQ(paramai1.field_username)) || (com.tencent.mm.al.f.so(paramai1.field_username))) {
-          break label2357;
+        if ((!com.tencent.mm.am.g.DP(paramam1.field_username)) || (com.tencent.mm.am.g.vd(paramam1.field_username))) {
+          break label2485;
         }
-        K(paramai1);
+        K(paramam1);
       }
-      if ((paramai2 == null) || (com.tencent.mm.n.b.ln(paramai2.field_type)) || (!com.tencent.mm.n.b.ln(paramai1.field_type))) {
-        break label2772;
+      if ((paramam2 == null) || (com.tencent.mm.o.b.lM(paramam2.field_type)) || (!com.tencent.mm.o.b.lM(paramam1.field_type))) {
+        break label2930;
       }
       bool1 = true;
-      if (com.tencent.mm.n.b.ln(paramai1.field_type))
+      if (com.tencent.mm.o.b.lM(paramam1.field_type))
       {
-        com.tencent.mm.model.az.ayM();
-        localObject1 = com.tencent.mm.model.c.awC().alK(paramArrayOfByte);
+        com.tencent.mm.model.ba.aBQ();
+        localObject1 = com.tencent.mm.model.c.azq().aqz(paramArrayOfByte);
         if (localObject1 != null)
         {
           paramArrayOfByte = (byte[])localObject1;
-          if (!bs.isNullOrNil(((bz)localObject1).field_encryptUsername)) {}
+          if (!bt.isNullOrNil(((cf)localObject1).field_encryptUsername)) {}
         }
         else
         {
           paramArrayOfByte = (byte[])localObject1;
-          if (!bs.isNullOrNil((String)localObject2))
+          if (!bt.isNullOrNil((String)localObject2))
           {
-            com.tencent.mm.model.az.ayM();
-            paramArrayOfByte = com.tencent.mm.model.c.awC().alK((String)localObject2);
+            com.tencent.mm.model.ba.aBQ();
+            paramArrayOfByte = com.tencent.mm.model.c.azq().aqz((String)localObject2);
           }
         }
-        if ((paramArrayOfByte != null) && (!bs.isNullOrNil(paramArrayOfByte.field_encryptUsername)))
+        if ((paramArrayOfByte != null) && (!bt.isNullOrNil(paramArrayOfByte.field_encryptUsername)))
         {
-          com.tencent.mm.model.az.ayM();
-          com.tencent.mm.model.c.awC().alL(paramArrayOfByte.field_encryptUsername);
+          com.tencent.mm.model.ba.aBQ();
+          com.tencent.mm.model.c.azq().aqA(paramArrayOfByte.field_encryptUsername);
         }
       }
-      if (com.tencent.mm.al.f.AP(paramai1.field_username))
+      if ((com.tencent.mm.o.b.lM(paramam1.field_type)) && (!bt.isNullOrNil(parambzp.GtU)))
       {
-        af.aDf();
-        com.tencent.mm.al.d.a(paramai1.field_username, null);
-        if ((bool1) && (com.tencent.mm.al.f.AQ(paramai1.field_username)))
+        com.tencent.mm.model.ba.aBQ();
+        paramArrayOfByte = com.tencent.mm.model.c.azr().apO(parambzp.GbY.HoB);
+        if ((paramArrayOfByte != null) && (!bt.isNullOrNil(paramArrayOfByte.field_encryptUsername)))
         {
-          if (!com.tencent.mm.al.f.so(paramai1.field_username)) {
-            break label2593;
+          paramArrayOfByte.field_username = parambzp.GtU;
+          paramArrayOfByte.field_modifyTime = System.currentTimeMillis();
+          com.tencent.mm.model.ba.aBQ();
+          if (com.tencent.mm.model.c.azr().replace(paramArrayOfByte)) {
+            break label2721;
           }
-          af.aDe();
-          com.tencent.mm.al.a.h.a(paramai1.field_username, null);
+          ad.e("MicroMsg.BigBallContactAssemblerImpl", "update stranger fail, encryptUsername:%s, friendUsernname:%s", new Object[] { paramArrayOfByte.field_encryptUsername, parambzp.GtU });
         }
       }
-      paramArrayOfByte = com.tencent.mm.al.f.dX(paramai1.field_username);
-      if (paramArrayOfByte == null) {
-        break label2709;
+      if (com.tencent.mm.am.g.DO(paramam1.field_username))
+      {
+        ag.aGi();
+        e.a(paramam1.field_username, null);
+        if ((bool1) && (com.tencent.mm.am.g.DP(paramam1.field_username)))
+        {
+          if (!com.tencent.mm.am.g.vd(paramam1.field_username)) {
+            break label2751;
+          }
+          ag.aGh();
+          com.tencent.mm.am.a.h.a(paramam1.field_username, null);
+        }
       }
-      paramArrayOfByte = paramArrayOfByte.bV(false);
+      paramArrayOfByte = com.tencent.mm.am.g.eS(paramam1.field_username);
       if (paramArrayOfByte == null) {
-        break label2709;
+        break label2867;
+      }
+      paramArrayOfByte = paramArrayOfByte.bX(false);
+      if (paramArrayOfByte == null) {
+        break label2867;
       }
       i = 0;
-      if (paramArrayOfByte.cFq != null) {
-        i = paramArrayOfByte.cFq.optInt("WXAppType", 0);
+      if (paramArrayOfByte.cQv != null) {
+        i = paramArrayOfByte.cQv.optInt("WXAppType", 0);
       }
       if (i == 0) {
-        break label2709;
+        break label2867;
       }
       i = 1;
       if (i != 0)
       {
-        af.aDi();
-        com.tencent.mm.al.a.Av(paramai1.field_username);
+        ag.aGl();
+        com.tencent.mm.am.a.Du(paramam1.field_username);
       }
-      if ((paramai1.field_type & 0x8) == 0) {
-        break label2715;
+      if ((paramam1.field_type & 0x8) == 0) {
+        break label2873;
       }
-      if ((paramai2 == null) || ((paramai2.field_type & 0x8) != (paramai1.field_type & 0x8)))
+      if ((paramam2 == null) || ((paramam2.field_type & 0x8) != (paramam1.field_type & 0x8)))
       {
-        com.tencent.mm.model.az.ayM();
-        com.tencent.mm.model.c.awG().c(new String[] { paramai1.field_username }, "@blacklist");
+        com.tencent.mm.model.ba.aBQ();
+        com.tencent.mm.model.c.azv().c(new String[] { paramam1.field_username }, "@blacklist");
       }
       if (!paramBoolean)
       {
-        if ((paramai1 != null) && (paramai1.fad()) && (com.tencent.mm.n.b.ln(paramai1.field_type)))
+        if ((paramam1 != null) && (paramam1.fqg()) && (com.tencent.mm.o.b.lM(paramam1.field_type)))
         {
           l = System.currentTimeMillis();
-          com.tencent.mm.model.az.ayM();
-          paramArrayOfByte = com.tencent.mm.model.c.awG().aNI(paramai1.field_username);
-          if ((paramArrayOfByte != null) && (paramArrayOfByte.lr(4194304)))
+          com.tencent.mm.model.ba.aBQ();
+          paramArrayOfByte = com.tencent.mm.model.c.azv().aTz(paramam1.field_username);
+          if ((paramArrayOfByte != null) && (paramArrayOfByte.lQ(4194304)))
           {
-            com.tencent.mm.model.az.ayM();
-            bool2 = com.tencent.mm.model.c.awG().a(paramai1.field_username, 4194304, false, paramArrayOfByte.field_attrflag);
-            ac.i("MicroMsg.BigBallContactAssemblerImpl", "Reset temp session attr flag.(talker %s, updateSucc %s, cost %s)", new Object[] { paramai1.field_username, Boolean.valueOf(bool2), Long.valueOf(System.currentTimeMillis() - l) });
+            com.tencent.mm.model.ba.aBQ();
+            bool2 = com.tencent.mm.model.c.azv().a(paramam1.field_username, 4194304, false, paramArrayOfByte.field_attrflag);
+            ad.i("MicroMsg.BigBallContactAssemblerImpl", "Reset temp session attr flag.(talker %s, updateSucc %s, cost %s)", new Object[] { paramam1.field_username, Boolean.valueOf(bool2), Long.valueOf(System.currentTimeMillis() - l) });
           }
         }
-        if ((paramai2 != null) && ((int)paramai2.fLJ > 0) && (paramai2.eyc != 0) && (paramai2.eyd == 0) && (paramai1.eyd == 1))
+        if ((paramam2 != null) && ((int)paramam2.gfj > 0) && (paramam2.ePB != 0) && (paramam2.ePC == 0) && (paramam1.ePC == 1))
         {
-          ac.d("MicroMsg.BigBallContactAssemblerImpl", "hakon removeParentRefAndUnread user = %s", new Object[] { paramai1.field_username });
-          com.tencent.mm.model.az.ayM();
-          com.tencent.mm.model.c.awG().aNY(paramai1.field_username);
-          com.tencent.mm.model.az.ayM();
-          paramai2 = com.tencent.mm.model.c.awG().aNI("officialaccounts");
-          if (paramai2 != null)
+          ad.d("MicroMsg.BigBallContactAssemblerImpl", "hakon removeParentRefAndUnread user = %s", new Object[] { paramam1.field_username });
+          com.tencent.mm.model.ba.aBQ();
+          com.tencent.mm.model.c.azv().aTP(paramam1.field_username);
+          com.tencent.mm.model.ba.aBQ();
+          paramam2 = com.tencent.mm.model.c.azv().aTz("officialaccounts");
+          if (paramam2 != null)
           {
-            com.tencent.mm.model.az.ayM();
-            paramai2.jR(com.tencent.mm.model.c.awG().faO());
-            ac.d("MicroMsg.BigBallContactAssemblerImpl", "unread count is %d", new Object[] { Integer.valueOf(paramai2.field_unReadCount) });
-            com.tencent.mm.model.az.ayM();
-            paramArrayOfByte = com.tencent.mm.model.c.awG().aNV("officialaccounts");
-            com.tencent.mm.model.az.ayM();
-            paramArrayOfByte = com.tencent.mm.model.c.awD().alk(paramArrayOfByte);
+            com.tencent.mm.model.ba.aBQ();
+            paramam2.kp(com.tencent.mm.model.c.azv().fqR());
+            ad.d("MicroMsg.BigBallContactAssemblerImpl", "unread count is %d", new Object[] { Integer.valueOf(paramam2.field_unReadCount) });
+            com.tencent.mm.model.ba.aBQ();
+            paramArrayOfByte = com.tencent.mm.model.c.azv().aTM("officialaccounts");
+            com.tencent.mm.model.ba.aBQ();
+            paramArrayOfByte = com.tencent.mm.model.c.azs().apX(paramArrayOfByte);
             if ((paramArrayOfByte == null) || (paramArrayOfByte.field_msgId <= 0L)) {
-              break label2765;
+              break label2923;
             }
-            paramai2.aI(paramArrayOfByte);
-            paramai2.setContent(paramArrayOfByte.field_talker + ":" + paramArrayOfByte.field_content);
-            paramai2.qQ(Integer.toString(paramArrayOfByte.getType()));
-            com.tencent.mm.model.az.ayM();
-            localObject1 = com.tencent.mm.model.c.awG().Ls();
+            paramam2.aL(paramArrayOfByte);
+            paramam2.setContent(paramArrayOfByte.field_talker + ":" + paramArrayOfByte.field_content);
+            paramam2.tA(Integer.toString(paramArrayOfByte.getType()));
+            com.tencent.mm.model.ba.aBQ();
+            localObject1 = com.tencent.mm.model.c.azv().Na();
             if (localObject1 != null)
             {
               localObject2 = new PString();
               localObject3 = new PString();
               localObject4 = new PInt();
-              paramArrayOfByte.re("officialaccounts");
-              paramArrayOfByte.setContent(paramai2.field_content);
-              ((bk.b)localObject1).a(paramArrayOfByte, (PString)localObject2, (PString)localObject3, (PInt)localObject4, true);
-              paramai2.qR(((PString)localObject2).value);
-              paramai2.qS(((PString)localObject3).value);
-              paramai2.jU(((PInt)localObject4).value);
+              paramArrayOfByte.tN("officialaccounts");
+              paramArrayOfByte.setContent(paramam2.field_content);
+              ((bq.b)localObject1).a(paramArrayOfByte, (PString)localObject2, (PString)localObject3, (PInt)localObject4, true);
+              paramam2.tB(((PString)localObject2).value);
+              paramam2.tC(((PString)localObject3).value);
+              paramam2.ks(((PInt)localObject4).value);
             }
-            com.tencent.mm.model.az.ayM();
-            com.tencent.mm.model.c.awG().a(paramai2, paramai2.field_username);
+            com.tencent.mm.model.ba.aBQ();
+            com.tencent.mm.model.c.azv().a(paramam2, paramam2.field_username);
           }
         }
       }
       if (bool1)
       {
-        paramai2 = new lp();
-        paramai2.dny.username = paramai1.field_username;
-        paramai2.dny.dnz = paramai1.dnz;
-        com.tencent.mm.sdk.b.a.GpY.l(paramai2);
+        paramam2 = new ly();
+        paramam2.dzm.username = paramam1.field_username;
+        paramam2.dzm.dzn = paramam1.dzn;
+        com.tencent.mm.sdk.b.a.IbL.l(paramam2);
       }
-      if ((bool1) && (parambva.sVo == 18))
+      if ((bool1) && (parambzp.tRT == 18))
       {
-        paramai2 = new ks();
-        paramai2.dmx.dmy = paramai1.field_encryptUsername;
-        paramai2.dmx.type = 2;
-        com.tencent.mm.bj.d.aJf().ald(paramai2.dmx.dmy);
-        com.tencent.mm.sdk.b.a.GpY.l(paramai2);
+        paramam2 = new lb();
+        paramam2.dyl.dym = paramam1.field_encryptUsername;
+        paramam2.dyl.type = 2;
+        com.tencent.mm.bk.d.aMp().apQ(paramam2.dyl.dym);
+        com.tencent.mm.sdk.b.a.IbL.l(paramam2);
       }
       if (bool1) {
-        co(paramai1.field_username, parambva.sVo);
+        cr(paramam1.field_username, parambzp.tRT);
       }
-      ac.d("MicroMsg.BigBallContactAssemblerImpl", "isNewContact:%b, isSnsNoInteresting:%b, isInit:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(paramai1.aaL()), Boolean.valueOf(paramBoolean) });
-      if ((!paramBoolean) && (bool1) && (paramai1.aaL()))
+      ad.i("MicroMsg.BigBallContactAssemblerImpl", "isNewContact:%b, isSnsNoInteresting:%b, isInit:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(paramam1.ado()), Boolean.valueOf(paramBoolean) });
+      if ((!paramBoolean) && (bool1) && (paramam1.ado()))
       {
-        paramai2 = paramai1.field_username;
-        if (!o.xMd.apG(paramai2))
+        paramam2 = paramam1.field_username;
+        if (!o.zbV.auM(paramam2))
         {
-          paramai2 = new LinkedList();
-          paramai2.add(paramai1.field_username);
-          paramai1 = new op();
-          paramai1.dqX.list = paramai2;
-          paramai1.dqX.dgm = 1;
-          paramai1.dqX.dqY = 5L;
-          paramai1.dqX.dqZ = true;
-          com.tencent.mm.sdk.b.a.GpY.l(paramai1);
+          paramam2 = new LinkedList();
+          paramam2.add(paramam1.field_username);
+          paramam1 = new oy();
+          paramam1.dCO.list = paramam2;
+          paramam1.dCO.drI = 1;
+          paramam1.dCO.dCP = 5L;
+          paramam1.dCO.dCQ = true;
+          com.tencent.mm.sdk.b.a.IbL.l(paramam1);
         }
       }
-      com.tencent.mm.plugin.label.a.a.cWd().alK();
+      com.tencent.mm.plugin.label.a.a.dfo().aox();
       AppMethodBeat.o(22336);
       return;
-      label1873:
-      localObject3 = com.tencent.mm.bi.d.hXZ.aJc();
-      if ((bs.isNullOrNil((String)localObject3)) || (!((String)localObject3).equals(paramArrayOfByte)) || (!w.sQ(paramArrayOfByte)))
+      label2001:
+      localObject3 = com.tencent.mm.bj.d.irv.aMm();
+      if ((bt.isNullOrNil((String)localObject3)) || (!((String)localObject3).equals(paramArrayOfByte)) || (!w.vF(paramArrayOfByte)))
       {
         i = 0;
         break;
@@ -1083,8 +1101,8 @@ public final class c
         {
           if (((Iterator)localObject1).hasNext())
           {
-            localObject3 = (ub)((Iterator)localObject1).next();
-            if ((!bs.isNullOrNil(((ub)localObject3).ncR)) && (((ub)localObject3).ncR.equals(u.axw())))
+            localObject3 = (vw)((Iterator)localObject1).next();
+            if ((!bt.isNullOrNil(((vw)localObject3).nDo)) && (((vw)localObject3).nDo.equals(u.aAm())))
             {
               i = 0;
               break;
@@ -1092,66 +1110,66 @@ public final class c
           }
         }
       }
-      if (com.tencent.mm.bi.d.hXY != null)
+      if (com.tencent.mm.bj.d.iru != null)
       {
-        if (com.tencent.mm.bi.d.hXY.bw(paramArrayOfByte, u.axw()))
+        if (com.tencent.mm.bj.d.iru.bx(paramArrayOfByte, u.aAm()))
         {
-          ac.i("MicroMsg.BigBallContactAssemblerImpl", "kicked self shareing");
-          localObject1 = new wb();
-          ((wb)localObject1).dyV.userName = paramArrayOfByte;
-          com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
+          ad.i("MicroMsg.BigBallContactAssemblerImpl", "kicked self shareing");
+          localObject1 = new wu();
+          ((wu)localObject1).dLh.userName = paramArrayOfByte;
+          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
         }
-        com.tencent.mm.bi.d.hXY.a(paramArrayOfByte, null, 0.0D, 0.0D, "", "", "");
+        com.tencent.mm.bj.d.iru.a(paramArrayOfByte, null, 0.0D, 0.0D, "", "", "");
       }
-      if ((com.tencent.mm.bi.d.hXZ != null) && (!bs.isNullOrNil(com.tencent.mm.bi.d.hXY.aJb())))
+      if ((com.tencent.mm.bj.d.irv != null) && (!bt.isNullOrNil(com.tencent.mm.bj.d.iru.aMl())))
       {
-        ac.i("MicroMsg.BigBallContactAssemblerImpl", "sync remove chatroom end track %s", new Object[] { com.tencent.mm.bi.d.hXZ.aJc() });
-        localObject1 = new fh();
-        ((fh)localObject1).dfa.username = com.tencent.mm.bi.d.hXZ.aJc();
-        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
+        ad.i("MicroMsg.BigBallContactAssemblerImpl", "sync remove chatroom end track %s", new Object[] { com.tencent.mm.bj.d.irv.aMm() });
+        localObject1 = new fk();
+        ((fk)localObject1).dqw.username = com.tencent.mm.bj.d.irv.aMm();
+        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
       }
       i = 1;
       break;
-      label2143:
+      label2271:
       if (localObject1 != null)
       {
         localObject1 = ((LinkedList)localObject1).iterator();
         for (;;)
         {
           if (!((Iterator)localObject1).hasNext()) {
-            break label2205;
+            break label2333;
           }
-          localObject3 = (ub)((Iterator)localObject1).next();
-          if (!bs.isNullOrNil(((ub)localObject3).ncR)) {
-            if (((ub)localObject3).ncR.equals(u.axw())) {
+          localObject3 = (vw)((Iterator)localObject1).next();
+          if (!bt.isNullOrNil(((vw)localObject3).nDo)) {
+            if (((vw)localObject3).nDo.equals(u.aAm())) {
               break;
             }
           }
         }
       }
-      label2205:
-      if (com.tencent.mm.bh.g.hXW != null) {
-        com.tencent.mm.bh.g.hXW.a(paramArrayOfByte, null, "", "", 0);
+      label2333:
+      if (com.tencent.mm.bi.g.irs != null) {
+        com.tencent.mm.bi.g.irs.a(paramArrayOfByte, null, "", "", 0);
       }
-      localObject1 = new vt();
-      ((vt)localObject1).dyB.dyE = true;
-      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
-      localObject1 = new vs();
-      ((vs)localObject1).dyz.dyA = true;
-      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
+      localObject1 = new wm();
+      ((wm)localObject1).dKN.dKQ = true;
+      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
+      localObject1 = new wl();
+      ((wl)localObject1).dKL.dKM = true;
+      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
       break label138;
       i = 1;
       break label209;
-      label2292:
-      i = parambva.ENw.fsB;
+      label2420:
+      i = parambzp.GwB.fLb;
       break label257;
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.al.n paramn)
   {
     AppMethodBeat.i(22343);
-    ac.i("MicroMsg.BigBallContactAssemblerImpl", "onsceneEnd errType:%d,errCode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ad.i("MicroMsg.BigBallContactAssemblerImpl", "onsceneEnd errType:%d,errCode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (paramn.getType() != 681)
     {
       AppMethodBeat.o(22343);
@@ -1162,49 +1180,57 @@ public final class c
       AppMethodBeat.o(22343);
       return;
     }
-    if (!com.tencent.mm.kernel.g.agP().ggT)
+    if (!com.tencent.mm.kernel.g.ajA().gAD)
     {
-      ac.w("MicroMsg.BigBallContactAssemblerImpl", "initialize notify is not done.");
+      ad.w("MicroMsg.BigBallContactAssemblerImpl", "initialize notify is not done.");
       AppMethodBeat.o(22343);
       return;
     }
-    paramn = ((com.tencent.mm.ba.b)paramn).hOW;
-    paramString = new HashSet();
-    try
+    com.tencent.e.h.LTJ.aS(new Runnable()
     {
-      paramn = paramn.iterator();
-      while (paramn.hasNext())
+      public final void run()
       {
-        localb = (j.b)paramn.next();
-        if (localb.getCmdId() != 2) {
-          break label251;
-        }
-        paramString.add(z.a(((bva)new bva().parseFrom(localb.getBuffer())).EuE));
-      }
-    }
-    catch (Exception paramn)
-    {
-      for (;;)
-      {
-        j.b localb;
-        ac.printErrStackTrace("MicroMsg.BigBallContactAssemblerImpl", paramn, "BaseProtoBuf parseFrom error!", new Object[0]);
-        paramString = paramString.iterator();
-        while (paramString.hasNext())
+        AppMethodBeat.i(193161);
+        Object localObject2 = ((com.tencent.mm.bb.b)paramn).iik;
+        Object localObject1 = new HashSet();
+        try
         {
-          paramn = (String)paramString.next();
-          if (!bs.isNullOrNil(paramn)) {
-            ar.a.hnw.a(paramn, null, null);
+          localObject2 = ((List)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localb = (k.b)((Iterator)localObject2).next();
+            if (localb.getCmdId() != 2) {
+              break label151;
+            }
+            ((Set)localObject1).add(z.a(((bzp)new bzp().parseFrom(localb.getBuffer())).GbY));
           }
         }
-        label251:
-        if (localb.getCmdId() == 54) {
-          paramString.add(((bvd)new bvd().parseFrom(localb.getBuffer())).Flc);
-        } else if (localb.getCmdId() == 60) {
-          paramString.add(((bvs)new bvs().parseFrom(localb.getBuffer())).Flc);
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            k.b localb;
+            ad.printErrStackTrace("MicroMsg.BigBallContactAssemblerImpl", localException, "BaseProtoBuf parseFrom error!", new Object[0]);
+            localObject1 = ((Set)localObject1).iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              String str = (String)((Iterator)localObject1).next();
+              if (!bt.isNullOrNil(str)) {
+                as.a.hFO.a(str, null, null);
+              }
+            }
+            label151:
+            if (localb.getCmdId() == 54) {
+              ((Set)localObject1).add(((bzs)new bzs().parseFrom(localb.getBuffer())).GUK);
+            } else if (localb.getCmdId() == 60) {
+              ((Set)localObject1).add(((cai)new cai().parseFrom(localb.getBuffer())).GUK);
+            }
+          }
+          AppMethodBeat.o(193161);
         }
       }
-      AppMethodBeat.o(22343);
-    }
+    });
+    AppMethodBeat.o(22343);
   }
 }
 

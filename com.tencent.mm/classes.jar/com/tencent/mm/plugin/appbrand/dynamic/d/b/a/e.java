@@ -5,19 +5,19 @@ import org.json.JSONObject;
 
 public abstract interface e<T>
 {
-  public abstract boolean Ln(String paramString);
+  public abstract boolean OH(String paramString);
   
-  public abstract void U(Runnable paramRunnable);
+  public abstract void T(Runnable paramRunnable);
   
   public abstract void a(b paramb);
   
-  public abstract void bcy();
+  public abstract void bgc();
   
-  public abstract int bcz();
+  public abstract int bgd();
   
   public abstract T c(JSONObject paramJSONObject, String paramString);
   
-  public abstract void cp(T paramT);
+  public abstract void cr(T paramT);
   
   public abstract void reset();
 }

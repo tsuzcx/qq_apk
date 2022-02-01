@@ -1,69 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.plugin.appbrand.d;
 import d.l;
-import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric;", "", "()V", "endTime", "", "getEndTime", "()J", "setEndTime", "(J)V", "extraInfo", "Lorg/json/JSONObject;", "name", "", "getName", "()Ljava/lang/String;", "setName", "(Ljava/lang/String;)V", "startTime", "getStartTime", "setStartTime", "dispatch", "", "receiver", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "putExtraInfo", "value", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/native_navigator/JsApiNavigateBackNative;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class a
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<d>
 {
+  public static final int CTRL_INDEX = 646;
+  public static final String NAME = "navigateBackNative";
   @Deprecated
-  public static final a kHc;
-  public long endTime;
-  private final JSONObject kHb;
-  private String name;
-  public long startTime;
+  public static final a kXb;
   
   static
   {
-    AppMethodBeat.i(162176);
-    kHc = new a((byte)0);
-    AppMethodBeat.o(162176);
+    AppMethodBeat.i(50629);
+    kXb = new a((byte)0);
+    AppMethodBeat.o(50629);
   }
   
-  public a()
-  {
-    AppMethodBeat.i(162175);
-    this.name = "";
-    this.kHb = new JSONObject();
-    AppMethodBeat.o(162175);
-  }
-  
-  public final void c(q paramq)
-  {
-    AppMethodBeat.i(162174);
-    k.h(paramq, "receiver");
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", this.name);
-    localJSONObject.put("startTime", this.startTime);
-    localJSONObject.put("endTime", this.endTime);
-    localJSONObject.put("extraInfo", this.kHb);
-    ac.i("MicroMsg.AppBrand.EventOnNewPerformanceMetric", "dispatch ".concat(String.valueOf(localJSONObject)));
-    paramq.bZ("onNewPerformanceMetric", localJSONObject.toString());
-    AppMethodBeat.o(162174);
-  }
-  
-  public final void s(String paramString, Object paramObject)
-  {
-    AppMethodBeat.i(162173);
-    k.h(paramString, "name");
-    k.h(paramObject, "value");
-    this.kHb.put(paramString, paramObject);
-    AppMethodBeat.o(162173);
-  }
-  
-  public final void setName(String paramString)
-  {
-    AppMethodBeat.i(162172);
-    k.h(paramString, "<set-?>");
-    this.name = paramString;
-    AppMethodBeat.o(162172);
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/native_navigator/JsApiNavigateBackNative$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   static final class a {}
 }
 

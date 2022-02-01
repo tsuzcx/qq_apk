@@ -7,18 +7,18 @@ import d.l.b.a.b.h.j.b;
 public enum a$i
   implements j.a
 {
-  private static j.b<i> LtK;
+  private static j.b<i> NkH;
   private final int value;
   
   static
   {
     AppMethodBeat.i(58622);
-    LuY = new i("DECLARATION", 0, 0);
-    LuZ = new i("FAKE_OVERRIDE", 1, 1);
-    Lva = new i("DELEGATION", 2, 2);
-    Lvb = new i("SYNTHESIZED", 3, 3);
-    Lvc = new i[] { LuY, LuZ, Lva, Lvb };
-    LtK = new j.b() {};
+    NlV = new i("DECLARATION", 0, 0);
+    NlW = new i("FAKE_OVERRIDE", 1, 1);
+    NlX = new i("DELEGATION", 2, 2);
+    NlY = new i("SYNTHESIZED", 3, 3);
+    NlZ = new i[] { NlV, NlW, NlX, NlY };
+    NkH = new j.b() {};
     AppMethodBeat.o(58622);
   }
   
@@ -27,20 +27,20 @@ public enum a$i
     this.value = paramInt1;
   }
   
-  public static i ahs(int paramInt)
+  public static i ajT(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return LuY;
+      return NlV;
     case 1: 
-      return LuZ;
+      return NlW;
     case 2: 
-      return Lva;
+      return NlX;
     }
-    return Lvb;
+    return NlY;
   }
   
   public final int getNumber()
@@ -50,7 +50,7 @@ public enum a$i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.e.a.i
  * JD-Core Version:    0.7.0.1
  */

@@ -14,21 +14,21 @@ public class UICustomParam
   implements Parcelable
 {
   public static final Parcelable.Creator<UICustomParam> CREATOR;
-  public int aNa;
-  public int aNb;
-  public int fKA;
-  public int fKB;
-  public String fKC;
-  public int fKD;
-  public float fKE;
-  public int fKF;
-  public float fKG;
-  public float fKu;
-  public float fKv;
-  public float fKw;
-  public float fKx;
-  public Map<String, Boolean> fKy;
-  public int fKz;
+  public int aXs;
+  public int aXt;
+  public float gdV;
+  public float gdW;
+  public float gdX;
+  public float gdY;
+  public Map<String, Boolean> gdZ;
+  public int gea;
+  public int geb;
+  public int gec;
+  public String ged;
+  public int gee;
+  public float gef;
+  public int geg;
+  public float geh;
   public String text;
   
   static
@@ -41,68 +41,68 @@ public class UICustomParam
   private UICustomParam()
   {
     AppMethodBeat.i(101481);
-    this.fKu = 0.0F;
-    this.fKv = 0.0F;
-    this.fKw = 0.0F;
-    this.fKx = 0.0F;
-    this.fKz = 0;
-    this.fKA = 0;
-    this.fKB = 0;
+    this.gdV = 0.0F;
+    this.gdW = 0.0F;
+    this.gdX = 0.0F;
+    this.gdY = 0.0F;
+    this.gea = 0;
+    this.geb = 0;
+    this.gec = 0;
     this.text = "";
-    this.fKC = "";
-    this.fKD = 0;
-    this.fKE = 0.0F;
-    this.fKF = 0;
-    this.aNa = -1;
-    this.aNb = -1;
-    this.fKG = -1.0F;
-    this.fKy = new HashMap();
+    this.ged = "";
+    this.gee = 0;
+    this.gef = 0.0F;
+    this.geg = 0;
+    this.aXs = -1;
+    this.aXt = -1;
+    this.geh = -1.0F;
+    this.gdZ = new HashMap();
     AppMethodBeat.o(101481);
   }
   
   protected UICustomParam(Parcel paramParcel)
   {
     AppMethodBeat.i(101482);
-    this.fKu = 0.0F;
-    this.fKv = 0.0F;
-    this.fKw = 0.0F;
-    this.fKx = 0.0F;
-    this.fKz = 0;
-    this.fKA = 0;
-    this.fKB = 0;
+    this.gdV = 0.0F;
+    this.gdW = 0.0F;
+    this.gdX = 0.0F;
+    this.gdY = 0.0F;
+    this.gea = 0;
+    this.geb = 0;
+    this.gec = 0;
     this.text = "";
-    this.fKC = "";
-    this.fKD = 0;
-    this.fKE = 0.0F;
-    this.fKF = 0;
-    this.aNa = -1;
-    this.aNb = -1;
-    this.fKG = -1.0F;
-    this.fKu = paramParcel.readFloat();
-    this.fKv = paramParcel.readFloat();
-    this.fKw = paramParcel.readFloat();
-    this.fKx = paramParcel.readFloat();
+    this.ged = "";
+    this.gee = 0;
+    this.gef = 0.0F;
+    this.geg = 0;
+    this.aXs = -1;
+    this.aXt = -1;
+    this.geh = -1.0F;
+    this.gdV = paramParcel.readFloat();
+    this.gdW = paramParcel.readFloat();
+    this.gdX = paramParcel.readFloat();
+    this.gdY = paramParcel.readFloat();
     int j = paramParcel.readInt();
-    this.fKy = new HashMap(j);
+    this.gdZ = new HashMap(j);
     int i = 0;
     while (i < j)
     {
       String str = paramParcel.readString();
       Boolean localBoolean = (Boolean)paramParcel.readValue(Boolean.class.getClassLoader());
-      this.fKy.put(str, localBoolean);
+      this.gdZ.put(str, localBoolean);
       i += 1;
     }
-    this.fKz = paramParcel.readInt();
-    this.fKA = paramParcel.readInt();
-    this.fKB = paramParcel.readInt();
+    this.gea = paramParcel.readInt();
+    this.geb = paramParcel.readInt();
+    this.gec = paramParcel.readInt();
     this.text = paramParcel.readString();
-    this.fKC = paramParcel.readString();
-    this.fKD = paramParcel.readInt();
-    this.fKE = paramParcel.readFloat();
-    this.fKF = paramParcel.readInt();
-    this.aNa = paramParcel.readInt();
-    this.aNb = paramParcel.readInt();
-    this.fKG = paramParcel.readFloat();
+    this.ged = paramParcel.readString();
+    this.gee = paramParcel.readInt();
+    this.gef = paramParcel.readFloat();
+    this.geg = paramParcel.readInt();
+    this.aXs = paramParcel.readInt();
+    this.aXt = paramParcel.readInt();
+    this.geh = paramParcel.readFloat();
     AppMethodBeat.o(101482);
   }
   
@@ -114,172 +114,172 @@ public class UICustomParam
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(101483);
-    paramParcel.writeFloat(this.fKu);
-    paramParcel.writeFloat(this.fKv);
-    paramParcel.writeFloat(this.fKw);
-    paramParcel.writeFloat(this.fKx);
-    paramParcel.writeInt(this.fKy.size());
-    Iterator localIterator = this.fKy.entrySet().iterator();
+    paramParcel.writeFloat(this.gdV);
+    paramParcel.writeFloat(this.gdW);
+    paramParcel.writeFloat(this.gdX);
+    paramParcel.writeFloat(this.gdY);
+    paramParcel.writeInt(this.gdZ.size());
+    Iterator localIterator = this.gdZ.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       paramParcel.writeString((String)localEntry.getKey());
       paramParcel.writeValue(localEntry.getValue());
     }
-    paramParcel.writeInt(this.fKz);
-    paramParcel.writeInt(this.fKA);
-    paramParcel.writeInt(this.fKB);
+    paramParcel.writeInt(this.gea);
+    paramParcel.writeInt(this.geb);
+    paramParcel.writeInt(this.gec);
     paramParcel.writeString(this.text);
-    paramParcel.writeString(this.fKC);
-    paramParcel.writeInt(this.fKD);
-    paramParcel.writeFloat(this.fKE);
-    paramParcel.writeInt(this.fKF);
-    paramParcel.writeInt(this.aNa);
-    paramParcel.writeInt(this.aNb);
-    paramParcel.writeFloat(this.fKG);
+    paramParcel.writeString(this.ged);
+    paramParcel.writeInt(this.gee);
+    paramParcel.writeFloat(this.gef);
+    paramParcel.writeInt(this.geg);
+    paramParcel.writeInt(this.aXs);
+    paramParcel.writeInt(this.aXt);
+    paramParcel.writeFloat(this.geh);
     AppMethodBeat.o(101483);
   }
   
   public static final class a
   {
-    public UICustomParam fKH;
+    public UICustomParam gei;
     
     public a()
     {
       AppMethodBeat.i(101475);
-      this.fKH = new UICustomParam((byte)0);
-      this.fKH.fKy.put("plugin_filter", Boolean.TRUE);
+      this.gei = new UICustomParam((byte)0);
+      this.gei.gdZ.put("plugin_filter", Boolean.TRUE);
       AppMethodBeat.o(101475);
     }
     
-    public static a YS()
+    public static a abt()
     {
       AppMethodBeat.i(101476);
       a locala = new a();
-      locala.YX();
-      locala.YW();
-      locala.cN(true);
+      locala.aby();
+      locala.abx();
+      locala.cP(true);
       AppMethodBeat.o(101476);
       return locala;
     }
     
-    public final a G(String paramString, int paramInt)
+    public final a J(String paramString, int paramInt)
     {
-      this.fKH.fKC = paramString;
-      this.fKH.fKD = paramInt;
-      this.fKH.fKE = 17.0F;
+      this.gei.ged = paramString;
+      this.gei.gee = paramInt;
+      this.gei.gef = 17.0F;
       return this;
-    }
-    
-    public final a YT()
-    {
-      this.fKH.fKu = 0.6F;
-      this.fKH.fKv = 0.6F;
-      return this;
-    }
-    
-    public final a YU()
-    {
-      this.fKH.fKw = 0.5F;
-      this.fKH.fKx = 0.5F;
-      return this;
-    }
-    
-    public final a YV()
-    {
-      AppMethodBeat.i(168709);
-      this.fKH.fKy.put("plugin_photo_crop", Boolean.TRUE);
-      AppMethodBeat.o(168709);
-      return this;
-    }
-    
-    public final a YW()
-    {
-      AppMethodBeat.i(101478);
-      this.fKH.fKy.put("plugin_tip", Boolean.TRUE);
-      AppMethodBeat.o(101478);
-      return this;
-    }
-    
-    public final a YX()
-    {
-      AppMethodBeat.i(101479);
-      this.fKH.fKy.put("plugin_poi", Boolean.TRUE);
-      AppMethodBeat.o(101479);
-      return this;
-    }
-    
-    public final a YY()
-    {
-      AppMethodBeat.i(168711);
-      this.fKH.fKy.put("plugin_filter", Boolean.TRUE);
-      AppMethodBeat.o(168711);
-      return this;
-    }
-    
-    public final a YZ()
-    {
-      this.fKH.fKG = 0.8571429F;
-      return this;
-    }
-    
-    public final UICustomParam Za()
-    {
-      return this.fKH;
     }
     
     public final a a(int paramInt1, int paramInt2, String paramString, int paramInt3)
     {
-      this.fKH.fKz = paramInt1;
-      this.fKH.fKA = paramInt2;
-      this.fKH.text = paramString;
-      this.fKH.fKB = paramInt3;
+      this.gei.gea = paramInt1;
+      this.gei.geb = paramInt2;
+      this.gei.text = paramString;
+      this.gei.gec = paramInt3;
       return this;
     }
     
-    public final a cJ(boolean paramBoolean)
+    public final UICustomParam abA()
     {
-      AppMethodBeat.i(199481);
-      this.fKH.fKy.put("plugin_emoji", Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(199481);
+      return this.gei;
+    }
+    
+    public final a abu()
+    {
+      this.gei.gdV = 0.6F;
+      this.gei.gdW = 0.6F;
       return this;
     }
     
-    public final a cK(boolean paramBoolean)
+    public final a abv()
     {
-      AppMethodBeat.i(199482);
-      this.fKH.fKy.put("plugin_text", Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(199482);
+      this.gei.gdX = 0.5F;
+      this.gei.gdY = 0.5F;
+      return this;
+    }
+    
+    public final a abw()
+    {
+      AppMethodBeat.i(168709);
+      this.gei.gdZ.put("plugin_photo_crop", Boolean.TRUE);
+      AppMethodBeat.o(168709);
+      return this;
+    }
+    
+    public final a abx()
+    {
+      AppMethodBeat.i(101478);
+      this.gei.gdZ.put("plugin_tip", Boolean.TRUE);
+      AppMethodBeat.o(101478);
+      return this;
+    }
+    
+    public final a aby()
+    {
+      AppMethodBeat.i(101479);
+      this.gei.gdZ.put("plugin_poi", Boolean.TRUE);
+      AppMethodBeat.o(101479);
+      return this;
+    }
+    
+    public final a abz()
+    {
+      AppMethodBeat.i(168711);
+      this.gei.gdZ.put("plugin_filter", Boolean.TRUE);
+      AppMethodBeat.o(168711);
+      return this;
+    }
+    
+    public final a ah(float paramFloat)
+    {
+      this.gei.geh = paramFloat;
       return this;
     }
     
     public final a cL(boolean paramBoolean)
     {
-      AppMethodBeat.i(199483);
-      this.fKH.fKy.put("plugin_music", Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(199483);
+      AppMethodBeat.i(209003);
+      this.gei.gdZ.put("plugin_emoji", Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(209003);
       return this;
     }
     
     public final a cM(boolean paramBoolean)
     {
-      AppMethodBeat.i(168708);
-      this.fKH.fKy.put("plugin_video_crop", Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(168708);
+      AppMethodBeat.i(209004);
+      this.gei.gdZ.put("plugin_text", Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(209004);
       return this;
     }
     
     public final a cN(boolean paramBoolean)
     {
+      AppMethodBeat.i(209005);
+      this.gei.gdZ.put("plugin_music", Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(209005);
+      return this;
+    }
+    
+    public final a cO(boolean paramBoolean)
+    {
+      AppMethodBeat.i(168708);
+      this.gei.gdZ.put("plugin_video_crop", Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(168708);
+      return this;
+    }
+    
+    public final a cP(boolean paramBoolean)
+    {
       AppMethodBeat.i(168710);
-      this.fKH.fKy.put("plugin_menu", Boolean.valueOf(paramBoolean));
+      this.gei.gdZ.put("plugin_menu", Boolean.valueOf(paramBoolean));
       AppMethodBeat.o(168710);
       return this;
     }
     
-    public final a lc(int paramInt)
+    public final a lB(int paramInt)
     {
-      this.fKH.fKF = paramInt;
+      this.gei.geg = paramInt;
       return this;
     }
   }

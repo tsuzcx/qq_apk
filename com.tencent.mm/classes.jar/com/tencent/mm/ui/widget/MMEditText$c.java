@@ -5,22 +5,22 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class MMEditText$c
   implements TextWatcher
 {
-  private TextView IZV;
-  public MMEditText.b IZW = null;
-  private boolean IZX = false;
-  private EditText lMg;
+  private TextView KRh;
+  public MMEditText.b KRi = null;
+  private boolean KRj = false;
   private final int limit;
+  private EditText mlU;
   
   public MMEditText$c(EditText paramEditText, TextView paramTextView, int paramInt)
   {
-    this.lMg = paramEditText;
-    this.IZV = paramTextView;
+    this.mlU = paramEditText;
+    this.KRh = paramTextView;
     this.limit = paramInt;
   }
   
@@ -35,7 +35,7 @@ public final class MMEditText$c
     int k = i;
     if (j < str.length())
     {
-      if (bs.C(str.charAt(j))) {
+      if (bt.E(str.charAt(j))) {
         i += 2;
       }
       for (;;)
@@ -56,20 +56,20 @@ public final class MMEditText$c
     {
       try
       {
-        this.lMg.setText(paramEditable);
-        if (this.IZX) {
+        this.mlU.setText(paramEditable);
+        if (this.KRj) {
           continue;
         }
-        i = this.lMg.getText().toString().length();
-        this.lMg.setSelection(i);
-        this.IZX = false;
+        i = this.mlU.getText().toString().length();
+        this.mlU.setSelection(i);
+        this.KRj = false;
       }
       catch (Exception localException)
       {
-        this.IZX = true;
-        ac.e("MicroMsg.MMEditText", "error ".concat(String.valueOf(localException.getMessage())));
-        this.lMg.setText(paramEditable);
-        this.lMg.setSelection(0);
+        this.KRj = true;
+        ad.e("MicroMsg.MMEditText", "error ".concat(String.valueOf(localException.getMessage())));
+        this.mlU.setText(paramEditable);
+        this.mlU.setSelection(0);
         continue;
         continue;
       }
@@ -78,12 +78,12 @@ public final class MMEditText$c
         continue;
       }
       i = m;
-      if (this.IZV != null) {
-        this.IZV.setText(i / 2);
+      if (this.KRh != null) {
+        this.KRh.setText(i / 2);
       }
       AppMethodBeat.o(143352);
       return;
-      this.lMg.setSelection(0);
+      this.mlU.setSelection(0);
     }
   }
   
@@ -92,8 +92,8 @@ public final class MMEditText$c
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(143353);
-    if (this.IZW != null) {
-      this.IZW.aQv();
+    if (this.KRi != null) {
+      this.KRi.aTH();
     }
     AppMethodBeat.o(143353);
   }

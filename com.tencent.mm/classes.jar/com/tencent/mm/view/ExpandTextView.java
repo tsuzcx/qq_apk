@@ -11,20 +11,20 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.widget.MMNeat7extView;
-import com.tencent.neattextview.textview.layout.a;
 
 public class ExpandTextView
   extends FrameLayout
   implements View.OnClickListener
 {
-  private TextView Jvc;
-  private MMNeat7extView Jvd;
-  private String Jve;
-  private int Jvf;
-  private a Jvg = null;
-  private boolean ugb = false;
+  private TextView Loe;
+  private MMNeat7extView Lof;
+  private String Log;
+  private int Loh;
+  private a Loi = null;
+  private boolean viL = false;
   
   public ExpandTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,22 +38,25 @@ public class ExpandTextView
   
   public TextView getExpandTextView()
   {
-    return this.Jvc;
+    return this.Loe;
   }
   
   public MMNeat7extView getTextView()
   {
-    return this.Jvd;
+    return this.Lof;
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(164249);
-    if (!this.ugb)
+    b localb = new b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/ExpandTextView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    if (!this.viL)
     {
-      this.ugb = true;
-      this.Jvd.setMaxLines(2147483647);
-      this.Jvc.animate().alpha(0.0F).setDuration(300L).setListener(new Animator.AnimatorListener()
+      this.viL = true;
+      this.Lof.setMaxLines(2147483647);
+      this.Loe.animate().alpha(0.0F).setDuration(300L).setListener(new Animator.AnimatorListener()
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
         
@@ -70,6 +73,7 @@ public class ExpandTextView
         public final void onAnimationStart(Animator paramAnonymousAnimator) {}
       }).start();
     }
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/view/ExpandTextView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(164249);
   }
   
@@ -77,14 +81,14 @@ public class ExpandTextView
   {
     AppMethodBeat.i(164241);
     super.onFinishInflate();
-    this.Jvd = new MMNeat7extView(getContext());
+    this.Lof = new MMNeat7extView(getContext());
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-    addView(this.Jvd, localLayoutParams);
-    this.Jvc = new TextView(getContext());
+    addView(this.Lof, localLayoutParams);
+    this.Loe = new TextView(getContext());
     localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 85;
-    addView(this.Jvc, localLayoutParams);
-    this.Jvc.setOnClickListener(this);
+    addView(this.Loe, localLayoutParams);
+    this.Loe.setOnClickListener(this);
     AppMethodBeat.o(164241);
   }
   
@@ -92,76 +96,76 @@ public class ExpandTextView
   {
     AppMethodBeat.i(164248);
     super.onMeasure(paramInt1, paramInt2);
-    if (!this.ugb)
+    if (!this.viL)
     {
-      a locala = this.Jvd.kv(getMeasuredWidth(), getMeasuredHeight());
+      com.tencent.neattextview.textview.layout.a locala = this.Lof.kK(getMeasuredWidth(), getMeasuredHeight());
       if (locala != null)
       {
-        if (locala.fBm() > this.Jvf)
+        if (locala.fSB() > this.Loh)
         {
-          this.Jvc.setVisibility(0);
+          this.Loe.setVisibility(0);
           AppMethodBeat.o(164248);
           return;
         }
-        this.Jvc.setVisibility(8);
+        this.Loe.setVisibility(8);
         AppMethodBeat.o(164248);
         return;
       }
-      ac.e("MicroMsg.ExpandTextView", "layout is null!");
-      this.Jvc.setVisibility(8);
+      ad.e("MicroMsg.ExpandTextView", "layout is null!");
+      this.Loe.setVisibility(8);
     }
     AppMethodBeat.o(164248);
   }
   
   public void setExpandIconText(String paramString)
   {
-    this.Jve = paramString;
+    this.Log = paramString;
   }
   
   public void setExpandTextColor(int paramInt)
   {
     AppMethodBeat.i(164242);
-    this.Jvc.setTextColor(paramInt);
+    this.Loe.setTextColor(paramInt);
     AppMethodBeat.o(164242);
   }
   
   public void setExpandTextSize(float paramFloat)
   {
     AppMethodBeat.i(164244);
-    this.Jvc.setTextSize(0, paramFloat);
+    this.Loe.setTextSize(0, paramFloat);
     AppMethodBeat.o(164244);
   }
   
   public void setLineSpacingExtra(int paramInt)
   {
     AppMethodBeat.i(164245);
-    this.Jvd.setSpacingAdd(paramInt);
+    this.Lof.setSpacingAdd(paramInt);
     AppMethodBeat.o(164245);
   }
   
   public void setMaxLines(int paramInt)
   {
     AppMethodBeat.i(164247);
-    this.Jvd.setMaxLines(paramInt);
+    this.Lof.setMaxLines(paramInt);
     AppMethodBeat.o(164247);
   }
   
   public void setOnExpandListener(a parama)
   {
-    this.Jvg = parama;
+    this.Loi = parama;
   }
   
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(164243);
-    this.Jvd.setTextColor(paramInt);
+    this.Lof.setTextColor(paramInt);
     AppMethodBeat.o(164243);
   }
   
   public void setTextSize(float paramFloat)
   {
     AppMethodBeat.i(164246);
-    this.Jvd.setTextSize(0, paramFloat);
+    this.Lof.setTextSize(0, paramFloat);
     AppMethodBeat.o(164246);
   }
   

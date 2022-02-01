@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.brc;
+import com.tencent.mm.protocal.protobuf.bvp;
 
 public class MediaSelectedData
   implements Parcelable
 {
   public static final Parcelable.Creator<MediaSelectedData> CREATOR;
   public String path;
-  public brc rvh;
+  public bvp skC;
   public String thumbPath;
   public int type;
   
@@ -24,14 +24,14 @@ public class MediaSelectedData
   
   public MediaSelectedData(int paramInt)
   {
-    this.rvh = null;
+    this.skC = null;
     this.type = paramInt;
   }
   
   protected MediaSelectedData(Parcel paramParcel)
   {
     AppMethodBeat.i(168634);
-    this.rvh = null;
+    this.skC = null;
     this.path = paramParcel.readString();
     this.thumbPath = paramParcel.readString();
     this.type = paramParcel.readInt();
@@ -46,7 +46,7 @@ public class MediaSelectedData
   public String toString()
   {
     AppMethodBeat.i(168633);
-    String str = "MediaSelectedData{path='" + this.path + '\'' + ", thumbPath='" + this.thumbPath + '\'' + ", type=" + this.type + ", cropInfo=" + this.rvh + '}';
+    String str = "MediaSelectedData{path='" + this.path + '\'' + ", thumbPath='" + this.thumbPath + '\'' + ", type=" + this.type + ", cropInfo=" + this.skC + '}';
     AppMethodBeat.o(168633);
     return str;
   }

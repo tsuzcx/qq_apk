@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.RandomAccessFile;
 
 public final class g
   extends a
 {
-  public static final int ixt;
-  public static final int ixu;
-  public static final int ixv;
+  public static final int iQC;
+  public static final int iQD;
+  public static final int iQE;
   public long duration = 0L;
-  public long ixw = 0L;
-  public long ixx = 0L;
-  long ixy = 0L;
+  public long iQF = 0L;
+  public long iQG = 0L;
+  long iQH = 0L;
   
   static
   {
     AppMethodBeat.i(133867);
-    ixt = c.aQ("vide");
-    ixu = c.aQ("soun");
-    ixv = c.aQ("hint");
+    iQC = c.bJ("vide");
+    iQD = c.bJ("soun");
+    iQE = c.bJ("hint");
     AppMethodBeat.o(133867);
   }
   
@@ -41,7 +41,7 @@ public final class g
       i1 = c.readInt(paramArrayOfByte, 0);
       int i = c.readInt(paramArrayOfByte, 4);
       long l;
-      if (i == a.bbk)
+      if (i == a.blF)
       {
         byte[] arrayOfByte = new byte[4];
         i = paramRandomAccessFile.read(arrayOfByte);
@@ -50,7 +50,7 @@ public final class g
         }
         while (i <= 0)
         {
-          ac.w("MicroMsg.MdiaAtom", "handle mdhd atom error.");
+          ad.w("MicroMsg.MdiaAtom", "handle mdhd atom error.");
           AppMethodBeat.o(133866);
           return false;
           i += 0;
@@ -70,7 +70,7 @@ public final class g
               else
               {
                 i = i + 8 + m;
-                this.ixw = c.B(paramArrayOfByte, 0);
+                this.iQF = c.B(paramArrayOfByte, 0);
                 this.duration = c.B(paramArrayOfByte, 4);
               }
             }
@@ -88,7 +88,7 @@ public final class g
             }
             else
             {
-              this.ixw = c.B(arrayOfByte, 0);
+              this.iQF = c.B(arrayOfByte, 0);
               int i2 = paramRandomAccessFile.read(paramArrayOfByte);
               if (i2 < 8)
               {
@@ -122,14 +122,14 @@ public final class g
         }
         AppMethodBeat.o(133866);
         return false;
-        if (i == a.bbl)
+        if (i == a.blG)
         {
           if (!c.a(paramRandomAccessFile, 8L)) {
             i = -1;
           }
           while (i <= 0)
           {
-            ac.w("MicroMsg.MdiaAtom", "handle hdlr atom error.");
+            ad.w("MicroMsg.MdiaAtom", "handle hdlr atom error.");
             AppMethodBeat.o(133866);
             return false;
             i = paramRandomAccessFile.read(paramArrayOfByte, 0, 4);
@@ -139,7 +139,7 @@ public final class g
             }
             else
             {
-              this.ixx = c.readInt(paramArrayOfByte, 0);
+              this.iQG = c.readInt(paramArrayOfByte, 0);
               i += 8;
             }
           }
@@ -147,9 +147,9 @@ public final class g
           l = i1 - n - i;
           i = j;
         }
-        else if (i == a.baY)
+        else if (i == a.blt)
         {
-          this.ixy = (paramRandomAccessFile.getFilePointer() - n);
+          this.iQH = (paramRandomAccessFile.getFilePointer() - n);
           l = i1 - n;
           i = 1;
         }
@@ -177,7 +177,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.a.g
  * JD-Core Version:    0.7.0.1
  */

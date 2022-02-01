@@ -2,7 +2,7 @@ package com.tencent.mm.game.report.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.e;
+import com.tencent.mm.game.report.f;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,14 +40,14 @@ public final class a
   public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     AppMethodBeat.i(108272);
-    e.a(paramContext, 87, paramInt1, paramInt2, paramInt3, 0, paramString);
+    f.a(paramContext, 87, paramInt1, paramInt2, paramInt3, 0, paramString);
     AppMethodBeat.o(108272);
   }
   
   public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
   {
     AppMethodBeat.i(108273);
-    e.a(paramContext, 87, paramInt1, paramInt2, paramInt3, paramString1, 0, paramString2);
+    f.a(paramContext, 87, paramInt1, paramInt2, paramInt3, paramString1, 0, paramString2);
     AppMethodBeat.o(108273);
   }
 }

@@ -3,10 +3,14 @@ package com.tencent.tencentmap.mapsdk.maps;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Rect;
+import android.location.Location;
 import android.view.View;
 import com.tencent.map.lib.MapLanguage;
 import com.tencent.map.sdk.comps.indoor.IIndoor;
 import com.tencent.map.sdk.comps.mylocation.IMyLocation;
+import com.tencent.tencentmap.mapsdk.maps.model.AoiLayer;
+import com.tencent.tencentmap.mapsdk.maps.model.AoiLayer.OnAoiLayerLoadListener;
+import com.tencent.tencentmap.mapsdk.maps.model.AoiLayerOptions;
 import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 import com.tencent.tencentmap.mapsdk.maps.model.Circle;
 import com.tencent.tencentmap.mapsdk.maps.model.CircleOptions;
@@ -23,6 +27,7 @@ import com.tencent.tencentmap.mapsdk.maps.model.MapPoi;
 import com.tencent.tencentmap.mapsdk.maps.model.Marker;
 import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
 import com.tencent.tencentmap.mapsdk.maps.model.MyLocationStyle;
+import com.tencent.tencentmap.mapsdk.maps.model.OverSeaTileProvider;
 import com.tencent.tencentmap.mapsdk.maps.model.Polygon;
 import com.tencent.tencentmap.mapsdk.maps.model.PolygonOptions;
 import com.tencent.tencentmap.mapsdk.maps.model.Polyline;
@@ -51,6 +56,8 @@ public abstract interface TencentMap
   public static final int MAP_TYPE_SATELLITE = 1011;
   public static final int MAP_TYPE_TRAFFIC_NAVI = 1009;
   public static final int MAP_TYPE_TRAFFIC_NIGHT = 1010;
+  
+  public abstract AoiLayer addAoiLayer(String paramString, AoiLayerOptions paramAoiLayerOptions, AoiLayer.OnAoiLayerLoadListener paramOnAoiLayerLoadListener);
   
   public abstract Circle addCircle(CircleOptions paramCircleOptions);
   
@@ -142,6 +149,8 @@ public abstract interface TencentMap
   
   public abstract void removeTencentMapGestureListener(TencentMapGestureListener paramTencentMapGestureListener);
   
+  public abstract void setBaseMapEnabled(boolean paramBoolean);
+  
   public abstract void setBlockRouteEnabled(boolean paramBoolean);
   
   public abstract void setBuildingEnable(boolean paramBoolean);
@@ -195,6 +204,8 @@ public abstract interface TencentMap
   public abstract void setOnTapMapViewInfoWindowHidden(boolean paramBoolean);
   
   public abstract void setOnTrafficEventClickListener(TencentMap.OnTrafficEventClickListener paramOnTrafficEventClickListener);
+  
+  public abstract void setOverSeaTileProvider(OverSeaTileProvider paramOverSeaTileProvider);
   
   public abstract void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -287,6 +298,16 @@ public abstract interface TencentMap
     public abstract void onMarkerDragEnd(Marker paramMarker);
     
     public abstract void onMarkerDragStart(Marker paramMarker);
+  }
+  
+  public static abstract interface OnMyLocationChangeListener
+  {
+    public abstract void onMyLocationChange(Location paramLocation);
+  }
+  
+  public static abstract interface OnMyLocationClickListener
+  {
+    public abstract boolean onMyLocationClicked(LatLng paramLatLng);
   }
   
   public static abstract interface OnPolylineClickListener

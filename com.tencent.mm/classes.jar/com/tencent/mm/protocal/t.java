@@ -3,9 +3,9 @@ package com.tencent.mm.protocal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.aux;
-import com.tencent.mm.protocal.protobuf.auy;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.ayv;
+import com.tencent.mm.protocal.protobuf.ayw;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class t
 {
@@ -13,12 +13,12 @@ public final class t
     extends l.d
     implements l.b
   {
-    public aux DJm;
+    public ayv Fot;
     
     public a()
     {
       AppMethodBeat.i(133107);
-      this.DJm = new aux();
+      this.Fot = new ayv();
       AppMethodBeat.o(133107);
     }
     
@@ -35,11 +35,11 @@ public final class t
     public final byte[] toProtoBuf()
     {
       AppMethodBeat.i(133108);
-      setRsaInfo(ac.eRv());
-      this.DJm.DYu = new SKBuiltinBuffer_t().setBuffer(bs.eWb());
-      this.DJm.EMZ = ac.eRt().ver;
-      this.DJm.setBaseRequest(l.a(this));
-      byte[] arrayOfByte = this.DJm.toByteArray();
+      setRsaInfo(ac.fgz());
+      this.Fot.FDQ = new SKBuiltinBuffer_t().setBuffer(bt.flL());
+      this.Fot.Gwd = ac.fgx().ver;
+      this.Fot.setBaseRequest(l.a(this));
+      byte[] arrayOfByte = this.Fot.toByteArray();
       AppMethodBeat.o(133108);
       return arrayOfByte;
     }
@@ -49,21 +49,21 @@ public final class t
     extends l.e
     implements l.c
   {
-    public auy DJn;
+    public ayw Fou;
     
     public b()
     {
       AppMethodBeat.i(133109);
-      this.DJn = new auy();
+      this.Fou = new ayw();
       AppMethodBeat.o(133109);
     }
     
     public final int fromProtoBuf(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(133110);
-      this.DJn = ((auy)new auy().parseFrom(paramArrayOfByte));
-      l.a(this, this.DJn.getBaseResponse());
-      int i = this.DJn.getBaseResponse().Ret;
+      this.Fou = ((ayw)new ayw().parseFrom(paramArrayOfByte));
+      l.a(this, this.Fou.getBaseResponse());
+      int i = this.Fou.getBaseResponse().Ret;
       AppMethodBeat.o(133110);
       return i;
     }

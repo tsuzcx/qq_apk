@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.tmassistantsdk.downloadclient.IAssistantOnActionListener;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadOpenSDKClient;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKManager;
@@ -235,7 +235,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       catch (Throwable paramArrayList)
       {
-        ac.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
+        ad.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
         AppMethodBeat.o(102129);
         return null;
       }
@@ -293,7 +293,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       catch (Throwable paramTMQQDownloaderOpenSDKParam)
       {
-        ac.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
+        ad.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
         AppMethodBeat.o(102130);
         return null;
       }
@@ -345,7 +345,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       catch (Throwable paramArrayList)
       {
-        ac.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
+        ad.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
         AppMethodBeat.o(102128);
         return false;
       }
@@ -382,7 +382,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       catch (Throwable paramTMQQDownloaderOpenSDKParam)
       {
-        ac.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
+        ad.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
         AppMethodBeat.o(102126);
         return false;
       }
@@ -413,7 +413,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       catch (Throwable paramString)
       {
-        ac.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramString, "", new Object[0]);
+        ad.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramString, "", new Object[0]);
         AppMethodBeat.o(102127);
         return false;
       }

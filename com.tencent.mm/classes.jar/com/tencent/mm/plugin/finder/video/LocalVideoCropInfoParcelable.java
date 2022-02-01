@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.brc;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.bvp;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/LocalVideoCropInfoParcelable;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "cropInfo", "Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "getCropInfo", "()Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "setCropInfo", "(Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;)V", "describeContents", "", "readParcel", "", "src", "writeToParcel", "dest", "flags", "CREATOR", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/LocalVideoCropInfoParcelable;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "cropInfo", "Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "getCropInfo", "()Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "setCropInfo", "(Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;)V", "describeContents", "", "readParcel", "", "src", "writeToParcel", "dest", "flags", "CREATOR", "plugin-finder_release"})
 public final class LocalVideoCropInfoParcelable
   implements Parcelable
 {
   public static final a CREATOR;
-  public brc rvh;
+  public bvp skC;
   
   static
   {
@@ -28,12 +28,12 @@ public final class LocalVideoCropInfoParcelable
   {
     this();
     AppMethodBeat.i(168210);
-    k.h(paramParcel, "src");
+    p.h(paramParcel, "src");
     byte[] arrayOfByte = new byte[paramParcel.readInt()];
     paramParcel.readByteArray(arrayOfByte);
-    paramParcel = new brc();
+    paramParcel = new bvp();
     paramParcel.parseFrom(arrayOfByte);
-    this.rvh = paramParcel;
+    this.skC = paramParcel;
     AppMethodBeat.o(168210);
   }
   
@@ -47,13 +47,13 @@ public final class LocalVideoCropInfoParcelable
     AppMethodBeat.i(168209);
     if (paramParcel != null)
     {
-      if (this.rvh != null)
+      if (this.skC != null)
       {
-        Object localObject = this.rvh;
+        Object localObject = this.skC;
         if (localObject == null) {
-          k.fOy();
+          p.gfZ();
         }
-        localObject = ((brc)localObject).toByteArray();
+        localObject = ((bvp)localObject).toByteArray();
         paramParcel.writeInt(localObject.length);
         paramParcel.writeByteArray((byte[])localObject);
       }
@@ -63,14 +63,14 @@ public final class LocalVideoCropInfoParcelable
     AppMethodBeat.o(168209);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/LocalVideoCropInfoParcelable$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/finder/video/LocalVideoCropInfoParcelable;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/finder/video/LocalVideoCropInfoParcelable;", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/LocalVideoCropInfoParcelable$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/finder/video/LocalVideoCropInfoParcelable;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/finder/video/LocalVideoCropInfoParcelable;", "plugin-finder_release"})
   public static final class a
     implements Parcelable.Creator<LocalVideoCropInfoParcelable>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.LocalVideoCropInfoParcelable
  * JD-Core Version:    0.7.0.1
  */

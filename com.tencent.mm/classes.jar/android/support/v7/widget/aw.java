@@ -12,15 +12,15 @@ import java.util.ArrayList;
 public final class aw
   extends ContextWrapper
 {
-  private static final Object awH = new Object();
-  private static ArrayList<WeakReference<aw>> awI;
+  private static final Object ayy = new Object();
+  private static ArrayList<WeakReference<aw>> ayz;
   private final Resources mResources;
   private final Resources.Theme mTheme;
   
   private aw(Context paramContext)
   {
     super(paramContext);
-    if (be.mQ())
+    if (be.ni())
     {
       this.mResources = new be(this, paramContext.getResources());
       this.mTheme = this.mResources.newTheme();
@@ -50,40 +50,40 @@ public final class aw
     if (i != 0) {}
     for (;;)
     {
-      synchronized (awH)
+      synchronized (ayy)
       {
-        if (awI == null)
+        if (ayz == null)
         {
-          awI = new ArrayList();
+          ayz = new ArrayList();
           localObject1 = new aw(paramContext);
-          awI.add(new WeakReference(localObject1));
+          ayz.add(new WeakReference(localObject1));
           return localObject1;
           label94:
           if (Build.VERSION.SDK_INT >= 21)
           {
             i = j;
-            if (!be.mQ()) {
+            if (!be.ni()) {
               break;
             }
           }
           i = 1;
           break;
         }
-        i = awI.size() - 1;
+        i = ayz.size() - 1;
         if (i >= 0)
         {
-          localObject1 = (WeakReference)awI.get(i);
+          localObject1 = (WeakReference)ayz.get(i);
           if ((localObject1 == null) || (((WeakReference)localObject1).get() == null)) {
-            awI.remove(i);
+            ayz.remove(i);
           }
         }
         else
         {
-          i = awI.size() - 1;
+          i = ayz.size() - 1;
           if (i < 0) {
             continue;
           }
-          localObject1 = (WeakReference)awI.get(i);
+          localObject1 = (WeakReference)ayz.get(i);
           if (localObject1 == null) {
             break label227;
           }

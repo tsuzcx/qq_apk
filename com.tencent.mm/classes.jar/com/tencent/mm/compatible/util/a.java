@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static int cd(Context paramContext)
+  public static int cb(Context paramContext)
   {
     AppMethodBeat.i(155863);
     TypedValue localTypedValue = new TypedValue();
@@ -49,7 +49,7 @@ public final class a
       AppMethodBeat.o(155862);
       return i;
     }
-    int i = cd(paramActivity);
+    int i = cb(paramActivity);
     AppMethodBeat.o(155862);
     return i;
   }

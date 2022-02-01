@@ -1,23 +1,17 @@
 package kotlinx.coroutines.internal;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.f;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/internal/ThreadState;", "", "context", "Lkotlin/coroutines/CoroutineContext;", "n", "", "(Lkotlin/coroutines/CoroutineContext;I)V", "a", "", "[Ljava/lang/Object;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "i", "append", "", "value", "start", "take", "kotlinx-coroutines-core"})
-final class z
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/internal/ThreadSafeHeapNode;", "", "heap", "Lkotlinx/coroutines/internal/ThreadSafeHeap;", "getHeap", "()Lkotlinx/coroutines/internal/ThreadSafeHeap;", "setHeap", "(Lkotlinx/coroutines/internal/ThreadSafeHeap;)V", "index", "", "getIndex", "()I", "setIndex", "(I)V", "kotlinx-coroutines-core"})
+public abstract interface z
 {
-  final f LQy;
-  Object[] LTt;
-  int i;
+  public abstract void a(y<?> paramy);
   
-  public z(f paramf, int paramInt)
-  {
-    AppMethodBeat.i(118108);
-    this.LQy = paramf;
-    this.LTt = new Object[paramInt];
-    AppMethodBeat.o(118108);
-  }
+  public abstract int getIndex();
+  
+  public abstract y<?> gvy();
+  
+  public abstract void setIndex(int paramInt);
 }
 
 

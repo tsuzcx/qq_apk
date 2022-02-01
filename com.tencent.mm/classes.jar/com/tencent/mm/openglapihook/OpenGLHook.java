@@ -10,15 +10,23 @@ public class OpenGLHook
   
   static
   {
-    AppMethodBeat.i(186146);
+    AppMethodBeat.i(186983);
     System.loadLibrary("openglapihook");
     mInstance = new OpenGLHook();
-    AppMethodBeat.o(186146);
+    AppMethodBeat.o(186983);
   }
   
   public static OpenGLHook getInstance()
   {
     return mInstance;
+  }
+  
+  public static String getStack()
+  {
+    AppMethodBeat.i(186981);
+    String str = stackTraceToString(new Throwable().getStackTrace());
+    AppMethodBeat.o(186981);
+    return str;
   }
   
   private static native boolean hookGlDeleteBuffers(int paramInt);
@@ -41,164 +49,170 @@ public class OpenGLHook
   
   public static void onGetError(int paramInt)
   {
-    AppMethodBeat.i(186145);
+    AppMethodBeat.i(186980);
     if (getInstance().mListener != null) {
-      getInstance().mListener.onGetError(paramInt);
+      getInstance().mListener.a(new a(paramInt));
     }
-    AppMethodBeat.o(186145);
+    AppMethodBeat.o(186980);
   }
   
-  public static void onGlDeleteBuffers(String paramString)
+  public static void onGlDeleteBuffers(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(210169);
+    AppMethodBeat.i(186975);
     if (getInstance().mListener != null) {
-      getInstance().mListener.onGlDeleteBuffers(parseString(paramString));
+      getInstance().mListener.e(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(210169);
+    AppMethodBeat.o(186975);
   }
   
-  public static void onGlDeleteFramebuffers(String paramString)
+  public static void onGlDeleteFramebuffers(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(210171);
+    AppMethodBeat.i(186977);
     if (getInstance().mListener != null) {
-      getInstance().mListener.onGlDeleteFramebuffers(parseString(paramString));
+      getInstance().mListener.g(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(210171);
+    AppMethodBeat.o(186977);
   }
   
-  public static void onGlDeleteRenderbuffers(String paramString)
+  public static void onGlDeleteRenderbuffers(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(210173);
+    AppMethodBeat.i(186979);
     if (getInstance().mListener != null) {
-      getInstance().mListener.onGlDeleteRenderbuffers(parseString(paramString));
+      getInstance().mListener.i(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(210173);
+    AppMethodBeat.o(186979);
   }
   
-  public static void onGlDeleteTextures(String paramString)
+  public static void onGlDeleteTextures(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(210167);
+    AppMethodBeat.i(186973);
     if (getInstance().mListener != null) {
-      getInstance().mListener.onGlDeleteTextures(parseString(paramString));
+      getInstance().mListener.c(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(210167);
+    AppMethodBeat.o(186973);
   }
   
-  public static void onGlGenBuffers(String paramString)
+  public static void onGlGenBuffers(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(210168);
+    AppMethodBeat.i(186974);
     if (getInstance().mListener != null) {
-      getInstance().mListener.onGlGenBuffers(parseString(paramString));
+      getInstance().mListener.d(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(210168);
+    AppMethodBeat.o(186974);
   }
   
-  public static void onGlGenFramebuffers(String paramString)
+  public static void onGlGenFramebuffers(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(210170);
+    AppMethodBeat.i(186976);
     if (getInstance().mListener != null) {
-      getInstance().mListener.onGlGenFramebuffers(parseString(paramString));
+      getInstance().mListener.f(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(210170);
+    AppMethodBeat.o(186976);
   }
   
-  public static void onGlGenRenderbuffers(String paramString)
+  public static void onGlGenRenderbuffers(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(210172);
+    AppMethodBeat.i(186978);
     if (getInstance().mListener != null) {
-      getInstance().mListener.onGlGenRenderbuffers(parseString(paramString));
+      getInstance().mListener.h(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(210172);
+    AppMethodBeat.o(186978);
   }
   
-  public static void onGlGenTextures(String paramString)
+  public static void onGlGenTextures(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(210166);
+    AppMethodBeat.i(186972);
     if (getInstance().mListener != null) {
-      getInstance().mListener.onGlGenTextures(parseString(paramString));
+      getInstance().mListener.b(new a(paramArrayOfInt));
     }
-    AppMethodBeat.o(210166);
+    AppMethodBeat.o(186972);
   }
   
-  private static int[] parseString(String paramString)
+  private static String stackTraceToString(StackTraceElement[] paramArrayOfStackTraceElement)
   {
-    AppMethodBeat.i(210174);
-    if ((paramString == null) || (paramString.length() == 0))
+    AppMethodBeat.i(186982);
+    if (paramArrayOfStackTraceElement == null)
     {
-      paramString = new int[1];
-      AppMethodBeat.o(210174);
-      return paramString;
+      AppMethodBeat.o(186982);
+      return "";
     }
-    int[] arrayOfInt = new int[paramString.length()];
+    StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    while (i < paramString.length())
+    while (i < paramArrayOfStackTraceElement.length)
     {
-      arrayOfInt[i] = Integer.parseInt(String.valueOf(paramString.charAt(i)));
+      if (i != 0)
+      {
+        StackTraceElement localStackTraceElement = paramArrayOfStackTraceElement[i];
+        if (!localStackTraceElement.getClassName().contains("java.lang.Thread")) {
+          localStringBuilder.append("\t").append(localStackTraceElement).append('\n');
+        }
+      }
       i += 1;
     }
-    AppMethodBeat.o(210174);
-    return arrayOfInt;
+    paramArrayOfStackTraceElement = localStringBuilder.toString();
+    AppMethodBeat.o(186982);
+    return paramArrayOfStackTraceElement;
   }
   
   public boolean hook(String paramString, int paramInt)
   {
-    AppMethodBeat.i(186136);
+    AppMethodBeat.i(186971);
     boolean bool;
     if (paramString.equals("glGetError"))
     {
       bool = hookGlGetError(paramInt);
-      AppMethodBeat.o(186136);
+      AppMethodBeat.o(186971);
       return bool;
     }
     if (paramString.equals("glGenTextures"))
     {
       bool = hookGlGenTextures(paramInt);
-      AppMethodBeat.o(186136);
+      AppMethodBeat.o(186971);
       return bool;
     }
     if (paramString.equals("glDeleteTextures"))
     {
       bool = hookGlDeleteTextures(paramInt);
-      AppMethodBeat.o(186136);
+      AppMethodBeat.o(186971);
       return bool;
     }
     if (paramString.equals("glGenBuffers"))
     {
       bool = hookGlGenBuffers(paramInt);
-      AppMethodBeat.o(186136);
+      AppMethodBeat.o(186971);
       return bool;
     }
     if (paramString.equals("glDeleteBuffers"))
     {
       bool = hookGlDeleteBuffers(paramInt);
-      AppMethodBeat.o(186136);
+      AppMethodBeat.o(186971);
       return bool;
     }
     if (paramString.equals("glGenFramebuffers"))
     {
       bool = hookGlGenFramebuffers(paramInt);
-      AppMethodBeat.o(186136);
+      AppMethodBeat.o(186971);
       return bool;
     }
     if (paramString.equals("glDeleteFramebuffers"))
     {
       bool = hookGlDeleteFramebuffers(paramInt);
-      AppMethodBeat.o(186136);
+      AppMethodBeat.o(186971);
       return bool;
     }
     if (paramString.equals("glGenRenderbuffers"))
     {
       bool = hookGlGenRenderbuffers(paramInt);
-      AppMethodBeat.o(186136);
+      AppMethodBeat.o(186971);
       return bool;
     }
     if (paramString.equals("glDeleteRenderbuffers"))
     {
       bool = hookGlDeleteRenderbuffers(paramInt);
-      AppMethodBeat.o(186136);
+      AppMethodBeat.o(186971);
       return bool;
     }
-    AppMethodBeat.o(186136);
+    AppMethodBeat.o(186971);
     return false;
   }
   
@@ -211,23 +225,23 @@ public class OpenGLHook
   
   public static abstract interface a
   {
-    public abstract void onGetError(int paramInt);
+    public abstract void a(a parama);
     
-    public abstract void onGlDeleteBuffers(int[] paramArrayOfInt);
+    public abstract void b(a parama);
     
-    public abstract void onGlDeleteFramebuffers(int[] paramArrayOfInt);
+    public abstract void c(a parama);
     
-    public abstract void onGlDeleteRenderbuffers(int[] paramArrayOfInt);
+    public abstract void d(a parama);
     
-    public abstract void onGlDeleteTextures(int[] paramArrayOfInt);
+    public abstract void e(a parama);
     
-    public abstract void onGlGenBuffers(int[] paramArrayOfInt);
+    public abstract void f(a parama);
     
-    public abstract void onGlGenFramebuffers(int[] paramArrayOfInt);
+    public abstract void g(a parama);
     
-    public abstract void onGlGenRenderbuffers(int[] paramArrayOfInt);
+    public abstract void h(a parama);
     
-    public abstract void onGlGenTextures(int[] paramArrayOfInt);
+    public abstract void i(a parama);
   }
 }
 

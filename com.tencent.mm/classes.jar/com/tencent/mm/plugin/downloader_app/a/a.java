@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.downloader_app.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import java.util.Map;
 import org.json.JSONArray;
@@ -12,24 +12,24 @@ public final class a
 {
   public String appId;
   public String appName;
-  public int dCE;
-  public int diX;
+  public int dOR;
   public String downloadUrl;
+  public int duJ;
   public String extInfo;
   public int fileType;
-  public String lpa;
-  public int oJO;
-  public int oJP;
-  public int oJQ;
-  public boolean oJo;
-  public String oKQ;
-  public String oKR;
-  public long oKS;
-  public boolean oKT = true;
-  public boolean oKU;
-  public boolean oKV = true;
-  public LinkedList<com.tencent.mm.plugin.downloader.c.b.a> oKW;
+  public String lMs;
   public String packageName;
+  public boolean pmV;
+  public int pnv;
+  public int pnw;
+  public int pnx;
+  public long poA;
+  public boolean poB = true;
+  public boolean poC;
+  public boolean poD = true;
+  public LinkedList<com.tencent.mm.plugin.downloader.c.b.a> poE;
+  public String poy;
+  public String poz;
   public int scene;
   
   public static a T(Map<String, Object> paramMap)
@@ -43,28 +43,28 @@ public final class a
     }
     locala.appName = ((String)paramMap.get("task_name"));
     locala.downloadUrl = ((String)paramMap.get("task_url"));
-    locala.oKQ = ((String)paramMap.get("alternative_url"));
-    locala.oKS = bs.getLong((String)paramMap.get("task_size"), 0L);
-    locala.lpa = ((String)paramMap.get("file_md5"));
+    locala.poy = ((String)paramMap.get("alternative_url"));
+    locala.poA = bt.getLong((String)paramMap.get("task_size"), 0L);
+    locala.lMs = ((String)paramMap.get("file_md5"));
     locala.extInfo = ((String)paramMap.get("extInfo"));
-    locala.fileType = bs.getInt((String)paramMap.get("fileType"), 0);
+    locala.fileType = bt.getInt((String)paramMap.get("fileType"), 0);
     locala.appId = ((String)paramMap.get("appid"));
-    locala.oKR = ((String)paramMap.get("raw_appid"));
+    locala.poz = ((String)paramMap.get("raw_appid"));
     locala.packageName = ((String)paramMap.get("package_name"));
-    locala.scene = bs.getInt((String)paramMap.get("scene"), 1000);
-    locala.diX = bs.getInt((String)paramMap.get("downloader_type"), 1);
-    locala.dCE = bs.getInt((String)paramMap.get("download_type"), 1);
-    locala.oJO = bs.getInt((String)paramMap.get("uiarea"), 0);
-    locala.oJP = bs.getInt((String)paramMap.get("notice_id"), 0);
-    locala.oJQ = bs.getInt((String)paramMap.get("ssid"), 0);
+    locala.scene = bt.getInt((String)paramMap.get("scene"), 1000);
+    locala.duJ = bt.getInt((String)paramMap.get("downloader_type"), 1);
+    locala.dOR = bt.getInt((String)paramMap.get("download_type"), 1);
+    locala.pnv = bt.getInt((String)paramMap.get("uiarea"), 0);
+    locala.pnw = bt.getInt((String)paramMap.get("notice_id"), 0);
+    locala.pnx = bt.getInt((String)paramMap.get("ssid"), 0);
     paramMap = (String)paramMap.get("fileSectionMd5");
-    if (!bs.isNullOrNil(paramMap)) {
+    if (!bt.isNullOrNil(paramMap)) {
       try
       {
         paramMap = new JSONArray(paramMap);
         if (paramMap.length() > 0)
         {
-          locala.oKW = new LinkedList();
+          locala.poE = new LinkedList();
           int i = 0;
           while (i < paramMap.length())
           {
@@ -72,10 +72,10 @@ public final class a
             if (localJSONObject != null)
             {
               com.tencent.mm.plugin.downloader.c.b.a locala1 = new com.tencent.mm.plugin.downloader.c.b.a();
-              locala1.oGv = localJSONObject.optLong("android_md5_section_begin");
-              locala1.oGw = localJSONObject.optLong("android_md5_section_end");
-              locala1.oGx = localJSONObject.optString("android_md5_section_md5");
-              locala.oKW.add(locala1);
+              locala1.pjZ = localJSONObject.optLong("android_md5_section_begin");
+              locala1.pka = localJSONObject.optLong("android_md5_section_end");
+              locala1.pkb = localJSONObject.optString("android_md5_section_md5");
+              locala.poE.add(locala1);
             }
             i += 1;
           }
@@ -87,42 +87,47 @@ public final class a
     return locala;
   }
   
-  public static a ao(JSONObject paramJSONObject)
+  public static a ar(JSONObject paramJSONObject)
   {
     int i = 0;
     AppMethodBeat.i(153083);
     a locala = new a();
+    if (paramJSONObject == null)
+    {
+      AppMethodBeat.o(153083);
+      return locala;
+    }
     locala.appName = paramJSONObject.optString("task_name");
     locala.downloadUrl = paramJSONObject.optString("task_url");
-    locala.oKQ = paramJSONObject.optString("alternative_url");
-    locala.oKS = paramJSONObject.optLong("task_size");
-    locala.lpa = paramJSONObject.optString("file_md5");
+    locala.poy = paramJSONObject.optString("alternative_url");
+    locala.poA = paramJSONObject.optLong("task_size");
+    locala.lMs = paramJSONObject.optString("file_md5");
     locala.extInfo = paramJSONObject.optString("extInfo");
-    locala.fileType = bs.getInt(paramJSONObject.optString("fileType"), 0);
+    locala.fileType = bt.getInt(paramJSONObject.optString("fileType"), 0);
     locala.appId = paramJSONObject.optString("appid");
-    locala.oKR = paramJSONObject.optString("raw_appid");
+    locala.poz = paramJSONObject.optString("raw_appid");
     locala.packageName = paramJSONObject.optString("packageName");
     locala.scene = paramJSONObject.optInt("scene", 1000);
-    locala.diX = paramJSONObject.optInt("downloader_type", 1);
-    locala.oJo = paramJSONObject.optBoolean("download_in_wifi", false);
-    locala.dCE = paramJSONObject.optInt("download_type", 1);
-    locala.oJO = paramJSONObject.optInt("uiarea");
-    locala.oJP = paramJSONObject.optInt("notice_id");
-    locala.oJQ = paramJSONObject.optInt("ssid");
+    locala.duJ = paramJSONObject.optInt("downloader_type", 1);
+    locala.pmV = paramJSONObject.optBoolean("download_in_wifi", false);
+    locala.dOR = paramJSONObject.optInt("download_type", 1);
+    locala.pnv = paramJSONObject.optInt("uiarea");
+    locala.pnw = paramJSONObject.optInt("notice_id");
+    locala.pnx = paramJSONObject.optInt("ssid");
     paramJSONObject = paramJSONObject.optJSONArray("fileSectionMd5");
     if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
     {
-      locala.oKW = new LinkedList();
+      locala.poE = new LinkedList();
       while (i < paramJSONObject.length())
       {
         JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
         if (localJSONObject != null)
         {
           com.tencent.mm.plugin.downloader.c.b.a locala1 = new com.tencent.mm.plugin.downloader.c.b.a();
-          locala1.oGv = localJSONObject.optLong("android_md5_section_begin");
-          locala1.oGw = localJSONObject.optLong("android_md5_section_end");
-          locala1.oGx = localJSONObject.optString("android_md5_section_md5");
-          locala.oKW.add(locala1);
+          locala1.pjZ = localJSONObject.optLong("android_md5_section_begin");
+          locala1.pka = localJSONObject.optLong("android_md5_section_end");
+          locala1.pkb = localJSONObject.optString("android_md5_section_md5");
+          locala.poE.add(locala1);
         }
         i += 1;
       }
@@ -134,7 +139,7 @@ public final class a
   public final boolean isValid()
   {
     AppMethodBeat.i(153085);
-    if (!bs.isNullOrNil(this.downloadUrl))
+    if (!bt.isNullOrNil(this.downloadUrl))
     {
       AppMethodBeat.o(153085);
       return true;

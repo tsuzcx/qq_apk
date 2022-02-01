@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/gdl" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/ha" android:layout_marginRight="@dimen/ha" style="@style/hp" />
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b40" android:paddingTop="@dimen/jn" android:paddingBottom="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginRight="@dimen/ha">
-        <TextView android:textSize="@dimen/ia" android:textColor="?i" android:ellipsize="end" android:gravity="center|left" android:id="@id/gam" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/vw" android:text="@string/uo" android:maxLines="2" android:layout_weight="1.0" android:lineSpacingExtra="@dimen/js" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="center|left" android:id="@id/gam" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/vw" android:text="@string/uo" android:maxLines="2" android:layout_weight="1.0" android:lineSpacingExtra="@dimen/js" />
         <RelativeLayout android:id="@id/b5c" android:layout_width="@dimen/vw" android:layout_height="@dimen/vw" android:layout_marginLeft="@dimen/ha">
             <ImageView android:id="@id/b5b" android:background="@color/th" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
         </RelativeLayout>

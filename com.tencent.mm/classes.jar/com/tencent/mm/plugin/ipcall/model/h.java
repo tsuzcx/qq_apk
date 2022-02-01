@@ -1,82 +1,82 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jz;
-import com.tencent.mm.g.a.jz.a;
-import com.tencent.mm.protocal.protobuf.chz;
-import com.tencent.mm.protocal.protobuf.cii;
+import com.tencent.mm.g.a.kh;
+import com.tencent.mm.g.a.kh.a;
+import com.tencent.mm.protocal.protobuf.cmz;
+import com.tencent.mm.protocal.protobuf.cni;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class h
-  extends c<jz>
+  extends c<kh>
 {
-  public a tIa;
+  public a uKN;
   
   public h()
   {
     AppMethodBeat.i(161381);
-    this.__eventId = jz.class.getName().hashCode();
+    this.__eventId = kh.class.getName().hashCode();
     AppMethodBeat.o(161381);
   }
   
-  private boolean a(jz paramjz)
+  private boolean a(kh paramkh)
   {
     AppMethodBeat.i(25380);
-    if ((paramjz instanceof jz))
+    if ((paramkh instanceof kh))
     {
-      paramjz = paramjz.dlA.dlB;
-      if ((paramjz == null) || (paramjz.length <= 0))
+      paramkh = paramkh.dxn.dxo;
+      if ((paramkh == null) || (paramkh.length <= 0))
       {
         AppMethodBeat.o(25380);
         return false;
       }
-      if (paramjz[0] == 101)
+      if (paramkh[0] == 101)
       {
-        Object localObject = new byte[paramjz.length - 1];
-        System.arraycopy(paramjz, 1, localObject, 0, localObject.length);
+        Object localObject = new byte[paramkh.length - 1];
+        System.arraycopy(paramkh, 1, localObject, 0, localObject.length);
         try
         {
-          paramjz = (chz)new chz().parseFrom((byte[])localObject);
-          ac.d("MicroMsg.IPCallSvrNotifyListener", "roomId: %d, roomKey: %d, DtmfPayloadType: %d", new Object[] { Integer.valueOf(paramjz.Exf), Long.valueOf(paramjz.Exg), Integer.valueOf(paramjz.tJa) });
-          localObject = paramjz.Fwi;
+          paramkh = (cmz)new cmz().parseFrom((byte[])localObject);
+          ad.d("MicroMsg.IPCallSvrNotifyListener", "roomId: %d, roomKey: %d, DtmfPayloadType: %d", new Object[] { Integer.valueOf(paramkh.GeI), Long.valueOf(paramkh.GeJ), Integer.valueOf(paramkh.uLN) });
+          localObject = paramkh.Hgo;
           if (localObject != null)
           {
             localObject = ((LinkedList)localObject).iterator();
             while (((Iterator)localObject).hasNext())
             {
-              cii localcii = (cii)((Iterator)localObject).next();
-              ac.d("MicroMsg.IPCallSvrNotifyListener", "userstatus: %d, userstatusKey: %d, memberId: %d", new Object[] { Integer.valueOf(localcii.Fws), Integer.valueOf(localcii.Fwt), Integer.valueOf(localcii.Fwr) });
+              cni localcni = (cni)((Iterator)localObject).next();
+              ad.d("MicroMsg.IPCallSvrNotifyListener", "userstatus: %d, userstatusKey: %d, memberId: %d", new Object[] { Integer.valueOf(localcni.Hgy), Integer.valueOf(localcni.Hgz), Integer.valueOf(localcni.Hgx) });
               continue;
               AppMethodBeat.o(25380);
             }
           }
         }
-        catch (Exception paramjz)
+        catch (Exception paramkh)
         {
-          ac.e("MicroMsg.IPCallSvrNotifyListener", "parse PstnNotify error: %s", new Object[] { paramjz.getMessage() });
+          ad.e("MicroMsg.IPCallSvrNotifyListener", "parse PstnNotify error: %s", new Object[] { paramkh.getMessage() });
         }
       }
     }
     for (;;)
     {
       return false;
-      if (this.tIa != null) {
-        this.tIa.a(paramjz);
+      if (this.uKN != null) {
+        this.uKN.a(paramkh);
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void a(chz paramchz);
+    public abstract void a(cmz paramcmz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,84 +1,48 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.graphics.Color;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.luggage.w;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public class bd
-  extends bo<f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  public final void b(a<f>.a parama)
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78626);
-    ac.i("MicroMsg.JsApiSetNavigationBarColor", "invoke");
-    int i;
-    if (parama.bWS.bVY.optInt("actionCode") == 1) {
-      i = 1;
+    AppMethodBeat.i(78624);
+    String str1 = paramb.chh.cgn.optString("title");
+    String str2 = paramb.chh.cgn.optString("icon_url");
+    String str3 = paramb.chh.cgn.optString("jump_url");
+    w localw = new w();
+    if (!bt.isNullOrNil(str1)) {
+      localw.title = str1;
     }
-    for (;;)
-    {
-      int j = -1;
-      try
-      {
-        k = Color.parseColor(parama.bWS.bVY.optString("color"));
-        k |= 0xFF000000;
-        j = i;
-        i = k;
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          for (;;)
-          {
-            bs.getFloat(parama.bWS.bVY.optString("alpha"), 1.0F);
-            if (j == 0) {
-              break label148;
-            }
-            ((f)parama.bWR).bdN();
-            parama.a("", null);
-            AppMethodBeat.o(78626);
-            return;
-            i = 0;
-            break;
-            localException1 = localException1;
-            ac.e("MicroMsg.JsApiSetNavigationBarColor", localException1.getMessage());
-            int k = 1;
-            i = j;
-            j = k;
-          }
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            ac.e("MicroMsg.JsApiSetNavigationBarColor", localException2.getMessage());
-            continue;
-            label148:
-            ((f)parama.bWR).setStatusBarColor(i);
-          }
-        }
-      }
+    if (!bt.isNullOrNil(str2)) {
+      localw.iconUrl = str2;
     }
+    if (!bt.isNullOrNil(str3)) {
+      localw.jumpUrl = str3;
+    }
+    paramb.a("", null);
+    AppMethodBeat.o(78624);
   }
   
-  public final int bYk()
+  public final int ccO()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setNavigationBarColor";
+    return "setDesktopInfo";
   }
 }
 

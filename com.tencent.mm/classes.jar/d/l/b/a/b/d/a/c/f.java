@@ -1,7 +1,7 @@
 package d.l.b.a.b.d.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.a.g;
 import d.l.b.a.b.d.a.e.d;
 
@@ -10,8 +10,8 @@ public final class f
   public static final g a(h paramh, d paramd)
   {
     AppMethodBeat.i(57753);
-    k.h(paramh, "$this$resolveAnnotations");
-    k.h(paramd, "annotationsOwner");
+    p.h(paramh, "$this$resolveAnnotations");
+    p.h(paramd, "annotationsOwner");
     paramh = (g)new e(paramh, paramd);
     AppMethodBeat.o(57753);
     return paramh;
@@ -19,7 +19,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.f
  * JD-Core Version:    0.7.0.1
  */

@@ -8,33 +8,33 @@ public final class RatingCompat
   implements Parcelable
 {
   public static final Parcelable.Creator<RatingCompat> CREATOR = new Parcelable.Creator() {};
-  private final int Ks;
-  private final float Kt;
+  private final int Mi;
+  private final float Mj;
   
   RatingCompat(int paramInt, float paramFloat)
   {
-    this.Ks = paramInt;
-    this.Kt = paramFloat;
+    this.Mi = paramInt;
+    this.Mj = paramFloat;
   }
   
   public final int describeContents()
   {
-    return this.Ks;
+    return this.Mi;
   }
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("Rating:style=").append(this.Ks).append(" rating=");
-    if (this.Kt < 0.0F) {}
-    for (String str = "unrated";; str = String.valueOf(this.Kt)) {
+    StringBuilder localStringBuilder = new StringBuilder("Rating:style=").append(this.Mi).append(" rating=");
+    if (this.Mj < 0.0F) {}
+    for (String str = "unrated";; str = String.valueOf(this.Mj)) {
       return str;
     }
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.Ks);
-    paramParcel.writeFloat(this.Kt);
+    paramParcel.writeInt(this.Mi);
+    paramParcel.writeFloat(this.Mj);
   }
 }
 

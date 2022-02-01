@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a.f.c;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
 final class FinderAlbumUI$b
   implements f.c
 {
-  public static final b rFI;
+  public static final b sAH;
   
   static
   {
     AppMethodBeat.i(167130);
-    rFI = new b();
+    sAH = new b();
     AppMethodBeat.o(167130);
   }
   
@@ -21,7 +21,7 @@ final class FinderAlbumUI$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderAlbumUI.b
  * JD-Core Version:    0.7.0.1
  */

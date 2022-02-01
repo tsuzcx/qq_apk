@@ -2,7 +2,7 @@ package com.tencent.mm.live.core.core.a;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/core/anchor/IMMLiveAnchorCore;", "Lcom/tencent/mm/live/core/core/IMMLiveCore;", "endScaleAnimation", "", "time", "", "startScaleAnimation", "scale", "", "plugin-core_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/core/anchor/IMMLiveAnchorCore;", "Lcom/tencent/mm/live/core/core/IMMLiveCore;", "endScaleAnimation", "", "time", "", "startScaleAnimation", "scale", "", "plugin-core_release"})
 public abstract interface a
   extends com.tencent.mm.live.core.core.a
 {}

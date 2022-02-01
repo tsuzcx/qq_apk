@@ -9,32 +9,32 @@ import java.util.Map;
 public final class c
   extends l
 {
-  public static final c.a hlR;
+  public static final c.a hEe;
   
   static
   {
     AppMethodBeat.i(146955);
     c.a locala = new c.a();
-    locala.GvF = new Field[2];
+    locala.IhA = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "key";
-    locala.GvH.put("key", "TEXT PRIMARY KEY ");
+    locala.IhC.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "key";
+    locala.IhB = "key";
     locala.columns[1] = "value";
-    locala.GvH.put("value", "TEXT");
+    locala.IhC.put("value", "TEXT");
     localStringBuilder.append(" value TEXT");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
-    hlR = locala;
+    hEe = locala;
     AppMethodBeat.o(146955);
   }
   
   public final c.a getDBInfo()
   {
-    return hlR;
+    return hEe;
   }
 }
 

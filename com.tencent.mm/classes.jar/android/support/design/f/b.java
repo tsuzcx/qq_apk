@@ -4,12 +4,12 @@ public class b
 {
   public void a(float paramFloat1, float paramFloat2, d paramd)
   {
-    paramd.k(paramFloat1);
+    paramd.j(paramFloat1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.f.b
  * JD-Core Version:    0.7.0.1
  */

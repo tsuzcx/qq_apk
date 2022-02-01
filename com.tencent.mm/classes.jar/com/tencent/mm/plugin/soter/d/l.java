@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.soter.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public enum l
 {
@@ -13,17 +13,17 @@ public enum l
   static
   {
     AppMethodBeat.i(130853);
-    znJ = new l("INSTANCE");
-    znK = new l[] { znJ };
+    AFD = new l("INSTANCE");
+    AFE = new l[] { AFD };
     AppMethodBeat.o(130853);
   }
   
   private l() {}
   
-  public static void s(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public static void r(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130852);
-    ac.d("MicroMsg.SoterReportManager", "SoterReportManager functionName: %s, appId: %s, errType: %d, errCode: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.d("MicroMsg.SoterReportManager", "SoterReportManager functionName: %s, appId: %s, errType: %d, errCode: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     int i;
     switch (paramString1.hashCode())
     {
@@ -33,16 +33,16 @@ public enum l
       {
       default: 
         label71:
-        ac.e("MicroMsg.SoterReportManager", "unknown soter jsapi function name");
+        ad.e("MicroMsg.SoterReportManager", "unknown soter jsapi function name");
         i = -1;
       }
       break;
     }
     for (;;)
     {
-      ac.i("MicroMsg.SoterReportManager", "functionNameCode: %d", new Object[] { Integer.valueOf(i) });
+      ad.i("MicroMsg.SoterReportManager", "functionNameCode: %d", new Object[] { Integer.valueOf(i) });
       if (i != -1) {
-        h.wUl.f(13711, new Object[] { Integer.valueOf(i), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        g.yhR.f(13711, new Object[] { Integer.valueOf(i), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       }
       AppMethodBeat.o(130852);
       return;

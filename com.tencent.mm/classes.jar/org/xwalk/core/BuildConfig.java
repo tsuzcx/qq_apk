@@ -14,6 +14,7 @@ public final class BuildConfig
   public static final String FILE_NAME_64 = "libxwebfullpack.so";
   public static final String FILE_NAME_SO = "libxwebfullpack.so";
   public static final String FLAVOR = "";
+  public static final boolean HAS_X5_IMP = true;
   public static final String INSTALL_TYPE = "LIB";
   public static final String LIBRARY_PACKAGE_NAME = "org.xwalk.core";
   public static final String MD5 = "1";
@@ -25,7 +26,7 @@ public final class BuildConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.xwalk.core.BuildConfig
  * JD-Core Version:    0.7.0.1
  */

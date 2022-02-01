@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vf
   extends b
 {
-  public a dyh;
+  public a dJs;
   
   public vf()
   {
@@ -15,16 +15,16 @@ public final class vf
   
   private vf(byte paramByte)
   {
-    AppMethodBeat.i(118480);
-    this.dyh = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(94817);
+    this.dJs = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(118480);
+    AppMethodBeat.o(94817);
   }
   
   public static final class a
   {
-    public int state = -1;
+    public String mediaId;
   }
 }
 

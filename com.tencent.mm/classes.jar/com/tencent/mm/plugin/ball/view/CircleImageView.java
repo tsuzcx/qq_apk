@@ -46,8 +46,8 @@ public class CircleImageView
   private void el(Context paramContext)
   {
     AppMethodBeat.i(106378);
-    this.defaultWidth = a.av(paramContext, 2131166366);
-    this.defaultHeight = a.av(paramContext, 2131166366);
+    this.defaultWidth = a.ay(paramContext, 2131166366);
+    this.defaultHeight = a.ay(paramContext, 2131166366);
     AppMethodBeat.o(106378);
   }
   

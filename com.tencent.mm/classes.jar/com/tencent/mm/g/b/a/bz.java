@@ -6,184 +6,152 @@ import com.tencent.mm.plugin.report.a;
 public final class bz
   extends a
 {
-  private long dHR;
-  private String dKl = "";
-  private String dNK;
-  private long dNL;
-  private long dNM;
-  private long dNN = 0L;
-  private long dNO;
-  private long dNP;
-  private long dNQ;
-  private long dNR;
-  private long dNS;
-  private long dNT;
-  private long dNU;
-  private long dNV;
+  private long dUY;
+  private String dVa;
+  private String dVb;
+  private long dVd;
+  private String dWX;
+  private String eaL;
+  private String eaM;
+  private long eaN;
+  private long eaO;
+  private long eaP;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(190801);
+    AppMethodBeat.i(209247);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHR);
+    ((StringBuffer)localObject).append(this.dVd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNK);
+    ((StringBuffer)localObject).append(this.dVa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNL);
+    ((StringBuffer)localObject).append(this.dVb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKl);
+    ((StringBuffer)localObject).append(this.dWX);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNM);
+    ((StringBuffer)localObject).append(this.eaL);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNN);
+    ((StringBuffer)localObject).append(this.eaM);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNO);
+    ((StringBuffer)localObject).append(this.eaN);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNP);
+    ((StringBuffer)localObject).append(this.eaO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNQ);
+    ((StringBuffer)localObject).append(this.eaP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNS);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNT);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNU);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNV);
+    ((StringBuffer)localObject).append(this.dUY);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(190801);
+    awz((String)localObject);
+    AppMethodBeat.o(209247);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(190802);
+    AppMethodBeat.i(209248);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("scene:").append(this.dHR);
+    ((StringBuffer)localObject).append("Scene:").append(this.dVd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("roomid:").append(this.dNK);
+    ((StringBuffer)localObject).append("Sessionid:").append(this.dVa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("liveid:").append(this.dNL);
+    ((StringBuffer)localObject).append("Contextid:").append(this.dVb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("topic:").append(this.dKl);
+    ((StringBuffer)localObject).append("ClickTabContextid:").append(this.dWX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("roomRole:").append(this.dNM);
+    ((StringBuffer)localObject).append("PoiText:").append(this.eaL);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("lastTime:").append(this.dNN);
+    ((StringBuffer)localObject).append("FilterTextItems:").append(this.eaM);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("audienceCount:").append(this.dNO);
+    ((StringBuffer)localObject).append("IsUnflodtab:").append(this.eaN);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("audienceCountMax:").append(this.dNP);
+    ((StringBuffer)localObject).append("IsUnflodopen:").append(this.eaO);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("commentCount:").append(this.dNQ);
+    ((StringBuffer)localObject).append("FliterPageType:").append(this.eaP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("heartCount:").append(this.dNR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("connectCount:").append(this.dNS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("allowReplay:").append(this.dNT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("roomCount:").append(this.dNU);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("costTime:").append(this.dNV);
+    ((StringBuffer)localObject).append("CommentScene:").append(this.dUY);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(190802);
+    AppMethodBeat.o(209248);
     return localObject;
   }
   
-  public final bz QJ()
+  public final bz gX(long paramLong)
   {
-    this.dHR = 1L;
+    this.dVd = paramLong;
     return this;
   }
   
-  public final bz gA(long paramLong)
+  public final bz gY(long paramLong)
   {
-    this.dNP = paramLong;
+    this.eaN = paramLong;
     return this;
   }
   
-  public final bz gB(long paramLong)
+  public final bz gZ(long paramLong)
   {
-    this.dNQ = paramLong;
-    return this;
-  }
-  
-  public final bz gC(long paramLong)
-  {
-    this.dNR = paramLong;
-    return this;
-  }
-  
-  public final bz gD(long paramLong)
-  {
-    this.dNS = paramLong;
-    return this;
-  }
-  
-  public final bz gE(long paramLong)
-  {
-    this.dNT = paramLong;
-    return this;
-  }
-  
-  public final bz gF(long paramLong)
-  {
-    this.dNU = paramLong;
-    return this;
-  }
-  
-  public final bz gG(long paramLong)
-  {
-    this.dNV = paramLong;
+    this.eaO = paramLong;
     return this;
   }
   
   public final int getId()
   {
-    return 19891;
+    return 19996;
   }
   
-  public final bz gx(long paramLong)
+  public final bz ha(long paramLong)
   {
-    this.dNL = paramLong;
+    this.eaP = paramLong;
     return this;
   }
   
-  public final bz gy(long paramLong)
+  public final bz hb(long paramLong)
   {
-    this.dNM = paramLong;
+    this.dUY = paramLong;
     return this;
   }
   
-  public final bz gz(long paramLong)
+  public final bz kZ(String paramString)
   {
-    this.dNO = paramLong;
+    AppMethodBeat.i(209242);
+    this.dVa = t("Sessionid", paramString, true);
+    AppMethodBeat.o(209242);
     return this;
   }
   
-  public final bz jU(String paramString)
+  public final bz la(String paramString)
   {
-    AppMethodBeat.i(190799);
-    this.dNK = t("roomid", paramString, true);
-    AppMethodBeat.o(190799);
+    AppMethodBeat.i(209243);
+    this.dVb = t("Contextid", paramString, true);
+    AppMethodBeat.o(209243);
     return this;
   }
   
-  public final bz jV(String paramString)
+  public final bz lb(String paramString)
   {
-    AppMethodBeat.i(190800);
-    this.dKl = t("topic", paramString, true);
-    AppMethodBeat.o(190800);
+    AppMethodBeat.i(209244);
+    this.dWX = t("ClickTabContextid", paramString, true);
+    AppMethodBeat.o(209244);
+    return this;
+  }
+  
+  public final bz lc(String paramString)
+  {
+    AppMethodBeat.i(209245);
+    this.eaL = t("PoiText", paramString, true);
+    AppMethodBeat.o(209245);
+    return this;
+  }
+  
+  public final bz ld(String paramString)
+  {
+    AppMethodBeat.i(209246);
+    this.eaM = t("FilterTextItems", paramString, true);
+    AppMethodBeat.o(209246);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.bz
  * JD-Core Version:    0.7.0.1
  */

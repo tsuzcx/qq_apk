@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a aRa;
+  private static a bbv;
   
   static
   {
     AppMethodBeat.i(127379);
-    aRa = new a()
+    bbv = new a()
     {
       public final void loadLibrary(String paramAnonymousString)
       {
@@ -23,13 +23,13 @@ public final class a
   
   public static void a(a parama)
   {
-    aRa = parama;
+    bbv = parama;
   }
   
   public static void loadLibrary(String paramString)
   {
     AppMethodBeat.i(127378);
-    aRa.loadLibrary(paramString);
+    bbv.loadLibrary(paramString);
     AppMethodBeat.o(127378);
   }
   
@@ -40,7 +40,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.github.henryye.nativeiv.a.a
  * JD-Core Version:    0.7.0.1
  */

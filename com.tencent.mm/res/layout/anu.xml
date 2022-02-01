@@ -2,8 +2,8 @@
 <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/f40" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:layout_width="@dimen/ce" android:layout_height="@dimen/ce">
-        <ImageView android:id="@id/cna" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@drawable/a7w" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/cna" android:background="@drawable/a7w" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_centerInParent="true" />
         <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cn1" android:layout_width="@dimen/t6" android:layout_height="@dimen/t6" android:scaleType="fitCenter" android:layout_centerInParent="true" />
     </RelativeLayout>
-    <TextView android:textSize="@dimen/t8" android:textColor="@color/BW_0_Alpha_0_5" android:gravity="center" android:id="@id/gam" android:layout_width="@dimen/ce" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:maxLines="2" />
+    <TextView android:textSize="@dimen/t8" android:textColor="@color/BW_0_Alpha_0_5" android:gravity="center" android:id="@id/gam" android:layout_width="@dimen/ce" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxLines="2" />
 </LinearLayout>

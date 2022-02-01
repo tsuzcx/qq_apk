@@ -17,80 +17,79 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.o;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.aw.a.a.c;
+import com.tencent.mm.aw.a.a.c.a;
 import com.tencent.mm.opensdk.modelbiz.WXOpenBusinessView.Resp;
 import com.tencent.mm.plugin.sns.ui.SnsEditText;
 import com.tencent.mm.pluginsdk.ui.applet.u;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.ui.tools.l;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.protocal.protobuf.yd;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.aac;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.s.b;
 
 public class TopStoryUploadUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  public static c AbF;
-  private String AbG;
-  private String AbH;
-  private ImageView AbI;
-  private ImageView AbJ;
-  private TextView AbK;
-  private TextView AbL;
-  private TextView AbM;
-  private TextView AbN;
-  private SnsEditText AbO;
-  private TextView AbP;
-  private boolean AbQ;
+  public static c Btq;
+  private long Apa;
+  private TextView BtA;
+  private boolean BtB;
+  private String Btr;
+  private String Bts;
+  private ImageView Btt;
+  private ImageView Btu;
+  private TextView Btv;
+  private TextView Btw;
+  private TextView Btx;
+  private TextView Bty;
+  private SnsEditText Btz;
   private String appVersion;
   private String businessType;
   private String desc;
-  private String djj;
+  private String duW;
   private String extInfo;
-  private TextView gIx;
-  private com.tencent.mm.pluginsdk.ui.span.h nAR;
-  private View nCc;
-  private View sHv;
-  private TextView sZH;
+  private TextView hch;
+  private com.tencent.mm.pluginsdk.ui.span.h oca;
+  private View oeL;
+  private View tEo;
+  private TextView tXy;
   private String thumbUrl;
   protected com.tencent.mm.ui.base.p tipDialog;
   private String title;
   private int type;
-  private long yXp;
   
   static
   {
     AppMethodBeat.i(126058);
     c.a locala = new c.a();
-    locala.hKx = true;
-    locala.hKw = true;
-    locala.gLt = false;
-    locala.hKI = 2131100478;
-    AbF = locala.aFT();
+    locala.idr = true;
+    locala.idq = true;
+    locala.hfi = false;
+    locala.idD = 2131100478;
+    Btq = locala.aJc();
     AppMethodBeat.o(126058);
   }
   
   public TopStoryUploadUI()
   {
     AppMethodBeat.i(126043);
-    this.yXp = 0L;
-    this.AbQ = false;
+    this.Apa = 0L;
+    this.BtB = false;
     this.tipDialog = null;
-    this.nAR = new com.tencent.mm.pluginsdk.ui.span.h()
+    this.oca = new com.tencent.mm.pluginsdk.ui.span.h()
     {
       public final Object a(u paramAnonymousu)
       {
@@ -100,7 +99,7 @@ public class TopStoryUploadUI
       public final Object b(u paramAnonymousu)
       {
         AppMethodBeat.i(126040);
-        com.tencent.mm.plugin.report.service.h.wUl.f(17080, new Object[] { Integer.valueOf(5), Integer.valueOf(2), TopStoryUploadUI.d(TopStoryUploadUI.this) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(17080, new Object[] { Integer.valueOf(5), Integer.valueOf(2), TopStoryUploadUI.d(TopStoryUploadUI.this) });
         AppMethodBeat.o(126040);
         return null;
       }
@@ -108,12 +107,12 @@ public class TopStoryUploadUI
     AppMethodBeat.o(126043);
   }
   
-  protected static boolean cLR()
+  protected static boolean cUk()
   {
     AppMethodBeat.i(126045);
-    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.agO().agp()).ahL())
+    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajz().ajb()).akw())
     {
-      i = com.tencent.mm.kernel.g.agi().aBK();
+      i = com.tencent.mm.kernel.g.aiU().aEN();
       if ((i == 4) || (i == 6))
       {
         AppMethodBeat.o(126045);
@@ -122,7 +121,7 @@ public class TopStoryUploadUI
       AppMethodBeat.o(126045);
       return false;
     }
-    if (ax.isConnected(ai.getContext())) {}
+    if (ay.isConnected(aj.getContext())) {}
     for (int i = 6; i == 6; i = 0)
     {
       AppMethodBeat.o(126045);
@@ -132,34 +131,34 @@ public class TopStoryUploadUI
     return false;
   }
   
-  public static String ecY()
+  public static String epq()
   {
     AppMethodBeat.i(126049);
     Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.g.agP();
+    com.tencent.mm.kernel.g.ajA();
     localObject = com.tencent.mm.b.p.getString(com.tencent.mm.kernel.a.getUin()) + "_" + System.currentTimeMillis();
     AppMethodBeat.o(126049);
     return localObject;
   }
   
-  private void ecZ()
+  private void epr()
   {
     AppMethodBeat.i(126053);
-    int j = this.AbO.getText().toString().length();
+    int j = this.Btz.getText().toString().length();
     if (j < 180)
     {
-      this.gIx.setVisibility(8);
-      this.AbL.setVisibility(8);
+      this.hch.setVisibility(8);
+      this.Btw.setVisibility(8);
       AppMethodBeat.o(126053);
       return;
     }
-    this.gIx.setVisibility(0);
-    this.AbL.setVisibility(0);
+    this.hch.setVisibility(0);
+    this.Btw.setVisibility(0);
     if (j <= 200) {}
     for (int i = getResources().getColor(2131101048);; i = getResources().getColor(2131100798))
     {
-      this.gIx.setText(String.valueOf(j));
-      this.gIx.setTextColor(i);
+      this.hch.setText(String.valueOf(j));
+      this.hch.setTextColor(i);
       AppMethodBeat.o(126053);
       return;
     }
@@ -168,8 +167,8 @@ public class TopStoryUploadUI
   private void exit()
   {
     AppMethodBeat.i(126046);
-    com.tencent.mm.plugin.report.service.h.wUl.f(17080, new Object[] { Integer.valueOf(3), Integer.valueOf(2), this.djj });
-    if (this.AbO.getText().toString().length() > 0)
+    com.tencent.mm.plugin.report.service.g.yhR.f(17080, new Object[] { Integer.valueOf(3), Integer.valueOf(2), this.duW });
+    if (this.Btz.getText().toString().length() > 0)
     {
       com.tencent.mm.ui.base.h.a(this, 2131764509, 0, 2131755939, 2131755831, true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
@@ -186,18 +185,18 @@ public class TopStoryUploadUI
       AppMethodBeat.o(126046);
       return;
     }
-    sc(false);
+    sI(false);
     AppMethodBeat.o(126046);
   }
   
-  private void sc(boolean paramBoolean)
+  private void sI(boolean paramBoolean)
   {
     AppMethodBeat.i(126047);
     if (paramBoolean)
     {
-      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GRT, Integer.valueOf(110));
-      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GRU, Integer.valueOf(1));
-      com.tencent.mm.pluginsdk.model.app.g localg = com.tencent.mm.pluginsdk.model.app.h.k(this.djj, true, false);
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IEx, Integer.valueOf(110));
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IEy, Integer.valueOf(1));
+      com.tencent.mm.pluginsdk.model.app.g localg = com.tencent.mm.pluginsdk.model.app.h.m(this.duW, true, false);
       WXOpenBusinessView.Resp localResp = new WXOpenBusinessView.Resp();
       localResp.extMsg = "";
       localResp.errStr = "";
@@ -213,10 +212,10 @@ public class TopStoryUploadUI
     for (;;)
     {
       finish();
-      this.AbQ = true;
+      this.BtB = true;
       AppMethodBeat.o(126047);
       return;
-      l.d(this.businessType, "", this.djj, 0, "");
+      l.d(this.businessType, "", this.duW, 0, "");
     }
   }
   
@@ -224,7 +223,7 @@ public class TopStoryUploadUI
   {
     AppMethodBeat.i(126050);
     paramString1 = new com.tencent.mm.plugin.topstory.a.c.g(paramLong, paramString1, paramString2, paramString3, paramg, paramString4);
-    com.tencent.mm.kernel.g.agi().a(paramString1, 0);
+    com.tencent.mm.kernel.g.aiU().a(paramString1, 0);
     getString(2131755906);
     this.tipDialog = com.tencent.mm.ui.base.h.b(this, getString(2131764514), false, null);
     AppMethodBeat.o(126050);
@@ -253,7 +252,7 @@ public class TopStoryUploadUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(126044);
-    ac.i("micromsg.topstory.TopStoryUploadUI", "onCreate");
+    ad.i("micromsg.topstory.TopStoryUploadUI", "onCreate");
     super.onCreate(paramBundle);
     setMMTitle(2131764513);
     addTextOptionMenu(0, getString(2131755884), new MenuItem.OnMenuItemClickListener()
@@ -271,7 +270,7 @@ public class TopStoryUploadUI
           AppMethodBeat.o(126041);
           return false;
         }
-        com.tencent.mm.plugin.report.service.h.wUl.f(17080, new Object[] { Integer.valueOf(4), Integer.valueOf(2), TopStoryUploadUI.d(TopStoryUploadUI.this) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(17080, new Object[] { Integer.valueOf(4), Integer.valueOf(2), TopStoryUploadUI.d(TopStoryUploadUI.this) });
         TopStoryUploadUI.a(TopStoryUploadUI.this, System.currentTimeMillis());
         paramAnonymousMenuItem = TopStoryUploadUI.f(TopStoryUploadUI.this).getText().toString();
         if (paramAnonymousMenuItem.length() > 200)
@@ -280,21 +279,21 @@ public class TopStoryUploadUI
           AppMethodBeat.o(126041);
           return true;
         }
-        if (!TopStoryUploadUI.cLR())
+        if (!TopStoryUploadUI.cUk())
         {
           com.tencent.mm.ui.base.h.c(TopStoryUploadUI.this, TopStoryUploadUI.this.getString(2131759511), "", true);
-          com.tencent.mm.plugin.report.e.wTc.idkeyStat(1032L, 1L, 1L, false);
+          com.tencent.mm.plugin.report.e.ygI.idkeyStat(1032L, 1L, 1L, false);
           AppMethodBeat.o(126041);
           return true;
         }
         long l = System.currentTimeMillis();
-        String str = TopStoryUploadUI.ecY();
-        com.tencent.mm.pluginsdk.model.app.g localg = com.tencent.mm.pluginsdk.model.app.h.k(TopStoryUploadUI.d(TopStoryUploadUI.this), true, false);
+        String str = TopStoryUploadUI.epq();
+        com.tencent.mm.pluginsdk.model.app.g localg = com.tencent.mm.pluginsdk.model.app.h.m(TopStoryUploadUI.d(TopStoryUploadUI.this), true, false);
         TopStoryUploadUI.this.a(l, TopStoryUploadUI.g(TopStoryUploadUI.this), paramAnonymousMenuItem, str, localg, TopStoryUploadUI.h(TopStoryUploadUI.this));
         AppMethodBeat.o(126041);
         return true;
       }
-    }, null, s.b.How);
+    }, null, s.b.Jcc);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -305,55 +304,55 @@ public class TopStoryUploadUI
         return true;
       }
     });
-    com.tencent.mm.kernel.g.agi().a(2534, this);
+    com.tencent.mm.kernel.g.aiU().a(2534, this);
     this.type = getIntent().getIntExtra("KEY_TYPE", 0);
     this.businessType = getIntent().getStringExtra("KEY_BIZTYPE");
-    this.djj = getIntent().getStringExtra("KEY_APPID");
+    this.duW = getIntent().getStringExtra("KEY_APPID");
     this.extInfo = getIntent().getStringExtra("KEY_EXTINFO");
     this.title = getIntent().getStringExtra("KEY_TITLE");
     this.desc = getIntent().getStringExtra("KEY_DESC");
     this.thumbUrl = getIntent().getStringExtra("KEY_THUMBURL");
     this.appVersion = getIntent().getStringExtra("KEY_APPVERSION");
-    this.AbG = getIntent().getStringExtra("KEY_MEDIANAME");
-    this.AbH = getIntent().getStringExtra("KEY_MEDIAHEADURL");
-    this.sHv = findViewById(2131306351);
-    this.AbI = ((ImageView)findViewById(2131306350));
-    this.sZH = ((TextView)findViewById(2131306405));
-    this.AbK = ((TextView)findViewById(2131306325));
-    this.AbO = ((SnsEditText)findViewById(2131298540));
-    this.AbP = ((TextView)findViewById(2131301377));
-    this.gIx = ((TextView)findViewById(2131307003));
-    this.AbL = ((TextView)findViewById(2131307004));
-    this.nCc = findViewById(2131296863);
-    this.AbJ = ((ImageView)findViewById(2131296862));
-    this.AbM = ((TextView)findViewById(2131296864));
-    this.AbN = ((TextView)findViewById(2131296861));
+    this.Btr = getIntent().getStringExtra("KEY_MEDIANAME");
+    this.Bts = getIntent().getStringExtra("KEY_MEDIAHEADURL");
+    this.tEo = findViewById(2131306351);
+    this.Btt = ((ImageView)findViewById(2131306350));
+    this.tXy = ((TextView)findViewById(2131306405));
+    this.Btv = ((TextView)findViewById(2131306325));
+    this.Btz = ((SnsEditText)findViewById(2131298540));
+    this.BtA = ((TextView)findViewById(2131301377));
+    this.hch = ((TextView)findViewById(2131307003));
+    this.Btw = ((TextView)findViewById(2131307004));
+    this.oeL = findViewById(2131296863);
+    this.Btu = ((ImageView)findViewById(2131296862));
+    this.Btx = ((TextView)findViewById(2131296864));
+    this.Bty = ((TextView)findViewById(2131296861));
     if (this.type == 1)
     {
-      this.sHv.setVisibility(0);
-      this.nCc.setVisibility(8);
-      this.sZH.setText(this.title);
-      this.AbK.setText(this.AbG);
-      o.aFB().a(this.thumbUrl, this.AbJ, AbF, new com.tencent.mm.av.a.c.h()
+      this.tEo.setVisibility(0);
+      this.oeL.setVisibility(8);
+      this.tXy.setText(this.title);
+      this.Btv.setText(this.Btr);
+      com.tencent.mm.aw.q.aIJ().a(this.thumbUrl, this.Btu, Btq, new com.tencent.mm.aw.a.c.h()
       {
-        public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
+        public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.aw.a.d.b paramAnonymousb)
         {
           AppMethodBeat.i(126038);
           if ((paramAnonymousb == null) || (paramAnonymousb.bitmap == null) || (paramAnonymousb.bitmap.isRecycled()))
           {
-            ac.w("micromsg.topstory.TopStoryUploadUI", "onProcessBitmap bitmap is null");
+            ad.w("micromsg.topstory.TopStoryUploadUI", "onProcessBitmap bitmap is null");
             AppMethodBeat.o(126038);
             return null;
           }
-          if (bs.isNullOrNil(paramAnonymousString))
+          if (bt.isNullOrNil(paramAnonymousString))
           {
-            ac.w("micromsg.topstory.TopStoryUploadUI", "onProcessBitmap url is null");
+            ad.w("micromsg.topstory.TopStoryUploadUI", "onProcessBitmap url is null");
             AppMethodBeat.o(126038);
             return null;
           }
           if (!(paramAnonymousView instanceof ImageView))
           {
-            ac.w("micromsg.topstory.TopStoryUploadUI", "onProcessBitmap view not ImageView");
+            ad.w("micromsg.topstory.TopStoryUploadUI", "onProcessBitmap view not ImageView");
             AppMethodBeat.o(126038);
             return null;
           }
@@ -370,16 +369,16 @@ public class TopStoryUploadUI
         
         public final void b(String paramAnonymousString, View paramAnonymousView) {}
         
-        public final void b(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb) {}
+        public final void b(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.aw.a.d.b paramAnonymousb) {}
       });
     }
     for (;;)
     {
-      this.AbP.setText(String.format("<a href='%s'>%s</a>", new Object[] { "https://search.weixin.qq.com/cgi-bin/recweb/clientjump?tag=colikefirstsight#wechat_redirect", getString(2131764511) }));
-      k.m(this.AbP, 1);
-      k.a(this.nAR);
-      ecZ();
-      this.AbO.addTextChangedListener(new TextWatcher()
+      this.BtA.setText(String.format("<a href='%s'>%s</a>", new Object[] { "https://search.weixin.qq.com/cgi-bin/recweb/clientjump?tag=colikefirstsight#wechat_redirect", getString(2131764511) }));
+      k.n(this.BtA, 1);
+      k.a(this.oca);
+      epr();
+      this.Btz.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -393,31 +392,31 @@ public class TopStoryUploadUI
         
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
-      com.tencent.mm.plugin.report.service.h.wUl.f(17080, new Object[] { Integer.valueOf(6), Integer.valueOf(1), this.djj });
+      com.tencent.mm.plugin.report.service.g.yhR.f(17080, new Object[] { Integer.valueOf(6), Integer.valueOf(1), this.duW });
       AppMethodBeat.o(126044);
       return;
-      this.sHv.setVisibility(8);
-      this.nCc.setVisibility(0);
-      this.AbM.setText(this.title);
-      this.AbN.setText(this.AbG);
-      o.aFB().a(this.thumbUrl, this.AbJ, AbF);
+      this.tEo.setVisibility(8);
+      this.oeL.setVisibility(0);
+      this.Btx.setText(this.title);
+      this.Bty.setText(this.Btr);
+      com.tencent.mm.aw.q.aIJ().a(this.thumbUrl, this.Btu, Btq);
     }
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(126051);
-    ac.i("micromsg.topstory.TopStoryUploadUI", "onDestroy");
+    ad.i("micromsg.topstory.TopStoryUploadUI", "onDestroy");
     super.onDestroy();
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    k.b(this.nAR);
-    com.tencent.mm.kernel.g.agi().b(2534, this);
-    if (!this.AbQ) {
-      com.tencent.mm.plugin.report.service.h.wUl.f(17080, new Object[] { Integer.valueOf(3), Integer.valueOf(2), this.djj });
+    k.b(this.oca);
+    com.tencent.mm.kernel.g.aiU().b(2534, this);
+    if (!this.BtB) {
+      com.tencent.mm.plugin.report.service.g.yhR.f(17080, new Object[] { Integer.valueOf(3), Integer.valueOf(2), this.duW });
     }
     AppMethodBeat.o(126051);
   }
@@ -438,31 +437,31 @@ public class TopStoryUploadUI
       if (paramInt1 != 0) {
         if ((paramn instanceof com.tencent.mm.plugin.topstory.a.c.g))
         {
-          paramString = ((yd)((com.tencent.mm.plugin.topstory.a.c.g)paramn).rr.hvs.hvw).BaseResponse;
+          paramString = ((aac)((com.tencent.mm.plugin.topstory.a.c.g)paramn).rr.hNL.hNQ).BaseResponse;
           if (paramString.Ret == 0)
           {
-            sc(true);
+            sI(true);
             AppMethodBeat.o(126048);
             return;
             paramInt1 = 0;
             continue;
           }
-          if ((paramString.ErrMsg == null) || (bs.isNullOrNil(paramString.ErrMsg.FEm))) {
+          if ((paramString.ErrMsg == null) || (bt.isNullOrNil(paramString.ErrMsg.HoB))) {
             break label153;
           }
-          com.tencent.mm.ui.base.h.c(this, paramString.ErrMsg.FEm, getString(2131764510), true);
+          com.tencent.mm.ui.base.h.c(this, paramString.ErrMsg.HoB, getString(2131764510), true);
         }
       }
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.e.wTc.idkeyStat(1032L, 2L, 1L, false);
+      com.tencent.mm.plugin.report.e.ygI.idkeyStat(1032L, 2L, 1L, false);
       AppMethodBeat.o(126048);
       return;
       label153:
       com.tencent.mm.ui.base.h.c(this, getString(2131764512), getString(2131764510), true);
       continue;
-      if (bs.isNullOrNil(paramString)) {
+      if (bt.isNullOrNil(paramString)) {
         com.tencent.mm.ui.base.h.c(this, getString(2131764476), getString(2131764510), true);
       } else {
         com.tencent.mm.ui.base.h.c(this, paramString, getString(2131764510), true);

@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aa
 {
-  public boolean fIQ;
-  public int fIR;
-  public int fIS;
-  public int fIT;
-  public int fIU;
-  public int fIV;
-  public int fIW;
-  public int fIX;
-  public int fIY;
+  public boolean gcr;
+  public int gcs;
+  public int gct;
+  public int gcu;
+  public int gcv;
+  public int gcw;
+  public int gcx;
+  public int gcy;
+  public int gcz;
   public int mVideoHeight;
   public int mVideoWidth;
   
@@ -25,17 +25,17 @@ public final class aa
   
   public final void reset()
   {
-    this.fIQ = false;
+    this.gcr = false;
     this.mVideoHeight = 224;
     this.mVideoWidth = 288;
-    this.fIR = 10;
-    this.fIS = 3000000;
-    this.fIT = 1;
-    this.fIU = 1;
-    this.fIV = 1;
-    this.fIW = 0;
-    this.fIX = 1;
-    this.fIY = 0;
+    this.gcs = 10;
+    this.gct = 3000000;
+    this.gcu = 1;
+    this.gcv = 1;
+    this.gcw = 1;
+    this.gcx = 0;
+    this.gcy = 1;
+    this.gcz = 0;
   }
 }
 

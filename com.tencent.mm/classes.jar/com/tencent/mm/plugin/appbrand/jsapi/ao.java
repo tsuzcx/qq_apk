@@ -1,31 +1,36 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
-import com.tencent.luggage.h.e.b;
+import android.graphics.Bitmap;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 
-public final class ao
-  extends a<q>
+public class ao<S extends q>
+  extends a<S>
 {
-  public static final int CTRL_INDEX = 501;
-  public static final String NAME = "chooseInvoice";
-  final int jXE;
+  public static final int CTRL_INDEX = 250;
+  public static final String NAME = "captureScreen";
   
-  public ao()
+  public Bitmap g(final S paramS)
   {
-    AppMethodBeat.i(174751);
-    this.jXE = com.tencent.luggage.sdk.g.a.aA(this);
-    AppMethodBeat.o(174751);
+    AppMethodBeat.i(139839);
+    paramS = paramS.getCurrentPageView();
+    if (paramS == null)
+    {
+      AppMethodBeat.o(139839);
+      return null;
+    }
+    paramS = (Bitmap)new bo()new ap {}.b(new ap(Looper.getMainLooper()));
+    AppMethodBeat.o(139839);
+    return paramS;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ao
  * JD-Core Version:    0.7.0.1
  */

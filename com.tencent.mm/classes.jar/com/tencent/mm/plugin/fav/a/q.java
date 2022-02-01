@@ -14,37 +14,37 @@ public abstract interface q
   
   public abstract boolean a(c paramc, String... paramVarArgs);
   
-  public abstract c acG(String paramString);
+  public abstract c agv(String paramString);
   
   public abstract void b(p paramp);
   
   public abstract boolean b(c paramc, String... paramVarArgs);
   
-  public abstract LinkedList<c> cpA();
+  public abstract LinkedList<c> cvf();
   
-  public abstract Cursor cpB();
+  public abstract Cursor cvg();
   
-  public abstract Cursor cpC();
+  public abstract Cursor cvh();
   
   public abstract boolean f(c paramc);
   
   public abstract void startAll();
   
-  public abstract List<c> tC(long paramLong);
+  public abstract List<c> vA(long paramLong);
   
-  public abstract List<c> tD(long paramLong);
+  public abstract void vB(long paramLong);
   
-  public abstract void tE(long paramLong);
+  public abstract boolean vC(long paramLong);
   
-  public abstract boolean tF(long paramLong);
-  
-  public abstract int y(long paramLong, int paramInt);
+  public abstract List<c> vz(long paramLong);
   
   public abstract void y(g paramg);
+  
+  public abstract int z(long paramLong, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.q
  * JD-Core Version:    0.7.0.1
  */

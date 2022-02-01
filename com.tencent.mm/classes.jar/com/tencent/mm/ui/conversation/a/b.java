@@ -5,52 +5,52 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.i.a.a;
+import com.tencent.mm.pluginsdk.k.a.a;
 import com.tencent.mm.ui.r;
 import java.util.ArrayList;
 
 public final class b
   extends r<c>
 {
-  a IGL;
-  private ArrayList<c> iWT;
+  a KxR;
+  private ArrayList<c> jqc;
   
   public b(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(38763);
-    this.iWT = new ArrayList();
-    this.IGL = null;
-    Xc();
+    this.jqc = new ArrayList();
+    this.KxR = null;
+    Zv();
     AppMethodBeat.o(38763);
   }
   
-  public final void Xb()
+  public final void Zu()
   {
     AppMethodBeat.i(38765);
-    this.iWT.clear();
-    if (this.IGL == null)
+    this.jqc.clear();
+    if (this.KxR == null)
     {
       AppMethodBeat.o(38765);
       return;
     }
-    c localc = new c(this.IGL);
-    this.iWT.add(localc);
+    c localc = new c(this.KxR);
+    this.jqc.add(localc);
     notifyDataSetChanged();
     AppMethodBeat.o(38765);
   }
   
-  public final void Xc()
+  public final void Zv()
   {
     AppMethodBeat.i(38764);
-    Xb();
+    Zu();
     AppMethodBeat.o(38764);
   }
   
-  public final c acj(int paramInt)
+  public final c aeH(int paramInt)
   {
     AppMethodBeat.i(38767);
-    c localc = (c)this.iWT.get(paramInt);
+    c localc = (c)this.jqc.get(paramInt);
     AppMethodBeat.o(38767);
     return localc;
   }
@@ -58,7 +58,7 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(38766);
-    int i = this.iWT.size();
+    int i = this.jqc.size();
     AppMethodBeat.o(38766);
     return i;
   }
@@ -66,14 +66,14 @@ public final class b
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(38768);
-    c localc = (c)this.iWT.get(paramInt);
+    c localc = (c)this.jqc.get(paramInt);
     View localView;
     if (paramView == null)
     {
       localView = View.inflate(this.context, 2131492953, null);
       paramView = new d();
-      paramView.IGN = localView;
-      paramView.IGO = ((Button)localView.findViewById(2131296429));
+      paramView.KxT = localView;
+      paramView.KxU = ((Button)localView.findViewById(2131296429));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }

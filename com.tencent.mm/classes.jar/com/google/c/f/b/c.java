@@ -12,7 +12,7 @@ import java.util.Map<Lcom.google.c.c;*>;
 
 public final class c
 {
-  private static final int[] bKR = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 36, -1, -1, -1, 37, 38, -1, -1, -1, -1, 39, 40, -1, 41, 42, 43, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 44, -1, -1, -1, -1, -1, -1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, -1, -1, -1, -1, -1 };
+  private static final int[] bVe = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 36, -1, -1, -1, 37, 38, -1, -1, -1, -1, 39, 40, -1, 41, 42, 43, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 44, -1, -1, -1, -1, -1, -1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, -1, -1, -1, -1, -1 };
   
   private static int a(com.google.c.b.a parama, com.google.c.f.a.a parama1, com.google.c.f.a.c paramc, b paramb)
   {
@@ -26,7 +26,7 @@ public final class c
       int i5 = d.a(paramb, true);
       int i6 = d.a(paramb, false);
       int i1 = 0;
-      byte[][] arrayOfByte = paramb.bKQ;
+      byte[][] arrayOfByte = paramb.bVd;
       int i3 = paramb.width;
       int i4 = paramb.height;
       int m = 0;
@@ -54,7 +54,7 @@ public final class c
         m += 1;
       }
       m = 0;
-      arrayOfByte = paramb.bKQ;
+      arrayOfByte = paramb.bVd;
       i4 = paramb.width;
       int i7 = paramb.height;
       int i2 = 0;
@@ -150,7 +150,7 @@ public final class c
         i2 += 1;
       }
       i2 = 0;
-      arrayOfByte = paramb.bKQ;
+      arrayOfByte = paramb.bVd;
       i7 = paramb.width;
       int i8 = paramb.height;
       int n = 0;
@@ -200,7 +200,7 @@ public final class c
   private static com.google.c.b.a a(com.google.c.b.a parama, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(12321);
-    if (parama.xV() != paramInt2)
+    if (parama.zs() != paramInt2)
     {
       parama = new h("Number of bits and data bytes does not match");
       AppMethodBeat.o(12321);
@@ -282,9 +282,9 @@ public final class c
       localObject1 = localArrayList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        arrayOfByte = ((a)((Iterator)localObject1).next()).bKO;
+        arrayOfByte = ((a)((Iterator)localObject1).next()).bVb;
         if (paramInt2 < arrayOfByte.length) {
-          parama.bF(arrayOfByte[paramInt2], 8);
+          parama.bH(arrayOfByte[paramInt2], 8);
         }
       }
       paramInt2 += 1;
@@ -295,16 +295,16 @@ public final class c
       localObject1 = localArrayList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        arrayOfByte = ((a)((Iterator)localObject1).next()).bKP;
+        arrayOfByte = ((a)((Iterator)localObject1).next()).bVc;
         if (paramInt2 < arrayOfByte.length) {
-          parama.bF(arrayOfByte[paramInt2], 8);
+          parama.bH(arrayOfByte[paramInt2], 8);
         }
       }
       paramInt2 += 1;
     }
-    if (paramInt1 != parama.xV())
+    if (paramInt1 != parama.zs())
     {
-      parama = new h("Interleaving error: " + paramInt1 + " and " + parama.xV() + " differ.");
+      parama = new h("Interleaving error: " + paramInt1 + " and " + parama.zs() + " differ.");
       AppMethodBeat.o(12321);
       throw parama;
     }
@@ -318,7 +318,7 @@ public final class c
     int i = 1;
     while (i <= 40)
     {
-      com.google.c.f.a.c localc = com.google.c.f.a.c.fW(i);
+      com.google.c.f.a.c localc = com.google.c.f.a.c.fZ(i);
       if (a(paramInt, localc, parama))
       {
         AppMethodBeat.o(12318);
@@ -343,12 +343,12 @@ public final class c
     if (paramMap != null)
     {
       localObject2 = localObject1;
-      if (paramMap.containsKey(com.google.c.c.bHb)) {
-        localObject2 = paramMap.get(com.google.c.c.bHb).toString();
+      if (paramMap.containsKey(com.google.c.c.bRp)) {
+        localObject2 = paramMap.get(com.google.c.c.bRp).toString();
       }
     }
-    if (("Shift_JIS".equals(localObject2)) && (bp(paramString))) {
-      localObject1 = com.google.c.f.a.b.bKz;
+    if (("Shift_JIS".equals(localObject2)) && (ci(paramString))) {
+      localObject1 = com.google.c.f.a.b.bUM;
     }
     com.google.c.b.a locala;
     Object localObject3;
@@ -356,18 +356,18 @@ public final class c
     for (;;)
     {
       locala = new com.google.c.b.a();
-      if ((localObject1 == com.google.c.f.a.b.bKx) && (!"ISO-8859-1".equals(localObject2)))
+      if ((localObject1 == com.google.c.f.a.b.bUK) && (!"ISO-8859-1".equals(localObject2)))
       {
-        localObject3 = com.google.c.b.c.bl((String)localObject2);
+        localObject3 = com.google.c.b.c.ce((String)localObject2);
         if (localObject3 != null)
         {
-          locala.bF(com.google.c.f.a.b.bKy.bKr, 4);
-          locala.bF(localObject3.bIq[0], 8);
+          locala.bH(com.google.c.f.a.b.bUL.bUE, 4);
+          locala.bH(localObject3.bSE[0], 8);
         }
       }
-      locala.bF(((com.google.c.f.a.b)localObject1).bKr, 4);
+      locala.bH(((com.google.c.f.a.b)localObject1).bUE, 4);
       localObject3 = new com.google.c.b.a();
-      switch (1.bKS[localObject1.ordinal()])
+      switch (1.bVf[localObject1.ordinal()])
       {
       default: 
         paramString = new h("Invalid mode: ".concat(String.valueOf(localObject1)));
@@ -386,25 +386,25 @@ public final class c
           {
             i += 1;
             break;
-            if (fX(i3) == -1) {
+            if (ga(i3) == -1) {
               break label296;
             }
             k = 1;
           }
           label296:
-          localObject1 = com.google.c.f.a.b.bKx;
+          localObject1 = com.google.c.f.a.b.bUK;
         }
         else if (k != 0)
         {
-          localObject1 = com.google.c.f.a.b.bKv;
+          localObject1 = com.google.c.f.a.b.bUI;
         }
         else if (j != 0)
         {
-          localObject1 = com.google.c.f.a.b.bKu;
+          localObject1 = com.google.c.f.a.b.bUH;
         }
         else
         {
-          localObject1 = com.google.c.f.a.b.bKx;
+          localObject1 = com.google.c.f.a.b.bUK;
         }
         break;
       }
@@ -416,17 +416,17 @@ public final class c
       k = paramString.charAt(i) - '0';
       if (i + 2 < j)
       {
-        ((com.google.c.b.a)localObject3).bF(k * 100 + (paramString.charAt(i + 1) - '0') * 10 + (paramString.charAt(i + 2) - '0'), 10);
+        ((com.google.c.b.a)localObject3).bH(k * 100 + (paramString.charAt(i + 1) - '0') * 10 + (paramString.charAt(i + 2) - '0'), 10);
         i += 3;
       }
       else if (i + 1 < j)
       {
-        ((com.google.c.b.a)localObject3).bF(k * 10 + (paramString.charAt(i + 1) - '0'), 7);
+        ((com.google.c.b.a)localObject3).bH(k * 10 + (paramString.charAt(i + 1) - '0'), 7);
         i += 2;
       }
       else
       {
-        ((com.google.c.b.a)localObject3).bF(k, 4);
+        ((com.google.c.b.a)localObject3).bH(k, 4);
         i += 1;
         continue;
         j = paramString.length();
@@ -435,7 +435,7 @@ public final class c
         {
           if (i < j)
           {
-            k = fX(paramString.charAt(i));
+            k = ga(paramString.charAt(i));
             if (k == -1)
             {
               paramString = new h();
@@ -444,19 +444,19 @@ public final class c
             }
             if (i + 1 < j)
             {
-              m = fX(paramString.charAt(i + 1));
+              m = ga(paramString.charAt(i + 1));
               if (m == -1)
               {
                 paramString = new h();
                 AppMethodBeat.o(12314);
                 throw paramString;
               }
-              ((com.google.c.b.a)localObject3).bF(k * 45 + m, 11);
+              ((com.google.c.b.a)localObject3).bH(k * 45 + m, 11);
               i += 2;
             }
             else
             {
-              ((com.google.c.b.a)localObject3).bF(k, 6);
+              ((com.google.c.b.a)localObject3).bH(k, 6);
               i += 1;
               continue;
               try
@@ -468,7 +468,7 @@ public final class c
                 {
                   if (i < j)
                   {
-                    ((com.google.c.b.a)localObject3).bF(localObject2[i], 8);
+                    ((com.google.c.b.a)localObject3).bH(localObject2[i], 8);
                     i += 1;
                     continue;
                     try
@@ -518,12 +518,12 @@ public final class c
         i -= 49472;
         continue;
         label803:
-        ((com.google.c.b.a)localObject3).bF((i & 0xFF) + (i >> 8) * 192, 13);
+        ((com.google.c.b.a)localObject3).bH((i & 0xFF) + (i >> 8) * 192, 13);
         j += 2;
         continue;
-        if ((paramMap != null) && (paramMap.containsKey(com.google.c.c.bHk)))
+        if ((paramMap != null) && (paramMap.containsKey(com.google.c.c.bRy)))
         {
-          localObject2 = com.google.c.f.a.c.fW(Integer.parseInt(paramMap.get(com.google.c.c.bHk).toString()));
+          localObject2 = com.google.c.f.a.c.fZ(Integer.parseInt(paramMap.get(com.google.c.c.bRy).toString()));
           paramMap = (Map<com.google.c.c, ?>)localObject2;
           if (!a(a((com.google.c.f.a.b)localObject1, locala, (com.google.c.b.a)localObject3, (com.google.c.f.a.c)localObject2), (com.google.c.f.a.c)localObject2, parama))
           {
@@ -534,12 +534,12 @@ public final class c
         }
         else
         {
-          paramMap = a(a((com.google.c.f.a.b)localObject1, locala, (com.google.c.b.a)localObject3, a(a((com.google.c.f.a.b)localObject1, locala, (com.google.c.b.a)localObject3, com.google.c.f.a.c.fW(1)), parama)), parama);
+          paramMap = a(a((com.google.c.f.a.b)localObject1, locala, (com.google.c.b.a)localObject3, a(a((com.google.c.f.a.b)localObject1, locala, (com.google.c.b.a)localObject3, com.google.c.f.a.c.fZ(1)), parama)), parama);
         }
         localObject2 = new com.google.c.b.a();
         ((com.google.c.b.a)localObject2).a(locala);
-        if (localObject1 == com.google.c.f.a.b.bKx) {}
-        for (i = ((com.google.c.b.a)localObject3).xV();; i = paramString.length())
+        if (localObject1 == com.google.c.f.a.b.bUK) {}
+        for (i = ((com.google.c.b.a)localObject3).zs();; i = paramString.length())
         {
           j = ((com.google.c.f.a.b)localObject1).a(paramMap);
           if (i < 1 << j) {
@@ -549,22 +549,22 @@ public final class c
           AppMethodBeat.o(12314);
           throw paramString;
         }
-        ((com.google.c.b.a)localObject2).bF(i, j);
+        ((com.google.c.b.a)localObject2).bH(i, j);
         ((com.google.c.b.a)localObject2).a((com.google.c.b.a)localObject3);
         paramString = paramMap.a(parama);
-        i = paramMap.bKK - paramString.yo();
+        i = paramMap.bUX - paramString.zL();
         a(i, (com.google.c.b.a)localObject2);
-        paramString = a((com.google.c.b.a)localObject2, paramMap.bKK, i, paramString.yn());
+        paramString = a((com.google.c.b.a)localObject2, paramMap.bUX, i, paramString.zK());
         localObject2 = new f();
-        ((f)localObject2).bKY = parama;
-        ((f)localObject2).bKX = ((com.google.c.f.a.b)localObject1);
-        ((f)localObject2).bKZ = paramMap;
-        i = paramMap.bKH * 4 + 17;
+        ((f)localObject2).bVl = parama;
+        ((f)localObject2).bVk = ((com.google.c.f.a.b)localObject1);
+        ((f)localObject2).bVm = paramMap;
+        i = paramMap.bUU * 4 + 17;
         localObject1 = new b(i, i);
         i = a(paramString, parama, paramMap, (b)localObject1);
-        ((f)localObject2).bLa = i;
+        ((f)localObject2).bVn = i;
         e.a(paramString, parama, paramMap, i, (b)localObject1);
-        ((f)localObject2).bLb = ((b)localObject1);
+        ((f)localObject2).bVo = ((b)localObject1);
         AppMethodBeat.o(12314);
         return localObject2;
       }
@@ -588,25 +588,25 @@ public final class c
     int i = 0;
     while ((i < 4) && (parama.size < k))
     {
-      parama.bg(false);
+      parama.bh(false);
       i += 1;
     }
     i = parama.size & 0x7;
     if (i > 0) {
       while (i < 8)
       {
-        parama.bg(false);
+        parama.bh(false);
         i += 1;
       }
     }
-    int m = parama.xV();
+    int m = parama.zs();
     i = 0;
     if (i < paramInt - m)
     {
       if ((i & 0x1) == 0) {}
       for (int j = 236;; j = 17)
       {
-        parama.bF(j, 8);
+        parama.bH(j, 8);
         i += 1;
         break;
       }
@@ -623,7 +623,7 @@ public final class c
   private static boolean a(int paramInt, com.google.c.f.a.c paramc, com.google.c.f.a.a parama)
   {
     AppMethodBeat.i(12319);
-    if (paramc.bKK - paramc.a(parama).yo() >= (paramInt + 7) / 8)
+    if (paramc.bUX - paramc.a(parama).zL() >= (paramInt + 7) / 8)
     {
       AppMethodBeat.o(12319);
       return true;
@@ -632,7 +632,7 @@ public final class c
     return false;
   }
   
-  private static boolean bp(String paramString)
+  private static boolean ci(String paramString)
   {
     AppMethodBeat.i(12316);
     int j;
@@ -666,10 +666,10 @@ public final class c
     return true;
   }
   
-  private static int fX(int paramInt)
+  private static int ga(int paramInt)
   {
-    if (paramInt < bKR.length) {
-      return bKR[paramInt];
+    if (paramInt < bVe.length) {
+      return bVe[paramInt];
     }
     return -1;
   }
@@ -686,7 +686,7 @@ public final class c
       paramArrayOfByte[i] &= 0xFF;
       i += 1;
     }
-    new com.google.c.b.a.c(com.google.c.b.a.a.bIx).e(arrayOfInt, paramInt);
+    new com.google.c.b.a.c(com.google.c.b.a.a.bSL).e(arrayOfInt, paramInt);
     paramArrayOfByte = new byte[paramInt];
     i = j;
     while (i < paramInt)

@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ct;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.g.a.cw;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMVerticalTextView;
 import com.tencent.mm.ui.base.o;
@@ -18,23 +18,23 @@ import java.util.ArrayList;
 
 public final class c
 {
-  ViewGroup JGL;
-  private boolean JGM;
-  public o jat;
-  private ImageView jau;
-  private View jav;
-  private View.OnClickListener jax;
-  private MMActivity nTt;
-  public boolean ocd;
-  private Bitmap ofY;
-  private View ogb;
-  private ImageView ogc;
-  private MMVerticalTextView ogd;
-  private ArrayList<Bitmap> ogf;
-  private String vrZ;
-  private String vuP;
-  public Bitmap vuj;
-  public Bitmap vuk;
+  ViewGroup LzP;
+  private boolean LzQ;
+  public o jtC;
+  private ImageView jtD;
+  private View jtE;
+  private View.OnClickListener jtG;
+  public boolean oFw;
+  private Bitmap oJr;
+  private View oJu;
+  private ImageView oJv;
+  private MMVerticalTextView oJw;
+  private ArrayList<Bitmap> oJy;
+  private MMActivity owO;
+  private String wAi;
+  private String wxr;
+  public Bitmap wzC;
+  public Bitmap wzD;
   
   public c(MMActivity paramMMActivity)
   {
@@ -44,102 +44,106 @@ public final class c
   public c(MMActivity paramMMActivity, boolean paramBoolean)
   {
     AppMethodBeat.i(72952);
-    this.vuj = null;
-    this.vuk = null;
-    this.ofY = null;
-    this.vuP = "";
-    this.vrZ = "";
-    this.ocd = true;
-    this.ogf = new ArrayList();
-    this.jat = null;
-    this.JGM = false;
-    this.jax = new View.OnClickListener()
+    this.wzC = null;
+    this.wzD = null;
+    this.oJr = null;
+    this.wAi = "";
+    this.wxr = "";
+    this.oFw = true;
+    this.oJy = new ArrayList();
+    this.jtC = null;
+    this.LzQ = false;
+    this.jtG = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72948);
-        if (((paramAnonymousView.getId() == 2131303350) || (paramAnonymousView.getId() == 2131303346)) && (c.this.jat != null) && (c.this.jat.isShowing())) {
-          c.this.jat.dismiss();
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/OfflinePopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (((paramAnonymousView.getId() == 2131303350) || (paramAnonymousView.getId() == 2131303346)) && (c.this.jtC != null) && (c.this.jtC.isShowing())) {
+          c.this.jtC.dismiss();
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/wallet_core/ui/OfflinePopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(72948);
       }
     };
-    this.nTt = paramMMActivity;
-    this.JGM = paramBoolean;
+    this.owO = paramMMActivity;
+    this.LzQ = paramBoolean;
     AppMethodBeat.o(72952);
   }
   
-  private void fAO()
+  private void fRY()
   {
     AppMethodBeat.i(72958);
-    if (this.ocd)
+    if (this.oFw)
     {
-      this.ogc.setOnClickListener(this.jax);
-      Bitmap localBitmap = this.ofY;
-      if (this.vuk != null)
+      this.oJv.setOnClickListener(this.jtG);
+      Bitmap localBitmap = this.oJr;
+      if (this.wzD != null)
       {
-        this.ofY = e.S(this.vuk);
-        ac.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp != null");
+        this.oJr = e.S(this.wzD);
+        ad.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp != null");
       }
       for (;;)
       {
-        this.ogc.setImageBitmap(this.ofY);
-        this.ogf.add(0, localBitmap);
+        this.oJv.setImageBitmap(this.oJr);
+        this.oJy.add(0, localBitmap);
         recycleBmpList();
-        this.jav.setVisibility(8);
-        this.ogb.setVisibility(0);
-        this.ogd.setText(e.aSN(this.vrZ));
-        this.jat.update();
+        this.jtE.setVisibility(8);
+        this.oJu.setVisibility(0);
+        this.oJw.setText(e.aYM(this.wxr));
+        this.jtC.update();
         AppMethodBeat.o(72958);
         return;
-        this.ofY = null;
-        ac.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp == null");
+        this.oJr = null;
+        ad.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp == null");
       }
     }
-    this.jau.setOnClickListener(this.jax);
-    this.jau.setImageBitmap(this.vuj);
-    if (this.vuj != null) {
-      ac.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp != null");
+    this.jtD.setOnClickListener(this.jtG);
+    this.jtD.setImageBitmap(this.wzC);
+    if (this.wzC != null) {
+      ad.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp != null");
     }
     for (;;)
     {
-      this.jav.setVisibility(0);
-      this.ogb.setVisibility(8);
+      this.jtE.setVisibility(0);
+      this.oJu.setVisibility(8);
       break;
-      ac.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp == null");
+      ad.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp == null");
     }
   }
   
   private void recycleBmpList()
   {
     AppMethodBeat.i(72959);
-    if (this.ogf.size() >= 2)
+    if (this.oJy.size() >= 2)
     {
-      int i = this.ogf.size() - 1;
+      int i = this.oJy.size() - 1;
       while (i > 1)
       {
-        e.T((Bitmap)this.ogf.remove(i));
+        e.T((Bitmap)this.oJy.remove(i));
         i -= 1;
       }
     }
     AppMethodBeat.o(72959);
   }
   
-  public final void M(View paramView, boolean paramBoolean)
+  public final void N(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(72955);
-    this.ocd = paramBoolean;
-    if ((this.jat != null) && (!this.jat.isShowing()))
+    this.oFw = paramBoolean;
+    if ((this.jtC != null) && (!this.jtC.isShowing()))
     {
-      this.jat.showAtLocation(paramView.getRootView(), 17, 0, 0);
-      this.jat.setFocusable(true);
-      this.jat.setTouchable(true);
-      this.jat.setBackgroundDrawable(new ColorDrawable(16777215));
-      this.jat.setOutsideTouchable(true);
-      if (this.ocd) {
-        fAN();
+      this.jtC.showAtLocation(paramView.getRootView(), 17, 0, 0);
+      this.jtC.setFocusable(true);
+      this.jtC.setTouchable(true);
+      this.jtC.setBackgroundDrawable(new ColorDrawable(16777215));
+      this.jtC.setOutsideTouchable(true);
+      if (this.oFw) {
+        fRX();
       }
-      fAO();
+      fRY();
     }
     AppMethodBeat.o(72955);
   }
@@ -147,36 +151,40 @@ public final class c
   public final void dismiss()
   {
     AppMethodBeat.i(72960);
-    if ((this.jat != null) && (this.jat.isShowing())) {
-      this.jat.dismiss();
+    if ((this.jtC != null) && (this.jtC.isShowing())) {
+      this.jtC.dismiss();
     }
     AppMethodBeat.o(72960);
   }
   
-  public final void fAL()
+  public final void fRV()
   {
     AppMethodBeat.i(72954);
-    if (this.jat != null)
+    if (this.jtC != null)
     {
       AppMethodBeat.o(72954);
       return;
     }
     View localView;
-    if (this.JGM)
+    if (this.LzQ)
     {
-      localView = View.inflate(this.nTt, 2131495991, null);
+      localView = View.inflate(this.owO, 2131495991, null);
       MMVerticalTextView localMMVerticalTextView = (MMVerticalTextView)localView.findViewById(2131302163);
-      this.JGL = ((ViewGroup)localView.findViewById(2131303349));
+      this.LzP = ((ViewGroup)localView.findViewById(2131303349));
       localMMVerticalTextView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(72949);
-          ac.d("MicroMsg.OfflinePopupWindow", "on click know");
-          c.this.JGL.setVisibility(8);
-          paramAnonymousView = new ct();
-          paramAnonymousView.dct.dcu = 1;
-          a.GpY.l(paramAnonymousView);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/OfflinePopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          ad.d("MicroMsg.OfflinePopupWindow", "on click know");
+          c.this.LzP.setVisibility(8);
+          paramAnonymousView = new cw();
+          paramAnonymousView.dnP.dnQ = 1;
+          com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/wallet_core/ui/OfflinePopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(72949);
         }
       });
@@ -185,86 +193,94 @@ public final class c
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(72950);
-          ac.d("MicroMsg.OfflinePopupWindow", "root on click");
-          if ((c.this.jat != null) && (c.this.jat.isShowing())) {
-            c.this.jat.dismiss();
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/OfflinePopupWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          ad.d("MicroMsg.OfflinePopupWindow", "root on click");
+          if ((c.this.jtC != null) && (c.this.jtC.isShowing())) {
+            c.this.jtC.dismiss();
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/wallet_core/ui/OfflinePopupWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(72950);
         }
       });
     }
     for (;;)
     {
-      this.jav = localView.findViewById(2131303351);
-      this.jau = ((ImageView)localView.findViewById(2131303350));
-      this.ogb = localView.findViewById(2131303347);
-      this.ogc = ((ImageView)localView.findViewById(2131303346));
-      this.ogd = ((MMVerticalTextView)localView.findViewById(2131306295));
-      this.jat = new o(localView, -1, -1, true);
-      this.jat.setClippingEnabled(false);
-      this.jat.update();
-      this.jat.setBackgroundDrawable(new ColorDrawable(16777215));
-      this.jat.setOnDismissListener(new PopupWindow.OnDismissListener()
+      this.jtE = localView.findViewById(2131303351);
+      this.jtD = ((ImageView)localView.findViewById(2131303350));
+      this.oJu = localView.findViewById(2131303347);
+      this.oJv = ((ImageView)localView.findViewById(2131303346));
+      this.oJw = ((MMVerticalTextView)localView.findViewById(2131306295));
+      this.jtC = new o(localView, -1, -1, true);
+      this.jtC.setClippingEnabled(false);
+      this.jtC.update();
+      this.jtC.setBackgroundDrawable(new ColorDrawable(16777215));
+      this.jtC.setOnDismissListener(new PopupWindow.OnDismissListener()
       {
         public final void onDismiss() {}
       });
       AppMethodBeat.o(72954);
       return;
-      localView = View.inflate(this.nTt, 2131495994, null);
+      localView = View.inflate(this.owO, 2131495994, null);
       localView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(72951);
-          if ((c.this.jat != null) && (c.this.jat.isShowing())) {
-            c.this.jat.dismiss();
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/ui/OfflinePopupWindow$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          if ((c.this.jtC != null) && (c.this.jtC.isShowing())) {
+            c.this.jtC.dismiss();
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/wallet_core/ui/OfflinePopupWindow$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(72951);
         }
       });
     }
   }
   
-  public final void fAM()
+  public final void fRW()
   {
     AppMethodBeat.i(72956);
-    if ((this.jat != null) && (this.jat.isShowing())) {
-      fAO();
+    if ((this.jtC != null) && (this.jtC.isShowing())) {
+      fRY();
     }
     AppMethodBeat.o(72956);
   }
   
-  public final void fAN()
+  public final void fRX()
   {
     AppMethodBeat.i(72957);
-    if (this.JGL != null) {
-      this.JGL.setVisibility(0);
+    if (this.LzP != null) {
+      this.LzP.setVisibility(0);
     }
     AppMethodBeat.o(72957);
   }
   
-  public final void mh(String paramString1, String paramString2)
+  public final void mF(String paramString1, String paramString2)
   {
-    this.vuP = paramString1;
-    this.vrZ = paramString2;
+    this.wAi = paramString1;
+    this.wxr = paramString2;
   }
   
   public final void release()
   {
     AppMethodBeat.i(72953);
-    if ((this.jat != null) && (this.jat.isShowing())) {
-      this.jat.dismiss();
+    if ((this.jtC != null) && (this.jtC.isShowing())) {
+      this.jtC.dismiss();
     }
-    e.T(this.ofY);
-    e.bc(this.ogf);
-    this.ogf.clear();
-    this.nTt = null;
+    e.T(this.oJr);
+    e.aZ(this.oJy);
+    this.oJy.clear();
+    this.owO = null;
     AppMethodBeat.o(72953);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.c
  * JD-Core Version:    0.7.0.1
  */

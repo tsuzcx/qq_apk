@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.expt.hellhound.a.b.b;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/IFinderClickListener;", "", "onFeedClick", "", "obj", "position", "", "plugin-expt_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/IFinderClickListener;", "", "onFeedClick", "", "obj", "position", "", "plugin-expt_release"})
 public abstract interface d
 {
-  public abstract void h(Object paramObject, int paramInt);
+  public abstract void i(Object paramObject, int paramInt);
 }
 
 

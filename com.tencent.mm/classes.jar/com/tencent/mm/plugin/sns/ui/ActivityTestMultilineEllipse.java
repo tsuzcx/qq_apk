@@ -8,7 +8,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public class ActivityTestMultilineEllipse
   extends HellActivity
@@ -51,20 +53,26 @@ public class ActivityTestMultilineEllipse
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(97664);
-        if (this.ywk.getIsExpanded())
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/sns/ui/ActivityTestMultilineEllipse$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (this.zNx.getIsExpanded())
         {
-          paramAnonymousView = this.ywk;
-          paramAnonymousView.nPL = false;
+          paramAnonymousView = this.zNx;
+          paramAnonymousView.oss = false;
           paramAnonymousView.requestLayout();
           paramAnonymousView.invalidate();
+        }
+        for (;;)
+        {
+          a.a(this, "com/tencent/mm/plugin/sns/ui/ActivityTestMultilineEllipse$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(97664);
           return;
+          paramAnonymousView = this.zNx;
+          paramAnonymousView.oss = true;
+          paramAnonymousView.requestLayout();
+          paramAnonymousView.invalidate();
         }
-        paramAnonymousView = this.ywk;
-        paramAnonymousView.nPL = true;
-        paramAnonymousView.requestLayout();
-        paramAnonymousView.invalidate();
-        AppMethodBeat.o(97664);
       }
     });
     paramBundle.addView((View)localObject);

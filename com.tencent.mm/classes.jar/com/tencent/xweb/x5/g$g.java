@@ -5,24 +5,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g$g
   extends com.tencent.xweb.JsResult
 {
-  public com.tencent.smtt.export.external.interfaces.JsResult KEx;
+  public com.tencent.smtt.export.external.interfaces.JsResult MuX;
   
   public g$g(com.tencent.smtt.export.external.interfaces.JsResult paramJsResult)
   {
-    this.KEx = paramJsResult;
+    this.MuX = paramJsResult;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(153855);
-    this.KEx.cancel();
+    this.MuX.cancel();
     AppMethodBeat.o(153855);
   }
   
   public final void confirm()
   {
     AppMethodBeat.i(153854);
-    this.KEx.confirm();
+    this.MuX.confirm();
     AppMethodBeat.o(153854);
   }
   

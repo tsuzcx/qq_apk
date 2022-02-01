@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class uj
   extends b
 {
-  public a dxb;
+  public a dIG;
   
   public uj()
   {
@@ -15,16 +15,17 @@ public final class uj
   
   private uj(byte paramByte)
   {
-    AppMethodBeat.i(131794);
-    this.dxb = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(125635);
+    this.dIG = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(131794);
+    AppMethodBeat.o(125635);
   }
   
   public static final class a
   {
-    public int sourceType = 0;
+    public boolean dIH = false;
+    public long dup = 0L;
   }
 }
 

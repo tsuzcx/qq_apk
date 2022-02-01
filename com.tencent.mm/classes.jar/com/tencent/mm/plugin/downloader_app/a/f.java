@@ -11,54 +11,54 @@ public final class f
     super(paramf);
   }
   
-  public final void aa(int paramInt, String paramString)
+  public final void ac(int paramInt, String paramString)
   {
     AppMethodBeat.i(175270);
-    super.aa(paramInt, paramString);
-    bGv().nfG = 11;
+    super.ac(paramInt, paramString);
+    bKG().nGc = 11;
     AppMethodBeat.o(175270);
   }
   
-  public final boolean bcV()
+  public final boolean bgA()
   {
     return false;
   }
   
-  public final boolean bcW()
-  {
-    return false;
-  }
-  
-  public final void bcX()
+  public final void bgB()
   {
     AppMethodBeat.i(175272);
-    super.bcX();
-    e.bYo().oLp = true;
+    super.bgB();
+    e.ccS().poX = true;
     AppMethodBeat.o(175272);
   }
   
-  public final void bcY()
+  public final void bgC()
   {
     AppMethodBeat.i(175273);
-    super.bcY();
-    e.bYo().oLp = false;
-    e.bYo().iO(false);
+    super.bgC();
+    e.ccS().poX = false;
+    e.ccS().iX(false);
     AppMethodBeat.o(175273);
   }
   
-  public final void bcZ()
+  public final void bgD()
   {
     AppMethodBeat.i(175274);
-    super.bcZ();
-    this.ngF.gb(false);
+    super.bgD();
+    this.nHb.gg(false);
     AppMethodBeat.o(175274);
   }
   
-  public final boolean rT(int paramInt)
+  public final boolean bgz()
+  {
+    return false;
+  }
+  
+  public final boolean sv(int paramInt)
   {
     AppMethodBeat.i(175271);
-    this.nfN = e.bYo().nfN;
-    boolean bool = super.rT(paramInt);
+    this.nGj = e.ccS().nGj;
+    boolean bool = super.sv(paramInt);
     AppMethodBeat.o(175271);
     return bool;
   }

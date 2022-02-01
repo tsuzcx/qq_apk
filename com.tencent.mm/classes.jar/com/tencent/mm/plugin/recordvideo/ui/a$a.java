@@ -2,19 +2,21 @@ package com.tencent.mm.plugin.recordvideo.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class a$a
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
-  public static final a wyE;
+  public static final a xHP;
   
   static
   {
     AppMethodBeat.i(75868);
-    wyE = new a();
+    xHP = new a();
     AppMethodBeat.o(75868);
   }
   

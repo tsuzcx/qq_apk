@@ -1,22 +1,14 @@
 package d;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"", "", "toString", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/UninitializedPropertyAccessException;", "Ljava/lang/RuntimeException;", "Lkotlin/RuntimeException;", "()V", "message", "", "(Ljava/lang/String;)V", "cause", "", "(Ljava/lang/String;Ljava/lang/Throwable;)V", "(Ljava/lang/Throwable;)V", "kotlin-stdlib"})
 public final class y
+  extends RuntimeException
 {
-  public static final y KTp;
+  public y() {}
   
-  static
+  public y(String paramString)
   {
-    AppMethodBeat.i(129471);
-    KTp = new y();
-    AppMethodBeat.o(129471);
-  }
-  
-  public final String toString()
-  {
-    return "kotlin.Unit";
+    super(paramString);
   }
 }
 

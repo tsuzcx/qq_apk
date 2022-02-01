@@ -16,9 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMEditText;
 import com.tencent.mm.ui.widget.a.d;
@@ -33,11 +35,11 @@ import java.util.List;
 @JgClassChecked(author=20, fComment="checked", lastDate="201400504", reviewer=20, vComment={com.jg.EType.JSEXECUTECHECK})
 public final class h
 {
-  public static d Q(Context paramContext, String paramString1, String paramString2)
+  public static d T(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210323);
+    AppMethodBeat.i(221154);
     paramContext = c(paramContext, paramString1, paramString2, true);
-    AppMethodBeat.o(210323);
+    AppMethodBeat.o(221154);
     return paramContext;
   }
   
@@ -87,7 +89,7 @@ public final class h
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(141784);
-        DialogInterface.OnCancelListener localOnCancelListener = (DialogInterface.OnCancelListener)this.HvY.get();
+        DialogInterface.OnCancelListener localOnCancelListener = (DialogInterface.OnCancelListener)this.JjO.get();
         if (localOnCancelListener != null) {
           localOnCancelListener.onCancel(paramAnonymousDialogInterface);
         }
@@ -106,6 +108,39 @@ public final class h
     paramContext = a(paramContext, paramInt, -1, paramString, paramBoolean, paramOnCancelListener);
     AppMethodBeat.o(141825);
     return paramContext;
+  }
+  
+  public static d a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  {
+    AppMethodBeat.i(141808);
+    if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()))
+    {
+      AppMethodBeat.o(141808);
+      return null;
+    }
+    d.a locala = new d.a(paramContext);
+    if (paramInt2 != 0) {
+      locala.afe(paramInt2);
+    }
+    locala.afi(paramInt1);
+    locala.afl(paramInt3).c(paramOnClickListener1);
+    locala.afm(paramInt4).d(paramOnClickListener2);
+    locala.e(new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(141777);
+        if (this.DYt != null) {
+          this.DYt.onClick(paramAnonymousDialogInterface, 0);
+        }
+        AppMethodBeat.o(141777);
+      }
+    });
+    paramOnClickListener1 = locala.fMb();
+    paramOnClickListener1.show();
+    a(paramContext, paramOnClickListener1);
+    AppMethodBeat.o(141808);
+    return paramOnClickListener1;
   }
   
   public static d a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -192,12 +227,12 @@ public final class h
     }
     d.a locala = new d.a(paramContext);
     if (paramInt2 > 0) {
-      locala.acF(paramInt2);
+      locala.afe(paramInt2);
     }
-    locala.acJ(paramInt1);
-    locala.acM(2131755835).b(paramOnClickListener);
-    locala.yf(paramBoolean);
-    paramOnClickListener = locala.fvp();
+    locala.afi(paramInt1);
+    locala.afl(2131755835).c(paramOnClickListener);
+    locala.yR(paramBoolean);
+    paramOnClickListener = locala.fMb();
     paramOnClickListener.show();
     a(paramContext, paramOnClickListener);
     AppMethodBeat.o(141795);
@@ -213,10 +248,10 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString);
-    locala.gH(paramView);
-    locala.acM(2131755835).b(paramOnClickListener);
-    paramString = locala.fvp();
+    locala.aXF(paramString);
+    locala.gY(paramView);
+    locala.afl(2131755835).c(paramOnClickListener);
+    paramString = locala.fMb();
     paramString.show();
     a(paramContext, paramString);
     AppMethodBeat.o(141813);
@@ -232,23 +267,23 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString);
-    locala.aRI(null);
-    locala.gH(paramView);
-    locala.acM(2131755835).b(paramOnClickListener1);
-    locala.acN(2131755691).c(paramOnClickListener2);
+    locala.aXF(paramString);
+    locala.aXG(null);
+    locala.gY(paramView);
+    locala.afl(2131755835).c(paramOnClickListener1);
+    locala.afm(2131755691).d(paramOnClickListener2);
     locala.e(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(141778);
-        if (this.CuM != null) {
-          this.CuM.onClick(paramAnonymousDialogInterface, 0);
+        if (this.DYt != null) {
+          this.DYt.onClick(paramAnonymousDialogInterface, 0);
         }
         AppMethodBeat.o(141778);
       }
     });
-    paramString = locala.fvp();
+    paramString = locala.fMb();
     paramString.show();
     a(paramContext, paramString);
     AppMethodBeat.o(141818);
@@ -272,11 +307,11 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString2);
-    locala.aRI(paramString1);
-    locala.acM(2131755835).b(paramOnClickListener);
+    locala.aXF(paramString2);
+    locala.aXG(paramString1);
+    locala.afl(2131755835).c(paramOnClickListener);
     locala.e(paramOnCancelListener);
-    paramString1 = locala.fvp();
+    paramString1 = locala.fMb();
     paramString1.show();
     a(paramContext, paramString1);
     AppMethodBeat.o(141822);
@@ -292,11 +327,11 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString2);
-    locala.aRI(paramString1);
-    locala.acM(2131755835).b(paramOnClickListener1);
-    locala.acN(2131755691).c(paramOnClickListener2);
-    paramString1 = locala.fvp();
+    locala.aXF(paramString2);
+    locala.aXG(paramString1);
+    locala.afl(2131755835).c(paramOnClickListener1);
+    locala.afm(2131755691).d(paramOnClickListener2);
+    paramString1 = locala.fMb();
     paramString1.show();
     a(paramContext, paramString1);
     AppMethodBeat.o(141800);
@@ -312,11 +347,11 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString2);
-    locala.aRI(paramString1);
+    locala.aXF(paramString2);
+    locala.aXG(paramString1);
     locala.a(paramOnDismissListener);
-    locala.yf(false);
-    locala.acM(2131755835).b(new DialogInterface.OnClickListener()
+    locala.yR(false);
+    locala.afl(2131755835).c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -325,7 +360,7 @@ public final class h
         AppMethodBeat.o(141776);
       }
     });
-    paramString1 = locala.fvp();
+    paramString1 = locala.fMb();
     paramString1.show();
     a(paramContext, paramString1);
     AppMethodBeat.o(164147);
@@ -341,10 +376,10 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString1);
-    locala.gH(paramView);
-    locala.aRO(paramString2).b(paramOnClickListener);
-    paramString1 = locala.fvp();
+    locala.aXF(paramString1);
+    locala.gY(paramView);
+    locala.aXM(paramString2).c(paramOnClickListener);
+    paramString1 = locala.fMb();
     paramString1.show();
     a(paramContext, paramString1);
     AppMethodBeat.o(141817);
@@ -376,12 +411,12 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString2);
-    locala.aRI(paramString1);
-    locala.aRO(paramString3).b(paramOnClickListener1);
-    locala.aRP(paramString4).c(paramOnClickListener2);
-    paramString1 = locala.fvp();
-    paramString1.Yl(paramContext.getResources().getColor(paramInt));
+    locala.aXF(paramString2);
+    locala.aXG(paramString1);
+    locala.aXM(paramString3).c(paramOnClickListener1);
+    locala.aXN(paramString4).d(paramOnClickListener2);
+    paramString1 = locala.fMb();
+    paramString1.aaq(paramContext.getResources().getColor(paramInt));
     paramString1.show();
     a(paramContext, paramString1);
     AppMethodBeat.o(141810);
@@ -405,14 +440,14 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString2);
-    locala.aRI(paramString1);
-    locala.aRO(paramString3).b(paramOnClickListener1);
-    locala.aRP(paramString4).c(paramOnClickListener2);
-    locala.yf(paramBoolean);
-    paramString1 = locala.fvp();
+    locala.aXF(paramString2);
+    locala.aXG(paramString1);
+    locala.aXM(paramString3).c(paramOnClickListener1);
+    locala.aXN(paramString4).d(paramOnClickListener2);
+    locala.yR(paramBoolean);
+    paramString1 = locala.fMb();
     if (paramInt > 0) {
-      paramString1.Yl(paramContext.getResources().getColor(paramInt));
+      paramString1.aaq(paramContext.getResources().getColor(paramInt));
     }
     paramString1.show();
     a(paramContext, paramString1);
@@ -429,11 +464,11 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString2);
-    locala.aRI(paramString1);
-    locala.aRO(paramString3).b(paramOnClickListener);
-    locala.yf(paramBoolean);
-    paramString1 = locala.fvp();
+    locala.aXF(paramString2);
+    locala.aXG(paramString1);
+    locala.aXM(paramString3).c(paramOnClickListener);
+    locala.yR(paramBoolean);
+    paramString1 = locala.fMb();
     paramString1.show();
     a(paramContext, paramString1);
     AppMethodBeat.o(141799);
@@ -449,11 +484,11 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString2);
-    locala.aRI(paramString1);
-    locala.acM(2131755835).b(paramOnClickListener);
-    locala.yf(paramBoolean);
-    paramString1 = locala.fvp();
+    locala.aXF(paramString2);
+    locala.aXG(paramString1);
+    locala.afl(2131755835).c(paramOnClickListener);
+    locala.yR(paramBoolean);
+    paramString1 = locala.fMb();
     paramString1.show();
     a(paramContext, paramString1);
     AppMethodBeat.o(141797);
@@ -469,12 +504,12 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString2);
-    locala.aRI(paramString1);
-    locala.acM(2131755835).b(paramOnClickListener1);
-    locala.acN(2131755691).c(paramOnClickListener2);
-    locala.yf(paramBoolean);
-    paramString1 = locala.fvp();
+    locala.aXF(paramString2);
+    locala.aXG(paramString1);
+    locala.afl(2131755835).c(paramOnClickListener1);
+    locala.afm(2131755691).d(paramOnClickListener2);
+    locala.yR(paramBoolean);
+    paramString1 = locala.fMb();
     paramString1.show();
     a(paramContext, paramString1);
     AppMethodBeat.o(141801);
@@ -491,14 +526,14 @@ public final class h
     }
     if (paramList.isEmpty())
     {
-      ac.w("MicroMsg.MMAlert", "show switch alert fail");
+      ad.w("MicroMsg.MMAlert", "show switch alert fail");
       AppMethodBeat.o(141821);
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.yf(false);
-    locala.acN(2131755691);
-    locala.aRH(paramString);
+    locala.yR(false);
+    locala.afm(2131755691);
+    locala.aXF(paramString);
     View localView = View.inflate(paramContext, 2131494769, null);
     paramString = (LinearLayout)localView.findViewById(2131305591);
     int i = paramList.size() - 1;
@@ -521,12 +556,15 @@ public final class h
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(141783);
+          Object localObject = new b();
+          ((b)localObject).bd(paramAnonymousView);
+          a.b("com/tencent/mm/ui/base/MMAlert$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
           int i = 0;
-          while (i < this.xrd.getChildCount())
+          while (i < this.yFM.getChildCount())
           {
-            TextView localTextView = (TextView)this.xrd.getChildAt(i);
-            if (localTextView.getId() != 2131305896) {
-              localTextView.setCompoundDrawablesWithIntrinsicBounds(2131691077, 0, 0, 0);
+            localObject = (TextView)this.yFM.getChildAt(i);
+            if (((TextView)localObject).getId() != 2131305896) {
+              ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(2131691077, 0, 0, 0);
             }
             i += 1;
           }
@@ -536,20 +574,21 @@ public final class h
             public final void run()
             {
               AppMethodBeat.i(141782);
-              ((Dialog)h.10.this.xrd.getTag()).dismiss();
-              if (h.10.this.HvV != null) {
-                h.10.this.HvV.LW(this.HvW);
+              ((Dialog)h.10.this.yFM.getTag()).dismiss();
+              if (h.10.this.JjL != null) {
+                h.10.this.JjL.Nv(this.JjM);
               }
               AppMethodBeat.o(141782);
             }
           });
+          a.a(this, "com/tencent/mm/ui/base/MMAlert$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(141783);
         }
       });
       i -= 1;
     }
-    locala.gH(localView);
-    paramList = locala.fvp();
+    locala.gY(localView);
+    paramList = locala.fMb();
     paramString.setTag(paramList);
     paramList.show();
     a(paramContext, paramList);
@@ -574,14 +613,14 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString1);
-    locala.gH(paramView);
-    locala.aRO(paramString2).b(paramOnClickListener1);
-    locala.aRP(paramString3).c(paramOnClickListener2);
-    locala.yf(paramBoolean);
-    paramString1 = locala.fvp();
+    locala.aXF(paramString1);
+    locala.gY(paramView);
+    locala.aXM(paramString2).c(paramOnClickListener1);
+    locala.aXN(paramString3).d(paramOnClickListener2);
+    locala.yR(paramBoolean);
+    paramString1 = locala.fMb();
     if (paramInt > 0) {
-      paramString1.Yl(paramContext.getResources().getColor(paramInt));
+      paramString1.aaq(paramContext.getResources().getColor(paramInt));
     }
     paramString1.show();
     a(paramContext, paramString1);
@@ -598,12 +637,12 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString2);
-    locala.aRI(paramString1);
-    locala.aRO(paramString3).b(paramOnClickListener1);
-    locala.aRP(paramString4).c(paramOnClickListener2);
-    locala.yf(paramBoolean);
-    paramString1 = locala.fvp();
+    locala.aXF(paramString2);
+    locala.aXG(paramString1);
+    locala.aXM(paramString3).c(paramOnClickListener1);
+    locala.aXN(paramString4).d(paramOnClickListener2);
+    locala.yR(paramBoolean);
+    paramString1 = locala.fMb();
     paramString1.show();
     a(paramContext, paramString1);
     AppMethodBeat.o(141811);
@@ -619,17 +658,17 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString2);
-    locala.aRI(paramString1);
-    locala.aRO(paramString3).b(paramOnClickListener1);
-    locala.aRP(paramString4).c(paramOnClickListener2);
-    locala.yf(paramBoolean);
-    paramString1 = locala.fvp();
+    locala.aXF(paramString2);
+    locala.aXG(paramString1);
+    locala.aXM(paramString3).c(paramOnClickListener1);
+    locala.aXN(paramString4).d(paramOnClickListener2);
+    locala.yR(paramBoolean);
+    paramString1 = locala.fMb();
     if (paramInt1 > 0) {
-      paramString1.Yl(paramContext.getResources().getColor(paramInt1));
+      paramString1.aaq(paramContext.getResources().getColor(paramInt1));
     }
     if (paramInt2 > 0) {
-      paramString1.Ym(paramContext.getResources().getColor(paramInt2));
+      paramString1.aar(paramContext.getResources().getColor(paramInt2));
     }
     paramString1.show();
     a(paramContext, paramString1);
@@ -683,39 +722,6 @@ public final class h
     return paramContext;
   }
   
-  public static d b(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
-  {
-    AppMethodBeat.i(141808);
-    if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()))
-    {
-      AppMethodBeat.o(141808);
-      return null;
-    }
-    d.a locala = new d.a(paramContext);
-    if (paramInt2 != 0) {
-      locala.acF(paramInt2);
-    }
-    locala.acJ(paramInt1);
-    locala.acM(paramInt3).b(paramOnClickListener1);
-    locala.acN(paramInt4).c(paramOnClickListener2);
-    locala.e(new DialogInterface.OnCancelListener()
-    {
-      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-      {
-        AppMethodBeat.i(141777);
-        if (this.CuM != null) {
-          this.CuM.onClick(paramAnonymousDialogInterface, 0);
-        }
-        AppMethodBeat.o(141777);
-      }
-    });
-    paramOnClickListener1 = locala.fvp();
-    paramOnClickListener1.show();
-    a(paramContext, paramOnClickListener1);
-    AppMethodBeat.o(141808);
-    return paramOnClickListener1;
-  }
-  
   public static d b(Context paramContext, int paramInt, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
     AppMethodBeat.i(141805);
@@ -737,35 +743,35 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.yf(false);
-    locala.yg(true);
-    locala.acN(2131755691).c(null);
-    locala.aRH(paramString1);
+    locala.yR(false);
+    locala.yS(true);
+    locala.afm(2131755691).d(null);
+    locala.aXF(paramString1);
     paramString1 = View.inflate(paramContext, 2131494768, null);
     final MMEditText localMMEditText = (MMEditText)paramString1.findViewById(2131299306);
-    if (!bs.isNullOrNil(paramString2)) {
-      localMMEditText.aRF(paramString2);
+    if (!bt.isNullOrNil(paramString2)) {
+      localMMEditText.aXD(paramString2);
     }
     paramString2 = (TextView)paramString1.findViewById(2131305896);
-    if (bs.isNullOrNil(paramString3)) {
+    if (bt.isNullOrNil(paramString3)) {
       paramString2.setVisibility(8);
     }
     for (;;)
     {
-      locala.acM(2131755835).a(false, new DialogInterface.OnClickListener()
+      locala.afl(2131755835).a(false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(141780);
           boolean bool = true;
-          if (this.BLq != null) {
-            bool = this.BLq.onFinish(localMMEditText.getText().toString().trim());
+          if (this.DlI != null) {
+            bool = this.DlI.onFinish(localMMEditText.getText().toString().trim());
           }
           if (bool)
           {
             paramAnonymousDialogInterface.dismiss();
             if ((paramContext instanceof MMActivity)) {
-              ap.f(new Runnable()
+              aq.f(new Runnable()
               {
                 public final void run()
                 {
@@ -780,10 +786,10 @@ public final class h
         }
       });
       if (paramInt > 0) {
-        com.tencent.mm.ui.tools.b.c.d(localMMEditText).acw(paramInt).a(null);
+        com.tencent.mm.ui.tools.b.c.d(localMMEditText).aeU(paramInt).a(null);
       }
-      locala.gH(paramString1);
-      paramString2 = locala.fvp();
+      locala.gY(paramString1);
+      paramString2 = locala.fMb();
       paramString2.show();
       a(paramContext, paramString2);
       if ((paramContext instanceof MMActivity)) {
@@ -807,7 +813,7 @@ public final class h
   private static Dialog c(Context paramContext, String paramString1, List<String> paramList, final List<Integer> paramList1, final String paramString2, d paramd)
   {
     AppMethodBeat.i(141830);
-    if (((paramList == null) || (paramList.size() == 0)) && (bs.isNullOrNil(paramString2)))
+    if (((paramList == null) || (paramList.size() == 0)) && (bt.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(141830);
       return null;
@@ -817,38 +823,38 @@ public final class h
       localObject = new ArrayList();
     }
     paramContext = new e(paramContext, 1, false);
-    paramContext.ISu = new n.c()
+    paramContext.KJy = new n.d()
     {
       public final void onCreateMMMenu(l paramAnonymousl)
       {
         AppMethodBeat.i(141785);
-        if (!bs.isNullOrNil(this.cNi)) {
-          paramAnonymousl.setHeaderTitle(this.cNi);
+        if (!bt.isNullOrNil(this.cYy)) {
+          paramAnonymousl.setHeaderTitle(this.cYy);
         }
         int i = 0;
-        while (i < this.yAc.size())
+        while (i < this.zRs.size())
         {
-          paramAnonymousl.c(((Integer)paramList1.get(i)).intValue(), (CharSequence)this.yAc.get(i));
+          paramAnonymousl.c(((Integer)paramList1.get(i)).intValue(), (CharSequence)this.zRs.get(i));
           i += 1;
         }
-        if (!bs.isNullOrNil(paramString2)) {
+        if (!bt.isNullOrNil(paramString2)) {
           paramAnonymousl.c(-1, paramString2);
         }
         AppMethodBeat.o(141785);
       }
     };
-    paramContext.ISv = new n.d()
+    paramContext.KJz = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(141773);
-        if (this.HvR != null) {
-          this.HvR.ct(paramAnonymousInt, paramAnonymousMenuItem.getItemId());
+        if (this.JjH != null) {
+          this.JjH.cv(paramAnonymousInt, paramAnonymousMenuItem.getItemId());
         }
         AppMethodBeat.o(141773);
       }
     };
-    paramContext.cED();
+    paramContext.cMW();
     AppMethodBeat.o(141830);
     return null;
   }
@@ -863,9 +869,9 @@ public final class h
   
   public static p c(Context paramContext, String paramString, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(197188);
+    AppMethodBeat.i(186465);
     paramContext = a(paramContext, 2, paramString, paramBoolean, paramOnCancelListener);
-    AppMethodBeat.o(197188);
+    AppMethodBeat.o(186465);
     return paramContext;
   }
   
@@ -878,10 +884,10 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString2);
-    locala.aRI(paramString1);
-    locala.yf(paramBoolean);
-    locala.acM(2131755835).b(new DialogInterface.OnClickListener()
+    locala.aXF(paramString2);
+    locala.aXG(paramString1);
+    locala.yR(paramBoolean);
+    locala.afl(2131755835).c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -890,30 +896,30 @@ public final class h
         AppMethodBeat.o(141772);
       }
     });
-    paramString1 = locala.fvp();
+    paramString1 = locala.fMb();
     paramString1.show();
     a(paramContext, paramString1);
     AppMethodBeat.o(141792);
     return paramString1;
   }
   
-  public static Toast cd(Context paramContext, String paramString)
+  public static Toast ci(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(210322);
-    paramContext = cg(paramContext, paramString);
-    AppMethodBeat.o(210322);
+    AppMethodBeat.i(221153);
+    paramContext = cl(paramContext, paramString);
+    AppMethodBeat.o(221153);
     return paramContext;
   }
   
-  public static Toast ce(Context paramContext, String paramString)
+  public static Toast cj(Context paramContext, String paramString)
   {
     AppMethodBeat.i(141788);
-    paramContext = cg(paramContext, paramString);
+    paramContext = cl(paramContext, paramString);
     AppMethodBeat.o(141788);
     return paramContext;
   }
   
-  public static void cf(Context paramContext, String paramString)
+  public static void ck(Context paramContext, String paramString)
   {
     AppMethodBeat.i(141789);
     if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()))
@@ -925,7 +931,7 @@ public final class h
     AppMethodBeat.o(141789);
   }
   
-  public static Toast cg(Context paramContext, String paramString)
+  public static Toast cl(Context paramContext, String paramString)
   {
     AppMethodBeat.i(141790);
     if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()))
@@ -948,7 +954,7 @@ public final class h
       AppMethodBeat.o(141835);
       return null;
     }
-    if (((paramArrayOfString == null) || (paramArrayOfString.length == 0)) && (bs.isNullOrNil(paramString2)))
+    if (((paramArrayOfString == null) || (paramArrayOfString.length == 0)) && (bt.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(141835);
       return null;
@@ -957,16 +963,16 @@ public final class h
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {
       Collections.addAll(localArrayList, paramArrayOfString);
     }
-    if (!bs.isNullOrNil(paramString2)) {
+    if (!bt.isNullOrNil(paramString2)) {
       localArrayList.add(paramString2);
     }
     paramContext = new e(paramContext, 1, false);
-    paramContext.ISu = new n.c()
+    paramContext.KJy = new n.d()
     {
       public final void onCreateMMMenu(l paramAnonymousl)
       {
         AppMethodBeat.i(141774);
-        paramAnonymousl.setHeaderTitle(this.cNi);
+        paramAnonymousl.setHeaderTitle(this.cYy);
         int i = 0;
         while (i < localArrayList.size())
         {
@@ -976,18 +982,18 @@ public final class h
         AppMethodBeat.o(141774);
       }
     };
-    paramContext.ISv = new n.d()
+    paramContext.KJz = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(141775);
-        if (this.HvS != null) {
-          this.HvS.kG(paramAnonymousMenuItem.getItemId());
+        if (this.JjI != null) {
+          this.JjI.lf(paramAnonymousMenuItem.getItemId());
         }
         AppMethodBeat.o(141775);
       }
     };
-    paramContext.cED();
+    paramContext.cMW();
     AppMethodBeat.o(141835);
     return null;
   }
@@ -1000,7 +1006,7 @@ public final class h
     return paramContext;
   }
   
-  public static d d(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  public static d e(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
     AppMethodBeat.i(141809);
     if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()))
@@ -1009,11 +1015,11 @@ public final class h
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.aRH(paramString2);
-    locala.aRI(paramString1);
-    locala.aRO(paramString3).b(paramOnClickListener1);
-    locala.aRP(paramString4).c(paramOnClickListener2);
-    paramString1 = locala.fvp();
+    locala.aXF(paramString2);
+    locala.aXG(paramString1);
+    locala.aXM(paramString3).c(paramOnClickListener1);
+    locala.aXN(paramString4).d(paramOnClickListener2);
+    paramString1 = locala.fMb();
     paramString1.show();
     a(paramContext, paramString1);
     AppMethodBeat.o(141809);
@@ -1044,7 +1050,7 @@ public final class h
   
   public static abstract interface a
   {
-    public abstract void LW(int paramInt);
+    public abstract void Nv(int paramInt);
   }
   
   public static abstract interface b
@@ -1054,12 +1060,12 @@ public final class h
   
   public static abstract interface c
   {
-    public abstract void kG(int paramInt);
+    public abstract void lf(int paramInt);
   }
   
   public static abstract interface d
   {
-    public abstract void ct(int paramInt1, int paramInt2);
+    public abstract void cv(int paramInt1, int paramInt2);
   }
 }
 

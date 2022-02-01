@@ -2,7 +2,7 @@ package com.tencent.mm.ipcinvoker;
 
 public abstract interface m
 {
-  public abstract void aeQ();
+  public abstract void ahC();
 }
 
 

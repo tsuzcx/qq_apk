@@ -7,12 +7,12 @@ public enum b
   static
   {
     AppMethodBeat.i(13539);
-    JIs = new b("LevelDebug", 0);
-    JIt = new b("LevelInfo", 1);
-    JIu = new b("LevelWarning", 2);
-    JIv = new b("LevelError", 3);
-    JIw = new b("LevelNone", 4);
-    JIx = new b[] { JIs, JIt, JIu, JIv, JIw };
+    LCb = new b("LevelDebug", 0);
+    LCc = new b("LevelInfo", 1);
+    LCd = new b("LevelWarning", 2);
+    LCe = new b("LevelError", 3);
+    LCf = new b("LevelNone", 4);
+    LCg = new b[] { LCb, LCc, LCd, LCe, LCf };
     AppMethodBeat.o(13539);
   }
   

@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class u$b$c
 {
-  boolean iuC;
-  int iuD;
-  int iuE;
+  boolean iNF;
+  int iNG;
+  int iNH;
   
   public final String toString()
   {
     AppMethodBeat.i(151388);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("fail[").append(this.iuC).append("],");
-    ((StringBuilder)localObject).append("tryTimes[").append(this.iuD).append("],");
-    ((StringBuilder)localObject).append("lastTS[").append(this.iuE).append("]");
+    ((StringBuilder)localObject).append("fail[").append(this.iNF).append("],");
+    ((StringBuilder)localObject).append("tryTimes[").append(this.iNG).append("],");
+    ((StringBuilder)localObject).append("lastTS[").append(this.iNH).append("]");
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(151388);
     return localObject;

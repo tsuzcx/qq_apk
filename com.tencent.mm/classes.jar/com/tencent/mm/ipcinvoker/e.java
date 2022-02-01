@@ -3,7 +3,7 @@ package com.tencent.mm.ipcinvoker;
 public abstract interface e<T>
   extends d<T>
 {
-  public abstract void aeK();
+  public abstract void ahw();
 }
 
 

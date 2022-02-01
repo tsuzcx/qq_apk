@@ -1,104 +1,122 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import java.util.LinkedList;
 
 public final class da
-  extends com.tencent.mm.bw.a
+  extends cvp
 {
-  public String DQi;
-  public String iod;
+  public LinkedList<cet> Fvu;
+  public String Fvv;
+  
+  public da()
+  {
+    AppMethodBeat.i(152485);
+    this.Fvu = new LinkedList();
+    AppMethodBeat.o(152485);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152487);
+    AppMethodBeat.i(152486);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.iod == null)
+      if (this.BaseResponse != null)
       {
-        paramVarArgs = new b("Not all required fields were included: tp_username");
-        AppMethodBeat.o(152487);
-        throw paramVarArgs;
+        paramVarArgs.lC(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.DQi == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: antispam_ticket");
-        AppMethodBeat.o(152487);
-        throw paramVarArgs;
+      paramVarArgs.e(2, 8, this.Fvu);
+      if (this.Fvv != null) {
+        paramVarArgs.d(3, this.Fvv);
       }
-      if (this.iod != null) {
-        paramVarArgs.d(1, this.iod);
-      }
-      if (this.DQi != null) {
-        paramVarArgs.d(2, this.DQi);
-      }
-      AppMethodBeat.o(152487);
+      AppMethodBeat.o(152486);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.iod == null) {
-        break label370;
+      if (this.BaseResponse == null) {
+        break label510;
       }
     }
-    label370:
-    for (paramInt = f.a.a.b.b.a.e(1, this.iod) + 0;; paramInt = 0)
+    label510:
+    for (paramInt = f.a.a.a.lB(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.DQi != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.DQi);
+      int i = paramInt + f.a.a.a.c(2, 8, this.Fvu);
+      paramInt = i;
+      if (this.Fvv != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.Fvv);
       }
-      AppMethodBeat.o(152487);
-      return i;
+      AppMethodBeat.o(152486);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.Fvu.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = cvp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.iod == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: tp_username");
-          AppMethodBeat.o(152487);
-          throw paramVarArgs;
-        }
-        if (this.DQi == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: antispam_ticket");
-          AppMethodBeat.o(152487);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(152487);
+        AppMethodBeat.o(152486);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         da localda = (da)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152487);
+          AppMethodBeat.o(152486);
           return -1;
         case 1: 
-          localda.iod = locala.LVo.readString();
-          AppMethodBeat.o(152487);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localda.BaseResponse = ((BaseResponse)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(152486);
+          return 0;
+        case 2: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new cet();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((cet)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localda.Fvu.add(localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(152486);
           return 0;
         }
-        localda.DQi = locala.LVo.readString();
-        AppMethodBeat.o(152487);
+        localda.Fvv = ((f.a.a.a.a)localObject1).NPN.readString();
+        AppMethodBeat.o(152486);
         return 0;
       }
-      AppMethodBeat.o(152487);
+      AppMethodBeat.o(152486);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.da
  * JD-Core Version:    0.7.0.1
  */

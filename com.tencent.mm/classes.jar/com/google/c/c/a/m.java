@@ -82,19 +82,19 @@ final class m
       AppMethodBeat.o(12236);
       return i + 2;
     }
-    j.i(paramChar);
+    j.k(paramChar);
     AppMethodBeat.o(12236);
     return -1;
   }
   
-  public final int xW()
+  public final int zt()
   {
     return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.c.c.a.m
  * JD-Core Version:    0.7.0.1
  */

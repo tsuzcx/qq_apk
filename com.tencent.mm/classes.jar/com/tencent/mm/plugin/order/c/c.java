@@ -4,10 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -20,30 +21,30 @@ public final class c
     AppMethodBeat.i(66845);
     if (paramBoolean.booleanValue())
     {
-      h.wUl.f(11030, new Object[] { paramString1, "", paramString3, paramString4 });
+      com.tencent.mm.plugin.report.service.g.yhR.f(11030, new Object[] { paramString1, "", paramString3, paramString4 });
       AppMethodBeat.o(66845);
       return;
     }
-    h.wUl.f(11030, new Object[] { paramString1, paramString2, paramString3, paramString4 });
+    com.tencent.mm.plugin.report.service.g.yhR.f(11030, new Object[] { paramString1, paramString2, paramString3, paramString4 });
     AppMethodBeat.o(66845);
   }
   
-  public static boolean aR(Context paramContext, String paramString)
+  public static boolean aU(Context paramContext, String paramString)
   {
     AppMethodBeat.i(66842);
-    ac.v("MicroMsg.MallUtil", "jumpToUrl:".concat(String.valueOf(paramString)));
+    ad.v("MicroMsg.MallUtil", "jumpToUrl:".concat(String.valueOf(paramString)));
     Intent localIntent = new Intent();
-    HashMap localHashMap = apg(paramString);
+    HashMap localHashMap = aug(paramString);
     if ((localHashMap != null) && (!localHashMap.isEmpty()))
     {
       paramString = (String)localHashMap.get("action");
       if ((TextUtils.isEmpty(paramString)) || (!isNumeric(paramString)))
       {
-        ac.e("MicroMsg.MallUtil", "jumpToUrl illegal action:".concat(String.valueOf(paramString)));
+        ad.e("MicroMsg.MallUtil", "jumpToUrl illegal action:".concat(String.valueOf(paramString)));
         AppMethodBeat.o(66842);
         return false;
       }
-      switch (bs.getInt(paramString, 0))
+      switch (bt.getInt(paramString, 0))
       {
       }
     }
@@ -54,29 +55,38 @@ public final class c
       localIntent.putExtra("rawUrl", (String)localHashMap.get("3rdurl"));
       localIntent.putExtra("showShare", false);
       localIntent.putExtra("pay_channel", 1);
-      e.al(paramContext, localIntent);
+      e.an(paramContext, localIntent);
       continue;
-      e.ad(paramContext, (String)localHashMap.get("username"));
+      e.ac(paramContext, (String)localHashMap.get("username"));
       continue;
       localIntent.putExtra("key_func_id", (String)localHashMap.get("functionid"));
       localIntent.putExtra("key_scene", 1);
-      d.b(paramContext, "mall", ".ui.MallIndexUI", localIntent);
-      continue;
-      localIntent.putExtra("key_product_id", (String)localHashMap.get("productid"));
-      localIntent.putExtra("key_product_scene", 5);
-      d.b(paramContext, "product", ".ui.MallProductUI", localIntent);
-      continue;
-      if (TextUtils.isEmpty(paramString)) {
-        break;
+      boolean bool = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qzF, false);
+      ad.i("MicroMsg.MallUtil", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
+      if (bool)
+      {
+        d.b(paramContext, "mall", ".ui.MallIndexUIv2", localIntent);
       }
-      aT(paramContext, paramString);
+      else
+      {
+        d.b(paramContext, "mall", ".ui.MallIndexUI", localIntent);
+        continue;
+        localIntent.putExtra("key_product_id", (String)localHashMap.get("productid"));
+        localIntent.putExtra("key_product_scene", 5);
+        d.b(paramContext, "product", ".ui.MallProductUI", localIntent);
+        continue;
+        if (TextUtils.isEmpty(paramString)) {
+          break;
+        }
+        aW(paramContext, paramString);
+      }
     }
-    ac.e("MicroMsg.MallUtil", "jumpToUrl illegal url:".concat(String.valueOf(paramString)));
+    ad.e("MicroMsg.MallUtil", "jumpToUrl illegal url:".concat(String.valueOf(paramString)));
     AppMethodBeat.o(66842);
     return false;
   }
   
-  public static void aS(Context paramContext, String paramString)
+  public static void aV(Context paramContext, String paramString)
   {
     AppMethodBeat.i(66843);
     if (TextUtils.isEmpty(paramString))
@@ -91,18 +101,18 @@ public final class c
     AppMethodBeat.o(66843);
   }
   
-  public static void aT(Context paramContext, String paramString)
+  public static void aW(Context paramContext, String paramString)
   {
     AppMethodBeat.i(66844);
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("showShare", false);
     localIntent.putExtra("pay_channel", 1);
-    e.al(paramContext, localIntent);
+    e.an(paramContext, localIntent);
     AppMethodBeat.o(66844);
   }
   
-  private static HashMap<String, String> apg(String paramString)
+  private static HashMap<String, String> aug(String paramString)
   {
     AppMethodBeat.i(66841);
     if (paramString == null)
@@ -152,7 +162,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.order.c.c
  * JD-Core Version:    0.7.0.1
  */

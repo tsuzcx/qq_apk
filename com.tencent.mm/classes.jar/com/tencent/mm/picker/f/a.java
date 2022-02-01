@@ -18,27 +18,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class a
 {
-  boolean cBT;
+  boolean cMS;
   private Context context;
-  protected ViewGroup isM;
-  ViewGroup isN;
-  private ViewGroup isO;
-  boolean isP;
-  private Animation isQ;
-  private Animation isR;
-  protected int isS;
-  private boolean isT;
-  private View.OnKeyListener isU;
-  private final View.OnTouchListener isV;
-  protected com.tencent.mm.picker.c.a isf;
+  protected ViewGroup iLP;
+  ViewGroup iLQ;
+  private ViewGroup iLR;
+  boolean iLS;
+  private Animation iLT;
+  private Animation iLU;
+  protected int iLV;
+  private boolean iLW;
+  private View.OnKeyListener iLX;
+  private final View.OnTouchListener iLY;
+  protected com.tencent.mm.picker.c.a iLi;
   private Dialog mDialog;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(175337);
-    this.isS = 80;
-    this.isT = true;
-    this.isU = new View.OnKeyListener()
+    this.iLV = 80;
+    this.iLW = true;
+    this.iLX = new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
@@ -46,7 +46,7 @@ public class a
         if ((paramAnonymousInt == 4) && (paramAnonymousKeyEvent.getAction() == 0))
         {
           paramAnonymousView = a.this;
-          if ((!paramAnonymousView.aMQ()) && ((paramAnonymousView.isN.getParent() != null) || (paramAnonymousView.cBT))) {}
+          if ((!paramAnonymousView.aQb()) && ((paramAnonymousView.iLQ.getParent() != null) || (paramAnonymousView.cMS))) {}
           for (paramAnonymousInt = 1; paramAnonymousInt != 0; paramAnonymousInt = 0)
           {
             a.this.dismiss();
@@ -58,7 +58,7 @@ public class a
         return false;
       }
     };
-    this.isV = new View.OnTouchListener()
+    this.iLY = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -74,65 +74,65 @@ public class a
     AppMethodBeat.o(175337);
   }
   
-  protected final void aMM()
+  protected final void aPX()
   {
     AppMethodBeat.i(175338);
     Object localObject = new FrameLayout.LayoutParams(-1, -2, 80);
-    this.isN = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131494555, this.isf.Xt, false));
-    this.isN.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    if (this.isf.isI != -1) {
-      this.isN.setBackgroundColor(this.isf.isI);
+    this.iLQ = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131494555, this.iLi.Zi, false));
+    this.iLQ.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    if (this.iLi.iLL != -1) {
+      this.iLQ.setBackgroundColor(this.iLi.iLL);
     }
-    this.isM = ((ViewGroup)this.isN.findViewById(2131298752));
-    this.isM.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if (aMQ()) {}
-    for (localObject = this.isO;; localObject = this.isN)
+    this.iLP = ((ViewGroup)this.iLQ.findViewById(2131298752));
+    this.iLP.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if (aQb()) {}
+    for (localObject = this.iLR;; localObject = this.iLQ)
     {
       ((ViewGroup)localObject).setFocusable(true);
       ((ViewGroup)localObject).setFocusableInTouchMode(true);
-      ((ViewGroup)localObject).setOnKeyListener(this.isU);
+      ((ViewGroup)localObject).setOnKeyListener(this.iLX);
       AppMethodBeat.o(175338);
       return;
     }
   }
   
-  protected final void aMN()
+  protected final void aPY()
   {
     AppMethodBeat.i(175339);
-    int i = com.tencent.mm.picker.e.a.E(this.isS, true);
-    this.isR = AnimationUtils.loadAnimation(this.context, i);
-    i = com.tencent.mm.picker.e.a.E(this.isS, false);
-    this.isQ = AnimationUtils.loadAnimation(this.context, i);
+    int i = com.tencent.mm.picker.e.a.E(this.iLV, true);
+    this.iLU = AnimationUtils.loadAnimation(this.context, i);
+    i = com.tencent.mm.picker.e.a.E(this.iLV, false);
+    this.iLT = AnimationUtils.loadAnimation(this.context, i);
     AppMethodBeat.o(175339);
   }
   
-  public final void aMO()
+  public final void aPZ()
   {
     AppMethodBeat.i(175341);
-    this.isf.Xt.post(new Runnable()
+    this.iLi.Zi.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(175334);
-        a.this.isf.Xt.removeView(a.this.isN);
-        a.this.cBT = false;
-        a.this.isP = false;
+        a.this.iLi.Zi.removeView(a.this.iLQ);
+        a.this.cMS = false;
+        a.this.iLS = false;
         AppMethodBeat.o(175334);
       }
     });
     AppMethodBeat.o(175341);
   }
   
-  public final void aMP()
+  public final void aQa()
   {
     AppMethodBeat.i(175343);
     if (this.mDialog != null) {
-      this.mDialog.setCancelable(this.isf.mz);
+      this.mDialog.setCancelable(this.iLi.ov);
     }
     AppMethodBeat.o(175343);
   }
   
-  public boolean aMQ()
+  public boolean aQb()
   {
     return false;
   }
@@ -140,7 +140,7 @@ public class a
   public final void dismiss()
   {
     AppMethodBeat.i(175340);
-    if (aMQ())
+    if (aQb())
     {
       if (this.mDialog != null) {
         this.mDialog.dismiss();
@@ -148,19 +148,19 @@ public class a
       AppMethodBeat.o(175340);
       return;
     }
-    if (this.isP)
+    if (this.iLS)
     {
       AppMethodBeat.o(175340);
       return;
     }
-    if (this.isT)
+    if (this.iLW)
     {
-      this.isQ.setAnimationListener(new Animation.AnimationListener()
+      this.iLT.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(175333);
-          a.this.aMO();
+          a.this.aPZ();
           AppMethodBeat.o(175333);
         }
         
@@ -168,28 +168,36 @@ public class a
         
         public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       });
-      this.isM.startAnimation(this.isQ);
+      this.iLP.startAnimation(this.iLT);
     }
     for (;;)
     {
-      this.isP = true;
+      this.iLS = true;
       AppMethodBeat.o(175340);
       return;
-      aMO();
+      aPZ();
     }
   }
   
-  protected final a fg(boolean paramBoolean)
+  public final View findViewById(int paramInt)
+  {
+    AppMethodBeat.i(175344);
+    View localView = this.iLP.findViewById(paramInt);
+    AppMethodBeat.o(175344);
+    return localView;
+  }
+  
+  protected final a fk(boolean paramBoolean)
   {
     AppMethodBeat.i(175342);
     View localView;
-    if (this.isN != null)
+    if (this.iLQ != null)
     {
-      localView = this.isN.findViewById(2131303115);
+      localView = this.iLQ.findViewById(2131303115);
       if (!paramBoolean) {
         break label41;
       }
-      localView.setOnTouchListener(this.isV);
+      localView.setOnTouchListener(this.iLY);
     }
     for (;;)
     {
@@ -199,18 +207,10 @@ public class a
       localView.setOnTouchListener(null);
     }
   }
-  
-  public final View findViewById(int paramInt)
-  {
-    AppMethodBeat.i(175344);
-    View localView = this.isM.findViewById(paramInt);
-    AppMethodBeat.o(175344);
-    return localView;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.picker.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,24 +8,25 @@ import com.tencent.mm.kernel.a;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.g.a;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.ui.base.t;
+import com.tencent.mm.vfs.i;
 
 public final class r
 {
-  public static boolean Lo()
+  public static boolean MW()
   {
     boolean bool3 = true;
     AppMethodBeat.i(31945);
-    if (!com.tencent.mm.kernel.g.agP().afY())
+    if (!com.tencent.mm.kernel.g.ajA().aiK())
     {
-      ac.e("MicroMsg.WxPhoneBookHelper", "needDisplayWxPBMenuItem, account not ready");
+      ad.e("MicroMsg.WxPhoneBookHelper", "needDisplayWxPBMenuItem, account not ready");
       AppMethodBeat.o(31945);
       return false;
     }
@@ -33,29 +34,29 @@ public final class r
     boolean bool1;
     label97:
     boolean bool2;
-    if ((!bs.ja(ai.getContext())) && (com.tencent.mm.sdk.platformtools.i.cGY != 1) && (bs.getInt(com.tencent.mm.m.g.ZY().getValue("ShowWeixinPBIntro"), 0) == 0) && (!q.t(ai.getContext(), "com.tencent.pb")))
+    if ((!bt.jk(aj.getContext())) && (j.cSc != 1) && (bt.getInt(com.tencent.mm.n.g.acA().getValue("ShowWeixinPBIntro"), 0) == 0) && (!q.s(aj.getContext(), "com.tencent.pb")))
     {
       i = 1;
       if (i != 0) {
         break label193;
       }
-      bool4 = bs.ja(ai.getContext());
-      if (com.tencent.mm.sdk.platformtools.i.cGY == 1) {
+      bool4 = bt.jk(aj.getContext());
+      if (j.cSc == 1) {
         break label178;
       }
       bool1 = true;
-      if (bs.getInt(com.tencent.mm.m.g.ZY().getValue("ShowWeixinPBIntro"), 0) != 0) {
+      if (bt.getInt(com.tencent.mm.n.g.acA().getValue("ShowWeixinPBIntro"), 0) != 0) {
         break label183;
       }
       bool2 = true;
       label114:
-      if (q.t(ai.getContext(), "com.tencent.pb")) {
+      if (q.s(aj.getContext(), "com.tencent.pb")) {
         break label188;
       }
     }
     for (;;)
     {
-      ac.d("MicroMsg.WxPhoneBookHelper", "%b, %b, %b, %b", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+      ad.d("MicroMsg.WxPhoneBookHelper", "%b, %b, %b, %b", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
       AppMethodBeat.o(31945);
       return false;
       i = 0;
@@ -70,24 +71,24 @@ public final class r
       bool3 = false;
     }
     label193:
-    int i = bs.a((Integer)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GEM, null), 3);
-    ac.v("MicroMsg.WxPhoneBookHelper", "needDisplayWxPBMenuItem, counter = %d", new Object[] { Integer.valueOf(i) });
+    int i = bt.a((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Irf, null), 3);
+    ad.v("MicroMsg.WxPhoneBookHelper", "needDisplayWxPBMenuItem, counter = %d", new Object[] { Integer.valueOf(i) });
     if (i <= 0)
     {
       AppMethodBeat.o(31945);
       return false;
     }
-    com.tencent.mm.kernel.g.agR().agA().set(352257, Integer.valueOf(i - 1));
+    com.tencent.mm.kernel.g.ajC().ajl().set(352257, Integer.valueOf(i - 1));
     AppMethodBeat.o(31945);
     return true;
   }
   
-  public static void ePT()
+  public static void feV()
   {
     AppMethodBeat.i(31946);
-    int i = bs.a((Integer)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GEM, null), 3);
-    ac.v("MicroMsg.WxPhoneBookHelper", "hy: minus pb counter, ori counter = %d", new Object[] { Integer.valueOf(i) });
-    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GEM, Integer.valueOf(i - 1));
+    int i = bt.a((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Irf, null), 3);
+    ad.v("MicroMsg.WxPhoneBookHelper", "hy: minus pb counter, ori counter = %d", new Object[] { Integer.valueOf(i) });
+    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Irf, Integer.valueOf(i - 1));
     AppMethodBeat.o(31946);
   }
   
@@ -97,13 +98,13 @@ public final class r
     if (paramBundle != null) {}
     for (int i = paramBundle.getInt("fromScene");; i = 0)
     {
-      h.wUl.f(11621, new Object[] { Integer.valueOf(i), Integer.valueOf(0) });
-      paramBundle = f.bXJ().WC("http://dianhua.qq.com/cgi-bin/cloudgrptemplate?t=dianhuaben_download&channel=100008");
+      com.tencent.mm.plugin.report.service.g.yhR.f(11621, new Object[] { Integer.valueOf(i), Integer.valueOf(0) });
+      paramBundle = f.ccl().aaj("http://dianhua.qq.com/cgi-bin/cloudgrptemplate?t=dianhuaben_download&channel=100008");
       if ((paramBundle == null) || (paramBundle.status != 3)) {
         break;
       }
-      ac.i("MicroMsg.WxPhoneBookHelper", "weixin phonebook already download successfully, install directly");
-      if (com.tencent.mm.vfs.i.eA(paramBundle.path)) {
+      ad.i("MicroMsg.WxPhoneBookHelper", "weixin phonebook already download successfully, install directly");
+      if (i.fv(paramBundle.path)) {
         com.tencent.mm.pluginsdk.model.app.r.b(paramContext, paramBundle.path, null, false);
       }
       AppMethodBeat.o(31947);
@@ -111,11 +112,11 @@ public final class r
     }
     t.makeText(paramContext, paramContext.getString(2131757267), 2000).show();
     paramBundle = new g.a();
-    paramBundle.WD("http://dianhua.qq.com/cgi-bin/cloudgrptemplate?t=dianhuaben_download&channel=100008");
-    paramBundle.WF(paramContext.getString(2131757273));
-    paramBundle.AG(1);
-    paramBundle.jF(true);
-    f.bXJ().a(paramBundle.oJg);
+    paramBundle.aak("http://dianhua.qq.com/cgi-bin/cloudgrptemplate?t=dianhuaben_download&channel=100008");
+    paramBundle.aam(paramContext.getString(2131757273));
+    paramBundle.Bp(1);
+    paramBundle.jQ(true);
+    f.ccl().a(paramBundle.pmN);
     AppMethodBeat.o(31947);
   }
 }

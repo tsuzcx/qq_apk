@@ -1,34 +1,42 @@
 package com.tencent.mm.loader.g;
 
+import d.g.a.b;
 import d.l;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/loader/WorkStatus;", "", "(Ljava/lang/String;I)V", "Init", "Block", "OK", "Fail", "Wait", "Running", "Transfer", "libimageloader_release"})
-public enum h
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/loader/SingleTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "task", "Lkotlin/Function1;", "", "id", "", "(Lkotlin/jvm/functions/Function1;Ljava/lang/String;)V", "getId", "()Ljava/lang/String;", "getTask", "()Lkotlin/jvm/functions/Function1;", "token", "", "getToken", "()I", "setToken", "(I)V", "call", "toString", "uniqueId", "libimageloader_release"})
+public final class h
+  extends c
 {
-  static
+  private final b<h, z> hfA;
+  private final String id;
+  public int token;
+  
+  private h(b<? super h, z> paramb, String paramString)
   {
-    h localh1 = new h("Init", 0);
-    gLL = localh1;
-    h localh2 = new h("Block", 1);
-    gLM = localh2;
-    h localh3 = new h("OK", 2);
-    gLN = localh3;
-    h localh4 = new h("Fail", 3);
-    gLO = localh4;
-    h localh5 = new h("Wait", 4);
-    gLP = localh5;
-    h localh6 = new h("Running", 5);
-    gLQ = localh6;
-    h localh7 = new h("Transfer", 6);
-    gLR = localh7;
-    gLS = new h[] { localh1, localh2, localh3, localh4, localh5, localh6, localh7 };
+    this.hfA = paramb;
+    this.id = paramString;
+    this.token = -1;
   }
   
-  private h() {}
+  public final String aeK()
+  {
+    return this.id;
+  }
+  
+  public final void call()
+  {
+    this.hfA.invoke(this);
+  }
+  
+  public final String toString()
+  {
+    return "{token=" + this.token + " id=" + this.id + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.loader.g.h
  * JD-Core Version:    0.7.0.1
  */

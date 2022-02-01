@@ -1,21 +1,21 @@
 package com.tencent.mm.modelsfs;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 import java.io.OutputStream;
 
 public class SFSOutputStream
   extends OutputStream
 {
-  private StackTraceElement[] hRG;
+  private StackTraceElement[] ikU;
   private long mNativePtr;
   
   public SFSOutputStream(long paramLong)
   {
     AppMethodBeat.i(156032);
     this.mNativePtr = paramLong;
-    this.hRG = Thread.currentThread().getStackTrace();
+    this.ikU = Thread.currentThread().getStackTrace();
     AppMethodBeat.o(156032);
   }
   
@@ -47,7 +47,7 @@ public class SFSOutputStream
     if (this.mNativePtr != 0L)
     {
       StringBuilder localStringBuilder = new StringBuilder("SFSOutputStream leaked:\n");
-      StackTraceElement[] arrayOfStackTraceElement = this.hRG;
+      StackTraceElement[] arrayOfStackTraceElement = this.ikU;
       int j = arrayOfStackTraceElement.length;
       int i = 0;
       while (i < j)
@@ -55,7 +55,7 @@ public class SFSOutputStream
         localStringBuilder.append(arrayOfStackTraceElement[i].toString()).append('\n');
         i += 1;
       }
-      ac.e("MicroMsg.SFSOutputStream", localStringBuilder.toString());
+      ad.e("MicroMsg.SFSOutputStream", localStringBuilder.toString());
       close();
     }
     super.finalize();

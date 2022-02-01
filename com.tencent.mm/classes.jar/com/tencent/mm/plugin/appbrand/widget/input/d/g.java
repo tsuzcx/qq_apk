@@ -7,20 +7,20 @@ public enum g
   static
   {
     AppMethodBeat.i(136699);
-    mJa = new g("LEFT", 0);
-    mJb = new g("RIGHT", 1);
-    mJc = new g("CENTER", 2);
-    mJd = new g[] { mJa, mJb, mJc };
+    njw = new g("LEFT", 0);
+    njx = new g("RIGHT", 1);
+    njy = new g("CENTER", 2);
+    njz = new g[] { njw, njx, njy };
     AppMethodBeat.o(136699);
   }
   
   private g() {}
   
-  public static g RX(String paramString)
+  public static g Vu(String paramString)
   {
     AppMethodBeat.i(136698);
     paramString = d.h(paramString, g.class);
-    g localg = mJa;
+    g localg = njw;
     if (paramString == null) {
       paramString = localg;
     }
@@ -34,7 +34,7 @@ public enum g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.g
  * JD-Core Version:    0.7.0.1
  */

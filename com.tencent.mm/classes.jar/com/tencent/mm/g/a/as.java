@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.rk;
 import com.tencent.mm.sdk.b.b;
 
 public final class as
   extends b
 {
-  public a dal;
+  public a dlz;
   
   public as()
   {
@@ -16,22 +16,21 @@ public final class as
   
   private as(byte paramByte)
   {
-    AppMethodBeat.i(115969);
-    this.dal = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(219192);
+    this.dlz = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(115969);
+    AppMethodBeat.o(219192);
   }
   
   public static final class a
   {
-    public Activity activity;
-    public String dam;
+    public rk dlA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.as
  * JD-Core Version:    0.7.0.1
  */

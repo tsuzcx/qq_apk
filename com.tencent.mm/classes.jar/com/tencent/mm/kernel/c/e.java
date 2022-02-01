@@ -5,34 +5,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e<T extends a>
   implements b, c<T>
 {
-  private T gkB;
+  private T gEl;
   
   public e(T paramT)
   {
-    this.gkB = paramT;
+    this.gEl = paramT;
   }
   
-  public final void ahM()
+  public final void akx()
   {
     AppMethodBeat.i(157490);
-    if ((this.gkB instanceof b)) {
-      ((b)this.gkB).ahM();
+    if ((this.gEl instanceof b)) {
+      ((b)this.gEl).akx();
     }
     AppMethodBeat.o(157490);
   }
   
-  public final void ahN()
+  public final void aky()
   {
     AppMethodBeat.i(157491);
-    if ((this.gkB instanceof b)) {
-      ((b)this.gkB).ahN();
+    if ((this.gEl instanceof b)) {
+      ((b)this.gEl).aky();
     }
     AppMethodBeat.o(157491);
   }
   
-  public final T ahO()
+  public final T akz()
   {
-    return this.gkB;
+    return this.gEl;
   }
 }
 

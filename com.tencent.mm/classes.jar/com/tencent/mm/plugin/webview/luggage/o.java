@@ -1,23 +1,84 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.content.Context;
-import android.content.Intent;
+import android.view.MenuItem;
+import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.webview.luggage.b.n;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.widget.a.e;
 
-public final class o
+public class o
 {
-  public static void ac(Context paramContext, Intent paramIntent)
+  g DOl;
+  n DPC;
+  e nHu;
+  
+  public o(g paramg, n paramn)
   {
-    AppMethodBeat.i(78414);
-    if (bs.isNullOrNil(paramIntent.getStringExtra("rawUrl")))
+    AppMethodBeat.i(78411);
+    this.DOl = paramg;
+    this.DPC = paramn;
+    this.nHu = new e(this.DOl.mContext, 0, false);
+    this.nHu.KJy = new n.d()
     {
-      AppMethodBeat.o(78414);
-      return;
+      public final void onCreateMMMenu(l paramAnonymousl)
+      {
+        AppMethodBeat.i(78407);
+        o localo = o.this;
+        localo.DPC.b(localo.DOl.mContext, localo.DOl, paramAnonymousl);
+        AppMethodBeat.o(78407);
+      }
+    };
+    this.nHu.KWs = new n.d()
+    {
+      public final void onCreateMMMenu(l paramAnonymousl)
+      {
+        AppMethodBeat.i(78408);
+        o localo = o.this;
+        localo.DPC.c(localo.DOl.mContext, localo.DOl, paramAnonymousl);
+        AppMethodBeat.o(78408);
+      }
+    };
+    this.nHu.KJz = new n.e()
+    {
+      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(78409);
+        o.this.d(paramAnonymousMenuItem);
+        o.this.nHu.bpT();
+        AppMethodBeat.o(78409);
+      }
+    };
+    this.nHu.KWv = new n.e()
+    {
+      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(78410);
+        o.this.d(paramAnonymousMenuItem);
+        o.this.nHu.bpT();
+        AppMethodBeat.o(78410);
+      }
+    };
+    this.nHu.cMW();
+    AppMethodBeat.o(78411);
+  }
+  
+  protected final void d(MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(78412);
+    this.DPC.a(this.DOl.mContext, this.DOl, paramMenuItem);
+    AppMethodBeat.o(78412);
+  }
+  
+  public final void ePB()
+  {
+    AppMethodBeat.i(78413);
+    if (this.nHu != null) {
+      this.nHu.bpT();
     }
-    d.b(paramContext, "webview", ".ui.tools.WebViewUI", paramIntent);
-    AppMethodBeat.o(78414);
+    AppMethodBeat.o(78413);
   }
 }
 

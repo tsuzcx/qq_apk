@@ -8,7 +8,7 @@ public final class e
 {
   public final void cancel() {}
   
-  public final void f(Runnable paramRunnable, long paramLong)
+  public final void g(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(158421);
     paramRunnable.run();

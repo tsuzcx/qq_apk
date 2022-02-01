@@ -6,15 +6,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class b
   extends g
 {
-  private final short bHv;
-  private final short bHw;
+  private final short bRJ;
+  private final short bRK;
   
   b(g paramg, int paramInt1, int paramInt2)
   {
     super(paramg);
     AppMethodBeat.i(12257);
-    this.bHv = ((short)paramInt1);
-    this.bHw = ((short)paramInt2);
+    this.bRJ = ((short)paramInt1);
+    this.bRK = ((short)paramInt2);
     AppMethodBeat.o(12257);
   }
   
@@ -22,26 +22,26 @@ final class b
   {
     AppMethodBeat.i(12258);
     int i = 0;
-    if (i < this.bHw)
+    if (i < this.bRK)
     {
-      if ((i == 0) || ((i == 31) && (this.bHw <= 62)))
+      if ((i == 0) || ((i == 31) && (this.bRK <= 62)))
       {
-        parama.bF(31, 5);
-        if (this.bHw <= 62) {
+        parama.bH(31, 5);
+        if (this.bRK <= 62) {
           break label85;
         }
-        parama.bF(this.bHw - 31, 16);
+        parama.bH(this.bRK - 31, 16);
       }
       for (;;)
       {
-        parama.bF(paramArrayOfByte[(this.bHv + i)], 8);
+        parama.bH(paramArrayOfByte[(this.bRJ + i)], 8);
         i += 1;
         break;
         label85:
         if (i == 0) {
-          parama.bF(Math.min(this.bHw, 31), 5);
+          parama.bH(Math.min(this.bRK, 31), 5);
         } else {
-          parama.bF(this.bHw - 31, 5);
+          parama.bH(this.bRK - 31, 5);
         }
       }
     }
@@ -51,7 +51,7 @@ final class b
   public final String toString()
   {
     AppMethodBeat.i(12259);
-    String str = "<" + this.bHv + "::" + (this.bHv + this.bHw - 1) + '>';
+    String str = "<" + this.bRJ + "::" + (this.bRJ + this.bRK - 1) + '>';
     AppMethodBeat.o(12259);
     return str;
   }

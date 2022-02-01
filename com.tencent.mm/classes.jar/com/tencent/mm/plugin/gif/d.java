@@ -14,52 +14,52 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.q;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.io.InputStream;
 
 public final class d
   extends b
 {
-  private final Rect Iw;
-  private int fsu;
-  private ao gqT;
+  private final Rect Ko;
+  private int fKU;
+  private ap gKD;
   private float mDensity;
   private boolean mIsRunning;
   private final Paint mPaint;
-  private boolean txA;
-  int txB;
-  private int txC;
-  k txD;
-  private boolean txE;
-  private boolean txF;
-  private final Runnable txG;
-  private final Runnable txH;
-  private final Runnable txI;
-  private final Runnable txJ;
-  private final Runnable txK;
-  private final Runnable txL;
-  private boolean txh;
-  private volatile long txi;
-  private AssetFileDescriptor txj;
-  private final int[] txk;
-  private float txl;
-  private float txm;
-  private boolean txn;
-  private int[] txo;
-  private Bitmap txp;
-  private boolean txq;
-  private int txr;
-  private int txs;
-  private long txt;
-  private long txu;
-  private long txv;
-  private long txw;
-  private long txx;
-  private long txy;
-  private int txz;
+  private boolean uAa;
+  private int uAb;
+  private int uAc;
+  private long uAd;
+  private long uAe;
+  private long uAf;
+  private long uAg;
+  private long uAh;
+  private long uAi;
+  private int uAj;
+  private boolean uAk;
+  public int uAl;
+  private int uAm;
+  k uAn;
+  private boolean uAo;
+  private boolean uAp;
+  private final Runnable uAq;
+  private final Runnable uAr;
+  private final Runnable uAs;
+  private final Runnable uAt;
+  private final Runnable uAu;
+  private final Runnable uAv;
+  private boolean uzR;
+  private volatile long uzS;
+  private AssetFileDescriptor uzT;
+  private final int[] uzU;
+  private float uzV;
+  private float uzW;
+  private boolean uzX;
+  private int[] uzY;
+  private Bitmap uzZ;
   
   public d(Resources paramResources, int paramInt)
   {
@@ -72,28 +72,28 @@ public final class d
   {
     AppMethodBeat.i(104623);
     this.mIsRunning = true;
-    this.txh = false;
-    this.txj = null;
-    this.txk = new int[6];
-    this.txl = 1.0F;
-    this.txm = 1.0F;
-    this.Iw = new Rect();
+    this.uzR = false;
+    this.uzT = null;
+    this.uzU = new int[6];
+    this.uzV = 1.0F;
+    this.uzW = 1.0F;
+    this.Ko = new Rect();
     this.mPaint = new Paint(6);
-    this.txq = false;
-    this.txr = 0;
-    this.txs = -1;
-    this.txt = 0L;
-    this.txu = 0L;
-    this.txv = 0L;
-    this.txw = 0L;
-    this.txy = 0L;
-    this.txA = false;
-    this.txB = 0;
-    this.txC = 0;
-    this.gqT = new ao(Looper.getMainLooper());
-    this.txE = true;
-    this.txF = false;
-    this.txG = new Runnable()
+    this.uAa = false;
+    this.uAb = 0;
+    this.uAc = -1;
+    this.uAd = 0L;
+    this.uAe = 0L;
+    this.uAf = 0L;
+    this.uAg = 0L;
+    this.uAi = 0L;
+    this.uAk = false;
+    this.uAl = 0;
+    this.uAm = 0;
+    this.gKD = new ap(Looper.getMainLooper());
+    this.uAo = true;
+    this.uAp = false;
+    this.uAq = new Runnable()
     {
       public final void run()
       {
@@ -104,7 +104,7 @@ public final class d
         AppMethodBeat.o(104613);
       }
     };
-    this.txH = new Runnable()
+    this.uAr = new Runnable()
     {
       public final void run()
       {
@@ -121,7 +121,7 @@ public final class d
         AppMethodBeat.o(104614);
       }
     };
-    this.txI = new Runnable()
+    this.uAs = new Runnable()
     {
       public final void run()
       {
@@ -131,7 +131,7 @@ public final class d
         AppMethodBeat.o(104615);
       }
     };
-    this.txJ = new Runnable()
+    this.uAt = new Runnable()
     {
       public final void run()
       {
@@ -142,7 +142,7 @@ public final class d
         AppMethodBeat.o(104616);
       }
     };
-    this.txK = new Runnable()
+    this.uAu = new Runnable()
     {
       public final void run()
       {
@@ -151,14 +151,14 @@ public final class d
         AppMethodBeat.o(104617);
       }
     };
-    this.txL = new Runnable()
+    this.uAv = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(104618);
         if (d.h(d.this))
         {
-          ac.i("MicroMsg.GIF.MMGIFDrawable", "This gif had been recycle.");
+          ad.i("MicroMsg.GIF.MMGIFDrawable", "This gif had been recycle.");
           AppMethodBeat.o(104618);
           return;
         }
@@ -179,9 +179,9 @@ public final class d
           d.c(d.this, d.n(d.this) - d.o(d.this) - d.p(d.this));
           if (d.g(d.this) < 0L)
           {
-            ac.d("MicroMsg.GIF.MMGIFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(d.o(d.this)), Long.valueOf(d.p(d.this)), Long.valueOf(d.g(d.this)), Long.valueOf(d.n(d.this)), Integer.valueOf(d.k(d.this)[5]) });
-            h.wUl.idkeyStat(401L, 0L, 1L, false);
-            h.wUl.idkeyStat(401L, 1L, Math.abs(d.g(d.this)), false);
+            ad.d("MicroMsg.GIF.MMGIFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(d.o(d.this)), Long.valueOf(d.p(d.this)), Long.valueOf(d.g(d.this)), Long.valueOf(d.n(d.this)), Integer.valueOf(d.k(d.this)[5]) });
+            g.yhR.idkeyStat(401L, 0L, 1L, false);
+            g.yhR.idkeyStat(401L, 1L, Math.abs(d.g(d.this)), false);
             if (d.g(d.this) < -100L)
             {
               if ((!WXHardCoderJNI.hcGifEnable) && (!WXHardCoderJNI.hcGifFrameEnable)) {
@@ -240,8 +240,8 @@ public final class d
     if (WXHardCoderJNI.hcGifThr) {
       i = Process.myTid();
     }
-    this.fsu = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, "MicroMsg.GIF.MMGIFDrawable");
-    this.txi = MMGIFJNI.openByInputStrem(paramInputStream, this.txk);
+    this.fKU = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, "MicroMsg.GIF.MMGIFDrawable");
+    this.uzS = MMGIFJNI.openByInputStrem(paramInputStream, this.uzU);
     init();
     AppMethodBeat.o(104623);
   }
@@ -250,28 +250,28 @@ public final class d
   {
     AppMethodBeat.i(104622);
     this.mIsRunning = true;
-    this.txh = false;
-    this.txj = null;
-    this.txk = new int[6];
-    this.txl = 1.0F;
-    this.txm = 1.0F;
-    this.Iw = new Rect();
+    this.uzR = false;
+    this.uzT = null;
+    this.uzU = new int[6];
+    this.uzV = 1.0F;
+    this.uzW = 1.0F;
+    this.Ko = new Rect();
     this.mPaint = new Paint(6);
-    this.txq = false;
-    this.txr = 0;
-    this.txs = -1;
-    this.txt = 0L;
-    this.txu = 0L;
-    this.txv = 0L;
-    this.txw = 0L;
-    this.txy = 0L;
-    this.txA = false;
-    this.txB = 0;
-    this.txC = 0;
-    this.gqT = new ao(Looper.getMainLooper());
-    this.txE = true;
-    this.txF = false;
-    this.txG = new Runnable()
+    this.uAa = false;
+    this.uAb = 0;
+    this.uAc = -1;
+    this.uAd = 0L;
+    this.uAe = 0L;
+    this.uAf = 0L;
+    this.uAg = 0L;
+    this.uAi = 0L;
+    this.uAk = false;
+    this.uAl = 0;
+    this.uAm = 0;
+    this.gKD = new ap(Looper.getMainLooper());
+    this.uAo = true;
+    this.uAp = false;
+    this.uAq = new Runnable()
     {
       public final void run()
       {
@@ -282,7 +282,7 @@ public final class d
         AppMethodBeat.o(104613);
       }
     };
-    this.txH = new Runnable()
+    this.uAr = new Runnable()
     {
       public final void run()
       {
@@ -299,7 +299,7 @@ public final class d
         AppMethodBeat.o(104614);
       }
     };
-    this.txI = new Runnable()
+    this.uAs = new Runnable()
     {
       public final void run()
       {
@@ -309,7 +309,7 @@ public final class d
         AppMethodBeat.o(104615);
       }
     };
-    this.txJ = new Runnable()
+    this.uAt = new Runnable()
     {
       public final void run()
       {
@@ -320,7 +320,7 @@ public final class d
         AppMethodBeat.o(104616);
       }
     };
-    this.txK = new Runnable()
+    this.uAu = new Runnable()
     {
       public final void run()
       {
@@ -329,14 +329,14 @@ public final class d
         AppMethodBeat.o(104617);
       }
     };
-    this.txL = new Runnable()
+    this.uAv = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(104618);
         if (d.h(d.this))
         {
-          ac.i("MicroMsg.GIF.MMGIFDrawable", "This gif had been recycle.");
+          ad.i("MicroMsg.GIF.MMGIFDrawable", "This gif had been recycle.");
           AppMethodBeat.o(104618);
           return;
         }
@@ -357,9 +357,9 @@ public final class d
           d.c(d.this, d.n(d.this) - d.o(d.this) - d.p(d.this));
           if (d.g(d.this) < 0L)
           {
-            ac.d("MicroMsg.GIF.MMGIFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(d.o(d.this)), Long.valueOf(d.p(d.this)), Long.valueOf(d.g(d.this)), Long.valueOf(d.n(d.this)), Integer.valueOf(d.k(d.this)[5]) });
-            h.wUl.idkeyStat(401L, 0L, 1L, false);
-            h.wUl.idkeyStat(401L, 1L, Math.abs(d.g(d.this)), false);
+            ad.d("MicroMsg.GIF.MMGIFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(d.o(d.this)), Long.valueOf(d.p(d.this)), Long.valueOf(d.g(d.this)), Long.valueOf(d.n(d.this)), Integer.valueOf(d.k(d.this)[5]) });
+            g.yhR.idkeyStat(401L, 0L, 1L, false);
+            g.yhR.idkeyStat(401L, 1L, Math.abs(d.g(d.this)), false);
             if (d.g(d.this) < -100L)
             {
               if ((!WXHardCoderJNI.hcGifEnable) && (!WXHardCoderJNI.hcGifFrameEnable)) {
@@ -418,8 +418,8 @@ public final class d
     if (WXHardCoderJNI.hcGifThr) {}
     for (int i = Process.myTid();; i = 0)
     {
-      this.fsu = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, "MicroMsg.GIF.MMGIFDrawable");
-      this.txi = MMGIFJNI.openByFilePath(q.k(paramString, false), this.txk);
+      this.fKU = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, "MicroMsg.GIF.MMGIFDrawable");
+      this.uzS = MMGIFJNI.openByFilePath(q.k(paramString, false), this.uzU);
       init();
       AppMethodBeat.o(104622);
       return;
@@ -430,28 +430,28 @@ public final class d
   {
     AppMethodBeat.i(104621);
     this.mIsRunning = true;
-    this.txh = false;
-    this.txj = null;
-    this.txk = new int[6];
-    this.txl = 1.0F;
-    this.txm = 1.0F;
-    this.Iw = new Rect();
+    this.uzR = false;
+    this.uzT = null;
+    this.uzU = new int[6];
+    this.uzV = 1.0F;
+    this.uzW = 1.0F;
+    this.Ko = new Rect();
     this.mPaint = new Paint(6);
-    this.txq = false;
-    this.txr = 0;
-    this.txs = -1;
-    this.txt = 0L;
-    this.txu = 0L;
-    this.txv = 0L;
-    this.txw = 0L;
-    this.txy = 0L;
-    this.txA = false;
-    this.txB = 0;
-    this.txC = 0;
-    this.gqT = new ao(Looper.getMainLooper());
-    this.txE = true;
-    this.txF = false;
-    this.txG = new Runnable()
+    this.uAa = false;
+    this.uAb = 0;
+    this.uAc = -1;
+    this.uAd = 0L;
+    this.uAe = 0L;
+    this.uAf = 0L;
+    this.uAg = 0L;
+    this.uAi = 0L;
+    this.uAk = false;
+    this.uAl = 0;
+    this.uAm = 0;
+    this.gKD = new ap(Looper.getMainLooper());
+    this.uAo = true;
+    this.uAp = false;
+    this.uAq = new Runnable()
     {
       public final void run()
       {
@@ -462,7 +462,7 @@ public final class d
         AppMethodBeat.o(104613);
       }
     };
-    this.txH = new Runnable()
+    this.uAr = new Runnable()
     {
       public final void run()
       {
@@ -479,7 +479,7 @@ public final class d
         AppMethodBeat.o(104614);
       }
     };
-    this.txI = new Runnable()
+    this.uAs = new Runnable()
     {
       public final void run()
       {
@@ -489,7 +489,7 @@ public final class d
         AppMethodBeat.o(104615);
       }
     };
-    this.txJ = new Runnable()
+    this.uAt = new Runnable()
     {
       public final void run()
       {
@@ -500,7 +500,7 @@ public final class d
         AppMethodBeat.o(104616);
       }
     };
-    this.txK = new Runnable()
+    this.uAu = new Runnable()
     {
       public final void run()
       {
@@ -509,14 +509,14 @@ public final class d
         AppMethodBeat.o(104617);
       }
     };
-    this.txL = new Runnable()
+    this.uAv = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(104618);
         if (d.h(d.this))
         {
-          ac.i("MicroMsg.GIF.MMGIFDrawable", "This gif had been recycle.");
+          ad.i("MicroMsg.GIF.MMGIFDrawable", "This gif had been recycle.");
           AppMethodBeat.o(104618);
           return;
         }
@@ -537,9 +537,9 @@ public final class d
           d.c(d.this, d.n(d.this) - d.o(d.this) - d.p(d.this));
           if (d.g(d.this) < 0L)
           {
-            ac.d("MicroMsg.GIF.MMGIFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(d.o(d.this)), Long.valueOf(d.p(d.this)), Long.valueOf(d.g(d.this)), Long.valueOf(d.n(d.this)), Integer.valueOf(d.k(d.this)[5]) });
-            h.wUl.idkeyStat(401L, 0L, 1L, false);
-            h.wUl.idkeyStat(401L, 1L, Math.abs(d.g(d.this)), false);
+            ad.d("MicroMsg.GIF.MMGIFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(d.o(d.this)), Long.valueOf(d.p(d.this)), Long.valueOf(d.g(d.this)), Long.valueOf(d.n(d.this)), Integer.valueOf(d.k(d.this)[5]) });
+            g.yhR.idkeyStat(401L, 0L, 1L, false);
+            g.yhR.idkeyStat(401L, 1L, Math.abs(d.g(d.this)), false);
             if (d.g(d.this) < -100L)
             {
               if ((!WXHardCoderJNI.hcGifEnable) && (!WXHardCoderJNI.hcGifFrameEnable)) {
@@ -585,7 +585,7 @@ public final class d
         AppMethodBeat.o(104618);
       }
     };
-    this.txF = paramBoolean;
+    this.uAp = paramBoolean;
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new NullPointerException("file path is null.");
@@ -599,8 +599,8 @@ public final class d
     if (WXHardCoderJNI.hcGifThr) {
       i = Process.myTid();
     }
-    this.fsu = WXHardCoderJNI.startPerformance(paramBoolean, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, "MicroMsg.GIF.MMGIFDrawable");
-    this.txi = MMGIFJNI.openByFilePath(paramString, this.txk);
+    this.fKU = WXHardCoderJNI.startPerformance(paramBoolean, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, "MicroMsg.GIF.MMGIFDrawable");
+    this.uzS = MMGIFJNI.openByFilePath(paramString, this.uzU);
     init();
     AppMethodBeat.o(104621);
   }
@@ -609,28 +609,28 @@ public final class d
   {
     AppMethodBeat.i(104625);
     this.mIsRunning = true;
-    this.txh = false;
-    this.txj = null;
-    this.txk = new int[6];
-    this.txl = 1.0F;
-    this.txm = 1.0F;
-    this.Iw = new Rect();
+    this.uzR = false;
+    this.uzT = null;
+    this.uzU = new int[6];
+    this.uzV = 1.0F;
+    this.uzW = 1.0F;
+    this.Ko = new Rect();
     this.mPaint = new Paint(6);
-    this.txq = false;
-    this.txr = 0;
-    this.txs = -1;
-    this.txt = 0L;
-    this.txu = 0L;
-    this.txv = 0L;
-    this.txw = 0L;
-    this.txy = 0L;
-    this.txA = false;
-    this.txB = 0;
-    this.txC = 0;
-    this.gqT = new ao(Looper.getMainLooper());
-    this.txE = true;
-    this.txF = false;
-    this.txG = new Runnable()
+    this.uAa = false;
+    this.uAb = 0;
+    this.uAc = -1;
+    this.uAd = 0L;
+    this.uAe = 0L;
+    this.uAf = 0L;
+    this.uAg = 0L;
+    this.uAi = 0L;
+    this.uAk = false;
+    this.uAl = 0;
+    this.uAm = 0;
+    this.gKD = new ap(Looper.getMainLooper());
+    this.uAo = true;
+    this.uAp = false;
+    this.uAq = new Runnable()
     {
       public final void run()
       {
@@ -641,7 +641,7 @@ public final class d
         AppMethodBeat.o(104613);
       }
     };
-    this.txH = new Runnable()
+    this.uAr = new Runnable()
     {
       public final void run()
       {
@@ -658,7 +658,7 @@ public final class d
         AppMethodBeat.o(104614);
       }
     };
-    this.txI = new Runnable()
+    this.uAs = new Runnable()
     {
       public final void run()
       {
@@ -668,7 +668,7 @@ public final class d
         AppMethodBeat.o(104615);
       }
     };
-    this.txJ = new Runnable()
+    this.uAt = new Runnable()
     {
       public final void run()
       {
@@ -679,7 +679,7 @@ public final class d
         AppMethodBeat.o(104616);
       }
     };
-    this.txK = new Runnable()
+    this.uAu = new Runnable()
     {
       public final void run()
       {
@@ -688,14 +688,14 @@ public final class d
         AppMethodBeat.o(104617);
       }
     };
-    this.txL = new Runnable()
+    this.uAv = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(104618);
         if (d.h(d.this))
         {
-          ac.i("MicroMsg.GIF.MMGIFDrawable", "This gif had been recycle.");
+          ad.i("MicroMsg.GIF.MMGIFDrawable", "This gif had been recycle.");
           AppMethodBeat.o(104618);
           return;
         }
@@ -716,9 +716,9 @@ public final class d
           d.c(d.this, d.n(d.this) - d.o(d.this) - d.p(d.this));
           if (d.g(d.this) < 0L)
           {
-            ac.d("MicroMsg.GIF.MMGIFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(d.o(d.this)), Long.valueOf(d.p(d.this)), Long.valueOf(d.g(d.this)), Long.valueOf(d.n(d.this)), Integer.valueOf(d.k(d.this)[5]) });
-            h.wUl.idkeyStat(401L, 0L, 1L, false);
-            h.wUl.idkeyStat(401L, 1L, Math.abs(d.g(d.this)), false);
+            ad.d("MicroMsg.GIF.MMGIFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(d.o(d.this)), Long.valueOf(d.p(d.this)), Long.valueOf(d.g(d.this)), Long.valueOf(d.n(d.this)), Integer.valueOf(d.k(d.this)[5]) });
+            g.yhR.idkeyStat(401L, 0L, 1L, false);
+            g.yhR.idkeyStat(401L, 1L, Math.abs(d.g(d.this)), false);
             if (d.g(d.this) < -100L)
             {
               if ((!WXHardCoderJNI.hcGifEnable) && (!WXHardCoderJNI.hcGifFrameEnable)) {
@@ -777,8 +777,8 @@ public final class d
     if (WXHardCoderJNI.hcGifThr) {
       i = Process.myTid();
     }
-    this.fsu = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, "MicroMsg.GIF.MMGIFDrawable");
-    this.txi = MMGIFJNI.openByByteArray(paramArrayOfByte, this.txk);
+    this.fKU = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, "MicroMsg.GIF.MMGIFDrawable");
+    this.uzS = MMGIFJNI.openByByteArray(paramArrayOfByte, this.uzU);
     init();
     AppMethodBeat.o(104625);
   }
@@ -787,11 +787,11 @@ public final class d
   {
     this(paramArrayOfByte);
     AppMethodBeat.i(104624);
-    paramArrayOfByte = com.tencent.mm.emoji.loader.a.b.fPi;
-    if (com.tencent.mm.emoji.loader.a.b.te(paramString) != null)
+    paramArrayOfByte = com.tencent.mm.emoji.loader.a.b.giI;
+    if (com.tencent.mm.emoji.loader.a.b.vT(paramString) != null)
     {
-      paramArrayOfByte = com.tencent.mm.emoji.loader.a.b.fPi;
-      this.txp = com.tencent.mm.emoji.loader.a.b.te(paramString);
+      paramArrayOfByte = com.tencent.mm.emoji.loader.a.b.giI;
+      this.uzZ = com.tencent.mm.emoji.loader.a.b.vT(paramString);
     }
     AppMethodBeat.o(104624);
   }
@@ -799,108 +799,108 @@ public final class d
   private void init()
   {
     AppMethodBeat.i(104626);
-    ac.i("MicroMsg.GIF.MMGIFDrawable", "gif info pointer:%d", new Object[] { Long.valueOf(this.txi) });
-    this.txr = this.txk[2];
-    this.txz = com.tencent.mm.cc.a.au(ai.getContext(), 2131166264);
-    if ((!this.txF) && ((this.txk[0] > 1024) || (this.txk[1] > 1024)))
+    ad.i("MicroMsg.GIF.MMGIFDrawable", "gif info pointer:%d", new Object[] { Long.valueOf(this.uzS) });
+    this.uAb = this.uzU[2];
+    this.uAj = com.tencent.mm.cc.a.ax(aj.getContext(), 2131166264);
+    if ((!this.uAp) && ((this.uzU[0] > 1024) || (this.uzU[1] > 1024)))
     {
-      ac.w("MicroMsg.GIF.MMGIFDrawable", "emoji width or height over size. Width:%d Height:%d", new Object[] { Integer.valueOf(this.txk[0]), Integer.valueOf(this.txk[1]) });
-      this.txo = new int[this.txz * this.txz];
-      this.txA = true;
-      h.wUl.idkeyStat(401L, 2L, 1L, false);
+      ad.w("MicroMsg.GIF.MMGIFDrawable", "emoji width or height over size. Width:%d Height:%d", new Object[] { Integer.valueOf(this.uzU[0]), Integer.valueOf(this.uzU[1]) });
+      this.uzY = new int[this.uAj * this.uAj];
+      this.uAk = true;
+      g.yhR.idkeyStat(401L, 2L, 1L, false);
       AppMethodBeat.o(104626);
       return;
     }
-    this.txo = new int[this.txk[0] * this.txk[1]];
+    this.uzY = new int[this.uzU[0] * this.uzU[1]];
     AppMethodBeat.o(104626);
   }
   
-  private void l(Runnable paramRunnable, long paramLong)
+  private void m(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(104619);
-    this.txy = (SystemClock.uptimeMillis() + paramLong);
-    if (this.gqT != null) {
-      this.gqT.postAtTime(paramRunnable, this.txy);
+    this.uAi = (SystemClock.uptimeMillis() + paramLong);
+    if (this.gKD != null) {
+      this.gKD.postAtTime(paramRunnable, this.uAi);
     }
     AppMethodBeat.o(104619);
   }
   
-  public final int cRS()
+  public final int daY()
   {
-    return this.txk[0];
+    return this.uzU[0];
   }
   
-  public final int cRT()
+  public final int daZ()
   {
-    return this.txk[1];
+    return this.uzU[1];
   }
   
   public final void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(104631);
-    if (this.txn)
+    if (this.uzX)
     {
-      this.Iw.set(getBounds());
-      this.txl = (this.Iw.width() / this.txk[0]);
-      this.txm = (this.Iw.height() / this.txk[1]);
-      this.txn = false;
+      this.Ko.set(getBounds());
+      this.uzV = (this.Ko.width() / this.uzU[0]);
+      this.uzW = (this.Ko.height() / this.uzU[1]);
+      this.uzX = false;
     }
     if (this.mPaint.getShader() == null)
     {
-      if (this.txw == 0L) {
-        this.txw = System.currentTimeMillis();
+      if (this.uAg == 0L) {
+        this.uAg = System.currentTimeMillis();
       }
-      int[] arrayOfInt = this.txo;
+      int[] arrayOfInt = this.uzY;
       if (arrayOfInt != null) {
-        if ((!this.txq) && (this.txp != null))
+        if ((!this.uAa) && (this.uzZ != null))
         {
-          paramCanvas.scale(this.Iw.width() / this.txp.getWidth(), this.Iw.width() / this.txp.getHeight());
-          paramCanvas.drawBitmap(this.txp, 0.0F, 0.0F, this.mPaint);
+          paramCanvas.scale(this.Ko.width() / this.uzZ.getWidth(), this.Ko.width() / this.uzZ.getHeight());
+          paramCanvas.drawBitmap(this.uzZ, 0.0F, 0.0F, this.mPaint);
         }
       }
       for (;;)
       {
-        this.txx = (System.currentTimeMillis() - this.txw);
-        if ((this.txA) || (this.txk[2] <= 0)) {
+        this.uAh = (System.currentTimeMillis() - this.uAg);
+        if ((this.uAk) || (this.uzU[2] <= 0)) {
           break label426;
         }
-        if (this.txk[4] < 0) {
-          ac.i("MicroMsg.GIF.MMGIFDrawable", "current index error. start first frame");
+        if (this.uzU[4] < 0) {
+          ad.i("MicroMsg.GIF.MMGIFDrawable", "current index error. start first frame");
         }
-        if ((this.txB == 0) || (this.txC <= this.txB - 1)) {
+        if ((this.uAl == 0) || (this.uAm <= this.uAl - 1)) {
           break;
         }
-        l(this.txG, 0L);
+        m(this.uAq, 0L);
         AppMethodBeat.o(104631);
         return;
-        if (arrayOfInt.length == this.txk[0] * this.txk[1])
+        if (arrayOfInt.length == this.uzU[0] * this.uzU[1])
         {
-          paramCanvas.scale(this.txl, this.txm);
-          paramCanvas.drawBitmap(arrayOfInt, 0, this.txk[0], 0.0F, 0.0F, this.txk[0], this.txk[1], true, this.mPaint);
+          paramCanvas.scale(this.uzV, this.uzW);
+          paramCanvas.drawBitmap(arrayOfInt, 0, this.uzU[0], 0.0F, 0.0F, this.uzU[0], this.uzU[1], true, this.mPaint);
         }
         else
         {
-          paramCanvas.scale(this.txl, this.txm);
+          paramCanvas.scale(this.uzV, this.uzW);
           paramCanvas.drawRGB(230, 230, 230);
-          ac.w("MicroMsg.GIF.MMGIFDrawable", "colors is not equal width*height. length:%d width:%d height:%d", new Object[] { Integer.valueOf(arrayOfInt.length), Integer.valueOf(this.txk[0]), Integer.valueOf(this.txk[1]) });
+          ad.w("MicroMsg.GIF.MMGIFDrawable", "colors is not equal width*height. length:%d width:%d height:%d", new Object[] { Integer.valueOf(arrayOfInt.length), Integer.valueOf(this.uzU[0]), Integer.valueOf(this.uzU[1]) });
           continue;
-          ac.e("MicroMsg.GIF.MMGIFDrawable", "colors is null.");
+          ad.e("MicroMsg.GIF.MMGIFDrawable", "colors is null.");
         }
       }
-      if (this.txE)
+      if (this.uAo)
       {
-        com.tencent.mm.au.a.g(this.txL, 0L);
-        this.txE = false;
+        com.tencent.mm.av.a.h(this.uAv, 0L);
+        this.uAo = false;
         AppMethodBeat.o(104631);
         return;
         label426:
-        ac.e("MicroMsg.GIF.MMGIFDrawable", "framecount:%d errorcode:%d no post and oversize:%b", new Object[] { Integer.valueOf(this.txk[2]), Integer.valueOf(this.txk[4]), Boolean.valueOf(this.txA) });
+        ad.e("MicroMsg.GIF.MMGIFDrawable", "framecount:%d errorcode:%d no post and oversize:%b", new Object[] { Integer.valueOf(this.uzU[2]), Integer.valueOf(this.uzU[4]), Boolean.valueOf(this.uAk) });
       }
       AppMethodBeat.o(104631);
       return;
     }
-    ac.i("MicroMsg.GIF.MMGIFDrawable", "colors drawRect ");
-    paramCanvas.drawRect(this.Iw, this.mPaint);
+    ad.i("MicroMsg.GIF.MMGIFDrawable", "colors drawRect ");
+    paramCanvas.drawRect(this.Ko, this.mPaint);
     AppMethodBeat.o(104631);
   }
   
@@ -925,7 +925,7 @@ public final class d
     AppMethodBeat.i(104627);
     if (this.mDensity == 0.0F)
     {
-      this.mDensity = (com.tencent.mm.cc.a.getDensity(ai.getContext()) / 2.0F);
+      this.mDensity = (com.tencent.mm.cc.a.getDensity(aj.getContext()) / 2.0F);
       if (this.mDensity >= 1.0F) {
         break label54;
       }
@@ -946,7 +946,7 @@ public final class d
   public final int getIntrinsicHeight()
   {
     AppMethodBeat.i(104629);
-    int i = (int)(this.txk[1] * getEmojiDensityScale());
+    int i = (int)(this.uzU[1] * getEmojiDensityScale());
     AppMethodBeat.o(104629);
     return i;
   }
@@ -954,7 +954,7 @@ public final class d
   public final int getIntrinsicWidth()
   {
     AppMethodBeat.i(104628);
-    int i = (int)(this.txk[0] * getEmojiDensityScale());
+    int i = (int)(this.uzU[0] * getEmojiDensityScale());
     AppMethodBeat.o(104628);
     return i;
   }
@@ -973,7 +973,7 @@ public final class d
   {
     AppMethodBeat.i(104630);
     super.onBoundsChange(paramRect);
-    this.txn = true;
+    this.uzX = true;
     AppMethodBeat.o(104630);
   }
   
@@ -985,17 +985,17 @@ public final class d
   public final void recycle()
   {
     AppMethodBeat.i(104638);
-    ac.d("MicroMsg.GIF.MMGIFDrawable", "recycle");
-    this.txh = true;
+    ad.d("MicroMsg.GIF.MMGIFDrawable", "recycle");
+    this.uzR = true;
     this.mIsRunning = false;
-    long l = this.txi;
-    this.txi = 0L;
+    long l = this.uzS;
+    this.uzS = 0L;
     MMGIFJNI.recycle(l);
-    this.txo = null;
-    if (this.txj != null) {
+    this.uzY = null;
+    if (this.uzT != null) {
       try
       {
-        this.txj.close();
+        this.uzT.close();
         AppMethodBeat.o(104638);
         return;
       }
@@ -1007,19 +1007,19 @@ public final class d
   public final void reset()
   {
     AppMethodBeat.i(104637);
-    this.txh = false;
+    this.uzR = false;
     this.mIsRunning = true;
-    com.tencent.mm.au.a.g(this.txJ, 0L);
+    com.tencent.mm.av.a.h(this.uAt, 0L);
     AppMethodBeat.o(104637);
   }
   
   public final void resume()
   {
     AppMethodBeat.i(104636);
-    if (!this.txh)
+    if (!this.uzR)
     {
       this.mIsRunning = true;
-      l(this.txH, 0L);
+      m(this.uAr, 0L);
     }
     AppMethodBeat.o(104636);
   }
@@ -1042,7 +1042,7 @@ public final class d
   {
     AppMethodBeat.i(104634);
     this.mIsRunning = true;
-    com.tencent.mm.au.a.g(this.txI, 0L);
+    com.tencent.mm.av.a.h(this.uAs, 0L);
     AppMethodBeat.o(104634);
   }
   
@@ -1050,11 +1050,11 @@ public final class d
   {
     boolean bool2 = true;
     AppMethodBeat.i(104635);
-    ac.d("MicroMsg.GIF.MMGIFDrawable", "stop");
+    ad.d("MicroMsg.GIF.MMGIFDrawable", "stop");
     this.mIsRunning = false;
-    if (this.fsu != 0)
+    if (this.fKU != 0)
     {
-      ac.i("MicroMsg.GIF.MMGIFDrawable", "summerhardcoder stopPerformance startPerformance:%x ", new Object[] { Integer.valueOf(this.fsu) });
+      ad.i("MicroMsg.GIF.MMGIFDrawable", "summerhardcoder stopPerformance startPerformance:%x ", new Object[] { Integer.valueOf(this.fKU) });
       bool1 = bool2;
       if (!WXHardCoderJNI.hcGifEnable) {
         if (!WXHardCoderJNI.hcGifFrameEnable) {
@@ -1065,9 +1065,9 @@ public final class d
     label98:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      WXHardCoderJNI.stopPerformance(bool1, this.fsu);
-      this.fsu = 0;
-      com.tencent.mm.au.a.g(this.txK, 300L);
+      WXHardCoderJNI.stopPerformance(bool1, this.fKU);
+      this.fKU = 0;
+      com.tencent.mm.av.a.h(this.uAu, 300L);
       AppMethodBeat.o(104635);
       return;
     }
@@ -1075,7 +1075,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.d
  * JD-Core Version:    0.7.0.1
  */

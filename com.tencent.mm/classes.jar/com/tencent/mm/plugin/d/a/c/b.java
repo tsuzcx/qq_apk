@@ -4,57 +4,57 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.d.a.e.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  public BluetoothDevice klR;
+  public BluetoothDevice kGR;
   public long mSessionId;
   public int mState;
-  public long nsd;
-  public c.a nse;
-  public c.b nsf;
-  public c.c nsg;
+  public long nSZ;
+  public c.a nTa;
+  public c.b nTb;
+  public c.c nTc;
   
   public b(long paramLong)
   {
     AppMethodBeat.i(22594);
-    this.nsd = paramLong;
+    this.nSZ = paramLong;
     this.mSessionId = paramLong;
-    this.nse = null;
-    this.nsf = null;
-    this.nsg = null;
+    this.nTa = null;
+    this.nTb = null;
+    this.nTc = null;
     this.mState = 0;
-    this.klR = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(a.rk(paramLong));
+    this.kGR = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(a.ti(paramLong));
     AppMethodBeat.o(22594);
   }
   
   public final void disconnect()
   {
     AppMethodBeat.i(22595);
-    ac.i("MicroMsg.exdevice.BluetoothChatSession", "disconnect");
+    ad.i("MicroMsg.exdevice.BluetoothChatSession", "disconnect");
     this.mState = 0;
-    if (this.nse != null)
+    if (this.nTa != null)
     {
-      this.nse.disconnect();
-      this.nse = null;
+      this.nTa.disconnect();
+      this.nTa = null;
     }
-    if (this.nsf != null)
+    if (this.nTb != null)
     {
-      this.nsf.cancel();
-      this.nsf = null;
+      this.nTb.cancel();
+      this.nTb = null;
     }
-    if (this.nsg != null)
+    if (this.nTc != null)
     {
-      this.nsg.cancel();
-      this.nsg = null;
+      this.nTc.cancel();
+      this.nTc = null;
     }
     AppMethodBeat.o(22595);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.c.b
  * JD-Core Version:    0.7.0.1
  */

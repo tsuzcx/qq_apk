@@ -8,52 +8,52 @@ import java.util.Map;
 
 public abstract class p
 {
-  public static b zqo;
+  public static b AIi;
+  public int AIh;
   public long key;
-  public int zqn;
   
   public p(long paramLong, int paramInt)
   {
     this.key = paramLong;
-    this.zqn = paramInt;
+    this.AIh = paramInt;
   }
   
   public static final class a
   {
-    private static a zqp;
-    private Map<Long, p> zqq;
+    private static a AIj;
+    private Map<Long, p> AIk;
     
     public a()
     {
       AppMethodBeat.i(118428);
-      this.zqq = new HashMap();
+      this.AIk = new HashMap();
       AppMethodBeat.o(118428);
     }
     
-    public static a dUU()
+    public static a ehj()
     {
       AppMethodBeat.i(118429);
-      if (zqp == null) {
-        zqp = new a();
+      if (AIj == null) {
+        AIj = new a();
       }
-      a locala = zqp;
+      a locala = AIj;
       AppMethodBeat.o(118429);
       return locala;
+    }
+    
+    public final p AD(long paramLong)
+    {
+      AppMethodBeat.i(118431);
+      p localp = (p)this.AIk.remove(Long.valueOf(paramLong));
+      AppMethodBeat.o(118431);
+      return localp;
     }
     
     public final void a(long paramLong, p paramp)
     {
       AppMethodBeat.i(118430);
-      this.zqq.put(Long.valueOf(paramLong), paramp);
+      this.AIk.put(Long.valueOf(paramLong), paramp);
       AppMethodBeat.o(118430);
-    }
-    
-    public final p yf(long paramLong)
-    {
-      AppMethodBeat.i(118431);
-      p localp = (p)this.zqq.remove(Long.valueOf(paramLong));
-      AppMethodBeat.o(118431);
-      return localp;
     }
   }
   
@@ -65,7 +65,7 @@ public abstract class p
     
     public abstract long b(List<String> paramList, String paramString, int paramInt);
     
-    public abstract long t(List<String> paramList, int paramInt);
+    public abstract long v(List<String> paramList, int paramInt);
   }
 }
 

@@ -3,8 +3,7 @@ package com.tencent.mm.plugin.appbrand.ui.recommend;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.mix.h.b;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.bdh;
+import com.tencent.mm.protocal.protobuf.bhn;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -26,12 +25,12 @@ public final class g
     AppMethodBeat.o(49299);
   }
   
-  public static void a(long paramLong, bdh parambdh)
+  public static void a(long paramLong, bhn parambhn)
   {
     AppMethodBeat.i(49297);
     int i;
     ArrayList localArrayList;
-    if ((parambdh == null) || (parambdh.ETz == null))
+    if ((parambhn == null) || (parambhn.GCT == null))
     {
       i = 0;
       b.i("MicroMsg.Recommend.AppBrandRecommendIdkeyReport", "doReportCgiGet costTime:%d, list size:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(i) });
@@ -41,54 +40,54 @@ public final class g
       localIDKey.SetValue(1L);
       localArrayList = new ArrayList();
       localArrayList.add(localIDKey);
-      if (parambdh != null) {
+      if (parambhn != null) {
         break label223;
       }
-      parambdh = new IDKey();
-      parambdh.SetID(1043);
-      parambdh.SetKey(1);
-      parambdh.SetValue(1L);
-      localArrayList.add(parambdh);
+      parambhn = new IDKey();
+      parambhn.SetID(1043);
+      parambhn.SetKey(1);
+      parambhn.SetValue(1L);
+      localArrayList.add(parambhn);
     }
     for (;;)
     {
-      parambdh = new IDKey();
-      parambdh.SetID(1043);
-      parambdh.SetKey(5);
-      parambdh.SetValue(1L);
-      localArrayList.add(parambdh);
-      parambdh = new IDKey();
-      parambdh.SetID(1043);
-      parambdh.SetKey(qY(paramLong));
-      parambdh.SetValue(1L);
-      localArrayList.add(parambdh);
-      h.wUl.b(localArrayList, true);
+      parambhn = new IDKey();
+      parambhn.SetID(1043);
+      parambhn.SetKey(5);
+      parambhn.SetValue(1L);
+      localArrayList.add(parambhn);
+      parambhn = new IDKey();
+      parambhn.SetID(1043);
+      parambhn.SetKey(sX(paramLong));
+      parambhn.SetValue(1L);
+      localArrayList.add(parambhn);
+      com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
       G(localArrayList);
       AppMethodBeat.o(49297);
       return;
-      i = parambdh.ETz.size();
+      i = parambhn.GCT.size();
       break;
       label223:
-      if ((parambdh.ETz == null) || (parambdh.ETz.size() == 0))
+      if ((parambhn.GCT == null) || (parambhn.GCT.size() == 0))
       {
-        parambdh = new IDKey();
-        parambdh.SetID(1043);
-        parambdh.SetKey(2);
-        parambdh.SetValue(1L);
-        localArrayList.add(parambdh);
+        parambhn = new IDKey();
+        parambhn.SetID(1043);
+        parambhn.SetKey(2);
+        parambhn.SetValue(1L);
+        localArrayList.add(parambhn);
       }
       else
       {
-        parambdh = new IDKey();
-        parambdh.SetID(1043);
-        parambdh.SetKey(3);
-        parambdh.SetValue(1L);
-        localArrayList.add(parambdh);
+        parambhn = new IDKey();
+        parambhn.SetID(1043);
+        parambhn.SetKey(3);
+        parambhn.SetValue(1L);
+        localArrayList.add(parambhn);
       }
     }
   }
   
-  private static int qY(long paramLong)
+  private static int sX(long paramLong)
   {
     if (paramLong <= 1L) {
       return 6;
@@ -108,7 +107,7 @@ public final class g
     return 11;
   }
   
-  public static void va(int paramInt)
+  public static void vF(int paramInt)
   {
     AppMethodBeat.i(49298);
     b.i("MicroMsg.Recommend.AppBrandRecommendIdkeyReport", "doReportDataSource");
@@ -127,7 +126,7 @@ public final class g
     {
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      h.wUl.b(localArrayList, true);
+      com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
       G(localArrayList);
       AppMethodBeat.o(49298);
       return;

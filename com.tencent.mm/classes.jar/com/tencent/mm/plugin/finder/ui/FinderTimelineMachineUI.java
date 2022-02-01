@@ -12,7 +12,7 @@ import d.l;
 import java.util.HashMap;
 import java.util.Set;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/FinderTimelineMachineUI;", "Lcom/tencent/mm/ui/component/UIComponentActivity;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderTimelineMachineUI;", "Lcom/tencent/mm/ui/component/UIComponentActivity;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
 public final class FinderTimelineMachineUI
   extends UIComponentActivity
 {
@@ -20,7 +20,7 @@ public final class FinderTimelineMachineUI
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(203448);
+    AppMethodBeat.i(204252);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -31,15 +31,15 @@ public final class FinderTimelineMachineUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(203448);
+    AppMethodBeat.o(204252);
     return localView1;
   }
   
-  public final Set<Class<? extends UIComponent>> cwg()
+  public final Set<Class<? extends UIComponent>> cCu()
   {
-    AppMethodBeat.i(203447);
+    AppMethodBeat.i(204251);
     Set localSet = ak.setOf(FinderTimelineMachineUIC.class);
-    AppMethodBeat.o(203447);
+    AppMethodBeat.o(204251);
     return localSet;
   }
   

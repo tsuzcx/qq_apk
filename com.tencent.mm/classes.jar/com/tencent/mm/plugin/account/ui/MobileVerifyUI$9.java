@@ -12,14 +12,14 @@ final class MobileVerifyUI$9
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(128448);
-    MobileVerifyUI.i(this.iUU);
+    MobileVerifyUI.i(this.jod);
     AppMethodBeat.o(128448);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.MobileVerifyUI.9
  * JD-Core Version:    0.7.0.1
  */

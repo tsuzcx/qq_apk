@@ -5,10 +5,10 @@ import android.graphics.Bitmap.CompressFormat;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.ao.a;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.g;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.m;
@@ -17,16 +17,16 @@ import java.util.Locale;
 
 public final class h
 {
-  MMWebView CsB;
-  public String CsC;
-  c CsD;
-  private ao.a CsE;
-  ao jdu;
+  MMWebView DWg;
+  public String DWh;
+  c DWi;
+  private ap.a DWj;
+  ap jwD;
   
   public h()
   {
     AppMethodBeat.i(79192);
-    this.CsE = new ao.a()
+    this.DWj = new ap.a()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
@@ -38,33 +38,33 @@ public final class h
         {
           AppMethodBeat.o(79188);
           return false;
-          paramAnonymousMessage = h.this.CsB.getBitmap();
+          paramAnonymousMessage = h.this.DWg.getBitmap();
           if (paramAnonymousMessage != null)
           {
             com.tencent.mm.sdk.g.b.c(new h.b(h.this, paramAnonymousMessage), "ViewCaptureHelper_SaveBitmap");
-            h.this.CsB = null;
+            h.this.DWg = null;
             continue;
-            if (h.this.CsD != null) {
-              h.this.CsD.NS(h.this.CsC);
+            if (h.this.DWi != null) {
+              h.this.DWi.Rr(h.this.DWh);
             }
           }
         }
       }
     };
-    this.jdu = new ao(Looper.getMainLooper(), this.CsE);
+    this.jwD = new ap(Looper.getMainLooper(), this.DWj);
     AppMethodBeat.o(79192);
   }
   
   public final void a(MMWebView paramMMWebView, c paramc)
   {
     AppMethodBeat.i(79193);
-    this.CsB = paramMMWebView;
-    this.CsD = paramc;
-    this.jdu.sendEmptyMessage(1);
+    this.DWg = paramMMWebView;
+    this.DWi = paramc;
+    this.jwD.sendEmptyMessage(1);
     AppMethodBeat.o(79193);
   }
   
-  public final void eCf()
+  public final void eQZ()
   {
     AppMethodBeat.i(79194);
     com.tencent.mm.sdk.g.b.c(new a((byte)0), "ViewCaptureHelper_DeleteBitmap");
@@ -79,14 +79,14 @@ public final class h
     public final void run()
     {
       AppMethodBeat.i(79190);
-      if (h.this.CsC == null)
+      if (h.this.DWh == null)
       {
         AppMethodBeat.o(79190);
         return;
       }
-      e[] arrayOfe = new e(h.this.CsC).fxU().b(new m()
+      e[] arrayOfe = new e(h.this.DWh).fOJ().b(new m()
       {
-        public final boolean ui(String paramAnonymousString)
+        public final boolean wY(String paramAnonymousString)
         {
           AppMethodBeat.i(175748);
           boolean bool = paramAnonymousString.matches(".+_.+.\\.jpg");
@@ -100,11 +100,11 @@ public final class h
         int i = 0;
         while (i < j)
         {
-          ac.i("MicroMsg.ViewCaptureHelper", "deleteFile result: %b", new Object[] { Boolean.valueOf(arrayOfe[i].delete()) });
+          ad.i("MicroMsg.ViewCaptureHelper", "deleteFile result: %b", new Object[] { Boolean.valueOf(arrayOfe[i].delete()) });
           i += 1;
         }
       }
-      h.this.CsC = null;
+      h.this.DWh = null;
       AppMethodBeat.o(79190);
     }
   }
@@ -122,13 +122,13 @@ public final class h
     public final void run()
     {
       AppMethodBeat.i(79191);
-      h.this.CsC = String.format(Locale.US, "%s%s_%08x.jpg", new Object[] { com.tencent.mm.loader.j.b.aph(), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(this.mBitmap.hashCode()) });
+      h.this.DWh = String.format(Locale.US, "%s%s_%08x.jpg", new Object[] { com.tencent.mm.loader.j.b.arU(), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(this.mBitmap.hashCode()) });
       try
       {
-        f.a(this.mBitmap, 100, Bitmap.CompressFormat.JPEG, h.this.CsC, true);
-        ac.i("MicroMsg.ViewCaptureHelper", "bitmap recycle %s", new Object[] { this.mBitmap.toString() });
+        g.a(this.mBitmap, 100, Bitmap.CompressFormat.JPEG, h.this.DWh, true);
+        ad.i("MicroMsg.ViewCaptureHelper", "bitmap recycle %s", new Object[] { this.mBitmap.toString() });
         this.mBitmap.recycle();
-        h.this.jdu.sendEmptyMessage(2);
+        h.this.jwD.sendEmptyMessage(2);
         AppMethodBeat.o(79191);
         return;
       }
@@ -136,8 +136,8 @@ public final class h
       {
         for (;;)
         {
-          ac.e("MicroMsg.ViewCaptureHelper", "saveBitmapToImage failed, " + localIOException.getMessage());
-          h.this.CsC = null;
+          ad.e("MicroMsg.ViewCaptureHelper", "saveBitmapToImage failed, " + localIOException.getMessage());
+          h.this.DWh = null;
         }
       }
     }
@@ -145,7 +145,7 @@ public final class h
   
   public static abstract interface c
   {
-    public abstract void NS(String paramString);
+    public abstract void Rr(String paramString);
   }
 }
 

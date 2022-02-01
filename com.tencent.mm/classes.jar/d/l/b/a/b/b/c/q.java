@@ -7,35 +7,35 @@ import d.l.b.a.b.b.l;
 public final class q
   extends c
 {
-  private final d.l.b.a.b.b.e LhL;
-  private final d.l.b.a.b.j.f.a.c LhM;
+  private final d.l.b.a.b.b.e MYH;
+  private final d.l.b.a.b.j.f.a.c MYI;
   
   public q(d.l.b.a.b.b.e parame)
   {
-    super(g.a.fSm());
+    super(g.a.gjL());
     AppMethodBeat.i(57117);
-    this.LhL = parame;
-    this.LhM = new d.l.b.a.b.j.f.a.c(parame);
+    this.MYH = parame;
+    this.MYI = new d.l.b.a.b.j.f.a.c(parame);
     AppMethodBeat.o(57117);
   }
   
-  public final l fPU()
+  public final l ghs()
   {
     AppMethodBeat.i(57119);
-    d.l.b.a.b.b.e locale = this.LhL;
+    d.l.b.a.b.b.e locale = this.MYH;
     if (locale == null) {
-      agL(2);
+      ajm(2);
     }
     AppMethodBeat.o(57119);
     return locale;
   }
   
-  public final d.l.b.a.b.j.f.a.e fRQ()
+  public final d.l.b.a.b.j.f.a.e gjp()
   {
     AppMethodBeat.i(57118);
-    d.l.b.a.b.j.f.a.c localc = this.LhM;
+    d.l.b.a.b.j.f.a.c localc = this.MYI;
     if (localc == null) {
-      agL(1);
+      ajm(1);
     }
     AppMethodBeat.o(57118);
     return localc;
@@ -44,14 +44,14 @@ public final class q
   public final String toString()
   {
     AppMethodBeat.i(57120);
-    String str = "class " + this.LhL.fRf() + "::this";
+    String str = "class " + this.MYH.giD() + "::this";
     AppMethodBeat.o(57120);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.c.q
  * JD-Core Version:    0.7.0.1
  */

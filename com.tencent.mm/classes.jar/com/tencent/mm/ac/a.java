@@ -1,43 +1,82 @@
 package com.tencent.mm.ac;
 
-import android.util.Pair;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
-import d.l;
-
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/kt/AndroidPairKTX;", "", "()V", "component1", "K", "V", "Landroid/util/Pair;", "(Landroid/util/Pair;)Ljava/lang/Object;", "component2", "libktcomm_release"})
-public final class a
+public abstract interface a
 {
-  public static final a glZ;
+  public abstract a bl(Object paramObject);
   
-  static
-  {
-    AppMethodBeat.i(153442);
-    glZ = new a();
-    AppMethodBeat.o(153442);
-  }
+  public abstract a c(int paramInt, double paramDouble);
   
-  public static <K, V> K a(Pair<K, V> paramPair)
-  {
-    AppMethodBeat.i(153440);
-    k.h(paramPair, "$this$component1");
-    paramPair = paramPair.first;
-    AppMethodBeat.o(153440);
-    return paramPair;
-  }
+  public abstract a cM(int paramInt1, int paramInt2);
   
-  public static <K, V> V b(Pair<K, V> paramPair)
-  {
-    AppMethodBeat.i(153441);
-    k.h(paramPair, "$this$component2");
-    paramPair = paramPair.second;
-    AppMethodBeat.o(153441);
-    return paramPair;
-  }
+  public abstract a dy(boolean paramBoolean);
+  
+  public abstract a f(int paramInt, Object paramObject);
+  
+  public abstract Object get(int paramInt);
+  
+  public abstract boolean getBoolean(int paramInt);
+  
+  public abstract double getDouble(int paramInt);
+  
+  public abstract int getInt(int paramInt);
+  
+  public abstract long getLong(int paramInt);
+  
+  public abstract String getString(int paramInt);
+  
+  public abstract boolean isNull(int paramInt);
+  
+  public abstract a j(double paramDouble);
+  
+  public abstract int length();
+  
+  public abstract a mA(int paramInt);
+  
+  public abstract a mB(int paramInt);
+  
+  public abstract a mC(int paramInt);
+  
+  public abstract c mD(int paramInt);
+  
+  public abstract c mE(int paramInt);
+  
+  public abstract Object opt(int paramInt);
+  
+  public abstract boolean optBoolean(int paramInt);
+  
+  public abstract boolean optBoolean(int paramInt, boolean paramBoolean);
+  
+  public abstract double optDouble(int paramInt);
+  
+  public abstract double optDouble(int paramInt, double paramDouble);
+  
+  public abstract int optInt(int paramInt);
+  
+  public abstract int optInt(int paramInt1, int paramInt2);
+  
+  public abstract long optLong(int paramInt);
+  
+  public abstract long optLong(int paramInt, long paramLong);
+  
+  public abstract String optString(int paramInt);
+  
+  public abstract String optString(int paramInt, String paramString);
+  
+  public abstract a qZ(long paramLong);
+  
+  public abstract Object remove(int paramInt);
+  
+  public abstract a t(int paramInt, long paramLong);
+  
+  public abstract String toString();
+  
+  public abstract String toString(int paramInt);
+  
+  public abstract a y(int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ac.a
  * JD-Core Version:    0.7.0.1
  */

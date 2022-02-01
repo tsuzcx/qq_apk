@@ -48,39 +48,27 @@ public final class avb
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
       localObject = c.n(paramVarArgs);
-      ((Path)localObject).moveTo(36.0F, 66.0F);
-      ((Path)localObject).cubicTo(19.431458F, 66.0F, 6.0F, 52.568542F, 6.0F, 36.0F);
-      ((Path)localObject).cubicTo(6.0F, 19.431458F, 19.431458F, 6.0F, 36.0F, 6.0F);
-      ((Path)localObject).cubicTo(52.568542F, 6.0F, 66.0F, 19.431458F, 66.0F, 36.0F);
-      ((Path)localObject).cubicTo(66.0F, 52.568542F, 52.568542F, 66.0F, 36.0F, 66.0F);
+      ((Path)localObject).moveTo(63.02459F, 12.0F);
+      ((Path)localObject).cubicTo(64.667862F, 12.0F, 66.0F, 13.333893F, 66.0F, 15.002615F);
+      ((Path)localObject).lineTo(66.0F, 56.997383F);
+      ((Path)localObject).cubicTo(66.0F, 58.655682F, 64.634087F, 60.0F, 63.02459F, 60.0F);
+      ((Path)localObject).lineTo(8.97541F, 60.0F);
+      ((Path)localObject).cubicTo(7.332136F, 60.0F, 6.0F, 58.666107F, 6.0F, 56.997383F);
+      ((Path)localObject).lineTo(6.0F, 15.002615F);
+      ((Path)localObject).cubicTo(6.0F, 13.344316F, 7.365917F, 12.0F, 8.97541F, 12.0F);
+      ((Path)localObject).lineTo(63.02459F, 12.0F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(36.0F, 62.400002F);
-      ((Path)localObject).cubicTo(50.580318F, 62.400002F, 62.400002F, 50.580318F, 62.400002F, 36.0F);
-      ((Path)localObject).cubicTo(62.400002F, 21.419683F, 50.580318F, 9.6F, 36.0F, 9.6F);
-      ((Path)localObject).cubicTo(21.419683F, 9.6F, 9.6F, 21.419683F, 9.6F, 36.0F);
-      ((Path)localObject).cubicTo(9.6F, 50.580318F, 21.419683F, 62.400002F, 36.0F, 62.400002F);
+      ((Path)localObject).moveTo(62.400002F, 15.6F);
+      ((Path)localObject).lineTo(9.6F, 15.6F);
+      ((Path)localObject).lineTo(9.6F, 56.400002F);
+      ((Path)localObject).lineTo(62.400002F, 56.400002F);
+      ((Path)localObject).lineTo(62.400002F, 15.6F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(18.0F, 37.5F);
-      ((Path)localObject).lineTo(54.0F, 37.5F);
-      ((Path)localObject).cubicTo(54.0F, 47.441124F, 45.941124F, 55.5F, 36.0F, 55.5F);
-      ((Path)localObject).cubicTo(26.058874F, 55.5F, 18.0F, 47.441124F, 18.0F, 37.5F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(36.0F, 51.900002F);
-      ((Path)localObject).cubicTo(42.709824F, 51.900002F, 48.347782F, 47.310818F, 49.946339F, 41.099998F);
-      ((Path)localObject).lineTo(22.053663F, 41.099998F);
-      ((Path)localObject).cubicTo(23.652218F, 47.310818F, 29.290178F, 51.900002F, 36.0F, 51.900002F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(25.5F, 31.5F);
-      ((Path)localObject).cubicTo(23.014719F, 31.5F, 21.0F, 29.485281F, 21.0F, 27.0F);
-      ((Path)localObject).cubicTo(21.0F, 24.514719F, 23.014719F, 22.5F, 25.5F, 22.5F);
-      ((Path)localObject).cubicTo(27.985281F, 22.5F, 30.0F, 24.514719F, 30.0F, 27.0F);
-      ((Path)localObject).cubicTo(30.0F, 29.485281F, 27.985281F, 31.5F, 25.5F, 31.5F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(46.5F, 31.5F);
-      ((Path)localObject).cubicTo(44.014717F, 31.5F, 42.0F, 29.485281F, 42.0F, 27.0F);
-      ((Path)localObject).cubicTo(42.0F, 24.514719F, 44.014717F, 22.5F, 46.5F, 22.5F);
-      ((Path)localObject).cubicTo(48.985283F, 22.5F, 51.0F, 24.514719F, 51.0F, 27.0F);
-      ((Path)localObject).cubicTo(51.0F, 29.485281F, 48.985283F, 31.5F, 46.5F, 31.5F);
+      ((Path)localObject).moveTo(57.0F, 24.0F);
+      ((Path)localObject).lineTo(57.0F, 27.6F);
+      ((Path)localObject).lineTo(15.0F, 27.6F);
+      ((Path)localObject).lineTo(15.0F, 24.0F);
+      ((Path)localObject).lineTo(57.0F, 24.0F);
       ((Path)localObject).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
       localCanvas.drawPath((Path)localObject, localPaint);
@@ -91,7 +79,7 @@ public final class avb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.avb
  * JD-Core Version:    0.7.0.1
  */

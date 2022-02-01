@@ -5,7 +5,7 @@ import com.tencent.e.i.e;
 import com.tencent.e.i.g;
 import com.tencent.mm.plugin.appbrand.aa.c;
 import com.tencent.mm.plugin.appbrand.aa.e.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,20 +25,20 @@ public abstract class a
   extends com.tencent.mm.plugin.appbrand.aa.b
   implements e, g, com.tencent.mm.plugin.appbrand.aa.a, Runnable
 {
-  private Future cXV;
+  private Future djn;
   private Map<String, String> headers;
-  private String imk;
+  private String iFB;
+  private Proxy mQA = Proxy.NO_PROXY;
+  private Runnable mQB;
+  private CountDownLatch mQC = new CountDownLatch(1);
+  private CountDownLatch mQD = new CountDownLatch(1);
+  private int mQE = 0;
+  private com.tencent.mm.plugin.appbrand.aa.b.a mQn;
+  protected URI mQw = null;
+  public c mQx = null;
+  private InputStream mQy;
+  OutputStream mQz;
   private Timer mTimer = null;
-  private com.tencent.mm.plugin.appbrand.aa.b.a mpI;
-  protected URI mpR = null;
-  public c mpS = null;
-  private InputStream mpT;
-  OutputStream mpU;
-  private Proxy mpV = Proxy.NO_PROXY;
-  private Runnable mpW;
-  private CountDownLatch mpX = new CountDownLatch(1);
-  private CountDownLatch mpY = new CountDownLatch(1);
-  private int mpZ = 0;
   private Socket socket = null;
   
   public a(URI paramURI, com.tencent.mm.plugin.appbrand.aa.b.a parama, Map<String, String> paramMap, int paramInt)
@@ -49,18 +49,18 @@ public abstract class a
     if (parama == null) {
       throw new IllegalArgumentException("null as draft is permitted for `WebSocketServer` only!");
     }
-    this.mpR = paramURI;
-    this.mpI = parama;
+    this.mQw = paramURI;
+    this.mQn = parama;
     this.headers = paramMap;
-    this.mpZ = paramInt;
-    this.mpS = new c(this, parama);
-    this.mpx = false;
+    this.mQE = paramInt;
+    this.mQx = new c(this, parama);
+    this.mQc = false;
   }
   
-  private void bxy()
+  private void bBD()
   {
-    Object localObject2 = this.mpR.getRawPath();
-    Object localObject3 = this.mpR.getRawQuery();
+    Object localObject2 = this.mQw.getRawPath();
+    Object localObject3 = this.mQw.getRawQuery();
     if (localObject2 != null)
     {
       localObject1 = localObject2;
@@ -75,13 +75,13 @@ public abstract class a
       localObject2 = (String)localObject1 + "?" + (String)localObject3;
     }
     int i = getPort();
-    localObject3 = new StringBuilder().append(this.mpR.getHost());
+    localObject3 = new StringBuilder().append(this.mQw.getHost());
     if (i != 80) {}
     for (Object localObject1 = ":".concat(String.valueOf(i));; localObject1 = "")
     {
       localObject3 = (String)localObject1;
       localObject1 = new com.tencent.mm.plugin.appbrand.aa.e.d();
-      ((com.tencent.mm.plugin.appbrand.aa.e.d)localObject1).RC((String)localObject2);
+      ((com.tencent.mm.plugin.appbrand.aa.e.d)localObject1).Vh((String)localObject2);
       ((com.tencent.mm.plugin.appbrand.aa.e.d)localObject1).put("Host", (String)localObject3);
       if (this.headers == null) {
         break;
@@ -93,14 +93,14 @@ public abstract class a
         ((com.tencent.mm.plugin.appbrand.aa.e.d)localObject1).put((String)((Map.Entry)localObject3).getKey(), (String)((Map.Entry)localObject3).getValue());
       }
     }
-    localObject2 = this.mpS;
-    ((c)localObject2).mpM = ((c)localObject2).mpI.a((com.tencent.mm.plugin.appbrand.aa.e.b)localObject1);
-    ((c)localObject2).mpQ = ((com.tencent.mm.plugin.appbrand.aa.e.b)localObject1).bxI();
-    if (((c)localObject2).mpQ != null) {}
+    localObject2 = this.mQx;
+    ((c)localObject2).mQr = ((c)localObject2).mQn.a((com.tencent.mm.plugin.appbrand.aa.e.b)localObject1);
+    ((c)localObject2).mQv = ((com.tencent.mm.plugin.appbrand.aa.e.b)localObject1).bBN();
+    if (((c)localObject2).mQv != null) {}
     try
     {
-      ((c)localObject2).mpG.b(((c)localObject2).mpM);
-      ((c)localObject2).bE(com.tencent.mm.plugin.appbrand.aa.b.a.e(((c)localObject2).mpM));
+      ((c)localObject2).mQl.b(((c)localObject2).mQr);
+      ((c)localObject2).bG(com.tencent.mm.plugin.appbrand.aa.b.a.e(((c)localObject2).mQr));
       return;
     }
     catch (com.tencent.mm.plugin.appbrand.aa.c.b localb)
@@ -109,19 +109,19 @@ public abstract class a
     }
     catch (RuntimeException localRuntimeException)
     {
-      ((c)localObject2).mpG.k(localRuntimeException);
+      ((c)localObject2).mQl.k(localRuntimeException);
       throw new com.tencent.mm.plugin.appbrand.aa.c.d("rejected because of".concat(String.valueOf(localRuntimeException)));
     }
   }
   
   private int getPort()
   {
-    int j = this.mpR.getPort();
+    int j = this.mQw.getPort();
     int i = j;
     String str;
     if (j == -1)
     {
-      str = this.mpR.getScheme();
+      str = this.mQw.getScheme();
       if (str.equals("wss")) {
         i = 443;
       }
@@ -136,24 +136,22 @@ public abstract class a
     throw new RuntimeException("unkonow scheme".concat(String.valueOf(str)));
   }
   
-  public abstract void KM(String paramString);
+  public abstract void Og(String paramString);
   
-  public final void NM(String paramString)
+  public final void Rl(String paramString)
   {
-    this.imk = paramString;
+    this.iFB = paramString;
   }
   
-  public final void NN(String paramString)
+  public final void Rm(String paramString)
   {
-    this.mpS.NN(paramString);
+    this.mQx.Rm(paramString);
   }
   
-  public final void RA(String paramString)
+  public final void Vf(String paramString)
   {
-    KM(paramString);
+    Og(paramString);
   }
-  
-  public abstract void Z(int paramInt, String paramString);
   
   public void a(com.tencent.mm.plugin.appbrand.aa.d.d paramd) {}
   
@@ -163,7 +161,7 @@ public abstract class a
   {
     if (this.socket != null)
     {
-      ac.i("MicroMsg.AppBrandNetWork.WebSocketClient", "socket has already been set");
+      ad.i("MicroMsg.AppBrandNetWork.WebSocketClient", "socket has already been set");
       return;
     }
     this.socket = paramSocket;
@@ -176,30 +174,32 @@ public abstract class a
   
   public final void a(Future paramFuture)
   {
-    this.cXV = paramFuture;
+    this.djn = paramFuture;
   }
   
-  public final String aLs()
+  public final String aOC()
   {
-    return this.imk;
+    return this.iFB;
   }
   
-  public final void au(int paramInt, String paramString)
+  public abstract void ab(int paramInt, String paramString);
+  
+  public final void aw(int paramInt, String paramString)
   {
-    this.mpX.countDown();
-    this.mpY.countDown();
-    if (this.cXV != null) {
-      this.cXV.cancel(false);
+    this.mQC.countDown();
+    this.mQD.countDown();
+    if (this.djn != null) {
+      this.djn.cancel(false);
     }
-    if ((this.mpW != null) && ((this.mpW instanceof a))) {
-      ((a)this.mpW).isStop = true;
+    if ((this.mQB != null) && ((this.mQB instanceof a))) {
+      ((a)this.mQB).isStop = true;
     }
     try
     {
       if (this.socket != null) {
         this.socket.close();
       }
-      Z(paramInt, paramString);
+      ab(paramInt, paramString);
       return;
     }
     catch (IOException localIOException)
@@ -211,24 +211,24 @@ public abstract class a
     }
   }
   
-  public final void av(int paramInt, String paramString)
+  public final void ax(int paramInt, String paramString)
   {
-    this.mpS.c(paramInt, paramString, false);
+    this.mQx.c(paramInt, paramString, false);
   }
   
   public final void b(com.tencent.mm.plugin.appbrand.aa.d.d paramd)
   {
-    this.mpS.b(paramd);
+    this.mQx.b(paramd);
   }
   
-  public final void bF(String paramString, int paramInt)
+  public final void bI(String paramString, int paramInt)
   {
-    if (this.mpW != null) {
-      av(paramInt, paramString);
+    if (this.mQB != null) {
+      ax(paramInt, paramString);
     }
   }
   
-  public final Timer blm()
+  public final Timer boX()
   {
     return this.mTimer;
   }
@@ -240,25 +240,25 @@ public abstract class a
   
   public final void close()
   {
-    if (this.mpW != null) {
-      this.mpS.c(1000, "", false);
+    if (this.mQB != null) {
+      this.mQx.c(1000, "", false);
     }
   }
   
   public final void connect()
   {
-    if (this.mpW != null)
+    if (this.mQB != null)
     {
-      ac.i("MicroMsg.AppBrandNetWork.WebSocketClient", "WebSocketClient objects are not reuseable");
+      ad.i("MicroMsg.AppBrandNetWork.WebSocketClient", "WebSocketClient objects are not reuseable");
       return;
     }
-    this.mpW = this;
-    com.tencent.e.h.JZN.aS(this.mpW);
+    this.mQB = this;
+    com.tencent.e.h.LTJ.aR(this.mQB);
   }
   
   public final void d(f paramf)
   {
-    this.mpX.countDown();
+    this.mQC.countDown();
     a((com.tencent.mm.plugin.appbrand.aa.e.h)paramf);
   }
   
@@ -274,7 +274,7 @@ public abstract class a
   
   public final boolean isOpen()
   {
-    return this.mpS.isOpen();
+    return this.mQx.isOpen();
   }
   
   public final void k(Exception paramException)
@@ -282,14 +282,14 @@ public abstract class a
     onError(paramException);
   }
   
-  public void m(ByteBuffer paramByteBuffer) {}
+  public void l(ByteBuffer paramByteBuffer) {}
+  
+  public final void o(ByteBuffer paramByteBuffer)
+  {
+    this.mQx.o(paramByteBuffer);
+  }
   
   public abstract void onError(Exception paramException);
-  
-  public final void p(ByteBuffer paramByteBuffer)
-  {
-    this.mpS.p(paramByteBuffer);
-  }
   
   /* Error */
   public void run()
@@ -302,117 +302,117 @@ public abstract class a
     //   8: new 105	java/net/Socket
     //   11: dup
     //   12: aload_0
-    //   13: getfield 63	com/tencent/mm/plugin/appbrand/aa/a/a:mpV	Ljava/net/Proxy;
-    //   16: invokespecial 375	java/net/Socket:<init>	(Ljava/net/Proxy;)V
+    //   13: getfield 63	com/tencent/mm/plugin/appbrand/aa/a/a:mQA	Ljava/net/Proxy;
+    //   16: invokespecial 376	java/net/Socket:<init>	(Ljava/net/Proxy;)V
     //   19: putfield 56	com/tencent/mm/plugin/appbrand/aa/a/a:socket	Ljava/net/Socket;
     //   22: aload_0
     //   23: getfield 56	com/tencent/mm/plugin/appbrand/aa/a/a:socket	Ljava/net/Socket;
     //   26: aload_0
-    //   27: getfield 97	com/tencent/mm/plugin/appbrand/aa/b:mpx	Z
-    //   30: invokevirtual 379	java/net/Socket:setTcpNoDelay	(Z)V
+    //   27: getfield 97	com/tencent/mm/plugin/appbrand/aa/b:mQc	Z
+    //   30: invokevirtual 380	java/net/Socket:setTcpNoDelay	(Z)V
     //   33: aload_0
     //   34: getfield 56	com/tencent/mm/plugin/appbrand/aa/a/a:socket	Ljava/net/Socket;
-    //   37: invokevirtual 382	java/net/Socket:isBound	()Z
+    //   37: invokevirtual 383	java/net/Socket:isBound	()Z
     //   40: ifne +32 -> 72
     //   43: aload_0
     //   44: getfield 56	com/tencent/mm/plugin/appbrand/aa/a/a:socket	Ljava/net/Socket;
-    //   47: new 384	java/net/InetSocketAddress
+    //   47: new 385	java/net/InetSocketAddress
     //   50: dup
     //   51: aload_0
-    //   52: getfield 52	com/tencent/mm/plugin/appbrand/aa/a/a:mpR	Ljava/net/URI;
+    //   52: getfield 52	com/tencent/mm/plugin/appbrand/aa/a/a:mQw	Ljava/net/URI;
     //   55: invokevirtual 158	java/net/URI:getHost	()Ljava/lang/String;
     //   58: aload_0
     //   59: invokespecial 155	com/tencent/mm/plugin/appbrand/aa/a/a:getPort	()I
-    //   62: invokespecial 386	java/net/InetSocketAddress:<init>	(Ljava/lang/String;I)V
+    //   62: invokespecial 387	java/net/InetSocketAddress:<init>	(Ljava/lang/String;I)V
     //   65: aload_0
-    //   66: getfield 74	com/tencent/mm/plugin/appbrand/aa/a/a:mpZ	I
-    //   69: invokevirtual 389	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
+    //   66: getfield 74	com/tencent/mm/plugin/appbrand/aa/a/a:mQE	I
+    //   69: invokevirtual 390	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
     //   72: aload_0
     //   73: aload_0
     //   74: getfield 56	com/tencent/mm/plugin/appbrand/aa/a/a:socket	Ljava/net/Socket;
-    //   77: invokevirtual 393	java/net/Socket:getInputStream	()Ljava/io/InputStream;
-    //   80: putfield 395	com/tencent/mm/plugin/appbrand/aa/a/a:mpT	Ljava/io/InputStream;
+    //   77: invokevirtual 394	java/net/Socket:getInputStream	()Ljava/io/InputStream;
+    //   80: putfield 396	com/tencent/mm/plugin/appbrand/aa/a/a:mQy	Ljava/io/InputStream;
     //   83: aload_0
     //   84: aload_0
     //   85: getfield 56	com/tencent/mm/plugin/appbrand/aa/a/a:socket	Ljava/net/Socket;
-    //   88: invokevirtual 399	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
-    //   91: putfield 401	com/tencent/mm/plugin/appbrand/aa/a/a:mpU	Ljava/io/OutputStream;
+    //   88: invokevirtual 400	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
+    //   91: putfield 402	com/tencent/mm/plugin/appbrand/aa/a/a:mQz	Ljava/io/OutputStream;
     //   94: aload_0
-    //   95: invokespecial 403	com/tencent/mm/plugin/appbrand/aa/a/a:bxy	()V
+    //   95: invokespecial 404	com/tencent/mm/plugin/appbrand/aa/a/a:bBD	()V
     //   98: aload_0
     //   99: new 14	com/tencent/mm/plugin/appbrand/aa/a/a$a
     //   102: dup
     //   103: aload_0
     //   104: iconst_0
-    //   105: invokespecial 406	com/tencent/mm/plugin/appbrand/aa/a/a$a:<init>	(Lcom/tencent/mm/plugin/appbrand/aa/a/a;B)V
-    //   108: putfield 316	com/tencent/mm/plugin/appbrand/aa/a/a:mpW	Ljava/lang/Runnable;
-    //   111: getstatic 345	com/tencent/e/h:JZN	Lcom/tencent/e/i;
+    //   105: invokespecial 407	com/tencent/mm/plugin/appbrand/aa/a/a$a:<init>	(Lcom/tencent/mm/plugin/appbrand/aa/a/a;B)V
+    //   108: putfield 317	com/tencent/mm/plugin/appbrand/aa/a/a:mQB	Ljava/lang/Runnable;
+    //   111: getstatic 346	com/tencent/e/h:LTJ	Lcom/tencent/e/i;
     //   114: aload_0
-    //   115: getfield 316	com/tencent/mm/plugin/appbrand/aa/a/a:mpW	Ljava/lang/Runnable;
-    //   118: invokeinterface 351 2 0
+    //   115: getfield 317	com/tencent/mm/plugin/appbrand/aa/a/a:mQB	Ljava/lang/Runnable;
+    //   118: invokeinterface 352 2 0
     //   123: pop
-    //   124: getstatic 409	com/tencent/mm/plugin/appbrand/aa/c:mpy	I
+    //   124: getstatic 410	com/tencent/mm/plugin/appbrand/aa/c:mQd	I
     //   127: newarray byte
     //   129: astore_2
     //   130: aload_0
-    //   131: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mpS	Lcom/tencent/mm/plugin/appbrand/aa/c;
-    //   134: invokevirtual 412	com/tencent/mm/plugin/appbrand/aa/c:bxx	()Z
+    //   131: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mQx	Lcom/tencent/mm/plugin/appbrand/aa/c;
+    //   134: invokevirtual 413	com/tencent/mm/plugin/appbrand/aa/c:bBC	()Z
     //   137: ifne +84 -> 221
     //   140: aload_0
-    //   141: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mpS	Lcom/tencent/mm/plugin/appbrand/aa/c;
-    //   144: invokevirtual 415	com/tencent/mm/plugin/appbrand/aa/c:isClosed	()Z
+    //   141: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mQx	Lcom/tencent/mm/plugin/appbrand/aa/c;
+    //   144: invokevirtual 416	com/tencent/mm/plugin/appbrand/aa/c:isClosed	()Z
     //   147: ifne +74 -> 221
     //   150: aload_0
-    //   151: getfield 395	com/tencent/mm/plugin/appbrand/aa/a/a:mpT	Ljava/io/InputStream;
+    //   151: getfield 396	com/tencent/mm/plugin/appbrand/aa/a/a:mQy	Ljava/io/InputStream;
     //   154: aload_2
-    //   155: invokevirtual 421	java/io/InputStream:read	([B)I
+    //   155: invokevirtual 422	java/io/InputStream:read	([B)I
     //   158: istore_1
     //   159: iload_1
     //   160: iconst_m1
     //   161: if_icmpeq +60 -> 221
     //   164: aload_0
-    //   165: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mpS	Lcom/tencent/mm/plugin/appbrand/aa/c;
+    //   165: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mQx	Lcom/tencent/mm/plugin/appbrand/aa/c;
     //   168: aload_2
     //   169: iconst_0
     //   170: iload_1
-    //   171: invokestatic 427	java/nio/ByteBuffer:wrap	([BII)Ljava/nio/ByteBuffer;
-    //   174: invokevirtual 430	com/tencent/mm/plugin/appbrand/aa/c:r	(Ljava/nio/ByteBuffer;)V
+    //   171: invokestatic 428	java/nio/ByteBuffer:wrap	([BII)Ljava/nio/ByteBuffer;
+    //   174: invokevirtual 431	com/tencent/mm/plugin/appbrand/aa/c:r	(Ljava/nio/ByteBuffer;)V
     //   177: goto -47 -> 130
     //   180: astore_2
     //   181: aload_0
-    //   182: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mpS	Lcom/tencent/mm/plugin/appbrand/aa/c;
-    //   185: invokevirtual 118	com/tencent/mm/plugin/appbrand/aa/c:bxw	()V
+    //   182: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mQx	Lcom/tencent/mm/plugin/appbrand/aa/c;
+    //   185: invokevirtual 118	com/tencent/mm/plugin/appbrand/aa/c:bBB	()V
     //   188: return
     //   189: aload_0
     //   190: getfield 56	com/tencent/mm/plugin/appbrand/aa/a/a:socket	Ljava/net/Socket;
-    //   193: invokevirtual 431	java/net/Socket:isClosed	()Z
+    //   193: invokevirtual 432	java/net/Socket:isClosed	()Z
     //   196: ifeq -174 -> 22
     //   199: new 103	java/io/IOException
     //   202: dup
-    //   203: invokespecial 432	java/io/IOException:<init>	()V
+    //   203: invokespecial 433	java/io/IOException:<init>	()V
     //   206: athrow
     //   207: astore_2
     //   208: aload_0
-    //   209: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mpS	Lcom/tencent/mm/plugin/appbrand/aa/c;
+    //   209: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mQx	Lcom/tencent/mm/plugin/appbrand/aa/c;
     //   212: iconst_m1
     //   213: aload_2
-    //   214: invokevirtual 435	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   217: invokevirtual 438	com/tencent/mm/plugin/appbrand/aa/c:at	(ILjava/lang/String;)V
+    //   214: invokevirtual 436	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   217: invokevirtual 439	com/tencent/mm/plugin/appbrand/aa/c:av	(ILjava/lang/String;)V
     //   220: return
     //   221: aload_0
-    //   222: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mpS	Lcom/tencent/mm/plugin/appbrand/aa/c;
-    //   225: invokevirtual 118	com/tencent/mm/plugin/appbrand/aa/c:bxw	()V
+    //   222: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mQx	Lcom/tencent/mm/plugin/appbrand/aa/c;
+    //   225: invokevirtual 118	com/tencent/mm/plugin/appbrand/aa/c:bBB	()V
     //   228: return
     //   229: astore_2
     //   230: aload_0
     //   231: aload_2
     //   232: invokevirtual 112	com/tencent/mm/plugin/appbrand/aa/a/a:onError	(Ljava/lang/Exception;)V
     //   235: aload_0
-    //   236: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mpS	Lcom/tencent/mm/plugin/appbrand/aa/c;
+    //   236: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mQx	Lcom/tencent/mm/plugin/appbrand/aa/c;
     //   239: sipush 1006
     //   242: aload_2
-    //   243: invokevirtual 439	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
-    //   246: invokevirtual 438	com/tencent/mm/plugin/appbrand/aa/c:at	(ILjava/lang/String;)V
+    //   243: invokevirtual 440	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
+    //   246: invokevirtual 439	com/tencent/mm/plugin/appbrand/aa/c:av	(ILjava/lang/String;)V
     //   249: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -438,7 +438,7 @@ public abstract class a
   
   public final void v(ByteBuffer paramByteBuffer)
   {
-    m(paramByteBuffer);
+    l(paramByteBuffer);
   }
   
   final class a
@@ -465,9 +465,9 @@ public abstract class a
       //   12: invokestatic 50	java/lang/Thread:interrupted	()Z
       //   15: ifne +212 -> 227
       //   18: aload_0
-      //   19: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
-      //   22: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mpS	Lcom/tencent/mm/plugin/appbrand/aa/c;
-      //   25: getfield 60	com/tencent/mm/plugin/appbrand/aa/c:mpC	Ljava/util/concurrent/BlockingQueue;
+      //   19: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   22: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mQx	Lcom/tencent/mm/plugin/appbrand/aa/c;
+      //   25: getfield 60	com/tencent/mm/plugin/appbrand/aa/c:mQh	Ljava/util/concurrent/BlockingQueue;
       //   28: invokeinterface 65 1 0
       //   33: ifne +189 -> 222
       //   36: iconst_1
@@ -475,9 +475,9 @@ public abstract class a
       //   38: iload_1
       //   39: ifeq -34 -> 5
       //   42: aload_0
-      //   43: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
-      //   46: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mpS	Lcom/tencent/mm/plugin/appbrand/aa/c;
-      //   49: getfield 60	com/tencent/mm/plugin/appbrand/aa/c:mpC	Ljava/util/concurrent/BlockingQueue;
+      //   43: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   46: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mQx	Lcom/tencent/mm/plugin/appbrand/aa/c;
+      //   49: getfield 60	com/tencent/mm/plugin/appbrand/aa/c:mQh	Ljava/util/concurrent/BlockingQueue;
       //   52: ldc2_w 66
       //   55: getstatic 73	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
       //   58: invokeinterface 77 4 0
@@ -486,8 +486,8 @@ public abstract class a
       //   67: aload_2
       //   68: ifnull -63 -> 5
       //   71: aload_0
-      //   72: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
-      //   75: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mpU	Ljava/io/OutputStream;
+      //   72: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   75: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mQz	Ljava/io/OutputStream;
       //   78: aload_2
       //   79: invokevirtual 87	java/nio/ByteBuffer:array	()[B
       //   82: iconst_0
@@ -495,15 +495,15 @@ public abstract class a
       //   84: invokevirtual 91	java/nio/ByteBuffer:limit	()I
       //   87: invokevirtual 97	java/io/OutputStream:write	([BII)V
       //   90: aload_0
-      //   91: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
-      //   94: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mpU	Ljava/io/OutputStream;
+      //   91: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   94: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mQz	Ljava/io/OutputStream;
       //   97: invokevirtual 100	java/io/OutputStream:flush	()V
       //   100: goto -95 -> 5
       //   103: astore_2
       //   104: aload_0
-      //   105: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
-      //   108: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mpS	Lcom/tencent/mm/plugin/appbrand/aa/c;
-      //   111: getfield 60	com/tencent/mm/plugin/appbrand/aa/c:mpC	Ljava/util/concurrent/BlockingQueue;
+      //   105: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   108: getfield 54	com/tencent/mm/plugin/appbrand/aa/a/a:mQx	Lcom/tencent/mm/plugin/appbrand/aa/c;
+      //   111: getfield 60	com/tencent/mm/plugin/appbrand/aa/c:mQh	Ljava/util/concurrent/BlockingQueue;
       //   114: invokeinterface 104 1 0
       //   119: astore_2
       //   120: aload_2
@@ -514,8 +514,8 @@ public abstract class a
       //   135: checkcast 79	java/nio/ByteBuffer
       //   138: astore_3
       //   139: aload_0
-      //   140: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
-      //   143: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mpU	Ljava/io/OutputStream;
+      //   140: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   143: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mQz	Ljava/io/OutputStream;
       //   146: aload_3
       //   147: invokevirtual 87	java/nio/ByteBuffer:array	()[B
       //   150: iconst_0
@@ -523,13 +523,13 @@ public abstract class a
       //   152: invokevirtual 91	java/nio/ByteBuffer:limit	()I
       //   155: invokevirtual 97	java/io/OutputStream:write	([BII)V
       //   158: aload_0
-      //   159: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
-      //   162: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mpU	Ljava/io/OutputStream;
+      //   159: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   162: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mQz	Ljava/io/OutputStream;
       //   165: invokevirtual 100	java/io/OutputStream:flush	()V
       //   168: goto -48 -> 120
       //   171: astore_2
       //   172: aload_0
-      //   173: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   173: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
       //   176: aload_2
       //   177: invokestatic 116	com/tencent/mm/plugin/appbrand/aa/a/a:a	(Lcom/tencent/mm/plugin/appbrand/aa/a/a;Ljava/lang/Exception;)V
       //   180: ldc 118
@@ -537,16 +537,16 @@ public abstract class a
       //   183: ldc 120
       //   185: iconst_0
       //   186: anewarray 4	java/lang/Object
-      //   189: invokestatic 126	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   189: invokestatic 126	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   192: ldc 118
       //   194: ldc 128
-      //   196: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
+      //   196: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
       //   199: aload_0
-      //   200: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
-      //   203: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mpU	Ljava/io/OutputStream;
+      //   200: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   203: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mQz	Ljava/io/OutputStream;
       //   206: invokevirtual 135	java/io/OutputStream:close	()V
       //   209: aload_0
-      //   210: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   210: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
       //   213: invokestatic 137	com/tencent/mm/plugin/appbrand/aa/a/a:a	(Lcom/tencent/mm/plugin/appbrand/aa/a/a;)V
       //   216: ldc 38
       //   218: invokestatic 140	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -556,20 +556,20 @@ public abstract class a
       //   224: goto -186 -> 38
       //   227: ldc 118
       //   229: ldc 128
-      //   231: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
+      //   231: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
       //   234: aload_0
-      //   235: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
-      //   238: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mpU	Ljava/io/OutputStream;
+      //   235: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   238: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mQz	Ljava/io/OutputStream;
       //   241: invokevirtual 135	java/io/OutputStream:close	()V
       //   244: aload_0
-      //   245: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   245: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
       //   248: invokestatic 137	com/tencent/mm/plugin/appbrand/aa/a/a:a	(Lcom/tencent/mm/plugin/appbrand/aa/a/a;)V
       //   251: ldc 38
       //   253: invokestatic 140	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   256: return
       //   257: astore_2
       //   258: aload_0
-      //   259: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   259: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
       //   262: aload_2
       //   263: invokestatic 116	com/tencent/mm/plugin/appbrand/aa/a/a:a	(Lcom/tencent/mm/plugin/appbrand/aa/a/a;Ljava/lang/Exception;)V
       //   266: ldc 118
@@ -577,16 +577,16 @@ public abstract class a
       //   269: ldc 142
       //   271: iconst_0
       //   272: anewarray 4	java/lang/Object
-      //   275: invokestatic 126	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   275: invokestatic 126	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   278: ldc 118
       //   280: ldc 128
-      //   282: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
+      //   282: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
       //   285: aload_0
-      //   286: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
-      //   289: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mpU	Ljava/io/OutputStream;
+      //   286: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   289: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mQz	Ljava/io/OutputStream;
       //   292: invokevirtual 135	java/io/OutputStream:close	()V
       //   295: aload_0
-      //   296: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   296: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
       //   299: invokestatic 137	com/tencent/mm/plugin/appbrand/aa/a/a:a	(Lcom/tencent/mm/plugin/appbrand/aa/a/a;)V
       //   302: ldc 38
       //   304: invokestatic 140	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -594,13 +594,13 @@ public abstract class a
       //   308: astore_2
       //   309: ldc 118
       //   311: ldc 128
-      //   313: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
+      //   313: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
       //   316: aload_0
-      //   317: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
-      //   320: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mpU	Ljava/io/OutputStream;
+      //   317: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   320: getfield 83	com/tencent/mm/plugin/appbrand/aa/a/a:mQz	Ljava/io/OutputStream;
       //   323: invokevirtual 135	java/io/OutputStream:close	()V
       //   326: aload_0
-      //   327: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mqa	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
+      //   327: getfield 17	com/tencent/mm/plugin/appbrand/aa/a/a$a:mQF	Lcom/tencent/mm/plugin/appbrand/aa/a/a;
       //   330: invokestatic 137	com/tencent/mm/plugin/appbrand/aa/a/a:a	(Lcom/tencent/mm/plugin/appbrand/aa/a/a;)V
       //   333: ldc 38
       //   335: invokestatic 140	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -660,7 +660,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa.a.a
  * JD-Core Version:    0.7.0.1
  */

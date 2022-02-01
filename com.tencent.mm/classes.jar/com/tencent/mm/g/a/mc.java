@@ -2,13 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class mc
   extends b
 {
-  public a doj;
-  public b dok;
+  public a dzy;
+  public b dzz;
   
   public mc()
   {
@@ -17,30 +16,22 @@ public final class mc
   
   private mc(byte paramByte)
   {
-    AppMethodBeat.i(116459);
-    this.doj = new a();
-    this.dok = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(149873);
+    this.dzy = new a();
+    this.dzz = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116459);
+    AppMethodBeat.o(149873);
   }
   
   public static final class a
   {
-    public boolean doi = false;
-    public String dol;
-    public List<String> dom;
+    public int action;
   }
   
   public static final class b
   {
-    public int don;
-    public String doo;
-    public List<String> dop;
-    public List<String> doq;
-    public List<String> dor;
-    public List<String> dos;
-    public List<String> dot;
+    public boolean isStart;
   }
 }
 

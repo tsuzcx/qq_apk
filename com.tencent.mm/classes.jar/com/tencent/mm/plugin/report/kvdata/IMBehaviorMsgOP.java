@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.report.kvdata;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class IMBehaviorMsgOP
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public int appMsgInnerType;
   public int count;
@@ -16,28 +16,28 @@ public class IMBehaviorMsgOP
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.msgType);
-      paramVarArgs.aR(2, this.msgOpType);
-      paramVarArgs.aR(3, this.appMsgInnerType);
-      paramVarArgs.aR(4, this.count);
+      paramVarArgs.aS(1, this.msgType);
+      paramVarArgs.aS(2, this.msgOpType);
+      paramVarArgs.aS(3, this.appMsgInnerType);
+      paramVarArgs.aS(4, this.count);
       AppMethodBeat.o(151537);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bx(1, this.msgType);
-      int i = f.a.a.b.b.a.bx(2, this.msgOpType);
-      int j = f.a.a.b.b.a.bx(3, this.appMsgInnerType);
-      int k = f.a.a.b.b.a.bx(4, this.count);
+      paramInt = f.a.a.b.b.a.bz(1, this.msgType);
+      int i = f.a.a.b.b.a.bz(2, this.msgOpType);
+      int j = f.a.a.b.b.a.bz(3, this.appMsgInnerType);
+      int k = f.a.a.b.b.a.bz(4, this.count);
       AppMethodBeat.o(151537);
       return paramInt + 0 + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(151537);
@@ -53,19 +53,19 @@ public class IMBehaviorMsgOP
         AppMethodBeat.o(151537);
         return -1;
       case 1: 
-        localIMBehaviorMsgOP.msgType = locala.LVo.xF();
+        localIMBehaviorMsgOP.msgType = locala.NPN.zc();
         AppMethodBeat.o(151537);
         return 0;
       case 2: 
-        localIMBehaviorMsgOP.msgOpType = locala.LVo.xF();
+        localIMBehaviorMsgOP.msgOpType = locala.NPN.zc();
         AppMethodBeat.o(151537);
         return 0;
       case 3: 
-        localIMBehaviorMsgOP.appMsgInnerType = locala.LVo.xF();
+        localIMBehaviorMsgOP.appMsgInnerType = locala.NPN.zc();
         AppMethodBeat.o(151537);
         return 0;
       }
-      localIMBehaviorMsgOP.count = locala.LVo.xF();
+      localIMBehaviorMsgOP.count = locala.NPN.zc();
       AppMethodBeat.o(151537);
       return 0;
     }

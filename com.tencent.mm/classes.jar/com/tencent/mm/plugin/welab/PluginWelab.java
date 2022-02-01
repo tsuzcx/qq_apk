@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.c.e;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.cc;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.model.cd;
+import com.tencent.mm.plugin.messenger.foundation.a.r;
 import com.tencent.mm.protocal.j.h;
 import com.tencent.mm.protocal.j.i;
 import com.tencent.mm.protocal.x.b;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
@@ -20,20 +20,20 @@ public class PluginWelab
   extends f
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.welab.a.a
 {
-  private b CTE;
-  private boolean CTF;
+  private b ExE;
+  private boolean ExF;
   
   public PluginWelab()
   {
     AppMethodBeat.i(146191);
-    this.CTE = new b();
+    this.ExE = new b();
     AppMethodBeat.o(146191);
   }
   
   public HashMap<Integer, h.b> collectDatabaseFactory()
   {
     AppMethodBeat.i(146199);
-    ac.v("PluginWelab", "collectDatabaseFactory");
+    ad.v("PluginWelab", "collectDatabaseFactory");
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf("LabAppInfo".hashCode()), new h.b()
     {
@@ -52,12 +52,12 @@ public class PluginWelab
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(146194);
-    if (!paramg.ahL())
+    if (!paramg.akw())
     {
       AppMethodBeat.o(146194);
       return;
     }
-    ac.v("PluginWelab", "configure");
+    ad.v("PluginWelab", "configure");
     com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.welab.a.a.d.class, new e(new c()));
     com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.welab.b.a.class, new e(new com.tencent.mm.plugin.welab.b.b()));
     ((com.tencent.mm.plugin.auth.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.auth.a.b.class)).addHandleAuthResponse(new com.tencent.mm.plugin.auth.a.a()
@@ -65,12 +65,12 @@ public class PluginWelab
       public final void a(j.h paramAnonymoush, j.i paramAnonymousi, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(146189);
-        a.eHv();
-        boolean bool = PluginWelab.this.CTF;
+        a.eWo();
+        boolean bool = PluginWelab.this.ExF;
         if (!paramAnonymousBoolean) {}
         for (paramAnonymousBoolean = true;; paramAnonymousBoolean = false)
         {
-          a.aD(bool, paramAnonymousBoolean);
+          a.aK(bool, paramAnonymousBoolean);
           AppMethodBeat.o(146189);
           return;
         }
@@ -84,14 +84,14 @@ public class PluginWelab
   public void dependency()
   {
     AppMethodBeat.i(146193);
-    dependsOn(q.class);
+    dependsOn(r.class);
     AppMethodBeat.o(146193);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(146195);
-    ac.v("PluginWelab", "execute");
+    ad.v("PluginWelab", "execute");
     AppMethodBeat.o(146195);
   }
   
@@ -105,20 +105,20 @@ public class PluginWelab
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(146197);
-    ac.v("PluginWelab", "onAccountInitialized");
-    ai.getContext();
+    ad.v("PluginWelab", "onAccountInitialized");
+    aj.getContext();
     com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.welab.a.a.a.class, new com.tencent.mm.plugin.welab.a.b());
     com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.welab.a.a.c.class, new com.tencent.mm.plugin.welab.a.c());
-    this.CTF = paramc.ghX;
-    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().a("newabtestlabs", this.CTE, true);
+    this.ExF = paramc.gBH;
+    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().a("newabtestlabs", this.ExE, true);
     AppMethodBeat.o(146197);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(146198);
-    ac.v("PluginWelab", "onAccountRelease");
-    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().b("newabtestlabs", this.CTE, true);
+    ad.v("PluginWelab", "onAccountRelease");
+    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().b("newabtestlabs", this.ExE, true);
     AppMethodBeat.o(146198);
   }
   
@@ -127,8 +127,8 @@ public class PluginWelab
   public void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(146196);
-    ac.v("PluginWelab", "onDataBaseOpened");
-    a.eHv().CTI = new com.tencent.mm.plugin.welab.d.a(paramh1);
+    ad.v("PluginWelab", "onDataBaseOpened");
+    a.eWo().ExI = new com.tencent.mm.plugin.welab.d.a(paramh1);
     AppMethodBeat.o(146196);
   }
   
@@ -139,7 +139,7 @@ public class PluginWelab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.PluginWelab
  * JD-Core Version:    0.7.0.1
  */

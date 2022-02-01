@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.luckymoney.model.z;
-import com.tencent.mm.protocal.protobuf.bir;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.bmz;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,38 +20,38 @@ public final class c
 {
   private Context mContext;
   private LayoutInflater mInflater;
-  private List<bir> uhb;
-  private String uhc;
-  boolean uhd;
-  private int uhe;
-  private a uhf;
+  private List<bmz> vjL;
+  private String vjM;
+  boolean vjN;
+  private int vjO;
+  private a vjP;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(64906);
-    this.uhb = new LinkedList();
-    this.uhc = null;
-    this.uhd = false;
-    this.uhe = 1;
-    this.uhf = null;
+    this.vjL = new LinkedList();
+    this.vjM = null;
+    this.vjN = false;
+    this.vjO = 1;
+    this.vjP = null;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(paramContext);
     AppMethodBeat.o(64906);
   }
   
-  private bir HF(int paramInt)
+  private bmz Jb(int paramInt)
   {
     AppMethodBeat.i(64909);
-    bir localbir = (bir)this.uhb.get(paramInt);
+    bmz localbmz = (bmz)this.vjL.get(paramInt);
     AppMethodBeat.o(64909);
-    return localbir;
+    return localbmz;
   }
   
-  public final void ef(List<bir> paramList)
+  public final void es(List<bmz> paramList)
   {
     AppMethodBeat.i(64907);
     if (paramList == null) {}
-    for (this.uhb = new LinkedList();; this.uhb = paramList)
+    for (this.vjL = new LinkedList();; this.vjL = paramList)
     {
       notifyDataSetChanged();
       AppMethodBeat.o(64907);
@@ -62,7 +62,7 @@ public final class c
   public final int getCount()
   {
     AppMethodBeat.i(64908);
-    int i = this.uhb.size();
+    int i = this.vjL.size();
     AppMethodBeat.o(64908);
     return i;
   }
@@ -79,48 +79,48 @@ public final class c
     {
       paramView = this.mInflater.inflate(2131494658, paramViewGroup, false);
       paramViewGroup = new b();
-      paramViewGroup.jja = paramView.findViewById(2131304239);
-      paramViewGroup.ozi = ((ImageView)paramView.findViewById(2131301935));
-      paramViewGroup.tqQ = ((TextView)paramView.findViewById(2131301938));
-      paramViewGroup.uhg = ((TextView)paramView.findViewById(2131301939));
-      paramViewGroup.uhh = ((TextView)paramView.findViewById(2131301933));
-      paramViewGroup.uhi = ((TextView)paramView.findViewById(2131301934));
-      paramViewGroup.uhj = ((TextView)paramView.findViewById(2131301940));
-      paramViewGroup.uhk = ((ImageView)paramView.findViewById(2131301936));
-      paramViewGroup.uhl = ((TextView)paramView.findViewById(2131301937));
+      paramViewGroup.jCI = paramView.findViewById(2131304239);
+      paramViewGroup.pcD = ((ImageView)paramView.findViewById(2131301935));
+      paramViewGroup.upn = ((TextView)paramView.findViewById(2131301938));
+      paramViewGroup.vjQ = ((TextView)paramView.findViewById(2131301939));
+      paramViewGroup.vjR = ((TextView)paramView.findViewById(2131301933));
+      paramViewGroup.vjS = ((TextView)paramView.findViewById(2131301934));
+      paramViewGroup.vjT = ((TextView)paramView.findViewById(2131301940));
+      paramViewGroup.vjU = ((ImageView)paramView.findViewById(2131301936));
+      paramViewGroup.vjV = ((TextView)paramView.findViewById(2131301937));
       paramView.setTag(paramViewGroup);
     }
-    bir localbir;
+    bmz localbmz;
     for (;;)
     {
-      localbir = HF(paramInt);
-      z.b(paramViewGroup.ozi, localbir.ugE, localbir.username);
-      paramViewGroup.uhi.setVisibility(8);
-      z.a(this.mContext, paramViewGroup.tqQ, localbir.nickname);
-      String str = this.mContext.getString(2131760940, new Object[] { e.C(localbir.EXA / 100.0D) });
-      paramViewGroup.uhh.setText(str);
-      paramViewGroup.uhg.setText(z.n(this.mContext, localbir.EXB * 1000L));
-      paramViewGroup.uhg.setVisibility(0);
-      paramViewGroup.uhj.setVisibility(8);
-      if (!bs.isNullOrNil(localbir.EXD)) {
+      localbmz = Jb(paramInt);
+      z.b(paramViewGroup.pcD, localbmz.vjo, localbmz.username);
+      paramViewGroup.vjS.setVisibility(8);
+      z.a(this.mContext, paramViewGroup.upn, localbmz.nickname);
+      String str = this.mContext.getString(2131760940, new Object[] { e.C(localbmz.GGW / 100.0D) });
+      paramViewGroup.vjR.setText(str);
+      paramViewGroup.vjQ.setText(z.n(this.mContext, localbmz.GGX * 1000L));
+      paramViewGroup.vjQ.setVisibility(0);
+      paramViewGroup.vjT.setVisibility(8);
+      if (!bt.isNullOrNil(localbmz.GGZ)) {
         break;
       }
-      paramViewGroup.uhk.setVisibility(8);
-      paramViewGroup.uhl.setVisibility(8);
+      paramViewGroup.vjU.setVisibility(8);
+      paramViewGroup.vjV.setVisibility(8);
       AppMethodBeat.o(64910);
       return paramView;
       paramViewGroup = (b)paramView.getTag();
     }
-    paramViewGroup.uhl.setText(localbir.EXD);
-    if (this.uhe == 2) {
-      paramViewGroup.uhk.setImageResource(2131233018);
+    paramViewGroup.vjV.setText(localbmz.GGZ);
+    if (this.vjO == 2) {
+      paramViewGroup.vjU.setImageResource(2131233018);
     }
     for (;;)
     {
-      paramViewGroup.uhk.setVisibility(0);
-      paramViewGroup.uhl.setVisibility(0);
+      paramViewGroup.vjU.setVisibility(0);
+      paramViewGroup.vjV.setVisibility(0);
       break;
-      paramViewGroup.uhk.setImageResource(2131232964);
+      paramViewGroup.vjU.setImageResource(2131232964);
     }
   }
   
@@ -128,15 +128,15 @@ public final class c
   
   final class b
   {
-    View jja;
-    ImageView ozi;
-    TextView tqQ;
-    TextView uhg;
-    TextView uhh;
-    TextView uhi;
-    TextView uhj;
-    ImageView uhk;
-    TextView uhl;
+    View jCI;
+    ImageView pcD;
+    TextView upn;
+    TextView vjQ;
+    TextView vjR;
+    TextView vjS;
+    TextView vjT;
+    ImageView vjU;
+    TextView vjV;
     
     b() {}
   }

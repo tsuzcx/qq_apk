@@ -1,46 +1,46 @@
 package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.an.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.ap.a;
 
 final class WorkerProfile$1
-  implements an.a
+  implements ap.a
 {
   WorkerProfile$1(WorkerProfile paramWorkerProfile) {}
   
   public final void d(String paramString1, String paramString2)
   {
     AppMethodBeat.i(19539);
-    ac.d(paramString1, paramString2);
+    ad.d(paramString1, paramString2);
     AppMethodBeat.o(19539);
   }
   
   public final void e(String paramString1, String paramString2)
   {
     AppMethodBeat.i(19542);
-    ac.e(paramString1, paramString2);
+    ad.e(paramString1, paramString2);
     AppMethodBeat.o(19542);
   }
   
   public final void i(String paramString1, String paramString2)
   {
     AppMethodBeat.i(19540);
-    ac.i(paramString1, paramString2);
+    ad.i(paramString1, paramString2);
     AppMethodBeat.o(19540);
   }
   
   public final void v(String paramString1, String paramString2)
   {
     AppMethodBeat.i(19538);
-    ac.v(paramString1, paramString2);
+    ad.v(paramString1, paramString2);
     AppMethodBeat.o(19538);
   }
   
   public final void w(String paramString1, String paramString2)
   {
     AppMethodBeat.i(19541);
-    ac.w(paramString1, paramString2);
+    ad.w(paramString1, paramString2);
     AppMethodBeat.o(19541);
   }
 }

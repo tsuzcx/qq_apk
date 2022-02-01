@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ku
   extends b
 {
-  public a dmB;
-  public b dmC;
+  public a dxR;
+  public b dxS;
   
   public ku()
   {
@@ -16,29 +17,30 @@ public final class ku
   
   private ku(byte paramByte)
   {
-    AppMethodBeat.i(89748);
-    this.dmB = new a();
-    this.dmC = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(217043);
+    this.dxR = new a();
+    this.dxS = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(89748);
+    AppMethodBeat.o(217043);
   }
   
   public static final class a
   {
-    public int dgm = 0;
-    public String dmD;
-    public int dmE = 0;
+    public Runnable cDO;
+    public Bundle dxT;
+    public String dxU;
+    public int type = 0;
   }
   
   public static final class b
   {
-    public boolean dbS = false;
+    public Bundle dxV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.ku
  * JD-Core Version:    0.7.0.1
  */

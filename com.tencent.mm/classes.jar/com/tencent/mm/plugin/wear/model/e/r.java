@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wear.model.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -11,12 +11,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class r
 {
-  private static AtomicInteger BXt;
+  private static AtomicInteger DxM;
   
   static
   {
     AppMethodBeat.i(30112);
-    BXt = new AtomicInteger();
+    DxM = new AtomicInteger();
     AppMethodBeat.o(30112);
   }
   
@@ -25,9 +25,9 @@ public final class r
     AppMethodBeat.i(30111);
     byte[] arrayOfByte = paramArrayOfByte;
     if (paramBoolean) {
-      arrayOfByte = a.ewp().bW(paramArrayOfByte);
+      arrayOfByte = a.eKv().cd(paramArrayOfByte);
     }
-    int i = BXt.incrementAndGet();
+    int i = DxM.incrementAndGet();
     paramArrayOfByte = new ByteArrayOutputStream();
     DataOutputStream localDataOutputStream = new DataOutputStream(paramArrayOfByte);
     try
@@ -42,7 +42,7 @@ public final class r
       }
       for (;;)
       {
-        a.ewp().bU(paramArrayOfByte.toByteArray());
+        a.eKv().cb(paramArrayOfByte.toByteArray());
         AppMethodBeat.o(30111);
         return;
         localDataOutputStream.writeInt(0);
@@ -51,7 +51,7 @@ public final class r
     }
     catch (IOException paramArrayOfByte)
     {
-      ac.printErrStackTrace("MicroMsg.Wear.WearPushServerLogic", paramArrayOfByte, "gen response data error connectType=%d, sessionId=%d, funId=%d", new Object[] { Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(paramInt) });
+      ad.printErrStackTrace("MicroMsg.Wear.WearPushServerLogic", paramArrayOfByte, "gen response data error connectType=%d, sessionId=%d, funId=%d", new Object[] { Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(paramInt) });
       AppMethodBeat.o(30111);
     }
   }

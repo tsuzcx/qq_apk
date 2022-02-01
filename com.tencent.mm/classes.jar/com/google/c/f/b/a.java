@@ -2,13 +2,13 @@ package com.google.c.f.b;
 
 final class a
 {
-  final byte[] bKO;
-  final byte[] bKP;
+  final byte[] bVb;
+  final byte[] bVc;
   
   a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    this.bKO = paramArrayOfByte1;
-    this.bKP = paramArrayOfByte2;
+    this.bVb = paramArrayOfByte1;
+    this.bVc = paramArrayOfByte2;
   }
 }
 

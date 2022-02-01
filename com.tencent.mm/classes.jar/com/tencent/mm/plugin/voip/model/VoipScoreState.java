@@ -7,22 +7,22 @@ import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.model.bj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public class VoipScoreState
   implements Parcelable
 {
   public static final Parcelable.Creator<VoipScoreState> CREATOR;
-  public String AEC;
-  public int AED;
-  public long AEE;
+  public String CdC;
+  public int CdD;
+  public long CdE;
   public int roomId;
-  public long tIG;
-  public long tKb;
+  public long uLt;
+  public long uMO;
   
   static
   {
@@ -34,63 +34,63 @@ public class VoipScoreState
   public VoipScoreState()
   {
     AppMethodBeat.i(115102);
-    this.AEC = "";
-    this.AED = -1;
+    this.CdC = "";
+    this.CdD = -1;
     this.roomId = -1;
-    this.tIG = -1L;
-    this.tKb = -1L;
-    this.AEE = 0L;
-    ac.m("MicroMsg.VoipScoreState", "create VoipScoreState", new Object[0]);
+    this.uLt = -1L;
+    this.uMO = -1L;
+    this.CdE = 0L;
+    ad.m("MicroMsg.VoipScoreState", "create VoipScoreState", new Object[0]);
     AppMethodBeat.o(115102);
   }
   
   protected VoipScoreState(Parcel paramParcel)
   {
     AppMethodBeat.i(115103);
-    this.AEC = "";
-    this.AED = -1;
+    this.CdC = "";
+    this.CdD = -1;
     this.roomId = -1;
-    this.tIG = -1L;
-    this.tKb = -1L;
-    this.AEE = 0L;
-    this.AEC = paramParcel.readString();
-    this.AED = paramParcel.readInt();
+    this.uLt = -1L;
+    this.uMO = -1L;
+    this.CdE = 0L;
+    this.CdC = paramParcel.readString();
+    this.CdD = paramParcel.readInt();
     this.roomId = paramParcel.readInt();
-    this.tIG = paramParcel.readLong();
-    this.tKb = paramParcel.readLong();
-    this.AEE = paramParcel.readLong();
+    this.uLt = paramParcel.readLong();
+    this.uMO = paramParcel.readLong();
+    this.CdE = paramParcel.readLong();
     AppMethodBeat.o(115103);
   }
   
-  public static void ejH()
+  public static void exs()
   {
     AppMethodBeat.i(115105);
-    long l = bi.ayX();
-    g.agS();
-    g.agR().agA().set(ah.a.GRD, Long.valueOf(l));
-    ac.i("MicroMsg.VoipScoreState", "markShowScoreDialog %s", new Object[] { Long.valueOf(l) });
+    long l = bj.aCb();
+    g.ajD();
+    g.ajC().ajl().set(al.a.IEh, Long.valueOf(l));
+    ad.i("MicroMsg.VoipScoreState", "markShowScoreDialog %s", new Object[] { Long.valueOf(l) });
     AppMethodBeat.o(115105);
   }
   
-  public final void a(String paramString, int paramInt1, int paramInt2, long paramLong)
+  public final void c(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(115104);
-    ac.i("MicroMsg.VoipScoreState", "setScoreState, roomId:%s, roomKey:%s, title:%s, interval:%s", new Object[] { Integer.valueOf(paramInt2), Long.valueOf(paramLong), paramString, Integer.valueOf(paramInt1) });
+    ad.i("MicroMsg.VoipScoreState", "setScoreState, roomId:%s, roomKey:%s, title:%s, interval:%s", new Object[] { Integer.valueOf(paramInt2), Long.valueOf(paramLong), paramString, Integer.valueOf(paramInt1) });
     this.roomId = paramInt2;
-    this.tIG = paramLong;
-    if (!bs.isNullOrNil(paramString)) {
+    this.uLt = paramLong;
+    if (!bt.isNullOrNil(paramString)) {
       try
       {
         paramString = new String(Base64.decode(paramString.getBytes(), 0));
-        ac.m("MicroMsg.VoipScoreState", "setScoreState, title:%s, interval:%s", new Object[] { paramString, Integer.valueOf(paramInt1) });
-        this.AED = paramInt1;
-        this.AEC = paramString;
+        ad.m("MicroMsg.VoipScoreState", "setScoreState, title:%s, interval:%s", new Object[] { paramString, Integer.valueOf(paramInt1) });
+        this.CdD = paramInt1;
+        this.CdC = paramString;
         AppMethodBeat.o(115104);
         return;
       }
       catch (Exception paramString)
       {
-        ac.printErrStackTrace("MicroMsg.VoipScoreState", paramString, "setScoreState error: %s", new Object[] { paramString.getMessage() });
+        ad.printErrStackTrace("MicroMsg.VoipScoreState", paramString, "setScoreState error: %s", new Object[] { paramString.getMessage() });
       }
     }
     AppMethodBeat.o(115104);
@@ -101,32 +101,32 @@ public class VoipScoreState
     return 0;
   }
   
-  public final boolean ejG()
+  public final boolean exr()
   {
-    AppMethodBeat.i(208376);
-    g.agS();
-    long l2 = ((Long)g.agR().agA().get(ah.a.GRD, Long.valueOf(-1L))).longValue();
+    AppMethodBeat.i(216410);
+    g.ajD();
+    long l2 = ((Long)g.ajC().ajl().get(al.a.IEh, Long.valueOf(-1L))).longValue();
     if (l2 > 0L) {}
     for (long l1 = l2;; l1 = 0L)
     {
-      this.AEE = l1;
-      l1 = bi.ayX();
-      ac.i("MicroMsg.VoipScoreState", "needShowScoreDialog, current:%s, lastShowScoreTime:%s, scoreIntervalDay:%s", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(this.AED) });
-      if ((bs.isNullOrNil(this.AEC)) || (this.AED <= 0) || ((l2 > 0L) && (l1 - l2 <= this.AED * 86400000L))) {
+      this.CdE = l1;
+      l1 = bj.aCb();
+      ad.i("MicroMsg.VoipScoreState", "needShowScoreDialog, current:%s, lastShowScoreTime:%s, scoreIntervalDay:%s", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(this.CdD) });
+      if ((bt.isNullOrNil(this.CdC)) || (this.CdD <= 0) || ((l2 > 0L) && (l1 - l2 <= this.CdD * 86400000L))) {
         break;
       }
-      ac.i("MicroMsg.VoipScoreState", "needShowScoreDialog, exceed limit");
-      AppMethodBeat.o(208376);
+      ad.i("MicroMsg.VoipScoreState", "needShowScoreDialog, exceed limit");
+      AppMethodBeat.o(216410);
       return true;
     }
-    AppMethodBeat.o(208376);
+    AppMethodBeat.o(216410);
     return false;
   }
   
   public String toString()
   {
     AppMethodBeat.i(115107);
-    String str = "VoipScoreState{scoreTitle='" + this.AEC + '\'' + ", scoreIntervalDay=" + this.AED + ", roomId=" + this.roomId + ", roomKey=" + this.tIG + ", startTalkTime=" + this.tKb + ", lastShowScoreTime=" + this.AEE + '}';
+    String str = "VoipScoreState{scoreTitle='" + this.CdC + '\'' + ", scoreIntervalDay=" + this.CdD + ", roomId=" + this.roomId + ", roomKey=" + this.uLt + ", startTalkTime=" + this.uMO + ", lastShowScoreTime=" + this.CdE + '}';
     AppMethodBeat.o(115107);
     return str;
   }
@@ -134,12 +134,12 @@ public class VoipScoreState
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(115106);
-    paramParcel.writeString(this.AEC);
-    paramParcel.writeInt(this.AED);
+    paramParcel.writeString(this.CdC);
+    paramParcel.writeInt(this.CdD);
     paramParcel.writeInt(this.roomId);
-    paramParcel.writeLong(this.tIG);
-    paramParcel.writeLong(this.tKb);
-    paramParcel.writeLong(this.AEE);
+    paramParcel.writeLong(this.uLt);
+    paramParcel.writeLong(this.uMO);
+    paramParcel.writeLong(this.CdE);
     AppMethodBeat.o(115106);
   }
 }

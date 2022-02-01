@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.n.c;
-import com.tencent.mm.pluginsdk.h.a.c.k;
+import com.tencent.mm.plugin.appbrand.m.c;
+import com.tencent.mm.pluginsdk.j.a.c.k;
 
 public class WxaPkgLoadProgress
   implements Parcelable, c, k
 {
   public static final Parcelable.Creator<WxaPkgLoadProgress> CREATOR;
-  public long jow;
-  public long jox;
+  public long jIs;
+  public long jIt;
   public int progress;
   
   static
@@ -25,40 +25,40 @@ public class WxaPkgLoadProgress
   public WxaPkgLoadProgress()
   {
     this.progress = 0;
-    this.jow = -1L;
-    this.jox = -1L;
+    this.jIs = -1L;
+    this.jIt = -1L;
   }
   
   public WxaPkgLoadProgress(int paramInt, long paramLong1, long paramLong2)
   {
     this.progress = 0;
-    this.jow = -1L;
-    this.jox = -1L;
+    this.jIs = -1L;
+    this.jIt = -1L;
     this.progress = paramInt;
-    this.jow = paramLong1;
-    this.jox = paramLong2;
+    this.jIs = paramLong1;
+    this.jIt = paramLong2;
   }
   
   protected WxaPkgLoadProgress(Parcel paramParcel)
   {
     AppMethodBeat.i(90640);
     this.progress = 0;
-    this.jow = -1L;
-    this.jox = -1L;
+    this.jIs = -1L;
+    this.jIt = -1L;
     this.progress = paramParcel.readInt();
-    this.jow = paramParcel.readLong();
-    this.jox = paramParcel.readLong();
+    this.jIs = paramParcel.readLong();
+    this.jIt = paramParcel.readLong();
     AppMethodBeat.o(90640);
   }
   
-  public final long aXl()
+  public final long baJ()
   {
-    return this.jow;
+    return this.jIs;
   }
   
-  public final long aXm()
+  public final long baK()
   {
-    return this.jox;
+    return this.jIt;
   }
   
   public int describeContents()
@@ -74,7 +74,7 @@ public class WxaPkgLoadProgress
   public String toString()
   {
     AppMethodBeat.i(90641);
-    String str = "WxaPkgLoadProgress{progress=" + this.progress + ", writtenLength=" + this.jow + ", totalLength=" + this.jox + '}';
+    String str = "WxaPkgLoadProgress{progress=" + this.progress + ", writtenLength=" + this.jIs + ", totalLength=" + this.jIt + '}';
     AppMethodBeat.o(90641);
     return str;
   }
@@ -83,8 +83,8 @@ public class WxaPkgLoadProgress
   {
     AppMethodBeat.i(90642);
     paramParcel.writeInt(this.progress);
-    paramParcel.writeLong(this.jow);
-    paramParcel.writeLong(this.jox);
+    paramParcel.writeLong(this.jIs);
+    paramParcel.writeLong(this.jIt);
     AppMethodBeat.o(90642);
   }
 }

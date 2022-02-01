@@ -12,14 +12,14 @@ public final class k
   public final void B(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(104687);
-    this.cGS.a(paramEmojiInfo);
+    this.cRW.a(paramEmojiInfo);
     AppMethodBeat.o(104687);
   }
   
-  public final void dcf()
+  public final void dlA()
   {
     AppMethodBeat.i(104689);
-    this.cGS.onHide();
+    this.cRW.onHide();
     AppMethodBeat.o(104689);
   }
 }

@@ -1,12 +1,14 @@
 package com.tencent.mm.emoji.loader.e;
 
 import d.g.a.b;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
 final class a$a
-  extends d.g.b.l
-  implements b<Boolean, y>
+  extends q
+  implements b<Boolean, z>
 {
   a$a(a parama)
   {

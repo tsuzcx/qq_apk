@@ -6,8 +6,8 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.b;
@@ -16,14 +16,14 @@ import com.tencent.mm.ui.base.h;
 public abstract class b
   extends SecurityImage.b
 {
-  SecurityImage iJk = null;
-  n iPK = null;
+  SecurityImage jct = null;
+  n jiS = null;
   
   public abstract n a(n paramn, String paramString);
   
-  public final void aPj()
+  public final void aSv()
   {
-    g.agi().a(a(this.iPK, ""), 0);
+    g.aiU().a(a(this.jiS, ""), 0);
   }
 }
 

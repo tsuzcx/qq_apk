@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.appbrand.appstorage.r;
 import com.tencent.mm.plugin.appbrand.appstorage.s;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.jsapi.y;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class o
   extends y<com.tencent.mm.plugin.appbrand.jsapi.h>
@@ -23,19 +23,19 @@ public final class o
     {
       JsApiSetStorageTask localJsApiSetStorageTask = new JsApiSetStorageTask();
       localJsApiSetStorageTask.appId = paramh.getAppId();
-      localJsApiSetStorageTask.kMr = paramInt;
-      localJsApiSetStorageTask.D(paramString1, paramString2, paramString3);
+      localJsApiSetStorageTask.liU = paramInt;
+      localJsApiSetStorageTask.C(paramString1, paramString2, paramString3);
       if (AppBrandMainProcessService.b(localJsApiSetStorageTask))
       {
         paramString3 = localJsApiSetStorageTask.result;
         return paramString3;
       }
-      ac.e("Luggage.FULL.JsApiSetStorageSync", "invokeWithDB appId[%s] key[%s] execSync failed", new Object[] { paramh.getAppId(), paramString1 });
+      ad.e("Luggage.FULL.JsApiSetStorageSync", "invokeWithDB appId[%s] key[%s] execSync failed", new Object[] { paramh.getAppId(), paramString1 });
       return "fail";
     }
     finally
     {
-      r.a(1, 1, s.co(paramString1, paramString2), 1, System.currentTimeMillis() - l, paramh);
+      r.a(1, 1, s.cq(paramString1, paramString2), 1, System.currentTimeMillis() - l, paramh);
       AppMethodBeat.o(147287);
     }
   }
@@ -46,19 +46,19 @@ public final class o
     long l = System.currentTimeMillis();
     try
     {
-      paramString3 = p.a(((a)e.K(a.class)).ch(paramh.getAppId()).c(paramInt, paramh.getAppId(), paramString1, paramString2, paramString3));
+      paramString3 = p.a(((a)e.K(a.class)).dg(paramh.getAppId()).c(paramInt, paramh.getAppId(), paramString1, paramString2, paramString3));
       return paramString3;
     }
     finally
     {
-      r.a(2, 1, s.co(paramString1, paramString2), 1, System.currentTimeMillis() - l, paramh);
+      r.a(2, 1, s.cq(paramString1, paramString2), 1, System.currentTimeMillis() - l, paramh);
       AppMethodBeat.o(147288);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.o
  * JD-Core Version:    0.7.0.1
  */

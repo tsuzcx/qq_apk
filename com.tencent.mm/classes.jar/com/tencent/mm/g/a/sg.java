@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class sg
   extends b
 {
+  public a dGL;
+  public b dGM;
+  
   public sg()
   {
     this((byte)0);
@@ -12,9 +16,20 @@ public final class sg
   
   private sg(byte paramByte)
   {
-    this.Gqe = false;
+    AppMethodBeat.i(19833);
+    this.dGL = new a();
+    this.dGM = new b();
+    this.IbR = false;
     this.callback = null;
+    AppMethodBeat.o(19833);
   }
+  
+  public static final class a
+  {
+    public String userName;
+  }
+  
+  public static final class b {}
 }
 
 

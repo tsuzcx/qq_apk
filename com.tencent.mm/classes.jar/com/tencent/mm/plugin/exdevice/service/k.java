@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface k
   extends IInterface
 {
-  public abstract void b(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2);
+  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2);
   
   public static abstract class a
     extends Binder
@@ -48,7 +48,7 @@ public abstract interface k
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTOnStateChange_AIDL");
-      b(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readLong());
+      a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readLong());
       paramParcel2.writeNoException();
       return true;
     }
@@ -63,12 +63,7 @@ public abstract interface k
         this.mRemote = paramIBinder;
       }
       
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
-      }
-      
-      public final void b(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2)
+      public final void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2)
       {
         AppMethodBeat.i(23681);
         Parcel localParcel1 = Parcel.obtain();
@@ -92,12 +87,17 @@ public abstract interface k
           AppMethodBeat.o(23681);
         }
       }
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.k
  * JD-Core Version:    0.7.0.1
  */

@@ -33,7 +33,7 @@ final class c
     return i;
   }
   
-  public final Class<Drawable> oy()
+  public final Class<Drawable> oQ()
   {
     AppMethodBeat.i(77457);
     Class localClass = this.drawable.getClass();

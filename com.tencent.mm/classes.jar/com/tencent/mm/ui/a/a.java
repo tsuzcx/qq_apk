@@ -10,36 +10,36 @@ import android.view.View;
 import android.view.Window;
 import android.view.accessibility.AccessibilityManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  public Context GX;
-  TextToSpeech HsZ;
-  private boolean Hta;
-  private long Htb;
-  private AccessibilityManager aqo;
-  Vibrator njY;
+  public Context IR;
+  TextToSpeech JgP;
+  private boolean JgQ;
+  private long JgR;
+  private AccessibilityManager asg;
+  Vibrator nKv;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(141494);
-    this.HsZ = null;
-    this.GX = paramContext;
-    this.aqo = ((AccessibilityManager)this.GX.getSystemService("accessibility"));
+    this.JgP = null;
+    this.IR = paramContext;
+    this.asg = ((AccessibilityManager)this.IR.getSystemService("accessibility"));
     AppMethodBeat.o(141494);
   }
   
   public final void a(View paramView, String paramString1, int paramInt, String paramString2, String paramString3)
   {
     AppMethodBeat.i(141497);
-    if (!fhO())
+    if (!fye())
     {
       AppMethodBeat.o(141497);
       return;
     }
-    if ((this.GX == null) || (paramView == null))
+    if ((this.IR == null) || (paramView == null))
     {
       AppMethodBeat.o(141497);
       return;
@@ -50,43 +50,43 @@ public final class a
       return;
     }
     b localb = new b();
-    localb.aPF(paramString1);
+    localb.aVv(paramString1);
     if (paramInt > 0) {
-      localb.aPF(this.GX.getResources().getQuantityString(2131623940, 1, new Object[] { Integer.valueOf(paramInt) }));
+      localb.aVv(this.IR.getResources().getQuantityString(2131623940, 1, new Object[] { Integer.valueOf(paramInt) }));
     }
-    localb.aPF(paramString2).aPF(paramString3);
-    localb.fO(paramView);
+    localb.aVv(paramString2).aVv(paramString3);
+    localb.gd(paramView);
     AppMethodBeat.o(141497);
   }
   
   public final void a(View paramView, String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(141496);
-    if (!fhO())
+    if (!fye())
     {
       AppMethodBeat.o(141496);
       return;
     }
-    if ((bs.isNullOrNil(paramString1)) || (this.GX == null))
+    if ((bt.isNullOrNil(paramString1)) || (this.IR == null))
     {
       AppMethodBeat.o(141496);
       return;
     }
     b localb = new b();
-    localb.aPF(paramString1);
-    if (!bs.isNullOrNil(paramString2)) {}
+    localb.aVv(paramString1);
+    if (!bt.isNullOrNil(paramString2)) {}
     for (;;)
     {
       try
       {
-        i = bs.getInt(paramString2, 0);
+        i = bt.getInt(paramString2, 0);
         if (i > 0)
         {
           if (i > 0) {
-            localb.aPF(this.GX.getResources().getQuantityString(2131623969, 1, new Object[] { Integer.valueOf(i) }));
+            localb.aVv(this.IR.getResources().getQuantityString(2131623969, 1, new Object[] { Integer.valueOf(i) }));
           }
-          localb.aPF(this.GX.getResources().getQuantityString(2131623970, 5, new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt + 1) }));
-          localb.fO(paramView);
+          localb.aVv(this.IR.getResources().getQuantityString(2131623970, 5, new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt + 1) }));
+          localb.gd(paramView);
           AppMethodBeat.o(141496);
           return;
         }
@@ -96,33 +96,33 @@ public final class a
     }
   }
   
-  public final void ay(View paramView, int paramInt)
+  public final void aA(View paramView, int paramInt)
   {
     AppMethodBeat.i(141498);
-    if (!fhO())
+    if (!fye())
     {
       AppMethodBeat.o(141498);
       return;
     }
-    if ((this.GX == null) || (paramView == null))
+    if ((this.IR == null) || (paramView == null))
     {
       AppMethodBeat.o(141498);
       return;
     }
     paramInt = Math.max(paramInt, 1);
     b localb = new b();
-    localb.aPF(this.GX.getResources().getQuantityString(2131623939, paramInt, new Object[] { Integer.valueOf(paramInt) }));
-    localb.fO(paramView);
+    localb.aVv(this.IR.getResources().getQuantityString(2131623939, paramInt, new Object[] { Integer.valueOf(paramInt) }));
+    localb.gd(paramView);
     AppMethodBeat.o(141498);
   }
   
-  public final boolean fhO()
+  public final boolean fye()
   {
     AppMethodBeat.i(141495);
-    if (SystemClock.uptimeMillis() - this.Htb > 2000L)
+    if (SystemClock.uptimeMillis() - this.JgR > 2000L)
     {
-      bool1 = this.aqo.isEnabled();
-      boolean bool2 = this.aqo.isTouchExplorationEnabled();
+      bool1 = this.asg.isEnabled();
+      boolean bool2 = this.asg.isTouchExplorationEnabled();
       if ((!bool1) || (!bool2)) {
         break label70;
       }
@@ -130,9 +130,9 @@ public final class a
     label70:
     for (boolean bool1 = true;; bool1 = false)
     {
-      this.Hta = bool1;
-      this.Htb = SystemClock.uptimeMillis();
-      bool1 = this.Hta;
+      this.JgQ = bool1;
+      this.JgR = SystemClock.uptimeMillis();
+      bool1 = this.JgQ;
       AppMethodBeat.o(141495);
       return bool1;
     }
@@ -141,12 +141,12 @@ public final class a
   public final void l(Activity paramActivity, String paramString)
   {
     AppMethodBeat.i(141499);
-    if (fhO())
+    if (fye())
     {
       AppMethodBeat.o(141499);
       return;
     }
-    if ((bs.isNullOrNil(paramString)) || (paramActivity == null))
+    if ((bt.isNullOrNil(paramString)) || (paramActivity == null))
     {
       AppMethodBeat.o(141499);
       return;
@@ -158,12 +158,12 @@ public final class a
   
   public static final class a
   {
-    private static final a Htd;
+    private static final a JgT;
     
     static
     {
       AppMethodBeat.i(141493);
-      Htd = new a(ai.getContext());
+      JgT = new a(aj.getContext());
       AppMethodBeat.o(141493);
     }
   }

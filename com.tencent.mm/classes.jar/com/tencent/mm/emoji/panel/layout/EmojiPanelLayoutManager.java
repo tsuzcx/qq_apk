@@ -5,26 +5,26 @@ import android.support.v7.widget.LinearLayoutManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/layout/EmojiPanelLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "(Landroid/content/Context;)V", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "TAG", "", "isScrollEnabled", "()Z", "setScrollEnabled", "(Z)V", "canScrollHorizontally", "canScrollVertically", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/layout/EmojiPanelLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "(Landroid/content/Context;)V", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "TAG", "", "isScrollEnabled", "()Z", "setScrollEnabled", "(Z)V", "canScrollHorizontally", "canScrollVertically", "plugin-emojisdk_release"})
 public final class EmojiPanelLayoutManager
   extends LinearLayoutManager
 {
   private final String TAG;
-  public boolean fUR;
+  public boolean gou;
   
   public EmojiPanelLayoutManager(Context paramContext)
   {
     super(0);
     AppMethodBeat.i(105717);
     this.TAG = "MicroMsg.EmojiPanelLayoutManager";
-    this.fUR = true;
+    this.gou = true;
     AppMethodBeat.o(105717);
   }
   
-  public final boolean jM()
+  public final boolean kc()
   {
     AppMethodBeat.i(105715);
-    if ((this.fUR) && (super.jM()))
+    if ((this.gou) && (super.kc()))
     {
       AppMethodBeat.o(105715);
       return true;
@@ -33,10 +33,10 @@ public final class EmojiPanelLayoutManager
     return false;
   }
   
-  public final boolean jN()
+  public final boolean kd()
   {
     AppMethodBeat.i(105716);
-    if ((this.fUR) && (super.jN()))
+    if ((this.gou) && (super.kd()))
     {
       AppMethodBeat.o(105716);
       return true;

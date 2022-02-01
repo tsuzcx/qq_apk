@@ -6,12 +6,12 @@ import java.util.Map;
 
 final class p$a
 {
-  final Map<Class<?>, p.a.a<?>> aIB;
+  final Map<Class<?>, p.a.a<?>> aKs;
   
   p$a()
   {
     AppMethodBeat.i(77269);
-    this.aIB = new HashMap();
+    this.aKs = new HashMap();
     AppMethodBeat.o(77269);
   }
 }

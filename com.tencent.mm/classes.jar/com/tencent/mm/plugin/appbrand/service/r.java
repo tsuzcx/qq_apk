@@ -6,14 +6,13 @@ import java.util.List;
 public abstract interface r
   extends a
 {
-  public abstract a aZd();
+  public abstract void LO(String paramString);
   
-  public static final class a
-  {
-    public String dlQ;
-    public List<r.b> hqR;
-    public int lWD;
-  }
+  public abstract void LQ(String paramString);
+  
+  public abstract void aW(List<String> paramList);
+  
+  public abstract void baZ();
 }
 
 

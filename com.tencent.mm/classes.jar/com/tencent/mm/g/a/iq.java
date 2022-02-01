@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class iq
   extends b
 {
-  public a djS;
+  public a dvm;
+  public b dvn;
   
   public iq()
   {
@@ -15,16 +16,22 @@ public final class iq
   
   private iq(byte paramByte)
   {
-    AppMethodBeat.i(110506);
-    this.djS = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(123477);
+    this.dvm = new a();
+    this.dvn = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(110506);
+    AppMethodBeat.o(123477);
   }
   
   public static final class a
   {
-    public boolean djT = false;
+    public String url;
+  }
+  
+  public static final class b
+  {
+    public String duW;
   }
 }
 

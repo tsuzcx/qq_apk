@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class aq
   extends b
 {
-  public a dab;
+  public a dlt;
   
   public aq()
   {
@@ -16,19 +16,19 @@ public final class aq
   private aq(byte paramByte)
   {
     AppMethodBeat.i(91195);
-    this.dab = new a();
-    this.Gqe = false;
+    this.dlt = new a();
+    this.IbR = false;
     this.callback = null;
     AppMethodBeat.o(91195);
   }
   
   public static final class a
   {
-    public String dac;
-    public String dad;
-    public int dae;
-    public double daf = 0.0D;
-    public int dag;
+    public String dlu;
+    public String dlv;
+    public int dlw;
+    public double dlx = 0.0D;
+    public int dly;
     public boolean isKinda = true;
   }
 }

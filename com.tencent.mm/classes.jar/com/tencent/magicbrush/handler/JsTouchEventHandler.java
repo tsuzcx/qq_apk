@@ -11,31 +11,31 @@ import java.nio.IntBuffer;
 
 public class JsTouchEventHandler
 {
-  private IntBuffer cns;
-  private FloatBuffer cnt;
-  private b cnu;
+  private IntBuffer cxX;
+  private FloatBuffer cxY;
+  private b cxZ;
   
   public JsTouchEventHandler()
   {
     AppMethodBeat.i(139991);
-    this.cnu = new b(this);
-    gO(10);
+    this.cxZ = new b(this);
+    gT(10);
     AppMethodBeat.o(139991);
   }
   
-  private void gO(int paramInt)
+  private void gT(int paramInt)
   {
     AppMethodBeat.i(139993);
-    if ((this.cns != null) && (this.cns.capacity() >= paramInt))
+    if ((this.cxX != null) && (this.cxX.capacity() >= paramInt))
     {
-      this.cns.clear();
-      this.cnt.clear();
+      this.cxX.clear();
+      this.cxY.clear();
       AppMethodBeat.o(139993);
       return;
     }
-    if (this.cns != null)
+    if (this.cxX != null)
     {
-      i = this.cns.capacity();
+      i = this.cxX.capacity();
       for (;;)
       {
         j = i;
@@ -46,12 +46,12 @@ public class JsTouchEventHandler
       }
     }
     int j = paramInt;
-    if (this.cns == null) {}
-    for (int i = 0;; i = this.cns.capacity())
+    if (this.cxX == null) {}
+    for (int i = 0;; i = this.cxX.capacity())
     {
       c.c.i("MicroMsg.JsTouchEventHandler", "Should Create A New Buffer, Current = [%d], Request = [%d], ShouldBe = [%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(j) });
-      this.cns = ByteBuffer.allocateDirect(j * 4).order(ByteOrder.nativeOrder()).asIntBuffer();
-      this.cnt = ByteBuffer.allocateDirect(j * 2 * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.cxX = ByteBuffer.allocateDirect(j * 4).order(ByteOrder.nativeOrder()).asIntBuffer();
+      this.cxY = ByteBuffer.allocateDirect(j * 2 * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
       AppMethodBeat.o(139993);
       return;
     }
@@ -86,16 +86,16 @@ public class JsTouchEventHandler
   
   private native void nativeFreeTouchEvent(long paramLong);
   
-  public final a Ge()
+  public final JsTouchEventHandler.a Hz()
   {
-    return this.cnu;
+    return this.cxZ;
   }
   
   public final long a(MotionEvent paramMotionEvent, float paramFloat)
   {
     int j = -1;
     AppMethodBeat.i(139992);
-    gO(paramMotionEvent.getPointerCount());
+    gT(paramMotionEvent.getPointerCount());
     int m = m(paramMotionEvent);
     if (m == -1)
     {
@@ -106,42 +106,37 @@ public class JsTouchEventHandler
     int i = 0;
     while (i < k)
     {
-      this.cns.put(paramMotionEvent.getPointerId(i));
-      this.cnt.put(paramMotionEvent.getX(i) / paramFloat);
-      this.cnt.put(paramMotionEvent.getY(i) / paramFloat);
+      this.cxX.put(paramMotionEvent.getPointerId(i));
+      this.cxY.put(paramMotionEvent.getX(i) / paramFloat);
+      this.cxY.put(paramMotionEvent.getY(i) / paramFloat);
       i += 1;
     }
     int n = m(paramMotionEvent);
     if (m == 1) {}
     for (i = j;; i = paramMotionEvent.getActionIndex())
     {
-      long l = nativeCreateTouchEvent(n, i, k, this.cns, this.cnt, paramMotionEvent.getEventTime());
+      long l = nativeCreateTouchEvent(n, i, k, this.cxX, this.cxY, paramMotionEvent.getEventTime());
       AppMethodBeat.o(139992);
       return l;
     }
   }
   
-  public static abstract interface a
-  {
-    public abstract void aM(long paramLong);
-  }
-  
   public static final class b
     implements JsTouchEventHandler.a
   {
-    private WeakReference<JsTouchEventHandler> cnv;
+    private WeakReference<JsTouchEventHandler> cya;
     
     public b(JsTouchEventHandler paramJsTouchEventHandler)
     {
       AppMethodBeat.i(139989);
-      this.cnv = new WeakReference(paramJsTouchEventHandler);
+      this.cya = new WeakReference(paramJsTouchEventHandler);
       AppMethodBeat.o(139989);
     }
     
     public final void aM(long paramLong)
     {
       AppMethodBeat.i(139990);
-      JsTouchEventHandler localJsTouchEventHandler = (JsTouchEventHandler)this.cnv.get();
+      JsTouchEventHandler localJsTouchEventHandler = (JsTouchEventHandler)this.cya.get();
       if (localJsTouchEventHandler != null) {
         JsTouchEventHandler.a(localJsTouchEventHandler, paramLong);
       }
@@ -151,7 +146,7 @@ public class JsTouchEventHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.magicbrush.handler.JsTouchEventHandler
  * JD-Core Version:    0.7.0.1
  */

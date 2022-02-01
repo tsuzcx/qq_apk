@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c.a;
+import com.tencent.mm.al.a.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.cgn;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.clm;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.wallet_core.c.aa;
 import java.io.IOException;
 
 public final class r
-  extends com.tencent.mm.wallet_core.c.a<cgn, k>
+  extends com.tencent.mm.wallet_core.c.a<clm, k>
 {
-  private cgn eod()
+  private clm eCc()
   {
     AppMethodBeat.i(68457);
-    if (((k)this.hvz).scene == 2)
+    if (((k)this.hND).scene == 2)
     {
       AppMethodBeat.o(68457);
       return null;
     }
-    Object localObject = (String)((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().get(ah.a.GQh, "");
-    if (bs.isNullOrNil((String)localObject))
+    Object localObject = (String)((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().get(al.a.ICB, "");
+    if (bt.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(68457);
       return null;
@@ -30,38 +30,38 @@ public final class r
     localObject = ((String)localObject).getBytes(org.apache.commons.a.a.ISO_8859_1);
     try
     {
-      localObject = (cgn)new cgn().parseFrom((byte[])localObject);
+      localObject = (clm)new clm().parseFrom((byte[])localObject);
       AppMethodBeat.o(68457);
       return localObject;
     }
     catch (IOException localIOException)
     {
-      ac.printErrStackTrace("MicroMsg.CgiPlanIndexAsyncLoader", localIOException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.CgiPlanIndexAsyncLoader", localIOException, "", new Object[0]);
       AppMethodBeat.o(68457);
     }
     return null;
   }
   
-  public final void c(c.a<cgn> parama)
+  public final void c(a.a<clm> parama)
   {
     AppMethodBeat.i(182498);
-    ac.i("MicroMsg.CgiPlanIndexAsyncLoader", "errType: %s, errCode: %s", new Object[] { Integer.valueOf(parama.errCode), Integer.valueOf(parama.errType) });
-    if (((k)this.hvz).scene == 2)
+    ad.i("MicroMsg.CgiPlanIndexAsyncLoader", "errType: %s, errCode: %s", new Object[] { Integer.valueOf(parama.errCode), Integer.valueOf(parama.errType) });
+    if (((k)this.hND).scene == 2)
     {
       AppMethodBeat.o(182498);
       return;
     }
-    if ((parama.errType == 0) && (parama.errCode == 0) && (((cgn)parama.hvj).nWx == 0)) {
+    if ((parama.errType == 0) && (parama.errCode == 0) && (((clm)parama.hNC).ozR == 0)) {
       try
       {
-        parama = new String(((cgn)parama.hvj).toByteArray(), org.apache.commons.a.a.ISO_8859_1);
-        ((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().set(ah.a.GQh, parama);
+        parama = new String(((clm)parama.hNC).toByteArray(), org.apache.commons.a.a.ISO_8859_1);
+        ((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().set(al.a.ICB, parama);
         AppMethodBeat.o(182498);
         return;
       }
       catch (IOException parama)
       {
-        ac.printErrStackTrace("MicroMsg.CgiPlanIndexAsyncLoader", parama, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.CgiPlanIndexAsyncLoader", parama, "", new Object[0]);
       }
     }
     AppMethodBeat.o(182498);
@@ -69,7 +69,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.r
  * JD-Core Version:    0.7.0.1
  */

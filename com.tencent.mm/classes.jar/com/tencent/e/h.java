@@ -22,33 +22,33 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class h
   implements c, i
 {
-  public static i JZN;
-  public static c JZO;
-  private AtomicBoolean JZP;
-  private a JZQ;
-  final com.tencent.e.h.e JZR;
+  public static i LTJ;
+  public static c LTK;
+  private AtomicBoolean LTL;
+  private a LTM;
+  final com.tencent.e.h.e LTN;
   
   private h(a parama)
   {
     AppMethodBeat.i(183164);
-    this.JZP = new AtomicBoolean(false);
-    this.JZQ = parama;
-    this.JZR = new com.tencent.e.h.e(parama);
+    this.LTL = new AtomicBoolean(false);
+    this.LTM = parama;
+    this.LTN = new com.tencent.e.h.e(parama);
     AppMethodBeat.o(183164);
   }
   
   private com.tencent.e.i.d<?> a(Runnable paramRunnable, final long paramLong1, long paramLong2, final boolean paramBoolean)
   {
-    AppMethodBeat.i(191079);
-    paramRunnable = (com.tencent.e.i.d)com.tencent.e.e.e.et(paramRunnable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
-    AppMethodBeat.o(191079);
+    AppMethodBeat.i(219275);
+    paramRunnable = (com.tencent.e.i.d)com.tencent.e.e.e.ew(paramRunnable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
+    AppMethodBeat.o(219275);
     return paramRunnable;
   }
   
   private com.tencent.e.i.d<?> a(Runnable paramRunnable, final long paramLong, String paramString, final boolean paramBoolean)
   {
     AppMethodBeat.i(183188);
-    paramRunnable = (com.tencent.e.i.d)com.tencent.e.e.e.et(paramRunnable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
+    paramRunnable = (com.tencent.e.i.d)com.tencent.e.e.e.ew(paramRunnable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
     AppMethodBeat.o(183188);
     return paramRunnable;
   }
@@ -59,8 +59,8 @@ public final class h
     {
       AppMethodBeat.i(183163);
       parama = new h(parama);
-      JZN = parama;
-      JZO = parama;
+      LTJ = parama;
+      LTK = parama;
       AppMethodBeat.o(183163);
       return;
     }
@@ -73,24 +73,32 @@ public final class h
   
   private com.tencent.e.i.d<?> c(Runnable paramRunnable, final long paramLong, String paramString)
   {
-    AppMethodBeat.i(191078);
-    paramRunnable = (com.tencent.e.i.d)com.tencent.e.e.e.et(paramRunnable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
-    AppMethodBeat.o(191078);
+    AppMethodBeat.i(219274);
+    paramRunnable = (com.tencent.e.i.d)com.tencent.e.e.e.ew(paramRunnable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
+    AppMethodBeat.o(219274);
     return paramRunnable;
   }
   
   private com.tencent.e.i.d<?> c(Runnable paramRunnable, final long paramLong, final boolean paramBoolean)
   {
     AppMethodBeat.i(183186);
-    paramRunnable = (com.tencent.e.i.d)com.tencent.e.e.e.et(paramRunnable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
+    paramRunnable = (com.tencent.e.i.d)com.tencent.e.e.e.ew(paramRunnable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
     AppMethodBeat.o(183186);
     return paramRunnable;
   }
   
-  private com.tencent.e.i.d<?> s(Runnable paramRunnable, final long paramLong)
+  private com.tencent.e.i.d<?> j(Runnable paramRunnable, final String paramString)
+  {
+    AppMethodBeat.i(221363);
+    paramRunnable = (com.tencent.e.i.d)com.tencent.e.e.e.ew(paramRunnable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
+    AppMethodBeat.o(221363);
+    return paramRunnable;
+  }
+  
+  private com.tencent.e.i.d<?> t(Runnable paramRunnable, final long paramLong)
   {
     AppMethodBeat.i(183187);
-    paramRunnable = (com.tencent.e.i.d)com.tencent.e.e.e.et(paramRunnable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
+    paramRunnable = (com.tencent.e.i.d)com.tencent.e.e.e.ew(paramRunnable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
     AppMethodBeat.o(183187);
     return paramRunnable;
   }
@@ -105,10 +113,10 @@ public final class h
   
   public final com.tencent.e.i.d<?> a(Runnable paramRunnable, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(191077);
+    AppMethodBeat.i(219273);
     Objects.requireNonNull(paramRunnable);
     paramRunnable = a(paramRunnable, paramLong1, paramLong2, false);
-    AppMethodBeat.o(191077);
+    AppMethodBeat.o(219273);
     return paramRunnable;
   }
   
@@ -126,12 +134,12 @@ public final class h
     AppMethodBeat.i(183172);
     Objects.requireNonNull(paramCallable);
     Objects.requireNonNull(paramCallable);
-    paramCallable = (com.tencent.e.i.d)com.tencent.e.e.e.et(paramCallable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
+    paramCallable = (com.tencent.e.i.d)com.tencent.e.e.e.ew(paramCallable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
     AppMethodBeat.o(183172);
     return paramCallable;
   }
   
-  public final com.tencent.e.i.d<?> aQ(Runnable paramRunnable)
+  public final com.tencent.e.i.d<?> aP(Runnable paramRunnable)
   {
     AppMethodBeat.i(183165);
     Objects.requireNonNull(paramRunnable);
@@ -140,7 +148,7 @@ public final class h
     return paramRunnable;
   }
   
-  public final com.tencent.e.i.d<?> aR(Runnable paramRunnable)
+  public final com.tencent.e.i.d<?> aQ(Runnable paramRunnable)
   {
     AppMethodBeat.i(183167);
     Objects.requireNonNull(paramRunnable);
@@ -149,49 +157,26 @@ public final class h
     return paramRunnable;
   }
   
-  public final com.tencent.e.i.d<?> aS(Runnable paramRunnable)
+  public final com.tencent.e.i.d<?> aR(Runnable paramRunnable)
   {
     AppMethodBeat.i(183168);
     Objects.requireNonNull(paramRunnable);
-    paramRunnable = q(paramRunnable, 0L);
+    paramRunnable = r(paramRunnable, 0L);
     AppMethodBeat.o(183168);
     return paramRunnable;
   }
   
-  public final com.tencent.e.i.d<?> aT(Runnable paramRunnable)
+  public final com.tencent.e.i.d<?> aS(Runnable paramRunnable)
   {
     AppMethodBeat.i(183175);
     Objects.requireNonNull(paramRunnable);
     Objects.requireNonNull(paramRunnable);
-    paramRunnable = (com.tencent.e.i.d)com.tencent.e.e.e.et(paramRunnable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
+    paramRunnable = j(paramRunnable, null);
     AppMethodBeat.o(183175);
     return paramRunnable;
   }
   
-  public final b aTA(String paramString)
-  {
-    AppMethodBeat.i(183184);
-    paramString = new b(paramString, 1, 1, new LinkedBlockingQueue(), new b.a());
-    AppMethodBeat.o(183184);
-    return paramString;
-  }
-  
-  public final boolean aTz(String paramString)
-  {
-    AppMethodBeat.i(183179);
-    Objects.requireNonNull(paramString);
-    paramString = com.tencent.e.j.a.aTG(paramString);
-    if (paramString != null)
-    {
-      paramString.KbG.clear();
-      AppMethodBeat.o(183179);
-      return true;
-    }
-    AppMethodBeat.o(183179);
-    return false;
-  }
-  
-  public final com.tencent.e.i.d<?> aU(Runnable paramRunnable)
+  public final com.tencent.e.i.d<?> aT(Runnable paramRunnable)
   {
     AppMethodBeat.i(183176);
     Objects.requireNonNull(paramRunnable);
@@ -201,30 +186,53 @@ public final class h
     return paramRunnable;
   }
   
-  public final com.tencent.e.i.d<?> aV(Runnable paramRunnable)
+  public final com.tencent.e.i.d<?> aU(Runnable paramRunnable)
   {
     AppMethodBeat.i(183178);
-    paramRunnable = aT(paramRunnable);
+    paramRunnable = aS(paramRunnable);
     AppMethodBeat.o(183178);
     return paramRunnable;
   }
   
+  public final b aZA(String paramString)
+  {
+    AppMethodBeat.i(183184);
+    paramString = new b(paramString, 1, 1, new LinkedBlockingQueue(), new b.a());
+    AppMethodBeat.o(183184);
+    return paramString;
+  }
+  
+  public final boolean aZz(String paramString)
+  {
+    AppMethodBeat.i(183179);
+    Objects.requireNonNull(paramString);
+    paramString = com.tencent.e.j.a.aZG(paramString);
+    if (paramString != null)
+    {
+      paramString.LVC.clear();
+      AppMethodBeat.o(183179);
+      return true;
+    }
+    AppMethodBeat.o(183179);
+    return false;
+  }
+  
   public final com.tencent.e.i.d<?> b(Runnable paramRunnable, long paramLong, String paramString)
   {
-    AppMethodBeat.i(191076);
+    AppMethodBeat.i(219272);
     Objects.requireNonNull(paramRunnable);
     paramRunnable = c(paramRunnable, paramLong, paramString);
-    AppMethodBeat.o(191076);
+    AppMethodBeat.o(219272);
     return paramRunnable;
   }
   
   public final <T> com.tencent.e.i.d<T> d(Callable<T> paramCallable)
   {
-    AppMethodBeat.i(191074);
+    AppMethodBeat.i(219270);
     Objects.requireNonNull(paramCallable);
     Objects.requireNonNull(paramCallable);
-    paramCallable = (com.tencent.e.i.d)com.tencent.e.e.e.et(paramCallable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
-    AppMethodBeat.o(191074);
+    paramCallable = (com.tencent.e.i.d)com.tencent.e.e.e.ew(paramCallable).a(new com.tencent.e.e.a() {}).a(new com.tencent.e.e.a() {}).take();
+    AppMethodBeat.o(219270);
     return paramCallable;
   }
   
@@ -237,20 +245,20 @@ public final class h
     return paramRunnable;
   }
   
-  public final Map<String, Integer> fEb()
+  public final Map<String, Integer> fVt()
   {
     AppMethodBeat.i(183182);
-    Map localMap = com.tencent.e.g.h.KaQ.fEt();
+    Map localMap = com.tencent.e.g.h.LUN.fVL();
     AppMethodBeat.o(183182);
     return localMap;
   }
   
-  public final Map<String, List<Pair<String, Integer>>> fEc()
+  public final Map<String, List<Pair<String, Integer>>> fVu()
   {
     AppMethodBeat.i(183183);
     long l1 = SystemClock.uptimeMillis();
     HashMap localHashMap = new HashMap();
-    Iterator localIterator1 = this.JZR.fEc().entrySet().iterator();
+    Iterator localIterator1 = this.LTN.fVu().entrySet().iterator();
     while (localIterator1.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator1.next();
@@ -281,57 +289,57 @@ public final class h
       localHashMap.put(localEntry.getKey(), localObject);
     }
     long l2 = SystemClock.uptimeMillis();
-    d.JZD.i("ThreadPool", "[dumpWaitingTask] cost=" + (l2 - l1) + "ms", new Object[0]);
+    d.LTy.i("ThreadPool", "[dumpWaitingTask] cost=" + (l2 - l1) + "ms", new Object[0]);
     AppMethodBeat.o(183183);
     return localHashMap;
   }
   
   /* Error */
-  public final boolean fEe()
+  public final boolean fVw()
   {
     // Byte code:
     //   0: iconst_1
     //   1: istore_1
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc_w 381
+    //   4: ldc_w 385
     //   7: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
-    //   11: getfield 73	com/tencent/e/h:JZP	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   11: getfield 73	com/tencent/e/h:LTL	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   14: iconst_0
     //   15: iconst_1
-    //   16: invokevirtual 385	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
+    //   16: invokevirtual 389	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
     //   19: ifeq +74 -> 93
-    //   22: invokestatic 388	com/tencent/e/j/a:release	()V
+    //   22: invokestatic 392	com/tencent/e/j/a:release	()V
     //   25: aload_0
-    //   26: getfield 81	com/tencent/e/h:JZR	Lcom/tencent/e/h/e;
+    //   26: getfield 81	com/tencent/e/h:LTN	Lcom/tencent/e/h/e;
     //   29: astore_2
     //   30: aload_2
-    //   31: getfield 392	com/tencent/e/h/e:Kbl	Lcom/tencent/e/h/b;
-    //   34: invokevirtual 397	com/tencent/e/h/b:shutdown	()V
+    //   31: getfield 396	com/tencent/e/h/e:LVi	Lcom/tencent/e/h/b;
+    //   34: invokevirtual 401	com/tencent/e/h/b:shutdown	()V
     //   37: aload_2
-    //   38: getfield 401	com/tencent/e/h/e:Kbm	Lcom/tencent/e/h/c;
-    //   41: invokevirtual 404	com/tencent/e/h/c:shutdown	()V
+    //   38: getfield 405	com/tencent/e/h/e:LVj	Lcom/tencent/e/h/c;
+    //   41: invokevirtual 408	com/tencent/e/h/c:shutdown	()V
     //   44: aload_2
-    //   45: getfield 408	com/tencent/e/h/e:Kbn	Lcom/tencent/e/h/f;
-    //   48: invokevirtual 411	com/tencent/e/h/f:shutdown	()V
-    //   51: getstatic 351	com/tencent/e/d:JZD	Lcom/tencent/e/d$a;
-    //   54: ldc_w 413
-    //   57: ldc_w 415
+    //   45: getfield 412	com/tencent/e/h/e:LVk	Lcom/tencent/e/h/f;
+    //   48: invokevirtual 415	com/tencent/e/h/f:shutdown	()V
+    //   51: getstatic 355	com/tencent/e/d:LTy	Lcom/tencent/e/d$a;
+    //   54: ldc_w 417
+    //   57: ldc_w 419
     //   60: iconst_0
     //   61: anewarray 4	java/lang/Object
-    //   64: invokeinterface 378 4 0
-    //   69: invokestatic 418	com/tencent/e/e/h:release	()V
-    //   72: invokestatic 421	com/tencent/e/e/d:release	()V
-    //   75: getstatic 425	com/tencent/e/d:JZB	Lcom/tencent/e/d$e;
-    //   78: invokeinterface 428 1 0
-    //   83: ldc_w 381
+    //   64: invokeinterface 382 4 0
+    //   69: invokestatic 422	com/tencent/e/e/h:release	()V
+    //   72: invokestatic 425	com/tencent/e/e/d:release	()V
+    //   75: getstatic 429	com/tencent/e/d:LTw	Lcom/tencent/e/d$e;
+    //   78: invokeinterface 432 1 0
+    //   83: ldc_w 385
     //   86: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: aload_0
     //   90: monitorexit
     //   91: iload_1
     //   92: ireturn
-    //   93: ldc_w 381
+    //   93: ldc_w 385
     //   96: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: iconst_0
     //   100: istore_1
@@ -353,9 +361,9 @@ public final class h
     //   93	99	104	finally
   }
   
-  public final a fEf()
+  public final a fVx()
   {
-    return this.JZQ;
+    return this.LTM;
   }
   
   public final com.tencent.e.i.d<?> g(Runnable paramRunnable, String paramString)
@@ -369,22 +377,32 @@ public final class h
   
   public final com.tencent.e.i.d<?> h(Runnable paramRunnable, String paramString)
   {
-    AppMethodBeat.i(191075);
+    AppMethodBeat.i(219271);
     Objects.requireNonNull(paramRunnable);
     paramRunnable = b(paramRunnable, 0L, paramString);
-    AppMethodBeat.o(191075);
+    AppMethodBeat.o(219271);
+    return paramRunnable;
+  }
+  
+  public final com.tencent.e.i.d<?> i(Runnable paramRunnable, String paramString)
+  {
+    AppMethodBeat.i(221362);
+    Objects.requireNonNull(paramRunnable);
+    Objects.requireNonNull(paramRunnable);
+    paramRunnable = j(paramRunnable, paramString);
+    AppMethodBeat.o(221362);
     return paramRunnable;
   }
   
   public final boolean isShutdown()
   {
     AppMethodBeat.i(183180);
-    boolean bool = this.JZP.get();
+    boolean bool = this.LTL.get();
     AppMethodBeat.o(183180);
     return bool;
   }
   
-  public final com.tencent.e.i.d<?> p(Runnable paramRunnable, long paramLong)
+  public final com.tencent.e.i.d<?> q(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(183166);
     Objects.requireNonNull(paramRunnable);
@@ -393,16 +411,16 @@ public final class h
     return paramRunnable;
   }
   
-  public final com.tencent.e.i.d<?> q(Runnable paramRunnable, long paramLong)
+  public final com.tencent.e.i.d<?> r(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(183170);
     Objects.requireNonNull(paramRunnable);
-    paramRunnable = s(paramRunnable, paramLong);
+    paramRunnable = t(paramRunnable, paramLong);
     AppMethodBeat.o(183170);
     return paramRunnable;
   }
   
-  public final com.tencent.e.i.d<?> r(Runnable paramRunnable, long paramLong)
+  public final com.tencent.e.i.d<?> s(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(183177);
     Objects.requireNonNull(paramRunnable);

@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class F2fDynamicCodeItemLayout
   extends LinearLayout
 {
-  TextView oWU;
-  TextView wMg;
+  TextView pAE;
+  TextView xZN;
   
   public F2fDynamicCodeItemLayout(Context paramContext)
   {
@@ -42,14 +42,14 @@ public class F2fDynamicCodeItemLayout
   {
     AppMethodBeat.i(67920);
     View localView = LayoutInflater.from(getContext()).inflate(2131495254, this);
-    this.wMg = ((TextView)localView.findViewById(2131304168));
-    this.oWU = ((TextView)localView.findViewById(2131304169));
+    this.xZN = ((TextView)localView.findViewById(2131304168));
+    this.pAE = ((TextView)localView.findViewById(2131304169));
     AppMethodBeat.o(67920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.F2fDynamicCodeItemLayout
  * JD-Core Version:    0.7.0.1
  */

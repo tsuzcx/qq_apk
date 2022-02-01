@@ -43,26 +43,44 @@ public final class atj
       ((Paint)localObject).setStrokeMiter(4.0F);
       ((Paint)localObject).setPathEffect(null);
       c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
+      localCanvas.save();
+      localObject = c.a(localPaint, paramVarArgs);
+      ((Paint)localObject).setColor(-1);
+      Path localPath = c.n(paramVarArgs);
+      localPath.moveTo(36.0F, 15.0F);
+      localPath.cubicTo(47.59798F, 15.0F, 57.0F, 24.40202F, 57.0F, 36.0F);
+      localPath.cubicTo(57.0F, 47.59798F, 47.59798F, 57.0F, 36.0F, 57.0F);
+      localPath.cubicTo(24.40202F, 57.0F, 15.0F, 47.59798F, 15.0F, 36.0F);
+      localPath.cubicTo(15.0F, 24.40202F, 24.40202F, 15.0F, 36.0F, 15.0F);
+      localPath.close();
+      localCanvas.drawPath(localPath, (Paint)localObject);
+      localCanvas.restore();
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-16777216);
+      localPaint.setColor(-372399);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
       localObject = c.n(paramVarArgs);
-      ((Path)localObject).moveTo(53.062035F, 26.549711F);
-      ((Path)localObject).cubicTo(52.459232F, 25.463072F, 52.85146F, 24.09351F, 53.938095F, 23.490705F);
-      ((Path)localObject).cubicTo(55.024734F, 22.887901F, 56.394299F, 23.280127F, 56.997105F, 24.366766F);
-      ((Path)localObject).cubicTo(62.150024F, 33.655628F, 60.592953F, 45.350697F, 52.970562F, 52.973091F);
-      ((Path)localObject).cubicTo(43.59798F, 62.345673F, 28.40202F, 62.345673F, 19.029438F, 52.973091F);
-      ((Path)localObject).cubicTo(9.656855F, 43.600506F, 9.656855F, 28.404547F, 19.029438F, 19.031963F);
-      ((Path)localObject).cubicTo(26.651829F, 11.409573F, 38.346897F, 9.852504F, 47.635761F, 15.005424F);
-      ((Path)localObject).cubicTo(48.722401F, 15.608228F, 49.114624F, 16.977791F, 48.511822F, 18.06443F);
-      ((Path)localObject).cubicTo(47.909019F, 19.151068F, 46.539455F, 19.543295F, 45.452816F, 18.940491F);
-      ((Path)localObject).cubicTo(37.908688F, 14.755447F, 28.404543F, 16.020821F, 22.211418F, 22.213943F);
-      ((Path)localObject).cubicTo(14.596194F, 29.829168F, 14.596194F, 42.175884F, 22.211418F, 49.791107F);
-      ((Path)localObject).cubicTo(29.826641F, 57.406334F, 42.173359F, 57.406334F, 49.788582F, 49.791107F);
-      ((Path)localObject).cubicTo(55.981709F, 43.597984F, 57.247078F, 34.093838F, 53.062035F, 26.549711F);
+      ((Path)localObject).moveTo(36.0F, 6.0F);
+      ((Path)localObject).cubicTo(52.568542F, 6.0F, 66.0F, 19.431458F, 66.0F, 36.0F);
+      ((Path)localObject).cubicTo(66.0F, 52.568542F, 52.568542F, 66.0F, 36.0F, 66.0F);
+      ((Path)localObject).cubicTo(19.431458F, 66.0F, 6.0F, 52.568542F, 6.0F, 36.0F);
+      ((Path)localObject).cubicTo(6.0F, 19.431458F, 19.431458F, 6.0F, 36.0F, 6.0F);
       ((Path)localObject).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
+      ((Path)localObject).moveTo(38.25F, 21.0F);
+      ((Path)localObject).lineTo(33.75F, 21.0F);
+      ((Path)localObject).lineTo(33.75F, 33.75F);
+      ((Path)localObject).lineTo(21.0F, 33.75F);
+      ((Path)localObject).lineTo(21.0F, 38.25F);
+      ((Path)localObject).lineTo(33.75F, 38.25F);
+      ((Path)localObject).lineTo(33.75F, 51.0F);
+      ((Path)localObject).lineTo(38.25F, 51.0F);
+      ((Path)localObject).lineTo(38.25F, 38.25F);
+      ((Path)localObject).lineTo(51.0F, 38.25F);
+      ((Path)localObject).lineTo(51.0F, 33.75F);
+      ((Path)localObject).lineTo(38.25F, 33.75F);
+      ((Path)localObject).lineTo(38.25F, 21.0F);
+      ((Path)localObject).close();
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
       localCanvas.drawPath((Path)localObject, localPaint);
       localCanvas.restore();
       c.l(paramVarArgs);
@@ -71,7 +89,7 @@ public final class atj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.atj
  * JD-Core Version:    0.7.0.1
  */

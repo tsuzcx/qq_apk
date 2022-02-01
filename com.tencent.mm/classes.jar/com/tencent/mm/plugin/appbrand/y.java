@@ -14,13 +14,13 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class y
   extends d
 {
-  private final Set<Class<? extends a>> jhH;
-  private volatile d.a jhI;
+  private final Set<Class<? extends a>> jAQ;
+  private volatile d.a jAR;
   
   public y()
   {
     AppMethodBeat.i(134622);
-    this.jhH = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jAQ = Collections.newSetFromMap(new ConcurrentHashMap());
     super.a(new d.a()
     {
       public final void a(Class<? extends a> paramAnonymousClass, a paramAnonymousa)
@@ -59,14 +59,14 @@ public final class y
   
   public final void a(d.a parama)
   {
-    this.jhI = parama;
+    this.jAR = parama;
   }
   
   public final void unregisterAll()
   {
     AppMethodBeat.i(134623);
-    Object localObject = new HashSet(this.jhH);
-    this.jhH.clear();
+    Object localObject = new HashSet(this.jAQ);
+    this.jAQ.clear();
     localObject = ((Set)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       super.ac((Class)((Iterator)localObject).next());
@@ -76,7 +76,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.y
  * JD-Core Version:    0.7.0.1
  */

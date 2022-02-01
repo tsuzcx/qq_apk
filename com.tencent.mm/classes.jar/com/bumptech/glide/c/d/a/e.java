@@ -7,11 +7,11 @@ import java.nio.ByteBuffer;
 public final class e
   implements k<ByteBuffer, Bitmap>
 {
-  private final h aJd;
+  private final h aKU;
   
   public e(h paramh)
   {
-    this.aJd = paramh;
+    this.aKU = paramh;
   }
 }
 

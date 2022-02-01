@@ -1,7 +1,7 @@
 package d.l.b.a.b.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
@@ -9,23 +9,23 @@ import java.lang.reflect.WildcardType;
 public abstract class w
   implements d.l.b.a.b.d.a.e.v
 {
-  public static final a LjK = new a((byte)0);
+  public static final a NaG = new a((byte)0);
   
   public boolean equals(Object paramObject)
   {
-    return ((paramObject instanceof w)) && (k.g(fTg(), ((w)paramObject).fTg()));
+    return ((paramObject instanceof w)) && (p.i(gkF(), ((w)paramObject).gkF()));
   }
   
-  protected abstract Type fTg();
+  protected abstract Type gkF();
   
   public int hashCode()
   {
-    return fTg().hashCode();
+    return gkF().hashCode();
   }
   
   public String toString()
   {
-    return getClass().getName() + ": " + fTg();
+    return getClass().getName() + ": " + gkF();
   }
   
   public static final class a
@@ -33,7 +33,7 @@ public abstract class w
     public static w j(Type paramType)
     {
       AppMethodBeat.i(57504);
-      k.h(paramType, "type");
+      p.h(paramType, "type");
       if (((paramType instanceof Class)) && (((Class)paramType).isPrimitive()))
       {
         paramType = (w)new v((Class)paramType);
@@ -60,7 +60,7 @@ public abstract class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.w
  * JD-Core Version:    0.7.0.1
  */

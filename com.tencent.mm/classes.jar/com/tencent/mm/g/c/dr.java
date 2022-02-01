@@ -8,28 +8,32 @@ public abstract class dr
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eQN = "loan_jump_url".hashCode();
-  private static final int eQO = "red_dot_index".hashCode();
-  private static final int eQP = "is_show_entry".hashCode();
-  private static final int eQQ = "tips".hashCode();
-  private static final int eQR = "is_overdue".hashCode();
-  private static final int eQS = "available_otb".hashCode();
-  private static final int eqK = "title".hashCode();
+  private static final int eDc;
+  private static final int eZm;
+  private static final int fgA = "phoneType".hashCode();
+  private static final int fgx = "phonenumber".hashCode();
+  private static final int fgy = "calltime".hashCode();
+  private static final int fgz;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eQH = true;
-  private boolean eQI = true;
-  private boolean eQJ = true;
-  private boolean eQK = true;
-  private boolean eQL = true;
-  private boolean eQM = true;
-  private boolean eqH = true;
-  public String field_available_otb;
-  public int field_is_overdue;
-  public int field_is_show_entry;
-  public String field_loan_jump_url;
-  public int field_red_dot_index;
-  public String field_tips;
-  public String field_title;
+  private boolean eCZ = true;
+  private boolean eZa = true;
+  private boolean fgt = true;
+  private boolean fgu = true;
+  private boolean fgv = true;
+  private boolean fgw = true;
+  public long field_addressId;
+  public long field_calltime;
+  public long field_duration;
+  public int field_phoneType;
+  public String field_phonenumber;
+  public int field_status;
+  
+  static
+  {
+    eZm = "duration".hashCode();
+    eDc = "status".hashCode();
+    fgz = "addressId".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -44,30 +48,27 @@ public abstract class dr
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eqK != k) {
-        break label65;
+      if (fgx != k) {
+        break label60;
       }
-      this.field_title = paramCursor.getString(i);
-      this.eqH = true;
+      this.field_phonenumber = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eQN == k) {
-        this.field_loan_jump_url = paramCursor.getString(i);
-      } else if (eQO == k) {
-        this.field_red_dot_index = paramCursor.getInt(i);
-      } else if (eQP == k) {
-        this.field_is_show_entry = paramCursor.getInt(i);
-      } else if (eQQ == k) {
-        this.field_tips = paramCursor.getString(i);
-      } else if (eQR == k) {
-        this.field_is_overdue = paramCursor.getInt(i);
-      } else if (eQS == k) {
-        this.field_available_otb = paramCursor.getString(i);
+      label60:
+      if (fgy == k) {
+        this.field_calltime = paramCursor.getLong(i);
+      } else if (eZm == k) {
+        this.field_duration = paramCursor.getLong(i);
+      } else if (eDc == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (fgz == k) {
+        this.field_addressId = paramCursor.getLong(i);
+      } else if (fgA == k) {
+        this.field_phoneType = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -77,26 +78,23 @@ public abstract class dr
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eqH) {
-      localContentValues.put("title", this.field_title);
+    if (this.fgt) {
+      localContentValues.put("phonenumber", this.field_phonenumber);
     }
-    if (this.eQH) {
-      localContentValues.put("loan_jump_url", this.field_loan_jump_url);
+    if (this.fgu) {
+      localContentValues.put("calltime", Long.valueOf(this.field_calltime));
     }
-    if (this.eQI) {
-      localContentValues.put("red_dot_index", Integer.valueOf(this.field_red_dot_index));
+    if (this.eZa) {
+      localContentValues.put("duration", Long.valueOf(this.field_duration));
     }
-    if (this.eQJ) {
-      localContentValues.put("is_show_entry", Integer.valueOf(this.field_is_show_entry));
+    if (this.eCZ) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eQK) {
-      localContentValues.put("tips", this.field_tips);
+    if (this.fgv) {
+      localContentValues.put("addressId", Long.valueOf(this.field_addressId));
     }
-    if (this.eQL) {
-      localContentValues.put("is_overdue", Integer.valueOf(this.field_is_overdue));
-    }
-    if (this.eQM) {
-      localContentValues.put("available_otb", this.field_available_otb);
+    if (this.fgw) {
+      localContentValues.put("phoneType", Integer.valueOf(this.field_phoneType));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -106,7 +104,7 @@ public abstract class dr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.dr
  * JD-Core Version:    0.7.0.1
  */

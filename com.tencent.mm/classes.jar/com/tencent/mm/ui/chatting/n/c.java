@@ -1,57 +1,75 @@
 package com.tencent.mm.ui.chatting.n;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.text.SpannableString;
-import android.view.View;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.a.a;
-import com.tencent.mm.plugin.messenger.a.f;
-import com.tencent.mm.plugin.messenger.d.b;
-import com.tencent.mm.plugin.messenger.d.b.a;
-import com.tencent.mm.plugin.messenger.d.b.b;
-import com.tencent.neattextview.textview.view.NeatTextView;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.chatting.h.d.b;
+import java.util.List;
 
 public final class c
-  extends b
+  implements e<bu>
 {
-  public c(b.b paramb)
+  private Cursor Tc;
+  private int fTH;
+  private String fTa;
+  private int mCount;
+  
+  public c(String paramString, int paramInt1, int paramInt2)
   {
-    super(paramb);
+    this.fTa = paramString;
+    this.mCount = paramInt1;
+    this.fTH = paramInt2;
   }
   
-  public final CharSequence b(final Map<String, String> paramMap, String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
+  public final void a(d.b paramb)
   {
-    AppMethodBeat.i(196658);
-    String str = (String)paramMap.get(paramString + ".title");
-    final b.a locala = new b.a(this);
-    locala.username = ((String)paramMap.get(paramString + ".username"));
-    locala.link = ((String)paramMap.get(paramString + ".qrcode"));
-    paramString = new SpannableString(str);
-    paramString.setSpan(new a()
+    AppMethodBeat.i(36647);
+    long l = ((l)g.ab(l.class)).azS().apK(this.fTa);
+    ad.d("MicroMsg.ChattingLoader.ChattingNormalDataSource", "[ChattingNormalDataSource] talker:%s count:%d mTotalCount:%d createTime:%d", new Object[] { this.fTa, Integer.valueOf(this.mCount), Integer.valueOf(this.fTH), Long.valueOf(l) });
+    ba.aBQ();
+    this.Tc = com.tencent.mm.model.c.azs().J(this.fTa, this.mCount, l);
+    paramb.next();
+    AppMethodBeat.o(36647);
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(36649);
+    this.Tc.close();
+    AppMethodBeat.o(36649);
+  }
+  
+  public final int fpw()
+  {
+    return this.fTH;
+  }
+  
+  public final void in(List<bu> paramList)
+  {
+    AppMethodBeat.i(36648);
+    try
     {
-      public final void onClickImp(View paramAnonymousView)
+      this.Tc.moveToFirst();
+      while (!this.Tc.isAfterLast())
       {
-        AppMethodBeat.i(196657);
-        c localc = c.this;
-        b.a locala = locala;
-        if ((localc.uHC != null) && (localc.uHC.get() != null)) {
-          ((b.b)localc.uHC.get()).a(paramAnonymousView, locala);
-        }
-        ((f)g.ab(f.class)).a("link_revoke_qrcode", paramMap, paramBundle);
-        AppMethodBeat.o(196657);
+        bu localbu = new bu();
+        localbu.convertFrom(this.Tc);
+        paramList.add(localbu);
+        this.Tc.moveToNext();
       }
-    }, 0, str.length(), 33);
-    AppMethodBeat.o(196658);
-    return paramString;
-  }
-  
-  public final String dcL()
-  {
-    return "link_revoke_qrcode";
+      AppMethodBeat.o(36648);
+    }
+    catch (Exception paramList)
+    {
+      ad.printErrStackTrace("MicroMsg.ChattingLoader.ChattingNormalDataSource", paramList, "", new Object[0]);
+      AppMethodBeat.o(36648);
+      return;
+    }
   }
 }
 

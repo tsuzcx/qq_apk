@@ -2,30 +2,30 @@ package com.tencent.mm.plugin.image;
 
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.g;
 import com.tencent.mm.vfs.i;
 import java.io.UnsupportedEncodingException;
 
 public final class b
 {
   public String md5;
-  public String tGD;
-  public String tGE;
-  public int tGF;
-  public int tGG;
-  public int tGH;
-  public int tGI;
-  public int tGJ;
-  public int tGK;
+  public String uJq;
+  public String uJr;
+  public int uJs;
+  public int uJt;
+  public int uJu;
+  public int uJv;
+  public int uJw;
+  public int uJx;
   
-  private static int Dv(String paramString)
+  private static int GA(String paramString)
   {
     AppMethodBeat.i(151489);
     try
     {
-      paramString = f.aKw(paramString);
+      paramString = g.aQc(paramString);
       if (paramString == null)
       {
         AppMethodBeat.o(151489);
@@ -72,10 +72,10 @@ public final class b
     return 0;
   }
   
-  public static String VW(String paramString)
+  public static String ZF(String paramString)
   {
     AppMethodBeat.i(151487);
-    paramString = i.aU(paramString, 0, 6);
+    paramString = i.aY(paramString, 0, 6);
     if ((paramString == null) || (paramString.length != 6))
     {
       AppMethodBeat.o(151487);
@@ -91,22 +91,22 @@ public final class b
     {
       for (;;)
       {
-        ac.e("MicroMsg.ImgExtInfoReport", "getFileExt UnsupportedEncodingException:".concat(String.valueOf(paramString)));
+        ad.e("MicroMsg.ImgExtInfoReport", "getFileExt UnsupportedEncodingException:".concat(String.valueOf(paramString)));
         paramString = "";
       }
     }
   }
   
-  public static int aiF(String paramString)
+  public static int ans(String paramString)
   {
-    AppMethodBeat.i(192638);
-    int i = Dv(paramString);
+    AppMethodBeat.i(195322);
+    int i = GA(paramString);
     if (paramString.indexOf("png") >= 0) {
       i = 1;
     }
     for (;;)
     {
-      AppMethodBeat.o(192638);
+      AppMethodBeat.o(195322);
       return i;
       if ((paramString.indexOf("jpg") >= 0) || (paramString.indexOf("jpeg") >= 0)) {
         i = 2;
@@ -118,10 +118,10 @@ public final class b
     }
   }
   
-  public static String aiG(String paramString)
+  public static String ant(String paramString)
   {
     AppMethodBeat.i(151488);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(151488);
       return "";

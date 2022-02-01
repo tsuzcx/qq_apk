@@ -2,12 +2,14 @@ package com.tencent.mm.plugin.recordvideo.background;
 
 import d.g.a.a;
 import d.g.a.m;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "success", "", "<anonymous parameter 1>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "success", "", "<anonymous parameter 1>", "", "invoke"})
 final class VideoMixer$d
-  extends d.g.b.l
-  implements m<Boolean, String, y>
+  extends q
+  implements m<Boolean, String, z>
 {
   VideoMixer$d(a parama)
   {

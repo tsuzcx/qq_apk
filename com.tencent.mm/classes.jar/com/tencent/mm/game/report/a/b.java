@@ -1,7 +1,7 @@
 package com.tencent.mm.game.report.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.expt.b.b.a;
 
 public abstract interface b
   extends a

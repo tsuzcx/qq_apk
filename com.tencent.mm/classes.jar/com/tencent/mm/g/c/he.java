@@ -8,16 +8,30 @@ public abstract class he
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fki = "pluginAppID".hashCode();
-  private static final int fkj = "pluginAppVersion".hashCode();
-  private static final int fkk = "pluginStringVersion".hashCode();
+  private static final int eEU;
+  private static final int eFR = "recordId".hashCode();
+  private static final int fAB;
+  private static final int key_HASHCODE;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  public String field_pluginAppID;
-  public int field_pluginAppVersion;
-  public String field_pluginStringVersion;
-  private boolean fkf = true;
-  private boolean fkg = true;
-  private boolean fkh = true;
+  private static final int value_HASHCODE;
+  private boolean __hadSetkey = true;
+  private boolean __hadSetvalue = true;
+  private boolean eED = true;
+  private boolean eFN = true;
+  private boolean fAA = true;
+  public String field_appId;
+  public String field_domin;
+  public String field_key;
+  public int field_recordId;
+  public String field_value;
+  
+  static
+  {
+    eEU = "appId".hashCode();
+    fAB = "domin".hashCode();
+    key_HASHCODE = "key".hashCode();
+    value_HASHCODE = "value".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,21 +46,26 @@ public abstract class he
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fki != k) {
-        break label60;
+      if (eFR != k) {
+        break label65;
       }
-      this.field_pluginAppID = paramCursor.getString(i);
+      this.field_recordId = paramCursor.getInt(i);
+      this.eFN = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (fkj == k) {
-        this.field_pluginAppVersion = paramCursor.getInt(i);
-      } else if (fkk == k) {
-        this.field_pluginStringVersion = paramCursor.getString(i);
+      label65:
+      if (eEU == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (fAB == k) {
+        this.field_domin = paramCursor.getString(i);
+      } else if (key_HASHCODE == k) {
+        this.field_key = paramCursor.getString(i);
+      } else if (value_HASHCODE == k) {
+        this.field_value = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -56,14 +75,20 @@ public abstract class he
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fkf) {
-      localContentValues.put("pluginAppID", this.field_pluginAppID);
+    if (this.eFN) {
+      localContentValues.put("recordId", Integer.valueOf(this.field_recordId));
     }
-    if (this.fkg) {
-      localContentValues.put("pluginAppVersion", Integer.valueOf(this.field_pluginAppVersion));
+    if (this.eED) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.fkh) {
-      localContentValues.put("pluginStringVersion", this.field_pluginStringVersion);
+    if (this.fAA) {
+      localContentValues.put("domin", this.field_domin);
+    }
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
+    }
+    if (this.__hadSetvalue) {
+      localContentValues.put("value", this.field_value);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

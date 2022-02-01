@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.o;
+import com.tencent.mm.aw.a.a;
+import com.tencent.mm.aw.a.a.c;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.aw.q;
 import com.tencent.mm.plugin.order.a.b;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class d
@@ -21,7 +21,7 @@ public final class d
   String mName;
   View.OnClickListener mOnClickListener;
   private View mView;
-  String pbZ;
+  String pFJ;
   
   public d(Context paramContext)
   {
@@ -51,16 +51,16 @@ public final class d
     ImageView localImageView = (ImageView)paramView.findViewById(2131302029);
     TextView localTextView = (TextView)paramView.findViewById(2131302030);
     localImageView.setImageBitmap(null);
-    if (!bs.isNullOrNil(this.pbZ))
+    if (!bt.isNullOrNil(this.pFJ))
     {
       Object localObject = new c.a();
-      b.dnG();
-      ((c.a)localObject).prefixPath = b.cYx();
-      ((c.a)localObject).hKx = true;
-      ((c.a)localObject).gKm = true;
-      ((c.a)localObject).gLt = true;
-      localObject = ((c.a)localObject).aFT();
-      o.aFB().a(this.pbZ, localImageView, (c)localObject);
+      b.dxY();
+      ((c.a)localObject).prefixPath = b.dhJ();
+      ((c.a)localObject).idr = true;
+      ((c.a)localObject).hdX = true;
+      ((c.a)localObject).hfi = true;
+      localObject = ((c.a)localObject).aJc();
+      q.aIJ().a(this.pFJ, localImageView, (c)localObject);
     }
     localTextView.setText(this.mName);
     paramView.findViewById(2131302028).setOnClickListener(this.mOnClickListener);

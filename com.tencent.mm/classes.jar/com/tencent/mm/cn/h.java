@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h<T>
 {
-  private c<T> JHR;
+  private c<T> LAU;
   private volatile T mInstance;
   private byte[] mLock;
   
@@ -12,7 +12,7 @@ public final class h<T>
   {
     AppMethodBeat.i(133554);
     this.mLock = new byte[0];
-    this.JHR = paramc;
+    this.LAU = paramc;
     AppMethodBeat.o(133554);
   }
   
@@ -23,7 +23,7 @@ public final class h<T>
     synchronized (this.mLock)
     {
       if (this.mInstance == null) {
-        this.mInstance = this.JHR.get();
+        this.mInstance = this.LAU.get();
       }
       ??? = this.mInstance;
       AppMethodBeat.o(133555);
@@ -33,7 +33,7 @@ public final class h<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.cn.h
  * JD-Core Version:    0.7.0.1
  */

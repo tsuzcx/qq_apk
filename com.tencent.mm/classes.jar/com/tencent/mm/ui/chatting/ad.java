@@ -4,33 +4,35 @@ import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.view.View;
 import android.widget.ListView;
-import com.tencent.mm.ui.chatting.g.d.a;
+import com.tencent.mm.ui.chatting.h.d.a;
 
 public abstract interface ad
 {
   public abstract void a(d.a parama);
   
-  public abstract void aaK(int paramInt);
+  public abstract void acU(int paramInt);
   
-  public abstract void aaL(int paramInt);
+  public abstract void acW(int paramInt);
   
   public abstract void addHeaderView(View paramView);
   
   public abstract void b(Context paramContext, String paramString, DialogInterface.OnCancelListener paramOnCancelListener);
   
-  public abstract void bJU();
+  public abstract int bFG();
+  
+  public abstract void bOo();
   
   public abstract void ca(int paramInt);
   
   public abstract void dismissDialog();
   
-  public abstract void flA();
+  public abstract void fBQ();
   
-  public abstract void flB();
+  public abstract void fBR();
   
-  public abstract void flF();
+  public abstract void fBV();
   
-  public abstract void flG();
+  public abstract void fBX();
   
   public abstract View getChildAt(int paramInt);
   
@@ -44,7 +46,7 @@ public abstract interface ad
   
   public abstract boolean hideVKB();
   
-  public abstract void jF(int paramInt1, int paramInt2);
+  public abstract void jR(int paramInt1, int paramInt2);
   
   public abstract boolean removeOptionMenu(int paramInt);
   
@@ -56,7 +58,7 @@ public abstract interface ad
   
   public abstract void updateOptionMenuIcon(int paramInt1, int paramInt2);
   
-  public abstract void xg(boolean paramBoolean);
+  public abstract void xR(boolean paramBoolean);
 }
 
 

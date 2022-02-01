@@ -3,12 +3,14 @@ package com.tencent.mm.plugin.wallet_core.model.mall;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.y.a;
+import com.tencent.mm.protocal.protobuf.atw;
+import com.tencent.mm.protocal.protobuf.ebd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.z.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -21,35 +23,35 @@ import org.json.JSONObject;
 
 public final class c
 {
-  private static c BBn = null;
-  public Map<String, MallNews> BBo;
+  private static c DbF = null;
+  public Map<String, MallNews> DbG;
   
   private c()
   {
     AppMethodBeat.i(70554);
-    this.BBo = new HashMap();
-    WJ();
+    this.DbG = new HashMap();
+    Zd();
     AppMethodBeat.o(70554);
   }
   
   public static boolean a(MallNews paramMallNews)
   {
     AppMethodBeat.i(70557);
-    g.agS();
-    String str = (String)g.agR().agA().get(ah.a.GLz, "");
-    ArrayList localArrayList = bs.S(str.split(","));
-    ac.i("MicroMsg.MallNewsManager", "tryCheckOutOfDateRedDot markedString %s", new Object[] { str });
+    g.ajD();
+    String str = (String)g.ajC().ajl().get(al.a.IxR, "");
+    ArrayList localArrayList = bt.U(str.split(","));
+    ad.i("MicroMsg.MallNewsManager", "tryCheckOutOfDateRedDot markedString %s", new Object[] { str });
     if (paramMallNews == null)
     {
       AppMethodBeat.o(70557);
       return false;
     }
-    if (bs.isNullOrNil(paramMallNews.zPC))
+    if (bt.isNullOrNil(paramMallNews.Bhd))
     {
       AppMethodBeat.o(70557);
       return false;
     }
-    if (localArrayList.contains(paramMallNews.zPC))
+    if (localArrayList.contains(paramMallNews.Bhd))
     {
       AppMethodBeat.o(70557);
       return true;
@@ -58,32 +60,32 @@ public final class c
     return false;
   }
   
-  public static void azq(String paramString)
+  public static void aEA(String paramString)
   {
     AppMethodBeat.i(70559);
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
-      Map localMap = bv.L(paramString, "sysmsg");
+      Map localMap = bw.M(paramString, "sysmsg");
       if (localMap != null)
       {
-        int i = bs.getInt((String)localMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+        int i = bt.getInt((String)localMap.get(".sysmsg.paymsg.PayMsgType"), -1);
         int j;
         if (i == 31)
         {
           paramString = (String)localMap.get(".sysmsg.paymsg.WalletRedDotWording");
-          i = bs.getInt((String)localMap.get(".sysmsg.paymsg.WalletRedDot"), -1);
-          j = bs.getInt((String)localMap.get(".sysmsg.paymsg.BalanceRedDot"), -1);
-          int k = bs.getInt((String)localMap.get(".sysmsg.paymsg.LQTRedDot"), -1);
-          ac.i("MicroMsg.MallNewsManager", "walletEntryWording: %s, balanceRedDot: %s, lqtRedDot: %s", new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(k) });
-          g.agS();
-          g.agR().agA().set(ah.a.GNI, paramString);
-          g.agS();
-          g.agR().agA().set(ah.a.GNJ, Integer.valueOf(i));
-          g.agS();
-          g.agR().agA().set(ah.a.GNK, Integer.valueOf(j));
-          g.agS();
-          g.agR().agA().set(ah.a.GNL, Integer.valueOf(k));
-          esQ();
+          i = bt.getInt((String)localMap.get(".sysmsg.paymsg.WalletRedDot"), -1);
+          j = bt.getInt((String)localMap.get(".sysmsg.paymsg.BalanceRedDot"), -1);
+          int k = bt.getInt((String)localMap.get(".sysmsg.paymsg.LQTRedDot"), -1);
+          ad.i("MicroMsg.MallNewsManager", "walletEntryWording: %s, balanceRedDot: %s, lqtRedDot: %s", new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(k) });
+          g.ajD();
+          g.ajC().ajl().set(al.a.IzZ, paramString);
+          g.ajD();
+          g.ajC().ajl().set(al.a.IAa, Integer.valueOf(i));
+          g.ajD();
+          g.ajC().ajl().set(al.a.IAb, Integer.valueOf(j));
+          g.ajD();
+          g.ajC().ajl().set(al.a.IAc, Integer.valueOf(k));
+          eGW();
           AppMethodBeat.o(70559);
           return;
         }
@@ -94,7 +96,7 @@ public final class c
         if (i == 34)
         {
           localObject1 = localMap.keySet();
-          ac.i("MicroMsg.MallNewsManager", "receive menu ui reddot msg: %s, keys: %s", new Object[] { paramString, localObject1.toString() });
+          ad.i("MicroMsg.MallNewsManager", "receive menu ui reddot msg: %s, keys: %s", new Object[] { paramString, localObject1.toString() });
           if (((Set)localObject1).size() > 0)
           {
             paramString = new JSONObject();
@@ -108,39 +110,39 @@ public final class c
                 str2 = str3 + ".$wording";
                 str3 = str3 + ".$expire_time";
                 str2 = (String)localMap.get(str2);
-                l = bs.getLong((String)localMap.get(str3), 0L) * 1000L;
-                if (!bs.isNullOrNil(str1))
+                l = bt.getLong((String)localMap.get(str3), 0L) * 1000L;
+                if (!bt.isNullOrNil(str1))
                 {
-                  ac.i("MicroMsg.MallNewsManager", "mall menu ui, %s has reddot, wording: %s, expireTime: %s", new Object[] { str1, str2, Long.valueOf(l) });
+                  ad.i("MicroMsg.MallNewsManager", "mall menu ui, %s has reddot, wording: %s, expireTime: %s", new Object[] { str1, str2, Long.valueOf(l) });
                   if ("mainentry_me".equals(str1))
                   {
-                    g.agS();
-                    g.agR().agA().set(ah.a.GPG, Boolean.TRUE);
+                    g.ajD();
+                    g.ajC().ajl().set(al.a.ICb, Boolean.TRUE);
                     if (l > 0L)
                     {
-                      g.agS();
-                      g.agR().agA().set(ah.a.GPH, Long.valueOf(l));
+                      g.ajD();
+                      g.ajC().ajl().set(al.a.ICc, Long.valueOf(l));
                     }
                   }
                   else if ("entry_wxpay_wallet".equals(str1))
                   {
-                    g.agS();
-                    g.agR().agA().set(ah.a.GPI, Boolean.TRUE);
-                    if (!bs.isNullOrNil(str2))
+                    g.ajD();
+                    g.ajC().ajl().set(al.a.ICd, Boolean.TRUE);
+                    if (!bt.isNullOrNil(str2))
                     {
-                      g.agS();
-                      g.agR().agA().set(ah.a.GPF, str2);
+                      g.ajD();
+                      g.ajC().ajl().set(al.a.ICa, str2);
                     }
                     for (;;)
                     {
                       if (l <= 0L) {
                         break label620;
                       }
-                      g.agS();
-                      g.agR().agA().set(ah.a.GPJ, Long.valueOf(l));
+                      g.ajD();
+                      g.ajC().ajl().set(al.a.ICe, Long.valueOf(l));
                       break;
-                      g.agS();
-                      g.agR().agA().set(ah.a.GPF, "");
+                      g.ajD();
+                      g.ajC().ajl().set(al.a.ICa, "");
                     }
                   }
                   else
@@ -148,12 +150,12 @@ public final class c
                     label620:
                     if ("entry_wxpay_paycenter".equals(str1))
                     {
-                      g.agS();
-                      g.agR().agA().set(ah.a.GPz, Boolean.TRUE);
+                      g.ajD();
+                      g.ajC().ajl().set(al.a.IBU, Boolean.TRUE);
                       if (l > 0L)
                       {
-                        g.agS();
-                        g.agR().agA().set(ah.a.GPA, Long.valueOf(l));
+                        g.ajD();
+                        g.ajC().ajl().set(al.a.IBV, Long.valueOf(l));
                       }
                     }
                     else
@@ -167,20 +169,20 @@ public final class c
                       }
                       catch (Exception localException)
                       {
-                        ac.printErrStackTrace("MicroMsg.MallNewsManager", localException, "put redDotConfig json failed: %s", new Object[] { localException.getMessage() });
+                        ad.printErrStackTrace("MicroMsg.MallNewsManager", localException, "put redDotConfig json failed: %s", new Object[] { localException.getMessage() });
                       }
                     }
                   }
                 }
               }
             }
-            ac.i("MicroMsg.MallNewsManager", "redDotConfig: %s", new Object[] { paramString.toString() });
+            ad.i("MicroMsg.MallNewsManager", "redDotConfig: %s", new Object[] { paramString.toString() });
             if (paramString.length() > 0)
             {
-              g.agS();
-              g.agR().agA().set(ah.a.GPy, paramString.toString());
-              g.agS();
-              g.agR().agA().set(ah.a.GPz, Boolean.TRUE);
+              g.ajD();
+              g.ajC().ajl().set(al.a.IBT, paramString.toString());
+              g.ajD();
+              g.ajC().ajl().set(al.a.IBU, Boolean.TRUE);
             }
           }
           AppMethodBeat.o(70559);
@@ -189,23 +191,23 @@ public final class c
         if (i == 36)
         {
           paramString = (String)localMap.get(".sysmsg.paymsg.WalletRedDotWording");
-          i = bs.getInt((String)localMap.get(".sysmsg.paymsg.WalletRedDot"), -1);
-          j = bs.getInt((String)localMap.get(".sysmsg.paymsg.LQBRedDot"), -1);
-          ac.i("MicroMsg.MallNewsManager", "walletEntryWording: %s, walletRedDot: %s, lqbRedDot: %s", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(j) });
-          g.agS();
-          g.agR().agA().set(ah.a.GNI, paramString);
-          g.agS();
-          g.agR().agA().set(ah.a.GNJ, Integer.valueOf(i));
-          g.agS();
-          g.agR().agA().set(ah.a.GNM, Integer.valueOf(j));
-          esQ();
+          i = bt.getInt((String)localMap.get(".sysmsg.paymsg.WalletRedDot"), -1);
+          j = bt.getInt((String)localMap.get(".sysmsg.paymsg.LQBRedDot"), -1);
+          ad.i("MicroMsg.MallNewsManager", "walletEntryWording: %s, walletRedDot: %s, lqbRedDot: %s", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(j) });
+          g.ajD();
+          g.ajC().ajl().set(al.a.IzZ, paramString);
+          g.ajD();
+          g.ajC().ajl().set(al.a.IAa, Integer.valueOf(i));
+          g.ajD();
+          g.ajC().ajl().set(al.a.IAd, Integer.valueOf(j));
+          eGW();
           AppMethodBeat.o(70559);
           return;
         }
         if (i == 38)
         {
           Object localObject2 = localMap.keySet();
-          ac.i("MicroMsg.MallNewsManager", "receive menu ui reddot msg: %s, keys: %s", new Object[] { paramString, localObject2.toString() });
+          ad.i("MicroMsg.MallNewsManager", "receive menu ui reddot msg: %s, keys: %s", new Object[] { paramString, localObject2.toString() });
           if (((Set)localObject2).size() > 0)
           {
             localObject1 = new JSONObject();
@@ -221,59 +223,59 @@ public final class c
                 str2 = str3 + ".$wording";
                 str3 = str3 + ".$expire_time";
                 str2 = (String)localMap.get(str2);
-                l = bs.getLong((String)localMap.get(str3), 0L) * 1000L;
-                if (!bs.isNullOrNil(paramString))
+                l = bt.getLong((String)localMap.get(str3), 0L) * 1000L;
+                if (!bt.isNullOrNil(paramString))
                 {
-                  ac.i("MicroMsg.MallNewsManager", "mall menu ui, %s has reddot, wording: %s, expireTime: %s", new Object[] { paramString, str2, Long.valueOf(l) });
+                  ad.i("MicroMsg.MallNewsManager", "mall menu ui, %s has reddot, wording: %s, expireTime: %s", new Object[] { paramString, str2, Long.valueOf(l) });
                   if ("mainentry_me".equals(paramString))
                   {
-                    com.tencent.mm.y.c.aeH().b(ah.a.GPM, true);
-                    g.agS();
-                    g.agR().agA().set(ah.a.GPN, Long.valueOf(l));
+                    com.tencent.mm.z.c.aht().b(al.a.ICh, true);
+                    g.ajD();
+                    g.ajC().ajl().set(al.a.ICi, Long.valueOf(l));
                     i = 1;
                   }
                   else
                   {
                     if ("entry_wxpay_pay".equals(paramString))
                     {
-                      com.tencent.mm.y.c.aeH().b(ah.a.GPM, true);
-                      if (!bs.isNullOrNil(str2))
+                      com.tencent.mm.z.c.aht().b(al.a.ICh, true);
+                      if (!bt.isNullOrNil(str2))
                       {
-                        g.agS();
-                        g.agR().agA().set(ah.a.GPL, str2);
+                        g.ajD();
+                        g.ajC().ajl().set(al.a.ICg, str2);
                       }
                       for (;;)
                       {
-                        g.agS();
-                        g.agR().agA().set(ah.a.GPO, Long.valueOf(l));
+                        g.ajD();
+                        g.ajC().ajl().set(al.a.ICj, Long.valueOf(l));
                         j = 1;
                         break;
-                        g.agS();
-                        g.agR().agA().set(ah.a.GPL, "");
+                        g.ajD();
+                        g.ajC().ajl().set(al.a.ICg, "");
                       }
                     }
                     if ("entry_wxpay_pay_wallet".equals(paramString))
                     {
-                      g.agS();
-                      g.agR().agA().set(ah.a.GPP, Boolean.TRUE);
-                      g.agS();
-                      g.agR().agA().set(ah.a.GPQ, Long.valueOf(l));
+                      g.ajD();
+                      g.ajC().ajl().set(al.a.ICk, Boolean.TRUE);
+                      g.ajD();
+                      g.ajC().ajl().set(al.a.ICl, Long.valueOf(l));
                     }
                     else
                     {
                       if (paramString.startsWith("bind_serial_"))
                       {
                         paramString = paramString.substring(12);
-                        g.agS();
-                        str2 = (String)g.agR().agA().get(ah.a.GOl, "");
-                        ac.d("MicroMsg.MallNewsManager", "bind serial: %s", new Object[] { paramString });
-                        if (!bs.isNullOrNil(str2)) {
+                        g.ajD();
+                        str2 = (String)g.ajC().ajl().get(al.a.IAG, "");
+                        ad.d("MicroMsg.MallNewsManager", "bind serial: %s", new Object[] { paramString });
+                        if (!bt.isNullOrNil(str2)) {
                           paramString = str2 + "," + paramString;
                         }
                         for (;;)
                         {
-                          g.agS();
-                          g.agR().agA().set(ah.a.GOl, paramString);
+                          g.ajD();
+                          g.ajC().ajl().set(al.a.IAG, paramString);
                           break;
                         }
                       }
@@ -284,7 +286,7 @@ public final class c
                       }
                       catch (Exception paramString)
                       {
-                        ac.printErrStackTrace("MicroMsg.MallNewsManager", paramString, "put redDotConfig json failed: %s", new Object[] { paramString.getMessage() });
+                        ad.printErrStackTrace("MicroMsg.MallNewsManager", paramString, "put redDotConfig json failed: %s", new Object[] { paramString.getMessage() });
                       }
                     }
                   }
@@ -292,18 +294,18 @@ public final class c
               }
             }
             if (i == 0) {
-              com.tencent.mm.y.c.aeH().c(ah.a.GPM, ah.a.GPU);
+              com.tencent.mm.z.c.aht().c(al.a.ICh, al.a.ICo);
             }
             if (j == 0) {
-              com.tencent.mm.y.c.aeH().c(ah.a.GPM, ah.a.GPT);
+              com.tencent.mm.z.c.aht().c(al.a.ICh, al.a.ICn);
             }
-            ac.i("MicroMsg.MallNewsManager", "redDotConfig: %s", new Object[] { ((JSONObject)localObject1).toString() });
+            ad.i("MicroMsg.MallNewsManager", "redDotConfig: %s", new Object[] { ((JSONObject)localObject1).toString() });
             if (((JSONObject)localObject1).length() > 0)
             {
-              g.agS();
-              g.agR().agA().set(ah.a.GPR, ((JSONObject)localObject1).toString());
-              g.agS();
-              g.agR().agA().set(ah.a.GPP, Boolean.TRUE);
+              g.ajD();
+              g.ajC().ajl().set(al.a.ICm, ((JSONObject)localObject1).toString());
+              g.ajD();
+              g.ajC().ajl().set(al.a.ICk, Boolean.TRUE);
             }
           }
         }
@@ -312,15 +314,15 @@ public final class c
     AppMethodBeat.o(70559);
   }
   
-  public static MallNews azt(String paramString)
+  public static MallNews aED(String paramString)
   {
     AppMethodBeat.i(70565);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(70565);
       return null;
     }
-    Map localMap = bv.L(paramString, "sysmsg");
+    Map localMap = bw.M(paramString, "sysmsg");
     if (localMap == null)
     {
       AppMethodBeat.o(70565);
@@ -332,18 +334,18 @@ public final class c
       try
       {
         localMallNews = new MallNews((String)localMap.get(".sysmsg.mallactivity.functionid"));
-        localMallNews.zPC = ((String)localMap.get(".sysmsg.mallactivity.activityid"));
-        localMallNews.ddJ = ((String)localMap.get(".sysmsg.mallactivity.ticket"));
+        localMallNews.Bhd = ((String)localMap.get(".sysmsg.mallactivity.activityid"));
+        localMallNews.dpf = ((String)localMap.get(".sysmsg.mallactivity.ticket"));
         localMallNews.type = ((String)localMap.get(".sysmsg.mallactivity.type"));
-        localMallNews.cZX = bs.getInt((String)localMap.get(".sysmsg.mallactivity.showtype"), 0);
+        localMallNews.dlp = bt.getInt((String)localMap.get(".sysmsg.mallactivity.showtype"), 0);
         if (localMap.containsKey(".sysmsg.mallactivity.showflag"))
         {
-          localMallNews.BBd = ((String)localMap.get(".sysmsg.mallactivity.showflag"));
+          localMallNews.Dbv = ((String)localMap.get(".sysmsg.mallactivity.showflag"));
           if (localMap.containsKey(".sysmsg.mallactivity.newsTipFlag"))
           {
-            localMallNews.BBe = ((String)localMap.get(".sysmsg.mallactivity.newsTipFlag"));
-            localMallNews.BBl = paramString;
-            boolean bool = bs.isNullOrNil(localMallNews.hvE);
+            localMallNews.Dbw = ((String)localMap.get(".sysmsg.mallactivity.newsTipFlag"));
+            localMallNews.DbD = paramString;
+            boolean bool = bt.isNullOrNil(localMallNews.hNT);
             if (!bool) {
               break;
             }
@@ -353,14 +355,14 @@ public final class c
         }
         else
         {
-          localMallNews.BBd = "0";
+          localMallNews.Dbv = "0";
           continue;
         }
-        localMallNews.BBe = "0";
+        localMallNews.Dbw = "0";
       }
       catch (Exception paramString)
       {
-        ac.e("MicroMsg.MallNewsManager", "cmdid error");
+        ad.e("MicroMsg.MallNewsManager", "cmdid error");
         AppMethodBeat.o(70565);
         return null;
       }
@@ -369,24 +371,53 @@ public final class c
     return localMallNews;
   }
   
-  public static void e(MallFunction paramMallFunction)
+  public static c eGT()
+  {
+    AppMethodBeat.i(70553);
+    if (DbF == null) {
+      DbF = new c();
+    }
+    c localc = DbF;
+    AppMethodBeat.o(70553);
+    return localc;
+  }
+  
+  public static void eGV()
+  {
+    AppMethodBeat.i(70560);
+    g.ajD();
+    g.ajC().ajl().set(al.a.IzZ, "");
+    g.ajD();
+    g.ajC().ajl().set(al.a.IAa, Integer.valueOf(-1));
+    AppMethodBeat.o(70560);
+  }
+  
+  public static void eGW()
+  {
+    AppMethodBeat.i(70561);
+    ad.d("MicroMsg.MallNewsManager", "clearMallNew ");
+    com.tencent.mm.z.c.aht().cK(262156, 266248);
+    AppMethodBeat.o(70561);
+  }
+  
+  public static void i(MallFunction paramMallFunction)
   {
     AppMethodBeat.i(70558);
     try
     {
-      if (bs.isNullOrNil(paramMallFunction.BAX.zPC)) {
+      if (bt.isNullOrNil(paramMallFunction.Dbp.Bhd)) {
         break label181;
       }
-      g.agS();
-      localObject = bs.S(((String)g.agR().agA().get(ah.a.GLz, "")).split(","));
+      g.ajD();
+      localObject = bt.U(((String)g.ajC().ajl().get(al.a.IxR, "")).split(","));
       while (((List)localObject).size() > 20) {
         ((List)localObject).remove(0);
       }
-      bool = ((List)localObject).contains(paramMallFunction.BAX.zPC);
+      bool = ((List)localObject).contains(paramMallFunction.Dbp.Bhd);
     }
     catch (Exception paramMallFunction)
     {
-      ac.printErrStackTrace("MicroMsg.MallNewsManager", paramMallFunction, "error in markedFunction", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.MallNewsManager", paramMallFunction, "error in markedFunction", new Object[0]);
       AppMethodBeat.o(70558);
       return;
     }
@@ -396,90 +427,84 @@ public final class c
       AppMethodBeat.o(70558);
       return;
     }
-    ((List)localObject).add(paramMallFunction.BAX.zPC);
-    Object localObject = bs.n((List)localObject, ",");
-    ac.i("MicroMsg.MallNewsManager", "doSelectFunction %s, markedString %s", new Object[] { paramMallFunction.BAX.zPC, localObject });
-    g.agS();
-    g.agR().agA().set(ah.a.GLz, localObject);
+    ((List)localObject).add(paramMallFunction.Dbp.Bhd);
+    Object localObject = bt.m((List)localObject, ",");
+    ad.i("MicroMsg.MallNewsManager", "doSelectFunction %s, markedString %s", new Object[] { paramMallFunction.Dbp.Bhd, localObject });
+    g.ajD();
+    g.ajC().ajl().set(al.a.IxR, localObject);
     label181:
     AppMethodBeat.o(70558);
   }
   
-  public static c esN()
-  {
-    AppMethodBeat.i(70553);
-    if (BBn == null) {
-      BBn = new c();
-    }
-    c localc = BBn;
-    AppMethodBeat.o(70553);
-    return localc;
-  }
-  
-  public static void esP()
-  {
-    AppMethodBeat.i(70560);
-    g.agS();
-    g.agR().agA().set(ah.a.GNI, "");
-    g.agS();
-    g.agR().agA().set(ah.a.GNJ, Integer.valueOf(-1));
-    AppMethodBeat.o(70560);
-  }
-  
-  public static void esQ()
-  {
-    AppMethodBeat.i(70561);
-    ac.d("MicroMsg.MallNewsManager", "clearMallNew ");
-    com.tencent.mm.y.c.aeH().cI(262156, 266248);
-    AppMethodBeat.o(70561);
-  }
-  
-  public final void WJ()
+  public final void Zd()
   {
     AppMethodBeat.i(70555);
-    this.BBo.clear();
-    g.agS();
-    Object localObject = (String)g.agR().agA().get(270339, "");
-    ac.d("MicroMsg.MallNewsManager", "data : ".concat(String.valueOf(localObject)));
-    localObject = bs.S(((String)localObject).split(";")).iterator();
+    this.DbG.clear();
+    g.ajD();
+    Object localObject = (String)g.ajC().ajl().get(270339, "");
+    ad.d("MicroMsg.MallNewsManager", "data : ".concat(String.valueOf(localObject)));
+    localObject = bt.U(((String)localObject).split(";")).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      MallNews localMallNews = azt((String)((Iterator)localObject).next());
+      MallNews localMallNews = aED((String)((Iterator)localObject).next());
       if (localMallNews != null) {
-        this.BBo.put(localMallNews.hvE, localMallNews);
+        this.DbG.put(localMallNews.hNT, localMallNews);
       }
     }
     AppMethodBeat.o(70555);
   }
   
-  public final void aH(ArrayList<MallFunction> paramArrayList)
+  public final void aD(ArrayList<MallFunction> paramArrayList)
   {
     AppMethodBeat.i(70566);
     if (paramArrayList != null)
     {
-      Object localObject = new HashSet(this.BBo.keySet());
+      Object localObject = new HashSet(this.DbG.keySet());
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext()) {
-        ((Set)localObject).remove(((MallFunction)paramArrayList.next()).wfu);
+        ((Set)localObject).remove(((MallFunction)paramArrayList.next()).jDb);
       }
       paramArrayList = ((Set)localObject).iterator();
       while (paramArrayList.hasNext())
       {
         localObject = (String)paramArrayList.next();
-        this.BBo.remove(localObject);
+        this.DbG.remove(localObject);
       }
-      dpl();
+      dzN();
     }
     AppMethodBeat.o(70566);
   }
   
-  public final String azr(String paramString)
+  public final void aE(ArrayList<atw> paramArrayList)
+  {
+    AppMethodBeat.i(199327);
+    if (paramArrayList != null)
+    {
+      Object localObject = new HashSet(this.DbG.keySet());
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        atw localatw = (atw)paramArrayList.next();
+        ((Set)localObject).remove(localatw.GrP.HNO);
+      }
+      paramArrayList = ((Set)localObject).iterator();
+      while (paramArrayList.hasNext())
+      {
+        localObject = (String)paramArrayList.next();
+        this.DbG.remove(localObject);
+      }
+      dzN();
+    }
+    AppMethodBeat.o(199327);
+  }
+  
+  public final String aEB(String paramString)
   {
     AppMethodBeat.i(70563);
-    paramString = (MallNews)this.BBo.get(paramString);
-    if ((paramString != null) && (!bs.isNullOrNil(paramString.ddJ)))
+    paramString = (MallNews)this.DbG.get(paramString);
+    if ((paramString != null) && (!bt.isNullOrNil(paramString.dpf)))
     {
-      paramString = paramString.ddJ;
+      paramString = paramString.dpf;
       AppMethodBeat.o(70563);
       return paramString;
     }
@@ -487,17 +512,17 @@ public final class c
     return null;
   }
   
-  public final MallNews azs(String paramString)
+  public final MallNews aEC(String paramString)
   {
     AppMethodBeat.i(70564);
-    ac.d("MicroMsg.MallNewsManager", "removeNewsInIndexUI : ".concat(String.valueOf(paramString)));
-    if ((!bs.isNullOrNil(paramString)) && (this.BBo.containsKey(paramString)))
+    ad.d("MicroMsg.MallNewsManager", "removeNewsInIndexUI : ".concat(String.valueOf(paramString)));
+    if ((!bt.isNullOrNil(paramString)) && (this.DbG.containsKey(paramString)))
     {
-      paramString = (MallNews)this.BBo.get(paramString);
-      if ("0".equals(paramString.BBd))
+      paramString = (MallNews)this.DbG.get(paramString);
+      if ("0".equals(paramString.Dbv))
       {
-        paramString.BBd = "1";
-        dpl();
+        paramString.Dbv = "1";
+        dzN();
       }
       AppMethodBeat.o(70564);
       return paramString;
@@ -506,48 +531,48 @@ public final class c
     return null;
   }
   
-  public final boolean dpl()
+  public final boolean dzN()
   {
     AppMethodBeat.i(70562);
-    ac.d("MicroMsg.MallNewsManager", "notifyNewsMap.size : " + this.BBo.size());
+    ad.d("MicroMsg.MallNewsManager", "notifyNewsMap.size : " + this.DbG.size());
     StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = this.BBo.keySet().iterator();
+    Iterator localIterator = this.DbG.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      if (!bs.isNullOrNil((String)localObject))
+      if (!bt.isNullOrNil((String)localObject))
       {
-        localObject = (MallNews)this.BBo.get(localObject);
-        localStringBuffer.append(((MallNews)localObject).BBl.replace("</mallactivity></sysmsg>", "").replaceAll("<showflag>([^<]*)</showflag>", "").replaceAll("<newsTipFlag>([^<]*)</newsTipFlag>", "") + "<showflag>" + ((MallNews)localObject).BBd + "</showflag><newsTipFlag>" + ((MallNews)localObject).BBe + "</newsTipFlag></mallactivity></sysmsg>;");
+        localObject = (MallNews)this.DbG.get(localObject);
+        localStringBuffer.append(((MallNews)localObject).DbD.replace("</mallactivity></sysmsg>", "").replaceAll("<showflag>([^<]*)</showflag>", "").replaceAll("<newsTipFlag>([^<]*)</newsTipFlag>", "") + "<showflag>" + ((MallNews)localObject).Dbv + "</showflag><newsTipFlag>" + ((MallNews)localObject).Dbw + "</newsTipFlag></mallactivity></sysmsg>;");
       }
     }
-    ac.d("MicroMsg.MallNewsManager", "save data  : " + localStringBuffer.toString());
-    g.agS();
-    g.agR().agA().set(270339, localStringBuffer.toString());
+    ad.d("MicroMsg.MallNewsManager", "save data  : " + localStringBuffer.toString());
+    g.ajD();
+    g.ajC().ajl().set(270339, localStringBuffer.toString());
     AppMethodBeat.o(70562);
     return true;
   }
   
-  public final List<String> esO()
+  public final List<String> eGU()
   {
     AppMethodBeat.i(70556);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.BBo.values().iterator();
+    Iterator localIterator = this.DbG.values().iterator();
     while (localIterator.hasNext())
     {
       MallNews localMallNews = (MallNews)localIterator.next();
-      if (!bs.isNullOrNil(localMallNews.ddJ)) {
-        localArrayList.add(localMallNews.ddJ);
+      if (!bt.isNullOrNil(localMallNews.dpf)) {
+        localArrayList.add(localMallNews.dpf);
       }
     }
-    ac.d("MicroMsg.MallNewsManager", "tickets.size : " + localArrayList.size());
+    ad.d("MicroMsg.MallNewsManager", "tickets.size : " + localArrayList.size());
     AppMethodBeat.o(70556);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.mall.c
  * JD-Core Version:    0.7.0.1
  */

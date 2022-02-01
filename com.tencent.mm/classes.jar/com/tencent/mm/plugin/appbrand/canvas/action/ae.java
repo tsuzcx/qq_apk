@@ -15,8 +15,8 @@ public final class ae
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
   {
     AppMethodBeat.i(144968);
-    paramd.jzc.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
-    paramd.jzb.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    paramd.jSZ.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    paramd.jSY.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
     AppMethodBeat.o(144968);
     return true;
   }
@@ -30,7 +30,7 @@ public final class ae
       AppMethodBeat.o(144969);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.x, paramCanvas.y, paramCanvas.jzH, paramCanvas.color);
+    boolean bool = a(paramd, paramCanvas.x, paramCanvas.y, paramCanvas.jTC, paramCanvas.color);
     AppMethodBeat.o(144969);
     return bool;
   }
@@ -52,12 +52,12 @@ public final class ae
       AppMethodBeat.o(144967);
       return false;
     }
-    boolean bool = a(paramd, f1, f2, f3, g.p(paramCanvas));
+    boolean bool = a(paramd, f1, f2, f3, g.q(paramCanvas));
     AppMethodBeat.o(144967);
     return bool;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144966);
     SetShadowActionArg localSetShadowActionArg = new SetShadowActionArg();

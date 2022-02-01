@@ -2,50 +2,50 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.videoview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  e.h kOY = e.h.kPj;
-  public boolean kVJ;
-  protected int kWB;
-  protected int kWC;
-  protected int kWD;
-  protected int kWE;
+  e.h llB = e.h.llM;
+  public boolean lsI;
+  protected int ltA;
+  protected int ltB;
+  protected int ltC;
+  protected int ltD;
   protected int videoHeight;
   protected int videoWidth;
   
   public final void reset()
   {
-    this.kWC = 0;
-    this.kWB = 0;
+    this.ltB = 0;
+    this.ltA = 0;
     this.videoHeight = 0;
     this.videoWidth = 0;
-    this.kWE = 0;
-    this.kWD = 0;
+    this.ltD = 0;
+    this.ltC = 0;
   }
   
-  public final boolean x(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final boolean y(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(194666);
-    if ((this.kWB == paramInt1) && (this.kWC == paramInt2) && (this.videoWidth == paramInt3) && (this.videoHeight == paramInt4))
+    AppMethodBeat.i(206480);
+    if ((this.ltA == paramInt1) && (this.ltB == paramInt2) && (this.videoWidth == paramInt3) && (this.videoHeight == paramInt4))
     {
-      AppMethodBeat.o(194666);
+      AppMethodBeat.o(206480);
       return true;
     }
-    this.kWB = paramInt1;
-    this.kWC = paramInt2;
+    this.ltA = paramInt1;
+    this.ltB = paramInt2;
     this.videoWidth = paramInt3;
     this.videoHeight = paramInt4;
     float f1 = this.videoWidth * 1.0F / this.videoHeight;
-    float f2 = this.kWB * 1.0F / this.kWC;
-    if (this.kOY != e.h.kPj) {
-      if (this.kOY == e.h.kPl) {
-        if (this.kWB < this.kWC)
+    float f2 = this.ltA * 1.0F / this.ltB;
+    if (this.llB != e.h.llM) {
+      if (this.llB == e.h.llO) {
+        if (this.ltA < this.ltB)
         {
-          this.kWE = ((int)(this.kWB / f1));
-          this.kWD = this.kWB;
-          if (this.kWE <= this.kWC) {}
+          this.ltD = ((int)(this.ltA / f1));
+          this.ltC = this.ltA;
+          if (this.ltD <= this.ltB) {}
         }
       }
     }
@@ -53,80 +53,80 @@ public final class b
     for (;;)
     {
       b localb = this;
-      localb.kWD = ((int)(localb.kWC * f1));
-      localb.kWE = localb.kWC;
+      localb.ltC = ((int)(localb.ltB * f1));
+      localb.ltD = localb.ltB;
       for (;;)
       {
-        ac.d("MicroMsg.ViewSizeCache", "screen[%d, %d], video[%d, %d], measure[%d, %d] scale[%f, %f]", new Object[] { Integer.valueOf(this.kWB), Integer.valueOf(this.kWC), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight), Integer.valueOf(this.kWD), Integer.valueOf(this.kWE), Float.valueOf(f2), Float.valueOf(f1) });
-        AppMethodBeat.o(194666);
+        ad.d("MicroMsg.ViewSizeCache", "screen[%d, %d], video[%d, %d], measure[%d, %d] scale[%f, %f]", new Object[] { Integer.valueOf(this.ltA), Integer.valueOf(this.ltB), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight), Integer.valueOf(this.ltC), Integer.valueOf(this.ltD), Float.valueOf(f2), Float.valueOf(f1) });
+        AppMethodBeat.o(206480);
         return false;
-        this.kWD = ((int)(this.kWC * f1));
-        this.kWE = this.kWC;
-        if (this.kWD > this.kWB)
+        this.ltC = ((int)(this.ltB * f1));
+        this.ltD = this.ltB;
+        if (this.ltC > this.ltA)
         {
-          this.kWE = ((int)(this.kWB / f1));
-          this.kWD = this.kWB;
+          this.ltD = ((int)(this.ltA / f1));
+          this.ltC = this.ltA;
           continue;
-          if (this.kOY == e.h.kPk)
+          if (this.llB == e.h.llN)
           {
-            this.kWE = this.kWC;
-            this.kWD = this.kWB;
+            this.ltD = this.ltB;
+            this.ltC = this.ltA;
           }
           else
           {
-            if (this.kOY == e.h.kPm)
+            if (this.llB == e.h.llP)
             {
-              if (this.kWB > this.kWC)
+              if (this.ltA > this.ltB)
               {
-                this.kWE = ((int)(this.kWB / f1));
-                this.kWD = this.kWB;
-                if (this.kWE >= this.kWC) {
+                this.ltD = ((int)(this.ltA / f1));
+                this.ltC = this.ltA;
+                if (this.ltD >= this.ltB) {
                   continue;
                 }
                 break;
               }
-              this.kWD = ((int)(this.kWC * f1));
-              this.kWE = this.kWC;
-              if (this.kWD >= this.kWB) {
+              this.ltC = ((int)(this.ltB * f1));
+              this.ltD = this.ltB;
+              if (this.ltC >= this.ltA) {
                 continue;
               }
-              this.kWE = ((int)(this.kWB / f1));
-              this.kWD = this.kWB;
+              this.ltD = ((int)(this.ltA / f1));
+              this.ltC = this.ltA;
               continue;
             }
-            if (!this.kVJ)
+            if (!this.lsI)
             {
-              if (this.kWB < this.kWC)
+              if (this.ltA < this.ltB)
               {
-                this.kWE = ((int)(this.kWB / f1));
-                this.kWD = this.kWB;
+                this.ltD = ((int)(this.ltA / f1));
+                this.ltC = this.ltA;
               }
               else
               {
-                this.kWD = ((int)(this.kWC * f1));
-                this.kWE = this.kWC;
+                this.ltC = ((int)(this.ltB * f1));
+                this.ltD = this.ltB;
               }
             }
             else if (Math.abs(f1 - f2) > 0.05D)
             {
-              if (this.kWB < this.kWC)
+              if (this.ltA < this.ltB)
               {
-                this.kWE = ((int)(this.kWB / f1));
-                this.kWD = this.kWB;
+                this.ltD = ((int)(this.ltA / f1));
+                this.ltC = this.ltA;
               }
               else
               {
-                this.kWD = ((int)(this.kWC * f1));
-                this.kWE = this.kWC;
+                this.ltC = ((int)(this.ltB * f1));
+                this.ltD = this.ltB;
               }
             }
             else
             {
-              if (this.kWB <= this.kWC) {
+              if (this.ltA <= this.ltB) {
                 break label657;
               }
-              this.kWE = ((int)(this.kWB / f1));
-              this.kWD = this.kWB;
+              this.ltD = ((int)(this.ltA / f1));
+              this.ltC = this.ltA;
             }
           }
         }

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class og
   extends b
 {
-  public a dqH;
+  public a dCf;
   
   public og()
   {
@@ -15,21 +15,21 @@ public final class og
   
   private og(byte paramByte)
   {
-    AppMethodBeat.i(117549);
-    this.dqH = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(149876);
+    this.dCf = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(117549);
+    AppMethodBeat.o(149876);
   }
   
   public static final class a
   {
-    public int ret;
+    public String dCg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.og
  * JD-Core Version:    0.7.0.1
  */

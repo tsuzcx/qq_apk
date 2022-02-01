@@ -2,25 +2,25 @@ package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.model.ao;
+import com.tencent.mm.model.ap;
 import com.tencent.mm.network.g.a;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 final class g$4
   extends g.a
 {
   g$4(g paramg) {}
   
-  public final void hk(final int paramInt)
+  public final void hr(final int paramInt)
   {
     AppMethodBeat.i(131770);
-    ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(131769);
-        if (b.agg() != null) {
-          b.agg().nQ(paramInt);
+        if (b.aiS() != null) {
+          b.aiS().oq(paramInt);
         }
         AppMethodBeat.o(131769);
       }

@@ -59,7 +59,7 @@ public final class a
   public final b a(String paramString, com.google.c.a parama, int paramInt1, int paramInt2, Map<com.google.c.c, ?> paramMap)
   {
     AppMethodBeat.i(12300);
-    if (parama != com.google.c.a.bGS)
+    if (parama != com.google.c.a.bRg)
     {
       paramString = new IllegalArgumentException("Can only encode PDF_417, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12300);
@@ -71,41 +71,41 @@ public final class a
     int k;
     if (paramMap != null)
     {
-      if (paramMap.containsKey(com.google.c.c.bHg)) {
-        parama.bHr = Boolean.valueOf(paramMap.get(com.google.c.c.bHg).toString()).booleanValue();
+      if (paramMap.containsKey(com.google.c.c.bRu)) {
+        parama.bRF = Boolean.valueOf(paramMap.get(com.google.c.c.bRu).toString()).booleanValue();
       }
-      if (paramMap.containsKey(com.google.c.c.bHh)) {
-        parama.bKe = com.google.c.e.a.c.valueOf(paramMap.get(com.google.c.c.bHh).toString());
+      if (paramMap.containsKey(com.google.c.c.bRv)) {
+        parama.bUr = com.google.c.e.a.c.valueOf(paramMap.get(com.google.c.c.bRv).toString());
       }
-      if (paramMap.containsKey(com.google.c.c.bHi))
+      if (paramMap.containsKey(com.google.c.c.bRw))
       {
-        d locald = (d)paramMap.get(com.google.c.c.bHi);
-        i = locald.bKa;
-        j = locald.bJZ;
+        d locald = (d)paramMap.get(com.google.c.c.bRw);
+        i = locald.bUn;
+        j = locald.bUm;
         k = locald.maxRows;
-        int m = locald.bKb;
-        parama.bKa = i;
-        parama.bJZ = j;
+        int m = locald.bUo;
+        parama.bUn = i;
+        parama.bUm = j;
         parama.maxRows = k;
-        parama.bKb = m;
+        parama.bUo = m;
       }
-      if (paramMap.containsKey(com.google.c.c.bHf))
+      if (paramMap.containsKey(com.google.c.c.bRt))
       {
-        i = Integer.parseInt(paramMap.get(com.google.c.c.bHf).toString());
-        if (paramMap.containsKey(com.google.c.c.bHa))
+        i = Integer.parseInt(paramMap.get(com.google.c.c.bRt).toString());
+        if (paramMap.containsKey(com.google.c.c.bRo))
         {
-          j = Integer.parseInt(paramMap.get(com.google.c.c.bHa).toString());
+          j = Integer.parseInt(paramMap.get(com.google.c.c.bRo).toString());
           label265:
-          if (paramMap.containsKey(com.google.c.c.bHb)) {
-            parama.bKf = Charset.forName(paramMap.get(com.google.c.c.bHb).toString());
+          if (paramMap.containsKey(com.google.c.c.bRp)) {
+            parama.bUs = Charset.forName(paramMap.get(com.google.c.c.bRp).toString());
           }
         }
       }
     }
     for (;;)
     {
-      parama.k(paramString, j);
-      paramString = parama.bKd.bL(1, 4);
+      parama.m(paramString, j);
+      paramString = parama.bUq.bN(1, 4);
       if (paramInt2 > paramInt1)
       {
         j = 1;
@@ -133,7 +133,7 @@ public final class a
         {
           if (paramInt1 > 1)
           {
-            paramString = parama.bKd.bL(paramInt1, paramInt1 << 2);
+            paramString = parama.bUq.bN(paramInt1, paramInt1 << 2);
             if (j == 0) {
               break label444;
             }

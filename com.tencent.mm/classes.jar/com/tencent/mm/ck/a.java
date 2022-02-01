@@ -1,34 +1,34 @@
 package com.tencent.mm.ck;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/transvoice/TransVoiceTools;", "", "()V", "Companion", "plugin-audiologic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/transvoice/TransVoiceTools;", "", "()V", "Companion", "plugin-audiologic_release"})
 public final class a
 {
-  private static String AlS;
-  private static boolean Hew;
-  private static String Hex;
-  private static boolean Hey;
-  public static final a Hez;
+  private static String BDD;
+  private static boolean IRM;
+  private static String IRN;
+  private static boolean IRO;
+  public static final a IRP;
   
   static
   {
     AppMethodBeat.i(148679);
-    Hez = new a((byte)0);
-    AlS = "";
-    Hex = "";
+    IRP = new a((byte)0);
+    BDD = "";
+    IRN = "";
     AppMethodBeat.o(148679);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/transvoice/TransVoiceTools$Companion;", "", "()V", "inNewTransVoiceScene", "", "getInNewTransVoiceScene", "()Z", "setInNewTransVoiceScene", "(Z)V", "inTransVoiceScene", "getInTransVoiceScene", "setInTransVoiceScene", "newVoiceFileName", "", "getNewVoiceFileName", "()Ljava/lang/String;", "setNewVoiceFileName", "(Ljava/lang/String;)V", "voiceFileName", "getVoiceFileName", "setVoiceFileName", "isNewTransVoiceScene", "fileName", "isTransVoiceScene", "plugin-audiologic_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/transvoice/TransVoiceTools$Companion;", "", "()V", "inNewTransVoiceScene", "", "getInNewTransVoiceScene", "()Z", "setInNewTransVoiceScene", "(Z)V", "inTransVoiceScene", "getInTransVoiceScene", "setInTransVoiceScene", "newVoiceFileName", "", "getNewVoiceFileName", "()Ljava/lang/String;", "setNewVoiceFileName", "(Ljava/lang/String;)V", "voiceFileName", "getVoiceFileName", "setVoiceFileName", "isNewTransVoiceScene", "fileName", "isTransVoiceScene", "plugin-audiologic_release"})
   public static final class a
   {
-    public static boolean aPr(String paramString)
+    public static boolean aVi(String paramString)
     {
       AppMethodBeat.i(148678);
-      if ((a.feu()) && (k.g(a.fet(), paramString)))
+      if ((a.fuB()) && (p.i(a.fuA(), paramString)))
       {
         AppMethodBeat.o(148678);
         return true;
@@ -37,18 +37,18 @@ public final class a
       return false;
     }
     
-    public static void aPs(String paramString)
+    public static void aVj(String paramString)
     {
       AppMethodBeat.i(185491);
-      k.h(paramString, "<set-?>");
-      a.aPq(paramString);
+      p.h(paramString, "<set-?>");
+      a.aVh(paramString);
       AppMethodBeat.o(185491);
     }
     
-    public static boolean aPt(String paramString)
+    public static boolean aVk(String paramString)
     {
       AppMethodBeat.i(185492);
-      if ((a.few()) && (k.g(a.fev(), paramString)))
+      if ((a.fuD()) && (p.i(a.fuC(), paramString)))
       {
         AppMethodBeat.o(185492);
         return true;

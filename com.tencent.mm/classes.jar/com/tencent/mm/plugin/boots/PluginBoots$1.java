@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.boots;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bm;
+import com.tencent.mm.g.a.bp;
 import com.tencent.mm.sdk.b.c;
 
 final class PluginBoots$1
-  extends c<bm>
+  extends c<bp>
 {
   PluginBoots$1(PluginBoots paramPluginBoots)
   {
     AppMethodBeat.i(161178);
-    this.__eventId = bm.class.getName().hashCode();
+    this.__eventId = bp.class.getName().hashCode();
     AppMethodBeat.o(161178);
   }
 }

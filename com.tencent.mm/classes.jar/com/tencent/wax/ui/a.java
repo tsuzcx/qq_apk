@@ -12,8 +12,8 @@ import io.flutter.embedding.android.FlutterView;
 import io.flutter.embedding.android.FlutterView.b;
 import io.flutter.embedding.android.FlutterView.c;
 import io.flutter.embedding.android.f;
-import io.flutter.embedding.android.g;
 import io.flutter.embedding.android.h;
+import io.flutter.embedding.android.i;
 import io.flutter.embedding.engine.c.j;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.embedding.engine.dart.DartExecutor.a;
@@ -21,310 +21,310 @@ import java.util.Arrays;
 
 public final class a
 {
-  private a KuZ;
-  private WxaFlutterSplashView Kva;
-  private io.flutter.plugin.platform.b Kvb;
-  private boolean Kvc;
-  private com.tencent.wax.b.c Kvd;
-  private final io.flutter.embedding.engine.b.b Kve;
-  private io.flutter.embedding.engine.a slN;
-  public FlutterView smb;
+  private a Mla;
+  private WxaFlutterSplashView Mlb;
+  private io.flutter.plugin.platform.b Mlc;
+  private boolean Mld;
+  private com.tencent.wax.b.c Mle;
+  private final io.flutter.embedding.engine.b.b Mlf;
+  public FlutterView tiF;
+  private io.flutter.embedding.engine.a tiq;
   
   public a(a parama)
   {
-    AppMethodBeat.i(191742);
-    this.Kve = new io.flutter.embedding.engine.b.b()
+    AppMethodBeat.i(217539);
+    this.Mlf = new io.flutter.embedding.engine.b.b()
     {
-      public final void cHX() {}
+      public final void cQm() {}
       
-      public final void cHY() {}
+      public final void cQn() {}
     };
-    this.KuZ = parama;
-    this.Kvd = new com.tencent.wax.b.a((com.tencent.wax.b.b)this.KuZ.getActivity());
-    AppMethodBeat.o(191742);
+    this.Mla = parama;
+    this.Mle = new com.tencent.wax.b.a((com.tencent.wax.b.b)this.Mla.getActivity());
+    AppMethodBeat.o(217539);
   }
   
-  private void fHG()
+  private void fYX()
   {
-    AppMethodBeat.i(191744);
+    AppMethodBeat.i(217541);
     com.tencent.wax.c.a.d("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Setting up FlutterEngine.", new Object[0]);
-    fHJ();
-    a locala = this.KuZ;
-    this.KuZ.getContext();
-    this.slN = locala.cWI();
-    if (this.slN != null)
+    fZa();
+    a locala = this.Mla;
+    this.Mla.getContext();
+    this.tiq = locala.dfU();
+    if (this.tiq != null)
     {
-      this.Kvc = true;
-      AppMethodBeat.o(191744);
+      this.Mld = true;
+      AppMethodBeat.o(217541);
       return;
     }
     com.tencent.wax.c.a.i("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "flutter engine is null.", new Object[0]);
-    this.Kvc = false;
-    AppMethodBeat.o(191744);
+    this.Mld = false;
+    AppMethodBeat.o(217541);
   }
   
-  private void fHI()
+  private void fYZ()
   {
-    AppMethodBeat.i(191747);
-    if ((this.KuZ.cWC() == null) && (!this.slN.KLk.KLV))
+    AppMethodBeat.i(217544);
+    if ((this.Mla.dfO() == null) && (!this.tiq.MCh.MCS))
     {
-      com.tencent.wax.c.a.d("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Executing Dart entrypoint: " + this.KuZ.cWD() + ", and sending initial route: " + this.KuZ.cWF(), new Object[0]);
-      if (this.KuZ.cWF() != null) {
-        this.slN.KLp.setInitialRoute(this.KuZ.cWF());
+      com.tencent.wax.c.a.d("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Executing Dart entrypoint: " + this.Mla.dfP() + ", and sending initial route: " + this.Mla.dfR(), new Object[0]);
+      if (this.Mla.dfR() != null) {
+        this.tiq.MCm.setInitialRoute(this.Mla.dfR());
       }
-      DartExecutor.a locala = new DartExecutor.a(this.KuZ.cWE(), this.KuZ.cWD());
-      this.slN.KLk.a(locala);
+      DartExecutor.a locala = new DartExecutor.a(this.Mla.dfQ(), this.Mla.dfP());
+      this.tiq.MCh.a(locala);
     }
-    AppMethodBeat.o(191747);
+    AppMethodBeat.o(217544);
   }
   
-  private void fHJ()
+  private void fZa()
   {
-    AppMethodBeat.i(191760);
-    if (this.KuZ == null)
+    AppMethodBeat.i(217557);
+    if (this.Mla == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Cannot execute method on a destroyed FlutterActivityAndFragmentDelegate.");
-      AppMethodBeat.o(191760);
+      AppMethodBeat.o(217557);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(191760);
+    AppMethodBeat.o(217557);
   }
   
-  public final void fHF()
+  public final void fYW()
   {
-    AppMethodBeat.i(191743);
-    fHJ();
-    d.fHA().init();
-    d.fHA().KuF = this.KuZ.getActivity();
-    if (this.slN == null) {
-      fHG();
+    AppMethodBeat.i(217540);
+    fZa();
+    d.fYR().init();
+    d.fYR().MkG = this.Mla.getActivity();
+    if (this.tiq == null) {
+      fYX();
     }
-    this.Kvb = null;
-    this.KuZ.a(this.slN);
-    AppMethodBeat.o(191743);
+    this.Mlc = null;
+    this.Mla.a(this.tiq);
+    AppMethodBeat.o(217540);
   }
   
-  public final View fHH()
+  public final View fYY()
   {
-    AppMethodBeat.i(191745);
+    AppMethodBeat.i(217542);
     com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Creating FlutterView.", new Object[0]);
-    fHJ();
-    this.slN.KLl.a(this.KuZ.getActivity(), this.KuZ.getLifecycle());
-    this.Kvd.onCreateView();
-    this.smb = new FlutterView(this.KuZ.getActivity(), this.KuZ.cWG(), this.KuZ.cWH());
-    this.smb.a(this.Kve);
-    this.Kva = new WxaFlutterSplashView(this.KuZ.getContext());
+    fZa();
+    this.tiq.MCi.a(this.Mla.getActivity(), this.Mla.getLifecycle());
+    this.Mle.onCreateView();
+    this.tiF = new FlutterView(this.Mla.getActivity(), this.Mla.dfS(), this.Mla.dfT());
+    this.tiF.a(this.Mlf);
+    this.Mlb = new WxaFlutterSplashView(this.Mla.getContext());
     if (Build.VERSION.SDK_INT >= 17) {
-      this.Kva.setId(View.generateViewId());
+      this.Mlb.setId(View.generateViewId());
     }
     for (;;)
     {
-      this.Kva.a(this.smb, this.KuZ.cWz());
-      WxaFlutterSplashView localWxaFlutterSplashView = this.Kva;
-      AppMethodBeat.o(191745);
+      this.Mlb.a(this.tiF, this.Mla.dfL());
+      WxaFlutterSplashView localWxaFlutterSplashView = this.Mlb;
+      AppMethodBeat.o(217542);
       return localWxaFlutterSplashView;
-      this.Kva.setId(0);
+      this.Mlb.setId(0);
     }
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(191757);
-    fHJ();
-    if (this.slN != null)
+    AppMethodBeat.i(217554);
+    fZa();
+    if (this.tiq != null)
     {
       com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onActivityResult() to FlutterEngine:\nrequestCode: " + paramInt1 + "\nresultCode: " + paramInt2 + "\ndata: " + paramIntent, new Object[0]);
-      this.slN.KLl.onActivityResult(paramInt1, paramInt2, paramIntent);
-      AppMethodBeat.o(191757);
+      this.tiq.MCi.onActivityResult(paramInt1, paramInt2, paramIntent);
+      AppMethodBeat.o(217554);
       return;
     }
     com.tencent.wax.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onActivityResult() invoked before FlutterFragment was attached to an Activity.", new Object[0]);
-    AppMethodBeat.o(191757);
+    AppMethodBeat.o(217554);
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(191754);
+    AppMethodBeat.i(217551);
     com.tencent.wax.c.a.d("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onBackPressed", new Object[0]);
-    this.Kvd.onBackPressed();
-    fHJ();
-    if (this.slN != null)
+    this.Mle.onBackPressed();
+    fZa();
+    if (this.tiq != null)
     {
       com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onBackPressed() to FlutterEngine.", new Object[0]);
-      this.slN.KLp.cHW();
-      AppMethodBeat.o(191754);
+      this.tiq.MCm.cQl();
+      AppMethodBeat.o(217551);
       return;
     }
     com.tencent.wax.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Invoked onBackPressed() before FlutterFragment was attached to an Activity.", new Object[0]);
-    AppMethodBeat.o(191754);
+    AppMethodBeat.o(217551);
   }
   
   public final void onDestroyView()
   {
-    AppMethodBeat.i(191752);
+    AppMethodBeat.i(217549);
     com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onDestroyView()", new Object[0]);
-    this.Kvd.onDestroyView();
-    fHJ();
-    this.smb.b(this.Kve);
-    AppMethodBeat.o(191752);
+    this.Mle.onDestroyView();
+    fZa();
+    this.tiF.b(this.Mlf);
+    AppMethodBeat.o(217549);
   }
   
   public final void onDetach()
   {
-    AppMethodBeat.i(191753);
+    AppMethodBeat.i(217550);
     com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onDetach()", new Object[0]);
-    fHJ();
-    if (this.Kvb != null)
+    fZa();
+    if (this.Mlc != null)
     {
-      this.Kvb.destroy();
-      this.Kvb = null;
+      this.Mlc.destroy();
+      this.Mlc = null;
     }
-    d.fHA().KuF = null;
-    AppMethodBeat.o(191753);
+    d.fYR().MkG = null;
+    AppMethodBeat.o(217550);
   }
   
   public final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(191756);
-    fHJ();
-    if (this.slN != null)
+    AppMethodBeat.i(217553);
+    fZa();
+    if (this.tiq != null)
     {
       com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onNewIntent() to FlutterEngine.", new Object[0]);
-      this.slN.KLl.onNewIntent(paramIntent);
-      AppMethodBeat.o(191756);
+      this.tiq.MCi.onNewIntent(paramIntent);
+      AppMethodBeat.o(217553);
       return;
     }
     com.tencent.wax.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onNewIntent() invoked before FlutterFragment was attached to an Activity.", new Object[0]);
-    AppMethodBeat.o(191756);
+    AppMethodBeat.o(217553);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(191750);
+    AppMethodBeat.i(217547);
     com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onPause()", new Object[0]);
-    this.Kvd.onPause();
-    fHJ();
-    this.slN.KLn.fNz();
-    AppMethodBeat.o(191750);
+    this.Mle.onPause();
+    fZa();
+    this.tiq.MCk.geY();
+    AppMethodBeat.o(217547);
   }
   
   public final void onPostResume()
   {
-    AppMethodBeat.i(191749);
+    AppMethodBeat.i(217546);
     com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onPostResume()", new Object[0]);
-    fHJ();
-    if (this.slN != null)
+    fZa();
+    if (this.tiq != null)
     {
-      if (this.Kvb != null)
+      if (this.Mlc != null)
       {
-        this.Kvb.fNK();
-        AppMethodBeat.o(191749);
+        this.Mlc.gfj();
+        AppMethodBeat.o(217546);
       }
     }
     else {
       com.tencent.wax.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onPostResume() invoked before FlutterFragment was attached to an Activity.", new Object[0]);
     }
-    AppMethodBeat.o(191749);
+    AppMethodBeat.o(217546);
   }
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(191755);
-    fHJ();
-    if (this.slN != null)
+    AppMethodBeat.i(217552);
+    fZa();
+    if (this.tiq != null)
     {
       com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onRequestPermissionsResult() to FlutterEngine:\nrequestCode: " + paramInt + "\npermissions: " + Arrays.toString(paramArrayOfString) + "\ngrantResults: " + Arrays.toString(paramArrayOfInt), new Object[0]);
-      this.slN.KLl.a(paramInt, paramArrayOfString, paramArrayOfInt);
-      AppMethodBeat.o(191755);
+      this.tiq.MCi.a(paramInt, paramArrayOfString, paramArrayOfInt);
+      AppMethodBeat.o(217552);
       return;
     }
     com.tencent.wax.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onRequestPermissionResult() invoked before FlutterFragment was attached to an Activity.", new Object[0]);
-    AppMethodBeat.o(191755);
+    AppMethodBeat.o(217552);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(191748);
+    AppMethodBeat.i(217545);
     com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onResume()", new Object[0]);
-    this.Kvd.onResume();
-    fHJ();
-    this.slN.KLn.fNA();
-    AppMethodBeat.o(191748);
+    this.Mle.onResume();
+    fZa();
+    this.tiq.MCk.geZ();
+    AppMethodBeat.o(217545);
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(191746);
+    AppMethodBeat.i(217543);
     com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onStart()", new Object[0]);
-    fHJ();
+    fZa();
     com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Attaching FlutterEngine to FlutterView.", new Object[0]);
-    this.smb.c(this.slN);
-    fHI();
-    AppMethodBeat.o(191746);
+    this.tiF.c(this.tiq);
+    fYZ();
+    AppMethodBeat.o(217543);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(191751);
+    AppMethodBeat.i(217548);
     com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onStop()", new Object[0]);
-    fHJ();
-    AppMethodBeat.o(191751);
+    fZa();
+    AppMethodBeat.o(217548);
   }
   
   public final void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(191759);
-    fHJ();
-    if (this.slN != null)
+    AppMethodBeat.i(217556);
+    fZa();
+    if (this.tiq != null)
     {
       if (paramInt == 10)
       {
         com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onTrimMemory() to FlutterEngine. Level: ".concat(String.valueOf(paramInt)), new Object[0]);
-        this.slN.KLt.fNH();
-        AppMethodBeat.o(191759);
+        this.tiq.MCq.gfg();
+        AppMethodBeat.o(217556);
       }
     }
     else {
       com.tencent.wax.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onTrimMemory() invoked before FlutterFragment was attached to an Activity.", new Object[0]);
     }
-    AppMethodBeat.o(191759);
+    AppMethodBeat.o(217556);
   }
   
   public final void onUserLeaveHint()
   {
-    AppMethodBeat.i(191758);
-    fHJ();
-    if (this.slN != null)
+    AppMethodBeat.i(217555);
+    fZa();
+    if (this.tiq != null)
     {
       com.tencent.wax.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onUserLeaveHint() to FlutterEngine.", new Object[0]);
-      this.slN.KLl.onUserLeaveHint();
-      AppMethodBeat.o(191758);
+      this.tiq.MCi.onUserLeaveHint();
+      AppMethodBeat.o(217555);
       return;
     }
     com.tencent.wax.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onUserLeaveHint() invoked before FlutterFragment was attached to an Activity.", new Object[0]);
-    AppMethodBeat.o(191758);
+    AppMethodBeat.o(217555);
   }
   
   public static abstract interface a
-    extends io.flutter.embedding.android.e, f, h
+    extends io.flutter.embedding.android.e, f, i
   {
     public abstract void a(io.flutter.embedding.engine.a parama);
     
-    public abstract String cWC();
+    public abstract h dfL();
     
-    public abstract String cWD();
+    public abstract String dfO();
     
-    public abstract String cWE();
+    public abstract String dfP();
     
-    public abstract String cWF();
+    public abstract String dfQ();
     
-    public abstract FlutterView.b cWG();
+    public abstract String dfR();
     
-    public abstract FlutterView.c cWH();
+    public abstract FlutterView.b dfS();
     
-    public abstract io.flutter.embedding.engine.a cWI();
+    public abstract FlutterView.c dfT();
     
-    public abstract g cWz();
+    public abstract io.flutter.embedding.engine.a dfU();
     
     public abstract Activity getActivity();
     

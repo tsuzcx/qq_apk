@@ -7,6 +7,9 @@ import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ap;
+import com.tencent.mm.ui.widget.picker.d.f;
+import com.tencent.mm.ui.widget.picker.d.g;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -16,226 +19,243 @@ import java.util.Locale;
 public class CustomDatePickerNew
   extends FrameLayout
 {
-  private h Jjd;
-  private boolean Jje;
+  private h LaA;
+  private boolean LaB;
   private Context context;
-  private int kHi;
-  private int kHj;
-  private int kHk;
-  private boolean mJQ;
-  private boolean mJR;
-  private boolean mJS;
-  private Date mJW;
-  private Date mJX;
-  private int mKb;
-  private int mKc;
-  private int mKd;
+  private int ldB;
+  private int ldC;
+  private int ldD;
   private View mView;
+  private boolean nkm;
+  private boolean nkn;
+  private boolean nko;
+  private Date nks;
+  private Date nkt;
+  private int nkx;
+  private int nky;
+  private int nkz;
   
   public CustomDatePickerNew(Context paramContext)
   {
     super(new ContextThemeWrapper(paramContext, 2131821679));
-    AppMethodBeat.i(199725);
+    AppMethodBeat.i(192671);
     this.mView = null;
-    this.mJS = true;
-    this.mJR = true;
-    this.mJQ = true;
-    this.Jje = false;
+    this.nko = true;
+    this.nkn = true;
+    this.nkm = true;
+    this.LaB = false;
     this.context = paramContext;
-    this.Jjd = new h(paramContext);
-    AppMethodBeat.o(199725);
+    this.LaA = new h(paramContext);
+    AppMethodBeat.o(192671);
   }
   
   public CustomDatePickerNew(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(new ContextThemeWrapper(paramContext, 2131821679), paramAttributeSet);
-    AppMethodBeat.i(199726);
+    AppMethodBeat.i(192672);
     this.mView = null;
-    this.mJS = true;
-    this.mJR = true;
-    this.mJQ = true;
-    this.Jje = false;
+    this.nko = true;
+    this.nkn = true;
+    this.nkm = true;
+    this.LaB = false;
     this.context = paramContext;
-    this.Jjd = new h(paramContext);
-    AppMethodBeat.o(199726);
+    this.LaA = new h(paramContext);
+    AppMethodBeat.o(192672);
   }
   
   public CustomDatePickerNew(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(199727);
+    AppMethodBeat.i(192673);
     this.mView = null;
-    this.mJS = true;
-    this.mJR = true;
-    this.mJQ = true;
-    this.Jje = false;
+    this.nko = true;
+    this.nkn = true;
+    this.nkm = true;
+    this.LaB = false;
     this.context = paramContext;
-    this.Jjd = new h(paramContext);
-    AppMethodBeat.o(199727);
+    this.LaA = new h(paramContext);
+    AppMethodBeat.o(192673);
   }
   
-  public final void aN(int paramInt1, int paramInt2, int paramInt3)
+  public final void aO(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(199730);
-    this.kHi = paramInt1;
-    this.kHj = paramInt2;
-    this.kHk = paramInt3;
+    AppMethodBeat.i(192676);
+    this.ldB = paramInt1;
+    this.ldC = paramInt2;
+    this.ldD = paramInt3;
     if (this.mView == null) {
-      this.mView = this.Jjd.aMT();
+      this.mView = this.LaA.aQe();
     }
-    AppMethodBeat.o(199730);
+    AppMethodBeat.o(192676);
   }
   
-  public final void aP(boolean paramBoolean1, boolean paramBoolean2)
+  public final void aX(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.mJS = paramBoolean2;
-    this.mJR = paramBoolean1;
-    this.mJQ = true;
+    this.nko = paramBoolean2;
+    this.nkn = paramBoolean1;
+    this.nkm = true;
   }
   
   public final String currentValue()
   {
-    AppMethodBeat.i(199728);
-    this.Jjd.aMR();
-    if (this.mJS)
+    AppMethodBeat.i(192674);
+    this.LaA.aQc();
+    if (this.nko)
     {
-      str = String.format(Locale.US, "%04d-%02d-%02d", new Object[] { Integer.valueOf(this.mKb), Integer.valueOf(this.mKc), Integer.valueOf(this.mKd) });
-      AppMethodBeat.o(199728);
+      str = String.format(Locale.US, "%04d-%02d-%02d", new Object[] { Integer.valueOf(this.nkx), Integer.valueOf(this.nky), Integer.valueOf(this.nkz) });
+      AppMethodBeat.o(192674);
       return str;
     }
-    if (this.mJR)
+    if (this.nkn)
     {
-      str = String.format(Locale.US, "%04d-%02d", new Object[] { Integer.valueOf(this.mKb), Integer.valueOf(this.mKc) });
-      AppMethodBeat.o(199728);
+      str = String.format(Locale.US, "%04d-%02d", new Object[] { Integer.valueOf(this.nkx), Integer.valueOf(this.nky) });
+      AppMethodBeat.o(192674);
       return str;
     }
-    String str = String.format(Locale.US, "%04d", new Object[] { Integer.valueOf(this.mKb) });
-    AppMethodBeat.o(199728);
+    String str = String.format(Locale.US, "%04d", new Object[] { Integer.valueOf(this.nkx) });
+    AppMethodBeat.o(192674);
     return str;
   }
   
   public int getDayOfMonth()
   {
-    AppMethodBeat.i(199735);
-    if (this.Jjd != null) {
-      this.Jjd.aMR();
+    AppMethodBeat.i(192681);
+    if (this.LaA != null) {
+      this.LaA.aQc();
     }
-    int i = this.mKd;
-    AppMethodBeat.o(199735);
+    int i = this.nkz;
+    AppMethodBeat.o(192681);
     return i;
   }
   
   public int getMonth()
   {
-    AppMethodBeat.i(199734);
-    if (this.Jjd != null) {
-      this.Jjd.aMR();
+    AppMethodBeat.i(192680);
+    if (this.LaA != null) {
+      this.LaA.aQc();
     }
-    int i = this.mKc;
-    AppMethodBeat.o(199734);
+    int i = this.nky;
+    AppMethodBeat.o(192680);
     return i;
   }
   
   public View getView()
   {
-    AppMethodBeat.i(199729);
+    AppMethodBeat.i(192675);
     if (this.mView == null) {
-      this.mView = this.Jjd.aMT();
+      this.mView = this.LaA.aQe();
     }
     View localView = this.mView;
-    AppMethodBeat.o(199729);
+    AppMethodBeat.o(192675);
     return localView;
   }
   
   public int getYear()
   {
-    AppMethodBeat.i(199733);
-    if (this.Jjd != null) {
-      this.Jjd.aMR();
+    AppMethodBeat.i(192679);
+    if (this.LaA != null) {
+      this.LaA.aQc();
     }
-    int i = this.mKb;
-    AppMethodBeat.o(199733);
+    int i = this.nkx;
+    AppMethodBeat.o(192679);
     return i;
   }
   
   public final void onShow()
   {
-    AppMethodBeat.i(199736);
-    if (this.Jje) {
-      this.kHi += 1;
+    AppMethodBeat.i(192682);
+    if (this.LaB) {
+      this.ldB += 1;
     }
     Object localObject1 = Calendar.getInstance();
-    ((Calendar)localObject1).set(this.kHi, this.kHj - 1, this.kHk);
+    ((Calendar)localObject1).set(this.ldB, this.ldC - 1, this.ldD);
     Object localObject2 = Calendar.getInstance();
-    if (this.mJW == null) {
-      this.mJW = new Date(((Calendar)localObject1).getTimeInMillis());
+    if (this.nks == null) {
+      this.nks = new Date(((Calendar)localObject1).getTimeInMillis());
     }
-    ((Calendar)localObject2).setTime(this.mJW);
+    ((Calendar)localObject2).setTime(this.nks);
     Calendar localCalendar = Calendar.getInstance();
-    if (this.mJX == null)
+    if (this.nkt == null)
     {
       localObject3 = Calendar.getInstance();
-      ((Calendar)localObject3).set(this.kHi + 100, this.kHj - 1, this.kHk);
-      this.mJX = new Date(((Calendar)localObject3).getTimeInMillis());
+      ((Calendar)localObject3).set(this.ldB + 100, this.ldC - 1, this.ldD);
+      this.nkt = new Date(((Calendar)localObject3).getTimeInMillis());
     }
-    localCalendar.setTime(this.mJX);
-    Object localObject3 = this.Jjd;
-    boolean bool = this.Jje;
-    ((h)localObject3).JjM = bool;
-    if (((h)localObject3).JjL != null) {
-      ((h)localObject3).JjL.JjY = bool;
+    localCalendar.setTime(this.nkt);
+    Object localObject3 = this.LaA;
+    boolean bool = this.LaB;
+    ((h)localObject3).Lbj = bool;
+    if (((h)localObject3).Lbi != null) {
+      ((h)localObject3).Lbi.Lbv = bool;
     }
-    localObject3 = new com.tencent.mm.ui.widget.picker.b.b(this.context, new CustomDatePickerNew.2(this));
-    CustomDatePickerNew.1 local1 = new CustomDatePickerNew.1(this);
-    ((com.tencent.mm.ui.widget.picker.b.b)localObject3).Jja.JkN = local1;
-    localObject1 = ((com.tencent.mm.ui.widget.picker.b.b)localObject3).fwk().c(new boolean[] { this.mJQ, this.mJR, this.mJS, false, false, false }).b((Calendar)localObject1).b((Calendar)localObject2, localCalendar);
-    int i = this.context.getResources().getDimensionPixelSize(2131165292);
-    ((com.tencent.mm.ui.widget.picker.b.b)localObject1).Jja.it = i;
-    ((com.tencent.mm.ui.widget.picker.b.b)localObject1).c(this.Jjd);
-    this.Jjd.setDividerHeight(this.context.getResources().getDimensionPixelSize(2131165923));
-    this.context.getResources().getDimensionPixelSize(2131165292);
-    localObject1 = this.Jjd;
-    bool = this.Jje;
-    if (((h)localObject1).JjL != null)
+    localObject3 = new com.tencent.mm.ui.widget.picker.b.b(this.context, new g()
     {
-      localObject1 = ((h)localObject1).JjL;
-      ((j)localObject1).JjY = bool;
-      ((j)localObject1).JjX.JkJ = bool;
-      ((j)localObject1).JjR.setLongTermYear(bool);
-      ((j)localObject1).JjS.setLongTermMonthDay(bool);
-      ((j)localObject1).JjT.setLongTermMonthDay(bool);
+      public final void a(Date paramAnonymousDate)
+      {
+        AppMethodBeat.i(192670);
+        CustomDatePickerNew.a(CustomDatePickerNew.this, paramAnonymousDate);
+        ap.i("pvTime", "onTimeSelect", new Object[0]);
+        AppMethodBeat.o(192670);
+      }
+    });
+    f local1 = new f()
+    {
+      public final void fMK()
+      {
+        AppMethodBeat.i(192669);
+        ap.i("pvTime", "onTimeSelectChanged", new Object[0]);
+        AppMethodBeat.o(192669);
+      }
+    };
+    ((com.tencent.mm.ui.widget.picker.b.b)localObject3).Lax.Lck = local1;
+    localObject1 = ((com.tencent.mm.ui.widget.picker.b.b)localObject3).fMY().c(new boolean[] { this.nkm, this.nkn, this.nko, false, false, false }).b((Calendar)localObject1).b((Calendar)localObject2, localCalendar);
+    int i = this.context.getResources().getDimensionPixelSize(2131165292);
+    ((com.tencent.mm.ui.widget.picker.b.b)localObject1).Lax.kl = i;
+    ((com.tencent.mm.ui.widget.picker.b.b)localObject1).c(this.LaA);
+    this.LaA.setDividerHeight(this.context.getResources().getDimensionPixelSize(2131165923));
+    this.context.getResources().getDimensionPixelSize(2131165292);
+    localObject1 = this.LaA;
+    bool = this.LaB;
+    if (((h)localObject1).Lbi != null)
+    {
+      localObject1 = ((h)localObject1).Lbi;
+      ((j)localObject1).Lbv = bool;
+      ((j)localObject1).Lbu.Lcg = bool;
+      ((j)localObject1).Lbo.setLongTermYear(bool);
+      ((j)localObject1).Lbp.setLongTermMonthDay(bool);
+      ((j)localObject1).Lbq.setLongTermMonthDay(bool);
     }
-    localObject1 = this.Jjd;
+    localObject1 = this.LaA;
     i = android.support.v4.content.b.n(this.context, 2131099656);
-    ((h)localObject1).JjL.setDividerColor(i);
-    this.Jjd.ds(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
-    localObject1 = this.Jjd.fwb().iterator();
+    ((h)localObject1).Lbi.setDividerColor(i);
+    this.LaA.du(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
+    localObject1 = this.LaA.fMP().iterator();
     i = 0;
     if (((Iterator)localObject1).hasNext())
     {
       localObject2 = (WheelView)((Iterator)localObject1).next();
-      if ((this.Jje) && (this.kHi == 2) && (i > 0)) {
-        ((WheelView)localObject2).adg(0).adf(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
+      if ((this.LaB) && (this.ldB == 2) && (i > 0)) {
+        ((WheelView)localObject2).afG(0).afF(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
       }
       for (;;)
       {
         i += 1;
         break;
-        ((WheelView)localObject2).adg(android.support.v4.content.b.n(this.context, 2131099664)).adf(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
+        ((WheelView)localObject2).afG(android.support.v4.content.b.n(this.context, 2131099664)).afF(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
       }
     }
-    localObject1 = this.Jjd.fwb();
+    localObject1 = this.LaA.fMP();
     if (((List)localObject1).size() == 1)
     {
       ((WheelView)((List)localObject1).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165289), 0, this.context.getResources().getDimensionPixelSize(2131165289));
-      AppMethodBeat.o(199736);
+      AppMethodBeat.o(192682);
       return;
     }
     if (((List)localObject1).size() == 2)
     {
       ((WheelView)((List)localObject1).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
       ((WheelView)((List)localObject1).get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289), 0, this.context.getResources().getDimensionPixelSize(2131165289));
-      AppMethodBeat.o(199736);
+      AppMethodBeat.o(192682);
       return;
     }
     if (((List)localObject1).size() == 3)
@@ -244,31 +264,31 @@ public class CustomDatePickerNew
       ((WheelView)((List)localObject1).get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165274), this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165274), this.context.getResources().getDimensionPixelSize(2131165289));
       ((WheelView)((List)localObject1).get(2)).setPadding(this.context.getResources().getDimensionPixelSize(2131165274), this.context.getResources().getDimensionPixelSize(2131165289), 0, this.context.getResources().getDimensionPixelSize(2131165289));
     }
-    AppMethodBeat.o(199736);
+    AppMethodBeat.o(192682);
   }
   
   public void setLongTermYear(boolean paramBoolean)
   {
-    this.Jje = paramBoolean;
+    this.LaB = paramBoolean;
   }
   
   public void setMaxDate(Long paramLong)
   {
-    AppMethodBeat.i(199731);
-    this.mJX = new Date(paramLong.longValue());
-    AppMethodBeat.o(199731);
+    AppMethodBeat.i(192677);
+    this.nkt = new Date(paramLong.longValue());
+    AppMethodBeat.o(192677);
   }
   
   public void setMinDate(Long paramLong)
   {
-    AppMethodBeat.i(199732);
-    this.mJW = new Date(paramLong.longValue());
-    AppMethodBeat.o(199732);
+    AppMethodBeat.i(192678);
+    this.nks = new Date(paramLong.longValue());
+    AppMethodBeat.o(192678);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.CustomDatePickerNew
  * JD-Core Version:    0.7.0.1
  */

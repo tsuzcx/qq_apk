@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.op_report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.protocal.protobuf.bsi;
-import com.tencent.mm.protocal.protobuf.cpt;
-import com.tencent.mm.protocal.protobuf.cpu;
-import d.g.b.k;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.protocal.protobuf.bwv;
+import com.tencent.mm.protocal.protobuf.cuy;
+import com.tencent.mm.protocal.protobuf.cuz;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/op_report/OpReportUtil;", "", "()V", "getReportIdOrThrows", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "matchNetScene", "", "requestAppID", "", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/op_report/OpReportUtil;", "", "()V", "getReportIdOrThrows", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "matchNetScene", "", "requestAppID", "", "plugin-appbrand-integration_release"})
 public final class c
 {
-  public static final c kEy;
+  public static final c laI;
   
   static
   {
     AppMethodBeat.i(50632);
-    kEy = new c();
+    laI = new c();
     AppMethodBeat.o(50632);
   }
   
@@ -25,7 +25,7 @@ public final class c
   {
     Object localObject2 = null;
     AppMethodBeat.i(50630);
-    k.h(paramString, "requestAppID");
+    p.h(paramString, "requestAppID");
     Object localObject1;
     if (paramn != null)
     {
@@ -40,23 +40,23 @@ public final class c
       }
     }
     label106:
-    for (paramn = paramn.aBC();; paramn = null)
+    for (paramn = paramn.aEE();; paramn = null)
     {
       localObject1 = paramn;
-      if (!(paramn instanceof cpt)) {
+      if (!(paramn instanceof cuy)) {
         localObject1 = null;
       }
-      localObject1 = (cpt)localObject1;
+      localObject1 = (cuy)localObject1;
       paramn = localObject2;
       if (localObject1 != null)
       {
-        localObject1 = ((cpt)localObject1).FCQ;
+        localObject1 = ((cuy)localObject1).Hnd;
         paramn = localObject2;
         if (localObject1 != null) {
-          paramn = ((bsi)localObject1).djj;
+          paramn = ((bwv)localObject1).duW;
         }
       }
-      boolean bool = k.g(paramn, paramString);
+      boolean bool = p.i(paramn, paramString);
       AppMethodBeat.o(50630);
       return bool;
       paramn = null;
@@ -81,17 +81,17 @@ public final class c
       }
     }
     label76:
-    for (paramn = paramn.aBD();; paramn = null)
+    for (paramn = paramn.aEF();; paramn = null)
     {
       localn = paramn;
-      if (!(paramn instanceof cpu)) {
+      if (!(paramn instanceof cuz)) {
         localn = null;
       }
-      paramn = (cpu)localn;
+      paramn = (cuz)localn;
       if (paramn == null) {
         break label81;
       }
-      int i = paramn.FCR;
+      int i = paramn.Hne;
       AppMethodBeat.o(50631);
       return i;
       paramn = null;

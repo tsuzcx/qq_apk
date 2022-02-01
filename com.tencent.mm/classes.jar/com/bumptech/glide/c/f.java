@@ -15,26 +15,26 @@ public abstract interface f
   
   public static enum a
   {
-    public final boolean aDm;
+    public final boolean aFd;
     
     static
     {
       AppMethodBeat.i(76845);
-      aDe = new a("GIF", 0, true);
-      aDf = new a("JPEG", 1, false);
-      aDg = new a("RAW", 2, false);
-      aDh = new a("PNG_A", 3, true);
-      aDi = new a("PNG", 4, false);
-      aDj = new a("WEBP_A", 5, true);
-      aDk = new a("WEBP", 6, false);
-      aDl = new a("UNKNOWN", 7, false);
-      aDn = new a[] { aDe, aDf, aDg, aDh, aDi, aDj, aDk, aDl };
+      aEV = new a("GIF", 0, true);
+      aEW = new a("JPEG", 1, false);
+      aEX = new a("RAW", 2, false);
+      aEY = new a("PNG_A", 3, true);
+      aEZ = new a("PNG", 4, false);
+      aFa = new a("WEBP_A", 5, true);
+      aFb = new a("WEBP", 6, false);
+      aFc = new a("UNKNOWN", 7, false);
+      aFe = new a[] { aEV, aEW, aEX, aEY, aEZ, aFa, aFb, aFc };
       AppMethodBeat.o(76845);
     }
     
     private a(boolean paramBoolean)
     {
-      this.aDm = paramBoolean;
+      this.aFd = paramBoolean;
     }
   }
 }

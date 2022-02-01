@@ -1,239 +1,170 @@
 package com.tencent.mm.plugin.finder.view;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.os.Build.VERSION;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.BottomSheetBehavior.a;
-import android.support.design.widget.a;
-import android.view.Display;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.a.b;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.aq;
+import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.b;
+import d.g.b.p;
+import d.v;
 
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderBottomDialogHelper;", "", "()V", "Companion", "plugin-finder_release"})
 public final class c
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private ViewTreeObserver adE;
-  public View khe;
-  private Dialog lcA;
-  private BottomSheetBehavior lcD;
-  private boolean lcE;
-  private int lcF;
-  private boolean lcH;
-  private boolean lcI;
-  private Context mContext;
-  private View oP;
-  private boolean rVy;
-  private boolean rVz;
+  private static final String TAG = "FinderBottomDialogHelper";
+  public static final a sSb;
   
-  public c(Context paramContext)
+  static
   {
-    AppMethodBeat.i(178057);
-    this.lcE = false;
-    this.rVz = false;
-    this.lcH = false;
-    this.lcI = false;
-    this.mContext = paramContext;
-    if ((this.mContext instanceof Activity)) {
-      this.oP = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
-    }
-    paramContext = this.mContext;
-    if (this.lcI) {}
-    for (this.lcA = new b(paramContext);; this.lcA = new a(paramContext, 2131820788))
+    AppMethodBeat.i(168222);
+    sSb = new a((byte)0);
+    TAG = "FinderBottomDialogHelper";
+    AppMethodBeat.o(168222);
+  }
+  
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion;", "", "()V", "TAG", "", "showConfirmDialog", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "context", "Landroid/content/Context;", "title", "msg", "lok", "Landroid/content/DialogInterface$OnClickListener;", "lcancel", "ldismiss", "Landroid/content/DialogInterface$OnDismissListener;", "ok", "cancel", "plugin-finder_release"})
+  public static final class a
+  {
+    public static e a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, final DialogInterface.OnClickListener paramOnClickListener1, final DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnDismissListener paramOnDismissListener)
     {
-      this.khe = View.inflate(paramContext, 2131494069, null);
-      this.lcE = aly();
-      this.lcA.setContentView(this.khe);
-      this.lcD = BottomSheetBehavior.l((View)this.khe.getParent());
-      this.lcD.setState(3);
-      this.lcD.mp = new BottomSheetBehavior.a()
+      AppMethodBeat.i(205048);
+      p.h(paramContext, "context");
+      e locale = new e(paramContext, 1, false);
+      Object localObject = View.inflate(paramContext, 2131494011, null);
+      if (localObject == null)
       {
-        public final void N(int paramAnonymousInt) {}
-        
-        public final void l(float paramAnonymousFloat) {}
-      };
-      this.lcA.setOnDismissListener(new DialogInterface.OnDismissListener()
+        paramContext = new v("null cannot be cast to non-null type com.tencent.mm.ui.widget.RoundedCornerFrameLayout");
+        AppMethodBeat.o(205048);
+        throw paramContext;
+      }
+      localObject = (RoundedCornerFrameLayout)localObject;
+      TextView localTextView = (TextView)((RoundedCornerFrameLayout)localObject).findViewById(2131300013);
+      p.g(localTextView, "msgTv");
+      localTextView.setText((CharSequence)bt.nullAsNil(paramString2));
+      paramString2 = (TextView)((RoundedCornerFrameLayout)localObject).findViewById(2131300077);
+      if (!bt.isNullOrNil(paramString1))
       {
-        public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
+        p.g(paramString2, "titleTv");
+        paramString2.setText((CharSequence)paramString1);
+      }
+      paramString1 = (Button)((RoundedCornerFrameLayout)localObject).findViewById(2131302999);
+      if (!bt.isNullOrNil(paramString3))
+      {
+        p.g(paramString1, "okBtn");
+        paramString1.setText((CharSequence)paramString3);
+      }
+      paramString2 = (Button)((RoundedCornerFrameLayout)localObject).findViewById(2131297690);
+      if (!bt.isNullOrNil(paramString4))
+      {
+        p.g(paramString2, "cancelBtn");
+        paramString2.setText((CharSequence)paramString4);
+      }
+      ((RoundedCornerFrameLayout)localObject).p(aq.fromDPToPix(paramContext, 12), aq.fromDPToPix(paramContext, 12), 0.0F, 0.0F);
+      paramString1.setOnClickListener((View.OnClickListener)new a(locale, paramOnClickListener1));
+      paramString2.setOnClickListener((View.OnClickListener)new b(locale, paramOnClickListener2));
+      locale.b((e.b)new c(paramOnDismissListener));
+      locale.a((n.d)new d(locale, (RoundedCornerFrameLayout)localObject));
+      locale.fMc();
+      locale.cMW();
+      AppMethodBeat.o(205048);
+      return locale;
+    }
+    
+    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    static final class a
+      implements View.OnClickListener
+    {
+      a(e parame, DialogInterface.OnClickListener paramOnClickListener) {}
+      
+      public final void onClick(View paramView)
+      {
+        AppMethodBeat.i(205044);
+        b localb = new b();
+        localb.bd(paramView);
+        a.b("com/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion$showConfirmDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        this.sSc.bpT();
+        paramView = paramOnClickListener1;
+        if (paramView != null) {
+          paramView.onClick(null, -1);
+        }
+        a.a(this, "com/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion$showConfirmDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(205044);
+      }
+    }
+    
+    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    static final class b
+      implements View.OnClickListener
+    {
+      b(e parame, DialogInterface.OnClickListener paramOnClickListener) {}
+      
+      public final void onClick(View paramView)
+      {
+        AppMethodBeat.i(205045);
+        b localb = new b();
+        localb.bd(paramView);
+        a.b("com/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion$showConfirmDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        this.sSc.bpT();
+        paramView = paramOnClickListener2;
+        if (paramView != null) {
+          paramView.onClick(null, -2);
+        }
+        a.a(this, "com/tencent/mm/plugin/finder/view/FinderBottomDialogHelper$Companion$showConfirmDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(205045);
+      }
+    }
+    
+    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onDismiss"})
+    static final class c
+      implements e.b
+    {
+      c(DialogInterface.OnDismissListener paramOnDismissListener) {}
+      
+      public final void onDismiss()
+      {
+        AppMethodBeat.i(205046);
+        DialogInterface.OnDismissListener localOnDismissListener = this.sSf;
+        if (localOnDismissListener != null)
         {
-          AppMethodBeat.i(178056);
-          if (c.a(c.this) != null)
-          {
-            if (!c.a(c.this).isAlive()) {
-              c.a(c.this, c.b(c.this).getViewTreeObserver());
-            }
-            c.a(c.this).removeGlobalOnLayoutListener(c.this);
-            c.a(c.this, null);
-          }
-          if (!c.c(c.this)) {
-            c.d(c.this);
-          }
-          AppMethodBeat.o(178056);
+          localOnDismissListener.onDismiss(null);
+          AppMethodBeat.o(205046);
+          return;
         }
-      });
-      AppMethodBeat.o(178057);
-      return;
-    }
-  }
-  
-  private boolean aly()
-  {
-    AppMethodBeat.i(178064);
-    if (this.mContext.getResources().getConfiguration().orientation == 2)
-    {
-      AppMethodBeat.o(178064);
-      return true;
-    }
-    AppMethodBeat.o(178064);
-    return false;
-  }
-  
-  @SuppressLint({"WrongConstant"})
-  private int getRotation()
-  {
-    AppMethodBeat.i(178059);
-    int i = 0;
-    if ((this.mContext instanceof Activity)) {
-      i = ((Activity)this.mContext).getWindow().getWindowManager().getDefaultDisplay().getRotation();
-    }
-    AppMethodBeat.o(178059);
-    return i;
-  }
-  
-  private boolean isShowing()
-  {
-    AppMethodBeat.i(178063);
-    if ((this.lcA != null) && (this.lcA.isShowing()))
-    {
-      AppMethodBeat.o(178063);
-      return true;
-    }
-    AppMethodBeat.o(178063);
-    return false;
-  }
-  
-  public final c EP(int paramInt)
-  {
-    AppMethodBeat.i(201080);
-    LinearLayout localLinearLayout = (LinearLayout)this.khe.findViewById(2131297461);
-    LayoutInflater.from(this.khe.getContext()).inflate(paramInt, localLinearLayout, true);
-    AppMethodBeat.o(201080);
-    return this;
-  }
-  
-  public final void bmi()
-  {
-    AppMethodBeat.i(178062);
-    if (this.lcA != null)
-    {
-      if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.lcA.dismiss();
-      }
-      if (this.lcD != null) {
-        this.lcD.mg = true;
+        AppMethodBeat.o(205046);
       }
     }
-    AppMethodBeat.o(178062);
-  }
-  
-  public final void cED()
-  {
-    AppMethodBeat.i(178061);
-    this.lcE = aly();
-    this.lcF = getRotation();
-    if (this.lcA != null)
+    
+    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+    static final class d
+      implements n.d
     {
-      ((ViewGroup)this.khe.getParent()).setVisibility(0);
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.khe.getLayoutParams();
-      if ((this.lcE) && (this.oP != null))
+      d(e parame, RoundedCornerFrameLayout paramRoundedCornerFrameLayout) {}
+      
+      public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
       {
-        Rect localRect = new Rect();
-        this.oP.getWindowVisibleDisplayFrame(localRect);
-        localLayoutParams.width = localRect.right;
-      }
-      this.khe.setLayoutParams(localLayoutParams);
-      if (Build.VERSION.SDK_INT >= 21) {
-        this.lcA.getWindow().addFlags(-2147483648);
-      }
-      if ((this.rVy) && (Build.VERSION.SDK_INT >= 23) && (this.lcA != null))
-      {
-        this.lcA.getWindow().getDecorView().setSystemUiVisibility(9216);
-        this.lcA.getWindow().setStatusBarColor(0);
-      }
-      if (!this.lcH) {
-        break label308;
-      }
-      this.lcA.getWindow().setFlags(8, 8);
-      this.lcA.getWindow().addFlags(131200);
-      this.lcA.getWindow().getDecorView().setSystemUiVisibility(6);
-      if (this.oP != null) {
-        if (this.adE != null) {
-          break label363;
-        }
+        AppMethodBeat.i(205047);
+        paraml.clear();
+        this.sSc.setFooterView(null);
+        this.sSc.setFooterView((View)this.sSg);
+        AppMethodBeat.o(205047);
       }
     }
-    label308:
-    label363:
-    for (int i = 1;; i = 0)
-    {
-      this.adE = this.oP.getViewTreeObserver();
-      if (i != 0) {
-        this.adE.addOnGlobalLayoutListener(this);
-      }
-      if (((this.mContext instanceof Activity)) && (!((Activity)this.mContext).isFinishing())) {
-        this.lcA.show();
-      }
-      if (this.lcD != null) {
-        this.lcD.mg = false;
-      }
-      AppMethodBeat.o(178061);
-      return;
-      this.lcA.getWindow().clearFlags(8);
-      this.lcA.getWindow().clearFlags(131072);
-      this.lcA.getWindow().clearFlags(128);
-      this.lcA.getWindow().getDecorView().setSystemUiVisibility(0);
-      break;
-    }
-  }
-  
-  public final void onGlobalLayout()
-  {
-    AppMethodBeat.i(178058);
-    if (isShowing())
-    {
-      View localView = this.oP;
-      if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
-      {
-        bmi();
-        AppMethodBeat.o(178058);
-        return;
-      }
-      if ((isShowing()) && ((this.lcE != aly()) || (this.lcF != getRotation()))) {
-        bmi();
-      }
-    }
-    AppMethodBeat.o(178058);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.c
  * JD-Core Version:    0.7.0.1
  */

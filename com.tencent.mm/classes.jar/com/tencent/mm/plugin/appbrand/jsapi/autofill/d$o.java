@@ -1,0 +1,25 @@
+package com.tencent.mm.plugin.appbrand.jsapi.autofill;
+
+import com.tencent.mm.plugin.appbrand.phonenumber.y;
+import com.tencent.mm.vending.g.b;
+import d.g.a.a;
+import d.g.b.q;
+import d.l;
+import d.z;
+
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+final class d$o
+  extends q
+  implements a<z>
+{
+  d$o(y paramy, b paramb)
+  {
+    super(0);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.autofill.d.o
+ * JD-Core Version:    0.7.0.1
+ */

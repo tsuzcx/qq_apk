@@ -6,14 +6,14 @@ import java.util.Map;
 
 final class d$b
 {
-  Map<String, String> KiE;
-  ParcelFileDescriptor KiF;
-  a KiG;
+  Map<String, String> MbT;
+  ParcelFileDescriptor MbU;
+  a MbV;
   String url;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.g.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -17,7 +18,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.af.a.a;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,48 +28,48 @@ public class LabelsView
   extends ViewGroup
   implements View.OnClickListener
 {
-  private static final int Jhw = 2131305625;
-  private static final int Jhx = 2131305627;
-  private boolean HET;
-  private ArrayList<Integer> JhA;
-  private LabelsView.b JhB;
-  private c JhC;
-  private d JhD;
-  private Drawable Jhi;
-  private int Jhj;
-  private int Jhk;
-  private int Jhl;
-  private int Jhm;
-  private int Jhn;
-  private int Jho;
-  private int Jhp;
-  private int Jhq;
-  private int Jhr;
-  private e Jhs;
-  private int Jht;
-  private int Jhu;
-  private boolean Jhv;
-  private ArrayList<Object> Jhy;
-  private ArrayList<Integer> Jhz;
+  private static final int KYK = 2131305625;
+  private static final int KYL = 2131305627;
+  private boolean JsK;
+  private int KYA;
+  private int KYB;
+  private int KYC;
+  private int KYD;
+  private int KYE;
+  private int KYF;
+  private e KYG;
+  private int KYH;
+  private int KYI;
+  private boolean KYJ;
+  private ArrayList<Object> KYM;
+  private ArrayList<Integer> KYN;
+  private ArrayList<Integer> KYO;
+  private b KYP;
+  private c KYQ;
+  private d KYR;
+  private Drawable KYw;
+  private int KYx;
+  private int KYy;
+  private int KYz;
   private Context mContext;
-  private int nPN;
-  private float oTC;
-  private ColorStateList vSw;
+  private int osu;
+  private float pxm;
+  private ColorStateList wZG;
   
   public LabelsView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143563);
-    this.Jhj = -2;
-    this.Jhk = -2;
-    this.Jhl = 17;
-    this.HET = false;
-    this.Jhy = new ArrayList();
-    this.Jhz = new ArrayList();
-    this.JhA = new ArrayList();
+    this.KYx = -2;
+    this.KYy = -2;
+    this.KYz = 17;
+    this.JsK = false;
+    this.KYM = new ArrayList();
+    this.KYN = new ArrayList();
+    this.KYO = new ArrayList();
     this.mContext = paramContext;
     e(paramContext, paramAttributeSet);
-    fvF();
+    fMt();
     AppMethodBeat.o(143563);
   }
   
@@ -74,16 +77,16 @@ public class LabelsView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143564);
-    this.Jhj = -2;
-    this.Jhk = -2;
-    this.Jhl = 17;
-    this.HET = false;
-    this.Jhy = new ArrayList();
-    this.Jhz = new ArrayList();
-    this.JhA = new ArrayList();
+    this.KYx = -2;
+    this.KYy = -2;
+    this.KYz = 17;
+    this.JsK = false;
+    this.KYM = new ArrayList();
+    this.KYN = new ArrayList();
+    this.KYO = new ArrayList();
     this.mContext = paramContext;
     e(paramContext, paramAttributeSet);
-    fvF();
+    fMt();
     AppMethodBeat.o(143564);
   }
   
@@ -91,16 +94,18 @@ public class LabelsView
   {
     AppMethodBeat.i(143574);
     TextView localTextView = new TextView(this.mContext);
-    localTextView.setPadding(this.Jhm, this.Jhn, this.Jho, this.Jhp);
-    localTextView.setTextSize(0, this.oTC);
-    localTextView.setGravity(this.Jhl);
-    localTextView.setTextColor(this.vSw);
-    localTextView.setBackgroundDrawable(this.Jhi.getConstantState().newDrawable());
-    localTextView.setTag(Jhw, paramT);
-    localTextView.setTag(Jhx, Integer.valueOf(paramInt));
+    localTextView.setPadding(this.KYA, this.KYB, this.KYC, this.KYD);
+    localTextView.setTextSize(0, this.pxm);
+    localTextView.setGravity(this.KYz);
+    localTextView.setTextColor(this.wZG);
+    localTextView.setBackgroundDrawable(this.KYw.getConstantState().newDrawable());
+    localTextView.setTag(KYK, paramT);
+    localTextView.setTag(KYL, Integer.valueOf(paramInt));
     localTextView.setOnClickListener(this);
-    addView(localTextView, this.Jhj, this.Jhk);
-    localTextView.setText(parama.cP(paramT));
+    localTextView.setSingleLine(true);
+    localTextView.setEllipsize(TextUtils.TruncateAt.END);
+    addView(localTextView, this.KYx, this.KYy);
+    localTextView.setText(parama.cR(paramT));
     AppMethodBeat.o(143574);
   }
   
@@ -113,23 +118,23 @@ public class LabelsView
       if (!paramBoolean) {
         break label75;
       }
-      this.Jhz.add((Integer)paramTextView.getTag(Jhx));
+      this.KYN.add((Integer)paramTextView.getTag(KYL));
     }
     for (;;)
     {
-      if (this.JhC != null)
+      if (this.KYQ != null)
       {
-        paramTextView.getTag(Jhw);
-        ((Integer)paramTextView.getTag(Jhx)).intValue();
+        paramTextView.getTag(KYK);
+        ((Integer)paramTextView.getTag(KYL)).intValue();
       }
       AppMethodBeat.o(143577);
       return;
       label75:
-      this.Jhz.remove((Integer)paramTextView.getTag(Jhx));
+      this.KYN.remove((Integer)paramTextView.getTag(KYL));
     }
   }
   
-  private int bU(float paramFloat)
+  private int bZ(float paramFloat)
   {
     AppMethodBeat.i(143601);
     int i = (int)TypedValue.applyDimension(1, paramFloat, getResources().getDisplayMetrics());
@@ -143,30 +148,30 @@ public class LabelsView
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.labels_view);
-      this.Jhs = e.acU(paramContext.getInt(16, 1));
-      this.Jht = paramContext.getInteger(14, 0);
-      this.Jhu = paramContext.getInteger(15, 0);
-      this.nPN = paramContext.getInteger(13, 0);
-      this.Jhv = paramContext.getBoolean(0, false);
-      this.Jhl = paramContext.getInt(2, this.Jhl);
-      this.Jhj = paramContext.getLayoutDimension(11, this.Jhj);
-      this.Jhk = paramContext.getLayoutDimension(4, this.Jhk);
+      this.KYG = e.afv(paramContext.getInt(16, 1));
+      this.KYH = paramContext.getInteger(14, 0);
+      this.KYI = paramContext.getInteger(15, 0);
+      this.osu = paramContext.getInteger(13, 0);
+      this.KYJ = paramContext.getBoolean(0, false);
+      this.KYz = paramContext.getInt(2, this.KYz);
+      this.KYx = paramContext.getLayoutDimension(11, this.KYx);
+      this.KYy = paramContext.getLayoutDimension(4, this.KYy);
       if (!paramContext.hasValue(3)) {
         break label268;
       }
-      this.vSw = paramContext.getColorStateList(3);
-      this.oTC = paramContext.getDimension(10, fvJ());
+      this.wZG = paramContext.getColorStateList(3);
+      this.pxm = paramContext.getDimension(10, fMx());
       if (!paramContext.hasValue(5)) {
         break label281;
       }
       int i = paramContext.getDimensionPixelOffset(5, 0);
-      this.Jhp = i;
-      this.Jho = i;
-      this.Jhn = i;
-      this.Jhm = i;
+      this.KYD = i;
+      this.KYC = i;
+      this.KYB = i;
+      this.KYA = i;
       label182:
-      this.Jhr = paramContext.getDimensionPixelOffset(12, bU(5.0F));
-      this.Jhq = paramContext.getDimensionPixelOffset(18, bU(5.0F));
+      this.KYF = paramContext.getDimensionPixelOffset(12, bZ(5.0F));
+      this.KYE = paramContext.getDimensionPixelOffset(18, bZ(5.0F));
       if (!paramContext.hasValue(1)) {
         break label372;
       }
@@ -174,32 +179,32 @@ public class LabelsView
       if (i == 0) {
         break label352;
       }
-      this.Jhi = getResources().getDrawable(i);
+      this.KYw = getResources().getDrawable(i);
     }
     for (;;)
     {
-      this.HET = paramContext.getBoolean(17, false);
+      this.JsK = paramContext.getBoolean(17, false);
       paramContext.recycle();
       AppMethodBeat.o(143565);
       return;
       label268:
-      this.vSw = ColorStateList.valueOf(-16777216);
+      this.wZG = ColorStateList.valueOf(-16777216);
       break;
       label281:
-      this.Jhm = paramContext.getDimensionPixelOffset(7, bU(10.0F));
-      this.Jhn = paramContext.getDimensionPixelOffset(9, bU(5.0F));
-      this.Jho = paramContext.getDimensionPixelOffset(8, bU(10.0F));
-      this.Jhp = paramContext.getDimensionPixelOffset(6, bU(5.0F));
+      this.KYA = paramContext.getDimensionPixelOffset(7, bZ(10.0F));
+      this.KYB = paramContext.getDimensionPixelOffset(9, bZ(5.0F));
+      this.KYC = paramContext.getDimensionPixelOffset(8, bZ(10.0F));
+      this.KYD = paramContext.getDimensionPixelOffset(6, bZ(5.0F));
       break label182;
       label352:
-      this.Jhi = new ColorDrawable(paramContext.getColor(1, 0));
+      this.KYw = new ColorDrawable(paramContext.getColor(1, 0));
       continue;
       label372:
-      this.Jhi = getResources().getDrawable(2131231881);
+      this.KYw = getResources().getDrawable(2131231881);
     }
   }
   
-  private void fvF()
+  private void fMt()
   {
     AppMethodBeat.i(143566);
     if (isInEditMode())
@@ -217,7 +222,7 @@ public class LabelsView
     AppMethodBeat.o(143566);
   }
   
-  private void fvG()
+  private void fMu()
   {
     AppMethodBeat.i(143575);
     int j = getChildCount();
@@ -225,7 +230,7 @@ public class LabelsView
     if (i < j)
     {
       TextView localTextView = (TextView)getChildAt(i);
-      if ((this.JhB != null) || (this.Jhs != e.JhF)) {}
+      if ((this.KYP != null) || (this.KYG != e.KYT)) {}
       for (boolean bool = true;; bool = false)
       {
         localTextView.setClickable(bool);
@@ -236,7 +241,7 @@ public class LabelsView
     AppMethodBeat.o(143575);
   }
   
-  private void fvI()
+  private void fMw()
   {
     AppMethodBeat.i(143580);
     int j = getChildCount();
@@ -246,11 +251,11 @@ public class LabelsView
       b((TextView)getChildAt(i), false);
       i += 1;
     }
-    this.Jhz.clear();
+    this.KYN.clear();
     AppMethodBeat.o(143580);
   }
   
-  private int fvJ()
+  private int fMx()
   {
     AppMethodBeat.i(143600);
     int i = (int)TypedValue.applyDimension(2, 14.0F, getResources().getDisplayMetrics());
@@ -258,7 +263,7 @@ public class LabelsView
     return i;
   }
   
-  private int jT(int paramInt1, int paramInt2)
+  private int kf(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(143568);
     int k = View.MeasureSpec.getMode(paramInt1);
@@ -282,14 +287,14 @@ public class LabelsView
   private boolean x(TextView paramTextView)
   {
     AppMethodBeat.i(143578);
-    if (this.JhD != null)
+    if (this.KYR != null)
     {
-      d locald = this.JhD;
-      paramTextView.getTag(Jhw);
+      d locald = this.KYR;
+      paramTextView.getTag(KYK);
       paramTextView.isSelected();
       paramTextView.isSelected();
-      ((Integer)paramTextView.getTag(Jhx)).intValue();
-      if (locald.fvK())
+      ((Integer)paramTextView.getTag(KYL)).intValue();
+      if (locald.fMy())
       {
         AppMethodBeat.o(143578);
         return true;
@@ -302,12 +307,12 @@ public class LabelsView
   public final <T> void a(List<T> paramList, a<T> parama)
   {
     AppMethodBeat.i(143573);
-    fvI();
+    fMw();
     removeAllViews();
-    this.Jhy.clear();
+    this.KYM.clear();
     if (paramList != null)
     {
-      this.Jhy.addAll(paramList);
+      this.KYM.addAll(paramList);
       int j = paramList.size();
       int i = 0;
       while (i < j)
@@ -315,96 +320,96 @@ public class LabelsView
         a(paramList.get(i), i, parama);
         i += 1;
       }
-      fvG();
+      fMu();
     }
-    if (this.Jhs == e.JhH) {
+    if (this.KYG == e.KYV) {
       setSelects(new int[] { 0 });
     }
     AppMethodBeat.o(143573);
   }
   
-  public final void fvH()
+  public final void fMv()
   {
     AppMethodBeat.i(143579);
-    if (this.Jhs != e.JhH)
+    if (this.KYG != e.KYV)
     {
-      if ((this.Jhs == e.JhI) && (!this.JhA.isEmpty()))
+      if ((this.KYG == e.KYW) && (!this.KYO.isEmpty()))
       {
         int j = getChildCount();
         ArrayList localArrayList = new ArrayList();
         int i = 0;
         while (i < j)
         {
-          if (!this.JhA.contains(Integer.valueOf(i)))
+          if (!this.KYO.contains(Integer.valueOf(i)))
           {
             b((TextView)getChildAt(i), false);
             localArrayList.add(Integer.valueOf(i));
           }
           i += 1;
         }
-        this.Jhz.removeAll(localArrayList);
+        this.KYN.removeAll(localArrayList);
         AppMethodBeat.o(143579);
         return;
       }
-      fvI();
+      fMw();
     }
     AppMethodBeat.o(143579);
   }
   
   public List<Integer> getCompulsorys()
   {
-    return this.JhA;
+    return this.KYO;
   }
   
   public int getLabelGravity()
   {
-    return this.Jhl;
+    return this.KYz;
   }
   
   public ColorStateList getLabelTextColor()
   {
-    return this.vSw;
+    return this.wZG;
   }
   
   public float getLabelTextSize()
   {
-    return this.oTC;
+    return this.pxm;
   }
   
   public <T> List<T> getLabels()
   {
-    return this.Jhy;
+    return this.KYM;
   }
   
   public int getLineMargin()
   {
-    return this.Jhr;
+    return this.KYF;
   }
   
   public int getMaxLines()
   {
-    return this.nPN;
+    return this.osu;
   }
   
   public int getMaxSelect()
   {
-    return this.Jht;
+    return this.KYH;
   }
   
   public int getMinSelect()
   {
-    return this.Jhu;
+    return this.KYI;
   }
   
   public <T> List<T> getSelectLabelDatas()
   {
     AppMethodBeat.i(143585);
     ArrayList localArrayList = new ArrayList();
-    int j = this.Jhz.size();
+    int j = this.KYN.size();
     int i = 0;
     while (i < j)
     {
-      Object localObject = getChildAt(((Integer)this.Jhz.get(i)).intValue()).getTag(Jhw);
+      Object localObject = getChildAt(((Integer)this.KYN.get(i)).intValue()).getTag(KYK);
       if (localObject != null) {
         localArrayList.add(localObject);
       }
@@ -416,65 +421,68 @@ public class LabelsView
   
   public List<Integer> getSelectLabels()
   {
-    return this.Jhz;
+    return this.KYN;
   }
   
   public e getSelectType()
   {
-    return this.Jhs;
+    return this.KYG;
   }
   
   public int getTextPaddingBottom()
   {
-    return this.Jhp;
+    return this.KYD;
   }
   
   public int getTextPaddingLeft()
   {
-    return this.Jhm;
+    return this.KYA;
   }
   
   public int getTextPaddingRight()
   {
-    return this.Jho;
+    return this.KYC;
   }
   
   public int getTextPaddingTop()
   {
-    return this.Jhn;
+    return this.KYB;
   }
   
   public int getWordMargin()
   {
-    return this.Jhq;
+    return this.KYE;
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(143576);
+    Object localObject = new b();
+    ((b)localObject).bd(paramView);
+    a.b("com/tencent/mm/ui/widget/happybubble/LabelsView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
     int i;
     if ((paramView instanceof TextView))
     {
       paramView = (TextView)paramView;
-      if ((!this.Jhv) && (this.Jhs != e.JhF))
+      if ((!this.KYJ) && (this.KYG != e.KYT))
       {
         if (!paramView.isSelected()) {
-          break label200;
+          break label249;
         }
-        if ((this.Jhs != e.JhI) || (!this.JhA.contains((Integer)paramView.getTag(Jhx)))) {
-          break label185;
-        }
-        i = 1;
-        if ((i == 0) && ((this.Jhs != e.JhI) || (this.Jhz.size() > this.Jhu))) {
-          break label190;
+        if ((this.KYG != e.KYW) || (!this.KYO.contains((Integer)paramView.getTag(KYL)))) {
+          break label234;
         }
         i = 1;
-        label104:
-        if ((i == 0) && (this.Jhs != e.JhH)) {
-          break label195;
+        if ((i == 0) && ((this.KYG != e.KYW) || (this.KYN.size() > this.KYI))) {
+          break label239;
         }
         i = 1;
-        label120:
+        label137:
+        if ((i == 0) && (this.KYG != e.KYV)) {
+          break label244;
+        }
+        i = 1;
+        label153:
         if ((i == 0) && (!x(paramView))) {
           b(paramView, false);
         }
@@ -482,34 +490,35 @@ public class LabelsView
     }
     for (;;)
     {
-      if (this.JhB != null)
+      if (this.KYP != null)
       {
-        LabelsView.b localb = this.JhB;
-        paramView.getTag(Jhw);
-        ((Integer)paramView.getTag(Jhx)).intValue();
-        localb.bKc();
+        localObject = this.KYP;
+        paramView.getTag(KYK);
+        ((Integer)paramView.getTag(KYL)).intValue();
+        ((b)localObject).bOw();
       }
+      a.a(this, "com/tencent/mm/ui/widget/happybubble/LabelsView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(143576);
       return;
-      label185:
+      label234:
       i = 0;
       break;
-      label190:
+      label239:
       i = 0;
-      break label104;
-      label195:
+      break label137;
+      label244:
       i = 0;
-      break label120;
-      label200:
-      if ((this.Jhs == e.JhG) || (this.Jhs == e.JhH))
+      break label153;
+      label249:
+      if ((this.KYG == e.KYU) || (this.KYG == e.KYV))
       {
         if (!x(paramView))
         {
-          fvI();
+          fMw();
           b(paramView, true);
         }
       }
-      else if ((this.Jhs == e.JhI) && ((this.Jht <= 0) || (this.Jht > this.Jhz.size())) && (!x(paramView))) {
+      else if ((this.KYG == e.KYW) && ((this.KYH <= 0) || (this.KYH > this.KYN.size())) && (!x(paramView))) {
         b(paramView, true);
       }
     }
@@ -531,7 +540,7 @@ public class LabelsView
       int i2 = paramInt2;
       int k = j;
       int i1 = paramInt4;
-      if (!this.HET)
+      if (!this.JsK)
       {
         n = m;
         i2 = paramInt2;
@@ -540,16 +549,16 @@ public class LabelsView
         if (paramInt3 - paramInt1 < localView.getMeasuredWidth() + paramInt4 + getPaddingRight())
         {
           n = m + 1;
-          if ((this.nPN > 0) && (n > this.nPN)) {
+          if ((this.osu > 0) && (n > this.osu)) {
             break;
           }
           i1 = getPaddingLeft();
-          k = j + this.Jhr + paramInt2;
+          k = j + this.KYF + paramInt2;
           i2 = 0;
         }
       }
       localView.layout(i1, k, localView.getMeasuredWidth() + i1, localView.getMeasuredHeight() + k);
-      paramInt4 = i1 + localView.getMeasuredWidth() + this.Jhq;
+      paramInt4 = i1 + localView.getMeasuredWidth() + this.KYE;
       paramInt2 = Math.max(i2, localView.getMeasuredHeight());
       i += 1;
       m = n;
@@ -564,7 +573,7 @@ public class LabelsView
     int j;
     int i;
     View localView;
-    if (this.HET)
+    if (this.JsK)
     {
       n = getChildCount();
       j = 0;
@@ -577,12 +586,12 @@ public class LabelsView
         m = i + localView.getMeasuredWidth();
         i = m;
         if (j != n - 1) {
-          i = m + this.Jhq;
+          i = m + this.KYE;
         }
         k = Math.max(k, localView.getMeasuredHeight());
         j += 1;
       }
-      setMeasuredDimension(jT(paramInt1, i + getPaddingLeft() + getPaddingRight()), jT(paramInt2, getPaddingTop() + k + getPaddingBottom()));
+      setMeasuredDimension(kf(paramInt1, i + getPaddingLeft() + getPaddingRight()), kf(paramInt2, getPaddingTop() + k + getPaddingBottom()));
       AppMethodBeat.o(143567);
       return;
     }
@@ -610,17 +619,17 @@ public class LabelsView
       if (localView.getMeasuredWidth() + m > i11)
       {
         i2 += 1;
-        if (this.nPN > 0)
+        if (this.osu > 0)
         {
           i3 = n;
           i7 = k;
           i8 = m;
           i9 = i1;
-          if (i2 > this.nPN) {}
+          if (i2 > this.osu) {}
         }
         else
         {
-          i = i1 + this.Jhr + n;
+          i = i1 + this.KYF + n;
           j = Math.max(k, m);
           i6 = 0;
           i5 = 0;
@@ -638,21 +647,21 @@ public class LabelsView
         i1 = i;
         if (i4 != i10 - 1)
         {
-          if (this.Jhq + i5 <= i11) {
+          if (this.KYE + i5 <= i11) {
             break label457;
           }
           i2 = i3 + 1;
-          if (this.nPN > 0)
+          if (this.osu > 0)
           {
             i3 = i6;
             i7 = j;
             i8 = i5;
             i9 = i;
-            if (i2 > this.nPN) {
+            if (i2 > this.osu) {
               break label484;
             }
           }
-          i1 = i + this.Jhr + i6;
+          i1 = i + this.KYF + i6;
           k = Math.max(j, i5);
           n = 0;
           m = 0;
@@ -662,7 +671,7 @@ public class LabelsView
           i4 += 1;
           break;
           label457:
-          m = i5 + this.Jhq;
+          m = i5 + this.KYE;
           i2 = i3;
           n = i6;
           k = j;
@@ -671,7 +680,7 @@ public class LabelsView
       }
     }
     label484:
-    setMeasuredDimension(jT(paramInt1, Math.max(i7, i8) + getPaddingLeft() + getPaddingRight()), jT(paramInt2, i9 + i3 + getPaddingTop() + getPaddingBottom()));
+    setMeasuredDimension(kf(paramInt1, Math.max(i7, i8) + getPaddingLeft() + getPaddingRight()), kf(paramInt2, i9 + i3 + getPaddingTop() + getPaddingBottom()));
     AppMethodBeat.o(143567);
   }
   
@@ -687,10 +696,10 @@ public class LabelsView
       if (localObject != null) {
         setLabelTextColor((ColorStateList)localObject);
       }
-      setLabelTextSize(paramParcelable.getFloat("key_text_size_state", this.oTC));
-      this.Jhj = paramParcelable.getInt("key_label_width_state", this.Jhj);
-      this.Jhk = paramParcelable.getInt("key_label_height_state", this.Jhk);
-      setLabelGravity(paramParcelable.getInt("key_label_gravity_state", this.Jhl));
+      setLabelTextSize(paramParcelable.getFloat("key_text_size_state", this.pxm));
+      this.KYx = paramParcelable.getInt("key_label_width_state", this.KYx);
+      this.KYy = paramParcelable.getInt("key_label_height_state", this.KYy);
+      setLabelGravity(paramParcelable.getInt("key_label_gravity_state", this.KYz));
       localObject = paramParcelable.getIntArray("key_padding_state");
       int k;
       int i;
@@ -700,12 +709,12 @@ public class LabelsView
         int m = localObject[1];
         int n = localObject[2];
         int i1 = localObject[3];
-        if ((this.Jhm != k) || (this.Jhn != m) || (this.Jho != n) || (this.Jhp != i1))
+        if ((this.KYA != k) || (this.KYB != m) || (this.KYC != n) || (this.KYD != i1))
         {
-          this.Jhm = k;
-          this.Jhn = m;
-          this.Jho = n;
-          this.Jhp = i1;
+          this.KYA = k;
+          this.KYB = m;
+          this.KYC = n;
+          this.KYD = i1;
           int i2 = getChildCount();
           i = 0;
           while (i < i2)
@@ -715,14 +724,14 @@ public class LabelsView
           }
         }
       }
-      setWordMargin(paramParcelable.getInt("key_word_margin_state", this.Jhq));
-      setLineMargin(paramParcelable.getInt("key_line_margin_state", this.Jhr));
-      setSelectType(e.acU(paramParcelable.getInt("key_select_type_state", this.Jhs.value)));
-      setMaxSelect(paramParcelable.getInt("key_max_select_state", this.Jht));
-      setMinSelect(paramParcelable.getInt("key_min_select_state", this.Jhu));
-      setMaxLines(paramParcelable.getInt("key_max_lines_state", this.nPN));
-      setIndicator(paramParcelable.getBoolean("key_indicator_state", this.Jhv));
-      setSingleLine(paramParcelable.getBoolean("key_single_line_state", this.HET));
+      setWordMargin(paramParcelable.getInt("key_word_margin_state", this.KYE));
+      setLineMargin(paramParcelable.getInt("key_line_margin_state", this.KYF));
+      setSelectType(e.afv(paramParcelable.getInt("key_select_type_state", this.KYG.value)));
+      setMaxSelect(paramParcelable.getInt("key_max_select_state", this.KYH));
+      setMinSelect(paramParcelable.getInt("key_min_select_state", this.KYI));
+      setMaxLines(paramParcelable.getInt("key_max_lines_state", this.osu));
+      setIndicator(paramParcelable.getBoolean("key_indicator_state", this.KYJ));
+      setSingleLine(paramParcelable.getBoolean("key_single_line_state", this.JsK));
       localObject = paramParcelable.getIntegerArrayList("key_select_compulsory_state");
       if ((localObject != null) && (!((ArrayList)localObject).isEmpty())) {
         setCompulsorys((List)localObject);
@@ -752,28 +761,28 @@ public class LabelsView
     AppMethodBeat.i(143570);
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("key_super_state", super.onSaveInstanceState());
-    if (this.vSw != null) {
-      localBundle.putParcelable("key_text_color_state", this.vSw);
+    if (this.wZG != null) {
+      localBundle.putParcelable("key_text_color_state", this.wZG);
     }
-    localBundle.putFloat("key_text_size_state", this.oTC);
-    localBundle.putInt("key_label_width_state", this.Jhj);
-    localBundle.putInt("key_label_height_state", this.Jhk);
-    localBundle.putInt("key_label_gravity_state", this.Jhl);
-    localBundle.putIntArray("key_padding_state", new int[] { this.Jhm, this.Jhn, this.Jho, this.Jhp });
-    localBundle.putInt("key_word_margin_state", this.Jhq);
-    localBundle.putInt("key_line_margin_state", this.Jhr);
-    localBundle.putInt("key_select_type_state", this.Jhs.value);
-    localBundle.putInt("key_max_select_state", this.Jht);
-    localBundle.putInt("key_min_select_state", this.Jhu);
-    localBundle.putInt("key_max_lines_state", this.nPN);
-    localBundle.putBoolean("key_indicator_state", this.Jhv);
-    if (!this.Jhz.isEmpty()) {
-      localBundle.putIntegerArrayList("key_select_labels_state", this.Jhz);
+    localBundle.putFloat("key_text_size_state", this.pxm);
+    localBundle.putInt("key_label_width_state", this.KYx);
+    localBundle.putInt("key_label_height_state", this.KYy);
+    localBundle.putInt("key_label_gravity_state", this.KYz);
+    localBundle.putIntArray("key_padding_state", new int[] { this.KYA, this.KYB, this.KYC, this.KYD });
+    localBundle.putInt("key_word_margin_state", this.KYE);
+    localBundle.putInt("key_line_margin_state", this.KYF);
+    localBundle.putInt("key_select_type_state", this.KYG.value);
+    localBundle.putInt("key_max_select_state", this.KYH);
+    localBundle.putInt("key_min_select_state", this.KYI);
+    localBundle.putInt("key_max_lines_state", this.osu);
+    localBundle.putBoolean("key_indicator_state", this.KYJ);
+    if (!this.KYN.isEmpty()) {
+      localBundle.putIntegerArrayList("key_select_labels_state", this.KYN);
     }
-    if (!this.JhA.isEmpty()) {
-      localBundle.putIntegerArrayList("key_select_compulsory_state", this.JhA);
+    if (!this.KYO.isEmpty()) {
+      localBundle.putIntegerArrayList("key_select_compulsory_state", this.KYO);
     }
-    localBundle.putBoolean("key_single_line_state", this.HET);
+    localBundle.putBoolean("key_single_line_state", this.JsK);
     AppMethodBeat.o(143570);
     return localBundle;
   }
@@ -781,11 +790,11 @@ public class LabelsView
   public void setCompulsorys(List<Integer> paramList)
   {
     AppMethodBeat.i(143583);
-    if ((this.Jhs == e.JhI) && (paramList != null))
+    if ((this.KYG == e.KYW) && (paramList != null))
     {
-      this.JhA.clear();
-      this.JhA.addAll(paramList);
-      fvI();
+      this.KYO.clear();
+      this.KYO.addAll(paramList);
+      fMw();
       setSelects(paramList);
     }
     AppMethodBeat.o(143583);
@@ -794,7 +803,7 @@ public class LabelsView
   public void setCompulsorys(int... paramVarArgs)
   {
     AppMethodBeat.i(143584);
-    if ((this.Jhs == e.JhI) && (paramVarArgs != null))
+    if ((this.KYG == e.KYW) && (paramVarArgs != null))
     {
       ArrayList localArrayList = new ArrayList(paramVarArgs.length);
       int j = paramVarArgs.length;
@@ -811,7 +820,7 @@ public class LabelsView
   
   public void setIndicator(boolean paramBoolean)
   {
-    this.Jhv = paramBoolean;
+    this.KYJ = paramBoolean;
   }
   
   public void setLabelBackgroundColor(int paramInt)
@@ -824,12 +833,12 @@ public class LabelsView
   public void setLabelBackgroundDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(143588);
-    this.Jhi = paramDrawable;
+    this.KYw = paramDrawable;
     int j = getChildCount();
     int i = 0;
     while (i < j)
     {
-      ((TextView)getChildAt(i)).setBackgroundDrawable(this.Jhi.getConstantState().newDrawable());
+      ((TextView)getChildAt(i)).setBackgroundDrawable(this.KYw.getConstantState().newDrawable());
       i += 1;
     }
     AppMethodBeat.o(143588);
@@ -845,9 +854,9 @@ public class LabelsView
   public void setLabelGravity(int paramInt)
   {
     AppMethodBeat.i(143592);
-    if (this.Jhl != paramInt)
+    if (this.KYz != paramInt)
     {
-      this.Jhl = paramInt;
+      this.KYz = paramInt;
       int j = getChildCount();
       int i = 0;
       while (i < j)
@@ -869,12 +878,12 @@ public class LabelsView
   public void setLabelTextColor(ColorStateList paramColorStateList)
   {
     AppMethodBeat.i(143591);
-    this.vSw = paramColorStateList;
+    this.wZG = paramColorStateList;
     int j = getChildCount();
     int i = 0;
     while (i < j)
     {
-      ((TextView)getChildAt(i)).setTextColor(this.vSw);
+      ((TextView)getChildAt(i)).setTextColor(this.wZG);
       i += 1;
     }
     AppMethodBeat.o(143591);
@@ -883,9 +892,9 @@ public class LabelsView
   public void setLabelTextSize(float paramFloat)
   {
     AppMethodBeat.i(143589);
-    if (this.oTC != paramFloat)
+    if (this.pxm != paramFloat)
     {
-      this.oTC = paramFloat;
+      this.pxm = paramFloat;
       int j = getChildCount();
       int i = 0;
       while (i < j)
@@ -907,9 +916,9 @@ public class LabelsView
   public void setLineMargin(int paramInt)
   {
     AppMethodBeat.i(143593);
-    if (this.Jhr != paramInt)
+    if (this.KYF != paramInt)
     {
-      this.Jhr = paramInt;
+      this.KYF = paramInt;
       requestLayout();
     }
     AppMethodBeat.o(143593);
@@ -918,9 +927,9 @@ public class LabelsView
   public void setMaxLines(int paramInt)
   {
     AppMethodBeat.i(143597);
-    if (this.nPN != paramInt)
+    if (this.osu != paramInt)
     {
-      this.nPN = paramInt;
+      this.osu = paramInt;
       requestLayout();
     }
     AppMethodBeat.o(143597);
@@ -929,11 +938,11 @@ public class LabelsView
   public void setMaxSelect(int paramInt)
   {
     AppMethodBeat.i(143596);
-    if (this.Jht != paramInt)
+    if (this.KYH != paramInt)
     {
-      this.Jht = paramInt;
-      if (this.Jhs == e.JhI) {
-        fvI();
+      this.KYH = paramInt;
+      if (this.KYG == e.KYW) {
+        fMw();
       }
     }
     AppMethodBeat.o(143596);
@@ -941,41 +950,41 @@ public class LabelsView
   
   public void setMinSelect(int paramInt)
   {
-    this.Jhu = paramInt;
+    this.KYI = paramInt;
   }
   
-  public void setOnLabelClickListener(LabelsView.b paramb)
+  public void setOnLabelClickListener(b paramb)
   {
     AppMethodBeat.i(143599);
-    this.JhB = paramb;
-    fvG();
+    this.KYP = paramb;
+    fMu();
     AppMethodBeat.o(143599);
   }
   
   public void setOnLabelSelectChangeListener(c paramc)
   {
-    this.JhC = paramc;
+    this.KYQ = paramc;
   }
   
   public void setOnSelectChangeIntercept(d paramd)
   {
-    this.JhD = paramd;
+    this.KYR = paramd;
   }
   
   public void setSelectType(e parame)
   {
     AppMethodBeat.i(143595);
-    if (this.Jhs != parame)
+    if (this.KYG != parame)
     {
-      this.Jhs = parame;
-      fvI();
-      if (this.Jhs == e.JhH) {
+      this.KYG = parame;
+      fMw();
+      if (this.KYG == e.KYV) {
         setSelects(new int[] { 0 });
       }
-      if (this.Jhs != e.JhI) {
-        this.JhA.clear();
+      if (this.KYG != e.KYW) {
+        this.KYO.clear();
       }
-      fvG();
+      fMu();
     }
     AppMethodBeat.o(143595);
   }
@@ -1001,12 +1010,12 @@ public class LabelsView
   public void setSelects(int... paramVarArgs)
   {
     AppMethodBeat.i(143582);
-    if (this.Jhs != e.JhF)
+    if (this.KYG != e.KYT)
     {
       ArrayList localArrayList = new ArrayList();
       int k = getChildCount();
-      if ((this.Jhs == e.JhG) || (this.Jhs == e.JhH)) {}
-      for (int i = 1;; i = this.Jht)
+      if ((this.KYG == e.KYU) || (this.KYG == e.KYV)) {}
+      for (int i = 1;; i = this.KYH)
       {
         int m = paramVarArgs.length;
         int j = 0;
@@ -1044,9 +1053,9 @@ public class LabelsView
   public void setSingleLine(boolean paramBoolean)
   {
     AppMethodBeat.i(143598);
-    if (this.HET != paramBoolean)
+    if (this.JsK != paramBoolean)
     {
-      this.HET = paramBoolean;
+      this.JsK = paramBoolean;
       requestLayout();
     }
     AppMethodBeat.o(143598);
@@ -1055,9 +1064,9 @@ public class LabelsView
   public void setWordMargin(int paramInt)
   {
     AppMethodBeat.i(143594);
-    if (this.Jhq != paramInt)
+    if (this.KYE != paramInt)
     {
-      this.Jhq = paramInt;
+      this.KYE = paramInt;
       requestLayout();
     }
     AppMethodBeat.o(143594);
@@ -1065,14 +1074,19 @@ public class LabelsView
   
   public static abstract interface a<T>
   {
-    public abstract CharSequence cP(T paramT);
+    public abstract CharSequence cR(T paramT);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void bOw();
   }
   
   public static abstract interface c {}
   
   public static abstract interface d
   {
-    public abstract boolean fvK();
+    public abstract boolean fMy();
   }
   
   public static enum e
@@ -1082,11 +1096,11 @@ public class LabelsView
     static
     {
       AppMethodBeat.i(143562);
-      JhF = new e("NONE", 0, 1);
-      JhG = new e("SINGLE", 1, 2);
-      JhH = new e("SINGLE_IRREVOCABLY", 2, 3);
-      JhI = new e("MULTI", 3, 4);
-      JhJ = new e[] { JhF, JhG, JhH, JhI };
+      KYT = new e("NONE", 0, 1);
+      KYU = new e("SINGLE", 1, 2);
+      KYV = new e("SINGLE_IRREVOCABLY", 2, 3);
+      KYW = new e("MULTI", 3, 4);
+      KYX = new e[] { KYT, KYU, KYV, KYW };
       AppMethodBeat.o(143562);
     }
     
@@ -1095,26 +1109,26 @@ public class LabelsView
       this.value = paramInt;
     }
     
-    static e acU(int paramInt)
+    static e afv(int paramInt)
     {
       switch (paramInt)
       {
       default: 
-        return JhF;
+        return KYT;
       case 1: 
-        return JhF;
+        return KYT;
       case 2: 
-        return JhG;
+        return KYU;
       case 3: 
-        return JhH;
+        return KYV;
       }
-      return JhI;
+      return KYW;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.happybubble.LabelsView
  * JD-Core Version:    0.7.0.1
  */

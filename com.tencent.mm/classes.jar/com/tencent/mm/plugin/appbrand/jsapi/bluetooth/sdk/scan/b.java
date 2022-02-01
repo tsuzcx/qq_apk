@@ -16,7 +16,7 @@ import android.support.v4.e.n;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,35 +27,35 @@ import java.util.Map;
 @TargetApi(18)
 public final class b
 {
-  static final e klb;
+  static final e kGb;
   
   static
   {
     AppMethodBeat.i(144618);
     int i = Build.VERSION.SDK_INT;
-    if (!a.kjB)
+    if (!a.kEz)
     {
-      ac.i("MicroMsg.ble.BleScannerCompat", "use 18");
-      klb = new a();
+      ad.i("MicroMsg.ble.BleScannerCompat", "use 18");
+      kGb = new a();
       AppMethodBeat.o(144618);
       return;
     }
     if (i >= 21)
     {
-      ac.i("MicroMsg.ble.BleScannerCompat", "use 21");
-      klb = new c();
+      ad.i("MicroMsg.ble.BleScannerCompat", "use 21");
+      kGb = new c();
       AppMethodBeat.o(144618);
       return;
     }
-    ac.i("MicroMsg.ble.BleScannerCompat", "use 18");
-    klb = new a();
+    ad.i("MicroMsg.ble.BleScannerCompat", "use 18");
+    kGb = new a();
     AppMethodBeat.o(144618);
   }
   
   public static boolean a(BluetoothAdapter paramBluetoothAdapter, e parame)
   {
     AppMethodBeat.i(144617);
-    boolean bool = klb.a(paramBluetoothAdapter, parame);
+    boolean bool = kGb.a(paramBluetoothAdapter, parame);
     AppMethodBeat.o(144617);
     return bool;
   }
@@ -63,8 +63,8 @@ public final class b
   public static boolean a(BluetoothAdapter paramBluetoothAdapter, List<ScanFilterCompat> paramList, ScanSettingsCompat paramScanSettingsCompat, e parame)
   {
     AppMethodBeat.i(144616);
-    ac.i("MicroMsg.ble.BleScannerCompat", "scanMode: " + paramScanSettingsCompat.klV);
-    boolean bool = klb.a(paramBluetoothAdapter, paramList, paramScanSettingsCompat, parame);
+    ad.i("MicroMsg.ble.BleScannerCompat", "scanMode: " + paramScanSettingsCompat.kGV);
+    boolean bool = kGb.a(paramBluetoothAdapter, paramList, paramScanSettingsCompat, parame);
     AppMethodBeat.o(144616);
     return bool;
   }
@@ -73,19 +73,19 @@ public final class b
   static final class a
     implements b.e
   {
-    static final n<e, b.b> klc;
+    static final n<e, b.b> kGc;
     
     static
     {
       AppMethodBeat.i(144606);
-      klc = new n();
+      kGc = new n();
       AppMethodBeat.o(144606);
     }
     
     public final boolean a(BluetoothAdapter paramBluetoothAdapter, e parame)
     {
       AppMethodBeat.i(144605);
-      parame = (b.b)klc.remove(parame);
+      parame = (b.b)kGc.remove(parame);
       if (parame == null)
       {
         AppMethodBeat.o(144605);
@@ -99,7 +99,7 @@ public final class b
     public final boolean a(BluetoothAdapter paramBluetoothAdapter, List<ScanFilterCompat> paramList, ScanSettingsCompat paramScanSettingsCompat, e parame)
     {
       AppMethodBeat.i(144604);
-      paramScanSettingsCompat = (b.b)klc.get(parame);
+      paramScanSettingsCompat = (b.b)kGc.get(parame);
       if (paramScanSettingsCompat != null) {
         paramList = paramScanSettingsCompat;
       }
@@ -109,7 +109,7 @@ public final class b
         AppMethodBeat.o(144604);
         return bool;
         paramList = new b.b(paramList, parame);
-        klc.put(parame, paramList);
+        kGc.put(parame, paramList);
       }
     }
   }
@@ -117,39 +117,39 @@ public final class b
   static final class b
     implements BluetoothAdapter.LeScanCallback
   {
-    private final List<ScanFilterCompat> kld;
-    private final WeakReference<e> kle;
+    private final List<ScanFilterCompat> kGd;
+    private final WeakReference<e> kGe;
     
     b(List<ScanFilterCompat> paramList, e parame)
     {
       AppMethodBeat.i(144607);
-      this.kld = paramList;
-      this.kle = new WeakReference(parame);
+      this.kGd = paramList;
+      this.kGe = new WeakReference(parame);
       AppMethodBeat.o(144607);
     }
     
     public final void onLeScan(BluetoothDevice paramBluetoothDevice, int paramInt, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(144608);
-      e locale = (e)this.kle.get();
+      e locale = (e)this.kGe.get();
       if (locale == null)
       {
         AppMethodBeat.o(144608);
         return;
       }
       paramArrayOfByte = new ScanResultCompat(paramBluetoothDevice, f.as(paramArrayOfByte), paramInt, System.currentTimeMillis());
-      if (this.kld == null)
+      if (this.kGd == null)
       {
         locale.a(1, paramArrayOfByte);
         AppMethodBeat.o(144608);
         return;
       }
-      Iterator localIterator1 = this.kld.iterator();
+      Iterator localIterator1 = this.kGd.iterator();
       while (localIterator1.hasNext())
       {
         ScanFilterCompat localScanFilterCompat = (ScanFilterCompat)localIterator1.next();
         paramBluetoothDevice = paramArrayOfByte.getDevice();
-        if ((localScanFilterCompat.klA != null) && ((paramBluetoothDevice == null) || (!localScanFilterCompat.klA.equals(paramBluetoothDevice.getAddress())))) {
+        if ((localScanFilterCompat.kGA != null) && ((paramBluetoothDevice == null) || (!localScanFilterCompat.kGA.equals(paramBluetoothDevice.getAddress())))) {
           paramInt = 0;
         }
         while (paramInt != 0)
@@ -157,8 +157,8 @@ public final class b
           locale.a(1, paramArrayOfByte);
           AppMethodBeat.o(144608);
           return;
-          f localf = paramArrayOfByte.klS;
-          if ((localf == null) && ((localScanFilterCompat.mDeviceName != null) || (localScanFilterCompat.klB != null) || (localScanFilterCompat.klH != null) || (localScanFilterCompat.klE != null) || (localScanFilterCompat.klD != null) || (localScanFilterCompat.klG >= 0)))
+          f localf = paramArrayOfByte.kGS;
+          if ((localf == null) && ((localScanFilterCompat.mDeviceName != null) || (localScanFilterCompat.kGB != null) || (localScanFilterCompat.kGH != null) || (localScanFilterCompat.kGE != null) || (localScanFilterCompat.kGD != null) || (localScanFilterCompat.kGG >= 0)))
           {
             paramInt = 0;
           }
@@ -170,11 +170,11 @@ public final class b
           {
             Object localObject1;
             Object localObject2;
-            if (localScanFilterCompat.klB != null)
+            if (localScanFilterCompat.kGB != null)
             {
-              localObject1 = localScanFilterCompat.klB;
-              localObject2 = localScanFilterCompat.klC;
-              paramBluetoothDevice = localf.klM;
+              localObject1 = localScanFilterCompat.kGB;
+              localObject2 = localScanFilterCompat.kGC;
+              paramBluetoothDevice = localf.kGM;
               if (localObject1 == null) {
                 paramInt = 1;
               }
@@ -211,13 +211,13 @@ public final class b
               }
             }
             label363:
-            if (localScanFilterCompat.klD != null)
+            if (localScanFilterCompat.kGD != null)
             {
-              localObject1 = localScanFilterCompat.klE;
-              localObject2 = localScanFilterCompat.klF;
-              paramBluetoothDevice = localScanFilterCompat.klD;
+              localObject1 = localScanFilterCompat.kGE;
+              localObject2 = localScanFilterCompat.kGF;
+              paramBluetoothDevice = localScanFilterCompat.kGD;
               if (paramBluetoothDevice == null) {}
-              for (paramBluetoothDevice = null;; paramBluetoothDevice = (byte[])localf.klO.get(paramBluetoothDevice))
+              for (paramBluetoothDevice = null;; paramBluetoothDevice = (byte[])localf.kGO.get(paramBluetoothDevice))
               {
                 if (ScanFilterCompat.a((byte[])localObject1, (byte[])localObject2, paramBluetoothDevice)) {
                   break label431;
@@ -227,12 +227,12 @@ public final class b
               }
             }
             label431:
-            if ((localScanFilterCompat.klG >= 0) && (localf != null))
+            if ((localScanFilterCompat.kGG >= 0) && (localf != null))
             {
-              paramBluetoothDevice = localScanFilterCompat.klH;
-              localObject1 = localScanFilterCompat.klI;
-              paramInt = localScanFilterCompat.klG;
-              if (!ScanFilterCompat.a(paramBluetoothDevice, (byte[])localObject1, (byte[])localf.klN.get(paramInt)))
+              paramBluetoothDevice = localScanFilterCompat.kGH;
+              localObject1 = localScanFilterCompat.kGI;
+              paramInt = localScanFilterCompat.kGG;
+              if (!ScanFilterCompat.a(paramBluetoothDevice, (byte[])localObject1, (byte[])localf.kGN.get(paramInt)))
               {
                 paramInt = 0;
                 continue;
@@ -251,19 +251,19 @@ public final class b
   static final class c
     implements b.e
   {
-    static final n<e, b.d> klc;
+    static final n<e, b.d> kGc;
     
     static
     {
       AppMethodBeat.i(144611);
-      klc = new n();
+      kGc = new n();
       AppMethodBeat.o(144611);
     }
     
     public final boolean a(BluetoothAdapter paramBluetoothAdapter, e parame)
     {
       AppMethodBeat.i(144610);
-      parame = (b.d)klc.remove(parame);
+      parame = (b.d)kGc.remove(parame);
       if (parame == null)
       {
         AppMethodBeat.o(144610);
@@ -271,7 +271,7 @@ public final class b
       }
       if (paramBluetoothAdapter.getBluetoothLeScanner() == null)
       {
-        ac.e("MicroMsg.ble.BleScannerCompat", "bluetoothscanner is null, return");
+        ad.e("MicroMsg.ble.BleScannerCompat", "bluetoothscanner is null, return");
         AppMethodBeat.o(144610);
         return false;
       }
@@ -298,17 +298,17 @@ public final class b
           if (paramList.mDeviceName != null) {
             localBuilder.setDeviceName(paramList.mDeviceName);
           }
-          if (paramList.klB != null) {
-            localBuilder.setServiceUuid(paramList.klB, paramList.klC);
+          if (paramList.kGB != null) {
+            localBuilder.setServiceUuid(paramList.kGB, paramList.kGC);
           }
-          if (paramList.klA != null) {
-            localBuilder.setDeviceAddress(paramList.klA);
+          if (paramList.kGA != null) {
+            localBuilder.setDeviceAddress(paramList.kGA);
           }
-          if (paramList.klD != null) {
-            localBuilder.setServiceData(paramList.klD, paramList.klE, paramList.klF);
+          if (paramList.kGD != null) {
+            localBuilder.setServiceData(paramList.kGD, paramList.kGE, paramList.kGF);
           }
-          if (paramList.klG < 0) {
-            localBuilder.setManufacturerData(paramList.klG, paramList.klH, paramList.klI);
+          if (paramList.kGG < 0) {
+            localBuilder.setManufacturerData(paramList.kGG, paramList.kGH, paramList.kGI);
           }
           ((List)localObject).add(localBuilder.build());
         }
@@ -320,15 +320,15 @@ public final class b
         AppMethodBeat.o(144609);
         throw paramBluetoothAdapter;
       }
-      paramScanSettingsCompat = new ScanSettings.Builder().setReportDelay(paramScanSettingsCompat.klX).setScanMode(paramScanSettingsCompat.klV).build();
+      paramScanSettingsCompat = new ScanSettings.Builder().setReportDelay(paramScanSettingsCompat.kGX).setScanMode(paramScanSettingsCompat.kGV).build();
       if (paramBluetoothAdapter.getBluetoothLeScanner() == null)
       {
-        ac.e("MicroMsg.ble.BleScannerCompat", "bluetoothscanner is null, return");
+        ad.e("MicroMsg.ble.BleScannerCompat", "bluetoothscanner is null, return");
         AppMethodBeat.o(144609);
         return false;
       }
       Object localObject = paramBluetoothAdapter.getBluetoothLeScanner();
-      paramBluetoothAdapter = (b.d)klc.get(parame);
+      paramBluetoothAdapter = (b.d)kGc.get(parame);
       if (paramBluetoothAdapter != null) {}
       for (;;)
       {
@@ -336,7 +336,7 @@ public final class b
         AppMethodBeat.o(144609);
         return true;
         paramBluetoothAdapter = new b.d(parame);
-        klc.put(parame, paramBluetoothAdapter);
+        kGc.put(parame, paramBluetoothAdapter);
       }
     }
   }
@@ -345,19 +345,19 @@ public final class b
   static final class d
     extends ScanCallback
   {
-    private final WeakReference<e> kle;
+    private final WeakReference<e> kGe;
     
     d(e parame)
     {
       AppMethodBeat.i(144612);
-      this.kle = new WeakReference(parame);
+      this.kGe = new WeakReference(parame);
       AppMethodBeat.o(144612);
     }
     
     public final void onBatchScanResults(List<ScanResult> paramList)
     {
       AppMethodBeat.i(144614);
-      if ((e)this.kle.get() == null)
+      if ((e)this.kGe.get() == null)
       {
         AppMethodBeat.o(144614);
         return;
@@ -373,7 +373,7 @@ public final class b
     public final void onScanFailed(int paramInt)
     {
       AppMethodBeat.i(144615);
-      e locale = (e)this.kle.get();
+      e locale = (e)this.kGe.get();
       if (locale != null) {
         locale.onScanFailed(paramInt);
       }
@@ -383,7 +383,7 @@ public final class b
     public final void onScanResult(int paramInt, ScanResult paramScanResult)
     {
       AppMethodBeat.i(144613);
-      e locale = (e)this.kle.get();
+      e locale = (e)this.kGe.get();
       if (locale != null) {
         locale.a(paramInt, new ScanResultCompat(paramScanResult));
       }
@@ -400,7 +400,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.b
  * JD-Core Version:    0.7.0.1
  */

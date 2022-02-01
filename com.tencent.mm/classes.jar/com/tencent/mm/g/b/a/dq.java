@@ -6,61 +6,102 @@ import com.tencent.mm.plugin.report.a;
 public final class dq
   extends a
 {
-  public String dFy = "";
-  public String dSw = "";
-  public String dSx = "";
-  private long dSy = 0L;
+  public long dPl = 0L;
+  private String dSb = "";
+  private String egR = "";
+  private String egS = "";
+  private String egT = "";
+  private String egU = "";
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(116484);
+    AppMethodBeat.i(211818);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dFy);
+    ((StringBuffer)localObject).append(this.egR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSw);
+    ((StringBuffer)localObject).append(this.egS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSx);
+    ((StringBuffer)localObject).append(this.egT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSy);
+    ((StringBuffer)localObject).append(this.egU);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dSb);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dPl);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(116484);
+    awz((String)localObject);
+    AppMethodBeat.o(211818);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(116485);
+    AppMethodBeat.i(211819);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("appid:").append(this.dFy);
+    ((StringBuffer)localObject).append("ResignationWorkUsername:").append(this.egR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("api:").append(this.dSw);
+    ((StringBuffer)localObject).append("TakeOverWorkUsername:").append(this.egS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("arg:").append(this.dSx);
+    ((StringBuffer)localObject).append("WorkEnterpriseDescId:").append(this.egT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("timestampMs:").append(this.dSy);
+    ((StringBuffer)localObject).append("WorkEnterpriseName:").append(this.egU);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Action:").append(this.dPl);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(116485);
+    AppMethodBeat.o(211819);
     return localObject;
   }
   
   public final int getId()
   {
-    return 15961;
+    return 19942;
   }
   
-  public final dq im(long paramLong)
+  public final dq mW(String paramString)
   {
-    AppMethodBeat.i(116483);
-    this.dSy = paramLong;
-    super.bd("timestampMs", this.dSy);
-    AppMethodBeat.o(116483);
+    AppMethodBeat.i(211813);
+    this.egR = t("ResignationWorkUsername", paramString, true);
+    AppMethodBeat.o(211813);
+    return this;
+  }
+  
+  public final dq mX(String paramString)
+  {
+    AppMethodBeat.i(211814);
+    this.egS = t("TakeOverWorkUsername", paramString, true);
+    AppMethodBeat.o(211814);
+    return this;
+  }
+  
+  public final dq mY(String paramString)
+  {
+    AppMethodBeat.i(211815);
+    this.egT = t("WorkEnterpriseDescId", paramString, true);
+    AppMethodBeat.o(211815);
+    return this;
+  }
+  
+  public final dq mZ(String paramString)
+  {
+    AppMethodBeat.i(211816);
+    this.egU = t("WorkEnterpriseName", paramString, true);
+    AppMethodBeat.o(211816);
+    return this;
+  }
+  
+  public final dq na(String paramString)
+  {
+    AppMethodBeat.i(211817);
+    this.dSb = t("SessionId", paramString, true);
+    AppMethodBeat.o(211817);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.dq
  * JD-Core Version:    0.7.0.1
  */

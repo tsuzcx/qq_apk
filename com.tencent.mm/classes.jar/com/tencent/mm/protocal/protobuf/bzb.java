@@ -3,68 +3,73 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bzb
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int EeA;
-  public String Ewu;
-  public String dmy;
-  public String ncR;
-  public String ndW;
+  public String desc;
+  public String hzB;
+  public String path;
+  public String title;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(184131);
+    AppMethodBeat.i(91539);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ncR != null) {
-        paramVarArgs.d(1, this.ncR);
+      if (this.hzB != null) {
+        paramVarArgs.d(1, this.hzB);
       }
-      if (this.Ewu != null) {
-        paramVarArgs.d(2, this.Ewu);
+      if (this.title != null) {
+        paramVarArgs.d(2, this.title);
       }
-      paramVarArgs.aR(3, this.EeA);
-      if (this.ndW != null) {
-        paramVarArgs.d(4, this.ndW);
+      if (this.desc != null) {
+        paramVarArgs.d(3, this.desc);
       }
-      if (this.dmy != null) {
-        paramVarArgs.d(5, this.dmy);
+      if (this.username != null) {
+        paramVarArgs.d(4, this.username);
       }
-      AppMethodBeat.o(184131);
+      if (this.path != null) {
+        paramVarArgs.d(5, this.path);
+      }
+      AppMethodBeat.o(91539);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ncR == null) {
-        break label438;
+      if (this.hzB == null) {
+        break label454;
       }
     }
-    label438:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ncR) + 0;; paramInt = 0)
+    label454:
+    for (int i = f.a.a.b.b.a.e(1, this.hzB) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.Ewu != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Ewu);
-      }
-      i += f.a.a.b.b.a.bx(3, this.EeA);
       paramInt = i;
-      if (this.ndW != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.ndW);
+      if (this.title != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.title);
       }
       i = paramInt;
-      if (this.dmy != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.dmy);
+      if (this.desc != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.desc);
       }
-      AppMethodBeat.o(184131);
+      paramInt = i;
+      if (this.username != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.username);
+      }
+      i = paramInt;
+      if (this.path != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.path);
+      }
+      AppMethodBeat.o(91539);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(184131);
+        AppMethodBeat.o(91539);
         return 0;
       }
       if (paramInt == 3)
@@ -74,30 +79,30 @@ public final class bzb
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(184131);
+          AppMethodBeat.o(91539);
           return -1;
         case 1: 
-          localbzb.ncR = locala.LVo.readString();
-          AppMethodBeat.o(184131);
+          localbzb.hzB = locala.NPN.readString();
+          AppMethodBeat.o(91539);
           return 0;
         case 2: 
-          localbzb.Ewu = locala.LVo.readString();
-          AppMethodBeat.o(184131);
+          localbzb.title = locala.NPN.readString();
+          AppMethodBeat.o(91539);
           return 0;
         case 3: 
-          localbzb.EeA = locala.LVo.xF();
-          AppMethodBeat.o(184131);
+          localbzb.desc = locala.NPN.readString();
+          AppMethodBeat.o(91539);
           return 0;
         case 4: 
-          localbzb.ndW = locala.LVo.readString();
-          AppMethodBeat.o(184131);
+          localbzb.username = locala.NPN.readString();
+          AppMethodBeat.o(91539);
           return 0;
         }
-        localbzb.dmy = locala.LVo.readString();
-        AppMethodBeat.o(184131);
+        localbzb.path = locala.NPN.readString();
+        AppMethodBeat.o(91539);
         return 0;
       }
-      AppMethodBeat.o(184131);
+      AppMethodBeat.o(91539);
       return -1;
     }
   }

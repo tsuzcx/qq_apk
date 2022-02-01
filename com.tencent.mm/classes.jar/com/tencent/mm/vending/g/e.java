@@ -15,57 +15,57 @@ import junit.framework.Assert;
 public class e<_Var>
   implements c<_Var>
 {
-  a JqA;
-  a JqB;
-  private long JqC;
-  private boolean JqD;
-  private b JqE;
-  private com.tencent.mm.vending.h.d JqF;
-  private f.a JqG;
-  List<Pair<d.a, com.tencent.mm.vending.h.d>> JqH;
-  private List<Pair<d.b, com.tencent.mm.vending.h.d>> JqI;
-  private boolean JqJ;
-  boolean JqK;
-  private boolean JqL;
-  private Object JqM;
-  Object JqN;
-  com.tencent.mm.vending.h.f Jqe;
-  public volatile boolean Jqr;
-  volatile d Jqs;
-  boolean Jqt;
-  private Queue<a> Jqu;
-  private volatile com.tencent.mm.vending.h.d Jqv;
-  private volatile com.tencent.mm.vending.h.d Jqw;
-  volatile Object Jqx;
-  volatile boolean Jqy;
-  volatile Object Jqz;
+  com.tencent.mm.vending.h.f LhJ;
+  public volatile boolean LhW;
+  volatile d LhX;
+  boolean LhY;
+  private Queue<a> LhZ;
+  private volatile com.tencent.mm.vending.h.d Lia;
+  private volatile com.tencent.mm.vending.h.d Lib;
+  volatile Object Lic;
+  volatile boolean Lid;
+  volatile Object Lie;
+  a Lif;
+  a Lig;
+  private long Lih;
+  private boolean Lii;
+  private b Lij;
+  private com.tencent.mm.vending.h.d Lik;
+  private f.a Lil;
+  List<Pair<d.a, com.tencent.mm.vending.h.d>> Lim;
+  private List<Pair<d.b, com.tencent.mm.vending.h.d>> Lin;
+  private boolean Lio;
+  boolean Lip;
+  private boolean Liq;
+  private Object Lir;
+  Object Lis;
   private int mRetryCount;
   
   public e()
   {
     AppMethodBeat.i(74826);
-    this.Jqr = false;
-    this.Jqs = d.JqW;
-    this.Jqt = false;
-    this.Jqu = new LinkedList();
+    this.LhW = false;
+    this.LhX = d.LiB;
+    this.LhY = false;
+    this.LhZ = new LinkedList();
     this.mRetryCount = 0;
-    this.JqC = -1L;
-    this.JqD = false;
-    this.JqE = new b();
-    this.JqG = new f.a()
+    this.Lih = -1L;
+    this.Lii = false;
+    this.Lij = new b();
+    this.Lil = new f.a()
     {
-      public final void ee(Object paramAnonymousObject)
+      public final void eh(Object paramAnonymousObject)
       {
         AppMethodBeat.i(74856);
-        ((Stack)f.fxr().Jre.get()).pop();
+        ((Stack)f.fOe().LiJ.get()).pop();
         synchronized (e.this)
         {
-          e.this.JqA = e.this.JqB;
-          e.this.JqB = null;
-          if (!e.this.Jqt)
+          e.this.Lif = e.this.Lig;
+          e.this.Lig = null;
+          if (!e.this.LhY)
           {
-            e.this.Jqx = paramAnonymousObject;
-            if (e.this.Jqs == e.d.Jra)
+            e.this.Lic = paramAnonymousObject;
+            if (e.this.LhX == e.d.LiF)
             {
               com.tencent.mm.vending.f.a.i("Vending.Pipeline", "interrupted, just return", new Object[0]);
               AppMethodBeat.o(74856);
@@ -76,28 +76,28 @@ public class e<_Var>
             com.tencent.mm.vending.f.a.i("Vending.Pipeline", "gonna retry, do not store functional result.", new Object[0]);
           }
         }
-        if (e.this.Jqs == e.d.JqZ)
+        if (e.this.LhX == e.d.LiE)
         {
           com.tencent.mm.vending.f.a.i("Vending.Pipeline", "pausing, just return.", new Object[0]);
           AppMethodBeat.o(74856);
           return;
         }
-        e.this.Jqs = e.d.JqX;
-        e.this.ed(e.this.ec(paramAnonymousObject));
+        e.this.LhX = e.d.LiC;
+        e.this.eg(e.this.ef(paramAnonymousObject));
         AppMethodBeat.o(74856);
       }
       
-      public final void fxq()
+      public final void fOd()
       {
         AppMethodBeat.i(74855);
-        f localf = f.fxr();
+        f localf = f.fOe();
         e locale = e.this;
-        Stack localStack2 = (Stack)localf.Jre.get();
+        Stack localStack2 = (Stack)localf.LiJ.get();
         Stack localStack1 = localStack2;
         if (localStack2 == null)
         {
           localStack1 = new Stack();
-          localf.Jre.set(localStack1);
+          localf.LiJ.set(localStack1);
         }
         localStack1.push(locale);
         AppMethodBeat.o(74855);
@@ -106,41 +106,41 @@ public class e<_Var>
       public final void interrupt()
       {
         AppMethodBeat.i(74857);
-        e.this.ym(true);
+        e.this.yY(true);
         AppMethodBeat.o(74857);
       }
     };
-    this.JqJ = false;
-    this.JqK = false;
-    this.JqL = false;
-    this.Jqw = g.fxu();
-    this.Jqv = this.Jqw;
-    this.Jqe = new com.tencent.mm.vending.h.f(this.Jqw, this.JqG);
+    this.Lio = false;
+    this.Lip = false;
+    this.Liq = false;
+    this.Lib = g.fOh();
+    this.Lia = this.Lib;
+    this.LhJ = new com.tencent.mm.vending.h.f(this.Lib, this.Lil);
     AppMethodBeat.o(74826);
   }
   
-  private c<_Var> H(Object... paramVarArgs)
+  private c<_Var> I(Object... paramVarArgs)
   {
     AppMethodBeat.i(177484);
-    if (this.Jqs != d.JqW)
+    if (this.LhX != d.LiB)
     {
       AppMethodBeat.o(177484);
       return this;
     }
-    this.Jqs = d.JqX;
+    this.LhX = d.LiC;
     if (paramVarArgs.length == 0) {
       paramVarArgs = null;
     }
     for (;;)
     {
-      this.Jqx = paramVarArgs;
-      ed(this.Jqx);
+      this.Lic = paramVarArgs;
+      eg(this.Lic);
       AppMethodBeat.o(177484);
       return this;
       if (paramVarArgs.length == 1) {
         paramVarArgs = paramVarArgs[0];
       } else {
-        paramVarArgs = k.I(paramVarArgs);
+        paramVarArgs = k.J(paramVarArgs);
       }
     }
   }
@@ -148,20 +148,20 @@ public class e<_Var>
   private <_Ret> c<_Ret> a(com.tencent.mm.vending.c.a<_Ret, _Var> parama, boolean paramBoolean)
   {
     AppMethodBeat.i(74837);
-    fxp();
-    this.Jqu.add(new a(parama, this.Jqv, this.JqC, paramBoolean));
-    this.JqC = -1L;
-    if (this.Jqs == d.JqW)
+    fOc();
+    this.LhZ.add(new a(parama, this.Lia, this.Lih, paramBoolean));
+    this.Lih = -1L;
+    if (this.LhX == d.LiB)
     {
       AppMethodBeat.o(74837);
       return this;
     }
-    if (this.Jqs != d.JqX)
+    if (this.LhX != d.LiC)
     {
       AppMethodBeat.o(74837);
       return this;
     }
-    ed(this.Jqx);
+    eg(this.Lic);
     AppMethodBeat.o(74837);
     return this;
   }
@@ -169,37 +169,37 @@ public class e<_Var>
   private void a(d.a parama, com.tencent.mm.vending.h.d paramd)
   {
     AppMethodBeat.i(74842);
-    this.Jqr = true;
-    if (this.JqH == null) {
-      this.JqH = new LinkedList();
+    this.LhW = true;
+    if (this.Lim == null) {
+      this.Lim = new LinkedList();
     }
     parama = new Pair(parama, paramd);
-    if (this.JqK)
+    if (this.Lip)
     {
-      a(parama, this.JqN);
+      a(parama, this.Lis);
       AppMethodBeat.o(74842);
       return;
     }
-    this.JqH.add(parama);
+    this.Lim.add(parama);
     AppMethodBeat.o(74842);
   }
   
   private void a(d.b paramb, com.tencent.mm.vending.h.d paramd)
   {
     AppMethodBeat.i(74843);
-    this.Jqr = true;
-    ed(this.Jqx);
-    if (this.JqI == null) {
-      this.JqI = new LinkedList();
+    this.LhW = true;
+    eg(this.Lic);
+    if (this.Lin == null) {
+      this.Lin = new LinkedList();
     }
     paramb = new Pair(paramb, paramd);
-    if (this.JqJ)
+    if (this.Lio)
     {
-      b(paramb, this.JqM);
+      b(paramb, this.Lir);
       AppMethodBeat.o(74843);
       return;
     }
-    this.JqI.add(paramb);
+    this.Lin.add(paramb);
     AppMethodBeat.o(74843);
   }
   
@@ -209,13 +209,13 @@ public class e<_Var>
     final RuntimeException localRuntimeException = new RuntimeException("object is not right: ".concat(String.valueOf(paramObject)));
     new com.tencent.mm.vending.h.f((com.tencent.mm.vending.h.d)paramPair.second, null).a(new com.tencent.mm.vending.c.a()
     {
-      private Void aVo()
+      private Void aYJ()
       {
         AppMethodBeat.i(177476);
         try
         {
-          ((d.b)paramPair.first).bo(paramObject);
-          Void localVoid = Jql;
+          ((d.b)paramPair.first).bq(paramObject);
+          Void localVoid = LhQ;
           AppMethodBeat.o(177476);
           return localVoid;
         }
@@ -229,14 +229,14 @@ public class e<_Var>
           throw localRuntimeException;
         }
       }
-    }, null, this.JqD);
+    }, null, this.Lii);
     AppMethodBeat.o(177486);
   }
   
-  private void fxp()
+  private void fOc()
   {
     AppMethodBeat.i(177485);
-    if (this.Jqr)
+    if (this.LhW)
     {
       c localc = new c("This Pipeline(%s) has terminate and do not allow any next().", new Object[] { this });
       AppMethodBeat.o(177485);
@@ -245,11 +245,11 @@ public class e<_Var>
     AppMethodBeat.o(177485);
   }
   
-  public c<_Var> BB(long paramLong)
+  public c<_Var> Et(long paramLong)
   {
     try
     {
-      this.JqC = paramLong;
+      this.Lih = paramLong;
       return this;
     }
     finally
@@ -259,12 +259,12 @@ public class e<_Var>
     }
   }
   
-  public c<_Var> G(Object... paramVarArgs)
+  public c<_Var> H(Object... paramVarArgs)
   {
     try
     {
       AppMethodBeat.i(74831);
-      paramVarArgs = H(paramVarArgs);
+      paramVarArgs = I(paramVarArgs);
       AppMethodBeat.o(74831);
       return paramVarArgs;
     }
@@ -280,7 +280,7 @@ public class e<_Var>
     try
     {
       AppMethodBeat.i(74830);
-      H(new Object[0]);
+      I(new Object[0]);
       a(new com.tencent.mm.vending.c.a()
       {
         public final _Var call(_Var paramAnonymous_Var)
@@ -306,7 +306,7 @@ public class e<_Var>
     try
     {
       AppMethodBeat.i(74844);
-      a(parama, this.Jqw);
+      a(parama, this.Lib);
       AppMethodBeat.o(74844);
       return this;
     }
@@ -322,7 +322,7 @@ public class e<_Var>
     try
     {
       AppMethodBeat.i(74846);
-      a(paramb, this.Jqw);
+      a(paramb, this.Lib);
       AppMethodBeat.o(74846);
       return this;
     }
@@ -374,13 +374,13 @@ public class e<_Var>
       public final void run()
       {
         AppMethodBeat.i(74854);
-        ((d.a)paramPair.first).cc(paramObject);
+        ((d.a)paramPair.first).ce(paramObject);
         AppMethodBeat.o(74854);
       }
     };
     if (locald == null)
     {
-      com.tencent.mm.vending.f.a.e("Vending.Pipeline", "Default scheduler %s is not available!!!", new Object[] { this.Jqw });
+      com.tencent.mm.vending.f.a.e("Vending.Pipeline", "Default scheduler %s is not available!!!", new Object[] { this.Lib });
       AppMethodBeat.o(74840);
       return;
     }
@@ -388,7 +388,7 @@ public class e<_Var>
     AppMethodBeat.o(74840);
   }
   
-  public c<_Var> aRZ(String paramString)
+  public c<_Var> aXY(String paramString)
   {
     AppMethodBeat.i(74827);
     if (paramString == null)
@@ -397,8 +397,8 @@ public class e<_Var>
       AppMethodBeat.o(74827);
       return this;
     }
-    this.Jqv = g.aSb(paramString);
-    Assert.assertNotNull("mCurrentScheduler should not be null!", this.Jqv);
+    this.Lia = g.aYa(paramString);
+    Assert.assertNotNull("mCurrentScheduler should not be null!", this.Lia);
     AppMethodBeat.o(74827);
     return this;
   }
@@ -421,7 +421,7 @@ public class e<_Var>
       AppMethodBeat.o(74828);
       return this;
     }
-    this.Jqv = paramd;
+    this.Lia = paramd;
     AppMethodBeat.o(74828);
     return this;
   }
@@ -431,7 +431,7 @@ public class e<_Var>
     try
     {
       AppMethodBeat.i(74838);
-      parama = a(parama, this.JqD);
+      parama = a(parama, this.Lii);
       AppMethodBeat.o(74838);
       return parama;
     }
@@ -445,7 +445,7 @@ public class e<_Var>
   public <_Ret> c<_Ret> d(com.tencent.mm.vending.c.a<_Ret, _Var> parama)
   {
     AppMethodBeat.i(74835);
-    parama = aRZ("Vending.LOGIC").c(parama);
+    parama = aXY("Vending.LOGIC").c(parama);
     AppMethodBeat.o(74835);
     return parama;
   }
@@ -453,109 +453,109 @@ public class e<_Var>
   public void dead()
   {
     AppMethodBeat.i(74833);
-    ym(true);
+    yY(true);
     AppMethodBeat.o(74833);
   }
   
   public <_Ret> c<_Ret> e(com.tencent.mm.vending.c.a<_Ret, _Var> parama)
   {
     AppMethodBeat.i(74836);
-    parama = aRZ("Vending.HEAVY_WORK").c(parama);
+    parama = aXY("Vending.HEAVY_WORK").c(parama);
     AppMethodBeat.o(74836);
     return parama;
   }
   
-  final Object ec(Object paramObject)
+  final Object ef(Object paramObject)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(177488);
-        if (this.Jqt)
+        if (this.LhY)
         {
           this.mRetryCount += 1;
-          com.tencent.mm.vending.f.a.i("Vending.Pipeline", "Functional %s, gonna retry %s.", new Object[] { this.JqA.gjH.toString(), Integer.valueOf(this.mRetryCount) });
-          ((LinkedList)this.Jqu).add(0, this.JqA);
-          this.Jqt = false;
-          paramObject = this.Jqx;
+          com.tencent.mm.vending.f.a.i("Vending.Pipeline", "Functional %s, gonna retry %s.", new Object[] { this.Lif.gDr.toString(), Integer.valueOf(this.mRetryCount) });
+          ((LinkedList)this.LhZ).add(0, this.Lif);
+          this.LhY = false;
+          paramObject = this.Lic;
           AppMethodBeat.o(177488);
           return paramObject;
         }
-        if (this.Jqy)
+        if (this.Lid)
         {
-          this.Jqx = this.Jqz;
-          this.Jqz = null;
-          this.Jqy = false;
+          this.Lic = this.Lie;
+          this.Lie = null;
+          this.Lid = false;
           this.mRetryCount = 0;
         }
         else
         {
-          this.Jqx = paramObject;
+          this.Lic = paramObject;
         }
       }
       finally {}
     }
   }
   
-  final void ed(final Object paramObject)
+  final void eg(final Object paramObject)
   {
     AppMethodBeat.i(177489);
-    if (this.Jqs != d.JqX)
+    if (this.LhX != d.LiC)
     {
       AppMethodBeat.o(177489);
       return;
     }
-    this.Jqs = d.JqY;
-    a locala = (a)this.Jqu.peek();
+    this.LhX = d.LiD;
+    a locala = (a)this.LhZ.peek();
     if (locala == null)
     {
-      if (this.Jqr)
+      if (this.LhW)
       {
-        this.Jqs = d.Jrb;
-        this.JqJ = true;
-        this.JqM = paramObject;
-        if (this.JqI != null)
+        this.LhX = d.LiG;
+        this.Lio = true;
+        this.Lir = paramObject;
+        if (this.Lin != null)
         {
-          paramObject = this.JqI.iterator();
+          paramObject = this.Lin.iterator();
           while (paramObject.hasNext()) {
-            b((Pair)paramObject.next(), this.JqM);
+            b((Pair)paramObject.next(), this.Lir);
           }
           AppMethodBeat.o(177489);
         }
       }
       else
       {
-        this.Jqs = d.JqX;
+        this.LhX = d.LiC;
       }
       AppMethodBeat.o(177489);
       return;
     }
-    final com.tencent.mm.vending.c.a locala1 = locala.gjH;
-    com.tencent.mm.vending.h.d locald = locala.cII;
+    final com.tencent.mm.vending.c.a locala1 = locala.gDr;
+    com.tencent.mm.vending.h.d locald = locala.cTQ;
     long l = locala.mInterval;
-    final boolean bool = locala.JqV;
-    if (this.Jqs == d.JqZ)
+    final boolean bool = locala.LiA;
+    if (this.LhX == d.LiE)
     {
       com.tencent.mm.vending.f.a.i("Vending.Pipeline", "This pipeline is Pausing. We will stop dequeFunctionAndInvoke and waiting resume() call", new Object[0]);
       AppMethodBeat.o(177489);
       return;
     }
-    this.JqB = ((a)this.Jqu.poll());
-    this.Jqe.c(locald);
+    this.Lig = ((a)this.LhZ.poll());
+    this.LhJ.c(locald);
     if (l < 0L)
     {
-      this.Jqe.a(locala1, paramObject, bool);
+      this.LhJ.a(locala1, paramObject, bool);
       AppMethodBeat.o(177489);
       return;
     }
-    this.JqF = g.fxu();
-    this.JqF.f(new Runnable()
+    this.Lik = g.fOh();
+    this.Lik.g(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(74862);
-        e.this.Jqe.a(locala1, paramObject, bool);
+        e.this.LhJ.a(locala1, paramObject, bool);
         AppMethodBeat.o(74862);
       }
     }, l);
@@ -565,21 +565,21 @@ public class e<_Var>
   public <_Ret> c<_Ret> f(com.tencent.mm.vending.c.a<_Ret, _Var> parama)
   {
     AppMethodBeat.i(74834);
-    parama = aRZ("Vending.UI").c(parama);
+    parama = aXY("Vending.UI").c(parama);
     AppMethodBeat.o(74834);
     return parama;
   }
   
-  public final b fxn()
+  public final b fOa()
   {
-    return this.JqE;
+    return this.Lij;
   }
   
-  public final d<_Var> fxo()
+  public final d<_Var> fOb()
   {
     try
     {
-      this.Jqr = true;
+      this.LhW = true;
       return this;
     }
     finally
@@ -589,11 +589,11 @@ public class e<_Var>
     }
   }
   
-  public c<_Var> yl(boolean paramBoolean)
+  public c<_Var> yX(boolean paramBoolean)
   {
     try
     {
-      this.JqD = paramBoolean;
+      this.Lii = paramBoolean;
       return this;
     }
     finally
@@ -604,7 +604,7 @@ public class e<_Var>
   }
   
   /* Error */
-  public final void ym(boolean paramBoolean)
+  public final void yY(boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
@@ -612,12 +612,12 @@ public class e<_Var>
     //   2: ldc_w 437
     //   5: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 87	com/tencent/mm/vending/g/e:Jqs	Lcom/tencent/mm/vending/g/e$d;
-    //   12: getstatic 440	com/tencent/mm/vending/g/e$d:Jra	Lcom/tencent/mm/vending/g/e$d;
+    //   9: getfield 87	com/tencent/mm/vending/g/e:LhX	Lcom/tencent/mm/vending/g/e$d;
+    //   12: getstatic 440	com/tencent/mm/vending/g/e$d:LiF	Lcom/tencent/mm/vending/g/e$d;
     //   15: if_acmpeq +13 -> 28
     //   18: aload_0
-    //   19: getfield 87	com/tencent/mm/vending/g/e:Jqs	Lcom/tencent/mm/vending/g/e$d;
-    //   22: getstatic 385	com/tencent/mm/vending/g/e$d:Jrb	Lcom/tencent/mm/vending/g/e$d;
+    //   19: getfield 87	com/tencent/mm/vending/g/e:LhX	Lcom/tencent/mm/vending/g/e$d;
+    //   22: getstatic 384	com/tencent/mm/vending/g/e$d:LiG	Lcom/tencent/mm/vending/g/e$d;
     //   25: if_acmpne +12 -> 37
     //   28: ldc_w 437
     //   31: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -627,35 +627,35 @@ public class e<_Var>
     //   37: iload_1
     //   38: ifeq +43 -> 81
     //   41: aload_0
-    //   42: getfield 94	com/tencent/mm/vending/g/e:Jqu	Ljava/util/Queue;
+    //   42: getfield 94	com/tencent/mm/vending/g/e:LhZ	Ljava/util/Queue;
     //   45: invokeinterface 444 1 0
     //   50: ifle +31 -> 81
-    //   53: ldc_w 279
+    //   53: ldc_w 278
     //   56: ldc_w 446
     //   59: iconst_1
     //   60: anewarray 5	java/lang/Object
     //   63: dup
     //   64: iconst_0
     //   65: aload_0
-    //   66: getfield 94	com/tencent/mm/vending/g/e:Jqu	Ljava/util/Queue;
+    //   66: getfield 94	com/tencent/mm/vending/g/e:LhZ	Ljava/util/Queue;
     //   69: invokeinterface 444 1 0
-    //   74: invokestatic 365	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   74: invokestatic 364	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   77: aastore
     //   78: invokestatic 448	com/tencent/mm/vending/f/a:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   81: aload_0
-    //   82: getstatic 440	com/tencent/mm/vending/g/e$d:Jra	Lcom/tencent/mm/vending/g/e$d;
-    //   85: putfield 87	com/tencent/mm/vending/g/e:Jqs	Lcom/tencent/mm/vending/g/e$d;
+    //   82: getstatic 440	com/tencent/mm/vending/g/e$d:LiF	Lcom/tencent/mm/vending/g/e$d;
+    //   85: putfield 87	com/tencent/mm/vending/g/e:LhX	Lcom/tencent/mm/vending/g/e$d;
     //   88: aload_0
-    //   89: getfield 94	com/tencent/mm/vending/g/e:Jqu	Ljava/util/Queue;
+    //   89: getfield 94	com/tencent/mm/vending/g/e:LhZ	Ljava/util/Queue;
     //   92: invokeinterface 451 1 0
     //   97: aload_0
     //   98: aconst_null
-    //   99: putfield 145	com/tencent/mm/vending/g/e:Jqx	Ljava/lang/Object;
+    //   99: putfield 144	com/tencent/mm/vending/g/e:Lic	Ljava/lang/Object;
     //   102: aload_0
-    //   103: getfield 420	com/tencent/mm/vending/g/e:JqF	Lcom/tencent/mm/vending/h/d;
+    //   103: getfield 419	com/tencent/mm/vending/g/e:Lik	Lcom/tencent/mm/vending/h/d;
     //   106: ifnull +10 -> 116
     //   109: aload_0
-    //   110: getfield 420	com/tencent/mm/vending/g/e:JqF	Lcom/tencent/mm/vending/h/d;
+    //   110: getfield 419	com/tencent/mm/vending/g/e:Lik	Lcom/tencent/mm/vending/h/d;
     //   113: invokevirtual 454	com/tencent/mm/vending/h/d:cancel	()V
     //   116: ldc_w 437
     //   119: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -681,17 +681,17 @@ public class e<_Var>
   
   static final class a
   {
-    public boolean JqV;
-    public com.tencent.mm.vending.h.d cII;
-    public com.tencent.mm.vending.c.a gjH;
+    public boolean LiA;
+    public com.tencent.mm.vending.h.d cTQ;
+    public com.tencent.mm.vending.c.a gDr;
     public long mInterval;
     
     public a(com.tencent.mm.vending.c.a parama, com.tencent.mm.vending.h.d paramd, long paramLong, boolean paramBoolean)
     {
-      this.gjH = parama;
-      this.cII = paramd;
+      this.gDr = parama;
+      this.cTQ = paramd;
       this.mInterval = paramLong;
-      this.JqV = paramBoolean;
+      this.LiA = paramBoolean;
     }
   }
   
@@ -700,14 +700,14 @@ public class e<_Var>
   {
     b() {}
     
-    public final void F(Object... paramVarArgs)
+    public final void G(Object... paramVarArgs)
     {
       AppMethodBeat.i(177479);
       synchronized (e.this)
       {
-        if (e.this.Jqs != e.d.JqZ)
+        if (e.this.LhX != e.d.LiE)
         {
-          com.tencent.mm.vending.f.a.i("Vending.Pipeline", "state is not pausing %s, skip this wormhole", new Object[] { e.this.Jqs });
+          com.tencent.mm.vending.f.a.i("Vending.Pipeline", "state is not pausing %s, skip this wormhole", new Object[] { e.this.LhX });
           AppMethodBeat.o(177479);
           return;
         }
@@ -715,8 +715,8 @@ public class e<_Var>
         if (paramVarArgs.length == 0) {}
         for (paramVarArgs = null;; paramVarArgs = paramVarArgs[0])
         {
-          locale2.Jqz = paramVarArgs;
-          e.this.Jqy = true;
+          locale2.Lie = paramVarArgs;
+          e.this.Lid = true;
           com.tencent.mm.vending.f.a.i("Vending.Pipeline", "pipline(%s) wormhole().", new Object[] { e.this });
           resume();
           AppMethodBeat.o(177479);
@@ -725,34 +725,34 @@ public class e<_Var>
             break;
           }
         }
-        paramVarArgs = k.I(paramVarArgs);
+        paramVarArgs = k.J(paramVarArgs);
       }
     }
     
-    public final void eb(Object paramObject)
+    public final void ee(Object paramObject)
     {
       AppMethodBeat.i(177477);
       synchronized (e.this)
       {
-        if (e.this.Jqs == e.d.Jra)
+        if (e.this.LhX == e.d.LiF)
         {
           com.tencent.mm.vending.f.a.i("Vending.Pipeline", "interrupted, skip this interrupt.", new Object[0]);
           AppMethodBeat.o(177477);
           return;
         }
-        if ((!e.a(e.this)) && (e.this.Jqs != e.d.JqZ))
+        if ((!e.a(e.this)) && (e.this.LhX != e.d.LiE))
         {
           com.tencent.mm.vending.f.a.i("Vending.Pipeline", "interrupt not in func scope or pending, skip this retryOrInterrupt.", new Object[0]);
           AppMethodBeat.o(177477);
           return;
         }
         com.tencent.mm.vending.f.a.i("Vending.Pipeline", "interrupt Pipeline(%s)", new Object[] { e.this });
-        e.this.ym(false);
-        e.this.JqK = true;
-        e.this.JqN = paramObject;
-        if (e.this.JqH != null)
+        e.this.yY(false);
+        e.this.Lip = true;
+        e.this.Lis = paramObject;
+        if (e.this.Lim != null)
         {
-          Iterator localIterator = e.this.JqH.iterator();
+          Iterator localIterator = e.this.Lim.iterator();
           if (localIterator.hasNext())
           {
             Pair localPair = (Pair)localIterator.next();
@@ -763,7 +763,7 @@ public class e<_Var>
       AppMethodBeat.o(177477);
     }
     
-    public final void fxm()
+    public final void fNZ()
     {
       AppMethodBeat.i(177478);
       for (;;)
@@ -772,9 +772,9 @@ public class e<_Var>
         {
           synchronized (e.this)
           {
-            if ((e.this.Jqs == e.d.Jra) || (e.this.Jqs == e.d.JqW))
+            if ((e.this.LhX == e.d.LiF) || (e.this.LhX == e.d.LiB))
             {
-              com.tencent.mm.vending.f.a.w("Vending.Pipeline", "current is state(%s), ignore pause.", new Object[] { e.this.Jqs });
+              com.tencent.mm.vending.f.a.w("Vending.Pipeline", "current is state(%s), ignore pause.", new Object[] { e.this.LhX });
               AppMethodBeat.o(177478);
               return;
             }
@@ -786,7 +786,7 @@ public class e<_Var>
         if (!e.b(e.this)) {
           com.tencent.mm.vending.f.a.e("Vending.Pipeline", "you are using mario().pause() out of calling thread on %s!", new Object[] { e.this });
         } else {
-          e.this.Jqs = e.d.JqZ;
+          e.this.LhX = e.d.LiE;
         }
       }
     }
@@ -796,7 +796,7 @@ public class e<_Var>
       AppMethodBeat.i(177480);
       synchronized (e.this)
       {
-        if (e.this.Jqs != e.d.JqZ)
+        if (e.this.LhX != e.d.LiE)
         {
           com.tencent.mm.vending.f.a.e("Vending.Pipeline", "this Pipeline(%s) is not pausing! why call resume?", new Object[] { e.this });
           AppMethodBeat.o(177480);
@@ -804,14 +804,14 @@ public class e<_Var>
         }
         if (!e.a(e.this))
         {
-          e.this.Jqs = e.d.JqX;
+          e.this.LhX = e.d.LiC;
           if (!e.b(e.this)) {
-            e.this.ed(e.this.ec(e.this.Jqx));
+            e.this.eg(e.this.ef(e.this.Lic));
           }
           AppMethodBeat.o(177480);
           return;
         }
-        e.this.Jqs = e.d.JqY;
+        e.this.LhX = e.d.LiD;
       }
     }
   }
@@ -832,13 +832,13 @@ public class e<_Var>
     static
     {
       AppMethodBeat.i(177483);
-      JqW = new d("Idle", 0);
-      JqX = new d("Resolved", 1);
-      JqY = new d("Invoking", 2);
-      JqZ = new d("Pausing", 3);
-      Jra = new d("Interrupted", 4);
-      Jrb = new d("AllDone", 5);
-      Jrc = new d[] { JqW, JqX, JqY, JqZ, Jra, Jrb };
+      LiB = new d("Idle", 0);
+      LiC = new d("Resolved", 1);
+      LiD = new d("Invoking", 2);
+      LiE = new d("Pausing", 3);
+      LiF = new d("Interrupted", 4);
+      LiG = new d("AllDone", 5);
+      LiH = new d[] { LiB, LiC, LiD, LiE, LiF, LiG };
       AppMethodBeat.o(177483);
     }
     

@@ -6,7 +6,7 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.ui.o;
-import com.tencent.mm.protocal.protobuf.ahp;
+import com.tencent.mm.protocal.protobuf.akf;
 
 public final class p
   extends b
@@ -24,7 +24,7 @@ public final class p
     return paramView;
   }
   
-  public final void a(View paramView, ahp paramahp)
+  public final void a(View paramView, akf paramakf)
   {
     AppMethodBeat.i(107492);
     if (paramView != null) {
@@ -35,7 +35,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.e.p
  * JD-Core Version:    0.7.0.1
  */

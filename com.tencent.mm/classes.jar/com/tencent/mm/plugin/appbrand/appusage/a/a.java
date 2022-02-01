@@ -15,16 +15,16 @@ public final class a
   {
     AppMethodBeat.i(44664);
     c.a locala = new c.a();
-    locala.GvF = new Field[2];
+    locala.IhA = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appId";
-    locala.GvH.put("appId", "TEXT PRIMARY KEY ");
+    locala.IhC.put("appId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" appId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "appId";
+    locala.IhB = "appId";
     locala.columns[1] = "recommendCard";
-    locala.GvH.put("recommendCard", "BLOB");
+    locala.IhC.put("recommendCard", "BLOB");
     localStringBuilder.append(" recommendCard BLOB");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -39,7 +39,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.a
  * JD-Core Version:    0.7.0.1
  */

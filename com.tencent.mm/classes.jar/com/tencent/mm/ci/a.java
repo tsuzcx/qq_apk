@@ -3,14 +3,14 @@ package com.tencent.mm.ci;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class a
 {
   public static boolean post(Runnable paramRunnable)
   {
     AppMethodBeat.i(156366);
-    h.JZN.aS(paramRunnable);
+    h.LTJ.aR(paramRunnable);
     AppMethodBeat.o(156366);
     return true;
   }
@@ -18,7 +18,7 @@ public final class a
   public static boolean y(Runnable paramRunnable)
   {
     AppMethodBeat.i(156367);
-    h.JZN.q(paramRunnable, 1000L);
+    h.LTJ.r(paramRunnable, 1000L);
     AppMethodBeat.o(156367);
     return true;
   }
@@ -26,7 +26,7 @@ public final class a
   public static boolean z(Runnable paramRunnable)
   {
     AppMethodBeat.i(182045);
-    ap.f(paramRunnable);
+    aq.f(paramRunnable);
     AppMethodBeat.o(182045);
     return true;
   }

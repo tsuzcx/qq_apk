@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class lg
   extends b
 {
+  public a dyC;
+  
   public lg()
   {
     this((byte)0);
@@ -12,8 +15,19 @@ public final class lg
   
   private lg(byte paramByte)
   {
-    this.Gqe = false;
+    AppMethodBeat.i(149869);
+    this.dyC = new a();
+    this.IbR = false;
     this.callback = null;
+    AppMethodBeat.o(149869);
+  }
+  
+  public static final class a
+  {
+    public int dmx;
+    public boolean dmz = false;
+    public String filePath;
+    public int subType;
   }
 }
 

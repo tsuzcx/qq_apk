@@ -6,18 +6,18 @@ import java.util.Set;
 
 public final class h
 {
-  private static final Set<Class<?>> Ljc;
+  private static final Set<Class<?>> MZY;
   
   static
   {
     AppMethodBeat.i(57378);
-    Ljc = ak.setOf(new Class[] { Integer.class, Character.class, Byte.class, Long.class, Short.class, Boolean.class, Double.class, Float.class, [I.class, [C.class, [B.class, [J.class, [S.class, [Z.class, [D.class, [F.class, Class.class, String.class });
+    MZY = ak.setOf(new Class[] { Integer.class, Character.class, Byte.class, Long.class, Short.class, Boolean.class, Double.class, Float.class, [I.class, [C.class, [B.class, [J.class, [S.class, [Z.class, [D.class, [F.class, Class.class, String.class });
     AppMethodBeat.o(57378);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.h
  * JD-Core Version:    0.7.0.1
  */

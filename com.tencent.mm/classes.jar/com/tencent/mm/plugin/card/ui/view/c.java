@@ -7,20 +7,20 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.acl;
-import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.protocal.protobuf.ael;
+import com.tencent.mm.protocal.protobuf.ts;
 
 public final class c
   extends i
 {
-  private View okT;
-  private TextView okU;
+  private View oOo;
+  private TextView oOp;
   
-  public final void bTM()
+  public final void bYr()
   {
     AppMethodBeat.i(113664);
-    if (this.okT != null) {
-      this.okT.setVisibility(8);
+    if (this.oOo != null) {
+      this.oOo.setVisibility(8);
     }
     AppMethodBeat.o(113664);
   }
@@ -30,27 +30,27 @@ public final class c
   public final void update()
   {
     AppMethodBeat.i(113663);
-    if (this.okT == null)
+    if (this.oOo == null)
     {
-      this.okT = ((ViewStub)findViewById(2131297728)).inflate();
-      this.okU = ((TextView)this.okT.findViewById(2131297729));
+      this.oOo = ((ViewStub)findViewById(2131297728)).inflate();
+      this.oOp = ((TextView)this.oOo.findViewById(2131297729));
     }
-    this.okT.setVisibility(0);
-    this.okT.setOnClickListener(this.olg.bRK());
-    b localb = this.olg.bRG();
-    if (!TextUtils.isEmpty(localb.bPi().EkH.EuW))
+    this.oOo.setVisibility(0);
+    this.oOo.setOnClickListener(this.oOB.bWp());
+    b localb = this.oOB.bWl();
+    if (!TextUtils.isEmpty(localb.bTN().FRQ.Gcq))
     {
-      this.okU.setText(localb.bPi().EkH.EuW);
+      this.oOp.setText(localb.bTN().FRQ.Gcq);
       AppMethodBeat.o(113663);
       return;
     }
-    this.okU.setText(getString(2131756933));
+    this.oOp.setText(getString(2131756933));
     AppMethodBeat.o(113663);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.c
  * JD-Core Version:    0.7.0.1
  */

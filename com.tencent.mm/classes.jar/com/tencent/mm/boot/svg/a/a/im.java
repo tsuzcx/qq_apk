@@ -45,7 +45,7 @@ public final class im
       c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-8421505);
+      localPaint.setColor(-5066062);
       localObject = c.n(paramVarArgs);
       ((Path)localObject).moveTo(47.897362F, 164.64719F);
       ((Path)localObject).lineTo(47.897362F, 168.0F);
@@ -103,20 +103,6 @@ public final class im
       ((Path)localObject).lineTo(164.64719F, 119.74341F);
       ((Path)localObject).lineTo(168.0F, 119.74341F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(86.065575F, 50.292233F);
-      ((Path)localObject).lineTo(86.065231F, 81.574234F);
-      ((Path)localObject).lineTo(117.34854F, 81.575195F);
-      ((Path)localObject).lineTo(117.34854F, 86.065575F);
-      ((Path)localObject).lineTo(86.065231F, 86.065231F);
-      ((Path)localObject).lineTo(86.065575F, 117.34854F);
-      ((Path)localObject).lineTo(81.575195F, 117.34854F);
-      ((Path)localObject).lineTo(81.574234F, 86.065231F);
-      ((Path)localObject).lineTo(50.292233F, 86.065575F);
-      ((Path)localObject).lineTo(50.292233F, 81.575195F);
-      ((Path)localObject).lineTo(81.574234F, 81.574234F);
-      ((Path)localObject).lineTo(81.575195F, 50.292233F);
-      ((Path)localObject).lineTo(86.065575F, 50.292233F);
-      ((Path)localObject).close();
       ((Path)localObject).moveTo(3.352815F, 89.807556F);
       ((Path)localObject).lineTo(3.352815F, 107.76907F);
       ((Path)localObject).lineTo(0.0F, 107.76907F);
@@ -128,6 +114,12 @@ public final class im
       ((Path)localObject).lineTo(164.64719F, 107.76907F);
       ((Path)localObject).lineTo(164.64719F, 89.807556F);
       ((Path)localObject).lineTo(168.0F, 89.807556F);
+      ((Path)localObject).close();
+      ((Path)localObject).moveTo(117.34854F, 81.575195F);
+      ((Path)localObject).lineTo(117.34854F, 86.065575F);
+      ((Path)localObject).lineTo(50.292233F, 86.065575F);
+      ((Path)localObject).lineTo(50.292233F, 81.575195F);
+      ((Path)localObject).lineTo(117.34854F, 81.575195F);
       ((Path)localObject).close();
       ((Path)localObject).moveTo(3.352815F, 59.871704F);
       ((Path)localObject).lineTo(3.352815F, 77.833214F);
@@ -206,7 +198,7 @@ public final class im
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.im
  * JD-Core Version:    0.7.0.1
  */

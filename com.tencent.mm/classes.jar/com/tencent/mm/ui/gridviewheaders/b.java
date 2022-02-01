@@ -9,9 +9,9 @@ public abstract interface b
 {
   public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
   
-  public abstract int ack(int paramInt);
+  public abstract int aeI(int paramInt);
   
-  public abstract int fsT();
+  public abstract int fJH();
 }
 
 

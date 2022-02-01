@@ -2,55 +2,55 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b
 {
-  private List<c> uuN;
-  private boolean uuO;
-  private boolean uuP;
-  private TextView uuQ;
+  private List<c> vxq;
+  private boolean vxr;
+  private boolean vxs;
+  private TextView vxt;
   
   public b()
   {
     AppMethodBeat.i(65609);
-    this.uuN = new LinkedList();
-    this.uuO = false;
-    this.uuP = false;
+    this.vxq = new LinkedList();
+    this.vxr = false;
+    this.vxs = false;
     AppMethodBeat.o(65609);
   }
   
-  private void akp(String paramString)
+  private void apc(String paramString)
   {
     AppMethodBeat.i(65614);
-    if ((this.uuQ != null) && (!bs.isNullOrNil(paramString)))
+    if ((this.vxt != null) && (!bt.isNullOrNil(paramString)))
     {
-      if (!this.uuO) {
-        this.uuQ.setText(paramString);
+      if (!this.vxr) {
+        this.vxt.setText(paramString);
       }
-      this.uuQ.setVisibility(0);
-      this.uuO = true;
+      this.vxt.setVisibility(0);
+      this.vxr = true;
     }
     AppMethodBeat.o(65614);
   }
   
-  public final void Qr(String paramString)
+  public final void TW(String paramString)
   {
     AppMethodBeat.i(65615);
-    if ((this.uuQ != null) && (!bs.isNullOrNil(paramString)))
+    if ((this.vxt != null) && (!bt.isNullOrNil(paramString)))
     {
-      this.uuQ.setText(paramString);
-      this.uuQ.setVisibility(0);
-      this.uuO = true;
+      this.vxt.setText(paramString);
+      this.vxt.setVisibility(0);
+      this.vxr = true;
       AppMethodBeat.o(65615);
       return;
     }
-    if (this.uuQ != null)
+    if (this.vxt != null)
     {
-      this.uuQ.setVisibility(8);
-      this.uuO = false;
+      this.vxt.setVisibility(8);
+      this.vxr = false;
     }
     AppMethodBeat.o(65615);
   }
@@ -63,33 +63,33 @@ public final class b
       AppMethodBeat.o(65610);
       return;
     }
-    this.uuN.add(paramc);
+    this.vxq.add(paramc);
     AppMethodBeat.o(65610);
   }
   
   public final void clear()
   {
     AppMethodBeat.i(65611);
-    this.uuN.clear();
-    this.uuQ = null;
+    this.vxq.clear();
+    this.vxt = null;
     AppMethodBeat.o(65611);
   }
   
-  public final boolean dac()
+  public final boolean djp()
   {
     AppMethodBeat.i(65612);
-    this.uuP = false;
-    this.uuO = false;
+    this.vxs = false;
+    this.vxr = false;
     int i = 0;
-    if (i < this.uuN.size())
+    if (i < this.vxq.size())
     {
-      c localc = (c)this.uuN.get(i);
-      int j = localc.cYE();
+      c localc = (c)this.vxq.get(i);
+      int j = localc.dhQ();
       if (j != 0)
       {
         localc.onError();
-        akp(localc.HD(j));
-        this.uuP = true;
+        apc(localc.IZ(j));
+        this.vxs = true;
       }
       for (;;)
       {
@@ -98,23 +98,23 @@ public final class b
         localc.restore();
       }
     }
-    if ((!this.uuP) && (this.uuQ != null))
+    if ((!this.vxs) && (this.vxt != null))
     {
-      this.uuQ.setVisibility(8);
-      this.uuO = false;
+      this.vxt.setVisibility(8);
+      this.vxr = false;
     }
-    boolean bool = this.uuP;
+    boolean bool = this.vxs;
     AppMethodBeat.o(65612);
     return bool;
   }
   
-  public final boolean dad()
+  public final boolean djq()
   {
     AppMethodBeat.i(65613);
     int i = 0;
-    while (i < this.uuN.size())
+    while (i < this.vxq.size())
     {
-      if (((c)this.uuN.get(i)).cYE() != 0)
+      if (((c)this.vxq.get(i)).dhQ() != 0)
       {
         AppMethodBeat.o(65613);
         return true;
@@ -128,7 +128,7 @@ public final class b
   public final void n(TextView paramTextView)
   {
     if (paramTextView != null) {
-      this.uuQ = paramTextView;
+      this.vxt = paramTextView;
     }
   }
 }

@@ -1,35 +1,35 @@
 package com.tencent.magicbrush;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.n;
-import d.g.b.w;
+import d.g.b.t;
+import d.g.b.z;
 import d.l;
 import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(fNY={1, 1, 13})
+@l(gfx={1, 1, 13})
 final class k
-  extends n
+  extends t
 {
-  public static final h cnf;
+  public static final h cxK;
   
   static
   {
     AppMethodBeat.i(140112);
-    cnf = new k();
+    cxK = new k();
     AppMethodBeat.o(140112);
   }
   
-  public final String FZ()
+  public final String Hu()
   {
     return "getScreen_width_()I";
   }
   
-  public final d Ga()
+  public final d Hv()
   {
     AppMethodBeat.i(140113);
-    b localb = w.bn(MBRuntime.MBParams.class);
+    b localb = z.bp(MBRuntime.MBParams.class);
     AppMethodBeat.o(140113);
     return localb;
   }
@@ -56,7 +56,7 @@ final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,129 +1,94 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import com.tencent.luggage.k.a.c.c;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.c.c.a;
 import com.tencent.mm.plugin.webview.c.d;
-import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.widget.MMWebView;
-import d.g.b.k;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.g;
+import d.g.b.p;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONObject;
-import org.xwalk.core.XWalkEnvironment;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleVideoAction;", "Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/BasePluginJsApi;", "()V", "TAG", "", "actionInsertSameLayerVideo", "actionOperateSameLayerVideo", "actionRemoveSameLayerVideo", "actionUpdateSameLayerVideo", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "getPluginType", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetLocalImgData;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class h
   extends a
 {
-  private static final int CHh = 371;
-  public static final h CLH;
-  private static final String dxZ = "handleVideoAction";
+  private static final int EkT = 249;
+  public static final h Epu;
+  private static final String dKm = "getLocalImgData";
   
   static
   {
-    AppMethodBeat.i(189505);
-    CLH = new h();
-    CHh = 371;
-    dxZ = "handleVideoAction";
-    AppMethodBeat.o(189505);
+    AppMethodBeat.i(207641);
+    Epu = new h();
+    EkT = 249;
+    dKm = "getLocalImgData";
+    AppMethodBeat.o(207641);
   }
   
   public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
   {
-    boolean bool = false;
-    AppMethodBeat.i(189504);
-    k.h(paramd, "env");
-    k.h(paraml, "msg");
-    Object localObject1 = (String)paraml.vUl.get("action");
-    ac.i("MicroMsg.JsApiHandleVideoAction", "HandleVideoAction action=%s", new Object[] { localObject1 });
-    if (bs.isNullOrNil((String)localObject1))
+    AppMethodBeat.i(207640);
+    p.h(paramd, "env");
+    p.h(paraml, "msg");
+    Object localObject1 = (String)paraml.xaW.get("localId");
+    if (bt.isNullOrNil((String)localObject1))
     {
-      paramd.Cjq.j(paraml.Ckt, paraml.kCH + ":fail action is empty", null);
-      AppMethodBeat.o(189504);
-      return true;
+      paramd.Dyx.i(paraml.DNz, "getLocalImgData:fail_invaild_localid", null);
+      AppMethodBeat.o(207640);
+      return false;
     }
-    if ((k.g("insertSameLayerVideo", localObject1)) || (k.g("updateSameLayerVideo", localObject1)) || (k.g("operateSameLayerVideo", localObject1)) || (k.g("removeSameLayerVideo", localObject1)))
+    try
     {
-      if (!x.eQs())
+      Object localObject2 = paramd.lvv;
+      if (localObject2 != null) {}
+      for (localObject1 = ((e)localObject2).fM((String)localObject1, 2); localObject1 != null; localObject1 = null)
       {
-        ac.e("MicroMsg.JsApiHandleVideoAction", "handleVideoAction not useSameLayerForVideo");
-        paramd.Cjq.j(paraml.Ckt, paraml.kCH + ":fail not support", null);
-        AppMethodBeat.o(189504);
+        localObject1 = g.decodeFile((String)localObject1);
+        if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {
+          break;
+        }
+        localObject2 = new ByteArrayOutputStream();
+        ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, 90, (OutputStream)localObject2);
+        Object localObject3 = ((ByteArrayOutputStream)localObject2).toByteArray();
+        localObject2 = Base64.encodeToString((byte[])localObject3, 0);
+        ad.i("MicroMsg.JsApiGetLocalImgData", "rawData lenght = %d, base64 lenght = %d", new Object[] { Integer.valueOf(localObject3.length), Integer.valueOf(((String)localObject2).length()) });
+        localObject3 = new HashMap();
+        Map localMap = (Map)localObject3;
+        p.g(localObject2, "base64Content");
+        localMap.put("localData", localObject2);
+        paramd.Dyx.i(paraml.DNz, "getLocalImgData:ok", (Map)localObject3);
+        ad.i("MicroMsg.JsApiGetLocalImgData", "bitmap recycle %s", new Object[] { ((Bitmap)localObject1).toString() });
+        ((Bitmap)localObject1).recycle();
+        AppMethodBeat.o(207640);
         return true;
       }
-      k.h(paramd, "env");
-      k.h(paraml, "msg");
-      Object localObject2 = paraml.Cku;
-      if ((localObject2 == null) || (!((JSONObject)localObject2).has("viewId")))
-      {
-        ac.w(this.TAG, "no viewId in data");
-        paramd.Cjq.j(paraml.Ckt, paraml.kCH + "fail:no viewId in data", null);
-      }
-      for (;;)
-      {
-        if ((k.g("removeSameLayerVideo", localObject1)) && (paraml.Cku != null) && (paraml.Cku.has("viewId")))
-        {
-          paramd = a(paramd);
-          if (paramd != null) {
-            paramd.m("video", paraml.Cku.optInt("viewId"));
-          }
-        }
-        AppMethodBeat.o(189504);
-        return bool;
-        c localc = a.a(paramd);
-        if (localc == null)
-        {
-          ac.w(this.TAG, "webview has no plugin client");
-          paramd.Cjq.j(paraml.Ckt, paraml.kCH + "fail:webview has no plugin client", null);
-        }
-        else
-        {
-          int i = ((JSONObject)localObject2).optInt("viewId");
-          localObject2 = new com.tencent.mm.plugin.webview.ui.tools.c.a.f(paramd, paraml);
-          localc.a(bcT(), i, (com.tencent.luggage.k.a.a)localObject2);
-          bool = true;
-        }
-      }
+      return false;
     }
-    if (k.g("supportIFrameSameLayer", localObject1))
+    catch (Exception localException)
     {
-      localObject1 = paramd.Cjr;
-      if (localObject1 != null)
-      {
-        localObject1 = Boolean.valueOf(((MMWebView)localObject1).isXWalkKernel());
-        if ((!((Boolean)localObject1).booleanValue()) || (!XWalkEnvironment.isCurrentVersionSupportNativeView())) {
-          break label526;
-        }
-        paramd.Cjq.j(paraml.Ckt, paraml.kCH + ":ok", null);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(189504);
-        return true;
-        localObject1 = null;
-        break;
-        label526:
-        paramd.Cjq.j(paraml.Ckt, paraml.kCH + ":fail", null);
-      }
+      ad.e("MicroMsg.JsApiGetLocalImgData", localException.getMessage());
+      paramd.Dyx.i(paraml.DNz, "getLocalImgData:fail", null);
+      AppMethodBeat.o(207640);
     }
-    AppMethodBeat.o(189504);
-    return false;
   }
   
-  public final String bcT()
+  public final int eOL()
   {
-    return "video";
+    return EkT;
   }
   
-  public final int ezX()
+  public final String eOM()
   {
-    return CHh;
-  }
-  
-  public final String ezY()
-  {
-    return dxZ;
+    return dKm;
   }
 }
 

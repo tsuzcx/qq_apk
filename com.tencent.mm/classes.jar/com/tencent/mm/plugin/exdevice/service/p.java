@@ -9,9 +9,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface p
   extends IInterface
 {
-  public abstract o chn();
+  public abstract o clR();
   
-  public abstract l cho();
+  public abstract l clS();
   
   public static abstract class a
     extends Binder
@@ -52,7 +52,7 @@ public abstract interface p
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTask_AIDL");
-        localo = chn();
+        localo = clR();
         paramParcel2.writeNoException();
         paramParcel1 = locall;
         if (localo != null) {
@@ -62,7 +62,7 @@ public abstract interface p
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTask_AIDL");
-      locall = cho();
+      locall = clS();
       paramParcel2.writeNoException();
       paramParcel1 = localo;
       if (locall != null) {
@@ -87,7 +87,7 @@ public abstract interface p
         return this.mRemote;
       }
       
-      public final o chn()
+      public final o clR()
       {
         AppMethodBeat.i(23689);
         Parcel localParcel1 = Parcel.obtain();
@@ -108,7 +108,7 @@ public abstract interface p
         }
       }
       
-      public final l cho()
+      public final l clS()
       {
         AppMethodBeat.i(23690);
         Parcel localParcel1 = Parcel.obtain();
@@ -133,7 +133,7 @@ public abstract interface p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.p
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ public abstract class g$c
 {
   public void a(g.d paramd) {}
   
-  public void aSu() {}
+  public void aVG() {}
   
   public void onCreate() {}
   
@@ -14,7 +14,7 @@ public abstract class g$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c
  * JD-Core Version:    0.7.0.1
  */

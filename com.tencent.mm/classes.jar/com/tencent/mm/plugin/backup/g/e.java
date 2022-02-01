@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.backup.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.backup.b.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.avq;
-import com.tencent.mm.protocal.protobuf.avr;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.azo;
+import com.tencent.mm.protocal.protobuf.azp;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class e
   extends n
   implements k
 {
-  private g callback;
-  private final com.tencent.mm.ak.b rr;
+  private f callback;
+  private final com.tencent.mm.al.b rr;
   
   public e(String paramString)
   {
     AppMethodBeat.i(21717);
-    ac.i("MicroMsg.NetSceneGetConnectInfo", "BackupGetConnectInfoNetScene init, url[%s], stack[%s]", new Object[] { paramString, bs.eWi() });
+    ad.i("MicroMsg.NetSceneGetConnectInfo", "BackupGetConnectInfoNetScene init, url[%s], stack[%s]", new Object[] { paramString, bt.flS() });
     b.a locala = new b.a();
-    locala.hvt = new avq();
-    locala.hvu = new avr();
+    locala.hNM = new azo();
+    locala.hNN = new azp();
     locala.uri = "/cgi-bin/micromsg-bin/getconnectinfo";
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
     locala.funcId = 595;
-    this.rr = locala.aAz();
-    ((avq)this.rr.hvr.hvw).URL = paramString;
+    this.rr = locala.aDC();
+    ((azo)this.rr.hNK.hNQ).URL = paramString;
     AppMethodBeat.o(21717);
   }
   
-  public final avr bEI()
+  public final azp bIR()
   {
-    return (avr)this.rr.hvs.hvw;
+    return (azp)this.rr.hNL.hNQ;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(21718);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(21718);
     return i;
@@ -60,13 +60,13 @@ public final class e
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21719);
-    ac.i("MicroMsg.NetSceneGetConnectInfo", "onGYNetEnd errType[%d], errCode[%d]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ad.i("MicroMsg.NetSceneGetConnectInfo", "onGYNetEnd errType[%d], errCode[%d]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = bEI();
-      d.aB(paramq.DUt.getBuffer().xy);
-      ac.i("MicroMsg.NetSceneGetConnectInfo", "onGYNetEnd id[%s], hello[%s], ok[%s], PCName[%s], PCAcctName[%s], scene[%d], resource[%s]", new Object[] { paramq.ID, paramq.DVl, paramq.DVm, paramq.DVe, paramq.DVf, Integer.valueOf(paramq.Scene), paramq.ENI });
-      paramq.DUt.getBuffer();
+      paramq = bIR();
+      d.aB(paramq.FzN.getBuffer().zr);
+      ad.i("MicroMsg.NetSceneGetConnectInfo", "onGYNetEnd id[%s], hello[%s], ok[%s], PCName[%s], PCAcctName[%s], scene[%d], resource[%s]", new Object[] { paramq.ID, paramq.FAG, paramq.FAH, paramq.FAz, paramq.FAA, Integer.valueOf(paramq.Scene), paramq.GwM });
+      paramq.FzN.getBuffer();
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(21719);
@@ -74,7 +74,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.g.e
  * JD-Core Version:    0.7.0.1
  */

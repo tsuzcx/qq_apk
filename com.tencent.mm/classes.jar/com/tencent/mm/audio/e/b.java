@@ -1,7 +1,7 @@
 package com.tencent.mm.audio.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -10,8 +10,8 @@ import java.nio.ByteOrder;
 
 public final class b
 {
-  private OutputStream cXG;
-  private int cXH;
+  private OutputStream diY;
+  private int diZ;
   public String mFilePath;
   
   public b(String paramString, int paramInt1, int paramInt2)
@@ -20,7 +20,7 @@ public final class b
     this.mFilePath = paramString;
     try
     {
-      this.cXG = i.cS(paramString, false);
+      this.diY = i.cX(paramString, false);
       paramString = ByteBuffer.allocate(44);
       paramString.order(ByteOrder.LITTLE_ENDIAN);
       paramString.putInt(1179011410);
@@ -36,14 +36,14 @@ public final class b
       paramString.putShort((short)16);
       paramString.putInt(1635017060);
       paramString.putInt(0);
-      this.cXH = 44;
-      this.cXG.write(paramString.array());
+      this.diZ = 44;
+      this.diY.write(paramString.array());
       AppMethodBeat.o(130011);
       return;
     }
     catch (IOException paramString)
     {
-      ac.e("MicroMsg.PcmWriter", "create file failed: " + paramString.getMessage());
+      ad.e("MicroMsg.PcmWriter", "create file failed: " + paramString.getMessage());
       AppMethodBeat.o(130011);
     }
   }
@@ -55,7 +55,7 @@ public final class b
     //   0: ldc 107
     //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 34	com/tencent/mm/audio/e/b:cXG	Ljava/io/OutputStream;
+    //   6: getfield 34	com/tencent/mm/audio/e/b:diY	Ljava/io/OutputStream;
     //   9: invokevirtual 110	java/io/OutputStream:close	()V
     //   12: aconst_null
     //   13: astore_3
@@ -66,7 +66,7 @@ public final class b
     //   18: aload_0
     //   19: getfield 26	com/tencent/mm/audio/e/b:mFilePath	Ljava/lang/String;
     //   22: iconst_1
-    //   23: invokestatic 114	com/tencent/mm/vfs/i:cY	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   23: invokestatic 114	com/tencent/mm/vfs/i:dd	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   26: astore 4
     //   28: aload 4
     //   30: astore_2
@@ -104,7 +104,7 @@ public final class b
     //   86: astore_1
     //   87: aload 5
     //   89: aload_0
-    //   90: getfield 63	com/tencent/mm/audio/e/b:cXH	I
+    //   90: getfield 63	com/tencent/mm/audio/e/b:diZ	I
     //   93: bipush 8
     //   95: isub
     //   96: invokevirtual 54	java/nio/ByteBuffer:putInt	(I)Ljava/nio/ByteBuffer;
@@ -136,7 +136,7 @@ public final class b
     //   142: astore_1
     //   143: aload 5
     //   145: aload_0
-    //   146: getfield 63	com/tencent/mm/audio/e/b:cXH	I
+    //   146: getfield 63	com/tencent/mm/audio/e/b:diZ	I
     //   149: bipush 42
     //   151: isub
     //   152: invokevirtual 54	java/nio/ByteBuffer:putInt	(I)Ljava/nio/ByteBuffer;
@@ -177,7 +177,7 @@ public final class b
     //   221: invokevirtual 89	java/io/IOException:getMessage	()Ljava/lang/String;
     //   224: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   227: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   230: invokestatic 102	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   230: invokestatic 102	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   233: goto -221 -> 12
     //   236: astore_1
     //   237: ldc 78
@@ -185,7 +185,7 @@ public final class b
     //   240: ldc 134
     //   242: iconst_0
     //   243: anewarray 4	java/lang/Object
-    //   246: invokestatic 138	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   246: invokestatic 138	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   249: ldc 107
     //   251: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   254: return
@@ -197,7 +197,7 @@ public final class b
     //   261: ldc 134
     //   263: iconst_0
     //   264: anewarray 4	java/lang/Object
-    //   267: invokestatic 138	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   267: invokestatic 138	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   270: aload_2
     //   271: ifnull +112 -> 383
     //   274: aload_2
@@ -211,7 +211,7 @@ public final class b
     //   288: ldc 134
     //   290: iconst_0
     //   291: anewarray 4	java/lang/Object
-    //   294: invokestatic 138	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   294: invokestatic 138	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   297: ldc 107
     //   299: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   302: return
@@ -223,7 +223,7 @@ public final class b
     //   309: ldc 134
     //   311: iconst_0
     //   312: anewarray 4	java/lang/Object
-    //   315: invokestatic 138	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   315: invokestatic 138	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   318: aload_3
     //   319: ifnull +64 -> 383
     //   322: aload_3
@@ -237,7 +237,7 @@ public final class b
     //   336: ldc 134
     //   338: iconst_0
     //   339: anewarray 4	java/lang/Object
-    //   342: invokestatic 138	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   342: invokestatic 138	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   345: ldc 107
     //   347: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   350: return
@@ -256,7 +256,7 @@ public final class b
     //   371: ldc 134
     //   373: iconst_0
     //   374: anewarray 4	java/lang/Object
-    //   377: invokestatic 138	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   377: invokestatic 138	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   380: goto -20 -> 360
     //   383: ldc 107
     //   385: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -323,21 +323,21 @@ public final class b
   public final boolean y(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(130012);
-    if (this.cXG == null)
+    if (this.diY == null)
     {
       AppMethodBeat.o(130012);
       return false;
     }
     try
     {
-      this.cXG.write(paramArrayOfByte, 0, paramInt);
-      this.cXH += paramInt;
+      this.diY.write(paramArrayOfByte, 0, paramInt);
+      this.diZ += paramInt;
       AppMethodBeat.o(130012);
       return true;
     }
     catch (Exception paramArrayOfByte)
     {
-      ac.e("MicroMsg.PcmWriter", "write to file failed: " + paramArrayOfByte.getMessage());
+      ad.e("MicroMsg.PcmWriter", "write to file failed: " + paramArrayOfByte.getMessage());
       AppMethodBeat.o(130012);
     }
     return false;
@@ -345,7 +345,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.e.b
  * JD-Core Version:    0.7.0.1
  */

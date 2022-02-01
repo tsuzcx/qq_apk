@@ -14,7 +14,7 @@ public abstract class j<T>
         localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = ou();
+          localObject1 = oM();
           this.mInstance = localObject1;
         }
         return localObject1;
@@ -24,7 +24,7 @@ public abstract class j<T>
     return ?;
   }
   
-  protected abstract T ou();
+  protected abstract T oM();
 }
 
 

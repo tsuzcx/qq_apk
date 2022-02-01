@@ -5,18 +5,18 @@ import java.io.OutputStream;
 public abstract class a
   implements q
 {
-  protected int LzG = 0;
+  protected int NqD = 0;
   
   public final void d(OutputStream paramOutputStream)
   {
     int i = 4096;
-    int k = xS();
-    int j = f.fM(k) + k;
+    int k = zp();
+    int j = f.fP(k) + k;
     if (j > 4096) {}
     for (;;)
     {
       paramOutputStream = f.f(paramOutputStream, i);
-      paramOutputStream.fL(k);
+      paramOutputStream.fO(k);
       a(paramOutputStream);
       paramOutputStream.flush();
       return;
@@ -29,7 +29,7 @@ public abstract class a
   {
     public abstract BuilderType c(e parame, g paramg);
     
-    public abstract BuilderType fVc();
+    public abstract BuilderType gmB();
   }
 }
 

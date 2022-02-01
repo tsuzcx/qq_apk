@@ -3,11 +3,11 @@ package com.tencent.mm.platformtools;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.memory.a.c;
-import com.tencent.mm.protocal.protobuf.btv;
-import com.tencent.mm.protocal.protobuf.btw;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.byj;
+import com.tencent.mm.protocal.protobuf.byk;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -15,26 +15,26 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/platformtools/MediaExportLogic;", "", "()V", "MaxCacheSize", "", "TAG", "", "cacheMap", "Lcom/tencent/mm/memory/cache/DefaultResource;", "Lcom/tencent/mm/protocal/protobuf/MediaExportInfo;", "cachePath", "getExportUUID", "md5", "readFromCache", "", "saveExportUUID", "uuid", "saveToCache", "plugin-comm_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/platformtools/MediaExportLogic;", "", "()V", "MaxCacheSize", "", "TAG", "", "cacheMap", "Lcom/tencent/mm/memory/cache/DefaultResource;", "Lcom/tencent/mm/protocal/protobuf/MediaExportInfo;", "cachePath", "getExportUUID", "md5", "readFromCache", "", "saveExportUUID", "uuid", "saveToCache", "plugin-comm_release"})
 public final class v
 {
   private static final String TAG = "MicroMsg.MediaExportLogic";
   private static final String cachePath;
-  private static final c<String, btw> iuF;
-  public static final v iuG;
+  private static final c<String, byk> iNI;
+  public static final v iNJ;
   
   static
   {
     AppMethodBeat.i(169179);
-    iuG = new v();
+    iNJ = new v();
     TAG = "MicroMsg.MediaExportLogic";
-    cachePath = b.aoZ() + "media_export.proto";
-    iuF = new c(500);
-    aNv();
+    cachePath = b.arM() + "media_export.proto";
+    iNI = new c(500);
+    aQG();
     AppMethodBeat.o(169179);
   }
   
-  public static String FG(String paramString)
+  public static String IV(String paramString)
   {
     AppMethodBeat.i(169178);
     if (paramString == null)
@@ -42,24 +42,24 @@ public final class v
       AppMethodBeat.o(169178);
       return null;
     }
-    Object localObject = (btw)iuF.get(paramString);
+    Object localObject = (byk)iNI.get(paramString);
     if (localObject != null) {}
-    for (localObject = ((btw)localObject).uuid;; localObject = null)
+    for (localObject = ((byk)localObject).uuid;; localObject = null)
     {
-      aNw();
-      ac.i(TAG, "getExportUUID " + paramString + ", " + (String)localObject);
+      aQH();
+      ad.i(TAG, "getExportUUID " + paramString + ", " + (String)localObject);
       AppMethodBeat.o(169178);
       return localObject;
     }
   }
   
-  private static void aNv()
+  private static void aQG()
   {
     int j = 1;
     AppMethodBeat.i(169175);
-    ac.i(TAG, "readFromCache");
-    Object localObject1 = i.aU(cachePath, 0, -1);
-    iuF.clear();
+    ad.i(TAG, "readFromCache");
+    Object localObject1 = i.aY(cachePath, 0, -1);
+    iNI.clear();
     if (localObject1 != null)
     {
       if (localObject1.length != 0) {
@@ -77,21 +77,21 @@ public final class v
       if (i != 0) {
         try
         {
-          Object localObject2 = new btv();
-          ((btv)localObject2).parseFrom((byte[])localObject1);
-          localObject1 = ((btv)localObject2).Fjd;
-          k.g(localObject1, "cache.exportInfoList");
+          Object localObject2 = new byj();
+          ((byj)localObject2).parseFrom((byte[])localObject1);
+          localObject1 = ((byj)localObject2).GSE;
+          p.g(localObject1, "cache.exportInfoList");
           localObject1 = ((Iterable)localObject1).iterator();
           while (((Iterator)localObject1).hasNext())
           {
-            localObject2 = (btw)((Iterator)localObject1).next();
-            iuF.put(((btw)localObject2).md5, localObject2);
+            localObject2 = (byk)((Iterator)localObject1).next();
+            iNI.put(((byk)localObject2).md5, localObject2);
           }
           AppMethodBeat.o(169175);
         }
         catch (Exception localException)
         {
-          ac.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
+          ad.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
           i.deleteFile(cachePath);
         }
       }
@@ -102,51 +102,51 @@ public final class v
     AppMethodBeat.o(169175);
   }
   
-  private static void aNw()
+  private static void aQH()
   {
     AppMethodBeat.i(169176);
-    Object localObject2 = iuF.snapshot();
-    ac.i(TAG, "saveToCache " + ((Map)localObject2).size());
-    Object localObject1 = new btv();
-    k.g(localObject2, "snapShot");
+    Object localObject2 = iNI.snapshot();
+    ad.i(TAG, "saveToCache " + ((Map)localObject2).size());
+    Object localObject1 = new byj();
+    p.g(localObject2, "snapShot");
     localObject2 = ((Map)localObject2).entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-      ((btv)localObject1).Fjd.add(localEntry.getValue());
+      ((byj)localObject1).GSE.add(localEntry.getValue());
     }
     try
     {
-      localObject1 = ((btv)localObject1).toByteArray();
-      i.B(cachePath, (byte[])localObject1);
+      localObject1 = ((byj)localObject1).toByteArray();
+      i.C(cachePath, (byte[])localObject1);
       AppMethodBeat.o(169176);
       return;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
+      ad.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
       AppMethodBeat.o(169176);
     }
   }
   
-  public static void bF(String paramString1, String paramString2)
+  public static void bH(String paramString1, String paramString2)
   {
     AppMethodBeat.i(169177);
     if ((paramString1 != null) && (paramString2 != null))
     {
-      btw localbtw = new btw();
-      localbtw.md5 = paramString1;
-      localbtw.uuid = paramString2;
-      iuF.put(paramString1, localbtw);
-      aNw();
+      byk localbyk = new byk();
+      localbyk.md5 = paramString1;
+      localbyk.uuid = paramString2;
+      iNI.put(paramString1, localbyk);
+      aQH();
     }
-    ac.i(TAG, "saveExportUUID " + paramString1 + ", " + paramString2);
+    ad.i(TAG, "saveExportUUID " + paramString1 + ", " + paramString2);
     AppMethodBeat.o(169177);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.platformtools.v
  * JD-Core Version:    0.7.0.1
  */

@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.aa.model.i;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.n;
 import com.tencent.mm.ui.contact.q;
@@ -19,29 +19,29 @@ public final class e
   extends q
 {
   private String chatroomName;
-  private List<String> iCx;
+  private List<String> iVH;
   
   public e(n paramn, String paramString)
   {
     super(paramn, null, true, true);
     AppMethodBeat.i(63553);
     this.chatroomName = paramString;
-    WN();
+    Zh();
     AppMethodBeat.o(63553);
   }
   
-  private void aOo()
+  private void aRA()
   {
-    AppMethodBeat.i(207003);
+    AppMethodBeat.i(198907);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    if ((this.iCx != null) && (this.iCx.size() > 0))
+    if ((this.iVH != null) && (this.iVH.size() > 0))
     {
-      Iterator localIterator = this.iCx.iterator();
+      Iterator localIterator = this.iVH.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        if (ai.aNc(str)) {
+        if (am.aSQ(str)) {
           localArrayList1.add(str);
         } else {
           localArrayList2.add(str);
@@ -49,21 +49,21 @@ public final class e
       }
       if (localArrayList1.size() > 0)
       {
-        this.iCx.clear();
-        this.iCx.addAll(localArrayList2);
-        this.iCx.addAll(localArrayList1);
+        this.iVH.clear();
+        this.iVH.addAll(localArrayList2);
+        this.iVH.addAll(localArrayList1);
       }
     }
-    AppMethodBeat.o(207003);
+    AppMethodBeat.o(198907);
   }
   
-  public final void WN()
+  public final void Zh()
   {
     AppMethodBeat.i(63554);
-    ac.i("MicroMsg.AASelectInitAdapter", "resetData");
-    this.iCx = i.FO(this.chatroomName);
-    if (w.wr(this.chatroomName)) {
-      aOo();
+    ad.i("MicroMsg.AASelectInitAdapter", "resetData");
+    this.iVH = i.Jd(this.chatroomName);
+    if (w.zm(this.chatroomName)) {
+      aRA();
     }
     AppMethodBeat.o(63554);
   }
@@ -71,21 +71,21 @@ public final class e
   public final int getCount()
   {
     AppMethodBeat.i(63556);
-    int i = this.iCx.size();
+    int i = this.iVH.size();
     AppMethodBeat.o(63556);
     return i;
   }
   
-  public final a qH(int paramInt)
+  public final a rh(int paramInt)
   {
     AppMethodBeat.i(63555);
-    Object localObject = (String)this.iCx.get(paramInt);
-    g.agS();
-    localObject = ((k)g.ab(k.class)).awB().aNt((String)localObject);
+    Object localObject = (String)this.iVH.get(paramInt);
+    g.ajD();
+    localObject = ((l)g.ab(l.class)).azp().Bf((String)localObject);
     c localc = new c(paramInt);
-    localc.dby = this.chatroomName;
-    localc.contact = ((ai)localObject);
-    localc.Iwh = true;
+    localc.dmU = this.chatroomName;
+    localc.contact = ((am)localObject);
+    localc.KmP = true;
     AppMethodBeat.o(63555);
     return localc;
   }

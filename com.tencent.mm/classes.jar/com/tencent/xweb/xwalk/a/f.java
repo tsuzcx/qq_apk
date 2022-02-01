@@ -16,16 +16,16 @@ import org.xwalk.core.XWalkEnvironment;
 
 public abstract class f
 {
-  public int KHj = -1;
+  public int MxJ = -1;
   
   public f()
   {
-    fLP();
+    gdk();
   }
   
-  private String agm(int paramInt)
+  private String aiN(int paramInt)
   {
-    Object localObject = agj(paramInt);
+    Object localObject = aiK(paramInt);
     if (((String)localObject).isEmpty())
     {
       Log.e(getPluginName(), "getPatchDir, versionDir is empty");
@@ -44,14 +44,14 @@ public abstract class f
     return str;
   }
   
-  private String cW(int paramInt, String paramString)
+  private String de(int paramInt, String paramString)
   {
     if ((paramString == null) || (paramString.isEmpty()))
     {
       Log.e(getPluginName(), "getPatchFile, fileName is empty");
       return "";
     }
-    String str = agm(paramInt);
+    String str = aiN(paramInt);
     if (str.isEmpty())
     {
       Log.e(getPluginName(), "getPatchFile, patchDir is null");
@@ -62,7 +62,7 @@ public abstract class f
   
   public abstract int a(SchedulerConfig paramSchedulerConfig);
   
-  public final boolean agi(int paramInt)
+  public final boolean aiJ(int paramInt)
   {
     if (XWalkEnvironment.getApplicationContext() == null)
     {
@@ -79,13 +79,13 @@ public abstract class f
     ((SharedPreferences.Editor)localObject).putInt("availableVersion", paramInt);
     boolean bool = ((SharedPreferences.Editor)localObject).commit();
     if (bool) {
-      this.KHj = paramInt;
+      this.MxJ = paramInt;
     }
     Log.i(getPluginName(), "setVer, version = " + paramInt + ", isNow = true, ret = " + bool);
     return bool;
   }
   
-  public final String agj(int paramInt)
+  public final String aiK(int paramInt)
   {
     Object localObject;
     if (XWalkEnvironment.getApplicationContext() == null)
@@ -112,9 +112,9 @@ public abstract class f
     return str;
   }
   
-  public final String agk(int paramInt)
+  public final String aiL(int paramInt)
   {
-    Object localObject = agj(paramInt);
+    Object localObject = aiK(paramInt);
     if ((localObject == null) || (((String)localObject).isEmpty()))
     {
       Log.e(getPluginName(), "getPrivateCacheDir, versionDir is empty");
@@ -133,9 +133,9 @@ public abstract class f
     return str;
   }
   
-  public final String agl(int paramInt)
+  public final String aiM(int paramInt)
   {
-    Object localObject = agj(paramInt);
+    Object localObject = aiK(paramInt);
     if (((String)localObject).isEmpty())
     {
       Log.e(getPluginName(), "getExtractDir, versionDir is empty");
@@ -154,9 +154,9 @@ public abstract class f
     return str;
   }
   
-  public final void agn(int paramInt)
+  public final void aiO(int paramInt)
   {
-    int i = this.KHj;
+    int i = this.MxJ;
     if (i <= 0) {
       Log.e(getPluginName(), "reportUsingVersion, not installed");
     }
@@ -178,7 +178,7 @@ public abstract class f
         {
           j = i % 50 + 100;
           Log.d(getPluginName(), "reportUsingVersion, id:" + paramInt + ", key:" + j);
-          g.r(paramInt, j, 1L);
+          g.t(paramInt, j, 1L);
           localObject = ((SharedPreferences)localObject).edit();
           if (localObject != null)
           {
@@ -222,8 +222,8 @@ public abstract class f
     //   39: aload_1
     //   40: getfield 216	com/tencent/xweb/xwalk/updater/SchedulerConfig:path	Ljava/lang/String;
     //   43: aload_1
-    //   44: getfield 219	com/tencent/xweb/xwalk/updater/SchedulerConfig:KHS	Ljava/lang/String;
-    //   47: invokestatic 225	com/tencent/xweb/util/d:mJ	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   44: getfield 219	com/tencent/xweb/xwalk/updater/SchedulerConfig:Mys	Ljava/lang/String;
+    //   47: invokestatic 225	com/tencent/xweb/util/d:nh	(Ljava/lang/String;Ljava/lang/String;)Z
     //   50: ifne +32 -> 82
     //   53: aload_0
     //   54: invokevirtual 31	com/tencent/xweb/xwalk/a/f:getPluginName	()Ljava/lang/String;
@@ -276,7 +276,7 @@ public abstract class f
     //   168: invokevirtual 279	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   171: astore 7
     //   173: aload_1
-    //   174: getfield 283	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIp	Z
+    //   174: getfield 283	com/tencent/xweb/xwalk/updater/SchedulerConfig:MyT	Z
     //   177: ifeq +62 -> 239
     //   180: new 50	java/io/File
     //   183: dup
@@ -284,7 +284,7 @@ public abstract class f
     //   185: aload_1
     //   186: getfield 213	com/tencent/xweb/xwalk/updater/SchedulerConfig:version	I
     //   189: aload 4
-    //   191: invokespecial 285	com/tencent/xweb/xwalk/a/f:cW	(ILjava/lang/String;)Ljava/lang/String;
+    //   191: invokespecial 285	com/tencent/xweb/xwalk/a/f:de	(ILjava/lang/String;)Ljava/lang/String;
     //   194: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
     //   197: astore 4
     //   199: aload 7
@@ -311,7 +311,7 @@ public abstract class f
     //   244: aload_1
     //   245: getfield 213	com/tencent/xweb/xwalk/updater/SchedulerConfig:version	I
     //   248: aload 4
-    //   250: invokevirtual 293	com/tencent/xweb/xwalk/a/f:cV	(ILjava/lang/String;)Ljava/lang/String;
+    //   250: invokevirtual 293	com/tencent/xweb/xwalk/a/f:dd	(ILjava/lang/String;)Ljava/lang/String;
     //   253: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
     //   256: astore 4
     //   258: goto -59 -> 199
@@ -342,10 +342,10 @@ public abstract class f
     //   313: iconst_0
     //   314: ireturn
     //   315: aload_1
-    //   316: getfield 298	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIx	Z
+    //   316: getfield 298	com/tencent/xweb/xwalk/updater/SchedulerConfig:Mzc	Z
     //   319: ifne +12 -> 331
     //   322: aload_1
-    //   323: getfield 283	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIp	Z
+    //   323: getfield 283	com/tencent/xweb/xwalk/updater/SchedulerConfig:MyT	Z
     //   326: istore_2
     //   327: iload_2
     //   328: ifeq +23 -> 351
@@ -363,7 +363,7 @@ public abstract class f
     //   352: aload_1
     //   353: getfield 213	com/tencent/xweb/xwalk/updater/SchedulerConfig:version	I
     //   356: iconst_0
-    //   357: invokevirtual 302	com/tencent/xweb/xwalk/a/f:bj	(IZ)Z
+    //   357: invokevirtual 302	com/tencent/xweb/xwalk/a/f:br	(IZ)Z
     //   360: ifne +33 -> 393
     //   363: aload_0
     //   364: invokevirtual 31	com/tencent/xweb/xwalk/a/f:getPluginName	()Ljava/lang/String;
@@ -448,10 +448,10 @@ public abstract class f
     //   82	94	450	java/lang/Exception
   }
   
-  public abstract String bi(int paramInt, boolean paramBoolean);
+  public abstract String bq(int paramInt, boolean paramBoolean);
   
   /* Error */
-  public final boolean bj(int paramInt, boolean paramBoolean)
+  public final boolean br(int paramInt, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
@@ -474,7 +474,7 @@ public abstract class f
     //   37: aload_0
     //   38: iload_1
     //   39: ldc_w 319
-    //   42: invokevirtual 293	com/tencent/xweb/xwalk/a/f:cV	(ILjava/lang/String;)Ljava/lang/String;
+    //   42: invokevirtual 293	com/tencent/xweb/xwalk/a/f:dd	(ILjava/lang/String;)Ljava/lang/String;
     //   45: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
     //   48: astore_3
     //   49: aload_3
@@ -561,9 +561,9 @@ public abstract class f
     //   205: aload_0
     //   206: iload_1
     //   207: aload 5
-    //   209: invokevirtual 293	com/tencent/xweb/xwalk/a/f:cV	(ILjava/lang/String;)Ljava/lang/String;
+    //   209: invokevirtual 293	com/tencent/xweb/xwalk/a/f:dd	(ILjava/lang/String;)Ljava/lang/String;
     //   212: aload 6
-    //   214: invokestatic 225	com/tencent/xweb/util/d:mJ	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   214: invokestatic 225	com/tencent/xweb/util/d:nh	(Ljava/lang/String;Ljava/lang/String;)Z
     //   217: ifne -116 -> 101
     //   220: aload 4
     //   222: astore_3
@@ -660,29 +660,29 @@ public abstract class f
   protected final boolean c(SchedulerConfig paramSchedulerConfig)
   {
     Log.i(getPluginName(), "doPatch new version = " + paramSchedulerConfig.version);
-    if (this.KHj < 0)
+    if (this.MxJ < 0)
     {
       Log.e(getPluginName(), "doPatch, current version invalid");
       return false;
     }
-    if (!paramSchedulerConfig.KIp)
+    if (!paramSchedulerConfig.MyT)
     {
       Log.e(getPluginName(), "doPatch, current download config is not patch");
       return false;
     }
-    Object localObject = new File(cW(paramSchedulerConfig.version, "patch.config"));
+    Object localObject = new File(de(paramSchedulerConfig.version, "patch.config"));
     if (!((File)localObject).exists())
     {
       Log.e(getPluginName(), "doPatch, can not find patch config file");
       return false;
     }
-    localObject = h.aj((File)localObject);
+    localObject = h.al((File)localObject);
     if ((localObject == null) || (((List)localObject).size() == 0))
     {
       Log.e(getPluginName(), "doPatch, patchConfigList = null");
       return false;
     }
-    if (!c.mI(agl(this.KHj), agl(paramSchedulerConfig.version)))
+    if (!c.ng(aiM(this.MxJ), aiM(paramSchedulerConfig.version)))
     {
       Log.e(getPluginName(), "doPatch, copy files failed");
       return false;
@@ -698,7 +698,7 @@ public abstract class f
       for (;;)
       {
         if (i != 0) {
-          if (!c.lm(cW(paramSchedulerConfig.version, locala.originalFileName), cV(paramSchedulerConfig.version, locala.originalFileName)))
+          if (!c.lL(de(paramSchedulerConfig.version, locala.originalFileName), dd(paramSchedulerConfig.version, locala.originalFileName)))
           {
             Log.e(getPluginName(), "doPatch, add file error: ".concat(String.valueOf(locala)));
             return false;
@@ -718,7 +718,7 @@ public abstract class f
       {
         if (i != 0)
         {
-          if (!c.deleteFile(cV(paramSchedulerConfig.version, locala.originalFileName)))
+          if (!c.deleteFile(dd(paramSchedulerConfig.version, locala.originalFileName)))
           {
             Log.e(getPluginName(), "doPatch, delete file error:".concat(String.valueOf(locala)));
             break;
@@ -735,7 +735,7 @@ public abstract class f
       for (;;)
       {
         if (i != 0) {
-          if (BSpatch.bd(cV(paramSchedulerConfig.version, locala.originalFileName), cW(paramSchedulerConfig.version, locala.patchFileName), cV(paramSchedulerConfig.version, locala.originalFileName)) < 0)
+          if (BSpatch.bm(dd(paramSchedulerConfig.version, locala.originalFileName), de(paramSchedulerConfig.version, locala.patchFileName), dd(paramSchedulerConfig.version, locala.originalFileName)) < 0)
           {
             Log.e(getPluginName(), "doPatch, patch file error:".concat(String.valueOf(locala)));
             return false;
@@ -751,32 +751,32 @@ public abstract class f
       Log.e(getPluginName(), "doPatch, unknown op".concat(String.valueOf(locala)));
       return false;
     }
-    c.deleteFile(cV(paramSchedulerConfig.version, "filelist.config"));
-    if (!c.lm(cW(paramSchedulerConfig.version, "filelist.config"), cV(paramSchedulerConfig.version, "filelist.config")))
+    c.deleteFile(dd(paramSchedulerConfig.version, "filelist.config"));
+    if (!c.lL(de(paramSchedulerConfig.version, "filelist.config"), dd(paramSchedulerConfig.version, "filelist.config")))
     {
       Log.e(getPluginName(), "doPatch, copy filelist.config error");
       return false;
     }
-    if (!bj(paramSchedulerConfig.version, false))
+    if (!br(paramSchedulerConfig.version, false))
     {
       Log.e(getPluginName(), "doPatch, check md5 failed");
       return false;
     }
-    paramSchedulerConfig = agm(paramSchedulerConfig.version);
+    paramSchedulerConfig = aiN(paramSchedulerConfig.version);
     if (!paramSchedulerConfig.isEmpty()) {
-      c.aVj(paramSchedulerConfig);
+      c.bbn(paramSchedulerConfig);
     }
     return true;
   }
   
-  public final String cV(int paramInt, String paramString)
+  public final String dd(int paramInt, String paramString)
   {
     if ((paramString == null) || (paramString.isEmpty()))
     {
       Log.e(getPluginName(), "getExtractFile, fileName is empty");
       return "";
     }
-    String str = agl(paramInt);
+    String str = aiM(paramInt);
     if (str.isEmpty())
     {
       Log.e(getPluginName(), "getExtractFile, extractDir is empty");
@@ -785,11 +785,11 @@ public abstract class f
     return str + File.separator + paramString;
   }
   
-  public abstract boolean fLN();
+  public abstract boolean gdi();
   
-  public abstract void fLO();
+  public abstract void gdj();
   
-  public final void fLP()
+  public final void gdk()
   {
     if (XWalkEnvironment.getApplicationContext() == null)
     {
@@ -802,8 +802,8 @@ public abstract class f
       Log.e(getPluginName(), "loadVer, sp is null");
       return;
     }
-    this.KHj = localSharedPreferences.getInt("availableVersion", -1);
-    Log.i(getPluginName(), "loadVer, version = " + this.KHj);
+    this.MxJ = localSharedPreferences.getInt("availableVersion", -1);
+    Log.i(getPluginName(), "loadVer, version = " + this.MxJ);
   }
   
   public abstract String getPluginName();

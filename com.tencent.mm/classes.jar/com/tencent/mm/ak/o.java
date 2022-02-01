@@ -1,54 +1,114 @@
 package com.tencent.mm.ak;
 
-import com.tencent.mm.model.ba;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bkh;
-import com.tencent.mm.protocal.protobuf.bxl;
-import com.tencent.mm.protocal.protobuf.oq;
-import com.tencent.mm.sdk.platformtools.ac;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.storagebase.h;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class o
-  extends n
-  implements k
+public final class o
 {
-  protected int hwd = 3;
-  private boolean hwe = false;
+  private static List<String> hNl;
+  private static int hNm;
+  private static a hNn;
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString, q paramq);
-  
-  public abstract void aBH();
-  
-  public abstract g aBI();
-  
-  public abstract oq b(q paramq);
-  
-  public abstract bxl c(q paramq);
-  
-  public abstract bkh d(q paramq);
-  
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  static
   {
-    if ((paramInt2 == 4) && (paramInt3 == -301))
+    AppMethodBeat.i(150317);
+    hNl = null;
+    hNm = 0;
+    hNn = new a(new b());
+    AppMethodBeat.o(150317);
+  }
+  
+  public static void F(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(150315);
+    if (!g.ajA().aiK())
     {
-      ac.i("MicroMsg.NetSceneIDCRedirectBase", "alvinluo NetScene pre process MM_ERR_IDC_REDIRECT redirectCount: %d", new Object[] { Integer.valueOf(this.hwd) });
-      if (paramq != null)
-      {
-        ac.i("MicroMsg.NetSceneIDCRedirectBase", "update idc info");
-        ba.a(true, b(paramq), c(paramq), d(paramq));
-      }
-      this.hwd -= 1;
-      if (this.hwd <= 0)
-      {
-        aBH();
-        this.hwe = false;
-        return;
-      }
-      ac.d("MicroMsg.NetSceneIDCRedirectBase", "redirect IDC");
-      doScene(dispatcher(), aBI());
+      AppMethodBeat.o(150315);
       return;
     }
-    a(paramInt2, paramInt3, paramString, paramq);
+    Object localObject = p.aEx();
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((j)localObject).hHS.a("select username from img_flag where username not in (select username from rcontact ) and username not like \"%@qqim\" and username not like \"%@bottle\";", null, 2);
+    while (((Cursor)localObject).moveToNext()) {
+      localArrayList.add(((Cursor)localObject).getString(0));
+    }
+    ((Cursor)localObject).close();
+    hNl = localArrayList;
+    if (localArrayList.size() <= 0)
+    {
+      AppMethodBeat.o(150315);
+      return;
+    }
+    hNn.hNo.hNp = paramRunnable;
+    hNn.az(10L, 10L);
+    AppMethodBeat.o(150315);
+  }
+  
+  public static void aEu()
+  {
+    AppMethodBeat.i(150316);
+    hNm = 0;
+    hNn.stopTimer();
+    AppMethodBeat.o(150316);
+  }
+  
+  static final class a
+    extends av
+  {
+    final o.b hNo;
+    
+    public a(o.b paramb)
+    {
+      super(true);
+      this.hNo = paramb;
+    }
+  }
+  
+  static final class b
+    implements av.a
+  {
+    Runnable hNp;
+    
+    public final boolean onTimerExpired()
+    {
+      AppMethodBeat.i(150314);
+      int j = o.hNl.size();
+      ad.e("MicroMsg.RemoveAvatarTask", "RemoveOldAvatar left count:".concat(String.valueOf(j)));
+      if ((j <= 2000) || (o.hNm >= 300))
+      {
+        if (this.hNp != null) {
+          this.hNp.run();
+        }
+        o.aEv();
+        AppMethodBeat.o(150314);
+        return false;
+      }
+      long l = g.ajC().gBq.xO(Thread.currentThread().getId());
+      int i = j - 1;
+      while (i >= j - 30)
+      {
+        o.Qf();
+        String str = (String)o.hNl.get(i);
+        o.hNl.remove(i);
+        p.aEk();
+        e.L(str, false);
+        p.aEk();
+        e.L(str, true);
+        p.aEx().Dk(str);
+        i -= 1;
+      }
+      g.ajC().gBq.sJ(l);
+      AppMethodBeat.o(150314);
+      return true;
+    }
   }
 }
 

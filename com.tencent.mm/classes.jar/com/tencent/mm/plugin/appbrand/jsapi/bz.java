@@ -1,39 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.waid.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.page.ae;
 
 public final class bz
-  extends a
+  extends a<ae>
 {
-  public static final int CTRL_INDEX = 731;
-  public static final String NAME = "saveWaid";
-  
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
-  {
-    AppMethodBeat.i(45633);
-    HashMap localHashMap = new HashMap();
-    try
-    {
-      int i = g.awg(paramJSONObject.toString());
-      localHashMap.put("result", String.valueOf(i));
-      paramc.h(paramInt, k("ok", localHashMap));
-      ac.i("MicroMsg.JsApiSaveWaid", "appBrand JsApiSaveWaid, data=" + paramJSONObject + ", waidNum=" + i);
-      AppMethodBeat.o(45633);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      localHashMap.put("result", "0");
-      paramc.h(paramInt, k("fail", localHashMap));
-      ac.e("MicroMsg.JsApiSaveWaid", "appBrand JsApiSaveWaid, exp=" + paramJSONObject.toString());
-      AppMethodBeat.o(45633);
-    }
-  }
+  public static final int CTRL_INDEX = 66;
+  public static final String NAME = "reportSubmitForm";
 }
 
 

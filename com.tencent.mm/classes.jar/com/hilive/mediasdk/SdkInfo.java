@@ -27,6 +27,26 @@ public class SdkInfo
     public static final int kErrCodeUnmarshalFailed = 604;
   }
   
+  public static class MediaConfigKey
+  {
+    public static final int kConfigAvSyncDiscard = 53;
+    public static final int kConfigHwDecoder = 51;
+    public static final int kConfigHwEncoder = 52;
+    public static final int kConfigLogLvl = 100;
+    public static final int kConfigPixel32ToYuv420pMode = 102;
+    public static final int kConfigSaveTmpFile = 50;
+    public static final int kConfigTmpForAndroid = 200;
+    public static final int kConfigTmpForAndroidTransFmt = 201;
+    public static final int kConfigTraceAll = 1;
+    public static final int kConfigTraceDemux = 3;
+    public static final int kConfigTraceLoader = 6;
+    public static final int kConfigTraceMux = 2;
+    public static final int kConfigTraceReader = 4;
+    public static final int kConfigTraceWriter = 5;
+    public static final int kConfigVideoHwSupportFormat = 101;
+    public static final int kConfigYuv420pToPixel32Mode = 103;
+  }
+  
   public static class MediaFormat
   {
     public static final int MFMT_AUDIO_DBL = 104;
@@ -50,6 +70,13 @@ public class SdkInfo
     public static final int MFMT_VIDEO_YUVJ420P = 4;
   }
   
+  public static class MediaObjectKey
+  {
+    public static final int kObjectAndroidJNIEnv = 2;
+    public static final int kObjectAndroidJavaVM = 1;
+    public static final int kObjectAndroidSurface = 3;
+  }
+  
   public static class MediaType
   {
     public static final int MT_AUDIO = 0;
@@ -71,62 +98,61 @@ public class SdkInfo
   
   public static class RequestEventType
   {
-    public static final int kRequestEventEditorCreateContainer = 200;
-    public static final int kRequestEventEditorCreateTrack = 202;
+    public static final int kRequestEventEditorAddTrack = 202;
+    public static final int kRequestEventEditorCreate = 200;
+    public static final int kRequestEventEditorDelTrack = 204;
     public static final int kRequestEventEditorExport = 205;
     public static final int kRequestEventEditorGetTrack = 201;
-    public static final int kRequestEventEditorRemoveContainer = 206;
-    public static final int kRequestEventEditorRemoveTrack = 204;
+    public static final int kRequestEventEditorRemove = 206;
     public static final int kRequestEventEditorUpdateTrack = 203;
-    public static final int kRequestEventLoaderCreateContainer = 500;
-    public static final int kRequestEventLoaderRemoveContainer = 503;
+    public static final int kRequestEventLoaderCreate = 500;
+    public static final int kRequestEventLoaderRemove = 503;
     public static final int kRequestEventLoaderStart = 501;
     public static final int kRequestEventLoaderStop = 502;
-    public static final int kRequestEventPlayerCreateContainer = 400;
-    public static final int kRequestEventPlayerRemoveContainer = 404;
-    public static final int kRequestEventPlayerSeek = 402;
-    public static final int kRequestEventPlayerStart = 401;
-    public static final int kRequestEventPlayerStop = 403;
-    public static final int kRequestEventRecorderAudio = 303;
-    public static final int kRequestEventRecorderCreateContainer = 300;
-    public static final int kRequestEventRecorderRemoveContainer = 306;
-    public static final int kRequestEventRecorderStart = 301;
-    public static final int kRequestEventRecorderStop = 305;
-    public static final int kRequestEventRecorderUpdate = 302;
-    public static final int kRequestEventRecorderVideo = 304;
+    public static final int kRequestEventReaderCreate = 400;
+    public static final int kRequestEventReaderRemove = 405;
+    public static final int kRequestEventReaderSeek = 402;
+    public static final int kRequestEventReaderStart = 401;
+    public static final int kRequestEventReaderStop = 404;
+    public static final int kRequestEventReaderWait = 403;
     public static final int kRequestEventTypeAnalysis = 101;
     public static final int kRequestEventTypeRemux = 102;
     public static final int kRequestEventTypeTest = 100;
     public static final int kRequestEventTypeUnknow = 0;
+    public static final int kRequestEventWriterCreate = 300;
+    public static final int kRequestEventWriterRemove = 304;
+    public static final int kRequestEventWriterStart = 301;
+    public static final int kRequestEventWriterStop = 303;
+    public static final int kRequestEventWriterUpdate = 302;
   }
   
   public static class ResponseEventType
   {
-    public static final int kResponseEventEditorCreateContainer = 200;
-    public static final int kResponseEventEditorCreateTrack = 202;
+    public static final int kResponseEventEditorAddTrack = 202;
+    public static final int kResponseEventEditorCreate = 200;
+    public static final int kResponseEventEditorDelTrack = 204;
     public static final int kResponseEventEditorExport = 205;
     public static final int kResponseEventEditorGetTrack = 201;
-    public static final int kResponseEventEditorRemoveContainer = 206;
-    public static final int kResponseEventEditorRemoveTrack = 204;
+    public static final int kResponseEventEditorRemove = 206;
     public static final int kResponseEventEditorUpdateTrack = 203;
-    public static final int kResponseEventLoaderCreateContainer = 500;
-    public static final int kResponseEventLoaderRemoveContainer = 503;
+    public static final int kResponseEventLoaderCreate = 500;
+    public static final int kResponseEventLoaderRemove = 503;
     public static final int kResponseEventLoaderStart = 501;
     public static final int kResponseEventLoaderStop = 502;
-    public static final int kResponseEventPlayerCreateContainer = 400;
-    public static final int kResponseEventPlayerRemoveContainer = 404;
-    public static final int kResponseEventPlayerSeek = 402;
-    public static final int kResponseEventPlayerStart = 401;
-    public static final int kResponseEventPlayerStop = 403;
-    public static final int kResponseEventRecorderCreateContainer = 300;
-    public static final int kResponseEventRecorderRemoveContainer = 304;
-    public static final int kResponseEventRecorderStart = 301;
-    public static final int kResponseEventRecorderStop = 303;
-    public static final int kResponseEventRecorderUpdate = 302;
+    public static final int kResponseEventReaderCreate = 400;
+    public static final int kResponseEventReaderRemove = 404;
+    public static final int kResponseEventReaderSeek = 402;
+    public static final int kResponseEventReaderStart = 401;
+    public static final int kResponseEventReaderStop = 403;
     public static final int kResponseEventTypeAnalysis = 101;
     public static final int kResponseEventTypeRemux = 102;
     public static final int kResponseEventTypeTest = 100;
     public static final int kResponseEventTypeUnknow = 0;
+    public static final int kResponseEventWriterCreate = 300;
+    public static final int kResponseEventWriterRemove = 304;
+    public static final int kResponseEventWriterStart = 301;
+    public static final int kResponseEventWriterStop = 303;
+    public static final int kResponseEventWriterUpdate = 302;
   }
 }
 

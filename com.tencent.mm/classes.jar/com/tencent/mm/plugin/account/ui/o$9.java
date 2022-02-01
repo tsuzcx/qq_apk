@@ -14,8 +14,8 @@ final class o$9
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(128430);
-    this.iUu.iUm.finish();
-    l.a(l.a.iOy);
+    this.jnD.jnv.finish();
+    l.a(l.a.jhH);
     AppMethodBeat.o(128430);
   }
 }

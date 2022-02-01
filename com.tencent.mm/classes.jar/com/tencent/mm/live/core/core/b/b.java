@@ -3,13 +3,13 @@ package com.tencent.mm.live.core.core.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/core/model/LiveRenderModel;", "", "useCamera2", "", "defaultFrontCamera", "useCPUCrop", "resolution", "", "(ZZZI)V", "getDefaultFrontCamera", "()Z", "setDefaultFrontCamera", "(Z)V", "getResolution", "()I", "setResolution", "(I)V", "getUseCPUCrop", "setUseCPUCrop", "getUseCamera2", "setUseCamera2", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-core_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/core/model/LiveRenderModel;", "", "useCamera2", "", "defaultFrontCamera", "useCPUCrop", "resolution", "", "(ZZZI)V", "getDefaultFrontCamera", "()Z", "setDefaultFrontCamera", "(Z)V", "getResolution", "()I", "setResolution", "(I)V", "getUseCPUCrop", "setUseCPUCrop", "getUseCamera2", "setUseCamera2", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-core_release"})
 public final class b
 {
-  public boolean gnK = false;
-  public boolean gnL = true;
-  public boolean gnM = false;
-  public int gnN = 1080;
+  public boolean gHt = false;
+  public boolean gHu = true;
+  public boolean gHv = false;
+  public int gHw = 1080;
   
   public final boolean equals(Object paramObject)
   {
@@ -18,7 +18,7 @@ public final class b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((this.gnK != paramObject.gnK) || (this.gnL != paramObject.gnL) || (this.gnM != paramObject.gnM) || (this.gnN != paramObject.gnN)) {}
+        if ((this.gHt != paramObject.gHt) || (this.gHu != paramObject.gHu) || (this.gHv != paramObject.gHv) || (this.gHw != paramObject.gHw)) {}
       }
     }
     else {
@@ -34,15 +34,15 @@ public final class b
   
   public final String toString()
   {
-    AppMethodBeat.i(209155);
-    String str = "LiveRenderModel(useCamera2=" + this.gnK + ", defaultFrontCamera=" + this.gnL + ", useCPUCrop=" + this.gnM + ", resolution=" + this.gnN + ")";
-    AppMethodBeat.o(209155);
+    AppMethodBeat.i(216812);
+    String str = "LiveRenderModel(useCamera2=" + this.gHt + ", defaultFrontCamera=" + this.gHu + ", useCPUCrop=" + this.gHv + ", resolution=" + this.gHw + ")";
+    AppMethodBeat.o(216812);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.core.core.b.b
  * JD-Core Version:    0.7.0.1
  */

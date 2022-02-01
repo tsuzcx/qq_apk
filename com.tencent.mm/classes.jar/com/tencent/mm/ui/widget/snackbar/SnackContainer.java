@@ -17,22 +17,23 @@ import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class SnackContainer
   extends FrameLayout
 {
-  private AnimationSet HUB;
-  Queue<a> JlO;
-  private AnimationSet JlP;
+  private AnimationSet JIZ;
+  Queue<a> Ldl;
+  private AnimationSet Ldm;
   private final Runnable mHideRunnable;
   
   public SnackContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159724);
-    this.JlO = new LinkedList();
+    this.Ldl = new LinkedList();
     this.mHideRunnable = new Runnable()
     {
       public final void run()
@@ -52,7 +53,7 @@ public class SnackContainer
   {
     super(paramViewGroup.getContext());
     AppMethodBeat.i(159725);
-    this.JlO = new LinkedList();
+    this.Ldl = new LinkedList();
     this.mHideRunnable = new Runnable()
     {
       public final void run()
@@ -74,10 +75,10 @@ public class SnackContainer
   private static void b(a parama)
   {
     AppMethodBeat.i(159732);
-    if (parama.JlV != null)
+    if (parama.Lds != null)
     {
-      b.yk(false);
-      parama.JlV.onHide();
+      b.yW(false);
+      parama.Lds.onHide();
     }
     AppMethodBeat.o(159732);
   }
@@ -85,10 +86,10 @@ public class SnackContainer
   private static void c(a parama)
   {
     AppMethodBeat.i(159733);
-    if (parama.JlV != null)
+    if (parama.Lds != null)
     {
-      b.yk(true);
-      parama.JlV.onShow();
+      b.yW(true);
+      parama.Lds.onShow();
     }
     AppMethodBeat.o(159733);
   }
@@ -96,19 +97,19 @@ public class SnackContainer
   private void init()
   {
     AppMethodBeat.i(159726);
-    this.HUB = new AnimationSet(false);
+    this.JIZ = new AnimationSet(false);
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 1, 1.0F, 1, 0.0F);
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    this.HUB.setInterpolator(new DecelerateInterpolator(1.5F));
-    this.HUB.addAnimation(localTranslateAnimation);
-    this.HUB.addAnimation(localAlphaAnimation);
-    this.JlP = new AnimationSet(false);
+    this.JIZ.setInterpolator(new DecelerateInterpolator(1.5F));
+    this.JIZ.addAnimation(localTranslateAnimation);
+    this.JIZ.addAnimation(localAlphaAnimation);
+    this.Ldm = new AnimationSet(false);
     localTranslateAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 1, 0.0F, 1, 1.0F);
     localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.JlP.addAnimation(localTranslateAnimation);
-    this.JlP.addAnimation(localAlphaAnimation);
-    this.JlP.setDuration(300L);
-    this.JlP.setAnimationListener(new Animation.AnimationListener()
+    this.Ldm.addAnimation(localTranslateAnimation);
+    this.Ldm.addAnimation(localAlphaAnimation);
+    this.Ldm.setDuration(300L);
+    this.Ldm.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -132,10 +133,10 @@ public class SnackContainer
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(159720);
-        if ((!SnackContainer.this.isEmpty()) && (SnackContainer.b(SnackContainer.this).peek() != null) && (((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).JlV != null))
+        if ((!SnackContainer.this.isEmpty()) && (SnackContainer.b(SnackContainer.this).peek() != null) && (((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).Lds != null))
         {
-          b.yk(false);
-          ((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).JlV.beK();
+          b.yW(false);
+          ((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).Lds.bio();
         }
         AppMethodBeat.o(159720);
       }
@@ -148,35 +149,40 @@ public class SnackContainer
     AppMethodBeat.i(159731);
     setVisibility(0);
     c(parama);
-    addView(parama.JlS);
-    parama.rE.setText(parama.JlU.tAU);
-    if (parama.JlU.JlA != null)
+    addView(parama.Ldp);
+    parama.ty.setText(parama.Ldr.uDD);
+    if (parama.Ldr.LcX != null)
     {
-      parama.JlT.setVisibility(0);
-      parama.JlT.setText(parama.JlU.JlA);
+      parama.Ldq.setVisibility(0);
+      parama.Ldq.setText(parama.Ldr.LcX);
     }
     for (;;)
     {
-      this.HUB.setDuration(500L);
+      this.JIZ.setDuration(500L);
       Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772047);
       localAnimation.setDuration(500L);
-      startAnimation(this.HUB);
+      startAnimation(this.JIZ);
       localAnimation.setStartOffset(200L);
-      parama.JlT.startAnimation(localAnimation);
-      parama.rE.startAnimation(localAnimation);
-      if (parama.JlU.JlD > 0) {
-        postDelayed(this.mHideRunnable, parama.JlU.JlD);
+      parama.Ldq.startAnimation(localAnimation);
+      parama.ty.startAnimation(localAnimation);
+      if (parama.Ldr.Lda > 0) {
+        postDelayed(this.mHideRunnable, parama.Ldr.Lda);
       }
-      parama.JlS.setOnTouchListener(new View.OnTouchListener()
+      parama.Ldp.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(159722);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          localb.bd(paramAnonymousMotionEvent);
+          a.b("com/tencent/mm/ui/widget/snackbar/SnackContainer$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
           switch (paramAnonymousMotionEvent.getAction())
           {
           }
           for (;;)
           {
+            a.a(true, this, "com/tencent/mm/ui/widget/snackbar/SnackContainer$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(159722);
             return true;
             SnackContainer.this.removeCallbacks(SnackContainer.c(SnackContainer.this));
@@ -190,7 +196,7 @@ public class SnackContainer
       });
       AppMethodBeat.o(159731);
       return;
-      parama.JlT.setVisibility(8);
+      parama.Ldq.setVisibility(8);
     }
   }
   
@@ -205,7 +211,7 @@ public class SnackContainer
   public final boolean isEmpty()
   {
     AppMethodBeat.i(159728);
-    boolean bool = this.JlO.isEmpty();
+    boolean bool = this.Ldl.isEmpty();
     AppMethodBeat.o(159728);
     return bool;
   }
@@ -213,7 +219,7 @@ public class SnackContainer
   public final boolean isShowing()
   {
     AppMethodBeat.i(159729);
-    if (!this.JlO.isEmpty())
+    if (!this.Ldl.isEmpty())
     {
       AppMethodBeat.o(159729);
       return true;
@@ -226,10 +232,10 @@ public class SnackContainer
   {
     AppMethodBeat.i(159727);
     super.onDetachedFromWindow();
-    this.HUB.cancel();
-    this.JlP.cancel();
+    this.JIZ.cancel();
+    this.Ldm.cancel();
     removeCallbacks(this.mHideRunnable);
-    this.JlO.clear();
+    this.Ldl.clear();
     AppMethodBeat.o(159727);
   }
   
@@ -240,17 +246,17 @@ public class SnackContainer
     if (8 == paramInt)
     {
       removeAllViews();
-      if (!this.JlO.isEmpty()) {
-        b((a)this.JlO.poll());
+      if (!this.Ldl.isEmpty()) {
+        b((a)this.Ldl.poll());
       }
       if (isEmpty()) {
         break label83;
       }
-      a((a)this.JlO.peek());
+      a((a)this.Ldl.peek());
     }
     for (;;)
     {
-      b.yk(false);
+      b.yW(false);
       AppMethodBeat.o(159734);
       return;
       label83:
@@ -260,27 +266,27 @@ public class SnackContainer
   
   static final class a
   {
-    final View JlS;
-    final TextView JlT;
-    final Snack JlU;
-    final a.c JlV;
-    final TextView rE;
+    final View Ldp;
+    final TextView Ldq;
+    final Snack Ldr;
+    final a.c Lds;
+    final TextView ty;
     
     private a(Snack paramSnack, View paramView, a.c paramc)
     {
       AppMethodBeat.i(159723);
-      this.JlS = paramView;
-      this.JlT = ((TextView)paramView.findViewById(2131304881));
-      this.rE = ((TextView)paramView.findViewById(2131304883));
-      this.JlU = paramSnack;
-      this.JlV = paramc;
+      this.Ldp = paramView;
+      this.Ldq = ((TextView)paramView.findViewById(2131304881));
+      this.ty = ((TextView)paramView.findViewById(2131304883));
+      this.Ldr = paramSnack;
+      this.Lds = paramc;
       AppMethodBeat.o(159723);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.snackbar.SnackContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.shake.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.Map;
 
 public final class m$f
 {
-  public String bLs;
+  public String bVF;
   public String userName;
-  public String xzs;
+  public String yOc;
   
-  public static f ass(String paramString)
+  public static f axs(String paramString)
   {
     AppMethodBeat.i(28346);
-    Map localMap = bv.L(paramString, "bizprofile");
+    Map localMap = bw.M(paramString, "bizprofile");
     if (localMap != null) {}
     for (;;)
     {
       try
       {
         paramString = new f();
-        paramString.bLs = bs.nullAsNil((String)localMap.get(".bizprofile.nickname"));
-        paramString.userName = bs.nullAsNil((String)localMap.get(".bizprofile.username"));
-        paramString.xzs = bs.nullAsNil((String)localMap.get(".bizprofile.showchat"));
+        paramString.bVF = bt.nullAsNil((String)localMap.get(".bizprofile.nickname"));
+        paramString.userName = bt.nullAsNil((String)localMap.get(".bizprofile.username"));
+        paramString.yOc = bt.nullAsNil((String)localMap.get(".bizprofile.showchat"));
         AppMethodBeat.o(28346);
         return paramString;
       }
       catch (Exception paramString)
       {
-        ac.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
         paramString = null;
         continue;
       }
@@ -40,7 +40,7 @@ public final class m$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.m.f
  * JD-Core Version:    0.7.0.1
  */

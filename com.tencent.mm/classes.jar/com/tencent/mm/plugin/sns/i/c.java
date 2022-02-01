@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class c
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<Long> yay;
+  public LinkedList<Long> zqu;
   
   public c()
   {
     AppMethodBeat.i(96152);
-    this.yay = new LinkedList();
+    this.zqu = new LinkedList();
     AppMethodBeat.o(96152);
   }
   
@@ -20,24 +20,24 @@ public final class c
     AppMethodBeat.i(96153);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 3, this.yay);
+      ((f.a.a.c.a)paramVarArgs[0]).e(1, 3, this.zqu);
       AppMethodBeat.o(96153);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.a.c(1, 3, this.yay);
+      paramInt = f.a.a.a.c(1, 3, this.zqu);
       AppMethodBeat.o(96153);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.yay.clear();
+      this.zqu.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(96153);
@@ -53,7 +53,7 @@ public final class c
         AppMethodBeat.o(96153);
         return -1;
       }
-      localc.yay.add(Long.valueOf(locala.LVo.xG()));
+      localc.zqu.add(Long.valueOf(locala.NPN.zd()));
       AppMethodBeat.o(96153);
       return 0;
     }
@@ -63,7 +63,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.i.c
  * JD-Core Version:    0.7.0.1
  */

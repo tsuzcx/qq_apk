@@ -5,24 +5,24 @@ import d.g.b.a.a;
 import d.l;
 import java.util.Iterator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/IndexingIterator;", "T", "", "Lkotlin/collections/IndexedValue;", "iterator", "(Ljava/util/Iterator;)V", "index", "", "hasNext", "", "next", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/IndexingIterator;", "T", "", "Lkotlin/collections/IndexedValue;", "iterator", "(Ljava/util/Iterator;)V", "index", "", "hasNext", "", "next", "kotlin-stdlib"})
 public final class aa<T>
   implements a, Iterator<y<? extends T>>
 {
-  private final Iterator<T> KTJ;
+  private final Iterator<T> MKI;
   private int index;
   
   public aa(Iterator<? extends T> paramIterator)
   {
     AppMethodBeat.i(129029);
-    this.KTJ = paramIterator;
+    this.MKI = paramIterator;
     AppMethodBeat.o(129029);
   }
   
   public final boolean hasNext()
   {
     AppMethodBeat.i(129027);
-    boolean bool = this.KTJ.hasNext();
+    boolean bool = this.MKI.hasNext();
     AppMethodBeat.o(129027);
     return bool;
   }

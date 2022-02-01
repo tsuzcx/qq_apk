@@ -1,83 +1,80 @@
 package com.tencent.mm.plugin.appbrand.jsapi.f;
 
-import android.graphics.Color;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.f.a.b.b;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import org.json.JSONArray;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.r;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.widget.input.o;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class c
-  extends b
+  extends a
 {
-  public static final int CTRL_INDEX = 135;
-  public static final String NAME = "addMapCircles";
+  public static final int CTRL_INDEX = 70;
+  public static final String NAME = "hideKeyboard";
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, final JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(143657);
-    super.a(paramc, paramJSONObject, paramInt);
-    if (paramJSONObject == null)
-    {
-      ac.e("MicroMsg.JsApiAddMapCircles", "data is null");
-      paramc.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(143657);
-      return;
-    }
-    ac.i("MicroMsg.JsApiAddMapCircles", "data:%s", new Object[] { paramJSONObject });
-    com.tencent.mm.plugin.appbrand.jsapi.f.a.b localb = h(paramc, paramJSONObject);
-    if (localb == null)
-    {
-      ac.e("MicroMsg.JsApiAddMapCircles", "mapView is null, return");
-      paramc.h(paramInt, e("fail:mapview is null", null));
-      AppMethodBeat.o(143657);
-      return;
-    }
+    AppMethodBeat.i(136257);
+    localObject = null;
     try
     {
-      if (paramJSONObject.has("circles"))
+      int i = paramJSONObject.getInt("inputId");
+      paramJSONObject = Integer.valueOf(i);
+    }
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
       {
-        localb.bho();
-        paramJSONObject = new JSONArray(paramJSONObject.optString("circles"));
-        int i = 0;
-        while (i < paramJSONObject.length())
+        paramJSONObject = localObject;
+      }
+    }
+    com.tencent.mm.plugin.appbrand.z.m.runOnUiThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136256);
+        if (!paramc.isRunning())
         {
-          Object localObject = (JSONObject)paramJSONObject.get(i);
-          double d1 = bs.getDouble(((JSONObject)localObject).optString("latitude"), 0.0D);
-          double d2 = bs.getDouble(((JSONObject)localObject).optString("longitude"), 0.0D);
-          int j = g.cd(((JSONObject)localObject).optString("color", ""), Color.parseColor("#000000"));
-          int k = g.cd(((JSONObject)localObject).optString("fillColor", ""), Color.parseColor("#000000"));
-          int m = ((JSONObject)localObject).optInt("radius");
-          float f = g.a((JSONObject)localObject, "strokeWidth", 0.0F);
-          localObject = new b.b();
-          ((b.b)localObject).latitude = d1;
-          ((b.b)localObject).longitude = d2;
-          ((b.b)localObject).radius = m;
-          ((b.b)localObject).strokeColor = j;
-          ((b.b)localObject).strokeWidth = ((int)f);
-          ((b.b)localObject).fillColor = k;
-          localb.a((b.b)localObject);
-          i += 1;
+          AppMethodBeat.o(136256);
+          return;
+        }
+        Object localObject = paramc;
+        if ((localObject instanceof aa))
+        {
+          localObject = (aa)localObject;
+          if (!o.a((aa)localObject, paramJSONObject)) {
+            break label121;
+          }
+        }
+        label121:
+        for (localObject = "ok";; localObject = "fail:input not exists")
+        {
+          paramc.h(paramInt, c.this.e((String)localObject, null));
+          AppMethodBeat.o(136256);
+          return;
+          if ((localObject instanceof q))
+          {
+            localObject = ((q)localObject).getRuntime().aVN().getCurrentPage().getCurrentPageView();
+            break;
+          }
+          ad.e("MicroMsg.JsApiHideKeyboard", "invalid component type while calling hide keyboard");
+          localObject = null;
+          break;
         }
       }
-      a(paramc, paramInt, e("ok", null), true, localb.bhm());
-    }
-    catch (Exception paramJSONObject)
-    {
-      ac.e("MicroMsg.JsApiAddMapCircles", "parse circles error, exception : %s", new Object[] { paramJSONObject });
-      a(paramc, paramInt, e("fail:internal error", null), false, localb.bhm());
-      AppMethodBeat.o(143657);
-      return;
-    }
-    AppMethodBeat.o(143657);
+    });
+    AppMethodBeat.o(136257);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.f.c
  * JD-Core Version:    0.7.0.1
  */

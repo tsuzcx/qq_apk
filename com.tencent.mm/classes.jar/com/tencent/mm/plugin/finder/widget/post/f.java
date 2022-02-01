@@ -5,7 +5,7 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/widget/post/PostPlainTextWidget;", "Lcom/tencent/mm/plugin/finder/widget/post/BasePostMediaWidget;", "activity", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getUploadData", "Lcom/tencent/mm/plugin/finder/widget/post/UploadData;", "inflateView", "Landroid/view/View;", "onCreate", "", "onDestroy", "refresh", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/widget/post/PostPlainTextWidget;", "Lcom/tencent/mm/plugin/finder/widget/post/BasePostMediaWidget;", "activity", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getUploadData", "Lcom/tencent/mm/plugin/finder/widget/post/UploadData;", "inflateView", "Landroid/view/View;", "onCreate", "", "onDestroy", "refresh", "plugin-finder_release"})
 public final class f
   extends a
 {
@@ -16,16 +16,16 @@ public final class f
     AppMethodBeat.o(168617);
   }
   
-  public final View cGA()
+  public final View cON()
   {
     return null;
   }
   
-  public final h cGB()
+  public final h cOO()
   {
-    AppMethodBeat.i(204878);
+    AppMethodBeat.i(205812);
     h localh = new h(true, 1, null);
-    AppMethodBeat.o(204878);
+    AppMethodBeat.o(205812);
     return localh;
   }
   
@@ -33,7 +33,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.widget.post.f
  * JD-Core Version:    0.7.0.1
  */

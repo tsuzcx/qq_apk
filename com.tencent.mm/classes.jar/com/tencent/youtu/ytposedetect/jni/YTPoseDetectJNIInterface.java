@@ -36,7 +36,7 @@ public class YTPoseDetectJNIInterface
   
   public static native boolean isRecordingDone();
   
-  public static native int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2, float paramFloat3);
+  public static native int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt5);
   
   public static native void releaseAll();
   
@@ -48,7 +48,7 @@ public class YTPoseDetectJNIInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.jni.YTPoseDetectJNIInterface
  * JD-Core Version:    0.7.0.1
  */

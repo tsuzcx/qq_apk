@@ -10,22 +10,22 @@ import android.view.animation.DecelerateInterpolator;
 public final class i
 {
   public long duration = 300L;
-  public long fe = 0L;
-  private TimeInterpolator ff = null;
+  public long gW = 0L;
+  private TimeInterpolator gX = null;
   private int repeatCount = 0;
   private int repeatMode = 1;
   
   public i(long paramLong)
   {
-    this.fe = paramLong;
+    this.gW = paramLong;
     this.duration = 150L;
   }
   
   private i(long paramLong1, long paramLong2, TimeInterpolator paramTimeInterpolator)
   {
-    this.fe = paramLong1;
+    this.gW = paramLong1;
     this.duration = paramLong2;
-    this.ff = paramTimeInterpolator;
+    this.gX = paramTimeInterpolator;
   }
   
   static i a(ValueAnimator paramValueAnimator)
@@ -40,22 +40,22 @@ public final class i
   {
     TimeInterpolator localTimeInterpolator = paramValueAnimator.getInterpolator();
     if (((localTimeInterpolator instanceof AccelerateDecelerateInterpolator)) || (localTimeInterpolator == null)) {
-      paramValueAnimator = a.eQ;
+      paramValueAnimator = a.gJ;
     }
     do
     {
       return paramValueAnimator;
       if ((localTimeInterpolator instanceof AccelerateInterpolator)) {
-        return a.eR;
+        return a.gK;
       }
       paramValueAnimator = localTimeInterpolator;
     } while (!(localTimeInterpolator instanceof DecelerateInterpolator));
-    return a.eS;
+    return a.gL;
   }
   
   public final void a(Animator paramAnimator)
   {
-    paramAnimator.setStartDelay(this.fe);
+    paramAnimator.setStartDelay(this.gW);
     paramAnimator.setDuration(this.duration);
     paramAnimator.setInterpolator(getInterpolator());
     if ((paramAnimator instanceof ValueAnimator))
@@ -91,7 +91,7 @@ public final class i
             } while (getClass() != paramObject.getClass());
             paramObject = (i)paramObject;
             bool1 = bool2;
-          } while (this.fe != paramObject.fe);
+          } while (this.gW != paramObject.gW);
           bool1 = bool2;
         } while (this.duration != paramObject.duration);
         bool1 = bool2;
@@ -103,15 +103,15 @@ public final class i
   
   public final TimeInterpolator getInterpolator()
   {
-    if (this.ff != null) {
-      return this.ff;
+    if (this.gX != null) {
+      return this.gX;
     }
-    return a.eQ;
+    return a.gJ;
   }
   
   public final int hashCode()
   {
-    return ((((int)(this.fe ^ this.fe >>> 32) * 31 + (int)(this.duration ^ this.duration >>> 32)) * 31 + getInterpolator().getClass().hashCode()) * 31 + this.repeatCount) * 31 + this.repeatMode;
+    return ((((int)(this.gW ^ this.gW >>> 32) * 31 + (int)(this.duration ^ this.duration >>> 32)) * 31 + getInterpolator().getClass().hashCode()) * 31 + this.repeatCount) * 31 + this.repeatMode;
   }
   
   public final String toString()
@@ -122,7 +122,7 @@ public final class i
     localStringBuilder.append('{');
     localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
     localStringBuilder.append(" delay: ");
-    localStringBuilder.append(this.fe);
+    localStringBuilder.append(this.gW);
     localStringBuilder.append(" duration: ");
     localStringBuilder.append(this.duration);
     localStringBuilder.append(" interpolator: ");

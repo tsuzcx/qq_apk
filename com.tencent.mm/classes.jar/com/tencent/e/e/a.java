@@ -2,7 +2,7 @@ package com.tencent.e.e;
 
 public abstract interface a<I, O>
 {
-  public abstract O bI(I paramI);
+  public abstract O bK(I paramI);
 }
 
 

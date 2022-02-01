@@ -9,29 +9,29 @@ public abstract interface c
   
   public abstract void a(b paramb);
   
-  public abstract void aat(int paramInt);
+  public abstract void acD(int paramInt);
   
-  public abstract void bP(float paramFloat);
+  public abstract void bU(float paramFloat);
   
   public abstract void destroy();
   
-  public abstract void fjO();
+  public abstract void fAd();
   
-  public abstract void fjP();
+  public abstract void fAe();
   
-  public abstract void fjQ();
+  public abstract void fAf();
   
-  public abstract void fjR();
+  public abstract void fAg();
   
-  public abstract void q(Canvas paramCanvas);
+  public abstract void p(Canvas paramCanvas);
   
-  public abstract void xa(boolean paramBoolean);
+  public abstract void xL(boolean paramBoolean);
   
-  public abstract void xb(boolean paramBoolean);
+  public abstract void xM(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.blur.c
  * JD-Core Version:    0.7.0.1
  */

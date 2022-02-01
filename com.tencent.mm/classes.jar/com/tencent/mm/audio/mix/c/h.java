@@ -4,7 +4,7 @@ public abstract interface h
 {
   public abstract byte[] J(byte[] paramArrayOfByte);
   
-  public abstract boolean j(String paramString, int paramInt1, int paramInt2);
+  public abstract boolean l(String paramString, int paramInt1, int paramInt2);
   
   public abstract boolean release();
 }

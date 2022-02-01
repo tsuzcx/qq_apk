@@ -1,293 +1,142 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.view.View;
+import android.content.Intent;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.vfs.i;
-import org.json.JSONException;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.l;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public final class z
-  extends k
-  implements SensorEventListener
+  extends p
 {
-  Sensor bQl;
-  Sensor bQn;
-  ImageView dhf;
-  private SensorManager mSensorManager;
-  ProgressBar progressBar;
-  int ypi;
-  final float ypj = 10.0F;
-  final int ypk = 1;
-  HorizontalScrollView ypl;
-  float[] ypm;
-  float[] ypn;
-  private int ypo = 0;
-  boolean ypp = true;
-  
-  public z(Context paramContext, r paramr, ViewGroup paramViewGroup)
+  public z(Context paramContext, l paraml, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramr, paramViewGroup);
+    super(paramContext, paraml, paramViewGroup);
+    AppMethodBeat.i(96660);
+    this.zEb.jB("canvasId", paraml.zyG);
+    this.zEb.jB("canvasExt", paraml.zyH);
+    AppMethodBeat.o(96660);
   }
   
-  public final boolean aH(JSONObject paramJSONObject)
+  private boolean dXj()
   {
-    AppMethodBeat.i(96676);
-    if (!super.aH(paramJSONObject))
+    AppMethodBeat.i(96662);
+    if (((l)dXf()).zyJ == 1)
     {
-      AppMethodBeat.o(96676);
-      return false;
+      AppMethodBeat.o(96662);
+      return true;
     }
-    try
+    AppMethodBeat.o(96662);
+    return false;
+  }
+  
+  private boolean dXk()
+  {
+    AppMethodBeat.i(96663);
+    if (((l)dXf()).zyK == 1)
     {
-      paramJSONObject.put("swipeCount", this.ypo);
-      if (!this.ypp)
+      AppMethodBeat.o(96663);
+      return true;
+    }
+    AppMethodBeat.o(96663);
+    return false;
+  }
+  
+  protected final void dXg()
+  {
+    AppMethodBeat.i(96661);
+    Object localObject2 = (l)dXf();
+    if (this.zEf) {}
+    for (int i = 20;; i = 14)
+    {
+      Context localContext = this.context;
+      Object localObject1 = ((l)localObject2).zyG;
+      String str1 = ((l)localObject2).zyH;
+      int j = ((l)localObject2).zyI;
+      localObject2 = new Intent();
+      ((Intent)localObject2).putExtra("sns_landig_pages_from_source", i);
+      ((Intent)localObject2).putExtra("sns_landig_pages_origin_from_source", dWZ().zAN);
+      ((Intent)localObject2).putExtra("sns_landing_pages_xml", "");
+      String str3;
+      String str2;
+      JSONObject localJSONObject;
+      if (dXk())
       {
-        String str = ah.dg(((r)this.ymQ).yjd);
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("urlMd5", str);
-        localJSONObject.put("needDownload", 1);
-        paramJSONObject.put("imgUrlInfo", localJSONObject);
+        ((Intent)localObject2).putExtra("sns_landing_pages_canvasid", (String)localObject1);
+        ((Intent)localObject2).putExtra("sns_landing_pages_canvas_ext", str1);
+        if (dXj())
+        {
+          localObject1 = new int[2];
+          this.zEd.getLocationOnScreen((int[])localObject1);
+          ((Intent)localObject2).putExtra("img_gallery_top", localObject1[1]);
+          ((Intent)localObject2).putExtra("img_gallery_left", localObject1[0]);
+          ((Intent)localObject2).putExtra("img_gallery_width", this.zEd.getWidth());
+          ((Intent)localObject2).putExtra("img_gallery_height", this.zEd.getHeight());
+        }
+        ((Intent)localObject2).putExtra("sns_landing_pages_need_enter_and_exit_animation", dXj());
+        ((Intent)localObject2).putExtra("sns_landing_pages_extra", "");
+        ((Intent)localObject2).putExtra("sns_landing_pages_no_store", j);
+        ((Intent)localObject2).putExtra("sns_landing_pages_ux_info", dWZ().dFy);
+        ((Intent)localObject2).putExtra("sns_landing_is_native_sight_ad", dWZ().zAO);
+        if (((localContext instanceof Activity)) && (dXk()) && (dWZ().bizId == 2))
+        {
+          str3 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_sessionId");
+          str1 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_ad_buffer");
+          if (!bt.isNullOrNil(str3))
+          {
+            str2 = String.valueOf(System.currentTimeMillis() / 1000L);
+            localJSONObject = new JSONObject();
+          }
+        }
       }
-      AppMethodBeat.o(96676);
-      return true;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      ac.printErrStackTrace("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", paramJSONObject, "", new Object[0]);
-      AppMethodBeat.o(96676);
-    }
-    return false;
-  }
-  
-  public final void dJW()
-  {
-    AppMethodBeat.i(96668);
-    View localView = this.contentView;
-    this.mSensorManager = ((SensorManager)ai.getContext().getSystemService("sensor"));
-    this.bQl = this.mSensorManager.getDefaultSensor(1);
-    this.bQn = this.mSensorManager.getDefaultSensor(2);
-    this.ypl = ((HorizontalScrollView)localView.findViewById(2131296423));
-    this.dhf = ((ImageView)localView.findViewById(2131296424));
-    this.progressBar = ((ProgressBar)localView.findViewById(2131303535));
-    this.progressBar.setVisibility(8);
-    AppMethodBeat.o(96668);
-  }
-  
-  public final void dJY()
-  {
-    AppMethodBeat.i(96674);
-    super.dJY();
-    this.mSensorManager.registerListener(this, this.bQl, 1);
-    this.mSensorManager.registerListener(this, this.bQn, 1);
-    AppMethodBeat.o(96674);
-  }
-  
-  public final void dJZ()
-  {
-    AppMethodBeat.i(96675);
-    super.dJZ();
-    this.mSensorManager.unregisterListener(this);
-    AppMethodBeat.o(96675);
-  }
-  
-  public final boolean dKC()
-  {
-    AppMethodBeat.i(96673);
-    if (dKB() >= (int)(getView().getHeight() * 0.1F))
-    {
-      AppMethodBeat.o(96673);
-      return true;
-    }
-    AppMethodBeat.o(96673);
-    return false;
-  }
-  
-  protected final void dKm()
-  {
-    AppMethodBeat.i(96669);
-    if (!i.eA(h.js("adId", ((r)this.ymQ).yjd))) {
-      this.ypp = false;
-    }
-    String str = ((r)this.ymQ).yjd;
-    Bitmap localBitmap = h.jw("adId", str);
-    if (localBitmap != null)
-    {
-      ac.i("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "loaded cached image with  ".concat(String.valueOf(str)));
-      setImage(localBitmap);
-      AppMethodBeat.o(96669);
-      return;
-    }
-    startLoading();
-    h.a(str, ((r)this.ymQ).yjt, new f.a()
-    {
-      public final void asD(String paramAnonymousString)
+      for (;;)
       {
-        AppMethodBeat.i(96666);
         try
         {
-          paramAnonymousString = f.decodeFile(paramAnonymousString);
-          z.this.setImage(paramAnonymousString);
-          AppMethodBeat.o(96666);
-          return;
-        }
-        catch (Exception paramAnonymousString)
-        {
-          ac.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "%s" + bs.m(paramAnonymousString));
-          AppMethodBeat.o(96666);
-        }
-      }
-      
-      public final void dFC()
-      {
-        AppMethodBeat.i(96664);
-        z.this.startLoading();
-        AppMethodBeat.o(96664);
-      }
-      
-      public final void dFD()
-      {
-        AppMethodBeat.i(96665);
-        z.this.progressBar.setVisibility(8);
-        AppMethodBeat.o(96665);
-      }
-    });
-    AppMethodBeat.o(96669);
-  }
-  
-  protected final int getLayout()
-  {
-    return 2131495494;
-  }
-  
-  public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public final void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    float f2 = -10.0F;
-    AppMethodBeat.i(96672);
-    if (paramSensorEvent.sensor.getType() == 1) {
-      this.ypm = paramSensorEvent.values;
-    }
-    if (paramSensorEvent.sensor.getType() == 2) {
-      this.ypn = paramSensorEvent.values;
-    }
-    float f1;
-    if ((this.ypm != null) && (this.ypn != null))
-    {
-      paramSensorEvent = new float[9];
-      if (SensorManager.getRotationMatrix(paramSensorEvent, new float[9], this.ypm, this.ypn))
-      {
-        float[] arrayOfFloat = new float[3];
-        SensorManager.getOrientation(paramSensorEvent, arrayOfFloat);
-        float f3 = arrayOfFloat[2];
-        if (this.ypi != 0)
-        {
-          f1 = f3;
-          if (f3 > 10.0F) {
-            f1 = 10.0F;
+          localJSONObject.put("sessionId", str2);
+          localJSONObject.put("cid", dXf().zAg);
+          if (bt.isNullOrNil(str1)) {
+            continue;
           }
-          if (f1 >= -10.0F) {
-            break label163;
-          }
-          f1 = f2;
+          localObject1 = str1;
+          localJSONObject.put("adBuffer", localObject1);
+          localJSONObject.put("preSessionId", str3);
         }
-      }
-    }
-    label163:
-    for (;;)
-    {
-      f1 = f1 * this.ypi / 10.0F;
-      this.ypl.scrollBy((int)f1, 0);
-      AppMethodBeat.o(96672);
-      return;
-    }
-  }
-  
-  public final void setImage(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(96671);
-    if (paramBitmap == null)
-    {
-      ac.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp is null!");
-      AppMethodBeat.o(96671);
-      return;
-    }
-    if (this.dhf == null)
-    {
-      ac.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the imageView is null!");
-      AppMethodBeat.o(96671);
-      return;
-    }
-    if (paramBitmap.getHeight() == 0)
-    {
-      ac.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp.getHeight is 0!");
-      AppMethodBeat.o(96671);
-      return;
-    }
-    this.progressBar.setVisibility(8);
-    this.dhf.setImageBitmap(paramBitmap);
-    this.dhf.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(96667);
-        int i = z.this.dhf.getMeasuredWidth();
-        if (i > z.this.kWB)
+        catch (Exception localException)
         {
-          z localz = z.this;
-          localz.ypi = ((i - localz.kWB) / 2);
-          z.this.ypl.scrollBy(z.this.ypi, 0);
+          continue;
         }
-        AppMethodBeat.o(96667);
+        ((Intent)localObject2).putExtra("sns_landing_pages_search_extra", localJSONObject.toString());
+        ((Intent)localObject2).putExtra("sns_landing_pages_sessionId", str2);
+        ((Intent)localObject2).putExtra("sns_landing_pages_ad_buffer", str1);
+        if ((localContext instanceof Activity))
+        {
+          localObject1 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_rawSnsId");
+          str1 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_share_sns_id");
+          ((Intent)localObject2).putExtra("sns_landing_pages_rawSnsId", (String)localObject1);
+          ((Intent)localObject2).putExtra("sns_landing_pages_share_sns_id", str1);
+        }
+        d.b(localContext, "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", (Intent)localObject2);
+        dXe();
+        AppMethodBeat.o(96661);
+        return;
+        ((Intent)localObject2).putExtra("sns_landing_pages_pageid", bt.aRf((String)localObject1));
+        break;
+        localObject1 = "";
       }
-    });
-    int i;
-    if (paramBitmap.getHeight() != 0)
-    {
-      i = this.kWC;
-      if (((r)this.ymQ).yjv == 2.147484E+009F) {
-        break label176;
-      }
-      i = (int)((r)this.ymQ).yjv;
     }
-    label176:
-    for (;;)
-    {
-      this.dhf.setLayoutParams(new RelativeLayout.LayoutParams(paramBitmap.getWidth() * i / paramBitmap.getHeight(), i));
-      AppMethodBeat.o(96671);
-      return;
-    }
-  }
-  
-  public final void startLoading()
-  {
-    AppMethodBeat.i(96670);
-    this.progressBar.setVisibility(0);
-    AppMethodBeat.o(96670);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.z
  * JD-Core Version:    0.7.0.1
  */

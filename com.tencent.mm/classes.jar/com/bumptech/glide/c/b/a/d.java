@@ -5,23 +5,23 @@ import java.util.Queue;
 
 abstract class d<T extends m>
 {
-  private final Queue<T> aGC = j.dx(20);
+  private final Queue<T> aIt = j.dx(20);
   
   public final void a(T paramT)
   {
-    if (this.aGC.size() < 20) {
-      this.aGC.offer(paramT);
+    if (this.aIt.size() < 20) {
+      this.aIt.offer(paramT);
     }
   }
   
-  abstract T oF();
+  abstract T oX();
   
-  final T oG()
+  final T oY()
   {
-    m localm2 = (m)this.aGC.poll();
+    m localm2 = (m)this.aIt.poll();
     m localm1 = localm2;
     if (localm2 == null) {
-      localm1 = oF();
+      localm1 = oX();
     }
     return localm1;
   }

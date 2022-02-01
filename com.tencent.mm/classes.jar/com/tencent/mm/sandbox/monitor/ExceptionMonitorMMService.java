@@ -3,25 +3,25 @@ package com.tencent.mm.sandbox.monitor;
 import android.content.Intent;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.service.MMService;
 
 public class ExceptionMonitorMMService
   extends MMService
   implements b.a
 {
-  b GkV = null;
+  b HWH = null;
   
   private void o(Intent paramIntent)
   {
     AppMethodBeat.i(32606);
-    if (this.GkV != null) {
-      this.GkV.o(paramIntent);
+    if (this.HWH != null) {
+      this.HWH.o(paramIntent);
     }
     AppMethodBeat.o(32606);
   }
   
-  public final IBinder Uz()
+  public final IBinder WQ()
   {
     return null;
   }
@@ -35,9 +35,9 @@ public class ExceptionMonitorMMService
   {
     AppMethodBeat.i(32602);
     super.onCreate();
-    ac.i("MicroMsg.ExceptionMonitorMMService", "onCreate()");
-    this.GkV = new b();
-    this.GkV.a(this);
+    ad.i("MicroMsg.ExceptionMonitorMMService", "onCreate()");
+    this.HWH = new b();
+    this.HWH.a(this);
     AppMethodBeat.o(32602);
   }
   
@@ -45,11 +45,11 @@ public class ExceptionMonitorMMService
   {
     AppMethodBeat.i(32605);
     super.onDestroy();
-    ac.i("MicroMsg.ExceptionMonitorMMService", "onDestroy()");
-    if (this.GkV != null)
+    ad.i("MicroMsg.ExceptionMonitorMMService", "onDestroy()");
+    if (this.HWH != null)
     {
-      this.GkV.onDestroy();
-      this.GkV = null;
+      this.HWH.onDestroy();
+      this.HWH = null;
     }
     AppMethodBeat.o(32605);
   }
@@ -58,8 +58,8 @@ public class ExceptionMonitorMMService
   {
     AppMethodBeat.i(32603);
     super.onStart(paramIntent, paramInt);
-    ac.i("MicroMsg.ExceptionMonitorMMService", "onStart()");
-    if (this.GkV != null) {
+    ad.i("MicroMsg.ExceptionMonitorMMService", "onStart()");
+    if (this.HWH != null) {
       o(paramIntent);
     }
     AppMethodBeat.o(32603);
@@ -68,8 +68,8 @@ public class ExceptionMonitorMMService
   public final int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(32604);
-    ac.i("MicroMsg.ExceptionMonitorMMService", "onStartCommand()");
-    if (this.GkV != null) {
+    ad.i("MicroMsg.ExceptionMonitorMMService", "onStartCommand()");
+    if (this.HWH != null) {
       o(paramIntent);
     }
     AppMethodBeat.o(32604);
@@ -78,7 +78,7 @@ public class ExceptionMonitorMMService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.ExceptionMonitorMMService
  * JD-Core Version:    0.7.0.1
  */

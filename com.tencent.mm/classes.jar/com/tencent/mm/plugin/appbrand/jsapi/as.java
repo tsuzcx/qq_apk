@@ -1,30 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.service.c;
-import d.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiFunctionalPageStartGame;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class as
   extends a<c>
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "functionalPageStartGame";
-  public static final a jXM;
-  
-  static
-  {
-    AppMethodBeat.i(187150);
-    jXM = new a((byte)0);
-    AppMethodBeat.o(187150);
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiFunctionalPageStartGame$Companion;", "", "()V", "CTRL_INDEX", "", "DEFAULT_URL", "", "NAME", "plugin-appbrand-integration_release"})
-  public static final class a {}
+  public static final int CTRL_INDEX = 627;
+  public static final String NAME = "chooseShareGroup";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.as
  * JD-Core Version:    0.7.0.1
  */

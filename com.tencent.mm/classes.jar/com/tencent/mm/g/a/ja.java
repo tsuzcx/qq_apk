@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ja
   extends b
 {
-  public a dks;
+  public a dvK;
+  public b dvL;
   
   public ja()
   {
@@ -15,16 +16,23 @@ public final class ja
   
   private ja(byte paramByte)
   {
-    AppMethodBeat.i(184504);
-    this.dks = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(91207);
+    this.dvK = new a();
+    this.dvL = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(184504);
+    AppMethodBeat.o(91207);
   }
   
   public static final class a
   {
-    public int dkt;
+    public int dvM = 0;
+  }
+  
+  public static final class b
+  {
+    public boolean dvN = false;
+    public String dvO;
   }
 }
 

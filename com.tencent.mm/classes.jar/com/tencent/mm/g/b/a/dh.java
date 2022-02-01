@@ -6,47 +6,55 @@ import com.tencent.mm.plugin.report.a;
 public final class dh
   extends a
 {
-  public long dCS;
-  public long dRO;
-  public long dRP;
-  public long dRQ = 0L;
+  public long dPH;
+  private String dQt;
+  public long efl;
+  public long efm;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(88783);
+    AppMethodBeat.i(219286);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dCS);
+    ((StringBuffer)localObject).append(this.dQt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRO);
+    ((StringBuffer)localObject).append(this.dPH);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRP);
+    ((StringBuffer)localObject).append(this.efl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRQ);
+    ((StringBuffer)localObject).append(this.efm);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(88783);
+    awz((String)localObject);
+    AppMethodBeat.o(219286);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(88784);
+    AppMethodBeat.i(219287);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("action:").append(this.dCS);
+    ((StringBuffer)localObject).append("sessionid:").append(this.dQt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("msgid:").append(this.dRO);
+    ((StringBuffer)localObject).append("action:").append(this.dPH);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("msgType:").append(this.dRP);
+    ((StringBuffer)localObject).append("errortype:").append(this.efl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appMsgType:").append(this.dRQ);
+    ((StringBuffer)localObject).append("pageid:").append(this.efm);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(88784);
+    AppMethodBeat.o(219287);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18754;
+    return 19818;
+  }
+  
+  public final dh mw(String paramString)
+  {
+    AppMethodBeat.i(219285);
+    this.dQt = t("sessionid", paramString, true);
+    AppMethodBeat.o(219285);
+    return this;
   }
 }
 

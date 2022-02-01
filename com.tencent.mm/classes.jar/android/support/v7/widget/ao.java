@@ -18,45 +18,45 @@ import android.graphics.drawable.Drawable;
 final class ao
   extends Drawable
 {
-  static a ate;
-  private static final double rn = Math.cos(Math.toRadians(45.0D));
-  float Iv;
-  ColorStateList atc;
-  private final int atd;
-  private Paint atf;
-  private Paint atg;
-  private final RectF ath;
-  private Path ati;
-  float atj;
-  private float atk;
-  float atl;
-  boolean atm = true;
-  private final int atn;
-  private final int ato;
-  private boolean atp = true;
-  private boolean atq = false;
+  static a auV;
+  private static final double ti = Math.cos(Math.toRadians(45.0D));
+  float Kn;
+  ColorStateList auT;
+  private final int auU;
+  private Paint auW;
+  private Paint auX;
+  private final RectF auY;
+  private Path auZ;
+  float ava;
+  private float avb;
+  float avc;
+  boolean avd = true;
+  private final int ave;
+  private final int avf;
+  private boolean avh = true;
+  private boolean avi = false;
   private Paint mPaint;
   
   ao(Resources paramResources, ColorStateList paramColorStateList, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.atn = paramResources.getColor(2131100121);
-    this.ato = paramResources.getColor(2131100120);
-    this.atd = paramResources.getDimensionPixelSize(2131166002);
+    this.ave = paramResources.getColor(2131100121);
+    this.avf = paramResources.getColor(2131100120);
+    this.auU = paramResources.getDimensionPixelSize(2131166002);
     this.mPaint = new Paint(5);
     g(paramColorStateList);
-    this.atf = new Paint(5);
-    this.atf.setStyle(Paint.Style.FILL);
-    this.Iv = ((int)(0.5F + paramFloat1));
-    this.ath = new RectF();
-    this.atg = new Paint(this.atf);
-    this.atg.setAntiAlias(false);
+    this.auW = new Paint(5);
+    this.auW.setStyle(Paint.Style.FILL);
+    this.Kn = ((int)(0.5F + paramFloat1));
+    this.auY = new RectF();
+    this.auX = new Paint(this.auW);
+    this.auX.setAntiAlias(false);
     f(paramFloat2, paramFloat3);
   }
   
   static float a(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
     if (paramBoolean) {
-      return (float)(1.5F * paramFloat1 + (1.0D - rn) * paramFloat2);
+      return (float)(1.5F * paramFloat1 + (1.0D - ti) * paramFloat2);
     }
     return 1.5F * paramFloat1;
   }
@@ -65,12 +65,12 @@ final class ao
   {
     float f = paramFloat1;
     if (paramBoolean) {
-      f = (float)(paramFloat1 + (1.0D - rn) * paramFloat2);
+      f = (float)(paramFloat1 + (1.0D - ti) * paramFloat2);
     }
     return f;
   }
   
-  private static int u(float paramFloat)
+  private static int s(float paramFloat)
   {
     int j = (int)(0.5F + paramFloat);
     int i = j;
@@ -82,7 +82,7 @@ final class ao
   
   final void ay(boolean paramBoolean)
   {
-    this.atp = paramBoolean;
+    this.avh = paramBoolean;
     invalidateSelf();
   }
   
@@ -95,100 +95,100 @@ final class ao
     int i;
     int k;
     float f4;
-    if (this.atm)
+    if (this.avd)
     {
       Object localObject1 = getBounds();
-      f1 = this.atj * 1.5F;
-      this.ath.set(((Rect)localObject1).left + this.atj, ((Rect)localObject1).top + f1, ((Rect)localObject1).right - this.atj, ((Rect)localObject1).bottom - f1);
-      localObject1 = new RectF(-this.Iv, -this.Iv, this.Iv, this.Iv);
+      f1 = this.ava * 1.5F;
+      this.auY.set(((Rect)localObject1).left + this.ava, ((Rect)localObject1).top + f1, ((Rect)localObject1).right - this.ava, ((Rect)localObject1).bottom - f1);
+      localObject1 = new RectF(-this.Kn, -this.Kn, this.Kn, this.Kn);
       Object localObject2 = new RectF((RectF)localObject1);
-      ((RectF)localObject2).inset(-this.atk, -this.atk);
-      if (this.ati == null)
+      ((RectF)localObject2).inset(-this.avb, -this.avb);
+      if (this.auZ == null)
       {
-        this.ati = new Path();
-        this.ati.setFillType(Path.FillType.EVEN_ODD);
-        this.ati.moveTo(-this.Iv, 0.0F);
-        this.ati.rLineTo(-this.atk, 0.0F);
-        this.ati.arcTo((RectF)localObject2, 180.0F, 90.0F, false);
-        this.ati.arcTo((RectF)localObject1, 270.0F, -90.0F, false);
-        this.ati.close();
-        f1 = this.Iv / (this.Iv + this.atk);
-        localObject1 = this.atf;
-        f2 = this.Iv;
-        f3 = this.atk;
-        i = this.atn;
-        k = this.atn;
-        int m = this.ato;
+        this.auZ = new Path();
+        this.auZ.setFillType(Path.FillType.EVEN_ODD);
+        this.auZ.moveTo(-this.Kn, 0.0F);
+        this.auZ.rLineTo(-this.avb, 0.0F);
+        this.auZ.arcTo((RectF)localObject2, 180.0F, 90.0F, false);
+        this.auZ.arcTo((RectF)localObject1, 270.0F, -90.0F, false);
+        this.auZ.close();
+        f1 = this.Kn / (this.Kn + this.avb);
+        localObject1 = this.auW;
+        f2 = this.Kn;
+        f3 = this.avb;
+        i = this.ave;
+        k = this.ave;
+        int m = this.avf;
         localObject2 = Shader.TileMode.CLAMP;
         ((Paint)localObject1).setShader(new RadialGradient(0.0F, 0.0F, f2 + f3, new int[] { i, k, m }, new float[] { 0.0F, f1, 1.0F }, (Shader.TileMode)localObject2));
-        localObject1 = this.atg;
-        f1 = -this.Iv;
-        f2 = this.atk;
-        f3 = -this.Iv;
-        f4 = this.atk;
-        i = this.atn;
-        k = this.atn;
-        m = this.ato;
+        localObject1 = this.auX;
+        f1 = -this.Kn;
+        f2 = this.avb;
+        f3 = -this.Kn;
+        f4 = this.avb;
+        i = this.ave;
+        k = this.ave;
+        m = this.avf;
         localObject2 = Shader.TileMode.CLAMP;
         ((Paint)localObject1).setShader(new LinearGradient(0.0F, f1 + f2, 0.0F, f3 - f4, new int[] { i, k, m }, new float[] { 0.0F, 0.5F, 1.0F }, (Shader.TileMode)localObject2));
-        this.atg.setAntiAlias(false);
-        this.atm = false;
+        this.auX.setAntiAlias(false);
+        this.avd = false;
       }
     }
     else
     {
-      paramCanvas.translate(0.0F, this.atl / 2.0F);
-      f1 = -this.Iv - this.atk;
-      f2 = this.Iv + this.atd + this.atl / 2.0F;
-      if (this.ath.width() - 2.0F * f2 <= 0.0F) {
+      paramCanvas.translate(0.0F, this.avc / 2.0F);
+      f1 = -this.Kn - this.avb;
+      f2 = this.Kn + this.auU + this.avc / 2.0F;
+      if (this.auY.width() - 2.0F * f2 <= 0.0F) {
         break label903;
       }
       i = 1;
       label504:
-      if (this.ath.height() - 2.0F * f2 <= 0.0F) {
+      if (this.auY.height() - 2.0F * f2 <= 0.0F) {
         break label909;
       }
     }
     for (;;)
     {
       k = paramCanvas.save();
-      paramCanvas.translate(this.ath.left + f2, this.ath.top + f2);
-      paramCanvas.drawPath(this.ati, this.atf);
+      paramCanvas.translate(this.auY.left + f2, this.auY.top + f2);
+      paramCanvas.drawPath(this.auZ, this.auW);
       if (i != 0) {
-        paramCanvas.drawRect(0.0F, f1, this.ath.width() - 2.0F * f2, -this.Iv, this.atg);
+        paramCanvas.drawRect(0.0F, f1, this.auY.width() - 2.0F * f2, -this.Kn, this.auX);
       }
       paramCanvas.restoreToCount(k);
       k = paramCanvas.save();
-      paramCanvas.translate(this.ath.right - f2, this.ath.bottom - f2);
+      paramCanvas.translate(this.auY.right - f2, this.auY.bottom - f2);
       paramCanvas.rotate(180.0F);
-      paramCanvas.drawPath(this.ati, this.atf);
+      paramCanvas.drawPath(this.auZ, this.auW);
       if (i != 0)
       {
-        f3 = this.ath.width();
-        f4 = -this.Iv;
-        paramCanvas.drawRect(0.0F, f1, f3 - 2.0F * f2, this.atk + f4, this.atg);
+        f3 = this.auY.width();
+        f4 = -this.Kn;
+        paramCanvas.drawRect(0.0F, f1, f3 - 2.0F * f2, this.avb + f4, this.auX);
       }
       paramCanvas.restoreToCount(k);
       i = paramCanvas.save();
-      paramCanvas.translate(this.ath.left + f2, this.ath.bottom - f2);
+      paramCanvas.translate(this.auY.left + f2, this.auY.bottom - f2);
       paramCanvas.rotate(270.0F);
-      paramCanvas.drawPath(this.ati, this.atf);
+      paramCanvas.drawPath(this.auZ, this.auW);
       if (j != 0) {
-        paramCanvas.drawRect(0.0F, f1, this.ath.height() - 2.0F * f2, -this.Iv, this.atg);
+        paramCanvas.drawRect(0.0F, f1, this.auY.height() - 2.0F * f2, -this.Kn, this.auX);
       }
       paramCanvas.restoreToCount(i);
       i = paramCanvas.save();
-      paramCanvas.translate(this.ath.right - f2, this.ath.top + f2);
+      paramCanvas.translate(this.auY.right - f2, this.auY.top + f2);
       paramCanvas.rotate(90.0F);
-      paramCanvas.drawPath(this.ati, this.atf);
+      paramCanvas.drawPath(this.auZ, this.auW);
       if (j != 0) {
-        paramCanvas.drawRect(0.0F, f1, this.ath.height() - 2.0F * f2, -this.Iv, this.atg);
+        paramCanvas.drawRect(0.0F, f1, this.auY.height() - 2.0F * f2, -this.Kn, this.auX);
       }
       paramCanvas.restoreToCount(i);
-      paramCanvas.translate(0.0F, -this.atl / 2.0F);
-      ate.a(paramCanvas, this.ath, this.Iv, this.mPaint);
+      paramCanvas.translate(0.0F, -this.avc / 2.0F);
+      auV.a(paramCanvas, this.auY, this.Kn, this.mPaint);
       return;
-      this.ati.reset();
+      this.auZ.reset();
       break;
       label903:
       i = 0;
@@ -206,23 +206,23 @@ final class ao
     if (paramFloat2 < 0.0F) {
       throw new IllegalArgumentException("Invalid max shadow size " + paramFloat2 + ". Must be >= 0");
     }
-    float f = u(paramFloat1);
-    paramFloat2 = u(paramFloat2);
+    float f = s(paramFloat1);
+    paramFloat2 = s(paramFloat2);
     paramFloat1 = f;
     if (f > paramFloat2)
     {
-      if (!this.atq) {
-        this.atq = true;
+      if (!this.avi) {
+        this.avi = true;
       }
       paramFloat1 = paramFloat2;
     }
-    if ((this.atl == paramFloat1) && (this.atj == paramFloat2)) {
+    if ((this.avc == paramFloat1) && (this.ava == paramFloat2)) {
       return;
     }
-    this.atl = paramFloat1;
-    this.atj = paramFloat2;
-    this.atk = ((int)(paramFloat1 * 1.5F + this.atd + 0.5F));
-    this.atm = true;
+    this.avc = paramFloat1;
+    this.ava = paramFloat2;
+    this.avb = ((int)(paramFloat1 * 1.5F + this.auU + 0.5F));
+    this.avd = true;
     invalidateSelf();
   }
   
@@ -232,18 +232,18 @@ final class ao
     if (paramColorStateList == null) {
       localColorStateList = ColorStateList.valueOf(0);
     }
-    this.atc = localColorStateList;
-    this.mPaint.setColor(this.atc.getColorForState(getState(), this.atc.getDefaultColor()));
+    this.auT = localColorStateList;
+    this.mPaint.setColor(this.auT.getColorForState(getState(), this.auT.getDefaultColor()));
   }
   
   final float getMinHeight()
   {
-    return Math.max(this.atj, this.Iv + this.atd + this.atj * 1.5F / 2.0F) * 2.0F + (this.atj * 1.5F + this.atd) * 2.0F;
+    return Math.max(this.ava, this.Kn + this.auU + this.ava * 1.5F / 2.0F) * 2.0F + (this.ava * 1.5F + this.auU) * 2.0F;
   }
   
   final float getMinWidth()
   {
-    return Math.max(this.atj, this.Iv + this.atd + this.atj / 2.0F) * 2.0F + (this.atj + this.atd) * 2.0F;
+    return Math.max(this.ava, this.Kn + this.auU + this.ava / 2.0F) * 2.0F + (this.ava + this.auU) * 2.0F;
   }
   
   public final int getOpacity()
@@ -253,31 +253,31 @@ final class ao
   
   public final boolean getPadding(Rect paramRect)
   {
-    int i = (int)Math.ceil(a(this.atj, this.Iv, this.atp));
-    int j = (int)Math.ceil(b(this.atj, this.Iv, this.atp));
+    int i = (int)Math.ceil(a(this.ava, this.Kn, this.avh));
+    int j = (int)Math.ceil(b(this.ava, this.Kn, this.avh));
     paramRect.set(j, i, j, i);
     return true;
   }
   
   public final boolean isStateful()
   {
-    return ((this.atc != null) && (this.atc.isStateful())) || (super.isStateful());
+    return ((this.auT != null) && (this.auT.isStateful())) || (super.isStateful());
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    this.atm = true;
+    this.avd = true;
   }
   
   protected final boolean onStateChange(int[] paramArrayOfInt)
   {
-    int i = this.atc.getColorForState(paramArrayOfInt, this.atc.getDefaultColor());
+    int i = this.auT.getColorForState(paramArrayOfInt, this.auT.getDefaultColor());
     if (this.mPaint.getColor() == i) {
       return false;
     }
     this.mPaint.setColor(i);
-    this.atm = true;
+    this.avd = true;
     invalidateSelf();
     return true;
   }
@@ -285,8 +285,8 @@ final class ao
   public final void setAlpha(int paramInt)
   {
     this.mPaint.setAlpha(paramInt);
-    this.atf.setAlpha(paramInt);
-    this.atg.setAlpha(paramInt);
+    this.auW.setAlpha(paramInt);
+    this.auX.setAlpha(paramInt);
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)

@@ -3,84 +3,84 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class btx
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String DSu;
-  public int Fdz;
-  public int Fje;
-  public int sVK;
-  public int sVo;
+  public String AesKey;
+  public String Md5;
+  public String Url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125742);
+    AppMethodBeat.i(104817);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.sVo);
-      paramVarArgs.aR(2, this.sVK);
-      paramVarArgs.aR(3, this.Fje);
-      if (this.DSu != null) {
-        paramVarArgs.d(4, this.DSu);
+      if (this.Url != null) {
+        paramVarArgs.d(1, this.Url);
       }
-      paramVarArgs.aR(5, this.Fdz);
-      AppMethodBeat.o(125742);
+      if (this.AesKey != null) {
+        paramVarArgs.d(2, this.AesKey);
+      }
+      if (this.Md5 != null) {
+        paramVarArgs.d(3, this.Md5);
+      }
+      AppMethodBeat.o(104817);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.Url == null) {
+        break label334;
+      }
+    }
+    label334:
+    for (int i = f.a.a.b.b.a.e(1, this.Url) + 0;; i = 0)
     {
-      int i = f.a.a.b.b.a.bx(1, this.sVo) + 0 + f.a.a.b.b.a.bx(2, this.sVK) + f.a.a.b.b.a.bx(3, this.Fje);
       paramInt = i;
-      if (this.DSu != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.DSu);
+      if (this.AesKey != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.AesKey);
       }
-      i = f.a.a.b.b.a.bx(5, this.Fdz);
-      AppMethodBeat.o(125742);
-      return paramInt + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
-        }
+      i = paramInt;
+      if (this.Md5 != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Md5);
       }
-      AppMethodBeat.o(125742);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      btx localbtx = (btx)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      AppMethodBeat.o(104817);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(125742);
-        return -1;
-      case 1: 
-        localbtx.sVo = locala.LVo.xF();
-        AppMethodBeat.o(125742);
-        return 0;
-      case 2: 
-        localbtx.sVK = locala.LVo.xF();
-        AppMethodBeat.o(125742);
-        return 0;
-      case 3: 
-        localbtx.Fje = locala.LVo.xF();
-        AppMethodBeat.o(125742);
-        return 0;
-      case 4: 
-        localbtx.DSu = locala.LVo.readString();
-        AppMethodBeat.o(125742);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gxE();
+          }
+        }
+        AppMethodBeat.o(104817);
         return 0;
       }
-      localbtx.Fdz = locala.LVo.xF();
-      AppMethodBeat.o(125742);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        btx localbtx = (btx)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(104817);
+          return -1;
+        case 1: 
+          localbtx.Url = locala.NPN.readString();
+          AppMethodBeat.o(104817);
+          return 0;
+        case 2: 
+          localbtx.AesKey = locala.NPN.readString();
+          AppMethodBeat.o(104817);
+          return 0;
+        }
+        localbtx.Md5 = locala.NPN.readString();
+        AppMethodBeat.o(104817);
+        return 0;
+      }
+      AppMethodBeat.o(104817);
+      return -1;
     }
-    AppMethodBeat.o(125742);
-    return -1;
   }
 }
 

@@ -3,8 +3,8 @@ package com.google.c.d;
 public final class e
   extends n
 {
-  static final int bJB = arrayOfInt[39];
-  static final int[] bJp;
+  static final int[] bTC;
+  static final int bTO = arrayOfInt[39];
   
   static
   {
@@ -54,7 +54,7 @@ public final class e
     arrayOfInt[42] = '';
     arrayOfInt[43] = 42;
     arrayOfInt;
-    bJp = arrayOfInt;
+    bTC = arrayOfInt;
   }
 }
 

@@ -12,13 +12,13 @@ final class SnsUserUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(200618);
+    AppMethodBeat.i(198486);
     paramMenuItem = new Intent();
-    paramMenuItem.setClass(this.yXT, SnsMsgUI.class);
+    paramMenuItem.setClass(this.ApE, SnsMsgUI.class);
     paramMenuItem.putExtra("sns_msg_force_show_all", true);
     paramMenuItem.putExtra("sns_msg_comment_list_scene", 2);
-    this.yXT.startActivityForResult(paramMenuItem, 8);
-    AppMethodBeat.o(200618);
+    this.ApE.startActivityForResult(paramMenuItem, 8);
+    AppMethodBeat.o(198486);
     return true;
   }
 }

@@ -11,12 +11,12 @@ public final class BuildConfig
   public static final String FLAVOR_sheetable = "sheetok";
   public static final boolean SHEET_ENABLE = true;
   public static final String SHEET_PROJECT_NAME = "tms";
-  public static final int VERSION_CODE = 2;
-  public static final String VERSION_NAME = "4.3.5";
+  public static final int VERSION_CODE = 1;
+  public static final String VERSION_NAME = "4.3.9";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.BuildConfig
  * JD-Core Version:    0.7.0.1
  */

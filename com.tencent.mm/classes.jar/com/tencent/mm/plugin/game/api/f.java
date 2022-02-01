@@ -1,26 +1,22 @@
 package com.tencent.mm.plugin.game.api;
 
-import android.content.Context;
-import android.os.Bundle;
 import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.plugin.game.media.d;
+import com.tencent.mm.plugin.game.model.s;
+import com.tencent.mm.plugin.game.model.w;
 
 public abstract interface f
   extends a
 {
-  public abstract void a(Context paramContext, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, Bundle paramBundle);
+  public abstract s cWH();
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt);
+  public abstract w cWI();
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, Bundle paramBundle);
+  public abstract com.tencent.mm.plugin.game.model.a.g cWJ();
   
-  public abstract void ad(String paramString1, String paramString2, String paramString3);
+  public abstract com.tencent.mm.plugin.game.media.g cWK();
   
-  public abstract void i(Context paramContext, String paramString, int paramInt);
-  
-  public static abstract interface a
-  {
-    public abstract void ag(String paramString, int paramInt1, int paramInt2);
-  }
+  public abstract d cWL();
 }
 
 

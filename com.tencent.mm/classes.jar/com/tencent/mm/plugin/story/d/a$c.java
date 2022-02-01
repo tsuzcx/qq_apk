@@ -4,20 +4,20 @@ import com.tencent.mm.plugin.story.i.j;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavSelectPresenter;", "", "loadDBData", "", "first", "", "loadFpData", "loadNpData", "onCreate", "userName", "", "onDestory", "setFavorite", "storys", "", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavSelectPresenter;", "", "loadDBData", "", "first", "", "loadFpData", "loadNpData", "onCreate", "userName", "", "onDestory", "setFavorite", "storys", "", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "plugin-story_release"})
 public abstract interface a$c
 {
-  public abstract void dPE();
+  public abstract void ebV();
   
-  public abstract void dUY();
+  public abstract void ehn();
   
-  public abstract void dUZ();
+  public abstract void eho();
   
-  public abstract void ga(List<j> paramList);
+  public abstract void gl(List<j> paramList);
   
   public abstract void onCreate(String paramString);
   
-  public abstract void rD(boolean paramBoolean);
+  public abstract void sj(boolean paramBoolean);
 }
 
 

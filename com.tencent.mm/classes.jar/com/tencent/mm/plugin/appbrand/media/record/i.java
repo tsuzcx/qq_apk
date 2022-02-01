@@ -1,78 +1,14 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class i
 {
-  public static String tV(int paramInt)
-  {
-    AppMethodBeat.i(146329);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("errType:" + paramInt + ", err:");
-    switch (paramInt)
-    {
-    case 10: 
-    case 11: 
-    case 12: 
-    case 13: 
-    case 14: 
-    default: 
-      ((StringBuilder)localObject).append("unknow error");
-    }
-    for (;;)
-    {
-      localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(146329);
-      return localObject;
-      ((StringBuilder)localObject).append("error PCM record callback");
-      continue;
-      ((StringBuilder)localObject).append("init encoder fail, occur exception");
-      continue;
-      ((StringBuilder)localObject).append("encoder un initial occur exception");
-      continue;
-      ((StringBuilder)localObject).append("start record occur exception");
-      continue;
-      ((StringBuilder)localObject).append("resume record occur exception");
-      continue;
-      ((StringBuilder)localObject).append("fail to start record");
-      continue;
-      ((StringBuilder)localObject).append("fail to resume record");
-      continue;
-      ((StringBuilder)localObject).append("fail to pause record");
-      continue;
-      ((StringBuilder)localObject).append("fail to stop record");
-      continue;
-      ((StringBuilder)localObject).append("check param invalid");
-      continue;
-      ((StringBuilder)localObject).append("not support format type");
-      continue;
-      ((StringBuilder)localObject).append("fail to init mp3 encoder");
-      continue;
-      ((StringBuilder)localObject).append("mp3 file not found exception");
-      continue;
-      ((StringBuilder)localObject).append("mp3 encode exception");
-      continue;
-      ((StringBuilder)localObject).append("mp3 write buffer exception");
-      continue;
-      ((StringBuilder)localObject).append("fail to init aac encoder");
-      continue;
-      ((StringBuilder)localObject).append("fail to create mp4 file");
-      continue;
-      ((StringBuilder)localObject).append("aac encode exception");
-      continue;
-      ((StringBuilder)localObject).append("create cache file fail");
-      continue;
-      ((StringBuilder)localObject).append("init encoder fail");
-      continue;
-      ((StringBuilder)localObject).append("not support sample rate");
-    }
-  }
-  
-  public static int tW(int paramInt)
+  public static int uA(int paramInt)
   {
     AppMethodBeat.i(146330);
-    ac.i("MicroMsg.Record.RecordErrorHandler", "getErrIdKey errType:%d", new Object[] { Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.Record.RecordErrorHandler", "getErrIdKey errType:%d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     case 10: 
@@ -147,10 +83,74 @@ public final class i
     AppMethodBeat.o(146330);
     return 26;
   }
+  
+  public static String uz(int paramInt)
+  {
+    AppMethodBeat.i(146329);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("errType:" + paramInt + ", err:");
+    switch (paramInt)
+    {
+    case 10: 
+    case 11: 
+    case 12: 
+    case 13: 
+    case 14: 
+    default: 
+      ((StringBuilder)localObject).append("unknow error");
+    }
+    for (;;)
+    {
+      localObject = ((StringBuilder)localObject).toString();
+      AppMethodBeat.o(146329);
+      return localObject;
+      ((StringBuilder)localObject).append("error PCM record callback");
+      continue;
+      ((StringBuilder)localObject).append("init encoder fail, occur exception");
+      continue;
+      ((StringBuilder)localObject).append("encoder un initial occur exception");
+      continue;
+      ((StringBuilder)localObject).append("start record occur exception");
+      continue;
+      ((StringBuilder)localObject).append("resume record occur exception");
+      continue;
+      ((StringBuilder)localObject).append("fail to start record");
+      continue;
+      ((StringBuilder)localObject).append("fail to resume record");
+      continue;
+      ((StringBuilder)localObject).append("fail to pause record");
+      continue;
+      ((StringBuilder)localObject).append("fail to stop record");
+      continue;
+      ((StringBuilder)localObject).append("check param invalid");
+      continue;
+      ((StringBuilder)localObject).append("not support format type");
+      continue;
+      ((StringBuilder)localObject).append("fail to init mp3 encoder");
+      continue;
+      ((StringBuilder)localObject).append("mp3 file not found exception");
+      continue;
+      ((StringBuilder)localObject).append("mp3 encode exception");
+      continue;
+      ((StringBuilder)localObject).append("mp3 write buffer exception");
+      continue;
+      ((StringBuilder)localObject).append("fail to init aac encoder");
+      continue;
+      ((StringBuilder)localObject).append("fail to create mp4 file");
+      continue;
+      ((StringBuilder)localObject).append("aac encode exception");
+      continue;
+      ((StringBuilder)localObject).append("create cache file fail");
+      continue;
+      ((StringBuilder)localObject).append("init encoder fail");
+      continue;
+      ((StringBuilder)localObject).append("not support sample rate");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.i
  * JD-Core Version:    0.7.0.1
  */

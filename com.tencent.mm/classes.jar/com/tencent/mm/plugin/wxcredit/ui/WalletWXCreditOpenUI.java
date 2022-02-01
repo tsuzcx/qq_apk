@@ -9,7 +9,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
@@ -17,8 +19,8 @@ import com.tencent.mm.wallet_core.ui.e;
 public class WalletWXCreditOpenUI
   extends WalletBaseUI
 {
-  private Bankcard Bgn;
-  private Button iXb;
+  private Bankcard CGB;
+  private Button jqk;
   
   public int getLayoutId()
   {
@@ -43,17 +45,25 @@ public class WalletWXCreditOpenUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72394);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditOpenUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         e.b(WalletWXCreditOpenUI.this, WalletWXCreditOpenUI.b(WalletWXCreditOpenUI.this).field_bankcardType, WalletWXCreditOpenUI.b(WalletWXCreditOpenUI.this).field_bankName, true, false);
+        a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditOpenUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(72394);
       }
     });
-    this.iXb = ((Button)findViewById(2131302852));
-    this.iXb.setOnClickListener(new View.OnClickListener()
+    this.jqk = ((Button)findViewById(2131302852));
+    this.jqk.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72395);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditOpenUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         WalletWXCreditOpenUI.this.next();
+        a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditOpenUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(72395);
       }
     });
@@ -64,7 +74,7 @@ public class WalletWXCreditOpenUI
   {
     AppMethodBeat.i(72396);
     super.onCreate(paramBundle);
-    this.Bgn = ((Bankcard)getInput().getParcelable("key_bankcard"));
+    this.CGB = ((Bankcard)getInput().getParcelable("key_bankcard"));
     initView();
     AppMethodBeat.o(72396);
   }
@@ -82,7 +92,7 @@ public class WalletWXCreditOpenUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditOpenUI
  * JD-Core Version:    0.7.0.1
  */

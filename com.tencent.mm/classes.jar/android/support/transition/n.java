@@ -5,8 +5,8 @@ import android.view.ViewGroup;
 
 public final class n
 {
-  ViewGroup zH;
-  Runnable zI;
+  ViewGroup By;
+  Runnable Bz;
   
   static n F(View paramView)
   {

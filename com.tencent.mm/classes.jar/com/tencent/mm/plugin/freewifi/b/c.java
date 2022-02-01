@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.freewifi.b;
 
 import android.database.MatrixCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.fp;
-import com.tencent.mm.g.a.fp.a;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.a.fs;
+import com.tencent.mm.g.a.fs.a;
 import com.tencent.mm.plugin.freewifi.d.j;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.protocal.protobuf.bti;
-import com.tencent.mm.protocal.protobuf.btj;
-import com.tencent.mm.protocal.protobuf.btk;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.bxw;
+import com.tencent.mm.protocal.protobuf.bxx;
+import com.tencent.mm.protocal.protobuf.bxy;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -20,19 +20,19 @@ import org.json.JSONObject;
 
 public final class c
 {
-  private static final String[] spH = { "ssid", "bssid", "rssi", "isWechatWifi", "wechatShopName", "maxApCount", "intervalSeconds" };
-  private static final String[] spI = { "errcode", "errmsg", "maxApCount", "intervalSeconds" };
-  private int spJ = 200;
-  private int spK = 180;
-  private long spL = 0L;
+  private static final String[] tmk = { "ssid", "bssid", "rssi", "isWechatWifi", "wechatShopName", "maxApCount", "intervalSeconds" };
+  private static final String[] tml = { "errcode", "errmsg", "maxApCount", "intervalSeconds" };
+  private int tmm = 200;
+  private int tmn = 180;
+  private long tmo = 0L;
   
-  private void a(fp paramfp, int paramInt, String paramString)
+  private void a(fs paramfs, int paramInt, String paramString)
   {
     AppMethodBeat.i(24754);
-    ac.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "FreeWifiManufacturerGetWifiListHelper setErrorResult. errorcode=%d, errmsg=%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "FreeWifiManufacturerGetWifiListHelper setErrorResult. errorcode=%d, errmsg=%s", new Object[] { Integer.valueOf(paramInt), paramString });
     try
     {
-      localMatrixCursor = new MatrixCursor(spI);
+      localMatrixCursor = new MatrixCursor(tml);
       if (localMatrixCursor == null) {
         break label134;
       }
@@ -41,11 +41,11 @@ public final class c
     {
       try
       {
-        localMatrixCursor.addRow(new Object[] { Integer.valueOf(paramInt), paramString, Integer.valueOf(cIP()), Integer.valueOf(cIQ()) });
-        paramfp.dfE.dfG = localMatrixCursor;
-        paramfp.dfE.dfl = 1;
-        if (paramfp.callback != null) {
-          paramfp.callback.run();
+        localMatrixCursor.addRow(new Object[] { Integer.valueOf(paramInt), paramString, Integer.valueOf(cRe()), Integer.valueOf(cRf()) });
+        paramfs.dra.drc = localMatrixCursor;
+        paramfs.dra.dqH = 1;
+        if (paramfs.callback != null) {
+          paramfs.callback.run();
         }
         AppMethodBeat.o(24754);
         return;
@@ -61,28 +61,28 @@ public final class c
     label124:
     localMatrixCursor.close();
     label134:
-    ac.e("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "exception in getWifiList syncTaskCur.", new Object[] { paramString });
-    paramfp.dfE.dfG = null;
-    paramfp.dfE.dfl = 1;
-    if (paramfp.callback != null) {
-      paramfp.callback.run();
+    ad.e("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "exception in getWifiList syncTaskCur.", new Object[] { paramString });
+    paramfs.dra.drc = null;
+    paramfs.dra.dqH = 1;
+    if (paramfs.callback != null) {
+      paramfs.callback.run();
     }
     AppMethodBeat.o(24754);
   }
   
-  public static c cIO()
+  public static c cRd()
   {
     AppMethodBeat.i(24752);
-    c localc = a.cIS();
+    c localc = a.cRh();
     AppMethodBeat.o(24752);
     return localc;
   }
   
-  private long cIR()
+  private long cRg()
   {
     try
     {
-      long l = this.spL;
+      long l = this.tmo;
       return l;
     }
     finally
@@ -92,14 +92,14 @@ public final class c
     }
   }
   
-  public final void Fr(int paramInt)
+  public final void GG(int paramInt)
   {
     try
     {
       AppMethodBeat.i(24756);
-      ac.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "setReqMaxApCount() param reqMaxApCount = ".concat(String.valueOf(paramInt)));
-      this.spJ = paramInt;
-      ac.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "setReqMaxApCount() this.reqMaxApCount = " + this.spJ);
+      ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "setReqMaxApCount() param reqMaxApCount = ".concat(String.valueOf(paramInt)));
+      this.tmm = paramInt;
+      ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "setReqMaxApCount() this.reqMaxApCount = " + this.tmm);
       AppMethodBeat.o(24756);
       return;
     }
@@ -110,11 +110,11 @@ public final class c
     }
   }
   
-  public final void Fs(int paramInt)
+  public final void GH(int paramInt)
   {
     try
     {
-      this.spK = paramInt;
+      this.tmn = paramInt;
       return;
     }
     finally
@@ -124,7 +124,7 @@ public final class c
     }
   }
   
-  public final void a(final fp paramfp)
+  public final void a(final fs paramfs)
   {
     int j = 0;
     for (;;)
@@ -133,12 +133,12 @@ public final class c
       try
       {
         AppMethodBeat.i(24753);
-        ac.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "method getWifiList called. reqMaxApCount=" + cIP() + "; reqIntervalSeconds=" + cIQ());
-        localObject = paramfp.dfD.dfF;
+        ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "method getWifiList called. reqMaxApCount=" + cRe() + "; reqIntervalSeconds=" + cRf());
+        localObject = paramfs.dqZ.drb;
         if ((localObject != null) && (localObject.length != 0)) {
           continue;
         }
-        a(paramfp, 1101, "Args is empty.");
+        a(paramfs, 1101, "Args is empty.");
         AppMethodBeat.o(24753);
       }
       finally
@@ -153,15 +153,15 @@ public final class c
           if (localObject.length == 3) {
             break label258;
           }
-          a(paramfp, 1104, "Args.length should be 3, but now it is " + localObject.length + ".");
+          a(paramfs, 1104, "Args.length should be 3, but now it is " + localObject.length + ".");
           AppMethodBeat.o(24753);
         }
         catch (Exception localException1)
         {
-          a(paramfp, 1102, "Args[0] is not an integer.");
+          a(paramfs, 1102, "Args[0] is not an integer.");
           AppMethodBeat.o(24753);
         }
-        paramfp = finally;
+        paramfs = finally;
       }
       return;
       localStringBuilder = new StringBuilder();
@@ -173,7 +173,7 @@ public final class c
       }
       else
       {
-        ac.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "args: " + localStringBuilder.toString());
+        ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "args: " + localStringBuilder.toString());
         continue;
         label258:
         final int k;
@@ -183,24 +183,24 @@ public final class c
           if ((k == 1) || (k == 2)) {
             break label322;
           }
-          a(paramfp, 1106, "Args[2] should be integer 1 (from setting) or integer 2 (from background).");
+          a(paramfs, 1106, "Args[2] should be integer 1 (from setting) or integer 2 (from background).");
           AppMethodBeat.o(24753);
         }
         catch (Exception localException2)
         {
-          a(paramfp, 1107, "Args[2] is not a valid int value.");
+          a(paramfs, 1107, "Args[2] is not a valid int value.");
           AppMethodBeat.o(24753);
         }
         continue;
         label322:
-        if ((cIR() != 0L) && (System.currentTimeMillis() - cIR() < cIQ()) && (k == 2))
+        if ((cRg() != 0L) && (System.currentTimeMillis() - cRg() < cRf()) && (k == 2))
         {
-          a(paramfp, 1109, "Request frequence is out of limit. The time btween two background request should be more than  " + this.spK + " seconds.");
+          a(paramfs, 1109, "Request frequence is out of limit. The time btween two background request should be more than  " + this.tmn + " seconds.");
           AppMethodBeat.o(24753);
         }
-        else if (m.cX(localObject[1]))
+        else if (m.ea(localObject[1]))
         {
-          a(paramfp, 1105, "Args[1] should be an ap list json string, but now it is empty.");
+          a(paramfs, 1105, "Args[1] should be an ap list json string, but now it is empty.");
           AppMethodBeat.o(24753);
         }
         else
@@ -209,74 +209,74 @@ public final class c
           try
           {
             localObject = new JSONArray(localObject[1]);
-            if (((JSONArray)localObject).length() > cIP())
+            if (((JSONArray)localObject).length() > cRe())
             {
-              a(paramfp, 1110, "jsonArray.length()=" + ((JSONArray)localObject).length() + ". Too many ap. The number of ap requested per time should be between 1 and " + cIP() + ".");
+              a(paramfs, 1110, "jsonArray.length()=" + ((JSONArray)localObject).length() + ". Too many ap. The number of ap requested per time should be between 1 and " + cRe() + ".");
               AppMethodBeat.o(24753);
               continue;
             }
             i = j;
             if (((JSONArray)localObject).length() == 0)
             {
-              a(paramfp, 1110, "jsonArray.length()=" + ((JSONArray)localObject).length() + ". Too many ap. The number of ap requested per time should be between 1 and " + cIP() + ".");
+              a(paramfs, 1110, "jsonArray.length()=" + ((JSONArray)localObject).length() + ". Too many ap. The number of ap requested per time should be between 1 and " + cRe() + ".");
               AppMethodBeat.o(24753);
               continue;
             }
             while (i < ((JSONArray)localObject).length())
             {
               JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-              btj localbtj = new btj();
-              localbtj.ssid = m.afk(localJSONObject.getString("ssid"));
-              localbtj.bssid = localJSONObject.getString("bssid");
-              localbtj.dfk = localJSONObject.getInt("rssi");
-              localLinkedList.add(localbtj);
+              bxx localbxx = new bxx();
+              localbxx.ssid = m.ajI(localJSONObject.getString("ssid"));
+              localbxx.bssid = localJSONObject.getString("bssid");
+              localbxx.dqG = localJSONObject.getInt("rssi");
+              localLinkedList.add(localbxx);
               i += 1;
             }
           }
           catch (Exception localException3)
           {
-            a(paramfp, 1105, "Args[1] is not a valid json array value and it should be a string like  [  {    \"ssid\": \"SSID_NAME\",    \"bssid\": \"0e:00:00:00:00:00\",    \"rssi\": -45  }].");
+            a(paramfs, 1105, "Args[1] is not a valid json array value and it should be a string like  [  {    \"ssid\": \"SSID_NAME\",    \"bssid\": \"0e:00:00:00:00:00\",    \"rssi\": -45  }].");
             AppMethodBeat.o(24753);
           }
-          new j(localException3, k).c(new g()
+          new j(localException3, k).c(new f()
           {
             public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
             {
               AppMethodBeat.i(24750);
               synchronized (c.this)
               {
-                paramAnonymousn = ((j)paramAnonymousn).cJC();
-                c.this.vs(System.currentTimeMillis());
+                paramAnonymousn = ((j)paramAnonymousn).cRR();
+                c.this.xy(System.currentTimeMillis());
                 localObject1 = c.this;
                 int i;
-                if (paramAnonymousn.spK <= 0) {
+                if (paramAnonymousn.tmn <= 0) {
                   i = 180;
                 }
                 for (;;)
                 {
-                  ((c)localObject1).Fs(i);
-                  ac.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "resp.reqMaxApCount=" + paramAnonymousn.spJ);
-                  if (paramAnonymousn.spJ <= 0)
+                  ((c)localObject1).GH(i);
+                  ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "resp.reqMaxApCount=" + paramAnonymousn.tmm);
+                  if (paramAnonymousn.tmm <= 0)
                   {
                     i = 200;
                     label99:
-                    ac.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "_reqMaxApCount = ".concat(String.valueOf(i)));
-                    c.this.Fr(i);
+                    ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "_reqMaxApCount = ".concat(String.valueOf(i)));
+                    c.this.GG(i);
                     if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
                       break label1021;
                     }
-                    paramAnonymousString = paramAnonymousn.Fir;
+                    paramAnonymousString = paramAnonymousn.GRS;
                     localObject1 = null;
                   }
                   for (;;)
                   {
                     try
                     {
-                      paramAnonymousn = new MatrixCursor(c.aQx());
+                      paramAnonymousn = new MatrixCursor(c.aTJ());
                     }
                     catch (Exception paramAnonymousString)
                     {
-                      btk localbtk;
+                      bxy localbxy;
                       Object localObject2;
                       paramAnonymousn = (n)localObject1;
                       continue;
@@ -289,52 +289,52 @@ public final class c
                       paramAnonymousInt1 = 0;
                       if (paramAnonymousInt1 < paramAnonymousString.size())
                       {
-                        localbtk = (btk)paramAnonymousString.get(paramAnonymousInt1);
-                        ((Map)localObject1).put(localbtk.ssid + "-" + localbtk.bssid, Integer.valueOf(paramAnonymousInt1));
+                        localbxy = (bxy)paramAnonymousString.get(paramAnonymousInt1);
+                        ((Map)localObject1).put(localbxy.ssid + "-" + localbxy.bssid, Integer.valueOf(paramAnonymousInt1));
                         paramAnonymousInt1 += 1;
                         continue;
-                        i = paramAnonymousn.spK;
+                        i = paramAnonymousn.tmn;
                         break;
-                        i = paramAnonymousn.spJ;
+                        i = paramAnonymousn.tmm;
                         break label99;
                       }
                       paramAnonymousInt1 = 0;
                       if (paramAnonymousInt1 >= localException3.size()) {
                         continue;
                       }
-                      localObject2 = (btj)localException3.get(paramAnonymousInt1);
-                      localbtk = new btk();
-                      localbtk.ssid = ((btj)localObject2).ssid;
-                      localbtk.bssid = ((btj)localObject2).bssid;
-                      localbtk.dfk = ((btj)localObject2).dfk;
-                      localbtk.Fis = 0;
-                      localbtk.Fit = null;
-                      localbtk.soD = 0;
-                      localbtk.dbq = null;
-                      if (((Map)localObject1).get(localbtk.ssid + "-" + localbtk.bssid) != null)
+                      localObject2 = (bxx)localException3.get(paramAnonymousInt1);
+                      localbxy = new bxy();
+                      localbxy.ssid = ((bxx)localObject2).ssid;
+                      localbxy.bssid = ((bxx)localObject2).bssid;
+                      localbxy.dqG = ((bxx)localObject2).dqG;
+                      localbxy.GRT = 0;
+                      localbxy.GRU = null;
+                      localbxy.tlg = 0;
+                      localbxy.dmM = null;
+                      if (((Map)localObject1).get(localbxy.ssid + "-" + localbxy.bssid) != null)
                       {
-                        localObject2 = (Integer)((Map)localObject1).get(localbtk.ssid + "-" + localbtk.bssid);
+                        localObject2 = (Integer)((Map)localObject1).get(localbxy.ssid + "-" + localbxy.bssid);
                         if (paramAnonymousString.get(((Integer)localObject2).intValue()) != null)
                         {
-                          localbtk.Fis = ((btk)paramAnonymousString.get(((Integer)localObject2).intValue())).Fis;
-                          localbtk.Fit = ((btk)paramAnonymousString.get(((Integer)localObject2).intValue())).Fit;
-                          localbtk.soD = ((btk)paramAnonymousString.get(((Integer)localObject2).intValue())).soD;
-                          localbtk.dbq = ((btk)paramAnonymousString.get(((Integer)localObject2).intValue())).dbq;
+                          localbxy.GRT = ((bxy)paramAnonymousString.get(((Integer)localObject2).intValue())).GRT;
+                          localbxy.GRU = ((bxy)paramAnonymousString.get(((Integer)localObject2).intValue())).GRU;
+                          localbxy.tlg = ((bxy)paramAnonymousString.get(((Integer)localObject2).intValue())).tlg;
+                          localbxy.dmM = ((bxy)paramAnonymousString.get(((Integer)localObject2).intValue())).dmM;
                         }
                       }
-                      if ((localbtk.soD != 4) && (localbtk.soD != 31))
+                      if ((localbxy.tlg != 4) && (localbxy.tlg != 31))
                       {
-                        paramAnonymousn.addRow(new Object[] { localbtk.ssid, localbtk.bssid, Integer.valueOf(localbtk.dfk), Integer.valueOf(0), null, Integer.valueOf(c.this.cIP()), Integer.valueOf(c.this.cIQ()) });
-                        ac.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "cursor add row. ssid=%s, bssid=%s, rssi=%d, isWechatwifi=%d, wechatShopName=%s, maxApCount=%d, reqIntervalSeconds=%d", new Object[] { localbtk.ssid, localbtk.bssid, Integer.valueOf(localbtk.dfk), Integer.valueOf(0), null, Integer.valueOf(c.this.cIP()), Integer.valueOf(c.this.cIQ()) });
+                        paramAnonymousn.addRow(new Object[] { localbxy.ssid, localbxy.bssid, Integer.valueOf(localbxy.dqG), Integer.valueOf(0), null, Integer.valueOf(c.this.cRe()), Integer.valueOf(c.this.cRf()) });
+                        ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "cursor add row. ssid=%s, bssid=%s, rssi=%d, isWechatwifi=%d, wechatShopName=%s, maxApCount=%d, reqIntervalSeconds=%d", new Object[] { localbxy.ssid, localbxy.bssid, Integer.valueOf(localbxy.dqG), Integer.valueOf(0), null, Integer.valueOf(c.this.cRe()), Integer.valueOf(c.this.cRf()) });
                       }
                       else
                       {
-                        paramAnonymousn.addRow(new Object[] { localbtk.ssid, localbtk.bssid, Integer.valueOf(localbtk.dfk), Integer.valueOf(localbtk.Fis), localbtk.Fit, Integer.valueOf(c.this.cIP()), Integer.valueOf(c.this.cIQ()) });
-                        ac.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "cursor add row. ssid=%s, bssid=%s, rssi=%d, isWechatwifi=%d, wechatShopName=%s, maxApCount=%d, reqIntervalSeconds=%d", new Object[] { localbtk.ssid, localbtk.bssid, Integer.valueOf(localbtk.dfk), Integer.valueOf(localbtk.Fis), localbtk.Fit, Integer.valueOf(c.this.cIP()), Integer.valueOf(c.this.cIQ()) });
-                        if ((localbtk.Fis == 1) && (k == 1))
+                        paramAnonymousn.addRow(new Object[] { localbxy.ssid, localbxy.bssid, Integer.valueOf(localbxy.dqG), Integer.valueOf(localbxy.GRT), localbxy.GRU, Integer.valueOf(c.this.cRe()), Integer.valueOf(c.this.cRf()) });
+                        ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "cursor add row. ssid=%s, bssid=%s, rssi=%d, isWechatwifi=%d, wechatShopName=%s, maxApCount=%d, reqIntervalSeconds=%d", new Object[] { localbxy.ssid, localbxy.bssid, Integer.valueOf(localbxy.dqG), Integer.valueOf(localbxy.GRT), localbxy.GRU, Integer.valueOf(c.this.cRe()), Integer.valueOf(c.this.cRf()) });
+                        if ((localbxy.GRT == 1) && (k == 1))
                         {
-                          a.a.cIM().e(localbtk.ssid, localbtk.bssid, localbtk.dbq, localbtk.soD);
-                          ac.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "cached : ssid=%s, bssid=%s, apKey=%s, protocolType=%d. ", new Object[] { localbtk.ssid, localbtk.bssid, localbtk.dbq, Integer.valueOf(localbtk.soD) });
+                          a.a.cRb().e(localbxy.ssid, localbxy.bssid, localbxy.dmM, localbxy.tlg);
+                          ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "cached : ssid=%s, bssid=%s, apKey=%s, protocolType=%d. ", new Object[] { localbxy.ssid, localbxy.bssid, localbxy.dmM, Integer.valueOf(localbxy.tlg) });
                         }
                       }
                     }
@@ -344,21 +344,21 @@ public final class c
                 if (paramAnonymousn != null) {
                   paramAnonymousn.close();
                 }
-                ac.e("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "exception in getWifiList syncTaskCur.", new Object[] { paramAnonymousString });
-                c.a(c.this, paramfp, 1108, "cursor exception.");
+                ad.e("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "exception in getWifiList syncTaskCur.", new Object[] { paramAnonymousString });
+                c.a(c.this, paramfs, 1108, "cursor exception.");
                 AppMethodBeat.o(24750);
                 return;
-                c.a(paramfp, paramAnonymousn);
+                c.a(paramfs, paramAnonymousn);
                 AppMethodBeat.o(24750);
                 return;
                 label1021:
                 if (paramAnonymousInt2 == -30035)
                 {
-                  c.a(c.this, paramfp, 1110, "Too many ap. The number of ap requested per time should be between 1 and " + c.this.cIP() + ".");
+                  c.a(c.this, paramfs, 1110, "Too many ap. The number of ap requested per time should be between 1 and " + c.this.cRe() + ".");
                   AppMethodBeat.o(24750);
                   return;
                 }
-                c.a(c.this, paramfp, 1121, "Server returns errtype= " + paramAnonymousInt1 + ", errcode=" + paramAnonymousInt2 + ", errMsg=" + m.afl(paramAnonymousString) + ".");
+                c.a(c.this, paramfs, 1121, "Server returns errtype= " + paramAnonymousInt1 + ", errcode=" + paramAnonymousInt2 + ", errMsg=" + m.ajJ(paramAnonymousString) + ".");
                 AppMethodBeat.o(24750);
                 return;
               }
@@ -367,20 +367,20 @@ public final class c
           AppMethodBeat.o(24753);
           continue;
           label714:
-          a(paramfp, 1103, "Wechant installed currently only supports version 1.");
+          a(paramfs, 1103, "Wechant installed currently only supports version 1.");
           AppMethodBeat.o(24753);
         }
       }
     }
   }
   
-  public final int cIP()
+  public final int cRe()
   {
     try
     {
       AppMethodBeat.i(24755);
-      ac.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "getReqMaxApCount() returns " + this.spJ);
-      int i = this.spJ;
+      ad.i("MicroMsg.FreeWifi.FreeWifiManufacturerGetWifiListHelper", "getReqMaxApCount() returns " + this.tmm);
+      int i = this.tmm;
       AppMethodBeat.o(24755);
       return i;
     }
@@ -391,11 +391,11 @@ public final class c
     }
   }
   
-  public final int cIQ()
+  public final int cRf()
   {
     try
     {
-      int i = this.spK;
+      int i = this.tmn;
       return i;
     }
     finally
@@ -405,11 +405,11 @@ public final class c
     }
   }
   
-  public final void vs(long paramLong)
+  public final void xy(long paramLong)
   {
     try
     {
-      this.spL = paramLong;
+      this.tmo = paramLong;
       return;
     }
     finally
@@ -421,19 +421,19 @@ public final class c
   
   static final class a
   {
-    private static c spQ;
+    private static c tmt;
     
     static
     {
       AppMethodBeat.i(24751);
-      spQ = new c((byte)0);
+      tmt = new c((byte)0);
       AppMethodBeat.o(24751);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.b.c
  * JD-Core Version:    0.7.0.1
  */

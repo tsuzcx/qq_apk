@@ -5,30 +5,30 @@ import android.app.ActivityManager.RecentTaskInfo;
 import android.content.Context;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.lang.reflect.Field;
 import java.util.List;
 
 public final class g
 {
-  public static boolean vpM;
+  public static boolean wve;
   
   static
   {
     AppMethodBeat.i(149094);
-    vpM = false;
+    wve = false;
     long l = System.nanoTime();
     try
     {
-      vpM = false;
+      wve = false;
       if (Build.VERSION.SDK_INT < 21) {}
-      for (vpM = false;; vpM = false)
+      for (wve = false;; wve = false)
       {
         return;
         Field localField = ActivityManager.RecentTaskInfo.class.getDeclaredField("instanceId");
         localField.setAccessible(true);
-        localList = ((ActivityManager)ai.getContext().getApplicationContext().getSystemService("activity")).getRecentTasks(1, 2);
+        localList = ((ActivityManager)aj.getContext().getApplicationContext().getSystemService("activity")).getRecentTasks(1, 2);
         if ((localList != null) && (localList.size() != 0)) {
           break;
         }
@@ -39,16 +39,16 @@ public final class g
       for (;;)
       {
         List localList;
-        vpM = false;
+        wve = false;
         return;
         if (localThrowable.getInt((ActivityManager.RecentTaskInfo)localList.get(0)) > 0) {
-          vpM = true;
+          wve = true;
         }
       }
     }
     finally
     {
-      ac.i("MicroMsg.NormalMsgSource.QSDTH", "QSDT, result: %b, time: %d ns", new Object[] { Boolean.valueOf(vpM), Long.valueOf(System.nanoTime() - l) });
+      ad.i("MicroMsg.NormalMsgSource.QSDTH", "QSDT, result: %b, time: %d ns", new Object[] { Boolean.valueOf(wve), Long.valueOf(System.nanoTime() - l) });
       AppMethodBeat.o(149094);
     }
   }

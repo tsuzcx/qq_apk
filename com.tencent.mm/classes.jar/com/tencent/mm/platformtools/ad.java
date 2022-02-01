@@ -1,185 +1,223 @@
 package com.tencent.mm.platformtools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.util.Random;
+
 public final class ad
 {
-  public final int action;
-  public final String content;
-  public final int dcp;
-  public final int errorCode;
-  public final int iwS;
-  public final String title;
-  public final int type;
-  public final String url;
+  private int crypt;
+  private boolean header;
+  private byte[] key;
+  private byte[] out;
+  private int padding;
+  private byte[] plain;
+  private int pos;
+  private int preCrypt;
+  private byte[] prePlain;
+  private Random random;
   
-  /* Error */
-  public ad(int paramInt1, int paramInt2, String paramString)
+  public ad()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokespecial 21	java/lang/Object:<init>	()V
-    //   4: ldc 22
-    //   6: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: ldc 30
-    //   11: astore 10
-    //   13: iconst_5
-    //   14: istore 4
-    //   16: aload_3
-    //   17: ldc 32
-    //   19: invokestatic 38	com/tencent/mm/sdk/platformtools/bv:L	(Ljava/lang/String;Ljava/lang/String;)Ljava/util/Map;
-    //   22: astore 9
-    //   24: aload 9
-    //   26: ifnonnull +100 -> 126
-    //   29: new 40	java/lang/IllegalArgumentException
-    //   32: dup
-    //   33: ldc 42
-    //   35: invokespecial 45	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
-    //   38: astore_3
-    //   39: ldc 22
-    //   41: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   44: aload_3
-    //   45: athrow
-    //   46: astore 9
-    //   48: ldc 30
-    //   50: astore 8
-    //   52: ldc 30
-    //   54: astore_3
-    //   55: iconst_0
-    //   56: istore 5
-    //   58: iconst_0
-    //   59: istore 6
-    //   61: ldc 50
-    //   63: aload 9
-    //   65: invokevirtual 54	java/lang/Exception:toString	()Ljava/lang/String;
-    //   68: invokestatic 59	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   71: aload 10
-    //   73: astore 9
-    //   75: aload_0
-    //   76: iload_2
-    //   77: putfield 61	com/tencent/mm/platformtools/ad:errorCode	I
-    //   80: aload_0
-    //   81: iload_1
-    //   82: putfield 63	com/tencent/mm/platformtools/ad:dcp	I
-    //   85: aload_0
-    //   86: iload 6
-    //   88: putfield 65	com/tencent/mm/platformtools/ad:type	I
-    //   91: aload_0
-    //   92: iload 5
-    //   94: putfield 67	com/tencent/mm/platformtools/ad:action	I
-    //   97: aload_0
-    //   98: aload 9
-    //   100: putfield 69	com/tencent/mm/platformtools/ad:content	Ljava/lang/String;
-    //   103: aload_0
-    //   104: iload 4
-    //   106: putfield 71	com/tencent/mm/platformtools/ad:iwS	I
-    //   109: aload_0
-    //   110: aload 8
-    //   112: putfield 73	com/tencent/mm/platformtools/ad:title	Ljava/lang/String;
-    //   115: aload_0
-    //   116: aload_3
-    //   117: putfield 75	com/tencent/mm/platformtools/ad:url	Ljava/lang/String;
-    //   120: ldc 22
-    //   122: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   125: return
-    //   126: aload 9
-    //   128: ldc 77
-    //   130: invokeinterface 83 2 0
-    //   135: checkcast 85	java/lang/String
-    //   138: invokestatic 91	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   141: invokevirtual 95	java/lang/Integer:intValue	()I
-    //   144: istore 6
-    //   146: aload 9
-    //   148: ldc 97
-    //   150: invokeinterface 83 2 0
-    //   155: checkcast 85	java/lang/String
-    //   158: invokestatic 91	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   161: invokevirtual 95	java/lang/Integer:intValue	()I
-    //   164: istore 5
-    //   166: aload 9
-    //   168: ldc 99
-    //   170: invokeinterface 83 2 0
-    //   175: checkcast 85	java/lang/String
-    //   178: invokestatic 91	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   181: invokevirtual 95	java/lang/Integer:intValue	()I
-    //   184: istore 7
-    //   186: iload 7
-    //   188: istore 4
-    //   190: aload 9
-    //   192: ldc 101
-    //   194: invokeinterface 83 2 0
-    //   199: checkcast 85	java/lang/String
-    //   202: astore 8
-    //   204: aload 9
-    //   206: ldc 103
-    //   208: invokeinterface 83 2 0
-    //   213: checkcast 85	java/lang/String
-    //   216: astore_3
-    //   217: aload 9
-    //   219: ldc 105
-    //   221: invokeinterface 83 2 0
-    //   226: checkcast 85	java/lang/String
-    //   229: astore 9
-    //   231: goto -156 -> 75
-    //   234: astore 9
-    //   236: ldc 30
-    //   238: astore 8
-    //   240: ldc 30
-    //   242: astore_3
-    //   243: iconst_0
-    //   244: istore 5
-    //   246: goto -185 -> 61
-    //   249: astore 9
-    //   251: ldc 30
-    //   253: astore 8
-    //   255: ldc 30
-    //   257: astore_3
-    //   258: goto -197 -> 61
-    //   261: astore 9
-    //   263: ldc 30
-    //   265: astore 8
-    //   267: ldc 30
-    //   269: astore_3
-    //   270: goto -209 -> 61
-    //   273: astore 9
-    //   275: ldc 30
-    //   277: astore_3
-    //   278: goto -217 -> 61
-    //   281: astore 9
-    //   283: goto -222 -> 61
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	286	0	this	ad
-    //   0	286	1	paramInt1	int
-    //   0	286	2	paramInt2	int
-    //   0	286	3	paramString	String
-    //   14	175	4	i	int
-    //   56	189	5	j	int
-    //   59	86	6	k	int
-    //   184	3	7	m	int
-    //   50	216	8	str1	String
-    //   22	3	9	localMap	java.util.Map
-    //   46	18	9	localException1	java.lang.Exception
-    //   73	157	9	str2	String
-    //   234	1	9	localException2	java.lang.Exception
-    //   249	1	9	localException3	java.lang.Exception
-    //   261	1	9	localException4	java.lang.Exception
-    //   273	1	9	localException5	java.lang.Exception
-    //   281	1	9	localException6	java.lang.Exception
-    //   11	61	10	str3	String
-    // Exception table:
-    //   from	to	target	type
-    //   16	24	46	java/lang/Exception
-    //   29	46	46	java/lang/Exception
-    //   126	146	46	java/lang/Exception
-    //   146	166	234	java/lang/Exception
-    //   166	186	249	java/lang/Exception
-    //   190	204	261	java/lang/Exception
-    //   204	217	273	java/lang/Exception
-    //   217	231	281	java/lang/Exception
+    AppMethodBeat.i(151415);
+    this.header = true;
+    this.random = new Random();
+    AppMethodBeat.o(151415);
+  }
+  
+  private static long A(byte[] paramArrayOfByte, int paramInt)
+  {
+    long l = 0L;
+    int i = paramInt;
+    while (i < paramInt + 4)
+    {
+      l = l << 8 | paramArrayOfByte[i] & 0xFF;
+      i += 1;
+    }
+    return l & 0xFFFFFFFF;
+  }
+  
+  private byte[] encipher(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(151417);
+    int i = 16;
+    for (;;)
+    {
+      long l3;
+      long l2;
+      long l4;
+      long l5;
+      long l6;
+      long l7;
+      long l1;
+      try
+      {
+        l3 = A(paramArrayOfByte, 0);
+        l2 = A(paramArrayOfByte, 4);
+        l4 = A(this.key, 0);
+        l5 = A(this.key, 4);
+        l6 = A(this.key, 8);
+        l7 = A(this.key, 12);
+        l1 = 0L;
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        DataOutputStream localDataOutputStream;
+        AppMethodBeat.o(151417);
+        return null;
+      }
+      paramArrayOfByte = new ByteArrayOutputStream(8);
+      localDataOutputStream = new DataOutputStream(paramArrayOfByte);
+      localDataOutputStream.writeInt((int)l3);
+      localDataOutputStream.writeInt((int)l2);
+      localDataOutputStream.close();
+      paramArrayOfByte = paramArrayOfByte.toByteArray();
+      AppMethodBeat.o(151417);
+      return paramArrayOfByte;
+      while (i > 0)
+      {
+        l1 = l1 + 2654435769L & 0xFFFFFFFF;
+        l3 = l3 + ((l2 << 4) + l4 ^ l2 + l1 ^ (l2 >>> 5) + l5) & 0xFFFFFFFF;
+        l2 = l2 + ((l3 << 4) + l6 ^ l3 + l1 ^ (l3 >>> 5) + l7) & 0xFFFFFFFF;
+        i -= 1;
+      }
+    }
+  }
+  
+  private void encrypt8Bytes()
+  {
+    AppMethodBeat.i(151418);
+    this.pos = 0;
+    byte[] arrayOfByte;
+    int i;
+    if (this.pos < 8)
+    {
+      if (this.header)
+      {
+        arrayOfByte = this.plain;
+        i = this.pos;
+        arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ this.prePlain[this.pos]));
+      }
+      for (;;)
+      {
+        this.pos += 1;
+        break;
+        arrayOfByte = this.plain;
+        i = this.pos;
+        arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ this.out[(this.preCrypt + this.pos)]));
+      }
+    }
+    System.arraycopy(encipher(this.plain), 0, this.out, this.crypt, 8);
+    for (this.pos = 0; this.pos < 8; this.pos += 1)
+    {
+      arrayOfByte = this.out;
+      i = this.crypt + this.pos;
+      arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ this.prePlain[this.pos]));
+    }
+    System.arraycopy(this.plain, 0, this.prePlain, 0, 8);
+    this.preCrypt = this.crypt;
+    this.crypt += 8;
+    this.pos = 0;
+    this.header = false;
+    AppMethodBeat.o(151418);
+  }
+  
+  public final byte[] a(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
+  {
+    AppMethodBeat.i(151416);
+    this.plain = new byte[8];
+    this.prePlain = new byte[8];
+    this.pos = 1;
+    this.padding = 0;
+    this.preCrypt = 0;
+    this.crypt = 0;
+    this.key = paramArrayOfByte2;
+    this.header = true;
+    this.pos = ((paramInt + 10) % 8);
+    if (this.pos != 0) {
+      this.pos = (8 - this.pos);
+    }
+    this.out = new byte[this.pos + paramInt + 10];
+    this.plain[0] = ((byte)(this.random.nextInt() & 0xF8 | this.pos));
+    int i = 1;
+    while (i <= this.pos)
+    {
+      this.plain[i] = ((byte)(this.random.nextInt() & 0xFF));
+      i += 1;
+    }
+    this.pos += 1;
+    i = 0;
+    while (i < 8)
+    {
+      this.prePlain[i] = 0;
+      i += 1;
+    }
+    this.padding = 1;
+    while (this.padding <= 2)
+    {
+      if (this.pos < 8)
+      {
+        paramArrayOfByte2 = this.plain;
+        i = this.pos;
+        this.pos = (i + 1);
+        paramArrayOfByte2[i] = ((byte)(this.random.nextInt() & 0xFF));
+        this.padding += 1;
+      }
+      if (this.pos == 8) {
+        encrypt8Bytes();
+      }
+    }
+    int j = 0;
+    i = paramInt;
+    paramInt = j;
+    if (i > 0)
+    {
+      if (this.pos >= 8) {
+        break label442;
+      }
+      paramArrayOfByte2 = this.plain;
+      int k = this.pos;
+      this.pos = (k + 1);
+      j = paramInt + 1;
+      paramArrayOfByte2[k] = paramArrayOfByte1[paramInt];
+      i -= 1;
+      paramInt = j;
+    }
+    label442:
+    for (;;)
+    {
+      if (this.pos == 8)
+      {
+        encrypt8Bytes();
+        break;
+        this.padding = 1;
+        while (this.padding <= 7)
+        {
+          if (this.pos < 8)
+          {
+            paramArrayOfByte1 = this.plain;
+            paramInt = this.pos;
+            this.pos = (paramInt + 1);
+            paramArrayOfByte1[paramInt] = 0;
+            this.padding += 1;
+          }
+          if (this.pos == 8) {
+            encrypt8Bytes();
+          }
+        }
+        paramArrayOfByte1 = this.out;
+        AppMethodBeat.o(151416);
+        return paramArrayOfByte1;
+      }
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.platformtools.ad
  * JD-Core Version:    0.7.0.1
  */

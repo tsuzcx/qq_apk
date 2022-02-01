@@ -1,9 +1,11 @@
 package d.l.b.a.b.j.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
+import d.g.b.q;
 import d.l.b.a.b.b.ah;
 import d.l.b.a.b.b.am;
+import d.l.b.a.b.b.l;
 import d.l.b.a.b.f.f;
 import d.l.b.a.b.m.ab;
 import d.o;
@@ -16,25 +18,25 @@ import java.util.List;
 public final class m
   extends a
 {
-  public static final a LHh;
-  private final b LHg;
+  public static final a Nyf;
+  private final b Nye;
   
   static
   {
     AppMethodBeat.i(60247);
-    LHh = new a((byte)0);
+    Nyf = new a((byte)0);
     AppMethodBeat.o(60247);
   }
   
   private m(b paramb)
   {
-    this.LHg = paramb;
+    this.Nye = paramb;
   }
   
-  public static final h b(String paramString, Collection<? extends ab> paramCollection)
+  public static final h c(String paramString, Collection<? extends ab> paramCollection)
   {
     AppMethodBeat.i(60248);
-    paramString = a.b(paramString, paramCollection);
+    paramString = a.c(paramString, paramCollection);
     AppMethodBeat.o(60248);
     return paramString;
   }
@@ -42,18 +44,18 @@ public final class m
   public final Collection<ah> a(f paramf, d.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(60245);
-    k.h(paramf, "name");
-    k.h(parama, "location");
-    paramf = d.l.b.a.b.j.j.b(super.a(paramf, parama), (d.g.a.b)d.LHk);
+    p.h(paramf, "name");
+    p.h(parama, "location");
+    paramf = d.l.b.a.b.j.j.b(super.a(paramf, parama), (d.g.a.b)d.Nyi);
     AppMethodBeat.o(60245);
     return paramf;
   }
   
-  public final Collection<d.l.b.a.b.b.l> a(d paramd, d.g.a.b<? super f, Boolean> paramb)
+  public final Collection<l> a(d paramd, d.g.a.b<? super f, Boolean> paramb)
   {
     AppMethodBeat.i(60246);
-    k.h(paramd, "kindFilter");
-    k.h(paramb, "nameFilter");
+    p.h(paramd, "kindFilter");
+    p.h(paramb, "nameFilter");
     Object localObject1 = (Iterable)super.a(paramd, paramb);
     paramd = new ArrayList();
     paramb = new ArrayList();
@@ -61,7 +63,7 @@ public final class m
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = ((Iterator)localObject1).next();
-      if (((d.l.b.a.b.b.l)localObject2 instanceof d.l.b.a.b.b.a)) {
+      if (((l)localObject2 instanceof d.l.b.a.b.b.a)) {
         paramd.add(localObject2);
       } else {
         paramb.add(localObject2);
@@ -76,7 +78,7 @@ public final class m
       AppMethodBeat.o(60246);
       throw paramd;
     }
-    paramd = (Collection)d.a.j.b(d.l.b.a.b.j.j.b((Collection)paramd, (d.g.a.b)b.LHi), (Iterable)paramb);
+    paramd = (Collection)d.a.j.b(d.l.b.a.b.j.j.b((Collection)paramd, (d.g.a.b)b.Nyg), (Iterable)paramb);
     AppMethodBeat.o(60246);
     return paramd;
   }
@@ -84,25 +86,25 @@ public final class m
   public final Collection<am> b(f paramf, d.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(60244);
-    k.h(paramf, "name");
-    k.h(parama, "location");
-    paramf = d.l.b.a.b.j.j.b(super.b(paramf, parama), (d.g.a.b)c.LHj);
+    p.h(paramf, "name");
+    p.h(parama, "location");
+    paramf = d.l.b.a.b.j.j.b(super.b(paramf, parama), (d.g.a.b)c.Nyh);
     AppMethodBeat.o(60244);
     return paramf;
   }
   
   public static final class a
   {
-    public static h b(String paramString, Collection<? extends ab> paramCollection)
+    public static h c(String paramString, Collection<? extends ab> paramCollection)
     {
       AppMethodBeat.i(60237);
-      k.h(paramString, "message");
-      k.h(paramCollection, "types");
+      p.h(paramString, "message");
+      p.h(paramCollection, "types");
       Object localObject = (Iterable)paramCollection;
       Collection localCollection = (Collection)new ArrayList(d.a.j.a((Iterable)localObject, 10));
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        localCollection.add(((ab)((Iterator)localObject).next()).fQN());
+        localCollection.add(((ab)((Iterator)localObject).next()).gil());
       }
       paramString = new b(paramString, (List)localCollection);
       if (paramCollection.size() <= 1)
@@ -118,15 +120,15 @@ public final class m
   }
   
   static final class b
-    extends d.g.b.l
+    extends q
     implements d.g.a.b<d.l.b.a.b.b.a, d.l.b.a.b.b.a>
   {
-    public static final b LHi;
+    public static final b Nyg;
     
     static
     {
       AppMethodBeat.i(60239);
-      LHi = new b();
+      Nyg = new b();
       AppMethodBeat.o(60239);
     }
     
@@ -137,15 +139,15 @@ public final class m
   }
   
   static final class c
-    extends d.g.b.l
+    extends q
     implements d.g.a.b<am, am>
   {
-    public static final c LHj;
+    public static final c Nyh;
     
     static
     {
       AppMethodBeat.i(60241);
-      LHj = new c();
+      Nyh = new c();
       AppMethodBeat.o(60241);
     }
     
@@ -156,15 +158,15 @@ public final class m
   }
   
   static final class d
-    extends d.g.b.l
+    extends q
     implements d.g.a.b<ah, ah>
   {
-    public static final d LHk;
+    public static final d Nyi;
     
     static
     {
       AppMethodBeat.i(60243);
-      LHk = new d();
+      Nyi = new d();
       AppMethodBeat.o(60243);
     }
     

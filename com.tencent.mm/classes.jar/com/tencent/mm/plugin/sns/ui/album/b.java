@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.sns.ui.album;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.model.ak;
 import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.plugin.sns.ui.bg;
+import com.tencent.mm.plugin.sns.ui.bj;
 import com.tencent.mm.plugin.sns.ui.d;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.zf;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.abf;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -20,45 +20,45 @@ import java.util.Set;
 public final class b
   extends d<a.b>
 {
-  private boolean dfZ;
+  private a Aso;
+  private boolean drv;
   private Map<String, List<p>> map;
-  private String qui;
+  private String rdV;
+  private boolean sKd;
   private String userName;
-  private boolean yQQ;
-  private a zax;
   
   public b(a parama, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(99866);
     this.userName = "";
-    this.dfZ = false;
-    this.qui = "";
-    this.yQQ = false;
-    this.zax = null;
+    this.drv = false;
+    this.rdV = "";
+    this.sKd = false;
+    this.Aso = null;
     this.map = new LinkedHashMap();
-    this.zax = parama;
+    this.Aso = parama;
     this.userName = paramString;
-    this.dfZ = paramBoolean;
+    this.drv = paramBoolean;
     AppMethodBeat.o(99866);
   }
   
-  public final List<a.b> WX()
+  public final List<a.b> Zq()
   {
     AppMethodBeat.i(99869);
     this.map.clear();
     ArrayList localArrayList = new ArrayList();
-    ac.i("MicroMsg.SnsAlbumAdapterHelper", "loadData isSelf=%s limitSeq=%s isPrivate=%s", new Object[] { Boolean.valueOf(this.dfZ), this.qui, Boolean.valueOf(this.yQQ) });
-    List localList = aj.w(this.dfZ, this.qui);
+    ad.i("MicroMsg.SnsAlbumAdapterHelper", "loadData isSelf=%s limitSeq=%s isPrivate=%s", new Object[] { Boolean.valueOf(this.drv), this.rdV, Boolean.valueOf(this.sKd) });
+    List localList = ak.B(this.drv, this.rdV);
     Object localObject3 = localList.iterator();
     Object localObject2;
     while (((Iterator)localObject3).hasNext())
     {
       p localp = (p)((Iterator)localObject3).next();
-      if (((localp.field_type == 1) || (localp.field_type == 15)) && (localp.dLV() != null) && (localp.dLV().FQo != null) && (!localp.dLV().FQo.Etz.isEmpty()))
+      if (((localp.field_type == 1) || (localp.field_type == 15)) && (localp.dYl() != null) && (localp.dYl().HAT != null) && (!localp.dYl().HAT.GaQ.isEmpty()))
       {
         long l = localp.field_createTime;
-        String str = bg.xT(1000L * l).toString();
-        ac.i("MicroMsg.SnsAlbumAdapterHelper", "key:%s createTime:%s info.id:%s", new Object[] { str, Long.valueOf(l * 1000L), Long.valueOf(localp.field_snsId) });
+        String str = bj.Ar(1000L * l).toString();
+        ad.i("MicroMsg.SnsAlbumAdapterHelper", "key:%s createTime:%s info.id:%s", new Object[] { str, Long.valueOf(l * 1000L), Long.valueOf(localp.field_snsId) });
         localObject2 = (List)this.map.get(str);
         localObject1 = localObject2;
         if (localObject2 == null)
@@ -75,37 +75,37 @@ public final class b
       localObject2 = (Map.Entry)((Iterator)localObject1).next();
       localObject3 = new a.b();
       ((a.b)localObject3).label = ((String)((Map.Entry)localObject2).getKey());
-      ((a.b)localObject3).zao = ((List)((Map.Entry)localObject2).getValue());
-      ac.i("MicroMsg.SnsAlbumAdapterHelper", "%s", new Object[] { localObject3 });
+      ((a.b)localObject3).Asf = ((List)((Map.Entry)localObject2).getValue());
+      ad.i("MicroMsg.SnsAlbumAdapterHelper", "%s", new Object[] { localObject3 });
       localArrayList.add(localObject3);
     }
-    ac.i("MicroMsg.SnsAlbumAdapterHelper", "loadData thread: %d count: %d  realCount:%s", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(localList.size()), Integer.valueOf(localArrayList.size()) });
+    ad.i("MicroMsg.SnsAlbumAdapterHelper", "loadData thread: %d count: %d  realCount:%s", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(localList.size()), Integer.valueOf(localArrayList.size()) });
     AppMethodBeat.o(99869);
     return localArrayList;
   }
   
-  public final void fJ(List<a.b> paramList)
+  public final void fU(List<a.b> paramList)
   {
     AppMethodBeat.i(99868);
-    if (this.zax != null) {
-      this.zax.fP(paramList);
+    if (this.Aso != null) {
+      this.Aso.ga(paramList);
     }
     AppMethodBeat.o(99868);
   }
   
-  public final void h(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public final void j(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(99867);
-    ac.d("MicroMsg.SnsAlbumAdapterHelper", "limitSeq ".concat(String.valueOf(paramString)));
-    this.qui = paramString;
-    this.yQQ = paramBoolean1;
-    mJ(paramBoolean2);
+    ad.d("MicroMsg.SnsAlbumAdapterHelper", "limitSeq ".concat(String.valueOf(paramString)));
+    this.rdV = paramString;
+    this.sKd = paramBoolean1;
+    nd(paramBoolean2);
     AppMethodBeat.o(99867);
   }
   
   public static abstract interface a
   {
-    public abstract void fP(List<a.b> paramList);
+    public abstract void ga(List<a.b> paramList);
   }
 }
 

@@ -32,17 +32,17 @@ public final class k
   }
   
   /* Error */
-  public final com.tencent.mm.protocal.protobuf.awf aPa(String paramString)
+  public final com.tencent.mm.protocal.protobuf.bad aUR(String paramString)
   {
     // Byte code:
     //   0: ldc 56
     //   2: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 62	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 62	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifeq +17 -> 26
     //   12: ldc 64
     //   14: ldc 66
-    //   16: invokestatic 72	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   16: invokestatic 72	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: ldc 56
     //   21: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aconst_null
@@ -52,7 +52,7 @@ public final class k
     //   30: invokespecial 76	java/lang/StringBuilder:<init>	()V
     //   33: aload_1
     //   34: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: getstatic 84	com/tencent/mm/storage/emotion/k$a:HaV	Lcom/tencent/mm/storage/emotion/k$a;
+    //   37: getstatic 84	com/tencent/mm/storage/emotion/k$a:IOl	Lcom/tencent/mm/storage/emotion/k$a;
     //   40: getfield 88	com/tencent/mm/storage/emotion/k$a:value	I
     //   43: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   46: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -88,9 +88,9 @@ public final class k
     //   97: ifeq +121 -> 218
     //   100: aload_1
     //   101: astore_2
-    //   102: new 112	com/tencent/mm/protocal/protobuf/awf
+    //   102: new 112	com/tencent/mm/protocal/protobuf/bad
     //   105: dup
-    //   106: invokespecial 113	com/tencent/mm/protocal/protobuf/awf:<init>	()V
+    //   106: invokespecial 113	com/tencent/mm/protocal/protobuf/bad:<init>	()V
     //   109: astore_3
     //   110: aload_1
     //   111: astore_2
@@ -98,7 +98,7 @@ public final class k
     //   113: aload_1
     //   114: iconst_0
     //   115: invokeinterface 117 2 0
-    //   120: invokevirtual 121	com/tencent/mm/protocal/protobuf/awf:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   120: invokevirtual 121	com/tencent/mm/protocal/protobuf/bad:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   123: pop
     //   124: aload_3
     //   125: astore_2
@@ -126,9 +126,9 @@ public final class k
     //   160: dup
     //   161: iconst_0
     //   162: aload_3
-    //   163: invokestatic 132	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   163: invokestatic 132	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   166: aastore
-    //   167: invokestatic 136	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   167: invokestatic 136	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   170: aload_1
     //   171: ifnull +42 -> 213
     //   174: aload_1
@@ -181,17 +181,17 @@ public final class k
   }
   
   /* Error */
-  public final com.tencent.mm.protocal.protobuf.awd aPb(String paramString)
+  public final com.tencent.mm.protocal.protobuf.bab aUS(String paramString)
   {
     // Byte code:
     //   0: ldc 141
     //   2: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 62	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 62	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifeq +17 -> 26
     //   12: ldc 64
     //   14: ldc 143
-    //   16: invokestatic 72	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   16: invokestatic 72	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: ldc 141
     //   21: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aconst_null
@@ -201,7 +201,7 @@ public final class k
     //   30: invokespecial 76	java/lang/StringBuilder:<init>	()V
     //   33: aload_1
     //   34: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: getstatic 146	com/tencent/mm/storage/emotion/k$a:HaX	Lcom/tencent/mm/storage/emotion/k$a;
+    //   37: getstatic 146	com/tencent/mm/storage/emotion/k$a:IOn	Lcom/tencent/mm/storage/emotion/k$a;
     //   40: getfield 88	com/tencent/mm/storage/emotion/k$a:value	I
     //   43: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   46: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -237,9 +237,9 @@ public final class k
     //   97: ifeq +121 -> 218
     //   100: aload_1
     //   101: astore_2
-    //   102: new 148	com/tencent/mm/protocal/protobuf/awd
+    //   102: new 148	com/tencent/mm/protocal/protobuf/bab
     //   105: dup
-    //   106: invokespecial 149	com/tencent/mm/protocal/protobuf/awd:<init>	()V
+    //   106: invokespecial 149	com/tencent/mm/protocal/protobuf/bab:<init>	()V
     //   109: astore_3
     //   110: aload_1
     //   111: astore_2
@@ -247,7 +247,7 @@ public final class k
     //   113: aload_1
     //   114: iconst_0
     //   115: invokeinterface 117 2 0
-    //   120: invokevirtual 150	com/tencent/mm/protocal/protobuf/awd:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   120: invokevirtual 150	com/tencent/mm/protocal/protobuf/bab:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   123: pop
     //   124: aload_3
     //   125: astore_2
@@ -275,9 +275,9 @@ public final class k
     //   160: dup
     //   161: iconst_0
     //   162: aload_3
-    //   163: invokestatic 132	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   163: invokestatic 132	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   166: aastore
-    //   167: invokestatic 136	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   167: invokestatic 136	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   170: aload_1
     //   171: ifnull +42 -> 213
     //   174: aload_1
@@ -336,10 +336,10 @@ public final class k
     static
     {
       AppMethodBeat.i(105111);
-      HaV = new a("DesignerSimpleInfo", 0, 0);
-      HaW = new a("PersonalDesigner", 1, 1);
-      HaX = new a("DesignerEmojiList", 2, 2);
-      HaY = new a[] { HaV, HaW, HaX };
+      IOl = new a("DesignerSimpleInfo", 0, 0);
+      IOm = new a("PersonalDesigner", 1, 1);
+      IOn = new a("DesignerEmojiList", 2, 2);
+      IOo = new a[] { IOl, IOm, IOn };
       AppMethodBeat.o(105111);
     }
     
@@ -351,7 +351,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.k
  * JD-Core Version:    0.7.0.1
  */

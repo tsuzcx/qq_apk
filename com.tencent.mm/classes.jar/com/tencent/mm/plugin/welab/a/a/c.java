@@ -7,13 +7,13 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface c
   extends a
 {
-  public abstract void ad(Context paramContext, Intent paramIntent);
+  public abstract void af(Context paramContext, Intent paramIntent);
   
-  public abstract boolean eHA();
+  public abstract boolean eWr();
   
-  public abstract boolean eHy();
+  public abstract boolean eWs();
   
-  public abstract boolean eHz();
+  public abstract boolean eWt();
 }
 
 

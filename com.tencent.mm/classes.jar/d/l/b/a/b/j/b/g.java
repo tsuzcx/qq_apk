@@ -1,6 +1,6 @@
 package d.l.b.a.b.j.b;
 
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.y;
 import d.l.b.a.b.m.ab;
 
@@ -35,7 +35,7 @@ public abstract class g<T>
       if (localg != null) {
         paramObject = localg.getValue();
       }
-      return k.g(localObject2, paramObject);
+      return p.i(localObject2, paramObject);
     }
   }
   
@@ -60,7 +60,7 @@ public abstract class g<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.b.g
  * JD-Core Version:    0.7.0.1
  */

@@ -13,73 +13,77 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.game.api.d;
-import com.tencent.mm.plugin.game.d.bk;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.plugin.game.d.bn;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.model.af;
 import com.tencent.mm.plugin.game.model.w;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class GameOverSeaCenterUI
   extends GameCenterBaseUI
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
-  private boolean fPJ;
-  private Dialog pzQ;
-  private bk tgc;
-  k tnb;
-  private boolean tpQ;
-  private String tpR;
-  private View.OnClickListener trY;
-  private GameInfoViewForeign ttA;
-  private GameMessageBubbleView ttB;
-  private GameInstalledView ttC;
-  private View ttD;
-  private TextView ttE;
-  private GameCenterListView tty;
-  private g ttz;
+  private boolean gjj;
+  private Dialog qdv;
+  private bn udS;
+  k ulz;
+  private boolean uon;
+  private String uoo;
+  private View.OnClickListener uqv;
+  private GameCenterListView urX;
+  private g urY;
+  private GameInfoViewForeign urZ;
+  private GameMessageBubbleView usa;
+  private GameInstalledView usb;
+  private View usc;
+  private TextView usd;
   
   public GameOverSeaCenterUI()
   {
     AppMethodBeat.i(42333);
-    this.tnb = new k();
-    this.tpR = "";
-    this.fPJ = true;
-    this.trY = new View.OnClickListener()
+    this.ulz = new k();
+    this.uoo = "";
+    this.gjj = true;
+    this.uqv = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(42329);
-        Object localObject = com.tencent.mm.plugin.game.model.a.cPQ();
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameOverSeaCenterUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        localObject = com.tencent.mm.plugin.game.model.a.cYv();
         int i;
-        if (((com.tencent.mm.plugin.game.model.a.a)localObject).drx == 2) {
-          i = c.z(GameOverSeaCenterUI.this.getContext(), ((com.tencent.mm.plugin.game.model.a.a)localObject).url, "game_center_library");
+        if (((com.tencent.mm.plugin.game.model.a.a)localObject).dDp == 2) {
+          i = c.B(GameOverSeaCenterUI.this.getContext(), ((com.tencent.mm.plugin.game.model.a.a)localObject).url, "game_center_library");
         }
         for (;;)
         {
-          com.tencent.mm.game.report.e.a(GameOverSeaCenterUI.this.getContext(), 10, 1005, 1, i, GameOverSeaCenterUI.this.tfA, null);
+          com.tencent.mm.game.report.f.a(GameOverSeaCenterUI.this.getContext(), 10, 1005, 1, i, GameOverSeaCenterUI.this.udq, null);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameOverSeaCenterUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(42329);
           return;
           paramAnonymousView = paramAnonymousView.getTag();
-          if ((paramAnonymousView != null) && ((paramAnonymousView instanceof String)) && (!bs.isNullOrNil((String)paramAnonymousView)))
+          if ((paramAnonymousView != null) && ((paramAnonymousView instanceof String)) && (!bt.isNullOrNil((String)paramAnonymousView)))
           {
             paramAnonymousView = (String)paramAnonymousView;
-            i = c.z(GameOverSeaCenterUI.this.getContext(), paramAnonymousView, "game_center_library");
+            i = c.B(GameOverSeaCenterUI.this.getContext(), paramAnonymousView, "game_center_library");
           }
           else
           {
             localObject = new Intent(GameOverSeaCenterUI.this.getContext(), GameLibraryUI.class);
             ((Intent)localObject).putExtra("game_report_from_scene", 1005);
             paramAnonymousView = GameOverSeaCenterUI.this;
-            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/game/ui/GameOverSeaCenterUI$4", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/game/ui/GameOverSeaCenterUI$4", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/game/ui/GameOverSeaCenterUI$4", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             i = 6;
           }
@@ -108,27 +112,27 @@ public class GameOverSeaCenterUI
       }
     });
     setMMTitle(2131760012);
-    this.tty = ((GameCenterListView)findViewById(2131300365));
-    this.tty.setOnItemClickListener(this.tnb);
-    this.tnb.setSourceScene(this.tfA);
-    this.ttz = new g(this);
-    this.ttz.setSourceScene(this.tfA);
+    this.urX = ((GameCenterListView)findViewById(2131300365));
+    this.urX.setOnItemClickListener(this.ulz);
+    this.ulz.setSourceScene(this.udq);
+    this.urY = new g(this);
+    this.urY.setSourceScene(this.udq);
     Object localObject = (LayoutInflater)getContext().getSystemService("layout_inflater");
-    View localView = ((LayoutInflater)localObject).inflate(2131494269, this.tty, false);
-    this.ttA = ((GameInfoViewForeign)localView.findViewById(2131300363));
-    this.tty.addHeaderView(localView);
-    localView = ((LayoutInflater)localObject).inflate(2131494258, this.tty, false);
-    this.ttB = ((GameMessageBubbleView)localView.findViewById(2131300517));
-    this.tty.addHeaderView(localView);
-    localView = ((LayoutInflater)localObject).inflate(2131494270, this.tty, false);
-    this.ttC = ((GameInstalledView)localView.findViewById(2131300472));
-    this.tty.addHeaderView(localView);
-    localObject = ((LayoutInflater)localObject).inflate(2131494263, this.tty, false);
-    this.tty.addFooterView((View)localObject);
-    this.ttD = ((View)localObject).findViewById(2131300459);
-    this.ttD.setOnClickListener(this.trY);
-    this.ttE = ((TextView)((View)localObject).findViewById(2131300460));
-    this.tty.setAdapter(this.ttz);
+    View localView = ((LayoutInflater)localObject).inflate(2131494269, this.urX, false);
+    this.urZ = ((GameInfoViewForeign)localView.findViewById(2131300363));
+    this.urX.addHeaderView(localView);
+    localView = ((LayoutInflater)localObject).inflate(2131494258, this.urX, false);
+    this.usa = ((GameMessageBubbleView)localView.findViewById(2131300517));
+    this.urX.addHeaderView(localView);
+    localView = ((LayoutInflater)localObject).inflate(2131494270, this.urX, false);
+    this.usb = ((GameInstalledView)localView.findViewById(2131300472));
+    this.urX.addHeaderView(localView);
+    localObject = ((LayoutInflater)localObject).inflate(2131494263, this.urX, false);
+    this.urX.addFooterView((View)localObject);
+    this.usc = ((View)localObject).findViewById(2131300459);
+    this.usc.setOnClickListener(this.uqv);
+    this.usd = ((TextView)((View)localObject).findViewById(2131300460));
+    this.urX.setAdapter(this.urY);
     AppMethodBeat.o(42337);
   }
   
@@ -136,17 +140,17 @@ public class GameOverSeaCenterUI
   {
     AppMethodBeat.i(42334);
     super.onCreate(paramBundle);
-    ac.i("MicroMsg.GameOverSeaCenterUI", "GameOverSeaCenterUI create");
-    com.tencent.mm.kernel.g.agi().a(2855, this);
+    ad.i("MicroMsg.GameOverSeaCenterUI", "GameOverSeaCenterUI create");
+    com.tencent.mm.kernel.g.aiU().a(2855, this);
     initView();
-    c.bUw().postToWorker(new Runnable()
+    c.bZb().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(42327);
-        Object localObject = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOn().agO("pb_over_sea");
+        Object localObject = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cWI().all("pb_over_sea");
         if (localObject == null) {
-          com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
+          aq.f(new Runnable()
           {
             public final void run()
             {
@@ -156,7 +160,7 @@ public class GameOverSeaCenterUI
                 AppMethodBeat.o(42324);
                 return;
               }
-              GameOverSeaCenterUI.a(GameOverSeaCenterUI.this, c.fv(GameOverSeaCenterUI.this));
+              GameOverSeaCenterUI.a(GameOverSeaCenterUI.this, c.fA(GameOverSeaCenterUI.this));
               GameOverSeaCenterUI.a(GameOverSeaCenterUI.this).show();
               AppMethodBeat.o(42324);
             }
@@ -164,9 +168,9 @@ public class GameOverSeaCenterUI
         }
         for (;;)
         {
-          ((d)com.tencent.mm.kernel.g.ab(d.class)).cOk().init(GameOverSeaCenterUI.this);
-          c.aA(com.tencent.mm.plugin.game.model.e.cPV());
-          com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
+          ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cWF().init(GameOverSeaCenterUI.this);
+          c.aC(com.tencent.mm.plugin.game.model.e.cYA());
+          aq.f(new Runnable()
           {
             public final void run()
             {
@@ -175,26 +179,26 @@ public class GameOverSeaCenterUI
               AppMethodBeat.o(42326);
             }
           });
-          localObject = new com.tencent.mm.plugin.game.model.ap(ab.eUO(), com.tencent.mm.plugin.game.model.e.cPV(), GameOverSeaCenterUI.this.tnx, GameOverSeaCenterUI.this.tny, GameOverSeaCenterUI.this.tnz, GameOverSeaCenterUI.this.tnw);
-          com.tencent.mm.kernel.g.agi().a((n)localObject, 0);
-          com.tencent.mm.plugin.game.model.e.cQa();
-          com.tencent.mm.plugin.game.f.a.a.cRI().cRG();
+          localObject = new com.tencent.mm.plugin.game.model.ap(ac.fks(), com.tencent.mm.plugin.game.model.e.cYA(), GameOverSeaCenterUI.this.ulV, GameOverSeaCenterUI.this.ulW, GameOverSeaCenterUI.this.ulX, GameOverSeaCenterUI.this.ulU);
+          com.tencent.mm.kernel.g.aiU().a((n)localObject, 0);
+          com.tencent.mm.plugin.game.model.e.cYF();
+          com.tencent.mm.plugin.game.f.a.a.das().daq();
           AppMethodBeat.o(42327);
           return;
-          com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
+          aq.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(42325);
               try
               {
-                GameOverSeaCenterUI.a(GameOverSeaCenterUI.this, this.ttH, 1);
+                GameOverSeaCenterUI.a(GameOverSeaCenterUI.this, this.usg, 1);
                 AppMethodBeat.o(42325);
                 return;
               }
               catch (Exception localException)
               {
-                ac.e("MicroMsg.GameOverSeaCenterUI", "GameOverSeaCenterUI crash, %s", new Object[] { localException.getMessage() });
+                ad.e("MicroMsg.GameOverSeaCenterUI", "GameOverSeaCenterUI crash, %s", new Object[] { localException.getMessage() });
                 GameOverSeaCenterUI.this.finish();
                 AppMethodBeat.o(42325);
               }
@@ -209,11 +213,11 @@ public class GameOverSeaCenterUI
   public void onDestroy()
   {
     AppMethodBeat.i(42336);
-    ac.i("MicroMsg.GameOverSeaCenterUI", "onDestroy");
+    ad.i("MicroMsg.GameOverSeaCenterUI", "onDestroy");
     super.onDestroy();
-    com.tencent.mm.plugin.game.f.a.a.cRI().clearCache();
-    com.tencent.mm.kernel.g.agi().b(2855, this);
-    ((d)com.tencent.mm.kernel.g.ab(d.class)).cOk().clearCache();
+    com.tencent.mm.plugin.game.f.a.a.das().clearCache();
+    com.tencent.mm.kernel.g.aiU().b(2855, this);
+    ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cWF().clearCache();
     AppMethodBeat.o(42336);
   }
   
@@ -221,21 +225,21 @@ public class GameOverSeaCenterUI
   {
     AppMethodBeat.i(42335);
     super.onResume();
-    if (!this.fPJ)
+    if (!this.gjj)
     {
-      if (this.tnw) {
-        this.ttB.cRA();
+      if (this.ulU) {
+        this.usa.daf();
       }
-      this.ttA.cRt();
+      this.urZ.cZY();
     }
-    this.fPJ = false;
+    this.gjj = false;
     AppMethodBeat.o(42335);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, n paramn)
   {
     AppMethodBeat.i(42338);
-    ac.i("MicroMsg.GameOverSeaCenterUI", "errType: %d errCode: %d, scene: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramn.hashCode()) });
+    ad.i("MicroMsg.GameOverSeaCenterUI", "errType: %d errCode: %d, scene: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramn.hashCode()) });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       switch (paramn.getType())
@@ -246,29 +250,29 @@ public class GameOverSeaCenterUI
         AppMethodBeat.o(42338);
         return;
         final long l = System.currentTimeMillis();
-        paramString = ((com.tencent.mm.plugin.game.model.ap)paramn).fYA.hvs.hvw;
-        c.bUw().postToWorker(new Runnable()
+        paramString = ((com.tencent.mm.plugin.game.model.ap)paramn).grW.hNL.hNQ;
+        c.bZb().postToWorker(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(42332);
             if (paramString == null) {
-              GameOverSeaCenterUI.a(GameOverSeaCenterUI.this, new bk());
+              GameOverSeaCenterUI.a(GameOverSeaCenterUI.this, new bn());
             }
             for (;;)
             {
-              com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
+              aq.f(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(42331);
                   try
                   {
-                    GameOverSeaCenterUI.a(GameOverSeaCenterUI.this, this.ttH, 2);
+                    GameOverSeaCenterUI.a(GameOverSeaCenterUI.this, this.usg, 2);
                     if (GameOverSeaCenterUI.a(GameOverSeaCenterUI.this) != null) {
                       GameOverSeaCenterUI.a(GameOverSeaCenterUI.this).dismiss();
                     }
-                    ac.i("MicroMsg.GameOverSeaCenterUI", "Server data parsing time: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - GameOverSeaCenterUI.6.this.cev) });
+                    ad.i("MicroMsg.GameOverSeaCenterUI", "Server data parsing time: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - GameOverSeaCenterUI.6.this.coM) });
                     AppMethodBeat.o(42331);
                     return;
                   }
@@ -276,7 +280,7 @@ public class GameOverSeaCenterUI
                   {
                     for (;;)
                     {
-                      ac.e("MicroMsg.GameOverSeaCenterUI", "GameOverSeaCenterUI crash, %s", new Object[] { localException.getMessage() });
+                      ad.e("MicroMsg.GameOverSeaCenterUI", "GameOverSeaCenterUI crash, %s", new Object[] { localException.getMessage() });
                       GameOverSeaCenterUI.this.finish();
                     }
                   }
@@ -284,17 +288,17 @@ public class GameOverSeaCenterUI
               });
               AppMethodBeat.o(42332);
               return;
-              GameOverSeaCenterUI.a(GameOverSeaCenterUI.this, (bk)paramString);
+              GameOverSeaCenterUI.a(GameOverSeaCenterUI.this, (bn)paramString);
             }
           }
         });
       }
     }
-    if (!com.tencent.mm.plugin.game.a.a.iyy.a(this, paramInt1, paramInt2, paramString)) {
+    if (!com.tencent.mm.plugin.game.a.a.iRH.a(this, paramInt1, paramInt2, paramString)) {
       Toast.makeText(this, getString(2131759916, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
     }
-    if (this.pzQ != null) {
-      this.pzQ.cancel();
+    if (this.qdv != null) {
+      this.qdv.cancel();
     }
     AppMethodBeat.o(42338);
   }
@@ -307,7 +311,7 @@ public class GameOverSeaCenterUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameOverSeaCenterUI
  * JD-Core Version:    0.7.0.1
  */

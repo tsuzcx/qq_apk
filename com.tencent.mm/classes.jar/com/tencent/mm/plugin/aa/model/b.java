@@ -1,61 +1,61 @@
 package com.tencent.mm.plugin.aa.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.aa.model.a.d;
 import com.tencent.mm.plugin.aa.model.cgi.j;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.protobuf.w;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  com.tencent.mm.vending.g.b izm;
+  com.tencent.mm.vending.g.b iSv;
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(63319);
-    ac.i("MicroMsg.AAGetPaylistDetailLogic", "onSceneEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.AAGetPaylistDetailLogic", "onSceneEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = ((j)paramn).iAp;
-      ac.i("MicroMsg.AAGetPaylistDetailLogic", "AAQueryDetailRes, onSceneEnd, retCode: %s", new Object[] { Integer.valueOf(paramString.dae) });
-      if (paramString.dae == 0)
+      paramString = ((j)paramn).iTz;
+      ad.i("MicroMsg.AAGetPaylistDetailLogic", "AAQueryDetailRes, onSceneEnd, retCode: %s", new Object[] { Integer.valueOf(paramString.dlw) });
+      if (paramString.dlw == 0)
       {
-        com.tencent.mm.vending.g.g.a(this.izm, new Object[] { paramString });
-        h.wUl.idkeyStat(407L, 6L, 1L, false);
-        paramn = com.tencent.mm.plugin.aa.b.aNK().FR(paramString.DKA);
+        com.tencent.mm.vending.g.g.a(this.iSv, new Object[] { paramString });
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(407L, 6L, 1L, false);
+        paramn = com.tencent.mm.plugin.aa.b.aQW().Jg(paramString.FpG);
         if (paramn != null)
         {
           paramn.field_status = paramString.state;
-          com.tencent.mm.plugin.aa.b.aNK().b(paramn);
+          com.tencent.mm.plugin.aa.b.aQW().b(paramn);
         }
         AppMethodBeat.o(63319);
         return;
       }
-      if ((paramString.dae > 0) && (!bs.isNullOrNil(paramString.oxf))) {
-        this.izm.eb(paramString.oxf);
+      if ((paramString.dlw > 0) && (!bt.isNullOrNil(paramString.paA))) {
+        this.iSv.ee(paramString.paA);
       }
       for (;;)
       {
-        h.wUl.idkeyStat(407L, 8L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(407L, 8L, 1L, false);
         AppMethodBeat.o(63319);
         return;
-        this.izm.eb(Boolean.FALSE);
+        this.iSv.ee(Boolean.FALSE);
       }
     }
-    if (this.izm != null) {
-      this.izm.eb(Boolean.FALSE);
+    if (this.iSv != null) {
+      this.iSv.ee(Boolean.FALSE);
     }
-    h.wUl.idkeyStat(407L, 7L, 1L, false);
+    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(407L, 7L, 1L, false);
     AppMethodBeat.o(63319);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.luggage.bridge.impl.a;
 
-import com.tencent.mm.plugin.appbrand.g.a.a;
-import com.tencent.mm.plugin.appbrand.g.a.c;
+import com.tencent.mm.plugin.appbrand.f.a.a;
+import com.tencent.mm.plugin.appbrand.f.a.c;
 import java.util.Map;
 
 public abstract class a
@@ -22,7 +22,7 @@ public abstract class a
     if (!(paramObject instanceof a.a)) {
       return false;
     }
-    if (Ap().equalsIgnoreCase(((a.a)paramObject).Ap())) {
+    if (BM().equalsIgnoreCase(((a.a)paramObject).BM())) {
       return true;
     }
     return super.equals(paramObject);
@@ -30,7 +30,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.bridge.impl.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
 {
-  public String duS = "";
+  public byte AFB = 1;
+  public String AFC = "";
+  public String dGT = "";
   public int errCode = 0;
   public String errMsg = "OK";
-  public byte znH = 1;
-  public String znI = "";
   
   public final String toString()
   {
     AppMethodBeat.i(145971);
-    String str = "SoterMpRespModel{errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + ", resultMode=" + this.znH + ", resultJson='" + this.duS + '\'' + ", resultJsonSignature='" + this.znI + '\'' + '}';
+    String str = "SoterMpRespModel{errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + ", resultMode=" + this.AFB + ", resultJson='" + this.dGT + '\'' + ", resultJsonSignature='" + this.AFC + '\'' + '}';
     AppMethodBeat.o(145971);
     return str;
   }

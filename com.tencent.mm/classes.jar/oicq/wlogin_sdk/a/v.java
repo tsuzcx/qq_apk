@@ -5,12 +5,12 @@ public final class v
 {
   public v()
   {
-    this.LVT = 287;
+    this.NQs = 287;
   }
   
-  public final Boolean gfy()
+  public final Boolean gxW()
   {
-    if (this.LWD < 8) {
+    if (this.NRc < 8) {
       return Boolean.FALSE;
     }
     return Boolean.TRUE;

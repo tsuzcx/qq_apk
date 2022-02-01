@@ -9,30 +9,30 @@ import java.util.LinkedList;
 
 public class e
 {
-  private static e cRd;
-  public volatile LinkedList<String> cRb;
-  public volatile Object cRc;
+  private static e dct;
   public volatile HashMap<String, d> cache;
+  public volatile LinkedList<String> dcr;
+  public volatile Object dcs;
   
   private e()
   {
     AppMethodBeat.i(136740);
-    this.cRb = new LinkedList();
+    this.dcr = new LinkedList();
     this.cache = new HashMap();
-    this.cRc = new Object();
+    this.dcs = new Object();
     AppMethodBeat.o(136740);
   }
   
-  public static e ML()
+  public static e Ou()
   {
     AppMethodBeat.i(136741);
-    if (cRd == null) {}
+    if (dct == null) {}
     try
     {
-      if (cRd == null) {
-        cRd = new e();
+      if (dct == null) {
+        dct = new e();
       }
-      e locale = cRd;
+      e locale = dct;
       AppMethodBeat.o(136741);
       return locale;
     }
@@ -42,20 +42,20 @@ public class e
     }
   }
   
-  public final long MM()
+  public final long Ov()
   {
     AppMethodBeat.i(136747);
     long l = 0L;
     for (;;)
     {
-      synchronized (this.cRc)
+      synchronized (this.dcs)
       {
-        Iterator localIterator = this.cRb.iterator();
+        Iterator localIterator = this.dcr.iterator();
         if (localIterator.hasNext())
         {
           Object localObject3 = (String)localIterator.next();
           localObject3 = (d)this.cache.get(localObject3);
-          if ((localObject3 != null) && (((d)localObject3).aAb) && (!((d)localObject3).cQM)) {
+          if ((localObject3 != null) && (((d)localObject3).aBS) && (!((d)localObject3).dcc)) {
             l = ((d)localObject3).getBufferSize() + l;
           }
         }
@@ -68,13 +68,13 @@ public class e
     }
   }
   
-  public final ArrayList<String> MN()
+  public final ArrayList<String> Ow()
   {
     AppMethodBeat.i(136748);
-    synchronized (this.cRc)
+    synchronized (this.dcs)
     {
       ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(this.cRb);
+      localArrayList.addAll(this.dcr);
       AppMethodBeat.o(136748);
       return localArrayList;
     }
@@ -83,9 +83,9 @@ public class e
   public final void clearCache()
   {
     AppMethodBeat.i(136745);
-    synchronized (this.cRc)
+    synchronized (this.dcs)
     {
-      Iterator localIterator = this.cRb.iterator();
+      Iterator localIterator = this.dcr.iterator();
       while (localIterator.hasNext())
       {
         Object localObject3 = (String)localIterator.next();
@@ -95,18 +95,18 @@ public class e
         }
       }
     }
-    this.cRb.clear();
+    this.dcr.clear();
     this.cache.clear();
     AppMethodBeat.o(136745);
   }
   
-  public final d eO(String paramString)
+  public final d fJ(String paramString)
   {
     AppMethodBeat.i(136742);
-    synchronized (this.cRc)
+    synchronized (this.dcs)
     {
-      if (!this.cRb.contains(paramString)) {
-        this.cRb.add(paramString);
+      if (!this.dcr.contains(paramString)) {
+        this.dcr.add(paramString);
       }
       d locald2 = (d)this.cache.get(paramString);
       d locald1 = locald2;
@@ -120,12 +120,12 @@ public class e
     }
   }
   
-  public final int eP(String paramString)
+  public final int fK(String paramString)
   {
     AppMethodBeat.i(136743);
-    synchronized (this.cRc)
+    synchronized (this.dcs)
     {
-      if (!this.cRb.contains(paramString))
+      if (!this.dcr.contains(paramString))
       {
         AppMethodBeat.o(136743);
         return 0;
@@ -142,18 +142,18 @@ public class e
     }
   }
   
-  public final boolean eQ(String paramString)
+  public final boolean fL(String paramString)
   {
     AppMethodBeat.i(136744);
-    synchronized (this.cRc)
+    synchronized (this.dcs)
     {
-      if (!this.cRb.contains(paramString))
+      if (!this.dcr.contains(paramString))
       {
         AppMethodBeat.o(136744);
         return false;
       }
       paramString = (d)this.cache.get(paramString);
-      if ((paramString != null) && (paramString.size() > 0) && (paramString.aAb))
+      if ((paramString != null) && (paramString.size() > 0) && (paramString.aBS))
       {
         AppMethodBeat.o(136744);
         return true;
@@ -163,18 +163,18 @@ public class e
     }
   }
   
-  public final long eR(String paramString)
+  public final long fM(String paramString)
   {
     AppMethodBeat.i(136746);
-    synchronized (this.cRc)
+    synchronized (this.dcs)
     {
-      if (!this.cRb.contains(paramString))
+      if (!this.dcr.contains(paramString))
       {
         AppMethodBeat.o(136746);
         return 0L;
       }
       paramString = (d)this.cache.get(paramString);
-      if ((paramString != null) && (paramString.aAb))
+      if ((paramString != null) && (paramString.aBS))
       {
         long l = paramString.getBufferSize();
         AppMethodBeat.o(136746);

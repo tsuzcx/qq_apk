@@ -18,16 +18,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.o;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.plugin.scanner.i;
-import com.tencent.mm.plugin.scanner.model.m;
+import com.tencent.mm.aw.a.a.c;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.plugin.scanner.model.o;
 import com.tencent.mm.plugin.scanner.util.k.a;
-import com.tencent.mm.pluginsdk.g.h;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h.c;
 import com.tencent.mm.ui.r;
@@ -35,31 +32,31 @@ import com.tencent.mm.ui.r;
 public class ScannerHistoryUI
   extends MMActivity
 {
-  private View EP;
+  private View GG;
   private ListView mListView;
-  private LinearLayout ogk;
-  private View ogl;
-  private TextView ogm;
-  private a wYm;
+  private LinearLayout oJD;
+  private View oJE;
+  private TextView oJF;
+  private a ylV;
   
-  private void bQT()
+  private void bVy()
   {
     AppMethodBeat.i(51604);
-    if (i.dza().dzb().getCount() > 0)
+    if (com.tencent.mm.plugin.scanner.i.dKy().dKz().getCount() > 0)
     {
       this.mListView.setVisibility(0);
-      this.EP.setVisibility(8);
-      this.ogl.setVisibility(0);
+      this.GG.setVisibility(8);
+      this.oJE.setVisibility(0);
       enableOptionMenu(true);
     }
     for (;;)
     {
-      this.wYm.notifyDataSetChanged();
+      this.ylV.notifyDataSetChanged();
       AppMethodBeat.o(51604);
       return;
       this.mListView.setVisibility(8);
-      this.EP.setVisibility(0);
-      this.ogl.setVisibility(8);
+      this.GG.setVisibility(0);
+      this.oJE.setVisibility(8);
       enableOptionMenu(false);
     }
   }
@@ -84,18 +81,25 @@ public class ScannerHistoryUI
       }
     });
     this.mListView = ((ListView)findViewById(2131304313));
-    this.ogk = ((LinearLayout)View.inflate(getBaseContext(), 2131495294, null));
-    this.mListView.addHeaderView(this.ogk);
-    this.wYm = new a();
-    this.mListView.setAdapter(this.wYm);
+    this.oJD = ((LinearLayout)View.inflate(getBaseContext(), 2131495294, null));
+    this.mListView.addHeaderView(this.oJD);
+    this.ylV = new a();
+    this.mListView.setAdapter(this.ylV);
     this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(51589);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/history/ui/ScannerHistoryUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
         if (paramAnonymousInt == 0)
         {
-          ac.v("MicroMsg.ScannerHistoryUI", "onItemClick pos is 0, click headerview");
+          ad.v("MicroMsg.ScannerHistoryUI", "onItemClick pos is 0, click headerview");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/history/ui/ScannerHistoryUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(51589);
           return;
         }
@@ -104,6 +108,7 @@ public class ScannerHistoryUI
           i = paramAnonymousInt - 1;
         }
         ScannerHistoryUI.a(ScannerHistoryUI.this, i);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/history/ui/ScannerHistoryUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(51589);
       }
     });
@@ -114,7 +119,7 @@ public class ScannerHistoryUI
         AppMethodBeat.i(51590);
         if (paramAnonymousInt == 0)
         {
-          ac.i("MicroMsg.ScannerHistoryUI", "onItemLongClick pos is 0");
+          ad.i("MicroMsg.ScannerHistoryUI", "onItemLongClick pos is 0");
           AppMethodBeat.o(51590);
           return true;
         }
@@ -142,14 +147,14 @@ public class ScannerHistoryUI
         return true;
       }
     });
-    this.EP = findViewById(2131298768);
-    this.ogl = View.inflate(this, 2131495293, null);
-    if (this.ogk != null) {
-      this.ogk.addView(this.ogl);
+    this.GG = findViewById(2131298768);
+    this.oJE = View.inflate(this, 2131495293, null);
+    if (this.oJD != null) {
+      this.oJD.addView(this.oJE);
     }
-    this.ogm = ((TextView)this.ogl.findViewById(2131300753));
-    this.ogm.setText(2131760246);
-    bQT();
+    this.oJF = ((TextView)this.oJE.findViewById(2131300753));
+    this.oJF.setText(2131760246);
+    bVy();
     AppMethodBeat.o(51603);
   }
   
@@ -188,23 +193,23 @@ public class ScannerHistoryUI
     {
       super(new com.tencent.mm.plugin.scanner.history.a.a());
       AppMethodBeat.i(51595);
-      wy(true);
+      xk(true);
       AppMethodBeat.o(51595);
     }
     
-    public final void Xb()
+    public final void Zu()
     {
       AppMethodBeat.i(51596);
-      setCursor(i.dza().dzb().getAll());
+      setCursor(com.tencent.mm.plugin.scanner.i.dKy().dKz().getAll());
       notifyDataSetChanged();
       AppMethodBeat.o(51596);
     }
     
-    public final void Xc()
+    public final void Zv()
     {
       AppMethodBeat.i(51597);
-      cVi();
-      Xb();
+      det();
+      Zu();
       AppMethodBeat.o(51597);
     }
     
@@ -216,42 +221,42 @@ public class ScannerHistoryUI
       {
         paramView = View.inflate(ScannerHistoryUI.this.getContext(), 2131495292, null);
         paramViewGroup = new ScannerHistoryUI.b(ScannerHistoryUI.this, (byte)0);
-        paramViewGroup.ig = ((ImageView)paramView.findViewById(2131301154));
-        paramViewGroup.ofO = ((TextView)paramView.findViewById(2131301198));
-        paramViewGroup.ofP = ((TextView)paramView.findViewById(2131301196));
-        paramViewGroup.ofQ = ((TextView)paramView.findViewById(2131301149));
+        paramViewGroup.ka = ((ImageView)paramView.findViewById(2131301154));
+        paramViewGroup.oJh = ((TextView)paramView.findViewById(2131301198));
+        paramViewGroup.oJi = ((TextView)paramView.findViewById(2131301196));
+        paramViewGroup.oJj = ((TextView)paramView.findViewById(2131301149));
         paramView.setTag(paramViewGroup);
-        k.a locala = m.ev(((com.tencent.mm.plugin.scanner.history.a.a)localObject).field_xmlContent, ((com.tencent.mm.plugin.scanner.history.a.a)localObject).field_funcType);
-        paramViewGroup.ofO.setText(locala.field_title);
+        k.a locala = o.eN(((com.tencent.mm.plugin.scanner.history.a.a)localObject).field_xmlContent, ((com.tencent.mm.plugin.scanner.history.a.a)localObject).field_funcType);
+        paramViewGroup.oJh.setText(locala.field_title);
         long l = ((com.tencent.mm.plugin.scanner.history.a.a)localObject).field_ScanTime;
-        paramViewGroup.ofP.setText(h.c(ScannerHistoryUI.this, l, true));
-        paramViewGroup.ofQ.setText(locala.field_subtitle);
+        paramViewGroup.oJi.setText(com.tencent.mm.pluginsdk.i.i.c(ScannerHistoryUI.this, l, true));
+        paramViewGroup.oJj.setText(locala.field_subtitle);
         int i = ScannerHistoryUI.this.getResources().getDimensionPixelSize(2131166766);
-        paramViewGroup.ig.setImageResource(2131233613);
-        ac.d("MicroMsg.ScannerHistoryUI", "ScannerHistoryUI getView () position : " + paramInt + " logo_url :  " + locala.field_thumburl);
+        paramViewGroup.ka.setImageResource(2131233613);
+        ad.d("MicroMsg.ScannerHistoryUI", "ScannerHistoryUI getView () position : " + paramInt + " logo_url :  " + locala.field_thumburl);
         if (TextUtils.isEmpty(locala.field_thumburl)) {
           break label423;
         }
         c.a locala1 = new c.a();
-        locala1.prefixPath = b.aph();
-        o.aFC();
-        locala1.hKO = null;
-        localObject = i.dza();
+        locala1.prefixPath = com.tencent.mm.loader.j.b.arU();
+        q.aIK();
+        locala1.idJ = null;
+        localObject = com.tencent.mm.plugin.scanner.i.dKy();
         String str = locala.field_thumburl;
-        if (!com.tencent.mm.kernel.g.agM()) {
+        if (!com.tencent.mm.kernel.g.ajx()) {
           break label415;
         }
-        localObject = String.format("%s/scanbook_%s", new Object[] { ((i)localObject).ghC + "image/scan/img", com.tencent.mm.b.g.getMessageDigest(str.getBytes()) });
+        localObject = String.format("%s/scanbook_%s", new Object[] { ((com.tencent.mm.plugin.scanner.i)localObject).gBm + "image/scan/img", com.tencent.mm.b.g.getMessageDigest(str.getBytes()) });
         label327:
-        locala1.gKe = ((String)localObject);
-        locala1.hKx = true;
-        locala1.gLt = false;
-        locala1.hKv = true;
-        locala1.gKh = i;
-        locala1.gKg = i;
-        locala1.hKI = 2131233613;
-        localObject = locala1.aFT();
-        o.aFB().a(locala.field_thumburl, paramViewGroup.ig, (c)localObject);
+        locala1.hdP = ((String)localObject);
+        locala1.idr = true;
+        locala1.hfi = false;
+        locala1.idp = true;
+        locala1.hdS = i;
+        locala1.hdR = i;
+        locala1.idD = 2131233613;
+        localObject = locala1.aJc();
+        q.aIJ().a(locala.field_thumburl, paramViewGroup.ka, (c)localObject);
       }
       for (;;)
       {
@@ -263,24 +268,24 @@ public class ScannerHistoryUI
         localObject = "";
         break label327;
         label423:
-        paramViewGroup.ig.setImageResource(2131233613);
+        paramViewGroup.ka.setImageResource(2131233613);
       }
     }
   }
   
   final class b
   {
-    ImageView ig;
-    TextView ofO;
-    TextView ofP;
-    TextView ofQ;
+    ImageView ka;
+    TextView oJh;
+    TextView oJi;
+    TextView oJj;
     
     private b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.history.ui.ScannerHistoryUI
  * JD-Core Version:    0.7.0.1
  */

@@ -8,48 +8,16 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class e
 {
-  private static final Object KyJ;
+  private static final Object Mpf;
   
   static
   {
     AppMethodBeat.i(156731);
-    KyJ = new Object();
+    Mpf = new Object();
     AppMethodBeat.o(156731);
   }
   
-  public static boolean aUI(String arg0)
-  {
-    AppMethodBeat.i(156729);
-    if ((??? == null) || (???.isEmpty()))
-    {
-      Log.e("XFilesReaderCrashDetect", "isRecentCrashed fileExt is empty");
-      AppMethodBeat.o(156729);
-      return false;
-    }
-    String str = ???.toLowerCase();
-    synchronized (KyJ)
-    {
-      SharedPreferences localSharedPreferences = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
-      if (localSharedPreferences == null)
-      {
-        Log.e("XFilesReaderCrashDetect", "isRecentCrashed sp is null");
-        AppMethodBeat.o(156729);
-        return false;
-      }
-      long l1 = localSharedPreferences.getLong(str + "_count", 0L);
-      long l2 = localSharedPreferences.getLong(str + "_time", 0L);
-      long l3 = System.currentTimeMillis();
-      if ((l1 >= 3L) && (l3 - l2 < 86400000L))
-      {
-        AppMethodBeat.o(156729);
-        return true;
-      }
-      AppMethodBeat.o(156729);
-      return false;
-    }
-  }
-  
-  public static void ae(String[] paramArrayOfString)
+  public static void al(String[] paramArrayOfString)
   {
     AppMethodBeat.i(156730);
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
@@ -60,7 +28,7 @@ public final class e
     for (;;)
     {
       int i;
-      synchronized (KyJ)
+      synchronized (Mpf)
       {
         Object localObject2 = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
         if (localObject2 == null)
@@ -99,6 +67,38 @@ public final class e
     }
   }
   
+  public static boolean baL(String arg0)
+  {
+    AppMethodBeat.i(156729);
+    if ((??? == null) || (???.isEmpty()))
+    {
+      Log.e("XFilesReaderCrashDetect", "isRecentCrashed fileExt is empty");
+      AppMethodBeat.o(156729);
+      return false;
+    }
+    String str = ???.toLowerCase();
+    synchronized (Mpf)
+    {
+      SharedPreferences localSharedPreferences = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
+      if (localSharedPreferences == null)
+      {
+        Log.e("XFilesReaderCrashDetect", "isRecentCrashed sp is null");
+        AppMethodBeat.o(156729);
+        return false;
+      }
+      long l1 = localSharedPreferences.getLong(str + "_count", 0L);
+      long l2 = localSharedPreferences.getLong(str + "_time", 0L);
+      long l3 = System.currentTimeMillis();
+      if ((l1 >= 3L) && (l3 - l2 < 86400000L))
+      {
+        AppMethodBeat.o(156729);
+        return true;
+      }
+      AppMethodBeat.o(156729);
+      return false;
+    }
+  }
+  
   public static void onStart(String arg0)
   {
     AppMethodBeat.i(156727);
@@ -109,7 +109,7 @@ public final class e
       return;
     }
     String str = ???.toLowerCase();
-    synchronized (KyJ)
+    synchronized (Mpf)
     {
       Object localObject2 = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
       if (localObject2 == null)
@@ -134,7 +134,7 @@ public final class e
     }
   }
   
-  public static void vn(String arg0)
+  public static void ye(String arg0)
   {
     AppMethodBeat.i(156728);
     if ((??? == null) || (???.isEmpty()))
@@ -144,7 +144,7 @@ public final class e
       return;
     }
     String str = ???.toLowerCase();
-    synchronized (KyJ)
+    synchronized (Mpf)
     {
       Object localObject2 = XWalkEnvironment.getSharedPreferencesForFileReaderRecord();
       if (localObject2 == null)

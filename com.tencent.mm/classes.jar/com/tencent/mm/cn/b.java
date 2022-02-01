@@ -2,18 +2,18 @@ package com.tencent.mm.cn;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  private long JHQ;
+  private long LAT;
   private final byte[] mLock;
   
   public b()
   {
     AppMethodBeat.i(158417);
     this.mLock = new byte[1];
-    this.JHQ = -1L;
+    this.LAT = -1L;
     AppMethodBeat.o(158417);
   }
   
@@ -25,7 +25,7 @@ public final class b
       if (this.mLock[0] != 0)
       {
         this.mLock[0] = 0;
-        this.JHQ = -1L;
+        this.LAT = -1L;
         this.mLock.notifyAll();
         j.i("MicroMsg.WxConsumedLock", "notify done %s", new Object[] { this });
       }
@@ -34,7 +34,7 @@ public final class b
     }
   }
   
-  public final void fBb()
+  public final void fSl()
   {
     AppMethodBeat.i(158418);
     for (;;)
@@ -44,14 +44,14 @@ public final class b
         if (this.mLock[0] == 0)
         {
           this.mLock[0] = 1;
-          this.JHQ = Thread.currentThread().getId();
+          this.LAT = Thread.currentThread().getId();
           j.i("MicroMsg.WxConsumedLock", "lock %s", new Object[] { this });
           AppMethodBeat.o(158418);
           return;
         }
         try
         {
-          if (this.JHQ != Thread.currentThread().getId())
+          if (this.LAT != Thread.currentThread().getId())
           {
             j.i("MicroMsg.WxConsumedLock", "lock waiting %s", new Object[] { this });
             this.mLock.wait();
@@ -60,7 +60,7 @@ public final class b
         }
         catch (InterruptedException localInterruptedException)
         {
-          ac.printErrStackTrace("MicroMsg.WxConsumedLock", localInterruptedException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.WxConsumedLock", localInterruptedException, "", new Object[0]);
         }
       }
       j.d("MicroMsg.WxConsumedLock", "reenter lock not need waiting %s", new Object[] { this });

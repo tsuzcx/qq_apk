@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.ui;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/FinderAlbumUI$Companion;", "", "()V", "REQUEST_CODE_EDIT_VIDEO", "", "REQUEST_CODE_EDIT_VLOG", "TAG", "", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderAlbumUI$Companion;", "", "()V", "REQUEST_CODE_EDIT_VIDEO", "", "REQUEST_CODE_EDIT_VLOG", "TAG", "", "plugin-finder_release"})
 public final class FinderAlbumUI$a {}
 
 

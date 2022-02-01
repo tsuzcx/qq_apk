@@ -2,19 +2,21 @@ package d.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
+import d.g.b.q;
+import d.l;
 import java.util.Iterator;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "T", "it", "Lkotlin/sequences/Sequence;", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "it", "Lkotlin/sequences/Sequence;", "invoke"})
 public final class l$b
-  extends d.g.b.l
+  extends q
   implements b<h<? extends T>, Iterator<? extends T>>
 {
-  public static final b LPO;
+  public static final b NGJ;
   
   static
   {
     AppMethodBeat.i(129476);
-    LPO = new b();
+    NGJ = new b();
     AppMethodBeat.o(129476);
   }
   

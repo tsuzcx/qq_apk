@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.music.e;
 
-import com.tencent.mm.ay.f;
+import com.tencent.mm.az.f;
 import com.tencent.mm.plugin.music.f.a.d;
 
 public abstract interface c
 {
-  public abstract void aGt();
+  public abstract void aJE();
   
-  public abstract d diB();
+  public abstract d dsN();
   
-  public abstract void oD(boolean paramBoolean);
+  public abstract void pc(boolean paramBoolean);
   
   public abstract void s(f paramf);
   

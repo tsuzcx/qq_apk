@@ -9,27 +9,27 @@ import android.view.ViewGroup;
 public abstract class o
   extends f
 {
-  private int Tb;
-  private int Tc;
+  private int UR;
+  private int US;
   private LayoutInflater mInflater;
   
   @Deprecated
   public o(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.Tc = paramInt;
-    this.Tb = paramInt;
+    this.US = paramInt;
+    this.UR = paramInt;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
   }
   
   public final View newDropDownView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
   {
-    return this.mInflater.inflate(this.Tc, paramViewGroup, false);
+    return this.mInflater.inflate(this.US, paramViewGroup, false);
   }
   
   public View newView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
   {
-    return this.mInflater.inflate(this.Tb, paramViewGroup, false);
+    return this.mInflater.inflate(this.UR, paramViewGroup, false);
   }
 }
 

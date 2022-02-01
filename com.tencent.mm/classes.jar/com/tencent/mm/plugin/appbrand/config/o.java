@@ -1,45 +1,46 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.c;
+import com.tencent.mm.al.b.a;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.protocal.protobuf.eag;
-import com.tencent.mm.protocal.protobuf.eai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.appbrand.networking.a;
+import com.tencent.mm.protocal.protobuf.egk;
+import com.tencent.mm.protocal.protobuf.egm;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class o
-  extends c<eai>
+  extends a<egm>
 {
-  final com.tencent.mm.ak.b rr;
+  final com.tencent.mm.al.b rr;
   
   public o(String paramString1, String paramString2)
   {
+    super(paramString2, paramString1);
     AppMethodBeat.i(44853);
     b.a locala = new b.a();
-    eag localeag = new eag();
-    localeag.Fed = paramString1;
-    if (bs.isNullOrNil(paramString1))
+    egk localegk = new egk();
+    localegk.GNH = paramString1;
+    if (bt.isNullOrNil(paramString1))
     {
-      paramString1 = j.aVu().e(paramString2, new String[] { "syncVersion" });
+      paramString1 = j.aYP().e(paramString2, new String[] { "syncVersion" });
       if (paramString1 == null) {
         paramString1 = "";
       }
     }
-    for (paramString1 = new com.tencent.mm.bw.b(paramString1.getBytes());; paramString1 = j.aVu().Kd(paramString1))
+    for (paramString1 = new com.tencent.mm.bx.b(paramString1.getBytes());; paramString1 = j.aYP().Nw(paramString1))
     {
-      localeag.EaW = paramString1;
-      localeag.Ggm = paramString2;
-      locala.hvt = localeag;
-      locala.hvu = new eai();
+      localegk.FGF = paramString1;
+      localegk.HRz = paramString2;
+      locala.hNM = localegk;
+      locala.hNN = new egm();
       locala.funcId = 1151;
       locala.uri = "/cgi-bin/mmbiz-bin/wxaattr/wxaattrsync";
-      paramString1 = locala.aAz();
+      paramString1 = locala.aDC();
       this.rr = paramString1;
-      this.rr = paramString1;
+      c(paramString1);
       AppMethodBeat.o(44853);
       return;
-      paramString1 = bs.nullAsNil(paramString1.field_syncVersion);
+      paramString1 = bt.nullAsNil(paramString1.field_syncVersion);
       break;
     }
   }

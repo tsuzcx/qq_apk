@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class di
   extends b
 {
-  public a dcN;
+  public a dod;
   
   public di()
   {
@@ -15,19 +15,18 @@ public final class di
   
   private di(byte paramByte)
   {
-    AppMethodBeat.i(104416);
-    this.dcN = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(104414);
+    this.dod = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(104416);
+    AppMethodBeat.o(104414);
   }
   
   public static final class a
   {
-    public String dcO;
-    public String dcP;
-    public int progress = 0;
-    public int status = 0;
+    public int dkM;
+    public String md5;
+    public boolean success;
   }
 }
 

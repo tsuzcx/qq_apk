@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.ad;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashSet;
 import java.util.Set;
 import org.json.JSONArray;
@@ -14,35 +14,35 @@ import org.json.JSONArray;
 public final class a
 {
   public static String TAG;
-  private static Set<Integer> jis;
+  private static Set<Integer> jBI;
   
   static
   {
-    AppMethodBeat.i(186281);
-    TAG = "MicroMsg.AppBrandAdABTests";
+    AppMethodBeat.i(187944);
+    TAG = "MicroMsg.AppBrandAdABTests[AppBrandSplashAd]";
     HashSet localHashSet = new HashSet();
-    jis = localHashSet;
+    jBI = localHashSet;
     localHashSet.add(Integer.valueOf(1001));
-    jis.add(Integer.valueOf(1089));
-    jis.add(Integer.valueOf(1104));
-    jis.add(Integer.valueOf(1103));
-    AppMethodBeat.o(186281);
+    jBI.add(Integer.valueOf(1089));
+    jBI.add(Integer.valueOf(1104));
+    jBI.add(Integer.valueOf(1103));
+    AppMethodBeat.o(187944);
   }
   
-  public static void aUK()
+  public static void aXW()
   {
     AppMethodBeat.i(44003);
-    aw.aKT("appbrandAd").removeValueForKey("showad");
+    ax.aQz("appbrandAd").removeValueForKey("showad");
     AppMethodBeat.o(44003);
   }
   
-  public static boolean aUL()
+  public static boolean aXX()
   {
     AppMethodBeat.i(44005);
-    int i = aw.aKT("appbrandAd").decodeInt("showad", -1);
+    int i = ax.aQz("appbrandAd").decodeInt("showad", -1);
     if (i >= 0)
     {
-      ac.i(TAG, "canShowAppBrandAd, command value:%s", new Object[] { Integer.valueOf(i) });
+      ad.i(TAG, "canShowAppBrandAd, command value:%s", new Object[] { Integer.valueOf(i) });
       if (i == 1)
       {
         AppMethodBeat.o(44005);
@@ -51,8 +51,8 @@ public final class a
       AppMethodBeat.o(44005);
       return false;
     }
-    i = ((b)g.ab(b.class)).a(b.a.pRp, 0);
-    ac.i(TAG, "canShowAppBrandAd, experiment value:%s", new Object[] { Integer.valueOf(i) });
+    i = ((b)g.ab(b.class)).a(b.a.qvK, 0);
+    ad.i(TAG, "canShowAppBrandAd, experiment value:%s", new Object[] { Integer.valueOf(i) });
     if (i == 1)
     {
       AppMethodBeat.o(44005);
@@ -62,20 +62,20 @@ public final class a
     return false;
   }
   
-  public static void aUM()
+  public static void aXY()
   {
     AppMethodBeat.i(44006);
-    aw.aKT("appbrandAd").removeValueForKey("allshowad");
+    ax.aQz("appbrandAd").removeValueForKey("allshowad");
     AppMethodBeat.o(44006);
   }
   
-  public static boolean aUN()
+  public static boolean aXZ()
   {
     AppMethodBeat.i(44008);
-    int i = aw.aKT("appbrandAd").decodeInt("allshowad", -1);
+    int i = ax.aQz("appbrandAd").decodeInt("allshowad", -1);
     if (i >= 0)
     {
-      ac.i(TAG, "canAllShowAppBrandAd, command value:%s", new Object[] { Integer.valueOf(i) });
+      ad.i(TAG, "canAllShowAppBrandAd, command value:%s", new Object[] { Integer.valueOf(i) });
       if (i == 1)
       {
         AppMethodBeat.o(44008);
@@ -84,8 +84,8 @@ public final class a
       AppMethodBeat.o(44008);
       return false;
     }
-    i = ((b)g.ab(b.class)).a(b.a.pRq, 0);
-    ac.i(TAG, "canAllShowAppBrandAd, experiment value:%s", new Object[] { Integer.valueOf(i) });
+    i = ((b)g.ab(b.class)).a(b.a.qvL, 0);
+    ad.i(TAG, "canAllShowAppBrandAd, experiment value:%s", new Object[] { Integer.valueOf(i) });
     if (i == 1)
     {
       AppMethodBeat.o(44008);
@@ -95,25 +95,43 @@ public final class a
     return false;
   }
   
-  public static void rk(int paramInt)
+  public static int aXl()
+  {
+    AppMethodBeat.i(187942);
+    int i = ((b)g.ab(b.class)).a(b.a.qvR, 0);
+    ad.i(TAG, "getCodeBlockTimeThreshold, timeThreshold:%s", new Object[] { Integer.valueOf(i) });
+    AppMethodBeat.o(187942);
+    return i;
+  }
+  
+  public static int aYa()
+  {
+    AppMethodBeat.i(187943);
+    int i = ((b)g.ab(b.class)).a(b.a.qvS, 0);
+    ad.i(TAG, "getCheckBlockTimeThreshold, timeThreshold:%s", new Object[] { Integer.valueOf(i) });
+    AppMethodBeat.o(187943);
+    return i;
+  }
+  
+  public static void rL(int paramInt)
   {
     AppMethodBeat.i(44004);
-    aw.aKT("appbrandAd").encode("showad", paramInt);
+    ax.aQz("appbrandAd").encode("showad", paramInt);
     AppMethodBeat.o(44004);
   }
   
-  public static void rl(int paramInt)
+  public static void rM(int paramInt)
   {
     AppMethodBeat.i(44007);
-    aw.aKT("appbrandAd").encode("allshowad", paramInt);
+    ax.aQz("appbrandAd").encode("allshowad", paramInt);
     AppMethodBeat.o(44007);
   }
   
-  public static boolean rm(int paramInt)
+  public static boolean rN(int paramInt)
   {
-    AppMethodBeat.i(186280);
-    Object localObject = ((b)g.ab(b.class)).a(b.a.pRv, "");
-    if (!bs.isNullOrNil((String)localObject)) {}
+    AppMethodBeat.i(187941);
+    Object localObject = ((b)g.ab(b.class)).a(b.a.qvQ, "");
+    if (!bt.isNullOrNil((String)localObject)) {}
     for (;;)
     {
       try
@@ -127,41 +145,19 @@ public final class a
           i += 1;
           continue;
         }
-        ac.i(TAG, "checkSceneForShowAd, abtest set:%s, scene:%s", new Object[] { localHashSet, Integer.valueOf(paramInt) });
+        ad.i(TAG, "checkSceneForShowAd, abtest set:%s, scene:%s", new Object[] { localHashSet, Integer.valueOf(paramInt) });
         bool = localHashSet.contains(Integer.valueOf(paramInt));
       }
       catch (Exception localException)
       {
-        ac.i(TAG, "checkSceneForShowAd, exception, set:%s, scene:%s", new Object[] { jis, Integer.valueOf(paramInt) });
-        bool = jis.contains(Integer.valueOf(paramInt));
+        ad.i(TAG, "checkSceneForShowAd, exception, set:%s, scene:%s", new Object[] { jBI, Integer.valueOf(paramInt) });
+        bool = jBI.contains(Integer.valueOf(paramInt));
         continue;
       }
-      AppMethodBeat.o(186280);
+      AppMethodBeat.o(187941);
       return bool;
-      ac.i(TAG, "checkSceneForShowAd, no abtest, set:%s, scene:%s", new Object[] { jis, Integer.valueOf(paramInt) });
-      boolean bool = jis.contains(Integer.valueOf(paramInt));
-    }
-  }
-  
-  public static int rn(int paramInt)
-  {
-    AppMethodBeat.i(163909);
-    int i;
-    if (paramInt > 0) {
-      if (paramInt > 5) {
-        i = ((b)g.ab(b.class)).a(b.a.pRt, 120);
-      }
-    }
-    for (;;)
-    {
-      ac.i(TAG, "getCheckAdTimeThreshold, performanceValue:%s, timeThreshold:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      AppMethodBeat.o(163909);
-      return i;
-      if (paramInt < 5) {
-        i = ((b)g.ab(b.class)).a(b.a.pRu, 160);
-      } else {
-        i = ((b)g.ab(b.class)).a(b.a.pRs, 140);
-      }
+      ad.i(TAG, "checkSceneForShowAd, no abtest, set:%s, scene:%s", new Object[] { jBI, Integer.valueOf(paramInt) });
+      boolean bool = jBI.contains(Integer.valueOf(paramInt));
     }
   }
 }

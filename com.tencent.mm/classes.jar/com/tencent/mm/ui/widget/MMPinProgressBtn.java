@@ -14,36 +14,36 @@ import android.util.AttributeSet;
 import android.view.View.BaseSavedState;
 import android.widget.CompoundButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.af.a.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class MMPinProgressBtn
   extends CompoundButton
 {
-  private int FG;
-  private int Jaf;
-  private Paint Jag;
-  private int Jah;
-  private final float Jai;
-  private Runnable Jaj;
-  private Paint QR;
-  private RectF apY;
+  private int Hx;
+  private int KRr;
+  private int KRs;
+  private final float KRt;
+  private Runnable KRu;
+  private Paint SG;
+  private RectF arQ;
   private int style;
+  private Paint zbK;
   
   public MMPinProgressBtn(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143384);
-    this.apY = new RectF();
-    this.Jai = 4.0F;
-    this.Jaj = new Runnable()
+    this.arQ = new RectF();
+    this.KRt = 4.0F;
+    this.KRu = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(143379);
         if (MMPinProgressBtn.this.getVisibility() != 0)
         {
-          ac.i("MicroMsg.MMPinProgressBtn", "cur progress bar not visiable, stop auto pregress");
+          ad.i("MicroMsg.MMPinProgressBtn", "cur progress bar not visiable, stop auto pregress");
           AppMethodBeat.o(143379);
           return;
         }
@@ -51,7 +51,7 @@ public class MMPinProgressBtn
         if (MMPinProgressBtn.a(MMPinProgressBtn.this) >= MMPinProgressBtn.b(MMPinProgressBtn.this))
         {
           MMPinProgressBtn.a(MMPinProgressBtn.this, MMPinProgressBtn.a(MMPinProgressBtn.this) - 1);
-          ac.i("MicroMsg.MMPinProgressBtn", "match auto progress max, return");
+          ad.i("MicroMsg.MMPinProgressBtn", "match auto progress max, return");
           AppMethodBeat.o(143379);
           return;
         }
@@ -68,16 +68,16 @@ public class MMPinProgressBtn
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143385);
-    this.apY = new RectF();
-    this.Jai = 4.0F;
-    this.Jaj = new Runnable()
+    this.arQ = new RectF();
+    this.KRt = 4.0F;
+    this.KRu = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(143379);
         if (MMPinProgressBtn.this.getVisibility() != 0)
         {
-          ac.i("MicroMsg.MMPinProgressBtn", "cur progress bar not visiable, stop auto pregress");
+          ad.i("MicroMsg.MMPinProgressBtn", "cur progress bar not visiable, stop auto pregress");
           AppMethodBeat.o(143379);
           return;
         }
@@ -85,7 +85,7 @@ public class MMPinProgressBtn
         if (MMPinProgressBtn.a(MMPinProgressBtn.this) >= MMPinProgressBtn.b(MMPinProgressBtn.this))
         {
           MMPinProgressBtn.a(MMPinProgressBtn.this, MMPinProgressBtn.a(MMPinProgressBtn.this) - 1);
-          ac.i("MicroMsg.MMPinProgressBtn", "match auto progress max, return");
+          ad.i("MicroMsg.MMPinProgressBtn", "match auto progress max, return");
           AppMethodBeat.o(143379);
           return;
         }
@@ -101,8 +101,8 @@ public class MMPinProgressBtn
   private void c(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     AppMethodBeat.i(143386);
-    this.Jaf = 100;
-    this.FG = 0;
+    this.KRr = 100;
+    this.Hx = 0;
     Resources localResources = getResources();
     int m = localResources.getColor(2131100748);
     int k = localResources.getColor(2131100749);
@@ -120,12 +120,12 @@ public class MMPinProgressBtn
     {
       try
       {
-        this.Jaf = paramAttributeSet.getInteger(2, this.Jaf);
-        this.FG = paramAttributeSet.getInteger(4, this.FG);
+        this.KRr = paramAttributeSet.getInteger(2, this.KRr);
+        this.Hx = paramAttributeSet.getInteger(4, this.Hx);
         paramInt = paramAttributeSet.getColor(0, m);
         k = paramAttributeSet.getColor(5, k);
         this.style = paramAttributeSet.getInteger(6, 0);
-        this.Jah = paramAttributeSet.getDimensionPixelSize(1, localResources.getDimensionPixelSize(2131166691));
+        this.KRs = paramAttributeSet.getDimensionPixelSize(1, localResources.getDimensionPixelSize(2131166691));
         i = k;
         j = paramInt;
         if (paramAttributeSet != null)
@@ -134,14 +134,14 @@ public class MMPinProgressBtn
           j = paramInt;
           i = k;
         }
-        this.QR = new Paint();
-        this.QR.setColor(j);
-        this.QR.setStyle(Paint.Style.STROKE);
-        this.QR.setStrokeWidth(4.0F);
-        this.QR.setAntiAlias(true);
-        this.Jag = new Paint();
-        this.Jag.setColor(i);
-        this.Jag.setAntiAlias(true);
+        this.SG = new Paint();
+        this.SG.setColor(j);
+        this.SG.setStyle(Paint.Style.STROKE);
+        this.SG.setStrokeWidth(4.0F);
+        this.SG.setAntiAlias(true);
+        this.zbK = new Paint();
+        this.zbK.setColor(i);
+        this.zbK.setAntiAlias(true);
         setClickable(false);
         AppMethodBeat.o(143386);
         return;
@@ -156,31 +156,31 @@ public class MMPinProgressBtn
     throw paramContext;
   }
   
-  public final void fuE()
+  public final void fLr()
   {
     AppMethodBeat.i(143389);
-    removeCallbacks(this.Jaj);
-    post(this.Jaj);
+    removeCallbacks(this.KRu);
+    post(this.KRu);
     AppMethodBeat.o(143389);
   }
   
   public int getMax()
   {
-    return this.Jaf;
+    return this.KRr;
   }
   
   public int getProgress()
   {
-    return this.FG;
+    return this.Hx;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(143391);
     super.onDraw(paramCanvas);
-    this.apY.set(2.0F, 2.0F, this.Jah - 2.0F, this.Jah - 2.0F);
-    this.apY.offset((getWidth() - this.Jah) / 2, (getHeight() - this.Jah) / 2);
-    paramCanvas.drawArc(this.apY, 0.0F, 360.0F, true, this.QR);
+    this.arQ.set(2.0F, 2.0F, this.KRs - 2.0F, this.KRs - 2.0F);
+    this.arQ.offset((getWidth() - this.KRs) / 2, (getHeight() - this.KRs) / 2);
+    paramCanvas.drawArc(this.arQ, 0.0F, 360.0F, true, this.SG);
     switch (this.style)
     {
     }
@@ -188,21 +188,21 @@ public class MMPinProgressBtn
     {
       AppMethodBeat.o(143391);
       return;
-      this.apY.set(8.0F, 8.0F, this.Jah - 8.0F, this.Jah - 8.0F);
-      this.apY.offset((getWidth() - this.Jah) / 2, (getHeight() - this.Jah) / 2);
-      paramCanvas.drawArc(this.apY, -90.0F, 360.0F * (this.FG * 1.0F / this.Jaf), true, this.Jag);
+      this.arQ.set(8.0F, 8.0F, this.KRs - 8.0F, this.KRs - 8.0F);
+      this.arQ.offset((getWidth() - this.KRs) / 2, (getHeight() - this.KRs) / 2);
+      paramCanvas.drawArc(this.arQ, -90.0F, 360.0F * (this.Hx * 1.0F / this.KRr), true, this.zbK);
       AppMethodBeat.o(143391);
       return;
-      this.apY.set(2.0F, 2.0F, this.Jah - 2.0F, this.Jah - 2.0F);
-      this.apY.offset((getWidth() - this.Jah) / 2, (getHeight() - this.Jah) / 2);
-      paramCanvas.drawArc(this.apY, 270.0F, this.FG * 1.0F / this.Jaf * 360.0F - 360.0F, true, this.Jag);
+      this.arQ.set(2.0F, 2.0F, this.KRs - 2.0F, this.KRs - 2.0F);
+      this.arQ.offset((getWidth() - this.KRs) / 2, (getHeight() - this.KRs) / 2);
+      paramCanvas.drawArc(this.arQ, 270.0F, this.Hx * 1.0F / this.KRr * 360.0F - 360.0F, true, this.zbK);
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(143390);
-    setMeasuredDimension(resolveSize(this.Jah, paramInt1), resolveSize(this.Jah, paramInt2));
+    setMeasuredDimension(resolveSize(this.KRs, paramInt1), resolveSize(this.KRs, paramInt2));
     AppMethodBeat.o(143390);
   }
   
@@ -217,8 +217,8 @@ public class MMPinProgressBtn
     }
     paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.Jaf = SavedState.a(paramParcelable);
-    this.FG = SavedState.b(paramParcelable);
+    this.KRr = SavedState.a(paramParcelable);
+    this.Hx = SavedState.b(paramParcelable);
     AppMethodBeat.o(143393);
   }
   
@@ -229,8 +229,8 @@ public class MMPinProgressBtn
     if (isSaveEnabled())
     {
       localObject = new SavedState((Parcelable)localObject);
-      SavedState.a((SavedState)localObject, this.Jaf);
-      SavedState.b((SavedState)localObject, this.FG);
+      SavedState.a((SavedState)localObject, this.KRr);
+      SavedState.b((SavedState)localObject, this.Hx);
       AppMethodBeat.o(143392);
       return localObject;
     }
@@ -241,7 +241,7 @@ public class MMPinProgressBtn
   public void setMax(int paramInt)
   {
     AppMethodBeat.i(143387);
-    this.Jaf = Math.max(0, paramInt);
+    this.KRr = Math.max(0, paramInt);
     invalidate();
     AppMethodBeat.o(143387);
   }
@@ -249,8 +249,8 @@ public class MMPinProgressBtn
   public void setProgress(int paramInt)
   {
     AppMethodBeat.i(143388);
-    this.FG = Math.max(0, paramInt);
-    this.FG = Math.min(paramInt, this.Jaf);
+    this.Hx = Math.max(0, paramInt);
+    this.Hx = Math.min(paramInt, this.KRr);
     invalidate();
     AppMethodBeat.o(143388);
   }
@@ -259,8 +259,8 @@ public class MMPinProgressBtn
     extends View.BaseSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    private int FG;
-    private int Jaf;
+    private int Hx;
+    private int KRr;
     
     static
     {
@@ -273,8 +273,8 @@ public class MMPinProgressBtn
     {
       super();
       AppMethodBeat.i(143381);
-      this.FG = paramParcel.readInt();
-      this.Jaf = paramParcel.readInt();
+      this.Hx = paramParcel.readInt();
+      this.KRr = paramParcel.readInt();
       AppMethodBeat.o(143381);
     }
     
@@ -287,15 +287,15 @@ public class MMPinProgressBtn
     {
       AppMethodBeat.i(143382);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.FG);
-      paramParcel.writeInt(this.Jaf);
+      paramParcel.writeInt(this.Hx);
+      paramParcel.writeInt(this.KRr);
       AppMethodBeat.o(143382);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMPinProgressBtn
  * JD-Core Version:    0.7.0.1
  */

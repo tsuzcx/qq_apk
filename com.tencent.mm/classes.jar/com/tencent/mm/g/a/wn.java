@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class wn
   extends b
 {
-  public a dzp;
+  public a dKS;
   
   public wn()
   {
@@ -15,17 +15,17 @@ public final class wn
   
   private wn(byte paramByte)
   {
-    AppMethodBeat.i(94801);
-    this.dzp = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(149892);
+    this.dKS = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(94801);
+    AppMethodBeat.o(149892);
   }
   
   public static final class a
   {
-    public long dzq = -1L;
-    public long dzr = -1L;
+    public boolean dKT = false;
+    public boolean dKU = false;
   }
 }
 

@@ -9,32 +9,32 @@ public abstract class a
   extends BaseAdapter
   implements d
 {
-  private int zht = 0;
-  HashMap<Object, Integer> zhu = new HashMap();
+  private int Azv = 0;
+  HashMap<Object, Integer> Azw = new HashMap();
   
-  protected final void dG(Object paramObject)
+  protected final void dJ(Object paramObject)
   {
-    HashMap localHashMap = this.zhu;
-    int i = this.zht;
-    this.zht = (i + 1);
+    HashMap localHashMap = this.Azw;
+    int i = this.Azv;
+    this.Azv = (i + 1);
     localHashMap.put(paramObject, Integer.valueOf(i));
   }
   
-  protected final void fT(List<?> paramList)
+  protected final void ge(List<?> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      dG(paramList.next());
+      dJ(paramList.next());
     }
   }
   
   public final long getItemId(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.zhu.size())) {
+    if ((paramInt < 0) || (paramInt >= this.Azw.size())) {
       return -1L;
     }
     Object localObject = getItem(paramInt);
-    return ((Integer)this.zhu.get(localObject)).intValue();
+    return ((Integer)this.Azw.get(localObject)).intValue();
   }
   
   public final boolean hasStableIds()
@@ -44,7 +44,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.previewimageview.a
  * JD-Core Version:    0.7.0.1
  */

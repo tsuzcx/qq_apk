@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.mm.kernel.b.e;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.a.c;
+import com.tencent.mm.plugin.appbrand.api.c;
 import com.tencent.mm.sdk.e.g;
 import java.util.List;
 
@@ -10,11 +10,11 @@ import java.util.List;
 public abstract interface ai
   extends a, g
 {
-  public abstract boolean aY(String paramString, int paramInt);
+  public abstract boolean ba(String paramString, int paramInt);
   
-  public abstract List<LocalUsageInfo> dC(int paramInt1, int paramInt2);
+  public abstract List<LocalUsageInfo> dE(int paramInt1, int paramInt2);
   
-  public abstract List<LocalUsageInfo> ry(int paramInt);
+  public abstract List<LocalUsageInfo> rY(int paramInt);
 }
 
 

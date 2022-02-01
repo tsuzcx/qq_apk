@@ -21,7 +21,7 @@ public class FileSchemeResolver
     AppMethodBeat.o(13101);
   }
   
-  private static String aSk(String paramString)
+  private static String aYj(String paramString)
   {
     AppMethodBeat.i(13100);
     paramString = new File(paramString);
@@ -39,15 +39,15 @@ public class FileSchemeResolver
     return paramString;
   }
   
-  public static FileSchemeResolver fxF()
+  public static FileSchemeResolver fOs()
   {
-    return a.Jsd;
+    return a.LjI;
   }
   
-  public final Pair<FileSystem, String> a(SchemeResolver.a parama, Uri paramUri)
+  public final Pair<FileSystem, String> a(SchemeResolver.b paramb, Uri paramUri)
   {
     AppMethodBeat.i(13099);
-    Object localObject = ((c)parama).Jto;
+    Object localObject = ((c)paramb).LkT;
     paramUri = paramUri.getPath();
     if ((paramUri == null) || (paramUri.isEmpty())) {
       paramUri = null;
@@ -62,7 +62,7 @@ public class FileSchemeResolver
       {
         AppMethodBeat.o(13099);
         return null;
-        str = aSk(paramUri);
+        str = aYj(paramUri);
         i = Collections.binarySearch((List)localObject, str);
         if (i >= 0)
         {
@@ -91,7 +91,7 @@ public class FileSchemeResolver
         if ((str.startsWith(locala.basePath)) && (str.charAt(locala.basePath.length()) == '/')) {
           break label281;
         }
-        i = locala.Jtu;
+        i = locala.LkZ;
         break label98;
       }
       paramUri = str;
@@ -108,11 +108,11 @@ public class FileSchemeResolver
       localObject = locala;
       break;
       if (paramUri.first == null) {}
-      for (parama = parama.fxR();; parama = ((c.a)paramUri.first).Jsh)
+      for (paramb = paramb.fOG();; paramb = ((c.a)paramUri.first).LjM)
       {
-        parama = new Pair(parama, paramUri.second);
+        paramb = new Pair(paramb, paramUri.second);
         AppMethodBeat.o(13099);
-        return parama;
+        return paramb;
       }
     }
   }
@@ -120,12 +120,12 @@ public class FileSchemeResolver
   static final class a
     implements Parcelable.Creator<FileSchemeResolver>
   {
-    static final FileSchemeResolver Jsd;
+    static final FileSchemeResolver LjI;
     
     static
     {
       AppMethodBeat.i(13098);
-      Jsd = new FileSchemeResolver((byte)0);
+      LjI = new FileSchemeResolver((byte)0);
       AppMethodBeat.o(13098);
     }
   }

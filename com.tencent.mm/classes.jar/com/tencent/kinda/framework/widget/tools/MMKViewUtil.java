@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class MMKViewUtil
 {
@@ -29,7 +29,7 @@ public class MMKViewUtil
     AppMethodBeat.i(19389);
     if (paramContext == null)
     {
-      ac.e("MMKViewUtil", "DpToPx method parameter is illegal! context is null! stack: \n" + Log.getStackTraceString(new Throwable()));
+      ad.e("MMKViewUtil", "DpToPx method parameter is illegal! context is null! stack: \n" + Log.getStackTraceString(new Throwable()));
       AppMethodBeat.o(19389);
       return 2.0F * paramFloat;
     }
@@ -43,7 +43,7 @@ public class MMKViewUtil
     AppMethodBeat.i(19390);
     if (paramContext == null)
     {
-      ac.e("MMKViewUtil", "dpToPx method parameter is illegal! context is null! stack: \n" + Log.getStackTraceString(new Throwable()));
+      ad.e("MMKViewUtil", "dpToPx method parameter is illegal! context is null! stack: \n" + Log.getStackTraceString(new Throwable()));
       paramFloat /= 2.0F;
       AppMethodBeat.o(19390);
       return paramFloat;
@@ -56,17 +56,17 @@ public class MMKViewUtil
   @SuppressLint({"ResourceType"})
   public static void setId4KindaImplView(Context paramContext, String paramString, View paramView)
   {
-    AppMethodBeat.i(207417);
+    AppMethodBeat.i(199541);
     int i = paramContext.getResources().getIdentifier(paramString, "id", paramContext.getPackageName());
     if (i > 0)
     {
       paramView.setId(i);
-      ac.d("MMKViewUtil", "setViewId has set rid: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(207417);
+      ad.d("MMKViewUtil", "setViewId has set rid: ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(199541);
       return;
     }
-    ac.d("MMKViewUtil", "setViewId has not set rid: " + paramString + ", because no found res.");
-    AppMethodBeat.o(207417);
+    ad.d("MMKViewUtil", "setViewId has not set rid: " + paramString + ", because no found res.");
+    AppMethodBeat.o(199541);
   }
 }
 

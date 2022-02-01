@@ -6,13 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.MMActivity;
 
 public class VoiceReCreatePromptUI
   extends MMActivity
   implements View.OnClickListener
 {
-  private View AxD = null;
+  private View BWY = null;
   
   public int getLayoutId()
   {
@@ -22,12 +23,16 @@ public class VoiceReCreatePromptUI
   public void onClick(View paramView)
   {
     AppMethodBeat.i(29904);
+    b localb = new b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
     paramView = new Intent(this, VoiceCreateUI.class);
-    paramView = new com.tencent.mm.hellhoundlib.b.a().ba(paramView);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramView.aeD(), "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramView.lR(0));
+    paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramView.ahp(), "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramView.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(29904);
   }
   
@@ -36,8 +41,8 @@ public class VoiceReCreatePromptUI
     AppMethodBeat.i(29902);
     super.onCreate(paramBundle);
     hideTitleView();
-    this.AxD = findViewById(2131303910);
-    this.AxD.setOnClickListener(this);
+    this.BWY = findViewById(2131303910);
+    this.BWY.setOnClickListener(this);
     AppMethodBeat.o(29902);
   }
   

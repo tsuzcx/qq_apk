@@ -7,26 +7,26 @@ import android.os.Message;
 import com.tencent.e.j.a;
 import com.tencent.e.j.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class EmojiBaseActivity
   extends MMActivity
 {
-  private a peU;
-  b peV;
+  private a pIw;
+  b pIx;
   
-  public final void cdp()
+  public final void chS()
   {
-    if (this.peV != null) {
-      this.peV.removeMessages(131074);
+    if (this.pIx != null) {
+      this.pIx.removeMessages(131074);
     }
   }
   
-  public final void fh(int paramInt1, int paramInt2)
+  public final void fl(int paramInt1, int paramInt2)
   {
-    if (this.peV != null) {
-      this.peV.sendEmptyMessageDelayed(paramInt1, paramInt2);
+    if (this.pIx != null) {
+      this.pIx.sendEmptyMessageDelayed(paramInt1, paramInt2);
     }
   }
   
@@ -36,33 +36,33 @@ public abstract class EmojiBaseActivity
   
   public final void n(Message paramMessage)
   {
-    if (this.peV != null) {
-      this.peV.sendMessage(paramMessage);
+    if (this.pIx != null) {
+      this.pIx.sendMessage(paramMessage);
     }
   }
   
   public final void o(Message paramMessage)
   {
-    if (this.peU != null) {
-      this.peU.sendMessage(paramMessage);
+    if (this.pIw != null) {
+      this.pIw.sendMessage(paramMessage);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.peU = new a(a.aTF("EmojiBaseActivity_handlerThread"));
-    this.peV = new b(getMainLooper());
+    this.pIw = new a(a.aZF("EmojiBaseActivity_handlerThread"));
+    this.pIx = new b(getMainLooper());
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if ((this.peU != null) && (this.peU.getLooper() != null)) {
-      this.peU.getSerial().KbG.quit();
+    if ((this.pIw != null) && (this.pIw.getLooper() != null)) {
+      this.pIw.getSerial().LVC.quit();
     }
-    this.peU = null;
-    this.peV = null;
+    this.pIw = null;
+    this.pIx = null;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -72,7 +72,7 @@ public abstract class EmojiBaseActivity
   }
   
   final class a
-    extends ao
+    extends ap
   {
     a(a parama)
     {
@@ -89,7 +89,7 @@ public abstract class EmojiBaseActivity
   }
   
   final class b
-    extends ao
+    extends ap
   {
     b(Looper paramLooper)
     {

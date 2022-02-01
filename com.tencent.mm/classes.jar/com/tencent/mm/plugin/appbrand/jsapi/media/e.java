@@ -1,34 +1,63 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.luggage.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.choosemsgfile.compat.MsgFile;
-import com.tencent.mm.choosemsgfile.compat.a.a;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.z.l.a;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.vfs.q;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.InputStream;
 
-public final class e
-  extends a<h>
+public abstract interface e
+  extends b
 {
-  public static final int CTRL_INDEX = 532;
-  public static final String NAME = "chooseMessageFile";
+  public static final e kTi = new e()
+  {
+    public final Bitmap b(InputStream paramAnonymousInputStream, BitmapFactory.Options paramAnonymousOptions)
+    {
+      AppMethodBeat.i(139866);
+      paramAnonymousInputStream = BitmapFactory.decodeStream(paramAnonymousInputStream, null, paramAnonymousOptions);
+      AppMethodBeat.o(139866);
+      return paramAnonymousInputStream;
+    }
+    
+    public final Bitmap decodeFile(String paramAnonymousString, BitmapFactory.Options paramAnonymousOptions)
+    {
+      AppMethodBeat.i(139865);
+      paramAnonymousString = BitmapFactory.decodeFile(paramAnonymousString, paramAnonymousOptions);
+      AppMethodBeat.o(139865);
+      return paramAnonymousString;
+    }
+    
+    public final Bitmap decodeStream(InputStream paramAnonymousInputStream)
+    {
+      AppMethodBeat.i(187627);
+      paramAnonymousInputStream = BitmapFactory.decodeStream(paramAnonymousInputStream);
+      AppMethodBeat.o(187627);
+      return paramAnonymousInputStream;
+    }
+  };
+  
+  public abstract Bitmap b(InputStream paramInputStream, BitmapFactory.Options paramOptions);
+  
+  public abstract Bitmap decodeFile(String paramString, BitmapFactory.Options paramOptions);
+  
+  public abstract Bitmap decodeStream(InputStream paramInputStream);
+  
+  public static final class a
+  {
+    public static e a(e parame)
+    {
+      e locale = parame;
+      if (parame == null) {
+        locale = e.kTi;
+      }
+      return locale;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.e
  * JD-Core Version:    0.7.0.1
  */

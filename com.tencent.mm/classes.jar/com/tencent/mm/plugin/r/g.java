@@ -2,42 +2,42 @@ package com.tencent.mm.plugin.r;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 
 public final class g
 {
-  public static String dff()
+  public static String doD()
   {
     AppMethodBeat.i(26540);
     Object localObject = new StringBuilder();
-    az.ayM();
-    localObject = c.agv() + "msgsynchronize/syncFile/";
+    ba.aBQ();
+    localObject = c.ajh() + "msgsynchronize/syncFile/";
     AppMethodBeat.o(26540);
     return localObject;
   }
   
-  public static String dfg()
+  public static String doE()
   {
     AppMethodBeat.i(26541);
     Object localObject = new StringBuilder();
-    az.ayM();
-    localObject = c.agv() + "msgsynchronize/";
+    ba.aBQ();
+    localObject = c.ajh() + "msgsynchronize/";
     AppMethodBeat.o(26541);
     return localObject;
   }
   
-  public static String dfh()
+  public static String doF()
   {
     AppMethodBeat.i(26542);
     try
     {
       Object localObject = new StringBuilder();
-      az.ayM();
-      localObject = c.agv() + "msgsynchronize.zip";
+      ba.aBQ();
+      localObject = c.ajh() + "msgsynchronize.zip";
       e locale = new e((String)localObject);
       if (!locale.exists()) {
         locale.createNewFile();
@@ -47,7 +47,7 @@ public final class g
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.MsgSynchronizeUtil", localException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.MsgSynchronizeUtil", localException, "", new Object[0]);
       AppMethodBeat.o(26542);
     }
     return "";
@@ -58,7 +58,7 @@ public final class g
     AppMethodBeat.i(26543);
     if ((TextUtils.isEmpty(paramString1)) || (paramArrayOfByte == null))
     {
-      ac.e("MicroMsg.MsgSynchronizeUtil", "appendFile dir:%s fileName:%s ", new Object[] { paramString1, paramString2 });
+      ad.e("MicroMsg.MsgSynchronizeUtil", "appendFile dir:%s fileName:%s ", new Object[] { paramString1, paramString2 });
       AppMethodBeat.o(26543);
       return;
     }
@@ -69,15 +69,15 @@ public final class g
       if (i <= 0) {
         break;
       }
-      long l1 = com.tencent.mm.plugin.backup.b.g.Sp(paramString1 + paramString2);
+      long l1 = com.tencent.mm.plugin.backup.b.g.VN(paramString1 + paramString2);
       i = f(paramString1, paramString2, paramArrayOfByte);
-      long l2 = com.tencent.mm.plugin.backup.b.g.Sp(paramString1 + paramString2);
+      long l2 = com.tencent.mm.plugin.backup.b.g.VN(paramString1 + paramString2);
       if ((i == 0) && (l2 >= paramArrayOfByte.length))
       {
         AppMethodBeat.o(26543);
         return;
       }
-      ac.e("MicroMsg.MsgSynchronizeUtil", "appendFile retry:%d append:%d  old:%d  new:%d  data:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(paramArrayOfByte.length) });
+      ad.e("MicroMsg.MsgSynchronizeUtil", "appendFile retry:%d append:%d  old:%d  new:%d  data:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(paramArrayOfByte.length) });
     }
     AppMethodBeat.o(26543);
   }
@@ -102,7 +102,7 @@ public final class g
     }
     catch (Exception paramString1)
     {
-      ac.printErrStackTrace("MicroMsg.MsgSynchronizeUtil", paramString1, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.MsgSynchronizeUtil", paramString1, "", new Object[0]);
       AppMethodBeat.o(26544);
     }
     return -1;

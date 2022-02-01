@@ -5,45 +5,40 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.text.SpannableString;
 import android.text.style.BackgroundColorSpan;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.plugin.c;
-import com.tencent.mm.plugin.record.b.u;
-import com.tencent.mm.plugin.record.ui.a.b;
+import com.tencent.mm.plugin.record.b.w;
 import com.tencent.mm.plugin.record.ui.h.b;
 import com.tencent.mm.plugin.record.ui.i;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.widget.b.a;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.e;
 
 public final class d
   implements h.b
 {
   Context context;
-  int nwY;
-  int nwZ;
+  int nYw;
+  int nYx;
   
   public d(Context paramContext)
   {
     this.context = paramContext;
   }
   
-  private void a(View paramView, final int paramInt, final b paramb, final i parami, final u paramu, final boolean paramBoolean)
+  private void a(View paramView, final int paramInt, final com.tencent.mm.plugin.record.ui.a.b paramb, final i parami, final w paramw, final boolean paramBoolean)
   {
     AppMethodBeat.i(28040);
     paramView.setOnLongClickListener(new View.OnLongClickListener()
@@ -51,41 +46,45 @@ public final class d
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(28037);
-        final TextView localTextView = (TextView)paramAnonymousView;
-        Object localObject = new SpannableString(localTextView.getText());
-        ((SpannableString)localObject).setSpan(new BackgroundColorSpan(d.this.context.getResources().getColor(2131099736)), 0, localTextView.getText().length(), 33);
-        localTextView.setText((CharSequence)localObject);
-        localObject = new a(d.this.context, localTextView);
-        ((a)localObject).JiR = new View.OnCreateContextMenuListener()
+        Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/record/ui/viewWrappers/TextViewWrapper$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
+        localObject1 = (TextView)paramAnonymousView;
+        Object localObject2 = new SpannableString(((TextView)localObject1).getText());
+        ((SpannableString)localObject2).setSpan(new BackgroundColorSpan(d.this.context.getResources().getColor(2131099736)), 0, ((TextView)localObject1).getText().length(), 33);
+        ((TextView)localObject1).setText((CharSequence)localObject2);
+        localObject2 = new com.tencent.mm.ui.widget.b.a(d.this.context, (View)localObject1);
+        ((com.tencent.mm.ui.widget.b.a)localObject2).Lal = true;
+        ((com.tencent.mm.ui.widget.b.a)localObject2).Laj = new n.c()
         {
-          public final void onCreateContextMenu(ContextMenu paramAnonymous2ContextMenu, View paramAnonymous2View, ContextMenu.ContextMenuInfo paramAnonymous2ContextMenuInfo)
+          public final void a(l paramAnonymous2l, View paramAnonymous2View)
           {
-            AppMethodBeat.i(28034);
-            paramAnonymous2ContextMenu.add(0, 0, 0, d.this.context.getString(2131755701));
-            if ((!c.Ly()) || (d.2.this.wll == null))
+            AppMethodBeat.i(193350);
+            paramAnonymous2l.a(0, 0, d.this.context.getString(2131755701), 2131690381);
+            if ((!c.Ng()) || (d.2.this.xth == null))
             {
-              AppMethodBeat.o(28034);
+              AppMethodBeat.o(193350);
               return;
             }
-            if (d.2.this.wlm)
+            if (d.2.this.xti)
             {
-              if (d.2.this.wln.status != 2)
+              if (d.2.this.xtj.status != 2)
               {
-                paramAnonymous2ContextMenu.add(0, 1, 0, d.this.context.getString(2131757242));
-                AppMethodBeat.o(28034);
+                paramAnonymous2l.a(0, 1, d.this.context.getString(2131757242), 2131690491);
+                AppMethodBeat.o(193350);
               }
             }
             else
             {
-              paramAnonymous2ContextMenu.add(0, 2, 0, d.this.context.getString(2131757240));
-              if (d.2.this.wln.dzh == 1) {
-                paramAnonymous2ContextMenu.add(0, 3, 0, d.this.context.getString(2131757233));
+              paramAnonymous2l.a(0, 2, d.this.context.getString(2131757240), 2131690398);
+              if (d.2.this.xtj.dLt == 1) {
+                paramAnonymous2l.a(0, 3, d.this.context.getString(2131757233), 2131690467);
               }
             }
-            AppMethodBeat.o(28034);
+            AppMethodBeat.o(193350);
           }
         };
-        ((a)localObject).ISv = new n.d()
+        ((com.tencent.mm.ui.widget.b.a)localObject2).KJz = new n.e()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -98,53 +97,53 @@ public final class d
               AppMethodBeat.o(28035);
               return;
             case 0: 
-              ((ClipboardManager)ai.getContext().getSystemService("clipboard")).setText(localTextView.getText());
-              h.cf(d.this.context, d.this.context.getString(2131755702));
+              ((ClipboardManager)aj.getContext().getSystemService("clipboard")).setText(this.fQY.getText());
+              h.ck(d.this.context, d.this.context.getString(2131755702));
               AppMethodBeat.o(28035);
               return;
             case 1: 
-              paramAnonymous2MenuItem = d.2.this.wll;
-              paramAnonymous2Int = d.2.this.iKv;
-              if (!d.2.this.wlm) {}
+              paramAnonymous2MenuItem = d.2.this.xth;
+              paramAnonymous2Int = d.2.this.jdE;
+              if (!d.2.this.xti) {}
               for (;;)
               {
-                paramAnonymous2MenuItem.ao(paramAnonymous2Int, bool1);
+                paramAnonymous2MenuItem.at(paramAnonymous2Int, bool1);
                 AppMethodBeat.o(28035);
                 return;
                 bool1 = false;
               }
             case 2: 
-              paramAnonymous2MenuItem = d.2.this.wll;
-              u localu = paramAnonymous2MenuItem.Md(d.2.this.iKv);
-              if (localu.status == 2)
+              paramAnonymous2MenuItem = d.2.this.xth;
+              w localw = paramAnonymous2MenuItem.NC(d.2.this.jdE);
+              if (localw.status == 2)
               {
-                localu.status = 0;
-                paramAnonymous2MenuItem.nAW.notifyDataSetChanged();
+                localw.status = 0;
+                paramAnonymous2MenuItem.ocf.notifyDataSetChanged();
               }
               AppMethodBeat.o(28035);
               return;
             }
-            paramAnonymous2MenuItem = d.2.this.wll;
-            paramAnonymous2Int = d.2.this.iKv;
-            if (!d.2.this.wlm) {}
+            paramAnonymous2MenuItem = d.2.this.xth;
+            paramAnonymous2Int = d.2.this.jdE;
+            if (!d.2.this.xti) {}
             for (bool1 = bool2;; bool1 = false)
             {
-              paramAnonymous2MenuItem.ao(paramAnonymous2Int, bool1);
+              paramAnonymous2MenuItem.at(paramAnonymous2Int, bool1);
               break;
             }
           }
         };
-        ((a)localObject).IUx = new PopupWindow.OnDismissListener()
+        ((com.tencent.mm.ui.widget.b.a)localObject2).KLB = new PopupWindow.OnDismissListener()
         {
           public final void onDismiss()
           {
             AppMethodBeat.i(28036);
-            TextView localTextView = localTextView;
-            if (d.2.this.wlm) {}
-            for (String str = d.2.this.wla.dhe.desc;; str = d.2.this.wln.wjF)
+            TextView localTextView = this.fQY;
+            if (d.2.this.xti) {}
+            for (String str = d.2.this.xsV.dsC.desc;; str = d.2.this.xtj.xrv)
             {
               localTextView.setText(str);
-              k.m(localTextView, 1);
+              k.n(this.fQY, 1);
               AppMethodBeat.o(28036);
               return;
             }
@@ -153,25 +152,26 @@ public final class d
         if ((paramAnonymousView.getTag(2131306044) instanceof int[]))
         {
           paramAnonymousView = (int[])paramAnonymousView.getTag(2131306044);
-          ((a)localObject).ej(paramAnonymousView[0], paramAnonymousView[1]);
+          ((com.tencent.mm.ui.widget.b.a)localObject2).el(paramAnonymousView[0], paramAnonymousView[1]);
         }
         for (;;)
         {
+          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/record/ui/viewWrappers/TextViewWrapper$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
           AppMethodBeat.o(28037);
           return true;
-          ((a)localObject).ej(d.this.nwY, d.this.nwZ);
+          ((com.tencent.mm.ui.widget.b.a)localObject2).el(d.this.nYw, d.this.nYx);
         }
       }
     });
     AppMethodBeat.o(28040);
   }
   
-  public final void a(View paramView, int paramInt, b paramb, Object paramObject)
+  public final void a(View paramView, int paramInt, com.tencent.mm.plugin.record.ui.a.b paramb, Object paramObject)
   {
     AppMethodBeat.i(28039);
     TextView localTextView1 = (TextView)paramView.findViewById(2131303893);
-    localTextView1.setText(paramb.dhe.desc);
-    k.m(localTextView1, 1);
+    localTextView1.setText(paramb.dsC.desc);
+    k.n(localTextView1, 1);
     TextView localTextView2 = (TextView)paramView.findViewById(2131303900);
     Object localObject = paramView.findViewById(2131303901);
     LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131303897);
@@ -181,14 +181,14 @@ public final class d
     i locali = (i)paramObject;
     if (locali != null)
     {
-      paramObject = locali.Md(paramInt);
+      paramObject = locali.NC(paramInt);
       if ((paramObject == null) || (paramObject.status != 2)) {
         break label249;
       }
-      localTextView2.setText(paramObject.wjF);
+      localTextView2.setText(paramObject.xrv);
       localTextView2.setVisibility(0);
       TextView localTextView3 = (TextView)paramView.findViewById(2131303899);
-      if (!bs.isNullOrNil(paramObject.hym)) {
+      if (!bt.isNullOrNil(paramObject.hQG)) {
         break label239;
       }
       localObject = paramView.getResources().getString(2131764409);
@@ -202,26 +202,13 @@ public final class d
       if (locali != null) {
         a(localTextView2, paramInt, paramb, locali, paramObject, false);
       }
-      paramView.setOnTouchListener(new View.OnTouchListener()
-      {
-        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-        {
-          AppMethodBeat.i(28033);
-          if (paramAnonymousMotionEvent.getAction() == 0)
-          {
-            d.this.nwY = ((int)paramAnonymousMotionEvent.getRawX());
-            d.this.nwZ = ((int)paramAnonymousMotionEvent.getRawY());
-          }
-          AppMethodBeat.o(28033);
-          return false;
-        }
-      });
+      paramView.setOnTouchListener(new d.1(this));
       AppMethodBeat.o(28039);
       return;
       paramObject = null;
       break;
       label239:
-      localObject = paramObject.hym;
+      localObject = paramObject.hQG;
       break label170;
       label249:
       if ((paramObject != null) && (paramObject.status == 1)) {

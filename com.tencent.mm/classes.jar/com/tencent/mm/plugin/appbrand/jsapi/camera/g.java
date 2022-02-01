@@ -9,26 +9,26 @@ import com.tencent.mm.plugin.appbrand.jsapi.e;
 public abstract interface g
   extends f
 {
-  public static final g knc = new g()
+  public static final g kIc = new g()
   {
-    public final void ao(String paramAnonymousString, boolean paramAnonymousBoolean) {}
+    public final void ap(String paramAnonymousString, boolean paramAnonymousBoolean) {}
     
-    public final float aw(float paramAnonymousFloat)
+    public final float az(float paramAnonymousFloat)
     {
       return 0.0F;
     }
     
-    public final void bgb() {}
+    public final void bjF() {}
     
-    public final void bgd() {}
+    public final void bjH() {}
     
-    public final void bge() {}
+    public final void bjI() {}
     
-    public final void bgk() {}
+    public final void bjO() {}
     
-    public final void bgl() {}
+    public final void bjP() {}
     
-    public final boolean dM(int paramAnonymousInt1, int paramAnonymousInt2)
+    public final boolean dO(int paramAnonymousInt1, int paramAnonymousInt2)
     {
       return false;
     }
@@ -89,7 +89,7 @@ public abstract interface g
     
     public final void setScanFreq(int paramAnonymousInt) {}
     
-    public final void w(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4) {}
+    public final void x(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4) {}
   };
   
   public abstract void l(MotionEvent paramMotionEvent);
@@ -98,7 +98,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.g
  * JD-Core Version:    0.7.0.1
  */

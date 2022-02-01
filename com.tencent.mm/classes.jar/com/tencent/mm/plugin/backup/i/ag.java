@@ -5,19 +5,19 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class ag
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String ncJ;
-  public LinkedList<Long> nee;
-  public LinkedList<String> nef;
-  public LinkedList<String> neg;
+  public String nDg;
+  public LinkedList<Long> nEB;
+  public LinkedList<String> nEC;
+  public LinkedList<String> nED;
   
   public ag()
   {
     AppMethodBeat.i(22140);
-    this.nee = new LinkedList();
-    this.nef = new LinkedList();
-    this.neg = new LinkedList();
+    this.nEB = new LinkedList();
+    this.nEC = new LinkedList();
+    this.nED = new LinkedList();
     AppMethodBeat.o(22140);
   }
   
@@ -27,27 +27,27 @@ public final class ag
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ncJ == null)
+      if (this.nDg == null)
       {
         paramVarArgs = new b("Not all required fields were included: BakChatName");
         AppMethodBeat.o(22141);
         throw paramVarArgs;
       }
-      paramVarArgs.e(1, 3, this.nee);
-      paramVarArgs.e(2, 1, this.nef);
-      paramVarArgs.e(3, 1, this.neg);
-      if (this.ncJ != null) {
-        paramVarArgs.d(4, this.ncJ);
+      paramVarArgs.e(1, 3, this.nEB);
+      paramVarArgs.e(2, 1, this.nEC);
+      paramVarArgs.e(3, 1, this.nED);
+      if (this.nDg != null) {
+        paramVarArgs.d(4, this.nDg);
       }
       AppMethodBeat.o(22141);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.a.c(1, 3, this.nee) + 0 + f.a.a.a.c(2, 1, this.nef) + f.a.a.a.c(3, 1, this.neg);
+      int i = f.a.a.a.c(1, 3, this.nEB) + 0 + f.a.a.a.c(2, 1, this.nEC) + f.a.a.a.c(3, 1, this.nED);
       paramInt = i;
-      if (this.ncJ != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.ncJ);
+      if (this.nDg != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.nDg);
       }
       AppMethodBeat.o(22141);
       return paramInt;
@@ -55,16 +55,16 @@ public final class ag
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.nee.clear();
-      this.nef.clear();
-      this.neg.clear();
+      this.nEB.clear();
+      this.nEC.clear();
+      this.nED.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      if (this.ncJ == null)
+      if (this.nDg == null)
       {
         paramVarArgs = new b("Not all required fields were included: BakChatName");
         AppMethodBeat.o(22141);
@@ -83,19 +83,19 @@ public final class ag
         AppMethodBeat.o(22141);
         return -1;
       case 1: 
-        localag.nee.add(Long.valueOf(locala.LVo.xG()));
+        localag.nEB.add(Long.valueOf(locala.NPN.zd()));
         AppMethodBeat.o(22141);
         return 0;
       case 2: 
-        localag.nef.add(locala.LVo.readString());
+        localag.nEC.add(locala.NPN.readString());
         AppMethodBeat.o(22141);
         return 0;
       case 3: 
-        localag.neg.add(locala.LVo.readString());
+        localag.nED.add(locala.NPN.readString());
         AppMethodBeat.o(22141);
         return 0;
       }
-      localag.ncJ = locala.LVo.readString();
+      localag.nDg = locala.NPN.readString();
       AppMethodBeat.o(22141);
       return 0;
     }

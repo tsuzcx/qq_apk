@@ -1,24 +1,29 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.chatting.e.a;
 
 abstract class bd$a
   extends c
 {
-  public String b(a parama, bo parambo)
+  protected bd.h KgZ;
+  
+  public String b(a parama, bu parambu)
   {
     return parama.getTalkerUserName();
   }
   
-  protected final boolean b(a parama)
+  public boolean fHh()
   {
     return false;
   }
   
-  public boolean fqu()
+  protected final bd.h o(a parama)
   {
-    return false;
+    if (this.KgZ == null) {
+      this.KgZ = new bd.h(parama);
+    }
+    return this.KgZ;
   }
 }
 

@@ -13,7 +13,7 @@ import com.tencent.mm.ui.MMActivity;
 public class RetransmitPreviewUI
   extends MMActivity
 {
-  private TextView Up = null;
+  private TextView Wf = null;
   private String text = null;
   
   public int getLayoutId()
@@ -34,11 +34,11 @@ public class RetransmitPreviewUI
     super.onCreate(paramBundle);
     setMMTitle("");
     this.text = getIntent().getStringExtra("Retr_Msg_content");
-    this.Up = ((TextView)findViewById(2131300329));
-    paramBundle = this.Up;
-    g localg = g.eXw();
+    this.Wf = ((TextView)findViewById(2131300329));
+    paramBundle = this.Wf;
+    g localg = g.fng();
     getContext();
-    paramBundle.setText(localg.b(this.text, this.Up.getTextSize()));
+    paramBundle.setText(localg.b(this.text, this.Wf.getTextSize()));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -67,7 +67,7 @@ public class RetransmitPreviewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.RetransmitPreviewUI
  * JD-Core Version:    0.7.0.1
  */

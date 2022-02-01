@@ -1,5 +1,6 @@
 package com.tencent.liteav.basic.structs;
 
+import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 
@@ -89,7 +90,8 @@ public class TXSVideoFrame
     }
     if (this.buffer == null)
     {
-      nativeLoadArrayFromGL(paramArrayOfByte, this.width, this.height);
+      int i = this.height * 3 / 8;
+      GLES20.glReadPixels(0, 0, this.width, i, 6408, 5121, ByteBuffer.wrap(paramArrayOfByte));
       AppMethodBeat.o(14451);
       return;
     }

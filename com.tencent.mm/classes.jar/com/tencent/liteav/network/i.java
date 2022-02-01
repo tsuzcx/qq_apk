@@ -7,7 +7,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import com.tencent.liteav.basic.e.b;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -266,7 +266,7 @@ public class i
     {
       if (this.b != null)
       {
-        int i = d.e(this.b);
+        int i = f.e(this.b);
         if (i == 0)
         {
           AppMethodBeat.o(15457);

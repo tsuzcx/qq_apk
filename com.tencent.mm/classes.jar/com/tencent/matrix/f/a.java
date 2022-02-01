@@ -27,19 +27,19 @@ import java.util.regex.Pattern;
 public class a
   extends com.tencent.matrix.e.b
 {
-  private static long[] cyl = new long[0];
-  private static int cym = 0;
-  private a cyj;
-  private List<List<a.d>> cyk;
-  private long cyn;
-  private long cyo;
-  private long cyp;
-  private int cyq;
-  private final b cyr;
+  private static long[] cJg = new long[0];
+  private static int cJh = 0;
+  private a cJe;
+  private List<List<d>> cJf;
+  private long cJi;
+  private long cJj;
+  private long cJk;
+  private int cJl;
+  private final b cJm;
   private Handler handler;
   private long lastReportTime;
   
-  public static int Hx()
+  public static int IS()
   {
     Object localObject1 = String.format("/proc/%s/status", new Object[] { Integer.valueOf(Process.myPid()) });
     for (;;)
@@ -76,20 +76,20 @@ public class a
     }
   }
   
-  public static List<a.d> Hy()
+  public static List<d> IT()
   {
     Object localObject = a(new c()new b
     {
       public final void a(a.e paramAnonymouse)
       {
-        a.e locale = (a.e)this.cyt.get(paramAnonymouse.tid);
+        a.e locale = (a.e)this.cJo.get(paramAnonymouse.tid);
         if (locale != null)
         {
           paramAnonymouse.name = (locale.name.replaceAll("-?[0-9]\\d*", "?") + "J");
-          paramAnonymouse.cyx = locale.cyx;
-          paramAnonymouse.cyw = locale.cyw;
-          paramAnonymouse.cyy = locale.cyy;
-          paramAnonymouse.cyz = true;
+          paramAnonymouse.cJs = locale.cJs;
+          paramAnonymouse.cJr = locale.cJr;
+          paramAnonymouse.cJt = locale.cJt;
+          paramAnonymouse.cJu = true;
           return;
         }
         paramAnonymouse.name = paramAnonymouse.name.replaceAll("-?[0-9]\\d*", "?");
@@ -106,14 +106,14 @@ public class a
     while (localIterator.hasNext())
     {
       e locale = (e)localIterator.next();
-      a.d locald = (a.d)localHashMap.get(locale.name);
+      d locald = (d)localHashMap.get(locale.name);
       localObject = locald;
       if (locald == null)
       {
-        localObject = new a.d(locale.name);
+        localObject = new d(locale.name);
         localHashMap.put(locale.name, localObject);
       }
-      ((a.d)localObject).list.add(locale);
+      ((d)localObject).list.add(locale);
     }
     localObject = new LinkedList(localHashMap.values());
     Collections.sort((List)localObject, new Comparator() {});
@@ -133,7 +133,7 @@ public class a
       {
         locale.tid = ((HandlerThread)localThread).getThreadId();
         localLongSparseArray.put(locale.tid, locale);
-        locale.cyw = true;
+        locale.cJr = true;
       }
     }
     return localLongSparseArray;
@@ -256,37 +256,37 @@ public class a
   {
     super.onForeground(paramBoolean);
     this.handler.removeCallbacksAndMessages(null);
-    if (this.cyj != null)
+    if (this.cJe != null)
     {
       if (paramBoolean) {
-        this.handler.postDelayed(this.cyj, this.cyn);
+        this.handler.postDelayed(this.cJe, this.cJi);
       }
     }
     else {
       return;
     }
-    this.handler.postDelayed(this.cyj, this.cyo);
+    this.handler.postDelayed(this.cJe, this.cJj);
   }
   
   public void start()
   {
     super.start();
     c.i("Matrix.ThreadMonitor", "start!", new Object[0]);
-    cyl = new long[6666];
-    cym = 6666;
+    cJg = new long[6666];
+    cJh = 6666;
     com.tencent.matrix.trace.core.AppMethodBeat.sMethodEnterListener = new AppMethodBeat.b()
     {
       public final void r(int paramAnonymousInt, long paramAnonymousLong)
       {
-        if ((paramAnonymousLong < a.cym) && (a.Hz()[((int)paramAnonymousLong)] == 0L))
+        if ((paramAnonymousLong < a.cJh) && (a.IU()[((int)paramAnonymousLong)] == 0L))
         {
           long l1 = Process.myTid();
           long l2 = paramAnonymousInt;
-          a.Hz()[((int)paramAnonymousLong)] = (l1 << 32 | l2);
+          a.IU()[((int)paramAnonymousLong)] = (l1 << 32 | l2);
         }
       }
     };
-    com.tencent.matrix.g.b.HX().post(new Runnable()
+    com.tencent.matrix.g.b.Js().post(new Runnable()
     {
       public final void run()
       {
@@ -299,37 +299,37 @@ public class a
   {
     super.stop();
     c.i("Matrix.ThreadMonitor", "stop!", new Object[0]);
-    this.handler.removeCallbacks(this.cyj);
+    this.handler.removeCallbacks(this.cJe);
     com.tencent.matrix.trace.core.AppMethodBeat.sMethodEnterListener = null;
-    cyl = new long[0];
+    cJg = new long[0];
   }
   
   final class a
     implements Runnable
   {
-    private final long cyu;
+    private final long cJp;
     
     public final void run()
     {
-      int i = a.Hx();
-      c.i("Matrix.ThreadMonitor", "[DumpThreadJiffiesTask] run...[%s] limit:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(a.c(this.cys)) });
-      if (a.c(this.cys) >= i) {
+      int i = a.IS();
+      c.i("Matrix.ThreadMonitor", "[DumpThreadJiffiesTask] run...[%s] limit:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(a.c(this.cJn)) });
+      if (a.c(this.cJn) >= i) {
         return;
       }
       Object localObject1 = a.b(new a.c()new a.b
       {
         public final void a(a.e paramAnonymouse)
         {
-          a.e locale = (a.e)this.cyt.get(paramAnonymouse.tid);
+          a.e locale = (a.e)this.cJo.get(paramAnonymouse.tid);
           if (locale != null)
           {
             if (paramAnonymouse.tid == a.a.a(a.a.this)) {}
             for (paramAnonymouse.name = "main";; paramAnonymouse.name = (locale.name.replaceAll("-?[0-9]\\d*", "?") + "J"))
             {
-              paramAnonymouse.cyx = locale.cyx;
-              paramAnonymouse.cyw = locale.cyw;
-              paramAnonymouse.cyy = locale.cyy;
-              paramAnonymouse.cyz = true;
+              paramAnonymouse.cJs = locale.cJs;
+              paramAnonymouse.cJr = locale.cJr;
+              paramAnonymouse.cJt = locale.cJt;
+              paramAnonymouse.cJu = true;
               return;
             }
           }
@@ -339,7 +339,7 @@ public class a
       {
         public final boolean b(a.e paramAnonymouse)
         {
-          return a.d(a.a.this.cys).b(paramAnonymouse);
+          return a.d(a.a.this.cJn).b(paramAnonymouse);
         }
       });
       HashMap localHashMap = new HashMap();
@@ -360,30 +360,30 @@ public class a
       localObject1 = new LinkedList(localHashMap.values());
       Collections.sort((List)localObject1, new Comparator() {});
       long l = SystemClock.uptimeMillis();
-      if ((this.cys.isForeground()) && (l - a.e(this.cys) > a.f(this.cys)))
+      if ((this.cJn.isForeground()) && (l - a.e(this.cJn) > a.f(this.cJn)))
       {
-        localObject1 = a.g(this.cys).iterator();
+        localObject1 = a.g(this.cJn).iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (List)((Iterator)localObject1).next();
-          a.a(this.cys, (List)localObject2);
+          a.a(this.cJn, (List)localObject2);
         }
-        a.a(this.cys, l);
-        a.g(this.cys).clear();
-        localObject1 = a.b(this.cys);
-        if (!com.tencent.matrix.a.cqa.cqc) {
+        a.a(this.cJn, l);
+        a.g(this.cJn).clear();
+        localObject1 = a.b(this.cJn);
+        if (!com.tencent.matrix.a.cAS.cAU) {
           break label399;
         }
       }
       label399:
-      for (l = a.h(this.cys);; l = a.i(this.cys))
+      for (l = a.h(this.cJn);; l = a.i(this.cJn))
       {
         ((Handler)localObject1).postDelayed(this, l);
         return;
-        if (a.g(this.cys).size() >= 10) {
-          a.g(this.cys).remove(0);
+        if (a.g(this.cJn).size() >= 10) {
+          a.g(this.cJn).remove(0);
         }
-        a.g(this.cys).add(localObject1);
+        a.g(this.cJn).add(localObject1);
         break;
       }
     }
@@ -399,12 +399,57 @@ public class a
     public abstract void a(a.e parame);
   }
   
+  public static final class d
+  {
+    List<a.e> list = new LinkedList();
+    public String name;
+    
+    d(String paramString)
+    {
+      this.name = paramString;
+    }
+    
+    public final boolean IV()
+    {
+      boolean bool = false;
+      if (this.list.size() > 0) {
+        bool = ((a.e)this.list.get(0)).cJu;
+      }
+      return bool;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      if ((paramObject instanceof a.e))
+      {
+        paramObject = (a.e)paramObject;
+        return this.name.equals(paramObject.name);
+      }
+      return false;
+    }
+    
+    public final int getSize()
+    {
+      return this.list.size();
+    }
+    
+    public final int hashCode()
+    {
+      return this.name.hashCode();
+    }
+    
+    public final String toString()
+    {
+      return this.name + "=" + getSize();
+    }
+  }
+  
   public static final class e
   {
-    boolean cyw;
-    int cyx;
-    String cyy;
-    boolean cyz;
+    boolean cJr;
+    int cJs;
+    String cJt;
+    boolean cJu;
     String name;
     String state;
     long tid;
@@ -431,7 +476,7 @@ public class a
     
     public final String toString()
     {
-      return String.format("name=%s tid=%s state=%s isHandlerThread=%s isJavaThread=%s", new Object[] { this.name, Long.valueOf(this.tid), this.state, Boolean.valueOf(this.cyw), Boolean.valueOf(this.cyz) });
+      return String.format("name=%s tid=%s state=%s isHandlerThread=%s isJavaThread=%s", new Object[] { this.name, Long.valueOf(this.tid), this.state, Boolean.valueOf(this.cJr), Boolean.valueOf(this.cJu) });
     }
   }
 }

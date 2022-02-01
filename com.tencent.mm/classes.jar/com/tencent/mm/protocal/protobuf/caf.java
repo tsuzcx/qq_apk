@@ -3,43 +3,34 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class caf
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int Fpn;
-  public String tiv;
+  public int yho;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152639);
+    AppMethodBeat.i(91543);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.Fpn);
-      if (this.tiv != null) {
-        paramVarArgs.d(2, this.tiv);
-      }
-      AppMethodBeat.o(152639);
+      ((f.a.a.c.a)paramVarArgs[0]).aS(1, this.yho);
+      AppMethodBeat.o(91543);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.Fpn) + 0;
-      paramInt = i;
-      if (this.tiv != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.tiv);
-      }
-      AppMethodBeat.o(152639);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bz(1, this.yho);
+      AppMethodBeat.o(91543);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(152639);
+      AppMethodBeat.o(91543);
       return 0;
     }
     if (paramInt == 3)
@@ -49,24 +40,20 @@ public final class caf
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(152639);
+        AppMethodBeat.o(91543);
         return -1;
-      case 1: 
-        localcaf.Fpn = locala.LVo.xF();
-        AppMethodBeat.o(152639);
-        return 0;
       }
-      localcaf.tiv = locala.LVo.readString();
-      AppMethodBeat.o(152639);
+      localcaf.yho = locala.NPN.zc();
+      AppMethodBeat.o(91543);
       return 0;
     }
-    AppMethodBeat.o(152639);
+    AppMethodBeat.o(91543);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.caf
  * JD-Core Version:    0.7.0.1
  */

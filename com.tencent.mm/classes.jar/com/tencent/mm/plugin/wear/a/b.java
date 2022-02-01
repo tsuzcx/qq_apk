@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static final boolean aAl(String paramString)
+  public static final boolean aFv(String paramString)
   {
     AppMethodBeat.i(131330);
     try
@@ -20,7 +20,7 @@ public final class b
     return false;
   }
   
-  public static final int aAm(String paramString)
+  public static final int aFw(String paramString)
   {
     AppMethodBeat.i(131331);
     try

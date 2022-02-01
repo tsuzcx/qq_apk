@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.fingerprint.b.a;
 
 public final class f
 {
-  public String dac;
+  public String dlu;
   public int scene;
-  public String skD;
+  public String thf;
   
   public f(String paramString)
   {
-    this.skD = paramString;
+    this.thf = paramString;
     this.scene = 1;
   }
   
   public f(String paramString, byte paramByte)
   {
-    this.dac = paramString;
+    this.dlu = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.a.f
  * JD-Core Version:    0.7.0.1
  */

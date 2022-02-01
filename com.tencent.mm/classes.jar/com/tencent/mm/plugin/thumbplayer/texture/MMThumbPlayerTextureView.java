@@ -8,110 +8,104 @@ import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMTextureView;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/thumbplayer/texture/MMThumbPlayerTextureView;", "Lcom/tencent/mm/ui/base/MMTextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "PLAYER_SCALE_BOTH_FULLSCREEN", "getPLAYER_SCALE_BOTH_FULLSCREEN", "()I", "PLAYER_SCALE_ORIGINAL_FULLSCREEN", "getPLAYER_SCALE_ORIGINAL_FULLSCREEN", "PLAYER_SCALE_ORIGINAL_RATIO", "getPLAYER_SCALE_ORIGINAL_RATIO", "PLAYER_SCALE_ORIGINAL_RATIO_SQUARE", "getPLAYER_SCALE_ORIGINAL_RATIO_SQUARE", "radioHeight", "radioWidth", "textureListener", "com/tencent/mm/plugin/thumbplayer/texture/MMThumbPlayerTextureView$textureListener$1", "Lcom/tencent/mm/plugin/thumbplayer/texture/MMThumbPlayerTextureView$textureListener$1;", "textureListenerCallback", "Landroid/view/TextureView$SurfaceTextureListener;", "videoDegree", "videoHeight", "videoScale", "", "videoWidth", "xyAxis", "initView", "", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "setDegree", "", "degree", "setOpaqueInfo", "isOpaque", "setRadio", "num", "den", "setScaleParam", "scale", "setTextureListenerCallback", "listener", "setVideoWidthAndHeight", "width", "height", "setXYAxis", "plugin-thumbplayer_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/thumbplayer/texture/MMThumbPlayerTextureView;", "Lcom/tencent/mm/ui/base/MMTextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "PLAYER_SCALE_BOTH_FULLSCREEN", "getPLAYER_SCALE_BOTH_FULLSCREEN", "()I", "PLAYER_SCALE_ORIGINAL_FULLSCREEN", "getPLAYER_SCALE_ORIGINAL_FULLSCREEN", "PLAYER_SCALE_ORIGINAL_RATIO", "getPLAYER_SCALE_ORIGINAL_RATIO", "PLAYER_SCALE_ORIGINAL_RATIO_SQUARE", "getPLAYER_SCALE_ORIGINAL_RATIO_SQUARE", "radioHeight", "radioWidth", "textureListener", "com/tencent/mm/plugin/thumbplayer/texture/MMThumbPlayerTextureView$textureListener$1", "Lcom/tencent/mm/plugin/thumbplayer/texture/MMThumbPlayerTextureView$textureListener$1;", "textureListenerCallback", "Landroid/view/TextureView$SurfaceTextureListener;", "videoDegree", "videoHeight", "videoScale", "", "videoWidth", "xyAxis", "initView", "", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "setDegree", "", "degree", "setOpaqueInfo", "isOpaque", "setRadio", "num", "den", "setScaleParam", "scale", "setTextureListenerCallback", "listener", "setVideoWidthAndHeight", "width", "height", "setXYAxis", "plugin-thumbplayer_release"})
 public final class MMThumbPlayerTextureView
   extends MMTextureView
 {
-  private int videoHeight;
-  private int videoWidth;
-  private final int zYA;
-  private final int zYB;
-  private final int zYC;
-  private int zYD;
-  private int zYE;
-  private float zYF;
-  private int zYG;
-  private int zYH;
-  private TextureView.SurfaceTextureListener zYI;
-  private final a zYJ;
-  private final int zYz;
+  private final int Bql;
+  private final int Bqm;
+  private final int Bqn;
+  private final int Bqo;
+  private int Bqp;
+  private int Bqq;
+  private float Bqr;
+  private int Bqs;
+  private int Bqt;
+  private TextureView.SurfaceTextureListener Bqu;
+  private final a Bqv;
+  public int videoHeight;
+  public int videoWidth;
   
   public MMThumbPlayerTextureView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(209684);
-    this.zYA = 1;
-    this.zYB = 2;
-    this.zYC = 6;
-    this.zYE = this.zYz;
-    this.zYF = 1.0F;
-    this.zYJ = new a(this);
+    AppMethodBeat.i(217105);
+    this.Bqm = 1;
+    this.Bqn = 2;
+    this.Bqo = 6;
+    this.Bqq = this.Bql;
+    this.Bqr = 1.0F;
+    this.Bqv = new a(this);
     initView();
-    AppMethodBeat.o(209684);
+    AppMethodBeat.o(217105);
   }
   
   public MMThumbPlayerTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(209685);
-    this.zYA = 1;
-    this.zYB = 2;
-    this.zYC = 6;
-    this.zYE = this.zYz;
-    this.zYF = 1.0F;
-    this.zYJ = new a(this);
+    AppMethodBeat.i(217106);
+    this.Bqm = 1;
+    this.Bqn = 2;
+    this.Bqo = 6;
+    this.Bqq = this.Bql;
+    this.Bqr = 1.0F;
+    this.Bqv = new a(this);
     initView();
-    AppMethodBeat.o(209685);
+    AppMethodBeat.o(217106);
   }
   
   public MMThumbPlayerTextureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(209686);
-    this.zYA = 1;
-    this.zYB = 2;
-    this.zYC = 6;
-    this.zYE = this.zYz;
-    this.zYF = 1.0F;
-    this.zYJ = new a(this);
+    AppMethodBeat.i(217107);
+    this.Bqm = 1;
+    this.Bqn = 2;
+    this.Bqo = 6;
+    this.Bqq = this.Bql;
+    this.Bqr = 1.0F;
+    this.Bqv = new a(this);
     initView();
-    AppMethodBeat.o(209686);
+    AppMethodBeat.o(217107);
   }
   
   private final void initView()
   {
-    AppMethodBeat.i(209680);
+    AppMethodBeat.i(217101);
     setOpaque(false);
     setAlpha(0.0F);
     setScaleX(1.0001F);
     setScaleY(1.0001F);
-    setSurfaceTextureListener((TextureView.SurfaceTextureListener)this.zYJ);
-    AppMethodBeat.o(209680);
+    setSurfaceTextureListener((TextureView.SurfaceTextureListener)this.Bqv);
+    AppMethodBeat.o(217101);
   }
   
   public final int getPLAYER_SCALE_BOTH_FULLSCREEN()
   {
-    return this.zYA;
+    return this.Bqm;
   }
   
   public final int getPLAYER_SCALE_ORIGINAL_FULLSCREEN()
   {
-    return this.zYB;
+    return this.Bqn;
   }
   
   public final int getPLAYER_SCALE_ORIGINAL_RATIO()
   {
-    return this.zYz;
+    return this.Bql;
   }
   
   public final int getPLAYER_SCALE_ORIGINAL_RATIO_SQUARE()
   {
-    return this.zYC;
-  }
-  
-  public final void hS(int paramInt1, int paramInt2)
-  {
-    this.videoWidth = paramInt1;
-    this.videoHeight = paramInt2;
+    return this.Bqo;
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(209683);
+    AppMethodBeat.i(217104);
     int i;
     float f;
     if ((this.videoWidth > 0) && (this.videoHeight > 0))
@@ -123,7 +117,7 @@ public final class MMThumbPlayerTextureView
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-        AppMethodBeat.o(209683);
+        AppMethodBeat.o(217104);
         throw ((Throwable)localObject);
       }
       ((FrameLayout.LayoutParams)localObject).topMargin = 0;
@@ -131,18 +125,18 @@ public final class MMThumbPlayerTextureView
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-        AppMethodBeat.o(209683);
+        AppMethodBeat.o(217104);
         throw ((Throwable)localObject);
       }
       ((FrameLayout.LayoutParams)localObject).bottomMargin = 0;
-      if (this.zYE == this.zYB)
+      if (this.Bqq == this.Bqn)
       {
         if (this.videoWidth * i > this.videoHeight * paramInt1)
         {
           paramInt2 = this.videoWidth * i / this.videoHeight;
           paramInt1 = i;
-          setMeasuredDimension((int)(paramInt2 * this.zYF * f), (int)(paramInt1 * this.zYF * f));
-          AppMethodBeat.o(209683);
+          setMeasuredDimension((int)(paramInt2 * this.Bqr * f), (int)(paramInt1 * this.Bqr * f));
+          AppMethodBeat.o(217104);
           return;
         }
         if (this.videoWidth * i >= this.videoHeight * paramInt1) {
@@ -159,9 +153,9 @@ public final class MMThumbPlayerTextureView
       paramInt1 = paramInt2;
       paramInt2 = i;
       break;
-      if (this.zYE != this.zYA)
+      if (this.Bqq != this.Bqm)
       {
-        if (this.zYE == this.zYC)
+        if (this.Bqq == this.Bqo)
         {
           if (this.videoWidth * i > this.videoHeight * paramInt1)
           {
@@ -182,11 +176,11 @@ public final class MMThumbPlayerTextureView
           break;
           int j = this.videoWidth;
           paramInt2 = j;
-          if (this.zYG != 0)
+          if (this.Bqs != 0)
           {
             paramInt2 = j;
-            if (this.zYH != 0) {
-              paramInt2 = (int)(this.videoWidth * this.zYG / this.zYH);
+            if (this.Bqt != 0) {
+              paramInt2 = (int)(this.videoWidth * this.Bqs / this.Bqt);
             }
           }
           if (paramInt2 * i > this.videoHeight * paramInt1)
@@ -196,7 +190,7 @@ public final class MMThumbPlayerTextureView
           }
           for (;;)
           {
-            if (((this.zYD == 90) || (this.zYD == 270)) && (paramInt2 > 0) && (j > 0))
+            if (((this.Bqp == 90) || (this.Bqp == 270)) && (paramInt2 > 0) && (j > 0))
             {
               if (paramInt1 / paramInt2 < i / j)
               {
@@ -216,7 +210,7 @@ public final class MMThumbPlayerTextureView
               paramInt2 = j;
               break;
               super.onMeasure(paramInt1, paramInt2);
-              AppMethodBeat.o(209683);
+              AppMethodBeat.o(217104);
               return;
             }
             paramInt1 = paramInt2;
@@ -235,104 +229,104 @@ public final class MMThumbPlayerTextureView
   
   public final void setOpaqueInfo(boolean paramBoolean)
   {
-    AppMethodBeat.i(209681);
+    AppMethodBeat.i(217102);
     if (paramBoolean)
     {
       setOpaque(true);
       setAlpha(1.0F);
-      AppMethodBeat.o(209681);
+      AppMethodBeat.o(217102);
       return;
     }
     setOpaque(false);
     setAlpha(0.0F);
-    AppMethodBeat.o(209681);
+    AppMethodBeat.o(217102);
   }
   
   public final void setScaleParam(float paramFloat)
   {
     if (paramFloat > 0.0F)
     {
-      this.zYE = this.zYz;
-      this.zYF = paramFloat;
+      this.Bqq = this.Bql;
+      this.Bqr = paramFloat;
     }
   }
   
   public final void setTextureListenerCallback(TextureView.SurfaceTextureListener paramSurfaceTextureListener)
   {
-    AppMethodBeat.i(209682);
-    k.h(paramSurfaceTextureListener, "listener");
-    this.zYI = paramSurfaceTextureListener;
-    AppMethodBeat.o(209682);
+    AppMethodBeat.i(217103);
+    p.h(paramSurfaceTextureListener, "listener");
+    this.Bqu = paramSurfaceTextureListener;
+    AppMethodBeat.o(217103);
   }
   
   public final void setXYAxis(int paramInt)
   {
-    this.zYE = paramInt;
-    this.zYF = 1.0F;
+    this.Bqq = paramInt;
+    this.Bqr = 1.0F;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/thumbplayer/texture/MMThumbPlayerTextureView$textureListener$1", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-thumbplayer_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/thumbplayer/texture/MMThumbPlayerTextureView$textureListener$1", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-thumbplayer_release"})
   public static final class a
     implements TextureView.SurfaceTextureListener
   {
     public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(209676);
-      k.h(paramSurfaceTexture, "surface");
-      TextureView.SurfaceTextureListener localSurfaceTextureListener = MMThumbPlayerTextureView.a(this.zYK);
+      AppMethodBeat.i(217097);
+      p.h(paramSurfaceTexture, "surface");
+      TextureView.SurfaceTextureListener localSurfaceTextureListener = MMThumbPlayerTextureView.a(this.Bqw);
       if (localSurfaceTextureListener != null)
       {
         localSurfaceTextureListener.onSurfaceTextureAvailable(paramSurfaceTexture, paramInt1, paramInt2);
-        AppMethodBeat.o(209676);
+        AppMethodBeat.o(217097);
         return;
       }
-      AppMethodBeat.o(209676);
+      AppMethodBeat.o(217097);
     }
     
     public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
     {
-      AppMethodBeat.i(209677);
-      k.h(paramSurfaceTexture, "surface");
-      TextureView.SurfaceTextureListener localSurfaceTextureListener = MMThumbPlayerTextureView.a(this.zYK);
+      AppMethodBeat.i(217098);
+      p.h(paramSurfaceTexture, "surface");
+      TextureView.SurfaceTextureListener localSurfaceTextureListener = MMThumbPlayerTextureView.a(this.Bqw);
       if (localSurfaceTextureListener != null) {
         localSurfaceTextureListener.onSurfaceTextureDestroyed(paramSurfaceTexture);
       }
-      AppMethodBeat.o(209677);
+      AppMethodBeat.o(217098);
       return false;
     }
     
     public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(209678);
-      k.h(paramSurfaceTexture, "surface");
-      TextureView.SurfaceTextureListener localSurfaceTextureListener = MMThumbPlayerTextureView.a(this.zYK);
+      AppMethodBeat.i(217099);
+      p.h(paramSurfaceTexture, "surface");
+      TextureView.SurfaceTextureListener localSurfaceTextureListener = MMThumbPlayerTextureView.a(this.Bqw);
       if (localSurfaceTextureListener != null)
       {
         localSurfaceTextureListener.onSurfaceTextureSizeChanged(paramSurfaceTexture, paramInt1, paramInt2);
-        AppMethodBeat.o(209678);
+        AppMethodBeat.o(217099);
         return;
       }
-      AppMethodBeat.o(209678);
+      AppMethodBeat.o(217099);
     }
     
     public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
     {
-      AppMethodBeat.i(209679);
-      k.h(paramSurfaceTexture, "surface");
-      TextureView.SurfaceTextureListener localSurfaceTextureListener = MMThumbPlayerTextureView.a(this.zYK);
+      AppMethodBeat.i(217100);
+      p.h(paramSurfaceTexture, "surface");
+      TextureView.SurfaceTextureListener localSurfaceTextureListener = MMThumbPlayerTextureView.a(this.Bqw);
       if (localSurfaceTextureListener != null)
       {
         localSurfaceTextureListener.onSurfaceTextureUpdated(paramSurfaceTexture);
-        AppMethodBeat.o(209679);
+        AppMethodBeat.o(217100);
         return;
       }
-      AppMethodBeat.o(209679);
+      AppMethodBeat.o(217100);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.thumbplayer.texture.MMThumbPlayerTextureView
  * JD-Core Version:    0.7.0.1
  */

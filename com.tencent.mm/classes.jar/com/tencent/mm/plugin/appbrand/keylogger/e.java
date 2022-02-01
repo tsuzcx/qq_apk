@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.keylogger;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.keylogger.base.c;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -11,64 +11,64 @@ import java.util.regex.Pattern;
 public final class e
   implements c
 {
-  private static final Pattern lfX;
-  c lfY = null;
+  private static final Pattern lCV;
+  c lCW = null;
   
   static
   {
-    AppMethodBeat.i(201028);
-    lfX = Pattern.compile(String.format("%s(.*)%s", new Object[] { "<kLog>", "</kLog>" }));
-    AppMethodBeat.o(201028);
+    AppMethodBeat.i(187700);
+    lCV = Pattern.compile(String.format("%s(.*)%s", new Object[] { "<kLog>", "</kLog>" }));
+    AppMethodBeat.o(187700);
   }
   
-  public static String Of(String paramString)
+  public static String RD(String paramString)
   {
-    AppMethodBeat.i(201027);
-    if (bs.isNullOrNil(paramString))
+    AppMethodBeat.i(187699);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(201027);
+      AppMethodBeat.o(187699);
       return paramString;
     }
-    paramString = lfX.matcher(paramString);
+    paramString = lCV.matcher(paramString);
     if (paramString.find())
     {
       paramString = paramString.group(1);
-      AppMethodBeat.o(201027);
+      AppMethodBeat.o(187699);
       return paramString;
     }
-    AppMethodBeat.o(201027);
+    AppMethodBeat.o(187699);
     return null;
   }
   
-  public final List<String> O(String paramString, long paramLong)
+  public final List<String> V(String paramString, long paramLong)
   {
-    AppMethodBeat.i(201026);
-    if (this.lfY == null)
+    AppMethodBeat.i(187698);
+    if (this.lCW == null)
     {
       paramString = new ArrayList();
-      AppMethodBeat.o(201026);
+      AppMethodBeat.o(187698);
       return paramString;
     }
-    paramString = this.lfY.O(paramString, paramLong);
-    AppMethodBeat.o(201026);
+    paramString = this.lCW.V(paramString, paramLong);
+    AppMethodBeat.o(187698);
     return paramString;
   }
   
   public final void c(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(201025);
-    if (this.lfY == null)
+    AppMethodBeat.i(187697);
+    if (this.lCW == null)
     {
-      AppMethodBeat.o(201025);
+      AppMethodBeat.o(187697);
       return;
     }
-    this.lfY.c(paramString1, String.format("%s%s%s", new Object[] { "<kLog>", paramString2, "</kLog>" }), paramVarArgs);
-    AppMethodBeat.o(201025);
+    this.lCW.c(paramString1, String.format("%s%s%s", new Object[] { "<kLog>", paramString2, "</kLog>" }), paramVarArgs);
+    AppMethodBeat.o(187697);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.e
  * JD-Core Version:    0.7.0.1
  */

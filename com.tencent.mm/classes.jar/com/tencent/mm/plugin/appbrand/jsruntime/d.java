@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.jsruntime;
 
-import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import com.eclipsesource.v8.ScriptPartObject;
@@ -9,14 +8,13 @@ import com.tencent.mm.appbrand.v8.IJSRuntime;
 import com.tencent.mm.appbrand.v8.e;
 import com.tencent.mm.appbrand.v8.m;
 import com.tencent.mm.appbrand.v8.m.13;
-import com.tencent.mm.appbrand.v8.m.3;
 import com.tencent.mm.appbrand.v8.m.5;
 import com.tencent.mm.appbrand.v8.m.6;
 import com.tencent.mm.appbrand.v8.m.7;
 import com.tencent.mm.appbrand.v8.m.b;
 import com.tencent.mm.appbrand.v8.m.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.net.URL;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -24,27 +22,21 @@ import java.util.ArrayList;
 abstract class d
   implements g, k, l, n, q, s, u, v
 {
-  private long leC = 0L;
+  private long lBB = 0L;
   
-  public boolean AU()
+  public boolean Ct()
   {
-    return bmt().LH();
+    return bqe().Np();
   }
   
-  public String AV()
+  public String Cu()
   {
-    return bmt().AV();
+    return bqe().Cu();
   }
   
-  public long LS()
+  public long NB()
   {
-    return bmu().LS();
-  }
-  
-  public void Od(String paramString)
-  {
-    m localm = bmu();
-    localm.cMX.r(new m.6(localm, paramString));
+    return bqf().NB();
   }
   
   public <T extends j> T P(Class<T> paramClass)
@@ -55,14 +47,20 @@ abstract class d
     return null;
   }
   
+  public void RB(String paramString)
+  {
+    m localm = bqf();
+    localm.cYn.r(new m.6(localm, paramString));
+  }
+  
   public void a(Runnable paramRunnable, boolean paramBoolean)
   {
-    bmt().a(paramRunnable, 0L, paramBoolean);
+    bqe().a(paramRunnable, 0L, paramBoolean);
   }
   
   public final void a(final String paramString1, final String paramString2, final int paramInt, final String paramString3, final n.a parama)
   {
-    bmt().r(new Runnable()
+    bqe().r(new Runnable()
     {
       public final void run()
       {
@@ -71,17 +69,17 @@ abstract class d
         for (n.b localb = new n.b();; localb = null)
         {
           if (localb != null) {
-            localb.cNs = System.currentTimeMillis();
+            localb.cYI = System.currentTimeMillis();
           }
           if (d.a(d.this) == 0L)
           {
-            ac.i("MicroMsg.AppBrandJ2V8Context", "nativeCreateRuntime triggered by subscribeHandler event[%s] src[%d]", new Object[] { paramString1, Integer.valueOf(paramInt) });
-            d.a(d.this, JsBridgeBinding.nativeCreateRuntime(d.this.getIsolatePtr(), d.this.LS()));
+            ad.i("MicroMsg.AppBrandJ2V8Context", "nativeCreateRuntime triggered by subscribeHandler event[%s] src[%d]", new Object[] { paramString1, Integer.valueOf(paramInt) });
+            d.a(d.this, JsBridgeBinding.nativeCreateRuntime(d.this.getIsolatePtr(), d.this.NB()));
           }
-          JsBridgeBinding.nativeSubscribeHandler(d.a(d.this), bs.nullAsNil(paramString1), bs.nullAsNil(paramString2), paramInt, bs.nullAsNil(paramString3));
+          JsBridgeBinding.nativeSubscribeHandler(d.a(d.this), bt.nullAsNil(paramString1), bt.nullAsNil(paramString2), paramInt, bt.nullAsNil(paramString3));
           if (localb != null)
           {
-            localb.cNt = System.currentTimeMillis();
+            localb.cYJ = System.currentTimeMillis();
             parama.a(localb);
           }
           AppMethodBeat.o(144167);
@@ -93,8 +91,8 @@ abstract class d
   
   public void a(String paramString1, String paramString2, ValueCallback<String> paramValueCallback)
   {
-    paramValueCallback = bmu();
-    paramValueCallback.cMX.r(new m.7(paramValueCallback, paramString1, paramString2));
+    paramValueCallback = bqf();
+    paramValueCallback.cYn.r(new m.7(paramValueCallback, paramString1, paramString2));
   }
   
   public void a(URL paramURL, String paramString, final ValueCallback<String> paramValueCallback)
@@ -115,7 +113,7 @@ abstract class d
           }
         })
     {
-      bmu().a(paramURL.toString(), paramString, paramValueCallback);
+      bqf().a(paramURL.toString(), paramString, paramValueCallback);
       return;
     }
   }
@@ -127,7 +125,7 @@ abstract class d
     if (paramValueCallback == null)
     {
       paramValueCallback = null;
-      localm = bmu();
+      localm = bqf();
       if (paramURL != null) {
         break label54;
       }
@@ -152,7 +150,7 @@ abstract class d
   
   public void a(URL paramURL, String paramString1, String paramString2, int paramInt, String paramString3, m.b paramb)
   {
-    m localm = bmu();
+    m localm = bqf();
     if (paramURL == null) {}
     for (paramURL = null;; paramURL = paramURL.toString())
     {
@@ -163,34 +161,36 @@ abstract class d
   
   public void a(ArrayList<ScriptPartObject> paramArrayList, URL paramURL, String paramString1, String paramString2, m.b paramb)
   {
-    m localm = bmu();
+    m localm = bqf();
     if (paramURL == null) {}
     for (paramURL = null;; paramURL = paramURL.toString())
     {
-      localm.cMX.r(new m.13(localm, paramURL, paramb, paramArrayList, paramString1, paramString2));
+      localm.cYn.r(new m.13(localm, paramURL, paramb, paramArrayList, paramString1, paramString2));
       return;
     }
   }
   
   public void addJavascriptInterface(Object paramObject, String paramString)
   {
-    m localm = bmu();
-    if (!TextUtils.isEmpty(paramString)) {
-      localm.cMX.r(new m.3(localm, paramObject, paramString, JavascriptInterface.class));
-    }
+    bqf().a(paramObject, paramString, JavascriptInterface.class);
   }
   
-  public final void ak(final int paramInt, final String paramString)
+  public ByteBuffer ak(int paramInt, boolean paramBoolean)
   {
-    bmt().r(new Runnable()
+    return bqf().cXu.getBuffer(paramInt, paramBoolean);
+  }
+  
+  public final void am(final int paramInt, final String paramString)
+  {
+    bqe().r(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(144166);
         if (d.a(d.this) == 0L)
         {
-          ac.i("MicroMsg.AppBrandJ2V8Context", "nativeCreateRuntime triggered by invokeCallbackHandler callbackId[%d]", new Object[] { Integer.valueOf(paramInt) });
-          d.a(d.this, JsBridgeBinding.nativeCreateRuntime(d.this.getIsolatePtr(), d.this.LS()));
+          ad.i("MicroMsg.AppBrandJ2V8Context", "nativeCreateRuntime triggered by invokeCallbackHandler callbackId[%d]", new Object[] { Integer.valueOf(paramInt) });
+          d.a(d.this, JsBridgeBinding.nativeCreateRuntime(d.this.getIsolatePtr(), d.this.NB()));
         }
         JsBridgeBinding.nativeInvokeCallbackHandler(d.a(d.this), paramInt, paramString);
         AppMethodBeat.o(144166);
@@ -202,31 +202,31 @@ abstract class d
   {
     if ((paramg instanceof d))
     {
-      m localm = bmu();
-      paramg = ((d)paramg).bmu();
-      localm.cMX.r(new m.5(localm, paramString, paramg));
+      m localm = bqf();
+      paramg = ((d)paramg).bqf();
+      localm.cYn.r(new m.5(localm, paramString, paramg));
       return;
     }
     if (paramg == null) {}
     for (paramg = null;; paramg = paramg.getClass().getName())
     {
-      ac.e("MicroMsg.AppBrandJ2V8Context", "shareObject with unsupported implementation %s", new Object[] { paramg });
+      ad.e("MicroMsg.AppBrandJ2V8Context", "shareObject with unsupported implementation %s", new Object[] { paramg });
       return;
     }
   }
   
-  protected abstract IJSRuntime bmt();
+  protected abstract IJSRuntime bqe();
   
-  protected abstract m bmu();
+  protected abstract m bqf();
   
   public void bufferStoreBindTo(long paramLong1, long paramLong2)
   {
-    bmu().cMg.bufferStoreBindTo(paramLong1, paramLong2);
+    bqf().cXu.bufferStoreBindTo(paramLong1, paramLong2);
   }
   
-  public void ci(boolean paramBoolean)
+  public void cj(boolean paramBoolean)
   {
-    bmt().ci(paramBoolean);
+    bqe().cj(paramBoolean);
   }
   
   public final void d(String paramString1, String paramString2, int paramInt, String paramString3)
@@ -236,7 +236,7 @@ abstract class d
   
   public void destroy()
   {
-    bmt().r(new Runnable()
+    bqe().r(new Runnable()
     {
       public final void run()
       {
@@ -249,7 +249,7 @@ abstract class d
         AppMethodBeat.o(144165);
       }
     });
-    bmu().destroy();
+    bqf().destroy();
   }
   
   public void evaluateJavascript(String paramString, final ValueCallback<String> paramValueCallback)
@@ -265,34 +265,29 @@ abstract class d
           }
         })
     {
-      bmu().a(paramString, paramValueCallback);
+      bqf().a(paramString, paramValueCallback);
       return;
     }
   }
   
   public long getIsolatePtr()
   {
-    return bmt().getIsolatePtr();
-  }
-  
-  public ByteBuffer getNativeBuffer(int paramInt)
-  {
-    return bmu().cMg.getBuffer(paramInt);
+    return bqe().getIsolatePtr();
   }
   
   public int getNativeBufferId()
   {
-    return bmu().cMg.generateId();
+    return bqf().cXu.generateId();
   }
   
   public long getUVLoopPtr()
   {
-    return bmt().getUVLoopPtr();
+    return bqe().getUVLoopPtr();
   }
   
   public void pause()
   {
-    bmt().pause();
+    bqe().pause();
   }
   
   public void post(Runnable paramRunnable)
@@ -300,44 +295,49 @@ abstract class d
     a(paramRunnable, false);
   }
   
+  public void releaseDirectByteBuffer(ByteBuffer paramByteBuffer)
+  {
+    bqf().cXu.releaseDirectByteBuffer(paramByteBuffer);
+  }
+  
   public void resume()
   {
-    bmt().resume();
+    bqe().resume();
   }
   
   public void setNativeBuffer(int paramInt, ByteBuffer paramByteBuffer)
   {
-    bmu().cMg.setBuffer(paramInt, paramByteBuffer);
+    bqf().cXu.setBuffer(paramInt, paramByteBuffer);
   }
   
   public void setThreadPriority(int paramInt)
   {
-    bmt().setThreadPriority(paramInt);
+    bqe().setThreadPriority(paramInt);
   }
   
   public boolean supportBufferStoreBindTo()
   {
-    return bmu().cMg.supportBufferStoreBindTo();
+    return bqf().cXu.supportBufferStoreBindTo();
   }
   
-  public void tr(int paramInt)
+  public void tU(int paramInt)
   {
-    bmu().cMY.destroy(paramInt);
+    bqf().cYo.destroy(paramInt);
   }
   
-  public ByteBuffer ts(int paramInt)
+  public ByteBuffer tV(int paramInt)
   {
-    return bmu().cMY.hr(paramInt);
+    return bqf().cYo.hy(paramInt);
   }
   
-  public int tt(int paramInt)
+  public int tW(int paramInt)
   {
-    return bmu().cMY.hp(paramInt);
+    return bqf().cYo.hw(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsruntime.d
  * JD-Core Version:    0.7.0.1
  */

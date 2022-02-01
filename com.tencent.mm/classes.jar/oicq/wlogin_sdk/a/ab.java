@@ -6,24 +6,24 @@ import oicq.wlogin_sdk.tools.util;
 public final class ab
   extends a
 {
-  public int LXe = 0;
+  public int NRD = 0;
   
   public ab()
   {
-    this.LVT = 306;
+    this.NQs = 306;
   }
   
-  public final Boolean gfy()
+  public final Boolean gxW()
   {
     AppMethodBeat.i(88110);
-    if (this.LWD < 2)
+    if (this.NRc < 2)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88110);
       return localBoolean;
     }
-    this.LXe = util.ah(this.LVN, this.LWC);
-    if (this.LXe + 2 > this.LWD)
+    this.NRD = util.ai(this.NQm, this.NRb);
+    if (this.NRD + 2 > this.NRc)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88110);

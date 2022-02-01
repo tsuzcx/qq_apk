@@ -60,14 +60,14 @@ public class b
   
   private EGLContext a(EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt, EGLContext paramEGLContext)
   {
-    AppMethodBeat.i(193132);
+    AppMethodBeat.i(187360);
     EGLContext localEGLContext = paramEGLContext;
     if (paramEGLContext == null) {
       localEGLContext = EGL10.EGL_NO_CONTEXT;
     }
     paramEGLDisplay = this.b.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, new int[] { 12440, paramInt, 12344 });
     f();
-    AppMethodBeat.o(193132);
+    AppMethodBeat.o(187360);
     return paramEGLDisplay;
   }
   
@@ -150,15 +150,15 @@ public class b
   
   private void f()
   {
-    AppMethodBeat.i(193133);
+    AppMethodBeat.i(187361);
     int n = this.b.eglGetError();
     if (n != 12288)
     {
       d locald = new d(n);
-      AppMethodBeat.o(193133);
+      AppMethodBeat.o(187361);
       throw locald;
     }
-    AppMethodBeat.o(193133);
+    AppMethodBeat.o(187361);
   }
   
   public boolean a()

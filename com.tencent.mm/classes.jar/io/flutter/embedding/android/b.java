@@ -11,11 +11,11 @@ import java.nio.ByteOrder;
 
 public final class b
 {
-  private final a KKo;
+  private final a MBc;
   
   public b(a parama)
   {
-    this.KKo = parama;
+    this.MBc = parama;
   }
   
   private static void a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2, int paramInt3, ByteBuffer paramByteBuffer)
@@ -26,7 +26,7 @@ public final class b
       AppMethodBeat.o(9981);
       return;
     }
-    int j = agv(paramMotionEvent.getToolType(paramInt1));
+    int j = aiW(paramMotionEvent.getToolType(paramInt1));
     int i;
     long l1;
     if (paramMotionEvent.getActionMasked() == 8)
@@ -134,7 +134,7 @@ public final class b
     AppMethodBeat.o(9981);
   }
   
-  private static int agu(int paramInt)
+  private static int aiV(int paramInt)
   {
     if (paramInt == 0) {}
     do
@@ -162,7 +162,7 @@ public final class b
     return -1;
   }
   
-  private static int agv(int paramInt)
+  private static int aiW(int paramInt)
   {
     switch (paramInt)
     {
@@ -200,7 +200,7 @@ public final class b
       break;
     }
     label70:
-    int i = agu(paramMotionEvent.getActionMasked());
+    int i = aiV(paramMotionEvent.getActionMasked());
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramMotionEvent.getPointerCount() * 28 * 8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     a(paramMotionEvent, paramMotionEvent.getActionIndex(), i, 0, localByteBuffer);
@@ -210,7 +210,7 @@ public final class b
       AppMethodBeat.o(9980);
       throw paramMotionEvent;
     }
-    this.KKo.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
+    this.MBc.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
     AppMethodBeat.o(9980);
     return true;
   }
@@ -222,7 +222,7 @@ public final class b
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(k * 28 * 8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     int j = paramMotionEvent.getActionMasked();
-    int m = agu(paramMotionEvent.getActionMasked());
+    int m = aiV(paramMotionEvent.getActionMasked());
     int i;
     if ((j == 0) || (j == 5))
     {
@@ -274,7 +274,7 @@ public final class b
       }
     }
     label219:
-    this.KKo.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
+    this.MBc.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
     AppMethodBeat.o(9979);
     return true;
   }

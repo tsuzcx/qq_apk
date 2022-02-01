@@ -3,74 +3,51 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public abstract class by
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FavSearchInfo_Content_Index ON FavSearchInfo(content)", "CREATE INDEX IF NOT EXISTS FavSearchInfo_TagContent_Index ON FavSearchInfo(tagContent)", "CREATE INDEX IF NOT EXISTS FavSearchInfo_SubType_Index ON FavSearchInfo(subtype)" };
-  private static final int eDL = "localId".hashCode();
-  private static final int eEB;
-  private static final int eEC = "subtype".hashCode();
-  private static final int eng = "content".hashCode();
-  private static final int euN;
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eDc = "status".hashCode();
+  private static final int eFM;
+  private static final int eFq;
+  private static final int eFw;
+  private static final int eIm = "url".hashCode();
+  private static final int eVS;
+  private static final int eVT;
+  private static final int eVU;
+  private static final int eVV = "failNum".hashCode();
+  private static final int eVW = "isReport".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE;
-  private boolean __hadSettype = true;
-  private boolean eDJ = true;
-  private boolean eEA = true;
-  private boolean eEz = true;
-  private boolean emI = true;
-  private boolean euu = true;
-  public String field_content;
-  public long field_localId;
-  public int field_subtype;
-  public String field_tagContent;
-  public long field_time;
-  public int field_type;
+  private boolean eCZ = true;
+  private boolean eFK = true;
+  private boolean eFn = true;
+  private boolean eFs = true;
+  private boolean eIi = true;
+  private boolean eVN = true;
+  private boolean eVO = true;
+  private boolean eVP = true;
+  private boolean eVQ = true;
+  private boolean eVR = true;
+  public int field_failNum;
+  public long field_favTime;
+  public String field_imgDirPath;
+  public String field_imgPaths;
+  public int field_isReport;
+  public String field_path;
+  public long field_size;
+  public int field_status;
+  public long field_updateTime;
+  public String field_url;
   
   static
   {
-    eEB = "tagContent".hashCode();
-    euN = "time".hashCode();
-    type_HASHCODE = "type".hashCode();
-  }
-  
-  public static c.a Th()
-  {
-    c.a locala = new c.a();
-    locala.GvF = new Field[6];
-    locala.columns = new String[7];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "localId";
-    locala.GvH.put("localId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" localId LONG PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.GvG = "localId";
-    locala.columns[1] = "content";
-    locala.GvH.put("content", "TEXT");
-    localStringBuilder.append(" content TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "tagContent";
-    locala.GvH.put("tagContent", "TEXT");
-    localStringBuilder.append(" tagContent TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "time";
-    locala.GvH.put("time", "LONG");
-    localStringBuilder.append(" time LONG");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "type";
-    locala.GvH.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "subtype";
-    locala.GvH.put("subtype", "INTEGER default '0' ");
-    localStringBuilder.append(" subtype INTEGER default '0' ");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    eFM = "size".hashCode();
+    eFw = "path".hashCode();
+    eVS = "imgDirPath".hashCode();
+    eVT = "imgPaths".hashCode();
+    eVU = "favTime".hashCode();
+    eFq = "updateTime".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -86,28 +63,35 @@ public abstract class by
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eDL != k) {
-        break label65;
+      if (eIm != k) {
+        break label60;
       }
-      this.field_localId = paramCursor.getLong(i);
-      this.eDJ = true;
+      this.field_url = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eng == k) {
-        this.field_content = paramCursor.getString(i);
-      } else if (eEB == k) {
-        this.field_tagContent = paramCursor.getString(i);
-      } else if (euN == k) {
-        this.field_time = paramCursor.getLong(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (eEC == k) {
-        this.field_subtype = paramCursor.getInt(i);
+      label60:
+      if (eFM == k) {
+        this.field_size = paramCursor.getLong(i);
+      } else if (eFw == k) {
+        this.field_path = paramCursor.getString(i);
+      } else if (eVS == k) {
+        this.field_imgDirPath = paramCursor.getString(i);
+      } else if (eVT == k) {
+        this.field_imgPaths = paramCursor.getString(i);
+      } else if (eVU == k) {
+        this.field_favTime = paramCursor.getLong(i);
+      } else if (eFq == k) {
+        this.field_updateTime = paramCursor.getLong(i);
+      } else if (eDc == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (eVV == k) {
+        this.field_failNum = paramCursor.getInt(i);
+      } else if (eVW == k) {
+        this.field_isReport = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -117,23 +101,35 @@ public abstract class by
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eDJ) {
-      localContentValues.put("localId", Long.valueOf(this.field_localId));
+    if (this.eIi) {
+      localContentValues.put("url", this.field_url);
     }
-    if (this.emI) {
-      localContentValues.put("content", this.field_content);
+    if (this.eFK) {
+      localContentValues.put("size", Long.valueOf(this.field_size));
     }
-    if (this.eEz) {
-      localContentValues.put("tagContent", this.field_tagContent);
+    if (this.eFs) {
+      localContentValues.put("path", this.field_path);
     }
-    if (this.euu) {
-      localContentValues.put("time", Long.valueOf(this.field_time));
+    if (this.eVN) {
+      localContentValues.put("imgDirPath", this.field_imgDirPath);
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
+    if (this.eVO) {
+      localContentValues.put("imgPaths", this.field_imgPaths);
     }
-    if (this.eEA) {
-      localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
+    if (this.eVP) {
+      localContentValues.put("favTime", Long.valueOf(this.field_favTime));
+    }
+    if (this.eFn) {
+      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    }
+    if (this.eCZ) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
+    }
+    if (this.eVQ) {
+      localContentValues.put("failNum", Integer.valueOf(this.field_failNum));
+    }
+    if (this.eVR) {
+      localContentValues.put("isReport", Integer.valueOf(this.field_isReport));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

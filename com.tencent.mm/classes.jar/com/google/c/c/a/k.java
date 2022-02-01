@@ -5,16 +5,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class k
 {
-  static final k[] bJa;
-  private static k[] bJb;
-  private final boolean bJc;
-  final int bJd;
-  final int bJe;
-  public final int bJf;
-  public final int bJg;
-  private final int bJh;
-  private final int bJi;
-  final int bJj;
+  static final k[] bTn;
+  private static k[] bTo;
+  private final boolean bTp;
+  final int bTq;
+  final int bTr;
+  public final int bTs;
+  public final int bTt;
+  private final int bTu;
+  private final int bTv;
+  final int bTw;
   
   static
   {
@@ -50,8 +50,8 @@ public class k
     arrayOfk[27] = new k(false, 1050, 408, 18, 18, 36, 175, 68);
     arrayOfk[28] = new k(false, 1304, 496, 20, 20, 36, 163, 62);
     arrayOfk[29] = new d();
-    bJa = arrayOfk;
-    bJb = arrayOfk;
+    bTn = arrayOfk;
+    bTo = arrayOfk;
     AppMethodBeat.o(12377);
   }
   
@@ -62,26 +62,26 @@ public class k
   
   k(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    this.bJc = paramBoolean;
-    this.bJd = paramInt1;
-    this.bJe = paramInt2;
-    this.bJf = paramInt3;
-    this.bJg = paramInt4;
-    this.bJh = paramInt5;
-    this.bJi = paramInt6;
-    this.bJj = paramInt7;
+    this.bTp = paramBoolean;
+    this.bTq = paramInt1;
+    this.bTr = paramInt2;
+    this.bTs = paramInt3;
+    this.bTt = paramInt4;
+    this.bTu = paramInt5;
+    this.bTv = paramInt6;
+    this.bTw = paramInt7;
   }
   
   public static k a(int paramInt, l paraml, b paramb1, b paramb2)
   {
     AppMethodBeat.i(12369);
-    k[] arrayOfk = bJb;
+    k[] arrayOfk = bTo;
     int j = arrayOfk.length;
     int i = 0;
     while (i < j)
     {
       k localk = arrayOfk[i];
-      if (((paraml != l.bJl) || (!localk.bJc)) && ((paraml != l.bJm) || (localk.bJc)) && ((paramb1 == null) || ((localk.yi() >= paramb1.width) && (localk.yj() >= paramb1.height))) && ((paramb2 == null) || ((localk.yi() <= paramb2.width) && (localk.yj() <= paramb2.height))) && (paramInt <= localk.bJd))
+      if (((paraml != l.bTy) || (!localk.bTp)) && ((paraml != l.bTz) || (localk.bTp)) && ((paramb1 == null) || ((localk.zF() >= paramb1.width) && (localk.zG() >= paramb1.height))) && ((paramb2 == null) || ((localk.zF() <= paramb2.width) && (localk.zG() <= paramb2.height))) && (paramInt <= localk.bTq))
       {
         AppMethodBeat.o(12369);
         return localk;
@@ -93,10 +93,10 @@ public class k
     throw paraml;
   }
   
-  private int ye()
+  private int zB()
   {
     AppMethodBeat.i(12370);
-    switch (this.bJh)
+    switch (this.bTu)
     {
     default: 
       IllegalStateException localIllegalStateException = new IllegalStateException("Cannot handle this number of data regions");
@@ -117,10 +117,10 @@ public class k
     return 6;
   }
   
-  private int yf()
+  private int zC()
   {
     AppMethodBeat.i(12371);
-    switch (this.bJh)
+    switch (this.bTu)
     {
     default: 
       IllegalStateException localIllegalStateException = new IllegalStateException("Cannot handle this number of data regions");
@@ -141,63 +141,63 @@ public class k
     return 6;
   }
   
-  public int fT(int paramInt)
+  public int fW(int paramInt)
   {
-    return this.bJi;
+    return this.bTv;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(12376);
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.bJc) {}
+    if (this.bTp) {}
     for (String str = "Rectangular Symbol:";; str = "Square Symbol:")
     {
-      str = str + " data region " + this.bJf + 'x' + this.bJg + ", symbol size " + yi() + 'x' + yj() + ", symbol data size " + yg() + 'x' + yh() + ", codewords " + this.bJd + '+' + this.bJe;
+      str = str + " data region " + this.bTs + 'x' + this.bTt + ", symbol size " + zF() + 'x' + zG() + ", symbol data size " + zD() + 'x' + zE() + ", codewords " + this.bTq + '+' + this.bTr;
       AppMethodBeat.o(12376);
       return str;
     }
   }
   
-  public int xX()
-  {
-    return this.bJd / this.bJi;
-  }
-  
-  public final int yg()
+  public final int zD()
   {
     AppMethodBeat.i(12372);
-    int i = ye();
-    int j = this.bJf;
+    int i = zB();
+    int j = this.bTs;
     AppMethodBeat.o(12372);
     return i * j;
   }
   
-  public final int yh()
+  public final int zE()
   {
     AppMethodBeat.i(12373);
-    int i = yf();
-    int j = this.bJg;
+    int i = zC();
+    int j = this.bTt;
     AppMethodBeat.o(12373);
     return i * j;
   }
   
-  public final int yi()
+  public final int zF()
   {
     AppMethodBeat.i(12374);
-    int i = yg();
-    int j = ye();
+    int i = zD();
+    int j = zB();
     AppMethodBeat.o(12374);
     return i + (j << 1);
   }
   
-  public final int yj()
+  public final int zG()
   {
     AppMethodBeat.i(12375);
-    int i = yh();
-    int j = yf();
+    int i = zE();
+    int j = zC();
     AppMethodBeat.o(12375);
     return i + (j << 1);
+  }
+  
+  public int zu()
+  {
+    return this.bTq / this.bTv;
   }
 }
 

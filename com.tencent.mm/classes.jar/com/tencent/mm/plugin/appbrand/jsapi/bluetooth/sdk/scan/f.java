@@ -16,37 +16,37 @@ import java.util.Set;
 
 public final class f
 {
-  private final int klL;
-  public final List<ParcelUuid> klM;
-  public final SparseArray<byte[]> klN;
-  public final Map<ParcelUuid, byte[]> klO;
-  private final int klP;
-  final byte[] klQ;
+  private final int kGL;
+  public final List<ParcelUuid> kGM;
+  public final SparseArray<byte[]> kGN;
+  public final Map<ParcelUuid, byte[]> kGO;
+  private final int kGP;
+  final byte[] kGQ;
   public final String mDeviceName;
   
   @TargetApi(21)
   f(ScanRecord paramScanRecord)
   {
     AppMethodBeat.i(144632);
-    this.klM = paramScanRecord.getServiceUuids();
-    this.klN = paramScanRecord.getManufacturerSpecificData();
-    this.klO = paramScanRecord.getServiceData();
+    this.kGM = paramScanRecord.getServiceUuids();
+    this.kGN = paramScanRecord.getManufacturerSpecificData();
+    this.kGO = paramScanRecord.getServiceData();
     this.mDeviceName = paramScanRecord.getDeviceName();
-    this.klL = paramScanRecord.getAdvertiseFlags();
-    this.klP = paramScanRecord.getTxPowerLevel();
-    this.klQ = paramScanRecord.getBytes();
+    this.kGL = paramScanRecord.getAdvertiseFlags();
+    this.kGP = paramScanRecord.getTxPowerLevel();
+    this.kGQ = paramScanRecord.getBytes();
     AppMethodBeat.o(144632);
   }
   
   private f(List<ParcelUuid> paramList, SparseArray<byte[]> paramSparseArray, Map<ParcelUuid, byte[]> paramMap, int paramInt1, int paramInt2, String paramString, byte[] paramArrayOfByte)
   {
-    this.klM = paramList;
-    this.klN = paramSparseArray;
-    this.klO = paramMap;
+    this.kGM = paramList;
+    this.kGN = paramSparseArray;
+    this.kGO = paramMap;
     this.mDeviceName = paramString;
-    this.klL = paramInt1;
-    this.klP = paramInt2;
-    this.klQ = paramArrayOfByte;
+    this.kGL = paramInt1;
+    this.kGP = paramInt2;
+    this.kGQ = paramArrayOfByte;
   }
   
   private static <T> String C(Map<T, byte[]> paramMap)
@@ -163,7 +163,7 @@ public final class f
     }
   }
   
-  private static String c(SparseArray<byte[]> paramSparseArray)
+  private static String d(SparseArray<byte[]> paramSparseArray)
   {
     AppMethodBeat.i(144637);
     if (paramSparseArray == null)
@@ -202,14 +202,14 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(144634);
-    String str = "ScanRecord [mAdvertiseFlags=" + this.klL + ", mServiceUuids=" + this.klM + ", mManufacturerSpecificData=" + c(this.klN) + ", mServiceData=" + C(this.klO) + ", mTxPowerLevel=" + this.klP + ", mDeviceName=" + this.mDeviceName + "]";
+    String str = "ScanRecord [mAdvertiseFlags=" + this.kGL + ", mServiceUuids=" + this.kGM + ", mManufacturerSpecificData=" + d(this.kGN) + ", mServiceData=" + C(this.kGO) + ", mTxPowerLevel=" + this.kGP + ", mDeviceName=" + this.mDeviceName + "]";
     AppMethodBeat.o(144634);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.f
  * JD-Core Version:    0.7.0.1
  */

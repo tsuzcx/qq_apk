@@ -4,7 +4,7 @@ import android.support.v4.view.q;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -12,17 +12,17 @@ import java.util.Queue;
 public abstract class u
   extends q
 {
-  public Queue<View> HAZ = new LinkedList();
-  public HashMap<Object, Integer> HBa = new HashMap();
-  public SparseArray<Object> HBb = new SparseArray();
+  public Queue<View> JoQ = new LinkedList();
+  public HashMap<Object, Integer> JoR = new HashMap();
+  public SparseArray<Object> JoS = new SparseArray();
   
-  public abstract MultiTouchImageView Gb(int paramInt);
+  public abstract MultiTouchImageView Hq(int paramInt);
   
-  public abstract WxImageView Gc(int paramInt);
+  public abstract WxImageView Hr(int paramInt);
   
-  public final View QZ(int paramInt)
+  public final View SJ(int paramInt)
   {
-    Object localObject = this.HBb.get(paramInt);
+    Object localObject = this.JoS.get(paramInt);
     if (localObject != null) {
       return (View)localObject;
     }
@@ -31,11 +31,11 @@ public abstract class u
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    ac.d("MicroMsg.MMViewPagerAdapter", "destroyItem position %s", new Object[] { Integer.valueOf(paramInt) });
-    ac.i("MicroMsg.MMViewPagerAdapter", "destroyItem object %s", new Object[] { Integer.valueOf(paramObject.hashCode()) });
-    this.HAZ.add((View)paramObject);
-    this.HBa.remove(paramObject);
-    this.HBb.remove(paramInt);
+    ad.d("MicroMsg.MMViewPagerAdapter", "destroyItem position %s", new Object[] { Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.MMViewPagerAdapter", "destroyItem object %s", new Object[] { Integer.valueOf(paramObject.hashCode()) });
+    this.JoQ.add((View)paramObject);
+    this.JoR.remove(paramObject);
+    this.JoS.remove(paramInt);
   }
   
   public void detach()
@@ -52,8 +52,8 @@ public abstract class u
   
   public int getItemPosition(Object paramObject)
   {
-    if (this.HBa.containsKey(paramObject)) {
-      return ((Integer)this.HBa.get(paramObject)).intValue();
+    if (this.JoR.containsKey(paramObject)) {
+      return ((Integer)this.JoR.get(paramObject)).intValue();
     }
     return -2;
   }
@@ -62,17 +62,17 @@ public abstract class u
   {
     long l = System.currentTimeMillis();
     Object localObject = null;
-    if (this.HAZ.size() > 0) {
-      localObject = (View)this.HAZ.poll();
+    if (this.JoQ.size() > 0) {
+      localObject = (View)this.JoQ.poll();
     }
     localObject = g(paramInt, (View)localObject);
-    ac.i("MicroMsg.MMViewPagerAdapter", "instantiateItem object %s, parent %s, position: %s.", new Object[] { Integer.valueOf(localObject.hashCode()), ((View)localObject).getParent(), Integer.valueOf(paramInt) });
-    this.HBa.put(localObject, Integer.valueOf(paramInt));
-    this.HBb.put(paramInt, localObject);
+    ad.i("MicroMsg.MMViewPagerAdapter", "instantiateItem object %s, parent %s, position: %s.", new Object[] { Integer.valueOf(localObject.hashCode()), ((View)localObject).getParent(), Integer.valueOf(paramInt) });
+    this.JoR.put(localObject, Integer.valueOf(paramInt));
+    this.JoS.put(paramInt, localObject);
     if (((View)localObject).getParent() == null) {
       paramViewGroup.addView((View)localObject);
     }
-    ac.i("MicroMsg.MMViewPagerAdapter", "instantiateItem spent : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ad.i("MicroMsg.MMViewPagerAdapter", "instantiateItem spent : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     return localObject;
   }
   
@@ -88,9 +88,9 @@ public abstract class u
   
   public final void reset()
   {
-    this.HAZ.clear();
-    this.HBa.clear();
-    this.HBb.clear();
+    this.JoQ.clear();
+    this.JoR.clear();
+    this.JoS.clear();
   }
 }
 

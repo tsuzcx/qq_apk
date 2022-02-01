@@ -1,70 +1,85 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.plugin.webview.luggage.c.b;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bs;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.type.IPCInteger;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ay;
+import java.util.HashMap;
+import java.util.Map;
 
 public class w
-  extends bo<f>
+  extends bq<s>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama)
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  
+  public final void b(b<s>.a paramb)
   {
-    AppMethodBeat.i(78559);
-    ac.i("MicroMsg.JsApiGetOpenDeviceId", "invokeInMM");
-    paramContext = b.LK(paramString);
-    if (paramContext == null)
+    AppMethodBeat.i(78558);
+    ad.i("MicroMsg.JsApiGetNetworkType", "invoke");
+    if (!ay.isConnected(((s)paramb.chg).mContext))
     {
-      ac.e("MicroMsg.JsApiGetOpenDeviceId", "data is null");
-      parama.f("fail", null);
-      AppMethodBeat.o(78559);
+      ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, not connected");
+      paramb.a("network_type:fail", null);
+      AppMethodBeat.o(78558);
       return;
     }
-    paramString = paramContext.optString("preVerifyAppId");
-    paramContext = q.cF(true);
-    String str = q.XX();
-    if ((!bs.isNullOrNil(paramContext)) && (!bs.isNullOrNil(str)) && (!bs.isNullOrNil(paramString)))
+    ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, type = ".concat(String.valueOf(ay.getNetType(((s)paramb.chg).mContext))));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("simtype", (IPCInteger)com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", null, a.class));
+    if (ay.isWifi(((s)paramb.chg).mContext))
     {
-      paramContext = ah.dg(ah.dg(paramString + paramContext));
-      str = ah.dg(ah.dg(paramString + str));
-      paramString = new JSONObject();
-    }
-    try
-    {
-      paramString.put("deviceid", paramContext);
-      paramString.put("newDeviceId", str);
-      label157:
-      parama.f(null, paramString);
-      AppMethodBeat.o(78559);
-      return;
-      parama.f("fail", null);
-      AppMethodBeat.o(78559);
+      ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, wifi");
+      paramb.d("network_type:wifi", localHashMap);
+      AppMethodBeat.o(78558);
       return;
     }
-    catch (JSONException paramContext)
+    if (ay.is2G(((s)paramb.chg).mContext))
     {
-      break label157;
+      ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 2g");
+      localHashMap.put("subtype", "2g");
+    }
+    for (;;)
+    {
+      paramb.d("network_type:wwan", localHashMap);
+      AppMethodBeat.o(78558);
+      return;
+      if (ay.is3G(((s)paramb.chg).mContext))
+      {
+        ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 3g");
+        localHashMap.put("subtype", "3g");
+      }
+      else if (ay.is4G(((s)paramb.chg).mContext))
+      {
+        ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 4g");
+        localHashMap.put("subtype", "4g");
+      }
+      else if (ay.is5G(((s)paramb.chg).mContext))
+      {
+        ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 5g");
+        localHashMap.put("subtype", "5g");
+      }
     }
   }
   
-  public final void b(a<f>.a parama) {}
-  
-  public final int bYk()
+  public final int ccO()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "getOpenDeviceId";
+    return "getNetworkType";
   }
+  
+  static class a
+    implements k<IPCVoid, IPCInteger>
+  {}
 }
 
 

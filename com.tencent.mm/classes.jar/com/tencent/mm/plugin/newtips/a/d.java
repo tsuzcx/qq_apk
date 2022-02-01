@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.newtips.a;
 
 public final class d
 {
-  public static int vmO = 0;
-  public static int vmP = 1;
-  public static int vmQ = 1;
-  public static int vmR = 2;
-  public static int vmS = 3;
-  public static String vmT = "me";
-  public static String vmU = "me_setting";
-  public static String vmV = "me_setting_general";
-  public static String vmW = "me_setting_privacy";
-  public static String vmX = "me_setting_general_plugin";
-  public static int vmY = 0;
-  public static int vmZ = 1;
-  public static int vna = 2;
-  public static int vnb = 3;
-  public static int vnc = 4;
-  public static int vnd = 0;
-  public static int vne = 1;
-  public static int vnf = 2;
-  public static String vng = "3_1";
-  public static String vnh = "30001001_1";
+  public static int wsg = 0;
+  public static int wsh = 1;
+  public static int wsi = 1;
+  public static int wsj = 2;
+  public static int wsk = 3;
+  public static String wsl = "me";
+  public static String wsm = "me_setting";
+  public static String wsn = "me_setting_general";
+  public static String wso = "me_setting_privacy";
+  public static String wsp = "me_setting_general_plugin";
+  public static int wsq = 0;
+  public static int wsr = 1;
+  public static int wss = 2;
+  public static int wst = 3;
+  public static int wsu = 4;
+  public static int wsv = 0;
+  public static int wsw = 1;
+  public static int wsx = 2;
+  public static String wsy = "3_1";
+  public static String wsz = "30001001_1";
 }
 
 

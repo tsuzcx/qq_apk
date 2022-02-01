@@ -2,10 +2,12 @@ package com.tencent.mm.plugin.honey_pay.ui;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.ui.applet.u;
+import com.tencent.mm.pluginsdk.ui.span.h;
 
 final class HoneyPayReceiveCardUI$1
-  implements com.tencent.mm.pluginsdk.ui.span.h
+  implements h
 {
   HoneyPayReceiveCardUI$1(HoneyPayReceiveCardUI paramHoneyPayReceiveCardUI) {}
   
@@ -21,7 +23,7 @@ final class HoneyPayReceiveCardUI$1
     {
       paramu = paramu.data;
       if ((paramu != null) && ((paramu instanceof Bundle)) && (((Bundle)paramu).getBoolean("click_help", false))) {
-        com.tencent.mm.plugin.report.service.h.wUl.f(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+        g.yhR.f(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
       }
     }
     AppMethodBeat.o(64824);

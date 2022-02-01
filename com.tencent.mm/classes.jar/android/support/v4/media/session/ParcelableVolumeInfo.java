@@ -8,19 +8,19 @@ public class ParcelableVolumeInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ParcelableVolumeInfo> CREATOR = new Parcelable.Creator() {};
-  public int KW;
-  public int KX;
-  public int KY;
-  public int KZ;
-  public int La;
+  public int MO;
+  public int MP;
+  public int MQ;
+  public int MR;
+  public int MS;
   
   public ParcelableVolumeInfo(Parcel paramParcel)
   {
-    this.KW = paramParcel.readInt();
-    this.KY = paramParcel.readInt();
-    this.KZ = paramParcel.readInt();
-    this.La = paramParcel.readInt();
-    this.KX = paramParcel.readInt();
+    this.MO = paramParcel.readInt();
+    this.MQ = paramParcel.readInt();
+    this.MR = paramParcel.readInt();
+    this.MS = paramParcel.readInt();
+    this.MP = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -30,11 +30,11 @@ public class ParcelableVolumeInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.KW);
-    paramParcel.writeInt(this.KY);
-    paramParcel.writeInt(this.KZ);
-    paramParcel.writeInt(this.La);
-    paramParcel.writeInt(this.KX);
+    paramParcel.writeInt(this.MO);
+    paramParcel.writeInt(this.MQ);
+    paramParcel.writeInt(this.MR);
+    paramParcel.writeInt(this.MS);
+    paramParcel.writeInt(this.MP);
   }
 }
 

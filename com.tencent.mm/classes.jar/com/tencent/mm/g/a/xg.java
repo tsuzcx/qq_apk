@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class xg
   extends b
 {
-  public a dzZ;
+  public a dLB;
   
   public xg()
   {
@@ -15,19 +15,17 @@ public final class xg
   
   private xg(byte paramByte)
   {
-    AppMethodBeat.i(149894);
-    this.dzZ = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(94801);
+    this.dLB = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(149894);
+    AppMethodBeat.o(94801);
   }
   
   public static final class a
   {
-    public boolean cYX = false;
-    public boolean cYY = false;
-    public boolean dAa = false;
-    public String talker;
+    public long dLC = -1L;
+    public long dLD = -1L;
   }
 }
 

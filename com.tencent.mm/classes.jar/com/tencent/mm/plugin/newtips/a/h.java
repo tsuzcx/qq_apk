@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.newtips.a;
 
 public abstract class h
 {
-  public abstract boolean dkh();
+  public abstract boolean dut();
   
-  public abstract boolean dki();
+  public abstract boolean duu();
 }
 
 

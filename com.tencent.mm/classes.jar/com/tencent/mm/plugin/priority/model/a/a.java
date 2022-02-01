@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.priority.model.a;
 import android.database.Cursor;
 import android.util.Pair;
 import com.tencent.mm.plugin.priority.model.b;
-import com.tencent.mm.pluginsdk.g.h;
-import com.tencent.mm.protocal.protobuf.cqc;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.pluginsdk.i.i;
+import com.tencent.mm.protocal.protobuf.cvh;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.wcdb.database.SQLiteStatement;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,64 +17,64 @@ import java.util.Map.Entry;
 
 public abstract class a
 {
-  public SQLiteStatement vDV;
-  public SQLiteStatement vDW;
-  public SQLiteStatement vDX;
-  private SQLiteStatement vDY;
-  private b vDu;
+  private b wKA;
+  public SQLiteStatement wLb;
+  public SQLiteStatement wLc;
+  public SQLiteStatement wLd;
+  private SQLiteStatement wLe;
   
   public a(b paramb)
   {
-    this.vDu = paramb;
-    if (this.vDu.ab(doK(), 0L) != 1L)
+    this.wKA = paramb;
+    if (this.wKA.ad(dzm(), 0L) != 1L)
     {
-      if (this.vDu.afI(getTableName())) {
-        this.vDu.apq(getTableName());
+      if (this.wKA.akg(getTableName())) {
+        this.wKA.auw(getTableName());
       }
-      this.vDu.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s (chat TEXT, talker TEXT, date INTEGER, dayreceivecount INTEGER, dayclickcount INTEGER, weekreceivecount INTEGER, weekclickcount INTEGER, monthreceivecount INTEGER, monthclickcount INTEGER, dayclickrate FLOAT, weekclickrate FLOAT, monthclickrate FLOAT, PRIMARY KEY(chat, talker, date));", new Object[] { getTableName() }));
-      this.vDu.ac(doK(), 1L);
+      this.wKA.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s (chat TEXT, talker TEXT, date INTEGER, dayreceivecount INTEGER, dayclickcount INTEGER, weekreceivecount INTEGER, weekclickcount INTEGER, monthreceivecount INTEGER, monthclickcount INTEGER, dayclickrate FLOAT, weekclickrate FLOAT, monthclickrate FLOAT, PRIMARY KEY(chat, talker, date));", new Object[] { getTableName() }));
+      this.wKA.ae(dzm(), 1L);
     }
     for (;;)
     {
-      this.vDV = this.vDu.compileStatement(String.format("INSERT OR REPLACE INTO %s (chat, talker, date, dayreceivecount, dayclickcount, weekreceivecount, weekclickcount, monthreceivecount, monthclickcount, dayclickrate, weekclickrate, monthclickrate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", new Object[] { getTableName() }));
-      this.vDW = this.vDu.compileStatement(String.format("UPDATE %s SET dayreceivecount = ?, weekreceivecount = ?, monthreceivecount = ?, dayclickrate = ?, weekclickrate = ?, monthclickrate = ? WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() }));
-      this.vDX = this.vDu.compileStatement(String.format("UPDATE %s SET dayclickcount = ?, weekclickcount = ?, monthclickcount = ?, dayclickrate = ?, weekclickrate = ?, monthclickrate = ? WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() }));
-      this.vDY = this.vDu.compileStatement(String.format("DELETE FROM %s WHERE chat = ?;", new Object[] { getTableName() }));
+      this.wLb = this.wKA.compileStatement(String.format("INSERT OR REPLACE INTO %s (chat, talker, date, dayreceivecount, dayclickcount, weekreceivecount, weekclickcount, monthreceivecount, monthclickcount, dayclickrate, weekclickrate, monthclickrate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", new Object[] { getTableName() }));
+      this.wLc = this.wKA.compileStatement(String.format("UPDATE %s SET dayreceivecount = ?, weekreceivecount = ?, monthreceivecount = ?, dayclickrate = ?, weekclickrate = ?, monthclickrate = ? WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() }));
+      this.wLd = this.wKA.compileStatement(String.format("UPDATE %s SET dayclickcount = ?, weekclickcount = ?, monthclickcount = ?, dayclickrate = ?, weekclickrate = ?, monthclickrate = ? WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() }));
+      this.wLe = this.wKA.compileStatement(String.format("DELETE FROM %s WHERE chat = ?;", new Object[] { getTableName() }));
       return;
-      int i = this.vDu.app(getTableName());
-      ac.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "Exist Table %s %d", new Object[] { getTableName(), Integer.valueOf(i) });
+      int i = this.wKA.auv(getTableName());
+      ad.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "Exist Table %s %d", new Object[] { getTableName(), Integer.valueOf(i) });
     }
   }
   
   private boolean a(String paramString1, String paramString2, long paramLong, boolean paramBoolean)
   {
-    cqc localcqc = t(paramString1, paramString2, paramLong);
-    if (localcqc != null)
+    cvh localcvh = h(paramString1, paramString2, paramLong);
+    if (localcvh != null)
     {
       label156:
       int i;
       String str;
       if (paramBoolean)
       {
-        localcqc.FDf += 1;
-        localcqc.FDh += 1;
-        localcqc.FDj += 1;
-        localcqc.FDk = gI(localcqc.FDf, localcqc.FDe);
-        localcqc.FDl = gI(localcqc.FDh, localcqc.FDg);
-        localcqc.FDm = gI(localcqc.FDj, localcqc.FDi);
+        localcvh.Hns += 1;
+        localcvh.Hnu += 1;
+        localcvh.Hnw += 1;
+        localcvh.Hnx = ha(localcvh.Hns, localcvh.Hnr);
+        localcvh.Hny = ha(localcvh.Hnu, localcvh.Hnt);
+        localcvh.Hnz = ha(localcvh.Hnw, localcvh.Hnv);
         if (!paramBoolean) {
           break label442;
         }
-        localObject = this.vDX;
-        ((SQLiteStatement)localObject).bindLong(1, localcqc.FDf);
-        ((SQLiteStatement)localObject).bindLong(2, localcqc.FDh);
-        ((SQLiteStatement)localObject).bindLong(3, localcqc.FDj);
-        ((SQLiteStatement)localObject).bindDouble(4, localcqc.FDk);
-        ((SQLiteStatement)localObject).bindDouble(5, localcqc.FDl);
-        ((SQLiteStatement)localObject).bindDouble(6, localcqc.FDm);
-        ((SQLiteStatement)localObject).bindString(7, localcqc.Eol);
-        ((SQLiteStatement)localObject).bindString(8, localcqc.FDc);
-        ((SQLiteStatement)localObject).bindLong(9, localcqc.FDd);
+        localObject = this.wLd;
+        ((SQLiteStatement)localObject).bindLong(1, localcvh.Hns);
+        ((SQLiteStatement)localObject).bindLong(2, localcvh.Hnu);
+        ((SQLiteStatement)localObject).bindLong(3, localcvh.Hnw);
+        ((SQLiteStatement)localObject).bindDouble(4, localcvh.Hnx);
+        ((SQLiteStatement)localObject).bindDouble(5, localcvh.Hny);
+        ((SQLiteStatement)localObject).bindDouble(6, localcvh.Hnz);
+        ((SQLiteStatement)localObject).bindString(7, localcvh.FVu);
+        ((SQLiteStatement)localObject).bindString(8, localcvh.Hnp);
+        ((SQLiteStatement)localObject).bindLong(9, localcvh.Hnq);
         i = ((SQLiteStatement)localObject).executeUpdateDelete();
         str = getTableName();
         if (!paramBoolean) {
@@ -85,19 +85,19 @@ public abstract class a
       label487:
       for (Object localObject = "Open";; localObject = "Receive")
       {
-        ac.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "%s Update %s Res %s %s %d %d %d %d %d %d %d DayClickRate %.2f WeekClickRate %.2f MonthClickRate %.2f", new Object[] { str, localObject, paramString1, paramString2, Integer.valueOf(i), Integer.valueOf(localcqc.FDf), Integer.valueOf(localcqc.FDh), Integer.valueOf(localcqc.FDj), Integer.valueOf(localcqc.FDe), Integer.valueOf(localcqc.FDg), Integer.valueOf(localcqc.FDi), Float.valueOf(localcqc.FDk), Float.valueOf(localcqc.FDl), Float.valueOf(localcqc.FDm) });
+        ad.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "%s Update %s Res %s %s %d %d %d %d %d %d %d DayClickRate %.2f WeekClickRate %.2f MonthClickRate %.2f", new Object[] { str, localObject, paramString1, paramString2, Integer.valueOf(i), Integer.valueOf(localcvh.Hns), Integer.valueOf(localcvh.Hnu), Integer.valueOf(localcvh.Hnw), Integer.valueOf(localcvh.Hnr), Integer.valueOf(localcvh.Hnt), Integer.valueOf(localcvh.Hnv), Float.valueOf(localcvh.Hnx), Float.valueOf(localcvh.Hny), Float.valueOf(localcvh.Hnz) });
         if (i <= 0) {
           break label494;
         }
         return true;
-        localcqc.FDe += 1;
-        localcqc.FDg += 1;
-        localcqc.FDi += 1;
+        localcvh.Hnr += 1;
+        localcvh.Hnt += 1;
+        localcvh.Hnv += 1;
         break;
-        localObject = this.vDW;
-        ((SQLiteStatement)localObject).bindLong(1, localcqc.FDe);
-        ((SQLiteStatement)localObject).bindLong(2, localcqc.FDg);
-        ((SQLiteStatement)localObject).bindLong(3, localcqc.FDi);
+        localObject = this.wLc;
+        ((SQLiteStatement)localObject).bindLong(1, localcvh.Hnr);
+        ((SQLiteStatement)localObject).bindLong(2, localcvh.Hnt);
+        ((SQLiteStatement)localObject).bindLong(3, localcvh.Hnv);
         break label156;
       }
       label494:
@@ -108,90 +108,61 @@ public abstract class a
   
   private void b(String paramString1, String paramString2, long paramLong, boolean paramBoolean)
   {
-    cqc localcqc = new cqc();
-    localcqc.Eol = paramString1;
-    localcqc.FDc = paramString2;
-    localcqc.FDd = paramLong;
+    cvh localcvh = new cvh();
+    localcvh.FVu = paramString1;
+    localcvh.Hnp = paramString2;
+    localcvh.Hnq = paramLong;
     Object localObject = String.format("SELECT sum(dayreceivecount), sum(dayclickcount) FROM %s WHERE chat = ? AND talker = ? AND date >= %d", new Object[] { getTableName(), Long.valueOf(paramLong - 2505600000L) });
-    localObject = this.vDu.rawQuery((String)localObject, new String[] { paramString1, paramString2 });
+    localObject = this.wKA.rawQuery((String)localObject, new String[] { paramString1, paramString2 });
     if (((Cursor)localObject).moveToNext())
     {
-      localcqc.FDi = ((Cursor)localObject).getInt(0);
-      localcqc.FDj = ((Cursor)localObject).getInt(1);
+      localcvh.Hnv = ((Cursor)localObject).getInt(0);
+      localcvh.Hnw = ((Cursor)localObject).getInt(1);
     }
     ((Cursor)localObject).close();
     localObject = String.format("SELECT sum(dayreceivecount), sum(dayclickcount) FROM %s WHERE chat = ? AND talker = ? AND date >= %d", new Object[] { getTableName(), Long.valueOf(paramLong - 518400000L) });
-    localObject = this.vDu.rawQuery((String)localObject, new String[] { paramString1, paramString2 });
+    localObject = this.wKA.rawQuery((String)localObject, new String[] { paramString1, paramString2 });
     if (((Cursor)localObject).moveToNext())
     {
-      localcqc.FDg = ((Cursor)localObject).getInt(0);
-      localcqc.FDh = ((Cursor)localObject).getInt(1);
+      localcvh.Hnt = ((Cursor)localObject).getInt(0);
+      localcvh.Hnu = ((Cursor)localObject).getInt(1);
     }
     ((Cursor)localObject).close();
     if (paramBoolean)
     {
-      localcqc.FDf += 1;
-      localcqc.FDj += 1;
-      localcqc.FDh += 1;
+      localcvh.Hns += 1;
+      localcvh.Hnw += 1;
+      localcvh.Hnu += 1;
     }
     for (;;)
     {
-      localcqc.FDk = gI(localcqc.FDf, localcqc.FDe);
-      localcqc.FDl = gI(localcqc.FDh, localcqc.FDg);
-      localcqc.FDm = gI(localcqc.FDj, localcqc.FDi);
-      this.vDV.bindString(1, localcqc.Eol);
-      this.vDV.bindString(2, localcqc.FDc);
-      this.vDV.bindLong(3, localcqc.FDd);
-      this.vDV.bindLong(4, localcqc.FDe);
-      this.vDV.bindLong(5, localcqc.FDf);
-      this.vDV.bindLong(6, localcqc.FDg);
-      this.vDV.bindLong(7, localcqc.FDh);
-      this.vDV.bindLong(8, localcqc.FDi);
-      this.vDV.bindLong(9, localcqc.FDj);
-      this.vDV.bindDouble(10, localcqc.FDk);
-      this.vDV.bindDouble(11, localcqc.FDl);
-      this.vDV.bindDouble(12, localcqc.FDm);
-      ac.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "insert %d usage %s %s %s %d %d %d %d %.2f %.2f", new Object[] { Long.valueOf(this.vDV.executeInsert()), paramString1, paramString2, h.formatTime("yyyy-MM-dd", paramLong / 1000L), Integer.valueOf(localcqc.FDg), Integer.valueOf(localcqc.FDh), Integer.valueOf(localcqc.FDi), Integer.valueOf(localcqc.FDj), Float.valueOf(localcqc.FDl), Float.valueOf(localcqc.FDm) });
+      localcvh.Hnx = ha(localcvh.Hns, localcvh.Hnr);
+      localcvh.Hny = ha(localcvh.Hnu, localcvh.Hnt);
+      localcvh.Hnz = ha(localcvh.Hnw, localcvh.Hnv);
+      this.wLb.bindString(1, localcvh.FVu);
+      this.wLb.bindString(2, localcvh.Hnp);
+      this.wLb.bindLong(3, localcvh.Hnq);
+      this.wLb.bindLong(4, localcvh.Hnr);
+      this.wLb.bindLong(5, localcvh.Hns);
+      this.wLb.bindLong(6, localcvh.Hnt);
+      this.wLb.bindLong(7, localcvh.Hnu);
+      this.wLb.bindLong(8, localcvh.Hnv);
+      this.wLb.bindLong(9, localcvh.Hnw);
+      this.wLb.bindDouble(10, localcvh.Hnx);
+      this.wLb.bindDouble(11, localcvh.Hny);
+      this.wLb.bindDouble(12, localcvh.Hnz);
+      ad.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "insert %d usage %s %s %s %d %d %d %d %.2f %.2f", new Object[] { Long.valueOf(this.wLb.executeInsert()), paramString1, paramString2, i.formatTime("yyyy-MM-dd", paramLong / 1000L), Integer.valueOf(localcvh.Hnt), Integer.valueOf(localcvh.Hnu), Integer.valueOf(localcvh.Hnv), Integer.valueOf(localcvh.Hnw), Float.valueOf(localcvh.Hny), Float.valueOf(localcvh.Hnz) });
       return;
-      localcqc.FDe += 1;
-      localcqc.FDi += 1;
-      localcqc.FDg += 1;
+      localcvh.Hnr += 1;
+      localcvh.Hnv += 1;
+      localcvh.Hnt += 1;
     }
   }
   
-  private static float gI(int paramInt1, int paramInt2)
-  {
-    if ((paramInt2 == 0) && (paramInt1 > 0)) {
-      return 1.0F;
-    }
-    if ((paramInt2 == 0) && (paramInt1 == 0)) {
-      return 0.0F;
-    }
-    return Math.min(paramInt1 / paramInt2, 1.0F);
-  }
-  
-  private static cqc k(Cursor paramCursor)
-  {
-    cqc localcqc = new cqc();
-    localcqc.Eol = paramCursor.getString(0);
-    localcqc.FDc = paramCursor.getString(1);
-    localcqc.FDd = paramCursor.getLong(2);
-    localcqc.FDe = paramCursor.getInt(3);
-    localcqc.FDf = paramCursor.getInt(4);
-    localcqc.FDg = paramCursor.getInt(5);
-    localcqc.FDh = paramCursor.getInt(6);
-    localcqc.FDi = paramCursor.getInt(7);
-    localcqc.FDj = paramCursor.getInt(8);
-    localcqc.FDk = paramCursor.getFloat(9);
-    localcqc.FDl = paramCursor.getFloat(10);
-    localcqc.FDm = paramCursor.getFloat(11);
-    return localcqc;
-  }
-  
-  private cqc t(String paramString1, String paramString2, long paramLong)
+  private cvh h(String paramString1, String paramString2, long paramLong)
   {
     String str = String.format("SELECT * FROM %s WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() });
-    paramString1 = this.vDu.rawQuery(str, new String[] { paramString1, paramString2, String.valueOf(paramLong) });
+    paramString1 = this.wKA.rawQuery(str, new String[] { paramString1, paramString2, String.valueOf(paramLong) });
     try
     {
       if (paramString1.moveToNext())
@@ -207,16 +178,27 @@ public abstract class a
     }
   }
   
-  private float u(String paramString1, String paramString2, long paramLong)
+  private static float ha(int paramInt1, int paramInt2)
+  {
+    if ((paramInt2 == 0) && (paramInt1 > 0)) {
+      return 1.0F;
+    }
+    if ((paramInt2 == 0) && (paramInt1 == 0)) {
+      return 0.0F;
+    }
+    return Math.min(paramInt1 / paramInt2, 1.0F);
+  }
+  
+  private float i(String paramString1, String paramString2, long paramLong)
   {
     String str = String.format("SELECT sum(dayreceivecount), sum(dayclickcount) FROM %s WHERE chat = ? AND talker = ? AND date >= %d", new Object[] { getTableName(), Long.valueOf(paramLong - 518400000L) });
-    paramString1 = this.vDu.rawQuery(str, new String[] { paramString1, paramString2 });
+    paramString1 = this.wKA.rawQuery(str, new String[] { paramString1, paramString2 });
     try
     {
       if (paramString1.moveToNext())
       {
         int i = paramString1.getInt(0);
-        float f = gI(paramString1.getInt(1), i);
+        float f = ha(paramString1.getInt(1), i);
         return f;
       }
       return 0.0F;
@@ -227,16 +209,16 @@ public abstract class a
     }
   }
   
-  private float v(String paramString1, String paramString2, long paramLong)
+  private float j(String paramString1, String paramString2, long paramLong)
   {
     String str = String.format("SELECT sum(dayreceivecount), sum(dayclickcount) FROM %s WHERE chat = ? AND talker = ? AND date >= %d", new Object[] { getTableName(), Long.valueOf(paramLong - 2505600000L) });
-    paramString1 = this.vDu.rawQuery(str, new String[] { paramString1, paramString2 });
+    paramString1 = this.wKA.rawQuery(str, new String[] { paramString1, paramString2 });
     try
     {
       if (paramString1.moveToNext())
       {
         int i = paramString1.getInt(0);
-        float f = gI(paramString1.getInt(1), i);
+        float f = ha(paramString1.getInt(1), i);
         return f;
       }
       return 0.0F;
@@ -247,10 +229,28 @@ public abstract class a
     }
   }
   
-  public final List<cqc> apr(String paramString)
+  private static cvh k(Cursor paramCursor)
+  {
+    cvh localcvh = new cvh();
+    localcvh.FVu = paramCursor.getString(0);
+    localcvh.Hnp = paramCursor.getString(1);
+    localcvh.Hnq = paramCursor.getLong(2);
+    localcvh.Hnr = paramCursor.getInt(3);
+    localcvh.Hns = paramCursor.getInt(4);
+    localcvh.Hnt = paramCursor.getInt(5);
+    localcvh.Hnu = paramCursor.getInt(6);
+    localcvh.Hnv = paramCursor.getInt(7);
+    localcvh.Hnw = paramCursor.getInt(8);
+    localcvh.Hnx = paramCursor.getFloat(9);
+    localcvh.Hny = paramCursor.getFloat(10);
+    localcvh.Hnz = paramCursor.getFloat(11);
+    return localcvh;
+  }
+  
+  public final List<cvh> aux(String paramString)
   {
     Object localObject = String.format("SELECT *, max(monthreceivecount) FROM %s WHERE chat = ? AND talker <> '%s' GROUP BY chat, talker;", new Object[] { getTableName(), "@all" });
-    paramString = this.vDu.rawQuery((String)localObject, new String[] { paramString });
+    paramString = this.wKA.rawQuery((String)localObject, new String[] { paramString });
     localObject = new ArrayList(10);
     while (paramString.moveToNext()) {
       ((List)localObject).add(k(paramString));
@@ -260,37 +260,63 @@ public abstract class a
     return localObject;
   }
   
-  public final void aps(String paramString)
+  public final void auy(String paramString)
   {
-    this.vDY.bindString(1, paramString);
-    ac.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "delete %d img usage %s", new Object[] { Integer.valueOf(this.vDY.executeUpdateDelete()), paramString });
+    this.wLe.bindString(1, paramString);
+    ad.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "delete %d img usage %s", new Object[] { Integer.valueOf(this.wLe.executeUpdateDelete()), paramString });
   }
   
-  protected abstract long doK();
+  protected abstract long dzm();
   
   protected abstract String getTableName();
   
-  public final void ij(String paramString1, String paramString2)
+  public final int iA(String paramString1, String paramString2)
   {
-    long l = com.tencent.mm.plugin.priority.a.a.a.doF();
+    int i = 0;
+    long l = com.tencent.mm.plugin.priority.a.a.a.dzh();
+    String str = String.format("SELECT dayreceivecount FROM %s WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() });
+    paramString1 = this.wKA.rawQuery(str, new String[] { paramString1, paramString2, String.valueOf(l) });
+    if (paramString1.moveToNext()) {
+      i = paramString1.getInt(0);
+    }
+    paramString1.close();
+    return i;
+  }
+  
+  public final int iB(String paramString1, String paramString2)
+  {
+    int i = 0;
+    long l = com.tencent.mm.plugin.priority.a.a.a.dzh();
+    String str = String.format("SELECT sum(dayreceivecount) FROM %s WHERE chat = ? AND talker = ? AND date >= ?", new Object[] { getTableName() });
+    paramString1 = this.wKA.rawQuery(str, new String[] { paramString1, paramString2, String.valueOf(l - 518400000L) });
+    if (paramString1.moveToNext()) {
+      i = paramString1.getInt(0);
+    }
+    paramString1.close();
+    return i;
+  }
+  
+  public final void ix(String paramString1, String paramString2)
+  {
+    long l = com.tencent.mm.plugin.priority.a.a.a.dzh();
     if (!a(paramString1, paramString2, l, false)) {
       b(paramString1, paramString2, l, false);
     }
   }
   
-  public final void ik(String paramString1, String paramString2)
+  public final void iy(String paramString1, String paramString2)
   {
-    long l = com.tencent.mm.plugin.priority.a.a.a.doF();
+    long l = com.tencent.mm.plugin.priority.a.a.a.dzh();
     if (!a(paramString1, paramString2, l, true)) {
       b(paramString1, paramString2, l, true);
     }
   }
   
-  public final double[] il(String paramString1, String paramString2)
+  public final double[] iz(String paramString1, String paramString2)
   {
-    long l = com.tencent.mm.plugin.priority.a.a.a.doF();
+    long l = com.tencent.mm.plugin.priority.a.a.a.dzh();
     Object localObject = String.format("SELECT dayclickrate, weekclickrate, monthclickrate FROM %s WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() });
-    localObject = this.vDu.rawQuery((String)localObject, new String[] { paramString1, paramString2, String.valueOf(l) });
+    localObject = this.wKA.rawQuery((String)localObject, new String[] { paramString1, paramString2, String.valueOf(l) });
     double[] arrayOfDouble = new double[3];
     if (((Cursor)localObject).moveToNext())
     {
@@ -302,63 +328,37 @@ public abstract class a
     }
     ((Cursor)localObject).close();
     arrayOfDouble[0] = 0.0D;
-    arrayOfDouble[1] = u(paramString1, paramString2, l);
-    arrayOfDouble[2] = v(paramString1, paramString2, l);
+    arrayOfDouble[1] = i(paramString1, paramString2, l);
+    arrayOfDouble[2] = j(paramString1, paramString2, l);
     return arrayOfDouble;
   }
   
-  public final int im(String paramString1, String paramString2)
-  {
-    int i = 0;
-    long l = com.tencent.mm.plugin.priority.a.a.a.doF();
-    String str = String.format("SELECT dayreceivecount FROM %s WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() });
-    paramString1 = this.vDu.rawQuery(str, new String[] { paramString1, paramString2, String.valueOf(l) });
-    if (paramString1.moveToNext()) {
-      i = paramString1.getInt(0);
-    }
-    paramString1.close();
-    return i;
-  }
-  
-  public final int in(String paramString1, String paramString2)
-  {
-    int i = 0;
-    long l = com.tencent.mm.plugin.priority.a.a.a.doF();
-    String str = String.format("SELECT sum(dayreceivecount) FROM %s WHERE chat = ? AND talker = ? AND date >= ?", new Object[] { getTableName() });
-    paramString1 = this.vDu.rawQuery(str, new String[] { paramString1, paramString2, String.valueOf(l - 518400000L) });
-    if (paramString1.moveToNext()) {
-      i = paramString1.getInt(0);
-    }
-    paramString1.close();
-    return i;
-  }
-  
-  public final List<Pair<String, String>> wk(long paramLong)
+  public final List<Pair<String, String>> yv(long paramLong)
   {
     HashMap localHashMap = new HashMap();
     Object localObject1 = String.format("SELECT chat, MMSumDivision(dayreceivecount, dayclickcount, 0) FROM %s WHERE date = ? AND ((chat like '%%@chatroom' AND talker = '@all') OR (chat = talker)) GROUP BY chat", new Object[] { getTableName() });
-    localObject1 = this.vDu.rawQuery((String)localObject1, new String[] { String.valueOf(paramLong) });
+    localObject1 = this.wKA.rawQuery((String)localObject1, new String[] { String.valueOf(paramLong) });
     while (((Cursor)localObject1).moveToNext()) {
       localHashMap.put(((Cursor)localObject1).getString(0), Double.valueOf(((Cursor)localObject1).getDouble(1)));
     }
     ((Cursor)localObject1).close();
     localObject1 = new HashMap();
     Object localObject2 = String.format("SELECT chat, MMSumDivision(dayreceivecount, dayclickcount, 0) FROM %s WHERE date >= ? AND ((chat like '%%@chatroom' AND talker = '@all') OR (chat = talker)) GROUP BY chat", new Object[] { getTableName() });
-    localObject2 = this.vDu.rawQuery((String)localObject2, new String[] { String.valueOf(paramLong - 518400000L) });
+    localObject2 = this.wKA.rawQuery((String)localObject2, new String[] { String.valueOf(paramLong - 518400000L) });
     while (((Cursor)localObject2).moveToNext()) {
       ((HashMap)localObject1).put(((Cursor)localObject2).getString(0), Double.valueOf(((Cursor)localObject2).getDouble(1)));
     }
     ((Cursor)localObject2).close();
     localObject2 = new HashMap();
     Object localObject3 = String.format("SELECT chat, MMSumDivision(dayreceivecount, dayclickcount, 0) FROM %s WHERE date >= ? AND ((chat like '%%@chatroom' AND talker = '@all') OR (chat = talker)) GROUP BY chat", new Object[] { getTableName() });
-    localObject3 = this.vDu.rawQuery((String)localObject3, new String[] { String.valueOf(paramLong - 2505600000L) });
+    localObject3 = this.wKA.rawQuery((String)localObject3, new String[] { String.valueOf(paramLong - 2505600000L) });
     while (((Cursor)localObject3).moveToNext()) {
       ((HashMap)localObject2).put(((Cursor)localObject3).getString(0), Double.valueOf(((Cursor)localObject3).getDouble(1)));
     }
     ((Cursor)localObject3).close();
     localObject3 = new ArrayList();
     ((List)localObject3).addAll(((HashMap)localObject2).entrySet());
-    Collections.sort((List)localObject3, new a.2(this));
+    Collections.sort((List)localObject3, new Comparator() {});
     localObject2 = new ArrayList();
     localObject3 = ((List)localObject3).iterator();
     while (((Iterator)localObject3).hasNext())
@@ -380,7 +380,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.priority.model.a.a
  * JD-Core Version:    0.7.0.1
  */

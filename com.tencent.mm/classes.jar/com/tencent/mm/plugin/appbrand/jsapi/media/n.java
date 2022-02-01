@@ -1,58 +1,53 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.f.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class n
   extends a
 {
-  public static final int CTRL_INDEX = 216;
-  public static final String NAME = "saveVideoToPhotosAlbum";
+  public static final int CTRL_INDEX = 217;
+  public static final String NAME = "saveImageToPhotosAlbum";
   
-  final boolean Ms(String paramString)
+  final boolean PQ(String paramString)
   {
-    AppMethodBeat.i(139885);
-    boolean bool = bs.nullAsNil(paramString).toLowerCase().contains("video");
-    AppMethodBeat.o(139885);
+    AppMethodBeat.i(139881);
+    boolean bool = bt.nullAsNil(paramString).toLowerCase().contains("image");
+    AppMethodBeat.o(139881);
     return bool;
   }
   
-  final String Mt(String paramString)
+  final String PR(String paramString)
   {
-    AppMethodBeat.i(139886);
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "mp4";
-    }
-    paramString = b.alY(str);
-    AppMethodBeat.o(139886);
+    AppMethodBeat.i(139882);
+    paramString = b.aqN(paramString);
+    AppMethodBeat.o(139882);
     return paramString;
   }
   
-  final void Mu(final String paramString)
+  final void PS(String paramString)
   {
-    AppMethodBeat.i(139887);
-    ap.f(new Runnable()
+    AppMethodBeat.i(139883);
+    aq.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(139884);
-        Toast.makeText(ai.getContext(), ai.getContext().getString(2131764683, new Object[] { b.aLU(paramString) }), 1).show();
-        AppMethodBeat.o(139884);
+        AppMethodBeat.i(139880);
+        Toast.makeText(aj.getContext(), aj.getContext().getString(2131757969, new Object[] { b.ffp() }), 1).show();
+        AppMethodBeat.o(139880);
       }
     });
-    AppMethodBeat.o(139887);
+    AppMethodBeat.o(139883);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.n
  * JD-Core Version:    0.7.0.1
  */

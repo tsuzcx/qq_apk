@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.aq;
 import com.tencent.mm.protocal.protobuf.at;
 import com.tencent.mm.protocal.protobuf.au;
-import com.tencent.mm.protocal.protobuf.auk;
+import com.tencent.mm.protocal.protobuf.ayi;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -15,53 +15,53 @@ public class CardGiftInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<CardGiftInfo> CREATOR;
-  public String dfJ;
-  public String dtD;
+  public String dFE;
+  public String drf;
   public String footerWording;
-  public String hiu;
-  public String nUH;
-  public String nUI;
-  public String nUJ;
-  public String nUK;
-  public String nUL;
-  public String nUM;
-  public String nUN;
-  public String nUO;
-  public String nUP;
-  public String nUQ;
-  public String nUR;
-  public String nUS;
-  public boolean nUT;
-  public int nUU;
-  public int nUV;
-  public int nUW;
-  public String nUX;
-  public String nUY;
-  public int nUZ;
-  public String nVa;
-  public String nVb;
-  public String nVc;
-  public String nVd;
-  public String nVe;
-  public String nVf;
-  public String nVg;
-  public String nVh;
-  public String nVi;
-  public LinkedList<AcceptedCardItem> nVj;
-  public LinkedList<AccepterItem> nVk;
-  public String nVl;
-  public int nVm;
-  public String nVn;
-  public String nVo;
-  public String nVp;
-  public String nVq;
-  public String nVr;
-  public String nVs;
-  public int nVt;
-  public String nVu;
-  public String nVv;
-  public String nVw;
-  public String nVx;
+  public String hAD;
+  public String oyA;
+  public String oyB;
+  public String oyC;
+  public String oyD;
+  public LinkedList<AcceptedCardItem> oyE;
+  public LinkedList<AccepterItem> oyF;
+  public String oyG;
+  public int oyH;
+  public String oyI;
+  public String oyJ;
+  public String oyK;
+  public String oyL;
+  public String oyM;
+  public String oyN;
+  public int oyO;
+  public String oyP;
+  public String oyQ;
+  public String oyR;
+  public String oyS;
+  public String oyc;
+  public String oyd;
+  public String oye;
+  public String oyf;
+  public String oyg;
+  public String oyh;
+  public String oyi;
+  public String oyj;
+  public String oyk;
+  public String oyl;
+  public String oym;
+  public String oyn;
+  public boolean oyo;
+  public int oyp;
+  public int oyq;
+  public int oyr;
+  public String oys;
+  public String oyt;
+  public int oyu;
+  public String oyv;
+  public String oyw;
+  public String oyx;
+  public String oyy;
+  public String oyz;
   
   static
   {
@@ -73,67 +73,67 @@ public class CardGiftInfo
   public CardGiftInfo()
   {
     AppMethodBeat.i(112726);
-    this.nVj = new LinkedList();
-    this.nVk = new LinkedList();
+    this.oyE = new LinkedList();
+    this.oyF = new LinkedList();
     AppMethodBeat.o(112726);
   }
   
   protected CardGiftInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(112727);
-    this.nVj = new LinkedList();
-    this.nVk = new LinkedList();
-    this.dfJ = paramParcel.readString();
-    this.dtD = paramParcel.readString();
-    this.nUH = paramParcel.readString();
-    this.nUI = paramParcel.readString();
-    this.nUJ = paramParcel.readString();
-    this.nUK = paramParcel.readString();
-    this.nUL = paramParcel.readString();
-    this.nUM = paramParcel.readString();
-    this.nUN = paramParcel.readString();
-    this.nUO = paramParcel.readString();
-    this.nUP = paramParcel.readString();
-    this.nUQ = paramParcel.readString();
-    this.nUR = paramParcel.readString();
-    this.nUS = paramParcel.readString();
+    this.oyE = new LinkedList();
+    this.oyF = new LinkedList();
+    this.drf = paramParcel.readString();
+    this.dFE = paramParcel.readString();
+    this.oyc = paramParcel.readString();
+    this.oyd = paramParcel.readString();
+    this.oye = paramParcel.readString();
+    this.oyf = paramParcel.readString();
+    this.oyg = paramParcel.readString();
+    this.oyh = paramParcel.readString();
+    this.oyi = paramParcel.readString();
+    this.oyj = paramParcel.readString();
+    this.oyk = paramParcel.readString();
+    this.oyl = paramParcel.readString();
+    this.oym = paramParcel.readString();
+    this.oyn = paramParcel.readString();
     this.footerWording = paramParcel.readString();
-    this.hiu = paramParcel.readString();
+    this.hAD = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.nUT = bool;
-      this.nUU = paramParcel.readInt();
-      this.nUV = paramParcel.readInt();
-      this.nUW = paramParcel.readInt();
-      this.nUX = paramParcel.readString();
-      this.nUY = paramParcel.readString();
-      this.nUZ = paramParcel.readInt();
-      this.nVa = paramParcel.readString();
-      this.nVb = paramParcel.readString();
-      this.nVc = paramParcel.readString();
-      this.nVd = paramParcel.readString();
-      this.nVe = paramParcel.readString();
-      this.nVf = paramParcel.readString();
-      this.nVg = paramParcel.readString();
-      this.nVh = paramParcel.readString();
-      this.nVi = paramParcel.readString();
-      paramParcel.readTypedList(this.nVj, AcceptedCardItem.CREATOR);
-      paramParcel.readTypedList(this.nVk, AccepterItem.CREATOR);
-      this.nVl = paramParcel.readString();
-      this.nVm = paramParcel.readInt();
-      this.nVn = paramParcel.readString();
-      this.nVo = paramParcel.readString();
-      this.nVo = paramParcel.readString();
-      this.nVp = paramParcel.readString();
-      this.nVq = paramParcel.readString();
-      this.nVr = paramParcel.readString();
-      this.nVs = paramParcel.readString();
-      this.nVt = paramParcel.readInt();
-      this.nVu = paramParcel.readString();
-      this.nVv = paramParcel.readString();
-      this.nVw = paramParcel.readString();
-      this.nVx = paramParcel.readString();
+      this.oyo = bool;
+      this.oyp = paramParcel.readInt();
+      this.oyq = paramParcel.readInt();
+      this.oyr = paramParcel.readInt();
+      this.oys = paramParcel.readString();
+      this.oyt = paramParcel.readString();
+      this.oyu = paramParcel.readInt();
+      this.oyv = paramParcel.readString();
+      this.oyw = paramParcel.readString();
+      this.oyx = paramParcel.readString();
+      this.oyy = paramParcel.readString();
+      this.oyz = paramParcel.readString();
+      this.oyA = paramParcel.readString();
+      this.oyB = paramParcel.readString();
+      this.oyC = paramParcel.readString();
+      this.oyD = paramParcel.readString();
+      paramParcel.readTypedList(this.oyE, AcceptedCardItem.CREATOR);
+      paramParcel.readTypedList(this.oyF, AccepterItem.CREATOR);
+      this.oyG = paramParcel.readString();
+      this.oyH = paramParcel.readInt();
+      this.oyI = paramParcel.readString();
+      this.oyJ = paramParcel.readString();
+      this.oyJ = paramParcel.readString();
+      this.oyK = paramParcel.readString();
+      this.oyL = paramParcel.readString();
+      this.oyM = paramParcel.readString();
+      this.oyN = paramParcel.readString();
+      this.oyO = paramParcel.readInt();
+      this.oyP = paramParcel.readString();
+      this.oyQ = paramParcel.readString();
+      this.oyR = paramParcel.readString();
+      this.oyS = paramParcel.readString();
       AppMethodBeat.o(112727);
       return;
     }
@@ -143,127 +143,127 @@ public class CardGiftInfo
   {
     AppMethodBeat.i(112730);
     CardGiftInfo localCardGiftInfo = new CardGiftInfo();
-    localCardGiftInfo.dfJ = paramaq.DMu;
-    localCardGiftInfo.dtD = paramaq.DMv;
-    localCardGiftInfo.nUH = paramaq.DMw;
-    localCardGiftInfo.nUI = paramaq.content;
-    localCardGiftInfo.nUJ = paramaq.DMx;
-    localCardGiftInfo.nUK = paramaq.DMy;
-    localCardGiftInfo.nUL = paramaq.DMz;
-    localCardGiftInfo.nUM = paramaq.DMA;
-    localCardGiftInfo.nUO = paramaq.DMC;
-    localCardGiftInfo.nUN = paramaq.DMB;
-    localCardGiftInfo.nUP = paramaq.DMD;
-    localCardGiftInfo.nUQ = paramaq.DME;
-    localCardGiftInfo.nUR = paramaq.nVy;
-    localCardGiftInfo.nUS = paramaq.nVz;
-    localCardGiftInfo.footerWording = paramaq.DMF;
-    localCardGiftInfo.hiu = paramaq.hiu;
-    localCardGiftInfo.nUT = paramaq.DMG;
-    localCardGiftInfo.nUU = paramaq.DMH;
-    localCardGiftInfo.nUV = paramaq.DMI;
-    localCardGiftInfo.nUW = paramaq.DMJ;
-    localCardGiftInfo.nUX = paramaq.DMK;
-    localCardGiftInfo.nUY = paramaq.DML;
-    localCardGiftInfo.nUZ = paramaq.DMM;
-    localCardGiftInfo.nVa = paramaq.DMN;
-    localCardGiftInfo.nVb = paramaq.DMO;
-    localCardGiftInfo.nVc = paramaq.DMP;
-    localCardGiftInfo.nVd = paramaq.DMQ;
-    localCardGiftInfo.nVe = paramaq.DMR;
-    localCardGiftInfo.nVf = paramaq.DMS;
-    localCardGiftInfo.nVg = paramaq.DMT;
-    localCardGiftInfo.nVh = paramaq.nUr;
-    localCardGiftInfo.nVi = paramaq.DMU;
-    Iterator localIterator = paramaq.nVj.iterator();
+    localCardGiftInfo.drf = paramaq.Frz;
+    localCardGiftInfo.dFE = paramaq.FrA;
+    localCardGiftInfo.oyc = paramaq.FrB;
+    localCardGiftInfo.oyd = paramaq.content;
+    localCardGiftInfo.oye = paramaq.FrC;
+    localCardGiftInfo.oyf = paramaq.FrD;
+    localCardGiftInfo.oyg = paramaq.FrE;
+    localCardGiftInfo.oyh = paramaq.FrF;
+    localCardGiftInfo.oyj = paramaq.FrH;
+    localCardGiftInfo.oyi = paramaq.FrG;
+    localCardGiftInfo.oyk = paramaq.FrI;
+    localCardGiftInfo.oyl = paramaq.FrJ;
+    localCardGiftInfo.oym = paramaq.oyT;
+    localCardGiftInfo.oyn = paramaq.oyU;
+    localCardGiftInfo.footerWording = paramaq.FrK;
+    localCardGiftInfo.hAD = paramaq.hAD;
+    localCardGiftInfo.oyo = paramaq.FrL;
+    localCardGiftInfo.oyp = paramaq.FrM;
+    localCardGiftInfo.oyq = paramaq.FrN;
+    localCardGiftInfo.oyr = paramaq.FrO;
+    localCardGiftInfo.oys = paramaq.FrP;
+    localCardGiftInfo.oyt = paramaq.FrQ;
+    localCardGiftInfo.oyu = paramaq.FrR;
+    localCardGiftInfo.oyv = paramaq.FrS;
+    localCardGiftInfo.oyw = paramaq.FrT;
+    localCardGiftInfo.oyx = paramaq.FrU;
+    localCardGiftInfo.oyy = paramaq.FrV;
+    localCardGiftInfo.oyz = paramaq.FrW;
+    localCardGiftInfo.oyA = paramaq.FrX;
+    localCardGiftInfo.oyB = paramaq.FrY;
+    localCardGiftInfo.oyC = paramaq.oxM;
+    localCardGiftInfo.oyD = paramaq.FrZ;
+    Iterator localIterator = paramaq.oyE.iterator();
     Object localObject1;
     LinkedList localLinkedList;
     Object localObject2;
     while (localIterator.hasNext())
     {
       localObject1 = (at)localIterator.next();
-      localLinkedList = localCardGiftInfo.nVj;
+      localLinkedList = localCardGiftInfo.oyE;
       localObject2 = new AcceptedCardItem();
-      ((AcceptedCardItem)localObject2).nVz = ((at)localObject1).nVz;
-      ((AcceptedCardItem)localObject2).nVy = ((at)localObject1).nVy;
+      ((AcceptedCardItem)localObject2).oyU = ((at)localObject1).oyU;
+      ((AcceptedCardItem)localObject2).oyT = ((at)localObject1).oyT;
       localLinkedList.add(localObject2);
     }
-    localIterator = paramaq.nVk.iterator();
+    localIterator = paramaq.oyF.iterator();
     while (localIterator.hasNext())
     {
       localObject1 = (au)localIterator.next();
-      localLinkedList = localCardGiftInfo.nVk;
+      localLinkedList = localCardGiftInfo.oyF;
       localObject2 = new AccepterItem();
-      ((AccepterItem)localObject2).nVz = ((au)localObject1).nVz;
-      ((AccepterItem)localObject2).nVy = ((au)localObject1).nVy;
-      ((AccepterItem)localObject2).nVB = ((au)localObject1).nVB;
-      ((AccepterItem)localObject2).nVA = ((au)localObject1).nVA;
+      ((AccepterItem)localObject2).oyU = ((au)localObject1).oyU;
+      ((AccepterItem)localObject2).oyT = ((au)localObject1).oyT;
+      ((AccepterItem)localObject2).oyW = ((au)localObject1).oyW;
+      ((AccepterItem)localObject2).oyV = ((au)localObject1).oyV;
       localLinkedList.add(localObject2);
     }
-    localCardGiftInfo.nVl = paramaq.nVl;
-    localCardGiftInfo.nVm = paramaq.nVm;
-    localCardGiftInfo.nVn = paramaq.nVn;
-    localCardGiftInfo.nVo = paramaq.nVo;
-    localCardGiftInfo.nVp = paramaq.nVp;
-    localCardGiftInfo.nVq = paramaq.nVq;
-    localCardGiftInfo.nVr = paramaq.nVr;
-    localCardGiftInfo.nVs = paramaq.nVs;
-    localCardGiftInfo.nVt = paramaq.nVt;
-    localCardGiftInfo.nVu = paramaq.nVu;
-    localCardGiftInfo.nVw = paramaq.nVw;
-    localCardGiftInfo.nVv = paramaq.nVv;
-    localCardGiftInfo.nVx = paramaq.nVx;
+    localCardGiftInfo.oyG = paramaq.oyG;
+    localCardGiftInfo.oyH = paramaq.oyH;
+    localCardGiftInfo.oyI = paramaq.oyI;
+    localCardGiftInfo.oyJ = paramaq.oyJ;
+    localCardGiftInfo.oyK = paramaq.oyK;
+    localCardGiftInfo.oyL = paramaq.oyL;
+    localCardGiftInfo.oyM = paramaq.oyM;
+    localCardGiftInfo.oyN = paramaq.oyN;
+    localCardGiftInfo.oyO = paramaq.oyO;
+    localCardGiftInfo.oyP = paramaq.oyP;
+    localCardGiftInfo.oyR = paramaq.oyR;
+    localCardGiftInfo.oyQ = paramaq.oyQ;
+    localCardGiftInfo.oyS = paramaq.oyS;
     AppMethodBeat.o(112730);
     return localCardGiftInfo;
   }
   
-  public static CardGiftInfo a(auk paramauk)
+  public static CardGiftInfo a(ayi paramayi)
   {
     AppMethodBeat.i(112731);
     CardGiftInfo localCardGiftInfo = new CardGiftInfo();
-    localCardGiftInfo.dfJ = paramauk.DMu;
-    localCardGiftInfo.dtD = paramauk.DMv;
-    localCardGiftInfo.nUH = paramauk.DMw;
-    localCardGiftInfo.nUI = paramauk.content;
-    localCardGiftInfo.nUJ = paramauk.DMx;
-    localCardGiftInfo.nUK = paramauk.DMy;
-    localCardGiftInfo.nUL = paramauk.DMz;
-    localCardGiftInfo.nUM = paramauk.DMA;
-    localCardGiftInfo.nUO = paramauk.DMC;
-    localCardGiftInfo.nUN = paramauk.DMB;
-    localCardGiftInfo.nUP = paramauk.DMD;
-    localCardGiftInfo.nUQ = paramauk.DME;
-    localCardGiftInfo.nUR = paramauk.nVy;
-    localCardGiftInfo.nUS = paramauk.nVz;
-    localCardGiftInfo.footerWording = paramauk.DMF;
-    localCardGiftInfo.hiu = paramauk.hiu;
-    localCardGiftInfo.nUT = paramauk.DMG;
-    localCardGiftInfo.nUU = paramauk.DMH;
-    localCardGiftInfo.nUV = paramauk.DMI;
-    localCardGiftInfo.nUW = paramauk.DMJ;
-    localCardGiftInfo.nUX = paramauk.DMK;
-    localCardGiftInfo.nUY = paramauk.DML;
-    localCardGiftInfo.nUZ = paramauk.EMP;
-    localCardGiftInfo.nVa = paramauk.DMN;
-    localCardGiftInfo.nVb = paramauk.DMO;
-    localCardGiftInfo.nVc = paramauk.DMP;
-    localCardGiftInfo.nVd = paramauk.DMQ;
-    localCardGiftInfo.nVe = paramauk.DMR;
-    localCardGiftInfo.nVf = paramauk.DMS;
-    localCardGiftInfo.nVg = paramauk.DMT;
-    localCardGiftInfo.nVh = paramauk.nUr;
-    localCardGiftInfo.nVi = paramauk.DMU;
-    localCardGiftInfo.nVn = paramauk.nVn;
-    localCardGiftInfo.nVo = paramauk.nVo;
-    localCardGiftInfo.nVp = paramauk.nVp;
-    localCardGiftInfo.nVq = paramauk.nVq;
-    localCardGiftInfo.nVr = paramauk.nVr;
-    localCardGiftInfo.nVs = paramauk.nVs;
-    localCardGiftInfo.nVt = paramauk.nVt;
-    localCardGiftInfo.nVu = paramauk.nVu;
-    localCardGiftInfo.nVw = paramauk.nVw;
-    localCardGiftInfo.nVv = paramauk.nVv;
-    localCardGiftInfo.nVx = paramauk.nVx;
+    localCardGiftInfo.drf = paramayi.Frz;
+    localCardGiftInfo.dFE = paramayi.FrA;
+    localCardGiftInfo.oyc = paramayi.FrB;
+    localCardGiftInfo.oyd = paramayi.content;
+    localCardGiftInfo.oye = paramayi.FrC;
+    localCardGiftInfo.oyf = paramayi.FrD;
+    localCardGiftInfo.oyg = paramayi.FrE;
+    localCardGiftInfo.oyh = paramayi.FrF;
+    localCardGiftInfo.oyj = paramayi.FrH;
+    localCardGiftInfo.oyi = paramayi.FrG;
+    localCardGiftInfo.oyk = paramayi.FrI;
+    localCardGiftInfo.oyl = paramayi.FrJ;
+    localCardGiftInfo.oym = paramayi.oyT;
+    localCardGiftInfo.oyn = paramayi.oyU;
+    localCardGiftInfo.footerWording = paramayi.FrK;
+    localCardGiftInfo.hAD = paramayi.hAD;
+    localCardGiftInfo.oyo = paramayi.FrL;
+    localCardGiftInfo.oyp = paramayi.FrM;
+    localCardGiftInfo.oyq = paramayi.FrN;
+    localCardGiftInfo.oyr = paramayi.FrO;
+    localCardGiftInfo.oys = paramayi.FrP;
+    localCardGiftInfo.oyt = paramayi.FrQ;
+    localCardGiftInfo.oyu = paramayi.GvT;
+    localCardGiftInfo.oyv = paramayi.FrS;
+    localCardGiftInfo.oyw = paramayi.FrT;
+    localCardGiftInfo.oyx = paramayi.FrU;
+    localCardGiftInfo.oyy = paramayi.FrV;
+    localCardGiftInfo.oyz = paramayi.FrW;
+    localCardGiftInfo.oyA = paramayi.FrX;
+    localCardGiftInfo.oyB = paramayi.FrY;
+    localCardGiftInfo.oyC = paramayi.oxM;
+    localCardGiftInfo.oyD = paramayi.FrZ;
+    localCardGiftInfo.oyI = paramayi.oyI;
+    localCardGiftInfo.oyJ = paramayi.oyJ;
+    localCardGiftInfo.oyK = paramayi.oyK;
+    localCardGiftInfo.oyL = paramayi.oyL;
+    localCardGiftInfo.oyM = paramayi.oyM;
+    localCardGiftInfo.oyN = paramayi.oyN;
+    localCardGiftInfo.oyO = paramayi.oyO;
+    localCardGiftInfo.oyP = paramayi.oyP;
+    localCardGiftInfo.oyR = paramayi.oyR;
+    localCardGiftInfo.oyQ = paramayi.oyQ;
+    localCardGiftInfo.oyS = paramayi.oyS;
     AppMethodBeat.o(112731);
     return localCardGiftInfo;
   }
@@ -276,7 +276,7 @@ public class CardGiftInfo
   public String toString()
   {
     AppMethodBeat.i(112729);
-    String str = "CardGiftInfo{toUserName='" + this.dfJ + '\'' + ", fromUserName='" + this.dtD + '\'' + ", fromUserImgUrl='" + this.nUH + '\'' + ", fromUserContent='" + this.nUI + '\'' + ", fromUserContentPicUrl='" + this.nUJ + '\'' + ", fromUserContentVideoUrl='" + this.nUK + '\'' + ", fromUserContentThumbPicUrl='" + this.nUL + '\'' + ", picAESKey='" + this.nUM + '\'' + ", videoAESKey='" + this.nUN + '\'' + ", thumbVideoAESKey='" + this.nUO + '\'' + ", cardBackgroundPicUrl='" + this.nUP + '\'' + ", cardLogoLUrl='" + this.nUQ + '\'' + ", cardTitle='" + this.nUR + '\'' + ", cardPrice='" + this.nUS + '\'' + ", footerWording='" + this.footerWording + '\'' + ", color='" + this.hiu + '\'' + ", needJump=" + this.nUT + ", picDataLength=" + this.nUU + ", videoDataLength=" + this.nUV + ", thumbDataLength=" + this.nUW + ", descTitle='" + this.nUX + '\'' + ", descIconUrl='" + this.nUY + '\'' + ", descLayoutMode=" + this.nUZ + ", giftingMediaTitle='" + this.nVa + '\'' + ", descriptionTitleColor='" + this.nVb + '\'' + ", cardTitleColor='" + this.nVc + '\'' + ", cardPriceTitleColor='" + this.nVd + '\'' + ", userCardId='" + this.nVe + '\'' + ", operationTitle='" + this.nVf + '\'' + ", operationUrl='" + this.nVg + '\'' + ", cardTpId='" + this.nVh + '\'' + ", cardCode='" + this.nVi + '\'' + ", accepted_card_list_size='" + this.nVj.size() + '\'' + ", accepter_list_size='" + this.nVk.size() + '\'' + ", accepter_list_title='" + this.nVl + '\'' + ", out_of_card='" + this.nVm + '\'' + ", operation_wxa_username='" + this.nVn + '\'' + ", operation_wxa_path='" + this.nVo + '\'' + '}';
+    String str = "CardGiftInfo{toUserName='" + this.drf + '\'' + ", fromUserName='" + this.dFE + '\'' + ", fromUserImgUrl='" + this.oyc + '\'' + ", fromUserContent='" + this.oyd + '\'' + ", fromUserContentPicUrl='" + this.oye + '\'' + ", fromUserContentVideoUrl='" + this.oyf + '\'' + ", fromUserContentThumbPicUrl='" + this.oyg + '\'' + ", picAESKey='" + this.oyh + '\'' + ", videoAESKey='" + this.oyi + '\'' + ", thumbVideoAESKey='" + this.oyj + '\'' + ", cardBackgroundPicUrl='" + this.oyk + '\'' + ", cardLogoLUrl='" + this.oyl + '\'' + ", cardTitle='" + this.oym + '\'' + ", cardPrice='" + this.oyn + '\'' + ", footerWording='" + this.footerWording + '\'' + ", color='" + this.hAD + '\'' + ", needJump=" + this.oyo + ", picDataLength=" + this.oyp + ", videoDataLength=" + this.oyq + ", thumbDataLength=" + this.oyr + ", descTitle='" + this.oys + '\'' + ", descIconUrl='" + this.oyt + '\'' + ", descLayoutMode=" + this.oyu + ", giftingMediaTitle='" + this.oyv + '\'' + ", descriptionTitleColor='" + this.oyw + '\'' + ", cardTitleColor='" + this.oyx + '\'' + ", cardPriceTitleColor='" + this.oyy + '\'' + ", userCardId='" + this.oyz + '\'' + ", operationTitle='" + this.oyA + '\'' + ", operationUrl='" + this.oyB + '\'' + ", cardTpId='" + this.oyC + '\'' + ", cardCode='" + this.oyD + '\'' + ", accepted_card_list_size='" + this.oyE.size() + '\'' + ", accepter_list_size='" + this.oyF.size() + '\'' + ", accepter_list_title='" + this.oyG + '\'' + ", out_of_card='" + this.oyH + '\'' + ", operation_wxa_username='" + this.oyI + '\'' + ", operation_wxa_path='" + this.oyJ + '\'' + '}';
     AppMethodBeat.o(112729);
     return str;
   }
@@ -284,57 +284,57 @@ public class CardGiftInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(112728);
-    paramParcel.writeString(this.dfJ);
-    paramParcel.writeString(this.dtD);
-    paramParcel.writeString(this.nUH);
-    paramParcel.writeString(this.nUI);
-    paramParcel.writeString(this.nUJ);
-    paramParcel.writeString(this.nUK);
-    paramParcel.writeString(this.nUL);
-    paramParcel.writeString(this.nUM);
-    paramParcel.writeString(this.nUN);
-    paramParcel.writeString(this.nUO);
-    paramParcel.writeString(this.nUP);
-    paramParcel.writeString(this.nUQ);
-    paramParcel.writeString(this.nUR);
-    paramParcel.writeString(this.nUS);
+    paramParcel.writeString(this.drf);
+    paramParcel.writeString(this.dFE);
+    paramParcel.writeString(this.oyc);
+    paramParcel.writeString(this.oyd);
+    paramParcel.writeString(this.oye);
+    paramParcel.writeString(this.oyf);
+    paramParcel.writeString(this.oyg);
+    paramParcel.writeString(this.oyh);
+    paramParcel.writeString(this.oyi);
+    paramParcel.writeString(this.oyj);
+    paramParcel.writeString(this.oyk);
+    paramParcel.writeString(this.oyl);
+    paramParcel.writeString(this.oym);
+    paramParcel.writeString(this.oyn);
     paramParcel.writeString(this.footerWording);
-    paramParcel.writeString(this.hiu);
-    if (this.nUT) {}
+    paramParcel.writeString(this.hAD);
+    if (this.oyo) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      paramParcel.writeInt(this.nUU);
-      paramParcel.writeInt(this.nUV);
-      paramParcel.writeInt(this.nUW);
-      paramParcel.writeString(this.nUX);
-      paramParcel.writeString(this.nUY);
-      paramParcel.writeInt(this.nUZ);
-      paramParcel.writeString(this.nVa);
-      paramParcel.writeString(this.nVb);
-      paramParcel.writeString(this.nVc);
-      paramParcel.writeString(this.nVd);
-      paramParcel.writeString(this.nVe);
-      paramParcel.writeString(this.nVf);
-      paramParcel.writeString(this.nVg);
-      paramParcel.writeString(this.nVh);
-      paramParcel.writeString(this.nVi);
-      paramParcel.writeTypedList(this.nVj);
-      paramParcel.writeTypedList(this.nVk);
-      paramParcel.writeString(this.nVl);
-      paramParcel.writeInt(this.nVm);
-      paramParcel.writeString(this.nVn);
-      paramParcel.writeString(this.nVo);
-      paramParcel.writeString(this.nVo);
-      paramParcel.writeString(this.nVp);
-      paramParcel.writeString(this.nVq);
-      paramParcel.writeString(this.nVr);
-      paramParcel.writeString(this.nVs);
-      paramParcel.writeInt(this.nVt);
-      paramParcel.writeString(this.nVu);
-      paramParcel.writeString(this.nVv);
-      paramParcel.writeString(this.nVw);
-      paramParcel.writeString(this.nVx);
+      paramParcel.writeInt(this.oyp);
+      paramParcel.writeInt(this.oyq);
+      paramParcel.writeInt(this.oyr);
+      paramParcel.writeString(this.oys);
+      paramParcel.writeString(this.oyt);
+      paramParcel.writeInt(this.oyu);
+      paramParcel.writeString(this.oyv);
+      paramParcel.writeString(this.oyw);
+      paramParcel.writeString(this.oyx);
+      paramParcel.writeString(this.oyy);
+      paramParcel.writeString(this.oyz);
+      paramParcel.writeString(this.oyA);
+      paramParcel.writeString(this.oyB);
+      paramParcel.writeString(this.oyC);
+      paramParcel.writeString(this.oyD);
+      paramParcel.writeTypedList(this.oyE);
+      paramParcel.writeTypedList(this.oyF);
+      paramParcel.writeString(this.oyG);
+      paramParcel.writeInt(this.oyH);
+      paramParcel.writeString(this.oyI);
+      paramParcel.writeString(this.oyJ);
+      paramParcel.writeString(this.oyJ);
+      paramParcel.writeString(this.oyK);
+      paramParcel.writeString(this.oyL);
+      paramParcel.writeString(this.oyM);
+      paramParcel.writeString(this.oyN);
+      paramParcel.writeInt(this.oyO);
+      paramParcel.writeString(this.oyP);
+      paramParcel.writeString(this.oyQ);
+      paramParcel.writeString(this.oyR);
+      paramParcel.writeString(this.oyS);
       AppMethodBeat.o(112728);
       return;
     }
@@ -344,8 +344,8 @@ public class CardGiftInfo
     implements Parcelable
   {
     public static final Parcelable.Creator<AcceptedCardItem> CREATOR;
-    public String nVy;
-    public String nVz;
+    public String oyT;
+    public String oyU;
     
     static
     {
@@ -359,8 +359,8 @@ public class CardGiftInfo
     private AcceptedCardItem(Parcel paramParcel)
     {
       AppMethodBeat.i(112719);
-      this.nVy = paramParcel.readString();
-      this.nVz = paramParcel.readString();
+      this.oyT = paramParcel.readString();
+      this.oyU = paramParcel.readString();
       AppMethodBeat.o(112719);
     }
     
@@ -372,8 +372,8 @@ public class CardGiftInfo
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(112720);
-      paramParcel.writeString(this.nVy);
-      paramParcel.writeString(this.nVz);
+      paramParcel.writeString(this.oyT);
+      paramParcel.writeString(this.oyU);
       AppMethodBeat.o(112720);
     }
   }
@@ -382,10 +382,10 @@ public class CardGiftInfo
     implements Parcelable
   {
     public static final Parcelable.Creator<AccepterItem> CREATOR;
-    public String nVA;
-    public String nVB;
-    public String nVy;
-    public String nVz;
+    public String oyT;
+    public String oyU;
+    public String oyV;
+    public String oyW;
     
     static
     {
@@ -399,10 +399,10 @@ public class CardGiftInfo
     private AccepterItem(Parcel paramParcel)
     {
       AppMethodBeat.i(112723);
-      this.nVy = paramParcel.readString();
-      this.nVz = paramParcel.readString();
-      this.nVA = paramParcel.readString();
-      this.nVB = paramParcel.readString();
+      this.oyT = paramParcel.readString();
+      this.oyU = paramParcel.readString();
+      this.oyV = paramParcel.readString();
+      this.oyW = paramParcel.readString();
       AppMethodBeat.o(112723);
     }
     
@@ -414,17 +414,17 @@ public class CardGiftInfo
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(112724);
-      paramParcel.writeString(this.nVy);
-      paramParcel.writeString(this.nVz);
-      paramParcel.writeString(this.nVA);
-      paramParcel.writeString(this.nVB);
+      paramParcel.writeString(this.oyT);
+      paramParcel.writeString(this.oyU);
+      paramParcel.writeString(this.oyV);
+      paramParcel.writeString(this.oyW);
       AppMethodBeat.o(112724);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.CardGiftInfo
  * JD-Core Version:    0.7.0.1
  */

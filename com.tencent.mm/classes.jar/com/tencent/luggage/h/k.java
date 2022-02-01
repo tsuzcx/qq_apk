@@ -8,7 +8,7 @@ import java.util.Map;
 
 public final class k
 {
-  public static boolean B(String paramString1, String paramString2)
+  public static boolean C(String paramString1, String paramString2)
   {
     AppMethodBeat.i(140523);
     if ((paramString1 == null) || (paramString2 == null) || (paramString1.length() < 0) || (paramString2.length() < 0))
@@ -30,23 +30,23 @@ public final class k
     return false;
   }
   
-  public static String co(String paramString)
+  public static String dq(String paramString)
   {
-    AppMethodBeat.i(200931);
+    AppMethodBeat.i(187604);
     try
     {
       paramString = Uri.parse(paramString).getHost();
-      AppMethodBeat.o(200931);
+      AppMethodBeat.o(187604);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(200931);
+      AppMethodBeat.o(187604);
     }
     return "";
   }
   
-  public static String cp(String paramString)
+  public static String dr(String paramString)
   {
     AppMethodBeat.i(140521);
     if (TextUtils.isEmpty(paramString))
@@ -65,7 +65,7 @@ public final class k
     return paramString;
   }
   
-  public static Map<String, String> cq(String paramString)
+  public static Map<String, String> ds(String paramString)
   {
     AppMethodBeat.i(140522);
     HashMap localHashMap = new HashMap();
@@ -131,7 +131,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.h.k
  * JD-Core Version:    0.7.0.1
  */

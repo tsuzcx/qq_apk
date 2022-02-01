@@ -9,152 +9,150 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.downloader.a.d;
 import com.tencent.mm.plugin.downloader.g.b;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.m;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.Serializable;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  public volatile b xPu;
-  public a yhD;
-  public volatile boolean yhE;
-  private IntentFilter yhF;
-  ConcurrentHashMap<String, c> yhG;
-  public ConcurrentHashMap<String, d> yhH;
-  public m yhI;
-  ao yhJ;
+  public volatile b zfo;
+  public a zxK;
+  public volatile boolean zxL;
+  private IntentFilter zxM;
+  ConcurrentHashMap<String, c> zxN;
+  public ConcurrentHashMap<String, d> zxO;
+  public m zxP;
+  ap zxQ;
   
   private a()
   {
     AppMethodBeat.i(96295);
-    this.yhG = new ConcurrentHashMap();
-    this.yhH = new ConcurrentHashMap();
-    this.yhI = new m()
+    this.zxN = new ConcurrentHashMap();
+    this.zxO = new ConcurrentHashMap();
+    this.zxP = new m()
     {
       public final void a(long paramAnonymousLong, int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(96285);
-        ac.i("MicroMsg.AdDownloadApkMgr", "onTaskFailed, id=" + paramAnonymousLong + ", errCode=" + paramAnonymousInt);
-        if (a.this.xPu != null) {
-          a.this.xPu.failed(paramAnonymousLong);
+        ad.i("MicroMsg.AdDownloadApkMgr", "onTaskFailed, id=" + paramAnonymousLong + ", errCode=" + paramAnonymousInt);
+        if (a.this.zfo != null) {
+          a.this.zfo.failed(paramAnonymousLong);
         }
-        a.this.at(8, paramAnonymousLong);
+        a.this.aA(8, paramAnonymousLong);
         AppMethodBeat.o(96285);
+      }
+      
+      public final void a(long paramAnonymousLong1, String paramAnonymousString, long paramAnonymousLong2, long paramAnonymousLong3)
+      {
+        AppMethodBeat.i(197884);
+        ad.d("MicroMsg.AdDownloadApkMgr", "progress changed, reset MSG_CHECK_INSTALL, id=".concat(String.valueOf(paramAnonymousLong1)));
+        if (a.this.zfo != null)
+        {
+          paramAnonymousString = f.ccl().tS(paramAnonymousLong1);
+          if ((paramAnonymousString.pmT >= 0L) && (paramAnonymousString.nsQ > 0L))
+          {
+            a.this.zfo.progress(paramAnonymousLong1, (int)(paramAnonymousString.pmT * 100L / paramAnonymousString.nsQ));
+            a.this.zxQ.removeMessages(10008);
+            a.this.zxQ.sendEmptyMessageDelayed(10008, 300000L);
+          }
+        }
+        AppMethodBeat.o(197884);
       }
       
       public final void b(long paramAnonymousLong, String paramAnonymousString, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(96284);
-        ac.i("MicroMsg.AdDownloadApkMgr", "onTaskFinished, reset MSG_CHECK_INSTALL, id=".concat(String.valueOf(paramAnonymousLong)));
-        if (a.this.xPu != null)
+        ad.i("MicroMsg.AdDownloadApkMgr", "onTaskFinished, reset MSG_CHECK_INSTALL, id=".concat(String.valueOf(paramAnonymousLong)));
+        if (a.this.zfo != null)
         {
-          a.this.xPu.succeed(paramAnonymousLong);
-          a.this.yhJ.removeMessages(10008);
-          a.this.yhJ.sendEmptyMessageDelayed(10008, 300000L);
+          a.this.zfo.succeed(paramAnonymousLong);
+          a.this.zxQ.removeMessages(10008);
+          a.this.zxQ.sendEmptyMessageDelayed(10008, 300000L);
         }
-        a.this.at(3, paramAnonymousLong);
+        a.this.aA(3, paramAnonymousLong);
         AppMethodBeat.o(96284);
       }
       
       public final void j(long paramAnonymousLong, String paramAnonymousString)
       {
-        AppMethodBeat.i(96289);
-        ac.i("MicroMsg.AdDownloadApkMgr", "onTaskResumed, reset MSG_CHECK_INSTALL, id=".concat(String.valueOf(paramAnonymousLong)));
-        if (a.this.xPu != null) {
-          a.this.xPu.resumed(paramAnonymousLong);
-        }
-        a.this.at(7, paramAnonymousLong);
-        a.this.yhJ.removeMessages(10008);
-        a.this.yhJ.sendEmptyMessageDelayed(10008, 300000L);
-        AppMethodBeat.o(96289);
-      }
-      
-      public final void onTaskPaused(long paramAnonymousLong)
-      {
-        AppMethodBeat.i(96287);
-        ac.i("MicroMsg.AdDownloadApkMgr", "onTaskPaused, remove MSG_CHECK_INSTALL, id=".concat(String.valueOf(paramAnonymousLong)));
-        if (a.this.xPu != null) {
-          a.this.xPu.paused(paramAnonymousLong);
-        }
-        a.this.at(6, paramAnonymousLong);
-        a.this.yhJ.removeMessages(10008);
-        a.this.yhJ.sendEmptyMessageDelayed(10008, 300000L);
-        AppMethodBeat.o(96287);
-      }
-      
-      public final void onTaskRemoved(long paramAnonymousLong)
-      {
-        AppMethodBeat.i(96286);
-        ac.i("MicroMsg.AdDownloadApkMgr", "onTaskRemoved, id=".concat(String.valueOf(paramAnonymousLong)));
-        if (a.this.xPu != null) {
-          a.this.xPu.stopped(paramAnonymousLong);
-        }
-        a.this.at(2, paramAnonymousLong);
-        AppMethodBeat.o(96286);
-      }
-      
-      public final void onTaskStarted(long paramAnonymousLong, String paramAnonymousString)
-      {
         AppMethodBeat.i(96283);
-        a.this.at(1, paramAnonymousLong);
-        ac.i("MicroMsg.AdDownloadApkMgr", "onTaskStarted, id=".concat(String.valueOf(paramAnonymousLong)));
+        a.this.aA(1, paramAnonymousLong);
+        ad.i("MicroMsg.AdDownloadApkMgr", "onTaskStarted, id=".concat(String.valueOf(paramAnonymousLong)));
         AppMethodBeat.o(96283);
       }
       
-      public final void qN(long paramAnonymousLong)
+      public final void k(long paramAnonymousLong, String paramAnonymousString)
       {
-        AppMethodBeat.i(96288);
-        ac.d("MicroMsg.AdDownloadApkMgr", "progress changed, reset MSG_CHECK_INSTALL, id=".concat(String.valueOf(paramAnonymousLong)));
-        if (a.this.xPu != null)
-        {
-          FileDownloadTaskInfo localFileDownloadTaskInfo = f.bXJ().rT(paramAnonymousLong);
-          if ((localFileDownloadTaskInfo.oJm >= 0L) && (localFileDownloadTaskInfo.mSs > 0L))
-          {
-            a.this.xPu.progress(paramAnonymousLong, (int)(localFileDownloadTaskInfo.oJm * 100L / localFileDownloadTaskInfo.mSs));
-            a.this.yhJ.removeMessages(10008);
-            a.this.yhJ.sendEmptyMessageDelayed(10008, 300000L);
-          }
+        AppMethodBeat.i(96289);
+        ad.i("MicroMsg.AdDownloadApkMgr", "onTaskResumed, reset MSG_CHECK_INSTALL, id=".concat(String.valueOf(paramAnonymousLong)));
+        if (a.this.zfo != null) {
+          a.this.zfo.resumed(paramAnonymousLong);
         }
-        AppMethodBeat.o(96288);
+        a.this.aA(7, paramAnonymousLong);
+        a.this.zxQ.removeMessages(10008);
+        a.this.zxQ.sendEmptyMessageDelayed(10008, 300000L);
+        AppMethodBeat.o(96289);
       }
       
-      public final void qO(long paramAnonymousLong)
+      public final void sL(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(96286);
+        ad.i("MicroMsg.AdDownloadApkMgr", "onTaskRemoved, id=".concat(String.valueOf(paramAnonymousLong)));
+        if (a.this.zfo != null) {
+          a.this.zfo.stopped(paramAnonymousLong);
+        }
+        a.this.aA(2, paramAnonymousLong);
+        AppMethodBeat.o(96286);
+      }
+      
+      public final void sM(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(96287);
+        ad.i("MicroMsg.AdDownloadApkMgr", "onTaskPaused, remove MSG_CHECK_INSTALL, id=".concat(String.valueOf(paramAnonymousLong)));
+        if (a.this.zfo != null) {
+          a.this.zfo.paused(paramAnonymousLong);
+        }
+        a.this.aA(6, paramAnonymousLong);
+        a.this.zxQ.removeMessages(10008);
+        a.this.zxQ.sendEmptyMessageDelayed(10008, 300000L);
+        AppMethodBeat.o(96287);
+      }
+      
+      public final void sN(long paramAnonymousLong)
       {
         AppMethodBeat.i(96290);
-        ac.i("MicroMsg.AdDownloadApkMgr", "onTaskMd5Checking, remove MSG_CHECK_INSTALL, id=".concat(String.valueOf(paramAnonymousLong)));
-        a.this.yhJ.removeMessages(10008);
-        a.this.yhJ.sendEmptyMessageDelayed(10008, 300000L);
+        ad.i("MicroMsg.AdDownloadApkMgr", "onTaskMd5Checking, remove MSG_CHECK_INSTALL, id=".concat(String.valueOf(paramAnonymousLong)));
+        a.this.zxQ.removeMessages(10008);
+        a.this.zxQ.sendEmptyMessageDelayed(10008, 300000L);
         AppMethodBeat.o(96290);
       }
     };
-    this.yhD = new a((byte)0);
-    this.yhF = new IntentFilter();
-    this.yhF.addAction("android.intent.action.PACKAGE_ADDED");
-    this.yhF.addAction("android.intent.action.PACKAGE_REMOVED");
-    this.yhF.addDataScheme("package");
-    this.yhJ = new ao(Looper.getMainLooper())
+    this.zxK = new a((byte)0);
+    this.zxM = new IntentFilter();
+    this.zxM.addAction("android.intent.action.PACKAGE_ADDED");
+    this.zxM.addAction("android.intent.action.PACKAGE_REMOVED");
+    this.zxM.addDataScheme("package");
+    this.zxQ = new ap(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(96291);
         if (paramAnonymousMessage.what == 10008) {
-          ac.w("MicroMsg.AdDownloadApkMgr", "unregister package receiver");
+          ad.w("MicroMsg.AdDownloadApkMgr", "unregister package receiver");
         }
         try
         {
-          ai.getContext().unregisterReceiver(a.this.yhD);
-          a.this.yhE = false;
+          aj.getContext().unregisterReceiver(a.this.zxK);
+          a.this.zxL = false;
           AppMethodBeat.o(96291);
           return;
         }
@@ -162,7 +160,7 @@ public final class a
         {
           for (;;)
           {
-            ac.e("MicroMsg.AdDownloadApkMgr", "unregister package receiver, exp=" + paramAnonymousMessage.toString());
+            ad.e("MicroMsg.AdDownloadApkMgr", "unregister package receiver, exp=" + paramAnonymousMessage.toString());
           }
         }
       }
@@ -170,7 +168,7 @@ public final class a
     AppMethodBeat.o(96295);
   }
   
-  public static boolean bd(Context paramContext, String paramString)
+  public static boolean bg(Context paramContext, String paramString)
   {
     AppMethodBeat.i(96297);
     if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
@@ -178,7 +176,7 @@ public final class a
       AppMethodBeat.o(96297);
       return false;
     }
-    boolean bool = q.t(paramContext, paramString);
+    boolean bool = q.s(paramContext, paramString);
     AppMethodBeat.o(96297);
     return bool;
   }
@@ -187,31 +185,42 @@ public final class a
   {
     AppMethodBeat.i(96302);
     System.currentTimeMillis();
-    d locald = (d)this.yhH.get(paramString1);
+    d locald = (d)this.zxO.get(paramString1);
     if (locald == null) {
-      ac.e("MicroMsg.AdDownloadApkMgr", "reportInfo is null, appid=".concat(String.valueOf(paramString1)));
+      ad.e("MicroMsg.AdDownloadApkMgr", "reportInfo is null, appid=".concat(String.valueOf(paramString1)));
     }
     String str = paramString2;
     if (!TextUtils.isEmpty(paramString2)) {
       str = paramString2.replaceAll("\\.", "_");
     }
-    if (locald == null) {}
-    for (paramString2 = "";; paramString2 = locald.yeO + "." + locald.jyU + "." + str + ".0.20.0")
+    long l;
+    if (locald == null)
     {
-      paramString1 = t(new Object[] { paramString1, Integer.valueOf(paramInt), paramString3, paramString2, Long.valueOf(System.currentTimeMillis() / 1000L), locald.dtx });
-      ac.i("MicroMsg.AdDownloadApkMgr", "reporting %d  %s", new Object[] { Integer.valueOf(14542), paramString1 });
-      ac.d("MicroMsg.AdDownloadApkMgr", "14542  extinfo : ".concat(String.valueOf(paramString2)));
-      h.wUl.a(14542, paramString1, true, false);
+      paramString2 = "";
+      l = System.currentTimeMillis() / 1000L;
+      if (locald != null) {
+        break label235;
+      }
+    }
+    label235:
+    for (str = "";; str = locald.dFy)
+    {
+      paramString1 = t(new Object[] { paramString1, Integer.valueOf(paramInt), paramString3, paramString2, Long.valueOf(l), str });
+      ad.i("MicroMsg.AdDownloadApkMgr", "reporting %d  %s", new Object[] { Integer.valueOf(14542), paramString1 });
+      ad.d("MicroMsg.AdDownloadApkMgr", "14542  extinfo : ".concat(String.valueOf(paramString2)));
+      com.tencent.mm.plugin.report.service.g.yhR.a(14542, paramString1, true, false);
       AppMethodBeat.o(96302);
       return;
+      paramString2 = locald.zuP + "." + locald.jSR + "." + str + ".0.20.0";
+      break;
     }
   }
   
   public static boolean isApkExist(String paramString)
   {
     AppMethodBeat.i(96296);
-    paramString = f.bXJ().WB(paramString);
-    if ((paramString != null) && (paramString.status == 3) && (!TextUtils.isEmpty(paramString.path)) && (com.tencent.mm.vfs.i.eA(paramString.path)))
+    paramString = f.ccl().aai(paramString);
+    if ((paramString != null) && (paramString.status == 3) && (!TextUtils.isEmpty(paramString.path)) && (com.tencent.mm.vfs.i.fv(paramString.path)))
     {
       AppMethodBeat.o(96296);
       return true;
@@ -223,7 +232,7 @@ public final class a
   public static long queryIdByAppid(String paramString)
   {
     AppMethodBeat.i(96298);
-    paramString = f.bXJ().WB(paramString);
+    paramString = f.ccl().aai(paramString);
     if (paramString != null)
     {
       long l = paramString.id;
@@ -255,14 +264,14 @@ public final class a
   public final void a(String paramString, c paramc)
   {
     AppMethodBeat.i(96299);
-    this.yhG.put(paramString, paramc);
-    ac.w("MicroMsg.AdDownloadApkMgr", "register package receiver");
+    this.zxN.put(paramString, paramc);
+    ad.w("MicroMsg.AdDownloadApkMgr", "register package receiver");
     try
     {
-      ai.getContext().registerReceiver(this.yhD, this.yhF);
-      this.yhE = true;
-      this.yhJ.removeMessages(10008);
-      this.yhJ.sendEmptyMessageDelayed(10008, 300000L);
+      aj.getContext().registerReceiver(this.zxK, this.zxM);
+      this.zxL = true;
+      this.zxQ.removeMessages(10008);
+      this.zxQ.sendEmptyMessageDelayed(10008, 300000L);
       AppMethodBeat.o(96299);
       return;
     }
@@ -270,15 +279,15 @@ public final class a
     {
       for (;;)
       {
-        ac.e("MicroMsg.AdDownloadApkMgr", "register package receiver, exp=" + paramString.toString());
+        ad.e("MicroMsg.AdDownloadApkMgr", "register package receiver, exp=" + paramString.toString());
       }
     }
   }
   
-  public final void at(int paramInt, long paramLong)
+  public final void aA(int paramInt, long paramLong)
   {
     AppMethodBeat.i(96300);
-    com.tencent.mm.plugin.downloader.g.a locala = ((d)g.ab(d.class)).awH().so(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = ((d)com.tencent.mm.kernel.g.ab(d.class)).azw().um(paramLong);
     if (locala == null)
     {
       AppMethodBeat.o(96300);
@@ -291,12 +300,12 @@ public final class a
   public final void reportDownloadInfo(int paramInt, String paramString)
   {
     AppMethodBeat.i(96303);
-    com.tencent.mm.plugin.downloader.g.a locala = ((d)g.ab(d.class)).awH().Ww(paramString);
+    com.tencent.mm.plugin.downloader.g.a locala = ((d)com.tencent.mm.kernel.g.ab(d.class)).azw().aad(paramString);
     if (locala == null)
     {
-      ac.e("MicroMsg.AdDownloadApkMgr", "reportDownloadInfo, downloadinfo not found, appId=" + paramString + ", op=" + paramInt);
+      ad.e("MicroMsg.AdDownloadApkMgr", "reportDownloadInfo, downloadinfo not found, appId=" + paramString + ", op=" + paramInt);
       if (paramInt != 9) {
-        com.tencent.mm.plugin.sns.data.i.b(com.tencent.mm.plugin.sns.data.i.xNf, paramString, paramInt, 0, "");
+        com.tencent.mm.plugin.sns.data.i.b(com.tencent.mm.plugin.sns.data.i.zcY, paramString, paramInt, 0, "");
       }
       AppMethodBeat.o(96303);
       return;
@@ -316,32 +325,32 @@ public final class a
       if (paramIntent != null)
       {
         paramContext = paramIntent.getAction();
-        ac.i("MicroMsg.AdDownloadApkMgr", "onReceive, action=".concat(String.valueOf(paramContext)));
+        ad.i("MicroMsg.AdDownloadApkMgr", "onReceive, action=".concat(String.valueOf(paramContext)));
         if ("android.intent.action.PACKAGE_ADDED".equals(paramContext))
         {
           paramContext = paramIntent.getData().getSchemeSpecificPart();
-          ac.i("MicroMsg.AdDownloadApkMgr", "onReceive, pkg=".concat(String.valueOf(paramContext)));
-          if ((!bs.isNullOrNil(paramContext)) && (a.this.yhG.containsKey(paramContext)))
+          ad.i("MicroMsg.AdDownloadApkMgr", "onReceive, pkg=".concat(String.valueOf(paramContext)));
+          if ((!bt.isNullOrNil(paramContext)) && (a.this.zxN.containsKey(paramContext)))
           {
-            ((a.c)a.this.yhG.remove(paramContext)).atq(paramContext);
+            ((a.c)a.this.zxN.remove(paramContext)).ayv(paramContext);
             AppMethodBeat.o(96293);
             return;
           }
-          ac.e("MicroMsg.AdDownloadApkMgr", "onReceive, installCallback==null, pkg=".concat(String.valueOf(paramContext)));
+          ad.e("MicroMsg.AdDownloadApkMgr", "onReceive, installCallback==null, pkg=".concat(String.valueOf(paramContext)));
           AppMethodBeat.o(96293);
           return;
         }
         if ("android.intent.action.PACKAGE_REMOVED".equals(paramContext))
         {
           paramContext = paramIntent.getData().getSchemeSpecificPart();
-          ac.i("MicroMsg.AdDownloadApkMgr", "onReceive, pkg=".concat(String.valueOf(paramContext)));
-          if ((!bs.isNullOrNil(paramContext)) && (a.this.yhG.containsKey(paramContext)))
+          ad.i("MicroMsg.AdDownloadApkMgr", "onReceive, pkg=".concat(String.valueOf(paramContext)));
+          if ((!bt.isNullOrNil(paramContext)) && (a.this.zxN.containsKey(paramContext)))
           {
-            ((a.c)a.this.yhG.remove(paramContext)).atr(paramContext);
+            ((a.c)a.this.zxN.remove(paramContext)).ayw(paramContext);
             AppMethodBeat.o(96293);
             return;
           }
-          ac.e("MicroMsg.AdDownloadApkMgr", "onReceive, installCallback==null, pkg=".concat(String.valueOf(paramContext)));
+          ad.e("MicroMsg.AdDownloadApkMgr", "onReceive, installCallback==null, pkg=".concat(String.valueOf(paramContext)));
         }
       }
       AppMethodBeat.o(96293);
@@ -365,34 +374,34 @@ public final class a
   
   public static abstract interface c
   {
-    public abstract void atq(String paramString);
+    public abstract void ayv(String paramString);
     
-    public abstract void atr(String paramString);
+    public abstract void ayw(String paramString);
   }
   
   public static final class d
     implements Serializable
   {
-    public String dtx;
-    public String jyU;
-    public String yeO;
+    public String dFy;
+    public String jSR;
+    public String zuP;
     
     public d(String paramString1, String paramString2, String paramString3)
     {
-      this.yeO = paramString1;
-      this.jyU = paramString2;
-      this.dtx = paramString3;
+      this.zuP = paramString1;
+      this.jSR = paramString2;
+      this.dFy = paramString3;
     }
   }
   
   public static final class e
   {
-    public static final a yhL;
+    public static final a zxS;
     
     static
     {
       AppMethodBeat.i(96294);
-      yhL = new a((byte)0);
+      zxS = new a((byte)0);
       AppMethodBeat.o(96294);
     }
   }

@@ -7,9 +7,9 @@ public enum FaceNumberView$a
   static
   {
     AppMethodBeat.i(104174);
-    qEL = new a("Normal", 0);
-    qEM = new a("Shine", 1);
-    qEN = new a[] { qEL, qEM };
+    roC = new a("Normal", 0);
+    roD = new a("Shine", 1);
+    roE = new a[] { roC, roD };
     AppMethodBeat.o(104174);
   }
   

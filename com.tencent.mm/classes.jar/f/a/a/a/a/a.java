@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements b
 {
-  public static a gfh()
+  public static a gxF()
   {
-    AppMethodBeat.i(210388);
+    AppMethodBeat.i(221595);
     a locala = new a();
-    AppMethodBeat.o(210388);
+    AppMethodBeat.o(221595);
     return locala;
   }
 }

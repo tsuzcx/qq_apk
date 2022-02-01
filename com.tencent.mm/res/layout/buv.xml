@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/kh" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:gravity="center_horizontal" android:id="@id/e4e" android:background="@color/kh" android:paddingTop="@dimen/hg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ListView android:id="@id/f9l" android:background="@color/kh" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/n3" />
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/f9g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="48.0dip" android:layout_marginRight="30.0dip">
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="@string/eym" />
+        <android.support.v7.widget.RecyclerView android:id="@id/cfd" android:layout_width="wrap_content" android:layout_height="fill_parent" android:overScrollMode="never" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/grp" android:background="@color/kh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/f99" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/dbu" />
+    </LinearLayout>
+</FrameLayout>

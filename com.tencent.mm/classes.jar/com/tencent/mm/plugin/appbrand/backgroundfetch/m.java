@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.backgroundfetch;
 
-import com.tencent.mm.protocal.protobuf.ho;
-import com.tencent.mm.protocal.protobuf.hp;
+import com.tencent.mm.protocal.protobuf.hv;
+import com.tencent.mm.protocal.protobuf.hw;
 import java.util.List;
 
 public abstract interface m
 {
-  public abstract void f(List<hp> paramList, List<ho> paramList1);
+  public abstract void f(List<hw> paramList, List<hv> paramList1);
   
   public abstract void onFail(int paramInt);
 }

@@ -8,13 +8,13 @@ public abstract interface d
   
   public abstract List<a> aj(long paramLong);
   
-  public abstract long eE(int paramInt);
+  public abstract long eI(int paramInt);
   
-  public abstract int uw();
+  public abstract int vV();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.f.d
  * JD-Core Version:    0.7.0.1
  */

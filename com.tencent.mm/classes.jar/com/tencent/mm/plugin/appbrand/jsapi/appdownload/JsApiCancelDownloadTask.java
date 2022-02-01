@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,10 +23,10 @@ public final class JsApiCancelDownloadTask
     extends MainProcessTask
   {
     public static Parcelable.Creator<CancelDownloadTask> CREATOR;
-    private int jOT;
-    private q jiP;
-    private JSONArray kaZ;
-    private com.tencent.mm.plugin.appbrand.jsapi.a kba;
+    private q jCl;
+    private int kje;
+    private JSONArray kvv;
+    private com.tencent.mm.plugin.appbrand.jsapi.a kvw;
     
     static
     {
@@ -45,47 +45,47 @@ public final class JsApiCancelDownloadTask
     public CancelDownloadTask(JSONArray paramJSONArray, com.tencent.mm.plugin.appbrand.jsapi.a parama, q paramq, int paramInt)
     {
       AppMethodBeat.i(45774);
-      bej();
-      this.kaZ = paramJSONArray;
-      this.kba = parama;
-      this.jiP = paramq;
-      this.jOT = paramInt;
+      bhN();
+      this.kvv = paramJSONArray;
+      this.kvw = parama;
+      this.jCl = paramq;
+      this.kje = paramInt;
       AppMethodBeat.o(45774);
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       AppMethodBeat.i(45772);
-      if ((this.kaZ != null) && (this.kaZ.length() > 0))
+      if ((this.kvv != null) && (this.kvv.length() > 0))
       {
         int i = 0;
-        if (i < this.kaZ.length())
+        if (i < this.kvv.length())
         {
-          long l = this.kaZ.optLong(i);
-          com.tencent.mm.plugin.downloader.g.a locala = d.sc(l);
+          long l = this.kvv.optLong(i);
+          com.tencent.mm.plugin.downloader.g.a locala = d.ua(l);
           if ((locala != null) && (locala.field_status == 3))
           {
-            ac.i("MicroMsg.JsApiCancelDownloadTask", "canceldownloadtask, path: %s", new Object[] { locala.field_filePath });
+            ad.i("MicroMsg.JsApiCancelDownloadTask", "canceldownloadtask, path: %s", new Object[] { locala.field_filePath });
             i.deleteFile(locala.field_filePath);
-            d.Wx(locala.field_downloadUrl);
+            d.aae(locala.field_downloadUrl);
           }
           for (;;)
           {
             i += 1;
             break;
-            f.bXJ().rS(l);
+            f.ccl().tR(l);
           }
         }
       }
-      bet();
+      bhX();
       AppMethodBeat.o(45772);
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(45773);
-      bek();
-      this.jiP.h(this.jOT, this.kba.e("ok", null));
+      bhO();
+      this.jCl.h(this.kje, this.kvw.e("ok", null));
       AppMethodBeat.o(45773);
     }
     
@@ -96,13 +96,13 @@ public final class JsApiCancelDownloadTask
       if (paramParcel != null) {
         try
         {
-          this.kaZ = new JSONArray(paramParcel);
+          this.kvv = new JSONArray(paramParcel);
           AppMethodBeat.o(45776);
           return;
         }
         catch (JSONException paramParcel)
         {
-          ac.e("MicroMsg.JsApiCancelDownloadTask", "parseFromParcel: " + paramParcel.getMessage());
+          ad.e("MicroMsg.JsApiCancelDownloadTask", "parseFromParcel: " + paramParcel.getMessage());
         }
       }
       AppMethodBeat.o(45776);
@@ -111,8 +111,8 @@ public final class JsApiCancelDownloadTask
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45777);
-      if (this.kaZ != null) {}
-      for (String str = this.kaZ.toString();; str = null)
+      if (this.kvv != null) {}
+      for (String str = this.kvv.toString();; str = null)
       {
         paramParcel.writeString(str);
         AppMethodBeat.o(45777);

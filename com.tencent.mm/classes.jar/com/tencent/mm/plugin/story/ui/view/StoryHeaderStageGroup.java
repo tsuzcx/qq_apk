@@ -14,29 +14,27 @@ import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.ui.a.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.j.b;
-import d.g.a.a;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.aq;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/StoryHeaderStageGroup;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "contentView", "Landroid/support/v7/widget/RecyclerView;", "delView", "Landroid/view/View;", "downX", "", "downY", "lastScrollX", "onDeleteClick", "Lkotlin/Function0;", "", "getOnDeleteClick", "()Lkotlin/jvm/functions/Function0;", "setOnDeleteClick", "(Lkotlin/jvm/functions/Function0;)V", "overScroller", "Landroid/widget/Scroller;", "scrollDistance", "scrolling", "", "touchHelper", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollHelper;", "computeScroll", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "onListScroll", "onNestedPreFling", "target", "velocityX", "velocityY", "onNestedPreScroll", "dx", "dy", "consumed", "", "onNestedScrollAccepted", "child", "axes", "onStartNestedScroll", "nestedScrollAxes", "onStopNestedScroll", "resetHeader", "scrollHideDelGroup", "scrollShowDelGroup", "setContentAdapter", "adapter", "Lcom/tencent/mm/plugin/story/ui/adapter/StoryHeaderTipAdapter;", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/StoryHeaderStageGroup;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "contentView", "Landroid/support/v7/widget/RecyclerView;", "delView", "Landroid/view/View;", "downX", "", "downY", "lastScrollX", "onDeleteClick", "Lkotlin/Function0;", "", "getOnDeleteClick", "()Lkotlin/jvm/functions/Function0;", "setOnDeleteClick", "(Lkotlin/jvm/functions/Function0;)V", "overScroller", "Landroid/widget/Scroller;", "scrollDistance", "scrolling", "", "touchHelper", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollHelper;", "computeScroll", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "onListScroll", "onNestedPreFling", "target", "velocityX", "velocityY", "onNestedPreScroll", "dx", "dy", "consumed", "", "onNestedScrollAccepted", "child", "axes", "onStartNestedScroll", "nestedScrollAxes", "onStopNestedScroll", "resetHeader", "scrollHideDelGroup", "scrollShowDelGroup", "setContentAdapter", "adapter", "Lcom/tencent/mm/plugin/story/ui/adapter/StoryHeaderTipAdapter;", "plugin-story_release"})
 public final class StoryHeaderStageGroup
   extends RelativeLayout
 {
+  private final com.tencent.mm.ui.j.b BaA;
+  private int BaB;
+  private int BaC;
+  private d.g.a.a<z> BaD;
+  final RecyclerView Bay;
+  private final Scroller Baz;
   final String TAG;
-  private float cCh;
-  private float cCi;
-  private final View ntI;
+  private float cNg;
+  private float cNh;
+  private final View nUE;
   private boolean scrolling;
-  final RecyclerView zIX;
-  private final Scroller zIY;
-  private final b zIZ;
-  private int zJa;
-  private int zJb;
-  private a<y> zJc;
   
   public StoryHeaderStageGroup(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -52,39 +50,40 @@ public final class StoryHeaderStageGroup
     this.TAG = "MicroMsg.StoryHeaderStageGroup";
     View.inflate(paramContext, 2131495698, (ViewGroup)this);
     paramAttributeSet = findViewById(2131305064);
-    k.g(paramAttributeSet, "findViewById(R.id.sns_st…header_tip_stage_content)");
-    this.zIX = ((RecyclerView)paramAttributeSet);
+    p.g(paramAttributeSet, "findViewById(R.id.sns_st…header_tip_stage_content)");
+    this.Bay = ((RecyclerView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305066);
-    k.g(paramAttributeSet, "findViewById(R.id.sns_st…ader_tip_stage_del_group)");
-    this.ntI = paramAttributeSet;
-    this.zIY = new Scroller(paramContext);
-    this.zIZ = new b(paramContext);
-    this.zIX.setLayoutManager((RecyclerView.i)new LinearLayoutManager(0));
-    this.ntI.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    p.g(paramAttributeSet, "findViewById(R.id.sns_st…ader_tip_stage_del_group)");
+    this.nUE = paramAttributeSet;
+    this.Baz = new Scroller(paramContext);
+    this.BaA = new com.tencent.mm.ui.j.b(paramContext);
+    this.Bay.setLayoutManager((RecyclerView.i)new LinearLayoutManager(0));
+    this.nUE.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120170);
-        paramAnonymousView = this.zJd.getOnDeleteClick();
-        if (paramAnonymousView != null)
-        {
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/StoryHeaderStageGroup$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        paramAnonymousView = this.BaE.getOnDeleteClick();
+        if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
-          AppMethodBeat.o(120170);
-          return;
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/StoryHeaderStageGroup$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(120170);
       }
     });
     AppMethodBeat.o(120180);
   }
   
-  private final void dZE()
+  private final void elT()
   {
     AppMethodBeat.i(120172);
     if (!this.scrolling)
     {
       this.scrolling = true;
-      this.zIY.startScroll(this.zJa, 0, this.ntI.getMeasuredWidth() + ao.fromDPToPix(getContext(), 20) - this.zJa, 0);
+      this.Baz.startScroll(this.BaB, 0, this.nUE.getMeasuredWidth() + aq.fromDPToPix(getContext(), 20) - this.BaB, 0);
       invalidate();
     }
     AppMethodBeat.o(120172);
@@ -93,26 +92,14 @@ public final class StoryHeaderStageGroup
   public final void computeScroll()
   {
     AppMethodBeat.i(120174);
-    if (this.zIY.computeScrollOffset())
+    if (this.Baz.computeScrollOffset())
     {
-      ac.d(this.TAG, "computeScroll scrollX:" + this.zIY.getCurrX() + " scrollY:" + this.zIY.getCurrY());
-      this.zJa = this.zIY.getCurrX();
-      scrollTo(this.zIY.getCurrX(), 0);
+      ad.d(this.TAG, "computeScroll scrollX:" + this.Baz.getCurrX() + " scrollY:" + this.Baz.getCurrY());
+      this.BaB = this.Baz.getCurrX();
+      scrollTo(this.Baz.getCurrX(), 0);
       invalidate();
     }
     AppMethodBeat.o(120174);
-  }
-  
-  final void dZF()
-  {
-    AppMethodBeat.i(120173);
-    if (!this.scrolling)
-    {
-      this.scrolling = true;
-      this.zIY.startScroll(this.zJa, 0, 0 - this.zJa, 0);
-      invalidate();
-    }
-    AppMethodBeat.o(120173);
   }
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -152,21 +139,21 @@ public final class StoryHeaderStageGroup
         if (localInteger.intValue() != 0) {
           break label27;
         }
-        this.cCh = paramMotionEvent.getX();
-        this.cCi = paramMotionEvent.getY();
+        this.cNg = paramMotionEvent.getX();
+        this.cNh = paramMotionEvent.getY();
         continue;
         if (localInteger.intValue() != 2) {
           break label31;
         }
-        if (Math.abs(paramMotionEvent.getX() - this.cCh) > Math.abs(paramMotionEvent.getY() - this.cCi)) {
+        if (Math.abs(paramMotionEvent.getX() - this.cNg) > Math.abs(paramMotionEvent.getY() - this.cNh)) {
           requestDisallowInterceptTouchEvent(true);
         }
       }
     }
     for (;;)
     {
-      this.cCh = 0.0F;
-      this.cCi = 0.0F;
+      this.cNg = 0.0F;
+      this.cNh = 0.0F;
       break;
       label142:
       if (localInteger.intValue() != 3) {
@@ -175,24 +162,36 @@ public final class StoryHeaderStageGroup
     }
   }
   
-  public final a<y> getOnDeleteClick()
+  final void elU()
   {
-    return this.zJc;
+    AppMethodBeat.i(120173);
+    if (!this.scrolling)
+    {
+      this.scrolling = true;
+      this.Baz.startScroll(this.BaB, 0, 0 - this.BaB, 0);
+      invalidate();
+    }
+    AppMethodBeat.o(120173);
+  }
+  
+  public final d.g.a.a<z> getOnDeleteClick()
+  {
+    return this.BaD;
   }
   
   public final boolean onNestedPreFling(View paramView, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(120178);
-    ac.d(this.TAG, "onNestedPreFling velocityX:" + paramFloat1 + " velocityY:" + paramFloat2);
-    RecyclerView.i locali = this.zIX.getLayoutManager();
-    RecyclerView.a locala = this.zIX.getAdapter();
+    ad.d(this.TAG, "onNestedPreFling velocityX:" + paramFloat1 + " velocityY:" + paramFloat2);
+    RecyclerView.i locali = this.Bay.getLayoutManager();
+    RecyclerView.a locala = this.Bay.getAdapter();
     if ((locali != null) && (locala != null))
     {
       if (paramFloat1 <= 0.0F) {
         break label114;
       }
-      if (((LinearLayoutManager)locali).jZ() == locala.getItemCount() - 1) {
-        dZE();
+      if (((LinearLayoutManager)locali).kp() == locala.getItemCount() - 1) {
+        elT();
       }
     }
     for (;;)
@@ -202,7 +201,7 @@ public final class StoryHeaderStageGroup
       return bool;
       label114:
       if ((paramFloat1 < 0.0F) && (getScrollX() != 0)) {
-        dZF();
+        elU();
       }
     }
   }
@@ -210,18 +209,18 @@ public final class StoryHeaderStageGroup
   public final void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(120175);
-    ac.d(this.TAG, "onNestedPreScroll dx:" + paramInt1 + " dy:" + paramInt2);
-    paramView = this.zIX.getLayoutManager();
-    RecyclerView.a locala = this.zIX.getAdapter();
+    ad.d(this.TAG, "onNestedPreScroll dx:" + paramInt1 + " dy:" + paramInt2);
+    paramView = this.Bay.getLayoutManager();
+    RecyclerView.a locala = this.Bay.getAdapter();
     if ((paramView != null) && (locala != null))
     {
       if (paramInt1 <= 0) {
         break label148;
       }
-      if (((LinearLayoutManager)paramView).jZ() == locala.getItemCount() - 1)
+      if (((LinearLayoutManager)paramView).kp() == locala.getItemCount() - 1)
       {
-        this.zJa = Math.min(this.zJa + paramInt1, this.ntI.getMeasuredWidth() + ao.fromDPToPix(getContext(), 20));
-        scrollTo(this.zJa, 0);
+        this.BaB = Math.min(this.BaB + paramInt1, this.nUE.getMeasuredWidth() + aq.fromDPToPix(getContext(), 20));
+        scrollTo(this.BaB, 0);
         if (paramArrayOfInt != null) {
           paramArrayOfInt[0] = paramInt1;
         }
@@ -229,14 +228,14 @@ public final class StoryHeaderStageGroup
     }
     for (;;)
     {
-      this.zJb = paramInt1;
+      this.BaC = paramInt1;
       AppMethodBeat.o(120175);
       return;
       label148:
       if ((paramInt1 < 0) && (getScrollX() != 0))
       {
-        this.zJa = Math.max(this.zJa + paramInt1, 0);
-        scrollTo(this.zJa, 0);
+        this.BaB = Math.max(this.BaB + paramInt1, 0);
+        scrollTo(this.BaB, 0);
         if (paramArrayOfInt != null) {
           paramArrayOfInt[0] = paramInt1;
         }
@@ -247,8 +246,8 @@ public final class StoryHeaderStageGroup
   public final void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt)
   {
     AppMethodBeat.i(120176);
-    ac.d(this.TAG, "onNestedScrollAccepted axes:%s", new Object[] { Integer.valueOf(paramInt) });
-    this.zJb = 0;
+    ad.d(this.TAG, "onNestedScrollAccepted axes:%s", new Object[] { Integer.valueOf(paramInt) });
+    this.BaC = 0;
     this.scrolling = false;
     AppMethodBeat.o(120176);
   }
@@ -261,23 +260,23 @@ public final class StoryHeaderStageGroup
   public final void onStopNestedScroll(View paramView)
   {
     AppMethodBeat.i(120177);
-    ac.d(this.TAG, "onStopNestedScroll");
-    if (this.zJa != 0)
+    ad.d(this.TAG, "onStopNestedScroll");
+    if (this.BaB != 0)
     {
-      if (this.zJb <= 0) {
+      if (this.BaC <= 0) {
         break label51;
       }
-      dZE();
+      elT();
     }
     for (;;)
     {
-      this.zJb = 0;
+      this.BaC = 0;
       this.scrolling = false;
       AppMethodBeat.o(120177);
       return;
       label51:
-      if (this.zJb < 0) {
-        dZF();
+      if (this.BaC < 0) {
+        elU();
       }
     }
   }
@@ -285,19 +284,19 @@ public final class StoryHeaderStageGroup
   public final void setContentAdapter(j paramj)
   {
     AppMethodBeat.i(120171);
-    k.h(paramj, "adapter");
-    this.zIX.setAdapter((RecyclerView.a)paramj);
+    p.h(paramj, "adapter");
+    this.Bay.setAdapter((RecyclerView.a)paramj);
     AppMethodBeat.o(120171);
   }
   
-  public final void setOnDeleteClick(a<y> parama)
+  public final void setOnDeleteClick(d.g.a.a<z> parama)
   {
-    this.zJc = parama;
+    this.BaD = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryHeaderStageGroup
  * JD-Core Version:    0.7.0.1
  */

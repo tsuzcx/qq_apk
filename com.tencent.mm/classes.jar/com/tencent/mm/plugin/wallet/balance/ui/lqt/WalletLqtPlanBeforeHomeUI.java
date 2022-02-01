@@ -10,16 +10,16 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.CgiLqtPlanIndex;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.q;
-import com.tencent.mm.protocal.protobuf.cfp;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.protocal.protobuf.cko;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.wallet_core.c.a;
 import com.tencent.mm.wallet_core.c.a.a;
 
 public class WalletLqtPlanBeforeHomeUI
   extends AppCompatActivity
 {
-  private void eoV()
+  private void eCV()
   {
     AppMethodBeat.i(68901);
     q localq = new q();
@@ -39,12 +39,12 @@ public class WalletLqtPlanBeforeHomeUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(68902);
-    ac.i("MicroMsg.WalletLqtPlanBeforeHomeUI", "activity result: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.WalletLqtPlanBeforeHomeUI", "activity result: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 65281)
     {
       if (paramInt2 == -1)
       {
-        eoV();
+        eCV();
         AppMethodBeat.o(68902);
         return;
       }
@@ -59,8 +59,8 @@ public class WalletLqtPlanBeforeHomeUI
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
     getWindow().getDecorView().setSystemUiVisibility(1280);
-    aj.r(this, getResources().getColor(2131101053));
-    eoV();
+    al.r(this, getResources().getColor(2131101053));
+    eCV();
     AppMethodBeat.o(68899);
   }
   

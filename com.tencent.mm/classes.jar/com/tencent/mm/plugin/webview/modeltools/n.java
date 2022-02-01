@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.webview.modeltools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Iterator;
@@ -11,61 +11,61 @@ import java.util.LinkedList;
 
 public final class n
 {
-  private final LinkedList<String> CsW;
+  private final LinkedList<String> DWB;
   
   public n()
   {
     AppMethodBeat.i(79225);
-    this.CsW = new LinkedList();
+    this.DWB = new LinkedList();
     AppMethodBeat.o(79225);
   }
   
-  private void aCz(String paramString)
+  private void aIb(String paramString)
   {
     AppMethodBeat.i(79227);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(79227);
       return;
     }
-    synchronized (this.CsW)
+    synchronized (this.DWB)
     {
-      String str = (String)this.CsW.peekLast();
+      String str = (String)this.DWB.peekLast();
       paramString = URLEncoder.encode(paramString);
       if ((str == null) || (!str.equals(paramString))) {
-        this.CsW.addLast(paramString);
+        this.DWB.addLast(paramString);
       }
-      if (this.CsW.size() > 10) {
-        this.CsW.removeFirst();
+      if (this.DWB.size() > 10) {
+        this.DWB.removeFirst();
       }
       AppMethodBeat.o(79227);
       return;
     }
   }
   
-  public final void Bk(String paramString)
+  public final void Ej(String paramString)
   {
     AppMethodBeat.i(79226);
     try
     {
-      aCz(paramString);
+      aIb(paramString);
       AppMethodBeat.o(79226);
       return;
     }
     catch (Exception paramString)
     {
-      ac.e("MicroMsg.WebViewURLRouteList", "add exp = %s", new Object[] { bs.m(paramString) });
+      ad.e("MicroMsg.WebViewURLRouteList", "add exp = %s", new Object[] { bt.n(paramString) });
       AppMethodBeat.o(79226);
     }
   }
   
-  public final String[] eCk()
+  public final String[] eRe()
   {
     AppMethodBeat.i(79228);
-    synchronized (this.CsW)
+    synchronized (this.DWB)
     {
-      String[] arrayOfString = new String[this.CsW.size()];
-      Iterator localIterator = this.CsW.iterator();
+      String[] arrayOfString = new String[this.DWB.size()];
+      Iterator localIterator = this.DWB.iterator();
       int i = 0;
       while (localIterator.hasNext())
       {
@@ -77,23 +77,23 @@ public final class n
     }
   }
   
-  public final void eCl()
+  public final void eRf()
   {
     AppMethodBeat.i(79229);
-    if (!b.eUk())
+    if (!b.fjN())
     {
       AppMethodBeat.o(79229);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder("routeList: ");
-    synchronized (this.CsW)
+    synchronized (this.DWB)
     {
-      Iterator localIterator = this.CsW.iterator();
+      Iterator localIterator = this.DWB.iterator();
       if (localIterator.hasNext()) {
         localStringBuilder.append(URLDecoder.decode((String)localIterator.next())).append("\n");
       }
     }
-    ac.d("MicroMsg.WebViewURLRouteList", localObject.toString());
+    ad.d("MicroMsg.WebViewURLRouteList", localObject.toString());
     AppMethodBeat.o(79229);
   }
 }

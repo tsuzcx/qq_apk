@@ -1,77 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.b.f;
 
-public abstract interface b
+public final class b
+  extends j<aa, f>
 {
-  public abstract a Ei();
+  public static final int CTRL_INDEX = 139;
+  public static final String NAME = "disableScrollBounce";
   
-  public abstract Boolean Ej();
-  
-  public static enum a
+  public b()
   {
-    static
-    {
-      AppMethodBeat.i(176553);
-      kHN = new a("NONE", 0);
-      kHO = new a("PUSH", 1);
-      kHP = new a("POP", 2);
-      kHQ = new a("PUSH_AND_POP", 3);
-      kHR = new a[] { kHN, kHO, kHP, kHQ };
-      AppMethodBeat.o(176553);
-    }
-    
-    private a() {}
-    
-    public static a MW(String paramString)
-    {
-      AppMethodBeat.i(176552);
-      paramString = paramString.trim();
-      int i = -1;
-      switch (paramString.hashCode())
-      {
-      }
-      for (;;)
-      {
-        switch (i)
-        {
-        default: 
-          AppMethodBeat.o(176552);
-          return null;
-          if (paramString.equals(""))
-          {
-            i = 0;
-            continue;
-            if (paramString.equals("push"))
-            {
-              i = 1;
-              continue;
-              if (paramString.equals("pop"))
-              {
-                i = 2;
-                continue;
-                if (paramString.equals("pushAndPop")) {
-                  i = 3;
-                }
-              }
-            }
-          }
-          break;
-        }
-      }
-      paramString = kHN;
-      AppMethodBeat.o(176552);
-      return paramString;
-      paramString = kHO;
-      AppMethodBeat.o(176552);
-      return paramString;
-      paramString = kHP;
-      AppMethodBeat.o(176552);
-      return paramString;
-      paramString = kHQ;
-      AppMethodBeat.o(176552);
-      return paramString;
-    }
+    super(f.class);
   }
 }
 

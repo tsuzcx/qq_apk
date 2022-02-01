@@ -2,35 +2,35 @@ package com.tencent.magicbrush;
 
 import com.tencent.magicbrush.handler.fs.IMBFileSystem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.n;
-import d.g.b.w;
+import d.g.b.t;
+import d.g.b.z;
 import d.l;
 import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(fNY={1, 1, 13})
+@l(gfx={1, 1, 13})
 final class x
-  extends n
+  extends t
 {
-  public static final h cnf;
+  public static final h cxK;
   
   static
   {
     AppMethodBeat.i(140160);
-    cnf = new x();
+    cxK = new x();
     AppMethodBeat.o(140160);
   }
   
-  public final String FZ()
+  public final String Hu()
   {
     return "getFile_system_()Lcom/tencent/magicbrush/handler/fs/IMBFileSystem;";
   }
   
-  public final d Ga()
+  public final d Hv()
   {
     AppMethodBeat.i(140161);
-    b localb = w.bn(MBRuntime.MBParams.class);
+    b localb = z.bp(MBRuntime.MBParams.class);
     AppMethodBeat.o(140161);
     return localb;
   }
@@ -52,7 +52,7 @@ final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.x
  * JD-Core Version:    0.7.0.1
  */

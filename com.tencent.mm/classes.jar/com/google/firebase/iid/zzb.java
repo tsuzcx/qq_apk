@@ -13,10 +13,10 @@ import java.util.concurrent.Executors;
 public abstract class zzb
   extends Service
 {
-  final ExecutorService bBw;
-  private Binder bBx;
-  private int bBy;
-  private int bBz;
+  final ExecutorService bLK;
+  private Binder bLL;
+  private int bLM;
+  private int bLN;
   private final Object lock;
   
   public zzb()
@@ -25,9 +25,9 @@ public abstract class zzb
     if (str.length() != 0) {}
     for (str = "Firebase-".concat(str);; str = new String("Firebase-"))
     {
-      this.bBw = Executors.newSingleThreadExecutor(new NamedThreadFactory(str));
+      this.bLK = Executors.newSingleThreadExecutor(new NamedThreadFactory(str));
       this.lock = new Object();
-      this.bBz = 0;
+      this.bLN = 0;
       return;
     }
   }
@@ -39,9 +39,9 @@ public abstract class zzb
     }
     synchronized (this.lock)
     {
-      this.bBz -= 1;
-      if (this.bBz == 0) {
-        stopSelfResult(this.bBy);
+      this.bLN -= 1;
+      if (this.bLN == 0) {
+        stopSelfResult(this.bLM);
       }
       return;
     }
@@ -64,10 +64,10 @@ public abstract class zzb
     try
     {
       Log.isLoggable("EnhancedIntentService", 3);
-      if (this.bBx == null) {
-        this.bBx = new w(this);
+      if (this.bLL == null) {
+        this.bLL = new w(this);
       }
-      paramIntent = this.bBx;
+      paramIntent = this.bLL;
       return paramIntent;
     }
     finally {}
@@ -77,8 +77,8 @@ public abstract class zzb
   {
     synchronized (this.lock)
     {
-      this.bBy = paramInt2;
-      this.bBz += 1;
+      this.bLM = paramInt2;
+      this.bLN += 1;
       ??? = e(paramIntent);
       if (??? == null)
       {
@@ -91,7 +91,7 @@ public abstract class zzb
       g(paramIntent);
       return 2;
     }
-    this.bBw.execute(new t(this, (Intent)???, paramIntent));
+    this.bLK.execute(new t(this, (Intent)???, paramIntent));
     return 3;
   }
 }

@@ -8,13 +8,13 @@ import com.tencent.mm.sdk.b.b;
 
 public abstract interface a
 {
-  public abstract byte[] Kv(int paramInt);
+  public abstract byte[] LX(int paramInt);
   
-  public abstract String Kw(int paramInt);
+  public abstract String LY(int paramInt);
   
-  public abstract void Kx(int paramInt);
+  public abstract void LZ(int paramInt);
   
-  public abstract byte[] Ky(int paramInt);
+  public abstract byte[] Ma(int paramInt);
   
   public abstract void a(View paramView, Class<? extends b> paramClass);
   
@@ -24,53 +24,63 @@ public abstract interface a
   
   public abstract boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PInt paramPInt1, PInt paramPInt2, PByteArray paramPByteArray);
   
+  public abstract String aaC();
+  
   public abstract void ao(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract String aon(String paramString);
+  public abstract String atn(String paramString);
   
-  public abstract void aop(String paramString);
+  public abstract void atp(String paramString);
   
-  public abstract void aoq(String paramString);
+  public abstract void atq(String paramString);
   
-  public abstract void aor(String paramString);
+  public abstract void atr(String paramString);
   
-  public abstract boolean aos(String paramString);
+  public abstract boolean ats(String paramString);
   
-  public abstract byte[] aot(String paramString);
+  public abstract byte[] att(String paramString);
   
-  public abstract void aou(String paramString);
+  public abstract void atu(String paramString);
   
-  public abstract boolean aov(String paramString);
+  public abstract boolean atv(String paramString);
   
-  public abstract byte[] aow(String paramString);
+  public abstract byte[] atw(String paramString);
   
-  public abstract byte[] dkC();
+  public abstract String duI();
   
-  public abstract byte[] dkD();
+  public abstract boolean duJ();
   
-  public abstract boolean dkE();
+  public abstract boolean duK();
   
-  public abstract byte[] dkF();
+  public abstract byte[] duO();
   
-  public abstract boolean dkG();
+  public abstract byte[] duP();
   
-  public abstract String dkw();
+  public abstract boolean duQ();
   
-  public abstract boolean dkx();
+  public abstract byte[] duR();
   
-  public abstract boolean dky();
+  public abstract boolean duS();
   
-  public abstract boolean du(Object paramObject);
+  public abstract String duT();
+  
+  public abstract String duU();
+  
+  public abstract String duV();
+  
+  public abstract com.tencent.mm.normsg.a duW();
+  
+  public abstract com.tencent.mm.normsgext.a duX();
+  
+  public abstract boolean dx(Object paramObject);
   
   public abstract boolean e(Object paramObject, Class paramClass);
   
-  public abstract String getOAID();
+  public abstract void io(String paramString1, String paramString2);
   
-  public abstract void id(String paramString1, String paramString2);
+  public abstract String pi(boolean paramBoolean);
   
-  public abstract String oJ(boolean paramBoolean);
-  
-  public abstract boolean y(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public abstract boolean z(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 

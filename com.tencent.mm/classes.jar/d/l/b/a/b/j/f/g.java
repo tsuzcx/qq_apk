@@ -6,19 +6,19 @@ import d.l.b.a.b.l.f;
 public final class g
   extends a
 {
-  private final f<h> LGU;
+  private final f<h> NxS;
   
   public g(f<? extends h> paramf)
   {
     AppMethodBeat.i(60212);
-    this.LGU = paramf;
+    this.NxS = paramf;
     AppMethodBeat.o(60212);
   }
   
-  protected final h gbI()
+  protected final h gth()
   {
     AppMethodBeat.i(60211);
-    h localh = (h)this.LGU.invoke();
+    h localh = (h)this.NxS.invoke();
     AppMethodBeat.o(60211);
     return localh;
   }

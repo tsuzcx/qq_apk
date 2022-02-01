@@ -9,9 +9,9 @@ public class EmptyHeadersInjector
 {
   public Map<String, String> addHeaders(String paramString)
   {
-    AppMethodBeat.i(192557);
+    AppMethodBeat.i(215904);
     paramString = new HashMap();
-    AppMethodBeat.o(192557);
+    AppMethodBeat.o(215904);
     return paramString;
   }
 }

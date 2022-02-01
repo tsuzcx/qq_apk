@@ -23,47 +23,47 @@ import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxpay.a.a;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import junit.framework.Assert;
 
 public final class MallFormView
   extends LinearLayout
   implements View.OnFocusChangeListener
 {
-  private TextView lfN;
-  private String tWv;
-  private TextView whQ;
-  public EditText whR;
-  private WalletIconImageView whS;
-  private TextView whT;
-  private a whU;
-  private View.OnFocusChangeListener whV;
-  private View.OnClickListener whW;
-  private a whX;
-  private b whY;
-  private int whZ;
-  private int wia;
-  private String wib;
-  private int wic;
-  private int wid;
-  private int wie;
-  private String wif;
-  private int wig;
-  private String wih;
-  private int wii;
-  private int wij;
-  private String wik;
-  private int wil;
-  private int wim;
-  private int win;
-  private boolean wio;
-  private boolean wip;
-  private boolean wiq;
-  private int wir;
-  private int wis;
-  private int wit;
-  public boolean wiu;
+  private TextView lCL;
+  private String uZe;
+  public EditText xpA;
+  private WalletIconImageView xpB;
+  private TextView xpC;
+  private a xpD;
+  private View.OnFocusChangeListener xpE;
+  private View.OnClickListener xpF;
+  private a xpG;
+  private b xpH;
+  private int xpI;
+  private int xpJ;
+  private String xpK;
+  private int xpL;
+  private int xpM;
+  private int xpN;
+  private String xpO;
+  private int xpP;
+  private String xpQ;
+  private int xpR;
+  private int xpS;
+  private String xpT;
+  private int xpU;
+  private int xpV;
+  private int xpW;
+  private boolean xpX;
+  private boolean xpY;
+  private boolean xpZ;
+  private TextView xpz;
+  private int xqa;
+  private int xqb;
+  private int xqc;
+  public boolean xqd;
   
   public MallFormView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -74,89 +74,89 @@ public final class MallFormView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(67287);
-    this.lfN = null;
-    this.whQ = null;
-    this.whR = null;
-    this.whS = null;
-    this.whT = null;
-    this.whU = null;
-    this.whV = null;
-    this.whW = null;
-    this.whX = null;
-    this.whY = null;
-    this.whZ = -1;
-    this.tWv = "";
-    this.wia = 0;
-    this.wib = "";
-    this.wic = 8;
-    this.wid = -1;
-    this.wie = 4;
-    this.wif = "";
-    this.wig = 8;
-    this.wih = "";
-    this.wii = 19;
-    this.wij = 2131100711;
-    this.wik = "";
-    this.wil = 2147483647;
-    this.wim = 1;
-    this.win = 2131233299;
-    this.wio = true;
-    this.wip = false;
-    this.wiq = true;
-    this.wir = 1;
-    this.wis = 5;
-    this.wit = 2131100551;
-    this.wiu = true;
+    this.lCL = null;
+    this.xpz = null;
+    this.xpA = null;
+    this.xpB = null;
+    this.xpC = null;
+    this.xpD = null;
+    this.xpE = null;
+    this.xpF = null;
+    this.xpG = null;
+    this.xpH = null;
+    this.xpI = -1;
+    this.uZe = "";
+    this.xpJ = 0;
+    this.xpK = "";
+    this.xpL = 8;
+    this.xpM = -1;
+    this.xpN = 4;
+    this.xpO = "";
+    this.xpP = 8;
+    this.xpQ = "";
+    this.xpR = 19;
+    this.xpS = 2131100711;
+    this.xpT = "";
+    this.xpU = 2147483647;
+    this.xpV = 1;
+    this.xpW = 2131233299;
+    this.xpX = true;
+    this.xpY = false;
+    this.xpZ = true;
+    this.xqa = 1;
+    this.xqb = 5;
+    this.xqc = 2131100551;
+    this.xqd = true;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MallFormAttrs, paramInt, 0);
-    this.whZ = paramAttributeSet.getResourceId(17, this.whZ);
+    this.xpI = paramAttributeSet.getResourceId(17, this.xpI);
     paramInt = paramAttributeSet.getResourceId(23, 0);
     if (paramInt != 0) {
-      this.tWv = paramContext.getString(paramInt);
+      this.uZe = paramContext.getString(paramInt);
     }
-    this.wid = paramAttributeSet.getResourceId(14, this.wid);
+    this.xpM = paramAttributeSet.getResourceId(14, this.xpM);
     paramInt = paramAttributeSet.getResourceId(21, 0);
     if (paramInt != 0) {
-      this.wif = paramContext.getString(paramInt);
+      this.xpO = paramContext.getString(paramInt);
     }
-    this.wie = paramAttributeSet.getInteger(15, this.wie);
-    this.wia = paramAttributeSet.getInteger(25, this.wia);
-    this.wig = paramAttributeSet.getInteger(22, this.wig);
-    this.wic = paramAttributeSet.getInteger(20, this.wic);
+    this.xpN = paramAttributeSet.getInteger(15, this.xpN);
+    this.xpJ = paramAttributeSet.getInteger(25, this.xpJ);
+    this.xpP = paramAttributeSet.getInteger(22, this.xpP);
+    this.xpL = paramAttributeSet.getInteger(20, this.xpL);
     paramInt = paramAttributeSet.getResourceId(18, 0);
     if (paramInt != 0) {
-      this.wib = paramContext.getString(paramInt);
+      this.xpK = paramContext.getString(paramInt);
     }
     paramInt = paramAttributeSet.getResourceId(8, 0);
     if (paramInt != 0) {
-      this.wih = paramContext.getString(paramInt);
+      this.xpQ = paramContext.getString(paramInt);
     }
-    this.wii = paramAttributeSet.getInteger(7, this.wii);
-    this.wij = paramAttributeSet.getColor(13, this.wij);
+    this.xpR = paramAttributeSet.getInteger(7, this.xpR);
+    this.xpS = paramAttributeSet.getColor(13, this.xpS);
     paramInt = paramAttributeSet.getResourceId(12, 0);
     if (paramInt != 0) {
-      this.wik = paramContext.getString(paramInt);
+      this.xpT = paramContext.getString(paramInt);
     }
-    this.wil = paramAttributeSet.getInteger(10, this.wil);
-    this.wim = paramAttributeSet.getInteger(11, this.wim);
-    this.win = paramAttributeSet.getResourceId(2, this.win);
-    this.wio = paramAttributeSet.getBoolean(4, this.wio);
-    this.wip = paramAttributeSet.getBoolean(3, this.wip);
-    this.wiq = paramAttributeSet.getBoolean(4, this.wiq);
-    this.wir = paramAttributeSet.getInteger(0, this.wir);
-    this.wis = paramAttributeSet.getInteger(1, this.wis);
-    this.wit = paramAttributeSet.getInteger(9, this.wit);
+    this.xpU = paramAttributeSet.getInteger(10, this.xpU);
+    this.xpV = paramAttributeSet.getInteger(11, this.xpV);
+    this.xpW = paramAttributeSet.getResourceId(2, this.xpW);
+    this.xpX = paramAttributeSet.getBoolean(4, this.xpX);
+    this.xpY = paramAttributeSet.getBoolean(3, this.xpY);
+    this.xpZ = paramAttributeSet.getBoolean(4, this.xpZ);
+    this.xqa = paramAttributeSet.getInteger(0, this.xqa);
+    this.xqb = paramAttributeSet.getInteger(1, this.xqb);
+    this.xqc = paramAttributeSet.getInteger(9, this.xqc);
     paramAttributeSet.recycle();
-    if (this.whZ > 0) {
+    if (this.xpI > 0) {
       bool = true;
     }
     Assert.assertTrue(bool);
     setOrientation(1);
-    inflate(paramContext, this.whZ, this);
-    this.lfN = ((TextView)findViewById(2131302142));
-    this.whQ = ((TextView)findViewById(2131302084));
-    this.whR = ((EditText)findViewById(2131302008));
-    this.whS = ((WalletIconImageView)findViewById(2131302020));
-    this.whT = ((TextView)findViewById(2131302141));
+    inflate(paramContext, this.xpI, this);
+    this.lCL = ((TextView)findViewById(2131302142));
+    this.xpz = ((TextView)findViewById(2131302084));
+    this.xpA = ((EditText)findViewById(2131302008));
+    this.xpB = ((WalletIconImageView)findViewById(2131302020));
+    this.xpC = ((TextView)findViewById(2131302141));
     AppMethodBeat.o(67287);
   }
   
@@ -165,7 +165,7 @@ public final class MallFormView
     AppMethodBeat.i(67299);
     if ((paramView != null) && (paramView.getVisibility() == 0))
     {
-      if (ep(paramView).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+      if (eB(paramView).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
       {
         AppMethodBeat.o(67299);
         return true;
@@ -177,7 +177,7 @@ public final class MallFormView
     return false;
   }
   
-  private Rect ep(View paramView)
+  private Rect eB(View paramView)
   {
     AppMethodBeat.i(67300);
     if (paramView != null)
@@ -194,7 +194,7 @@ public final class MallFormView
   
   private Rect k(View paramView, Rect paramRect)
   {
-    if (paramView == this.whS)
+    if (paramView == this.xpB)
     {
       paramRect.left -= 50;
       paramRect.right += 50;
@@ -204,102 +204,106 @@ public final class MallFormView
     return paramRect;
   }
   
-  public final boolean aRO()
+  public final boolean aVa()
   {
     AppMethodBeat.i(67308);
-    if (this.whR != null)
+    if (this.xpA != null)
     {
-      if (this.whR.getText() == null) {}
-      for (int i = 0; (i > this.wil) || (i < this.wim); i = this.whR.getText().length())
+      if (this.xpA.getText() == null) {}
+      for (int i = 0; (i > this.xpU) || (i < this.xpV); i = this.xpA.getText().length())
       {
         AppMethodBeat.o(67308);
         return false;
       }
-      if (this.whY != null)
+      if (this.xpH != null)
       {
-        boolean bool = this.whY.a(this);
+        boolean bool = this.xpH.a(this);
         AppMethodBeat.o(67308);
         return bool;
       }
       AppMethodBeat.o(67308);
       return true;
     }
-    ac.e("MicroMsg.WalletFormView", "hy: no content edit text. true as default");
+    ad.e("MicroMsg.WalletFormView", "hy: no content edit text. true as default");
     AppMethodBeat.o(67308);
     return true;
   }
   
-  public final void dtF()
+  public final void dEc()
   {
     AppMethodBeat.i(67291);
-    if ((this.whS != null) && (!bs.isNullOrNil(getText())) && (this.whR != null) && (this.whR.isEnabled()) && (this.whR.isClickable()) && (this.whR.isFocusable()) && (this.whR.isFocused()))
+    if ((this.xpB != null) && (!bt.isNullOrNil(getText())) && (this.xpA != null) && (this.xpA.isEnabled()) && (this.xpA.isClickable()) && (this.xpA.isFocusable()) && (this.xpA.isFocused()))
     {
-      this.whS.setToClearState(new View.OnClickListener()
+      this.xpB.setToClearState(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(67286);
-          MallFormView.this.dtH();
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/form/MallFormView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          MallFormView.this.dEe();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recharge/ui/form/MallFormView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(67286);
         }
       });
       AppMethodBeat.o(67291);
       return;
     }
-    if (this.whS != null)
+    if (this.xpB != null)
     {
-      this.whS.eQv();
+      this.xpB.ffz();
       AppMethodBeat.o(67291);
       return;
     }
-    ac.v("MicroMsg.WalletFormView", "hy: no info iv");
+    ad.v("MicroMsg.WalletFormView", "hy: no info iv");
     AppMethodBeat.o(67291);
   }
   
-  public final void dtG()
+  public final void dEd()
   {
     AppMethodBeat.i(67301);
-    ac.d("MicroMsg.WalletFormView", "shouldClearFocus: %s", new Object[] { Boolean.valueOf(this.wiu) });
-    if (this.wiu)
+    ad.d("MicroMsg.WalletFormView", "shouldClearFocus: %s", new Object[] { Boolean.valueOf(this.xqd) });
+    if (this.xqd)
     {
       getContentEditText().clearFocus();
       AppMethodBeat.o(67301);
       return;
     }
-    this.wiu = true;
+    this.xqd = true;
     AppMethodBeat.o(67301);
   }
   
-  public final void dtH()
+  public final void dEe()
   {
     AppMethodBeat.i(67309);
-    if (this.whR != null) {
-      this.whR.setText("");
+    if (this.xpA != null) {
+      this.xpA.setText("");
     }
     AppMethodBeat.o(67309);
   }
   
   public final EditText getContentEditText()
   {
-    return this.whR;
+    return this.xpA;
   }
   
   public final a getEventDelegate()
   {
-    return this.whX;
+    return this.xpG;
   }
   
   public final WalletIconImageView getInfoIv()
   {
-    return this.whS;
+    return this.xpB;
   }
   
   public final int getInputLength()
   {
     AppMethodBeat.i(67311);
-    if (this.whR != null)
+    if (this.xpA != null)
     {
-      int i = this.whR.getText().length();
+      int i = this.xpA.getText().length();
       AppMethodBeat.o(67311);
       return i;
     }
@@ -309,71 +313,71 @@ public final class MallFormView
   
   public final a getInputValidChangeListener()
   {
-    return this.whU;
+    return this.xpD;
   }
   
   public final KeyListener getKeyListener()
   {
     AppMethodBeat.i(67304);
-    if (this.whR != null)
+    if (this.xpA != null)
     {
-      KeyListener localKeyListener = this.whR.getKeyListener();
+      KeyListener localKeyListener = this.xpA.getKeyListener();
       AppMethodBeat.o(67304);
       return localKeyListener;
     }
-    ac.w("MicroMsg.WalletFormView", "hy: no content et");
+    ad.w("MicroMsg.WalletFormView", "hy: no content et");
     AppMethodBeat.o(67304);
     return null;
   }
   
   public final b getLogicDelegate()
   {
-    return this.whY;
+    return this.xpH;
   }
   
   public final int getMaxInputLength()
   {
-    return this.wil;
+    return this.xpU;
   }
   
   public final int getMinInputLength()
   {
-    return this.wim;
+    return this.xpV;
   }
   
   public final TextView getPrefilledTv()
   {
-    return this.whQ;
+    return this.xpz;
   }
   
   public final String getText()
   {
     AppMethodBeat.i(67303);
-    if (this.whR != null)
+    if (this.xpA != null)
     {
-      String str = this.whR.getText().toString();
-      if ((this.whY != null) && (this.whY.dtE()))
+      String str = this.xpA.getText().toString();
+      if ((this.xpH != null) && (this.xpH.dEb()))
       {
-        str = this.whY.aqq(str);
+        str = this.xpH.avp(str);
         AppMethodBeat.o(67303);
         return str;
       }
       AppMethodBeat.o(67303);
       return str;
     }
-    ac.e("MicroMsg.WalletFormView", "hy: no content et. return nil");
+    ad.e("MicroMsg.WalletFormView", "hy: no content et. return nil");
     AppMethodBeat.o(67303);
     return "";
   }
   
   public final TextView getTipsTv()
   {
-    return this.whT;
+    return this.xpC;
   }
   
   public final TextView getTitleTv()
   {
-    return this.lfN;
+    return this.lCL;
   }
   
   protected final void onAttachedToWindow()
@@ -396,41 +400,41 @@ public final class MallFormView
     super.onFinishInflate();
     if (getTitleTv() != null)
     {
-      getTitleTv().setText(this.tWv);
-      getTitleTv().setVisibility(this.wia);
+      getTitleTv().setText(this.uZe);
+      getTitleTv().setVisibility(this.xpJ);
     }
     if (getPrefilledTv() != null)
     {
-      getPrefilledTv().setText(this.wib);
-      getPrefilledTv().setVisibility(this.wic);
+      getPrefilledTv().setText(this.xpK);
+      getPrefilledTv().setVisibility(this.xpL);
     }
     if (getInfoIv() != null)
     {
-      getInfoIv().setImageResource(this.wid);
-      getInfoIv().setVisibility(this.wie);
+      getInfoIv().setImageResource(this.xpM);
+      getInfoIv().setVisibility(this.xpN);
     }
     if (getTipsTv() != null)
     {
-      getTipsTv().setText(this.wif);
-      getTipsTv().setVisibility(this.wig);
+      getTipsTv().setText(this.xpO);
+      getTipsTv().setVisibility(this.xpP);
     }
     getContext();
-    if (this.whR != null)
+    if (this.xpA != null)
     {
-      this.whR.setHint(this.wih);
-      this.whR.setGravity(this.wii);
-      this.whR.setTextColor(this.wij);
-      setText(this.wik);
-      this.whR.setBackgroundResource(this.win);
-      this.whR.setEnabled(this.wio);
-      this.whR.setFocusable(this.wiq);
-      this.whR.setClickable(this.wip);
-      this.whR.setHintTextColor(this.wit);
-      setImeOptions(this.wis);
-      setInputType(this.wir);
-      this.whR.addTextChangedListener(new TextWatcher()
+      this.xpA.setHint(this.xpQ);
+      this.xpA.setGravity(this.xpR);
+      this.xpA.setTextColor(this.xpS);
+      setText(this.xpT);
+      this.xpA.setBackgroundResource(this.xpW);
+      this.xpA.setEnabled(this.xpX);
+      this.xpA.setFocusable(this.xpZ);
+      this.xpA.setClickable(this.xpY);
+      this.xpA.setHintTextColor(this.xqc);
+      setImeOptions(this.xqb);
+      setInputType(this.xqa);
+      this.xpA.addTextChangedListener(new TextWatcher()
       {
-        private boolean wiv = false;
+        private boolean xqe = false;
         
         public final void afterTextChanged(Editable paramAnonymousEditable) {}
         
@@ -439,26 +443,26 @@ public final class MallFormView
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
           AppMethodBeat.i(67285);
-          if (MallFormView.this.aRO() != this.wiv)
+          if (MallFormView.this.aVa() != this.xqe)
           {
             if (MallFormView.c(MallFormView.this) != null) {
-              MallFormView.c(MallFormView.this).onInputValidChange(MallFormView.this.aRO());
+              MallFormView.c(MallFormView.this).onInputValidChange(MallFormView.this.aVa());
             }
-            this.wiv = MallFormView.this.aRO();
+            this.xqe = MallFormView.this.aVa();
           }
-          MallFormView.this.dtF();
+          MallFormView.this.dEc();
           AppMethodBeat.o(67285);
         }
       });
-      this.whR.setOnFocusChangeListener(this);
+      this.xpA.setOnFocusChangeListener(this);
     }
-    dtF();
-    if (this.whR != null)
+    dEc();
+    if (this.xpA != null)
     {
-      if (this.wir != 2) {
+      if (this.xqa != 2) {
         break label347;
       }
-      this.whR.setKeyListener(new NumberKeyListener()
+      this.xpA.setKeyListener(new NumberKeyListener()
       {
         protected final char[] getAcceptedChars()
         {
@@ -473,15 +477,15 @@ public final class MallFormView
     }
     for (;;)
     {
-      if (this.wil != -1) {
-        this.whR.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.wil) });
+      if (this.xpU != -1) {
+        this.xpA.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.xpU) });
       }
       AppMethodBeat.o(67294);
       return;
       label347:
-      if (this.wir == 4)
+      if (this.xqa == 4)
       {
-        this.whR.setKeyListener(new NumberKeyListener()
+        this.xpA.setKeyListener(new NumberKeyListener()
         {
           protected final char[] getAcceptedChars()
           {
@@ -494,10 +498,10 @@ public final class MallFormView
           }
         });
       }
-      else if (this.wir == 128)
+      else if (this.xqa == 128)
       {
-        this.whR.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        this.whR.setKeyListener(new NumberKeyListener()
+        this.xpA.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        this.xpA.setKeyListener(new NumberKeyListener()
         {
           protected final char[] getAcceptedChars()
           {
@@ -509,11 +513,11 @@ public final class MallFormView
             return 18;
           }
         });
-        this.whR.setRawInputType(18);
+        this.xpA.setRawInputType(18);
       }
-      else if (this.wir == 3)
+      else if (this.xqa == 3)
       {
-        this.whR.setKeyListener(new NumberKeyListener()
+        this.xpA.setKeyListener(new NumberKeyListener()
         {
           protected final char[] getAcceptedChars()
           {
@@ -528,7 +532,7 @@ public final class MallFormView
       }
       else
       {
-        this.whR.setInputType(this.wir);
+        this.xpA.setInputType(this.xqa);
       }
     }
   }
@@ -536,21 +540,21 @@ public final class MallFormView
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(67312);
-    if (this.whV != null) {
-      this.whV.onFocusChange(this, paramBoolean);
+    if (this.xpE != null) {
+      this.xpE.onFocusChange(this, paramBoolean);
     }
-    if (!aRO()) {
-      if (this.lfN != null) {
-        this.lfN.setEnabled(false);
+    if (!aVa()) {
+      if (this.lCL != null) {
+        this.lCL.setEnabled(false);
       }
     }
     for (;;)
     {
-      dtF();
+      dEc();
       AppMethodBeat.o(67312);
       return;
-      if (this.lfN != null) {
-        this.lfN.setEnabled(true);
+      if (this.lCL != null) {
+        this.lCL.setEnabled(true);
       }
     }
   }
@@ -558,18 +562,18 @@ public final class MallFormView
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(67298);
-    if ((this.whX == null) || (!this.whX.dtD()))
+    if ((this.xpG == null) || (!this.xpG.dEa()))
     {
-      if ((this.whR != null) && (b(this.whR, paramMotionEvent)) && (!this.whR.isClickable()))
+      if ((this.xpA != null) && (b(this.xpA, paramMotionEvent)) && (!this.xpA.isClickable()))
       {
-        ac.d("MicroMsg.WalletFormView", "hy: click on content but content is not clickable. whole view perform click");
+        ad.d("MicroMsg.WalletFormView", "hy: click on content but content is not clickable. whole view perform click");
         AppMethodBeat.o(67298);
         return true;
       }
-      if ((b(this.whS, paramMotionEvent)) && (paramMotionEvent.getAction() == 1))
+      if ((b(this.xpB, paramMotionEvent)) && (paramMotionEvent.getAction() == 1))
       {
-        ac.d("MicroMsg.WalletFormView", "hy: click on info iv");
-        this.whS.performClick();
+        ad.d("MicroMsg.WalletFormView", "hy: click on info iv");
+        this.xpB.performClick();
         AppMethodBeat.o(67298);
         return true;
       }
@@ -584,7 +588,7 @@ public final class MallFormView
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(67297);
-    if ((this.whX == null) || (!this.whX.dtC())) {
+    if ((this.xpG == null) || (!this.xpG.dDZ())) {
       super.onMeasure(paramInt1, paramInt2);
     }
     AppMethodBeat.o(67297);
@@ -592,14 +596,14 @@ public final class MallFormView
   
   public final void setEventDelegate(a parama)
   {
-    this.whX = parama;
+    this.xpG = parama;
   }
   
   public final void setFilters(InputFilter[] paramArrayOfInputFilter)
   {
     AppMethodBeat.i(67310);
-    if (this.whR != null) {
-      this.whR.setFilters(paramArrayOfInputFilter);
+    if (this.xpA != null) {
+      this.xpA.setFilters(paramArrayOfInputFilter);
     }
     AppMethodBeat.o(67310);
   }
@@ -607,8 +611,8 @@ public final class MallFormView
   public final void setHint(String paramString)
   {
     AppMethodBeat.i(67295);
-    if (this.whR != null) {
-      this.whR.setHint(paramString);
+    if (this.xpA != null) {
+      this.xpA.setHint(paramString);
     }
     AppMethodBeat.o(67295);
   }
@@ -616,8 +620,8 @@ public final class MallFormView
   public final void setImeOptions(int paramInt)
   {
     AppMethodBeat.i(67288);
-    if (this.whR != null) {
-      this.whR.setImeOptions(paramInt);
+    if (this.xpA != null) {
+      this.xpA.setImeOptions(paramInt);
     }
     AppMethodBeat.o(67288);
   }
@@ -625,8 +629,8 @@ public final class MallFormView
   public final void setInputType(int paramInt)
   {
     AppMethodBeat.i(67289);
-    if (this.whR != null) {
-      this.whR.setInputType(paramInt);
+    if (this.xpA != null) {
+      this.xpA.setInputType(paramInt);
     }
     AppMethodBeat.o(67289);
   }
@@ -634,25 +638,25 @@ public final class MallFormView
   public final void setKeyListener(KeyListener paramKeyListener)
   {
     AppMethodBeat.i(67307);
-    if (this.whR != null) {
-      this.whR.setKeyListener(paramKeyListener);
+    if (this.xpA != null) {
+      this.xpA.setKeyListener(paramKeyListener);
     }
     AppMethodBeat.o(67307);
   }
   
   public final void setLogicDelegate(b paramb)
   {
-    this.whY = paramb;
+    this.xpH = paramb;
   }
   
   public final void setMaxInputLength(int paramInt)
   {
-    this.wil = paramInt;
+    this.xpU = paramInt;
   }
   
   public final void setMinInputLength(int paramInt)
   {
-    this.wim = paramInt;
+    this.xpV = paramInt;
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
@@ -665,35 +669,35 @@ public final class MallFormView
   public final void setOnEditorActionListener(TextView.OnEditorActionListener paramOnEditorActionListener)
   {
     AppMethodBeat.i(67296);
-    this.whR.setOnEditorActionListener(paramOnEditorActionListener);
+    this.xpA.setOnEditorActionListener(paramOnEditorActionListener);
     AppMethodBeat.o(67296);
   }
   
   public final void setOnFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.whV = paramOnFocusChangeListener;
+    this.xpE = paramOnFocusChangeListener;
   }
   
   public final void setOnInfoIvClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(67306);
-    this.whW = paramOnClickListener;
+    this.xpF = paramOnClickListener;
     if (getInfoIv() != null) {
-      getInfoIv().setOnClickListener(this.whW);
+      getInfoIv().setOnClickListener(this.xpF);
     }
     AppMethodBeat.o(67306);
   }
   
   public final void setOnInputValidChangeListener(a parama)
   {
-    this.whU = parama;
+    this.xpD = parama;
   }
   
   public final void setSelection(int paramInt)
   {
     AppMethodBeat.i(67302);
-    if (this.whR != null) {
-      this.whR.setSelection(paramInt);
+    if (this.xpA != null) {
+      this.xpA.setSelection(paramInt);
     }
     AppMethodBeat.o(67302);
   }
@@ -701,10 +705,10 @@ public final class MallFormView
   public final void setText(String paramString)
   {
     AppMethodBeat.i(67290);
-    if (this.whR != null)
+    if (this.xpA != null)
     {
-      this.whR.setText(paramString);
-      this.whR.setSelection(getInputLength());
+      this.xpA.setText(paramString);
+      this.xpA.setSelection(getInputLength());
     }
     AppMethodBeat.o(67290);
   }

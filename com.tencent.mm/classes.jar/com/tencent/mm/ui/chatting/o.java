@@ -8,9 +8,9 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.chatting.c.b.i;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.ui.chatting.d.b.k;
 import com.tencent.mm.ui.s.b;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,23 +19,23 @@ import java.util.Set;
 
 public final class o
 {
-  public long[] HMU;
-  public a cLy;
+  public long[] JAK;
+  public com.tencent.mm.ui.chatting.e.a cWM;
   
-  public o(final a parama, long[] paramArrayOfLong)
+  public o(final com.tencent.mm.ui.chatting.e.a parama, long[] paramArrayOfLong)
   {
     AppMethodBeat.i(34486);
-    this.HMU = null;
-    this.cLy = parama;
-    this.HMU = paramArrayOfLong;
-    this.cLy.HZF.removeAllOptionMenu();
-    this.cLy.HZF.addTextOptionMenu(2, this.cLy.HZF.getMMResources().getString(2131756588), new MenuItem.OnMenuItemClickListener()
+    this.JAK = null;
+    this.cWM = parama;
+    this.JAK = paramArrayOfLong;
+    this.cWM.JOR.removeAllOptionMenu();
+    this.cWM.JOR.addTextOptionMenu(2, this.cWM.JOR.getMMResources().getString(2131756588), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(34484);
         paramAnonymousMenuItem = new Intent();
-        Object localObject2 = ((i)o.this.cLy.bf(i.class)).flS();
+        Object localObject2 = ((k)o.this.cWM.bh(k.class)).fCk();
         if (localObject2 != null)
         {
           Object localObject1 = new ArrayList();
@@ -56,25 +56,29 @@ public final class o
             i += 1;
           }
           paramAnonymousMenuItem.putExtra("k_outside_expose_proof_item_list", (long[])localObject2);
-          o.this.cLy.HZF.getContext().setResult(-1, paramAnonymousMenuItem);
+          o.this.cWM.JOR.getContext().setResult(-1, paramAnonymousMenuItem);
         }
         for (;;)
         {
-          paramAnonymousMenuItem.putExtra("k_is_group_chat", o.this.cLy.foQ());
-          o.this.cLy.HZF.fkI();
+          paramAnonymousMenuItem.putExtra("k_is_group_chat", o.this.cWM.fFv());
+          o.this.cWM.JOR.fAX();
           AppMethodBeat.o(34484);
           return false;
-          o.this.cLy.HZF.getContext().setResult(0, paramAnonymousMenuItem);
+          o.this.cWM.JOR.getContext().setResult(0, paramAnonymousMenuItem);
         }
       }
-    }, null, s.b.Hom);
-    parama = (i)this.cLy.bf(i.class);
-    parama.g(new View.OnClickListener()
+    }, null, s.b.JbS);
+    parama = (k)this.cWM.bh(k.class);
+    parama.e(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(34485);
-        parama.Bd(((Long)paramAnonymousView.getTag()).longValue());
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/ChattingExposeMode$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        parama.DR(((Long)paramAnonymousView.getTag()).longValue());
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingExposeMode$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(34485);
       }
     });

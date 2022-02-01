@@ -8,13 +8,13 @@ public abstract interface h
 {
   public abstract void a(a parama);
   
-  public abstract List<AppBrandBackgroundRunningApp> aZE();
-  
-  public abstract void aZF();
-  
-  public abstract void aZG();
-  
   public abstract void b(a parama);
+  
+  public abstract List<AppBrandBackgroundRunningApp> bdd();
+  
+  public abstract void bde();
+  
+  public abstract void bdf();
   
   public abstract void c(AppBrandBackgroundRunningOperationParcel paramAppBrandBackgroundRunningOperationParcel);
   
@@ -25,7 +25,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.h
  * JD-Core Version:    0.7.0.1
  */

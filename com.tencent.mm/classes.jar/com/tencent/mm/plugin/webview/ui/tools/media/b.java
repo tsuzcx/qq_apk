@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.media;
 
 import d.l;
 
-@l(fNY={1, 1, 16})
+@l(gfx={1, 1, 16})
 public final class b {}
 
 

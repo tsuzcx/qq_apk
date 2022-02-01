@@ -7,13 +7,13 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.plugin.wear.model.e.p;
 import com.tencent.mm.plugin.wear.model.e.p.1;
-import com.tencent.mm.protocal.protobuf.dxv;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.edv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -26,14 +26,14 @@ public class WearMessageLogic
     AppMethodBeat.i(30007);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.mm.wear.message");
-    ai.getContext().registerReceiver(this, localIntentFilter, "com.tencent.mm.wear.message", null);
+    aj.getContext().registerReceiver(this, localIntentFilter, "com.tencent.mm.wear.message", null);
     AppMethodBeat.o(30007);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(30008);
-    ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).eJ(com.tencent.mm.plugin.boots.a.b.ntc, 1170);
+    ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).eN(com.tencent.mm.plugin.boots.a.b.nTY, 1170);
     if (paramIntent.getAction().equals("com.tencent.mm.wear.message"))
     {
       paramContext = paramIntent.getExtras();
@@ -41,35 +41,35 @@ public class WearMessageLogic
       if (i == 1)
       {
         paramIntent = new a((byte)0);
-        paramIntent.BWG = i;
-        paramIntent.hRI = paramContext.getInt("key_funid");
-        paramIntent.daq = paramContext.getInt("key_sessionid");
-        paramIntent.BWH = paramContext.getByteArray("key_data");
-        paramContext = a.ews().Ue(paramIntent.hRI);
+        paramIntent.Dxa = i;
+        paramIntent.ikW = paramContext.getInt("key_funid");
+        paramIntent.dlK = paramContext.getInt("key_sessionid");
+        paramIntent.Dxb = paramContext.getByteArray("key_data");
+        paramContext = a.eKy().VW(paramIntent.ikW);
         if (paramContext != null) {}
-        for (boolean bool = paramContext.Ud(paramIntent.hRI); bool; bool = false)
+        for (boolean bool = paramContext.VV(paramIntent.ikW); bool; bool = false)
         {
-          ap.f(paramIntent);
+          aq.f(paramIntent);
           AppMethodBeat.o(30008);
           return;
         }
-        com.tencent.mm.sdk.g.b.c(paramIntent, "WearHttpMessageTask_" + paramIntent.hRI);
+        com.tencent.mm.sdk.g.b.c(paramIntent, "WearHttpMessageTask_" + paramIntent.ikW);
         AppMethodBeat.o(30008);
         return;
       }
       if (i == 2)
       {
         paramIntent = new b((byte)0);
-        paramIntent.BWG = i;
-        paramIntent.hRI = paramContext.getInt("key_funid");
-        paramIntent.daq = paramContext.getInt("key_sessionid");
-        paramIntent.BWH = paramContext.getByteArray("key_data");
-        a.ewq().a(paramIntent);
+        paramIntent.Dxa = i;
+        paramIntent.ikW = paramContext.getInt("key_funid");
+        paramIntent.dlK = paramContext.getInt("key_sessionid");
+        paramIntent.Dxb = paramContext.getByteArray("key_data");
+        a.eKw().a(paramIntent);
         AppMethodBeat.o(30008);
         return;
       }
       if (i == 3) {
-        a.ewq().a(new c((byte)0));
+        a.eKw().a(new c((byte)0));
       }
     }
     AppMethodBeat.o(30008);
@@ -78,20 +78,20 @@ public class WearMessageLogic
   final class a
     extends com.tencent.mm.plugin.wear.model.f.d
   {
-    public int BWG;
-    public byte[] BWH;
-    public int daq;
-    public int hRI;
+    public int Dxa;
+    public byte[] Dxb;
+    public int dlK;
+    public int ikW;
     
     private a() {}
     
     public final void execute()
     {
       AppMethodBeat.i(30003);
-      ac.i("MicroMsg.Wear.WearMessageLogic", "handle message %s", new Object[] { toString() });
-      com.tencent.mm.plugin.wear.model.e.a locala = a.ews().Ue(this.hRI);
+      ad.i("MicroMsg.Wear.WearMessageLogic", "handle message %s", new Object[] { toString() });
+      com.tencent.mm.plugin.wear.model.e.a locala = a.eKy().VW(this.ikW);
       if (locala != null) {
-        locala.c(this.BWG, this.daq, this.hRI, this.BWH);
+        locala.c(this.Dxa, this.dlK, this.ikW, this.Dxb);
       }
       AppMethodBeat.o(30003);
     }
@@ -104,7 +104,7 @@ public class WearMessageLogic
     public final String toString()
     {
       AppMethodBeat.i(30004);
-      String str = String.format("connectType=%d funId=%d sessionId=%d", new Object[] { Integer.valueOf(this.BWG), Integer.valueOf(this.hRI), Integer.valueOf(this.daq) });
+      String str = String.format("connectType=%d funId=%d sessionId=%d", new Object[] { Integer.valueOf(this.Dxa), Integer.valueOf(this.ikW), Integer.valueOf(this.dlK) });
       AppMethodBeat.o(30004);
       return str;
     }
@@ -113,98 +113,98 @@ public class WearMessageLogic
   final class b
     extends com.tencent.mm.plugin.wear.model.f.d
   {
-    public int BWG;
-    public byte[] BWH;
-    public int daq;
-    public int hRI;
+    public int Dxa;
+    public byte[] Dxb;
+    public int dlK;
+    public int ikW;
     
     private b() {}
     
     public final void execute()
     {
       AppMethodBeat.i(30005);
-      switch (this.hRI)
+      switch (this.ikW)
       {
       }
       for (;;)
       {
         AppMethodBeat.o(30005);
         return;
-        p localp = a.ewp().BWv;
-        int i = this.daq;
-        Object localObject = this.BWH;
-        if (localp.jHQ.contains(Integer.valueOf(i))) {
+        p localp = a.eKv().DwP;
+        int i = this.dlK;
+        Object localObject = this.Dxb;
+        if (localp.kcc.contains(Integer.valueOf(i))) {
           continue;
         }
-        dxv localdxv = new dxv();
+        edv localedv = new edv();
         try
         {
-          localdxv.parseFrom((byte[])localObject);
+          localedv.parseFrom((byte[])localObject);
           label82:
-          if (localp.BXo == i)
+          if (localp.DxH == i)
           {
-            if (localdxv.Ged)
+            if (localedv.HPj)
             {
-              ac.i("MicroMsg.Wear.VoiceToTextServer", "cancel session %d", new Object[] { Integer.valueOf(i) });
+              ad.i("MicroMsg.Wear.VoiceToTextServer", "cancel session %d", new Object[] { Integer.valueOf(i) });
               localp.reset();
               AppMethodBeat.o(30005);
               return;
             }
-            if (localdxv.Gec)
+            if (localedv.HPi)
             {
-              localp.a(i, localdxv);
-              if (localp.BXm != null)
+              localp.a(i, localedv);
+              if (localp.DxF != null)
               {
-                localp.BXm.PM();
-                localp.BXm = null;
-                ac.i("MicroMsg.Wear.VoiceToTextServer", "finish speex compress");
+                localp.DxF.Ry();
+                localp.DxF = null;
+                ad.i("MicroMsg.Wear.VoiceToTextServer", "finish speex compress");
               }
-              if (localp.BXl != null)
+              if (localp.DxE != null)
               {
-                localp.BXl.stop();
-                localp.BXl = null;
-                ac.i("MicroMsg.Wear.VoiceToTextServer", "finish voiceDetectAPI");
+                localp.DxE.stop();
+                localp.DxE = null;
+                ad.i("MicroMsg.Wear.VoiceToTextServer", "finish voiceDetectAPI");
               }
-              if (localp.BXk != null)
+              if (localp.DxD != null)
               {
-                localp.BXk.icI = true;
-                if (!localp.dBE) {
-                  az.agi().a(localp.BXk, 0);
+                localp.DxD.iwe = true;
+                if (!localp.dNR) {
+                  ba.aiU().a(localp.DxD, 0);
                 }
-                localp.BXk = null;
-                ac.i("MicroMsg.Wear.VoiceToTextServer", "finish netSceneVoiceToText");
+                localp.DxD = null;
+                ad.i("MicroMsg.Wear.VoiceToTextServer", "finish netSceneVoiceToText");
               }
               AppMethodBeat.o(30005);
               return;
             }
-            localp.a(i, localdxv);
+            localp.a(i, localedv);
             AppMethodBeat.o(30005);
             return;
           }
           localp.reset();
-          localp.BXo = i;
-          ac.i("MicroMsg.Wear.VoiceToTextServer", "startNewSession %s", new Object[] { Integer.valueOf(localp.BXo) });
-          i.deleteFile(p.BXj);
-          if (localp.BXm == null)
+          localp.DxH = i;
+          ad.i("MicroMsg.Wear.VoiceToTextServer", "startNewSession %s", new Object[] { Integer.valueOf(localp.DxH) });
+          i.deleteFile(p.DxC);
+          if (localp.DxF == null)
           {
-            localp.BXm = new com.tencent.mm.audio.e.d();
-            localp.BXm.fH(p.BXj);
+            localp.DxF = new com.tencent.mm.audio.e.d();
+            localp.DxF.gC(p.DxC);
           }
-          if (localp.BXl == null)
+          if (localp.DxE == null)
           {
-            localp.BXl = new com.tencent.qqpinyin.voicerecoapi.c(1500000);
-            if (localp.BXl.fCr() != 0)
+            localp.DxE = new com.tencent.qqpinyin.voicerecoapi.c(1500000);
+            if (localp.DxE.fTH() != 0)
             {
-              localp.BXp = -2;
+              localp.DxI = -2;
               AppMethodBeat.o(30005);
               return;
             }
           }
-          localObject = localdxv.FDc;
-          if (localp.BXk == null) {
-            ap.f(new p.1(localp, (String)localObject));
+          localObject = localedv.Hnp;
+          if (localp.DxD == null) {
+            aq.f(new p.1(localp, (String)localObject));
           }
-          localp.a(i, localdxv);
+          localp.a(i, localedv);
         }
         catch (IOException localIOException)
         {
@@ -227,8 +227,8 @@ public class WearMessageLogic
     public final void execute()
     {
       AppMethodBeat.i(30006);
-      if (a.ewp().ewA() != null) {
-        a.ewp().ewA().ewC();
+      if (a.eKv().eKG() != null) {
+        a.eKv().eKG().eKI();
       }
       AppMethodBeat.o(30006);
     }

@@ -8,67 +8,67 @@ import org.xwalk.core.XWalkNavigationHistory;
 public final class q
   extends WebBackForwardList
 {
-  XWalkNavigationHistory KGZ;
+  XWalkNavigationHistory Mxz;
   
   public q(XWalkNavigationHistory paramXWalkNavigationHistory)
   {
-    this.KGZ = paramXWalkNavigationHistory;
+    this.Mxz = paramXWalkNavigationHistory;
   }
   
   protected final WebBackForwardList clone()
   {
-    AppMethodBeat.i(208929);
-    q localq = new q(this.KGZ);
-    AppMethodBeat.o(208929);
+    AppMethodBeat.i(195570);
+    q localq = new q(this.Mxz);
+    AppMethodBeat.o(195570);
     return localq;
   }
   
   public final int getCurrentIndex()
   {
-    AppMethodBeat.i(208926);
-    if (this.KGZ == null) {}
-    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.KGZ.getCurrentIndex()))
+    AppMethodBeat.i(195567);
+    if (this.Mxz == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.Mxz.getCurrentIndex()))
     {
       int i = localInteger.intValue();
-      AppMethodBeat.o(208926);
+      AppMethodBeat.o(195567);
       return i;
     }
   }
   
   public final WebHistoryItem getCurrentItem()
   {
-    AppMethodBeat.i(208925);
-    if (this.KGZ == null)
+    AppMethodBeat.i(195566);
+    if (this.Mxz == null)
     {
-      AppMethodBeat.o(208925);
+      AppMethodBeat.o(195566);
       return null;
     }
-    r localr = new r(this.KGZ.getCurrentItem());
-    AppMethodBeat.o(208925);
+    r localr = new r(this.Mxz.getCurrentItem());
+    AppMethodBeat.o(195566);
     return localr;
   }
   
   public final WebHistoryItem getItemAtIndex(int paramInt)
   {
-    AppMethodBeat.i(208927);
-    if (this.KGZ == null)
+    AppMethodBeat.i(195568);
+    if (this.Mxz == null)
     {
-      AppMethodBeat.o(208927);
+      AppMethodBeat.o(195568);
       return null;
     }
-    r localr = new r(this.KGZ.getItemAt(paramInt));
-    AppMethodBeat.o(208927);
+    r localr = new r(this.Mxz.getItemAt(paramInt));
+    AppMethodBeat.o(195568);
     return localr;
   }
   
   public final int getSize()
   {
-    AppMethodBeat.i(208928);
-    if (this.KGZ == null) {}
-    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.KGZ.size()))
+    AppMethodBeat.i(195569);
+    if (this.Mxz == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.Mxz.size()))
     {
       int i = localInteger.intValue();
-      AppMethodBeat.o(208928);
+      AppMethodBeat.o(195569);
       return i;
     }
   }

@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.zero.tasks;
 
-import com.tencent.mars.xlog.Xlog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.kernel.a.c.a;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.protocal.MMProtocalJni;
 import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class LoadProtocolJNITask
   extends a
@@ -31,13 +31,13 @@ public class LoadProtocolJNITask
   {
     AppMethodBeat.i(133034);
     getClass().getClassLoader();
-    j.sC("MMProtocalJni");
+    j.vr("MMProtocalJni");
     retryOnce(new Runnable()
     {
       public void run()
       {
         AppMethodBeat.i(133031);
-        MMProtocalJni.setClientPackVersion(d.DIc);
+        MMProtocalJni.setClientPackVersion(d.Fnj);
         AppMethodBeat.o(133031);
       }
     });
@@ -46,7 +46,7 @@ public class LoadProtocolJNITask
       public void run()
       {
         AppMethodBeat.i(133032);
-        MMProtocalJni.setProtocalJniLogLevel(new Xlog().getLogLevel());
+        MMProtocalJni.setProtocalJniLogLevel(ad.getLogLevel());
         AppMethodBeat.o(133032);
       }
     });

@@ -8,34 +8,34 @@ import java.util.List;
 public final class g
   implements h
 {
-  private int aZs;
-  private final List<v.a> bgt;
-  private final com.google.android.exoplayer2.c.m[] bgu;
-  private boolean bgv;
-  private int bgw;
-  private long bgx;
+  private int bjN;
+  private final List<v.a> bqN;
+  private final com.google.android.exoplayer2.c.m[] bqO;
+  private boolean bqP;
+  private int bqQ;
+  private long bqR;
   
   public g(List<v.a> paramList)
   {
     AppMethodBeat.i(92228);
-    this.bgt = paramList;
-    this.bgu = new com.google.android.exoplayer2.c.m[paramList.size()];
+    this.bqN = paramList;
+    this.bqO = new com.google.android.exoplayer2.c.m[paramList.size()];
     AppMethodBeat.o(92228);
   }
   
   private boolean e(com.google.android.exoplayer2.i.m paramm, int paramInt)
   {
     AppMethodBeat.i(92232);
-    if (paramm.vy() == 0)
+    if (paramm.wV() == 0)
     {
       AppMethodBeat.o(92232);
       return false;
     }
     if (paramm.readUnsignedByte() != paramInt) {
-      this.bgv = false;
+      this.bqP = false;
     }
-    this.bgw -= 1;
-    boolean bool = this.bgv;
+    this.bqQ -= 1;
+    boolean bool = this.bqP;
     AppMethodBeat.o(92232);
     return bool;
   }
@@ -44,13 +44,13 @@ public final class g
   {
     AppMethodBeat.i(92229);
     int i = 0;
-    while (i < this.bgu.length)
+    while (i < this.bqO.length)
     {
-      v.a locala = (v.a)this.bgt.get(i);
-      paramd.ts();
-      com.google.android.exoplayer2.c.m localm = paramg.dW(paramd.getTrackId());
-      localm.f(Format.a(paramd.tt(), "application/dvbsubs", Collections.singletonList(locala.biu), locala.aTm, null));
-      this.bgu[i] = localm;
+      v.a locala = (v.a)this.bqN.get(i);
+      paramd.uR();
+      com.google.android.exoplayer2.c.m localm = paramg.eb(paramd.getTrackId());
+      localm.f(Format.a(paramd.uS(), "application/dvbsubs", Collections.singletonList(locala.bsO), locala.language, null));
+      this.bqO[i] = localm;
       i += 1;
     }
     AppMethodBeat.o(92229);
@@ -61,31 +61,31 @@ public final class g
     if (!paramBoolean) {
       return;
     }
-    this.bgv = true;
-    this.bgx = paramLong;
-    this.aZs = 0;
-    this.bgw = 2;
+    this.bqP = true;
+    this.bqR = paramLong;
+    this.bjN = 0;
+    this.bqQ = 2;
   }
   
   public final void t(com.google.android.exoplayer2.i.m paramm)
   {
     int i = 0;
     AppMethodBeat.i(92231);
-    if (this.bgv)
+    if (this.bqP)
     {
-      if ((this.bgw == 2) && (!e(paramm, 32)))
+      if ((this.bqQ == 2) && (!e(paramm, 32)))
       {
         AppMethodBeat.o(92231);
         return;
       }
-      if ((this.bgw == 1) && (!e(paramm, 0)))
+      if ((this.bqQ == 1) && (!e(paramm, 0)))
       {
         AppMethodBeat.o(92231);
         return;
       }
       int j = paramm.position;
-      int k = paramm.vy();
-      com.google.android.exoplayer2.c.m[] arrayOfm = this.bgu;
+      int k = paramm.wV();
+      com.google.android.exoplayer2.c.m[] arrayOfm = this.bqO;
       int m = arrayOfm.length;
       while (i < m)
       {
@@ -94,37 +94,37 @@ public final class g
         localm.a(paramm, k);
         i += 1;
       }
-      this.aZs += k;
+      this.bjN += k;
     }
     AppMethodBeat.o(92231);
   }
   
-  public final void tg()
+  public final void uF()
   {
-    this.bgv = false;
+    this.bqP = false;
   }
   
-  public final void th()
+  public final void uG()
   {
     AppMethodBeat.i(92230);
-    if (this.bgv)
+    if (this.bqP)
     {
-      com.google.android.exoplayer2.c.m[] arrayOfm = this.bgu;
+      com.google.android.exoplayer2.c.m[] arrayOfm = this.bqO;
       int j = arrayOfm.length;
       int i = 0;
       while (i < j)
       {
-        arrayOfm[i].a(this.bgx, 1, this.aZs, 0, null);
+        arrayOfm[i].a(this.bqR, 1, this.bjN, 0, null);
         i += 1;
       }
-      this.bgv = false;
+      this.bqP = false;
     }
     AppMethodBeat.o(92230);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.g
  * JD-Core Version:    0.7.0.1
  */

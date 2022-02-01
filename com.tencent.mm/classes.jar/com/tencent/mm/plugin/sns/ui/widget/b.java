@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.sns.ui.widget;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  public static boolean jK(String paramString1, String paramString2)
+  public static boolean jX(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(200667);
+    AppMethodBeat.i(198606);
     if ((TextUtils.isEmpty(paramString1)) || (!paramString1.equals(paramString2)))
     {
-      ac.d("SnsCardAdTagUtils", "should refresh adTag");
-      AppMethodBeat.o(200667);
+      ad.d("SnsCardAdTagUtils", "should refresh adTag");
+      AppMethodBeat.o(198606);
       return false;
     }
-    ac.d("SnsCardAdTagUtils", "should not refresh adTag, show origin adTag");
-    AppMethodBeat.o(200667);
+    ad.d("SnsCardAdTagUtils", "should not refresh adTag, show origin adTag");
+    AppMethodBeat.o(198606);
     return true;
   }
 }

@@ -4,13 +4,13 @@ public abstract interface e<T>
 {
   public abstract void cleanup();
   
-  public abstract T nX();
+  public abstract T op();
   
   public static abstract interface a<T>
   {
-    public abstract e<T> S(T paramT);
+    public abstract e<T> T(T paramT);
     
-    public abstract Class<T> nU();
+    public abstract Class<T> om();
   }
 }
 

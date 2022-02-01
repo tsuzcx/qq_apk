@@ -9,9 +9,30 @@ public class g
   public int certificateVerifyPolicy = 2;
   public int connectionCount = 1;
   public String customHeader = "";
-  public boolean dBE;
+  public boolean dNR;
+  public int ePC = -1;
   public String emojiExtinfo = "";
   public int expectImageFormat = 1;
+  public int fJA = 1;
+  public g.b fJB;
+  public String fJi = "task_default";
+  public a fJj;
+  public int fJk = -1;
+  public int fJl = -1;
+  public String fJm = "";
+  public int fJn = 0;
+  public int fJo = 0;
+  public String[] fJp = null;
+  public boolean fJq = true;
+  public boolean fJr = false;
+  public boolean fJs = false;
+  public String fJt = "";
+  public Map<String, String> fJu = null;
+  public boolean fJv = false;
+  public boolean fJw = false;
+  public boolean fJx = false;
+  public boolean fJy = false;
+  public int fJz;
   public int field_advideoflag = 0;
   public String field_aesKey = "";
   public int field_appType = 0;
@@ -58,63 +79,45 @@ public class g
   public int field_videosource = 0;
   public String field_wxmsgparam = "";
   public byte[] fileBuffer;
-  public a frb;
-  public int frc = -1;
-  public int frd = -1;
-  public String fre = "";
-  public int frf = 0;
-  public int frg = 0;
-  public String[] frh = null;
-  public boolean fri = true;
-  public boolean frj = false;
-  public boolean frk = false;
-  public String frl = "";
-  public Map<String, String> frm = null;
-  public boolean frn = false;
-  public boolean fro = false;
-  public boolean frp = false;
-  public int frq;
-  public int frr = 1;
-  public b frs;
   public boolean is_resume_task = false;
   public int lastError = 0;
   public long preloadMinSize = 0L;
   public int snsVersion = 0;
   public byte[] thumbnailBuffer;
   
-  public final boolean VA()
+  public final boolean XR()
   {
-    return this.frr == 2;
+    return this.fJA == 2;
   }
   
-  public final boolean VB()
+  public final boolean XS()
   {
-    return this.frr == 3;
+    return this.fJA == 3;
   }
   
-  public final boolean VC()
+  public final boolean XT()
   {
-    return this.frr == 1;
+    return this.fJA == 1;
   }
   
-  public final boolean VD()
+  public final boolean XU()
   {
-    return this.frr == 4;
+    return this.fJA == 4;
   }
   
-  public final boolean VE()
+  public final boolean XV()
   {
-    return this.frr == 6;
+    return this.fJA == 6;
   }
   
-  public final boolean VF()
+  public final boolean XW()
   {
-    return this.frr == 8;
+    return this.fJA == 8;
   }
   
-  public final boolean VG()
+  public final boolean XX()
   {
-    return this.frr == 7;
+    return this.fJA == 7;
   }
   
   public static abstract interface a
@@ -124,11 +127,6 @@ public class g
     public abstract void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream);
     
     public abstract byte[] f(String paramString, byte[] paramArrayOfByte);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void b(String paramString, d paramd);
   }
 }
 

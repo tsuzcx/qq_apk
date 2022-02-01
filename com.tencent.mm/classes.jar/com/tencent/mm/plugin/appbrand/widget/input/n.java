@@ -15,7 +15,7 @@ import android.widget.FrameLayout.LayoutParams;
 import com.tencent.luggage.h.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.WeakHashMap;
@@ -25,26 +25,26 @@ public final class n
   extends FrameLayout
 {
   private static final int VIEW_ID = 2131296838;
-  private int lzd;
+  private int lYB;
   private View mContent;
-  private View mDM;
-  private final int[] mDN;
-  private a mDO;
-  private WeakHashMap<View, b> mDP;
-  private Runnable mDQ;
-  private final Runnable mDR;
-  private final Set<a> mDS;
   private boolean mInLayout;
+  private View nek;
+  private final int[] nel;
+  private a nem;
+  private WeakHashMap<View, b> nen;
+  private Runnable neo;
+  private final Runnable nep;
+  private final Set<a> neq;
   
   public n(Context paramContext, View paramView)
   {
     super(paramContext);
     AppMethodBeat.i(137948);
-    this.lzd = -1;
+    this.lYB = -1;
     this.mInLayout = false;
-    this.mDN = new int[2];
-    this.mDP = new WeakHashMap();
-    this.mDQ = new Runnable()
+    this.nel = new int[2];
+    this.nen = new WeakHashMap();
+    this.neo = new Runnable()
     {
       public final void run()
       {
@@ -55,24 +55,24 @@ public final class n
           AppMethodBeat.o(137943);
           return;
         }
-        ac.i("MicroMsg.AppBrandUIdRootFrameLayout", "hideInactivePanelView, mPanel %s", new Object[] { n.a(n.this).getClass().getSimpleName() });
+        ad.i("MicroMsg.AppBrandUIdRootFrameLayout", "hideInactivePanelView, mPanel %s", new Object[] { n.a(n.this).getClass().getSimpleName() });
         while (i < n.this.getChildCount())
         {
           View localView = n.this.getChildAt(i);
           if ((localView != null) && (localView != n.b(n.this)) && (localView != n.a(n.this))) {
-            n.de(localView);
+            n.dg(localView);
           }
           i += 1;
         }
         AppMethodBeat.o(137943);
       }
     };
-    this.mDR = new Runnable()
+    this.nep = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(137944);
-        ac.i("MicroMsg.AppBrandUIdRootFrameLayout", "callOnPanelChanged, size %d", new Object[] { Integer.valueOf(n.c(n.this).size()) });
+        ad.i("MicroMsg.AppBrandUIdRootFrameLayout", "callOnPanelChanged, size %d", new Object[] { Integer.valueOf(n.c(n.this).size()) });
         if (n.c(n.this).size() <= 0)
         {
           AppMethodBeat.o(137944);
@@ -83,7 +83,7 @@ public final class n
         AppMethodBeat.o(137944);
       }
     };
-    this.mDS = new HashSet();
+    this.neq = new HashSet();
     super.setId(VIEW_ID);
     this.mContent = paramView;
     AppMethodBeat.o(137948);
@@ -102,12 +102,12 @@ public final class n
     AppMethodBeat.i(137947);
     paramActivity = H(paramActivity);
     if (paramActivity != null) {
-      paramActivity.bAl();
+      paramActivity.bEn();
     }
     AppMethodBeat.o(137947);
   }
   
-  public static n db(View paramView)
+  public static n dd(View paramView)
   {
     AppMethodBeat.i(137945);
     paramView = (n)paramView.getRootView().findViewById(VIEW_ID);
@@ -115,10 +115,10 @@ public final class n
     return paramView;
   }
   
-  public static u dd(View paramView)
+  public static u df(View paramView)
   {
     AppMethodBeat.i(137962);
-    paramView = db(paramView);
+    paramView = dd(paramView);
     if (paramView == null)
     {
       AppMethodBeat.o(137962);
@@ -135,7 +135,7 @@ public final class n
   public final void addView(View paramView)
   {
     AppMethodBeat.i(137953);
-    if ((paramView == this.mContent) || (paramView == this.mDM)) {
+    if ((paramView == this.mContent) || (paramView == this.nek)) {
       super.addView(paramView);
     }
     AppMethodBeat.o(137953);
@@ -144,7 +144,7 @@ public final class n
   public final void addView(View paramView, int paramInt)
   {
     AppMethodBeat.i(137954);
-    if ((paramView == this.mContent) || (paramView == this.mDM)) {
+    if ((paramView == this.mContent) || (paramView == this.nek)) {
       super.addView(paramView, paramInt);
     }
     AppMethodBeat.o(137954);
@@ -153,7 +153,7 @@ public final class n
   public final void addView(View paramView, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(137955);
-    if ((paramView == this.mContent) || (paramView == this.mDM)) {
+    if ((paramView == this.mContent) || (paramView == this.nek)) {
       super.addView(paramView, paramInt1, paramInt2);
     }
     AppMethodBeat.o(137955);
@@ -162,7 +162,7 @@ public final class n
   public final void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
     AppMethodBeat.i(137957);
-    if ((paramView == this.mContent) || (paramView == this.mDM)) {
+    if ((paramView == this.mContent) || (paramView == this.nek)) {
       super.addView(paramView, paramInt, paramLayoutParams);
     }
     AppMethodBeat.o(137957);
@@ -171,7 +171,7 @@ public final class n
   public final void addView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
     AppMethodBeat.i(137956);
-    if ((paramView == this.mContent) || (paramView == this.mDM)) {
+    if ((paramView == this.mContent) || (paramView == this.nek)) {
       super.addView(paramView, paramLayoutParams);
     }
     AppMethodBeat.o(137956);
@@ -187,15 +187,15 @@ public final class n
     return false;
   }
   
-  public final void bAl()
+  public final void bEn()
   {
-    AppMethodBeat.i(206842);
-    if (this.mDM != null)
+    AppMethodBeat.i(195050);
+    if (this.nek != null)
     {
-      this.mDM.setVisibility(8);
-      this.mDM = null;
+      this.nek.setVisibility(8);
+      this.nek = null;
     }
-    AppMethodBeat.o(206842);
+    AppMethodBeat.o(195050);
   }
   
   public final boolean d(KeyEvent paramKeyEvent)
@@ -203,9 +203,9 @@ public final class n
     AppMethodBeat.i(183769);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1))
     {
-      if ((this.mDM != null) && (this.mDM.isShown()))
+      if ((this.nek != null) && (this.nek.isShown()))
       {
-        this.mDM.setVisibility(8);
+        this.nek.setVisibility(8);
         AppMethodBeat.o(183769);
         return true;
       }
@@ -220,7 +220,7 @@ public final class n
     return bool;
   }
   
-  public final void dc(View paramView)
+  public final void de(View paramView)
   {
     AppMethodBeat.i(137960);
     n(paramView, false);
@@ -230,16 +230,16 @@ public final class n
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(137952);
-    b localb = (b)this.mDP.get(this.mDM);
-    if ((localb != null) && (localb.mDU) && (this.mDM != null) && (this.mDM.isShown()) && (paramMotionEvent.getAction() == 0))
+    b localb = (b)this.nen.get(this.nek);
+    if ((localb != null) && (localb.nes) && (this.nek != null) && (this.nek.isShown()) && (paramMotionEvent.getAction() == 0))
     {
       float f1 = paramMotionEvent.getRawY();
-      this.mDM.getLocationOnScreen(this.mDN);
-      float f2 = this.mDN[1];
-      float f3 = this.mDM.getHeight();
+      this.nek.getLocationOnScreen(this.nel);
+      float f2 = this.nel[1];
+      float f3 = this.nek.getHeight();
       if ((f1 < f2) || (f1 > f3 + f2))
       {
-        this.mDM.setVisibility(8);
+        this.nek.setVisibility(8);
         AppMethodBeat.o(137952);
         return true;
       }
@@ -251,34 +251,34 @@ public final class n
   
   public final View getCurrentBottomPanel()
   {
-    return this.mDM;
+    return this.nek;
   }
   
   public final a getOnLayoutListener()
   {
-    return this.mDO;
+    return this.nem;
   }
   
   public final void n(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(137959);
-    if (this.mDM != null)
+    if (this.nek != null)
     {
-      this.mDM.setVisibility(8);
-      this.mDM = null;
+      this.nek.setVisibility(8);
+      this.nek = null;
     }
     if (this != paramView.getParent())
     {
       if (paramView.getParent() != null) {
         ((ViewGroup)paramView.getParent()).removeView(paramView);
       }
-      this.mDM = paramView;
+      this.nek = paramView;
       Object localObject = new FrameLayout.LayoutParams(-1, -2);
       ((FrameLayout.LayoutParams)localObject).gravity = 80;
       super.addView(paramView, (ViewGroup.LayoutParams)localObject);
       localObject = new b((byte)0);
-      ((b)localObject).mDU = paramBoolean;
-      this.mDP.put(paramView, localObject);
+      ((b)localObject).nes = paramBoolean;
+      this.nen.put(paramView, localObject);
     }
     AppMethodBeat.o(137959);
   }
@@ -307,7 +307,7 @@ public final class n
           i1 = k;
           if (localView != this.mContent)
           {
-            localb = (b)this.mDP.get(localView);
+            localb = (b)this.nen.get(localView);
             i = j;
             i2 = n;
             i1 = k;
@@ -317,18 +317,18 @@ public final class n
               if (j == 0)
               {
                 i = j;
-                if (localb.mDV != 0)
+                if (localb.neu != 0)
                 {
                   i = j;
                   if (localView.getVisibility() == 0)
                   {
-                    this.mDM = localView;
-                    post(this.mDQ);
+                    this.nek = localView;
+                    post(this.neo);
                     i = 1;
                   }
                 }
               }
-              if (localb.mDV != 0) {
+              if (localb.neu != 0) {
                 break label234;
               }
               j = 1;
@@ -344,7 +344,7 @@ public final class n
         for (i1 = 1;; i1 = 0)
         {
           i2 = n & i1;
-          localb.mDV = localView.getVisibility();
+          localb.neu = localView.getVisibility();
           i1 = j | k;
           m += 1;
           j = i;
@@ -356,12 +356,12 @@ public final class n
         }
       }
       if ((j != 0) || ((k != 0) && (n != 0))) {
-        post(this.mDR);
+        post(this.nep);
       }
     }
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.mDO != null) {
-      this.mDO.df(this);
+    if (this.nem != null) {
+      this.nem.dh(this);
     }
     this.mInLayout = false;
     AppMethodBeat.o(137961);
@@ -370,8 +370,8 @@ public final class n
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(137950);
-    if (this.lzd > 0) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.lzd, 1073741824);
+    if (this.lYB > 0) {
+      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.lYB, 1073741824);
     }
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(137950);
@@ -381,17 +381,17 @@ public final class n
   {
     AppMethodBeat.i(137958);
     super.onViewRemoved(paramView);
-    this.mDP.remove(paramView);
+    this.nen.remove(paramView);
     AppMethodBeat.o(137958);
   }
   
   public final void setForceHeight(int paramInt)
   {
     AppMethodBeat.i(137949);
-    if (paramInt != this.lzd) {}
+    if (paramInt != this.lYB) {}
     for (int i = 1;; i = 0)
     {
-      this.lzd = paramInt;
+      this.lYB = paramInt;
       if (i == 0) {
         break label62;
       }
@@ -415,20 +415,20 @@ public final class n
   
   public final void setOnLayoutListener(a parama)
   {
-    this.mDO = parama;
+    this.nem = parama;
   }
   
   public static abstract interface a {}
   
   static final class b
   {
-    boolean mDU;
-    int mDV = 8;
+    boolean nes;
+    int neu = 8;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.n
  * JD-Core Version:    0.7.0.1
  */

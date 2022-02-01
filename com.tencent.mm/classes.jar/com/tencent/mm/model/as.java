@@ -1,12 +1,20 @@
 package com.tencent.mm.model;
 
-import android.app.Notification;
-
+@Deprecated
 public abstract interface as
 {
-  public abstract void cancel(int paramInt);
-  
-  public abstract void notify(int paramInt, Notification paramNotification);
+  public static abstract interface c
+  {
+    public abstract String A(int paramInt, boolean paramBoolean);
+    
+    public abstract void aBB();
+    
+    public abstract String or(int paramInt);
+    
+    public abstract String os(int paramInt);
+    
+    public abstract boolean ot(int paramInt);
+  }
 }
 
 

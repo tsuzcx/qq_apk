@@ -1,10 +1,10 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ks;
-import com.tencent.mm.protocal.protobuf.kt;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.lb;
+import com.tencent.mm.protocal.protobuf.lc;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.IOException;
 
 public final class m
@@ -14,7 +14,7 @@ public final class m
     extends l.d
     implements l.b
   {
-    public int DIQ = 0;
+    public int FnX = 0;
     public int netType;
     
     public final int getCmdId()
@@ -40,23 +40,23 @@ public final class m
     public final byte[] toProtoBuf()
     {
       AppMethodBeat.i(32084);
-      Object localObject2 = new ks();
-      ((ks)localObject2).DWJ = d.DIc;
-      ((ks)localObject2).DXP = 2;
-      ((ks)localObject2).DXQ = this.netType;
-      ((ks)localObject2).DXR = this.DIQ;
-      ac.i("MicroMsg.MMBgFg", "somr online:%d nettype:%d ver:%d devid:%d", new Object[] { Integer.valueOf(((ks)localObject2).DXR), Integer.valueOf(((ks)localObject2).DXQ), Integer.valueOf(((ks)localObject2).DWJ), Integer.valueOf(((ks)localObject2).DXP) });
+      Object localObject2 = new lb();
+      ((lb)localObject2).FCf = d.Fnj;
+      ((lb)localObject2).FDl = 2;
+      ((lb)localObject2).FDm = this.netType;
+      ((lb)localObject2).FDn = this.FnX;
+      ad.i("MicroMsg.MMBgFg", "somr online:%d nettype:%d ver:%d devid:%d", new Object[] { Integer.valueOf(((lb)localObject2).FDn), Integer.valueOf(((lb)localObject2).FDm), Integer.valueOf(((lb)localObject2).FCf), Integer.valueOf(((lb)localObject2).FDl) });
       Object localObject1 = null;
       try
       {
-        localObject2 = ((ks)localObject2).toByteArray();
+        localObject2 = ((lb)localObject2).toByteArray();
         localObject1 = localObject2;
       }
       catch (IOException localIOException)
       {
         for (;;)
         {
-          ac.e("MicroMsg.MMBgFg", "MMBgfg toProtoBuf exception:%s", new Object[] { bs.m(localIOException) });
+          ad.e("MicroMsg.MMBgFg", "MMBgfg toProtoBuf exception:%s", new Object[] { bt.n(localIOException) });
         }
       }
       AppMethodBeat.o(32084);
@@ -68,21 +68,21 @@ public final class m
     extends l.e
     implements l.c
   {
-    public kt DIR;
+    public lc FnY;
     
     public b()
     {
       AppMethodBeat.i(32085);
-      this.DIR = new kt();
+      this.FnY = new lc();
       AppMethodBeat.o(32085);
     }
     
     public final int fromProtoBuf(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(32086);
-      this.DIR = ((kt)new kt().parseFrom(paramArrayOfByte));
-      ac.d("MicroMsg.MMBgFg", "retcode:" + this.DIR.dae);
-      int i = this.DIR.dae;
+      this.FnY = ((lc)new lc().parseFrom(paramArrayOfByte));
+      ad.d("MicroMsg.MMBgFg", "retcode:" + this.FnY.dlw);
+      int i = this.FnY.dlw;
       AppMethodBeat.o(32086);
       return i;
     }
@@ -100,7 +100,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.m
  * JD-Core Version:    0.7.0.1
  */

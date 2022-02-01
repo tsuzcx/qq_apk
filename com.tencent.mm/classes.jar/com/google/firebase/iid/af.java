@@ -38,12 +38,12 @@ final class af
     try
     {
       Log.isLoggable("FirebaseInstanceId", 3);
-      paramContext = n(paramContext, paramString);
+      paramContext = m(paramContext, paramString);
       paramContext.createNewFile();
       paramString = new Properties();
       paramString.setProperty("pub", paramag.zzq());
-      paramString.setProperty("pri", paramag.wQ());
-      paramString.setProperty("cre", String.valueOf(paramag.bBZ));
+      paramString.setProperty("pri", paramag.yn());
+      paramString.setProperty("cre", String.valueOf(paramag.bMn));
       paramag = new FileOutputStream(paramContext);
       paramContext = localObject;
       try
@@ -124,20 +124,20 @@ final class af
       Log.isLoggable("FirebaseInstanceId", 3);
       paramContext = paramContext.edit();
       paramContext.putString(p.o(paramString, "|P|"), paramag.zzq());
-      paramContext.putString(p.o(paramString, "|K|"), paramag.wQ());
-      paramContext.putString(p.o(paramString, "cre"), String.valueOf(paramag.bBZ));
+      paramContext.putString(p.o(paramString, "|K|"), paramag.yn());
+      paramContext.putString(p.o(paramString, "cre"), String.valueOf(paramag.bMn));
       paramContext.commit();
       AppMethodBeat.o(4245);
     }
   }
   
-  static ag k(Context paramContext, String paramString)
+  static ag j(Context paramContext, String paramString)
   {
     AppMethodBeat.i(4236);
-    ag localag1 = new ag(a.wH(), System.currentTimeMillis());
+    ag localag1 = new ag(a.ye(), System.currentTimeMillis());
     try
     {
-      ag localag2 = l(paramContext, paramString);
+      ag localag2 = k(paramContext, paramString);
       if (localag2 != null)
       {
         Log.isLoggable("FirebaseInstanceId", 3);
@@ -156,14 +156,14 @@ final class af
   }
   
   /* Error */
-  static ag l(Context paramContext, String paramString)
+  static ag k(Context paramContext, String paramString)
   {
     // Byte code:
     //   0: sipush 4237
     //   3: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: aload_1
-    //   8: invokestatic 217	com/google/firebase/iid/af:m	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/firebase/iid/ag;
+    //   8: invokestatic 217	com/google/firebase/iid/af:l	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/firebase/iid/ag;
     //   11: astore_2
     //   12: aload_2
     //   13: ifnull +17 -> 30
@@ -224,10 +224,10 @@ final class af
     //   48	54	86	com/google/firebase/iid/ah
   }
   
-  private static ag m(Context paramContext, String paramString)
+  private static ag l(Context paramContext, String paramString)
   {
     AppMethodBeat.i(4239);
-    paramContext = n(paramContext, paramString);
+    paramContext = m(paramContext, paramString);
     if (!paramContext.exists())
     {
       AppMethodBeat.o(4239);
@@ -263,7 +263,7 @@ final class af
     }
   }
   
-  private static File n(Context paramContext, String paramString)
+  private static File m(Context paramContext, String paramString)
   {
     AppMethodBeat.i(4242);
     if (TextUtils.isEmpty(paramString)) {

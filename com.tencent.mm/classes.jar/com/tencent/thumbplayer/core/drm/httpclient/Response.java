@@ -27,17 +27,17 @@ public class Response
   
   public static Response error(IOException paramIOException)
   {
-    AppMethodBeat.i(193873);
+    AppMethodBeat.i(220655);
     paramIOException = new Response(paramIOException);
-    AppMethodBeat.o(193873);
+    AppMethodBeat.o(220655);
     return paramIOException;
   }
   
   public static Response success(byte[] paramArrayOfByte, Map<String, List<String>> paramMap)
   {
-    AppMethodBeat.i(193872);
+    AppMethodBeat.i(220654);
     paramArrayOfByte = new Response(paramArrayOfByte, paramMap);
-    AppMethodBeat.o(193872);
+    AppMethodBeat.o(220654);
     return paramArrayOfByte;
   }
   

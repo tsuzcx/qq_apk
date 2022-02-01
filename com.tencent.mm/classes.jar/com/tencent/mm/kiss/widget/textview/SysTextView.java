@@ -13,22 +13,22 @@ import android.view.ViewStructure;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.reflect.Field;
 
 public class SysTextView
   extends TextView
   implements a
 {
-  private static boolean glR = false;
-  private static Field glS = null;
-  private g glD;
+  private static boolean gFB = false;
+  private static Field gFC = null;
+  private g gFn;
   
   public SysTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141096);
-    this.glD = new g(this, new com.tencent.mm.kiss.widget.textview.a.a());
+    this.gFn = new g(this, new com.tencent.mm.kiss.widget.textview.a.a());
     init();
     AppMethodBeat.o(141096);
   }
@@ -37,37 +37,37 @@ public class SysTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(141097);
-    this.glD = new g(this, new com.tencent.mm.kiss.widget.textview.a.a());
+    this.gFn = new g(this, new com.tencent.mm.kiss.widget.textview.a.a());
     init();
     AppMethodBeat.o(141097);
   }
   
-  private void ahY()
+  private void akJ()
   {
     AppMethodBeat.i(141099);
-    if (glR)
+    if (gFB)
     {
       AppMethodBeat.o(141099);
       return;
     }
     try
     {
-      if (glS == null)
+      if (gFC == null)
       {
         Field localField = TextView.class.getDeclaredField("mSingleLine");
-        glS = localField;
+        gFC = localField;
         localField.setAccessible(true);
       }
-      if (glS.getBoolean(this)) {
-        this.glD.glF.maxLines = 1;
+      if (gFC.getBoolean(this)) {
+        this.gFn.gFp.maxLines = 1;
       }
       AppMethodBeat.o(141099);
       return;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.SysPLTextView", "initSingleLine error: %s", new Object[] { localException.getMessage() });
-      glR = true;
+      ad.e("MicroMsg.SysPLTextView", "initSingleLine error: %s", new Object[] { localException.getMessage() });
+      gFB = true;
       AppMethodBeat.o(141099);
     }
   }
@@ -76,12 +76,12 @@ public class SysTextView
   {
     AppMethodBeat.i(141098);
     super.setText(" ", TextView.BufferType.SPANNABLE);
-    this.glD.glF = new com.tencent.mm.kiss.widget.textview.a.a();
-    this.glD.glF.textColor = super.getTextColors().getDefaultColor();
-    this.glD.glF.gls = super.getEllipsize();
-    this.glD.glF.gravity = super.getGravity();
-    this.glD.glF.textSize = super.getTextSize();
-    ahY();
+    this.gFn.gFp = new com.tencent.mm.kiss.widget.textview.a.a();
+    this.gFn.gFp.textColor = super.getTextColors().getDefaultColor();
+    this.gFn.gFp.gFc = super.getEllipsize();
+    this.gFn.gFp.gravity = super.getGravity();
+    this.gFn.gFp.textSize = super.getTextSize();
+    akJ();
     AppMethodBeat.o(141098);
   }
   
@@ -98,7 +98,7 @@ public class SysTextView
     }
     catch (Throwable localThrowable)
     {
-      ac.printErrStackTrace("MicroMsg.SysPLTextView", localThrowable, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.SysPLTextView", localThrowable, "", new Object[0]);
       AppMethodBeat.o(141132);
     }
     return -1;
@@ -106,29 +106,29 @@ public class SysTextView
   
   public com.tencent.mm.kiss.widget.textview.a.a getConfig()
   {
-    if (this.glD == null) {
+    if (this.gFn == null) {
       return null;
     }
-    return this.glD.glF;
+    return this.gFn.gFp;
   }
   
   public int getHorizontalDrawOffset()
   {
-    if (this.glD == null) {
+    if (this.gFn == null) {
       return 0;
     }
-    return this.glD.glI;
+    return this.gFn.gFs;
   }
   
   protected f getLayoutWrapper()
   {
     AppMethodBeat.i(141100);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141100);
       return null;
     }
-    f localf = this.glD.getLayoutWrapper();
+    f localf = this.gFn.getLayoutWrapper();
     AppMethodBeat.o(141100);
     return localf;
   }
@@ -136,12 +136,12 @@ public class SysTextView
   public int getLineCount()
   {
     AppMethodBeat.i(141118);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141118);
       return 0;
     }
-    int i = this.glD.getLineCount();
+    int i = this.gFn.getLineCount();
     AppMethodBeat.o(141118);
     return i;
   }
@@ -149,12 +149,12 @@ public class SysTextView
   public int getLineHeight()
   {
     AppMethodBeat.i(141119);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141119);
       return 0;
     }
-    int i = this.glD.getLineHeight();
+    int i = this.gFn.getLineHeight();
     AppMethodBeat.o(141119);
     return i;
   }
@@ -188,12 +188,12 @@ public class SysTextView
   public CharSequence getText()
   {
     AppMethodBeat.i(141114);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141114);
       return null;
     }
-    CharSequence localCharSequence = this.glD.getText();
+    CharSequence localCharSequence = this.gFn.getText();
     AppMethodBeat.o(141114);
     return localCharSequence;
   }
@@ -201,7 +201,7 @@ public class SysTextView
   public int getTextColor()
   {
     AppMethodBeat.i(141116);
-    int i = this.glD.getTextColor();
+    int i = this.gFn.getTextColor();
     AppMethodBeat.o(141116);
     return i;
   }
@@ -209,12 +209,12 @@ public class SysTextView
   public float getTextSize()
   {
     AppMethodBeat.i(141115);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141115);
       return 0.0F;
     }
-    float f = this.glD.getTextSize();
+    float f = this.gFn.getTextSize();
     AppMethodBeat.o(141115);
     return f;
   }
@@ -222,17 +222,17 @@ public class SysTextView
   public Layout getTvLayout()
   {
     AppMethodBeat.i(141117);
-    Layout localLayout = this.glD.getTvLayout();
+    Layout localLayout = this.gFn.getTvLayout();
     AppMethodBeat.o(141117);
     return localLayout;
   }
   
   public int getVerticalDrawOffset()
   {
-    if (this.glD == null) {
+    if (this.gFn == null) {
       return 0;
     }
-    return this.glD.glJ;
+    return this.gFn.gFt;
   }
   
   protected void onAttachedToWindow()
@@ -254,19 +254,19 @@ public class SysTextView
     AppMethodBeat.i(141125);
     try
     {
-      g localg = this.glD;
+      g localg = this.gFn;
       if (localg == null)
       {
         AppMethodBeat.o(141125);
         return;
       }
-      this.glD.onDraw(paramCanvas);
+      this.gFn.onDraw(paramCanvas);
       AppMethodBeat.o(141125);
       return;
     }
     catch (Throwable paramCanvas)
     {
-      ac.printErrStackTrace("MicroMsg.SysPLTextView", paramCanvas, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.SysPLTextView", paramCanvas, "", new Object[0]);
       AppMethodBeat.o(141125);
     }
   }
@@ -290,7 +290,7 @@ public class SysTextView
     AppMethodBeat.i(141126);
     try
     {
-      Point localPoint = this.glD.cN(paramInt1, paramInt2);
+      Point localPoint = this.gFn.cP(paramInt1, paramInt2);
       if (localPoint != null)
       {
         setMeasuredDimension(localPoint.x, localPoint.y);
@@ -309,11 +309,11 @@ public class SysTextView
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.SysPLTextView", localException, "onMeasure error: %s", new Object[] { localException.getMessage() });
+        ad.printErrStackTrace("MicroMsg.SysPLTextView", localException, "onMeasure error: %s", new Object[] { localException.getMessage() });
         AppMethodBeat.o(141126);
       }
       localThrowable = localThrowable;
-      ac.printErrStackTrace("MicroMsg.SysPLTextView", localThrowable, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.SysPLTextView", localThrowable, "", new Object[0]);
       AppMethodBeat.o(141126);
       return;
     }
@@ -335,7 +335,7 @@ public class SysTextView
     }
     catch (Exception paramViewStructure)
     {
-      ac.printErrStackTrace("MicroMsg.SysPLTextView", paramViewStructure, "onProvideStructure error: %s", new Object[] { paramViewStructure.getMessage() });
+      ad.printErrStackTrace("MicroMsg.SysPLTextView", paramViewStructure, "onProvideStructure error: %s", new Object[] { paramViewStructure.getMessage() });
       AppMethodBeat.o(141131);
     }
   }
@@ -355,7 +355,7 @@ public class SysTextView
       AppMethodBeat.o(141123);
       return false;
     }
-    boolean bool1 = this.glD.s(paramMotionEvent);
+    boolean bool1 = this.gFn.s(paramMotionEvent);
     boolean bool2 = super.onTouchEvent(paramMotionEvent);
     if (bool1)
     {
@@ -369,12 +369,12 @@ public class SysTextView
   public boolean performClick()
   {
     AppMethodBeat.i(141124);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141124);
       return false;
     }
-    if (!this.glD.performClick())
+    if (!this.gFn.performClick())
     {
       AppMethodBeat.o(141124);
       return false;
@@ -388,37 +388,37 @@ public class SysTextView
   {
     AppMethodBeat.i(141122);
     super.setClickable(paramBoolean);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141122);
       return;
     }
-    this.glD.glL = paramBoolean;
+    this.gFn.gFv = paramBoolean;
     AppMethodBeat.o(141122);
   }
   
   public void setGravity(int paramInt)
   {
     AppMethodBeat.i(141109);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141109);
       return;
     }
-    this.glD.setGravity(paramInt);
+    this.gFn.setGravity(paramInt);
     AppMethodBeat.o(141109);
   }
   
   public void setHandleClickableSpan(boolean paramBoolean)
   {
-    this.glD.glM = paramBoolean;
+    this.gFn.gFw = paramBoolean;
   }
   
   public void setLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     AppMethodBeat.i(141112);
-    if (this.glD != null) {
-      this.glD.ahX();
+    if (this.gFn != null) {
+      this.gFn.akI();
     }
     super.setLayoutParams(paramLayoutParams);
     AppMethodBeat.o(141112);
@@ -427,44 +427,44 @@ public class SysTextView
   public void setLines(int paramInt)
   {
     AppMethodBeat.i(141102);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141102);
       return;
     }
-    this.glD.setLines(paramInt);
+    this.gFn.setLines(paramInt);
     AppMethodBeat.o(141102);
   }
   
   public void setMaxLines(int paramInt)
   {
     AppMethodBeat.i(141110);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141110);
       return;
     }
-    this.glD.setMaxLines(paramInt);
+    this.gFn.setMaxLines(paramInt);
     AppMethodBeat.o(141110);
   }
   
   public void setMinLines(int paramInt)
   {
     AppMethodBeat.i(141111);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141111);
       return;
     }
-    this.glD.setMinLines(paramInt);
+    this.gFn.setMinLines(paramInt);
     AppMethodBeat.o(141111);
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(141113);
-    if (this.glD != null) {
-      this.glD.ahX();
+    if (this.gFn != null) {
+      this.gFn.akI();
     }
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(141113);
@@ -473,12 +473,12 @@ public class SysTextView
   public void setSingleLine(boolean paramBoolean)
   {
     AppMethodBeat.i(141101);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141101);
       return;
     }
-    this.glD.setSingleLine(paramBoolean);
+    this.gFn.setSingleLine(paramBoolean);
     AppMethodBeat.o(141101);
   }
   
@@ -492,37 +492,37 @@ public class SysTextView
   public final void setText$609c24db(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(141104);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       super.setText("");
       AppMethodBeat.o(141104);
       return;
     }
-    this.glD.setText(paramCharSequence, false);
+    this.gFn.setText(paramCharSequence, false);
     AppMethodBeat.o(141104);
   }
   
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(141108);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141108);
       return;
     }
-    this.glD.setTextColor(paramInt);
+    this.gFn.setTextColor(paramInt);
     AppMethodBeat.o(141108);
   }
   
   public void setTextLayout(f paramf)
   {
     AppMethodBeat.i(141107);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141107);
       return;
     }
-    this.glD.setTextLayout(paramf);
+    this.gFn.setTextLayout(paramf);
     AppMethodBeat.o(141107);
   }
   
@@ -536,12 +536,12 @@ public class SysTextView
   public void setTextSize(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(141106);
-    if (this.glD == null)
+    if (this.gFn == null)
     {
       AppMethodBeat.o(141106);
       return;
     }
-    this.glD.setTextSize(paramInt, paramFloat);
+    this.gFn.setTextSize(paramInt, paramFloat);
     AppMethodBeat.o(141106);
   }
 }

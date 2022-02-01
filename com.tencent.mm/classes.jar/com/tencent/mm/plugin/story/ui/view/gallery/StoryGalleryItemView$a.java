@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.story.ui.view.gallery;
 
-import d.g.a.q;
-import d.y;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "state", "", "index", "isSelf", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "state", "", "index", "isSelf", "", "invoke"})
 final class StoryGalleryItemView$a
-  extends d.g.b.l
-  implements q<Integer, Integer, Boolean, y>
+  extends d.g.b.q
+  implements d.g.a.q<Integer, Integer, Boolean, z>
 {
-  StoryGalleryItemView$a(q paramq)
+  StoryGalleryItemView$a(d.g.a.q paramq)
   {
     super(3);
   }

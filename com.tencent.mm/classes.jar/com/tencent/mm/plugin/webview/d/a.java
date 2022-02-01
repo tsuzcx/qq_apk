@@ -7,31 +7,31 @@ import com.tencent.mm.plugin.webview.ui.tools.jsapi.f;
 
 public final class a
 {
-  public static final String[] GZX = { "cache", "publicCache" };
+  public static final String[] OdY = { "cache", "publicCache" };
   
   public static boolean a(l paraml, f paramf)
   {
-    AppMethodBeat.i(188363);
-    if ((paramf == null) || (paraml == null) || (TextUtils.isEmpty(paraml.kCH)))
+    AppMethodBeat.i(207986);
+    if ((paramf == null) || (paraml == null) || (TextUtils.isEmpty(paraml.kYO)))
     {
-      AppMethodBeat.o(188363);
+      AppMethodBeat.o(207986);
       return false;
     }
-    String[] arrayOfString = GZX;
+    String[] arrayOfString = OdY;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
       String str = arrayOfString[i];
-      if (str.equalsIgnoreCase(paraml.kCH))
+      if (str.equalsIgnoreCase(paraml.kYO))
       {
         paramf.a(paraml, str + ":not in white list", null);
-        AppMethodBeat.o(188363);
+        AppMethodBeat.o(207986);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(188363);
+    AppMethodBeat.o(207986);
     return false;
   }
 }

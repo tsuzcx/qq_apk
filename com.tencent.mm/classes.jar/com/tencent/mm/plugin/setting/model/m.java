@@ -1,24 +1,25 @@
 package com.tencent.mm.plugin.setting.model;
 
 import android.database.Cursor;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jg;
-import com.tencent.mm.g.a.wv;
-import com.tencent.mm.g.a.wv.b;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.al.f;
+import com.tencent.mm.g.a.jo;
+import com.tencent.mm.g.a.xo;
+import com.tencent.mm.g.a.xo.b;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.l;
+import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.setting.ui.setting.UnfamiliarContactDetailUI.e;
 import com.tencent.mm.plugin.setting.ui.setting.UnfamiliarContactDetailUI.h;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.ca;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -31,42 +32,42 @@ import java.util.concurrent.CountDownLatch;
 public final class m
 {
   Object mLock;
-  public final ao onw;
-  HashSet<String> xoA;
-  public a xoB;
-  public UnfamiliarContactDetailUI.h xoC;
-  public long xoD;
-  public com.tencent.e.i.b xoE;
-  public boolean xot;
-  public boolean xou;
-  public boolean xov;
-  final CountDownLatch xow;
-  HashSet<String> xox;
-  HashSet<String> xoy;
-  HashSet<String> xoz;
+  public final ap oQR;
+  public boolean yCY;
+  public boolean yCZ;
+  public boolean yDa;
+  final CountDownLatch yDb;
+  HashSet<String> yDc;
+  HashSet<String> yDd;
+  HashSet<String> yDe;
+  HashSet<String> yDf;
+  public a yDg;
+  public UnfamiliarContactDetailUI.h yDh;
+  public long yDi;
+  public com.tencent.e.i.b yDj;
   
   public m(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, UnfamiliarContactDetailUI.h paramh)
   {
     AppMethodBeat.i(73799);
     this.mLock = new Object();
-    this.xox = new HashSet();
-    this.xoy = new HashSet();
-    this.xoz = new HashSet();
-    this.xoA = new HashSet();
-    this.xot = paramBoolean1;
-    this.xou = paramBoolean2;
-    this.xov = paramBoolean3;
+    this.yDc = new HashSet();
+    this.yDd = new HashSet();
+    this.yDe = new HashSet();
+    this.yDf = new HashSet();
+    this.yCY = paramBoolean1;
+    this.yCZ = paramBoolean2;
+    this.yDa = paramBoolean3;
     int i;
     int j;
-    if (this.xou)
+    if (this.yCZ)
     {
       i = 1;
-      if (!this.xot) {
+      if (!this.yCY) {
         break label212;
       }
       j = 1;
       label99:
-      if (!this.xov) {
+      if (!this.yDa) {
         break label218;
       }
     }
@@ -75,10 +76,10 @@ public final class m
     for (int k = 1;; k = 0)
     {
       i = k + (j + i);
-      ac.i("MicroMsg.UnfamiliarContactEngine", "[UnfamiliarContactEngine] count:%s [%s:%s:%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.xou), Boolean.valueOf(this.xot), Boolean.valueOf(this.xov) });
-      this.xow = new CountDownLatch(i);
-      this.onw = new ao("UnfamiliarContactEngine");
-      this.xoC = paramh;
+      ad.i("MicroMsg.UnfamiliarContactEngine", "[UnfamiliarContactEngine] count:%s [%s:%s:%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.yCZ), Boolean.valueOf(this.yCY), Boolean.valueOf(this.yDa) });
+      this.yDb = new CountDownLatch(i);
+      this.oQR = new ap("UnfamiliarContactEngine");
+      this.yDh = paramh;
       AppMethodBeat.o(73799);
       return;
       i = 0;
@@ -97,16 +98,16 @@ public final class m
     {
       final List localList = paramLinkedList.subList(paramInt, i);
       j localj = new j();
-      localj.jwR = 8;
-      localj.query = bs.n(localList, ",");
-      localj.syI = new l()
+      localj.jQN = 8;
+      localj.query = bt.m(localList, ",");
+      localj.tvj = new com.tencent.mm.plugin.fts.a.l()
       {
         final int limit;
         
-        public final void b(com.tencent.mm.plugin.fts.a.a.k arg1)
+        public final void b(k arg1)
         {
           AppMethodBeat.i(73793);
-          ??? = ???.syK;
+          ??? = ???.tvl;
           HashMap localHashMap;
           if ((??? != null) && (???.size() > 0))
           {
@@ -129,7 +130,7 @@ public final class m
               }
               str = (String)((Iterator)localObject3).next();
               if (!localHashMap.containsKey(str)) {
-                m.this.xoz.add(str);
+                m.this.yDe.add(str);
               }
             }
             Iterator localIterator = ((List)localObject1.get(str)).iterator();
@@ -138,19 +139,19 @@ public final class m
               if (!localIterator.hasNext()) {
                 break;
               }
-            } while (((com.tencent.mm.plugin.fts.a.a.m)localIterator.next()).syN >= 100L);
+            } while (((com.tencent.mm.plugin.fts.a.a.m)localIterator.next()).tvo >= 100L);
             for (int i = 1;; i = 0)
             {
               if (i != 0) {
                 break label432;
               }
-              m.this.xoz.add(str);
+              m.this.yDe.add(str);
               break;
               label210:
               if (this.limit >= paramLinkedList.size())
               {
-                ac.i("MicroMsg.UnfamiliarContactEngine", "[getSameChatInfoTask] finish all load! userNames.size:%s cost:%sms", new Object[] { Integer.valueOf(paramLinkedList.size()), Long.valueOf(System.currentTimeMillis() - l) });
-                m.this.xow.countDown();
+                ad.i("MicroMsg.UnfamiliarContactEngine", "[getSameChatInfoTask] finish all load! userNames.size:%s cost:%sms", new Object[] { Integer.valueOf(paramLinkedList.size()), Long.valueOf(System.currentTimeMillis() - l) });
+                m.this.yDb.countDown();
                 AppMethodBeat.o(73793);
                 return;
                 localObject3 = "[getSameChatInfoTask] is null?%s is instanceof List";
@@ -162,12 +163,12 @@ public final class m
                   localObject2[0] = Boolean.valueOf(bool);
                   bool = ???.userData instanceof HashMap;
                   i = 1;
-                  ??? = (com.tencent.mm.plugin.fts.a.a.k)localObject2;
+                  ??? = (k)localObject2;
                 }
                 for (;;)
                 {
                   ???[i] = Boolean.valueOf(bool);
-                  ac.e("MicroMsg.UnfamiliarContactEngine", (String)localObject3, (Object[])localObject2);
+                  ad.e("MicroMsg.UnfamiliarContactEngine", (String)localObject3, (Object[])localObject2);
                   break;
                   bool = false;
                   break label299;
@@ -179,7 +180,7 @@ public final class m
                     i = 0;
                     localObject2 = ???;
                     localObject3 = ???;
-                    ??? = (com.tencent.mm.plugin.fts.a.a.k)localObject2;
+                    ??? = (k)localObject2;
                     localObject2 = localObject3;
                     localObject3 = str;
                   }
@@ -189,7 +190,7 @@ public final class m
                     i = 0;
                     localObject2 = ???;
                     localObject3 = ???;
-                    ??? = (com.tencent.mm.plugin.fts.a.a.k)localObject2;
+                    ??? = (k)localObject2;
                     localObject2 = localObject3;
                     localObject3 = str;
                   }
@@ -202,33 +203,33 @@ public final class m
           }
         }
       };
-      localj.handler = this.onw;
-      ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).search(2, localj);
+      localj.handler = this.oQR;
+      ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).search(2, localj);
       AppMethodBeat.o(73800);
       return;
     }
   }
   
   final class a
-    implements com.tencent.e.i.h, com.tencent.mm.ak.g
+    implements com.tencent.e.i.h, f
   {
-    CountDownLatch pCh;
+    CountDownLatch qfM;
     long start;
-    UnfamiliarContactDetailUI.h xoK;
-    com.tencent.mm.ak.n xoL;
+    UnfamiliarContactDetailUI.h yDp;
+    com.tencent.mm.al.n yDq;
     
     a(UnfamiliarContactDetailUI.h paramh, CountDownLatch paramCountDownLatch)
     {
-      this.xoK = paramh;
-      this.pCh = paramCountDownLatch;
+      this.yDp = paramh;
+      this.qfM = paramCountDownLatch;
     }
     
-    static void dBH()
+    static void dNk()
     {
       AppMethodBeat.i(73798);
-      jg localjg = new jg();
-      localjg.dkF.dgL = 3;
-      a.GpY.l(localjg);
+      jo localjo = new jo();
+      localjo.dws.dsi = 3;
+      a.IbL.l(localjo);
       AppMethodBeat.o(73798);
     }
     
@@ -237,20 +238,20 @@ public final class m
       return "load_unfamiliar_contact";
     }
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
     {
       AppMethodBeat.i(73796);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ac.e("MicroMsg.UnfamiliarContactEngine", "[onSceneEnd] errType:%s errCode:%s errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-        this.pCh.countDown();
+        ad.e("MicroMsg.UnfamiliarContactEngine", "[onSceneEnd] errType:%s errCode:%s errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        this.qfM.countDown();
         AppMethodBeat.o(73796);
         return;
       }
       if (paramn.getType() == 292)
       {
-        this.xoL = paramn;
-        com.tencent.e.h.JZN.aS(this);
+        this.yDq = paramn;
+        com.tencent.e.h.LTJ.aR(this);
       }
       AppMethodBeat.o(73796);
     }
@@ -258,11 +259,11 @@ public final class m
     public final void run()
     {
       AppMethodBeat.i(73797);
-      Object localObject = new wv();
-      ((wv)localObject).dzE.dzG = this.xoL;
-      a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
-      int j = ((wv)localObject).dzF.state;
-      localObject = ((wv)localObject).dzF.dzH;
+      Object localObject = new xo();
+      ((xo)localObject).dLQ.dLS = this.yDq;
+      a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+      int j = ((xo)localObject).dLR.state;
+      localObject = ((xo)localObject).dLR.dLT;
       boolean bool;
       if (localObject == null)
       {
@@ -274,38 +275,38 @@ public final class m
       label166:
       for (int i = 0;; i = ((List)localObject).size())
       {
-        ac.i("MicroMsg.UnfamiliarContactEngine", "[callback] state:%s,tagList is null?%s,tagList size:%s", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool), Integer.valueOf(i) });
+        ad.i("MicroMsg.UnfamiliarContactEngine", "[callback] state:%s,tagList is null?%s,tagList size:%s", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool), Integer.valueOf(i) });
         if (j == 1) {
           break label177;
         }
         if (localObject != null) {
-          m.this.xoA.addAll((Collection)localObject);
+          m.this.yDf.addAll((Collection)localObject);
         }
-        ac.i("MicroMsg.UnfamiliarContactEngine", "[AsyncGetSnsTagInfo] %sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.start) });
-        this.pCh.countDown();
+        ad.i("MicroMsg.UnfamiliarContactEngine", "[AsyncGetSnsTagInfo] %sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.start) });
+        this.qfM.countDown();
         AppMethodBeat.o(73797);
         return;
         bool = false;
         break;
       }
       label177:
-      if (this.xoK != null) {
-        m.this.onw.postUI(new Runnable()
+      if (this.yDp != null) {
+        m.this.oQR.postUI(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(73794);
-            m.a.this.xoK.a(UnfamiliarContactDetailUI.e.xvN);
+            m.a.this.yDp.a(UnfamiliarContactDetailUI.e.yKy);
             AppMethodBeat.o(73794);
           }
         });
       }
-      m.this.onw.postDelayed(new Runnable()
+      m.this.oQR.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(73795);
-          m.a.dBH();
+          m.a.dNk();
           AppMethodBeat.o(73795);
         }
       }, 30000L);

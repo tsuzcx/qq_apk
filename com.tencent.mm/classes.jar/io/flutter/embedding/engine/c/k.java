@@ -11,27 +11,27 @@ import org.json.JSONObject;
 
 public final class k
 {
-  public e KOh;
-  private final io.flutter.plugin.a.k.c KOi;
-  public final io.flutter.plugin.a.k uzK;
+  public e MFe;
+  private final io.flutter.plugin.a.k.c MFf;
+  public final io.flutter.plugin.a.k vCn;
   
   public k(DartExecutor paramDartExecutor)
   {
     AppMethodBeat.i(10224);
-    this.KOi = new io.flutter.plugin.a.k.c()
+    this.MFf = new io.flutter.plugin.a.k.c()
     {
       public final void a(j paramAnonymousj, io.flutter.plugin.a.k.d paramAnonymousd)
       {
         AppMethodBeat.i(10261);
-        if (k.this.KOh == null)
+        if (k.this.MFe == null)
         {
           AppMethodBeat.o(10261);
           return;
         }
         Object localObject1 = paramAnonymousj.method;
-        paramAnonymousj = paramAnonymousj.fXJ;
+        paramAnonymousj = paramAnonymousj.grf;
         new StringBuilder("Received '").append((String)localObject1).append("' message.");
-        a.fMD();
+        a.gea();
         int i = -1;
         switch (((String)localObject1).hashCode())
         {
@@ -41,7 +41,7 @@ public final class k
           switch (i)
           {
           default: 
-            paramAnonymousd.daE();
+            paramAnonymousd.djR();
             AppMethodBeat.o(10261);
             return;
             if (((String)localObject1).equals("TextInput.show"))
@@ -75,12 +75,12 @@ public final class k
             break;
           }
         }
-        k.this.KOh.show();
-        paramAnonymousd.db(null);
+        k.this.MFe.show();
+        paramAnonymousd.de(null);
         AppMethodBeat.o(10261);
         return;
-        k.this.KOh.hide();
-        paramAnonymousd.db(null);
+        k.this.MFe.hide();
+        paramAnonymousd.de(null);
         AppMethodBeat.o(10261);
         return;
         try
@@ -88,7 +88,7 @@ public final class k
           paramAnonymousj = (JSONArray)paramAnonymousj;
           j = paramAnonymousj.getInt(0);
           localObject1 = paramAnonymousj.getJSONObject(1);
-          locale = k.this.KOh;
+          locale = k.this.MFe;
           paramAnonymousj = ((JSONObject)localObject1).getString("inputAction");
           if (paramAnonymousj == null)
           {
@@ -101,7 +101,7 @@ public final class k
         {
           int j;
           k.e locale;
-          paramAnonymousd.e("error", paramAnonymousj.getMessage(), null);
+          paramAnonymousd.f("error", paramAnonymousj.getMessage(), null);
           AppMethodBeat.o(10261);
           return;
           i = -1;
@@ -117,9 +117,9 @@ public final class k
             bool1 = ((JSONObject)localObject1).optBoolean("obscureText");
             bool2 = ((JSONObject)localObject1).optBoolean("autocorrect", true);
             bool3 = ((JSONObject)localObject1).optBoolean("enableSuggestions");
-            localc = k.c.aVT(((JSONObject)localObject1).getString("textCapitalization"));
+            localc = k.c.bbW(((JSONObject)localObject1).getString("textCapitalization"));
             localObject2 = ((JSONObject)localObject1).getJSONObject("inputType");
-            localObject2 = new k.b(k.f.aVU(((JSONObject)localObject2).getString("name")), ((JSONObject)localObject2).optBoolean("signed", false), ((JSONObject)localObject2).optBoolean("decimal", false));
+            localObject2 = new k.b(k.f.bbX(((JSONObject)localObject2).getString("name")), ((JSONObject)localObject2).optBoolean("signed", false), ((JSONObject)localObject2).optBoolean("decimal", false));
             if (!((JSONObject)localObject1).isNull("actionLabel")) {
               break;
             }
@@ -134,7 +134,7 @@ public final class k
             for (localObject1 = null;; localObject1 = ((JSONObject)localObject1).getString("actionLabel"))
             {
               locale.a(j, new k.a(bool1, bool2, bool3, localc, (k.b)localObject2, paramAnonymousj, (String)localObject1));
-              paramAnonymousd.db(null);
+              paramAnonymousd.de(null);
               AppMethodBeat.o(10261);
               return;
               if (!paramAnonymousj.equals("TextInputAction.newline")) {
@@ -202,25 +202,25 @@ public final class k
               break;
             }
             i = ((Integer)paramAnonymousj).intValue();
-            k.this.KOh.agB(i);
+            k.this.MFe.ajc(i);
             AppMethodBeat.o(10261);
             return;
             try
             {
               paramAnonymousj = (JSONObject)paramAnonymousj;
-              k.this.KOh.a(new k.d(paramAnonymousj.getString("text"), paramAnonymousj.getInt("selectionBase"), paramAnonymousj.getInt("selectionExtent")));
-              paramAnonymousd.db(null);
+              k.this.MFe.a(new k.d(paramAnonymousj.getString("text"), paramAnonymousj.getInt("selectionBase"), paramAnonymousj.getInt("selectionExtent")));
+              paramAnonymousd.de(null);
               AppMethodBeat.o(10261);
               return;
             }
             catch (JSONException paramAnonymousj)
             {
-              paramAnonymousd.e("error", paramAnonymousj.getMessage(), null);
+              paramAnonymousd.f("error", paramAnonymousj.getMessage(), null);
               AppMethodBeat.o(10261);
               return;
             }
-            k.this.KOh.fNI();
-            paramAnonymousd.db(null);
+            k.this.MFe.gfh();
+            paramAnonymousd.de(null);
             AppMethodBeat.o(10261);
             return;
           }
@@ -238,44 +238,44 @@ public final class k
         }
       }
     };
-    this.uzK = new io.flutter.plugin.a.k(paramDartExecutor, "flutter/textinput", g.KOX);
-    this.uzK.a(this.KOi);
+    this.vCn = new io.flutter.plugin.a.k(paramDartExecutor, "flutter/textinput", g.MFU);
+    this.vCn.a(this.MFf);
     AppMethodBeat.o(10224);
   }
   
   public static final class a
   {
-    public final boolean KOk;
-    public final boolean KOl;
-    public final boolean KOm;
-    public final k.c KOn;
-    public final k.b KOo;
-    public final Integer KOp;
-    public final String KOq;
+    public final boolean MFh;
+    public final boolean MFi;
+    public final boolean MFj;
+    public final k.c MFk;
+    public final k.b MFl;
+    public final Integer MFm;
+    public final String MFn;
     
     public a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, k.c paramc, k.b paramb, Integer paramInteger, String paramString)
     {
-      this.KOk = paramBoolean1;
-      this.KOl = paramBoolean2;
-      this.KOm = paramBoolean3;
-      this.KOn = paramc;
-      this.KOo = paramb;
-      this.KOp = paramInteger;
-      this.KOq = paramString;
+      this.MFh = paramBoolean1;
+      this.MFi = paramBoolean2;
+      this.MFj = paramBoolean3;
+      this.MFk = paramc;
+      this.MFl = paramb;
+      this.MFm = paramInteger;
+      this.MFn = paramString;
     }
   }
   
   public static final class b
   {
-    public final k.f KOr;
-    public final boolean KOs;
-    public final boolean KOt;
+    public final k.f MFo;
+    public final boolean MFp;
+    public final boolean MFq;
     
     public b(k.f paramf, boolean paramBoolean1, boolean paramBoolean2)
     {
-      this.KOr = paramf;
-      this.KOs = paramBoolean1;
-      this.KOt = paramBoolean2;
+      this.MFo = paramf;
+      this.MFp = paramBoolean1;
+      this.MFq = paramBoolean2;
     }
   }
   
@@ -299,9 +299,9 @@ public final class k
     
     public abstract void a(k.d paramd);
     
-    public abstract void agB(int paramInt);
+    public abstract void ajc(int paramInt);
     
-    public abstract void fNI();
+    public abstract void gfh();
     
     public abstract void hide();
     
@@ -310,29 +310,29 @@ public final class k
   
   public static enum f
   {
-    private final String KNn;
+    private final String MEk;
     
     static
     {
       AppMethodBeat.i(10248);
-      KOz = new f("TEXT", 0, "TextInputType.text");
-      KOA = new f("DATETIME", 1, "TextInputType.datetime");
-      KOB = new f("NUMBER", 2, "TextInputType.number");
-      KOC = new f("PHONE", 3, "TextInputType.phone");
-      KOD = new f("MULTILINE", 4, "TextInputType.multiline");
-      KOE = new f("EMAIL_ADDRESS", 5, "TextInputType.emailAddress");
-      KOF = new f("URL", 6, "TextInputType.url");
-      KOG = new f("VISIBLE_PASSWORD", 7, "TextInputType.visiblePassword");
-      KOH = new f[] { KOz, KOA, KOB, KOC, KOD, KOE, KOF, KOG };
+      MFw = new f("TEXT", 0, "TextInputType.text");
+      MFx = new f("DATETIME", 1, "TextInputType.datetime");
+      MFy = new f("NUMBER", 2, "TextInputType.number");
+      MFz = new f("PHONE", 3, "TextInputType.phone");
+      MFA = new f("MULTILINE", 4, "TextInputType.multiline");
+      MFB = new f("EMAIL_ADDRESS", 5, "TextInputType.emailAddress");
+      MFC = new f("URL", 6, "TextInputType.url");
+      MFD = new f("VISIBLE_PASSWORD", 7, "TextInputType.visiblePassword");
+      MFE = new f[] { MFw, MFx, MFy, MFz, MFA, MFB, MFC, MFD };
       AppMethodBeat.o(10248);
     }
     
     private f(String paramString)
     {
-      this.KNn = paramString;
+      this.MEk = paramString;
     }
     
-    static f aVU(String paramString)
+    static f bbX(String paramString)
     {
       AppMethodBeat.i(10247);
       f[] arrayOff = values();
@@ -341,7 +341,7 @@ public final class k
       while (i < j)
       {
         f localf = arrayOff[i];
-        if (localf.KNn.equals(paramString))
+        if (localf.MEk.equals(paramString))
         {
           AppMethodBeat.o(10247);
           return localf;

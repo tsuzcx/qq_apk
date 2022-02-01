@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.appbrand.report.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.appbrand.page.bt;
+import com.tencent.mm.plugin.appbrand.page.bs;
 
 public abstract interface h
   extends g
 {
-  public static final h lSO = new h()
+  public static final h msF = new h()
   {
-    public final boolean QH(String paramAnonymousString)
+    public final boolean Un(String paramAnonymousString)
     {
       return false;
     }
     
-    public final void a(ae paramAnonymousae1, ae paramAnonymousae2, bt paramAnonymousbt) {}
+    public final void a(ae paramAnonymousae1, ae paramAnonymousae2, bs paramAnonymousbs) {}
     
-    public final h.a btr()
+    public final h.a bxw()
     {
       return null;
     }
@@ -26,41 +26,31 @@ public abstract interface h
     
     public final void e(ae paramAnonymousae) {}
     
-    public final h.a q(ae paramAnonymousae)
+    public final h.a r(ae paramAnonymousae)
     {
       return null;
     }
   };
   
-  public abstract boolean QH(String paramString);
+  public abstract boolean Un(String paramString);
   
-  public abstract a btr();
+  public abstract a bxw();
   
-  public abstract a q(ae paramae);
+  public abstract a r(ae paramae);
   
   public static final class a
   {
-    int lSP;
-    public h.c lSQ;
-    public h.b lSR;
+    int dsf;
+    public h.c msG;
+    public h.b msH;
     public String path;
     
     a(ae paramae)
     {
       AppMethodBeat.i(48118);
-      this.lSP = paramae.hashCode();
-      this.path = paramae.lyH;
+      this.dsf = paramae.hashCode();
+      this.path = paramae.lYf;
       AppMethodBeat.o(48118);
-    }
-  }
-  
-  public static final class b
-  {
-    public String path;
-    
-    b(String paramString)
-    {
-      this.path = paramString;
     }
   }
   
@@ -83,7 +73,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.h
  * JD-Core Version:    0.7.0.1
  */

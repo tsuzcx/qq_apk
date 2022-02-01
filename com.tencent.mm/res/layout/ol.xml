@@ -4,7 +4,7 @@
     <include layout="@layout/o5" />
     <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gp">
         <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
-        <com.tencent.mm.ui.widget.MMNeat7extView android:textColor="?i" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ala" android:background="@drawable/l8" android:maxWidth="@dimen/w9" android:minHeight="@dimen/aa" style="@style/h0" />
+        <com.tencent.mm.ui.widget.MMNeat7extView android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ala" android:background="@drawable/l8" android:maxWidth="@dimen/w9" android:minHeight="@dimen/aa" style="@style/h0" />
         <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/js">
             <ImageView android:id="@id/aky" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ju" android:layout_marginRight="@dimen/js" android:src="@drawable/bau" android:layout_centerVertical="true" />
             <TextView android:textSize="@dimen/gx" android:textColor="?o" android:id="@id/aoj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ju" android:text="@string/axm" android:layout_toRightOf="@id/aky" android:layout_centerVertical="true" />

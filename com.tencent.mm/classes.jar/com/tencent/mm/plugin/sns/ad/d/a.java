@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.sns.ad.d;
 
 public final class a
 {
-  public int xIm;
-  public int xIn;
-  public int xIo;
+  public int yXB;
+  public int yXC;
+  public int yXD;
 }
 
 

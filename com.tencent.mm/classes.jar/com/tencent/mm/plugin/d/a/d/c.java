@@ -12,13 +12,13 @@ public abstract interface c
   
   public abstract void m(long paramLong, boolean paramBoolean);
   
-  public abstract void rj(long paramLong);
+  public abstract void th(long paramLong);
   
-  public abstract void yl(int paramInt);
+  public abstract void yV(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.d.c
  * JD-Core Version:    0.7.0.1
  */

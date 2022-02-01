@@ -8,7 +8,7 @@ public final class h
 {
   public h(e parame)
   {
-    super(i.b(parame.mUri, parame.fxS()));
+    super(i.b(parame.mUri, parame.fOH()));
     AppMethodBeat.i(13263);
     AppMethodBeat.o(13263);
   }
@@ -22,7 +22,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.h
  * JD-Core Version:    0.7.0.1
  */

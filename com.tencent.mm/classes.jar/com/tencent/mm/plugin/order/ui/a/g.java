@@ -10,37 +10,39 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 
 public final class g
   extends Preference
 {
-  private static int vzD;
-  private static float vzE = 16.0F;
-  f lZC;
+  private static int wEX;
+  private static float wEY = 16.0F;
   private View mView;
-  String vzF;
-  private String[] vzG;
-  private TextUtils.TruncateAt vzH;
-  private boolean vzI;
+  f mzx;
+  String wEZ;
+  private String[] wFa;
+  private TextUtils.TruncateAt wFb;
+  private boolean wFc;
   
   public g(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66820);
     this.mView = null;
-    this.vzI = false;
+    this.wFc = false;
     setLayoutResource(2131494710);
-    vzD = paramContext.getResources().getColor(2131100614);
+    wEX = paramContext.getResources().getColor(2131100614);
     AppMethodBeat.o(66820);
   }
   
   public final void a(String[] paramArrayOfString, TextUtils.TruncateAt paramTruncateAt)
   {
-    this.vzG = paramArrayOfString;
-    this.vzH = paramTruncateAt;
-    this.vzI = true;
+    this.wFa = paramArrayOfString;
+    this.wFb = paramTruncateAt;
+    this.wFc = true;
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
@@ -63,12 +65,12 @@ public final class g
     final TextView localTextView2 = (TextView)paramView.findViewById(2131302039);
     paramView = (LinearLayout)paramView.findViewById(2131302038);
     localTextView1.setText(getTitle());
-    if ((this.vzG == null) || (this.vzG.length <= 1)) {
-      localTextView2.setTextColor(vzD);
+    if ((this.wFa == null) || (this.wFa.length <= 1)) {
+      localTextView2.setTextColor(wEX);
     }
     for (;;)
     {
-      localTextView2.setText(this.vzF);
+      localTextView2.setText(this.wEZ);
       AppMethodBeat.o(66822);
       return;
       localTextView2.setOnClickListener(new View.OnClickListener()
@@ -76,6 +78,9 @@ public final class g
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(66819);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/order/ui/preference/MallOrderDeployablePreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           localTextView2.setVisibility(8);
           int i = 0;
           while (i < g.a(g.this).length)
@@ -88,6 +93,7 @@ public final class g
           if (g.b(g.this) != null) {
             g.b(g.this).notifyDataSetChanged();
           }
+          a.a(this, "com/tencent/mm/plugin/order/ui/preference/MallOrderDeployablePreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(66819);
         }
       });
@@ -96,7 +102,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.g
  * JD-Core Version:    0.7.0.1
  */

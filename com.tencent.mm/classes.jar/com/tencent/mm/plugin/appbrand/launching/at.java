@@ -1,190 +1,259 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
+import android.util.Log;
+import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bot;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.appbrand.jsapi.y.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vending.e.a;
+import d.l;
 
-public final class at
-  extends j<au>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/LaunchPrepareCallbackWrapper;", "C", "Lcom/tencent/luggage/sdk/config/AppBrandSysConfigLU;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask$PrepareCallback;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "referenced", "(Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask$PrepareCallback;)V", "mDead", "", "mReferenced", "dead", "", "onDataTransferState", "state", "", "onDownloadProcess", "progress", "onDownloadStarted", "startTime", "", "onLaunchTimeoutFallbackReloadRequested", "onPrepareDone", "config", "errorAction", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchErrorAction;", "startupPerformanceReport", "Lcom/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle;", "(Lcom/tencent/luggage/sdk/config/AppBrandSysConfigLU;Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchErrorAction;Lcom/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle;)V", "onSyncJsApiInfoStart", "onSyncLaunchStart", "onVersionUpdateEvent", "Lcom/tencent/mm/plugin/appbrand/jsapi/version/UpdateState;", "passThroughInfo", "", "tryOrThrows", "block", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
+public final class at<C extends AppBrandSysConfigLU>
+  implements AppBrandPrepareTask.b<C>, a
 {
-  public static final String lna;
+  private volatile boolean jxE;
+  private volatile AppBrandPrepareTask.b<C> lJX;
   
-  static
+  public at(AppBrandPrepareTask.b<C> paramb)
   {
-    AppMethodBeat.i(47281);
-    lna = j.getCreateSQLs(au.jmW, "LaunchWxaAppRespTable");
-    AppMethodBeat.o(47281);
+    AppMethodBeat.i(50765);
+    ad.i("MicroMsg.LaunchPrepareCallbackWrapper", "<init> hash=" + hashCode());
+    this.lJX = paramb;
+    AppMethodBeat.o(50765);
   }
   
-  public at(e parame)
+  public final void a(C paramC, AppBrandLaunchErrorAction paramAppBrandLaunchErrorAction, AppStartupPerformanceReportBundle paramAppStartupPerformanceReportBundle)
   {
-    super(parame, au.jmW, "LaunchWxaAppRespTable", au.INDEX_CREATE);
-  }
-  
-  private boolean a(au paramau, boolean paramBoolean)
-  {
-    AppMethodBeat.i(47275);
-    paramau.field_appIdHash = paramau.field_appId.hashCode();
-    super.insertNotify(paramau, paramBoolean);
-    paramBoolean = a(paramau, new String[] { "appId" });
-    ac.i("MicroMsg.LaunchWxaAppCacheStorage", "insertNotify appId %s ret %B", new Object[] { paramau.field_appId, Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(47275);
-    return paramBoolean;
-  }
-  
-  private boolean a(au paramau, boolean paramBoolean, String... paramVarArgs)
-  {
-    AppMethodBeat.i(47273);
-    int i;
-    if (!bs.T(paramVarArgs)) {
-      i = 0;
-    }
-    for (;;)
+    AppMethodBeat.i(50760);
+    try
     {
-      if (i < paramVarArgs.length)
+      AppBrandPrepareTask.b localb = this.lJX;
+      if (localb != null)
       {
-        if (paramVarArgs[i].equals("appId"))
-        {
-          paramVarArgs[i] = "appIdHash";
-          paramau.field_appIdHash = paramau.field_appId.hashCode();
-        }
+        localb.a(paramC, paramAppBrandLaunchErrorAction, paramAppStartupPerformanceReportBundle);
+        AppMethodBeat.o(50760);
+        return;
       }
-      else
+      AppMethodBeat.o(50760);
+      return;
+    }
+    catch (Throwable paramC)
+    {
+      if (this.jxE)
       {
-        paramBoolean = super.delete(paramau, paramBoolean, paramVarArgs);
-        AppMethodBeat.o(47273);
-        return paramBoolean;
+        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(paramC));
+        AppMethodBeat.o(50760);
+        return;
       }
-      i += 1;
+      AppMethodBeat.o(50760);
+      throw paramC;
     }
   }
   
-  private boolean b(au paramau, boolean paramBoolean, String... paramVarArgs)
+  public final void a(b paramb, String paramString)
   {
-    AppMethodBeat.i(47276);
-    int i;
-    if (!bs.T(paramVarArgs)) {
-      i = 0;
-    }
-    for (;;)
+    AppMethodBeat.i(189296);
+    try
     {
-      if (i < paramVarArgs.length)
+      AppBrandPrepareTask.b localb = this.lJX;
+      if (localb != null)
       {
-        if (paramVarArgs[i].equals("appId"))
-        {
-          paramVarArgs[i] = "appIdHash";
-          paramau.field_appIdHash = paramau.field_appId.hashCode();
-        }
+        localb.a(paramb, paramString);
+        AppMethodBeat.o(189296);
+        return;
       }
-      else
+      AppMethodBeat.o(189296);
+      return;
+    }
+    catch (Throwable paramb)
+    {
+      if (this.jxE)
       {
-        paramBoolean = super.updateNotify(paramau, paramBoolean, paramVarArgs);
-        ac.i("MicroMsg.LaunchWxaAppCacheStorage", "updateNotify appId %s, ret %B", new Object[] { paramau.field_appId, Boolean.valueOf(paramBoolean) });
-        AppMethodBeat.o(47276);
-        return paramBoolean;
+        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(paramb));
+        AppMethodBeat.o(189296);
+        return;
       }
-      i += 1;
+      AppMethodBeat.o(189296);
+      throw paramb;
     }
   }
   
-  public final au a(String paramString, bot parambot)
+  public final void aXo()
   {
-    AppMethodBeat.i(47271);
-    if ((bs.isNullOrNil(paramString)) || (parambot == null))
+    AppMethodBeat.i(50764);
+    try
     {
-      AppMethodBeat.o(47271);
-      return null;
-    }
-    au localau = new au();
-    localau.a(parambot);
-    localau.field_appId = paramString;
-    parambot = new au();
-    parambot.field_appId = paramString;
-    boolean bool1;
-    boolean bool2;
-    if (!a(parambot, new String[] { "appId" }))
-    {
-      bool1 = true;
-      if ((!bool1) && (parambot.equals(localau))) {
-        break label173;
-      }
-      bool2 = true;
-      label92:
-      ac.i("MicroMsg.LaunchWxaAppCacheStorage", "flush resp, appId %s, apply %B, insert %B", new Object[] { paramString, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-      if (bool2)
+      AppBrandPrepareTask.b localb = this.lJX;
+      if (localb != null)
       {
-        if (!bool1) {
-          break label179;
-        }
-        a(localau, false);
+        localb.aXo();
+        AppMethodBeat.o(50764);
+        return;
       }
+      AppMethodBeat.o(50764);
+      return;
     }
-    for (;;)
+    catch (Throwable localThrowable)
     {
-      if (!bool2) {
-        break label199;
-      }
-      if (!a(parambot, new String[] { "appId" })) {
-        break label199;
-      }
-      AppMethodBeat.o(47271);
-      return parambot;
-      bool1 = false;
-      break;
-      label173:
-      bool2 = false;
-      break label92;
-      label179:
-      b(localau, false, new String[] { "appId" });
-    }
-    label199:
-    AppMethodBeat.o(47271);
-    return localau;
-  }
-  
-  public final boolean a(au paramau, String... paramVarArgs)
-  {
-    AppMethodBeat.i(47274);
-    int i;
-    if (!bs.T(paramVarArgs)) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < paramVarArgs.length)
+      if (this.jxE)
       {
-        if (paramVarArgs[i].equals("appId"))
-        {
-          paramVarArgs[i] = "appIdHash";
-          paramau.field_appIdHash = paramau.field_appId.hashCode();
-        }
+        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
+        AppMethodBeat.o(50764);
+        return;
       }
-      else
-      {
-        boolean bool = super.get(paramau, paramVarArgs);
-        AppMethodBeat.o(47274);
-        return bool;
-      }
-      i += 1;
+      AppMethodBeat.o(50764);
+      throw localThrowable;
     }
   }
   
-  public final boolean zB(String paramString)
+  public final void aXp()
   {
-    AppMethodBeat.i(47272);
-    if (bs.isNullOrNil(paramString))
+    AppMethodBeat.i(189297);
+    try
     {
-      AppMethodBeat.o(47272);
-      return false;
+      AppBrandPrepareTask.b localb = this.lJX;
+      if (localb != null)
+      {
+        localb.aXp();
+        AppMethodBeat.o(189297);
+        return;
+      }
+      AppMethodBeat.o(189297);
+      return;
     }
-    au localau = new au();
-    localau.field_appId = paramString;
-    boolean bool = a(localau, false, new String[] { "appId" });
-    AppMethodBeat.o(47272);
-    return bool;
+    catch (Throwable localThrowable)
+    {
+      if (this.jxE)
+      {
+        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
+        AppMethodBeat.o(189297);
+        return;
+      }
+      AppMethodBeat.o(189297);
+      throw localThrowable;
+    }
+  }
+  
+  public final void aXq()
+  {
+    AppMethodBeat.i(189298);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.lJX;
+      if (localb != null)
+      {
+        localb.aXq();
+        AppMethodBeat.o(189298);
+        return;
+      }
+      AppMethodBeat.o(189298);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (this.jxE)
+      {
+        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
+        AppMethodBeat.o(189298);
+        return;
+      }
+      AppMethodBeat.o(189298);
+      throw localThrowable;
+    }
+  }
+  
+  public final void dead()
+  {
+    AppMethodBeat.i(180618);
+    ad.i("MicroMsg.LaunchPrepareCallbackWrapper", "dead() hash=" + hashCode());
+    this.lJX = null;
+    this.jxE = true;
+    AppMethodBeat.o(180618);
+  }
+  
+  public final void rC(int paramInt)
+  {
+    AppMethodBeat.i(50759);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.lJX;
+      if (localb != null)
+      {
+        localb.rC(paramInt);
+        AppMethodBeat.o(50759);
+        return;
+      }
+      AppMethodBeat.o(50759);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (this.jxE)
+      {
+        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
+        AppMethodBeat.o(50759);
+        return;
+      }
+      AppMethodBeat.o(50759);
+      throw localThrowable;
+    }
+  }
+  
+  public final void rD(int paramInt)
+  {
+    AppMethodBeat.i(50762);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.lJX;
+      if (localb != null)
+      {
+        localb.rD(paramInt);
+        AppMethodBeat.o(50762);
+        return;
+      }
+      AppMethodBeat.o(50762);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (this.jxE)
+      {
+        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
+        AppMethodBeat.o(50762);
+        return;
+      }
+      AppMethodBeat.o(50762);
+      throw localThrowable;
+    }
+  }
+  
+  public final void sC(long paramLong)
+  {
+    AppMethodBeat.i(50761);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.lJX;
+      if (localb != null)
+      {
+        localb.sC(paramLong);
+        AppMethodBeat.o(50761);
+        return;
+      }
+      AppMethodBeat.o(50761);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (this.jxE)
+      {
+        ad.w("MicroMsg.LaunchPrepareCallbackWrapper", "tryOfThrows when dead, get exception: " + Log.getStackTraceString(localThrowable));
+        AppMethodBeat.o(50761);
+        return;
+      }
+      AppMethodBeat.o(50761);
+      throw localThrowable;
+    }
   }
 }
 

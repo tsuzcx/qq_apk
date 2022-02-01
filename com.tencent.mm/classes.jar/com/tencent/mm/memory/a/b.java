@@ -6,9 +6,9 @@ import com.tencent.mm.b.f;
 import com.tencent.mm.b.f.b;
 import com.tencent.mm.b.f.c;
 import com.tencent.mm.memory.a.a.a.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -16,16 +16,16 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class b<V>
   extends a<String, V, V, com.tencent.mm.memory.a.a.a>
 {
-  private static ConcurrentHashMap<Class<?>, a> heN;
-  String heL;
-  f<String, Object> heM;
-  private f.b<String, com.tencent.mm.memory.a.a.a> heO;
-  private f.c<String, com.tencent.mm.memory.a.a.a> heP;
+  private static ConcurrentHashMap<Class<?>, a> hwV;
+  String hwT;
+  f<String, Object> hwU;
+  private f.b<String, com.tencent.mm.memory.a.a.a> hwW;
+  private f.c<String, com.tencent.mm.memory.a.a.a> hwX;
   
   static
   {
     AppMethodBeat.i(156488);
-    heN = new ConcurrentHashMap();
+    hwV = new ConcurrentHashMap();
     a(Bitmap.class, new a() {});
     a(WeakReference.class, new a() {});
     AppMethodBeat.o(156488);
@@ -35,17 +35,17 @@ public final class b<V>
   {
     super(paramInt, paramb, parama);
     AppMethodBeat.i(156471);
-    this.heL = "";
-    this.heM = null;
-    this.heO = new f.b() {};
-    this.heP = new f.c() {};
+    this.hwT = "";
+    this.hwU = null;
+    this.hwW = new f.b() {};
+    this.hwX = new f.c() {};
     an(paramClass);
     AppMethodBeat.o(156471);
   }
   
   public b(int paramInt, f.b<String, V> paramb, Class<?> paramClass)
   {
-    this(paramInt, paramb, com.tencent.mm.memory.a.a.a.a.awh(), paramClass);
+    this(paramInt, paramb, com.tencent.mm.memory.a.a.a.a.ayU(), paramClass);
     AppMethodBeat.i(156470);
     an(paramClass);
     AppMethodBeat.o(156470);
@@ -62,40 +62,40 @@ public final class b<V>
   public static void a(Class<?> paramClass, a parama)
   {
     AppMethodBeat.i(156468);
-    heN.put(paramClass, parama);
+    hwV.put(paramClass, parama);
     AppMethodBeat.o(156468);
   }
   
   private void an(Class<?> paramClass)
   {
     AppMethodBeat.i(156472);
-    this.heL = paramClass.getSimpleName();
-    this.heM = com.tencent.mm.memory.a.a.b.d(this.hfn);
+    this.hwT = paramClass.getSimpleName();
+    this.hwU = com.tencent.mm.memory.a.a.b.d(this.hxv);
     AppMethodBeat.o(156472);
   }
   
-  private int bM(V paramV)
+  private int bO(V paramV)
   {
     AppMethodBeat.i(156474);
     if (paramV != null)
     {
-      a locala = (a)heN.get(paramV.getClass());
+      a locala = (a)hwV.get(paramV.getClass());
       if (locala != null)
       {
-        i = locala.bM(paramV);
+        i = locala.bO(paramV);
         AppMethodBeat.o(156474);
         return i;
       }
     }
-    int i = this.hfs.sizeOf("", paramV);
+    int i = this.hxA.sizeOf("", paramV);
     AppMethodBeat.o(156474);
     return i;
   }
   
-  private boolean bO(V paramV)
+  private boolean bQ(V paramV)
   {
     AppMethodBeat.i(156477);
-    if (bM(paramV) * 2 >= com.tencent.mm.memory.a.a.b.e(this.hfn))
+    if (bO(paramV) * 2 >= com.tencent.mm.memory.a.a.b.e(this.hxv))
     {
       AppMethodBeat.o(156477);
       return true;
@@ -112,7 +112,7 @@ public final class b<V>
     return parama;
   }
   
-  public final V bN(V paramV)
+  public final V bP(V paramV)
   {
     return paramV;
   }
@@ -120,18 +120,18 @@ public final class b<V>
   public final V get(String paramString)
   {
     AppMethodBeat.i(156479);
-    Object localObject = this.hfs.get(paramString);
-    if ((localObject == null) && (this.heM != null)) {
-      localObject = this.heM.get(paramString);
+    Object localObject = this.hxA.get(paramString);
+    if ((localObject == null) && (this.hwU != null)) {
+      localObject = this.hwU.get(paramString);
     }
     for (;;)
     {
       com.tencent.mm.memory.a.a.a locala = null;
-      if (this.hft != null) {
-        locala = (com.tencent.mm.memory.a.a.a)this.hft.w(this.heL, paramString);
+      if (this.hxB != null) {
+        locala = (com.tencent.mm.memory.a.a.a)this.hxB.y(this.hwT, paramString);
       }
-      if (com.tencent.mm.memory.a.a.a.a.hfg) {
-        ac.v("MicroMsg.BitmapResource", "bitmap get key %s value %s bbvalue %s stack [%s]", new Object[] { paramString, localObject, locala, bs.eWi().toString() });
+      if (com.tencent.mm.memory.a.a.a.a.hxo) {
+        ad.v("MicroMsg.BitmapResource", "bitmap get key %s value %s bbvalue %s stack [%s]", new Object[] { paramString, localObject, locala, bt.flS().toString() });
       }
       AppMethodBeat.o(156479);
       return localObject;
@@ -148,9 +148,9 @@ public final class b<V>
   public final V put(String paramString, V paramV)
   {
     AppMethodBeat.i(156480);
-    if ((bO(paramV)) && (this.heM != null))
+    if ((bQ(paramV)) && (this.hwU != null))
     {
-      this.heM.put(paramString, paramV);
+      this.hwU.put(paramString, paramV);
       AppMethodBeat.o(156480);
       return null;
     }
@@ -162,8 +162,8 @@ public final class b<V>
   public final V remove(String paramString)
   {
     AppMethodBeat.i(156478);
-    if (this.heM != null) {
-      this.heM.remove(paramString);
+    if (this.hwU != null) {
+      this.hwU.remove(paramString);
     }
     paramString = super.remove(paramString);
     AppMethodBeat.o(156478);
@@ -173,14 +173,14 @@ public final class b<V>
   public final Map<String, V> snapshot()
   {
     AppMethodBeat.i(156476);
-    Map localMap = this.hfs.snapshot();
+    Map localMap = this.hxA.snapshot();
     AppMethodBeat.o(156476);
     return localMap;
   }
   
   public static abstract interface a<T>
   {
-    public abstract int bM(T paramT);
+    public abstract int bO(T paramT);
   }
 }
 

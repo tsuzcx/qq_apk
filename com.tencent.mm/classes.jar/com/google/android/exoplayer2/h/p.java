@@ -4,7 +4,7 @@ public final class p
   extends s.a
 {
   private final boolean allowCrossProtocolRedirects;
-  private final w<? super g> bur;
+  private final w<? super g> bEG;
   private final int connectTimeoutMillis;
   private final int readTimeoutMillis;
   private final String userAgent;
@@ -22,7 +22,7 @@ public final class p
   public p(String paramString, w<? super g> paramw, boolean paramBoolean)
   {
     this.userAgent = paramString;
-    this.bur = paramw;
+    this.bEG = paramw;
     this.connectTimeoutMillis = 8000;
     this.readTimeoutMillis = 8000;
     this.allowCrossProtocolRedirects = paramBoolean;

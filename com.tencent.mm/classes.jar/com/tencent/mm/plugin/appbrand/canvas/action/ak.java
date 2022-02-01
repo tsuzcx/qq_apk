@@ -38,7 +38,7 @@ public final class ak
     return true;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144989);
     TranslateActionArg localTranslateActionArg = new TranslateActionArg();

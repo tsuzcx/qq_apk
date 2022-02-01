@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 public final class e
 {
-  public static byte[] aTn(String paramString)
+  public static byte[] aZn(String paramString)
   {
     AppMethodBeat.i(138474);
     if (paramString == null)
@@ -53,7 +53,7 @@ public final class e
     return paramArrayOfByte;
   }
   
-  public static byte[] cJ(byte[] paramArrayOfByte)
+  public static byte[] cQ(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(138476);
     Object localObject = null;
@@ -83,7 +83,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.d.f.e
  * JD-Core Version:    0.7.0.1
  */

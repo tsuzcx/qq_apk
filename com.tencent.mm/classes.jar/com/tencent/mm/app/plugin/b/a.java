@@ -1,81 +1,66 @@
 package com.tencent.mm.app.plugin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fs;
-import com.tencent.mm.g.a.fu;
-import com.tencent.mm.g.a.fv;
+import com.tencent.mm.g.a.fx;
+import com.tencent.mm.g.a.fy;
 import com.tencent.mm.modelvoice.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 public final class a
 {
-  public static final class d
-    extends com.tencent.mm.sdk.b.c<fs>
-  {
-    com.tencent.mm.audio.a.a cLP;
-    String fileName;
-    
-    public d()
-    {
-      AppMethodBeat.i(161263);
-      this.__eventId = fs.class.getName().hashCode();
-      AppMethodBeat.o(161263);
-    }
-  }
-  
   public static final class f
-    extends com.tencent.mm.sdk.b.c<fv>
+    extends com.tencent.mm.sdk.b.c<fy>
   {
-    m cLR;
-    au cLS;
-    boolean cLT;
-    boolean cLU;
-    boolean cLV;
-    fv cLW;
-    Runnable cLX;
+    m cXf;
+    av cXg;
+    boolean cXh;
+    boolean cXi;
+    boolean cXj;
+    fy cXk;
+    Runnable cXl;
     String fileName;
     
     public f()
     {
       AppMethodBeat.i(161265);
       this.fileName = "";
-      this.__eventId = fv.class.getName().hashCode();
+      this.__eventId = fy.class.getName().hashCode();
       AppMethodBeat.o(161265);
     }
     
     final void stopRecord()
     {
       AppMethodBeat.i(19781);
-      if (this.cLR != null)
+      if (this.cXf != null)
       {
-        this.cLU = this.cLR.NX();
-        if (this.cLX != null)
+        this.cXi = this.cXf.PG();
+        if (this.cXl != null)
         {
-          if (this.cLW != null)
+          if (this.cXk != null)
           {
-            this.cLW.dfV.dfW = this.cLR.cVe.cVW;
-            this.cLW = null;
+            this.cXk.drr.drs = this.cXf.dgu.dhm;
+            this.cXk = null;
           }
-          if (this.cLV) {
-            this.cLX.run();
+          if (this.cXj) {
+            this.cXl.run();
           }
-          this.cLX = null;
+          this.cXl = null;
         }
-        this.cLT = true;
+        this.cXh = true;
       }
       AppMethodBeat.o(19781);
     }
   }
   
   public static final class i
-    extends com.tencent.mm.sdk.b.c<fu>
+    extends com.tencent.mm.sdk.b.c<fx>
   {
     public i()
     {
       AppMethodBeat.i(161268);
-      this.__eventId = fu.class.getName().hashCode();
+      this.__eventId = fx.class.getName().hashCode();
       AppMethodBeat.o(161268);
     }
   }

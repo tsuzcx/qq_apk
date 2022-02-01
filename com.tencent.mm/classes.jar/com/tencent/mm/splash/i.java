@@ -10,7 +10,7 @@ import java.util.ArrayList;
 final class i
   extends HellActivity
 {
-  public String Gze;
+  public String IkY;
   
   protected final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -37,7 +37,7 @@ final class i
     super.onCreate(paramBundle);
     h.b("WxSplash.SplashHackActivity", "onCreate", new Object[0]);
     setVisible(false);
-    paramBundle = new Intent(this, h.eXM());
+    paramBundle = new Intent(this, h.fnw());
     paramBundle.putExtra("hashcode", hashCode());
     startActivityForResult(paramBundle, 100);
     overridePendingTransition(0, 0);
@@ -48,9 +48,9 @@ final class i
   {
     AppMethodBeat.i(40676);
     h.b("WxSplash.SplashHackActivity", "onDestroy", new Object[0]);
-    h.GyD.remove(this);
+    h.Ikx.remove(this);
     setVisible(true);
-    h.GyD.remove(this);
+    h.Ikx.remove(this);
     super.onDestroy();
     AppMethodBeat.o(40676);
   }
@@ -59,7 +59,7 @@ final class i
   {
     AppMethodBeat.i(40673);
     h.b("WxSplash.SplashHackActivity", "onNewIntent.", new Object[0]);
-    if ((h.GyG != null) && (h.GyG.n(paramIntent))) {
+    if ((h.IkA != null) && (h.IkA.n(paramIntent))) {
       finish();
     }
     AppMethodBeat.o(40673);

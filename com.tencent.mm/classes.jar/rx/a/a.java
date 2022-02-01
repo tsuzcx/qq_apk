@@ -15,7 +15,7 @@ import java.util.Set;
 public final class a
   extends RuntimeException
 {
-  private final List<Throwable> aIG;
+  private final List<Throwable> aKx;
   private Throwable cause;
   private final String message;
   
@@ -32,7 +32,7 @@ public final class a
       {
         Throwable localThrowable = (Throwable)paramCollection.next();
         if ((localThrowable instanceof a)) {
-          localLinkedHashSet.addAll(((a)localThrowable).aIG);
+          localLinkedHashSet.addAll(((a)localThrowable).aKx);
         } else if (localThrowable != null) {
           localLinkedHashSet.add(localThrowable);
         } else {
@@ -42,8 +42,8 @@ public final class a
     }
     localLinkedHashSet.add(new NullPointerException());
     localArrayList.addAll(localLinkedHashSet);
-    this.aIG = Collections.unmodifiableList(localArrayList);
-    this.message = (this.aIG.size() + " exceptions occurred. ");
+    this.aKx = Collections.unmodifiableList(localArrayList);
+    this.message = (this.aKx.size() + " exceptions occurred. ");
     AppMethodBeat.o(90036);
   }
   
@@ -52,7 +52,7 @@ public final class a
     this(paramCollection);
   }
   
-  private static List<Throwable> H(Throwable paramThrowable)
+  private static List<Throwable> I(Throwable paramThrowable)
   {
     AppMethodBeat.i(90043);
     ArrayList localArrayList = new ArrayList();
@@ -78,7 +78,7 @@ public final class a
     return localArrayList;
   }
   
-  private static Throwable I(Throwable paramThrowable)
+  private static Throwable J(Throwable paramThrowable)
   {
     AppMethodBeat.i(90044);
     Throwable localThrowable2 = paramThrowable.getCause();
@@ -142,7 +142,7 @@ public final class a
       localStringBuilder.append("\tat ").append(localObject2).append('\n');
       i += 1;
     }
-    ??? = this.aIG.iterator();
+    ??? = this.aKx.iterator();
     i = 1;
     while (((Iterator)???).hasNext())
     {
@@ -151,7 +151,7 @@ public final class a
       a(localStringBuilder, (Throwable)localObject2, "\t");
       i += 1;
     }
-    synchronized (paramb.ggo())
+    synchronized (paramb.gyS())
     {
       paramb.println(localStringBuilder.toString());
       AppMethodBeat.o(90041);
@@ -171,7 +171,7 @@ public final class a
       {
         locala2 = new a();
         localHashSet = new HashSet();
-        localIterator1 = this.aIG.iterator();
+        localIterator1 = this.aKx.iterator();
         a locala1 = locala2;
       }
       for (;;)
@@ -184,7 +184,7 @@ public final class a
             continue;
           }
           localHashSet.add(localObject);
-          Iterator localIterator2 = H((Throwable)localObject).iterator();
+          Iterator localIterator2 = I((Throwable)localObject).iterator();
           while (localIterator2.hasNext())
           {
             Throwable localThrowable4 = (Throwable)localIterator2.next();
@@ -198,7 +198,7 @@ public final class a
         try
         {
           localThrowable1.initCause((Throwable)localObject);
-          Throwable localThrowable2 = I(localThrowable1);
+          Throwable localThrowable2 = J(localThrowable1);
           continue;
           this.cause = locala2;
           localThrowable2 = this.cause;
@@ -251,7 +251,7 @@ public final class a
   
   static abstract class b
   {
-    abstract Object ggo();
+    abstract Object gyS();
     
     abstract void println(Object paramObject);
   }
@@ -259,22 +259,22 @@ public final class a
   static final class c
     extends a.b
   {
-    private final PrintStream Mcp;
+    private final PrintStream NXr;
     
     c(PrintStream paramPrintStream)
     {
-      this.Mcp = paramPrintStream;
+      this.NXr = paramPrintStream;
     }
     
-    final Object ggo()
+    final Object gyS()
     {
-      return this.Mcp;
+      return this.NXr;
     }
     
     final void println(Object paramObject)
     {
       AppMethodBeat.i(90034);
-      this.Mcp.println(paramObject);
+      this.NXr.println(paramObject);
       AppMethodBeat.o(90034);
     }
   }
@@ -282,22 +282,22 @@ public final class a
   static final class d
     extends a.b
   {
-    private final PrintWriter Mcq;
+    private final PrintWriter NXs;
     
     d(PrintWriter paramPrintWriter)
     {
-      this.Mcq = paramPrintWriter;
+      this.NXs = paramPrintWriter;
     }
     
-    final Object ggo()
+    final Object gyS()
     {
-      return this.Mcq;
+      return this.NXs;
     }
     
     final void println(Object paramObject)
     {
       AppMethodBeat.i(90035);
-      this.Mcq.println(paramObject);
+      this.NXs.println(paramObject);
       AppMethodBeat.o(90035);
     }
   }

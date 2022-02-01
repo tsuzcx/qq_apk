@@ -19,9 +19,9 @@ public final class e
   public final int getSize()
   {
     AppMethodBeat.i(77503);
-    g localg = ((c)this.drawable).aKc.aKh;
-    int i = localg.aKi.nK();
-    int j = com.bumptech.glide.h.j.i(localg.pr().getWidth(), localg.pr().getHeight(), localg.pr().getConfig());
+    g localg = ((c)this.drawable).aLT.aLY;
+    int i = localg.aLZ.oc();
+    int j = com.bumptech.glide.h.j.i(localg.pJ().getWidth(), localg.pJ().getHeight(), localg.pJ().getConfig());
     AppMethodBeat.o(77503);
     return j + i;
   }
@@ -29,11 +29,11 @@ public final class e
   public final void initialize()
   {
     AppMethodBeat.i(77505);
-    ((c)this.drawable).pm().prepareToDraw();
+    ((c)this.drawable).pE().prepareToDraw();
     AppMethodBeat.o(77505);
   }
   
-  public final Class<c> oy()
+  public final Class<c> oQ()
   {
     return c.class;
   }
@@ -43,28 +43,28 @@ public final class e
     AppMethodBeat.i(77504);
     ((c)this.drawable).stop();
     Object localObject = (c)this.drawable;
-    ((c)localObject).aGc = true;
-    localObject = ((c)localObject).aKc.aKh;
+    ((c)localObject).aHT = true;
+    localObject = ((c)localObject).aLT.aLY;
     ((g)localObject).callbacks.clear();
-    ((g)localObject).pt();
+    ((g)localObject).pL();
     ((g)localObject).isRunning = false;
-    if (((g)localObject).aKm != null)
+    if (((g)localObject).aMd != null)
     {
-      ((g)localObject).aBl.c(((g)localObject).aKm);
-      ((g)localObject).aKm = null;
+      ((g)localObject).aDc.c(((g)localObject).aMd);
+      ((g)localObject).aMd = null;
     }
-    if (((g)localObject).aKo != null)
+    if (((g)localObject).aMf != null)
     {
-      ((g)localObject).aBl.c(((g)localObject).aKo);
-      ((g)localObject).aKo = null;
+      ((g)localObject).aDc.c(((g)localObject).aMf);
+      ((g)localObject).aMf = null;
     }
-    if (((g)localObject).aKq != null)
+    if (((g)localObject).aMh != null)
     {
-      ((g)localObject).aBl.c(((g)localObject).aKq);
-      ((g)localObject).aKq = null;
+      ((g)localObject).aDc.c(((g)localObject).aMh);
+      ((g)localObject).aMh = null;
     }
-    ((g)localObject).aKi.clear();
-    ((g)localObject).aKn = true;
+    ((g)localObject).aLZ.clear();
+    ((g)localObject).aMe = true;
     AppMethodBeat.o(77504);
   }
 }

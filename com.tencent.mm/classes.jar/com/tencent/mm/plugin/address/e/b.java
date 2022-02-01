@@ -4,15 +4,15 @@ import android.annotation.TargetApi;
 import android.content.ClipboardManager;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class b
 {
   @TargetApi(11)
-  public static void GS(String paramString)
+  public static void Kh(String paramString)
   {
     AppMethodBeat.i(21054);
-    ((ClipboardManager)ai.getContext().getSystemService("clipboard")).setText(paramString);
+    ((ClipboardManager)aj.getContext().getSystemService("clipboard")).setText(paramString);
     AppMethodBeat.o(21054);
   }
 }

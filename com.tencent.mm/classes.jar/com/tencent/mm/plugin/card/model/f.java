@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.card.model;
 
 public final class f
 {
-  public String nVN;
-  public String nVO;
-  public String nVP;
-  public boolean nVQ = false;
+  public String ozh;
+  public String ozi;
+  public String ozj;
+  public boolean ozk = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.f
  * JD-Core Version:    0.7.0.1
  */

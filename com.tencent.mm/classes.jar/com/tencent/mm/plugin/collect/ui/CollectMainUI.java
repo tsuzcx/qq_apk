@@ -7,12 +7,8 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
@@ -46,42 +42,42 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ut;
-import com.tencent.mm.g.a.xo;
-import com.tencent.mm.g.a.xo.b;
+import com.tencent.mm.g.a.vm;
+import com.tencent.mm.g.a.yi;
+import com.tencent.mm.g.a.yi.b;
 import com.tencent.mm.kernel.i;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.collect.model.d;
 import com.tencent.mm.plugin.collect.model.d.a;
 import com.tencent.mm.plugin.collect.model.f.a;
 import com.tencent.mm.plugin.collect.model.m;
-import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.plugin.wallet_core.model.s;
+import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.ui.q.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
+import com.tencent.mm.protocal.protobuf.abl;
 import com.tencent.mm.protocal.protobuf.bb;
-import com.tencent.mm.protocal.protobuf.bja;
-import com.tencent.mm.protocal.protobuf.buh;
-import com.tencent.mm.protocal.protobuf.buo;
-import com.tencent.mm.protocal.protobuf.civ;
-import com.tencent.mm.protocal.protobuf.ciw;
-import com.tencent.mm.protocal.protobuf.dhr;
-import com.tencent.mm.protocal.protobuf.ok;
-import com.tencent.mm.protocal.protobuf.sr;
-import com.tencent.mm.protocal.protobuf.zl;
+import com.tencent.mm.protocal.protobuf.bni;
+import com.tencent.mm.protocal.protobuf.byw;
+import com.tencent.mm.protocal.protobuf.bzd;
+import com.tencent.mm.protocal.protobuf.cnv;
+import com.tencent.mm.protocal.protobuf.cnw;
+import com.tencent.mm.protocal.protobuf.dng;
+import com.tencent.mm.protocal.protobuf.pp;
+import com.tencent.mm.protocal.protobuf.um;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bg;
-import com.tencent.mm.sdk.platformtools.bg.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bh;
+import com.tencent.mm.sdk.platformtools.bh.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.ui.a.a.a;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.widget.a.g.a;
 import com.tencent.mm.wallet_core.c.ab;
@@ -106,118 +102,118 @@ import org.json.JSONObject;
 @com.tencent.mm.ui.base.a(0)
 public class CollectMainUI
   extends WalletPreferenceUI
-  implements com.tencent.mm.ak.g, d.a, bg.a
+  implements com.tencent.mm.al.f, d.a, bh.a
 {
-  private static int oBL;
-  private static int oCp = -1;
-  private static int oCq = -1;
-  private static int oCr = -1;
-  private static int oCs = -1;
-  private int dAk;
-  private TextView lLe;
-  private com.tencent.mm.ui.base.preference.f lZC;
+  private static int pfK = -1;
+  private static int pfL = -1;
+  private static int pfM = -1;
+  private static int pfN = -1;
+  private static int pfg;
+  private int dMx;
   protected String mTrueName;
-  private Vibrator mtQ;
-  private long nfL;
-  private com.tencent.mm.ui.widget.a.e ngY;
-  private long oAP;
-  private RelativeLayout oBA;
-  private Bitmap oBB;
-  protected String oBC;
-  protected String oBD;
-  private String oBE;
-  private int oBF;
-  private List<a> oBG;
-  private double oBH;
-  private String oBI;
-  private String oBJ;
-  protected boolean oBK;
-  private View oBM;
-  private b oBN;
-  private SpannableStringBuilder oBO;
-  private SpannableStringBuilder oBP;
-  private com.tencent.mm.plugin.collect.model.f oBQ;
-  private int oBR;
-  private String oBS;
-  private String oBT;
-  private String oBU;
-  private String oBV;
-  private String oBW;
-  protected CdnImageView oBX;
-  protected TextView oBY;
-  protected TextView oBZ;
-  private int oBe;
-  private int oBf;
-  private com.tencent.mm.ui.widget.a.g oBg;
-  private ImageView oBh;
-  private TextView oBi;
-  private WalletTextView oBj;
-  private TextView oBk;
-  private TextView oBl;
-  private TextView oBm;
-  private RelativeLayout oBn;
-  private View oBo;
-  private Dialog oBp;
-  private View oBq;
-  private View oBr;
-  private boolean oBs;
-  private View oBt;
-  private ImageView oBu;
-  private TextView oBv;
-  private TextView oBw;
-  private TextView oBx;
-  protected LinearLayout oBy;
-  protected TextView oBz;
-  protected ImageView oCa;
-  protected ViewGroup oCb;
-  protected View oCc;
-  private boolean oCd;
-  private int oCe;
-  private buo oCf;
-  private civ oCg;
-  private civ oCh;
-  private civ oCi;
-  private LinearLayout oCj;
-  private TextView oCk;
-  private TextView oCl;
-  private TextView oCm;
-  private com.tencent.mm.bw.b oCn;
-  private u.a oCo;
-  protected ScrollView ozo;
+  private Vibrator mUw;
+  private TextView mkS;
+  private com.tencent.mm.ui.base.preference.f mzx;
+  private long nGh;
+  private com.tencent.mm.ui.widget.a.e nHu;
+  protected ScrollView pcJ;
+  private int peA;
+  private com.tencent.mm.ui.widget.a.g peB;
+  private ImageView peC;
+  private TextView peD;
+  private WalletTextView peE;
+  private TextView peF;
+  private TextView peG;
+  private TextView peH;
+  private RelativeLayout peI;
+  private View peJ;
+  private Dialog peK;
+  private View peL;
+  private View peM;
+  private boolean peN;
+  private View peO;
+  private ImageView peP;
+  private TextView peQ;
+  private TextView peR;
+  private TextView peS;
+  protected LinearLayout peT;
+  protected TextView peU;
+  private RelativeLayout peV;
+  private Bitmap peW;
+  protected String peX;
+  protected String peY;
+  private String peZ;
+  private long pek;
+  private int pez;
+  private bzd pfA;
+  private cnv pfB;
+  private cnv pfC;
+  private cnv pfD;
+  private LinearLayout pfE;
+  private TextView pfF;
+  private TextView pfG;
+  private TextView pfH;
+  private com.tencent.mm.bx.b pfI;
+  private u.a pfJ;
+  private int pfa;
+  private List<CollectMainUI.a> pfb;
+  private double pfc;
+  private String pfd;
+  private String pfe;
+  protected boolean pff;
+  private View pfh;
+  private b pfi;
+  private SpannableStringBuilder pfj;
+  private SpannableStringBuilder pfk;
+  private com.tencent.mm.plugin.collect.model.f pfl;
+  private int pfm;
+  private String pfn;
+  private String pfo;
+  private String pfp;
+  private String pfq;
+  private String pfr;
+  protected CdnImageView pfs;
+  protected TextView pft;
+  protected TextView pfu;
+  protected ImageView pfv;
+  protected ViewGroup pfw;
+  protected View pfx;
+  private boolean pfy;
+  private int pfz;
   
   public CollectMainUI()
   {
     AppMethodBeat.i(64149);
-    this.oBh = null;
-    this.oBi = null;
-    this.oBj = null;
-    this.oBk = null;
-    this.oBl = null;
-    this.oBm = null;
-    this.oBn = null;
-    this.oBo = null;
-    this.lLe = null;
-    this.lZC = null;
-    this.oBp = null;
-    this.oBq = null;
-    this.oBr = null;
-    this.ozo = null;
-    this.oBs = false;
-    this.oBt = null;
-    this.oBB = null;
-    this.oBC = null;
+    this.peC = null;
+    this.peD = null;
+    this.peE = null;
+    this.peF = null;
+    this.peG = null;
+    this.peH = null;
+    this.peI = null;
+    this.peJ = null;
+    this.mkS = null;
+    this.mzx = null;
+    this.peK = null;
+    this.peL = null;
+    this.peM = null;
+    this.pcJ = null;
+    this.peN = false;
+    this.peO = null;
+    this.peW = null;
+    this.peX = null;
     this.mTrueName = null;
-    this.oBD = null;
-    this.oBE = null;
-    this.oBG = new LinkedList();
-    this.oBI = null;
-    this.oBJ = null;
-    this.oBK = false;
-    this.oBN = new b((byte)0);
-    this.oBR = 0;
-    this.oCd = false;
-    this.oCe = 0;
-    this.oCo = new u.a()
+    this.peY = null;
+    this.peZ = null;
+    this.pfb = new LinkedList();
+    this.pfd = null;
+    this.pfe = null;
+    this.pff = false;
+    this.pfi = new b((byte)0);
+    this.pfm = 0;
+    this.pfy = false;
+    this.pfz = 0;
+    this.pfJ = new u.a()
     {
       public final void k(String paramAnonymousString, Bitmap paramAnonymousBitmap)
       {
@@ -229,8 +225,8 @@ public class CollectMainUI
         }
         if (paramAnonymousString.equals(CollectMainUI.a(CollectMainUI.this)))
         {
-          ac.i("MicroMsg.CollectMainUI", "cdnImageDownloadListener mchPhoto = %s notifyKey = %s", new Object[] { CollectMainUI.a(CollectMainUI.this), paramAnonymousString });
-          CollectMainUI.this.bWE();
+          ad.i("MicroMsg.CollectMainUI", "cdnImageDownloadListener mchPhoto = %s notifyKey = %s", new Object[] { CollectMainUI.a(CollectMainUI.this), paramAnonymousString });
+          CollectMainUI.this.cbh();
         }
         AppMethodBeat.o(64125);
       }
@@ -238,63 +234,112 @@ public class CollectMainUI
     AppMethodBeat.o(64149);
   }
   
-  private void AB(int paramInt)
+  private void Bk(int paramInt)
   {
-    AppMethodBeat.i(207069);
-    int i = bWM();
-    Object localObject = bWN();
-    String str = bWO();
-    ac.i("MicroMsg.CollectMainUI", "doSceneSaveQrcodeNotify notifyType:%s，amount: %s,memo: %s,url: %s,mSaveNotifyInfo:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), localObject, str, this.oCn });
-    localObject = new m(paramInt, i, (String)localObject, str, this.oCn);
-    com.tencent.mm.kernel.g.agi().a((com.tencent.mm.ak.n)localObject, 0);
-    AppMethodBeat.o(207069);
+    AppMethodBeat.i(198973);
+    int i = cbp();
+    Object localObject = cbq();
+    String str = cbr();
+    ad.i("MicroMsg.CollectMainUI", "doSceneSaveQrcodeNotify notifyType:%s，amount: %s,memo: %s,url: %s,mSaveNotifyInfo:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), localObject, str, this.pfI });
+    localObject = new m(paramInt, i, (String)localObject, str, this.pfI);
+    com.tencent.mm.kernel.g.aiU().a((com.tencent.mm.al.n)localObject, 0);
+    AppMethodBeat.o(198973);
   }
   
-  private void a(bja parambja)
+  private void a(final abl paramabl)
   {
-    AppMethodBeat.i(207072);
-    if ((parambja == null) || ((this.oBg != null) && (this.oBg.isShowing())))
+    AppMethodBeat.i(198977);
+    if (paramabl == null)
     {
-      ac.i("MicroMsg.CollectMainUI", "mHalfBottomDialog != null || mHalfBottomDialog.isShowing() || halfPage == null ");
-      AppMethodBeat.o(207072);
+      ad.i("MicroMsg.CollectMainUI", " coverInfo == null");
+      AppMethodBeat.o(198977);
       return;
     }
-    if ((this.ngY != null) && (this.ngY.isShowing()))
+    ad.i("MicroMsg.CollectMainUI", "showCoverUI");
+    this.pfE.setVisibility(0);
+    this.pfE.setOnClickListener(new CollectMainUI.14(this));
+    ViewGroup.LayoutParams localLayoutParams = this.pfE.getLayoutParams();
+    localLayoutParams.height = this.peL.getHeight();
+    this.pfE.setLayoutParams(localLayoutParams);
+    this.pfF.setText(paramabl.dxD);
+    this.pfG.setText(paramabl.Gbg.dxD);
+    this.pfG.setOnClickListener(new View.OnClickListener()
     {
-      ac.i("MicroMsg.CollectMainUI", "mBottomSheet != null && mBottomSheet.isShowing()");
-      AppMethodBeat.o(207072);
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(198963);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/collect/ui/CollectMainUI$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        CollectMainUI.d(CollectMainUI.this, 3);
+        CollectMainUI.a(CollectMainUI.this, paramabl.Gbg);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/collect/ui/CollectMainUI$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(198963);
+      }
+    });
+    this.pfH.setText(paramabl.Gbh.dxD);
+    this.pfH.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(198964);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/collect/ui/CollectMainUI$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        CollectMainUI.d(CollectMainUI.this, 3);
+        CollectMainUI.a(CollectMainUI.this, paramabl.Gbh);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/collect/ui/CollectMainUI$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(198964);
+      }
+    });
+    AppMethodBeat.o(198977);
+  }
+  
+  private void a(bni parambni)
+  {
+    AppMethodBeat.i(198976);
+    if ((parambni == null) || ((this.peB != null) && (this.peB.isShowing())))
+    {
+      ad.i("MicroMsg.CollectMainUI", "mHalfBottomDialog != null || mHalfBottomDialog.isShowing() || halfPage == null ");
+      AppMethodBeat.o(198976);
       return;
     }
-    ac.i("MicroMsg.CollectMainUI", "showHalfDialog");
-    Object localObject1 = parambja.EXX;
-    Object localObject2 = parambja.EXY;
-    this.oBe = 4;
-    this.oBg = new com.tencent.mm.ui.widget.a.g(getContext(), 1, 3);
-    this.oBg.c(((ciw)localObject1).dlQ, ((ciw)localObject2).dlQ);
-    this.oBg.a(new g.a()new g.a
+    if ((this.nHu != null) && (this.nHu.isShowing()))
+    {
+      ad.i("MicroMsg.CollectMainUI", "mBottomSheet != null && mBottomSheet.isShowing()");
+      AppMethodBeat.o(198976);
+      return;
+    }
+    ad.i("MicroMsg.CollectMainUI", "showHalfDialog");
+    Object localObject1 = parambni.GHt;
+    Object localObject2 = parambni.GHu;
+    this.pez = 4;
+    this.peB = new com.tencent.mm.ui.widget.a.g(getContext(), 1, 3);
+    this.peB.c(((cnw)localObject1).dxD, ((cnw)localObject2).dxD);
+    this.peB.a(new g.a()new g.a
     {
       public final void onClick()
       {
-        AppMethodBeat.i(207057);
+        AppMethodBeat.i(198961);
         CollectMainUI.d(CollectMainUI.this, 1);
-        CollectMainUI.a(CollectMainUI.this, this.oCC);
-        CollectMainUI.C(CollectMainUI.this).bmi();
+        CollectMainUI.a(CollectMainUI.this, this.pfX);
+        CollectMainUI.C(CollectMainUI.this).bpT();
         CollectMainUI.D(CollectMainUI.this);
-        AppMethodBeat.o(207057);
+        AppMethodBeat.o(198961);
       }
     }, new g.a()
     {
       public final void onClick()
       {
-        AppMethodBeat.i(207058);
+        AppMethodBeat.i(198962);
         CollectMainUI.d(CollectMainUI.this, 1);
-        CollectMainUI.a(CollectMainUI.this, this.oCD);
-        CollectMainUI.C(CollectMainUI.this).bmi();
+        CollectMainUI.a(CollectMainUI.this, this.pfY);
+        CollectMainUI.C(CollectMainUI.this).bpT();
         CollectMainUI.D(CollectMainUI.this);
-        AppMethodBeat.o(207058);
+        AppMethodBeat.o(198962);
       }
     });
-    if (parambja.EXW.type == 2)
+    if (parambni.GHs.type == 2)
     {
       localObject1 = View.inflate(getContext(), 2131496149, null);
       ((ImageView)((View)localObject1).findViewById(2131307151)).setOnClickListener(new View.OnClickListener()
@@ -302,160 +347,134 @@ public class CollectMainUI
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(64126);
-          CollectMainUI.C(CollectMainUI.this).bmi();
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/collect/ui/CollectMainUI$20", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          CollectMainUI.C(CollectMainUI.this).bpT();
           CollectMainUI.D(CollectMainUI.this);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/collect/ui/CollectMainUI$20", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(64126);
         }
       });
       localObject2 = (TextView)((View)localObject1).findViewById(2131307175);
-      ((TextView)localObject2).setText(parambja.EXW.FQJ);
+      ((TextView)localObject2).setText(parambni.GHs.HBp);
       ((TextView)localObject2).getPaint().setFakeBoldText(true);
-      this.oBg.setHeaderView((View)localObject1);
+      this.peB.setHeaderView((View)localObject1);
     }
     for (;;)
     {
       localObject1 = View.inflate(getContext(), 2131496147, null);
-      ((TextView)((View)localObject1).findViewById(2131300674)).setText(parambja.dlQ);
-      this.oBg.setCustomView((View)localObject1);
-      this.oBg.cED();
-      AppMethodBeat.o(207072);
+      ((TextView)((View)localObject1).findViewById(2131300674)).setText(parambni.dxD);
+      this.peB.setCustomView((View)localObject1);
+      this.peB.cMW();
+      AppMethodBeat.o(198976);
       return;
       localObject1 = View.inflate(getContext(), 2131496148, null);
       localObject2 = (TextView)((View)localObject1).findViewById(2131300675);
-      ((TextView)localObject2).setText(parambja.EXW.FQJ);
+      ((TextView)localObject2).setText(parambni.GHs.HBp);
       ((TextView)localObject2).getPaint().setFakeBoldText(true);
-      this.oBg.setHeaderView((View)localObject1);
+      this.peB.setHeaderView((View)localObject1);
     }
   }
   
-  private void a(civ paramciv)
+  private void a(cnv paramcnv)
   {
-    AppMethodBeat.i(207071);
-    if (paramciv == null)
+    AppMethodBeat.i(198975);
+    if (paramcnv == null)
     {
-      ac.i("MicroMsg.CollectMainUI", "actionInfo is null");
-      AppMethodBeat.o(207071);
+      ad.i("MicroMsg.CollectMainUI", "actionInfo is null");
+      AppMethodBeat.o(198975);
       return;
     }
-    ac.i("MicroMsg.CollectMainUI", "actionInfo.action_type：%s", new Object[] { Integer.valueOf(paramciv.nWg) });
-    switch (paramciv.nWg)
+    ad.i("MicroMsg.CollectMainUI", "actionInfo.action_type：%s", new Object[] { Integer.valueOf(paramcnv.ozA) });
+    switch (paramcnv.ozA)
     {
     default: 
-      ac.i("MicroMsg.CollectMainUI", "unknow actionInfo.action_type");
-      AppMethodBeat.o(207071);
+      ad.i("MicroMsg.CollectMainUI", "unknow actionInfo.action_type");
+      AppMethodBeat.o(198975);
       return;
     case 0: 
-      AppMethodBeat.o(207071);
+      AppMethodBeat.o(198975);
       return;
     case 1: 
-      a(paramciv.FwQ);
-      AppMethodBeat.o(207071);
+      a(paramcnv.HgV);
+      AppMethodBeat.o(198975);
       return;
     case 2: 
-      a(paramciv.FwR);
-      AppMethodBeat.o(207071);
+      a(paramcnv.HgW);
+      AppMethodBeat.o(198975);
       return;
     }
-    a(paramciv.FwS);
-    AppMethodBeat.o(207071);
+    a(paramcnv.HgX);
+    AppMethodBeat.o(198975);
   }
   
-  private void a(final civ paramciv, final zl paramzl)
+  private void a(cnv paramcnv, abl paramabl)
   {
-    AppMethodBeat.i(207075);
-    ac.i("MicroMsg.CollectMainUI", "doSaveQrCode");
+    AppMethodBeat.i(198979);
+    ad.i("MicroMsg.CollectMainUI", "doSaveQrCode");
     Object localObject;
-    if ((this.oBB != null) && (!this.oBB.isRecycled()))
+    if ((this.peW != null) && (!this.peW.isRecycled()))
     {
       i = BackwardSupportUtil.b.g(this, 197.0F);
-      localObject = com.tencent.mm.plugin.collect.model.b.a(this, this.oBC, com.tencent.mm.model.u.axw(), this.oBR, this.oBU, i, this.oCo, false, this.oBF, 0.0F);
+      localObject = com.tencent.mm.plugin.collect.model.b.a(this, this.peX, com.tencent.mm.model.u.aAm(), this.pfm, this.pfp, i, this.pfJ, false, this.pfa, 0.0F);
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-        if (this.oBK)
+        if (this.pff)
         {
-          com.tencent.mm.plugin.report.service.h.wUl.f(11343, new Object[] { Integer.valueOf(1), Integer.valueOf((int)Math.round(this.oBH * 100.0D)) });
-          if (this.oBs) {
+          com.tencent.mm.plugin.report.service.g.yhR.f(11343, new Object[] { Integer.valueOf(1), Integer.valueOf((int)Math.round(this.pfc * 100.0D)) });
+          if (this.peN) {
             break label660;
           }
-          this.ozo = ((ScrollView)((ViewStub)findViewById(2131298476)).inflate());
-          bWD();
-          this.oBs = true;
+          this.pcJ = ((ScrollView)((ViewStub)findViewById(2131298476)).inflate());
+          cbg();
+          this.peN = true;
         }
       }
     }
     label660:
     for (int i = 250;; i = 0)
     {
-      this.ozo.setVisibility(4);
-      ((ImageView)this.ozo.findViewById(2131298470)).setImageBitmap(this.oBB);
-      TextView localTextView1 = (TextView)this.ozo.findViewById(2131298472);
-      TextView localTextView2 = (TextView)this.ozo.findViewById(2131298473);
-      final LinearLayout localLinearLayout1 = (LinearLayout)this.ozo.findViewById(2131298488);
-      LinearLayout localLinearLayout2 = (LinearLayout)this.ozo.findViewById(2131298469);
-      TextView localTextView3 = (TextView)this.ozo.findViewById(2131298466);
-      TextView localTextView4 = (TextView)this.ozo.findViewById(2131298467);
-      TextView localTextView5 = (TextView)this.ozo.findViewById(2131298468);
-      String str1 = com.tencent.mm.wallet_core.ui.e.gr(com.tencent.mm.wallet_core.ui.e.wk(com.tencent.mm.model.u.axw()), 10);
+      this.pcJ.setVisibility(4);
+      ((ImageView)this.pcJ.findViewById(2131298470)).setImageBitmap(this.peW);
+      TextView localTextView1 = (TextView)this.pcJ.findViewById(2131298472);
+      TextView localTextView2 = (TextView)this.pcJ.findViewById(2131298473);
+      LinearLayout localLinearLayout1 = (LinearLayout)this.pcJ.findViewById(2131298488);
+      LinearLayout localLinearLayout2 = (LinearLayout)this.pcJ.findViewById(2131298469);
+      TextView localTextView3 = (TextView)this.pcJ.findViewById(2131298466);
+      TextView localTextView4 = (TextView)this.pcJ.findViewById(2131298467);
+      TextView localTextView5 = (TextView)this.pcJ.findViewById(2131298468);
+      String str1 = com.tencent.mm.wallet_core.ui.e.gO(com.tencent.mm.wallet_core.ui.e.zf(com.tencent.mm.model.u.aAm()), 10);
       String str2 = getTrueName();
       localObject = str1;
-      if (!bs.isNullOrNil(str2)) {
+      if (!bt.isNullOrNil(str2)) {
         localObject = str1 + getString(2131757475, new Object[] { str2 });
       }
-      if (this.oBR == 1) {
-        if (!bs.isNullOrNil(this.oBT))
+      if (this.pfm == 1) {
+        if (!bt.isNullOrNil(this.pfo))
         {
-          localTextView1.setText(this.oBT);
+          localTextView1.setText(this.pfo);
           localTextView2.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this, (CharSequence)localObject, localTextView2.getTextSize()));
           localTextView2.setVisibility(0);
           label419:
-          if (!this.oBK) {
+          if (!this.pff) {
             break label615;
           }
-          if (bs.isNullOrNil(this.oBJ)) {
+          if (bt.isNullOrNil(this.pfe)) {
             break label605;
           }
-          localTextView4.setText(this.oBJ);
+          localTextView4.setText(this.pfe);
           localTextView4.setVisibility(0);
           label451:
-          localTextView3.setText(bWC());
-          localTextView5.setText(com.tencent.mm.wallet_core.ui.e.C(this.oBH));
+          localTextView3.setText(cbf());
+          localTextView5.setText(com.tencent.mm.wallet_core.ui.e.C(this.pfc));
           localLinearLayout2.setVisibility(0);
           label478:
-          ap.n(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(64117);
-              ac.d("MicroMsg.CollectMainUI", "height: %d, width: %d", new Object[] { Integer.valueOf(localLinearLayout1.getHeight()), Integer.valueOf(localLinearLayout1.getWidth()) });
-              Bitmap localBitmap = Bitmap.createBitmap(localLinearLayout1.getWidth(), localLinearLayout1.getHeight(), Bitmap.Config.ARGB_8888);
-              Object localObject = new Canvas(localBitmap);
-              localLinearLayout1.draw((Canvas)localObject);
-              try
-              {
-                localObject = com.tencent.mm.pluginsdk.ui.tools.q.eQm() + "mm_facetoface_collect_qrcode_" + System.currentTimeMillis() + ".png";
-                com.tencent.mm.sdk.platformtools.f.a(localBitmap, 100, Bitmap.CompressFormat.PNG, (String)localObject, false);
-                if (this.oCw)
-                {
-                  ac.i("MicroMsg.CollectMainUI", "doSaveQrCode success ");
-                  CollectMainUI.a(CollectMainUI.this, CollectMainUI.this.getContext(), CollectMainUI.this.getContext().getResources().getString(2131760299), paramciv, paramzl);
-                }
-                com.tencent.mm.pluginsdk.ui.tools.q.k((String)localObject, CollectMainUI.this.getContext());
-              }
-              catch (Exception localException)
-              {
-                for (;;)
-                {
-                  ac.w("MicroMsg.CollectMainUI", "save fixed amount qrcode failed!" + localException.getMessage());
-                }
-              }
-              CollectMainUI.this.ozo.setVisibility(8);
-              AppMethodBeat.o(64117);
-            }
-          }, i);
+          aq.o(new CollectMainUI.5(this, localLinearLayout1, paramcnv, paramabl), i);
           i = 1;
           label497:
           if (i == 0)
           {
-            ac.w("MicroMsg.CollectMainUI", "save ftf pay qrcode fail");
+            ad.w("MicroMsg.CollectMainUI", "save ftf pay qrcode fail");
             Toast.makeText(getContext(), getString(2131757489), 1).show();
           }
         }
@@ -463,9 +482,9 @@ public class CollectMainUI
       for (;;)
       {
         getPreferenceScreen().notifyDataSetChanged();
-        AppMethodBeat.o(207075);
+        AppMethodBeat.o(198979);
         return;
-        com.tencent.mm.plugin.report.service.h.wUl.f(11343, new Object[] { Integer.valueOf(0) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(11343, new Object[] { Integer.valueOf(0) });
         break;
         localTextView1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this, (CharSequence)localObject, localTextView1.getTextSize()));
         break label419;
@@ -479,179 +498,124 @@ public class CollectMainUI
         break label478;
         i = 0;
         break label497;
-        ac.w("MicroMsg.CollectMainUI", "save ftf pay qrcode failed: bmp null");
+        ad.w("MicroMsg.CollectMainUI", "save ftf pay qrcode failed: bmp null");
         Toast.makeText(getContext(), getString(2131757489), 1).show();
       }
     }
   }
   
-  private void a(final ok paramok)
+  private void a(final pp parampp)
   {
-    AppMethodBeat.i(207074);
-    if (paramok == null)
+    AppMethodBeat.i(198978);
+    if (parampp == null)
     {
-      ac.i("MicroMsg.CollectMainUI", " bottomCell == null");
-      AppMethodBeat.o(207074);
+      ad.i("MicroMsg.CollectMainUI", " bottomCell == null");
+      AppMethodBeat.o(198978);
       return;
     }
-    this.oBe = 3;
-    this.ngY = new com.tencent.mm.ui.widget.a.e(getContext(), 1, true);
+    this.pez = 3;
+    this.nHu = new com.tencent.mm.ui.widget.a.e(getContext(), 1, true);
     TextView localTextView = new TextView(getContext());
     localTextView.setGravity(17);
     localTextView.setHeight(com.tencent.mm.cc.a.fromDPToPix(getContext(), 56));
     localTextView.setTextSize(12.0F);
     localTextView.setTextColor(getResources().getColor(2131099734));
-    localTextView.setText(paramok.Eej);
-    this.ngY.J(localTextView, false);
-    this.ngY.JfK = true;
-    this.ngY.ISu = new n.c()
+    localTextView.setText(parampp.FKI);
+    this.nHu.K(localTextView, false);
+    this.nHu.KWY = true;
+    this.nHu.KJy = new n.d()
     {
       public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
       {
-        AppMethodBeat.i(207061);
-        Iterator localIterator = paramok.Eek.iterator();
+        AppMethodBeat.i(198965);
+        Iterator localIterator = parampp.FKJ.iterator();
         int i = 0;
         while (localIterator.hasNext())
         {
-          ciw localciw = (ciw)localIterator.next();
-          if ((localciw != null) && (localciw.dlQ != null))
+          cnw localcnw = (cnw)localIterator.next();
+          if ((localcnw != null) && (localcnw.dxD != null))
           {
-            paramAnonymousl.c(i, localciw.dlQ);
+            paramAnonymousl.c(i, localcnw.dxD);
             i += 1;
           }
         }
-        AppMethodBeat.o(207061);
+        AppMethodBeat.o(198965);
       }
     };
-    this.ngY.ISv = new n.d()
+    this.nHu.KJz = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
-        AppMethodBeat.i(207062);
+        AppMethodBeat.i(198966);
         paramAnonymousInt = paramAnonymousMenuItem.getItemId();
-        paramAnonymousMenuItem = (ciw)paramok.Eek.get(paramAnonymousInt);
+        paramAnonymousMenuItem = (cnw)parampp.FKJ.get(paramAnonymousInt);
         CollectMainUI.d(CollectMainUI.this, 2);
         CollectMainUI.a(CollectMainUI.this, paramAnonymousMenuItem);
-        AppMethodBeat.o(207062);
+        AppMethodBeat.o(198966);
       }
     };
-    this.ngY.cED();
-    AppMethodBeat.o(207074);
+    this.nHu.cMW();
+    AppMethodBeat.o(198978);
   }
   
-  private void a(final zl paramzl)
-  {
-    AppMethodBeat.i(207073);
-    if (paramzl == null)
-    {
-      ac.i("MicroMsg.CollectMainUI", " coverInfo == null");
-      AppMethodBeat.o(207073);
-      return;
-    }
-    ac.i("MicroMsg.CollectMainUI", "showCoverUI");
-    this.oCj.setVisibility(0);
-    this.oCj.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(64129);
-        AppMethodBeat.o(64129);
-      }
-    });
-    ViewGroup.LayoutParams localLayoutParams = this.oCj.getLayoutParams();
-    localLayoutParams.height = this.oBq.getHeight();
-    this.oCj.setLayoutParams(localLayoutParams);
-    this.oCk.setText(paramzl.dlQ);
-    this.oCl.setText(paramzl.EtO.dlQ);
-    this.oCl.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(207059);
-        CollectMainUI.d(CollectMainUI.this, 3);
-        CollectMainUI.a(CollectMainUI.this, paramzl.EtO);
-        AppMethodBeat.o(207059);
-      }
-    });
-    this.oCm.setText(paramzl.EtP.dlQ);
-    this.oCm.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(207060);
-        CollectMainUI.d(CollectMainUI.this, 3);
-        CollectMainUI.a(CollectMainUI.this, paramzl.EtP);
-        AppMethodBeat.o(207060);
-      }
-    });
-    AppMethodBeat.o(207073);
-  }
-  
-  private static buh an(JSONObject paramJSONObject)
+  private static byw aq(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(64171);
-    buh localbuh = new buh();
-    localbuh.type = paramJSONObject.optInt("type", -1);
-    localbuh.url = paramJSONObject.optString("url", "");
-    localbuh.dlQ = paramJSONObject.optString("wording", "");
-    localbuh.Fks = paramJSONObject.optString("waapp_username", "");
-    localbuh.Fkt = paramJSONObject.optString("waapp_path", "");
+    byw localbyw = new byw();
+    localbyw.type = paramJSONObject.optInt("type", -1);
+    localbyw.url = paramJSONObject.optString("url", "");
+    localbyw.dxD = paramJSONObject.optString("wording", "");
+    localbyw.GUa = paramJSONObject.optString("waapp_username", "");
+    localbyw.GUb = paramJSONObject.optString("waapp_path", "");
     AppMethodBeat.o(64171);
-    return localbuh;
+    return localbyw;
   }
   
-  private void bWG()
+  private Bitmap cL(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(64159);
+    paramString = com.tencent.mm.plugin.collect.model.b.a(this, paramString, com.tencent.mm.model.u.aAm(), this.pfm, this.pfp, this.pfJ, paramInt);
+    AppMethodBeat.o(64159);
+    return paramString;
+  }
+  
+  private void cbj()
   {
     AppMethodBeat.i(64157);
-    getWindow().getDecorView().post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(64115);
-        int i = com.tencent.mm.cc.a.fromDPToPix(CollectMainUI.this.getContext(), 37);
-        ViewGroup.LayoutParams localLayoutParams = CollectMainUI.m(CollectMainUI.this).getLayoutParams();
-        if (localLayoutParams != null)
-        {
-          localLayoutParams.height = i;
-          CollectMainUI.m(CollectMainUI.this).setLayoutParams(localLayoutParams);
-          CollectMainUI.m(CollectMainUI.this).requestLayout();
-        }
-        AppMethodBeat.o(64115);
-      }
-    });
+    getWindow().getDecorView().post(new CollectMainUI.3(this));
     AppMethodBeat.o(64157);
   }
   
-  private void bWH()
+  private void cbk()
   {
     AppMethodBeat.i(64158);
     double d;
-    if ((this.oBG != null) && (this.oBG.size() > 0))
+    if ((this.pfb != null) && (this.pfb.size() > 0))
     {
-      this.oBq.setBackgroundResource(2131231783);
-      this.lZC.removeAll();
+      this.peL.setBackgroundResource(2131231783);
+      this.mzx.removeAll();
       int i = 0;
       d = 0.0D;
-      if (i < this.oBG.size())
+      if (i < this.pfb.size())
       {
-        a locala = (a)this.oBG.get(i);
+        CollectMainUI.a locala = (CollectMainUI.a)this.pfb.get(i);
         c localc;
-        if (i == this.oBG.size() - 1)
+        if (i == this.pfb.size() - 1)
         {
           localc = new c(this, (byte)0);
           label102:
           localc.setKey(String.valueOf(i));
-          String str2 = locala.fBV;
+          String str2 = locala.fVj;
           String str1 = str2;
-          if (bs.isNullOrNil(str2))
+          if (bt.isNullOrNil(str2))
           {
             str1 = str2;
-            if (!bs.isNullOrNil(locala.username)) {
-              str1 = com.tencent.mm.wallet_core.ui.e.wk(locala.username);
+            if (!bt.isNullOrNil(locala.username)) {
+              str1 = com.tencent.mm.wallet_core.ui.e.zf(locala.username);
             }
           }
           localc.mTitle = str1;
-          localc.foE = locala.username;
+          localc.fGM = locala.username;
           if (locala.status != 0) {
             break label219;
           }
@@ -659,7 +623,7 @@ public class CollectMainUI
         }
         for (;;)
         {
-          this.lZC.b(localc);
+          this.mzx.b(localc);
           i += 1;
           break;
           localc = new c(this);
@@ -669,12 +633,12 @@ public class CollectMainUI
           {
             if (locala.isAnimated)
             {
-              d += locala.oxA;
-              localc.setSummary(com.tencent.mm.wallet_core.ui.e.d(locala.oxA, locala.dbI));
+              d += locala.paV;
+              localc.setSummary(com.tencent.mm.wallet_core.ui.e.d(locala.paV, locala.dne));
             }
             for (;;)
             {
-              this.lZC.b(localc);
+              this.mzx.b(localc);
               break;
               localc.setSummary(2131757470);
             }
@@ -684,28 +648,28 @@ public class CollectMainUI
           }
         }
       }
-      this.lZC.notifyDataSetChanged();
-      this.oBl.setText(com.tencent.mm.wallet_core.ui.e.d(d, ((a)this.oBG.get(0)).dbI));
-      this.oBl.setVisibility(0);
+      this.mzx.notifyDataSetChanged();
+      this.peG.setText(com.tencent.mm.wallet_core.ui.e.d(d, ((CollectMainUI.a)this.pfb.get(0)).dne));
+      this.peG.setVisibility(0);
     }
     for (;;)
     {
-      if ((this.oBG != null) && (this.oBG.size() > 0))
+      if ((this.pfb != null) && (this.pfb.size() > 0))
       {
-        this.oCb.setBackgroundResource(2131231784);
-        this.oBo.setVisibility(0);
-        if ((d > 0.0D) && (this.oBG.size() > 0))
+        this.pfw.setBackgroundResource(2131231784);
+        this.peJ.setVisibility(0);
+        if ((d > 0.0D) && (this.pfb.size() > 0))
         {
-          this.oCc.setVisibility(0);
-          this.oBr.setVisibility(0);
+          this.pfx.setVisibility(0);
+          this.peM.setVisibility(0);
           AppMethodBeat.o(64158);
         }
       }
       else
       {
-        this.oBl.setVisibility(8);
-        this.oBo.setVisibility(8);
-        this.oBr.setVisibility(8);
+        this.peG.setVisibility(8);
+        this.peJ.setVisibility(8);
+        this.peM.setVisibility(8);
       }
       AppMethodBeat.o(64158);
       return;
@@ -713,79 +677,69 @@ public class CollectMainUI
     }
   }
   
-  private void bWI()
+  private void cbl()
   {
     AppMethodBeat.i(64166);
-    bb localbb = com.tencent.mm.plugin.wallet_core.model.k.ero();
-    if (this.oBK) {}
+    bb localbb = com.tencent.mm.plugin.wallet_core.model.k.eFo();
+    if (this.pff) {}
     for (int i = 33;; i = 32)
     {
       if (localbb != null) {
-        com.tencent.mm.plugin.report.service.h.wUl.f(13447, new Object[] { Integer.valueOf(i), localbb.DNA, localbb.DNB, this.oBC, Double.valueOf(this.oBH), Long.valueOf(bs.aNx()), Long.valueOf(localbb.DNz), localbb.DNC, localbb.DND });
+        com.tencent.mm.plugin.report.service.g.yhR.f(13447, new Object[] { Integer.valueOf(i), localbb.FsF, localbb.FsG, this.peX, Double.valueOf(this.pfc), Long.valueOf(bt.aQJ()), Long.valueOf(localbb.FsE), localbb.FsH, localbb.FsI });
       }
       AppMethodBeat.o(64166);
       return;
     }
   }
   
-  private void bWJ()
+  private void cbm()
   {
     AppMethodBeat.i(64167);
-    if (!bs.isNullOrNil(this.oBV))
+    if (!bt.isNullOrNil(this.pfq))
     {
-      this.oBz.setText(this.oBV);
-      this.oBz.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(207049);
-          if (!bs.isNullOrNil(CollectMainUI.v(CollectMainUI.this))) {
-            com.tencent.mm.wallet_core.ui.e.o(ai.getContext(), CollectMainUI.v(CollectMainUI.this), true);
-          }
-          AppMethodBeat.o(207049);
-        }
-      });
-      this.oBy.setVisibility(0);
+      this.peU.setText(this.pfq);
+      this.peU.setOnClickListener(new CollectMainUI.6(this));
+      this.peT.setVisibility(0);
       AppMethodBeat.o(64167);
       return;
     }
-    this.oBy.setVisibility(8);
+    this.peT.setVisibility(8);
     AppMethodBeat.o(64167);
   }
   
-  private static buh bWK()
+  private static byw cbn()
   {
     AppMethodBeat.i(64169);
     try
     {
-      com.tencent.mm.kernel.g.agS();
-      buh localbuh = an(new JSONObject((String)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GOw, "")));
+      com.tencent.mm.kernel.g.ajD();
+      byw localbyw = aq(new JSONObject((String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IAR, "")));
       AppMethodBeat.o(64169);
-      return localbuh;
+      return localbyw;
     }
     catch (JSONException localJSONException)
     {
-      ac.printErrStackTrace("MicroMsg.CollectMainUI", localJSONException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.CollectMainUI", localJSONException, "", new Object[0]);
       AppMethodBeat.o(64169);
     }
     return null;
   }
   
-  private static List<buh> bWL()
+  private static List<byw> cbo()
   {
     AppMethodBeat.i(64170);
     localArrayList = new ArrayList();
     try
     {
-      com.tencent.mm.kernel.g.agS();
-      Object localObject = (String)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GOy, "");
-      if (!bs.isNullOrNil((String)localObject))
+      com.tencent.mm.kernel.g.ajD();
+      Object localObject = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IAT, "");
+      if (!bt.isNullOrNil((String)localObject))
       {
         localObject = new JSONArray((String)localObject);
         int i = 0;
         while (i < ((JSONArray)localObject).length())
         {
-          localArrayList.add(an(((JSONArray)localObject).getJSONObject(i)));
+          localArrayList.add(aq(((JSONArray)localObject).getJSONObject(i)));
           i += 1;
         }
       }
@@ -793,110 +747,102 @@ public class CollectMainUI
     }
     catch (JSONException localJSONException)
     {
-      ac.printErrStackTrace("MicroMsg.CollectMainUI", localJSONException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.CollectMainUI", localJSONException, "", new Object[0]);
       AppMethodBeat.o(64170);
     }
   }
   
-  private int bWM()
+  private int cbp()
   {
-    AppMethodBeat.i(207066);
-    if ((this.oBj.isShown()) && (!bs.aj(this.oBj.getText())))
+    AppMethodBeat.i(198970);
+    if ((this.peE.isShown()) && (!bt.ai(this.peE.getText())))
     {
-      int i = Integer.parseInt(com.tencent.mm.wallet_core.ui.e.b(this.oBj.getText(), "100", 0, RoundingMode.HALF_UP).toString());
-      AppMethodBeat.o(207066);
+      int i = Integer.parseInt(com.tencent.mm.wallet_core.ui.e.c(this.peE.getText(), "100", 0, RoundingMode.HALF_UP).toString());
+      AppMethodBeat.o(198970);
       return i;
     }
-    AppMethodBeat.o(207066);
+    AppMethodBeat.o(198970);
     return 0;
   }
   
-  private String bWN()
+  private String cbq()
   {
-    AppMethodBeat.i(207067);
-    if ((this.oBi.isShown()) && (!bs.aj(this.oBi.getText())))
+    AppMethodBeat.i(198971);
+    if ((this.peD.isShown()) && (!bt.ai(this.peD.getText())))
     {
-      String str = this.oBi.getText().toString();
-      AppMethodBeat.o(207067);
+      String str = this.peD.getText().toString();
+      AppMethodBeat.o(198971);
       return str;
     }
-    AppMethodBeat.o(207067);
+    AppMethodBeat.o(198971);
     return "";
   }
   
-  private String bWO()
+  private String cbr()
   {
-    AppMethodBeat.i(207068);
-    if (this.oBK)
+    AppMethodBeat.i(198972);
+    if (this.pff)
     {
-      if (bs.isNullOrNil(this.oBE))
+      if (bt.isNullOrNil(this.peZ))
       {
-        ac.w("MicroMsg.CollectMainUI", "func[refreshQRCodeArea] : mFixedPayUrl null");
-        AppMethodBeat.o(207068);
+        ad.w("MicroMsg.CollectMainUI", "func[refreshQRCodeArea] : mFixedPayUrl null");
+        AppMethodBeat.o(198972);
         return "";
       }
-      str = this.oBE;
-      AppMethodBeat.o(207068);
+      str = this.peZ;
+      AppMethodBeat.o(198972);
       return str;
     }
-    if (bs.isNullOrNil(this.oBC))
+    if (bt.isNullOrNil(this.peX))
     {
-      ac.w("MicroMsg.CollectMainUI", "func[refreshQRCodeArea] : mPayUrl null");
-      AppMethodBeat.o(207068);
+      ad.w("MicroMsg.CollectMainUI", "func[refreshQRCodeArea] : mPayUrl null");
+      AppMethodBeat.o(198972);
       return "";
     }
-    String str = this.oBC;
-    AppMethodBeat.o(207068);
+    String str = this.peX;
+    AppMethodBeat.o(198972);
     return str;
   }
   
-  private Bitmap cI(String paramString, int paramInt)
+  public final void X(String paramString, long paramLong)
   {
-    AppMethodBeat.i(64159);
-    paramString = com.tencent.mm.plugin.collect.model.b.a(this, paramString, com.tencent.mm.model.u.axw(), this.oBR, this.oBU, this.oCo, paramInt);
-    AppMethodBeat.o(64159);
-    return paramString;
-  }
-  
-  public final void Q(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(207065);
-    ac.i("MicroMsg.CollectMainUI", "do screen shot");
-    com.tencent.mm.plugin.report.service.h.wUl.f(13944, new Object[] { Integer.valueOf(9) });
-    if (this.oCg != null) {
-      com.tencent.mm.plugin.report.service.h.wUl.f(20032, new Object[] { "wxface2face", "ScreenShot", "", "", "", "", Integer.valueOf(1), Integer.valueOf(this.oCg.nWg), Integer.valueOf(0), bWO(), Integer.valueOf(bWM()), bWN() });
+    AppMethodBeat.i(198969);
+    ad.i("MicroMsg.CollectMainUI", "do screen shot");
+    com.tencent.mm.plugin.report.service.g.yhR.f(13944, new Object[] { Integer.valueOf(9) });
+    if (this.pfB != null) {
+      com.tencent.mm.plugin.report.service.g.yhR.f(20032, new Object[] { "wxface2face", "ScreenShot", "", "", "", "", Integer.valueOf(1), Integer.valueOf(this.pfB.ozA), Integer.valueOf(0), cbr(), Integer.valueOf(cbp()), cbq() });
     }
-    a(this.oCg);
-    AB(1);
-    AppMethodBeat.o(207065);
+    a(this.pfB);
+    Bk(1);
+    AppMethodBeat.o(198969);
   }
   
   public final void a(com.tencent.mm.plugin.collect.model.u paramu)
   {
     int k = 0;
     AppMethodBeat.i(64160);
-    ac.d("MicroMsg.CollectMainUI", "func[onRecv]:Recv payerMsg");
+    ad.d("MicroMsg.CollectMainUI", "func[onRecv]:Recv payerMsg");
     int i;
-    if (((this.dAk != 1) && (this.dAk != 0)) || ((paramu.msgType == 9) || ((this.dAk == 8) && (paramu.msgType == 26))))
+    if (((this.dMx != 1) && (this.dMx != 0)) || ((paramu.msgType == 9) || ((this.dMx == 8) && (paramu.msgType == 26))))
     {
-      if (this.mtQ != null) {
-        this.mtQ.vibrate(50L);
+      if (this.mUw != null) {
+        this.mUw.vibrate(50L);
       }
-      if (paramu.oxC < this.nfL)
+      if (paramu.paX < this.nGh)
       {
-        ac.d("MicroMsg.CollectMainUI", "Recieve but time out ");
+        ad.d("MicroMsg.CollectMainUI", "Recieve but time out ");
         AppMethodBeat.o(64160);
         return;
       }
       i = 0;
-      if (i >= this.oBG.size()) {
+      if (i >= this.pfb.size()) {
         break label510;
       }
-      if ((paramu.status != 0) || (!bs.nullAsNil(paramu.username).equals(((a)this.oBG.get(i)).username)) || (((a)this.oBG.get(i)).status != 2)) {
+      if ((paramu.status != 0) || (!bt.nullAsNil(paramu.username).equals(((CollectMainUI.a)this.pfb.get(i)).username)) || (((CollectMainUI.a)this.pfb.get(i)).status != 2)) {
         break label320;
       }
-      this.oBG.remove(i);
-      this.oBG.add(i, new a(paramu));
+      this.pfb.remove(i);
+      this.pfb.add(i, new CollectMainUI.a(this, paramu));
       i = 1;
     }
     for (;;)
@@ -909,27 +855,27 @@ public class CollectMainUI
       {
         int j = k;
         Object localObject;
-        if (i < this.oBG.size())
+        if (i < this.pfb.size())
         {
-          localObject = (com.tencent.mm.plugin.collect.model.u)this.oBG.get(i);
-          if (paramu.oxC > ((com.tencent.mm.plugin.collect.model.u)localObject).oxC)
+          localObject = (com.tencent.mm.plugin.collect.model.u)this.pfb.get(i);
+          if (paramu.paX > ((com.tencent.mm.plugin.collect.model.u)localObject).paX)
           {
-            this.oBG.add(i, new a(paramu));
+            this.pfb.add(i, new CollectMainUI.a(this, paramu));
             j = 1;
           }
         }
         else
         {
           if (j == 0) {
-            this.oBG.add(new a(paramu));
+            this.pfb.add(new CollectMainUI.a(this, paramu));
           }
-          ap.f(new Runnable()
+          aq.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(64116);
               CollectMainUI.n(CollectMainUI.this);
-              CollectMainUI.o(CollectMainUI.this).bWV();
+              CollectMainUI.o(CollectMainUI.this).cby();
               CollectMainUI.i(CollectMainUI.this);
               AppMethodBeat.o(64116);
             }
@@ -937,19 +883,19 @@ public class CollectMainUI
           AppMethodBeat.o(64160);
           return;
           label320:
-          if (paramu.dad.equals(((a)this.oBG.get(i)).dad))
+          if (paramu.dlv.equals(((CollectMainUI.a)this.pfb.get(i)).dlv))
           {
-            ac.v("MicroMsg.CollectMainUI", "func[onRecv] Duplicated msg, transId=" + paramu.dad);
-            if (((a)this.oBG.get(i)).status == 0)
+            ad.v("MicroMsg.CollectMainUI", "func[onRecv] Duplicated msg, transId=" + paramu.dlv);
+            if (((CollectMainUI.a)this.pfb.get(i)).status == 0)
             {
-              ((a)this.oBG.get(i)).status = paramu.status;
-              ((a)this.oBG.get(i)).oxA = paramu.oxA;
-              ((a)this.oBG.get(i)).dbI = paramu.dbI;
+              ((CollectMainUI.a)this.pfb.get(i)).status = paramu.status;
+              ((CollectMainUI.a)this.pfb.get(i)).paV = paramu.paV;
+              ((CollectMainUI.a)this.pfb.get(i)).dne = paramu.dne;
               if (paramu.status == 1)
               {
-                localObject = this.oBN;
-                a locala = (a)this.oBG.get(i);
-                ((b)localObject).oCI.add(locala);
+                localObject = this.pfi;
+                CollectMainUI.a locala = (CollectMainUI.a)this.pfb.get(i);
+                ((b)localObject).pgd.add(locala);
               }
             }
             i = 1;
@@ -965,225 +911,7 @@ public class CollectMainUI
     }
   }
   
-  protected void bWB()
-  {
-    AppMethodBeat.i(64168);
-    if (com.tencent.mm.plugin.collect.model.f.owy == null) {
-      com.tencent.mm.plugin.collect.model.f.owy = new com.tencent.mm.plugin.collect.model.f();
-    }
-    this.oBQ = com.tencent.mm.plugin.collect.model.f.owy;
-    Object localObject = this.oBQ;
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(1588, (com.tencent.mm.ak.g)localObject);
-    com.tencent.mm.plugin.collect.model.f localf = this.oBQ;
-    f.a local7 = new f.a()
-    {
-      public final void J(String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(207051);
-        ac.i("MicroMsg.CollectMainUI", "get cache: %s, %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2, Integer.valueOf(paramAnonymousInt) });
-        CollectMainUI.w(CollectMainUI.this).setVisibility(0);
-        CollectMainUI.this.oBC = paramAnonymousString1;
-        CollectMainUI.a(CollectMainUI.this, paramAnonymousInt);
-        CollectMainUI.this.mTrueName = paramAnonymousString2;
-        paramAnonymousString1 = CollectMainUI.bWT();
-        paramAnonymousString2 = CollectMainUI.bWU();
-        CollectMainUI.a(CollectMainUI.this, paramAnonymousString1);
-        CollectMainUI.this.cL(paramAnonymousString2);
-        if (CollectMainUI.x(CollectMainUI.this) == 1)
-        {
-          paramAnonymousString1 = CollectMainUI.this;
-          com.tencent.mm.kernel.g.agS();
-          CollectMainUI.b(paramAnonymousString1, ((Integer)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GPi, Integer.valueOf(-1))).intValue());
-          paramAnonymousString1 = CollectMainUI.this;
-          com.tencent.mm.kernel.g.agS();
-          CollectMainUI.a(paramAnonymousString1, (String)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GPj, ""));
-        }
-        AppMethodBeat.o(207051);
-      }
-      
-      public final void a(boolean paramAnonymousBoolean, sr paramAnonymoussr)
-      {
-        AppMethodBeat.i(207052);
-        Object localObject;
-        if (paramAnonymoussr == null)
-        {
-          localObject = "null";
-          ac.i("MicroMsg.CollectMainUI", "get from cgi: %s resp.retcode: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), localObject });
-          if (!paramAnonymousBoolean) {
-            break label499;
-          }
-          if ((paramAnonymoussr == null) || (paramAnonymoussr.dae != 416)) {
-            break label189;
-          }
-          if (paramAnonymoussr.EmH != null) {
-            break label184;
-          }
-        }
-        label184:
-        for (paramAnonymousBoolean = true;; paramAnonymousBoolean = false)
-        {
-          ac.d("MicroMsg.CollectMainUI", "realNameInfo:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-          CollectMainUI.w(CollectMainUI.this).setVisibility(4);
-          CollectMainUI.a(CollectMainUI.this, true);
-          localObject = new Bundle();
-          ((Bundle)localObject).putString("realname_verify_process_jump_activity", ".ui.CollectMainUI");
-          ((Bundle)localObject).putString("realname_verify_process_jump_plugin", "collect");
-          CollectMainUI localCollectMainUI = CollectMainUI.this;
-          int i = paramAnonymoussr.dae;
-          paramAnonymoussr = paramAnonymoussr.EmH;
-          new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-            {
-              AppMethodBeat.i(207050);
-              ac.i("MicroMsg.CollectMainUI", "RealnameVerifyUtil cancel");
-              AppMethodBeat.o(207050);
-            }
-          };
-          com.tencent.mm.plugin.wallet_core.id_verify.util.a.a(localCollectMainUI, i, paramAnonymoussr, (Bundle)localObject, 1010);
-          AppMethodBeat.o(207052);
-          return;
-          localObject = Integer.valueOf(paramAnonymoussr.dae);
-          break;
-        }
-        label189:
-        CollectMainUI.this.bWF();
-        CollectMainUI.w(CollectMainUI.this).setVisibility(0);
-        CollectMainUI.a(CollectMainUI.this, false);
-        CollectMainUI.this.oBC = paramAnonymoussr.url;
-        CollectMainUI.a(CollectMainUI.this, ag.adO(paramAnonymoussr.Emt));
-        CollectMainUI.this.mTrueName = paramAnonymoussr.BsL;
-        CollectMainUI.b(CollectMainUI.this, paramAnonymoussr.wLq);
-        CollectMainUI.b(CollectMainUI.this, paramAnonymoussr.wLr);
-        CollectMainUI.a(CollectMainUI.this, paramAnonymoussr.wLs);
-        CollectMainUI.c(CollectMainUI.this, paramAnonymoussr.EmE);
-        CollectMainUI.d(CollectMainUI.this, paramAnonymoussr.iAx);
-        CollectMainUI.e(CollectMainUI.this, paramAnonymoussr.iAy);
-        CollectMainUI.a(CollectMainUI.this, paramAnonymoussr.EmB);
-        CollectMainUI.this.cL(paramAnonymoussr.EmA);
-        CollectMainUI.c(CollectMainUI.this, paramAnonymoussr.EmF);
-        CollectMainUI.a(CollectMainUI.this, paramAnonymoussr.EmG);
-        ac.d("MicroMsg.CollectMainUI", "flag: %s", new Object[] { Integer.valueOf(CollectMainUI.y(CollectMainUI.this)) });
-        CollectMainUI.c(CollectMainUI.this, paramAnonymoussr.EmL);
-        CollectMainUI.d(CollectMainUI.this, paramAnonymoussr.EmM);
-        CollectMainUI.e(CollectMainUI.this, paramAnonymoussr.EmN);
-        CollectMainUI.a(CollectMainUI.this, paramAnonymoussr.EmO);
-        com.tencent.mm.kernel.g.agS();
-        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GPi, Integer.valueOf(CollectMainUI.z(CollectMainUI.this)));
-        com.tencent.mm.kernel.g.agS();
-        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GPj, CollectMainUI.a(CollectMainUI.this));
-        CollectMainUI.this.refreshView();
-        label499:
-        AppMethodBeat.o(207052);
-      }
-    };
-    com.tencent.mm.kernel.g.agS();
-    String str1 = (String)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GOt, "");
-    com.tencent.mm.kernel.g.agS();
-    String str2 = (String)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GOu, "");
-    com.tencent.mm.kernel.g.agS();
-    int i = ((Integer)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GOv, Integer.valueOf(-1))).intValue();
-    localObject = str1;
-    if (bs.isNullOrNil(str1))
-    {
-      ac.i("MicroMsg.F2fGetPayUrlManager", "use old payurl");
-      localObject = s.ery().esh();
-    }
-    local7.J((String)localObject, str2, i);
-    localObject = new com.tencent.mm.plugin.collect.model.l();
-    localf.mYy.put(localObject, local7);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a((com.tencent.mm.ak.n)localObject, 0);
-    AppMethodBeat.o(64168);
-  }
-  
-  protected String bWC()
-  {
-    AppMethodBeat.i(64173);
-    String str = com.tencent.mm.wallet_core.ui.e.aSF(this.oBI);
-    AppMethodBeat.o(64173);
-    return str;
-  }
-  
-  protected void bWD() {}
-  
-  protected void bWE()
-  {
-    AppMethodBeat.i(64156);
-    this.oBh.setImageBitmap(null);
-    if (this.oBK)
-    {
-      if (bs.isNullOrNil(this.oBE))
-      {
-        ac.w("MicroMsg.CollectMainUI", "func[refreshQRCodeArea] : mFixedPayUrl null");
-        AppMethodBeat.o(64156);
-        return;
-      }
-      this.oBB = cI(this.oBE, this.oBF);
-      if ((this.oBB == null) || (this.oBB.isRecycled())) {
-        break label237;
-      }
-      this.oBh.setImageBitmap(this.oBB);
-      label91:
-      if (!this.oBK) {
-        break label281;
-      }
-      this.oBj.setPrefix(bWC());
-      this.oBj.setText(com.tencent.mm.wallet_core.ui.e.C(this.oBH));
-      this.oBj.setVisibility(0);
-      if (bs.isNullOrNil(this.oBJ)) {
-        break label269;
-      }
-      this.oBi.setText(com.tencent.mm.pluginsdk.ui.span.k.b(getContext(), this.oBJ, this.oBi.getTextSize()));
-      this.oBi.setVisibility(0);
-    }
-    for (;;)
-    {
-      findViewById(2131298455).setVisibility(0);
-      AppMethodBeat.o(64156);
-      return;
-      if (bs.isNullOrNil(this.oBC))
-      {
-        ac.w("MicroMsg.CollectMainUI", "func[refreshQRCodeArea] : mPayUrl null");
-        AppMethodBeat.o(64156);
-        return;
-      }
-      this.oBB = cI(this.oBC, this.oBF);
-      break;
-      label237:
-      ac.w("MicroMsg.CollectMainUI", "func[refreshQRCodeArea] : bmp null ,mFixedPayUrl=" + bs.nullAsNil(this.oBE));
-      break label91;
-      label269:
-      this.oBi.setVisibility(8);
-    }
-    label281:
-    this.oBk.setVisibility(8);
-    this.oBj.setVisibility(8);
-    this.oBi.setVisibility(8);
-    findViewById(2131298455).setVisibility(8);
-    AppMethodBeat.o(64156);
-  }
-  
-  protected final void bWF()
-  {
-    AppMethodBeat.i(207064);
-    com.tencent.mm.kernel.g.agS();
-    if (((String)com.tencent.mm.kernel.g.agR().agA().get(327731, "0")).equals("0"))
-    {
-      com.tencent.mm.ui.base.h.a(getContext(), ah.fAA(), 2131757461, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
-      });
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agR().agA().set(327731, "1");
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agR().agA().faa();
-    }
-    AppMethodBeat.o(207064);
-  }
-  
-  protected final void cL(final List<buh> paramList)
+  protected final void cM(final List<byw> paramList)
   {
     AppMethodBeat.i(64174);
     if (paramList != null)
@@ -1191,118 +919,340 @@ public class CollectMainUI
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
       {
-        buh localbuh = (buh)localIterator.next();
-        if (localbuh.type == 1) {
-          com.tencent.mm.plugin.report.service.h.wUl.f(14526, new Object[] { Integer.valueOf(2), Integer.valueOf(1), localbuh.dlQ, "", "", "", Integer.valueOf(1) });
-        } else if (localbuh.type == 2) {
-          com.tencent.mm.plugin.report.service.h.wUl.f(14526, new Object[] { Integer.valueOf(2), Integer.valueOf(2), localbuh.dlQ, "", "", localbuh.url, Integer.valueOf(1) });
-        } else if (localbuh.type == 3) {
-          com.tencent.mm.plugin.report.service.h.wUl.f(14526, new Object[] { Integer.valueOf(2), Integer.valueOf(3), localbuh.dlQ, localbuh.Fks, localbuh.Fkt, "", Integer.valueOf(1) });
+        byw localbyw = (byw)localIterator.next();
+        if (localbyw.type == 1) {
+          com.tencent.mm.plugin.report.service.g.yhR.f(14526, new Object[] { Integer.valueOf(2), Integer.valueOf(1), localbyw.dxD, "", "", "", Integer.valueOf(1) });
+        } else if (localbyw.type == 2) {
+          com.tencent.mm.plugin.report.service.g.yhR.f(14526, new Object[] { Integer.valueOf(2), Integer.valueOf(2), localbyw.dxD, "", "", localbyw.url, Integer.valueOf(1) });
+        } else if (localbyw.type == 3) {
+          com.tencent.mm.plugin.report.service.g.yhR.f(14526, new Object[] { Integer.valueOf(2), Integer.valueOf(3), localbyw.dxD, localbyw.GUa, localbyw.GUb, "", Integer.valueOf(1) });
         }
       }
     }
-    this.oBA.setOnClickListener(new View.OnClickListener()
+    this.peV.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(207056);
+        AppMethodBeat.i(198960);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/collect/ui/CollectMainUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         paramAnonymousView = new com.tencent.mm.ui.widget.a.e(CollectMainUI.this.getContext(), 1, false);
-        paramAnonymousView.ISu = new n.c()
+        paramAnonymousView.KJy = new n.d()
         {
           public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
           {
-            AppMethodBeat.i(207054);
-            com.tencent.mm.plugin.collect.a.a.bVD();
-            if (com.tencent.mm.plugin.collect.a.a.bVF()) {
+            AppMethodBeat.i(198958);
+            com.tencent.mm.plugin.collect.a.a.cag();
+            if (com.tencent.mm.plugin.collect.a.a.cai()) {
               paramAnonymous2l.add(0, 1, 0, 2131757457);
             }
-            while (CollectMainUI.9.this.iSl != null)
+            while (CollectMainUI.9.this.jlt != null)
             {
               int i = 0;
-              while (i < CollectMainUI.9.this.iSl.size())
+              while (i < CollectMainUI.9.this.jlt.size())
               {
-                buh localbuh = (buh)CollectMainUI.9.this.iSl.get(i);
-                if (!bs.isNullOrNil(localbuh.dlQ)) {
-                  paramAnonymous2l.add(0, i + 1 + 1, 0, localbuh.dlQ);
+                byw localbyw = (byw)CollectMainUI.9.this.jlt.get(i);
+                if (!bt.isNullOrNil(localbyw.dxD)) {
+                  paramAnonymous2l.add(0, i + 1 + 1, 0, localbyw.dxD);
                 }
                 i += 1;
               }
               paramAnonymous2l.add(0, 1, 0, 2131757467);
             }
-            AppMethodBeat.o(207054);
+            AppMethodBeat.o(198958);
           }
         };
-        paramAnonymousView.ISv = new n.d()
+        paramAnonymousView.KJz = new n.e()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
-            AppMethodBeat.i(207055);
+            AppMethodBeat.i(198959);
             switch (paramAnonymous2MenuItem.getItemId())
             {
             default: 
               paramAnonymous2Int = paramAnonymous2MenuItem.getItemId() - 1 - 1;
               if (paramAnonymous2Int < 0)
               {
-                ac.w("MicroMsg.CollectMainUI", "illegal pos: %s", new Object[] { Integer.valueOf(paramAnonymous2Int) });
-                AppMethodBeat.o(207055);
+                ad.w("MicroMsg.CollectMainUI", "illegal pos: %s", new Object[] { Integer.valueOf(paramAnonymous2Int) });
+                AppMethodBeat.o(198959);
                 return;
               }
               break;
             case 1: 
-              com.tencent.mm.plugin.collect.a.a.bVD();
-              if (com.tencent.mm.plugin.collect.a.a.bVF())
+              com.tencent.mm.plugin.collect.a.a.cag();
+              if (com.tencent.mm.plugin.collect.a.a.cai())
               {
                 CollectMainUI.A(CollectMainUI.this);
                 Toast.makeText(CollectMainUI.this.getContext(), 2131757458, 1).show();
-                com.tencent.mm.plugin.report.service.h.wUl.f(13944, new Object[] { Integer.valueOf(8) });
-                AppMethodBeat.o(207055);
+                com.tencent.mm.plugin.report.service.g.yhR.f(13944, new Object[] { Integer.valueOf(8) });
+                AppMethodBeat.o(198959);
                 return;
               }
               CollectMainUI.B(CollectMainUI.this);
               Toast.makeText(CollectMainUI.this.getContext(), 2131757468, 1).show();
-              com.tencent.mm.plugin.collect.model.voice.a.bVU().jA(false);
-              com.tencent.mm.plugin.report.service.h.wUl.f(13944, new Object[] { Integer.valueOf(7) });
-              AppMethodBeat.o(207055);
+              com.tencent.mm.plugin.collect.model.voice.a.cax().jL(false);
+              com.tencent.mm.plugin.report.service.g.yhR.f(13944, new Object[] { Integer.valueOf(7) });
+              AppMethodBeat.o(198959);
               return;
             }
-            paramAnonymous2MenuItem = (buh)CollectMainUI.9.this.iSl.get(paramAnonymous2Int);
+            paramAnonymous2MenuItem = (byw)CollectMainUI.9.this.jlt.get(paramAnonymous2Int);
             if (paramAnonymous2MenuItem.type == 1)
             {
-              ac.w("MicroMsg.CollectMainUI", "wrong native type: %s", new Object[] { paramAnonymous2MenuItem.url });
-              com.tencent.mm.plugin.report.service.h.wUl.f(14526, new Object[] { Integer.valueOf(2), Integer.valueOf(1), paramAnonymous2MenuItem.dlQ, "", "", "", Integer.valueOf(2) });
-              AppMethodBeat.o(207055);
+              ad.w("MicroMsg.CollectMainUI", "wrong native type: %s", new Object[] { paramAnonymous2MenuItem.url });
+              com.tencent.mm.plugin.report.service.g.yhR.f(14526, new Object[] { Integer.valueOf(2), Integer.valueOf(1), paramAnonymous2MenuItem.dxD, "", "", "", Integer.valueOf(2) });
+              AppMethodBeat.o(198959);
               return;
             }
             if (paramAnonymous2MenuItem.type == 2)
             {
-              if (!bs.isNullOrNil(paramAnonymous2MenuItem.url))
+              if (!bt.isNullOrNil(paramAnonymous2MenuItem.url))
               {
                 com.tencent.mm.wallet_core.ui.e.o(CollectMainUI.this.getContext(), paramAnonymous2MenuItem.url, false);
-                com.tencent.mm.plugin.report.service.h.wUl.f(14526, new Object[] { Integer.valueOf(2), Integer.valueOf(2), paramAnonymous2MenuItem.dlQ, "", "", paramAnonymous2MenuItem.url, Integer.valueOf(2) });
-                AppMethodBeat.o(207055);
+                com.tencent.mm.plugin.report.service.g.yhR.f(14526, new Object[] { Integer.valueOf(2), Integer.valueOf(2), paramAnonymous2MenuItem.dxD, "", "", paramAnonymous2MenuItem.url, Integer.valueOf(2) });
+                AppMethodBeat.o(198959);
               }
             }
             else if (paramAnonymous2MenuItem.type == 3)
             {
-              ut localut = new ut();
-              localut.dxt.userName = paramAnonymous2MenuItem.Fks;
-              localut.dxt.dxv = bs.bG(paramAnonymous2MenuItem.Fkt, "");
-              localut.dxt.scene = 1072;
-              localut.dxt.dxw = 0;
-              com.tencent.mm.sdk.b.a.GpY.l(localut);
-              com.tencent.mm.plugin.report.service.h.wUl.f(14526, new Object[] { Integer.valueOf(2), Integer.valueOf(3), paramAnonymous2MenuItem.dlQ, paramAnonymous2MenuItem.Fks, paramAnonymous2MenuItem.Fkt, "", Integer.valueOf(2) });
+              vm localvm = new vm();
+              localvm.dJF.userName = paramAnonymous2MenuItem.GUa;
+              localvm.dJF.dJH = bt.bI(paramAnonymous2MenuItem.GUb, "");
+              localvm.dJF.scene = 1072;
+              localvm.dJF.dJI = 0;
+              com.tencent.mm.sdk.b.a.IbL.l(localvm);
+              com.tencent.mm.plugin.report.service.g.yhR.f(14526, new Object[] { Integer.valueOf(2), Integer.valueOf(3), paramAnonymous2MenuItem.dxD, paramAnonymous2MenuItem.GUa, paramAnonymous2MenuItem.GUb, "", Integer.valueOf(2) });
             }
-            AppMethodBeat.o(207055);
+            AppMethodBeat.o(198959);
           }
         };
-        paramAnonymousView.cED();
-        AppMethodBeat.o(207056);
+        paramAnonymousView.cMW();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/collect/ui/CollectMainUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(198960);
       }
     });
     AppMethodBeat.o(64174);
   }
   
-  public boolean e(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+  protected void cbe()
+  {
+    AppMethodBeat.i(64168);
+    if (com.tencent.mm.plugin.collect.model.f.oZT == null) {
+      com.tencent.mm.plugin.collect.model.f.oZT = new com.tencent.mm.plugin.collect.model.f();
+    }
+    this.pfl = com.tencent.mm.plugin.collect.model.f.oZT;
+    Object localObject = this.pfl;
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.a(1588, (com.tencent.mm.al.f)localObject);
+    com.tencent.mm.plugin.collect.model.f localf = this.pfl;
+    f.a local7 = new f.a()
+    {
+      public final void K(String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(198955);
+        ad.i("MicroMsg.CollectMainUI", "get cache: %s, %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2, Integer.valueOf(paramAnonymousInt) });
+        CollectMainUI.w(CollectMainUI.this).setVisibility(0);
+        CollectMainUI.this.peX = paramAnonymousString1;
+        CollectMainUI.a(CollectMainUI.this, paramAnonymousInt);
+        CollectMainUI.this.mTrueName = paramAnonymousString2;
+        paramAnonymousString1 = CollectMainUI.cbw();
+        paramAnonymousString2 = CollectMainUI.cbx();
+        CollectMainUI.a(CollectMainUI.this, paramAnonymousString1);
+        CollectMainUI.this.cM(paramAnonymousString2);
+        if (CollectMainUI.x(CollectMainUI.this) == 1)
+        {
+          paramAnonymousString1 = CollectMainUI.this;
+          com.tencent.mm.kernel.g.ajD();
+          CollectMainUI.b(paramAnonymousString1, ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IBD, Integer.valueOf(-1))).intValue());
+          paramAnonymousString1 = CollectMainUI.this;
+          com.tencent.mm.kernel.g.ajD();
+          CollectMainUI.a(paramAnonymousString1, (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IBE, ""));
+        }
+        AppMethodBeat.o(198955);
+      }
+      
+      public final void a(boolean paramAnonymousBoolean, um paramAnonymousum)
+      {
+        AppMethodBeat.i(198956);
+        Object localObject;
+        if (paramAnonymousum == null)
+        {
+          localObject = "null";
+          ad.i("MicroMsg.CollectMainUI", "get from cgi: %s resp.retcode: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), localObject });
+          if (!paramAnonymousBoolean) {
+            break label499;
+          }
+          if ((paramAnonymousum == null) || (paramAnonymousum.dlw != 416)) {
+            break label189;
+          }
+          if (paramAnonymousum.FTQ != null) {
+            break label184;
+          }
+        }
+        label184:
+        for (paramAnonymousBoolean = true;; paramAnonymousBoolean = false)
+        {
+          ad.d("MicroMsg.CollectMainUI", "realNameInfo:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          CollectMainUI.w(CollectMainUI.this).setVisibility(4);
+          CollectMainUI.a(CollectMainUI.this, true);
+          localObject = new Bundle();
+          ((Bundle)localObject).putString("realname_verify_process_jump_activity", ".ui.CollectMainUI");
+          ((Bundle)localObject).putString("realname_verify_process_jump_plugin", "collect");
+          CollectMainUI localCollectMainUI = CollectMainUI.this;
+          int i = paramAnonymousum.dlw;
+          paramAnonymousum = paramAnonymousum.FTQ;
+          new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            {
+              AppMethodBeat.i(198954);
+              ad.i("MicroMsg.CollectMainUI", "RealnameVerifyUtil cancel");
+              AppMethodBeat.o(198954);
+            }
+          };
+          com.tencent.mm.plugin.wallet_core.id_verify.util.a.a(localCollectMainUI, i, paramAnonymousum, (Bundle)localObject, 1010);
+          AppMethodBeat.o(198956);
+          return;
+          localObject = Integer.valueOf(paramAnonymousum.dlw);
+          break;
+        }
+        label189:
+        CollectMainUI.this.cbi();
+        CollectMainUI.w(CollectMainUI.this).setVisibility(0);
+        CollectMainUI.a(CollectMainUI.this, false);
+        CollectMainUI.this.peX = paramAnonymousum.url;
+        CollectMainUI.a(CollectMainUI.this, ag.ago(paramAnonymousum.FTC));
+        CollectMainUI.this.mTrueName = paramAnonymousum.CTa;
+        CollectMainUI.b(CollectMainUI.this, paramAnonymousum.xYX);
+        CollectMainUI.b(CollectMainUI.this, paramAnonymousum.xYY);
+        CollectMainUI.a(CollectMainUI.this, paramAnonymousum.xYZ);
+        CollectMainUI.c(CollectMainUI.this, paramAnonymousum.FTN);
+        CollectMainUI.d(CollectMainUI.this, paramAnonymousum.iTH);
+        CollectMainUI.e(CollectMainUI.this, paramAnonymousum.iTI);
+        CollectMainUI.a(CollectMainUI.this, paramAnonymousum.FTK);
+        CollectMainUI.this.cM(paramAnonymousum.FTJ);
+        CollectMainUI.c(CollectMainUI.this, paramAnonymousum.FTO);
+        CollectMainUI.a(CollectMainUI.this, paramAnonymousum.FTP);
+        ad.d("MicroMsg.CollectMainUI", "flag: %s", new Object[] { Integer.valueOf(CollectMainUI.y(CollectMainUI.this)) });
+        CollectMainUI.c(CollectMainUI.this, paramAnonymousum.FTU);
+        CollectMainUI.d(CollectMainUI.this, paramAnonymousum.FTV);
+        CollectMainUI.e(CollectMainUI.this, paramAnonymousum.FTW);
+        CollectMainUI.a(CollectMainUI.this, paramAnonymousum.FTX);
+        com.tencent.mm.kernel.g.ajD();
+        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IBD, Integer.valueOf(CollectMainUI.z(CollectMainUI.this)));
+        com.tencent.mm.kernel.g.ajD();
+        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IBE, CollectMainUI.a(CollectMainUI.this));
+        CollectMainUI.this.refreshView();
+        label499:
+        AppMethodBeat.o(198956);
+      }
+    };
+    com.tencent.mm.kernel.g.ajD();
+    String str1 = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IAO, "");
+    com.tencent.mm.kernel.g.ajD();
+    String str2 = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IAP, "");
+    com.tencent.mm.kernel.g.ajD();
+    int i = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IAQ, Integer.valueOf(-1))).intValue();
+    localObject = str1;
+    if (bt.isNullOrNil(str1))
+    {
+      ad.i("MicroMsg.F2fGetPayUrlManager", "use old payurl");
+      localObject = t.eFy().eGh();
+    }
+    local7.K((String)localObject, str2, i);
+    localObject = new com.tencent.mm.plugin.collect.model.l();
+    localf.nyV.put(localObject, local7);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.a((com.tencent.mm.al.n)localObject, 0);
+    AppMethodBeat.o(64168);
+  }
+  
+  protected String cbf()
+  {
+    AppMethodBeat.i(64173);
+    String str = com.tencent.mm.wallet_core.ui.e.aYE(this.pfd);
+    AppMethodBeat.o(64173);
+    return str;
+  }
+  
+  protected void cbg() {}
+  
+  protected void cbh()
+  {
+    AppMethodBeat.i(64156);
+    this.peC.setImageBitmap(null);
+    if (this.pff)
+    {
+      if (bt.isNullOrNil(this.peZ))
+      {
+        ad.w("MicroMsg.CollectMainUI", "func[refreshQRCodeArea] : mFixedPayUrl null");
+        AppMethodBeat.o(64156);
+        return;
+      }
+      this.peW = cL(this.peZ, this.pfa);
+      if ((this.peW == null) || (this.peW.isRecycled())) {
+        break label237;
+      }
+      this.peC.setImageBitmap(this.peW);
+      label91:
+      if (!this.pff) {
+        break label281;
+      }
+      this.peE.setPrefix(cbf());
+      this.peE.setText(com.tencent.mm.wallet_core.ui.e.C(this.pfc));
+      this.peE.setVisibility(0);
+      if (bt.isNullOrNil(this.pfe)) {
+        break label269;
+      }
+      this.peD.setText(com.tencent.mm.pluginsdk.ui.span.k.b(getContext(), this.pfe, this.peD.getTextSize()));
+      this.peD.setVisibility(0);
+    }
+    for (;;)
+    {
+      findViewById(2131298455).setVisibility(0);
+      AppMethodBeat.o(64156);
+      return;
+      if (bt.isNullOrNil(this.peX))
+      {
+        ad.w("MicroMsg.CollectMainUI", "func[refreshQRCodeArea] : mPayUrl null");
+        AppMethodBeat.o(64156);
+        return;
+      }
+      this.peW = cL(this.peX, this.pfa);
+      break;
+      label237:
+      ad.w("MicroMsg.CollectMainUI", "func[refreshQRCodeArea] : bmp null ,mFixedPayUrl=" + bt.nullAsNil(this.peZ));
+      break label91;
+      label269:
+      this.peD.setVisibility(8);
+    }
+    label281:
+    this.peF.setVisibility(8);
+    this.peE.setVisibility(8);
+    this.peD.setVisibility(8);
+    findViewById(2131298455).setVisibility(8);
+    AppMethodBeat.o(64156);
+  }
+  
+  protected final void cbi()
+  {
+    AppMethodBeat.i(198968);
+    com.tencent.mm.kernel.g.ajD();
+    if (((String)com.tencent.mm.kernel.g.ajC().ajl().get(327731, "0")).equals("0"))
+    {
+      h.a(getContext(), ah.fRK(), 2131757461, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+      });
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajC().ajl().set(327731, "1");
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajC().ajl().fqc();
+    }
+    AppMethodBeat.o(198968);
+  }
+  
+  public boolean e(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
   {
     return false;
   }
@@ -1333,10 +1283,10 @@ public class CollectMainUI
   protected String getTrueName()
   {
     AppMethodBeat.i(64172);
-    if (bs.isNullOrNil(this.mTrueName))
+    if (bt.isNullOrNil(this.mTrueName))
     {
-      this.mTrueName = s.ery().getTrueName();
-      this.mTrueName = com.tencent.mm.wallet_core.ui.e.aSI(this.mTrueName);
+      this.mTrueName = t.eFy().getTrueName();
+      this.mTrueName = com.tencent.mm.wallet_core.ui.e.aYH(this.mTrueName);
     }
     String str = this.mTrueName;
     AppMethodBeat.o(64172);
@@ -1357,147 +1307,156 @@ public class CollectMainUI
         return true;
       }
     });
-    this.lZC = getPreferenceScreen();
-    this.oBn = ((RelativeLayout)findViewById(2131304239));
-    this.oBo = findViewById(2131298462);
-    this.oCc = findViewById(2131298463);
-    this.oBj = ((WalletTextView)findViewById(2131298452));
-    this.oBi = ((TextView)findViewById(2131298451));
-    this.oBk = ((TextView)findViewById(2131298453));
-    this.oBl = ((TextView)findViewById(2131298461));
-    this.oBy = ((LinearLayout)findViewById(2131302956));
-    this.oBz = ((TextView)findViewById(2131297186));
-    this.oBq = ((RelativeLayout)findViewById(2131298459));
-    this.oBr = findViewById(2131298457);
-    this.oBM = LayoutInflater.from(this).inflate(2131493561, null, false);
-    this.oBm = ((TextView)findViewById(2131298471));
+    this.mzx = getPreferenceScreen();
+    this.peI = ((RelativeLayout)findViewById(2131304239));
+    this.peJ = findViewById(2131298462);
+    this.pfx = findViewById(2131298463);
+    this.peE = ((WalletTextView)findViewById(2131298452));
+    this.peD = ((TextView)findViewById(2131298451));
+    this.peF = ((TextView)findViewById(2131298453));
+    this.peG = ((TextView)findViewById(2131298461));
+    this.peT = ((LinearLayout)findViewById(2131302956));
+    this.peU = ((TextView)findViewById(2131297186));
+    this.peL = ((RelativeLayout)findViewById(2131298459));
+    this.peM = findViewById(2131298457);
+    this.pfh = LayoutInflater.from(this).inflate(2131493561, null, false);
+    this.peH = ((TextView)findViewById(2131298471));
     Object localObject = new SpannableStringBuilder(getString(2131757476));
     ((SpannableStringBuilder)localObject).setSpan(new com.tencent.mm.plugin.wallet_core.ui.q("#576B95", new q.a()
     {
-      public final void dK(View paramAnonymousView)
+      public final void dN(View paramAnonymousView)
       {
         AppMethodBeat.i(64132);
         CollectMainUI.a(CollectMainUI.this, CollectMainUI.b(CollectMainUI.this));
         CollectMainUI.c(CollectMainUI.this);
         if (CollectMainUI.b(CollectMainUI.this) != null) {
-          com.tencent.mm.plugin.report.service.h.wUl.f(20032, new Object[] { "wxface2face", "ClickQRCode", "", "", "", "", Integer.valueOf(2), Integer.valueOf(CollectMainUI.b(CollectMainUI.this).nWg), Integer.valueOf(0), CollectMainUI.d(CollectMainUI.this), Integer.valueOf(CollectMainUI.e(CollectMainUI.this)), CollectMainUI.f(CollectMainUI.this) });
+          com.tencent.mm.plugin.report.service.g.yhR.f(20032, new Object[] { "wxface2face", "ClickQRCode", "", "", "", "", Integer.valueOf(2), Integer.valueOf(CollectMainUI.b(CollectMainUI.this).ozA), Integer.valueOf(0), CollectMainUI.d(CollectMainUI.this), Integer.valueOf(CollectMainUI.e(CollectMainUI.this)), CollectMainUI.f(CollectMainUI.this) });
         }
-        com.tencent.mm.plugin.report.service.h.wUl.f(13944, new Object[] { Integer.valueOf(5) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(13944, new Object[] { Integer.valueOf(5) });
         AppMethodBeat.o(64132);
       }
     }), 0, ((SpannableStringBuilder)localObject).length(), 18);
-    this.oBm.setText((CharSequence)localObject);
-    this.oBm.setClickable(true);
-    this.oBm.setOnTouchListener(new com.tencent.mm.pluginsdk.ui.span.n(this));
-    getListView().addFooterView(this.oBM, null, false);
+    this.peH.setText((CharSequence)localObject);
+    this.peH.setClickable(true);
+    this.peH.setOnTouchListener(new com.tencent.mm.pluginsdk.ui.span.n(this));
+    getListView().addFooterView(this.pfh, null, false);
     getListView().setFooterDividersEnabled(false);
-    this.oBh = ((ImageView)findViewById(2131298456));
-    this.lLe = ((TextView)findViewById(2131298477));
-    this.oBx = ((TextView)findViewById(2131298490));
-    this.oBx.setClickable(true);
-    this.oBx.setOnTouchListener(new com.tencent.mm.pluginsdk.ui.span.n(this));
-    this.oBO = new SpannableStringBuilder(getString(2131757464));
-    this.oBP = new SpannableStringBuilder(getString(2131757465));
+    this.peC = ((ImageView)findViewById(2131298456));
+    this.mkS = ((TextView)findViewById(2131298477));
+    this.peS = ((TextView)findViewById(2131298490));
+    this.peS.setClickable(true);
+    this.peS.setOnTouchListener(new com.tencent.mm.pluginsdk.ui.span.n(this));
+    this.pfj = new SpannableStringBuilder(getString(2131757464));
+    this.pfk = new SpannableStringBuilder(getString(2131757465));
     localObject = new com.tencent.mm.plugin.wallet_core.ui.q("#576B95", new q.a()
     {
-      public final void dK(View paramAnonymousView)
+      public final void dN(View paramAnonymousView)
       {
         AppMethodBeat.i(64133);
         paramAnonymousView = new Intent();
         paramAnonymousView.setClass(CollectMainUI.this.getContext(), CollectCreateQRCodeUI.class);
-        paramAnonymousView.putExtra("key_currency_unit", CollectMainUI.this.oBD);
+        paramAnonymousView.putExtra("key_currency_unit", CollectMainUI.this.peY);
         CollectMainUI.this.startActivityForResult(paramAnonymousView, 4096);
         AppMethodBeat.o(64133);
       }
     });
     final com.tencent.mm.plugin.wallet_core.ui.q localq = new com.tencent.mm.plugin.wallet_core.ui.q("#576B95", new q.a()
     {
-      public final void dK(View paramAnonymousView)
+      public final void dN(View paramAnonymousView)
       {
         AppMethodBeat.i(64134);
-        CollectMainUI.this.oBK = false;
-        CollectMainUI.this.bWE();
+        CollectMainUI.this.pff = false;
+        CollectMainUI.this.cbh();
         CollectMainUI.h(CollectMainUI.this).setText(CollectMainUI.g(CollectMainUI.this));
         CollectMainUI.i(CollectMainUI.this);
         AppMethodBeat.o(64134);
       }
     });
-    this.oBO.setSpan(localObject, 0, this.oBO.length(), 18);
-    if (a.a.fhP().fhO()) {
-      this.oBx.setOnClickListener(new View.OnClickListener()
+    this.pfj.setSpan(localObject, 0, this.pfj.length(), 18);
+    if (a.a.fyf().fye()) {
+      this.peS.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(64135);
-          if (CollectMainUI.h(CollectMainUI.this).getText().toString().equals(CollectMainUI.j(CollectMainUI.this)))
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/collect/ui/CollectMainUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          if (CollectMainUI.h(CollectMainUI.this).getText().toString().equals(CollectMainUI.j(CollectMainUI.this))) {
+            this.pga.onClick(paramAnonymousView);
+          }
+          for (;;)
           {
-            this.oCF.onClick(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/collect/ui/CollectMainUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(64135);
             return;
+            localq.onClick(paramAnonymousView);
           }
-          localq.onClick(paramAnonymousView);
-          AppMethodBeat.o(64135);
         }
       });
     }
-    this.oBP.setSpan(localq, 0, this.oBP.length(), 18);
-    this.oBx.setText(this.oBO);
-    this.oBA = ((RelativeLayout)findViewById(2131298479));
-    this.oBh.setOnLongClickListener(new View.OnLongClickListener()
+    this.pfk.setSpan(localq, 0, this.pfk.length(), 18);
+    this.peS.setText(this.pfj);
+    this.peV = ((RelativeLayout)findViewById(2131298479));
+    this.peC.setOnLongClickListener(new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64140);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/collect/ui/CollectMainUI$8", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
         CollectMainUI.b(CollectMainUI.this, CollectMainUI.k(CollectMainUI.this));
         if (CollectMainUI.k(CollectMainUI.this) != null) {
-          com.tencent.mm.plugin.report.service.h.wUl.f(20032, new Object[] { "wxface2face", "LongClick", "", "", "", "", Integer.valueOf(3), Integer.valueOf(CollectMainUI.k(CollectMainUI.this).nWg), Integer.valueOf(0), CollectMainUI.d(CollectMainUI.this), Integer.valueOf(CollectMainUI.e(CollectMainUI.this)), CollectMainUI.f(CollectMainUI.this) });
+          com.tencent.mm.plugin.report.service.g.yhR.f(20032, new Object[] { "wxface2face", "LongClick", "", "", "", "", Integer.valueOf(3), Integer.valueOf(CollectMainUI.k(CollectMainUI.this).ozA), Integer.valueOf(0), CollectMainUI.d(CollectMainUI.this), Integer.valueOf(CollectMainUI.e(CollectMainUI.this)), CollectMainUI.f(CollectMainUI.this) });
         }
+        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/collect/ui/CollectMainUI$8", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(64140);
         return true;
       }
     });
-    this.oBt = findViewById(2131298464);
-    this.oBu = ((ImageView)findViewById(2131298481));
-    this.oBv = ((TextView)findViewById(2131298483));
-    this.oBw = ((TextView)findViewById(2131298482));
-    this.oBX = ((CdnImageView)findViewById(2131298421));
-    this.oBY = ((TextView)findViewById(2131298424));
-    this.oBZ = ((TextView)findViewById(2131298425));
-    this.oCa = ((ImageView)findViewById(2131298423));
-    this.oCb = ((ViewGroup)findViewById(2131298422));
-    this.oBq.postDelayed(new Runnable()
+    this.peO = findViewById(2131298464);
+    this.peP = ((ImageView)findViewById(2131298481));
+    this.peQ = ((TextView)findViewById(2131298483));
+    this.peR = ((TextView)findViewById(2131298482));
+    this.pfs = ((CdnImageView)findViewById(2131298421));
+    this.pft = ((TextView)findViewById(2131298424));
+    this.pfu = ((TextView)findViewById(2131298425));
+    this.pfv = ((ImageView)findViewById(2131298423));
+    this.pfw = ((ViewGroup)findViewById(2131298422));
+    this.peL.postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(64141);
         int[] arrayOfInt = new int[2];
         CollectMainUI.l(CollectMainUI.this).getLocationInWindow(arrayOfInt);
-        CollectMainUI.AC(arrayOfInt[1]);
+        CollectMainUI.Bl(arrayOfInt[1]);
         AppMethodBeat.o(64141);
       }
     }, 300L);
-    localObject = new xo();
-    ((xo)localObject).dAo.scene = "8";
-    ((xo)localObject).callback = new Runnable()
+    localObject = new yi();
+    ((yi)localObject).dMB.scene = "8";
+    ((yi)localObject).callback = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(64114);
-        if (!bs.isNullOrNil(this.oCu.dAp.dAq))
+        if (!bt.isNullOrNil(this.pfP.dMC.dMD))
         {
-          com.tencent.mm.wallet_core.ui.e.a((TextView)CollectMainUI.this.findViewById(2131297186), this.oCu.dAp.dAq, this.oCu.dAp.content, this.oCu.dAp.url);
+          com.tencent.mm.wallet_core.ui.e.a((TextView)CollectMainUI.this.findViewById(2131297186), this.pfP.dMC.dMD, this.pfP.dMC.content, this.pfP.dMC.url);
           AppMethodBeat.o(64114);
           return;
         }
-        ac.i("MicroMsg.CollectMainUI", "no bulletin data");
+        ad.i("MicroMsg.CollectMainUI", "no bulletin data");
         AppMethodBeat.o(64114);
       }
     };
-    com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
-    this.oCj = ((LinearLayout)findViewById(2131307177));
-    this.oCk = ((TextView)findViewById(2131307180));
-    this.oCl = ((Button)findViewById(2131307178));
-    this.oCm = ((Button)findViewById(2131307179));
+    com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+    this.pfE = ((LinearLayout)findViewById(2131307177));
+    this.pfF = ((TextView)findViewById(2131307180));
+    this.pfG = ((Button)findViewById(2131307178));
+    this.pfH = ((Button)findViewById(2131307179));
     AppMethodBeat.o(64153);
   }
   
@@ -1514,22 +1473,22 @@ public class CollectMainUI
       return;
       if ((paramInt2 == -1) && (paramIntent != null))
       {
-        this.oBE = paramIntent.getStringExtra("ftf_pay_url");
-        this.oBF = paramIntent.getIntExtra("key_error_level", -1);
-        this.oBH = paramIntent.getDoubleExtra("ftf_fixed_fee", 0.0D);
-        this.oBI = paramIntent.getStringExtra("ftf_fixed_fee_type");
-        this.oBJ = paramIntent.getStringExtra("ftf_fixed_desc");
-        this.oBD = paramIntent.getStringExtra("key_currency_unit");
-        this.oBx.setText(this.oBP);
+        this.peZ = paramIntent.getStringExtra("ftf_pay_url");
+        this.pfa = paramIntent.getIntExtra("key_error_level", -1);
+        this.pfc = paramIntent.getDoubleExtra("ftf_fixed_fee", 0.0D);
+        this.pfd = paramIntent.getStringExtra("ftf_fixed_fee_type");
+        this.pfe = paramIntent.getStringExtra("ftf_fixed_desc");
+        this.peY = paramIntent.getStringExtra("key_currency_unit");
+        this.peS.setText(this.pfk);
       }
-      for (this.oBK = true;; this.oBK = false)
+      for (this.pff = true;; this.pff = false)
       {
         refreshView();
-        bWG();
+        cbj();
         AppMethodBeat.o(64161);
         return;
       }
-      this.oAP = com.tencent.mm.model.u.axB();
+      this.pek = com.tencent.mm.model.u.aAr();
     }
   }
   
@@ -1546,72 +1505,72 @@ public class CollectMainUI
     }
     setIsDarkActionbarBg(true);
     hideActionbarLine();
-    com.tencent.mm.kernel.g.agS();
-    this.dAk = ((Integer)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GIP, Integer.valueOf(0))).intValue();
-    this.oAP = com.tencent.mm.model.u.axB();
+    com.tencent.mm.kernel.g.ajD();
+    this.dMx = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivh, Integer.valueOf(0))).intValue();
+    this.pek = com.tencent.mm.model.u.aAr();
     int i = getIntent().getIntExtra("key_from_scene", 1);
-    com.tencent.mm.plugin.report.service.h.wUl.f(14021, new Object[] { Integer.valueOf(2), Integer.valueOf(i) });
+    com.tencent.mm.plugin.report.service.g.yhR.f(14021, new Object[] { Integer.valueOf(2), Integer.valueOf(i) });
     overridePendingTransition(2130772144, 2130772141);
-    com.tencent.mm.plugin.collect.a.a.bVD();
-    paramBundle = com.tencent.mm.plugin.collect.a.a.bVE();
-    if (!paramBundle.nTa.contains(this)) {
-      paramBundle.nTa.add(this);
+    com.tencent.mm.plugin.collect.a.a.cag();
+    paramBundle = com.tencent.mm.plugin.collect.a.a.cah();
+    if (!paramBundle.owv.contains(this)) {
+      paramBundle.owv.add(this);
     }
     initView();
-    bWB();
+    cbe();
     refreshView();
-    this.mtQ = ((Vibrator)getSystemService("vibrator"));
-    this.nfL = bs.aNx();
-    if (oCp < 0)
+    this.mUw = ((Vibrator)getSystemService("vibrator"));
+    this.nGh = bt.aQJ();
+    if (pfK < 0)
     {
       paramBundle = new DisplayMetrics();
       ((WindowManager)getSystemService("window")).getDefaultDisplay().getMetrics(paramBundle);
-      oCp = paramBundle.widthPixels / 2 - BackwardSupportUtil.b.g(getContext(), 20.0F);
-      oCq = BackwardSupportUtil.b.g(getContext(), 60.0F);
-      oCr = BackwardSupportUtil.b.g(getContext(), 40.0F);
-      oCs = BackwardSupportUtil.b.g(getContext(), 70.0F);
+      pfK = paramBundle.widthPixels / 2 - BackwardSupportUtil.b.g(getContext(), 20.0F);
+      pfL = BackwardSupportUtil.b.g(getContext(), 60.0F);
+      pfM = BackwardSupportUtil.b.g(getContext(), 40.0F);
+      pfN = BackwardSupportUtil.b.g(getContext(), 70.0F);
     }
-    bWG();
-    ab.km(16, 0);
-    com.tencent.mm.kernel.g.agi().a(3781, this);
+    cbj();
+    ab.kB(16, 0);
+    com.tencent.mm.kernel.g.aiU().a(3781, this);
     AppMethodBeat.o(64150);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(64152);
-    if (this.oBh != null) {
-      this.oBh.setImageBitmap(null);
+    if (this.peC != null) {
+      this.peC.setImageBitmap(null);
     }
-    Object localObject = this.oBB;
+    Object localObject = this.peW;
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
-      ac.i("MicroMsg.CollectMainUI", "bitmap recycle %s", new Object[] { localObject });
+      ad.i("MicroMsg.CollectMainUI", "bitmap recycle %s", new Object[] { localObject });
       ((Bitmap)localObject).recycle();
     }
-    if (this.oBp != null) {
-      this.oBp.dismiss();
+    if (this.peK != null) {
+      this.peK.dismiss();
     }
-    com.tencent.mm.plugin.collect.a.a.bVD();
-    com.tencent.mm.plugin.collect.a.a.bVE().nTa.remove(this);
-    this.mtQ.cancel();
-    if (this.oBQ != null)
+    com.tencent.mm.plugin.collect.a.a.cag();
+    com.tencent.mm.plugin.collect.a.a.cah().owv.remove(this);
+    this.mUw.cancel();
+    if (this.pfl != null)
     {
-      localObject = this.oBQ;
-      Iterator localIterator = ((com.tencent.mm.plugin.collect.model.f)localObject).mYy.entrySet().iterator();
+      localObject = this.pfl;
+      Iterator localIterator = ((com.tencent.mm.plugin.collect.model.f)localObject).nyV.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        ac.i("MicroMsg.F2fGetPayUrlManager", "uninit, do cancel netscene");
-        com.tencent.mm.kernel.g.agS();
-        com.tencent.mm.kernel.g.agQ().ghe.a((com.tencent.mm.ak.n)localEntry.getKey());
+        ad.i("MicroMsg.F2fGetPayUrlManager", "uninit, do cancel netscene");
+        com.tencent.mm.kernel.g.ajD();
+        com.tencent.mm.kernel.g.ajB().gAO.a((com.tencent.mm.al.n)localEntry.getKey());
       }
-      ((com.tencent.mm.plugin.collect.model.f)localObject).mYy.clear();
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.b(1588, (com.tencent.mm.ak.g)localObject);
+      ((com.tencent.mm.plugin.collect.model.f)localObject).nyV.clear();
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajB().gAO.b(1588, (com.tencent.mm.al.f)localObject);
     }
-    com.tencent.mm.platformtools.u.c(this.oCo);
-    com.tencent.mm.kernel.g.agi().b(3781, this);
+    com.tencent.mm.platformtools.u.c(this.pfJ);
+    com.tencent.mm.kernel.g.aiU().b(3781, this);
     super.onDestroy();
     AppMethodBeat.o(64152);
   }
@@ -1620,7 +1579,7 @@ public class CollectMainUI
   {
     AppMethodBeat.i(64163);
     super.onPause();
-    bg.a(this, null);
+    bh.a(this, null);
     AppMethodBeat.o(64163);
   }
   
@@ -1633,18 +1592,18 @@ public class CollectMainUI
   {
     AppMethodBeat.i(64162);
     super.onResume();
-    bg.a(this, this);
+    bh.a(this, this);
     AppMethodBeat.o(64162);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
   {
-    AppMethodBeat.i(207070);
-    ac.i("MicroMsg.CollectMainUI", "errType: %d,errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(198974);
+    ad.i("MicroMsg.CollectMainUI", "errType: %d,errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramn instanceof m)) {
-      ac.i("MicroMsg.CollectMainUI", "scene is NetSceneF2fQrcodeSaveNotify");
+      ad.i("MicroMsg.CollectMainUI", "scene is NetSceneF2fQrcodeSaveNotify");
     }
-    AppMethodBeat.o(207070);
+    AppMethodBeat.o(198974);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -1656,28 +1615,28 @@ public class CollectMainUI
   protected final void refreshView()
   {
     AppMethodBeat.i(64155);
-    if (bs.isNullOrNil(this.oBC))
+    if (bt.isNullOrNil(this.peX))
     {
-      ac.w("MicroMsg.CollectMainUI", "func[refreshView], mPayUrl null.");
+      ad.w("MicroMsg.CollectMainUI", "func[refreshView], mPayUrl null.");
       AppMethodBeat.o(64155);
       return;
     }
-    if (this.oBR == 1)
+    if (this.pfm == 1)
     {
-      if (!bs.isNullOrNil(this.oBS)) {
-        this.lLe.setText(this.oBS);
+      if (!bt.isNullOrNil(this.pfn)) {
+        this.mkS.setText(this.pfn);
       }
-      if (!bs.isNullOrNil(this.oBT))
+      if (!bt.isNullOrNil(this.pfo))
       {
         TextView localTextView = (TextView)findViewById(2131298458);
-        localTextView.setText(this.oBT);
+        localTextView.setText(this.pfo);
         localTextView.setVisibility(0);
       }
     }
-    bWE();
-    bWH();
-    bWI();
-    bWJ();
+    cbh();
+    cbk();
+    cbl();
+    cbm();
     AppMethodBeat.o(64155);
   }
   
@@ -1688,36 +1647,19 @@ public class CollectMainUI
     AppMethodBeat.o(64151);
   }
   
-  final class a
-    extends com.tencent.mm.plugin.collect.model.u
-  {
-    public boolean isAnimated = false;
-    
-    public a(com.tencent.mm.plugin.collect.model.u paramu)
-    {
-      this.username = paramu.username;
-      this.dad = paramu.dad;
-      this.oxA = paramu.oxA;
-      this.oxC = paramu.oxC;
-      this.scene = paramu.scene;
-      this.status = paramu.status;
-      this.fBV = paramu.fBV;
-    }
-  }
-  
   final class b
   {
-    boolean oCH;
-    LinkedList<CollectMainUI.a> oCI;
+    boolean pgc;
+    LinkedList<CollectMainUI.a> pgd;
     
     private b()
     {
       AppMethodBeat.i(64145);
-      this.oCI = new LinkedList();
+      this.pgd = new LinkedList();
       AppMethodBeat.o(64145);
     }
     
-    private int AD(int paramInt)
+    private int Bm(int paramInt)
     {
       AppMethodBeat.i(64146);
       float f2 = 0.0F + CollectMainUI.l(CollectMainUI.this).getHeight() / 2;
@@ -1725,10 +1667,10 @@ public class CollectMainUI
       if (CollectMainUI.p(CollectMainUI.this).getVisibility() == 0) {
         f1 = f2 + CollectMainUI.p(CollectMainUI.this).getHeight();
       }
-      f2 = CollectMainUI.bWQ() * paramInt + CollectMainUI.bWQ() / 2;
+      f2 = CollectMainUI.cbt() * paramInt + CollectMainUI.cbt() / 2;
       int[] arrayOfInt = new int[2];
       CollectMainUI.l(CollectMainUI.this).getLocationInWindow(arrayOfInt);
-      paramInt = (int)(f1 + f2 + (arrayOfInt[1] - CollectMainUI.bDp()));
+      paramInt = (int)(f1 + f2 + (arrayOfInt[1] - CollectMainUI.bHx()));
       AppMethodBeat.o(64146);
       return paramInt;
     }
@@ -1736,19 +1678,19 @@ public class CollectMainUI
     private void a(final CollectMainUI.a parama)
     {
       AppMethodBeat.i(64148);
-      this.oCH = true;
+      this.pgc = true;
       CollectMainUI.n(CollectMainUI.this);
       CollectMainUI.q(CollectMainUI.this).setLayoutParams(new LinearLayout.LayoutParams(CollectMainUI.l(CollectMainUI.this).getWidth(), CollectMainUI.l(CollectMainUI.this).getHeight()));
-      if (CollectMainUI.this.oBK) {
-        CollectMainUI.q(CollectMainUI.this).setPadding(0, CollectMainUI.bWR(), 0, 0);
+      if (CollectMainUI.this.pff) {
+        CollectMainUI.q(CollectMainUI.this).setPadding(0, CollectMainUI.cbu(), 0, 0);
       }
       final AnimationSet localAnimationSet;
       int j;
       for (;;)
       {
-        CollectMainUI.r(CollectMainUI.this).setText(com.tencent.mm.pluginsdk.ui.span.k.b(CollectMainUI.this.getContext(), parama.fBV, CollectMainUI.r(CollectMainUI.this).getTextSize()));
+        CollectMainUI.r(CollectMainUI.this).setText(com.tencent.mm.pluginsdk.ui.span.k.b(CollectMainUI.this.getContext(), parama.fVj, CollectMainUI.r(CollectMainUI.this).getTextSize()));
         a.b.c(CollectMainUI.s(CollectMainUI.this), parama.username);
-        CollectMainUI.t(CollectMainUI.this).setText(com.tencent.mm.wallet_core.ui.e.d(parama.oxA, parama.dbI));
+        CollectMainUI.t(CollectMainUI.this).setText(com.tencent.mm.wallet_core.ui.e.d(parama.paV, parama.dne));
         CollectMainUI.q(CollectMainUI.this).setVisibility(0);
         localAnimationSet = new AnimationSet(false);
         localAnimationSet.addAnimation(new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F));
@@ -1756,14 +1698,14 @@ public class CollectMainUI
         int i = 0;
         while (i < CollectMainUI.u(CollectMainUI.this).size())
         {
-          if (((CollectMainUI.a)CollectMainUI.u(CollectMainUI.this).get(i)).dad.equals(parama.dad)) {
+          if (((CollectMainUI.a)CollectMainUI.u(CollectMainUI.this).get(i)).dlv.equals(parama.dlv)) {
             j = i;
           }
           i += 1;
         }
-        CollectMainUI.q(CollectMainUI.this).setPadding(0, CollectMainUI.bWS(), 0, 0);
+        CollectMainUI.q(CollectMainUI.this).setPadding(0, CollectMainUI.cbv(), 0, 0);
       }
-      localAnimationSet.addAnimation(new TranslateAnimation(0.0F, CollectMainUI.bWP(), 0.0F, AD(j)));
+      localAnimationSet.addAnimation(new TranslateAnimation(0.0F, CollectMainUI.cbs(), 0.0F, Bm(j)));
       localAnimationSet.setDuration(300L);
       localAnimationSet.setInterpolator(new DecelerateInterpolator());
       localAnimationSet.setAnimationListener(new Animation.AnimationListener()
@@ -1772,23 +1714,23 @@ public class CollectMainUI
         {
           AppMethodBeat.i(64142);
           CollectMainUI.q(CollectMainUI.this).setVisibility(8);
-          ac.d("MicroMsg.CollectMainUI.ToastAnimationHelper", "Animation end. TransId=" + parama.dad);
+          ad.d("MicroMsg.CollectMainUI.ToastAnimationHelper", "Animation end. TransId=" + parama.dlv);
           int i = 0;
           for (;;)
           {
             if (i < CollectMainUI.u(CollectMainUI.this).size())
             {
-              if (((CollectMainUI.a)CollectMainUI.u(CollectMainUI.this).get(i)).dad.equals(parama.dad))
+              if (((CollectMainUI.a)CollectMainUI.u(CollectMainUI.this).get(i)).dlv.equals(parama.dlv))
               {
                 ((CollectMainUI.a)CollectMainUI.u(CollectMainUI.this).get(i)).isAnimated = true;
-                ac.d("MicroMsg.CollectMainUI.ToastAnimationHelper", "Update msg animation status. TransId=" + parama.dad);
+                ad.d("MicroMsg.CollectMainUI.ToastAnimationHelper", "Update msg animation status. TransId=" + parama.dlv);
               }
             }
             else
             {
               CollectMainUI.n(CollectMainUI.this);
-              CollectMainUI.b.this.oCH = false;
-              CollectMainUI.b.this.bWV();
+              CollectMainUI.b.this.pgc = false;
+              CollectMainUI.b.this.cby();
               AppMethodBeat.o(64142);
               return;
             }
@@ -1826,19 +1768,19 @@ public class CollectMainUI
       AppMethodBeat.o(64148);
     }
     
-    public final void bWV()
+    public final void cby()
     {
       AppMethodBeat.i(64147);
-      if (!this.oCH)
+      if (!this.pgc)
       {
-        if (!this.oCI.isEmpty())
+        if (!this.pgd.isEmpty())
         {
-          a((CollectMainUI.a)this.oCI.poll());
+          a((CollectMainUI.a)this.pgd.poll());
           AppMethodBeat.o(64147);
         }
       }
       else {
-        ac.d("MicroMsg.CollectMainUI.ToastAnimationHelper", "Animating, wait. QueueSize=" + this.oCI.size());
+        ad.d("MicroMsg.CollectMainUI.ToastAnimationHelper", "Animating, wait. QueueSize=" + this.pgd.size());
       }
       AppMethodBeat.o(64147);
     }

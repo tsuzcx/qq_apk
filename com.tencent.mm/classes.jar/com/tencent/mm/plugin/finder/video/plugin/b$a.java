@@ -5,24 +5,24 @@ import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
 final class b$a
   implements DialogInterface.OnClickListener
 {
-  public static final a rTX;
+  public static final a sQI;
   
   static
   {
-    AppMethodBeat.i(203966);
-    rTX = new a();
-    AppMethodBeat.o(203966);
+    AppMethodBeat.i(204924);
+    sQI = new a();
+    AppMethodBeat.o(204924);
   }
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(203965);
+    AppMethodBeat.i(204923);
     paramDialogInterface.dismiss();
-    AppMethodBeat.o(203965);
+    AppMethodBeat.o(204923);
   }
 }
 

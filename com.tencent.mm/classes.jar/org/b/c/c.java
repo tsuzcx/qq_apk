@@ -14,21 +14,21 @@ public final class c
   {
     AppMethodBeat.i(40510);
     d.j(paramc, "Cannot extract base string from null object");
-    if ((paramc.Mbg == null) || (paramc.Mbg.size() <= 0))
+    if ((paramc.NWi == null) || (paramc.NWi.size() <= 0))
     {
       paramc = new org.b.b.c(paramc);
       AppMethodBeat.o(40510);
       throw paramc;
     }
-    String str1 = org.b.g.c.encode(paramc.gfS().name());
-    String str2 = org.b.g.c.encode(paramc.gfX());
+    String str1 = org.b.g.c.encode(paramc.gyw().name());
+    String str2 = org.b.g.c.encode(paramc.gyB());
     e locale = new e();
-    locale.a(paramc.gfR());
-    locale.a(paramc.gfW());
-    locale.a(new e(paramc.Mbg));
-    paramc = new e(locale.Mbh);
-    Collections.sort(paramc.Mbh);
-    paramc = String.format("%s&%s&%s", new Object[] { str1, str2, org.b.g.c.encode(paramc.gfZ()) });
+    locale.a(paramc.gyv());
+    locale.a(paramc.gyA());
+    locale.a(new e(paramc.NWi));
+    paramc = new e(locale.NWj);
+    Collections.sort(paramc.NWj);
+    paramc = String.format("%s&%s&%s", new Object[] { str1, str2, org.b.g.c.encode(paramc.gyD()) });
     AppMethodBeat.o(40510);
     return paramc;
   }

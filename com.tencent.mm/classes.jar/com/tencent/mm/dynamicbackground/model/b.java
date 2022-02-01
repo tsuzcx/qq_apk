@@ -1,43 +1,31 @@
 package com.tencent.mm.dynamicbackground.model;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener;", "", "isInitCrash", "", "markDrawEndPoint", "", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "willCrash", "Companion", "dynamicbg_release"})
+@l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener;", "", "isInitCrash", "", "markDrawEndPoint", "", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "willCrash", "Companion", "dynamicbg_release"})
 public abstract interface b
 {
-  public static final a fLW = a.fLX;
+  public static final b.a gfw = b.a.gfx;
   
-  public abstract boolean abh();
+  public abstract boolean adL();
   
-  public abstract void abi();
+  public abstract void adM();
   
-  public abstract void abj();
+  public abstract void adN();
   
-  public abstract void abk();
+  public abstract void adO();
   
-  public abstract boolean abl();
+  public abstract boolean adP();
   
-  public abstract boolean abm();
+  public abstract boolean adQ();
   
-  public abstract void abn();
+  public abstract void adR();
   
-  public abstract void abo();
-  
-  @l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener$Companion;", "", "()V", "CHECK_DRAW_COUNT", "", "dynamicbg_release"})
-  public static final class a
-  {
-    static
-    {
-      AppMethodBeat.i(103078);
-      fLX = new a();
-      AppMethodBeat.o(103078);
-    }
-  }
+  public abstract void adS();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.model.b
  * JD-Core Version:    0.7.0.1
  */

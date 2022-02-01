@@ -7,63 +7,63 @@ import com.google.b.a.e;
 public final class a$p
   extends e
 {
-  private static volatile p[] JMP;
-  public int JMQ = 0;
-  public String JMR = "";
+  private static volatile p[] LGy;
+  public String LGA = "";
+  public int LGz = 0;
   public int port = 0;
   
   public a$p()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
-  public static p[] fBJ()
+  public static p[] fSY()
   {
-    if (JMP == null) {}
-    synchronized (c.bGz)
+    if (LGy == null) {}
+    synchronized (c.bQN)
     {
-      if (JMP == null) {
-        JMP = new p[0];
+      if (LGy == null) {
+        LGy = new p[0];
       }
-      return JMP;
+      return LGy;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.JMQ != 0) {
-      paramb.bw(1, this.JMQ);
+    if (this.LGz != 0) {
+      paramb.by(1, this.LGz);
     }
     if (this.port != 0) {
-      paramb.bv(2, this.port);
+      paramb.bx(2, this.port);
     }
-    if (!this.JMR.equals("")) {
-      paramb.d(3, this.JMR);
+    if (!this.LGA.equals("")) {
+      paramb.d(3, this.LGA);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.JMQ != 0) {
-      i = j + b.by(1, this.JMQ);
+    if (this.LGz != 0) {
+      i = j + b.bA(1, this.LGz);
     }
     j = i;
     if (this.port != 0) {
-      j = i + b.bx(2, this.port);
+      j = i + b.bz(2, this.port);
     }
     i = j;
-    if (!this.JMR.equals("")) {
-      i = j + b.e(3, this.JMR);
+    if (!this.LGA.equals("")) {
+      i = j + b.e(3, this.LGA);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.p
  * JD-Core Version:    0.7.0.1
  */

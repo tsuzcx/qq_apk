@@ -13,14 +13,14 @@ final class a$4
   public final void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(29060);
-    this.zRj.qOY.setAlpha(0.0F);
+    this.BiL.ryX.setAlpha(0.0F);
     AppMethodBeat.o(29060);
   }
   
   public final void onAnimationStart(Animator paramAnimator)
   {
     AppMethodBeat.i(29059);
-    this.zRj.qOY.setAlpha(0.0F);
+    this.BiL.ryX.setAlpha(0.0F);
     AppMethodBeat.o(29059);
   }
 }

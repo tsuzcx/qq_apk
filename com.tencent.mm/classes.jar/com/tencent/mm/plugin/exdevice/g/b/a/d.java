@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.exdevice.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dc;
+import com.tencent.mm.g.c.dm;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class d
-  extends dc
+  extends dm
 {
   public static c.a info;
   
@@ -15,35 +15,35 @@ public final class d
   {
     AppMethodBeat.i(23556);
     c.a locala = new c.a();
-    locala.GvF = new Field[7];
+    locala.IhA = new Field[7];
     locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "rankID";
-    locala.GvH.put("rankID", "TEXT");
+    locala.IhC.put("rankID", "TEXT");
     localStringBuilder.append(" rankID TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "appusername";
-    locala.GvH.put("appusername", "TEXT");
+    locala.IhC.put("appusername", "TEXT");
     localStringBuilder.append(" appusername TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "username";
-    locala.GvH.put("username", "TEXT");
+    locala.IhC.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "ranknum";
-    locala.GvH.put("ranknum", "INTEGER");
+    locala.IhC.put("ranknum", "INTEGER");
     localStringBuilder.append(" ranknum INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "score";
-    locala.GvH.put("score", "INTEGER");
+    locala.IhC.put("score", "INTEGER");
     localStringBuilder.append(" score INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "likecount";
-    locala.GvH.put("likecount", "INTEGER default '0' ");
+    locala.IhC.put("likecount", "INTEGER default '0' ");
     localStringBuilder.append(" likecount INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "selfLikeState";
-    locala.GvH.put("selfLikeState", "INTEGER default '3' ");
+    locala.IhC.put("selfLikeState", "INTEGER default '3' ");
     localStringBuilder.append(" selfLikeState INTEGER default '3' ");
     locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -68,7 +68,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.a.d
  * JD-Core Version:    0.7.0.1
  */

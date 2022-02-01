@@ -1,13 +1,5 @@
 package com.tencent.mm.plugin.game.ui;
 
-import android.widget.ImageView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.s.a;
-import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.pluginsdk.model.app.j;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-
 public final class j$a {}
 
 

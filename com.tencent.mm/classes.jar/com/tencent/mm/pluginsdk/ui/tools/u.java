@@ -1,121 +1,121 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.h.e;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.pluginsdk.ui.i.e;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class u
 {
-  public boolean kVJ;
-  int kWB;
-  int kWC;
-  public int kWD;
-  public int kWE;
+  public boolean lsI;
+  int ltA;
+  int ltB;
+  public int ltC;
+  public int ltD;
   int videoHeight;
   int videoWidth;
-  h.e wqv = h.e.DnH;
+  i.e xyl = i.e.ESM;
   
-  private void ag(float paramFloat1, float paramFloat2)
+  private void ak(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(134104);
-    if (!this.kVJ)
+    if (!this.lsI)
     {
-      if (this.kWB < this.kWC)
+      if (this.ltA < this.ltB)
       {
-        this.kWE = ((int)(this.kWB / paramFloat1));
-        this.kWD = this.kWB;
+        this.ltD = ((int)(this.ltA / paramFloat1));
+        this.ltC = this.ltA;
         AppMethodBeat.o(134104);
         return;
       }
-      this.kWD = ((int)(this.kWC * paramFloat1));
-      this.kWE = this.kWC;
+      this.ltC = ((int)(this.ltB * paramFloat1));
+      this.ltD = this.ltB;
       AppMethodBeat.o(134104);
       return;
     }
     if (Math.abs(paramFloat1 - paramFloat2) > 0.05D)
     {
-      if (this.kWB < this.kWC)
+      if (this.ltA < this.ltB)
       {
-        this.kWE = ((int)(this.kWB / paramFloat1));
-        this.kWD = this.kWB;
+        this.ltD = ((int)(this.ltA / paramFloat1));
+        this.ltC = this.ltA;
         AppMethodBeat.o(134104);
         return;
       }
-      this.kWD = ((int)(this.kWC * paramFloat1));
-      this.kWE = this.kWC;
+      this.ltC = ((int)(this.ltB * paramFloat1));
+      this.ltD = this.ltB;
       AppMethodBeat.o(134104);
       return;
     }
-    if (this.kWB > this.kWC)
+    if (this.ltA > this.ltB)
     {
-      this.kWE = ((int)(this.kWB / paramFloat1));
-      this.kWD = this.kWB;
+      this.ltD = ((int)(this.ltA / paramFloat1));
+      this.ltC = this.ltA;
       AppMethodBeat.o(134104);
       return;
     }
-    this.kWD = ((int)(this.kWC * paramFloat1));
-    this.kWE = this.kWC;
+    this.ltC = ((int)(this.ltB * paramFloat1));
+    this.ltD = this.ltB;
     AppMethodBeat.o(134104);
   }
   
-  private void bJ(float paramFloat)
+  private void bO(float paramFloat)
   {
-    if (this.kWB < this.kWC)
+    if (this.ltA < this.ltB)
     {
-      this.kWE = ((int)(this.kWB / paramFloat));
-      this.kWD = this.kWB;
-      if (this.kWE > this.kWC)
+      this.ltD = ((int)(this.ltA / paramFloat));
+      this.ltC = this.ltA;
+      if (this.ltD > this.ltB)
       {
-        this.kWD = ((int)(this.kWC * paramFloat));
-        this.kWE = this.kWC;
+        this.ltC = ((int)(this.ltB * paramFloat));
+        this.ltD = this.ltB;
       }
     }
     do
     {
       return;
-      this.kWD = ((int)(this.kWC * paramFloat));
-      this.kWE = this.kWC;
-    } while (this.kWD <= this.kWB);
-    this.kWE = ((int)(this.kWB / paramFloat));
-    this.kWD = this.kWB;
+      this.ltC = ((int)(this.ltB * paramFloat));
+      this.ltD = this.ltB;
+    } while (this.ltC <= this.ltA);
+    this.ltD = ((int)(this.ltA / paramFloat));
+    this.ltC = this.ltA;
   }
   
-  private void bK(float paramFloat)
+  private void bP(float paramFloat)
   {
-    if (this.kWB > this.kWC)
+    if (this.ltA > this.ltB)
     {
-      this.kWE = ((int)(this.kWB / paramFloat));
-      this.kWD = this.kWB;
-      if (this.kWE < this.kWC)
+      this.ltD = ((int)(this.ltA / paramFloat));
+      this.ltC = this.ltA;
+      if (this.ltD < this.ltB)
       {
-        this.kWD = ((int)(this.kWC * paramFloat));
-        this.kWE = this.kWC;
+        this.ltC = ((int)(this.ltB * paramFloat));
+        this.ltD = this.ltB;
       }
     }
     do
     {
       return;
-      this.kWD = ((int)(this.kWC * paramFloat));
-      this.kWE = this.kWC;
-    } while (this.kWD >= this.kWB);
-    this.kWE = ((int)(this.kWB / paramFloat));
-    this.kWD = this.kWB;
+      this.ltC = ((int)(this.ltB * paramFloat));
+      this.ltD = this.ltB;
+    } while (this.ltC >= this.ltA);
+    this.ltD = ((int)(this.ltA / paramFloat));
+    this.ltC = this.ltA;
   }
   
-  private void eQq()
+  private void ffs()
   {
-    this.kWE = this.kWC;
-    this.kWD = this.kWB;
+    this.ltD = this.ltB;
+    this.ltC = this.ltA;
   }
   
-  public final boolean a(h.e parame)
+  public final boolean a(i.e parame)
   {
     AppMethodBeat.i(169170);
-    if (this.wqv == parame) {}
+    if (this.xyl == parame) {}
     for (int i = 1;; i = 0)
     {
-      ac.i("MicroMsg.ViewSizeCache", "set scale type old[%s] new[%s]", new Object[] { this.wqv, parame });
-      this.wqv = parame;
+      ad.i("MicroMsg.ViewSizeCache", "set scale type old[%s] new[%s]", new Object[] { this.xyl, parame });
+      this.xyl = parame;
       reset();
       if (i != 0) {
         break;
@@ -129,51 +129,51 @@ public final class u
   
   public final void reset()
   {
-    this.kWC = 0;
-    this.kWB = 0;
+    this.ltB = 0;
+    this.ltA = 0;
     this.videoHeight = 0;
     this.videoWidth = 0;
-    this.kWE = 0;
-    this.kWD = 0;
+    this.ltD = 0;
+    this.ltC = 0;
   }
   
-  public final boolean x(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final boolean y(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(134103);
-    if ((this.kWB == paramInt1) && (this.kWC == paramInt2) && (this.videoWidth == paramInt3) && (this.videoHeight == paramInt4))
+    if ((this.ltA == paramInt1) && (this.ltB == paramInt2) && (this.videoWidth == paramInt3) && (this.videoHeight == paramInt4))
     {
       AppMethodBeat.o(134103);
       return true;
     }
-    this.kWB = paramInt1;
-    this.kWC = paramInt2;
+    this.ltA = paramInt1;
+    this.ltB = paramInt2;
     this.videoWidth = paramInt3;
     this.videoHeight = paramInt4;
     float f1 = this.videoWidth * 1.0F / this.videoHeight;
-    float f2 = this.kWB * 1.0F / this.kWC;
-    if (this.wqv != h.e.DnH) {
-      if (this.wqv == h.e.DnJ) {
-        bJ(f1);
+    float f2 = this.ltA * 1.0F / this.ltB;
+    if (this.xyl != i.e.ESM) {
+      if (this.xyl == i.e.ESO) {
+        bO(f1);
       }
     }
     for (;;)
     {
-      ac.d("MicroMsg.ViewSizeCache", "screen[%d, %d], video[%d, %d], measure[%d, %d] scale[%f, %f]", new Object[] { Integer.valueOf(this.kWB), Integer.valueOf(this.kWC), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight), Integer.valueOf(this.kWD), Integer.valueOf(this.kWE), Float.valueOf(f2), Float.valueOf(f1) });
+      ad.d("MicroMsg.ViewSizeCache", "screen[%d, %d], video[%d, %d], measure[%d, %d] scale[%f, %f]", new Object[] { Integer.valueOf(this.ltA), Integer.valueOf(this.ltB), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight), Integer.valueOf(this.ltC), Integer.valueOf(this.ltD), Float.valueOf(f2), Float.valueOf(f1) });
       AppMethodBeat.o(134103);
       return false;
-      if (this.wqv == h.e.DnI) {
-        eQq();
-      } else if (this.wqv == h.e.DnK) {
-        bK(f1);
+      if (this.xyl == i.e.ESN) {
+        ffs();
+      } else if (this.xyl == i.e.ESP) {
+        bP(f1);
       } else {
-        ag(f1, f2);
+        ak(f1, f2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.u
  * JD-Core Version:    0.7.0.1
  */

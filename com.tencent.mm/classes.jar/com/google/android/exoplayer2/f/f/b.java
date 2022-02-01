@@ -8,27 +8,27 @@ import java.util.List;
 final class b
   implements d
 {
-  public static final b bsZ;
-  private final List<com.google.android.exoplayer2.f.a> bqi;
+  public static final b bDq;
+  private final List<com.google.android.exoplayer2.f.a> bAD;
   
   static
   {
     AppMethodBeat.i(92875);
-    bsZ = new b();
+    bDq = new b();
     AppMethodBeat.o(92875);
   }
   
   private b()
   {
     AppMethodBeat.i(92872);
-    this.bqi = Collections.emptyList();
+    this.bAD = Collections.emptyList();
     AppMethodBeat.o(92872);
   }
   
   public b(com.google.android.exoplayer2.f.a parama)
   {
     AppMethodBeat.i(92871);
-    this.bqi = Collections.singletonList(parama);
+    this.bAD = Collections.singletonList(parama);
     AppMethodBeat.o(92871);
   }
   
@@ -45,7 +45,7 @@ final class b
     AppMethodBeat.i(92874);
     if (paramLong >= 0L)
     {
-      localList = this.bqi;
+      localList = this.bAD;
       AppMethodBeat.o(92874);
       return localList;
     }
@@ -54,7 +54,7 @@ final class b
     return localList;
   }
   
-  public final long eE(int paramInt)
+  public final long eI(int paramInt)
   {
     AppMethodBeat.i(92873);
     if (paramInt == 0) {}
@@ -66,14 +66,14 @@ final class b
     }
   }
   
-  public final int uw()
+  public final int vV()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.f.f.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.thumbplayer.d;
 
 import android.util.Xml;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.thumbplayer.b.a.d;
+import com.tencent.thumbplayer.utils.a;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,42 +12,42 @@ import org.xmlpull.v1.XmlSerializer;
 public final class b
   implements com.tencent.thumbplayer.b.a.b
 {
-  private int KgO;
-  private int KgP;
-  private int KgQ;
-  private List<d> KgR;
-  private List<d> KgS;
-  public List<d> KgT;
+  private int Mae;
+  private int Maf;
+  private int Mag;
+  private List<com.tencent.thumbplayer.b.a.d> Mah;
+  private List<com.tencent.thumbplayer.b.a.d> Mai;
+  public List<com.tencent.thumbplayer.b.a.d> Maj;
   
   public b()
   {
-    AppMethodBeat.i(187856);
-    this.KgO = 0;
-    this.KgP = 0;
-    this.KgQ = 0;
-    this.KgR = new ArrayList(1);
-    this.KgS = new ArrayList(1);
-    this.KgT = new ArrayList(1);
-    AppMethodBeat.o(187856);
+    AppMethodBeat.i(191877);
+    this.Mae = 0;
+    this.Maf = 0;
+    this.Mag = 0;
+    this.Mah = new ArrayList(1);
+    this.Mai = new ArrayList(1);
+    this.Maj = new ArrayList(1);
+    AppMethodBeat.o(191877);
   }
   
-  private long fFw()
+  private long fWL()
   {
-    AppMethodBeat.i(187858);
+    AppMethodBeat.i(191879);
     long l2;
-    if (this.KgR != null)
+    if (this.Mah != null)
     {
-      Iterator localIterator = this.KgR.iterator();
+      Iterator localIterator = this.Mah.iterator();
       long l1 = 0L;
       l2 = l1;
       if (!localIterator.hasNext()) {
         break label74;
       }
-      d locald = (d)localIterator.next();
-      if (l1 >= locald.fFo()) {
+      com.tencent.thumbplayer.b.a.d locald = (com.tencent.thumbplayer.b.a.d)localIterator.next();
+      if (l1 >= locald.fWF()) {
         break label81;
       }
-      l1 = locald.fFo();
+      l1 = locald.fWF();
     }
     label74:
     label81:
@@ -55,28 +55,28 @@ public final class b
     {
       break;
       l2 = 0L;
-      AppMethodBeat.o(187858);
+      AppMethodBeat.o(191879);
       return l2;
     }
   }
   
   private long getAudioDuration()
   {
-    AppMethodBeat.i(187859);
+    AppMethodBeat.i(191880);
     long l2;
-    if (this.KgS != null)
+    if (this.Mai != null)
     {
-      Iterator localIterator = this.KgS.iterator();
+      Iterator localIterator = this.Mai.iterator();
       long l1 = 0L;
       l2 = l1;
       if (!localIterator.hasNext()) {
         break label74;
       }
-      d locald = (d)localIterator.next();
-      if (l1 >= locald.fFo()) {
+      com.tencent.thumbplayer.b.a.d locald = (com.tencent.thumbplayer.b.a.d)localIterator.next();
+      if (l1 >= locald.fWF()) {
         break label81;
       }
-      l1 = locald.fFo();
+      l1 = locald.fWF();
     }
     label74:
     label81:
@@ -84,24 +84,24 @@ public final class b
     {
       break;
       l2 = 0L;
-      AppMethodBeat.o(187859);
+      AppMethodBeat.o(191880);
       return l2;
     }
   }
   
-  public final List<d> fFi()
+  public final List<com.tencent.thumbplayer.b.a.d> fWA()
   {
-    return this.KgR;
+    return this.Mai;
   }
   
-  public final List<d> fFj()
+  public final List<com.tencent.thumbplayer.b.a.d> fWB()
   {
-    return this.KgS;
+    return this.Maj;
   }
   
-  public final List<d> fFk()
+  public final List<com.tencent.thumbplayer.b.a.d> fWz()
   {
-    return this.KgT;
+    return this.Mah;
   }
   
   public final int getMediaType()
@@ -111,7 +111,7 @@ public final class b
   
   public final String getUrl()
   {
-    AppMethodBeat.i(187857);
+    AppMethodBeat.i(191878);
     for (;;)
     {
       List localList1;
@@ -123,31 +123,31 @@ public final class b
         ((XmlSerializer)localObject).setOutput(localStringWriter);
         ((XmlSerializer)localObject).startDocument("UTF-8", Boolean.TRUE);
         ((XmlSerializer)localObject).startTag("", "assets");
-        localList1 = fFk();
-        if (!com.tencent.thumbplayer.utils.b.isEmpty(localList1))
+        localList1 = fWB();
+        if (!a.isEmpty(localList1))
         {
           f.a((XmlSerializer)localObject, localList1, 1, 0L);
           ((XmlSerializer)localObject).endTag("", "assets");
           ((XmlSerializer)localObject).endDocument();
           localObject = localStringWriter.toString();
-          AppMethodBeat.o(187857);
+          AppMethodBeat.o(191878);
           return localObject;
         }
-        localList1 = fFi();
-        localList2 = fFj();
-        if ((com.tencent.thumbplayer.utils.b.isEmpty(localList1)) && (com.tencent.thumbplayer.utils.b.isEmpty(localList2)))
+        localList1 = fWz();
+        localList2 = fWA();
+        if ((a.isEmpty(localList1)) && (a.isEmpty(localList2)))
         {
-          AppMethodBeat.o(187857);
+          AppMethodBeat.o(191878);
           return "";
         }
       }
       catch (Exception localException)
       {
-        com.tencent.thumbplayer.utils.f.e("TPMediaComposition", localException);
-        AppMethodBeat.o(187857);
+        com.tencent.thumbplayer.utils.d.e("TPMediaComposition", localException);
+        AppMethodBeat.o(191878);
         return null;
       }
-      long l = ((b)this).fFw();
+      long l = ((b)this).fWL();
       f.a(localException, localList1, 2, ((b)this).getAudioDuration());
       f.a(localException, localList2, 3, l);
     }

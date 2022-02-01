@@ -1,81 +1,98 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import android.support.v4.app.a.a;
-import android.text.TextUtils;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.config.a;
+import com.tencent.mm.plugin.appbrand.config.a.e;
+import com.tencent.mm.plugin.appbrand.config.k;
+import java.util.Arrays;
+import java.util.List;
 
 public final class o
 {
-  private static final h<String, a.a> lJa;
+  private static final List<String> mim;
   
   static
   {
-    AppMethodBeat.i(140777);
-    lJa = new h();
-    AppMethodBeat.o(140777);
+    AppMethodBeat.i(147668);
+    mim = Arrays.asList(new String[] { "scope.userLocation", "scope.camera" });
+    AppMethodBeat.o(147668);
   }
   
-  public static void Qo(String paramString)
+  public static String a(String paramString, AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(140775);
-    if (TextUtils.isEmpty(paramString))
+    AppMethodBeat.i(147667);
+    int i = -1;
+    switch (paramString.hashCode())
     {
-      ac.e("Luggage.RequestPermissionRegistry", "removeCallbacks fail, invalid arguments");
-      AppMethodBeat.o(140775);
-      return;
     }
-    lJa.cD(paramString);
-    AppMethodBeat.o(140775);
-  }
-  
-  public static void a(String paramString, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(140776);
-    if ((paramString == null) || (paramString.length() == 0))
+    for (;;)
     {
-      ac.e("Luggage.RequestPermissionRegistry", "removeCallback fail, invalid id");
-      AppMethodBeat.o(140776);
-      return;
-    }
-    paramString = lJa.cC(paramString);
-    if (paramString != null)
-    {
-      paramString = paramString.iterator();
-      while (paramString.hasNext()) {
-        ((a.a)paramString.next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+      switch (i)
+      {
+      default: 
+        paramString = paramAppBrandRuntime.getAppConfig().Nh(paramString);
+        if (paramString != null) {
+          break label99;
+        }
+        AppMethodBeat.o(147667);
+        return null;
+        if (paramString.equals("scope.camera")) {
+          i = 0;
+        }
+        break;
       }
     }
-    AppMethodBeat.o(140776);
+    paramString = paramAppBrandRuntime.mContext.getString(2131755948);
+    AppMethodBeat.o(147667);
+    return paramString;
+    label99:
+    paramString = paramString.desc;
+    AppMethodBeat.o(147667);
+    return paramString;
   }
   
-  public static void a(String paramString, a.a parama)
+  public static boolean a(String paramString, k paramk)
   {
-    AppMethodBeat.i(140773);
-    if ((TextUtils.isEmpty(paramString)) || (parama == null))
+    AppMethodBeat.i(147666);
+    if (!mim.contains(paramString))
     {
-      ac.e("Luggage.RequestPermissionRegistry", "addCallback fail, invalid arguments");
-      AppMethodBeat.o(140773);
-      return;
+      AppMethodBeat.o(147666);
+      return false;
     }
-    lJa.h(paramString, parama);
-    AppMethodBeat.o(140773);
-  }
-  
-  @Deprecated
-  public static void b(String paramString, a.a parama)
-  {
-    AppMethodBeat.i(140774);
-    a(paramString, parama);
-    AppMethodBeat.o(140774);
+    int i = -1;
+    switch (paramString.hashCode())
+    {
+    }
+    for (;;)
+    {
+      switch (i)
+      {
+      default: 
+        AppMethodBeat.o(147666);
+        return false;
+        if (paramString.equals("scope.userLocation"))
+        {
+          i = 0;
+          continue;
+          if (paramString.equals("scope.camera")) {
+            i = 1;
+          }
+        }
+        break;
+      }
+    }
+    boolean bool = paramk.jYd;
+    AppMethodBeat.o(147666);
+    return bool;
+    AppMethodBeat.o(147666);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.o
  * JD-Core Version:    0.7.0.1
  */

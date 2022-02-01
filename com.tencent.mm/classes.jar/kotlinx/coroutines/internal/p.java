@@ -1,26 +1,15 @@
 package kotlinx.coroutines.internal;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/internal/Removed;", "", "ref", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlinx/coroutines/internal/Node;", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "toString", "", "kotlinx-coroutines-core"})
-final class p
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/internal/OpDescriptor;", "", "()V", "atomicOp", "Lkotlinx/coroutines/internal/AtomicOp;", "getAtomicOp", "()Lkotlinx/coroutines/internal/AtomicOp;", "isEarlierThan", "", "that", "perform", "affected", "toString", "", "kotlinx-coroutines-core"})
+public abstract class p
 {
-  public final i LTd;
+  public abstract Object fW(Object paramObject);
   
-  public p(i parami)
+  public String toString()
   {
-    AppMethodBeat.i(118077);
-    this.LTd = parami;
-    AppMethodBeat.o(118077);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118076);
-    String str = "Removed[" + this.LTd + ']';
-    AppMethodBeat.o(118076);
-    return str;
+    return getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this));
   }
 }
 

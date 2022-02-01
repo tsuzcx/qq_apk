@@ -3,43 +3,38 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cbh
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int DRh;
-  public String thr;
+  public int GVy;
+  public int GVz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125753);
+    AppMethodBeat.i(143984);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.DRh);
-      if (this.thr != null) {
-        paramVarArgs.d(2, this.thr);
-      }
-      AppMethodBeat.o(125753);
+      paramVarArgs.aS(1, this.GVy);
+      paramVarArgs.aS(2, this.GVz);
+      AppMethodBeat.o(143984);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.DRh) + 0;
-      paramInt = i;
-      if (this.thr != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.thr);
-      }
-      AppMethodBeat.o(125753);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bz(1, this.GVy);
+      int i = f.a.a.b.b.a.bz(2, this.GVz);
+      AppMethodBeat.o(143984);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(125753);
+      AppMethodBeat.o(143984);
       return 0;
     }
     if (paramInt == 3)
@@ -49,24 +44,24 @@ public final class cbh
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(125753);
+        AppMethodBeat.o(143984);
         return -1;
       case 1: 
-        localcbh.DRh = locala.LVo.xF();
-        AppMethodBeat.o(125753);
+        localcbh.GVy = locala.NPN.zc();
+        AppMethodBeat.o(143984);
         return 0;
       }
-      localcbh.thr = locala.LVo.readString();
-      AppMethodBeat.o(125753);
+      localcbh.GVz = locala.NPN.zc();
+      AppMethodBeat.o(143984);
       return 0;
     }
-    AppMethodBeat.o(125753);
+    AppMethodBeat.o(143984);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cbh
  * JD-Core Version:    0.7.0.1
  */

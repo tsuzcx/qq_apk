@@ -11,32 +11,32 @@ import java.util.Map;
 
 public final class b
 {
-  private final String csU;
-  private final b csV;
-  private IBinder csW;
+  private final String cDQ;
+  private final b cDR;
+  private IBinder cDS;
   private final String mServiceName;
   
   public b(String paramString1, String paramString2, b paramb)
   {
     this.mServiceName = paramString1;
-    this.csU = paramString2;
-    this.csV = paramb;
+    this.cDQ = paramString2;
+    this.cDR = paramb;
   }
   
-  private Object GS()
+  private Object In()
   {
     try
     {
-      Object localObject1 = Class.forName(this.csU);
-      Object localObject3 = Class.forName(String.format("%s$Stub", new Object[] { this.csU }));
-      Object localObject2 = ((Class)localObject3).getDeclaredMethod("asInterface", new Class[] { IBinder.class }).invoke(null, new Object[] { this.csW });
+      Object localObject1 = Class.forName(this.cDQ);
+      Object localObject3 = Class.forName(String.format("%s$Stub", new Object[] { this.cDQ }));
+      Object localObject2 = ((Class)localObject3).getDeclaredMethod("asInterface", new Class[] { IBinder.class }).invoke(null, new Object[] { this.cDS });
       localObject3 = ((Class)localObject3).getClassLoader();
       if (localObject3 == null)
       {
         c.e("Matrix.SystemServiceBinderHooker", "doHook exp classLoader null ", new Object[0]);
         return Boolean.FALSE;
       }
-      localObject2 = new c(localObject2, this.csV);
+      localObject2 = new c(localObject2, this.cDR);
       localObject1 = Proxy.newProxyInstance((ClassLoader)localObject3, new Class[] { IBinder.class, IInterface.class, localObject1 }, (InvocationHandler)localObject2);
       return localObject1;
     }
@@ -49,18 +49,18 @@ public final class b
   
   public final boolean doHook()
   {
-    c.i("Matrix.SystemServiceBinderHooker", "doHook: serviceName:%s, serviceClsName:%s", new Object[] { this.mServiceName, this.csU });
+    c.i("Matrix.SystemServiceBinderHooker", "doHook: serviceName:%s, serviceClsName:%s", new Object[] { this.mServiceName, this.cDQ });
     try
     {
       Object localObject1 = Class.forName("android.os.ServiceManager");
-      this.csW = ((IBinder)((Class)localObject1).getDeclaredMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { this.mServiceName }));
+      this.cDS = ((IBinder)((Class)localObject1).getDeclaredMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { this.mServiceName }));
       Object localObject2 = ((Class)localObject1).getClassLoader();
       if (localObject2 == null)
       {
         c.e("Matrix.SystemServiceBinderHooker", "doHook exp classLoader null ", new Object[0]);
         return false;
       }
-      b.a locala = new b.a(this.csW, GS());
+      a locala = new a(this.cDS, In());
       localObject2 = (IBinder)Proxy.newProxyInstance((ClassLoader)localObject2, new Class[] { IBinder.class }, locala);
       localObject1 = ((Class)localObject1).getDeclaredField("sCache");
       ((Field)localObject1).setAccessible(true);
@@ -76,7 +76,7 @@ public final class b
   
   public final boolean doUnHook()
   {
-    if (this.csW == null)
+    if (this.cDS == null)
     {
       c.i("Matrix.SystemServiceBinderHooker", "doUnHook sOriginPowerManagerService null", new Object[0]);
       return false;
@@ -85,7 +85,7 @@ public final class b
     {
       Field localField = Class.forName("android.os.ServiceManager").getDeclaredField("sCache");
       localField.setAccessible(true);
-      ((Map)localField.get(null)).put(this.mServiceName, this.csW);
+      ((Map)localField.get(null)).put(this.mServiceName, this.cDS);
       return true;
     }
     catch (Throwable localThrowable)
@@ -93,6 +93,27 @@ public final class b
       c.e("Matrix.SystemServiceBinderHooker", "doUnHook exp : " + localThrowable.getLocalizedMessage(), new Object[0]);
     }
     return false;
+  }
+  
+  static final class a
+    implements InvocationHandler
+  {
+    private final IBinder cDT;
+    private final Object cDU;
+    
+    a(IBinder paramIBinder, Object paramObject)
+    {
+      this.cDT = paramIBinder;
+      this.cDU = paramObject;
+    }
+    
+    public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+    {
+      if (("queryLocalInterface".equals(paramMethod.getName())) && (this.cDU != null)) {
+        return this.cDU;
+      }
+      return paramMethod.invoke(this.cDT, paramArrayOfObject);
+    }
   }
   
   public static abstract interface b
@@ -103,21 +124,21 @@ public final class b
   static final class c
     implements InvocationHandler
   {
-    final Object csZ;
-    final b.b cta;
+    final Object cDV;
+    final b.b cDW;
     
     c(Object paramObject, b.b paramb)
     {
-      this.csZ = paramObject;
-      this.cta = paramb;
+      this.cDV = paramObject;
+      this.cDW = paramb;
     }
     
     public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
     {
-      if (this.cta != null) {
-        this.cta.b(paramMethod, paramArrayOfObject);
+      if (this.cDW != null) {
+        this.cDW.b(paramMethod, paramArrayOfObject);
       }
-      return paramMethod.invoke(this.csZ, paramArrayOfObject);
+      return paramMethod.invoke(this.cDV, paramArrayOfObject);
     }
   }
 }

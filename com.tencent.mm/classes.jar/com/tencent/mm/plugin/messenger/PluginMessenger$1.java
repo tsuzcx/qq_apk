@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.messenger;
 
-import com.tencent.mm.plugin.messenger.a.f.b;
+import com.tencent.mm.plugin.messenger.a.e.b;
 
 final class PluginMessenger$1
-  implements f.b
+  implements e.b
 {
   PluginMessenger$1(PluginMessenger paramPluginMessenger) {}
 }

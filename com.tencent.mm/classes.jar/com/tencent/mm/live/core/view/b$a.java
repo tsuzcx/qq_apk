@@ -2,7 +2,7 @@ package com.tencent.mm.live.core.view;
 
 public abstract interface b$a
 {
-  public abstract void y(float paramFloat1, float paramFloat2);
+  public abstract void A(float paramFloat1, float paramFloat2);
 }
 
 

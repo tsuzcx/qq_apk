@@ -9,26 +9,32 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public class TaskManagerHeaderView
   extends LinearLayout
 {
-  private TextView oMZ;
+  private TextView pqH;
   
   public TaskManagerHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(9085);
     setOrientation(1);
-    this.oMZ = ((TextView)LayoutInflater.from(getContext()).inflate(2131494433, this, true).findViewById(2131304200));
-    this.oMZ.setOnClickListener(new View.OnClickListener()
+    this.pqH = ((TextView)LayoutInflater.from(getContext()).inflate(2131494433, this, true).findViewById(2131304200));
+    this.pqH.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(9084);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/downloader_app/ui/TaskManagerHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if ((TaskManagerHeaderView.this.getContext() instanceof DownloadMainUI)) {
-          ((DownloadMainUI)TaskManagerHeaderView.this.getContext()).oMB.bYI();
+          ((DownloadMainUI)TaskManagerHeaderView.this.getContext()).pqj.cdm();
         }
+        a.a(this, "com/tencent/mm/plugin/downloader_app/ui/TaskManagerHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(9084);
       }
     });

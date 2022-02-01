@@ -5,25 +5,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends l
 {
-  public final String agh(int paramInt)
+  public final String aiI(int paramInt)
   {
     AppMethodBeat.i(157173);
-    String str = cV(paramInt, "excelreader.apk");
+    String str = dd(paramInt, "excelreader.apk");
     AppMethodBeat.o(157173);
     return str;
   }
   
-  public final String fLK()
+  public final String gdf()
   {
     return "com.tencent.xweb.xfiles.excel.ExcelReader";
   }
   
-  public final String fLL()
+  public final String gdg()
   {
     return "com.tencent.xweb.xfiles.excel.ExcelReaderEnvironment";
   }
   
-  public final int fLM()
+  public final int gdh()
   {
     return 100;
   }

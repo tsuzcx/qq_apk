@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emoji.b;
 
 public final class b$a
 {
-  public static b oYv;
+  public static b pCf;
 }
 
 

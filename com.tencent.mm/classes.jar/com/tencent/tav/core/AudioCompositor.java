@@ -1,25 +1,56 @@
 package com.tencent.tav.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tav.coremedia.CMSampleBuffer;
 import com.tencent.tav.decoder.AudioInfo;
 import com.tencent.tav.decoder.AudioMixer;
+import com.tencent.tav.decoder.factory.AVResampleFactory;
+import com.tencent.tav.decoder.logger.Logger;
 import java.nio.ByteBuffer;
 import java.nio.ShortBuffer;
 
 public class AudioCompositor
 {
-  public static boolean LOG_VERBOSE = false;
   private final String TAG;
   private AudioMixer audioMixer;
+  private final AudioResample audioResample;
   private ShortBuffer currentSamples;
   private ShortBuffer lastSamples;
   
   public AudioCompositor(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(197594);
+    AppMethodBeat.i(217875);
     this.TAG = ("AudioCompositor@" + Integer.toHexString(hashCode()));
     this.audioMixer = new AudioMixer(paramAudioInfo.sampleRate, paramAudioInfo.channelCount);
-    AppMethodBeat.o(197594);
+    this.audioResample = new AudioResample();
+    AppMethodBeat.o(217875);
+  }
+  
+  private AudioInfo resample(CMSampleBuffer paramCMSampleBuffer, AudioInfo paramAudioInfo)
+  {
+    AppMethodBeat.i(217879);
+    ByteBuffer localByteBuffer2 = paramCMSampleBuffer.getSampleByteBuffer();
+    if ((localByteBuffer2 == null) || (localByteBuffer2.limit() <= 0))
+    {
+      Logger.d(this.audioResample.TAG, "resample: 不进行重采样 byteBuffer = ".concat(String.valueOf(localByteBuffer2)));
+      AppMethodBeat.o(217879);
+      return paramAudioInfo;
+    }
+    ByteBuffer localByteBuffer1;
+    if (AVResampleFactory.getInstance().isResampleEnable())
+    {
+      localByteBuffer1 = this.audioResample.resample(localByteBuffer2, paramAudioInfo);
+      if (localByteBuffer1 != null) {
+        paramAudioInfo = this.audioResample.getDestAudioInfo();
+      }
+    }
+    for (;;)
+    {
+      paramCMSampleBuffer.setSampleByteBuffer(localByteBuffer1);
+      AppMethodBeat.o(217879);
+      return paramAudioInfo;
+      localByteBuffer1 = localByteBuffer2;
+    }
   }
   
   public void clear()
@@ -39,416 +70,439 @@ public class AudioCompositor
   
   public ByteBuffer processFrame(ByteBuffer paramByteBuffer, float paramFloat1, float paramFloat2, AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(197597);
+    AppMethodBeat.i(217878);
     this.audioMixer.setAudioInfo(paramAudioInfo.sampleRate, paramAudioInfo.channelCount, paramAudioInfo.pcmEncoding);
     paramByteBuffer = this.audioMixer.processBytes(paramByteBuffer, paramFloat2, paramFloat1, 1.0F);
-    AppMethodBeat.o(197597);
+    AppMethodBeat.o(217878);
     return paramByteBuffer;
   }
   
   /* Error */
-  public com.tencent.tav.coremedia.CMSampleBuffer readMergeSample(com.tencent.tav.decoder.AudioDecoderTrack paramAudioDecoderTrack, AudioMixInputParameters paramAudioMixInputParameters, com.tencent.tav.coremedia.CMSampleBuffer paramCMSampleBuffer)
+  public CMSampleBuffer readMergeSample(com.tencent.tav.decoder.AudioDecoderTrack paramAudioDecoderTrack, AudioMixInputParameters paramAudioMixInputParameters, CMSampleBuffer paramCMSampleBuffer)
   {
     // Byte code:
     //   0: iconst_0
-    //   1: istore 7
+    //   1: istore 5
     //   3: aload_0
     //   4: monitorenter
-    //   5: ldc 99
-    //   7: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 155
+    //   7: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_3
     //   11: ifnull +14 -> 25
     //   14: aload_3
-    //   15: invokevirtual 105	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
+    //   15: invokevirtual 86	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
     //   18: ifnull +7 -> 25
     //   21: aload_1
     //   22: ifnonnull +22 -> 44
     //   25: aload_0
     //   26: aconst_null
-    //   27: putfield 78	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
+    //   27: putfield 134	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
     //   30: aload_0
     //   31: aconst_null
-    //   32: putfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   35: ldc 99
-    //   37: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   32: putfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   35: ldc 155
+    //   37: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   40: aload_0
     //   41: monitorexit
     //   42: aload_3
     //   43: areturn
     //   44: aload_3
-    //   45: invokevirtual 105	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
-    //   48: invokevirtual 111	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
-    //   51: invokevirtual 116	java/nio/ShortBuffer:limit	()I
+    //   45: invokevirtual 86	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
+    //   48: invokevirtual 159	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
+    //   51: invokevirtual 162	java/nio/ShortBuffer:limit	()I
     //   54: istore 8
     //   56: aload_0
-    //   57: getfield 78	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
+    //   57: getfield 134	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
     //   60: ifnull +15 -> 75
     //   63: aload_0
-    //   64: getfield 78	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
-    //   67: invokevirtual 119	java/nio/ShortBuffer:capacity	()I
+    //   64: getfield 134	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
+    //   67: invokevirtual 165	java/nio/ShortBuffer:capacity	()I
     //   70: iload 8
-    //   72: if_icmpge +236 -> 308
+    //   72: if_icmpge +235 -> 307
     //   75: iload 8
     //   77: iconst_2
     //   78: imul
-    //   79: invokestatic 123	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
-    //   82: astore 10
-    //   84: aload 10
+    //   79: invokestatic 169	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   82: astore 12
+    //   84: aload 12
     //   86: aload_3
-    //   87: invokevirtual 105	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
-    //   90: invokevirtual 127	java/nio/ByteBuffer:order	()Ljava/nio/ByteOrder;
-    //   93: invokevirtual 130	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   87: invokevirtual 86	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
+    //   90: invokevirtual 173	java/nio/ByteBuffer:order	()Ljava/nio/ByteOrder;
+    //   93: invokevirtual 176	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
     //   96: pop
     //   97: aload_0
-    //   98: aload 10
-    //   100: invokevirtual 111	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
-    //   103: putfield 78	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
+    //   98: aload 12
+    //   100: invokevirtual 159	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
+    //   103: putfield 134	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
     //   106: aload_0
-    //   107: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   107: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
     //   110: ifnull +91 -> 201
     //   113: aload_0
-    //   114: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   117: invokevirtual 133	java/nio/ShortBuffer:remaining	()I
+    //   114: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   117: invokevirtual 179	java/nio/ShortBuffer:remaining	()I
     //   120: ifle +81 -> 201
     //   123: iload 8
     //   125: aload_0
-    //   126: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   129: invokevirtual 133	java/nio/ShortBuffer:remaining	()I
-    //   132: if_icmpge +187 -> 319
+    //   126: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   129: invokevirtual 179	java/nio/ShortBuffer:remaining	()I
+    //   132: if_icmpge +186 -> 318
     //   135: aload_0
-    //   136: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   139: invokevirtual 136	java/nio/ShortBuffer:position	()I
-    //   142: istore 5
+    //   136: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   139: invokevirtual 182	java/nio/ShortBuffer:position	()I
+    //   142: istore 6
     //   144: aload_0
-    //   145: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   148: invokevirtual 116	java/nio/ShortBuffer:limit	()I
-    //   151: istore 6
+    //   145: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   148: invokevirtual 162	java/nio/ShortBuffer:limit	()I
+    //   151: istore 7
     //   153: aload_0
-    //   154: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   157: iload 5
+    //   154: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   157: iload 6
     //   159: iload 8
     //   161: iadd
-    //   162: invokevirtual 139	java/nio/ShortBuffer:limit	(I)Ljava/nio/Buffer;
+    //   162: invokevirtual 185	java/nio/ShortBuffer:limit	(I)Ljava/nio/Buffer;
     //   165: pop
     //   166: aload_0
-    //   167: getfield 78	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
+    //   167: getfield 134	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
     //   170: aload_0
-    //   171: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   174: invokevirtual 143	java/nio/ShortBuffer:put	(Ljava/nio/ShortBuffer;)Ljava/nio/ShortBuffer;
+    //   171: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   174: invokevirtual 189	java/nio/ShortBuffer:put	(Ljava/nio/ShortBuffer;)Ljava/nio/ShortBuffer;
     //   177: pop
     //   178: aload_0
-    //   179: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   182: iload 6
-    //   184: invokevirtual 139	java/nio/ShortBuffer:limit	(I)Ljava/nio/Buffer;
+    //   179: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   182: iload 7
+    //   184: invokevirtual 185	java/nio/ShortBuffer:limit	(I)Ljava/nio/Buffer;
     //   187: pop
     //   188: aload_0
-    //   189: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   192: iload 5
+    //   189: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   192: iload 6
     //   194: iload 8
     //   196: iadd
-    //   197: invokevirtual 145	java/nio/ShortBuffer:position	(I)Ljava/nio/Buffer;
+    //   197: invokevirtual 191	java/nio/ShortBuffer:position	(I)Ljava/nio/Buffer;
     //   200: pop
     //   201: aload_0
-    //   202: getfield 78	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
-    //   205: invokevirtual 136	java/nio/ShortBuffer:position	()I
-    //   208: istore 5
-    //   210: iload 5
+    //   202: getfield 134	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
+    //   205: invokevirtual 182	java/nio/ShortBuffer:position	()I
+    //   208: istore 6
+    //   210: iload 6
     //   212: iload 8
-    //   214: if_icmpge +361 -> 575
+    //   214: if_icmpge +396 -> 610
     //   217: aload_1
     //   218: aload_3
-    //   219: invokevirtual 149	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   222: invokevirtual 155	com/tencent/tav/decoder/AudioDecoderTrack:readSample	(Lcom/tencent/tav/coremedia/CMTime;)Lcom/tencent/tav/coremedia/CMSampleBuffer;
-    //   225: astore 10
-    //   227: iload 7
-    //   229: istore 6
-    //   231: getstatic 17	com/tencent/tav/core/AudioCompositor:LOG_VERBOSE	Z
-    //   234: ifeq +43 -> 277
-    //   237: aload_0
-    //   238: getfield 56	com/tencent/tav/core/AudioCompositor:TAG	Ljava/lang/String;
-    //   241: new 31	java/lang/StringBuilder
-    //   244: dup
-    //   245: ldc 157
-    //   247: invokespecial 36	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   250: iload 7
-    //   252: invokevirtual 160	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   255: ldc 162
-    //   257: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   260: aload 10
-    //   262: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   265: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   268: invokestatic 171	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   271: iload 7
-    //   273: iconst_1
-    //   274: iadd
-    //   275: istore 6
-    //   277: aload 10
-    //   279: invokevirtual 149	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   282: getstatic 177	com/tencent/tav/decoder/IDecoder:SAMPLE_TIME_FINISH	Lcom/tencent/tav/coremedia/CMTime;
-    //   285: invokevirtual 183	com/tencent/tav/coremedia/CMTime:bigThan	(Lcom/tencent/tav/coremedia/CMTime;)Z
-    //   288: istore 9
-    //   290: iload 9
-    //   292: ifne +57 -> 349
-    //   295: ldc 99
-    //   297: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   300: goto -260 -> 40
-    //   303: astore_1
-    //   304: aload_0
-    //   305: monitorexit
-    //   306: aload_1
-    //   307: athrow
-    //   308: aload_0
-    //   309: getfield 78	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
-    //   312: invokevirtual 186	java/nio/ShortBuffer:clear	()Ljava/nio/Buffer;
-    //   315: pop
-    //   316: goto -210 -> 106
-    //   319: aload_0
-    //   320: getfield 78	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
-    //   323: aload_0
-    //   324: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   327: invokevirtual 143	java/nio/ShortBuffer:put	(Ljava/nio/ShortBuffer;)Ljava/nio/ShortBuffer;
-    //   330: pop
-    //   331: aload_0
-    //   332: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   335: aload_0
-    //   336: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   339: invokevirtual 116	java/nio/ShortBuffer:limit	()I
-    //   342: invokevirtual 145	java/nio/ShortBuffer:position	(I)Ljava/nio/Buffer;
-    //   345: pop
-    //   346: goto -145 -> 201
-    //   349: aload_1
-    //   350: aload 10
-    //   352: invokevirtual 149	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   355: invokevirtual 190	com/tencent/tav/decoder/AudioDecoderTrack:asyncReadNextSample	(Lcom/tencent/tav/coremedia/CMTime;)V
-    //   358: aload_2
-    //   359: ifnull +264 -> 623
-    //   362: aload_2
-    //   363: aload 10
-    //   365: invokevirtual 149	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   368: invokevirtual 196	com/tencent/tav/core/AudioMixInputParameters:getVolumeAtTime	(Lcom/tencent/tav/coremedia/CMTime;)F
-    //   371: fstore 4
-    //   373: iload 6
-    //   375: istore 7
-    //   377: aload 10
-    //   379: invokevirtual 105	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
-    //   382: ifnull -172 -> 210
-    //   385: aload_2
-    //   386: ifnull +38 -> 424
-    //   389: aload_2
-    //   390: invokevirtual 200	com/tencent/tav/core/AudioMixInputParameters:getAudioTapProcessor	()Lcom/tencent/tav/core/AudioTapProcessor;
-    //   393: ifnull +31 -> 424
-    //   396: aload 10
-    //   398: aload_2
-    //   399: invokevirtual 200	com/tencent/tav/core/AudioMixInputParameters:getAudioTapProcessor	()Lcom/tencent/tav/core/AudioTapProcessor;
-    //   402: aload 10
-    //   404: invokevirtual 149	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   407: aload 10
-    //   409: invokevirtual 105	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
-    //   412: aload_1
-    //   413: invokevirtual 204	com/tencent/tav/decoder/AudioDecoderTrack:getAudioInfo	()Lcom/tencent/tav/decoder/AudioInfo;
-    //   416: invokeinterface 210 4 0
-    //   421: invokevirtual 214	com/tencent/tav/coremedia/CMSampleBuffer:setSampleByteBuffer	(Ljava/nio/ByteBuffer;)V
-    //   424: aload_0
-    //   425: aload 10
-    //   427: invokevirtual 105	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
-    //   430: fload 4
-    //   432: fconst_1
-    //   433: aload_1
-    //   434: invokevirtual 204	com/tencent/tav/decoder/AudioDecoderTrack:getAudioInfo	()Lcom/tencent/tav/decoder/AudioInfo;
-    //   437: invokevirtual 216	com/tencent/tav/core/AudioCompositor:processFrame	(Ljava/nio/ByteBuffer;FFLcom/tencent/tav/decoder/AudioInfo;)Ljava/nio/ByteBuffer;
-    //   440: invokevirtual 111	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
-    //   443: astore 10
-    //   445: aload 10
-    //   447: invokevirtual 116	java/nio/ShortBuffer:limit	()I
-    //   450: iload 8
-    //   452: iload 5
-    //   454: isub
-    //   455: if_icmple +214 -> 669
-    //   458: aload 10
-    //   460: invokevirtual 116	java/nio/ShortBuffer:limit	()I
-    //   463: iload 8
-    //   465: iload 5
-    //   467: isub
-    //   468: isub
-    //   469: istore 6
-    //   471: aload_0
-    //   472: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   475: ifnull +15 -> 490
-    //   478: aload_0
-    //   479: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   482: invokevirtual 119	java/nio/ShortBuffer:capacity	()I
-    //   485: iload 6
-    //   487: if_icmpge +142 -> 629
-    //   490: iload 6
-    //   492: iconst_2
-    //   493: imul
-    //   494: invokestatic 123	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
-    //   497: astore_1
-    //   498: aload_1
-    //   499: aload_3
-    //   500: invokevirtual 105	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
-    //   503: invokevirtual 127	java/nio/ByteBuffer:order	()Ljava/nio/ByteOrder;
-    //   506: invokevirtual 130	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   509: pop
-    //   510: aload_0
-    //   511: aload_1
-    //   512: invokevirtual 111	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
-    //   515: putfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   518: aload 10
-    //   520: iload 8
-    //   522: iload 5
-    //   524: isub
-    //   525: invokevirtual 145	java/nio/ShortBuffer:position	(I)Ljava/nio/Buffer;
-    //   528: pop
-    //   529: aload_0
-    //   530: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   533: aload 10
-    //   535: invokevirtual 143	java/nio/ShortBuffer:put	(Ljava/nio/ShortBuffer;)Ljava/nio/ShortBuffer;
-    //   538: pop
-    //   539: aload_0
-    //   540: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   543: invokevirtual 219	java/nio/ShortBuffer:flip	()Ljava/nio/Buffer;
-    //   546: pop
-    //   547: aload 10
-    //   549: iconst_0
-    //   550: invokevirtual 145	java/nio/ShortBuffer:position	(I)Ljava/nio/Buffer;
-    //   553: pop
-    //   554: aload 10
-    //   556: iload 8
-    //   558: iload 5
-    //   560: isub
-    //   561: invokevirtual 139	java/nio/ShortBuffer:limit	(I)Ljava/nio/Buffer;
-    //   564: pop
-    //   565: aload_0
-    //   566: getfield 78	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
-    //   569: aload 10
-    //   571: invokevirtual 143	java/nio/ShortBuffer:put	(Ljava/nio/ShortBuffer;)Ljava/nio/ShortBuffer;
-    //   574: pop
-    //   575: aload_0
-    //   576: getfield 78	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
-    //   579: invokevirtual 219	java/nio/ShortBuffer:flip	()Ljava/nio/Buffer;
-    //   582: pop
-    //   583: aload_0
-    //   584: getfield 72	com/tencent/tav/core/AudioCompositor:audioMixer	Lcom/tencent/tav/decoder/AudioMixer;
-    //   587: aload_3
-    //   588: invokevirtual 105	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
-    //   591: invokevirtual 111	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
-    //   594: aload_0
-    //   595: getfield 78	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
-    //   598: invokevirtual 223	com/tencent/tav/decoder/AudioMixer:mergeSamples	(Ljava/nio/ShortBuffer;Ljava/nio/ShortBuffer;)Ljava/nio/ByteBuffer;
-    //   601: astore_1
-    //   602: new 101	com/tencent/tav/coremedia/CMSampleBuffer
-    //   605: dup
-    //   606: aload_3
-    //   607: invokevirtual 149	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   610: aload_1
-    //   611: invokespecial 226	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMTime;Ljava/nio/ByteBuffer;)V
-    //   614: astore_3
-    //   615: ldc 99
-    //   617: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   620: goto -580 -> 40
-    //   623: fconst_1
-    //   624: fstore 4
-    //   626: goto -253 -> 373
+    //   219: invokevirtual 195	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   222: invokevirtual 201	com/tencent/tav/decoder/AudioDecoderTrack:readSample	(Lcom/tencent/tav/coremedia/CMTime;)Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   225: astore 14
+    //   227: aload_0
+    //   228: getfield 52	com/tencent/tav/core/AudioCompositor:TAG	Ljava/lang/String;
+    //   231: astore 12
+    //   233: new 27	java/lang/StringBuilder
+    //   236: dup
+    //   237: ldc 203
+    //   239: invokespecial 32	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   242: astore 13
+    //   244: iload 5
+    //   246: iconst_1
+    //   247: iadd
+    //   248: istore 7
+    //   250: aload 12
+    //   252: aload 13
+    //   254: iload 5
+    //   256: invokevirtual 206	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   259: ldc 208
+    //   261: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   264: aload 14
+    //   266: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   269: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   272: invokestatic 214	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   275: aload 14
+    //   277: invokevirtual 218	com/tencent/tav/coremedia/CMSampleBuffer:getState	()Lcom/tencent/tav/coremedia/CMSampleState;
+    //   280: invokevirtual 224	com/tencent/tav/coremedia/CMSampleState:getStateCode	()J
+    //   283: lstore 10
+    //   285: lload 10
+    //   287: ldc2_w 225
+    //   290: lcmp
+    //   291: ifgt +57 -> 348
+    //   294: ldc 155
+    //   296: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   299: goto -259 -> 40
+    //   302: astore_1
+    //   303: aload_0
+    //   304: monitorexit
+    //   305: aload_1
+    //   306: athrow
+    //   307: aload_0
+    //   308: getfield 134	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
+    //   311: invokevirtual 229	java/nio/ShortBuffer:clear	()Ljava/nio/Buffer;
+    //   314: pop
+    //   315: goto -209 -> 106
+    //   318: aload_0
+    //   319: getfield 134	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
+    //   322: aload_0
+    //   323: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   326: invokevirtual 189	java/nio/ShortBuffer:put	(Ljava/nio/ShortBuffer;)Ljava/nio/ShortBuffer;
+    //   329: pop
+    //   330: aload_0
+    //   331: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   334: aload_0
+    //   335: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   338: invokevirtual 162	java/nio/ShortBuffer:limit	()I
+    //   341: invokevirtual 191	java/nio/ShortBuffer:position	(I)Ljava/nio/Buffer;
+    //   344: pop
+    //   345: goto -144 -> 201
+    //   348: aload_1
+    //   349: aload 14
+    //   351: invokevirtual 195	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   354: invokevirtual 233	com/tencent/tav/decoder/AudioDecoderTrack:asyncReadNextSample	(Lcom/tencent/tav/coremedia/CMTime;)V
+    //   357: aload_2
+    //   358: ifnull +300 -> 658
+    //   361: aload_2
+    //   362: aload 14
+    //   364: invokevirtual 195	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   367: invokevirtual 239	com/tencent/tav/core/AudioMixInputParameters:getVolumeAtTime	(Lcom/tencent/tav/coremedia/CMTime;)F
+    //   370: fstore 4
+    //   372: aload 14
+    //   374: invokevirtual 86	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
+    //   377: ifnull +367 -> 744
+    //   380: aload 14
+    //   382: invokevirtual 86	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
+    //   385: invokevirtual 91	java/nio/ByteBuffer:limit	()I
+    //   388: ifle +356 -> 744
+    //   391: aload_0
+    //   392: aload 14
+    //   394: aload_1
+    //   395: invokevirtual 242	com/tencent/tav/decoder/AudioDecoderTrack:getAudioInfo	()Lcom/tencent/tav/decoder/AudioInfo;
+    //   398: invokespecial 244	com/tencent/tav/core/AudioCompositor:resample	(Lcom/tencent/tav/coremedia/CMSampleBuffer;Lcom/tencent/tav/decoder/AudioInfo;)Lcom/tencent/tav/decoder/AudioInfo;
+    //   401: astore 13
+    //   403: aload 13
+    //   405: astore 12
+    //   407: aload_2
+    //   408: ifnull +53 -> 461
+    //   411: aload 13
+    //   413: astore 12
+    //   415: aload_2
+    //   416: invokevirtual 248	com/tencent/tav/core/AudioMixInputParameters:getAudioTapProcessor	()Lcom/tencent/tav/core/AudioTapProcessor;
+    //   419: ifnull +42 -> 461
+    //   422: aload_2
+    //   423: invokevirtual 248	com/tencent/tav/core/AudioMixInputParameters:getAudioTapProcessor	()Lcom/tencent/tav/core/AudioTapProcessor;
+    //   426: astore 12
+    //   428: aload 14
+    //   430: aload 12
+    //   432: aload 14
+    //   434: invokevirtual 195	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   437: aload 14
+    //   439: invokevirtual 86	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
+    //   442: aload 13
+    //   444: invokeinterface 254 4 0
+    //   449: invokevirtual 131	com/tencent/tav/coremedia/CMSampleBuffer:setSampleByteBuffer	(Ljava/nio/ByteBuffer;)V
+    //   452: aload 12
+    //   454: invokeinterface 255 1 0
+    //   459: astore 12
+    //   461: aload_0
+    //   462: aload 14
+    //   464: invokevirtual 86	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
+    //   467: fload 4
+    //   469: fconst_1
+    //   470: aload 12
+    //   472: invokevirtual 257	com/tencent/tav/core/AudioCompositor:processFrame	(Ljava/nio/ByteBuffer;FFLcom/tencent/tav/decoder/AudioInfo;)Ljava/nio/ByteBuffer;
+    //   475: invokevirtual 159	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
+    //   478: astore 12
+    //   480: aload 12
+    //   482: invokevirtual 162	java/nio/ShortBuffer:limit	()I
+    //   485: iload 8
+    //   487: iload 6
+    //   489: isub
+    //   490: if_icmple +223 -> 713
+    //   493: aload 12
+    //   495: invokevirtual 162	java/nio/ShortBuffer:limit	()I
+    //   498: iload 8
+    //   500: iload 6
+    //   502: isub
+    //   503: isub
+    //   504: istore 5
+    //   506: aload_0
+    //   507: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   510: ifnull +15 -> 525
+    //   513: aload_0
+    //   514: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   517: invokevirtual 165	java/nio/ShortBuffer:capacity	()I
+    //   520: iload 5
+    //   522: if_icmpge +142 -> 664
+    //   525: iload 5
+    //   527: iconst_2
+    //   528: imul
+    //   529: invokestatic 169	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   532: astore_1
+    //   533: aload_1
+    //   534: aload_3
+    //   535: invokevirtual 86	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
+    //   538: invokevirtual 173	java/nio/ByteBuffer:order	()Ljava/nio/ByteOrder;
+    //   541: invokevirtual 176	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   544: pop
+    //   545: aload_0
+    //   546: aload_1
+    //   547: invokevirtual 159	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
+    //   550: putfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   553: aload 12
+    //   555: iload 8
+    //   557: iload 6
+    //   559: isub
+    //   560: invokevirtual 191	java/nio/ShortBuffer:position	(I)Ljava/nio/Buffer;
+    //   563: pop
+    //   564: aload_0
+    //   565: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   568: aload 12
+    //   570: invokevirtual 189	java/nio/ShortBuffer:put	(Ljava/nio/ShortBuffer;)Ljava/nio/ShortBuffer;
+    //   573: pop
+    //   574: aload_0
+    //   575: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   578: invokevirtual 260	java/nio/ShortBuffer:flip	()Ljava/nio/Buffer;
+    //   581: pop
+    //   582: aload 12
+    //   584: iconst_0
+    //   585: invokevirtual 191	java/nio/ShortBuffer:position	(I)Ljava/nio/Buffer;
+    //   588: pop
+    //   589: aload 12
+    //   591: iload 8
+    //   593: iload 6
+    //   595: isub
+    //   596: invokevirtual 185	java/nio/ShortBuffer:limit	(I)Ljava/nio/Buffer;
+    //   599: pop
+    //   600: aload_0
+    //   601: getfield 134	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
+    //   604: aload 12
+    //   606: invokevirtual 189	java/nio/ShortBuffer:put	(Ljava/nio/ShortBuffer;)Ljava/nio/ShortBuffer;
+    //   609: pop
+    //   610: aload_0
+    //   611: getfield 134	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
+    //   614: invokevirtual 260	java/nio/ShortBuffer:flip	()Ljava/nio/Buffer;
+    //   617: pop
+    //   618: aload_0
+    //   619: getfield 68	com/tencent/tav/core/AudioCompositor:audioMixer	Lcom/tencent/tav/decoder/AudioMixer;
+    //   622: aload_3
+    //   623: invokevirtual 86	com/tencent/tav/coremedia/CMSampleBuffer:getSampleByteBuffer	()Ljava/nio/ByteBuffer;
+    //   626: invokevirtual 159	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
     //   629: aload_0
-    //   630: getfield 80	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
-    //   633: invokevirtual 186	java/nio/ShortBuffer:clear	()Ljava/nio/Buffer;
-    //   636: pop
-    //   637: goto -119 -> 518
-    //   640: astore_1
-    //   641: aload_0
-    //   642: getfield 56	com/tencent/tav/core/AudioCompositor:TAG	Ljava/lang/String;
+    //   630: getfield 134	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
+    //   633: invokevirtual 264	com/tencent/tav/decoder/AudioMixer:mergeSamples	(Ljava/nio/ShortBuffer;Ljava/nio/ShortBuffer;)Ljava/nio/ByteBuffer;
+    //   636: astore_1
+    //   637: new 82	com/tencent/tav/coremedia/CMSampleBuffer
+    //   640: dup
+    //   641: aload_3
+    //   642: invokevirtual 195	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
     //   645: aload_1
-    //   646: invokestatic 230	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   649: new 101	com/tencent/tav/coremedia/CMSampleBuffer
-    //   652: dup
-    //   653: getstatic 177	com/tencent/tav/decoder/IDecoder:SAMPLE_TIME_FINISH	Lcom/tencent/tav/coremedia/CMTime;
-    //   656: aconst_null
-    //   657: invokespecial 226	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMTime;Ljava/nio/ByteBuffer;)V
-    //   660: astore_3
-    //   661: ldc 99
-    //   663: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   666: goto -626 -> 40
-    //   669: aload_0
-    //   670: getfield 78	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
-    //   673: aload 10
-    //   675: invokevirtual 143	java/nio/ShortBuffer:put	(Ljava/nio/ShortBuffer;)Ljava/nio/ShortBuffer;
-    //   678: pop
-    //   679: aload 10
-    //   681: invokevirtual 116	java/nio/ShortBuffer:limit	()I
-    //   684: istore 7
-    //   686: iload 7
-    //   688: iload 5
-    //   690: iadd
-    //   691: istore 5
-    //   693: iload 6
-    //   695: istore 7
-    //   697: goto -487 -> 210
+    //   646: invokespecial 267	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMTime;Ljava/nio/ByteBuffer;)V
+    //   649: astore_3
+    //   650: ldc 155
+    //   652: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   655: goto -615 -> 40
+    //   658: fconst_1
+    //   659: fstore 4
+    //   661: goto -289 -> 372
+    //   664: aload_0
+    //   665: getfield 136	com/tencent/tav/core/AudioCompositor:lastSamples	Ljava/nio/ShortBuffer;
+    //   668: invokevirtual 229	java/nio/ShortBuffer:clear	()Ljava/nio/Buffer;
+    //   671: pop
+    //   672: goto -119 -> 553
+    //   675: astore_1
+    //   676: aload_0
+    //   677: getfield 52	com/tencent/tav/core/AudioCompositor:TAG	Ljava/lang/String;
+    //   680: ldc_w 269
+    //   683: aload_1
+    //   684: invokestatic 273	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   687: new 82	com/tencent/tav/coremedia/CMSampleBuffer
+    //   690: dup
+    //   691: ldc2_w 225
+    //   694: ldc_w 275
+    //   697: aload_1
+    //   698: invokestatic 279	com/tencent/tav/coremedia/CMSampleState:fromError	(JLjava/lang/String;Ljava/lang/Throwable;)Lcom/tencent/tav/coremedia/CMSampleState;
+    //   701: invokespecial 282	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMSampleState;)V
+    //   704: astore_3
+    //   705: ldc 155
+    //   707: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   710: goto -670 -> 40
+    //   713: aload_0
+    //   714: getfield 134	com/tencent/tav/core/AudioCompositor:currentSamples	Ljava/nio/ShortBuffer;
+    //   717: aload 12
+    //   719: invokevirtual 189	java/nio/ShortBuffer:put	(Ljava/nio/ShortBuffer;)Ljava/nio/ShortBuffer;
+    //   722: pop
+    //   723: aload 12
+    //   725: invokevirtual 162	java/nio/ShortBuffer:limit	()I
+    //   728: istore 9
+    //   730: iload 7
+    //   732: istore 5
+    //   734: iload 6
+    //   736: iload 9
+    //   738: iadd
+    //   739: istore 6
+    //   741: goto -531 -> 210
+    //   744: iload 7
+    //   746: istore 5
+    //   748: goto -538 -> 210
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	700	0	this	AudioCompositor
-    //   0	700	1	paramAudioDecoderTrack	com.tencent.tav.decoder.AudioDecoderTrack
-    //   0	700	2	paramAudioMixInputParameters	AudioMixInputParameters
-    //   0	700	3	paramCMSampleBuffer	com.tencent.tav.coremedia.CMSampleBuffer
-    //   371	254	4	f	float
-    //   142	550	5	i	int
-    //   151	543	6	j	int
-    //   1	695	7	k	int
-    //   54	507	8	m	int
-    //   288	3	9	bool	boolean
-    //   82	598	10	localObject	Object
+    //   0	751	0	this	AudioCompositor
+    //   0	751	1	paramAudioDecoderTrack	com.tencent.tav.decoder.AudioDecoderTrack
+    //   0	751	2	paramAudioMixInputParameters	AudioMixInputParameters
+    //   0	751	3	paramCMSampleBuffer	CMSampleBuffer
+    //   370	290	4	f	float
+    //   1	746	5	i	int
+    //   142	598	6	j	int
+    //   151	594	7	k	int
+    //   54	542	8	m	int
+    //   728	11	9	n	int
+    //   283	3	10	l	long
+    //   82	642	12	localObject1	Object
+    //   242	201	13	localObject2	Object
+    //   225	238	14	localCMSampleBuffer	CMSampleBuffer
     // Exception table:
     //   from	to	target	type
-    //   5	10	303	finally
-    //   14	21	303	finally
-    //   25	40	303	finally
-    //   44	75	303	finally
-    //   75	106	303	finally
-    //   106	201	303	finally
-    //   201	210	303	finally
-    //   217	227	303	finally
-    //   231	271	303	finally
-    //   277	290	303	finally
-    //   295	300	303	finally
-    //   308	316	303	finally
-    //   319	346	303	finally
-    //   349	358	303	finally
-    //   362	373	303	finally
-    //   377	385	303	finally
-    //   389	424	303	finally
-    //   424	490	303	finally
-    //   490	518	303	finally
-    //   518	575	303	finally
-    //   575	615	303	finally
-    //   615	620	303	finally
-    //   629	637	303	finally
-    //   641	666	303	finally
-    //   669	686	303	finally
-    //   217	227	640	java/lang/Throwable
-    //   231	271	640	java/lang/Throwable
-    //   277	290	640	java/lang/Throwable
-    //   349	358	640	java/lang/Throwable
-    //   362	373	640	java/lang/Throwable
-    //   377	385	640	java/lang/Throwable
-    //   389	424	640	java/lang/Throwable
-    //   424	490	640	java/lang/Throwable
-    //   490	518	640	java/lang/Throwable
-    //   518	575	640	java/lang/Throwable
-    //   575	615	640	java/lang/Throwable
-    //   629	637	640	java/lang/Throwable
-    //   669	686	640	java/lang/Throwable
+    //   5	10	302	finally
+    //   14	21	302	finally
+    //   25	40	302	finally
+    //   44	75	302	finally
+    //   75	106	302	finally
+    //   106	201	302	finally
+    //   201	210	302	finally
+    //   217	244	302	finally
+    //   250	285	302	finally
+    //   294	299	302	finally
+    //   307	315	302	finally
+    //   318	345	302	finally
+    //   348	357	302	finally
+    //   361	372	302	finally
+    //   372	403	302	finally
+    //   415	461	302	finally
+    //   461	525	302	finally
+    //   525	553	302	finally
+    //   553	610	302	finally
+    //   610	650	302	finally
+    //   650	655	302	finally
+    //   664	672	302	finally
+    //   676	710	302	finally
+    //   713	730	302	finally
+    //   217	244	675	java/lang/Throwable
+    //   250	285	675	java/lang/Throwable
+    //   348	357	675	java/lang/Throwable
+    //   361	372	675	java/lang/Throwable
+    //   372	403	675	java/lang/Throwable
+    //   415	461	675	java/lang/Throwable
+    //   461	525	675	java/lang/Throwable
+    //   525	553	675	java/lang/Throwable
+    //   553	610	675	java/lang/Throwable
+    //   610	650	675	java/lang/Throwable
+    //   664	672	675	java/lang/Throwable
+    //   713	730	675	java/lang/Throwable
   }
   
   public void setAudioInfo(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(197595);
+    AppMethodBeat.i(217876);
     this.audioMixer = new AudioMixer(paramAudioInfo.sampleRate, paramAudioInfo.channelCount);
-    AppMethodBeat.o(197595);
+    AppMethodBeat.o(217876);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.core.AudioCompositor
  * JD-Core Version:    0.7.0.1
  */

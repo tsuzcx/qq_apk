@@ -9,19 +9,19 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.z;
 
 @Deprecated
 public final class i
-  extends y
+  extends z
 {
   public static final void A(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(155904);
-    int j = y.aD(paramContext, 0);
-    int i = y.ix(paramContext);
+    int j = z.aG(paramContext, 0);
+    int i = z.iH(paramContext);
     if (paramInt < j) {
       paramInt = j;
     }
@@ -32,23 +32,23 @@ public final class i
       }
       for (;;)
       {
-        aC(paramContext, paramInt);
-        aw.aKT(ai.eUX()).putInt("com.tencent.mm.compatible.util.keybord.height", paramInt);
+        aF(paramContext, paramInt);
+        ax.aQz(aj.fkC()).putInt("com.tencent.mm.compatible.util.keybord.height", paramInt);
         AppMethodBeat.o(155904);
         return;
       }
     }
   }
   
-  public static final int YL()
+  public static final int abn()
   {
-    return Grf;
+    return IcT;
   }
   
-  public static final int YM()
+  public static final int abo()
   {
     AppMethodBeat.i(155905);
-    int i = aw.aKT(ai.eUX()).getInt("com.tencent.mm.compatible.util.keybord.height", 0);
+    int i = ax.aQz(aj.fkC()).getInt("com.tencent.mm.compatible.util.keybord.height", 0);
     AppMethodBeat.o(155905);
     return i;
   }
@@ -66,7 +66,7 @@ public final class i
     paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
     int i = localRect.top;
     int j = a.u(paramActivity);
-    Grf = paramActivity.getResources().getDisplayMetrics().heightPixels - j - i;
+    IcT = paramActivity.getResources().getDisplayMetrics().heightPixels - j - i;
     AppMethodBeat.o(155903);
   }
 }

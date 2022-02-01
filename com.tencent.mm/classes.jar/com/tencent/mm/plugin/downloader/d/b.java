@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.downloader.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import java.nio.ByteBuffer;
@@ -16,8 +16,8 @@ public final class b
     AppMethodBeat.i(177457);
     try
     {
-      ac.i("MicroMsg.Channel.ChannelReader", "get channel by v1");
-      Object localObject = g.Wv(q.B(parame.fxV()));
+      ad.i("MicroMsg.Channel.ChannelReader", "get channel by v1");
+      Object localObject = g.aac(q.B(parame.fOK()));
       if (localObject == null)
       {
         AppMethodBeat.o(177457);
@@ -25,13 +25,13 @@ public final class b
       }
       c localc = new c();
       localc.I((byte[])localObject);
-      localObject = localc.oHM.getProperty("channelId");
+      localObject = localc.plq.getProperty("channelId");
       AppMethodBeat.o(177457);
       return localObject;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.Channel.ChannelReader", "APK : %s not have channel info from zip comment", new Object[] { q.B(parame.fxV()) });
+      ad.e("MicroMsg.Channel.ChannelReader", "APK : %s not have channel info from zip comment", new Object[] { q.B(parame.fOK()) });
       AppMethodBeat.o(177457);
     }
     return null;
@@ -40,7 +40,7 @@ public final class b
   public static String F(e parame)
   {
     AppMethodBeat.i(177458);
-    ac.i("MicroMsg.Channel.ChannelReader", "get channel by v2");
+    ad.i("MicroMsg.Channel.ChannelReader", "get channel by v2");
     if ((!parame.exists()) || (!parame.isFile())) {
       parame = null;
     }
@@ -74,23 +74,23 @@ public final class b
     }
     Object localObject = new c();
     ((c)localObject).I(parame);
-    parame = ((c)localObject).oHM.getProperty("channelId");
+    parame = ((c)localObject).plq.getProperty("channelId");
     AppMethodBeat.o(177458);
     return parame;
   }
   
-  public static boolean Wu(String paramString)
+  public static boolean aab(String paramString)
   {
     AppMethodBeat.i(88860);
     try
     {
-      boolean bool = a.Wt(paramString);
+      boolean bool = a.aaa(paramString);
       AppMethodBeat.o(88860);
       return bool;
     }
     catch (Exception paramString)
     {
-      ac.e("MicroMsg.Channel.ChannelReader", "isV2ChannelApk error: %s", new Object[] { paramString.getMessage() });
+      ad.e("MicroMsg.Channel.ChannelReader", "isV2ChannelApk error: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(88860);
     }
     return false;

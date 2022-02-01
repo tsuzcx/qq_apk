@@ -1,28 +1,90 @@
 package com.tencent.mm.emoji.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import org.xmlpull.v1.XmlPullParser;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/BaseXmlContent;", "", "()V", "ns", "", "getNs", "()Ljava/lang/String;", "next", "", "parse", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "readAttrInt", "", "name", "readAttrString", "readInt", "readString", "skip", "Companion", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/BaseXmlContent;", "", "()V", "ns", "", "getNs", "()Ljava/lang/String;", "next", "", "parse", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "readAttrInt", "", "name", "readAttrString", "readInt", "readString", "skip", "Companion", "plugin-emojisdk_release"})
 public class a
 {
   private static final String TAG = "MicroMsg.BaseXmlContent";
-  public static final a.a fQl;
+  public static final a.a gjL;
   
   static
   {
     AppMethodBeat.i(105500);
-    fQl = new a.a((byte)0);
+    gjL = new a.a((byte)0);
     TAG = "MicroMsg.BaseXmlContent";
     AppMethodBeat.o(105500);
   }
   
-  protected static void a(XmlPullParser paramXmlPullParser)
+  protected static String c(XmlPullParser paramXmlPullParser)
+  {
+    AppMethodBeat.i(105493);
+    p.h(paramXmlPullParser, "parser");
+    String str = "";
+    if (paramXmlPullParser.next() == 4)
+    {
+      str = paramXmlPullParser.getText();
+      p.g(str, "parser.text");
+      paramXmlPullParser.nextTag();
+    }
+    AppMethodBeat.o(105493);
+    return str;
+  }
+  
+  protected static int d(XmlPullParser paramXmlPullParser)
+  {
+    AppMethodBeat.i(105494);
+    p.h(paramXmlPullParser, "parser");
+    paramXmlPullParser = c(paramXmlPullParser);
+    if (((CharSequence)paramXmlPullParser).length() == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(105494);
+      return 0;
+    }
+    i = Integer.parseInt(paramXmlPullParser);
+    AppMethodBeat.o(105494);
+    return i;
+  }
+  
+  protected static String d(XmlPullParser paramXmlPullParser, String paramString)
+  {
+    AppMethodBeat.i(105495);
+    p.h(paramXmlPullParser, "parser");
+    p.h(paramString, "name");
+    paramString = paramXmlPullParser.getAttributeValue(null, paramString);
+    paramXmlPullParser = paramString;
+    if (paramString == null) {
+      paramXmlPullParser = "";
+    }
+    AppMethodBeat.o(105495);
+    return paramXmlPullParser;
+  }
+  
+  protected static int e(XmlPullParser paramXmlPullParser, String paramString)
+  {
+    AppMethodBeat.i(105496);
+    p.h(paramXmlPullParser, "parser");
+    p.h(paramString, "name");
+    paramXmlPullParser = d(paramXmlPullParser, paramString);
+    if (((CharSequence)paramXmlPullParser).length() == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(105496);
+      return 0;
+    }
+    i = Integer.parseInt(paramXmlPullParser);
+    AppMethodBeat.o(105496);
+    return i;
+  }
+  
+  protected static void skip(XmlPullParser paramXmlPullParser)
   {
     AppMethodBeat.i(105497);
-    k.h(paramXmlPullParser, "parser");
+    p.h(paramXmlPullParser, "parser");
     if (paramXmlPullParser.getEventType() != 2)
     {
       paramXmlPullParser = (Throwable)new IllegalStateException();
@@ -45,80 +107,18 @@ public class a
     AppMethodBeat.o(105497);
   }
   
-  protected static String d(XmlPullParser paramXmlPullParser)
-  {
-    AppMethodBeat.i(105493);
-    k.h(paramXmlPullParser, "parser");
-    String str = "";
-    if (paramXmlPullParser.next() == 4)
-    {
-      str = paramXmlPullParser.getText();
-      k.g(str, "parser.text");
-      paramXmlPullParser.nextTag();
-    }
-    AppMethodBeat.o(105493);
-    return str;
-  }
-  
-  protected static String d(XmlPullParser paramXmlPullParser, String paramString)
-  {
-    AppMethodBeat.i(105495);
-    k.h(paramXmlPullParser, "parser");
-    k.h(paramString, "name");
-    paramString = paramXmlPullParser.getAttributeValue(null, paramString);
-    paramXmlPullParser = paramString;
-    if (paramString == null) {
-      paramXmlPullParser = "";
-    }
-    AppMethodBeat.o(105495);
-    return paramXmlPullParser;
-  }
-  
-  protected static int e(XmlPullParser paramXmlPullParser)
-  {
-    AppMethodBeat.i(105494);
-    k.h(paramXmlPullParser, "parser");
-    paramXmlPullParser = d(paramXmlPullParser);
-    if (((CharSequence)paramXmlPullParser).length() == 0) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      AppMethodBeat.o(105494);
-      return 0;
-    }
-    i = Integer.parseInt(paramXmlPullParser);
-    AppMethodBeat.o(105494);
-    return i;
-  }
-  
-  protected static int e(XmlPullParser paramXmlPullParser, String paramString)
-  {
-    AppMethodBeat.i(105496);
-    k.h(paramXmlPullParser, "parser");
-    k.h(paramString, "name");
-    paramXmlPullParser = d(paramXmlPullParser, paramString);
-    if (((CharSequence)paramXmlPullParser).length() == 0) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      AppMethodBeat.o(105496);
-      return 0;
-    }
-    i = Integer.parseInt(paramXmlPullParser);
-    AppMethodBeat.o(105496);
-    return i;
-  }
-  
   protected void a(String paramString, XmlPullParser paramXmlPullParser)
   {
     AppMethodBeat.i(105499);
-    k.h(paramString, "tag");
-    k.h(paramXmlPullParser, "parser");
+    p.h(paramString, "tag");
+    p.h(paramXmlPullParser, "parser");
     AppMethodBeat.o(105499);
   }
   
-  public void f(XmlPullParser paramXmlPullParser)
+  public void e(XmlPullParser paramXmlPullParser)
   {
     AppMethodBeat.i(105498);
-    k.h(paramXmlPullParser, "parser");
+    p.h(paramXmlPullParser, "parser");
     while ((paramXmlPullParser.next() != 3) && (paramXmlPullParser.getEventType() != 1)) {
       if (paramXmlPullParser.getEventType() == 2)
       {

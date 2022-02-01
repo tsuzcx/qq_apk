@@ -3,31 +3,31 @@ package com.tencent.luggage.sdk.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.aa;
 import d.a.y;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.Iterator;
 import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/wxa_ktx/JSONUtils;", "", "()V", "copy", "Lorg/json/JSONObject;", "luggage-wxa-app_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/sdk/wxa_ktx/JSONUtils;", "", "()V", "copy", "Lorg/json/JSONObject;", "luggage-wxa-app_release"})
 public final class b
 {
-  public static final b cfv;
+  public static final b cpL;
   
   static
   {
     AppMethodBeat.i(135552);
-    cfv = new b();
+    cpL = new b();
     AppMethodBeat.o(135552);
   }
   
   public static final JSONObject f(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(135551);
-    k.h(paramJSONObject, "$this$copy");
+    p.h(paramJSONObject, "$this$copy");
     String[] arrayOfString = new String[paramJSONObject.length()];
     Iterator localIterator = paramJSONObject.keys();
-    k.g(localIterator, "this.keys()");
-    k.h(localIterator, "$this$withIndex");
+    p.g(localIterator, "this.keys()");
+    p.h(localIterator, "$this$withIndex");
     localIterator = (Iterator)new aa(localIterator);
     while (localIterator.hasNext())
     {

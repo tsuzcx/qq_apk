@@ -15,8 +15,8 @@ public final class ab
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float paramFloat)
   {
     AppMethodBeat.i(144956);
-    paramd.jzc.setStrokeWidth(paramFloat);
-    paramd.jzb.setStrokeWidth(paramFloat);
+    paramd.jSZ.setStrokeWidth(paramFloat);
+    paramd.jSY.setStrokeWidth(paramFloat);
     AppMethodBeat.o(144956);
     return true;
   }
@@ -30,7 +30,7 @@ public final class ab
       AppMethodBeat.o(144957);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.jzG);
+    boolean bool = a(paramd, paramCanvas.jTB);
     AppMethodBeat.o(144957);
     return bool;
   }
@@ -48,7 +48,7 @@ public final class ab
     return bool;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144954);
     SetLineWidthActionArg localSetLineWidthActionArg = new SetLineWidthActionArg();

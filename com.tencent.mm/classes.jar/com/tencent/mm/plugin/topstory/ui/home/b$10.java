@@ -13,7 +13,7 @@ final class b$10
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(125940);
-    e.wTc.f(17080, new Object[] { Integer.valueOf(44), Integer.valueOf(1) });
+    e.ygI.f(17080, new Object[] { Integer.valueOf(44), Integer.valueOf(1) });
     AppMethodBeat.o(125940);
   }
 }

@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class e
 {
-  ArrayList<d> qSv;
-  boolean qSw;
-  ArrayList<b> qSx;
+  ArrayList<d> rCx;
+  boolean rCy;
+  ArrayList<b> rCz;
   
   private e()
   {
     AppMethodBeat.i(107392);
-    this.qSv = new ArrayList();
-    this.qSw = false;
-    this.qSx = new ArrayList();
+    this.rCx = new ArrayList();
+    this.rCy = false;
+    this.rCz = new ArrayList();
     AppMethodBeat.o(107392);
   }
   
-  public final d adb(String paramString)
+  public final d agQ(String paramString)
   {
     AppMethodBeat.i(107393);
-    Iterator localIterator = this.qSv.iterator();
+    Iterator localIterator = this.rCx.iterator();
     while (localIterator.hasNext())
     {
       d locald = (d)localIterator.next();
-      if (locald.dhz.dhw.equals(paramString))
+      if (locald.dsX.dsU.equals(paramString))
       {
         AppMethodBeat.o(107393);
         return locald;
@@ -41,45 +41,45 @@ public final class e
   public final void clear()
   {
     AppMethodBeat.i(107394);
-    ac.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
-    this.qSv.clear();
-    Iterator localIterator = this.qSx.iterator();
+    ad.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
+    this.rCx.clear();
+    Iterator localIterator = this.rCz.iterator();
     while (localIterator.hasNext()) {
       localIterator.next();
     }
     AppMethodBeat.o(107394);
   }
   
-  public final void crw()
+  public final void cxi()
   {
     AppMethodBeat.i(107395);
-    Iterator localIterator = this.qSx.iterator();
+    Iterator localIterator = this.rCz.iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).cry();
+      ((b)localIterator.next()).cxk();
     }
     AppMethodBeat.o(107395);
   }
   
   static final class a
   {
-    private static final e qSy;
+    private static final e rCA;
     
     static
     {
       AppMethodBeat.i(107391);
-      qSy = new e((byte)0);
+      rCA = new e((byte)0);
       AppMethodBeat.o(107391);
     }
   }
   
   public static abstract interface b
   {
-    public abstract void cry();
+    public abstract void cxk();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.e
  * JD-Core Version:    0.7.0.1
  */

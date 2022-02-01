@@ -2,57 +2,59 @@ package com.tencent.mm.emoji.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cn.f;
-import com.tencent.mm.g.b.a.fk;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.y;
+import com.tencent.mm.g.b.a.gj;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestWordsSync;", "", "()V", "requestRunning", "", "checkWordListUpdate", "", "updateWordList", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestWordsSync;", "", "()V", "requestRunning", "", "checkWordListUpdate", "", "updateWordList", "plugin-emojisdk_release"})
 public final class i
 {
-  private static boolean fSP;
-  public static final i fSQ;
+  private static boolean gmt;
+  public static final i gmu;
   
   static
   {
-    AppMethodBeat.i(209856);
-    fSQ = new i();
-    AppMethodBeat.o(209856);
+    AppMethodBeat.i(218981);
+    gmu = new i();
+    AppMethodBeat.o(218981);
   }
   
-  public static void adf()
+  public static void afL()
   {
-    AppMethodBeat.i(209854);
-    if (!ai.cin())
+    AppMethodBeat.i(218979);
+    if (!aj.cmR())
     {
-      AppMethodBeat.o(209854);
+      AppMethodBeat.o(218979);
       return;
     }
-    com.tencent.mm.ac.c.b("EmojiSuggestWordsSync_checkWordListUpdate", (d.g.a.a)a.fSR);
-    AppMethodBeat.o(209854);
+    com.tencent.mm.ad.c.b("EmojiSuggestWordsSync_checkWordListUpdate", (d.g.a.a)a.gmv);
+    AppMethodBeat.o(218979);
   }
   
-  public static void adg()
+  public static void afM()
   {
-    AppMethodBeat.i(209855);
-    fk localfk = new fk();
-    localfk.ke(bs.eWj());
-    new com.tencent.mm.emoji.a.c().aBB().g((com.tencent.mm.vending.c.a)new b(localfk));
-    AppMethodBeat.o(209855);
+    AppMethodBeat.i(218980);
+    gj localgj = new gj();
+    localgj.lQ(bt.flT());
+    new com.tencent.mm.emoji.a.c().aED().g((com.tencent.mm.vending.c.a)new b(localgj));
+    AppMethodBeat.o(218980);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class a
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
-    public static final a fSR;
+    public static final a gmv;
     
     static
     {
-      AppMethodBeat.i(209852);
-      fSR = new a();
-      AppMethodBeat.o(209852);
+      AppMethodBeat.i(218977);
+      gmv = new a();
+      AppMethodBeat.o(218977);
     }
     
     a()
@@ -61,11 +63,11 @@ public final class i
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetEmotionWordListResponse;", "kotlin.jvm.PlatformType", "call"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetEmotionWordListResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class b<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    b(fk paramfk) {}
+    b(gj paramgj) {}
   }
 }
 

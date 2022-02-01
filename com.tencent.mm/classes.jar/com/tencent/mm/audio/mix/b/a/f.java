@@ -2,7 +2,7 @@ package com.tencent.mm.audio.mix.b.a;
 
 public abstract interface f
 {
-  public abstract void MO();
+  public abstract void Ox();
   
   public abstract void end();
 }

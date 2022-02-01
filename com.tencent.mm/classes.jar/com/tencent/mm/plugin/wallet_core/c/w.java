@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public final class w
   extends m
 {
-  public String BoN;
+  public String CPc;
   private int scene;
   public String token;
   
@@ -27,10 +27,10 @@ public final class w
     setRequestData(localHashMap);
     paramString1 = new HashMap();
     paramString1.put("check_pwd_scene", String.valueOf(paramInt));
-    if (z.fAn())
+    if (z.fRx())
     {
       paramString1.put("uuid_for_bindcard", z.getBindCardUuid());
-      paramString1.put("bindcard_scene", z.fAo());
+      paramString1.put("bindcard_scene", z.fRy());
     }
     setWXRequestData(paramString1);
     this.scene = paramInt;
@@ -55,11 +55,11 @@ public final class w
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69938);
-    ac.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    ad.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
     if ((this.scene == 6) || (this.scene == 8) || (this.scene == 18) || (this.scene == 1))
     {
       this.token = paramJSONObject.optString("usertoken");
-      this.BoN = paramJSONObject.optString("token_type");
+      this.CPc = paramJSONObject.optString("token_type");
     }
     AppMethodBeat.o(69938);
   }

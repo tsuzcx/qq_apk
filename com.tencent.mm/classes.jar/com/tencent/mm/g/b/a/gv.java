@@ -2,158 +2,158 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bs;
 
 public final class gv
   extends a
 {
-  public long dHY = 0L;
-  private String dZT = "";
-  private String ecm = "";
-  public long eco = 0L;
-  public a edD;
-  public long edE = 0L;
-  private long edv = 0L;
-  public long edw = 0L;
-  public long edx = 0L;
+  private String dWK;
+  private String ebg;
+  public long eqA = 0L;
+  public long eqB = 0L;
+  public long eqC = 0L;
+  private String eqs;
+  private String eqt;
+  public long equ = 0L;
+  public long eqv = 0L;
+  public long eqw = 0L;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(43509);
+    AppMethodBeat.i(187817);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dZT);
+    ((StringBuffer)localObject).append(this.eqs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecm);
+    ((StringBuffer)localObject).append(this.dWK);
     ((StringBuffer)localObject).append(",");
-    if (this.edD != null) {}
-    for (int i = this.edD.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eco);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.edv);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dHY);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.edw);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.edx);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.edE);
-      localObject = ((StringBuffer)localObject).toString();
-      arz((String)localObject);
-      AppMethodBeat.o(43509);
-      return localObject;
-    }
-  }
-  
-  public final String PS()
-  {
-    AppMethodBeat.i(43510);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("InstanceId:").append(this.dZT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppId:").append(this.ecm);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppState:").append(this.edD);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.eco);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CostTimeMs:").append(this.edv);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.dHY);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StartTimeStampMs:").append(this.edw);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EndTimeStampMs:").append(this.edx);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsPreload:").append(this.edE);
+    ((StringBuffer)localObject).append(this.equ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqv);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqw);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqB);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqC);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ebg);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqA);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqt);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43510);
+    awz((String)localObject);
+    AppMethodBeat.o(187817);
     return localObject;
   }
   
-  public final gv SI()
+  public final String RE()
   {
-    AppMethodBeat.i(43508);
-    this.edx = bs.eWj();
-    super.bd("EndTimeStampMs", this.edx);
-    AppMethodBeat.o(43508);
-    return this;
+    AppMethodBeat.i(187818);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("Appid:").append(this.eqs);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Username:").append(this.dWK);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("OpenScene:").append(this.equ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("TargetAppVersion:").append(this.eqv);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("LocalAppVersion:").append(this.eqw);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FallbackScene:").append(this.eqB);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("WaitTimeInMs:").append(this.eqC);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("NetType:").append(this.ebg);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsWeakNet:").append(this.eqA);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("InstanceId:").append(this.eqt);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(187818);
+    return localObject;
+  }
+  
+  public final long Ut()
+  {
+    return this.equ;
+  }
+  
+  public final long Uu()
+  {
+    return this.eqv;
+  }
+  
+  public final long Uv()
+  {
+    return this.eqw;
+  }
+  
+  public final long Uw()
+  {
+    return this.eqC;
+  }
+  
+  public final String Ux()
+  {
+    return this.ebg;
+  }
+  
+  public final long Uy()
+  {
+    return this.eqA;
+  }
+  
+  public final String Uz()
+  {
+    return this.eqt;
+  }
+  
+  public final String getAppid()
+  {
+    return this.eqs;
   }
   
   public final int getId()
   {
-    return 17111;
+    return 20572;
   }
   
-  public final gv ly(long paramLong)
+  public final String getUsername()
   {
-    AppMethodBeat.i(43506);
-    this.edv = paramLong;
-    super.bc("CostTimeMs", this.edv);
-    AppMethodBeat.o(43506);
+    return this.dWK;
+  }
+  
+  public final gv pH(String paramString)
+  {
+    AppMethodBeat.i(187813);
+    this.eqs = t("Appid", paramString, true);
+    AppMethodBeat.o(187813);
     return this;
   }
   
-  public final gv lz(long paramLong)
+  public final gv pI(String paramString)
   {
-    AppMethodBeat.i(43507);
-    this.edw = paramLong;
-    super.bd("StartTimeStampMs", this.edw);
-    AppMethodBeat.o(43507);
+    AppMethodBeat.i(187814);
+    this.dWK = t("Username", paramString, true);
+    AppMethodBeat.o(187814);
     return this;
   }
   
-  public final gv oj(String paramString)
+  public final gv pJ(String paramString)
   {
-    AppMethodBeat.i(43504);
-    this.dZT = t("InstanceId", paramString, true);
-    AppMethodBeat.o(43504);
+    AppMethodBeat.i(187815);
+    this.ebg = t("NetType", paramString, true);
+    AppMethodBeat.o(187815);
     return this;
   }
   
-  public final gv ok(String paramString)
+  public final gv pK(String paramString)
   {
-    AppMethodBeat.i(43505);
-    this.ecm = t("AppId", paramString, true);
-    AppMethodBeat.o(43505);
+    AppMethodBeat.i(187816);
+    this.eqt = t("InstanceId", paramString, true);
+    AppMethodBeat.o(187816);
     return this;
-  }
-  
-  public static enum a
-  {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(43503);
-      edF = new a("release", 0, 1);
-      edG = new a("debug", 1, 2);
-      edH = new a("demo", 2, 3);
-      edI = new a[] { edF, edG, edH };
-      AppMethodBeat.o(43503);
-    }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
-    
-    public static a iK(int paramInt)
-    {
-      switch (paramInt)
-      {
-      default: 
-        return null;
-      case 1: 
-        return edF;
-      case 2: 
-        return edG;
-      }
-      return edH;
-    }
   }
 }
 

@@ -28,8 +28,8 @@ import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.an;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ap;
+import com.tencent.mm.ui.aq;
 import com.tencent.mm.ui.base.c;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import java.util.ArrayList;
@@ -37,292 +37,490 @@ import java.util.Iterator;
 
 public final class a
 {
-  View.OnTouchListener AKw;
-  int[] HOb;
-  b JnZ;
-  public e JoA;
-  ArrayList<c> JoB;
-  private b Joa;
-  g Job;
-  public d Joc;
-  View Jod;
-  public f Joe;
-  View.OnTouchListener Jof;
-  private Spannable Jog;
-  private com.tencent.mm.ui.widget.b.a Joh;
-  int Joi;
-  int Joj;
-  private int Jok;
-  int Jol;
-  int Jom;
-  private c Jon;
-  int Joo;
-  public int Jop;
-  private ViewTreeObserver.OnScrollChangedListener Joq;
-  boolean Jor;
-  boolean Jos;
-  public boolean Jot;
-  public boolean Jou;
-  boolean Jov;
-  boolean Jow;
-  boolean Jox;
-  final Runnable Joy;
-  final Runnable Joz;
-  private boolean aKE;
-  private View.OnAttachStateChangeListener ads;
-  private ViewTreeObserver.OnGlobalLayoutListener ahC;
-  View.OnClickListener gst;
+  private ViewTreeObserver.OnPreDrawListener Bf;
+  View.OnTouchListener Cjy;
+  int[] JBQ;
+  View LfA;
+  public a.f LfB;
+  View.OnTouchListener LfC;
+  private Spannable LfD;
+  private com.tencent.mm.ui.widget.b.a LfE;
+  int LfF;
+  int LfG;
+  private int LfH;
+  int LfI;
+  int LfJ;
+  private c LfK;
+  int LfL;
+  public int LfM;
+  private ViewTreeObserver.OnScrollChangedListener LfN;
+  boolean LfO;
+  boolean LfP;
+  public boolean LfQ;
+  public boolean LfR;
+  boolean LfS;
+  boolean LfT;
+  boolean LfU;
+  final Runnable LfV;
+  final Runnable LfW;
+  public e LfX;
+  ArrayList<c> LfY;
+  b Lfw;
+  private b Lfx;
+  g Lfy;
+  public a.d Lfz;
+  private boolean aMv;
+  private View.OnAttachStateChangeListener afj;
+  private ViewTreeObserver.OnGlobalLayoutListener ajt;
+  View.OnClickListener gMe;
   Context mContext;
-  int[] tAc;
-  private ViewTreeObserver.OnPreDrawListener zn;
+  int[] uCL;
+  private int yKP;
   
-  public a(a parama)
+  public a(a.a parama)
   {
     AppMethodBeat.i(159878);
-    this.Job = new g();
-    this.Jor = false;
-    this.aKE = true;
-    this.Jos = false;
-    this.Jot = true;
-    this.Jou = true;
-    this.Jov = true;
-    this.Jow = false;
-    this.Jox = false;
-    this.tAc = new int[2];
-    this.Joy = new Runnable()
+    this.Lfy = new g();
+    this.yKP = 0;
+    this.LfO = false;
+    this.aMv = true;
+    this.LfP = false;
+    this.LfQ = true;
+    this.LfR = true;
+    this.LfS = true;
+    this.LfT = false;
+    this.LfU = false;
+    this.uCL = new int[2];
+    this.LfV = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(159850);
-        if (a.this.Jor)
+        if (a.this.LfO)
         {
-          an.d("SelectableTextHelper", "isReInit, return.", new Object[0]);
+          ap.d("SelectableTextHelper", "isReInit, return.", new Object[0]);
           AppMethodBeat.o(159850);
           return;
         }
-        an.d("SelectableTextHelper", "in mShowSelectViewRunnable. opener: %s, inScrolling: %s.", new Object[] { Boolean.valueOf(a.this.Jov), Boolean.valueOf(a.this.Jow) });
-        if (a.this.Joe != null)
+        ap.d("SelectableTextHelper", "in mShowSelectViewRunnable. opener: %s, inScrolling: %s.", new Object[] { Boolean.valueOf(a.this.LfS), Boolean.valueOf(a.this.LfT) });
+        if (a.this.LfB != null)
         {
-          if (!a.this.Jov)
+          if (!a.this.LfS)
           {
-            a.this.Jov = true;
-            if (a.this.Jow)
+            a.this.LfS = true;
+            if (a.this.LfT)
             {
-              an.d("SelectableTextHelper", "menu is hide: %s, cursor is hide: %s.", new Object[] { Boolean.valueOf(a.this.Jot), Boolean.valueOf(a.this.Jou) });
-              if (!a.this.Jot) {
-                a.this.fwM();
+              ap.d("SelectableTextHelper", "menu is hide: %s, cursor is hide: %s.", new Object[] { Boolean.valueOf(a.this.LfQ), Boolean.valueOf(a.this.LfR) });
+              if (!a.this.LfQ) {
+                a.this.fNA();
               }
-              if (!a.this.Jou)
+              if (!a.this.LfR)
               {
-                a.this.fwH();
-                a.this.kc(a.this.Job.atr, a.this.Job.MZ);
+                a.this.fNv();
+                a.this.kp(a.this.Lfy.avj, a.this.Lfy.OQ);
               }
-              if ((a.this.Joe != null) && (a.this.Jot) && (!a.this.Jou)) {
-                a.this.Joe.fY(a.this.Jod);
+              if ((a.this.LfB != null) && (a.this.LfQ) && (!a.this.LfR)) {
+                a.this.LfB.gp(a.this.LfA);
               }
             }
-            a.this.Jow = false;
+            a.this.LfT = false;
             AppMethodBeat.o(159850);
             return;
           }
-          if (a.this.Jox)
+          if (a.this.LfU)
           {
-            a.this.Jox = false;
-            an.d("SelectableTextHelper", "judge result(delay), click outside.", new Object[0]);
-            if (a.this.JoA != null)
+            a.this.LfU = false;
+            ap.d("SelectableTextHelper", "judge result(delay), click outside.", new Object[0]);
+            if (a.this.LfX != null)
             {
-              a.this.JoA.fqE();
+              a.this.LfX.fHr();
               AppMethodBeat.o(159850);
             }
           }
           else
           {
-            an.d("SelectableTextHelper", "Oh, bypass the judge logic! Don't worry, that's reasonable.", new Object[0]);
+            ap.d("SelectableTextHelper", "Oh, bypass the judge logic! Don't worry, that's reasonable.", new Object[0]);
             AppMethodBeat.o(159850);
           }
         }
         else
         {
-          if (!a.this.Jot) {
-            a.this.fwM();
+          if (!a.this.LfQ) {
+            a.this.fNA();
           }
-          if (!a.this.Jou) {
-            a.this.fwH();
+          if (!a.this.LfR) {
+            a.this.fNv();
           }
         }
         AppMethodBeat.o(159850);
       }
     };
-    this.Joz = new Runnable()
+    this.LfW = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(159854);
-        an.d("SelectableTextHelper", "dismiss all runnable.", new Object[0]);
-        if (a.this.JoA != null) {
-          a.this.JoA.fqE();
+        ap.d("SelectableTextHelper", "dismiss all runnable.", new Object[0]);
+        if (a.this.LfX != null) {
+          a.this.LfX.fHr();
         }
         AppMethodBeat.o(159854);
       }
     };
-    this.HOb = new int[2];
-    this.Jod = parama.Jod;
-    this.Joe = parama.Joe;
-    this.gst = parama.gst;
-    this.Jof = parama.Jof;
-    this.Joh = parama.JoD;
-    this.mContext = this.Jod.getContext();
-    this.Jok = parama.Jok;
-    this.Jol = parama.Jol;
-    View localView = this.Jod;
+    this.JBQ = new int[2];
+    this.LfA = parama.LfA;
+    this.LfB = parama.LfB;
+    this.gMe = parama.gMe;
+    this.LfC = parama.LfC;
+    this.LfE = parama.Lga;
+    this.yKP = parama.Lgc;
+    this.mContext = this.LfA.getContext();
+    this.LfH = parama.LfH;
+    this.LfI = parama.LfI;
+    Object localObject = this.LfA;
     int i;
     float f;
-    if ((localView instanceof NeatTextView))
+    if ((localObject instanceof NeatTextView))
     {
-      i = ((NeatTextView)localView).getLineHeight();
-      this.Joo = i;
-      if (this.Jom != 0) {
-        break label345;
+      i = ((NeatTextView)localObject).getLineHeight();
+      this.LfL = i;
+      if (this.LfJ != 0) {
+        break label387;
       }
-      parama = this.Jod;
+      parama = this.LfA;
       if (!(parama instanceof NeatTextView)) {
-        break label322;
+        break label364;
       }
       f = ((NeatTextView)parama).getTextSize();
     }
-    label221:
-    for (this.Jom = ((int)f);; this.Jom = ao.fromDPToPix(this.mContext, parama.JoE))
+    label234:
+    for (this.LfJ = ((int)f);; this.LfJ = aq.fromDPToPix(this.mContext, parama.Lgb))
     {
-      this.ads = new View.OnAttachStateChangeListener()
-      {
-        public final void onViewAttachedToWindow(View paramAnonymousView)
-        {
-          AppMethodBeat.i(159855);
-          an.d("SelectableTextHelper", "onViewAttachedToWindow", new Object[0]);
-          AppMethodBeat.o(159855);
-        }
-        
-        public final void onViewDetachedFromWindow(View paramAnonymousView)
-        {
-          AppMethodBeat.i(159856);
-          an.d("SelectableTextHelper", "onViewDetachedFromWindow", new Object[0]);
-          a.this.destroy();
-          AppMethodBeat.o(159856);
-        }
-      };
-      this.zn = new ViewTreeObserver.OnPreDrawListener()
+      this.afj = new a.6(this);
+      this.Bf = new ViewTreeObserver.OnPreDrawListener()
       {
         public final boolean onPreDraw()
         {
           AppMethodBeat.i(159857);
-          if (a.this.Jos)
+          if (a.this.LfP)
           {
-            a.this.Jos = false;
+            a.this.LfP = false;
             a locala = a.this;
-            locala.Jod.removeCallbacks(locala.Joy);
-            locala.Jod.postDelayed(locala.Joy, 100L);
+            locala.LfA.removeCallbacks(locala.LfV);
+            locala.LfA.postDelayed(locala.LfV, 100L);
           }
           AppMethodBeat.o(159857);
           return true;
         }
       };
-      this.Joq = new ViewTreeObserver.OnScrollChangedListener()
+      this.LfN = new ViewTreeObserver.OnScrollChangedListener()
       {
         public final void onScrollChanged()
         {
           AppMethodBeat.i(159858);
-          if (a.this.Joe != null)
+          if (a.this.LfB != null)
           {
-            a.this.Jod.removeCallbacks(a.this.Joz);
-            a.this.Jod.getLocationInWindow(a.this.HOb);
-            an.d("SelectableTextHelper", "onScrollChanged, old-y: %d, y: %d.", new Object[] { Integer.valueOf(a.this.tAc[1]), Integer.valueOf(a.this.HOb[1]) });
-            if (a.this.Jov)
+            a.this.LfA.removeCallbacks(a.this.LfW);
+            a.this.LfA.getLocationInWindow(a.this.JBQ);
+            ap.d("SelectableTextHelper", "onScrollChanged, old-y: %d, y: %d.", new Object[] { Integer.valueOf(a.this.uCL[1]), Integer.valueOf(a.this.JBQ[1]) });
+            if (a.this.LfS)
             {
-              if ((a.this.Jow) || (a.this.Jox)) {
+              if ((a.this.LfT) || (a.this.LfU)) {
                 break label260;
               }
-              if (a.this.tAc[1] == a.this.HOb[1]) {
+              if (a.this.uCL[1] == a.this.JBQ[1]) {
                 break label238;
               }
-              a.this.Jow = true;
-              a.this.Jov = false;
-              an.d("SelectableTextHelper", "judge result, inScrolling.", new Object[0]);
+              a.this.LfT = true;
+              a.this.LfS = false;
+              ap.d("SelectableTextHelper", "judge result, inScrolling.", new Object[0]);
             }
           }
           for (;;)
           {
-            a.this.tAc[1] = a.this.HOb[1];
-            if ((!a.this.Jos) && ((!a.this.Jot) || (!a.this.Jou)))
+            a.this.uCL[1] = a.this.JBQ[1];
+            if ((!a.this.LfP) && ((!a.this.LfQ) || (!a.this.LfR)))
             {
-              a.this.Jos = true;
-              a.this.fwE();
+              a.this.LfP = true;
+              a.this.fNs();
             }
             AppMethodBeat.o(159858);
             return;
             label238:
-            a.this.Jox = true;
-            an.d("SelectableTextHelper", "need delay judge.", new Object[0]);
+            a.this.LfU = true;
+            ap.d("SelectableTextHelper", "need delay judge.", new Object[0]);
             continue;
             label260:
-            if (a.this.Jox)
+            if (a.this.LfU)
             {
-              a.this.Jox = false;
-              a.this.Jov = false;
-              if (a.this.tAc[1] != a.this.HOb[1])
+              a.this.LfU = false;
+              a.this.LfS = false;
+              if (a.this.uCL[1] != a.this.JBQ[1])
               {
-                a.this.Jow = true;
-                an.d("SelectableTextHelper", "judge result(delay), inScrolling.", new Object[0]);
+                a.this.LfT = true;
+                ap.d("SelectableTextHelper", "judge result(delay), inScrolling.", new Object[0]);
               }
               else
               {
-                a.this.Jow = false;
-                an.d("SelectableTextHelper", "judge result, click outside.", new Object[0]);
+                a.this.LfT = false;
+                ap.d("SelectableTextHelper", "judge result, click outside.", new Object[0]);
               }
             }
           }
         }
       };
-      this.ahC = new ViewTreeObserver.OnGlobalLayoutListener()
-      {
-        public final void onGlobalLayout()
-        {
-          AppMethodBeat.i(159859);
-          an.d("SelectableTextHelper", "onGlobalLayout", new Object[0]);
-          AppMethodBeat.o(159859);
-        }
-      };
-      this.AKw = new View.OnTouchListener()
+      this.ajt = new a.9(this);
+      this.Cjy = new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(159860);
-          an.d("SelectableTextHelper", "event pointer count: %d.", new Object[] { Integer.valueOf(paramAnonymousMotionEvent.getPointerCount()) });
-          if (a.this.Jof != null) {
-            a.this.Jof.onTouch(paramAnonymousView, paramAnonymousMotionEvent);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          localb.bd(paramAnonymousMotionEvent);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/textview/SelectableTextHelper$7", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+          ap.d("SelectableTextHelper", "event pointer count: %d.", new Object[] { Integer.valueOf(paramAnonymousMotionEvent.getPointerCount()) });
+          if (a.this.LfC != null) {
+            a.this.LfC.onTouch(paramAnonymousView, paramAnonymousMotionEvent);
           }
-          a.this.Joi = ((int)paramAnonymousMotionEvent.getX());
-          a.this.Joj = ((int)paramAnonymousMotionEvent.getY());
+          a.this.LfF = ((int)paramAnonymousMotionEvent.getX());
+          a.this.LfG = ((int)paramAnonymousMotionEvent.getY());
+          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/textview/SelectableTextHelper$7", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(159860);
           return false;
         }
       };
-      init();
+      if (this.aMv) {
+        break label405;
+      }
+      ap.d("SelectableTextHelper", "not destroy, isReInit: %s.", new Object[] { Boolean.valueOf(this.LfO) });
+      this.LfO = true;
       AppMethodBeat.o(159878);
       return;
-      if ((localView instanceof TextView))
+      if ((localObject instanceof TextView))
       {
-        i = ((TextView)localView).getLineHeight();
+        i = ((TextView)localObject).getLineHeight();
         break;
       }
       i = 0;
       break;
+      label364:
       if ((parama instanceof TextView))
       {
         f = ((TextView)parama).getTextSize();
-        break label221;
+        break label234;
       }
       f = 0.0F;
-      break label221;
+      break label234;
+    }
+    label387:
+    label405:
+    ap.d("SelectableTextHelper", "not init yet, need to init.", new Object[0]);
+    this.LfO = false;
+    this.aMv = false;
+    this.LfP = false;
+    TextView.BufferType localBufferType;
+    if (this.LfB == null)
+    {
+      parama = this.LfA;
+      localObject = b.hh(this.LfA);
+      localBufferType = TextView.BufferType.SPANNABLE;
+      if (!(parama instanceof NeatTextView)) {
+        break label685;
+      }
+      ((NeatTextView)parama).a((CharSequence)localObject, localBufferType);
+    }
+    for (;;)
+    {
+      this.Lfw = new b(true);
+      if (this.LfB != null)
+      {
+        this.Lfw.mPopupWindow.setOutsideTouchable(true);
+        parama = this.Lfw;
+        localObject = new View.OnTouchListener()
+        {
+          public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+          {
+            AppMethodBeat.i(159861);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            localb.bd(paramAnonymousMotionEvent);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/textview/SelectableTextHelper$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+            ap.d("SelectableTextHelper", "interceptor onTouch.", new Object[0]);
+            int i = (int)paramAnonymousMotionEvent.getX();
+            int j = (int)paramAnonymousMotionEvent.getY();
+            if ((paramAnonymousMotionEvent.getAction() == 0) && ((i < 0) || (i >= a.this.Lfw.getWidth()) || (j < 0) || (j >= a.this.Lfw.getHeight())))
+            {
+              ap.d("SelectableTextHelper", "interceptor onTouch, down, outside.", new Object[0]);
+              a.this.LfA.postDelayed(a.this.LfW, 100L);
+              com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/textview/SelectableTextHelper$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+              AppMethodBeat.o(159861);
+              return true;
+            }
+            if (paramAnonymousMotionEvent.getAction() == 4)
+            {
+              ap.d("SelectableTextHelper", "interceptor onTouch, outside.", new Object[0]);
+              a.this.LfA.postDelayed(a.this.LfW, 100L);
+              com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/textview/SelectableTextHelper$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+              AppMethodBeat.o(159861);
+              return true;
+            }
+            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/textview/SelectableTextHelper$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+            AppMethodBeat.o(159861);
+            return false;
+          }
+        };
+        parama.mPopupWindow.setTouchInterceptor((View.OnTouchListener)localObject);
+        parama = this.Lfw;
+        localObject = new PopupWindow.OnDismissListener()
+        {
+          public final void onDismiss()
+          {
+            AppMethodBeat.i(159862);
+            a.this.LfA.setOnTouchListener(a.this.Cjy);
+            AppMethodBeat.o(159862);
+          }
+        };
+        parama.mPopupWindow.setOnDismissListener((PopupWindow.OnDismissListener)localObject);
+      }
+      this.Lfx = new b(false);
+      this.LfA.setOnLongClickListener(new View.OnLongClickListener()
+      {
+        public final boolean onLongClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(159851);
+          Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/textview/SelectableTextHelper$10", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
+          ap.d("SelectableTextHelper", "onLongClick.", new Object[0]);
+          a.this.LfO = false;
+          int j;
+          if (a.this.LfB != null)
+          {
+            a.this.LfS = true;
+            a.this.LfT = false;
+            a.this.LfU = false;
+            Object localObject2 = b.hh(a.this.LfA);
+            if ((localObject2 instanceof SpannableString))
+            {
+              localObject1 = a.this;
+              localObject2 = (SpannableString)localObject2;
+              ((a)localObject1).LfY = new ArrayList();
+              i = 0;
+              if (i < ((SpannableString)localObject2).length())
+              {
+                j = ((SpannableString)localObject2).nextSpanTransition(i, ((SpannableString)localObject2).length(), ImageSpan.class);
+                Object localObject3 = (ImageSpan[])((SpannableString)localObject2).getSpans(i, j, ImageSpan.class);
+                if (1 == localObject3.length)
+                {
+                  localObject3 = new a.c((a)localObject1);
+                  ((a.c)localObject3).start = i;
+                  ((a.c)localObject3).end = j;
+                  ((a)localObject1).LfY.add(localObject3);
+                }
+                for (;;)
+                {
+                  ap.d("SelectableTextHelper", "spans from %d to %d.", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+                  i = j;
+                  break;
+                  ap.e("SelectableTextHelper", "other situation occur! length: %d.", new Object[] { Integer.valueOf(localObject3.length) });
+                }
+              }
+              ap.d("SelectableTextHelper", ((a)localObject1).LfY.toString(), new Object[0]);
+            }
+            a.this.fNs();
+            if ((a.this.LfM > 0) && (a.this.LfM < b.hh(a.this.LfA).length()))
+            {
+              a.a(a.this, a.this.LfM);
+              a.this.LfQ = false;
+              a.this.LfR = false;
+              a.this.fNA();
+              a.this.fNv();
+            }
+            for (;;)
+            {
+              com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/textview/SelectableTextHelper$10", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+              AppMethodBeat.o(159851);
+              return true;
+              a.a(a.this, b.hh(a.this.LfA).length());
+              a.this.LfQ = true;
+              a.this.LfR = false;
+              a.this.fNv();
+              a.this.LfB.gq(paramAnonymousView);
+            }
+          }
+          a.this.LfS = false;
+          paramAnonymousView = a.this;
+          int k = a.this.LfF;
+          int i = a.this.LfG;
+          localObject1 = paramAnonymousView.LfA;
+          if ((localObject1 instanceof NeatTextView))
+          {
+            localObject1 = ((NeatTextView)localObject1).getLayout();
+            if (localObject1 == null) {
+              break label635;
+            }
+            i = ((com.tencent.neattextview.textview.layout.a)localObject1).kH(k, i);
+          }
+          for (;;)
+          {
+            paramAnonymousView.ko(i, i + 1);
+            a.this.fNs();
+            a.this.LfQ = false;
+            a.this.LfR = false;
+            a.this.fNA();
+            a.this.fNv();
+            break;
+            if ((localObject1 instanceof TextView))
+            {
+              localObject1 = ((TextView)localObject1).getLayout();
+              if (localObject1 != null)
+              {
+                j = ((Layout)localObject1).getOffsetForHorizontal(((Layout)localObject1).getLineForVertical(i), k);
+                i = j;
+                if ((int)((Layout)localObject1).getPrimaryHorizontal(j) > k) {
+                  i = ((Layout)localObject1).getOffsetToLeftOf(j);
+                }
+              }
+              else
+              {
+                i = -1;
+              }
+            }
+            else
+            {
+              label635:
+              i = 0;
+            }
+          }
+        }
+      });
+      this.LfA.setOnTouchListener(this.Cjy);
+      this.LfA.setOnClickListener(new a.3(this));
+      this.LfA.addOnAttachStateChangeListener(this.afj);
+      this.LfA.getViewTreeObserver().addOnPreDrawListener(this.Bf);
+      this.LfA.getViewTreeObserver().addOnScrollChangedListener(this.LfN);
+      this.LfA.getViewTreeObserver().addOnGlobalLayoutListener(this.ajt);
+      this.LfA.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+      {
+        public final void onGlobalLayout()
+        {
+          AppMethodBeat.i(159853);
+          a.this.LfA.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+          if (a.this.LfB != null)
+          {
+            a.this.LfA.getLocationInWindow(a.this.uCL);
+            ap.d("SelectableTextHelper", "init: loc-x: %d, loc-y: %d.", new Object[] { Integer.valueOf(a.this.uCL[0]), Integer.valueOf(a.this.uCL[1]) });
+          }
+          AppMethodBeat.o(159853);
+        }
+      });
+      AppMethodBeat.o(159878);
+      return;
+      label685:
+      if ((parama instanceof TextView)) {
+        ((TextView)parama).setText((CharSequence)localObject, localBufferType);
+      }
     }
   }
   
@@ -335,41 +533,41 @@ public final class a
       return;
     }
     if (b.b(paramb)) {}
-    for (int i = this.Job.atr; (i < 0) || (i > b.gQ(this.Jod).length()); i = this.Job.MZ)
+    for (int i = this.Lfy.avj; (i < 0) || (i > b.hh(this.LfA).length()); i = this.Lfy.OQ)
     {
       AppMethodBeat.o(159884);
       return;
     }
-    Object localObject = b.gR(this.Jod);
+    Object localObject = b.hi(this.LfA);
     int j;
     if (localObject != null)
     {
-      j = (int)((TextPaint)localObject).getFontMetrics().descent + b.aJ(this.Jod, b.aK(this.Jod, i));
-      i = (int)b.aL(this.Jod, i);
+      j = (int)((TextPaint)localObject).getFontMetrics().descent + b.aL(this.LfA, b.aM(this.LfA, i));
+      i = (int)b.aN(this.LfA, i);
     }
     for (;;)
     {
-      paramb.JoC.Jod.getLocationInWindow(paramb.JoK);
-      if (paramb.JoF) {}
+      paramb.LfZ.LfA.getLocationInWindow(paramb.Lgi);
+      if (paramb.Lgd) {}
       for (int k = paramb.mWidth;; k = 0)
       {
         int n = i;
         int m = j;
-        if (!paramb.JoF)
+        if (!paramb.Lgd)
         {
-          localObject = paramb.kd(i, j);
+          localObject = paramb.kq(i, j);
           n = localObject[0];
           m = localObject[1];
         }
         try
         {
-          paramb.mPopupWindow.showAtLocation(paramb.JoC.Jod, 0, n - k + paramb.fwQ(), m + paramb.fwR());
+          paramb.mPopupWindow.showAtLocation(paramb.LfZ.LfA, 0, n - k + paramb.fNE(), m + paramb.fNF());
           AppMethodBeat.o(159884);
           return;
         }
         catch (Exception paramb)
         {
-          an.e("SelectableTextHelper", "error! message: %s.", new Object[] { paramb.getMessage() });
+          ap.e("SelectableTextHelper", "error! message: %s.", new Object[] { paramb.getMessage() });
           AppMethodBeat.o(159884);
           return;
         }
@@ -379,16 +577,16 @@ public final class a
     }
   }
   
-  private int be(int paramInt, boolean paramBoolean)
+  private int bm(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(159893);
-    if (this.JoB != null)
+    if (this.LfY != null)
     {
-      Iterator localIterator = this.JoB.iterator();
+      Iterator localIterator = this.LfY.iterator();
       while (localIterator.hasNext())
       {
         c localc = (c)localIterator.next();
-        if (localc.FA(paramInt))
+        if (localc.GP(paramInt))
         {
           if (paramBoolean)
           {
@@ -406,7 +604,7 @@ public final class a
     return paramInt;
   }
   
-  private boolean fwG()
+  private boolean fNu()
   {
     AppMethodBeat.i(159885);
     AccessibilityManager localAccessibilityManager = (AccessibilityManager)this.mContext.getSystemService("accessibility");
@@ -422,481 +620,252 @@ public final class a
   public final void destroy()
   {
     AppMethodBeat.i(159880);
-    this.Jor = false;
-    this.aKE = true;
-    this.Jos = false;
-    this.Jod.removeCallbacks(this.Joy);
-    this.Jod.getViewTreeObserver().removeOnScrollChangedListener(this.Joq);
-    this.Jod.getViewTreeObserver().removeOnPreDrawListener(this.zn);
-    this.Jod.getViewTreeObserver().removeOnGlobalLayoutListener(this.ahC);
-    this.Jod.removeOnAttachStateChangeListener(this.ads);
-    this.Jot = true;
-    this.Jou = true;
-    fwE();
-    fwF();
-    this.JnZ = null;
-    this.Joa = null;
-    if (this.Joe != null) {
-      this.Joe.dismiss();
+    this.LfO = false;
+    this.aMv = true;
+    this.LfP = false;
+    this.LfA.removeCallbacks(this.LfV);
+    this.LfA.getViewTreeObserver().removeOnScrollChangedListener(this.LfN);
+    this.LfA.getViewTreeObserver().removeOnPreDrawListener(this.Bf);
+    this.LfA.getViewTreeObserver().removeOnGlobalLayoutListener(this.ajt);
+    this.LfA.removeOnAttachStateChangeListener(this.afj);
+    this.LfQ = true;
+    this.LfR = true;
+    fNs();
+    fNt();
+    this.Lfw = null;
+    this.Lfx = null;
+    if (this.LfB != null) {
+      this.LfB.dismiss();
     }
     AppMethodBeat.o(159880);
   }
   
-  public final void fwE()
+  public final void fNA()
+  {
+    AppMethodBeat.i(159891);
+    int i;
+    int j;
+    if (this.LfE != null)
+    {
+      int[] arrayOfInt = new int[2];
+      this.LfA.getLocationInWindow(arrayOfInt);
+      float f3 = b.aN(this.LfA, this.Lfy.avj);
+      float f2 = b.aN(this.LfA, this.Lfy.OQ);
+      i = b.aM(this.LfA, this.Lfy.avj);
+      float f1;
+      if (b.aM(this.LfA, this.Lfy.OQ) <= i)
+      {
+        f1 = f2;
+        if (f2 > f3) {}
+      }
+      else
+      {
+        f1 = b.aQ(this.LfA, b.aM(this.LfA, this.Lfy.avj));
+      }
+      i = (int)((f1 + f3) / 2.0F);
+      j = this.yKP + i;
+      int k = b.aO(this.LfA, b.aM(this.LfA, this.Lfy.avj)) + arrayOfInt[1] + this.mContext.getResources().getDimensionPixelSize(2131166166);
+      ap.d("SelectableTextHelper", "dancy test posX:%s, startline:%s, endline:%s, leftpadding:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(b.aM(this.LfA, this.Lfy.avj)), Integer.valueOf(b.aM(this.LfA, this.Lfy.OQ)), Integer.valueOf(this.yKP) });
+      i = j;
+      if (j <= 0) {
+        i = 16;
+      }
+      j = k;
+      if (k < 0) {
+        j = 16;
+      }
+      if (i <= b.getScreenWidth(this.mContext)) {
+        break label334;
+      }
+      i = b.getScreenWidth(this.mContext) - 16;
+    }
+    label334:
+    for (;;)
+    {
+      this.LfE.el(i, j);
+      if (this.LfB != null) {
+        this.LfB.fHn();
+      }
+      AppMethodBeat.o(159891);
+      return;
+    }
+  }
+  
+  public final void fNs()
   {
     AppMethodBeat.i(159881);
-    fwI();
-    fwJ();
-    if (this.Joe != null) {
-      this.Joe.dismiss();
+    fNw();
+    fNx();
+    if (this.LfB != null) {
+      this.LfB.dismiss();
     }
     AppMethodBeat.o(159881);
   }
   
-  public final void fwF()
+  public final void fNt()
   {
     AppMethodBeat.i(159882);
-    this.Job.JoM = null;
-    if ((this.Jog != null) && (this.Jon != null))
+    this.Lfy.Lgk = null;
+    if ((this.LfD != null) && (this.LfK != null))
     {
-      this.Jog.removeSpan(this.Jon);
-      this.Jon = null;
+      this.LfD.removeSpan(this.LfK);
+      this.LfK = null;
     }
     AppMethodBeat.o(159882);
   }
   
-  public final void fwH()
+  public final void fNv()
   {
     AppMethodBeat.i(159886);
-    if (!fwG())
+    if (!fNu())
     {
-      a(this.JnZ);
-      a(this.Joa);
+      a(this.Lfw);
+      a(this.Lfx);
     }
     AppMethodBeat.o(159886);
   }
   
-  public final void fwI()
+  public final void fNw()
   {
     AppMethodBeat.i(159887);
-    if (this.JnZ != null) {
-      this.JnZ.mPopupWindow.dismiss();
+    if (this.Lfw != null) {
+      this.Lfw.mPopupWindow.dismiss();
     }
-    if (this.Joa != null) {
-      this.Joa.mPopupWindow.dismiss();
+    if (this.Lfx != null) {
+      this.Lfx.mPopupWindow.dismiss();
     }
     AppMethodBeat.o(159887);
   }
   
-  public final void fwJ()
+  public final void fNx()
   {
     AppMethodBeat.i(159888);
-    if (this.Joh != null) {
-      this.Joh.fkR();
+    if (this.LfE != null) {
+      this.LfE.fBg();
     }
     AppMethodBeat.o(159888);
   }
   
-  public final void fwK()
+  public final void fNy()
   {
     AppMethodBeat.i(159889);
-    if (this.Joe != null) {
-      this.Joe.fY(this.Jod);
+    if (this.LfB != null) {
+      this.LfB.gp(this.LfA);
     }
     AppMethodBeat.o(159889);
   }
   
-  public final void fwL()
+  public final void fNz()
   {
     AppMethodBeat.i(159890);
-    if (this.Joe != null) {
-      this.Joe.dismiss();
+    if (this.LfB != null) {
+      this.LfB.dismiss();
     }
     AppMethodBeat.o(159890);
   }
   
-  public final void fwM()
-  {
-    int j = 16;
-    AppMethodBeat.i(159891);
-    int i;
-    int m;
-    if (this.Joh != null)
-    {
-      int[] arrayOfInt = new int[2];
-      this.Jod.getLocationInWindow(arrayOfInt);
-      int k = (int)b.aL(this.Jod, this.Job.atr) + arrayOfInt[0];
-      i = b.aM(this.Jod, b.aK(this.Jod, this.Job.atr));
-      m = arrayOfInt[1] + i - 16;
-      i = k;
-      if (k <= 0) {
-        i = 16;
-      }
-      if (m >= 0) {
-        break label154;
-      }
-    }
-    for (;;)
-    {
-      if (i > b.getScreenWidth(this.mContext)) {
-        i = b.getScreenWidth(this.mContext) - 16;
-      }
-      for (;;)
-      {
-        this.Joh.ej(i, j);
-        if (this.Joe != null) {
-          this.Joe.fqA();
-        }
-        AppMethodBeat.o(159891);
-        return;
-      }
-      label154:
-      j = m;
-    }
-  }
-  
-  public final void init()
-  {
-    AppMethodBeat.i(159879);
-    if (!this.aKE)
-    {
-      an.d("SelectableTextHelper", "not destroy, isReInit: %s.", new Object[] { Boolean.valueOf(this.Jor) });
-      this.Jor = true;
-      AppMethodBeat.o(159879);
-      return;
-    }
-    an.d("SelectableTextHelper", "not init yet, need to init.", new Object[0]);
-    this.Jor = false;
-    this.aKE = false;
-    this.Jos = false;
-    if (this.Joe == null) {
-      b.a(this.Jod, b.gQ(this.Jod), TextView.BufferType.SPANNABLE);
-    }
-    this.JnZ = new b(true);
-    if (this.Joe != null)
-    {
-      this.JnZ.fwS();
-      this.JnZ.setTouchInterceptor(new View.OnTouchListener()
-      {
-        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-        {
-          AppMethodBeat.i(159861);
-          an.d("SelectableTextHelper", "interceptor onTouch.", new Object[0]);
-          int i = (int)paramAnonymousMotionEvent.getX();
-          int j = (int)paramAnonymousMotionEvent.getY();
-          if ((paramAnonymousMotionEvent.getAction() == 0) && ((i < 0) || (i >= a.this.JnZ.getWidth()) || (j < 0) || (j >= a.this.JnZ.getHeight())))
-          {
-            an.d("SelectableTextHelper", "interceptor onTouch, down, outside.", new Object[0]);
-            a.this.Jod.postDelayed(a.this.Joz, 100L);
-            AppMethodBeat.o(159861);
-            return true;
-          }
-          if (paramAnonymousMotionEvent.getAction() == 4)
-          {
-            an.d("SelectableTextHelper", "interceptor onTouch, outside.", new Object[0]);
-            a.this.Jod.postDelayed(a.this.Joz, 100L);
-            AppMethodBeat.o(159861);
-            return true;
-          }
-          AppMethodBeat.o(159861);
-          return false;
-        }
-      });
-      this.JnZ.setOnDismissListener(new PopupWindow.OnDismissListener()
-      {
-        public final void onDismiss()
-        {
-          AppMethodBeat.i(159862);
-          a.this.Jod.setOnTouchListener(a.this.AKw);
-          AppMethodBeat.o(159862);
-        }
-      });
-    }
-    this.Joa = new b(false);
-    this.Jod.setOnLongClickListener(new View.OnLongClickListener()
-    {
-      public final boolean onLongClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(159851);
-        an.d("SelectableTextHelper", "onLongClick.", new Object[0]);
-        a.this.Jor = false;
-        int j;
-        if (a.this.Joe != null)
-        {
-          a.this.Jov = true;
-          a.this.Jow = false;
-          a.this.Jox = false;
-          Object localObject2 = b.gQ(a.this.Jod);
-          if ((localObject2 instanceof SpannableString))
-          {
-            localObject1 = a.this;
-            localObject2 = (SpannableString)localObject2;
-            ((a)localObject1).JoB = new ArrayList();
-            i = 0;
-            if (i < ((SpannableString)localObject2).length())
-            {
-              j = ((SpannableString)localObject2).nextSpanTransition(i, ((SpannableString)localObject2).length(), ImageSpan.class);
-              Object localObject3 = (ImageSpan[])((SpannableString)localObject2).getSpans(i, j, ImageSpan.class);
-              if (1 == localObject3.length)
-              {
-                localObject3 = new a.c((a)localObject1);
-                ((a.c)localObject3).start = i;
-                ((a.c)localObject3).end = j;
-                ((a)localObject1).JoB.add(localObject3);
-              }
-              for (;;)
-              {
-                an.d("SelectableTextHelper", "spans from %d to %d.", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-                i = j;
-                break;
-                an.e("SelectableTextHelper", "other situation occur! length: %d.", new Object[] { Integer.valueOf(localObject3.length) });
-              }
-            }
-            an.d("SelectableTextHelper", ((a)localObject1).JoB.toString(), new Object[0]);
-          }
-          a.this.fwE();
-          if ((a.this.Jop > 0) && (a.this.Jop < b.gQ(a.this.Jod).length()))
-          {
-            a.a(a.this, a.this.Jop);
-            a.this.Jot = false;
-            a.this.Jou = false;
-            a.this.fwM();
-            a.this.fwH();
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(159851);
-            return true;
-            a.a(a.this, b.gQ(a.this.Jod).length());
-            a.this.Jot = true;
-            a.this.Jou = false;
-            a.this.fwH();
-            a.this.Joe.fZ(paramAnonymousView);
-          }
-        }
-        a.this.Jov = false;
-        paramAnonymousView = a.this;
-        int k = a.this.Joi;
-        int i = a.this.Joj;
-        Object localObject1 = paramAnonymousView.Jod;
-        if ((localObject1 instanceof NeatTextView))
-        {
-          localObject1 = ((NeatTextView)localObject1).getLayout();
-          if (localObject1 == null) {
-            break label590;
-          }
-          i = ((com.tencent.neattextview.textview.layout.a)localObject1).ks(k, i);
-        }
-        for (;;)
-        {
-          paramAnonymousView.kb(i, i + 1);
-          a.this.fwE();
-          a.this.Jot = false;
-          a.this.Jou = false;
-          a.this.fwM();
-          a.this.fwH();
-          break;
-          if ((localObject1 instanceof TextView))
-          {
-            localObject1 = ((TextView)localObject1).getLayout();
-            if (localObject1 != null)
-            {
-              j = ((Layout)localObject1).getOffsetForHorizontal(((Layout)localObject1).getLineForVertical(i), k);
-              i = j;
-              if ((int)((Layout)localObject1).getPrimaryHorizontal(j) > k) {
-                i = ((Layout)localObject1).getOffsetToLeftOf(j);
-              }
-            }
-            else
-            {
-              i = -1;
-            }
-          }
-          else
-          {
-            label590:
-            i = 0;
-          }
-        }
-      }
-    });
-    this.Jod.setOnTouchListener(this.AKw);
-    this.Jod.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(159852);
-        an.d("SelectableTextHelper", "onClick", new Object[0]);
-        if (a.this.gst != null) {
-          a.this.gst.onClick(paramAnonymousView);
-        }
-        a.this.Jot = true;
-        a.this.Jou = true;
-        a.this.fwE();
-        a.this.fwF();
-        if (a.this.Joe != null) {
-          a.this.Joe.dismiss();
-        }
-        AppMethodBeat.o(159852);
-      }
-    });
-    this.Jod.addOnAttachStateChangeListener(this.ads);
-    this.Jod.getViewTreeObserver().addOnPreDrawListener(this.zn);
-    this.Jod.getViewTreeObserver().addOnScrollChangedListener(this.Joq);
-    this.Jod.getViewTreeObserver().addOnGlobalLayoutListener(this.ahC);
-    this.Jod.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
-    {
-      public final void onGlobalLayout()
-      {
-        AppMethodBeat.i(159853);
-        a.this.Jod.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-        if (a.this.Joe != null)
-        {
-          a.this.Jod.getLocationInWindow(a.this.tAc);
-          an.d("SelectableTextHelper", "init: loc-x: %d, loc-y: %d.", new Object[] { Integer.valueOf(a.this.tAc[0]), Integer.valueOf(a.this.tAc[1]) });
-        }
-        AppMethodBeat.o(159853);
-      }
-    });
-    AppMethodBeat.o(159879);
-  }
-  
-  final void kb(int paramInt1, int paramInt2)
+  final void ko(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159883);
-    fwF();
-    if ((b.gQ(this.Jod) instanceof Spannable)) {
-      this.Jog = ((Spannable)b.gQ(this.Jod));
+    fNt();
+    if ((b.hh(this.LfA) instanceof Spannable)) {
+      this.LfD = ((Spannable)b.hh(this.LfA));
     }
-    if ((this.Jog == null) || (paramInt1 >= b.gQ(this.Jod).length()))
+    if ((this.LfD == null) || (paramInt1 >= b.hh(this.LfA).length()))
     {
-      this.Job.atr = 0;
-      this.Job.MZ = 0;
+      this.Lfy.avj = 0;
+      this.Lfy.OQ = 0;
       AppMethodBeat.o(159883);
       return;
     }
-    kc(paramInt1, paramInt2);
+    kp(paramInt1, paramInt2);
     AppMethodBeat.o(159883);
   }
   
-  public final void kc(int paramInt1, int paramInt2)
+  public final void kp(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159892);
     if (paramInt1 != -1) {
-      this.Job.atr = be(paramInt1, true);
+      this.Lfy.avj = bm(paramInt1, true);
     }
     if (paramInt2 != -1) {
-      this.Job.MZ = be(paramInt2, false);
+      this.Lfy.OQ = bm(paramInt2, false);
     }
-    if ((this.Job.atr < 0) || (this.Job.atr > b.gQ(this.Jod).length()))
+    if ((this.Lfy.avj < 0) || (this.Lfy.avj > b.hh(this.LfA).length()))
     {
       AppMethodBeat.o(159892);
       return;
     }
-    if ((this.Job.MZ < 0) || (this.Job.MZ > b.gQ(this.Jod).length()))
+    if ((this.Lfy.OQ < 0) || (this.Lfy.OQ > b.hh(this.LfA).length()))
     {
       AppMethodBeat.o(159892);
       return;
     }
-    if (this.Job.atr > this.Job.MZ)
+    if (this.Lfy.avj > this.Lfy.OQ)
     {
-      paramInt1 = this.Job.atr;
-      this.Job.atr = this.Job.MZ;
-      this.Job.MZ = paramInt1;
+      paramInt1 = this.Lfy.avj;
+      this.Lfy.avj = this.Lfy.OQ;
+      this.Lfy.OQ = paramInt1;
     }
-    if (this.Jog != null)
+    if (this.LfD != null)
     {
-      this.Job.JoM = this.Jog.subSequence(this.Job.atr, this.Job.MZ).toString();
-      if (this.Jon == null) {
+      this.Lfy.Lgk = this.LfD.subSequence(this.Lfy.avj, this.Lfy.OQ).toString();
+      if (this.LfK == null) {
         break label314;
       }
-      this.Jon.setPosition(this.Job.atr, this.Job.MZ);
+      this.LfK.setPosition(this.Lfy.avj, this.Lfy.OQ);
     }
     for (;;)
     {
-      paramInt1 = b.aK(this.Jod, this.Job.atr);
-      paramInt1 = b.aP(this.Jod, paramInt1);
-      this.Jog.setSpan(this.Jon, paramInt1, this.Job.MZ, 17);
-      if (this.Joc != null) {
-        this.Joc.an(this.Job.JoM);
+      paramInt1 = b.aM(this.LfA, this.Lfy.avj);
+      paramInt1 = b.aR(this.LfA, paramInt1);
+      this.LfD.setSpan(this.LfK, paramInt1, this.Lfy.OQ, 17);
+      if (this.Lfz != null) {
+        this.Lfz.an(this.Lfy.Lgk);
       }
       AppMethodBeat.o(159892);
       return;
       label314:
-      this.Jon = new c(this.Jod, this.mContext.getResources().getColor(this.Jok), this.Job.atr, this.Job.MZ);
-    }
-  }
-  
-  public static final class a
-  {
-    com.tencent.mm.ui.widget.b.a JoD;
-    public int JoE = 0;
-    View Jod;
-    a.f Joe;
-    View.OnTouchListener Jof;
-    public int Jok = 2131100846;
-    public int Jol = 2131100195;
-    View.OnClickListener gst;
-    
-    public a(View paramView, com.tencent.mm.ui.widget.b.a parama)
-    {
-      this.Jod = paramView;
-      this.JoD = parama;
-    }
-    
-    public a(View paramView, com.tencent.mm.ui.widget.b.a parama, a.f paramf, View.OnClickListener paramOnClickListener, View.OnTouchListener paramOnTouchListener)
-    {
-      this(paramView, parama);
-      this.Joe = paramf;
-      this.gst = paramOnClickListener;
-      this.Jof = paramOnTouchListener;
-    }
-    
-    public final a fwN()
-    {
-      AppMethodBeat.i(159863);
-      a locala = new a(this);
-      AppMethodBeat.o(159863);
-      return locala;
+      this.LfK = new c(this.LfA, this.mContext.getResources().getColor(this.LfH), this.Lfy.avj, this.Lfy.OQ);
     }
   }
   
   final class b
     extends View
   {
-    private int[] HOb;
-    boolean JoF;
-    private int JoG;
-    private int JoH;
-    private int JoI;
-    private int JoJ;
-    int[] JoK;
-    private boolean JoL;
-    private Point lOz;
+    private int[] JBQ;
+    boolean Lgd;
+    private int Lge;
+    private int Lgf;
+    private int Lgg;
+    private int Lgh;
+    int[] Lgi;
+    private boolean Lgj;
     private int mHeight;
     private int mPadding;
     private Paint mPaint;
     PopupWindow mPopupWindow;
     int mWidth;
-    private int oSs;
+    private Point mop;
+    private int pwc;
     private Rect rect;
     
     b(boolean paramBoolean)
     {
       super();
       AppMethodBeat.i(159864);
-      this.oSs = (a.this.Jom / 2);
-      this.mWidth = (this.oSs * 2);
-      this.mHeight = (this.oSs * 2);
+      this.pwc = (a.this.LfJ / 2);
+      this.mWidth = (this.pwc * 2);
+      this.mHeight = (this.pwc * 2);
       this.mPadding = 25;
-      this.JoK = new int[2];
+      this.Lgi = new int[2];
       this.rect = new Rect();
-      this.lOz = new Point();
-      this.JoL = false;
-      this.HOb = new int[2];
-      this.JoF = paramBoolean;
+      this.mop = new Point();
+      this.Lgj = false;
+      this.JBQ = new int[2];
+      this.Lgd = paramBoolean;
       this.mPaint = new Paint(1);
-      this.mPaint.setColor(a.this.mContext.getResources().getColor(a.this.Jol));
+      this.mPaint.setColor(a.this.mContext.getResources().getColor(a.this.LfI));
       this.mPopupWindow = new PopupWindow(this);
       this.mPopupWindow.setClippingEnabled(false);
       this.mPopupWindow.setWidth(this.mWidth + this.mPadding * 2);
@@ -904,37 +873,37 @@ public final class a
       AppMethodBeat.o(159864);
     }
     
-    private void fwO()
+    private void fNC()
     {
       AppMethodBeat.i(159867);
-      if (!this.JoF) {}
+      if (!this.Lgd) {}
       for (boolean bool = true;; bool = false)
       {
-        this.JoF = bool;
+        this.Lgd = bool;
         invalidate();
         AppMethodBeat.o(159867);
         return;
       }
     }
     
-    private void fwP()
+    private void fND()
     {
       AppMethodBeat.i(159869);
-      a.this.Jod.getLocationInWindow(this.JoK);
-      Object localObject = b.gR(a.this.Jod);
+      a.this.LfA.getLocationInWindow(this.Lgi);
+      Object localObject = b.hi(a.this.LfA);
       if (localObject != null)
       {
         int i = (int)((TextPaint)localObject).getFontMetrics().descent;
-        if (this.JoF)
+        if (this.Lgd)
         {
-          this.mPopupWindow.update((int)b.aL(a.this.Jod, a.this.Job.atr) - this.mWidth + fwQ(), i + b.aJ(a.this.Jod, b.aK(a.this.Jod, a.this.Job.atr)) + fwR(), -1, -1);
+          this.mPopupWindow.update((int)b.aN(a.this.LfA, a.this.Lfy.avj) - this.mWidth + fNE(), i + b.aL(a.this.LfA, b.aM(a.this.LfA, a.this.Lfy.avj)) + fNF(), -1, -1);
           AppMethodBeat.o(159869);
           return;
         }
-        localObject = kd((int)b.aL(a.this.Jod, a.this.Job.MZ), i + b.aJ(a.this.Jod, b.aK(a.this.Jod, a.this.Job.MZ)));
+        localObject = kq((int)b.aN(a.this.LfA, a.this.Lfy.OQ), i + b.aL(a.this.LfA, b.aM(a.this.LfA, a.this.Lfy.OQ)));
         i = localObject[0];
         int j = localObject[1];
-        this.mPopupWindow.update(i + fwQ(), j + fwR(), -1, -1);
+        this.mPopupWindow.update(i + fNE(), j + fNF(), -1, -1);
       }
       AppMethodBeat.o(159869);
     }
@@ -942,88 +911,81 @@ public final class a
     private void update(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(159868);
-      a.this.Jod.getLocationInWindow(this.JoK);
+      a.this.LfA.getLocationInWindow(this.Lgi);
       int i;
       b localb;
-      if (this.JoF)
+      if (this.Lgd)
       {
-        i = a.this.Job.atr;
-        int j = this.JoK[1];
-        paramInt1 = b.f(a.this.Jod, paramInt1, paramInt2 - j, i);
+        i = a.this.Lfy.avj;
+        int j = this.Lgi[1];
+        paramInt1 = b.f(a.this.LfA, paramInt1, paramInt2 - j, i);
         if (paramInt1 == i) {
           break label225;
         }
-        a.this.fwF();
-        if (!this.JoF) {
+        a.this.fNt();
+        if (!this.Lgd) {
           break label169;
         }
-        if (paramInt1 <= this.JoJ) {
+        if (paramInt1 <= this.Lgh) {
           break label157;
         }
         localb = a.a(a.this, false);
-        fwO();
-        localb.fwO();
-        this.JoI = this.JoJ;
-        a.this.kc(this.JoJ, paramInt1);
-        localb.fwP();
+        fNC();
+        localb.fNC();
+        this.Lgg = this.Lgh;
+        a.this.kp(this.Lgh, paramInt1);
+        localb.fND();
       }
       for (;;)
       {
-        fwP();
+        fND();
         AppMethodBeat.o(159868);
         return;
-        i = a.this.Job.MZ;
+        i = a.this.Lfy.OQ;
         break;
         label157:
-        a.this.kc(paramInt1, -1);
+        a.this.kp(paramInt1, -1);
       }
       label169:
-      if (paramInt1 < this.JoI)
+      if (paramInt1 < this.Lgg)
       {
         localb = a.a(a.this, true);
-        localb.fwO();
-        fwO();
-        this.JoJ = this.JoI;
-        a.this.kc(paramInt1, this.JoI);
-        localb.fwP();
+        localb.fNC();
+        fNC();
+        this.Lgh = this.Lgg;
+        a.this.kp(paramInt1, this.Lgg);
+        localb.fND();
       }
       for (;;)
       {
-        fwP();
+        fND();
         label225:
         AppMethodBeat.o(159868);
         return;
-        a.this.kc(this.JoI, paramInt1);
+        a.this.kp(this.Lgg, paramInt1);
       }
     }
     
-    public final int fwQ()
+    public final int fNE()
     {
       AppMethodBeat.i(159870);
-      int i = this.JoK[0];
+      int i = this.Lgi[0];
       int j = this.mPadding;
-      int k = a.this.Jod.getPaddingLeft();
+      int k = a.this.LfA.getPaddingLeft();
       AppMethodBeat.o(159870);
       return i - j + k;
     }
     
-    public final int fwR()
+    public final int fNF()
     {
       AppMethodBeat.i(159871);
-      int i = this.JoK[1];
-      int j = a.this.Jod.getPaddingTop();
+      int i = this.Lgi[1];
+      int j = a.this.LfA.getPaddingTop();
       AppMethodBeat.o(159871);
       return i + j;
     }
     
-    public final void fwS()
-    {
-      AppMethodBeat.i(159873);
-      this.mPopupWindow.setOutsideTouchable(true);
-      AppMethodBeat.o(159873);
-    }
-    
-    final int[] kd(int paramInt1, int paramInt2)
+    final int[] kq(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(159872);
       int j = paramInt1;
@@ -1032,18 +994,18 @@ public final class a
       {
         j = paramInt1;
         i = paramInt2;
-        if (a.this.Job.MZ > 1)
+        if (a.this.Lfy.OQ > 1)
         {
-          a.this.Jod.getLocationInWindow(this.JoK);
-          TextPaint localTextPaint = b.gR(a.this.Jod);
+          a.this.LfA.getLocationInWindow(this.Lgi);
+          TextPaint localTextPaint = b.hi(a.this.LfA);
           j = paramInt1;
           i = paramInt2;
           if (localTextPaint != null)
           {
             paramInt1 = (int)localTextPaint.getFontMetrics().descent;
-            paramInt2 = b.aK(a.this.Jod, a.this.Job.MZ - 1);
-            j = (int)b.aO(a.this.Jod, paramInt2);
-            i = b.aJ(a.this.Jod, b.aK(a.this.Jod, a.this.Job.MZ - 1)) + paramInt1;
+            paramInt2 = b.aM(a.this.LfA, a.this.Lfy.OQ - 1);
+            j = (int)b.aQ(a.this.LfA, paramInt2);
+            i = b.aL(a.this.LfA, b.aM(a.this.LfA, a.this.Lfy.OQ - 1)) + paramInt1;
           }
         }
       }
@@ -1057,79 +1019,79 @@ public final class a
       int i;
       int j;
       int k;
-      if (a.this.Joe != null) {
-        if (this.JoF)
+      if (a.this.LfB != null) {
+        if (this.Lgd)
         {
-          i = a.this.Job.atr;
-          TextPaint localTextPaint = b.gR(a.this.Jod);
+          i = a.this.Lfy.avj;
+          TextPaint localTextPaint = b.hi(a.this.LfA);
           if (localTextPaint == null) {
-            break label486;
+            break label485;
           }
-          j = b.aJ(a.this.Jod, b.aK(a.this.Jod, i));
+          j = b.aL(a.this.LfA, b.aM(a.this.LfA, i));
           j = (int)localTextPaint.getFontMetrics().descent + j;
-          k = (int)b.aL(a.this.Jod, i);
+          k = (int)b.aN(a.this.LfA, i);
           i = j;
           j = k;
         }
       }
       for (;;)
       {
-        a.this.Jod.getLocationInWindow(this.JoK);
+        a.this.LfA.getLocationInWindow(this.Lgi);
         k = i;
-        if (!this.JoF) {
-          k = kd(j, i)[1];
+        if (!this.Lgd) {
+          k = kq(j, i)[1];
         }
-        i = fwR() + k;
-        if (a.this.Jod.getGlobalVisibleRect(this.rect, this.lOz))
+        i = fNF() + k;
+        if (a.this.LfA.getGlobalVisibleRect(this.rect, this.mop))
         {
           if (i >= this.rect.bottom)
           {
-            if (this.JoF)
+            if (this.Lgd)
             {
-              an.d("SelectableTextHelper", "start below bottom, dismiss all.", new Object[0]);
-              a.this.fwF();
-              a.this.Jot = true;
-              a.this.Jou = true;
-              a.this.fwE();
-              a.this.Joe.dismiss();
+              ap.d("SelectableTextHelper", "start below bottom, dismiss all.", new Object[0]);
+              a.this.fNt();
+              a.this.LfQ = true;
+              a.this.LfR = true;
+              a.this.fNs();
+              a.this.LfB.dismiss();
             }
-            an.d("SelectableTextHelper", "cursor invisible.", new Object[0]);
+            ap.d("SelectableTextHelper", "cursor invisible.", new Object[0]);
             AppMethodBeat.o(159865);
             return;
-            i = a.this.Job.MZ;
+            i = a.this.Lfy.OQ;
             break;
           }
           if (i > this.rect.top) {
-            break label374;
+            break label373;
           }
-          if (!this.JoF)
+          if (!this.Lgd)
           {
-            an.d("SelectableTextHelper", "end above top, dismiss all.", new Object[0]);
-            a.this.fwF();
-            a.this.Jot = true;
-            a.this.Jou = true;
-            a.this.fwE();
-            a.this.Joe.dismiss();
+            ap.d("SelectableTextHelper", "end above top, dismiss all.", new Object[0]);
+            a.this.fNt();
+            a.this.LfQ = true;
+            a.this.LfR = true;
+            a.this.fNs();
+            a.this.LfB.dismiss();
           }
-          an.d("SelectableTextHelper", "cursor invisible.", new Object[0]);
+          ap.d("SelectableTextHelper", "cursor invisible.", new Object[0]);
           AppMethodBeat.o(159865);
           return;
         }
-        an.d("SelectableTextHelper", "view invisible.", new Object[0]);
+        ap.d("SelectableTextHelper", "view invisible.", new Object[0]);
         AppMethodBeat.o(159865);
         return;
-        label374:
-        paramCanvas.drawCircle(this.oSs + this.mPadding, this.oSs, this.oSs, this.mPaint);
-        if (this.JoF)
+        label373:
+        paramCanvas.drawCircle(this.pwc + this.mPadding, this.pwc, this.pwc, this.mPaint);
+        if (this.Lgd)
         {
-          paramCanvas.drawRect(this.oSs + this.mPadding, 0.0F, this.oSs * 2 + this.mPadding, this.oSs, this.mPaint);
+          paramCanvas.drawRect(this.pwc + this.mPadding, 0.0F, this.pwc * 2 + this.mPadding, this.pwc, this.mPaint);
           AppMethodBeat.o(159865);
           return;
         }
-        paramCanvas.drawRect(this.mPadding, 0.0F, this.oSs + this.mPadding, this.oSs, this.mPaint);
+        paramCanvas.drawRect(this.mPadding, 0.0F, this.pwc + this.mPadding, this.pwc, this.mPaint);
         AppMethodBeat.o(159865);
         return;
-        label486:
+        label485:
         j = 0;
         i = 0;
       }
@@ -1146,72 +1108,58 @@ public final class a
       {
         AppMethodBeat.o(159866);
         return true;
-        this.JoI = a.this.Job.atr;
-        this.JoJ = a.this.Job.MZ;
-        this.JoG = ((int)paramMotionEvent.getX());
-        this.JoH = ((int)paramMotionEvent.getY());
-        this.JoL = false;
-        a.this.Jod.getLocationInWindow(this.HOb);
+        this.Lgg = a.this.Lfy.avj;
+        this.Lgh = a.this.Lfy.OQ;
+        this.Lge = ((int)paramMotionEvent.getX());
+        this.Lgf = ((int)paramMotionEvent.getY());
+        this.Lgj = false;
+        a.this.LfA.getLocationInWindow(this.JBQ);
         continue;
-        if ((a.this.Joe != null) && (!this.JoL))
+        if ((a.this.LfB != null) && (!this.Lgj))
         {
-          this.JoL = true;
-          a.this.Joe.fqy();
-          if (a.this.Job.MZ - a.this.Job.atr == b.gQ(a.this.Jod).length())
+          this.Lgj = true;
+          a.this.LfB.fHl();
+          if (a.this.Lfy.OQ - a.this.Lfy.avj == b.hh(a.this.LfA).length())
           {
-            a.this.Joe.fY(a.this.Jod);
-            a.this.Jot = true;
-            a.this.fwJ();
+            a.this.LfB.gp(a.this.LfA);
+            a.this.LfQ = true;
+            a.this.fNx();
           }
           for (;;)
           {
-            a.this.Joe.fqz();
+            a.this.LfB.fHm();
             break;
-            a.this.Joe.dismiss();
-            a.this.Jot = false;
-            a.this.fwM();
+            a.this.LfB.dismiss();
+            a.this.LfQ = false;
+            a.this.fNA();
           }
         }
-        if (!a.this.Jot)
+        if (!a.this.LfQ)
         {
-          a.this.fwM();
+          a.this.fNA();
           continue;
-          if (a.this.Joe != null)
+          if (a.this.LfB != null)
           {
-            a.this.Joe.fqy();
-            a.this.Joe.dismiss();
+            a.this.LfB.fHl();
+            a.this.LfB.dismiss();
           }
-          a.this.fwJ();
+          a.this.fNx();
           int i = (int)paramMotionEvent.getRawX();
           int j = (int)paramMotionEvent.getRawY();
-          if (a.this.Joe == null) {
-            update(i - this.HOb[0], j + this.JoH - this.mHeight - a.this.Joo);
+          if (a.this.LfB == null) {
+            update(i - this.JBQ[0], j + this.Lgf - this.mHeight - a.this.LfL);
           }
           for (;;)
           {
-            if (a.this.Joe == null) {
+            if (a.this.LfB == null) {
               break label430;
             }
-            a.this.Joe.fqz();
+            a.this.LfB.fHm();
             break;
-            update(i - this.HOb[0] + this.oSs, j + this.JoH - this.mHeight - a.this.Joo);
+            update(i - this.JBQ[0] + this.pwc, j + this.Lgf - this.mHeight - a.this.LfL);
           }
         }
       }
-    }
-    
-    public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
-    {
-      AppMethodBeat.i(159875);
-      this.mPopupWindow.setOnDismissListener(paramOnDismissListener);
-      AppMethodBeat.o(159875);
-    }
-    
-    public final void setTouchInterceptor(View.OnTouchListener paramOnTouchListener)
-    {
-      AppMethodBeat.i(159874);
-      this.mPopupWindow.setTouchInterceptor(paramOnTouchListener);
-      AppMethodBeat.o(159874);
     }
   }
   
@@ -1222,7 +1170,7 @@ public final class a
     
     c() {}
     
-    final boolean FA(int paramInt)
+    final boolean GP(int paramInt)
     {
       return (paramInt >= this.start) && (paramInt < this.end);
     }
@@ -1236,36 +1184,16 @@ public final class a
     }
   }
   
-  public static abstract interface d
-  {
-    public abstract void an(CharSequence paramCharSequence);
-  }
-  
   public static abstract interface e
   {
-    public abstract void fqE();
-  }
-  
-  public static abstract class f
-  {
-    public void dismiss() {}
-    
-    public void fY(View paramView) {}
-    
-    public void fZ(View paramView) {}
-    
-    public void fqA() {}
-    
-    public void fqy() {}
-    
-    public void fqz() {}
+    public abstract void fHr();
   }
   
   final class g
   {
-    String JoM;
-    int MZ;
-    int atr;
+    String Lgk;
+    int OQ;
+    int avj;
     
     g() {}
   }

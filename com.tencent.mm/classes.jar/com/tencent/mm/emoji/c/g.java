@@ -12,7 +12,7 @@ public final class g
   {
     super(paramEmojiInfo, paramBoolean, parama);
     AppMethodBeat.i(104496);
-    new k(paramEmojiInfo, paramBoolean, paramEmojiInfo.field_attachedText, paramEmojiInfo.fGt(), paramEmojiInfo.field_imitateMd5).fQO = new k.b()
+    new k(paramEmojiInfo, paramBoolean, paramEmojiInfo.field_attachedText, paramEmojiInfo.gzP(), paramEmojiInfo.field_imitateMd5).gko = new k.b()
     {
       public final void b(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, boolean paramAnonymousBoolean)
       {
@@ -25,11 +25,11 @@ public final class g
         }
         if (paramAnonymousBoolean)
         {
-          g.this.lG(2);
+          g.this.mg(2);
           AppMethodBeat.o(104495);
           return;
         }
-        g.this.lG(paramAnonymousInt2);
+        g.this.mg(paramAnonymousInt2);
         AppMethodBeat.o(104495);
       }
     };

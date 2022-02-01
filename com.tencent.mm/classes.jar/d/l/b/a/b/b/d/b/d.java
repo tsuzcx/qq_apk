@@ -1,23 +1,24 @@
 package d.l.b.a.b.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.p;
 import d.l.b.a.b.f.f;
 import java.lang.annotation.Annotation;
 
 public abstract class d
   implements d.l.b.a.b.d.a.e.b
 {
-  public static final a Ljt = new a((byte)0);
-  private final f Lgj;
+  public static final a Nap = new a((byte)0);
+  private final f MXf;
   
   public d(f paramf)
   {
-    this.Lgj = paramf;
+    this.MXf = paramf;
   }
   
-  public final f fRf()
+  public final f giD()
   {
-    return this.Lgj;
+    return this.MXf;
   }
   
   public static final class a
@@ -25,8 +26,8 @@ public abstract class d
     public static d a(Object paramObject, f paramf)
     {
       AppMethodBeat.i(57415);
-      d.g.b.k.h(paramObject, "value");
-      if (b.bw(paramObject.getClass()))
+      p.h(paramObject, "value");
+      if (b.by(paramObject.getClass()))
       {
         paramObject = (d)new o(paramf, (Enum)paramObject);
         AppMethodBeat.o(57415);
@@ -58,7 +59,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.d
  * JD-Core Version:    0.7.0.1
  */

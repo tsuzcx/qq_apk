@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.protocal.protobuf.cjp;
-import com.tencent.mm.protocal.protobuf.cjq;
+import com.tencent.mm.al.a;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.protocal.protobuf.cop;
+import com.tencent.mm.protocal.protobuf.coq;
 
 public final class n
-  extends c<cjq>
+  extends a<coq>
 {
   public n(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3)
   {
     AppMethodBeat.i(68450);
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new cjp();
-    ((b.a)localObject).hvu = new cjq();
+    ((b.a)localObject).hNM = new cop();
+    ((b.a)localObject).hNN = new coq();
     ((b.a)localObject).funcId = 1283;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/qrypurchaseresult";
-    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).hNO = 0;
     ((b.a)localObject).respCmdId = 0;
-    localObject = ((b.a)localObject).aAz();
-    cjp localcjp = (cjp)((b)localObject).hvr.hvw;
-    localcjp.Fxp = paramString1;
-    localcjp.wLA = paramString2;
-    localcjp.Fww = paramInt1;
-    localcjp.ErG = paramInt2;
-    localcjp.FuW = paramString3;
-    localcjp.AYa = paramInt3;
-    localcjp.AYl = ae.eon();
-    this.rr = ((b)localObject);
+    localObject = ((b.a)localObject).aDC();
+    cop localcop = (cop)((b)localObject).hNK.hNQ;
+    localcop.Hhu = paramString1;
+    localcop.xZh = paramString2;
+    localcop.HgC = paramInt1;
+    localcop.uxm = paramInt2;
+    localcop.Hfb = paramString3;
+    localcop.Cyj = paramInt3;
+    localcop.Cyu = ae.eCl();
+    c((b)localObject);
     AppMethodBeat.o(68450);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.n
  * JD-Core Version:    0.7.0.1
  */

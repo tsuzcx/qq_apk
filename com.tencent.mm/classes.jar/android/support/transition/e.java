@@ -15,30 +15,30 @@ final class e
   extends View
   implements g
 {
-  private final Matrix mMatrix = new Matrix();
-  final View mView;
-  ViewGroup zg;
-  View zi;
-  int zj;
-  private int zk;
-  private int zl;
-  Matrix zm;
-  private final ViewTreeObserver.OnPreDrawListener zn = new ViewTreeObserver.OnPreDrawListener()
+  ViewGroup AZ;
+  View Ba;
+  int Bb;
+  private int Bc;
+  private int Bd;
+  Matrix Be;
+  private final ViewTreeObserver.OnPreDrawListener Bf = new ViewTreeObserver.OnPreDrawListener()
   {
     public final boolean onPreDraw()
     {
-      e.this.zm = e.this.mView.getMatrix();
+      e.this.Be = e.this.mView.getMatrix();
       t.W(e.this);
-      if ((e.this.zg != null) && (e.this.zi != null))
+      if ((e.this.AZ != null) && (e.this.Ba != null))
       {
-        e.this.zg.endViewTransition(e.this.zi);
-        t.W(e.this.zg);
-        e.this.zg = null;
-        e.this.zi = null;
+        e.this.AZ.endViewTransition(e.this.Ba);
+        t.W(e.this.AZ);
+        e.this.AZ = null;
+        e.this.Ba = null;
       }
       return true;
     }
   };
+  private final Matrix mMatrix = new Matrix();
+  final View mView;
   
   private e(View paramView)
   {
@@ -52,8 +52,8 @@ final class e
     paramView = E(paramView);
     if (paramView != null)
     {
-      paramView.zj -= 1;
-      if (paramView.zj <= 0)
+      paramView.Bb -= 1;
+      if (paramView.Bb <= 0)
       {
         Object localObject = paramView.getParent();
         if ((localObject instanceof ViewGroup))
@@ -95,14 +95,14 @@ final class e
       locale1 = new e(paramView);
       paramViewGroup.addView(locale1);
     }
-    locale1.zj += 1;
+    locale1.Bb += 1;
     return locale1;
   }
   
   public final void a(ViewGroup paramViewGroup, View paramView)
   {
-    this.zg = paramViewGroup;
-    this.zi = paramView;
+    this.AZ = paramViewGroup;
+    this.Ba = paramView;
   }
   
   protected final void onAttachedToWindow()
@@ -115,15 +115,15 @@ final class e
     this.mView.getLocationOnScreen(arrayOfInt2);
     arrayOfInt2[0] = ((int)(arrayOfInt2[0] - this.mView.getTranslationX()));
     arrayOfInt2[1] = ((int)(arrayOfInt2[1] - this.mView.getTranslationY()));
-    this.zk = (arrayOfInt2[0] - arrayOfInt1[0]);
-    this.zl = (arrayOfInt2[1] - arrayOfInt1[1]);
-    this.mView.getViewTreeObserver().addOnPreDrawListener(this.zn);
+    this.Bc = (arrayOfInt2[0] - arrayOfInt1[0]);
+    this.Bd = (arrayOfInt2[1] - arrayOfInt1[1]);
+    this.mView.getViewTreeObserver().addOnPreDrawListener(this.Bf);
     this.mView.setVisibility(4);
   }
   
   protected final void onDetachedFromWindow()
   {
-    this.mView.getViewTreeObserver().removeOnPreDrawListener(this.zn);
+    this.mView.getViewTreeObserver().removeOnPreDrawListener(this.Bf);
     this.mView.setVisibility(0);
     this.mView.setTag(2131300585, null);
     super.onDetachedFromWindow();
@@ -131,8 +131,8 @@ final class e
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    this.mMatrix.set(this.zm);
-    this.mMatrix.postTranslate(this.zk, this.zl);
+    this.mMatrix.set(this.Be);
+    this.mMatrix.postTranslate(this.Bc, this.Bd);
     paramCanvas.setMatrix(this.mMatrix);
     this.mView.draw(paramCanvas);
   }

@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  public Grammar bLx;
-  g bLy;
+  public Grammar bVK;
+  g bVL;
   byte[] c;
   public boolean d;
   public boolean e;
@@ -14,12 +14,12 @@ public final class e
   public e()
   {
     AppMethodBeat.i(76756);
-    this.bLx = null;
-    this.bLy = new g();
+    this.bVK = null;
+    this.bVL = new g();
     this.c = null;
     this.d = false;
     this.e = false;
-    this.bLx = new Grammar();
+    this.bVK = new Grammar();
     AppMethodBeat.o(76756);
   }
   
@@ -36,7 +36,7 @@ public final class e
       AppMethodBeat.o(76757);
       return -302;
     }
-    this.bLy.bLz = paramc;
+    this.bVL.bVM = paramc;
     this.c = paramArrayOfByte;
     if (this.c == null)
     {
@@ -64,29 +64,29 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(76755);
-      if (e.this.bLx.begin() != 0)
+      if (e.this.bVK.begin() != 0)
       {
-        e.this.bLy.a(-102);
+        e.this.bVL.a(-102);
         AppMethodBeat.o(76755);
         return;
       }
-      if (e.this.bLx.recognize(e.this.c, e.this.c.length) != 0)
+      if (e.this.bVK.recognize(e.this.c, e.this.c.length) != 0)
       {
-        e.this.bLy.a(-103);
+        e.this.bVL.a(-103);
         AppMethodBeat.o(76755);
         return;
       }
-      if (e.this.bLx.end() != 0)
+      if (e.this.bVK.end() != 0)
       {
-        e.this.bLy.a(-104);
+        e.this.bVL.a(-104);
         AppMethodBeat.o(76755);
         return;
       }
       a locala = new a();
-      if (e.this.bLx.getResult(locala) != 0) {
-        e.this.bLy.a(-105);
+      if (e.this.bVK.getResult(locala) != 0) {
+        e.this.bVL.a(-105);
       }
-      g localg = e.this.bLy;
+      g localg = e.this.bVL;
       localg.b.sendMessage(localg.b.obtainMessage(200, locala));
       AppMethodBeat.o(76755);
     }
@@ -94,7 +94,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.qq.wx.voice.embed.recognizer.e
  * JD-Core Version:    0.7.0.1
  */

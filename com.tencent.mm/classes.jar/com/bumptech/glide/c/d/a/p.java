@@ -19,25 +19,25 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public final class p
 {
-  private static final Paint aJM;
-  private static final Paint aJN;
-  private static final Paint aJO;
-  private static final Set<String> aJP;
-  private static final Lock aJQ;
+  private static final Paint aLD;
+  private static final Paint aLE;
+  private static final Paint aLF;
+  private static final Set<String> aLG;
+  private static final Lock aLH;
   
   static
   {
     AppMethodBeat.i(77436);
-    aJM = new Paint(6);
-    aJN = new Paint(7);
+    aLD = new Paint(6);
+    aLE = new Paint(7);
     Object localObject = new HashSet(Arrays.asList(new String[] { "XT1085", "XT1092", "XT1093", "XT1094", "XT1095", "XT1096", "XT1097", "XT1098", "XT1031", "XT1028", "XT937C", "XT1032", "XT1008", "XT1033", "XT1035", "XT1034", "XT939G", "XT1039", "XT1040", "XT1042", "XT1045", "XT1063", "XT1064", "XT1068", "XT1069", "XT1072", "XT1077", "XT1078", "XT1079" }));
-    aJP = (Set)localObject;
+    aLG = (Set)localObject;
     if (((Set)localObject).contains(Build.MODEL)) {}
     for (localObject = new ReentrantLock();; localObject = new p.a())
     {
-      aJQ = (Lock)localObject;
+      aLH = (Lock)localObject;
       localObject = new Paint(7);
-      aJO = (Paint)localObject;
+      aLF = (Paint)localObject;
       ((Paint)localObject).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
       AppMethodBeat.o(77436);
       return;
@@ -70,17 +70,17 @@ public final class p
     {
       parame = parame.b(paramInt, i, (Bitmap.Config)localObject);
       localMatrix.postTranslate(-localRectF.left, -localRectF.top);
-      aJQ.lock();
+      aLH.lock();
       try
       {
         localObject = new Canvas(parame);
-        ((Canvas)localObject).drawBitmap(paramBitmap, localMatrix, aJM);
+        ((Canvas)localObject).drawBitmap(paramBitmap, localMatrix, aLD);
         ((Canvas)localObject).setBitmap(null);
         return parame;
       }
       finally
       {
-        aJQ.unlock();
+        aLH.unlock();
         AppMethodBeat.o(77435);
       }
       localMatrix.setScale(-1.0F, 1.0F);
@@ -129,9 +129,9 @@ public final class p
     return true;
   }
   
-  public static Lock pl()
+  public static Lock pD()
   {
-    return aJQ;
+    return aLH;
   }
 }
 

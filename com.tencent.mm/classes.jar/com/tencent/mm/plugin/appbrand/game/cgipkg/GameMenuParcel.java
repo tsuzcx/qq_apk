@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.axs;
+import com.tencent.mm.protocal.protobuf.bbu;
 
 public class GameMenuParcel
   implements Parcelable
 {
   public static final Parcelable.Creator<GameMenuParcel> CREATOR;
   public String appId;
-  public axs jQg;
+  public bbu kks;
   
   static
   {
@@ -26,7 +26,7 @@ public class GameMenuParcel
   {
     AppMethodBeat.i(45093);
     this.appId = paramParcel.readString();
-    this.jQg = ((axs)com.tencent.mm.ipcinvoker.extension.c.a(com.tencent.mm.ipcinvoker.wx_extension.c.class.getName(), paramParcel));
+    this.kks = ((bbu)com.tencent.mm.ipcinvoker.extension.c.a(com.tencent.mm.ipcinvoker.wx_extension.c.class.getName(), paramParcel));
     AppMethodBeat.o(45093);
   }
   
@@ -39,13 +39,13 @@ public class GameMenuParcel
   {
     AppMethodBeat.i(45092);
     paramParcel.writeString(this.appId);
-    com.tencent.mm.ipcinvoker.extension.c.a(this.jQg, paramParcel);
+    com.tencent.mm.ipcinvoker.extension.c.a(this.kks, paramParcel);
     AppMethodBeat.o(45092);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.cgipkg.GameMenuParcel
  * JD-Core Version:    0.7.0.1
  */

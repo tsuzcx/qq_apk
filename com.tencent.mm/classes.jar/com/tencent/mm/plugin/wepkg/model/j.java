@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.wepkg.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ys;
+import com.tencent.mm.g.a.zm;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.wepkg.downloader.WePkgDownloader.IWepkgUpdateCallback.RetCode;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.List;
 
 public class j
 {
-  private static volatile j Dbx = null;
+  private static volatile j EFw = null;
   
-  private static void D(boolean paramBoolean, String paramString)
+  private static void I(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(110754);
     if (paramBoolean)
     {
-      ys localys = new ys();
-      localys.dCz.cZu = 0;
-      com.tencent.mm.sdk.b.a.GpY.l(localys);
+      zm localzm = new zm();
+      localzm.dOM.dkM = 0;
+      com.tencent.mm.sdk.b.a.IbL.l(localzm);
     }
-    i.aFw(paramString);
-    c.eJd().az(paramString, 3, 6);
+    i.aKW(paramString);
+    c.eXW().aD(paramString, 3, 6);
     AppMethodBeat.o(110754);
   }
   
@@ -34,48 +34,48 @@ public class j
     {
       try
       {
-        if (!bs.gY(paramList)) {
+        if (!bt.hj(paramList)) {
           break label265;
         }
-        ac.i("MicroMsg.Wepkg.WepkgUpdater", "loopDownload WepkgPreloadFile is empty");
-        if (bs.isNullOrNil(paramString))
+        ad.i("MicroMsg.Wepkg.WepkgUpdater", "loopDownload WepkgPreloadFile is empty");
+        if (bt.isNullOrNil(paramString))
         {
-          D(paramBoolean, paramString);
+          I(paramBoolean, paramString);
           AppMethodBeat.o(110753);
           return;
         }
-        paramList = i.aFt(paramString);
-        if (!bs.gY(paramList)) {
+        paramList = i.aKT(paramString);
+        if (!bt.hj(paramList)) {
           break;
         }
         paramList = new WepkgCrossProcessTask();
-        paramList.CW = 3006;
-        paramList.DaU.fYR = paramString;
-        paramList.DaU.DbK = true;
-        if (ai.ciE())
+        paramList.EN = 3006;
+        paramList.EET.gsn = paramString;
+        paramList.EET.EFJ = true;
+        if (aj.cnC())
         {
-          paramList.aLq();
-          paramList = i.aFr(paramString);
+          paramList.aOA();
+          paramList = i.aKR(paramString);
           if ((paramList != null) && (paramList.createTime != 0L))
           {
-            com.tencent.mm.plugin.wepkg.utils.a.b("downloadCompleteTime", "", paramList.fYR, paramList.version, -1L, System.currentTimeMillis() - paramList.createTime * 1000L, null);
+            com.tencent.mm.plugin.wepkg.utils.a.b("downloadCompleteTime", "", paramList.gsn, paramList.version, -1L, System.currentTimeMillis() - paramList.createTime * 1000L, null);
             paramList = new WepkgCrossProcessTask();
-            paramList.CW = 3007;
-            paramList.DaU.fYR = paramString;
-            if (!ai.ciE()) {
+            paramList.EN = 3007;
+            paramList.EET.gsn = paramString;
+            if (!aj.cnC()) {
               break label223;
             }
-            paramList.aLq();
+            paramList.aOA();
           }
-          D(paramBoolean, paramString);
-          ac.i("MicroMsg.Wepkg.WepkgUpdater", "WepkgPreloadFile downloadComplete:true");
+          I(paramBoolean, paramString);
+          ad.i("MicroMsg.Wepkg.WepkgUpdater", "WepkgPreloadFile downloadComplete:true");
           AppMethodBeat.o(110753);
           return;
         }
       }
       catch (Exception paramString)
       {
-        ac.e("MicroMsg.Wepkg.WepkgUpdater", "loopDownload err:%s", new Object[] { paramString.getMessage() });
+        ad.e("MicroMsg.Wepkg.WepkgUpdater", "loopDownload err:%s", new Object[] { paramString.getMessage() });
         AppMethodBeat.o(110753);
         return;
       }
@@ -84,15 +84,15 @@ public class j
       label223:
       AppBrandMainProcessService.b(paramList);
     }
-    ac.i("MicroMsg.Wepkg.WepkgUpdater", "WepkgPreloadFile downloadComplete:false list.size:%s", new Object[] { Integer.valueOf(paramList.size()) });
-    D(paramBoolean, paramString);
+    ad.i("MicroMsg.Wepkg.WepkgUpdater", "WepkgPreloadFile downloadComplete:false list.size:%s", new Object[] { Integer.valueOf(paramList.size()) });
+    I(paramBoolean, paramString);
     AppMethodBeat.o(110753);
     return;
     label265:
     WepkgPreloadFile localWepkgPreloadFile = (WepkgPreloadFile)paramList.remove(0);
     if (localWepkgPreloadFile != null)
     {
-      ac.i("MicroMsg.Wepkg.WepkgUpdater", "download preload files pkgid:%s, version:%s, rid:%s", new Object[] { localWepkgPreloadFile.fYR, localWepkgPreloadFile.version, localWepkgPreloadFile.Dba });
+      ad.i("MicroMsg.Wepkg.WepkgUpdater", "download preload files pkgid:%s, version:%s, rid:%s", new Object[] { localWepkgPreloadFile.gsn, localWepkgPreloadFile.version, localWepkgPreloadFile.EEZ });
       paramString = new a()
       {
         public final void a(BaseWepkgProcessTask paramAnonymousBaseWepkgProcessTask)
@@ -102,19 +102,19 @@ public class j
           {
             Object localObject2 = (WepkgDownloadProcessTask)paramAnonymousBaseWepkgProcessTask;
             Object localObject1 = (WepkgPreloadFile)this.object;
-            if ((((WepkgDownloadProcessTask)localObject2).Dbc == WePkgDownloader.IWepkgUpdateCallback.RetCode.Dad) && (!bs.isNullOrNil(((WepkgDownloadProcessTask)localObject2).pkgPath)))
+            if ((((WepkgDownloadProcessTask)localObject2).EFb == WePkgDownloader.IWepkgUpdateCallback.RetCode.EEc) && (!bt.isNullOrNil(((WepkgDownloadProcessTask)localObject2).pkgPath)))
             {
-              paramAnonymousBaseWepkgProcessTask = ((WepkgPreloadFile)localObject1).fYR;
-              localObject1 = ((WepkgPreloadFile)localObject1).Dba;
+              paramAnonymousBaseWepkgProcessTask = ((WepkgPreloadFile)localObject1).gsn;
+              localObject1 = ((WepkgPreloadFile)localObject1).EEZ;
               localObject2 = ((WepkgDownloadProcessTask)localObject2).pkgPath;
               WepkgCrossProcessTask localWepkgCrossProcessTask = new WepkgCrossProcessTask();
-              localWepkgCrossProcessTask.CW = 4002;
-              localWepkgCrossProcessTask.DaX.fYR = paramAnonymousBaseWepkgProcessTask;
-              localWepkgCrossProcessTask.DaX.Dba = ((String)localObject1);
-              localWepkgCrossProcessTask.DaX.filePath = ((String)localObject2);
-              localWepkgCrossProcessTask.DaX.Dbn = true;
-              if (ai.ciE()) {
-                localWepkgCrossProcessTask.aLq();
+              localWepkgCrossProcessTask.EN = 4002;
+              localWepkgCrossProcessTask.EEW.gsn = paramAnonymousBaseWepkgProcessTask;
+              localWepkgCrossProcessTask.EEW.EEZ = ((String)localObject1);
+              localWepkgCrossProcessTask.EEW.filePath = ((String)localObject2);
+              localWepkgCrossProcessTask.EEW.EFm = true;
+              if (aj.cnC()) {
+                localWepkgCrossProcessTask.aOA();
               }
               for (;;)
               {
@@ -124,36 +124,36 @@ public class j
                 AppBrandMainProcessService.b(localWepkgCrossProcessTask);
               }
             }
-            ac.i("MicroMsg.Wepkg.WepkgUpdater", "download, errCode:%s,  to loop", new Object[] { ((WepkgDownloadProcessTask)localObject2).Dbc });
+            ad.i("MicroMsg.Wepkg.WepkgUpdater", "download, errCode:%s,  to loop", new Object[] { ((WepkgDownloadProcessTask)localObject2).EFb });
             j.a(j.this, paramString, paramList, paramBoolean);
             AppMethodBeat.o(110750);
             return;
           }
-          ac.i("MicroMsg.Wepkg.WepkgUpdater", "object instanceof  WepkgPreloadFile is false");
+          ad.i("MicroMsg.Wepkg.WepkgUpdater", "object instanceof  WepkgPreloadFile is false");
           j.a(j.this, paramString, paramList, paramBoolean);
           AppMethodBeat.o(110750);
         }
       };
       paramString.object = localWepkgPreloadFile;
-      i.a(2, localWepkgPreloadFile.fYR, localWepkgPreloadFile.Dba, localWepkgPreloadFile.downloadUrl, localWepkgPreloadFile.size, localWepkgPreloadFile.version, localWepkgPreloadFile.md5, localWepkgPreloadFile.DaM, paramString);
+      i.a(2, localWepkgPreloadFile.gsn, localWepkgPreloadFile.EEZ, localWepkgPreloadFile.downloadUrl, localWepkgPreloadFile.size, localWepkgPreloadFile.version, localWepkgPreloadFile.md5, localWepkgPreloadFile.EEL, paramString);
       AppMethodBeat.o(110753);
       return;
     }
-    ac.i("MicroMsg.Wepkg.WepkgUpdater", "download item is null, to loop");
+    ad.i("MicroMsg.Wepkg.WepkgUpdater", "download item is null, to loop");
     c(paramString, paramList, paramBoolean);
     AppMethodBeat.o(110753);
   }
   
-  public static j eJi()
+  public static j eYc()
   {
     AppMethodBeat.i(110751);
-    if (Dbx == null) {}
+    if (EFw == null) {}
     try
     {
-      if (Dbx == null) {
-        Dbx = new j();
+      if (EFw == null) {
+        EFw = new j();
       }
-      j localj = Dbx;
+      j localj = EFw;
       AppMethodBeat.o(110751);
       return localj;
     }
@@ -163,12 +163,12 @@ public class j
     }
   }
   
-  public final void cs(final String paramString, final boolean paramBoolean)
+  public final void cx(final String paramString, final boolean paramBoolean)
   {
     AppMethodBeat.i(110752);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      D(paramBoolean, paramString);
+      I(paramBoolean, paramString);
       AppMethodBeat.o(110752);
       return;
     }
@@ -181,38 +181,38 @@ public class j
         {
           String str = (String)this.object;
           boolean bool2 = paramAnonymousBaseWepkgProcessTask.result;
-          if (!paramAnonymousBaseWepkgProcessTask.DaE) {}
+          if (!paramAnonymousBaseWepkgProcessTask.EED) {}
           for (boolean bool1 = true;; bool1 = false)
           {
-            j.j(str, bool2, bool1);
+            j.l(str, bool2, bool1);
             j.a(j.this, str, paramBoolean);
             AppMethodBeat.o(110748);
             return;
           }
         }
-        j.E(paramBoolean, paramString);
+        j.J(paramBoolean, paramString);
         AppMethodBeat.o(110748);
       }
     };
     local1.object = paramString;
-    ac.i("MicroMsg.Wepkg.WepkgUpdater", "start update wepkg. pkgid:%s, isAutoUpdate:%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    if (bs.isNullOrNil(paramString))
+    ad.i("MicroMsg.Wepkg.WepkgUpdater", "start update wepkg. pkgid:%s, isAutoUpdate:%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    if (bt.isNullOrNil(paramString))
     {
-      D(paramBoolean, paramString);
+      I(paramBoolean, paramString);
       AppMethodBeat.o(110752);
       return;
     }
-    ac.i("MicroMsg.Wepkg.WepkgUpdater", "update big package. pkgid:%s, isAutoUpdate:%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    WepkgVersion localWepkgVersion = i.aFr(paramString);
+    ad.i("MicroMsg.Wepkg.WepkgUpdater", "update big package. pkgid:%s, isAutoUpdate:%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    WepkgVersion localWepkgVersion = i.aKR(paramString);
     if (localWepkgVersion == null)
     {
-      D(paramBoolean, paramString);
+      I(paramBoolean, paramString);
       AppMethodBeat.o(110752);
       return;
     }
-    if (!localWepkgVersion.DbJ)
+    if (!localWepkgVersion.EFI)
     {
-      i.a(1, localWepkgVersion.fYR, "", localWepkgVersion.downloadUrl, localWepkgVersion.DbH, localWepkgVersion.version, localWepkgVersion.md5, localWepkgVersion.DaM, new a()
+      i.a(1, localWepkgVersion.gsn, "", localWepkgVersion.downloadUrl, localWepkgVersion.EFG, localWepkgVersion.version, localWepkgVersion.md5, localWepkgVersion.EEL, new a()
       {
         public final void a(BaseWepkgProcessTask paramAnonymousBaseWepkgProcessTask)
         {
@@ -220,9 +220,9 @@ public class j
           if ((paramAnonymousBaseWepkgProcessTask instanceof WepkgDownloadProcessTask))
           {
             paramAnonymousBaseWepkgProcessTask = (WepkgDownloadProcessTask)paramAnonymousBaseWepkgProcessTask;
-            if ((paramAnonymousBaseWepkgProcessTask.Dbc == WePkgDownloader.IWepkgUpdateCallback.RetCode.Dad) && (!bs.isNullOrNil(paramAnonymousBaseWepkgProcessTask.dCA)) && (!bs.isNullOrNil(paramAnonymousBaseWepkgProcessTask.pkgPath)))
+            if ((paramAnonymousBaseWepkgProcessTask.EFb == WePkgDownloader.IWepkgUpdateCallback.RetCode.EEc) && (!bt.isNullOrNil(paramAnonymousBaseWepkgProcessTask.dON)) && (!bt.isNullOrNil(paramAnonymousBaseWepkgProcessTask.pkgPath)))
             {
-              i.a(paramAnonymousBaseWepkgProcessTask.dCA, paramAnonymousBaseWepkgProcessTask.pkgPath, true, local1);
+              i.a(paramAnonymousBaseWepkgProcessTask.dON, paramAnonymousBaseWepkgProcessTask.pkgPath, true, local1);
               AppMethodBeat.o(110749);
               return;
             }
@@ -232,11 +232,11 @@ public class j
               paramAnonymousBaseWepkgProcessTask.result = false;
               local1.a(paramAnonymousBaseWepkgProcessTask);
             }
-            j.E(paramBoolean, paramString);
+            j.J(paramBoolean, paramString);
             AppMethodBeat.o(110749);
             return;
           }
-          j.E(paramBoolean, paramString);
+          j.J(paramBoolean, paramString);
           AppMethodBeat.o(110749);
         }
       });
@@ -245,14 +245,14 @@ public class j
     }
     paramString = new WepkgCrossProcessTask();
     paramString.result = true;
-    paramString.DaE = true;
+    paramString.EED = true;
     local1.a(paramString);
     AppMethodBeat.o(110752);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.model.j
  * JD-Core Version:    0.7.0.1
  */

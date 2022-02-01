@@ -15,7 +15,7 @@ public final class s
   extends r
   implements a
 {
-  private InputConnection mEq;
+  private InputConnection neP;
   
   public s(Context paramContext)
   {
@@ -30,7 +30,7 @@ public final class s
       
       public final int getInputType()
       {
-        if (s.this.mFi) {}
+        if (s.this.nfG) {}
         for (int i = 16;; i = 0) {
           return i | 0x2;
         }
@@ -39,7 +39,7 @@ public final class s
     AppMethodBeat.o(136461);
   }
   
-  public final void bAq()
+  public final void bEs()
   {
     AppMethodBeat.i(136468);
     if (!t.aC(this))
@@ -54,11 +54,11 @@ public final class s
     AppMethodBeat.o(136468);
   }
   
-  public final InputConnection bAt()
+  public final InputConnection bEv()
   {
     AppMethodBeat.i(136465);
     InputConnection localInputConnection = super.onCreateInputConnection(new EditorInfo());
-    this.mEq = localInputConnection;
+    this.neP = localInputConnection;
     AppMethodBeat.o(136465);
     return localInputConnection;
   }
@@ -66,14 +66,14 @@ public final class s
   public final void clearFocus()
   {
     AppMethodBeat.i(136462);
-    bAM();
+    bEO();
     AppMethodBeat.o(136462);
   }
   
   public final v getInputPanel()
   {
     AppMethodBeat.i(136467);
-    v localv = v.dg(this);
+    v localv = v.di(this);
     AppMethodBeat.o(136467);
     return localv;
   }
@@ -113,7 +113,7 @@ public final class s
   public final void setPasswordMode(boolean paramBoolean)
   {
     AppMethodBeat.i(136466);
-    bAK();
+    bEM();
     int i = getInputType() | 0x2;
     if (paramBoolean) {
       i |= 0x10;
@@ -122,7 +122,7 @@ public final class s
     {
       setInputType(i);
       super.setPasswordMode(paramBoolean);
-      bAL();
+      bEN();
       AppMethodBeat.o(136466);
       return;
       i &= 0xFFFFFFEF;
@@ -131,7 +131,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.s
  * JD-Core Version:    0.7.0.1
  */

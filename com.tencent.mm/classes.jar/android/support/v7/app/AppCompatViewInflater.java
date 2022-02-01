@@ -130,7 +130,7 @@ public class AppCompatViewInflater
           if ((paramContext instanceof d))
           {
             paramAttributeSet = paramContext;
-            if (((d)paramContext).abB == i) {}
+            if (((d)paramContext).ads == i) {}
           }
           else
           {
@@ -370,33 +370,33 @@ public class AppCompatViewInflater
   static final class a
     implements View.OnClickListener
   {
-    private final View XG;
-    private final String XH;
-    private Method XI;
-    private Context XJ;
+    private final View Zv;
+    private final String Zw;
+    private Method Zx;
+    private Context Zy;
     
     public a(View paramView, String paramString)
     {
-      this.XG = paramView;
-      this.XH = paramString;
+      this.Zv = paramView;
+      this.Zw = paramString;
     }
     
     public final void onClick(View paramView)
     {
       Context localContext;
-      if (this.XI == null) {
-        localContext = this.XG.getContext();
+      if (this.Zx == null) {
+        localContext = this.Zv.getContext();
       }
       while (localContext != null) {
         try
         {
           if (!localContext.isRestricted())
           {
-            Method localMethod = localContext.getClass().getMethod(this.XH, new Class[] { View.class });
+            Method localMethod = localContext.getClass().getMethod(this.Zw, new Class[] { View.class });
             if (localMethod != null)
             {
-              this.XI = localMethod;
-              this.XJ = localContext;
+              this.Zx = localMethod;
+              this.Zy = localContext;
             }
           }
         }
@@ -404,7 +404,7 @@ public class AppCompatViewInflater
         {
           try
           {
-            this.XI.invoke(this.XJ, new Object[] { paramView });
+            this.Zx.invoke(this.Zy, new Object[] { paramView });
             return;
           }
           catch (IllegalAccessException paramView)
@@ -424,10 +424,10 @@ public class AppCompatViewInflater
           }
         }
       }
-      i = this.XG.getId();
+      i = this.Zv.getId();
       if (i == -1) {}
-      for (paramView = "";; paramView = " with id '" + this.XG.getContext().getResources().getResourceEntryName(i) + "'") {
-        throw new IllegalStateException("Could not find method " + this.XH + "(View) in a parent or ancestor Context for android:onClick attribute defined on view " + this.XG.getClass() + paramView);
+      for (paramView = "";; paramView = " with id '" + this.Zv.getContext().getResources().getResourceEntryName(i) + "'") {
+        throw new IllegalStateException("Could not find method " + this.Zw + "(View) in a parent or ancestor Context for android:onClick attribute defined on view " + this.Zv.getClass() + paramView);
       }
     }
   }

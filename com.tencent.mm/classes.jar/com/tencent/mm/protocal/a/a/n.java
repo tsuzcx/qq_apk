@@ -3,15 +3,15 @@ package com.tencent.mm.protocal.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int DJF;
-  public int DKo;
-  public int DKp;
-  public int DKq;
-  public int DKr;
-  public int DKs;
-  public int DKt;
+  public int FoM;
+  public int FpA;
+  public int Fpv;
+  public int Fpw;
+  public int Fpx;
+  public int Fpy;
+  public int Fpz;
   public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -20,36 +20,36 @@ public final class n
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.DJF);
-      paramVarArgs.aR(2, this.DKo);
-      paramVarArgs.aR(3, this.DKp);
-      paramVarArgs.aR(4, this.DKq);
-      paramVarArgs.aR(5, this.DKr);
-      paramVarArgs.aR(6, this.DKs);
-      paramVarArgs.aR(7, this.DKt);
-      paramVarArgs.aR(8, this.type);
+      paramVarArgs.aS(1, this.FoM);
+      paramVarArgs.aS(2, this.Fpv);
+      paramVarArgs.aS(3, this.Fpw);
+      paramVarArgs.aS(4, this.Fpx);
+      paramVarArgs.aS(5, this.Fpy);
+      paramVarArgs.aS(6, this.Fpz);
+      paramVarArgs.aS(7, this.FpA);
+      paramVarArgs.aS(8, this.type);
       AppMethodBeat.o(143958);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bx(1, this.DJF);
-      int i = f.a.a.b.b.a.bx(2, this.DKo);
-      int j = f.a.a.b.b.a.bx(3, this.DKp);
-      int k = f.a.a.b.b.a.bx(4, this.DKq);
-      int m = f.a.a.b.b.a.bx(5, this.DKr);
-      int n = f.a.a.b.b.a.bx(6, this.DKs);
-      int i1 = f.a.a.b.b.a.bx(7, this.DKt);
-      int i2 = f.a.a.b.b.a.bx(8, this.type);
+      paramInt = f.a.a.b.b.a.bz(1, this.FoM);
+      int i = f.a.a.b.b.a.bz(2, this.Fpv);
+      int j = f.a.a.b.b.a.bz(3, this.Fpw);
+      int k = f.a.a.b.b.a.bz(4, this.Fpx);
+      int m = f.a.a.b.b.a.bz(5, this.Fpy);
+      int n = f.a.a.b.b.a.bz(6, this.Fpz);
+      int i1 = f.a.a.b.b.a.bz(7, this.FpA);
+      int i2 = f.a.a.b.b.a.bz(8, this.type);
       AppMethodBeat.o(143958);
       return paramInt + 0 + i + j + k + m + n + i1 + i2;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(143958);
@@ -65,35 +65,35 @@ public final class n
         AppMethodBeat.o(143958);
         return -1;
       case 1: 
-        localn.DJF = locala.LVo.xF();
+        localn.FoM = locala.NPN.zc();
         AppMethodBeat.o(143958);
         return 0;
       case 2: 
-        localn.DKo = locala.LVo.xF();
+        localn.Fpv = locala.NPN.zc();
         AppMethodBeat.o(143958);
         return 0;
       case 3: 
-        localn.DKp = locala.LVo.xF();
+        localn.Fpw = locala.NPN.zc();
         AppMethodBeat.o(143958);
         return 0;
       case 4: 
-        localn.DKq = locala.LVo.xF();
+        localn.Fpx = locala.NPN.zc();
         AppMethodBeat.o(143958);
         return 0;
       case 5: 
-        localn.DKr = locala.LVo.xF();
+        localn.Fpy = locala.NPN.zc();
         AppMethodBeat.o(143958);
         return 0;
       case 6: 
-        localn.DKs = locala.LVo.xF();
+        localn.Fpz = locala.NPN.zc();
         AppMethodBeat.o(143958);
         return 0;
       case 7: 
-        localn.DKt = locala.LVo.xF();
+        localn.FpA = locala.NPN.zc();
         AppMethodBeat.o(143958);
         return 0;
       }
-      localn.type = locala.LVo.xF();
+      localn.type = locala.NPN.zc();
       AppMethodBeat.o(143958);
       return 0;
     }
@@ -103,7 +103,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.a.a.n
  * JD-Core Version:    0.7.0.1
  */

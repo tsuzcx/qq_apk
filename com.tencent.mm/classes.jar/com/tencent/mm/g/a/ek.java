@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ek
   extends b
 {
-  public a del;
+  public a dpD;
   
   public ek()
   {
@@ -15,18 +15,16 @@ public final class ek
   
   private ek(byte paramByte)
   {
-    AppMethodBeat.i(116001);
-    this.del = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(115998);
+    this.dpD = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116001);
+    AppMethodBeat.o(115998);
   }
   
   public static final class a
   {
-    public boolean bhH;
-    public String cIZ;
-    public byte[] ded;
+    public int dpE = -1;
   }
 }
 

@@ -1,108 +1,108 @@
 package com.tencent.mm.plugin.talkroom.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class f
 {
-  private long gcc;
+  private int BnA;
+  long BnB;
+  int BnC;
+  int BnD;
+  private int BnE;
+  private int BnF;
+  private int BnG;
+  int BnH;
+  int BnI;
+  public int BnJ = 0;
+  private int BnK;
+  private int BnL;
+  private int BnM;
+  private int BnN;
+  private int BnO;
+  private int BnP;
+  private int BnQ;
+  private int BnR;
+  private int BnS;
+  String BnT;
+  int BnU;
+  int BnV;
+  long BnW;
+  int BnX;
+  long BnY;
+  long BnZ;
+  private int Bnx;
+  private long Bny;
+  int Bnz = 0;
+  boolean Boa;
+  boolean Bob;
+  private long gvM;
   int roomId;
-  long tIG;
-  private int zVT;
-  private long zVU;
-  int zVV = 0;
-  private int zVW;
-  long zVX;
-  int zVY;
-  int zVZ;
-  private int zWa;
-  private int zWb;
-  private int zWc;
-  int zWd;
-  int zWe;
-  public int zWf = 0;
-  private int zWg;
-  private int zWh;
-  private int zWi;
-  private int zWj;
-  private int zWk;
-  private int zWl;
-  private int zWm;
-  private int zWn;
-  private int zWo;
-  String zWp;
-  int zWq;
-  int zWr;
-  long zWs;
-  int zWt;
-  long zWu;
-  long zWv;
-  boolean zWw;
-  boolean zWx;
+  long uLt;
   
-  public final void Rc(int paramInt)
+  public final void SM(int paramInt)
   {
     AppMethodBeat.i(29477);
-    if (this.zWs == 0L)
+    if (this.BnW == 0L)
     {
       AppMethodBeat.o(29477);
       return;
     }
-    this.zVT = paramInt;
-    this.zVU = bs.aO(this.zWs);
+    this.Bnx = paramInt;
+    this.Bny = bt.aO(this.BnW);
     AppMethodBeat.o(29477);
   }
   
-  public final void ebu()
+  public final void enL()
   {
     AppMethodBeat.i(29478);
-    if (this.zWs == 0L)
+    if (this.BnW == 0L)
     {
       AppMethodBeat.o(29478);
       return;
     }
-    this.gcc = bs.aO(this.zWs);
+    this.gvM = bt.aO(this.BnW);
     AppMethodBeat.o(29478);
   }
   
-  public final void ebv()
+  public final void enM()
   {
-    this.zWc += 1;
+    this.BnG += 1;
   }
   
-  public final void ebw()
+  public final void enN()
   {
     AppMethodBeat.i(29480);
-    if (this.zWv == 0L)
+    if (this.BnZ == 0L)
     {
       AppMethodBeat.o(29480);
       return;
     }
-    long l = bs.aO(this.zWv) / 1000L;
+    long l = bt.aO(this.BnZ) / 1000L;
     if (l < 2L) {
-      this.zWg += 1;
+      this.BnK += 1;
     }
     for (;;)
     {
-      this.zWv = 0L;
+      this.BnZ = 0L;
       AppMethodBeat.o(29480);
       return;
       if (l < 6L) {
-        this.zWh += 1;
+        this.BnL += 1;
       } else if (l < 11L) {
-        this.zWi += 1;
+        this.BnM += 1;
       } else if (l < 21L) {
-        this.zWj += 1;
+        this.BnN += 1;
       } else if (l < 31L) {
-        this.zWk += 1;
+        this.BnO += 1;
       } else if (l < 41L) {
-        this.zWl += 1;
+        this.BnP += 1;
       } else if (l < 51L) {
-        this.zWm += 1;
+        this.BnQ += 1;
       } else if (l < 61L) {
-        this.zWn += 1;
+        this.BnR += 1;
       } else {
-        this.zWo += 1;
+        this.BnS += 1;
       }
     }
   }
@@ -110,26 +110,26 @@ public final class f
   public final void exitRoom()
   {
     AppMethodBeat.i(29479);
-    if (this.zWs == 0L)
+    if (this.BnW == 0L)
     {
       AppMethodBeat.o(29479);
       return;
     }
-    this.zVW = ((int)(bs.aO(this.zWs) / 1000L));
+    this.BnA = ((int)(bt.aO(this.BnW) / 1000L));
     AppMethodBeat.o(29479);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(29481);
-    String str = this.zVT + "," + this.zVU + "," + this.gcc + "," + this.zVV + "," + this.zVW + "," + this.zVX + "," + this.zVY + "," + this.zVZ + "," + this.zWa + "," + this.zWb + "," + this.zWc + "," + this.zWd + "," + this.zWe + "," + this.zWf + "," + this.zWg + "," + this.zWh + "," + this.zWi + "," + this.zWj + "," + this.zWk + "," + this.zWl + "," + this.zWm + "," + this.zWn + "," + this.zWo + "," + this.zWp + "," + this.roomId + "," + this.tIG + "," + this.zWq + "," + this.zWr;
+    String str = this.Bnx + "," + this.Bny + "," + this.gvM + "," + this.Bnz + "," + this.BnA + "," + this.BnB + "," + this.BnC + "," + this.BnD + "," + this.BnE + "," + this.BnF + "," + this.BnG + "," + this.BnH + "," + this.BnI + "," + this.BnJ + "," + this.BnK + "," + this.BnL + "," + this.BnM + "," + this.BnN + "," + this.BnO + "," + this.BnP + "," + this.BnQ + "," + this.BnR + "," + this.BnS + "," + this.BnT + "," + this.roomId + "," + this.uLt + "," + this.BnU + "," + this.BnV;
     AppMethodBeat.o(29481);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.f
  * JD-Core Version:    0.7.0.1
  */

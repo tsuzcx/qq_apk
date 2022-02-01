@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class om
   extends b
 {
+  public a dCq;
+  
   public om()
   {
     this((byte)0);
@@ -12,13 +15,23 @@ public final class om
   
   private om(byte paramByte)
   {
-    this.Gqe = false;
+    AppMethodBeat.i(215642);
+    this.dCq = new a();
+    this.IbR = false;
     this.callback = null;
+    AppMethodBeat.o(215642);
+  }
+  
+  public static final class a
+  {
+    public String dCr;
+    public String dCs;
+    public int dCt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.om
  * JD-Core Version:    0.7.0.1
  */

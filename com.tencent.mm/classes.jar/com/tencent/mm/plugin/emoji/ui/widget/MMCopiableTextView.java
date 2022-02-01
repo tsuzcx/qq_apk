@@ -9,17 +9,19 @@ import android.view.View.OnLongClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class MMCopiableTextView
   extends EditText
   implements View.OnLongClickListener
 {
   private final String TAG;
-  private int mHD;
-  private int pmq;
+  private int nib;
+  private int pPQ;
   
   public MMCopiableTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -57,34 +59,38 @@ public class MMCopiableTextView
   public boolean onLongClick(View paramView)
   {
     AppMethodBeat.i(109432);
+    Object localObject = new b();
+    ((b)localObject).bd(paramView);
+    a.b("com/tencent/mm/plugin/emoji/ui/widget/MMCopiableTextView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).ahq());
     paramView = getEditableText().toString();
-    if ((!bs.isNullOrNil(paramView)) && (this.mHD > 0) && (this.pmq > 0) && (this.pmq > this.mHD))
+    if ((!bt.isNullOrNil(paramView)) && (this.nib > 0) && (this.pPQ > 0) && (this.pPQ > this.nib))
     {
-      ClipboardManager localClipboardManager = (ClipboardManager)ai.getContext().getSystemService("clipboard");
-      if (localClipboardManager != null)
+      localObject = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+      if (localObject != null)
       {
-        localClipboardManager.setText(paramView.substring(this.mHD, this.pmq).trim());
-        ac.i("MicroMsg.MMCopiableTextView", "copy text :%s", new Object[] { localClipboardManager.getText() });
+        ((ClipboardManager)localObject).setText(paramView.substring(this.nib, this.pPQ).trim());
+        ad.i("MicroMsg.MMCopiableTextView", "copy text :%s", new Object[] { ((ClipboardManager)localObject).getText() });
       }
       Toast.makeText(getContext(), 2131755702, 0).show();
     }
+    a.a(false, this, "com/tencent/mm/plugin/emoji/ui/widget/MMCopiableTextView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(109432);
     return false;
   }
   
   public void setEndIndex(int paramInt)
   {
-    this.pmq = paramInt;
+    this.pPQ = paramInt;
   }
   
   public void setStartIndex(int paramInt)
   {
-    this.mHD = paramInt;
+    this.nib = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.widget.MMCopiableTextView
  * JD-Core Version:    0.7.0.1
  */

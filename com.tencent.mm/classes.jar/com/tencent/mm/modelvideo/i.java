@@ -1,28 +1,26 @@
 package com.tencent.mm.modelvideo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.xh;
-import com.tencent.mm.g.a.xh.b;
-import com.tencent.mm.g.b.a.dc;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.model.bi.b;
+import com.tencent.mm.g.a.yb;
+import com.tencent.mm.g.a.yb.b;
+import com.tencent.mm.g.b.a.dv;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bj.b;
 import com.tencent.mm.model.q;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.video.c;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -30,30 +28,30 @@ import java.util.Map;
 public final class i
   implements f.a
 {
-  long hZA;
-  private int hZB;
-  private int hZC;
-  public boolean hZD;
-  boolean hZE;
-  private boolean hZF;
-  private boolean hZG;
-  f hZH;
-  long hZI;
-  LinkedList<bo> hZz;
+  LinkedList<bu> isU;
+  long isV;
+  private int isW;
+  private int isX;
+  public boolean isY;
+  boolean isZ;
+  private boolean ita;
+  private boolean itb;
+  f itc;
+  long itd;
   
   public i()
   {
     AppMethodBeat.i(126879);
-    this.hZz = new LinkedList();
-    this.hZA = 0L;
-    this.hZB = 0;
-    this.hZC = 0;
-    this.hZD = false;
-    this.hZE = false;
-    this.hZF = false;
-    this.hZG = false;
-    this.hZH = null;
-    this.hZI = 0L;
+    this.isU = new LinkedList();
+    this.isV = 0L;
+    this.isW = 0;
+    this.isX = 0;
+    this.isY = false;
+    this.isZ = false;
+    this.ita = false;
+    this.itb = false;
+    this.itc = null;
+    this.itd = 0L;
     AppMethodBeat.o(126879);
   }
   
@@ -62,38 +60,38 @@ public final class i
     AppMethodBeat.i(126883);
     if (paramf == null)
     {
-      ac.e("MicroMsg.PreloadVideoService", "%d on preload finish but scene is null?", new Object[] { Integer.valueOf(hashCode()) });
+      ad.e("MicroMsg.PreloadVideoService", "%d on preload finish but scene is null?", new Object[] { Integer.valueOf(hashCode()) });
       AppMethodBeat.o(126883);
       return;
     }
-    if (this.hZH != paramf) {
-      ac.w("MicroMsg.PreloadVideoService", "%d on preload finish, but scene callback not same object.", new Object[] { Integer.valueOf(hashCode()) });
+    if (this.itc != paramf) {
+      ad.w("MicroMsg.PreloadVideoService", "%d on preload finish, but scene callback not same object.", new Object[] { Integer.valueOf(hashCode()) });
     }
-    ac.i("MicroMsg.PreloadVideoService", "%d preload video[%s] finish success[%b] range[%d, %d]", new Object[] { Integer.valueOf(hashCode()), paramf.aJq(), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    g.agU().az(new Runnable()
+    ad.i("MicroMsg.PreloadVideoService", "%d preload video[%s] finish success[%b] range[%d, %d]", new Object[] { Integer.valueOf(hashCode()), paramf.aMA(), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(126878);
         long l = paramf.msgId;
-        synchronized (i.this.hZz)
+        synchronized (i.this.isU)
         {
-          Iterator localIterator = i.this.hZz.iterator();
+          Iterator localIterator = i.this.isU.iterator();
           while (localIterator.hasNext())
           {
-            bo localbo = (bo)localIterator.next();
-            if ((localbo != null) && (localbo.field_msgId == l))
+            bu localbu = (bu)localIterator.next();
+            if ((localbu != null) && (localbu.field_msgId == l))
             {
-              ac.i("MicroMsg.PreloadVideoService", "%d find msg[%d], remove now", new Object[] { Integer.valueOf(i.this.hashCode()), Long.valueOf(l) });
+              ad.i("MicroMsg.PreloadVideoService", "%d find msg[%d], remove now", new Object[] { Integer.valueOf(i.this.hashCode()), Long.valueOf(l) });
               localIterator.remove();
             }
           }
         }
-        i.this.eV(true);
-        if (i.this.hZH != null) {
-          i.this.hZH.hZj = null;
+        i.this.eX(true);
+        if (i.this.itc != null) {
+          i.this.itc.isF = null;
         }
-        i.this.hZH = null;
+        i.this.itc = null;
         i.a(i.this);
         i.this.startDownload();
         AppMethodBeat.o(126878);
@@ -106,8 +104,8 @@ public final class i
   {
     AppMethodBeat.i(126886);
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(bs.aNx()).append(",");
-    localStringBuffer.append(bs.aNx()).append(",");
+    localStringBuffer.append(bt.aQJ()).append(",");
+    localStringBuffer.append(bt.aQJ()).append(",");
     localStringBuffer.append(0).append(",");
     localStringBuffer.append(paramString1).append(",");
     localStringBuffer.append(paramInt1).append(",");
@@ -119,62 +117,62 @@ public final class i
     localStringBuffer.append(paramInt2).append(",");
     localStringBuffer.append(paramString4).append(",");
     localStringBuffer.append(paramString5).append(",");
-    localStringBuffer.append(c.ayd(paramString6));
+    localStringBuffer.append(c.aDi(paramString6));
     paramString1 = localStringBuffer.toString();
-    ac.d("MicroMsg.PreloadVideoService", "%d rpt content[%s]", new Object[] { Integer.valueOf(hashCode()), paramString1 });
-    new dc(paramString1).aHZ();
+    ad.d("MicroMsg.PreloadVideoService", "%d rpt content[%s]", new Object[] { Integer.valueOf(hashCode()), paramString1 });
+    new dv(paramString1).aLk();
     AppMethodBeat.o(126886);
   }
   
-  public final void eU(boolean paramBoolean)
+  public final void eW(boolean paramBoolean)
   {
     AppMethodBeat.i(126882);
-    this.hZE = paramBoolean;
-    if (this.hZE) {
+    this.isZ = paramBoolean;
+    if (this.isZ) {
       stopDownload();
     }
     AppMethodBeat.o(126882);
   }
   
-  public final void eV(boolean paramBoolean)
+  public final void eX(boolean paramBoolean)
   {
     AppMethodBeat.i(126884);
     if (paramBoolean)
     {
-      this.hZB = ((Integer)g.agR().agA().get(ah.a.GNo, Integer.valueOf(0))).intValue();
-      this.hZB += 1;
-      g.agR().agA().set(ah.a.GNo, Integer.valueOf(this.hZB));
+      this.isW = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IzF, Integer.valueOf(0))).intValue();
+      this.isW += 1;
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IzF, Integer.valueOf(this.isW));
       AppMethodBeat.o(126884);
       return;
     }
-    this.hZC = ((Integer)g.agR().agA().get(ah.a.GNp, Integer.valueOf(0))).intValue();
-    this.hZC += 1;
-    g.agR().agA().set(ah.a.GNp, Integer.valueOf(this.hZC));
+    this.isX = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IzG, Integer.valueOf(0))).intValue();
+    this.isX += 1;
+    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IzG, Integer.valueOf(this.isX));
     AppMethodBeat.o(126884);
   }
   
-  public final boolean eW(boolean paramBoolean)
+  public final boolean eY(boolean paramBoolean)
   {
     int k = 1000;
     AppMethodBeat.i(126885);
-    this.hZA = ((Long)g.agR().agA().get(ah.a.GNn, Long.valueOf(-1L))).longValue();
-    if (bs.Ap(this.hZA) >= 86400000L)
+    this.isV = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IzE, Long.valueOf(-1L))).longValue();
+    if (bt.Df(this.isV) >= 86400000L)
     {
-      this.hZA = bs.eWj();
-      g.agR().agA().set(ah.a.GNn, Long.valueOf(this.hZA));
-      g.agR().agA().set(ah.a.GNo, Integer.valueOf(0));
-      g.agR().agA().set(ah.a.GNp, Integer.valueOf(0));
-      this.hZG = false;
-      this.hZF = false;
+      this.isV = bt.flT();
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IzE, Long.valueOf(this.isV));
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IzF, Integer.valueOf(0));
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IzG, Integer.valueOf(0));
+      this.itb = false;
+      this.ita = false;
     }
-    this.hZB = ((Integer)g.agR().agA().get(ah.a.GNo, Integer.valueOf(0))).intValue();
-    this.hZC = ((Integer)g.agR().agA().get(ah.a.GNp, Integer.valueOf(0))).intValue();
+    this.isW = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IzF, Integer.valueOf(0))).intValue();
+    this.isX = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IzG, Integer.valueOf(0))).intValue();
     int j;
     int i;
     if (paramBoolean)
     {
-      j = this.hZB;
-      i = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).ZY().getInt("C2CMaxPreloadVideo", 100);
+      j = this.isW;
+      i = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getInt("C2CMaxPreloadVideo", 100);
       if (i > 0) {
         break label392;
       }
@@ -188,16 +186,16 @@ public final class i
       {
         bool = true;
         label219:
-        ac.i("MicroMsg.PreloadVideoService", "%d check more preload count result[%b] config[%d] hadPreloadCount[%d %d %d] ", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.hZB), Integer.valueOf(this.hZC) });
+        ad.i("MicroMsg.PreloadVideoService", "%d check more preload count result[%b] config[%d] hadPreloadCount[%d %d %d] ", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.isW), Integer.valueOf(this.isX) });
         if (bool)
         {
           if (!paramBoolean) {
             break label363;
           }
-          if (!this.hZF)
+          if (!this.ita)
           {
-            this.hZF = true;
-            h.wUl.idkeyStat(354L, 127L, 1L, false);
+            this.ita = true;
+            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(354L, 127L, 1L, false);
           }
         }
       }
@@ -205,16 +203,16 @@ public final class i
       {
         AppMethodBeat.o(126885);
         return bool;
-        j = this.hZC;
-        i = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pUt, 1000);
+        j = this.isX;
+        i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qyZ, 1000);
         break;
         bool = false;
         break label219;
         label363:
-        if (!this.hZG)
+        if (!this.itb)
         {
-          this.hZG = true;
-          h.wUl.idkeyStat(354L, 128L, 1L, false);
+          this.itb = true;
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(354L, 128L, 1L, false);
         }
       }
     }
@@ -223,46 +221,46 @@ public final class i
   public final void startDownload()
   {
     AppMethodBeat.i(126881);
-    g.agU().az(new Runnable()
+    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(126877);
-        boolean bool = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pSo, false);
+        boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qwM, false);
         Object localObject1;
-        if (!com.tencent.mm.r.a.aaZ())
+        if (!com.tencent.mm.s.a.adC())
         {
-          localObject1 = new xh();
-          ((xh)localObject1).dAb.dgL = 2;
-          com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
-          if (!((xh)localObject1).dAc.dAd) {}
+          localObject1 = new yb();
+          ((yb)localObject1).dMo.dsi = 2;
+          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
+          if (!((yb)localObject1).dMp.dMq) {}
         }
         else if (bool)
         {
           AppMethodBeat.o(126877);
           return;
         }
-        if (o.aJD().cWZ)
+        if (o.aMO().dip)
         {
           AppMethodBeat.o(126877);
           return;
         }
-        if (i.this.hZH != null)
+        if (i.this.itc != null)
         {
           AppMethodBeat.o(126877);
           return;
         }
-        if ((i.this.hZD) || (i.this.hZE))
+        if ((i.this.isY) || (i.this.isZ))
         {
           AppMethodBeat.o(126877);
           return;
         }
         int i;
-        if (i.this.hZz.isEmpty())
+        if (i.this.isU.isEmpty())
         {
           localObject1 = i.this;
-          if (bs.pN(((i)localObject1).hZI) > 600L) {
-            ((i)localObject1).hZI = bs.aNx();
+          if (bt.rM(((i)localObject1).itd) > 600L) {
+            ((i)localObject1).itd = bt.aQJ();
           }
           for (i = 1;; i = 0)
           {
@@ -278,14 +276,14 @@ public final class i
         {
           Object localObject6;
           int j;
-          synchronized (i.this.hZz)
+          synchronized (i.this.isU)
           {
-            Iterator localIterator = i.this.hZz.iterator();
+            Iterator localIterator = i.this.isU.iterator();
             localObject1 = null;
             if (!localIterator.hasNext()) {
               break label816;
             }
-            localObject1 = (bo)localIterator.next();
+            localObject1 = (bu)localIterator.next();
             localObject6 = i.this;
             if (localObject1 == null)
             {
@@ -297,45 +295,45 @@ public final class i
               localIterator.remove();
               break label1080;
             }
-            s locals = u.Ej(((dy)localObject1).field_imgPath);
-            if ((locals != null) && (locals.aJN()))
+            s locals = u.Hy(((ei)localObject1).field_imgPath);
+            if ((locals != null) && (locals.aMY()))
             {
-              ac.i("MicroMsg.PreloadVideoService", "%d it finish download all file[%s], needn't preload", new Object[] { Integer.valueOf(localObject6.hashCode()), locals.getFileName() });
-              Object localObject7 = bv.L(locals.aJK(), "msg");
+              ad.i("MicroMsg.PreloadVideoService", "%d it finish download all file[%s], needn't preload", new Object[] { Integer.valueOf(localObject6.hashCode()), locals.getFileName() });
+              Object localObject7 = bw.M(locals.aMV(), "msg");
               String str = (String)((Map)localObject7).get(".msg.videomsg.$newmd5");
               localObject7 = (String)((Map)localObject7).get(".msg.videomsg.$cdnvideourl");
-              bool = w.sQ(locals.getUser());
+              bool = w.vF(locals.getUser());
               if (!bool) {
                 break label1087;
               }
               i = 2;
-              long l = locals.hux;
-              if (!w.sQ(locals.getUser())) {
+              long l = locals.hMP;
+              if (!w.vF(locals.getUser())) {
                 break label1092;
               }
-              j = q.wb(locals.getUser());
-              ((i)localObject6).a(str, i, l, locals.aJH(), locals.getUser(), j, (String)localObject7, "", "");
-              h.wUl.idkeyStat(354L, 146L, 1L, false);
+              j = q.yS(locals.getUser());
+              ((i)localObject6).a(str, i, l, locals.aMS(), locals.getUser(), j, (String)localObject7, "", "");
+              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(354L, 146L, 1L, false);
               if (bool)
               {
-                h.wUl.idkeyStat(354L, 126L, 1L, false);
+                com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(354L, 126L, 1L, false);
                 ((PBool)localObject5).value = true;
                 i = 0;
                 continue;
               }
-              h.wUl.idkeyStat(354L, 125L, 1L, false);
+              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(354L, 125L, 1L, false);
             }
           }
-          if (bs.Ap(localObject2.field_createTime) >= 86400000L)
+          if (bt.Df(localObject2.field_createTime) >= 86400000L)
           {
-            ac.i("MicroMsg.PreloadVideoService", "%d more than 1 day don't preload", new Object[] { Integer.valueOf(localObject6.hashCode()) });
+            ad.i("MicroMsg.PreloadVideoService", "%d more than 1 day don't preload", new Object[] { Integer.valueOf(localObject6.hashCode()) });
             ((PBool)localObject5).value = true;
             i = 0;
           }
           else
           {
-            if (((i)localObject6).eW(true)) {
-              ac.i("MicroMsg.PreloadVideoService", "%d check c2c video preload timestamp[%d]", new Object[] { Integer.valueOf(localObject6.hashCode()), Long.valueOf(((i)localObject6).hZA) });
+            if (((i)localObject6).eY(true)) {
+              ad.i("MicroMsg.PreloadVideoService", "%d check c2c video preload timestamp[%d]", new Object[] { Integer.valueOf(localObject6.hashCode()), Long.valueOf(((i)localObject6).isV) });
             }
             label803:
             for (;;)
@@ -343,24 +341,24 @@ public final class i
               ((PBool)localObject5).value = false;
               i = 0;
               break;
-              ac.i("MicroMsg.PreloadVideoService", "%d check c2c video preload %d %s", new Object[] { Integer.valueOf(localObject6.hashCode()), Long.valueOf(localObject2.field_msgId), localObject2.eul });
-              localObject6 = bi.yr(localObject2.eul);
+              ad.i("MicroMsg.PreloadVideoService", "%d check c2c video preload %d %s", new Object[] { Integer.valueOf(localObject6.hashCode()), Long.valueOf(localObject2.field_msgId), localObject2.eLs });
+              localObject6 = bj.Bq(localObject2.eLs);
               if (localObject6 == null)
               {
                 ((PBool)localObject5).value = true;
                 i = 0;
                 break;
               }
-              if (((bi.b)localObject6).hoM <= 0)
+              if (((bj.b)localObject6).hHe <= 0)
               {
                 ((PBool)localObject5).value = true;
                 i = 0;
                 break;
               }
-              if (!com.tencent.mm.modelcontrol.b.BU(((bi.b)localObject6).hoO))
+              if (!com.tencent.mm.modelcontrol.b.ET(((bj.b)localObject6).hHg))
               {
-                if (ax.isWifi(ai.getContext())) {
-                  i = ((bi.b)localObject6).hoN & 0x1;
+                if (ay.isWifi(aj.getContext())) {
+                  i = ((bj.b)localObject6).hHf & 0x1;
                 }
                 for (;;)
                 {
@@ -370,16 +368,16 @@ public final class i
                   ((PBool)localObject5).value = false;
                   i = 1;
                   break;
-                  if (ax.is4G(ai.getContext()))
+                  if (ay.is4G(aj.getContext()))
                   {
-                    i = ((bi.b)localObject6).hoN & 0x2;
+                    i = ((bj.b)localObject6).hHf & 0x2;
                   }
                   else
                   {
-                    if (!ax.is3G(ai.getContext())) {
+                    if (!ay.is3G(aj.getContext())) {
                       break label805;
                     }
-                    i = ((bi.b)localObject6).hoN & 0x4;
+                    i = ((bj.b)localObject6).hHf & 0x4;
                   }
                 }
               }
@@ -397,25 +395,25 @@ public final class i
                 AppMethodBeat.o(126877);
                 return;
               }
-              i.this.hZH = new f(localObject2.field_msgId);
-              ac.i("MicroMsg.PreloadVideoService", "%s start to preload video[%s]", new Object[] { Integer.valueOf(i.this.hashCode()), i.this.hZH.aJq() });
-              if (i.this.hZH.a(i.this) < 0)
+              i.this.itc = new f(localObject2.field_msgId);
+              ad.i("MicroMsg.PreloadVideoService", "%s start to preload video[%s]", new Object[] { Integer.valueOf(i.this.hashCode()), i.this.itc.aMA() });
+              if (i.this.itc.a(i.this) < 0)
               {
-                ac.w("MicroMsg.PreloadVideoService", "%s curr preload task do scene error.", new Object[] { Integer.valueOf(i.this.hashCode()) });
-                synchronized (i.this.hZz)
+                ad.w("MicroMsg.PreloadVideoService", "%s curr preload task do scene error.", new Object[] { Integer.valueOf(i.this.hashCode()) });
+                synchronized (i.this.isU)
                 {
-                  ??? = i.this.hZz.iterator();
+                  ??? = i.this.isU.iterator();
                   while (((Iterator)???).hasNext())
                   {
-                    localObject5 = (bo)((Iterator)???).next();
-                    if ((localObject5 != null) && (((dy)localObject5).field_msgId == i.this.hZH.msgId))
+                    localObject5 = (bu)((Iterator)???).next();
+                    if ((localObject5 != null) && (((ei)localObject5).field_msgId == i.this.itc.msgId))
                     {
-                      ac.i("MicroMsg.PreloadVideoService", "%d find msg[%d], remove now", new Object[] { Integer.valueOf(i.this.hashCode()), Long.valueOf(i.this.hZH.msgId) });
+                      ad.i("MicroMsg.PreloadVideoService", "%d find msg[%d], remove now", new Object[] { Integer.valueOf(i.this.hashCode()), Long.valueOf(i.this.itc.msgId) });
                       ((Iterator)???).remove();
                     }
                   }
                 }
-                i.this.hZH = null;
+                i.this.itc = null;
               }
               AppMethodBeat.o(126877);
               return;
@@ -436,16 +434,16 @@ public final class i
   public final void stopDownload()
   {
     AppMethodBeat.i(126880);
-    ac.i("MicroMsg.PreloadVideoService", "%d stop download", new Object[] { Integer.valueOf(hashCode()) });
-    g.agU().az(new Runnable()
+    ad.i("MicroMsg.PreloadVideoService", "%d stop download", new Object[] { Integer.valueOf(hashCode()) });
+    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(126876);
-        if (i.this.hZH != null) {
-          i.this.hZH.stop();
+        if (i.this.itc != null) {
+          i.this.itc.stop();
         }
-        i.this.hZH = null;
+        i.this.itc = null;
         AppMethodBeat.o(126876);
       }
     });

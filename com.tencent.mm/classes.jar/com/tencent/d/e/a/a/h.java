@@ -19,26 +19,18 @@ import java.util.Set;
 
 public final class h
 {
-  private static final j<h> JTl;
+  private static final j<h> LNb;
   public Context mContext;
   public boolean mInit = false;
   
   static
   {
     AppMethodBeat.i(138409);
-    JTl = new j() {};
+    LNb = new j() {};
     AppMethodBeat.o(138409);
   }
   
-  public static h fCI()
-  {
-    AppMethodBeat.i(138404);
-    h localh = (h)JTl.get();
-    AppMethodBeat.o(138404);
-    return localh;
-  }
-  
-  public static a g(Map<String, a> paramMap, int paramInt)
+  public static a f(Map<String, a> paramMap, int paramInt)
   {
     AppMethodBeat.i(138407);
     if (paramMap == null)
@@ -59,15 +51,15 @@ public final class h
         if (localObject == null) {
           localObject = locala;
         } else {
-          localObject.JTY.addAll(locala.JTY);
+          localObject.LNO.addAll(locala.LNO);
         }
       }
     }
     if (localObject != null)
     {
       paramMap = new a((byte)0);
-      paramMap.JTO = localObject;
-      paramMap.JTP = localArrayList;
+      paramMap.LNE = localObject;
+      paramMap.LNF = localArrayList;
       AppMethodBeat.o(138407);
       return paramMap;
     }
@@ -75,7 +67,15 @@ public final class h
     return null;
   }
   
-  public static String ky(int paramInt1, int paramInt2)
+  public static h fTY()
+  {
+    AppMethodBeat.i(138404);
+    h localh = (h)LNb.get();
+    AppMethodBeat.o(138404);
+    return localh;
+  }
+  
+  public static String kN(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(138408);
     String str = paramInt1 + "00" + paramInt2;
@@ -83,7 +83,7 @@ public final class h
     return str;
   }
   
-  public final Map<String, a> fCJ()
+  public final Map<String, a> fTZ()
   {
     AppMethodBeat.i(138406);
     HashMap localHashMap = new HashMap();
@@ -106,7 +106,7 @@ public final class h
       File localFile = arrayOfFile[i];
       try
       {
-        localObject = c.o(f.X(new File(localFile.getAbsolutePath())), c.fCL());
+        localObject = c.o(f.aa(new File(localFile.getAbsolutePath())), c.fUd());
         if (localObject == null)
         {
           localObject = null;
@@ -127,7 +127,7 @@ public final class h
       {
         i += 1;
         break;
-        byte[] arrayOfByte = b.cH(localThrowable);
+        byte[] arrayOfByte = b.cO(localThrowable);
         if (arrayOfByte == null)
         {
           locala = null;
@@ -150,10 +150,10 @@ public final class h
     this.mInit = true;
   }
   
-  public final String kx(int paramInt1, int paramInt2)
+  public final String kM(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(138405);
-    String str = ky(paramInt1, paramInt2);
+    String str = kN(paramInt1, paramInt2);
     File localFile = this.mContext.getDir("turingmm", 0);
     if (localFile == null)
     {
@@ -205,8 +205,8 @@ public final class h
   
   public static final class a
   {
-    public a JTO;
-    public List<String> JTP;
+    public a LNE;
+    public List<String> LNF;
   }
 }
 

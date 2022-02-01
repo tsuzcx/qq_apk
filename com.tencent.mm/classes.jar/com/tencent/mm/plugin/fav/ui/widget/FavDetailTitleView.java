@@ -10,8 +10,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class FavDetailTitleView
   extends LinearLayout
 {
-  private ImageView fuY;
-  private TextView iCg;
+  private ImageView fOf;
+  private TextView iVq;
   
   public FavDetailTitleView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,8 +22,8 @@ public class FavDetailTitleView
   {
     AppMethodBeat.i(107512);
     super.onFinishInflate();
-    this.fuY = ((ImageView)findViewById(2131297008));
-    this.iCg = ((TextView)findViewById(2131305948));
+    this.fOf = ((ImageView)findViewById(2131297008));
+    this.iVq = ((TextView)findViewById(2131305948));
     AppMethodBeat.o(107512);
   }
 }

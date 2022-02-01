@@ -12,10 +12,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.p;
 import java.util.HashMap;
@@ -24,15 +24,15 @@ public class SelectDateUI
   extends MMActivity
   implements com.tencent.mm.chatroom.a.a
 {
-  private long fuM = -1L;
-  private p fxw = null;
-  private DayPickerView fzJ;
-  private String fzK;
-  private HashMap<String, com.tencent.mm.chatroom.d.a> fzL;
-  private TextView fzM;
-  private ao mHandler;
+  private long fNI = -1L;
+  private p fQJ = null;
+  private DayPickerView fSZ;
+  private String fTa;
+  private HashMap<String, com.tencent.mm.chatroom.d.a> fTb;
+  private TextView fTc;
+  private ap mHandler;
   
-  public final long VL()
+  public final long Yc()
   {
     AppMethodBeat.i(12924);
     long l = System.currentTimeMillis();
@@ -45,14 +45,14 @@ public class SelectDateUI
     AppMethodBeat.i(12925);
     if (parama == null)
     {
-      ac.e("MicroMsg.SelectDateUI", "null == calendarDay");
+      ad.e("MicroMsg.SelectDateUI", "null == calendarDay");
       AppMethodBeat.o(12925);
       return;
     }
-    ac.i("MicroMsg.SelectDateUI", "Day Selected timestamp:%s day:%s month:%s year:%s", new Object[] { Long.valueOf(parama.fsh), Integer.valueOf(parama.fsg), Integer.valueOf(parama.month), Integer.valueOf(parama.year) });
+    ad.i("MicroMsg.SelectDateUI", "Day Selected timestamp:%s day:%s month:%s year:%s", new Object[] { Long.valueOf(parama.fKH), Integer.valueOf(parama.fKG), Integer.valueOf(parama.month), Integer.valueOf(parama.year) });
     long l = parama.msgId;
-    ac.i("MicroMsg.SelectDateUI", "[goToChattingUI] msgLocalId:%s", new Object[] { Long.valueOf(l) });
-    d.e(this, ".ui.chatting.ChattingUI", new Intent().putExtra("Chat_User", this.fzK).putExtra("finish_direct", true).putExtra("from_date_search", true).putExtra("msg_local_id", l));
+    ad.i("MicroMsg.SelectDateUI", "[goToChattingUI] msgLocalId:%s", new Object[] { Long.valueOf(l) });
+    d.f(this, ".ui.chatting.ChattingUI", new Intent().putExtra("Chat_User", this.fTa).putExtra("finish_direct", true).putExtra("from_date_search", true).putExtra("msg_local_id", l));
     AppMethodBeat.o(12925);
   }
   
@@ -73,11 +73,11 @@ public class SelectDateUI
       getWindow().setEnterTransition(paramBundle);
     }
     setMMTitle(2131762696);
-    this.fzJ = ((DayPickerView)findViewById(2131303265));
-    this.fzM = ((TextView)findViewById(2131304436));
-    this.fzL = new HashMap();
-    this.mHandler = new ao(getMainLooper());
-    this.fzK = getIntent().getStringExtra("detail_username");
+    this.fSZ = ((DayPickerView)findViewById(2131303265));
+    this.fTc = ((TextView)findViewById(2131304436));
+    this.fTb = new HashMap();
+    this.mHandler = new ap(getMainLooper());
+    this.fTa = getIntent().getStringExtra("detail_username");
     b.c(new Runnable()
     {
       public final void run()
@@ -133,7 +133,7 @@ public class SelectDateUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SelectDateUI
  * JD-Core Version:    0.7.0.1
  */

@@ -16,15 +16,15 @@ import com.tencent.mm.plugin.fav.ui.h;
 import com.tencent.mm.plugin.fav.ui.o;
 import com.tencent.mm.plugin.fav.ui.o.2;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.agy;
-import com.tencent.mm.protocal.protobuf.ahe;
-import com.tencent.mm.protocal.protobuf.ahm;
-import com.tencent.mm.protocal.protobuf.ahn;
-import com.tencent.mm.protocal.protobuf.ahp;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajo;
+import com.tencent.mm.protocal.protobuf.aju;
+import com.tencent.mm.protocal.protobuf.akc;
+import com.tencent.mm.protocal.protobuf.akd;
+import com.tencent.mm.protocal.protobuf.akf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -33,15 +33,15 @@ import java.util.List;
 public final class l
   extends b
 {
-  private HashMap<String, SpannableString> qTM;
-  private final int qTc;
+  private HashMap<String, SpannableString> rDP;
+  private final int rDf;
   
   public l(o paramo)
   {
     super(paramo);
     AppMethodBeat.i(107477);
-    this.qTM = new HashMap();
-    this.qTc = a.au(paramo.context, 2131165359);
+    this.rDP = new HashMap();
+    this.rDf = a.ax(paramo.context, 2131165359);
     AppMethodBeat.o(107477);
   }
   
@@ -53,15 +53,15 @@ public final class l
     return paramContext;
   }
   
-  private static void a(TextView paramTextView1, TextView paramTextView2, agx paramagx)
+  private static void a(TextView paramTextView1, TextView paramTextView2, ajn paramajn)
   {
     AppMethodBeat.i(107479);
-    if (!paramagx.EAc)
+    if (!paramajn.GhO)
     {
-      ac.d("MicroMsg.FavRecordListItem", "has no datasrcname");
+      ad.d("MicroMsg.FavRecordListItem", "has no datasrcname");
       paramTextView1.setVisibility(8);
-      ac.d("MicroMsg.FavRecordListItem", "field type %d", new Object[] { Integer.valueOf(paramagx.dataType) });
-      switch (paramagx.dataType)
+      ad.d("MicroMsg.FavRecordListItem", "field type %d", new Object[] { Integer.valueOf(paramajn.dataType) });
+      switch (paramajn.dataType)
       {
       }
     }
@@ -70,39 +70,39 @@ public final class l
       AppMethodBeat.o(107479);
       return;
       paramTextView1.setVisibility(0);
-      paramTextView1.setText(k.b(paramTextView1.getContext(), paramagx.EAb, paramTextView1.getTextSize()));
+      paramTextView1.setText(k.b(paramTextView1.getContext(), paramajn.GhN, paramTextView1.getTextSize()));
       break;
-      paramTextView2.setText(k.b(paramTextView2.getContext(), paramagx.desc, paramTextView2.getTextSize()));
+      paramTextView2.setText(k.b(paramTextView2.getContext(), paramajn.desc, paramTextView2.getTextSize()));
       AppMethodBeat.o(107479);
       return;
       paramTextView2.setText(S(paramTextView2.getContext(), 2131759016));
       AppMethodBeat.o(107479);
       return;
-      paramTextView2.setText(S(paramTextView2.getContext(), 2131759014) + paramagx.title);
+      paramTextView2.setText(S(paramTextView2.getContext(), 2131759014) + paramajn.title);
       AppMethodBeat.o(107479);
       return;
-      if (com.tencent.mm.plugin.fav.a.b.cph())
+      if (com.tencent.mm.plugin.fav.a.b.cuM())
       {
         paramTextView2.setText("");
         AppMethodBeat.o(107479);
         return;
       }
-      paramTextView2.setText(S(paramTextView2.getContext(), 2131759014) + bs.nullAsNil(paramagx.title));
+      paramTextView2.setText(S(paramTextView2.getContext(), 2131759014) + bt.nullAsNil(paramajn.title));
       AppMethodBeat.o(107479);
       return;
-      paramTextView2.setText(S(paramTextView2.getContext(), 2131759011) + paramagx.title);
+      paramTextView2.setText(S(paramTextView2.getContext(), 2131759011) + paramajn.title);
       AppMethodBeat.o(107479);
       return;
-      paramTextView1 = paramagx.EzZ.EAI;
-      paramagx = new StringBuilder().append(S(paramTextView2.getContext(), 2131759010));
-      if (bs.isNullOrNil(paramTextView1.dry)) {}
-      for (paramTextView1 = paramTextView1.label;; paramTextView1 = paramTextView1.dry)
+      paramTextView1 = paramajn.GhL.Giu;
+      paramajn = new StringBuilder().append(S(paramTextView2.getContext(), 2131759010));
+      if (bt.isNullOrNil(paramTextView1.dDq)) {}
+      for (paramTextView1 = paramTextView1.label;; paramTextView1 = paramTextView1.dDq)
       {
         paramTextView2.setText(paramTextView1);
         AppMethodBeat.o(107479);
         return;
       }
-      paramTextView2.setText(S(paramTextView2.getContext(), 2131759006) + paramagx.title);
+      paramTextView2.setText(S(paramTextView2.getContext(), 2131759006) + paramajn.title);
       AppMethodBeat.o(107479);
       return;
       paramTextView2.setText(S(paramTextView2.getContext(), 2131759002));
@@ -114,7 +114,7 @@ public final class l
       paramTextView2.setText(S(paramTextView2.getContext(), 2131759008));
       AppMethodBeat.o(107479);
       return;
-      paramTextView2.setText(S(paramTextView2.getContext(), 2131758926) + paramagx.EzZ.EAM.title);
+      paramTextView2.setText(S(paramTextView2.getContext(), 2131758926) + paramajn.GhL.Giy.title);
       AppMethodBeat.o(107479);
       return;
       paramTextView2.setText(S(paramTextView2.getContext(), 2131758907));
@@ -123,7 +123,7 @@ public final class l
       paramTextView2.setText(S(paramTextView2.getContext(), 2131759013));
       AppMethodBeat.o(107479);
       return;
-      paramTextView2.setText(S(paramTextView2.getContext(), 2131759004) + paramagx.title);
+      paramTextView2.setText(S(paramTextView2.getContext(), 2131759004) + paramajn.title);
     }
   }
   
@@ -143,26 +143,26 @@ public final class l
     {
       paramViewGroup = new a();
       localObject = a(View.inflate((Context)localObject, 2131493962, null), paramViewGroup, paramg);
-      paramViewGroup.lzC = ((ImageView)((View)localObject).findViewById(2131299794));
-      paramViewGroup.qTO = ((TextView)((View)localObject).findViewById(2131299849));
-      paramViewGroup.qTP = ((TextView)((View)localObject).findViewById(2131299779));
-      paramViewGroup.qTQ = ((TextView)((View)localObject).findViewById(2131299850));
-      paramViewGroup.qTR = ((TextView)((View)localObject).findViewById(2131299780));
-      paramViewGroup.qTB = ((ImageView)((View)localObject).findViewById(2131299800));
-      paramViewGroup.qTN = ((ImageView)((View)localObject).findViewById(2131299799));
-      paramViewGroup.qTS = ((FrameLayout)((View)localObject).findViewById(2131299795));
+      paramViewGroup.lZa = ((ImageView)((View)localObject).findViewById(2131299794));
+      paramViewGroup.rDR = ((TextView)((View)localObject).findViewById(2131299849));
+      paramViewGroup.rDS = ((TextView)((View)localObject).findViewById(2131299779));
+      paramViewGroup.rDT = ((TextView)((View)localObject).findViewById(2131299850));
+      paramViewGroup.rDU = ((TextView)((View)localObject).findViewById(2131299780));
+      paramViewGroup.rDE = ((ImageView)((View)localObject).findViewById(2131299800));
+      paramViewGroup.rDQ = ((ImageView)((View)localObject).findViewById(2131299799));
+      paramViewGroup.rDV = ((FrameLayout)((View)localObject).findViewById(2131299795));
       a(paramViewGroup, paramg);
       m = 0;
       i = 0;
       bool = false;
-      localLinkedList = paramg.field_favProto.nxC;
+      localLinkedList = paramg.field_favProto.nZa;
       paramView = localLinkedList.iterator();
       k = 0;
       j = 0;
       if (!paramView.hasNext()) {
         break label405;
       }
-      switch (((agx)paramView.next()).dataType)
+      switch (((ajn)paramView.next()).dataType)
       {
       case 9: 
       case 12: 
@@ -205,26 +205,26 @@ public final class l
       k = i;
     }
     label405:
-    ac.d("MicroMsg.FavRecordListItem", "hasThumb %s, firstRemarkIndex %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(j) });
+    ad.d("MicroMsg.FavRecordListItem", "hasThumb %s, firstRemarkIndex %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(j) });
     if (localLinkedList.size() <= 0)
     {
-      ac.w("MicroMsg.FavRecordListItem", "dataList size is null");
+      ad.w("MicroMsg.FavRecordListItem", "dataList size is null");
       AppMethodBeat.o(107478);
       return localObject;
     }
-    paramView = (agx)localLinkedList.get(j);
-    a(paramViewGroup.qTO, paramViewGroup.qTP, paramView);
+    paramView = (ajn)localLinkedList.get(j);
+    a(paramViewGroup.rDR, paramViewGroup.rDS, paramView);
     ImageView localImageView;
-    agx localagx;
+    ajn localajn;
     label619:
     o localo;
     if (bool)
     {
-      paramViewGroup.qTS.setVisibility(0);
-      paramViewGroup.lzC.setVisibility(0);
-      localImageView = paramViewGroup.lzC;
-      localagx = (agx)localLinkedList.get(m);
-      switch (localagx.dataType)
+      paramViewGroup.rDV.setVisibility(0);
+      paramViewGroup.lZa.setVisibility(0);
+      localImageView = paramViewGroup.lZa;
+      localajn = (ajn)localLinkedList.get(m);
+      switch (localajn.dataType)
       {
       default: 
       case 2: 
@@ -232,35 +232,35 @@ public final class l
         {
           if (j + 1 < localLinkedList.size())
           {
-            paramViewGroup.qTQ.setVisibility(0);
-            paramViewGroup.qTR.setVisibility(0);
-            a(paramViewGroup.qTQ, paramViewGroup.qTR, (agx)localLinkedList.get(j + 1));
+            paramViewGroup.rDT.setVisibility(0);
+            paramViewGroup.rDU.setVisibility(0);
+            a(paramViewGroup.rDT, paramViewGroup.rDU, (ajn)localLinkedList.get(j + 1));
             AppMethodBeat.o(107478);
             return localObject;
-            localo = this.qLn;
-            i = this.qTc;
-            k = this.qTc;
+            localo = this.rvp;
+            i = this.rDf;
+            k = this.rDf;
             if (localImageView != null) {
-              if (!e.YD())
+              if (!e.abf())
               {
                 localImageView.setImageResource(2131233476);
               }
-              else if ((localagx != null) && (paramg != null))
+              else if ((localajn != null) && (paramg != null))
               {
-                String str = localagx.dhw;
+                String str = localajn.dsU;
                 if (str != null)
                 {
                   paramView = null;
-                  if (localagx.dhw != null)
+                  if (localajn.dsU != null)
                   {
-                    paramView = (String[])localo.qOq.get(str);
+                    paramView = (String[])localo.ryp.get(str);
                     if (paramView != null) {
                       break label872;
                     }
                     paramView = new String[2];
-                    paramView[0] = com.tencent.mm.plugin.fav.a.b.d(localagx);
-                    paramView[1] = com.tencent.mm.plugin.fav.a.b.a(localagx);
-                    localo.qOq.put(str, paramView);
+                    paramView[0] = com.tencent.mm.plugin.fav.a.b.d(localajn);
+                    paramView[1] = com.tencent.mm.plugin.fav.a.b.a(localajn);
+                    localo.ryp.put(str, paramView);
                   }
                 }
               }
@@ -272,49 +272,49 @@ public final class l
     label872:
     for (;;)
     {
-      localo.qOp.a(localImageView, paramView, null, 2131691091, i, k);
+      localo.ryo.a(localImageView, paramView, null, 2131691091, i, k);
       if ((paramView == null) || (paramView.length <= 0)) {
         break;
       }
       paramView = paramView[0];
-      com.tencent.mm.kernel.g.agU().az(new o.2(localo, paramView, paramg, localagx));
+      com.tencent.mm.kernel.g.ajF().ay(new o.2(localo, paramView, paramg, localajn));
       break;
-      this.qLn.b(localImageView, localagx, paramg, 2131689581, this.qTc, this.qTc);
+      this.rvp.b(localImageView, localajn, paramg, 2131689581, this.rDf, this.rDf);
       break;
-      paramViewGroup.qTS.setVisibility(8);
-      paramViewGroup.lzC.setVisibility(8);
+      paramViewGroup.rDV.setVisibility(8);
+      paramViewGroup.lZa.setVisibility(8);
       break;
-      paramViewGroup.qTQ.setVisibility(8);
-      paramViewGroup.qTR.setVisibility(8);
+      paramViewGroup.rDT.setVisibility(8);
+      paramViewGroup.rDU.setVisibility(8);
       break label619;
     }
   }
   
-  public final void a(View paramView, ahp paramahp)
+  public final void a(View paramView, akf paramakf)
   {
     AppMethodBeat.i(107481);
     a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.qJy, paramahp);
+    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.rtA, paramakf);
     AppMethodBeat.o(107481);
   }
   
   public static final class a
     extends b.b
   {
-    ImageView lzC;
-    ImageView qTB;
-    ImageView qTN;
-    TextView qTO;
-    TextView qTP;
-    TextView qTQ;
-    TextView qTR;
-    FrameLayout qTS;
+    ImageView lZa;
+    ImageView rDE;
+    ImageView rDQ;
+    TextView rDR;
+    TextView rDS;
+    TextView rDT;
+    TextView rDU;
+    FrameLayout rDV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.e.l
  * JD-Core Version:    0.7.0.1
  */

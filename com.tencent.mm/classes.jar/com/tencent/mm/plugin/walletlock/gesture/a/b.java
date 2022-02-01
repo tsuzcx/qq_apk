@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.walletlock.gesture.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class b
 {
-  public static boolean evy()
+  public static boolean eJE()
   {
     AppMethodBeat.i(129752);
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GOL, Boolean.FALSE)).booleanValue();
+    boolean bool = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IBg, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(129752);
     return bool;
   }
   
-  public static boolean evz()
+  public static boolean eJF()
   {
     AppMethodBeat.i(129754);
-    g localg = d.evA();
-    ac.v("MicroMsg.GestureUtil", "alvinluo timeInfo: %d, %d", new Object[] { Long.valueOf(localg.BUn), Long.valueOf(localg.BUo) });
-    if (localg.BUn != -1L)
+    g localg = d.eJG();
+    ad.v("MicroMsg.GestureUtil", "alvinluo timeInfo: %d, %d", new Object[] { Long.valueOf(localg.DuH), Long.valueOf(localg.DuI) });
+    if (localg.DuH != -1L)
     {
       e.a(localg);
-      if (localg.BUo / 1000L < 600L)
+      if (localg.DuI / 1000L < 600L)
       {
-        d.aq(localg.BUn, localg.BUo);
+        d.av(localg.DuH, localg.DuI);
         AppMethodBeat.o(129754);
         return true;
       }
-      d.evB();
+      d.eJH();
     }
     AppMethodBeat.o(129754);
     return false;
   }
   
-  public static void tW(boolean paramBoolean)
+  public static void uG(boolean paramBoolean)
   {
     AppMethodBeat.i(129753);
-    ac.i("MicroMsg.GestureGuardManager", "alvinluo setUserSetGesturePwd: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GOL, Boolean.valueOf(paramBoolean));
-    com.tencent.mm.kernel.g.agR().agA().faa();
+    ad.i("MicroMsg.GestureGuardManager", "alvinluo setUserSetGesturePwd: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IBg, Boolean.valueOf(paramBoolean));
+    com.tencent.mm.kernel.g.ajC().ajl().fqc();
     AppMethodBeat.o(129753);
   }
 }

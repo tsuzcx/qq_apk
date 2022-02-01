@@ -7,18 +7,19 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.o;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.emoji.e.e;
 import com.tencent.mm.plugin.emoji.model.EmojiLogic;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.ui.emoji.StoreBannerEmojiView;
 import com.tencent.mm.protocal.protobuf.EmotionBanner;
 import com.tencent.mm.protocal.protobuf.EmotionBannerImg;
 import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.ui.base.x;
 import java.util.ArrayList;
@@ -28,21 +29,21 @@ public final class i
   extends x
   implements View.OnClickListener
 {
-  public static int oXO = 60;
+  public static int pBy = 60;
   private Context mContext;
-  public LinkedList<com.tencent.mm.plugin.emoji.model.a> oXN;
-  private int oXP;
-  private boolean oXQ;
-  private ArrayList<String> oXR;
-  private a oXS;
+  private boolean pBA;
+  private ArrayList<String> pBB;
+  private a pBC;
+  public LinkedList<com.tencent.mm.plugin.emoji.model.a> pBx;
+  private int pBz;
   
   public i(Context paramContext, LinkedList<com.tencent.mm.plugin.emoji.model.a> paramLinkedList)
   {
     AppMethodBeat.i(108342);
-    this.oXP = 0;
-    this.oXQ = false;
-    this.oXR = new ArrayList();
-    this.oXS = new a((byte)0);
+    this.pBz = 0;
+    this.pBA = false;
+    this.pBB = new ArrayList();
+    this.pBC = new a((byte)0);
     if (paramLinkedList == null)
     {
       paramContext = new IllegalAccessError("must has emoji banner list");
@@ -50,40 +51,40 @@ public final class i
       throw paramContext;
     }
     this.mContext = paramContext;
-    this.oXN = new LinkedList();
-    this.oXN.addAll(paramLinkedList);
-    this.oXS.oXT = this;
+    this.pBx = new LinkedList();
+    this.pBx.addAll(paramLinkedList);
+    this.pBC.pBD = this;
     AppMethodBeat.o(108342);
   }
   
   public final void clear()
   {
     AppMethodBeat.i(108347);
-    if (this.oXN != null) {
-      this.oXN.clear();
+    if (this.pBx != null) {
+      this.pBx.clear();
     }
-    if (this.oXR != null) {
-      this.oXR.clear();
+    if (this.pBB != null) {
+      this.pBB.clear();
     }
-    this.oXQ = true;
-    this.oXS.oXT = null;
+    this.pBA = true;
+    this.pBC.pBD = null;
     AppMethodBeat.o(108347);
   }
   
   public final View e(int paramInt, View paramView)
   {
     AppMethodBeat.i(176178);
-    if (this.oXN == null)
+    if (this.pBx == null)
     {
       AppMethodBeat.o(176178);
       return null;
     }
-    int i = paramInt % this.oXN.size();
+    int i = paramInt % this.pBx.size();
     View localView;
     b localb;
     if (paramView == null)
     {
-      ac.i("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "getView inflate");
+      ad.i("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "getView inflate");
       localView = View.inflate(this.mContext, 2131493832, null);
       localb = new b(localView);
       localView.setTag(localb);
@@ -93,75 +94,75 @@ public final class i
     {
       localView.setTag(2131299375, Integer.valueOf(i));
       localView.setOnClickListener(this);
-      localObject = (com.tencent.mm.plugin.emoji.model.a)this.oXN.get(i);
+      localObject = (com.tencent.mm.plugin.emoji.model.a)this.pBx.get(i);
       if (localObject != null) {
         break;
       }
-      ac.e("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "BaseEmotionBanner is null.");
+      ad.e("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "BaseEmotionBanner is null.");
       AppMethodBeat.o(176178);
       return null;
       localb = (b)paramView.getTag();
       int j = com.tencent.mm.plugin.emoji.ui.EmojiStoreVpHeader.eB(this.mContext)[0];
       int k = j * 3 / 8;
-      localb.oXV.setLayoutParams(new RelativeLayout.LayoutParams(j, k + 1));
+      localb.pBF.setLayoutParams(new RelativeLayout.LayoutParams(j, k + 1));
       localView = paramView;
     }
     String str;
-    if (((com.tencent.mm.plugin.emoji.model.a)localObject).pag)
+    if (((com.tencent.mm.plugin.emoji.model.a)localObject).pDQ)
     {
-      str = ((com.tencent.mm.plugin.emoji.model.a)localObject).pae.BannerImg.StripUrl;
-      if (bs.isNullOrNil(((com.tencent.mm.plugin.emoji.model.a)localObject).pae.LocateUrl))
+      str = ((com.tencent.mm.plugin.emoji.model.a)localObject).pDO.BannerImg.StripUrl;
+      if (bt.isNullOrNil(((com.tencent.mm.plugin.emoji.model.a)localObject).pDO.LocateUrl))
       {
         paramView = "H5";
-        if ((localObject != null) && (!bs.isNullOrNil(str)))
+        if ((localObject != null) && (!bt.isNullOrNil(str)))
         {
           com.tencent.mm.cc.a.getDensity(this.mContext);
-          localObject = EmojiLogic.x(paramView, 8, str);
+          localObject = EmojiLogic.y(paramView, 8, str);
           if (localObject != null) {
             break label397;
           }
-          if (!this.oXR.contains(str)) {
+          if (!this.pBB.contains(str)) {
             break label351;
           }
-          ac.i("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "url has add to list. no need to try load image.");
-          localb.oXV.setImageFilePath("-");
+          ad.i("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "url has add to list. no need to try load image.");
+          localb.pBF.setImageFilePath("-");
         }
       }
     }
     for (;;)
     {
-      ac.d("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "position:%d allPostion:%d banner url:%s ", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), str });
+      ad.d("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "position:%d allPostion:%d banner url:%s ", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), str });
       AppMethodBeat.o(176178);
       return localView;
       paramView = "Toptic";
       break;
-      str = ((com.tencent.mm.plugin.emoji.model.a)localObject).paf.BannerImg.StripUrl;
-      paramView = ((com.tencent.mm.plugin.emoji.model.a)localObject).paf.BannerSummary.ProductID;
+      str = ((com.tencent.mm.plugin.emoji.model.a)localObject).pDP.BannerImg.StripUrl;
+      paramView = ((com.tencent.mm.plugin.emoji.model.a)localObject).pDP.BannerSummary.ProductID;
       break;
       label351:
-      o.aFB().a(str, null, e.h(paramView, str, new Object[] { paramView, "BANNER" }), this.oXS);
-      this.oXR.add(str);
+      q.aIJ().a(str, null, e.h(paramView, str, new Object[] { paramView, "BANNER" }), this.pBC);
+      this.pBB.add(str);
       continue;
       label397:
-      localb.oXV.setImageFilePath(((EmojiInfo)localObject).ghd());
+      localb.pBF.setImageFilePath(((EmojiInfo)localObject).gzQ());
     }
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(108343);
-    if (this.oXN == null)
+    if (this.pBx == null)
     {
       AppMethodBeat.o(108343);
       return 0;
     }
-    if (this.oXN.size() == 1)
+    if (this.pBx.size() == 1)
     {
       AppMethodBeat.o(108343);
       return 1;
     }
-    int i = this.oXN.size();
-    int j = oXO;
+    int i = this.pBx.size();
+    int j = pBy;
     AppMethodBeat.o(108343);
     return i * j;
   }
@@ -169,9 +170,9 @@ public final class i
   public final int getItemPosition(Object paramObject)
   {
     AppMethodBeat.i(108345);
-    if (this.oXP > 0)
+    if (this.pBz > 0)
     {
-      this.oXP -= 1;
+      this.pBz -= 1;
       AppMethodBeat.o(108345);
       return -2;
     }
@@ -183,65 +184,66 @@ public final class i
   public final void notifyDataSetChanged()
   {
     AppMethodBeat.i(108344);
-    if (!this.oXQ)
+    if (!this.pBA)
     {
-      this.oXP = getCount();
+      this.pBz = getCount();
       super.notifyDataSetChanged();
       AppMethodBeat.o(108344);
       return;
     }
-    ac.i("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "has destroy need to notify");
+    ad.i("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "has destroy need to notify");
     AppMethodBeat.o(108344);
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(108348);
+    Object localObject = new b();
+    ((b)localObject).bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/adapter/EmojiStoreVpHeaderAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
     int i = ((Integer)paramView.getTag(2131299375)).intValue();
-    paramView = (com.tencent.mm.plugin.emoji.model.a)this.oXN.get(i);
-    EmotionSummary localEmotionSummary;
+    paramView = (com.tencent.mm.plugin.emoji.model.a)this.pBx.get(i);
     if (paramView != null)
     {
-      if (paramView.pag)
-      {
-        com.tencent.mm.plugin.emoji.e.k.a(this.mContext, paramView.pae, true);
-        AppMethodBeat.o(108348);
-        return;
+      if (!paramView.pDQ) {
+        break label110;
       }
-      localEmotionSummary = paramView.paf.BannerSummary;
-      if (localEmotionSummary != null) {
-        if (localEmotionSummary != null) {
-          break label141;
-        }
-      }
+      com.tencent.mm.plugin.emoji.e.k.a(this.mContext, paramView.pDO, true);
     }
-    label141:
-    for (paramView = "";; paramView = localEmotionSummary.ProductID)
+    label110:
+    do
     {
-      ac.d("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "productId %s", new Object[] { paramView });
-      h.wUl.f(11929, new Object[] { Integer.valueOf(0) });
-      com.tencent.mm.plugin.emoji.e.k.a(this.mContext, localEmotionSummary, 15, -1, -1, "", 8);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/adapter/EmojiStoreVpHeaderAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(108348);
       return;
+      localObject = paramView.pDP.BannerSummary;
+    } while (localObject == null);
+    if (localObject == null) {}
+    for (paramView = "";; paramView = ((EmotionSummary)localObject).ProductID)
+    {
+      ad.d("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "productId %s", new Object[] { paramView });
+      g.yhR.f(11929, new Object[] { Integer.valueOf(0) });
+      com.tencent.mm.plugin.emoji.e.k.a(this.mContext, (EmotionSummary)localObject, 15, -1, -1, "", 8);
+      break;
     }
   }
   
   static final class a
-    implements com.tencent.mm.av.a.c.k
+    implements com.tencent.mm.aw.a.c.k
   {
-    i oXT;
+    i pBD;
     
     public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
     {
       AppMethodBeat.i(108340);
-      ac.i("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "onImageLoadComplete url:%s", new Object[] { paramString });
-      ap.f(new Runnable()
+      ad.i("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "onImageLoadComplete url:%s", new Object[] { paramString });
+      aq.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(108339);
-          if (i.a.this.oXT != null) {
-            i.a.this.oXT.notifyDataSetChanged();
+          if (i.a.this.pBD != null) {
+            i.a.this.pBD.notifyDataSetChanged();
           }
           AppMethodBeat.o(108339);
         }
@@ -252,15 +254,15 @@ public final class i
   
   final class b
   {
-    StoreBannerEmojiView oXV;
-    ImageView oXW;
+    StoreBannerEmojiView pBF;
+    ImageView pBG;
     
     public b(View paramView)
     {
       AppMethodBeat.i(108341);
-      this.oXV = ((StoreBannerEmojiView)paramView.findViewById(2131299332));
-      this.oXW = ((ImageView)paramView.findViewById(2131302799));
-      this.oXV.setDefaultImageResource(0);
+      this.pBF = ((StoreBannerEmojiView)paramView.findViewById(2131299332));
+      this.pBG = ((ImageView)paramView.findViewById(2131302799));
+      this.pBF.setDefaultImageResource(0);
       AppMethodBeat.o(108341);
     }
   }

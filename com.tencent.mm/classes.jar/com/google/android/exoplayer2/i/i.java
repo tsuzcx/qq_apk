@@ -6,13 +6,13 @@ public abstract interface i
 {
   public abstract p c(p paramp);
   
-  public abstract long sr();
+  public abstract long tQ();
   
-  public abstract p sv();
+  public abstract p tU();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.i.i
  * JD-Core Version:    0.7.0.1
  */

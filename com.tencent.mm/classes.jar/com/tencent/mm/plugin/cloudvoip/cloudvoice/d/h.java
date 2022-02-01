@@ -10,14 +10,14 @@ public final class h
     super(640, 480);
   }
   
-  public final boolean bVr()
+  public final boolean bZV()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.h
  * JD-Core Version:    0.7.0.1
  */

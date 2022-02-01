@@ -1,6 +1,6 @@
 package com.tencent.mm.live.c;
 
-@d.l(fNY={1, 1, 16})
+@d.l(gfx={1, 1, 16})
 public final class l {}
 
 

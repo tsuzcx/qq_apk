@@ -11,17 +11,17 @@ import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.base.o;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/prompt/AppBrandPopupToast;", "Lcom/tencent/mm/ui/base/MMPopupWindow;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mIconImage", "Landroid/widget/ImageView;", "mMessageText", "Landroid/widget/TextView;", "setIconDrawable", "drawable", "Landroid/graphics/drawable/Drawable;", "setMessage", "message", "", "show", "", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/prompt/AppBrandPopupToast;", "Lcom/tencent/mm/ui/base/MMPopupWindow;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mIconImage", "Landroid/widget/ImageView;", "mMessageText", "Landroid/widget/TextView;", "setIconDrawable", "drawable", "Landroid/graphics/drawable/Drawable;", "setMessage", "message", "", "show", "", "plugin-appbrand-integration_release"})
 public final class c
   extends o
 {
-  private final TextView mMs;
-  private final ImageView mMt;
+  private final TextView nmO;
+  private final ImageView nmP;
   
   public c(Context paramContext)
   {
@@ -31,18 +31,18 @@ public final class c
     View.inflate(paramContext, 2131493061, (ViewGroup)localObject);
     setContentView((View)localObject);
     localObject = getContentView().findViewById(2131303515);
-    k.g(localObject, "contentView.findViewById<View>(R.id.progress)");
+    p.g(localObject, "contentView.findViewById<View>(R.id.progress)");
     ((View)localObject).setVisibility(8);
     localObject = getContentView().findViewById(2131301215);
-    k.g(localObject, "contentView.findViewById(R.id.iv_icon)");
-    this.mMt = ((ImageView)localObject);
+    p.g(localObject, "contentView.findViewById(R.id.iv_icon)");
+    this.nmP = ((ImageView)localObject);
     localObject = getContentView().findViewById(2131305902);
-    k.g(localObject, "contentView.findViewById(R.id.title)");
-    this.mMs = ((TextView)localObject);
+    p.g(localObject, "contentView.findViewById(R.id.title)");
+    this.nmO = ((TextView)localObject);
     paramContext = com.tencent.mm.svg.a.a.g(paramContext.getResources(), 2131689649);
-    this.mMt.setVisibility(0);
-    this.mMt.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.mMt.setImageDrawable(paramContext);
+    this.nmP.setVisibility(0);
+    this.nmP.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.nmP.setImageDrawable(paramContext);
     AppMethodBeat.o(51450);
   }
   
@@ -56,15 +56,15 @@ public final class c
       if (i != 0) {
         break label143;
       }
-      this.mMs.setLineSpacing(0.0F, 1.0F);
-      TextView localTextView = this.mMs;
+      this.nmO.setLineSpacing(0.0F, 1.0F);
+      TextView localTextView = this.nmO;
       View localView = getContentView();
-      k.g(localView, "contentView");
+      p.g(localView, "contentView");
       localTextView.setSpannableFactory((Spannable.Factory)new e(com.tencent.mm.cc.a.fromDPToPix(localView.getContext(), 18)));
-      this.mMs.setText(paramCharSequence, TextView.BufferType.SPANNABLE);
-      this.mMs.setVisibility(0);
+      this.nmO.setText(paramCharSequence, TextView.BufferType.SPANNABLE);
+      this.nmO.setVisibility(0);
       paramCharSequence = getContentView();
-      k.g(paramCharSequence, "contentView");
+      p.g(paramCharSequence, "contentView");
       i = com.tencent.mm.cc.a.fromDPToPix(paramCharSequence.getContext(), 27);
       getContentView().findViewById(2131304793).setPadding(0, i, 0, 0);
     }
@@ -75,7 +75,7 @@ public final class c
       i = 0;
       break;
       label143:
-      this.mMs.setVisibility(4);
+      this.nmO.setVisibility(4);
     }
   }
   
@@ -83,12 +83,12 @@ public final class c
   {
     AppMethodBeat.i(51449);
     Object localObject = getContentView();
-    k.g(localObject, "contentView");
-    localObject = com.tencent.mm.ui.statusbar.d.ko(((View)localObject).getContext());
+    p.g(localObject, "contentView");
+    localObject = com.tencent.mm.ui.statusbar.d.kA(((View)localObject).getContext());
     if (localObject != null)
     {
       super.showAtLocation(((Activity)localObject).findViewById(16908290), 17, 0, 0);
-      ap.n((Runnable)new d(this), 1500L);
+      aq.o((Runnable)new d(this), 1500L);
       AppMethodBeat.o(51449);
       return;
     }
@@ -97,7 +97,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.e.c
  * JD-Core Version:    0.7.0.1
  */

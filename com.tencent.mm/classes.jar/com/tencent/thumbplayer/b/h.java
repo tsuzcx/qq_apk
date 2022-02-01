@@ -8,32 +8,32 @@ import com.tencent.thumbplayer.core.common.TPNativeLibraryLoader;
 import com.tencent.thumbplayer.core.common.TPNativeLog;
 import com.tencent.thumbplayer.core.common.TPThumbplayerCapabilityHelper;
 import com.tencent.thumbplayer.utils.TPNetworkChangeMonitor;
-import com.tencent.thumbplayer.utils.f;
+import com.tencent.thumbplayer.utils.d;
 
 public final class h
 {
-  public static Context GX;
-  private static boolean cqf;
+  public static Context IR;
+  private static boolean cAX;
   
   public static void a(a parama)
   {
-    AppMethodBeat.i(187831);
-    f.a(parama);
-    AppMethodBeat.o(187831);
+    AppMethodBeat.i(191852);
+    d.a(parama);
+    AppMethodBeat.o(191852);
   }
   
-  public static void cw(Context paramContext, String paramString)
+  public static void cB(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(187830);
-    if (!cqf)
+    AppMethodBeat.i(191851);
+    if (!cAX)
     {
-      f.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk");
-      cqf = true;
-      GX = paramContext.getApplicationContext();
-      com.tencent.thumbplayer.e.a.aTL(paramString);
-      com.tencent.thumbplayer.e.a.fFH();
-      paramString = TPNetworkChangeMonitor.fGv();
-      Context localContext = GX;
+      d.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk");
+      cAX = true;
+      IR = paramContext.getApplicationContext();
+      com.tencent.thumbplayer.e.a.aZL(paramString);
+      com.tencent.thumbplayer.e.a.fWW();
+      paramString = TPNetworkChangeMonitor.fXH();
+      Context localContext = IR;
       paramContext = "context can not be null!";
       if (localContext == null)
       {
@@ -41,76 +41,76 @@ public final class h
         for (;;)
         {
           paramContext = new IllegalArgumentException(paramContext);
-          AppMethodBeat.o(187830);
+          AppMethodBeat.o(191851);
           throw paramContext;
           paramContext = "this argument should not be null!";
         }
       }
-      paramString.cN(localContext);
-      paramString.kW(localContext);
-      f.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for monitor");
-      f.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for report");
+      paramString.cK(localContext);
+      paramString.lj(localContext);
+      d.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for monitor");
+      d.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for report");
       TPNativeLog.setLogCallback(new ITPNativeLogCallback()
       {
         public final void onPrintLog(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
         {
-          AppMethodBeat.i(187829);
+          AppMethodBeat.i(191850);
           switch (paramAnonymousInt)
           {
           }
           for (;;)
           {
-            AppMethodBeat.o(187829);
+            AppMethodBeat.o(191850);
             return;
-            f.v(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(187829);
+            d.v(paramAnonymousString1, paramAnonymousString2);
+            AppMethodBeat.o(191850);
             return;
-            f.d(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(187829);
+            d.d(paramAnonymousString1, paramAnonymousString2);
+            AppMethodBeat.o(191850);
             return;
-            f.i(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(187829);
+            d.i(paramAnonymousString1, paramAnonymousString2);
+            AppMethodBeat.o(191850);
             return;
-            f.w(paramAnonymousString1, paramAnonymousString2);
-            AppMethodBeat.o(187829);
+            d.w(paramAnonymousString1, paramAnonymousString2);
+            AppMethodBeat.o(191850);
             return;
-            f.e(paramAnonymousString1, paramAnonymousString2);
+            d.e(paramAnonymousString1, paramAnonymousString2);
           }
         }
       });
     }
     try
     {
-      TPNativeLibraryLoader.loadLibIfNeeded(GX);
-      f.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for loadlib");
-      com.tencent.thumbplayer.a.a.b.a.init(GX);
-      f.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for drm cap");
-      TPThumbplayerCapabilityHelper.init(GX, true);
-      f.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk DONE");
-      AppMethodBeat.o(187830);
+      TPNativeLibraryLoader.loadLibIfNeeded(IR);
+      d.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for loadlib");
+      com.tencent.thumbplayer.a.a.b.a.init(IR);
+      d.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk for drm cap");
+      TPThumbplayerCapabilityHelper.init(IR, true);
+      d.i("TPThumbPlayer[TPPlayerMgr.java]", "Enter initSdk DONE");
+      AppMethodBeat.o(191851);
       return;
     }
     catch (UnsupportedOperationException paramContext)
     {
       for (;;)
       {
-        f.e("TPThumbPlayer[TPPlayerMgr.java]", paramContext);
+        d.e("TPThumbPlayer[TPPlayerMgr.java]", paramContext);
       }
     }
   }
   
-  public static void fFe()
+  public static void fWv()
   {
-    AppMethodBeat.i(187832);
-    com.tencent.thumbplayer.e.a.fFx();
-    AppMethodBeat.o(187832);
+    AppMethodBeat.i(191853);
+    com.tencent.thumbplayer.e.a.fWM();
+    AppMethodBeat.o(191853);
   }
   
-  public static void fFf()
+  public static void fWw()
   {
-    AppMethodBeat.i(187833);
-    com.tencent.thumbplayer.e.a.fFf();
-    AppMethodBeat.o(187833);
+    AppMethodBeat.i(191854);
+    com.tencent.thumbplayer.e.a.fWw();
+    AppMethodBeat.o(191854);
   }
   
   public static abstract interface a

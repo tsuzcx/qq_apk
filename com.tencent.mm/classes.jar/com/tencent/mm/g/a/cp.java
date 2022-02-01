@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class cp
   extends b
 {
-  public a dci;
+  public a dny;
   
   public cp()
   {
@@ -15,21 +15,21 @@ public final class cp
   
   private cp(byte paramByte)
   {
-    AppMethodBeat.i(149860);
-    this.dci = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(127400);
+    this.dny = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(149860);
+    AppMethodBeat.o(127400);
   }
   
   public static final class a
   {
-    public int dcj = -1;
+    public long dnz = -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.cp
  * JD-Core Version:    0.7.0.1
  */

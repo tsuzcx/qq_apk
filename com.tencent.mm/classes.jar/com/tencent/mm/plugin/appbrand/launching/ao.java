@@ -5,42 +5,42 @@ import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appcache.a.a.a;
-import com.tencent.mm.plugin.appbrand.appcache.ab;
-import com.tencent.mm.plugin.appbrand.appcache.bb;
-import com.tencent.mm.plugin.appbrand.appcache.bf;
-import com.tencent.mm.plugin.appbrand.appcache.bh;
-import com.tencent.mm.protocal.protobuf.cpw;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.appbrand.appcache.ac;
+import com.tencent.mm.plugin.appbrand.appcache.bc;
+import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.bi;
+import com.tencent.mm.protocal.protobuf.cvb;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Locale;
 
 public final class ao
   extends am
 {
   final String appId;
-  final String ceF;
-  final int dbX;
-  int dib;
-  String dxx;
-  String lmA;
+  final String coW;
+  String dJJ;
+  final int dnt;
+  int dtF;
+  String lJI;
   
   ao(u paramu)
   {
-    super(new ab(paramu.lke.djj, paramu.lke.EUn, paramu.lke.EUq));
+    super(new ac(paramu.lHm.duW, paramu.lHm.GDK, paramu.lHm.GDN));
     AppMethodBeat.i(174984);
-    this.dxx = paramu.lkh;
-    this.appId = paramu.lke.djj;
-    this.ceF = paramu.lke.EUn;
-    this.dbX = paramu.lke.Een;
-    this.dib = paramu.lke.EUq;
-    this.lmA = new ab(this.appId, this.ceF, this.dib).toString();
+    this.dJJ = paramu.lHp;
+    this.appId = paramu.lHm.duW;
+    this.coW = paramu.lHm.GDK;
+    this.dnt = paramu.lHm.FKM;
+    this.dtF = paramu.lHm.GDN;
+    this.lJI = new ac(this.appId, this.coW, this.dtF).toString();
     AppMethodBeat.o(174984);
   }
   
-  public final String aTk()
+  public final String aWs()
   {
     AppMethodBeat.i(174986);
-    String str = String.format(Locale.US, "appId %s, module %s, codeType %d, pkgType %d,queryKey:%s", new Object[] { this.appId, this.ceF, Integer.valueOf(this.dbX), Integer.valueOf(this.dib), this.lmr });
+    String str = String.format(Locale.US, "appId %s, module %s, codeType %d, pkgType %d,queryKey:%s", new Object[] { this.appId, this.coW, Integer.valueOf(this.dnt), Integer.valueOf(this.dtF), this.lJz });
     AppMethodBeat.o(174986);
     return str;
   }
@@ -48,7 +48,7 @@ public final class ao
   public final void prepare()
   {
     AppMethodBeat.i(174985);
-    al local1 = new al(this.dbX)
+    al local1 = new al(this.dnt)
     {
       protected final void b(WxaPkgLoadProgress paramAnonymousWxaPkgLoadProgress)
       {
@@ -58,10 +58,10 @@ public final class ao
         AppMethodBeat.o(174982);
       }
       
-      final String bnD()
+      final String brq()
       {
         AppMethodBeat.i(174980);
-        String str = ao.this.aTk();
+        String str = ao.this.aWs();
         AppMethodBeat.o(174980);
         return str;
       }
@@ -74,31 +74,31 @@ public final class ao
         AppMethodBeat.o(174981);
       }
     };
-    ac.i("MicroMsg.LaunchPkgPrepareJobMultiPkgNewTestCode", "%s before download, url(%s)", new Object[] { aTk(), this.dxx });
-    if (bs.isNullOrNil(this.dxx))
+    ad.i("MicroMsg.LaunchPkgPrepareJobMultiPkgNewTestCode", "%s before download, url(%s)", new Object[] { aWs(), this.dJJ });
+    if (bt.isNullOrNil(this.dJJ))
     {
       f(null);
       AppMethodBeat.o(174985);
       return;
     }
-    if (!bh.a(this.lmr.toString(), this.dbX, this.dxx, local1, new a.a()
+    if (!bi.a(this.lJz.toString(), this.dnt, this.dJJ, local1, new a.a()
     {
-      public final String aWB()
+      public final String aZW()
       {
         AppMethodBeat.i(174983);
-        Object localObject = j.aVC().a(ao.this.lmr.toString(), ao.this.dbX, new String[] { "versionMd5" });
-        localObject = "_" + ((bb)localObject).field_versionMd5;
+        Object localObject = j.aYX().a(ao.this.lJz.toString(), ao.this.dnt, new String[] { "versionMd5" });
+        localObject = "_" + ((bc)localObject).field_versionMd5;
         AppMethodBeat.o(174983);
         return localObject;
       }
     }))
     {
-      ac.e("MicroMsg.LaunchPkgPrepareJobMultiPkgNewTestCode", "%s start downloadPkg failed", new Object[] { aTk() });
+      ad.e("MicroMsg.LaunchPkgPrepareJobMultiPkgNewTestCode", "%s start downloadPkg failed", new Object[] { aWs() });
       f(null);
       AppMethodBeat.o(174985);
       return;
     }
-    bnG();
+    brt();
     AppMethodBeat.o(174985);
   }
 }

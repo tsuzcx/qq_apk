@@ -10,7 +10,7 @@ public abstract interface x
 {
   public abstract BaseWebViewController a(MMWebView paramMMWebView);
   
-  public abstract f j(MMWebView paramMMWebView);
+  public abstract f b(MMWebView paramMMWebView);
 }
 
 

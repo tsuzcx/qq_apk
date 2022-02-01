@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <FrameLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="42.0dip">
         <com.tencent.mm.plugin.sns.ui.TagImageView android:layout_gravity="center_vertical" android:id="@id/cp2" android:layout_width="42.0dip" android:layout_height="42.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-        <ImageView android:layout_gravity="center" android:id="@id/fsk" android:layout_width="42.0dip" android:layout_height="42.0dip" android:scaleType="center" android:maxHeight="350.0dip" />
+        <ImageView android:layout_gravity="center" android:id="@id/fsk" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:maxHeight="350.0dip" />
         <TextView android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/b3y" android:background="@color/a" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="42.0dip" android:maxLines="3" />
     </FrameLayout>
     <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/jn">

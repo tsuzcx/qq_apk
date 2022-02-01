@@ -10,19 +10,21 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.a.c.h;
-import com.tencent.mm.av.o;
-import com.tencent.mm.av.p;
-import com.tencent.mm.av.p.a;
+import com.tencent.mm.aw.a.a.c;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.aw.a.c.h;
+import com.tencent.mm.aw.d;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.aw.r;
+import com.tencent.mm.aw.r.a;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.plugin.newtips.a.g;
 import com.tencent.mm.plugin.newtips.a.k;
-import com.tencent.mm.protocal.protobuf.dhn;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.dnc;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.base.preference.NormalIconPreference;
 import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.preference.f;
 import com.tencent.mm.ui.tools.u;
 import java.lang.ref.WeakReference;
 
@@ -31,15 +33,15 @@ public class NormalIconNewTipPreference
   implements com.tencent.mm.plugin.newtips.a.a
 {
   private Context context;
-  private View fvu;
+  private View fOB;
   private String path;
-  public h vfu;
-  private WeakReference<com.tencent.mm.ui.base.preference.f> vmu;
-  private String vmv;
-  private p.a vmw;
-  private a vmx;
-  private p.a vmy;
-  public boolean vmz;
+  public h wkP;
+  private WeakReference<f> wrM;
+  private String wrN;
+  private r.a wrO;
+  private a wrP;
+  private r.a wrQ;
+  public boolean wrR;
   
   public NormalIconNewTipPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -50,17 +52,17 @@ public class NormalIconNewTipPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(127184);
-    this.vmv = null;
-    this.vmu = null;
-    this.vmy = new p.a()
+    this.wrN = null;
+    this.wrM = null;
+    this.wrQ = new r.a()
     {
       public final void a(final String paramAnonymousString1, final Bitmap paramAnonymousBitmap, String paramAnonymousString2)
       {
         AppMethodBeat.i(127183);
         if ((NormalIconNewTipPreference.a(NormalIconNewTipPreference.this)) && (paramAnonymousBitmap != null) && (!paramAnonymousBitmap.isRecycled())) {}
-        for (paramAnonymousBitmap = com.tencent.mm.sdk.platformtools.f.a(paramAnonymousBitmap, false, paramAnonymousBitmap.getWidth() / 2);; paramAnonymousBitmap = com.tencent.mm.sdk.platformtools.f.a(paramAnonymousBitmap, false, 0.1F * paramAnonymousBitmap.getWidth()))
+        for (paramAnonymousBitmap = com.tencent.mm.sdk.platformtools.g.a(paramAnonymousBitmap, false, paramAnonymousBitmap.getWidth() / 2);; paramAnonymousBitmap = com.tencent.mm.sdk.platformtools.g.a(paramAnonymousBitmap, false, 0.1F * paramAnonymousBitmap.getWidth()))
         {
-          ap.f(new Runnable()
+          aq.f(new Runnable()
           {
             public final void run()
             {
@@ -69,12 +71,12 @@ public class NormalIconNewTipPreference
               if (paramAnonymousBitmap == null) {}
               for (boolean bool = true;; bool = false)
               {
-                ac.i("MicroMsg.NewTips.NormalIconNewTipPreference", bool);
+                ad.i("MicroMsg.NewTips.NormalIconNewTipPreference", bool);
                 if (paramAnonymousString1.equals(NormalIconNewTipPreference.b(NormalIconNewTipPreference.this)))
                 {
-                  NormalIconNewTipPreference.this.aF(paramAnonymousBitmap);
+                  NormalIconNewTipPreference.this.aH(paramAnonymousBitmap);
                   NormalIconNewTipPreference.c(NormalIconNewTipPreference.this);
-                  NormalIconNewTipPreference.d(NormalIconNewTipPreference.this);
+                  NormalIconNewTipPreference.this.notifyDataSetChanged();
                 }
                 AppMethodBeat.o(127182);
                 return;
@@ -86,131 +88,107 @@ public class NormalIconNewTipPreference
         }
       }
     };
-    this.vmz = false;
+    this.wrR = false;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, b.a.NormalIconNewTipPreference, paramInt, 0);
     this.path = paramAttributeSet.getString(0);
     this.context = paramContext;
     paramAttributeSet.recycle();
-    ac.i("MicroMsg.NewTips.NormalIconNewTipPreference", "NormalIconNewTipPreference() path:%s", new Object[] { this.path });
+    ad.i("MicroMsg.NewTips.NormalIconNewTipPreference", "NormalIconNewTipPreference() path:%s", new Object[] { this.path });
     AppMethodBeat.o(127184);
   }
   
-  private void aoe(String paramString)
+  private void atd(String paramString)
   {
     AppMethodBeat.i(127196);
     int i = this.context.getResources().getDimensionPixelOffset(2131165965);
     Object localObject = new c.a();
-    ((c.a)localObject).prefixPath = b.aph();
-    o.aFC();
-    ((c.a)localObject).hKO = null;
-    ((c.a)localObject).hKx = true;
-    ((c.a)localObject).gLt = true;
-    ((c.a)localObject).hKv = true;
-    ((c.a)localObject).gKh = i;
-    ((c.a)localObject).gKg = i;
-    localObject = ((c.a)localObject).aFT();
-    o.aFB().a(paramString, fjm(), (com.tencent.mm.av.a.a.c)localObject, this.vfu);
+    ((c.a)localObject).prefixPath = b.arU();
+    q.aIK();
+    ((c.a)localObject).idJ = null;
+    ((c.a)localObject).idr = true;
+    ((c.a)localObject).hfi = true;
+    ((c.a)localObject).idp = true;
+    ((c.a)localObject).hdS = i;
+    ((c.a)localObject).hdR = i;
+    localObject = ((c.a)localObject).aJc();
+    q.aIJ().a(paramString, fzB(), (c)localObject, this.wkP);
     AppMethodBeat.o(127196);
   }
   
-  private void notifyDataSetChanged()
+  public final void a(r.a parama, a parama1)
   {
-    AppMethodBeat.i(127195);
-    if (this.vmu != null)
-    {
-      com.tencent.mm.ui.base.preference.f localf = (com.tencent.mm.ui.base.preference.f)this.vmu.get();
-      if (localf != null) {
-        localf.notifyDataSetChanged();
-      }
-    }
-    AppMethodBeat.o(127195);
-  }
-  
-  public final void a(p.a parama, a parama1)
-  {
-    this.vmw = parama;
-    this.vmx = parama1;
+    this.wrO = parama;
+    this.wrP = parama1;
   }
   
   public final void a(k paramk, boolean paramBoolean)
   {
     AppMethodBeat.i(127187);
-    g.a(this, paramk, paramBoolean);
+    com.tencent.mm.plugin.newtips.a.g.a(this, paramk, paramBoolean);
     AppMethodBeat.o(127187);
   }
   
-  public final void a(com.tencent.mm.ui.base.preference.f paramf)
+  public final void a(f paramf)
   {
     AppMethodBeat.i(127197);
-    this.vmu = new WeakReference(paramf);
+    this.wrM = new WeakReference(paramf);
     AppMethodBeat.o(127197);
   }
   
-  public final boolean a(dhn paramdhn, boolean paramBoolean)
-  {
-    AppMethodBeat.i(204962);
-    a(true, paramdhn);
-    if (!paramBoolean) {
-      wU(false);
-    }
-    AppMethodBeat.o(204962);
-    return true;
-  }
-  
-  public final boolean a(boolean paramBoolean, dhn paramdhn)
+  public boolean a(boolean paramBoolean, dnc paramdnc)
   {
     AppMethodBeat.i(127191);
-    ac.d("MicroMsg.NewTips.NormalIconNewTipPreference", "showRedPointTitle() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.d("MicroMsg.NewTips.NormalIconNewTipPreference", "showRedPointTitle() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      aad(8);
-      aac(0);
-      aQ(paramdhn.title, -1, Color.parseColor("#8c8c8c"));
-      wU(true);
-      aag(8);
+      acn(8);
+      acm(0);
+      aU(paramdnc.title, -1, Color.parseColor("#8c8c8c"));
+      xF(true);
+      acq(8);
     }
     for (;;)
     {
       notifyDataSetChanged();
       AppMethodBeat.o(127191);
       return true;
-      aad(8);
-      aac(8);
-      aag(8);
-      aab(8);
+      acn(8);
+      acm(8);
+      acq(8);
+      acl(8);
     }
   }
   
-  public final boolean b(dhn paramdhn, boolean paramBoolean)
+  public boolean a(boolean paramBoolean1, dnc paramdnc, boolean paramBoolean2)
   {
-    AppMethodBeat.i(204963);
-    b(true, paramdhn);
-    if (!paramBoolean) {
-      aah(8);
+    AppMethodBeat.i(214421);
+    a(paramBoolean1, paramdnc);
+    if (!paramBoolean2) {
+      xF(false);
     }
-    AppMethodBeat.o(204963);
+    AppMethodBeat.o(214421);
     return true;
   }
   
-  public final boolean b(boolean paramBoolean, dhn paramdhn)
+  public final boolean b(boolean paramBoolean, dnc paramdnc)
   {
     AppMethodBeat.i(127192);
-    ac.d("MicroMsg.NewTips.NormalIconNewTipPreference", "showRedPointIcon() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.d("MicroMsg.NewTips.NormalIconNewTipPreference", "showRedPointIcon() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     Bitmap localBitmap;
     if (paramBoolean)
     {
-      aad(8);
-      aag(0);
-      aaf(0);
-      aah(0);
-      wU(false);
+      acn(8);
+      acq(0);
+      acp(0);
+      acr(0);
+      xF(false);
       localBitmap = BitmapFactory.decodeResource(this.context.getResources(), 2131231875);
-      if (this.vmz) {
+      if (this.wrR) {
         localBitmap = BitmapFactory.decodeResource(this.context.getResources(), 2131234853);
       }
-      aF(localBitmap);
-      if (this.vfu != null) {
-        aoe(paramdhn.url);
+      aH(localBitmap);
+      if (this.wkP != null) {
+        atd(paramdnc.url);
       }
     }
     for (;;)
@@ -218,69 +196,69 @@ public class NormalIconNewTipPreference
       notifyDataSetChanged();
       AppMethodBeat.o(127192);
       return true;
-      o.aFw();
-      localBitmap = com.tencent.mm.av.c.te(paramdhn.url);
-      if (this.vmw != null)
+      q.aIE();
+      localBitmap = d.vT(paramdnc.url);
+      if (this.wrO != null)
       {
         if (localBitmap != null)
         {
-          if (this.vmx != null) {
-            this.vmx.aof(null);
+          if (this.wrP != null) {
+            this.wrP.ate(null);
           }
-          aF(localBitmap);
+          aH(localBitmap);
         }
         else
         {
-          if (this.vmx != null) {
-            this.vmx.aof(paramdhn.url);
+          if (this.wrP != null) {
+            this.wrP.ate(paramdnc.url);
           }
-          o.aFA().a(paramdhn.url, this.vmw);
+          q.aII().a(paramdnc.url, this.wrO);
         }
       }
       else
       {
         if (localBitmap != null)
         {
-          this.vmv = null;
-          if (this.vmz) {}
-          for (paramdhn = com.tencent.mm.sdk.platformtools.f.a(localBitmap, false, localBitmap.getWidth() / 2);; paramdhn = com.tencent.mm.sdk.platformtools.f.a(localBitmap, false, 0.1F * localBitmap.getWidth()))
+          this.wrN = null;
+          if (this.wrR) {}
+          for (paramdnc = com.tencent.mm.sdk.platformtools.g.a(localBitmap, false, localBitmap.getWidth() / 2);; paramdnc = com.tencent.mm.sdk.platformtools.g.a(localBitmap, false, 0.1F * localBitmap.getWidth()))
           {
-            aF(paramdhn);
+            aH(paramdnc);
             break;
           }
         }
-        o.aFA().a(paramdhn.url, this.vmy);
-        this.vmv = paramdhn.url;
+        q.aII().a(paramdnc.url, this.wrQ);
+        this.wrN = paramdnc.url;
         continue;
-        aad(8);
-        aac(8);
-        aag(8);
-        aab(8);
+        acn(8);
+        acm(8);
+        acq(8);
+        acl(8);
       }
     }
   }
   
-  public final boolean c(boolean paramBoolean, dhn paramdhn)
+  public final boolean c(boolean paramBoolean, dnc paramdnc)
   {
     AppMethodBeat.i(127193);
-    ac.d("MicroMsg.NewTips.NormalIconNewTipPreference", "showRedPointPointTitleIcon() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.d("MicroMsg.NewTips.NormalIconNewTipPreference", "showRedPointPointTitleIcon() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     Bitmap localBitmap;
     if (paramBoolean)
     {
-      aad(8);
-      aag(0);
-      aaf(0);
-      aah(0);
-      aac(0);
-      wU(false);
-      aQ(paramdhn.title, -1, Color.parseColor("#8c8c8c"));
+      acn(8);
+      acq(0);
+      acp(0);
+      acr(0);
+      acm(0);
+      xF(false);
+      aU(paramdnc.title, -1, Color.parseColor("#8c8c8c"));
       localBitmap = BitmapFactory.decodeResource(this.context.getResources(), 2131231875);
-      if (this.vmz) {
+      if (this.wrR) {
         localBitmap = BitmapFactory.decodeResource(this.context.getResources(), 2131234853);
       }
-      aF(localBitmap);
-      if (this.vfu != null) {
-        aoe(paramdhn.url);
+      aH(localBitmap);
+      if (this.wkP != null) {
+        atd(paramdnc.url);
       }
     }
     for (;;)
@@ -288,22 +266,22 @@ public class NormalIconNewTipPreference
       notifyDataSetChanged();
       AppMethodBeat.o(127193);
       return true;
-      o.aFw();
-      localBitmap = com.tencent.mm.av.c.te(paramdhn.url);
-      if (this.vmw != null)
+      q.aIE();
+      localBitmap = d.vT(paramdnc.url);
+      if (this.wrO != null)
       {
         if (localBitmap != null)
         {
-          if (this.vmx != null) {
-            this.vmx.aof(null);
+          if (this.wrP != null) {
+            this.wrP.ate(null);
           }
-          aF(localBitmap);
+          aH(localBitmap);
         }
         else
         {
-          o.aFA().a(paramdhn.url, this.vmw);
-          if (this.vmx != null) {
-            this.vmx.aof(paramdhn.url);
+          q.aII().a(paramdnc.url, this.wrO);
+          if (this.wrP != null) {
+            this.wrP.ate(paramdnc.url);
           }
         }
       }
@@ -311,51 +289,51 @@ public class NormalIconNewTipPreference
       {
         if (localBitmap != null)
         {
-          this.vmv = null;
-          if (this.vmz) {}
-          for (paramdhn = com.tencent.mm.sdk.platformtools.f.a(localBitmap, false, localBitmap.getWidth() / 2);; paramdhn = com.tencent.mm.sdk.platformtools.f.a(localBitmap, false, 0.1F * localBitmap.getWidth()))
+          this.wrN = null;
+          if (this.wrR) {}
+          for (paramdnc = com.tencent.mm.sdk.platformtools.g.a(localBitmap, false, localBitmap.getWidth() / 2);; paramdnc = com.tencent.mm.sdk.platformtools.g.a(localBitmap, false, 0.1F * localBitmap.getWidth()))
           {
-            aF(paramdhn);
+            aH(paramdnc);
             break;
           }
         }
-        o.aFA().a(paramdhn.url, this.vmy);
-        this.vmv = paramdhn.url;
+        q.aII().a(paramdnc.url, this.wrQ);
+        this.wrN = paramdnc.url;
         continue;
-        aad(8);
-        aac(8);
-        aag(8);
-        aab(8);
+        acn(8);
+        acm(8);
+        acq(8);
+        acl(8);
       }
     }
   }
   
-  public final boolean d(boolean paramBoolean, dhn paramdhn)
+  public final boolean d(boolean paramBoolean, dnc paramdnc)
   {
     AppMethodBeat.i(127194);
-    ac.d("MicroMsg.NewTips.NormalIconNewTipPreference", "showCounter() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.d("MicroMsg.NewTips.NormalIconNewTipPreference", "showCounter() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      aab(0);
-      String str = paramdhn.gMk;
-      if (paramdhn.gMk > 99) {
+      acl(0);
+      String str = paramdnc.hgh;
+      if (paramdnc.hgh > 99) {
         str = this.context.getString(2131764343);
       }
-      fZ(str, u.aM(this.mContext, paramdhn.gMk));
+      gw(str, u.aP(this.mContext, paramdnc.hgh));
     }
     for (;;)
     {
       notifyDataSetChanged();
       AppMethodBeat.o(127194);
       return true;
-      aad(8);
-      aac(8);
-      aag(8);
-      aab(8);
+      acn(8);
+      acm(8);
+      acq(8);
+      acl(8);
     }
   }
   
-  public final boolean dbk()
+  public final boolean dkD()
   {
     return false;
   }
@@ -368,59 +346,72 @@ public class NormalIconNewTipPreference
   public final View getRoot()
   {
     AppMethodBeat.i(127186);
-    if (this.fvu == null) {
-      this.fvu = new View(this.context);
+    if (this.fOB == null) {
+      this.fOB = new View(this.context);
     }
-    View localView = this.fvu;
+    View localView = this.fOB;
     AppMethodBeat.o(127186);
     return localView;
   }
   
-  public final boolean nR(boolean paramBoolean)
+  protected final void notifyDataSetChanged()
+  {
+    AppMethodBeat.i(127195);
+    if (this.wrM != null)
+    {
+      f localf = (f)this.wrM.get();
+      if (localf != null) {
+        localf.notifyDataSetChanged();
+      }
+    }
+    AppMethodBeat.o(127195);
+  }
+  
+  public final boolean ol(boolean paramBoolean)
   {
     AppMethodBeat.i(127188);
-    paramBoolean = g.a(paramBoolean, this);
+    paramBoolean = com.tencent.mm.plugin.newtips.a.g.a(paramBoolean, this);
     AppMethodBeat.o(127188);
     return paramBoolean;
   }
   
-  public final boolean nS(boolean paramBoolean)
+  public boolean om(boolean paramBoolean)
   {
     AppMethodBeat.i(127189);
-    ac.d("MicroMsg.NewTips.NormalIconNewTipPreference", "showRedPoint() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.d("MicroMsg.NewTips.NormalIconNewTipPreference", "showRedPoint() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {
-      aad(0);
+      acn(0);
     }
     for (;;)
     {
       notifyDataSetChanged();
       AppMethodBeat.o(127189);
       return true;
-      aad(8);
-      aac(8);
-      aag(8);
-      aab(8);
+      acn(8);
+      acm(8);
+      acq(8);
+      acl(8);
     }
   }
   
-  public final boolean nT(boolean paramBoolean)
+  public boolean on(boolean paramBoolean)
   {
     AppMethodBeat.i(127190);
-    ac.d("MicroMsg.NewTips.NormalIconNewTipPreference", "showNew() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.d("MicroMsg.NewTips.NormalIconNewTipPreference", "showNew() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      aab(0);
-      fZ(this.context.getString(2131755829), 2131233430);
+      acl(0);
+      gw(this.context.getString(2131755829), 2131233430);
     }
     for (;;)
     {
       notifyDataSetChanged();
       AppMethodBeat.o(127190);
       return true;
-      aad(8);
-      aac(8);
-      aag(8);
-      aab(8);
+      acn(8);
+      acm(8);
+      acq(8);
+      acl(8);
     }
   }
   
@@ -428,8 +419,8 @@ public class NormalIconNewTipPreference
   {
     AppMethodBeat.i(127185);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    if (this.fvu == null) {
-      this.fvu = paramViewGroup;
+    if (this.fOB == null) {
+      this.fOB = paramViewGroup;
     }
     AppMethodBeat.o(127185);
     return paramViewGroup;
@@ -437,7 +428,7 @@ public class NormalIconNewTipPreference
   
   public static abstract interface a
   {
-    public abstract void aof(String paramString);
+    public abstract void ate(String paramString);
   }
 }
 

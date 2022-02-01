@@ -1,10 +1,10 @@
 package d.l.b.a.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
 import d.l.b.a.b.d.a.e.g;
 import d.l.b.a.b.f.a;
 import d.l.b.a.b.k.a.u;
+import java.util.Arrays;
 
 public abstract interface n
   extends u
@@ -15,7 +15,7 @@ public abstract interface n
   
   public static abstract class a
   {
-    public final p fUL()
+    public final p gmk()
     {
       Object localObject2 = null;
       if (!(this instanceof b)) {}
@@ -24,22 +24,70 @@ public abstract interface n
         b localb = (b)localObject1;
         localObject1 = localObject2;
         if (localb != null) {
-          localObject1 = localb.Lsf;
+          localObject1 = localb.Njc;
         }
         return localObject1;
+      }
+    }
+    
+    public static final class a
+      extends n.a
+    {
+      public final byte[] content;
+      
+      public final boolean equals(Object paramObject)
+      {
+        AppMethodBeat.i(58219);
+        if (this != paramObject)
+        {
+          if ((paramObject instanceof a))
+          {
+            paramObject = (a)paramObject;
+            if (!d.g.b.p.i(this.content, paramObject.content)) {}
+          }
+        }
+        else
+        {
+          AppMethodBeat.o(58219);
+          return true;
+        }
+        AppMethodBeat.o(58219);
+        return false;
+      }
+      
+      public final int hashCode()
+      {
+        AppMethodBeat.i(58218);
+        byte[] arrayOfByte = this.content;
+        if (arrayOfByte != null)
+        {
+          int i = Arrays.hashCode(arrayOfByte);
+          AppMethodBeat.o(58218);
+          return i;
+        }
+        AppMethodBeat.o(58218);
+        return 0;
+      }
+      
+      public final String toString()
+      {
+        AppMethodBeat.i(58217);
+        String str = "ClassFileContent(content=" + Arrays.toString(this.content) + ")";
+        AppMethodBeat.o(58217);
+        return str;
       }
     }
     
     public static final class b
       extends n.a
     {
-      final p Lsf;
+      final p Njc;
       
       public b(p paramp)
       {
         super();
         AppMethodBeat.i(58220);
-        this.Lsf = paramp;
+        this.Njc = paramp;
         AppMethodBeat.o(58220);
       }
       
@@ -51,7 +99,7 @@ public abstract interface n
           if ((paramObject instanceof b))
           {
             paramObject = (b)paramObject;
-            if (!k.g(this.Lsf, paramObject.Lsf)) {}
+            if (!d.g.b.p.i(this.Njc, paramObject.Njc)) {}
           }
         }
         else
@@ -66,7 +114,7 @@ public abstract interface n
       public final int hashCode()
       {
         AppMethodBeat.i(58222);
-        p localp = this.Lsf;
+        p localp = this.Njc;
         if (localp != null)
         {
           int i = localp.hashCode();
@@ -80,7 +128,7 @@ public abstract interface n
       public final String toString()
       {
         AppMethodBeat.i(58221);
-        String str = "KotlinClass(kotlinJvmBinaryClass=" + this.Lsf + ")";
+        String str = "KotlinClass(kotlinJvmBinaryClass=" + this.Njc + ")";
         AppMethodBeat.o(58221);
         return str;
       }

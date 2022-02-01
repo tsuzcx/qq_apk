@@ -5,7 +5,7 @@ import com.tencent.mm.vfs.i;
 
 public final class FileUnlink
 {
-  public static int Ja(String paramString)
+  public static int Mr(String paramString)
   {
     AppMethodBeat.i(175574);
     int i = unlink(i.k(paramString, true));

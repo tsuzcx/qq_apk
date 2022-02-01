@@ -1,6 +1,6 @@
 package com.tencent.mm.api;
 
-import com.tencent.mm.al.a.c;
+import com.tencent.mm.am.a.c;
 import com.tencent.mm.kernel.c.a;
 
 public abstract interface j

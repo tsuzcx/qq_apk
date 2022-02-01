@@ -14,31 +14,33 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.plugin.wallet_core.model.s;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.MaxListView;
-import com.tencent.mm.ui.base.a;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.List;
 
-@a(19)
+@com.tencent.mm.ui.base.a(19)
 public class WalletSelectBankcardUI
   extends WalletBaseUI
 {
-  private TextView BIL;
-  private MaxListView BIM;
-  private a BIN = null;
-  private String BIO = null;
-  private boolean BIP = true;
-  private String BIQ = null;
-  private List<Bankcard> BIR = null;
+  private TextView Djd;
+  private MaxListView Dje;
+  private a Djf = null;
+  private String Djg = null;
+  private boolean Djh = true;
+  private String Dji = null;
+  private List<Bankcard> Djj = null;
   private int mScene = 0;
-  private TextView ozm;
+  private TextView pcH;
   
   public int getLayoutId()
   {
@@ -56,66 +58,71 @@ public class WalletSelectBankcardUI
     super.onCreate(paramBundle);
     setMMTitle(2131765035);
     this.mScene = getInput().getInt("key_scene", 0);
-    this.BIO = getInput().getString("key_top_tips");
-    this.BIP = getInput().getBoolean("key_is_show_new_bankcard", true);
-    this.BIQ = getInput().getString("bottom_tips");
-    this.BIR = getInput().getParcelableArrayList("key_showing_bankcards");
-    if (this.BIR == null) {
-      this.BIR = s.ery().esu();
+    this.Djg = getInput().getString("key_top_tips");
+    this.Djh = getInput().getBoolean("key_is_show_new_bankcard", true);
+    this.Dji = getInput().getString("bottom_tips");
+    this.Djj = getInput().getParcelableArrayList("key_showing_bankcards");
+    if (this.Djj == null) {
+      this.Djj = t.eFy().eGu();
     }
-    this.BIL = ((TextView)findViewById(2131305947));
-    this.BIM = ((MaxListView)findViewById(2131297167));
-    this.ozm = ((TextView)findViewById(2131297475));
-    if (!bs.isNullOrNil(this.BIO))
+    this.Djd = ((TextView)findViewById(2131305947));
+    this.Dje = ((MaxListView)findViewById(2131297167));
+    this.pcH = ((TextView)findViewById(2131297475));
+    if (!bt.isNullOrNil(this.Djg))
     {
-      this.BIL.setVisibility(0);
-      this.BIL.setText(this.BIO);
-      if (bs.isNullOrNil(this.BIQ)) {
+      this.Djd.setVisibility(0);
+      this.Djd.setText(this.Djg);
+      if (bt.isNullOrNil(this.Dji)) {
         break label342;
       }
-      this.ozm.setVisibility(0);
-      this.ozm.setText(this.BIQ);
+      this.pcH.setVisibility(0);
+      this.pcH.setText(this.Dji);
     }
     for (;;)
     {
       if (this.mScene == 0)
       {
-        this.ozm.setVisibility(0);
+        this.pcH.setVisibility(0);
         paramBundle = new l(this);
-        paramBundle.BFA = new l.a()
+        paramBundle.DfS = new l.a()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(71220);
-            ac.i("MicroMsg.WalletSelectBankcardUI", "hy: user clicked the phone.go to dial");
-            e.cn(WalletSelectBankcardUI.this, WalletSelectBankcardUI.this.getString(2131765040));
+            ad.i("MicroMsg.WalletSelectBankcardUI", "hy: user clicked the phone.go to dial");
+            e.cs(WalletSelectBankcardUI.this, WalletSelectBankcardUI.this.getString(2131765040));
             AppMethodBeat.o(71220);
           }
         };
         String str = getString(2131765843);
         SpannableString localSpannableString = new SpannableString(str);
         localSpannableString.setSpan(paramBundle, str.length() - 14, str.length(), 33);
-        this.ozm.setText(localSpannableString);
-        this.ozm.setMovementMethod(LinkMovementMethod.getInstance());
+        this.pcH.setText(localSpannableString);
+        this.pcH.setMovementMethod(LinkMovementMethod.getInstance());
       }
-      this.BIN = new a((byte)0);
-      this.BIM.setAdapter(this.BIN);
-      this.BIM.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.Djf = new a((byte)0);
+      this.Dje.setAdapter(this.Djf);
+      this.Dje.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(final AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(71223);
+          b localb = new b();
+          localb.bd(paramAnonymousAdapterView);
+          localb.bd(paramAnonymousView);
+          localb.mr(paramAnonymousInt);
+          localb.qY(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletSelectBankcardUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
           paramAnonymousAdapterView = (Bankcard)paramAnonymousAdapterView.getItemAtPosition(paramAnonymousInt);
-          if (paramAnonymousAdapterView != null)
-          {
-            com.tencent.mm.ui.base.h.a(WalletSelectBankcardUI.this, true, WalletSelectBankcardUI.this.getString(2131765845, new Object[] { paramAnonymousAdapterView.field_desc, paramAnonymousAdapterView.field_mobile }), WalletSelectBankcardUI.this.getString(2131765847), WalletSelectBankcardUI.this.getString(2131765844), WalletSelectBankcardUI.this.getString(2131765846), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          if (paramAnonymousAdapterView != null) {
+            h.a(WalletSelectBankcardUI.this, true, WalletSelectBankcardUI.this.getString(2131765845, new Object[] { paramAnonymousAdapterView.field_desc, paramAnonymousAdapterView.field_mobile }), WalletSelectBankcardUI.this.getString(2131765847), WalletSelectBankcardUI.this.getString(2131765844), WalletSelectBankcardUI.this.getString(2131765846), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
                 AppMethodBeat.i(71221);
                 WalletSelectBankcardUI.this.getInput().putBoolean("key_balance_change_phone_need_confirm_phone", false);
                 WalletSelectBankcardUI.a(WalletSelectBankcardUI.this, paramAnonymousAdapterView);
-                com.tencent.mm.plugin.report.service.h.wUl.f(11977, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
+                g.yhR.f(11977, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
                 AppMethodBeat.o(71221);
               }
             }, new DialogInterface.OnClickListener()
@@ -128,20 +135,23 @@ public class WalletSelectBankcardUI
                 AppMethodBeat.o(71222);
               }
             });
+          }
+          for (;;)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletSelectBankcardUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(71223);
             return;
+            WalletSelectBankcardUI.this.getInput().putBoolean("key_balance_change_phone_need_confirm_phone", false);
+            WalletSelectBankcardUI.a(WalletSelectBankcardUI.this, null);
           }
-          WalletSelectBankcardUI.this.getInput().putBoolean("key_balance_change_phone_need_confirm_phone", false);
-          WalletSelectBankcardUI.a(WalletSelectBankcardUI.this, null);
-          AppMethodBeat.o(71223);
         }
       });
       AppMethodBeat.o(71227);
       return;
-      this.BIL.setVisibility(8);
+      this.Djd.setVisibility(8);
       break;
       label342:
-      this.ozm.setVisibility(8);
+      this.pcH.setVisibility(8);
     }
   }
   
@@ -212,13 +222,13 @@ public class WalletSelectBankcardUI
       {
         localView = LayoutInflater.from(WalletSelectBankcardUI.this).inflate(2131496026, paramViewGroup, false);
         paramView = new a();
-        paramView.BIV = ((TextView)localView.findViewById(2131297154));
+        paramView.Djn = ((TextView)localView.findViewById(2131297154));
         localView.setTag(paramView);
         paramViewGroup = paramView;
         if (localBankcard == null) {
           break label105;
         }
-        paramViewGroup.BIV.setText(localBankcard.field_desc);
+        paramViewGroup.Djn.setText(localBankcard.field_desc);
       }
       for (;;)
       {
@@ -228,13 +238,13 @@ public class WalletSelectBankcardUI
         localView = paramView;
         break;
         label105:
-        paramViewGroup.BIV.setText(2131765849);
+        paramViewGroup.Djn.setText(2131765849);
       }
     }
     
     final class a
     {
-      TextView BIV;
+      TextView Djn;
       
       a() {}
     }

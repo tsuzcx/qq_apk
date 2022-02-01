@@ -1,58 +1,54 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.c;
-import com.tencent.mm.i.g.a;
-import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.vfs.e;
-import java.io.ByteArrayOutputStream;
-import java.nio.ByteBuffer;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
+import d.l;
+import org.json.JSONObject;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiSystemLog;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "PREFIX", "", "PREFIX$annotations", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)V", "getPREFIX", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;)Ljava/lang/String;", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wxa-app_release"})
 public final class ce
-  extends a<com.tencent.mm.plugin.appbrand.q>
+  extends a<c>
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "uploadToCommonCDN";
+  public static final int CTRL_INDEX = 65;
+  public static final String NAME = "systemLog";
+  public static final a kuI;
   
-  private static String c(com.tencent.mm.plugin.appbrand.q paramq, String paramString)
+  static
   {
-    AppMethodBeat.i(45705);
-    paramq = paramq.getRuntime().DH().IS(paramString);
-    if (paramq == null)
-    {
-      AppMethodBeat.o(45705);
-      return "";
-    }
-    paramq = com.tencent.mm.vfs.q.B(paramq.fxV());
-    AppMethodBeat.o(45705);
-    return paramq;
+    AppMethodBeat.i(197497);
+    kuI = new a((byte)0);
+    AppMethodBeat.o(197497);
   }
   
-  private static ByteBuffer cr(Object paramObject)
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(186571);
-    if ((paramObject instanceof String)) {
-      paramObject = ByteBuffer.wrap(((String)paramObject).getBytes());
+    AppMethodBeat.i(139845);
+    p.h(paramc, "service");
+    p.h(paramJSONObject, "data");
+    String str2 = paramJSONObject.optString("message");
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str1 = "appId[" + paramc.getAppId() + ']';
+    if ((paramc instanceof q)) {
+      paramJSONObject = "Service ".concat(String.valueOf(str1));
     }
     for (;;)
     {
-      AppMethodBeat.o(186571);
-      return paramObject;
-      if ((paramObject instanceof ByteBuffer)) {
-        paramObject = (ByteBuffer)paramObject;
-      } else {
-        paramObject = null;
+      ad.i("AppBrandLog", new StringBuilder().append(paramJSONObject).append(" print:").toString() + str2);
+      paramc.h(paramInt, Pg("ok"));
+      AppMethodBeat.o(139845);
+      return;
+      paramJSONObject = str1;
+      if ((paramc instanceof aa)) {
+        paramJSONObject = "Page " + str1 + " url[" + ((aa)paramc).getURL() + ']';
       }
     }
   }
   
-  static final class a
-    implements b<Bundle, Bundle>
-  {}
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiSystemLog$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wxa-app_release"})
+  public static final class a {}
 }
 
 

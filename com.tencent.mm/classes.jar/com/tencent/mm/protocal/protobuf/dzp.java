@@ -1,98 +1,84 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class dzp
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int Eae;
-  public int FbR;
-  public int Fhl;
-  public int Fhm;
-  public String Fhn;
-  public int Scene;
+  public String HMw;
+  public LinkedList<String> HMx;
+  
+  public dzp()
+  {
+    AppMethodBeat.i(147798);
+    this.HMx = new LinkedList();
+    AppMethodBeat.o(147798);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123683);
+    AppMethodBeat.i(147799);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.FbR);
-      paramVarArgs.aR(2, this.Eae);
-      paramVarArgs.aR(3, this.Scene);
-      if (this.Fhn != null) {
-        paramVarArgs.d(4, this.Fhn);
+      if (this.HMw != null) {
+        paramVarArgs.d(1, this.HMw);
       }
-      paramVarArgs.aR(5, this.Fhm);
-      paramVarArgs.aR(6, this.Fhl);
-      AppMethodBeat.o(123683);
+      paramVarArgs.e(2, 1, this.HMx);
+      AppMethodBeat.o(147799);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bx(1, this.FbR) + 0 + f.a.a.b.b.a.bx(2, this.Eae) + f.a.a.b.b.a.bx(3, this.Scene);
-      paramInt = i;
-      if (this.Fhn != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.Fhn);
+    if (paramInt == 1) {
+      if (this.HMw == null) {
+        break label274;
       }
-      i = f.a.a.b.b.a.bx(5, this.Fhm);
-      int j = f.a.a.b.b.a.bx(6, this.Fhl);
-      AppMethodBeat.o(123683);
-      return paramInt + i + j;
     }
-    if (paramInt == 2)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.HMw) + 0;; paramInt = 0)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
-        }
-      }
-      AppMethodBeat.o(123683);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      dzp localdzp = (dzp)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      int i = f.a.a.a.c(2, 1, this.HMx);
+      AppMethodBeat.o(147799);
+      return paramInt + i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(123683);
-        return -1;
-      case 1: 
-        localdzp.FbR = locala.LVo.xF();
-        AppMethodBeat.o(123683);
-        return 0;
-      case 2: 
-        localdzp.Eae = locala.LVo.xF();
-        AppMethodBeat.o(123683);
-        return 0;
-      case 3: 
-        localdzp.Scene = locala.LVo.xF();
-        AppMethodBeat.o(123683);
-        return 0;
-      case 4: 
-        localdzp.Fhn = locala.LVo.readString();
-        AppMethodBeat.o(123683);
-        return 0;
-      case 5: 
-        localdzp.Fhm = locala.LVo.xF();
-        AppMethodBeat.o(123683);
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.HMx.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gxE();
+          }
+        }
+        AppMethodBeat.o(147799);
         return 0;
       }
-      localdzp.Fhl = locala.LVo.xF();
-      AppMethodBeat.o(123683);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        dzp localdzp = (dzp)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(147799);
+          return -1;
+        case 1: 
+          localdzp.HMw = locala.NPN.readString();
+          AppMethodBeat.o(147799);
+          return 0;
+        }
+        localdzp.HMx.add(locala.NPN.readString());
+        AppMethodBeat.o(147799);
+        return 0;
+      }
+      AppMethodBeat.o(147799);
+      return -1;
     }
-    AppMethodBeat.o(123683);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dzp
  * JD-Core Version:    0.7.0.1
  */

@@ -8,23 +8,23 @@ import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.i;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
   extends j<a>
 {
-  public static final String[] hlS;
+  public static final String[] hEf;
   
   static
   {
     AppMethodBeat.i(48359);
-    hlS = new String[] { j.getCreateSQLs(a.jmW, "AppBrandCommonKVBinaryData") };
+    hEf = new String[] { j.getCreateSQLs(a.jGU, "AppBrandCommonKVBinaryData") };
     AppMethodBeat.o(48359);
   }
   
   public a(e parame)
   {
-    super(parame, a.jmW, "AppBrandCommonKVBinaryData", null);
+    super(parame, a.jGU, "AppBrandCommonKVBinaryData", null);
   }
   
   public final void clear(String paramString)
@@ -40,7 +40,7 @@ public final class a
   public final byte[] get(String paramString)
   {
     AppMethodBeat.i(48357);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(48357);
       return null;
@@ -57,10 +57,10 @@ public final class a
     return null;
   }
   
-  public final void k(String paramString, byte[] paramArrayOfByte)
+  public final void l(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(48356);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(48356);
       return;
@@ -75,15 +75,15 @@ public final class a
   static final class a
     extends c
   {
-    static final c.a jmW;
-    @i(eWA="$$invalid", eWB=1)
+    static final c.a jGU;
+    @i(fmk="$$invalid", fml=1)
     public String field_key;
     public byte[] field_value;
     
     static
     {
       AppMethodBeat.i(48354);
-      jmW = initAutoDBInfo(a.class);
+      jGU = initAutoDBInfo(a.class);
       AppMethodBeat.o(48354);
     }
     
@@ -107,13 +107,13 @@ public final class a
     
     public final c.a getDBInfo()
     {
-      return jmW;
+      return jGU;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.y.a
  * JD-Core Version:    0.7.0.1
  */

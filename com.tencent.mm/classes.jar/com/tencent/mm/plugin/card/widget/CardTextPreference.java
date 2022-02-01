@@ -12,17 +12,17 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class CardTextPreference
   extends Preference
 {
-  private TextView awK;
+  private TextView ayB;
   Context mContext;
-  private TextView omx;
-  public int omy;
-  boolean omz;
+  private TextView oPS;
+  public int oPT;
+  boolean oPU;
   
   public CardTextPreference(Context paramContext)
   {
     super(paramContext, null);
-    this.omy = 0;
-    this.omz = true;
+    this.oPT = 0;
+    this.oPU = true;
     this.mContext = paramContext;
   }
   
@@ -30,8 +30,8 @@ public class CardTextPreference
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(113886);
-    this.omy = 0;
-    this.omz = true;
+    this.oPT = 0;
+    this.oPU = true;
     setLayoutResource(2131494804);
     this.mContext = paramContext;
     AppMethodBeat.o(113886);
@@ -40,12 +40,12 @@ public class CardTextPreference
   public CardTextPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.omy = 0;
-    this.omz = true;
+    this.oPT = 0;
+    this.oPU = true;
     this.mContext = paramContext;
   }
   
-  private static Rect dI(View paramView)
+  private static Rect dL(View paramView)
   {
     AppMethodBeat.i(113891);
     Rect localRect = new Rect();
@@ -69,37 +69,37 @@ public class CardTextPreference
     AppMethodBeat.o(113892);
   }
   
-  private void jp(boolean paramBoolean)
+  private void jA(boolean paramBoolean)
   {
     AppMethodBeat.i(113890);
-    if (this.awK != null)
+    if (this.ayB != null)
     {
-      Rect localRect = dI(this.awK);
-      this.awK.setSingleLine(paramBoolean);
+      Rect localRect = dL(this.ayB);
+      this.ayB.setSingleLine(paramBoolean);
       if (!paramBoolean)
       {
         localRect.top = this.mContext.getResources().getDimensionPixelOffset(2131165480);
         localRect.bottom = this.mContext.getResources().getDimensionPixelOffset(2131165480);
-        i(this.awK, localRect);
+        i(this.ayB, localRect);
       }
     }
     AppMethodBeat.o(113890);
   }
   
-  public final void bUa()
+  public final void bYF()
   {
     AppMethodBeat.i(113888);
-    if ((this.omx != null) && (this.omy != 0)) {
-      this.omx.setTextColor(this.omy);
+    if ((this.oPS != null) && (this.oPT != 0)) {
+      this.oPS.setTextColor(this.oPT);
     }
     AppMethodBeat.o(113888);
   }
   
-  public final void bUb()
+  public final void bYG()
   {
     AppMethodBeat.i(113889);
-    jp(false);
-    this.omz = false;
+    jA(false);
+    this.oPU = false;
     AppMethodBeat.o(113889);
   }
   
@@ -107,16 +107,16 @@ public class CardTextPreference
   {
     AppMethodBeat.i(113887);
     super.onBindView(paramView);
-    this.omx = ((TextView)paramView.findViewById(16908304));
-    this.awK = ((TextView)paramView.findViewById(16908310));
-    bUa();
-    jp(this.omz);
+    this.oPS = ((TextView)paramView.findViewById(16908304));
+    this.ayB = ((TextView)paramView.findViewById(16908310));
+    bYF();
+    jA(this.oPU);
     AppMethodBeat.o(113887);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.CardTextPreference
  * JD-Core Version:    0.7.0.1
  */

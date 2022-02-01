@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -23,13 +23,13 @@ public final class s
   {
     AppMethodBeat.i(128879);
     paramJSONObject = paramJSONObject.optString("filePath", "");
-    if (bs.isNullOrNil(paramJSONObject))
+    if (bt.isNullOrNil(paramJSONObject))
     {
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(128879);
       return;
     }
-    e.kqZ.execute(new Runnable()
+    e.kMv.execute(new Runnable()
     {
       public final void run()
       {
@@ -39,7 +39,7 @@ public final class s
           AppMethodBeat.o(128878);
           return;
         }
-        com.tencent.mm.vfs.e locale = paramc.DH().IS(paramJSONObject);
+        com.tencent.mm.vfs.e locale = paramc.Fg().Mj(paramJSONObject);
         if (locale == null)
         {
           paramc.h(paramInt, s.this.e(String.format(Locale.US, "fail no such file \"%s\"", new Object[] { paramJSONObject }), null));
@@ -49,21 +49,21 @@ public final class s
         HashMap localHashMap = new HashMap(3);
         localHashMap.put("size", Long.valueOf(locale.length()));
         localHashMap.put("createTime", Long.valueOf(TimeUnit.MILLISECONDS.toSeconds(locale.lastModified())));
-        paramc.h(paramInt, s.this.k("ok", localHashMap));
+        paramc.h(paramInt, s.this.m("ok", localHashMap));
         AppMethodBeat.o(128878);
       }
     });
     AppMethodBeat.o(128879);
   }
   
-  public final boolean bex()
+  public final boolean bib()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.s
  * JD-Core Version:    0.7.0.1
  */

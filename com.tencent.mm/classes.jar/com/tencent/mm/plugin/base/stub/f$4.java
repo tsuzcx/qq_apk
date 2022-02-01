@@ -1,19 +1,26 @@
 package com.tencent.mm.plugin.base.stub;
 
-import android.database.MatrixCursor;
-import com.tencent.mm.plugin.appbrand.launching.b.a.a.a;
-import com.tencent.mm.vending.g.d.b;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vending.g.d.a;
 import java.util.concurrent.CountDownLatch;
 
 final class f$4
-  implements d.b<List<a.a>>
+  implements d.a
 {
-  f$4(MatrixCursor paramMatrixCursor, CountDownLatch paramCountDownLatch) {}
+  f$4(CountDownLatch paramCountDownLatch) {}
+  
+  public final void ce(Object paramObject)
+  {
+    AppMethodBeat.i(193149);
+    ad.e("MicroMsg.WXBizLogic", "onInterrupt error");
+    this.val$countDownLatch.countDown();
+    AppMethodBeat.o(193149);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.f.4
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,19 @@ import java.util.Iterator;
 
 public class b
 {
-  private static volatile b cqj;
+  private static volatile b cBb;
   public final Application application;
-  public final HashSet<com.tencent.matrix.e.b> cqk;
+  public final HashSet<com.tencent.matrix.e.b> cBc;
   private final com.tencent.matrix.e.c pluginListener;
   
   private b(Application paramApplication, com.tencent.matrix.e.c paramc, HashSet<com.tencent.matrix.e.b> paramHashSet)
   {
     this.application = paramApplication;
     this.pluginListener = paramc;
-    this.cqk = paramHashSet;
-    paramApplication = a.cqa;
+    this.cBc = paramHashSet;
+    paramApplication = a.cAS;
     paramc = this.application;
-    if (paramApplication.cqf) {
+    if (paramApplication.cAX) {
       com.tencent.matrix.g.c.e("Matrix.AppActiveDelegate", "has inited!", new Object[0]);
     }
     for (;;)
@@ -33,26 +33,26 @@ public class b
         paramc.init(this.application, this.pluginListener);
         this.pluginListener.b(paramc);
       }
-      paramApplication.cqf = true;
-      if (com.tencent.matrix.g.b.HY() != null) {
-        paramApplication.handler = new Handler(com.tencent.matrix.g.b.HY().getLooper());
+      paramApplication.cAX = true;
+      if (com.tencent.matrix.g.b.Jt() != null) {
+        paramApplication.handler = new Handler(com.tencent.matrix.g.b.Jt().getLooper());
       }
-      paramc.registerComponentCallbacks(paramApplication.cqe);
-      paramc.registerActivityLifecycleCallbacks(paramApplication.cqe);
+      paramc.registerComponentCallbacks(paramApplication.cAW);
+      paramc.registerActivityLifecycleCallbacks(paramApplication.cAW);
     }
   }
   
-  public static boolean Gp()
+  public static boolean HK()
   {
-    return cqj != null;
+    return cBb != null;
   }
   
-  public static b Gq()
+  public static b HL()
   {
-    if (cqj == null) {
+    if (cBb == null) {
       throw new RuntimeException("you must init Matrix sdk first");
     }
-    return cqj;
+    return cBb;
   }
   
   /* Error */
@@ -61,13 +61,13 @@ public class b
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 119	com/tencent/matrix/b:cqj	Lcom/tencent/matrix/b;
+    //   3: getstatic 119	com/tencent/matrix/b:cBb	Lcom/tencent/matrix/b;
     //   6: ifnonnull +14 -> 20
     //   9: aload_0
-    //   10: putstatic 119	com/tencent/matrix/b:cqj	Lcom/tencent/matrix/b;
+    //   10: putstatic 119	com/tencent/matrix/b:cBb	Lcom/tencent/matrix/b;
     //   13: ldc 2
     //   15: monitorexit
-    //   16: getstatic 119	com/tencent/matrix/b:cqj	Lcom/tencent/matrix/b;
+    //   16: getstatic 119	com/tencent/matrix/b:cBb	Lcom/tencent/matrix/b;
     //   19: areturn
     //   20: ldc 131
     //   22: ldc 133
@@ -99,7 +99,7 @@ public class b
   public final <T extends com.tencent.matrix.e.b> T V(Class<T> paramClass)
   {
     paramClass = paramClass.getName();
-    Iterator localIterator = this.cqk.iterator();
+    Iterator localIterator = this.cBc.iterator();
     while (localIterator.hasNext())
     {
       com.tencent.matrix.e.b localb = (com.tencent.matrix.e.b)localIterator.next();
@@ -113,7 +113,7 @@ public class b
   public static final class a
   {
     final Application application;
-    HashSet<com.tencent.matrix.e.b> cqk = new HashSet();
+    HashSet<com.tencent.matrix.e.b> cBc = new HashSet();
     com.tencent.matrix.e.c pluginListener;
     
     public a(Application paramApplication)
@@ -127,13 +127,13 @@ public class b
     public final a a(com.tencent.matrix.e.b paramb)
     {
       String str = paramb.getTag();
-      Iterator localIterator = this.cqk.iterator();
+      Iterator localIterator = this.cBc.iterator();
       while (localIterator.hasNext()) {
         if (str.equals(((com.tencent.matrix.e.b)localIterator.next()).getTag())) {
           throw new RuntimeException(String.format("plugin with tag %s is already exist", new Object[] { str }));
         }
       }
-      this.cqk.add(paramb);
+      this.cBc.add(paramb);
       return this;
     }
   }

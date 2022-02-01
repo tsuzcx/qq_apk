@@ -1,40 +1,42 @@
 package com.tencent.mm.plugin.wallet.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.xj;
-import com.tencent.mm.g.a.xj.a;
-import com.tencent.mm.g.a.xj.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.yd;
+import com.tencent.mm.g.a.yd.a;
+import com.tencent.mm.g.a.yd.b;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.c.a.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class l
-  extends c<xj>
+  extends c<yd>
 {
   public l()
   {
     AppMethodBeat.i(160862);
-    this.__eventId = xj.class.getName().hashCode();
+    this.__eventId = yd.class.getName().hashCode();
     AppMethodBeat.o(160862);
   }
   
-  private static void a(xj paramxj, com.tencent.mm.ak.g paramg)
+  private static void a(yd paramyd, f paramf)
   {
     AppMethodBeat.i(69186);
-    ac.i("MicroMsg.HandleWCPayWalletBufferListener", "do check pay jsapi");
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(1767, paramg);
-    paramxj = paramxj.dAg;
-    ac.i("MicroMsg.HandleWCPayWalletBufferListener", "appId: %s, \nnonce: %s, \ntimestamp: %s, \npackage: %s, \nsign: %s, \nsignType: %s, \nurl: %s", new Object[] { paramxj.appId, paramxj.nonceStr, paramxj.cJz, paramxj.dAi, paramxj.dAj, paramxj.signType, paramxj.url });
-    paramxj = new a(paramxj.appId, paramxj.nonceStr, paramxj.cJz, paramxj.dAi, paramxj.dAj, paramxj.signType, paramxj.url);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(paramxj, 0);
+    ad.i("MicroMsg.HandleWCPayWalletBufferListener", "do check pay jsapi");
+    g.ajD();
+    g.ajB().gAO.a(1767, paramf);
+    paramyd = paramyd.dMt;
+    ad.i("MicroMsg.HandleWCPayWalletBufferListener", "appId: %s, \nnonce: %s, \ntimestamp: %s, \npackage: %s, \nsign: %s, \nsignType: %s, \nurl: %s", new Object[] { paramyd.appId, paramyd.nonceStr, paramyd.cUM, paramyd.dMv, paramyd.dMw, paramyd.signType, paramyd.url });
+    paramyd = new a(paramyd.appId, paramyd.nonceStr, paramyd.cUM, paramyd.dMv, paramyd.dMw, paramyd.signType, paramyd.url);
+    g.ajD();
+    g.ajB().gAO.a(paramyd, 0);
     AppMethodBeat.o(69186);
   }
 }

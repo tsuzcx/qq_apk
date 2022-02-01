@@ -7,18 +7,18 @@ public enum c
   static
   {
     AppMethodBeat.i(12216);
-    bHa = new c("ERROR_CORRECTION", 0);
-    bHb = new c("CHARACTER_SET", 1);
-    bHc = new c("DATA_MATRIX_SHAPE", 2);
-    bHd = new c("MIN_SIZE", 3);
-    bHe = new c("MAX_SIZE", 4);
-    bHf = new c("MARGIN", 5);
-    bHg = new c("PDF417_COMPACT", 6);
-    bHh = new c("PDF417_COMPACTION", 7);
-    bHi = new c("PDF417_DIMENSIONS", 8);
-    bHj = new c("AZTEC_LAYERS", 9);
-    bHk = new c("QR_VERSION", 10);
-    bHl = new c[] { bHa, bHb, bHc, bHd, bHe, bHf, bHg, bHh, bHi, bHj, bHk };
+    bRo = new c("ERROR_CORRECTION", 0);
+    bRp = new c("CHARACTER_SET", 1);
+    bRq = new c("DATA_MATRIX_SHAPE", 2);
+    bRr = new c("MIN_SIZE", 3);
+    bRs = new c("MAX_SIZE", 4);
+    bRt = new c("MARGIN", 5);
+    bRu = new c("PDF417_COMPACT", 6);
+    bRv = new c("PDF417_COMPACTION", 7);
+    bRw = new c("PDF417_DIMENSIONS", 8);
+    bRx = new c("AZTEC_LAYERS", 9);
+    bRy = new c("QR_VERSION", 10);
+    bRz = new c[] { bRo, bRp, bRq, bRr, bRs, bRt, bRu, bRv, bRw, bRx, bRy };
     AppMethodBeat.o(12216);
   }
   

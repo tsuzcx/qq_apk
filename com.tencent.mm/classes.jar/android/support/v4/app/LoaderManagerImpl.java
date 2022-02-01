@@ -21,20 +21,20 @@ final class LoaderManagerImpl
   extends p
 {
   static boolean DEBUG = false;
-  private final LifecycleOwner EV;
-  private final LoaderViewModel EW;
+  private final LifecycleOwner GM;
+  private final LoaderViewModel GN;
   
   LoaderManagerImpl(LifecycleOwner paramLifecycleOwner, ViewModelStore paramViewModelStore)
   {
-    this.EV = paramLifecycleOwner;
-    this.EW = LoaderViewModel.a(paramViewModelStore);
+    this.GM = paramLifecycleOwner;
+    this.GN = LoaderViewModel.a(paramViewModelStore);
   }
   
   private <D> c<D> b(p.a<D> parama)
   {
     try
     {
-      this.EW.Ff = true;
+      this.GN.GW = true;
       localObject = parama.onCreateLoader(0, null);
       if (localObject == null) {
         throw new IllegalArgumentException("Object returned from onCreateLoader must not be null");
@@ -42,7 +42,7 @@ final class LoaderManagerImpl
     }
     finally
     {
-      this.EW.Ff = false;
+      this.GN.GW = false;
     }
     if ((localObject.getClass().isMemberClass()) && (!Modifier.isStatic(localObject.getClass().getModifiers()))) {
       throw new IllegalArgumentException("Object returned from onCreateLoader must not be a non-static inner member class: ".concat(String.valueOf(localObject)));
@@ -51,20 +51,20 @@ final class LoaderManagerImpl
     if (DEBUG) {
       new StringBuilder("  Created new loader ").append(localObject);
     }
-    this.EW.Fe.put(0, localObject);
-    this.EW.Ff = false;
-    return ((a)localObject).a(this.EV, parama);
+    this.GN.GV.put(0, localObject);
+    this.GN.GW = false;
+    return ((a)localObject).a(this.GM, parama);
   }
   
   public final <D> c<D> a(p.a<D> parama)
   {
-    if (this.EW.Ff) {
+    if (this.GN.GW) {
       throw new IllegalStateException("Called while creating a loader");
     }
     if (Looper.getMainLooper() != Looper.myLooper()) {
       throw new IllegalStateException("initLoader must be called on the main thread");
     }
-    a locala = (a)this.EW.Fe.get(0, null);
+    a locala = (a)this.GN.GV.get(0, null);
     if (DEBUG) {
       new StringBuilder("initLoader in ").append(this).append(": args=").append(null);
     }
@@ -74,66 +74,66 @@ final class LoaderManagerImpl
     if (DEBUG) {
       new StringBuilder("  Re-using existing loader ").append(locala);
     }
-    return locala.a(this.EV, parama);
-  }
-  
-  public final void dR()
-  {
-    LoaderViewModel localLoaderViewModel = this.EW;
-    int j = localLoaderViewModel.Fe.size();
-    int i = 0;
-    while (i < j)
-    {
-      ((a)localLoaderViewModel.Fe.valueAt(i)).dR();
-      i += 1;
-    }
+    return locala.a(this.GM, parama);
   }
   
   @Deprecated
   public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
-    LoaderViewModel localLoaderViewModel = this.EW;
-    if (localLoaderViewModel.Fe.size() > 0)
+    LoaderViewModel localLoaderViewModel = this.GN;
+    if (localLoaderViewModel.GV.size() > 0)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.println("Loaders:");
       String str = paramString + "    ";
       int i = 0;
-      while (i < localLoaderViewModel.Fe.size())
+      while (i < localLoaderViewModel.GV.size())
       {
-        a locala = (a)localLoaderViewModel.Fe.valueAt(i);
+        a locala = (a)localLoaderViewModel.GV.valueAt(i);
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("  #");
-        paramPrintWriter.print(localLoaderViewModel.Fe.keyAt(i));
+        paramPrintWriter.print(localLoaderViewModel.GV.keyAt(i));
         paramPrintWriter.print(": ");
         paramPrintWriter.println(locala.toString());
         paramPrintWriter.print(str);
         paramPrintWriter.print("mId=");
         paramPrintWriter.print(locala.mId);
         paramPrintWriter.print(" mArgs=");
-        paramPrintWriter.println(locala.EX);
+        paramPrintWriter.println(locala.GO);
         paramPrintWriter.print(str);
         paramPrintWriter.print("mLoader=");
-        paramPrintWriter.println(locala.EY);
-        locala.EY.dump(str + "  ", paramFileDescriptor, paramPrintWriter, paramArrayOfString);
-        if (locala.EZ != null)
+        paramPrintWriter.println(locala.GP);
+        locala.GP.dump(str + "  ", paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+        if (locala.GQ != null)
         {
           paramPrintWriter.print(str);
           paramPrintWriter.print("mCallbacks=");
-          paramPrintWriter.println(locala.EZ);
-          b localb = locala.EZ;
+          paramPrintWriter.println(locala.GQ);
+          b localb = locala.GQ;
           paramPrintWriter.print(str + "  ");
           paramPrintWriter.print("mDeliveredData=");
-          paramPrintWriter.println(localb.Fc);
+          paramPrintWriter.println(localb.GT);
         }
         paramPrintWriter.print(str);
         paramPrintWriter.print("mData=");
-        paramPrintWriter.println(locala.EY.dataToString(locala.getValue()));
+        paramPrintWriter.println(locala.GP.dataToString(locala.getValue()));
         paramPrintWriter.print(str);
         paramPrintWriter.print("mStarted=");
         paramPrintWriter.println(locala.hasActiveObservers());
         i += 1;
       }
+    }
+  }
+  
+  public final void em()
+  {
+    LoaderViewModel localLoaderViewModel = this.GN;
+    int j = localLoaderViewModel.GV.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((a)localLoaderViewModel.GV.valueAt(i)).em();
+      i += 1;
     }
   }
   
@@ -143,7 +143,7 @@ final class LoaderManagerImpl
     localStringBuilder.append("LoaderManager{");
     localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
     localStringBuilder.append(" in ");
-    e.a(this.EV, localStringBuilder);
+    e.a(this.GM, localStringBuilder);
     localStringBuilder.append("}}");
     return localStringBuilder.toString();
   }
@@ -151,51 +151,51 @@ final class LoaderManagerImpl
   static class LoaderViewModel
     extends ViewModel
   {
-    private static final ViewModelProvider.Factory Fd = new ViewModelProvider.Factory()
+    private static final ViewModelProvider.Factory GU = new ViewModelProvider.Factory()
     {
       public final <T extends ViewModel> T create(Class<T> paramAnonymousClass)
       {
         return new LoaderManagerImpl.LoaderViewModel();
       }
     };
-    o<LoaderManagerImpl.a> Fe = new o();
-    boolean Ff = false;
+    o<LoaderManagerImpl.a> GV = new o();
+    boolean GW = false;
     
     static LoaderViewModel a(ViewModelStore paramViewModelStore)
     {
-      return (LoaderViewModel)new ViewModelProvider(paramViewModelStore, Fd).get(LoaderViewModel.class);
+      return (LoaderViewModel)new ViewModelProvider(paramViewModelStore, GU).get(LoaderViewModel.class);
     }
     
-    public final void ae()
+    public final void af()
     {
-      super.ae();
-      int j = this.Fe.size();
+      super.af();
+      int j = this.GV.size();
       int i = 0;
       while (i < j)
       {
-        LoaderManagerImpl.a locala = (LoaderManagerImpl.a)this.Fe.valueAt(i);
+        LoaderManagerImpl.a locala = (LoaderManagerImpl.a)this.GV.valueAt(i);
         if (LoaderManagerImpl.DEBUG) {
           new StringBuilder("  Destroying: ").append(locala);
         }
-        locala.EY.cancelLoad();
-        locala.EY.abandon();
-        LoaderManagerImpl.b localb = locala.EZ;
+        locala.GP.cancelLoad();
+        locala.GP.abandon();
+        LoaderManagerImpl.b localb = locala.GQ;
         if (localb != null)
         {
           locala.removeObserver(localb);
-          if (localb.Fc)
+          if (localb.GT)
           {
             if (LoaderManagerImpl.DEBUG) {
-              new StringBuilder("  Resetting: ").append(localb.EY);
+              new StringBuilder("  Resetting: ").append(localb.GP);
             }
-            localb.Fb.onLoaderReset(localb.EY);
+            localb.GS.onLoaderReset(localb.GP);
           }
         }
-        locala.EY.unregisterListener(locala);
-        locala.EY.reset();
+        locala.GP.unregisterListener(locala);
+        locala.GP.reset();
         i += 1;
       }
-      this.Fe.clear();
+      this.GV.clear();
     }
   }
   
@@ -203,44 +203,44 @@ final class LoaderManagerImpl
     extends MutableLiveData<D>
     implements c.b<D>
   {
-    private LifecycleOwner EV;
-    final Bundle EX = null;
-    final c<D> EY;
-    LoaderManagerImpl.b<D> EZ;
-    c<D> Fa;
+    private LifecycleOwner GM;
+    final Bundle GO = null;
+    final c<D> GP;
+    LoaderManagerImpl.b<D> GQ;
+    c<D> GR;
     final int mId = 0;
     
     a(c<D> paramc)
     {
-      this.EY = paramc;
-      this.Fa = null;
-      this.EY.registerListener(0, this);
+      this.GP = paramc;
+      this.GR = null;
+      this.GP.registerListener(0, this);
     }
     
-    public final void V()
+    public final void W()
     {
       if (LoaderManagerImpl.DEBUG) {
         new StringBuilder("  Stopping: ").append(this);
       }
-      this.EY.stopLoading();
+      this.GP.stopLoading();
     }
     
     final c<D> a(LifecycleOwner paramLifecycleOwner, p.a<D> parama)
     {
-      parama = new LoaderManagerImpl.b(this.EY, parama);
+      parama = new LoaderManagerImpl.b(this.GP, parama);
       observe(paramLifecycleOwner, parama);
-      if (this.EZ != null) {
-        removeObserver(this.EZ);
+      if (this.GQ != null) {
+        removeObserver(this.GQ);
       }
-      this.EV = paramLifecycleOwner;
-      this.EZ = parama;
-      return this.EY;
+      this.GM = paramLifecycleOwner;
+      this.GQ = parama;
+      return this.GP;
     }
     
-    final void dR()
+    final void em()
     {
-      LifecycleOwner localLifecycleOwner = this.EV;
-      LoaderManagerImpl.b localb = this.EZ;
+      LifecycleOwner localLifecycleOwner = this.GM;
+      LoaderManagerImpl.b localb = this.GQ;
       if ((localLifecycleOwner != null) && (localb != null))
       {
         super.removeObserver(localb);
@@ -248,7 +248,7 @@ final class LoaderManagerImpl
       }
     }
     
-    public final void l(D paramD)
+    public final void m(D paramD)
     {
       if (LoaderManagerImpl.DEBUG) {
         new StringBuilder("onLoadComplete: ").append(this);
@@ -267,23 +267,23 @@ final class LoaderManagerImpl
       if (LoaderManagerImpl.DEBUG) {
         new StringBuilder("  Starting: ").append(this);
       }
-      this.EY.startLoading();
+      this.GP.startLoading();
     }
     
     public final void removeObserver(Observer<? super D> paramObserver)
     {
       super.removeObserver(paramObserver);
-      this.EV = null;
-      this.EZ = null;
+      this.GM = null;
+      this.GQ = null;
     }
     
     public final void setValue(D paramD)
     {
       super.setValue(paramD);
-      if (this.Fa != null)
+      if (this.GR != null)
       {
-        this.Fa.reset();
-        this.Fa = null;
+        this.GR.reset();
+        this.GR = null;
       }
     }
     
@@ -295,7 +295,7 @@ final class LoaderManagerImpl
       localStringBuilder.append(" #");
       localStringBuilder.append(this.mId);
       localStringBuilder.append(" : ");
-      e.a(this.EY, localStringBuilder);
+      e.a(this.GP, localStringBuilder);
       localStringBuilder.append("}}");
       return localStringBuilder.toString();
     }
@@ -304,28 +304,28 @@ final class LoaderManagerImpl
   static final class b<D>
     implements Observer<D>
   {
-    final c<D> EY;
-    final p.a<D> Fb;
-    boolean Fc = false;
+    final c<D> GP;
+    final p.a<D> GS;
+    boolean GT = false;
     
     b(c<D> paramc, p.a<D> parama)
     {
-      this.EY = paramc;
-      this.Fb = parama;
+      this.GP = paramc;
+      this.GS = parama;
     }
     
     public final void onChanged(D paramD)
     {
       if (LoaderManagerImpl.DEBUG) {
-        new StringBuilder("  onLoadFinished in ").append(this.EY).append(": ").append(this.EY.dataToString(paramD));
+        new StringBuilder("  onLoadFinished in ").append(this.GP).append(": ").append(this.GP.dataToString(paramD));
       }
-      this.Fb.onLoadFinished(this.EY, paramD);
-      this.Fc = true;
+      this.GS.onLoadFinished(this.GP, paramD);
+      this.GT = true;
     }
     
     public final String toString()
     {
-      return this.Fb.toString();
+      return this.GS.toString();
     }
   }
 }

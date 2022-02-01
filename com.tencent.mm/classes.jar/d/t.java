@@ -1,14 +1,14 @@
 package d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import java.io.Serializable;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/Triple;", "A", "B", "C", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "first", "second", "third", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V", "getFirst", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getSecond", "getThird", "component1", "component2", "component3", "copy", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Triple;", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/Triple;", "A", "B", "C", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "first", "second", "third", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V", "getFirst", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getSecond", "getThird", "component1", "component2", "component3", "copy", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Triple;", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"})
 public final class t<A, B, C>
   implements Serializable
 {
-  public final C KTn;
+  public final C MKl;
   public final A first;
   public final B second;
   
@@ -16,7 +16,7 @@ public final class t<A, B, C>
   {
     this.first = paramA;
     this.second = paramB;
-    this.KTn = paramC;
+    this.MKl = paramC;
   }
   
   public final boolean equals(Object paramObject)
@@ -27,7 +27,7 @@ public final class t<A, B, C>
       if ((paramObject instanceof t))
       {
         paramObject = (t)paramObject;
-        if ((!k.g(this.first, paramObject.first)) || (!k.g(this.second, paramObject.second)) || (!k.g(this.KTn, paramObject.KTn))) {}
+        if ((!p.i(this.first, paramObject.first)) || (!p.i(this.second, paramObject.second)) || (!p.i(this.MKl, paramObject.MKl))) {}
       }
     }
     else
@@ -56,7 +56,7 @@ public final class t<A, B, C>
     label80:
     for (int j = localObject.hashCode();; j = 0)
     {
-      localObject = this.KTn;
+      localObject = this.MKl;
       if (localObject != null) {
         k = localObject.hashCode();
       }
@@ -70,7 +70,7 @@ public final class t<A, B, C>
   public final String toString()
   {
     AppMethodBeat.i(129586);
-    String str = "(" + this.first + ", " + this.second + ", " + this.KTn + ')';
+    String str = "(" + this.first + ", " + this.second + ", " + this.MKl + ')';
     AppMethodBeat.o(129586);
     return str;
   }

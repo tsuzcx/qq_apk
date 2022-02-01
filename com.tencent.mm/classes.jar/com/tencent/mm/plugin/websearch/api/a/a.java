@@ -7,10 +7,10 @@ public final class a
 {
   public static int ID = 791;
   
-  public static void lA(int paramInt)
+  public static void ma(int paramInt)
   {
     AppMethodBeat.i(117834);
-    e.wTc.idkeyStat(ID, paramInt, 1L, false);
+    e.ygI.idkeyStat(ID, paramInt, 1L, false);
     AppMethodBeat.o(117834);
   }
 }

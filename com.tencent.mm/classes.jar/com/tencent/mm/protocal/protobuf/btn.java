@@ -1,109 +1,110 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class btn
-  extends cpx
+  extends com.tencent.mm.bx.a
 {
-  public int Fiv;
-  public int Fiw;
-  public String dvO;
-  public int scene;
+  public float FOA;
+  public float FOB;
+  public String GOg;
+  public int Ggw;
+  public String Ggx;
+  public String Ggy;
+  public int Ggz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(114044);
+    AppMethodBeat.i(117875);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs.z(1, this.FOA);
+      paramVarArgs.z(2, this.FOB);
+      paramVarArgs.aS(3, this.Ggw);
+      if (this.Ggx != null) {
+        paramVarArgs.d(4, this.Ggx);
       }
-      if (this.dvO != null) {
-        paramVarArgs.d(2, this.dvO);
+      if (this.Ggy != null) {
+        paramVarArgs.d(5, this.Ggy);
       }
-      paramVarArgs.aR(3, this.Fiv);
-      paramVarArgs.aR(4, this.Fiw);
-      paramVarArgs.aR(5, this.scene);
-      AppMethodBeat.o(114044);
+      paramVarArgs.aS(6, this.Ggz);
+      if (this.GOg != null) {
+        paramVarArgs.d(7, this.GOg);
+      }
+      AppMethodBeat.o(117875);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label506;
-      }
-    }
-    label506:
-    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.dvO != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.dvO);
+      int i = f.a.a.b.b.a.alU(1) + 0 + f.a.a.b.b.a.alU(2) + f.a.a.b.b.a.bz(3, this.Ggw);
+      paramInt = i;
+      if (this.Ggx != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Ggx);
       }
-      paramInt = f.a.a.b.b.a.bx(3, this.Fiv);
-      int j = f.a.a.b.b.a.bx(4, this.Fiw);
-      int k = f.a.a.b.b.a.bx(5, this.scene);
-      AppMethodBeat.o(114044);
-      return i + paramInt + j + k;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
-          }
-        }
-        AppMethodBeat.o(114044);
-        return 0;
+      i = paramInt;
+      if (this.Ggy != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.Ggy);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        btn localbtn = (btn)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(114044);
-          return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbtn.BaseRequest = ((iv)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(114044);
-          return 0;
-        case 2: 
-          localbtn.dvO = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(114044);
-          return 0;
-        case 3: 
-          localbtn.Fiv = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(114044);
-          return 0;
-        case 4: 
-          localbtn.Fiw = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(114044);
-          return 0;
-        }
-        localbtn.scene = ((f.a.a.a.a)localObject1).LVo.xF();
-        AppMethodBeat.o(114044);
-        return 0;
+      i += f.a.a.b.b.a.bz(6, this.Ggz);
+      paramInt = i;
+      if (this.GOg != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.GOg);
       }
-      AppMethodBeat.o(114044);
-      return -1;
+      AppMethodBeat.o(117875);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gxE();
+        }
+      }
+      AppMethodBeat.o(117875);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      btn localbtn = (btn)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(117875);
+        return -1;
+      case 1: 
+        localbtn.FOA = Float.intBitsToFloat(locala.NPN.grz());
+        AppMethodBeat.o(117875);
+        return 0;
+      case 2: 
+        localbtn.FOB = Float.intBitsToFloat(locala.NPN.grz());
+        AppMethodBeat.o(117875);
+        return 0;
+      case 3: 
+        localbtn.Ggw = locala.NPN.zc();
+        AppMethodBeat.o(117875);
+        return 0;
+      case 4: 
+        localbtn.Ggx = locala.NPN.readString();
+        AppMethodBeat.o(117875);
+        return 0;
+      case 5: 
+        localbtn.Ggy = locala.NPN.readString();
+        AppMethodBeat.o(117875);
+        return 0;
+      case 6: 
+        localbtn.Ggz = locala.NPN.zc();
+        AppMethodBeat.o(117875);
+        return 0;
+      }
+      localbtn.GOg = locala.NPN.readString();
+      AppMethodBeat.o(117875);
+      return 0;
+    }
+    AppMethodBeat.o(117875);
+    return -1;
   }
 }
 

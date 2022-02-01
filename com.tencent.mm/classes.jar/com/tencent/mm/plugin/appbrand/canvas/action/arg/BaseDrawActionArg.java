@@ -28,7 +28,7 @@ public abstract class BaseDrawActionArg
     return false;
   }
   
-  public boolean aZP()
+  public boolean bdo()
   {
     return false;
   }

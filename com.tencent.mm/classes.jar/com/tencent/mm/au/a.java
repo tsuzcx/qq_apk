@@ -1,89 +1,61 @@
 package com.tencent.mm.au;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storagebase.h.b;
-import java.util.HashMap;
 
-public class a
-  implements aw
+public final class a
 {
-  private static ao hGj = null;
+  int dDp;
+  int hHL;
+  String hHN;
+  String hHO;
+  long hYr;
+  int hYs;
+  int hYt;
+  int type;
+  String username;
   
-  public static boolean g(Runnable paramRunnable, long paramLong)
+  public a()
   {
-    AppMethodBeat.i(104523);
-    if (paramRunnable == null)
-    {
-      AppMethodBeat.o(104523);
-      return false;
-    }
-    boolean bool;
-    if (hGj == null)
-    {
-      if (hGj != null)
-      {
-        bool = true;
-        ac.w("MicroMsg.GIF.SubCoreGIF", "check decoder thread available fail, handler[%B] stack[%s]", new Object[] { Boolean.valueOf(bool), bs.eWi() });
-        if (hGj != null) {
-          hGj.removeCallbacksAndMessages(null);
-        }
-        ao localao = new ao("GIF-Decoder");
-        hGj = localao;
-        localao.setLogging(false);
-      }
-    }
-    else
-    {
-      if (paramLong <= 0L) {
-        break label116;
-      }
-      hGj.postDelayed(paramRunnable, paramLong);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(104523);
-      return true;
-      bool = false;
-      break;
-      label116:
-      hGj.post(paramRunnable);
-    }
+    AppMethodBeat.i(20513);
+    this.dDp = -1;
+    this.username = "";
+    this.hYr = 0L;
+    this.type = 0;
+    this.hYs = 0;
+    this.hHL = 0;
+    this.hYt = 0;
+    this.hHN = "";
+    this.hHO = "";
+    AppMethodBeat.o(20513);
   }
   
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.b> getBaseDBFactories()
+  public final String aCq()
   {
-    return null;
-  }
-  
-  public void onAccountPostReset(boolean paramBoolean)
-  {
-    AppMethodBeat.i(104524);
-    if (hGj != null) {
-      hGj.removeCallbacksAndMessages(null);
+    if (this.hHO == null) {
+      return "";
     }
-    AppMethodBeat.o(104524);
+    return this.hHO;
   }
   
-  public void onAccountRelease()
+  public final String aHX()
   {
-    AppMethodBeat.i(104525);
-    if (hGj != null) {
-      hGj.removeCallbacksAndMessages(null);
+    if (this.hHN == null) {
+      return "";
     }
-    AppMethodBeat.o(104525);
+    return this.hHN;
   }
   
-  public void onSdcardMount(boolean paramBoolean) {}
+  public final String getUsername()
+  {
+    if (this.username == null) {
+      return "";
+    }
+    return this.username;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.au.a
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,14 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.model.h;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class FaceProcessHintView
   extends LinearLayout
 {
-  private int aaj;
-  private h qEO;
-  private Animation qEP;
+  private int abZ;
+  private h roF;
+  private Animation roG;
   
   public FaceProcessHintView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,13 +33,13 @@ public class FaceProcessHintView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104182);
-    this.qEO = null;
-    this.aaj = 0;
-    this.qEP = null;
+    this.roF = null;
+    this.abZ = 0;
+    this.roG = null;
     setOrientation(0);
     setMinimumHeight(BackwardSupportUtil.b.g(getContext(), 36.0F));
-    this.qEP = AnimationUtils.loadAnimation(paramContext, 2130772037);
-    this.qEP.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.roG = AnimationUtils.loadAnimation(paramContext, 2130772037);
+    this.roG.setInterpolator(new AccelerateDecelerateInterpolator());
     AppMethodBeat.o(104182);
   }
   
@@ -56,16 +56,16 @@ public class FaceProcessHintView
   public void setDataAndInvalidate(h paramh)
   {
     AppMethodBeat.i(104183);
-    this.qEO = paramh;
-    if ((this.qEO == null) || (this.qEO.qxA <= 0))
+    this.roF = paramh;
+    if ((this.roF == null) || (this.roF.rhq <= 0))
     {
-      ac.e("MicroMsg.FaceProcessHintView", "hy: model invalid");
+      ad.e("MicroMsg.FaceProcessHintView", "hy: model invalid");
       AppMethodBeat.o(104183);
       return;
     }
     removeAllViews();
     int i = 0;
-    while (i < this.qEO.qxA)
+    while (i < this.roF.rhq)
     {
       paramh = LayoutInflater.from(getContext()).inflate(2131493919, null, false);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -1);
@@ -81,7 +81,7 @@ public class FaceProcessHintView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceProcessHintView
  * JD-Core Version:    0.7.0.1
  */

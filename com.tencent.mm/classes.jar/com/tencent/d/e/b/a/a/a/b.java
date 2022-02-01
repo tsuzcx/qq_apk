@@ -45,7 +45,7 @@ public final class b
     return paramSignature;
   }
   
-  public static Signature[] cr(Context paramContext, String paramString)
+  public static Signature[] cw(Context paramContext, String paramString)
   {
     AppMethodBeat.i(138437);
     try
@@ -65,7 +65,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.d.e.b.a.a.a.b
  * JD-Core Version:    0.7.0.1
  */

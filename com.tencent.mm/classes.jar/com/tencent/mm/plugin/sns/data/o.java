@@ -5,7 +5,7 @@ import java.nio.ByteBuffer;
 public final class o
 {
   private ByteBuffer buffer = null;
-  private boolean gNN = false;
+  private boolean hhJ = false;
   public String mediaId;
   public int requestType;
 }

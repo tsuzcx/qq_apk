@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.contact.a.d;
 import com.tencent.mm.ui.contact.o;
 import com.tencent.mm.ui.contact.o.a;
@@ -20,28 +20,28 @@ import java.util.List;
 public final class b
   extends o
 {
-  private ai contact;
-  private ao handler;
-  private List<m> lnk;
+  private am contact;
+  private ap handler;
+  private List<m> lKC;
   private String query;
-  private com.tencent.mm.plugin.fts.a.a.a syJ;
-  private l vIP;
+  private com.tencent.mm.plugin.fts.a.a.a tvk;
+  private l wPW;
   
-  public b(com.tencent.mm.ui.contact.n paramn, int paramInt, ai paramai)
+  public b(com.tencent.mm.ui.contact.n paramn, int paramInt, am paramam)
   {
     super(paramn, false, paramInt);
     AppMethodBeat.i(26955);
-    this.handler = new ao();
-    this.vIP = new l()
+    this.handler = new ap();
+    this.wPW = new l()
     {
       public final void b(k paramAnonymousk)
       {
         AppMethodBeat.i(26954);
-        if (paramAnonymousk.bPH == 0)
+        if (paramAnonymousk.bZU == 0)
         {
-          b.a(b.this, paramAnonymousk.syK);
+          b.a(b.this, paramAnonymousk.tvl);
           if (b.a(b.this) != null) {
-            b.c(b.this).y(paramAnonymousk.suU.query, b.b(b.this).size(), true);
+            b.c(b.this).y(paramAnonymousk.trv.query, b.b(b.this).size(), true);
           }
         }
         b.this.clearCache();
@@ -49,7 +49,7 @@ public final class b
         AppMethodBeat.o(26954);
       }
     };
-    this.contact = paramai;
+    this.contact = paramam;
     AppMethodBeat.o(26955);
   }
   
@@ -60,10 +60,10 @@ public final class b
     paramArrayOfInt = new j();
     paramArrayOfInt.query = paramString;
     paramArrayOfInt.handler = this.handler;
-    paramArrayOfInt.syI = this.vIP;
-    paramArrayOfInt.syB = this.contact.field_username;
-    paramArrayOfInt.jwR = 7;
-    this.syJ = ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).search(2, paramArrayOfInt);
+    paramArrayOfInt.tvj = this.wPW;
+    paramArrayOfInt.tvc = this.contact.field_username;
+    paramArrayOfInt.jQN = 7;
+    this.tvk = ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).search(2, paramArrayOfInt);
     AppMethodBeat.o(26958);
   }
   
@@ -71,8 +71,8 @@ public final class b
   {
     AppMethodBeat.i(26959);
     this.query = null;
-    if (this.syJ != null) {
-      ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.syJ);
+    if (this.tvk != null) {
+      ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.tvk);
     }
     AppMethodBeat.o(26959);
   }
@@ -80,22 +80,22 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(26957);
-    if (this.lnk == null)
+    if (this.lKC == null)
     {
       AppMethodBeat.o(26957);
       return 0;
     }
-    int i = this.lnk.size();
+    int i = this.lKC.size();
     AppMethodBeat.o(26957);
     return i;
   }
   
-  public final com.tencent.mm.ui.contact.a.a qH(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a rh(int paramInt)
   {
     AppMethodBeat.i(26956);
     d locald = new d(paramInt, this.contact);
-    az.ayM();
-    locald.contact = c.awB().aNt(((m)this.lnk.get(paramInt)).sxG);
+    ba.aBQ();
+    locald.contact = c.azp().Bf(((m)this.lKC.get(paramInt)).tuh);
     AppMethodBeat.o(26956);
     return locald;
   }

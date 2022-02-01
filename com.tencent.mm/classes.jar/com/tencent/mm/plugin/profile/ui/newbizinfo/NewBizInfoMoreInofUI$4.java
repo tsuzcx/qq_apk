@@ -5,7 +5,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class NewBizInfoMoreInofUI$4
   implements DialogInterface.OnClickListener
@@ -17,13 +17,13 @@ final class NewBizInfoMoreInofUI$4
     AppMethodBeat.i(27548);
     Object localObject = new Intent("android.intent.action.DIAL");
     ((Intent)localObject).setFlags(268435456);
-    ((Intent)localObject).setData(Uri.parse("tel:" + this.ogN));
-    if (bs.ah(this.vOR, (Intent)localObject))
+    ((Intent)localObject).setData(Uri.parse("tel:" + this.oKg));
+    if (bt.aj(this.wWa, (Intent)localObject))
     {
-      paramDialogInterface = this.vOR;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMoreInofUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+      paramDialogInterface = this.wWa;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMoreInofUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMoreInofUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     AppMethodBeat.o(27548);

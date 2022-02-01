@@ -9,113 +9,113 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.g;
 
 public final class a
 {
   public static Drawable a(Resources paramResources, String paramString)
   {
-    AppMethodBeat.i(210251);
+    AppMethodBeat.i(197699);
     try
     {
-      Bitmap localBitmap = f.decodeFile(paramString, null);
+      Bitmap localBitmap = g.decodeFile(paramString, null);
       if (localBitmap != null)
       {
         paramResources = new BitmapDrawable(paramResources, localBitmap);
-        AppMethodBeat.o(210251);
+        AppMethodBeat.o(197699);
         return paramResources;
       }
-      ac.e("ImageLoader", "getDrawableFromFile bitmap==null, path=".concat(String.valueOf(paramString)));
+      ad.e("ImageLoader", "getDrawableFromFile bitmap==null, path=".concat(String.valueOf(paramString)));
     }
     catch (Throwable paramResources)
     {
       for (;;)
       {
-        ac.e("ImageLoader", "getDrawableFromFile exp=" + paramResources.toString() + ", path=" + paramString);
+        ad.e("ImageLoader", "getDrawableFromFile exp=" + paramResources.toString() + ", path=" + paramString);
       }
     }
-    AppMethodBeat.o(210251);
+    AppMethodBeat.o(197699);
     return null;
   }
   
-  public static void h(String paramString, ImageView paramImageView)
+  public static void i(String paramString, ImageView paramImageView)
   {
-    AppMethodBeat.i(200019);
+    AppMethodBeat.i(197697);
     if (!paramString.equals((String)paramImageView.getTag(2131304892)))
     {
       paramImageView.setImageDrawable(null);
       loadImage(paramString, paramImageView);
     }
-    AppMethodBeat.o(200019);
+    AppMethodBeat.o(197697);
   }
   
   public static void loadImage(final String paramString, ImageView paramImageView)
   {
-    AppMethodBeat.i(200020);
+    AppMethodBeat.i(197698);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(200020);
+      AppMethodBeat.o(197698);
       return;
     }
-    ac.d("ImageLoader", "loadImage, hash=" + paramImageView.hashCode() + ", url=" + paramString);
+    ad.d("ImageLoader", "loadImage, hash=" + paramImageView.hashCode() + ", url=" + paramString);
     paramImageView.setTag(2131304892, paramString);
     h.a(paramString, false, new f.a()
     {
-      public final void asD(String paramAnonymousString)
+      public final void axG(String paramAnonymousString)
       {
-        AppMethodBeat.i(200018);
+        AppMethodBeat.i(197696);
         try
         {
-          String str = (String)this.svh.getTag(2131304892);
+          String str = (String)this.trI.getTag(2131304892);
           if (TextUtils.isEmpty(str)) {
             str = "";
           }
           while ((!TextUtils.isEmpty(paramAnonymousString)) && (paramAnonymousString.equals(str)))
           {
-            paramAnonymousString = f.decodeFile(paramAnonymousString, null);
+            paramAnonymousString = g.decodeFile(paramAnonymousString, null);
             if (paramAnonymousString != null)
             {
-              this.svh.setImageBitmap(paramAnonymousString);
-              ac.d("ImageLoader", "onDownloaded succ, hash=" + this.svh.hashCode());
-              AppMethodBeat.o(200018);
+              this.trI.setImageBitmap(paramAnonymousString);
+              ad.d("ImageLoader", "onDownloaded succ, hash=" + this.trI.hashCode());
+              AppMethodBeat.o(197696);
               return;
-              str = h.js("adId", str);
+              str = h.jF("adId", str);
             }
             else
             {
-              ac.e("ImageLoader", "onDownloaded, bitmap==null");
-              AppMethodBeat.o(200018);
+              ad.e("ImageLoader", "onDownloaded, bitmap==null");
+              AppMethodBeat.o(197696);
               return;
             }
           }
         }
         catch (Throwable paramAnonymousString)
         {
-          ac.e("ImageLoader", "onDownloaded, exp=" + paramAnonymousString.toString());
-          AppMethodBeat.o(200018);
+          ad.e("ImageLoader", "onDownloaded, exp=" + paramAnonymousString.toString());
+          AppMethodBeat.o(197696);
           return;
         }
-        ac.d("ImageLoader", "onDownloaded, url changed");
-        AppMethodBeat.o(200018);
+        ad.d("ImageLoader", "onDownloaded, url changed");
+        AppMethodBeat.o(197696);
       }
       
-      public final void dFC() {}
+      public final void dRW() {}
       
-      public final void dFD()
+      public final void dRX()
       {
-        AppMethodBeat.i(200017);
-        this.svh.setTag(2131304892, "");
-        ac.e("ImageLoader", "onDownloadError, hash=" + this.svh.hashCode() + ", url=" + paramString);
-        AppMethodBeat.o(200017);
+        AppMethodBeat.i(197695);
+        this.trI.setTag(2131304892, "");
+        ad.e("ImageLoader", "onDownloadError, hash=" + this.trI.hashCode() + ", url=" + paramString);
+        AppMethodBeat.o(197695);
       }
     });
-    AppMethodBeat.o(200020);
+    AppMethodBeat.o(197698);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.e.a
  * JD-Core Version:    0.7.0.1
  */

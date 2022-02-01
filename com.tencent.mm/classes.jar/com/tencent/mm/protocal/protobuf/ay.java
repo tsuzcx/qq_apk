@@ -3,12 +3,12 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ay
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String DNn;
-  public String DNo;
-  public String DNp;
-  public String hOf;
+  public String Fss;
+  public String Fst;
+  public String Fsu;
+  public String iht;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -16,49 +16,49 @@ public final class ay
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.hOf != null) {
-        paramVarArgs.d(1, this.hOf);
+      if (this.iht != null) {
+        paramVarArgs.d(1, this.iht);
       }
-      if (this.DNn != null) {
-        paramVarArgs.d(2, this.DNn);
+      if (this.Fss != null) {
+        paramVarArgs.d(2, this.Fss);
       }
-      if (this.DNo != null) {
-        paramVarArgs.d(3, this.DNo);
+      if (this.Fst != null) {
+        paramVarArgs.d(3, this.Fst);
       }
-      if (this.DNp != null) {
-        paramVarArgs.d(4, this.DNp);
+      if (this.Fsu != null) {
+        paramVarArgs.d(4, this.Fsu);
       }
       AppMethodBeat.o(125688);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.hOf == null) {
+      if (this.iht == null) {
         break label394;
       }
     }
     label394:
-    for (int i = f.a.a.b.b.a.e(1, this.hOf) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.iht) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.DNn != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.DNn);
+      if (this.Fss != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Fss);
       }
       i = paramInt;
-      if (this.DNo != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.DNo);
+      if (this.Fst != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Fst);
       }
       paramInt = i;
-      if (this.DNp != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.DNp);
+      if (this.Fsu != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Fsu);
       }
       AppMethodBeat.o(125688);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(125688);
@@ -74,19 +74,19 @@ public final class ay
           AppMethodBeat.o(125688);
           return -1;
         case 1: 
-          localay.hOf = locala.LVo.readString();
+          localay.iht = locala.NPN.readString();
           AppMethodBeat.o(125688);
           return 0;
         case 2: 
-          localay.DNn = locala.LVo.readString();
+          localay.Fss = locala.NPN.readString();
           AppMethodBeat.o(125688);
           return 0;
         case 3: 
-          localay.DNo = locala.LVo.readString();
+          localay.Fst = locala.NPN.readString();
           AppMethodBeat.o(125688);
           return 0;
         }
-        localay.DNp = locala.LVo.readString();
+        localay.Fsu = locala.NPN.readString();
         AppMethodBeat.o(125688);
         return 0;
       }

@@ -2,15 +2,15 @@ package com.tencent.mm.compatible.deviceinfo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class r
 {
-  static void kR(int paramInt)
+  static void lq(int paramInt)
   {
     AppMethodBeat.i(155742);
-    ac.i("MicroMsg.DeviceInfoDiagHelper", "[+] report idkey id: %s, key: %s, val: %s, isImportant: %s", new Object[] { Integer.valueOf(1064), Integer.valueOf(paramInt), Integer.valueOf(1), Boolean.TRUE });
-    e.wTc.idkeyStat(1064L, paramInt, 1L, true);
+    ad.i("MicroMsg.DeviceInfoDiagHelper", "[+] report idkey id: %s, key: %s, val: %s, isImportant: %s", new Object[] { Integer.valueOf(1064), Integer.valueOf(paramInt), Integer.valueOf(1), Boolean.TRUE });
+    e.ygI.idkeyStat(1064L, paramInt, 1L, true);
     AppMethodBeat.o(155742);
   }
 }

@@ -8,10 +8,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.o;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.aw.a.a.c;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.j;
@@ -22,21 +22,21 @@ import java.util.List;
 final class Sort3rdAppUI$a
   extends ArrayAdapter<g>
 {
-  private long FwG;
   private Context mContext;
-  List<g> oXp;
-  private c pEd;
+  List<g> pAZ;
+  private c qhI;
+  private long xdB;
   
   public Sort3rdAppUI$a(Context paramContext, List<g> paramList, long paramLong)
   {
     super(paramContext, 2131495628, paramList);
     AppMethodBeat.i(33754);
-    this.FwG = paramLong;
+    this.xdB = paramLong;
     this.mContext = paramContext;
-    this.oXp = paramList;
+    this.pAZ = paramList;
     paramContext = new c.a();
-    paramContext.hKI = 2131233401;
-    this.pEd = paramContext.aFT();
+    paramContext.idD = 2131233401;
+    this.qhI = paramContext.aJc();
     AppMethodBeat.o(33754);
   }
   
@@ -52,14 +52,14 @@ final class Sort3rdAppUI$a
       paramViewGroup = new a(paramView);
       paramView.setTag(paramViewGroup);
       localg = (g)getItem(paramInt);
-      paramViewGroup.iCg.setText(localg.field_appName);
+      paramViewGroup.iVq.setText(localg.field_appName);
       localObject = h.c(localg.field_appId, 1, com.tencent.mm.cc.a.getDensity(this.mContext));
       if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
         break label164;
       }
-      paramViewGroup.lzC.setImageBitmap((Bitmap)localObject);
+      paramViewGroup.lZa.setImageBitmap((Bitmap)localObject);
       label99:
-      localObject = paramViewGroup.tTm;
+      localObject = paramViewGroup.rck;
       if ((localg.field_appInfoFlag & 0x4000) != 0) {
         break label186;
       }
@@ -67,7 +67,7 @@ final class Sort3rdAppUI$a
     for (;;)
     {
       ((MMSwitchBtn)localObject).setCheck(bool);
-      paramViewGroup.tTm.setSwitchListener(new MMSwitchBtn.a()
+      paramViewGroup.rck.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
@@ -78,7 +78,7 @@ final class Sort3rdAppUI$a
           }
           for (localg.field_appInfoFlag &= 0xFFFFBFFF;; localg.field_appInfoFlag |= 0x4000)
           {
-            ap.dny().a(localg, new String[0]);
+            ao.dxQ().a(localg, new String[0]);
             AppMethodBeat.o(33752);
             return;
             localg = localg;
@@ -91,7 +91,7 @@ final class Sort3rdAppUI$a
       paramViewGroup = (a)paramView.getTag();
       break;
       label164:
-      o.aFB().a(localg.field_appIconUrl, paramViewGroup.lzC, this.pEd);
+      q.aIJ().a(localg.field_appIconUrl, paramViewGroup.lZa, this.qhI);
       break label99;
       label186:
       bool = false;
@@ -100,20 +100,20 @@ final class Sort3rdAppUI$a
   
   static final class a
   {
-    TextView iCg;
-    ImageView lzC;
-    View oXq;
-    ImageView oXr;
-    MMSwitchBtn tTm;
+    TextView iVq;
+    ImageView lZa;
+    View pBa;
+    ImageView pBb;
+    MMSwitchBtn rck;
     
     public a(View paramView)
     {
       AppMethodBeat.i(33753);
-      this.oXr = ((ImageView)paramView.findViewById(2131300760));
-      this.lzC = ((ImageView)paramView.findViewById(2131300880));
-      this.iCg = ((TextView)paramView.findViewById(2131305905));
-      this.tTm = ((MMSwitchBtn)paramView.findViewById(2131305590));
-      this.oXq = paramView.findViewById(2131298736);
+      this.pBb = ((ImageView)paramView.findViewById(2131300760));
+      this.lZa = ((ImageView)paramView.findViewById(2131300880));
+      this.iVq = ((TextView)paramView.findViewById(2131305905));
+      this.rck = ((MMSwitchBtn)paramView.findViewById(2131305590));
+      this.pBa = paramView.findViewById(2131298736);
       AppMethodBeat.o(33753);
     }
   }

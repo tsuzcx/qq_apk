@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.music.model.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
 {
-  public static int JP(int paramInt)
+  public static int Lr(int paramInt)
   {
     AppMethodBeat.i(63138);
-    ac.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
+    ad.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     default: 
@@ -79,10 +79,10 @@ public final class c
     return 38;
   }
   
-  public static int JQ(int paramInt)
+  public static int Ls(int paramInt)
   {
     AppMethodBeat.i(63139);
-    ac.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
+    ad.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     default: 
@@ -114,10 +114,10 @@ public final class c
     return 44;
   }
   
-  public static int JR(int paramInt)
+  public static int Lt(int paramInt)
   {
     AppMethodBeat.i(63140);
-    ac.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerSumidKeyByMusicType, musicType:".concat(String.valueOf(paramInt)));
+    ad.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerSumidKeyByMusicType, musicType:".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     case 2: 
@@ -151,10 +151,10 @@ public final class c
     return 112;
   }
   
-  public static int JS(int paramInt)
+  public static int Lu(int paramInt)
   {
     AppMethodBeat.i(63141);
-    ac.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerSumidKeyByMusicType, musicType:".concat(String.valueOf(paramInt)));
+    ad.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerSumidKeyByMusicType, musicType:".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     case 2: 
@@ -194,7 +194,7 @@ public final class c
     return 126;
   }
   
-  public static int anJ(String paramString)
+  public static int asI(String paramString)
   {
     AppMethodBeat.i(63142);
     if ("audio/3gpp".equalsIgnoreCase(paramString))

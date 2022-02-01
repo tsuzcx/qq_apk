@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.tmassistantsdk.openSDK.param.jce.IPCCmd;
 import com.tencent.tmassistantsdk.openSDK.param.jce.IPCHead;
 import com.tencent.tmassistantsdk.openSDK.param.jce.IPCRequest;
@@ -75,7 +75,7 @@ public class IPCPackageTools
     {
       for (;;)
       {
-        ac.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
+        ad.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
         paramString = null;
       }
     }
@@ -83,7 +83,7 @@ public class IPCPackageTools
     {
       for (;;)
       {
-        ac.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
+        ad.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
         paramString = null;
       }
     }
@@ -91,7 +91,7 @@ public class IPCPackageTools
     {
       for (;;)
       {
-        ac.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
+        ad.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
         paramString = null;
       }
     }
@@ -134,7 +134,7 @@ public class IPCPackageTools
       }
       catch (Exception paramIPCResponse)
       {
-        ac.printErrStackTrace("IPCPackageTools", paramIPCResponse, "", new Object[0]);
+        ad.printErrStackTrace("IPCPackageTools", paramIPCResponse, "", new Object[0]);
         AppMethodBeat.o(102221);
         return null;
       }
@@ -165,7 +165,7 @@ public class IPCPackageTools
     }
     catch (Exception paramArrayOfByte)
     {
-      ac.printErrStackTrace("IPCPackageTools", paramArrayOfByte, "", new Object[0]);
+      ad.printErrStackTrace("IPCPackageTools", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(102220);
     }
     return null;

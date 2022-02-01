@@ -1,528 +1,212 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.text.TextUtils;
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.util.Pair;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ak.a.a;
-import com.tencent.mm.ak.y;
-import com.tencent.mm.ak.y.a;
-import com.tencent.mm.cn.f;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.g.a.nw;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.utils.ab;
-import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.protocal.protobuf.eah;
-import com.tencent.mm.protocal.protobuf.eai;
-import com.tencent.mm.protocal.protobuf.km;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.protocal.protobuf.egl;
+import com.tencent.mm.protocal.protobuf.ek;
+import com.tencent.mm.sdk.e.f;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.ai;
-import com.tencent.mm.vending.g.d.a;
-import com.tencent.mm.vending.g.d.b;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.tencent.mm.storage.al.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONObject;
 
-public final class w
+public class w
+  extends u
 {
-  public static boolean Kq(String paramString)
+  public w(com.tencent.mm.sdk.e.e parame)
   {
-    AppMethodBeat.i(44926);
-    if (j.aVu() == null)
+    super(parame, "WxaAttributesTable", WxaAttributes.INDEX_CREATE);
+    AppMethodBeat.i(44905);
+    Cursor localCursor;
+    if (beh())
     {
-      ac.w("MicroMsg.WxaAttrSyncHelper", "needUpdateAttr, storage NULL");
-      AppMethodBeat.o(44926);
-      return false;
-    }
-    long l2 = bs.aNx();
-    WxaAttributes localWxaAttributes = j.aVu().d(paramString, new String[] { "syncTimeSecond" });
-    if (localWxaAttributes == null) {}
-    for (long l1 = 0L;; l1 = localWxaAttributes.field_syncTimeSecond)
-    {
-      int i = com.tencent.mm.m.g.ZY().getInt("MMBizAttrSyncFreq", 3600);
-      ac.v("MicroMsg.WxaAttrSyncHelper", "needUpdateAttr, username(%s), currentMS(%d), lastUpdateTime(%d), freq(%d).", new Object[] { paramString, Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(i) });
-      if (l2 - l1 < i) {
-        break;
-      }
-      AppMethodBeat.o(44926);
-      return true;
-    }
-    AppMethodBeat.o(44926);
-    return false;
-  }
-  
-  private static boolean Kr(String paramString)
-  {
-    AppMethodBeat.i(44927);
-    if (bs.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(44927);
-      return false;
-    }
-    if (!m.vC(paramString))
-    {
-      ac.e("MicroMsg.WxaAttrSyncHelper", "checkLogIfInvalidUsername %s, %s", new Object[] { paramString, as.m(new Throwable()) });
-      com.tencent.mm.plugin.report.e.wTc.idkeyStat(648L, 1L, 1L, false);
-      AppMethodBeat.o(44927);
-      return true;
-    }
-    AppMethodBeat.o(44927);
-    return false;
-  }
-  
-  public static void Ks(String paramString)
-  {
-    AppMethodBeat.i(44928);
-    if (Kr(paramString))
-    {
-      AppMethodBeat.o(44928);
-      return;
-    }
-    h.JZN.aS(new Runnable()
-    {
-      public final void run()
+      parame = (f)parame;
+      if (!g.ajC().ajl().getBoolean(al.a.IvS, false))
       {
-        AppMethodBeat.i(44910);
-        w.Kt(this.fur);
-        AppMethodBeat.o(44910);
-      }
-    });
-    AppMethodBeat.o(44928);
-  }
-  
-  public static void Kt(String paramString)
-  {
-    AppMethodBeat.i(44933);
-    if (Kr(paramString))
-    {
-      AppMethodBeat.o(44933);
-      return;
-    }
-    if (Kq(paramString)) {
-      b(paramString, true, null);
-    }
-    AppMethodBeat.o(44933);
-  }
-  
-  public static Pair<WxaAttributes, com.tencent.mm.ak.c.a> a(String paramString, boolean paramBoolean, d paramd)
-  {
-    AppMethodBeat.i(44929);
-    paramString = a(paramString, paramBoolean, paramd, new a()
-    {
-      public final o Ku(String paramAnonymousString)
-      {
-        AppMethodBeat.i(44913);
-        paramAnonymousString = new o(null, paramAnonymousString);
-        AppMethodBeat.o(44913);
-        return paramAnonymousString;
-      }
-      
-      public final String getUsername()
-      {
-        AppMethodBeat.i(44912);
-        String str = u.Kn(this.val$appId);
-        AppMethodBeat.o(44912);
-        return str;
-      }
-    }, null);
-    AppMethodBeat.o(44929);
-    return paramString;
-  }
-  
-  static <T> Pair<T, com.tencent.mm.ak.c.a> a(String paramString, boolean paramBoolean, d paramd, a<T> parama, PBool paramPBool)
-  {
-    com.tencent.mm.ak.c.a locala = null;
-    AppMethodBeat.i(186421);
-    if ((bs.isNullOrNil(paramString)) || (!com.tencent.mm.kernel.g.agP().ggT))
-    {
-      paramString = Pair.create(null, null);
-      AppMethodBeat.o(186421);
-      return paramString;
-    }
-    Object localObject;
-    if (!paramBoolean)
-    {
-      localObject = parama.Kv(paramString);
-      if ((localObject != null) && (!parama.cn(localObject))) {}
-    }
-    for (;;)
-    {
-      if (paramd != null) {
-        paramd.baK();
-      }
-      locala = y.e(parama.Ku(paramString).rr);
-      int i;
-      int j;
-      if ((locala == null) || ((locala instanceof y.a)) || (locala.errType != 0) || (locala.errCode != 0)) {
-        if (locala == null)
+        ad.i("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "before fix");
+        localCursor = parame.a("select appInfo from WxaAttributesTable", null, 2);
+        if ((localCursor == null) || (localCursor.isClosed()))
         {
-          i = -1;
-          if (locala != null) {
-            break label223;
-          }
-          j = -1;
-          label136:
-          if (locala != null) {
-            break label233;
-          }
-          paramd = "null resp";
-          label144:
-          ac.e("MicroMsg.WxaAttrSyncHelper", "loadOrSync, ignoreLocal %b, errType = %d, errCode = %d, errMsg = %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), Integer.valueOf(j), paramd });
-          if (localObject != null) {
-            break label580;
-          }
-          paramString = parama.Kv(paramString);
-          if (paramString == null) {
-            break label242;
-          }
+          ad.e("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "try fix but db not working");
+          AppMethodBeat.o(44905);
+          return;
         }
-      }
-      for (;;)
-      {
-        paramString = Pair.create(paramString, locala);
-        AppMethodBeat.o(186421);
-        return paramString;
-        i = locala.errType;
-        break;
-        label223:
-        j = locala.errCode;
-        break label136;
-        label233:
-        paramd = locala.errMsg;
-        break label144;
-        label242:
-        paramString = Pair.create(null, locala);
-        AppMethodBeat.o(186421);
-        return paramString;
-        paramd = ((eai)locala.hvj).EaX.iterator();
+        if (!localCursor.moveToFirst()) {
+          break label367;
+        }
+        Object localObject1 = new LinkedList();
+        Object localObject2 = localCursor.getString(0);
+        if (!bt.isNullOrNil((String)localObject2)) {}
         for (;;)
         {
-          if (paramd.hasNext())
+          try
           {
-            localObject = (eah)paramd.next();
-            if ("UserName".equalsIgnoreCase(((eah)localObject).tlp))
+            localObject3 = new JSONObject((String)localObject2);
+            localObject2 = ((JSONObject)localObject3).optString("Appid");
+            localObject3 = ((JSONObject)localObject3).optString("RoundedSquareIconUrl");
+            if (!bt.isNullOrNil((String)localObject2))
             {
-              localObject = ((eah)localObject).wTM;
-              paramd = (d)localObject;
-              if (((String)localObject).endsWith("@app")) {
-                break;
+              boolean bool = bt.isNullOrNil((String)localObject3);
+              if (!bool) {
+                continue;
               }
             }
           }
-        }
-        for (paramd = (String)localObject + "@app";; paramd = null)
-        {
-          localObject = paramd;
-          if (bs.isNullOrNil(paramd))
+          catch (Exception localException)
           {
-            paramd = parama.getUsername();
-            localObject = paramd;
-            if (bs.isNullOrNil(paramd))
-            {
-              ac.e("MicroMsg.WxaAttrSyncHelper", "loadOrSync, ignoreLocal %b, key %s, cgi sync fail username invalid", new Object[] { Boolean.valueOf(paramBoolean), paramString });
-              paramString = Pair.create(null, null);
-              AppMethodBeat.o(186421);
-              return paramString;
-            }
+            Object localObject3;
+            long l;
+            ContentValues localContentValues;
+            continue;
+            parame.sJ(l);
+            ad.i("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "fix done");
           }
-          ac.i("MicroMsg.WxaAttrSyncHelper", "loadOrSync key(%s), username(%s), flushAttrs", new Object[] { paramString, localObject });
-          if (j.aVu().a((String)localObject, ((eai)locala.hvj).EaW, ((eai)locala.hvj).EaX))
-          {
-            u.baJ().o("single", localObject);
-            if (paramPBool != null) {
-              paramPBool.value = true;
-            }
+          if (localCursor.moveToNext()) {
+            break;
           }
-          localObject = parama.Kv(paramString);
-          ac.i("MicroMsg.WxaAttrSyncHelper", "loadOrSync, ignoreLocal %b, cgi sync result, key:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
-          cm(localObject);
-          for (paramString = locala;; paramString = locala)
-          {
-            paramString = Pair.create(localObject, paramString);
-            AppMethodBeat.o(186421);
-            return paramString;
-            ac.i("MicroMsg.WxaAttrSyncHelper", "loadOrSync, ignoreLocal %b, no need cgi sync, key:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
-            cm(localObject);
+          localCursor.close();
+          l = parame.xO(Thread.currentThread().getId());
+          localObject1 = ((List)localObject1).iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            continue;
           }
-        }
-        label580:
-        paramString = (String)localObject;
-      }
-      localObject = null;
-    }
-  }
-  
-  public static com.tencent.mm.vending.g.e<List<String>> a(List<String> paramList, final n.a parama, final c paramc)
-  {
-    AppMethodBeat.i(186424);
-    ac.i("MicroMsg.WxaAttrSyncHelper", "batchSync before real logic, list_size:%d, scene:%d", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(parama.intValue) });
-    if (bs.gY(paramList))
-    {
-      paramList = com.tencent.mm.cn.g.eo(Collections.emptyList());
-      AppMethodBeat.o(186424);
-      return paramList;
-    }
-    if (ab.AI())
-    {
-      paramList = com.tencent.mm.cn.g.fBc().j(new com.tencent.mm.vending.c.a() {});
-      AppMethodBeat.o(186424);
-      return paramList;
-    }
-    Object localObject = paramList;
-    if (!(paramList instanceof ArrayList)) {
-      if (!(paramList instanceof LinkedList)) {
-        break label173;
-      }
-    }
-    label173:
-    for (localObject = paramList;; localObject = new LinkedList(paramList))
-    {
-      paramList = ((List)localObject).iterator();
-      while (paramList.hasNext())
-      {
-        String str = (String)paramList.next();
-        if ((TextUtils.isEmpty(str)) || (!ai.vC(str)) || (!Kq(str))) {
-          paramList.remove();
+          localObject2 = (Pair)((Iterator)localObject1).next();
+          parame.update("WxaAttributesTable", (ContentValues)((Pair)localObject2).second, "appId=?", new String[] { (String)((Pair)localObject2).first });
+          continue;
+          localContentValues = new ContentValues(1);
+          localContentValues.put("roundedSquareIconURL", (String)localObject3);
+          ((List)localObject1).add(Pair.create(localObject2, localContentValues));
         }
       }
     }
-    if (bs.gY((List)localObject))
+    for (;;)
     {
-      paramList = com.tencent.mm.cn.g.eo(Collections.emptyList());
-      AppMethodBeat.o(186424);
-      return paramList;
-    }
-    ac.i("MicroMsg.WxaAttrSyncHelper", "batchSync, list_size %d, scene %s(%d)", new Object[] { Integer.valueOf(((List)localObject).size()), parama.name(), Integer.valueOf(parama.intValue) });
-    paramList = new LinkedList();
-    int i = 0;
-    int j = 0;
-    while (i < ((List)localObject).size() / 20)
-    {
-      int k = i * 20;
-      j = k + 20;
-      paramList.add(d(((List)localObject).subList(k, j), parama));
-      i += 1;
-    }
-    if (j < ((List)localObject).size()) {
-      paramList.add(d(((List)localObject).subList(j, ((List)localObject).size()), parama));
-    }
-    paramList = com.tencent.mm.cn.g.c(new com.tencent.mm.vending.g.c.a() {});
-    AppMethodBeat.o(186424);
-    return paramList;
-  }
-  
-  public static void a(String paramString, final boolean paramBoolean, final b<WxaAttributes> paramb)
-  {
-    AppMethodBeat.i(44932);
-    if (Kr(paramString))
-    {
-      AppMethodBeat.o(44932);
+      if (!localCursor.isClosed()) {
+        localCursor.close();
+      }
+      g.ajC().ajl().set(al.a.IvS, Boolean.TRUE);
+      AppMethodBeat.o(44905);
       return;
+      label367:
+      ad.i("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "no contacts available");
     }
-    h.JZN.aS(new Runnable()
+  }
+  
+  protected final boolean a(final WxaAttributes paramWxaAttributes, final egl paramegl)
+  {
+    AppMethodBeat.i(44908);
+    boolean bool = super.a(paramWxaAttributes, paramegl);
+    if ((bool) && ("WxaAppInfo".equals(paramegl.ujy)))
     {
-      public final void run()
+      paramWxaAttributes = paramWxaAttributes.field_appId;
+      paramegl = paramegl.yhw;
+      h.LTJ.f(new Runnable()
       {
-        AppMethodBeat.i(44922);
-        Object localObject1 = new PBool();
-        Object localObject2 = this.fur;
-        boolean bool;
-        if ((paramBoolean) && (w.Kq(this.fur)))
+        public final void run()
         {
-          bool = true;
-          localObject2 = w.a((String)localObject2, bool, null, new w.a()
+          AppMethodBeat.i(44904);
+          try
           {
-            public final o Ku(String paramAnonymous2String)
-            {
-              AppMethodBeat.i(44919);
-              paramAnonymous2String = new o(paramAnonymous2String, null);
-              AppMethodBeat.o(44919);
-              return paramAnonymous2String;
-            }
-            
-            public final String getUsername()
-            {
-              return w.5.this.fur;
-            }
-          }, (PBool)localObject1);
-          if (paramb != null)
+            ek localek = r.x(new JSONObject(paramegl));
+            p.b(paramWxaAttributes, localek.Fwi);
+            AppMethodBeat.o(44904);
+            return;
+          }
+          catch (Exception localException)
           {
-            if (((Pair)localObject2).second != null) {
-              break label96;
-            }
-            localObject1 = w.b.a.jFi;
+            AppMethodBeat.o(44904);
           }
         }
-        for (;;)
-        {
-          paramb.a((w.b.a)localObject1, ((Pair)localObject2).first);
-          AppMethodBeat.o(44922);
-          return;
-          bool = false;
-          break;
-          label96:
-          if ((((com.tencent.mm.ak.c.a)((Pair)localObject2).second).errType != 0) || (((com.tencent.mm.ak.c.a)((Pair)localObject2).second).errCode != 0)) {
-            localObject1 = w.b.a.jFl;
-          } else if (((PBool)localObject1).value) {
-            localObject1 = w.b.a.jFj;
-          } else {
-            localObject1 = w.b.a.jFk;
-          }
-        }
-      }
-    });
-    AppMethodBeat.o(44932);
-  }
-  
-  public static Pair<WxaAttributes, com.tencent.mm.ak.c.a> b(String paramString, boolean paramBoolean, d paramd)
-  {
-    AppMethodBeat.i(44931);
-    if (Kr(paramString))
-    {
-      paramString = new Pair(null, null);
-      AppMethodBeat.o(44931);
-      return paramString;
+      }, "MicroMsg.WxaAttrStorageWCTHREAD_TAG_POST_FLUSH_ATTRS");
     }
-    paramString = a(paramString, paramBoolean, paramd, new a()
-    {
-      public final o Ku(String paramAnonymousString)
-      {
-        AppMethodBeat.i(44916);
-        paramAnonymousString = new o(paramAnonymousString, null);
-        AppMethodBeat.o(44916);
-        return paramAnonymousString;
-      }
-      
-      public final String getUsername()
-      {
-        return this.fur;
-      }
-    }, null);
-    AppMethodBeat.o(44931);
-    return paramString;
+    AppMethodBeat.o(44908);
+    return bool;
   }
   
-  public static com.tencent.mm.vending.g.e<List<String>> c(List<String> paramList, n.a parama)
+  public final boolean a(String paramString, final b paramb, List<egl> paramList)
   {
-    AppMethodBeat.i(210155);
-    paramList = a(paramList, parama, null);
-    AppMethodBeat.o(210155);
-    return paramList;
-  }
-  
-  private static <T> void cm(T paramT)
-  {
-    AppMethodBeat.i(186422);
-    if ((paramT instanceof WxaAttributes))
+    AppMethodBeat.i(44906);
+    if (!g.ajA().gAD)
     {
-      ((WxaAttributes)paramT).baQ();
-      AppMethodBeat.o(186422);
-      return;
+      ad.e("MicroMsg.WxaAttrStorageWC", "flushAttrs username[%s], account().isInitializedNotifyAllDone()==FALSE", new Object[] { paramString });
+      AppMethodBeat.o(44906);
+      return false;
     }
-    ac.i("MicroMsg.WxaAttrSyncHelper", "printContact %s", new Object[] { paramT });
-    AppMethodBeat.o(186422);
-  }
-  
-  private static com.tencent.mm.vending.g.e<List<String>> d(List<String> paramList, n.a parama)
-  {
-    AppMethodBeat.i(186425);
-    if (bs.gY(paramList))
+    boolean bool = super.a(paramString, paramb, paramList);
+    paramb = super.d(paramString, new String[] { "appId", "versionInfo", "nickname", "bigHeadURL", "smallHeadURL" });
+    if (paramb == null)
     {
-      paramList = com.tencent.mm.cn.g.eo(Collections.emptyList());
-      AppMethodBeat.o(186425);
-      return paramList;
+      ad.e("MicroMsg.WxaAttrStorageWC", "flushAttrs, get NULL record with username[%s]", new Object[] { paramString });
+      AppMethodBeat.o(44906);
+      return bool;
     }
-    paramList = new n(paramList, parama).aBB().i(new com.tencent.mm.vending.c.a()
+    paramString = paramb.ben();
+    if ((paramString != null) && (paramString.cmx == 0))
     {
-      private List<String> a(a.a<km> paramAnonymousa)
+      paramString = j.aYX();
+      if (paramString != null) {
+        paramString.a(paramb.field_appId, paramb.ben());
+      }
+    }
+    if (bool) {
+      h.LTJ.f(new Runnable()
       {
-        AppMethodBeat.i(186416);
-        if ((paramAnonymousa.errType != 0) || (paramAnonymousa.errCode != 0))
+        public final void run()
         {
-          ac.e("MicroMsg.WxaAttrSyncHelper", "BatchWxaAttrSync, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousa.errType), Integer.valueOf(paramAnonymousa.errCode), paramAnonymousa.errMsg });
-          paramAnonymousa = Collections.emptyList();
-          AppMethodBeat.o(186416);
-          return paramAnonymousa;
-        }
-        if (paramAnonymousa.hvj != null) {}
-        try
-        {
-          v localv = j.aVu();
-          if (!localv.baH())
+          AppMethodBeat.i(44903);
+          try
           {
-            ac.e("MicroMsg.WxaAttrSyncHelper", "BatchBizAttrSync storage can not work");
-            paramAnonymousa = Collections.emptyList();
-            AppMethodBeat.o(186416);
-            return paramAnonymousa;
+            w.f(paramb);
+            AppMethodBeat.o(44903);
+            return;
           }
-          localv.a((km)paramAnonymousa.hvj);
+          catch (Exception localException)
+          {
+            ad.printErrStackTrace("MicroMsg.WxaAttrStorageWC", localException, "flushContactInMainDB", new Object[0]);
+            AppMethodBeat.o(44903);
+          }
         }
-        catch (NullPointerException paramAnonymousa)
-        {
-          while (j.aVq() == null) {}
-          AppMethodBeat.o(186416);
-          throw paramAnonymousa;
-        }
-        catch (com.tencent.mm.model.b paramAnonymousa)
-        {
-          break label129;
-        }
-        paramAnonymousa = this.jEZ;
-        AppMethodBeat.o(186416);
-        return paramAnonymousa;
-      }
-    });
-    AppMethodBeat.o(186425);
-    return paramList;
-  }
-  
-  static abstract interface a<T>
-  {
-    public abstract o Ku(String paramString);
-    
-    public abstract T Kv(String paramString);
-    
-    public abstract boolean cn(T paramT);
-    
-    public abstract String getUsername();
-  }
-  
-  public static abstract interface b<T>
-  {
-    public abstract void a(a parama, T paramT);
-    
-    public static enum a
-    {
-      static
-      {
-        AppMethodBeat.i(186420);
-        jFi = new a("RET_HIT_FREQUENCY_LIMIT", 0);
-        jFj = new a("RET_UPDATED", 1);
-        jFk = new a("RET_NO_UPDATE", 2);
-        jFl = new a("RET_CGI_FAIL", 3);
-        jFm = new a[] { jFi, jFj, jFk, jFl };
-        AppMethodBeat.o(186420);
-      }
-      
-      private a() {}
+      }, "MicroMsg.WxaAttrStorageWCTHREAD_TAG_POST_FLUSH_ATTRS");
     }
+    AppMethodBeat.o(44906);
+    return bool;
   }
   
-  public static abstract interface c
+  public void add(k.a parama)
   {
-    public abstract void done();
+    AppMethodBeat.i(188104);
+    super.add("MicroMsg.WxaAttrStorageWC.WORKER", parama);
+    AppMethodBeat.o(188104);
   }
   
-  public static abstract interface d
+  protected final boolean j(String paramString, int paramInt, boolean paramBoolean)
   {
-    public abstract void baK();
+    AppMethodBeat.i(44907);
+    paramBoolean = super.j(paramString, paramInt, paramBoolean);
+    if (paramBoolean)
+    {
+      WxaAttributes localWxaAttributes = d(paramString, new String[] { "appOpt" });
+      nw localnw = new nw();
+      localnw.dBI.djX = paramString;
+      localnw.dBI.dBJ = localWxaAttributes.field_appOpt;
+      com.tencent.mm.sdk.b.a.IbL.l(localnw);
+    }
+    AppMethodBeat.o(44907);
+    return paramBoolean;
   }
 }
 

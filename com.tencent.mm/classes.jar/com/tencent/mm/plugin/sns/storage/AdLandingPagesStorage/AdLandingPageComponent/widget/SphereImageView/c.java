@@ -4,20 +4,20 @@ import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
 {
-  public static int am(Bitmap paramBitmap)
+  public static int ao(Bitmap paramBitmap)
   {
     AppMethodBeat.i(97278);
     if (paramBitmap == null)
     {
-      ac.i("SphereImageView.Utils", "initTexture, bmp==null");
+      ad.i("SphereImageView.Utils", "initTexture, bmp==null");
       AppMethodBeat.o(97278);
       return 0;
     }
-    ac.i("SphereImageView.Utils", "initTexture, bmp.w=" + paramBitmap.getWidth() + ", bmp.h=" + paramBitmap.getHeight());
+    ad.i("SphereImageView.Utils", "initTexture, bmp.w=" + paramBitmap.getWidth() + ", bmp.h=" + paramBitmap.getHeight());
     try
     {
       int[] arrayOfInt = new int[1];
@@ -34,7 +34,7 @@ public final class c
     }
     catch (Throwable paramBitmap)
     {
-      ac.e("SphereImageView.Utils", "initTexture exp:" + paramBitmap.toString());
+      ad.e("SphereImageView.Utils", "initTexture exp:" + paramBitmap.toString());
       AppMethodBeat.o(97278);
     }
     return 0;

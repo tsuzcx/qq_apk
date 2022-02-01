@@ -3,14 +3,14 @@ package com.tencent.xweb.xwalk;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.xwalk.updater.c;
-import com.tencent.xweb.xwalk.updater.g;
+import com.tencent.xweb.xwalk.updater.h;
 import org.xwalk.core.Log;
 import org.xwalk.core.XWalkEnvironment;
 import org.xwalk.core.XWalkUpdater;
 
 public final class a
 {
-  public static com.tencent.xweb.a.a eA(Object paramObject)
+  public static com.tencent.xweb.a.a eD(Object paramObject)
   {
     int j = 1;
     com.tencent.xweb.a.a locala;
@@ -26,12 +26,12 @@ public final class a
       {
         return locala;
         com.tencent.xweb.internal.a.a locala1 = (com.tencent.xweb.internal.a.a)paramObject;
-        str1 = locala1.KCi;
-        paramObject = locala1.KCj;
-        if (!locala1.KCi.equals("executeCommand")) {
+        str1 = locala1.MsD;
+        paramObject = locala1.MsE;
+        if (!locala1.MsD.equals("executeCommand")) {
           break label388;
         }
-        paramObject = com.tencent.xweb.a.aUA(locala1.KCj);
+        paramObject = com.tencent.xweb.a.baD(locala1.MsE);
         if ((paramObject != null) && (paramObject.length >= 2)) {
           break;
         }
@@ -72,11 +72,11 @@ public final class a
         }
         i = 3;
         break label391;
-        locala.KyC = true;
+        locala.MoY = true;
         try
         {
           i = Integer.parseInt(paramObject);
-          p.aT(XWalkEnvironment.getApplicationContext(), i);
+          p.aW(XWalkEnvironment.getApplicationContext(), i);
           AppMethodBeat.o(154150);
         }
         catch (Exception localException)
@@ -86,21 +86,21 @@ public final class a
         }
       }
       break;
-      locala.KyC = true;
-      if (p.fLF())
+      locala.MoY = true;
+      if (p.gdb())
       {
         continue;
-        locala.KyC = true;
+        locala.MoY = true;
         XWalkUpdater.clearLastTryEmebedVersion();
         continue;
         Log.i("ConfigCmdProc", "got command : ".concat(String.valueOf(localException)));
-        String str2 = com.tencent.xweb.a.mx("clearSchedule", "tools");
+        String str2 = com.tencent.xweb.a.mV("clearSchedule", "tools");
         if ((!TextUtils.isEmpty(paramObject)) && (!paramObject.equals(str2))) {
           Log.i("ConfigCmdProc", "this command value changed from " + str2 + " to " + paramObject);
         }
         for (i = j; i != 0; i = 0)
         {
-          c.fLZ().fMa();
+          c.gdu().gdv();
           break;
         }
         label388:

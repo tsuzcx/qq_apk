@@ -4,7 +4,7 @@ import com.tencent.mm.ui.base.t;
 
 public final class q
 {
-  t iVf;
+  t joo;
   String text;
 }
 

@@ -12,8 +12,8 @@ final class IPCallTalkUI$1
   {
     AppMethodBeat.i(25981);
     Intent localIntent = new Intent();
-    this.tRZ.setResult(-1, localIntent);
-    this.tRZ.finish();
+    this.uUM.setResult(-1, localIntent);
+    this.uUM.finish();
     AppMethodBeat.o(25981);
   }
 }

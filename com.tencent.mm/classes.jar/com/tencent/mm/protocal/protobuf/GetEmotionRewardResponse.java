@@ -5,12 +5,12 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public class GetEmotionRewardResponse
-  extends cqk
+  extends cvp
 {
   public int DonorNum;
   public LinkedList<EmotionDonor> Donors;
   public LinkedList<EmotionPrice> Price;
-  public aee Reward;
+  public agn Reward;
   
   public GetEmotionRewardResponse()
   {
@@ -34,15 +34,15 @@ public class GetEmotionRewardResponse
       }
       if (this.BaseResponse != null)
       {
-        paramVarArgs.ln(1, this.BaseResponse.computeSize());
+        paramVarArgs.lC(1, this.BaseResponse.computeSize());
         this.BaseResponse.writeFields(paramVarArgs);
       }
       paramVarArgs.e(2, 8, this.Price);
-      paramVarArgs.aR(3, this.DonorNum);
+      paramVarArgs.aS(3, this.DonorNum);
       paramVarArgs.e(4, 8, this.Donors);
       if (this.Reward != null)
       {
-        paramVarArgs.ln(5, this.Reward.computeSize());
+        paramVarArgs.lC(5, this.Reward.computeSize());
         this.Reward.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(104804);
@@ -54,12 +54,12 @@ public class GetEmotionRewardResponse
       }
     }
     label834:
-    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lB(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.a.c(2, 8, this.Price) + f.a.a.b.b.a.bx(3, this.DonorNum) + f.a.a.a.c(4, 8, this.Donors);
+      int i = paramInt + f.a.a.a.c(2, 8, this.Price) + f.a.a.b.b.a.bz(3, this.DonorNum) + f.a.a.a.c(4, 8, this.Donors);
       paramInt = i;
       if (this.Reward != null) {
-        paramInt = i + f.a.a.a.lm(5, this.Reward.computeSize());
+        paramInt = i + f.a.a.a.lB(5, this.Reward.computeSize());
       }
       AppMethodBeat.o(104804);
       return paramInt;
@@ -69,9 +69,9 @@ public class GetEmotionRewardResponse
         this.Price.clear();
         this.Donors.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         if (this.BaseResponse == null)
@@ -96,7 +96,7 @@ public class GetEmotionRewardResponse
           AppMethodBeat.o(104804);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -104,14 +104,14 @@ public class GetEmotionRewardResponse
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new BaseResponse();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localGetEmotionRewardResponse.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104804);
           return 0;
         case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -119,18 +119,18 @@ public class GetEmotionRewardResponse
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new EmotionPrice();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((EmotionPrice)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((EmotionPrice)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localGetEmotionRewardResponse.Price.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104804);
           return 0;
         case 3: 
-          localGetEmotionRewardResponse.DonorNum = ((f.a.a.a.a)localObject1).LVo.xF();
+          localGetEmotionRewardResponse.DonorNum = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(104804);
           return 0;
         case 4: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -138,23 +138,23 @@ public class GetEmotionRewardResponse
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new EmotionDonor();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((EmotionDonor)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((EmotionDonor)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localGetEmotionRewardResponse.Donors.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104804);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new aee();
+          localObject1 = new agn();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((aee)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localGetEmotionRewardResponse.Reward = ((aee)localObject1);
+          for (bool = true; bool; bool = ((agn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localGetEmotionRewardResponse.Reward = ((agn)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(104804);
@@ -167,7 +167,7 @@ public class GetEmotionRewardResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.GetEmotionRewardResponse
  * JD-Core Version:    0.7.0.1
  */

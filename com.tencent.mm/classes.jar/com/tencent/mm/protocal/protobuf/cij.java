@@ -1,103 +1,89 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cij
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public boolean EQH;
-  public int Fwu;
-  public String dlt;
-  public String md5;
-  public String url;
-  public int version;
+  public int Hck;
+  public SKBuiltinBuffer_t Hcl;
+  public int Hcm;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123639);
+    AppMethodBeat.i(134248);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bl(1, this.EQH);
-      if (this.url != null) {
-        paramVarArgs.d(2, this.url);
+      paramVarArgs.aS(1, this.Hck);
+      if (this.Hcl != null)
+      {
+        paramVarArgs.lC(2, this.Hcl.computeSize());
+        this.Hcl.writeFields(paramVarArgs);
       }
-      if (this.md5 != null) {
-        paramVarArgs.d(3, this.md5);
-      }
-      paramVarArgs.aR(4, this.version);
-      paramVarArgs.aR(5, this.Fwu);
-      if (this.dlt != null) {
-        paramVarArgs.d(6, this.dlt);
-      }
-      AppMethodBeat.o(123639);
+      paramVarArgs.aS(3, this.Hcm);
+      AppMethodBeat.o(134248);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.fK(1) + 1 + 0;
+      i = f.a.a.b.b.a.bz(1, this.Hck) + 0;
       paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.url);
+      if (this.Hcl != null) {
+        paramInt = i + f.a.a.a.lB(2, this.Hcl.computeSize());
       }
-      i = paramInt;
-      if (this.md5 != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.md5);
-      }
-      i = i + f.a.a.b.b.a.bx(4, this.version) + f.a.a.b.b.a.bx(5, this.Fwu);
-      paramInt = i;
-      if (this.dlt != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.dlt);
-      }
-      AppMethodBeat.o(123639);
-      return paramInt;
+      i = f.a.a.b.b.a.bz(3, this.Hcm);
+      AppMethodBeat.o(134248);
+      return paramInt + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(123639);
+      AppMethodBeat.o(134248);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
       cij localcij = (cij)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(123639);
+        AppMethodBeat.o(134248);
         return -1;
       case 1: 
-        localcij.EQH = locala.LVo.fZX();
-        AppMethodBeat.o(123639);
+        localcij.Hck = ((f.a.a.a.a)localObject1).NPN.zc();
+        AppMethodBeat.o(134248);
         return 0;
       case 2: 
-        localcij.url = locala.LVo.readString();
-        AppMethodBeat.o(123639);
-        return 0;
-      case 3: 
-        localcij.md5 = locala.LVo.readString();
-        AppMethodBeat.o(123639);
-        return 0;
-      case 4: 
-        localcij.version = locala.LVo.xF();
-        AppMethodBeat.o(123639);
-        return 0;
-      case 5: 
-        localcij.Fwu = locala.LVo.xF();
-        AppMethodBeat.o(123639);
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new SKBuiltinBuffer_t();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localcij.Hcl = ((SKBuiltinBuffer_t)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(134248);
         return 0;
       }
-      localcij.dlt = locala.LVo.readString();
-      AppMethodBeat.o(123639);
+      localcij.Hcm = ((f.a.a.a.a)localObject1).NPN.zc();
+      AppMethodBeat.o(134248);
       return 0;
     }
-    AppMethodBeat.o(123639);
+    AppMethodBeat.o(134248);
     return -1;
   }
 }

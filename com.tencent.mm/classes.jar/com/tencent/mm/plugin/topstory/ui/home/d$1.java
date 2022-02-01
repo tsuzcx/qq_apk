@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.topstory.ui.home;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import org.json.JSONArray;
 
@@ -16,13 +16,13 @@ final class d$1
     AppMethodBeat.i(126059);
     try
     {
-      Object localObject = (String)this.AbZ.AbX.get(Integer.valueOf(this.AbY));
-      if (bs.isNullOrNil((String)localObject)) {}
+      Object localObject = (String)this.BtK.BtI.get(Integer.valueOf(this.BtJ));
+      if (bt.isNullOrNil((String)localObject)) {}
       for (localObject = new JSONArray();; localObject = new JSONArray((String)localObject))
       {
-        ((JSONArray)localObject).put(this.sIr);
-        this.AbZ.ce(this.AbY, ((JSONArray)localObject).toString());
-        ac.i("MicroMsg.TopStory.TopStoryWebViewMgr", "addNegDocId finish: %s, %s", new Object[] { Integer.valueOf(this.AbY), this.sIr });
+        ((JSONArray)localObject).put(this.tFc);
+        this.BtK.cl(this.BtJ, ((JSONArray)localObject).toString());
+        ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "addNegDocId finish: %s, %s", new Object[] { Integer.valueOf(this.BtJ), this.tFc });
         AppMethodBeat.o(126059);
         return;
       }
@@ -30,7 +30,7 @@ final class d$1
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.TopStory.TopStoryWebViewMgr", "addNegDocId, exception: " + localException.getMessage());
+      ad.e("MicroMsg.TopStory.TopStoryWebViewMgr", "addNegDocId, exception: " + localException.getMessage());
       AppMethodBeat.o(126059);
     }
   }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:paddingStart="2.0dip" android:paddingEnd="2.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" app:cornerRadius="4.0dip">
+        <ImageView android:id="@id/b5b" android:layout_width="@dimen/bx" android:layout_height="@dimen/bz" android:src="@color/kj" android:scaleType="centerCrop" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="end|bottom|center" android:orientation="horizontal" android:id="@id/c0j" android:background="@drawable/c5l" android:paddingLeft="@dimen/bq" android:paddingTop="@dimen/a38" android:paddingRight="@dimen/bq" android:paddingBottom="@dimen/a38" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ci" android:layout_marginBottom="@dimen/ci">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hgl" android:layout_width="@dimen/c0" android:layout_height="@dimen/c0" android:src="@raw/icon_filled_awesome" app:iconColor="@color/aj" />
+            <TextView android:textSize="10.0dip" android:textColor="@color/aj" android:id="@id/d1p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a38" />
+        </LinearLayout>
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5">
+        <ImageView android:id="@id/ta" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:src="@drawable/aq8" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/fg" android:ellipsize="end" android:id="@id/i47" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:paddingEnd="@dimen/bq" android:layout_marginStart="@dimen/bq" />
+    </LinearLayout>
+</LinearLayout>

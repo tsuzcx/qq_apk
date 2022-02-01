@@ -21,13 +21,13 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.z;
 import com.tencent.mm.vfs.i;
 import com.tencent.xweb.f;
@@ -38,27 +38,27 @@ import java.util.HashMap;
 
 public final class a
 {
-  public static a JId;
+  public static a LBG;
   
-  public static void S(Context paramContext, String paramString1, String paramString2)
+  public static void V(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(152898);
-    if ((JId != null) && (JId.bgL()))
+    if ((LBG != null) && (LBG.bkq()))
     {
-      JId.r(paramContext, paramString1, paramString2);
+      LBG.s(paramContext, paramString1, paramString2);
       AppMethodBeat.o(152898);
       return;
     }
-    paramString2 = aST(paramString2);
-    h.mB(paramString1, paramString2);
-    g.o(paramContext, paramString1, paramString2);
+    paramString2 = aYT(paramString2);
+    h.mZ(paramString1, paramString2);
+    g.p(paramContext, paramString1, paramString2);
     AppMethodBeat.o(152898);
   }
   
   private static ViewGroup a(MMActivity paramMMActivity, String paramString, ValueCallback<String> paramValueCallback, boolean paramBoolean)
   {
     AppMethodBeat.i(177308);
-    View localView = z.jD(paramMMActivity.getContext()).inflate(2131496127, new LinearLayout(paramMMActivity.getContext()), false);
+    View localView = z.jO(paramMMActivity.getContext()).inflate(2131496127, new LinearLayout(paramMMActivity.getContext()), false);
     TextView localTextView1 = (TextView)localView.findViewById(2131307133);
     TextView localTextView2 = (TextView)localView.findViewById(2131307134);
     LinearLayout localLinearLayout1 = (LinearLayout)localView.findViewById(2131307135);
@@ -68,12 +68,12 @@ public final class a
     ImageButton localImageButton2 = (ImageButton)localView.findViewById(2131307130);
     if ((localTextView1 == null) || (localTextView2 == null) || (localLinearLayout1 == null) || (localLinearLayout2 == null) || (localImageButton1 == null) || (localLinearLayout3 == null) || (localImageButton2 == null))
     {
-      ac.e("XFilesReaderLogic", "initView can not find view");
+      ad.e("XFilesReaderLogic", "initView can not find view");
       AppMethodBeat.o(177308);
       return null;
     }
     int i = paramMMActivity.getResources().getColor(2131100705);
-    if (aj.DT())
+    if (al.isDarkMode())
     {
       c(paramMMActivity, i);
       localImageButton1.setImageResource(2131230850);
@@ -84,9 +84,13 @@ public final class a
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(192724);
-          this.krD.onReceiveValue("fileReaderClosed");
-          AppMethodBeat.o(192724);
+          AppMethodBeat.i(195490);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/xwebutil/FileReaderLogic$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          this.kMZ.onReceiveValue("fileReaderClosed");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/xwebutil/FileReaderLogic$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(195490);
         }
       });
       localLinearLayout3.setVisibility(0);
@@ -98,9 +102,13 @@ public final class a
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(192725);
-          this.krD.onReceiveValue("fileReaderMenuClicked");
-          AppMethodBeat.o(192725);
+          AppMethodBeat.i(195491);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/xwebutil/FileReaderLogic$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          this.kMZ.onReceiveValue("fileReaderMenuClicked");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/xwebutil/FileReaderLogic$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(195491);
         }
       });
       label255:
@@ -111,7 +119,7 @@ public final class a
       localTextView1.setText(paramString);
       paramString = new FrameLayout(paramMMActivity);
       paramString.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-      if (!aj.DT()) {
+      if (!al.isDarkMode()) {
         break label448;
       }
       paramString.setBackgroundColor(-15132391);
@@ -125,7 +133,7 @@ public final class a
       paramValueCallback = new Toolbar(paramMMActivity);
       paramValueCallback.setLayoutParams(new Toolbar.LayoutParams(-1));
       paramValueCallback.setBackgroundColor(i);
-      paramValueCallback.mE();
+      paramValueCallback.mW();
       paramValueCallback.setTag("view_tag_toolbar");
       paramString.addView(paramValueCallback);
       paramMMActivity.setContentView(paramString);
@@ -146,10 +154,10 @@ public final class a
       paramString.setBackgroundColor(-3355444);
     }
     label457:
-    paramMMActivity.fU();
+    paramMMActivity.gm();
     paramMMActivity.setDisplayHomeAsUpEnabled(false);
-    paramMMActivity.fT();
-    paramMMActivity.fV();
+    paramMMActivity.gl();
+    paramMMActivity.gn();
     paramMMActivity.setCustomView(localView);
     AppMethodBeat.o(177308);
     return paramString;
@@ -157,33 +165,33 @@ public final class a
   
   static void a(int paramInt, final Context paramContext, final String paramString1, final String paramString2, final String paramString3, final String paramString4, boolean paramBoolean1, boolean paramBoolean2, final HashMap<String, String> paramHashMap, final ValueCallback<String> paramValueCallback, final ValueCallback<Integer> paramValueCallback1, final boolean paramBoolean3)
   {
-    AppMethodBeat.i(192730);
+    AppMethodBeat.i(195496);
     if (paramBoolean1) {
-      f.aUL(paramString3);
+      f.baO(paramString3);
     }
-    if ((JId != null) && (JId.bgL()))
+    if ((LBG != null) && (LBG.bkq()))
     {
-      if (JId.bgM())
+      if (LBG.bkr())
       {
-        ac.i("XFilesReaderLogic", "need download miniqb to continue");
-        JId.bgN();
-        AppMethodBeat.o(192730);
+        ad.i("XFilesReaderLogic", "need download miniqb to continue");
+        LBG.bks();
+        AppMethodBeat.o(195496);
         return;
       }
-      ac.i("XFilesReaderLogic", "load by mini qb file loader");
-      JId.d(paramInt, paramContext, paramString1, paramString3, paramString4, paramBoolean2, paramHashMap, paramValueCallback, new ValueCallback() {});
-      AppMethodBeat.o(192730);
+      ad.i("XFilesReaderLogic", "load by mini qb file loader");
+      LBG.d(paramInt, paramContext, paramString1, paramString3, paramString4, paramBoolean2, paramHashMap, paramValueCallback, new ValueCallback() {});
+      AppMethodBeat.o(195496);
       return;
     }
     g.e(paramInt, paramContext, paramString1, paramString3, paramString4, paramBoolean2, paramHashMap, paramValueCallback, new ValueCallback() {});
-    AppMethodBeat.o(192730);
+    AppMethodBeat.o(195496);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, f.a parama, ValueCallback<String> paramValueCallback, ValueCallback<Integer> paramValueCallback1, boolean paramBoolean)
   {
-    AppMethodBeat.i(192729);
+    AppMethodBeat.i(195495);
     a(paramContext, paramString1, paramString2, paramString3, paramString4, false, new HashMap(), parama, paramValueCallback, paramValueCallback1, paramBoolean);
-    AppMethodBeat.o(192729);
+    AppMethodBeat.o(195495);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, HashMap<String, String> paramHashMap, f.a parama, ValueCallback<String> paramValueCallback, ValueCallback<Integer> paramValueCallback1, boolean paramBoolean2)
@@ -195,7 +203,7 @@ public final class a
     {
       bool = true;
       paramHashMap.put("hide_title_bar_right_button", String.valueOf(bool));
-      str = aST(paramString1);
+      str = aYT(paramString1);
       if (paramString3 == null) {
         break label205;
       }
@@ -203,7 +211,7 @@ public final class a
     label205:
     for (paramString1 = paramString3.toLowerCase();; paramString1 = paramString3)
     {
-      d.kE(ai.getContext());
+      d.kQ(aj.getContext());
       if (paramBoolean1)
       {
         a(40, paramContext, str, paramString2, paramString1, paramString4, false, true, paramHashMap, paramValueCallback, paramValueCallback1, paramBoolean2);
@@ -212,17 +220,17 @@ public final class a
         bool = false;
         break;
       }
-      f.mz(str, paramString1);
+      f.mX(str, paramString1);
       paramString3 = new Intent();
       parama = f.a(paramString1, parama, true, paramString3);
-      switch (7.JIi[parama.ordinal()])
+      switch (7.LBL[parama.ordinal()])
       {
       default: 
-        a(paramString3.getIntExtra(f.KyL, 40), paramContext, str, paramString2, paramString1, paramString4, false, false, paramHashMap, paramValueCallback, paramValueCallback1, paramBoolean2);
+        a(paramString3.getIntExtra(f.Mph, 40), paramContext, str, paramString2, paramString1, paramString4, false, false, paramHashMap, paramValueCallback, paramValueCallback1, paramBoolean2);
         AppMethodBeat.o(177306);
         return;
       }
-      a(paramContext, str, paramString2, paramString1, paramString4, false, com.tencent.xweb.b.fIY(), paramHashMap, paramValueCallback, paramValueCallback1, paramBoolean2);
+      a(paramContext, str, paramString2, paramString1, paramString4, false, com.tencent.xweb.b.gau(), paramHashMap, paramValueCallback, paramValueCallback1, paramBoolean2);
       AppMethodBeat.o(177306);
       return;
     }
@@ -230,32 +238,32 @@ public final class a
   
   static void a(final Context paramContext, final String paramString1, final String paramString2, final String paramString3, final String paramString4, final boolean paramBoolean1, boolean paramBoolean2, final HashMap<String, String> paramHashMap, final ValueCallback<String> paramValueCallback, ValueCallback<Integer> paramValueCallback1, final boolean paramBoolean3)
   {
-    AppMethodBeat.i(192731);
+    AppMethodBeat.i(195497);
     if (paramBoolean1) {
-      f.aUN(paramString3);
+      f.baQ(paramString3);
     }
     if (!(paramContext instanceof MMActivity))
     {
-      ac.e("XFilesReaderLogic", "readFileByXWeb not mmactivity, use x5");
+      ad.e("XFilesReaderLogic", "readFileByXWeb not mmactivity, use x5");
       if (!paramBoolean1) {
         a(48, paramContext, paramString1, paramString2, paramString3, paramString4, true, false, paramHashMap, paramValueCallback, paramValueCallback1, paramBoolean3);
       }
-      AppMethodBeat.o(192731);
+      AppMethodBeat.o(195497);
       return;
     }
     MMActivity localMMActivity = (MMActivity)paramContext;
     ViewGroup localViewGroup = a(localMMActivity, paramString2, paramValueCallback, paramBoolean3);
     if (localViewGroup == null)
     {
-      ac.e("XFilesReaderLogic", "readFileByXWeb contentView is null, use x5");
+      ad.e("XFilesReaderLogic", "readFileByXWeb contentView is null, use x5");
       if (!paramBoolean1) {
         a(48, paramContext, paramString1, paramString2, paramString3, paramString4, true, false, paramHashMap, paramValueCallback, paramValueCallback1, paramBoolean3);
       }
-      AppMethodBeat.o(192731);
+      AppMethodBeat.o(195497);
       return;
     }
     h.a(paramString1, paramString3, paramString4, paramBoolean2, localMMActivity, localViewGroup, new ValueCallback() {});
-    AppMethodBeat.o(192731);
+    AppMethodBeat.o(195497);
   }
   
   public static void a(final MMActivity paramMMActivity, String paramString1, final String paramString2, final String paramString3)
@@ -267,28 +275,28 @@ public final class a
     localIntent.putExtra("mutil_select_is_ret", true);
     localIntent.putExtra("desc_title", paramString2);
     localIntent.putExtra("Retr_Msg_Type", 3);
-    com.tencent.mm.br.d.a(paramMMActivity, ".ui.transmit.SelectConversationUI", localIntent, 1, new MMActivity.a()
+    com.tencent.mm.bs.d.a(paramMMActivity, ".ui.transmit.SelectConversationUI", localIntent, 1, new MMActivity.a()
     {
       public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(192727);
+        AppMethodBeat.i(195493);
         if ((paramAnonymousInt1 != 1) || (paramAnonymousInt2 != -1))
         {
-          AppMethodBeat.o(192727);
+          AppMethodBeat.o(195493);
           return;
         }
         if (paramAnonymousIntent == null)
         {
-          ac.e("XFilesReaderLogic", "mmOnActivityResult fail, retData is null");
-          AppMethodBeat.o(192727);
+          ad.e("XFilesReaderLogic", "mmOnActivityResult fail, retData is null");
+          AppMethodBeat.o(195493);
           return;
         }
         String str = paramAnonymousIntent.getStringExtra("Select_Conv_User");
         paramAnonymousIntent = paramAnonymousIntent.getStringExtra("custom_send_text");
         if ((str == null) || (str.length() == 0))
         {
-          ac.e("XFilesReaderLogic", "mmOnActivityResult fail, toUser is null");
-          AppMethodBeat.o(192727);
+          ad.e("XFilesReaderLogic", "mmOnActivityResult fail, toUser is null");
+          AppMethodBeat.o(195493);
           return;
         }
         Intent localIntent = new Intent();
@@ -300,79 +308,55 @@ public final class a
         localIntent.putExtra("to_user", str);
         localIntent.putExtra("send_text", paramAnonymousIntent);
         paramMMActivity.sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
-        ap.f(new Runnable()
+        aq.f(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(192726);
+            AppMethodBeat.i(195492);
             com.tencent.mm.ui.widget.snackbar.b.n(a.6.this.val$activity, a.6.this.val$activity.getString(2131766371));
-            AppMethodBeat.o(192726);
+            AppMethodBeat.o(195492);
           }
         });
-        AppMethodBeat.o(192727);
+        AppMethodBeat.o(195493);
       }
     });
     AppMethodBeat.o(152904);
   }
   
-  public static String aST(String paramString)
+  public static String aYT(String paramString)
   {
     AppMethodBeat.i(152899);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      ac.e("XFilesReaderLogic", "getSafeRealPath filePath is empty");
+      ad.e("XFilesReaderLogic", "getSafeRealPath filePath is empty");
       AppMethodBeat.o(152899);
       return paramString;
     }
     try
     {
       String str = i.k(paramString, false);
-      if (bs.isNullOrNil(str))
+      if (bt.isNullOrNil(str))
       {
-        ac.e("XFilesReaderLogic", "getSafeRealPath real path is empty, use old path %s", new Object[] { paramString });
+        ad.e("XFilesReaderLogic", "getSafeRealPath real path is empty, use old path %s", new Object[] { paramString });
         AppMethodBeat.o(152899);
         return paramString;
       }
       if (str.equals(paramString))
       {
-        ac.i("XFilesReaderLogic", "getSafeRealPath real path is the same %s", new Object[] { str });
+        ad.i("XFilesReaderLogic", "getSafeRealPath real path is the same %s", new Object[] { str });
         AppMethodBeat.o(152899);
         return str;
       }
-      ac.i("XFilesReaderLogic", "getSafeRealPath from %s to %s", new Object[] { paramString, str });
+      ad.i("XFilesReaderLogic", "getSafeRealPath from %s to %s", new Object[] { paramString, str });
       AppMethodBeat.o(152899);
       return str;
     }
     catch (Exception localException)
     {
-      ac.e("XFilesReaderLogic", "getSafeRealPath error: %s", new Object[] { localException.getMessage() });
+      ad.e("XFilesReaderLogic", "getSafeRealPath error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(152899);
     }
     return paramString;
-  }
-  
-  public static void c(Context paramContext, String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(152903);
-    if ((paramContext == null) || (paramString1 == null) || (paramString1.isEmpty()) || (paramString2 == null) || (paramString2.isEmpty()))
-    {
-      ac.e("XFilesReaderLogic", "sendResult wrong param");
-      AppMethodBeat.o(152903);
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.setAction("MINIQB_OPEN_RET");
-    localIntent.putExtra("op_type", "NOTIFY_RET");
-    localIntent.putExtra("file_path", paramString1);
-    localIntent.putExtra("file_ext", paramString2);
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localIntent.putExtra("MINIQB_OPEN_RET_VAL", bool);
-      paramContext.sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
-      AppMethodBeat.o(152903);
-      return;
-    }
   }
   
   private static void c(MMActivity paramMMActivity, int paramInt)
@@ -402,22 +386,46 @@ public final class a
     }
     catch (Exception paramMMActivity)
     {
-      ac.e("XFilesReaderLogic", "updateStatusBarToDarkMode error ", new Object[] { paramMMActivity });
+      ad.e("XFilesReaderLogic", "updateStatusBarToDarkMode error ", new Object[] { paramMMActivity });
       AppMethodBeat.o(177309);
+    }
+  }
+  
+  public static void d(Context paramContext, String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(152903);
+    if ((paramContext == null) || (paramString1 == null) || (paramString1.isEmpty()) || (paramString2 == null) || (paramString2.isEmpty()))
+    {
+      ad.e("XFilesReaderLogic", "sendResult wrong param");
+      AppMethodBeat.o(152903);
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.setAction("MINIQB_OPEN_RET");
+    localIntent.putExtra("op_type", "NOTIFY_RET");
+    localIntent.putExtra("file_path", paramString1);
+    localIntent.putExtra("file_ext", paramString2);
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localIntent.putExtra("MINIQB_OPEN_RET_VAL", bool);
+      paramContext.sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
+      AppMethodBeat.o(152903);
+      return;
     }
   }
   
   public static abstract interface a
   {
-    public abstract boolean bgL();
+    public abstract boolean bkq();
     
-    public abstract boolean bgM();
+    public abstract boolean bkr();
     
-    public abstract void bgN();
+    public abstract void bks();
     
     public abstract void d(int paramInt, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback, ValueCallback<Integer> paramValueCallback1);
     
-    public abstract void r(Context paramContext, String paramString1, String paramString2);
+    public abstract void s(Context paramContext, String paramString1, String paramString2);
   }
 }
 

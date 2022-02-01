@@ -1,49 +1,83 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.protocal.protobuf.dci;
-import com.tencent.mm.protocal.protobuf.dsy;
-import com.tencent.mm.protocal.protobuf.dsz;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.plugin.voip.model.l;
+import com.tencent.mm.plugin.voip.model.v2protocal;
+import com.tencent.mm.protocal.protobuf.dhv;
+import com.tencent.mm.protocal.protobuf.dys;
+import com.tencent.mm.protocal.protobuf.dyt;
 
 public final class k
-  extends n<dsy, dsz>
+  extends n<dys, dyt>
 {
-  public k(dci paramdci)
+  public k(dhv paramdhv)
   {
     AppMethodBeat.i(115250);
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new dsy();
-    ((b.a)localObject).hvu = new dsz();
+    ((b.a)localObject).hNM = new dys();
+    ((b.a)localObject).hNN = new dyt();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipspeedtest";
     ((b.a)localObject).funcId = 765;
-    ((b.a)localObject).reqCmdId = 765;
+    ((b.a)localObject).hNO = 765;
     ((b.a)localObject).respCmdId = 1000000765;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (dsy)this.rr.hvr.hvw;
-    ((dsy)localObject).Exf = paramdci.Exf;
-    ((dsy)localObject).FLI = paramdci.FLI;
-    ((dsy)localObject).EqS = paramdci.EqS;
-    ((dsy)localObject).FLJ = paramdci.FLJ;
-    ((dsy)localObject).FLK = paramdci.FLK;
-    ((dsy)localObject).FLL = paramdci.FLL;
-    ((dsy)localObject).FLM = paramdci.FLM;
-    ((dsy)localObject).FLN = paramdci.FLN;
-    ((dsy)localObject).FLO = paramdci.FLO;
-    ((dsy)localObject).FLP = paramdci.FLP;
-    ((dsy)localObject).FLQ = paramdci.FLQ;
-    ((dsy)localObject).FLR = paramdci.FLR;
-    ((dsy)localObject).FLS = paramdci.FLS;
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (dys)this.rr.hNK.hNQ;
+    ((dys)localObject).GeI = paramdhv.GeI;
+    ((dys)localObject).Hwq = paramdhv.Hwq;
+    ((dys)localObject).FYc = paramdhv.FYc;
+    ((dys)localObject).Hwr = paramdhv.Hwr;
+    ((dys)localObject).Hws = paramdhv.Hws;
+    ((dys)localObject).Hwt = paramdhv.Hwt;
+    ((dys)localObject).Hwu = paramdhv.Hwu;
+    ((dys)localObject).Hwv = paramdhv.Hwv;
+    ((dys)localObject).Hww = paramdhv.Hww;
+    ((dys)localObject).Hwx = paramdhv.Hwx;
+    ((dys)localObject).Hwy = paramdhv.Hwy;
+    ((dys)localObject).Hwz = paramdhv.Hwz;
+    ((dys)localObject).HwA = paramdhv.HwA;
     AppMethodBeat.o(115250);
   }
   
-  public final g eks()
+  public final com.tencent.mm.al.f eyd()
   {
     AppMethodBeat.i(115251);
-    k.1 local1 = new k.1(this);
+    com.tencent.mm.al.f local1 = new com.tencent.mm.al.f()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.n paramAnonymousn)
+      {
+        AppMethodBeat.i(115249);
+        com.tencent.mm.plugin.voip.b.f.Logd("MicroMsg.NetSceneVoipSpeedTest", "onSceneEnd type:" + paramAnonymousn.getType() + " errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2);
+        try
+        {
+          paramAnonymousString = (dyt)k.this.eyh();
+          if ((paramAnonymousString.HMf == 0) || (paramAnonymousString.HMg == 0))
+          {
+            com.tencent.mm.plugin.voip.b.f.Loge("MicroMsg.NetSceneVoipSpeedTest", "onVoipSpeedTestResp: no need to do speed test, svrCount = " + paramAnonymousString.HMg);
+            AppMethodBeat.o(115249);
+            return;
+          }
+          if (k.this.Cbq.Can != 1)
+          {
+            com.tencent.mm.plugin.voip.b.f.Loge("MicroMsg.NetSceneVoipSpeedTest", "onVoipSpeedTestResp: no need to do speed test, for mSpeedTestStatus = " + k.this.Cbq.Can);
+            AppMethodBeat.o(115249);
+            return;
+          }
+          k.this.Cbq.Can = 2;
+          k.this.Cbq.Cap = paramAnonymousString.HMb;
+          k.this.Cbq.CaI.a(paramAnonymousString);
+          AppMethodBeat.o(115249);
+          return;
+        }
+        catch (Exception paramAnonymousString)
+        {
+          k.this.Cbq.Can = 0;
+          AppMethodBeat.o(115249);
+        }
+      }
+    };
     AppMethodBeat.o(115251);
     return local1;
   }
@@ -55,7 +89,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.k
  * JD-Core Version:    0.7.0.1
  */

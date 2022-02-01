@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public final class a
 {
-  public static boolean aTh(String paramString)
+  public static boolean aZh(String paramString)
   {
     AppMethodBeat.i(138342);
     if (!new File(paramString).exists())
@@ -17,11 +17,11 @@ public final class a
     }
     try
     {
-      boolean bool = com.tencent.d.d.b.a.aTh(paramString);
+      boolean bool = com.tencent.d.d.b.a.aZh(paramString);
       if (!bool)
       {
         "BootScriptChecker found no-elf file : ".concat(String.valueOf(paramString));
-        h.fCO();
+        h.fUg();
       }
       AppMethodBeat.o(138342);
       return bool;
@@ -34,7 +34,7 @@ public final class a
     return true;
   }
   
-  public static boolean aTi(String paramString)
+  public static boolean aZi(String paramString)
   {
     AppMethodBeat.i(138343);
     Object localObject = new File(paramString);
@@ -45,14 +45,14 @@ public final class a
     }
     try
     {
-      localObject = new String(com.tencent.d.d.b.a.aTj(((File)localObject).getAbsolutePath()));
+      localObject = new String(com.tencent.d.d.b.a.aZj(((File)localObject).getAbsolutePath()));
       boolean bool = ((String)localObject).contains("applypatch ");
       new StringBuilder("BootScriptChecker script (").append(paramString).append(") content : \n").append((String)localObject);
-      h.feg();
+      h.fuo();
       if (!bool)
       {
         "BootScriptChecker found unofficial file : ".concat(String.valueOf(paramString));
-        h.fCO();
+        h.fUg();
       }
       AppMethodBeat.o(138343);
       return bool;

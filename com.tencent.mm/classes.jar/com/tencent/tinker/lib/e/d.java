@@ -6,27 +6,27 @@ import java.util.HashMap;
 
 public final class d
 {
-  public String Kre;
-  public boolean Krf;
-  public boolean Krg;
-  public File Krh;
-  public File Kri;
-  public File Krj;
-  public File Krk;
-  public File Krl;
-  public File Krm;
-  public HashMap<String, String> Krn;
-  public HashMap<String, String> Kro;
-  public HashMap<String, String> Krp;
-  public int Krq;
-  public long lTa;
+  public String Mhf;
+  public boolean Mhg;
+  public boolean Mhh;
+  public File Mhi;
+  public File Mhj;
+  public File Mhk;
+  public File Mhl;
+  public File Mhm;
+  public File Mhn;
+  public HashMap<String, String> Mho;
+  public HashMap<String, String> Mhp;
+  public HashMap<String, String> Mhq;
+  public int Mhr;
+  public long msQ;
   public String oatDir;
   public SharePatchInfo patchInfo;
   public boolean useInterpretMode;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.lib.e.d
  * JD-Core Version:    0.7.0.1
  */

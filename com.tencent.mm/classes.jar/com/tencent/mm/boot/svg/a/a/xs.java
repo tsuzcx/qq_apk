@@ -47,23 +47,27 @@ public final class xs
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
       localPaint2 = c.a(localPaint2, paramVarArgs);
-      localPaint1.setColor(-13882324);
-      localPaint2.setColor(234881023);
+      localPaint1.setColor(-1);
+      localPaint2.setColor(838860800);
       localPaint2.setStrokeWidth(1.5F);
       Path localPath = c.n(paramVarArgs);
-      localPath.moveTo(191.25F, 381.0F);
+      localPath.moveTo(155.25F, 272.53323F);
+      localPath.cubicTo(155.25F, 262.90875F, 158.09885F, 253.49963F, 163.43755F, 245.49159F);
+      localPath.lineTo(183.31438F, 215.67636F);
+      localPath.cubicTo(188.4888F, 207.91472F, 191.25F, 198.7951F, 191.25F, 189.46677F);
       localPath.lineTo(191.25F, 48.0F);
       localPath.cubicTo(191.25F, 21.904545F, 170.09546F, 0.75F, 144.0F, 0.75F);
       localPath.lineTo(48.0F, 0.75F);
       localPath.cubicTo(21.904545F, 0.75F, 0.75F, 21.904545F, 0.75F, 48.0F);
-      localPath.lineTo(0.75F, 180.0F);
-      localPath.cubicTo(0.75F, 194.87228F, 7.752174F, 208.87663F, 19.65F, 217.8F);
-      localPath.lineTo(53.25F, 243.0F);
-      localPath.cubicTo(65.525536F, 252.20665F, 72.75F, 266.65558F, 72.75F, 282.0F);
-      localPath.lineTo(72.75F, 381.0F);
-      localPath.cubicTo(72.75F, 393.84061F, 83.159378F, 404.25F, 96.0F, 404.25F);
-      localPath.lineTo(168.0F, 404.25F);
-      localPath.cubicTo(180.84062F, 404.25F, 191.25F, 393.84061F, 191.25F, 381.0F);
+      localPath.lineTo(0.75F, 189.46677F);
+      localPath.cubicTo(0.75F, 198.7951F, 3.511197F, 207.91472F, 8.685623F, 215.67636F);
+      localPath.lineTo(28.562452F, 245.49159F);
+      localPath.cubicTo(33.901146F, 253.49963F, 36.75F, 262.90875F, 36.75F, 272.53323F);
+      localPath.lineTo(36.75F, 381.0F);
+      localPath.cubicTo(36.75F, 393.84061F, 47.159378F, 404.25F, 60.0F, 404.25F);
+      localPath.lineTo(132.0F, 404.25F);
+      localPath.cubicTo(144.84062F, 404.25F, 155.25F, 393.84061F, 155.25F, 381.0F);
+      localPath.lineTo(155.25F, 272.53323F);
       localPath.close();
       WeChatSVGRenderC2Java.setFillType(localPath, 2);
       localCanvas.drawPath(localPath, localPaint1);
@@ -75,7 +79,7 @@ public final class xs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.xs
  * JD-Core Version:    0.7.0.1
  */

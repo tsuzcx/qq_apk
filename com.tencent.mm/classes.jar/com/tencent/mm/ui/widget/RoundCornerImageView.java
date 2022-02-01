@@ -18,15 +18,15 @@ import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.af.a.a;
 
 public class RoundCornerImageView
   extends AppCompatImageView
 {
-  private int JbY;
-  private int JbZ;
-  private Path Jca;
-  private RectF Jcb;
+  private int KTg;
+  private int KTh;
+  private Path KTi;
+  private RectF KTj;
   private Paint borderPaint;
   private Paint paint;
   public int shadowColor;
@@ -38,11 +38,11 @@ public class RoundCornerImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143446);
-    this.JbY = 8;
-    this.JbZ = 8;
+    this.KTg = 8;
+    this.KTh = 8;
     this.paint = new Paint();
-    this.Jca = new Path();
-    this.Jcb = new RectF();
+    this.KTi = new Path();
+    this.KTj = new RectF();
     this.shadowRadius = 0;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(143446);
@@ -52,11 +52,11 @@ public class RoundCornerImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143445);
-    this.JbY = 8;
-    this.JbZ = 8;
+    this.KTg = 8;
+    this.KTh = 8;
     this.paint = new Paint();
-    this.Jca = new Path();
-    this.Jcb = new RectF();
+    this.KTi = new Path();
+    this.KTj = new RectF();
     this.shadowRadius = 0;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(143445);
@@ -68,15 +68,15 @@ public class RoundCornerImageView
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.RoundCornerImageView);
-      this.JbY = paramContext.getDimensionPixelSize(1, this.JbY);
-      this.JbZ = paramContext.getDimensionPixelSize(0, this.JbZ);
+      this.KTg = paramContext.getDimensionPixelSize(1, this.KTg);
+      this.KTh = paramContext.getDimensionPixelSize(0, this.KTh);
       paramContext.recycle();
       AppMethodBeat.o(143447);
       return;
     }
     float f = paramContext.getResources().getDisplayMetrics().density;
-    this.JbY = ((int)(this.JbY * f));
-    this.JbZ = ((int)(f * this.JbZ));
+    this.KTg = ((int)(this.KTg * f));
+    this.KTh = ((int)(f * this.KTh));
     AppMethodBeat.o(143447);
   }
   
@@ -94,14 +94,14 @@ public class RoundCornerImageView
     super.draw(localCanvas);
     this.paint.setAntiAlias(true);
     this.paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    this.Jcb.set(0.0F, 0.0F, getWidth(), getHeight());
-    this.Jca.addRoundRect(this.Jcb, this.JbY, this.JbZ, Path.Direction.CW);
-    this.Jca.setFillType(Path.FillType.INVERSE_WINDING);
-    localCanvas.drawPath(this.Jca, this.paint);
+    this.KTj.set(0.0F, 0.0F, getWidth(), getHeight());
+    this.KTi.addRoundRect(this.KTj, this.KTg, this.KTh, Path.Direction.CW);
+    this.KTi.setFillType(Path.FillType.INVERSE_WINDING);
+    localCanvas.drawPath(this.KTi, this.paint);
     if (this.borderPaint != null)
     {
       float f = this.borderPaint.getStrokeWidth() / 2.0F;
-      localCanvas.drawRoundRect(new RectF(f, f, getWidth() - f, getHeight() - f), this.JbY, this.JbZ, this.borderPaint);
+      localCanvas.drawRoundRect(new RectF(f, f, getWidth() - f, getHeight() - f), this.KTg, this.KTh, this.borderPaint);
     }
     this.paint.reset();
     this.paint.setXfermode(null);
@@ -113,15 +113,15 @@ public class RoundCornerImageView
     AppMethodBeat.o(143448);
   }
   
-  public final void jS(int paramInt1, int paramInt2)
+  public final void ke(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(197234);
+    AppMethodBeat.i(186542);
     this.borderPaint = new Paint();
     this.borderPaint.setStyle(Paint.Style.STROKE);
     this.borderPaint.setStrokeWidth(paramInt1);
     this.borderPaint.setAntiAlias(true);
     this.borderPaint.setColor(paramInt2);
-    AppMethodBeat.o(197234);
+    AppMethodBeat.o(186542);
   }
 }
 

@@ -1,68 +1,111 @@
 package com.tencent.mm.plugin.finder.ui;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.d;
-import com.tencent.mm.plugin.finder.api.f;
-import com.tencent.mm.plugin.finder.loader.a;
-import com.tencent.mm.plugin.finder.loader.h;
-import com.tencent.mm.plugin.finder.loader.h.a;
-import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
-import com.tencent.mm.ui.am;
-import d.l;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import d.g.a.q;
+import d.g.b.p;
+import d.g.b.y.f;
 import d.v;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/ContactListAdapter;", "Landroid/widget/BaseAdapter;", "context", "Landroid/app/Activity;", "(Landroid/app/Activity;)V", "TAG", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "Lkotlin/collections/ArrayList;", "getCount", "", "getItem", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "setContactList", "", "contacts", "", "ContactViewHolder", "plugin-finder_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderFriendBlackListAdapter;", "Landroid/widget/BaseAdapter;", "context", "Landroid/app/Activity;", "(Landroid/app/Activity;)V", "TAG", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/storage/Contact;", "Lkotlin/collections/ArrayList;", "onItemLongClickListener", "Lkotlin/Function3;", "Landroid/view/View;", "", "", "getOnItemLongClickListener", "()Lkotlin/jvm/functions/Function3;", "setOnItemLongClickListener", "(Lkotlin/jvm/functions/Function3;)V", "getCount", "", "getItem", "position", "getItemId", "", "getName", "ct", "getView", "convertView", "parent", "Landroid/view/ViewGroup;", "interest", "likeUsername", "setLikedContactList", "contacts", "", "LikedViewHolder", "plugin-finder_release"})
 public final class b
   extends BaseAdapter
 {
   private String TAG;
-  private ArrayList<f> dataList;
-  private Activity dgE;
+  private Activity dsa;
+  private ArrayList<am> jfg;
+  public q<? super View, ? super String, ? super Boolean, d.z> sCF;
   
   public b(Activity paramActivity)
   {
-    AppMethodBeat.i(167121);
-    this.TAG = "Finder.ContactListAdapter";
-    this.dgE = paramActivity;
-    this.dataList = new ArrayList();
-    AppMethodBeat.o(167121);
+    AppMethodBeat.i(203995);
+    this.TAG = "Finder.FinderFriendBlackListAdapter";
+    this.dsa = paramActivity;
+    this.jfg = new ArrayList();
+    AppMethodBeat.o(203995);
   }
   
-  public final f Ep(int paramInt)
+  private am FC(int paramInt)
   {
-    AppMethodBeat.i(167117);
-    Object localObject = this.dataList.get(paramInt);
-    d.g.b.k.g(localObject, "dataList[position]");
-    localObject = (f)localObject;
-    AppMethodBeat.o(167117);
+    AppMethodBeat.i(203991);
+    Object localObject = this.jfg.get(paramInt);
+    p.g(localObject, "dataList[position]");
+    localObject = (am)localObject;
+    AppMethodBeat.o(203991);
     return localObject;
   }
   
-  public final void dC(List<f> paramList)
+  public final void aiI(String paramString)
   {
-    AppMethodBeat.i(167120);
-    d.g.b.k.h(paramList, "contacts");
-    this.dataList.clear();
-    this.dataList.addAll((Collection)paramList);
-    AppMethodBeat.o(167120);
+    AppMethodBeat.i(203990);
+    p.h(paramString, "likeUsername");
+    Object localObject = (List)this.jfg;
+    int i = 0;
+    localObject = ((List)localObject).iterator();
+    if (((Iterator)localObject).hasNext()) {
+      if (!p.i(((am)((Iterator)localObject).next()).getUsername(), paramString)) {}
+    }
+    for (;;)
+    {
+      if (i >= 0)
+      {
+        this.jfg.remove(i);
+        notifyDataSetChanged();
+      }
+      AppMethodBeat.o(203990);
+      return;
+      i += 1;
+      break;
+      i = -1;
+    }
+  }
+  
+  public final void dK(List<String> paramList)
+  {
+    AppMethodBeat.i(203994);
+    p.h(paramList, "contacts");
+    this.jfg.clear();
+    paramList = ((Iterable)paramList).iterator();
+    while (paramList.hasNext())
+    {
+      String str = (String)paramList.next();
+      Object localObject = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+      p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
+      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azp().Bf(str);
+      if (localObject != null) {
+        this.jfg.add(localObject);
+      } else {
+        ad.i(this.TAG, "setLikedContactList, not exist contact: ".concat(String.valueOf(str)));
+      }
+    }
+    AppMethodBeat.o(203994);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(167119);
-    int i = this.dataList.size();
-    AppMethodBeat.o(167119);
+    AppMethodBeat.i(203993);
+    int i = this.jfg.size();
+    AppMethodBeat.o(203993);
     return i;
   }
   
@@ -71,139 +114,147 @@ public final class b
     return paramInt;
   }
   
+  @SuppressLint({"ResourceType"})
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(167116);
-    paramViewGroup = paramView;
-    if (paramView == null)
+    AppMethodBeat.i(203989);
+    final y.f localf = new y.f();
+    localf.MLV = paramView;
+    if ((View)localf.MLV == null)
     {
-      paramViewGroup = View.inflate((Context)this.dgE, 2131494016, null);
+      localf.MLV = com.tencent.mm.ui.z.jO((Context)this.dsa).inflate(2131496173, paramViewGroup, false);
       paramView = new a();
-      d.g.b.k.g(paramViewGroup, "itemView");
+      paramViewGroup = (View)localf.MLV;
+      p.g(paramViewGroup, "itemView");
       paramViewGroup.setTag(paramView);
     }
-    paramView = paramViewGroup.getTag();
+    paramView = (View)localf.MLV;
+    if (paramView == null) {
+      p.gfZ();
+    }
+    paramView = paramView.getTag();
     if (paramView == null)
     {
-      paramView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.ContactListAdapter.ContactViewHolder");
-      AppMethodBeat.o(167116);
+      paramView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.FinderFriendBlackListAdapter.LikedViewHolder");
+      AppMethodBeat.o(203989);
       throw paramView;
     }
-    paramView = (a)paramView;
-    Object localObject1 = paramViewGroup.findViewById(2131297008);
-    d.g.b.k.g(localObject1, "itemView.findViewById(R.id.avatar_iv)");
-    localObject1 = (ImageView)localObject1;
-    d.g.b.k.h(localObject1, "<set-?>");
-    paramView.fxQ = ((ImageView)localObject1);
-    localObject1 = paramViewGroup.findViewById(2131302867);
-    d.g.b.k.g(localObject1, "itemView.findViewById(R.id.nickname_tv)");
-    localObject1 = (TextView)localObject1;
-    d.g.b.k.h(localObject1, "<set-?>");
-    paramView.nMU = ((TextView)localObject1);
-    localObject1 = paramViewGroup.findViewById(2131296977);
-    d.g.b.k.g(localObject1, "itemView.findViewById(R.id.auth_icon)");
-    localObject1 = (ImageView)localObject1;
-    d.g.b.k.h(localObject1, "<set-?>");
-    paramView.rqZ = ((ImageView)localObject1);
-    localObject1 = paramViewGroup.findViewById(2131296980);
-    d.g.b.k.g(localObject1, "itemView.findViewById(R.id.auth_job)");
-    localObject1 = (TextView)localObject1;
-    d.g.b.k.h(localObject1, "<set-?>");
-    paramView.rFt = ((TextView)localObject1);
-    localObject1 = Ep(paramInt);
-    Object localObject2 = h.rtK;
-    localObject2 = h.cwo();
-    a locala = new a(((f)localObject1).crZ());
-    ImageView localImageView = paramView.fxQ;
-    if (localImageView == null) {
-      d.g.b.k.aVY("avatarIv");
+    a locala = (a)paramView;
+    paramView = ((View)localf.MLV).findViewById(2131307402);
+    p.g(paramView, "itemView.findViewById(R.id.finder_liked_avatar_iv)");
+    paramView = (ImageView)paramView;
+    p.h(paramView, "<set-?>");
+    locala.fRd = paramView;
+    paramView = ((View)localf.MLV).findViewById(2131307406);
+    p.g(paramView, "itemView.findViewById(R.…finder_liked_username_tv)");
+    paramView = (TextView)paramView;
+    p.h(paramView, "<set-?>");
+    locala.opA = paramView;
+    locala.getAvatarIv().setImageResource(2131690013);
+    final am localam = FC(paramInt);
+    TextView localTextView = locala.opA;
+    if (localTextView == null) {
+      p.bcb("nicknameTv");
     }
-    h localh = h.rtK;
-    ((d)localObject2).a(locala, localImageView, h.a(h.a.rtN));
-    localObject2 = paramView.nMU;
-    if (localObject2 == null) {
-      d.g.b.k.aVY("nicknameTv");
-    }
-    ((TextView)localObject2).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c((Context)this.dgE, (CharSequence)((f)localObject1).Tn()));
-    localObject2 = ((f)localObject1).field_authInfo;
-    if (localObject2 != null)
+    Context localContext = (Context)this.dsa;
+    if ((localam.adt() != 0) && (!bt.isNullOrNil(localam.adv())))
     {
-      paramInt = ((FinderAuthInfo)localObject2).authIconType;
-      paramView.cBr().setVisibility(8);
-      if (paramInt <= 0) {
-        break label565;
-      }
-      switch (paramInt)
-      {
-      }
+      paramView = localam.adv();
+      p.g(paramView, "ct.displayRemark");
     }
     for (;;)
     {
-      AppMethodBeat.o(167116);
-      return paramViewGroup;
-      paramInt = 0;
-      break;
-      paramView.cBq().setVisibility(0);
-      paramView.cBr().setVisibility(0);
-      paramView.cBq().setImageDrawable(am.k((Context)this.dgE, 2131690481, this.dgE.getResources().getColor(2131099777)));
-      localObject2 = paramView.cBr();
-      paramView = ((f)localObject1).field_authInfo;
-      if (paramView != null)
-      {
-        paramView = paramView.authProfession;
-        if (paramView == null) {}
+      localTextView.setText((CharSequence)k.c(localContext, (CharSequence)paramView));
+      a.b.c(locala.getAvatarIv(), localam.getUsername());
+      ((View)localf.MLV).setOnLongClickListener((View.OnLongClickListener)new b(this, localf, localam));
+      ((View)localf.MLV).setOnClickListener((View.OnClickListener)new c(this, localam));
+      paramView = (View)localf.MLV;
+      AppMethodBeat.o(203989);
+      return paramView;
+      paramViewGroup = localam.getUsername();
+      paramView = paramViewGroup;
+      if (paramViewGroup == null) {
+        paramView = "";
       }
-      for (paramView = (CharSequence)paramView;; paramView = (CharSequence)"")
-      {
-        ((TextView)localObject2).setText(paramView);
-        break;
-      }
-      paramView.cBq().setVisibility(0);
-      paramView.cBq().setImageDrawable(am.k((Context)this.dgE, 2131690481, this.dgE.getResources().getColor(2131099748)));
-      continue;
-      paramView.cBq().setVisibility(8);
-      paramView.cBr().setVisibility(8);
-      continue;
-      label565:
-      paramView.cBq().setVisibility(8);
-      paramView.cBr().setVisibility(8);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/ContactListAdapter$ContactViewHolder;", "", "()V", "authIcon", "Landroid/widget/ImageView;", "getAuthIcon", "()Landroid/widget/ImageView;", "setAuthIcon", "(Landroid/widget/ImageView;)V", "authJob", "Landroid/widget/TextView;", "getAuthJob", "()Landroid/widget/TextView;", "setAuthJob", "(Landroid/widget/TextView;)V", "avatarIv", "getAvatarIv", "setAvatarIv", "nicknameTv", "getNicknameTv", "setNicknameTv", "plugin-finder_release"})
-  static final class a
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderFriendBlackListAdapter$LikedViewHolder;", "", "()V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "nicknameTv", "Landroid/widget/TextView;", "getNicknameTv", "()Landroid/widget/TextView;", "setNicknameTv", "(Landroid/widget/TextView;)V", "plugin-finder_release"})
+  public static final class a
   {
-    public ImageView fxQ;
-    public TextView nMU;
-    public TextView rFt;
-    public ImageView rqZ;
+    public ImageView fRd;
+    public TextView opA;
     
-    public final ImageView cBq()
+    public final ImageView getAvatarIv()
     {
-      AppMethodBeat.i(167114);
-      ImageView localImageView = this.rqZ;
+      AppMethodBeat.i(203986);
+      ImageView localImageView = this.fRd;
       if (localImageView == null) {
-        d.g.b.k.aVY("authIcon");
+        p.bcb("avatarIv");
       }
-      AppMethodBeat.o(167114);
+      AppMethodBeat.o(203986);
       return localImageView;
     }
+  }
+  
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+  static final class b
+    implements View.OnLongClickListener
+  {
+    b(b paramb, y.f paramf, am paramam) {}
     
-    public final TextView cBr()
+    public final boolean onLongClick(View paramView)
     {
-      AppMethodBeat.i(167115);
-      TextView localTextView = this.rFt;
-      if (localTextView == null) {
-        d.g.b.k.aVY("authJob");
+      AppMethodBeat.i(203987);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderFriendBlackListAdapter$getView$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+      paramView = this.sCG.sCF;
+      String str;
+      if (paramView != null)
+      {
+        localObject = (View)localf.MLV;
+        str = localam.getUsername();
+        p.g(str, "blackUser.username");
+        if (localam.VI() != 1) {
+          break label120;
+        }
       }
-      AppMethodBeat.o(167115);
-      return localTextView;
+      label120:
+      for (boolean bool = true;; bool = false)
+      {
+        paramView.d(localObject, str, Boolean.valueOf(bool));
+        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/finder/ui/FinderFriendBlackListAdapter$getView$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+        AppMethodBeat.o(203987);
+        return true;
+      }
+    }
+  }
+  
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class c
+    implements View.OnClickListener
+  {
+    c(b paramb, am paramam) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(203988);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderFriendBlackListAdapter$getView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      paramView = com.tencent.mm.plugin.finder.utils.a.sKD;
+      paramView = localam.getUsername();
+      p.g(paramView, "blackUser.username");
+      com.tencent.mm.plugin.finder.utils.a.d(paramView, (Context)b.a(this.sCG));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderFriendBlackListAdapter$getView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(203988);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.b
  * JD-Core Version:    0.7.0.1
  */

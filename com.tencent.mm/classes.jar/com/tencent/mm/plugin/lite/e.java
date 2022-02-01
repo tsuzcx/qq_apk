@@ -9,88 +9,88 @@ import com.tencent.mm.plugin.lite.d.b;
 import com.tencent.mm.plugin.lite.launch.WxaLiteAppLaunchInfo;
 import com.tencent.mm.plugin.lite.logic.c;
 import com.tencent.mm.plugin.lite.ui.WxaLiteAppProxyUI;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class e
   implements com.tencent.mm.plugin.lite.a.a
 {
   private static void a(Context paramContext, Bundle paramBundle, b paramb)
   {
-    AppMethodBeat.i(205679);
-    ac.i("MicroMsg.LiteApp.LiteAppService", "startLiteApp ");
-    h.wUl.n(1293L, 0L, 1L);
+    AppMethodBeat.i(217156);
+    ad.i("MicroMsg.LiteApp.LiteAppService", "startLiteApp appid:" + paramb.field_appId + ", patchid:" + paramb.field_patchId + ", updatetime:" + paramb.field_updateTime);
+    g.yhR.n(1293L, 0L, 1L);
     WxaLiteAppLaunchInfo localWxaLiteAppLaunchInfo = new WxaLiteAppLaunchInfo();
     localWxaLiteAppLaunchInfo.setAppId(paramb.field_appId);
-    localWxaLiteAppLaunchInfo.ajJ(paramb.field_pkgPath);
-    localWxaLiteAppLaunchInfo.ntm = paramb.field_signatureKey;
+    localWxaLiteAppLaunchInfo.aow(paramb.field_pkgPath);
+    localWxaLiteAppLaunchInfo.nUi = paramb.field_signatureKey;
     localWxaLiteAppLaunchInfo.startTime = System.currentTimeMillis();
     paramb = new Intent();
     paramb.addFlags(268435456);
-    paramb.setClass(ai.getContext(), WxaLiteAppProxyUI.class);
+    paramb.setClass(aj.getContext(), WxaLiteAppProxyUI.class);
     paramb.putExtra("WxaLiteAppLaunchInfo", localWxaLiteAppLaunchInfo);
     if (paramBundle.containsKey("data")) {
       paramb.putExtra("data", paramBundle.getString("data"));
     }
     paramb.putExtra("bundle", paramBundle);
-    paramBundle = new com.tencent.mm.hellhoundlib.b.a().ba(paramb);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramBundle.aeD(), "com/tencent/mm/plugin/lite/LiteAppService", "openLiteApp", "(Landroid/content/Context;Landroid/os/Bundle;Lcom/tencent/mm/plugin/lite/storage/LiteAppInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramBundle.lR(0));
+    paramBundle = new com.tencent.mm.hellhoundlib.b.a().bc(paramb);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramBundle.ahp(), "com/tencent/mm/plugin/lite/LiteAppService", "openLiteApp", "(Landroid/content/Context;Landroid/os/Bundle;Lcom/tencent/mm/plugin/lite/storage/LiteAppInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramBundle.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/lite/LiteAppService", "openLiteApp", "(Landroid/content/Context;Landroid/os/Bundle;Lcom/tencent/mm/plugin/lite/storage/LiteAppInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(205679);
+    AppMethodBeat.o(217156);
   }
   
   public final void a(final Context paramContext, final Bundle paramBundle, final a.a parama)
   {
-    AppMethodBeat.i(205678);
-    ac.i("MicroMsg.LiteApp.LiteAppService", "startLiteApp:".concat(String.valueOf(paramBundle.getString("appId"))));
-    h.wUl.n(1293L, 90L, 1L);
+    AppMethodBeat.i(217155);
+    ad.i("MicroMsg.LiteApp.LiteAppService", "startLiteApp:".concat(String.valueOf(paramBundle.getString("appId"))));
+    g.yhR.n(1293L, 90L, 1L);
     final String str = paramBundle.getString("appId");
-    c.cWu();
-    b localb = c.ajL(str);
+    c.dfF();
+    b localb = c.aoy(str);
     if (localb != null)
     {
       if (parama != null) {
-        parama.cOF();
+        parama.cXe();
       }
       a(paramContext, paramBundle, localb);
-      AppMethodBeat.o(205678);
+      AppMethodBeat.o(217155);
       return;
     }
-    ac.w("MicroMsg.LiteApp.LiteAppService", "get info return null, appid:".concat(String.valueOf(str)));
-    h.wUl.n(1293L, 92L, 1L);
-    c.cWu().a(str, new com.tencent.mm.plugin.lite.logic.a()
+    ad.w("MicroMsg.LiteApp.LiteAppService", "get info return null, appid:".concat(String.valueOf(str)));
+    g.yhR.n(1293L, 92L, 1L);
+    c.dfF().a(str, new com.tencent.mm.plugin.lite.logic.a()
     {
       public final void a(b paramAnonymousb)
       {
-        AppMethodBeat.i(205676);
+        AppMethodBeat.i(217153);
         if (parama != null) {
-          parama.cOF();
+          parama.cXe();
         }
         e.b(paramContext, paramBundle, paramAnonymousb);
-        AppMethodBeat.o(205676);
+        AppMethodBeat.o(217153);
       }
       
-      public final void cOG()
+      public final void cXf()
       {
-        AppMethodBeat.i(205677);
+        AppMethodBeat.i(217154);
         if (parama != null) {
-          parama.cOG();
+          parama.cXf();
         }
-        ac.w("MicroMsg.LiteApp.LiteAppService", "checkLiteApp fail:" + str);
-        AppMethodBeat.o(205677);
+        ad.w("MicroMsg.LiteApp.LiteAppService", "checkLiteApp fail:" + str);
+        AppMethodBeat.o(217154);
       }
     });
-    AppMethodBeat.o(205678);
+    AppMethodBeat.o(217155);
   }
   
-  public final boolean dzy()
+  public final boolean dfC()
   {
-    AppMethodBeat.i(210480);
-    c.cWu();
-    boolean bool = c.dzy();
-    AppMethodBeat.o(210480);
+    AppMethodBeat.i(217157);
+    c.dfF();
+    boolean bool = c.dfC();
+    AppMethodBeat.o(217157);
     return bool;
   }
 }

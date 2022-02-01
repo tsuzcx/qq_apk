@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.emoji.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.bs.c;
 import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.emoji.e.f;
 import com.tencent.mm.pluginsdk.a.d;
-import com.tencent.mm.storage.av;
 import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bd;
 
 public final class b
   extends t
 {
   public b()
   {
-    super(c.aIo("emoji"));
+    super(c.aNR("emoji"));
     AppMethodBeat.i(108544);
-    com.tencent.mm.plugin.emoji.b.b.a.oYv = new com.tencent.mm.plugin.emoji.b.b()
+    com.tencent.mm.plugin.emoji.b.b.a.pCf = new com.tencent.mm.plugin.emoji.b.b()
     {
-      public final av getEmojiDescMgr()
+      public final az getEmojiDescMgr()
       {
         AppMethodBeat.i(108543);
-        av localav = k.getEmojiDescMgr();
+        az localaz = k.getEmojiDescMgr();
         AppMethodBeat.o(108543);
-        return localav;
+        return localaz;
       }
       
       public final d getEmojiMgr()
       {
         AppMethodBeat.i(108541);
-        f localf = k.ccm();
+        f localf = k.cgQ();
         AppMethodBeat.o(108541);
         return localf;
       }
       
-      public final az getEmojiStorageMgr()
+      public final bd getEmojiStorageMgr()
       {
         AppMethodBeat.i(108542);
-        az localaz = k.getEmojiStorageMgr();
+        bd localbd = k.getEmojiStorageMgr();
         AppMethodBeat.o(108542);
-        return localaz;
+        return localbd;
       }
     };
     AppMethodBeat.o(108544);

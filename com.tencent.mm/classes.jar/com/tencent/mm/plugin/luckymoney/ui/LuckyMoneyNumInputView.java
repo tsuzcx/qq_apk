@@ -16,31 +16,31 @@ import com.tencent.mm.plugin.luckymoney.b.a;
 import com.tencent.mm.plugin.luckymoney.model.j;
 import com.tencent.mm.plugin.luckymoney.model.k;
 import com.tencent.mm.plugin.luckymoney.model.z;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
 public class LuckyMoneyNumInputView
   extends LinearLayout
   implements c
 {
-  private TextWatcher auC;
-  private TextView lfN;
-  private g ugV;
-  private j ugW;
-  private TenpaySecureEditText uwB;
-  private TextView uwC;
-  private int uwD;
-  private int uwE;
-  private int uwF;
+  private TextWatcher awu;
+  private TextView lCL;
+  private g vjF;
+  private j vjG;
+  private TenpaySecureEditText vze;
+  private TextView vzf;
+  private int vzg;
+  private int vzh;
+  private int vzi;
   
   public LuckyMoneyNumInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65767);
-    this.uwD = 1;
-    this.uwE = 2147483647;
-    this.uwF = 1;
-    this.auC = new TextWatcher()
+    this.vzg = 1;
+    this.vzh = 2147483647;
+    this.vzi = 1;
+    this.awu = new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -49,7 +49,7 @@ public class LuckyMoneyNumInputView
         {
           paramAnonymousEditable = LuckyMoneyNumInputView.a(LuckyMoneyNumInputView.this);
           LuckyMoneyNumInputView.this.getInputViewId();
-          paramAnonymousEditable.cYF();
+          paramAnonymousEditable.dhR();
         }
         AppMethodBeat.o(65765);
       }
@@ -59,18 +59,18 @@ public class LuckyMoneyNumInputView
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     };
     paramContext = LayoutInflater.from(paramContext).inflate(2131494653, this, true);
-    this.lfN = ((TextView)paramContext.findViewById(2131301892));
-    this.uwB = ((TenpaySecureEditText)paramContext.findViewById(2131301810));
-    this.uwC = ((TextView)paramContext.findViewById(2131301893));
-    this.uwB.setText(this.uwD);
-    this.uwB.addTextChangedListener(this.auC);
+    this.lCL = ((TextView)paramContext.findViewById(2131301892));
+    this.vze = ((TenpaySecureEditText)paramContext.findViewById(2131301810));
+    this.vzf = ((TextView)paramContext.findViewById(2131301893));
+    this.vze.setText(this.vzg);
+    this.vze.addTextChangedListener(this.awu);
     AppMethodBeat.o(65767);
   }
   
-  private boolean dae()
+  private boolean djr()
   {
     AppMethodBeat.i(65775);
-    if ((this.ugW != null) && (!bs.isNullOrNil(this.ugW.uls)))
+    if ((this.vjG != null) && (!bt.isNullOrNil(this.vjG.vnY)))
     {
       AppMethodBeat.o(65775);
       return true;
@@ -79,29 +79,29 @@ public class LuckyMoneyNumInputView
     return false;
   }
   
-  public final String HD(int paramInt)
+  public final String IZ(int paramInt)
   {
     AppMethodBeat.i(65776);
-    a.cYv();
-    this.ugW = a.cYw().cYZ();
+    a.dhH();
+    this.vjG = a.dhI().dil();
     String str;
     if (paramInt == 1)
     {
-      if (dae())
+      if (djr())
       {
-        str = getContext().getString(2131760915, new Object[] { Integer.valueOf(this.uwE), this.ugW.uls });
+        str = getContext().getString(2131760915, new Object[] { Integer.valueOf(this.vzh), this.vjG.vnY });
         AppMethodBeat.o(65776);
         return str;
       }
-      str = getContext().getString(2131760914, new Object[] { Integer.valueOf(this.uwE) });
+      str = getContext().getString(2131760914, new Object[] { Integer.valueOf(this.vzh) });
       AppMethodBeat.o(65776);
       return str;
     }
     if (paramInt == 2)
     {
-      if (dae())
+      if (djr())
       {
-        str = getContext().getString(2131760913, new Object[] { Integer.valueOf(this.uwF), this.ugW.uls });
+        str = getContext().getString(2131760913, new Object[] { Integer.valueOf(this.vzi), this.vjG.vnY });
         AppMethodBeat.o(65776);
         return str;
       }
@@ -113,26 +113,26 @@ public class LuckyMoneyNumInputView
     return null;
   }
   
-  public final int cYE()
+  public final int dhQ()
   {
     AppMethodBeat.i(65771);
-    if (bs.isNullOrNil(this.uwB.getText().toString()))
+    if (bt.isNullOrNil(this.vze.getText().toString()))
     {
       AppMethodBeat.o(65771);
       return 0;
     }
-    int i = bs.getInt(this.uwB.getText().toString(), -1);
+    int i = bt.getInt(this.vze.getText().toString(), -1);
     if (i < 0)
     {
       AppMethodBeat.o(65771);
       return 3;
     }
-    if ((i > this.uwE) && (this.uwE > 0))
+    if ((i > this.vzh) && (this.vzh > 0))
     {
       AppMethodBeat.o(65771);
       return 1;
     }
-    if ((i < this.uwF) && (this.uwF > 0))
+    if ((i < this.vzi) && (this.vzi > 0))
     {
       AppMethodBeat.o(65771);
       return 2;
@@ -146,7 +146,7 @@ public class LuckyMoneyNumInputView
     AppMethodBeat.i(65769);
     try
     {
-      int i = Integer.parseInt(this.uwB.getText().toString(), 10);
+      int i = Integer.parseInt(this.vze.getText().toString(), 10);
       AppMethodBeat.o(65769);
       return i;
     }
@@ -168,25 +168,25 @@ public class LuckyMoneyNumInputView
   public final void onError()
   {
     AppMethodBeat.i(65773);
-    this.lfN.setTextColor(z.fC(getContext()));
-    this.uwB.setTextColor(z.fC(getContext()));
-    this.uwC.setTextColor(z.fC(getContext()));
+    this.lCL.setTextColor(z.fH(getContext()));
+    this.vze.setTextColor(z.fH(getContext()));
+    this.vzf.setTextColor(z.fH(getContext()));
     AppMethodBeat.o(65773);
   }
   
   public final void restore()
   {
     AppMethodBeat.i(65772);
-    this.lfN.setTextColor(getContext().getResources().getColor(2131100711));
-    this.uwB.setTextColor(getContext().getResources().getColor(2131100711));
-    this.uwC.setTextColor(getContext().getResources().getColor(2131100711));
+    this.lCL.setTextColor(getContext().getResources().getColor(2131100711));
+    this.vze.setTextColor(getContext().getResources().getColor(2131100711));
+    this.vzf.setTextColor(getContext().getResources().getColor(2131100711));
     AppMethodBeat.o(65772);
   }
   
   public void setHint(String paramString)
   {
     AppMethodBeat.i(65766);
-    this.uwB.setHint(paramString);
+    this.vze.setHint(paramString);
     AppMethodBeat.o(65766);
   }
   
@@ -194,7 +194,7 @@ public class LuckyMoneyNumInputView
   {
     int j = 3;
     AppMethodBeat.i(65768);
-    this.uwE = paramInt;
+    this.vzh = paramInt;
     int k = 0;
     int i = paramInt;
     paramInt = k;
@@ -208,7 +208,7 @@ public class LuckyMoneyNumInputView
     }
     for (;;)
     {
-      this.uwB.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
+      this.vze.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
       AppMethodBeat.o(65768);
       return;
     }
@@ -216,21 +216,21 @@ public class LuckyMoneyNumInputView
   
   public void setMinNum(int paramInt)
   {
-    this.uwF = paramInt;
+    this.vzi = paramInt;
   }
   
   public void setNum(String paramString)
   {
     AppMethodBeat.i(65770);
-    this.uwB.setText(paramString);
-    this.uwB.setSelection(this.uwB.getText().length());
-    this.uwD = bs.getInt(paramString, 0);
+    this.vze.setText(paramString);
+    this.vze.setSelection(this.vze.getText().length());
+    this.vzg = bt.getInt(paramString, 0);
     AppMethodBeat.o(65770);
   }
   
   public void setOnInputValidChangerListener(g paramg)
   {
-    this.ugV = paramg;
+    this.vjF = paramg;
   }
 }
 

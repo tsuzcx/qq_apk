@@ -11,34 +11,34 @@ public abstract class r
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandPrefetchWxaAttrsMarkTableAppIdIndex ON AppBrandPrefetchWxaAttrsMarkTable(appId)" };
-  private static final int enO = "appId".hashCode();
-  private static final int eoN = "prefetchUpdateTime".hashCode();
-  private static final int eok = "username".hashCode();
+  private static final int eEU = "appId".hashCode();
+  private static final int eFW = "prefetchUpdateTime".hashCode();
+  private static final int eFp = "username".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean enx = true;
-  private boolean eoM = true;
-  private boolean eoh = true;
+  private boolean eED = true;
+  private boolean eFV = true;
+  private boolean eFm = true;
   public String field_appId;
   public long field_prefetchUpdateTime;
   public String field_username;
   
-  public static c.a Th()
+  public static c.a Vv()
   {
     c.a locala = new c.a();
-    locala.GvF = new Field[3];
+    locala.IhA = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.GvH.put("username", "TEXT PRIMARY KEY ");
+    locala.IhC.put("username", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" username TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "username";
+    locala.IhB = "username";
     locala.columns[1] = "appId";
-    locala.GvH.put("appId", "TEXT");
+    locala.IhC.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "prefetchUpdateTime";
-    locala.GvH.put("prefetchUpdateTime", "LONG");
+    locala.IhC.put("prefetchUpdateTime", "LONG");
     localStringBuilder.append(" prefetchUpdateTime LONG");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -58,11 +58,11 @@ public abstract class r
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eok != k) {
+      if (eFp != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.eoh = true;
+      this.eFm = true;
     }
     for (;;)
     {
@@ -70,9 +70,9 @@ public abstract class r
       break label20;
       break;
       label65:
-      if (enO == k) {
+      if (eEU == k) {
         this.field_appId = paramCursor.getString(i);
-      } else if (eoN == k) {
+      } else if (eFW == k) {
         this.field_prefetchUpdateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -83,13 +83,13 @@ public abstract class r
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eoh) {
+    if (this.eFm) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.enx) {
+    if (this.eED) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eoM) {
+    if (this.eFV) {
       localContentValues.put("prefetchUpdateTime", Long.valueOf(this.field_prefetchUpdateTime));
     }
     if (this.systemRowid > 0L) {

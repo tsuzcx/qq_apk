@@ -6,15 +6,15 @@ import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.ui.ao;
 
 public class RedesignVideoPlayerSeekBar
   extends VideoPlayerSeekBar
 {
-  long DFM = 0L;
-  long cQQ = 0L;
-  long hES = 0L;
-  private ImageView kUL;
+  long FkR = 0L;
+  long dcg = 0L;
+  long hXx = 0L;
+  private ImageView lrJ;
   
   public RedesignVideoPlayerSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,16 +26,16 @@ public class RedesignVideoPlayerSeekBar
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean XA(int paramInt)
+  public final boolean Zw(int paramInt)
   {
     AppMethodBeat.i(134012);
     int j = getVideoTotalTime();
-    if ((paramInt == this.hES) && (j == this.cQQ))
+    if ((paramInt == this.hXx) && (j == this.dcg))
     {
       AppMethodBeat.o(134012);
       return false;
     }
-    if (System.currentTimeMillis() - this.DFM < 300L)
+    if (System.currentTimeMillis() - this.FkR < 300L)
     {
       AppMethodBeat.o(134012);
       return false;
@@ -58,17 +58,17 @@ public class RedesignVideoPlayerSeekBar
     if (j == 0) {}
     for (paramInt = 0;; paramInt = (int)(paramInt * (i * 1.0D / j)))
     {
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kUL.getLayoutParams();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.lrJ.getLayoutParams();
       localLayoutParams.width = paramInt;
-      this.kUL.setLayoutParams(localLayoutParams);
-      this.hES = i;
-      this.cQQ = j;
+      this.lrJ.setLayoutParams(localLayoutParams);
+      this.hXx = i;
+      this.dcg = j;
       AppMethodBeat.o(134012);
       return true;
     }
   }
   
-  public final void gL(boolean paramBoolean)
+  public final void gS(boolean paramBoolean)
   {
     AppMethodBeat.i(134010);
     setIsPlay(paramBoolean);
@@ -84,21 +84,23 @@ public class RedesignVideoPlayerSeekBar
   {
     AppMethodBeat.i(134009);
     super.init();
-    this.kUL = ((ImageView)this.contentView.findViewById(2131303303));
+    this.lrJ = ((ImageView)this.contentView.findViewById(2131303303));
     AppMethodBeat.o(134009);
   }
   
   public void setIsPlay(boolean paramBoolean)
   {
     AppMethodBeat.i(134011);
-    this.dhM = paramBoolean;
+    this.dtk = paramBoolean;
     if (paramBoolean)
     {
-      this.kUw.setImageDrawable(am.k(getContext(), 2131690445, -1));
+      this.lru.setImageDrawable(ao.k(getContext(), 2131690445, -1));
+      this.lru.setContentDescription(getContext().getString(2131755838));
       AppMethodBeat.o(134011);
       return;
     }
-    this.kUw.setImageDrawable(am.k(getContext(), 2131690459, -1));
+    this.lru.setImageDrawable(ao.k(getContext(), 2131690459, -1));
+    this.lru.setContentDescription(getContext().getString(2131755856));
     AppMethodBeat.o(134011);
   }
 }

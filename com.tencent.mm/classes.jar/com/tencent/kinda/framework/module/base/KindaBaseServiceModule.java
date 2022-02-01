@@ -34,6 +34,7 @@ import com.tencent.kinda.framework.module.impl.KindaScanWidgetImpl;
 import com.tencent.kinda.framework.module.impl.KindaSecureCtrItemImpl;
 import com.tencent.kinda.framework.module.impl.KindaUUIDService;
 import com.tencent.kinda.framework.module.impl.KindaWalletMixManagerImpl;
+import com.tencent.kinda.framework.module.impl.KindaWebServiceImpl;
 import com.tencent.kinda.framework.module.impl.KindaWordingServiceImpl;
 import com.tencent.kinda.framework.module.impl.NetworkServiceImpl;
 import com.tencent.kinda.framework.module.impl.PlatformUIRouterImpl;
@@ -88,6 +89,7 @@ public class KindaBaseServiceModule
     registerNativeModule("KAddPayCardService", KindaAddPayCardServiceImpl.class);
     registerNativeModule("KindaNotify", KindaNotifyImpl.class);
     registerNativeModule("KUtilityService", KindaUtilityServiceImpl.class);
+    registerNativeModule("KindaWebService", KindaWebServiceImpl.class);
     AppMethodBeat.o(18618);
   }
   

@@ -7,8 +7,8 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.preference.AppBrandAuthPreference;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -16,22 +16,22 @@ import com.tencent.mm.ui.base.preference.f;
 public class AppBrandAuthorizeDetailUI
   extends MMPreference
 {
-  private int kTr;
-  private boolean lZB = false;
-  private f lZC;
-  private Preference lZD;
-  private AppBrandAuthPreference lZE;
-  private AppBrandAuthPreference lZF;
-  private AppBrandAuthPreference lZG;
+  private int lpU;
+  private AppBrandAuthPreference mzA;
+  private AppBrandAuthPreference mzB;
+  private boolean mzw = false;
+  private f mzx;
+  private Preference mzy;
+  private AppBrandAuthPreference mzz;
   
-  private void buP()
+  private void byU()
   {
     AppMethodBeat.i(48524);
-    if (this.lZB)
+    if (this.mzw)
     {
-      ac.i("MicroMsg.AppBrandAuthorizeDetailUI", "setResData, has changed, state:%s", new Object[] { Integer.valueOf(this.kTr) });
+      ad.i("MicroMsg.AppBrandAuthorizeDetailUI", "setResData, has changed, state:%s", new Object[] { Integer.valueOf(this.lpU) });
       Intent localIntent = new Intent();
-      localIntent.putExtra("key_result_state", this.kTr);
+      localIntent.putExtra("key_result_state", this.lpU);
       setResult(-1, localIntent);
       AppMethodBeat.o(48524);
       return;
@@ -48,7 +48,7 @@ public class AppBrandAuthorizeDetailUI
   public void onBackPressed()
   {
     AppMethodBeat.i(48523);
-    buP();
+    byU();
     super.onBackPressed();
     AppMethodBeat.o(48523);
   }
@@ -71,31 +71,31 @@ public class AppBrandAuthorizeDetailUI
     });
     label129:
     boolean bool;
-    if ((getIntent() != null) && (!bs.isNullOrNil(getIntent().getStringExtra("key_title"))))
+    if ((getIntent() != null) && (!bt.isNullOrNil(getIntent().getStringExtra("key_title"))))
     {
       setMMTitle(getIntent().getStringExtra("key_title"));
-      this.lZC = getPreferenceScreen();
-      this.lZC.removeAll();
-      if ((getIntent() == null) || (bs.isNullOrNil(getIntent().getStringExtra("key_desc")))) {
+      this.mzx = getPreferenceScreen();
+      this.mzx.removeAll();
+      if ((getIntent() == null) || (bt.isNullOrNil(getIntent().getStringExtra("key_desc")))) {
         break label420;
       }
       paramBundle = getIntent().getStringExtra("key_desc");
       paramBundle = String.format(getString(2131755339), new Object[] { paramBundle });
-      if (!bs.isNullOrNil(paramBundle))
+      if (!bt.isNullOrNil(paramBundle))
       {
-        this.lZD = new Preference(this);
-        this.lZD.setTitle(paramBundle);
-        this.lZD.setLayoutResource(2131493026);
-        this.lZC.b(this.lZD);
+        this.mzy = new Preference(this);
+        this.mzy.setTitle(paramBundle);
+        this.mzy.setLayoutResource(2131493026);
+        this.mzx.b(this.mzy);
       }
-      this.lZE = new AppBrandAuthPreference(this);
-      this.lZE.setKey("none");
-      this.lZE.rE(2131755333);
-      this.lZC.b(this.lZE);
-      this.lZF = new AppBrandAuthPreference(this);
-      this.lZF.setKey("foreground");
-      this.lZF.rE(2131755332);
-      this.lZC.b(this.lZF);
+      this.mzz = new AppBrandAuthPreference(this);
+      this.mzz.setKey("none");
+      this.mzz.se(2131755333);
+      this.mzx.b(this.mzz);
+      this.mzA = new AppBrandAuthPreference(this);
+      this.mzA.setKey("foreground");
+      this.mzA.se(2131755332);
+      this.mzx.b(this.mzA);
       if (getIntent() == null) {
         break label425;
       }
@@ -103,23 +103,23 @@ public class AppBrandAuthorizeDetailUI
       label282:
       if (bool)
       {
-        this.lZG = new AppBrandAuthPreference(this);
-        this.lZG.setKey("both");
-        this.lZG.rE(2131755331);
-        this.lZC.b(this.lZG);
+        this.mzB = new AppBrandAuthPreference(this);
+        this.mzB.setKey("both");
+        this.mzB.se(2131755331);
+        this.mzx.b(this.mzB);
       }
       if ((getIntent() != null) && (getIntent().hasExtra("key_state"))) {
-        this.kTr = getIntent().getIntExtra("key_state", 0);
+        this.lpU = getIntent().getIntExtra("key_state", 0);
       }
-      switch (this.kTr)
+      switch (this.lpU)
       {
       default: 
-        this.lZE.setChecked(true);
+        this.mzz.setChecked(true);
       }
     }
     for (;;)
     {
-      this.lZC.notifyDataSetChanged();
+      this.mzx.notifyDataSetChanged();
       AppMethodBeat.o(48522);
       return;
       setMMTitle(2131755335);
@@ -130,11 +130,11 @@ public class AppBrandAuthorizeDetailUI
       label425:
       bool = false;
       break label282;
-      if (this.lZG != null)
+      if (this.mzB != null)
       {
-        this.lZG.setChecked(true);
+        this.mzB.setChecked(true);
         continue;
-        this.lZF.setChecked(true);
+        this.mzA.setChecked(true);
       }
     }
   }
@@ -142,42 +142,42 @@ public class AppBrandAuthorizeDetailUI
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(48525);
-    ac.i("MicroMsg.AppBrandAuthorizeDetailUI", "onPreferenceTreeClick, key:%s", new Object[] { paramPreference.mKey });
+    ad.i("MicroMsg.AppBrandAuthorizeDetailUI", "onPreferenceTreeClick, key:%s", new Object[] { paramPreference.mKey });
     if ((paramPreference instanceof AppBrandAuthPreference))
     {
-      this.lZB = true;
+      this.mzw = true;
       if (!paramPreference.mKey.equalsIgnoreCase("both")) {
         break label99;
       }
-      this.kTr = 2;
-      this.lZE.setChecked(false);
-      this.lZF.setChecked(false);
-      if (this.lZG != null) {
-        this.lZG.setChecked(true);
+      this.lpU = 2;
+      this.mzz.setChecked(false);
+      this.mzA.setChecked(false);
+      if (this.mzB != null) {
+        this.mzB.setChecked(true);
       }
     }
     for (;;)
     {
-      this.lZC.notifyDataSetChanged();
+      this.mzx.notifyDataSetChanged();
       AppMethodBeat.o(48525);
       return false;
       label99:
       if (paramPreference.mKey.equalsIgnoreCase("foreground"))
       {
-        this.kTr = 1;
-        this.lZF.setChecked(true);
-        this.lZE.setChecked(false);
-        if (this.lZG != null) {
-          this.lZG.setChecked(false);
+        this.lpU = 1;
+        this.mzA.setChecked(true);
+        this.mzz.setChecked(false);
+        if (this.mzB != null) {
+          this.mzB.setChecked(false);
         }
       }
       else
       {
-        this.kTr = 0;
-        this.lZE.setChecked(true);
-        this.lZF.setChecked(false);
-        if (this.lZG != null) {
-          this.lZG.setChecked(false);
+        this.lpU = 0;
+        this.mzz.setChecked(true);
+        this.mzA.setChecked(false);
+        if (this.mzB != null) {
+          this.mzB.setChecked(false);
         }
       }
     }

@@ -4,31 +4,31 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.a.a.a.b;
+import com.b.a.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nv;
-import com.tencent.mm.g.a.nv.a;
-import com.tencent.mm.g.a.nv.b;
+import com.tencent.mm.g.a.od;
+import com.tencent.mm.g.a.od.a;
+import com.tencent.mm.g.a.od.b;
 import com.tencent.mm.plugin.fingerprint.b.a.b;
 import com.tencent.mm.plugin.fingerprint.b.a.f;
 import com.tencent.mm.plugin.fingerprint.b.a.i;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.Map;
 
 public final class c
   extends a
 {
-  private String djs;
-  private String sjY;
-  private a sjZ;
-  private com.tencent.mm.plugin.fingerprint.d.c ska;
+  private String dvf;
+  private String tgA;
+  private a tgB;
+  private com.tencent.mm.plugin.fingerprint.d.c tgC;
   
   public c()
   {
     AppMethodBeat.i(64295);
-    this.sjZ = new a((byte)0);
-    this.ska = null;
+    this.tgB = new a((byte)0);
+    this.tgC = null;
     AppMethodBeat.o(64295);
   }
   
@@ -40,8 +40,8 @@ public final class c
   public final int a(final com.tencent.mm.plugin.fingerprint.d.c paramc, boolean paramBoolean)
   {
     AppMethodBeat.i(64301);
-    f localf = new f(p.skJ.skK, (byte)0);
-    this.sjV.a(ai.getContext(), localf, new b()
+    f localf = new f(p.thl.thm, (byte)0);
+    this.tgx.a(aj.getContext(), localf, new b()
     {
       public final void a(com.tencent.mm.plugin.fingerprint.b.a.c paramAnonymousc)
       {
@@ -51,10 +51,10 @@ public final class c
         {
           if (i != 0)
           {
-            c.a(c.this, paramAnonymousc.djs);
-            c.b(c.this, paramAnonymousc.djt);
+            c.a(c.this, paramAnonymousc.dvf);
+            c.b(c.this, paramAnonymousc.dvg);
           }
-          paramc.fL(paramAnonymousc.errCode, paramAnonymousc.djq);
+          paramc.gb(paramAnonymousc.errCode, paramAnonymousc.dvd);
           AppMethodBeat.o(64292);
           return;
         }
@@ -64,39 +64,39 @@ public final class c
     return 0;
   }
   
-  public final void a(nv paramnv, int paramInt)
+  public final void a(od paramod, int paramInt)
   {
     AppMethodBeat.i(64302);
-    if (!TextUtils.isEmpty(this.djs))
+    if (!TextUtils.isEmpty(this.dvf))
     {
-      ac.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_info!");
-      if (TextUtils.isEmpty(this.sjY)) {
+      ad.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_info!");
+      if (TextUtils.isEmpty(this.tgA)) {
         break label147;
       }
-      ac.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_sign!");
+      ad.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_sign!");
     }
     for (;;)
     {
-      ac.i("MicroMsg.FingerPrintMgrImpl", "callback FingerPrintAuthEvent onSuccess()");
-      if ((paramnv != null) && (paramnv.dqj.dqn != null))
+      ad.i("MicroMsg.FingerPrintMgrImpl", "callback FingerPrintAuthEvent onSuccess()");
+      if ((paramod != null) && (paramod.dBW.dCa != null))
       {
-        nv.b localb = new nv.b();
-        localb.dqp = type();
+        od.b localb = new od.b();
+        localb.dCc = type();
         localb.errCode = 0;
-        localb.djs = this.djs;
-        localb.djt = this.sjY;
-        localb.djq = paramInt;
-        paramnv.dqk = localb;
-        paramnv.dqj.dqn.run();
+        localb.dvf = this.dvf;
+        localb.dvg = this.tgA;
+        localb.dvd = paramInt;
+        paramod.dBX = localb;
+        paramod.dBW.dCa.run();
       }
-      this.djs = "";
-      this.sjY = "";
+      this.dvf = "";
+      this.tgA = "";
       AppMethodBeat.o(64302);
       return;
-      ac.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_info!");
+      ad.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_info!");
       break;
       label147:
-      ac.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_sign!");
+      ad.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_sign!");
     }
   }
   
@@ -105,69 +105,69 @@ public final class c
     return false;
   }
   
-  public final boolean cHe()
+  public final boolean cPA()
+  {
+    return true;
+  }
+  
+  public final boolean cPB()
+  {
+    return false;
+  }
+  
+  public final boolean cPC()
+  {
+    return false;
+  }
+  
+  public final boolean cPt()
   {
     AppMethodBeat.i(64296);
-    boolean bool = this.sjV.fb(ai.getContext());
+    boolean bool = this.tgx.fe(aj.getContext());
     AppMethodBeat.o(64296);
     return bool;
   }
   
-  public final boolean cHf()
+  public final boolean cPu()
   {
     AppMethodBeat.i(64297);
-    boolean bool = this.sjV.cHC();
+    boolean bool = this.tgx.cPR();
     AppMethodBeat.o(64297);
     return bool;
   }
   
-  public final void cHg()
+  public final void cPv()
   {
     AppMethodBeat.i(64299);
-    ac.i("MicroMsg.FingerPrintMgrImpl", "initFP");
-    this.sjV.prepare();
+    ad.i("MicroMsg.FingerPrintMgrImpl", "initFP");
+    this.tgx.prepare();
     AppMethodBeat.o(64299);
   }
   
-  public final boolean cHh()
+  public final boolean cPw()
   {
     return true;
   }
   
-  public final boolean cHi()
+  public final boolean cPx()
   {
     AppMethodBeat.i(64300);
-    boolean bool = d.cHi();
+    boolean bool = d.cPx();
     AppMethodBeat.o(64300);
     return bool;
   }
   
-  public final Map<String, String> cHj()
+  public final Map<String, String> cPy()
   {
     return null;
   }
   
-  public final Map<String, String> cHk()
+  public final Map<String, String> cPz()
   {
     return null;
   }
   
-  public final boolean cHl()
-  {
-    return true;
-  }
-  
-  public final boolean cHm()
-  {
-    return false;
-  }
-  
-  public final boolean cHn()
-  {
-    return false;
-  }
-  
-  public final void eY(Context paramContext)
+  public final void fb(Context paramContext)
   {
     AppMethodBeat.i(64298);
     if (paramContext != null)
@@ -176,9 +176,9 @@ public final class c
       ((Intent)localObject).setAction("com.android.settings.fingerprint.FingerprintSettings");
       ((Intent)localObject).addCategory("android.intent.category.DEFAULT");
       ((Intent)localObject).setFlags(268435456);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/huawei/securitymgr/HwFingerprintAuth", "startRigesterFinger", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/huawei/securitymgr/HwFingerprintAuth", "startRigesterFinger", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/huawei/securitymgr/HwFingerprintAuth", "startRigesterFinger", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     AppMethodBeat.o(64298);
@@ -187,7 +187,7 @@ public final class c
   public final int type()
   {
     AppMethodBeat.i(64304);
-    int i = this.sjV.cHF();
+    int i = this.tgx.cPU();
     AppMethodBeat.o(64304);
     return i;
   }
@@ -195,7 +195,7 @@ public final class c
   public final void userCancel()
   {
     AppMethodBeat.i(64303);
-    this.sjV.cancel();
+    this.tgx.cancel();
     AppMethodBeat.o(64303);
   }
   
@@ -208,12 +208,12 @@ public final class c
     {
       AppMethodBeat.i(64294);
       if (c.a(c.this) != null) {
-        c.a(c.this).fL(paramInt1, paramInt2);
+        c.a(c.this).gb(paramInt1, paramInt2);
       }
       AppMethodBeat.o(64294);
     }
     
-    public final void bO(int paramInt1, int paramInt2)
+    public final void bQ(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(64293);
       if (c.a(c.this) != null) {

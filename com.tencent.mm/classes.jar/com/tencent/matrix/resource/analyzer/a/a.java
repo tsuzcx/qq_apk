@@ -1,10 +1,10 @@
 package com.tencent.matrix.resource.analyzer.a;
 
-import com.d.a.b.j;
-import com.d.a.b.k;
-import com.d.a.b.l;
-import com.d.a.c.d;
-import com.d.a.c.s;
+import com.e.a.b.j;
+import com.e.a.b.k;
+import com.e.a.b.l;
+import com.e.a.c.d;
+import com.e.a.c.s;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
@@ -14,12 +14,12 @@ public final class a
   public static void a(l paraml)
   {
     final d locald = new d();
-    paraml = paraml.zX();
+    paraml = paraml.Bu();
     Iterator localIterator = paraml.iterator();
     while (localIterator.hasNext())
     {
       j localj = (j)localIterator.next();
-      String str = String.format("%s@0x%08x", new Object[] { localj.bUr.mName, Long.valueOf(localj.getId()) });
+      String str = String.format("%s@0x%08x", new Object[] { localj.ceE.mName, Long.valueOf(localj.getId()) });
       if (!locald.containsKey(str)) {
         locald.put(str, localj);
       }
@@ -35,7 +35,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.a.a
  * JD-Core Version:    0.7.0.1
  */

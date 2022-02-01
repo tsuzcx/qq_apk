@@ -1,51 +1,57 @@
 package com.tencent.kinda.framework.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kl;
-import com.tencent.mm.g.a.kl.a;
+import com.tencent.mm.g.a.ku;
+import com.tencent.mm.g.a.ku.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class KindaJSInvokeListener
-  extends c<kl>
+  extends c<ku>
 {
   private static final String TAG = "MicroMsg.KindaJSInvokeListener";
   
   public KindaJSInvokeListener()
   {
-    AppMethodBeat.i(207386);
-    this.__eventId = kl.class.getName().hashCode();
-    AppMethodBeat.o(207386);
+    AppMethodBeat.i(199439);
+    this.__eventId = ku.class.getName().hashCode();
+    AppMethodBeat.o(199439);
   }
   
-  private JSHandler createHandler(kl paramkl)
+  private JSHandler createHandler(ku paramku)
   {
-    AppMethodBeat.i(207388);
-    if (paramkl.dmd.dmg.equals("phoneBindCardVerifySms"))
+    AppMethodBeat.i(199441);
+    if (paramku.dxR.dxU.equals("phoneBindCardVerifySms"))
     {
-      paramkl = new PhoneBindCardVerifySmsJSHandler();
-      AppMethodBeat.o(207388);
-      return paramkl;
+      paramku = new PhoneBindCardVerifySmsJSHandler();
+      AppMethodBeat.o(199441);
+      return paramku;
     }
-    AppMethodBeat.o(207388);
+    if (paramku.dxR.dxU.equals("requestQueryCashier"))
+    {
+      paramku = new requestQueryCashierJsHandler();
+      AppMethodBeat.o(199441);
+      return paramku;
+    }
+    AppMethodBeat.o(199441);
     return null;
   }
   
-  public boolean callback(kl paramkl)
+  public boolean callback(ku paramku)
   {
-    AppMethodBeat.i(207387);
-    ac.i("MicroMsg.KindaJSInvokeListener", "handle jsapi callback: %s, %s", new Object[] { paramkl.dmd.dmg, Integer.valueOf(paramkl.dmd.type) });
-    JSHandler localJSHandler = createHandler(paramkl);
+    AppMethodBeat.i(199440);
+    ad.i("MicroMsg.KindaJSInvokeListener", "handle jsapi callback: %s, %s", new Object[] { paramku.dxR.dxU, Integer.valueOf(paramku.dxR.type) });
+    JSHandler localJSHandler = createHandler(paramku);
     if (localJSHandler != null) {
-      localJSHandler.handle(paramkl);
+      localJSHandler.handle(paramku);
     }
-    AppMethodBeat.o(207387);
+    AppMethodBeat.o(199440);
     return false;
   }
   
   public static abstract interface JSHandler
   {
-    public abstract void handle(kl paramkl);
+    public abstract void handle(ku paramku);
     
     public abstract String handleJsApi();
     

@@ -1,47 +1,62 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.fp;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.fu;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.l;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.fp;>;
+import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.fu;>;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoResolutionHelper;", "", "()V", "TAG", "", "getInitResolution", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "urlInfoList", "Ljava/util/LinkedList;", "setLastResolution", "", "type", "", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoResolutionHelper;", "", "()V", "TAG", "", "getInitResolution", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "urlInfoList", "Ljava/util/LinkedList;", "setLastResolution", "", "type", "", "plugin-brandservice_release"})
 public final class k
 {
   private static final String TAG = "MicroMsg.BizVideoResolutionHelper";
-  public static final k nOR;
+  public static final k orx;
   
   static
   {
     AppMethodBeat.i(7310);
-    nOR = new k();
+    orx = new k();
     TAG = "MicroMsg.BizVideoResolutionHelper";
     AppMethodBeat.o(7310);
   }
   
-  public static final fp I(LinkedList<fp> paramLinkedList)
+  public static final void Aa(int paramInt)
+  {
+    AppMethodBeat.i(7309);
+    ax localax = ax.aQz(TAG);
+    if (localax != null) {
+      localax.encode("LastResolutionType", paramInt);
+    }
+    if (localax != null) {
+      localax.encode("LastResolutionTime", System.currentTimeMillis());
+    }
+    ad.i(TAG, "LastResolutionType ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(7309);
+  }
+  
+  public static final fu I(LinkedList<fu> paramLinkedList)
   {
     AppMethodBeat.i(7308);
-    d.g.b.k.h(paramLinkedList, "urlInfoList");
-    if (bs.gY((List)paramLinkedList))
+    p.h(paramLinkedList, "urlInfoList");
+    if (bt.hj((List)paramLinkedList))
     {
       AppMethodBeat.o(7308);
       return null;
     }
-    Object localObject = aw.aKT(TAG);
+    Object localObject = ax.aQz(TAG);
     if (localObject != null) {}
-    for (int i = ((aw)localObject).decodeInt("LastResolutionType", -1);; i = -1)
+    for (int i = ((ax)localObject).decodeInt("LastResolutionType", -1);; i = -1)
     {
-      ac.i(TAG, "getInitResolution ".concat(String.valueOf(i)));
+      ad.i(TAG, "getInitResolution ".concat(String.valueOf(i)));
       localObject = paramLinkedList.get(0);
-      d.g.b.k.g(localObject, "urlInfoList[0]");
-      localObject = (fp)localObject;
+      p.g(localObject, "urlInfoList[0]");
+      localObject = (fu)localObject;
       if (i != -1) {
         break;
       }
@@ -49,17 +64,17 @@ public final class k
       return localObject;
     }
     Iterator localIterator = paramLinkedList.iterator();
-    paramLinkedList = (LinkedList<fp>)localObject;
+    paramLinkedList = (LinkedList<fu>)localObject;
     if (localIterator.hasNext())
     {
-      localObject = (fp)localIterator.next();
-      if ((((fp)localObject).DSI > i) || ((paramLinkedList.DSI < i) && (paramLinkedList.DSI >= ((fp)localObject).DSI))) {
+      localObject = (fu)localIterator.next();
+      if ((((fu)localObject).Fyb > i) || ((paramLinkedList.Fyb < i) && (paramLinkedList.Fyb >= ((fu)localObject).Fyb))) {
         break label181;
       }
-      d.g.b.k.g(localObject, "info");
-      paramLinkedList = (LinkedList<fp>)localObject;
-      if (((fp)localObject).DSI != i) {
-        paramLinkedList = (LinkedList<fp>)localObject;
+      p.g(localObject, "info");
+      paramLinkedList = (LinkedList<fu>)localObject;
+      if (((fu)localObject).Fyb != i) {
+        paramLinkedList = (LinkedList<fu>)localObject;
       }
     }
     label181:
@@ -69,20 +84,6 @@ public final class k
       AppMethodBeat.o(7308);
       return paramLinkedList;
     }
-  }
-  
-  public static final void zr(int paramInt)
-  {
-    AppMethodBeat.i(7309);
-    aw localaw = aw.aKT(TAG);
-    if (localaw != null) {
-      localaw.encode("LastResolutionType", paramInt);
-    }
-    if (localaw != null) {
-      localaw.encode("LastResolutionTime", System.currentTimeMillis());
-    }
-    ac.i(TAG, "LastResolutionType ".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(7309);
   }
 }
 

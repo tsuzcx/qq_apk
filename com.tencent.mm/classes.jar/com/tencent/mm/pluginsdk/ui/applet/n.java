@@ -2,9 +2,10 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.c.c;
+import com.tencent.mm.aw.a.c.c;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 
 public final class n
   implements c
@@ -21,14 +22,14 @@ public final class n
     this.scene = paramInt;
   }
   
-  private com.tencent.mm.av.a.d.b aHm(String paramString)
+  private com.tencent.mm.aw.a.d.b aMP(String paramString)
   {
     AppMethodBeat.i(124383);
-    ac.d("MicroMsg.ChattingBizImgDownloader", "getNormalImageData from url:%s", new Object[] { paramString });
+    ad.d("MicroMsg.ChattingBizImgDownloader", "getNormalImageData from url:%s", new Object[] { paramString });
     try
     {
       System.currentTimeMillis();
-      h localh = h.Dqi;
+      h localh = h.EVl;
       paramString = h.a(paramString, true, new k(this.scene));
       if (paramString != null) {
         System.currentTimeMillis();
@@ -38,69 +39,69 @@ public final class n
     }
     catch (Exception paramString)
     {
-      ac.e("MicroMsg.ChattingBizImgDownloader", "get image data failed.:%s", new Object[] { paramString.toString() });
-      paramString = new com.tencent.mm.av.a.d.b(null, null, (byte)0);
+      ad.e("MicroMsg.ChattingBizImgDownloader", "get image data failed.:%s", new Object[] { paramString.toString() });
+      paramString = new com.tencent.mm.aw.a.d.b(null, null, (byte)0);
       AppMethodBeat.o(124383);
     }
     return paramString;
   }
   
-  private com.tencent.mm.av.a.d.b aHn(String paramString)
+  private com.tencent.mm.aw.a.d.b aMQ(String paramString)
   {
     AppMethodBeat.i(124385);
-    ac.i("MicroMsg.ChattingBizImgDownloader", "alvinluo tryToGetNormalImage after get WxPic failed");
-    paramString = aHm(paramString);
+    ad.i("MicroMsg.ChattingBizImgDownloader", "alvinluo tryToGetNormalImage after get WxPic failed");
+    paramString = aMP(paramString);
     AppMethodBeat.o(124385);
     return paramString;
   }
   
-  private void eNz()
+  private void fcy()
   {
     AppMethodBeat.i(124384);
-    Object localObject = g.Dqh;
-    if (g.WS(this.scene))
+    Object localObject = g.EVk;
+    if (g.YO(this.scene))
     {
-      localObject = f.Dqf;
-      f.vb(false);
+      localObject = f.EVi;
+      f.vM(false);
     }
     AppMethodBeat.o(124384);
   }
   
-  public final com.tencent.mm.av.a.d.b CD(String paramString)
+  public final com.tencent.mm.aw.a.d.b FH(String paramString)
   {
     AppMethodBeat.i(124382);
-    ac.d("MicroMsg.ChattingBizImgDownloader", "get image data from url:%s", new Object[] { paramString });
+    ad.d("MicroMsg.ChattingBizImgDownloader", "get image data from url:%s", new Object[] { paramString });
     for (;;)
     {
       try
       {
         long l = System.currentTimeMillis();
-        Object localObject1 = h.Dqi;
+        Object localObject1 = h.EVl;
         localObject1 = h.a(paramString, false, new k(this.scene));
         if (localObject1 != null)
         {
           l = System.currentTimeMillis() - l;
-          localObject2 = ((com.tencent.mm.av.a.d.b)localObject1).contentType;
-          int j = ((com.tencent.mm.av.a.d.b)localObject1).hKZ;
-          if (((com.tencent.mm.av.a.d.b)localObject1).data != null)
+          localObject2 = ((com.tencent.mm.aw.a.d.b)localObject1).contentType;
+          int j = ((com.tencent.mm.aw.a.d.b)localObject1).idU;
+          if (((com.tencent.mm.aw.a.d.b)localObject1).data != null)
           {
-            i = ((com.tencent.mm.av.a.d.b)localObject1).data.length;
-            ac.d("MicroMsg.ChattingBizImgDownloader", "alvinluo BizImage download responseContentType: %s, contentLength: %d, dataLength: %d, url: %s, download used %d ms", new Object[] { localObject2, Integer.valueOf(j), Integer.valueOf(i), paramString, Long.valueOf(l) });
-            localObject2 = g.Dqh;
-            localObject2 = ((com.tencent.mm.av.a.d.b)localObject1).contentType;
-            d.g.b.k.h(paramString, "url");
-            if ((com.tencent.mm.api.b.IC()) && (g.aHj((String)localObject2)) && (com.tencent.mm.api.b.dB(paramString)))
+            i = ((com.tencent.mm.aw.a.d.b)localObject1).data.length;
+            ad.d("MicroMsg.ChattingBizImgDownloader", "alvinluo BizImage download responseContentType: %s, contentLength: %d, dataLength: %d, url: %s, download used %d ms", new Object[] { localObject2, Integer.valueOf(j), Integer.valueOf(i), paramString, Long.valueOf(l) });
+            localObject2 = g.EVk;
+            localObject2 = ((com.tencent.mm.aw.a.d.b)localObject1).contentType;
+            p.h(paramString, "url");
+            if ((com.tencent.mm.api.b.Kc()) && (g.aMM((String)localObject2)) && (com.tencent.mm.api.b.ex(paramString)))
             {
               i = 1;
               if (i == 0) {
                 continue;
               }
-              if (((com.tencent.mm.av.a.d.b)localObject1).data != null) {
+              if (((com.tencent.mm.aw.a.d.b)localObject1).data != null) {
                 continue;
               }
-              ac.e("MicroMsg.ChattingBizImgDownloader", "response.data is null");
-              eNz();
-              paramString = aHn(paramString);
+              ad.e("MicroMsg.ChattingBizImgDownloader", "response.data is null");
+              fcy();
+              paramString = aMQ(paramString);
               AppMethodBeat.o(124382);
               return paramString;
             }
@@ -112,58 +113,58 @@ public final class n
           }
           int i = 0;
           continue;
-          if ((((com.tencent.mm.av.a.d.b)localObject1).hKZ > 0) && (((com.tencent.mm.av.a.d.b)localObject1).hKZ != ((com.tencent.mm.av.a.d.b)localObject1).data.length))
+          if ((((com.tencent.mm.aw.a.d.b)localObject1).idU > 0) && (((com.tencent.mm.aw.a.d.b)localObject1).idU != ((com.tencent.mm.aw.a.d.b)localObject1).data.length))
           {
-            eNz();
-            paramString = aHn(paramString);
+            fcy();
+            paramString = aMQ(paramString);
             AppMethodBeat.o(124382);
             return paramString;
           }
           localObject2 = new BitmapFactory.Options();
           ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-          MMBitmapFactory.decodeByteArray(((com.tencent.mm.av.a.d.b)localObject1).data, 0, ((com.tencent.mm.av.a.d.b)localObject1).data.length, (BitmapFactory.Options)localObject2);
+          MMBitmapFactory.decodeByteArray(((com.tencent.mm.aw.a.d.b)localObject1).data, 0, ((com.tencent.mm.aw.a.d.b)localObject1).data.length, (BitmapFactory.Options)localObject2);
           if ((((BitmapFactory.Options)localObject2).outHeight <= 0) || (((BitmapFactory.Options)localObject2).outWidth <= 0))
           {
-            ac.e("MicroMsg.ChattingBizImgDownloader", "decode wxpic fail");
-            localObject1 = ((com.tencent.mm.av.a.d.b)localObject1).contentType;
-            localObject2 = g.Dqh;
-            if (g.WS(this.scene))
+            ad.e("MicroMsg.ChattingBizImgDownloader", "decode wxpic fail");
+            localObject1 = ((com.tencent.mm.aw.a.d.b)localObject1).contentType;
+            localObject2 = g.EVk;
+            if (g.YO(this.scene))
             {
-              localObject2 = f.Dqf;
-              f.cw((String)localObject1, false);
+              localObject2 = f.EVi;
+              f.cB((String)localObject1, false);
             }
-            localObject2 = g.Dqh;
-            if (g.aHj((String)localObject1))
+            localObject2 = g.EVk;
+            if (g.aMM((String)localObject1))
             {
-              localObject1 = f.Dqf;
-              f.aD(paramString, 1, this.scene);
+              localObject1 = f.EVi;
+              f.aH(paramString, 1, this.scene);
             }
-            paramString = aHn(paramString);
+            paramString = aMQ(paramString);
             AppMethodBeat.o(124382);
             return paramString;
           }
-          paramString = g.Dqh;
-          if (g.WS(this.scene))
+          paramString = g.EVk;
+          if (g.YO(this.scene))
           {
-            paramString = f.Dqf;
-            f.vb(true);
+            paramString = f.EVi;
+            f.vM(true);
           }
-          ac.d("MicroMsg.ChattingBizImgDownloader", "decode wxpic success");
+          ad.d("MicroMsg.ChattingBizImgDownloader", "decode wxpic success");
         }
         else
         {
           AppMethodBeat.o(124382);
           return localObject1;
         }
-        Object localObject2 = g.Dqh;
+        Object localObject2 = g.EVk;
         boolean bool;
-        if (g.kY(paramString, ((com.tencent.mm.av.a.d.b)localObject1).contentType))
+        if (g.lv(paramString, ((com.tencent.mm.aw.a.d.b)localObject1).contentType))
         {
           bool = true;
-          ac.d("MicroMsg.ChattingBizImgDownloader", "getImageData, isDownloadWebp: %b, used %d ms", new Object[] { Boolean.valueOf(bool), Long.valueOf(l) });
-          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(86L, 4L, l, false);
+          ad.d("MicroMsg.ChattingBizImgDownloader", "getImageData, isDownloadWebp: %b, used %d ms", new Object[] { Boolean.valueOf(bool), Long.valueOf(l) });
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(86L, 4L, l, false);
           if (bool) {
-            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(86L, 17L, l, false);
+            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(86L, 17L, l, false);
           }
         }
         else
@@ -173,8 +174,8 @@ public final class n
       }
       catch (Exception paramString)
       {
-        ac.e("MicroMsg.ChattingBizImgDownloader", "get image data failed.:%s", new Object[] { paramString.toString() });
-        paramString = new com.tencent.mm.av.a.d.b(null, null, (byte)0);
+        ad.e("MicroMsg.ChattingBizImgDownloader", "get image data failed.:%s", new Object[] { paramString.toString() });
+        paramString = new com.tencent.mm.aw.a.d.b(null, null, (byte)0);
         AppMethodBeat.o(124382);
         return paramString;
       }
@@ -183,7 +184,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.n
  * JD-Core Version:    0.7.0.1
  */

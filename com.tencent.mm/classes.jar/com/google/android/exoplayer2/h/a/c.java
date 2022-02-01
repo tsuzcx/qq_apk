@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   implements f.a
 {
+  private final a bFC;
+  private final long bFD;
   private final int bufferSize;
-  private final a bvo;
-  private final long bvp;
   
   public c(a parama)
   {
@@ -18,15 +18,15 @@ public final class c
   
   private c(a parama, byte paramByte)
   {
-    this.bvo = parama;
-    this.bvp = 10485760L;
+    this.bFC = parama;
+    this.bFD = 10485760L;
     this.bufferSize = 20480;
   }
   
-  public final f vb()
+  public final f wA()
   {
     AppMethodBeat.i(92965);
-    b localb = new b(this.bvo, this.bvp, this.bufferSize);
+    b localb = new b(this.bFC, this.bFD, this.bufferSize);
     AppMethodBeat.o(92965);
     return localb;
   }

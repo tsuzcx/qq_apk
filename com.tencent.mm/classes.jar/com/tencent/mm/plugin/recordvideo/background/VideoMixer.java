@@ -6,248 +6,241 @@ import android.graphics.Point;
 import android.os.HandlerThread;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.e;
+import com.tencent.mm.ao.e;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.modelvideo.o;
+import com.tencent.mm.plugin.mmsight.d;
+import com.tencent.mm.plugin.recordvideo.d.f;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
 import com.tencent.mm.plugin.sight.base.AdaptiveAdjustBitrate;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.a.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.a.b;
 import d.g.a.m;
 import d.g.a.r;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 import java.io.IOException;
-import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer;", "Lcom/tencent/mm/plugin/recordvideo/background/mixer/IVideoRemuxer;", "captureInfo", "Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;", "editorItems", "", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "drawingRect", "", "mixVideoPath", "", "mixThumbPath", "retryTime", "", "useSoftEncode", "", "enableHevc", "thumbShortSide", "blurBgPath", "(Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;Ljava/util/List;[FLjava/lang/String;Ljava/lang/String;IZZILjava/lang/String;)V", "ABAPrams", "Lcom/tencent/mm/plugin/sight/base/AdaptiveAdjustBitrate;", "getABAPrams", "()Lcom/tencent/mm/plugin/sight/base/AdaptiveAdjustBitrate;", "setABAPrams", "(Lcom/tencent/mm/plugin/sight/base/AdaptiveAdjustBitrate;)V", "SCENE_C2C", "SCENE_FINDER", "SCENE_SNS", "SCENE_STORY", "abaParams", "", "audioBitrate", "audioChannelCount", "audioSampleRate", "blendBitmapProvider", "Lkotlin/Function1;", "", "Landroid/graphics/Bitmap;", "getBlurBgPath", "()Ljava/lang/String;", "setBlurBgPath", "(Ljava/lang/String;)V", "blurBgProvider", "getCaptureInfo", "()Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;", "getDrawingRect", "()[F", "getEditorItems", "()Ljava/util/List;", "getEnableHevc", "()Z", "forceResolution", "framePassDuration", "frameRetriever", "Lcom/tencent/mm/plugin/recordvideo/background/StoryFrameRetriever;", "lastFrameInfo", "Lcom/tencent/mm/media/mix/FrameInfo;", "mixThread", "Landroid/os/HandlerThread;", "getMixThumbPath", "setMixThumbPath", "getMixVideoPath", "setMixVideoPath", "onFinish", "Lkotlin/Function4;", "Lkotlin/ParameterName;", "name", "mixVideo", "mixThumb", "ret", "errorCode", "", "getRetryTime", "()I", "setRetryTime", "(I)V", "getThumbShortSide", "setThumbShortSide", "getUseSoftEncode", "videoBitrate", "videoFrameRate", "videoHeight", "videoMaxQP", "videoMinQP", "videoRotate", "videoWidth", "blendBitmap", "graffiti", "thumb", "left", "", "top", "calcMixEmojiSize", "Landroid/graphics/Point;", "centerCrop", "canvas", "Landroid/graphics/Canvas;", "thumbnail", "size", "centerInside", "checkAudioCache", "callback", "Lkotlin/Function0;", "checkThumbSize", "bitmap", "shortSide", "createGraffitiThumb", "config", "Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;", "createThumb", "getMixConfig", "Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer$MixConfig;", "mix", "readPictureDegree", "path", "videoParam", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "reMuxEndTimeMsPrams", "reMuxStartTimeMsPrams", "setForceResolution", "setMixConfig", "width", "height", "start", "onFinishCallback", "Companion", "MixConfig", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer;", "Lcom/tencent/mm/plugin/recordvideo/background/mixer/IVideoRemuxer;", "videoMixData", "Lcom/tencent/mm/plugin/recordvideo/background/data/VideoMixData;", "(Lcom/tencent/mm/plugin/recordvideo/background/data/VideoMixData;)V", "ABAPrams", "Lcom/tencent/mm/plugin/sight/base/AdaptiveAdjustBitrate;", "getABAPrams", "()Lcom/tencent/mm/plugin/sight/base/AdaptiveAdjustBitrate;", "setABAPrams", "(Lcom/tencent/mm/plugin/sight/base/AdaptiveAdjustBitrate;)V", "SCENE_C2C", "", "SCENE_FINDER", "SCENE_SNS", "SCENE_STORY", "abaParams", "", "audioBitrate", "audioChannelCount", "audioSampleRate", "blendBitmapProvider", "Lkotlin/Function1;", "", "Landroid/graphics/Bitmap;", "blurBgProvider", "captureInfo", "Lcom/tencent/mm/plugin/recordvideo/config/CaptureInfo;", "forceResolution", "", "framePassDuration", "frameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/StoryFrameRetriever;", "lastFrameInfo", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameInfo;", "mixThread", "Landroid/os/HandlerThread;", "onFinish", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "mixVideo", "mixThumb", "ret", "errorCode", "", "videoBitrate", "videoFrameRate", "videoHeight", "videoMaxQP", "videoMinQP", "getVideoMixData", "()Lcom/tencent/mm/plugin/recordvideo/background/data/VideoMixData;", "videoRotate", "videoWidth", "blendBitmap", "graffiti", "thumb", "left", "", "top", "calcMixEmojiSize", "Landroid/graphics/Point;", "centerCrop", "canvas", "Landroid/graphics/Canvas;", "thumbnail", "size", "centerInside", "checkAudioCache", "callback", "Lkotlin/Function0;", "checkThumbSize", "bitmap", "shortSide", "createGraffitiThumb", "config", "Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;", "createThumb", "getMixConfig", "Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer$MixConfig;", "mix", "readPictureDegree", "path", "videoParam", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "reMuxEndTimeMsPrams", "reMuxStartTimeMsPrams", "setForceResolution", "setMixConfig", "width", "height", "start", "onFinishCallback", "Companion", "MixConfig", "plugin-recordvideo_release"})
 public final class VideoMixer
-  implements com.tencent.mm.plugin.recordvideo.background.b.c
+  implements com.tencent.mm.plugin.recordvideo.background.c.c
 {
-  public static final VideoMixer.a wnf;
+  public static final VideoMixer.a xuP;
   private int audioBitrate;
+  private int audioChannelCount;
   private int audioSampleRate;
-  private int gLW;
-  private int gOt;
-  public final d.g.a.b<Long, Bitmap> gSX;
-  public final List<com.tencent.mm.media.editor.a.b> gSw;
-  public int gTI;
-  public final d.g.a.b<Long, Bitmap> gTW;
-  public final boolean gUr;
-  private final boolean gUs;
-  private int gUt;
-  private int gUu;
-  private final int qYg;
-  private int[] rMF;
+  public final b<Long, Bitmap> hkY;
+  public int hlJ;
+  public final b<Long, Bitmap> hlX;
+  private int hmu;
+  private int hmv;
+  private final int rJs;
+  private int[] sIH;
   private int videoBitrate;
   private int videoFrameRate;
   private int videoHeight;
   private int videoWidth;
-  private r<? super String, ? super String, ? super Boolean, ? super Integer, y> wmQ;
-  private long wmR;
-  private com.tencent.mm.media.g.c wmS;
-  public d wmT;
-  public AdaptiveAdjustBitrate wmU;
-  public boolean wmV;
-  private final int wmW;
-  private final int wmX;
-  private final int wmY;
-  private HandlerThread wmZ;
-  public String wmm;
-  public final com.tencent.mm.plugin.recordvideo.b.c wna;
-  public final float[] wnb;
-  String wnc;
-  String wnd;
-  private int wne;
+  private r<? super String, ? super String, ? super Boolean, ? super Integer, z> xuD;
+  private long xuE;
+  private com.tencent.mm.plugin.recordvideo.ui.editor.b.a xuF;
+  public com.tencent.mm.plugin.recordvideo.ui.editor.b.g xuG;
+  private com.tencent.mm.plugin.recordvideo.b.c xuH;
+  public AdaptiveAdjustBitrate xuI;
+  public boolean xuJ;
+  private final int xuK;
+  private final int xuL;
+  private final int xuM;
+  private HandlerThread xuN;
+  public final com.tencent.mm.plugin.recordvideo.background.a.a xuO;
   
   static
   {
     AppMethodBeat.i(75262);
-    wnf = new VideoMixer.a((byte)0);
+    xuP = new VideoMixer.a((byte)0);
     AppMethodBeat.o(75262);
   }
   
-  private VideoMixer(com.tencent.mm.plugin.recordvideo.b.c paramc, List<com.tencent.mm.media.editor.a.b> paramList, float[] paramArrayOfFloat, String paramString1, String paramString2, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, String paramString3)
+  public VideoMixer(com.tencent.mm.plugin.recordvideo.background.a.a parama)
   {
-    AppMethodBeat.i(75260);
-    this.wna = paramc;
-    this.gSw = paramList;
-    this.wnb = paramArrayOfFloat;
-    this.wnc = paramString1;
-    this.wnd = paramString2;
-    this.gLW = paramInt1;
-    this.gUr = paramBoolean1;
-    this.gUs = paramBoolean2;
-    this.wne = paramInt2;
-    this.wmm = paramString3;
-    this.wmR = -1L;
-    this.rMF = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-    this.wmW = 1;
-    this.wmX = 2;
-    this.wmY = 3;
-    this.qYg = 4;
-    ac.i("MicroMsg.Media.VideoMixer", "create VideoMixer, videoPath:" + this.wna.woZ + ", outputFilePath:" + this.wnc + ", isCaptureVideo:" + this.wna.hbH + ", retryTime:" + this.gLW);
-    com.tencent.mm.vfs.i.eA(this.wna.woZ);
-    this.gSX = ((d.g.a.b)new b(this));
-    this.gTW = ((d.g.a.b)new c(this));
-    AppMethodBeat.o(75260);
+    AppMethodBeat.i(200280);
+    this.xuO = parama;
+    this.xuE = -1L;
+    this.xuH = this.xuO.xuH;
+    parama = new int[29];
+    int i = 0;
+    while (i < 29)
+    {
+      parama[i] = 0;
+      i += 1;
+    }
+    this.sIH = parama;
+    this.xuK = 1;
+    this.xuL = 2;
+    this.xuM = 3;
+    this.rJs = 4;
+    ad.i("MicroMsg.Media.VideoMixer", "create VideoMixer, " + this.xuO);
+    this.hkY = ((b)new b(this));
+    this.hlX = ((b)new VideoMixer.c(this));
+    AppMethodBeat.o(200280);
   }
   
   /* Error */
-  public static int aqF(String paramString)
+  public static int avF(String paramString)
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_3
-    //   5: ldc_w 362
-    //   8: invokestatic 208	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   11: aload_0
-    //   12: ldc_w 363
-    //   15: invokestatic 226	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   18: iconst_0
-    //   19: istore_1
-    //   20: aload_0
-    //   21: invokestatic 367	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   24: astore_0
-    //   25: aload_0
-    //   26: ifnull +158 -> 184
-    //   29: aload_0
-    //   30: checkcast 369	java/io/Closeable
-    //   33: astore 5
-    //   35: new 371	android/support/e/a
-    //   38: dup
-    //   39: aload 5
-    //   41: checkcast 373	java/io/InputStream
-    //   44: invokespecial 376	android/support/e/a:<init>	(Ljava/io/InputStream;)V
-    //   47: astore_0
-    //   48: getstatic 382	d/y:KTp	Ld/y;
-    //   51: astore 6
-    //   53: aload 5
-    //   55: aconst_null
-    //   56: invokestatic 387	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   59: aload_0
-    //   60: ifnull +16 -> 76
-    //   63: aload_0
-    //   64: ldc_w 389
-    //   67: invokevirtual 392	android/support/e/a:m	(Ljava/lang/String;)I
-    //   70: istore_2
-    //   71: iload_2
-    //   72: invokestatic 398	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   75: astore_3
-    //   76: aload_3
-    //   77: ifnonnull +43 -> 120
-    //   80: aload_3
-    //   81: ifnonnull +54 -> 135
-    //   84: aload_3
-    //   85: ifnonnull +65 -> 150
-    //   88: ldc_w 362
-    //   91: invokestatic 217	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   94: iload_1
-    //   95: ireturn
-    //   96: astore_3
-    //   97: ldc_w 362
-    //   100: invokestatic 217	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   103: aload_3
-    //   104: athrow
-    //   105: astore_0
-    //   106: aload 5
-    //   108: aload_3
-    //   109: invokestatic 387	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   112: ldc_w 362
-    //   115: invokestatic 217	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   118: aload_0
-    //   119: athrow
-    //   120: aload_3
-    //   121: invokevirtual 401	java/lang/Integer:intValue	()I
-    //   124: bipush 6
-    //   126: if_icmpne -46 -> 80
-    //   129: bipush 90
-    //   131: istore_1
-    //   132: goto -44 -> 88
-    //   135: aload_3
-    //   136: invokevirtual 401	java/lang/Integer:intValue	()I
-    //   139: iconst_3
-    //   140: if_icmpne -56 -> 84
-    //   143: sipush 180
-    //   146: istore_1
-    //   147: goto -59 -> 88
-    //   150: aload_3
-    //   151: invokevirtual 401	java/lang/Integer:intValue	()I
-    //   154: istore_2
-    //   155: iload_2
-    //   156: bipush 8
-    //   158: if_icmpne +17 -> 175
-    //   161: sipush 270
-    //   164: istore_1
-    //   165: goto -77 -> 88
-    //   168: astore_0
-    //   169: aload 4
-    //   171: astore_3
-    //   172: goto -66 -> 106
-    //   175: iconst_0
-    //   176: istore_1
-    //   177: goto -12 -> 165
-    //   180: astore_0
-    //   181: goto -93 -> 88
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore_2
+    //   4: ldc_w 273
+    //   7: invokestatic 165	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   10: aload_0
+    //   11: ldc_w 274
+    //   14: invokestatic 183	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   17: aload_0
+    //   18: invokestatic 280	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   21: astore_0
+    //   22: aload_0
+    //   23: ifnull +161 -> 184
+    //   26: aload_0
+    //   27: checkcast 282	java/io/Closeable
+    //   30: astore 4
+    //   32: new 284	android/support/e/a
+    //   35: dup
+    //   36: aload 4
+    //   38: checkcast 286	java/io/InputStream
+    //   41: invokespecial 289	android/support/e/a:<init>	(Ljava/io/InputStream;)V
+    //   44: astore_0
+    //   45: getstatic 295	d/z:MKo	Ld/z;
+    //   48: astore 5
+    //   50: aload 4
+    //   52: aconst_null
+    //   53: invokestatic 300	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   56: aload_0
+    //   57: ifnull +16 -> 73
+    //   60: aload_0
+    //   61: ldc_w 302
+    //   64: invokevirtual 305	android/support/e/a:l	(Ljava/lang/String;)I
+    //   67: istore_1
+    //   68: iload_1
+    //   69: invokestatic 311	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   72: astore_2
+    //   73: aload_2
+    //   74: ifnonnull +45 -> 119
+    //   77: aload_2
+    //   78: ifnonnull +56 -> 134
+    //   81: aload_2
+    //   82: ifnonnull +67 -> 149
+    //   85: iconst_0
+    //   86: istore_1
+    //   87: ldc_w 273
+    //   90: invokestatic 174	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: iload_1
+    //   94: ireturn
+    //   95: astore_2
+    //   96: ldc_w 273
+    //   99: invokestatic 174	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   102: aload_2
+    //   103: athrow
+    //   104: astore_0
+    //   105: aload 4
+    //   107: aload_2
+    //   108: invokestatic 300	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   111: ldc_w 273
+    //   114: invokestatic 174	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: aload_0
+    //   118: athrow
+    //   119: aload_2
+    //   120: invokevirtual 315	java/lang/Integer:intValue	()I
+    //   123: bipush 6
+    //   125: if_icmpne -48 -> 77
+    //   128: bipush 90
+    //   130: istore_1
+    //   131: goto -44 -> 87
+    //   134: aload_2
+    //   135: invokevirtual 315	java/lang/Integer:intValue	()I
+    //   138: iconst_3
+    //   139: if_icmpne -58 -> 81
+    //   142: sipush 180
+    //   145: istore_1
+    //   146: goto -59 -> 87
+    //   149: aload_2
+    //   150: invokevirtual 315	java/lang/Integer:intValue	()I
+    //   153: istore_1
+    //   154: iload_1
+    //   155: bipush 8
+    //   157: if_icmpne +10 -> 167
+    //   160: sipush 270
+    //   163: istore_1
+    //   164: goto -77 -> 87
+    //   167: iconst_0
+    //   168: istore_1
+    //   169: goto -82 -> 87
+    //   172: astore_0
+    //   173: aload_3
+    //   174: astore_2
+    //   175: goto -70 -> 105
+    //   178: astore_0
+    //   179: iconst_0
+    //   180: istore_1
+    //   181: goto -94 -> 87
     //   184: aconst_null
     //   185: astore_0
-    //   186: goto -127 -> 59
+    //   186: goto -130 -> 56
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	189	0	paramString	String
-    //   19	158	1	i	int
-    //   70	89	2	j	int
-    //   4	81	3	localInteger	Integer
-    //   96	55	3	localThrowable	Throwable
-    //   171	1	3	localObject1	Object
-    //   1	169	4	localObject2	Object
-    //   33	74	5	localCloseable	java.io.Closeable
-    //   51	1	6	localy	y
+    //   67	114	1	i	int
+    //   3	79	2	localInteger	Integer
+    //   95	55	2	localThrowable	Throwable
+    //   174	1	2	localObject1	Object
+    //   1	173	3	localObject2	Object
+    //   30	76	4	localCloseable	java.io.Closeable
+    //   48	1	5	localz	z
     // Exception table:
     //   from	to	target	type
-    //   35	53	96	java/lang/Throwable
-    //   97	105	105	finally
-    //   35	53	168	finally
-    //   20	25	180	java/io/IOException
-    //   29	35	180	java/io/IOException
-    //   53	59	180	java/io/IOException
-    //   63	71	180	java/io/IOException
-    //   106	120	180	java/io/IOException
-    //   120	129	180	java/io/IOException
-    //   135	143	180	java/io/IOException
-    //   150	155	180	java/io/IOException
+    //   32	50	95	java/lang/Throwable
+    //   96	104	104	finally
+    //   32	50	172	finally
+    //   17	22	178	java/io/IOException
+    //   26	32	178	java/io/IOException
+    //   50	56	178	java/io/IOException
+    //   60	68	178	java/io/IOException
+    //   105	119	178	java/io/IOException
+    //   119	128	178	java/io/IOException
+    //   134	142	178	java/io/IOException
+    //   149	154	178	java/io/IOException
   }
   
-  private final String duD()
+  private final String dEZ()
   {
     boolean bool = true;
     AppMethodBeat.i(75250);
-    Bitmap localBitmap = com.tencent.mm.plugin.mmsight.d.aX(this.wnc, 200000L);
+    Bitmap localBitmap = d.aY(this.xuO.xuW, 200000L);
     if (localBitmap != null)
     {
       try
       {
-        ac.i("MicroMsg.Media.VideoMixer", "createThumb getParentAbsolutePath: " + com.tencent.mm.vfs.i.aSs(this.wnd) + "  thumb size:" + this.wne);
-        com.tencent.mm.vfs.i.deleteDir(this.wnd);
-        i = this.wne;
+        ad.i("MicroMsg.Media.VideoMixer", "createThumb getParentAbsolutePath: " + com.tencent.mm.vfs.i.aYr(this.xuO.xuX) + "  thumb size:" + this.xuO.xuY);
+        com.tencent.mm.vfs.i.deleteDir(this.xuO.xuX);
+        i = this.xuO.xuY;
         if ((i <= 0) || (Math.min(localBitmap.getWidth(), localBitmap.getHeight()) <= i)) {
-          break label272;
+          break label294;
         }
         if (localBitmap.getWidth() >= localBitmap.getHeight()) {
-          break label246;
+          break label268;
         }
         int k = (int)(localBitmap.getHeight() * i * 1.0F / localBitmap.getWidth());
         j = i;
         i = k;
         localObject1 = Bitmap.createScaledBitmap(localBitmap, j, i, true);
-        k.g(localObject1, "Bitmap.createScaledBitma…idth, outputHeight, true)");
-        label158:
-        com.tencent.mm.sdk.platformtools.f.a((Bitmap)localObject1, 60, Bitmap.CompressFormat.JPEG, this.wnd, true);
+        p.g(localObject1, "Bitmap.createScaledBitma…idth, outputHeight, true)");
+        label172:
+        com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject1, 60, Bitmap.CompressFormat.JPEG, this.xuO.xuX, true);
       }
       catch (IOException localIOException)
       {
@@ -256,45 +249,45 @@ public final class VideoMixer
           int i;
           int j;
           Object localObject1;
-          label174:
-          localObject2 = com.tencent.mm.plugin.recordvideo.d.f.wys;
-          com.tencent.mm.plugin.recordvideo.d.f.dwx();
+          label191:
+          localObject2 = f.xHm;
+          f.dGR();
         }
       }
-      localObject1 = new StringBuilder(" mixVideoPath : ").append(this.wnc).append(" mixThumbPath:").append(this.wnd).append("   thumb-bitmap is null:");
+      localObject1 = new StringBuilder(" mixVideoPath : ").append(this.xuO.xuW).append(" mixThumbPath:").append(this.xuO.xuX).append("   thumb-bitmap is null:");
       if (localBitmap != null) {
-        break label303;
+        break label325;
       }
     }
     for (;;)
     {
-      ac.i("MicroMsg.Media.VideoMixer", bool);
+      ad.i("MicroMsg.Media.VideoMixer", bool);
       if (localBitmap != null) {
-        break label309;
+        break label331;
       }
       AppMethodBeat.o(75250);
       return null;
-      label246:
+      label268:
       float f = localBitmap.getWidth() * i;
       j = localBitmap.getHeight();
       j = (int)(f * 1.0F / j);
       break;
-      label272:
+      label294:
       localObject1 = localBitmap;
-      break label158;
-      localObject2 = com.tencent.mm.plugin.recordvideo.d.f.wys;
-      com.tencent.mm.plugin.recordvideo.d.f.dwx();
-      break label174;
-      label303:
+      break label172;
+      localObject2 = f.xHm;
+      f.dGR();
+      break label191;
+      label325:
       bool = false;
     }
-    label309:
-    Object localObject2 = this.wnd;
+    label331:
+    Object localObject2 = this.xuO.xuX;
     AppMethodBeat.o(75250);
     return localObject2;
   }
   
-  public static Point gP(int paramInt1, int paramInt2)
+  public static Point hg(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(75258);
     Point localPoint = new Point(paramInt1 * 1, paramInt2 * 1);
@@ -310,18 +303,18 @@ public final class VideoMixer
     this.videoBitrate = paramInt3;
     this.audioBitrate = paramInt4;
     this.audioSampleRate = paramInt5;
-    this.gOt = paramInt6;
+    this.audioChannelCount = paramInt6;
     this.videoFrameRate = paramInt7;
-    this.gTI = paramInt8;
-    this.gUt = paramInt9;
-    this.gUu = paramInt10;
-    if (this.wmU == null) {
-      this.wmU = new AdaptiveAdjustBitrate();
+    this.hlJ = paramInt8;
+    this.hmu = paramInt9;
+    this.hmv = paramInt10;
+    if (this.xuI == null) {
+      this.xuI = new AdaptiveAdjustBitrate();
     }
-    AdaptiveAdjustBitrate localAdaptiveAdjustBitrate = this.wmU;
+    AdaptiveAdjustBitrate localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null)
     {
-      localAdaptiveAdjustBitrate.dEr();
+      localAdaptiveAdjustBitrate.dPU();
       AppMethodBeat.o(75255);
       return;
     }
@@ -331,112 +324,104 @@ public final class VideoMixer
   public final void a(VideoTransPara paramVideoTransPara, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(75253);
-    k.h(paramVideoTransPara, "videoParam");
-    if (this.wmU == null) {
-      this.wmU = new AdaptiveAdjustBitrate();
+    p.h(paramVideoTransPara, "videoParam");
+    if (this.xuI == null) {
+      this.xuI = new AdaptiveAdjustBitrate();
     }
-    ac.i("MicroMsg.Media.VideoMixer", "Scene: [%d], ABASwitch: [%d] ceilingVideoBR:[%d]", new Object[] { Integer.valueOf(paramVideoTransPara.hCV), Integer.valueOf(paramVideoTransPara.hCL), Integer.valueOf(paramVideoTransPara.hCP) });
-    AdaptiveAdjustBitrate localAdaptiveAdjustBitrate = this.wmU;
+    ad.i("MicroMsg.Media.VideoMixer", "Scene: [%d], ABASwitch: [%d] ceilingVideoBR:[%d]", new Object[] { Integer.valueOf(paramVideoTransPara.hVA), Integer.valueOf(paramVideoTransPara.hVq), Integer.valueOf(paramVideoTransPara.hVu) });
+    AdaptiveAdjustBitrate localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.gNV = this.videoHeight;
+      localAdaptiveAdjustBitrate.targetHeight = this.videoHeight;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.gNU = this.videoWidth;
+      localAdaptiveAdjustBitrate.targetWidth = this.videoWidth;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.xCn = this.videoBitrate;
+      localAdaptiveAdjustBitrate.yQX = this.videoBitrate;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.wpw = paramInt2;
+      localAdaptiveAdjustBitrate.xxm = paramInt2;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.wpx = paramInt1;
+      localAdaptiveAdjustBitrate.xxn = paramInt1;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.hCV = paramVideoTransPara.hCV;
+      localAdaptiveAdjustBitrate.hVA = paramVideoTransPara.hVA;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.hCL = paramVideoTransPara.hCL;
+      localAdaptiveAdjustBitrate.hVq = paramVideoTransPara.hVq;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.hCM = paramVideoTransPara.hCM;
+      localAdaptiveAdjustBitrate.hVr = paramVideoTransPara.hVr;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.hCN = paramVideoTransPara.hCN;
+      localAdaptiveAdjustBitrate.hVs = paramVideoTransPara.hVs;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.hCO = paramVideoTransPara.hCO;
+      localAdaptiveAdjustBitrate.hVt = paramVideoTransPara.hVt;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.hCP = paramVideoTransPara.hCP;
+      localAdaptiveAdjustBitrate.hVu = paramVideoTransPara.hVu;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.hCQ = paramVideoTransPara.hCQ;
+      localAdaptiveAdjustBitrate.hVv = paramVideoTransPara.hVv;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.xCo = paramVideoTransPara.hCR;
+      localAdaptiveAdjustBitrate.yQY = paramVideoTransPara.hVw;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.hCT = paramVideoTransPara.hCT;
+      localAdaptiveAdjustBitrate.hVy = paramVideoTransPara.hVy;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.gOb = paramVideoTransPara.gOb;
+      localAdaptiveAdjustBitrate.hhV = paramVideoTransPara.hhV;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null) {
-      localAdaptiveAdjustBitrate.gOc = paramVideoTransPara.gOc;
+      localAdaptiveAdjustBitrate.hhW = paramVideoTransPara.hhW;
     }
-    localAdaptiveAdjustBitrate = this.wmU;
+    localAdaptiveAdjustBitrate = this.xuI;
     if (localAdaptiveAdjustBitrate != null)
     {
-      localAdaptiveAdjustBitrate.hCU = paramVideoTransPara.hCU;
+      localAdaptiveAdjustBitrate.hVz = paramVideoTransPara.hVz;
       AppMethodBeat.o(75253);
       return;
     }
     AppMethodBeat.o(75253);
   }
   
-  public final void aqG(String paramString)
-  {
-    AppMethodBeat.i(75259);
-    k.h(paramString, "<set-?>");
-    this.wnc = paramString;
-    AppMethodBeat.o(75259);
-  }
-  
-  public final void c(final r<? super String, ? super String, ? super Boolean, ? super Integer, y> paramr)
+  public final void c(final r<? super String, ? super String, ? super Boolean, ? super Integer, z> paramr)
   {
     AppMethodBeat.i(75249);
-    ac.i("MicroMsg.Media.VideoMixer", "Start mixer " + bs.eWi());
-    this.wmQ = ((r)new g(this, paramr));
-    paramr = (a)new h(this);
-    if (this.wna.wpf != null)
+    ad.i("MicroMsg.Media.VideoMixer", "Start mixer " + bt.flS());
+    this.xuD = ((r)new g(this, paramr));
+    paramr = (d.g.a.a)new h(this);
+    if (this.xuO.xuH.xwV != null)
     {
-      Object localObject = this.wna.wpf;
+      Object localObject = this.xuO.xuH.xwV;
       if (localObject == null) {
-        k.fOy();
+        p.gfZ();
       }
-      if (!((AudioCacheInfo)localObject).aMR)
+      if (!((AudioCacheInfo)localObject).aXj)
       {
-        localObject = com.tencent.mm.plugin.recordvideo.model.audio.i.wrV;
-        localObject = com.tencent.mm.plugin.recordvideo.model.audio.i.dvK();
-        AudioCacheInfo localAudioCacheInfo = this.wna.wpf;
+        localObject = com.tencent.mm.plugin.recordvideo.model.audio.i.xzM;
+        localObject = com.tencent.mm.plugin.recordvideo.model.audio.i.dGi();
+        AudioCacheInfo localAudioCacheInfo = this.xuO.xuH.xwV;
         if (localAudioCacheInfo == null) {
-          k.fOy();
+          p.gfZ();
         }
         ((com.tencent.mm.plugin.recordvideo.model.audio.i)localObject).a(localAudioCacheInfo, (m)new VideoMixer.d(paramr));
         AppMethodBeat.o(75249);
@@ -447,205 +432,205 @@ public final class VideoMixer
     AppMethodBeat.o(75249);
   }
   
-  public final int duE()
+  public final int dFa()
   {
     AppMethodBeat.i(75254);
-    ac.i("MicroMsg.Media.VideoMixer", "ABA: Input encoding prams :Br: [%d]  height: [%d]  width: [%d] forceResolution:" + this.wmV, new Object[] { Integer.valueOf(this.videoBitrate), Integer.valueOf(this.videoHeight), Integer.valueOf(this.videoWidth) });
-    Object localObject1 = this.wmU;
+    ad.i("MicroMsg.Media.VideoMixer", "ABA: Input encoding prams :Br: [%d]  height: [%d]  width: [%d] forceResolution:" + this.xuJ, new Object[] { Integer.valueOf(this.videoBitrate), Integer.valueOf(this.videoHeight), Integer.valueOf(this.videoWidth) });
+    Object localObject1 = this.xuI;
     Object localObject2;
-    label108:
+    label107:
     Object localObject3;
-    label129:
+    label128:
     int j;
     int k;
     int m;
-    label319:
+    label317:
     int n;
-    label355:
+    label353:
     float f1;
-    label398:
+    label396:
     float f2;
-    label438:
-    label474:
+    label436:
+    label472:
     int i1;
-    label510:
+    label508:
     int i2;
-    label546:
+    label544:
     int i3;
-    label582:
+    label580:
     int i4;
-    label618:
+    label616:
     int i5;
-    label654:
+    label652:
     int i6;
     if (localObject1 != null)
     {
-      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hCV);
-      localObject2 = this.wmU;
+      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hVA);
+      localObject2 = this.xuI;
       if (localObject2 == null) {
-        break label912;
+        break label898;
       }
-      localObject2 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject2).hCL);
-      localObject3 = this.wmU;
+      localObject2 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject2).hVq);
+      localObject3 = this.xuI;
       if (localObject3 == null) {
-        break label918;
+        break label904;
       }
-      localObject3 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject3).hCM);
-      ac.i("MicroMsg.Media.VideoMixer", "Scene: [%d], ABASwitch: [%d], QPSwitch: [%d]", new Object[] { localObject1, localObject2, localObject3 });
-      localObject1 = this.wmU;
-      if ((localObject1 == null) || (((AdaptiveAdjustBitrate)localObject1).hCL != 1))
+      localObject3 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject3).hVr);
+      ad.i("MicroMsg.Media.VideoMixer", "Scene: [%d], ABASwitch: [%d], QPSwitch: [%d]", new Object[] { localObject1, localObject2, localObject3 });
+      localObject1 = this.xuI;
+      if ((localObject1 == null) || (((AdaptiveAdjustBitrate)localObject1).hVq != 1))
       {
-        localObject1 = this.wmU;
-        if ((localObject1 == null) || (((AdaptiveAdjustBitrate)localObject1).hCL != 2)) {
-          break label990;
+        localObject1 = this.xuI;
+        if ((localObject1 == null) || (((AdaptiveAdjustBitrate)localObject1).hVq != 2)) {
+          break label976;
         }
       }
-      localObject1 = this.wmU;
-      if ((localObject1 == null) || (((AdaptiveAdjustBitrate)localObject1).hCV != this.wmX))
+      localObject1 = this.xuI;
+      if ((localObject1 == null) || (((AdaptiveAdjustBitrate)localObject1).hVA != this.xuL))
       {
-        localObject1 = this.wmU;
-        if ((localObject1 == null) || (((AdaptiveAdjustBitrate)localObject1).hCV != this.wmW))
+        localObject1 = this.xuI;
+        if ((localObject1 == null) || (((AdaptiveAdjustBitrate)localObject1).hVA != this.xuK))
         {
-          localObject1 = this.wmU;
-          if ((localObject1 == null) || (((AdaptiveAdjustBitrate)localObject1).hCV != this.qYg)) {
-            break label990;
+          localObject1 = this.xuI;
+          if ((localObject1 == null) || (((AdaptiveAdjustBitrate)localObject1).hVA != this.rJs)) {
+            break label976;
           }
         }
       }
-      localObject2 = this.wna.woZ;
+      localObject2 = this.xuH.xwP;
       i = this.videoHeight;
       j = this.videoWidth;
       k = this.videoFrameRate;
       m = this.videoBitrate;
-      localObject1 = this.wmU;
+      localObject1 = this.xuI;
       if (localObject1 == null) {
-        break label924;
+        break label910;
       }
-      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).wpx);
+      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).xxn);
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       n = ((Integer)localObject1).intValue();
-      localObject1 = this.wmU;
+      localObject1 = this.xuI;
       if (localObject1 == null) {
-        break label930;
+        break label916;
       }
-      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).wpw);
+      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).xxm);
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       f1 = (n - ((Integer)localObject1).intValue()) / 1000;
-      localObject1 = this.wmU;
+      localObject1 = this.xuI;
       if (localObject1 == null) {
-        break label936;
+        break label922;
       }
-      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).wpw);
+      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).xxm);
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       f2 = ((Integer)localObject1).intValue() / 1000;
-      localObject1 = this.wmU;
+      localObject1 = this.xuI;
       if (localObject1 == null) {
-        break label942;
+        break label928;
       }
-      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hCV);
+      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hVA);
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       n = ((Integer)localObject1).intValue();
-      localObject1 = this.wmU;
+      localObject1 = this.xuI;
       if (localObject1 == null) {
-        break label948;
+        break label934;
       }
-      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hCN);
+      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hVs);
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       i1 = ((Integer)localObject1).intValue();
-      localObject1 = this.wmU;
+      localObject1 = this.xuI;
       if (localObject1 == null) {
-        break label954;
+        break label940;
       }
-      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hCO);
+      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hVt);
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       i2 = ((Integer)localObject1).intValue();
-      localObject1 = this.wmU;
+      localObject1 = this.xuI;
       if (localObject1 == null) {
-        break label960;
+        break label946;
       }
-      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hCP);
+      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hVu);
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       i3 = ((Integer)localObject1).intValue();
-      localObject1 = this.wmU;
+      localObject1 = this.xuI;
       if (localObject1 == null) {
-        break label966;
+        break label952;
       }
-      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hCQ);
+      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hVv);
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       i4 = ((Integer)localObject1).intValue();
-      localObject1 = this.wmU;
+      localObject1 = this.xuI;
       if (localObject1 == null) {
-        break label972;
+        break label958;
       }
-      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).xCo);
+      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).yQY);
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       i5 = ((Integer)localObject1).intValue();
-      localObject1 = this.wmU;
+      localObject1 = this.xuI;
       if (localObject1 == null) {
-        break label978;
+        break label964;
       }
-      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hCS);
+      localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hVx);
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       i6 = ((Integer)localObject1).intValue();
-      localObject1 = this.wmU;
+      localObject1 = this.xuI;
       if (localObject1 == null) {
-        break label984;
+        break label970;
       }
     }
-    label912:
-    label918:
-    label924:
-    label930:
-    label936:
-    label942:
-    label948:
-    label954:
-    label960:
-    label966:
-    label972:
-    label978:
-    label984:
-    for (localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hCT);; localObject1 = null)
+    label898:
+    label904:
+    label910:
+    label916:
+    label922:
+    label928:
+    label934:
+    label940:
+    label946:
+    label952:
+    label958:
+    label964:
+    label970:
+    for (localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hVy);; localObject1 = null)
     {
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       localObject1 = AdaptiveAdjustBitrate.a((String)localObject2, i, j, k, m, f1, f2, n, i1, i2, i3, i4, i5, i6, ((Integer)localObject1).intValue());
-      k.g(localObject1, "AdaptiveAdjustBitrate.Ge…ABAPrams?.maxVideoSize!!)");
-      this.rMF = ((int[])localObject1);
-      if ((this.rMF[3] > 0) || (this.rMF[4] > 0)) {
-        this.videoBitrate = (this.rMF[0] * 1000);
+      p.g(localObject1, "AdaptiveAdjustBitrate.Ge…s?.maxVideoSize!!, false)");
+      this.sIH = ((int[])localObject1);
+      if (this.sIH != null) {
+        this.videoBitrate = (this.sIH[0] * 1000);
       }
-      if ((this.rMF[5] > 0) && (!this.wmV))
+      if ((this.sIH[5] > 0) && (!this.xuJ))
       {
-        this.videoWidth = this.rMF[1];
-        this.videoHeight = this.rMF[2];
+        this.videoWidth = this.sIH[1];
+        this.videoHeight = this.sIH[2];
       }
-      ac.i("MicroMsg.Media.VideoMixer", "ABA: Adaptive Bitrate Methods:videoBitrate [%d]  targetWidth [%d]  targetHeight [%d]", new Object[] { Integer.valueOf(this.videoBitrate), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight) });
-      o.aJz();
-      e.q(this.rMF);
-      if ((this.rMF[3] <= 0) && (this.rMF[4] <= 0) && (this.rMF[5] <= 0)) {
-        break label1041;
+      ad.i("MicroMsg.Media.VideoMixer", "ABA: Adaptive Bitrate Methods:videoBitrate [%d]  targetWidth [%d]  targetHeight [%d]", new Object[] { Integer.valueOf(this.videoBitrate), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight) });
+      o.aMK();
+      e.q(this.sIH);
+      if ((this.sIH[3] <= 0) && (this.sIH[4] <= 0) && (this.sIH[5] <= 0)) {
+        break label1026;
       }
       i = 1;
       AppMethodBeat.o(75254);
@@ -653,44 +638,44 @@ public final class VideoMixer
       localObject1 = null;
       break;
       localObject2 = null;
-      break label108;
+      break label107;
       localObject3 = null;
-      break label129;
+      break label128;
       localObject1 = null;
-      break label319;
+      break label317;
       localObject1 = null;
-      break label355;
+      break label353;
       localObject1 = null;
-      break label398;
+      break label396;
       localObject1 = null;
-      break label438;
+      break label436;
       localObject1 = null;
-      break label474;
+      break label472;
       localObject1 = null;
-      break label510;
+      break label508;
       localObject1 = null;
-      break label546;
+      break label544;
       localObject1 = null;
-      break label582;
+      break label580;
       localObject1 = null;
-      break label618;
+      break label616;
       localObject1 = null;
-      break label654;
+      break label652;
     }
-    label990:
+    label976:
     int i = this.videoBitrate;
-    localObject1 = this.wmU;
+    localObject1 = this.xuI;
     if (localObject1 != null) {}
-    for (localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hCU);; localObject1 = null)
+    for (localObject1 = Integer.valueOf(((AdaptiveAdjustBitrate)localObject1).hVz);; localObject1 = null)
     {
-      ac.i("MicroMsg.Media.VideoMixer", "ABA: No use ABA algorithm: final bitrate: [%d], takePhotosVideoBR: [%d]", new Object[] { Integer.valueOf(i), localObject1 });
-      label1041:
+      ad.i("MicroMsg.Media.VideoMixer", "ABA: No use ABA algorithm: final bitrate: [%d], takePhotosVideoBR: [%d]", new Object[] { Integer.valueOf(i), localObject1 });
+      label1026:
       i = 0;
       break;
     }
   }
   
-  public final MixConfig duF()
+  public final MixConfig dFb()
   {
     AppMethodBeat.i(75257);
     MixConfig localMixConfig = new MixConfig();
@@ -699,22 +684,22 @@ public final class VideoMixer
     localMixConfig.videoBitrate = this.videoBitrate;
     localMixConfig.audioBitrate = this.audioBitrate;
     localMixConfig.audioSampleRate = this.audioSampleRate;
-    localMixConfig.gOt = this.gOt;
+    localMixConfig.audioChannelCount = this.audioChannelCount;
     localMixConfig.videoFrameRate = this.videoFrameRate;
-    localMixConfig.gTI = this.gTI;
+    localMixConfig.hlJ = this.hlJ;
     AppMethodBeat.o(75257);
     return localMixConfig;
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer$MixConfig;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "audioBitrate", "", "getAudioBitrate", "()I", "setAudioBitrate", "(I)V", "audioChannelCount", "getAudioChannelCount", "setAudioChannelCount", "audioSampleRate", "getAudioSampleRate", "setAudioSampleRate", "videoBitrate", "getVideoBitrate", "setVideoBitrate", "videoFrameRate", "getVideoFrameRate", "setVideoFrameRate", "videoHeight", "getVideoHeight", "setVideoHeight", "videoRotate", "getVideoRotate", "setVideoRotate", "videoWidth", "getVideoWidth", "setVideoWidth", "describeContents", "toString", "", "writeToParcel", "", "flags", "CREATOR", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer$MixConfig;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "audioBitrate", "", "getAudioBitrate", "()I", "setAudioBitrate", "(I)V", "audioChannelCount", "getAudioChannelCount", "setAudioChannelCount", "audioSampleRate", "getAudioSampleRate", "setAudioSampleRate", "videoBitrate", "getVideoBitrate", "setVideoBitrate", "videoFrameRate", "getVideoFrameRate", "setVideoFrameRate", "videoHeight", "getVideoHeight", "setVideoHeight", "videoRotate", "getVideoRotate", "setVideoRotate", "videoWidth", "getVideoWidth", "setVideoWidth", "describeContents", "toString", "", "writeToParcel", "", "flags", "CREATOR", "plugin-recordvideo_release"})
   public static final class MixConfig
     implements Parcelable
   {
-    public static final a CREATOR;
+    public static final VideoMixer.MixConfig.a CREATOR;
     public int audioBitrate;
+    public int audioChannelCount;
     public int audioSampleRate;
-    public int gOt;
-    public int gTI;
+    public int hlJ;
     public int videoBitrate;
     public int videoFrameRate;
     public int videoHeight;
@@ -723,7 +708,7 @@ public final class VideoMixer
     static
     {
       AppMethodBeat.i(75241);
-      CREATOR = new a((byte)0);
+      CREATOR = new VideoMixer.MixConfig.a((byte)0);
       AppMethodBeat.o(75241);
     }
     
@@ -738,9 +723,9 @@ public final class VideoMixer
       this.videoBitrate = paramParcel.readInt();
       this.audioBitrate = paramParcel.readInt();
       this.audioSampleRate = paramParcel.readInt();
-      this.gOt = paramParcel.readInt();
+      this.audioChannelCount = paramParcel.readInt();
       this.videoFrameRate = paramParcel.readInt();
-      this.gTI = paramParcel.readInt();
+      this.hlJ = paramParcel.readInt();
       AppMethodBeat.o(75240);
     }
     
@@ -752,7 +737,7 @@ public final class VideoMixer
     public final String toString()
     {
       AppMethodBeat.i(75238);
-      String str = "[MixConfig]videoWidth=" + this.videoWidth + ", videoHeight=" + this.videoHeight + ", videoBitrate=" + this.videoBitrate + ", audioBitrate=" + this.audioBitrate + ", audioSampleRate=" + this.audioSampleRate + ", audioChannelCount=" + this.gOt + ", videoFrameRate=" + this.videoFrameRate + ", videoRotate=" + this.gTI;
+      String str = "[MixConfig]videoWidth=" + this.videoWidth + ", videoHeight=" + this.videoHeight + ", videoBitrate=" + this.videoBitrate + ", audioBitrate=" + this.audioBitrate + ", audioSampleRate=" + this.audioSampleRate + ", audioChannelCount=" + this.audioChannelCount + ", videoFrameRate=" + this.videoFrameRate + ", videoRotate=" + this.hlJ;
       AppMethodBeat.o(75238);
       return str;
     }
@@ -760,28 +745,23 @@ public final class VideoMixer
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(75239);
-      k.h(paramParcel, "parcel");
+      p.h(paramParcel, "parcel");
       paramParcel.writeInt(this.videoWidth);
       paramParcel.writeInt(this.videoHeight);
       paramParcel.writeInt(this.videoBitrate);
       paramParcel.writeInt(this.audioBitrate);
       paramParcel.writeInt(this.audioSampleRate);
-      paramParcel.writeInt(this.gOt);
+      paramParcel.writeInt(this.audioChannelCount);
       paramParcel.writeInt(this.videoFrameRate);
-      paramParcel.writeInt(this.gTI);
+      paramParcel.writeInt(this.hlJ);
       AppMethodBeat.o(75239);
     }
-    
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer$MixConfig$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer$MixConfig;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer$MixConfig;", "plugin-recordvideo_release"})
-    public static final class a
-      implements Parcelable.Creator<VideoMixer.MixConfig>
-    {}
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/graphics/Bitmap;", "pts", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/graphics/Bitmap;", "pts", "", "invoke"})
   static final class b
-    extends d.g.b.l
-    implements d.g.a.b<Long, Bitmap>
+    extends q
+    implements b<Long, Bitmap>
   {
     b(VideoMixer paramVideoMixer)
     {
@@ -789,21 +769,10 @@ public final class VideoMixer
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/graphics/Bitmap;", "pts", "", "invoke"})
-  static final class c
-    extends d.g.b.l
-    implements d.g.a.b<Long, Bitmap>
-  {
-    c(VideoMixer paramVideoMixer)
-    {
-      super();
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
   static final class e
-    extends d.g.b.l
-    implements d.g.a.b<String, y>
+    extends q
+    implements b<String, z>
   {
     e(VideoMixer paramVideoMixer, boolean paramBoolean)
     {
@@ -811,10 +780,10 @@ public final class VideoMixer
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
   static final class f
-    extends d.g.b.l
-    implements d.g.a.b<String, y>
+    extends q
+    implements b<String, z>
   {
     f(VideoMixer paramVideoMixer)
     {
@@ -822,10 +791,10 @@ public final class VideoMixer
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "mixVideo", "", "mixThumb", "ret", "", "errorCode", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "mixVideo", "", "mixThumb", "ret", "", "errorCode", "", "invoke"})
   static final class g
-    extends d.g.b.l
-    implements r<String, String, Boolean, Integer, y>
+    extends q
+    implements r<String, String, Boolean, Integer, z>
   {
     g(VideoMixer paramVideoMixer, r paramr)
     {
@@ -833,10 +802,10 @@ public final class VideoMixer
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class h
-    extends d.g.b.l
-    implements a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     h(VideoMixer paramVideoMixer)
     {
@@ -846,7 +815,7 @@ public final class VideoMixer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.VideoMixer
  * JD-Core Version:    0.7.0.1
  */

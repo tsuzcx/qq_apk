@@ -3,7 +3,7 @@ package com.tencent.mm.platformtools;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class w$3
   implements MediaPlayer.OnCompletionListener
@@ -19,7 +19,7 @@ final class w$3
     }
     catch (Exception paramMediaPlayer)
     {
-      ac.printErrStackTrace("MiroMsg.NotificationUtil", paramMediaPlayer, "", new Object[0]);
+      ad.printErrStackTrace("MiroMsg.NotificationUtil", paramMediaPlayer, "", new Object[0]);
       AppMethodBeat.o(20715);
     }
   }

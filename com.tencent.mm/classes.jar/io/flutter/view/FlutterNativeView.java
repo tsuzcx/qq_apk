@@ -14,12 +14,12 @@ import java.nio.ByteBuffer;
 public class FlutterNativeView
   implements io.flutter.plugin.a.c
 {
-  public FlutterView KKb;
-  private final io.flutter.embedding.engine.b.b KKx;
-  final DartExecutor KLk;
-  public final io.flutter.app.c KSs;
-  final FlutterJNI KSt;
-  public boolean KSu;
+  public FlutterView MAN;
+  private final io.flutter.embedding.engine.b.b MBl;
+  final DartExecutor MCh;
+  public final io.flutter.app.c MJr;
+  final FlutterJNI MJs;
+  public boolean MJt;
   private final Context mContext;
   
   public FlutterNativeView(Context paramContext)
@@ -30,30 +30,30 @@ public class FlutterNativeView
   private FlutterNativeView(Context paramContext, byte paramByte)
   {
     AppMethodBeat.i(9670);
-    this.KKx = new io.flutter.embedding.engine.b.b()
+    this.MBl = new io.flutter.embedding.engine.b.b()
     {
-      public final void cHX()
+      public final void cQm()
       {
-        AppMethodBeat.i(192791);
+        AppMethodBeat.i(213238);
         if (FlutterNativeView.b(FlutterNativeView.this) == null)
         {
-          AppMethodBeat.o(192791);
+          AppMethodBeat.o(213238);
           return;
         }
         FlutterNativeView.b(FlutterNativeView.this).onFirstFrame();
-        AppMethodBeat.o(192791);
+        AppMethodBeat.o(213238);
       }
       
-      public final void cHY() {}
+      public final void cQn() {}
     };
     this.mContext = paramContext;
-    this.KSs = new io.flutter.app.c(this, paramContext);
-    this.KSt = new FlutterJNI();
-    this.KSt.addIsDisplayingFlutterUiListener(this.KKx);
-    this.KLk = new DartExecutor(this.KSt, paramContext.getAssets());
-    this.KSt.addEngineLifecycleListener(new a((byte)0));
-    this.KSt.attachToNative(false);
-    this.KLk.onAttachedToJNI();
+    this.MJr = new io.flutter.app.c(this, paramContext);
+    this.MJs = new FlutterJNI();
+    this.MJs.addIsDisplayingFlutterUiListener(this.MBl);
+    this.MCh = new DartExecutor(this.MJs, paramContext.getAssets());
+    this.MJs.addEngineLifecycleListener(new a((byte)0));
+    this.MJs.attachToNative(false);
+    this.MCh.onAttachedToJNI();
     assertAttached();
     AppMethodBeat.o(9670);
   }
@@ -61,7 +61,7 @@ public class FlutterNativeView
   private void assertAttached()
   {
     AppMethodBeat.i(9672);
-    if (!this.KSt.isAttached())
+    if (!this.MJs.isAttached())
     {
       AssertionError localAssertionError = new AssertionError("Platform view is not attached");
       AppMethodBeat.o(9672);
@@ -73,65 +73,65 @@ public class FlutterNativeView
   public final void a(b paramb)
   {
     AppMethodBeat.i(9673);
-    if (paramb.KSx == null)
+    if (paramb.MJw == null)
     {
       paramb = new AssertionError("An entrypoint must be specified");
       AppMethodBeat.o(9673);
       throw paramb;
     }
     assertAttached();
-    if (this.KSu)
+    if (this.MJt)
     {
       paramb = new AssertionError("This Flutter engine instance is already running an application");
       AppMethodBeat.o(9673);
       throw paramb;
     }
-    this.KSt.runBundleAndSnapshotFromLibrary(paramb.KSw, paramb.KSx, paramb.KSy, this.mContext.getResources().getAssets());
-    this.KSu = true;
+    this.MJs.runBundleAndSnapshotFromLibrary(paramb.MJv, paramb.MJw, paramb.MJx, this.mContext.getResources().getAssets());
+    this.MJt = true;
     AppMethodBeat.o(9673);
   }
   
   public final void a(String paramString, c.a parama)
   {
     AppMethodBeat.i(9676);
-    this.KLk.KLU.a(paramString, parama);
+    this.MCh.MCR.a(paramString, parama);
     AppMethodBeat.o(9676);
   }
   
   public final void a(String paramString, ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(9674);
-    this.KLk.KLU.a(paramString, paramByteBuffer);
+    this.MCh.MCR.a(paramString, paramByteBuffer);
     AppMethodBeat.o(9674);
   }
   
   public final void a(String paramString, ByteBuffer paramByteBuffer, c.b paramb)
   {
     AppMethodBeat.i(9675);
-    if (!this.KSt.isAttached())
+    if (!this.MJs.isAttached())
     {
       AppMethodBeat.o(9675);
       return;
     }
-    this.KLk.KLU.a(paramString, paramByteBuffer, paramb);
+    this.MCh.MCR.a(paramString, paramByteBuffer, paramb);
     AppMethodBeat.o(9675);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(9671);
-    this.KSs.KKc.fNO();
-    this.KLk.onDetachedFromJNI();
-    this.KKb = null;
-    this.KSt.removeIsDisplayingFlutterUiListener(this.KKx);
-    this.KSt.detachFromNativeAndReleaseResources();
-    this.KSu = false;
+    this.MJr.MAO.gfn();
+    this.MCh.onDetachedFromJNI();
+    this.MAN = null;
+    this.MJs.removeIsDisplayingFlutterUiListener(this.MBl);
+    this.MJs.detachFromNativeAndReleaseResources();
+    this.MJt = false;
     AppMethodBeat.o(9671);
   }
   
   FlutterJNI getFlutterJNI()
   {
-    return this.KSt;
+    return this.MJs;
   }
   
   final class a
@@ -143,14 +143,14 @@ public class FlutterNativeView
     {
       AppMethodBeat.i(9775);
       if (FlutterNativeView.b(FlutterNativeView.this) != null) {
-        FlutterNativeView.b(FlutterNativeView.this).fNW();
+        FlutterNativeView.b(FlutterNativeView.this).gfv();
       }
       if (FlutterNativeView.c(FlutterNativeView.this) == null)
       {
         AppMethodBeat.o(9775);
         return;
       }
-      FlutterNativeView.c(FlutterNativeView.this).KKc.fNO();
+      FlutterNativeView.c(FlutterNativeView.this).MAO.gfn();
       AppMethodBeat.o(9775);
     }
   }

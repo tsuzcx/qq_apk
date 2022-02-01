@@ -9,8 +9,8 @@ import java.util.Map;
 
 public final class p
 {
-  private final p.a aIA;
-  private final r aIz;
+  private final r aKq;
+  private final p.a aKr;
   
   public p(l.a<List<Throwable>> parama)
   {
@@ -22,12 +22,12 @@ public final class p
   private p(r paramr)
   {
     AppMethodBeat.i(77271);
-    this.aIA = new p.a();
-    this.aIz = paramr;
+    this.aKr = new p.a();
+    this.aKq = paramr;
     AppMethodBeat.o(77271);
   }
   
-  public final <A> List<n<A, ?>> O(A paramA)
+  public final <A> List<n<A, ?>> P(A paramA)
   {
     Object localObject2;
     Object localObject1;
@@ -39,15 +39,15 @@ public final class p
       {
         AppMethodBeat.i(77273);
         localObject2 = paramA.getClass();
-        localObject1 = (a.a)this.aIA.aIB.get(localObject2);
+        localObject1 = (a.a)this.aKr.aKs.get(localObject2);
         if (localObject1 == null)
         {
           localObject1 = null;
           if (localObject1 != null) {
             break;
           }
-          localObject1 = Collections.unmodifiableList(this.aIz.r((Class)localObject2));
-          if ((a.a)this.aIA.aIB.put(localObject2, new a.a((List)localObject1)) == null) {
+          localObject1 = Collections.unmodifiableList(this.aKq.r((Class)localObject2));
+          if ((a.a)this.aKr.aKs.put(localObject2, new a.a((List)localObject1)) == null) {
             break label203;
           }
           paramA = new IllegalStateException("Already cached loaders for model: ".concat(String.valueOf(localObject2)));
@@ -56,7 +56,7 @@ public final class p
         }
       }
       finally {}
-      localObject1 = ((a.a)localObject1).aIC;
+      localObject1 = ((a.a)localObject1).aKt;
       continue;
       j = ((List)localObject1).size();
       localObject2 = new ArrayList(j);
@@ -67,7 +67,7 @@ public final class p
       if (i < j)
       {
         n localn = (n)((List)localObject1).get(i);
-        if (localn.W(paramA)) {
+        if (localn.X(paramA)) {
           ((List)localObject2).add(localn);
         }
       }
@@ -88,8 +88,8 @@ public final class p
     try
     {
       AppMethodBeat.i(77272);
-      this.aIz.b(paramClass, paramClass1, paramo);
-      this.aIA.aIB.clear();
+      this.aKq.b(paramClass, paramClass1, paramo);
+      this.aKr.aKs.clear();
       AppMethodBeat.o(77272);
       return;
     }
@@ -105,7 +105,7 @@ public final class p
     try
     {
       AppMethodBeat.i(77274);
-      paramClass = this.aIz.q(paramClass);
+      paramClass = this.aKq.q(paramClass);
       AppMethodBeat.o(77274);
       return paramClass;
     }
@@ -118,11 +118,11 @@ public final class p
   
   static final class a$a<Model>
   {
-    final List<n<Model, ?>> aIC;
+    final List<n<Model, ?>> aKt;
     
     public a$a(List<n<Model, ?>> paramList)
     {
-      this.aIC = paramList;
+      this.aKt = paramList;
     }
   }
 }

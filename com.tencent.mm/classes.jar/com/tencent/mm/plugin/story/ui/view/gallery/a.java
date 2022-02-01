@@ -9,43 +9,44 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.am;
-import d.g.b.k;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.ui.ao;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog;", "Landroid/support/design/widget/BottomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "delete", "Landroid/view/View;", "deleteIcon", "Landroid/widget/ImageView;", "favorite", "favoriteIcon", "favoriteTv", "Landroid/widget/TextView;", "isFavorite", "", "()Z", "setFavorite", "(Z)V", "isPrivacy", "setPrivacy", "onDelete", "Lkotlin/Function0;", "", "getOnDelete", "()Lkotlin/jvm/functions/Function0;", "setOnDelete", "(Lkotlin/jvm/functions/Function0;)V", "onResend", "getOnResend", "setOnResend", "onSetFavorite", "getOnSetFavorite", "setOnSetFavorite", "onSetPrivacy", "getOnSetPrivacy", "setOnSetPrivacy", "privacy", "privacyIcon", "privacyTv", "resend", "resendIcon", "showDelete", "getShowDelete", "setShowDelete", "showFavorite", "getShowFavorite", "setShowFavorite", "showPrivacy", "getShowPrivacy", "setShowPrivacy", "showResend", "getShowResend", "setShowResend", "initDelBtn", "initFavoriteBtn", "initPrivacyBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog;", "Landroid/support/design/widget/BottomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "delete", "Landroid/view/View;", "deleteIcon", "Landroid/widget/ImageView;", "favorite", "favoriteIcon", "favoriteTv", "Landroid/widget/TextView;", "isFavorite", "", "()Z", "setFavorite", "(Z)V", "isPrivacy", "setPrivacy", "onDelete", "Lkotlin/Function0;", "", "getOnDelete", "()Lkotlin/jvm/functions/Function0;", "setOnDelete", "(Lkotlin/jvm/functions/Function0;)V", "onResend", "getOnResend", "setOnResend", "onSetFavorite", "getOnSetFavorite", "setOnSetFavorite", "onSetPrivacy", "getOnSetPrivacy", "setOnSetPrivacy", "privacy", "privacyIcon", "privacyTv", "resend", "resendIcon", "showDelete", "getShowDelete", "setShowDelete", "showFavorite", "getShowFavorite", "setShowFavorite", "showPrivacy", "getShowPrivacy", "setShowPrivacy", "showResend", "getShowResend", "setShowResend", "initDelBtn", "initFavoriteBtn", "initPrivacyBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-story_release"})
 public final class a
   extends android.support.design.widget.a
 {
-  boolean lJI;
-  private ImageView ptt;
-  private View wBR;
-  private TextView wBS;
-  private ImageView wBT;
-  boolean yPQ;
-  private View zKH;
-  private View zKI;
-  private View zKJ;
-  private ImageView zKK;
-  private ImageView zKL;
-  private TextView zKM;
-  d.g.a.a<y> zKN;
-  d.g.a.a<y> zKO;
-  d.g.a.a<y> zKP;
-  d.g.a.a<y> zKQ;
-  boolean zKR;
-  boolean zKS;
-  boolean zKT;
-  boolean zKU;
+  boolean Ahm;
+  private View Bci;
+  private View Bcj;
+  private View Bck;
+  private ImageView Bcl;
+  private ImageView Bcm;
+  private TextView Bcn;
+  d.g.a.a<z> Bco;
+  d.g.a.a<z> Bcp;
+  d.g.a.a<z> Bcq;
+  d.g.a.a<z> Bcr;
+  boolean Bcs;
+  boolean Bct;
+  boolean Bcu;
+  boolean Bcv;
+  boolean mjv;
+  private ImageView pWX;
+  private View xMo;
+  private TextView xMp;
+  private ImageView xMq;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(120325);
-    this.lJI = true;
-    this.zKS = true;
-    this.zKU = true;
+    this.mjv = true;
+    this.Bct = true;
+    this.Bcv = true;
     setContentView(2131495680);
     AppMethodBeat.o(120325);
   }
@@ -60,105 +61,105 @@ public final class a
       paramBundle.addFlags(134218752);
       paramBundle.clearFlags(2);
     }
-    this.zKH = findViewById(2131305335);
-    this.zKI = findViewById(2131305343);
-    this.zKJ = findViewById(2131305340);
-    this.ptt = ((ImageView)findViewById(2131305336));
-    this.zKK = ((ImageView)findViewById(2131305344));
-    this.zKL = ((ImageView)findViewById(2131305341));
-    this.zKM = ((TextView)findViewById(2131305342));
-    this.wBR = findViewById(2131305337);
-    this.wBR = findViewById(2131305337);
-    this.wBS = ((TextView)findViewById(2131305339));
-    this.wBT = ((ImageView)findViewById(2131305338));
+    this.Bci = findViewById(2131305335);
+    this.Bcj = findViewById(2131305343);
+    this.Bck = findViewById(2131305340);
+    this.pWX = ((ImageView)findViewById(2131305336));
+    this.Bcl = ((ImageView)findViewById(2131305344));
+    this.Bcm = ((ImageView)findViewById(2131305341));
+    this.Bcn = ((TextView)findViewById(2131305342));
+    this.xMo = findViewById(2131305337);
+    this.xMo = findViewById(2131305337);
+    this.xMp = ((TextView)findViewById(2131305339));
+    this.xMq = ((ImageView)findViewById(2131305338));
     paramBundle = getContext();
-    k.g(paramBundle, "context");
+    p.g(paramBundle, "context");
     int i = paramBundle.getResources().getColor(2131099803);
-    paramBundle = this.ptt;
+    paramBundle = this.pWX;
     if (paramBundle != null) {
-      paramBundle.setImageDrawable(am.k(getContext(), 2131690044, i));
+      paramBundle.setImageDrawable(ao.k(getContext(), 2131690044, i));
     }
-    paramBundle = this.zKK;
+    paramBundle = this.Bcl;
     Context localContext1;
     Context localContext2;
     if (paramBundle != null)
     {
       localContext1 = getContext();
       localContext2 = getContext();
-      k.g(localContext2, "context");
-      paramBundle.setImageDrawable(am.k(localContext1, 2131690644, localContext2.getResources().getColor(2131099664)));
+      p.g(localContext2, "context");
+      paramBundle.setImageDrawable(ao.k(localContext1, 2131690644, localContext2.getResources().getColor(2131099664)));
     }
-    paramBundle = this.wBT;
+    paramBundle = this.xMq;
     if (paramBundle != null)
     {
       localContext1 = getContext();
       localContext2 = getContext();
-      k.g(localContext2, "context");
-      paramBundle.setImageDrawable(am.k(localContext1, 2131690657, localContext2.getResources().getColor(2131099664)));
+      p.g(localContext2, "context");
+      paramBundle.setImageDrawable(ao.k(localContext1, 2131690657, localContext2.getResources().getColor(2131099664)));
     }
-    paramBundle = this.zKI;
+    paramBundle = this.Bcj;
     if (paramBundle != null) {
       paramBundle.setOnClickListener((View.OnClickListener)new d(this));
     }
-    if (this.zKR)
+    if (this.Bcs)
     {
-      paramBundle = this.zKI;
+      paramBundle = this.Bcj;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
     }
-    if (this.lJI)
+    if (this.mjv)
     {
-      paramBundle = this.zKH;
+      paramBundle = this.Bci;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.zKH;
+      paramBundle = this.Bci;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new a(this));
       }
-      if (!this.zKS) {
+      if (!this.Bct) {
         break label717;
       }
-      paramBundle = this.zKJ;
+      paramBundle = this.Bck;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.zKJ;
+      paramBundle = this.Bck;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new c(this));
       }
-      if (!this.yPQ) {
+      if (!this.Ahm) {
         break label640;
       }
-      paramBundle = this.zKL;
+      paramBundle = this.Bcm;
       if (paramBundle != null)
       {
         localContext1 = getContext();
         localContext2 = getContext();
-        k.g(localContext2, "context");
-        paramBundle.setImageDrawable(am.k(localContext1, 2131690671, localContext2.getResources().getColor(2131099664)));
+        p.g(localContext2, "context");
+        paramBundle.setImageDrawable(ao.k(localContext1, 2131690671, localContext2.getResources().getColor(2131099664)));
       }
-      paramBundle = this.zKM;
+      paramBundle = this.Bcn;
       if (paramBundle != null) {
         paramBundle.setText((CharSequence)getContext().getString(2131764233));
       }
       label510:
-      if ((!this.zKU) || (!com.tencent.mm.plugin.story.c.a.a.zqB.dUG())) {
+      if ((!this.Bcv) || (!com.tencent.mm.plugin.story.c.a.a.AIv.egU())) {
         break label764;
       }
-      paramBundle = this.wBR;
+      paramBundle = this.xMo;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.wBR;
+      paramBundle = this.xMo;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new b(this));
       }
-      if (!this.zKT) {
+      if (!this.Bcu) {
         break label735;
       }
-      paramBundle = this.wBS;
+      paramBundle = this.xMp;
       if (paramBundle != null) {
         paramBundle.setText((CharSequence)getContext().getString(2131764232));
       }
@@ -172,42 +173,42 @@ public final class a
       paramBundle.setBackgroundResource(2131101053);
       AppMethodBeat.o(120324);
       return;
-      paramBundle = this.zKH;
+      paramBundle = this.Bci;
       if (paramBundle == null) {
         break;
       }
       paramBundle.setVisibility(8);
       break;
       label640:
-      paramBundle = this.zKL;
+      paramBundle = this.Bcm;
       if (paramBundle != null)
       {
         localContext1 = getContext();
         localContext2 = getContext();
-        k.g(localContext2, "context");
-        paramBundle.setImageDrawable(am.k(localContext1, 2131690590, localContext2.getResources().getColor(2131099664)));
+        p.g(localContext2, "context");
+        paramBundle.setImageDrawable(ao.k(localContext1, 2131690590, localContext2.getResources().getColor(2131099664)));
       }
-      paramBundle = this.zKM;
+      paramBundle = this.Bcn;
       if (paramBundle == null) {
         break label510;
       }
       paramBundle.setText((CharSequence)getContext().getString(2131764234));
       break label510;
       label717:
-      paramBundle = this.zKJ;
+      paramBundle = this.Bck;
       if (paramBundle == null) {
         break label510;
       }
       paramBundle.setVisibility(8);
       break label510;
       label735:
-      paramBundle = this.wBS;
+      paramBundle = this.xMp;
       if (paramBundle != null)
       {
         paramBundle.setText((CharSequence)getContext().getString(2131764231));
         continue;
         label764:
-        paramBundle = this.wBR;
+        paramBundle = this.xMo;
         if (paramBundle != null) {
           paramBundle.setVisibility(8);
         }
@@ -217,7 +218,7 @@ public final class a
     AppMethodBeat.o(120324);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
     implements View.OnClickListener
   {
@@ -226,16 +227,20 @@ public final class a
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(120320);
-      paramView = this.zKV.zKN;
+      b localb = new b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$initDelBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      paramView = this.Bcw.Bco;
       if (paramView != null) {
         paramView.invoke();
       }
-      this.zKV.dismiss();
+      this.Bcw.dismiss();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$initDelBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(120320);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -244,16 +249,20 @@ public final class a
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(120321);
-      paramView = this.zKV.zKQ;
+      b localb = new b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$initFavoriteBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      paramView = this.Bcw.Bcr;
       if (paramView != null) {
         paramView.invoke();
       }
-      this.zKV.dismiss();
+      this.Bcw.dismiss();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$initFavoriteBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(120321);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -262,16 +271,20 @@ public final class a
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(120322);
-      paramView = this.zKV.zKP;
+      b localb = new b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$initPrivacyBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      paramView = this.Bcw.Bcq;
       if (paramView != null) {
         paramView.invoke();
       }
-      this.zKV.dismiss();
+      this.Bcw.dismiss();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$initPrivacyBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(120322);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -280,11 +293,15 @@ public final class a
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(120323);
-      paramView = this.zKV.zKO;
+      b localb = new b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      paramView = this.Bcw.Bcp;
       if (paramView != null) {
         paramView.invoke();
       }
-      this.zKV.dismiss();
+      this.Bcw.dismiss();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(120323);
     }
   }

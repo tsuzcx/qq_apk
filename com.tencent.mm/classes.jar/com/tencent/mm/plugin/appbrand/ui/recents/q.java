@@ -6,29 +6,29 @@ import java.util.List;
 public abstract class q<T>
   extends c.a
 {
-  protected final List<T> mlO;
-  protected final List<T> mlP;
+  protected final List<T> mMq;
+  protected final List<T> mMr;
   
   public q(List<T> paramList1, List<T> paramList2)
   {
-    this.mlO = paramList1;
-    this.mlP = paramList2;
+    this.mMq = paramList1;
+    this.mMr = paramList2;
   }
   
-  public final int gZ()
+  public final int aA()
   {
-    if (this.mlO == null) {
+    if (this.mMr == null) {
       return 0;
     }
-    return this.mlO.size();
+    return this.mMr.size();
   }
   
-  public final int ha()
+  public final int az()
   {
-    if (this.mlP == null) {
+    if (this.mMq == null) {
       return 0;
     }
-    return this.mlP.size();
+    return this.mMq.size();
   }
 }
 

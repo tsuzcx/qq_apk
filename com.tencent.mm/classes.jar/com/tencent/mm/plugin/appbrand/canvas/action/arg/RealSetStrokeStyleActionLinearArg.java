@@ -18,12 +18,12 @@ public class RealSetStrokeStyleActionLinearArg
   extends RealSetStrokeStyleActionArg
 {
   public static final Parcelable.Creator<RealSetStrokeStyleActionLinearArg> CREATOR;
-  public float jzq;
-  public float jzr;
-  public float jzs;
-  public float jzt;
-  public int[] jzu;
-  public float[] jzv;
+  public float jTn;
+  public float jTo;
+  public float jTp;
+  public float jTq;
+  public int[] jTr;
+  public float[] jTs;
   
   static
   {
@@ -42,13 +42,13 @@ public class RealSetStrokeStyleActionLinearArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145084);
-    if ((this.jzu == null) || (this.jzv == null))
+    if ((this.jTr == null) || (this.jTs == null))
     {
       AppMethodBeat.o(145084);
       return false;
     }
-    paramCanvas = new LinearGradient(this.jzq, this.jzr, this.jzs, this.jzt, this.jzu, this.jzv, Shader.TileMode.CLAMP);
-    paramd.jzb.setShader(paramCanvas);
+    paramCanvas = new LinearGradient(this.jTn, this.jTo, this.jTp, this.jTq, this.jTr, this.jTs, Shader.TileMode.CLAMP);
+    paramd.jSY.setShader(paramCanvas);
     AppMethodBeat.o(145084);
     return true;
   }
@@ -77,7 +77,7 @@ public class RealSetStrokeStyleActionLinearArg
       return false;
     }
     paramObject = (RealSetStrokeStyleActionLinearArg)paramObject;
-    if ((Float.compare(paramObject.jzq, this.jzq) == 0) && (Float.compare(paramObject.jzr, this.jzr) == 0) && (Float.compare(paramObject.jzs, this.jzs) == 0) && (Float.compare(paramObject.jzt, this.jzt) == 0) && (Arrays.equals(this.jzu, paramObject.jzu)) && (Arrays.equals(this.jzv, paramObject.jzv)))
+    if ((Float.compare(paramObject.jTn, this.jTn) == 0) && (Float.compare(paramObject.jTo, this.jTo) == 0) && (Float.compare(paramObject.jTp, this.jTp) == 0) && (Float.compare(paramObject.jTq, this.jTq) == 0) && (Arrays.equals(this.jTr, paramObject.jTr)) && (Arrays.equals(this.jTs, paramObject.jTs)))
     {
       AppMethodBeat.o(145085);
       return true;
@@ -101,26 +101,26 @@ public class RealSetStrokeStyleActionLinearArg
       AppMethodBeat.o(145089);
       return;
     }
-    this.jzq = g.f(localJSONArray, 0);
-    this.jzr = g.f(localJSONArray, 1);
-    this.jzs = g.f(localJSONArray, 2);
-    this.jzt = g.f(localJSONArray, 3);
+    this.jTn = g.f(localJSONArray, 0);
+    this.jTo = g.f(localJSONArray, 1);
+    this.jTp = g.f(localJSONArray, 2);
+    this.jTq = g.f(localJSONArray, 3);
     paramJSONArray = paramJSONArray.optJSONArray(2);
     if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
     {
       AppMethodBeat.o(145089);
       return;
     }
-    this.jzu = new int[paramJSONArray.length()];
-    this.jzv = new float[paramJSONArray.length()];
+    this.jTr = new int[paramJSONArray.length()];
+    this.jTs = new float[paramJSONArray.length()];
     int i = 0;
     while (i < paramJSONArray.length())
     {
       localJSONArray = paramJSONArray.optJSONArray(i);
       if (localJSONArray.length() >= 2)
       {
-        this.jzv[i] = ((float)localJSONArray.optDouble(0));
-        this.jzu[i] = g.p(localJSONArray.optJSONArray(1));
+        this.jTs[i] = ((float)localJSONArray.optDouble(0));
+        this.jTr[i] = g.q(localJSONArray.optJSONArray(1));
       }
       i += 1;
     }
@@ -131,21 +131,21 @@ public class RealSetStrokeStyleActionLinearArg
   {
     AppMethodBeat.i(145087);
     super.h(paramParcel);
-    this.jzq = paramParcel.readFloat();
-    this.jzr = paramParcel.readFloat();
-    this.jzs = paramParcel.readFloat();
-    this.jzt = paramParcel.readFloat();
+    this.jTn = paramParcel.readFloat();
+    this.jTo = paramParcel.readFloat();
+    this.jTp = paramParcel.readFloat();
+    this.jTq = paramParcel.readFloat();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.jzu = new int[i];
-      paramParcel.readIntArray(this.jzu);
+      this.jTr = new int[i];
+      paramParcel.readIntArray(this.jTr);
     }
     i = paramParcel.readInt();
     if (i > 0)
     {
-      this.jzv = new float[i];
-      paramParcel.readFloatArray(this.jzv);
+      this.jTs = new float[i];
+      paramParcel.readFloatArray(this.jTs);
     }
     AppMethodBeat.o(145087);
   }
@@ -153,9 +153,9 @@ public class RealSetStrokeStyleActionLinearArg
   public int hashCode()
   {
     AppMethodBeat.i(145086);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jzq), Float.valueOf(this.jzr), Float.valueOf(this.jzs), Float.valueOf(this.jzt) });
-    int j = Arrays.hashCode(this.jzu);
-    int k = Arrays.hashCode(this.jzv);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jTn), Float.valueOf(this.jTo), Float.valueOf(this.jTp), Float.valueOf(this.jTq) });
+    int j = Arrays.hashCode(this.jTr);
+    int k = Arrays.hashCode(this.jTs);
     AppMethodBeat.o(145086);
     return (i * 31 + j) * 31 + k;
   }
@@ -171,19 +171,19 @@ public class RealSetStrokeStyleActionLinearArg
   {
     AppMethodBeat.i(145088);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.jzq);
-    paramParcel.writeFloat(this.jzr);
-    paramParcel.writeFloat(this.jzs);
-    paramParcel.writeFloat(this.jzt);
-    if (this.jzu != null)
+    paramParcel.writeFloat(this.jTn);
+    paramParcel.writeFloat(this.jTo);
+    paramParcel.writeFloat(this.jTp);
+    paramParcel.writeFloat(this.jTq);
+    if (this.jTr != null)
     {
-      paramParcel.writeInt(this.jzu.length);
-      paramParcel.writeIntArray(this.jzu);
+      paramParcel.writeInt(this.jTr.length);
+      paramParcel.writeIntArray(this.jTr);
     }
-    while (this.jzv != null)
+    while (this.jTs != null)
     {
-      paramParcel.writeInt(this.jzv.length);
-      paramParcel.writeFloatArray(this.jzv);
+      paramParcel.writeInt(this.jTs.length);
+      paramParcel.writeFloatArray(this.jTs);
       AppMethodBeat.o(145088);
       return;
       paramParcel.writeInt(0);

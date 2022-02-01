@@ -71,7 +71,7 @@ public class XWebCoreInfo
       if (!"armeabi-v7a".equalsIgnoreCase(paramString2)) {
         break label136;
       }
-      g.r(577L, 238L, 1L);
+      g.t(577L, 238L, 1L);
     }
     for (;;)
     {
@@ -80,7 +80,7 @@ public class XWebCoreInfo
       return bool;
       label136:
       if ("arm64-v8a".equalsIgnoreCase(paramString2)) {
-        g.r(577L, 239L, 1L);
+        g.t(577L, 239L, 1L);
       }
     }
   }

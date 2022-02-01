@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.exdevice.b.a;
 import com.tencent.mm.plugin.exdevice.b.b;
-import com.tencent.mm.protocal.protobuf.apm;
-import com.tencent.mm.protocal.protobuf.bgv;
-import com.tencent.mm.protocal.protobuf.bgw;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.protocal.protobuf.atg;
+import com.tencent.mm.protocal.protobuf.bld;
+import com.tencent.mm.protocal.protobuf.ble;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bp;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,17 +18,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class k
-  extends a<bgv, bgw>
+  extends a<bld, ble>
 {
-  public List<String> pBL;
-  public List<String> pBM;
-  public List<String> pBN;
-  private final WeakReference<b<k>> pwK;
+  private final WeakReference<b<k>> qap;
+  public List<String> qfq;
+  public List<String> qfr;
+  public List<String> qfs;
   
   public k(b<k> paramb)
   {
     AppMethodBeat.i(23530);
-    this.pwK = new WeakReference(paramb);
+    this.qap = new WeakReference(paramb);
     AppMethodBeat.o(23530);
   }
   
@@ -45,56 +45,56 @@ public final class k
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23531);
-    ac.d("MicroMsg.NetSceneGetWeRunFollowerList", "ap: errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ad.d("MicroMsg.NetSceneGetWeRunFollowerList", "ap: errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      Object localObject1 = (bgw)bEq();
-      this.pBN = new ArrayList();
-      Object localObject2 = ((bgw)localObject1).EWb.iterator();
+      Object localObject1 = (ble)bIz();
+      this.qfs = new ArrayList();
+      Object localObject2 = ((ble)localObject1).GFy.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         String str = (String)((Iterator)localObject2).next();
-        az.ayM();
-        if (c.awB().aNo(str)) {
-          this.pBN.add(str);
+        ba.aBQ();
+        if (c.azp().aTg(str)) {
+          this.qfs.add(str);
         }
       }
-      this.pBL = new ArrayList();
-      this.pBM = new ArrayList();
-      if (((bgw)localObject1).EEx != null)
+      this.qfq = new ArrayList();
+      this.qfr = new ArrayList();
+      if (((ble)localObject1).Gmo != null)
       {
-        localObject1 = ((bgw)localObject1).EEx.iterator();
+        localObject1 = ((ble)localObject1).Gmo.iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (apm)((Iterator)localObject1).next();
-          if (((apm)localObject2).EIu) {
-            this.pBM.add(((apm)localObject2).username);
+          localObject2 = (atg)((Iterator)localObject1).next();
+          if (((atg)localObject2).Grl) {
+            this.qfr.add(((atg)localObject2).username);
           }
-          az.ayM();
-          if (c.awB().aNo(((apm)localObject2).username)) {
-            this.pBL.add(((apm)localObject2).username);
+          ba.aBQ();
+          if (c.azp().aTg(((atg)localObject2).username)) {
+            this.qfq.add(((atg)localObject2).username);
           }
         }
       }
-      ac.d("MicroMsg.NetSceneGetWeRunFollowerList", "follow:%s %s", new Object[] { Integer.valueOf(this.pBM.size()), this.pBM.toString() });
-      ac.d("MicroMsg.NetSceneGetWeRunFollowerList", "all follow:%s %s", new Object[] { Integer.valueOf(this.pBL.size()), this.pBL });
+      ad.d("MicroMsg.NetSceneGetWeRunFollowerList", "follow:%s %s", new Object[] { Integer.valueOf(this.qfr.size()), this.qfr.toString() });
+      ad.d("MicroMsg.NetSceneGetWeRunFollowerList", "all follow:%s %s", new Object[] { Integer.valueOf(this.qfq.size()), this.qfq });
     }
     super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
-    paramq = (b)this.pwK.get();
+    paramq = (b)this.qap.get();
     if (paramq != null)
     {
-      ac.d("MicroMsg.NetSceneGetWeRunFollowerList", "callback is not null");
+      ad.d("MicroMsg.NetSceneGetWeRunFollowerList", "callback is not null");
       paramq.a(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(23531);
       return;
     }
-    ac.d("MicroMsg.NetSceneGetWeRunFollowerList", "callback is null");
+    ad.d("MicroMsg.NetSceneGetWeRunFollowerList", "callback is null");
     AppMethodBeat.o(23531);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.a.k
  * JD-Core Version:    0.7.0.1
  */

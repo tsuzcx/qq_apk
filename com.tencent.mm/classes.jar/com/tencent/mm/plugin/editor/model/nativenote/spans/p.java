@@ -6,26 +6,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class p
   implements ParagraphStyle
 {
-  public final ParagraphStyle oTV;
-  public final o oTs;
+  public final ParagraphStyle pxF;
+  public final o pxc;
   
   public p(o paramo, ParagraphStyle paramParagraphStyle)
   {
-    this.oTs = paramo;
-    this.oTV = paramParagraphStyle;
+    this.pxc = paramo;
+    this.pxF = paramParagraphStyle;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(181957);
-    String str = this.oTs.name() + " - " + this.oTV.getClass().getSimpleName();
+    String str = this.pxc.name() + " - " + this.pxF.getClass().getSimpleName();
     AppMethodBeat.o(181957);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.p
  * JD-Core Version:    0.7.0.1
  */

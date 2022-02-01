@@ -1,141 +1,106 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
+import android.content.Intent;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ui.u;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.statusbar.b;
-import d.g.b.k;
-import d.l;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntimeContainerWC;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.task.f;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.i;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLoadingSplash;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "isHide", "", "progresDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "animateHide", "", "backgroundColor", "color", "", "getView", "Landroid/view/View;", "onAttachedToWindow", "onDetachedFromWindow", "onViewAdded", "child", "setAppInfo", "icon", "", "name", "setProgress", "progress", "plugin-appbrand-integration_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLaunchInterceptor;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWCFactory;", "()V", "matchLaunchScene", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "scene", "", "shouldInterceptLaunch", "_context", "Landroid/content/Context;", "shouldOverrideRuntimeInitialization", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "plugin-appbrand-integration_release"})
 public final class g
-  extends b
-  implements u
+  implements com.tencent.mm.plugin.appbrand.p
 {
-  private boolean dyK;
-  private p lqV;
+  public static final g lOt;
   
-  public g(Context paramContext)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(50875);
-    L(0, true);
-    setBackgroundColor(0);
-    AppMethodBeat.o(50875);
+    AppMethodBeat.i(50870);
+    lOt = new g();
+    AppMethodBeat.o(50870);
   }
   
-  public final void boo()
+  public static final boolean c(Context paramContext, AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
-    AppMethodBeat.i(162537);
-    this.dyK = true;
-    p localp = this.lqV;
-    if (localp != null)
+    AppMethodBeat.i(50867);
+    d.g.b.p.h(paramAppBrandInitConfigWC, "config");
+    d.g.b.p.h(paramAppBrandStatObject, "stat");
+    if (e(paramAppBrandInitConfigWC, paramAppBrandStatObject))
     {
-      if (localp.isShowing() == true)
-      {
-        localp = this.lqV;
-        if (localp != null)
-        {
-          localp.dismiss();
-          AppMethodBeat.o(162537);
-        }
+      f.UA(paramAppBrandInitConfigWC.appId);
+      if (paramContext != null) {
+        break label202;
       }
+      paramContext = aj.getContext();
     }
-    else
+    label202:
+    for (;;)
     {
-      AppMethodBeat.o(162537);
-      return;
-    }
-    AppMethodBeat.o(162537);
-  }
-  
-  public final void dN(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(50874);
-    k.h(paramString1, "icon");
-    k.h(paramString2, "name");
-    AppMethodBeat.o(50874);
-  }
-  
-  public final View getView()
-  {
-    return (View)this;
-  }
-  
-  public final void onAttachedToWindow()
-  {
-    AppMethodBeat.i(50872);
-    super.onAttachedToWindow();
-    if (this.dyK)
-    {
-      AppMethodBeat.o(50872);
-      return;
-    }
-    Context localContext = getContext();
-    getResources().getString(2131755906);
-    this.lqV = h.b(localContext, getResources().getString(2131760709), false, null);
-    AppMethodBeat.o(50872);
-  }
-  
-  protected final void onDetachedFromWindow()
-  {
-    AppMethodBeat.i(50873);
-    super.onDetachedFromWindow();
-    p localp = this.lqV;
-    if (localp != null)
-    {
-      if (localp.isShowing() == true)
-      {
-        localp = this.lqV;
-        if (localp != null)
-        {
-          localp.dismiss();
-          AppMethodBeat.o(50873);
-        }
+      Intent localIntent = new Intent();
+      localIntent.setClass(paramContext, AppBrandPluginUI.class);
+      if (!(paramContext instanceof Activity)) {
+        localIntent.addFlags(268435456);
       }
-    }
-    else
-    {
-      AppMethodBeat.o(50873);
-      return;
-    }
-    AppMethodBeat.o(50873);
-  }
-  
-  public final void onViewAdded(View paramView)
-  {
-    AppMethodBeat.i(50871);
-    super.onViewAdded(paramView);
-    if (paramView != null)
-    {
-      if (paramView.getId() == 2131296892)
-      {
-        ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-        Object localObject = localLayoutParams;
-        if (!(localLayoutParams instanceof FrameLayout.LayoutParams)) {
-          localObject = null;
-        }
-        localObject = (FrameLayout.LayoutParams)localObject;
-        if (localObject != null) {
-          ((FrameLayout.LayoutParams)localObject).gravity = 17;
-        }
-        paramView.setLayoutParams(paramView.getLayoutParams());
+      localIntent.putExtra("key_launch_app_client_version", i.Ics);
+      localIntent.putExtra("key_appbrand_init_config", (Parcelable)paramAppBrandInitConfigWC);
+      localIntent.putExtra("key_appbrand_stat_object", (Parcelable)paramAppBrandStatObject);
+      paramAppBrandInitConfigWC = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramAppBrandInitConfigWC.ahp(), "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLaunchInterceptor", "shouldInterceptLaunch", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramAppBrandInitConfigWC.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLaunchInterceptor", "shouldInterceptLaunch", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramAppBrandInitConfigWC = paramContext;
+      if (!(paramContext instanceof Activity)) {
+        paramAppBrandInitConfigWC = null;
       }
-      AppMethodBeat.o(50871);
-      return;
+      paramContext = (Activity)paramAppBrandInitConfigWC;
+      if (paramContext != null) {
+        paramContext.overridePendingTransition(0, 0);
+      }
+      AppMethodBeat.o(50867);
+      return true;
+      AppMethodBeat.o(50867);
+      return false;
     }
-    AppMethodBeat.o(50871);
   }
   
-  public final void setProgress(int paramInt) {}
+  public static final boolean e(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
+  {
+    AppMethodBeat.i(50869);
+    d.g.b.p.h(paramAppBrandInitConfigWC, "config");
+    d.g.b.p.h(paramAppBrandStatObject, "stat");
+    boolean bool = uw(paramAppBrandStatObject.scene);
+    AppMethodBeat.o(50869);
+    return bool;
+  }
   
-  public final void tT(int paramInt) {}
+  public static final boolean uw(int paramInt)
+  {
+    return 1111 == paramInt;
+  }
+  
+  public final o c(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
+  {
+    AppMethodBeat.i(50868);
+    d.g.b.p.h(paramAppBrandInitConfigWC, "config");
+    d.g.b.p.h(paramAppBrandRuntimeContainerWC, "container");
+    AppBrandStatObject localAppBrandStatObject = paramAppBrandInitConfigWC.Ea();
+    d.g.b.p.g(localAppBrandStatObject, "config.statObject");
+    if (e(paramAppBrandInitConfigWC, localAppBrandStatObject))
+    {
+      paramAppBrandInitConfigWC = (o)new l(paramAppBrandRuntimeContainerWC);
+      AppMethodBeat.o(50868);
+      return paramAppBrandInitConfigWC;
+    }
+    AppMethodBeat.o(50868);
+    return null;
+  }
 }
 
 

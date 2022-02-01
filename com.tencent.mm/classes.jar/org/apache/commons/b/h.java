@@ -7,137 +7,137 @@ import java.util.List;
 
 public final class h
 {
-  public static final String DHZ;
-  public static final String DIa;
-  public static final String LQw;
-  public static final String LYW;
-  public static final String LYX;
-  public static final String LYY;
-  public static final String LYZ;
-  public static final String LZA;
-  public static final String LZB;
-  public static final String LZC;
-  public static final String LZD;
-  public static final String LZE;
-  public static final String LZF;
-  public static final String LZG;
-  public static final String LZH;
-  public static final String LZI;
-  public static final float LZJ;
-  public static final int LZK;
-  public static final boolean LZL;
-  public static final boolean LZM;
-  public static final boolean LZN;
-  public static final boolean LZO;
-  public static final boolean LZP;
-  public static final boolean LZQ;
-  public static final boolean LZR;
-  public static final boolean LZS;
-  public static final boolean LZT;
-  public static final boolean LZU;
-  public static final boolean LZV;
-  public static final boolean LZW;
-  public static final boolean LZX;
-  public static final boolean LZY;
-  public static final boolean LZZ;
-  public static final String LZa;
-  public static final String LZb;
-  public static final String LZc;
-  public static final String LZd;
-  public static final String LZe;
-  public static final String LZf;
-  public static final String LZg;
-  public static final String LZh;
-  public static final String LZi;
-  public static final String LZj;
-  public static final String LZk;
-  public static final String LZl;
-  public static final String LZm;
-  public static final String LZn;
-  public static final String LZo;
-  public static final String LZp;
-  public static final String LZq;
-  public static final String LZr;
-  public static final String LZs;
-  public static final String LZt;
-  public static final String LZu;
-  public static final String LZv;
-  public static final String LZw;
-  public static final String LZx;
-  public static final String LZy;
-  public static final String LZz;
-  public static final boolean Maa;
-  public static final boolean Mab;
-  public static final boolean Mac;
-  public static final boolean Mad;
-  public static final boolean Mae;
-  public static final boolean Maf;
-  public static final boolean Mag;
-  public static final boolean Mah;
-  public static final boolean Mai;
-  public static final boolean Maj;
-  public static final boolean Mak;
-  public static final String bSt;
+  public static final String Fng;
+  public static final String Fnh;
+  public static final String NHr;
+  public static final String NTA;
+  public static final String NTB;
+  public static final String NTC;
+  public static final String NTD;
+  public static final String NTE;
+  public static final String NTF;
+  public static final String NTG;
+  public static final String NTH;
+  public static final String NTI;
+  public static final String NTJ;
+  public static final String NTK;
+  public static final String NTL;
+  public static final String NTM;
+  public static final String NTN;
+  public static final String NTO;
+  public static final String NTP;
+  public static final String NTQ;
+  public static final String NTR;
+  public static final String NTS;
+  public static final String NTT;
+  public static final String NTU;
+  public static final String NTV;
+  public static final String NTW;
+  public static final String NTX;
+  public static final String NTY;
+  public static final String NTZ;
+  public static final String NTv;
+  public static final String NTw;
+  public static final String NTx;
+  public static final String NTy;
+  public static final String NTz;
+  public static final boolean NUA;
+  public static final boolean NUB;
+  public static final boolean NUC;
+  public static final boolean NUD;
+  public static final boolean NUE;
+  public static final boolean NUF;
+  public static final boolean NUG;
+  public static final boolean NUH;
+  public static final boolean NUI;
+  public static final boolean NUJ;
+  public static final String NUa;
+  public static final String NUb;
+  public static final String NUc;
+  public static final String NUd;
+  public static final String NUe;
+  public static final String NUf;
+  public static final String NUg;
+  public static final String NUh;
+  public static final float NUi;
+  public static final int NUj;
+  public static final boolean NUk;
+  public static final boolean NUl;
+  public static final boolean NUm;
+  public static final boolean NUn;
+  public static final boolean NUo;
+  public static final boolean NUp;
+  public static final boolean NUq;
+  public static final boolean NUr;
+  public static final boolean NUs;
+  public static final boolean NUt;
+  public static final boolean NUu;
+  public static final boolean NUv;
+  public static final boolean NUw;
+  public static final boolean NUx;
+  public static final boolean NUy;
+  public static final boolean NUz;
+  public static final String ccG;
   
   static
   {
     boolean bool2 = false;
     AppMethodBeat.i(40756);
-    LYW = getSystemProperty("awt.toolkit");
-    LYX = getSystemProperty("file.encoding");
-    LYY = getSystemProperty("file.separator");
-    LYZ = getSystemProperty("java.awt.fonts");
-    LZa = getSystemProperty("java.awt.graphicsenv");
-    LZb = getSystemProperty("java.awt.headless");
-    LZc = getSystemProperty("java.awt.printerjob");
-    LZd = getSystemProperty("java.class.path");
-    LZe = getSystemProperty("java.class.version");
-    LZf = getSystemProperty("java.compiler");
-    LZg = getSystemProperty("java.endorsed.dirs");
-    LZh = getSystemProperty("java.ext.dirs");
-    LZi = getSystemProperty("java.home");
-    LZj = getSystemProperty("java.io.tmpdir");
-    LZk = getSystemProperty("java.library.path");
-    LZl = getSystemProperty("java.runtime.name");
-    LZm = getSystemProperty("java.runtime.version");
-    LZn = getSystemProperty("java.specification.name");
-    LZo = getSystemProperty("java.specification.vendor");
-    LZp = getSystemProperty("java.specification.version");
-    LZq = getSystemProperty("java.util.prefs.PreferencesFactory");
-    LZr = getSystemProperty("java.vendor");
-    LZs = getSystemProperty("java.vendor.url");
-    LZt = getSystemProperty("java.version");
-    LZu = getSystemProperty("java.vm.info");
-    LZv = getSystemProperty("java.vm.name");
-    LZw = getSystemProperty("java.vm.specification.name");
-    LZx = getSystemProperty("java.vm.specification.vendor");
-    LZy = getSystemProperty("java.vm.specification.version");
-    LZz = getSystemProperty("java.vm.vendor");
-    LZA = getSystemProperty("java.vm.version");
-    LQw = getSystemProperty("line.separator");
-    LZB = getSystemProperty("os.arch");
-    DHZ = getSystemProperty("os.name");
-    DIa = getSystemProperty("os.version");
-    LZC = getSystemProperty("path.separator");
+    NTv = getSystemProperty("awt.toolkit");
+    NTw = getSystemProperty("file.encoding");
+    NTx = getSystemProperty("file.separator");
+    NTy = getSystemProperty("java.awt.fonts");
+    NTz = getSystemProperty("java.awt.graphicsenv");
+    NTA = getSystemProperty("java.awt.headless");
+    NTB = getSystemProperty("java.awt.printerjob");
+    NTC = getSystemProperty("java.class.path");
+    NTD = getSystemProperty("java.class.version");
+    NTE = getSystemProperty("java.compiler");
+    NTF = getSystemProperty("java.endorsed.dirs");
+    NTG = getSystemProperty("java.ext.dirs");
+    NTH = getSystemProperty("java.home");
+    NTI = getSystemProperty("java.io.tmpdir");
+    NTJ = getSystemProperty("java.library.path");
+    NTK = getSystemProperty("java.runtime.name");
+    NTL = getSystemProperty("java.runtime.version");
+    NTM = getSystemProperty("java.specification.name");
+    NTN = getSystemProperty("java.specification.vendor");
+    NTO = getSystemProperty("java.specification.version");
+    NTP = getSystemProperty("java.util.prefs.PreferencesFactory");
+    NTQ = getSystemProperty("java.vendor");
+    NTR = getSystemProperty("java.vendor.url");
+    NTS = getSystemProperty("java.version");
+    NTT = getSystemProperty("java.vm.info");
+    NTU = getSystemProperty("java.vm.name");
+    NTV = getSystemProperty("java.vm.specification.name");
+    NTW = getSystemProperty("java.vm.specification.vendor");
+    NTX = getSystemProperty("java.vm.specification.version");
+    NTY = getSystemProperty("java.vm.vendor");
+    NTZ = getSystemProperty("java.vm.version");
+    NHr = getSystemProperty("line.separator");
+    NUa = getSystemProperty("os.arch");
+    Fng = getSystemProperty("os.name");
+    Fnh = getSystemProperty("os.version");
+    NUb = getSystemProperty("path.separator");
     int i;
     if (getSystemProperty("user.country") == null)
     {
       localObject = getSystemProperty("user.region");
-      LZD = (String)localObject;
-      LZE = getSystemProperty("user.dir");
-      LZF = getSystemProperty("user.home");
-      LZG = getSystemProperty("user.language");
-      bSt = getSystemProperty("user.name");
-      LZH = getSystemProperty("user.timezone");
-      if (LZt == null) {
+      NUc = (String)localObject;
+      NUd = getSystemProperty("user.dir");
+      NUe = getSystemProperty("user.home");
+      NUf = getSystemProperty("user.language");
+      ccG = getSystemProperty("user.name");
+      NUg = getSystemProperty("user.timezone");
+      if (NTS == null) {
         break label776;
       }
       i = 0;
       label366:
-      if (i >= LZt.length()) {
+      if (i >= NTS.length()) {
         break label776;
       }
-      j = LZt.charAt(i);
+      j = NTS.charAt(i);
       if ((j < 48) || (j > 57)) {
         break label769;
       }
@@ -145,56 +145,56 @@ public final class h
     boolean bool1;
     label769:
     label776:
-    for (Object localObject = LZt.substring(i);; localObject = null)
+    for (Object localObject = NTS.substring(i);; localObject = null)
     {
-      LZI = (String)localObject;
-      LZJ = R(aXx(LZt));
-      localObject = aXx(LZt);
+      NUh = (String)localObject;
+      NUi = R(bdR(NTS));
+      localObject = bdR(NTS);
       if (localObject != null) {
         break label782;
       }
       j = 0;
-      LZK = j;
-      LZL = aXv("1.1");
-      LZM = aXv("1.2");
-      LZN = aXv("1.3");
-      LZO = aXv("1.4");
-      LZP = aXv("1.5");
-      LZQ = aXv("1.6");
-      LZR = aXv("1.7");
-      LZS = aXw("AIX");
-      LZT = aXw("HP-UX");
-      LZU = aXw("Irix");
-      if ((!aXw("Linux")) && (!aXw("LINUX"))) {
+      NUj = j;
+      NUk = bdP("1.1");
+      NUl = bdP("1.2");
+      NUm = bdP("1.3");
+      NUn = bdP("1.4");
+      NUo = bdP("1.5");
+      NUp = bdP("1.6");
+      NUq = bdP("1.7");
+      NUr = bdQ("AIX");
+      NUs = bdQ("HP-UX");
+      NUt = bdQ("Irix");
+      if ((!bdQ("Linux")) && (!bdQ("LINUX"))) {
         break label832;
       }
       bool1 = true;
       label551:
-      LZV = bool1;
-      LZW = aXw("Mac");
-      LZX = aXw("Mac OS X");
-      LZY = aXw("OS/2");
-      LZZ = aXw("Solaris");
-      Maa = aXw("SunOS");
-      if ((!LZS) && (!LZT) && (!LZU) && (!LZV) && (!LZX) && (!LZZ))
+      NUu = bool1;
+      NUv = bdQ("Mac");
+      NUw = bdQ("Mac OS X");
+      NUx = bdQ("OS/2");
+      NUy = bdQ("Solaris");
+      NUz = bdQ("SunOS");
+      if ((!NUr) && (!NUs) && (!NUt) && (!NUu) && (!NUw) && (!NUy))
       {
         bool1 = bool2;
-        if (!Maa) {}
+        if (!NUz) {}
       }
       else
       {
         bool1 = true;
       }
-      Mab = bool1;
-      Mac = aXw("Windows");
-      Mad = nm("Windows", "5.0");
-      Mae = nm("Windows 9", "4.0");
-      Maf = nm("Windows 9", "4.1");
-      Mag = nm("Windows", "4.9");
-      Mah = aXw("Windows NT");
-      Mai = nm("Windows", "5.1");
-      Maj = nm("Windows", "6.0");
-      Mak = nm("Windows", "6.1");
+      NUA = bool1;
+      NUB = bdQ("Windows");
+      NUC = nL("Windows", "5.0");
+      NUD = nL("Windows 9", "4.0");
+      NUE = nL("Windows 9", "4.1");
+      NUF = nL("Windows", "4.9");
+      NUG = bdQ("Windows NT");
+      NUH = nL("Windows", "5.1");
+      NUI = nL("Windows", "6.0");
+      NUJ = nL("Windows", "6.1");
       AppMethodBeat.o(40756);
       return;
       localObject = getSystemProperty("user.country");
@@ -260,10 +260,10 @@ public final class h
     return 0.0F;
   }
   
-  private static boolean aXv(String paramString)
+  private static boolean bdP(String paramString)
   {
     AppMethodBeat.i(40750);
-    String str = LZI;
+    String str = NUh;
     if (str == null)
     {
       AppMethodBeat.o(40750);
@@ -274,10 +274,10 @@ public final class h
     return bool;
   }
   
-  private static boolean aXw(String paramString)
+  private static boolean bdQ(String paramString)
   {
     AppMethodBeat.i(40752);
-    String str = DHZ;
+    String str = Fng;
     if (str == null)
     {
       AppMethodBeat.o(40752);
@@ -288,12 +288,12 @@ public final class h
     return bool;
   }
   
-  private static int[] aXx(String paramString)
+  private static int[] bdR(String paramString)
   {
     AppMethodBeat.i(40754);
     if (paramString == null)
     {
-      paramString = a.bGB;
+      paramString = a.bQP;
       AppMethodBeat.o(40754);
       return paramString;
     }
@@ -456,11 +456,11 @@ public final class h
     return null;
   }
   
-  private static boolean nm(String paramString1, String paramString2)
+  private static boolean nL(String paramString1, String paramString2)
   {
     AppMethodBeat.i(40751);
-    String str1 = DHZ;
-    String str2 = DIa;
+    String str1 = Fng;
+    String str2 = Fnh;
     if ((str1 == null) || (str2 == null))
     {
       AppMethodBeat.o(40751);
@@ -477,7 +477,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.b.h
  * JD-Core Version:    0.7.0.1
  */

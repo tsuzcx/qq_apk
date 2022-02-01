@@ -10,24 +10,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class h$a
   extends c.a
 {
-  public RelativeLayout IkJ;
-  public TextView IkK;
-  public ImageView IkL;
-  public ImageView IkM;
+  public RelativeLayout Kbh;
+  public TextView Kbi;
+  public ImageView Kbj;
+  public ImageView Kbk;
   
-  public final a gc(View paramView)
+  public final a gt(View paramView)
   {
     AppMethodBeat.i(36875);
-    super.fX(paramView);
-    this.fAz = ((TextView)this.sSS.findViewById(2131298178));
-    this.ijt = ((CheckBox)this.sSS.findViewById(2131298068));
-    this.gGk = this.sSS.findViewById(2131298147);
-    this.xpH = ((TextView)this.sSS.findViewById(2131298185));
-    this.nDl = this.sSS.findViewById(2131296918);
-    this.IkJ = ((RelativeLayout)this.sSS.findViewById(2131296917));
-    this.IkK = ((TextView)this.sSS.findViewById(2131296914));
-    this.IkL = ((ImageView)this.sSS.findViewById(2131296915));
-    this.IkM = ((ImageView)this.sSS.findViewById(2131296916));
+    super.gn(paramView);
+    this.fTP = ((TextView)this.tPw.findViewById(2131298178));
+    this.iCK = ((CheckBox)this.tPw.findViewById(2131298068));
+    this.gZU = this.tPw.findViewById(2131298147);
+    this.yEk = ((TextView)this.tPw.findViewById(2131298185));
+    this.ofK = this.tPw.findViewById(2131296918);
+    this.Kbh = ((RelativeLayout)this.tPw.findViewById(2131296917));
+    this.Kbi = ((TextView)this.tPw.findViewById(2131296914));
+    this.Kbj = ((ImageView)this.tPw.findViewById(2131296915));
+    this.Kbk = ((ImageView)this.tPw.findViewById(2131296916));
     AppMethodBeat.o(36875);
     return this;
   }

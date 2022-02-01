@@ -5,45 +5,45 @@ import android.os.Bundle;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expansions.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.i;
 
 public final class b
 {
-  float Lc;
+  float MU;
   @SuppressLint({"HandlerLeak"})
-  ao mHandler;
+  ap mHandler;
   private boolean mIsInit;
   String mText;
   float mVolume;
-  c oyb;
-  private a oyc;
-  private Thread oyd;
-  SynthesizerNative oye;
-  boolean oyf;
-  int oyg;
-  byte[] oyh;
+  boolean pbA;
+  int pbB;
+  byte[] pbC;
+  c pbw;
+  private a pbx;
+  private Thread pby;
+  SynthesizerNative pbz;
   
   public b()
   {
     AppMethodBeat.i(63887);
-    this.oyc = new a((byte)0);
-    this.oyd = null;
-    this.oye = new SynthesizerNative();
+    this.pbx = new a((byte)0);
+    this.pby = null;
+    this.pbz = new SynthesizerNative();
     this.mIsInit = false;
-    this.oyf = false;
-    this.oyg = 256000;
-    this.oyh = new byte[this.oyg];
+    this.pbA = false;
+    this.pbB = 256000;
+    this.pbC = new byte[this.pbB];
     this.mVolume = 1.0F;
-    this.Lc = 1.0F;
-    this.mHandler = new ao("InnerSynthesizer")
+    this.MU = 1.0F;
+    this.mHandler = new ap("InnerSynthesizer")
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(63885);
-        if (b.this.oyb != null) {
+        if (b.this.pbw != null) {
           switch (paramAnonymousMessage.what)
           {
           }
@@ -53,10 +53,10 @@ public final class b
           AppMethodBeat.o(63885);
           return;
           paramAnonymousMessage = paramAnonymousMessage.getData().getByteArray("data");
-          b.this.oyb.o(0, paramAnonymousMessage);
+          b.this.pbw.o(0, paramAnonymousMessage);
           AppMethodBeat.o(63885);
           return;
-          b.this.oyb.o(-203, null);
+          b.this.pbw.o(-203, null);
         }
       }
     };
@@ -66,11 +66,11 @@ public final class b
   public final void destroy()
   {
     AppMethodBeat.i(63890);
-    this.oyf = true;
-    if (this.oyd != null) {}
+    this.pbA = true;
+    if (this.pby != null) {}
     try
     {
-      this.oyd.join();
+      this.pby.join();
     }
     catch (InterruptedException localInterruptedException)
     {
@@ -78,25 +78,25 @@ public final class b
       {
         for (;;)
         {
-          this.oye.release();
+          this.pbz.release();
           this.mIsInit = false;
           AppMethodBeat.o(63890);
           return;
           localInterruptedException = localInterruptedException;
-          ac.i("MicroMsg.OfflineVoice.InnerSynthesizer", "stop() Exception:%s %s", new Object[] { localInterruptedException.getClass().getSimpleName(), localInterruptedException.getMessage() });
+          ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "stop() Exception:%s %s", new Object[] { localInterruptedException.getClass().getSimpleName(), localInterruptedException.getMessage() });
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ac.i("MicroMsg.OfflineVoice.InnerSynthesizer", "destroy() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+          ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "destroy() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         }
       }
     }
   }
   
-  public final int eZ(String paramString1, String paramString2)
+  public final int fj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(63888);
     if (this.mIsInit)
@@ -105,23 +105,23 @@ public final class b
       return 0;
     }
     paramString1 = paramString1 + paramString2 + ".pos";
-    ac.d("MicroMsg.OfflineVoice.InnerSynthesizer", "resFilePath:%s soFilePath:%s", new Object[] { paramString1, null });
-    if (!i.eA(paramString1))
+    ad.d("MicroMsg.OfflineVoice.InnerSynthesizer", "resFilePath:%s soFilePath:%s", new Object[] { paramString1, null });
+    if (!i.fv(paramString1))
     {
-      ac.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_RESOURCE_ERROR ");
+      ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_RESOURCE_ERROR ");
       AppMethodBeat.o(63888);
       return -101;
     }
-    a.cil();
+    a.cmP();
     for (;;)
     {
       try
       {
-        if (!bs.isNullOrNil(null))
+        if (!bt.isNullOrNil(null))
         {
-          if (!i.eA(null))
+          if (!i.fv(null))
           {
-            ac.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed: file not exist - ErrorCode.TTS_SO_ERROR ");
+            ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed: file not exist - ErrorCode.TTS_SO_ERROR ");
             AppMethodBeat.o(63888);
             return -103;
           }
@@ -131,15 +131,15 @@ public final class b
       catch (Throwable paramString1)
       {
         int i;
-        ac.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init() Throwable:%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
+        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init() Throwable:%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
         AppMethodBeat.o(63888);
         return -207;
       }
       try
       {
-        bs.isNullOrNil(paramString2);
-        i = this.oye.init(paramString1.getBytes());
-        ac.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init ret：%s", new Object[] { Integer.valueOf(i) });
+        bt.isNullOrNil(paramString2);
+        i = this.pbz.init(paramString1.getBytes());
+        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init ret：%s", new Object[] { Integer.valueOf(i) });
         if (i >= 0) {
           break label231;
         }
@@ -148,11 +148,11 @@ public final class b
       }
       catch (Exception paramString1)
       {
-        ac.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_INIT_ERROR ");
+        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_INIT_ERROR ");
         AppMethodBeat.o(63888);
         return -201;
       }
-      a.Zu("readMoney");
+      a.ada("readMoney");
     }
     label231:
     this.mIsInit = true;
@@ -165,26 +165,26 @@ public final class b
     AppMethodBeat.i(63889);
     if (!this.mIsInit)
     {
-      ac.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
+      ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
       AppMethodBeat.o(63889);
       return -202;
     }
-    if ((this.oyd != null) && (this.oyd.isAlive()))
+    if ((this.pby != null) && (this.pby.isAlive()))
     {
-      ac.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
+      ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
       AppMethodBeat.o(63889);
       return -202;
     }
     if ((paramString == null) || (paramString.length() > 1024))
     {
-      ac.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:TTS_TEXT_ERROR");
+      ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:TTS_TEXT_ERROR");
       AppMethodBeat.o(63889);
       return -102;
     }
     this.mText = paramString;
-    this.oyf = false;
-    this.oyd = new Thread(this.oyc);
-    this.oyd.start();
+    this.pbA = false;
+    this.pby = new Thread(this.pbx);
+    this.pby.start();
     AppMethodBeat.o(63889);
     return 0;
   }
@@ -200,30 +200,32 @@ public final class b
       try
       {
         b.this.mText = b.this.mText.replaceAll("[^0-9a-zA-Z一-龥.?!,;:。？！，、；：@%&/]+", "");
-        ac.d("MicroMsg.OfflineVoice.InnerSynthesizer", "mText = %s  mVolume = %s mSpeed = %s", new Object[] { b.this.mText, Float.valueOf(b.this.mVolume), Float.valueOf(b.this.Lc) });
-        int i = b.this.oye.readmoney(b.this.mText.getBytes("UTF-8"), b.this.oyh, b.this.oyg, b.this.mVolume, b.this.Lc);
+        ad.d("MicroMsg.OfflineVoice.InnerSynthesizer", "mText = %s  mVolume = %s mSpeed = %s", new Object[] { b.this.mText, Float.valueOf(b.this.mVolume), Float.valueOf(b.this.MU) });
+        int i = b.this.pbz.readmoney(b.this.mText.getBytes("UTF-8"), b.this.pbC, b.this.pbB, b.this.mVolume, b.this.MU);
         if (i != -1)
         {
           byte[] arrayOfByte = new byte[i];
-          System.arraycopy(b.this.oyh, 0, arrayOfByte, 0, i);
-          if (!b.this.oyf)
+          System.arraycopy(b.this.pbC, 0, arrayOfByte, 0, i);
+          if (!b.this.pbA)
           {
             Message localMessage = b.this.mHandler.obtainMessage(0);
             Bundle localBundle = new Bundle();
             localBundle.putByteArray("data", arrayOfByte);
             localMessage.setData(localBundle);
             b.this.mHandler.sendMessage(localMessage);
+            ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "Synthesizer run success");
           }
           AppMethodBeat.o(63886);
           return;
         }
+        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "Synthesizer run fail");
         b.this.mHandler.sendMessage(b.this.mHandler.obtainMessage(-1));
         AppMethodBeat.o(63886);
         return;
       }
       catch (Exception localException)
       {
-        ac.i("MicroMsg.OfflineVoice.InnerSynthesizer", "SynthesizerRunnable Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        ad.i("MicroMsg.OfflineVoice.InnerSynthesizer", "SynthesizerRunnable Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         b.this.mHandler.sendMessage(b.this.mHandler.obtainMessage(-1));
         AppMethodBeat.o(63886);
       }
@@ -232,7 +234,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.voice.b
  * JD-Core Version:    0.7.0.1
  */

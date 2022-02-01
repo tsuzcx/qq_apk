@@ -12,39 +12,39 @@ public final class a
   extends com.tencent.mm.model.t
   implements b
 {
-  private static a oFl;
+  private static a piP;
   
   private a()
   {
-    super(com.tencent.mm.bb.t.class);
+    super(com.tencent.mm.bc.t.class);
   }
   
-  public static String awS()
+  public static String azH()
   {
     AppMethodBeat.i(151486);
     Object localObject = new StringBuilder();
-    g.agS();
-    localObject = g.agR().ghC + "package/";
+    g.ajD();
+    localObject = g.ajC().gBm + "package/";
     AppMethodBeat.o(151486);
     return localObject;
   }
   
-  public static a bXx()
+  public static a cca()
   {
     try
     {
       AppMethodBeat.i(151484);
-      if (oFl == null) {
-        oFl = new a();
+      if (piP == null) {
+        piP = new a();
       }
-      a locala = oFl;
+      a locala = piP;
       AppMethodBeat.o(151484);
       return locala;
     }
     finally {}
   }
   
-  public final List<String> agY()
+  public final List<String> ajJ()
   {
     AppMethodBeat.i(151485);
     LinkedList localLinkedList = new LinkedList();

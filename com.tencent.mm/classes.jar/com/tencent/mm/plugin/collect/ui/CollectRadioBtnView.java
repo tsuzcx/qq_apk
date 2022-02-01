@@ -13,8 +13,8 @@ import com.tencent.mm.ui.z;
 public class CollectRadioBtnView
   extends LinearLayout
 {
-  private TextView lfN;
-  private ImageView oCN;
+  private TextView lCL;
+  private ImageView pgi;
   
   public CollectRadioBtnView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,23 +35,23 @@ public class CollectRadioBtnView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(64194);
-    paramContext = z.jD(paramContext).inflate(2131493558, this);
-    this.oCN = ((ImageView)paramContext.findViewById(2131303708));
-    this.lfN = ((TextView)paramContext.findViewById(2131305948));
+    paramContext = z.jO(paramContext).inflate(2131493558, this);
+    this.pgi = ((ImageView)paramContext.findViewById(2131303708));
+    this.lCL = ((TextView)paramContext.findViewById(2131305948));
     AppMethodBeat.o(64194);
   }
   
   public void setRadioSrc(int paramInt)
   {
     AppMethodBeat.i(64196);
-    this.oCN.setImageResource(paramInt);
+    this.pgi.setImageResource(paramInt);
     AppMethodBeat.o(64196);
   }
   
   public void setTitleText(String paramString)
   {
     AppMethodBeat.i(64195);
-    this.lfN.setText(paramString);
+    this.lCL.setText(paramString);
     AppMethodBeat.o(64195);
   }
 }

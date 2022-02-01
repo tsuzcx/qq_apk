@@ -6,19 +6,19 @@ import com.tencent.luggage.a.b;
 public abstract interface h
   extends b
 {
-  public static final h msy = new h()
+  public static final h mTe = new h()
   {
-    public final Drawable bya()
+    public final Drawable bCg()
     {
       return null;
     }
   };
   
-  public abstract Drawable bya();
+  public abstract Drawable bCg();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.h
  * JD-Core Version:    0.7.0.1
  */

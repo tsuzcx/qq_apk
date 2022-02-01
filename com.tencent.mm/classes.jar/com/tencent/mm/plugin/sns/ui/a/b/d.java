@@ -4,19 +4,19 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.am.a;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.an.a;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
 import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.protocal.protobuf.agu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.protocal.protobuf.ajk;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
 
 public final class d
   extends a
 {
-  public boolean dfZ;
+  public boolean drv;
   public String userName;
   
   public d(String paramString, boolean paramBoolean)
@@ -24,33 +24,38 @@ public final class d
     super(new p());
     AppMethodBeat.i(99846);
     this.userName = paramString;
-    this.dfZ = paramBoolean;
-    fxa();
+    this.drv = paramBoolean;
+    fNN();
     AppMethodBeat.o(99846);
   }
   
-  public final String A(long paramLong, String paramString)
+  public final String As(long paramLong)
+  {
+    return null;
+  }
+  
+  public final String E(long paramLong, String paramString)
   {
     AppMethodBeat.i(179326);
-    ac.d("MicroMsg.SnsUserPageVending", "updateLitmitSeq %s %s", new Object[] { Integer.valueOf(af.dHH().dIv()), paramString });
-    Object localObject = com.tencent.mm.plugin.sns.data.q.wX(af.dHR().b(paramLong, af.dHH().atV(this.userName), this.userName, this.dfZ));
-    if (this.yEq.equals("")) {
+    ad.d("MicroMsg.SnsUserPageVending", "updateLitmitSeq %s %s", new Object[] { Integer.valueOf(ag.dTU().dUI()), paramString });
+    Object localObject = com.tencent.mm.plugin.sns.data.q.zx(ag.dUe().b(paramLong, ag.dTU().aza(this.userName), this.userName, this.drv));
+    if (this.zVL.equals("")) {
       paramString = (String)localObject;
     }
     for (;;)
     {
-      localObject = af.dHV().auY(this.userName).dMm();
-      if (((agu)localObject).EyT != 0L) {
+      localObject = ag.dUi().aAf(this.userName).dYC();
+      if (((ajk)localObject).GgF != 0L) {
         break;
       }
       AppMethodBeat.o(179326);
       return paramString;
       paramString = (String)localObject;
-      if (((String)localObject).compareTo(this.yEq) >= 0) {
-        paramString = this.yEq;
+      if (((String)localObject).compareTo(this.zVL) >= 0) {
+        paramString = this.zVL;
       }
     }
-    localObject = com.tencent.mm.plugin.sns.data.q.wX(((agu)localObject).EyT);
+    localObject = com.tencent.mm.plugin.sns.data.q.zx(((ajk)localObject).GgF);
     if (paramString.equals(""))
     {
       AppMethodBeat.o(179326);
@@ -65,25 +70,20 @@ public final class d
     return paramString;
   }
   
-  public final Cursor dRF()
+  public final Cursor edZ()
   {
     AppMethodBeat.i(99847);
     init();
-    g.agS();
-    Object localObject = (String)g.agR().agA().get(2, null);
+    g.ajD();
+    Object localObject = (String)g.ajC().ajl().get(2, null);
     if (this.userName.equals(localObject)) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.d("MicroMsg.SnsUserPageVending", "prepareCursorAsynchronous");
-      localObject = af.dHR().g(this.userName, bool, dRC());
+      ad.d("MicroMsg.SnsUserPageVending", "prepareCursorAsynchronous");
+      localObject = ag.dUe().g(this.userName, bool, edW());
       AppMethodBeat.o(99847);
       return localObject;
     }
-  }
-  
-  public final String xU(long paramLong)
-  {
-    return null;
   }
 }
 

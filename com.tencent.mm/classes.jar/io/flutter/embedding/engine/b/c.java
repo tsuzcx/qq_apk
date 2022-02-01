@@ -4,9 +4,9 @@ public abstract interface c
 {
   public abstract void a(a parama);
   
-  public abstract void fMU();
-  
   public abstract a getAttachedRenderer();
+  
+  public abstract void geu();
 }
 
 

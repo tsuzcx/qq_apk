@@ -10,7 +10,7 @@ final class k$a
   public final String toString()
   {
     AppMethodBeat.i(77553);
-    String str = super.toString() + "{fragment=" + this.aKP + "}";
+    String str = super.toString() + "{fragment=" + this.aMG + "}";
     AppMethodBeat.o(77553);
     return str;
   }

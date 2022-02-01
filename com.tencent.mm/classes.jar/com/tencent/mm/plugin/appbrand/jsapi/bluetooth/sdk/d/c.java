@@ -9,16 +9,16 @@ import android.content.pm.PackageManager;
 import android.support.v4.content.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.lang.reflect.Method;
 import java.util.UUID;
 
 public final class c
 {
-  public static boolean Mb(String paramString)
+  public static boolean Px(String paramString)
   {
     AppMethodBeat.i(144660);
-    if (b.checkSelfPermission(ai.getContext(), paramString) == 0)
+    if (b.checkSelfPermission(aj.getContext(), paramString) == 0)
     {
       AppMethodBeat.o(144660);
       return true;
@@ -27,7 +27,7 @@ public final class c
     return false;
   }
   
-  public static boolean Mc(String paramString)
+  public static boolean Py(String paramString)
   {
     AppMethodBeat.i(144663);
     try
@@ -85,12 +85,20 @@ public final class c
     return paramArrayOfByte;
   }
   
-  public static BluetoothManager bfS()
+  private static boolean bjA()
+  {
+    AppMethodBeat.i(144662);
+    boolean bool = aj.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+    AppMethodBeat.o(144662);
+    return bool;
+  }
+  
+  public static BluetoothManager bjw()
   {
     try
     {
       AppMethodBeat.i(144657);
-      BluetoothManager localBluetoothManager = (BluetoothManager)ai.getContext().getSystemService("bluetooth");
+      BluetoothManager localBluetoothManager = (BluetoothManager)aj.getContext().getSystemService("bluetooth");
       AppMethodBeat.o(144657);
       return localBluetoothManager;
     }
@@ -103,34 +111,34 @@ public final class c
   
   /* Error */
   @android.annotation.SuppressLint({"MissingPermission", "NewApi"})
-  public static BluetoothAdapter bfT()
+  public static BluetoothAdapter bjx()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 104
+    //   3: ldc 117
     //   5: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 106	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/d/c:bfS	()Landroid/bluetooth/BluetoothManager;
+    //   8: invokestatic 119	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/d/c:bjw	()Landroid/bluetooth/BluetoothManager;
     //   11: astore_0
     //   12: aload_0
     //   13: ifnull +18 -> 31
     //   16: aload_0
-    //   17: invokevirtual 109	android/bluetooth/BluetoothManager:getAdapter	()Landroid/bluetooth/BluetoothAdapter;
+    //   17: invokevirtual 122	android/bluetooth/BluetoothManager:getAdapter	()Landroid/bluetooth/BluetoothAdapter;
     //   20: astore_0
-    //   21: ldc 104
+    //   21: ldc 117
     //   23: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   26: ldc 2
     //   28: monitorexit
     //   29: aload_0
     //   30: areturn
     //   31: ldc 77
-    //   33: ldc 111
+    //   33: ldc 124
     //   35: iconst_0
     //   36: anewarray 4	java/lang/Object
     //   39: invokestatic 85	com/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/d/a:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   42: aconst_null
     //   43: astore_0
-    //   44: ldc 104
+    //   44: ldc 117
     //   46: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: goto -23 -> 26
     //   52: astore_0
@@ -150,10 +158,10 @@ public final class c
     //   44	49	52	finally
   }
   
-  public static boolean bfU()
+  public static boolean bjy()
   {
     AppMethodBeat.i(144659);
-    if ((!d.la(18)) && (bfW()))
+    if ((!d.lz(18)) && (bjA()))
     {
       AppMethodBeat.o(144659);
       return true;
@@ -162,55 +170,47 @@ public final class c
     return false;
   }
   
-  public static boolean bfV()
+  public static boolean bjz()
   {
     AppMethodBeat.i(144661);
-    if (bfT() == null)
+    if (bjx() == null)
     {
       AppMethodBeat.o(144661);
       return false;
     }
-    boolean bool = bfT().isEnabled();
+    boolean bool = bjx().isEnabled();
     AppMethodBeat.o(144661);
     return bool;
   }
   
-  private static boolean bfW()
-  {
-    AppMethodBeat.i(144662);
-    boolean bool = ai.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
-    AppMethodBeat.o(144662);
-    return bool;
-  }
-  
-  public static boolean st(int paramInt)
+  public static boolean sV(int paramInt)
   {
     return (paramInt & 0x2) > 0;
   }
   
-  public static boolean su(int paramInt)
+  public static boolean sW(int paramInt)
   {
     return (paramInt & 0x8) > 0;
   }
   
-  public static boolean sv(int paramInt)
+  public static boolean sX(int paramInt)
   {
     return (paramInt & 0x4) > 0;
   }
   
-  public static boolean sw(int paramInt)
+  public static boolean sY(int paramInt)
   {
     return (paramInt & 0x10) > 0;
   }
   
-  public static boolean sx(int paramInt)
+  public static boolean sZ(int paramInt)
   {
     return (paramInt & 0x20) > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.api;
 
 public abstract interface c
 {
-  public abstract void Qr(int paramInt);
+  public abstract void Sa(int paramInt);
 }
 
 

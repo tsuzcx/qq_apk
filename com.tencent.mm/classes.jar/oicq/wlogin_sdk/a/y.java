@@ -6,14 +6,14 @@ import oicq.wlogin_sdk.tools.util;
 public final class y
   extends a
 {
-  int LXa = 0;
+  int NRz = 0;
   
   public y()
   {
-    this.LVT = 292;
+    this.NQs = 292;
   }
   
-  private static int af(byte[] paramArrayOfByte, int paramInt)
+  private static int ag(byte[] paramArrayOfByte, int paramInt)
   {
     if (paramArrayOfByte != null)
     {
@@ -28,36 +28,36 @@ public final class y
   public final byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5)
   {
     AppMethodBeat.i(88112);
-    int n = af(paramArrayOfByte1, 16);
-    int m = af(paramArrayOfByte2, 16);
-    int k = af(paramArrayOfByte3, 16);
-    int j = af(paramArrayOfByte4, 32);
-    int i = af(paramArrayOfByte5, 16);
-    this.LXa = (n + 2 + 2 + m + 2 + 2 + k + 2 + j + 2 + i);
-    byte[] arrayOfByte = new byte[this.LXa];
-    util.V(arrayOfByte, 0, n);
+    int n = ag(paramArrayOfByte1, 16);
+    int m = ag(paramArrayOfByte2, 16);
+    int k = ag(paramArrayOfByte3, 16);
+    int j = ag(paramArrayOfByte4, 32);
+    int i = ag(paramArrayOfByte5, 16);
+    this.NRz = (n + 2 + 2 + m + 2 + 2 + k + 2 + j + 2 + i);
+    byte[] arrayOfByte = new byte[this.NRz];
+    util.W(arrayOfByte, 0, n);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 2, n);
     n += 2;
-    util.V(arrayOfByte, n, m);
+    util.W(arrayOfByte, n, m);
     n += 2;
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, n, m);
     m = n + m;
-    util.V(arrayOfByte, m, paramInt);
+    util.W(arrayOfByte, m, paramInt);
     paramInt = m + 2;
-    util.V(arrayOfByte, paramInt, k);
+    util.W(arrayOfByte, paramInt, k);
     paramInt += 2;
     System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, paramInt, k);
     paramInt += k;
-    util.V(arrayOfByte, paramInt, j);
+    util.W(arrayOfByte, paramInt, j);
     paramInt += 2;
     System.arraycopy(paramArrayOfByte4, 0, arrayOfByte, paramInt, j);
     paramInt += j;
-    util.V(arrayOfByte, paramInt, i);
+    util.W(arrayOfByte, paramInt, i);
     System.arraycopy(paramArrayOfByte5, 0, arrayOfByte, paramInt + 2, i);
-    super.ajl(this.LVT);
-    super.ae(arrayOfByte, this.LXa);
-    super.gfx();
-    paramArrayOfByte1 = super.gft();
+    super.alW(this.NQs);
+    super.af(arrayOfByte, this.NRz);
+    super.gxV();
+    paramArrayOfByte1 = super.gxR();
     AppMethodBeat.o(88112);
     return paramArrayOfByte1;
   }

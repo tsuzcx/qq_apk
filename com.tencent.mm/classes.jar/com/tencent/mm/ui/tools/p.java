@@ -14,39 +14,39 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.pluginsdk.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.pluginsdk.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.ar;
 
 public final class p
 {
   public static void a(final Context paramContext, final NestedScrollView paramNestedScrollView, View paramView1, final View paramView2, final View paramView3)
   {
-    AppMethodBeat.i(197204);
+    AppMethodBeat.i(186502);
     if (paramNestedScrollView == null)
     {
-      AppMethodBeat.o(197204);
+      AppMethodBeat.o(186502);
       return;
     }
     paramNestedScrollView.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(197203);
-        if ((this.uZX == null) || (paramView3 == null))
+        AppMethodBeat.i(186501);
+        if ((this.wfe == null) || (paramView3 == null))
         {
-          AppMethodBeat.o(197203);
+          AppMethodBeat.o(186501);
           return;
         }
         Object localObject2 = (ViewGroup.MarginLayoutParams)paramView3.getLayoutParams();
         int j = ((ViewGroup.MarginLayoutParams)localObject2).topMargin;
-        int i = a.fromDPToPix(paramContext, this.ITu);
+        int i = a.fromDPToPix(paramContext, this.KKy);
         Object localObject1;
-        if ((this.uZX.getMeasuredHeight() > 0) && (paramView2 != null))
+        if ((this.wfe.getMeasuredHeight() > 0) && (paramView2 != null))
         {
-          int k = (int)(((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getHeight() - this.ITw);
-          ac.d("MicroMsg.ScrollViewHelper", "setViewToScrollViewBottom screenHeight:%s", new Object[] { Integer.valueOf(k) });
+          int k = (int)(((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getHeight() - this.KKA);
+          ad.d("MicroMsg.ScrollViewHelper", "setViewToScrollViewBottom screenHeight:%s", new Object[] { Integer.valueOf(k) });
           localObject1 = new int[2];
           int m;
           if (paramView2.getTag(paramView2.getId()) == null)
@@ -56,26 +56,26 @@ public final class p
             if ((paramNestedScrollView == null) || (k < localObject1[1] + paramView2.getMeasuredHeight() + i + paramView3.getMeasuredHeight())) {
               break label484;
             }
-            m = ap.jL(paramContext);
-            if (!this.ITy) {
+            m = ar.jW(paramContext);
+            if (!this.KKC) {
               break label270;
             }
           }
           label270:
-          for (i = 0;; i = g.dT(paramContext))
+          for (i = 0;; i = h.dT(paramContext))
           {
             i = k - m - i - paramView3.getMeasuredHeight();
-            if (!bs.jl(j, i)) {
+            if (!bt.jx(j, i)) {
               break label281;
             }
-            AppMethodBeat.o(197203);
+            AppMethodBeat.o(186501);
             return;
             localObject1 = (int[])paramView2.getTag(paramView2.getId());
             break;
           }
           label281:
           localObject1 = (ViewGroup)paramNestedScrollView.getChildAt(0);
-          if (bs.I(paramView3.getTag(), "no_first"))
+          if (bt.K(paramView3.getTag(), "no_first"))
           {
             ((ViewGroup)paramView3.getParent()).removeView(paramView3);
             ((ViewGroup)localObject1).addView(paramView3);
@@ -89,7 +89,7 @@ public final class p
             paramView3.setVisibility(0);
             paramView3.setTag("no_first");
             paramNestedScrollView.requestLayout();
-            AppMethodBeat.o(197203);
+            AppMethodBeat.o(186501);
             return;
             paramNestedScrollView.removeView((View)localObject1);
             localObject2 = new ViewGroup.LayoutParams(-1, -2);
@@ -101,9 +101,9 @@ public final class p
             ((RelativeLayout)localObject3).addView(paramView3);
           }
           label484:
-          if (bs.jl(j, i))
+          if (bt.jx(j, i))
           {
-            AppMethodBeat.o(197203);
+            AppMethodBeat.o(186501);
             return;
           }
           Object localObject3 = paramView3.getParent();
@@ -124,11 +124,11 @@ public final class p
           paramView3.setVisibility(0);
           paramView3.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           paramView3.requestLayout();
-          AppMethodBeat.o(197203);
+          AppMethodBeat.o(186501);
           return;
-          if (bs.jl(j, i))
+          if (bt.jx(j, i))
           {
-            AppMethodBeat.o(197203);
+            AppMethodBeat.o(186501);
             return;
           }
           ((ViewGroup.MarginLayoutParams)localObject2).topMargin = i;
@@ -136,7 +136,7 @@ public final class p
         }
       }
     });
-    AppMethodBeat.o(197204);
+    AppMethodBeat.o(186502);
   }
   
   public static void a(Context paramContext, ScrollView paramScrollView, View paramView1, View paramView2, View paramView3, float paramFloat)
@@ -166,7 +166,7 @@ public final class p
       public final void run()
       {
         AppMethodBeat.i(143217);
-        if ((this.uZX == null) || (paramView3 == null))
+        if ((this.wfe == null) || (paramView3 == null))
         {
           AppMethodBeat.o(143217);
           return;
@@ -174,10 +174,10 @@ public final class p
         Object localObject2 = (ViewGroup.MarginLayoutParams)paramView3.getLayoutParams();
         int j = ((ViewGroup.MarginLayoutParams)localObject2).topMargin;
         int i = a.fromDPToPix(paramContext, paramInt);
-        if ((this.uZX.getMeasuredHeight() > 0) && (paramView2 != null))
+        if ((this.wfe.getMeasuredHeight() > 0) && (paramView2 != null))
         {
           k = (int)(((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getHeight() - paramFloat);
-          ac.d("MicroMsg.ScrollViewHelper", "setViewToScrollViewBottom screenHeight:%s", new Object[] { Integer.valueOf(k) });
+          ad.d("MicroMsg.ScrollViewHelper", "setViewToScrollViewBottom screenHeight:%s", new Object[] { Integer.valueOf(k) });
           localObject1 = new int[2];
           if (paramView2.getTag(paramView2.getId()) == null)
           {
@@ -186,16 +186,16 @@ public final class p
             if ((paramScrollView == null) || (k < localObject1[1] + paramView2.getMeasuredHeight() + i + paramView3.getMeasuredHeight())) {
               break label484;
             }
-            m = ap.jL(paramContext);
+            m = ar.jW(paramContext);
             if (!paramBoolean) {
               break label270;
             }
           }
           label270:
-          for (i = 0;; i = g.dT(paramContext))
+          for (i = 0;; i = h.dT(paramContext))
           {
             i = k - m - i - paramView3.getMeasuredHeight();
-            if (!bs.jl(j, i)) {
+            if (!bt.jx(j, i)) {
               break label281;
             }
             AppMethodBeat.o(143217);
@@ -205,7 +205,7 @@ public final class p
           }
           label281:
           localObject1 = (ViewGroup)paramScrollView.getChildAt(0);
-          if (bs.I(paramView3.getTag(), "no_first"))
+          if (bt.K(paramView3.getTag(), "no_first"))
           {
             ((ViewGroup)paramView3.getParent()).removeView(paramView3);
             ((ViewGroup)localObject1).addView(paramView3);
@@ -231,7 +231,7 @@ public final class p
             localRelativeLayout.addView(paramView3);
           }
           label484:
-          if (bs.jl(j, i))
+          if (bt.jx(j, i))
           {
             AppMethodBeat.o(143217);
             return;
@@ -239,7 +239,7 @@ public final class p
           ((ViewGroup)paramView3.getParent()).removeView(paramView3);
           ((ViewGroup)paramView2.getParent()).addView(paramView3);
         }
-        while (!bs.jl(j, i))
+        while (!bt.jx(j, i))
         {
           int k;
           Object localObject1;

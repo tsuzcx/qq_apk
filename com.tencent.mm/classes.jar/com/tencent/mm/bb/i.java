@@ -1,90 +1,62 @@
 package com.tencent.mm.bb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
+import com.tencent.mm.protocal.protobuf.bsn;
+import com.tencent.mm.protocal.protobuf.bso;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
+@Deprecated
 public final class i
-  implements com.tencent.mm.ak.g
+  extends k.b
 {
-  public i()
+  private bso iiu;
+  
+  public i(List<a> paramList)
   {
-    AppMethodBeat.i(150802);
-    com.tencent.mm.kernel.g.agQ().ghe.a(159, this);
-    com.tencent.mm.kernel.g.agQ().ghe.a(160, this);
-    l locall = new l(5);
-    com.tencent.mm.kernel.g.agQ().ghe.a(locall, 0);
-    AppMethodBeat.o(150802);
+    super(36);
+    AppMethodBeat.i(43056);
+    LinkedList localLinkedList = new LinkedList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext()) {
+      localLinkedList.add(((a)localIterator.next()).iiv);
+    }
+    this.iiu = new bso();
+    this.iiu.nDi = paramList.size();
+    this.iiu.nDj = localLinkedList;
+    this.vKm = this.iiu;
+    AppMethodBeat.o(43056);
   }
   
-  private static void aGI()
+  public static final class a
   {
-    AppMethodBeat.i(150805);
-    com.tencent.mm.kernel.g.agR().agA().set(81939, Long.valueOf(bs.eWj()));
-    AppMethodBeat.o(150805);
-  }
-  
-  private void release()
-  {
-    AppMethodBeat.i(150803);
-    com.tencent.mm.kernel.g.agQ().ghe.b(159, this);
-    com.tencent.mm.kernel.g.agQ().ghe.b(160, this);
-    AppMethodBeat.o(150803);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
-  {
-    AppMethodBeat.i(150804);
-    if ((!(paramn instanceof com.tencent.mm.ak.p)) || (((com.tencent.mm.ak.p)paramn).aBJ() != 5))
+    bsn iiv;
+    private int key;
+    private String value;
+    
+    public a()
     {
-      ac.d("MicroMsg.LangPackageUpdater", "another scene");
-      AppMethodBeat.o(150804);
-      return;
+      AppMethodBeat.i(43054);
+      this.key = 0;
+      this.value = "";
+      this.iiv = new bsn();
+      this.iiv.yhn = 0;
+      this.iiv.yhw = "";
+      AppMethodBeat.o(43054);
     }
-    int i = paramn.getType();
-    if (i == 159)
+    
+    public a(int paramInt, String paramString)
     {
-      if ((paramInt1 == 0) && (paramInt2 == 0))
-      {
-        aGI();
-        paramString = t.aGO().po(5);
-        if ((paramString == null) || (paramString.length == 0))
-        {
-          ac.i("MicroMsg.LangPackageUpdater", "error no pkg found.");
-          release();
-          AppMethodBeat.o(150804);
-          return;
-        }
-        paramString = paramString[0];
-        ac.i("MicroMsg.LangPackageUpdater", "dkregcode Pkg id:" + paramString.id + " version:" + paramString.version + " status:" + paramString.status + " type:" + paramString.dib);
-        if (5 != paramString.status)
-        {
-          release();
-          AppMethodBeat.o(150804);
-          return;
-        }
-        paramString = new k(paramString.id, 5);
-        com.tencent.mm.kernel.g.agQ().ghe.a(paramString, 0);
-        AppMethodBeat.o(150804);
-        return;
-      }
-      release();
-      AppMethodBeat.o(150804);
-      return;
+      AppMethodBeat.i(43055);
+      this.key = paramInt;
+      this.value = paramString;
+      this.iiv = new bsn();
+      this.iiv.yhn = paramInt;
+      this.iiv.yhw = paramString;
+      AppMethodBeat.o(43055);
     }
-    if (i == 160)
-    {
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        aGI();
-      }
-      release();
-    }
-    AppMethodBeat.o(150804);
   }
 }
 

@@ -7,20 +7,20 @@ import java.security.MessageDigest;
 final class c
   implements h
 {
-  private final h aEf;
-  private final h aEk;
+  private final h aFW;
+  private final h aGb;
   
   c(h paramh1, h paramh2)
   {
-    this.aEf = paramh1;
-    this.aEk = paramh2;
+    this.aFW = paramh1;
+    this.aGb = paramh2;
   }
   
   public final void a(MessageDigest paramMessageDigest)
   {
     AppMethodBeat.i(76930);
-    this.aEf.a(paramMessageDigest);
-    this.aEk.a(paramMessageDigest);
+    this.aFW.a(paramMessageDigest);
+    this.aGb.a(paramMessageDigest);
     AppMethodBeat.o(76930);
   }
   
@@ -30,7 +30,7 @@ final class c
     if ((paramObject instanceof c))
     {
       paramObject = (c)paramObject;
-      if ((this.aEf.equals(paramObject.aEf)) && (this.aEk.equals(paramObject.aEk)))
+      if ((this.aFW.equals(paramObject.aFW)) && (this.aGb.equals(paramObject.aGb)))
       {
         AppMethodBeat.o(76927);
         return true;
@@ -45,8 +45,8 @@ final class c
   public final int hashCode()
   {
     AppMethodBeat.i(76928);
-    int i = this.aEf.hashCode();
-    int j = this.aEk.hashCode();
+    int i = this.aFW.hashCode();
+    int j = this.aGb.hashCode();
     AppMethodBeat.o(76928);
     return i * 31 + j;
   }
@@ -54,7 +54,7 @@ final class c
   public final String toString()
   {
     AppMethodBeat.i(76929);
-    String str = "DataCacheKey{sourceKey=" + this.aEf + ", signature=" + this.aEk + '}';
+    String str = "DataCacheKey{sourceKey=" + this.aFW + ", signature=" + this.aGb + '}';
     AppMethodBeat.o(76929);
     return str;
   }

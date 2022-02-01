@@ -6,140 +6,104 @@ import com.tencent.mm.plugin.report.a;
 public final class ae
   extends a
 {
-  private long dFQ;
-  private String dFe;
-  private String dIA;
-  private long dIB;
-  private long dIC;
-  private long dID;
-  private long dIE;
-  private long dIF;
-  private long dIy;
-  private long dIz;
+  private long dPl;
+  private String dVa;
+  private String dVb;
+  private String dVc;
+  private long dVd;
+  private long dVe;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(194901);
+    AppMethodBeat.i(209041);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dFe);
+    ((StringBuffer)localObject).append(this.dVa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dIy);
+    ((StringBuffer)localObject).append(this.dVb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dIz);
+    ((StringBuffer)localObject).append(this.dVc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dIA);
+    ((StringBuffer)localObject).append(this.dVd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dIB);
+    ((StringBuffer)localObject).append(this.dPl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dIC);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dID);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dIE);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFQ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dIF);
+    ((StringBuffer)localObject).append(this.dVe);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(194901);
+    awz((String)localObject);
+    AppMethodBeat.o(209041);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(194902);
+    AppMethodBeat.i(209042);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SessionId:").append(this.dFe);
+    ((StringBuffer)localObject).append("Sessionid:").append(this.dVa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Status:").append(this.dIy);
+    ((StringBuffer)localObject).append("Contextid:").append(this.dVb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FailReason:").append(this.dIz);
+    ((StringBuffer)localObject).append("ClickTabContextId:").append(this.dVc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FailReasonWording:").append(this.dIA);
+    ((StringBuffer)localObject).append("Scene:").append(this.dVd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasAvatar:").append(this.dIB);
+    ((StringBuffer)localObject).append("Action:").append(this.dPl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasNickName:").append(this.dIC);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasSignature:").append(this.dID);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasSex:").append(this.dIE);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasLocation:").append(this.dFQ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasCheckAgreement:").append(this.dIF);
+    ((StringBuffer)localObject).append("HasWording:").append(this.dVe);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(194902);
+    AppMethodBeat.o(209042);
     return localObject;
   }
   
-  public final ae PX()
+  public final ae cr(long paramLong)
   {
-    this.dIB = 1L;
+    this.dVd = paramLong;
     return this;
   }
   
-  public final ae PY()
+  public final ae cs(long paramLong)
   {
-    this.dIC = 1L;
+    this.dPl = paramLong;
     return this;
   }
   
-  public final ae PZ()
+  public final ae ct(long paramLong)
   {
-    this.dID = 1L;
-    return this;
-  }
-  
-  public final ae Qa()
-  {
-    this.dIE = 1L;
-    return this;
-  }
-  
-  public final ae Qb()
-  {
-    this.dFQ = 1L;
-    return this;
-  }
-  
-  public final ae cJ(long paramLong)
-  {
-    this.dIy = paramLong;
-    return this;
-  }
-  
-  public final ae cK(long paramLong)
-  {
-    this.dIz = paramLong;
+    this.dVe = paramLong;
     return this;
   }
   
   public final int getId()
   {
-    return 19815;
+    return 19995;
   }
   
-  public final ae gw(String paramString)
+  public final ae hc(String paramString)
   {
-    AppMethodBeat.i(194899);
-    this.dFe = t("SessionId", paramString, true);
-    AppMethodBeat.o(194899);
+    AppMethodBeat.i(209038);
+    this.dVa = t("Sessionid", paramString, true);
+    AppMethodBeat.o(209038);
     return this;
   }
   
-  public final ae gx(String paramString)
+  public final ae hd(String paramString)
   {
-    AppMethodBeat.i(194900);
-    this.dIA = t("FailReasonWording", paramString, true);
-    AppMethodBeat.o(194900);
+    AppMethodBeat.i(209039);
+    this.dVb = t("Contextid", paramString, true);
+    AppMethodBeat.o(209039);
+    return this;
+  }
+  
+  public final ae he(String paramString)
+  {
+    AppMethodBeat.i(209040);
+    this.dVc = t("ClickTabContextId", paramString, true);
+    AppMethodBeat.o(209040);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ae
  * JD-Core Version:    0.7.0.1
  */

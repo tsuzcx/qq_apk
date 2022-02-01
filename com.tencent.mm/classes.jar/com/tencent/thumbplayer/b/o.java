@@ -2,19 +2,19 @@ package com.tencent.thumbplayer.b;
 
 public final class o
 {
-  public long KeP;
-  public int[] Kfr;
+  public long LYL;
   public byte[][] data;
   public int format;
-  public int ich;
-  public int ici;
+  public int ivD;
+  public int ivE;
+  public int[] lineSize;
   public int rotation;
-  public int uOJ;
-  public int uOK;
+  public int vRS;
+  public int vRT;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.b.o
  * JD-Core Version:    0.7.0.1
  */

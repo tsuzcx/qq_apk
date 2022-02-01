@@ -15,7 +15,7 @@ final class b$a$1
   {
     AppMethodBeat.i(63212);
     float f = paramInt2;
-    paramInt1 = this.kFu;
+    paramInt1 = this.lbK;
     Object localObject = Shader.TileMode.REPEAT;
     localObject = new LinearGradient(0.0F, 0.0F, 0.0F, f, new int[] { 0, paramInt1 }, new float[] { 0.0F, 1.0F }, (Shader.TileMode)localObject);
     AppMethodBeat.o(63212);

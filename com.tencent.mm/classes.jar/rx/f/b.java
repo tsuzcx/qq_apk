@@ -12,10 +12,10 @@ import rx.j;
 public final class b
   implements j
 {
-  public volatile boolean MfG;
-  private Set<j> MgQ;
+  public volatile boolean OaI;
+  private Set<j> ObS;
   
-  private static void y(Collection<j> paramCollection)
+  private static void z(Collection<j> paramCollection)
   {
     AppMethodBeat.i(90439);
     if (paramCollection == null)
@@ -34,7 +34,7 @@ public final class b
       localj = (j)localIterator.next();
       try
       {
-        localj.ggm();
+        localj.gyQ();
       }
       catch (Throwable localThrowable)
       {
@@ -50,7 +50,7 @@ public final class b
     {
       paramCollection.add(localThrowable);
       break;
-      rx.a.b.jl(paramCollection);
+      rx.a.b.jz(paramCollection);
       AppMethodBeat.o(90439);
       return;
     }
@@ -59,23 +59,23 @@ public final class b
   public final void b(j paramj)
   {
     AppMethodBeat.i(90435);
-    if (paramj.ggn())
+    if (paramj.gyR())
     {
       AppMethodBeat.o(90435);
       return;
     }
-    if (!this.MfG) {}
+    if (!this.OaI) {}
     try
     {
-      if (!this.MfG)
+      if (!this.OaI)
       {
-        if (this.MgQ == null) {
-          this.MgQ = new HashSet(4);
+        if (this.ObS == null) {
+          this.ObS = new HashSet(4);
         }
-        this.MgQ.add(paramj);
+        this.ObS.add(paramj);
         return;
       }
-      paramj.ggm();
+      paramj.gyQ();
       AppMethodBeat.o(90435);
       return;
     }
@@ -88,15 +88,15 @@ public final class b
   public final void clear()
   {
     AppMethodBeat.i(90437);
-    if (!this.MfG) {}
+    if (!this.OaI) {}
     try
     {
-      if ((this.MfG) || (this.MgQ == null)) {
+      if ((this.OaI) || (this.ObS == null)) {
         return;
       }
-      Set localSet = this.MgQ;
-      this.MgQ = null;
-      y(localSet);
+      Set localSet = this.ObS;
+      this.ObS = null;
+      z(localSet);
       AppMethodBeat.o(90437);
       return;
     }
@@ -109,15 +109,15 @@ public final class b
   public final void e(j paramj)
   {
     AppMethodBeat.i(90436);
-    if (!this.MfG) {}
+    if (!this.OaI) {}
     try
     {
-      if ((this.MfG) || (this.MgQ == null)) {
+      if ((this.OaI) || (this.ObS == null)) {
         return;
       }
-      boolean bool = this.MgQ.remove(paramj);
+      boolean bool = this.ObS.remove(paramj);
       if (bool) {
-        paramj.ggm();
+        paramj.gyQ();
       }
       AppMethodBeat.o(90436);
       return;
@@ -128,19 +128,19 @@ public final class b
     }
   }
   
-  public final void ggm()
+  public final void gyQ()
   {
     AppMethodBeat.i(90438);
-    if (!this.MfG) {}
+    if (!this.OaI) {}
     try
     {
-      if (this.MfG) {
+      if (this.OaI) {
         return;
       }
-      this.MfG = true;
-      Set localSet = this.MgQ;
-      this.MgQ = null;
-      y(localSet);
+      this.OaI = true;
+      Set localSet = this.ObS;
+      this.ObS = null;
+      z(localSet);
       AppMethodBeat.o(90438);
       return;
     }
@@ -150,9 +150,9 @@ public final class b
     }
   }
   
-  public final boolean ggn()
+  public final boolean gyR()
   {
-    return this.MfG;
+    return this.OaI;
   }
 }
 

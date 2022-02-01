@@ -2,25 +2,25 @@ package com.tencent.mm.cn;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.vending.h.a;
 
 public final class d
   implements a
 {
-  private ao mHandler;
+  private ap mHandler;
   
-  public d(ao paramao)
+  public d(ap paramap)
   {
-    this.mHandler = paramao;
+    this.mHandler = paramap;
   }
   
-  public static d c(ao paramao)
+  public static d c(ap paramap)
   {
     AppMethodBeat.i(133525);
-    paramao = new d(paramao);
+    paramap = new d(paramap);
     AppMethodBeat.o(133525);
-    return paramao;
+    return paramap;
   }
   
   public final void c(Runnable paramRunnable, long paramLong)
@@ -30,7 +30,7 @@ public final class d
     AppMethodBeat.o(133527);
   }
   
-  public final void fu()
+  public final void fL()
   {
     AppMethodBeat.i(133529);
     this.mHandler.removeCallbacksAndMessages(null);

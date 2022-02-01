@@ -13,7 +13,7 @@ public abstract interface ab
   
   public abstract void B(aa paramaa);
   
-  public abstract void K(float paramFloat1, float paramFloat2);
+  public abstract void M(float paramFloat1, float paramFloat2);
   
   public abstract void a(View.OnFocusChangeListener paramOnFocusChangeListener);
   
@@ -25,17 +25,17 @@ public abstract interface ab
   
   public abstract void b(View.OnFocusChangeListener paramOnFocusChangeListener);
   
-  public abstract void bAG();
+  public abstract void bEI();
   
-  public abstract void bAH();
+  public abstract void bEJ();
   
-  public abstract void bAI();
+  public abstract void bEK();
   
-  public abstract boolean bAo();
+  public abstract boolean bEq();
   
-  public abstract boolean bAp();
+  public abstract boolean bEr();
   
-  public abstract boolean bAs();
+  public abstract boolean bEu();
   
   public abstract void destroy();
   
@@ -59,26 +59,26 @@ public abstract interface ab
   
   public abstract void setOnKeyUpPostImeListener(b paramb);
   
-  public abstract int vS(int paramInt);
+  public abstract int wx(int paramInt);
   
   public static abstract interface a
   {
-    public abstract void ie();
+    public abstract void iv();
   }
   
   public static abstract interface b
   {
-    public abstract boolean vI(int paramInt);
+    public abstract boolean wn(int paramInt);
   }
   
   public static abstract interface c
   {
-    public abstract void bAr();
+    public abstract void bEt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.ab
  * JD-Core Version:    0.7.0.1
  */

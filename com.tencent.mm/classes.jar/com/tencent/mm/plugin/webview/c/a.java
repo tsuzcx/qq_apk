@@ -3,63 +3,63 @@ package com.tencent.mm.plugin.webview.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.f;
 import d.g;
-import d.g.b.u;
-import d.g.b.w;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/jsapi/DefaultJsApiPool;", "", "()V", "jsApis", "", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "getJsApis", "()Ljava/util/Map;", "jsApis$delegate", "Lkotlin/Lazy;", "initJsApiPool", "", "toMap", "Ljava/util/HashMap;", "", "plugin-webview_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/jsapi/DefaultJsApiPool;", "", "()V", "jsApis", "", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "getJsApis", "()Ljava/util/Map;", "jsApis$delegate", "Lkotlin/Lazy;", "initJsApiPool", "", "toMap", "Ljava/util/HashMap;", "", "plugin-webview_release"})
 public final class a
 {
-  private static final f Cjm;
-  public static final a Cjn;
+  private static final f DMs;
+  public static final a DMt;
   
   static
   {
-    AppMethodBeat.i(189447);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(a.class), "jsApis", "getJsApis()Ljava/util/Map;")) };
-    Cjn = new a();
-    Cjm = g.K((d.g.a.a)a.Cjo);
-    AppMethodBeat.o(189447);
+    AppMethodBeat.i(207581);
+    DMt = new a();
+    DMs = g.O((d.g.a.a)a.DMu);
+    AppMethodBeat.o(207581);
   }
   
-  public static void ezF()
+  public static void eOu()
   {
-    AppMethodBeat.i(189449);
-    m localm = m.Ckz;
-    m.bz((Map)Cjm.getValue());
-    AppMethodBeat.o(189449);
+    AppMethodBeat.i(207580);
+    m localm = m.DNE;
+    m.bC((Map)DMs.getValue());
+    AppMethodBeat.o(207580);
   }
   
-  public static HashMap<String, com.tencent.mm.plugin.webview.c.c.a> gG(List<? extends com.tencent.mm.plugin.webview.c.c.a> paramList)
+  public static HashMap<String, com.tencent.mm.plugin.webview.c.c.a> gS(List<? extends com.tencent.mm.plugin.webview.c.c.a> paramList)
   {
-    AppMethodBeat.i(189448);
-    d.g.b.k.h(paramList, "$this$toMap");
+    AppMethodBeat.i(207579);
+    p.h(paramList, "$this$toMap");
     HashMap localHashMap = new HashMap();
     paramList = ((Iterable)paramList).iterator();
     while (paramList.hasNext())
     {
       com.tencent.mm.plugin.webview.c.c.a locala = (com.tencent.mm.plugin.webview.c.c.a)paramList.next();
-      ((Map)localHashMap).put(locala.ezY(), locala);
+      ((Map)localHashMap).put(locala.eOM(), locala);
     }
-    AppMethodBeat.o(189448);
+    AppMethodBeat.o(207579);
     return localHashMap;
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "invoke"})
   static final class a
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<HashMap<String, com.tencent.mm.plugin.webview.c.c.a>>
   {
-    public static final a Cjo;
+    public static final a DMu;
     
     static
     {
-      AppMethodBeat.i(189446);
-      Cjo = new a();
-      AppMethodBeat.o(189446);
+      AppMethodBeat.i(207578);
+      DMu = new a();
+      AppMethodBeat.o(207578);
     }
     
     a()

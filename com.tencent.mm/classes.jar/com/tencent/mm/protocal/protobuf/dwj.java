@@ -1,58 +1,46 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class dwj
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String MD5;
-  public int ndI;
+  public int Fyv;
+  public int Fyw;
+  public int Fyx;
+  public int Fyy;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32518);
+    AppMethodBeat.i(32498);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.MD5 == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: MD5");
-        AppMethodBeat.o(32518);
-        throw paramVarArgs;
-      }
-      paramVarArgs.aR(1, this.ndI);
-      if (this.MD5 != null) {
-        paramVarArgs.d(2, this.MD5);
-      }
-      AppMethodBeat.o(32518);
+      paramVarArgs.aS(1, this.Fyv);
+      paramVarArgs.aS(2, this.Fyw);
+      paramVarArgs.aS(3, this.Fyx);
+      paramVarArgs.aS(4, this.Fyy);
+      AppMethodBeat.o(32498);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.ndI) + 0;
-      paramInt = i;
-      if (this.MD5 != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.MD5);
-      }
-      AppMethodBeat.o(32518);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bz(1, this.Fyv);
+      int i = f.a.a.b.b.a.bz(2, this.Fyw);
+      int j = f.a.a.b.b.a.bz(3, this.Fyx);
+      int k = f.a.a.b.b.a.bz(4, this.Fyy);
+      AppMethodBeat.o(32498);
+      return paramInt + 0 + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      if (this.MD5 == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: MD5");
-        AppMethodBeat.o(32518);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(32518);
+      AppMethodBeat.o(32498);
       return 0;
     }
     if (paramInt == 3)
@@ -62,24 +50,32 @@ public final class dwj
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(32518);
+        AppMethodBeat.o(32498);
         return -1;
       case 1: 
-        localdwj.ndI = locala.LVo.xF();
-        AppMethodBeat.o(32518);
+        localdwj.Fyv = locala.NPN.zc();
+        AppMethodBeat.o(32498);
+        return 0;
+      case 2: 
+        localdwj.Fyw = locala.NPN.zc();
+        AppMethodBeat.o(32498);
+        return 0;
+      case 3: 
+        localdwj.Fyx = locala.NPN.zc();
+        AppMethodBeat.o(32498);
         return 0;
       }
-      localdwj.MD5 = locala.LVo.readString();
-      AppMethodBeat.o(32518);
+      localdwj.Fyy = locala.NPN.zc();
+      AppMethodBeat.o(32498);
       return 0;
     }
-    AppMethodBeat.o(32518);
+    AppMethodBeat.o(32498);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dwj
  * JD-Core Version:    0.7.0.1
  */

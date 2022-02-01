@@ -3,19 +3,19 @@ package d.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/coroutines/intrinsics/CoroutineSingletons;", "", "(Ljava/lang/String;I)V", "COROUTINE_SUSPENDED", "UNDECIDED", "RESUMED", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/coroutines/intrinsics/CoroutineSingletons;", "", "(Ljava/lang/String;I)V", "COROUTINE_SUSPENDED", "UNDECIDED", "RESUMED", "kotlin-stdlib"})
 public enum a
 {
   static
   {
     AppMethodBeat.i(129595);
     a locala1 = new a("COROUTINE_SUSPENDED", 0);
-    KUd = locala1;
+    MLc = locala1;
     a locala2 = new a("UNDECIDED", 1);
-    KUe = locala2;
+    MLd = locala2;
     a locala3 = new a("RESUMED", 2);
-    KUf = locala3;
-    KUg = new a[] { locala1, locala2, locala3 };
+    MLe = locala3;
+    MLf = new a[] { locala1, locala2, locala3 };
     AppMethodBeat.o(129595);
   }
   

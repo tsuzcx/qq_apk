@@ -2,7 +2,7 @@ package com.tencent.mm.view.popview;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.a.ae;
+import com.tencent.mm.emoji.a.a.ai;
 import com.tencent.mm.emoji.a.a.h;
 import com.tencent.mm.emoji.a.o;
 import com.tencent.mm.storage.emotion.EmojiInfo;
@@ -22,7 +22,7 @@ public final class c
       }
       if ((paramObject instanceof h))
       {
-        ((EmojiPopView)paramAbstractPopView).setEmojiInfo(((h)paramObject).fPB);
+        ((EmojiPopView)paramAbstractPopView).setEmojiInfo(((h)paramObject).gjb);
         AppMethodBeat.o(105304);
       }
     }
@@ -34,8 +34,8 @@ public final class c
         AppMethodBeat.o(105304);
         return;
       }
-      if ((paramObject instanceof ae)) {
-        ((SmileyPopView)paramAbstractPopView).setSmileyItem(((ae)paramObject).fSm);
+      if ((paramObject instanceof ai)) {
+        ((SmileyPopView)paramAbstractPopView).setSmileyItem(((ai)paramObject).glQ);
       }
     }
     AppMethodBeat.o(105304);
@@ -44,7 +44,7 @@ public final class c
   public static AbstractPopView b(Context paramContext, Object paramObject)
   {
     AppMethodBeat.i(105303);
-    if (((paramObject instanceof o)) || ((paramObject instanceof ae)))
+    if (((paramObject instanceof o)) || ((paramObject instanceof ai)))
     {
       paramContext = new SmileyPopView(paramContext);
       AppMethodBeat.o(105303);

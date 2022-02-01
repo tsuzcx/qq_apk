@@ -2,64 +2,66 @@ package kotlinx.coroutines.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.d.a.a;
+import d.d.b.a.e;
+import d.d.d;
 import d.g.a.m;
-import d.g.b.aa;
+import d.g.b.ae;
 import d.l;
 import d.v;
-import kotlinx.coroutines.al;
-import kotlinx.coroutines.bt;
-import kotlinx.coroutines.internal.q;
+import kotlinx.coroutines.am;
+import kotlinx.coroutines.bw;
 import kotlinx.coroutines.internal.r;
-import kotlinx.coroutines.t;
+import kotlinx.coroutines.internal.s;
+import kotlinx.coroutines.u;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"startDirect", "", "T", "completion", "Lkotlin/coroutines/Continuation;", "block", "Lkotlin/Function1;", "", "startCoroutineUndispatched", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V", "R", "Lkotlin/Function2;", "receiver", "(Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V", "startCoroutineUnintercepted", "startUndispatchedOrReturn", "Lkotlinx/coroutines/internal/ScopeCoroutine;", "Lkotlin/ExtensionFunctionType;", "(Lkotlinx/coroutines/internal/ScopeCoroutine;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "startUndispatchedOrReturnIgnoreTimeout", "undispatchedResult", "shouldThrow", "", "", "startBlock", "Lkotlin/Function0;", "kotlinx-coroutines-core"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"startDirect", "", "T", "completion", "Lkotlin/coroutines/Continuation;", "block", "Lkotlin/Function1;", "", "startCoroutineUndispatched", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V", "R", "Lkotlin/Function2;", "receiver", "(Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V", "startCoroutineUnintercepted", "startUndispatchedOrReturn", "Lkotlinx/coroutines/internal/ScopeCoroutine;", "Lkotlin/ExtensionFunctionType;", "(Lkotlinx/coroutines/internal/ScopeCoroutine;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "startUndispatchedOrReturnIgnoreTimeout", "undispatchedResult", "shouldThrow", "", "", "startBlock", "Lkotlin/Function0;", "kotlinx-coroutines-core"})
 public final class b
 {
-  public static final <T, R> Object a(q<? super T> paramq, R paramR, m<? super R, ? super d.d.d<? super T>, ? extends Object> paramm)
+  public static final <T, R> Object a(r<? super T> paramr, R paramR, m<? super R, ? super d<? super T>, ? extends Object> paramm)
   {
-    AppMethodBeat.i(191153);
-    paramq.gdf();
+    AppMethodBeat.i(190763);
+    paramr.guF();
     try
     {
-      locald = (d.d.d)paramq;
+      locald = (d)paramr;
       if (paramm == null)
       {
         paramR = new v("null cannot be cast to non-null type (R, kotlin.coroutines.Continuation<T>) -> kotlin.Any?");
-        AppMethodBeat.o(191153);
+        AppMethodBeat.o(190763);
         throw paramR;
       }
     }
     catch (Throwable paramR)
     {
-      d.d.d locald;
-      for (paramR = new t(paramR); paramR == a.KUd; paramR = ((m)aa.eU(paramm)).n(paramR, locald))
+      d locald;
+      for (paramR = new u(paramR); paramR == a.MLc; paramR = ((m)ae.p(paramm, 2)).p(paramR, locald))
       {
-        paramq = a.KUd;
-        AppMethodBeat.o(191153);
-        return paramq;
+        paramr = a.MLc;
+        AppMethodBeat.o(190763);
+        return paramr;
       }
-      paramR = paramq.fO(paramR);
-      if (paramR == bt.LSc)
+      paramR = paramr.fR(paramR);
+      if (paramR == bw.NIY)
       {
-        paramq = a.KUd;
-        AppMethodBeat.o(191153);
-        return paramq;
+        paramr = a.MLc;
+        AppMethodBeat.o(190763);
+        return paramr;
       }
-      if ((paramR instanceof t))
+      if ((paramR instanceof u))
       {
-        paramR = ((t)paramR).cause;
-        paramq = paramq.LTe;
-        if ((!al.gdE()) || (!(paramq instanceof d.d.b.a.d))) {}
-        for (paramq = paramR;; paramq = r.a(paramR, (d.d.b.a.d)paramq))
+        paramR = ((u)paramR).cause;
+        paramr = paramr.NKb;
+        if ((!am.gve()) || (!(paramr instanceof e))) {}
+        for (paramr = paramR;; paramr = s.a(paramR, (e)paramr))
         {
-          AppMethodBeat.o(191153);
-          throw paramq;
+          AppMethodBeat.o(190763);
+          throw paramr;
         }
       }
-      paramq = bt.fS(paramR);
-      AppMethodBeat.o(191153);
+      paramr = bw.fV(paramR);
+      AppMethodBeat.o(190763);
     }
-    return paramq;
+    return paramr;
   }
 }
 

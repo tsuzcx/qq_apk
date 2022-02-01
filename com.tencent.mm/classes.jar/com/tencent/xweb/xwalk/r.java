@@ -8,18 +8,18 @@ import org.xwalk.core.XWalkNavigationItem;
 public final class r
   extends WebHistoryItem
 {
-  XWalkNavigationItem KHa;
+  XWalkNavigationItem MxA;
   
   public r(XWalkNavigationItem paramXWalkNavigationItem)
   {
-    this.KHa = paramXWalkNavigationItem;
+    this.MxA = paramXWalkNavigationItem;
   }
   
   protected final WebHistoryItem clone()
   {
-    AppMethodBeat.i(208935);
-    r localr = new r(this.KHa);
-    AppMethodBeat.o(208935);
+    AppMethodBeat.i(195576);
+    r localr = new r(this.MxA);
+    AppMethodBeat.o(195576);
     return localr;
   }
   
@@ -30,40 +30,40 @@ public final class r
   
   public final String getOriginalUrl()
   {
-    AppMethodBeat.i(208933);
-    if (this.KHa == null)
+    AppMethodBeat.i(195574);
+    if (this.MxA == null)
     {
-      AppMethodBeat.o(208933);
+      AppMethodBeat.o(195574);
       return null;
     }
-    String str = this.KHa.getOriginalUrl();
-    AppMethodBeat.o(208933);
+    String str = this.MxA.getOriginalUrl();
+    AppMethodBeat.o(195574);
     return str;
   }
   
   public final String getTitle()
   {
-    AppMethodBeat.i(208934);
-    if (this.KHa == null)
+    AppMethodBeat.i(195575);
+    if (this.MxA == null)
     {
-      AppMethodBeat.o(208934);
+      AppMethodBeat.o(195575);
       return null;
     }
-    String str = this.KHa.getTitle();
-    AppMethodBeat.o(208934);
+    String str = this.MxA.getTitle();
+    AppMethodBeat.o(195575);
     return str;
   }
   
   public final String getUrl()
   {
-    AppMethodBeat.i(208932);
-    if (this.KHa == null)
+    AppMethodBeat.i(195573);
+    if (this.MxA == null)
     {
-      AppMethodBeat.o(208932);
+      AppMethodBeat.o(195573);
       return null;
     }
-    String str = this.KHa.getUrl();
-    AppMethodBeat.o(208932);
+    String str = this.MxA.getUrl();
+    AppMethodBeat.o(195573);
     return str;
   }
 }

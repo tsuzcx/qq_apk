@@ -2,7 +2,7 @@ package d.l.b.a.b.e.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.k.h;
 import d.n.n;
 import java.util.Collection;
@@ -13,19 +13,19 @@ import java.util.Map;
 
 public final class b
 {
-  public static final b LyP;
+  public static final b NpM;
   private static final Map<String, String> map;
   
   static
   {
     AppMethodBeat.i(59229);
-    LyP = new b();
+    NpM = new b();
     Map localMap = (Map)new LinkedHashMap();
     Object localObject1 = j.listOf(new String[] { "Boolean", "Z", "Char", "C", "Byte", "B", "Short", "S", "Int", "I", "Float", "F", "Long", "J", "Double", "D" });
     Object localObject2 = h.a((d.k.b)j.o((Collection)localObject1), 2);
-    int i = ((d.k.b)localObject2).KVb;
-    int j = ((d.k.b)localObject2).KVc;
-    int k = ((d.k.b)localObject2).kar;
+    int i = ((d.k.b)localObject2).MMh;
+    int j = ((d.k.b)localObject2).MMi;
+    int k = ((d.k.b)localObject2).kuN;
     if (k >= 0)
     {
       if (i > j) {}
@@ -45,48 +45,48 @@ public final class b
     }
     localMap.put("kotlin/Unit", "V");
     localObject1 = new b.a(localMap);
-    ((b.a)localObject1).mY("Any", "java/lang/Object");
-    ((b.a)localObject1).mY("Nothing", "java/lang/Void");
-    ((b.a)localObject1).mY("Annotation", "java/lang/annotation/Annotation");
+    ((b.a)localObject1).nw("Any", "java/lang/Object");
+    ((b.a)localObject1).nw("Nothing", "java/lang/Void");
+    ((b.a)localObject1).nw("Annotation", "java/lang/annotation/Annotation");
     localObject2 = j.listOf(new String[] { "String", "CharSequence", "Throwable", "Cloneable", "Number", "Comparable", "Enum" }).iterator();
     String str;
     while (((Iterator)localObject2).hasNext())
     {
       str = (String)((Iterator)localObject2).next();
-      ((b.a)localObject1).mY(str, "java/lang/".concat(String.valueOf(str)));
+      ((b.a)localObject1).nw(str, "java/lang/".concat(String.valueOf(str)));
     }
     localObject2 = j.listOf(new String[] { "Iterator", "Collection", "List", "Set", "Map", "ListIterator" }).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       str = (String)((Iterator)localObject2).next();
-      ((b.a)localObject1).mY("collections/".concat(String.valueOf(str)), "java/util/".concat(String.valueOf(str)));
-      ((b.a)localObject1).mY("collections/Mutable".concat(String.valueOf(str)), "java/util/".concat(String.valueOf(str)));
+      ((b.a)localObject1).nw("collections/".concat(String.valueOf(str)), "java/util/".concat(String.valueOf(str)));
+      ((b.a)localObject1).nw("collections/Mutable".concat(String.valueOf(str)), "java/util/".concat(String.valueOf(str)));
     }
-    ((b.a)localObject1).mY("collections/Iterable", "java/lang/Iterable");
-    ((b.a)localObject1).mY("collections/MutableIterable", "java/lang/Iterable");
-    ((b.a)localObject1).mY("collections/Map.Entry", "java/util/Map$Entry");
-    ((b.a)localObject1).mY("collections/MutableMap.MutableEntry", "java/util/Map$Entry");
+    ((b.a)localObject1).nw("collections/Iterable", "java/lang/Iterable");
+    ((b.a)localObject1).nw("collections/MutableIterable", "java/lang/Iterable");
+    ((b.a)localObject1).nw("collections/Map.Entry", "java/util/Map$Entry");
+    ((b.a)localObject1).nw("collections/MutableMap.MutableEntry", "java/util/Map$Entry");
     i = 0;
     while (i <= 22)
     {
-      ((b.a)localObject1).mY("Function".concat(String.valueOf(i)), "kotlin/jvm/functions/Function".concat(String.valueOf(i)));
-      ((b.a)localObject1).mY("reflect/KFunction".concat(String.valueOf(i)), "kotlin/reflect/KFunction");
+      ((b.a)localObject1).nw("Function".concat(String.valueOf(i)), "kotlin/jvm/functions/Function".concat(String.valueOf(i)));
+      ((b.a)localObject1).nw("reflect/KFunction".concat(String.valueOf(i)), "kotlin/reflect/KFunction");
       i += 1;
     }
     localObject2 = j.listOf(new String[] { "Char", "Byte", "Short", "Int", "Float", "Long", "Double", "String", "Enum" }).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       str = (String)((Iterator)localObject2).next();
-      ((b.a)localObject1).mY(str + ".Companion", "kotlin/jvm/internal/" + str + "CompanionObject");
+      ((b.a)localObject1).nw(str + ".Companion", "kotlin/jvm/internal/" + str + "CompanionObject");
     }
     map = localMap;
     AppMethodBeat.o(59229);
   }
   
-  public static final String aWz(String paramString)
+  public static final String bcC(String paramString)
   {
     AppMethodBeat.i(59228);
-    k.h(paramString, "classId");
+    p.h(paramString, "classId");
     String str2 = (String)map.get(paramString);
     String str1 = str2;
     if (str2 == null) {
@@ -98,7 +98,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     d.l.b.a.b.e.c.a.b
  * JD-Core Version:    0.7.0.1
  */

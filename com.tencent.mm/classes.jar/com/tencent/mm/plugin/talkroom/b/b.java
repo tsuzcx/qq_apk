@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aet;
-import com.tencent.mm.protocal.protobuf.aeu;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.ahc;
+import com.tencent.mm.protocal.protobuf.ahd;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
   extends n
   implements k
 {
-  private g callback;
-  private final com.tencent.mm.ak.b rr;
+  private f callback;
+  private final com.tencent.mm.al.b rr;
   private int sceneType;
   
   public b(int paramInt1, long paramLong, String paramString, int paramInt2)
@@ -25,26 +25,26 @@ public final class b
     AppMethodBeat.i(29554);
     this.sceneType = paramInt2;
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new aet();
-    ((b.a)localObject).hvu = new aeu();
+    ((b.a)localObject).hNM = new ahc();
+    ((b.a)localObject).hNN = new ahd();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/exittalkroom";
     ((b.a)localObject).funcId = 333;
-    ((b.a)localObject).reqCmdId = 148;
+    ((b.a)localObject).hNO = 148;
     ((b.a)localObject).respCmdId = 1000000148;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (aet)this.rr.hvr.hvw;
-    ((aet)localObject).Exe = paramString;
-    ((aet)localObject).Exf = paramInt1;
-    ((aet)localObject).Exg = paramLong;
-    ((aet)localObject).Scene = paramInt2;
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (ahc)this.rr.hNK.hNQ;
+    ((ahc)localObject).GeH = paramString;
+    ((ahc)localObject).GeI = paramInt1;
+    ((ahc)localObject).GeJ = paramLong;
+    ((ahc)localObject).Scene = paramInt2;
     AppMethodBeat.o(29554);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(29555);
-    ac.d("MicroMsg.NetSceneExitTalkRoom", "doScene %d", new Object[] { Integer.valueOf(this.sceneType) });
-    this.callback = paramg;
+    ad.d("MicroMsg.NetSceneExitTalkRoom", "doScene %d", new Object[] { Integer.valueOf(this.sceneType) });
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(29555);
     return i;
@@ -58,7 +58,7 @@ public final class b
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29556);
-    ac.d("MicroMsg.NetSceneExitTalkRoom", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    ad.d("MicroMsg.NetSceneExitTalkRoom", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -71,7 +71,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.b.b
  * JD-Core Version:    0.7.0.1
  */

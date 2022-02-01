@@ -11,9 +11,9 @@ import java.lang.annotation.Target;
 @Target({java.lang.annotation.ElementType.FIELD})
 public @interface a
 {
-  boolean xf() default true;
+  boolean yC() default true;
   
-  boolean xg() default true;
+  boolean yD() default true;
 }
 
 

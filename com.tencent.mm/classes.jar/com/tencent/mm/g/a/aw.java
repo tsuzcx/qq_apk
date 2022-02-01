@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class aw
   extends b
 {
-  public a dat;
-  public b dau;
+  public a dlJ;
   
   public aw()
   {
@@ -16,30 +15,22 @@ public final class aw
   
   private aw(byte paramByte)
   {
-    AppMethodBeat.i(91198);
-    this.dat = new a();
-    this.dau = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(120830);
+    this.dlJ = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91198);
+    AppMethodBeat.o(120830);
   }
   
   public static final class a
   {
-    public String dav;
-    public boolean daw;
-    public boolean dax;
-    public boolean day;
-  }
-  
-  public static final class b
-  {
-    public boolean result;
+    public int dlK;
+    public int scene = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.aw
  * JD-Core Version:    0.7.0.1
  */

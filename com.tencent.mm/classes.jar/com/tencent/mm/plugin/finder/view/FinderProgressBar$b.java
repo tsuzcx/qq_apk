@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.view;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderProgressBar$Companion;", "", "()V", "ANIMATION_DURATION", "", "DISMISS_DELAY", "TAG", "", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderProgressBar$Companion;", "", "()V", "ANIMATION_DURATION", "", "DISMISS_DELAY", "TAG", "", "plugin-finder_release"})
 public final class FinderProgressBar$b {}
 
 

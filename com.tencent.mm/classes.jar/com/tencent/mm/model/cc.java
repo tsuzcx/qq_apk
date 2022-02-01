@@ -1,359 +1,443 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.b;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.messenger.foundation.a.o;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bi;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.sdk.platformtools.bt;
+import junit.framework.Assert;
 
 public final class cc
-  implements f
 {
-  private Map<String, List<a>> hpX;
-  private Map<String, List<a>> hpY;
-  private Map<String, List<p>> hpZ;
-  private Map<String, o> hqa;
+  private a hIk;
+  private long hIl;
+  private long hIm;
+  private String hIn;
+  private int hIo;
   
-  public cc()
+  public cc(a parama)
   {
-    AppMethodBeat.i(42988);
-    this.hpX = new HashMap();
-    this.hpY = new HashMap();
-    this.hpZ = new HashMap();
-    this.hqa = new ConcurrentHashMap();
-    AppMethodBeat.o(42988);
+    AppMethodBeat.i(132274);
+    this.hIk = null;
+    this.hIl = 0L;
+    this.hIm = 0L;
+    this.hIn = "";
+    this.hIo = 1;
+    Assert.assertTrue(true);
+    this.hIk = parama;
+    aCC();
+    AppMethodBeat.o(132274);
   }
   
-  @Deprecated
-  private void a(String paramString, f.a parama, boolean paramBoolean)
+  private void aCC()
   {
-    AppMethodBeat.i(42996);
-    if (paramBoolean) {}
-    synchronized (this.hpY)
+    this.hIo = 1;
+    this.hIl = 0L;
+    this.hIm = 0L;
+    this.hIn = "";
+  }
+  
+  private void aCG()
+  {
+    try
     {
-      paramString = (List)???.get(paramString);
-      if ((paramString == null) || (paramString.isEmpty()))
-      {
-        ac.w("MicroMsg.SysCmdMsgExtension", "listener list is empty, return now");
-        AppMethodBeat.o(42996);
-        return;
-        ??? = this.hpX;
+      AppMethodBeat.i(132278);
+      if ((this.hIo != 1) && (this.hIl + this.hIm < bt.flT())) {
+        aCE();
       }
-    }
-    ac.i("MicroMsg.SysCmdMsgExtension", "listener list size is %d", new Object[] { Integer.valueOf(paramString.size()) });
-    paramString = paramString.iterator();
-    while (paramString.hasNext()) {
-      ((a)paramString.next()).a(parama);
-    }
-    AppMethodBeat.o(42996);
-  }
-  
-  @Deprecated
-  public final void a(String paramString, a parama, boolean paramBoolean)
-  {
-    AppMethodBeat.i(42989);
-    if ((bs.isNullOrNil(paramString)) || (parama == null))
-    {
-      AppMethodBeat.o(42989);
+      AppMethodBeat.o(132278);
       return;
     }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      Object localObject;
-      synchronized (this.hpY)
-      {
-        localObject = (List)???.get(paramString);
-        if (localObject == null)
-        {
-          localObject = new LinkedList();
-          ???.put(paramString, localObject);
-          paramString = (String)localObject;
-          try
-          {
-            if (!paramString.contains(parama)) {
-              paramString.add(parama);
-            }
-            return;
-          }
-          finally
-          {
-            AppMethodBeat.o(42989);
-          }
-          ??? = this.hpX;
-        }
-      }
-      paramString = (String)localObject;
-    }
+    finally {}
   }
   
-  public final void a(String paramString, o paramo)
+  /* Error */
+  public final boolean aCD()
   {
-    AppMethodBeat.i(42993);
-    if ((bs.isNullOrNil(paramString)) || (paramo == null))
-    {
-      AppMethodBeat.o(42993);
-      return;
-    }
-    if (this.hqa.containsKey(paramString)) {
-      ac.w("MicroMsg.SysCmdMsgExtension", "NewXmlConsumer for %s has exist! %s", new Object[] { paramString, bs.eWi() });
-    }
-    this.hqa.put(paramString, paramo);
-    AppMethodBeat.o(42993);
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_1
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: ldc 67
+    //   6: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: invokestatic 61	com/tencent/mm/sdk/platformtools/bt:flT	()J
+    //   12: lstore 4
+    //   14: aload_0
+    //   15: invokestatic 71	com/tencent/mm/sdk/platformtools/bt:flS	()Lcom/tencent/mm/sdk/platformtools/at;
+    //   18: invokevirtual 77	com/tencent/mm/sdk/platformtools/at:toString	()Ljava/lang/String;
+    //   21: putfield 38	com/tencent/mm/model/cc:hIn	Ljava/lang/String;
+    //   24: aload_0
+    //   25: getfield 40	com/tencent/mm/model/cc:hIo	I
+    //   28: iconst_1
+    //   29: if_icmpne +73 -> 102
+    //   32: aload_0
+    //   33: lload 4
+    //   35: putfield 34	com/tencent/mm/model/cc:hIm	J
+    //   38: aload_0
+    //   39: ldc2_w 78
+    //   42: putfield 32	com/tencent/mm/model/cc:hIl	J
+    //   45: ldc 81
+    //   47: ldc 83
+    //   49: iconst_2
+    //   50: anewarray 4	java/lang/Object
+    //   53: dup
+    //   54: iconst_0
+    //   55: ldc2_w 78
+    //   58: invokestatic 89	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   61: aastore
+    //   62: dup
+    //   63: iconst_1
+    //   64: aload_0
+    //   65: getfield 38	com/tencent/mm/model/cc:hIn	Ljava/lang/String;
+    //   68: aastore
+    //   69: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   72: aload_0
+    //   73: iconst_2
+    //   74: putfield 40	com/tencent/mm/model/cc:hIo	I
+    //   77: aload_0
+    //   78: getfield 30	com/tencent/mm/model/cc:hIk	Lcom/tencent/mm/model/cc$a;
+    //   81: invokeinterface 97 1 0
+    //   86: ifeq +7 -> 93
+    //   89: aload_0
+    //   90: invokevirtual 100	com/tencent/mm/model/cc:aCF	()V
+    //   93: ldc 67
+    //   95: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: aload_0
+    //   99: monitorexit
+    //   100: iload_1
+    //   101: ireturn
+    //   102: aload_0
+    //   103: getfield 34	com/tencent/mm/model/cc:hIm	J
+    //   106: aload_0
+    //   107: getfield 32	com/tencent/mm/model/cc:hIl	J
+    //   110: ladd
+    //   111: lstore_2
+    //   112: lload 4
+    //   114: ldc2_w 78
+    //   117: ladd
+    //   118: lstore 4
+    //   120: lload 4
+    //   122: lload_2
+    //   123: lcmp
+    //   124: ifle +16 -> 140
+    //   127: aload_0
+    //   128: aload_0
+    //   129: getfield 32	com/tencent/mm/model/cc:hIl	J
+    //   132: lload 4
+    //   134: lload_2
+    //   135: lsub
+    //   136: ladd
+    //   137: putfield 32	com/tencent/mm/model/cc:hIl	J
+    //   140: ldc 81
+    //   142: ldc 102
+    //   144: iconst_5
+    //   145: anewarray 4	java/lang/Object
+    //   148: dup
+    //   149: iconst_0
+    //   150: aload_0
+    //   151: getfield 40	com/tencent/mm/model/cc:hIo	I
+    //   154: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   157: aastore
+    //   158: dup
+    //   159: iconst_1
+    //   160: ldc2_w 78
+    //   163: invokestatic 89	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   166: aastore
+    //   167: dup
+    //   168: iconst_2
+    //   169: lload 4
+    //   171: lload_2
+    //   172: lsub
+    //   173: invokestatic 89	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   176: aastore
+    //   177: dup
+    //   178: iconst_3
+    //   179: aload_0
+    //   180: getfield 32	com/tencent/mm/model/cc:hIl	J
+    //   183: invokestatic 89	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   186: aastore
+    //   187: dup
+    //   188: iconst_4
+    //   189: aload_0
+    //   190: getfield 38	com/tencent/mm/model/cc:hIn	Ljava/lang/String;
+    //   193: aastore
+    //   194: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   197: ldc 67
+    //   199: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   202: iconst_0
+    //   203: istore_1
+    //   204: goto -106 -> 98
+    //   207: astore 6
+    //   209: aload_0
+    //   210: monitorexit
+    //   211: aload 6
+    //   213: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	214	0	this	cc
+    //   1	203	1	bool	boolean
+    //   111	61	2	l1	long
+    //   12	158	4	l2	long
+    //   207	5	6	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   4	93	207	finally
+    //   93	98	207	finally
+    //   102	112	207	finally
+    //   127	140	207	finally
+    //   140	202	207	finally
   }
   
-  public final void a(String paramString, p paramp)
+  /* Error */
+  public final void aCE()
   {
-    AppMethodBeat.i(42991);
-    if ((bs.isNullOrNil(paramString)) || (paramp == null))
-    {
-      AppMethodBeat.o(42991);
-      return;
-    }
-    for (;;)
-    {
-      Object localObject;
-      synchronized (this.hpZ)
-      {
-        localObject = (List)this.hpZ.get(paramString);
-        if (localObject == null)
-        {
-          localObject = new LinkedList();
-          this.hpZ.put(paramString, localObject);
-          paramString = (String)localObject;
-        }
-      }
-      paramString = (String)localObject;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 108
+    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: ldc 81
+    //   9: ldc 110
+    //   11: iconst_2
+    //   12: anewarray 4	java/lang/Object
+    //   15: dup
+    //   16: iconst_0
+    //   17: aload_0
+    //   18: getfield 40	com/tencent/mm/model/cc:hIo	I
+    //   21: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   24: aastore
+    //   25: dup
+    //   26: iconst_1
+    //   27: invokestatic 71	com/tencent/mm/sdk/platformtools/bt:flS	()Lcom/tencent/mm/sdk/platformtools/at;
+    //   30: aastore
+    //   31: invokestatic 113	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   34: aload_0
+    //   35: getfield 40	com/tencent/mm/model/cc:hIo	I
+    //   38: iconst_1
+    //   39: if_icmpne +28 -> 67
+    //   42: ldc 81
+    //   44: ldc 115
+    //   46: iconst_1
+    //   47: anewarray 4	java/lang/Object
+    //   50: dup
+    //   51: iconst_0
+    //   52: invokestatic 71	com/tencent/mm/sdk/platformtools/bt:flS	()Lcom/tencent/mm/sdk/platformtools/at;
+    //   55: aastore
+    //   56: invokestatic 113	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   59: ldc 108
+    //   61: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: aload_0
+    //   65: monitorexit
+    //   66: return
+    //   67: aload_0
+    //   68: invokespecial 49	com/tencent/mm/model/cc:aCC	()V
+    //   71: new 117	com/tencent/mm/g/a/wh
+    //   74: dup
+    //   75: invokespecial 118	com/tencent/mm/g/a/wh:<init>	()V
+    //   78: astore_1
+    //   79: aload_1
+    //   80: getfield 122	com/tencent/mm/g/a/wh:dKE	Lcom/tencent/mm/g/a/wh$a;
+    //   83: iconst_1
+    //   84: putfield 127	com/tencent/mm/g/a/wh$a:status	I
+    //   87: getstatic 133	com/tencent/mm/sdk/b/a:IbL	Lcom/tencent/mm/sdk/b/a;
+    //   90: aload_1
+    //   91: invokevirtual 137	com/tencent/mm/sdk/b/a:l	(Lcom/tencent/mm/sdk/b/b;)Z
+    //   94: pop
+    //   95: ldc 108
+    //   97: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: goto -36 -> 64
+    //   103: astore_1
+    //   104: aload_0
+    //   105: monitorexit
+    //   106: aload_1
+    //   107: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	108	0	this	cc
+    //   78	13	1	localwh	com.tencent.mm.g.a.wh
+    //   103	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	64	103	finally
+    //   67	100	103	finally
   }
   
-  public final f.b b(f.a parama)
+  /* Error */
+  public final void aCF()
   {
-    AppMethodBeat.i(42995);
-    Object localObject1 = parama.fXi;
-    switch (((cu)localObject1).tit)
-    {
-    default: 
-      ac.w("MicroMsg.SysCmdMsgExtension", "cmdAM msgType is %d, ignore, return now", new Object[] { Integer.valueOf(((cu)localObject1).tit) });
-      AppMethodBeat.o(42995);
-      return null;
-    case 10001: 
-      a(z.a(((cu)localObject1).DPT), parama, false);
-      e.wTc.kvStat(10395, String.valueOf(((cu)localObject1).vTQ));
-      AppMethodBeat.o(42995);
-      return null;
-    }
-    Object localObject2 = z.a(((cu)localObject1).DPV);
-    if (bs.isNullOrNil((String)localObject2))
-    {
-      ac.e("MicroMsg.SysCmdMsgExtension", "null msg content");
-      AppMethodBeat.o(42995);
-      return null;
-    }
-    String str;
-    if (((String)localObject2).startsWith("~SEMI_XML~"))
-    {
-      localObject1 = bi.aLg((String)localObject2);
-      if (localObject1 == null)
-      {
-        ac.e("MicroMsg.SysCmdMsgExtension", "SemiXml values is null, msgContent %s", new Object[] { localObject2 });
-        AppMethodBeat.o(42995);
-        return null;
-      }
-      str = "brand_service";
-      ac.d("MicroMsg.SysCmdMsgExtension", "recieve a syscmd_newxml %s subType %s", new Object[] { localObject2, str });
-      if (str != null) {
-        a(str, parama, true);
-      }
-    }
-    else
-    {
-      for (;;)
-      {
-        synchronized (this.hpZ)
-        {
-          localObject2 = (List)this.hpZ.get(str);
-          if ((localObject2 == null) || (((List)localObject2).isEmpty()))
-          {
-            ac.w("MicroMsg.SysCmdMsgExtension", "listener list is empty, return now");
-            localObject2 = (o)this.hqa.get(str);
-            if (localObject2 == null) {
-              break label601;
-            }
-            parama = ((o)localObject2).a(str, (Map)localObject1, parama);
-            AppMethodBeat.o(42995);
-            return parama;
-            int i = ((String)localObject2).indexOf("<sysmsg");
-            if (i != -1)
-            {
-              localObject1 = ((String)localObject2).substring(i);
-              ac.d("MicroMsg.SysCmdMsgExtension", "oneliang, msg content:%s,sub content:%s", new Object[] { localObject2, localObject1 });
-              localObject1 = bv.L((String)localObject1, "sysmsg");
-              if (localObject1 == null)
-              {
-                ac.e("MicroMsg.SysCmdMsgExtension", "XmlParser values is null, msgContent %s", new Object[] { localObject2 });
-                AppMethodBeat.o(42995);
-                return null;
-              }
-              str = (String)((Map)localObject1).get(".sysmsg.$type");
-              break;
-            }
-            i = ((String)localObject2).indexOf("<appmsg");
-            if (i != -1)
-            {
-              ac.i("MicroMsg.SysCmdMsgExtension", "msgContent start with <appmsg");
-              localObject1 = ((String)localObject2).substring(i);
-              ac.d("MicroMsg.SysCmdMsgExtension", "oneliang, msg content:%s,sub content:%s", new Object[] { localObject2, localObject1 });
-              localObject1 = bv.L((String)localObject1, "appmsg");
-              if (localObject1 == null)
-              {
-                ac.e("MicroMsg.SysCmdMsgExtension", "XmlParser values is null, msgContent %s", new Object[] { localObject2 });
-                AppMethodBeat.o(42995);
-                return null;
-              }
-              str = (String)((Map)localObject1).get(".appmsg.title");
-              break;
-            }
-            ac.e("MicroMsg.SysCmdMsgExtension", "msgContent not start with <sysmsg or <appmsg");
-            AppMethodBeat.o(42995);
-            return null;
-          }
-        }
-        ac.i("MicroMsg.SysCmdMsgExtension", "listener list size is %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
-        try
-        {
-          ??? = ((List)localObject2).iterator();
-          while (((Iterator)???).hasNext()) {
-            ((p)((Iterator)???).next()).onNewXmlReceived(str, (Map)localObject1, parama);
-          }
-        }
-        finally
-        {
-          AppMethodBeat.o(42995);
-        }
-      }
-      label601:
-      ac.e("MicroMsg.SysCmdMsgExtension", "no NewXmlConsumer to consume cmd %s!!", new Object[] { str });
-    }
-    AppMethodBeat.o(42995);
-    return null;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 138
+    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 40	com/tencent/mm/model/cc:hIo	I
+    //   11: iconst_2
+    //   12: if_icmpeq +38 -> 50
+    //   15: ldc 81
+    //   17: ldc 140
+    //   19: iconst_2
+    //   20: anewarray 4	java/lang/Object
+    //   23: dup
+    //   24: iconst_0
+    //   25: aload_0
+    //   26: getfield 40	com/tencent/mm/model/cc:hIo	I
+    //   29: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   32: aastore
+    //   33: dup
+    //   34: iconst_1
+    //   35: invokestatic 71	com/tencent/mm/sdk/platformtools/bt:flS	()Lcom/tencent/mm/sdk/platformtools/at;
+    //   38: aastore
+    //   39: invokestatic 143	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   42: ldc 138
+    //   44: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: return
+    //   50: ldc 81
+    //   52: ldc 145
+    //   54: iconst_2
+    //   55: anewarray 4	java/lang/Object
+    //   58: dup
+    //   59: iconst_0
+    //   60: aload_0
+    //   61: getfield 34	com/tencent/mm/model/cc:hIm	J
+    //   64: invokestatic 149	com/tencent/mm/sdk/platformtools/bt:Df	(J)J
+    //   67: invokestatic 89	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   70: aastore
+    //   71: dup
+    //   72: iconst_1
+    //   73: invokestatic 71	com/tencent/mm/sdk/platformtools/bt:flS	()Lcom/tencent/mm/sdk/platformtools/at;
+    //   76: aastore
+    //   77: invokestatic 113	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   80: aload_0
+    //   81: iconst_3
+    //   82: putfield 40	com/tencent/mm/model/cc:hIo	I
+    //   85: new 117	com/tencent/mm/g/a/wh
+    //   88: dup
+    //   89: invokespecial 118	com/tencent/mm/g/a/wh:<init>	()V
+    //   92: astore_1
+    //   93: aload_1
+    //   94: getfield 122	com/tencent/mm/g/a/wh:dKE	Lcom/tencent/mm/g/a/wh$a;
+    //   97: iconst_3
+    //   98: putfield 127	com/tencent/mm/g/a/wh$a:status	I
+    //   101: getstatic 133	com/tencent/mm/sdk/b/a:IbL	Lcom/tencent/mm/sdk/b/a;
+    //   104: aload_1
+    //   105: invokevirtual 137	com/tencent/mm/sdk/b/a:l	(Lcom/tencent/mm/sdk/b/b;)Z
+    //   108: pop
+    //   109: ldc 138
+    //   111: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   114: goto -67 -> 47
+    //   117: astore_1
+    //   118: aload_0
+    //   119: monitorexit
+    //   120: aload_1
+    //   121: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	122	0	this	cc
+    //   92	13	1	localwh	com.tencent.mm.g.a.wh
+    //   117	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	47	117	finally
+    //   50	114	117	finally
   }
   
-  public final void b(f.c paramc)
+  /* Error */
+  public final boolean aCH()
   {
-    AppMethodBeat.i(42997);
-    if ((paramc == null) || (paramc.hvO == null))
-    {
-      AppMethodBeat.o(42997);
-      return;
-    }
-    ac.i("MicroMsg.SysCmdMsgExtension", "delete subType:%s, msgId:%s", new Object[] { paramc.hvO, paramc.hvP });
-    Object localObject2 = paramc.hvO;
-    synchronized (this.hpY)
-    {
-      localObject2 = (List)((Map)???).get(localObject2);
-      if ((localObject2 == null) || (((List)localObject2).isEmpty()))
-      {
-        ac.w("MicroMsg.SysCmdMsgExtension", "listener list is empty, return now");
-        AppMethodBeat.o(42997);
-        return;
-      }
-    }
-    ac.i("MicroMsg.SysCmdMsgExtension", "listener list size is %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
-    ??? = ((List)localObject2).iterator();
-    while (((Iterator)???).hasNext()) {
-      ((a)((Iterator)???).next()).a(paramc);
-    }
-    AppMethodBeat.o(42997);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 151
+    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: invokespecial 153	com/tencent/mm/model/cc:aCG	()V
+    //   11: aload_0
+    //   12: getfield 40	com/tencent/mm/model/cc:hIo	I
+    //   15: iconst_2
+    //   16: if_icmpne +14 -> 30
+    //   19: iconst_1
+    //   20: istore_1
+    //   21: ldc 151
+    //   23: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: aload_0
+    //   27: monitorexit
+    //   28: iload_1
+    //   29: ireturn
+    //   30: iconst_0
+    //   31: istore_1
+    //   32: ldc 151
+    //   34: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   37: goto -11 -> 26
+    //   40: astore_2
+    //   41: aload_0
+    //   42: monitorexit
+    //   43: aload_2
+    //   44: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	45	0	this	cc
+    //   20	12	1	bool	boolean
+    //   40	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	19	40	finally
+    //   21	26	40	finally
+    //   32	37	40	finally
   }
   
-  @Deprecated
-  public final void b(String paramString, a parama, boolean paramBoolean)
+  /* Error */
+  public final boolean aCI()
   {
-    AppMethodBeat.i(42990);
-    if ((bs.isNullOrNil(paramString)) || (parama == null))
-    {
-      AppMethodBeat.o(42990);
-      return;
-    }
-    if (paramBoolean) {}
-    synchronized (this.hpY)
-    {
-      paramString = (List)???.get(paramString);
-      if (paramString != null)
-      {
-        try
-        {
-          paramString.remove(parama);
-          return;
-        }
-        finally
-        {
-          AppMethodBeat.o(42990);
-        }
-        ??? = this.hpX;
-      }
-    }
-    AppMethodBeat.o(42990);
-  }
-  
-  public final void b(String paramString, o arg2)
-  {
-    AppMethodBeat.i(42994);
-    if ((bs.isNullOrNil(paramString)) || (??? == null))
-    {
-      AppMethodBeat.o(42994);
-      return;
-    }
-    synchronized (this.hqa)
-    {
-      this.hqa.remove(paramString);
-      AppMethodBeat.o(42994);
-      return;
-    }
-  }
-  
-  public final void b(String paramString, p paramp)
-  {
-    AppMethodBeat.i(42992);
-    if ((bs.isNullOrNil(paramString)) || (paramp == null))
-    {
-      AppMethodBeat.o(42992);
-      return;
-    }
-    synchronized (this.hpZ)
-    {
-      paramString = (List)this.hpZ.get(paramString);
-      if (paramString == null) {}
-    }
-    AppMethodBeat.o(42992);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 155
+    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: invokespecial 153	com/tencent/mm/model/cc:aCG	()V
+    //   11: aload_0
+    //   12: getfield 40	com/tencent/mm/model/cc:hIo	I
+    //   15: iconst_3
+    //   16: if_icmpne +14 -> 30
+    //   19: iconst_1
+    //   20: istore_1
+    //   21: ldc 155
+    //   23: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: aload_0
+    //   27: monitorexit
+    //   28: iload_1
+    //   29: ireturn
+    //   30: iconst_0
+    //   31: istore_1
+    //   32: ldc 155
+    //   34: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   37: goto -11 -> 26
+    //   40: astore_2
+    //   41: aload_0
+    //   42: monitorexit
+    //   43: aload_2
+    //   44: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	45	0	this	cc
+    //   20	12	1	bool	boolean
+    //   40	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	19	40	finally
+    //   21	26	40	finally
+    //   32	37	40	finally
   }
   
   public static abstract interface a
   {
-    public abstract void a(f.a parama);
-    
-    public abstract void a(f.c paramc);
+    public abstract boolean aCJ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.model.cc
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
 import com.tencent.mm.plugin.sns.ui.widget.SnsPostDescPreloadTextView;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.List;
 
 public class AsyncNormalTextView
@@ -21,9 +21,9 @@ public class AsyncNormalTextView
 {
   private String content;
   private Context context;
-  private be xZJ;
-  private BaseTimeLineItem.BaseViewHolder yxx;
-  private int yxy = 0;
+  private BaseTimeLineItem.BaseViewHolder zOJ;
+  private int zOK = 0;
+  private bh zpI;
   
   public AsyncNormalTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,63 +31,64 @@ public class AsyncNormalTextView
     this.context = paramContext;
   }
   
-  public final void a(String paramString, be parambe, int paramInt, bf parambf)
+  public final void a(String paramString, bh parambh, int paramInt, bi parambi)
   {
     AppMethodBeat.i(97761);
-    this.yxy = paramInt;
+    this.zOK = paramInt;
     this.content = paramString;
-    this.xZJ = parambe;
-    this.yyC = parambf;
-    if (bs.isNullOrNil(paramString)) {
+    this.zpI = parambh;
+    this.zPN = parambi;
+    if (bt.isNullOrNil(paramString)) {
       setVisibility(8);
     }
     AppMethodBeat.o(97761);
   }
   
-  public final void dNe()
+  public final void dZt()
   {
     AppMethodBeat.i(97763);
     Object localObject1;
-    if (!bs.isNullOrNil(this.content))
+    if (!bt.isNullOrNil(this.content))
     {
       System.currentTimeMillis();
       setVisibility(0);
-      if (this.yxy != 1) {
-        break label236;
+      if (this.zOK != 1) {
+        break label244;
       }
       if (this.content.length() <= 100) {
-        break label228;
+        break label236;
       }
       localObject1 = this.content.substring(0, 100) + "...";
       this.content = ((String)localObject1);
-      localObject1 = new SpannableStringBuilder(k.b(this.context, this.content, this.yyw.getTextSize()));
-      a(this.yxy, (CharSequence)localObject1, TextView.BufferType.NORMAL, this.xZJ.yyB, this.yyC.yzm, this.yyC.yUR, this.xZJ, this.content, this.yyC.yxA);
+      localObject1 = new SpannableStringBuilder(k.b(this.context, this.content, this.zPH.getTextSize()));
+      a(this.zOK, (CharSequence)localObject1, TextView.BufferType.NORMAL, this.zpI.zPM, this.zPN.zQD, this.zPN.AmA, this.zpI, this.content, this.zPN.zOM);
     }
     for (;;)
     {
-      localObject1 = new ba(this.yyC.yUR, this.yyC.yzm, false, false, 1);
-      ((ba)localObject1).userName = this.yyC.lhM;
-      this.yyw.setTag(localObject1);
-      if (this.yyx != null) {
-        this.yyx.setTag(localObject1);
+      localObject1 = new bd(this.zPN.AmA, this.zPN.zQD, false, false, 1);
+      ((bd)localObject1).userName = this.zPN.lEN;
+      this.zPH.setTag(localObject1);
+      if (this.zPI != null) {
+        this.zPI.setTag(localObject1);
       }
-      this.yyy.setTag(this.yxx);
+      this.zPJ.setTag(this.zOJ);
+      setTag(this.zOJ);
       AppMethodBeat.o(97763);
       return;
-      label228:
+      label236:
       localObject1 = this.content;
       break;
-      label236:
+      label244:
       localObject1 = null;
-      if (this.yyC != null) {
-        localObject1 = this.yyC.yUP;
+      if (this.zPN != null) {
+        localObject1 = this.zPN.Amy;
       }
       Object localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = new SpannableStringBuilder(k.b(this.context, this.content, this.yyw.getTextSize()));
+        localObject2 = new SpannableStringBuilder(k.b(this.context, this.content, this.zPH.getTextSize()));
       }
-      if (this.yyC != null) {
-        a(this.yxy, (CharSequence)localObject2, TextView.BufferType.SPANNABLE, this.xZJ.yyB, this.yyC.yzm, this.yyC.yUR, this.xZJ, this.content, this.yyC.yxA);
+      if (this.zPN != null) {
+        a(this.zOK, (CharSequence)localObject2, TextView.BufferType.SPANNABLE, this.zpI.zPM, this.zPN.zQD, this.zPN.AmA, this.zpI, this.content, this.zPN.zOM);
       }
     }
   }
@@ -131,13 +132,13 @@ public class AsyncNormalTextView
   public void setContentWidth(int paramInt)
   {
     AppMethodBeat.i(97768);
-    if (this.yyx != null)
+    if (this.zPI != null)
     {
-      this.yyw.setSpecialWidth(paramInt);
+      this.zPH.setSpecialWidth(paramInt);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt, -2);
-      this.yyx.setLayoutParams(localLayoutParams);
-      this.yyw.setLayoutParams(localLayoutParams);
-      this.yyy.setLayoutParams(localLayoutParams);
+      this.zPI.setLayoutParams(localLayoutParams);
+      this.zPH.setLayoutParams(localLayoutParams);
+      this.zPJ.setLayoutParams(localLayoutParams);
     }
     AppMethodBeat.o(97768);
   }
@@ -145,8 +146,8 @@ public class AsyncNormalTextView
   public void setShow(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(97762);
-    this.yxx = paramBaseViewHolder;
-    dNe();
+    this.zOJ = paramBaseViewHolder;
+    dZt();
     AppMethodBeat.o(97762);
   }
 }

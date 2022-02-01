@@ -5,7 +5,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.view.SurfaceHolder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.thumbplayer.utils.f;
+import com.tencent.thumbplayer.utils.d;
 import java.lang.reflect.Field;
 
 public final class a
@@ -13,23 +13,23 @@ public final class a
 {
   protected final void finalize()
   {
-    AppMethodBeat.i(187635);
+    AppMethodBeat.i(191656);
     try
     {
       super.finalize();
-      AppMethodBeat.o(187635);
+      AppMethodBeat.o(191656);
       return;
     }
     catch (Exception localException)
     {
-      f.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-      AppMethodBeat.o(187635);
+      d.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
+      AppMethodBeat.o(191656);
     }
   }
   
   public final int getVideoHeight()
   {
-    AppMethodBeat.i(187639);
+    AppMethodBeat.i(191660);
     int i = 0;
     try
     {
@@ -40,16 +40,16 @@ public final class a
     {
       for (;;)
       {
-        f.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
+        d.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
       }
     }
-    AppMethodBeat.o(187639);
+    AppMethodBeat.o(191660);
     return i;
   }
   
   public final int getVideoWidth()
   {
-    AppMethodBeat.i(187638);
+    AppMethodBeat.i(191659);
     int i = 0;
     try
     {
@@ -60,16 +60,16 @@ public final class a
     {
       for (;;)
       {
-        f.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
+        d.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
       }
     }
-    AppMethodBeat.o(187638);
+    AppMethodBeat.o(191659);
     return i;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(187636);
+    AppMethodBeat.i(191657);
     try
     {
       if (("N1W".equalsIgnoreCase(Build.MODEL)) || ("X909T".equalsIgnoreCase(Build.MODEL)) || ("X909".equalsIgnoreCase(Build.MODEL)) || ("N1T".equalsIgnoreCase(Build.MODEL)))
@@ -92,46 +92,46 @@ public final class a
         try
         {
           super.release();
-          AppMethodBeat.o(187636);
+          AppMethodBeat.o(191657);
           return;
         }
         catch (Exception localException)
         {
-          f.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-          AppMethodBeat.o(187636);
+          d.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
+          AppMethodBeat.o(191657);
         }
         localNoSuchFieldException = localNoSuchFieldException;
-        f.e("TPThumbPlayer[TPMediaPlayer.java]", localNoSuchFieldException);
+        d.e("TPThumbPlayer[TPMediaPlayer.java]", localNoSuchFieldException);
       }
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
       for (;;)
       {
-        f.e("TPThumbPlayer[TPMediaPlayer.java]", localIllegalAccessException);
+        d.e("TPThumbPlayer[TPMediaPlayer.java]", localIllegalAccessException);
       }
     }
   }
   
   public final void setDisplay(SurfaceHolder paramSurfaceHolder)
   {
-    AppMethodBeat.i(187637);
+    AppMethodBeat.i(191658);
     try
     {
       super.setDisplay(paramSurfaceHolder);
-      AppMethodBeat.o(187637);
+      AppMethodBeat.o(191658);
       return;
     }
     catch (Exception paramSurfaceHolder)
     {
-      f.e("TPThumbPlayer[TPMediaPlayer.java]", paramSurfaceHolder);
-      AppMethodBeat.o(187637);
+      d.e("TPThumbPlayer[TPMediaPlayer.java]", paramSurfaceHolder);
+      AppMethodBeat.o(191658);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.thumbplayer.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

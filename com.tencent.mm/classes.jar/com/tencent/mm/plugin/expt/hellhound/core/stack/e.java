@@ -6,19 +6,19 @@ import com.tencent.mm.vending.j.c;
 
 public final class e
 {
-  public g qjm;
+  public g qRm;
   
   e()
   {
     AppMethodBeat.i(121896);
-    this.qjm = new g();
+    this.qRm = new g();
     AppMethodBeat.o(121896);
   }
   
-  public static bj ciW()
+  public static bj cnW()
   {
     AppMethodBeat.i(121897);
-    bj localbj = (bj)g.ciX().get(1);
+    bj localbj = (bj)g.cnX().get(1);
     AppMethodBeat.o(121897);
     return localbj;
   }

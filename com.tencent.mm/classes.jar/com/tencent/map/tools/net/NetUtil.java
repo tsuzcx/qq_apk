@@ -252,17 +252,17 @@ public class NetUtil
   
   public static final void safeClose(Closeable paramCloseable)
   {
-    AppMethodBeat.i(191288);
+    AppMethodBeat.i(195080);
     if (paramCloseable != null) {
       try
       {
         paramCloseable.close();
-        AppMethodBeat.o(191288);
+        AppMethodBeat.o(195080);
         return;
       }
       catch (IOException paramCloseable) {}
     }
-    AppMethodBeat.o(191288);
+    AppMethodBeat.o(195080);
   }
   
   /* Error */
@@ -354,21 +354,21 @@ public class NetUtil
   
   public static void writeBytesWithoutClose(byte[] paramArrayOfByte, OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(191290);
+    AppMethodBeat.i(195082);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0) || (paramOutputStream == null))
     {
-      AppMethodBeat.o(191290);
+      AppMethodBeat.o(195082);
       return;
     }
     try
     {
       paramOutputStream.write(paramArrayOfByte);
-      AppMethodBeat.o(191290);
+      AppMethodBeat.o(195082);
       return;
     }
     catch (IOException paramArrayOfByte)
     {
-      AppMethodBeat.o(191290);
+      AppMethodBeat.o(195082);
     }
   }
 }

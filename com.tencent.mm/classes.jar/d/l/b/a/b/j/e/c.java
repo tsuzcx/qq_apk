@@ -6,21 +6,21 @@ import d.l.b.a.b.f.b;
 
 public final class c
 {
-  private b LeZ;
-  private final String Lsc;
+  private b MVU;
+  public final String NiZ;
   
   private c(String paramString)
   {
     AppMethodBeat.i(60168);
-    this.Lsc = paramString;
+    this.NiZ = paramString;
     AppMethodBeat.o(60168);
   }
   
-  public static c aWN(String paramString)
+  public static c bcQ(String paramString)
   {
     AppMethodBeat.i(60165);
     if (paramString == null) {
-      agL(0);
+      ajm(0);
     }
     paramString = new c(paramString);
     AppMethodBeat.o(60165);
@@ -31,17 +31,17 @@ public final class c
   {
     AppMethodBeat.i(60166);
     if (parama == null) {
-      agL(1);
+      ajm(1);
     }
-    b localb = parama.fZA();
-    parama = parama.fZB().rf().replace('.', '$');
+    b localb = parama.gqZ();
+    parama = parama.gra().sD().replace('.', '$');
     if (localb.isRoot())
     {
       parama = new c(parama);
       AppMethodBeat.o(60166);
       return parama;
     }
-    parama = new c(localb.rf().replace('.', '/') + "/" + parama);
+    parama = new c(localb.sD().replace('.', '/') + "/" + parama);
     AppMethodBeat.o(60166);
     return parama;
   }
@@ -50,10 +50,10 @@ public final class c
   {
     AppMethodBeat.i(60167);
     if (paramb == null) {
-      agL(2);
+      ajm(2);
     }
-    c localc = new c(paramb.rf().replace('.', '/'));
-    localc.LeZ = paramb;
+    c localc = new c(paramb.sD().replace('.', '/'));
+    localc.MVU = paramb;
     AppMethodBeat.o(60167);
     return localc;
   }
@@ -71,43 +71,35 @@ public final class c
       AppMethodBeat.o(60172);
       return false;
     }
-    boolean bool = this.Lsc.equals(((c)paramObject).Lsc);
+    boolean bool = this.NiZ.equals(((c)paramObject).NiZ);
     AppMethodBeat.o(60172);
     return bool;
   }
   
-  public final b fZA()
+  public final b gqZ()
   {
     AppMethodBeat.i(60170);
-    int i = this.Lsc.lastIndexOf("/");
+    int i = this.NiZ.lastIndexOf("/");
     if (i == -1)
     {
-      localb = b.Lzi;
+      localb = b.Nqf;
       if (localb == null) {
-        agL(7);
+        ajm(7);
       }
       AppMethodBeat.o(60170);
       return localb;
     }
-    b localb = new b(this.Lsc.substring(0, i).replace('/', '.'));
+    b localb = new b(this.NiZ.substring(0, i).replace('/', '.'));
     AppMethodBeat.o(60170);
     return localb;
   }
   
-  public final b gbD()
-  {
-    AppMethodBeat.i(60169);
-    b localb = new b(this.Lsc.replace('/', '.'));
-    AppMethodBeat.o(60169);
-    return localb;
-  }
-  
-  public final String gbE()
+  public final String gtd()
   {
     AppMethodBeat.i(60171);
-    String str = this.Lsc;
+    String str = this.NiZ;
     if (str == null) {
-      agL(8);
+      ajm(8);
     }
     AppMethodBeat.o(60171);
     return str;
@@ -116,19 +108,19 @@ public final class c
   public final int hashCode()
   {
     AppMethodBeat.i(60173);
-    int i = this.Lsc.hashCode();
+    int i = this.NiZ.hashCode();
     AppMethodBeat.o(60173);
     return i;
   }
   
   public final String toString()
   {
-    return this.Lsc;
+    return this.NiZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.e.c
  * JD-Core Version:    0.7.0.1
  */

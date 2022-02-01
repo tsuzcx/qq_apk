@@ -12,13 +12,13 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public class GameMenuImageButton
   extends LinearLayout
 {
-  private ImageView dhf;
-  public boolean nNH;
+  private ImageView dsD;
+  public boolean oqn;
   
   public GameMenuImageButton(Context paramContext)
   {
@@ -47,13 +47,13 @@ public class GameMenuImageButton
   private void aM(Context paramContext)
   {
     AppMethodBeat.i(80961);
-    this.dhf = new ImageView(paramContext);
-    this.dhf.setLayoutParams(new ViewGroup.LayoutParams(a.av(paramContext, 2131166405), a.av(paramContext, 2131166405)));
-    this.dhf.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.dhf.setImageResource(2131232530);
+    this.dsD = new ImageView(paramContext);
+    this.dsD.setLayoutParams(new ViewGroup.LayoutParams(com.tencent.mm.cc.a.ay(paramContext, 2131166405), com.tencent.mm.cc.a.ay(paramContext, 2131166405)));
+    this.dsD.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.dsD.setImageResource(2131232530);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, a.av(paramContext, 2131166404), a.av(paramContext, 2131166404), 0);
-    addView(this.dhf, localLayoutParams);
+    localLayoutParams.setMargins(0, com.tencent.mm.cc.a.ay(paramContext, 2131166404), com.tencent.mm.cc.a.ay(paramContext, 2131166404), 0);
+    addView(this.dsD, localLayoutParams);
     AppMethodBeat.o(80961);
   }
   
@@ -66,26 +66,30 @@ public class GameMenuImageButton
       localLayoutParams.gravity = 53;
       paramFrameLayout.addView(this, localLayoutParams);
     }
-    if (this.dhf != null) {
-      this.dhf.setOnClickListener(new View.OnClickListener()
+    if (this.dsD != null) {
+      this.dsD.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(80957);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/game/menu/GameMenuImageButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           if (parama != null) {
-            parama.cOZ();
+            parama.cXC();
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/game/menu/GameMenuImageButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(80957);
         }
       });
     }
-    this.nNH = true;
+    this.oqn = true;
     AppMethodBeat.o(80962);
   }
   
   public static abstract interface a
   {
-    public abstract void cOZ();
+    public abstract void cXC();
   }
 }
 

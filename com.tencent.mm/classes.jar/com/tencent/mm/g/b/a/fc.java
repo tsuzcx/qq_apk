@@ -6,90 +6,75 @@ import com.tencent.mm.plugin.report.a;
 public final class fc
   extends a
 {
-  private long dHy = 0L;
-  private long dUP = 0L;
-  private String dWG = "";
-  private String dWH = "";
-  private long dWh = 0L;
+  public long eca = 0L;
+  public long ekd = 0L;
+  public long eke = 0L;
+  public long ekf = 0L;
+  public long ekg = 0L;
+  public long ekh = 0L;
+  private long eki = 0L;
+  public String ekj = "";
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(118514);
+    AppMethodBeat.i(94843);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dUP);
+    ((StringBuffer)localObject).append(this.eca);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWh);
+    ((StringBuffer)localObject).append(this.ekd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHy);
+    ((StringBuffer)localObject).append(this.eke);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWG);
+    ((StringBuffer)localObject).append(this.ekf);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWH);
+    ((StringBuffer)localObject).append(this.ekg);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekh);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eki);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekj);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(118514);
+    awz((String)localObject);
+    AppMethodBeat.o(94843);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(118515);
+    AppMethodBeat.i(94844);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.dUP);
+    ((StringBuffer)localObject).append("Source:").append(this.eca);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ProfileSource:").append(this.dWh);
+    ((StringBuffer)localObject).append("UnreadLikeCount:").append(this.ekd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterTime:").append(this.dHy);
+    ((StringBuffer)localObject).append("UnreadCommentCount:").append(this.eke);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StoryOwnerUserName:").append(this.dWG);
+    ((StringBuffer)localObject).append("StayTime:").append(this.ekf);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StoryTid:").append(this.dWH);
+    ((StringBuffer)localObject).append("ClickLikeCount:").append(this.ekg);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickCommentCount:").append(this.ekh);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("EnterStartTimeMs:").append(this.eki);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("BrowseJson:").append(this.ekj);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118515);
+    AppMethodBeat.o(94844);
     return localObject;
-  }
-  
-  public final long Rw()
-  {
-    return this.dHy;
   }
   
   public final int getId()
   {
-    return 16763;
+    return 13677;
   }
   
-  public final fc jN(long paramLong)
+  public final fc ke(long paramLong)
   {
-    this.dUP = paramLong;
-    return this;
-  }
-  
-  public final fc jO(long paramLong)
-  {
-    this.dWh = paramLong;
-    return this;
-  }
-  
-  public final fc jP(long paramLong)
-  {
-    this.dHy = paramLong;
-    return this;
-  }
-  
-  public final fc mG(String paramString)
-  {
-    AppMethodBeat.i(118512);
-    this.dWG = t("StoryOwnerUserName", paramString, true);
-    AppMethodBeat.o(118512);
-    return this;
-  }
-  
-  public final fc mH(String paramString)
-  {
-    AppMethodBeat.i(118513);
-    this.dWH = t("StoryTid", paramString, true);
-    AppMethodBeat.o(118513);
+    AppMethodBeat.i(94842);
+    this.eki = paramLong;
+    super.bf("EnterStartTimeMs", this.eki);
+    AppMethodBeat.o(94842);
     return this;
   }
 }

@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.base.stub;
 
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.au;
 
 public final class b
 {
-  private static at icG = null;
+  private static au iwc = null;
   
-  public static void a(at paramat)
+  public static void a(au paramau)
   {
-    icG = paramat;
+    iwc = paramau;
   }
 }
 

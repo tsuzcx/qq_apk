@@ -7,9 +7,9 @@ public enum d$b
   static
   {
     AppMethodBeat.i(28745);
-    xGh = new b("search", 0);
-    xGi = new b("normal", 1);
-    xGj = new b[] { xGh, xGi };
+    yUR = new b("search", 0);
+    yUS = new b("normal", 1);
+    yUT = new b[] { yUR, yUS };
     AppMethodBeat.o(28745);
   }
   
@@ -17,7 +17,7 @@ public enum d$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.d.b
  * JD-Core Version:    0.7.0.1
  */

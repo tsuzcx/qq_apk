@@ -12,20 +12,20 @@ public final class a
   extends Paint
   implements Serializable
 {
-  public a jAa;
-  private float jAb;
-  private String jAc;
-  private int jAd;
-  private float jAe;
-  private int jAf;
+  public a jTV;
+  private float jTW;
+  private String jTX;
+  private int jTY;
+  private float jTZ;
+  private int jUa;
   private int mColor;
   
   public a()
   {
     AppMethodBeat.i(145336);
-    this.jAa = a.jAg;
-    this.jAe = 3.4028235E+38F;
-    this.jAf = 2147483647;
+    this.jTV = a.jUb;
+    this.jTZ = 3.4028235E+38F;
+    this.jUa = 2147483647;
     init();
     AppMethodBeat.o(145336);
   }
@@ -33,73 +33,39 @@ public final class a
   private void init()
   {
     AppMethodBeat.i(145337);
-    this.jAb = 0.0F;
+    this.jTW = 0.0F;
     this.mColor = 0;
-    this.jAc = null;
-    this.jAd = 0;
-    if (this.jAe == 3.4028235E+38F)
+    this.jTX = null;
+    this.jTY = 0;
+    if (this.jTZ == 3.4028235E+38F)
     {
-      this.jAb = (getAlpha() / 255.0F);
-      this.jAe = this.jAb;
+      this.jTW = (getAlpha() / 255.0F);
+      this.jTZ = this.jTW;
     }
-    while (this.jAf == 2147483647)
+    while (this.jUa == 2147483647)
     {
       this.mColor = getColor();
-      this.jAf = this.mColor;
+      this.jUa = this.mColor;
       AppMethodBeat.o(145337);
       return;
-      this.jAb = this.jAe;
+      this.jTW = this.jTZ;
     }
-    this.mColor = this.jAf;
+    this.mColor = this.jUa;
     AppMethodBeat.o(145337);
   }
   
-  public final void Jx(String paramString)
+  public final void MQ(String paramString)
   {
     AppMethodBeat.i(145345);
-    this.jAc = paramString;
-    setTypeface(Typeface.create(paramString, this.jAd));
+    this.jTX = paramString;
+    setTypeface(Typeface.create(paramString, this.jTY));
     AppMethodBeat.o(145345);
   }
   
-  public final a aZZ()
-  {
-    AppMethodBeat.i(145339);
-    a locala = new a();
-    locala.setColor(getColor());
-    locala.setFlags(getFlags());
-    locala.setDither(isDither());
-    Shader localShader = getShader();
-    if (localShader != null)
-    {
-      Object localObject = k.a(Shader.class, "copy", localShader, new Class[0], new Object[0]);
-      if ((localObject == null) || (!(localObject instanceof Shader))) {
-        break label165;
-      }
-      localShader = (Shader)localObject;
-    }
-    label165:
-    for (;;)
-    {
-      locala.setShader(localShader);
-      locala.setStrokeJoin(getStrokeJoin());
-      locala.setStrokeMiter(getStrokeMiter());
-      locala.setStrokeWidth(getStrokeWidth());
-      locala.setStrokeCap(getStrokeCap());
-      locala.setStyle(getStyle());
-      locala.setTextSize(getTextSize());
-      locala.setTextAlign(getTextAlign());
-      locala.setTypeface(getTypeface());
-      locala.jAa = this.jAa;
-      AppMethodBeat.o(145339);
-      return locala;
-    }
-  }
-  
-  public final void at(float paramFloat)
+  public final void aw(float paramFloat)
   {
     AppMethodBeat.i(145341);
-    this.jAb = paramFloat;
+    this.jTW = paramFloat;
     setColor(this.mColor);
     AppMethodBeat.o(145341);
   }
@@ -131,9 +97,43 @@ public final class a
       parama.setTextSize(getTextSize());
       parama.setTextAlign(getTextAlign());
       parama.setTypeface(getTypeface());
-      parama.jAa = this.jAa;
+      parama.jTV = this.jTV;
       AppMethodBeat.o(145340);
       return parama;
+    }
+  }
+  
+  public final a bdy()
+  {
+    AppMethodBeat.i(145339);
+    a locala = new a();
+    locala.setColor(getColor());
+    locala.setFlags(getFlags());
+    locala.setDither(isDither());
+    Shader localShader = getShader();
+    if (localShader != null)
+    {
+      Object localObject = k.a(Shader.class, "copy", localShader, new Class[0], new Object[0]);
+      if ((localObject == null) || (!(localObject instanceof Shader))) {
+        break label165;
+      }
+      localShader = (Shader)localObject;
+    }
+    label165:
+    for (;;)
+    {
+      locala.setShader(localShader);
+      locala.setStrokeJoin(getStrokeJoin());
+      locala.setStrokeMiter(getStrokeMiter());
+      locala.setStrokeWidth(getStrokeWidth());
+      locala.setStrokeCap(getStrokeCap());
+      locala.setStyle(getStyle());
+      locala.setTextSize(getTextSize());
+      locala.setTextAlign(getTextAlign());
+      locala.setTypeface(getTypeface());
+      locala.jTV = this.jTV;
+      AppMethodBeat.o(145339);
+      return locala;
     }
   }
   
@@ -143,14 +143,6 @@ public final class a
     Object localObject = super.clone();
     AppMethodBeat.o(145338);
     return localObject;
-  }
-  
-  public final void rF(int paramInt)
-  {
-    AppMethodBeat.i(145346);
-    this.jAd = paramInt;
-    setTypeface(Typeface.create(this.jAc, paramInt));
-    AppMethodBeat.o(145346);
   }
   
   public final void release()
@@ -165,7 +157,7 @@ public final class a
   {
     AppMethodBeat.i(145343);
     super.reset();
-    this.jAa = a.jAg;
+    this.jTV = a.jUb;
     AppMethodBeat.o(145343);
   }
   
@@ -173,8 +165,16 @@ public final class a
   {
     AppMethodBeat.i(145342);
     this.mColor = paramInt;
-    super.setColor(((int)(Color.alpha(paramInt) * this.jAb) & 0xFF) << 24 | 0xFFFFFF & paramInt);
+    super.setColor(((int)(Color.alpha(paramInt) * this.jTW) & 0xFF) << 24 | 0xFFFFFF & paramInt);
     AppMethodBeat.o(145342);
+  }
+  
+  public final void sf(int paramInt)
+  {
+    AppMethodBeat.i(145346);
+    this.jTY = paramInt;
+    setTypeface(Typeface.create(this.jTX, paramInt));
+    AppMethodBeat.o(145346);
   }
   
   public static enum a
@@ -182,11 +182,11 @@ public final class a
     static
     {
       AppMethodBeat.i(145335);
-      jAg = new a("NORMAL", 0);
-      jAh = new a("TOP", 1);
-      jAi = new a("BOTTOM", 2);
-      jAj = new a("MIDDLE", 3);
-      jAk = new a[] { jAg, jAh, jAi, jAj };
+      jUb = new a("NORMAL", 0);
+      jUc = new a("TOP", 1);
+      jUd = new a("BOTTOM", 2);
+      jUe = new a("MIDDLE", 3);
+      jUf = new a[] { jUb, jUc, jUd, jUe };
       AppMethodBeat.o(145335);
     }
     

@@ -6,79 +6,78 @@ import com.tencent.mm.plugin.report.a;
 public final class ep
   extends a
 {
-  private long dQq = 0L;
-  private long dUR = 0L;
-  private long dUS = 0L;
-  private long dUT = 0L;
-  private String dUU;
-  private String dUV;
+  private String dXm = "";
+  public long egV = 0L;
+  public int eij = 0;
+  public long eik = 0L;
+  public long eil = 0L;
+  private String eim = "";
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(118483);
+    AppMethodBeat.i(121781);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dUR);
+    ((StringBuffer)localObject).append(this.eij);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUS);
+    ((StringBuffer)localObject).append(this.dXm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQq);
+    ((StringBuffer)localObject).append(this.egV);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUT);
+    ((StringBuffer)localObject).append(this.eik);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUU);
+    ((StringBuffer)localObject).append(this.eil);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUV);
+    ((StringBuffer)localObject).append(this.eim);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(118483);
+    awz((String)localObject);
+    AppMethodBeat.o(121781);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(118484);
+    AppMethodBeat.i(121782);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ComposeTime:").append(this.dUR);
+    ((StringBuffer)localObject).append("PId:").append(this.eij);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ComposeErrorType:").append(this.dUS);
+    ((StringBuffer)localObject).append("PName:").append(this.dXm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadTime:").append(this.dQq);
+    ((StringBuffer)localObject).append("Seq:").append(this.egV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadErrorType:").append(this.dUT);
+    ((StringBuffer)localObject).append("SubSeq:").append(this.eik);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ComposeErrorTypeStr:").append(this.dUU);
+    ((StringBuffer)localObject).append("SubSeqSum:").append(this.eil);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadErrorTypeStr:").append(this.dUV);
+    ((StringBuffer)localObject).append("DataContent:").append(this.eim);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118484);
+    AppMethodBeat.o(121782);
     return localObject;
-  }
-  
-  public final long QS()
-  {
-    return this.dQq;
   }
   
   public final int getId()
   {
-    return 16688;
+    return 17193;
   }
   
-  public final ep it(long paramLong)
+  public final ep nU(String paramString)
   {
-    this.dQq = paramLong;
+    AppMethodBeat.i(121779);
+    this.dXm = t("PName", paramString, true);
+    AppMethodBeat.o(121779);
     return this;
   }
   
-  public final ep iu(long paramLong)
+  public final ep nV(String paramString)
   {
-    this.dUT = paramLong;
+    AppMethodBeat.i(121780);
+    this.eim = t("DataContent", paramString, true);
+    AppMethodBeat.o(121780);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ep
  * JD-Core Version:    0.7.0.1
  */

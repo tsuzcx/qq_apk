@@ -1,71 +1,48 @@
 package com.tencent.mm.plugin.appbrand.jsapi.z;
 
-import com.tencent.luggage.k.a.a;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.d;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.bt;
+import org.json.JSONObject;
 
 public final class b
 {
-  public static int NY(String paramString)
+  public static void a(View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(206699);
-    paramString = g.Hg(paramString);
-    int i = 1;
-    if (paramString == g.d.jdi) {
-      i = 2;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(206699);
-      return i;
-      if (paramString == g.d.jdd) {
-        i = 3;
-      } else if (paramString == g.d.jdc) {
-        i = 4;
-      } else if (paramString == g.d.jdj) {
-        i = 5;
-      } else if (paramString == g.d.jdg) {
-        i = 6;
-      } else if (paramString == g.d.jdh) {
-        i = 7;
-      } else if (paramString == g.d.jdf) {
-        i = 8;
-      }
-    }
-  }
-  
-  public static AppBrandRuntime y(a parama)
-  {
-    AppMethodBeat.i(206700);
-    if ((parama instanceof com.tencent.mm.plugin.appbrand.i.b))
-    {
-      parama = parama.CM();
-      if ((parama instanceof aa))
+    AppMethodBeat.i(140677);
+    if ((paramView != null) && (paramJSONObject != null) && (paramJSONObject.has("accessibility")) && (paramJSONObject.optBoolean("accessibility", false))) {
+      paramView.setAccessibilityDelegate(new View.AccessibilityDelegate()
       {
-        parama = ((aa)parama).getRuntime();
-        AppMethodBeat.o(206700);
-        return parama;
-      }
-      if ((parama instanceof q))
-      {
-        parama = ((q)parama).getRuntime();
-        AppMethodBeat.o(206700);
-        return parama;
-      }
-      AppMethodBeat.o(206700);
-      return null;
+        public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
+        {
+          AppMethodBeat.i(140676);
+          super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfo);
+          if (!bt.isNullOrNil(this.ltF)) {
+            paramAnonymousAccessibilityNodeInfo.setContentDescription(this.ltF);
+          }
+          if ((!bt.isNullOrNil(this.ltG)) && (this.ltG.equalsIgnoreCase("button")))
+          {
+            paramAnonymousAccessibilityNodeInfo.setClickable(true);
+            paramAnonymousAccessibilityNodeInfo.setClassName(Button.class.getName());
+            AppMethodBeat.o(140676);
+            return;
+          }
+          paramAnonymousAccessibilityNodeInfo.setClickable(false);
+          paramAnonymousAccessibilityNodeInfo.setClassName(TextView.class.getName());
+          AppMethodBeat.o(140676);
+        }
+      });
     }
-    AppMethodBeat.o(206700);
-    return null;
+    AppMethodBeat.o(140677);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.z.b
  * JD-Core Version:    0.7.0.1
  */

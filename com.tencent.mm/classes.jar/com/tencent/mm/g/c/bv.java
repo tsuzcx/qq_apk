@@ -2,61 +2,38 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.ahb;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public abstract class bv
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FavModInfo_LocalId_Index ON FavEditInfo(localId)" };
-  private static final int eDL = "localId".hashCode();
-  private static final int eDM = "modItem".hashCode();
-  private static final int env = "scene".hashCode();
-  private static final int euN = "time".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eVg = "configId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE = "type".hashCode();
-  private boolean __hadSettype = true;
-  private boolean eDJ = true;
-  private boolean eDK = true;
-  private boolean ent = true;
-  private boolean euu = true;
-  public long field_localId;
-  public ahb field_modItem;
-  public int field_scene;
-  public long field_time;
-  public int field_type;
+  private static final int value_HASHCODE = "value".hashCode();
+  private boolean __hadSetvalue = true;
+  private boolean eVf = true;
+  public int field_configId;
+  public String field_value;
   
-  public static c.a Th()
+  public static c.a Vv()
   {
     c.a locala = new c.a();
-    locala.GvF = new Field[5];
-    locala.columns = new String[6];
+    locala.IhA = new Field[2];
+    locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "localId";
-    locala.GvH.put("localId", "LONG");
-    localStringBuilder.append(" localId LONG");
+    locala.columns[0] = "configId";
+    locala.IhC.put("configId", "INTEGER PRIMARY KEY ");
+    localStringBuilder.append(" configId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.columns[1] = "modItem";
-    locala.GvH.put("modItem", "BLOB");
-    localStringBuilder.append(" modItem BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "time";
-    locala.GvH.put("time", "LONG");
-    localStringBuilder.append(" time LONG");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "type";
-    locala.GvH.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "scene";
-    locala.GvH.put("scene", "INTEGER default '1' ");
-    localStringBuilder.append(" scene INTEGER default '1' ");
-    locala.columns[5] = "rowid";
+    locala.IhB = "configId";
+    locala.columns[1] = "value";
+    locala.IhC.put("value", "TEXT");
+    localStringBuilder.append(" value TEXT");
+    locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
     return locala;
   }
@@ -67,43 +44,27 @@ public abstract class bv
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eDL != k) {
-        break label60;
+      if (eVg != k) {
+        break label65;
       }
-      this.field_localId = paramCursor.getLong(i);
+      this.field_configId = paramCursor.getInt(i);
+      this.eVf = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eDM == k) {
-        try
-        {
-          byte[] arrayOfByte = paramCursor.getBlob(i);
-          if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
-            continue;
-          }
-          this.field_modItem = ((ahb)new ahb().parseFrom(arrayOfByte));
-        }
-        catch (IOException localIOException)
-        {
-          ac.e("MicroMsg.SDK.BaseFavEditInfo", localIOException.getMessage());
-        }
-      } else if (euN == k) {
-        this.field_time = paramCursor.getLong(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (env == k) {
-        this.field_scene = paramCursor.getInt(i);
+      label65:
+      if (value_HASHCODE == k) {
+        this.field_value = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -113,34 +74,16 @@ public abstract class bv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eDJ) {
-      localContentValues.put("localId", Long.valueOf(this.field_localId));
+    if (this.eVf) {
+      localContentValues.put("configId", Integer.valueOf(this.field_configId));
     }
-    if ((this.eDK) && (this.field_modItem != null)) {}
-    try
-    {
-      localContentValues.put("modItem", this.field_modItem.toByteArray());
-      if (this.euu) {
-        localContentValues.put("time", Long.valueOf(this.field_time));
-      }
-      if (this.__hadSettype) {
-        localContentValues.put("type", Integer.valueOf(this.field_type));
-      }
-      if (this.ent) {
-        localContentValues.put("scene", Integer.valueOf(this.field_scene));
-      }
-      if (this.systemRowid > 0L) {
-        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-      }
-      return localContentValues;
+    if (this.__hadSetvalue) {
+      localContentValues.put("value", this.field_value);
     }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        ac.e("MicroMsg.SDK.BaseFavEditInfo", localIOException.getMessage());
-      }
+    if (this.systemRowid > 0L) {
+      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
     }
+    return localContentValues;
   }
 }
 

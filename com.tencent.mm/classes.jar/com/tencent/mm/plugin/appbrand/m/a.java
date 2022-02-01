@@ -1,69 +1,76 @@
 package com.tencent.mm.plugin.appbrand.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.LinkedList;
-import java.util.List;
 
-final class a
+public abstract interface a
 {
-  static final String[] jUq;
+  public abstract String SB(String paramString);
   
-  static
+  public abstract void a(String paramString, b paramb);
+  
+  public abstract void a(String paramString, b paramb, a parama);
+  
+  public abstract boolean btb();
+  
+  public static abstract interface a
   {
-    AppMethodBeat.i(138799);
-    LinkedList localLinkedList = new LinkedList();
-    Field[] arrayOfField = android.support.e.a.class.getDeclaredFields();
-    int j = arrayOfField.length;
-    int i = 0;
-    for (;;)
+    public abstract void b(c paramc);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a(a.d paramd);
+  }
+  
+  public static class c
+    implements a
+  {
+    public final String SB(String paramString)
     {
-      Field localField;
-      if (i < j) {
-        localField = arrayOfField[i];
+      return "__APP__";
+    }
+    
+    public void a(String paramString, a.b paramb)
+    {
+      AppMethodBeat.i(176556);
+      if (paramb != null) {
+        paramb.a(a.d.lUw);
       }
-      try
-      {
-        if ((Modifier.isFinal(localField.getModifiers())) && (Modifier.isStatic(localField.getModifiers())) && (localField.getName().startsWith("TAG_"))) {
-          localLinkedList.add((String)localField.get(null));
-        }
-        label85:
-        i += 1;
-        continue;
-        jUq = (String[])localLinkedList.toArray(new String[localLinkedList.size()]);
-        AppMethodBeat.o(138799);
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label85;
-      }
+      AppMethodBeat.o(176556);
+    }
+    
+    public final void a(String paramString, a.b paramb, a.a parama)
+    {
+      AppMethodBeat.i(197293);
+      a(paramString, paramb);
+      AppMethodBeat.o(197293);
+    }
+    
+    public final boolean btb()
+    {
+      return false;
     }
   }
   
-  static void a(android.support.e.a parama1, android.support.e.a parama2)
+  public static enum d
   {
-    AppMethodBeat.i(138798);
-    String[] arrayOfString = jUq;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    static
     {
-      String str1 = arrayOfString[i];
-      String str2 = parama1.getAttribute(str1);
-      if (str2 != null) {
-        parama2.setAttribute(str1, str2);
-      }
-      i += 1;
+      AppMethodBeat.i(134931);
+      lUw = new d("OK", 0);
+      lUx = new d("FAIL", 1);
+      lUy = new d("CANCEL", 2);
+      lUz = new d("MODULE_NOT_FOUND", 3);
+      lUA = new d[] { lUw, lUx, lUy, lUz };
+      AppMethodBeat.o(134931);
     }
-    parama2.saveAttributes();
-    AppMethodBeat.o(138798);
+    
+    private d() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.a
  * JD-Core Version:    0.7.0.1
  */

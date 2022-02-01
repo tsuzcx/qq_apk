@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.i.c;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
 import java.io.ByteArrayOutputStream;
 
@@ -16,7 +16,7 @@ final class EnvelopeStoryVideoManager$2
   public final int a(String paramString, int paramInt, c paramc, d paramd, boolean paramBoolean)
   {
     AppMethodBeat.i(182456);
-    ac.i("MicroMsg.EnvelopeStoryVideoManager", "task callback: %s", new Object[] { Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.EnvelopeStoryVideoManager", "task callback: %s", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt != 0) {
       i.deleteFile(this.val$path);
     }

@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,27 +17,27 @@ import java.util.List;
 public class QTextView
   extends View
 {
-  private static HashMap<String, a> yDT;
-  private TextPaint awy;
+  private static HashMap<String, a> zVo;
+  private TextPaint ayp;
   private Context context;
   private String mText;
-  boolean nPL;
-  private int nPN;
+  boolean oss;
+  private int osu;
   private int textSize;
-  private int yDN;
-  private String yDO;
-  private String yDP;
-  private boolean yDQ;
-  private int yDR;
-  private boolean yDS;
-  private a yDU;
-  private a yDV;
-  int yDW;
+  private int zVi;
+  private String zVj;
+  private String zVk;
+  private boolean zVl;
+  private int zVm;
+  private boolean zVn;
+  private a zVp;
+  private a zVq;
+  int zVr;
   
   static
   {
     AppMethodBeat.i(98222);
-    yDT = new HashMap();
+    zVo = new HashMap();
     AppMethodBeat.o(98222);
   }
   
@@ -47,7 +47,7 @@ public class QTextView
     AppMethodBeat.i(98214);
     this.mText = "";
     this.textSize = -1;
-    this.yDW = 0;
+    this.zVr = 0;
     this.context = paramContext;
     init();
     AppMethodBeat.o(98214);
@@ -59,29 +59,29 @@ public class QTextView
     AppMethodBeat.i(98213);
     this.mText = "";
     this.textSize = -1;
-    this.yDW = 0;
+    this.zVr = 0;
     this.context = paramContext;
     init();
     AppMethodBeat.o(98213);
   }
   
-  private int Ps(int paramInt)
+  private int Rb(int paramInt)
   {
     AppMethodBeat.i(98221);
-    if (this.nPL) {
-      if (bs.isNullOrNil(a.a(this.yDU))) {
-        this.yDW = this.yDU.a(this.mText, paramInt - getPaddingLeft() - getPaddingRight(), this.awy);
+    if (this.oss) {
+      if (bt.isNullOrNil(a.a(this.zVp))) {
+        this.zVr = this.zVp.a(this.mText, paramInt - getPaddingLeft() - getPaddingRight(), this.ayp);
       }
     }
     for (;;)
     {
-      paramInt = this.yDW;
+      paramInt = this.zVr;
       int i = getPaddingLeft();
       int j = getPaddingRight();
       AppMethodBeat.o(98221);
       return paramInt + i + j;
-      if (bs.isNullOrNil(a.a(this.yDV))) {
-        this.yDW = this.yDV.a(this.mText, this.yDO, this.yDP, this.nPN, paramInt - getPaddingLeft() - getPaddingRight(), this.awy);
+      if (bt.isNullOrNil(a.a(this.zVq))) {
+        this.zVr = this.zVq.a(this.mText, this.zVj, this.zVk, this.osu, paramInt - getPaddingLeft() - getPaddingRight(), this.ayp);
       }
     }
   }
@@ -89,35 +89,35 @@ public class QTextView
   private void init()
   {
     AppMethodBeat.i(98215);
-    this.nPL = false;
-    this.yDQ = true;
-    this.yDS = false;
-    this.nPN = -1;
-    this.yDO = "...";
-    this.yDP = "";
-    this.yDR = -16776961;
-    this.yDU = new a();
-    this.yDV = new a();
-    this.awy = new TextPaint();
-    this.awy.setAntiAlias(true);
+    this.oss = false;
+    this.zVl = true;
+    this.zVn = false;
+    this.osu = -1;
+    this.zVj = "...";
+    this.zVk = "";
+    this.zVm = -16776961;
+    this.zVp = new a();
+    this.zVq = new a();
+    this.ayp = new TextPaint();
+    this.ayp.setAntiAlias(true);
     if (this.textSize == -1)
     {
       this.textSize = BackwardSupportUtil.b.g(this.context, 12.0F);
-      this.awy.setTextSize(this.textSize);
+      this.ayp.setTextSize(this.textSize);
     }
     for (;;)
     {
-      this.awy.setColor(-16777216);
-      this.awy.setTextAlign(Paint.Align.LEFT);
+      this.ayp.setColor(-16777216);
+      this.ayp.setTextAlign(Paint.Align.LEFT);
       AppMethodBeat.o(98215);
       return;
-      this.awy.setTextSize(13.0F);
+      this.ayp.setTextSize(13.0F);
     }
   }
   
   public boolean getIsExpanded()
   {
-    return this.nPL;
+    return this.oss;
   }
   
   public String getText()
@@ -136,46 +136,46 @@ public class QTextView
     int i;
     label53:
     int j;
-    if (this.nPL)
+    if (this.oss)
     {
-      locala = this.yDU;
-      localArrayList = this.yDU.yDY;
+      locala = this.zVp;
+      localArrayList = this.zVp.zVt;
       f2 = getPaddingLeft();
-      f1 = getPaddingTop() + -this.yDN;
+      f1 = getPaddingTop() + -this.zVi;
       i = 0;
       if (i >= localArrayList.size()) {
         break label307;
       }
       int[] arrayOfInt = (int[])localArrayList.get(i);
-      paramCanvas.drawText(this.mText, arrayOfInt[0], arrayOfInt[1] + 1, f2, f1, this.awy);
-      if ((i == localArrayList.size() - 1) && (locala.yDX))
+      paramCanvas.drawText(this.mText, arrayOfInt[0], arrayOfInt[1] + 1, f2, f1, this.ayp);
+      if ((i == localArrayList.size() - 1) && (locala.zVs))
       {
-        paramCanvas.drawText(this.yDO, locala.yDZ + f2, f1, this.awy);
-        if (this.yDQ)
+        paramCanvas.drawText(this.zVj, locala.zVu + f2, f1, this.ayp);
+        if (this.zVl)
         {
-          j = this.awy.getColor();
-          this.awy.setColor(this.yDR);
-          if (!this.yDS) {
+          j = this.ayp.getColor();
+          this.ayp.setColor(this.zVm);
+          if (!this.zVn) {
             break label278;
           }
-          paramCanvas.drawText(this.yDP, paramCanvas.getWidth() - (locala.yEb + getPaddingRight() + getPaddingLeft()), f1, this.awy);
+          paramCanvas.drawText(this.zVk, paramCanvas.getWidth() - (locala.zVw + getPaddingRight() + getPaddingLeft()), f1, this.ayp);
         }
       }
     }
     for (;;)
     {
-      this.awy.setColor(j);
-      f1 += -this.yDN + this.awy.descent();
+      this.ayp.setColor(j);
+      f1 += -this.zVi + this.ayp.descent();
       if (f1 > paramCanvas.getHeight()) {
         break label307;
       }
       i += 1;
       break label53;
-      locala = this.yDV;
-      localArrayList = this.yDV.yDY;
+      locala = this.zVq;
+      localArrayList = this.zVq.zVt;
       break;
       label278:
-      paramCanvas.drawText(this.yDP, locala.yDZ + locala.yEa + f2, f1, this.awy);
+      paramCanvas.drawText(this.zVk, locala.zVu + locala.zVv + f2, f1, this.ayp);
     }
     label307:
     AppMethodBeat.o(98220);
@@ -187,14 +187,14 @@ public class QTextView
     int i = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     if (i == 1073741824) {
-      Ps(paramInt1);
+      Rb(paramInt1);
     }
     int k;
     for (;;)
     {
       k = View.MeasureSpec.getMode(paramInt2);
       i = View.MeasureSpec.getSize(paramInt2);
-      this.yDN = ((int)this.awy.ascent());
+      this.zVi = ((int)this.ayp.ascent());
       if (k != 1073741824) {
         break;
       }
@@ -204,18 +204,18 @@ public class QTextView
       return;
       if (i == -2147483648)
       {
-        paramInt1 = Math.min(Ps(paramInt1), paramInt1);
+        paramInt1 = Math.min(Rb(paramInt1), paramInt1);
       }
       else
       {
-        Ps(paramInt1);
+        Rb(paramInt1);
         paramInt1 = 0;
       }
     }
-    if (this.nPL) {}
-    for (paramInt2 = this.yDU.yDY.size();; paramInt2 = this.yDV.yDY.size())
+    if (this.oss) {}
+    for (paramInt2 = this.zVp.zVt.size();; paramInt2 = this.zVq.zVt.size())
     {
-      int j = paramInt2 * (int)(-this.yDN + this.awy.descent()) + getPaddingTop() + getPaddingBottom();
+      int j = paramInt2 * (int)(-this.zVi + this.ayp.descent()) + getPaddingTop() + getPaddingBottom();
       paramInt2 = j;
       if (k != -2147483648) {
         break;
@@ -227,43 +227,43 @@ public class QTextView
   
   public void setColorEllpsizeMore(int paramInt)
   {
-    this.yDR = paramInt;
+    this.zVm = paramInt;
   }
   
   public void setDrawEllipsizeMoreString(boolean paramBoolean)
   {
-    this.yDQ = paramBoolean;
+    this.zVl = paramBoolean;
   }
   
   public void setEllipsis(String paramString)
   {
-    this.yDO = paramString;
+    this.zVj = paramString;
   }
   
   public void setEllipsisMore(String paramString)
   {
-    this.yDP = paramString;
+    this.zVk = paramString;
   }
   
   public void setMaxLines(int paramInt)
   {
-    this.nPN = paramInt;
+    this.osu = paramInt;
   }
   
   public void setRightAlignEllipsizeMoreString(boolean paramBoolean)
   {
-    this.yDS = paramBoolean;
+    this.zVn = paramBoolean;
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(98216);
-    if (bs.isNullOrNil(this.mText)) {
+    if (bt.isNullOrNil(this.mText)) {
       this.mText = "";
     }
     this.mText = paramString;
-    a.a(this.yDU, "");
-    a.a(this.yDV, "");
+    a.a(this.zVp, "");
+    a.a(this.zVq, "");
     requestLayout();
     invalidate();
     AppMethodBeat.o(98216);
@@ -272,7 +272,7 @@ public class QTextView
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(98218);
-    this.awy.setColor(paramInt);
+    this.ayp.setColor(paramInt);
     invalidate();
     AppMethodBeat.o(98218);
   }
@@ -280,7 +280,7 @@ public class QTextView
   public void setTextSize(int paramInt)
   {
     AppMethodBeat.i(98217);
-    this.awy.setTextSize(paramInt);
+    this.ayp.setTextSize(paramInt);
     requestLayout();
     invalidate();
     AppMethodBeat.o(98217);
@@ -288,29 +288,29 @@ public class QTextView
   
   static final class a
   {
-    private static HashMap<String, Integer> yEc;
+    private static HashMap<String, Integer> zVx;
     private String key;
-    private int yDW;
-    boolean yDX;
-    ArrayList<int[]> yDY;
-    float yDZ;
-    float yEa;
-    float yEb;
+    private int zVr;
+    boolean zVs;
+    ArrayList<int[]> zVt;
+    float zVu;
+    float zVv;
+    float zVw;
     
     static
     {
       AppMethodBeat.i(98212);
-      yEc = new HashMap();
+      zVx = new HashMap();
       AppMethodBeat.o(98212);
     }
     
     public a()
     {
       AppMethodBeat.i(98209);
-      this.yDW = 0;
+      this.zVr = 0;
       this.key = "";
-      this.yDX = false;
-      this.yDY = new ArrayList();
+      this.zVs = false;
+      this.zVt = new ArrayList();
       AppMethodBeat.o(98209);
     }
     
@@ -328,29 +328,29 @@ public class QTextView
       String str = paramString1 + paramString2 + paramString3 + paramInt1 + paramInt2;
       if (str.equals(this.key))
       {
-        paramInt1 = this.yDW;
+        paramInt1 = this.zVr;
         AppMethodBeat.o(98211);
         return paramInt1;
       }
       this.key = str;
-      this.yDY.clear();
-      this.yDX = false;
-      this.yDZ = 0.0F;
-      this.yEa = 0.0F;
-      this.yEb = 0.0F;
+      this.zVt.clear();
+      this.zVs = false;
+      this.zVu = 0.0F;
+      this.zVv = 0.0F;
+      this.zVw = 0.0F;
       if (paramInt2 == -1)
       {
-        this.yDY.add(new int[] { 0, paramString1.length() });
-        this.yDW = ((int)(paramTextPaint.measureText(paramString1) + 0.5F));
-        paramInt1 = this.yDW;
+        this.zVt.add(new int[] { 0, paramString1.length() });
+        this.zVr = ((int)(paramTextPaint.measureText(paramString1) + 0.5F));
+        paramInt1 = this.zVr;
         AppMethodBeat.o(98211);
         return paramInt1;
       }
       if (paramString2 != null) {
-        this.yEa = paramTextPaint.measureText(paramString2);
+        this.zVv = paramTextPaint.measureText(paramString2);
       }
       if (paramString3 != null) {
-        this.yEb = paramTextPaint.measureText(paramString3);
+        this.zVw = paramTextPaint.measureText(paramString3);
       }
       int k = -1;
       float f1 = 0.0F;
@@ -364,22 +364,22 @@ public class QTextView
         if (k == -1) {
           i = paramInt2;
         }
-        if (this.yDY.size() == paramInt1) {
-          this.yDX = true;
+        if (this.zVt.size() == paramInt1) {
+          this.zVs = true;
         }
       }
       else
       {
-        if (this.yDX)
+        if (this.zVs)
         {
-          paramString2 = (int[])this.yDY.get(this.yDY.size() - 1);
-          this.yDZ = paramTextPaint.measureText(paramString1.substring(paramString2[0], paramString2[1] + 1));
+          paramString2 = (int[])this.zVt.get(this.zVt.size() - 1);
+          this.zVu = paramTextPaint.measureText(paramString1.substring(paramString2[0], paramString2[1] + 1));
         }
-        if (this.yDY.size() != 0) {
+        if (this.zVt.size() != 0) {
           break label675;
         }
-        this.yDW = 0;
-        paramInt1 = this.yDW;
+        this.zVr = 0;
+        paramInt1 = this.zVr;
         AppMethodBeat.o(98211);
         return paramInt1;
       }
@@ -392,7 +392,7 @@ public class QTextView
       if (paramString1.charAt(paramInt2) == '\n')
       {
         k = 1;
-        this.yDY.add(new int[] { i, paramInt2 - 1 });
+        this.zVt.add(new int[] { i, paramInt2 - 1 });
         j = paramInt2;
         if (k == 0) {
           break label601;
@@ -403,9 +403,9 @@ public class QTextView
         f1 = f2;
         k = paramInt2;
         i1 = m;
-        if (this.yDY.size() == paramInt1 - 1)
+        if (this.zVt.size() == paramInt1 - 1)
         {
-          i1 = (int)(m - (this.yEa + this.yEb));
+          i1 = (int)(m - (this.zVv + this.zVw));
           i2 = 0;
           k = paramInt2;
           f1 = f2;
@@ -430,7 +430,7 @@ public class QTextView
         else
         {
           j = paramInt2 - 1;
-          this.yDY.add(new int[] { i, j });
+          this.zVt.add(new int[] { i, j });
           break label389;
         }
         do
@@ -442,7 +442,7 @@ public class QTextView
           paramInt2 = j - 1;
           j = paramInt2;
         } while (paramInt2 != 0);
-        this.yDY.add(new int[] { i, paramInt2 });
+        this.zVt.add(new int[] { i, paramInt2 });
         j = paramInt2;
         break label389;
         label601:
@@ -453,7 +453,7 @@ public class QTextView
         i1 = m;
         if (j == paramString1.length() - 1)
         {
-          this.yDY.add(new int[] { i, j });
+          this.zVt.add(new int[] { i, j });
           i2 = n;
           f1 = f2;
           k = i;
@@ -461,15 +461,15 @@ public class QTextView
         }
       }
       label675:
-      if (this.yDY.size() == 1)
+      if (this.zVt.size() == 1)
       {
-        this.yDW = ((int)(paramTextPaint.measureText(paramString1) + 0.5F));
-        paramInt1 = this.yDW;
+        this.zVr = ((int)(paramTextPaint.measureText(paramString1) + 0.5F));
+        paramInt1 = this.zVr;
         AppMethodBeat.o(98211);
         return paramInt1;
       }
-      this.yDW = m;
-      paramInt1 = this.yDW;
+      this.zVr = m;
+      paramInt1 = this.zVr;
       AppMethodBeat.o(98211);
       return paramInt1;
     }

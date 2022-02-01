@@ -2,27 +2,28 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.plugin.appbrand.ab;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.ui.aj;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.al;
 
 public final class AppBrandNearbyWebViewUI
   extends WebViewUI
 {
-  private static Boolean fJY = null;
+  private static Boolean gdz = null;
   
   /* Error */
-  public static boolean YJ()
+  public static boolean abl()
   {
     // Byte code:
     //   0: sipush 21123
     //   3: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:fJY	Ljava/lang/Boolean;
+    //   6: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gdz	Ljava/lang/Boolean;
     //   9: ifnonnull +78 -> 87
     //   12: aconst_null
     //   13: astore_2
@@ -33,7 +34,7 @@ public final class AppBrandNearbyWebViewUI
     //   20: invokestatic 32	android/os/Environment:getRootDirectory	()Ljava/io/File;
     //   23: ldc 34
     //   25: invokespecial 37	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   28: invokestatic 43	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   28: invokestatic 43	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   31: astore_3
     //   32: aload_3
     //   33: astore_1
@@ -61,12 +62,12 @@ public final class AppBrandNearbyWebViewUI
     //   68: ldc 60
     //   70: invokevirtual 66	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   73: invokestatic 72	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   76: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:fJY	Ljava/lang/Boolean;
+    //   76: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gdz	Ljava/lang/Boolean;
     //   79: aload_3
     //   80: ifnull +7 -> 87
     //   83: aload_3
     //   84: invokevirtual 77	java/io/InputStream:close	()V
-    //   87: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:fJY	Ljava/lang/Boolean;
+    //   87: getstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gdz	Ljava/lang/Boolean;
     //   90: invokevirtual 80	java/lang/Boolean:booleanValue	()Z
     //   93: istore_0
     //   94: sipush 21123
@@ -77,7 +78,7 @@ public final class AppBrandNearbyWebViewUI
     //   103: aload_1
     //   104: astore_2
     //   105: getstatic 86	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   108: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:fJY	Ljava/lang/Boolean;
+    //   108: putstatic 10	com/tencent/mm/plugin/appbrand/ui/AppBrandNearbyWebViewUI:gdz	Ljava/lang/Boolean;
     //   111: aload_1
     //   112: ifnull -25 -> 87
     //   115: aload_1
@@ -127,35 +128,35 @@ public final class AppBrandNearbyWebViewUI
     //   131	135	147	java/lang/Exception
   }
   
-  public final void bvh()
+  public final void bzn()
   {
     AppMethodBeat.i(21121);
-    super.bvh();
+    super.bzn();
     setActionbarColor(-855310);
     AppMethodBeat.o(21121);
   }
   
-  public final int bvi()
+  public final int bzo()
   {
     AppMethodBeat.i(21122);
-    if ((Build.VERSION.SDK_INT >= 23) && ((!g.YI()) || (!YJ())))
+    if ((Build.VERSION.SDK_INT >= 23) && ((!g.abk()) || (!abl())))
     {
-      aj.d(getWindow());
+      al.d(getWindow());
       AppMethodBeat.o(21122);
       return -855310;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      i = ab.jhK;
+      i = ab.jAT;
       AppMethodBeat.o(21122);
       return i;
     }
-    int i = super.bvi();
+    int i = super.bzo();
     AppMethodBeat.o(21122);
     return i;
   }
   
-  public final boolean bvj()
+  public final boolean bzp()
   {
     return true;
   }
@@ -193,7 +194,7 @@ public final class AppBrandNearbyWebViewUI
   {
     AppMethodBeat.i(21119);
     super.setMMTitle(paramString);
-    setMMTitleColor(ao.aJ(getContext(), 2130968584));
+    setMMTitleColor(getContext().getResources().getColor(2131099732));
     AppMethodBeat.o(21119);
   }
 }

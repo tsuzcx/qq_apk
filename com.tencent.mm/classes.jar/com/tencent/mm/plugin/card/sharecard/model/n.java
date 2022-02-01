@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fj;
-import com.tencent.mm.protocal.protobuf.cxw;
+import com.tencent.mm.g.c.ft;
+import com.tencent.mm.protocal.protobuf.ddj;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class n
-  extends fj
+  extends ft
 {
   protected static c.a info;
   
@@ -16,28 +16,28 @@ public final class n
   {
     AppMethodBeat.i(113025);
     c.a locala = new c.a();
-    locala.GvF = new Field[5];
+    locala.IhA = new Field[5];
     locala.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "card_id";
-    locala.GvH.put("card_id", "TEXT PRIMARY KEY ");
+    locala.IhC.put("card_id", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" card_id TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "card_id";
+    locala.IhB = "card_id";
     locala.columns[1] = "state_flag";
-    locala.GvH.put("state_flag", "INTEGER");
+    locala.IhC.put("state_flag", "INTEGER");
     localStringBuilder.append(" state_flag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "update_time";
-    locala.GvH.put("update_time", "LONG");
+    locala.IhC.put("update_time", "LONG");
     localStringBuilder.append(" update_time LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "seq";
-    locala.GvH.put("seq", "LONG");
+    locala.IhC.put("seq", "LONG");
     localStringBuilder.append(" seq LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "retryCount";
-    locala.GvH.put("retryCount", "INTEGER");
+    locala.IhC.put("retryCount", "INTEGER");
     localStringBuilder.append(" retryCount INTEGER");
     locala.columns[5] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -45,14 +45,14 @@ public final class n
     AppMethodBeat.o(113025);
   }
   
-  public static n c(cxw paramcxw)
+  public static n c(ddj paramddj)
   {
     AppMethodBeat.i(113024);
     n localn = new n();
-    localn.field_card_id = paramcxw.dvO;
-    localn.field_update_time = paramcxw.EdN;
-    localn.field_state_flag = paramcxw.nYh;
-    localn.field_seq = paramcxw.seq;
+    localn.field_card_id = paramddj.dHX;
+    localn.field_update_time = paramddj.FKm;
+    localn.field_state_flag = paramddj.oBB;
+    localn.field_seq = paramddj.seq;
     localn.field_retryCount = 10;
     AppMethodBeat.o(113024);
     return localn;
@@ -89,7 +89,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.n
  * JD-Core Version:    0.7.0.1
  */

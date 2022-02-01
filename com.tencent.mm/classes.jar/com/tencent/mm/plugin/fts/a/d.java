@@ -6,15 +6,17 @@ import android.content.Intent;
 import android.database.DatabaseUtils;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.aj;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ak;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.plugin.fts.a.a.m;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -31,18 +33,18 @@ import java.util.Set;
 
 public final class d
 {
-  private static final HashMap<String, String> swQ;
-  private static String[] swR;
+  private static final HashMap<String, String> ttr;
+  private static String[] tts;
   
   static
   {
     AppMethodBeat.i(131643);
-    swQ = new HashMap();
-    swR = new String[] { "wxid_", "wx_", "gh_" };
+    ttr = new HashMap();
+    tts = new String[] { "wxid_", "wx_", "gh_" };
     AppMethodBeat.o(131643);
   }
   
-  public static final String F(String[] paramArrayOfString)
+  public static final String G(String[] paramArrayOfString)
   {
     AppMethodBeat.i(131625);
     StringBuilder localStringBuilder = new StringBuilder(32);
@@ -88,17 +90,17 @@ public final class d
     return paramArrayOfString;
   }
   
-  public static long Fx(int paramInt)
+  public static long GM(int paramInt)
   {
     AppMethodBeat.i(131641);
     StringBuilder localStringBuilder = new StringBuilder().append(System.currentTimeMillis()).append("_");
-    com.tencent.mm.kernel.g.agP();
-    long l = afU(com.tencent.mm.kernel.a.afE() + "_" + paramInt);
+    com.tencent.mm.kernel.g.ajA();
+    long l = aks(com.tencent.mm.kernel.a.aiq() + "_" + paramInt);
     AppMethodBeat.o(131641);
     return l;
   }
   
-  public static String G(String[] paramArrayOfString)
+  public static String H(String[] paramArrayOfString)
   {
     AppMethodBeat.i(131633);
     StringBuilder localStringBuilder = new StringBuilder(256);
@@ -117,7 +119,7 @@ public final class d
     return paramArrayOfString;
   }
   
-  public static boolean S(long paramLong1, long paramLong2)
+  public static boolean T(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(131637);
     Calendar localCalendar = Calendar.getInstance();
@@ -207,34 +209,34 @@ public final class d
     }
   }
   
-  public static String acr(String paramString)
+  public static String agg(String paramString)
   {
     AppMethodBeat.i(131638);
-    com.tencent.mm.storage.ai localai = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt(paramString);
-    if (localai != null)
+    am localam = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramString);
+    if (localam != null)
     {
-      if (!bs.isNullOrNil(localai.field_conRemark))
+      if (!bt.isNullOrNil(localam.field_conRemark))
       {
-        paramString = localai.field_conRemark;
+        paramString = localam.field_conRemark;
         AppMethodBeat.o(131638);
         return paramString;
       }
-      if (!bs.isNullOrNil(localai.field_nickname))
+      if (!bt.isNullOrNil(localam.field_nickname))
       {
-        paramString = localai.field_nickname;
+        paramString = localam.field_nickname;
         AppMethodBeat.o(131638);
         return paramString;
       }
-      if (w.wo(localai.field_username))
+      if (w.zj(localam.field_username))
       {
-        paramString = ((c)com.tencent.mm.kernel.g.ab(c.class)).awK().wk(paramString);
-        if (!bs.isNullOrNil(paramString))
+        paramString = ((c)com.tencent.mm.kernel.g.ab(c.class)).azz().zf(paramString);
+        if (!bt.isNullOrNil(paramString))
         {
           AppMethodBeat.o(131638);
           return paramString;
         }
       }
-      paramString = localai.field_username;
+      paramString = localam.field_username;
       AppMethodBeat.o(131638);
       return paramString;
     }
@@ -242,35 +244,35 @@ public final class d
     return paramString;
   }
   
-  public static String afO(String paramString)
+  public static String akm(String paramString)
   {
     AppMethodBeat.i(131621);
-    if (w.wo(paramString))
+    if (w.zj(paramString))
     {
       AppMethodBeat.o(131621);
       return paramString;
     }
-    com.tencent.mm.storage.ai localai = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt(paramString);
-    if (localai == null)
+    am localam = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramString);
+    if (localam == null)
     {
       AppMethodBeat.o(131621);
       return paramString;
     }
-    if (!bs.isNullOrNil(localai.field_conRemarkPYFull))
+    if (!bt.isNullOrNil(localam.field_conRemarkPYFull))
     {
-      paramString = localai.field_conRemarkPYFull;
+      paramString = localam.field_conRemarkPYFull;
       AppMethodBeat.o(131621);
       return paramString;
     }
-    if (!bs.isNullOrNil(localai.Tp()))
+    if (!bt.isNullOrNil(localam.VE()))
     {
-      paramString = localai.Tp();
+      paramString = localam.VE();
       AppMethodBeat.o(131621);
       return paramString;
     }
-    if (!bs.isNullOrNil(localai.Tl()))
+    if (!bt.isNullOrNil(localam.VA()))
     {
-      paramString = localai.Tl();
+      paramString = localam.VA();
       AppMethodBeat.o(131621);
       return paramString;
     }
@@ -278,7 +280,7 @@ public final class d
     return paramString;
   }
   
-  public static final String afP(String paramString)
+  public static final String akn(String paramString)
   {
     AppMethodBeat.i(131628);
     if (paramString == null)
@@ -287,20 +289,20 @@ public final class d
       return null;
     }
     paramString = paramString.trim();
-    paramString = g.afW(((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.a.class)).fh(paramString, " "));
+    paramString = g.aku(((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.a.class)).fr(paramString, " "));
     AppMethodBeat.o(131628);
     return paramString;
   }
   
-  public static final String afQ(String paramString)
+  public static final String ako(String paramString)
   {
     AppMethodBeat.i(131629);
-    paramString = g.afW(paramString.toLowerCase());
+    paramString = g.aku(paramString.toLowerCase());
     AppMethodBeat.o(131629);
     return paramString;
   }
   
-  public static final String afR(String paramString)
+  public static final String akp(String paramString)
   {
     AppMethodBeat.i(131630);
     if (paramString != null)
@@ -313,7 +315,7 @@ public final class d
     return null;
   }
   
-  public static boolean afS(String paramString)
+  public static boolean akq(String paramString)
   {
     AppMethodBeat.i(131635);
     if (paramString == null)
@@ -330,7 +332,7 @@ public final class d
     return false;
   }
   
-  public static boolean afT(String paramString)
+  public static boolean akr(String paramString)
   {
     AppMethodBeat.i(131636);
     if (paramString == null)
@@ -347,7 +349,7 @@ public final class d
     return false;
   }
   
-  private static long afU(String paramString)
+  private static long aks(String paramString)
   {
     AppMethodBeat.i(131642);
     try
@@ -369,7 +371,7 @@ public final class d
     }
     catch (Exception paramString)
     {
-      ac.printErrStackTrace("MicroMsg.FTS.FTSApiLogic", paramString, "getMd5UInt", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.FTS.FTSApiLogic", paramString, "getMd5UInt", new Object[0]);
       AppMethodBeat.o(131642);
     }
     return 0L;
@@ -383,38 +385,38 @@ public final class d
     try
     {
       localIntent = new Intent();
-      String str = com.tencent.mm.sdk.platformtools.ai.eUW() + ".plugin.fts";
+      String str = aj.fkB() + ".plugin.fts";
       paramIntent = paramString;
       if (paramString.startsWith(".")) {
         paramIntent = str + paramString;
       }
-      localIntent.setClassName(com.tencent.mm.sdk.platformtools.ai.getPackageName(), paramIntent);
+      localIntent.setClassName(aj.getPackageName(), paramIntent);
       Class.forName(paramIntent, false, paramContext.getClassLoader());
       if ((paramContext instanceof Activity))
       {
-        paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramBundle).ba(localIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
-        paramContext.startActivity((Intent)paramString.lR(0), (Bundle)paramString.lR(1));
+        paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramBundle).bc(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahp(), "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
+        paramContext.startActivity((Intent)paramString.mq(0), (Bundle)paramString.mq(1));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
         AppMethodBeat.o(131640);
         return;
       }
       localIntent.addFlags(268435456);
-      paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramBundle).ba(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
-      paramContext.startActivity((Intent)paramString.lR(0), (Bundle)paramString.lR(1));
+      paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramBundle).bc(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahp(), "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
+      paramContext.startActivity((Intent)paramString.mq(0), (Bundle)paramString.mq(1));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
       AppMethodBeat.o(131640);
       return;
     }
     catch (Exception paramContext)
     {
-      ac.e("MicroMsg.FTS.FTSApiLogic", "Class Not Found when startActivity %s", new Object[] { paramContext });
+      ad.e("MicroMsg.FTS.FTSApiLogic", "Class Not Found when startActivity %s", new Object[] { paramContext });
       AppMethodBeat.o(131640);
     }
   }
   
-  public static String bf(String paramString, boolean paramBoolean)
+  public static String bk(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(131632);
     if (paramString == null)
@@ -422,16 +424,16 @@ public final class d
       AppMethodBeat.o(131632);
       return null;
     }
-    String str = afP(paramString).toLowerCase();
+    String str = akn(paramString).toLowerCase();
     ArrayList localArrayList1 = new ArrayList();
     int i = 0;
     int j = 0;
     if (i < str.length())
     {
       char c = str.charAt(i);
-      if (g.y(c))
+      if (g.A(c))
       {
-        String[] arrayOfString = (String[])g.sxw.get(String.valueOf(c));
+        String[] arrayOfString = (String[])g.ttX.get(String.valueOf(c));
         if ((arrayOfString != null) && (arrayOfString.length > 0) && (arrayOfString[0].length() > 0))
         {
           ArrayList localArrayList2 = new ArrayList();
@@ -448,7 +450,7 @@ public final class d
               break;
             }
           }
-          localArrayList1.add(bs.n(localArrayList2, "‏"));
+          localArrayList1.add(bt.m(localArrayList2, "‏"));
           j = 1;
         }
       }
@@ -463,7 +465,7 @@ public final class d
     }
     if (j != 0)
     {
-      paramString = bs.n(localArrayList1, "‍");
+      paramString = bt.m(localArrayList1, "‍");
       AppMethodBeat.o(131632);
       return paramString;
     }
@@ -471,47 +473,11 @@ public final class d
     return null;
   }
   
-  public static void c(Context paramContext, String paramString, Intent paramIntent)
-  {
-    AppMethodBeat.i(131639);
-    try
-    {
-      String str2 = com.tencent.mm.sdk.platformtools.ai.eUW() + ".plugin.fts";
-      String str1 = paramString;
-      if (paramString.startsWith(".")) {
-        str1 = str2 + paramString;
-      }
-      paramIntent.setClassName(com.tencent.mm.sdk.platformtools.ai.getPackageName(), str1);
-      Class.forName(str1, false, paramContext.getClassLoader());
-      if ((paramContext instanceof Activity))
-      {
-        paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramString.lR(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(131639);
-        return;
-      }
-      paramIntent.addFlags(268435456);
-      paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString.lR(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(131639);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      ac.e("MicroMsg.FTS.FTSApiLogic", "Class Not Found when startActivity %s", new Object[] { paramContext });
-      AppMethodBeat.o(131639);
-    }
-  }
-  
-  public static final HashMap<String, String> cKt()
+  public static final HashMap<String, String> cSI()
   {
     AppMethodBeat.i(131622);
     HashMap localHashMap = new HashMap();
-    Iterator localIterator = swQ.entrySet().iterator();
+    Iterator localIterator = ttr.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -521,18 +487,54 @@ public final class d
     return localHashMap;
   }
   
-  public static final void dI(List<m> paramList)
+  public static void d(Context paramContext, String paramString, Intent paramIntent)
+  {
+    AppMethodBeat.i(131639);
+    try
+    {
+      String str2 = aj.fkB() + ".plugin.fts";
+      String str1 = paramString;
+      if (paramString.startsWith(".")) {
+        str1 = str2 + paramString;
+      }
+      paramIntent.setClassName(aj.getPackageName(), str1);
+      Class.forName(str1, false, paramContext.getClassLoader());
+      if ((paramContext instanceof Activity))
+      {
+        paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahp(), "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramString.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(131639);
+        return;
+      }
+      paramIntent.addFlags(268435456);
+      paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahp(), "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/fts/api/FTSApiLogic", "startFTSActivity", "(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(131639);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      ad.e("MicroMsg.FTS.FTSApiLogic", "Class Not Found when startActivity %s", new Object[] { paramContext });
+      AppMethodBeat.o(131639);
+    }
+  }
+  
+  public static final void dS(List<m> paramList)
   {
     AppMethodBeat.i(131623);
-    swQ.clear();
+    ttr.clear();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       m localm = (m)paramList.next();
       if ((localm.userData instanceof String)) {
-        swQ.put(localm.sxG, (String)localm.userData);
+        ttr.put(localm.tuh, (String)localm.userData);
       } else {
-        swQ.put(localm.sxG, "");
+        ttr.put(localm.tuh, "");
       }
     }
     AppMethodBeat.o(131623);
@@ -581,7 +583,7 @@ public final class d
     }
   }
   
-  public static String gA(String paramString1, String paramString2)
+  public static String gL(String paramString1, String paramString2)
   {
     AppMethodBeat.i(131631);
     if ((paramString2 != null) && (paramString2.length() > 0))
@@ -589,7 +591,7 @@ public final class d
       AppMethodBeat.o(131631);
       return paramString2;
     }
-    paramString2 = swR;
+    paramString2 = tts;
     int j = paramString2.length;
     int i = 0;
     while (i < j)
@@ -642,7 +644,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.d
  * JD-Core Version:    0.7.0.1
  */

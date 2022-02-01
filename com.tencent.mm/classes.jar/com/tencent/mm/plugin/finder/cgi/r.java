@@ -1,67 +1,63 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.plugin.finder.report.d;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.protocal.protobuf.cqk;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.protocal.protobuf.BaseResponse;
+import com.tencent.mm.protocal.protobuf.ano;
+import com.tencent.mm.protocal.protobuf.anp;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "_Resp", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "Lcom/tencent/mm/modelbase/Cgi;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "getContextObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "isFetchFeedCgi", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "(IILjava/lang/String;Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "updateFeedSessionBuffer", "finderObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "plugin-finder_release"})
-public class r<_Resp extends cqk>
-  extends com.tencent.mm.ak.a<_Resp>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetFinderFeedLikedList;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetFeedLikedListResp;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "scene", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "likeBuffer", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;ILcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/protobuf/ByteString;)V", "onCgiBack", "", "errType", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+public final class r
+  extends com.tencent.mm.al.a<anp>
 {
-  private final String TAG;
-  final anm contextObj;
+  private final FinderItem feedObject;
+  private final b lastBuffer;
+  private final b likeBuffer;
+  private final int scene;
   
-  public r(anm paramanm)
+  public r(FinderItem paramFinderItem, int paramInt, b paramb1, b paramb2)
   {
-    AppMethodBeat.i(201155);
-    this.contextObj = paramanm;
-    this.TAG = "Finder.FinderCgi";
-    if (csf())
+    AppMethodBeat.i(201078);
+    this.feedObject = paramFinderItem;
+    this.scene = paramInt;
+    this.lastBuffer = paramb1;
+    this.likeBuffer = paramb2;
+    paramFinderItem = new b.a();
+    paramb1 = new ano();
+    paramb1.rTn = this.feedObject.field_username;
+    paramb1.scene = this.scene;
+    paramb1.lastBuffer = this.lastBuffer;
+    paramb1.rIZ = this.feedObject.field_id;
+    paramb1.objectNonceId = this.feedObject.getObjectNonceId();
+    paramb1.likeBuffer = this.likeBuffer;
+    paramb2 = v.rIR;
+    paramb1.Gle = v.cxY();
+    paramFinderItem.c((com.tencent.mm.bx.a)paramb1);
+    paramb1 = new anp();
+    paramb1.setBaseResponse(new BaseResponse());
+    paramb1.getBaseResponse().ErrMsg = new cwt();
+    paramFinderItem.d((com.tencent.mm.bx.a)paramb1);
+    paramFinderItem.Dl("/cgi-bin/micromsg-bin/findergetfeedlikedlist");
+    paramFinderItem.oP(3593);
+    c(paramFinderItem.aDC());
+    paramFinderItem = new StringBuilder("CgiGetFinderFeedLikedList init finderUsername=").append(this.feedObject.field_username).append(" scene=").append(this.scene).append(" lastBuffer=");
+    if (this.lastBuffer != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramanm = d.rxr;
-      paramanm = this.contextObj;
-      if (paramanm == null) {
-        break label102;
-      }
-    }
-    label102:
-    for (int i = paramanm.rfR;; i = 0)
-    {
-      d.DU(i);
-      paramanm = this.contextObj;
-      if (paramanm == null) {
-        break;
-      }
-      ac.i(this.TAG, "Create commentScene:" + paramanm.rfR + " fromCommentScene:" + paramanm.seo);
-      AppMethodBeat.o(201155);
+      ad.i("Finder.CgiGetFinderFeedLikedList", bool);
+      AppMethodBeat.o(201078);
       return;
     }
-    AppMethodBeat.o(201155);
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString, _Resp param_Resp, n paramn)
-  {
-    AppMethodBeat.i(201154);
-    k.h(param_Resp, "resp");
-    super.a(paramInt1, paramInt2, paramString, param_Resp, paramn);
-    param_Resp = com.tencent.mm.plugin.finder.spam.a.rBD;
-    com.tencent.mm.plugin.finder.spam.a.w(paramInt1, paramInt2, paramString);
-    AppMethodBeat.o(201154);
-  }
-  
-  public boolean csf()
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.r
  * JD-Core Version:    0.7.0.1
  */

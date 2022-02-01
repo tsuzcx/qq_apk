@@ -1,105 +1,151 @@
 package com.tencent.mm.gpu.e;
 
+import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.gpu.PluginGpuRes;
+import com.tencent.mm.gpu.f.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class b
   implements Runnable
 {
-  private static e lL(int paramInt)
-  {
-    AppMethodBeat.i(209431);
-    e locale = new e();
-    locale.I(9, paramInt * 3, 2147483647);
-    locale.I(8, paramInt * 2, paramInt * 3);
-    int k = paramInt * 2 / 8;
-    int i = 0;
-    paramInt = k;
-    int j = 0;
-    while (i < 8)
-    {
-      locale.I(i, j, paramInt);
-      j += k;
-      i += 1;
-      paramInt += k;
-    }
-    AppMethodBeat.o(209431);
-    return locale;
-  }
-  
   public final void run()
   {
-    AppMethodBeat.i(209430);
-    ac.e("Gpu.GpuOOMReportTask", "GpuOOMReportTask start");
-    Object localObject1 = ai.getProcessName();
-    int[] arrayOfInt = new int[3];
-    if (com.tencent.mm.gpu.b.a.gae.equals(localObject1))
+    AppMethodBeat.i(219541);
+    ad.d("GpuResReportTask", "GpuResReportTask run.");
+    if (PluginGpuRes.isSkipModel())
     {
-      arrayOfInt[0] = 1500;
-      arrayOfInt[1] = 400;
-      arrayOfInt[2] = 35000;
-      localObject1 = new e[3];
-      localObject1[0] = lL(arrayOfInt[0]);
-      localObject1[1] = lL(arrayOfInt[1]);
-      localObject1[2] = lL(arrayOfInt[2]);
+      ad.e("GpuResReportTask", "skip current phone model");
+      AppMethodBeat.o(219541);
+      return;
+    }
+    ad.d("GpuResReportTask", "do not skip current phone model");
+    long l1 = System.currentTimeMillis();
+    Object localObject = new a();
+    long l2 = System.currentTimeMillis();
+    String str = aj.getProcessName();
+    e locale = new e();
+    locale.pid = Process.myPid();
+    locale.processName = str;
+    locale.gua = PluginGpuRes.getCurrSpend();
+    locale.gtZ = (l2 - l1);
+    locale.gtY = ((a)localObject).agU();
+    locale.gtW = ((a)localObject).agT();
+    locale.gtX = ((a)localObject).agV();
+    ad.i("GpuResReportTask", "processName = ".concat(String.valueOf(str)));
+    ad.i("GpuResReportTask", locale.toString());
+    localObject = locale.processName;
+    int i = locale.gua;
+    int j = c.wl((String)localObject);
+    int k = locale.gtY;
+    int m = locale.gtX;
+    int n = locale.gtW;
+    if ((k != 0) || (m != 0) || (n != 0))
+    {
+      if (i >= 360)
+      {
+        c.e(j, 76L, k);
+        c.e(j, 78L, n);
+        c.e(j, 77L, m);
+        c.e(j, 96L, com.tencent.mm.gpu.d.c.agM().mj(1));
+        c.e(j, 108L, com.tencent.mm.gpu.d.c.agM().mj(2));
+        c.e(j, 119L, com.tencent.mm.gpu.d.c.agM().mj(3));
+        c.e(j, 131L, com.tencent.mm.gpu.d.c.agM().mj(4));
+        c.e(j, 75L, 1L);
+      }
+      switch (i)
+      {
+      }
     }
     for (;;)
     {
-      if (localObject1 != null) {
-        break label221;
-      }
-      ac.e("Gpu.GpuOOMReportTask", "regions == null, GpuOOMReportTask end");
-      AppMethodBeat.o(209430);
+      AppMethodBeat.o(219541);
       return;
-      if (((String)localObject1).startsWith(com.tencent.mm.gpu.b.a.gaf))
-      {
-        arrayOfInt[0] = 900;
-        arrayOfInt[1] = 300;
-        arrayOfInt[2] = 4000;
-        break;
-      }
-      if (com.tencent.mm.gpu.b.a.gag.equals(localObject1))
-      {
-        arrayOfInt[0] = 900;
-        arrayOfInt[1] = 400;
-        arrayOfInt[2] = 6000;
-        break;
-      }
-      if (com.tencent.mm.gpu.b.a.gah.equals(localObject1))
-      {
-        arrayOfInt[0] = 900;
-        arrayOfInt[1] = 300;
-        arrayOfInt[2] = 4000;
-        break;
-      }
-      localObject1 = null;
+      c.e(j, 4L, k);
+      c.e(j, 6L, n);
+      c.e(j, 5L, m);
+      c.e(j, 88L, com.tencent.mm.gpu.d.c.agM().mj(1));
+      c.e(j, 100L, com.tencent.mm.gpu.d.c.agM().mj(2));
+      c.e(j, 111L, com.tencent.mm.gpu.d.c.agM().mj(3));
+      c.e(j, 123L, com.tencent.mm.gpu.d.c.agM().mj(4));
+      c.e(j, 3L, 1L);
+      AppMethodBeat.o(219541);
+      return;
+      c.e(j, 13L, k);
+      c.e(j, 15L, n);
+      c.e(j, 14L, m);
+      c.e(j, 89L, com.tencent.mm.gpu.d.c.agM().mj(1));
+      c.e(j, 101L, com.tencent.mm.gpu.d.c.agM().mj(2));
+      c.e(j, 112L, com.tencent.mm.gpu.d.c.agM().mj(3));
+      c.e(j, 124L, com.tencent.mm.gpu.d.c.agM().mj(4));
+      c.e(j, 12L, 1L);
+      AppMethodBeat.o(219541);
+      return;
+      c.e(j, 22L, k);
+      c.e(j, 24L, n);
+      c.e(j, 23L, m);
+      c.e(j, 90L, com.tencent.mm.gpu.d.c.agM().mj(1));
+      c.e(j, 102L, com.tencent.mm.gpu.d.c.agM().mj(2));
+      c.e(j, 113L, com.tencent.mm.gpu.d.c.agM().mj(3));
+      c.e(j, 125L, com.tencent.mm.gpu.d.c.agM().mj(4));
+      c.e(j, 21L, 1L);
+      AppMethodBeat.o(219541);
+      return;
+      c.e(j, 31L, k);
+      c.e(j, 33L, n);
+      c.e(j, 32L, m);
+      c.e(j, 91L, com.tencent.mm.gpu.d.c.agM().mj(1));
+      c.e(j, 103L, com.tencent.mm.gpu.d.c.agM().mj(2));
+      c.e(j, 114L, com.tencent.mm.gpu.d.c.agM().mj(3));
+      c.e(j, 126L, com.tencent.mm.gpu.d.c.agM().mj(4));
+      c.e(j, 30L, 1L);
+      AppMethodBeat.o(219541);
+      return;
+      c.e(j, 40L, k);
+      c.e(j, 42L, n);
+      c.e(j, 41L, m);
+      c.e(j, 92L, com.tencent.mm.gpu.d.c.agM().mj(1));
+      c.e(j, 104L, com.tencent.mm.gpu.d.c.agM().mj(2));
+      c.e(j, 115L, com.tencent.mm.gpu.d.c.agM().mj(3));
+      c.e(j, 127L, com.tencent.mm.gpu.d.c.agM().mj(4));
+      c.e(j, 39L, 1L);
+      AppMethodBeat.o(219541);
+      return;
+      c.e(j, 49L, k);
+      c.e(j, 51L, n);
+      c.e(j, 50L, m);
+      c.e(j, 93L, com.tencent.mm.gpu.d.c.agM().mj(1));
+      c.e(j, 105L, com.tencent.mm.gpu.d.c.agM().mj(2));
+      c.e(j, 116L, com.tencent.mm.gpu.d.c.agM().mj(3));
+      c.e(j, 128L, com.tencent.mm.gpu.d.c.agM().mj(4));
+      c.e(j, 48L, 1L);
+      AppMethodBeat.o(219541);
+      return;
+      c.e(j, 58L, k);
+      c.e(j, 60L, n);
+      c.e(j, 59L, m);
+      c.e(j, 94L, com.tencent.mm.gpu.d.c.agM().mj(1));
+      c.e(j, 106L, com.tencent.mm.gpu.d.c.agM().mj(2));
+      c.e(j, 117L, com.tencent.mm.gpu.d.c.agM().mj(3));
+      c.e(j, 129L, com.tencent.mm.gpu.d.c.agM().mj(4));
+      c.e(j, 57L, 1L);
+      AppMethodBeat.o(219541);
+      return;
+      c.e(j, 67L, k);
+      c.e(j, 69L, n);
+      c.e(j, 68L, m);
+      c.e(j, 95L, com.tencent.mm.gpu.d.c.agM().mj(1));
+      c.e(j, 107L, com.tencent.mm.gpu.d.c.agM().mj(2));
+      c.e(j, 118L, com.tencent.mm.gpu.d.c.agM().mj(3));
+      c.e(j, 130L, com.tencent.mm.gpu.d.c.agM().mj(4));
+      c.e(j, 66L, 1L);
     }
-    label221:
-    arrayOfInt = localObject1[2];
-    Object localObject2 = localObject1[1];
-    localObject1 = localObject1[0];
-    com.tencent.mm.gpu.f.a locala = new com.tencent.mm.gpu.f.a();
-    int j = locala.aeo();
-    int k = locala.aen();
-    int i = locala.aem();
-    j = arrayOfInt.lM(j);
-    k = localObject2.lM(k);
-    i = ((e)localObject1).lM(i);
-    ac.e("Gpu.GpuOOMReportTask", "indexGL = ".concat(String.valueOf(j)));
-    ac.e("Gpu.GpuOOMReportTask", "indexEGL = ".concat(String.valueOf(k)));
-    ac.e("Gpu.GpuOOMReportTask", "indexGfx = ".concat(String.valueOf(i)));
-    localObject1 = ai.getProcessName();
-    d.e(d.tv((String)localObject1), k + 150, 1L);
-    d.e(d.tv((String)localObject1), j + 161, 1L);
-    d.e(d.tv((String)localObject1), i + 139, 1L);
-    ac.e("Gpu.GpuOOMReportTask", "GpuOOMReportTask end");
-    AppMethodBeat.o(209430);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.gpu.e.b
  * JD-Core Version:    0.7.0.1
  */

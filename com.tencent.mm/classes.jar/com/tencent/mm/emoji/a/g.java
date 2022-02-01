@@ -1,31 +1,30 @@
 package com.tencent.mm.emoji.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.d;
-import com.tencent.mm.bb.e;
-import com.tencent.mm.bb.j;
-import com.tencent.mm.bb.m;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
+import com.tencent.mm.bc.d;
+import com.tencent.mm.bc.e;
+import com.tencent.mm.bc.j;
+import com.tencent.mm.bc.m;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.l;
 import java.util.LinkedList;
 import org.xmlpull.v1.XmlPullParser;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/EggItemParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "isNewItem", "", "(Z)V", "defaultAnim", "Lcom/tencent/mm/modelpackage/NewAnim;", "info", "Lcom/tencent/mm/modelpackage/EggInfo;", "getInfo", "()Lcom/tencent/mm/modelpackage/EggInfo;", "luckyBagValid", "luckyBag", "Lcom/tencent/mm/modelpackage/LuckyBag;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/EggItemParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "isNewItem", "", "(Z)V", "defaultAnim", "Lcom/tencent/mm/modelpackage/NewAnim;", "info", "Lcom/tencent/mm/modelpackage/EggInfo;", "getInfo", "()Lcom/tencent/mm/modelpackage/EggInfo;", "luckyBagValid", "luckyBag", "Lcom/tencent/mm/modelpackage/LuckyBag;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "", "plugin-emojisdk_release"})
 public final class g
   extends a
 {
-  final d fQp;
-  private final m fQq;
-  private final boolean fQr;
+  final d gjP;
+  private final m gjQ;
+  private final boolean gjR;
   
   public g(boolean paramBoolean)
   {
     AppMethodBeat.i(105504);
-    this.fQr = paramBoolean;
-    this.fQp = new d();
-    this.fQq = new m();
+    this.gjR = paramBoolean;
+    this.gjP = new d();
+    this.gjQ = new m();
     AppMethodBeat.o(105504);
   }
   
@@ -33,12 +32,12 @@ public final class g
   {
     int i = 1;
     AppMethodBeat.i(105503);
-    k.h(paramString, "tag");
-    k.h(paramXmlPullParser, "parser");
+    p.h(paramString, "tag");
+    p.h(paramXmlPullParser, "parser");
     switch (paramString.hashCode())
     {
     default: 
-      a(paramXmlPullParser);
+      skip(paramXmlPullParser);
     }
     label586:
     label591:
@@ -50,24 +49,24 @@ public final class g
       if (!paramString.equals("Type")) {
         break;
       }
-      this.fQp.type = e(paramXmlPullParser);
+      this.gjP.type = d(paramXmlPullParser);
       AppMethodBeat.o(105503);
       return;
       if (!paramString.equals("AnimType")) {
         break;
       }
-      this.fQq.hQb = e(paramXmlPullParser, "viewcount");
-      this.fQq.hQc = e(paramXmlPullParser, "minSize");
-      this.fQq.maxSize = e(paramXmlPullParser, "maxSize");
-      this.fQq.hQa = e(paramXmlPullParser);
+      this.gjQ.ijp = e(paramXmlPullParser, "viewcount");
+      this.gjQ.ijq = e(paramXmlPullParser, "minSize");
+      this.gjQ.maxSize = e(paramXmlPullParser, "maxSize");
+      this.gjQ.ijo = d(paramXmlPullParser);
       AppMethodBeat.o(105503);
       return;
       if (!paramString.equals("ClientEggVersion")) {
         break;
       }
-      if (this.fQr)
+      if (this.gjR)
       {
-        this.fQp.hPG = e(paramXmlPullParser);
+        this.gjP.iiU = d(paramXmlPullParser);
         AppMethodBeat.o(105503);
         return;
         if (!paramString.equals("KeyWord")) {
@@ -75,57 +74,57 @@ public final class g
         }
         paramString = new e();
         paramString.lang = d(paramXmlPullParser, "lang");
-        paramString.hPI = d(paramXmlPullParser);
-        paramXmlPullParser = paramString.hPI;
-        k.g(paramXmlPullParser, "eggKeyWord.keyWord");
+        paramString.iiW = c(paramXmlPullParser);
+        paramXmlPullParser = paramString.iiW;
+        p.g(paramXmlPullParser, "eggKeyWord.keyWord");
         if (((CharSequence)paramXmlPullParser).length() <= 0) {
           break label586;
         }
         if (i == 0) {
           continue;
         }
-        this.fQp.hPB.add(paramString);
+        this.gjP.iiP.add(paramString);
         AppMethodBeat.o(105503);
         return;
         if (!paramString.equals("FileName")) {
           break;
         }
-        this.fQp.hPH.add(this.fQq);
-        this.fQq.fileName = d(paramXmlPullParser);
+        this.gjP.iiV.add(this.gjQ);
+        this.gjQ.fileName = c(paramXmlPullParser);
         AppMethodBeat.o(105503);
         return;
         if (!paramString.equals("NewAnimType")) {
           break;
         }
         paramString = new m();
-        paramString.hQb = e(paramXmlPullParser, "viewcount");
-        paramString.hQc = e(paramXmlPullParser, "minSize");
+        paramString.ijp = e(paramXmlPullParser, "viewcount");
+        paramString.ijq = e(paramXmlPullParser, "minSize");
         paramString.maxSize = e(paramXmlPullParser, "maxSize");
         paramString.fileName = d(paramXmlPullParser, "fileName");
-        paramString.hQa = e(paramXmlPullParser);
-        this.fQp.hPH.add(paramString);
+        paramString.ijo = d(paramXmlPullParser);
+        this.gjP.iiV.add(paramString);
         AppMethodBeat.o(105503);
         return;
         if (!paramString.equals("LuckyBag")) {
           break;
         }
         paramString = new n();
-        paramString.f(paramXmlPullParser);
-        paramXmlPullParser = paramString.fRh;
-        if ((!bs.isNullOrNil(paramXmlPullParser.appId)) && (!bs.isNullOrNil(paramXmlPullParser.hPR)) && (!bs.isNullOrNil(paramXmlPullParser.ddh)) && (!bs.isNullOrNil(paramXmlPullParser.hPN)) && (!bs.isNullOrNil(paramXmlPullParser.hPP)) && (!bs.isNullOrNil(paramXmlPullParser.hPU)) && (!bs.isNullOrNil(paramXmlPullParser.hPV)) && (!bs.isNullOrNil(paramXmlPullParser.hPW)) && (!bs.isNullOrNil(paramXmlPullParser.hPX))) {
+        paramString.e(paramXmlPullParser);
+        paramXmlPullParser = paramString.gkH;
+        if ((!bt.isNullOrNil(paramXmlPullParser.appId)) && (!bt.isNullOrNil(paramXmlPullParser.ijf)) && (!bt.isNullOrNil(paramXmlPullParser.doD)) && (!bt.isNullOrNil(paramXmlPullParser.ijb)) && (!bt.isNullOrNil(paramXmlPullParser.ijd)) && (!bt.isNullOrNil(paramXmlPullParser.iji)) && (!bt.isNullOrNil(paramXmlPullParser.ijj)) && (!bt.isNullOrNil(paramXmlPullParser.ijk)) && (!bt.isNullOrNil(paramXmlPullParser.ijl))) {
           break label591;
         }
-        h.wUl.dB(1263, 0);
+        com.tencent.mm.plugin.report.service.g.yhR.dD(1263, 0);
       }
       for (i = 0;; i = 1)
       {
         if (i == 0) {
           break label594;
         }
-        this.fQp.fRh = paramString.fRh;
+        this.gjP.gkH = paramString.gkH;
         AppMethodBeat.o(105503);
         return;
-        a(paramXmlPullParser);
+        skip(paramXmlPullParser);
         AppMethodBeat.o(105503);
         return;
         i = 0;
@@ -134,16 +133,16 @@ public final class g
     }
   }
   
-  public final void f(XmlPullParser paramXmlPullParser)
+  public final void e(XmlPullParser paramXmlPullParser)
   {
     AppMethodBeat.i(105502);
-    k.h(paramXmlPullParser, "parser");
-    this.fQp.name = d(paramXmlPullParser, "name");
-    this.fQp.dtw = e(paramXmlPullParser, "reportType");
-    this.fQp.hPF = d(paramXmlPullParser, "langs");
-    this.fQp.hPD = bs.aLr(d(paramXmlPullParser, "BeginDate"));
-    this.fQp.hPE = bs.aLr(d(paramXmlPullParser, "EndDate"));
-    super.f(paramXmlPullParser);
+    p.h(paramXmlPullParser, "parser");
+    this.gjP.name = d(paramXmlPullParser, "name");
+    this.gjP.dFx = e(paramXmlPullParser, "reportType");
+    this.gjP.iiT = d(paramXmlPullParser, "langs");
+    this.gjP.iiR = bt.aQX(d(paramXmlPullParser, "BeginDate"));
+    this.gjP.iiS = bt.aQX(d(paramXmlPullParser, "EndDate"));
+    super.e(paramXmlPullParser);
     AppMethodBeat.o(105502);
   }
 }

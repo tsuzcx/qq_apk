@@ -204,7 +204,13 @@ public class c
   public void f(int paramInt)
   {
     AppMethodBeat.i(15035);
-    this.A = (paramInt / 15.0F);
+    float f = paramInt / 15.0F;
+    if (Math.abs(this.A - f) < 0.001D)
+    {
+      AppMethodBeat.o(15035);
+      return;
+    }
+    this.A = f;
     if (this.u != null) {
       this.u.a(this.A);
     }

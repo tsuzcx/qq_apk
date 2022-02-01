@@ -5,9 +5,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.matrix.trace.f.c;
 import com.tencent.matrix.trace.f.e;
 import com.tencent.matrix.trace.f.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.i;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -16,7 +16,7 @@ import java.util.Set;
 public final class d
   implements a
 {
-  private static aw cqo = aw.aKT("MatrixDelegate");
+  private static ax cBg = ax.aQz("MatrixDelegate");
   
   public final void g(Map<String, Boolean> paramMap)
   {
@@ -34,14 +34,14 @@ public final class d
         {
           str = (String)localIterator1.next();
           bool = ((Boolean)paramMap.get(str)).booleanValue();
-          Iterator localIterator2 = com.tencent.matrix.b.Gq().cqk.iterator();
+          Iterator localIterator2 = com.tencent.matrix.b.HL().cBc.iterator();
           if (localIterator2.hasNext())
           {
             localObject1 = (com.tencent.matrix.e.b)localIterator2.next();
             if (localObject1 != null) {
               break label112;
             }
-            ac.e("Matrix.PluginStatusChangeNotify", "plugin is null");
+            ad.e("Matrix.PluginStatusChangeNotify", "plugin is null");
           }
         }
         else
@@ -51,7 +51,7 @@ public final class d
       }
       catch (Exception paramMap)
       {
-        ac.printErrStackTrace("Matrix.PluginStatusChangeNotify", paramMap, "", new Object[0]);
+        ad.printErrStackTrace("Matrix.PluginStatusChangeNotify", paramMap, "", new Object[0]);
       }
       if (!(localObject1 instanceof com.tencent.matrix.a.c.a))
       {
@@ -59,11 +59,11 @@ public final class d
           break label539;
         }
         localObject1 = (com.tencent.matrix.trace.a)localObject1;
-        localObject2 = com.tencent.matrix.trace.a.HC();
-        if ((localObject2 != null) && (((com.tencent.matrix.trace.core.b)localObject2).cqf)) {
+        localObject2 = com.tencent.matrix.trace.a.IX();
+        if ((localObject2 != null) && (((com.tencent.matrix.trace.core.b)localObject2).cAX)) {
           break;
         }
-        ac.w("Matrix.PluginStatusChangeNotify", "uiThreadMonitor is never inited!");
+        ad.w("Matrix.PluginStatusChangeNotify", "uiThreadMonitor is never inited!");
       }
     }
     switch (str.hashCode())
@@ -73,10 +73,10 @@ public final class d
     {
       if ((localObject1 instanceof c))
       {
-        i = cqo.getInt(a.a.JIF.name(), 0);
+        i = cBg.getInt(a.a.LCo.name(), 0);
         if ((i == 1) || (i == -1))
         {
-          ac.i("Matrix.PluginStatusChangeNotify", "FrameTracer has set in MatrixSettingUI value=".concat(String.valueOf(i)));
+          ad.i("Matrix.PluginStatusChangeNotify", "FrameTracer has set in MatrixSettingUI value=".concat(String.valueOf(i)));
           break;
           if (!str.equals("Trace_StartUp")) {
             break label637;
@@ -93,53 +93,53 @@ public final class d
           }
           i = 2;
           break label639;
-          localObject1 = ((com.tencent.matrix.trace.a)localObject1).cyC;
+          localObject1 = ((com.tencent.matrix.trace.a)localObject1).cJx;
           continue;
-          localObject1 = ((com.tencent.matrix.trace.a)localObject1).cyB;
+          localObject1 = ((com.tencent.matrix.trace.a)localObject1).cJw;
           continue;
-          localObject1 = ((com.tencent.matrix.trace.a)localObject1).cyD;
+          localObject1 = ((com.tencent.matrix.trace.a)localObject1).cJy;
           continue;
         }
-        if (!h.DEBUG) {
+        if (!i.DEBUG) {
           break label459;
         }
-        ac.i("Matrix.PluginStatusChangeNotify", "FrameTracer ignore change");
+        ad.i("Matrix.PluginStatusChangeNotify", "FrameTracer ignore change");
         break;
       }
       if ((localObject1 instanceof com.tencent.matrix.trace.f.b))
       {
-        i = cqo.getInt(a.a.JIN.name(), 0);
+        i = cBg.getInt(a.a.LCw.name(), 0);
         if ((i != 1) && (i != -1)) {
           break label459;
         }
-        ac.i("Matrix.PluginStatusChangeNotify", "EvilMethodTracer has set in MatrixSettingUI value=".concat(String.valueOf(i)));
+        ad.i("Matrix.PluginStatusChangeNotify", "EvilMethodTracer has set in MatrixSettingUI value=".concat(String.valueOf(i)));
         break;
       }
       if ((localObject1 instanceof e))
       {
-        i = cqo.getInt(a.a.JIP.name(), 0);
+        i = cBg.getInt(a.a.LCy.name(), 0);
         if ((i == 1) || (i == -1))
         {
-          ac.i("Matrix.PluginStatusChangeNotify", "StartupTracer has set in MatrixSettingUI value=".concat(String.valueOf(i)));
+          ad.i("Matrix.PluginStatusChangeNotify", "StartupTracer has set in MatrixSettingUI value=".concat(String.valueOf(i)));
           break;
         }
       }
       label459:
       if (!bool)
       {
-        ac.i("Matrix.PluginStatusChangeNotify", "%s#onCloseTrace", new Object[] { str });
-        ((f)localObject1).HQ();
+        ad.i("Matrix.PluginStatusChangeNotify", "%s#onCloseTrace", new Object[] { str });
+        ((f)localObject1).Jl();
         if (!(localObject1 instanceof com.tencent.matrix.trace.f.b)) {
           break;
         }
-        com.tencent.matrix.trace.a.HB().onStop();
+        com.tencent.matrix.trace.a.IW().onStop();
         break;
       }
-      ac.i("Matrix.PluginStatusChangeNotify", "%s#onStartTrace", new Object[] { str });
+      ad.i("Matrix.PluginStatusChangeNotify", "%s#onStartTrace", new Object[] { str });
       if ((localObject1 instanceof com.tencent.matrix.trace.f.b)) {
-        com.tencent.matrix.trace.a.HB().onStart();
+        com.tencent.matrix.trace.a.IW().onStart();
       }
-      ((f)localObject1).HP();
+      ((f)localObject1).Jk();
       break;
       label539:
       localObject2 = ((com.tencent.matrix.e.b)localObject1).getTag();
@@ -148,14 +148,14 @@ public final class d
       }
       if ((((com.tencent.matrix.e.b)localObject1).isPluginStarted()) && (!bool))
       {
-        ac.i("Matrix.PluginStatusChangeNotify", "%sPlugin#onStop", new Object[] { localObject2 });
+        ad.i("Matrix.PluginStatusChangeNotify", "%sPlugin#onStop", new Object[] { localObject2 });
         ((com.tencent.matrix.e.b)localObject1).stop();
         break;
       }
       if (((!((com.tencent.matrix.e.b)localObject1).isPluginStopped()) && (((com.tencent.matrix.e.b)localObject1).getStatus() != 1)) || (!bool)) {
         break;
       }
-      ac.i("Matrix.PluginStatusChangeNotify", "%sPlugin#onStart", new Object[] { localObject2 });
+      ad.i("Matrix.PluginStatusChangeNotify", "%sPlugin#onStart", new Object[] { localObject2 });
       ((com.tencent.matrix.e.b)localObject1).start();
       break;
       label637:

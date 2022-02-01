@@ -18,26 +18,26 @@ public class MediaEditReportInfo
   
   static
   {
-    AppMethodBeat.i(199494);
+    AppMethodBeat.i(209017);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(199494);
+    AppMethodBeat.o(209017);
   }
   
   public MediaEditReportInfo()
   {
-    AppMethodBeat.i(199491);
+    AppMethodBeat.i(209014);
     this.editList = new ArrayList();
-    AppMethodBeat.o(199491);
+    AppMethodBeat.o(209014);
   }
   
   protected MediaEditReportInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(199492);
+    AppMethodBeat.i(209015);
     this.editList = new ArrayList();
     this.seekBarDragCnt = paramParcel.readInt();
     this.cropSizeCnt = paramParcel.readInt();
     paramParcel.readList(this.editList, MediaEditReportInfo.EditItem.class.getClassLoader());
-    AppMethodBeat.o(199492);
+    AppMethodBeat.o(209015);
   }
   
   public int describeContents()
@@ -47,11 +47,11 @@ public class MediaEditReportInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(199493);
+    AppMethodBeat.i(209016);
     paramParcel.writeInt(this.seekBarDragCnt);
     paramParcel.writeInt(this.cropSizeCnt);
     paramParcel.writeList(this.editList);
-    AppMethodBeat.o(199493);
+    AppMethodBeat.o(209016);
   }
 }
 

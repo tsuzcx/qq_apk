@@ -2,9 +2,9 @@ package com.tencent.mm.sandbox;
 
 public abstract interface a
 {
-  public abstract void Aa(long paramLong);
+  public abstract void CO(long paramLong);
   
-  public abstract void zZ(long paramLong);
+  public abstract void CP(long paramLong);
 }
 
 

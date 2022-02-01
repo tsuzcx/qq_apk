@@ -7,8 +7,8 @@ public enum i
   static
   {
     AppMethodBeat.i(28144);
-    xxe = new i("INSTANCE");
-    xxf = new i[] { xxe };
+    yLP = new i("INSTANCE");
+    yLQ = new i[] { yLP };
     AppMethodBeat.o(28144);
   }
   

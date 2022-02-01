@@ -15,7 +15,7 @@ public class HideBottomViewOnScrollBehavior<V extends View>
   extends CoordinatorLayout.Behavior<V>
 {
   private int currentState = 2;
-  private ViewPropertyAnimator fi;
+  private ViewPropertyAnimator ha;
   private int height = 0;
   
   public HideBottomViewOnScrollBehavior() {}
@@ -27,7 +27,7 @@ public class HideBottomViewOnScrollBehavior<V extends View>
   
   private void a(V paramV, int paramInt, long paramLong, TimeInterpolator paramTimeInterpolator)
   {
-    this.fi = paramV.animate().translationY(paramInt).setInterpolator(paramTimeInterpolator).setDuration(paramLong).setListener(new AnimatorListenerAdapter()
+    this.ha = paramV.animate().translationY(paramInt).setInterpolator(paramTimeInterpolator).setDuration(paramLong).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -60,24 +60,24 @@ public class HideBottomViewOnScrollBehavior<V extends View>
   
   protected void b(V paramV)
   {
-    if (this.fi != null)
+    if (this.ha != null)
     {
-      this.fi.cancel();
+      this.ha.cancel();
       paramV.clearAnimation();
     }
     this.currentState = 2;
-    a(paramV, 0, 225L, a.eS);
+    a(paramV, 0, 225L, a.gL);
   }
   
   protected void c(V paramV)
   {
-    if (this.fi != null)
+    if (this.ha != null)
     {
-      this.fi.cancel();
+      this.ha.cancel();
       paramV.clearAnimation();
     }
     this.currentState = 1;
-    a(paramV, this.height, 175L, a.eR);
+    a(paramV, this.height, 175L, a.gK);
   }
 }
 

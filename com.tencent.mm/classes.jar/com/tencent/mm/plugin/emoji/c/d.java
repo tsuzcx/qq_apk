@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.rn;
+import com.tencent.mm.g.a.rz;
 import com.tencent.mm.sdk.b.c;
 
 public final class d
-  extends c<rn>
+  extends c<rz>
 {
   public d()
   {
     AppMethodBeat.i(161068);
-    this.__eventId = rn.class.getName().hashCode();
+    this.__eventId = rz.class.getName().hashCode();
     AppMethodBeat.o(161068);
   }
 }

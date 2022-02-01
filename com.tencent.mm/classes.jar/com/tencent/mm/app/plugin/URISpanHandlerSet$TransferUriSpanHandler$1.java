@@ -3,8 +3,8 @@ package com.tencent.mm.app.plugin;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.widget.a.f.c;
 
 final class URISpanHandlerSet$TransferUriSpanHandler$1
@@ -17,15 +17,15 @@ final class URISpanHandlerSet$TransferUriSpanHandler$1
     AppMethodBeat.i(19760);
     if (paramBoolean)
     {
-      paramString = this.cLw.getString("transaction_id");
-      String str1 = this.cLw.getString("transfer_id");
-      String str2 = this.cLw.getString("receiver_name");
+      paramString = this.cWK.getString("transaction_id");
+      String str1 = this.cWK.getString("transfer_id");
+      String str2 = this.cWK.getString("receiver_name");
       Intent localIntent = new Intent();
       localIntent.putExtra("transaction_id", paramString);
       localIntent.putExtra("transfer_id", str1);
       localIntent.putExtra("receiver_name", str2);
       localIntent.putExtra("resend_msg_from_flag", 3);
-      d.b(ai.getContext(), "remittance", ".ui.RemittanceResendMsgUI", localIntent);
+      d.b(aj.getContext(), "remittance", ".ui.RemittanceResendMsgUI", localIntent);
     }
     AppMethodBeat.o(19760);
   }

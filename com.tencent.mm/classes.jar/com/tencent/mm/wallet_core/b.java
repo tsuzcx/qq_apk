@@ -4,28 +4,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expansions.a;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.storage.c;
 import java.util.Map;
 
 public final class b
 {
-  private static b JDm;
+  private static b Lws;
   
   public static boolean b(b.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(72645);
-    a.cil();
+    a.cmP();
     try
     {
-      i = ((Integer)g.agR().agA().get(ah.a.GTk, Integer.valueOf(0))).intValue();
-      paramBoolean = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(parama, paramBoolean);
-      ac.i("MicroMsg.TenPaySdkAbTest", "isKindaBindCardEnable configval %s svrConfig %s isDebug %s isFlavorRed %s isFlavorPurple %s BuildInfo %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramBoolean), Boolean.FALSE, Boolean.valueOf(h.IS_FLAVOR_RED), Boolean.valueOf(h.IS_FLAVOR_PURPLE), h.KINDA_DEFAULT });
-      if ("open".equals(h.KINDA_DEFAULT))
+      i = ((Integer)g.ajC().ajl().get(al.a.IFP, Integer.valueOf(0))).intValue();
+      paramBoolean = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(parama, paramBoolean);
+      ad.i("MicroMsg.TenPaySdkAbTest", "isKindaBindCardEnable configval %s svrConfig %s isDebug %s isFlavorRed %s isFlavorPurple %s BuildInfo %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramBoolean), Boolean.FALSE, Boolean.valueOf(i.IS_FLAVOR_RED), Boolean.valueOf(i.IS_FLAVOR_PURPLE), i.KINDA_DEFAULT });
+      if ("open".equals(i.KINDA_DEFAULT))
       {
         AppMethodBeat.o(72645);
         return true;
@@ -36,10 +36,10 @@ public final class b
       int i;
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.TenPaySdkAbTest", localb, "isKindaEnable get configVal error! AccountNotReady!", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.TenPaySdkAbTest", localb, "isKindaEnable get configVal error! AccountNotReady!", new Object[0]);
         i = 0;
       }
-      if ("close".equals(h.KINDA_DEFAULT))
+      if ("close".equals(i.KINDA_DEFAULT))
       {
         AppMethodBeat.o(72645);
         return false;
@@ -59,7 +59,7 @@ public final class b
         AppMethodBeat.o(72645);
         return true;
       }
-      if ((h.IS_FLAVOR_RED) || (h.IS_FLAVOR_PURPLE))
+      if ((i.IS_FLAVOR_RED) || (i.IS_FLAVOR_PURPLE))
       {
         AppMethodBeat.o(72645);
         return true;
@@ -69,14 +69,25 @@ public final class b
     return false;
   }
   
-  public static boolean fzA()
+  public static b fQJ()
+  {
+    AppMethodBeat.i(72641);
+    if (Lws == null) {
+      Lws = new b();
+    }
+    b localb = Lws;
+    AppMethodBeat.o(72641);
+    return localb;
+  }
+  
+  public static boolean fQK()
   {
     AppMethodBeat.i(72642);
-    c localc = com.tencent.mm.model.c.d.aAp().tJ("100368");
-    if ((localc.isValid()) && ("1".equals(localc.eYV().get("open")))) {}
+    c localc = com.tencent.mm.model.c.d.aDs().wz("100368");
+    if ((localc.isValid()) && ("1".equals(localc.foF().get("open")))) {}
     for (int i = 1;; i = 0)
     {
-      ac.i("MicroMsg.TenPaySdkAbTest", "isPwdOpen2048 %s", new Object[] { Integer.valueOf(i) });
+      ad.i("MicroMsg.TenPaySdkAbTest", "isPwdOpen2048 %s", new Object[] { Integer.valueOf(i) });
       if (i > 0)
       {
         AppMethodBeat.o(72642);
@@ -87,14 +98,14 @@ public final class b
     }
   }
   
-  public static boolean fzB()
+  public static boolean fQL()
   {
     AppMethodBeat.i(72643);
-    c localc = com.tencent.mm.model.c.d.aAp().tJ("100370");
-    if ((localc.isValid()) && ("1".equals(localc.eYV().get("open")))) {}
+    c localc = com.tencent.mm.model.c.d.aDs().wz("100370");
+    if ((localc.isValid()) && ("1".equals(localc.foF().get("open")))) {}
     for (int i = 1;; i = 0)
     {
-      ac.i("MicroMsg.TenPaySdkAbTest", "isOfflineOpen2048 %s", new Object[] { Integer.valueOf(i) });
+      ad.i("MicroMsg.TenPaySdkAbTest", "isOfflineOpen2048 %s", new Object[] { Integer.valueOf(i) });
       if (i > 0)
       {
         AppMethodBeat.o(72643);
@@ -105,14 +116,14 @@ public final class b
     }
   }
   
-  public static boolean fzC()
+  public static boolean fQM()
   {
     AppMethodBeat.i(72644);
-    c localc = com.tencent.mm.model.c.d.aAp().tJ("100369");
-    if ((localc.isValid()) && ("1".equals(localc.eYV().get("open")))) {}
+    c localc = com.tencent.mm.model.c.d.aDs().wz("100369");
+    if ((localc.isValid()) && ("1".equals(localc.foF().get("open")))) {}
     for (int i = 1;; i = 0)
     {
-      ac.i("MicroMsg.TenPaySdkAbTest", "isCertOpen2048 %s", new Object[] { Integer.valueOf(i) });
+      ad.i("MicroMsg.TenPaySdkAbTest", "isCertOpen2048 %s", new Object[] { Integer.valueOf(i) });
       if (i > 0)
       {
         AppMethodBeat.o(72644);
@@ -122,21 +133,10 @@ public final class b
       return false;
     }
   }
-  
-  public static b fzz()
-  {
-    AppMethodBeat.i(72641);
-    if (JDm == null) {
-      JDm = new b();
-    }
-    b localb = JDm;
-    AppMethodBeat.o(72641);
-    return localb;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.b
  * JD-Core Version:    0.7.0.1
  */

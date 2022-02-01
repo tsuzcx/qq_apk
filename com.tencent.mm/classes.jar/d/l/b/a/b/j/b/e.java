@@ -1,7 +1,6 @@
 package d.l.b.a.b.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
 import java.util.Arrays;
 
 public final class e
@@ -39,7 +38,7 @@ public final class e
     for (;;)
     {
       str = String.format("\\u%04X ('%s')", Arrays.copyOf(new Object[] { Integer.valueOf(j), str }, 2));
-      k.g(str, "java.lang.String.format(this, *args)");
+      d.g.b.p.g(str, "java.lang.String.format(this, *args)");
       AppMethodBeat.o(60048);
       return str;
       str = "\\b";
@@ -61,7 +60,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.flutter.a.a.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.flutter.PluginFlutter;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import io.flutter.embedding.engine.c.e;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,16 +19,54 @@ import java.util.Stack;
 public class a
   extends b
 {
-  private Stack<Integer> slZ;
+  private Stack<Integer> tiC;
   
   public a()
   {
     AppMethodBeat.i(148857);
-    this.slZ = new Stack();
+    this.tiC = new Stack();
     AppMethodBeat.o(148857);
   }
   
-  private Bundle X(Map<String, ?> paramMap)
+  private void a(Context paramContext, com.tencent.mm.flutter.c paramc)
+  {
+    AppMethodBeat.i(148869);
+    String str1 = (String)paramc.wd("entry");
+    String str2 = (String)paramc.wd("plugin");
+    Intent localIntent = new Intent();
+    if (paramc.wd("arguments") != null) {
+      localIntent.putExtras(aa((Map)paramc.wd("arguments")));
+    }
+    int i;
+    if (bt.isNullOrNil(str2))
+    {
+      if (paramc.we("requestCode"))
+      {
+        str2 = (String)paramc.wd("name");
+        localIntent.putExtra("_name", str2);
+        i = ((Integer)paramc.wd("requestCode")).intValue();
+        d.c(paramContext, str1, localIntent, ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().dA(str2, i));
+        AppMethodBeat.o(148869);
+        return;
+      }
+      d.f(paramContext, str1, localIntent);
+      AppMethodBeat.o(148869);
+      return;
+    }
+    if (paramc.we("requestCode"))
+    {
+      String str3 = (String)paramc.wd("name");
+      localIntent.putExtra("_name", str3);
+      i = ((Integer)paramc.wd("requestCode")).intValue();
+      d.b(paramContext, str2, str1, localIntent, ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().dA(str3, i));
+      AppMethodBeat.o(148869);
+      return;
+    }
+    d.b(paramContext, str2, str1, localIntent);
+    AppMethodBeat.o(148869);
+  }
+  
+  private Bundle aa(Map<String, ?> paramMap)
   {
     AppMethodBeat.i(148866);
     Bundle localBundle = new Bundle();
@@ -59,50 +97,12 @@ public class a
         localBundle.putIntegerArrayList(str, (ArrayList)localObject);
       } else if (d(localObject, String.class)) {
         localBundle.putStringArrayList(str, (ArrayList)localObject);
-      } else if (da(localObject)) {
-        localBundle.putBundle(str, X((Map)localObject));
+      } else if (dd(localObject)) {
+        localBundle.putBundle(str, aa((Map)localObject));
       }
     }
     AppMethodBeat.o(148866);
     return localBundle;
-  }
-  
-  private void a(Context paramContext, com.tencent.mm.flutter.c paramc)
-  {
-    AppMethodBeat.i(148869);
-    String str1 = (String)paramc.tn("entry");
-    String str2 = (String)paramc.tn("plugin");
-    Intent localIntent = new Intent();
-    if (paramc.tn("arguments") != null) {
-      localIntent.putExtras(X((Map)paramc.tn("arguments")));
-    }
-    int i;
-    if (bs.isNullOrNil(str2))
-    {
-      if (paramc.to("requestCode"))
-      {
-        str2 = (String)paramc.tn("name");
-        localIntent.putExtra("_name", str2);
-        i = ((Integer)paramc.tn("requestCode")).intValue();
-        d.c(paramContext, str1, localIntent, ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().dk(str2, i));
-        AppMethodBeat.o(148869);
-        return;
-      }
-      d.e(paramContext, str1, localIntent);
-      AppMethodBeat.o(148869);
-      return;
-    }
-    if (paramc.to("requestCode"))
-    {
-      String str3 = (String)paramc.tn("name");
-      localIntent.putExtra("_name", str3);
-      i = ((Integer)paramc.tn("requestCode")).intValue();
-      d.b(paramContext, str2, str1, localIntent, ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().dk(str3, i));
-      AppMethodBeat.o(148869);
-      return;
-    }
-    d.b(paramContext, str2, str1, localIntent);
-    AppMethodBeat.o(148869);
   }
   
   private static boolean d(Object paramObject, Class<?> paramClass)
@@ -127,7 +127,7 @@ public class a
     return true;
   }
   
-  private static boolean da(Object paramObject)
+  private static boolean dd(Object paramObject)
   {
     AppMethodBeat.i(148868);
     if (!(paramObject instanceof Map))
@@ -152,7 +152,7 @@ public class a
   public final void c(String paramString, com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(148862);
-    ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().slN.KLp.aVL(paramString);
+    ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().tiq.MCm.bbO(paramString);
     paramc.callback.run();
     AppMethodBeat.o(148862);
   }
@@ -160,25 +160,25 @@ public class a
   public final void create()
   {
     AppMethodBeat.i(148858);
-    this.slZ.clear();
+    this.tiC.clear();
     AppMethodBeat.o(148858);
   }
   
   public final void d(String paramString, com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(148864);
-    paramString = new com.tencent.mm.plugin.flutter.a.c().aeV(paramString);
-    this.slZ.push(Integer.valueOf(paramString.slL));
+    paramString = new com.tencent.mm.plugin.flutter.a.c().ajt(paramString);
+    this.tiC.push(Integer.valueOf(paramString.tio));
     if (paramc.context != null)
     {
       paramc = (com.tencent.mm.plugin.flutter.ui.a)paramc.context;
-      if (paramString.slL == 2)
+      if (paramString.tio == 2)
       {
-        paramc.mp(true);
+        paramc.mG(true);
         AppMethodBeat.o(148864);
         return;
       }
-      paramc.mp(false);
+      paramc.mG(false);
     }
     AppMethodBeat.o(148864);
   }
@@ -186,7 +186,7 @@ public class a
   public final void destroy()
   {
     AppMethodBeat.i(148859);
-    this.slZ.clear();
+    this.tiC.clear();
     AppMethodBeat.o(148859);
   }
   
@@ -210,42 +210,42 @@ public class a
   {
     AppMethodBeat.i(148865);
     paramc = (com.tencent.mm.plugin.flutter.ui.a)paramc.context;
-    if (!this.slZ.isEmpty())
+    if (!this.tiC.isEmpty())
     {
-      this.slZ.pop();
-      if (!this.slZ.isEmpty())
+      this.tiC.pop();
+      if (!this.tiC.isEmpty())
       {
-        if (((Integer)this.slZ.peek()).intValue() != 2)
+        if (((Integer)this.tiC.peek()).intValue() != 2)
         {
-          paramc.mp(false);
+          paramc.mG(false);
           AppMethodBeat.o(148865);
         }
       }
       else
       {
-        paramc.mp(true);
+        paramc.mG(true);
         AppMethodBeat.o(148865);
         return;
       }
     }
-    paramc.mp(true);
+    paramc.mG(true);
     AppMethodBeat.o(148865);
   }
   
-  public final void tp(String paramString)
+  public final void wf(String paramString)
   {
     AppMethodBeat.i(148863);
-    if (new com.tencent.mm.plugin.flutter.a.c().aeV(paramString).slL == 1)
+    if (new com.tencent.mm.plugin.flutter.a.c().ajt(paramString).tio == 1)
     {
-      ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().cHW();
+      ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().cQl();
       AppMethodBeat.o(148863);
       return;
     }
-    if (((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().slO != null) {}
+    if (((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().tir != null) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().slO.cIb();
+        ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().tir.cQq();
       }
       AppMethodBeat.o(148863);
       return;
@@ -254,7 +254,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.b.a.a
  * JD-Core Version:    0.7.0.1
  */

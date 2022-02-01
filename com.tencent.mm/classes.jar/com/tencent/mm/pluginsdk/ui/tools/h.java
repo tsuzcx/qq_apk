@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 
 public abstract interface h
 {
+  public abstract boolean B(Context paramContext, boolean paramBoolean);
+  
   public abstract void d(double paramDouble, boolean paramBoolean);
   
   public abstract int getCurrentPosition();
@@ -31,11 +33,11 @@ public abstract interface h
   
   public abstract void setOnInfoCallback(h.b paramb);
   
-  public abstract void setOnSeekCompleteCallback(c paramc);
+  public abstract void setOnSeekCompleteCallback(h.c paramc);
   
-  public abstract void setOnSurfaceCallback(d paramd);
+  public abstract void setOnSurfaceCallback(h.d paramd);
   
-  public abstract void setOneTimeVideoTextureUpdateCallback(e parame);
+  public abstract void setOneTimeVideoTextureUpdateCallback(h.e parame);
   
   public abstract void setPlayProgressCallback(boolean paramBoolean);
   
@@ -49,34 +51,17 @@ public abstract interface h
   
   public abstract void stop();
   
-  public abstract boolean z(Context paramContext, boolean paramBoolean);
-  
   public static abstract interface a
   {
-    public abstract void dZ(int paramInt1, int paramInt2);
+    public abstract int eT(int paramInt1, int paramInt2);
     
-    public abstract int eP(int paramInt1, int paramInt2);
+    public abstract void eb(int paramInt1, int paramInt2);
     
     public abstract void onCompletion();
     
     public abstract void onError(int paramInt1, int paramInt2);
     
-    public abstract void rB();
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void eS(boolean paramBoolean);
-  }
-  
-  public static abstract interface d
-  {
-    public abstract void aJn();
-  }
-  
-  public static abstract interface e
-  {
-    public abstract void bli();
+    public abstract void ta();
   }
 }
 

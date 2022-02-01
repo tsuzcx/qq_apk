@@ -18,7 +18,7 @@ public final class a
     AppMethodBeat.o(138151);
   }
   
-  public final boolean aM(float paramFloat)
+  public final boolean aP(float paramFloat)
   {
     AppMethodBeat.i(138150);
     if (this.height != Math.round(paramFloat))
@@ -100,7 +100,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.g.a
  * JD-Core Version:    0.7.0.1
  */

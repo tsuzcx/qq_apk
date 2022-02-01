@@ -1,9 +1,25 @@
 package com.tencent.mm.plugin.websearch.api;
 
-public abstract interface j {}
+import com.tencent.mm.kernel.c.a;
+
+public abstract interface j
+  extends a
+{
+  public abstract void VY(int paramInt);
+  
+  public abstract String aFI(String paramString);
+  
+  public abstract void ct(int paramInt, String paramString);
+  
+  public abstract int eLI();
+  
+  public abstract String eLJ();
+  
+  public abstract void kC(String paramString1, String paramString2);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.j
  * JD-Core Version:    0.7.0.1
  */

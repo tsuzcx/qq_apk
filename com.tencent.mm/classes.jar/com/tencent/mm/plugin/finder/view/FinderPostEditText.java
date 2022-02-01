@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.finder.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.widget.MMEditText;
 import d.g.a.m;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderPostEditText;", "Lcom/tencent/mm/ui/widget/MMEditText;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "lastSelection", "getLastSelection", "()I", "setLastSelection", "(I)V", "onSelectionChangedListener", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "cur", "last", "", "getOnSelectionChangedListener", "()Lkotlin/jvm/functions/Function2;", "setOnSelectionChangedListener", "(Lkotlin/jvm/functions/Function2;)V", "onSelectionChanged", "selStart", "selEnd", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderPostEditText;", "Lcom/tencent/mm/ui/widget/MMEditText;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "lastSelection", "getLastSelection", "()I", "setLastSelection", "(I)V", "onSelectionChangedListener", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "cur", "last", "", "getOnSelectionChangedListener", "()Lkotlin/jvm/functions/Function2;", "setOnSelectionChangedListener", "(Lkotlin/jvm/functions/Function2;)V", "onSelectionChanged", "selStart", "selEnd", "plugin-finder_release"})
 public final class FinderPostEditText
   extends MMEditText
 {
   private final String TAG = "Finder.FinderPostEditText";
-  private int rYj;
-  private m<? super Integer, ? super Integer, y> rYk;
+  private int sVe;
+  private m<? super Integer, ? super Integer, z> sVf;
   
   public FinderPostEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,38 +29,38 @@ public final class FinderPostEditText
   
   public final int getLastSelection()
   {
-    return this.rYj;
+    return this.sVe;
   }
   
-  public final m<Integer, Integer, y> getOnSelectionChangedListener()
+  public final m<Integer, Integer, z> getOnSelectionChangedListener()
   {
-    return this.rYk;
+    return this.sVf;
   }
   
   protected final void onSelectionChanged(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(168379);
     super.onSelectionChanged(paramInt1, paramInt2);
-    ac.i(this.TAG, "onSelectionChanged start " + paramInt1 + ", end " + paramInt2);
-    if (this.rYj != paramInt1)
+    ad.i(this.TAG, "onSelectionChanged start " + paramInt1 + ", end " + paramInt2);
+    if (this.sVe != paramInt1)
     {
-      m localm = this.rYk;
+      m localm = this.sVf;
       if (localm != null) {
-        localm.n(Integer.valueOf(paramInt1), Integer.valueOf(this.rYj));
+        localm.p(Integer.valueOf(paramInt1), Integer.valueOf(this.sVe));
       }
-      this.rYj = paramInt1;
+      this.sVe = paramInt1;
     }
     AppMethodBeat.o(168379);
   }
   
   public final void setLastSelection(int paramInt)
   {
-    this.rYj = paramInt;
+    this.sVe = paramInt;
   }
   
-  public final void setOnSelectionChangedListener(m<? super Integer, ? super Integer, y> paramm)
+  public final void setOnSelectionChangedListener(m<? super Integer, ? super Integer, z> paramm)
   {
-    this.rYk = paramm;
+    this.sVf = paramm;
   }
 }
 

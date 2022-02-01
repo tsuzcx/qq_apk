@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.qmessage;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.plugin.qmessage.a.g;
 import com.tencent.mm.plugin.qmessage.ui.b;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
   implements d
 {
-  private c ntp;
+  private c nUl;
   
   public Plugin()
   {
     AppMethodBeat.i(27706);
-    this.ntp = new c()
+    this.nUl = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a ab(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.b.a aa(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(27705);
         if ("widget_type_contact".equals(paramAnonymousString))
@@ -36,7 +36,7 @@ public class Plugin
     AppMethodBeat.o(27706);
   }
   
-  public m createApplication()
+  public n createApplication()
   {
     AppMethodBeat.i(27707);
     a locala = new a();
@@ -44,7 +44,7 @@ public class Plugin
     return locala;
   }
   
-  public aw createSubCore()
+  public ax createSubCore()
   {
     AppMethodBeat.i(27708);
     g localg = new g();
@@ -54,7 +54,7 @@ public class Plugin
   
   public c getContactWidgetFactory()
   {
-    return this.ntp;
+    return this.nUl;
   }
 }
 

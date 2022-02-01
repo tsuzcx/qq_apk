@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/cg"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <CheckBox android:layout_gravity="center_vertical" android:id="@id/fa4" android:background="@drawable/a2r" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" />
+    <CheckBox android:layout_gravity="center_vertical" android:id="@id/fa4" android:background="@drawable/a2r" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/ap" android:layout_height="@dimen/an" />
     <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/h8u" android:background="@color/a7c" android:focusable="false" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/c5" android:src="@drawable/aq8" android:scaleType="centerCrop" android:contentDescription="@string/a1d" />
     <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:shrinkColumns="0" android:layout_toLeftOf="@id/h8x" android:layout_centerVertical="true">
         <TableRow>

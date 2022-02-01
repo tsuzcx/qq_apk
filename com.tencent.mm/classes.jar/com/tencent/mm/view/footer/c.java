@@ -4,41 +4,39 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.g;
-import com.tencent.mm.bt.b;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.bu.b;
 
 public final class c
   extends a
 {
-  private Bitmap JAU;
-  private Bitmap JAV;
+  private Bitmap Lub;
+  private Bitmap Luc;
   
   public c(Context paramContext, b paramb)
   {
     super(paramContext, paramb);
   }
   
-  protected final Bitmap a(g paramg, boolean paramBoolean)
+  protected final Bitmap a(com.tencent.mm.api.g paramg, boolean paramBoolean)
   {
     Bitmap localBitmap = null;
-    if (paramg == g.cGE)
+    if (paramg == com.tencent.mm.api.g.cRI)
     {
       if (paramBoolean) {
-        localBitmap = this.JAV;
+        localBitmap = this.Luc;
       }
     }
     else {
       return localBitmap;
     }
-    return this.JAU;
+    return this.Lub;
   }
   
-  protected final boolean adD(int paramInt)
+  protected final boolean agd(int paramInt)
   {
     AppMethodBeat.i(9426);
-    boolean bool = super.adD(paramInt);
-    switch (1.DHJ[adC(paramInt).ordinal()])
+    boolean bool = super.agd(paramInt);
+    switch (1.FmQ[agc(paramInt).ordinal()])
     {
     }
     for (;;)
@@ -49,18 +47,18 @@ public final class c
     }
   }
   
-  protected final void fzg()
+  protected final void fQp()
   {
     AppMethodBeat.i(9425);
-    super.fzg();
-    this.JAU = f.A(getResources().getDrawable(2131690010));
-    this.JAV = f.A(getResources().getDrawable(2131690009));
+    super.fQp();
+    this.Lub = com.tencent.mm.sdk.platformtools.g.A(getResources().getDrawable(2131690010));
+    this.Luc = com.tencent.mm.sdk.platformtools.g.A(getResources().getDrawable(2131690009));
     AppMethodBeat.o(9425);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.view.footer.c
  * JD-Core Version:    0.7.0.1
  */

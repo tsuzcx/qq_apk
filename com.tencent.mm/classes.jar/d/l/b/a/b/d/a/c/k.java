@@ -1,20 +1,21 @@
 package d.l.b.a.b.d.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.p;
 import d.l.b.a.b.d.a.a.a;
 import d.l.b.a.b.d.a.f.h;
 import java.util.Collection;
 
 public final class k
 {
-  public final h LnS;
-  public final Collection<a.a> LnT;
+  public final h NeP;
+  public final Collection<a.a> NeQ;
   
   public k(h paramh, Collection<? extends a.a> paramCollection)
   {
     AppMethodBeat.i(57765);
-    this.LnS = paramh;
-    this.LnT = paramCollection;
+    this.NeP = paramh;
+    this.NeQ = paramCollection;
     AppMethodBeat.o(57765);
   }
   
@@ -26,7 +27,7 @@ public final class k
       if ((paramObject instanceof k))
       {
         paramObject = (k)paramObject;
-        if ((!d.g.b.k.g(this.LnS, paramObject.LnS)) || (!d.g.b.k.g(this.LnT, paramObject.LnT))) {}
+        if ((!p.i(this.NeP, paramObject.NeP)) || (!p.i(this.NeQ, paramObject.NeQ))) {}
       }
     }
     else
@@ -42,11 +43,11 @@ public final class k
   {
     int j = 0;
     AppMethodBeat.i(57767);
-    Object localObject = this.LnS;
+    Object localObject = this.NeP;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.LnT;
+      localObject = this.NeQ;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -58,7 +59,7 @@ public final class k
   public final String toString()
   {
     AppMethodBeat.i(57766);
-    String str = "NullabilityQualifierWithApplicability(nullabilityQualifier=" + this.LnS + ", qualifierApplicabilityTypes=" + this.LnT + ")";
+    String str = "NullabilityQualifierWithApplicability(nullabilityQualifier=" + this.NeP + ", qualifierApplicabilityTypes=" + this.NeQ + ")";
     AppMethodBeat.o(57766);
     return str;
   }

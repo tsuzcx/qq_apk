@@ -31,8 +31,8 @@ final class bd
   {
     AppMethodBeat.i(128927);
     Object localObject = new LinkedList();
-    paramc = paramc.DH().h(paramString, (List)localObject);
-    switch (1.krw[paramc.ordinal()])
+    paramc = paramc.Fg().g(paramString, (List)localObject);
+    switch (1.kMS[paramc.ordinal()])
     {
     default: 
       paramc = new i.a("fail " + paramc.name(), new Object[0]);
@@ -44,7 +44,7 @@ final class bd
     while (paramString.hasNext())
     {
       localObject = (v)paramString.next();
-      paramc.r(((v)localObject).jtk, a((FileStructStat)localObject, new HashMap()));
+      paramc.q(((v)localObject).jNe, a((FileStructStat)localObject, new HashMap()));
     }
     AppMethodBeat.o(128927);
     return paramc;
@@ -55,8 +55,8 @@ final class bd
     AppMethodBeat.i(128926);
     boolean bool = paramJSONObject.optBoolean("recursive", false);
     paramJSONObject = new FileStructStat();
-    l locall = paramc.DH().a(paramString, paramJSONObject);
-    switch (1.krw[locall.ordinal()])
+    l locall = paramc.Fg().a(paramString, paramJSONObject);
+    switch (1.kMS[locall.ordinal()])
     {
     default: 
       paramc = new i.a("fail " + locall.name(), new Object[0]);
@@ -85,7 +85,7 @@ final class bd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.bd
  * JD-Core Version:    0.7.0.1
  */

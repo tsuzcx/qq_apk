@@ -9,11 +9,11 @@ public abstract interface f
   
   public abstract void a(boolean paramBoolean1, boolean paramBoolean2, c paramc);
   
-  public abstract void cnd();
+  public abstract void csI();
   
-  public abstract void cnf();
+  public abstract void csK();
   
-  public abstract void cni();
+  public abstract void csN();
   
   public abstract void d(int paramInt1, int paramInt2, String paramString, Bundle paramBundle);
 }

@@ -3,9 +3,9 @@ package com.tencent.mm.app;
 import android.app.Application;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.a;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.at.a;
-import com.tencent.mm.sdk.platformtools.at.d;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.au.d;
 
 public final class k
 {
@@ -14,29 +14,29 @@ public final class k
     AppMethodBeat.i(125023);
     if (!"com.tencent.mm:cuploader".equals(paramString))
     {
-      at.a(new at.d()
+      au.a(new au.d()
       {
         /* Error */
-        public final void b(at paramAnonymousat, String paramAnonymousString, java.lang.Throwable paramAnonymousThrowable)
+        public final void b(au paramAnonymousau, String paramAnonymousString, java.lang.Throwable paramAnonymousThrowable)
         {
           // Byte code:
           //   0: ldc 30
           //   2: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
           //   5: ldc 38
           //   7: ldc 40
-          //   9: invokestatic 46	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   9: invokestatic 46	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
           //   12: aload_0
-          //   13: getfield 19	com/tencent/mm/app/k$1:cHK	Landroid/app/Application;
+          //   13: getfield 19	com/tencent/mm/app/k$1:cSO	Landroid/app/Application;
           //   16: astore 6
           //   18: aload_0
-          //   19: getfield 21	com/tencent/mm/app/k$1:cIC	Ljava/lang/String;
+          //   19: getfield 21	com/tencent/mm/app/k$1:cTK	Ljava/lang/String;
           //   22: astore 4
           //   24: ldc 38
           //   26: ldc 48
           //   28: aload_2
           //   29: invokestatic 54	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
           //   32: invokevirtual 58	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-          //   35: invokestatic 46	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   35: invokestatic 46	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
           //   38: new 60	java/lang/StringBuilder
           //   41: dup
           //   42: sipush 2560
@@ -52,19 +52,19 @@ public final class k
           //   66: dup
           //   67: ldc 69
           //   69: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   72: getstatic 77	com/tencent/mm/loader/j/a:gMJ	Ljava/lang/String;
+          //   72: getstatic 77	com/tencent/mm/loader/j/a:hgG	Ljava/lang/String;
           //   75: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   78: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
           //   81: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
-          //   84: getstatic 94	com/tencent/mm/sdk/platformtools/h:DEBUG	Z
-          //   87: ifeq +739 -> 826
+          //   84: getstatic 94	com/tencent/mm/sdk/platformtools/i:DEBUG	Z
+          //   87: ifeq +702 -> 789
           //   90: aload 8
           //   92: ldc 96
           //   94: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
-          //   97: getstatic 102	com/tencent/mm/loader/j/c:gMU	Lcom/tencent/mm/loader/j/c;
+          //   97: getstatic 102	com/tencent/mm/loader/j/c:hgR	Lcom/tencent/mm/loader/j/c;
           //   100: ldc 104
           //   102: ldc 106
-          //   104: invokevirtual 110	com/tencent/mm/loader/j/c:aw	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+          //   104: invokevirtual 110	com/tencent/mm/loader/j/c:ax	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
           //   107: astore 5
           //   109: aload 5
           //   111: ifnull +16 -> 127
@@ -99,8 +99,8 @@ public final class k
           //   185: dup
           //   186: ldc 142
           //   188: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   191: invokestatic 148	com/tencent/mm/sdk/platformtools/bs:eWj	()J
-          //   194: getstatic 154	com/tencent/mm/app/d:cIh	J
+          //   191: invokestatic 148	com/tencent/mm/sdk/platformtools/bt:flT	()J
+          //   194: getstatic 154	com/tencent/mm/app/d:cTp	J
           //   197: lsub
           //   198: invokevirtual 157	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
           //   201: ldc 159
@@ -120,13 +120,13 @@ public final class k
           //   229: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   232: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
           //   235: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
-          //   238: getstatic 94	com/tencent/mm/sdk/platformtools/h:DEBUG	Z
-          //   241: ifeq +619 -> 860
+          //   238: getstatic 94	com/tencent/mm/sdk/platformtools/i:DEBUG	Z
+          //   241: ifeq +582 -> 823
           //   244: aload 8
           //   246: ldc 165
           //   248: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
           //   251: invokestatic 171	android/os/Environment:getDataDirectory	()Ljava/io/File;
-          //   254: invokestatic 177	com/tencent/mm/vfs/e:U	(Ljava/io/File;)Lcom/tencent/mm/vfs/e;
+          //   254: invokestatic 177	com/tencent/mm/vfs/e:X	(Ljava/io/File;)Lcom/tencent/mm/vfs/e;
           //   257: astore_1
           //   258: new 179	android/os/StatFs
           //   261: dup
@@ -137,7 +137,7 @@ public final class k
           //   272: astore 4
           //   274: new 179	android/os/StatFs
           //   277: dup
-          //   278: invokestatic 195	com/tencent/mm/loader/j/b:apb	()Ljava/lang/String;
+          //   278: invokestatic 195	com/tencent/mm/loader/j/b:arO	()Ljava/lang/String;
           //   281: invokespecial 190	android/os/StatFs:<init>	(Ljava/lang/String;)V
           //   284: astore 5
           //   286: ldc 197
@@ -164,7 +164,7 @@ public final class k
           //   331: dup
           //   332: iconst_2
           //   333: aload_1
-          //   334: invokevirtual 220	com/tencent/mm/vfs/e:fxV	()Landroid/net/Uri;
+          //   334: invokevirtual 220	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
           //   337: invokestatic 189	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
           //   340: aastore
           //   341: dup
@@ -187,7 +187,7 @@ public final class k
           //   373: aastore
           //   374: dup
           //   375: bipush 6
-          //   377: invokestatic 195	com/tencent/mm/loader/j/b:apb	()Ljava/lang/String;
+          //   377: invokestatic 195	com/tencent/mm/loader/j/b:arO	()Ljava/lang/String;
           //   380: aastore
           //   381: dup
           //   382: bipush 7
@@ -243,18 +243,18 @@ public final class k
           //   491: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
           //   494: aload_2
           //   495: astore_1
-          //   496: invokestatic 269	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+          //   496: invokestatic 269	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
           //   499: invokestatic 275	com/tencent/mm/app/h:bm	(Landroid/content/Context;)I
           //   502: iconst_1
           //   503: if_icmpne +15 -> 518
           //   506: aload_2
           //   507: iconst_0
-          //   508: invokestatic 269	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+          //   508: invokestatic 269	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
           //   511: invokestatic 278	com/tencent/mm/app/h:bn	(Landroid/content/Context;)I
           //   514: invokevirtual 282	java/lang/String:substring	(II)Ljava/lang/String;
           //   517: astore_1
-          //   518: invokestatic 269	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
-          //   521: invokestatic 285	com/tencent/mm/sdk/platformtools/ai:getProcessName	()Ljava/lang/String;
+          //   518: invokestatic 269	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+          //   521: invokestatic 285	com/tencent/mm/sdk/platformtools/aj:getProcessName	()Ljava/lang/String;
           //   524: ldc_w 287
           //   527: invokestatic 291	com/tencent/mm/app/h:d	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
           //   530: aload 8
@@ -265,7 +265,7 @@ public final class k
           //   541: aload_1
           //   542: invokestatic 54	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
           //   545: invokevirtual 58	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-          //   548: invokestatic 46	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   548: invokestatic 46	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
           //   551: new 295	android/content/Intent
           //   554: dup
           //   555: invokespecial 296	android/content/Intent:<init>	()V
@@ -276,10 +276,10 @@ public final class k
           //   566: pop
           //   567: aload_1
           //   568: ldc_w 304
-          //   571: getstatic 102	com/tencent/mm/loader/j/c:gMU	Lcom/tencent/mm/loader/j/c;
+          //   571: getstatic 102	com/tencent/mm/loader/j/c:hgR	Lcom/tencent/mm/loader/j/c;
           //   574: ldc_w 306
           //   577: ldc_w 308
-          //   580: invokevirtual 110	com/tencent/mm/loader/j/c:aw	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+          //   580: invokevirtual 110	com/tencent/mm/loader/j/c:ax	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
           //   583: invokevirtual 312	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
           //   586: pop
           //   587: aload_1
@@ -296,7 +296,7 @@ public final class k
           //   611: new 60	java/lang/StringBuilder
           //   614: dup
           //   615: invokespecial 115	java/lang/StringBuilder:<init>	()V
-          //   618: invokestatic 329	com/tencent/mm/loader/j/b:aoZ	()Ljava/lang/String;
+          //   618: invokestatic 329	com/tencent/mm/loader/j/b:arM	()Ljava/lang/String;
           //   621: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   624: ldc_w 331
           //   627: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -305,25 +305,25 @@ public final class k
           //   636: pop
           //   637: aload_1
           //   638: ldc_w 333
-          //   641: invokestatic 336	com/tencent/mm/loader/j/b:api	()Ljava/lang/String;
+          //   641: invokestatic 336	com/tencent/mm/loader/j/b:arW	()Ljava/lang/String;
           //   644: invokevirtual 312	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
           //   647: pop
           //   648: aload_1
           //   649: ldc_w 338
-          //   652: getstatic 102	com/tencent/mm/loader/j/c:gMU	Lcom/tencent/mm/loader/j/c;
+          //   652: getstatic 102	com/tencent/mm/loader/j/c:hgR	Lcom/tencent/mm/loader/j/c;
           //   655: ldc 104
           //   657: ldc 106
-          //   659: invokevirtual 110	com/tencent/mm/loader/j/c:aw	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+          //   659: invokevirtual 110	com/tencent/mm/loader/j/c:ax	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
           //   662: invokevirtual 312	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
           //   665: pop
           //   666: aload_1
           //   667: ldc_w 340
-          //   670: getstatic 77	com/tencent/mm/loader/j/a:gMJ	Ljava/lang/String;
+          //   670: getstatic 77	com/tencent/mm/loader/j/a:hgG	Ljava/lang/String;
           //   673: invokevirtual 312	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
           //   676: pop
           //   677: aload_1
           //   678: ldc_w 342
-          //   681: getstatic 345	com/tencent/mm/loader/j/a:gMK	Ljava/lang/String;
+          //   681: getstatic 345	com/tencent/mm/loader/j/a:hgH	Ljava/lang/String;
           //   684: invokevirtual 312	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
           //   687: pop
           //   688: aload_1
@@ -363,93 +363,78 @@ public final class k
           //   769: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
           //   772: invokevirtual 375	android/content/Intent:setClassName	(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;
           //   775: pop
-          //   776: aload_1
-          //   777: ldc_w 377
-          //   780: iconst_1
-          //   781: new 295	android/content/Intent
-          //   784: dup
-          //   785: invokespecial 296	android/content/Intent:<init>	()V
-          //   788: aload 6
-          //   790: new 60	java/lang/StringBuilder
-          //   793: dup
-          //   794: invokespecial 115	java/lang/StringBuilder:<init>	()V
-          //   797: aload 6
-          //   799: invokevirtual 369	android/content/Context:getPackageName	()Ljava/lang/String;
-          //   802: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   805: ldc_w 379
-          //   808: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   811: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   814: invokevirtual 375	android/content/Intent:setClassName	(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;
-          //   817: invokestatic 384	com/tencent/mm/service/c:a	(Landroid/content/Intent;Ljava/lang/String;ZLandroid/content/Intent;)V
-          //   820: ldc 30
-          //   822: invokestatic 387	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   825: return
-          //   826: aload 8
-          //   828: new 60	java/lang/StringBuilder
-          //   831: dup
-          //   832: ldc_w 389
-          //   835: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   838: invokestatic 392	com/tencent/mm/loader/j/a:aoT	()Ljava/lang/String;
-          //   841: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   844: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   847: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
-          //   850: goto -753 -> 97
-          //   853: astore_1
-          //   854: ldc 30
-          //   856: invokestatic 387	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   859: return
-          //   860: aload 8
-          //   862: new 60	java/lang/StringBuilder
-          //   865: dup
-          //   866: ldc_w 394
-          //   869: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   872: getstatic 397	com/tencent/mm/loader/j/a:TIME	Ljava/lang/String;
-          //   875: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   878: ldc_w 399
-          //   881: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   884: getstatic 402	com/tencent/mm/loader/j/a:HOSTNAME	Ljava/lang/String;
-          //   887: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   890: ldc_w 404
-          //   893: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   896: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   899: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
-          //   902: goto -651 -> 251
-          //   905: astore_1
-          //   906: ldc 161
-          //   908: astore_1
-          //   909: goto -488 -> 421
+          //   776: invokestatic 269	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+          //   779: aload_1
+          //   780: invokevirtual 379	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
+          //   783: ldc 30
+          //   785: invokestatic 382	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   788: return
+          //   789: aload 8
+          //   791: new 60	java/lang/StringBuilder
+          //   794: dup
+          //   795: ldc_w 384
+          //   798: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   801: invokestatic 387	com/tencent/mm/loader/j/a:arG	()Ljava/lang/String;
+          //   804: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   807: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   810: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
+          //   813: goto -716 -> 97
+          //   816: astore_1
+          //   817: ldc 30
+          //   819: invokestatic 382	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   822: return
+          //   823: aload 8
+          //   825: new 60	java/lang/StringBuilder
+          //   828: dup
+          //   829: ldc_w 389
+          //   832: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   835: getstatic 392	com/tencent/mm/loader/j/a:TIME	Ljava/lang/String;
+          //   838: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   841: ldc_w 394
+          //   844: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   847: getstatic 397	com/tencent/mm/loader/j/a:HOSTNAME	Ljava/lang/String;
+          //   850: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   853: ldc_w 399
+          //   856: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   859: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   862: invokevirtual 88	android/util/StringBuilderPrinter:println	(Ljava/lang/String;)V
+          //   865: goto -614 -> 251
+          //   868: astore_1
+          //   869: ldc 161
+          //   871: astore_1
+          //   872: goto -451 -> 421
           // Local variable table:
           //   start	length	slot	name	signature
-          //   0	912	0	this	1
-          //   0	912	1	paramAnonymousat	at
-          //   0	912	2	paramAnonymousString	String
-          //   0	912	3	paramAnonymousThrowable	java.lang.Throwable
+          //   0	875	0	this	1
+          //   0	875	1	paramAnonymousau	au
+          //   0	875	2	paramAnonymousString	String
+          //   0	875	3	paramAnonymousThrowable	java.lang.Throwable
           //   22	344	4	localObject1	Object
           //   107	302	5	localObject2	Object
-          //   16	782	6	localApplication	Application
+          //   16	740	6	localApplication	Application
           //   48	544	7	localStringBuilder	java.lang.StringBuilder
-          //   59	802	8	localStringBuilderPrinter	android.util.StringBuilderPrinter
+          //   59	765	8	localStringBuilderPrinter	android.util.StringBuilderPrinter
           // Exception table:
           //   from	to	target	type
-          //   38	97	853	java/lang/Exception
-          //   97	109	853	java/lang/Exception
-          //   117	127	853	java/lang/Exception
-          //   127	168	853	java/lang/Exception
-          //   168	208	853	java/lang/Exception
-          //   219	251	853	java/lang/Exception
-          //   421	494	853	java/lang/Exception
-          //   496	518	853	java/lang/Exception
-          //   518	820	853	java/lang/Exception
-          //   826	850	853	java/lang/Exception
-          //   860	902	853	java/lang/Exception
-          //   251	421	905	java/lang/Exception
+          //   38	97	816	java/lang/Exception
+          //   97	109	816	java/lang/Exception
+          //   117	127	816	java/lang/Exception
+          //   127	168	816	java/lang/Exception
+          //   168	208	816	java/lang/Exception
+          //   219	251	816	java/lang/Exception
+          //   421	494	816	java/lang/Exception
+          //   496	518	816	java/lang/Exception
+          //   518	783	816	java/lang/Exception
+          //   789	813	816	java/lang/Exception
+          //   823	865	816	java/lang/Exception
+          //   251	421	868	java/lang/Exception
         }
       });
-      at.a(new at.a()
+      au.a(new au.a()
       {
-        public final void Kr()
+        public final void LU()
         {
-          String str = a.gML;
+          String str = a.hgI;
         }
       });
     }

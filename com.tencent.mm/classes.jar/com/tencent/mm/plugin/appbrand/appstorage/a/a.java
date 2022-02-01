@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.appstorage.a;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract int Ji(String paramString);
+  public abstract int Mz(String paramString);
 }
 
 

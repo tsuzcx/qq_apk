@@ -4,7 +4,7 @@ import android.widget.ImageView;
 import com.tencent.kinda.gen.KAvatarImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class MMKAvatarImageView
   extends MMKImageView
@@ -21,7 +21,7 @@ public class MMKAvatarImageView
   {
     AppMethodBeat.i(18992);
     this.username = paramString;
-    if (!bs.isNullOrNil(this.username))
+    if (!bt.isNullOrNil(this.username))
     {
       if (getCornerRadius() == 0.0F) {
         break label60;
@@ -40,7 +40,7 @@ public class MMKAvatarImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKAvatarImageView
  * JD-Core Version:    0.7.0.1
  */

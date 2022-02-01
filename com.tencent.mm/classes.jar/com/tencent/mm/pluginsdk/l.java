@@ -3,117 +3,80 @@ package com.tencent.mm.pluginsdk;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.pluginsdk.ui.applet.y.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.tools.a.a;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.protocal.protobuf.bzp;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bu.a;
 
 @Deprecated
 public abstract interface l
 {
-  public abstract void Lm();
+  public abstract void MR();
   
-  public abstract void a(Activity paramActivity, Intent paramIntent, int paramInt);
+  public abstract void MT();
   
-  public abstract void a(Activity paramActivity, Intent paramIntent1, Intent paramIntent2, String paramString, int paramInt, a.a parama);
+  public abstract void MU();
   
-  public abstract void a(Context paramContext, Intent paramIntent1, Intent paramIntent2);
+  public abstract Intent MV();
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean, y.a parama);
+  public abstract boolean MW();
   
-  public abstract void a(Intent paramIntent, int paramInt, MMActivity.a parama, MMActivity paramMMActivity);
+  public abstract void MX();
   
-  public abstract void a(Intent paramIntent1, int paramInt, MMActivity paramMMActivity, Intent paramIntent2);
+  public abstract boolean MY();
   
-  public abstract void a(Intent paramIntent, Activity paramActivity);
+  public abstract String Q(String paramString1, String paramString2);
   
-  public abstract void a(Intent paramIntent, Activity paramActivity, int paramInt);
+  public abstract Bitmap a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
   
-  public abstract void a(Intent paramIntent, Context paramContext);
+  public abstract n a(g paramg);
   
-  public abstract void a(Intent paramIntent, MMActivity.a parama, MMActivity paramMMActivity);
+  public abstract void a(Context paramContext, am paramam, bu.a parama, Bundle paramBundle, String paramString);
   
-  public abstract void a(Intent paramIntent, MMActivity paramMMActivity);
+  public abstract void a(Context paramContext, bu.a parama, Bundle paramBundle);
   
-  public abstract void a(MMActivity paramMMActivity, String paramString1, WXMediaMessage paramWXMediaMessage, String paramString2, String paramString3);
+  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5);
   
-  public abstract void a(MMWizardActivity paramMMWizardActivity, Intent paramIntent);
+  public abstract void a(Intent paramIntent, String paramString);
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, Context paramContext, String paramString, int paramInt1, int paramInt2);
+  public abstract void a(bzp parambzp, String paramString, int paramInt);
   
-  public abstract boolean a(Context paramContext, String paramString, Object... paramVarArgs);
+  public abstract void a(String paramString1, String paramString2, int paramInt, String paramString3, long paramLong);
   
-  public abstract void b(Intent paramIntent, Activity paramActivity);
+  public abstract boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString);
   
-  public abstract void b(Intent paramIntent, Context paramContext);
+  public abstract boolean a(am paramam);
   
-  public abstract boolean b(Context paramContext, String paramString, Bundle paramBundle);
+  public abstract boolean b(Context paramContext, int paramInt1, int paramInt2, String paramString);
   
-  public abstract void bB(Context paramContext);
+  public abstract void bx(Context paramContext);
   
-  public abstract d bC(Context paramContext);
+  public abstract n ci(boolean paramBoolean);
   
-  public abstract Intent bD(Context paramContext);
+  public abstract String e(Context paramContext, String paramString1, String paramString2);
   
-  public abstract void bE(Context paramContext);
+  public abstract String fw(String paramString);
   
-  public abstract void bF(Context paramContext);
+  public abstract boolean fx(String paramString);
   
-  public abstract void c(Intent paramIntent, Context paramContext);
+  public abstract boolean fy(String paramString);
   
-  public abstract void cancelNotification(String paramString);
+  public abstract void fz(String paramString);
   
-  public abstract void d(Context paramContext, Intent paramIntent);
+  public abstract void hu(int paramInt);
   
-  public abstract void d(Intent paramIntent, Context paramContext);
+  public abstract String r(Context paramContext, String paramString);
   
-  public abstract void e(Context paramContext, Intent paramIntent);
+  public abstract boolean s(Activity paramActivity);
   
-  public abstract void e(Intent paramIntent, Context paramContext);
+  public abstract boolean s(Context paramContext, String paramString);
   
-  public abstract void f(Context paramContext, Intent paramIntent);
+  public abstract void t(Activity paramActivity);
   
-  public abstract void f(Intent paramIntent, Context paramContext);
-  
-  public abstract void g(Context paramContext, Intent paramIntent);
-  
-  public abstract void g(Intent paramIntent, Context paramContext);
-  
-  public abstract void h(Context paramContext, Intent paramIntent);
-  
-  public abstract void h(Intent paramIntent, Context paramContext);
-  
-  public abstract void i(Intent paramIntent, Context paramContext);
-  
-  public abstract void j(Intent paramIntent, Context paramContext);
-  
-  public abstract void k(Intent paramIntent, Context paramContext);
-  
-  public abstract void l(Intent paramIntent, Context paramContext);
-  
-  public abstract void m(Intent paramIntent, Context paramContext);
-  
-  public abstract void n(Intent paramIntent, Context paramContext);
-  
-  public abstract void o(Intent paramIntent, Context paramContext);
-  
-  public abstract void p(Intent paramIntent, Context paramContext);
-  
-  public abstract void q(Intent paramIntent, Context paramContext);
-  
-  public abstract void r(Intent paramIntent, Context paramContext);
-  
-  public abstract void s(Intent paramIntent, Context paramContext);
-  
-  public abstract void t(Intent paramIntent, Context paramContext);
-  
-  public abstract void u(Context paramContext, String paramString);
-  
-  public abstract void u(Intent paramIntent, Context paramContext);
+  public abstract String u(String paramString, int paramInt);
 }
 
 

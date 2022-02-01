@@ -1,83 +1,81 @@
 package com.tencent.mm.plugin.websearch;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.websearch.api.i;
-import com.tencent.mm.plugin.websearch.api.z;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.x;
+import com.tencent.mm.al.x.a;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.websearch.api.j;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.bny;
-import com.tencent.mm.protocal.protobuf.bnz;
+import com.tencent.mm.protocal.protobuf.bsk;
+import com.tencent.mm.protocal.protobuf.bsl;
 import com.tencent.mm.protocal.protobuf.by;
 import com.tencent.mm.protocal.protobuf.bz;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class c
-  implements i
+  implements j
 {
-  private int BXY;
-  private Map<String, String> BXZ;
+  private int DAQ;
+  private Map<String, String> DAR;
   
   public c()
   {
     AppMethodBeat.i(116549);
-    this.BXZ = new HashMap();
+    this.DAR = new HashMap();
     AppMethodBeat.o(116549);
   }
   
-  public final void Uf(int paramInt)
+  public final void VY(int paramInt)
   {
-    this.BXY = paramInt;
+    this.DAQ = paramInt;
   }
   
-  public final String aAo(String paramString)
+  public final String aFI(String paramString)
   {
     AppMethodBeat.i(116553);
-    paramString = (String)this.BXZ.get(paramString);
+    paramString = (String)this.DAR.get(paramString);
     AppMethodBeat.o(116553);
     return paramString;
   }
   
-  public final void cl(int paramInt, String paramString)
+  public final void ct(int paramInt, String paramString)
   {
     AppMethodBeat.i(116550);
-    bnz localbnz = new bnz();
-    localbnz.Fdx = paramInt;
-    localbnz.FdE = ((int)(System.currentTimeMillis() / 1000L));
-    localbnz.ncL = 1;
-    localbnz.Fdy = new com.tencent.mm.bw.b(paramString.getBytes());
+    bsl localbsl = new bsl();
+    localbsl.GNa = paramInt;
+    localbsl.GNh = ((int)(System.currentTimeMillis() / 1000L));
+    localbsl.nDi = 1;
+    localbsl.GNb = new com.tencent.mm.bx.b(paramString.getBytes());
     paramString = new b.a();
-    paramString.hvt = new by();
-    paramString.hvu = new bz();
+    paramString.hNM = new by();
+    paramString.hNN = new bz();
     paramString.uri = "/cgi-bin/mmux-bin/adlog";
     paramString.funcId = 1802;
-    paramString = paramString.aAz();
-    by localby = (by)paramString.hvr.hvw;
-    bny localbny = new bny();
-    localbny.fZq = d.DHX;
-    localbny.fZr = d.DHW;
-    localbny.fZs = d.DHZ;
-    localbny.fZt = d.DIa;
-    localbny.fZu = ab.eUO();
-    localbny.EIx = ((int)(System.currentTimeMillis() / 1000L));
-    localby.DPn = localbny;
-    localby.DPo.add(localbnz);
+    paramString = paramString.aDC();
+    by localby = (by)paramString.hNK.hNQ;
+    bsk localbsk = new bsk();
+    localbsk.gsM = d.Fne;
+    localbsk.gsN = d.Fnd;
+    localbsk.gsO = d.Fng;
+    localbsk.gsP = d.Fnh;
+    localbsk.gsQ = ac.fks();
+    localbsk.Gro = ((int)(System.currentTimeMillis() / 1000L));
+    localby.Fux = localbsk;
+    localby.Fuy.add(localbsl);
     x.a(paramString, new x.a()
     {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
+      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb, n paramAnonymousn)
       {
         AppMethodBeat.i(116548);
-        ac.d("WebSearchService", "onGYNetEnd oreh errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        com.tencent.mm.sdk.platformtools.ad.d("WebSearchService", "onGYNetEnd oreh errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
-          h.wUl.idkeyStat(457L, 1L, 1L, false);
+          g.yhR.idkeyStat(457L, 1L, 1L, false);
         }
         AppMethodBeat.o(116548);
         return 0;
@@ -86,23 +84,23 @@ public final class c
     AppMethodBeat.o(116550);
   }
   
-  public final int ewU()
+  public final int eLI()
   {
-    return this.BXY;
+    return this.DAQ;
   }
   
-  public final String ewV()
+  public final String eLJ()
   {
     AppMethodBeat.i(116551);
-    String str = z.Un(3);
+    String str = com.tencent.mm.plugin.websearch.api.ad.Wg(3);
     AppMethodBeat.o(116551);
     return str;
   }
   
-  public final void ke(String paramString1, String paramString2)
+  public final void kC(String paramString1, String paramString2)
   {
     AppMethodBeat.i(116552);
-    this.BXZ.put(paramString1, paramString2);
+    this.DAR.put(paramString1, paramString2);
     AppMethodBeat.o(116552);
   }
 }

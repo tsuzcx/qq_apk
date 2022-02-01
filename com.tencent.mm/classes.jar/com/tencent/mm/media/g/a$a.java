@@ -2,7 +2,7 @@ package com.tencent.mm.media.g;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/mix/AudioMixCodec$Companion;", "", "()V", "BACKGROUND", "", "BATCH_MIX_NUM", "", "MIX_ALL", "MIX_BACKGROUND", "MIX_MUSIC", "MIX_SILENT", "MUSIC", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/globject/GLFrameBufferObject$Companion;", "", "()V", "TAG", "", "plugin-mediaeditor_release"})
 public final class a$a {}
 
 

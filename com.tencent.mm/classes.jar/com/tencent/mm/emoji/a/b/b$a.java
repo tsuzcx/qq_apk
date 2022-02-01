@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.a.b;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/search/EmojiSuggest$Companion;", "", "()V", "MaxResultSize", "", "RemoteValidTime", "", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/search/EmojiSuggest$Companion;", "", "()V", "MaxResultSize", "", "RemoteValidTime", "", "plugin-emojisdk_release"})
 public final class b$a {}
 
 

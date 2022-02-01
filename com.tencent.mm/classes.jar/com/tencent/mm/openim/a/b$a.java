@@ -7,9 +7,9 @@ public enum b$a
   static
   {
     AppMethodBeat.i(120685);
-    inW = new a("TYPE_WORDING", 0);
-    inX = new a("TYPE_URL", 1);
-    inY = new a[] { inW, inX };
+    iHt = new a("TYPE_WORDING", 0);
+    iHu = new a("TYPE_URL", 1);
+    iHv = new a[] { iHt, iHu };
     AppMethodBeat.o(120685);
   }
   

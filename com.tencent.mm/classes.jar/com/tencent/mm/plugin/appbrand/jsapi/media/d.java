@@ -1,58 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.luggage.a.b;
+import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.InputStream;
+import com.tencent.mm.plugin.appbrand.t.a;
 
-public abstract interface d
-  extends b
+public final class d
 {
-  public static final d kxc = new d()
+  public static void ma(int paramInt)
   {
-    public final Bitmap b(InputStream paramAnonymousInputStream, BitmapFactory.Options paramAnonymousOptions)
-    {
-      AppMethodBeat.i(139866);
-      paramAnonymousInputStream = BitmapFactory.decodeStream(paramAnonymousInputStream, null, paramAnonymousOptions);
-      AppMethodBeat.o(139866);
-      return paramAnonymousInputStream;
-    }
-    
-    public final Bitmap decodeFile(String paramAnonymousString, BitmapFactory.Options paramAnonymousOptions)
-    {
-      AppMethodBeat.i(139865);
-      paramAnonymousString = BitmapFactory.decodeFile(paramAnonymousString, paramAnonymousOptions);
-      AppMethodBeat.o(139865);
-      return paramAnonymousString;
-    }
-    
-    public final Bitmap decodeStream(InputStream paramAnonymousInputStream)
-    {
-      AppMethodBeat.i(200946);
-      paramAnonymousInputStream = BitmapFactory.decodeStream(paramAnonymousInputStream);
-      AppMethodBeat.o(200946);
-      return paramAnonymousInputStream;
-    }
-  };
-  
-  public abstract Bitmap b(InputStream paramInputStream, BitmapFactory.Options paramOptions);
-  
-  public abstract Bitmap decodeFile(String paramString, BitmapFactory.Options paramOptions);
-  
-  public abstract Bitmap decodeStream(InputStream paramInputStream);
-  
-  public static final class a
-  {
-    public static d a(d paramd)
-    {
-      d locald = paramd;
-      if (paramd == null) {
-        locald = d.kxc;
-      }
-      return locald;
-    }
+    AppMethodBeat.i(188409);
+    ((a)e.L(a.class)).idkeyStat(1419L, paramInt, 1L, false);
+    AppMethodBeat.o(188409);
   }
 }
 

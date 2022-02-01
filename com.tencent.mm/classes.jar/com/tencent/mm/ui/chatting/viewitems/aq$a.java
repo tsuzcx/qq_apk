@@ -1,128 +1,132 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.az;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.storage.bo.c;
+import com.tencent.mm.am.g;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.a.eb;
+import com.tencent.mm.g.a.eb.b;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.pluginsdk.model.app.h;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.c.b.i;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.ui.chatting.ChattingSendDataToDeviceUI;
+import com.tencent.mm.ui.chatting.k;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class aq$a
   extends c
 {
-  private a HNS;
+  private com.tencent.mm.ui.chatting.e.a JBI;
+  protected aq.c Kfh;
   
   public final View a(LayoutInflater paramLayoutInflater, View paramView)
   {
-    AppMethodBeat.i(37360);
-    View localView;
+    AppMethodBeat.i(37344);
+    Object localObject;
     if (paramView != null)
     {
-      localView = paramView;
+      localObject = paramView;
       if (paramView.getTag() != null) {}
     }
     else
     {
-      localView = paramLayoutInflater.inflate(2131493456, null);
-      paramLayoutInflater = new aq.b();
-      paramLayoutInflater.fAz = ((TextView)localView.findViewById(2131298178));
-      paramLayoutInflater.xpH = ((TextView)localView.findViewById(2131298185));
-      paramLayoutInflater.Ilc = ((ImageView)localView.findViewById(2131298146));
-      paramLayoutInflater.IoK = ((TextView)localView.findViewById(2131298180));
-      paramLayoutInflater.Ioj = ((TextView)localView.findViewById(2131298073));
-      paramLayoutInflater.nDl = localView.findViewById(2131298069);
-      localView.setTag(paramLayoutInflater);
+      localObject = new ah(paramLayoutInflater, 2131493455);
+      ((View)localObject).setTag(new aq.d().z((View)localObject, true));
     }
-    AppMethodBeat.o(37360);
-    return localView;
+    AppMethodBeat.o(37344);
+    return localObject;
   }
   
-  public final void a(c.a parama, int paramInt, a parama1, bo parambo, String paramString)
+  public final void a(c.a parama, int paramInt, com.tencent.mm.ui.chatting.e.a parama1, bu parambu, String paramString)
   {
-    AppMethodBeat.i(37361);
-    this.HNS = parama1;
-    parama = (aq.b)parama;
-    az.ayM();
-    paramString = com.tencent.mm.model.c.awD().alu(parambo.field_content);
-    parama.IoK.setText(paramString.title);
-    parama.Ioj.setText(paramString.content);
-    a(parama, paramString.hRP);
-    ImageView localImageView = parama.Ilc;
-    if (paramString.qUc) {}
-    for (int i = 0;; i = 8)
+    AppMethodBeat.i(37345);
+    this.JBI = parama1;
+    parama = (aq.d)parama;
+    if (this.Kfh == null) {
+      this.Kfh = new aq.c(parama1);
+    }
+    aq.d.a(parama, parambu, true, paramInt, parama1, this.Kfh, c(parama1));
+    AppMethodBeat.o(37345);
+  }
+  
+  public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.e.a parama, bu parambu)
+  {
+    AppMethodBeat.i(37347);
+    switch (paramMenuItem.getItemId())
     {
-      localImageView.setVisibility(i);
-      parama.nDl.setTag(new bj(parambo, parama1.foQ(), paramInt, null, '\000'));
-      parama.nDl.setOnClickListener(d(parama1));
-      parama.nDl.setOnLongClickListener(c(parama1));
-      parama.nDl.setOnTouchListener(((i)parama1.bf(i.class)).fmb());
-      AppMethodBeat.o(37361);
-      return;
+    case 128: 
+    default: 
+      AppMethodBeat.o(37347);
+      return false;
+    case 129: 
+      paramMenuItem = new Intent(parama.JOR.getContext(), ChattingSendDataToDeviceUI.class);
+      paramMenuItem.putExtra("exdevice_open_scene_type", 1);
+      paramMenuItem.putExtra("Retr_Msg_Id", parambu.field_msgId);
+      parama = parama.JOR.getContext();
+      paramMenuItem = new com.tencent.mm.hellhoundlib.b.a().bc(paramMenuItem);
+      com.tencent.mm.hellhoundlib.a.a.a(parama, paramMenuItem.ahp(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemLocation$ChattingItemLocationFrom", "onContextItemSelected", "(Landroid/view/MenuItem;Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/storage/MsgInfo;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      parama.startActivity((Intent)paramMenuItem.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(parama, "com/tencent/mm/ui/chatting/viewitems/ChattingItemLocation$ChattingItemLocationFrom", "onContextItemSelected", "(Landroid/view/MenuItem;Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/storage/MsgInfo;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(37347);
+      return true;
     }
-  }
-  
-  public final boolean a(ContextMenu paramContextMenu, View paramView, bo parambo)
-  {
-    AppMethodBeat.i(37362);
-    int i = ((bj)paramView.getTag()).position;
-    if (!this.HNS.foR()) {
-      paramContextMenu.add(i, 100, 0, paramView.getContext().getString(2131757221));
+    if (parambu.cTe())
+    {
+      paramMenuItem = new LinkedList();
+      paramMenuItem.add(parambu);
+      k.a(parama.JOR.getContext(), paramMenuItem, parama.fFv(), parama.BYG.field_username, null);
     }
-    AppMethodBeat.o(37362);
+    AppMethodBeat.o(37347);
     return true;
   }
   
-  public final boolean a(MenuItem paramMenuItem, a parama, bo parambo)
+  public final boolean a(l paraml, View paramView, bu parambu)
   {
-    return false;
-  }
-  
-  public final boolean b(View paramView, a parama, bo parambo)
-  {
-    AppMethodBeat.i(37363);
-    paramView = (bj)paramView.getTag();
-    az.ayM();
-    parambo = com.tencent.mm.model.c.awD().alu(paramView.dpq.field_content);
-    if (bs.nullAsNil(parambo.vTT).length() > 0) {
-      d.b(parama.HZF.getContext(), "qqmail", ".ui.ReadMailUI", new Intent().putExtra("msgid", paramView.dpq.field_msgId));
-    }
-    for (;;)
+    AppMethodBeat.i(194487);
+    if (parambu.getType() == 48)
     {
-      AppMethodBeat.o(37363);
-      return true;
-      if (bs.nullAsNil(parambo.GZj).length() > 0)
-      {
-        paramView = new Intent("android.intent.action.VIEW", Uri.parse(parambo.GZj));
-        d.b(parama.HZF.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+      int i = ((bk)paramView.getTag()).position;
+      paraml.a(i, 127, paramView.getContext().getString(2131762559), 2131690478);
+      if ((g.aFC()) && (!this.JBI.fFw())) {
+        paraml.add(i, 114, 0, paramView.getContext().getString(2131757217));
+      }
+      if (d.aIu("favorite")) {
+        paraml.a(i, 116, paramView.getContext().getString(2131761941), 2131690400);
+      }
+      eb localeb = new eb();
+      localeb.dpg.msgId = parambu.field_msgId;
+      com.tencent.mm.sdk.b.a.IbL.l(localeb);
+      if ((localeb.dph.doF) || (h.ap(this.JBI.JOR.getContext(), parambu.getType()))) {
+        paraml.a(i, 129, paramView.getContext().getString(2131757228), 2131691577);
+      }
+      if (!this.JBI.fFw()) {
+        paraml.a(i, 100, paramView.getContext().getString(2131757221), 2131690384);
       }
     }
+    AppMethodBeat.o(194487);
+    return true;
   }
   
-  public final boolean bb(int paramInt, boolean paramBoolean)
-  {
-    return paramInt == 35;
-  }
-  
-  protected final boolean fqt()
+  public final boolean b(View paramView, com.tencent.mm.ui.chatting.e.a parama, bu parambu)
   {
     return false;
   }
   
-  public final boolean fqu()
+  public final boolean bi(int paramInt, boolean paramBoolean)
+  {
+    return (!paramBoolean) && (paramInt == 48);
+  }
+  
+  public final boolean fHh()
   {
     return false;
   }

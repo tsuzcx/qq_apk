@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.luckymoney.story.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dds;
+import com.tencent.mm.protocal.protobuf.djf;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public final class d
     this.db = parame;
   }
   
-  public final List<dds> akn(String paramString)
+  public final List<djf> apa(String paramString)
   {
     AppMethodBeat.i(163697);
     Object localObject = String.format("SELECT * from %s where %s=?", new Object[] { "LocalStoryDetail", "packet_id" });
@@ -46,7 +46,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.b.d
  * JD-Core Version:    0.7.0.1
  */

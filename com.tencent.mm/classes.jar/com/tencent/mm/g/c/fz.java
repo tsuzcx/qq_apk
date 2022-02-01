@@ -8,22 +8,61 @@ public abstract class fz
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int exD = "encryptUsername".hashCode();
-  private static final int ext = "conRemark".hashCode();
-  private static final int fcH = "contactLabels".hashCode();
-  private static final int fcI = "conDescription".hashCode();
-  private static final int fcJ = "conPhone".hashCode();
+  private static final int eEd = "userName".hashCode();
+  private static final int eSP = "md5".hashCode();
+  private static final int ftA = "snsYearMonthInfo".hashCode();
+  private static final int ftB = "albumMd5".hashCode();
+  private static final int ftm = "newerIds".hashCode();
+  private static final int ftn = "bgId".hashCode();
+  private static final int fto = "bgUrl".hashCode();
+  private static final int ftp = "older_bgId".hashCode();
+  private static final int ftq = "local_flag".hashCode();
+  private static final int ftr = "istyle".hashCode();
+  private static final int fts = "iFlag".hashCode();
+  private static final int ftt = "icount".hashCode();
+  private static final int ftu = "faultS".hashCode();
+  private static final int ftv = "snsBgId".hashCode();
+  private static final int ftw = "snsuser".hashCode();
+  private static final int ftx = "adsession".hashCode();
+  private static final int fty = "lastFirstPageRequestErrCode".hashCode();
+  private static final int ftz = "lastFirstPageRequestErrType".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean exb = true;
-  private boolean exl = true;
-  private boolean fcE = true;
-  private boolean fcF = true;
-  private boolean fcG = true;
-  public String field_conDescription;
-  public String field_conPhone;
-  public String field_conRemark;
-  public String field_contactLabels;
-  public String field_encryptUsername;
+  private boolean eDG = true;
+  private boolean eSd = true;
+  public byte[] field_adsession;
+  public String field_albumMd5;
+  public String field_bgId;
+  public String field_bgUrl;
+  public byte[] field_faultS;
+  public int field_iFlag;
+  public int field_icount;
+  public int field_istyle;
+  public int field_lastFirstPageRequestErrCode;
+  public int field_lastFirstPageRequestErrType;
+  public int field_local_flag;
+  public String field_md5;
+  public String field_newerIds;
+  public String field_older_bgId;
+  public long field_snsBgId;
+  public byte[] field_snsYearMonthInfo;
+  public byte[] field_snsuser;
+  public String field_userName;
+  private boolean fsW = true;
+  private boolean fsX = true;
+  private boolean fsY = true;
+  private boolean fsZ = true;
+  private boolean fta = true;
+  private boolean ftb = true;
+  private boolean ftc = true;
+  private boolean ftd = true;
+  private boolean fte = true;
+  private boolean ftf = true;
+  private boolean ftg = true;
+  private boolean fth = true;
+  private boolean fti = true;
+  private boolean ftj = true;
+  private boolean ftk = true;
+  private boolean ftl = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,11 +77,11 @@ public abstract class fz
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (exD != k) {
+      if (eEd != k) {
         break label65;
       }
-      this.field_encryptUsername = paramCursor.getString(i);
-      this.exl = true;
+      this.field_userName = paramCursor.getString(i);
+      this.eDG = true;
     }
     for (;;)
     {
@@ -50,14 +89,40 @@ public abstract class fz
       break label20;
       break;
       label65:
-      if (ext == k) {
-        this.field_conRemark = paramCursor.getString(i);
-      } else if (fcH == k) {
-        this.field_contactLabels = paramCursor.getString(i);
-      } else if (fcI == k) {
-        this.field_conDescription = paramCursor.getString(i);
-      } else if (fcJ == k) {
-        this.field_conPhone = paramCursor.getString(i);
+      if (eSP == k) {
+        this.field_md5 = paramCursor.getString(i);
+      } else if (ftm == k) {
+        this.field_newerIds = paramCursor.getString(i);
+      } else if (ftn == k) {
+        this.field_bgId = paramCursor.getString(i);
+      } else if (fto == k) {
+        this.field_bgUrl = paramCursor.getString(i);
+      } else if (ftp == k) {
+        this.field_older_bgId = paramCursor.getString(i);
+      } else if (ftq == k) {
+        this.field_local_flag = paramCursor.getInt(i);
+      } else if (ftr == k) {
+        this.field_istyle = paramCursor.getInt(i);
+      } else if (fts == k) {
+        this.field_iFlag = paramCursor.getInt(i);
+      } else if (ftt == k) {
+        this.field_icount = paramCursor.getInt(i);
+      } else if (ftu == k) {
+        this.field_faultS = paramCursor.getBlob(i);
+      } else if (ftv == k) {
+        this.field_snsBgId = paramCursor.getLong(i);
+      } else if (ftw == k) {
+        this.field_snsuser = paramCursor.getBlob(i);
+      } else if (ftx == k) {
+        this.field_adsession = paramCursor.getBlob(i);
+      } else if (fty == k) {
+        this.field_lastFirstPageRequestErrCode = paramCursor.getInt(i);
+      } else if (ftz == k) {
+        this.field_lastFirstPageRequestErrType = paramCursor.getInt(i);
+      } else if (ftA == k) {
+        this.field_snsYearMonthInfo = paramCursor.getBlob(i);
+      } else if (ftB == k) {
+        this.field_albumMd5 = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -67,35 +132,62 @@ public abstract class fz
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.field_encryptUsername == null) {
-      this.field_encryptUsername = "";
+    if (this.field_userName == null) {
+      this.field_userName = "";
     }
-    if (this.exl) {
-      localContentValues.put("encryptUsername", this.field_encryptUsername);
+    if (this.eDG) {
+      localContentValues.put("userName", this.field_userName);
     }
-    if (this.field_conRemark == null) {
-      this.field_conRemark = "";
+    if (this.eSd) {
+      localContentValues.put("md5", this.field_md5);
     }
-    if (this.exb) {
-      localContentValues.put("conRemark", this.field_conRemark);
+    if (this.fsW) {
+      localContentValues.put("newerIds", this.field_newerIds);
     }
-    if (this.field_contactLabels == null) {
-      this.field_contactLabels = "";
+    if (this.fsX) {
+      localContentValues.put("bgId", this.field_bgId);
     }
-    if (this.fcE) {
-      localContentValues.put("contactLabels", this.field_contactLabels);
+    if (this.fsY) {
+      localContentValues.put("bgUrl", this.field_bgUrl);
     }
-    if (this.field_conDescription == null) {
-      this.field_conDescription = "";
+    if (this.fsZ) {
+      localContentValues.put("older_bgId", this.field_older_bgId);
     }
-    if (this.fcF) {
-      localContentValues.put("conDescription", this.field_conDescription);
+    if (this.fta) {
+      localContentValues.put("local_flag", Integer.valueOf(this.field_local_flag));
     }
-    if (this.field_conPhone == null) {
-      this.field_conPhone = "";
+    if (this.ftb) {
+      localContentValues.put("istyle", Integer.valueOf(this.field_istyle));
     }
-    if (this.fcG) {
-      localContentValues.put("conPhone", this.field_conPhone);
+    if (this.ftc) {
+      localContentValues.put("iFlag", Integer.valueOf(this.field_iFlag));
+    }
+    if (this.ftd) {
+      localContentValues.put("icount", Integer.valueOf(this.field_icount));
+    }
+    if (this.fte) {
+      localContentValues.put("faultS", this.field_faultS);
+    }
+    if (this.ftf) {
+      localContentValues.put("snsBgId", Long.valueOf(this.field_snsBgId));
+    }
+    if (this.ftg) {
+      localContentValues.put("snsuser", this.field_snsuser);
+    }
+    if (this.fth) {
+      localContentValues.put("adsession", this.field_adsession);
+    }
+    if (this.fti) {
+      localContentValues.put("lastFirstPageRequestErrCode", Integer.valueOf(this.field_lastFirstPageRequestErrCode));
+    }
+    if (this.ftj) {
+      localContentValues.put("lastFirstPageRequestErrType", Integer.valueOf(this.field_lastFirstPageRequestErrType));
+    }
+    if (this.ftk) {
+      localContentValues.put("snsYearMonthInfo", this.field_snsYearMonthInfo);
+    }
+    if (this.ftl) {
+      localContentValues.put("albumMd5", this.field_albumMd5);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -105,7 +197,7 @@ public abstract class fz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.c.fz
  * JD-Core Version:    0.7.0.1
  */

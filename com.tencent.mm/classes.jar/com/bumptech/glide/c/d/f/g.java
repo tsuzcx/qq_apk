@@ -7,18 +7,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g<Z>
   implements e<Z, Z>
 {
-  private static final g<?> aKC;
+  private static final g<?> aMt;
   
   static
   {
     AppMethodBeat.i(77539);
-    aKC = new g();
+    aMt = new g();
     AppMethodBeat.o(77539);
   }
   
-  public static <Z> e<Z, Z> pv()
+  public static <Z> e<Z, Z> pN()
   {
-    return aKC;
+    return aMt;
   }
   
   public final u<Z> a(u<Z> paramu, j paramj)

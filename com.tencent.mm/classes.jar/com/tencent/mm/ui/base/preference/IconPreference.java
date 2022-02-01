@@ -16,48 +16,49 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.aq;
 
 public class IconPreference
   extends Preference
 {
-  private TextView HEA;
-  private TextView HEB;
-  protected ImageView HEC;
-  public boolean HED;
-  private boolean HEE;
-  public boolean HEF;
-  private int HEG;
-  public boolean HEH;
-  private int HEj;
-  private int HEk;
-  private int HEl;
-  private ImageView HEm;
-  private ViewGroup HEn;
-  private TextView HEo;
-  protected Drawable HEq;
-  RelativeLayout.LayoutParams HEr;
-  private int HEs;
-  private int HEt;
-  private int HEu;
-  private int HEv;
-  private int HEw;
-  private int HEx;
-  private View HEy;
-  private View HEz;
-  protected int HfX;
-  private Bitmap Hjr;
+  protected int ITn;
+  private Bitmap IWY;
+  private int JrZ;
+  private int Jsa;
+  private int Jsb;
+  private ImageView Jsc;
+  private ViewGroup Jsd;
+  private TextView Jse;
+  protected Drawable Jsg;
+  RelativeLayout.LayoutParams Jsh;
+  private int Jsi;
+  private int Jsj;
+  private int Jsk;
+  private int Jsl;
+  private int Jsm;
+  private int Jsn;
+  private View Jso;
+  private View Jsp;
+  private TextView Jsq;
+  private TextView Jsr;
+  protected ImageView Jss;
+  public boolean Jst;
+  private boolean Jsu;
+  public boolean Jsv;
+  private int Jsw;
+  public boolean Jsx;
+  public boolean Jsy;
   private Context context;
   private String desc;
   public Drawable drawable;
-  private TextView gAI;
+  private TextView gUs;
   private int height;
-  private View mView;
-  protected ImageView uBH;
-  private String vLt;
-  private String vLu;
-  private int xpM;
-  private int xpN;
+  protected View mView;
+  protected ImageView vEo;
+  private String wSC;
+  private String wSD;
+  private int yEp;
+  private int yEq;
   
   public IconPreference(Context paramContext)
   {
@@ -73,32 +74,33 @@ public class IconPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142543);
-    this.HfX = -1;
-    this.uBH = null;
-    this.vLt = "";
-    this.xpM = -1;
-    this.xpN = 8;
-    this.HEj = 8;
-    this.HEs = 8;
+    this.ITn = -1;
+    this.vEo = null;
+    this.wSC = "";
+    this.yEp = -1;
+    this.yEq = 8;
+    this.JrZ = 8;
+    this.Jsi = 8;
     this.desc = "";
-    this.vLu = "";
-    this.HEt = -1;
-    this.HEu = 8;
-    this.HEv = -1;
-    this.Hjr = null;
-    this.HEw = 8;
-    this.HEk = 0;
-    this.HEl = 8;
-    this.HEx = 8;
-    this.HEm = null;
-    this.HEn = null;
-    this.HEy = null;
-    this.HEz = null;
+    this.wSD = "";
+    this.Jsj = -1;
+    this.Jsk = 8;
+    this.Jsl = -1;
+    this.IWY = null;
+    this.Jsm = 8;
+    this.Jsa = 0;
+    this.Jsb = 8;
+    this.Jsn = 8;
+    this.Jsc = null;
+    this.Jsd = null;
+    this.Jso = null;
+    this.Jsp = null;
     this.height = -1;
-    this.HEE = false;
-    this.HEF = false;
-    this.HEG = -1;
-    this.HEH = false;
+    this.Jsu = false;
+    this.Jsv = false;
+    this.Jsw = -1;
+    this.Jsx = false;
+    this.Jsy = false;
     this.context = paramContext;
     setLayoutResource(2131494804);
     AppMethodBeat.o(142543);
@@ -107,162 +109,162 @@ public class IconPreference
   public final void D(Drawable paramDrawable)
   {
     AppMethodBeat.i(182566);
-    this.HEq = paramDrawable;
-    this.Hjr = null;
-    this.HfX = -1;
-    if (this.uBH != null) {
-      this.uBH.setImageDrawable(paramDrawable);
+    this.Jsg = paramDrawable;
+    this.IWY = null;
+    this.ITn = -1;
+    if (this.vEo != null) {
+      this.vEo.setImageDrawable(paramDrawable);
     }
     AppMethodBeat.o(182566);
   }
   
-  public final void aF(Bitmap paramBitmap)
+  public final void aH(Bitmap paramBitmap)
   {
     AppMethodBeat.i(142553);
-    this.Hjr = paramBitmap;
-    this.HfX = -1;
-    this.HEq = null;
-    if (this.uBH != null) {
-      this.uBH.setImageBitmap(paramBitmap);
+    this.IWY = paramBitmap;
+    this.ITn = -1;
+    this.Jsg = null;
+    if (this.vEo != null) {
+      this.vEo.setImageBitmap(paramBitmap);
     }
     AppMethodBeat.o(142553);
   }
   
-  public final void aQ(String paramString, int paramInt1, int paramInt2)
+  public final void aU(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142547);
-    this.vLu = paramString;
-    this.HEt = paramInt1;
-    this.HEv = paramInt2;
-    if (this.HEA != null)
+    this.wSD = paramString;
+    this.Jsj = paramInt1;
+    this.Jsl = paramInt2;
+    if (this.Jsq != null)
     {
-      this.HEA.setText(paramString);
+      this.Jsq.setText(paramString);
       if (paramInt1 != -1) {
-        this.HEA.setBackgroundDrawable(this.context.getResources().getDrawable(paramInt1));
+        this.Jsq.setBackgroundDrawable(this.context.getResources().getDrawable(paramInt1));
       }
       if (paramInt2 != -1) {
-        this.HEA.setTextColor(paramInt2);
+        this.Jsq.setTextColor(paramInt2);
       }
     }
     AppMethodBeat.o(142547);
   }
   
-  public final void aab(int paramInt)
+  public final void acl(int paramInt)
   {
     AppMethodBeat.i(142548);
-    this.xpN = paramInt;
-    if (this.HEB != null) {
-      this.HEB.setVisibility(paramInt);
+    this.yEq = paramInt;
+    if (this.Jsr != null) {
+      this.Jsr.setVisibility(paramInt);
     }
     AppMethodBeat.o(142548);
   }
   
-  public final void aac(int paramInt)
+  public final void acm(int paramInt)
   {
     AppMethodBeat.i(142549);
-    this.HEu = paramInt;
-    if (this.HEA != null) {
-      this.HEA.setVisibility(paramInt);
+    this.Jsk = paramInt;
+    if (this.Jsq != null) {
+      this.Jsq.setVisibility(paramInt);
     }
     AppMethodBeat.o(142549);
   }
   
-  public final void aad(int paramInt)
+  public final void acn(int paramInt)
   {
     AppMethodBeat.i(142552);
-    this.HEj = paramInt;
-    if (this.HEm != null) {
-      this.HEm.setVisibility(paramInt);
+    this.JrZ = paramInt;
+    if (this.Jsc != null) {
+      this.Jsc.setVisibility(paramInt);
     }
     AppMethodBeat.o(142552);
   }
   
-  public final void aae(int paramInt)
+  public final void aco(int paramInt)
   {
     AppMethodBeat.i(142554);
-    this.HfX = paramInt;
-    this.Hjr = null;
-    if (this.uBH != null) {
-      this.uBH.setImageResource(paramInt);
+    this.ITn = paramInt;
+    this.IWY = null;
+    if (this.vEo != null) {
+      this.vEo.setImageResource(paramInt);
     }
     AppMethodBeat.o(142554);
   }
   
-  public final void aaf(int paramInt)
+  public final void acp(int paramInt)
   {
     AppMethodBeat.i(142555);
-    this.HEw = paramInt;
-    if (this.uBH != null) {
-      this.uBH.setVisibility(this.HEw);
+    this.Jsm = paramInt;
+    if (this.vEo != null) {
+      this.vEo.setVisibility(this.Jsm);
     }
     AppMethodBeat.o(142555);
   }
   
-  public final void aag(int paramInt)
+  public final void acq(int paramInt)
   {
     AppMethodBeat.i(142556);
-    this.HEk = paramInt;
-    if (this.HEn != null) {
-      this.HEn.setVisibility(this.HEk);
+    this.Jsa = paramInt;
+    if (this.Jsd != null) {
+      this.Jsd.setVisibility(this.Jsa);
     }
     AppMethodBeat.o(142556);
   }
   
-  public final void aah(int paramInt)
+  public final void acr(int paramInt)
   {
     AppMethodBeat.i(142557);
-    this.HEl = paramInt;
-    if (this.HEy != null) {
-      this.HEy.setVisibility(this.HEl);
+    this.Jsb = paramInt;
+    if (this.Jso != null) {
+      this.Jso.setVisibility(this.Jsb);
     }
     AppMethodBeat.o(142557);
   }
   
-  public final void fZ(String paramString, int paramInt)
-  {
-    this.vLt = paramString;
-    this.xpM = paramInt;
-  }
-  
-  public final void fjl()
+  public final void fzA()
   {
     AppMethodBeat.i(142550);
-    this.HEs = 0;
-    if (this.gAI != null) {
-      this.gAI.setVisibility(0);
+    this.Jsi = 0;
+    if (this.gUs != null) {
+      this.gUs.setVisibility(0);
     }
     AppMethodBeat.o(142550);
   }
   
-  public final ImageView fjm()
+  public final ImageView fzB()
   {
-    return this.uBH;
+    return this.vEo;
   }
   
-  public final void ga(String paramString, int paramInt)
+  public final void gw(String paramString, int paramInt)
+  {
+    this.wSC = paramString;
+    this.yEp = paramInt;
+  }
+  
+  public final void gx(String paramString, int paramInt)
   {
     AppMethodBeat.i(142545);
-    aQ(paramString, paramInt, this.HEv);
+    aU(paramString, paramInt, this.Jsl);
     AppMethodBeat.o(142545);
   }
   
-  public final void jB(int paramInt1, int paramInt2)
+  public final void jN(int paramInt1, int paramInt2)
   {
-    this.HEj = paramInt1;
-    this.HEG = paramInt2;
+    this.JrZ = paramInt1;
+    this.Jsw = paramInt2;
   }
   
-  public final void jC(int paramInt1, int paramInt2)
+  public final void jO(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142558);
-    this.HEr = new RelativeLayout.LayoutParams(paramInt1, paramInt2);
-    this.HEr.addRule(13);
-    if (this.uBH == null)
+    this.Jsh = new RelativeLayout.LayoutParams(paramInt1, paramInt2);
+    this.Jsh.addRule(13);
+    if (this.vEo == null)
     {
       AppMethodBeat.o(142558);
       return;
     }
-    this.uBH.setLayoutParams(this.HEr);
+    this.vEo.setLayoutParams(this.Jsh);
     AppMethodBeat.o(142558);
   }
   
@@ -270,167 +272,179 @@ public class IconPreference
   {
     AppMethodBeat.i(142559);
     super.onBindView(paramView);
-    this.HEC = ((ImageView)paramView.findViewById(2131300943));
+    this.Jss = ((ImageView)paramView.findViewById(2131300943));
     label80:
     Object localObject;
-    if (this.HEC != null)
+    label130:
+    label236:
+    int i;
+    if (this.Jss != null)
     {
       if (this.drawable != null)
       {
-        this.HEC.setImageDrawable(this.drawable);
-        this.HEC.setVisibility(0);
-        if (this.DGC == 0) {
-          break label824;
+        this.Jss.setImageDrawable(this.drawable);
+        this.Jss.setVisibility(0);
+        if (this.FlJ == 0) {
+          break label842;
         }
-        this.HEC.getDrawable().setColorFilter(this.DGC, PorterDuff.Mode.SRC_ATOP);
-        if (!this.HED) {
-          break label847;
+        this.Jss.getDrawable().setColorFilter(this.FlJ, PorterDuff.Mode.SRC_ATOP);
+        if (!this.Jst) {
+          break label865;
         }
-        localObject = (LinearLayout.LayoutParams)this.HEC.getLayoutParams();
-        ((LinearLayout.LayoutParams)localObject).topMargin = ao.av(this.mContext, 2131165289);
+        localObject = (LinearLayout.LayoutParams)this.Jss.getLayoutParams();
+        ((LinearLayout.LayoutParams)localObject).topMargin = aq.ay(this.mContext, 2131165289);
         ((LinearLayout.LayoutParams)localObject).gravity = 48;
-        this.HEC.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.Jss.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
     else
     {
-      label126:
       localObject = (LinearLayout)paramView.findViewById(2131302326);
       ((LinearLayout)localObject).setMinimumHeight(paramView.getResources().getDimensionPixelSize(2131165488));
       if (this.height != -1) {
         ((LinearLayout)localObject).setMinimumHeight(this.height);
       }
-      this.HEB = ((TextView)paramView.findViewById(2131305745));
-      if (this.HEB != null)
+      this.Jsr = ((TextView)paramView.findViewById(2131305745));
+      if (this.Jsr != null)
       {
-        if (!this.HEF) {
-          break label880;
+        if (!this.Jsv) {
+          break label902;
         }
-        this.HEB.setCompoundDrawablesWithIntrinsicBounds(2131234447, 0, 0, 0);
-        this.HEB.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131165568));
-        label229:
-        this.HEB.setVisibility(this.xpN);
-        this.HEB.setText(this.vLt);
-        if (this.xpM != -1) {
-          this.HEB.setBackgroundDrawable(this.context.getResources().getDrawable(this.xpM));
+        this.Jsr.setCompoundDrawablesWithIntrinsicBounds(2131234447, 0, 0, 0);
+        this.Jsr.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131165568));
+        this.Jsr.setVisibility(this.yEq);
+        this.Jsr.setText(this.wSC);
+        if (this.yEp != -1) {
+          this.Jsr.setBackgroundDrawable(this.context.getResources().getDrawable(this.yEp));
         }
       }
-      this.HEA = ((TextView)paramView.findViewById(2131305747));
-      if (this.HEA != null)
+      if (!this.Jsy) {
+        break label916;
+      }
+      i = 2131305746;
+      label298:
+      this.Jsq = ((TextView)paramView.findViewById(i));
+      if (this.Jsq != null)
       {
-        this.HEA.setVisibility(this.HEu);
-        this.HEA.setText(this.vLu);
-        if (this.HEt != -1)
+        this.Jsq.setVisibility(this.Jsk);
+        this.Jsq.setText(this.wSD);
+        if (this.Jsj != -1)
         {
-          this.HEA.setBackgroundDrawable(this.context.getResources().getDrawable(this.HEt));
-          if (this.HEt == 2131233430) {
-            this.HEA.setTextSize(0, a.av(this.context, 2131166950) * a.ib(this.context));
+          this.Jsq.setBackgroundDrawable(this.context.getResources().getDrawable(this.Jsj));
+          if (this.Jsj == 2131233430) {
+            this.Jsq.setTextSize(0, a.ay(this.context, 2131166950) * a.ik(this.context));
           }
         }
-        if (this.HEv != -1) {
-          this.HEA.setTextColor(this.HEv);
+        if (this.Jsl != -1) {
+          this.Jsq.setTextColor(this.Jsl);
         }
-        if (!this.HEE) {
-          break label894;
+        if (!this.Jsu) {
+          break label923;
         }
-        this.HEA.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2131234447, 0);
-        this.HEA.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131165568));
+        this.Jsq.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2131234447, 0);
+        this.Jsq.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131165568));
       }
-      label449:
-      this.HEm = ((ImageView)paramView.findViewById(2131305740));
-      this.HEm.setVisibility(this.HEj);
-      if (this.HEG != -1) {
-        this.HEm.setImageResource(this.HEG);
+      label465:
+      this.Jsc = ((ImageView)paramView.findViewById(2131305740));
+      this.Jsc.setVisibility(this.JrZ);
+      if (this.Jsw != -1) {
+        this.Jsc.setImageResource(this.Jsw);
       }
-      this.uBH = ((ImageView)paramView.findViewById(2131300959));
-      this.HEn = ((ViewGroup)paramView.findViewById(2131304191));
-      this.HEz = paramView.findViewById(2131304181);
-      this.HEz.setVisibility(this.HEx);
-      this.HEy = paramView.findViewById(2131304190);
-      this.HEy.setVisibility(this.HEl);
-      if (this.Hjr == null) {
-        break label908;
+      this.vEo = ((ImageView)paramView.findViewById(2131300959));
+      this.Jsd = ((ViewGroup)paramView.findViewById(2131304191));
+      this.Jsp = paramView.findViewById(2131304181);
+      this.Jsp.setVisibility(this.Jsn);
+      this.Jso = paramView.findViewById(2131304190);
+      this.Jso.setVisibility(this.Jsb);
+      if (this.IWY == null) {
+        break label937;
       }
-      this.uBH.setImageBitmap(this.Hjr);
-      label583:
-      this.uBH.setVisibility(this.HEw);
-      this.HEn.setVisibility(this.HEk);
-      if (this.HEr != null) {
-        this.uBH.setLayoutParams(this.HEr);
+      this.vEo.setImageBitmap(this.IWY);
+      label599:
+      this.vEo.setVisibility(this.Jsm);
+      this.Jsd.setVisibility(this.Jsa);
+      if (this.Jsh != null) {
+        this.vEo.setLayoutParams(this.Jsh);
       }
-      this.HEo = ((TextView)paramView.findViewById(16908310));
-      this.gAI = ((TextView)paramView.findViewById(2131298996));
-      if (this.gAI != null)
+      this.Jse = ((TextView)paramView.findViewById(16908310));
+      this.gUs = ((TextView)paramView.findViewById(2131298996));
+      if (this.gUs != null)
       {
-        this.gAI.setVisibility(this.HEs);
-        this.gAI.setText(this.desc);
-        if (!this.HEH) {
-          break label951;
+        this.gUs.setVisibility(this.Jsi);
+        this.gUs.setText(this.desc);
+        if (!this.Jsx) {
+          break label980;
         }
-        this.gAI.setTextColor(this.context.getResources().getColor(2131100249));
+        this.gUs.setTextColor(this.context.getResources().getColor(2131100249));
       }
-      label707:
-      if (this.HEo != null)
+      label723:
+      if (this.Jse != null)
       {
-        if (!this.HEH) {
-          break label974;
+        if (!this.Jsx) {
+          break label1003;
         }
-        this.HEo.setTextColor(this.context.getResources().getColor(2131100249));
+        this.Jse.setTextColor(this.context.getResources().getColor(2131100249));
       }
-      label741:
-      if (this.HEH) {
-        break label994;
+      label757:
+      if (this.Jsx) {
+        break label1026;
       }
     }
-    label824:
-    label847:
-    label994:
+    label1026:
     for (boolean bool = true;; bool = false)
     {
       paramView.setEnabled(bool);
       AppMethodBeat.o(142559);
       return;
-      if (this.acJ != 0)
+      if (this.aeA != 0)
       {
-        localObject = this.HEC;
-        Drawable localDrawable = this.mContext.getResources().getDrawable(this.acJ);
+        localObject = this.Jss;
+        Drawable localDrawable = this.mContext.getResources().getDrawable(this.aeA);
         this.drawable = localDrawable;
         ((ImageView)localObject).setImageDrawable(localDrawable);
-        this.HEC.setVisibility(0);
+        this.Jss.setVisibility(0);
         break;
       }
-      this.HEC.setVisibility(8);
+      this.Jss.setVisibility(8);
       break;
-      if (this.HEC.getDrawable() == null) {
+      label842:
+      if (this.Jss.getDrawable() == null) {
         break label80;
       }
-      this.HEC.getDrawable().clearColorFilter();
+      this.Jss.getDrawable().clearColorFilter();
       break label80;
-      localObject = (LinearLayout.LayoutParams)this.HEC.getLayoutParams();
+      label865:
+      localObject = (LinearLayout.LayoutParams)this.Jss.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).topMargin = 0;
       ((LinearLayout.LayoutParams)localObject).gravity = 16;
-      this.HEC.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      break label126;
-      label880:
-      this.HEB.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      break label229;
-      label894:
-      this.HEA.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      break label449;
-      if (this.HfX != -1)
+      this.Jss.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      break label130;
+      label902:
+      this.Jsr.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      break label236;
+      label916:
+      i = 2131305747;
+      break label298;
+      label923:
+      this.Jsq.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      break label465;
+      label937:
+      if (this.ITn != -1)
       {
-        this.uBH.setImageResource(this.HfX);
-        break label583;
+        this.vEo.setImageResource(this.ITn);
+        break label599;
       }
-      if (this.HEq == null) {
-        break label583;
+      if (this.Jsg == null) {
+        break label599;
       }
-      this.uBH.setImageDrawable(this.HEq);
-      break label583;
-      this.gAI.setTextColor(this.context.getResources().getColor(2131100212));
-      break label707;
-      this.HEo.setTextColor(ao.aJ(this.context, 2130968584));
-      break label741;
+      this.vEo.setImageDrawable(this.Jsg);
+      break label599;
+      label980:
+      this.gUs.setTextColor(this.context.getResources().getColor(2131100212));
+      break label723;
+      label1003:
+      this.Jse.setTextColor(this.context.getResources().getColor(2131099732));
+      break label757;
     }
   }
   
@@ -451,26 +465,26 @@ public class IconPreference
   {
     AppMethodBeat.i(142546);
     this.desc = paramString;
-    if (this.gAI != null) {
-      this.gAI.setText(paramString);
+    if (this.gUs != null) {
+      this.gUs.setText(paramString);
     }
     AppMethodBeat.o(142546);
   }
   
-  public final void wU(boolean paramBoolean)
+  public final void xF(boolean paramBoolean)
   {
     AppMethodBeat.i(142551);
-    this.HEE = paramBoolean;
-    if (this.HEA != null)
+    this.Jsu = paramBoolean;
+    if (this.Jsq != null)
     {
       if (paramBoolean)
       {
-        this.HEA.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2131234447, 0);
-        this.HEA.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131165568));
+        this.Jsq.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2131234447, 0);
+        this.Jsq.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131165568));
         AppMethodBeat.o(142551);
         return;
       }
-      this.HEA.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      this.Jsq.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     }
     AppMethodBeat.o(142551);
   }

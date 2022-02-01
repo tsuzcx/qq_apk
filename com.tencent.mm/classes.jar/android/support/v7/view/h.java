@@ -10,34 +10,34 @@ import java.util.Iterator;
 
 public final class h
 {
-  y acu;
-  private final z acv = new z()
+  y ael;
+  private final z aem = new z()
   {
-    private boolean acw = false;
-    private int acx = 0;
+    private boolean aen = false;
+    private int aeo = 0;
     
     public final void aH(View paramAnonymousView)
     {
-      if (this.acw) {}
+      if (this.aen) {}
       do
       {
         return;
-        this.acw = true;
-      } while (h.this.acu == null);
-      h.this.acu.aH(null);
+        this.aen = true;
+      } while (h.this.ael == null);
+      h.this.ael.aH(null);
     }
     
     public final void aI(View paramAnonymousView)
     {
-      int i = this.acx + 1;
-      this.acx = i;
-      if (i == h.this.vd.size())
+      int i = this.aeo + 1;
+      this.aeo = i;
+      if (i == h.this.wW.size())
       {
-        if (h.this.acu != null) {
-          h.this.acu.aI(null);
+        if (h.this.ael != null) {
+          h.this.ael.aI(null);
         }
-        this.acx = 0;
-        this.acw = false;
+        this.aeo = 0;
+        this.aen = false;
         h.this.mIsStarted = false;
       }
     }
@@ -45,28 +45,28 @@ public final class h
   private long mDuration = -1L;
   private Interpolator mInterpolator;
   boolean mIsStarted;
-  final ArrayList<x> vd = new ArrayList();
+  final ArrayList<x> wW = new ArrayList();
   
   public final h a(x paramx)
   {
     if (!this.mIsStarted) {
-      this.vd.add(paramx);
+      this.wW.add(paramx);
     }
     return this;
   }
   
   public final h a(x paramx1, x paramx2)
   {
-    this.vd.add(paramx1);
+    this.wW.add(paramx1);
     paramx2.k(paramx1.getDuration());
-    this.vd.add(paramx2);
+    this.wW.add(paramx2);
     return this;
   }
   
   public final h b(y paramy)
   {
     if (!this.mIsStarted) {
-      this.acu = paramy;
+      this.ael = paramy;
     }
     return this;
   }
@@ -84,14 +84,14 @@ public final class h
     if (!this.mIsStarted) {
       return;
     }
-    Iterator localIterator = this.vd.iterator();
+    Iterator localIterator = this.wW.iterator();
     while (localIterator.hasNext()) {
       ((x)localIterator.next()).cancel();
     }
     this.mIsStarted = false;
   }
   
-  public final h hj()
+  public final h hz()
   {
     if (!this.mIsStarted) {
       this.mDuration = 250L;
@@ -104,7 +104,7 @@ public final class h
     if (this.mIsStarted) {
       return;
     }
-    Iterator localIterator = this.vd.iterator();
+    Iterator localIterator = this.wW.iterator();
     while (localIterator.hasNext())
     {
       x localx = (x)localIterator.next();
@@ -114,8 +114,8 @@ public final class h
       if (this.mInterpolator != null) {
         localx.a(this.mInterpolator);
       }
-      if (this.acu != null) {
-        localx.a(this.acv);
+      if (this.ael != null) {
+        localx.a(this.aem);
       }
       localx.start();
     }

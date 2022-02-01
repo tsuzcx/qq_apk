@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(31571);
-    Dyj = new l("MODE_HINT_INVALID", 0);
-    Dyk = new l("MODE_HINT_1", 1);
-    Dyl = new l("MODE_HINT_2", 2);
-    Dym = new l[] { Dyj, Dyk, Dyl };
+    Fds = new l("MODE_HINT_INVALID", 0);
+    Fdt = new l("MODE_HINT_1", 1);
+    Fdu = new l("MODE_HINT_2", 2);
+    Fdv = new l[] { Fds, Fdt, Fdu };
     AppMethodBeat.o(31571);
   }
   

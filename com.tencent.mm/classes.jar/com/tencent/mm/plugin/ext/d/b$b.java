@@ -7,10 +7,10 @@ public enum b$b
   static
   {
     AppMethodBeat.i(24473);
-    quu = new b("BLACK", 0);
-    quv = new b("WHITE", 1);
-    quw = new b("NONE", 2);
-    qux = new b[] { quu, quv, quw };
+    rei = new b("BLACK", 0);
+    rej = new b("WHITE", 1);
+    rek = new b("NONE", 2);
+    rel = new b[] { rei, rej, rek };
     AppMethodBeat.o(24473);
   }
   

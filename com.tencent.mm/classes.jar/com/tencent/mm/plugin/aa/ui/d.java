@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.aa.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.n;
 import com.tencent.mm.ui.contact.q;
@@ -18,31 +18,31 @@ import java.util.List;
 public final class d
   extends q
 {
-  private List<String> dom;
-  private ArrayList<String> iCl;
+  private List<String> dAa;
+  private ArrayList<String> iVv;
   
   public d(n paramn, ArrayList<String> paramArrayList)
   {
     super(paramn, null, true, true);
     AppMethodBeat.i(63549);
-    this.iCl = paramArrayList;
-    WN();
+    this.iVv = paramArrayList;
+    Zh();
     AppMethodBeat.o(63549);
   }
   
-  public final void WN()
+  public final void Zh()
   {
     AppMethodBeat.i(63550);
-    ac.i("MicroMsg.AASelectInitAdapter", "resetData");
-    if (this.dom == null) {
-      this.dom = new ArrayList();
+    ad.i("MicroMsg.AASelectInitAdapter", "resetData");
+    if (this.dAa == null) {
+      this.dAa = new ArrayList();
     }
-    this.dom.clear();
-    Iterator localIterator = this.iCl.iterator();
+    this.dAa.clear();
+    Iterator localIterator = this.iVv.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      this.dom.add(str);
+      this.dAa.add(str);
     }
     AppMethodBeat.o(63550);
   }
@@ -50,23 +50,23 @@ public final class d
   public final int getCount()
   {
     AppMethodBeat.i(63552);
-    int i = this.dom.size();
+    int i = this.dAa.size();
     AppMethodBeat.o(63552);
     return i;
   }
   
-  public final a qH(int paramInt)
+  public final a rh(int paramInt)
   {
     AppMethodBeat.i(63551);
-    Object localObject = (String)this.dom.get(paramInt);
-    g.agS();
-    ai localai = ((k)g.ab(k.class)).awB().aNt((String)localObject);
-    if ((localai != null) && (bs.isNullOrNil(localai.field_username))) {
-      localai.setUsername((String)localObject);
+    Object localObject = (String)this.dAa.get(paramInt);
+    g.ajD();
+    am localam = ((l)g.ab(l.class)).azp().Bf((String)localObject);
+    if ((localam != null) && (bt.isNullOrNil(localam.field_username))) {
+      localam.setUsername((String)localObject);
     }
     localObject = new c(paramInt);
-    ((a)localObject).contact = localai;
-    ((a)localObject).Iwh = true;
+    ((a)localObject).contact = localam;
+    ((a)localObject).KmP = true;
     AppMethodBeat.o(63551);
     return localObject;
   }

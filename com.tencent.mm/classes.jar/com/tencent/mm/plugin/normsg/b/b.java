@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.normsg.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.b;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
@@ -15,36 +15,36 @@ public final class b
   implements k
 {
   private final String TAG;
-  private g callback;
-  private final q hwy;
-  private boolean vou;
-  private int vov;
+  private f callback;
+  private final q hON;
+  private boolean wtN;
+  private int wtO;
   
   public b(boolean paramBoolean, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(149011);
-    this.vou = true;
-    this.vov = 0;
+    this.wtN = true;
+    this.wtO = 0;
     this.TAG = "NetSceneFPInit";
-    this.vou = paramBoolean;
-    this.hwy = new s.a(this.vou);
-    ((s.b)this.hwy.getReqObj()).DJk.Eyn = com.tencent.mm.bw.b.cc(paramArrayOfByte);
+    this.wtN = paramBoolean;
+    this.hON = new s.a(this.wtN);
+    ((s.b)this.hON.getReqObj()).For.GfZ = com.tencent.mm.bx.b.cj(paramArrayOfByte);
     AppMethodBeat.o(149011);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(149012);
-    this.callback = paramg;
-    this.vov += 1;
-    int i = dispatch(parame, this.hwy, this);
+    this.callback = paramf;
+    this.wtO += 1;
+    int i = dispatch(parame, this.hON, this);
     AppMethodBeat.o(149012);
     return i;
   }
   
   public final int getType()
   {
-    if (this.vou) {
+    if (this.wtN) {
       return 3789;
     }
     return 3644;
@@ -62,7 +62,7 @@ public final class b
       AppMethodBeat.o(149013);
       return;
     }
-    if (this.vov < 2)
+    if (this.wtO < 2)
     {
       if (doScene(dispatcher(), this.callback) < 0)
       {
@@ -86,12 +86,12 @@ public final class b
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    return n.b.hwa;
+    return n.b.hOp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.b.b
  * JD-Core Version:    0.7.0.1
  */

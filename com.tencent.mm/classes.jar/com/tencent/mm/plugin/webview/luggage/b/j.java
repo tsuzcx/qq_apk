@@ -2,8 +2,6 @@ package com.tencent.mm.plugin.webview.luggage.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.ui.base.l;
 
 public final class j
@@ -14,15 +12,15 @@ public final class j
     super(28);
   }
   
-  public final void a(Context paramContext, f paramf)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78702);
-    paramf.reload();
-    h.wUl.dB(982, 7);
+    paramg.reload();
+    com.tencent.mm.plugin.report.service.g.yhR.dD(982, 7);
     AppMethodBeat.o(78702);
   }
   
-  public final void a(Context paramContext, f paramf, l paraml)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
   {
     AppMethodBeat.i(78701);
     paraml.a(28, paramContext.getString(2131766077), 2131689825);

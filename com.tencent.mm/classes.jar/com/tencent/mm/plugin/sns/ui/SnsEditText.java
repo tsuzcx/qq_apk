@@ -8,36 +8,36 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.widget.MMEditText;
 
 public class SnsEditText
   extends MMEditText
 {
+  private ClipboardManager AcT;
+  private boolean AcU;
+  private int AcV;
+  private int AcW;
+  private int AcX;
   private Context context;
-  private int mcI;
-  private boolean tXh;
+  private int mCQ;
+  private boolean uZQ;
   private float y;
-  private int yLA;
-  private int yLB;
-  private int yLC;
-  private ClipboardManager yLy;
-  private boolean yLz;
   
   public SnsEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98694);
-    this.yLy = null;
-    this.mcI = 0;
-    this.yLz = false;
-    this.yLA = 0;
-    this.yLB = 0;
-    this.tXh = false;
-    this.yLC = 10;
+    this.AcT = null;
+    this.mCQ = 0;
+    this.AcU = false;
+    this.AcV = 0;
+    this.AcW = 0;
+    this.uZQ = false;
+    this.AcX = 10;
     this.context = paramContext;
-    this.yLy = ((ClipboardManager)ai.getContext().getSystemService("clipboard"));
+    this.AcT = ((ClipboardManager)aj.getContext().getSystemService("clipboard"));
     addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
@@ -58,13 +58,13 @@ public class SnsEditText
         {
           if (SnsEditText.a(SnsEditText.this))
           {
-            if ((paramAnonymousCharSequence == null) || (paramAnonymousCharSequence.length() < a.xMh))
+            if ((paramAnonymousCharSequence == null) || (paramAnonymousCharSequence.length() < a.zbZ))
             {
               SnsEditText.a(SnsEditText.this, 0);
               AppMethodBeat.o(98692);
               return;
             }
-            if (paramAnonymousCharSequence.length() - SnsEditText.b(SnsEditText.this) > a.xMh) {
+            if (paramAnonymousCharSequence.length() - SnsEditText.b(SnsEditText.this) > a.zbZ) {
               SnsEditText.a(SnsEditText.this, paramAnonymousCharSequence.length() - SnsEditText.b(SnsEditText.this));
             }
           }
@@ -73,7 +73,7 @@ public class SnsEditText
         }
         catch (Exception paramAnonymousCharSequence)
         {
-          ac.printErrStackTrace("MicroMsg.SnsEditText", paramAnonymousCharSequence, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.SnsEditText", paramAnonymousCharSequence, "", new Object[0]);
           AppMethodBeat.o(98692);
         }
       }
@@ -83,14 +83,14 @@ public class SnsEditText
   
   public int getPasterLen()
   {
-    return this.mcI;
+    return this.mCQ;
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
     AppMethodBeat.i(98695);
     if (paramInt == 16908322) {
-      this.yLz = true;
+      this.AcU = true;
     }
     boolean bool = super.onTextContextMenuItem(paramInt);
     AppMethodBeat.o(98695);
@@ -101,8 +101,8 @@ public class SnsEditText
   {
     AppMethodBeat.i(98696);
     if (paramMotionEvent.getAction() == 2) {
-      if (Math.abs(this.y - paramMotionEvent.getY()) > this.yLC) {
-        this.tXh = true;
+      if (Math.abs(this.y - paramMotionEvent.getY()) > this.AcX) {
+        this.uZQ = true;
       }
     }
     for (;;)
@@ -113,22 +113,22 @@ public class SnsEditText
       return bool;
       if (paramMotionEvent.getAction() == 1)
       {
-        if (this.tXh)
+        if (this.uZQ)
         {
-          this.tXh = false;
+          this.uZQ = false;
           AppMethodBeat.o(98696);
           return true;
         }
       }
       else {
-        this.tXh = false;
+        this.uZQ = false;
       }
     }
   }
   
   public void setPasterLen(int paramInt)
   {
-    this.mcI = paramInt;
+    this.mCQ = paramInt;
   }
 }
 

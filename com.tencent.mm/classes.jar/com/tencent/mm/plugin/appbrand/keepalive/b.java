@@ -6,18 +6,18 @@ import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.appbrand.b.c.a;
+import com.tencent.mm.plugin.appbrand.a.c.a;
 
 public enum b
 {
-  public String lfb = null;
-  private boolean lfc = false;
+  public String lCa = null;
+  private boolean lCb = false;
   
   static
   {
     AppMethodBeat.i(47040);
-    lfa = new b("INSTANCE");
-    lfd = new b[] { lfa };
+    lBZ = new b("INSTANCE");
+    lCc = new b[] { lBZ };
     AppMethodBeat.o(47040);
   }
   
@@ -27,18 +27,10 @@ public enum b
   {
     AppMethodBeat.i(47037);
     if (!TextUtils.isEmpty(paramString)) {
-      XIPCInvoker.a("com.tencent.mm", new IPCString(paramString), a.class, new d() {});
+      XIPCInvoker.a("com.tencent.mm", new IPCString(paramString), b.a.class, new d() {});
     }
     AppMethodBeat.o(47037);
   }
-  
-  static final class a
-    implements com.tencent.mm.ipcinvoker.b<IPCString, IPCVoid>
-  {}
-  
-  static final class b
-    implements com.tencent.mm.ipcinvoker.b<IPCString, IPCVoid>
-  {}
 }
 
 

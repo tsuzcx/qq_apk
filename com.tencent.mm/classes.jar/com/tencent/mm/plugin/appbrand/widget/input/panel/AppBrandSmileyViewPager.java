@@ -8,24 +8,24 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.CustomViewPager;
 import java.lang.ref.SoftReference;
 
 public class AppBrandSmileyViewPager
   extends CustomViewPager
 {
-  private c mHC;
-  private int mHY;
-  private int mHZ;
-  private b mIa;
+  private c nia;
+  private int niw;
+  private int nix;
+  private b niy;
   
   public AppBrandSmileyViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(49963);
-    this.mHY = 0;
-    this.mHZ = 0;
+    this.niw = 0;
+    this.nix = 0;
     if (Build.VERSION.SDK_INT >= 9) {
       setOverScrollMode(2);
     }
@@ -36,45 +36,45 @@ public class AppBrandSmileyViewPager
   {
     AppMethodBeat.i(49964);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.mHC != null) && (((paramInt1 > 0) && (paramInt3 != paramInt1)) || ((paramInt2 > 0) && (paramInt4 != paramInt2) && (((paramInt2 > 0) && (paramInt2 != this.mHY)) || ((paramInt1 > 0) && (paramInt1 != this.mHZ))))))
+    if ((this.nia != null) && (((paramInt1 > 0) && (paramInt3 != paramInt1)) || ((paramInt2 > 0) && (paramInt4 != paramInt2) && (((paramInt2 > 0) && (paramInt2 != this.niw)) || ((paramInt1 > 0) && (paramInt1 != this.nix))))))
     {
-      this.mHC.mHV = paramInt2;
-      this.mHC.mHW = paramInt1;
-      if (this.mIa != null) {
-        this.mIa.bAZ();
+      this.nia.nit = paramInt2;
+      this.nia.niu = paramInt1;
+      if (this.niy != null) {
+        this.niy.bFb();
       }
     }
     if (paramInt2 > 0) {
-      this.mHY = paramInt2;
+      this.niw = paramInt2;
     }
     if (paramInt1 > 0) {
-      this.mHZ = paramInt1;
+      this.nix = paramInt1;
     }
     AppMethodBeat.o(49964);
   }
   
   public void setOnSizeChangedListener(b paramb)
   {
-    this.mIa = paramb;
+    this.niy = paramb;
   }
   
   public void setPanelManager(c paramc)
   {
-    this.mHC = paramc;
+    this.nia = paramc;
   }
   
   static final class a
     extends q
   {
-    c mHC;
-    SparseArray<SoftReference<View>> mIb;
-    private boolean mIc;
+    private boolean niA;
+    c nia;
+    SparseArray<SoftReference<View>> niz;
     
     a()
     {
       AppMethodBeat.i(49957);
-      this.mIb = new SparseArray();
-      this.mIc = false;
+      this.niz = new SparseArray();
+      this.niA = false;
       AppMethodBeat.o(49957);
     }
     
@@ -88,7 +88,7 @@ public class AppBrandSmileyViewPager
     public final int getCount()
     {
       AppMethodBeat.i(49960);
-      int i = this.mHC.bBe().getPageCount();
+      int i = this.nia.bFg().getPageCount();
       AppMethodBeat.o(49960);
       return i;
     }
@@ -96,7 +96,7 @@ public class AppBrandSmileyViewPager
     public final int getItemPosition(Object paramObject)
     {
       AppMethodBeat.i(49958);
-      if (this.mIc)
+      if (this.niA)
       {
         AppMethodBeat.o(49958);
         return -2;
@@ -110,22 +110,22 @@ public class AppBrandSmileyViewPager
     {
       AppMethodBeat.i(49962);
       View localView = null;
-      if (this.mIb.get(paramInt) != null) {
-        localView = (View)((SoftReference)this.mIb.get(paramInt)).get();
+      if (this.niz.get(paramInt) != null) {
+        localView = (View)((SoftReference)this.niz.get(paramInt)).get();
       }
       if (localView == null)
       {
-        localView = this.mHC.bBe().vX(paramInt);
+        localView = this.nia.bFg().wC(paramInt);
         if (localView != null)
         {
           paramViewGroup.addView(localView, 0);
-          this.mIb.put(paramInt, new SoftReference(localView));
+          this.niz.put(paramInt, new SoftReference(localView));
         }
         for (;;)
         {
           AppMethodBeat.o(49962);
           return localView;
-          ac.e("MicroMsg.AppBrandSmileyViewPagerAdapter", "contentView == null!");
+          ad.e("MicroMsg.AppBrandSmileyViewPagerAdapter", "contentView == null!");
         }
       }
       if (localView.getParent() != null) {
@@ -144,16 +144,16 @@ public class AppBrandSmileyViewPager
     public final void notifyDataSetChanged()
     {
       AppMethodBeat.i(49959);
-      this.mIc = true;
+      this.niA = true;
       super.notifyDataSetChanged();
-      this.mIc = false;
+      this.niA = false;
       AppMethodBeat.o(49959);
     }
   }
   
   public static abstract interface b
   {
-    public abstract void bAZ();
+    public abstract void bFb();
   }
 }
 

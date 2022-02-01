@@ -6,176 +6,147 @@ import com.tencent.mm.plugin.report.a;
 public final class ia
   extends a
 {
-  private String dVw = "";
-  private String ecB = "";
-  private long ecC = 0L;
-  private String ecm = "";
-  private long eco = 0L;
-  private long eiT = 0L;
-  private long eiU = 0L;
-  private long eiV = 2L;
-  private long eiW = 3L;
-  private String eiX = "";
-  private String eiY = "";
-  private long eiZ = 0L;
+  public long dVd = 0L;
+  public String eqt = "";
+  public long eru = 0L;
+  public String esR = "";
+  public long esT = 0L;
+  private long eua = 0L;
+  public long eub = 0L;
+  public long euc = 0L;
+  public a eut;
+  public long euu = 0L;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(43761);
+    AppMethodBeat.i(43525);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ecm);
+    ((StringBuffer)localObject).append(this.eqt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eco);
+    ((StringBuffer)localObject).append(this.esR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eiT);
+    ((StringBuffer)localObject).append(this.eru);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecB);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVw);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecC);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eiU);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eiV);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eiW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eiX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eiY);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eiZ);
-    localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(43761);
-    return localObject;
+    if (this.eut != null) {}
+    for (int i = this.eut.value;; i = -1)
+    {
+      ((StringBuffer)localObject).append(i);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.esT);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.eua);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.dVd);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.eub);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.euc);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.euu);
+      localObject = ((StringBuffer)localObject).toString();
+      awz((String)localObject);
+      AppMethodBeat.o(43525);
+      return localObject;
+    }
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(43762);
+    AppMethodBeat.i(43526);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("AppId:").append(this.ecm);
+    ((StringBuffer)localObject).append("InstanceId:").append(this.eqt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.eco);
+    ((StringBuffer)localObject).append("AppId:").append(this.esR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EventTimeMs:").append(this.eiT);
+    ((StringBuffer)localObject).append("AppVersion:").append(this.eru);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PagePath:").append(this.ecB);
+    ((StringBuffer)localObject).append("AppState:").append(this.eut);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoUrl:").append(this.dVw);
+    ((StringBuffer)localObject).append("AppType:").append(this.esT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EventId:").append(this.ecC);
+    ((StringBuffer)localObject).append("CostTimeMs:").append(this.eua);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DeviceCount:").append(this.eiU);
+    ((StringBuffer)localObject).append("Scene:").append(this.dVd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CastResult:").append(this.eiV);
+    ((StringBuffer)localObject).append("StartTimeStampMs:").append(this.eub);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ProtocolType:").append(this.eiW);
+    ((StringBuffer)localObject).append("EndTimeStampMs:").append(this.euc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ModelName:").append(this.eiX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ManuFacturer:").append(this.eiY);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoState:").append(this.eiZ);
+    ((StringBuffer)localObject).append("isFromAndroidRecents:").append(this.euu);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43762);
+    AppMethodBeat.o(43526);
     return localObject;
-  }
-  
-  public final String getAppId()
-  {
-    return this.ecm;
   }
   
   public final int getId()
   {
-    return 18144;
+    return 16898;
   }
   
-  public final ia nC(long paramLong)
+  public final ia nx(long paramLong)
   {
-    this.eco = paramLong;
+    AppMethodBeat.i(43522);
+    this.eua = paramLong;
+    super.bf("CostTimeMs", this.eua);
+    AppMethodBeat.o(43522);
     return this;
   }
   
-  public final ia nD(long paramLong)
+  public final ia ny(long paramLong)
   {
-    AppMethodBeat.i(43756);
-    this.eiT = paramLong;
-    super.bc("EventTimeMs", this.eiT);
-    AppMethodBeat.o(43756);
+    AppMethodBeat.i(43523);
+    this.eub = paramLong;
+    super.bg("StartTimeStampMs", this.eub);
+    AppMethodBeat.o(43523);
     return this;
   }
   
-  public final ia nE(long paramLong)
+  public final ia nz(long paramLong)
   {
-    this.ecC = paramLong;
+    AppMethodBeat.i(43524);
+    this.euc = paramLong;
+    super.bg("EndTimeStampMs", this.euc);
+    AppMethodBeat.o(43524);
     return this;
   }
   
-  public final ia nF(long paramLong)
+  public static enum a
   {
-    this.eiU = paramLong;
-    return this;
-  }
-  
-  public final ia nG(long paramLong)
-  {
-    this.eiV = paramLong;
-    return this;
-  }
-  
-  public final ia nH(long paramLong)
-  {
-    this.eiZ = paramLong;
-    return this;
-  }
-  
-  public final ia pb(String paramString)
-  {
-    AppMethodBeat.i(43755);
-    this.ecm = t("AppId", paramString, true);
-    AppMethodBeat.o(43755);
-    return this;
-  }
-  
-  public final ia pc(String paramString)
-  {
-    AppMethodBeat.i(43757);
-    this.ecB = t("PagePath", paramString, true);
-    AppMethodBeat.o(43757);
-    return this;
-  }
-  
-  public final ia pd(String paramString)
-  {
-    AppMethodBeat.i(43758);
-    this.dVw = t("VideoUrl", paramString, true);
-    AppMethodBeat.o(43758);
-    return this;
-  }
-  
-  public final ia pe(String paramString)
-  {
-    AppMethodBeat.i(43759);
-    this.eiX = t("ModelName", paramString, true);
-    AppMethodBeat.o(43759);
-    return this;
-  }
-  
-  public final ia pf(String paramString)
-  {
-    AppMethodBeat.i(43760);
-    this.eiY = t("ManuFacturer", paramString, true);
-    AppMethodBeat.o(43760);
-    return this;
+    final int value;
+    
+    static
+    {
+      AppMethodBeat.i(43521);
+      euv = new a("release", 0, 1);
+      euw = new a("debug", 1, 2);
+      eux = new a("demo", 2, 3);
+      euy = new a[] { euv, euw, eux };
+      AppMethodBeat.o(43521);
+    }
+    
+    private a(int paramInt)
+    {
+      this.value = paramInt;
+    }
+    
+    public static a jf(int paramInt)
+    {
+      switch (paramInt)
+      {
+      default: 
+        return null;
+      case 1: 
+        return euv;
+      case 2: 
+        return euw;
+      }
+      return eux;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ia
  * JD-Core Version:    0.7.0.1
  */

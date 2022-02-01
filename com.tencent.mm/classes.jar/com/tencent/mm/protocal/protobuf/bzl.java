@@ -3,71 +3,57 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bzl
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int EeA;
-  public String Eou;
-  public int EqS;
-  public int FileSize;
-  public int For;
-  public int Fos;
-  public String Fot;
-  public int Fou;
-  public String Fov;
+  public String FVn;
+  public String FuL;
+  public String nDo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32360);
+    AppMethodBeat.i(101825);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Eou != null) {
-        paramVarArgs.d(1, this.Eou);
+      if (this.FuL != null) {
+        paramVarArgs.d(1, this.FuL);
       }
-      paramVarArgs.aR(2, this.For);
-      paramVarArgs.aR(3, this.Fos);
-      paramVarArgs.aR(4, this.EeA);
-      if (this.Fot != null) {
-        paramVarArgs.d(5, this.Fot);
+      if (this.nDo != null) {
+        paramVarArgs.d(2, this.nDo);
       }
-      paramVarArgs.aR(6, this.FileSize);
-      paramVarArgs.aR(7, this.Fou);
-      paramVarArgs.aR(8, this.EqS);
-      if (this.Fov != null) {
-        paramVarArgs.d(9, this.Fov);
+      if (this.FVn != null) {
+        paramVarArgs.d(3, this.FVn);
       }
-      AppMethodBeat.o(32360);
+      AppMethodBeat.o(101825);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Eou == null) {
-        break label613;
+      if (this.FuL == null) {
+        break label334;
       }
     }
-    label613:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Eou) + 0;; paramInt = 0)
+    label334:
+    for (int i = f.a.a.b.b.a.e(1, this.FuL) + 0;; i = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bx(2, this.For) + f.a.a.b.b.a.bx(3, this.Fos) + f.a.a.b.b.a.bx(4, this.EeA);
       paramInt = i;
-      if (this.Fot != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.Fot);
+      if (this.nDo != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.nDo);
       }
-      i = paramInt + f.a.a.b.b.a.bx(6, this.FileSize) + f.a.a.b.b.a.bx(7, this.Fou) + f.a.a.b.b.a.bx(8, this.EqS);
-      paramInt = i;
-      if (this.Fov != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.Fov);
+      i = paramInt;
+      if (this.FVn != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.FVn);
       }
-      AppMethodBeat.o(32360);
-      return paramInt;
+      AppMethodBeat.o(101825);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(32360);
+        AppMethodBeat.o(101825);
         return 0;
       }
       if (paramInt == 3)
@@ -77,46 +63,22 @@ public final class bzl
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32360);
+          AppMethodBeat.o(101825);
           return -1;
         case 1: 
-          localbzl.Eou = locala.LVo.readString();
-          AppMethodBeat.o(32360);
+          localbzl.FuL = locala.NPN.readString();
+          AppMethodBeat.o(101825);
           return 0;
         case 2: 
-          localbzl.For = locala.LVo.xF();
-          AppMethodBeat.o(32360);
-          return 0;
-        case 3: 
-          localbzl.Fos = locala.LVo.xF();
-          AppMethodBeat.o(32360);
-          return 0;
-        case 4: 
-          localbzl.EeA = locala.LVo.xF();
-          AppMethodBeat.o(32360);
-          return 0;
-        case 5: 
-          localbzl.Fot = locala.LVo.readString();
-          AppMethodBeat.o(32360);
-          return 0;
-        case 6: 
-          localbzl.FileSize = locala.LVo.xF();
-          AppMethodBeat.o(32360);
-          return 0;
-        case 7: 
-          localbzl.Fou = locala.LVo.xF();
-          AppMethodBeat.o(32360);
-          return 0;
-        case 8: 
-          localbzl.EqS = locala.LVo.xF();
-          AppMethodBeat.o(32360);
+          localbzl.nDo = locala.NPN.readString();
+          AppMethodBeat.o(101825);
           return 0;
         }
-        localbzl.Fov = locala.LVo.readString();
-        AppMethodBeat.o(32360);
+        localbzl.FVn = locala.NPN.readString();
+        AppMethodBeat.o(101825);
         return 0;
       }
-      AppMethodBeat.o(32360);
+      AppMethodBeat.o(101825);
       return -1;
     }
   }

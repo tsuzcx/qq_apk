@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.cdndownloader.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class a
 {
-  private static volatile ao cEw;
-  private static final Object mnR;
+  private static volatile ap cPB;
+  private static final Object mOt;
   
   static
   {
     AppMethodBeat.i(120817);
-    mnR = new Object();
+    mOt = new Object();
     AppMethodBeat.o(120817);
   }
   
-  public static ao bUw()
+  public static ap bZb()
   {
     AppMethodBeat.i(184035);
-    if (cEw == null) {}
-    synchronized (mnR)
+    if (cPB == null) {}
+    synchronized (mOt)
     {
-      if (cEw == null) {
-        cEw = new ao("CDNDownloader#WorkThread");
+      if (cPB == null) {
+        cPB = new ap("CDNDownloader#WorkThread");
       }
-      ??? = cEw;
+      ??? = cPB;
       AppMethodBeat.o(184035);
       return ???;
     }

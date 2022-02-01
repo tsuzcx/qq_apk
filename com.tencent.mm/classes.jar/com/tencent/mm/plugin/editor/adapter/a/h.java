@@ -14,32 +14,32 @@ import com.tencent.mm.plugin.editor.model.a.a;
 import com.tencent.mm.plugin.editor.model.a.l;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
 import com.tencent.mm.plugin.fav.ui.e;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.g;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 import com.tencent.mm.vfs.i;
 
 public final class h
   extends d
 {
-  public ImageView oPl;
-  public MMPinProgressBtn oPm;
-  public ImageView oPn;
-  private ImageView oPo;
+  public ImageView psT;
+  public MMPinProgressBtn psU;
+  public ImageView psV;
+  private ImageView psW;
   
   public h(View paramView, j paramj)
   {
     super(paramView, paramj);
     AppMethodBeat.i(181663);
-    this.oPl = ((ImageView)paramView.findViewById(2131305196));
-    this.oPm = ((MMPinProgressBtn)paramView.findViewById(2131306379));
-    this.oPn = ((ImageView)paramView.findViewById(2131306398));
-    this.oPl.setImageResource(2131691166);
-    this.oPo = ((ImageView)paramView.findViewById(2131306355));
-    this.iRV.setVisibility(8);
-    this.oON.setVisibility(8);
-    this.oPo.setVisibility(8);
-    this.oOR.setTag(this);
-    this.oOR.setOnClickListener(this.oPc);
+    this.psT = ((ImageView)paramView.findViewById(2131305196));
+    this.psU = ((MMPinProgressBtn)paramView.findViewById(2131306379));
+    this.psV = ((ImageView)paramView.findViewById(2131306398));
+    this.psT.setImageResource(2131691166);
+    this.psW = ((ImageView)paramView.findViewById(2131306355));
+    this.jld.setVisibility(8);
+    this.psv.setVisibility(8);
+    this.psW.setVisibility(8);
+    this.psz.setTag(this);
+    this.psz.setOnClickListener(this.psK);
     AppMethodBeat.o(181663);
   }
   
@@ -47,14 +47,14 @@ public final class h
   {
     AppMethodBeat.i(181664);
     l locall = (l)parama;
-    Object localObject3 = b.Xe(locall.thumbPath);
+    Object localObject3 = b.aaL(locall.thumbPath);
     Object localObject1 = localObject3;
     if (localObject3 == null)
     {
       localObject1 = localObject3;
-      if (i.eA(locall.dpK))
+      if (i.fv(locall.dBx))
       {
-        localObject3 = e.acS(locall.dpK);
+        localObject3 = e.agH(locall.dBx);
         localObject1 = localObject3;
         if (localObject3 == null) {}
       }
@@ -63,24 +63,24 @@ public final class h
     {
       try
       {
-        if (i.eA(locall.thumbPath)) {
+        if (i.fv(locall.thumbPath)) {
           i.deleteFile(locall.thumbPath);
         }
-        f.a((Bitmap)localObject3, 60, Bitmap.CompressFormat.JPEG, locall.thumbPath, false);
+        g.a((Bitmap)localObject3, 60, Bitmap.CompressFormat.JPEG, locall.thumbPath, false);
         localObject1 = localObject3;
         if (localObject1 == null) {
           break label194;
         }
-        localObject3 = this.oPn.getLayoutParams();
+        localObject3 = this.psV.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject3).width = -1;
         ((ViewGroup.LayoutParams)localObject3).height = -1;
-        this.oPn.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-        this.oPn.setImageBitmap(localObject1);
-        this.oPn.setBackground(null);
-        if (!parama.oQc) {
+        this.psV.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+        this.psV.setImageBitmap(localObject1);
+        this.psV.setBackground(null);
+        if (!parama.ptM) {
           break label270;
         }
-        this.oPo.setVisibility(0);
+        this.psW.setVisibility(0);
         super.a(parama, paramInt1, paramInt2);
         AppMethodBeat.o(181664);
         return;
@@ -91,26 +91,26 @@ public final class h
       }
       continue;
       label194:
-      Object localObject2 = this.oPn.getResources().getDisplayMetrics();
+      Object localObject2 = this.psV.getResources().getDisplayMetrics();
       float f = ((DisplayMetrics)localObject2).density;
-      localObject3 = this.oPn.getLayoutParams();
+      localObject3 = this.psV.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject3).width = (((DisplayMetrics)localObject2).widthPixels - (int)(f * 40.0F + 0.5F));
       ((ViewGroup.LayoutParams)localObject3).height = (((ViewGroup.LayoutParams)localObject3).width * 52 / 68);
-      this.oPn.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+      this.psV.setLayoutParams((ViewGroup.LayoutParams)localObject3);
       continue;
       label270:
-      this.oPo.setVisibility(8);
+      this.psW.setVisibility(8);
     }
   }
   
-  public final int bZp()
+  public final int cdT()
   {
     return 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a.h
  * JD-Core Version:    0.7.0.1
  */

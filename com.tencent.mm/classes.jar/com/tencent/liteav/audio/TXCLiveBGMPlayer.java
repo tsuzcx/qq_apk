@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Looper;
 import com.tencent.liteav.audio.impl.TXCTraeJNI;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
@@ -27,7 +26,7 @@ public class TXCLiveBGMPlayer
   static
   {
     AppMethodBeat.i(16236);
-    d.f();
+    com.tencent.liteav.basic.util.f.f();
     TAG = "AudioCenter:" + TXCLiveBGMPlayer.class.getSimpleName();
     AppMethodBeat.o(16236);
   }

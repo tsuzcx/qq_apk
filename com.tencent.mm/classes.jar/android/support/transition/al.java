@@ -6,7 +6,7 @@ import java.util.Map;
 public abstract class al
   extends s
 {
-  private static final String[] Cl = { "android:visibilityPropagation:visibility", "android:visibilityPropagation:center" };
+  private static final String[] Ed = { "android:visibilityPropagation:visibility", "android:visibilityPropagation:center" };
   
   static int a(u paramu, int paramInt)
   {
@@ -53,7 +53,7 @@ public abstract class al
   
   public final String[] getPropagationProperties()
   {
-    return Cl;
+    return Ed;
   }
 }
 

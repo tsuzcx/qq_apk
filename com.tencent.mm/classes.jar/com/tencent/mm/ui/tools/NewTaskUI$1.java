@@ -1,16 +1,16 @@
 package com.tencent.mm.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kz;
+import com.tencent.mm.g.a.li;
 import com.tencent.mm.sdk.b.c;
 
 final class NewTaskUI$1
-  extends c<kz>
+  extends c<li>
 {
   NewTaskUI$1(NewTaskUI paramNewTaskUI)
   {
     AppMethodBeat.i(161581);
-    this.__eventId = kz.class.getName().hashCode();
+    this.__eventId = li.class.getName().hashCode();
     AppMethodBeat.o(161581);
   }
 }

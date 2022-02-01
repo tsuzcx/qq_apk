@@ -2,29 +2,29 @@ package com.tencent.mm.plugin.emojicapture.proxy;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvoiceaddr.g.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 import d.n.n;
 import d.v;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$startRemote$uiCallback$1", "Lcom/tencent/mm/modelvoiceaddr/SceneVoiceInputAddr$UICallback;", "onError", "", "errType", "", "errCode", "localCode", "voiceid", "", "onRecognizeFinish", "onRecordFin", "onRes", "lst", "", "", "voiceIdSet", "", "([Ljava/lang/String;Ljava/util/List;)V", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$startRemote$uiCallback$1", "Lcom/tencent/mm/modelvoiceaddr/SceneVoiceInputAddr$UICallback;", "onError", "", "errType", "", "errCode", "localCode", "voiceid", "", "onRecognizeFinish", "onRecordFin", "onRes", "lst", "", "", "voiceIdSet", "", "([Ljava/lang/String;Ljava/util/List;)V", "plugin-emojicapture_release"})
 public final class VoiceInputProxy$c
   implements g.b
 {
-  public final void aKH()
+  public final void aNQ()
   {
     AppMethodBeat.i(423);
-    ac.i(VoiceInputProxy.access$getTAG$p(this.pqE), "onRecordFin");
+    ad.i(VoiceInputProxy.access$getTAG$p(this.pUk), "onRecordFin");
     AppMethodBeat.o(423);
   }
   
-  public final void aKL()
+  public final void aNU()
   {
     AppMethodBeat.i(424);
-    ac.i(VoiceInputProxy.access$getTAG$p(this.pqE), "onRecognizeFinish");
-    this.pqE.CLIENT_CALL("onRecognizeFinish", new Object[0]);
+    ad.i(VoiceInputProxy.access$getTAG$p(this.pUk), "onRecognizeFinish");
+    this.pUk.CLIENT_CALL("onRecognizeFinish", new Object[0]);
     AppMethodBeat.o(424);
   }
   
@@ -55,8 +55,8 @@ public final class VoiceInputProxy$c
         if (i != 0)
         {
           paramList = paramArrayOfString[0];
-          ac.i(VoiceInputProxy.access$getTAG$p(this.pqE), "onRes remote ".concat(String.valueOf(paramList)));
-          i = n.f((CharSequence)paramList, "。");
+          ad.i(VoiceInputProxy.access$getTAG$p(this.pUk), "onRes remote ".concat(String.valueOf(paramList)));
+          i = n.g((CharSequence)paramList, "。");
           paramArrayOfString = paramList;
           if (i >= 0)
           {
@@ -75,9 +75,9 @@ public final class VoiceInputProxy$c
               continue;
             }
             paramArrayOfString = paramList.substring(0, i);
-            k.g(paramArrayOfString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+            p.g(paramArrayOfString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
           }
-          this.pqE.CLIENT_CALL("onRes", new Object[] { paramArrayOfString });
+          this.pUk.CLIENT_CALL("onRes", new Object[] { paramArrayOfString });
         }
       }
     }
@@ -88,7 +88,7 @@ public final class VoiceInputProxy$c
   public final void c(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     AppMethodBeat.i(422);
-    ac.w(VoiceInputProxy.access$getTAG$p(this.pqE), "onError " + paramInt1 + ' ' + paramInt2 + ' ' + paramInt3 + ' ' + paramLong);
+    ad.w(VoiceInputProxy.access$getTAG$p(this.pUk), "onError " + paramInt1 + ' ' + paramInt2 + ' ' + paramInt3 + ' ' + paramLong);
     AppMethodBeat.o(422);
   }
 }

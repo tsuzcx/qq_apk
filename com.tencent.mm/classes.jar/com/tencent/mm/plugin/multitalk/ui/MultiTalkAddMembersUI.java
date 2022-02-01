@@ -5,21 +5,23 @@ import android.app.KeyguardManager;
 import android.content.Context;
 import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitalk.model.p;
+import com.tencent.mm.plugin.multitalk.model.o;
+import com.tencent.mm.plugin.multitalk.model.z;
+import com.tencent.mm.plugin.multitalk.ui.widget.f;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 
 public class MultiTalkAddMembersUI
   extends MultiTalkSelectContactUI
 {
-  private boolean uYO = false;
+  private boolean wdM = false;
   
-  public final void dax()
+  public final void djK()
   {
     AppMethodBeat.i(178894);
-    this.uZb = false;
-    super.dax();
+    this.wed = false;
+    super.djK();
     AppMethodBeat.o(178894);
   }
   
@@ -27,10 +29,10 @@ public class MultiTalkAddMembersUI
   {
     AppMethodBeat.i(114651);
     super.initView();
-    this.uFo.setBackgroundResource(2131100208);
-    MultiSelectContactView localMultiSelectContactView = this.uFo;
-    int i = com.tencent.mm.plugin.multitalk.ui.widget.f.vat;
-    localMultiSelectContactView.setPadding(i, i, com.tencent.mm.plugin.multitalk.ui.widget.f.vat, 0);
+    this.vIo.setBackgroundResource(2131100208);
+    MultiSelectContactView localMultiSelectContactView = this.vIo;
+    int i = f.wfC;
+    localMultiSelectContactView.setPadding(i, i, f.wfC, 0);
     AppMethodBeat.o(114651);
   }
   
@@ -38,15 +40,15 @@ public class MultiTalkAddMembersUI
   {
     AppMethodBeat.i(178895);
     super.onPause();
-    KeyguardManager localKeyguardManager = (KeyguardManager)ai.getContext().getSystemService("keyguard");
-    PowerManager localPowerManager = (PowerManager)ai.getContext().getSystemService("power");
+    KeyguardManager localKeyguardManager = (KeyguardManager)aj.getContext().getSystemService("keyguard");
+    PowerManager localPowerManager = (PowerManager)aj.getContext().getSystemService("power");
     boolean bool1 = localKeyguardManager.inKeyguardRestrictedInputMode();
     boolean bool2 = hasWindowFocus();
     boolean bool3 = localPowerManager.isScreenOn();
     if (((bool2) || (!bool1)) && (bool3)) {}
     for (bool1 = true;; bool1 = false)
     {
-      this.uYO = bool1;
+      this.wdM = bool1;
       AppMethodBeat.o(178895);
       return;
     }
@@ -56,11 +58,11 @@ public class MultiTalkAddMembersUI
   {
     AppMethodBeat.i(178896);
     super.onStop();
-    if (this.uZb)
+    if (this.wed)
     {
-      this.uZb = false;
-      dax();
-      p.dgx().ow(false);
+      this.wed = false;
+      djK();
+      z.dqx().oT(false);
     }
     AppMethodBeat.o(178896);
   }

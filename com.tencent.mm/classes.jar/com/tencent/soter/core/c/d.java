@@ -5,12 +5,12 @@ import junit.framework.Assert;
 
 public final class d
 {
-  private static c JWt;
+  private static c LQo;
   
   static
   {
     AppMethodBeat.i(88658);
-    JWt = new d.a((byte)0);
+    LQo = new d.a((byte)0);
     AppMethodBeat.o(88658);
   }
   
@@ -21,7 +21,7 @@ public final class d
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      JWt = paramc;
+      LQo = paramc;
       AppMethodBeat.o(88651);
       return;
     }
@@ -30,42 +30,42 @@ public final class d
   public static void b(String paramString1, Throwable paramThrowable, String paramString2)
   {
     AppMethodBeat.i(88657);
-    JWt.b(paramString1, paramThrowable, paramString2);
+    LQo.b(paramString1, paramThrowable, paramString2);
     AppMethodBeat.o(88657);
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(88653);
-    JWt.d(paramString1, paramString2, paramVarArgs);
+    LQo.d(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(88653);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(88656);
-    JWt.e(paramString1, paramString2, paramVarArgs);
+    LQo.e(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(88656);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(88654);
-    JWt.i(paramString1, paramString2, paramVarArgs);
+    LQo.i(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(88654);
   }
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(88652);
-    JWt.v(paramString1, paramString2, paramVarArgs);
+    LQo.v(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(88652);
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(88655);
-    JWt.w(paramString1, paramString2, paramVarArgs);
+    LQo.w(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(88655);
   }
 }

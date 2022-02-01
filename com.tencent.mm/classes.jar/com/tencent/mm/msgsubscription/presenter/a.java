@@ -1,33 +1,33 @@
 package com.tencent.mm.msgsubscription.presenter;
 
 import android.app.Activity;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/presenter/BaseSubscribeMsgSettingPagePresenter;", "Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingPagePresenter;", "()V", "view", "Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingView;", "getView", "()Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingView;", "setView", "(Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingView;)V", "onActivityCreated", "", "activity", "Landroid/app/Activity;", "onActivityDestroyed", "onActivityPaused", "onActivityResumed", "onActivityStarted", "onActivityStopped", "onFinish", "plugin-comm_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/presenter/BaseSubscribeMsgSettingPagePresenter;", "Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingPagePresenter;", "()V", "view", "Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingView;", "getView", "()Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingView;", "setView", "(Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingView;)V", "onActivityCreated", "", "activity", "Landroid/app/Activity;", "onActivityDestroyed", "onActivityPaused", "onActivityResumed", "onActivityStarted", "onActivityStopped", "onFinish", "plugin-comm_release"})
 public abstract class a
   implements b
 {
-  public c ihD;
+  public c iAX;
   
   public void onActivityCreated(Activity paramActivity)
   {
-    k.h(paramActivity, "activity");
+    p.h(paramActivity, "activity");
   }
   
   public void onActivityPaused(Activity paramActivity)
   {
-    k.h(paramActivity, "activity");
+    p.h(paramActivity, "activity");
   }
   
   public void onActivityResumed(Activity paramActivity)
   {
-    k.h(paramActivity, "activity");
+    p.h(paramActivity, "activity");
   }
   
   public void y(Activity paramActivity)
   {
-    k.h(paramActivity, "activity");
+    p.h(paramActivity, "activity");
   }
 }
 

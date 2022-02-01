@@ -1,134 +1,80 @@
 package com.tencent.mm.plugin.sns.model;
 
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.bb;
-import com.tencent.mm.g.a.ua;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.plugin.sns.model.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.Date;
+import com.tencent.mm.b.g;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class ao
 {
-  boolean hZD;
-  boolean hZE;
-  long xVt;
-  private boolean xVu;
-  int xVv;
-  int xVw;
-  c<ua> xVx;
-  c xVy;
-  c xVz;
+  private static final Map<String, String> zlo;
   
-  ao()
+  static
   {
-    AppMethodBeat.i(95927);
-    this.xVt = 0L;
-    this.hZD = false;
-    this.hZE = false;
-    this.xVu = false;
-    this.xVv = 0;
-    this.xVw = 1440;
-    this.xVx = new c()
-    {
-      private boolean dIy()
-      {
-        AppMethodBeat.i(95923);
-        ao localao = ao.this;
-        try
-        {
-          if (localao.dIx())
-          {
-            Date localDate = new Date();
-            i = localDate.getHours();
-            i = localDate.getMinutes() + i * 60;
-            if ((i >= localao.xVv) && (i <= localao.xVw))
-            {
-              ac.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked,  %d in [%d, %d]", new Object[] { Integer.valueOf(i), Integer.valueOf(localao.xVv), Integer.valueOf(localao.xVw) });
-              AppMethodBeat.o(95923);
-              return false;
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            int i = com.tencent.mm.m.g.ZY().getInt("SnsImgPreLoadingSmallImage", 1);
-            int k = com.tencent.mm.m.g.ZY().getInt("SnsImgPreLoadingBigImage", 1);
-            int m = a.dJh();
-            int j = a.dJg();
-            ac.i("MicroMsg.SnsPreTimelineService", " preloadingSamllImage %d preloadingBigImage %d preloadingVideo %d preloadingInterval %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j) });
-            if ((i > 0) || (k > 0) || (m > 0))
-            {
-              i = j;
-              if (j <= 0) {
-                i = 1200;
-              }
-              if ((localao.hZD) || (localao.hZE) || (bs.pN(localao.xVt) < i))
-              {
-                ac.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked,  isInChatting:%b, isInSnsTimeline:%b", new Object[] { Boolean.valueOf(localao.hZD), Boolean.valueOf(localao.hZE) });
-              }
-              else if (!x.atI("@__weixintimtline"))
-              {
-                ac.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked: doing timeline");
-              }
-              else
-              {
-                com.tencent.mm.kernel.g.agS();
-                if (!com.tencent.mm.kernel.g.agQ().ghe.a(new s(), 0))
-                {
-                  ac.i("MicroMsg.SnsPreTimelineService", "newObjectSync triggered");
-                  x.atJ("@__weixintimtline");
-                }
-                localao.xVt = bs.aNx();
-              }
-            }
-          }
-        }
-      }
-    };
-    this.xVy = new c() {};
-    this.xVz = new c() {};
-    AppMethodBeat.o(95927);
+    AppMethodBeat.i(95922);
+    zlo = new HashMap();
+    AppMethodBeat.o(95922);
   }
   
-  final boolean dIx()
+  public static String jo(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(95928);
-    Object localObject = com.tencent.mm.m.g.ZY().getValue("SnsImgPreLoadingTimeLimit");
-    ac.i("MicroMsg.SnsPreTimelineService", "preloadLimit:%s", new Object[] { localObject });
-    if (bs.isNullOrNil((String)localObject))
+    AppMethodBeat.i(95920);
+    if ((paramString1 == null) || (paramString2 == null))
     {
-      AppMethodBeat.o(95928);
-      return false;
+      AppMethodBeat.o(95920);
+      return "";
     }
+    boolean bool = Looper.getMainLooper().equals(Looper.myLooper());
+    if ((bool) && (zlo.containsKey(paramString1 + paramString2)))
+    {
+      str = (String)zlo.get(paramString1 + paramString2);
+      if (!bt.isNullOrNil(str))
+      {
+        AppMethodBeat.o(95920);
+        return str;
+      }
+    }
+    String str = g.getMessageDigest(paramString2.getBytes());
+    StringBuffer localStringBuffer = new StringBuffer(paramString1);
+    if (str.length() > 0)
+    {
+      localStringBuffer.append(str.charAt(0));
+      localStringBuffer.append("/");
+    }
+    if (str.length() >= 2)
+    {
+      localStringBuffer.append(str.charAt(1));
+      localStringBuffer.append("/");
+    }
+    if (bool) {
+      zlo.put(paramString1 + paramString2, localStringBuffer.toString());
+    }
+    paramString1 = localStringBuffer.toString();
+    AppMethodBeat.o(95920);
+    return paramString1;
+  }
+  
+  public static void release()
+  {
     try
     {
-      localObject = ((String)localObject).split("-");
-      String[] arrayOfString = localObject[0].split(":");
-      int i = bs.aLy(arrayOfString[0]);
-      this.xVv = (bs.aLy(arrayOfString[1]) + i * 60);
-      localObject = localObject[1].split(":");
-      i = bs.aLy(localObject[0]);
-      this.xVw = (bs.aLy(localObject[1]) + i * 60);
-      ac.d("MicroMsg.SnsPreTimelineService", "preloadLimit:%d-%d", new Object[] { Integer.valueOf(this.xVv), Integer.valueOf(this.xVw) });
-      AppMethodBeat.o(95928);
-      return true;
+      AppMethodBeat.i(95921);
+      zlo.clear();
+      AppMethodBeat.o(95921);
+      return;
     }
-    catch (Exception localException)
+    finally
     {
-      AppMethodBeat.o(95928);
+      localObject = finally;
+      throw localObject;
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ao
  * JD-Core Version:    0.7.0.1
  */

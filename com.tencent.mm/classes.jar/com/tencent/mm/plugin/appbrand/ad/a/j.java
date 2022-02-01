@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.ad.a;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.service.c;
 
 public final class j
-  extends a<q>
+  extends a<c>
 {
   public static final int CTRL_INDEX = 757;
   public static final String NAME = "splashAdFirstStepViewLayoutStateChange";

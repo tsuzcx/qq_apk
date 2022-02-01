@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.avatar;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.p;
 import com.tencent.mm.kernel.api.bucket.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
@@ -14,37 +14,37 @@ public final class c
   extends t
   implements b
 {
-  private static c mRQ;
+  private static c nsp;
   
   private c()
   {
     super(p.class);
   }
   
-  public static c bCH()
+  public static c bGP()
   {
     try
     {
       AppMethodBeat.i(151426);
-      if (mRQ == null) {
-        mRQ = new c();
+      if (nsp == null) {
+        nsp = new c();
       }
-      c localc = mRQ;
+      c localc = nsp;
       AppMethodBeat.o(151426);
       return localc;
     }
     finally {}
   }
   
-  public static String bCI()
+  public static String bGQ()
   {
     AppMethodBeat.i(151428);
-    String str = g.agR().cachePath + "avatar/";
+    String str = g.ajC().cachePath + "avatar/";
     AppMethodBeat.o(151428);
     return str;
   }
   
-  public final List<String> agY()
+  public final List<String> ajJ()
   {
     AppMethodBeat.i(151427);
     LinkedList localLinkedList = new LinkedList();
@@ -55,7 +55,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.avatar.c
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.i;
 import com.tencent.mm.ui.base.q;
@@ -18,10 +18,10 @@ import com.tencent.mm.ui.base.q;
 public final class g
   extends q
 {
-  private TextView Gpj;
+  private TextView IaW;
   private View mContentView;
   private Context mContext;
-  private ProgressBar msX;
+  private ProgressBar mTD;
   
   private g(Context paramContext)
   {
@@ -32,8 +32,8 @@ public final class g
     if (this.mContentView == null)
     {
       this.mContentView = View.inflate(this.mContext, 2131496014, null);
-      this.Gpj = ((TextView)this.mContentView.findViewById(2131302339));
-      this.msX = ((ProgressBar)this.mContentView.findViewById(2131302338));
+      this.IaW = ((TextView)this.mContentView.findViewById(2131302339));
+      this.mTD = ((ProgressBar)this.mContentView.findViewById(2131302338));
       setCanceledOnTouchOutside(true);
     }
     AppMethodBeat.o(73061);
@@ -113,7 +113,7 @@ public final class g
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.WalletProgressDialog", "dismiss exception, e = " + localException.getMessage());
+      ad.e("MicroMsg.WalletProgressDialog", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(73070);
     }
   }
@@ -143,13 +143,13 @@ public final class g
   public final void setMessage(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(73064);
-    this.Gpj.setText(paramCharSequence);
+    this.IaW.setText(paramCharSequence);
     AppMethodBeat.o(73064);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.g
  * JD-Core Version:    0.7.0.1
  */

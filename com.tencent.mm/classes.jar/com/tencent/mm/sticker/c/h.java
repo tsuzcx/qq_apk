@@ -1,12 +1,12 @@
 package com.tencent.mm.sticker.c;
 
-import com.tencent.mm.protocal.protobuf.aza;
+import com.tencent.mm.protocal.protobuf.bde;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/task/GetLensListCallback;", "", "onResult", "", "errType", "", "errCode", "response", "Lcom/tencent/mm/protocal/protobuf/GetLensListResponse;", "plugin-sticker_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/task/GetLensListCallback;", "", "onResult", "", "errType", "", "errCode", "response", "Lcom/tencent/mm/protocal/protobuf/GetLensListResponse;", "plugin-sticker_release"})
 public abstract interface h
 {
-  public abstract void a(int paramInt1, int paramInt2, aza paramaza);
+  public abstract void a(int paramInt1, int paramInt2, bde parambde);
 }
 
 

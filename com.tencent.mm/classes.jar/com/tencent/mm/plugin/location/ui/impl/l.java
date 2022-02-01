@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.location.ui.impl;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.pw;
+import com.tencent.mm.protocal.protobuf.rb;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class l
 {
-  private static l ufO;
-  List<pw> tWZ;
+  private static l viy;
+  List<rb> uZI;
   
   static
   {
     AppMethodBeat.i(56227);
-    ufO = new l();
+    viy = new l();
     AppMethodBeat.o(56227);
   }
   
   private l()
   {
     AppMethodBeat.i(56226);
-    this.tWZ = new ArrayList(8);
+    this.uZI = new ArrayList(8);
     AppMethodBeat.o(56226);
   }
   
-  public static l cYp()
+  public static l dhB()
   {
-    return ufO;
+    return viy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.l
  * JD-Core Version:    0.7.0.1
  */

@@ -2,49 +2,49 @@ package kotlinx.coroutines.internal;
 
 import d.l;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
-import kotlinx.coroutines.al;
+import kotlinx.coroutines.am;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/internal/AtomicOp;", "T", "<init>", "()V", "affected", "", "failure", "", "complete", "(Ljava/lang/Object;Ljava/lang/Object;)V", "decision", "decide", "(Ljava/lang/Object;)Ljava/lang/Object;", "perform", "prepare", "getAtomicOp", "()Lkotlinx/coroutines/internal/AtomicOp;", "atomicOp", "", "isDecided", "()Z", "", "getOpSequence", "()J", "opSequence", "kotlinx-coroutines-core", "Lkotlinx/coroutines/internal/OpDescriptor;"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/internal/AtomicOp;", "T", "<init>", "()V", "affected", "", "failure", "", "complete", "(Ljava/lang/Object;Ljava/lang/Object;)V", "decision", "decide", "(Ljava/lang/Object;)Ljava/lang/Object;", "perform", "prepare", "getAtomicOp", "()Lkotlinx/coroutines/internal/AtomicOp;", "atomicOp", "", "isDecided", "()Z", "", "getOpSequence", "()J", "opSequence", "kotlinx-coroutines-core", "Lkotlinx/coroutines/internal/OpDescriptor;"})
 public abstract class c<T>
-  extends o
+  extends p
 {
-  private static final AtomicReferenceFieldUpdater LSC = AtomicReferenceFieldUpdater.newUpdater(c.class, Object.class, "_consensus");
-  private volatile Object _consensus = b.gew();
+  private static final AtomicReferenceFieldUpdater NJy = AtomicReferenceFieldUpdater.newUpdater(c.class, Object.class, "_consensus");
+  private volatile Object _consensus = b.gvV();
   
-  public abstract void V(T paramT, Object paramObject);
+  public abstract void X(T paramT, Object paramObject);
   
-  public final Object fT(Object paramObject)
+  public final Object fW(Object paramObject)
   {
     Object localObject2 = this._consensus;
     Object localObject1 = localObject2;
-    if (localObject2 == b.gew())
+    if (localObject2 == b.gvV())
     {
-      localObject1 = gej();
-      if (al.gdD())
+      localObject1 = gvJ();
+      if (am.gvd())
       {
-        if (localObject1 != b.gew()) {}
+        if (localObject1 != b.gvV()) {}
         for (int i = 1; i == 0; i = 0) {
           throw ((Throwable)new AssertionError());
         }
       }
       localObject2 = this._consensus;
-      if (localObject2 == b.gew()) {
+      if (localObject2 == b.gvV()) {
         break label82;
       }
       localObject1 = localObject2;
     }
     for (;;)
     {
-      V(paramObject, localObject1);
+      X(paramObject, localObject1);
       return localObject1;
       label82:
-      if (!LSC.compareAndSet(this, b.gew(), localObject1)) {
+      if (!NJy.compareAndSet(this, b.gvV(), localObject1)) {
         localObject1 = this._consensus;
       }
     }
   }
   
-  public abstract Object gej();
+  public abstract Object gvJ();
 }
 
 

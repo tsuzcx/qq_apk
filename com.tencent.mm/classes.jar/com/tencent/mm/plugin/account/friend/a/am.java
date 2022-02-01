@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.protocal.protobuf.cvc;
-import com.tencent.mm.protocal.protobuf.cvd;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.protocal.protobuf.dao;
+import com.tencent.mm.protocal.protobuf.dap;
 
 public final class am
   extends n
   implements k
 {
-  private g callback;
+  private f callback;
   private final b rr;
   
   public am(String paramString)
   {
     AppMethodBeat.i(131142);
     b.a locala = new b.a();
-    locala.hvt = new cvc();
-    locala.hvu = new cvd();
+    locala.hNM = new dao();
+    locala.hNN = new dap();
     locala.uri = "/cgi-bin/micromsg-bin/sendverifyemail";
     locala.funcId = 108;
-    locala.reqCmdId = 43;
+    locala.hNO = 43;
     locala.respCmdId = 1000000043;
-    this.rr = locala.aAz();
-    ((cvc)this.rr.hvr.hvw).EuE = new crm().aJV(paramString);
+    this.rr = locala.aDC();
+    ((dao)this.rr.hNK.hNQ).GbY = new cwt().aPy(paramString);
     AppMethodBeat.o(131142);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(131143);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(131143);
     return i;
@@ -59,7 +59,7 @@ public final class am
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.am
  * JD-Core Version:    0.7.0.1
  */

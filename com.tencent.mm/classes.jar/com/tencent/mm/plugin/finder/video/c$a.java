@@ -2,19 +2,21 @@ package com.tencent.mm.plugin.finder.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"valid", "", "size", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"valid", "", "size", "invoke"})
 final class c$a
-  extends d.g.b.l
+  extends q
   implements b<Float, Float>
 {
-  public static final a rQM;
+  public static final a sNm;
   
   static
   {
-    AppMethodBeat.i(203700);
-    rQM = new a();
-    AppMethodBeat.o(203700);
+    AppMethodBeat.i(204609);
+    sNm = new a();
+    AppMethodBeat.o(204609);
   }
   
   c$a()
@@ -22,7 +24,7 @@ final class c$a
     super(1);
   }
   
-  public static float ai(float paramFloat)
+  public static float al(float paramFloat)
   {
     float f;
     if (paramFloat > 1.0F) {
@@ -38,7 +40,7 @@ final class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.c.a
  * JD-Core Version:    0.7.0.1
  */

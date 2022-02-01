@@ -6,15 +6,15 @@ import android.text.TextUtils;
 final class g$a
   implements d.b
 {
-  private int Kq;
-  private int Kr;
+  private int Mg;
+  private int Mh;
   private String mPackageName;
   
   g$a(String paramString, int paramInt1, int paramInt2)
   {
     this.mPackageName = paramString;
-    this.Kq = paramInt1;
-    this.Kr = paramInt2;
+    this.Mg = paramInt1;
+    this.Mh = paramInt2;
   }
   
   public final boolean equals(Object paramObject)
@@ -27,13 +27,13 @@ final class g$a
         return false;
       }
       paramObject = (a)paramObject;
-    } while ((TextUtils.equals(this.mPackageName, paramObject.mPackageName)) && (this.Kq == paramObject.Kq) && (this.Kr == paramObject.Kr));
+    } while ((TextUtils.equals(this.mPackageName, paramObject.mPackageName)) && (this.Mg == paramObject.Mg) && (this.Mh == paramObject.Mh));
     return false;
   }
   
   public final int hashCode()
   {
-    return j.hash(new Object[] { this.mPackageName, Integer.valueOf(this.Kq), Integer.valueOf(this.Kr) });
+    return j.hash(new Object[] { this.mPackageName, Integer.valueOf(this.Mg), Integer.valueOf(this.Mh) });
   }
 }
 

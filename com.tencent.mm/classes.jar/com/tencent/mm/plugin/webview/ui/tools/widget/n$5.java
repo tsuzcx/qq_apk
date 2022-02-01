@@ -3,9 +3,11 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class n$5
   implements View.OnClickListener
 {
@@ -14,7 +16,11 @@ final class n$5
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(82696);
-    this.CNx.hide();
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    this.Erx.hide();
+    a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(82696);
   }
 }

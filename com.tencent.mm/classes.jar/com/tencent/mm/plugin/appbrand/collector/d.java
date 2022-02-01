@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.collector;
 public abstract interface d
   extends g
 {
-  public abstract void aZN();
+  public abstract void bdm();
   
   public abstract void setStartTime(long paramLong);
 }

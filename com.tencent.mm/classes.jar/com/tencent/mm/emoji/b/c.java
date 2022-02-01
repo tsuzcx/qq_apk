@@ -1,35 +1,35 @@
 package com.tencent.mm.emoji.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.u;
+import com.tencent.mm.g.b.a.x;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/report/EmojiDesignerReport;", "", "()V", "ActionBack", "", "ActionClick", "ActionDownload", "ActionExposure", "ActionViewPackDetail", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonBoardReddotNotificationStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonBoardReddotNotificationStruct;", "report", "", "action", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/report/EmojiDesignerReport;", "", "()V", "ActionBack", "", "ActionClick", "ActionDownload", "ActionExposure", "ActionViewPackDetail", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonBoardReddotNotificationStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonBoardReddotNotificationStruct;", "report", "", "action", "plugin-emojisdk_release"})
 public final class c
 {
-  private static final u fVa;
-  public static final c fVb;
+  private static final x goD;
+  public static final c goE;
   
   static
   {
     AppMethodBeat.i(183963);
-    fVb = new c();
-    fVa = new u();
+    goE = new c();
+    goD = new x();
     AppMethodBeat.o(183963);
   }
   
-  public static u adt()
+  public static x afZ()
   {
-    return fVa;
+    return goD;
   }
   
-  public static void lA(int paramInt)
+  public static void ma(int paramInt)
   {
     AppMethodBeat.i(183962);
-    if (fVa.getIndex() > 0)
+    if (goD.getIndex() > 0)
     {
-      fVa.hY(paramInt);
-      fVa.aHZ();
+      goD.ij(paramInt);
+      goD.aLk();
     }
     AppMethodBeat.o(183962);
   }

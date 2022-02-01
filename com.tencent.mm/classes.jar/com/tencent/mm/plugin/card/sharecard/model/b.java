@@ -1,52 +1,54 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aut;
-import com.tencent.mm.protocal.protobuf.auu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.ayr;
+import com.tencent.mm.protocal.protobuf.ays;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class b
   extends n
   implements k
 {
-  private com.tencent.mm.ak.g callback;
-  public String nWw;
-  public String nYj;
-  private final com.tencent.mm.ak.b rr;
+  private f callback;
+  public String oBD;
+  public String ozQ;
+  private final com.tencent.mm.al.b rr;
   
   public b(double paramDouble1, double paramDouble2, String paramString)
   {
     AppMethodBeat.i(112957);
-    this.nYj = "";
+    this.oBD = "";
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new aut();
-    ((b.a)localObject).hvu = new auu();
+    ((b.a)localObject).hNM = new ayr();
+    ((b.a)localObject).hNN = new ays();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/getcardshomepage";
     ((b.a)localObject).funcId = 1164;
-    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).hNO = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (aut)this.rr.hvr.hvw;
-    ((aut)localObject).latitude = paramDouble1;
-    ((aut)localObject).longitude = paramDouble2;
-    ((aut)localObject).nYj = paramString;
-    ((aut)localObject).EMT = ((String)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GFf, ""));
-    ac.d("MicroMsg.NetSceneGetCardsHomePageLayout", "red_buff:" + ((aut)localObject).EMT);
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (ayr)this.rr.hNK.hNQ;
+    ((ayr)localObject).latitude = paramDouble1;
+    ((ayr)localObject).longitude = paramDouble2;
+    ((ayr)localObject).oBD = paramString;
+    ((ayr)localObject).GvX = ((String)g.ajC().ajl().get(al.a.Irx, ""));
+    ad.d("MicroMsg.NetSceneGetCardsHomePageLayout", "red_buff:" + ((ayr)localObject).GvX);
     AppMethodBeat.o(112957);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(112959);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(112959);
     return i;
@@ -60,13 +62,13 @@ public final class b
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112958);
-    ac.i("MicroMsg.NetSceneGetCardsHomePageLayout", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ad.i("MicroMsg.NetSceneGetCardsHomePageLayout", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (auu)this.rr.hvs.hvw;
-      ac.v("MicroMsg.NetSceneGetCardsHomePageLayout", "json:" + paramq.nWw);
-      this.nWw = paramq.nWw;
-      this.nYj = paramq.nYj;
+      paramq = (ays)this.rr.hNL.hNQ;
+      ad.v("MicroMsg.NetSceneGetCardsHomePageLayout", "json:" + paramq.ozQ);
+      this.ozQ = paramq.ozQ;
+      this.oBD = paramq.oBD;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112958);
@@ -74,7 +76,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,18 +5,18 @@ import java.util.concurrent.TimeUnit;
 
 public final class f
 {
-  public static final long JTC;
-  public static final long JTD;
-  public static final int JTE;
-  public static final long JTF;
+  public static final long LNs;
+  public static final long LNt;
+  public static final int LNu;
+  public static final long LNv;
   
   static
   {
     AppMethodBeat.i(138395);
-    JTC = TimeUnit.SECONDS.toMillis(1L);
-    JTD = TimeUnit.MILLISECONDS.toMillis(50L);
-    JTE = (int)(JTC / JTD);
-    JTF = JTC * 3L;
+    LNs = TimeUnit.SECONDS.toMillis(1L);
+    LNt = TimeUnit.MILLISECONDS.toMillis(50L);
+    LNu = (int)(LNs / LNt);
+    LNv = LNs * 3L;
     AppMethodBeat.o(138395);
   }
 }

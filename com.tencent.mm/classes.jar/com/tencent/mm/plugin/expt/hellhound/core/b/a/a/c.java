@@ -5,29 +5,29 @@ import com.tencent.mm.plugin.expt.hellhound.core.b;
 
 public final class c
 {
-  private static volatile c qjA;
-  public a qjB;
+  private static volatile c qRA;
+  public a qRB;
   
   private c()
   {
     AppMethodBeat.i(121964);
-    this.qjB = new d();
-    if (b.ciE()) {
-      this.qjB.reset();
+    this.qRB = new d();
+    if (b.cnC()) {
+      this.qRB.reset();
     }
     AppMethodBeat.o(121964);
   }
   
-  public static c cjd()
+  public static c cod()
   {
     AppMethodBeat.i(121963);
-    if (qjA == null) {}
+    if (qRA == null) {}
     try
     {
-      if (qjA == null) {
-        qjA = new c();
+      if (qRA == null) {
+        qRA = new c();
       }
-      c localc = qjA;
+      c localc = qRA;
       AppMethodBeat.o(121963);
       return localc;
     }
@@ -37,10 +37,10 @@ public final class c
     }
   }
   
-  public final void aam(String paramString)
+  public final void adZ(String paramString)
   {
     AppMethodBeat.i(121965);
-    this.qjB.aam(paramString);
+    this.qRB.adZ(paramString);
     AppMethodBeat.o(121965);
   }
 }

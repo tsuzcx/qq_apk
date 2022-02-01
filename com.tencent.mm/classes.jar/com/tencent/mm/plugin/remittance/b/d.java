@@ -4,8 +4,8 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,16 +13,16 @@ public final class d
   extends j<c>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] iAI;
-  private static Map<String, c> iAJ;
+  private static final String[] iTS;
+  private static Map<String, c> iTT;
   private e db;
   
   static
   {
     AppMethodBeat.i(67625);
     SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "RemittanceRecord") };
-    iAI = new String[] { "*", "rowid" };
-    iAJ = new HashMap();
+    iTS = new String[] { "*", "rowid" };
+    iTT = new HashMap();
     AppMethodBeat.o(67625);
   }
   
@@ -35,23 +35,23 @@ public final class d
   public final boolean a(c paramc)
   {
     AppMethodBeat.i(67621);
-    if ((paramc != null) && (iAJ.containsKey(paramc.field_transferId))) {
-      iAJ.put(paramc.field_transferId, paramc);
+    if ((paramc != null) && (iTT.containsKey(paramc.field_transferId))) {
+      iTT.put(paramc.field_transferId, paramc);
     }
     boolean bool = super.replace(paramc);
     AppMethodBeat.o(67621);
     return bool;
   }
   
-  public final c arh(String paramString)
+  public final c awh(String paramString)
   {
     AppMethodBeat.i(67620);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(67620);
       return null;
     }
-    paramString = this.db.a("RemittanceRecord", iAI, "transferId=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.a("RemittanceRecord", iTS, "transferId=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -66,7 +66,7 @@ public final class d
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.RemittanceSendRecordStorage", localException, "getRecordByTransferId error: %s", new Object[] { localException.getMessage() });
+        ad.printErrStackTrace("MicroMsg.RemittanceSendRecordStorage", localException, "getRecordByTransferId error: %s", new Object[] { localException.getMessage() });
         paramString.close();
       }
     }
@@ -79,34 +79,34 @@ public final class d
     return null;
   }
   
-  public final c ari(String paramString)
+  public final c awi(String paramString)
   {
-    AppMethodBeat.i(207130);
-    if ((!bs.isNullOrNil(paramString)) && (iAJ.containsKey(paramString)))
+    AppMethodBeat.i(199124);
+    if ((!bt.isNullOrNil(paramString)) && (iTT.containsKey(paramString)))
     {
-      paramString = (c)iAJ.get(paramString);
-      AppMethodBeat.o(207130);
+      paramString = (c)iTT.get(paramString);
+      AppMethodBeat.o(199124);
       return paramString;
     }
-    c localc = arh(paramString);
+    c localc = awh(paramString);
     if (localc != null)
     {
-      iAJ.put(paramString, localc);
-      AppMethodBeat.o(207130);
+      iTT.put(paramString, localc);
+      AppMethodBeat.o(199124);
       return localc;
     }
-    AppMethodBeat.o(207130);
+    AppMethodBeat.o(199124);
     return null;
   }
   
   /* Error */
-  public final java.util.List<c> arj(String paramString)
+  public final java.util.List<c> awj(String paramString)
   {
     // Byte code:
     //   0: ldc 143
     //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 93	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 93	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifeq +10 -> 19
     //   12: ldc 143
     //   14: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -115,7 +115,7 @@ public final class d
     //   19: aload_0
     //   20: getfield 61	com/tencent/mm/plugin/remittance/b/d:db	Lcom/tencent/mm/sdk/e/e;
     //   23: ldc 32
-    //   25: getstatic 44	com/tencent/mm/plugin/remittance/b/d:iAI	[Ljava/lang/String;
+    //   25: getstatic 44	com/tencent/mm/plugin/remittance/b/d:iTS	[Ljava/lang/String;
     //   28: ldc 145
     //   30: iconst_1
     //   31: anewarray 24	java/lang/String
@@ -195,7 +195,7 @@ public final class d
     //   181: aload_1
     //   182: invokevirtual 124	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   185: aastore
-    //   186: invokestatic 130	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   186: invokestatic 130	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   189: goto -59 -> 130
     //   192: astore 4
     //   194: aload_3
@@ -237,54 +237,54 @@ public final class d
   }
   
   /* Error */
-  public final java.util.List<c> dxC()
+  public final java.util.List<c> dIU()
   {
     // Byte code:
-    //   0: ldc 171
+    //   0: ldc 163
     //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 147	java/util/ArrayList
     //   8: dup
     //   9: invokespecial 148	java/util/ArrayList:<init>	()V
     //   12: astore 4
-    //   14: new 173	java/lang/StringBuilder
+    //   14: new 165	java/lang/StringBuilder
     //   17: dup
-    //   18: invokespecial 174	java/lang/StringBuilder:<init>	()V
+    //   18: invokespecial 166	java/lang/StringBuilder:<init>	()V
     //   21: astore_2
     //   22: aload_2
-    //   23: ldc 176
-    //   25: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: ldc 168
+    //   25: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: pop
     //   29: aload_2
-    //   30: ldc 182
-    //   32: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: ldc 174
+    //   32: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload_2
-    //   37: ldc 184
-    //   39: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: ldc 176
+    //   39: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: pop
     //   43: aload_2
-    //   44: ldc 176
-    //   46: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: ldc 168
+    //   46: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   49: pop
     //   50: aload_2
-    //   51: ldc 182
-    //   53: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: ldc 174
+    //   53: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: pop
     //   57: aload_0
     //   58: getfield 61	com/tencent/mm/plugin/remittance/b/d:db	Lcom/tencent/mm/sdk/e/e;
     //   61: ldc 32
-    //   63: getstatic 44	com/tencent/mm/plugin/remittance/b/d:iAI	[Ljava/lang/String;
+    //   63: getstatic 44	com/tencent/mm/plugin/remittance/b/d:iTS	[Ljava/lang/String;
     //   66: aload_2
-    //   67: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   70: iconst_2
     //   71: anewarray 24	java/lang/String
     //   74: dup
     //   75: iconst_0
-    //   76: ldc 189
+    //   76: ldc 181
     //   78: aastore
     //   79: dup
     //   80: iconst_1
-    //   81: ldc 191
+    //   81: ldc 183
     //   83: aastore
     //   84: aconst_null
     //   85: aconst_null
@@ -304,7 +304,7 @@ public final class d
     //   116: invokevirtual 111	com/tencent/mm/plugin/remittance/b/c:convertFrom	(Landroid/database/Cursor;)V
     //   119: aload 4
     //   121: aload_2
-    //   122: invokeinterface 194 2 0
+    //   122: invokeinterface 186 2 0
     //   127: pop
     //   128: aload 5
     //   130: invokeinterface 154 1 0
@@ -315,7 +315,7 @@ public final class d
     //   142: ifnull +10 -> 152
     //   145: aload 5
     //   147: invokeinterface 114 1 0
-    //   152: ldc 171
+    //   152: ldc 163
     //   154: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   157: aload 4
     //   159: areturn
@@ -323,12 +323,12 @@ public final class d
     //   162: ifnull +10 -> 172
     //   165: aload 5
     //   167: invokeinterface 114 1 0
-    //   172: ldc 171
+    //   172: ldc 163
     //   174: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   177: aload 4
     //   179: areturn
     //   180: astore_3
-    //   181: ldc 171
+    //   181: ldc 163
     //   183: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   186: aload_3
     //   187: athrow
@@ -339,7 +339,7 @@ public final class d
     //   195: ifnull +51 -> 246
     //   198: aload 5
     //   200: invokeinterface 114 1 0
-    //   205: ldc 171
+    //   205: ldc 163
     //   207: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   210: aload_2
     //   211: athrow
@@ -354,7 +354,7 @@ public final class d
     //   224: aload_2
     //   225: invokevirtual 124	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   228: aastore
-    //   229: invokestatic 130	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   229: invokestatic 130	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   232: goto -60 -> 172
     //   235: astore 5
     //   237: aload_3
@@ -400,7 +400,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,16 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.a;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.modelsimple.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.t;
@@ -30,66 +34,66 @@ import com.tencent.mm.ui.widget.b.a;
 
 public class VerifyPwdUI
   extends MMActivity
-  implements com.tencent.mm.ak.g, b.a
+  implements f, b.a
 {
-  private Button fwU;
-  private ScrollView fwW;
-  private InputPanelLinearLayout fwX;
-  private View iYg;
-  private TextView iYh;
-  private EditText iYi;
+  private Button fQh;
+  private ScrollView fQj;
+  private InputPanelLinearLayout fQk;
+  private View jrp;
+  private TextView jrq;
+  private EditText jrr;
   private int scene;
   private p tipDialog;
   
-  private void sg(String paramString)
+  private void uV(String paramString)
   {
-    AppMethodBeat.i(193253);
-    if (bs.isNullOrNil(paramString))
+    AppMethodBeat.i(207155);
+    if (bt.isNullOrNil(paramString))
     {
-      this.iYh.setVisibility(8);
-      AppMethodBeat.o(193253);
+      this.jrq.setVisibility(8);
+      AppMethodBeat.o(207155);
       return;
     }
-    this.iYh.setVisibility(0);
-    this.iYh.setText(paramString);
-    AppMethodBeat.o(193253);
+    this.jrq.setVisibility(0);
+    this.jrq.setText(paramString);
+    AppMethodBeat.o(207155);
   }
   
   public final void g(boolean paramBoolean, final int paramInt)
   {
-    AppMethodBeat.i(193256);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.VerifyPwdUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    AppMethodBeat.i(207158);
+    ad.i("MicroMsg.VerifyPwdUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     if (paramBoolean)
     {
-      localLayoutParams = (LinearLayout.LayoutParams)this.fwU.getLayoutParams();
+      localLayoutParams = (LinearLayout.LayoutParams)this.fQh.getLayoutParams();
       localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(2131165289);
       localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131165289);
-      this.fwU.setLayoutParams(localLayoutParams);
-      this.fwX.setPadding(this.fwX.getPaddingLeft(), this.fwX.getPaddingTop(), this.fwX.getPaddingRight(), paramInt);
-      paramInt = this.fwW.getHeight();
-      this.fwX.requestLayout();
-      this.fwX.post(new Runnable()
+      this.fQh.setLayoutParams(localLayoutParams);
+      this.fQk.setPadding(this.fQk.getPaddingLeft(), this.fQk.getPaddingTop(), this.fQk.getPaddingRight(), paramInt);
+      paramInt = this.fQj.getHeight();
+      this.fQk.requestLayout();
+      this.fQk.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(193249);
-          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.VerifyPwdUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(VerifyPwdUI.c(VerifyPwdUI.this).getHeight()), Integer.valueOf(paramInt) });
+          AppMethodBeat.i(207151);
+          ad.i("MicroMsg.VerifyPwdUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(VerifyPwdUI.c(VerifyPwdUI.this).getHeight()), Integer.valueOf(paramInt) });
           if (VerifyPwdUI.c(VerifyPwdUI.this).getHeight() > paramInt) {
             VerifyPwdUI.d(VerifyPwdUI.this).scrollBy(0, VerifyPwdUI.c(VerifyPwdUI.this).getHeight() - paramInt);
           }
-          AppMethodBeat.o(193249);
+          AppMethodBeat.o(207151);
         }
       });
-      AppMethodBeat.o(193256);
+      AppMethodBeat.o(207158);
       return;
     }
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.fwU.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.fQh.getLayoutParams();
     localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(2131165277);
     localLayoutParams.topMargin = 0;
-    this.fwU.setLayoutParams(localLayoutParams);
-    this.fwX.setPadding(this.fwX.getPaddingLeft(), this.fwX.getPaddingTop(), this.fwX.getPaddingRight(), 0);
-    this.fwW.scrollBy(0, 0);
-    AppMethodBeat.o(193256);
+    this.fQh.setLayoutParams(localLayoutParams);
+    this.fQk.setPadding(this.fQk.getPaddingLeft(), this.fQk.getPaddingTop(), this.fQk.getPaddingRight(), 0);
+    this.fQj.scrollBy(0, 0);
+    AppMethodBeat.o(207158);
   }
   
   public int getLayoutId()
@@ -99,146 +103,154 @@ public class VerifyPwdUI
   
   public void initView()
   {
-    AppMethodBeat.i(193252);
+    AppMethodBeat.i(207154);
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getResources().getColor(2131101179));
-    this.fwW = ((ScrollView)findViewById(2131304376));
-    this.fwX = ((InputPanelLinearLayout)findViewById(2131301024));
-    this.fwX.setExternalListener(this);
-    this.iYh = ((TextView)findViewById(2131299523));
-    this.iYg = findViewById(2131300220);
-    this.iYi = ((EditText)findViewById(2131303548));
-    this.iYi.addTextChangedListener(new TextWatcher()
+    this.fQj = ((ScrollView)findViewById(2131304376));
+    this.fQk = ((InputPanelLinearLayout)findViewById(2131301024));
+    this.fQk.setExternalListener(this);
+    this.jrq = ((TextView)findViewById(2131299523));
+    this.jrp = findViewById(2131300220);
+    this.jrr = ((EditText)findViewById(2131303548));
+    this.jrr.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(193245);
-        if (!bs.isNullOrNil(paramAnonymousEditable.toString()))
+        AppMethodBeat.i(207147);
+        if (!bt.isNullOrNil(paramAnonymousEditable.toString()))
         {
           VerifyPwdUI.a(VerifyPwdUI.this).setEnabled(true);
-          AppMethodBeat.o(193245);
+          AppMethodBeat.o(207147);
           return;
         }
         VerifyPwdUI.a(VerifyPwdUI.this).setEnabled(false);
         VerifyPwdUI.a(VerifyPwdUI.this, "");
-        AppMethodBeat.o(193245);
+        AppMethodBeat.o(207147);
       }
       
       public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.fwU = ((Button)findViewById(2131302852));
-    this.fwU.setOnClickListener(new View.OnClickListener()
+    this.fQh = ((Button)findViewById(2131302852));
+    this.fQh.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(193246);
+        AppMethodBeat.i(207148);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/VerifyPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         VerifyPwdUI.a(VerifyPwdUI.this, "");
         VerifyPwdUI.b(VerifyPwdUI.this);
-        AppMethodBeat.o(193246);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/VerifyPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(207148);
       }
     });
-    this.iYg.setOnClickListener(new View.OnClickListener()
+    this.jrp.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(193247);
+        AppMethodBeat.i(207149);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/VerifyPwdUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         VerifyPwdUI.this.hideVKB();
-        d.N(VerifyPwdUI.this, "setting", ".ui.setting.SettingsForgetPwdUI");
-        AppMethodBeat.o(193247);
+        d.Q(VerifyPwdUI.this, "setting", ".ui.setting.SettingsForgetPwdUI");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/VerifyPwdUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(207149);
       }
     });
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(193248);
+        AppMethodBeat.i(207150);
         VerifyPwdUI.this.onBackPressed();
-        AppMethodBeat.o(193248);
+        AppMethodBeat.o(207150);
         return true;
       }
     });
-    AppMethodBeat.o(193252);
+    AppMethodBeat.o(207154);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(193255);
+    AppMethodBeat.i(207157);
     super.onBackPressed();
     setResult(0);
-    AppMethodBeat.o(193255);
+    AppMethodBeat.o(207157);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(193251);
+    AppMethodBeat.i(207153);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.agi().a(384, this);
+    g.aiU().a(384, this);
     this.scene = getIntent().getIntExtra("key_scenen", 0);
     initView();
-    AppMethodBeat.o(193251);
+    AppMethodBeat.o(207153);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(193254);
+    AppMethodBeat.i(207156);
     super.onDestroy();
-    com.tencent.mm.kernel.g.agi().b(384, this);
+    g.aiU().b(384, this);
     hideVKB();
-    AppMethodBeat.o(193254);
+    AppMethodBeat.o(207156);
   }
   
   public void onPointerCaptureChanged(boolean paramBoolean) {}
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(193257);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.VerifyPwdUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(207159);
+    ad.i("MicroMsg.VerifyPwdUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       paramString = new Intent();
-      paramString.putExtra("key_ticket", ((com.tencent.mm.modelsimple.ac)paramn).aEr());
+      paramString.putExtra("key_ticket", ((ac)paramn).aHw());
       setResult(-1, paramString);
-      t.ch(this, getString(2131764659));
-      ap.n(new Runnable()
+      t.cm(this, getString(2131764659));
+      aq.o(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(193250);
+          AppMethodBeat.i(207152);
           VerifyPwdUI.this.hideVKB();
           VerifyPwdUI.this.finish();
-          AppMethodBeat.o(193250);
+          AppMethodBeat.o(207152);
         }
       }, 500L);
-      AppMethodBeat.o(193257);
+      AppMethodBeat.o(207159);
       return;
     }
     if (paramInt1 == 4)
     {
-      if (!bs.isNullOrNil(paramString))
+      if (!bt.isNullOrNil(paramString))
       {
-        paramn = a.rM(paramString);
+        paramn = com.tencent.mm.h.a.uz(paramString);
         if (paramn != null)
         {
-          sg(paramn.desc);
-          AppMethodBeat.o(193257);
+          uV(paramn.desc);
+          AppMethodBeat.o(207159);
           return;
         }
-        sg(paramString);
-        AppMethodBeat.o(193257);
+        uV(paramString);
+        AppMethodBeat.o(207159);
         return;
       }
-      sg(getString(2131755733));
-      AppMethodBeat.o(193257);
+      uV(getString(2131755733));
+      AppMethodBeat.o(207159);
       return;
     }
-    sg(getString(2131755733));
-    AppMethodBeat.o(193257);
+    uV(getString(2131755733));
+    AppMethodBeat.o(207159);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

@@ -10,7 +10,7 @@ public class GameShareOption
 {
   public static final Parcelable.Creator<GameShareOption> CREATOR;
   public int id;
-  public boolean sVm;
+  public boolean tRP;
   public String title;
   
   static
@@ -22,22 +22,22 @@ public class GameShareOption
   
   public GameShareOption(int paramInt, String paramString, boolean paramBoolean)
   {
-    this.sVm = false;
+    this.tRP = false;
     this.id = paramInt;
     this.title = paramString;
-    this.sVm = paramBoolean;
+    this.tRP = paramBoolean;
   }
   
   protected GameShareOption(Parcel paramParcel)
   {
     AppMethodBeat.i(89657);
-    this.sVm = false;
+    this.tRP = false;
     this.id = paramParcel.readInt();
     this.title = paramParcel.readString();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.sVm = bool;
+      this.tRP = bool;
       AppMethodBeat.o(89657);
       return;
       bool = false;
@@ -54,7 +54,7 @@ public class GameShareOption
     AppMethodBeat.i(89658);
     paramParcel.writeInt(this.id);
     paramParcel.writeString(this.title);
-    if (this.sVm) {}
+    if (this.tRP) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);

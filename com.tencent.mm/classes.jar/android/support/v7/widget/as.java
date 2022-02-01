@@ -5,7 +5,7 @@ import android.view.View;
 public abstract class as
   extends RecyclerView.f
 {
-  public boolean auS = true;
+  public boolean awK = true;
   
   public void A(RecyclerView.w paramw) {}
   
@@ -24,7 +24,7 @@ public abstract class as
     int k = paramc1.left;
     int m = paramc1.top;
     int i;
-    if (paramw2.lt()) {
+    if (paramw2.lL()) {
       i = paramc1.left;
     }
     for (int j = paramc1.top;; j = paramc2.top)
@@ -42,7 +42,7 @@ public abstract class as
   {
     int k = paramc1.left;
     int m = paramc1.top;
-    paramc1 = paramw.asD;
+    paramc1 = paramw.auu;
     int i;
     if (paramc2 == null)
     {
@@ -83,14 +83,14 @@ public abstract class as
     return false;
   }
   
-  public final void mc()
+  public final void mu()
   {
-    this.auS = false;
+    this.awK = false;
   }
   
   public boolean p(RecyclerView.w paramw)
   {
-    return (!this.auS) || (paramw.bj());
+    return (!this.awK) || (paramw.isInvalid());
   }
   
   public final void w(RecyclerView.w paramw)

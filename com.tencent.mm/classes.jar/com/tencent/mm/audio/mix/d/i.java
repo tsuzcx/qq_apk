@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class i
   implements Comparable<i>, Runnable
 {
-  private static int cSw = 1000;
-  protected long cSx;
+  private static int ddM = 1000;
+  protected long ddN;
   protected String name;
   protected final int priority;
   
@@ -15,7 +15,7 @@ public class i
     AppMethodBeat.i(136829);
     this.name = "";
     this.name = paramString;
-    this.cSx = System.currentTimeMillis();
+    this.ddN = System.currentTimeMillis();
     this.priority = 5;
     AppMethodBeat.o(136829);
   }

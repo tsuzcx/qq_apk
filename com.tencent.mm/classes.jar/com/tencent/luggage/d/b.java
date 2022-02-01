@@ -1,6 +1,54 @@
 package com.tencent.luggage.d;
 
-abstract interface b {}
+import com.tencent.luggage.bridge.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Map;
+import org.json.JSONObject;
+
+public abstract class b<CONTEXT extends c>
+{
+  CONTEXT chf;
+  
+  public abstract void a(b<CONTEXT>.a paramb);
+  
+  public abstract String name();
+  
+  public final class a
+  {
+    public CONTEXT chg;
+    public k chh;
+    
+    public a() {}
+    
+    public final void a(String paramString, JSONObject paramJSONObject)
+    {
+      AppMethodBeat.i(140370);
+      this.chh.a(paramString, paramJSONObject);
+      AppMethodBeat.o(140370);
+    }
+    
+    public final void d(String paramString, Map<String, Object> paramMap)
+    {
+      AppMethodBeat.i(140369);
+      k localk = this.chh;
+      String str = paramString;
+      if (paramString == null) {
+        str = "";
+      }
+      localk.cgG = str;
+      if (paramMap != null) {}
+      for (paramString = new JSONObject(paramMap);; paramString = null)
+      {
+        localk.cgH = paramString;
+        if (localk.cgA != 0) {
+          localk.BJ();
+        }
+        AppMethodBeat.o(140369);
+        return;
+      }
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

@@ -18,21 +18,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.model.a.e;
-import com.tencent.mm.model.a.f;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.account.friend.a.ad;
 import com.tencent.mm.plugin.account.friend.a.ao;
+import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.account.friend.a.l.a;
 import com.tencent.mm.plugin.account.friend.ui.InviteFriendUI;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.RegionCodeDecoder;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.r.a;
 import com.tencent.mm.ui.tools.r;
 import com.tencent.mm.ui.tools.r.b;
@@ -40,24 +38,24 @@ import java.util.List;
 
 public class MobileFriendUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
   private TextView emptyTipTv = null;
-  private ProgressDialog fts = null;
-  private ListView iIZ;
-  b iJa;
-  private View iJb;
-  private ao iJc;
-  String iJd;
-  private TextView iJe = null;
+  private ProgressDialog fMu = null;
+  private ListView jci;
+  b jcj;
+  private View jck;
+  private ao jcl;
+  String jcm;
+  private TextView jcn = null;
   
-  private void aPf()
+  private void aSr()
   {
     AppMethodBeat.i(110161);
-    if (com.tencent.mm.compatible.util.d.kZ(26))
+    if (com.tencent.mm.compatible.util.d.ly(26))
     {
       boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.WRITE_CONTACTS", 48, null, null);
-      ac.i("MicroMsg.MobileFriendUI", "onCreateAfterMPermissionGranted() checkContacts(android.Manifest.permission.WRITE_CONTACTS)[%b]", new Object[] { Boolean.valueOf(bool) });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MobileFriendUI", "onCreateAfterMPermissionGranted() checkContacts(android.Manifest.permission.WRITE_CONTACTS)[%b]", new Object[] { Boolean.valueOf(bool) });
       if (!bool)
       {
         AppMethodBeat.o(110161);
@@ -71,29 +69,29 @@ public class MobileFriendUI
   private void getData()
   {
     AppMethodBeat.i(110163);
-    if (!com.tencent.mm.plugin.account.friend.a.l.aPB())
+    if (!l.aSN())
     {
       Object localObject = getContext();
       getString(2131755906);
-      this.fts = com.tencent.mm.ui.base.h.b((Context)localObject, getString(2131761251), true, new DialogInterface.OnCancelListener()
+      this.fMu = com.tencent.mm.ui.base.h.b((Context)localObject, getString(2131761251), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(110153);
           if (MobileFriendUI.a(MobileFriendUI.this) != null) {
-            com.tencent.mm.kernel.g.agi().a(MobileFriendUI.a(MobileFriendUI.this));
+            com.tencent.mm.kernel.g.aiU().a(MobileFriendUI.a(MobileFriendUI.this));
           }
           AppMethodBeat.o(110153);
         }
       });
-      if (this.iJa.getCount() == 0)
+      if (this.jcj.getCount() == 0)
       {
         if ((!((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).syncAddrBook(new com.tencent.mm.plugin.account.a.a.b()
         {
-          public final void eM(boolean paramAnonymousBoolean)
+          public final void eO(boolean paramAnonymousBoolean)
           {
             AppMethodBeat.i(110154);
-            ac.i("MicroMsg.MobileFriendUI", "syncAddrBookAndUpload onSyncEnd suc:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MobileFriendUI", "syncAddrBookAndUpload onSyncEnd suc:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
             if (!paramAnonymousBoolean)
             {
               if (MobileFriendUI.b(MobileFriendUI.this) != null)
@@ -105,30 +103,30 @@ public class MobileFriendUI
               return;
             }
             System.currentTimeMillis();
-            com.tencent.mm.plugin.account.friend.a.l.aPH();
-            ao localao = new ao(com.tencent.mm.plugin.account.friend.a.l.aPL(), com.tencent.mm.plugin.account.friend.a.l.aPK());
-            com.tencent.mm.kernel.g.agi().a(localao, 0);
+            l.aST();
+            ao localao = new ao(l.aSX(), l.aSW());
+            com.tencent.mm.kernel.g.aiU().a(localao, 0);
             AppMethodBeat.o(110154);
           }
-        })) && (this.fts != null))
+        })) && (this.fMu != null))
         {
-          this.fts.dismiss();
-          this.fts = null;
+          this.fMu.dismiss();
+          this.fMu = null;
         }
         AppMethodBeat.o(110163);
         return;
       }
-      localObject = com.tencent.mm.plugin.account.friend.a.l.aPL();
-      List localList = com.tencent.mm.plugin.account.friend.a.l.aPK();
+      localObject = l.aSX();
+      List localList = l.aSW();
       if ((((List)localObject).size() != 0) || (localList.size() != 0))
       {
-        this.iJc = new ao(com.tencent.mm.plugin.account.friend.a.l.aPL(), com.tencent.mm.plugin.account.friend.a.l.aPK());
-        com.tencent.mm.kernel.g.agi().a(this.iJc, 0);
+        this.jcl = new ao(l.aSX(), l.aSW());
+        com.tencent.mm.kernel.g.aiU().a(this.jcl, 0);
         AppMethodBeat.o(110163);
         return;
       }
-      localObject = new ad();
-      com.tencent.mm.kernel.g.agi().a((n)localObject, 0);
+      localObject = new com.tencent.mm.plugin.account.friend.a.ad();
+      com.tencent.mm.kernel.g.aiU().a((n)localObject, 0);
     }
     AppMethodBeat.o(110163);
   }
@@ -136,23 +134,23 @@ public class MobileFriendUI
   public final void b(com.tencent.mm.plugin.account.friend.a.a parama)
   {
     AppMethodBeat.i(110168);
-    if (bs.isNullOrNil(parama.getUsername()))
+    if (bt.isNullOrNil(parama.getUsername()))
     {
-      ac.e("MicroMsg.MobileFriendUI", "username is null");
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.MobileFriendUI", "username is null");
       AppMethodBeat.o(110168);
       return;
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("Contact_User", parama.getUsername());
     localIntent.putExtra("Contact_Nick", parama.getNickName());
-    localIntent.putExtra("Contact_Mobile_MD5", parama.JC());
-    localIntent.putExtra("Contact_Alias", parama.iJY);
-    localIntent.putExtra("Contact_Sex", parama.iJT);
-    localIntent.putExtra("Contact_Signature", parama.iJW);
-    localIntent.putExtra("Contact_RegionCode", RegionCodeDecoder.aW(parama.iKc, parama.iJU, parama.iJV));
+    localIntent.putExtra("Contact_Mobile_MD5", parama.Lb());
+    localIntent.putExtra("Contact_Alias", parama.jdh);
+    localIntent.putExtra("Contact_Sex", parama.jdc);
+    localIntent.putExtra("Contact_Signature", parama.jdf);
+    localIntent.putExtra("Contact_RegionCode", RegionCodeDecoder.bf(parama.jdl, parama.jdd, parama.jde));
     localIntent.putExtra("Contact_Scene", 13);
     localIntent.putExtra("Contact_ShowUserName", false);
-    com.tencent.mm.plugin.account.a.a.iyx.c(localIntent, this);
+    com.tencent.mm.plugin.account.a.a.iRG.c(localIntent, this);
     AppMethodBeat.o(110168);
   }
   
@@ -166,55 +164,55 @@ public class MobileFriendUI
     AppMethodBeat.i(110167);
     this.emptyTipTv = ((TextView)findViewById(2131302350));
     this.emptyTipTv.setText(2131761249);
-    this.iJe = ((TextView)findViewById(2131299467));
-    this.iJe.setText(2131761296);
-    this.iJb = findViewById(2131302353);
-    this.iIZ = ((ListView)findViewById(2131302352));
+    this.jcn = ((TextView)findViewById(2131299467));
+    this.jcn.setText(2131761296);
+    this.jck = findViewById(2131302353);
+    this.jci = ((ListView)findViewById(2131302352));
     Object localObject = new r((byte)0);
-    ((r)localObject).ITM = new r.b()
+    ((r)localObject).KKQ = new r.b()
     {
-      public final boolean Ga(String paramAnonymousString)
+      public final boolean Jp(String paramAnonymousString)
       {
         return false;
       }
       
-      public final void Gb(String paramAnonymousString)
+      public final void Jq(String paramAnonymousString)
       {
         AppMethodBeat.i(110155);
-        MobileFriendUI.a(MobileFriendUI.this, bs.aLh(paramAnonymousString));
+        MobileFriendUI.a(MobileFriendUI.this, bt.aQN(paramAnonymousString));
         paramAnonymousString = MobileFriendUI.this;
-        if (paramAnonymousString.iJa != null) {
-          paramAnonymousString.iJa.FZ(paramAnonymousString.iJd);
+        if (paramAnonymousString.jcj != null) {
+          paramAnonymousString.jcj.Jo(paramAnonymousString.jcm);
         }
         AppMethodBeat.o(110155);
       }
       
-      public final void aPa() {}
+      public final void aSm() {}
       
-      public final void aPb() {}
+      public final void aSn() {}
       
-      public final void aPc() {}
+      public final void aSo() {}
       
-      public final void aPd() {}
+      public final void aSp() {}
     };
     addSearchMenu(true, (r)localObject);
     boolean bool;
-    if (com.tencent.mm.model.a.g.azO().yF("2") != null)
+    if (com.tencent.mm.model.a.g.aCR().BE("2") != null)
     {
-      localObject = com.tencent.mm.model.a.g.azO().yF("2").value;
+      localObject = com.tencent.mm.model.a.g.aCR().BE("2").value;
       if (((String)localObject).equals("0"))
       {
         bool = false;
-        f.yJ("2");
+        com.tencent.mm.model.a.f.BI("2");
       }
     }
     for (;;)
     {
-      ac.i("MicroMsg.MobileFriendUI", "ABTest Type, NEW(%B)", new Object[] { Boolean.valueOf(bool) });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MobileFriendUI", "ABTest Type, NEW(%B)", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {}
-      for (this.iJa = new c(this, new r.a()
+      for (this.jcj = new c(this, new r.a()
           {
-            public final void aPg()
+            public final void aSs()
             {
               AppMethodBeat.i(110156);
               MobileFriendUI localMobileFriendUI = MobileFriendUI.this;
@@ -222,9 +220,9 @@ public class MobileFriendUI
               MobileFriendUI.e(localMobileFriendUI);
               AppMethodBeat.o(110156);
             }
-          });; this.iJa = new d(this, new r.a()
+          });; this.jcj = new d(this, new r.a()
           {
-            public final void aPg()
+            public final void aSs()
             {
               AppMethodBeat.i(110157);
               MobileFriendUI localMobileFriendUI = MobileFriendUI.this;
@@ -234,14 +232,21 @@ public class MobileFriendUI
             }
           }))
       {
-        this.iIZ.setAdapter(this.iJa);
-        this.iIZ.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        this.jci.setAdapter(this.jcj);
+        this.jci.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
           public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
           {
             AppMethodBeat.i(110158);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousAdapterView);
+            localb.bd(paramAnonymousView);
+            localb.mr(paramAnonymousInt);
+            localb.qY(paramAnonymousLong);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
             if (paramAnonymousInt < MobileFriendUI.f(MobileFriendUI.this).getHeaderViewsCount())
             {
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
               AppMethodBeat.o(110158);
               return;
             }
@@ -255,22 +260,23 @@ public class MobileFriendUI
               paramAnonymousAdapterView = new Intent(MobileFriendUI.this, InviteFriendUI.class);
               paramAnonymousAdapterView.putExtra("friend_type", 1);
               paramAnonymousAdapterView.putExtra("friend_user_name", paramAnonymousView.getUsername());
-              paramAnonymousAdapterView.putExtra("friend_num", paramAnonymousView.aPr());
-              paramAnonymousAdapterView.putExtra("friend_nick", paramAnonymousView.aPm());
+              paramAnonymousAdapterView.putExtra("friend_num", paramAnonymousView.aSD());
+              paramAnonymousAdapterView.putExtra("friend_nick", paramAnonymousView.aSy());
               paramAnonymousAdapterView.putExtra("friend_weixin_nick", paramAnonymousView.getNickName());
               paramAnonymousAdapterView.putExtra("friend_scene", 13);
               paramAnonymousView = MobileFriendUI.this;
-              paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousAdapterView);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.aeD(), "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$8", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.lR(0));
+              paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousAdapterView);
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahp(), "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$8", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mq(0));
               com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$8", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(110158);
           }
         });
-        this.iJa.a(new b.a()
+        this.jcj.a(new b.a()
         {
-          public final void qL(int paramAnonymousInt)
+          public final void rl(int paramAnonymousInt)
           {
             AppMethodBeat.i(110159);
             if (paramAnonymousInt > 0)
@@ -283,22 +289,12 @@ public class MobileFriendUI
             AppMethodBeat.o(110159);
           }
         });
-        if ((com.tencent.mm.plugin.account.friend.a.l.aPC() != l.a.iKF) && (com.tencent.mm.plugin.account.friend.a.l.aPC() != l.a.iKG))
+        if ((l.aSO() != l.a.jdO) && (l.aSO() != l.a.jdP))
         {
-          this.iJb = findViewById(2131302353);
-          this.iJb.setVisibility(0);
-          this.iJb.setOnClickListener(new View.OnClickListener()
-          {
-            public final void onClick(View paramAnonymousView)
-            {
-              AppMethodBeat.i(110146);
-              paramAnonymousView = new Intent(MobileFriendUI.this.getContext(), BindMContactIntroUI.class);
-              paramAnonymousView.putExtra("key_upload_scene", 6);
-              MMWizardActivity.aj(MobileFriendUI.this, paramAnonymousView);
-              AppMethodBeat.o(110146);
-            }
-          });
-          this.iIZ.setVisibility(8);
+          this.jck = findViewById(2131302353);
+          this.jck.setVisibility(0);
+          this.jck.setOnClickListener(new MobileFriendUI.2(this));
+          this.jci.setVisibility(8);
         }
         setBackBtn(new MenuItem.OnMenuItemClickListener()
         {
@@ -316,24 +312,28 @@ public class MobileFriendUI
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(110148);
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
             paramAnonymousView = MobileFriendUI.f(MobileFriendUI.this);
-            paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
-            Object localObject = new Object();
-            com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.aeD(), "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$12", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-            BackwardSupportUtil.c.b((ListView)paramAnonymousView.lR(0));
+            paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
+            localObject = new Object();
+            com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahp(), "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$12", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+            BackwardSupportUtil.c.b((ListView)paramAnonymousView.mq(0));
             com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$12", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(110148);
           }
         });
-        if ((!u.ayb()) || (com.tencent.mm.plugin.account.friend.a.l.aPB())) {
-          com.tencent.mm.ui.base.h.b(this, 2131756445, 2131755906, 2131755835, 2131755691, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        if ((!u.aAV()) || (l.aSN())) {
+          com.tencent.mm.ui.base.h.a(this, 2131756445, 2131755906, 2131755835, 2131755691, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(110149);
-              com.tencent.mm.plugin.report.service.h.wUl.f(11438, new Object[] { Integer.valueOf(6) });
-              ac.i("MicroMsg.MobileFriendUI", "[cpan] kv report logid:%d scene:%d", new Object[] { Integer.valueOf(11438), Integer.valueOf(6) });
-              com.tencent.mm.plugin.account.friend.a.l.fn(true);
+              com.tencent.mm.plugin.report.service.g.yhR.f(11438, new Object[] { Integer.valueOf(6) });
+              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MobileFriendUI", "[cpan] kv report logid:%d scene:%d", new Object[] { Integer.valueOf(11438), Integer.valueOf(6) });
+              l.fr(true);
               ((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).syncUploadMContactStatus(true, true);
               MobileFriendUI.h(MobileFriendUI.this);
               AppMethodBeat.o(110149);
@@ -343,7 +343,7 @@ public class MobileFriendUI
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(110150);
-              com.tencent.mm.plugin.account.friend.a.l.fn(false);
+              l.fr(false);
               ((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).syncUploadMContactStatus(false, true);
               MobileFriendUI.this.finish();
               AppMethodBeat.o(110150);
@@ -370,28 +370,28 @@ public class MobileFriendUI
     AppMethodBeat.i(110160);
     super.onCreate(paramBundle);
     setMMTitle(2131761253);
-    ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).hpA.execSQL("qqlist", "update addr_upload2 set reserved4=0");
-    com.tencent.mm.kernel.g.agi().a(32, this);
-    com.tencent.mm.kernel.g.agi().a(133, this);
+    ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).hHS.execSQL("qqlist", "update addr_upload2 set reserved4=0");
+    com.tencent.mm.kernel.g.aiU().a(32, this);
+    com.tencent.mm.kernel.g.aiU().a(133, this);
     initView();
     boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.READ_CONTACTS", 48, null, null);
-    ac.i("MicroMsg.MobileFriendUI", "summerper checkPermission checkContacts(android.Manifest.permission.READ_CONTACTS)[%b]", new Object[] { Boolean.valueOf(bool) });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MobileFriendUI", "summerper checkPermission checkContacts(android.Manifest.permission.READ_CONTACTS)[%b]", new Object[] { Boolean.valueOf(bool) });
     if (!bool)
     {
       AppMethodBeat.o(110160);
       return;
     }
-    aPf();
+    aSr();
     AppMethodBeat.o(110160);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(110166);
-    f.yK("2");
-    com.tencent.mm.kernel.g.agi().b(32, this);
-    com.tencent.mm.kernel.g.agi().b(133, this);
-    this.iJa.cVi();
+    com.tencent.mm.model.a.f.BJ("2");
+    com.tencent.mm.kernel.g.aiU().b(32, this);
+    com.tencent.mm.kernel.g.aiU().b(133, this);
+    this.jcj.det();
     super.onDestroy();
     AppMethodBeat.o(110166);
   }
@@ -408,11 +408,11 @@ public class MobileFriendUI
     AppMethodBeat.i(110162);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ac.i("MicroMsg.MobileFriendUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MobileFriendUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(110162);
       return;
     }
-    ac.i("MicroMsg.MobileFriendUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MobileFriendUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -422,7 +422,7 @@ public class MobileFriendUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        aPf();
+        aSr();
         AppMethodBeat.o(110162);
         return;
       }
@@ -433,9 +433,9 @@ public class MobileFriendUI
           AppMethodBeat.i(110145);
           paramAnonymousDialogInterface = MobileFriendUI.this;
           Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           MobileFriendUI.this.finish();
           AppMethodBeat.o(110145);
@@ -456,33 +456,33 @@ public class MobileFriendUI
   {
     AppMethodBeat.i(110164);
     super.onResume();
-    this.iJa.notifyDataSetChanged();
+    this.jcj.notifyDataSetChanged();
     AppMethodBeat.o(110164);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(110169);
-    ac.i("MicroMsg.MobileFriendUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if ((paramn.getType() == 32) && (this.fts != null))
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MobileFriendUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if ((paramn.getType() == 32) && (this.fMu != null))
     {
-      this.fts.dismiss();
-      this.fts = null;
+      this.fMu.dismiss();
+      this.fMu = null;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      ac.e("MicroMsg.MobileFriendUI", "onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.MobileFriendUI", "onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
     }
     if (paramn.getType() == 133)
     {
-      paramString = new ad();
-      com.tencent.mm.kernel.g.agi().a(paramString, 0);
+      paramString = new com.tencent.mm.plugin.account.friend.a.ad();
+      com.tencent.mm.kernel.g.aiU().a(paramString, 0);
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if (paramn.getType() == 32) {
         ((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).updateAllContact();
       }
-      this.iJa.a(null, null);
+      this.jcj.a(null, null);
       AppMethodBeat.o(110169);
       return;
     }

@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.AutoCompleteTextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class InstantAutoCompleteTextView
   extends AutoCompleteTextView
 {
-  private boolean whK;
+  private boolean xpt;
   
   public InstantAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,14 +25,14 @@ public class InstantAutoCompleteTextView
   {
     AppMethodBeat.i(67272);
     super.dismissDropDown();
-    ac.d("TestAutoCompleteTextView", "dismiss");
+    ad.d("TestAutoCompleteTextView", "dismiss");
     AppMethodBeat.o(67272);
   }
   
   public boolean enoughToFilter()
   {
     AppMethodBeat.i(67273);
-    if ((this.whK) || (super.enoughToFilter()))
+    if ((this.xpt) || (super.enoughToFilter()))
     {
       AppMethodBeat.o(67273);
       return true;
@@ -43,12 +43,12 @@ public class InstantAutoCompleteTextView
   
   public void setShowAlways(boolean paramBoolean)
   {
-    this.whK = paramBoolean;
+    this.xpt = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.form.InstantAutoCompleteTextView
  * JD-Core Version:    0.7.0.1
  */

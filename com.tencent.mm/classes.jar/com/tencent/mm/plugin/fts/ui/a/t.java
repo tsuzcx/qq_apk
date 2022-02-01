@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.fts.ui.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.a.a.h;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
-import com.tencent.mm.protocal.protobuf.ebl;
-import com.tencent.mm.protocal.protobuf.ebu;
+import com.tencent.mm.protocal.protobuf.ehp;
+import com.tencent.mm.protocal.protobuf.ehy;
 import org.json.JSONObject;
 
 public final class t
   extends n
 {
-  public ebu sFg;
-  public ebl sFt;
-  private a sFu;
+  public ehy tBY;
+  public ehp tCn;
+  private a tCo;
   
   public t(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112131);
-    this.sFu = new a();
+    this.tCo = new a();
     AppMethodBeat.o(112131);
   }
   
@@ -31,13 +31,13 @@ public final class t
     super.a(paramContext, parama, paramVarArgs);
     try
     {
-      if ("HOME".equals(new JSONObject(this.sFg.Ghg).optString("content_type", "")))
+      if ("HOME".equals(new JSONObject(this.tBY.HSt).optString("content_type", "")))
       {
-        fP(2, 0);
+        gf(2, 0);
         AppMethodBeat.o(112132);
         return;
       }
-      fP(1, 0);
+      gf(1, 0);
       AppMethodBeat.o(112132);
       return;
     }
@@ -47,9 +47,9 @@ public final class t
     }
   }
   
-  public final a.b adW()
+  public final a.b agC()
   {
-    return this.sFu;
+    return this.tCo;
   }
   
   public final class a
@@ -63,7 +63,7 @@ public final class t
     public final boolean a(Context paramContext, a paramVarArgs)
     {
       AppMethodBeat.i(112130);
-      ((com.tencent.mm.plugin.websearch.api.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.websearch.api.g.class)).a(paramContext, 60, "", t.this.sxM.syk);
+      ((com.tencent.mm.plugin.websearch.api.h)g.ab(com.tencent.mm.plugin.websearch.api.h.class)).a(paramContext, 60, "", t.this.tun.tuL);
       AppMethodBeat.o(112130);
       return false;
     }
@@ -71,7 +71,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.t
  * JD-Core Version:    0.7.0.1
  */

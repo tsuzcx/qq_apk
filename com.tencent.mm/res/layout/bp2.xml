@@ -4,14 +4,9 @@
     <FrameLayout android:layout_gravity="center_vertical" android:id="@id/hs8" android:paddingTop="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:gravity="center_vertical" android:layout_gravity="left" android:orientation="horizontal" android:id="@id/hs9" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <FrameLayout android:id="@id/hfq" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <FrameLayout android:id="@id/hfo" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="32.0dip">
+                <FrameLayout android:id="@id/hfo" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="28.0dip">
                     <com.tencent.mm.plugin.finder.feed.RoundLinearLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
                         <ImageView android:id="@id/hfn" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" />
-                    </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>
-                </FrameLayout>
-                <FrameLayout android:id="@id/hfr" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="14.0dip">
-                    <com.tencent.mm.plugin.finder.feed.RoundLinearLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                        <ImageView android:id="@id/hfp" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" />
                     </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>
                 </FrameLayout>
                 <FrameLayout android:id="@id/hfm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip">
@@ -24,6 +19,12 @@
                     <View android:background="@drawable/c5s" android:layout_width="24.0dip" android:layout_height="24.0dip" />
                     <com.tencent.mm.plugin.finder.feed.RoundLinearLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
                         <ImageView android:id="@id/hfj" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" />
+                    </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>
+                </FrameLayout>
+                <FrameLayout android:id="@id/hfr" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip">
+                    <View android:background="@drawable/c5s" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+                    <com.tencent.mm.plugin.finder.feed.RoundLinearLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <ImageView android:id="@id/hfp" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" />
                     </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>
                 </FrameLayout>
             </FrameLayout>

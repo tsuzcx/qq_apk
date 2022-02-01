@@ -2,7 +2,7 @@ package com.tencent.c.a;
 
 public abstract interface a
 {
-  public abstract float cH(String paramString);
+  public abstract float dK(String paramString);
   
   public abstract int get(String paramString, int paramInt);
   

@@ -6,7 +6,7 @@ import java.util.TreeSet;
 
 final class i
 {
-  final TreeSet<m> bvP;
+  final TreeSet<m> bGd;
   public final int id;
   public final String key;
   long length;
@@ -17,7 +17,7 @@ final class i
     this.id = paramInt;
     this.key = paramString;
     this.length = paramLong;
-    this.bvP = new TreeSet();
+    this.bGd = new TreeSet();
     AppMethodBeat.o(92977);
   }
   
@@ -31,7 +31,7 @@ final class i
   public final void a(m paramm)
   {
     AppMethodBeat.i(92978);
-    this.bvP.add(paramm);
+    this.bGd.add(paramm);
     AppMethodBeat.o(92978);
   }
   
@@ -39,13 +39,13 @@ final class i
   {
     AppMethodBeat.i(92979);
     m localm1 = m.j(this.key, paramLong);
-    m localm2 = (m)this.bvP.floor(localm1);
+    m localm2 = (m)this.bGd.floor(localm1);
     if ((localm2 != null) && (localm2.position + localm2.length > paramLong))
     {
       AppMethodBeat.o(92979);
       return localm2;
     }
-    localm1 = (m)this.bvP.ceiling(localm1);
+    localm1 = (m)this.bGd.ceiling(localm1);
     if (localm1 == null)
     {
       localm1 = m.k(this.key, paramLong);
@@ -57,7 +57,7 @@ final class i
     return localm1;
   }
   
-  public final int vo()
+  public final int wL()
   {
     AppMethodBeat.i(92980);
     int i = this.id;

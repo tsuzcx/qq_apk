@@ -48,14 +48,14 @@ public class b
   
   static File a(Context paramContext)
   {
-    AppMethodBeat.i(192451);
+    AppMethodBeat.i(190690);
     paramContext = new File(QbSdk.getTbsFolderDir(paramContext), "core_private");
     if ((!paramContext.isDirectory()) && (!paramContext.mkdir()))
     {
-      AppMethodBeat.o(192451);
+      AppMethodBeat.o(190690);
       return null;
     }
-    AppMethodBeat.o(192451);
+    AppMethodBeat.o(190690);
     return paramContext;
   }
   
@@ -637,7 +637,7 @@ public class b
   private static String b(Context paramContext)
   {
     int i = 0;
-    AppMethodBeat.i(192450);
+    AppMethodBeat.i(190689);
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 64).signatures[0].toByteArray();
@@ -656,7 +656,7 @@ public class b
           }
           else
           {
-            AppMethodBeat.o(192450);
+            AppMethodBeat.o(190689);
             return null;
           }
           while (i < paramContext.length)
@@ -672,14 +672,14 @@ public class b
             i += 1;
           }
           paramContext = ((StringBuilder)localObject).toString();
-          AppMethodBeat.o(192450);
+          AppMethodBeat.o(190689);
           return paramContext;
         }
       }
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(192450);
+      AppMethodBeat.o(190689);
     }
     return null;
   }

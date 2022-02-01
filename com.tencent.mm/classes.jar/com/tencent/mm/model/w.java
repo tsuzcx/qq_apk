@@ -2,151 +2,566 @@ package com.tencent.mm.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.g.c.az;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ba;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.n.b;
+import com.tencent.mm.o.b;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bva;
-import com.tencent.mm.protocal.protobuf.bvu;
-import com.tencent.mm.protocal.protobuf.bvv;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.protocal.protobuf.bzp;
+import com.tencent.mm.protocal.protobuf.cak;
+import com.tencent.mm.protocal.protobuf.cal;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.ca;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import junit.framework.Assert;
 
 public final class w
 {
-  private static ak hmM;
-  public static final String hmN;
-  public static final String hmO;
-  public static final String hmP;
-  public static final String hmQ;
-  public static final String hmR;
-  public static final String hmS;
-  public static final String hmT;
-  public static final String hmU;
-  public static final String hmV;
-  public static final String[] hmW;
+  private static al hFb;
+  private static HashMap<String, Boolean> hFc;
+  public static final String hFd;
+  public static final String hFe;
+  public static final String hFf;
+  public static final String hFg;
+  public static final String hFh;
+  public static final String hFi;
+  public static final String hFj;
+  public static final String hFk;
+  public static final String hFl;
+  public static final String[] hFm;
   
   static
   {
     AppMethodBeat.i(42931);
-    hmM = null;
-    hmN = b("rconversation.username", new String[] { "@im.chatroom", "@chatroom", "@openim", "@micromsg.qq.com" });
-    hmO = b("rconversation.username", new String[] { "@chatroom", "@micromsg.qq.com" });
-    hmP = b("rconversation.username", new String[] { "@t.qq.com" });
-    hmQ = b("rconversation.username", new String[] { "@qqim" });
-    hmR = b("rconversation.username", new String[] { "@chatroom_exclusive" });
-    hmS = b("rconversation.username", new String[] { "@micromsg.qq.com" });
-    hmT = b("rconversation.username", new String[] { "@app" });
-    hmU = b("rconversation.username", new String[] { "@chatroom" });
-    hmV = b("rconversation.username", new String[] { "@im.chatroom" });
-    hmW = new String[] { "qqmail", "fmessage", "tmessage", "qmessage", "qqsync", "floatbottle", "lbsapp", "shakeapp", "medianote", "qqfriend", "newsapp", "blogapp", "facebookapp", "topstoryapp", "masssendapp", "feedsapp", "voipapp", "cardpackage", "voicevoipapp", "voiceinputapp", "officialaccounts", "linkedinplugin", "notifymessage", "appbrandcustomerservicemsg", "appbrand_notify_message" };
+    hFb = null;
+    hFc = new HashMap();
+    hFd = b("rconversation.username", new String[] { "@im.chatroom", "@chatroom", "@openim", "@micromsg.qq.com" });
+    hFe = b("rconversation.username", new String[] { "@chatroom", "@micromsg.qq.com" });
+    hFf = b("rconversation.username", new String[] { "@t.qq.com" });
+    hFg = b("rconversation.username", new String[] { "@qqim" });
+    hFh = b("rconversation.username", new String[] { "@chatroom_exclusive" });
+    hFi = b("rconversation.username", new String[] { "@micromsg.qq.com" });
+    hFj = b("rconversation.username", new String[] { "@app" });
+    hFk = b("rconversation.username", new String[] { "@chatroom" });
+    hFl = b("rconversation.username", new String[] { "@im.chatroom" });
+    hFm = new String[] { "qqmail", "fmessage", "tmessage", "qmessage", "qqsync", "floatbottle", "lbsapp", "shakeapp", "medianote", "qqfriend", "newsapp", "blogapp", "facebookapp", "topstoryapp", "masssendapp", "feedsapp", "voipapp", "cardpackage", "voicevoipapp", "voiceinputapp", "officialaccounts", "linkedinplugin", "notifymessage", "appbrandcustomerservicemsg", "appbrand_notify_message" };
     AppMethodBeat.o(42931);
   }
   
-  public static bva A(ai paramai)
+  public static bzp A(am paramam)
   {
-    AppMethodBeat.i(194030);
-    ac.i("MicroMsg.ContactStorageLogic", "oplog modContact user:%s remark:%s type:%d ", new Object[] { paramai.field_username, paramai.field_conRemark, Integer.valueOf(paramai.field_type) });
-    bva localbva = new bva();
-    localbva.EuE = new crm().aJV(bs.nullAsNil(paramai.field_username));
-    localbva.Fbd = new crm().aJV(bs.nullAsNil(paramai.field_nickname));
-    localbva.EtY = new crm().aJV(bs.nullAsNil(paramai.To()));
-    localbva.EtZ = new crm().aJV(bs.nullAsNil(paramai.Tp()));
-    localbva.iJT = paramai.exL;
-    localbva.Etk = 9015167;
-    localbva.Etl = paramai.field_type;
-    localbva.Fkk = new crm().aJV(bs.nullAsNil(paramai.field_conRemark));
-    localbva.Fkl = new crm().aJV(bs.nullAsNil(paramai.field_conRemarkPYShort));
-    localbva.Fkm = new crm().aJV(bs.nullAsNil(paramai.field_conRemarkPYFull));
-    localbva.Etq = paramai.exQ;
-    localbva.FkE = new crm().aJV(bs.nullAsNil(paramai.field_domainList));
-    localbva.Etu = paramai.exT;
-    localbva.iJX = paramai.exU;
-    localbva.iJW = bs.nullAsNil(paramai.signature);
-    localbva.iJV = bs.nullAsNil(paramai.getCityCode());
-    localbva.iJU = bs.nullAsNil(paramai.fai());
-    localbva.Fes = bs.nullAsNil(paramai.exZ);
-    localbva.Feu = paramai.field_weiboFlag;
-    localbva.FkA = 0;
-    localbva.DPX = new SKBuiltinBuffer_t();
-    localbva.iKc = bs.nullAsNil(paramai.getCountryCode());
-    AppMethodBeat.o(194030);
-    return localbva;
+    AppMethodBeat.i(192531);
+    ad.i("MicroMsg.ContactStorageLogic", "oplog modContact user:%s remark:%s type:%d ", new Object[] { paramam.field_username, paramam.field_conRemark, Integer.valueOf(paramam.field_type) });
+    bzp localbzp = new bzp();
+    localbzp.GbY = new cwt().aPy(bt.nullAsNil(paramam.field_username));
+    localbzp.GKC = new cwt().aPy(bt.nullAsNil(paramam.field_nickname));
+    localbzp.Gbr = new cwt().aPy(bt.nullAsNil(paramam.VD()));
+    localbzp.Gbs = new cwt().aPy(bt.nullAsNil(paramam.VE()));
+    localbzp.jdc = paramam.ePk;
+    localbzp.GaB = 9015167;
+    localbzp.GaC = paramam.field_type;
+    localbzp.GTS = new cwt().aPy(bt.nullAsNil(paramam.field_conRemark));
+    localbzp.GTT = new cwt().aPy(bt.nullAsNil(paramam.field_conRemarkPYShort));
+    localbzp.GTU = new cwt().aPy(bt.nullAsNil(paramam.field_conRemarkPYFull));
+    localbzp.GaH = paramam.ePp;
+    localbzp.GUm = new cwt().aPy(bt.nullAsNil(paramam.field_domainList));
+    localbzp.GaL = paramam.ePs;
+    localbzp.jdg = paramam.ePt;
+    localbzp.jdf = bt.nullAsNil(paramam.signature);
+    localbzp.jde = bt.nullAsNil(paramam.getCityCode());
+    localbzp.jdd = bt.nullAsNil(paramam.fql());
+    localbzp.GNW = bt.nullAsNil(paramam.ePy);
+    localbzp.GNY = paramam.field_weiboFlag;
+    localbzp.GUi = 0;
+    localbzp.Fvm = new SKBuiltinBuffer_t();
+    localbzp.jdl = bt.nullAsNil(paramam.getCountryCode());
+    AppMethodBeat.o(192531);
+    return localbzp;
   }
   
-  public static void B(ai paramai)
+  public static boolean Aa(String paramString)
+  {
+    AppMethodBeat.i(42901);
+    boolean bool = Ab(paramString);
+    AppMethodBeat.o(42901);
+    return bool;
+  }
+  
+  public static boolean Ab(String paramString)
+  {
+    AppMethodBeat.i(42902);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("gh_22b87fa7cb3c");
+      AppMethodBeat.o(42902);
+      return bool;
+    }
+    AppMethodBeat.o(42902);
+    return false;
+  }
+  
+  public static boolean Ac(String paramString)
+  {
+    AppMethodBeat.i(42903);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("blogapp");
+      AppMethodBeat.o(42903);
+      return bool;
+    }
+    AppMethodBeat.o(42903);
+    return false;
+  }
+  
+  public static boolean Ad(String paramString)
+  {
+    AppMethodBeat.i(42904);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("officialaccounts");
+      AppMethodBeat.o(42904);
+      return bool;
+    }
+    AppMethodBeat.o(42904);
+    return false;
+  }
+  
+  public static boolean Ae(String paramString)
+  {
+    AppMethodBeat.i(42905);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("helper_entry");
+      AppMethodBeat.o(42905);
+      return bool;
+    }
+    AppMethodBeat.o(42905);
+    return false;
+  }
+  
+  public static boolean Af(String paramString)
+  {
+    AppMethodBeat.i(42906);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("qqfriend");
+      AppMethodBeat.o(42906);
+      return bool;
+    }
+    AppMethodBeat.o(42906);
+    return false;
+  }
+  
+  public static boolean Ag(String paramString)
+  {
+    AppMethodBeat.i(42907);
+    boolean bool = "filehelper".equalsIgnoreCase(paramString);
+    AppMethodBeat.o(42907);
+    return bool;
+  }
+  
+  public static boolean Ah(String paramString)
+  {
+    AppMethodBeat.i(42908);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("pc_share");
+      AppMethodBeat.o(42908);
+      return bool;
+    }
+    AppMethodBeat.o(42908);
+    return false;
+  }
+  
+  public static boolean Ai(String paramString)
+  {
+    AppMethodBeat.i(42909);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("notifymessage");
+      AppMethodBeat.o(42909);
+      return bool;
+    }
+    AppMethodBeat.o(42909);
+    return false;
+  }
+  
+  public static boolean Aj(String paramString)
+  {
+    AppMethodBeat.i(42910);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("notification_messages");
+      AppMethodBeat.o(42910);
+      return bool;
+    }
+    AppMethodBeat.o(42910);
+    return false;
+  }
+  
+  public static boolean Ak(String paramString)
+  {
+    AppMethodBeat.i(42911);
+    if (Al(paramString))
+    {
+      AppMethodBeat.o(42911);
+      return true;
+    }
+    if (Ap(paramString))
+    {
+      AppMethodBeat.o(42911);
+      return true;
+    }
+    if (Ad(paramString))
+    {
+      AppMethodBeat.o(42911);
+      return true;
+    }
+    if (Ae(paramString))
+    {
+      AppMethodBeat.o(42911);
+      return true;
+    }
+    AppMethodBeat.o(42911);
+    return false;
+  }
+  
+  public static boolean Al(String paramString)
+  {
+    AppMethodBeat.i(42912);
+    g.ajD();
+    String str = (String)g.ajC().ajl().get(21, null);
+    if (((str != null) && (str.equalsIgnoreCase(paramString))) || (paramString.equalsIgnoreCase("weixin")))
+    {
+      AppMethodBeat.o(42912);
+      return true;
+    }
+    AppMethodBeat.o(42912);
+    return false;
+  }
+  
+  public static boolean Am(String paramString)
+  {
+    AppMethodBeat.i(42913);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("appbrandcustomerservicemsg");
+      AppMethodBeat.o(42913);
+      return bool;
+    }
+    AppMethodBeat.o(42913);
+    return false;
+  }
+  
+  public static boolean An(String paramString)
+  {
+    AppMethodBeat.i(192534);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("appbrand_notify_message");
+      AppMethodBeat.o(192534);
+      return bool;
+    }
+    AppMethodBeat.o(192534);
+    return false;
+  }
+  
+  public static boolean Ao(String paramString)
+  {
+    AppMethodBeat.i(192535);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("findersayhisessionholder");
+      AppMethodBeat.o(192535);
+      return bool;
+    }
+    AppMethodBeat.o(192535);
+    return false;
+  }
+  
+  public static boolean Ap(String paramString)
+  {
+    AppMethodBeat.i(42914);
+    String[] arrayOfString = hFm;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (arrayOfString[i].equalsIgnoreCase(paramString))
+      {
+        AppMethodBeat.o(42914);
+        return true;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(42914);
+    return false;
+  }
+  
+  public static boolean Aq(String paramString)
+  {
+    AppMethodBeat.i(42915);
+    if (Ap(paramString))
+    {
+      AppMethodBeat.o(42915);
+      return true;
+    }
+    if (am.aSP(paramString))
+    {
+      AppMethodBeat.o(42915);
+      return true;
+    }
+    if (am.aSN(paramString))
+    {
+      AppMethodBeat.o(42915);
+      return true;
+    }
+    if (am.zs(paramString))
+    {
+      AppMethodBeat.o(42915);
+      return true;
+    }
+    AppMethodBeat.o(42915);
+    return false;
+  }
+  
+  public static int Ar(String paramString)
+  {
+    AppMethodBeat.i(42916);
+    if (bt.nullAsNil(paramString).length() > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      paramString = paramString.trim().toLowerCase();
+      if (!paramString.endsWith("@chatroom")) {
+        break;
+      }
+      AppMethodBeat.o(42916);
+      return 1;
+    }
+    if (am.aSN(paramString))
+    {
+      AppMethodBeat.o(42916);
+      return 11;
+    }
+    if (am.aSP(paramString))
+    {
+      AppMethodBeat.o(42916);
+      return 36;
+    }
+    if (am.zs(paramString))
+    {
+      AppMethodBeat.o(42916);
+      return 1;
+    }
+    AppMethodBeat.o(42916);
+    return 1;
+  }
+  
+  public static int As(String paramString)
+  {
+    AppMethodBeat.i(42917);
+    if (bt.nullAsNil(paramString).length() > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      paramString = paramString.trim().toLowerCase();
+      if (!paramString.endsWith("@chatroom")) {
+        break;
+      }
+      AppMethodBeat.o(42917);
+      return 3;
+    }
+    if (am.aSN(paramString))
+    {
+      AppMethodBeat.o(42917);
+      return 13;
+    }
+    if (am.aSP(paramString))
+    {
+      AppMethodBeat.o(42917);
+      return 39;
+    }
+    if (am.zs(paramString))
+    {
+      AppMethodBeat.o(42917);
+      return 3;
+    }
+    if (paramString.contains("@"))
+    {
+      AppMethodBeat.o(42917);
+      return 3;
+    }
+    AppMethodBeat.o(42917);
+    return 3;
+  }
+  
+  public static boolean At(String paramString)
+  {
+    AppMethodBeat.i(42918);
+    if (((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramString).ePs != 1)
+    {
+      AppMethodBeat.o(42918);
+      return false;
+    }
+    AppMethodBeat.o(42918);
+    return true;
+  }
+  
+  public static boolean Au(String paramString)
+  {
+    AppMethodBeat.i(42919);
+    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramString);
+    if ((paramString != null) && (paramString.Pf()))
+    {
+      AppMethodBeat.o(42919);
+      return true;
+    }
+    AppMethodBeat.o(42919);
+    return false;
+  }
+  
+  public static boolean Av(String paramString)
+  {
+    AppMethodBeat.i(42920);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(42920);
+      return false;
+    }
+    if ((paramString.startsWith("t.qq.com/")) || (paramString.startsWith("http://t.qq.com/")))
+    {
+      AppMethodBeat.o(42920);
+      return true;
+    }
+    AppMethodBeat.o(42920);
+    return false;
+  }
+  
+  public static String Aw(String paramString)
+  {
+    AppMethodBeat.i(42921);
+    if (Av(paramString))
+    {
+      paramString = paramString.replace("http://t.qq.com/", "").replace("t.qq.com/", "");
+      AppMethodBeat.o(42921);
+      return paramString;
+    }
+    AppMethodBeat.o(42921);
+    return "";
+  }
+  
+  public static boolean Ax(String paramString)
+  {
+    AppMethodBeat.i(42930);
+    if ((paramString.equals("weixinsrc")) || (paramString.equalsIgnoreCase("gh_6e99ff560306")))
+    {
+      AppMethodBeat.o(42930);
+      return true;
+    }
+    AppMethodBeat.o(42930);
+    return false;
+  }
+  
+  public static boolean Ay(String paramString)
+  {
+    AppMethodBeat.i(178868);
+    paramString = ((c)g.ab(c.class)).azz().AN(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(178868);
+      return false;
+    }
+    boolean bool = paramString.YH();
+    AppMethodBeat.o(178868);
+    return bool;
+  }
+  
+  public static boolean Az(String paramString)
+  {
+    AppMethodBeat.i(184702);
+    paramString = ((c)g.ab(c.class)).azz().AN(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(184702);
+      return false;
+    }
+    boolean bool = paramString.Az(u.aAm());
+    AppMethodBeat.o(184702);
+    return bool;
+  }
+  
+  public static void B(am paramam)
   {
     AppMethodBeat.i(42874);
-    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awA().c(new j.a(2, A(paramai)));
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new k.a(2, A(paramam)));
     AppMethodBeat.o(42874);
   }
   
   public static void C(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(42853);
-    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString);
-    if ((paramString == null) || (bs.isNullOrNil(paramString.field_username)))
+    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramString);
+    if ((paramString == null) || (bt.isNullOrNil(paramString.field_username)))
     {
       AppMethodBeat.o(42853);
       return;
     }
     if (paramBoolean) {
-      paramString.aau();
+      paramString.acW();
     }
     for (;;)
     {
       x(paramString);
       AppMethodBeat.o(42853);
       return;
-      paramString.aav();
+      paramString.acX();
     }
   }
   
-  public static boolean C(ai paramai)
+  public static boolean C(am paramam)
   {
-    return (paramai.field_weiboFlag & 0x1) != 0;
+    return (paramam.field_weiboFlag & 0x1) != 0;
   }
   
   public static void D(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(42862);
-    if (!bs.isNullOrNil(paramString)) {}
-    ai localai;
+    if (!bt.isNullOrNil(paramString)) {}
+    am localam;
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString);
-      if ((localai != null) && (!bs.isNullOrNil(localai.field_username))) {
+      localam = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramString);
+      if ((localam != null) && (!bt.isNullOrNil(localam.field_username))) {
         break;
       }
       AppMethodBeat.o(42862);
       return;
     }
-    localai.setType(localai.field_type | 0x800);
-    if (((ai.aNc(paramString)) || (wq(paramString))) && (hmM != null)) {
-      hmM.xV(paramString);
+    localam.setType(localam.field_type | 0x800);
+    if (((am.aSQ(paramString)) || (zl(paramString))) && (hFb != null)) {
+      hFb.AV(paramString);
     }
-    z(localai);
+    z(localam);
     if (paramBoolean) {
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().aNO(paramString);
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azv().aTF(paramString);
     }
     AppMethodBeat.o(42862);
   }
@@ -154,64 +569,64 @@ public final class w
   public static void E(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(42864);
-    if (!bs.isNullOrNil(paramString)) {}
-    ai localai;
+    if (!bt.isNullOrNil(paramString)) {}
+    am localam;
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString);
-      if ((localai != null) && (!bs.isNullOrNil(localai.field_username))) {
+      localam = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramString);
+      if ((localam != null) && (!bt.isNullOrNil(localam.field_username))) {
         break;
       }
       AppMethodBeat.o(42864);
       return;
     }
-    localai.setType(localai.field_type & 0xFFFFF7FF);
-    if (((ai.aNc(paramString)) || (wq(paramString))) && (hmM != null)) {
-      hmM.xW(paramString);
+    localam.setType(localam.field_type & 0xFFFFF7FF);
+    if (((am.aSQ(paramString)) || (zl(paramString))) && (hFb != null)) {
+      hFb.AW(paramString);
     }
-    z(localai);
+    z(localam);
     if (paramBoolean) {
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().aNP(paramString);
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azv().aTG(paramString);
     }
     AppMethodBeat.o(42864);
   }
   
-  public static void a(ak paramak)
+  public static void a(al paramal)
   {
-    hmM = paramak;
+    hFb = paramal;
   }
   
-  public static boolean a(ap paramap)
+  public static boolean a(at paramat)
   {
     AppMethodBeat.i(42926);
-    String str = paramap.field_username;
-    if (xr(str))
+    String str = paramat.field_username;
+    if (Ap(str))
     {
       AppMethodBeat.o(42926);
       return false;
     }
-    if (xo(str))
+    if (Al(str))
     {
       AppMethodBeat.o(42926);
       return false;
     }
-    if (xg(str))
+    if (Ad(str))
     {
       AppMethodBeat.o(42926);
       return false;
     }
-    if (xh(str))
+    if (Ae(str))
     {
       AppMethodBeat.o(42926);
       return false;
     }
-    if (paramap.field_conversationTime == -1L)
+    if (paramat.field_conversationTime == -1L)
     {
       AppMethodBeat.o(42926);
       return false;
     }
-    if (wH(str))
+    if (zE(str))
     {
       AppMethodBeat.o(42926);
       return true;
@@ -223,13 +638,13 @@ public final class w
   public static int[] a(String paramString1, String paramString2, List<String> paramList, String[] paramArrayOfString)
   {
     AppMethodBeat.i(42878);
-    int[] arrayOfInt = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().b(paramString1, paramString2, paramArrayOfString, paramList);
+    int[] arrayOfInt = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().b(paramString1, paramString2, paramArrayOfString, paramList);
     if (arrayOfInt.length <= 0)
     {
       AppMethodBeat.o(42878);
       return null;
     }
-    paramString1 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().c(paramString1, paramString2, paramArrayOfString, paramList);
+    paramString1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().c(paramString1, paramString2, paramArrayOfString, paramList);
     if (paramString1 == null)
     {
       AppMethodBeat.o(42878);
@@ -257,27 +672,27 @@ public final class w
   
   public static int[] a(String[] paramArrayOfString, String paramString1, String paramString2, List<String> paramList, String paramString3)
   {
-    AppMethodBeat.i(194031);
+    AppMethodBeat.i(192532);
     long l = System.currentTimeMillis();
-    int[] arrayOfInt = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().b(paramArrayOfString, paramString1, paramString2, paramString3, paramList);
-    ac.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getShowHeadDistinct(" + (System.currentTimeMillis() - l));
+    int[] arrayOfInt = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().b(paramArrayOfString, paramString1, paramString2, paramString3, paramList);
+    ad.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getShowHeadDistinct(" + (System.currentTimeMillis() - l));
     if (arrayOfInt.length <= 0)
     {
-      AppMethodBeat.o(194031);
+      AppMethodBeat.o(192532);
       return null;
     }
     l = System.currentTimeMillis();
-    paramArrayOfString = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().c(paramArrayOfString, paramString1, paramString2, paramString3, paramList);
-    ac.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getSectionNumByShowHead" + (System.currentTimeMillis() - l));
+    paramArrayOfString = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().c(paramArrayOfString, paramString1, paramString2, paramString3, paramList);
+    ad.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getSectionNumByShowHead" + (System.currentTimeMillis() - l));
     if (paramArrayOfString == null)
     {
-      AppMethodBeat.o(194031);
+      AppMethodBeat.o(192532);
       return null;
     }
     if (arrayOfInt.length != paramArrayOfString.length)
     {
-      ac.e("MicroMsg.ContactStorageLogic", "[%s:%s] filterType:%s filterSearchStr:%s blocklist:%s searchString:%s", new Object[] { Integer.valueOf(arrayOfInt.length), Integer.valueOf(paramArrayOfString.length), paramString1, paramString2, paramList, paramString3 });
-      AppMethodBeat.o(194031);
+      ad.e("MicroMsg.ContactStorageLogic", "[%s:%s] filterType:%s filterSearchStr:%s blocklist:%s searchString:%s", new Object[] { Integer.valueOf(arrayOfInt.length), Integer.valueOf(paramArrayOfString.length), paramString1, paramString2, paramList, paramString3 });
+      AppMethodBeat.o(192532);
       return null;
     }
     paramString1 = new int[paramArrayOfString.length];
@@ -291,7 +706,7 @@ public final class w
       j += 1;
       i += 1;
     }
-    AppMethodBeat.o(194031);
+    AppMethodBeat.o(192532);
     return paramString1;
   }
   
@@ -299,8 +714,8 @@ public final class w
   {
     AppMethodBeat.i(42879);
     long l = System.currentTimeMillis();
-    paramString1 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().b(paramString1, paramString2, paramArrayOfString, paramList);
-    ac.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getShowSectionByShowHead" + (System.currentTimeMillis() - l));
+    paramString1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().b(paramString1, paramString2, paramArrayOfString, paramList);
+    ad.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getShowSectionByShowHead" + (System.currentTimeMillis() - l));
     if (paramString1.length <= 0)
     {
       AppMethodBeat.o(42879);
@@ -343,13 +758,13 @@ public final class w
   
   public static String[] a(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, List<String> paramList)
   {
-    AppMethodBeat.i(194032);
+    AppMethodBeat.i(192533);
     long l = System.currentTimeMillis();
-    paramArrayOfString = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().b(paramArrayOfString, paramString1, paramString2, paramString3, paramList);
-    ac.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getShowSectionByShowHead" + (System.currentTimeMillis() - l));
+    paramArrayOfString = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().b(paramArrayOfString, paramString1, paramString2, paramString3, paramList);
+    ad.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getShowSectionByShowHead" + (System.currentTimeMillis() - l));
     if (paramArrayOfString.length <= 0)
     {
-      AppMethodBeat.o(194032);
+      AppMethodBeat.o(192533);
       return null;
     }
     paramString1 = new String[paramArrayOfString.length];
@@ -383,24 +798,147 @@ public final class w
         }
       }
     }
-    AppMethodBeat.o(194032);
+    AppMethodBeat.o(192533);
     return paramString1;
   }
   
-  public static int[] af(List<String> paramList)
+  public static List<String> aBh()
+  {
+    AppMethodBeat.i(42846);
+    List localList = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().fqt();
+    AppMethodBeat.o(42846);
+    return localList;
+  }
+  
+  public static List<am> aBi()
+  {
+    AppMethodBeat.i(42847);
+    ArrayList localArrayList = new ArrayList();
+    Cursor localCursor = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().fqu();
+    if (localCursor.moveToFirst()) {
+      do
+      {
+        am localam = new am();
+        localam.convertFrom(localCursor);
+        localArrayList.add(localam);
+      } while (localCursor.moveToNext());
+    }
+    localCursor.close();
+    AppMethodBeat.o(42847);
+    return localArrayList;
+  }
+  
+  public static boolean aBj()
+  {
+    return false;
+  }
+  
+  public static boolean aBk()
+  {
+    AppMethodBeat.i(42922);
+    if (!u.aAZ())
+    {
+      AppMethodBeat.o(42922);
+      return false;
+    }
+    ca localca = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azy().aqy("@t.qq.com");
+    if ((localca == null) || (bt.isNullOrNil(localca.name)))
+    {
+      AppMethodBeat.o(42922);
+      return false;
+    }
+    AppMethodBeat.o(42922);
+    return true;
+  }
+  
+  public static boolean aBl()
+  {
+    AppMethodBeat.i(42923);
+    if (!u.aAZ())
+    {
+      AppMethodBeat.o(42923);
+      return false;
+    }
+    ca localca = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azy().aqy("@t.qq.com");
+    if ((localca == null) || (bt.nullAsNil(localca.name).length() == 0))
+    {
+      AppMethodBeat.o(42923);
+      return false;
+    }
+    AppMethodBeat.o(42923);
+    return true;
+  }
+  
+  public static List<am> aBm()
+  {
+    AppMethodBeat.i(42924);
+    LinkedList localLinkedList = new LinkedList();
+    Cursor localCursor = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().fqx();
+    if (localCursor.getCount() == 0)
+    {
+      localCursor.close();
+      AppMethodBeat.o(42924);
+      return localLinkedList;
+    }
+    localCursor.moveToFirst();
+    do
+    {
+      am localam = new am();
+      localam.convertFrom(localCursor);
+      localLinkedList.add(localam);
+    } while (localCursor.moveToNext());
+    localCursor.close();
+    ad.d("MicroMsg.ContactStorageLogic", "getFavourList size:  " + localLinkedList.size());
+    AppMethodBeat.o(42924);
+    return localLinkedList;
+  }
+  
+  public static List<String> aBn()
+  {
+    AppMethodBeat.i(42925);
+    LinkedList localLinkedList = new LinkedList();
+    Cursor localCursor = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().fqv();
+    if (localCursor.getCount() == 0)
+    {
+      localCursor.close();
+      AppMethodBeat.o(42925);
+      return localLinkedList;
+    }
+    localCursor.moveToFirst();
+    do
+    {
+      am localam = new am();
+      localam.convertFrom(localCursor);
+      localLinkedList.add(localam.field_username);
+    } while (localCursor.moveToNext());
+    localCursor.close();
+    ad.d("MicroMsg.ContactStorageLogic", "getSnsBlackContactList size:  " + localLinkedList.size());
+    AppMethodBeat.o(42925);
+    return localLinkedList;
+  }
+  
+  public static int aBo()
+  {
+    AppMethodBeat.i(42928);
+    int i = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().c(hFm, new String[] { u.aAm(), "weixin", "helper_entry", "filehelper" });
+    AppMethodBeat.o(42928);
+    return i;
+  }
+  
+  public static int[] ag(List<String> paramList)
   {
     AppMethodBeat.i(42877);
     long l = System.currentTimeMillis();
-    int[] arrayOfInt1 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().hv(paramList);
-    ac.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getShowHeadDistinct(" + (System.currentTimeMillis() - l));
+    int[] arrayOfInt1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().hH(paramList);
+    ad.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getShowHeadDistinct(" + (System.currentTimeMillis() - l));
     if (arrayOfInt1.length <= 0)
     {
       AppMethodBeat.o(42877);
       return null;
     }
     l = System.currentTimeMillis();
-    paramList = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().hw(paramList);
-    ac.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getSectionNumByShowHead" + (System.currentTimeMillis() - l));
+    paramList = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().hI(paramList);
+    ad.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getSectionNumByShowHead" + (System.currentTimeMillis() - l));
     if (paramList == null)
     {
       AppMethodBeat.o(42877);
@@ -427,12 +965,12 @@ public final class w
     return arrayOfInt2;
   }
   
-  public static String[] ag(List<String> paramList)
+  public static String[] ah(List<String> paramList)
   {
     AppMethodBeat.i(42881);
     long l = System.currentTimeMillis();
-    paramList = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().hv(paramList);
-    ac.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getShowSectionByShowHead" + (System.currentTimeMillis() - l));
+    paramList = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().hH(paramList);
+    ad.d("MicroMsg.ContactStorageLogic", "kevin service(IMessengerStorage.class).getContactStg().getShowSectionByShowHead" + (System.currentTimeMillis() - l));
     if (paramList.length <= 0)
     {
       AppMethodBeat.o(42881);
@@ -471,129 +1009,6 @@ public final class w
     }
     AppMethodBeat.o(42881);
     return arrayOfString;
-  }
-  
-  public static List<String> ayh()
-  {
-    AppMethodBeat.i(42846);
-    List localList = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().faq();
-    AppMethodBeat.o(42846);
-    return localList;
-  }
-  
-  public static List<ai> ayi()
-  {
-    AppMethodBeat.i(42847);
-    ArrayList localArrayList = new ArrayList();
-    Cursor localCursor = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().far();
-    if (localCursor.moveToFirst()) {
-      do
-      {
-        ai localai = new ai();
-        localai.convertFrom(localCursor);
-        localArrayList.add(localai);
-      } while (localCursor.moveToNext());
-    }
-    localCursor.close();
-    AppMethodBeat.o(42847);
-    return localArrayList;
-  }
-  
-  public static boolean ayj()
-  {
-    return false;
-  }
-  
-  public static boolean ayk()
-  {
-    AppMethodBeat.i(42922);
-    if (!u.ayd())
-    {
-      AppMethodBeat.o(42922);
-      return false;
-    }
-    bu localbu = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awJ().alJ("@t.qq.com");
-    if ((localbu == null) || (bs.isNullOrNil(localbu.name)))
-    {
-      AppMethodBeat.o(42922);
-      return false;
-    }
-    AppMethodBeat.o(42922);
-    return true;
-  }
-  
-  public static boolean ayl()
-  {
-    AppMethodBeat.i(42923);
-    if (!u.ayd())
-    {
-      AppMethodBeat.o(42923);
-      return false;
-    }
-    bu localbu = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awJ().alJ("@t.qq.com");
-    if ((localbu == null) || (bs.nullAsNil(localbu.name).length() == 0))
-    {
-      AppMethodBeat.o(42923);
-      return false;
-    }
-    AppMethodBeat.o(42923);
-    return true;
-  }
-  
-  public static List<ai> aym()
-  {
-    AppMethodBeat.i(42924);
-    LinkedList localLinkedList = new LinkedList();
-    Cursor localCursor = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().fau();
-    if (localCursor.getCount() == 0)
-    {
-      localCursor.close();
-      AppMethodBeat.o(42924);
-      return localLinkedList;
-    }
-    localCursor.moveToFirst();
-    do
-    {
-      ai localai = new ai();
-      localai.convertFrom(localCursor);
-      localLinkedList.add(localai);
-    } while (localCursor.moveToNext());
-    localCursor.close();
-    ac.d("MicroMsg.ContactStorageLogic", "getFavourList size:  " + localLinkedList.size());
-    AppMethodBeat.o(42924);
-    return localLinkedList;
-  }
-  
-  public static List<String> ayn()
-  {
-    AppMethodBeat.i(42925);
-    LinkedList localLinkedList = new LinkedList();
-    Cursor localCursor = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().fas();
-    if (localCursor.getCount() == 0)
-    {
-      localCursor.close();
-      AppMethodBeat.o(42925);
-      return localLinkedList;
-    }
-    localCursor.moveToFirst();
-    do
-    {
-      ai localai = new ai();
-      localai.convertFrom(localCursor);
-      localLinkedList.add(localai.field_username);
-    } while (localCursor.moveToNext());
-    localCursor.close();
-    ac.d("MicroMsg.ContactStorageLogic", "getSnsBlackContactList size:  " + localLinkedList.size());
-    AppMethodBeat.o(42925);
-    return localLinkedList;
-  }
-  
-  public static int ayo()
-  {
-    AppMethodBeat.i(42928);
-    int i = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().c(hmW, new String[] { u.axw(), "weixin", "helper_entry", "filehelper" });
-    AppMethodBeat.o(42928);
-    return i;
   }
   
   private static String b(String paramString, String[] paramArrayOfString)
@@ -660,21 +1075,21 @@ public final class w
     return paramString;
   }
   
-  public static boolean b(ap paramap)
+  public static boolean b(at paramat)
   {
     AppMethodBeat.i(42927);
-    paramap = paramap.field_username;
-    if (xg(paramap))
+    paramat = paramat.field_username;
+    if (Ad(paramat))
     {
       AppMethodBeat.o(42927);
       return false;
     }
-    if (xp(paramap))
+    if (Am(paramat))
     {
       AppMethodBeat.o(42927);
       return false;
     }
-    if (xq(paramap))
+    if (An(paramat))
     {
       AppMethodBeat.o(42927);
       return false;
@@ -683,38 +1098,38 @@ public final class w
     return true;
   }
   
-  public static void c(ai paramai, String paramString)
+  public static void c(am paramam, String paramString)
   {
     AppMethodBeat.i(42869);
-    ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-    if ((localai != null) && (paramString != null)) {}
+    am localam = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+    if ((localam != null) && (paramString != null)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      localai.qh(paramString);
-      if ((ai.aNc(paramai.field_username)) && (hmM != null)) {
-        hmM.aI(paramai.field_username, paramString);
+      localam.sR(paramString);
+      if ((am.aSQ(paramam.field_username)) && (hFb != null)) {
+        hFb.aL(paramam.field_username, paramString);
       }
-      z(localai);
+      z(localam);
       AppMethodBeat.o(42869);
       return;
     }
   }
   
-  public static boolean i(ai paramai)
+  public static boolean i(am paramam)
   {
     AppMethodBeat.i(42840);
-    if (paramai == null)
+    if (paramam == null)
     {
       AppMethodBeat.o(42840);
       return false;
     }
-    if (!wo(paramai.field_username))
+    if (!zj(paramam.field_username))
     {
       AppMethodBeat.o(42840);
       return false;
     }
-    if (!b.ln(paramai.field_type))
+    if (!b.lM(paramam.field_type))
     {
       AppMethodBeat.o(42840);
       return false;
@@ -723,28 +1138,28 @@ public final class w
     return true;
   }
   
-  public static void j(ai paramai)
+  public static void j(am paramam)
   {
     AppMethodBeat.i(42852);
     boolean bool;
-    ai localai2;
-    if (paramai != null)
+    am localam2;
+    if (paramam != null)
     {
       bool = true;
       Assert.assertTrue(bool);
-      localai2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      localai1 = paramai;
-      if (localai2 != null) {
-        if (!bs.isNullOrNil(localai2.field_username)) {
+      localam2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      localam1 = paramam;
+      if (localam2 != null) {
+        if (!bt.isNullOrNil(localam2.field_username)) {
           break label78;
         }
       }
     }
     label78:
-    for (ai localai1 = paramai;; localai1 = localai2)
+    for (am localam1 = paramam;; localam1 = localam2)
     {
-      localai1.aal();
-      z(localai1);
+      localam1.acN();
+      z(localam1);
       AppMethodBeat.o(42852);
       return;
       bool = false;
@@ -752,28 +1167,28 @@ public final class w
     }
   }
   
-  public static void k(ai paramai)
+  public static void k(am paramam)
   {
     AppMethodBeat.i(42854);
     boolean bool;
-    ai localai2;
-    if (paramai != null)
+    am localam2;
+    if (paramam != null)
     {
       bool = true;
       Assert.assertTrue(bool);
-      localai2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      localai1 = paramai;
-      if (localai2 != null) {
-        if (!bs.isNullOrNil(localai2.field_username)) {
+      localam2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      localam1 = paramam;
+      if (localam2 != null) {
+        if (!bt.isNullOrNil(localam2.field_username)) {
           break label78;
         }
       }
     }
     label78:
-    for (ai localai1 = paramai;; localai1 = localai2)
+    for (am localam1 = paramam;; localam1 = localam2)
     {
-      localai1.aaj();
-      z(localai1);
+      localam1.acL();
+      z(localam1);
       AppMethodBeat.o(42854);
       return;
       bool = false;
@@ -781,28 +1196,28 @@ public final class w
     }
   }
   
-  public static void l(ai paramai)
+  public static void l(am paramam)
   {
     AppMethodBeat.i(42855);
     boolean bool;
-    ai localai2;
-    if (paramai != null)
+    am localam2;
+    if (paramam != null)
     {
       bool = true;
       Assert.assertTrue(bool);
-      localai2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      localai1 = paramai;
-      if (localai2 != null) {
-        if (!bs.isNullOrNil(localai2.field_username)) {
+      localam2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      localam1 = paramam;
+      if (localam2 != null) {
+        if (!bt.isNullOrNil(localam2.field_username)) {
           break label78;
         }
       }
     }
     label78:
-    for (ai localai1 = paramai;; localai1 = localai2)
+    for (am localam1 = paramam;; localam1 = localam2)
     {
-      localai1.aak();
-      z(localai1);
+      localam1.acM();
+      z(localam1);
       AppMethodBeat.o(42855);
       return;
       bool = false;
@@ -810,213 +1225,310 @@ public final class w
     }
   }
   
-  public static void m(ai paramai)
+  public static void m(am paramam)
   {
     AppMethodBeat.i(42856);
-    if (paramai != null) {}
+    if (paramam != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ai localai2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      ai localai1;
-      if (localai2 != null)
+      am localam2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      am localam1;
+      if (localam2 != null)
       {
-        localai1 = localai2;
-        if (!bs.isNullOrNil(localai2.field_username)) {}
+        localam1 = localam2;
+        if (!bt.isNullOrNil(localam2.field_username)) {}
       }
       else
       {
-        localai1 = paramai;
+        localam1 = paramam;
       }
-      localai1.aah();
-      if ((ai.aNc(paramai.field_username)) && (hmM != null)) {
-        hmM.xX(paramai.field_username);
+      localam1.acJ();
+      if ((am.aSQ(paramam.field_username)) && (hFb != null)) {
+        hFb.AX(paramam.field_username);
       }
-      z(localai1);
+      z(localam1);
       AppMethodBeat.o(42856);
       return;
     }
   }
   
-  public static void n(ai paramai)
+  public static void n(am paramam)
   {
     AppMethodBeat.i(42857);
-    if (paramai != null) {}
+    if (paramam != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ai localai2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      ai localai1;
-      if (localai2 != null)
+      am localam2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      am localam1;
+      if (localam2 != null)
       {
-        localai1 = localai2;
-        if (!bs.isNullOrNil(localai2.field_username)) {}
+        localam1 = localam2;
+        if (!bt.isNullOrNil(localam2.field_username)) {}
       }
       else
       {
-        localai1 = paramai;
+        localam1 = paramam;
       }
-      localai1.aai();
-      if ((ai.aNc(paramai.field_username)) && (hmM != null)) {
-        hmM.xY(paramai.field_username);
+      localam1.acK();
+      if ((am.aSQ(paramam.field_username)) && (hFb != null)) {
+        hFb.AY(paramam.field_username);
       }
-      z(localai1);
-      paramai = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().aNI(paramai.field_username);
-      if ((paramai != null) && ("@blacklist".equals(paramai.field_parentRef))) {
-        ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().c(new String[] { paramai.field_username }, "");
+      z(localam1);
+      paramam = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azv().aTz(paramam.field_username);
+      if ((paramam != null) && ("@blacklist".equals(paramam.field_parentRef))) {
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azv().c(new String[] { paramam.field_username }, "");
       }
       AppMethodBeat.o(42857);
       return;
     }
   }
   
-  public static boolean nN(int paramInt)
-  {
-    AppMethodBeat.i(42851);
-    boolean bool = ai.YI(paramInt);
-    AppMethodBeat.o(42851);
-    return bool;
-  }
-  
-  public static void o(ai paramai)
+  public static void o(am paramam)
   {
     AppMethodBeat.i(42858);
-    if (paramai != null) {}
+    if (paramam != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ai localai2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      ai localai1;
-      if (localai2 != null)
+      am localam2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      am localam1;
+      if (localam2 != null)
       {
-        localai1 = localai2;
-        if (!bs.isNullOrNil(localai2.field_username)) {}
+        localam1 = localam2;
+        if (!bt.isNullOrNil(localam2.field_username)) {}
       }
       else
       {
-        localai1 = paramai;
+        localam1 = paramam;
       }
-      localai1.aau();
-      localai1.jB(paramai.aac());
-      x(localai1);
+      localam1.acW();
+      localam1.jZ(paramam.acE());
+      x(localam1);
       AppMethodBeat.o(42858);
       return;
     }
   }
   
-  public static void p(ai paramai)
+  public static boolean on(int paramInt)
+  {
+    AppMethodBeat.i(42851);
+    boolean bool = am.aaR(paramInt);
+    AppMethodBeat.o(42851);
+    return bool;
+  }
+  
+  public static void p(am paramam)
   {
     AppMethodBeat.i(42859);
-    if (paramai != null) {}
+    if (paramam != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ai localai2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      ai localai1;
-      if (localai2 != null)
+      am localam2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      am localam1;
+      if (localam2 != null)
       {
-        localai1 = localai2;
-        if (!bs.isNullOrNil(localai2.field_username)) {}
+        localam1 = localam2;
+        if (!bt.isNullOrNil(localam2.field_username)) {}
       }
       else
       {
-        localai1 = paramai;
+        localam1 = paramam;
       }
-      localai1.aav();
-      localai1.jB(paramai.aac());
-      x(localai1);
+      localam1.acX();
+      localam1.jZ(paramam.acE());
+      x(localam1);
       AppMethodBeat.o(42859);
       return;
     }
   }
   
-  public static void q(ai paramai)
+  public static void q(am paramam)
   {
     AppMethodBeat.i(42860);
-    if (paramai != null) {}
+    if (paramam != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ai localai2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      ai localai1;
-      if (localai2 != null)
+      am localam2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      am localam1;
+      if (localam2 != null)
       {
-        localai1 = localai2;
-        if (!bs.isNullOrNil(localai2.field_username)) {}
+        localam1 = localam2;
+        if (!bt.isNullOrNil(localam2.field_username)) {}
       }
       else
       {
-        localai1 = paramai;
+        localam1 = paramam;
       }
-      localai1.aaq();
-      localai1.jB(paramai.aac());
-      if ((ai.aNc(paramai.field_username)) && (hmM != null)) {
-        hmM.xZ(paramai.field_username);
+      localam1.acS();
+      localam1.jZ(paramam.acE());
+      if ((am.aSQ(paramam.field_username)) && (hFb != null)) {
+        hFb.AZ(paramam.field_username);
       }
-      z(localai1);
+      z(localam1);
       AppMethodBeat.o(42860);
       return;
     }
   }
   
-  public static void r(ai paramai)
+  public static void r(am paramam)
   {
     AppMethodBeat.i(42861);
-    if (paramai != null) {}
+    if (paramam != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ai localai2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      ai localai1;
-      if (localai2 != null)
+      am localam2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      am localam1;
+      if (localam2 != null)
       {
-        localai1 = localai2;
-        if (!bs.isNullOrNil(localai2.field_username)) {}
+        localam1 = localam2;
+        if (!bt.isNullOrNil(localam2.field_username)) {}
       }
       else
       {
-        localai1 = paramai;
+        localam1 = paramam;
       }
-      localai1.aar();
-      localai1.jB(paramai.aac());
-      if ((ai.aNc(paramai.field_username)) && (hmM != null)) {
-        hmM.ya(paramai.field_username);
+      localam1.acT();
+      localam1.jZ(paramam.acE());
+      if ((am.aSQ(paramam.field_username)) && (hFb != null)) {
+        hFb.Ba(paramam.field_username);
       }
-      z(localai1);
+      z(localam1);
       AppMethodBeat.o(42861);
       return;
     }
   }
   
-  public static void s(ai paramai)
+  public static void s(am paramam)
   {
     AppMethodBeat.i(42865);
-    if (paramai != null) {}
+    if (paramam != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ai localai2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      ai localai1;
-      if (localai2 != null)
+      am localam2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      am localam1;
+      if (localam2 != null)
       {
-        localai1 = localai2;
-        if (!bs.isNullOrNil(localai2.field_username)) {}
+        localam1 = localam2;
+        if (!bt.isNullOrNil(localam2.field_username)) {}
       }
       else
       {
-        localai1 = paramai;
+        localam1 = paramam;
       }
-      localai1.aas();
-      if ((ai.aNc(paramai.field_username)) && (hmM != null)) {
-        hmM.yb(paramai.field_username);
+      localam1.acU();
+      if ((am.aSQ(paramam.field_username)) && (hFb != null)) {
+        hFb.Bb(paramam.field_username);
       }
-      z(localai1);
+      z(localam1);
       AppMethodBeat.o(42865);
       return;
     }
   }
   
-  public static boolean sQ(String paramString)
+  public static void t(am paramam)
+  {
+    AppMethodBeat.i(42866);
+    if (paramam != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      am localam2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      am localam1;
+      if (localam2 != null)
+      {
+        localam1 = localam2;
+        if (!bt.isNullOrNil(localam2.field_username)) {}
+      }
+      else
+      {
+        localam1 = paramam;
+      }
+      localam1.acV();
+      if ((am.aSQ(paramam.field_username)) && (hFb != null)) {
+        hFb.Bc(paramam.field_username);
+      }
+      z(localam1);
+      AppMethodBeat.o(42866);
+      return;
+    }
+  }
+  
+  public static void u(am paramam)
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(42867);
+    if (paramam != null)
+    {
+      bool1 = true;
+      Assert.assertTrue("MicroMsg.ContactStorageLogic: user is null", bool1);
+      if ((int)paramam.gfj == 0) {
+        break label98;
+      }
+      bool1 = true;
+      label31:
+      Assert.assertTrue("MicroMsg.ContactStorageLogic: contactId == 0", bool1);
+      if (paramam.field_username.length() <= 0) {
+        break label103;
+      }
+    }
+    label98:
+    label103:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      Assert.assertTrue("MicroMsg.ContactStorageLogic: username length <= 0", bool1);
+      paramam.acH();
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().c(paramam.field_username, paramam);
+      AppMethodBeat.o(42867);
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label31;
+    }
+  }
+  
+  public static void v(am paramam)
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(42868);
+    if (paramam != null)
+    {
+      bool1 = true;
+      Assert.assertTrue(bool1);
+      if ((int)paramam.gfj == 0) {
+        break label93;
+      }
+      bool1 = true;
+      label28:
+      Assert.assertTrue(bool1);
+      if (paramam.field_username.length() <= 0) {
+        break label98;
+      }
+    }
+    label93:
+    label98:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      Assert.assertTrue(bool1);
+      paramam.acH();
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().c(paramam.field_username, paramam);
+      z(paramam);
+      AppMethodBeat.o(42868);
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label28;
+    }
+  }
+  
+  public static boolean vF(String paramString)
   {
     AppMethodBeat.i(42834);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1033,118 +1545,21 @@ public final class w
     return false;
   }
   
-  public static void t(ai paramai)
-  {
-    AppMethodBeat.i(42866);
-    if (paramai != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      ai localai2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      ai localai1;
-      if (localai2 != null)
-      {
-        localai1 = localai2;
-        if (!bs.isNullOrNil(localai2.field_username)) {}
-      }
-      else
-      {
-        localai1 = paramai;
-      }
-      localai1.aat();
-      if ((ai.aNc(paramai.field_username)) && (hmM != null)) {
-        hmM.yc(paramai.field_username);
-      }
-      z(localai1);
-      AppMethodBeat.o(42866);
-      return;
-    }
-  }
-  
-  public static void u(ai paramai)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(42867);
-    if (paramai != null)
-    {
-      bool1 = true;
-      Assert.assertTrue("MicroMsg.ContactStorageLogic: user is null", bool1);
-      if ((int)paramai.fLJ == 0) {
-        break label98;
-      }
-      bool1 = true;
-      label31:
-      Assert.assertTrue("MicroMsg.ContactStorageLogic: contactId == 0", bool1);
-      if (paramai.field_username.length() <= 0) {
-        break label103;
-      }
-    }
-    label98:
-    label103:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assert.assertTrue("MicroMsg.ContactStorageLogic: username length <= 0", bool1);
-      paramai.aaf();
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().c(paramai.field_username, paramai);
-      AppMethodBeat.o(42867);
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label31;
-    }
-  }
-  
-  public static void v(ai paramai)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(42868);
-    if (paramai != null)
-    {
-      bool1 = true;
-      Assert.assertTrue(bool1);
-      if ((int)paramai.fLJ == 0) {
-        break label93;
-      }
-      bool1 = true;
-      label28:
-      Assert.assertTrue(bool1);
-      if (paramai.field_username.length() <= 0) {
-        break label98;
-      }
-    }
-    label93:
-    label98:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assert.assertTrue(bool1);
-      paramai.aaf();
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().c(paramai.field_username, paramai);
-      z(paramai);
-      AppMethodBeat.o(42868);
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label28;
-    }
-  }
-  
-  public static void w(ai paramai)
+  public static void w(am paramam)
   {
     boolean bool2 = true;
     AppMethodBeat.i(42870);
-    if (paramai != null)
+    if (paramam != null)
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      if ((int)paramai.fLJ == 0) {
+      if ((int)paramam.gfj == 0) {
         break label68;
       }
       bool1 = true;
       label28:
       Assert.assertTrue(bool1);
-      if (paramai.field_username.length() <= 0) {
+      if (paramam.field_username.length() <= 0) {
         break label73;
       }
     }
@@ -1153,8 +1568,8 @@ public final class w
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      paramai.aaP();
-      z(paramai);
+      paramam.ads();
+      z(paramam);
       AppMethodBeat.o(42870);
       return;
       bool1 = false;
@@ -1164,31 +1579,92 @@ public final class w
     }
   }
   
-  public static boolean wA(String paramString)
+  private static void x(am paramam)
   {
-    AppMethodBeat.i(42842);
-    boolean bool = "gh_3dfda90e39d6".equals(paramString);
-    AppMethodBeat.o(42842);
-    return bool;
+    AppMethodBeat.i(42871);
+    boolean bool;
+    cak localcak;
+    if (paramam != null)
+    {
+      bool = true;
+      Assert.assertTrue(bool);
+      if ((int)paramam.gfj == 0)
+      {
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().ah(paramam);
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      }
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().c(paramam.field_username, paramam);
+      localcak = new cak();
+      localcak.GUK = paramam.field_username;
+      if (!paramam.adn()) {
+        break label163;
+      }
+    }
+    label163:
+    for (localcak.GUG = 1;; localcak.GUG = 2)
+    {
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new k.a(52, localcak));
+      AppMethodBeat.o(42871);
+      return;
+      bool = false;
+      break;
+    }
   }
   
-  public static boolean wB(String paramString)
+  public static void y(am paramam)
   {
-    AppMethodBeat.i(194029);
-    boolean bool = "gh_f0a92aa7146c".equals(paramString);
-    AppMethodBeat.o(194029);
-    return bool;
+    AppMethodBeat.i(42872);
+    boolean bool;
+    cal localcal;
+    if (paramam != null)
+    {
+      bool = true;
+      Assert.assertTrue(bool);
+      if ((int)paramam.gfj == 0)
+      {
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().ah(paramam);
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      }
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().c(paramam.field_username, paramam);
+      localcal = new cal();
+      localcal.GUK = paramam.field_username;
+      if (!paramam.adp()) {
+        break label163;
+      }
+    }
+    label163:
+    for (localcal.GUG = 1;; localcal.GUG = 2)
+    {
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new k.a(72, localcal));
+      AppMethodBeat.o(42872);
+      return;
+      bool = false;
+      break;
+    }
   }
   
-  public static boolean wC(String paramString)
+  public static void z(am paramam)
   {
-    AppMethodBeat.i(163508);
-    boolean bool = "1@fackuser".equals(paramString);
-    AppMethodBeat.o(163508);
-    return bool;
+    AppMethodBeat.i(42873);
+    if (paramam != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      if ((int)paramam.gfj == 0)
+      {
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().ah(paramam);
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramam.field_username);
+      }
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().c(paramam.field_username, paramam);
+      if (!am.aSQ(paramam.field_username)) {
+        B(paramam);
+      }
+      AppMethodBeat.o(42873);
+      return;
+    }
   }
   
-  public static boolean wD(String paramString)
+  public static boolean zA(String paramString)
   {
     AppMethodBeat.i(42843);
     boolean bool = "downloaderapp".equals(paramString);
@@ -1196,7 +1672,7 @@ public final class w
     return bool;
   }
   
-  public static boolean wE(String paramString)
+  public static boolean zB(String paramString)
   {
     AppMethodBeat.i(42844);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1204,13 +1680,13 @@ public final class w
       AppMethodBeat.o(42844);
       return false;
     }
-    if (!wo(paramString))
+    if (!zj(paramString))
     {
       AppMethodBeat.o(42844);
       return false;
     }
-    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString);
-    if ((paramString == null) || (!b.ln(paramString.field_type)))
+    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramString);
+    if ((paramString == null) || (!b.lM(paramString.field_type)))
     {
       AppMethodBeat.o(42844);
       return false;
@@ -1219,7 +1695,7 @@ public final class w
     return true;
   }
   
-  public static boolean wF(String paramString)
+  public static boolean zC(String paramString)
   {
     AppMethodBeat.i(42845);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1232,7 +1708,7 @@ public final class w
     return bool;
   }
   
-  public static boolean wG(String paramString)
+  public static boolean zD(String paramString)
   {
     AppMethodBeat.i(42849);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1240,75 +1716,75 @@ public final class w
       AppMethodBeat.o(42849);
       return true;
     }
-    boolean bool = b.ln(((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString).field_type);
+    boolean bool = b.lM(((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramString).field_type);
     AppMethodBeat.o(42849);
     return bool;
   }
   
-  public static boolean wH(String paramString)
+  public static boolean zE(String paramString)
   {
     AppMethodBeat.i(42850);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(42850);
       return false;
     }
-    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString);
+    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(42850);
       return false;
     }
-    boolean bool = ai.YI(paramString.field_verifyFlag);
+    boolean bool = am.aaR(paramString.field_verifyFlag);
     AppMethodBeat.o(42850);
     return bool;
   }
   
-  public static void wI(String paramString)
+  public static void zF(String paramString)
   {
     AppMethodBeat.i(42863);
-    ap localap2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().aNI(paramString);
+    at localat2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azv().aTz(paramString);
     int i = 0;
-    ap localap1 = localap2;
-    if (localap2 == null)
+    at localat1 = localat2;
+    if (localat2 == null)
     {
-      localap1 = new ap();
-      localap1.faH();
+      localat1 = new at();
+      localat1.fqK();
       i = 1;
-      localap1.setUsername(paramString);
+      localat1.setUsername(paramString);
     }
-    localap1.ou(System.currentTimeMillis());
+    localat1.qu(System.currentTimeMillis());
     if (i != 0)
     {
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().e(localap1);
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azv().e(localat1);
       AppMethodBeat.o(42863);
       return;
     }
-    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().a(localap1, paramString);
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azv().a(localat1, paramString);
     AppMethodBeat.o(42863);
   }
   
-  public static void wJ(String paramString)
+  public static void zG(String paramString)
   {
     AppMethodBeat.i(42875);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(42875);
       return;
     }
-    ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString);
-    if (localai == null)
+    am localam = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramString);
+    if (localam == null)
     {
       AppMethodBeat.o(42875);
       return;
     }
-    localai.setSource(0);
-    localai.aad();
-    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().c(paramString, localai);
+    localam.setSource(0);
+    localam.acF();
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().c(paramString, localam);
     AppMethodBeat.o(42875);
   }
   
-  public static boolean wK(String paramString)
+  public static boolean zH(String paramString)
   {
     AppMethodBeat.i(42882);
     if (paramString != null)
@@ -1321,7 +1797,7 @@ public final class w
     return false;
   }
   
-  public static boolean wL(String paramString)
+  public static boolean zI(String paramString)
   {
     AppMethodBeat.i(42883);
     if (paramString != null)
@@ -1334,7 +1810,7 @@ public final class w
     return false;
   }
   
-  public static boolean wM(String paramString)
+  public static boolean zJ(String paramString)
   {
     AppMethodBeat.i(42884);
     if (paramString != null)
@@ -1347,7 +1823,7 @@ public final class w
     return false;
   }
   
-  public static boolean wN(String paramString)
+  public static boolean zK(String paramString)
   {
     AppMethodBeat.i(42885);
     if (paramString != null)
@@ -1360,7 +1836,7 @@ public final class w
     return false;
   }
   
-  public static boolean wO(String paramString)
+  public static boolean zL(String paramString)
   {
     AppMethodBeat.i(42886);
     if (paramString != null)
@@ -1373,7 +1849,7 @@ public final class w
     return false;
   }
   
-  public static boolean wP(String paramString)
+  public static boolean zM(String paramString)
   {
     AppMethodBeat.i(42887);
     if (paramString != null)
@@ -1386,7 +1862,7 @@ public final class w
     return false;
   }
   
-  public static boolean wQ(String paramString)
+  public static boolean zN(String paramString)
   {
     AppMethodBeat.i(42888);
     if (paramString != null)
@@ -1399,7 +1875,7 @@ public final class w
     return false;
   }
   
-  public static boolean wR(String paramString)
+  public static boolean zO(String paramString)
   {
     AppMethodBeat.i(42889);
     if (paramString != null)
@@ -1412,7 +1888,7 @@ public final class w
     return false;
   }
   
-  public static boolean wS(String paramString)
+  public static boolean zP(String paramString)
   {
     AppMethodBeat.i(42890);
     boolean bool = "qqsync".equalsIgnoreCase(paramString);
@@ -1420,7 +1896,7 @@ public final class w
     return bool;
   }
   
-  public static boolean wT(String paramString)
+  public static boolean zQ(String paramString)
   {
     AppMethodBeat.i(42891);
     if (paramString != null)
@@ -1437,7 +1913,7 @@ public final class w
     return false;
   }
   
-  public static boolean wU(String paramString)
+  public static boolean zR(String paramString)
   {
     AppMethodBeat.i(42892);
     if (paramString != null)
@@ -1450,7 +1926,7 @@ public final class w
     return false;
   }
   
-  public static boolean wV(String paramString)
+  public static boolean zS(String paramString)
   {
     AppMethodBeat.i(42893);
     if (paramString != null)
@@ -1463,7 +1939,7 @@ public final class w
     return false;
   }
   
-  public static boolean wW(String paramString)
+  public static boolean zT(String paramString)
   {
     AppMethodBeat.i(42894);
     if (paramString != null)
@@ -1476,7 +1952,7 @@ public final class w
     return false;
   }
   
-  public static boolean wX(String paramString)
+  public static boolean zU(String paramString)
   {
     AppMethodBeat.i(42895);
     if (paramString != null)
@@ -1489,7 +1965,7 @@ public final class w
     return false;
   }
   
-  public static boolean wY(String paramString)
+  public static boolean zV(String paramString)
   {
     AppMethodBeat.i(42896);
     if (paramString != null)
@@ -1502,7 +1978,7 @@ public final class w
     return false;
   }
   
-  public static boolean wZ(String paramString)
+  public static boolean zW(String paramString)
   {
     AppMethodBeat.i(42897);
     if (paramString != null)
@@ -1515,7 +1991,46 @@ public final class w
     return false;
   }
   
-  public static boolean wn(String paramString)
+  public static boolean zX(String paramString)
+  {
+    AppMethodBeat.i(42898);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("voicevoipapp");
+      AppMethodBeat.o(42898);
+      return bool;
+    }
+    AppMethodBeat.o(42898);
+    return false;
+  }
+  
+  public static boolean zY(String paramString)
+  {
+    AppMethodBeat.i(42899);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("voiceinputapp");
+      AppMethodBeat.o(42899);
+      return bool;
+    }
+    AppMethodBeat.o(42899);
+    return false;
+  }
+  
+  public static boolean zZ(String paramString)
+  {
+    AppMethodBeat.i(42900);
+    if (paramString != null)
+    {
+      boolean bool = paramString.equalsIgnoreCase("linkedinplugin");
+      AppMethodBeat.o(42900);
+      return bool;
+    }
+    AppMethodBeat.o(42900);
+    return false;
+  }
+  
+  public static boolean zi(String paramString)
   {
     AppMethodBeat.i(42831);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1532,10 +2047,10 @@ public final class w
     return false;
   }
   
-  public static boolean wo(String paramString)
+  public static boolean zj(String paramString)
   {
     AppMethodBeat.i(42832);
-    if ((wp(paramString)) || (wq(paramString)))
+    if ((zk(paramString)) || (zl(paramString)))
     {
       AppMethodBeat.o(42832);
       return true;
@@ -1544,7 +2059,7 @@ public final class w
     return false;
   }
   
-  public static boolean wp(String paramString)
+  public static boolean zk(String paramString)
   {
     AppMethodBeat.i(42833);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1557,7 +2072,7 @@ public final class w
     return bool;
   }
   
-  public static boolean wq(String paramString)
+  public static boolean zl(String paramString)
   {
     AppMethodBeat.i(42835);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1570,7 +2085,7 @@ public final class w
     return bool;
   }
   
-  public static boolean wr(String paramString)
+  public static boolean zm(String paramString)
   {
     AppMethodBeat.i(178864);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1578,7 +2093,7 @@ public final class w
       AppMethodBeat.o(178864);
       return false;
     }
-    if ((paramString.endsWith("@im.chatroom")) || (ws(paramString)))
+    if ((paramString.endsWith("@im.chatroom")) || (zn(paramString)))
     {
       AppMethodBeat.o(178864);
       return true;
@@ -1587,28 +2102,54 @@ public final class w
     return false;
   }
   
-  public static boolean ws(String paramString)
+  public static boolean zn(String paramString)
   {
     AppMethodBeat.i(178865);
-    if (wp(paramString))
+    Boolean localBoolean;
+    Object localObject;
+    if (zk(paramString))
     {
-      paramString = ((c)g.ab(c.class)).awK().xN(paramString);
-      if ((paramString != null) && ((paramString.field_chatroomStatus & 0x20000) == 131072))
+      localBoolean = null;
+      if (hFc.containsKey(paramString)) {
+        localBoolean = (Boolean)hFc.get(paramString);
+      }
+      localObject = localBoolean;
+      if (localBoolean == null)
       {
-        AppMethodBeat.o(178865);
-        return true;
+        localBoolean = Boolean.FALSE;
+        localObject = ((c)g.ab(c.class)).azz().AN(paramString);
+        if ((localObject == null) || ((((ab)localObject).field_chatroomStatus & 0x20000) != 131072)) {
+          break label121;
+        }
+        localBoolean = Boolean.TRUE;
       }
     }
-    AppMethodBeat.o(178865);
-    return false;
+    label121:
+    for (;;)
+    {
+      hFc.put(paramString, localBoolean);
+      localObject = localBoolean;
+      boolean bool = ((Boolean)localObject).booleanValue();
+      AppMethodBeat.o(178865);
+      return bool;
+      AppMethodBeat.o(178865);
+      return false;
+    }
   }
   
-  public static boolean wt(String paramString)
+  public static void zo(String paramString)
+  {
+    AppMethodBeat.i(192528);
+    hFc.remove(paramString);
+    AppMethodBeat.o(192528);
+  }
+  
+  public static boolean zp(String paramString)
   {
     AppMethodBeat.i(178866);
-    if (wp(paramString))
+    if (zk(paramString))
     {
-      paramString = ((c)g.ab(c.class)).awK().xN(paramString);
+      paramString = ((c)g.ab(c.class)).azz().AN(paramString);
       if ((paramString != null) && ((paramString.field_chatroomStatus & 0x20000) != 131072) && ((paramString.field_chatroomStatus & 0x10000) == 65536))
       {
         AppMethodBeat.o(178866);
@@ -1619,13 +2160,13 @@ public final class w
     return false;
   }
   
-  public static boolean wu(String paramString)
+  public static boolean zq(String paramString)
   {
     AppMethodBeat.i(178867);
-    if ((((r)g.ab(r.class)).VM()) && (wp(paramString)))
+    if ((((s)g.ab(s.class)).Yd()) && (zk(paramString)))
     {
-      paramString = ((c)g.ab(c.class)).awK().xN(paramString);
-      if ((paramString != null) && (paramString.Wp()))
+      paramString = ((c)g.ab(c.class)).azz().AN(paramString);
+      if ((paramString != null) && (paramString.YH()))
       {
         AppMethodBeat.o(178867);
         return true;
@@ -1635,7 +2176,7 @@ public final class w
     return false;
   }
   
-  public static boolean wv(String paramString)
+  public static boolean zr(String paramString)
   {
     AppMethodBeat.i(42836);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1648,7 +2189,7 @@ public final class w
     return bool;
   }
   
-  public static boolean ww(String paramString)
+  public static boolean zs(String paramString)
   {
     AppMethodBeat.i(42837);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1661,7 +2202,7 @@ public final class w
     return bool;
   }
   
-  public static boolean wx(String paramString)
+  public static boolean zt(String paramString)
   {
     AppMethodBeat.i(42838);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1674,7 +2215,7 @@ public final class w
     return bool;
   }
   
-  public static boolean wy(String paramString)
+  public static boolean zu(String paramString)
   {
     AppMethodBeat.i(42839);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1687,7 +2228,7 @@ public final class w
     return bool;
   }
   
-  public static boolean wz(String paramString)
+  public static boolean zv(String paramString)
   {
     AppMethodBeat.i(42841);
     boolean bool = "gh_43f2581f6fd6".equals(paramString);
@@ -1695,527 +2236,36 @@ public final class w
     return bool;
   }
   
-  private static void x(ai paramai)
+  public static boolean zw(String paramString)
   {
-    AppMethodBeat.i(42871);
-    boolean bool;
-    bvu localbvu;
-    if (paramai != null)
-    {
-      bool = true;
-      Assert.assertTrue(bool);
-      if ((int)paramai.fLJ == 0)
-      {
-        ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().ah(paramai);
-        ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      }
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().c(paramai.field_username, paramai);
-      localbvu = new bvu();
-      localbvu.Flc = paramai.field_username;
-      if (!paramai.aaK()) {
-        break label163;
-      }
-    }
-    label163:
-    for (localbvu.FkY = 1;; localbvu.FkY = 2)
-    {
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awA().c(new j.a(52, localbvu));
-      AppMethodBeat.o(42871);
-      return;
-      bool = false;
-      break;
-    }
-  }
-  
-  public static boolean xA(String paramString)
-  {
-    AppMethodBeat.i(178868);
-    paramString = ((c)g.ab(c.class)).awK().xN(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(178868);
-      return false;
-    }
-    boolean bool = paramString.Wp();
-    AppMethodBeat.o(178868);
+    AppMethodBeat.i(42842);
+    boolean bool = "gh_3dfda90e39d6".equals(paramString);
+    AppMethodBeat.o(42842);
     return bool;
   }
   
-  public static boolean xB(String paramString)
+  public static boolean zx(String paramString)
   {
-    AppMethodBeat.i(184702);
-    paramString = ((c)g.ab(c.class)).awK().xN(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(184702);
-      return false;
-    }
-    boolean bool = paramString.xB(u.axw());
-    AppMethodBeat.o(184702);
+    AppMethodBeat.i(192529);
+    boolean bool = "gh_f0a92aa7146c".equals(paramString);
+    AppMethodBeat.o(192529);
     return bool;
   }
   
-  public static boolean xa(String paramString)
+  public static boolean zy(String paramString)
   {
-    AppMethodBeat.i(42898);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("voicevoipapp");
-      AppMethodBeat.o(42898);
-      return bool;
-    }
-    AppMethodBeat.o(42898);
-    return false;
-  }
-  
-  public static boolean xb(String paramString)
-  {
-    AppMethodBeat.i(42899);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("voiceinputapp");
-      AppMethodBeat.o(42899);
-      return bool;
-    }
-    AppMethodBeat.o(42899);
-    return false;
-  }
-  
-  public static boolean xc(String paramString)
-  {
-    AppMethodBeat.i(42900);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("linkedinplugin");
-      AppMethodBeat.o(42900);
-      return bool;
-    }
-    AppMethodBeat.o(42900);
-    return false;
-  }
-  
-  public static boolean xd(String paramString)
-  {
-    AppMethodBeat.i(42901);
-    boolean bool = xe(paramString);
-    AppMethodBeat.o(42901);
+    AppMethodBeat.i(163508);
+    boolean bool = "1@fackuser".equals(paramString);
+    AppMethodBeat.o(163508);
     return bool;
   }
   
-  public static boolean xe(String paramString)
+  public static boolean zz(String paramString)
   {
-    AppMethodBeat.i(42902);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("gh_22b87fa7cb3c");
-      AppMethodBeat.o(42902);
-      return bool;
-    }
-    AppMethodBeat.o(42902);
-    return false;
-  }
-  
-  public static boolean xf(String paramString)
-  {
-    AppMethodBeat.i(42903);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("blogapp");
-      AppMethodBeat.o(42903);
-      return bool;
-    }
-    AppMethodBeat.o(42903);
-    return false;
-  }
-  
-  public static boolean xg(String paramString)
-  {
-    AppMethodBeat.i(42904);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("officialaccounts");
-      AppMethodBeat.o(42904);
-      return bool;
-    }
-    AppMethodBeat.o(42904);
-    return false;
-  }
-  
-  public static boolean xh(String paramString)
-  {
-    AppMethodBeat.i(42905);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("helper_entry");
-      AppMethodBeat.o(42905);
-      return bool;
-    }
-    AppMethodBeat.o(42905);
-    return false;
-  }
-  
-  public static boolean xi(String paramString)
-  {
-    AppMethodBeat.i(42906);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("qqfriend");
-      AppMethodBeat.o(42906);
-      return bool;
-    }
-    AppMethodBeat.o(42906);
-    return false;
-  }
-  
-  public static boolean xj(String paramString)
-  {
-    AppMethodBeat.i(42907);
-    boolean bool = "filehelper".equalsIgnoreCase(paramString);
-    AppMethodBeat.o(42907);
+    AppMethodBeat.i(192530);
+    boolean bool = "msginfo@fakeuser".equals(paramString);
+    AppMethodBeat.o(192530);
     return bool;
-  }
-  
-  public static boolean xk(String paramString)
-  {
-    AppMethodBeat.i(42908);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("pc_share");
-      AppMethodBeat.o(42908);
-      return bool;
-    }
-    AppMethodBeat.o(42908);
-    return false;
-  }
-  
-  public static boolean xl(String paramString)
-  {
-    AppMethodBeat.i(42909);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("notifymessage");
-      AppMethodBeat.o(42909);
-      return bool;
-    }
-    AppMethodBeat.o(42909);
-    return false;
-  }
-  
-  public static boolean xm(String paramString)
-  {
-    AppMethodBeat.i(42910);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("notification_messages");
-      AppMethodBeat.o(42910);
-      return bool;
-    }
-    AppMethodBeat.o(42910);
-    return false;
-  }
-  
-  public static boolean xn(String paramString)
-  {
-    AppMethodBeat.i(42911);
-    if (xo(paramString))
-    {
-      AppMethodBeat.o(42911);
-      return true;
-    }
-    if (xr(paramString))
-    {
-      AppMethodBeat.o(42911);
-      return true;
-    }
-    if (xg(paramString))
-    {
-      AppMethodBeat.o(42911);
-      return true;
-    }
-    if (xh(paramString))
-    {
-      AppMethodBeat.o(42911);
-      return true;
-    }
-    AppMethodBeat.o(42911);
-    return false;
-  }
-  
-  public static boolean xo(String paramString)
-  {
-    AppMethodBeat.i(42912);
-    g.agS();
-    String str = (String)g.agR().agA().get(21, null);
-    if (((str != null) && (str.equalsIgnoreCase(paramString))) || (paramString.equalsIgnoreCase("weixin")))
-    {
-      AppMethodBeat.o(42912);
-      return true;
-    }
-    AppMethodBeat.o(42912);
-    return false;
-  }
-  
-  public static boolean xp(String paramString)
-  {
-    AppMethodBeat.i(42913);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("appbrandcustomerservicemsg");
-      AppMethodBeat.o(42913);
-      return bool;
-    }
-    AppMethodBeat.o(42913);
-    return false;
-  }
-  
-  public static boolean xq(String paramString)
-  {
-    AppMethodBeat.i(194033);
-    if (paramString != null)
-    {
-      boolean bool = paramString.equalsIgnoreCase("appbrand_notify_message");
-      AppMethodBeat.o(194033);
-      return bool;
-    }
-    AppMethodBeat.o(194033);
-    return false;
-  }
-  
-  public static boolean xr(String paramString)
-  {
-    AppMethodBeat.i(42914);
-    String[] arrayOfString = hmW;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (arrayOfString[i].equalsIgnoreCase(paramString))
-      {
-        AppMethodBeat.o(42914);
-        return true;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(42914);
-    return false;
-  }
-  
-  public static boolean xs(String paramString)
-  {
-    AppMethodBeat.i(42915);
-    if (xr(paramString))
-    {
-      AppMethodBeat.o(42915);
-      return true;
-    }
-    if (ai.aNb(paramString))
-    {
-      AppMethodBeat.o(42915);
-      return true;
-    }
-    if (ai.aMZ(paramString))
-    {
-      AppMethodBeat.o(42915);
-      return true;
-    }
-    if (ai.ww(paramString))
-    {
-      AppMethodBeat.o(42915);
-      return true;
-    }
-    AppMethodBeat.o(42915);
-    return false;
-  }
-  
-  public static int xt(String paramString)
-  {
-    AppMethodBeat.i(42916);
-    if (bs.nullAsNil(paramString).length() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      paramString = paramString.trim().toLowerCase();
-      if (!paramString.endsWith("@chatroom")) {
-        break;
-      }
-      AppMethodBeat.o(42916);
-      return 1;
-    }
-    if (ai.aMZ(paramString))
-    {
-      AppMethodBeat.o(42916);
-      return 11;
-    }
-    if (ai.aNb(paramString))
-    {
-      AppMethodBeat.o(42916);
-      return 36;
-    }
-    if (ai.ww(paramString))
-    {
-      AppMethodBeat.o(42916);
-      return 1;
-    }
-    AppMethodBeat.o(42916);
-    return 1;
-  }
-  
-  public static int xu(String paramString)
-  {
-    AppMethodBeat.i(42917);
-    if (bs.nullAsNil(paramString).length() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      paramString = paramString.trim().toLowerCase();
-      if (!paramString.endsWith("@chatroom")) {
-        break;
-      }
-      AppMethodBeat.o(42917);
-      return 3;
-    }
-    if (ai.aMZ(paramString))
-    {
-      AppMethodBeat.o(42917);
-      return 13;
-    }
-    if (ai.aNb(paramString))
-    {
-      AppMethodBeat.o(42917);
-      return 39;
-    }
-    if (ai.ww(paramString))
-    {
-      AppMethodBeat.o(42917);
-      return 3;
-    }
-    if (paramString.contains("@"))
-    {
-      AppMethodBeat.o(42917);
-      return 3;
-    }
-    AppMethodBeat.o(42917);
-    return 3;
-  }
-  
-  public static boolean xv(String paramString)
-  {
-    AppMethodBeat.i(42918);
-    if (((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString).exT != 1)
-    {
-      AppMethodBeat.o(42918);
-      return false;
-    }
-    AppMethodBeat.o(42918);
-    return true;
-  }
-  
-  public static boolean xw(String paramString)
-  {
-    AppMethodBeat.i(42919);
-    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString);
-    if ((paramString != null) && (paramString.Nw()))
-    {
-      AppMethodBeat.o(42919);
-      return true;
-    }
-    AppMethodBeat.o(42919);
-    return false;
-  }
-  
-  public static boolean xx(String paramString)
-  {
-    AppMethodBeat.i(42920);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(42920);
-      return false;
-    }
-    if ((paramString.startsWith("t.qq.com/")) || (paramString.startsWith("http://t.qq.com/")))
-    {
-      AppMethodBeat.o(42920);
-      return true;
-    }
-    AppMethodBeat.o(42920);
-    return false;
-  }
-  
-  public static String xy(String paramString)
-  {
-    AppMethodBeat.i(42921);
-    if (xx(paramString))
-    {
-      paramString = paramString.replace("http://t.qq.com/", "").replace("t.qq.com/", "");
-      AppMethodBeat.o(42921);
-      return paramString;
-    }
-    AppMethodBeat.o(42921);
-    return "";
-  }
-  
-  public static boolean xz(String paramString)
-  {
-    AppMethodBeat.i(42930);
-    if ((paramString.equals("weixinsrc")) || (paramString.equalsIgnoreCase("gh_6e99ff560306")))
-    {
-      AppMethodBeat.o(42930);
-      return true;
-    }
-    AppMethodBeat.o(42930);
-    return false;
-  }
-  
-  public static void y(ai paramai)
-  {
-    AppMethodBeat.i(42872);
-    boolean bool;
-    bvv localbvv;
-    if (paramai != null)
-    {
-      bool = true;
-      Assert.assertTrue(bool);
-      if ((int)paramai.fLJ == 0)
-      {
-        ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().ah(paramai);
-        ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      }
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().c(paramai.field_username, paramai);
-      localbvv = new bvv();
-      localbvv.Flc = paramai.field_username;
-      if (!paramai.aaM()) {
-        break label163;
-      }
-    }
-    label163:
-    for (localbvv.FkY = 1;; localbvv.FkY = 2)
-    {
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awA().c(new j.a(72, localbvv));
-      AppMethodBeat.o(42872);
-      return;
-      bool = false;
-      break;
-    }
-  }
-  
-  public static void z(ai paramai)
-  {
-    AppMethodBeat.i(42873);
-    if (paramai != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      if ((int)paramai.fLJ == 0)
-      {
-        ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().ah(paramai);
-        ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramai.field_username);
-      }
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().c(paramai.field_username, paramai);
-      if (!ai.aNc(paramai.field_username)) {
-        B(paramai);
-      }
-      AppMethodBeat.o(42873);
-      return;
-    }
   }
 }
 

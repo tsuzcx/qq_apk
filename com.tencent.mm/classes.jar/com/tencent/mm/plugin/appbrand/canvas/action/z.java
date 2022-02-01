@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -28,7 +28,7 @@ public final class z
     }
     try
     {
-      g.q(paramJSONArray);
+      g.r(paramJSONArray);
       AppMethodBeat.o(144949);
       return false;
     }
@@ -36,12 +36,12 @@ public final class z
     {
       for (;;)
       {
-        ac.i("MicroMsg.SetLineHeight", "get 'lineHeight' error");
+        ad.i("MicroMsg.SetLineHeight", "get 'lineHeight' error");
       }
     }
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     return null;
   }
@@ -53,7 +53,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.z
  * JD-Core Version:    0.7.0.1
  */

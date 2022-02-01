@@ -8,13 +8,16 @@ public abstract class bd
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ezt = "bakLogId".hashCode();
-  private static final int ezu = "valueStr".hashCode();
+  private static final int eDc = "status".hashCode();
+  private static final int eEU = "appId".hashCode();
+  private static final int eHb = "modifyTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ezr;
-  private boolean ezs;
-  public int field_bakLogId;
-  public String field_valueStr;
+  private boolean eCZ = true;
+  private boolean eED = true;
+  private boolean eGF = true;
+  public String field_appId;
+  public long field_modifyTime;
+  public int field_status;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,19 +32,22 @@ public abstract class bd
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ezt != k) {
-        break label60;
+      if (eEU != k) {
+        break label65;
       }
-      this.field_bakLogId = paramCursor.getInt(i);
+      this.field_appId = paramCursor.getString(i);
+      this.eED = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (ezu == k) {
-        this.field_valueStr = paramCursor.getString(i);
+      label65:
+      if (eDc == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (eHb == k) {
+        this.field_modifyTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -51,11 +57,14 @@ public abstract class bd
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ezr) {
-      localContentValues.put("bakLogId", Integer.valueOf(this.field_bakLogId));
+    if (this.eED) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.ezs) {
-      localContentValues.put("valueStr", this.field_valueStr);
+    if (this.eCZ) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
+    }
+    if (this.eGF) {
+      localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

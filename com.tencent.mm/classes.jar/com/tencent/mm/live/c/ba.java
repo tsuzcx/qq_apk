@@ -1,7 +1,5 @@
 package com.tencent.mm.live.c;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -14,261 +12,242 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.d;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.live.b.a.v;
 import com.tencent.mm.live.b.f.e;
 import com.tencent.mm.live.b.g.b;
 import com.tencent.mm.live.d.e;
-import com.tencent.mm.protocal.protobuf.bqd;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.protocal.protobuf.buq;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/plugin/LiveVerifyPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/widget/RelativeLayout;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/widget/RelativeLayout;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "backBtn", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "isVerify", "", "()Z", "setVerify", "(Z)V", "okBtn", "Landroid/widget/Button;", "selectIcon", "Landroid/widget/ImageView;", "verifyAgreementGruop", "Landroid/widget/LinearLayout;", "verifyAgreementLink", "Landroid/widget/TextView;", "verifyContentTip", "verifyIIcon", "verifyTitle", "verifyUrl", "", "getVerifyUrl", "()Ljava/lang/String;", "setVerifyUrl", "(Ljava/lang/String;)V", "isMarkVerify", "onBackPress", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveVerifyPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/widget/RelativeLayout;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/widget/RelativeLayout;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "backBtn", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "isVerify", "", "()Z", "setVerify", "(Z)V", "okBtn", "Landroid/widget/Button;", "selectIcon", "Landroid/widget/ImageView;", "verifyAgreementGruop", "Landroid/widget/LinearLayout;", "verifyAgreementLink", "Landroid/widget/TextView;", "verifyContentTip", "verifyIIcon", "verifyTitle", "verifyUrl", "", "getVerifyUrl", "()Ljava/lang/String;", "setVerifyUrl", "(Ljava/lang/String;)V", "isMarkVerify", "onBackPress", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-logic_release"})
 public final class ba
   extends a
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  public static final ba.a gDw;
-  private final WeImageView gAH;
-  private final Button gAJ;
-  private final TextView gAP;
-  private final TextView gAQ;
-  private final ImageView gDr;
-  private final WeImageView gDs;
-  private final LinearLayout gDt;
-  private final TextView gDu;
-  private boolean gDv;
-  private String guM;
-  private final b gzb;
+  public static final ba.a gXg;
+  private String gOx;
+  private final b gSM;
+  private final TextView gUA;
+  private final WeImageView gUr;
+  private final Button gUt;
+  private final TextView gUz;
+  private final ImageView gXb;
+  private final WeImageView gXc;
+  private final LinearLayout gXd;
+  private final TextView gXe;
+  private boolean gXf;
   
   static
   {
-    AppMethodBeat.i(190318);
-    gDw = new ba.a((byte)0);
-    AppMethodBeat.o(190318);
+    AppMethodBeat.i(212608);
+    gXg = new ba.a((byte)0);
+    AppMethodBeat.o(212608);
   }
   
   public ba(RelativeLayout paramRelativeLayout, b paramb)
   {
     super((ViewGroup)paramRelativeLayout, paramb);
-    AppMethodBeat.i(190317);
-    this.gzb = paramb;
+    AppMethodBeat.i(212607);
+    this.gSM = paramb;
     paramb = paramRelativeLayout.findViewById(2131307820);
-    k.g(paramb, "root.findViewById(R.id.live_verify_ok_btn)");
-    this.gAJ = ((Button)paramb);
+    p.g(paramb, "root.findViewById(R.id.live_verify_ok_btn)");
+    this.gUt = ((Button)paramb);
     paramb = paramRelativeLayout.findViewById(2131307823);
-    k.g(paramb, "root.findViewById(R.id.live_verify_top_back)");
-    this.gAH = ((WeImageView)paramb);
+    p.g(paramb, "root.findViewById(R.id.live_verify_top_back)");
+    this.gUr = ((WeImageView)paramb);
     paramb = paramRelativeLayout.findViewById(2131307819);
-    k.g(paramb, "root.findViewById(R.id.live_verify_item_selector)");
-    this.gDr = ((ImageView)paramb);
+    p.g(paramb, "root.findViewById(R.id.live_verify_item_selector)");
+    this.gXb = ((ImageView)paramb);
     paramb = paramRelativeLayout.findViewById(2131307818);
-    k.g(paramb, "root.findViewById(R.id.live_verify_icon)");
-    this.gDs = ((WeImageView)paramb);
+    p.g(paramb, "root.findViewById(R.id.live_verify_icon)");
+    this.gXc = ((WeImageView)paramb);
     paramb = paramRelativeLayout.findViewById(2131307821);
-    k.g(paramb, "root.findViewById(R.id.live_verify_title)");
-    this.gAP = ((TextView)paramb);
+    p.g(paramb, "root.findViewById(R.id.live_verify_title)");
+    this.gUz = ((TextView)paramb);
     paramb = paramRelativeLayout.findViewById(2131307817);
-    k.g(paramb, "root.findViewById(R.id.live_verify_content_tip)");
-    this.gAQ = ((TextView)paramb);
+    p.g(paramb, "root.findViewById(R.id.live_verify_content_tip)");
+    this.gUA = ((TextView)paramb);
     paramb = paramRelativeLayout.findViewById(2131307815);
-    k.g(paramb, "root.findViewById(R.id.l…e_verify_agreement_group)");
-    this.gDt = ((LinearLayout)paramb);
+    p.g(paramb, "root.findViewById(R.id.l…e_verify_agreement_group)");
+    this.gXd = ((LinearLayout)paramb);
     paramb = paramRelativeLayout.findViewById(2131307814);
-    k.g(paramb, "root.findViewById(R.id.live_verify_agreement)");
-    this.gDu = ((TextView)paramb);
-    this.guM = "";
-    this.gAH.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    p.g(paramb, "root.findViewById(R.id.live_verify_agreement)");
+    this.gXe = ((TextView)paramb);
+    this.gOx = "";
+    this.gUr.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(190307);
-        b.b.a(ba.a(this.gDx), b.c.gxL);
-        AppMethodBeat.o(190307);
+        AppMethodBeat.i(212597);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveVerifyPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        b.b.a(ba.a(this.gXh), b.c.gRw);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveVerifyPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(212597);
       }
     });
-    this.gDr.setEnabled(true);
-    this.gDr.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gXb.setEnabled(true);
+    this.gXb.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(190308);
-        if (ba.b(this.gDx).isActivated())
+        AppMethodBeat.i(212598);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveVerifyPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (ba.b(this.gXh).isActivated())
         {
-          paramAnonymousView = com.tencent.mm.live.b.g.guG;
-          com.tencent.mm.live.b.g.dK(false);
-          ba.b(this.gDx).setActivated(false);
-          ba.c(this.gDx).setEnabled(false);
-          AppMethodBeat.o(190308);
-          return;
+          paramAnonymousView = com.tencent.mm.live.b.g.gOr;
+          com.tencent.mm.live.b.g.dM(false);
+          ba.b(this.gXh).setActivated(false);
+          ba.c(this.gXh).setEnabled(false);
         }
-        paramAnonymousView = com.tencent.mm.live.b.g.guG;
-        com.tencent.mm.live.b.g.dK(true);
-        ba.b(this.gDx).setActivated(true);
-        ba.c(this.gDx).setEnabled(true);
-        AppMethodBeat.o(190308);
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveVerifyPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(212598);
+          return;
+          paramAnonymousView = com.tencent.mm.live.b.g.gOr;
+          com.tencent.mm.live.b.g.dM(true);
+          ba.b(this.gXh).setActivated(true);
+          ba.c(this.gXh).setEnabled(true);
+        }
       }
     });
-    this.gAJ.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gUt.setOnClickListener((View.OnClickListener)new ba.3(this));
+    this.gXe.setOnClickListener((View.OnClickListener)new ba.4(paramRelativeLayout));
+    this.gXd.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(190309);
-        paramAnonymousView = f.e.gtA;
-        paramAnonymousView = aw.aKU(f.e.akp());
-        f.e locale = f.e.gtA;
-        paramAnonymousView.putBoolean(f.e.akq(), true);
-        paramAnonymousView = com.tencent.mm.kernel.g.agQ();
-        k.g(paramAnonymousView, "MMKernel.network()");
-        paramAnonymousView.agi().a(3895, (com.tencent.mm.ak.g)this.gDx);
-        paramAnonymousView = com.tencent.mm.kernel.g.agQ();
-        k.g(paramAnonymousView, "MMKernel.network()");
-        paramAnonymousView.agi().b((n)new v());
-        ac.i("MicroMsg.LiveVerifyPlugin", "doscene NetSceneLiveVerify");
-        AppMethodBeat.o(190309);
+        AppMethodBeat.i(212601);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveVerifyPlugin$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        ba.b(this.gXh).performClick();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveVerifyPlugin$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(212601);
       }
     });
-    this.gDu.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(190310);
-        ac.i("MicroMsg.LiveVerifyPlugin", "jumpToVerifyAgreementLink.");
-        paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("title", this.gzc.getContext().getString(2131766733));
-        paramAnonymousView.putExtra("rawUrl", this.gzc.getContext().getString(2131766731, new Object[] { ab.eUO() }));
-        paramAnonymousView.putExtra("showShare", false);
-        paramAnonymousView.putExtra("neverGetA8Key", true);
-        d.b(this.gzc.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
-        AppMethodBeat.o(190310);
-      }
-    });
-    this.gDt.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(190311);
-        ba.b(this.gDx).performClick();
-        AppMethodBeat.o(190311);
-      }
-    });
-    AppMethodBeat.o(190317);
+    AppMethodBeat.o(212607);
   }
   
-  public static boolean amk()
+  public static boolean aoX()
   {
-    AppMethodBeat.i(190314);
-    Object localObject = f.e.gtA;
-    localObject = aw.aKU(f.e.akp());
-    f.e locale = f.e.gtA;
-    boolean bool = ((aw)localObject).getBoolean(f.e.akq(), false);
-    AppMethodBeat.o(190314);
+    AppMethodBeat.i(212604);
+    Object localObject = f.e.gNl;
+    localObject = ax.aQA(f.e.anb());
+    f.e locale = f.e.gNl;
+    boolean bool = ((ax)localObject).getBoolean(f.e.anc(), false);
+    AppMethodBeat.o(212604);
     return bool;
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(190313);
-    k.h(paramc, "status");
-    switch (bb.cfA[paramc.ordinal()])
+    AppMethodBeat.i(212603);
+    p.h(paramc, "status");
+    switch (bb.cpQ[paramc.ordinal()])
     {
     default: 
-      nj(8);
+      nI(8);
     }
     for (;;)
     {
       super.a(paramc, paramBundle);
-      AppMethodBeat.o(190313);
+      AppMethodBeat.o(212603);
       return;
-      nj(0);
-      Object localObject1 = com.tencent.mm.live.b.g.guG;
-      com.tencent.mm.live.b.g.dJ(true);
+      nI(0);
+      Object localObject1 = com.tencent.mm.live.b.g.gOr;
+      com.tencent.mm.live.b.g.dL(true);
       continue;
-      if (this.gnb.getVisibility() == 0)
+      if (this.gGK.getVisibility() == 0)
       {
-        localObject1 = com.tencent.mm.live.b.g.guG;
-        localObject1 = com.tencent.mm.live.b.g.akA();
-        Object localObject2 = com.tencent.mm.live.b.g.guG;
-        boolean bool1 = com.tencent.mm.live.b.g.akY();
-        localObject2 = com.tencent.mm.live.b.g.guG;
-        boolean bool2 = com.tencent.mm.live.b.g.akZ();
-        localObject2 = com.tencent.mm.live.b.g.guG;
-        localObject2 = com.tencent.mm.live.b.g.akF().Eud;
-        Object localObject3 = com.tencent.mm.live.b.g.guG;
-        boolean bool3 = com.tencent.mm.live.b.g.akX();
-        localObject3 = this.gnb.getResources();
-        k.g(localObject3, "root.resources");
+        localObject1 = com.tencent.mm.live.b.g.gOr;
+        localObject1 = com.tencent.mm.live.b.g.anm();
+        Object localObject2 = com.tencent.mm.live.b.g.gOr;
+        boolean bool1 = com.tencent.mm.live.b.g.anL();
+        localObject2 = com.tencent.mm.live.b.g.gOr;
+        boolean bool2 = com.tencent.mm.live.b.g.anM();
+        localObject2 = com.tencent.mm.live.b.g.gOr;
+        localObject2 = com.tencent.mm.live.b.g.ans().Gbw;
+        Object localObject3 = com.tencent.mm.live.b.g.gOr;
+        boolean bool3 = com.tencent.mm.live.b.g.anK();
+        localObject3 = this.gGK.getResources();
+        p.g(localObject3, "root.resources");
         e.a((String)localObject1, bool1, bool2, (String)localObject2, bool3, ((Resources)localObject3).getConfiguration().orientation, 1);
-        com.tencent.mm.live.d.a.amv();
+        com.tencent.mm.live.d.a.api();
       }
-      nj(8);
+      nI(8);
     }
   }
   
-  public final boolean alO()
+  public final boolean aoB()
   {
-    AppMethodBeat.i(190316);
-    if (this.gnb.getVisibility() == 0)
+    AppMethodBeat.i(212606);
+    if (this.gGK.getVisibility() == 0)
     {
-      this.gzb.a(b.c.gxL, new Bundle());
-      AppMethodBeat.o(190316);
+      this.gSM.a(b.c.gRw, new Bundle());
+      AppMethodBeat.o(212606);
       return true;
     }
-    AppMethodBeat.o(190316);
+    AppMethodBeat.o(212606);
     return false;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(190315);
+    AppMethodBeat.i(212605);
     if ((paramn instanceof v))
     {
-      paramString = com.tencent.mm.kernel.g.agQ();
-      k.g(paramString, "MMKernel.network()");
-      paramString.agi().b(3895, (com.tencent.mm.ak.g)this);
+      paramString = com.tencent.mm.kernel.g.ajB();
+      p.g(paramString, "MMKernel.network()");
+      paramString.aiU().b(3895, (f)this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ac.e("MicroMsg.LiveVerifyPlugin", "NetSceneLiveVerify error, errType:" + paramInt1 + " errCode:" + paramInt2);
-        AppMethodBeat.o(190315);
+        ad.e("MicroMsg.LiveVerifyPlugin", "NetSceneLiveVerify error, errType:" + paramInt1 + " errCode:" + paramInt2);
+        AppMethodBeat.o(212605);
         return;
       }
-      if (k.g(((v)paramn).gwU, Boolean.TRUE)) {}
+      if (p.i(((v)paramn).gQF, Boolean.TRUE)) {}
       for (boolean bool1 = true;; bool1 = false)
       {
-        this.gDv = bool1;
-        paramn = ((v)paramn).guM;
+        this.gXf = bool1;
+        paramn = ((v)paramn).gOx;
         paramString = paramn;
         if (paramn == null) {
           paramString = "";
         }
-        this.guM = paramString;
-        boolean bool3 = this.gDv;
+        this.gOx = paramString;
+        boolean bool3 = this.gXf;
         bool1 = bool2;
-        if (k.g(this.guM, "")) {
+        if (p.i(this.gOx, "")) {
           bool1 = true;
         }
-        ac.i("MicroMsg.LiveVerifyPlugin", "NetSceneLiveVerify, isVerify:%b, verifyUrl null?:%b", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
-        if (!this.gDv) {
+        ad.i("MicroMsg.LiveVerifyPlugin", "NetSceneLiveVerify, isVerify:%b, verifyUrl null?:%b", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
+        if (!this.gXf) {
           break;
         }
-        this.gzb.a(b.c.gxD, new Bundle());
-        AppMethodBeat.o(190315);
+        this.gSM.a(b.c.gRo, new Bundle());
+        AppMethodBeat.o(212605);
         return;
       }
-      paramString = com.tencent.mm.live.b.g.guG;
-      com.tencent.mm.live.b.g.akU().uU(this.guM);
-      paramString = com.tencent.mm.live.b.g.guG;
-      com.tencent.mm.live.b.g.akU().guN = true;
-      this.gzb.a(b.c.gxE, new Bundle());
+      paramString = com.tencent.mm.live.b.g.gOr;
+      com.tencent.mm.live.b.g.anH().xK(this.gOx);
+      paramString = com.tencent.mm.live.b.g.gOr;
+      com.tencent.mm.live.b.g.anH().gOy = true;
+      this.gSM.a(b.c.gRp, new Bundle());
     }
-    AppMethodBeat.o(190315);
+    AppMethodBeat.o(212605);
   }
 }
 

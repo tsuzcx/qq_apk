@@ -2,12 +2,12 @@ package kotlinx.coroutines.b;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/scheduling/TaskContext;", "", "taskMode", "", "getTaskMode", "()I", "afterTask", "", "kotlinx-coroutines-core"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/scheduling/TaskContext;", "", "taskMode", "", "getTaskMode", "()I", "afterTask", "", "kotlinx-coroutines-core"})
 public abstract interface j
 {
-  public abstract void geW();
+  public abstract void gwv();
   
-  public abstract int geX();
+  public abstract int gww();
 }
 
 

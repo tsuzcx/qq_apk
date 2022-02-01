@@ -9,15 +9,15 @@ public class AppBrandRecommendStatObj
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandRecommendStatObj> CREATOR;
-  public String djj;
-  public float dmL;
-  public float doB;
-  public String lRr;
-  public String lRs;
-  public String lRt;
-  public String lRu;
-  public int lRv;
-  public String lRw;
+  public float dAp;
+  public String duW;
+  public float dyz;
+  public String mrh;
+  public String mri;
+  public String mrj;
+  public String mrk;
+  public int mrl;
+  public String mrm;
   public int position;
   public long sessionId;
   public String username;
@@ -25,7 +25,7 @@ public class AppBrandRecommendStatObj
   static
   {
     AppMethodBeat.i(123531);
-    CREATOR = new AppBrandRecommendStatObj.1();
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(123531);
   }
   
@@ -35,16 +35,16 @@ public class AppBrandRecommendStatObj
   {
     AppMethodBeat.i(123528);
     this.username = paramParcel.readString();
-    this.lRr = paramParcel.readString();
-    this.lRs = paramParcel.readString();
-    this.djj = paramParcel.readString();
-    this.lRt = paramParcel.readString();
-    this.lRu = paramParcel.readString();
-    this.lRv = paramParcel.readInt();
-    this.lRw = paramParcel.readString();
+    this.mrh = paramParcel.readString();
+    this.mri = paramParcel.readString();
+    this.duW = paramParcel.readString();
+    this.mrj = paramParcel.readString();
+    this.mrk = paramParcel.readString();
+    this.mrl = paramParcel.readInt();
+    this.mrm = paramParcel.readString();
     this.position = paramParcel.readInt();
-    this.doB = paramParcel.readFloat();
-    this.dmL = paramParcel.readFloat();
+    this.dAp = paramParcel.readFloat();
+    this.dyz = paramParcel.readFloat();
     this.sessionId = paramParcel.readLong();
     AppMethodBeat.o(123528);
   }
@@ -57,7 +57,7 @@ public class AppBrandRecommendStatObj
   public String toString()
   {
     AppMethodBeat.i(123529);
-    String str = "AppBrandRecommendStatObj{username=" + this.username + ", recommend_id='" + this.lRr + '\'' + ", strategy_info=" + this.lRs + ", appid='" + this.djj + '\'' + ", page_path=" + this.lRt + ", page_param=" + this.lRu + ", card_type=" + this.lRv + ", pass_str=" + this.lRw + ", position=" + this.position + ", longitude=" + this.doB + ", latitude=" + this.dmL + ", sessionId=" + this.sessionId + '}';
+    String str = "AppBrandRecommendStatObj{username=" + this.username + ", recommend_id='" + this.mrh + '\'' + ", strategy_info=" + this.mri + ", appid='" + this.duW + '\'' + ", page_path=" + this.mrj + ", page_param=" + this.mrk + ", card_type=" + this.mrl + ", pass_str=" + this.mrm + ", position=" + this.position + ", longitude=" + this.dAp + ", latitude=" + this.dyz + ", sessionId=" + this.sessionId + '}';
     AppMethodBeat.o(123529);
     return str;
   }
@@ -66,16 +66,16 @@ public class AppBrandRecommendStatObj
   {
     AppMethodBeat.i(123530);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.lRr);
-    paramParcel.writeString(this.lRs);
-    paramParcel.writeString(this.djj);
-    paramParcel.writeString(this.lRt);
-    paramParcel.writeString(this.lRu);
-    paramParcel.writeInt(this.lRv);
-    paramParcel.writeString(this.lRw);
+    paramParcel.writeString(this.mrh);
+    paramParcel.writeString(this.mri);
+    paramParcel.writeString(this.duW);
+    paramParcel.writeString(this.mrj);
+    paramParcel.writeString(this.mrk);
+    paramParcel.writeInt(this.mrl);
+    paramParcel.writeString(this.mrm);
     paramParcel.writeInt(this.position);
-    paramParcel.writeFloat(this.doB);
-    paramParcel.writeFloat(this.dmL);
+    paramParcel.writeFloat(this.dAp);
+    paramParcel.writeFloat(this.dyz);
     paramParcel.writeLong(this.sessionId);
     AppMethodBeat.o(123530);
   }

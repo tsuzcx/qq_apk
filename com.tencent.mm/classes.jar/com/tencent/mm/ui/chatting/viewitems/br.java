@@ -2,24 +2,25 @@ package com.tencent.mm.ui.chatting.viewitems;
 
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class br
   extends c.a
 {
-  TextView ijE;
+  protected ImageView KiB;
+  protected TextView iCV;
   
-  public final c.a gy(View paramView)
+  public final br gO(View paramView)
   {
-    AppMethodBeat.i(37565);
-    super.fX(paramView);
-    this.fAz = ((TextView)paramView.findViewById(2131298178));
-    this.xpH = ((TextView)paramView.findViewById(2131298185));
-    this.ijE = ((TextView)paramView.findViewById(2131298073));
-    this.ijt = ((CheckBox)paramView.findViewById(2131298068));
-    this.gGk = paramView.findViewById(2131298147);
-    AppMethodBeat.o(37565);
+    AppMethodBeat.i(37564);
+    super.gn(paramView);
+    this.iCV = ((TextView)paramView.findViewById(2131298026));
+    this.KiB = ((ImageView)paramView.findViewById(2131298047));
+    this.iCK = ((CheckBox)paramView.findViewById(2131298068));
+    this.gZU = paramView.findViewById(2131298147);
+    AppMethodBeat.o(37564);
     return this;
   }
 }

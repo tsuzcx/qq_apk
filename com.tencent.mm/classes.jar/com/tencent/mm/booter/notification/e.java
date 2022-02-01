@@ -1,153 +1,361 @@
 package com.tencent.mm.booter.notification;
 
-import android.annotation.TargetApi;
 import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.content.ContentResolver;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.app.v;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.booter.notification.queue.b;
-import com.tencent.mm.m.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import java.util.ArrayList;
+import com.tencent.mm.booter.notification.a.g;
+import com.tencent.mm.booter.notification.queue.NotificationQueue;
+import com.tencent.mm.booter.notification.queue.NotificationQueue.ParcelNotificationQueue;
+import com.tencent.mm.n.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.LauncherUI;
+import java.lang.reflect.Field;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class e
-  extends a
 {
-  private NotificationManager Gu;
-  public c foC;
-  private Context mContext;
+  private static int fGA;
+  private static boolean fGB;
+  private static String fGC;
+  public static boolean fGD;
+  public static boolean fGE;
+  private static int fGF;
+  private static boolean fGG;
+  private static Uri fGH;
+  private static boolean fGw;
+  private static boolean fGx;
+  private static boolean fGy;
+  private static int fGz;
   
-  public e()
+  static
   {
-    AppMethodBeat.i(19983);
-    this.mContext = ai.getContext();
-    this.Gu = ((NotificationManager)this.mContext.getSystemService("notification"));
-    this.foC = new c();
-    AppMethodBeat.o(19983);
+    AppMethodBeat.i(19982);
+    fGw = true;
+    fGx = true;
+    fGy = false;
+    fGz = -1;
+    fGA = -1;
+    fGB = true;
+    fGC = "samsung";
+    fGD = true;
+    fGE = false;
+    fGF = -1;
+    fGG = true;
+    fGH = Uri.parse("content://com.android.badge/badge");
+    AppMethodBeat.o(19982);
   }
   
-  public static void cancel()
+  public static void B(String paramString, int paramInt)
   {
-    AppMethodBeat.i(19984);
-    v localv = v.N(ai.getContext());
-    LinkedList localLinkedList = new LinkedList();
-    Object localObject = b.UX().UZ();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localObject = ((Queue)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    AppMethodBeat.i(19975);
+    if (bt.isNullOrNil(paramString))
     {
-      Integer localInteger = (Integer)((Iterator)localObject).next();
-      localStringBuilder.append(localInteger + ";");
-      if (!localLinkedList.contains(localInteger))
-      {
-        b.UX().a(localv, localInteger.intValue());
-        localLinkedList.add(localInteger);
-      }
+      ad.printErrStackTrace("MicroMsg.BusinessNotification", null, "syncUserBadge username is null", new Object[0]);
+      AppMethodBeat.o(19975);
+      return;
     }
-    ac.i("MicroMsg.Notification.Handle", "needRemoveNotificationId:%s", new Object[] { localStringBuilder });
-    AppMethodBeat.o(19984);
+    paramString = com.tencent.mm.plugin.base.model.b.Wt(paramString);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(19975);
+      return;
+    }
+    C(paramString, paramInt);
+    AppMethodBeat.o(19975);
   }
   
-  public static void p(int paramInt, String paramString)
+  private static void C(String paramString, int paramInt)
   {
-    AppMethodBeat.i(19987);
-    ac.i("MicroMsg.Notification.AppMsg.Handle", "refreshTotalUnread, %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    AppMethodBeat.i(19979);
+    if (aj.getContext() == null)
+    {
+      ad.printErrStackTrace("MicroMsg.BusinessNotification", null, "normal badge context is null", new Object[0]);
+      AppMethodBeat.o(19979);
+      return;
+    }
+    Context localContext = aj.getContext();
     int i = paramInt;
-    if (paramInt == -1) {
-      i = f.ZV();
+    if (paramInt < 0) {
+      i = f.acx();
     }
-    c.ks(i);
-    ArrayList localArrayList;
-    if ((paramString != null) && (paramString.length() > 0))
+    c(localContext, paramString, i);
+    AppMethodBeat.o(19979);
+  }
+  
+  private static boolean Xm()
+  {
+    AppMethodBeat.i(19978);
+    if (fGE)
     {
-      localArrayList = c.UT();
-      if (localArrayList != null) {
-        break label290;
-      }
-      localArrayList = new ArrayList();
+      boolean bool = fGD;
+      AppMethodBeat.o(19978);
+      return bool;
     }
-    label290:
-    for (;;)
+    fGE = true;
+    if (!Build.BRAND.equals(fGC))
     {
-      Object localObject2 = localArrayList.iterator();
-      Object localObject1;
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject1 = (c.a)((Iterator)localObject2).next();
-        if (((c.a)localObject1).userName.equals(paramString)) {
-          localArrayList.remove(localObject1);
-        }
-      }
+      fGD = false;
+      AppMethodBeat.o(19978);
+      return false;
+    }
+    fGD = true;
+    AppMethodBeat.o(19978);
+    return true;
+  }
+  
+  public static int a(Notification paramNotification, g paramg)
+  {
+    AppMethodBeat.i(19977);
+    if ((paramNotification == null) || (!fGw))
+    {
+      AppMethodBeat.o(19977);
+      return 0;
+    }
+    int i;
+    if (paramg == null) {
+      i = 0;
+    }
+    try
+    {
       for (;;)
       {
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = new c.a((byte)0);
+        paramg = Class.forName("android.app.MiuiNotification").newInstance();
+        Field localField = paramg.getClass().getDeclaredField("messageCount");
+        localField.setAccessible(true);
+        localField.set(paramg, Integer.valueOf(i));
+        paramNotification.getClass().getField("extraNotification").set(paramNotification, paramg);
+        ad.i("MicroMsg.BusinessNotification", "miuiNotification: %d", new Object[] { Integer.valueOf(i) });
+        AppMethodBeat.o(19977);
+        return i;
+        int j = paramg.Mo();
+        paramg = com.tencent.mm.booter.notification.queue.b.Xo().fGX;
+        if (paramg.fGW == null) {
+          paramg.restore();
         }
-        ((c.a)localObject2).userName = paramString;
-        ((c.a)localObject2).dkt = f.sO(paramString);
-        if ((((c.a)localObject2).dkt == 0) && (localArrayList.isEmpty()))
-        {
-          c.f(null);
-          AppMethodBeat.o(19987);
-          return;
-        }
-        paramString = localArrayList;
-        if (((c.a)localObject2).dkt > 0)
-        {
-          localArrayList.add(localObject2);
-          paramString = localArrayList;
-        }
-        c.f(paramString);
-        AppMethodBeat.o(19987);
-        return;
-        localArrayList = new ArrayList();
-        localObject1 = f.lg(-1).iterator();
-        for (;;)
-        {
-          paramString = localArrayList;
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          paramString = (String)((Iterator)localObject1).next();
-          localObject2 = new c.a((byte)0);
-          ((c.a)localObject2).userName = paramString;
-          ((c.a)localObject2).dkt = f.sO(paramString);
-          localArrayList.add(localObject2);
-        }
-        localObject1 = null;
+        paramg = paramg.fGW.iterator();
+        for (i = 0; paramg.hasNext(); i = ((NotificationItem)paramg.next()).fGR + i) {}
+        i = j - i;
+      }
+    }
+    catch (NoSuchFieldException paramNotification)
+    {
+      for (;;)
+      {
+        fGw = false;
+      }
+    }
+    catch (IllegalArgumentException paramNotification)
+    {
+      for (;;)
+      {
+        fGw = false;
+      }
+    }
+    catch (IllegalAccessException paramNotification)
+    {
+      for (;;)
+      {
+        fGw = false;
+      }
+    }
+    catch (ClassNotFoundException paramNotification)
+    {
+      for (;;)
+      {
+        fGw = false;
+      }
+    }
+    catch (InstantiationException paramNotification)
+    {
+      for (;;)
+      {
+        fGw = false;
+      }
+    }
+    catch (Exception paramNotification)
+    {
+      for (;;)
+      {
+        fGw = false;
       }
     }
   }
   
-  public final int a(NotificationItem paramNotificationItem)
+  private static boolean c(Context paramContext, final String paramString, final int paramInt)
   {
-    AppMethodBeat.i(19985);
-    if (paramNotificationItem == null)
+    AppMethodBeat.i(19980);
+    com.tencent.mm.sdk.g.b.c(new Runnable()
     {
-      AppMethodBeat.o(19985);
-      return -1;
-    }
-    int i = a(paramNotificationItem, null);
-    AppMethodBeat.o(19985);
-    return i;
+      public final void run()
+      {
+        AppMethodBeat.i(184895);
+        e.d(this.val$context, paramString, paramInt);
+        AppMethodBeat.o(184895);
+      }
+    }, "normalNotification");
+    AppMethodBeat.o(19980);
+    return true;
   }
   
-  @TargetApi(11)
-  public final Notification a(Notification paramNotification, int paramInt1, int paramInt2, PendingIntent paramPendingIntent, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, String paramString4)
+  public static void cB(boolean paramBoolean)
   {
-    AppMethodBeat.i(19986);
-    paramNotification = this.foC.a(paramNotification, paramInt1, paramInt2, paramPendingIntent, paramString1, paramString2, paramString3, paramBitmap, paramString4);
-    AppMethodBeat.o(19986);
-    return paramNotification;
+    AppMethodBeat.i(19976);
+    if (!fGG)
+    {
+      AppMethodBeat.o(19976);
+      return;
+    }
+    Object localObject = aj.getContext();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(19976);
+      return;
+    }
+    localObject = ((Context)localObject).getContentResolver();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(19976);
+      return;
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        ad.i("MicroMsg.BusinessNotification", "sync all user badge");
+        localObject = ((ContentResolver)localObject).call(fGH, "getShortcutList", null, null);
+        if (localObject == null)
+        {
+          ad.i("MicroMsg.BusinessNotification", "getShortcutList return null");
+          AppMethodBeat.o(19976);
+          return;
+        }
+        localObject = ((Bundle)localObject).getString("shortcut_list");
+        if (localObject != null)
+        {
+          localObject = new JSONArray((String)localObject);
+          i = 0;
+          if (i < ((JSONArray)localObject).length())
+          {
+            String str = ((JSONObject)((JSONArray)localObject).get(i)).getString("app_shortcut_custom_id");
+            if ((str == null) || (str.equalsIgnoreCase("null"))) {
+              break label211;
+            }
+            str = com.tencent.mm.plugin.base.model.b.Ws(str);
+            if (paramBoolean)
+            {
+              j = 0;
+              B(str, j);
+              break label211;
+            }
+            int j = f.vD(str);
+            continue;
+          }
+        }
+        AppMethodBeat.o(19976);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ad.printErrStackTrace("MicroMsg.BusinessNotification", localException, "sync all user badge: no support getShortcutList", new Object[0]);
+        AppMethodBeat.o(19976);
+        return;
+      }
+      label211:
+      i += 1;
+    }
+  }
+  
+  public static void kQ(int paramInt)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(19974);
+    Object localObject;
+    int i;
+    if ((aj.getContext() != null) && (Xm()))
+    {
+      localObject = aj.getContext();
+      if (paramInt != -1) {
+        break label256;
+      }
+      i = f.acx();
+    }
+    for (;;)
+    {
+      if ((localObject != null) && (Xm()) && (fGF != i))
+      {
+        fGF = i;
+        Intent localIntent = new Intent("android.intent.action.BADGE_COUNT_UPDATE");
+        localIntent.putExtra("badge_count", i);
+        localIntent.putExtra("badge_count_package_name", aj.getPackageName());
+        localIntent.putExtra("badge_count_class_name", LauncherUI.class.getName());
+        ad.i("MicroMsg.BusinessNotification", "samsungNotification: %d, %s", new Object[] { Integer.valueOf(i), Build.BRAND });
+        ((Context)localObject).sendBroadcast(localIntent);
+      }
+      if (fGB)
+      {
+        if (Build.VERSION.SDK_INT < 11) {
+          fGB = false;
+        }
+      }
+      else
+      {
+        label152:
+        if (!fGy) {
+          break label285;
+        }
+        bool = fGx;
+        label162:
+        if ((!bool) || (fGz == paramInt)) {}
+      }
+      try
+      {
+        localObject = new Intent("launcher.action.CHANGE_APPLICATION_NOTIFICATION_NUM");
+        ((Intent)localObject).putExtra("packageName", aj.getPackageName());
+        ((Intent)localObject).putExtra("className", LauncherUI.class.getName());
+        ((Intent)localObject).putExtra("notificationNum", paramInt);
+        aj.getContext().sendBroadcast((Intent)localObject);
+        ad.i("MicroMsg.BusinessNotification", "vivo badge: %d", new Object[] { Integer.valueOf(paramInt) });
+        C(null, paramInt);
+        AppMethodBeat.o(19974);
+        return;
+        label256:
+        i = paramInt;
+        continue;
+        if (fGA == paramInt) {
+          break label152;
+        }
+        com.tencent.mm.sdk.g.b.c(new e.1(paramInt), "huaweiNotification");
+        break label152;
+        label285:
+        fGy = true;
+        if (!Build.BRAND.equals("vivo"))
+        {
+          fGx = false;
+          bool = false;
+          break label162;
+        }
+        fGx = true;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          fGx = false;
+          ad.printErrStackTrace("MicroMsg.BusinessNotification", localException, "", new Object[0]);
+        }
+      }
+    }
   }
 }
 

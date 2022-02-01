@@ -8,30 +8,43 @@ public abstract class ek
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eVA = "msgTypeFlag".hashCode();
-  private static final int eVB = "msgState".hashCode();
-  private static final int eVz;
-  private static final int elV;
-  private static final int enO = "appId".hashCode();
-  private static final int epR = "packageName".hashCode();
+  private static final int eEf = "createTime".hashCode();
+  private static final int eNZ;
+  private static final int eST = "state".hashCode();
+  private static final int eTa;
+  private static final int fkO = "wxGroupId".hashCode();
+  private static final int fkP;
+  private static final int fkQ;
+  private static final int fkR;
+  private static final int fkS;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eVw = true;
-  private boolean eVx = true;
-  private boolean eVy = true;
-  private boolean elS = true;
-  private boolean enx = true;
-  private boolean epv = true;
-  public String field_appId;
-  public int field_msgState;
-  public int field_msgTypeFlag;
-  public String field_packageName;
-  public int field_sceneFlag;
-  public int field_status;
+  private boolean eDI = true;
+  private boolean eNz = true;
+  private boolean eSh = true;
+  private boolean eSo = true;
+  public long field_createTime;
+  public String field_groupId;
+  public String field_inviteUserName;
+  public int field_memberCount;
+  public int field_roomId;
+  public long field_roomKey;
+  public int field_routeId;
+  public int field_state;
+  public String field_wxGroupId;
+  private boolean fkJ = true;
+  private boolean fkK = true;
+  private boolean fkL = true;
+  private boolean fkM = true;
+  private boolean fkN = true;
   
   static
   {
-    elV = "status".hashCode();
-    eVz = "sceneFlag".hashCode();
+    eTa = "groupId".hashCode();
+    fkP = "roomId".hashCode();
+    fkQ = "roomKey".hashCode();
+    fkR = "routeId".hashCode();
+    fkS = "inviteUserName".hashCode();
+    eNZ = "memberCount".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -47,11 +60,11 @@ public abstract class ek
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (enO != k) {
+      if (fkO != k) {
         break label65;
       }
-      this.field_appId = paramCursor.getString(i);
-      this.enx = true;
+      this.field_wxGroupId = paramCursor.getString(i);
+      this.fkJ = true;
     }
     for (;;)
     {
@@ -59,16 +72,22 @@ public abstract class ek
       break label20;
       break;
       label65:
-      if (epR == k) {
-        this.field_packageName = paramCursor.getString(i);
-      } else if (elV == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (eVz == k) {
-        this.field_sceneFlag = paramCursor.getInt(i);
-      } else if (eVA == k) {
-        this.field_msgTypeFlag = paramCursor.getInt(i);
-      } else if (eVB == k) {
-        this.field_msgState = paramCursor.getInt(i);
+      if (eTa == k) {
+        this.field_groupId = paramCursor.getString(i);
+      } else if (fkP == k) {
+        this.field_roomId = paramCursor.getInt(i);
+      } else if (fkQ == k) {
+        this.field_roomKey = paramCursor.getLong(i);
+      } else if (fkR == k) {
+        this.field_routeId = paramCursor.getInt(i);
+      } else if (fkS == k) {
+        this.field_inviteUserName = paramCursor.getString(i);
+      } else if (eNZ == k) {
+        this.field_memberCount = paramCursor.getInt(i);
+      } else if (eEf == k) {
+        this.field_createTime = paramCursor.getLong(i);
+      } else if (eST == k) {
+        this.field_state = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -78,23 +97,32 @@ public abstract class ek
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.enx) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.fkJ) {
+      localContentValues.put("wxGroupId", this.field_wxGroupId);
     }
-    if (this.epv) {
-      localContentValues.put("packageName", this.field_packageName);
+    if (this.eSo) {
+      localContentValues.put("groupId", this.field_groupId);
     }
-    if (this.elS) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
+    if (this.fkK) {
+      localContentValues.put("roomId", Integer.valueOf(this.field_roomId));
     }
-    if (this.eVw) {
-      localContentValues.put("sceneFlag", Integer.valueOf(this.field_sceneFlag));
+    if (this.fkL) {
+      localContentValues.put("roomKey", Long.valueOf(this.field_roomKey));
     }
-    if (this.eVx) {
-      localContentValues.put("msgTypeFlag", Integer.valueOf(this.field_msgTypeFlag));
+    if (this.fkM) {
+      localContentValues.put("routeId", Integer.valueOf(this.field_routeId));
     }
-    if (this.eVy) {
-      localContentValues.put("msgState", Integer.valueOf(this.field_msgState));
+    if (this.fkN) {
+      localContentValues.put("inviteUserName", this.field_inviteUserName);
+    }
+    if (this.eNz) {
+      localContentValues.put("memberCount", Integer.valueOf(this.field_memberCount));
+    }
+    if (this.eDI) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    }
+    if (this.eSh) {
+      localContentValues.put("state", Integer.valueOf(this.field_state));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

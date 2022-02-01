@@ -15,19 +15,19 @@ import java.util.Set;
 public final class b
   implements n<Uri, InputStream>
 {
-  private static final Set<String> aIT;
-  private final n<g, InputStream> aIV;
+  private static final Set<String> aKK;
+  private final n<g, InputStream> aKM;
   
   static
   {
     AppMethodBeat.i(77334);
-    aIT = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[] { "http", "https" })));
+    aKK = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[] { "http", "https" })));
     AppMethodBeat.o(77334);
   }
   
   public b(n<g, InputStream> paramn)
   {
-    this.aIV = paramn;
+    this.aKM = paramn;
   }
   
   public static final class a

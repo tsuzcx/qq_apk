@@ -11,8 +11,8 @@ import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public final class JsApiSetBackgroundFetchToken
@@ -26,22 +26,22 @@ public final class JsApiSetBackgroundFetchToken
     AppMethodBeat.i(46130);
     if (paramJSONObject == null)
     {
-      ac.e("MicroMsg.AppBrand.JsApiSetBackgroundFetchToken", "fail:data is null");
+      ad.e("MicroMsg.AppBrand.JsApiSetBackgroundFetchToken", "fail:data is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(46130);
       return;
     }
     paramJSONObject = paramJSONObject.optString("token");
-    if (bs.isNullOrNil(paramJSONObject))
+    if (bt.isNullOrNil(paramJSONObject))
     {
-      ac.e("MicroMsg.AppBrand.JsApiSetBackgroundFetchToken", "fail:token is null");
+      ad.e("MicroMsg.AppBrand.JsApiSetBackgroundFetchToken", "fail:token is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(46130);
       return;
     }
     if (paramJSONObject.length() > 1024)
     {
-      ac.e("MicroMsg.AppBrand.JsApiSetBackgroundFetchToken", "fail:token is too long");
+      ad.e("MicroMsg.AppBrand.JsApiSetBackgroundFetchToken", "fail:token is too long");
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(46130);
       return;

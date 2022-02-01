@@ -265,6 +265,11 @@ public class h
     AppMethodBeat.o(16906);
   }
   
+  public void a(boolean paramBoolean)
+  {
+    this.i = paramBoolean;
+  }
+  
   public void a(float[] paramArrayOfFloat)
   {
     this.s = paramArrayOfFloat;

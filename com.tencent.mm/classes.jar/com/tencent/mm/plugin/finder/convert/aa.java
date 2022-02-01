@@ -1,91 +1,78 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.support.v7.widget.RecyclerView.w;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.loader.d;
-import com.tencent.mm.plugin.finder.loader.f;
-import com.tencent.mm.plugin.finder.loader.h;
-import com.tencent.mm.plugin.finder.loader.h.a;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.b;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.m;
-import com.tencent.mm.protocal.protobuf.bqs;
-import com.tencent.mm.ui.am;
-import com.tencent.mm.view.recyclerview.e;
-import d.a.j;
-import d.g.b.k;
+import com.tencent.mm.plugin.finder.view.FinderPostProgressView;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import d.g.b.p;
 import d.l;
-import java.util.LinkedList;
-import java.util.List;
+import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/convert/FinderMixFeedImageRoundCornerConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMixFeedRoundCornerConvert;", "()V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "baseItem", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderGridViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "failedArea", "getFailedArea", "()Landroid/view/View;", "setFailedArea", "likeArea", "getLikeArea", "setLikeArea", "likeImgview", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getLikeImgview", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setLikeImgview", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "progress", "Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;", "getProgress", "()Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;", "setProgress", "(Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;)V", "progressAnimator", "Landroid/animation/ValueAnimator;", "getProgressAnimator", "()Landroid/animation/ValueAnimator;", "setProgressAnimator", "(Landroid/animation/ValueAnimator;)V", "progressArea", "getProgressArea", "setProgressArea", "bindMedia", "", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "dataPos", "", "bindImage", "", "fromSearch", "itemClickListener", "Lkotlin/Function0;", "dealLickArea", "context", "Landroid/content/Context;", "refreshLickArea", "isActionLike", "plugin-finder_release"})
 public final class aa
-  extends ab
+  extends RecyclerView.w
 {
-  public final void a(e parame, b paramb, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  private ValueAnimator knA;
+  private View rOH;
+  FinderPostProgressView rOI;
+  private View rOJ;
+  private WeImageView rOK;
+  private View rzU;
+  
+  public aa(View paramView)
   {
-    AppMethodBeat.i(201334);
-    k.h(parame, "holder");
-    k.h(paramb, "baseItem");
-    super.a(parame, paramb, paramInt1, paramInt2, paramBoolean, paramList);
-    paramb = paramb.rux;
-    if (paramb != null)
+    super(paramView);
+    AppMethodBeat.i(201418);
+    View localView = paramView.findViewById(2131303504);
+    p.g(localView, "itemView.findViewById(R.id.profile_upload_area)");
+    this.rzU = localView;
+    localView = paramView.findViewById(2131303466);
+    p.g(localView, "itemView.findViewById(R.…profile_item_failed_area)");
+    this.rOH = localView;
+    localView = paramView.findViewById(2131303466);
+    p.g(localView, "itemView.findViewById(R.…profile_item_failed_area)");
+    this.rOH = localView;
+    localView = paramView.findViewById(2131303505);
+    p.g(localView, "itemView.findViewById(R.….profile_upload_progress)");
+    this.rOI = ((FinderPostProgressView)localView);
+    localView = paramView.findViewById(2131307916);
+    p.g(localView, "itemView.findViewById(R.id.profile_like_area)");
+    this.rOJ = localView;
+    paramView = paramView.findViewById(2131307917);
+    p.g(paramView, "itemView.findViewById(R.id.profile_like_iv)");
+    this.rOK = ((WeImageView)paramView);
+    AppMethodBeat.o(201418);
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  static final class b
+    implements ValueAnimator.AnimatorUpdateListener
+  {
+    b(aa paramaa) {}
+    
+    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      paramList = (ImageView)parame.adJ(2131302222);
-      if (paramb.feedObject.getMediaList().size() > 1)
+      AppMethodBeat.i(201414);
+      FinderPostProgressView localFinderPostProgressView = this.rOM.rOI;
+      paramValueAnimator = paramValueAnimator.getAnimatedValue();
+      if (paramValueAnimator == null)
       {
-        k.g(paramList, "mediaIcon");
-        paramList.setImageDrawable(am.k(paramList.getContext(), 2131690348, a.n(paramList.getContext(), 2131099828)));
-        paramList.setVisibility(0);
+        paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Int");
+        AppMethodBeat.o(201414);
+        throw paramValueAnimator;
       }
-      for (;;)
-      {
-        paramList = (bqs)j.iO((List)paramb.feedObject.getMediaList());
-        paramb = (ImageView)parame.adJ(2131305798);
-        k.g(paramb, "thumbIv");
-        Object localObject1 = paramb.getLayoutParams();
-        Object localObject2 = parame.getContext();
-        k.g(localObject2, "holder.context");
-        localObject2 = ((Context)localObject2).getResources();
-        k.g(localObject2, "holder.context.resources");
-        paramInt1 = ((Resources)localObject2).getDisplayMetrics().widthPixels;
-        parame = parame.getContext();
-        k.g(parame, "holder.context");
-        int i = (paramInt1 - (int)parame.getResources().getDimension(2131165284)) / 2;
-        if (i > 0)
-        {
-          paramInt2 = (int)(paramList.height * i / paramList.width);
-          paramInt1 = paramInt2;
-          if (paramInt2 > i * 1.166666666666667D) {
-            paramInt1 = (int)(i * 1.166666666666667D);
-          }
-          ((ViewGroup.LayoutParams)localObject1).width = i;
-          ((ViewGroup.LayoutParams)localObject1).height = paramInt1;
-          paramb.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        }
-        parame = h.rtK;
-        parame = h.cwn();
-        paramList = new f(paramList, m.rDR);
-        localObject1 = h.rtK;
-        parame.a(paramList, paramb, h.a(h.a.rtL));
-        AppMethodBeat.o(201334);
-        return;
-        k.g(paramList, "mediaIcon");
-        paramList.setVisibility(8);
-      }
+      localFinderPostProgressView.setProgress(((Integer)paramValueAnimator).intValue());
+      this.rOM.rOI.invalidate();
+      AppMethodBeat.o(201414);
     }
-    AppMethodBeat.o(201334);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.aa
  * JD-Core Version:    0.7.0.1
  */

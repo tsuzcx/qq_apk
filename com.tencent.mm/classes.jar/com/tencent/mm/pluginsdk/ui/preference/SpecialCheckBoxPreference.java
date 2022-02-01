@@ -8,35 +8,35 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ToggleButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
-import com.tencent.mm.n.b;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.o.b;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class SpecialCheckBoxPreference
   extends Preference
 {
-  private ToggleButton DBL;
-  private ToggleButton DBM;
-  private ToggleButton DBN;
-  private CompoundButton.OnCheckedChangeListener DBO;
-  private boolean dmR;
-  private boolean ftN;
-  private boolean ftu;
+  private ToggleButton FgS;
+  private ToggleButton FgT;
+  private ToggleButton FgU;
+  private CompoundButton.OnCheckedChangeListener FgV;
+  private boolean dyF;
+  private boolean fMP;
+  private boolean fMw;
   private Context mContext;
-  private ai piT;
+  private am pMt;
   private String roomId;
   
   public SpecialCheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(31914);
-    this.DBO = new CompoundButton.OnCheckedChangeListener()
+    this.FgV = new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
@@ -60,7 +60,7 @@ public class SpecialCheckBoxPreference
         AppMethodBeat.o(31913);
       }
     };
-    this.ftN = false;
+    this.fMP = false;
     this.mContext = paramContext;
     AppMethodBeat.o(31914);
   }
@@ -69,7 +69,7 @@ public class SpecialCheckBoxPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(31915);
-    this.DBO = new CompoundButton.OnCheckedChangeListener()
+    this.FgV = new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
@@ -93,37 +93,37 @@ public class SpecialCheckBoxPreference
         AppMethodBeat.o(31913);
       }
     };
-    this.ftN = false;
+    this.fMP = false;
     this.mContext = paramContext;
     AppMethodBeat.o(31915);
   }
   
-  private boolean ePP()
+  private boolean feR()
   {
     AppMethodBeat.i(31917);
     boolean bool;
-    if (this.dmR) {
-      if (this.piT.exT == 0)
+    if (this.dyF) {
+      if (this.pMt.ePs == 0)
       {
         bool = true;
-        this.ftN = bool;
+        this.fMP = bool;
       }
     }
     for (;;)
     {
       if ((this.mContext instanceof MMActivity))
       {
-        if (this.ftN)
+        if (this.fMP)
         {
           ((MMActivity)this.mContext).setTitleMuteIconVisibility(0);
           AppMethodBeat.o(31917);
           return true;
           bool = false;
           break;
-          if (this.ftu) {
+          if (this.fMw) {
             continue;
           }
-          this.ftN = this.piT.Nw();
+          this.fMP = this.pMt.Pf();
           continue;
         }
         ((MMActivity)this.mContext).setTitleMuteIconVisibility(8);
@@ -139,25 +139,25 @@ public class SpecialCheckBoxPreference
   {
     AppMethodBeat.i(31916);
     super.onBindView(paramView);
-    this.DBL = ((ToggleButton)paramView.findViewById(2131304222));
-    this.DBM = ((ToggleButton)paramView.findViewById(2131304221));
-    this.DBN = ((ToggleButton)paramView.findViewById(2131304229));
+    this.FgS = ((ToggleButton)paramView.findViewById(2131304222));
+    this.FgT = ((ToggleButton)paramView.findViewById(2131304221));
+    this.FgU = ((ToggleButton)paramView.findViewById(2131304229));
     this.roomId = ((MMActivity)this.mContext).getIntent().getStringExtra("RoomInfo_Id");
-    this.dmR = ((MMActivity)this.mContext).getIntent().getBooleanExtra("Is_Chatroom", true);
-    this.ftu = ((MMActivity)this.mContext).getIntent().getBooleanExtra("Is_Lbsroom", false);
-    az.ayM();
-    this.piT = c.awB().aNt(this.roomId);
-    if (this.piT != null)
+    this.dyF = ((MMActivity)this.mContext).getIntent().getBooleanExtra("Is_Chatroom", true);
+    this.fMw = ((MMActivity)this.mContext).getIntent().getBooleanExtra("Is_Lbsroom", false);
+    ba.aBQ();
+    this.pMt = c.azp().Bf(this.roomId);
+    if (this.pMt != null)
     {
-      paramView = this.DBL;
-      az.ayM();
-      paramView.setChecked(c.awG().aNQ(this.piT.field_username));
-      this.DBN.setChecked(b.ln(this.piT.field_type));
-      this.DBM.setChecked(ePP());
+      paramView = this.FgS;
+      ba.aBQ();
+      paramView.setChecked(c.azv().aTH(this.pMt.field_username));
+      this.FgU.setChecked(b.lM(this.pMt.field_type));
+      this.FgT.setChecked(feR());
     }
-    this.DBL.setOnCheckedChangeListener(this.DBO);
-    this.DBM.setOnCheckedChangeListener(this.DBO);
-    this.DBN.setOnCheckedChangeListener(this.DBO);
+    this.FgS.setOnCheckedChangeListener(this.FgV);
+    this.FgT.setOnCheckedChangeListener(this.FgV);
+    this.FgU.setOnCheckedChangeListener(this.FgV);
     AppMethodBeat.o(31916);
   }
 }

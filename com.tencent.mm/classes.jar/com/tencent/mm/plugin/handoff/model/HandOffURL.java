@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.handoff.model;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.n.n;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/model/HandOffURL;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "title", "", "url", "icon", "handOffType", "", "from", "to", "key", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getIcon", "()Ljava/lang/String;", "setIcon", "(Ljava/lang/String;)V", "getTitle", "setTitle", "getUrl", "setUrl", "body", "copy", "describeContents", "getDataType", "toString", "update", "", "newHandOff", "writeToParcel", "dest", "flags", "Companion", "api-handoff_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/model/HandOffURL;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "title", "", "url", "icon", "handOffType", "", "from", "to", "key", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getIcon", "()Ljava/lang/String;", "setIcon", "(Ljava/lang/String;)V", "getTitle", "setTitle", "getUrl", "setUrl", "body", "copy", "describeContents", "getDataType", "toString", "update", "", "newHandOff", "writeToParcel", "dest", "flags", "Companion", "api-handoff_release"})
 public final class HandOffURL
   extends HandOff
 {
   public static final Parcelable.Creator<HandOffURL> CREATOR;
-  public static final a tBm;
-  private String drM;
+  public static final a uDV;
+  private String dDH;
   public String title;
   public String url;
   
   static
   {
     AppMethodBeat.i(121743);
-    tBm = new a((byte)0);
+    uDV = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(121743);
   }
@@ -31,19 +31,19 @@ public final class HandOffURL
     AppMethodBeat.i(121742);
     String str = paramParcel.readString();
     if (str == null) {
-      k.fOy();
+      p.gfZ();
     }
     this.title = str;
     str = paramParcel.readString();
     if (str == null) {
-      k.fOy();
+      p.gfZ();
     }
     this.url = str;
     paramParcel = paramParcel.readString();
     if (paramParcel == null) {
-      k.fOy();
+      p.gfZ();
     }
-    this.drM = paramParcel;
+    this.dDH = paramParcel;
     AppMethodBeat.o(121742);
   }
   
@@ -58,23 +58,23 @@ public final class HandOffURL
     AppMethodBeat.i(121740);
     this.title = paramString1;
     this.url = paramString2;
-    this.drM = paramString3;
+    this.dDH = paramString3;
     AppMethodBeat.o(121740);
   }
   
-  protected final String cSF()
+  protected final String dbM()
   {
     AppMethodBeat.i(121736);
-    String str = n.aWZ("\n        <title>" + a.di(this.title) + "</title>\n        <url>" + a.di(this.url) + "</url>\n        <icon>" + a.di(this.drM) + "</icon>\n    ");
+    String str = n.bdc("\n        <title>" + a.dl(this.title) + "</title>\n        <url>" + a.dl(this.url) + "</url>\n        <icon>" + a.dl(this.dDH) + "</icon>\n    ");
     AppMethodBeat.o(121736);
     return str;
   }
   
-  public final HandOff cSG()
+  public final HandOff dbN()
   {
     AppMethodBeat.i(121738);
-    Object localObject = new HandOffURL(this.title, this.url, this.drM, this.tBa, this.dsT, this.hmj, this.key);
-    ((HandOffURL)localObject).adU(this.id);
+    Object localObject = new HandOffURL(this.title, this.url, this.dDH, this.uDJ, this.dET, this.hEw, this.key);
+    ((HandOffURL)localObject).setId(this.id);
     localObject = (HandOff)localObject;
     AppMethodBeat.o(121738);
     return localObject;
@@ -93,13 +93,13 @@ public final class HandOffURL
   public final void j(HandOff paramHandOff)
   {
     AppMethodBeat.i(121735);
-    k.h(paramHandOff, "newHandOff");
+    p.h(paramHandOff, "newHandOff");
     super.j(paramHandOff);
     if ((paramHandOff instanceof HandOffURL))
     {
       this.title = ((HandOffURL)paramHandOff).title;
       this.url = ((HandOffURL)paramHandOff).url;
-      this.drM = ((HandOffURL)paramHandOff).drM;
+      this.dDH = ((HandOffURL)paramHandOff).dDH;
     }
     AppMethodBeat.o(121735);
   }
@@ -107,15 +107,15 @@ public final class HandOffURL
   public final void setIcon(String paramString)
   {
     AppMethodBeat.i(121734);
-    k.h(paramString, "<set-?>");
-    this.drM = paramString;
+    p.h(paramString, "<set-?>");
+    this.dDH = paramString;
     AppMethodBeat.o(121734);
   }
   
   public final void setTitle(String paramString)
   {
     AppMethodBeat.i(121732);
-    k.h(paramString, "<set-?>");
+    p.h(paramString, "<set-?>");
     this.title = paramString;
     AppMethodBeat.o(121732);
   }
@@ -123,7 +123,7 @@ public final class HandOffURL
   public final void setUrl(String paramString)
   {
     AppMethodBeat.i(121733);
-    k.h(paramString, "<set-?>");
+    p.h(paramString, "<set-?>");
     this.url = paramString;
     AppMethodBeat.o(121733);
   }
@@ -131,7 +131,7 @@ public final class HandOffURL
   public final String toString()
   {
     AppMethodBeat.i(121739);
-    String str = "HandOffURL(key='" + this.key + "', id='" + this.id + "', createTime='" + this.createTime + ", title='" + this.title + "', url='" + this.url + "', icon='" + this.drM + "')";
+    String str = "HandOffURL(key='" + this.key + "', id='" + this.id + "', createTime='" + this.createTime + ", title='" + this.title + "', url='" + this.url + "', icon='" + this.dDH + "')";
     AppMethodBeat.o(121739);
     return str;
   }
@@ -139,18 +139,18 @@ public final class HandOffURL
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(121737);
-    k.h(paramParcel, "dest");
+    p.h(paramParcel, "dest");
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.title);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.drM);
+    paramParcel.writeString(this.dDH);
     AppMethodBeat.o(121737);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/model/HandOffURL$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffURL;", "api-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/model/HandOffURL$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffURL;", "api-handoff_release"})
   public static final class a {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/handoff/model/HandOffURL$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffURL;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/handoff/model/HandOffURL;", "api-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/handoff/model/HandOffURL$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffURL;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/handoff/model/HandOffURL;", "api-handoff_release"})
   public static final class b
     implements Parcelable.Creator<HandOffURL>
   {}

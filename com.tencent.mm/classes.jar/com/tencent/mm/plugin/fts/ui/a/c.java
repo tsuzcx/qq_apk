@@ -11,35 +11,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
-import com.tencent.mm.plugin.fts.ui.m;
 
 public final class c
   extends n
 {
-  public boolean rVH;
   public int resId;
-  private b sDR;
-  a sDS;
+  public boolean sSq;
+  private b tAG;
+  a tAH;
   
   public c(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112058);
-    this.sDR = new b();
-    this.sDS = new a();
+    this.tAG = new b();
+    this.tAH = new a();
     AppMethodBeat.o(112058);
   }
   
-  public final a.b adW()
+  public final a.b agC()
   {
-    return this.sDR;
+    return this.tAG;
   }
   
   public final class a
     extends a.a
   {
-    public TextView rAS;
-    public ImageView sDT;
+    public TextView stf;
+    public ImageView tAI;
     
     public a()
     {
@@ -59,9 +58,9 @@ public final class c
     {
       AppMethodBeat.i(112056);
       paramContext = LayoutInflater.from(paramContext).inflate(2131494191, paramViewGroup, false);
-      paramViewGroup = (c.a)c.this.sDS;
-      paramViewGroup.rAS = ((TextView)paramContext.findViewById(2131302483));
-      paramViewGroup.sDT = ((ImageView)paramContext.findViewById(2131302455));
+      paramViewGroup = (c.a)c.this.tAH;
+      paramViewGroup.stf = ((TextView)paramContext.findViewById(2131302483));
+      paramViewGroup.tAI = ((ImageView)paramContext.findViewById(2131302455));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112056);
       return paramContext;
@@ -73,15 +72,15 @@ public final class c
       parama = (c.a)parama;
       parama1 = (c)parama1;
       paramContext = paramContext.getResources();
-      if (c.this.rVH)
+      if (c.this.sSq)
       {
-        m.a(paramContext.getString(2131762958, new Object[] { paramContext.getString(parama1.resId) }), parama.rAS);
-        parama.sDT.setRotation(0.0F);
+        com.tencent.mm.plugin.fts.ui.n.a(paramContext.getString(2131762958, new Object[] { paramContext.getString(parama1.resId) }), parama.stf);
+        parama.tAI.setRotation(0.0F);
         AppMethodBeat.o(112057);
         return;
       }
-      m.a(paramContext.getString(2131762959), parama.rAS);
-      parama.sDT.setRotation(180.0F);
+      com.tencent.mm.plugin.fts.ui.n.a(paramContext.getString(2131762959), parama.stf);
+      parama.tAI.setRotation(180.0F);
       AppMethodBeat.o(112057);
     }
     
@@ -93,7 +92,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.c
  * JD-Core Version:    0.7.0.1
  */

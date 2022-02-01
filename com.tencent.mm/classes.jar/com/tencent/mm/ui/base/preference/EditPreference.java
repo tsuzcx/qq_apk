@@ -17,11 +17,11 @@ import com.tencent.mm.ui.widget.a.d;
 public class EditPreference
   extends Preference
 {
-  private Preference.a HDT;
-  a HDY;
-  private d iJj;
-  private EditText ty;
+  private Preference.a JrJ;
+  a JrO;
+  private d jcs;
   String value;
+  private EditText vr;
   
   public EditPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,15 +35,15 @@ public class EditPreference
   
   public final void a(Preference.a parama)
   {
-    this.HDT = parama;
+    this.JrJ = parama;
   }
   
   public final void showDialog()
   {
     AppMethodBeat.i(142539);
     final EditText localEditText;
-    if (this.ty != null) {
-      localEditText = this.ty;
+    if (this.vr != null) {
+      localEditText = this.vr;
     }
     for (;;)
     {
@@ -60,7 +60,7 @@ public class EditPreference
       if (localEditText.getParent() != null) {
         ((ViewGroup)localEditText.getParent()).removeView(localEditText);
       }
-      this.iJj = h.a(this.mContext, getTitle().toString(), localEditText, a.aw(this.mContext, 2131755835), a.aw(this.mContext, 2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      this.jcs = h.a(this.mContext, getTitle().toString(), localEditText, a.az(this.mContext, 2131755835), a.az(this.mContext, 2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -70,7 +70,7 @@ public class EditPreference
           }
           EditPreference.this.value = localEditText.getText().toString();
           if (EditPreference.b(EditPreference.this) != null) {
-            EditPreference.b(EditPreference.this).fjj();
+            EditPreference.b(EditPreference.this).fzy();
           }
           if (EditPreference.c(EditPreference.this) != null) {
             EditPreference.c(EditPreference.this).a(EditPreference.this, EditPreference.d(EditPreference.this));
@@ -99,7 +99,7 @@ public class EditPreference
   
   public static abstract interface a
   {
-    public abstract void fjj();
+    public abstract void fzy();
   }
 }
 

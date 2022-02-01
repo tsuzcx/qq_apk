@@ -1,9 +1,5 @@
 package com.tencent.mm.platformtools;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.b;
-import com.tencent.mm.sdk.platformtools.ac;
-
 public final class w {}
 
 

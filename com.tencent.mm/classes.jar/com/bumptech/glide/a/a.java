@@ -26,17 +26,17 @@ import java.util.concurrent.TimeUnit;
 public final class a
   implements Closeable
 {
-  private final File aBJ;
-  private final File aBK;
-  private final File aBL;
-  private final int aBM;
-  private final int aBN;
-  private Writer aBO;
-  private final LinkedHashMap<String, c> aBP;
-  private int aBQ;
-  private long aBR;
-  final ThreadPoolExecutor aBS;
-  private final Callable<Void> aBT;
+  private final File aDA;
+  private final File aDB;
+  private final File aDC;
+  private final int aDD;
+  private final int aDE;
+  private Writer aDF;
+  private final LinkedHashMap<String, c> aDG;
+  private int aDH;
+  private long aDI;
+  final ThreadPoolExecutor aDJ;
+  private final Callable<Void> aDK;
   private final File directory;
   private long maxSize;
   private long size;
@@ -45,10 +45,10 @@ public final class a
   {
     AppMethodBeat.i(100610);
     this.size = 0L;
-    this.aBP = new LinkedHashMap(0, 0.75F, true);
-    this.aBR = 0L;
-    this.aBS = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), new a.a((byte)0));
-    this.aBT = new Callable()
+    this.aDG = new LinkedHashMap(0, 0.75F, true);
+    this.aDI = 0L;
+    this.aDJ = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), new a.a((byte)0));
+    this.aDK = new Callable()
     {
       private Void call()
       {
@@ -72,11 +72,11 @@ public final class a
       }
     };
     this.directory = paramFile;
-    this.aBM = 1;
-    this.aBJ = new File(paramFile, "journal");
-    this.aBK = new File(paramFile, "journal.tmp");
-    this.aBL = new File(paramFile, "journal.bkp");
-    this.aBN = 1;
+    this.aDD = 1;
+    this.aDA = new File(paramFile, "journal");
+    this.aDB = new File(paramFile, "journal.tmp");
+    this.aDC = new File(paramFile, "journal.bkp");
+    this.aDE = 1;
     this.maxSize = paramLong;
     AppMethodBeat.o(100610);
   }
@@ -88,8 +88,8 @@ public final class a
     try
     {
       AppMethodBeat.i(100619);
-      localc = paramb.aBV;
-      if (localc.aCb != paramb)
+      localc = paramb.aDM;
+      if (localc.aDS != paramb)
       {
         paramb = new IllegalStateException();
         AppMethodBeat.o(100619);
@@ -107,17 +107,17 @@ public final class a
         for (;;)
         {
           j = k;
-          if (i >= this.aBN) {
+          if (i >= this.aDE) {
             break;
           }
-          if (paramb.aBW[i] == 0)
+          if (paramb.aDN[i] == 0)
           {
             paramb.abort();
             paramb = new IllegalStateException("Newly created entry didn't create value for index ".concat(String.valueOf(i)));
             AppMethodBeat.o(100619);
             throw paramb;
           }
-          if (!localc.aCa[i].exists())
+          if (!localc.aDR[i].exists())
           {
             paramb.abort();
             AppMethodBeat.o(100619);
@@ -130,18 +130,18 @@ public final class a
     for (;;)
     {
       long l1;
-      if (j < this.aBN)
+      if (j < this.aDE)
       {
-        paramb = localc.aCa[j];
+        paramb = localc.aDR[j];
         if (paramBoolean)
         {
           if (paramb.exists())
           {
-            File localFile = localc.aBZ[j];
+            File localFile = localc.aDQ[j];
             paramb.renameTo(localFile);
-            l1 = localc.aBY[j];
+            l1 = localc.aDP[j];
             long l2 = localFile.length();
-            localc.aBY[j] = l2;
+            localc.aDP[j] = l2;
             this.size = (this.size - l1 + l2);
           }
         }
@@ -151,36 +151,36 @@ public final class a
       }
       else
       {
-        this.aBQ += 1;
-        localc.aCb = null;
+        this.aDH += 1;
+        localc.aDS = null;
         if ((localc.readable | paramBoolean))
         {
           localc.readable = true;
-          this.aBO.append("CLEAN");
-          this.aBO.append(' ');
-          this.aBO.append(localc.key);
-          this.aBO.append(localc.nF());
-          this.aBO.append('\n');
+          this.aDF.append("CLEAN");
+          this.aDF.append(' ');
+          this.aDF.append(localc.key);
+          this.aDF.append(localc.nX());
+          this.aDF.append('\n');
           if (paramBoolean)
           {
-            l1 = this.aBR;
-            this.aBR = (1L + l1);
-            localc.aCc = l1;
+            l1 = this.aDI;
+            this.aDI = (1L + l1);
+            localc.aDT = l1;
           }
         }
         for (;;)
         {
-          this.aBO.flush();
-          if ((this.size > this.maxSize) || (nB())) {
-            this.aBS.submit(this.aBT);
+          this.aDF.flush();
+          if ((this.size > this.maxSize) || (nT())) {
+            this.aDJ.submit(this.aDK);
           }
           AppMethodBeat.o(100619);
           break;
-          this.aBP.remove(localc.key);
-          this.aBO.append("REMOVE");
-          this.aBO.append(' ');
-          this.aBO.append(localc.key);
-          this.aBO.append('\n');
+          this.aDG.remove(localc.key);
+          this.aDF.append("REMOVE");
+          this.aDF.append(' ');
+          this.aDF.append(localc.key);
+          this.aDF.append('\n');
         }
       }
       j += 1;
@@ -224,13 +224,13 @@ public final class a
     for (;;)
     {
       localObject = new a(paramFile, paramLong);
-      if (!((a)localObject).aBJ.exists()) {
+      if (!((a)localObject).aDA.exists()) {
         break label172;
       }
       try
       {
-        ((a)localObject).ny();
-        ((a)localObject).nz();
+        ((a)localObject).nQ();
+        ((a)localObject).nR();
         AppMethodBeat.o(100611);
         return localObject;
       }
@@ -246,93 +246,15 @@ public final class a
     label172:
     paramFile.mkdirs();
     paramFile = new a(paramFile, paramLong);
-    paramFile.nA();
+    paramFile.nS();
     AppMethodBeat.o(100611);
     return paramFile;
   }
   
-  private void nA()
-  {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(100614);
-        if (this.aBO != null) {
-          this.aBO.close();
-        }
-        BufferedWriter localBufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.aBK), c.US_ASCII));
-        c localc;
-        try
-        {
-          localBufferedWriter.write("libcore.io.DiskLruCache");
-          localBufferedWriter.write("\n");
-          localBufferedWriter.write("1");
-          localBufferedWriter.write("\n");
-          localBufferedWriter.write(Integer.toString(this.aBM));
-          localBufferedWriter.write("\n");
-          localBufferedWriter.write(Integer.toString(this.aBN));
-          localBufferedWriter.write("\n");
-          localBufferedWriter.write("\n");
-          Iterator localIterator = this.aBP.values().iterator();
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localc = (c)localIterator.next();
-          if (localc.aCb != null)
-          {
-            localBufferedWriter.write("DIRTY " + localc.key + '\n');
-            continue;
-            localObject1 = finally;
-          }
-        }
-        finally
-        {
-          localBufferedWriter.close();
-          AppMethodBeat.o(100614);
-        }
-        localObject1.write("CLEAN " + localc.key + localc.nF() + '\n');
-      }
-      finally {}
-    }
-    localObject1.close();
-    if (this.aBJ.exists()) {
-      a(this.aBJ, this.aBL, true);
-    }
-    a(this.aBK, this.aBJ, false);
-    this.aBL.delete();
-    this.aBO = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.aBJ, true), c.US_ASCII));
-    AppMethodBeat.o(100614);
-  }
-  
-  private boolean nB()
-  {
-    AppMethodBeat.i(100620);
-    if ((this.aBQ >= 2000) && (this.aBQ >= this.aBP.size()))
-    {
-      AppMethodBeat.o(100620);
-      return true;
-    }
-    AppMethodBeat.o(100620);
-    return false;
-  }
-  
-  private void nC()
-  {
-    AppMethodBeat.i(100622);
-    if (this.aBO == null)
-    {
-      IllegalStateException localIllegalStateException = new IllegalStateException("cache is closed");
-      AppMethodBeat.o(100622);
-      throw localIllegalStateException;
-    }
-    AppMethodBeat.o(100622);
-  }
-  
-  private void ny()
+  private void nQ()
   {
     AppMethodBeat.i(100612);
-    b localb = new b(new FileInputStream(this.aBJ), c.US_ASCII);
+    b localb = new b(new FileInputStream(this.aDA), c.US_ASCII);
     Object localObject4;
     Object localObject5;
     String str1;
@@ -343,7 +265,7 @@ public final class a
       localObject5 = localb.readLine();
       str1 = localb.readLine();
       String str2 = localb.readLine();
-      if ((!"libcore.io.DiskLruCache".equals(localObject1)) || (!"1".equals(localObject4)) || (!Integer.toString(this.aBM).equals(localObject5)) || (!Integer.toString(this.aBN).equals(str1)) || (!"".equals(str2)))
+      if ((!"libcore.io.DiskLruCache".equals(localObject1)) || (!"1".equals(localObject4)) || (!Integer.toString(this.aDD).equals(localObject5)) || (!Integer.toString(this.aDE).equals(str1)) || (!"".equals(str2)))
       {
         localObject1 = new IOException("unexpected journal header: [" + (String)localObject1 + ", " + (String)localObject4 + ", " + str1 + ", " + str2 + "]");
         AppMethodBeat.o(100612);
@@ -372,13 +294,13 @@ public final class a
       catch (EOFException localEOFException)
       {
         int j;
-        this.aBQ = (i - this.aBP.size());
+        this.aDH = (i - this.aDG.size());
         if (localb.end == -1)
         {
           i = 1;
           if (i != 0)
           {
-            nA();
+            nS();
             c.closeQuietly(localb);
             AppMethodBeat.o(100612);
             return;
@@ -390,28 +312,28 @@ public final class a
               if ((j != 6) || (!str1.startsWith("REMOVE"))) {
                 continue;
               }
-              this.aBP.remove(localObject3);
+              this.aDG.remove(localObject3);
               continue;
             }
             Object localObject3 = str1.substring(k, m);
-            localObject5 = (c)this.aBP.get(localObject3);
+            localObject5 = (c)this.aDG.get(localObject3);
             localObject4 = localObject5;
             if (localObject5 == null)
             {
               localObject4 = new c((String)localObject3, (byte)0);
-              this.aBP.put(localObject3, localObject4);
+              this.aDG.put(localObject3, localObject4);
             }
             if ((m != -1) && (j == 5) && (str1.startsWith("CLEAN")))
             {
               localObject3 = str1.substring(m + 1).split(" ");
               ((c)localObject4).readable = true;
-              ((c)localObject4).aCb = null;
+              ((c)localObject4).aDS = null;
               ((c)localObject4).c((String[])localObject3);
               continue;
             }
             if ((m == -1) && (j == 5) && (str1.startsWith("DIRTY")))
             {
-              ((c)localObject4).aCb = new b((c)localObject4, (byte)0);
+              ((c)localObject4).aDS = new b((c)localObject4, (byte)0);
               continue;
             }
             if ((m == -1) && (j == 4) && (str1.startsWith("READ"))) {
@@ -427,7 +349,7 @@ public final class a
           i = 0;
           continue;
         }
-        this.aBO = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.aBJ, true), c.US_ASCII));
+        this.aDF = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.aDA, true), c.US_ASCII));
         continue;
         continue;
         i += 1;
@@ -435,38 +357,116 @@ public final class a
     }
   }
   
-  private void nz()
+  private void nR()
   {
     AppMethodBeat.i(100613);
-    q(this.aBK);
-    Iterator localIterator = this.aBP.values().iterator();
+    q(this.aDB);
+    Iterator localIterator = this.aDG.values().iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
       int i;
-      if (localc.aCb == null)
+      if (localc.aDS == null)
       {
         i = 0;
-        while (i < this.aBN)
+        while (i < this.aDE)
         {
-          this.size += localc.aBY[i];
+          this.size += localc.aDP[i];
           i += 1;
         }
       }
       else
       {
-        localc.aCb = null;
+        localc.aDS = null;
         i = 0;
-        while (i < this.aBN)
+        while (i < this.aDE)
         {
-          q(localc.aBZ[i]);
-          q(localc.aCa[i]);
+          q(localc.aDQ[i]);
+          q(localc.aDR[i]);
           i += 1;
         }
         localIterator.remove();
       }
     }
     AppMethodBeat.o(100613);
+  }
+  
+  private void nS()
+  {
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(100614);
+        if (this.aDF != null) {
+          this.aDF.close();
+        }
+        BufferedWriter localBufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.aDB), c.US_ASCII));
+        c localc;
+        try
+        {
+          localBufferedWriter.write("libcore.io.DiskLruCache");
+          localBufferedWriter.write("\n");
+          localBufferedWriter.write("1");
+          localBufferedWriter.write("\n");
+          localBufferedWriter.write(Integer.toString(this.aDD));
+          localBufferedWriter.write("\n");
+          localBufferedWriter.write(Integer.toString(this.aDE));
+          localBufferedWriter.write("\n");
+          localBufferedWriter.write("\n");
+          Iterator localIterator = this.aDG.values().iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localc = (c)localIterator.next();
+          if (localc.aDS != null)
+          {
+            localBufferedWriter.write("DIRTY " + localc.key + '\n');
+            continue;
+            localObject1 = finally;
+          }
+        }
+        finally
+        {
+          localBufferedWriter.close();
+          AppMethodBeat.o(100614);
+        }
+        localObject1.write("CLEAN " + localc.key + localc.nX() + '\n');
+      }
+      finally {}
+    }
+    localObject1.close();
+    if (this.aDA.exists()) {
+      a(this.aDA, this.aDC, true);
+    }
+    a(this.aDB, this.aDA, false);
+    this.aDC.delete();
+    this.aDF = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.aDA, true), c.US_ASCII));
+    AppMethodBeat.o(100614);
+  }
+  
+  private boolean nT()
+  {
+    AppMethodBeat.i(100620);
+    if ((this.aDH >= 2000) && (this.aDH >= this.aDG.size()))
+    {
+      AppMethodBeat.o(100620);
+      return true;
+    }
+    AppMethodBeat.o(100620);
+    return false;
+  }
+  
+  private void nU()
+  {
+    AppMethodBeat.i(100622);
+    if (this.aDF == null)
+    {
+      IllegalStateException localIllegalStateException = new IllegalStateException("cache is closed");
+      AppMethodBeat.o(100622);
+      throw localIllegalStateException;
+    }
+    AppMethodBeat.o(100622);
   }
   
   private static void q(File paramFile)
@@ -489,20 +489,20 @@ public final class a
       try
       {
         AppMethodBeat.i(100621);
-        nC();
-        c localc = (c)this.aBP.get(paramString);
-        if ((localc == null) || (localc.aCb != null))
+        nU();
+        c localc = (c)this.aDG.get(paramString);
+        if ((localc == null) || (localc.aDS != null))
         {
           AppMethodBeat.o(100621);
           bool = false;
           return bool;
-          this.size -= localc.aBY[i];
-          localc.aBY[i] = 0L;
+          this.size -= localc.aDP[i];
+          localc.aDP[i] = 0L;
           i += 1;
         }
-        if (i < this.aBN)
+        if (i < this.aDE)
         {
-          File localFile = localc.aBZ[i];
+          File localFile = localc.aDQ[i];
           if ((!localFile.exists()) || (localFile.delete())) {
             continue;
           }
@@ -512,14 +512,14 @@ public final class a
         }
       }
       finally {}
-      this.aBQ += 1;
-      this.aBO.append("REMOVE");
-      this.aBO.append(' ');
-      this.aBO.append(paramString);
-      this.aBO.append('\n');
-      this.aBP.remove(paramString);
-      if (nB()) {
-        this.aBS.submit(this.aBT);
+      this.aDH += 1;
+      this.aDF.append("REMOVE");
+      this.aDF.append(' ');
+      this.aDF.append(paramString);
+      this.aDF.append('\n');
+      this.aDG.remove(paramString);
+      if (nT()) {
+        this.aDJ.submit(this.aDK);
       }
       boolean bool = true;
       AppMethodBeat.o(100621);
@@ -530,12 +530,12 @@ public final class a
   {
     AppMethodBeat.i(100624);
     while (this.size > this.maxSize) {
-      remove((String)((Map.Entry)this.aBP.entrySet().iterator().next()).getKey());
+      remove((String)((Map.Entry)this.aDG.entrySet().iterator().next()).getKey());
     }
     AppMethodBeat.o(100624);
   }
   
-  public final d O(String paramString)
+  public final d N(String paramString)
   {
     int i = 0;
     Object localObject = null;
@@ -543,8 +543,8 @@ public final class a
     try
     {
       AppMethodBeat.i(100617);
-      nC();
-      localc = (c)this.aBP.get(paramString);
+      nU();
+      localc = (c)this.aDG.get(paramString);
       if (localc == null) {
         AppMethodBeat.o(100617);
       }
@@ -556,7 +556,7 @@ public final class a
         }
         AppMethodBeat.o(100617);
       }
-      arrayOfFile = localc.aBZ;
+      arrayOfFile = localc.aDQ;
     }
     finally {}
     File[] arrayOfFile;
@@ -572,15 +572,15 @@ public final class a
         paramString = localObject;
         break;
       }
-      this.aBQ += 1;
-      this.aBO.append("READ");
-      this.aBO.append(' ');
-      this.aBO.append(paramString);
-      this.aBO.append('\n');
-      if (nB()) {
-        this.aBS.submit(this.aBT);
+      this.aDH += 1;
+      this.aDF.append("READ");
+      this.aDF.append(' ');
+      this.aDF.append(paramString);
+      this.aDF.append('\n');
+      if (nT()) {
+        this.aDJ.submit(this.aDK);
       }
-      paramString = new d(paramString, localc.aCc, localc.aBZ, localc.aBY, (byte)0);
+      paramString = new d(paramString, localc.aDT, localc.aDQ, localc.aDP, (byte)0);
       AppMethodBeat.o(100617);
       break;
       label215:
@@ -588,7 +588,7 @@ public final class a
     }
   }
   
-  public final b P(String paramString)
+  public final b O(String paramString)
   {
     label183:
     for (;;)
@@ -596,9 +596,9 @@ public final class a
       try
       {
         AppMethodBeat.i(100618);
-        nC();
-        c localc = (c)this.aBP.get(paramString);
-        if ((-1L != -1L) && ((localc == null) || (localc.aCc != -1L)))
+        nU();
+        c localc = (c)this.aDG.get(paramString);
+        if ((-1L != -1L) && ((localc == null) || (localc.aDT != -1L)))
         {
           AppMethodBeat.o(100618);
           paramString = null;
@@ -607,19 +607,19 @@ public final class a
         if (localc == null)
         {
           localc = new c(paramString, (byte)0);
-          this.aBP.put(paramString, localc);
+          this.aDG.put(paramString, localc);
           b localb = new b(localc, (byte)0);
-          localc.aCb = localb;
-          this.aBO.append("DIRTY");
-          this.aBO.append(' ');
-          this.aBO.append(paramString);
-          this.aBO.append('\n');
-          this.aBO.flush();
+          localc.aDS = localb;
+          this.aDF.append("DIRTY");
+          this.aDF.append(' ');
+          this.aDF.append(paramString);
+          this.aDF.append('\n');
+          this.aDF.flush();
           AppMethodBeat.o(100618);
           paramString = localb;
           continue;
         }
-        if (localc.aCb == null) {
+        if (localc.aDS == null) {
           break label183;
         }
       }
@@ -636,44 +636,44 @@ public final class a
       try
       {
         AppMethodBeat.i(100623);
-        if (this.aBO == null)
+        if (this.aDF == null)
         {
           AppMethodBeat.o(100623);
           return;
         }
-        Iterator localIterator = new ArrayList(this.aBP.values()).iterator();
+        Iterator localIterator = new ArrayList(this.aDG.values()).iterator();
         if (localIterator.hasNext())
         {
           c localc = (c)localIterator.next();
-          if (localc.aCb == null) {
+          if (localc.aDS == null) {
             continue;
           }
-          localc.aCb.abort();
+          localc.aDS.abort();
           continue;
         }
         trimToSize();
       }
       finally {}
-      this.aBO.close();
-      this.aBO = null;
+      this.aDF.close();
+      this.aDF = null;
       AppMethodBeat.o(100623);
     }
   }
   
   public final class b
   {
-    final a.c aBV;
-    final boolean[] aBW;
-    public boolean aBX;
+    final a.c aDM;
+    final boolean[] aDN;
+    public boolean aDO;
     
     private b(a.c paramc)
     {
       AppMethodBeat.i(100629);
-      this.aBV = paramc;
+      this.aDM = paramc;
       if (paramc.readable) {}
       for (this$1 = null;; this$1 = new boolean[a.f(a.this)])
       {
-        this.aBW = a.this;
+        this.aDN = a.this;
         AppMethodBeat.o(100629);
         return;
       }
@@ -686,22 +686,22 @@ public final class a
       AppMethodBeat.o(100631);
     }
     
-    public final File nD()
+    public final File nV()
     {
       AppMethodBeat.i(100630);
       synchronized (a.this)
       {
-        if (this.aBV.aCb != this)
+        if (this.aDM.aDS != this)
         {
           IllegalStateException localIllegalStateException = new IllegalStateException();
           AppMethodBeat.o(100630);
           throw localIllegalStateException;
         }
       }
-      if (!this.aBV.readable) {
-        this.aBW[0] = true;
+      if (!this.aDM.readable) {
+        this.aDN[0] = true;
       }
-      File localFile = this.aBV.aCa[0];
+      File localFile = this.aDM.aDR[0];
       if (!a.g(a.this).exists()) {
         a.g(a.this).mkdirs();
       }
@@ -709,10 +709,10 @@ public final class a
       return localFile;
     }
     
-    public final void nE()
+    public final void nW()
     {
       AppMethodBeat.i(100632);
-      if (!this.aBX) {
+      if (!this.aDO) {
         try
         {
           abort();
@@ -727,11 +727,11 @@ public final class a
   
   final class c
   {
-    final long[] aBY;
-    File[] aBZ;
-    File[] aCa;
-    a.b aCb;
-    long aCc;
+    final long[] aDP;
+    File[] aDQ;
+    File[] aDR;
+    a.b aDS;
+    long aDT;
     final String key;
     boolean readable;
     
@@ -739,18 +739,18 @@ public final class a
     {
       AppMethodBeat.i(100633);
       this.key = paramString;
-      this.aBY = new long[a.f(a.this)];
-      this.aBZ = new File[a.f(a.this)];
-      this.aCa = new File[a.f(a.this)];
+      this.aDP = new long[a.f(a.this)];
+      this.aDQ = new File[a.f(a.this)];
+      this.aDR = new File[a.f(a.this)];
       paramString = new StringBuilder(paramString).append('.');
       int j = paramString.length();
       int i = 0;
       while (i < a.f(a.this))
       {
         paramString.append(i);
-        this.aBZ[i] = new File(a.g(a.this), paramString.toString());
+        this.aDQ[i] = new File(a.g(a.this), paramString.toString());
         paramString.append(".tmp");
-        this.aCa[i] = new File(a.g(a.this), paramString.toString());
+        this.aDR[i] = new File(a.g(a.this), paramString.toString());
         paramString.setLength(j);
         i += 1;
       }
@@ -779,7 +779,7 @@ public final class a
       {
         while (i < paramArrayOfString.length)
         {
-          this.aBY[i] = Long.parseLong(paramArrayOfString[i]);
+          this.aDP[i] = Long.parseLong(paramArrayOfString[i]);
           i += 1;
         }
         AppMethodBeat.o(100635);
@@ -793,11 +793,11 @@ public final class a
       }
     }
     
-    public final String nF()
+    public final String nX()
     {
       AppMethodBeat.i(100634);
       Object localObject = new StringBuilder();
-      long[] arrayOfLong = this.aBY;
+      long[] arrayOfLong = this.aDP;
       int j = arrayOfLong.length;
       int i = 0;
       while (i < j)
@@ -814,17 +814,17 @@ public final class a
   
   public final class d
   {
-    private final long[] aBY;
-    private final long aCc;
-    public final File[] aCd;
+    private final long[] aDP;
+    private final long aDT;
+    public final File[] aDU;
     private final String key;
     
     private d(String paramString, long paramLong, File[] paramArrayOfFile, long[] paramArrayOfLong)
     {
       this.key = paramString;
-      this.aCc = paramLong;
-      this.aCd = paramArrayOfFile;
-      this.aBY = paramArrayOfLong;
+      this.aDT = paramLong;
+      this.aDU = paramArrayOfFile;
+      this.aDP = paramArrayOfLong;
     }
   }
 }

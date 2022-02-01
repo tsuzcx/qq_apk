@@ -2,14 +2,15 @@ package d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
+import d.g.b.p;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"lazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "lock", "", "mode", "Lkotlin/LazyThreadSafetyMode;", "kotlin-stdlib"}, fOb=1)
+@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"lazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "lock", "", "mode", "Lkotlin/LazyThreadSafetyMode;", "kotlin-stdlib"})
 public class i
 {
-  public static final <T> f<T> K(a<? extends T> parama)
+  public static final <T> f<T> O(a<? extends T> parama)
   {
     AppMethodBeat.i(129243);
-    d.g.b.k.h(parama, "initializer");
+    p.h(parama, "initializer");
     parama = (f)new s(parama, (byte)0);
     AppMethodBeat.o(129243);
     return parama;
@@ -18,9 +19,9 @@ public class i
   public static final <T> f<T> a(k paramk, a<? extends T> parama)
   {
     AppMethodBeat.i(129244);
-    d.g.b.k.h(paramk, "mode");
-    d.g.b.k.h(parama, "initializer");
-    switch (h.cfA[paramk.ordinal()])
+    p.h(paramk, "mode");
+    p.h(parama, "initializer");
+    switch (h.cpQ[paramk.ordinal()])
     {
     default: 
       paramk = new m();
@@ -35,7 +36,7 @@ public class i
       AppMethodBeat.o(129244);
       return paramk;
     }
-    paramk = (f)new z(parama);
+    paramk = (f)new aa(parama);
     AppMethodBeat.o(129244);
     return paramk;
   }

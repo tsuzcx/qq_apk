@@ -7,99 +7,99 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.i;
 import junit.framework.Assert;
 
 public final class d
   extends e
 {
   public static final String DEVICE_NAME;
-  public static final String DHW;
-  public static final String DHX;
-  public static String DHY;
-  public static final String DHZ;
-  public static String DIa;
-  public static long DIb;
-  public static int DIc;
-  public static boolean DId;
-  public static boolean DIe;
-  public static boolean DIf;
-  public static boolean DIg;
-  public static int DIh;
-  public static final byte[] DIi;
-  public static final byte[] DIj;
-  public static final byte[] DIk;
-  public static String gMK;
+  public static final String Fnd;
+  public static final String Fne;
+  public static String Fnf;
+  public static final String Fng;
+  public static String Fnh;
+  public static long Fni;
+  public static int Fnj;
+  public static boolean Fnk;
+  public static boolean Fnl;
+  public static boolean Fnm;
+  public static boolean Fnn;
+  public static int Fno;
+  public static final byte[] Fnp;
+  public static final byte[] Fnq;
+  public static final byte[] Fnr;
+  public static String hgH;
   
   static
   {
     AppMethodBeat.i(133039);
-    gMK = "android-" + Build.VERSION.SDK_INT;
-    DHW = Build.BRAND;
-    DHX = Build.MODEL + Build.CPU_ABI;
-    DHY = "android-" + Build.VERSION.SDK_INT;
-    DHZ = "android-" + Build.MANUFACTURER;
-    DIa = Build.VERSION.SDK_INT;
+    hgH = "android-" + Build.VERSION.SDK_INT;
+    Fnd = Build.BRAND;
+    Fne = Build.MODEL + Build.CPU_ABI;
+    Fnf = "android-" + Build.VERSION.SDK_INT;
+    Fng = "android-" + Build.MANUFACTURER;
+    Fnh = Build.VERSION.SDK_INT;
     DEVICE_NAME = Build.MANUFACTURER + "-" + Build.MODEL;
-    DIb = 0L;
-    DIc = Integer.decode(h.gMJ).intValue();
-    Assert.assertNotNull(h.gMJ);
+    Fni = 0L;
+    Fnj = Integer.decode(i.hgG).intValue();
+    Assert.assertNotNull(i.hgG);
     try
     {
-      int i = ai.getContext().getPackageManager().getApplicationInfo(ai.getPackageName(), 128).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
-      if ((i > DIc) && (i - DIc < 255) && ((i & 0xFF) >= 48)) {
-        DIc = i;
+      int i = aj.getContext().getPackageManager().getApplicationInfo(aj.getPackageName(), 128).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
+      if ((i > Fnj) && (i - Fnj < 255) && ((i & 0xFF) >= 48)) {
+        Fnj = i;
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ac.l("MicroMsg.ConstantsProtocal", "", new Object[] { localException });
+        ad.l("MicroMsg.ConstantsProtocal", "", new Object[] { localException });
       }
     }
-    DId = eRd();
-    DIe = eRc();
-    DIf = eRa();
-    DIg = eRb();
-    DIh = 5;
-    DIi = null;
-    DIj = null;
-    DIk = null;
+    Fnk = fgh();
+    Fnl = fgg();
+    Fnm = fge();
+    Fnn = fgf();
+    Fno = 5;
+    Fnp = null;
+    Fnq = null;
+    Fnr = null;
     AppMethodBeat.o(133039);
   }
   
-  public static void XE(int paramInt)
+  public static void ZA(int paramInt)
   {
     AppMethodBeat.i(133038);
-    DIc = paramInt;
-    DIf = eRa();
-    DId = eRd();
-    DIe = eRc();
-    DIg = eRb();
+    Fnj = paramInt;
+    Fnm = fge();
+    Fnk = fgh();
+    Fnl = fgg();
+    Fnn = fgf();
     AppMethodBeat.o(133038);
   }
   
-  private static boolean eRa()
+  private static boolean fge()
   {
-    return ((DIc & 0xFF) >= 0) && ((DIc & 0xFF) <= 47);
+    return ((Fnj & 0xFF) >= 0) && ((Fnj & 0xFF) <= 47);
   }
   
-  private static boolean eRb()
+  private static boolean fgf()
   {
-    return ((DIc & 0xFF) >= 0) && ((DIc & 0xFF) <= 15);
+    return ((Fnj & 0xFF) >= 0) && ((Fnj & 0xFF) <= 15);
   }
   
-  private static boolean eRc()
+  private static boolean fgg()
   {
-    return ((DIc & 0xFF) >= 96) && ((DIc & 0xFF) <= 255);
+    return ((Fnj & 0xFF) >= 96) && ((Fnj & 0xFF) <= 255);
   }
   
-  private static boolean eRd()
+  private static boolean fgh()
   {
-    return ((DIc & 0xFF) >= 48) && ((DIc & 0xFF) <= 95);
+    return ((Fnj & 0xFF) >= 48) && ((Fnj & 0xFF) <= 95);
   }
 }
 

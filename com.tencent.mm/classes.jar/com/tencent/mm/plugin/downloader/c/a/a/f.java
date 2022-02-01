@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.downloader.c.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String desc;
-  public String nWj;
+  public String ozD;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,8 +17,8 @@ public final class f
       if (this.desc != null) {
         paramVarArgs.d(1, this.desc);
       }
-      if (this.nWj != null) {
-        paramVarArgs.d(2, this.nWj);
+      if (this.ozD != null) {
+        paramVarArgs.d(2, this.ozD);
       }
       AppMethodBeat.o(153047);
       return 0;
@@ -32,17 +32,17 @@ public final class f
     for (paramInt = f.a.a.b.b.a.e(1, this.desc) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.nWj != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.nWj);
+      if (this.ozD != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.ozD);
       }
       AppMethodBeat.o(153047);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(153047);
@@ -58,11 +58,11 @@ public final class f
           AppMethodBeat.o(153047);
           return -1;
         case 1: 
-          localf.desc = locala.LVo.readString();
+          localf.desc = locala.NPN.readString();
           AppMethodBeat.o(153047);
           return 0;
         }
-        localf.nWj = locala.LVo.readString();
+        localf.ozD = locala.NPN.readString();
         AppMethodBeat.o(153047);
         return 0;
       }
@@ -73,7 +73,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.c.a.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -14,54 +14,63 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
 import com.tencent.mm.cf.e;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.z;
 
 public class AppBrandSmileyGrid
   extends GridView
 {
-  AdapterView.OnItemClickListener auB;
-  private c mHC;
-  a mHG;
-  int mHH;
-  int mHI;
-  int mHJ;
-  int mHK;
-  int mHL;
-  int mHM;
+  AdapterView.OnItemClickListener awt;
+  private c nia;
+  a nie;
+  int nif;
+  int nig;
+  int nih;
+  int nii;
+  int nij;
+  int nik;
   
   public AppBrandSmileyGrid(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(49933);
-    this.mHI = 0;
-    this.mHK = 0;
-    this.mHL = 0;
-    this.mHM = 0;
-    this.auB = new AdapterView.OnItemClickListener()
+    this.nig = 0;
+    this.nii = 0;
+    this.nij = 0;
+    this.nik = 0;
+    this.awt = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(49929);
+        b localb = new b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/panel/AppBrandSmileyGrid$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
         if (paramAnonymousInt == AppBrandSmileyGrid.a(AppBrandSmileyGrid.this).getCount() - 1)
         {
-          if (AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).mHU != null) {
-            AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).mHU.amb();
+          if (AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).nis != null) {
+            AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).nis.aoO();
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/panel/AppBrandSmileyGrid$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(49929);
           return;
         }
         if (AppBrandSmileyGrid.c(AppBrandSmileyGrid.this) * (AppBrandSmileyGrid.d(AppBrandSmileyGrid.this) - 1) + paramAnonymousInt >= AppBrandSmileyGrid.e(AppBrandSmileyGrid.this))
         {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/panel/AppBrandSmileyGrid$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(49929);
           return;
         }
         int i = AppBrandSmileyGrid.c(AppBrandSmileyGrid.this);
         int j = AppBrandSmileyGrid.d(AppBrandSmileyGrid.this);
-        if (AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).mHU != null) {
-          AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).mHU.append(AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).bAO().vV(i * (j - 1) + paramAnonymousInt));
+        if (AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).nis != null) {
+          AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).nis.append(AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).bEQ().wA(i * (j - 1) + paramAnonymousInt));
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/panel/AppBrandSmileyGrid$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(49929);
       }
     };
@@ -70,12 +79,12 @@ public class AppBrandSmileyGrid
   
   int getRowSpacing()
   {
-    return this.mHK;
+    return this.nii;
   }
   
   public void setPanelManager(c paramc)
   {
-    this.mHC = paramc;
+    this.nia = paramc;
   }
   
   final class a
@@ -106,15 +115,15 @@ public class AppBrandSmileyGrid
       AppMethodBeat.i(49931);
       if ((paramView == null) || (paramView.getTag() == null))
       {
-        paramView = z.jD(new ContextThemeWrapper(AppBrandSmileyGrid.this.getContext(), 2131820870)).inflate(2131493105, null);
-        paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).mHV - a.au(AppBrandSmileyGrid.this.getContext(), 2131165490) - a.au(AppBrandSmileyGrid.this.getContext(), 2131166250)) / AppBrandSmileyGrid.f(AppBrandSmileyGrid.this)));
+        paramView = z.jO(new ContextThemeWrapper(AppBrandSmileyGrid.this.getContext(), 2131820870)).inflate(2131493105, null);
+        paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).nit - com.tencent.mm.cc.a.ax(AppBrandSmileyGrid.this.getContext(), 2131165490) - com.tencent.mm.cc.a.ax(AppBrandSmileyGrid.this.getContext(), 2131166250)) / AppBrandSmileyGrid.f(AppBrandSmileyGrid.this)));
         paramViewGroup = new AppBrandSmileyGrid.b(paramView);
         paramView.setTag(paramViewGroup);
         if (paramInt != getCount() - 1) {
           break label168;
         }
-        paramViewGroup.lzC.setImageResource(2131231885);
-        paramViewGroup.lzC.setContentDescription(AppBrandSmileyGrid.this.getContext().getString(2131758032));
+        paramViewGroup.lZa.setImageResource(2131231885);
+        paramViewGroup.lZa.setContentDescription(AppBrandSmileyGrid.this.getContext().getString(2131758032));
       }
       for (;;)
       {
@@ -126,12 +135,12 @@ public class AppBrandSmileyGrid
         paramInt = (AppBrandSmileyGrid.d(AppBrandSmileyGrid.this) - 1) * AppBrandSmileyGrid.c(AppBrandSmileyGrid.this) + paramInt;
         if (paramInt > AppBrandSmileyGrid.e(AppBrandSmileyGrid.this) - 1)
         {
-          paramViewGroup.lzC.setImageDrawable(null);
+          paramViewGroup.lZa.setImageDrawable(null);
         }
         else
         {
-          Drawable localDrawable = AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).bAO().vT(paramInt);
-          paramViewGroup.lzC.setImageDrawable(localDrawable);
+          Drawable localDrawable = AppBrandSmileyGrid.b(AppBrandSmileyGrid.this).bEQ().wy(paramInt);
+          paramViewGroup.lZa.setImageDrawable(localDrawable);
         }
       }
     }

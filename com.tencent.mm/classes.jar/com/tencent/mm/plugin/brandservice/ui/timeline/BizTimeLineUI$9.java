@@ -9,9 +9,9 @@ final class BizTimeLineUI$9
 {
   BizTimeLineUI$9(BizTimeLineUI paramBizTimeLineUI)
   {
-    AppMethodBeat.i(198696);
+    AppMethodBeat.i(209510);
     this.__eventId = k.class.getName().hashCode();
-    AppMethodBeat.o(198696);
+    AppMethodBeat.o(209510);
   }
 }
 

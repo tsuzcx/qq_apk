@@ -5,33 +5,33 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.security.MessageDigest;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/util/WeSeeUtil;", "", "()V", "TAG", "", "buildCameraEntranceSessionId", "timestamp", "", "bytesToHexString", "bArray", "", "checkWeishiInstalled", "", "context", "Landroid/content/Context;", "doCpatureWeSeeSight", "", "videoPath", "doDownloadWeSee", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/util/WeSeeUtil;", "", "()V", "TAG", "", "buildCameraEntranceSessionId", "timestamp", "", "bytesToHexString", "bArray", "", "checkWeishiInstalled", "", "context", "Landroid/content/Context;", "doCpatureWeSeeSight", "", "videoPath", "doDownloadWeSee", "plugin-recordvideo_release"})
 public final class f
 {
-  public static final f wDX;
+  public static final f xRE;
   
   static
   {
     AppMethodBeat.i(76229);
-    wDX = new f();
+    xRE = new f();
     AppMethodBeat.o(76229);
   }
   
-  public static boolean fV(Context paramContext)
+  public static boolean ga(Context paramContext)
   {
     bool1 = true;
     AppMethodBeat.i(76226);
-    k.h(paramContext, "context");
+    p.h(paramContext, "context");
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.weishi", 64);
@@ -41,7 +41,7 @@ public final class f
       paramContext = paramContext.signatures[0].toByteArray();
       localObject = MessageDigest.getInstance("MD5");
       if (localObject == null) {
-        k.fOy();
+        p.gfZ();
       }
       ((MessageDigest)localObject).update(paramContext);
       paramContext = ((MessageDigest)localObject).digest();
@@ -58,18 +58,18 @@ public final class f
         boolean bool2;
         int j;
         int i;
-        ac.w("MicroMsg.WeSeeUtil", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
+        ad.w("MicroMsg.WeSeeUtil", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
         bool1 = false;
         continue;
         String str = str.toUpperCase();
-        k.g(str, "(this as java.lang.String).toUpperCase()");
+        p.g(str, "(this as java.lang.String).toUpperCase()");
         ((StringBuffer)localObject).append(str);
         i += 1;
         continue;
         paramContext = ((StringBuffer)localObject).toString();
       }
     }
-    bool2 = bs.lr(paramContext, "2A281593D71DF33374E6124E9106DF08");
+    bool2 = bt.lQ(paramContext, "2A281593D71DF33374E6124E9106DF08");
     if (bool2)
     {
       AppMethodBeat.o(76226);
@@ -82,7 +82,7 @@ public final class f
         break label223;
       }
       str = Integer.toHexString(paramContext[i] & 0xFF);
-      k.g(str, "Integer.toHexString(0xFF and bArray[i].toInt())");
+      p.g(str, "Integer.toHexString(0xFF and bArray[i].toInt())");
       if (str.length() < 2) {
         ((StringBuffer)localObject).append(0);
       }
@@ -95,30 +95,30 @@ public final class f
     }
   }
   
-  public static void fW(Context paramContext)
+  public static void gb(Context paramContext)
   {
     AppMethodBeat.i(76227);
-    k.h(paramContext, "context");
+    p.h(paramContext, "context");
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", "https://isee.weishi.qq.com/static/release/group_10/528a4494-9ce7-4ac8-a763-247d84d07dae.html?_wwv=4096&chid=205000000&attach=cp_reserves3_2230000000");
     d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(76227);
   }
   
-  public static String wy(long paramLong)
+  public static String yS(long paramLong)
   {
     AppMethodBeat.i(76228);
     Object localObject = new StringBuilder();
-    k.g(g.agP(), "MMKernel.account()");
-    localObject = a.afE() + "_" + paramLong;
-    k.g(localObject, "sb.append(MMKernel.accou…end(timestamp).toString()");
+    p.g(g.ajA(), "MMKernel.account()");
+    localObject = a.aiq() + "_" + paramLong;
+    p.g(localObject, "sb.append(MMKernel.accou…end(timestamp).toString()");
     AppMethodBeat.o(76228);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.e.f
  * JD-Core Version:    0.7.0.1
  */

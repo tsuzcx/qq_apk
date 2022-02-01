@@ -1,58 +1,58 @@
 package com.tencent.mm.plugin.backup.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dy;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.plugin.backup.h.b;
 import com.tencent.mm.plugin.backup.h.c;
 import com.tencent.mm.plugin.backup.h.d;
 import com.tencent.mm.plugin.backup.i.u;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.protocal.protobuf.hy;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.protocal.protobuf.if;
+import com.tencent.mm.storage.bu;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public final class e
   implements l
 {
-  public final int a(hy paramhy, boolean paramBoolean1, bo parambo, String paramString, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap, boolean paramBoolean2, long paramLong)
+  public final int a(if paramif, boolean paramBoolean1, bu parambu, String paramString, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap, boolean paramBoolean2, long paramLong)
   {
     AppMethodBeat.i(21516);
-    if (parambo.field_content == null)
+    if (parambu.field_content == null)
     {
       AppMethodBeat.o(21516);
       return 0;
     }
-    int i = parambo.field_content.getBytes().length;
+    int i = parambu.field_content.getBytes().length;
     AppMethodBeat.o(21516);
     return i;
   }
   
-  public final int a(String paramString, hy paramhy, bo parambo)
+  public final int a(String paramString, if paramif, bu parambu)
   {
     AppMethodBeat.i(21517);
-    paramString = paramhy.DPV.FEm;
+    paramString = paramif.Fvk.HoB;
     if (paramString != null) {
-      parambo.setContent(paramString);
+      parambu.setContent(paramString);
     }
-    if (paramhy.ndI == 50) {
-      parambo.setStatus(6);
+    if (paramif.nEf == 50) {
+      parambu.setStatus(6);
     }
-    if (parambo.field_msgId == 0L) {
-      c.u(parambo);
+    if (parambu.field_msgId == 0L) {
+      c.v(parambu);
     }
     for (;;)
     {
       AppMethodBeat.o(21517);
       return 0;
-      d.bEP().bEQ().awD().b(paramhy.vTQ, parambo);
+      d.bIY().bIZ().azs().b(paramif.xbt, parambu);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.f.e
  * JD-Core Version:    0.7.0.1
  */

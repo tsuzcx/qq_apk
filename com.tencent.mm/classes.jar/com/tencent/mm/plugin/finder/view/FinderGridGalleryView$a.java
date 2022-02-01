@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.view;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderGridGalleryView$Companion;", "", "()V", "SELECTED_MEDIA_ITEMS", "", "getSELECTED_MEDIA_ITEMS", "()Ljava/lang/String;", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderGridGalleryView$Companion;", "", "()V", "SELECTED_MEDIA_ITEMS", "", "getSELECTED_MEDIA_ITEMS", "()Ljava/lang/String;", "plugin-finder_release"})
 public final class FinderGridGalleryView$a {}
 
 

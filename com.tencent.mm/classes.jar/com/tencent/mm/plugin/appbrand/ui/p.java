@@ -1,87 +1,142 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.os.Build.VERSION;
+import android.graphics.drawable.GradientDrawable;
 import android.util.DisplayMetrics;
-import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.plugin.appbrand.widget.b;
+import com.tencent.mm.plugin.appbrand.z.m;
+import com.tencent.mm.ui.statusbar.c.a;
 
+@SuppressLint({"ViewConstructor"})
 public final class p
-  extends ContextThemeWrapper
+  extends LinearLayout
+  implements c.a
 {
-  private Resources cfQ;
-  private LayoutInflater cfR;
+  public final com.tencent.luggage.sdk.d.c cpg;
+  private final p.a[] mFC;
+  private final SparseArray<p.b> mFD;
+  private final SparseArray<p.b> mFE;
+  private int mFF;
   
-  public p(Context paramContext)
+  public p(Context paramContext, com.tencent.luggage.sdk.d.c paramc)
   {
-    AppMethodBeat.i(48882);
-    super.attachBaseContext(paramContext);
-    dP(paramContext);
-    AppMethodBeat.o(48882);
+    super(paramContext);
+    AppMethodBeat.i(147701);
+    this.cpg = paramc;
+    this.mFD = new SparseArray();
+    this.mFE = new SparseArray();
+    this.mFC = new p.a[4];
+    setClickable(false);
+    int i = getContext().getResources().getDisplayMetrics().widthPixels;
+    int j = a.fromDPToPix(getContext(), 10);
+    int k = a.fromDPToPix(getContext(), 4);
+    paramContext = new FrameLayout.LayoutParams(i * 3 / 5, -2);
+    paramContext.gravity = 53;
+    setLayoutParams(paramContext);
+    bzE();
+    setPadding(j, j, j, j);
+    setOrientation(1);
+    paramContext = new GradientDrawable();
+    paramContext.setCornerRadius(k);
+    paramContext.setColor(-652403418);
+    setBackground(paramContext);
+    paramContext = new LinearLayout.LayoutParams(-1, -2);
+    paramc = new LinearLayout.LayoutParams(-1, 2);
+    TextView localTextView = new TextView(getContext());
+    View localView = new View(getContext());
+    localTextView.setTextColor(-1);
+    localTextView.setLayoutParams(paramContext);
+    localTextView.setTextSize(1, 14.0F);
+    localTextView.setText(getContext().getString(2131755562));
+    addView(localTextView);
+    paramc.setMargins(0, a.fromDPToPix(getContext(), 10), 0, 0);
+    localView.setLayoutParams(paramc);
+    localView.setBackgroundColor(1728053247);
+    addView(localView);
+    bzF();
+    com.tencent.mm.ui.statusbar.c.bm((Activity)getContext()).a(this);
+    AppMethodBeat.o(147701);
   }
   
-  public p(Context paramContext, int paramInt)
+  private void bzE()
   {
-    super(paramContext, paramInt);
-    AppMethodBeat.i(177764);
-    dP(paramContext);
-    AppMethodBeat.o(177764);
-  }
-  
-  private void dP(Context paramContext)
-  {
-    AppMethodBeat.i(48884);
-    DisplayMetrics localDisplayMetrics = a.c(paramContext.getResources().getDisplayMetrics());
-    this.cfQ = new p.a(paramContext.getResources(), localDisplayMetrics);
-    if (Build.VERSION.SDK_INT >= 21) {
-      getTheme().getResources().getDisplayMetrics().setTo(this.cfQ.getDisplayMetrics());
-    }
-    AppMethodBeat.o(48884);
-  }
-  
-  public final Resources getResources()
-  {
-    AppMethodBeat.i(48886);
-    if ((getAssets() != null) && (this.cfQ != null))
+    AppMethodBeat.i(147702);
+    if ((getLayoutParams() != null) && ((getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
     {
-      localResources = this.cfQ;
-      AppMethodBeat.o(48886);
-      return localResources;
+      ((ViewGroup.MarginLayoutParams)getLayoutParams()).topMargin = (b.dT(getContext()) + this.mFF);
+      requestLayout();
     }
-    Resources localResources = super.getResources();
-    AppMethodBeat.o(48886);
-    return localResources;
+    AppMethodBeat.o(147702);
   }
   
-  public final Object getSystemService(String paramString)
+  private void bzF()
   {
-    AppMethodBeat.i(48885);
-    if ("layout_inflater".equals(paramString))
+    AppMethodBeat.i(147703);
+    int i = 0;
+    while (i < 4)
     {
-      if (this.cfR != null)
+      p.a locala = new p.a(this, getContext());
+      locala.setText(getContext().getString(com.tencent.mm.plugin.appbrand.performance.d.mhr[i]));
+      this.mFC[i] = locala;
+      addView(locala);
+      i += 1;
+    }
+    AppMethodBeat.o(147703);
+  }
+  
+  public final void au(final int paramInt, final String paramString)
+  {
+    AppMethodBeat.i(147704);
+    m.runOnUiThread(new Runnable()
+    {
+      public final void run()
       {
-        paramString = this.cfR;
-        AppMethodBeat.o(48885);
-        return paramString;
+        AppMethodBeat.i(147692);
+        p.a(p.this, paramInt, paramString);
+        AppMethodBeat.o(147692);
       }
-      paramString = z.b((LayoutInflater)super.getSystemService("layout_inflater"));
-      this.cfR = paramString;
-      AppMethodBeat.o(48885);
-      return paramString;
-    }
-    paramString = super.getSystemService(paramString);
-    AppMethodBeat.o(48885);
-    return paramString;
+    });
+    AppMethodBeat.o(147704);
+  }
+  
+  public final void eq(final String paramString1, final String paramString2)
+  {
+    AppMethodBeat.i(147705);
+    m.runOnUiThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(147693);
+        p.a(p.this, paramString1, paramString2);
+        AppMethodBeat.o(147693);
+      }
+    });
+    AppMethodBeat.o(147705);
+  }
+  
+  public final void ua(int paramInt)
+  {
+    AppMethodBeat.i(147706);
+    this.mFF = paramInt;
+    bzE();
+    AppMethodBeat.o(147706);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.p
  * JD-Core Version:    0.7.0.1
  */

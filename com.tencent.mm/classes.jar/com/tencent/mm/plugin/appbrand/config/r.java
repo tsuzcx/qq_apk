@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dpt;
-import com.tencent.mm.protocal.protobuf.eg;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.dvk;
+import com.tencent.mm.protocal.protobuf.ek;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,11 +16,11 @@ public enum r
   public static void a(AppBrandSysConfigLU paramAppBrandSysConfigLU, String paramString)
   {
     AppMethodBeat.i(147007);
-    paramAppBrandSysConfigLU.jEa = true;
-    paramAppBrandSysConfigLU.jEb = true;
-    if (bs.isNullOrNil(paramString))
+    paramAppBrandSysConfigLU.jYb = true;
+    paramAppBrandSysConfigLU.jYc = true;
+    if (bt.isNullOrNil(paramString))
     {
-      ac.w("MicroMsg.AppBrandSysConfigUtil", "operationInfo nil");
+      ad.w("MicroMsg.AppBrandSysConfigUtil", "operationInfo nil");
       AppMethodBeat.o(147007);
       return;
     }
@@ -30,7 +30,7 @@ public enum r
       if (localJSONObject.optInt("music", 1) == 1)
       {
         bool = true;
-        paramAppBrandSysConfigLU.jEa = bool;
+        paramAppBrandSysConfigLU.jYb = bool;
         if (localJSONObject.optInt("location", 1) != 1) {
           break label96;
         }
@@ -38,7 +38,7 @@ public enum r
       label96:
       for (boolean bool = true;; bool = false)
       {
-        paramAppBrandSysConfigLU.jEb = bool;
+        paramAppBrandSysConfigLU.jYc = bool;
         AppMethodBeat.o(147007);
         return;
         bool = false;
@@ -48,31 +48,31 @@ public enum r
     }
     catch (JSONException paramAppBrandSysConfigLU)
     {
-      ac.w("MicroMsg.AppBrandSysConfigUtil", "assembleBgKeepAliveConfigByOperationInfo operationInfo:%s", new Object[] { paramString });
-      ac.w("MicroMsg.AppBrandSysConfigUtil", "assembleBgKeepAliveConfigByOperationInfo exp:%s", new Object[] { paramAppBrandSysConfigLU });
+      ad.w("MicroMsg.AppBrandSysConfigUtil", "assembleBgKeepAliveConfigByOperationInfo operationInfo:%s", new Object[] { paramString });
+      ad.w("MicroMsg.AppBrandSysConfigUtil", "assembleBgKeepAliveConfigByOperationInfo exp:%s", new Object[] { paramAppBrandSysConfigLU });
       AppMethodBeat.o(147007);
     }
   }
   
-  static eg x(JSONObject paramJSONObject)
+  static ek x(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(147006);
     Object localObject = paramJSONObject.optJSONObject("AppConfig");
-    paramJSONObject = new eg();
+    paramJSONObject = new ek();
     if (localObject != null)
     {
       localObject = ((JSONObject)localObject).optJSONArray("VersionList");
-      paramJSONObject.DQQ = new LinkedList();
+      paramJSONObject.Fwi = new LinkedList();
       if (localObject != null)
       {
         int i = 0;
         while (i < ((JSONArray)localObject).length())
         {
           JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
-          dpt localdpt = new dpt();
-          localdpt.type = localJSONObject.optInt("type");
-          localdpt.version = localJSONObject.optInt("version");
-          paramJSONObject.DQQ.add(localdpt);
+          dvk localdvk = new dvk();
+          localdvk.type = localJSONObject.optInt("type");
+          localdvk.version = localJSONObject.optInt("version");
+          paramJSONObject.Fwi.add(localdvk);
           i += 1;
         }
       }

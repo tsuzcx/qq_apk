@@ -25,6 +25,10 @@ public abstract interface Polyline
   
   public abstract void addTurnArrow(int paramInt1, int paramInt2);
   
+  public abstract void appendPoint(LatLng... paramVarArgs);
+  
+  public abstract void appendPoints(List<LatLng> paramList);
+  
   public abstract void cleanTurnArrow();
   
   public abstract void eraseTo(int paramInt, LatLng paramLatLng);

@@ -74,7 +74,7 @@ public final class c
     }
   }
   
-  private static byte[] cI(byte[] paramArrayOfByte)
+  private static byte[] cP(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(138458);
     Object localObject = paramArrayOfByte;
@@ -100,7 +100,7 @@ public final class c
     }
   }
   
-  public static byte[] fCL()
+  public static byte[] fUd()
   {
     AppMethodBeat.i(138457);
     try
@@ -126,7 +126,7 @@ public final class c
   public static byte[] n(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(138459);
-    byte[] arrayOfByte = cI(paramArrayOfByte2);
+    byte[] arrayOfByte = cP(paramArrayOfByte2);
     if ((paramArrayOfByte1 == null) || (arrayOfByte == null) || (paramArrayOfByte1.length == 0))
     {
       AppMethodBeat.o(138459);
@@ -193,7 +193,7 @@ public final class c
   public static byte[] o(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(138460);
-    byte[] arrayOfByte = cI(paramArrayOfByte2);
+    byte[] arrayOfByte = cP(paramArrayOfByte2);
     if ((paramArrayOfByte1 == null) || (arrayOfByte == null) || (paramArrayOfByte1.length == 0))
     {
       AppMethodBeat.o(138460);

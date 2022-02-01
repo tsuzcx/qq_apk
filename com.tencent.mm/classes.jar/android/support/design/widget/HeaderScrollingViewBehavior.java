@@ -15,10 +15,10 @@ import java.util.List;
 abstract class HeaderScrollingViewBehavior
   extends ViewOffsetBehavior<View>
 {
-  final Rect qg = new Rect();
-  final Rect qh = new Rect();
-  int qi = 0;
-  int qj;
+  final Rect sa = new Rect();
+  final Rect sc = new Rect();
+  int sd = 0;
+  int se;
   
   public HeaderScrollingViewBehavior() {}
   
@@ -68,7 +68,7 @@ abstract class HeaderScrollingViewBehavior
     if (localView != null)
     {
       CoordinatorLayout.d locald = (CoordinatorLayout.d)paramView.getLayoutParams();
-      Rect localRect = this.qg;
+      Rect localRect = this.sa;
       localRect.set(paramCoordinatorLayout.getPaddingLeft() + locald.leftMargin, localView.getBottom() + locald.topMargin, paramCoordinatorLayout.getWidth() - paramCoordinatorLayout.getPaddingRight() - locald.rightMargin, paramCoordinatorLayout.getHeight() + localView.getBottom() - paramCoordinatorLayout.getPaddingBottom() - locald.bottomMargin);
       ab localab = paramCoordinatorLayout.getLastWindowInsets();
       if ((localab != null) && (t.aq(paramCoordinatorLayout)) && (!t.aq(paramView)))
@@ -76,7 +76,7 @@ abstract class HeaderScrollingViewBehavior
         localRect.left += localab.getSystemWindowInsetLeft();
         localRect.right -= localab.getSystemWindowInsetRight();
       }
-      paramCoordinatorLayout = this.qh;
+      paramCoordinatorLayout = this.sc;
       int j = locald.gravity;
       int i = j;
       if (j == 0) {
@@ -85,11 +85,11 @@ abstract class HeaderScrollingViewBehavior
       d.apply(i, paramView.getMeasuredWidth(), paramView.getMeasuredHeight(), localRect, paramCoordinatorLayout, paramInt);
       paramInt = v(localView);
       paramView.layout(paramCoordinatorLayout.left, paramCoordinatorLayout.top - paramInt, paramCoordinatorLayout.right, paramCoordinatorLayout.bottom - paramInt);
-      this.qi = (paramCoordinatorLayout.top - localView.getBottom());
+      this.sd = (paramCoordinatorLayout.top - localView.getBottom());
       return;
     }
     super.c(paramCoordinatorLayout, paramView, paramInt);
-    this.qi = 0;
+    this.sd = 0;
   }
   
   abstract View e(List<View> paramList);
@@ -106,10 +106,10 @@ abstract class HeaderScrollingViewBehavior
   
   final int v(View paramView)
   {
-    if (this.qj == 0) {
+    if (this.se == 0) {
       return 0;
     }
-    return a.clamp((int)(h(paramView) * this.qj), 0, this.qj);
+    return a.clamp((int)(h(paramView) * this.se), 0, this.se);
   }
 }
 

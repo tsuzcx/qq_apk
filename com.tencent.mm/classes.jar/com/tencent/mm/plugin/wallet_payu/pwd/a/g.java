@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.wallet_payu.pwd.a;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.al.n;
+import com.tencent.mm.plugin.wallet_core.model.v;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUCheckPwdUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUSetPasswordUI;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.i;
@@ -21,7 +21,7 @@ public class g
     AppMethodBeat.i(72159);
     if ((paramMMActivity instanceof WalletPayUCheckPwdUI))
     {
-      paramMMActivity = new a(paramMMActivity, parami, this.dmf)
+      paramMMActivity = new a(paramMMActivity, parami, this.dxT)
       {
         public final CharSequence getTips(int paramAnonymousInt)
         {
@@ -49,11 +49,11 @@ public class g
           AppMethodBeat.i(72155);
           if ((paramAnonymousn instanceof b))
           {
-            ac.d("MicroMsg.PayUModifyPasswordProcess", "hy: change pwd user success");
+            ad.d("MicroMsg.PayUModifyPasswordProcess", "hy: change pwd user success");
             if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
             {
               g.a(g.this).putInt("key_errcode_payu", 0);
-              com.tencent.mm.wallet_core.a.b(this.activity, g.this.dmf, 0);
+              com.tencent.mm.wallet_core.a.b(this.activity, g.this.dxT, 0);
               AppMethodBeat.o(72155);
               return true;
             }
@@ -65,10 +65,10 @@ public class g
         public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72156);
-          Object localObject = (u)paramAnonymousVarArgs[0];
+          Object localObject = (v)paramAnonymousVarArgs[0];
           paramAnonymousVarArgs = g.b(g.this).getString("key_pwd1");
-          localObject = ((u)localObject).iJA;
-          this.JFQ.b(new b(paramAnonymousVarArgs, (String)localObject), true);
+          localObject = ((v)localObject).jcJ;
+          this.LyU.b(new b(paramAnonymousVarArgs, (String)localObject), true);
           AppMethodBeat.o(72156);
           return true;
         }
@@ -102,7 +102,7 @@ public class g
     AppMethodBeat.o(72158);
   }
   
-  public final String cHN()
+  public final String cQc()
   {
     return "PayUModifyPasswordProcess";
   }

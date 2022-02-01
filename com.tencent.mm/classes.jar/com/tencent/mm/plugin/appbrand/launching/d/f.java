@@ -1,105 +1,105 @@
 package com.tencent.mm.plugin.appbrand.launching.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.g.b.a.hr;
-import com.tencent.mm.g.b.a.hr.a;
-import com.tencent.mm.g.b.a.hr.b;
+import com.tencent.mm.al.a.a;
+import com.tencent.mm.g.b.a.iv;
+import com.tencent.mm.g.b.a.iv.a;
+import com.tencent.mm.g.b.a.iv.b;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.protocal.protobuf.cgt;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.cls;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchGetDownloadInfoTask;", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/AppBrandBasePreFetchTaskWC;", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/PreGetDownloadUrlResponse;", "enterPath", "", "userName", "appId", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "cgiBack", "getEnterPath", "getUserName", "getPreFetchResult", "timeoutMs", "", "key", "preFetch", "report", "", "qualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchGetDownloadInfoTask;", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/AppBrandBasePreFetchTaskWC;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/PreGetDownloadUrlResponse;", "enterPath", "", "userName", "appId", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "cgiBack", "getEnterPath", "getUserName", "getPreFetchResult", "timeoutMs", "", "key", "preFetch", "report", "", "qualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "Companion", "plugin-appbrand-integration_release"})
 public final class f
-  extends a<c.a<cgt>>
+  extends a<a.a<cls>>
 {
-  public static final a lpE;
+  public static final a lMX;
   private final String appId;
-  private final String jjf;
-  private c.a<cgt> lpD;
+  private final String jCN;
+  private a.a<cls> lMW;
   private final String userName;
   
   static
   {
     AppMethodBeat.i(50812);
-    lpE = new a((byte)0);
+    lMX = new a((byte)0);
     AppMethodBeat.o(50812);
   }
   
   public f(String paramString1, String paramString2, String paramString3)
   {
-    this.jjf = paramString1;
+    this.jCN = paramString1;
     this.userName = paramString2;
     this.appId = paramString3;
   }
   
-  public final int DL()
+  public final int Fk()
   {
     return 1;
   }
   
   public final void c(QualitySession paramQualitySession)
   {
-    AppMethodBeat.i(187340);
-    k.h(paramQualitySession, "qualitySession");
-    if (this.lpD == null)
+    AppMethodBeat.i(189332);
+    p.h(paramQualitySession, "qualitySession");
+    if (this.lMW == null)
     {
-      AppMethodBeat.o(187340);
+      AppMethodBeat.o(189332);
       return;
     }
-    long l1 = this.cfh;
-    long l2 = this.cff;
-    hr localhr = new hr();
-    localhr.oO(paramQualitySession.lht);
-    String str2 = localhr.getAppId();
+    long l1 = this.cpx;
+    long l2 = this.cpw;
+    iv localiv = new iv();
+    localiv.rv(paramQualitySession.lEv);
+    String str2 = localiv.getAppId();
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    localhr.oP(str1);
-    localhr.mR(paramQualitySession.lVs);
-    localhr.a(hr.a.jd(paramQualitySession.lTR));
-    localhr.mS(paramQualitySession.apptype);
-    localhr.mT(l1 - l2);
-    localhr.mU(paramQualitySession.scene);
-    localhr.mV(localhr.SK());
-    localhr.mW(localhr.SL());
-    if (com.tencent.mm.plugin.appbrand.o.a.d(this.lpD))
+    localiv.rw(str1);
+    localiv.oP(paramQualitySession.mvi);
+    localiv.a(iv.a.jA(paramQualitySession.mtG));
+    localiv.oQ(paramQualitySession.apptype);
+    localiv.oR(l1 - l2);
+    localiv.oS(paramQualitySession.scene);
+    localiv.oT(localiv.UY());
+    localiv.oU(localiv.UZ());
+    if (com.tencent.mm.plugin.appbrand.n.a.e(this.lMW))
     {
-      paramQualitySession = hr.b.ehr;
-      localhr.a(paramQualitySession);
-      localhr.mX(com.tencent.mm.plugin.appbrand.report.quality.f.getNetworkType());
-      localhr.oQ(this.userName);
-      localhr.SZ();
-      if (!this.cfi) {
+      paramQualitySession = iv.b.eyr;
+      localiv.a(paramQualitySession);
+      localiv.oV(com.tencent.mm.plugin.appbrand.report.quality.f.getNetworkType());
+      localiv.rx(this.userName);
+      localiv.Vm();
+      if (!this.cpy) {
         break label242;
       }
     }
     label242:
     for (l1 = 1L;; l1 = 0L)
     {
-      localhr.mY(l1);
-      localhr.aHZ();
-      AppMethodBeat.o(187340);
+      localiv.oW(l1);
+      localiv.aLk();
+      AppMethodBeat.o(189332);
       return;
-      paramQualitySession = hr.b.ehs;
+      paramQualitySession = iv.b.eys;
       break;
     }
   }
   
-  public final c.a<cgt> tK(int paramInt)
+  public final a.a<cls> uo(int paramInt)
   {
     AppMethodBeat.i(180640);
-    c.a locala = (c.a)super.gx(paramInt);
+    a.a locala = (a.a)super.gC(paramInt);
     if (locala != null) {
-      b.lA(7);
+      b.ma(7);
     }
     AppMethodBeat.o(180640);
     return locala;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchGetDownloadInfoTask$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchGetDownloadInfoTask$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

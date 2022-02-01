@@ -7,10 +7,10 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,49 +19,49 @@ import java.util.List;
 public final class d
   implements b
 {
-  public static d hxT;
-  double bNt;
-  private ao gox;
-  public boolean hEP;
-  h hEQ;
-  long hER;
-  public long hES;
-  boolean hET;
-  public boolean hEU;
-  double hEV;
-  double hEW;
-  int hEX;
-  double hEY;
-  double hEZ;
-  String hFa;
-  String hFb;
-  int hFc;
-  private boolean hFd;
-  private boolean hFe;
-  private f hFf;
-  private g hFg;
+  public static d hQo;
+  double bXG;
+  private ap gIf;
+  double hXA;
+  double hXB;
+  int hXC;
+  double hXD;
+  double hXE;
+  String hXF;
+  String hXG;
+  int hXH;
+  private boolean hXI;
+  private boolean hXJ;
+  private f hXK;
+  private g hXL;
+  public boolean hXu;
+  h hXv;
+  long hXw;
+  public long hXx;
+  boolean hXy;
+  public boolean hXz;
   List<WeakReference<b.a>> listeners;
   private Context mContext;
   
   private d(Context paramContext)
   {
     AppMethodBeat.i(150488);
-    this.hEP = false;
+    this.hXu = false;
     this.listeners = new ArrayList();
-    this.hER = 0L;
-    this.hES = 0L;
-    this.hET = false;
-    this.hEU = false;
-    this.hEV = 23.0D;
-    this.hEW = 100.0D;
-    this.hEX = 0;
-    this.hEY = 0.0D;
-    this.hEZ = 0.0D;
-    this.bNt = 0.0D;
-    this.hFd = false;
-    this.hFe = false;
-    this.gox = new ao(Looper.getMainLooper());
-    this.hFf = new f()
+    this.hXw = 0L;
+    this.hXx = 0L;
+    this.hXy = false;
+    this.hXz = false;
+    this.hXA = 23.0D;
+    this.hXB = 100.0D;
+    this.hXC = 0;
+    this.hXD = 0.0D;
+    this.hXE = 0.0D;
+    this.bXG = 0.0D;
+    this.hXI = false;
+    this.hXJ = false;
+    this.gIf = new ap(Looper.getMainLooper());
+    this.hXK = new f()
     {
       public final void a(final boolean paramAnonymousBoolean, final double paramAnonymousDouble1, double paramAnonymousDouble2, final int paramAnonymousInt1, double paramAnonymousDouble3, final double paramAnonymousDouble4, final double paramAnonymousDouble5, String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt2)
       {
@@ -69,31 +69,31 @@ public final class d
         d.a(d.this, paramAnonymousBoolean, paramAnonymousDouble1, paramAnonymousDouble2, paramAnonymousDouble4, true);
         if (paramAnonymousBoolean)
         {
-          d.this.hEV = paramAnonymousDouble1;
-          d.this.hEW = paramAnonymousDouble2;
-          d.this.hEX = paramAnonymousInt1;
-          d.this.hEY = paramAnonymousDouble3;
-          d.this.hEZ = paramAnonymousDouble4;
-          d.this.bNt = paramAnonymousDouble5;
-          d.this.hFa = paramAnonymousString1;
-          d.this.hFb = paramAnonymousString2;
-          d.this.hFc = paramAnonymousInt2;
-          d.this.hES = System.currentTimeMillis();
-          d.this.hET = true;
-          d.this.hEU = false;
+          d.this.hXA = paramAnonymousDouble1;
+          d.this.hXB = paramAnonymousDouble2;
+          d.this.hXC = paramAnonymousInt1;
+          d.this.hXD = paramAnonymousDouble3;
+          d.this.hXE = paramAnonymousDouble4;
+          d.this.bXG = paramAnonymousDouble5;
+          d.this.hXF = paramAnonymousString1;
+          d.this.hXG = paramAnonymousString2;
+          d.this.hXH = paramAnonymousInt2;
+          d.this.hXx = System.currentTimeMillis();
+          d.this.hXy = true;
+          d.this.hXz = false;
           d.a(d.this, 67592);
         }
-        ac.d("MicroMsg.LocationGeo", "onGetLocation fLongitude: %f fLatitude:%f locType:%d %f:spped", new Object[] { Double.valueOf(paramAnonymousDouble2), Double.valueOf(paramAnonymousDouble1), Integer.valueOf(paramAnonymousInt1), Double.valueOf(paramAnonymousDouble3) });
-        new ao(Looper.getMainLooper()).post(new Runnable()
+        ad.d("MicroMsg.LocationGeo", "onGetLocation fLongitude: %f fLatitude:%f locType:%d %f:spped", new Object[] { Double.valueOf(paramAnonymousDouble2), Double.valueOf(paramAnonymousDouble1), Integer.valueOf(paramAnonymousInt1), Double.valueOf(paramAnonymousDouble3) });
+        new ap(Looper.getMainLooper()).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(150481);
             Bundle localBundle = new Bundle();
-            localBundle.putString("indoor_building_floor", d.this.hFb);
-            localBundle.putString("indoor_building_id", d.this.hFa);
-            localBundle.putInt("indoor_building_type", d.this.hFc);
-            d.a(d.this, paramAnonymousBoolean, paramAnonymousDouble1, paramAnonymousInt1, paramAnonymousDouble4, paramAnonymousDouble5, this.hFn, localBundle);
+            localBundle.putString("indoor_building_floor", d.this.hXG);
+            localBundle.putString("indoor_building_id", d.this.hXF);
+            localBundle.putInt("indoor_building_type", d.this.hXH);
+            d.a(d.this, paramAnonymousBoolean, paramAnonymousDouble1, paramAnonymousInt1, paramAnonymousDouble4, paramAnonymousDouble5, this.hXS, localBundle);
             AppMethodBeat.o(150481);
           }
         });
@@ -103,11 +103,11 @@ public final class d
       public final void onStatusUpdate(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2)
       {
         AppMethodBeat.i(150483);
-        ac.i("MicroMsg.LocationGeo", "onStatusUpdate name %s, status %d", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt) });
+        ad.i("MicroMsg.LocationGeo", "onStatusUpdate name %s, status %d", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt) });
         AppMethodBeat.o(150483);
       }
     };
-    this.hFg = new g()
+    this.hXL = new g()
     {
       public final void a(final boolean paramAnonymousBoolean, final double paramAnonymousDouble1, double paramAnonymousDouble2, final int paramAnonymousInt1, double paramAnonymousDouble3, final double paramAnonymousDouble4, final double paramAnonymousDouble5, String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt2)
       {
@@ -115,31 +115,31 @@ public final class d
         d.a(d.this, paramAnonymousBoolean, paramAnonymousDouble1, paramAnonymousDouble2, paramAnonymousDouble4, false);
         if (paramAnonymousBoolean)
         {
-          d.this.hEV = paramAnonymousDouble1;
-          d.this.hEW = paramAnonymousDouble2;
-          d.this.hEX = paramAnonymousInt1;
-          d.this.hEY = paramAnonymousDouble3;
-          d.this.hEZ = paramAnonymousDouble4;
-          d.this.bNt = paramAnonymousDouble5;
-          d.this.hFa = paramAnonymousString1;
-          d.this.hFb = paramAnonymousString2;
-          d.this.hFc = paramAnonymousInt2;
-          d.this.hEU = true;
-          d.this.hET = false;
-          d.this.hES = System.currentTimeMillis();
+          d.this.hXA = paramAnonymousDouble1;
+          d.this.hXB = paramAnonymousDouble2;
+          d.this.hXC = paramAnonymousInt1;
+          d.this.hXD = paramAnonymousDouble3;
+          d.this.hXE = paramAnonymousDouble4;
+          d.this.bXG = paramAnonymousDouble5;
+          d.this.hXF = paramAnonymousString1;
+          d.this.hXG = paramAnonymousString2;
+          d.this.hXH = paramAnonymousInt2;
+          d.this.hXz = true;
+          d.this.hXy = false;
+          d.this.hXx = System.currentTimeMillis();
           d.a(d.this, 67591);
         }
-        ac.d("MicroMsg.LocationGeo", "onGetLocationWgs84 fLongitude: %f fLatitude:%f locType:%d %f:spped", new Object[] { Double.valueOf(paramAnonymousDouble2), Double.valueOf(paramAnonymousDouble1), Integer.valueOf(paramAnonymousInt1), Double.valueOf(paramAnonymousDouble3) });
-        new ao(Looper.getMainLooper()).postDelayed(new Runnable()
+        ad.d("MicroMsg.LocationGeo", "onGetLocationWgs84 fLongitude: %f fLatitude:%f locType:%d %f:spped", new Object[] { Double.valueOf(paramAnonymousDouble2), Double.valueOf(paramAnonymousDouble1), Integer.valueOf(paramAnonymousInt1), Double.valueOf(paramAnonymousDouble3) });
+        new ap(Looper.getMainLooper()).postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(150484);
             Bundle localBundle = new Bundle();
-            localBundle.putString("indoor_building_floor", d.this.hFb);
-            localBundle.putString("indoor_building_id", d.this.hFa);
-            localBundle.putInt("indoor_building_type", d.this.hFc);
-            d.a(d.this, paramAnonymousBoolean, paramAnonymousDouble1, paramAnonymousInt1, paramAnonymousDouble4, paramAnonymousDouble5, this.hFn, localBundle);
+            localBundle.putString("indoor_building_floor", d.this.hXG);
+            localBundle.putString("indoor_building_id", d.this.hXF);
+            localBundle.putInt("indoor_building_type", d.this.hXH);
+            d.a(d.this, paramAnonymousBoolean, paramAnonymousDouble1, paramAnonymousInt1, paramAnonymousDouble4, paramAnonymousDouble5, this.hXS, localBundle);
             AppMethodBeat.o(150484);
           }
         }, 200L);
@@ -147,56 +147,56 @@ public final class d
       }
     };
     this.mContext = paramContext;
-    this.hEQ = h.cF(paramContext);
+    this.hXv = h.cC(paramContext);
     AppMethodBeat.o(150488);
   }
   
-  public static d aEL()
+  public static d aHQ()
   {
     AppMethodBeat.i(150487);
-    if (hxT == null) {
-      hxT = new d(ai.getContext());
+    if (hQo == null) {
+      hQo = new d(aj.getContext());
     }
-    d locald = hxT;
+    d locald = hQo;
     AppMethodBeat.o(150487);
     return locald;
   }
   
-  public static boolean aEM()
+  public static boolean aHR()
   {
     AppMethodBeat.i(150494);
     try
     {
-      boolean bool = ((LocationManager)ai.getContext().getSystemService("location")).isProviderEnabled("gps");
+      boolean bool = ((LocationManager)aj.getContext().getSystemService("location")).isProviderEnabled("gps");
       AppMethodBeat.o(150494);
       return bool;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.LocationGeo", "exception:%s", new Object[] { bs.m(localException) });
+      ad.e("MicroMsg.LocationGeo", "exception:%s", new Object[] { bt.n(localException) });
       AppMethodBeat.o(150494);
     }
     return false;
   }
   
-  public static boolean aEN()
+  public static boolean aHS()
   {
     AppMethodBeat.i(150496);
     try
     {
-      boolean bool = ((LocationManager)ai.getContext().getSystemService("location")).isProviderEnabled("network");
+      boolean bool = ((LocationManager)aj.getContext().getSystemService("location")).isProviderEnabled("network");
       AppMethodBeat.o(150496);
       return bool;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.LocationGeo", "exception:%s", new Object[] { bs.m(localException) });
+      ad.e("MicroMsg.LocationGeo", "exception:%s", new Object[] { bt.n(localException) });
       AppMethodBeat.o(150496);
     }
     return false;
   }
   
-  public static void cE(Context paramContext)
+  public static void cB(Context paramContext)
   {
     AppMethodBeat.i(150495);
     Object localObject = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
@@ -207,9 +207,9 @@ public final class d
       return;
     }
     ((Intent)localObject).addFlags(268435456);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/modelgeo/LocationGeo", "jumpToOpenGps", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/modelgeo/LocationGeo", "jumpToOpenGps", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/modelgeo/LocationGeo", "jumpToOpenGps", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(150495);
   }
@@ -224,16 +224,16 @@ public final class d
   public final void a(b.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(150489);
-    ac.i("MicroMsg.LocationGeo", "startWgs84 %s userCache %s delay %d", new Object[] { parama, Boolean.valueOf(paramBoolean), Integer.valueOf(0) });
-    if ((this.hEP) && (this.listeners.size() > 0)) {}
+    ad.i("MicroMsg.LocationGeo", "startWgs84 %s userCache %s delay %d", new Object[] { parama, Boolean.valueOf(paramBoolean), Integer.valueOf(0) });
+    if ((this.hXu) && (this.listeners.size() > 0)) {}
     try
     {
-      this.hER = System.currentTimeMillis();
-      this.hFd = false;
-      this.hFe = false;
-      this.hEQ.aEP();
-      this.hEQ.a(this.hFg, 0, Looper.getMainLooper());
-      this.hEP = false;
+      this.hXw = System.currentTimeMillis();
+      this.hXI = false;
+      this.hXJ = false;
+      this.hXv.aHU();
+      this.hXv.a(this.hXL, 0, Looper.getMainLooper());
+      this.hXu = false;
       Iterator localIterator = this.listeners.iterator();
       WeakReference localWeakReference;
       do
@@ -247,7 +247,7 @@ public final class d
       if (i != 0) {
         this.listeners.add(new WeakReference(parama));
       }
-      ac.i("MicroMsg.LocationGeo", "add listeners size %d", new Object[] { Integer.valueOf(this.listeners.size()) });
+      ad.i("MicroMsg.LocationGeo", "add listeners size %d", new Object[] { Integer.valueOf(this.listeners.size()) });
       if ((this.listeners.size() != 1) || (i == 0)) {}
     }
     catch (h.a locala)
@@ -256,21 +256,21 @@ public final class d
       {
         try
         {
-          this.hER = System.currentTimeMillis();
-          this.hFd = false;
-          this.hFe = false;
-          this.hEQ.a(this.hFg, 0, Looper.getMainLooper());
-          if ((paramBoolean) && (this.hEU) && (System.currentTimeMillis() - this.hES < 60000L)) {
-            this.hFg.a(true, this.hEV, this.hEW, this.hEX, this.hEY, this.hEZ, this.bNt, this.hFa, this.hFb, this.hFc);
+          this.hXw = System.currentTimeMillis();
+          this.hXI = false;
+          this.hXJ = false;
+          this.hXv.a(this.hXL, 0, Looper.getMainLooper());
+          if ((paramBoolean) && (this.hXz) && (System.currentTimeMillis() - this.hXx < 60000L)) {
+            this.hXL.a(true, this.hXA, this.hXB, this.hXC, this.hXD, this.hXE, this.bXG, this.hXF, this.hXG, this.hXH);
           }
           AppMethodBeat.o(150489);
           return;
           locala = locala;
-          ac.d("MicroMsg.LocationGeo", locala.toString());
+          ad.d("MicroMsg.LocationGeo", locala.toString());
         }
         catch (h.a parama)
         {
-          ac.d("MicroMsg.LocationGeo", parama.toString());
+          ad.d("MicroMsg.LocationGeo", parama.toString());
           continue;
         }
         int i = 1;
@@ -280,23 +280,23 @@ public final class d
   
   public final void b(b.a parama)
   {
-    AppMethodBeat.i(210347);
+    AppMethodBeat.i(221218);
     a(parama, true);
-    AppMethodBeat.o(210347);
+    AppMethodBeat.o(221218);
   }
   
   public final void b(b.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(150492);
-    if ((!this.hEP) && (this.listeners.size() > 0)) {}
+    if ((!this.hXu) && (this.listeners.size() > 0)) {}
     try
     {
-      this.hER = System.currentTimeMillis();
-      this.hFd = false;
-      this.hFe = false;
-      this.hEQ.aEP();
-      this.hEQ.a(this.hFf, 1, Looper.getMainLooper());
-      this.hEP = true;
+      this.hXw = System.currentTimeMillis();
+      this.hXI = false;
+      this.hXJ = false;
+      this.hXv.aHU();
+      this.hXv.a(this.hXK, 1, Looper.getMainLooper());
+      this.hXu = true;
       Iterator localIterator = this.listeners.iterator();
       WeakReference localWeakReference;
       do
@@ -310,7 +310,7 @@ public final class d
       if (i != 0) {
         this.listeners.add(new WeakReference(parama));
       }
-      ac.i("MicroMsg.LocationGeo", "add listeners size %d", new Object[] { Integer.valueOf(this.listeners.size()) });
+      ad.i("MicroMsg.LocationGeo", "add listeners size %d", new Object[] { Integer.valueOf(this.listeners.size()) });
       if ((this.listeners.size() != 1) || (i == 0)) {}
     }
     catch (h.a locala)
@@ -319,21 +319,21 @@ public final class d
       {
         try
         {
-          this.hER = System.currentTimeMillis();
-          this.hFd = false;
-          this.hFe = false;
-          this.hEQ.a(this.hFf, 1, Looper.getMainLooper());
-          if ((paramBoolean) && (this.hET) && (System.currentTimeMillis() - this.hES < 60000L)) {
-            this.hFf.a(true, this.hEV, this.hEW, this.hEX, this.hEY, this.hEZ, this.bNt, this.hFa, this.hFb, this.hFc);
+          this.hXw = System.currentTimeMillis();
+          this.hXI = false;
+          this.hXJ = false;
+          this.hXv.a(this.hXK, 1, Looper.getMainLooper());
+          if ((paramBoolean) && (this.hXy) && (System.currentTimeMillis() - this.hXx < 60000L)) {
+            this.hXK.a(true, this.hXA, this.hXB, this.hXC, this.hXD, this.hXE, this.bXG, this.hXF, this.hXG, this.hXH);
           }
           AppMethodBeat.o(150492);
           return;
           locala = locala;
-          ac.d("MicroMsg.LocationGeo", locala.toString());
+          ad.d("MicroMsg.LocationGeo", locala.toString());
         }
         catch (h.a parama)
         {
-          ac.d("MicroMsg.LocationGeo", parama.toString());
+          ad.d("MicroMsg.LocationGeo", parama.toString());
           continue;
         }
         int i = 1;
@@ -344,7 +344,7 @@ public final class d
   public final void c(final b.a parama)
   {
     AppMethodBeat.i(150493);
-    new ao().post(new Runnable()
+    new ap().post(new Runnable()
     {
       public final void run()
       {
@@ -364,9 +364,9 @@ public final class d
           localObject2 = (WeakReference)((Iterator)localObject1).next();
           d.this.listeners.remove(localObject2);
         }
-        ac.i("MicroMsg.LocationGeo", "stop listeners size %d", new Object[] { Integer.valueOf(d.this.listeners.size()) });
-        if ((d.this.listeners.size() == 0) && (d.this.hEQ != null)) {
-          d.this.hEQ.aEP();
+        ad.i("MicroMsg.LocationGeo", "stop listeners size %d", new Object[] { Integer.valueOf(d.this.listeners.size()) });
+        if ((d.this.listeners.size() == 0) && (d.this.hXv != null)) {
+          d.this.hXv.aHU();
         }
         AppMethodBeat.o(150486);
       }

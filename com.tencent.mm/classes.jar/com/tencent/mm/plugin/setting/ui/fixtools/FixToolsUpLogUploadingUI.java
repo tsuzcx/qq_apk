@@ -13,59 +13,56 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bn;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.bo;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.setting.model.a.1;
 import com.tencent.mm.plugin.setting.model.a.2;
 import com.tencent.mm.plugin.setting.model.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMWizardActivity;
 
 @com.tencent.mm.ui.base.a(3)
 public class FixToolsUpLogUploadingUI
   extends MMWizardActivity
 {
-  private Button fwm;
-  private TextView xoV;
-  private ImageView xoW;
-  protected ProgressBar xoX;
-  public a.a xof;
+  private Button fPz;
+  public a.a yCK;
+  private ImageView yDA;
+  protected ProgressBar yDB;
+  private TextView yDz;
   
   public FixToolsUpLogUploadingUI()
   {
     AppMethodBeat.i(73818);
-    this.xof = new a.a()
+    this.yCK = new a.a()
     {
-      public final void Nx(int paramAnonymousInt)
+      public final void Pa(int paramAnonymousInt)
       {
         AppMethodBeat.i(73817);
-        ac.i("MicroMsg.FixToolsUpLogUploadingUI", "fixToolsUplogProgressCallback percent:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ad.i("MicroMsg.FixToolsUpLogUploadingUI", "fixToolsUplogProgressCallback percent:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if (paramAnonymousInt < 0)
         {
-          h.wUl.idkeyStat(873L, 18L, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(873L, 18L, 1L, false);
           FixToolsUpLogUploadingUI.c(FixToolsUpLogUploadingUI.this).setImageResource(2131690203);
           FixToolsUpLogUploadingUI.d(FixToolsUpLogUploadingUI.this).setText(2131759436);
-          FixToolsUpLogUploadingUI.this.xoX.setVisibility(8);
+          FixToolsUpLogUploadingUI.this.yDB.setVisibility(8);
           FixToolsUpLogUploadingUI.e(FixToolsUpLogUploadingUI.this).setVisibility(0);
           AppMethodBeat.o(73817);
           return;
         }
         if (paramAnonymousInt >= 100)
         {
-          h.wUl.idkeyStat(873L, 17L, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(873L, 17L, 1L, false);
           FixToolsUpLogUploadingUI.c(FixToolsUpLogUploadingUI.this).setImageResource(2131690204);
           FixToolsUpLogUploadingUI.d(FixToolsUpLogUploadingUI.this).setText(2131759437);
-          FixToolsUpLogUploadingUI.this.xoX.setVisibility(8);
+          FixToolsUpLogUploadingUI.this.yDB.setVisibility(8);
           FixToolsUpLogUploadingUI.e(FixToolsUpLogUploadingUI.this).setVisibility(0);
           AppMethodBeat.o(73817);
           return;
         }
-        FixToolsUpLogUploadingUI.this.xoX.setProgress(paramAnonymousInt);
+        FixToolsUpLogUploadingUI.this.yDB.setProgress(paramAnonymousInt);
         AppMethodBeat.o(73817);
       }
     };
@@ -87,18 +84,22 @@ public class FixToolsUpLogUploadingUI
       return;
     }
     setMMTitle(2131759434);
-    this.xoV = ((TextView)findViewById(2131300121));
-    this.xoW = ((ImageView)findViewById(2131300118));
-    this.fwm = ((Button)findViewById(2131300117));
-    this.xoX = ((ProgressBar)findViewById(2131300119));
-    this.xoW.setImageResource(2131690209);
-    this.xoV.setText(2131759440);
-    this.fwm.setOnClickListener(new View.OnClickListener()
+    this.yDz = ((TextView)findViewById(2131300121));
+    this.yDA = ((ImageView)findViewById(2131300118));
+    this.fPz = ((Button)findViewById(2131300117));
+    this.yDB = ((ProgressBar)findViewById(2131300119));
+    this.yDA.setImageResource(2131690209);
+    this.yDz.setText(2131759440);
+    this.fPz.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(73815);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUpLogUploadingUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         FixToolsUpLogUploadingUI.a(FixToolsUpLogUploadingUI.this);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUpLogUploadingUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(73815);
       }
     });
@@ -112,25 +113,25 @@ public class FixToolsUpLogUploadingUI
         return true;
       }
     });
-    this.xoX.setVisibility(0);
-    this.fwm.setVisibility(8);
+    this.yDB.setVisibility(0);
+    this.fPz.setVisibility(8);
     String str = getIntent().getStringExtra("date");
-    com.tencent.mm.plugin.setting.model.a locala = com.tencent.mm.plugin.setting.model.a.dBG();
-    com.tencent.mm.plugin.setting.model.a.xof = this.xof;
-    ac.i("MicroMsg.FixToolsUplogModel", "startUplog, date:%s, isUploading:%b", new Object[] { str, Boolean.valueOf(locala.hTo) });
-    if (!locala.hTo)
+    com.tencent.mm.plugin.setting.model.a locala = com.tencent.mm.plugin.setting.model.a.dNj();
+    com.tencent.mm.plugin.setting.model.a.yCK = this.yCK;
+    ad.i("MicroMsg.FixToolsUplogModel", "startUplog, date:%s, isUploading:%b", new Object[] { str, Boolean.valueOf(locala.imJ) });
+    if (!locala.imJ)
     {
-      locala.hTo = true;
+      locala.imJ = true;
       paramBundle = "weixin";
-      if (g.agM()) {
-        paramBundle = u.axw();
+      if (com.tencent.mm.kernel.g.ajx()) {
+        paramBundle = u.aAm();
       }
-      long l1 = bs.eWj() / 86400000L;
-      long l2 = com.tencent.mm.plugin.setting.model.a.Sx(str + "000000");
+      long l1 = bt.flT() / 86400000L;
+      long l2 = com.tencent.mm.plugin.setting.model.a.VV(str + "000000");
       int i = (int)((l1 * 86400000L + 57600000L - 1L - l2) / 86400000L);
-      ac.i("MicroMsg.FixToolsUplogModel", "startNewUplog, chooseTime:%d, time:%d", new Object[] { Long.valueOf(l2), Integer.valueOf(i) });
-      g.agi().a(new bn(new a.1(locala, paramBundle, i)), 0);
-      b.a(new a.2(locala));
+      ad.i("MicroMsg.FixToolsUplogModel", "startNewUplog, chooseTime:%d, time:%d", new Object[] { Long.valueOf(l2), Integer.valueOf(i) });
+      com.tencent.mm.kernel.g.aiU().a(new bo(new a.1(locala, paramBundle, i)), 0);
+      com.tencent.mm.kernel.b.a(new a.2(locala));
     }
     AppMethodBeat.o(73819);
   }
@@ -140,7 +141,7 @@ public class FixToolsUpLogUploadingUI
     AppMethodBeat.i(73820);
     if (paramInt == 4)
     {
-      ZA(1);
+      abK(1);
       AppMethodBeat.o(73820);
       return true;
     }

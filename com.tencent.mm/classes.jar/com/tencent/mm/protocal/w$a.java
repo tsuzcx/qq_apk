@@ -1,14 +1,14 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class w$a
   extends l.d
   implements l.b
 {
-  public byte[] dht = null;
-  public long hDR = -1L;
+  public byte[] dsR = null;
+  public long hWw = -1L;
   
   public final int getCmdId()
   {
@@ -28,25 +28,25 @@ public final class w$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(133119);
-    byte[] arrayOfByte = new byte[this.dht.length + 8];
-    int i = (int)(bs.eWj() - this.hDR);
+    byte[] arrayOfByte = new byte[this.dsR.length + 8];
+    int i = (int)(bt.flT() - this.hWw);
     arrayOfByte[0] = ((byte)(i >> 24 & 0xFF));
     arrayOfByte[1] = ((byte)(i >> 16 & 0xFF));
     arrayOfByte[2] = ((byte)(i >> 8 & 0xFF));
     arrayOfByte[3] = ((byte)(i & 0xFF));
-    arrayOfByte[4] = ((byte)(this.dht.length >> 24 & 0xFF));
-    arrayOfByte[5] = ((byte)(this.dht.length >> 16 & 0xFF));
-    arrayOfByte[6] = ((byte)(this.dht.length >> 8 & 0xFF));
-    arrayOfByte[7] = ((byte)(this.dht.length & 0xFF));
-    System.arraycopy(this.dht, 0, arrayOfByte, 8, this.dht.length);
-    bs.cu(arrayOfByte);
+    arrayOfByte[4] = ((byte)(this.dsR.length >> 24 & 0xFF));
+    arrayOfByte[5] = ((byte)(this.dsR.length >> 16 & 0xFF));
+    arrayOfByte[6] = ((byte)(this.dsR.length >> 8 & 0xFF));
+    arrayOfByte[7] = ((byte)(this.dsR.length & 0xFF));
+    System.arraycopy(this.dsR, 0, arrayOfByte, 8, this.dsR.length);
+    bt.cB(arrayOfByte);
     AppMethodBeat.o(133119);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.w.a
  * JD-Core Version:    0.7.0.1
  */

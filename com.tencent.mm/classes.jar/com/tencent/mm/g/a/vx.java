@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vx
   extends b
 {
-  public a dyN;
+  public a dKr;
   
   public vx()
   {
@@ -15,16 +15,17 @@ public final class vx
   
   private vx(byte paramByte)
   {
-    AppMethodBeat.i(94818);
-    this.dyN = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(118479);
+    this.dKr = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(94818);
+    AppMethodBeat.o(118479);
   }
   
   public static final class a
   {
-    public long fe = 0L;
+    public boolean dKs = false;
+    public long dKt = 0L;
   }
 }
 

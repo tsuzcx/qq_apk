@@ -5,7 +5,7 @@ public final class ap
 {
   public ap()
   {
-    this.LVT = 773;
+    this.NQs = 773;
   }
 }
 

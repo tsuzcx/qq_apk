@@ -15,8 +15,8 @@ import java.nio.ByteBuffer;
 public class MMSightRecordView
   extends FrameLayout
 {
-  public static b uJN;
-  public e uJM;
+  public static b vMT;
+  public e vMS;
   
   public MMSightRecordView(Context paramContext)
   {
@@ -30,8 +30,8 @@ public class MMSightRecordView
   {
     super(paramContext);
     AppMethodBeat.i(148791);
-    this.uJM = uJN.aRZ();
-    this.uJM.a(paramContext, this, paramSurfaceTexture, paramInt1, paramInt2);
+    this.vMS = vMT.aVl();
+    this.vMS.a(paramContext, this, paramSurfaceTexture, paramInt1, paramInt2);
     AppMethodBeat.o(148791);
   }
   
@@ -54,36 +54,36 @@ public class MMSightRecordView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(148792);
-    this.uJM = uJN.aRZ();
-    this.uJM.b(paramContext, this);
+    this.vMS = vMT.aVl();
+    this.vMS.b(paramContext, this);
     AppMethodBeat.o(148792);
   }
   
-  public final void a(MMSightRecordView.g paramg, boolean paramBoolean)
+  public final void a(g paramg, boolean paramBoolean)
   {
     AppMethodBeat.i(148802);
-    this.uJM.a(paramg, paramBoolean);
+    this.vMS.a(paramg, paramBoolean);
     AppMethodBeat.o(148802);
   }
   
-  public final void a(MMSightRecordView.h paramh)
+  public final void a(h paramh)
   {
     AppMethodBeat.i(148801);
-    this.uJM.a(paramh);
+    this.vMS.a(paramh);
     AppMethodBeat.o(148801);
   }
   
-  public final void a(ByteBuffer paramByteBuffer, MMSightRecordView.f paramf)
+  public final void a(ByteBuffer paramByteBuffer, f paramf)
   {
     AppMethodBeat.i(148819);
-    this.uJM.a(paramByteBuffer, paramf);
+    this.vMS.a(paramByteBuffer, paramf);
     AppMethodBeat.o(148819);
   }
   
   public int getCameraRotation()
   {
     AppMethodBeat.i(148809);
-    int i = this.uJM.getCameraRotation();
+    int i = this.vMS.getCameraRotation();
     AppMethodBeat.o(148809);
     return i;
   }
@@ -91,7 +91,7 @@ public class MMSightRecordView
   public Bitmap getCurrentFramePicture()
   {
     AppMethodBeat.i(148818);
-    Bitmap localBitmap = this.uJM.getCurrentFramePicture();
+    Bitmap localBitmap = this.vMS.getCurrentFramePicture();
     AppMethodBeat.o(148818);
     return localBitmap;
   }
@@ -99,7 +99,7 @@ public class MMSightRecordView
   public Point getDrawSizePoint()
   {
     AppMethodBeat.i(148807);
-    Point localPoint = this.uJM.getDrawSizePoint();
+    Point localPoint = this.vMS.getDrawSizePoint();
     AppMethodBeat.o(148807);
     return localPoint;
   }
@@ -107,7 +107,7 @@ public class MMSightRecordView
   public int getFlashMode()
   {
     AppMethodBeat.i(148813);
-    int i = this.uJM.getFlashMode();
+    int i = this.vMS.getFlashMode();
     AppMethodBeat.o(148813);
     return i;
   }
@@ -115,7 +115,7 @@ public class MMSightRecordView
   public Point getPictureSize()
   {
     AppMethodBeat.i(148804);
-    Point localPoint = this.uJM.getPictureSize();
+    Point localPoint = this.vMS.getPictureSize();
     AppMethodBeat.o(148804);
     return localPoint;
   }
@@ -123,7 +123,7 @@ public class MMSightRecordView
   public Point getPreviewSize()
   {
     AppMethodBeat.i(148806);
-    Point localPoint = this.uJM.getPreviewSize();
+    Point localPoint = this.vMS.getPreviewSize();
     AppMethodBeat.o(148806);
     return localPoint;
   }
@@ -131,7 +131,7 @@ public class MMSightRecordView
   public float[] getSupportZoomMultiple()
   {
     AppMethodBeat.i(148815);
-    float[] arrayOfFloat = this.uJM.getSupportZoomMultiple();
+    float[] arrayOfFloat = this.vMS.getSupportZoomMultiple();
     AppMethodBeat.o(148815);
     return arrayOfFloat;
   }
@@ -139,7 +139,7 @@ public class MMSightRecordView
   public String getVideoFilePath()
   {
     AppMethodBeat.i(148800);
-    String str = this.uJM.getVideoFilePath();
+    String str = this.vMS.getVideoFilePath();
     AppMethodBeat.o(148800);
     return str;
   }
@@ -147,7 +147,7 @@ public class MMSightRecordView
   public Point getVideoSize()
   {
     AppMethodBeat.i(148805);
-    Point localPoint = this.uJM.getVideoSize();
+    Point localPoint = this.vMS.getVideoSize();
     AppMethodBeat.o(148805);
     return localPoint;
   }
@@ -155,123 +155,138 @@ public class MMSightRecordView
   public void setClipPictureSize(boolean paramBoolean)
   {
     AppMethodBeat.i(148811);
-    this.uJM.setClipPictureSize(paramBoolean);
+    this.vMS.setClipPictureSize(paramBoolean);
     AppMethodBeat.o(148811);
   }
   
   public void setClipVideoSize(boolean paramBoolean)
   {
     AppMethodBeat.i(148810);
-    this.uJM.setClipVideoSize(paramBoolean);
+    this.vMS.setClipVideoSize(paramBoolean);
     AppMethodBeat.o(148810);
   }
   
   public void setDisplayRatio(float paramFloat)
   {
     AppMethodBeat.i(148795);
-    this.uJM.setDisplayRatio(paramFloat);
+    this.vMS.setDisplayRatio(paramFloat);
     AppMethodBeat.o(148795);
   }
   
   public void setDisplayScreenSize(Size paramSize)
   {
-    AppMethodBeat.i(206230);
-    this.uJM.setDisplayScreenSize(paramSize);
-    AppMethodBeat.o(206230);
+    AppMethodBeat.i(219237);
+    this.vMS.setDisplayScreenSize(paramSize);
+    AppMethodBeat.o(219237);
   }
   
   public void setEnableDragZoom(boolean paramBoolean)
   {
     AppMethodBeat.i(148814);
-    this.uJM.setEnableDragZoom(paramBoolean);
+    this.vMS.setEnableDragZoom(paramBoolean);
     AppMethodBeat.o(148814);
   }
   
   public void setEnableTouchFocus(boolean paramBoolean)
   {
     AppMethodBeat.i(148816);
-    this.uJM.setEnableTouchFocus(paramBoolean);
+    this.vMS.setEnableTouchFocus(paramBoolean);
     AppMethodBeat.o(148816);
   }
   
   public void setFlashMode(int paramInt)
   {
     AppMethodBeat.i(148812);
-    this.uJM.setFlashMode(paramInt);
+    this.vMS.setFlashMode(paramInt);
     AppMethodBeat.o(148812);
   }
   
-  public void setFrameDataCallback(MMSightRecordView.a parama)
+  public void setFrameDataCallback(a parama)
   {
     AppMethodBeat.i(148808);
-    this.uJM.setFrameDataCallback(parama);
+    this.vMS.setFrameDataCallback(parama);
     AppMethodBeat.o(148808);
   }
   
-  public void setInitDoneCallback(MMSightRecordView.c paramc)
+  public void setInitDoneCallback(c paramc)
   {
     AppMethodBeat.i(148794);
-    this.uJM.setInitDoneCallback(paramc);
+    this.vMS.setInitDoneCallback(paramc);
     AppMethodBeat.o(148794);
   }
   
-  public void setInitErrorCallback(MMSightRecordView.d paramd)
+  public void setInitErrorCallback(d paramd)
   {
     AppMethodBeat.i(148793);
-    this.uJM.setInitErrorCallback(paramd);
+    this.vMS.setInitErrorCallback(paramd);
     AppMethodBeat.o(148793);
   }
   
   public void setPreviewMode(int paramInt)
   {
     AppMethodBeat.i(148797);
-    this.uJM.setPreviewMode(paramInt);
+    this.vMS.setPreviewMode(paramInt);
     AppMethodBeat.o(148797);
   }
   
   public void setPreviewSizeLimit(int paramInt)
   {
     AppMethodBeat.i(148796);
-    this.uJM.setPreviewSizeLimit(paramInt);
+    this.vMS.setPreviewSizeLimit(paramInt);
     AppMethodBeat.o(148796);
   }
   
   public void setRGBSizeLimit(int paramInt)
   {
     AppMethodBeat.i(148817);
-    this.uJM.setRGBSizeLimit(paramInt);
+    this.vMS.setRGBSizeLimit(paramInt);
     AppMethodBeat.o(148817);
   }
   
   public void setUseBackCamera(boolean paramBoolean)
   {
     AppMethodBeat.i(148803);
-    this.uJM.setUseBackCamera(paramBoolean);
+    this.vMS.setUseBackCamera(paramBoolean);
     AppMethodBeat.o(148803);
   }
   
   public void setVideoFilePath(String paramString)
   {
     AppMethodBeat.i(148799);
-    this.uJM.setVideoFilePath(paramString);
+    this.vMS.setVideoFilePath(paramString);
     AppMethodBeat.o(148799);
   }
   
   public final void setVideoPara$2e715812(int paramInt)
   {
     AppMethodBeat.i(148798);
-    this.uJM.setVideoPara$2e715812(paramInt);
+    this.vMS.setVideoPara$2e715812(paramInt);
     AppMethodBeat.o(148798);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void s(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   }
   
   public static abstract interface b
   {
-    public abstract MMSightRecordView.e aRZ();
+    public abstract MMSightRecordView.e aVl();
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void bjS();
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void bjR();
   }
   
   public static abstract class e
   {
-    public abstract boolean Og();
+    public abstract boolean PP();
     
     public abstract void a(Context paramContext, ViewGroup paramViewGroup, SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2);
     
@@ -281,13 +296,13 @@ public class MMSightRecordView
     
     public abstract void a(ByteBuffer paramByteBuffer, MMSightRecordView.f paramf);
     
-    public abstract void aSa();
+    public abstract void aVm();
     
-    public abstract void aSf();
+    public abstract void aVr();
     
-    public abstract void aSg();
+    public abstract void aVs();
     
-    public abstract boolean aq(float paramFloat);
+    public abstract boolean at(float paramFloat);
     
     public abstract void b(Context paramContext, ViewGroup paramViewGroup);
     
@@ -349,10 +364,27 @@ public class MMSightRecordView
     
     public abstract void switchCamera();
   }
+  
+  public static abstract interface f
+  {
+    public abstract void bjV();
+  }
+  
+  public static abstract interface g
+  {
+    public abstract void N(Bitmap paramBitmap);
+    
+    public abstract void bjU();
+  }
+  
+  public static abstract interface h
+  {
+    public abstract void gw(boolean paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.api.MMSightRecordView
  * JD-Core Version:    0.7.0.1
  */

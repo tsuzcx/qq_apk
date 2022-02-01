@@ -1,28 +1,30 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
-import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.service.c;
+import d.l;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiMarkScene;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandSyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "Companion", "plugin-appbrand-integration_release"})
 public final class bf
-  extends a<q>
+  extends y<c>
 {
-  public static final int CTRL_INDEX = 59;
-  public static final String NAME = "openCard";
-  final int jYY;
+  public static final int CTRL_INDEX = 651;
+  public static final String NAME = "markScene";
+  public static final a ktf;
   
-  public bf()
+  static
   {
-    AppMethodBeat.i(174756);
-    this.jYY = com.tencent.luggage.sdk.g.a.aA(this);
-    AppMethodBeat.o(174756);
+    AppMethodBeat.i(50405);
+    ktf = new a((byte)0);
+    AppMethodBeat.o(50405);
   }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiMarkScene$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bf
  * JD-Core Version:    0.7.0.1
  */

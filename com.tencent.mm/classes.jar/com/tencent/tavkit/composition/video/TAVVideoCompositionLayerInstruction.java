@@ -27,20 +27,20 @@ public class TAVVideoCompositionLayerInstruction
   public TAVVideoCompositionLayerInstruction(int paramInt, TAVTransitionableVideo paramTAVTransitionableVideo)
   {
     this(paramInt, paramTAVTransitionableVideo.getVideoConfiguration(), paramTAVTransitionableVideo);
-    AppMethodBeat.i(192131);
+    AppMethodBeat.i(219933);
     setTimeRange(paramTAVTransitionableVideo.getTimeRange());
     setTransition(paramTAVTransitionableVideo.getVideoTransition());
-    AppMethodBeat.o(192131);
+    AppMethodBeat.o(219933);
   }
   
   public TAVVideoCompositionLayerInstruction(int paramInt, TAVVideoConfiguration paramTAVVideoConfiguration, TAVVideoCompositionTrack paramTAVVideoCompositionTrack)
   {
-    AppMethodBeat.i(192130);
+    AppMethodBeat.i(219932);
     this.trackID = paramInt;
     this.videoConfiguration = paramTAVVideoConfiguration;
     this.imageSource = paramTAVVideoCompositionTrack;
     this.preferredTransform = new Matrix();
-    AppMethodBeat.o(192130);
+    AppMethodBeat.o(219932);
   }
   
   public Bitmap applySourceImage(Bitmap paramBitmap, CMTime paramCMTime, CGSize paramCGSize)
@@ -115,15 +115,15 @@ public class TAVVideoCompositionLayerInstruction
   
   public String toString()
   {
-    AppMethodBeat.i(192132);
+    AppMethodBeat.i(219934);
     String str = "TAVVideoCompositionLayerInstruction{trackID=" + this.trackID + ", timeRange=" + this.timeRange.toSimpleString() + ", preferredTransform=" + this.preferredTransform + ", imageSource=" + this.imageSource + ", transition=" + this.transition + ", videoConfiguration=" + this.videoConfiguration + '}';
-    AppMethodBeat.o(192132);
+    AppMethodBeat.o(219934);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.composition.video.TAVVideoCompositionLayerInstruction
  * JD-Core Version:    0.7.0.1
  */

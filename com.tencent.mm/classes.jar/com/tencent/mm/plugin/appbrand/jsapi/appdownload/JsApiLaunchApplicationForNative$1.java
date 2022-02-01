@@ -10,18 +10,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.c;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.c;
 import com.tencent.mm.b.g;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.protocal.protobuf.bmd;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.bqn;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.List;
 
 final class JsApiLaunchApplicationForNative$1
@@ -32,7 +32,7 @@ final class JsApiLaunchApplicationForNative$1
   public final void a(final int paramInt1, final int paramInt2, String paramString, final b paramb)
   {
     AppMethodBeat.i(45838);
-    ac.i("MicroMsg.JsApiLaunchApplicationForNative", "on RunCgi callback errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ad.i("MicroMsg.JsApiLaunchApplicationForNative", "on RunCgi callback errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     com.tencent.mm.ci.a.post(new Runnable()
     {
       public final void run()
@@ -40,20 +40,20 @@ final class JsApiLaunchApplicationForNative$1
         AppMethodBeat.i(45837);
         if ((paramInt1 != 0) || (paramInt2 != 0))
         {
-          JsApiLaunchApplicationForNative.1.this.bZx.h(JsApiLaunchApplicationForNative.1.this.bZy, JsApiLaunchApplicationForNative.1.this.kbj.e("fail:check fail", null));
+          JsApiLaunchApplicationForNative.1.this.cjP.h(JsApiLaunchApplicationForNative.1.this.cjQ, JsApiLaunchApplicationForNative.1.this.kvF.e("fail:check fail", null));
           AppMethodBeat.o(45837);
           return;
         }
-        final bmd localbmd = (bmd)paramb.hvs.hvw;
-        switch (localbmd.dfm)
+        final bqn localbqn = (bqn)paramb.hNL.hNQ;
+        switch (localbqn.dqI)
         {
         case 1: 
         default: 
-          JsApiLaunchApplicationForNative.1.this.bZx.h(JsApiLaunchApplicationForNative.1.this.bZy, JsApiLaunchApplicationForNative.1.this.kbj.e("fail:check fail 1", null));
+          JsApiLaunchApplicationForNative.1.this.cjP.h(JsApiLaunchApplicationForNative.1.this.cjQ, JsApiLaunchApplicationForNative.1.this.kvF.e("fail:check fail 1", null));
           AppMethodBeat.o(45837);
           return;
         case 2: 
-          JsApiLaunchApplicationForNative.1.this.bZx.h(JsApiLaunchApplicationForNative.1.this.bZy, JsApiLaunchApplicationForNative.1.this.kbj.e("fail:check fail forbidden scene 2", null));
+          JsApiLaunchApplicationForNative.1.this.cjP.h(JsApiLaunchApplicationForNative.1.this.cjQ, JsApiLaunchApplicationForNative.1.this.kvF.e("fail:check fail forbidden scene 2", null));
           AppMethodBeat.o(45837);
           return;
         }
@@ -62,37 +62,37 @@ final class JsApiLaunchApplicationForNative$1
           public final void u(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2)
           {
             AppMethodBeat.i(45834);
-            ac.i("MicroMsg.JsApiLaunchApplicationForNative", "onLaunchAppCallback(launchRet : %s, launchSuccess : %s)", new Object[] { Boolean.valueOf(paramAnonymous2Boolean1), Boolean.valueOf(paramAnonymous2Boolean2) });
+            ad.i("MicroMsg.JsApiLaunchApplicationForNative", "onLaunchAppCallback(launchRet : %s, launchSuccess : %s)", new Object[] { Boolean.valueOf(paramAnonymous2Boolean1), Boolean.valueOf(paramAnonymous2Boolean2) });
             if (paramAnonymous2Boolean1)
             {
-              JsApiLaunchApplicationForNative.1.this.bZx.h(JsApiLaunchApplicationForNative.1.this.bZy, JsApiLaunchApplicationForNative.1.this.kbj.e("ok", null));
+              JsApiLaunchApplicationForNative.1.this.cjP.h(JsApiLaunchApplicationForNative.1.this.cjQ, JsApiLaunchApplicationForNative.1.this.kvF.e("ok", null));
               AppMethodBeat.o(45834);
               return;
             }
-            JsApiLaunchApplicationForNative.1.this.bZx.h(JsApiLaunchApplicationForNative.1.this.bZy, JsApiLaunchApplicationForNative.1.this.kbj.e("fail:scheme launch fail", null));
+            JsApiLaunchApplicationForNative.1.this.cjP.h(JsApiLaunchApplicationForNative.1.this.cjQ, JsApiLaunchApplicationForNative.1.this.kvF.e("fail:scheme launch fail", null));
             AppMethodBeat.o(45834);
           }
         });
-        ac.i("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication check result(showType : %d, errCode : %d)", new Object[] { Integer.valueOf(localbmd.tfk), Integer.valueOf(localbmd.dfm) });
+        ad.i("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication check result(showType : %d, errCode : %d)", new Object[] { Integer.valueOf(localbqn.uda), Integer.valueOf(localbqn.dqI) });
         Object localObject2;
         Object localObject1;
-        if (!bs.isNullOrNil(JsApiLaunchApplicationForNative.1.this.jXU))
+        if (!bt.isNullOrNil(JsApiLaunchApplicationForNative.1.this.ksq))
         {
-          localObject2 = new Intent("android.intent.action.VIEW", Uri.parse(JsApiLaunchApplicationForNative.1.this.jXU));
+          localObject2 = new Intent("android.intent.action.VIEW", Uri.parse(JsApiLaunchApplicationForNative.1.this.ksq));
           ((Intent)localObject2).addFlags(268435456);
-          localObject1 = bs.aa(JsApiLaunchApplicationForNative.1.this.bZx.getContext(), (Intent)localObject2);
+          localObject1 = bt.ac(JsApiLaunchApplicationForNative.1.this.cjP.getContext(), (Intent)localObject2);
           if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
           {
             if ((TextUtils.isEmpty(((Intent)localObject2).getPackage())) && (((List)localObject1).size() == 1)) {}
-            for (localObject1 = h.b((ResolveInfo)((List)localObject1).get(0)); !bs.nullAsNil(ai.getPackageName()).equals(localObject1); localObject1 = ((Intent)localObject2).getPackage())
+            for (localObject1 = h.b((ResolveInfo)((List)localObject1).get(0)); !bt.nullAsNil(aj.getPackageName()).equals(localObject1); localObject1 = ((Intent)localObject2).getPackage())
             {
-              ap.f(new Runnable()
+              aq.f(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(45835);
-                  boolean bool = h.a(JsApiLaunchApplicationForNative.1.this.bZx.getContext(), this.val$intent, null, localbmd.tfk, locala, JsApiLaunchApplicationForNative.1.this.jXV);
-                  locala.gj(bool);
+                  boolean bool = h.a(JsApiLaunchApplicationForNative.1.this.cjP.getContext(), this.val$intent, null, localbqn.uda, locala, JsApiLaunchApplicationForNative.1.this.ksr);
+                  locala.go(bool);
                   AppMethodBeat.o(45835);
                 }
               });
@@ -101,66 +101,66 @@ final class JsApiLaunchApplicationForNative$1
             }
           }
         }
-        if ((!bs.isNullOrNil(JsApiLaunchApplicationForNative.1.this.JS)) && (!bs.isNullOrNil(JsApiLaunchApplicationForNative.1.this.jXW)))
+        if ((!bt.isNullOrNil(JsApiLaunchApplicationForNative.1.this.LI)) && (!bt.isNullOrNil(JsApiLaunchApplicationForNative.1.this.kss)))
         {
-          localObject1 = com.tencent.mm.pluginsdk.model.app.q.bK(JsApiLaunchApplicationForNative.1.this.bZx.au(Activity.class), JsApiLaunchApplicationForNative.1.this.JS);
+          localObject1 = com.tencent.mm.pluginsdk.model.app.q.bO(JsApiLaunchApplicationForNative.1.this.cjP.au(Activity.class), JsApiLaunchApplicationForNative.1.this.LI);
           if ((localObject1 != null) && (localObject1[0] != null))
           {
             localObject1 = g.getMessageDigest(localObject1[0].toByteArray());
-            if ((localObject1 == null) || (!((String)localObject1).equalsIgnoreCase(JsApiLaunchApplicationForNative.1.this.jXW))) {
+            if ((localObject1 == null) || (!((String)localObject1).equalsIgnoreCase(JsApiLaunchApplicationForNative.1.this.kss))) {
               break label669;
             }
             try
             {
-              localObject1 = ai.getContext().getPackageManager().getLaunchIntentForPackage(JsApiLaunchApplicationForNative.1.this.JS);
+              localObject1 = aj.getContext().getPackageManager().getLaunchIntentForPackage(JsApiLaunchApplicationForNative.1.this.LI);
               if (localObject1 != null)
               {
                 localObject2 = new Bundle();
-                com.tencent.mm.pluginsdk.model.app.q.k((Bundle)localObject2, JsApiLaunchApplicationForNative.1.this.jXX);
+                com.tencent.mm.pluginsdk.model.app.q.j((Bundle)localObject2, JsApiLaunchApplicationForNative.1.this.kst);
                 ((Intent)localObject1).putExtras((Bundle)localObject2);
                 ((Intent)localObject1).addFlags(268435456);
-                locala.gj(h.a(JsApiLaunchApplicationForNative.1.this.bZx.au(Activity.class), (Intent)localObject1, null, locala, JsApiLaunchApplicationForNative.1.this.jXV));
+                locala.go(h.a(JsApiLaunchApplicationForNative.1.this.cjP.au(Activity.class), (Intent)localObject1, null, locala, JsApiLaunchApplicationForNative.1.this.ksr));
                 AppMethodBeat.o(45837);
                 return;
               }
             }
             catch (Exception localException)
             {
-              ac.e("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication getLaunchIntentForPackage, %s", new Object[] { localException.getMessage() });
+              ad.e("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication getLaunchIntentForPackage, %s", new Object[] { localException.getMessage() });
             }
           }
         }
         for (;;)
         {
-          final JsApiLaunchApplicationForNative.LaunchApplicationTask localLaunchApplicationTask = new JsApiLaunchApplicationForNative.LaunchApplicationTask(com.tencent.mm.sdk.f.a.jg(JsApiLaunchApplicationForNative.1.this.bZx.getRuntime().mContext));
-          localLaunchApplicationTask.appId = JsApiLaunchApplicationForNative.1.this.jib;
-          localLaunchApplicationTask.jYf = JsApiLaunchApplicationForNative.1.this.jXX;
-          localLaunchApplicationTask.extInfo = JsApiLaunchApplicationForNative.1.this.jXY;
-          localLaunchApplicationTask.dcb = JsApiLaunchApplicationForNative.1.this.jXV;
-          localLaunchApplicationTask.cZX = localbmd.tfk;
-          localLaunchApplicationTask.jWP = new Runnable()
+          final JsApiLaunchApplicationForNative.LaunchApplicationTask localLaunchApplicationTask = new JsApiLaunchApplicationForNative.LaunchApplicationTask(com.tencent.mm.sdk.f.a.jq(JsApiLaunchApplicationForNative.1.this.cjP.getRuntime().mContext));
+          localLaunchApplicationTask.appId = JsApiLaunchApplicationForNative.1.this.jBr;
+          localLaunchApplicationTask.ksB = JsApiLaunchApplicationForNative.1.this.kst;
+          localLaunchApplicationTask.extInfo = JsApiLaunchApplicationForNative.1.this.ksu;
+          localLaunchApplicationTask.dnx = JsApiLaunchApplicationForNative.1.this.ksr;
+          localLaunchApplicationTask.dlp = localbqn.uda;
+          localLaunchApplicationTask.krg = new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(45836);
-              ac.i("MicroMsg.JsApiLaunchApplicationForNative", "callback task.success:%b", new Object[] { Boolean.valueOf(localLaunchApplicationTask.success) });
-              localLaunchApplicationTask.bek();
+              ad.i("MicroMsg.JsApiLaunchApplicationForNative", "callback task.success:%b", new Object[] { Boolean.valueOf(localLaunchApplicationTask.success) });
+              localLaunchApplicationTask.bhO();
               if (!localLaunchApplicationTask.success)
               {
-                JsApiLaunchApplicationForNative.1.this.bZx.h(JsApiLaunchApplicationForNative.1.this.bZy, JsApiLaunchApplicationForNative.1.this.kbj.e("fail:sdk launch fail", null));
+                JsApiLaunchApplicationForNative.1.this.cjP.h(JsApiLaunchApplicationForNative.1.this.cjQ, JsApiLaunchApplicationForNative.1.this.kvF.e("fail:sdk launch fail", null));
                 AppMethodBeat.o(45836);
                 return;
               }
-              JsApiLaunchApplicationForNative.1.this.bZx.h(JsApiLaunchApplicationForNative.1.this.bZy, JsApiLaunchApplicationForNative.1.this.kbj.e("ok", null));
+              JsApiLaunchApplicationForNative.1.this.cjP.h(JsApiLaunchApplicationForNative.1.this.cjQ, JsApiLaunchApplicationForNative.1.this.kvF.e("ok", null));
               AppMethodBeat.o(45836);
             }
           };
-          localLaunchApplicationTask.bej();
-          localLaunchApplicationTask.bei();
+          localLaunchApplicationTask.bhN();
+          localLaunchApplicationTask.bhM();
           AppMethodBeat.o(45837);
           return;
           label669:
-          ac.i("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication signature not match");
+          ad.i("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication signature not match");
         }
       }
     });
@@ -169,7 +169,7 @@ final class JsApiLaunchApplicationForNative$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.appdownload.JsApiLaunchApplicationForNative.1
  * JD-Core Version:    0.7.0.1
  */

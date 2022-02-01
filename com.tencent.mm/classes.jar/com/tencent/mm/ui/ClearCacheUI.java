@@ -6,11 +6,11 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bw;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.a.bz;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.vfs.i;
 
@@ -52,7 +52,7 @@ public class ClearCacheUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.ClearCacheUI
  * JD-Core Version:    0.7.0.1
  */

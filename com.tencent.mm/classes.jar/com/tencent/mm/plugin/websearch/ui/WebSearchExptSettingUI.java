@@ -1,134 +1,66 @@
 package com.tencent.mm.plugin.websearch.ui;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.pluginsdk.g.e.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.ui.base.preference.CheckBoxPreference;
+import com.tencent.mm.protocal.protobuf.ahq;
+import com.tencent.mm.protocal.protobuf.ahr;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.util.c;
+import d.g.b.p;
+import d.l;
+import java.util.Iterator;
 
-public class WebSearchExptSettingUI
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/websearch/ui/WebSearchExptSettingUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "getResourceId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "plugin-websearch_release"})
+public final class WebSearchExptSettingUI
   extends MMPreference
 {
-  private CheckBoxPreference Cap;
-  private CheckBoxPreference Caq;
-  private CheckBoxPreference GZT;
-  private CheckBoxPreference GZU;
-  private CheckBoxPreference GZV;
-  
-  private static void a(CheckBoxPreference paramCheckBoxPreference, int paramInt1, int paramInt2)
-  {
-    if ((paramInt2 & paramInt1) > 0)
-    {
-      paramCheckBoxPreference.mF = true;
-      return;
-    }
-    paramCheckBoxPreference.mF = false;
-  }
-  
-  public int getResourceId()
+  public final int getResourceId()
   {
     return 2131951766;
   }
   
-  public void onCreate(Bundle paramBundle)
+  public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(116565);
     super.onCreate(paramBundle);
     setMMTitle(2131758652);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
+    paramBundle = c.LgD;
+    paramBundle = c.fNH().Gfg;
+    p.g(paramBundle, "ExptSettingLogic.exptSettingConfig.groups");
+    paramBundle = ((Iterable)paramBundle).iterator();
+    while (paramBundle.hasNext())
     {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(116564);
-        WebSearchExptSettingUI.this.finish();
-        AppMethodBeat.o(116564);
-        return false;
-      }
-    });
-    this.Cap = ((CheckBoxPreference)getPreferenceScreen().aPN("expt_total_flag"));
-    this.Caq = ((CheckBoxPreference)getPreferenceScreen().aPN("expt_open_tp_player_flag"));
-    this.GZT = ((CheckBoxPreference)getPreferenceScreen().aPN("expt_close_preload_flag"));
-    this.GZU = ((CheckBoxPreference)getPreferenceScreen().aPN("expt_reset_template_flag"));
-    this.GZV = ((CheckBoxPreference)getPreferenceScreen().aPN("expt_apply_local_template"));
-    int i = g.agR().agA().getInt(ah.a.GWl, 0);
-    a(this.Cap, 1, i);
-    a(this.Caq, 2, i);
-    a(this.GZT, 4, i);
-    a(this.GZU, 8, i);
-    a(this.GZV, 16, i);
+      ahr localahr = (ahr)paramBundle.next();
+      Preference localPreference = new Preference((Context)this);
+      localPreference.setKey(localahr.key);
+      localPreference.setTitle((CharSequence)localahr.title);
+      getPreferenceScreen().b(localPreference);
+    }
     AppMethodBeat.o(116565);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public final boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(116566);
-    int k = g.agR().agA().getInt(ah.a.GWl, 0);
-    int i;
-    int j;
-    if (paramPreference.mKey.equals("expt_total_flag"))
+    if (paramPreference != null)
     {
-      i = 1;
-      j = 0;
+      paramf = new Intent((Context)this, WebSearchExptSubSettingUI.class);
+      paramf.putExtra("groupKey", paramPreference.getKey());
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahp(), "com/tencent/mm/plugin/websearch/ui/WebSearchExptSettingUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.mq(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/ui/WebSearchExptSettingUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
-    for (;;)
-    {
-      if ((paramPreference instanceof CheckBoxPreference))
-      {
-        if (!((CheckBoxPreference)paramPreference).isChecked()) {
-          break label214;
-        }
-        i |= k;
-      }
-      for (;;)
-      {
-        ac.i("MicroMsg.WebSearch.WebSearchExptSettingUI", "set flag %d", new Object[] { Integer.valueOf(i) });
-        g.agR().agA().set(ah.a.GWl, Integer.valueOf(i));
-        g.agR().agA().faa();
-        if ((j != 0) && (com.tencent.mm.pluginsdk.g.e.DjW != null)) {
-          com.tencent.mm.pluginsdk.g.e.DjW.bz(getContext());
-        }
-        AppMethodBeat.o(116566);
-        return false;
-        if (paramPreference.mKey.equals("expt_open_tp_player_flag"))
-        {
-          i = 2;
-          j = 1;
-          break;
-        }
-        if (paramPreference.mKey.equals("expt_close_preload_flag"))
-        {
-          i = 4;
-          j = 1;
-          break;
-        }
-        if (paramPreference.mKey.equals("expt_reset_template_flag"))
-        {
-          i = 8;
-          j = 1;
-          break;
-        }
-        if (!paramPreference.mKey.equals("expt_apply_local_template")) {
-          break label224;
-        }
-        i = 16;
-        j = 1;
-        break;
-        label214:
-        i = (i ^ 0xFFFFFFFF) & k;
-      }
-      label224:
-      i = 0;
-      j = 0;
-    }
+    AppMethodBeat.o(116566);
+    return true;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -136,10 +68,25 @@ public class WebSearchExptSettingUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  static final class a
+    implements MenuItem.OnMenuItemClickListener
+  {
+    a(WebSearchExptSettingUI paramWebSearchExptSettingUI) {}
+    
+    public final boolean onMenuItemClick(MenuItem paramMenuItem)
+    {
+      AppMethodBeat.i(220003);
+      this.DDk.finish();
+      AppMethodBeat.o(220003);
+      return false;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.ui.WebSearchExptSettingUI
  * JD-Core Version:    0.7.0.1
  */

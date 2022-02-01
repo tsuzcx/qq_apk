@@ -10,29 +10,29 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.o;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/util/SubscribeMsgTemplateViewHelper;", "", "()V", "createTemplateItemView", "Landroid/view/View;", "context", "Landroid/content/Context;", "index", "", "size", "key", "", "value", "topMargin", "createTemplateView", "keyWordList", "Ljava/util/ArrayList;", "Lkotlin/Pair;", "Lkotlin/collections/ArrayList;", "wxbiz-msgsubscription-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/util/SubscribeMsgTemplateViewHelper;", "", "()V", "createTemplateItemView", "Landroid/view/View;", "context", "Landroid/content/Context;", "index", "", "size", "key", "", "value", "topMargin", "createTemplateView", "keyWordList", "Ljava/util/ArrayList;", "Lkotlin/Pair;", "Lkotlin/collections/ArrayList;", "wxbiz-msgsubscription-sdk_release"})
 public final class b
 {
-  public static final b ikN;
+  public static final b iEe;
   
   static
   {
     AppMethodBeat.i(149818);
-    ikN = new b();
+    iEe = new b();
     AppMethodBeat.o(149818);
   }
   
   public static View a(Context paramContext, ArrayList<o<String, String>> paramArrayList, int paramInt)
   {
     AppMethodBeat.i(149816);
-    k.h(paramContext, "context");
-    k.h(paramArrayList, "keyWordList");
+    p.h(paramContext, "context");
+    p.h(paramArrayList, "keyWordList");
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setOrientation(1);
     localLinearLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
@@ -42,7 +42,7 @@ public final class b
     {
       Object localObject1 = localIterator.next();
       if (i < 0) {
-        j.fOc();
+        j.gfB();
       }
       localObject1 = (o)localObject1;
       Object localObject2 = (String)((o)localObject1).first;
@@ -50,10 +50,10 @@ public final class b
       int j = paramArrayList.size();
       localObject1 = LayoutInflater.from(paramContext).inflate(2131495730, null, false);
       View localView = ((View)localObject1).findViewById(2131301248);
-      k.g(localView, "templateItem.findViewById<TextView>(R.id.key)");
+      p.g(localView, "templateItem.findViewById<TextView>(R.id.key)");
       ((TextView)localView).setText((CharSequence)localObject2);
       localObject2 = ((View)localObject1).findViewById(2131306263);
-      k.g(localObject2, "templateItem.findViewById<TextView>(R.id.value)");
+      p.g(localObject2, "templateItem.findViewById<TextView>(R.id.value)");
       ((TextView)localObject2).setText((CharSequence)str);
       localObject2 = new LinearLayout.LayoutParams(-1, -2);
       if (i != j - 1) {
@@ -62,7 +62,7 @@ public final class b
       if (i == 0) {
         ((LinearLayout.LayoutParams)localObject2).topMargin = paramInt;
       }
-      k.g(localObject1, "templateItem");
+      p.g(localObject1, "templateItem");
       ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       localLinearLayout.addView((View)localObject1);
       i += 1;

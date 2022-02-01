@@ -1,11 +1,6 @@
 package com.tencent.mm.plugin.sns.ui.widget.ad;
 
-import android.view.View;
-
-public abstract interface ScrollableLayout$a
-{
-  public abstract boolean eH(View paramView);
-}
+public abstract interface ScrollableLayout$a {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

@@ -10,13 +10,13 @@ public class MsgQuoteItem
 {
   public static final Parcelable.Creator<MsgQuoteItem> CREATOR;
   public String content;
-  public String eul;
+  public String eLs;
   public int type;
-  public long uVU;
-  public String uVV;
-  public String uVW;
-  public String uVX;
-  public String uVY;
+  public long vZc;
+  public String vZd;
+  public String vZe;
+  public String vZf;
+  public String vZg;
   
   static
   {
@@ -31,13 +31,13 @@ public class MsgQuoteItem
   {
     AppMethodBeat.i(117602);
     this.type = paramParcel.readInt();
-    this.uVU = paramParcel.readLong();
-    this.uVV = paramParcel.readString();
-    this.uVW = paramParcel.readString();
-    this.uVX = paramParcel.readString();
-    this.uVY = paramParcel.readString();
+    this.vZc = paramParcel.readLong();
+    this.vZd = paramParcel.readString();
+    this.vZe = paramParcel.readString();
+    this.vZf = paramParcel.readString();
+    this.vZg = paramParcel.readString();
     this.content = paramParcel.readString();
-    this.eul = paramParcel.readString();
+    this.eLs = paramParcel.readString();
     AppMethodBeat.o(117602);
   }
   
@@ -49,7 +49,7 @@ public class MsgQuoteItem
   public String toString()
   {
     AppMethodBeat.i(117600);
-    String str = "MsgQuoteItem{type=" + this.type + ", svrid=" + this.uVU + ", fromusr='" + this.uVV + '\'' + ", chatuser='" + this.uVW + '\'' + ", displayname='" + this.uVX + '\'' + ", msgsource='" + this.uVY + '\'' + ", content='" + this.content + '\'' + ", msgSource='" + this.eul + '\'' + '}';
+    String str = "MsgQuoteItem{type=" + this.type + ", svrid=" + this.vZc + ", fromusr='" + this.vZd + '\'' + ", chatuser='" + this.vZe + '\'' + ", displayname='" + this.vZf + '\'' + ", msgsource='" + this.vZg + '\'' + ", content='" + this.content + '\'' + ", msgSource='" + this.eLs + '\'' + '}';
     AppMethodBeat.o(117600);
     return str;
   }
@@ -58,19 +58,19 @@ public class MsgQuoteItem
   {
     AppMethodBeat.i(117601);
     paramParcel.writeInt(this.type);
-    paramParcel.writeLong(this.uVU);
-    paramParcel.writeString(this.uVV);
-    paramParcel.writeString(this.uVW);
-    paramParcel.writeString(this.uVX);
-    paramParcel.writeString(this.uVY);
+    paramParcel.writeLong(this.vZc);
+    paramParcel.writeString(this.vZd);
+    paramParcel.writeString(this.vZe);
+    paramParcel.writeString(this.vZf);
+    paramParcel.writeString(this.vZg);
     paramParcel.writeString(this.content);
-    paramParcel.writeString(this.eul);
+    paramParcel.writeString(this.eLs);
     AppMethodBeat.o(117601);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.msgquote.model.MsgQuoteItem
  * JD-Core Version:    0.7.0.1
  */

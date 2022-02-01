@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.view;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/view/BaseScanMaskView$Companion;", "", "()V", "ALPHA_ANIMATION_DURATION", "", "SUCCESS_MARK_VIEW_ANIMATION_DURATION", "TAG", "", "scan-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/view/BaseScanMaskView$Companion;", "", "()V", "ALPHA_ANIMATION_DURATION", "", "SUCCESS_MARK_VIEW_ANIMATION_DURATION", "TAG", "", "scan-sdk_release"})
 public final class BaseScanMaskView$a {}
 
 

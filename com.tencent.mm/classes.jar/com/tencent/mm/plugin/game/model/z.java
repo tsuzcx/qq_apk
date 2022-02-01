@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.api.e;
-import com.tencent.mm.plugin.game.d.ba;
-import com.tencent.mm.plugin.game.d.br;
-import com.tencent.mm.plugin.game.d.bs;
-import com.tencent.mm.plugin.game.d.bt;
+import com.tencent.mm.plugin.game.api.f;
+import com.tencent.mm.plugin.game.d.bd;
 import com.tencent.mm.plugin.game.d.bv;
-import com.tencent.mm.plugin.game.d.bw;
-import com.tencent.mm.plugin.game.d.bz;
+import com.tencent.mm.plugin.game.d.bx;
+import com.tencent.mm.plugin.game.d.by;
+import com.tencent.mm.plugin.game.d.ca;
+import com.tencent.mm.plugin.game.d.cb;
 import com.tencent.mm.plugin.game.d.cf;
 import com.tencent.mm.plugin.game.d.cl;
-import com.tencent.mm.plugin.game.d.cw;
+import com.tencent.mm.plugin.game.d.cs;
+import com.tencent.mm.plugin.game.d.de;
 import com.tencent.mm.plugin.game.f.d;
 import com.tencent.mm.plugin.game.ui.GameMediaList.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -24,30 +24,30 @@ import java.util.LinkedList;
 public final class z
   extends x
 {
-  private boolean sZv;
-  public ba tfG;
-  public c tfH;
-  public aa tfI;
+  private boolean tXm;
+  public bd udw;
+  public c udx;
+  public aa udy;
   
   public z(a parama)
   {
     AppMethodBeat.i(41525);
     if (parama == null)
     {
-      this.tfG = new ba();
+      this.udw = new bd();
       AppMethodBeat.o(41525);
       return;
     }
-    this.tfG = ((ba)parama);
-    this.sZv = false;
-    WJ();
+    this.udw = ((bd)parama);
+    this.tXm = false;
+    Zd();
     AppMethodBeat.o(41525);
   }
   
   public z(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41526);
-    this.tfG = new ba();
+    this.udw = new bd();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(41526);
@@ -55,9 +55,9 @@ public final class z
     }
     try
     {
-      this.tfG.parseFrom(paramArrayOfByte);
-      this.sZv = true;
-      WJ();
+      this.udw.parseFrom(paramArrayOfByte);
+      this.tXm = true;
+      Zd();
       AppMethodBeat.o(41526);
       return;
     }
@@ -65,93 +65,93 @@ public final class z
     {
       for (;;)
       {
-        ac.e("MicroMsg.GamePBDataDetail", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
+        ad.e("MicroMsg.GamePBDataDetail", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
       }
     }
   }
   
-  private void WJ()
+  private void Zd()
   {
     AppMethodBeat.i(41527);
-    this.tfH = cQF();
-    if (this.sZv)
+    this.udx = cZl();
+    if (this.tXm)
     {
-      this.tfI = new aa(this.tfH.field_appId);
-      if (!this.sZv)
+      this.udy = new aa(this.udx.field_appId);
+      if (!this.tXm)
       {
-        d.c(this.tfH);
-        ((e)g.ab(e.class)).cOn().b(this.tfH.field_appId, this.tfG);
+        d.c(this.udx);
+        ((f)g.ab(f.class)).cWI().b(this.udx.field_appId, this.udw);
       }
       AppMethodBeat.o(41527);
       return;
     }
-    String str = this.tfH.field_appId;
-    if (this.tfG.tjS != null) {}
-    for (LinkedList localLinkedList = this.tfG.tjS.tlr;; localLinkedList = null)
+    String str = this.udx.field_appId;
+    if (this.udw.uhU != null) {}
+    for (LinkedList localLinkedList = this.udw.uhU.ujA;; localLinkedList = null)
     {
-      this.tfI = new aa(str, localLinkedList);
+      this.udy = new aa(str, localLinkedList);
       break;
     }
   }
   
-  private c cQF()
+  private c cZl()
   {
     AppMethodBeat.i(41528);
-    c localc = a(this.tfG.thi);
+    c localc = a(this.udw.ueZ);
     if (localc != null)
     {
       localc.scene = 12;
-      localc.dtF = 1201;
+      localc.dFG = 1201;
     }
     AppMethodBeat.o(41528);
     return localc;
   }
   
-  public final String cQG()
+  public final String cZm()
   {
-    if (this.tfG.tjW != null) {
-      return this.tfG.tjW.title;
+    if (this.udw.uhY != null) {
+      return this.udw.uhY.title;
     }
-    if (this.tfG.tjR != null) {
-      return this.tfG.tjR.Title;
+    if (this.udw.uhT != null) {
+      return this.udw.uhT.Title;
     }
     return null;
   }
   
-  public final LinkedList<b> cQH()
+  public final LinkedList<b> cZn()
   {
     AppMethodBeat.i(41529);
     LinkedList localLinkedList;
     Iterator localIterator;
     Object localObject;
     b localb;
-    if ((this.tfG.tjW != null) && (this.tfG.tjW.nYu != null))
+    if ((this.udw.uhY != null) && (this.udw.uhY.oBO != null))
     {
       localLinkedList = new LinkedList();
-      localIterator = this.tfG.tjW.nYu.iterator();
+      localIterator = this.udw.uhY.oBO.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (bz)localIterator.next();
+        localObject = (cf)localIterator.next();
         localb = new b();
-        localb.drM = ((bz)localObject).drM;
-        localb.desc = ((bz)localObject).desc;
+        localb.dDH = ((cf)localObject).dDH;
+        localb.desc = ((cf)localObject).desc;
         localLinkedList.add(localb);
       }
       AppMethodBeat.o(41529);
       return localLinkedList;
     }
-    if ((this.tfG.tjR != null) && (this.tfG.tjR.tkD != null))
+    if ((this.udw.uhT != null) && (this.udw.uhT.uiJ != null))
     {
       localLinkedList = new LinkedList();
-      localIterator = this.tfG.tjR.tkD.iterator();
+      localIterator = this.udw.uhT.uiJ.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (bt)localIterator.next();
+        localObject = (by)localIterator.next();
         localb = new b();
-        localb.drM = ((bt)localObject).tkG;
-        localb.title = ((bt)localObject).Title;
-        localb.desc = ((bt)localObject).tiv;
-        localb.url = ((bt)localObject).thk;
+        localb.dDH = ((by)localObject).uiM;
+        localb.title = ((by)localObject).Title;
+        localb.desc = ((by)localObject).ugo;
+        localb.url = ((by)localObject).ufb;
         localLinkedList.add(localb);
       }
       AppMethodBeat.o(41529);
@@ -161,63 +161,63 @@ public final class z
     return null;
   }
   
-  public final int cQI()
+  public final int cZo()
   {
-    if (this.tfG.tjW != null) {
+    if (this.udw.uhY != null) {
       return 2;
     }
     return 1;
   }
   
-  public final String cQJ()
+  public final String cZp()
   {
-    if ((this.tfG.tjP == null) || (this.tfG.tjP.Title == null)) {
+    if ((this.udw.uhR == null) || (this.udw.uhR.Title == null)) {
       return null;
     }
-    return this.tfG.tjP.Title;
+    return this.udw.uhR.Title;
   }
   
-  public final String cQK()
+  public final String cZq()
   {
-    if ((this.tfG.tjP == null) || (this.tfG.tjP.tiv == null)) {
+    if ((this.udw.uhR == null) || (this.udw.uhR.ugo == null)) {
       return null;
     }
-    return this.tfG.tjP.tiv;
+    return this.udw.uhR.ugo;
   }
   
-  public final String cQL()
+  public final String cZr()
   {
-    if (this.tfG.tjQ == null) {
+    if (this.udw.uhS == null) {
       return null;
     }
-    return this.tfG.tjQ.Title;
+    return this.udw.uhS.Title;
   }
   
-  public final LinkedList<bw> cQM()
+  public final LinkedList<cb> cZs()
   {
-    if (this.tfG.tjQ == null) {
+    if (this.udw.uhS == null) {
       return null;
     }
-    return this.tfG.tjQ.tkI;
+    return this.udw.uhS.uiO;
   }
   
   public final LinkedList<GameMediaList.a> getMediaList()
   {
     AppMethodBeat.i(41530);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.tfG.tjP == null) || (this.tfG.tjP.sVR == null))
+    if ((this.udw.uhR == null) || (this.udw.uhR.tSw == null))
     {
       AppMethodBeat.o(41530);
       return localLinkedList;
     }
-    Iterator localIterator = this.tfG.tjP.sVR.iterator();
+    Iterator localIterator = this.udw.uhR.tSw.iterator();
     while (localIterator.hasNext())
     {
-      cl localcl = (cl)localIterator.next();
+      cs localcs = (cs)localIterator.next();
       GameMediaList.a locala = new GameMediaList.a();
-      locala.type = localcl.sVK;
-      locala.tsB = localcl.tlc;
-      locala.url = localcl.tld;
+      locala.type = localcs.tSp;
+      locala.uqY = localcs.ujl;
+      locala.url = localcs.ujm;
       localLinkedList.add(locala);
     }
     AppMethodBeat.o(41530);
@@ -233,15 +233,15 @@ public final class z
   
   public static final class b
   {
+    public String dDH;
     public String desc;
-    public String drM;
     public String title;
     public String url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.z
  * JD-Core Version:    0.7.0.1
  */

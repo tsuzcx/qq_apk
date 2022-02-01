@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.sync;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"TAG", "", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"TAG", "", "plugin-emojisdk_release"})
 public final class e
 {
   private static final String TAG = "MicroMsg.EmojiSyncManager";

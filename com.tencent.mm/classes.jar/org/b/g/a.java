@@ -5,32 +5,32 @@ import java.util.Arrays;
 
 public final class a
 {
-  private static final char[] MbG;
-  private static final int[] MbH;
+  private static final char[] NWI;
+  private static final int[] NWJ;
   
   static
   {
     AppMethodBeat.i(40575);
-    MbG = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+    NWI = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
     int[] arrayOfInt = new int[256];
-    MbH = arrayOfInt;
+    NWJ = arrayOfInt;
     Arrays.fill(arrayOfInt, -1);
-    int j = MbG.length;
+    int j = NWI.length;
     int i = 0;
     for (;;)
     {
       if (i >= j)
       {
-        MbH[61] = 0;
+        NWJ[61] = 0;
         AppMethodBeat.o(40575);
         return;
       }
-      MbH[MbG[i]] = i;
+      NWJ[NWI[i]] = i;
       i += 1;
     }
   }
   
-  public static final char[] dm(byte[] paramArrayOfByte)
+  public static final char[] dt(byte[] paramArrayOfByte)
   {
     int i1 = 0;
     if (paramArrayOfByte != null) {}
@@ -55,15 +55,15 @@ public final class a
           j = (paramArrayOfByte[(m - 1)] & 0xFF) << 2;
         }
         j |= (n & 0xFF) << 10;
-        arrayOfChar[(i5 - 4)] = MbG[(j >> 12)];
-        arrayOfChar[(i5 - 3)] = MbG[(j >>> 6 & 0x3F)];
+        arrayOfChar[(i5 - 4)] = NWI[(j >> 12)];
+        arrayOfChar[(i5 - 3)] = NWI[(j >>> 6 & 0x3F)];
         if (k != 2) {
           break label409;
         }
       }
     }
     label409:
-    for (int i = MbG[(j & 0x3F)];; i = 61)
+    for (int i = NWI[(j & 0x3F)];; i = 61)
     {
       arrayOfChar[(i5 - 2)] = i;
       arrayOfChar[(i5 - 1)] = '=';
@@ -75,13 +75,13 @@ public final class a
       i2 = i3 + 1;
       n = (i4 & 0xFF) << 8 | (n & 0xFF) << 16 | paramArrayOfByte[i3] & 0xFF;
       i3 = k + 1;
-      arrayOfChar[k] = MbG[(n >>> 18 & 0x3F)];
+      arrayOfChar[k] = NWI[(n >>> 18 & 0x3F)];
       k = i3 + 1;
-      arrayOfChar[i3] = MbG[(n >>> 12 & 0x3F)];
+      arrayOfChar[i3] = NWI[(n >>> 12 & 0x3F)];
       i4 = k + 1;
-      arrayOfChar[k] = MbG[(n >>> 6 & 0x3F)];
+      arrayOfChar[k] = NWI[(n >>> 6 & 0x3F)];
       i3 = i4 + 1;
-      arrayOfChar[i4] = MbG[(n & 0x3F)];
+      arrayOfChar[i4] = NWI[(n & 0x3F)];
       i4 = j + 1;
       j = i4;
       k = i3;

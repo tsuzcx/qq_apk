@@ -7,10 +7,10 @@ public enum l
   static
   {
     AppMethodBeat.i(12213);
-    bJk = new l("FORCE_NONE", 0);
-    bJl = new l("FORCE_SQUARE", 1);
-    bJm = new l("FORCE_RECTANGLE", 2);
-    bJn = new l[] { bJk, bJl, bJm };
+    bTx = new l("FORCE_NONE", 0);
+    bTy = new l("FORCE_SQUARE", 1);
+    bTz = new l("FORCE_RECTANGLE", 2);
+    bTA = new l[] { bTx, bTy, bTz };
     AppMethodBeat.o(12213);
   }
   

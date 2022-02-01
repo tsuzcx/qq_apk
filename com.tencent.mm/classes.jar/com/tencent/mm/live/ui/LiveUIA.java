@@ -24,46 +24,46 @@ import com.tencent.mm.live.b.g;
 import com.tencent.mm.live.b.g.a;
 import com.tencent.mm.live.c.b.c;
 import com.tencent.mm.live.view.BaseLivePluginLayout;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.tools.h;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 import org.xwalk.core.XWalkEnvironment;
 
 @a(35)
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/ui/LiveUIA;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "uiRouter", "Lcom/tencent/mm/live/controller/LiveUIRouter;", "addKeyBoardListener", "", "getForceOrientation", "", "getLayoutId", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "onPause", "onResume", "onStart", "onStop", "setWindowStyle", "Companion", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/ui/LiveUIA;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "uiRouter", "Lcom/tencent/mm/live/controller/LiveUIRouter;", "addKeyBoardListener", "", "getForceOrientation", "", "getLayoutId", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "onPause", "onResume", "onStart", "onStop", "setWindowStyle", "Companion", "plugin-logic_release"})
 public class LiveUIA
   extends MMActivity
 {
-  public static final LiveUIA.a gEC;
-  private b gEB;
+  public static final LiveUIA.a gYm;
+  private b gYl;
   
   static
   {
-    AppMethodBeat.i(190497);
-    gEC = new LiveUIA.a((byte)0);
-    AppMethodBeat.o(190497);
+    AppMethodBeat.i(212787);
+    gYm = new LiveUIA.a((byte)0);
+    AppMethodBeat.o(212787);
   }
   
   public int getForceOrientation()
   {
-    AppMethodBeat.i(190492);
-    Object localObject = g.guG;
-    if (g.akV().guH)
+    AppMethodBeat.i(212782);
+    Object localObject = g.gOr;
+    if (g.anI().gOs)
     {
       localObject = getIntent();
       if ((localObject != null) && (((Intent)localObject).getBooleanExtra("key_is_live_finished", false) == true))
       {
-        AppMethodBeat.o(190492);
+        AppMethodBeat.o(212782);
         return 1;
       }
-      AppMethodBeat.o(190492);
+      AppMethodBeat.o(212782);
       return 14;
     }
-    AppMethodBeat.o(190492);
+    AppMethodBeat.o(212782);
     return 1;
   }
   
@@ -74,50 +74,50 @@ public class LiveUIA
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(190491);
-    ac.i("MicroMsg.LiveUI", "onActivityResult (" + hashCode() + ')');
+    AppMethodBeat.i(212781);
+    ad.i("MicroMsg.LiveUI", "onActivityResult (" + hashCode() + ')');
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    Object localObject = this.gEB;
+    Object localObject = this.gYl;
     if (localObject != null)
     {
-      ac.i(((b)localObject).TAG, "onActivityResult " + ((b)localObject).gmY);
-      localObject = ((b)localObject).gmY;
+      ad.i(((b)localObject).TAG, "onActivityResult " + ((b)localObject).gGH);
+      localObject = ((b)localObject).gGH;
       if (localObject != null)
       {
         ((BaseLivePluginLayout)localObject).onActivityResult(paramInt1, paramInt2, paramIntent);
-        AppMethodBeat.o(190491);
+        AppMethodBeat.o(212781);
         return;
       }
-      AppMethodBeat.o(190491);
+      AppMethodBeat.o(212781);
       return;
     }
-    AppMethodBeat.o(190491);
+    AppMethodBeat.o(212781);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(190495);
-    Object localObject = this.gEB;
+    AppMethodBeat.i(212785);
+    Object localObject = this.gYl;
     if (localObject != null)
     {
-      localObject = ((b)localObject).gmY;
+      localObject = ((b)localObject).gGH;
       if (localObject != null) {}
-      for (boolean bool = ((BaseLivePluginLayout)localObject).alO();; bool = false)
+      for (boolean bool = ((BaseLivePluginLayout)localObject).aoB();; bool = false)
       {
         if (!bool) {
           super.onBackPressed();
         }
-        AppMethodBeat.o(190495);
+        AppMethodBeat.o(212785);
         return;
       }
     }
-    AppMethodBeat.o(190495);
+    AppMethodBeat.o(212785);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(190487);
-    ac.i("MicroMsg.LiveUI", "onCreate (" + hashCode() + ')');
+    AppMethodBeat.i(212777);
+    ad.i("MicroMsg.LiveUI", "onCreate (" + hashCode() + ')');
     super.onCreate(paramBundle);
     paramBundle = getSupportActionBar();
     if (paramBundle != null) {
@@ -130,22 +130,22 @@ public class LiveUIA
     {
       getWindow().clearFlags(67108864);
       paramBundle = getWindow();
-      k.g(paramBundle, "window");
+      p.g(paramBundle, "window");
       paramBundle = paramBundle.getDecorView();
-      k.g(paramBundle, "window.decorView");
+      p.g(paramBundle, "window.decorView");
       paramBundle.setSystemUiVisibility(1792);
       getWindow().addFlags(-2147483648);
       paramBundle = getWindow();
-      k.g(paramBundle, "window");
+      p.g(paramBundle, "window");
       paramBundle.setStatusBarColor(0);
       paramBundle = getWindow();
-      k.g(paramBundle, "window");
+      p.g(paramBundle, "window");
       paramBundle.setNavigationBarColor(0);
     }
     getWindow().setFormat(-3);
     getWindow().setSoftInputMode(51);
     paramBundle = findViewById(2131307813);
-    k.g(paramBundle, "findViewById(R.id.live_ui_root)");
+    p.g(paramBundle, "findViewById(R.id.live_ui_root)");
     Object localObject1 = (FrameLayout)paramBundle;
     paramBundle = (LiveConfig)getIntent().getParcelableExtra("KEY_PARAMS_CONFIG");
     boolean bool = getIntent().getBooleanExtra("key_is_live_finished", false);
@@ -153,34 +153,34 @@ public class LiveUIA
     if (localObject1 == null)
     {
       paramBundle = new v("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(190487);
+      AppMethodBeat.o(212777);
       throw paramBundle;
     }
-    this.gEB = new b((Context)localObject2, (ViewGroup)localObject1, paramBundle, bool);
-    localObject1 = this.gEB;
+    this.gYl = new b((Context)localObject2, (ViewGroup)localObject1, paramBundle, bool);
+    localObject1 = this.gYl;
     if (localObject1 != null)
     {
       localObject2 = ((b)localObject1).context.getSystemService("phone");
       if (localObject2 == null)
       {
         paramBundle = new v("null cannot be cast to non-null type android.telephony.TelephonyManager");
-        AppMethodBeat.o(190487);
+        AppMethodBeat.o(212777);
         throw paramBundle;
       }
-      ((TelephonyManager)localObject2).listen(((b)localObject1).gna, 32);
+      ((TelephonyManager)localObject2).listen(((b)localObject1).gGJ, 32);
     }
-    localObject1 = g.guG;
+    localObject1 = g.gOr;
     int i;
     if (paramBundle != null)
     {
       i = paramBundle.getFromScene();
-      g.ne(i);
+      g.nD(i);
       if (paramBundle == null) {
         break label393;
       }
-      paramBundle = Integer.valueOf(paramBundle.aii());
+      paramBundle = Integer.valueOf(paramBundle.akU());
       label364:
-      i = LiveConfig.gmI;
+      i = LiveConfig.gGr;
       if (paramBundle != null) {
         break label398;
       }
@@ -189,148 +189,148 @@ public class LiveUIA
     label398:
     while (paramBundle.intValue() != i)
     {
-      i = LiveConfig.gmJ;
+      i = LiveConfig.gGs;
       if (paramBundle != null) {
         break label439;
       }
-      AppMethodBeat.o(190487);
+      AppMethodBeat.o(212777);
       return;
-      i = LiveConfig.gmN;
+      i = LiveConfig.gGw;
       break;
       paramBundle = null;
       break label364;
     }
-    paramBundle = this.gEB;
+    paramBundle = this.gYl;
     if (paramBundle != null)
     {
-      localObject1 = f.j.gtQ;
-      paramBundle.mz(f.j.aky());
-      AppMethodBeat.o(190487);
+      localObject1 = f.j.gNB;
+      paramBundle.mY(f.j.ank());
+      AppMethodBeat.o(212777);
       return;
     }
-    AppMethodBeat.o(190487);
+    AppMethodBeat.o(212777);
     return;
     label439:
     if (paramBundle.intValue() == i)
     {
-      paramBundle = this.gEB;
+      paramBundle = this.gYl;
       if (paramBundle != null)
       {
-        localObject1 = f.j.gtQ;
-        paramBundle.mz(f.j.akz());
-        AppMethodBeat.o(190487);
+        localObject1 = f.j.gNB;
+        paramBundle.mY(f.j.anl());
+        AppMethodBeat.o(212777);
         return;
       }
     }
-    AppMethodBeat.o(190487);
+    AppMethodBeat.o(212777);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(190494);
-    ac.i("MicroMsg.LiveUI", "onDestroy (" + hashCode() + ')');
+    AppMethodBeat.i(212784);
+    ad.i("MicroMsg.LiveUI", "onDestroy (" + hashCode() + ')');
     super.onDestroy();
-    b localb = this.gEB;
+    b localb = this.gYl;
     if (localb != null)
     {
       localb.onDestroy();
-      AppMethodBeat.o(190494);
+      AppMethodBeat.o(212784);
       return;
     }
-    AppMethodBeat.o(190494);
+    AppMethodBeat.o(212784);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(190496);
-    ac.i("MicroMsg.LiveUI", "onNewIntent (" + hashCode() + ')');
+    AppMethodBeat.i(212786);
+    ad.i("MicroMsg.LiveUI", "onNewIntent (" + hashCode() + ')');
     super.onNewIntent(paramIntent);
     if (paramIntent != null)
     {
       if (paramIntent.getBooleanExtra("route_to_maximize", false) != true) {
         break label103;
       }
-      paramIntent = this.gEB;
+      paramIntent = this.gYl;
       if (paramIntent == null) {
         break label103;
       }
-      paramIntent = paramIntent.gmY;
+      paramIntent = paramIntent.gGH;
       if (paramIntent != null)
       {
-        com.tencent.mm.live.c.b.b.a(paramIntent, b.c.gxZ);
-        AppMethodBeat.o(190496);
+        com.tencent.mm.live.c.b.b.a(paramIntent, b.c.gRK);
+        AppMethodBeat.o(212786);
       }
     }
     else
     {
-      AppMethodBeat.o(190496);
+      AppMethodBeat.o(212786);
       return;
     }
-    AppMethodBeat.o(190496);
+    AppMethodBeat.o(212786);
     return;
     label103:
-    AppMethodBeat.o(190496);
+    AppMethodBeat.o(212786);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(190490);
-    ac.i("MicroMsg.LiveUI", "onPause (" + hashCode() + ')');
+    AppMethodBeat.i(212780);
+    ad.i("MicroMsg.LiveUI", "onPause (" + hashCode() + ')');
     super.onPause();
-    Object localObject = this.gEB;
+    Object localObject = this.gYl;
     if (localObject != null)
     {
-      ac.i(((b)localObject).TAG, "onPause " + ((b)localObject).gmY);
-      localObject = ((b)localObject).gmY;
+      ad.i(((b)localObject).TAG, "onPause " + ((b)localObject).gGH);
+      localObject = ((b)localObject).gGH;
       if (localObject != null)
       {
         ((BaseLivePluginLayout)localObject).pause();
-        AppMethodBeat.o(190490);
+        AppMethodBeat.o(212780);
         return;
       }
-      AppMethodBeat.o(190490);
+      AppMethodBeat.o(212780);
       return;
     }
-    AppMethodBeat.o(190490);
+    AppMethodBeat.o(212780);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(190488);
-    ac.i("MicroMsg.LiveUI", "onResume (" + hashCode() + ')');
+    AppMethodBeat.i(212778);
+    ad.i("MicroMsg.LiveUI", "onResume (" + hashCode() + ')');
     super.onResume();
-    b localb = this.gEB;
+    b localb = this.gYl;
     if (localb != null)
     {
-      ac.i(localb.TAG, "onResume " + localb.gmY);
-      BaseLivePluginLayout localBaseLivePluginLayout = localb.gmY;
+      ad.i(localb.TAG, "onResume " + localb.gGH);
+      BaseLivePluginLayout localBaseLivePluginLayout = localb.gGH;
       if (localBaseLivePluginLayout != null) {
         localBaseLivePluginLayout.resume();
       }
-      localBaseLivePluginLayout = localb.gmY;
+      localBaseLivePluginLayout = localb.gGH;
       if (localBaseLivePluginLayout != null)
       {
         localBaseLivePluginLayout.post((Runnable)new com.tencent.mm.live.a.b.b(localb));
-        AppMethodBeat.o(190488);
+        AppMethodBeat.o(212778);
         return;
       }
-      AppMethodBeat.o(190488);
+      AppMethodBeat.o(212778);
       return;
     }
-    AppMethodBeat.o(190488);
+    AppMethodBeat.o(212778);
   }
   
   public void onStart()
   {
     boolean bool = true;
-    AppMethodBeat.i(190489);
-    ac.i("MicroMsg.LiveUI", "onStart (" + hashCode() + ')');
+    AppMethodBeat.i(212779);
+    ad.i("MicroMsg.LiveUI", "onStart (" + hashCode() + ')');
     super.onStart();
-    Object localObject1 = this.gEB;
+    Object localObject1 = this.gYl;
     if (localObject1 != null)
     {
-      ac.i(((b)localObject1).TAG, "onStart " + ((b)localObject1).gmY);
-      Object localObject2 = ((b)localObject1).gmY;
+      ad.i(((b)localObject1).TAG, "onStart " + ((b)localObject1).gGH);
+      Object localObject2 = ((b)localObject1).gGH;
       if (localObject2 != null) {
         if ((Settings.System.getInt(XWalkEnvironment.getContentResolver(), "accelerometer_rotation") != 1) || (!((b)localObject1).sp.getBoolean("settings_landscape_mode", false))) {
           break label164;
@@ -338,51 +338,51 @@ public class LiveUIA
       }
       for (;;)
       {
-        ((BaseLivePluginLayout)localObject2).dU(bool);
-        localObject2 = ((b)localObject1).gmV;
-        ((b.a)localObject2).gne.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, (ContentObserver)localObject2);
-        localObject1 = ((b)localObject1).gmY;
+        ((BaseLivePluginLayout)localObject2).dW(bool);
+        localObject2 = ((b)localObject1).gGE;
+        ((b.a)localObject2).gGN.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, (ContentObserver)localObject2);
+        localObject1 = ((b)localObject1).gGH;
         if (localObject1 == null) {
           break;
         }
         ((BaseLivePluginLayout)localObject1).start();
-        AppMethodBeat.o(190489);
+        AppMethodBeat.o(212779);
         return;
         label164:
         bool = false;
       }
-      AppMethodBeat.o(190489);
+      AppMethodBeat.o(212779);
       return;
     }
-    AppMethodBeat.o(190489);
+    AppMethodBeat.o(212779);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(190493);
-    ac.i("MicroMsg.LiveUI", "onStop (" + hashCode() + ')');
+    AppMethodBeat.i(212783);
+    ad.i("MicroMsg.LiveUI", "onStop (" + hashCode() + ')');
     super.onStop();
-    Object localObject1 = this.gEB;
+    Object localObject1 = this.gYl;
     if (localObject1 != null)
     {
-      ac.i(((b)localObject1).TAG, "onStop " + ((b)localObject1).gmY);
-      Object localObject2 = ((b)localObject1).gmV;
-      ((b.a)localObject2).gne.unregisterContentObserver((ContentObserver)localObject2);
-      localObject2 = ((b)localObject1).fxG;
+      ad.i(((b)localObject1).TAG, "onStop " + ((b)localObject1).gGH);
+      Object localObject2 = ((b)localObject1).gGE;
+      ((b.a)localObject2).gGN.unregisterContentObserver((ContentObserver)localObject2);
+      localObject2 = ((b)localObject1).fQT;
       if (localObject2 != null) {
         ((h)localObject2).close();
       }
-      localObject1 = ((b)localObject1).gmY;
+      localObject1 = ((b)localObject1).gGH;
       if (localObject1 != null)
       {
         ((BaseLivePluginLayout)localObject1).stop();
-        AppMethodBeat.o(190493);
+        AppMethodBeat.o(212783);
         return;
       }
-      AppMethodBeat.o(190493);
+      AppMethodBeat.o(212783);
       return;
     }
-    AppMethodBeat.o(190493);
+    AppMethodBeat.o(212783);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

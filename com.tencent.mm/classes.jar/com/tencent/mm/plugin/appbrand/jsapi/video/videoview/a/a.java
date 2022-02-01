@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.a.c;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.b;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.c;
 import com.tencent.mm.plugin.appbrand.jsapi.video.videoview.AbstractVideoTextureView;
 
 public final class a
@@ -16,11 +16,11 @@ public final class a
     super(paramContext);
   }
   
-  public final b bla()
+  public final b boL()
   {
-    AppMethodBeat.i(194667);
+    AppMethodBeat.i(206481);
     c localc = new c(new Handler(Looper.getMainLooper()));
-    AppMethodBeat.o(194667);
+    AppMethodBeat.o(206481);
     return localc;
   }
 }

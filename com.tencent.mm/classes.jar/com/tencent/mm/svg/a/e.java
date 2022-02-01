@@ -17,7 +17,7 @@ import android.util.Log;
 import android.util.LongSparseArray;
 import android.util.TypedValue;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.svg.b.b;
 import com.tencent.mm.svg.b.c.a;
 import java.io.InputStream;
@@ -32,49 +32,49 @@ import org.xmlpull.v1.XmlPullParser;
 
 public class e
 {
-  private static Method GjX;
-  private static Method GjY;
-  private static boolean HcT;
-  private static volatile c HcU;
-  private static LongSparseArray<Drawable.ConstantState>[] HcV;
-  private static LongSparseArray<Drawable.ConstantState> HcW;
-  private static e<Drawable.ConstantState> HcX;
-  private static e<Drawable.ConstantState> HcY;
-  private static LongSparseArray<b> HcZ;
-  private static a Hda;
-  protected static Class<d> Hdb;
-  private static volatile boolean Hdc;
-  private static Map<WeakReference<Resources>, Map<Long, Integer>> Hdd;
-  private static boolean Hde;
-  private static ThreadLocal<Boolean> Hdf;
-  private static final boolean Hdg;
-  private static final byte[] Hdh;
-  private static TypedValue Hdi;
-  private static Class<?> cJI;
-  protected static Application cJJ;
+  private static Method HVK;
+  private static Method HVL;
+  private static boolean IQj;
+  private static volatile c IQk;
+  private static LongSparseArray<Drawable.ConstantState>[] IQl;
+  private static LongSparseArray<Drawable.ConstantState> IQm;
+  private static e<Drawable.ConstantState> IQn;
+  private static e<Drawable.ConstantState> IQo;
+  private static LongSparseArray<b> IQp;
+  private static a IQq;
+  protected static Class<d> IQr;
+  private static volatile boolean IQs;
+  private static Map<WeakReference<Resources>, Map<Long, Integer>> IQt;
+  private static boolean IQu;
+  private static ThreadLocal<Boolean> IQv;
+  private static final boolean IQw;
+  private static final byte[] IQx;
+  private static TypedValue IQy;
+  private static Class<?> cUV;
+  protected static Application cUW;
   protected static String sPackageName;
   protected static Resources sResources;
   
   static
   {
     AppMethodBeat.i(148752);
-    HcT = false;
-    cJI = null;
-    Hdc = false;
-    Hdd = new HashMap();
-    Hde = false;
-    Hdf = new ThreadLocal();
-    Hdg = "xiaomi".equalsIgnoreCase(Build.BRAND);
-    Hdh = new byte[0];
-    Hdi = new TypedValue();
-    GjX = null;
-    GjY = null;
+    IQj = false;
+    cUV = null;
+    IQs = false;
+    IQt = new HashMap();
+    IQu = false;
+    IQv = new ThreadLocal();
+    IQw = "xiaomi".equalsIgnoreCase(Build.BRAND);
+    IQx = new byte[0];
+    IQy = new TypedValue();
+    HVK = null;
+    HVL = null;
     AppMethodBeat.o(148752);
   }
   
   public static void Y(Class<?> paramClass)
   {
-    cJI = paramClass;
+    cUV = paramClass;
   }
   
   private static b a(long paramLong, d paramd)
@@ -83,13 +83,13 @@ public class e
     int i;
     try
     {
-      if ((HcZ != null) && (HcZ.indexOfKey(paramLong) >= 0))
+      if ((IQp != null) && (IQp.indexOfKey(paramLong) >= 0))
       {
-        paramd = (b)HcZ.get(paramLong);
+        paramd = (b)IQp.get(paramLong);
         AppMethodBeat.o(148746);
         return paramd;
       }
-      localObject = fdX();
+      localObject = fuf();
       try
       {
         d.b(paramd).getValue(d.a(paramd), (TypedValue)localObject, true);
@@ -101,10 +101,10 @@ public class e
         i = ((TypedValue)localObject).data;
         b((TypedValue)localObject);
         com.tencent.mm.svg.b.c.w("MicroMsg.SVGResourceLoader", "Found a res need justify, %s %s %s", new Object[] { Integer.valueOf(d.a(paramd)), Long.valueOf(paramLong), Integer.valueOf(i) });
-        if (Hda == null) {
-          Hda = new a();
+        if (IQq == null) {
+          IQq = new a();
         }
-        localObject = Hda.a(sResources.getAssets(), paramLong);
+        localObject = IQq.a(sResources.getAssets(), paramLong);
         if (localObject == null)
         {
           AppMethodBeat.o(148746);
@@ -132,19 +132,19 @@ public class e
     return paramd;
     label269:
     Object localObject = ((String)localObject).substring(((String)localObject).lastIndexOf("/") + 1, ((String)localObject).lastIndexOf("."));
-    int j = d.b(paramd).getIdentifier((String)localObject, "raw", cJJ.getPackageName());
+    int j = d.b(paramd).getIdentifier((String)localObject, "raw", cUW.getPackageName());
     if (j == 0)
     {
       com.tencent.mm.svg.b.c.i("MicroMsg.SVGResourceLoader", "Justified SVG failed, %s %s %s", new Object[] { Integer.valueOf(j), Long.valueOf(paramLong), localObject });
       AppMethodBeat.o(148746);
       return null;
     }
-    if (HcZ == null) {
-      HcZ = new LongSparseArray();
+    if (IQp == null) {
+      IQp = new LongSparseArray();
     }
     paramd = new b(new d(j, d.b(paramd), paramLong, i), false);
     com.tencent.mm.svg.b.c.i("MicroMsg.SVGResourceLoader", "Justified SVG done, %s %s %s", new Object[] { Integer.valueOf(j), Long.valueOf(paramLong), localObject });
-    HcZ.put(paramLong, paramd);
+    IQp.put(paramLong, paramd);
     AppMethodBeat.o(148746);
     return paramd;
   }
@@ -153,7 +153,7 @@ public class e
   {
     AppMethodBeat.i(148739);
     d(paramApplication, paramString);
-    if (Hdc)
+    if (IQs)
     {
       com.tencent.mm.svg.b.c.i("MicroMsg.SVGResourceLoader", "svg loaded, skip this time.", new Object[0]);
       AppMethodBeat.o(148739);
@@ -167,7 +167,7 @@ public class e
       {
         com.tencent.mm.svg.b.c.i("MicroMsg.SVGResourceLoader", "SVG initSVGPreloadFallback", new Object[0]);
         l = System.nanoTime();
-        jt(paramApplication);
+        jC(paramApplication);
         try
         {
           d(paramApplication, paramResources);
@@ -183,7 +183,7 @@ public class e
           }
         }
       }
-      Hdc = true;
+      IQs = true;
       AppMethodBeat.o(148739);
       return;
     }
@@ -215,7 +215,7 @@ public class e
             com.tencent.mm.svg.b.c.printErrStackTrace("MicroMsg.SVGResourceLoader", paramApplication, "", new Object[0]);
           }
         }
-        Hdc = true;
+        IQs = true;
         AppMethodBeat.o(148739);
         return;
       }
@@ -224,7 +224,7 @@ public class e
     {
       com.tencent.mm.svg.b.c.i("MicroMsg.SVGResourceLoader", "SVG initSVGPreloadFallback", new Object[0]);
       l = System.nanoTime();
-      jt(paramApplication);
+      jC(paramApplication);
     }
     try
     {
@@ -253,24 +253,24 @@ public class e
       long l;
       if ((paramObject instanceof LongSparseArray[]))
       {
-        HcV = (LongSparseArray[])paramObject;
-        com.tencent.mm.svg.b.c.d("MicroMsg.SVGResourceLoader", "sPreloadDrawable content: %s ", new Object[] { HcV[0] });
+        IQl = (LongSparseArray[])paramObject;
+        com.tencent.mm.svg.b.c.d("MicroMsg.SVGResourceLoader", "sPreloadDrawable content: %s ", new Object[] { IQl[0] });
         i = 0;
-        while (i < HcV[0].size())
+        while (i < IQl[0].size())
         {
-          l = HcV[0].keyAt(i);
-          HcX.put(l, HcV[0].get(l));
+          l = IQl[0].keyAt(i);
+          IQn.put(l, IQl[0].get(l));
           i += 1;
         }
         i = 0;
-        while (i < HcV[1].size())
+        while (i < IQl[1].size())
         {
-          l = HcV[1].keyAt(i);
-          HcY.put(l, HcV[1].get(l));
+          l = IQl[1].keyAt(i);
+          IQo.put(l, IQl[1].get(l));
           i += 1;
         }
-        HcV[0] = HcX;
-        HcV[1] = HcY;
+        IQl[0] = IQn;
+        IQl[1] = IQo;
         AppMethodBeat.o(148742);
         return;
       }
@@ -282,18 +282,18 @@ public class e
         while (i < paramObject.size())
         {
           l = paramObject.keyAt(i);
-          HcX.put(l, paramObject.get(l));
+          IQn.put(l, paramObject.get(l));
           i += 1;
         }
-        paramObject = HcX;
+        paramObject = IQn;
         paramContext.prepare();
-        if (paramContext.bCy == null)
+        if (paramContext.bMM == null)
         {
           paramContext = new NoSuchFieldException();
           AppMethodBeat.o(148742);
           throw paramContext;
         }
-        paramContext.bCy.set(paramContext.obj, paramObject);
+        paramContext.bMM.set(paramContext.obj, paramObject);
         if (paramContext.get() == null) {
           com.tencent.mm.svg.b.c.e("MicroMsg.SVGResourceLoader", "resourcePreloadDrawable is null!! OMG!!", new Object[0]);
         }
@@ -312,7 +312,7 @@ public class e
   {
     AppMethodBeat.i(148735);
     com.tencent.mm.svg.b.c.i("MicroMsg.SVGResourceLoader", "addFilterResources:".concat(String.valueOf(paramResources)), new Object[0]);
-    Iterator localIterator = Hdd.keySet().iterator();
+    Iterator localIterator = IQt.keySet().iterator();
     do
     {
       if (!localIterator.hasNext()) {
@@ -322,7 +322,7 @@ public class e
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        Hdd.put(new WeakReference(paramResources), paramMap);
+        IQt.put(new WeakReference(paramResources), paramMap);
       }
       AppMethodBeat.o(148735);
       return;
@@ -338,10 +338,10 @@ public class e
   
   private static final void b(TypedValue paramTypedValue)
   {
-    synchronized (Hdh)
+    synchronized (IQx)
     {
-      if (Hdi == null) {
-        Hdi = paramTypedValue;
+      if (IQy == null) {
+        IQy = paramTypedValue;
       }
       return;
     }
@@ -373,12 +373,12 @@ public class e
     //   49: invokestatic 300	java/lang/System:nanoTime	()J
     //   52: lstore_2
     //   53: aload_0
-    //   54: putstatic 237	com/tencent/mm/svg/a/e:cJJ	Landroid/app/Application;
+    //   54: putstatic 237	com/tencent/mm/svg/a/e:cUW	Landroid/app/Application;
     //   57: aload 5
-    //   59: putstatic 458	com/tencent/mm/svg/a/e:Hdb	Ljava/lang/Class;
+    //   59: putstatic 458	com/tencent/mm/svg/a/e:IQr	Ljava/lang/Class;
     //   62: aload_1
     //   63: putstatic 196	com/tencent/mm/svg/a/e:sResources	Landroid/content/res/Resources;
-    //   66: getstatic 458	com/tencent/mm/svg/a/e:Hdb	Ljava/lang/Class;
+    //   66: getstatic 458	com/tencent/mm/svg/a/e:IQr	Ljava/lang/Class;
     //   69: astore_1
     //   70: aload_1
     //   71: ifnonnull +38 -> 109
@@ -416,13 +416,13 @@ public class e
     //   140: aload_0
     //   141: getstatic 196	com/tencent/mm/svg/a/e:sResources	Landroid/content/res/Resources;
     //   144: invokestatic 468	com/tencent/mm/svg/a/e:c	(Landroid/app/Application;Landroid/content/res/Resources;)Lcom/tencent/mm/svg/a/e$c;
-    //   147: getfield 477	com/tencent/mm/svg/a/e$c:HcD	Ljava/util/Map;
+    //   147: getfield 477	com/tencent/mm/svg/a/e$c:IPT	Ljava/util/Map;
     //   150: invokeinterface 478 1 0
     //   155: invokestatic 180	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   158: aastore
     //   159: invokestatic 218	com/tencent/mm/svg/b/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   162: iconst_1
-    //   163: putstatic 75	com/tencent/mm/svg/a/e:HcT	Z
+    //   163: putstatic 75	com/tencent/mm/svg/a/e:IQj	Z
     //   166: goto -92 -> 74
     //   169: astore_0
     //   170: ldc 172
@@ -446,7 +446,7 @@ public class e
     //   203: anewarray 4	java/lang/Object
     //   206: invokestatic 209	com/tencent/mm/svg/b/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   209: iconst_0
-    //   210: putstatic 75	com/tencent/mm/svg/a/e:HcT	Z
+    //   210: putstatic 75	com/tencent/mm/svg/a/e:IQj	Z
     //   213: goto -139 -> 74
     //   216: astore_0
     //   217: ldc 172
@@ -516,13 +516,13 @@ public class e
   private static c c(Application paramApplication, Resources paramResources)
   {
     AppMethodBeat.i(148740);
-    if (HcU == null) {}
+    if (IQk == null) {}
     try
     {
-      if (HcU == null) {
-        HcU = new c(a.fdR(), paramApplication, paramResources);
+      if (IQk == null) {
+        IQk = new c(a.ftZ(), paramApplication, paramResources);
       }
-      paramApplication = HcU;
+      paramApplication = IQk;
       AppMethodBeat.o(148740);
       return paramApplication;
     }
@@ -535,7 +535,7 @@ public class e
   private static void d(Application paramApplication, Resources paramResources)
   {
     AppMethodBeat.i(148744);
-    Object localObject = fdW();
+    Object localObject = fue();
     if (localObject == null)
     {
       com.tencent.mm.svg.b.c.e("MicroMsg.SVGResourceLoader", "Raw class is null!", new Object[0]);
@@ -552,21 +552,21 @@ public class e
       {
         int j = localObject[i].getInt(null);
         if (locala.i(paramApplication.getResources(), j)) {
-          paramResources.Ze(j);
+          paramResources.abn(j);
         }
         i += 1;
       }
-      HcT = true;
+      IQj = true;
     }
     catch (IllegalAccessException paramApplication)
     {
-      HcT = false;
+      IQj = false;
       AppMethodBeat.o(148744);
       return;
     }
     catch (IllegalArgumentException paramApplication)
     {
-      HcT = false;
+      IQj = false;
       AppMethodBeat.o(148744);
       return;
     }
@@ -576,17 +576,17 @@ public class e
   public static void d(Application paramApplication, String paramString)
   {
     AppMethodBeat.i(148737);
-    if (Hde)
+    if (IQu)
     {
       com.tencent.mm.svg.b.c.i("MicroMsg.SVGResourceLoader", "svg initiated.", new Object[0]);
       AppMethodBeat.o(148737);
       return;
     }
     sPackageName = paramString;
-    a.ey(paramString);
-    b.ey(paramString);
-    cJJ = paramApplication;
-    jt(paramApplication);
+    a.ft(paramString);
+    b.ft(paramString);
+    cUW = paramApplication;
+    jC(paramApplication);
     AppMethodBeat.o(148737);
   }
   
@@ -598,9 +598,9 @@ public class e
       AppMethodBeat.o(148747);
       return null;
     }
-    Hdf.set(Boolean.TRUE);
+    IQv.set(Boolean.TRUE);
     paramResources = paramResources.getDrawable(paramInt);
-    Hdf.set(Boolean.FALSE);
+    IQv.set(Boolean.FALSE);
     AppMethodBeat.o(148747);
     return paramResources;
   }
@@ -618,14 +618,14 @@ public class e
       if (i != 0) {
         localObject1 = new ColorDrawable(((TypedValue)localObject3).data);
       }
-      if (GjX == null) {}
+      if (HVK == null) {}
       Object localObject2;
       try
       {
         localObject2 = Resources.class.getDeclaredMethod("loadXmlResourceParser", new Class[] { String.class, Integer.TYPE, Integer.TYPE, String.class });
-        GjX = (Method)localObject2;
+        HVK = (Method)localObject2;
         ((Method)localObject2).setAccessible(true);
-        if (GjY == null) {}
+        if (HVL == null) {}
         localObject1 = ((TypedValue)localObject3).string.toString();
       }
       catch (NoSuchMethodException paramResources)
@@ -633,7 +633,7 @@ public class e
         try
         {
           localObject2 = AssetManager.class.getDeclaredMethod("openNonAsset", new Class[] { Integer.TYPE, String.class, Integer.TYPE });
-          GjY = (Method)localObject2;
+          HVL = (Method)localObject2;
           ((Method)localObject2).setAccessible(true);
           localObject2 = localObject1;
           if (localObject1 != null) {
@@ -648,14 +648,14 @@ public class e
         }
         catch (NoSuchMethodException paramResources)
         {
-          ac.printErrStackTrace("MicroMsg.SVGResourceLoader", paramResources, "", new Object[0]);
-          ac.printErrStackTrace("MicroMsg.SVGResourceLoader", paramResources, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.SVGResourceLoader", paramResources, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.SVGResourceLoader", paramResources, "", new Object[0]);
           AppMethodBeat.o(148748);
           return null;
         }
         paramResources = paramResources;
-        ac.printErrStackTrace("MicroMsg.SVGResourceLoader", paramResources, "", new Object[0]);
-        ac.printErrStackTrace("MicroMsg.SVGResourceLoader", paramResources, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.SVGResourceLoader", paramResources, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.SVGResourceLoader", paramResources, "", new Object[0]);
         AppMethodBeat.o(148748);
         return null;
       }
@@ -665,7 +665,7 @@ public class e
       {
         try
         {
-          localObject3 = (XmlResourceParser)GjX.invoke(paramResources, new Object[] { localObject1, Integer.valueOf(paramInt), Integer.valueOf(((TypedValue)localObject3).assetCookie), "drawable" });
+          localObject3 = (XmlResourceParser)HVK.invoke(paramResources, new Object[] { localObject1, Integer.valueOf(paramInt), Integer.valueOf(((TypedValue)localObject3).assetCookie), "drawable" });
           localObject2 = Drawable.createFromXml(paramResources, (XmlPullParser)localObject3);
           ((XmlResourceParser)localObject3).close();
           label354:
@@ -681,7 +681,7 @@ public class e
         }
         try
         {
-          InputStream localInputStream = (InputStream)GjY.invoke(paramResources.getAssets(), new Object[] { Integer.valueOf(((TypedValue)localObject3).assetCookie), localObject1, Integer.valueOf(2) });
+          InputStream localInputStream = (InputStream)HVL.invoke(paramResources.getAssets(), new Object[] { Integer.valueOf(((TypedValue)localObject3).assetCookie), localObject1, Integer.valueOf(2) });
           localObject2 = Drawable.createFromResourceStream(paramResources, (TypedValue)localObject3, localInputStream, (String)localObject1, null);
           localInputStream.close();
         }
@@ -697,13 +697,13 @@ public class e
     }
   }
   
-  private static Class<?> fdW()
+  private static Class<?> fue()
   {
     AppMethodBeat.i(148743);
     Class localClass1;
-    if (cJI != null)
+    if (cUV != null)
     {
-      localClass1 = cJI;
+      localClass1 = cUV;
       AppMethodBeat.o(148743);
       return localClass1;
     }
@@ -718,7 +718,7 @@ public class e
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      Class localClass2 = b.feb();
+      Class localClass2 = b.fuj();
       if (localClass2 != null)
       {
         AppMethodBeat.o(148743);
@@ -729,16 +729,16 @@ public class e
     return null;
   }
   
-  private static final TypedValue fdX()
+  private static final TypedValue fuf()
   {
     TypedValue localTypedValue1 = null;
     AppMethodBeat.i(148745);
-    synchronized (Hdh)
+    synchronized (IQx)
     {
-      if (Hdi != null)
+      if (IQy != null)
       {
-        localTypedValue1 = Hdi;
-        Hdi = null;
+        localTypedValue1 = IQy;
+        IQy = null;
       }
       if (localTypedValue1 == null)
       {
@@ -752,23 +752,23 @@ public class e
   }
   
   @TargetApi(16)
-  private static void jt(Context paramContext)
+  private static void jC(Context paramContext)
   {
     AppMethodBeat.i(148741);
-    if (HcX == null) {
+    if (IQn == null) {
       try
       {
-        HcW = new LongSparseArray();
+        IQm = new LongSparseArray();
         Object localObject = new e();
-        HcX = (e)localObject;
-        ((e)localObject).HcW = HcW;
+        IQn = (e)localObject;
+        ((e)localObject).IQm = IQm;
         localObject = new e();
-        HcY = (e)localObject;
-        ((e)localObject).HcW = HcW;
+        IQo = (e)localObject;
+        ((e)localObject).IQm = IQm;
         if (Build.VERSION.SDK_INT >= 23)
         {
           localObject = new com.tencent.mm.svg.b.a(paramContext.getResources(), "mResourcesImpl");
-          if (((com.tencent.mm.svg.b.a)localObject).Yw()) {
+          if (((com.tencent.mm.svg.b.a)localObject).aaY()) {
             localObject = ((com.tencent.mm.svg.b.a)localObject).get();
           }
         }
@@ -805,8 +805,8 @@ public class e
   
   protected static final class a
   {
-    private Field Hdj;
-    private Method Hdk;
+    private Method IQA;
+    private Field IQz;
     private boolean mInited;
     
     public a()
@@ -821,10 +821,10 @@ public class e
           AppMethodBeat.o(148722);
           return;
         }
-        this.Hdj = AssetManager.class.getDeclaredField("mApkAssets");
-        this.Hdj.setAccessible(true);
-        this.Hdk = Class.forName("android.content.res.ApkAssets").getDeclaredMethod("getStringFromPool", new Class[] { Integer.TYPE });
-        this.Hdk.setAccessible(true);
+        this.IQz = AssetManager.class.getDeclaredField("mApkAssets");
+        this.IQz.setAccessible(true);
+        this.IQA = Class.forName("android.content.res.ApkAssets").getDeclaredMethod("getStringFromPool", new Class[] { Integer.TYPE });
+        this.IQA.setAccessible(true);
         this.mInited = true;
         AppMethodBeat.o(148722);
         return;
@@ -848,8 +848,8 @@ public class e
       int j = (int)(0xFFFFFFFF & paramLong);
       try
       {
-        paramAssetManager = ((Object[])(Object[])this.Hdj.get(paramAssetManager))[(i - 1)];
-        paramAssetManager = (String)this.Hdk.invoke(paramAssetManager, new Object[] { Integer.valueOf(j) });
+        paramAssetManager = ((Object[])(Object[])this.IQz.get(paramAssetManager))[(i - 1)];
+        paramAssetManager = (String)this.IQA.invoke(paramAssetManager, new Object[] { Integer.valueOf(j) });
         AppMethodBeat.o(148723);
         return paramAssetManager;
       }
@@ -864,72 +864,72 @@ public class e
   
   static final class b
   {
-    Drawable.ConstantState Hdl;
-    boolean Hdm;
+    Drawable.ConstantState IQB;
+    boolean IQC;
     
     b(Drawable.ConstantState paramConstantState, boolean paramBoolean)
     {
-      this.Hdl = paramConstantState;
-      this.Hdm = paramBoolean;
+      this.IQB = paramConstantState;
+      this.IQC = paramBoolean;
     }
   }
   
   public static final class c
   {
-    Map<Integer, com.tencent.mm.svg.c> HcD;
-    private TypedValue Hcy;
-    private Application Hdn;
+    private TypedValue IPO;
+    Map<Integer, com.tencent.mm.svg.c> IPT;
+    private Application IQD;
     private Resources mResources;
     
     public c(Map<Integer, com.tencent.mm.svg.c> paramMap, Application paramApplication, Resources paramResources)
     {
       AppMethodBeat.i(148724);
-      this.Hcy = new TypedValue();
-      this.HcD = paramMap;
-      this.Hdn = paramApplication;
+      this.IPO = new TypedValue();
+      this.IPT = paramMap;
+      this.IQD = paramApplication;
       this.mResources = paramResources;
       AppMethodBeat.o(148724);
-    }
-    
-    public final void Ze(int paramInt)
-    {
-      AppMethodBeat.i(148726);
-      e.a(this.Hdn, this.mResources, paramInt, this.Hcy);
-      AppMethodBeat.o(148726);
     }
     
     public final void a(Integer paramInteger, com.tencent.mm.svg.c paramc)
     {
       AppMethodBeat.i(148725);
-      this.HcD.put(paramInteger, paramc);
-      e.a(this.Hdn, this.mResources, paramInteger.intValue(), this.Hcy);
+      this.IPT.put(paramInteger, paramc);
+      e.a(this.IQD, this.mResources, paramInteger.intValue(), this.IPO);
       AppMethodBeat.o(148725);
+    }
+    
+    public final void abn(int paramInt)
+    {
+      AppMethodBeat.i(148726);
+      e.a(this.IQD, this.mResources, paramInt, this.IPO);
+      AppMethodBeat.o(148726);
     }
   }
   
   protected static final class d
     extends Drawable.ConstantState
   {
-    private int Awg;
-    private long Hdo;
-    private int Hdp;
+    private int BVB;
+    private long IQE;
+    private int IQF;
     private Resources mResources;
     
     public d(int paramInt1, Resources paramResources, long paramLong, int paramInt2)
     {
       AppMethodBeat.i(148727);
-      this.Awg = 0;
-      this.Hdo = 0L;
-      this.Hdp = 0;
+      this.BVB = 0;
+      this.IQE = 0L;
+      this.IQF = 0;
       if (paramInt1 == 0)
       {
         com.tencent.mm.svg.b.c.e("MicroMsg.SVGResourceLoader", "SVGConstantState Why this id is %d. TypedValue %s", new Object[] { Integer.valueOf(paramInt1) });
         com.tencent.mm.svg.b.c.i("MicroMsg.SVGResourceLoader", Log.getStackTraceString(new Throwable()), new Object[0]);
       }
-      this.Awg = paramInt1;
+      this.BVB = paramInt1;
       this.mResources = paramResources;
-      this.Hdo = paramLong;
-      this.Hdp = paramInt2;
+      this.IQE = paramLong;
+      this.IQF = paramInt2;
       AppMethodBeat.o(148727);
     }
     
@@ -941,8 +941,8 @@ public class e
     public final Drawable newDrawable()
     {
       AppMethodBeat.i(148728);
-      com.tencent.mm.svg.b.c.i("MicroMsg.SVGResourceLoader", "newDrawable mResources %s %s %s %s", new Object[] { this.mResources, Integer.valueOf(this.Awg), Long.valueOf(this.Hdo), Integer.valueOf(this.Hdp) });
-      Drawable localDrawable = a.g(this.mResources, this.Awg);
+      com.tencent.mm.svg.b.c.i("MicroMsg.SVGResourceLoader", "newDrawable mResources %s %s %s %s", new Object[] { this.mResources, Integer.valueOf(this.BVB), Long.valueOf(this.IQE), Integer.valueOf(this.IQF) });
+      Drawable localDrawable = a.g(this.mResources, this.BVB);
       AppMethodBeat.o(148728);
       return localDrawable;
     }
@@ -955,7 +955,7 @@ public class e
         Map localMap = e.i(paramResources);
         if (localMap != null)
         {
-          int i = ((Integer)localMap.get(Long.valueOf(this.Hdo))).intValue();
+          int i = ((Integer)localMap.get(Long.valueOf(this.IQE))).intValue();
           paramResources = e.f(paramResources, i);
           com.tencent.mm.svg.b.c.i("MicroMsg.SVGResourceLoader", "loadDrawableSkipCache id:" + Integer.toHexString(i) + ",drawable:" + paramResources, new Object[0]);
           AppMethodBeat.o(148729);
@@ -984,8 +984,8 @@ public class e
   public static final class e<T>
     extends LongSparseArray<T>
   {
-    public static boolean Hdq = false;
-    LongSparseArray<T> HcW = null;
+    public static boolean IQG = false;
+    LongSparseArray<T> IQm = null;
     
     public final void clear()
     {
@@ -1006,25 +1006,25 @@ public class e
     public final T get(long paramLong, T paramT)
     {
       AppMethodBeat.i(148731);
-      if ((e.fdY().get() == null) || (!((Boolean)e.fdY().get()).booleanValue())) {}
+      if ((e.fug().get() == null) || (!((Boolean)e.fug().get()).booleanValue())) {}
       label168:
       for (;;)
       {
-        synchronized (this.HcW)
+        synchronized (this.IQm)
         {
-          if (this.HcW.indexOfKey(paramLong) >= 0)
+          if (this.IQm.indexOfKey(paramLong) >= 0)
           {
-            Object localObject = this.HcW.get(paramLong, paramT);
-            if (!e.bhB()) {
+            Object localObject = this.IQm.get(paramLong, paramT);
+            if (!e.bli()) {
               break label168;
             }
             e.b localb = e.b(paramLong, (e.d)localObject);
             if (localb == null) {
               break label168;
             }
-            if (!localb.Hdm)
+            if (!localb.IQC)
             {
-              localObject = localb.Hdl;
+              localObject = localb.IQB;
               if (localObject != null)
               {
                 AppMethodBeat.o(148731);

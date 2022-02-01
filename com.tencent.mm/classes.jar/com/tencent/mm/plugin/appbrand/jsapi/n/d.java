@@ -1,10 +1,4 @@
-package com.tencent.mm.plugin.appbrand.jsapi.n;
-
-public abstract interface d
-{
-  public abstract boolean En();
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.n.d

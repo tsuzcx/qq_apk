@@ -19,7 +19,7 @@ import com.tencent.mm.plugin.luckymoney.model.k;
 import com.tencent.mm.plugin.luckymoney.model.z;
 import com.tencent.mm.plugin.luckymoney.ui.c;
 import com.tencent.mm.plugin.luckymoney.ui.g;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.ui.e;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
@@ -27,22 +27,22 @@ public class WxaLuckyMoneyMoneyInputView
   extends LinearLayout
   implements c
 {
-  private TextWatcher auC;
-  private TextView lfN;
-  private TenpaySecureEditText ugS;
-  private TextView ugT;
-  private View ugU;
-  private g ugV;
-  private j ugW;
-  private double ugX;
-  private double ugY;
-  public h.a ugZ;
+  private TextWatcher awu;
+  private TextView lCL;
+  private TenpaySecureEditText vjC;
+  private TextView vjD;
+  private View vjE;
+  private g vjF;
+  private j vjG;
+  private double vjH;
+  private double vjI;
+  public h.a vjJ;
   
   public WxaLuckyMoneyMoneyInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(64893);
-    this.auC = new TextWatcher()
+    this.awu = new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -51,7 +51,7 @@ public class WxaLuckyMoneyMoneyInputView
         {
           paramAnonymousEditable = WxaLuckyMoneyMoneyInputView.a(WxaLuckyMoneyMoneyInputView.this);
           WxaLuckyMoneyMoneyInputView.this.getInputViewId();
-          paramAnonymousEditable.cYF();
+          paramAnonymousEditable.dhR();
         }
         AppMethodBeat.o(64891);
       }
@@ -60,38 +60,38 @@ public class WxaLuckyMoneyMoneyInputView
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     };
-    a.cYv();
-    this.ugW = a.cYw().cYZ();
+    a.dhH();
+    this.vjG = a.dhI().dil();
     paramContext = LayoutInflater.from(paramContext).inflate(2131496118, this, true);
-    this.ugS = ((TenpaySecureEditText)paramContext.findViewById(2131301810));
-    this.ugS.addTextChangedListener(this.auC);
-    this.lfN = ((TextView)paramContext.findViewById(2131301837));
-    this.ugU = paramContext.findViewById(2131301836);
-    this.ugT = ((TextView)paramContext.findViewById(2131301716));
+    this.vjC = ((TenpaySecureEditText)paramContext.findViewById(2131301810));
+    this.vjC.addTextChangedListener(this.awu);
+    this.lCL = ((TextView)paramContext.findViewById(2131301837));
+    this.vjE = paramContext.findViewById(2131301836);
+    this.vjD = ((TextView)paramContext.findViewById(2131301716));
     AppMethodBeat.o(64893);
   }
   
-  public final String HD(int paramInt)
+  public final String IZ(int paramInt)
   {
     AppMethodBeat.i(64903);
-    a.cYv();
-    this.ugW = a.cYw().cYZ();
+    a.dhH();
+    this.vjG = a.dhI().dil();
     String str;
     if (paramInt == 1)
     {
-      if (this.ugZ == h.a.ugB)
+      if (this.vjJ == h.a.vjl)
       {
-        str = getContext().getString(2131760977, new Object[] { Math.round(this.ugX), bs.bG(this.ugW.ugy, "") });
+        str = getContext().getString(2131760977, new Object[] { Math.round(this.vjH), bt.bI(this.vjG.vji, "") });
         AppMethodBeat.o(64903);
         return str;
       }
-      str = getContext().getString(2131760826, new Object[] { Math.round(this.ugX), bs.bG(this.ugW.ugy, "") });
+      str = getContext().getString(2131760826, new Object[] { Math.round(this.vjH), bt.bI(this.vjG.vji, "") });
       AppMethodBeat.o(64903);
       return str;
     }
     if (paramInt == 2)
     {
-      str = getContext().getString(2131760828, new Object[] { e.C(this.ugY), bs.bG(this.ugW.ugy, "") });
+      str = getContext().getString(2131760828, new Object[] { e.C(this.vjI), bt.bI(this.vjG.vji, "") });
       AppMethodBeat.o(64903);
       return str;
     }
@@ -99,26 +99,26 @@ public class WxaLuckyMoneyMoneyInputView
     return null;
   }
   
-  public final int cYE()
+  public final int dhQ()
   {
     AppMethodBeat.i(64899);
-    if (bs.isNullOrNil(this.ugS.getText().toString()))
+    if (bt.isNullOrNil(this.vjC.getText().toString()))
     {
       AppMethodBeat.o(64899);
       return 0;
     }
-    double d = bs.getDouble(this.ugS.getText().toString(), -1.0D);
+    double d = bt.getDouble(this.vjC.getText().toString(), -1.0D);
     if (d < 0.0D)
     {
       AppMethodBeat.o(64899);
       return 3;
     }
-    if ((d > this.ugX) && (this.ugX > 0.0D))
+    if ((d > this.vjH) && (this.vjH > 0.0D))
     {
       AppMethodBeat.o(64899);
       return 1;
     }
-    if ((d < this.ugY) && (d > 0.0D))
+    if ((d < this.vjI) && (d > 0.0D))
     {
       AppMethodBeat.o(64899);
       return 2;
@@ -130,7 +130,7 @@ public class WxaLuckyMoneyMoneyInputView
   public double getInput()
   {
     AppMethodBeat.i(64894);
-    double d = bs.getDouble(this.ugS.getText().toString(), 0.0D);
+    double d = bt.getDouble(this.vjC.getText().toString(), 0.0D);
     AppMethodBeat.o(64894);
     return d;
   }
@@ -146,55 +146,55 @@ public class WxaLuckyMoneyMoneyInputView
   public final void onError()
   {
     AppMethodBeat.i(64901);
-    this.lfN.setTextColor(z.fC(getContext()));
-    this.ugS.setTextColor(z.fC(getContext()));
-    this.ugT.setTextColor(z.fC(getContext()));
+    this.lCL.setTextColor(z.fH(getContext()));
+    this.vjC.setTextColor(z.fH(getContext()));
+    this.vjD.setTextColor(z.fH(getContext()));
     AppMethodBeat.o(64901);
   }
   
   public final void restore()
   {
     AppMethodBeat.i(64900);
-    this.lfN.setTextColor(getContext().getResources().getColor(2131100711));
-    this.ugS.setTextColor(getContext().getResources().getColor(2131100711));
-    this.ugT.setTextColor(getContext().getResources().getColor(2131100711));
+    this.lCL.setTextColor(getContext().getResources().getColor(2131100711));
+    this.vjC.setTextColor(getContext().getResources().getColor(2131100711));
+    this.vjD.setTextColor(getContext().getResources().getColor(2131100711));
     AppMethodBeat.o(64900);
   }
   
   public void setAmount(String paramString)
   {
     AppMethodBeat.i(64898);
-    this.ugS.setText(paramString);
+    this.vjC.setText(paramString);
     AppMethodBeat.o(64898);
   }
   
   public void setHint(String paramString)
   {
     AppMethodBeat.i(64892);
-    this.ugS.setHint(paramString);
+    this.vjC.setHint(paramString);
     AppMethodBeat.o(64892);
   }
   
   public void setMaxAmount(double paramDouble)
   {
-    this.ugX = paramDouble;
+    this.vjH = paramDouble;
   }
   
   public void setMaxLen(int paramInt)
   {
     AppMethodBeat.i(64897);
-    this.ugS.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
+    this.vjC.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
     AppMethodBeat.o(64897);
   }
   
   public void setMinAmount(double paramDouble)
   {
-    this.ugY = paramDouble;
+    this.vjI = paramDouble;
   }
   
   public void setOnInputValidChangerListener(g paramg)
   {
-    this.ugV = paramg;
+    this.vjF = paramg;
   }
   
   public void setShowGroupIcon(boolean paramBoolean)
@@ -202,24 +202,24 @@ public class WxaLuckyMoneyMoneyInputView
     AppMethodBeat.i(64896);
     if (paramBoolean)
     {
-      this.ugU.setVisibility(0);
+      this.vjE.setVisibility(0);
       AppMethodBeat.o(64896);
       return;
     }
-    this.ugU.setVisibility(8);
+    this.vjE.setVisibility(8);
     AppMethodBeat.o(64896);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(64895);
-    this.lfN.setText(paramString);
+    this.lCL.setText(paramString);
     AppMethodBeat.o(64895);
   }
   
   public void setType(h.a parama)
   {
-    this.ugZ = parama;
+    this.vjJ = parama;
   }
 }
 

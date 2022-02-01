@@ -1,94 +1,58 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.content.res.Resources;
-import com.tencent.e.h;
-import com.tencent.e.i;
-import com.tencent.e.i.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.protocal.protobuf.xf;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ad;
 
-abstract class bb<T>
-  implements g, Callable<T>
+public final class bb
+  extends j<ba>
 {
-  protected volatile long lnD = 0L;
-  protected volatile long lnE = 0L;
-  protected volatile long lnF = 0L;
-  private boolean lnG = true;
+  public static final String[] hEf;
   
-  public final void Oq(String paramString)
+  static
   {
-    if (!this.lnG)
+    AppMethodBeat.i(188622);
+    hEf = new String[] { j.getCreateSQLs(ba.jGU, "WxaJsApiPluginInfo") };
+    AppMethodBeat.o(188622);
+  }
+  
+  public bb(e parame)
+  {
+    super(parame, ba.jGU, "WxaJsApiPluginInfo", ba.INDEX_CREATE);
+  }
+  
+  public final xf RU(String paramString)
+  {
+    AppMethodBeat.i(188621);
+    try
     {
-      ac.e(getTag(), "silent toast: %s", new Object[] { paramString });
-      return;
-    }
-    bc.Oq(paramString);
-  }
-  
-  final Future<T> bnK()
-  {
-    return h.JZN.d(new a());
-  }
-  
-  final T bnL()
-  {
-    this.lnD = bs.eWj();
-    Object localObject = call();
-    this.lnE = bs.eWj();
-    this.lnF = (this.lnE - this.lnD);
-    return localObject;
-  }
-  
-  public void gS(boolean paramBoolean)
-  {
-    this.lnG = paramBoolean;
-  }
-  
-  public final String getKey()
-  {
-    return getTag();
-  }
-  
-  abstract String getTag();
-  
-  public final void tG(int paramInt)
-  {
-    Oq(ai.getResources().getString(paramInt));
-  }
-  
-  final class a
-    implements g, Callable<T>
-  {
-    a() {}
-    
-    public final T call()
-    {
-      AppMethodBeat.i(186843);
-      bb.this.lnD = bs.eWj();
-      try
+      ba localba = new ba();
+      localba.field_appId = paramString;
+      if (get(localba, new String[0]))
       {
-        Object localObject1 = bb.this.call();
-        return localObject1;
+        ad.i("MicroMsg.LaunchWxaJsApiPluginInfoStorage", "found info with appId(%s)", new Object[] { paramString });
+        xf localxf = new xf();
+        localxf.parseFrom(localba.field_permissionProtoBlob);
+        int i = localxf.FWI.zr.length;
+        if (i > 0)
+        {
+          AppMethodBeat.o(188621);
+          return localxf;
+        }
+        ad.i("MicroMsg.LaunchWxaJsApiPluginInfoStorage", "found info with appId(%s) but jsapi_control_bytes invalid", new Object[] { paramString });
       }
-      finally
-      {
-        bb.this.lnE = bs.eWj();
-        bb.this.lnF = (bb.this.lnE - bb.this.lnD);
-        AppMethodBeat.o(186843);
-      }
+      AppMethodBeat.o(188621);
+      return null;
     }
-    
-    public final String getKey()
+    catch (Exception localException)
     {
-      AppMethodBeat.i(186842);
-      String str = bb.this.getTag();
-      AppMethodBeat.o(186842);
-      return str;
+      ad.printErrStackTrace("MicroMsg.LaunchWxaJsApiPluginInfoStorage", localException, "get with appId(%s)", new Object[] { paramString });
+      AppMethodBeat.o(188621);
     }
+    return null;
   }
 }
 

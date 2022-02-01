@@ -20,21 +20,21 @@ public class TAVImageTrackResource
   
   public TAVImageTrackResource(String paramString, CMTime paramCMTime, boolean paramBoolean)
   {
-    AppMethodBeat.i(192095);
+    AppMethodBeat.i(219894);
     this.path = paramString;
     this.emptyAudioTrack = paramBoolean;
     this.duration = paramCMTime;
     this.sourceTimeRange = new CMTimeRange(CMTime.CMTimeZero, paramCMTime);
-    AppMethodBeat.o(192095);
+    AppMethodBeat.o(219894);
   }
   
   public TAVImageTrackResource clone()
   {
-    AppMethodBeat.i(192097);
+    AppMethodBeat.i(219896);
     TAVImageTrackResource localTAVImageTrackResource = new TAVImageTrackResource(this.path, this.duration.clone());
     localTAVImageTrackResource.sourceTimeRange = this.sourceTimeRange.clone();
     localTAVImageTrackResource.scaledDuration = this.scaledDuration.clone();
-    AppMethodBeat.o(192097);
+    AppMethodBeat.o(219896);
     return localTAVImageTrackResource;
   }
   
@@ -50,10 +50,10 @@ public class TAVImageTrackResource
   
   public TrackInfo trackInfoForType(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192096);
+    AppMethodBeat.i(219895);
     if ((paramInt1 != 1) && (!this.emptyAudioTrack))
     {
-      AppMethodBeat.o(192096);
+      AppMethodBeat.o(219895);
       return null;
     }
     if (paramInt1 == 1) {
@@ -66,14 +66,14 @@ public class TAVImageTrackResource
       localTrackInfo.setCompositionTrackSegment(localCompositionTrackSegment);
       localTrackInfo.setSelectedTimeRange(getSourceTimeRange());
       localTrackInfo.setScaleToDuration(getScaledDuration());
-      AppMethodBeat.o(192096);
+      AppMethodBeat.o(219895);
       return localTrackInfo;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.composition.resource.TAVImageTrackResource
  * JD-Core Version:    0.7.0.1
  */

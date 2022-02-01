@@ -2,16 +2,29 @@ package d.l.b.a.b.l;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class h
+final class h<T>
 {
-  public static final <T> T a(f<? extends T> paramf, d.l.k<?> paramk)
+  private final Thread thread;
+  final T value;
+  
+  h(T paramT)
   {
-    AppMethodBeat.i(60556);
-    d.g.b.k.h(paramf, "$this$getValue");
-    d.g.b.k.h(paramk, "p");
-    paramf = paramf.invoke();
-    AppMethodBeat.o(60556);
-    return paramf;
+    AppMethodBeat.i(187787);
+    this.value = paramT;
+    this.thread = Thread.currentThread();
+    AppMethodBeat.o(187787);
+  }
+  
+  public final boolean hasValue()
+  {
+    AppMethodBeat.i(187788);
+    if (this.thread == Thread.currentThread())
+    {
+      AppMethodBeat.o(187788);
+      return true;
+    }
+    AppMethodBeat.o(187788);
+    return false;
   }
 }
 

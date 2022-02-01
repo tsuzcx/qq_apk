@@ -16,9 +16,9 @@ public final class c
   
   static
   {
-    AppMethodBeat.i(208164);
+    AppMethodBeat.i(214629);
     SQL_CREATE = new String[] { j.getCreateSQLs(b.info, "LiteAppInfo") };
-    AppMethodBeat.o(208164);
+    AppMethodBeat.o(214629);
   }
   
   public c(e parame)
@@ -39,7 +39,7 @@ public final class c
   }
   
   /* Error */
-  public final b ajL(String paramString)
+  public final b aoy(String paramString)
   {
     // Byte code:
     //   0: ldc 57
@@ -121,9 +121,9 @@ public final class c
     //   135: dup
     //   136: iconst_0
     //   137: aload_3
-    //   138: invokestatic 97	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   138: invokestatic 97	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   141: aastore
-    //   142: invokestatic 103	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   142: invokestatic 103	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   145: aload_2
     //   146: ifnull -31 -> 115
     //   149: aload_2
@@ -167,11 +167,11 @@ public final class c
     //   83	88	182	java/lang/Exception
   }
   
-  public final boolean c(b paramb)
+  public final boolean d(b paramb)
   {
-    AppMethodBeat.i(208160);
+    AppMethodBeat.i(214625);
     this.db.insert("LiteAppInfo", "appId", paramb.convertTo());
-    AppMethodBeat.o(208160);
+    AppMethodBeat.o(214625);
     return true;
   }
 }

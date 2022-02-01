@@ -1,7 +1,7 @@
 package d.l.b.a.b.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.t;
 import java.util.List;
 
@@ -22,7 +22,7 @@ public abstract class l
   
   public final String i(t paramt)
   {
-    k.h(paramt, "functionDescriptor");
+    p.h(paramt, "functionDescriptor");
     return b.a.a(this, paramt);
   }
   
@@ -36,8 +36,8 @@ public abstract class l
     public final boolean h(t paramt)
     {
       AppMethodBeat.i(61329);
-      k.h(paramt, "functionDescriptor");
-      if (paramt.fQU().size() >= this.n)
+      p.h(paramt, "functionDescriptor");
+      if (paramt.gis().size() >= this.n)
       {
         AppMethodBeat.o(61329);
         return true;
@@ -60,8 +60,8 @@ public abstract class l
     public final boolean h(t paramt)
     {
       AppMethodBeat.i(61331);
-      k.h(paramt, "functionDescriptor");
-      if (paramt.fQU().size() == this.n)
+      p.h(paramt, "functionDescriptor");
+      if (paramt.gis().size() == this.n)
       {
         AppMethodBeat.o(61331);
         return true;
@@ -74,12 +74,12 @@ public abstract class l
   public static final class c
     extends l
   {
-    public static final c LOw;
+    public static final c NFt;
     
     static
     {
       AppMethodBeat.i(61333);
-      LOw = new c();
+      NFt = new c();
       AppMethodBeat.o(61333);
     }
     
@@ -91,8 +91,8 @@ public abstract class l
     public final boolean h(t paramt)
     {
       AppMethodBeat.i(61332);
-      k.h(paramt, "functionDescriptor");
-      boolean bool = paramt.fQU().isEmpty();
+      p.h(paramt, "functionDescriptor");
+      boolean bool = paramt.gis().isEmpty();
       AppMethodBeat.o(61332);
       return bool;
     }
@@ -101,12 +101,12 @@ public abstract class l
   public static final class d
     extends l
   {
-    public static final d LOx;
+    public static final d NFu;
     
     static
     {
       AppMethodBeat.i(61335);
-      LOx = new d();
+      NFu = new d();
       AppMethodBeat.o(61335);
     }
     
@@ -118,8 +118,8 @@ public abstract class l
     public final boolean h(t paramt)
     {
       AppMethodBeat.i(61334);
-      k.h(paramt, "functionDescriptor");
-      if (paramt.fQU().size() == 1)
+      p.h(paramt, "functionDescriptor");
+      if (paramt.gis().size() == 1)
       {
         AppMethodBeat.o(61334);
         return true;
@@ -131,7 +131,7 @@ public abstract class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.n.l
  * JD-Core Version:    0.7.0.1
  */

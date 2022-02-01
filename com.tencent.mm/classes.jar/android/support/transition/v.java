@@ -7,10 +7,10 @@ import android.view.View;
 
 final class v
 {
-  final a<View, u> Bf = new a();
-  final SparseArray<View> Bg = new SparseArray();
-  final g<View> Bh = new g();
-  final a<String, View> Bi = new a();
+  final a<View, u> CX = new a();
+  final SparseArray<View> CY = new SparseArray();
+  final g<View> CZ = new g();
+  final a<String, View> Da = new a();
 }
 
 

@@ -8,8 +8,8 @@ import android.os.Looper;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class f
   implements d.a
@@ -21,9 +21,9 @@ final class f
     d.a.a locala = new d.a.a();
     try
     {
-      locala.fFt = w.e(paramLooper);
-      locala.duc = 90;
-      if (locala.fFt == null)
+      locala.fYS = w.e(paramLooper);
+      locala.dGc = 90;
+      if (locala.fYS == null)
       {
         AppMethodBeat.o(155649);
         return null;
@@ -36,7 +36,7 @@ final class f
     }
     paramLooper = new Camera.CameraInfo();
     Camera.getCameraInfo(paramInt, paramLooper);
-    switch (((WindowManager)ai.getContext().getSystemService("window")).getDefaultDisplay().getRotation())
+    switch (((WindowManager)aj.getContext().getSystemService("window")).getDefaultDisplay().getRotation())
     {
     default: 
       paramInt = 0;
@@ -46,8 +46,8 @@ final class f
     }
     for (int i = (360 - (paramLooper.orientation + paramInt) % 360) % 360;; i = (paramLooper.orientation - paramInt + 360) % 360)
     {
-      ac.d("MicroMsg.CameraUtil.CameraUtilImpl22", "CameraUtilImpl22, open camera, info.orientation: %d, degrees: %d, result:%d", new Object[] { Integer.valueOf(paramLooper.orientation), Integer.valueOf(paramInt), Integer.valueOf(i) });
-      locala.fFt.setDisplayOrientation(i);
+      ad.d("MicroMsg.CameraUtil.CameraUtilImpl22", "CameraUtilImpl22, open camera, info.orientation: %d, degrees: %d, result:%d", new Object[] { Integer.valueOf(paramLooper.orientation), Integer.valueOf(paramInt), Integer.valueOf(i) });
+      locala.fYS.setDisplayOrientation(i);
       AppMethodBeat.o(155649);
       return locala;
       paramInt = 0;
@@ -63,7 +63,7 @@ final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.f
  * JD-Core Version:    0.7.0.1
  */

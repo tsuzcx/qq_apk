@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.expt.hellhound.a.a.b;
 
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.al;
+import com.tencent.mm.g.b.a.av;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.d;
-import com.tencent.mm.protocal.protobuf.dbp;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.dhc;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vending.j.b;
 import com.tencent.mm.vending.j.c;
 import java.util.ArrayList;
@@ -16,22 +16,22 @@ import org.json.JSONArray;
 
 public final class a
 {
-  private static int qla = 0;
+  private static int qTW = 0;
   
-  private static List<al> a(al paramal)
+  private static List<av> a(av paramav)
   {
     AppMethodBeat.i(169319);
     ArrayList localArrayList = new ArrayList();
-    Object localObject3 = paramal.PR().getBytes();
+    Object localObject3 = paramav.RD().getBytes();
     if (localObject3.length <= 5120)
     {
-      paramal.dJD = 0;
-      paramal.dJE = 1;
-      localArrayList.add(paramal);
+      paramav.dXu = 0;
+      paramav.dXv = 1;
+      localArrayList.add(paramav);
       AppMethodBeat.o(169319);
       return localArrayList;
     }
-    Object localObject1 = paramal.dJA;
+    Object localObject1 = paramav.dXr;
     try
     {
       localObject1 = new JSONArray((String)localObject1);
@@ -46,7 +46,7 @@ public final class a
       Object localObject2;
       for (;;)
       {
-        ac.printErrStackTrace("HABBYGE-MALI.FinderReport", localException, "finder, _spliteLogIfBigger7K-timeline-Exception", new Object[0]);
+        ad.printErrStackTrace("HABBYGE-MALI.FinderReport", localException, "finder, _spliteLogIfBigger7K-timeline-Exception", new Object[0]);
         localObject2 = null;
       }
       int n = localObject2.length();
@@ -63,16 +63,16 @@ public final class a
       int m = 0;
       while (m < d)
       {
-        localObject3 = new al();
-        ((al)localObject3).dJu = paramal.dJu;
-        ((al)localObject3).gZ(paramal.dJv);
-        ((al)localObject3).ha(paramal.dJw);
-        ((al)localObject3).hb(paramal.dJG);
-        ((al)localObject3).hc(paramal.dJH);
-        ((al)localObject3).dJx = paramal.dJx;
-        ((al)localObject3).dJy = paramal.dJy;
-        ((al)localObject3).dJz = paramal.dJz;
-        ((al)localObject3).dJC = paramal.dJC;
+        localObject3 = new av();
+        ((av)localObject3).dXl = paramav.dXl;
+        ((av)localObject3).iq(paramav.dXm);
+        ((av)localObject3).ir(paramav.dXn);
+        ((av)localObject3).is(paramav.dXx);
+        ((av)localObject3).it(paramav.dXy);
+        ((av)localObject3).dXo = paramav.dXo;
+        ((av)localObject3).dXp = paramav.dXp;
+        ((av)localObject3).dXq = paramav.dXq;
+        ((av)localObject3).dXt = paramav.dXt;
         JSONArray localJSONArray = new JSONArray();
         i = m * i1;
         while ((i < (m + 1) * i1) && (i < n - i2))
@@ -80,36 +80,36 @@ public final class a
           localJSONArray.put(localObject2.opt(i));
           i += 1;
         }
-        ((al)localObject3).dJA = localJSONArray.toString();
-        ((al)localObject3).dJB = localJSONArray.length();
-        ((al)localObject3).dJD = k;
-        ((al)localObject3).dJE = j;
+        ((av)localObject3).dXr = localJSONArray.toString();
+        ((av)localObject3).dXs = localJSONArray.length();
+        ((av)localObject3).dXu = k;
+        ((av)localObject3).dXv = j;
         localArrayList.add(localObject3);
         m += 1;
         k += 1;
       }
       if (i2 > 0)
       {
-        localObject3 = new al();
-        ((al)localObject3).dJu = paramal.dJu;
-        ((al)localObject3).gZ(paramal.dJv);
-        ((al)localObject3).ha(paramal.dJw);
-        ((al)localObject3).hb(paramal.dJG);
-        ((al)localObject3).hc(paramal.dJH);
-        ((al)localObject3).dJx = paramal.dJx;
-        ((al)localObject3).dJy = paramal.dJy;
-        ((al)localObject3).dJz = paramal.dJz;
-        ((al)localObject3).dJC = paramal.dJC;
-        paramal = new JSONArray();
+        localObject3 = new av();
+        ((av)localObject3).dXl = paramav.dXl;
+        ((av)localObject3).iq(paramav.dXm);
+        ((av)localObject3).ir(paramav.dXn);
+        ((av)localObject3).is(paramav.dXx);
+        ((av)localObject3).it(paramav.dXy);
+        ((av)localObject3).dXo = paramav.dXo;
+        ((av)localObject3).dXp = paramav.dXp;
+        ((av)localObject3).dXq = paramav.dXq;
+        ((av)localObject3).dXt = paramav.dXt;
+        paramav = new JSONArray();
         while (i < n)
         {
-          paramal.put(localObject2.opt(i));
+          paramav.put(localObject2.opt(i));
           i += 1;
         }
-        ((al)localObject3).dJA = paramal.toString();
-        ((al)localObject3).dJB = paramal.length();
-        ((al)localObject3).dJD = k;
-        ((al)localObject3).dJE = j;
+        ((av)localObject3).dXr = paramav.toString();
+        ((av)localObject3).dXs = paramav.length();
+        ((av)localObject3).dXu = k;
+        ((av)localObject3).dXv = j;
         localArrayList.add(localObject3);
       }
       AppMethodBeat.o(169319);
@@ -117,38 +117,38 @@ public final class a
     return localArrayList;
   }
   
-  public static void a(dbp paramdbp, c<String, Integer> paramc)
+  public static void a(dhc paramdhc, c<String, Integer> paramc)
   {
     AppMethodBeat.i(169318);
-    if ((paramdbp == null) || (paramc == null))
+    if ((paramdhc == null) || (paramc == null))
     {
       AppMethodBeat.o(169318);
       return;
     }
-    al localal1 = new al();
-    localal1.dJu = Process.myPid();
-    al localal2 = localal1.gZ(((h)com.tencent.mm.kernel.g.agO().agp()).mProcessName).ha(paramdbp.dnh).hb(paramdbp.dln).hc(paramdbp.FKV);
-    localal2.dJx = paramdbp.FKR;
-    localal2.dJy = paramdbp.FKS;
-    localal2.dJz = paramdbp.FKT;
-    localal2.dJA = ((String)paramc.get(0));
-    localal2.dJB = ((Integer)paramc.get(1)).intValue();
-    int i = qla;
-    qla = i + 1;
-    localal2.dJC = i;
-    paramdbp = a(localal1);
-    if (paramdbp == null)
+    av localav1 = new av();
+    localav1.dXl = Process.myPid();
+    av localav2 = localav1.iq(((h)com.tencent.mm.kernel.g.ajz().ajb()).mProcessName).ir(paramdhc.dyV).is(paramdhc.dxa).it(paramdhc.HvD);
+    localav2.dXo = paramdhc.Hvz;
+    localav2.dXp = paramdhc.HvA;
+    localav2.dXq = paramdhc.HvB;
+    localav2.dXr = ((String)paramc.get(0));
+    localav2.dXs = ((Integer)paramc.get(1)).intValue();
+    int i = qTW;
+    qTW = i + 1;
+    localav2.dXt = i;
+    paramdhc = a(localav1);
+    if (paramdhc == null)
     {
       AppMethodBeat.o(169318);
       return;
     }
-    paramdbp = paramdbp.iterator();
-    while (paramdbp.hasNext())
+    paramdhc = paramdhc.iterator();
+    while (paramdhc.hasNext())
     {
-      paramc = (al)paramdbp.next();
-      paramc.dJA = paramc.dJA.replace(",", "#");
-      paramc.aHZ();
-      ac.i("HABBYGE-MALI.FinderReport", "FinderReport-report-sub: %s", new Object[] { paramc.PR() });
+      paramc = (av)paramdhc.next();
+      paramc.dXr = paramc.dXr.replace(",", "#");
+      paramc.aLk();
+      ad.i("HABBYGE-MALI.FinderReport", "FinderReport-report-sub: %s", new Object[] { paramc.RD() });
     }
     AppMethodBeat.o(169318);
   }

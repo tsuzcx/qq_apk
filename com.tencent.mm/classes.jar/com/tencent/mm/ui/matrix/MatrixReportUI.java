@@ -17,10 +17,10 @@ import com.tencent.matrix.report.c;
 import com.tencent.matrix.report.h;
 import com.tencent.matrix.report.h.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.matrix.recyclerview.JsonRecyclerView;
-import com.tencent.mm.ui.matrix.recyclerview.b;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import org.json.JSONArray;
@@ -28,12 +28,12 @@ import org.json.JSONArray;
 public class MatrixReportUI
   extends MMActivity
 {
-  private JSONArray IKs;
+  private JSONArray KBz;
   
   public MatrixReportUI()
   {
     AppMethodBeat.i(38877);
-    this.IKs = new JSONArray();
+    this.KBz = new JSONArray();
     AppMethodBeat.o(38877);
   }
   
@@ -57,25 +57,29 @@ public class MatrixReportUI
         return true;
       }
     });
-    paramBundle = d.cql.cqm.cuu.iterator();
+    paramBundle = d.cBd.cBe.cFp.iterator();
     while (paramBundle.hasNext())
     {
       localObject = (h.d)paramBundle.next();
-      this.IKs.put(((c)localObject).cue);
+      this.KBz.put(((c)localObject).cEZ);
     }
     paramBundle = (JsonRecyclerView)findViewById(2131301234);
-    Object localObject = new b(this.IKs);
+    Object localObject = new com.tencent.mm.ui.matrix.recyclerview.b(this.KBz);
     paramBundle.setAdapter((RecyclerView.a)localObject);
-    ((b)localObject).qQj = new View.OnLongClickListener()
+    ((com.tencent.mm.ui.matrix.recyclerview.b)localObject).rAj = new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(38876);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/ui/matrix/MatrixReportUI$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
         if (paramAnonymousView.getTag() != null)
         {
-          ((ClipboardManager)ai.getContext().getSystemService("clipboard")).setText(paramAnonymousView.getTag().toString());
-          Toast.makeText(ai.getContext(), MatrixReportUI.this.getContext().getResources().getString(2131755702), 0).show();
+          ((ClipboardManager)aj.getContext().getSystemService("clipboard")).setText(paramAnonymousView.getTag().toString());
+          Toast.makeText(aj.getContext(), MatrixReportUI.this.getContext().getResources().getString(2131755702), 0).show();
         }
+        a.a(true, this, "com/tencent/mm/ui/matrix/MatrixReportUI$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(38876);
         return true;
       }

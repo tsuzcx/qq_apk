@@ -2,8 +2,9 @@ package com.tencent.mm.appbrand.v8;
 
 import com.eclipsesource.v8.V8ScriptException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.a.j;
+import d.g.b.p;
 import java.lang.reflect.UndeclaredThrowableException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -13,61 +14,61 @@ import java.util.concurrent.BlockingDeque;
 class z
   implements c
 {
-  private static final ThreadLocal<z> cML;
-  private boolean AC;
-  private k cMD;
-  private Queue<Runnable> cOA;
-  private final Thread cOu;
-  private final l<Runnable> cOv;
-  private z.a cOw;
-  private volatile boolean cOx;
-  private final boolean cOy;
-  private c.a cOz;
+  private static final ThreadLocal<z> cYb;
+  private boolean Ct;
+  private k cXT;
+  private final Thread cZK;
+  private final l<Runnable> cZL;
+  private z.a cZM;
+  private volatile boolean cZN;
+  private final boolean cZO;
+  private c.a cZP;
+  private Queue<Runnable> cZQ;
   
   static
   {
     AppMethodBeat.i(144143);
-    cML = new ThreadLocal();
+    cYb = new ThreadLocal();
     AppMethodBeat.o(144143);
   }
   
   z(boolean paramBoolean)
   {
-    AppMethodBeat.i(200843);
-    l.a locala = l.cMW;
-    this.cOv = new l((Queue)new LinkedList());
-    this.cOw = z.a.cOB;
-    this.cMD = new k();
-    this.cOA = new LinkedList();
-    this.cOu = Thread.currentThread();
-    this.cOy = paramBoolean;
-    ac.i("MicroMsg.V8JSRuntimeLooper", "V8JSRuntimeLooper <init> ignoreRemainingTaskWhenLoopEnd?%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(200843);
+    AppMethodBeat.i(198718);
+    l.a locala = l.cYm;
+    this.cZL = new l((Queue)new LinkedList());
+    this.cZM = z.a.cZR;
+    this.cXT = new k();
+    this.cZQ = new LinkedList();
+    this.cZK = Thread.currentThread();
+    this.cZO = paramBoolean;
+    ad.i("MicroMsg.V8JSRuntimeLooper", "V8JSRuntimeLooper <init> ignoreRemainingTaskWhenLoopEnd?%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(198718);
   }
   
-  private int LX()
+  private int NG()
   {
-    AppMethodBeat.i(200846);
-    synchronized (this.cOv)
+    AppMethodBeat.i(198721);
+    synchronized (this.cZL)
     {
-      int i = this.cOv.size();
-      AppMethodBeat.o(200846);
+      int i = this.cZL.size();
+      AppMethodBeat.o(198721);
       return i;
     }
   }
   
-  public static z cj(boolean paramBoolean)
+  public static z ck(boolean paramBoolean)
   {
-    AppMethodBeat.i(200842);
-    if (cML.get() != null)
+    AppMethodBeat.i(198717);
+    if (cYb.get() != null)
     {
       localObject = new RuntimeException("Only one Looper may be created per thread");
-      AppMethodBeat.o(200842);
+      AppMethodBeat.o(198717);
       throw ((Throwable)localObject);
     }
     Object localObject = new z(paramBoolean);
-    cML.set(localObject);
-    AppMethodBeat.o(200842);
+    cYb.set(localObject);
+    AppMethodBeat.o(198717);
     return localObject;
   }
   
@@ -82,31 +83,31 @@ class z
     }
     catch (V8ScriptException paramRunnable)
     {
-      if (this.cOz != null) {
-        this.cOz.b(paramRunnable);
+      if (this.cZP != null) {
+        this.cZP.b(paramRunnable);
       }
       AppMethodBeat.o(144142);
       return;
     }
     catch (UndeclaredThrowableException paramRunnable)
     {
-      ac.e("MicroMsg.V8JSRuntimeLooper", "runTask UndeclaredThrowableException: %s %s", new Object[] { paramRunnable, paramRunnable.getCause() });
+      ad.e("MicroMsg.V8JSRuntimeLooper", "runTask UndeclaredThrowableException: %s %s", new Object[] { paramRunnable, paramRunnable.getCause() });
       AppMethodBeat.o(144142);
     }
   }
   
-  public final String AV()
+  public final String Cu()
   {
     AppMethodBeat.i(185106);
-    String str = (String)this.cMD.cMT.peek();
+    String str = (String)this.cXT.cYj.peek();
     AppMethodBeat.o(185106);
     return str;
   }
   
-  public final boolean LH()
+  public final boolean Np()
   {
     AppMethodBeat.i(144133);
-    if (Thread.currentThread().getId() == this.cOu.getId())
+    if (Thread.currentThread().getId() == this.cZK.getId())
     {
       AppMethodBeat.o(144133);
       return true;
@@ -115,97 +116,97 @@ class z
     return false;
   }
   
-  protected boolean LM()
+  protected boolean Nv()
   {
     AppMethodBeat.i(144139);
-    boolean bool = this.cOv.isEmpty();
+    boolean bool = this.cZL.isEmpty();
     AppMethodBeat.o(144139);
     return bool;
   }
   
-  protected void LN()
+  protected void Nw()
   {
     AppMethodBeat.i(144141);
-    Iterator localIterator = this.cOA.iterator();
+    Iterator localIterator = this.cZQ.iterator();
     while (localIterator.hasNext())
     {
       Runnable localRunnable = (Runnable)localIterator.next();
-      if ((this.cOy) && (this.cOx))
+      if ((this.cZO) && (this.cZN))
       {
-        ac.i("MicroMsg.V8JSRuntimeLooper", "LoopTask break for mLooperEnd");
+        ad.i("MicroMsg.V8JSRuntimeLooper", "LoopTask break for mLooperEnd");
         AppMethodBeat.o(144141);
         return;
       }
       v(localRunnable);
-      if (this.cMD.enable) {
-        this.cMD.cMT.pollFirst();
+      if (this.cXT.enable) {
+        this.cXT.cYj.pollFirst();
       }
     }
     AppMethodBeat.o(144141);
   }
   
-  protected void LO()
+  protected void Nx()
   {
     AppMethodBeat.i(144140);
-    ac.i("MicroMsg.V8JSRuntimeLooper", "loop end");
+    ad.i("MicroMsg.V8JSRuntimeLooper", "loop end");
     AppMethodBeat.o(144140);
   }
   
-  protected void LP() {}
+  protected void Ny() {}
   
-  protected void LQ() {}
+  protected void Nz() {}
   
   public final void a(c.a parama)
   {
-    this.cOz = parama;
+    this.cZP = parama;
   }
   
   public final void b(Runnable paramRunnable, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(200845);
+    AppMethodBeat.i(198720);
     if (paramRunnable == null)
     {
-      AppMethodBeat.o(200845);
+      AppMethodBeat.o(198720);
       return;
     }
     if (paramLong != 0L)
     {
       paramRunnable = new IllegalStateException("V8JSRuntimeLooper#scheduleDelayed not support.");
-      AppMethodBeat.o(200845);
+      AppMethodBeat.o(198720);
       throw paramRunnable;
     }
-    if (this.cOx)
+    if (this.cZN)
     {
-      ac.i("MicroMsg.V8JSRuntimeLooper", "scheduleDelayed but looper end");
-      AppMethodBeat.o(200845);
+      ad.i("MicroMsg.V8JSRuntimeLooper", "scheduleDelayed but looper end");
+      AppMethodBeat.o(198720);
       return;
     }
     boolean bool = isPaused();
-    synchronized (this.cOv)
+    synchronized (this.cZL)
     {
-      this.cOv.c(paramRunnable, paramBoolean);
+      this.cZL.c(paramRunnable, paramBoolean);
       if ((paramBoolean) || (!bool)) {
-        this.cOv.notify();
+        this.cZL.notify();
       }
       if ((paramBoolean) && (bool)) {
-        ac.i("MicroMsg.V8JSRuntimeLooper", "scheduleDelayed: important task in pause state. queue.size:[%d]", new Object[] { Integer.valueOf(LX()) });
+        ad.i("MicroMsg.V8JSRuntimeLooper", "scheduleDelayed: important task in pause state. queue.size:[%d]", new Object[] { Integer.valueOf(NG()) });
       }
-      LP();
-      AppMethodBeat.o(200845);
+      Ny();
+      AppMethodBeat.o(198720);
       return;
     }
   }
   
-  public final void ci(boolean paramBoolean)
+  public final void cj(boolean paramBoolean)
   {
-    this.cMD.enable = paramBoolean;
+    this.cXT.enable = paramBoolean;
   }
   
   protected final boolean isPaused()
   {
     try
     {
-      boolean bool = this.AC;
+      boolean bool = this.Ct;
       return bool;
     }
     finally
@@ -218,22 +219,22 @@ class z
   public final void loop()
   {
     AppMethodBeat.i(144132);
-    ac.i("MicroMsg.V8JSRuntimeLooper", "loop start %d", new Object[] { Integer.valueOf(hashCode()) });
+    ad.i("MicroMsg.V8JSRuntimeLooper", "loop start %d", new Object[] { Integer.valueOf(hashCode()) });
     int i;
     label68:
     label79:
     l locall2;
     label171:
     int j;
-    if (!this.cOx)
+    if (!this.cZN)
     {
       boolean bool1;
-      synchronized (this.cOv)
+      synchronized (this.cZL)
       {
         bool1 = isPaused();
         if (bool1)
         {
-          if (this.cOv.cMU >= 0)
+          if (this.cZL.cYk >= 0)
           {
             i = 1;
             break label368;
@@ -241,7 +242,7 @@ class z
         }
         else
         {
-          boolean bool2 = LM();
+          boolean bool2 = Nv();
           if (!bool2) {
             break label171;
           }
@@ -249,15 +250,15 @@ class z
       }
       i = 0;
       break label368;
-      this.cOA.clear();
-      locall2 = this.cOv;
-      Queue localQueue = this.cOA;
-      d.g.b.k.h(localQueue, "anotherQueue");
+      this.cZQ.clear();
+      locall2 = this.cZL;
+      Queue localQueue = this.cZQ;
+      p.h(localQueue, "anotherQueue");
       if (bool1) {}
-      for (i = locall2.cMU;; i = locall2.cMV.size())
+      for (i = locall2.cYk;; i = locall2.cYl.size())
       {
-        locall2.cMU = -1;
-        Iterator localIterator = ((Iterable)locall2.cMV).iterator();
+        locall2.cYk = -1;
+        Iterator localIterator = ((Iterable)locall2.cYl).iterator();
         j = 0;
         label233:
         if (!localIterator.hasNext()) {
@@ -265,7 +266,7 @@ class z
         }
         Object localObject3 = localIterator.next();
         if (j < 0) {
-          j.fOc();
+          j.gfB();
         }
         if (j > i) {
           break;
@@ -276,7 +277,7 @@ class z
     }
     for (;;)
     {
-      locall2.cMV.poll();
+      locall2.cYl.poll();
       if (j != i)
       {
         j += 1;
@@ -287,12 +288,12 @@ class z
         label382:
         do
         {
-          LN();
+          Nw();
           break;
-          LO();
-          synchronized (this.cOv)
+          Nx();
+          synchronized (this.cZL)
           {
-            this.cOv.clear();
+            this.cZL.clear();
             AppMethodBeat.o(144132);
             return;
           }
@@ -313,10 +314,10 @@ class z
   public final void pause()
   {
     AppMethodBeat.i(144136);
-    ac.i("MicroMsg.V8JSRuntimeLooper", "pause instance:%d queue.size:%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(LX()) });
+    ad.i("MicroMsg.V8JSRuntimeLooper", "pause instance:%d queue.size:%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(NG()) });
     try
     {
-      this.AC = true;
+      this.Ct = true;
       return;
     }
     finally
@@ -328,10 +329,10 @@ class z
   public final void quit()
   {
     AppMethodBeat.i(144138);
-    ac.i("MicroMsg.V8JSRuntimeLooper", "quit %d", new Object[] { Integer.valueOf(hashCode()) });
-    LQ();
-    this.cOx = true;
-    this.cOu.interrupt();
+    ad.i("MicroMsg.V8JSRuntimeLooper", "quit %d", new Object[] { Integer.valueOf(hashCode()) });
+    Nz();
+    this.cZN = true;
+    this.cZK.interrupt();
     AppMethodBeat.o(144138);
   }
   
@@ -354,29 +355,29 @@ class z
     //   25: dup
     //   26: iconst_1
     //   27: aload_0
-    //   28: invokespecial 246	com/tencent/mm/appbrand/v8/z:LX	()I
+    //   28: invokespecial 246	com/tencent/mm/appbrand/v8/z:NG	()I
     //   31: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   34: aastore
-    //   35: invokestatic 105	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   35: invokestatic 105	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   38: aload_0
     //   39: monitorenter
     //   40: aload_0
     //   41: iconst_0
-    //   42: putfield 256	com/tencent/mm/appbrand/v8/z:AC	Z
+    //   42: putfield 256	com/tencent/mm/appbrand/v8/z:Ct	Z
     //   45: aload_0
     //   46: monitorexit
     //   47: aload_0
     //   48: invokevirtual 336	com/tencent/mm/appbrand/v8/z:onResume	()V
     //   51: aload_0
-    //   52: getfield 68	com/tencent/mm/appbrand/v8/z:cOv	Lcom/tencent/mm/appbrand/v8/l;
+    //   52: getfield 68	com/tencent/mm/appbrand/v8/z:cZL	Lcom/tencent/mm/appbrand/v8/l;
     //   55: astore_1
     //   56: aload_1
     //   57: monitorenter
     //   58: aload_0
-    //   59: getstatic 277	com/tencent/mm/appbrand/v8/z$a:cOC	Lcom/tencent/mm/appbrand/v8/z$a;
-    //   62: putfield 73	com/tencent/mm/appbrand/v8/z:cOw	Lcom/tencent/mm/appbrand/v8/z$a;
+    //   59: getstatic 277	com/tencent/mm/appbrand/v8/z$a:cZS	Lcom/tencent/mm/appbrand/v8/z$a;
+    //   62: putfield 73	com/tencent/mm/appbrand/v8/z:cZM	Lcom/tencent/mm/appbrand/v8/z$a;
     //   65: aload_0
-    //   66: getfield 68	com/tencent/mm/appbrand/v8/z:cOv	Lcom/tencent/mm/appbrand/v8/l;
+    //   66: getfield 68	com/tencent/mm/appbrand/v8/z:cZL	Lcom/tencent/mm/appbrand/v8/l;
     //   69: invokevirtual 242	java/lang/Object:notify	()V
     //   72: aload_1
     //   73: monitorexit
@@ -412,38 +413,38 @@ class z
   
   public final void u(Runnable paramRunnable)
   {
-    AppMethodBeat.i(200844);
+    AppMethodBeat.i(198719);
     if (paramRunnable == null)
     {
-      AppMethodBeat.o(200844);
+      AppMethodBeat.o(198719);
       return;
     }
-    if (this.cOx)
+    if (this.cZN)
     {
-      ac.i("MicroMsg.V8JSRuntimeLooper", "schedule but looper end");
-      AppMethodBeat.o(200844);
+      ad.i("MicroMsg.V8JSRuntimeLooper", "schedule but looper end");
+      AppMethodBeat.o(198719);
       return;
     }
-    if (Thread.currentThread().getId() == this.cOu.getId())
+    if (Thread.currentThread().getId() == this.cZK.getId())
     {
       v(paramRunnable);
-      if (this.cMD.enable) {
-        this.cMD.cMT.remove(null);
+      if (this.cXT.enable) {
+        this.cXT.cYj.remove(null);
       }
     }
     for (;;)
     {
-      LP();
-      AppMethodBeat.o(200844);
+      Ny();
+      AppMethodBeat.o(198719);
       return;
       boolean bool = isPaused();
-      synchronized (this.cOv)
+      synchronized (this.cZL)
       {
-        this.cOv.c(paramRunnable, false);
+        this.cZL.c(paramRunnable, false);
         if (!bool)
         {
-          this.cOw = z.a.cOD;
-          this.cOv.notify();
+          this.cZM = z.a.cZT;
+          this.cZL.notify();
         }
       }
     }
@@ -451,7 +452,7 @@ class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.z
  * JD-Core Version:    0.7.0.1
  */

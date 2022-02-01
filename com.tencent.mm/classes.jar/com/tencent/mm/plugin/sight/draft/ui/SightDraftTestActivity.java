@@ -14,7 +14,7 @@ public class SightDraftTestActivity
     super.onCreate(paramBundle);
     paramBundle = new SightDraftContainerView(this);
     setContentView(paramBundle);
-    paramBundle.dEX();
+    paramBundle.dQz();
     AppMethodBeat.o(28692);
   }
   

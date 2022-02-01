@@ -3,7 +3,8 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
         <TextView android:textSize="15.0dip" android:textColor="@color/FG_0" android:layout_gravity="center" android:id="@id/bfs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ata" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="@dimen/cg" android:layout_height="@dimen/c_" android:layout_marginTop="@dimen/c0" android:layout_marginBottom="@dimen/c0" android:src="@raw/actionbar_icon_close_black" android:layout_alignParentStart="true" app:iconColor="@color/FG_0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ata" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="@dimen/ce" android:layout_height="@dimen/c9" android:layout_marginTop="@dimen/c0" android:layout_marginBottom="@dimen/c0" android:src="@raw/icons_outlined_back" android:rotation="270.0" android:layout_alignParentStart="true" app:iconColor="@color/FG_0" />
         <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hbx" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:visibility="gone" android:layout_width="@dimen/cg" android:layout_height="@dimen/c_" android:layout_marginTop="@dimen/c0" android:layout_marginBottom="@dimen/c0" android:src="@raw/actionbar_icon_dark_more" android:layout_alignParentEnd="true" app:iconColor="@color/FG_0" />
     </RelativeLayout>
+    <View android:background="@drawable/x8" android:layout_width="fill_parent" android:layout_height="1.0px" />
 </LinearLayout>

@@ -5,34 +5,34 @@ import org.json.JSONObject;
 
 public final class ac
 {
-  public String FPZ;
-  public String GbE;
-  public String JFB;
-  public String JFC;
-  public int JFD;
+  public String HAE;
+  public String HMB;
+  public String LyF;
+  public String LyG;
+  public int LyH;
   
   public ac()
   {
-    this.JFB = "";
-    this.GbE = "";
-    this.JFC = "";
-    this.FPZ = "";
-    this.JFD = 0;
+    this.LyF = "";
+    this.HMB = "";
+    this.LyG = "";
+    this.HAE = "";
+    this.LyH = 0;
   }
   
   public ac(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72811);
-    this.JFB = "";
-    this.GbE = "";
-    this.JFC = "";
-    this.FPZ = "";
-    this.JFD = 0;
-    this.JFB = paramJSONObject.optString("device_id");
-    this.GbE = paramJSONObject.optString("device_name");
-    this.JFC = paramJSONObject.optString("device_os");
-    this.JFD = paramJSONObject.optInt("Is_cur_device");
-    this.FPZ = paramJSONObject.optString("crt_no");
+    this.LyF = "";
+    this.HMB = "";
+    this.LyG = "";
+    this.HAE = "";
+    this.LyH = 0;
+    this.LyF = paramJSONObject.optString("device_id");
+    this.HMB = paramJSONObject.optString("device_name");
+    this.LyG = paramJSONObject.optString("device_os");
+    this.LyH = paramJSONObject.optInt("Is_cur_device");
+    this.HAE = paramJSONObject.optString("crt_no");
     AppMethodBeat.o(72811);
   }
 }

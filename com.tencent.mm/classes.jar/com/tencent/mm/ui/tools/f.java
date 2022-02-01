@@ -3,36 +3,36 @@ package com.tencent.mm.ui.tools;
 import android.text.InputFilter;
 import android.text.Spanned;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class f
   implements InputFilter
 {
-  private int mEc;
-  private a mEd;
+  private int neB;
+  private a neC;
   
   public f(int paramInt, a parama)
   {
-    this.mEc = paramInt;
-    this.mEd = parama;
+    this.neB = paramInt;
+    this.neC = parama;
   }
   
   public static int a(String paramString, a parama)
   {
     AppMethodBeat.i(133834);
     int i;
-    if (parama == a.IRI)
+    if (parama == a.KIM)
     {
-      i = aRm(paramString);
+      i = aXk(paramString);
       AppMethodBeat.o(133834);
       return i;
     }
-    if (parama == a.IRJ)
+    if (parama == a.KIN)
     {
-      i = aRl(paramString);
+      i = aXj(paramString);
       AppMethodBeat.o(133834);
       return i;
     }
@@ -40,25 +40,25 @@ public class f
     return 0;
   }
   
-  public static int aRl(String paramString)
+  public static int aXj(String paramString)
   {
     AppMethodBeat.i(133835);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(133835);
       return 0;
     }
     int i = paramString.length();
-    int j = aRn(paramString);
-    int k = aRo(paramString);
+    int j = aXl(paramString);
+    int k = aXm(paramString);
     AppMethodBeat.o(133835);
     return i + j + k;
   }
   
-  private static int aRm(String paramString)
+  private static int aXk(String paramString)
   {
     AppMethodBeat.i(133836);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(133836);
       return 0;
@@ -68,10 +68,10 @@ public class f
     return i;
   }
   
-  public static int aRn(String paramString)
+  public static int aXl(String paramString)
   {
     AppMethodBeat.i(133837);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(133837);
       return 0;
@@ -96,10 +96,10 @@ public class f
     return i;
   }
   
-  private static int aRo(String paramString)
+  private static int aXm(String paramString)
   {
     AppMethodBeat.i(133838);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(133838);
       return 0;
@@ -121,44 +121,68 @@ public class f
       j += 1;
       break;
       j = paramString.length();
-      k = aRn(paramString);
+      k = aXl(paramString);
       AppMethodBeat.o(133838);
       return j - (k + i);
     }
   }
   
-  public static int cM(int paramInt, String paramString)
+  public static int cU(int paramInt, String paramString)
   {
     AppMethodBeat.i(133839);
-    if (ab.eUK())
+    if (ac.fko())
     {
-      i = aRl(paramString);
+      i = aXj(paramString);
       AppMethodBeat.o(133839);
       return paramInt - i;
     }
-    int i = aRl(paramString);
+    int i = aXj(paramString);
     AppMethodBeat.o(133839);
     return paramInt - i;
   }
   
-  public static int cN(int paramInt, String paramString)
+  public static int cV(int paramInt, String paramString)
   {
     AppMethodBeat.i(133840);
-    if (ab.eUK())
+    if (ac.fko())
     {
-      paramInt = Math.round((Math.round(aRl(paramString)) - paramInt) / 2.0F);
+      paramInt = Math.round((Math.round(aXj(paramString)) - paramInt) / 2.0F);
       AppMethodBeat.o(133840);
       return paramInt;
     }
-    int i = aRl(paramString);
+    int i = aXj(paramString);
     AppMethodBeat.o(133840);
     return i - paramInt;
+  }
+  
+  public static String hA(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(221636);
+    int i = 0;
+    int j = 0;
+    while (i < paramString.length())
+    {
+      if (paramString.charAt(i) > '') {}
+      for (int k = 2;; k = 1)
+      {
+        j += k;
+        if (j <= paramInt) {
+          break;
+        }
+        paramString = paramString.substring(0, i);
+        AppMethodBeat.o(221636);
+        return paramString;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(221636);
+    return paramString;
   }
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(133833);
-    if (a(paramSpanned.toString(), this.mEd) + a(paramCharSequence.toString(), this.mEd) > this.mEc)
+    if (a(paramSpanned.toString(), this.neC) + a(paramCharSequence.toString(), this.neC) > this.neB)
     {
       AppMethodBeat.o(133833);
       return "";
@@ -172,9 +196,9 @@ public class f
     static
     {
       AppMethodBeat.i(133832);
-      IRI = new a("MODE_CHINESE_AS_1", 0);
-      IRJ = new a("MODE_CHINESE_AS_2", 1);
-      IRK = new a[] { IRI, IRJ };
+      KIM = new a("MODE_CHINESE_AS_1", 0);
+      KIN = new a("MODE_CHINESE_AS_2", 1);
+      KIO = new a[] { KIM, KIN };
       AppMethodBeat.o(133832);
     }
     

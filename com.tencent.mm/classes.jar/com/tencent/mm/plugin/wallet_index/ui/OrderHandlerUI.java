@@ -14,85 +14,87 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.kk;
-import com.tencent.mm.g.a.og;
-import com.tencent.mm.g.a.xv;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.a.kt;
+import com.tencent.mm.g.a.op;
+import com.tencent.mm.g.a.yp;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.modelpay.PayReq.Options;
 import com.tencent.mm.opensdk.modelpay.PayResp;
 import com.tencent.mm.opensdk.modelpay.WXJointPay.JointPayReq;
 import com.tencent.mm.opensdk.modelpay.WXJointPay.JointPayResp;
-import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet_index.c.i;
 import com.tencent.mm.plugin.wallet_index.c.l;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.pluginsdk.wallet.f;
-import com.tencent.mm.protocal.protobuf.cdm;
-import com.tencent.mm.protocal.protobuf.dvk;
-import com.tencent.mm.protocal.protobuf.ql;
+import com.tencent.mm.protocal.protobuf.cil;
+import com.tencent.mm.protocal.protobuf.ebj;
+import com.tencent.mm.protocal.protobuf.sc;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.y;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.c.ab;
 import com.tencent.mm.wallet_core.c.af;
 
 @com.tencent.mm.ui.base.a(3)
 public class OrderHandlerUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
-  private PayReq BQi;
-  private PayResp BQj;
-  private boolean BQk;
-  private String BQl;
-  private boolean BQm;
-  private boolean BQn;
-  private boolean BQo;
-  private boolean BQp;
-  private boolean BQq;
-  private c BQr;
+  private PayReq DqA;
+  private PayResp DqB;
+  private boolean DqC;
+  private String DqD;
+  private boolean DqE;
+  private boolean DqF;
+  private boolean DqG;
+  private boolean DqH;
+  private boolean DqI;
+  private boolean DqJ;
+  private c DqK;
   public String TAG;
-  private String dac;
-  private String hRO;
+  private String dlu;
+  private String ilc;
   private int mScene;
-  private long nnD;
+  private long nOq;
   private PayReq.Options options;
-  private c vGu;
-  private boolean wOv;
+  private c wNB;
+  private boolean ycd;
   
   public OrderHandlerUI()
   {
     AppMethodBeat.i(71868);
     this.TAG = "MicroMsg.OrderHandlerUI";
-    this.BQk = false;
+    this.DqC = false;
     this.mScene = 0;
-    this.BQl = "";
-    this.BQm = false;
-    this.nnD = 0L;
-    this.BQn = false;
-    this.BQo = false;
-    this.BQp = false;
-    this.wOv = false;
-    this.BQq = false;
-    this.vGu = new c() {};
-    this.BQr = new c() {};
+    this.DqD = "";
+    this.DqE = false;
+    this.nOq = 0L;
+    this.DqF = false;
+    this.DqG = false;
+    this.DqH = false;
+    this.DqI = false;
+    this.ycd = false;
+    this.DqJ = false;
+    this.wNB = new c() {};
+    this.DqK = new c() {};
     AppMethodBeat.o(71868);
   }
   
-  private void Ys(String paramString)
+  private void abY(String paramString)
   {
     AppMethodBeat.i(71880);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = getString(2131765901);
     }
-    com.tencent.mm.ui.base.h.a(this, str, null, false, new DialogInterface.OnClickListener()
+    h.a(this, str, null, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -105,74 +107,74 @@ public class OrderHandlerUI
     AppMethodBeat.o(71880);
   }
   
-  private PayReq bIj()
+  private PayReq bMu()
   {
     AppMethodBeat.i(71871);
-    if (x.l(getIntent().getExtras(), "_wxapi_command_type") == 27) {}
+    if (y.k(getIntent().getExtras(), "_wxapi_command_type") == 27) {}
     for (Object localObject = new WXJointPay.JointPayReq();; localObject = new PayReq())
     {
-      ((PayReq)localObject).fromBundle(x.bf(getIntent()));
+      ((PayReq)localObject).fromBundle(y.bk(getIntent()));
       AppMethodBeat.o(71871);
       return localObject;
     }
   }
   
-  private void bs(Context paramContext, String paramString)
+  private void bv(Context paramContext, String paramString)
   {
     AppMethodBeat.i(71879);
     if (paramContext == null)
     {
-      ac.e(this.TAG, "startOuterApp context == null");
+      ad.e(this.TAG, "startOuterApp context == null");
       AppMethodBeat.o(71879);
       return;
     }
     if (TextUtils.isEmpty(paramString))
     {
-      ac.e(this.TAG, "startOuterApp callbackUrl is empty");
+      ad.e(this.TAG, "startOuterApp callbackUrl is empty");
       AppMethodBeat.o(71879);
       return;
     }
-    ac.i(this.TAG, "startOuterApp callbackUrl is ".concat(String.valueOf(paramString)));
+    ad.i(this.TAG, "startOuterApp callbackUrl is ".concat(String.valueOf(paramString)));
     paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
     paramString.addFlags(268435456);
-    if (bs.ah(paramContext, paramString))
+    if (bt.aj(paramContext, paramString))
     {
-      paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/mm/plugin/wallet_index/ui/OrderHandlerUI", "startOuterApp", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString.lR(0));
+      paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahp(), "com/tencent/mm/plugin/wallet_index/ui/OrderHandlerUI", "startOuterApp", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString.mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/wallet_index/ui/OrderHandlerUI", "startOuterApp", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     AppMethodBeat.o(71879);
   }
   
-  private void ce(String paramString, boolean paramBoolean)
+  private void cm(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(71875);
     if (this.mScene == 1)
     {
-      if ((TextUtils.isEmpty(this.BQl)) && (paramBoolean))
+      if ((TextUtils.isEmpty(this.DqD)) && (paramBoolean))
       {
         setContentViewVisibility(0);
-        Ys(paramString);
+        abY(paramString);
         AppMethodBeat.o(71875);
         return;
       }
-      bs(this, this.BQl);
+      bv(this, this.DqD);
       finish();
       AppMethodBeat.o(71875);
       return;
     }
-    e.a(this, this.hRO, this.BQj, this.options);
+    e.a(this, this.ilc, this.DqB, this.options);
     finish();
     AppMethodBeat.o(71875);
   }
   
-  private void euW()
+  private void eJc()
   {
     AppMethodBeat.i(71878);
     if (!((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).canOpenKindaCashier(this))
     {
-      com.tencent.mm.ui.base.h.a(this, getString(2131765336), "", getString(2131756757), new DialogInterface.OnClickListener()
+      h.a(this, getString(2131765336), "", getString(2131756757), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -184,9 +186,9 @@ public class OrderHandlerUI
       AppMethodBeat.o(71878);
       return;
     }
-    if (((Boolean)com.tencent.mm.pluginsdk.wallet.g.eQA().get("key_pay_offline_is_auth_doing", Boolean.FALSE)).booleanValue())
+    if (((Boolean)com.tencent.mm.pluginsdk.wallet.g.ffE().get("key_pay_offline_is_auth_doing", Boolean.FALSE)).booleanValue())
     {
-      com.tencent.mm.ui.base.h.a(this, getString(2131765336), "", getString(2131756757), new DialogInterface.OnClickListener()
+      h.a(this, getString(2131765336), "", getString(2131756757), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -198,22 +200,22 @@ public class OrderHandlerUI
       AppMethodBeat.o(71878);
       return;
     }
-    og localog = new og();
-    localog.dqH.ret = 1;
-    com.tencent.mm.sdk.b.a.GpY.l(localog);
+    op localop = new op();
+    localop.dCy.ret = 1;
+    com.tencent.mm.sdk.b.a.IbL.l(localop);
     AppMethodBeat.o(71878);
   }
   
   public void finish()
   {
     AppMethodBeat.i(71876);
-    ac.i(this.TAG, "finish hasFinish %s %s", new Object[] { Boolean.valueOf(this.wOv), bs.eWi().toString() });
-    if (this.wOv)
+    ad.i(this.TAG, "finish hasFinish %s %s", new Object[] { Boolean.valueOf(this.ycd), bt.flS().toString() });
+    if (this.ycd)
     {
       AppMethodBeat.o(71876);
       return;
     }
-    this.wOv = true;
+    this.ycd = true;
     super.finish();
     AppMethodBeat.o(71876);
   }
@@ -226,13 +228,13 @@ public class OrderHandlerUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(71874);
-    ac.i(this.TAG, "onActivityResult resp %s, onPayEndCalled %s", new Object[] { this.BQj, Boolean.valueOf(this.BQk) });
+    ad.i(this.TAG, "onActivityResult resp %s, onPayEndCalled %s", new Object[] { this.DqB, Boolean.valueOf(this.DqC) });
     if (paramIntent != null)
     {
       paramInt1 = paramIntent.getIntExtra("key_pay_reslut_type", 0);
       if (paramInt1 == 1000)
       {
-        ac.i(this.TAG, "onActivityResult resp %s, onPayEndCalled %s payResultType %s", new Object[] { this.BQj, Boolean.valueOf(this.BQk), Integer.valueOf(paramInt1) });
+        ad.i(this.TAG, "onActivityResult resp %s, onPayEndCalled %s payResultType %s", new Object[] { this.DqB, Boolean.valueOf(this.DqC), Integer.valueOf(paramInt1) });
         finish();
         AppMethodBeat.o(71874);
         return;
@@ -243,11 +245,11 @@ public class OrderHandlerUI
         return;
       }
     }
-    if ((this.BQj != null) && (!this.BQk))
+    if ((this.DqB != null) && (!this.DqC))
     {
-      ac.e(this.TAG, "onActivityResult, onPayEnd not called");
-      this.BQj.errCode = -2;
-      ce("", false);
+      ad.e(this.TAG, "onActivityResult, onPayEnd not called");
+      this.DqB.errCode = -2;
+      cm("", false);
     }
     AppMethodBeat.o(71874);
   }
@@ -256,7 +258,7 @@ public class OrderHandlerUI
   {
     AppMethodBeat.i(71877);
     super.onConfigurationChanged(paramConfiguration);
-    ac.i(this.TAG, "onConfigurationChanged");
+    ad.i(this.TAG, "onConfigurationChanged");
     AppMethodBeat.o(71877);
   }
   
@@ -266,27 +268,29 @@ public class OrderHandlerUI
     AppMethodBeat.i(71869);
     super.onCreate(paramBundle);
     this.TAG = ("MicroMsg.OrderHandlerUI@" + hashCode());
-    this.nnD = getIntent().getLongExtra("wallet_pay_key_check_time", -1L);
+    this.nOq = getIntent().getLongExtra("wallet_pay_key_check_time", -1L);
     setContentViewVisibility(8);
-    ab.fAq();
-    com.tencent.mm.sdk.b.a.GpY.c(this.vGu);
-    com.tencent.mm.sdk.b.a.GpY.c(this.BQr);
-    com.tencent.mm.wallet_core.b.fzz();
-    this.BQn = com.tencent.mm.wallet_core.b.b(b.a.pRO, true);
-    if ((this.BQn) && (((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).kindaCacheServiceGetBool("NEW_CASHIER_APP_PAY_SWTICH_KEY")))
+    ab.fRA();
+    com.tencent.mm.sdk.b.a.IbL.c(this.wNB);
+    com.tencent.mm.sdk.b.a.IbL.c(this.DqK);
+    com.tencent.mm.wallet_core.b.fQJ();
+    this.DqF = com.tencent.mm.wallet_core.b.b(b.a.qwl, true);
+    if ((this.DqF) && (((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).kindaCacheServiceGetBool("NEW_CASHIER_APP_PAY_SWTICH_KEY")))
     {
       bool1 = true;
-      this.BQo = bool1;
-      if ((!this.BQn) || (!((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).kindaCacheServiceGetBool("NEW_CASHIER_H5_PAY_SWTICH_KEY"))) {
-        break label197;
+      this.DqG = bool1;
+      if ((!this.DqF) || (!((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).kindaCacheServiceGetBool("NEW_CASHIER_H5_PAY_SWTICH_KEY"))) {
+        break label212;
       }
     }
-    label197:
+    label212:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.BQp = bool1;
+      this.DqH = bool1;
+      com.tencent.mm.wallet_core.b.fQJ();
+      this.DqI = com.tencent.mm.wallet_core.b.b(b.a.qwm, false);
       ((com.tencent.mm.plugin.wxpay.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).triggerSoterReInit();
-      com.tencent.soter.a.a.fDB();
+      com.tencent.soter.a.a.fUT();
       AppMethodBeat.o(71869);
       return;
       bool1 = false;
@@ -297,14 +301,14 @@ public class OrderHandlerUI
   public void onDestroy()
   {
     AppMethodBeat.i(71872);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(397, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(2655, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(283, this);
-    com.tencent.mm.sdk.b.a.GpY.d(this.vGu);
-    com.tencent.mm.sdk.b.a.GpY.d(this.BQr);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(397, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(2655, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(283, this);
+    com.tencent.mm.sdk.b.a.IbL.d(this.wNB);
+    com.tencent.mm.sdk.b.a.IbL.d(this.DqK);
     super.onDestroy();
     AppMethodBeat.o(71872);
   }
@@ -313,24 +317,24 @@ public class OrderHandlerUI
   {
     AppMethodBeat.i(71870);
     super.onResume();
-    PayReq localPayReq = bIj();
+    PayReq localPayReq = bMu();
     Object localObject1;
     String str1;
-    label388:
+    label384:
     String str2;
     Object localObject5;
     Object localObject4;
-    if ((this.BQi == null) || ((localPayReq.prepayId != null) && (!localPayReq.prepayId.equals(this.BQi.prepayId))))
+    if ((this.DqA == null) || ((localPayReq.prepayId != null) && (!localPayReq.prepayId.equals(this.DqA.prepayId))))
     {
-      this.BQi = localPayReq;
+      this.DqA = localPayReq;
       this.mScene = getIntent().getIntExtra("key_scene", 0);
-      ac.i(this.TAG, "onCreate() mScene is " + this.mScene);
+      ad.i(this.TAG, "onCreate() mScene is " + this.mScene);
       if (this.mScene == 0)
       {
-        this.hRO = getIntent().getStringExtra("_mmessage_appPackage");
-        if ((this.hRO == null) || (this.hRO.length() == 0))
+        this.ilc = getIntent().getStringExtra("_mmessage_appPackage");
+        if ((this.ilc == null) || (this.ilc.length() == 0))
         {
-          ac.e(this.TAG, "callerPkgName is null, dealOrder fail, can not callback");
+          ad.e(this.TAG, "callerPkgName is null, dealOrder fail, can not callback");
           finish();
           AppMethodBeat.o(71870);
           return;
@@ -338,32 +342,32 @@ public class OrderHandlerUI
       }
       this.options = new PayReq.Options();
       this.options.fromBundle(getIntent().getExtras());
-      if (x.l(getIntent().getExtras(), "_wxapi_command_type") == 27) {}
+      if (y.k(getIntent().getExtras(), "_wxapi_command_type") == 27) {}
       for (localObject1 = new WXJointPay.JointPayResp();; localObject1 = new PayResp())
       {
-        this.BQj = ((PayResp)localObject1);
-        this.BQj.prepayId = localPayReq.prepayId;
-        this.BQj.extData = localPayReq.extData;
+        this.DqB = ((PayResp)localObject1);
+        this.DqB.prepayId = localPayReq.prepayId;
+        this.DqB.extData = localPayReq.extData;
         str1 = "";
         if (this.mScene != 0) {
-          break label388;
+          break label384;
         }
         if (localPayReq.checkArgs()) {
           break;
         }
-        ac.e(this.TAG, "onCreate, PayReq checkArgs fail");
-        this.BQj.errCode = -1;
-        this.BQj.errStr = getString(2131761837);
-        e.a(this, this.hRO, this.BQj, this.options);
+        ad.e(this.TAG, "onCreate, PayReq checkArgs fail");
+        this.DqB.errCode = -1;
+        this.DqB.errStr = getString(2131761837);
+        e.a(this, this.ilc, this.DqB, this.options);
         finish();
         AppMethodBeat.o(71870);
         return;
       }
       if (!getIntent().getBooleanExtra("orderhandlerui_checkapp_result", false))
       {
-        ac.e(this.TAG, "onCreate, checkAppResult fail");
-        this.BQj.errCode = -1;
-        e.a(this, this.hRO, this.BQj, this.options);
+        ad.e(this.TAG, "onCreate, checkAppResult fail");
+        this.DqB.errCode = -1;
+        e.a(this, this.ilc, this.DqB, this.options);
         finish();
         AppMethodBeat.o(71870);
         return;
@@ -381,100 +385,77 @@ public class OrderHandlerUI
           getPackageManager().getPackageInfo(str2, 0);
           localObject1 = (String)getPackageManager().getPackageInfo(str2, 0).applicationInfo.loadLabel(getPackageManager());
           Object localObject2;
-          boolean bool3;
-          boolean bool4;
-          boolean bool5;
-          ac.printErrStackTrace(this.TAG, localNameNotFoundException1, "", new Object[0]);
+          ad.printErrStackTrace(this.TAG, localNameNotFoundException1, "", new Object[0]);
         }
         catch (PackageManager.NameNotFoundException localNameNotFoundException1)
         {
           try
           {
-            localObject2 = com.tencent.mm.pluginsdk.model.app.q.bJ(this, str2);
+            localObject2 = com.tencent.mm.pluginsdk.model.app.q.bN(this, str2);
             localObject4 = localObject2;
             localObject2 = localObject1;
-            localObject1 = bIj();
+            localObject1 = bMu();
             ((PayReq)localObject1).fromBundle(getIntent().getExtras());
             localObject1 = ((PayReq)localObject1).prepayId;
-            bool3 = ((String)localObject1).startsWith("sns_");
-            bool4 = ((String)localObject1).startsWith("tax_");
-            bool5 = ((String)localObject1).startsWith("seb_ff_");
-            if ((!bool3) && (!bool4) && (!bool5)) {
-              break label663;
-            }
-            bool1 = true;
-            bool3 = this.BQp;
-            if (bool1) {
-              break label668;
-            }
-            bool2 = true;
-            this.BQp = (bool2 & bool3);
-            bool3 = this.BQo;
-            if (bool1) {
-              break label673;
-            }
-            bool1 = true;
-            this.BQo = (bool1 & bool3);
-            if ((this.mScene != 1) || (!this.BQp)) {
+            if ((this.mScene != 1) || (!this.DqH)) {
               break;
             }
-            euW();
+            eJc();
             ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).startWxpayH5Pay(this, getIntent().getExtras(), str1, str2, (String)localObject2, (String)localObject4);
             AppMethodBeat.o(71870);
             return;
           }
           catch (PackageManager.NameNotFoundException localNameNotFoundException2)
           {
-            boolean bool1;
-            boolean bool2;
-            Object localObject3;
-            break label641;
+            for (;;)
+            {
+              Object localObject3;
+              continue;
+              int i = 0;
+            }
           }
           localNameNotFoundException1 = localNameNotFoundException1;
           localObject1 = localObject5;
         }
-        label641:
         localObject3 = localObject1;
-        continue;
-        label663:
-        bool1 = false;
-        continue;
-        label668:
-        bool2 = false;
-        continue;
-        label673:
-        bool1 = false;
       }
-      if ((this.mScene == 0) && (this.BQo))
+      if (this.mScene == 0)
       {
-        euW();
-        ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).startWxpayAppPay(this, getIntent().getExtras(), str1, str2, localObject3, (String)localObject4);
-        AppMethodBeat.o(71870);
-        return;
+        if ((((String)localObject1).startsWith("sns_")) && (this.DqI)) {}
+        for (i = 1; i != 0; i = 1)
+        {
+          eJc();
+          ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).startWxpayAppPay(this, getIntent().getExtras(), str1, str2, localObject3, (String)localObject4);
+          AppMethodBeat.o(71870);
+          return;
+          if ((((String)localObject1).startsWith("sns_")) || (!this.DqG)) {
+            break label839;
+          }
+        }
       }
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.a(397, this);
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.a(2655, this);
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.a(283, this);
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajB().gAO.a(397, this);
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajB().gAO.a(2655, this);
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajB().gAO.a(283, this);
       localObject5 = new com.tencent.mm.plugin.wallet_index.c.g(localPayReq, str1, str2, localObject3, (String)localObject4);
       localObject1 = localObject5;
-      if (!bs.isNullOrNil(localPayReq.prepayId))
+      if (!bt.isNullOrNil(localPayReq.prepayId))
       {
         if (!localPayReq.prepayId.startsWith("up_")) {
-          break label875;
+          break label797;
         }
         localObject1 = new l(localPayReq, str1, str2, localObject3, (String)localObject4);
       }
     }
     for (;;)
     {
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.a((n)localObject1, 0);
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajB().gAO.a((n)localObject1, 0);
       AppMethodBeat.o(71870);
       return;
-      label875:
+      label797:
       localObject1 = localObject5;
       if (localPayReq.prepayId.startsWith("sns_")) {
         localObject1 = new i(localPayReq, str1, str2, localObject3, (String)localObject4);
@@ -493,57 +474,57 @@ public class OrderHandlerUI
     PayInfo localPayInfo = new PayInfo();
     if (this.mScene == 1)
     {
-      localPayInfo.dqL = 36;
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.b(paramn.getType(), this);
-      ac.i(this.TAG, "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+      localPayInfo.dCC = 36;
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajB().gAO.b(paramn.getType(), this);
+      ad.i(this.TAG, "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
       localObject3 = (com.tencent.mm.plugin.wallet_index.c.g)paramn;
-      paramn = (cdm)((com.tencent.mm.plugin.wallet_index.c.g)localObject3).rr.hvs.hvw;
+      paramn = (cil)((com.tencent.mm.plugin.wallet_index.c.g)localObject3).rr.hNL.hNQ;
       if (paramn != null) {
         break label233;
       }
       paramn = null;
       label154:
-      this.BQl = paramn;
+      this.DqD = paramn;
       if ((paramInt1 != 4) || (paramInt2 != -5)) {
         break label254;
       }
-      ac.e(this.TAG, "onSceneEnd, auth access denied");
-      this.BQj.errCode = -1;
-      ce(paramString, true);
-      paramInt1 = localPayInfo.dqL;
-      if (this.BQi != null) {
+      ad.e(this.TAG, "onSceneEnd, auth access denied");
+      this.DqB.errCode = -1;
+      cm(paramString, true);
+      paramInt1 = localPayInfo.dCC;
+      if (this.DqA != null) {
         break label243;
       }
     }
     label233:
     label243:
-    for (paramString = "";; paramString = this.BQi.prepayId)
+    for (paramString = "";; paramString = this.DqA.prepayId)
     {
-      af.x(paramInt1, paramString, paramInt2);
+      af.w(paramInt1, paramString, paramInt2);
       AppMethodBeat.o(71873);
       return;
-      localPayInfo.dqL = 2;
+      localPayInfo.dCC = 2;
       break;
-      paramn = paramn.Fsm;
+      paramn = paramn.Hcs;
       break label154;
     }
     label254:
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ac.e(this.TAG, "onSceneEnd,  PayAuthApp is failed!");
-      this.BQj.errCode = -1;
-      ce(paramString, true);
-      paramInt1 = localPayInfo.dqL;
-      if (this.BQi == null) {}
-      for (paramString = "";; paramString = this.BQi.prepayId)
+      ad.e(this.TAG, "onSceneEnd,  PayAuthApp is failed!");
+      this.DqB.errCode = -1;
+      cm(paramString, true);
+      paramInt1 = localPayInfo.dCC;
+      if (this.DqA == null) {}
+      for (paramString = "";; paramString = this.DqA.prepayId)
       {
-        af.x(paramInt1, paramString, paramInt2);
+        af.w(paramInt1, paramString, paramInt2);
         AppMethodBeat.o(71873);
         return;
       }
     }
-    paramn = (cdm)((com.tencent.mm.plugin.wallet_index.c.g)localObject3).rr.hvs.hvw;
+    paramn = (cil)((com.tencent.mm.plugin.wallet_index.c.g)localObject3).rr.hNL.hNQ;
     label373:
     Object localObject1;
     label397:
@@ -551,23 +532,23 @@ public class OrderHandlerUI
     if (paramn == null)
     {
       paramInt1 = -1;
-      paramn = (cdm)((com.tencent.mm.plugin.wallet_index.c.g)localObject3).rr.hvs.hvw;
+      paramn = (cil)((com.tencent.mm.plugin.wallet_index.c.g)localObject3).rr.hNL.hNQ;
       if (paramn != null) {
         break label529;
       }
       paramn = null;
-      localObject1 = (cdm)((com.tencent.mm.plugin.wallet_index.c.g)localObject3).rr.hvs.hvw;
+      localObject1 = (cil)((com.tencent.mm.plugin.wallet_index.c.g)localObject3).rr.hNL.hNQ;
       if (localObject1 != null) {
         break label539;
       }
       localObject1 = null;
-      localObject2 = (cdm)((com.tencent.mm.plugin.wallet_index.c.g)localObject3).rr.hvs.hvw;
+      localObject2 = (cil)((com.tencent.mm.plugin.wallet_index.c.g)localObject3).rr.hNL.hNQ;
       if (localObject2 != null) {
         break label549;
       }
       localObject2 = null;
       label421:
-      localObject3 = (cdm)((com.tencent.mm.plugin.wallet_index.c.g)localObject3).rr.hvs.hvw;
+      localObject3 = (cil)((com.tencent.mm.plugin.wallet_index.c.g)localObject3).rr.hNL.hNQ;
       if (localObject3 != null) {
         break label559;
       }
@@ -576,64 +557,64 @@ public class OrderHandlerUI
     label539:
     label549:
     label559:
-    for (Object localObject3 = null;; localObject3 = ((cdm)localObject3).EJV)
+    for (Object localObject3 = null;; localObject3 = ((cil)localObject3).GsX)
     {
-      ac.i(this.TAG, "onSceneEnd, respErrCode = %d, respErrMsg = %s, respPrepayId = %s, respAppSource = %s", new Object[] { Integer.valueOf(paramInt1), paramn, localObject1, localObject2 });
-      if (!bs.isNullOrNil((String)localObject1)) {
+      ad.i(this.TAG, "onSceneEnd, respErrCode = %d, respErrMsg = %s, respPrepayId = %s, respAppSource = %s", new Object[] { Integer.valueOf(paramInt1), paramn, localObject1, localObject2 });
+      if (!bt.isNullOrNil((String)localObject1)) {
         break label569;
       }
-      ac.e(this.TAG, "onSceneEnd, respPrepayId is null");
-      this.BQj.errCode = -1;
-      ce(paramString, true);
+      ad.e(this.TAG, "onSceneEnd, respPrepayId is null");
+      this.DqB.errCode = -1;
+      cm(paramString, true);
       AppMethodBeat.o(71873);
       return;
-      paramInt1 = paramn.pAG;
+      paramInt1 = paramn.qel;
       break;
-      paramn = paramn.pAH;
+      paramn = paramn.qem;
       break label373;
-      localObject1 = ((cdm)localObject1).EJP;
+      localObject1 = ((cil)localObject1).GsR;
       break label397;
-      localObject2 = ((cdm)localObject2).EJQ;
+      localObject2 = ((cil)localObject2).GsS;
       break label421;
     }
     label569:
-    af.x(localPayInfo.dqL, (String)localObject1, paramInt2);
-    if ((localObject3 != null) && (!bs.isNullOrNil(((dvk)localObject3).GcR)))
+    af.w(localPayInfo.dCC, (String)localObject1, paramInt2);
+    if ((localObject3 != null) && (!bt.isNullOrNil(((ebj)localObject3).HNX)))
     {
-      this.BQq = true;
+      this.DqJ = true;
       paramString = new Intent();
       paramString.putExtra("prepayId", (String)localObject1);
       paramString.putExtra("is_jsapi_offline_pay", false);
-      paramString.putExtra("pay_gate_url", ((dvk)localObject3).GcR);
-      paramString.putExtra("need_dialog", ((dvk)localObject3).GcT);
-      paramString.putExtra("dialog_text", ((dvk)localObject3).GcU);
-      paramString.putExtra("max_count", ((dvk)localObject3).GcS.EhK);
-      paramString.putExtra("inteval_time", ((dvk)localObject3).GcS.EhJ);
-      paramString.putExtra("default_wording", ((dvk)localObject3).GcS.EhL);
+      paramString.putExtra("pay_gate_url", ((ebj)localObject3).HNX);
+      paramString.putExtra("need_dialog", ((ebj)localObject3).HNZ);
+      paramString.putExtra("dialog_text", ((ebj)localObject3).HOa);
+      paramString.putExtra("max_count", ((ebj)localObject3).HNY.FOR);
+      paramString.putExtra("inteval_time", ((ebj)localObject3).HNY.FOQ);
+      paramString.putExtra("default_wording", ((ebj)localObject3).HNY.FOS);
       d.c(this, "wallet_core", ".ui.WalletMixOrderInfoUI", paramString);
     }
     for (;;)
     {
-      this.dac = ((String)localObject1);
-      this.BQk = false;
+      this.dlu = ((String)localObject1);
+      this.DqC = false;
       AppMethodBeat.o(71873);
       return;
-      localPayInfo.appId = this.BQi.appId;
-      localPayInfo.dac = ((String)localObject1);
-      localPayInfo.partnerId = this.BQi.partnerId;
-      localPayInfo.BPA = ((String)localObject2);
-      localPayInfo.DGK = String.valueOf(paramInt1);
+      localPayInfo.appId = this.DqA.appId;
+      localPayInfo.dlu = ((String)localObject1);
+      localPayInfo.partnerId = this.DqA.partnerId;
+      localPayInfo.DpS = ((String)localObject2);
+      localPayInfo.FlR = String.valueOf(paramInt1);
       localPayInfo.errMsg = paramn;
-      if (this.nnD > 0L)
+      if (this.nOq > 0L)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(641L, 1L, 1L, true);
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(641L, 2L, bs.Ap(this.nnD), true);
-        if (localPayInfo.hbR == null) {
-          localPayInfo.hbR = new Bundle();
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(641L, 1L, 1L, true);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(641L, 2L, bt.Df(this.nOq), true);
+        if (localPayInfo.htZ == null) {
+          localPayInfo.htZ = new Bundle();
         }
-        localPayInfo.hbR.putLong("wallet_pay_key_check_time", this.nnD);
+        localPayInfo.htZ.putLong("wallet_pay_key_check_time", this.nOq);
       }
-      f.a(this, localPayInfo, 123);
+      com.tencent.mm.pluginsdk.wallet.f.a(this, localPayInfo, 123);
     }
   }
   
@@ -645,7 +626,7 @@ public class OrderHandlerUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.ui.OrderHandlerUI
  * JD-Core Version:    0.7.0.1
  */

@@ -7,127 +7,128 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
 import com.tencent.mm.plugin.recordvideo.plugin.t;
-import com.tencent.mm.protocal.protobuf.bpl;
+import com.tencent.mm.plugin.recordvideo.plugin.t.a;
+import com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder;
+import com.tencent.mm.protocal.protobuf.bty;
 import com.tencent.mm.sticker.loader.e;
 import com.tencent.mm.sticker.ui.view.CaptureStickerHint;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "layout", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "bottomSpace", "Lkotlin/Function0;", "", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;Lkotlin/jvm/functions/Function0;)V", "TAG", "", "getBottomSpace", "()Lkotlin/jvm/functions/Function0;", "historyCallback", "Lcom/tencent/mm/plugin/finder/video/sticker/DiffCallbackHolder;", "holder", "Lcom/tencent/mm/plugin/finder/video/sticker/EditorPanelHolder;", "iconView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getLayout", "()Landroid/view/View;", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "moreCallbackHolder", "selectedLensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "stickerData", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerData;", "stickerHint", "Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint;", "stickerView", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectView;", "tipsView", "Landroid/widget/ImageView;", "recordHistory", "", "release", "setOpen", "isOpen", "", "showMore", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "layout", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "bottomSpace", "Lkotlin/Function0;", "", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;Lkotlin/jvm/functions/Function0;)V", "TAG", "", "getBottomSpace", "()Lkotlin/jvm/functions/Function0;", "historyCallback", "Lcom/tencent/mm/plugin/finder/video/sticker/DiffCallbackHolder;", "holder", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "iconView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getLayout", "()Landroid/view/View;", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "moreCallbackHolder", "selectedLensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "stickerData", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerData;", "stickerHint", "Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint;", "stickerView", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectView;", "tipsView", "Landroid/widget/ImageView;", "recordHistory", "", "release", "setOpen", "isOpen", "", "showMore", "plugin-finder_release"})
 public final class g
   implements t
 {
   final String TAG;
-  private final com.tencent.mm.vending.e.c<com.tencent.mm.vending.e.a> qXf;
-  private final View qe;
-  final com.tencent.mm.plugin.recordvideo.plugin.parent.d rTT;
-  final WeImageView rUO;
-  final ImageView rUP;
-  final CaptureStickerHint rUQ;
-  final EditorPanelHolder rUR;
-  public bpl rUS;
-  StickerEffectView rUT;
-  final b rUU;
-  final a rUV;
-  final a rUW;
-  final d.g.a.a<Integer> rUX;
+  private final com.tencent.mm.vending.e.c<com.tencent.mm.vending.e.a> rIh;
+  private final View rY;
+  final com.tencent.mm.plugin.recordvideo.plugin.parent.d sQE;
+  public bty sRA;
+  StickerEffectView sRB;
+  final b sRC;
+  final a sRD;
+  final a sRE;
+  final d.g.a.a<Integer> sRF;
+  final WeImageView sRw;
+  final ImageView sRx;
+  final CaptureStickerHint sRy;
+  final EditorPanelHolder sRz;
   
   public g(View paramView, com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd, d.g.a.a<Integer> parama)
   {
-    AppMethodBeat.i(204071);
-    this.qe = paramView;
-    this.rTT = paramd;
-    this.rUX = parama;
+    AppMethodBeat.i(205024);
+    this.rY = paramView;
+    this.sQE = paramd;
+    this.sRF = parama;
     this.TAG = "MicroMsg.StickerEffectPlugin";
-    paramView = this.qe.findViewById(2131308009);
-    k.g(paramView, "layout.findViewById(R.id.sticker_effect)");
-    this.rUO = ((WeImageView)paramView);
-    paramView = this.qe.findViewById(2131308010);
-    k.g(paramView, "layout.findViewById(R.id.sticker_effect_check)");
-    this.rUP = ((ImageView)paramView);
-    paramView = this.qe.findViewById(2131307390);
-    k.g(paramView, "layout.findViewById(R.id…der_capture_sticker_hint)");
-    this.rUQ = ((CaptureStickerHint)paramView);
-    paramView = this.qe.getContext();
-    k.g(paramView, "layout.context");
-    this.rUR = new EditorPanelHolder(paramView);
-    this.qXf = new com.tencent.mm.vending.e.c();
-    this.rUV = new a();
-    this.rUW = new a();
-    this.rUO.setIconColor(-1);
-    this.rUP.setImageDrawable(com.tencent.mm.cc.a.l(this.qe.getContext(), 2131691551));
-    this.rUU = new b((com.tencent.mm.vending.e.b)this.qXf, (c)new f((d)this.rUV, (d)this.rUW));
-    this.rUO.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    paramView = this.rY.findViewById(2131308009);
+    p.g(paramView, "layout.findViewById(R.id.sticker_effect)");
+    this.sRw = ((WeImageView)paramView);
+    paramView = this.rY.findViewById(2131308010);
+    p.g(paramView, "layout.findViewById(R.id.sticker_effect_check)");
+    this.sRx = ((ImageView)paramView);
+    paramView = this.rY.findViewById(2131307390);
+    p.g(paramView, "layout.findViewById(R.id…der_capture_sticker_hint)");
+    this.sRy = ((CaptureStickerHint)paramView);
+    paramView = this.rY.getContext();
+    p.g(paramView, "layout.context");
+    this.sRz = new EditorPanelHolder(paramView);
+    this.rIh = new com.tencent.mm.vending.e.c();
+    this.sRD = new a();
+    this.sRE = new a();
+    this.sRw.setIconColor(-1);
+    this.sRx.setImageDrawable(com.tencent.mm.cc.a.l(this.rY.getContext(), 2131691551));
+    this.sRC = new b((com.tencent.mm.vending.e.b)this.rIh, (c)new f((d)this.sRD, (d)this.sRE));
+    this.sRw.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(204064);
-        paramAnonymousView = this.rUY;
-        if (paramAnonymousView.rUT == null)
+        AppMethodBeat.i(205017);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/video/sticker/StickerEffectPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        paramAnonymousView = this.sRG;
+        if (paramAnonymousView.sRB == null)
         {
-          paramAnonymousView.rUU.cfp();
-          Object localObject1 = paramAnonymousView.rUO.getContext();
-          k.g(localObject1, "iconView.context");
-          paramAnonymousView.rUT = new StickerEffectView((Context)localObject1);
-          Object localObject3 = new ViewGroup.MarginLayoutParams(-1, ((Number)paramAnonymousView.rUX.invoke()).intValue() - com.tencent.mm.cc.a.fromDPToPix(paramAnonymousView.rUO.getContext(), 8));
-          localObject1 = paramAnonymousView.rUR;
-          Object localObject2 = paramAnonymousView.rUT;
-          if (localObject2 == null) {
-            k.fOy();
+          paramAnonymousView.sRC.cjS();
+          localObject = paramAnonymousView.sRw.getContext();
+          p.g(localObject, "iconView.context");
+          paramAnonymousView.sRB = new StickerEffectView((Context)localObject);
+          localObject = new ViewGroup.MarginLayoutParams(-1, ((Number)paramAnonymousView.sRF.invoke()).intValue() - com.tencent.mm.cc.a.fromDPToPix(paramAnonymousView.sRw.getContext(), 8));
+          EditorPanelHolder localEditorPanelHolder = paramAnonymousView.sRz;
+          StickerEffectView localStickerEffectView = paramAnonymousView.sRB;
+          if (localStickerEffectView == null) {
+            p.gfZ();
           }
-          localObject2 = (View)localObject2;
-          localObject3 = (ViewGroup.LayoutParams)localObject3;
-          k.h(localObject2, "view");
-          ((EditorPanelHolder)localObject1).rUv = ((View)localObject2);
-          localObject3 = new FrameLayout.LayoutParams((ViewGroup.LayoutParams)localObject3);
-          ((FrameLayout.LayoutParams)localObject3).gravity = 80;
-          ((EditorPanelHolder)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-          paramAnonymousView.rUR.setOnVisibleChangeCallback((d.g.a.b)new g.a(paramAnonymousView));
-          localObject1 = paramAnonymousView.rUT;
-          if (localObject1 != null) {
-            ((StickerEffectView)localObject1).setMoreDiffCallback(paramAnonymousView.rUW);
+          localEditorPanelHolder.a((View)localStickerEffectView, (ViewGroup.LayoutParams)localObject);
+          paramAnonymousView.sRz.setOnVisibleChangeCallback((d.g.a.b)new g.a(paramAnonymousView));
+          localObject = paramAnonymousView.sRB;
+          if (localObject != null) {
+            ((StickerEffectView)localObject).setMoreDiffCallback(paramAnonymousView.sRE);
           }
-          localObject1 = paramAnonymousView.rUT;
-          if (localObject1 != null) {
-            ((StickerEffectView)localObject1).setHistoryDiffCallback(paramAnonymousView.rUV);
+          localObject = paramAnonymousView.sRB;
+          if (localObject != null) {
+            ((StickerEffectView)localObject).setHistoryDiffCallback(paramAnonymousView.sRD);
           }
-          localObject1 = paramAnonymousView.rUT;
-          if (localObject1 != null) {
-            ((StickerEffectView)localObject1).setSelectionCallback((d.g.a.b)new g.b(paramAnonymousView));
+          localObject = paramAnonymousView.sRB;
+          if (localObject != null) {
+            ((StickerEffectView)localObject).setSelectionCallback((d.g.a.b)new g.b(paramAnonymousView));
           }
-          localObject1 = paramAnonymousView.rUT;
-          if (localObject1 != null) {
-            ((StickerEffectView)localObject1).setLoadMoreCallback((d.g.a.a)new g.c(paramAnonymousView));
+          localObject = paramAnonymousView.sRB;
+          if (localObject != null) {
+            ((StickerEffectView)localObject).setLoadMoreCallback((d.g.a.a)new g.c(paramAnonymousView));
           }
         }
-        paramAnonymousView.rUR.setShow(true);
-        paramAnonymousView.lU(true);
-        AppMethodBeat.o(204064);
+        paramAnonymousView.sRz.setShow(true);
+        paramAnonymousView.mm(true);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/video/sticker/StickerEffectPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(205017);
       }
     });
-    AppMethodBeat.o(204071);
+    AppMethodBeat.o(205024);
   }
   
-  public final boolean alO()
+  public final boolean aoB()
   {
     return false;
   }
   
-  public final void awk() {}
+  public final void ayX() {}
   
-  final void lU(boolean paramBoolean)
+  final void mm(boolean paramBoolean)
   {
-    AppMethodBeat.i(204069);
+    AppMethodBeat.i(205022);
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("PARAM_STICKER_PANEL_OPEN", paramBoolean);
-    this.rTT.a(d.c.wwh, localBundle);
-    AppMethodBeat.o(204069);
+    this.sQE.a(d.c.xEp, localBundle);
+    AppMethodBeat.o(205022);
   }
   
   public final String name()
@@ -141,31 +142,40 @@ public final class g
   
   public final void onPause() {}
   
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(205025);
+    p.h(paramArrayOfString, "permissions");
+    p.h(paramArrayOfInt, "grantResults");
+    t.a.a(paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(205025);
+  }
+  
   public final void onResume() {}
   
   public final void release()
   {
-    AppMethodBeat.i(204070);
-    this.qXf.dead();
-    StickerEffectView localStickerEffectView = this.rUT;
+    AppMethodBeat.i(205023);
+    this.rIh.dead();
+    StickerEffectView localStickerEffectView = this.sRB;
     if (localStickerEffectView != null)
     {
-      e locale = e.GAP;
-      e.b(localStickerEffectView.rVc);
-      AppMethodBeat.o(204070);
+      e locale = e.ImJ;
+      e.b(localStickerEffectView.sRK);
+      AppMethodBeat.o(205023);
       return;
     }
-    AppMethodBeat.o(204070);
+    AppMethodBeat.o(205023);
   }
   
   public final void reset() {}
   
   public final void setVisibility(int paramInt) {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
   static final class a
-    extends d.g.b.l
-    implements d.g.a.b<Boolean, y>
+    extends q
+    implements d.g.a.b<Boolean, z>
   {
     a(g paramg)
     {
@@ -173,10 +183,10 @@ public final class g
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "invoke"})
   static final class b
-    extends d.g.b.l
-    implements d.g.a.b<bpl, y>
+    extends q
+    implements d.g.a.b<bty, z>
   {
     b(g paramg)
     {
@@ -184,10 +194,10 @@ public final class g
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class c
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     c(g paramg)
     {

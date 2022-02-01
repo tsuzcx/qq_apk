@@ -7,26 +7,26 @@ import android.view.ViewOverlay;
 final class ae
   implements af
 {
-  private final ViewOverlay BG;
+  private final ViewOverlay Dy;
   
   ae(View paramView)
   {
-    this.BG = paramView.getOverlay();
+    this.Dy = paramView.getOverlay();
   }
   
   public final void add(Drawable paramDrawable)
   {
-    this.BG.add(paramDrawable);
+    this.Dy.add(paramDrawable);
   }
   
   public final void remove(Drawable paramDrawable)
   {
-    this.BG.remove(paramDrawable);
+    this.Dy.remove(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.ae
  * JD-Core Version:    0.7.0.1
  */

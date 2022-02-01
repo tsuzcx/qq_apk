@@ -1,6 +1,7 @@
 package com.tencent.liteav;
 
 import android.graphics.Bitmap;
+import com.tencent.liteav.basic.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONArray;
 
@@ -42,7 +43,7 @@ public class f
   public int h = 20;
   public int i = 1;
   public int j = 2;
-  public int k = 1;
+  public c k = c.c;
   public int l = 1;
   public boolean m = true;
   public int n = 3;
@@ -59,28 +60,19 @@ public class f
   public int y = 10;
   public boolean z = false;
   
-  public static a a(int paramInt)
+  public static a a(c paramc)
   {
-    AppMethodBeat.i(15529);
+    AppMethodBeat.i(187539);
     a locala = new a();
-    switch (paramInt)
+    switch (1.a[paramc.ordinal()])
     {
-    case 21: 
-    case 22: 
-    case 23: 
-    case 24: 
-    case 25: 
-    case 26: 
-    case 27: 
-    case 28: 
-    case 29: 
     default: 
       locala.a = 368;
       locala.b = 640;
     }
     for (;;)
     {
-      AppMethodBeat.o(15529);
+      AppMethodBeat.o(187539);
       return locala;
       locala.a = 368;
       locala.b = 640;
@@ -156,9 +148,12 @@ public class f
   public boolean a()
   {
     AppMethodBeat.i(15530);
-    a locala = a(this.k);
-    this.a = locala.a;
-    this.b = locala.b;
+    if (this.k != c.a)
+    {
+      a locala = a(this.k);
+      this.a = locala.a;
+      this.b = locala.b;
+    }
     if (this.a > this.b)
     {
       AppMethodBeat.o(15530);

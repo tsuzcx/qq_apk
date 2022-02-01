@@ -13,28 +13,28 @@ public final class a
   extends LinkedHashMap<Spannable, Float>
 {
   public long duration;
-  public b ykq;
-  public Interpolator ykr;
-  private String yks;
+  public b zBf;
+  public Interpolator zBg;
+  private String zBh;
   
   public a()
   {
     AppMethodBeat.i(96334);
-    this.ykq = new b();
-    this.ykr = null;
+    this.zBf = new b();
+    this.zBg = null;
     this.duration = 0L;
-    this.yks = "";
+    this.zBh = "";
     AppMethodBeat.o(96334);
   }
   
   public a(b paramb)
   {
     AppMethodBeat.i(96335);
-    this.ykq = new b();
-    this.ykr = null;
+    this.zBf = new b();
+    this.zBg = null;
     this.duration = 0L;
-    this.yks = "";
-    this.ykq = paramb;
+    this.zBh = "";
+    this.zBf = paramb;
     AppMethodBeat.o(96335);
   }
   
@@ -58,7 +58,7 @@ public final class a
     return true;
   }
   
-  public final Spannable[] dKg()
+  public final Spannable[] dWu()
   {
     AppMethodBeat.i(96337);
     Object localObject = new ArrayList();
@@ -73,7 +73,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a
  * JD-Core Version:    0.7.0.1
  */

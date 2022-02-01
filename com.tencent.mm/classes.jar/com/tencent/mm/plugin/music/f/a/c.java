@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.music.f.a;
 
 public abstract interface c
 {
-  public abstract boolean anI(String paramString);
+  public abstract boolean asH(String paramString);
   
   public abstract String findLibPath(String paramString);
   

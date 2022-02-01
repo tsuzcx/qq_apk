@@ -1,14 +1,17 @@
 package com.tencent.luggage.bridge;
 
 import android.content.Context;
+import android.webkit.ValueCallback;
 
 public abstract interface s
 {
   public abstract void addJavascriptInterface(Object paramObject, String paramString);
   
-  public abstract void bE(String paramString);
+  public abstract void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback);
   
   public abstract Context getContext();
+  
+  public abstract String getUserAgent();
 }
 
 

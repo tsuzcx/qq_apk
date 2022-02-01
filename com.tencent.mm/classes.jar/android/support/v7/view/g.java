@@ -26,30 +26,30 @@ import org.xmlpull.v1.XmlPullParser;
 public final class g
   extends MenuInflater
 {
-  static final Class<?>[] abI;
-  static final Class<?>[] abJ;
-  final Object[] abK;
-  final Object[] abL;
-  Object abM;
+  static final Class<?>[] adA;
+  static final Class<?>[] adz;
+  final Object[] adB;
+  final Object[] adC;
+  Object adD;
   Context mContext;
   
   static
   {
     Class[] arrayOfClass = new Class[1];
     arrayOfClass[0] = Context.class;
-    abI = arrayOfClass;
-    abJ = arrayOfClass;
+    adz = arrayOfClass;
+    adA = arrayOfClass;
   }
   
   public g(Context paramContext)
   {
     super(paramContext);
     this.mContext = paramContext;
-    this.abK = new Object[] { paramContext };
-    this.abL = this.abK;
+    this.adB = new Object[] { paramContext };
+    this.adC = this.adB;
   }
   
-  static Object M(Object paramObject)
+  static Object N(Object paramObject)
   {
     for (;;)
     {
@@ -115,7 +115,7 @@ public final class g
           }
           else if (str.equals("menu"))
           {
-            a(paramXmlPullParser, paramAttributeSet, localb.hi());
+            a(paramXmlPullParser, paramAttributeSet, localb.hy());
           }
           else
           {
@@ -130,15 +130,15 @@ public final class g
             }
             else if (str.equals("group"))
             {
-              localb.hg();
+              localb.hw();
             }
             else if (str.equals("item"))
             {
-              if (!localb.abV) {
-                if ((localb.aco != null) && (localb.aco.hasSubMenu())) {
-                  localb.hi();
+              if (!localb.adM) {
+                if ((localb.aef != null) && (localb.aef.hasSubMenu())) {
+                  localb.hy();
                 } else {
-                  localb.hh();
+                  localb.hx();
                 }
               }
             }
@@ -243,17 +243,17 @@ public final class g
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
-    private static final Class<?>[] abN = { MenuItem.class };
-    private Object abM;
+    private static final Class<?>[] adE = { MenuItem.class };
+    private Object adD;
     private Method mMethod;
     
     public a(Object paramObject, String paramString)
     {
-      this.abM = paramObject;
+      this.adD = paramObject;
       Class localClass = paramObject.getClass();
       try
       {
-        this.mMethod = localClass.getMethod(paramString, abN);
+        this.mMethod = localClass.getMethod(paramString, adE);
         return;
       }
       catch (Exception paramObject)
@@ -269,9 +269,9 @@ public final class g
       try
       {
         if (this.mMethod.getReturnType() == Boolean.TYPE) {
-          return ((Boolean)this.mMethod.invoke(this.abM, new Object[] { paramMenuItem })).booleanValue();
+          return ((Boolean)this.mMethod.invoke(this.adD, new Object[] { paramMenuItem })).booleanValue();
         }
-        this.mMethod.invoke(this.abM, new Object[] { paramMenuItem });
+        this.mMethod.invoke(this.adD, new Object[] { paramMenuItem });
         return true;
       }
       catch (Exception paramMenuItem)
@@ -283,45 +283,45 @@ public final class g
   
   final class b
   {
-    private Menu abO;
-    private int abP;
-    private int abQ;
-    private int abR;
-    private int abS;
-    private boolean abT;
-    private boolean abU;
-    boolean abV;
-    private int abW;
-    private int abX;
-    private CharSequence abY;
-    private CharSequence abZ;
-    private int aca;
-    private char acb;
-    private int acc;
-    private char acd;
-    private int ace;
-    private int acf;
-    private boolean acg;
-    private boolean ach;
-    private boolean aci;
-    private int acj;
-    private int ack;
-    private String acl;
-    private String acm;
-    private String acn;
-    android.support.v4.view.b aco;
-    private CharSequence acp;
-    private CharSequence acq;
-    private ColorStateList acr = null;
-    private PorterDuff.Mode acs = null;
+    private Menu adF;
+    private int adG;
+    private int adH;
+    private int adI;
+    private int adJ;
+    private boolean adK;
+    private boolean adL;
+    boolean adM;
+    private int adN;
+    private int adO;
+    private CharSequence adP;
+    private CharSequence adQ;
+    private int adR;
+    private char adS;
+    private int adT;
+    private char adU;
+    private int adV;
+    private int adW;
+    private boolean adX;
+    private boolean adY;
+    private boolean adZ;
+    private int aea;
+    private int aeb;
+    private String aec;
+    private String aed;
+    private String aee;
+    android.support.v4.view.b aef;
+    private CharSequence aeg;
+    private CharSequence aeh;
+    private ColorStateList aei = null;
+    private PorterDuff.Mode aej = null;
     
     public b(Menu paramMenu)
     {
-      this.abO = paramMenu;
-      hg();
+      this.adF = paramMenu;
+      hw();
     }
     
-    private static char D(String paramString)
+    private static char C(String paramString)
     {
       if (paramString == null) {
         return '\000';
@@ -332,15 +332,15 @@ public final class g
     private void a(MenuItem paramMenuItem)
     {
       int i = 1;
-      Object localObject = paramMenuItem.setChecked(this.acg).setVisible(this.ach).setEnabled(this.aci);
-      if (this.acf > 0) {}
+      Object localObject = paramMenuItem.setChecked(this.adX).setVisible(this.adY).setEnabled(this.adZ);
+      if (this.adW > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        ((MenuItem)localObject).setCheckable(bool).setTitleCondensed(this.abZ).setIcon(this.aca);
-        if (this.acj >= 0) {
-          paramMenuItem.setShowAsAction(this.acj);
+        ((MenuItem)localObject).setCheckable(bool).setTitleCondensed(this.adQ).setIcon(this.adR);
+        if (this.aea >= 0) {
+          paramMenuItem.setShowAsAction(this.aea);
         }
-        if (this.acn == null) {
+        if (this.aee == null) {
           break label173;
         }
         if (!g.this.mContext.isRestricted()) {
@@ -349,12 +349,12 @@ public final class g
         throw new IllegalStateException("The android:onClick attribute cannot be used within a restricted context");
       }
       localObject = g.this;
-      if (((g)localObject).abM == null) {
-        ((g)localObject).abM = g.M(((g)localObject).mContext);
+      if (((g)localObject).adD == null) {
+        ((g)localObject).adD = g.N(((g)localObject).mContext);
       }
-      paramMenuItem.setOnMenuItemClickListener(new g.a(((g)localObject).abM, this.acn));
+      paramMenuItem.setOnMenuItemClickListener(new g.a(((g)localObject).adD, this.aee));
       label173:
-      if (this.acf >= 2)
+      if (this.adW >= 2)
       {
         if (!(paramMenuItem instanceof j)) {
           break label458;
@@ -363,52 +363,52 @@ public final class g
       }
       else
       {
-        if (this.acl == null) {
+        if (this.aec == null) {
           break label660;
         }
-        paramMenuItem.setActionView((View)newInstance(this.acl, g.abI, g.this.abK));
+        paramMenuItem.setActionView((View)newInstance(this.aec, g.adz, g.this.adB));
       }
       for (;;)
       {
-        if ((this.ack > 0) && (i == 0)) {
-          paramMenuItem.setActionView(this.ack);
+        if ((this.aeb > 0) && (i == 0)) {
+          paramMenuItem.setActionView(this.aeb);
         }
-        if (this.aco != null)
+        if (this.aef != null)
         {
-          localObject = this.aco;
+          localObject = this.aef;
           if ((paramMenuItem instanceof android.support.v4.a.a.b)) {
             ((android.support.v4.a.a.b)paramMenuItem).a((android.support.v4.view.b)localObject);
           }
         }
-        localObject = this.acp;
+        localObject = this.aeg;
         label310:
         label335:
         char c;
         if ((paramMenuItem instanceof android.support.v4.a.a.b))
         {
           ((android.support.v4.a.a.b)paramMenuItem).k((CharSequence)localObject);
-          localObject = this.acq;
+          localObject = this.aeh;
           if (!(paramMenuItem instanceof android.support.v4.a.a.b)) {
             break label562;
           }
           ((android.support.v4.a.a.b)paramMenuItem).l((CharSequence)localObject);
-          c = this.acb;
-          i = this.acc;
+          c = this.adS;
+          i = this.adT;
           if (!(paramMenuItem instanceof android.support.v4.a.a.b)) {
             break label582;
           }
           ((android.support.v4.a.a.b)paramMenuItem).setAlphabeticShortcut(c, i);
           label364:
-          c = this.acd;
-          i = this.ace;
+          c = this.adU;
+          i = this.adV;
           if (!(paramMenuItem instanceof android.support.v4.a.a.b)) {
             break label602;
           }
           ((android.support.v4.a.a.b)paramMenuItem).setNumericShortcut(c, i);
           label393:
-          if (this.acs != null)
+          if (this.aej != null)
           {
-            localObject = this.acs;
+            localObject = this.aej;
             if (!(paramMenuItem instanceof android.support.v4.a.a.b)) {
               break label622;
             }
@@ -419,9 +419,9 @@ public final class g
         {
           for (;;)
           {
-            if (this.acr != null)
+            if (this.aei != null)
             {
-              localObject = this.acr;
+              localObject = this.aei;
               if (!(paramMenuItem instanceof android.support.v4.a.a.b)) {
                 break label642;
               }
@@ -435,10 +435,10 @@ public final class g
             localObject = (k)paramMenuItem;
             try
             {
-              if (((k)localObject).aeT == null) {
-                ((k)localObject).aeT = ((android.support.v4.a.a.b)((k)localObject).adi).getClass().getDeclaredMethod("setExclusiveCheckable", new Class[] { Boolean.TYPE });
+              if (((k)localObject).agK == null) {
+                ((k)localObject).agK = ((android.support.v4.a.a.b)((k)localObject).aeZ).getClass().getDeclaredMethod("setExclusiveCheckable", new Class[] { Boolean.TYPE });
               }
-              ((k)localObject).aeT.invoke(((k)localObject).adi, new Object[] { Boolean.TRUE });
+              ((k)localObject).agK.invoke(((k)localObject).aeZ, new Object[] { Boolean.TRUE });
             }
             catch (Exception localException) {}
           }
@@ -498,12 +498,12 @@ public final class g
     public final void c(AttributeSet paramAttributeSet)
     {
       paramAttributeSet = g.this.mContext.obtainStyledAttributes(paramAttributeSet, a.a.MenuGroup);
-      this.abP = paramAttributeSet.getResourceId(1, 0);
-      this.abQ = paramAttributeSet.getInt(3, 0);
-      this.abR = paramAttributeSet.getInt(4, 0);
-      this.abS = paramAttributeSet.getInt(5, 0);
-      this.abT = paramAttributeSet.getBoolean(2, true);
-      this.abU = paramAttributeSet.getBoolean(0, true);
+      this.adG = paramAttributeSet.getResourceId(1, 0);
+      this.adH = paramAttributeSet.getInt(3, 0);
+      this.adI = paramAttributeSet.getInt(4, 0);
+      this.adJ = paramAttributeSet.getInt(5, 0);
+      this.adK = paramAttributeSet.getBoolean(2, true);
+      this.adL = paramAttributeSet.getBoolean(0, true);
       paramAttributeSet.recycle();
     }
     
@@ -511,46 +511,46 @@ public final class g
     {
       int j = 1;
       paramAttributeSet = g.this.mContext.obtainStyledAttributes(paramAttributeSet, a.a.MenuItem);
-      this.abW = paramAttributeSet.getResourceId(2, 0);
-      this.abX = (paramAttributeSet.getInt(5, this.abQ) & 0xFFFF0000 | paramAttributeSet.getInt(6, this.abR) & 0xFFFF);
-      this.abY = paramAttributeSet.getText(7);
-      this.abZ = paramAttributeSet.getText(8);
-      this.aca = paramAttributeSet.getResourceId(0, 0);
-      this.acb = D(paramAttributeSet.getString(9));
-      this.acc = paramAttributeSet.getInt(16, 4096);
-      this.acd = D(paramAttributeSet.getString(10));
-      this.ace = paramAttributeSet.getInt(20, 4096);
+      this.adN = paramAttributeSet.getResourceId(2, 0);
+      this.adO = (paramAttributeSet.getInt(5, this.adH) & 0xFFFF0000 | paramAttributeSet.getInt(6, this.adI) & 0xFFFF);
+      this.adP = paramAttributeSet.getText(7);
+      this.adQ = paramAttributeSet.getText(8);
+      this.adR = paramAttributeSet.getResourceId(0, 0);
+      this.adS = C(paramAttributeSet.getString(9));
+      this.adT = paramAttributeSet.getInt(16, 4096);
+      this.adU = C(paramAttributeSet.getString(10));
+      this.adV = paramAttributeSet.getInt(20, 4096);
       int i;
       if (paramAttributeSet.hasValue(11)) {
         if (paramAttributeSet.getBoolean(11, false))
         {
           i = 1;
-          this.acf = i;
+          this.adW = i;
           label167:
-          this.acg = paramAttributeSet.getBoolean(3, false);
-          this.ach = paramAttributeSet.getBoolean(4, this.abT);
-          this.aci = paramAttributeSet.getBoolean(1, this.abU);
-          this.acj = paramAttributeSet.getInt(21, -1);
-          this.acn = paramAttributeSet.getString(12);
-          this.ack = paramAttributeSet.getResourceId(13, 0);
-          this.acl = paramAttributeSet.getString(15);
-          this.acm = paramAttributeSet.getString(14);
-          if (this.acm == null) {
+          this.adX = paramAttributeSet.getBoolean(3, false);
+          this.adY = paramAttributeSet.getBoolean(4, this.adK);
+          this.adZ = paramAttributeSet.getBoolean(1, this.adL);
+          this.aea = paramAttributeSet.getInt(21, -1);
+          this.aee = paramAttributeSet.getString(12);
+          this.aeb = paramAttributeSet.getResourceId(13, 0);
+          this.aec = paramAttributeSet.getString(15);
+          this.aed = paramAttributeSet.getString(14);
+          if (this.aed == null) {
             break label399;
           }
           i = j;
           label264:
-          if ((i == 0) || (this.ack != 0) || (this.acl != null)) {
+          if ((i == 0) || (this.aeb != 0) || (this.aec != null)) {
             break label404;
           }
-          this.aco = ((android.support.v4.view.b)newInstance(this.acm, g.abJ, g.this.abL));
+          this.aef = ((android.support.v4.view.b)newInstance(this.aed, g.adA, g.this.adC));
           label307:
-          this.acp = paramAttributeSet.getText(17);
-          this.acq = paramAttributeSet.getText(22);
+          this.aeg = paramAttributeSet.getText(17);
+          this.aeh = paramAttributeSet.getText(22);
           if (!paramAttributeSet.hasValue(19)) {
             break label412;
           }
-          this.acs = x.a(paramAttributeSet.getInt(19, -1), this.acs);
+          this.aej = x.a(paramAttributeSet.getInt(19, -1), this.aej);
           label354:
           if (!paramAttributeSet.hasValue(18)) {
             break label420;
@@ -561,44 +561,44 @@ public final class g
       label404:
       label412:
       label420:
-      for (this.acr = paramAttributeSet.getColorStateList(18);; this.acr = null)
+      for (this.aei = paramAttributeSet.getColorStateList(18);; this.aei = null)
       {
         paramAttributeSet.recycle();
-        this.abV = false;
+        this.adM = false;
         return;
         i = 0;
         break;
-        this.acf = this.abS;
+        this.adW = this.adJ;
         break label167;
         i = 0;
         break label264;
-        this.aco = null;
+        this.aef = null;
         break label307;
-        this.acs = null;
+        this.aej = null;
         break label354;
       }
     }
     
-    public final void hg()
+    public final void hw()
     {
-      this.abP = 0;
-      this.abQ = 0;
-      this.abR = 0;
-      this.abS = 0;
-      this.abT = true;
-      this.abU = true;
+      this.adG = 0;
+      this.adH = 0;
+      this.adI = 0;
+      this.adJ = 0;
+      this.adK = true;
+      this.adL = true;
     }
     
-    public final void hh()
+    public final void hx()
     {
-      this.abV = true;
-      a(this.abO.add(this.abP, this.abW, this.abX, this.abY));
+      this.adM = true;
+      a(this.adF.add(this.adG, this.adN, this.adO, this.adP));
     }
     
-    public final SubMenu hi()
+    public final SubMenu hy()
     {
-      this.abV = true;
-      SubMenu localSubMenu = this.abO.addSubMenu(this.abP, this.abW, this.abX, this.abY);
+      this.adM = true;
+      SubMenu localSubMenu = this.adF.addSubMenu(this.adG, this.adN, this.adO, this.adP);
       a(localSubMenu.getItem());
       return localSubMenu;
     }

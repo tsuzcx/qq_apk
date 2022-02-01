@@ -45,9 +45,9 @@ public class CheckedDatabaseListActivity
         paramAnonymousAdapterView.setClass(CheckedDatabaseListActivity.this, CheckResultActivity.class);
         paramAnonymousAdapterView.putExtra("db_label", paramAnonymousView);
         paramAnonymousView = CheckedDatabaseListActivity.this;
-        paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousAdapterView);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.aeD(), "com/tencent/sqlitelint/behaviour/alert/CheckedDatabaseListActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.lR(0));
+        paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousAdapterView);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahp(), "com/tencent/sqlitelint/behaviour/alert/CheckedDatabaseListActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/sqlitelint/behaviour/alert/CheckedDatabaseListActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(52890);
       }

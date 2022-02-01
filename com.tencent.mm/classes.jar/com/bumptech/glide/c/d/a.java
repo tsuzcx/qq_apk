@@ -26,7 +26,7 @@ public class a<T>
     return 1;
   }
   
-  public final Class<T> oy()
+  public final Class<T> oQ()
   {
     AppMethodBeat.i(77346);
     Class localClass = this.data.getClass();

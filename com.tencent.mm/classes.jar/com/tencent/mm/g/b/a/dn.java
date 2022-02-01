@@ -6,62 +6,55 @@ import com.tencent.mm.plugin.report.a;
 public final class dn
   extends a
 {
-  public long dFt;
-  public String dFy = "";
-  public String dFz = "";
-  public String dNK = "";
-  public long dSe;
-  public long dSh;
-  public long dSi;
+  private String dWR = "";
+  public long edo = 0L;
+  public long egG = 0L;
+  public long egH = 0L;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(184778);
+    AppMethodBeat.i(149916);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dNK);
+    ((StringBuffer)localObject).append(this.dWR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFt);
+    ((StringBuffer)localObject).append(this.edo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFy);
+    ((StringBuffer)localObject).append(this.egG);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFz);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSi);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSh);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSe);
+    ((StringBuffer)localObject).append(this.egH);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(184778);
+    awz((String)localObject);
+    AppMethodBeat.o(149916);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(184779);
+    AppMethodBeat.i(149917);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("roomid:").append(this.dNK);
+    ((StringBuffer)localObject).append("sessionID:").append(this.dWR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("role:").append(this.dFt);
+    ((StringBuffer)localObject).append("actionCode:").append(this.edo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appid:").append(this.dFy);
+    ((StringBuffer)localObject).append("actionCodeResult:").append(this.egG);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appname:").append(this.dFz);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("todo:").append(this.dSi);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("openHelp:").append(this.dSh);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("exit:").append(this.dSe);
+    ((StringBuffer)localObject).append("clickAddContact:").append(this.egH);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(184779);
+    AppMethodBeat.o(149917);
     return localObject;
   }
   
   public final int getId()
   {
-    return 19440;
+    return 15850;
+  }
+  
+  public final dn mT(String paramString)
+  {
+    AppMethodBeat.i(149915);
+    this.dWR = t("sessionID", paramString, true);
+    AppMethodBeat.o(149915);
+    return this;
   }
 }
 

@@ -2,19 +2,19 @@ package com.tencent.mm.cd;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.IOException;
 import java.io.InputStream;
 
 public final class f
 {
-  public SparseArray<a> Gke;
+  public SparseArray<a> HVQ;
   public byte[] mData;
   
   private f(SparseArray<a> paramSparseArray, byte[] paramArrayOfByte)
   {
-    this.Gke = paramSparseArray;
+    this.HVQ = paramSparseArray;
     this.mData = paramArrayOfByte;
   }
   
@@ -25,7 +25,7 @@ public final class f
     {
       byte[] arrayOfByte = new byte[paramInt];
       if (paramInputStream.read(arrayOfByte, 0, arrayOfByte.length) != arrayOfByte.length) {
-        ac.e("MicroMsg.language.StringArraysCollection", "[cpan] newPluralsConllection failed. data length no equal.");
+        ad.e("MicroMsg.language.StringArraysCollection", "[cpan] newPluralsConllection failed. data length no equal.");
       }
       paramSparseArray = new f(paramSparseArray, arrayOfByte);
       AppMethodBeat.o(141248);
@@ -33,7 +33,7 @@ public final class f
     }
     catch (IOException paramSparseArray)
     {
-      ac.e("MicroMsg.language.StringArraysCollection", "[cpan] newPluralsConllection failed:%s", new Object[] { bs.m(paramSparseArray) });
+      ad.e("MicroMsg.language.StringArraysCollection", "[cpan] newPluralsConllection failed:%s", new Object[] { bt.n(paramSparseArray) });
       AppMethodBeat.o(141248);
     }
     return null;
@@ -41,13 +41,13 @@ public final class f
   
   static final class a
   {
-    public final int[] Gkf;
+    public final int[] HVR;
     public final int resId;
     
     public a(int paramInt, int[] paramArrayOfInt)
     {
       this.resId = paramInt;
-      this.Gkf = paramArrayOfInt;
+      this.HVR = paramArrayOfInt;
     }
   }
 }

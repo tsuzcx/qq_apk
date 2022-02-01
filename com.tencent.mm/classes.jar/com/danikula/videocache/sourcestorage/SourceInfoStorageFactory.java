@@ -7,17 +7,17 @@ public class SourceInfoStorageFactory
 {
   public static SourceInfoStorage newEmptySourceInfoStorage()
   {
-    AppMethodBeat.i(192562);
+    AppMethodBeat.i(215909);
     NoSourceInfoStorage localNoSourceInfoStorage = new NoSourceInfoStorage();
-    AppMethodBeat.o(192562);
+    AppMethodBeat.o(215909);
     return localNoSourceInfoStorage;
   }
   
   public static SourceInfoStorage newSourceInfoStorage(Context paramContext)
   {
-    AppMethodBeat.i(192561);
+    AppMethodBeat.i(215908);
     paramContext = new DatabaseSourceInfoStorage(paramContext);
-    AppMethodBeat.o(192561);
+    AppMethodBeat.o(215908);
     return paramContext;
   }
 }

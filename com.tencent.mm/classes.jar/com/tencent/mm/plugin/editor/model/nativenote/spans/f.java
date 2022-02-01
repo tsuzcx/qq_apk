@@ -10,15 +10,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   extends ArrowKeyMovementMethod
 {
-  private static f oTz;
+  private static f pxj;
   
-  public static f caN()
+  public static f cfr()
   {
     AppMethodBeat.i(181935);
-    if (oTz == null) {
-      oTz = new f();
+    if (pxj == null) {
+      pxj = new f();
     }
-    f localf = oTz;
+    f localf = pxj;
     AppMethodBeat.o(181935);
     return localf;
   }
@@ -38,7 +38,7 @@ public final class f
       Object localObject = paramTextView.getLayout();
       j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(n + (j - k)), m);
       localObject = (s[])paramSpannable.getSpans(j, j + 1, s.class);
-      if ((m < com.tencent.mm.plugin.editor.model.nativenote.manager.f.bZV()) && (localObject.length != 0))
+      if ((m < com.tencent.mm.plugin.editor.model.nativenote.manager.f.cez()) && (localObject.length != 0))
       {
         if (i == 0) {
           localObject[0].a(paramTextView, paramSpannable, paramMotionEvent, localObject[0]);
@@ -53,7 +53,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.f
  * JD-Core Version:    0.7.0.1
  */

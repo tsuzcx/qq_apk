@@ -5,17 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class n
   extends p
 {
-  public String jyU;
-  public String xID;
-  public int yiF;
-  public int yiG;
-  public long yiH;
+  public String jSR;
+  public String yXS;
+  public int zyN;
+  public int zyO;
+  public long zyP;
   
   public final String toString()
   {
     AppMethodBeat.i(96317);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("[sid:").append(this.yiF).append(", compId:").append(this.yiG).append(", aid:").append(this.yiH).append(", traceId:").append(this.jyU).append(", uxinfo:").append(this.xID).append("]");
+    ((StringBuffer)localObject).append("[sid:").append(this.zyN).append(", compId:").append(this.zyO).append(", aid:").append(this.zyP).append(", traceId:").append(this.jSR).append(", uxinfo:").append(this.yXS).append("]");
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(96317);
     return localObject;

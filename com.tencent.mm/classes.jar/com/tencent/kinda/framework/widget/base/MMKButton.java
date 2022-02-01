@@ -2,9 +2,6 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
@@ -16,8 +13,8 @@ import com.tencent.kinda.gen.FontStyle;
 import com.tencent.kinda.gen.KButton;
 import com.tencent.kinda.gen.KImage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.ArrayList;
 
@@ -63,25 +60,25 @@ public class MMKButton
   {
     AppMethodBeat.i(19011);
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    BackgroundColorDrawable localBackgroundColorDrawable;
+    MMKButton.BackgroundColorDrawable localBackgroundColorDrawable;
     if ((this.isEnableHighlight) && (this.pressedColor >= 0L))
     {
-      localBackgroundColorDrawable = new BackgroundColorDrawable(MMKViewUtil.argbColor(this.pressedColor));
+      localBackgroundColorDrawable = new MMKButton.BackgroundColorDrawable(MMKViewUtil.argbColor(this.pressedColor));
       localStateListDrawable.addState(new int[] { 16842919 }, localBackgroundColorDrawable);
     }
     if (this.selectedColor >= 0L)
     {
-      localBackgroundColorDrawable = new BackgroundColorDrawable(MMKViewUtil.argbColor(this.selectedColor));
+      localBackgroundColorDrawable = new MMKButton.BackgroundColorDrawable(MMKViewUtil.argbColor(this.selectedColor));
       localStateListDrawable.addState(new int[] { 16842913 }, localBackgroundColorDrawable);
     }
     if (this.disabledColor >= 0L)
     {
-      localBackgroundColorDrawable = new BackgroundColorDrawable(MMKViewUtil.argbColor(this.disabledColor));
+      localBackgroundColorDrawable = new MMKButton.BackgroundColorDrawable(MMKViewUtil.argbColor(this.disabledColor));
       localStateListDrawable.addState(new int[] { -16842910 }, localBackgroundColorDrawable);
     }
     if (ColorUtil.getColorByMode(this.normalColor) >= 0L)
     {
-      localBackgroundColorDrawable = new BackgroundColorDrawable(MMKViewUtil.argbColor(ColorUtil.getColorByModeNoCompat(this.normalColor)));
+      localBackgroundColorDrawable = new MMKButton.BackgroundColorDrawable(MMKViewUtil.argbColor(ColorUtil.getColorByModeNoCompat(this.normalColor)));
       localStateListDrawable.addState(new int[0], localBackgroundColorDrawable);
     }
     setViewBackground(localStateListDrawable);
@@ -167,7 +164,7 @@ public class MMKButton
   
   private void updateTypeface()
   {
-    AppMethodBeat.i(207406);
+    AppMethodBeat.i(199502);
     int i;
     if (this.textFontName != null) {
       if (this.textFontName.equalsIgnoreCase("WeChat-Sans-SS-Light")) {
@@ -178,17 +175,17 @@ public class MMKButton
     {
       if (i != -1)
       {
-        String str = e.adP(i);
+        String str = e.agp(i);
         try
         {
-          ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(Typeface.createFromAsset(ai.getContext().getAssets(), str));
-          AppMethodBeat.o(207406);
+          ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(Typeface.createFromAsset(aj.getContext().getAssets(), str));
+          AppMethodBeat.o(199502);
           return;
         }
         catch (Exception localException)
         {
-          ac.e("MMKView.MMKButton", "setTypeface() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
-          AppMethodBeat.o(207406);
+          ad.e("MMKView.MMKButton", "setTypeface() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+          AppMethodBeat.o(199502);
           return;
         }
         if (this.textFontName.equalsIgnoreCase("WeChat-Sans-SS-Medium"))
@@ -210,11 +207,11 @@ public class MMKButton
       if (this.fontStyle == FontStyle.REGULAR)
       {
         ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(null, 0);
-        AppMethodBeat.o(207406);
+        AppMethodBeat.o(199502);
         return;
       }
       ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(null, 1);
-      AppMethodBeat.o(207406);
+      AppMethodBeat.o(199502);
       return;
       label203:
       i = -1;
@@ -337,10 +334,10 @@ public class MMKButton
   
   public void setFontStyle(FontStyle paramFontStyle)
   {
-    AppMethodBeat.i(207405);
+    AppMethodBeat.i(199501);
     this.fontStyle = paramFontStyle;
     updateTypeface();
-    AppMethodBeat.o(207405);
+    AppMethodBeat.o(199501);
   }
   
   public void setNormalColor(DynamicColor paramDynamicColor)
@@ -360,12 +357,12 @@ public class MMKButton
       for (this.disabledColor = Long.parseLong("14FFFFFF", 16);; this.disabledColor = ColorUtil.MergeColors(ColorUtil.getColorByModeNoCompat(paramDynamicColor), 2583691263L))
       {
         updateBackgroundWithColor();
-        ac.i("MMKView.MMKButton", "MMKButton[" + getText() + "] setNormalColor设置完成后，normalColor：" + this.normalColor + "，pressedColor：" + this.pressedColor + "，disabledColor：" + this.disabledColor);
+        ad.i("MMKView.MMKButton", "MMKButton[" + getText() + "] setNormalColor设置完成后，normalColor：" + this.normalColor + "，pressedColor：" + this.pressedColor + "，disabledColor：" + this.disabledColor);
         AppMethodBeat.o(18999);
         return;
       }
     }
-    ac.i("MMKView.MMKButton", "MMKButton[" + getText() + "] setNormalColor设置相同值。");
+    ad.i("MMKView.MMKButton", "MMKButton[" + getText() + "] setNormalColor设置相同值。");
     AppMethodBeat.o(18999);
   }
   
@@ -417,7 +414,7 @@ public class MMKButton
     if (paramString != null)
     {
       this.textFontName = paramString;
-      ((KindaButtonImpl)getView()).setTextFont(Typeface.createFromAsset(ai.getContext().getAssets(), paramString));
+      ((KindaButtonImpl)getView()).setTextFont(Typeface.createFromAsset(aj.getContext().getAssets(), paramString));
       notifyChanged();
     }
     AppMethodBeat.o(19001);
@@ -432,8 +429,8 @@ public class MMKButton
       long l = 0x99000000 | ColorUtil.getColorByModeNoCompat(paramDynamicColor) & 0xFFFFFF;
       this.textPressedColor = l;
       this.textDisabledColor = l;
-      ac.d("MMKView.MMKButton", "100mango pressedColor" + Long.toString(this.textPressedColor) + "disableColor" + Long.toString(this.textDisabledColor));
-      ac.d("MMKView.MMKButton", "100mango pressedColor" + Long.toHexString(this.textPressedColor) + "disableColor" + Long.toHexString(this.textDisabledColor));
+      ad.d("MMKView.MMKButton", "100mango pressedColor" + Long.toString(this.textPressedColor) + "disableColor" + Long.toString(this.textDisabledColor));
+      ad.d("MMKView.MMKButton", "100mango pressedColor" + Long.toHexString(this.textPressedColor) + "disableColor" + Long.toHexString(this.textDisabledColor));
       updateTextColor();
     }
     AppMethodBeat.o(19002);
@@ -444,48 +441,9 @@ public class MMKButton
     AppMethodBeat.i(19000);
     this.textSize = paramFloat;
     if (paramFloat > 0.0F) {
-      ((KindaButtonImpl)getView()).setTextSize(0, MMKViewUtil.dpToPx(ai.getContext(), paramFloat));
+      ((KindaButtonImpl)getView()).setTextSize(0, MMKViewUtil.dpToPx(aj.getContext(), paramFloat));
     }
     AppMethodBeat.o(19000);
-  }
-  
-  static class BackgroundColorDrawable
-    extends Drawable
-  {
-    private int color;
-    
-    BackgroundColorDrawable(int paramInt)
-    {
-      this.color = paramInt;
-    }
-    
-    public void draw(Canvas paramCanvas)
-    {
-      AppMethodBeat.i(18993);
-      paramCanvas.drawColor(this.color);
-      AppMethodBeat.o(18993);
-    }
-    
-    public int getOpacity()
-    {
-      AppMethodBeat.i(18994);
-      if (this.color == 0)
-      {
-        AppMethodBeat.o(18994);
-        return -2;
-      }
-      if (Color.alpha(this.color) > 0)
-      {
-        AppMethodBeat.o(18994);
-        return -3;
-      }
-      AppMethodBeat.o(18994);
-      return -1;
-    }
-    
-    public void setAlpha(int paramInt) {}
-    
-    public void setColorFilter(ColorFilter paramColorFilter) {}
   }
 }
 

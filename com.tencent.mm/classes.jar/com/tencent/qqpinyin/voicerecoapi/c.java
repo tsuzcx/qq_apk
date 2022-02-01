@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private TRVADNative JRr;
-  private int ieG;
+  private TRVADNative LLj;
+  private int iya;
   private int mTimeout;
   
   public c()
   {
     AppMethodBeat.i(87690);
-    this.JRr = new TRVADNative();
-    this.ieG = 500000;
+    this.LLj = new TRVADNative();
+    this.iya = 500000;
     this.mTimeout = 10000000;
     AppMethodBeat.o(87690);
   }
@@ -20,8 +20,8 @@ public final class c
   public c(int paramInt)
   {
     AppMethodBeat.i(87689);
-    this.JRr = new TRVADNative();
-    this.ieG = paramInt;
+    this.LLj = new TRVADNative();
+    this.iya = paramInt;
     this.mTimeout = 5000000;
     AppMethodBeat.o(87689);
   }
@@ -41,22 +41,22 @@ public final class c
           AppMethodBeat.o(87693);
           return;
         }
-        switch (this.JRr.mfeSendData(paramArrayOfShort, paramInt))
+        switch (this.LLj.mfeSendData(paramArrayOfShort, paramInt))
         {
         case 1: 
-          parama.JRs = 0;
+          parama.LLk = 0;
         }
       }
       finally {}
-      parama.JRw = ((int)d1);
-      new StringBuilder("volumn：").append(parama.JRw);
+      parama.LLo = ((int)d1);
+      new StringBuilder("volumn：").append(parama.LLo);
       AppMethodBeat.o(87693);
       break;
-      parama.JRs = 1;
+      parama.LLk = 1;
       break label200;
-      parama.JRs = 2;
+      parama.LLk = 2;
       break label200;
-      parama.JRs = 3;
+      parama.LLk = 3;
       int j;
       int i;
       label200:
@@ -83,21 +83,21 @@ public final class c
     }
   }
   
-  public final int fCr()
+  public final int fTH()
   {
     AppMethodBeat.i(87691);
-    int j = this.JRr.mfeInit(this.ieG, this.mTimeout);
+    int j = this.LLj.mfeInit(this.iya, this.mTimeout);
     int i = j;
     if (j == 0)
     {
-      j = this.JRr.mfeOpen();
+      j = this.LLj.mfeOpen();
       i = j;
       if (j == 0)
       {
-        j = this.JRr.mfeEnableNoiseDetection(true);
+        j = this.LLj.mfeEnableNoiseDetection(true);
         i = j;
         if (j == 0) {
-          i = this.JRr.mfeStart();
+          i = this.LLj.mfeStart();
         }
       }
     }
@@ -113,14 +113,14 @@ public final class c
   public final int stop()
   {
     AppMethodBeat.i(87692);
-    int j = this.JRr.mfeStop();
+    int j = this.LLj.mfeStop();
     int i = j;
     if (j == 0)
     {
-      j = this.JRr.mfeClose();
+      j = this.LLj.mfeClose();
       i = j;
       if (j == 0) {
-        i = this.JRr.mfeExit();
+        i = this.LLj.mfeExit();
       }
     }
     if (i == 0)
@@ -134,7 +134,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.qqpinyin.voicerecoapi.c
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 public final class z
   extends p
 {
-  public String yjE;
-  public String yjf;
+  public String zAs;
+  public int zAt;
+  public String zzN;
 }
 
 

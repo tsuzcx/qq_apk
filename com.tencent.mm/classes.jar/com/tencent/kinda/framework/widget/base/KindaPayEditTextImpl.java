@@ -3,6 +3,7 @@ package com.tencent.kinda.framework.widget.base;
 import android.widget.LinearLayout;
 import com.tencent.kinda.gen.ClearButtonMode;
 import com.tencent.kinda.gen.DynamicColor;
+import com.tencent.kinda.gen.EditTextRestrictType;
 import com.tencent.kinda.gen.KEditTextOnTextBeginChangeCallback;
 import com.tencent.kinda.gen.KEditTextOnTextChangedCallback;
 import com.tencent.kinda.gen.KEditTextOnTextEndEditingCallback;
@@ -63,6 +64,11 @@ public class KindaPayEditTextImpl
   public int getMaxLength()
   {
     return 0;
+  }
+  
+  public EditTextRestrictType getRestrictType()
+  {
+    return null;
   }
   
   public String getSalt()
@@ -126,6 +132,8 @@ public class KindaPayEditTextImpl
   public void setOnTextChangedCallback(KEditTextOnTextChangedCallback paramKEditTextOnTextChangedCallback) {}
   
   public void setOnTextEndEditingCallback(KEditTextOnTextEndEditingCallback paramKEditTextOnTextEndEditingCallback) {}
+  
+  public void setRestrictType(EditTextRestrictType paramEditTextRestrictType) {}
   
   public void setSalt(String paramString) {}
   

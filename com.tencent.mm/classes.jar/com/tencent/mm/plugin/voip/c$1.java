@@ -5,10 +5,6 @@ import com.tencent.mm.app.n.a;
 import com.tencent.mm.blink.b;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.voip.model.u;
-import com.tencent.mm.plugin.voip.model.u.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
 
 final class c$1
   extends n.a
@@ -18,10 +14,10 @@ final class c$1
   public final void onAppBackground(String paramString)
   {
     AppMethodBeat.i(114801);
-    if ((g.agM()) && (g.agP().ggT))
+    if ((g.ajx()) && (g.ajA().gAD))
     {
-      g.agP();
-      a.afS();
+      g.ajA();
+      a.aiE();
     }
     AppMethodBeat.o(114801);
   }
@@ -29,32 +25,11 @@ final class c$1
   public final void onAppForeground(String paramString)
   {
     AppMethodBeat.i(114800);
-    if ((g.agM()) && (g.agP().ggT))
+    if ((g.ajx()) && (g.ajA().gAD))
     {
-      g.agP();
-      if (!a.afS()) {
-        b.TR().w(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(114799);
-            u localu = c.ehb();
-            u.b localb = localu.AEP;
-            if (localb != null)
-            {
-              ac.i("MicroMsg.Voip.VoipService", "on voip resume");
-              String str = localb.toUser;
-              boolean bool1 = localb.AFd;
-              boolean bool2 = localb.AFe;
-              localu.dfW();
-              localu.a(ai.getContext(), str, bool1, bool2, true);
-              AppMethodBeat.o(114799);
-              return;
-            }
-            ac.i("MicroMsg.Voip.VoipService", "do not need voip resume");
-            AppMethodBeat.o(114799);
-          }
-        });
+      g.ajA();
+      if (!a.aiE()) {
+        b.Wi().w(new c.1.1(this));
       }
     }
     AppMethodBeat.o(114800);

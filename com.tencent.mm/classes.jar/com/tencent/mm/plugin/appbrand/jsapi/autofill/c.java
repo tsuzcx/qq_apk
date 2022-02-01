@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.autofill;
 
-import com.tencent.mm.plugin.appbrand.jsapi.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.at;
 
 public final class c
-  extends ar
+  extends at
 {
   private static final int CTRL_INDEX = 856;
   public static final String NAME = "onTextViewLinkClick";

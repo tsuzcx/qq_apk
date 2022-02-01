@@ -3,11 +3,11 @@ package e.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String Fsx;
-  public String Fsy;
-  public int Fsz;
+  public String HcE;
+  public String HcF;
+  public int HcG;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,37 +15,37 @@ public final class g
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Fsx != null) {
-        paramVarArgs.d(1, this.Fsx);
+      if (this.HcE != null) {
+        paramVarArgs.d(1, this.HcE);
       }
-      if (this.Fsy != null) {
-        paramVarArgs.d(2, this.Fsy);
+      if (this.HcF != null) {
+        paramVarArgs.d(2, this.HcF);
       }
-      paramVarArgs.aR(3, this.Fsz);
+      paramVarArgs.aS(3, this.HcG);
       AppMethodBeat.o(91745);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Fsx == null) {
+      if (this.HcE == null) {
         break label318;
       }
     }
     label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Fsx) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.HcE) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.Fsy != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Fsy);
+      if (this.HcF != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.HcF);
       }
-      paramInt = f.a.a.b.b.a.bx(3, this.Fsz);
+      paramInt = f.a.a.b.b.a.bz(3, this.HcG);
       AppMethodBeat.o(91745);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(91745);
@@ -61,15 +61,15 @@ public final class g
           AppMethodBeat.o(91745);
           return -1;
         case 1: 
-          localg.Fsx = locala.LVo.readString();
+          localg.HcE = locala.NPN.readString();
           AppMethodBeat.o(91745);
           return 0;
         case 2: 
-          localg.Fsy = locala.LVo.readString();
+          localg.HcF = locala.NPN.readString();
           AppMethodBeat.o(91745);
           return 0;
         }
-        localg.Fsz = locala.LVo.xF();
+        localg.HcG = locala.NPN.zc();
         AppMethodBeat.o(91745);
         return 0;
       }

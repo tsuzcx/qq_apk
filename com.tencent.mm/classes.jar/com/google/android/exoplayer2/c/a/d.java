@@ -4,11 +4,11 @@ import com.google.android.exoplayer2.o;
 
 abstract class d
 {
-  protected final com.google.android.exoplayer2.c.m aYi;
+  protected final com.google.android.exoplayer2.c.m biD;
   
   protected d(com.google.android.exoplayer2.c.m paramm)
   {
-    this.aYi = paramm;
+    this.biD = paramm;
   }
   
   protected abstract void a(com.google.android.exoplayer2.i.m paramm, long paramLong);
@@ -33,7 +33,7 @@ abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.a.d
  * JD-Core Version:    0.7.0.1
  */

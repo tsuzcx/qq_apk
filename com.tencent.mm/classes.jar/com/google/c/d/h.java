@@ -41,7 +41,7 @@ public final class h
     }
   }
   
-  private static int j(String paramString, int paramInt)
+  private static int l(String paramString, int paramInt)
   {
     AppMethodBeat.i(12240);
     int k = 0;
@@ -64,7 +64,7 @@ public final class h
   public final b a(String paramString, a parama, int paramInt1, int paramInt2, Map<c, ?> paramMap)
   {
     AppMethodBeat.i(12238);
-    if (parama != a.bGL)
+    if (parama != a.bQZ)
     {
       paramString = new IllegalArgumentException("Can only encode CODE_93, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12238);
@@ -75,7 +75,7 @@ public final class h
     return paramString;
   }
   
-  public final boolean[] bn(String paramString)
+  public final boolean[] cg(String paramString)
   {
     int j = 0;
     AppMethodBeat.i(12239);
@@ -88,22 +88,22 @@ public final class h
     }
     int[] arrayOfInt = new int[9];
     boolean[] arrayOfBoolean = new boolean[(paramString.length() + 2 + 2) * 9 + 1];
-    a(g.bJp[47], arrayOfInt);
+    a(g.bTC[47], arrayOfInt);
     int i = a(arrayOfBoolean, 0, arrayOfInt);
     while (j < k)
     {
       int m = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%abcd*".indexOf(paramString.charAt(j));
-      a(g.bJp[m], arrayOfInt);
+      a(g.bTC[m], arrayOfInt);
       i += a(arrayOfBoolean, i, arrayOfInt);
       j += 1;
     }
-    j = j(paramString, 20);
-    a(g.bJp[j], arrayOfInt);
+    j = l(paramString, 20);
+    a(g.bTC[j], arrayOfInt);
     i += a(arrayOfBoolean, i, arrayOfInt);
-    j = j(paramString + "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%abcd*".charAt(j), 15);
-    a(g.bJp[j], arrayOfInt);
+    j = l(paramString + "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%abcd*".charAt(j), 15);
+    a(g.bTC[j], arrayOfInt);
     i = a(arrayOfBoolean, i, arrayOfInt) + i;
-    a(g.bJp[47], arrayOfInt);
+    a(g.bTC[47], arrayOfInt);
     arrayOfBoolean[(i + a(arrayOfBoolean, i, arrayOfInt))] = true;
     AppMethodBeat.o(12239);
     return arrayOfBoolean;

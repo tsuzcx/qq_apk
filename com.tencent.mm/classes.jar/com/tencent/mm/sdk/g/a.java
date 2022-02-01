@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
 {
   @Deprecated
-  public static HandlerThread aLY(String paramString)
+  public static HandlerThread aRF(String paramString)
   {
     AppMethodBeat.i(182972);
     paramString = new HandlerThread("[D]#".concat(String.valueOf(paramString)));

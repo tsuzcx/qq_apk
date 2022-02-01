@@ -6,15 +6,15 @@ import android.view.MotionEvent;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/StoryCommentBubbleView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bubbleLeft", "getBubbleLeft", "()I", "setBubbleLeft", "(I)V", "bubbleTop", "getBubbleTop", "setBubbleTop", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/StoryCommentBubbleView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bubbleLeft", "getBubbleLeft", "()I", "setBubbleLeft", "(I)V", "bubbleTop", "getBubbleTop", "setBubbleTop", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "plugin-story_release"})
 public final class StoryCommentBubbleView
   extends ImageView
 {
-  private int zHR;
-  private int zHS;
+  private int AZs;
+  private int AZt;
   
   public StoryCommentBubbleView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,7 +53,7 @@ public final class StoryCommentBubbleView
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(120092);
-    k.h(paramMotionEvent, "event");
+    p.h(paramMotionEvent, "event");
     switch (paramMotionEvent.getActionMasked())
     {
     }
@@ -70,12 +70,12 @@ public final class StoryCommentBubbleView
   
   public final void setBubbleLeft(int paramInt)
   {
-    this.zHR = paramInt;
+    this.AZs = paramInt;
   }
   
   public final void setBubbleTop(int paramInt)
   {
-    this.zHS = paramInt;
+    this.AZt = paramInt;
   }
 }
 

@@ -47,71 +47,71 @@ public class j
   extends ActionBar
   implements ActionBarOverlayLayout.a
 {
-  private static final Interpolator Yn;
-  private static final Interpolator Yo;
-  private ArrayList<Object> Co = new ArrayList();
-  u XS;
-  private boolean XW;
-  private ArrayList<Object> XX = new ArrayList();
-  private int YA = 0;
-  boolean YB = true;
-  boolean YC;
-  boolean YD;
-  private boolean YE;
-  private boolean YF = true;
-  android.support.v7.view.h YG;
-  private boolean YH;
-  boolean YI;
-  final y YJ = new z()
+  private static final Interpolator aac;
+  private static final Interpolator aad;
+  private ArrayList<Object> Eg = new ArrayList();
+  u ZH;
+  private boolean ZL;
+  private ArrayList<Object> ZM = new ArrayList();
+  final aa aaA = new aa()
+  {
+    public final void fA()
+    {
+      ((View)j.this.aag.getParent()).invalidate();
+    }
+  };
+  private Context aae;
+  ActionBarOverlayLayout aaf;
+  ActionBarContainer aag;
+  ActionBarContextView aah;
+  ar aai;
+  private int aaj = -1;
+  private boolean aak;
+  a aal;
+  b aam;
+  b.a aan;
+  private boolean aao;
+  private int aap = 0;
+  boolean aaq = true;
+  boolean aar;
+  boolean aas;
+  private boolean aat;
+  private boolean aau = true;
+  android.support.v7.view.h aav;
+  private boolean aaw;
+  boolean aax;
+  final y aay = new z()
   {
     public final void aI(View paramAnonymousView)
     {
-      if ((j.this.YB) && (j.this.mContentView != null))
+      if ((j.this.aaq) && (j.this.mContentView != null))
       {
         j.this.mContentView.setTranslationY(0.0F);
-        j.this.Yr.setTranslationY(0.0F);
+        j.this.aag.setTranslationY(0.0F);
       }
-      j.this.Yr.setVisibility(8);
-      j.this.Yr.setTransitioning(false);
-      j.this.YG = null;
+      j.this.aag.setVisibility(8);
+      j.this.aag.setTransitioning(false);
+      j.this.aav = null;
       paramAnonymousView = j.this;
-      if (paramAnonymousView.Yy != null)
+      if (paramAnonymousView.aan != null)
       {
-        paramAnonymousView.Yy.a(paramAnonymousView.Yx);
-        paramAnonymousView.Yx = null;
-        paramAnonymousView.Yy = null;
+        paramAnonymousView.aan.a(paramAnonymousView.aam);
+        paramAnonymousView.aam = null;
+        paramAnonymousView.aan = null;
       }
-      if (j.this.Yq != null) {
-        t.ap(j.this.Yq);
+      if (j.this.aaf != null) {
+        t.ap(j.this.aaf);
       }
     }
   };
-  final y YK = new z()
+  final y aaz = new z()
   {
     public final void aI(View paramAnonymousView)
     {
-      j.this.YG = null;
-      j.this.Yr.requestLayout();
+      j.this.aav = null;
+      j.this.aag.requestLayout();
     }
   };
-  final aa YL = new aa()
-  {
-    public final void fj()
-    {
-      ((View)j.this.Yr.getParent()).invalidate();
-    }
-  };
-  private Context Yp;
-  ActionBarOverlayLayout Yq;
-  ActionBarContainer Yr;
-  ActionBarContextView Ys;
-  ar Yt;
-  private int Yu = -1;
-  private boolean Yv;
-  a Yw;
-  b Yx;
-  b.a Yy;
-  private boolean Yz;
   private Activity mActivity;
   View mContentView;
   Context mContext;
@@ -123,8 +123,8 @@ public class j
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      Yn = new AccelerateInterpolator();
-      Yo = new DecelerateInterpolator();
+      aac = new AccelerateInterpolator();
+      aad = new DecelerateInterpolator();
       return;
     }
   }
@@ -148,38 +148,38 @@ public class j
   private void T(boolean paramBoolean)
   {
     boolean bool = true;
-    this.Yz = paramBoolean;
+    this.aao = paramBoolean;
     int i;
     label45:
     label78:
     Object localObject;
-    if (!this.Yz)
+    if (!this.aao)
     {
-      this.XS.a(null);
-      this.Yr.setTabContainer(this.Yt);
+      this.ZH.a(null);
+      this.aag.setTabContainer(this.aai);
       if (getNavigationMode() != 2) {
         break label155;
       }
       i = 1;
-      if (this.Yt != null)
+      if (this.aai != null)
       {
         if (i == 0) {
           break label160;
         }
-        this.Yt.setVisibility(0);
-        if (this.Yq != null) {
-          t.ap(this.Yq);
+        this.aai.setVisibility(0);
+        if (this.aaf != null) {
+          t.ap(this.aaf);
         }
       }
-      localObject = this.XS;
-      if ((this.Yz) || (i == 0)) {
+      localObject = this.ZH;
+      if ((this.aao) || (i == 0)) {
         break label172;
       }
       paramBoolean = true;
       label97:
       ((u)localObject).setCollapsible(paramBoolean);
-      localObject = this.Yq;
-      if ((this.Yz) || (i == 0)) {
+      localObject = this.aaf;
+      if ((this.aao) || (i == 0)) {
         break label177;
       }
     }
@@ -191,12 +191,12 @@ public class j
     {
       ((ActionBarOverlayLayout)localObject).setHasNonEmbeddedTabs(paramBoolean);
       return;
-      this.Yr.setTabContainer(null);
-      this.XS.a(this.Yt);
+      this.aag.setTabContainer(null);
+      this.ZH.a(this.aai);
       break;
       i = 0;
       break label45;
-      this.Yt.setVisibility(8);
+      this.aai.setVisibility(8);
       break label78;
       paramBoolean = false;
       break label97;
@@ -205,30 +205,30 @@ public class j
   
   private void V(boolean paramBoolean)
   {
-    if (c(this.YC, this.YD, this.YE)) {
-      if (!this.YF)
+    if (c(this.aar, this.aas, this.aat)) {
+      if (!this.aau)
       {
-        this.YF = true;
+        this.aau = true;
         W(paramBoolean);
       }
     }
-    while (!this.YF) {
+    while (!this.aau) {
       return;
     }
-    this.YF = false;
+    this.aau = false;
     X(paramBoolean);
   }
   
   private void W(boolean paramBoolean)
   {
-    if (this.YG != null) {
-      this.YG.cancel();
+    if (this.aav != null) {
+      this.aav.cancel();
     }
-    this.Yr.setVisibility(0);
-    if ((this.YA == 0) && ((this.YH) || (paramBoolean)))
+    this.aag.setVisibility(0);
+    if ((this.aap == 0) && ((this.aaw) || (paramBoolean)))
     {
-      this.Yr.setTranslationY(0.0F);
-      float f2 = -this.Yr.getHeight();
+      this.aag.setTranslationY(0.0F);
+      float f2 = -this.aag.getHeight();
       float f1 = f2;
       if (paramBoolean)
       {
@@ -238,51 +238,51 @@ public class j
         Object tmp75_71 = tmp71_69;
         tmp75_71[1] = 0;
         tmp75_71;
-        this.Yr.getLocationInWindow((int[])localObject);
+        this.aag.getLocationInWindow((int[])localObject);
         f1 = f2 - localObject[1];
       }
-      this.Yr.setTranslationY(f1);
+      this.aag.setTranslationY(f1);
       Object localObject = new android.support.v7.view.h();
-      x localx = t.ag(this.Yr).B(0.0F);
-      localx.a(this.YL);
+      x localx = t.ag(this.aag).z(0.0F);
+      localx.a(this.aaA);
       ((android.support.v7.view.h)localObject).a(localx);
-      if ((this.YB) && (this.mContentView != null))
+      if ((this.aaq) && (this.mContentView != null))
       {
         this.mContentView.setTranslationY(f1);
-        ((android.support.v7.view.h)localObject).a(t.ag(this.mContentView).B(0.0F));
+        ((android.support.v7.view.h)localObject).a(t.ag(this.mContentView).z(0.0F));
       }
-      ((android.support.v7.view.h)localObject).b(Yo);
-      ((android.support.v7.view.h)localObject).hj();
-      ((android.support.v7.view.h)localObject).b(this.YK);
-      this.YG = ((android.support.v7.view.h)localObject);
+      ((android.support.v7.view.h)localObject).b(aad);
+      ((android.support.v7.view.h)localObject).hz();
+      ((android.support.v7.view.h)localObject).b(this.aaz);
+      this.aav = ((android.support.v7.view.h)localObject);
       ((android.support.v7.view.h)localObject).start();
     }
     for (;;)
     {
-      if (this.Yq != null) {
-        t.ap(this.Yq);
+      if (this.aaf != null) {
+        t.ap(this.aaf);
       }
       return;
-      this.Yr.setAlpha(1.0F);
-      this.Yr.setTranslationY(0.0F);
-      if ((this.YB) && (this.mContentView != null)) {
+      this.aag.setAlpha(1.0F);
+      this.aag.setTranslationY(0.0F);
+      if ((this.aaq) && (this.mContentView != null)) {
         this.mContentView.setTranslationY(0.0F);
       }
-      this.YK.aI(null);
+      this.aaz.aI(null);
     }
   }
   
   private void X(boolean paramBoolean)
   {
-    if (this.YG != null) {
-      this.YG.cancel();
+    if (this.aav != null) {
+      this.aav.cancel();
     }
-    if ((this.YA == 0) && ((this.YH) || (paramBoolean)))
+    if ((this.aap == 0) && ((this.aaw) || (paramBoolean)))
     {
-      this.Yr.setAlpha(1.0F);
-      this.Yr.setTransitioning(true);
+      this.aag.setAlpha(1.0F);
+      this.aag.setTransitioning(true);
       android.support.v7.view.h localh = new android.support.v7.view.h();
-      float f2 = -this.Yr.getHeight();
+      float f2 = -this.aag.getHeight();
       float f1 = f2;
       if (paramBoolean)
       {
@@ -292,50 +292,50 @@ public class j
         Object tmp84_80 = tmp80_78;
         tmp84_80[1] = 0;
         tmp84_80;
-        this.Yr.getLocationInWindow((int[])localObject);
+        this.aag.getLocationInWindow((int[])localObject);
         f1 = f2 - localObject[1];
       }
-      Object localObject = t.ag(this.Yr).B(f1);
-      ((x)localObject).a(this.YL);
+      Object localObject = t.ag(this.aag).z(f1);
+      ((x)localObject).a(this.aaA);
       localh.a((x)localObject);
-      if ((this.YB) && (this.mContentView != null)) {
-        localh.a(t.ag(this.mContentView).B(f1));
+      if ((this.aaq) && (this.mContentView != null)) {
+        localh.a(t.ag(this.mContentView).z(f1));
       }
-      localh.b(Yn);
-      localh.hj();
-      localh.b(this.YJ);
-      this.YG = localh;
+      localh.b(aac);
+      localh.hz();
+      localh.b(this.aay);
+      this.aav = localh;
       localh.start();
       return;
     }
-    this.YJ.aI(null);
+    this.aay.aI(null);
   }
   
   private void aZ(View paramView)
   {
-    this.Yq = ((ActionBarOverlayLayout)paramView.findViewById(2131298945));
-    if (this.Yq != null) {
-      this.Yq.setActionBarVisibilityCallback(this);
+    this.aaf = ((ActionBarOverlayLayout)paramView.findViewById(2131298945));
+    if (this.aaf != null) {
+      this.aaf.setActionBarVisibilityCallback(this);
     }
-    this.XS = ba(paramView.findViewById(2131296343));
-    this.Ys = ((ActionBarContextView)paramView.findViewById(2131296357));
-    this.Yr = ((ActionBarContainer)paramView.findViewById(2131296345));
-    if ((this.XS == null) || (this.Ys == null) || (this.Yr == null)) {
+    this.ZH = ba(paramView.findViewById(2131296343));
+    this.aah = ((ActionBarContextView)paramView.findViewById(2131296357));
+    this.aag = ((ActionBarContainer)paramView.findViewById(2131296345));
+    if ((this.ZH == null) || (this.aah == null) || (this.aag == null)) {
       throw new IllegalStateException(getClass().getSimpleName() + " can only be used with a compatible window decor layout");
     }
-    this.mContext = this.XS.getContext();
-    if ((this.XS.getDisplayOptions() & 0x4) != 0) {}
+    this.mContext = this.ZH.getContext();
+    if ((this.ZH.getDisplayOptions() & 0x4) != 0) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        this.Yv = true;
+        this.aak = true;
       }
       paramView = a.Z(this.mContext);
-      paramView.he();
-      T(paramView.hd());
+      paramView.hu();
+      T(paramView.ht());
       paramView = this.mContext.obtainStyledAttributes(null, a.a.ActionBar, 2130968602, 0);
       if (paramView.getBoolean(14, false)) {
-        fW();
+        go();
       }
       i = paramView.getDimensionPixelSize(12, 0);
       if (i != 0) {
@@ -370,13 +370,25 @@ public class j
     return false;
   }
   
-  private void gA()
+  private void gP()
   {
-    if (this.YE)
+    if (!this.aat)
     {
-      this.YE = false;
-      if (this.Yq != null) {
-        this.Yq.setShowingForActionMode(false);
+      this.aat = true;
+      if (this.aaf != null) {
+        this.aaf.setShowingForActionMode(true);
+      }
+      V(false);
+    }
+  }
+  
+  private void gR()
+  {
+    if (this.aat)
+    {
+      this.aat = false;
+      if (this.aaf != null) {
+        this.aaf.setShowingForActionMode(false);
       }
       V(false);
     }
@@ -384,57 +396,45 @@ public class j
   
   private int getNavigationMode()
   {
-    return this.XS.getNavigationMode();
-  }
-  
-  private void gy()
-  {
-    if (!this.YE)
-    {
-      this.YE = true;
-      if (this.Yq != null) {
-        this.Yq.setShowingForActionMode(true);
-      }
-      V(false);
-    }
+    return this.ZH.getNavigationMode();
   }
   
   private void setDisplayOptions(int paramInt1, int paramInt2)
   {
-    int i = this.XS.getDisplayOptions();
+    int i = this.ZH.getDisplayOptions();
     if ((paramInt2 & 0x4) != 0) {
-      this.Yv = true;
+      this.aak = true;
     }
-    this.XS.setDisplayOptions(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
+    this.ZH.setDisplayOptions(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
   }
   
   public final void Q(boolean paramBoolean)
   {
-    if (!this.Yv) {
+    if (!this.aak) {
       setDisplayHomeAsUpEnabled(paramBoolean);
     }
   }
   
   public final void R(boolean paramBoolean)
   {
-    this.YH = paramBoolean;
-    if ((!paramBoolean) && (this.YG != null)) {
-      this.YG.cancel();
+    this.aaw = paramBoolean;
+    if ((!paramBoolean) && (this.aav != null)) {
+      this.aav.cancel();
     }
   }
   
   public final void S(boolean paramBoolean)
   {
-    if (paramBoolean == this.XW) {}
+    if (paramBoolean == this.ZL) {}
     for (;;)
     {
       return;
-      this.XW = paramBoolean;
-      int j = this.XX.size();
+      this.ZL = paramBoolean;
+      int j = this.ZM.size();
       int i = 0;
       while (i < j)
       {
-        this.XX.get(i);
+        this.ZM.get(i);
         i += 1;
       }
     }
@@ -442,7 +442,7 @@ public class j
   
   public final void U(boolean paramBoolean)
   {
-    this.YB = paramBoolean;
+    this.aaq = paramBoolean;
   }
   
   public final void Y(boolean paramBoolean)
@@ -451,15 +451,15 @@ public class j
     x localx2;
     if (paramBoolean)
     {
-      gy();
-      if (!t.ay(this.Yr)) {
+      gP();
+      if (!t.ay(this.aag)) {
         break label108;
       }
       if (!paramBoolean) {
         break label78;
       }
-      localx1 = this.XS.c(4, 100L);
-      localx2 = this.Ys.c(0, 200L);
+      localx1 = this.ZH.c(4, 100L);
+      localx2 = this.aah.c(0, 200L);
     }
     for (;;)
     {
@@ -467,38 +467,38 @@ public class j
       localh.a(localx1, localx2);
       localh.start();
       return;
-      gA();
+      gR();
       break;
       label78:
-      localx2 = this.XS.c(0, 200L);
-      localx1 = this.Ys.c(8, 100L);
+      localx2 = this.ZH.c(0, 200L);
+      localx1 = this.aah.c(8, 100L);
     }
     label108:
     if (paramBoolean)
     {
-      this.XS.setVisibility(4);
-      this.Ys.setVisibility(0);
+      this.ZH.setVisibility(4);
+      this.aah.setVisibility(0);
       return;
     }
-    this.XS.setVisibility(0);
-    this.Ys.setVisibility(8);
+    this.ZH.setVisibility(0);
+    this.aah.setVisibility(8);
   }
   
   public final b a(b.a parama)
   {
-    if (this.Yw != null) {
-      this.Yw.finish();
+    if (this.aal != null) {
+      this.aal.finish();
     }
-    this.Yq.setHideOnContentScrollEnabled(false);
-    this.Ys.hX();
-    parama = new a(this.Ys.getContext(), parama);
-    if (parama.gD())
+    this.aaf.setHideOnContentScrollEnabled(false);
+    this.aah.ip();
+    parama = new a(this.aah.getContext(), parama);
+    if (parama.gU())
     {
-      this.Yw = parama;
+      this.aal = parama;
       parama.invalidate();
-      this.Ys.c(parama);
+      this.aah.c(parama);
       Y(true);
-      this.Ys.sendAccessibilityEvent(32);
+      this.aah.sendAccessibilityEvent(32);
       return parama;
     }
     return null;
@@ -506,80 +506,60 @@ public class j
   
   public final boolean collapseActionView()
   {
-    if ((this.XS != null) && (this.XS.hasExpandedActionView()))
+    if ((this.ZH != null) && (this.ZH.hasExpandedActionView()))
     {
-      this.XS.collapseActionView();
+      this.ZH.collapseActionView();
       return true;
     }
     return false;
   }
   
-  public final void fS()
+  public final void gQ()
   {
-    this.XS.setIcon(2131234429);
-  }
-  
-  public final void fT()
-  {
-    setDisplayOptions(0, 2);
-  }
-  
-  public final void fU()
-  {
-    setDisplayOptions(0, 8);
-  }
-  
-  public final void fV()
-  {
-    setDisplayOptions(16, 16);
-  }
-  
-  public final void fW()
-  {
-    if (!this.Yq.afU) {
-      throw new IllegalStateException("Action bar must be in overlay mode (Window.FEATURE_OVERLAY_ACTION_BAR) to enable hide on content scroll");
-    }
-    this.YI = true;
-    this.Yq.setHideOnContentScrollEnabled(true);
-  }
-  
-  public final void gB()
-  {
-    if (!this.YD)
+    if (this.aas)
     {
-      this.YD = true;
+      this.aas = false;
       V(true);
     }
   }
   
-  public final void gC()
+  public final void gS()
   {
-    if (this.YG != null)
+    if (!this.aas)
     {
-      this.YG.cancel();
-      this.YG = null;
+      this.aas = true;
+      V(true);
+    }
+  }
+  
+  public final void gT()
+  {
+    if (this.aav != null)
+    {
+      this.aav.cancel();
+      this.aav = null;
     }
   }
   
   public final View getCustomView()
   {
-    return this.XS.getCustomView();
+    return this.ZH.getCustomView();
   }
   
   public final int getDisplayOptions()
   {
-    return this.XS.getDisplayOptions();
+    return this.ZH.getDisplayOptions();
   }
   
   public final int getHeight()
   {
-    return this.Yr.getHeight();
+    return this.aag.getHeight();
   }
   
   public final Context getThemedContext()
   {
     int i;
-    if (this.Yp == null)
+    if (this.aae == null)
     {
       TypedValue localTypedValue = new TypedValue();
       this.mContext.getTheme().resolveAttribute(2130968607, localTypedValue, true);
@@ -589,53 +569,73 @@ public class j
       }
     }
     label61:
-    for (this.Yp = new ContextThemeWrapper(this.mContext, i);; this.Yp = this.mContext) {
-      return this.Yp;
+    for (this.aae = new ContextThemeWrapper(this.mContext, i);; this.aae = this.mContext) {
+      return this.aae;
     }
   }
   
   public final CharSequence getTitle()
   {
-    return this.XS.getTitle();
+    return this.ZH.getTitle();
   }
   
-  public final void gz()
+  public final void gk()
   {
-    if (this.YD)
-    {
-      this.YD = false;
-      V(true);
+    this.ZH.setIcon(2131234429);
+  }
+  
+  public final void gl()
+  {
+    setDisplayOptions(0, 2);
+  }
+  
+  public final void gm()
+  {
+    setDisplayOptions(0, 8);
+  }
+  
+  public final void gn()
+  {
+    setDisplayOptions(16, 16);
+  }
+  
+  public final void go()
+  {
+    if (!this.aaf.ahL) {
+      throw new IllegalStateException("Action bar must be in overlay mode (Window.FEATURE_OVERLAY_ACTION_BAR) to enable hide on content scroll");
     }
+    this.aax = true;
+    this.aaf.setHideOnContentScrollEnabled(true);
   }
   
   public final void hide()
   {
-    if (!this.YC)
+    if (!this.aar)
     {
-      this.YC = true;
+      this.aar = true;
       V(false);
     }
   }
   
   public final boolean isShowing()
   {
-    int i = this.Yr.getHeight();
-    return (this.YF) && ((i == 0) || (this.Yq.getActionBarHideOffset() < i));
+    int i = this.aag.getHeight();
+    return (this.aau) && ((i == 0) || (this.aaf.getActionBarHideOffset() < i));
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    T(a.Z(this.mContext).hd());
+    T(a.Z(this.mContext).ht());
   }
   
   public final boolean onKeyShortcut(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.Yw == null) {}
+    if (this.aal == null) {}
     android.support.v7.view.menu.h localh;
     do
     {
       return false;
-      localh = this.Yw.YO;
+      localh = this.aal.aaD;
     } while (localh == null);
     int i;
     if (paramKeyEvent != null)
@@ -657,22 +657,22 @@ public class j
   
   public final void onWindowVisibilityChanged(int paramInt)
   {
-    this.YA = paramInt;
+    this.aap = paramInt;
   }
   
   public final void setBackgroundDrawable(Drawable paramDrawable)
   {
-    this.Yr.setPrimaryBackground(paramDrawable);
+    this.aag.setPrimaryBackground(paramDrawable);
   }
   
   public final void setCustomView(int paramInt)
   {
-    setCustomView(LayoutInflater.from(getThemedContext()).inflate(paramInt, this.XS.jd(), false));
+    setCustomView(LayoutInflater.from(getThemedContext()).inflate(paramInt, this.ZH.jt(), false));
   }
   
   public final void setCustomView(View paramView)
   {
-    this.XS.setCustomView(paramView);
+    this.ZH.setCustomView(paramView);
   }
   
   public final void setDisplayHomeAsUpEnabled(boolean paramBoolean)
@@ -688,36 +688,36 @@ public class j
   public final void setDisplayOptions(int paramInt)
   {
     if ((paramInt & 0x4) != 0) {
-      this.Yv = true;
+      this.aak = true;
     }
-    this.XS.setDisplayOptions(paramInt);
+    this.ZH.setDisplayOptions(paramInt);
   }
   
   public final void setElevation(float paramFloat)
   {
-    t.k(this.Yr, paramFloat);
+    t.k(this.aag, paramFloat);
   }
   
   public final void setHomeActionContentDescription(int paramInt)
   {
-    this.XS.setNavigationContentDescription(paramInt);
+    this.ZH.setNavigationContentDescription(paramInt);
   }
   
   public final void setLogo(Drawable paramDrawable)
   {
-    this.XS.setLogo(paramDrawable);
+    this.ZH.setLogo(paramDrawable);
   }
   
   public final void setWindowTitle(CharSequence paramCharSequence)
   {
-    this.XS.setWindowTitle(paramCharSequence);
+    this.ZH.setWindowTitle(paramCharSequence);
   }
   
   public final void show()
   {
-    if (this.YC)
+    if (this.aar)
     {
-      this.YC = false;
+      this.aar = false;
       V(false);
     }
   }
@@ -726,129 +726,129 @@ public class j
     extends b
     implements h.a
   {
-    private final Context YN;
-    final android.support.v7.view.menu.h YO;
-    private b.a YP;
-    private WeakReference<View> YQ;
+    private final Context aaC;
+    final android.support.v7.view.menu.h aaD;
+    private b.a aaE;
+    private WeakReference<View> aaF;
     
     public a(Context paramContext, b.a parama)
     {
-      this.YN = paramContext;
-      this.YP = parama;
+      this.aaC = paramContext;
+      this.aaE = parama;
       this$1 = new android.support.v7.view.menu.h(paramContext);
-      j.this.aes = 1;
-      this.YO = j.this;
-      this.YO.a(this);
+      j.this.agj = 1;
+      this.aaD = j.this;
+      this.aaD.a(this);
     }
     
     public final boolean a(android.support.v7.view.menu.h paramh, MenuItem paramMenuItem)
     {
-      if (this.YP != null) {
-        return this.YP.a(this, paramMenuItem);
+      if (this.aaE != null) {
+        return this.aaE.a(this, paramMenuItem);
       }
       return false;
     }
     
     public final void b(android.support.v7.view.menu.h paramh)
     {
-      if (this.YP == null) {
+      if (this.aaE == null) {
         return;
       }
       invalidate();
-      j.this.Ys.showOverflowMenu();
+      j.this.aah.showOverflowMenu();
     }
     
     public final void finish()
     {
-      if (j.this.Yw != this) {
+      if (j.this.aal != this) {
         return;
       }
-      if (!j.c(j.this.YC, j.this.YD, false))
+      if (!j.c(j.this.aar, j.this.aas, false))
       {
-        j.this.Yx = this;
-        j.this.Yy = this.YP;
+        j.this.aam = this;
+        j.this.aan = this.aaE;
       }
       for (;;)
       {
-        this.YP = null;
+        this.aaE = null;
         j.this.Y(false);
-        j.this.Ys.hW();
-        j.this.XS.jd().sendAccessibilityEvent(32);
-        j.this.Yq.setHideOnContentScrollEnabled(j.this.YI);
-        j.this.Yw = null;
+        j.this.aah.in();
+        j.this.ZH.jt().sendAccessibilityEvent(32);
+        j.this.aaf.setHideOnContentScrollEnabled(j.this.aax);
+        j.this.aal = null;
         return;
-        this.YP.a(this);
+        this.aaE.a(this);
       }
     }
     
-    public final boolean gD()
+    public final boolean gU()
     {
-      this.YO.hB();
+      this.aaD.hR();
       try
       {
-        boolean bool = this.YP.a(this, this.YO);
+        boolean bool = this.aaE.a(this, this.aaD);
         return bool;
       }
       finally
       {
-        this.YO.hC();
+        this.aaD.hS();
       }
     }
     
     public final View getCustomView()
     {
-      if (this.YQ != null) {
-        return (View)this.YQ.get();
+      if (this.aaF != null) {
+        return (View)this.aaF.get();
       }
       return null;
     }
     
     public final Menu getMenu()
     {
-      return this.YO;
+      return this.aaD;
     }
     
     public final MenuInflater getMenuInflater()
     {
-      return new g(this.YN);
+      return new g(this.aaC);
     }
     
     public final CharSequence getSubtitle()
     {
-      return j.this.Ys.getSubtitle();
+      return j.this.aah.getSubtitle();
     }
     
     public final CharSequence getTitle()
     {
-      return j.this.Ys.getTitle();
+      return j.this.aah.getTitle();
     }
     
     public final void invalidate()
     {
-      if (j.this.Yw != this) {
+      if (j.this.aal != this) {
         return;
       }
-      this.YO.hB();
+      this.aaD.hR();
       try
       {
-        this.YP.b(this, this.YO);
+        this.aaE.b(this, this.aaD);
         return;
       }
       finally
       {
-        this.YO.hC();
+        this.aaD.hS();
       }
     }
     
     public final boolean isTitleOptional()
     {
-      return j.this.Ys.afK;
+      return j.this.aah.ahB;
     }
     
     public final void setCustomView(View paramView)
     {
-      j.this.Ys.setCustomView(paramView);
-      this.YQ = new WeakReference(paramView);
+      j.this.aah.setCustomView(paramView);
+      this.aaF = new WeakReference(paramView);
     }
     
     public final void setSubtitle(int paramInt)
@@ -858,7 +858,7 @@ public class j
     
     public final void setSubtitle(CharSequence paramCharSequence)
     {
-      j.this.Ys.setSubtitle(paramCharSequence);
+      j.this.aah.setSubtitle(paramCharSequence);
     }
     
     public final void setTitle(int paramInt)
@@ -868,13 +868,13 @@ public class j
     
     public final void setTitle(CharSequence paramCharSequence)
     {
-      j.this.Ys.setTitle(paramCharSequence);
+      j.this.aah.setTitle(paramCharSequence);
     }
     
     public final void setTitleOptionalHint(boolean paramBoolean)
     {
       super.setTitleOptionalHint(paramBoolean);
-      j.this.Ys.setTitleOptional(paramBoolean);
+      j.this.aah.setTitleOptional(paramBoolean);
     }
   }
 }

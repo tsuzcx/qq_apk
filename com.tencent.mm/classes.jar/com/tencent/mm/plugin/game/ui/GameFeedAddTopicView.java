@@ -7,21 +7,21 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.e;
-import com.tencent.mm.plugin.game.d.af;
+import com.tencent.mm.game.report.f;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.game.d.ah;
 import com.tencent.mm.plugin.game.d.q;
-import com.tencent.mm.plugin.game.e.a;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.model.d;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class GameFeedAddTopicView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private d tmX;
-  private GameFeedTitleDescView tqk;
-  private TextView tql;
+  private d ulv;
+  private GameFeedTitleDescView uoH;
+  private TextView uoI;
   
   public GameFeedAddTopicView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,16 +31,21 @@ public class GameFeedAddTopicView
   public void onClick(View paramView)
   {
     AppMethodBeat.i(42096);
-    if ((this.tmX == null) || (this.tmX.tdg == null))
+    b localb = new b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameFeedAddTopicView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    if ((this.ulv == null) || (this.ulv.uaW == null))
     {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedAddTopicView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42096);
       return;
     }
-    if (!bs.isNullOrNil(this.tmX.tdg.thh))
+    if (!bt.isNullOrNil(this.ulv.uaW.ueY))
     {
-      int i = c.ay(getContext(), this.tmX.tdg.thh);
-      e.a(getContext(), 10, 1024, this.tmX.position, i, this.tmX.tdg.hOf, GameIndexListView.getSourceScene(), a.ae(this.tmX.tdg.thP, "clickType", "card"));
+      int i = c.aB(getContext(), this.ulv.uaW.ueY);
+      f.a(getContext(), 10, 1024, this.ulv.position, i, this.ulv.uaW.iht, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.aj(this.ulv.uaW.ufG, "clickType", "card"));
     }
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedAddTopicView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42096);
   }
   
@@ -48,8 +53,8 @@ public class GameFeedAddTopicView
   {
     AppMethodBeat.i(42094);
     super.onFinishInflate();
-    this.tqk = ((GameFeedTitleDescView)findViewById(2131300441));
-    this.tql = ((TextView)findViewById(2131296466));
+    this.uoH = ((GameFeedTitleDescView)findViewById(2131300441));
+    this.uoI = ((TextView)findViewById(2131296466));
     setOnClickListener(this);
     AppMethodBeat.o(42094);
   }
@@ -57,27 +62,27 @@ public class GameFeedAddTopicView
   public void setData(d paramd)
   {
     AppMethodBeat.i(42095);
-    if ((paramd == null) || (paramd.tdg == null) || (paramd.tdg.tiM == null))
+    if ((paramd == null) || (paramd.uaW == null) || (paramd.uaW.ugH == null))
     {
       setVisibility(8);
       AppMethodBeat.o(42095);
       return;
     }
-    this.tmX = paramd;
+    this.ulv = paramd;
     setVisibility(0);
-    this.tqk.b(paramd.tdg.tiM.Title, paramd.tdg.tiM.Desc, null);
-    this.tql.setText(paramd.tdg.tiM.tic);
-    if (!this.tmX.tdi)
+    this.uoH.b(paramd.uaW.ugH.Title, paramd.uaW.ugH.Desc, null);
+    this.uoI.setText(paramd.uaW.ugH.ufT);
+    if (!this.ulv.uaY)
     {
-      a.a(getContext(), 10, 1024, this.tmX.position, this.tmX.tdg.hOf, GameIndexListView.getSourceScene(), a.tu(this.tmX.tdg.thP));
-      this.tmX.tdi = true;
+      com.tencent.mm.plugin.game.e.a.a(getContext(), 10, 1024, this.ulv.position, this.ulv.uaW.iht, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.wk(this.ulv.uaW.ufG));
+      this.ulv.uaY = true;
     }
     AppMethodBeat.o(42095);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameFeedAddTopicView
  * JD-Core Version:    0.7.0.1
  */

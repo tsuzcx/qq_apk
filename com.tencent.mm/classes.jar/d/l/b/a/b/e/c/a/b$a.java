@@ -2,26 +2,26 @@ package d.l.b.a.b.e.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.m;
-import d.g.b.k;
-import d.g.b.l;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.z;
 import java.util.Map;
 
 final class b$a
-  extends l
-  implements m<String, String, y>
+  extends q
+  implements m<String, String, z>
 {
   b$a(Map paramMap)
   {
     super(2);
   }
   
-  public final void mY(String paramString1, String paramString2)
+  public final void nw(String paramString1, String paramString2)
   {
     AppMethodBeat.i(59227);
-    k.h(paramString1, "kotlinSimpleName");
-    k.h(paramString2, "javaInternalName");
-    this.LyQ.put("kotlin/".concat(String.valueOf(paramString1)), "L" + paramString2 + ';');
+    p.h(paramString1, "kotlinSimpleName");
+    p.h(paramString2, "javaInternalName");
+    this.NpN.put("kotlin/".concat(String.valueOf(paramString1)), "L" + paramString2 + ';');
     AppMethodBeat.o(59227);
   }
 }

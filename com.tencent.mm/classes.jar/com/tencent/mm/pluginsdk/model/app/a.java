@@ -2,8 +2,8 @@ package com.tencent.mm.pluginsdk.model.app;
 
 public final class a
 {
-  public int DhJ = 1;
-  public String dtC = "";
+  public int EMu = 1;
+  public String dFD = "";
 }
 
 

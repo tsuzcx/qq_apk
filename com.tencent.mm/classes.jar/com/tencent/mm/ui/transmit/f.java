@@ -2,28 +2,28 @@ package com.tencent.mm.ui.transmit;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
 public final class f
 {
-  boolean IXS;
-  a IXT;
+  boolean KOX;
+  a KOY;
   Context context;
-  Runnable kkk;
-  boolean mcF;
-  boolean mcG;
-  boolean mcH;
-  int mcI;
+  Runnable kFk;
+  boolean mCN;
+  boolean mCO;
+  boolean mCP;
+  int mCQ;
   String text;
   p tipDialog;
   
   public f(Context paramContext)
   {
     AppMethodBeat.i(39488);
-    this.IXS = false;
-    this.kkk = new Runnable()
+    this.KOX = false;
+    this.kFk = new Runnable()
     {
       public final void run()
       {
@@ -31,7 +31,7 @@ public final class f
         if (f.this.tipDialog != null) {
           f.this.tipDialog.dismiss();
         }
-        f.this.bvo();
+        f.this.bzu();
         AppMethodBeat.o(39487);
       }
     };
@@ -39,52 +39,52 @@ public final class f
     AppMethodBeat.o(39488);
   }
   
-  private boolean qr()
+  private boolean rP()
   {
-    return this.mcF & this.mcG;
+    return this.mCN & this.mCO;
   }
   
   public final void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    AppMethodBeat.i(196978);
-    this.mcF = true;
-    this.mcH = paramBoolean1;
+    AppMethodBeat.i(194833);
+    this.mCN = true;
+    this.mCP = paramBoolean1;
     this.text = paramString;
-    this.mcI = paramInt;
-    this.IXS = paramBoolean2;
-    if (qr())
+    this.mCQ = paramInt;
+    this.KOX = paramBoolean2;
+    if (rP())
     {
-      bvo();
-      AppMethodBeat.o(196978);
+      bzu();
+      AppMethodBeat.o(194833);
       return;
     }
     if (paramBoolean1)
     {
       this.tipDialog = h.b(this.context, this.context.getString(2131763073), true, null);
-      ap.n(this.kkk, 5000L);
+      aq.o(this.kFk, 5000L);
     }
-    AppMethodBeat.o(196978);
+    AppMethodBeat.o(194833);
   }
   
-  public final void bvo()
+  public final void bzu()
   {
     AppMethodBeat.i(39489);
-    if (this.IXT != null) {
-      this.IXT.e(this.mcH, this.text, this.IXS);
+    if (this.KOY != null) {
+      this.KOY.e(this.mCP, this.text, this.KOX);
     }
     AppMethodBeat.o(39489);
   }
   
-  public final void fuw()
+  public final void fLj()
   {
-    AppMethodBeat.i(196977);
-    this.mcG = true;
-    if (qr())
+    AppMethodBeat.i(194832);
+    this.mCO = true;
+    if (rP())
     {
-      ap.aB(this.kkk);
-      bvo();
+      aq.aA(this.kFk);
+      bzu();
     }
-    AppMethodBeat.o(196977);
+    AppMethodBeat.o(194832);
   }
   
   static abstract interface a

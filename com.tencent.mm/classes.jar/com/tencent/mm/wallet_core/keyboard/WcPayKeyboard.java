@@ -26,48 +26,48 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.al;
 
 public class WcPayKeyboard
   extends RelativeLayout
 {
-  private View JDA;
-  private ViewGroup JDB;
-  private LinearLayout JDC;
-  private WcPayKeyboardAnimationActionButton JDD;
-  public View JDE;
-  private WcPayKeyboard.b JDF;
-  private a JDG;
-  public boolean JDH;
-  private ObjectAnimator JDI;
-  private ObjectAnimator JDJ;
-  private TextView JDo;
-  private TextView JDp;
-  private TextView JDq;
-  private TextView JDr;
-  private TextView JDs;
-  private TextView JDt;
-  private TextView JDu;
-  private TextView JDv;
-  private TextView JDw;
-  private TextView JDx;
-  private TextView JDy;
-  private TextView JDz;
-  private TextView lLe;
+  private TextView LwA;
+  private TextView LwB;
+  private TextView LwC;
+  private TextView LwD;
+  private TextView LwE;
+  private TextView LwF;
+  private View LwG;
+  private ViewGroup LwH;
+  private LinearLayout LwI;
+  private WcPayKeyboardAnimationActionButton LwJ;
+  public View LwK;
+  private WcPayKeyboard.b LwL;
+  private a LwM;
+  public boolean LwN;
+  private ObjectAnimator LwO;
+  private ObjectAnimator LwP;
+  private TextView Lwu;
+  private TextView Lwv;
+  private TextView Lww;
+  private TextView Lwx;
+  private TextView Lwy;
+  private TextView Lwz;
   public EditText mInputEditText;
+  private TextView mkS;
   
   public WcPayKeyboard(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(72671);
-    this.JDF = WcPayKeyboard.b.JDS;
-    this.JDH = false;
-    this.JDI = null;
-    this.JDJ = null;
+    this.LwL = WcPayKeyboard.b.LwY;
+    this.LwN = false;
+    this.LwO = null;
+    this.LwP = null;
     init();
     AppMethodBeat.o(72671);
   }
@@ -76,10 +76,10 @@ public class WcPayKeyboard
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(72672);
-    this.JDF = WcPayKeyboard.b.JDS;
-    this.JDH = false;
-    this.JDI = null;
-    this.JDJ = null;
+    this.LwL = WcPayKeyboard.b.LwY;
+    this.LwN = false;
+    this.LwO = null;
+    this.LwP = null;
     init();
     AppMethodBeat.o(72672);
   }
@@ -88,48 +88,48 @@ public class WcPayKeyboard
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(72673);
-    this.JDF = WcPayKeyboard.b.JDS;
-    this.JDH = false;
-    this.JDI = null;
-    this.JDJ = null;
+    this.LwL = WcPayKeyboard.b.LwY;
+    this.LwN = false;
+    this.LwO = null;
+    this.LwP = null;
     init();
     AppMethodBeat.o(72673);
   }
   
-  private void aS(boolean paramBoolean1, boolean paramBoolean2)
+  private void ba(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(72686);
     if (paramBoolean1)
     {
-      this.JDD.setVisibility(0);
-      if (this.JDD.JEk)
+      this.LwJ.setVisibility(0);
+      if (this.LwJ.Lxo)
       {
         int[] arrayOfInt1 = new int[2];
         int[] arrayOfInt2 = new int[2];
-        this.JDz.getLocationOnScreen(arrayOfInt1);
-        this.JDB.getLocationOnScreen(arrayOfInt2);
-        if (this.lLe.isShown())
+        this.LwF.getLocationOnScreen(arrayOfInt1);
+        this.LwH.getLocationOnScreen(arrayOfInt2);
+        if (this.mkS.isShown())
         {
-          this.lLe.getHeight();
-          a.fromDPToPix(getContext(), 24);
+          this.mkS.getHeight();
+          com.tencent.mm.cc.a.fromDPToPix(getContext(), 24);
         }
-        this.JDA.getHeight();
-        a.fromDPToPix(getContext(), 16);
-        int i = a.fromDPToPix(getContext(), 8);
-        this.JDD.V(this.JDz.getWidth(), this.JDz.getHeight(), i, arrayOfInt1[0]);
+        this.LwG.getHeight();
+        com.tencent.mm.cc.a.fromDPToPix(getContext(), 16);
+        int i = com.tencent.mm.cc.a.fromDPToPix(getContext(), 8);
+        this.LwJ.V(this.LwF.getWidth(), this.LwF.getHeight(), i, arrayOfInt1[0]);
       }
       for (;;)
       {
-        this.JDD.JEh = this.JDz.getText();
-        this.JDz.setVisibility(4);
-        ap.f(new Runnable()
+        this.LwJ.Lxl = this.LwF.getText();
+        this.LwF.setVisibility(4);
+        aq.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(72663);
             WcPayKeyboardAnimationActionButton localWcPayKeyboardAnimationActionButton = WcPayKeyboard.d(WcPayKeyboard.this);
-            if (localWcPayKeyboardAnimationActionButton.xhG != null) {
-              localWcPayKeyboardAnimationActionButton.xhG.start();
+            if (localWcPayKeyboardAnimationActionButton.yvH != null) {
+              localWcPayKeyboardAnimationActionButton.yvH.start();
             }
             WcPayKeyboard.e(WcPayKeyboard.this);
             AppMethodBeat.o(72663);
@@ -137,21 +137,21 @@ public class WcPayKeyboard
         });
         AppMethodBeat.o(72686);
         return;
-        this.JDD.fzU();
+        this.LwJ.fRe();
       }
     }
     if (paramBoolean2)
     {
-      this.JDD.fAa();
-      ap.f(new Runnable()
+      this.LwJ.fRk();
+      aq.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(72664);
           WcPayKeyboard.f(WcPayKeyboard.this);
           WcPayKeyboardAnimationActionButton localWcPayKeyboardAnimationActionButton = WcPayKeyboard.d(WcPayKeyboard.this);
-          if (localWcPayKeyboardAnimationActionButton.JEv != null) {
-            localWcPayKeyboardAnimationActionButton.JEv.start();
+          if (localWcPayKeyboardAnimationActionButton.Lxz != null) {
+            localWcPayKeyboardAnimationActionButton.Lxz.start();
           }
           AppMethodBeat.o(72664);
         }
@@ -159,36 +159,36 @@ public class WcPayKeyboard
       AppMethodBeat.o(72686);
       return;
     }
-    this.JDD.fAe();
-    this.JDD.setVisibility(8);
+    this.LwJ.fRo();
+    this.LwJ.setVisibility(8);
     AppMethodBeat.o(72686);
   }
   
-  private boolean fzL()
+  private boolean fQV()
   {
-    return this.JDF == WcPayKeyboard.b.JDR;
+    return this.LwL == WcPayKeyboard.b.LwX;
   }
   
-  private boolean fzQ()
+  private boolean fRa()
   {
     AppMethodBeat.i(72685);
     boolean bool1;
-    if (this.JDJ == null)
+    if (this.LwP == null)
     {
       bool1 = false;
-      if (this.JDI != null) {
+      if (this.LwO != null) {
         break label51;
       }
     }
     label51:
-    for (boolean bool2 = false;; bool2 = this.JDI.isRunning())
+    for (boolean bool2 = false;; bool2 = this.LwO.isRunning())
     {
       if ((!bool1) && (!bool2)) {
         break label62;
       }
       AppMethodBeat.o(72685);
       return true;
-      bool1 = this.JDJ.isRunning();
+      bool1 = this.LwP.isRunning();
       break;
     }
     label62:
@@ -196,7 +196,7 @@ public class WcPayKeyboard
     return false;
   }
   
-  private void fzR()
+  private void fRb()
   {
     AppMethodBeat.i(72688);
     Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772171);
@@ -206,7 +206,7 @@ public class WcPayKeyboard
       {
         AppMethodBeat.i(72667);
         WcPayKeyboard.d(WcPayKeyboard.this).setVisibility(4);
-        if (this.JDO) {
+        if (this.LwU) {
           WcPayKeyboard.this.setVisibility(8);
         }
         AppMethodBeat.o(72667);
@@ -216,15 +216,15 @@ public class WcPayKeyboard
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    this.JDD.startAnimation(localAnimation);
+    this.LwJ.startAnimation(localAnimation);
     AppMethodBeat.o(72688);
   }
   
-  private void fzS()
+  private void fRc()
   {
     AppMethodBeat.i(72689);
     setVisibility(0);
-    this.JDD.setVisibility(0);
+    this.LwJ.setVisibility(0);
     Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772170);
     localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
@@ -234,7 +234,7 @@ public class WcPayKeyboard
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    this.JDD.startAnimation(localAnimation);
+    this.LwJ.startAnimation(localAnimation);
     AppMethodBeat.o(72689);
   }
   
@@ -242,31 +242,35 @@ public class WcPayKeyboard
   {
     AppMethodBeat.i(72674);
     LayoutInflater.from(getContext()).inflate(2131496059, this, true);
-    this.JDC = ((LinearLayout)findViewById(2131301263));
-    this.JDx = ((TextView)findViewById(2131301251));
-    this.JDo = ((TextView)findViewById(2131301252));
-    this.JDp = ((TextView)findViewById(2131301253));
-    this.JDq = ((TextView)findViewById(2131301254));
-    this.JDr = ((TextView)findViewById(2131301255));
-    this.JDs = ((TextView)findViewById(2131301256));
-    this.JDt = ((TextView)findViewById(2131301257));
-    this.JDu = ((TextView)findViewById(2131301258));
-    this.JDv = ((TextView)findViewById(2131301259));
-    this.JDw = ((TextView)findViewById(2131301260));
-    this.JDy = ((TextView)findViewById(2131301265));
-    this.JDA = findViewById(2131301264);
-    this.JDz = ((TextView)findViewById(2131301261));
-    this.JDD = ((WcPayKeyboardAnimationActionButton)findViewById(2131301262));
-    this.lLe = ((TextView)findViewById(2131301267));
-    this.JDB = ((ViewGroup)findViewById(2131301266));
-    this.JDz.setTypeface(Typeface.defaultFromStyle(1));
+    this.LwI = ((LinearLayout)findViewById(2131301263));
+    this.LwD = ((TextView)findViewById(2131301251));
+    this.Lwu = ((TextView)findViewById(2131301252));
+    this.Lwv = ((TextView)findViewById(2131301253));
+    this.Lww = ((TextView)findViewById(2131301254));
+    this.Lwx = ((TextView)findViewById(2131301255));
+    this.Lwy = ((TextView)findViewById(2131301256));
+    this.Lwz = ((TextView)findViewById(2131301257));
+    this.LwA = ((TextView)findViewById(2131301258));
+    this.LwB = ((TextView)findViewById(2131301259));
+    this.LwC = ((TextView)findViewById(2131301260));
+    this.LwE = ((TextView)findViewById(2131301265));
+    this.LwG = findViewById(2131301264);
+    this.LwF = ((TextView)findViewById(2131301261));
+    this.LwJ = ((WcPayKeyboardAnimationActionButton)findViewById(2131301262));
+    this.mkS = ((TextView)findViewById(2131301267));
+    this.LwH = ((ViewGroup)findViewById(2131301266));
+    this.LwF.setTypeface(Typeface.defaultFromStyle(1));
     View.OnClickListener local1 = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72652);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/wallet_core/keyboard/WcPayKeyboard$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (WcPayKeyboard.a(WcPayKeyboard.this) == null)
         {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/wallet_core/keyboard/WcPayKeyboard$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(72652);
           return;
         }
@@ -276,7 +280,7 @@ public class WcPayKeyboard
         }
         for (;;)
         {
-          if (!bs.jl(i, 0)) {
+          if (!bt.jx(i, 0)) {
             paramAnonymousView.performHapticFeedback(0, 2);
           }
           if (paramAnonymousView.getId() != 2131301261) {
@@ -284,6 +288,7 @@ public class WcPayKeyboard
           }
           WcPayKeyboard.a(WcPayKeyboard.this).dispatchKeyEvent(new KeyEvent(0, i));
           WcPayKeyboard.a(WcPayKeyboard.this).dispatchKeyEvent(new KeyEvent(1, i));
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/wallet_core/keyboard/WcPayKeyboard$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(72652);
           return;
           if (paramAnonymousView.getId() == 2131301252) {
@@ -316,51 +321,51 @@ public class WcPayKeyboard
         }
       }
     };
-    this.JDC.setOnClickListener(local1);
-    this.JDx.setOnClickListener(local1);
-    this.JDo.setOnClickListener(local1);
-    this.JDp.setOnClickListener(local1);
-    this.JDq.setOnClickListener(local1);
-    this.JDr.setOnClickListener(local1);
-    this.JDs.setOnClickListener(local1);
-    this.JDt.setOnClickListener(local1);
-    this.JDu.setOnClickListener(local1);
-    this.JDv.setOnClickListener(local1);
-    this.JDw.setOnClickListener(local1);
-    this.JDA.setOnClickListener(local1);
-    this.JDy.setOnClickListener(local1);
-    this.JDz.setOnClickListener(local1);
-    this.JDD.setOnClickListener(local1);
+    this.LwI.setOnClickListener(local1);
+    this.LwD.setOnClickListener(local1);
+    this.Lwu.setOnClickListener(local1);
+    this.Lwv.setOnClickListener(local1);
+    this.Lww.setOnClickListener(local1);
+    this.Lwx.setOnClickListener(local1);
+    this.Lwy.setOnClickListener(local1);
+    this.Lwz.setOnClickListener(local1);
+    this.LwA.setOnClickListener(local1);
+    this.LwB.setOnClickListener(local1);
+    this.LwC.setOnClickListener(local1);
+    this.LwG.setOnClickListener(local1);
+    this.LwE.setOnClickListener(local1);
+    this.LwF.setOnClickListener(local1);
+    this.LwJ.setOnClickListener(local1);
     AppMethodBeat.o(72674);
   }
   
   private void setWindowViewBottomMargin(int paramInt)
   {
     AppMethodBeat.i(72692);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.JDE.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.LwK.getLayoutParams();
     localLayoutParams.bottomMargin = paramInt;
-    this.JDE.setLayoutParams(localLayoutParams);
+    this.LwK.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(72692);
   }
   
-  private void yx(final boolean paramBoolean)
+  private void zk(final boolean paramBoolean)
   {
     AppMethodBeat.i(72687);
-    if (this.JDH)
+    if (this.LwN)
     {
-      yz(paramBoolean);
+      zm(paramBoolean);
       AppMethodBeat.o(72687);
       return;
     }
-    final int i = this.JDC.getHeight();
-    if (this.JDJ == null)
+    final int i = this.LwI.getHeight();
+    if (this.LwP == null)
     {
-      this.JDJ = ObjectAnimator.ofFloat(this.JDC, "translationY", new float[] { 0.0F, i });
-      this.JDJ.setDuration(300L);
-      this.JDJ.setInterpolator(new LinearInterpolator());
+      this.LwP = ObjectAnimator.ofFloat(this.LwI, "translationY", new float[] { 0.0F, i });
+      this.LwP.setDuration(300L);
+      this.LwP.setInterpolator(new LinearInterpolator());
     }
-    this.JDJ.removeAllListeners();
-    this.JDJ.addListener(new Animator.AnimatorListener()
+    this.LwP.removeAllListeners();
+    this.LwP.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
@@ -379,8 +384,8 @@ public class WcPayKeyboard
       
       public final void onAnimationStart(Animator paramAnonymousAnimator) {}
     });
-    this.JDJ.removeAllUpdateListeners();
-    this.JDJ.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.LwP.removeAllUpdateListeners();
+    this.LwP.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -389,17 +394,17 @@ public class WcPayKeyboard
         {
           float f1 = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
           float f2 = i - f1;
-          ac.v("MicroMsg.WcPayKeyBoard", "hideWcPayKeyboardBase() onAnimationUpdate() baseHeight:%s translationY:%s %s", new Object[] { Integer.valueOf(i), Float.valueOf(f1), Float.valueOf(f2) });
-          WcPayKeyboard.g(WcPayKeyboard.this).bs(f2);
+          ad.v("MicroMsg.WcPayKeyBoard", "hideWcPayKeyboardBase() onAnimationUpdate() baseHeight:%s translationY:%s %s", new Object[] { Integer.valueOf(i), Float.valueOf(f1), Float.valueOf(f2) });
+          WcPayKeyboard.g(WcPayKeyboard.this).bv(f2);
         }
         AppMethodBeat.o(72666);
       }
     });
-    this.JDJ.start();
+    this.LwP.start();
     AppMethodBeat.o(72687);
   }
   
-  private void yz(final boolean paramBoolean)
+  private void zm(final boolean paramBoolean)
   {
     AppMethodBeat.i(72691);
     Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772138);
@@ -421,16 +426,16 @@ public class WcPayKeyboard
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    this.JDC.startAnimation(localAnimation);
+    this.LwI.startAnimation(localAnimation);
     setWindowViewBottomMargin(0);
     AppMethodBeat.o(72691);
   }
   
-  public final void egR()
+  public final void euC()
   {
     AppMethodBeat.i(72682);
-    this.lLe.setVisibility(8);
-    if (this.JDC.isShown()) {
+    this.mkS.setVisibility(8);
+    if (this.LwI.isShown()) {
       post(new Runnable()
       {
         public final void run()
@@ -446,52 +451,52 @@ public class WcPayKeyboard
     AppMethodBeat.o(72682);
   }
   
-  public final void fzK()
+  public final void fQU()
   {
     AppMethodBeat.i(72677);
-    ac.i("MicroMsg.WcPayKeyBoard", "showSingleActionStWcKb() %s %s %s [%s]", new Object[] { Boolean.valueOf(isShown()), this.JDF, Boolean.valueOf(fzP()), bs.eWi() });
-    if (fzP())
+    ad.i("MicroMsg.WcPayKeyBoard", "showSingleActionStWcKb() %s %s %s [%s]", new Object[] { Boolean.valueOf(isShown()), this.LwL, Boolean.valueOf(fQZ()), bt.flS() });
+    if (fQZ())
     {
       AppMethodBeat.o(72677);
       return;
     }
-    if (this.JDF == WcPayKeyboard.b.JDS)
+    if (this.LwL == WcPayKeyboard.b.LwY)
     {
       AppMethodBeat.o(72677);
       return;
     }
-    if ((isShown()) && (fzM())) {
-      aS(true, false);
+    if ((isShown()) && (fQW())) {
+      ba(true, false);
     }
     for (;;)
     {
-      this.JDF = WcPayKeyboard.b.JDR;
+      this.LwL = WcPayKeyboard.b.LwX;
       AppMethodBeat.o(72677);
       return;
       if (!isShown()) {
-        if (fzM()) {
-          ac.e("MicroMsg.WcPayKeyBoard", "showSingleActionStWcKb() why here??");
-        } else if (fzL()) {
-          fzS();
+        if (fQW()) {
+          ad.e("MicroMsg.WcPayKeyBoard", "showSingleActionStWcKb() why here??");
+        } else if (fQV()) {
+          fRc();
         }
       }
     }
   }
   
-  public final boolean fzM()
+  public final boolean fQW()
   {
-    return this.JDF == WcPayKeyboard.b.JDQ;
+    return this.LwL == WcPayKeyboard.b.LwW;
   }
   
-  public final boolean fzN()
+  public final boolean fQX()
   {
-    return this.JDF == WcPayKeyboard.b.JDS;
+    return this.LwL == WcPayKeyboard.b.LwY;
   }
   
-  public final boolean fzO()
+  public final boolean fQY()
   {
     AppMethodBeat.i(72679);
-    if ((getVisibility() == 8) && (!fzN()))
+    if ((getVisibility() == 8) && (!fQX()))
     {
       AppMethodBeat.o(72679);
       return true;
@@ -500,10 +505,10 @@ public class WcPayKeyboard
     return false;
   }
   
-  public final boolean fzP()
+  public final boolean fQZ()
   {
     AppMethodBeat.i(72684);
-    if ((fzQ()) || (this.JDD.fzV()))
+    if ((fRa()) || (this.LwJ.fRf()))
     {
       AppMethodBeat.o(72684);
       return true;
@@ -515,24 +520,24 @@ public class WcPayKeyboard
   public final void hideWcKb()
   {
     AppMethodBeat.i(72676);
-    ac.i("MicroMsg.WcPayKeyBoard", "hideWcKb() %s %s [%s]", new Object[] { Boolean.valueOf(isShown()), this.JDF, bs.eWi() });
-    if (fzP())
+    ad.i("MicroMsg.WcPayKeyBoard", "hideWcKb() %s %s [%s]", new Object[] { Boolean.valueOf(isShown()), this.LwL, bt.flS() });
+    if (fQZ())
     {
       AppMethodBeat.o(72676);
       return;
     }
-    if (this.JDF == WcPayKeyboard.b.JDS)
+    if (this.LwL == WcPayKeyboard.b.LwY)
     {
       AppMethodBeat.o(72676);
       return;
     }
     if (isShown())
     {
-      if (fzM()) {
-        yx(true);
+      if (fQW()) {
+        zk(true);
       }
-      if (fzL()) {
-        fzR();
+      if (fQV()) {
+        fRb();
       }
     }
     AppMethodBeat.o(72676);
@@ -541,9 +546,9 @@ public class WcPayKeyboard
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(72675);
-    if ((isShown()) && (fzM()))
+    if ((isShown()) && (fQW()))
     {
-      fzK();
+      fQU();
       AppMethodBeat.o(72675);
       return true;
     }
@@ -554,13 +559,13 @@ public class WcPayKeyboard
   public void setActionText(String paramString)
   {
     AppMethodBeat.i(72680);
-    this.JDz.setText(paramString);
+    this.LwF.setText(paramString);
     AppMethodBeat.o(72680);
   }
   
   public void setHeightListener(a parama)
   {
-    this.JDG = parama;
+    this.LwM = parama;
   }
   
   public void setInputEditText(EditText paramEditText)
@@ -573,9 +578,9 @@ public class WcPayKeyboard
   public void setTipText(String paramString)
   {
     AppMethodBeat.i(72681);
-    this.lLe.setText(paramString);
-    this.lLe.setVisibility(0);
-    if (this.JDC.isShown()) {
+    this.mkS.setText(paramString);
+    this.mkS.setVisibility(0);
+    if (this.LwI.isShown()) {
       post(new Runnable()
       {
         public final void run()
@@ -594,59 +599,59 @@ public class WcPayKeyboard
   public final void showNormalStWcKb()
   {
     AppMethodBeat.i(72678);
-    ac.i("MicroMsg.WcPayKeyBoard", "showNormalStWcKb() %s %s %s [%s]", new Object[] { Boolean.valueOf(isShown()), this.JDF, Boolean.valueOf(fzP()), bs.eWi() });
-    if (fzP())
+    ad.i("MicroMsg.WcPayKeyBoard", "showNormalStWcKb() %s %s %s [%s]", new Object[] { Boolean.valueOf(isShown()), this.LwL, Boolean.valueOf(fQZ()), bt.flS() });
+    if (fQZ())
     {
       AppMethodBeat.o(72678);
       return;
     }
     if (isShown()) {
-      if (fzL()) {
-        aS(false, true);
+      if (fQV()) {
+        ba(false, true);
       }
     }
     for (;;)
     {
-      this.JDF = WcPayKeyboard.b.JDQ;
+      this.LwL = WcPayKeyboard.b.LwW;
       AppMethodBeat.o(72678);
       return;
-      if (fzL()) {
-        aS(false, false);
+      if (fQV()) {
+        ba(false, false);
       }
-      yy(true);
+      zl(true);
     }
   }
   
-  public final void yw(boolean paramBoolean)
+  public final void zj(boolean paramBoolean)
   {
     AppMethodBeat.i(72683);
-    this.JDz.setEnabled(paramBoolean);
-    this.JDD.setEnabled(paramBoolean);
+    this.LwF.setEnabled(paramBoolean);
+    this.LwJ.setEnabled(paramBoolean);
     if (!paramBoolean)
     {
-      if (aj.DT())
+      if (al.isDarkMode())
       {
-        this.JDz.setBackgroundResource(2131231135);
-        this.JDz.setTextColor(Color.parseColor("#347051"));
+        this.LwF.setBackgroundResource(2131231135);
+        this.LwF.setTextColor(Color.parseColor("#347051"));
         AppMethodBeat.o(72683);
         return;
       }
-      this.JDz.setBackgroundResource(2131234728);
-      this.JDz.setTextColor(Color.parseColor("#CDF2DF"));
+      this.LwF.setBackgroundResource(2131234728);
+      this.LwF.setTextColor(Color.parseColor("#CDF2DF"));
       AppMethodBeat.o(72683);
       return;
     }
-    this.JDz.setBackgroundResource(2131234728);
-    this.JDz.setTextColor(getResources().getColor(2131101185));
+    this.LwF.setBackgroundResource(2131234728);
+    this.LwF.setTextColor(getResources().getColor(2131101185));
     AppMethodBeat.o(72683);
   }
   
-  public final void yy(final boolean paramBoolean)
+  public final void zl(final boolean paramBoolean)
   {
     AppMethodBeat.i(72690);
     setVisibility(0);
-    this.JDC.setVisibility(4);
-    this.JDC.post(new Runnable()
+    this.LwI.setVisibility(4);
+    this.LwI.post(new Runnable()
     {
       public final void run()
       {
@@ -673,8 +678,8 @@ public class WcPayKeyboard
           public final void onAnimationEnd(Animator paramAnonymous2Animator)
           {
             AppMethodBeat.i(72654);
-            ac.d("MicroMsg.WcPayKeyBoard", "keyboard anim end");
-            if (!WcPayKeyboard.2.this.JDL)
+            ad.d("MicroMsg.WcPayKeyBoard", "keyboard anim end");
+            if (!WcPayKeyboard.2.this.LwR)
             {
               WcPayKeyboard.i(WcPayKeyboard.this).setVisibility(0);
               WcPayKeyboard.d(WcPayKeyboard.this).setVisibility(4);
@@ -688,7 +693,7 @@ public class WcPayKeyboard
           {
             AppMethodBeat.i(72653);
             WcPayKeyboard.c(WcPayKeyboard.this).setVisibility(0);
-            if (WcPayKeyboard.2.this.JDL)
+            if (WcPayKeyboard.2.this.LwR)
             {
               WcPayKeyboard.i(WcPayKeyboard.this).setVisibility(0);
               AppMethodBeat.o(72653);
@@ -708,8 +713,8 @@ public class WcPayKeyboard
             {
               float f1 = ((Float)paramAnonymous2ValueAnimator.getAnimatedValue()).floatValue();
               float f2 = i - f1;
-              ac.v("MicroMsg.WcPayKeyBoard", "showWcPayKeyboardBase() onAnimationUpdate() baseHeight:%s translationY:%s %s", new Object[] { Integer.valueOf(i), Float.valueOf(f1), Float.valueOf(f2) });
-              WcPayKeyboard.g(WcPayKeyboard.this).bs(f2);
+              ad.v("MicroMsg.WcPayKeyBoard", "showWcPayKeyboardBase() onAnimationUpdate() baseHeight:%s translationY:%s %s", new Object[] { Integer.valueOf(i), Float.valueOf(f1), Float.valueOf(f2) });
+              WcPayKeyboard.g(WcPayKeyboard.this).bv(f2);
             }
             AppMethodBeat.o(72655);
           }
@@ -723,7 +728,7 @@ public class WcPayKeyboard
   
   public static abstract interface a
   {
-    public abstract void bs(float paramFloat);
+    public abstract void bv(float paramFloat);
   }
 }
 

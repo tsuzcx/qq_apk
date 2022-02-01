@@ -7,12 +7,12 @@ import java.util.List;
 public abstract class i
   implements View.OnTouchListener, AbsListView.OnScrollListener
 {
-  protected List<a> mCf;
+  protected List<a> ncF;
   
   public final void a(a parama)
   {
-    if (!this.mCf.contains(parama)) {
-      this.mCf.add(parama);
+    if (!this.ncF.contains(parama)) {
+      this.ncF.add(parama);
     }
   }
   

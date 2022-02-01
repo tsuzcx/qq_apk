@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.a.a;
 import com.tencent.mm.sdk.b.b;
 
 public final class qp
   extends b
 {
-  public a dtA;
+  public a dFj;
   
   public qp()
   {
@@ -15,16 +17,17 @@ public final class qp
   
   private qp(byte paramByte)
   {
-    AppMethodBeat.i(19828);
-    this.dtA = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19827);
+    this.dFj = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19828);
+    AppMethodBeat.o(19827);
   }
   
   public static final class a
   {
-    public int scene = 1;
+    public a dFk;
+    public EditText dFl;
   }
 }
 

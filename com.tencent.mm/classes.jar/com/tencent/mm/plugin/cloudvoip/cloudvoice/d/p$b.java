@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.cloudvoip.cloudvoice.d;
 import android.os.Bundle;
 import com.tencent.mm.ipcinvoker.k;
 
-final class p$b
+class p$b
   implements k<Bundle, Bundle>
 {}
 

@@ -10,13 +10,13 @@ final class JsApiNavigateToDevMiniProgram$1
 {
   JsApiNavigateToDevMiniProgram$1(JsApiNavigateToDevMiniProgram paramJsApiNavigateToDevMiniProgram, d paramd, int paramInt) {}
   
-  public final void l(boolean paramBoolean, String paramString)
+  public final void o(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(46622);
     if (paramBoolean)
     {
       paramString = "ok";
-      this.jYK.h(this.bZy, this.kzQ.e(paramString, null));
+      this.ktg.h(this.cjQ, this.kWa.e(paramString, null));
       AppMethodBeat.o(46622);
       return;
     }

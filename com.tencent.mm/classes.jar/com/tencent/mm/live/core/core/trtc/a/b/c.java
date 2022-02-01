@@ -9,10 +9,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.live.core.b.f;
 import com.tencent.mm.live.core.core.trtc.a.a.a;
 import com.tencent.mm.live.core.core.trtc.a.a.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.ar;
 import com.tencent.rtmp.TXLivePlayer;
 import com.tencent.rtmp.TXLog;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -28,125 +28,125 @@ import java.util.List;
 
 public final class c
 {
-  private final a gpS;
-  private boolean gpT;
-  private ArrayList<b> gpU;
-  private String gpV;
-  private HashMap<String, f> gpW;
-  private HashMap<Long, TXLivePlayer> gpX;
-  private int gpY;
-  private int gpZ;
-  private TRTCCloud gpj;
+  private TRTCCloud gIR;
+  private final a gJC;
+  private boolean gJD;
+  private ArrayList<b> gJE;
+  private String gJF;
+  private HashMap<String, f> gJG;
+  private HashMap<Long, TXLivePlayer> gJH;
+  private int gJI;
+  private int gJJ;
   
   public c(TRTCCloud paramTRTCCloud, a parama)
   {
-    AppMethodBeat.i(209045);
-    this.gpY = 1258344707;
-    this.gpZ = 58415;
-    this.gpj = paramTRTCCloud;
-    this.gpS = parama;
-    this.gpT = true;
-    this.gpU = new ArrayList();
-    this.gpW = new HashMap();
-    this.gpX = new HashMap();
-    AppMethodBeat.o(209045);
+    AppMethodBeat.i(216699);
+    this.gJI = 1258344707;
+    this.gJJ = 58415;
+    this.gIR = paramTRTCCloud;
+    this.gJC = parama;
+    this.gJD = true;
+    this.gJE = new ArrayList();
+    this.gJG = new HashMap();
+    this.gJH = new HashMap();
+    AppMethodBeat.o(216699);
   }
   
-  private b uA(String paramString)
+  private boolean xq(String paramString)
   {
-    AppMethodBeat.i(209049);
-    Iterator localIterator = this.gpU.iterator();
+    AppMethodBeat.i(216702);
+    Iterator localIterator = this.gJE.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
       if ((localb != null) && (localb.userId != null) && (localb.userId.equals(paramString)) && (localb.streamType == 0))
       {
-        AppMethodBeat.o(209049);
-        return localb;
-      }
-    }
-    AppMethodBeat.o(209049);
-    return null;
-  }
-  
-  public static void uC(String paramString)
-  {
-    AppMethodBeat.i(209052);
-    b localb = new b((byte)0);
-    localb.userId = paramString;
-    localb.streamType = 0;
-    if (b.a.ajn().ux(paramString) == null)
-    {
-      paramString = new a(paramString);
-      b.a.ajn().a(paramString);
-    }
-    AppMethodBeat.o(209052);
-  }
-  
-  private void uF(String paramString)
-  {
-    AppMethodBeat.i(209057);
-    f localf = (f)this.gpW.remove(paramString);
-    if (localf != null) {
-      localf.release();
-    }
-    this.gpj.stopRemoteSubStreamView(paramString);
-    AppMethodBeat.o(209057);
-  }
-  
-  private boolean uz(String paramString)
-  {
-    AppMethodBeat.i(209048);
-    Iterator localIterator = this.gpU.iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if ((localb != null) && (localb.userId != null) && (localb.userId.equals(paramString)) && (localb.streamType == 0))
-      {
-        AppMethodBeat.o(209048);
+        AppMethodBeat.o(216702);
         return true;
       }
     }
-    AppMethodBeat.o(209048);
+    AppMethodBeat.o(216702);
     return false;
+  }
+  
+  private b xr(String paramString)
+  {
+    AppMethodBeat.i(216703);
+    Iterator localIterator = this.gJE.iterator();
+    while (localIterator.hasNext())
+    {
+      b localb = (b)localIterator.next();
+      if ((localb != null) && (localb.userId != null) && (localb.userId.equals(paramString)) && (localb.streamType == 0))
+      {
+        AppMethodBeat.o(216703);
+        return localb;
+      }
+    }
+    AppMethodBeat.o(216703);
+    return null;
+  }
+  
+  public static void xt(String paramString)
+  {
+    AppMethodBeat.i(216706);
+    b localb = new b((byte)0);
+    localb.userId = paramString;
+    localb.streamType = 0;
+    if (b.a.alZ().xo(paramString) == null)
+    {
+      paramString = new a(paramString);
+      b.a.alZ().a(paramString);
+    }
+    AppMethodBeat.o(216706);
+  }
+  
+  private void xw(String paramString)
+  {
+    AppMethodBeat.i(216711);
+    f localf = (f)this.gJG.remove(paramString);
+    if (localf != null) {
+      localf.release();
+    }
+    this.gIR.stopRemoteSubStreamView(paramString);
+    AppMethodBeat.o(216711);
   }
   
   public final void a(long paramLong, TXLivePlayer paramTXLivePlayer)
   {
-    AppMethodBeat.i(209056);
-    this.gpX.put(Long.valueOf(paramLong), paramTXLivePlayer);
-    AppMethodBeat.o(209056);
+    AppMethodBeat.i(216710);
+    this.gJH.put(Long.valueOf(paramLong), paramTXLivePlayer);
+    AppMethodBeat.o(216710);
   }
   
   public final void a(String paramString, TXCloudVideoView paramTXCloudVideoView)
   {
-    AppMethodBeat.i(209051);
+    AppMethodBeat.i(216705);
     b localb = new b((byte)0);
     localb.userId = paramString;
     localb.streamType = 0;
-    localb.gqc = false;
+    localb.gJM = false;
     Object localObject;
-    if (b.a.ajn().ux(paramString) == null)
+    if (b.a.alZ().xo(paramString) == null)
     {
       localObject = new a(paramString);
-      b.a.ajn().a((a)localObject);
+      b.a.alZ().a((a)localObject);
     }
-    if (!this.gpT) {
+    if (!this.gJD) {
       if (paramTXCloudVideoView != null)
       {
-        this.gpj.setDebugViewMargin(paramString, new TRTCCloud.TRTCViewMargin(0.0F, 0.0F, 0.1F, 0.0F));
-        this.gpj.setRemoteViewFillMode(paramString, 1);
-        this.gpj.startRemoteView(paramString, paramTXCloudVideoView);
+        this.gIR.setDebugViewMargin(paramString, new TRTCCloud.TRTCViewMargin(0.0F, 0.0F, 0.1F, 0.0F));
+        this.gIR.setRemoteViewFillMode(paramString, 1);
+        this.gIR.startRemoteView(paramString, paramTXCloudVideoView);
       }
     }
     for (;;)
     {
-      if (!uz(paramString))
+      if (!xq(paramString))
       {
-        this.gpU.add(localb);
-        TXLog.i("MicroMsg.LiveCoreVisitor", "remoteUserVideoAvailable " + localb.userId + ", stream 0, size " + this.gpU.size());
+        this.gJE.add(localb);
+        TXLog.i("MicroMsg.LiveCoreVisitor", "remoteUserVideoAvailable " + localb.userId + ", stream 0, size " + this.gJE.size());
       }
-      AppMethodBeat.o(209051);
+      AppMethodBeat.o(216705);
       return;
       localObject = new f(paramString);
       TextureView localTextureView = new TextureView(paramTXCloudVideoView.getContext());
@@ -155,52 +155,52 @@ public final class c
       {
         public final void onSurfaceTextureAvailable(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          AppMethodBeat.i(209042);
-          ac.i("MicroMsg.LiveCoreVisitor", "customRender onSurfaceTextureAvailable, size:[%s, %s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-          this.gqa.bE(new Surface(paramAnonymousSurfaceTexture));
-          this.gqa.cQ(paramAnonymousInt1, paramAnonymousInt2);
-          AppMethodBeat.o(209042);
+          AppMethodBeat.i(216696);
+          ad.i("MicroMsg.LiveCoreVisitor", "customRender onSurfaceTextureAvailable, size:[%s, %s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+          this.gJK.bG(new Surface(paramAnonymousSurfaceTexture));
+          this.gJK.cS(paramAnonymousInt1, paramAnonymousInt2);
+          AppMethodBeat.o(216696);
         }
         
         public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramAnonymousSurfaceTexture)
         {
-          AppMethodBeat.i(209044);
-          ac.i("MicroMsg.LiveCoreVisitor", "customRender onSurfaceTextureDestroyed");
-          this.gqa.ajJ();
-          AppMethodBeat.o(209044);
+          AppMethodBeat.i(216698);
+          ad.i("MicroMsg.LiveCoreVisitor", "customRender onSurfaceTextureDestroyed");
+          this.gJK.amv();
+          AppMethodBeat.o(216698);
           return false;
         }
         
         public final void onSurfaceTextureSizeChanged(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          AppMethodBeat.i(209043);
-          ac.i("MicroMsg.LiveCoreVisitor", "customRender onSurfaceTextureSizeChanged, size:[%s, %s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-          this.gqa.cQ(paramAnonymousInt1, paramAnonymousInt2);
-          AppMethodBeat.o(209043);
+          AppMethodBeat.i(216697);
+          ad.i("MicroMsg.LiveCoreVisitor", "customRender onSurfaceTextureSizeChanged, size:[%s, %s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+          this.gJK.cS(paramAnonymousInt1, paramAnonymousInt2);
+          AppMethodBeat.o(216697);
         }
         
         public final void onSurfaceTextureUpdated(SurfaceTexture paramAnonymousSurfaceTexture) {}
       });
-      this.gpj.setRemoteVideoRenderListener(paramString, 1, 2, (TRTCCloudListener.TRTCVideoRenderListener)localObject);
-      this.gpW.put(paramString, localObject);
-      this.gpj.startRemoteView(paramString, null);
+      this.gIR.setRemoteVideoRenderListener(paramString, 1, 2, (TRTCCloudListener.TRTCVideoRenderListener)localObject);
+      this.gJG.put(paramString, localObject);
+      this.gIR.startRemoteView(paramString, null);
       localTextureView.invalidate();
     }
   }
   
-  public final void ajo()
+  public final void ama()
   {
-    AppMethodBeat.i(209058);
+    AppMethodBeat.i(216712);
     int i = 720;
     int j = 1280;
-    if (!a.a.ajc().aiY().gpD)
+    if (!a.a.alO().alK().gJn)
     {
       i = 1280;
       j = 720;
     }
     int k = 180;
     int m;
-    if (!a.a.ajc().aiY().gpN)
+    if (!a.a.alO().alK().gJx)
     {
       m = 180;
       k = 320;
@@ -214,7 +214,7 @@ public final class c
       int n;
       TRTCCloudDef.TRTCTranscodingConfig localTRTCTranscodingConfig;
       TRTCCloudDef.TRTCMixUser localTRTCMixUser;
-      switch (a.a.ajc().aiY().mVideoResolution)
+      switch (a.a.alO().alK().gJl)
       {
       default: 
         i3 = 200;
@@ -229,14 +229,14 @@ public final class c
       case 3: 
         for (;;)
         {
-          i2 = a.a.ajc().aiY().mVideoBitrate;
+          i2 = a.a.alO().alK().mVideoBitrate;
           if (i2 > 0) {
             i = i2;
           }
-          ac.i("MicroMsg.LiveCoreVisitor", "videoWidth:%s, videoHeight:%s, bitrate:%s", new Object[] { Integer.valueOf(i1), Integer.valueOf(n), Integer.valueOf(i) });
+          ad.i("MicroMsg.LiveCoreVisitor", "videoWidth:%s, videoHeight:%s, bitrate:%s", new Object[] { Integer.valueOf(i1), Integer.valueOf(n), Integer.valueOf(i) });
           localTRTCTranscodingConfig = new TRTCCloudDef.TRTCTranscodingConfig();
-          localTRTCTranscodingConfig.appId = this.gpY;
-          localTRTCTranscodingConfig.bizId = this.gpZ;
+          localTRTCTranscodingConfig.appId = this.gJI;
+          localTRTCTranscodingConfig.bizId = this.gJJ;
           localTRTCTranscodingConfig.videoWidth = i1;
           localTRTCTranscodingConfig.videoHeight = n;
           localTRTCTranscodingConfig.videoGOP = 1;
@@ -246,7 +246,7 @@ public final class c
           localTRTCTranscodingConfig.audioBitrate = 64;
           localTRTCTranscodingConfig.audioChannels = 2;
           Object localObject1 = new TRTCCloudDef.TRTCMixUser();
-          ((TRTCCloudDef.TRTCMixUser)localObject1).userId = this.gpV;
+          ((TRTCCloudDef.TRTCMixUser)localObject1).userId = this.gJF;
           ((TRTCCloudDef.TRTCMixUser)localObject1).zOrder = 0;
           ((TRTCCloudDef.TRTCMixUser)localObject1).x = 0;
           ((TRTCCloudDef.TRTCMixUser)localObject1).y = 0;
@@ -254,11 +254,11 @@ public final class c
           ((TRTCCloudDef.TRTCMixUser)localObject1).height = n;
           localTRTCTranscodingConfig.mixUsers = new ArrayList();
           localTRTCTranscodingConfig.mixUsers.add(localObject1);
-          if (!a.a.ajc().aiY().gpL) {
+          if (!a.a.alO().alK().gJv) {
             break label1392;
           }
-          TXLog.i("MicroMsg.LiveCoreVisitor", "updateCloudMixtureParams videostreams: " + this.gpU.size());
-          localObject1 = b.a.ajn().gpQ;
+          TXLog.i("MicroMsg.LiveCoreVisitor", "updateCloudMixtureParams videostreams: " + this.gJE.size());
+          localObject1 = b.a.alZ().gJA;
           if (localObject1 == null) {
             break label1392;
           }
@@ -271,18 +271,18 @@ public final class c
             }
             Object localObject2 = (a)((Iterator)localObject1).next();
             localTRTCMixUser = new TRTCCloudDef.TRTCMixUser();
-            com.tencent.mm.live.core.core.trtc.a.a.c localc = a.a.ajc().aja();
-            if ((localc.gpB) && (((a)localObject2).foE.equalsIgnoreCase(localc.gpA))) {
-              localTRTCMixUser.roomId = localc.gpz;
+            com.tencent.mm.live.core.core.trtc.a.a.c localc = a.a.alO().alM();
+            if ((localc.gJk) && (((a)localObject2).fGM.equalsIgnoreCase(localc.gJj))) {
+              localTRTCMixUser.roomId = localc.gJi;
             }
-            localTRTCMixUser.userId = ((a)localObject2).foE;
+            localTRTCMixUser.userId = ((a)localObject2).fGM;
             localTRTCMixUser.streamType = ((a)localObject2).mStreamType;
             localTRTCMixUser.zOrder = (i + 1);
             localTRTCMixUser.pureAudio = true;
-            localObject2 = uA(localTRTCMixUser.userId);
+            localObject2 = xr(localTRTCMixUser.userId);
             if (localObject2 != null)
             {
-              localTRTCMixUser.pureAudio = ((b)localObject2).gqc;
+              localTRTCMixUser.pureAudio = ((b)localObject2).gJM;
               if (i >= 3) {
                 break;
               }
@@ -297,7 +297,7 @@ public final class c
           }
           i = 27;
           j = 48;
-          if (!a.a.ajc().aiY().gpN)
+          if (!a.a.alO().alK().gJx)
           {
             i = 48;
             j = 27;
@@ -315,13 +315,13 @@ public final class c
         label616:
         i = 192;
         j = 336;
-        if (!a.a.ajc().aiY().gpD)
+        if (!a.a.alO().alK().gJn)
         {
           i = 336;
           j = 192;
         }
         m = 96;
-        if (!a.a.ajc().aiY().gpN)
+        if (!a.a.alO().alK().gJx)
         {
           k = 96;
           m = 54;
@@ -343,7 +343,7 @@ public final class c
         i1 = i2;
         break;
         i = 240;
-        if (!a.a.ajc().aiY().gpD)
+        if (!a.a.alO().alK().gJn)
         {
           j = 240;
           i = 320;
@@ -351,7 +351,7 @@ public final class c
         for (;;)
         {
           m = 96;
-          if (!a.a.ajc().aiY().gpN)
+          if (!a.a.alO().alK().gJx)
           {
             k = 96;
             m = 54;
@@ -372,7 +372,7 @@ public final class c
             break;
             i = 72;
             j = 128;
-            if (!a.a.ajc().aiY().gpN)
+            if (!a.a.alO().alK().gJx)
             {
               i = 128;
               j = 72;
@@ -388,12 +388,12 @@ public final class c
             break;
             i = 368;
             j = 640;
-            if (!a.a.ajc().aiY().gpD)
+            if (!a.a.alO().alK().gJn)
             {
               i = 640;
               j = 368;
             }
-            if (!a.a.ajc().aiY().gpN) {
+            if (!a.a.alO().alK().gJx) {
               m = 90;
             }
             for (k = 160;; k = 90)
@@ -412,12 +412,12 @@ public final class c
               break;
               i = 480;
               j = 640;
-              if (!a.a.ajc().aiY().gpD)
+              if (!a.a.alO().alK().gJn)
               {
                 i = 640;
                 j = 480;
               }
-              if (!a.a.ajc().aiY().gpN) {
+              if (!a.a.alO().alK().gJx) {
                 m = 90;
               }
               for (k = 160;; k = 90)
@@ -436,14 +436,14 @@ public final class c
                 break;
                 i = 544;
                 j = 960;
-                if (!a.a.ajc().aiY().gpD)
+                if (!a.a.alO().alK().gJn)
                 {
                   i = 960;
                   j = 544;
                 }
                 k = 171;
                 m = 304;
-                if (!a.a.ajc().aiY().gpN)
+                if (!a.a.alO().alK().gJx)
                 {
                   k = 304;
                   m = 171;
@@ -462,13 +462,13 @@ public final class c
                 break;
                 i = 720;
                 j = 1280;
-                if (!a.a.ajc().aiY().gpD)
+                if (!a.a.alO().alK().gJn)
                 {
                   i = 1280;
                   j = 720;
                 }
                 k = 180;
-                if (!a.a.ajc().aiY().gpN)
+                if (!a.a.alO().alK().gJx)
                 {
                   m = 180;
                   k = 320;
@@ -496,8 +496,8 @@ public final class c
                   localTRTCMixUser.height = k;
                   break label616;
                   label1392:
-                  this.gpj.setMixTranscodingConfig(localTRTCTranscodingConfig);
-                  AppMethodBeat.o(209058);
+                  this.gIR.setMixTranscodingConfig(localTRTCTranscodingConfig);
+                  AppMethodBeat.o(216712);
                   return;
                   m = 320;
                 }
@@ -517,33 +517,51 @@ public final class c
   
   public final void muteRemoteAudio(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(209047);
-    this.gpj.muteRemoteAudio(paramString, paramBoolean);
-    AppMethodBeat.o(209047);
+    AppMethodBeat.i(216701);
+    this.gIR.muteRemoteAudio(paramString, paramBoolean);
+    AppMethodBeat.o(216701);
   }
   
-  public final TXLivePlayer pd(long paramLong)
+  public final TXLivePlayer re(long paramLong)
   {
-    AppMethodBeat.i(209055);
-    if ((this.gpX != null) && (this.gpX.containsKey(Long.valueOf(paramLong))))
+    AppMethodBeat.i(216709);
+    if ((this.gJH != null) && (this.gJH.containsKey(Long.valueOf(paramLong))))
     {
-      TXLivePlayer localTXLivePlayer = (TXLivePlayer)this.gpX.get(Long.valueOf(paramLong));
-      AppMethodBeat.o(209055);
+      TXLivePlayer localTXLivePlayer = (TXLivePlayer)this.gJH.get(Long.valueOf(paramLong));
+      AppMethodBeat.o(216709);
       return localTXLivePlayer;
     }
-    AppMethodBeat.o(209055);
+    AppMethodBeat.o(216709);
     return null;
   }
   
-  public final void uB(String paramString)
+  public final void v(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(209050);
-    if (!this.gpT) {
-      this.gpj.stopRemoteView(paramString);
+    AppMethodBeat.i(216700);
+    if (paramLong1 > 0L) {
+      this.gJI = ((int)paramLong1);
+    }
+    if (paramLong2 > 0L) {
+      this.gJJ = ((int)paramLong2);
+    }
+    TXLog.i("MicroMsg.LiveCoreVisitor", "setQCloudAccount:appid: " + paramLong1 + ", bizid: " + paramLong2 + ", mCloudAppid: " + this.gJI + ", mCloudBizid: " + this.gJJ);
+    AppMethodBeat.o(216700);
+  }
+  
+  public final void xp(String paramString)
+  {
+    this.gJF = paramString;
+  }
+  
+  public final void xs(String paramString)
+  {
+    AppMethodBeat.i(216704);
+    if (!this.gJD) {
+      this.gIR.stopRemoteView(paramString);
     }
     for (;;)
     {
-      Iterator localIterator = this.gpU.iterator();
+      Iterator localIterator = this.gJE.iterator();
       b localb;
       do
       {
@@ -553,80 +571,62 @@ public final class c
         localb = (b)localIterator.next();
       } while ((localb.userId == null) || (!localb.userId.equals(paramString)) || (localb.streamType != 0));
       localIterator.remove();
-      TXLog.i("MicroMsg.LiveCoreVisitor", "removeVideoStream " + paramString + ", stream 0, size " + this.gpU.size());
-      AppMethodBeat.o(209050);
+      TXLog.i("MicroMsg.LiveCoreVisitor", "removeVideoStream " + paramString + ", stream 0, size " + this.gJE.size());
+      AppMethodBeat.o(216704);
       return;
-      uF(paramString);
+      xw(paramString);
     }
-    AppMethodBeat.o(209050);
+    AppMethodBeat.o(216704);
   }
   
-  public final void uD(String paramString)
+  public final void xu(String paramString)
   {
-    AppMethodBeat.i(209053);
-    Object localObject = b.a.ajn().gpQ.iterator();
+    AppMethodBeat.i(216707);
+    Object localObject = b.a.alZ().gJA.iterator();
     while (((Iterator)localObject).hasNext()) {
-      if (paramString.equals(((a)((Iterator)localObject).next()).foE)) {
+      if (paramString.equals(((a)((Iterator)localObject).next()).fGM)) {
         ((Iterator)localObject).remove();
       }
     }
-    uF(paramString);
-    this.gpj.stopRemoteView(paramString);
-    this.gpj.stopRemoteSubStreamView(paramString);
-    localObject = a.a.ajc().aja();
-    if (paramString.equals(((com.tencent.mm.live.core.core.trtc.a.a.c)localObject).gpA))
+    xw(paramString);
+    this.gIR.stopRemoteView(paramString);
+    this.gIR.stopRemoteSubStreamView(paramString);
+    localObject = a.a.alO().alM();
+    if (paramString.equals(((com.tencent.mm.live.core.core.trtc.a.a.c)localObject).gJj))
     {
-      ((com.tencent.mm.live.core.core.trtc.a.a.c)localObject).gpz = "";
-      ((com.tencent.mm.live.core.core.trtc.a.a.c)localObject).gpA = "";
-      ((com.tencent.mm.live.core.core.trtc.a.a.c)localObject).gpB = false;
+      ((com.tencent.mm.live.core.core.trtc.a.a.c)localObject).gJi = "";
+      ((com.tencent.mm.live.core.core.trtc.a.a.c)localObject).gJj = "";
+      ((com.tencent.mm.live.core.core.trtc.a.a.c)localObject).gJk = false;
     }
-    AppMethodBeat.o(209053);
+    AppMethodBeat.o(216707);
   }
   
-  public final f uE(String paramString)
+  public final f xv(String paramString)
   {
-    AppMethodBeat.i(209054);
-    if ((this.gpW != null) && (!bs.isNullOrNil(paramString)) && (this.gpW.containsKey(paramString)))
+    AppMethodBeat.i(216708);
+    if ((this.gJG != null) && (!bt.isNullOrNil(paramString)) && (this.gJG.containsKey(paramString)))
     {
-      paramString = (f)this.gpW.get(paramString);
-      AppMethodBeat.o(209054);
+      paramString = (f)this.gJG.get(paramString);
+      AppMethodBeat.o(216708);
       return paramString;
     }
-    AppMethodBeat.o(209054);
+    AppMethodBeat.o(216708);
     return null;
   }
   
-  public final void uy(String paramString)
+  public final void z(float paramFloat1, float paramFloat2)
   {
-    this.gpV = paramString;
-  }
-  
-  public final void v(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(209046);
-    if (paramLong1 > 0L) {
-      this.gpY = ((int)paramLong1);
-    }
-    if (paramLong2 > 0L) {
-      this.gpZ = ((int)paramLong2);
-    }
-    TXLog.i("MicroMsg.LiveCoreVisitor", "setQCloudAccount:appid: " + paramLong1 + ", bizid: " + paramLong2 + ", mCloudAppid: " + this.gpY + ", mCloudBizid: " + this.gpZ);
-    AppMethodBeat.o(209046);
-  }
-  
-  public final void x(float paramFloat1, float paramFloat2)
-  {
-    AppMethodBeat.i(209059);
+    AppMethodBeat.i(216713);
     int i = 720;
     int j = 1280;
-    if (!a.a.ajc().aiY().gpD)
+    if (!a.a.alO().alK().gJn)
     {
       i = 1280;
       j = 720;
     }
     int k = 180;
     int m = 320;
-    if (!a.a.ajc().aiY().gpN)
+    if (!a.a.alO().alK().gJx)
     {
       k = 320;
       m = 180;
@@ -641,7 +641,7 @@ public final class c
     label530:
     Object localObject2;
     TRTCCloudDef.TRTCMixUser localTRTCMixUser;
-    switch (a.a.ajc().aiY().mVideoResolution)
+    switch (a.a.alO().alK().gJl)
     {
     default: 
       i1 = m;
@@ -650,16 +650,16 @@ public final class c
       j = i1;
       i1 = i3;
       i = i2;
-      i2 = a.a.ajc().aiY().mVideoBitrate;
+      i2 = a.a.alO().alK().mVideoBitrate;
       if (i2 > 0) {
         i = i2;
       }
-      f1 = paramFloat1 / ap.cl(ai.getContext()).x * n;
-      f2 = paramFloat2 / ap.cl(ai.getContext()).y * m;
-      ac.i("MicroMsg.LiveCoreVisitor", "xOffset:%s, realXOffset:%s, yOffset:%s, realYOffset:%s, videoWidth:%s, videoHeight:%s, bitrate:%s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(f1), Float.valueOf(paramFloat2), Float.valueOf(f2), Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(i) });
+      f1 = paramFloat1 / ar.ci(aj.getContext()).x * n;
+      f2 = paramFloat2 / ar.ci(aj.getContext()).y * m;
+      ad.i("MicroMsg.LiveCoreVisitor", "xOffset:%s, realXOffset:%s, yOffset:%s, realYOffset:%s, videoWidth:%s, videoHeight:%s, bitrate:%s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(f1), Float.valueOf(paramFloat2), Float.valueOf(f2), Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(i) });
       localTRTCTranscodingConfig = new TRTCCloudDef.TRTCTranscodingConfig();
-      localTRTCTranscodingConfig.appId = this.gpY;
-      localTRTCTranscodingConfig.bizId = this.gpZ;
+      localTRTCTranscodingConfig.appId = this.gJI;
+      localTRTCTranscodingConfig.bizId = this.gJJ;
       localTRTCTranscodingConfig.videoWidth = n;
       localTRTCTranscodingConfig.videoHeight = m;
       localTRTCTranscodingConfig.videoGOP = 1;
@@ -669,7 +669,7 @@ public final class c
       localTRTCTranscodingConfig.audioBitrate = 64;
       localTRTCTranscodingConfig.audioChannels = 2;
       Object localObject1 = new TRTCCloudDef.TRTCMixUser();
-      ((TRTCCloudDef.TRTCMixUser)localObject1).userId = this.gpV;
+      ((TRTCCloudDef.TRTCMixUser)localObject1).userId = this.gJF;
       ((TRTCCloudDef.TRTCMixUser)localObject1).zOrder = 0;
       ((TRTCCloudDef.TRTCMixUser)localObject1).x = 0;
       ((TRTCCloudDef.TRTCMixUser)localObject1).y = 0;
@@ -677,11 +677,11 @@ public final class c
       ((TRTCCloudDef.TRTCMixUser)localObject1).height = m;
       localTRTCTranscodingConfig.mixUsers = new ArrayList();
       localTRTCTranscodingConfig.mixUsers.add(localObject1);
-      if (!a.a.ajc().aiY().gpL) {
+      if (!a.a.alO().alK().gJv) {
         break label1646;
       }
-      TXLog.i("MicroMsg.LiveCoreVisitor", "updateCloudMixtureParams videostreams: " + this.gpU.size());
-      localObject1 = b.a.ajn().gpQ;
+      TXLog.i("MicroMsg.LiveCoreVisitor", "updateCloudMixtureParams videostreams: " + this.gJE.size());
+      localObject1 = b.a.alZ().gJA;
       if (localObject1 == null) {
         break label1646;
       }
@@ -692,18 +692,18 @@ public final class c
       }
       localObject2 = (a)((Iterator)localObject1).next();
       localTRTCMixUser = new TRTCCloudDef.TRTCMixUser();
-      com.tencent.mm.live.core.core.trtc.a.a.c localc = a.a.ajc().aja();
-      if ((localc.gpB) && (((a)localObject2).foE.equalsIgnoreCase(localc.gpA))) {
-        localTRTCMixUser.roomId = localc.gpz;
+      com.tencent.mm.live.core.core.trtc.a.a.c localc = a.a.alO().alM();
+      if ((localc.gJk) && (((a)localObject2).fGM.equalsIgnoreCase(localc.gJj))) {
+        localTRTCMixUser.roomId = localc.gJi;
       }
-      localTRTCMixUser.userId = ((a)localObject2).foE;
+      localTRTCMixUser.userId = ((a)localObject2).fGM;
       localTRTCMixUser.streamType = ((a)localObject2).mStreamType;
       localTRTCMixUser.zOrder = (i + 1);
       localTRTCMixUser.pureAudio = true;
-      localObject2 = uA(localTRTCMixUser.userId);
+      localObject2 = xr(localTRTCMixUser.userId);
       if (localObject2 != null)
       {
-        localTRTCMixUser.pureAudio = ((b)localObject2).gqc;
+        localTRTCMixUser.pureAudio = ((b)localObject2).gJM;
         if (i >= 3) {
           break label1595;
         }
@@ -736,7 +736,7 @@ public final class c
       m = 160;
       i = 27;
       j = 48;
-      if (!a.a.ajc().aiY().gpN)
+      if (!a.a.alO().alK().gJx)
       {
         i = 48;
         j = 27;
@@ -748,14 +748,14 @@ public final class c
       break;
       i = 192;
       j = 336;
-      if (!a.a.ajc().aiY().gpD)
+      if (!a.a.alO().alK().gJn)
       {
         i = 336;
         j = 192;
       }
       k = 54;
       m = 96;
-      if (!a.a.ajc().aiY().gpN)
+      if (!a.a.alO().alK().gJx)
       {
         k = 96;
         m = 54;
@@ -771,14 +771,14 @@ public final class c
       break;
       i = 240;
       j = 320;
-      if (!a.a.ajc().aiY().gpD)
+      if (!a.a.alO().alK().gJn)
       {
         i = 320;
         j = 240;
       }
       k = 54;
       m = 96;
-      if (!a.a.ajc().aiY().gpN)
+      if (!a.a.alO().alK().gJx)
       {
         k = 96;
         m = 54;
@@ -795,7 +795,7 @@ public final class c
       n = 480;
       i = 72;
       j = 128;
-      if (!a.a.ajc().aiY().gpN)
+      if (!a.a.alO().alK().gJx)
       {
         i = 128;
         j = 72;
@@ -808,14 +808,14 @@ public final class c
       break;
       i = 368;
       j = 640;
-      if (!a.a.ajc().aiY().gpD)
+      if (!a.a.alO().alK().gJn)
       {
         i = 640;
         j = 368;
       }
       k = 90;
       m = 160;
-      if (!a.a.ajc().aiY().gpN)
+      if (!a.a.alO().alK().gJx)
       {
         k = 160;
         m = 90;
@@ -831,14 +831,14 @@ public final class c
       break;
       i = 480;
       j = 640;
-      if (!a.a.ajc().aiY().gpD)
+      if (!a.a.alO().alK().gJn)
       {
         i = 640;
         j = 480;
       }
       k = 90;
       m = 160;
-      if (!a.a.ajc().aiY().gpN)
+      if (!a.a.alO().alK().gJx)
       {
         k = 160;
         m = 90;
@@ -854,14 +854,14 @@ public final class c
       break;
       i = 544;
       j = 960;
-      if (!a.a.ajc().aiY().gpD)
+      if (!a.a.alO().alK().gJn)
       {
         i = 960;
         j = 544;
       }
       k = 171;
       m = 304;
-      if (!a.a.ajc().aiY().gpN)
+      if (!a.a.alO().alK().gJx)
       {
         k = 304;
         m = 171;
@@ -877,14 +877,14 @@ public final class c
       break;
       i = 720;
       j = 1280;
-      if (!a.a.ajc().aiY().gpD)
+      if (!a.a.alO().alK().gJn)
       {
         i = 1280;
         j = 720;
       }
       k = 180;
       m = 320;
-      if (!a.a.ajc().aiY().gpN)
+      if (!a.a.alO().alK().gJx)
       {
         k = 320;
         m = 180;
@@ -914,15 +914,15 @@ public final class c
       }
     }
     label1646:
-    this.gpj.setMixTranscodingConfig(localTRTCTranscodingConfig);
-    AppMethodBeat.o(209059);
+    this.gIR.setMixTranscodingConfig(localTRTCTranscodingConfig);
+    AppMethodBeat.o(216713);
   }
   
   public static abstract interface a {}
   
   static final class b
   {
-    public boolean gqc = true;
+    public boolean gJM = true;
     public int streamType;
     public String userId;
     public int x = 0;
@@ -931,7 +931,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.a.b.c
  * JD-Core Version:    0.7.0.1
  */

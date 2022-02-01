@@ -5,6 +5,11 @@ import java.util.Comparator;
 
 final class k
 {
+  private static int E(int paramInt1, int paramInt2)
+  {
+    return paramInt1 * 13 * paramInt1 + paramInt2 * paramInt2;
+  }
+  
   public static <L, T> T a(L paramL, b<L, T> paramb, a<T> parama, T paramT, Rect paramRect, int paramInt)
   {
     Rect localRect1 = new Rect(paramRect);
@@ -20,7 +25,7 @@ final class k
     case 17: 
       localRect1.offset(paramRect.width() + 1, 0);
       localObject1 = null;
-      int k = paramb.K(paramL);
+      int k = paramb.L(paramL);
       localRect2 = new Rect();
       j = 0;
       if (j < k)
@@ -61,7 +66,7 @@ final class k
         i = 1;
         break label164;
       }
-      if ((!a(paramInt, paramRect, localRect1, localRect2)) && (x(c(paramInt, paramRect, localRect2), g(paramInt, paramRect, localRect2)) < x(c(paramInt, paramRect, localRect1), g(paramInt, paramRect, localRect1))))
+      if ((!a(paramInt, paramRect, localRect1, localRect2)) && (E(c(paramInt, paramRect, localRect2), g(paramInt, paramRect, localRect2)) < E(c(paramInt, paramRect, localRect1), g(paramInt, paramRect, localRect1))))
       {
         i = 1;
         break label164;
@@ -228,11 +233,6 @@ final class k
     return Math.abs(paramRect1.left + paramRect1.width() / 2 - (paramRect2.left + paramRect2.width() / 2));
   }
   
-  private static int x(int paramInt1, int paramInt2)
-  {
-    return paramInt1 * 13 * paramInt1 + paramInt2 * paramInt2;
-  }
-  
   public static abstract interface a<T>
   {
     public abstract void b(T paramT, Rect paramRect);
@@ -240,7 +240,7 @@ final class k
   
   public static abstract interface b<T, V>
   {
-    public abstract int K(T paramT);
+    public abstract int L(T paramT);
     
     public abstract V get(T paramT, int paramInt);
   }
@@ -248,23 +248,23 @@ final class k
   static final class c<T>
     implements Comparator<T>
   {
-    private final Rect Sw = new Rect();
-    private final Rect Sx = new Rect();
-    private final boolean Sy;
-    private final k.a<T> Sz;
+    private final Rect Ul = new Rect();
+    private final Rect Um = new Rect();
+    private final boolean Un;
+    private final k.a<T> Uo;
     
     c(boolean paramBoolean, k.a<T> parama)
     {
-      this.Sy = paramBoolean;
-      this.Sz = parama;
+      this.Un = paramBoolean;
+      this.Uo = parama;
     }
     
     public final int compare(T paramT1, T paramT2)
     {
-      Rect localRect1 = this.Sw;
-      Rect localRect2 = this.Sx;
-      this.Sz.b(paramT1, localRect1);
-      this.Sz.b(paramT2, localRect2);
+      Rect localRect1 = this.Ul;
+      Rect localRect2 = this.Um;
+      this.Uo.b(paramT1, localRect1);
+      this.Uo.b(paramT2, localRect2);
       if (localRect1.top < localRect2.top) {}
       do
       {
@@ -283,12 +283,12 @@ final class k
                 if (localRect1.left >= localRect2.left) {
                   break;
                 }
-              } while (!this.Sy);
+              } while (!this.Un);
               return 1;
               if (localRect1.left <= localRect2.left) {
                 break;
               }
-            } while (this.Sy);
+            } while (this.Un);
             return 1;
           } while (localRect1.bottom < localRect2.bottom);
           if (localRect1.bottom > localRect2.bottom) {
@@ -297,12 +297,12 @@ final class k
           if (localRect1.right >= localRect2.right) {
             break;
           }
-        } while (!this.Sy);
+        } while (!this.Un);
         return 1;
         if (localRect1.right <= localRect2.right) {
           break;
         }
-      } while (this.Sy);
+      } while (this.Un);
       return 1;
       return 0;
     }

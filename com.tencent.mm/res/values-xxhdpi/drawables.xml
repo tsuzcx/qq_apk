@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item type="drawable" name="c8w">false</item>
     <item type="drawable" name="an7">false</item>
     <item type="drawable" name="aq1">false</item>
     <item type="drawable" name="at1">false</item>
@@ -52,7 +53,10 @@
     <item type="drawable" name="bb8">false</item>
     <item type="drawable" name="bba">false</item>
     <item type="drawable" name="bbb">false</item>
+    <item type="drawable" name="bbr">false</item>
     <item type="drawable" name="bbu">false</item>
+    <item type="drawable" name="bbw">false</item>
+    <item type="drawable" name="bbx">false</item>
     <item type="drawable" name="bc0">false</item>
     <item type="drawable" name="bc1">false</item>
     <item type="drawable" name="bc2">false</item>
@@ -98,21 +102,29 @@
     <item type="drawable" name="beu">false</item>
     <item type="drawable" name="bev">false</item>
     <item type="drawable" name="bez">false</item>
+    <item type="drawable" name="bf1">false</item>
     <item type="drawable" name="bf2">false</item>
+    <item type="drawable" name="bf3">false</item>
     <item type="drawable" name="bf6">false</item>
     <item type="drawable" name="bf7">false</item>
     <item type="drawable" name="bf8">false</item>
+    <item type="drawable" name="bfb">false</item>
+    <item type="drawable" name="bfd">false</item>
     <item type="drawable" name="bfg">false</item>
     <item type="drawable" name="bfh">false</item>
     <item type="drawable" name="bfi">false</item>
     <item type="drawable" name="bfj">false</item>
     <item type="drawable" name="bfo">false</item>
+    <item type="drawable" name="bfs">false</item>
+    <item type="drawable" name="bfu">false</item>
     <item type="drawable" name="bfx">false</item>
     <item type="drawable" name="bg3">false</item>
     <item type="drawable" name="bg4">false</item>
     <item type="drawable" name="bg5">false</item>
     <item type="drawable" name="bg6">false</item>
     <item type="drawable" name="bg7">false</item>
+    <item type="drawable" name="bg9">false</item>
+    <item type="drawable" name="bga">false</item>
     <item type="drawable" name="bgd">false</item>
     <item type="drawable" name="bgh">false</item>
     <item type="drawable" name="bgi">false</item>
@@ -351,6 +363,7 @@
     <item type="drawable" name="bz0">false</item>
     <item type="drawable" name="bz3">false</item>
     <item type="drawable" name="bz5">false</item>
+    <item type="drawable" name="bz6">false</item>
     <item type="drawable" name="bzv">false</item>
     <item type="drawable" name="bzw">false</item>
     <item type="drawable" name="bzx">false</item>
@@ -361,6 +374,7 @@
     <item type="drawable" name="c06">false</item>
     <item type="drawable" name="c07">false</item>
     <item type="drawable" name="c08">false</item>
+    <item type="drawable" name="c0b">false</item>
     <item type="drawable" name="c0d">false</item>
     <item type="drawable" name="c0e">false</item>
     <item type="drawable" name="c0t">false</item>
@@ -404,4 +418,6 @@
     <item type="drawable" name="c3d">false</item>
     <item type="drawable" name="c3f">false</item>
     <item type="drawable" name="c3i">false</item>
+    <item type="drawable" name="c98">false</item>
+    <item type="drawable" name="c99">false</item>
 </resources>

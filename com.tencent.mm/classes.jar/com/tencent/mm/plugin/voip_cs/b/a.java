@@ -1,74 +1,74 @@
 package com.tencent.mm.plugin.voip_cs.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.xe;
-import com.tencent.mm.g.a.xe.a;
+import com.tencent.mm.g.a.xy;
+import com.tencent.mm.g.a.xy.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.voip_cs.c.e;
-import com.tencent.mm.protocal.protobuf.drk;
-import com.tencent.mm.protocal.protobuf.drr;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.dxe;
+import com.tencent.mm.protocal.protobuf.dxl;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 
 public final class a
-  extends com.tencent.mm.sdk.b.c<xe>
+  extends com.tencent.mm.sdk.b.c<xy>
 {
   public a()
   {
     AppMethodBeat.i(161685);
-    this.__eventId = xe.class.getName().hashCode();
+    this.__eventId = xy.class.getName().hashCode();
     AppMethodBeat.o(161685);
   }
   
-  private static boolean a(xe paramxe)
+  private static boolean a(xy paramxy)
   {
     AppMethodBeat.i(125336);
     e locale;
     Object localObject;
-    if ((paramxe instanceof xe))
+    if ((paramxy instanceof xy))
     {
-      if (!g.agM())
+      if (!g.ajx())
       {
         AppMethodBeat.o(125336);
         return false;
       }
-      locale = com.tencent.mm.plugin.voip_cs.c.c.enD();
-      localObject = paramxe.dzV.dzW;
+      locale = com.tencent.mm.plugin.voip_cs.c.c.eBC();
+      localObject = paramxy.dMi.dMj;
       if ((localObject != null) && (localObject.length != 0))
       {
-        paramxe = new byte[localObject.length - 1];
-        System.arraycopy(localObject, 1, paramxe, 0, paramxe.length);
-        localObject = new drk();
+        paramxy = new byte[localObject.length - 1];
+        System.arraycopy(localObject, 1, paramxy, 0, paramxy.length);
+        localObject = new dxe();
       }
     }
     try
     {
-      ((drk)localObject).parseFrom(paramxe);
-      ac.i("MicroMsg.voipcs.VoipCSService", "notify status = " + ((drk)localObject).FZc + ",notifySeq = " + locale.AVc);
-      paramxe = new drr();
-      paramxe.FOh = ((drk)localObject).FOh;
-      paramxe.Exg = ((drk)localObject).Exg;
-      paramxe.FZa = ((drk)localObject).FZa;
-      paramxe.FZc = ((drk)localObject).FZc;
-      paramxe.FZd = ((drk)localObject).FZd;
-      paramxe.FZe = ((drk)localObject).FZe;
-      paramxe.FZb = ((drk)localObject).FZb;
-      locale.a(paramxe);
+      ((dxe)localObject).parseFrom(paramxy);
+      ad.i("MicroMsg.voipcs.VoipCSService", "notify status = " + ((dxe)localObject).HJY + ",notifySeq = " + locale.Cvk);
+      paramxy = new dxl();
+      paramxy.HyS = ((dxe)localObject).HyS;
+      paramxy.GeJ = ((dxe)localObject).GeJ;
+      paramxy.HJW = ((dxe)localObject).HJW;
+      paramxy.HJY = ((dxe)localObject).HJY;
+      paramxy.HJZ = ((dxe)localObject).HJZ;
+      paramxy.HKa = ((dxe)localObject).HKa;
+      paramxy.HJX = ((dxe)localObject).HJX;
+      locale.a(paramxy);
       AppMethodBeat.o(125336);
       return false;
     }
-    catch (IOException paramxe)
+    catch (IOException paramxy)
     {
       for (;;)
       {
-        ac.e("MicroMsg.voipcs.VoipCSService", "csNotify.parseFrom content error!", new Object[] { paramxe });
+        ad.e("MicroMsg.voipcs.VoipCSService", "csNotify.parseFrom content error!", new Object[] { paramxy });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.b.a
  * JD-Core Version:    0.7.0.1
  */

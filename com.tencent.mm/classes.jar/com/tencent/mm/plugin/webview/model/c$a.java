@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ahf;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.ajv;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class c$a
 {
-  public ahf CoY;
+  public ajv DSw;
+  public String dHv;
   public String desc;
-  public String djj;
-  public String dvs;
+  public String duW;
   public String thumbUrl;
   public String title;
   public String url;
@@ -17,7 +17,7 @@ public final class c$a
   public final boolean valid()
   {
     AppMethodBeat.i(78836);
-    if (!bs.isNullOrNil(this.url))
+    if (!bt.isNullOrNil(this.url))
     {
       AppMethodBeat.o(78836);
       return true;

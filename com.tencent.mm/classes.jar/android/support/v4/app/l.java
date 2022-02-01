@@ -15,17 +15,17 @@ import java.util.List;
 
 final class l
 {
-  private static final int[] Eh = { 0, 3, 0, 1, 5, 4, 7, 6, 9, 8 };
-  private static final n Ei;
-  private static final n Ej;
+  private static final int[] FY = { 0, 3, 0, 1, 5, 4, 7, 6, 9, 8 };
+  private static final n FZ;
+  private static final n Ga;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21) {}
     for (m localm = new m();; localm = null)
     {
-      Ei = localm;
-      Ej = dP();
+      FZ = localm;
+      Ga = ek();
       return;
     }
   }
@@ -78,13 +78,13 @@ final class l
     do
     {
       return null;
-      if ((Ei != null) && (a(Ei, localArrayList))) {
-        return Ei;
+      if ((FZ != null) && (a(FZ, localArrayList))) {
+        return FZ;
       }
-      if ((Ej != null) && (a(Ej, localArrayList))) {
-        return Ej;
+      if ((Ga != null) && (a(Ga, localArrayList))) {
+        return Ga;
       }
-    } while ((Ei == null) && (Ej == null));
+    } while ((FZ == null) && (Ga == null));
     throw new IllegalArgumentException("Invalid Transition types");
   }
   
@@ -98,9 +98,9 @@ final class l
       if (((b)localObject).ar(paramInt1))
       {
         boolean bool = ((Boolean)paramArrayList1.get(paramInt3)).booleanValue();
-        if (((b)localObject).CS != null)
+        if (((b)localObject).EJ != null)
         {
-          int j = ((b)localObject).CS.size();
+          int j = ((b)localObject).EJ.size();
           ArrayList localArrayList1;
           ArrayList localArrayList2;
           int i;
@@ -108,8 +108,8 @@ final class l
           String str1;
           if (bool)
           {
-            localArrayList1 = ((b)localObject).CS;
-            localArrayList2 = ((b)localObject).CT;
+            localArrayList1 = ((b)localObject).EJ;
+            localArrayList2 = ((b)localObject).EK;
             i = 0;
             if (i >= j) {
               break label192;
@@ -126,8 +126,8 @@ final class l
           {
             i += 1;
             break label95;
-            localArrayList2 = ((b)localObject).CS;
-            localArrayList1 = ((b)localObject).CT;
+            localArrayList2 = ((b)localObject).EJ;
+            localArrayList1 = ((b)localObject).EK;
             break;
             label179:
             locala.put(localObject, str1);
@@ -147,15 +147,15 @@ final class l
       parama.clear();
       return null;
     }
-    paramObject = parama1.Ez;
+    paramObject = parama1.Gq;
     a locala = new a();
     paramn.a(locala, paramObject.getView());
-    paramn = parama1.EB;
+    paramn = parama1.Gs;
     int i;
-    if (parama1.EA)
+    if (parama1.Gr)
     {
       paramObject = paramObject.getEnterTransitionCallback();
-      paramn = paramn.CT;
+      paramn = paramn.EK;
       i.a(locala, paramn);
       if (paramObject == null) {
         break label172;
@@ -177,7 +177,7 @@ final class l
       i -= 1;
       break label82;
       paramObject = paramObject.getExitTransitionCallback();
-      paramn = paramn.CS;
+      paramn = paramn.EJ;
       break;
       label139:
       if (!parama1.equals(t.an(paramObject)))
@@ -194,11 +194,11 @@ final class l
   
   static View a(a<String, View> parama, a parama1, Object paramObject, boolean paramBoolean)
   {
-    parama1 = parama1.Ey;
-    if ((paramObject != null) && (parama != null) && (parama1.CS != null) && (!parama1.CS.isEmpty()))
+    parama1 = parama1.Gp;
+    if ((paramObject != null) && (parama != null) && (parama1.EJ != null) && (!parama1.EJ.isEmpty()))
     {
       if (paramBoolean) {}
-      for (parama1 = (String)parama1.CS.get(0);; parama1 = (String)parama1.CT.get(0)) {
+      for (parama1 = (String)parama1.EJ.get(0);; parama1 = (String)parama1.EK.get(0)) {
         return (View)parama.get(parama1);
       }
     }
@@ -212,7 +212,7 @@ final class l
     }
     if (paramBoolean) {}
     for (paramFragment1 = paramFragment2.getSharedElementReturnTransition();; paramFragment1 = paramFragment1.getSharedElementEnterTransition()) {
-      return paramn.j(paramn.i(paramFragment1));
+      return paramn.k(paramn.j(paramFragment1));
     }
   }
   
@@ -223,7 +223,7 @@ final class l
     }
     if (paramBoolean) {}
     for (paramFragment = paramFragment.getReenterTransition();; paramFragment = paramFragment.getEnterTransition()) {
-      return paramn.i(paramFragment);
+      return paramn.j(paramFragment);
     }
   }
   
@@ -392,19 +392,19 @@ final class l
       Object localObject4;
       if (localViewGroup != null)
       {
-        localFragment1 = ((a)localObject5).Ew;
-        localObject11 = ((a)localObject5).Ez;
+        localFragment1 = ((a)localObject5).Gn;
+        localObject11 = ((a)localObject5).Gq;
         localObject6 = a((Fragment)localObject11, localFragment1);
         if (localObject6 != null)
         {
-          bool1 = ((a)localObject5).Ex;
-          bool2 = ((a)localObject5).EA;
+          bool1 = ((a)localObject5).Go;
+          bool2 = ((a)localObject5).Gr;
           localObject7 = new ArrayList();
           localObject8 = new ArrayList();
           localObject9 = a((n)localObject6, localFragment1, bool1);
           localObject10 = b((n)localObject6, (Fragment)localObject11, bool2);
-          localFragment2 = ((a)localObject5).Ew;
-          localFragment3 = ((a)localObject5).Ez;
+          localFragment2 = ((a)localObject5).Gn;
+          localFragment3 = ((a)localObject5).Gq;
           if (localFragment2 != null) {
             localFragment2.getView().setVisibility(0);
           }
@@ -428,7 +428,7 @@ final class l
                 {
                   public final void run()
                   {
-                    l.a(this.za, 4);
+                    l.a(this.AT, 4);
                   }
                 });
               }
@@ -447,7 +447,7 @@ final class l
         i += 1;
         break label117;
         break;
-        bool2 = ((a)localObject5).Ex;
+        bool2 = ((a)localObject5).Go;
         final a locala2;
         if (locala1.isEmpty())
         {
@@ -485,7 +485,7 @@ final class l
         {
           ((ArrayList)localObject7).add(localView);
           ((n)localObject6).a(localObject1, localView, (ArrayList)localObject8);
-          a((n)localObject6, localObject1, localObject10, (a)localObject3, ((a)localObject5).EA, ((a)localObject5).EB);
+          a((n)localObject6, localObject1, localObject10, (a)localObject3, ((a)localObject5).Gr, ((a)localObject5).Gs);
           localObject4 = new Rect();
           localObject5 = a(locala2, (a)localObject5, localObject9, bool2);
           localObject2 = localObject5;
@@ -502,9 +502,9 @@ final class l
           {
             public final void run()
             {
-              l.a(this.Em, localFragment3, bool2, locala2);
-              if (this.Eq != null) {
-                n.a(this.Eq, this.yX);
+              l.a(this.Gd, localFragment3, bool2, locala2);
+              if (this.Gh != null) {
+                n.a(this.Gh, this.AQ);
               }
             }
           });
@@ -517,20 +517,20 @@ final class l
           if (localViewGroup == null) {
             break label1383;
           }
-          localObject6 = ((a)localObject5).Ew;
-          localObject10 = ((a)localObject5).Ez;
+          localObject6 = ((a)localObject5).Gn;
+          localObject10 = ((a)localObject5).Gq;
           localObject7 = a((Fragment)localObject10, (Fragment)localObject6);
           if (localObject7 == null) {
             break;
           }
-          bool1 = ((a)localObject5).Ex;
-          bool2 = ((a)localObject5).EA;
+          bool1 = ((a)localObject5).Go;
+          bool2 = ((a)localObject5).Gr;
           localObject8 = a((n)localObject7, (Fragment)localObject6, bool1);
           localObject3 = b((n)localObject7, (Fragment)localObject10, bool2);
           localObject11 = new ArrayList();
           localObject9 = new ArrayList();
-          localFragment1 = ((a)localObject5).Ew;
-          localFragment2 = ((a)localObject5).Ez;
+          localFragment1 = ((a)localObject5).Gn;
+          localFragment2 = ((a)localObject5).Gq;
           if ((localFragment1 == null) || (localFragment2 == null))
           {
             localObject1 = null;
@@ -545,7 +545,7 @@ final class l
           for (localObject2 = null;; localObject2 = localObject3)
           {
             ((n)localObject7).b(localObject8, localView);
-            localObject3 = a((n)localObject7, localObject8, localObject2, localObject1, (Fragment)localObject6, ((a)localObject5).Ex);
+            localObject3 = a((n)localObject7, localObject8, localObject2, localObject1, (Fragment)localObject6, ((a)localObject5).Go);
             if (localObject3 == null) {
               break;
             }
@@ -556,22 +556,22 @@ final class l
               public final void run()
               {
                 ArrayList localArrayList;
-                if (this.zb != null)
+                if (this.AU != null)
                 {
-                  this.Ek.c(this.zb, localView);
-                  localArrayList = l.a(this.Ek, this.zb, this.Em, this.zf, localView);
-                  this.zc.addAll(localArrayList);
+                  this.Gb.c(this.AU, localView);
+                  localArrayList = l.a(this.Gb, this.AU, this.Gd, this.AY, localView);
+                  this.AV.addAll(localArrayList);
                 }
-                if (this.za != null)
+                if (this.AT != null)
                 {
                   if (localObject2 != null)
                   {
                     localArrayList = new ArrayList();
                     localArrayList.add(localView);
-                    this.Ek.b(localObject2, this.za, localArrayList);
+                    this.Gb.b(localObject2, this.AT, localArrayList);
                   }
-                  this.za.clear();
-                  this.za.add(localView);
+                  this.AT.clear();
+                  this.AT.add(localView);
                 }
               }
             });
@@ -579,7 +579,7 @@ final class l
             ((n)localObject7).a(localViewGroup, localObject3);
             w.a(localViewGroup, new n.3((n)localObject7, (ArrayList)localObject9, locala1));
             break;
-            bool1 = ((a)localObject5).Ex;
+            bool1 = ((a)localObject5).Go;
             if (locala1.isEmpty())
             {
               localObject1 = null;
@@ -605,7 +605,7 @@ final class l
             {
               localObject4 = new Rect();
               ((n)localObject7).a(localObject1, localView, (ArrayList)localObject11);
-              a((n)localObject7, localObject1, localObject3, (a)localObject2, ((a)localObject5).EA, ((a)localObject5).EB);
+              a((n)localObject7, localObject1, localObject3, (a)localObject2, ((a)localObject5).Gr, ((a)localObject5).Gs);
               localObject2 = localObject4;
               if (localObject8 != null) {
                 ((n)localObject7).a(localObject8, (Rect)localObject4);
@@ -617,19 +617,19 @@ final class l
               {
                 public final void run()
                 {
-                  Object localObject = l.b(this.Ek, locala1, localObject1, this.Et);
+                  Object localObject = l.b(this.Gb, locala1, localObject1, this.Gk);
                   if (localObject != null)
                   {
-                    this.zf.addAll(((a)localObject).values());
-                    this.zf.add(localView);
+                    this.AY.addAll(((a)localObject).values());
+                    this.AY.add(localView);
                   }
                   l.a(localFragment1, localFragment2, bool1, (a)localObject);
                   if (localObject1 != null)
                   {
-                    this.Ek.a(localObject1, this.Eu, this.zf);
-                    localObject = l.a((a)localObject, this.Et, localObject8, bool1);
+                    this.Gb.a(localObject1, this.Gl, this.AY);
+                    localObject = l.a((a)localObject, this.Gk, localObject8, bool1);
                     if (localObject != null) {
-                      n.a((View)localObject, this.Ev);
+                      n.a((View)localObject, this.Gm);
                     }
                   }
                 }
@@ -660,7 +660,7 @@ final class l
     boolean bool;
     if (paramBoolean1)
     {
-      i = Eh[parama.CW];
+      i = FY[parama.EN];
       switch (i)
       {
       case 2: 
@@ -673,9 +673,9 @@ final class l
         if (bool)
         {
           parama = a(parama, paramSparseArray, n);
-          parama.Ew = localFragment;
-          parama.Ex = paramBoolean1;
-          parama.Ey = paramb;
+          parama.Gn = localFragment;
+          parama.Go = paramBoolean1;
+          parama.Gp = paramb;
         }
         break;
       }
@@ -684,28 +684,28 @@ final class l
     {
       if ((!paramBoolean2) && (i != 0))
       {
-        if ((parama != null) && (parama.Ez == localFragment)) {
-          parama.Ez = null;
+        if ((parama != null) && (parama.Gq == localFragment)) {
+          parama.Gq = null;
         }
-        FragmentManagerImpl localFragmentManagerImpl = paramb.CC;
-        if ((localFragment.mState <= 0) && (localFragmentManagerImpl.mCurState > 0) && (!paramb.CU))
+        FragmentManagerImpl localFragmentManagerImpl = paramb.Eu;
+        if ((localFragment.mState <= 0) && (localFragmentManagerImpl.mCurState > 0) && (!paramb.EL))
         {
           localFragmentManagerImpl.makeActive(localFragment);
           localFragmentManagerImpl.moveToState(localFragment, 1, 0, 0, false);
         }
       }
-      if ((j != 0) && ((parama == null) || (parama.Ez == null)))
+      if ((j != 0) && ((parama == null) || (parama.Gq == null)))
       {
         parama = a(parama, paramSparseArray, n);
-        parama.Ez = localFragment;
-        parama.EA = paramBoolean1;
-        parama.EB = paramb;
+        parama.Gq = localFragment;
+        parama.Gr = paramBoolean1;
+        parama.Gs = paramb;
       }
-      for (paramb = parama; (!paramBoolean2) && (k != 0) && (paramb != null) && (paramb.Ew == localFragment); paramb = parama)
+      for (paramb = parama; (!paramBoolean2) && (k != 0) && (paramb != null) && (paramb.Gn == localFragment); paramb = parama)
       {
-        paramb.Ew = null;
+        paramb.Gn = null;
         return;
-        i = parama.CW;
+        i = parama.EN;
         break label38;
         if (paramBoolean2) {
           if ((localFragment.mHiddenChanged) && (!localFragment.mHidden) && (localFragment.mAdded)) {
@@ -786,24 +786,24 @@ final class l
   
   private static void a(b paramb, SparseArray<a> paramSparseArray, boolean paramBoolean)
   {
-    int j = paramb.CD.size();
+    int j = paramb.Ev.size();
     int i = 0;
     while (i < j)
     {
-      a(paramb, (b.a)paramb.CD.get(i), paramSparseArray, false, paramBoolean);
+      a(paramb, (b.a)paramb.Ev.get(i), paramSparseArray, false, paramBoolean);
       i += 1;
     }
   }
   
   private static void a(n paramn, Object paramObject1, Object paramObject2, a<String, View> parama, boolean paramBoolean, b paramb)
   {
-    if ((paramb.CS != null) && (!paramb.CS.isEmpty())) {
+    if ((paramb.EJ != null) && (!paramb.EJ.isEmpty())) {
       if (!paramBoolean) {
         break label65;
       }
     }
     label65:
-    for (paramb = (String)paramb.CT.get(0);; paramb = (String)paramb.CS.get(0))
+    for (paramb = (String)paramb.EK.get(0);; paramb = (String)paramb.EJ.get(0))
     {
       parama = (View)parama.get(paramb);
       paramn.a(paramObject1, parama);
@@ -848,7 +848,7 @@ final class l
     int i = 0;
     while (i < j)
     {
-      if (!paramn.h(paramList.get(i))) {
+      if (!paramn.i(paramList.get(i))) {
         return false;
       }
       i += 1;
@@ -858,7 +858,7 @@ final class l
   
   static a<String, View> b(n paramn, a<String, String> parama, Object paramObject, a parama1)
   {
-    Fragment localFragment = parama1.Ew;
+    Fragment localFragment = parama1.Gn;
     View localView = localFragment.getView();
     if ((parama.isEmpty()) || (paramObject == null) || (localView == null))
     {
@@ -867,11 +867,11 @@ final class l
     }
     a locala = new a();
     paramn.a(locala, localView);
-    paramn = parama1.Ey;
-    if (parama1.Ex)
+    paramn = parama1.Gp;
+    if (parama1.Go)
     {
       paramObject = localFragment.getExitTransitionCallback();
-      paramn = paramn.CS;
+      paramn = paramn.EJ;
       if (paramn != null)
       {
         i.a(locala, paramn);
@@ -900,7 +900,7 @@ final class l
       i -= 1;
       break label108;
       paramObject = localFragment.getEnterTransitionCallback();
-      paramn = paramn.CT;
+      paramn = paramn.EK;
       break;
       label176:
       if (!parama1.equals(t.an(paramObject)))
@@ -931,26 +931,26 @@ final class l
     }
     if (paramBoolean) {}
     for (paramFragment = paramFragment.getReturnTransition();; paramFragment = paramFragment.getExitTransition()) {
-      return paramn.i(paramFragment);
+      return paramn.j(paramFragment);
     }
   }
   
   private static void b(b paramb, SparseArray<a> paramSparseArray, boolean paramBoolean)
   {
-    if (!paramb.CC.mContainer.onHasView()) {}
+    if (!paramb.Eu.mContainer.onHasView()) {}
     for (;;)
     {
       return;
-      int i = paramb.CD.size() - 1;
+      int i = paramb.Ev.size() - 1;
       while (i >= 0)
       {
-        a(paramb, (b.a)paramb.CD.get(i), paramSparseArray, true, paramBoolean);
+        a(paramb, (b.a)paramb.Ev.get(i), paramSparseArray, true, paramBoolean);
         i -= 1;
       }
     }
   }
   
-  private static n dP()
+  private static n ek()
   {
     try
     {
@@ -963,12 +963,12 @@ final class l
   
   static final class a
   {
-    public boolean EA;
-    public b EB;
-    public Fragment Ew;
-    public boolean Ex;
-    public b Ey;
-    public Fragment Ez;
+    public Fragment Gn;
+    public boolean Go;
+    public b Gp;
+    public Fragment Gq;
+    public boolean Gr;
+    public b Gs;
   }
 }
 

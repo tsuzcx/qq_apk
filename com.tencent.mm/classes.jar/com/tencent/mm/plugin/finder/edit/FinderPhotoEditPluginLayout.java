@@ -15,22 +15,22 @@ import com.tencent.mm.plugin.recordvideo.plugin.j;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.EditPhotoPluginLayout;
 import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout;
 import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/edit/FinderPhotoEditPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/EditPhotoPluginLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "operationLayoutPlugin", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "loadCurrentPage", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/edit/FinderPhotoEditPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/EditPhotoPluginLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "operationLayoutPlugin", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "loadCurrentPage", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "plugin-finder_release"})
 public final class FinderPhotoEditPluginLayout
   extends EditPhotoPluginLayout
 {
-  private final WxCropOperationLayout rcC;
+  private final WxCropOperationLayout rPU;
   
   public FinderPhotoEditPluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(165504);
-    this.rcC = new WxCropOperationLayout(paramContext);
-    this.rcC.setStyle(WxCropOperationLayout.j.wzI);
-    ((ViewGroup)findViewById(2131303249)).addView((View)this.rcC, new ViewGroup.LayoutParams(-1, -1));
+    this.rPU = new WxCropOperationLayout(paramContext);
+    this.rPU.setStyle(WxCropOperationLayout.j.xIW);
+    ((ViewGroup)findViewById(2131303249)).addView((View)this.rPU, new ViewGroup.LayoutParams(-1, -1));
     AppMethodBeat.o(165504);
   }
   
@@ -38,27 +38,27 @@ public final class FinderPhotoEditPluginLayout
   {
     AppMethodBeat.i(165503);
     super.a(paramb);
-    paramb = getEditPhotoWrapper().sgo;
+    paramb = getEditPhotoWrapper().xAy;
     if (paramb != null) {
-      paramb.eQL();
+      paramb.ffP();
     }
-    this.rcC.bringToFront();
+    this.rPU.bringToFront();
     AppMethodBeat.o(165503);
   }
   
   public final void a(a parama, RecordConfigProvider paramRecordConfigProvider)
   {
     AppMethodBeat.i(165502);
-    k.h(parama, "navigator");
-    k.h(paramRecordConfigProvider, "configProvider");
+    p.h(parama, "navigator");
+    p.h(paramRecordConfigProvider, "configProvider");
     super.a(parama, paramRecordConfigProvider);
-    parama = paramRecordConfigProvider.hSN;
+    parama = paramRecordConfigProvider.ime;
     if (parama != null)
     {
       parama = (Rect)parama.getParcelable("cropRect");
       if (parama != null)
       {
-        this.rcC.getVisibilityRect().set(parama);
+        this.rPU.getVisibilityRect().set(parama);
         AppMethodBeat.o(165502);
         return;
       }
@@ -70,7 +70,7 @@ public final class FinderPhotoEditPluginLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.edit.FinderPhotoEditPluginLayout
  * JD-Core Version:    0.7.0.1
  */

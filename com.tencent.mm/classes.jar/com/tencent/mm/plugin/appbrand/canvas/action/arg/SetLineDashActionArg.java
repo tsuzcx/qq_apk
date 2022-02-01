@@ -14,8 +14,8 @@ public class SetLineDashActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetLineDashActionArg> CREATOR;
-  public float[] jzD = null;
-  public float jzE = 1.4E-45F;
+  public float[] jTy = null;
+  public float jTz = 1.4E-45F;
   
   static
   {
@@ -55,7 +55,7 @@ public class SetLineDashActionArg
       return false;
     }
     paramObject = (SetLineDashActionArg)paramObject;
-    if ((Float.compare(paramObject.jzE, this.jzE) == 0) && (Arrays.equals(this.jzD, paramObject.jzD)))
+    if ((Float.compare(paramObject.jTz, this.jTz) == 0) && (Arrays.equals(this.jTy, paramObject.jTy)))
     {
       AppMethodBeat.o(145200);
       return true;
@@ -71,18 +71,18 @@ public class SetLineDashActionArg
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.jzD = new float[i];
-      paramParcel.readFloatArray(this.jzD);
+      this.jTy = new float[i];
+      paramParcel.readFloatArray(this.jTy);
     }
-    this.jzE = paramParcel.readFloat();
+    this.jTz = paramParcel.readFloat();
     AppMethodBeat.o(145197);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145201);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jzE) });
-    int j = Arrays.hashCode(this.jzD);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jTz) });
+    int j = Arrays.hashCode(this.jTy);
     AppMethodBeat.o(145201);
     return i * 31 + j;
   }
@@ -106,13 +106,13 @@ public class SetLineDashActionArg
         AppMethodBeat.o(145198);
         return;
       }
-      this.jzD = new float[localJSONArray.length()];
-      while (i < this.jzD.length)
+      this.jTy = new float[localJSONArray.length()];
+      while (i < this.jTy.length)
       {
-        this.jzD[i] = g.f(localJSONArray, i);
+        this.jTy[i] = g.f(localJSONArray, i);
         i += 1;
       }
-      this.jzE = g.f(paramJSONObject, 1);
+      this.jTz = g.f(paramJSONObject, 1);
       AppMethodBeat.o(145198);
       return;
     }
@@ -126,12 +126,12 @@ public class SetLineDashActionArg
   {
     AppMethodBeat.i(145199);
     super.writeToParcel(paramParcel, paramInt);
-    if (this.jzD != null)
+    if (this.jTy != null)
     {
-      paramParcel.writeInt(this.jzD.length);
-      paramParcel.writeFloatArray(this.jzD);
+      paramParcel.writeInt(this.jTy.length);
+      paramParcel.writeFloatArray(this.jTy);
     }
-    paramParcel.writeFloat(this.jzE);
+    paramParcel.writeFloat(this.jTz);
     AppMethodBeat.o(145199);
   }
 }

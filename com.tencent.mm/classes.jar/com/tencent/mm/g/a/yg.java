@@ -1,15 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class yg
   extends b
 {
-  public a dBK;
-  public b dBL;
-  
   public yg()
   {
     this((byte)0);
@@ -17,33 +12,8 @@ public final class yg
   
   private yg(byte paramByte)
   {
-    AppMethodBeat.i(91234);
-    this.dBK = new a();
-    this.dBL = new b();
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91234);
-  }
-  
-  public static final class a
-  {
-    public int action;
-    public String content;
-    public int dBM;
-    public long dbz;
-  }
-  
-  public static final class b
-  {
-    public int dBM;
-    public long dBN;
-    public String dBO;
-    public List dBP;
-    public byte[] dBQ;
-    public byte[] dBR;
-    public String dBS;
-    public String dBT;
-    public long dbz;
   }
 }
 

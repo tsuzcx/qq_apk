@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
 public final class AppBrandRecommendUILogic$a {}
 
 

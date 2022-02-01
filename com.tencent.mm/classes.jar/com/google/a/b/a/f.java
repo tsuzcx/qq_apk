@@ -13,20 +13,20 @@ import java.util.Map;
 public final class f
   implements t
 {
-  private final c bCJ;
-  final boolean bCQ;
+  private final c bMX;
+  final boolean bNe;
   
   public f(c paramc, boolean paramBoolean)
   {
-    this.bCJ = paramc;
-    this.bCQ = paramBoolean;
+    this.bMX = paramc;
+    this.bNe = paramBoolean;
   }
   
   public final <T> s<T> a(com.google.a.f paramf, a<T> parama)
   {
     AppMethodBeat.i(108049);
-    Object localObject = parama.bET;
-    if (!Map.class.isAssignableFrom(parama.bGk))
+    Object localObject = parama.bPh;
+    if (!Map.class.isAssignableFrom(parama.bQy))
     {
       AppMethodBeat.o(108049);
       return null;
@@ -34,10 +34,10 @@ public final class f
     Type[] arrayOfType = b.b((Type)localObject, b.c((Type)localObject));
     localObject = arrayOfType[0];
     if ((localObject == Boolean.TYPE) || (localObject == Boolean.class)) {}
-    for (localObject = m.bEZ;; localObject = paramf.a(a.h((Type)localObject)))
+    for (localObject = m.bPn;; localObject = paramf.a(a.h((Type)localObject)))
     {
       s locals = paramf.a(a.h(arrayOfType[1]));
-      parama = this.bCJ.b(parama);
+      parama = this.bMX.b(parama);
       paramf = new a(paramf, arrayOfType[0], (s)localObject, arrayOfType[1], locals, parama);
       AppMethodBeat.o(108049);
       return paramf;
@@ -47,24 +47,24 @@ public final class f
   final class a<K, V>
     extends s<Map<K, V>>
   {
-    private final h<? extends Map<K, V>> bEr;
-    private final s<K> bEx;
-    private final s<V> bEy;
+    private final h<? extends Map<K, V>> bOF;
+    private final s<K> bOL;
+    private final s<V> bOM;
     
     public a(Type paramType1, s<K> params, Type paramType2, s<V> params1, h<? extends Map<K, V>> paramh)
     {
       AppMethodBeat.i(108040);
-      this.bEx = new l(paramType1, paramType2, params);
-      this.bEy = new l(paramType1, paramh, params1);
+      this.bOL = new l(paramType1, paramType2, params);
+      this.bOM = new l(paramType1, paramh, params1);
       Object localObject;
-      this.bEr = localObject;
+      this.bOF = localObject;
       AppMethodBeat.o(108040);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.a.b.a.f
  * JD-Core Version:    0.7.0.1
  */

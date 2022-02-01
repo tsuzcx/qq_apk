@@ -2,7 +2,7 @@ package com.tencent.mm.audio;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/audio/SceneVoiceRecorderAudioManager$Companion;", "", "()V", "TAG", "", "plugin-audiologic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/audio/SceneVoiceRecorderAudioManager$Companion;", "", "()V", "TAG", "", "plugin-audiologic_release"})
 public final class b$a {}
 
 

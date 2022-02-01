@@ -11,109 +11,111 @@ import com.tencent.mm.plugin.appbrand.appcache.IPkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.ModulePkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPluginPkgInfo;
-import com.tencent.mm.plugin.appbrand.appcache.be;
-import com.tencent.mm.plugin.appbrand.appcache.bl;
+import com.tencent.mm.plugin.appbrand.appcache.bf;
+import com.tencent.mm.plugin.appbrand.appcache.bm;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader.b;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.n.e;
-import com.tencent.mm.plugin.appbrand.n.e.a;
-import com.tencent.mm.plugin.appbrand.n.e.b;
+import com.tencent.mm.plugin.appbrand.m.e;
+import com.tencent.mm.plugin.appbrand.m.e.a;
+import com.tencent.mm.plugin.appbrand.m.e.b;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
 import d.g.a.m;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible;", "Lcom/tencent/mm/plugin/appbrand/modularizing/ModularizingPkgRetriever;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "requestedModuleName", "", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;Ljava/lang/String;)V", "callback", "Lcom/tencent/mm/plugin/appbrand/modularizing/ModularizingPkgRetriever$RetrieveCallbackEx;", "dead", "", "setCallback", "Lcom/tencent/mm/plugin/appbrand/modularizing/ModularizingPkgRetriever$RetrieveCallback;", "start", "Companion", "IPCCallParams", "IPCCallResult", "IPCCallTask", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible;", "Lcom/tencent/mm/plugin/appbrand/modularizing/ModularizingPkgRetriever;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "requestedModuleName", "", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;Ljava/lang/String;)V", "callback", "Lcom/tencent/mm/plugin/appbrand/modularizing/ModularizingPkgRetriever$RetrieveCallbackEx;", "dead", "", "setCallback", "Lcom/tencent/mm/plugin/appbrand/modularizing/ModularizingPkgRetriever$RetrieveCallback;", "start", "Companion", "IPCCallParams", "IPCCallResult", "IPCCallTask", "plugin-appbrand-integration_release"})
 public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
   implements e, com.tencent.mm.vending.e.a
 {
-  public static final a lnf;
-  private AppBrandRuntime lnc;
-  private e.b lnd;
-  private final String lne;
+  public static final a lKy;
+  private AppBrandRuntime lKv;
+  private e.b lKw;
+  private final String lKx;
   
   static
   {
     AppMethodBeat.i(180638);
-    lnf = new a((byte)0);
+    lKy = new a((byte)0);
     AppMethodBeat.o(180638);
   }
   
   public ModularizingPkgRetrieverSeparatedPluginsCompatible(AppBrandRuntime paramAppBrandRuntime, String paramString)
   {
     AppMethodBeat.i(180637);
-    this.lne = paramString;
-    this.lnc = paramAppBrandRuntime;
+    this.lKx = paramString;
+    this.lKv = paramAppBrandRuntime;
     AppMethodBeat.o(180637);
   }
   
-  public static final boolean af(AppBrandRuntime paramAppBrandRuntime)
+  public static final boolean Z(AppBrandRuntime paramAppBrandRuntime)
   {
     Object localObject1 = null;
     AppMethodBeat.i(180639);
-    k.h(paramAppBrandRuntime, "rt");
-    Object localObject2 = be.U(paramAppBrandRuntime);
+    p.h(paramAppBrandRuntime, "rt");
+    Object localObject2 = bf.O(paramAppBrandRuntime);
     paramAppBrandRuntime = (AppBrandRuntime)localObject2;
-    if (!(localObject2 instanceof be)) {
+    if (!(localObject2 instanceof bf)) {
       paramAppBrandRuntime = null;
     }
-    localObject2 = (be)paramAppBrandRuntime;
+    localObject2 = (bf)paramAppBrandRuntime;
     paramAppBrandRuntime = localObject1;
     if (localObject2 != null) {
-      paramAppBrandRuntime = ((be)localObject2).aXo();
+      paramAppBrandRuntime = ((bf)localObject2).baM();
     }
-    boolean bool = paramAppBrandRuntime instanceof bl;
+    boolean bool = paramAppBrandRuntime instanceof bm;
     AppMethodBeat.o(180639);
     return bool;
   }
   
   public final void a(e.a parama)
   {
-    this.lnd = ((e.b)parama);
+    this.lKw = ((e.b)parama);
   }
   
   public final void dead()
   {
-    this.lnc = null;
-    this.lnd = null;
+    this.lKv = null;
+    this.lKw = null;
   }
   
   public final void start()
   {
     AppMethodBeat.i(180636);
-    AppBrandRuntime localAppBrandRuntime = this.lnc;
+    AppBrandRuntime localAppBrandRuntime = this.lKv;
     if (localAppBrandRuntime == null) {
-      k.fOy();
+      p.gfZ();
     }
-    XIPCInvoker.a("com.tencent.mm", new IPCCallParams(localAppBrandRuntime, this.lne), b.class, (d)new c(this));
+    XIPCInvoker.a("com.tencent.mm", new IPCCallParams(localAppBrandRuntime, this.lKx), b.class, (d)new c(this));
     AppMethodBeat.o(180636);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "moduleName", "", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;Ljava/lang/String;)V", "appId", "version", "", "versionType", "wxaVersionInfo", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "isGame", "", "isFromRemoteDebug", "acceptedLibReader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "reportQualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "(Ljava/lang/String;Ljava/lang/String;IILcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;ZZLcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;)V", "getAcceptedLibReader", "()Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "setAcceptedLibReader", "(Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;)V", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "()Z", "setFromRemoteDebug", "(Z)V", "setGame", "getModuleName", "setModuleName", "getReportQualitySession", "()Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "setReportQualitySession", "(Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;)V", "getVersion", "()I", "setVersion", "(I)V", "getVersionType", "setVersionType", "getWxaVersionInfo", "()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "setWxaVersionInfo", "(Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;)V", "describeContents", "writeToParcel", "", "dest", "flags", "Companion", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "moduleName", "", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;Ljava/lang/String;)V", "appId", "version", "", "versionType", "wxaVersionInfo", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "isGame", "", "isFromRemoteDebug", "acceptedLibReader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "reportQualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "(Ljava/lang/String;Ljava/lang/String;IILcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;ZZLcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;)V", "getAcceptedLibReader", "()Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "setAcceptedLibReader", "(Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;)V", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "()Z", "setFromRemoteDebug", "(Z)V", "setGame", "getModuleName", "setModuleName", "getReportQualitySession", "()Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "setReportQualitySession", "(Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;)V", "getVersion", "()I", "setVersion", "(I)V", "getVersionType", "setVersionType", "getWxaVersionInfo", "()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "setWxaVersionInfo", "(Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;)V", "describeContents", "writeToParcel", "", "dest", "flags", "Companion", "plugin-appbrand-integration_release"})
   static final class IPCCallParams
     implements Parcelable
   {
     public static final Parcelable.Creator<IPCCallParams> CREATOR;
-    public static final a lnh;
+    public static final a lKz;
     String appId;
-    boolean bYk;
-    WxaAttributes.WxaVersionInfo cch;
-    String ceF;
-    int hxM;
-    ICommLibReader jEn;
-    boolean liH;
-    QualitySession llU;
+    boolean ciC;
+    WxaAttributes.WxaVersionInfo cmy;
+    String coW;
+    int hQh;
+    ICommLibReader jYp;
+    boolean lFM;
+    QualitySession lJc;
     int version;
     
     static
     {
       AppMethodBeat.i(180624);
-      lnh = new a((byte)0);
+      lKz = new a((byte)0);
       CREATOR = (Parcelable.Creator)new b();
       AppMethodBeat.o(180624);
     }
@@ -131,14 +133,14 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
     {
       AppMethodBeat.i(180621);
       this.appId = paramString1;
-      this.ceF = paramString2;
+      this.coW = paramString2;
       this.version = paramInt1;
-      this.hxM = paramInt2;
-      this.cch = paramWxaVersionInfo;
-      this.bYk = paramBoolean1;
-      this.liH = paramBoolean2;
-      this.jEn = paramICommLibReader;
-      this.llU = paramQualitySession;
+      this.hQh = paramInt2;
+      this.cmy = paramWxaVersionInfo;
+      this.ciC = paramBoolean1;
+      this.lFM = paramBoolean2;
+      this.jYp = paramICommLibReader;
+      this.lJc = paramQualitySession;
       AppMethodBeat.o(180621);
     }
     
@@ -151,17 +153,17 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
     {
       byte b2 = 1;
       AppMethodBeat.i(180620);
-      k.h(paramParcel, "dest");
+      p.h(paramParcel, "dest");
       paramParcel.writeString(this.appId);
-      paramParcel.writeString(this.ceF);
+      paramParcel.writeString(this.coW);
       paramParcel.writeInt(this.version);
-      paramParcel.writeInt(this.hxM);
-      paramParcel.writeParcelable((Parcelable)this.cch, 0);
-      if (this.bYk)
+      paramParcel.writeInt(this.hQh);
+      paramParcel.writeParcelable((Parcelable)this.cmy, 0);
+      if (this.ciC)
       {
         b1 = 1;
         paramParcel.writeByte(b1);
-        if (!this.liH) {
+        if (!this.lFM) {
           break label119;
         }
       }
@@ -169,8 +171,8 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
       for (byte b1 = b2;; b1 = 0)
       {
         paramParcel.writeByte(b1);
-        ICommLibReader.b.a(this.jEn, paramParcel, paramInt);
-        paramParcel.writeParcelable((Parcelable)this.llU, 0);
+        ICommLibReader.b.a(this.jYp, paramParcel, paramInt);
+        paramParcel.writeParcelable((Parcelable)this.lJc, 0);
         AppMethodBeat.o(180620);
         return;
         b1 = 0;
@@ -178,42 +180,42 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
       }
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams;", "plugin-appbrand-integration_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams;", "plugin-appbrand-integration_release"})
     public static final class a {}
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams;", "plugin-appbrand-integration_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams;", "plugin-appbrand-integration_release"})
     public static final class b
       implements Parcelable.Creator<ModularizingPkgRetrieverSeparatedPluginsCompatible.IPCCallParams>
     {}
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "callbackType", "", "progress", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "result", "", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "succeed", "", "errCode", "errMsg", "", "(ILcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;Ljava/util/List;ZILjava/lang/String;)V", "getCallbackType", "()I", "setCallbackType", "(I)V", "getErrCode", "setErrCode", "getErrMsg", "()Ljava/lang/String;", "setErrMsg", "(Ljava/lang/String;)V", "getProgress", "()Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "setProgress", "(Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;)V", "getResult", "()Ljava/util/List;", "setResult", "(Ljava/util/List;)V", "getSucceed", "()Z", "setSucceed", "(Z)V", "describeContents", "readFromParcel", "", "writeToParcel", "dest", "flags", "Companion", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "callbackType", "", "progress", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "result", "", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "succeed", "", "errCode", "errMsg", "", "(ILcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;Ljava/util/List;ZILjava/lang/String;)V", "getCallbackType", "()I", "setCallbackType", "(I)V", "getErrCode", "setErrCode", "getErrMsg", "()Ljava/lang/String;", "setErrMsg", "(Ljava/lang/String;)V", "getProgress", "()Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "setProgress", "(Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;)V", "getResult", "()Ljava/util/List;", "setResult", "(Ljava/util/List;)V", "getSucceed", "()Z", "setSucceed", "(Z)V", "describeContents", "readFromParcel", "", "writeToParcel", "dest", "flags", "Companion", "plugin-appbrand-integration_release"})
   static final class IPCCallResult
     implements Parcelable
   {
     public static final Parcelable.Creator<IPCCallResult> CREATOR;
-    public static final a lnl;
-    boolean dqQ;
+    public static final a lKD;
+    boolean dCH;
     private int errCode;
     private String errMsg;
-    int lni;
-    WxaPkgLoadProgress lnj;
-    List<? extends IPkgInfo> lnk;
+    int lKA;
+    WxaPkgLoadProgress lKB;
+    List<? extends IPkgInfo> lKC;
     
     static
     {
       AppMethodBeat.i(180629);
-      lnl = new a((byte)0);
+      lKD = new a((byte)0);
       CREATOR = (Parcelable.Creator)new b();
       AppMethodBeat.o(180629);
     }
     
     private IPCCallResult(int paramInt1, WxaPkgLoadProgress paramWxaPkgLoadProgress, List<? extends IPkgInfo> paramList, boolean paramBoolean, int paramInt2, String paramString)
     {
-      this.lni = paramInt1;
-      this.lnj = paramWxaPkgLoadProgress;
-      this.lnk = paramList;
-      this.dqQ = paramBoolean;
+      this.lKA = paramInt1;
+      this.lKB = paramWxaPkgLoadProgress;
+      this.lKC = paramList;
+      this.dCH = paramBoolean;
       this.errCode = paramInt2;
       this.errMsg = paramString;
     }
@@ -222,32 +224,32 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
     {
       this(0, null, null, false, 0, null, 62);
       AppMethodBeat.i(180628);
-      k.h(paramParcel, "source");
-      this.lni = paramParcel.readInt();
-      switch (this.lni)
+      p.h(paramParcel, "source");
+      this.lKA = paramParcel.readInt();
+      switch (this.lKA)
       {
       }
       for (;;)
       {
         AppMethodBeat.o(180628);
         return;
-        this.lnj = ((WxaPkgLoadProgress)paramParcel.readParcelable(WxaPkgLoadProgress.class.getClassLoader()));
+        this.lKB = ((WxaPkgLoadProgress)paramParcel.readParcelable(WxaPkgLoadProgress.class.getClassLoader()));
         AppMethodBeat.o(180628);
         return;
-        Object localObject = ModularizingPkgRetrieverSeparatedPluginsCompatible.lnf;
+        Object localObject = ModularizingPkgRetrieverSeparatedPluginsCompatible.lKy;
         int j = paramParcel.readInt();
         ArrayList localArrayList = new ArrayList(j);
         int i = 0;
         while (i < j)
         {
           localObject = paramParcel.readString();
-          if (k.g(localObject, ModulePkgInfo.class.getName())) {
+          if (p.i(localObject, ModulePkgInfo.class.getName())) {
             localObject = ModulePkgInfo.class.getClassLoader();
           }
           for (;;)
           {
             if (localObject == null) {
-              k.fOy();
+              p.gfZ();
             }
             localObject = paramParcel.readParcelable((ClassLoader)localObject);
             if (localObject != null) {
@@ -256,7 +258,7 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
             paramParcel = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.appcache.IPkgInfo");
             AppMethodBeat.o(180628);
             throw paramParcel;
-            if (k.g(localObject, WxaPluginPkgInfo.class.getName())) {
+            if (p.i(localObject, WxaPluginPkgInfo.class.getName())) {
               localObject = WxaPluginPkgInfo.class.getClassLoader();
             } else {
               localObject = null;
@@ -265,11 +267,11 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
           localArrayList.add((IPkgInfo)localObject);
           i += 1;
         }
-        this.lnk = ((List)localArrayList);
+        this.lKC = ((List)localArrayList);
         if (paramParcel.readByte() > 0) {
           bool = true;
         }
-        this.dqQ = bool;
+        this.dCH = bool;
         this.errCode = paramParcel.readInt();
         this.errMsg = paramParcel.readString();
       }
@@ -283,23 +285,23 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(180626);
-      k.h(paramParcel, "dest");
-      paramParcel.writeInt(this.lni);
-      switch (this.lni)
+      p.h(paramParcel, "dest");
+      paramParcel.writeInt(this.lKA);
+      switch (this.lKA)
       {
       default: 
         AppMethodBeat.o(180626);
         return;
       case 1: 
-        paramParcel.writeParcelable((Parcelable)this.lnj, 0);
+        paramParcel.writeParcelable((Parcelable)this.lKB, 0);
         AppMethodBeat.o(180626);
         return;
       }
-      Object localObject1 = ModularizingPkgRetrieverSeparatedPluginsCompatible.lnf;
-      Object localObject2 = this.lnk;
+      Object localObject1 = ModularizingPkgRetrieverSeparatedPluginsCompatible.lKy;
+      Object localObject2 = this.lKC;
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = (List)d.a.v.KTF;
+        localObject1 = (List)d.a.v.MKE;
       }
       localObject2 = (Iterable)localObject1;
       localObject1 = (Collection)new ArrayList();
@@ -328,7 +330,7 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
         paramParcel.writeString(localObject2.getClass().getName());
         paramParcel.writeParcelable((Parcelable)localObject2, 0);
       }
-      if (this.dqQ) {}
+      if (this.dCH) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
@@ -338,26 +340,26 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
       }
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult;", "plugin-appbrand-integration_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult;", "plugin-appbrand-integration_release"})
     public static final class a {}
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult;", "plugin-appbrand-integration_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult;", "plugin-appbrand-integration_release"})
     public static final class b
       implements Parcelable.Creator<ModularizingPkgRetrieverSeparatedPluginsCompatible.IPCCallResult>
     {}
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$Companion;", "", "()V", "CALLBACK_TYPE_PROGRESS", "", "CALLBACK_TYPE_RESULT", "TAG", "", "shouldIntercept", "", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "readPkgList", "", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "Landroid/os/Parcel;", "writePkgListToParcel", "", "Landroid/os/Parcelable;", "dest", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$Companion;", "", "()V", "CALLBACK_TYPE_PROGRESS", "", "CALLBACK_TYPE_RESULT", "TAG", "", "shouldIntercept", "", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "readPkgList", "", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "Landroid/os/Parcel;", "writePkgListToParcel", "", "Landroid/os/Parcelable;", "dest", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams;", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallParams;", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
   static final class b
     implements com.tencent.mm.ipcinvoker.b<ModularizingPkgRetrieverSeparatedPluginsCompatible.IPCCallParams, ModularizingPkgRetrieverSeparatedPluginsCompatible.IPCCallResult>
   {
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "resultPkgList", "", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "invoke"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "resultPkgList", "", "Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;", "invoke"})
     static final class a
-      extends d.g.b.l
-      implements d.g.a.b<List<? extends IPkgInfo>, y>
+      extends q
+      implements d.g.a.b<List<? extends IPkgInfo>, z>
     {
       a(d paramd)
       {
@@ -365,10 +367,10 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
       }
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "wholeProgressInfo", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "invoke"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "wholeProgressInfo", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgLoadProgress;", "invoke"})
     static final class b
-      extends d.g.b.l
-      implements d.g.a.b<WxaPkgLoadProgress, y>
+      extends q
+      implements d.g.a.b<WxaPkgLoadProgress, z>
     {
       b(d paramd)
       {
@@ -376,10 +378,10 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
       }
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "err", "", "errMsg", "", "invoke"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "err", "", "errMsg", "", "invoke"})
     static final class c
-      extends d.g.b.l
-      implements m<Integer, String, y>
+      extends q
+      implements m<Integer, String, z>
     {
       c(d paramd)
       {
@@ -388,7 +390,7 @@ public final class ModularizingPkgRetrieverSeparatedPluginsCompatible
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "callbackResult", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "callbackResult", "Lcom/tencent/mm/plugin/appbrand/launching/ModularizingPkgRetrieverSeparatedPluginsCompatible$IPCCallResult;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class c<T>
     implements d<ResultType>
   {

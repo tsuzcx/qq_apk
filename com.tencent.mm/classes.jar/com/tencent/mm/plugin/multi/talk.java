@@ -10,24 +10,30 @@ public class talk
 {
   public static int VOICE_FRAME_DURATION;
   public static int VOICE_SAMPLERATE;
-  public static int uWL;
+  public static int vZT;
   public byte[] field_capInfo = null;
   public int field_localImgHeight = 0;
   public int field_localImgWidth = 0;
   public int field_remoteImgChannel = 0;
+  public int field_remoteImgChannel_screen = 0;
   public int field_remoteImgHeight = 0;
+  public int field_remoteImgHeight_screen = 0;
   public int field_remoteImgLength = 0;
+  public int field_remoteImgLength_screen = 0;
+  public int field_remoteImgOrien = 0;
+  public int field_remoteImgOrien_screen = 0;
   public int field_remoteImgWidth = 0;
+  public int field_remoteImgWidth_screen = 0;
   
   static
   {
     AppMethodBeat.i(62794);
     VOICE_SAMPLERATE = 8000;
     VOICE_FRAME_DURATION = 20;
-    uWL = 9;
+    vZT = 9;
     try
     {
-      if ((a.JLi) && (a.JLz))
+      if ((a.LER) && (a.LFi))
       {
         System.loadLibrary("stlport_shared");
         System.loadLibrary("wechatxlog");
@@ -57,7 +63,9 @@ public class talk
   
   public native int SendAudio(byte[] paramArrayOfByte, short paramShort, int paramInt);
   
-  public native int SendVideo(byte[] paramArrayOfByte, short paramShort, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public native int SendScreen(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public native int SendVideo(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
   public native void SetAVEncryptType(int paramInt1, int paramInt2);
   
@@ -69,9 +77,13 @@ public class talk
   
   public native int getSampleRate(AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2);
   
-  public native int init(int paramInt1, int paramInt2, String paramString);
+  public native int init(int paramInt1, int paramInt2, int paramInt3, String paramString);
   
   public native int onNetworkChange(int paramInt);
+  
+  public native int screenDecode(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt);
+  
+  public native int screenTrans(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte2, int paramInt4, int paramInt5, int paramInt6);
   
   public final int setAppCmd(int paramInt)
   {
@@ -108,7 +120,7 @@ public class talk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multi.talk
  * JD-Core Version:    0.7.0.1
  */

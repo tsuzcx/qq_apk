@@ -2,67 +2,67 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.preload.a;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.a;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.x;
+import com.tencent.mm.al.x.a;
 import com.tencent.mm.plugin.brandservice.d;
-import com.tencent.mm.protocal.protobuf.fj;
-import com.tencent.mm.protocal.protobuf.fk;
-import com.tencent.mm.protocal.protobuf.fl;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.fo;
+import com.tencent.mm.protocal.protobuf.fp;
+import com.tencent.mm.protocal.protobuf.fq;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class c
 {
-  public static void TO(String paramString)
+  public static void Xw(String paramString)
   {
     AppMethodBeat.i(6194);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      ac.w("MicroMsg.Preload.BizAppMsgReportMgr", "url is null, err");
+      ad.w("MicroMsg.Preload.BizAppMsgReportMgr", "url is null, err");
       AppMethodBeat.o(6194);
       return;
     }
-    fj localfj = new fj();
-    localfj.Url = paramString;
-    com.tencent.mm.plugin.webview.g.a.lA(50);
-    com.tencent.mm.plugin.webview.g.a.lA(56);
-    a(localfj, 0);
+    fo localfo = new fo();
+    localfo.Url = paramString;
+    com.tencent.mm.plugin.webview.g.a.ma(50);
+    com.tencent.mm.plugin.webview.g.a.ma(56);
+    a(localfo, 0);
     AppMethodBeat.o(6194);
   }
   
-  private static b.a a(fj paramfj)
+  private static b.a a(fo paramfo)
   {
     AppMethodBeat.i(6198);
     LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(paramfj);
-    paramfj = c(localLinkedList, 0);
+    localLinkedList.add(paramfo);
+    paramfo = c(localLinkedList, 0);
     AppMethodBeat.o(6198);
-    return paramfj;
+    return paramfo;
   }
   
-  static void a(final fj paramfj, int paramInt)
+  static void a(final fo paramfo, int paramInt)
   {
     AppMethodBeat.i(6195);
-    x.a(a(paramfj).aAz(), new x.a()
+    x.a(a(paramfo).aDC(), new x.a()
     {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
+      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb, n paramAnonymousn)
       {
         AppMethodBeat.i(6192);
-        ac.i("MicroMsg.Preload.BizAppMsgReportMgr", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-        paramAnonymousString = (fl)paramAnonymousb.hvs.hvw;
+        ad.i("MicroMsg.Preload.BizAppMsgReportMgr", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        paramAnonymousString = (fq)paramAnonymousb.hNL.hNQ;
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousString != null))
         {
-          if (this.ncp > 0) {
-            com.tencent.mm.plugin.webview.g.a.lA(57);
+          if (this.nCM > 0) {
+            com.tencent.mm.plugin.webview.g.a.ma(57);
           }
-          ac.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync]url:%s", new Object[] { paramfj.Url });
-          com.tencent.mm.plugin.webview.g.a.lA(51);
+          ad.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync]url:%s", new Object[] { paramfo.Url });
+          com.tencent.mm.plugin.webview.g.a.ma(51);
         }
         for (;;)
         {
@@ -70,31 +70,31 @@ public final class c
           return 0;
           if (paramAnonymousInt2 == 50001)
           {
-            if (this.ncp < 3)
+            if (this.nCM < 3)
             {
-              c.a(paramfj, this.ncp + 1);
+              c.a(paramfo, this.nCM + 1);
             }
             else
             {
-              com.tencent.mm.plugin.webview.g.a.lA(52);
-              com.tencent.mm.plugin.webview.g.a.lA(59);
-              if (d.bIY().a(new a(paramfj))) {
-                ac.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync]");
+              com.tencent.mm.plugin.webview.g.a.ma(52);
+              com.tencent.mm.plugin.webview.g.a.ma(59);
+              if (d.bNr().a(new a(paramfo))) {
+                ad.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync]");
               } else {
-                ac.w("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync], insert fail");
+                ad.w("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync], insert fail");
               }
             }
           }
           else
           {
-            if (this.ncp > 0) {
-              com.tencent.mm.plugin.webview.g.a.lA(58);
+            if (this.nCM > 0) {
+              com.tencent.mm.plugin.webview.g.a.ma(58);
             }
-            com.tencent.mm.plugin.webview.g.a.lA(52);
-            if (d.bIY().a(new a(paramfj))) {
-              ac.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync]");
+            com.tencent.mm.plugin.webview.g.a.ma(52);
+            if (d.bNr().a(new a(paramfo))) {
+              ad.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync]");
             } else {
-              ac.w("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync], insert fail");
+              ad.w("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync], insert fail");
             }
           }
         }
@@ -103,10 +103,10 @@ public final class c
     AppMethodBeat.o(6195);
   }
   
-  public static void bLa()
+  public static void bPB()
   {
     AppMethodBeat.i(6196);
-    Object localObject = d.bIY().db.query("BizAppMsgReportContext", null, null, null, null, null, "reportTime DESC limit 50");
+    Object localObject = d.bNr().db.query("BizAppMsgReportContext", null, null, null, null, null, "reportTime DESC limit 50");
     final LinkedList localLinkedList = new LinkedList();
     while (((Cursor)localObject).moveToNext())
     {
@@ -118,82 +118,82 @@ public final class c
     localObject = cu(localLinkedList);
     if (((LinkedList)localObject).size() <= 0)
     {
-      d.bIY().ct(localLinkedList);
-      ac.w("MicroMsg.Preload.BizAppMsgReportMgr", "list is null, return");
+      d.bNr().ct(localLinkedList);
+      ad.w("MicroMsg.Preload.BizAppMsgReportMgr", "list is null, return");
       AppMethodBeat.o(6196);
       return;
     }
-    com.tencent.mm.plugin.webview.g.a.lA(53);
-    x.a(c((LinkedList)localObject, 1).aAz(), new x.a()
+    com.tencent.mm.plugin.webview.g.a.ma(53);
+    x.a(c((LinkedList)localObject, 1).aDC(), new x.a()
     {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
+      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb, n paramAnonymousn)
       {
         AppMethodBeat.i(6193);
-        ac.i("MicroMsg.Preload.BizAppMsgReportMgr", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-        paramAnonymousString = (fl)paramAnonymousb.hvs.hvw;
+        ad.i("MicroMsg.Preload.BizAppMsgReportMgr", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        paramAnonymousString = (fq)paramAnonymousb.hNL.hNQ;
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousString != null))
         {
-          ac.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report batch]reportList:%d", new Object[] { Integer.valueOf(this.nJr.size()) });
-          com.tencent.mm.plugin.webview.g.a.lA(54);
-          d.bIY().ct(localLinkedList);
+          ad.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report batch]reportList:%d", new Object[] { Integer.valueOf(this.olX.size()) });
+          com.tencent.mm.plugin.webview.g.a.ma(54);
+          d.bNr().ct(localLinkedList);
         }
         for (;;)
         {
           AppMethodBeat.o(6193);
           return 0;
-          ac.e("MicroMsg.Preload.BizAppMsgReportMgr", "[report batch]reportList:%d fail", new Object[] { Integer.valueOf(this.nJr.size()) });
-          com.tencent.mm.plugin.webview.g.a.lA(55);
+          ad.e("MicroMsg.Preload.BizAppMsgReportMgr", "[report batch]reportList:%d fail", new Object[] { Integer.valueOf(this.olX.size()) });
+          com.tencent.mm.plugin.webview.g.a.ma(55);
         }
       }
     });
     AppMethodBeat.o(6196);
   }
   
-  private static b.a c(LinkedList<fj> paramLinkedList, int paramInt)
+  private static b.a c(LinkedList<fo> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(6199);
     b.a locala = new b.a();
     locala.funcId = 2998;
     locala.uri = "/cgi-bin/mmbiz-bin/appmsgreport";
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    fk localfk = new fk();
-    localfk.DSw = paramLinkedList;
-    localfk.DSx = paramInt;
-    locala.hvt = localfk;
-    locala.hvu = new fl();
+    fp localfp = new fp();
+    localfp.FxP = paramLinkedList;
+    localfp.FxQ = paramInt;
+    locala.hNM = localfp;
+    locala.hNN = new fq();
     AppMethodBeat.o(6199);
     return locala;
   }
   
-  private static LinkedList<fj> cu(List<a> paramList)
+  private static LinkedList<fo> cu(List<a> paramList)
   {
     AppMethodBeat.i(6197);
     LinkedList localLinkedList = new LinkedList();
     if (paramList.size() > 0)
     {
-      ac.i("MicroMsg.Preload.BizAppMsgReportMgr", "[processReportList] list size:%d", new Object[] { Integer.valueOf(paramList.size()) });
+      ad.i("MicroMsg.Preload.BizAppMsgReportMgr", "[processReportList] list size:%d", new Object[] { Integer.valueOf(paramList.size()) });
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         a locala = (a)paramList.next();
-        if (!bs.isNullOrNil(locala.field_url))
+        if (!bt.isNullOrNil(locala.field_url))
         {
-          if (System.currentTimeMillis() - locala.field_reportTime >= com.tencent.mm.plugin.brandservice.ui.timeline.preload.e.nFd)
+          if (System.currentTimeMillis() - locala.field_reportTime >= com.tencent.mm.plugin.brandservice.ui.timeline.preload.e.ohG)
           {
             com.tencent.mm.plugin.webview.g.a.e(908, 60, 1, true);
           }
           else
           {
-            fj localfj = new fj();
-            localfj.Url = locala.field_url;
-            localfj.DSs = locala.field_reportTime;
-            localLinkedList.add(localfj);
-            ac.v("MicroMsg.Preload.BizAppMsgReportMgr", "[processReportList] url:%s reportTime:%d", new Object[] { localfj.Url, Long.valueOf(localfj.DSs) });
+            fo localfo = new fo();
+            localfo.Url = locala.field_url;
+            localfo.FxL = locala.field_reportTime;
+            localLinkedList.add(localfo);
+            ad.v("MicroMsg.Preload.BizAppMsgReportMgr", "[processReportList] url:%s reportTime:%d", new Object[] { localfo.Url, Long.valueOf(localfo.FxL) });
           }
         }
         else {
-          ac.w("MicroMsg.Preload.BizAppMsgReportMgr", "[processReportList] url is null, err");
+          ad.w("MicroMsg.Preload.BizAppMsgReportMgr", "[processReportList] url is null, err");
         }
       }
     }

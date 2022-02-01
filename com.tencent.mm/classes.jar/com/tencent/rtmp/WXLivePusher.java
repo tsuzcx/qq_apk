@@ -10,11 +10,13 @@ import com.tencent.liteav.audio.TXCAudioLocalRecorder.a;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.ui.TXCloudVideoView;
+import com.tencent.trtc.TRTCCloud.BGMNotify;
 import com.tencent.trtc.TRTCCloudDef.TRTCAudioRecordingParams;
 import com.tencent.trtc.TRTCCloudDef.TRTCParams;
 import com.tencent.trtc.TRTCCloudDef.TRTCVideoEncParam;
 import com.tencent.trtc.TRTCCloudDef.TRTCVolumeInfo;
 import com.tencent.trtc.TRTCCloudListener;
+import com.tencent.trtc.TRTCCloudListener.TRTCSnapshotListener;
 import com.tencent.trtc.TRTCStatistics;
 import com.tencent.trtc.WXTRTCCloud;
 import java.lang.ref.WeakReference;
@@ -464,160 +466,160 @@ public class WXLivePusher
   {
     // Byte code:
     //   0: sipush 13989
-    //   3: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 209	org/json/JSONObject
+    //   3: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 213	org/json/JSONObject
     //   9: dup
-    //   10: invokespecial 210	org/json/JSONObject:<init>	()V
+    //   10: invokespecial 214	org/json/JSONObject:<init>	()V
     //   13: astore_1
-    //   14: new 212	org/json/JSONArray
+    //   14: new 216	org/json/JSONArray
     //   17: dup
-    //   18: invokespecial 213	org/json/JSONArray:<init>	()V
+    //   18: invokespecial 217	org/json/JSONArray:<init>	()V
     //   21: astore_2
     //   22: aload_1
-    //   23: ldc 215
+    //   23: ldc 219
     //   25: aload_2
-    //   26: invokevirtual 219	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   26: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   29: pop
     //   30: aload_0
     //   31: monitorenter
     //   32: aload_0
-    //   33: getfield 100	com/tencent/rtmp/WXLivePusher:mMapMainStream	Ljava/util/HashMap;
-    //   36: invokevirtual 223	java/util/HashMap:keySet	()Ljava/util/Set;
-    //   39: invokeinterface 229 1 0
+    //   33: getfield 104	com/tencent/rtmp/WXLivePusher:mMapMainStream	Ljava/util/HashMap;
+    //   36: invokevirtual 227	java/util/HashMap:keySet	()Ljava/util/Set;
+    //   39: invokeinterface 233 1 0
     //   44: astore_3
     //   45: aload_3
-    //   46: invokeinterface 235 1 0
+    //   46: invokeinterface 239 1 0
     //   51: ifeq +79 -> 130
     //   54: aload_3
-    //   55: invokeinterface 239 1 0
-    //   60: checkcast 201	java/lang/String
+    //   55: invokeinterface 243 1 0
+    //   60: checkcast 205	java/lang/String
     //   63: astore 4
-    //   65: new 209	org/json/JSONObject
+    //   65: new 213	org/json/JSONObject
     //   68: dup
-    //   69: invokespecial 210	org/json/JSONObject:<init>	()V
+    //   69: invokespecial 214	org/json/JSONObject:<init>	()V
     //   72: astore 5
     //   74: aload 5
-    //   76: ldc 241
+    //   76: ldc 245
     //   78: aload 4
-    //   80: invokevirtual 219	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   80: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   83: pop
     //   84: aload 5
-    //   86: ldc 243
+    //   86: ldc 247
     //   88: aload_0
-    //   89: getfield 100	com/tencent/rtmp/WXLivePusher:mMapMainStream	Ljava/util/HashMap;
+    //   89: getfield 104	com/tencent/rtmp/WXLivePusher:mMapMainStream	Ljava/util/HashMap;
     //   92: aload 4
-    //   94: invokevirtual 247	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   97: invokevirtual 219	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   94: invokevirtual 251	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   97: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   100: pop
     //   101: aload_2
     //   102: aload 5
-    //   104: invokevirtual 250	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   104: invokevirtual 254	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
     //   107: pop
     //   108: goto -63 -> 45
     //   111: astore_1
     //   112: aload_0
     //   113: monitorexit
     //   114: sipush 13989
-    //   117: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   120: aload_1
     //   121: athrow
     //   122: astore_1
     //   123: sipush 13989
-    //   126: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   126: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   129: return
     //   130: aload_0
     //   131: monitorexit
-    //   132: new 212	org/json/JSONArray
+    //   132: new 216	org/json/JSONArray
     //   135: dup
-    //   136: invokespecial 213	org/json/JSONArray:<init>	()V
+    //   136: invokespecial 217	org/json/JSONArray:<init>	()V
     //   139: astore_2
     //   140: aload_1
-    //   141: ldc 252
-    //   143: aload_2
-    //   144: invokevirtual 219	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   147: pop
-    //   148: aload_0
-    //   149: monitorenter
-    //   150: aload_0
-    //   151: getfield 102	com/tencent/rtmp/WXLivePusher:mMapSubStream	Ljava/util/HashMap;
-    //   154: invokevirtual 223	java/util/HashMap:keySet	()Ljava/util/Set;
-    //   157: invokeinterface 229 1 0
-    //   162: astore_3
-    //   163: aload_3
-    //   164: invokeinterface 235 1 0
-    //   169: ifeq +71 -> 240
-    //   172: aload_3
-    //   173: invokeinterface 239 1 0
-    //   178: checkcast 201	java/lang/String
-    //   181: astore 4
-    //   183: new 209	org/json/JSONObject
-    //   186: dup
-    //   187: invokespecial 210	org/json/JSONObject:<init>	()V
-    //   190: astore 5
-    //   192: aload 5
-    //   194: ldc 241
-    //   196: aload 4
-    //   198: invokevirtual 219	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   201: pop
-    //   202: aload 5
-    //   204: ldc 243
-    //   206: aload_0
-    //   207: getfield 102	com/tencent/rtmp/WXLivePusher:mMapSubStream	Ljava/util/HashMap;
-    //   210: aload 4
-    //   212: invokevirtual 247	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   215: invokevirtual 219	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   218: pop
-    //   219: aload_2
-    //   220: aload 5
-    //   222: invokevirtual 250	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   225: pop
-    //   226: goto -63 -> 163
-    //   229: astore_1
-    //   230: aload_0
-    //   231: monitorexit
-    //   232: sipush 13989
-    //   235: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   238: aload_1
-    //   239: athrow
-    //   240: aload_0
-    //   241: monitorexit
-    //   242: aload_0
-    //   243: getfield 84	com/tencent/rtmp/WXLivePusher:mPushListener	Ljava/lang/ref/WeakReference;
-    //   246: ifnull +47 -> 293
-    //   249: aload_0
-    //   250: getfield 84	com/tencent/rtmp/WXLivePusher:mPushListener	Ljava/lang/ref/WeakReference;
-    //   253: invokevirtual 256	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   256: checkcast 258	com/tencent/rtmp/ITXLivePushListener
-    //   259: astore_2
-    //   260: aload_2
-    //   261: ifnull +32 -> 293
-    //   264: new 260	android/os/Bundle
-    //   267: dup
-    //   268: invokespecial 261	android/os/Bundle:<init>	()V
-    //   271: astore_3
-    //   272: aload_3
-    //   273: ldc_w 263
-    //   276: aload_1
-    //   277: invokevirtual 267	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   280: invokevirtual 271	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   283: aload_2
-    //   284: sipush 1020
-    //   287: aload_3
-    //   288: invokeinterface 275 3 0
-    //   293: sipush 13989
-    //   296: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   299: return
+    //   141: ldc_w 256
+    //   144: aload_2
+    //   145: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   148: pop
+    //   149: aload_0
+    //   150: monitorenter
+    //   151: aload_0
+    //   152: getfield 106	com/tencent/rtmp/WXLivePusher:mMapSubStream	Ljava/util/HashMap;
+    //   155: invokevirtual 227	java/util/HashMap:keySet	()Ljava/util/Set;
+    //   158: invokeinterface 233 1 0
+    //   163: astore_3
+    //   164: aload_3
+    //   165: invokeinterface 239 1 0
+    //   170: ifeq +71 -> 241
+    //   173: aload_3
+    //   174: invokeinterface 243 1 0
+    //   179: checkcast 205	java/lang/String
+    //   182: astore 4
+    //   184: new 213	org/json/JSONObject
+    //   187: dup
+    //   188: invokespecial 214	org/json/JSONObject:<init>	()V
+    //   191: astore 5
+    //   193: aload 5
+    //   195: ldc 245
+    //   197: aload 4
+    //   199: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   202: pop
+    //   203: aload 5
+    //   205: ldc 247
+    //   207: aload_0
+    //   208: getfield 106	com/tencent/rtmp/WXLivePusher:mMapSubStream	Ljava/util/HashMap;
+    //   211: aload 4
+    //   213: invokevirtual 251	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   216: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   219: pop
+    //   220: aload_2
+    //   221: aload 5
+    //   223: invokevirtual 254	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   226: pop
+    //   227: goto -63 -> 164
+    //   230: astore_1
+    //   231: aload_0
+    //   232: monitorexit
+    //   233: sipush 13989
+    //   236: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   239: aload_1
+    //   240: athrow
+    //   241: aload_0
+    //   242: monitorexit
+    //   243: aload_0
+    //   244: getfield 88	com/tencent/rtmp/WXLivePusher:mPushListener	Ljava/lang/ref/WeakReference;
+    //   247: ifnull +47 -> 294
+    //   250: aload_0
+    //   251: getfield 88	com/tencent/rtmp/WXLivePusher:mPushListener	Ljava/lang/ref/WeakReference;
+    //   254: invokevirtual 260	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   257: checkcast 262	com/tencent/rtmp/ITXLivePushListener
+    //   260: astore_2
+    //   261: aload_2
+    //   262: ifnull +32 -> 294
+    //   265: new 264	android/os/Bundle
+    //   268: dup
+    //   269: invokespecial 265	android/os/Bundle:<init>	()V
+    //   272: astore_3
+    //   273: aload_3
+    //   274: ldc_w 267
+    //   277: aload_1
+    //   278: invokevirtual 271	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   281: invokevirtual 275	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   284: aload_2
+    //   285: sipush 1020
+    //   288: aload_3
+    //   289: invokeinterface 279 3 0
+    //   294: sipush 13989
+    //   297: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   300: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	300	0	this	WXLivePusher
+    //   0	301	0	this	WXLivePusher
     //   13	10	1	localJSONObject1	JSONObject
     //   111	10	1	localObject1	Object
     //   122	19	1	localException	Exception
-    //   229	48	1	localObject2	Object
-    //   21	263	2	localObject3	Object
-    //   44	244	3	localObject4	Object
-    //   63	148	4	str	String
-    //   72	149	5	localJSONObject2	JSONObject
+    //   230	48	1	localObject2	Object
+    //   21	264	2	localObject3	Object
+    //   44	245	3	localObject4	Object
+    //   63	149	4	str	String
+    //   72	150	5	localJSONObject2	JSONObject
     // Exception table:
     //   from	to	target	type
     //   32	45	111	finally
@@ -626,14 +628,14 @@ public class WXLivePusher
     //   130	132	111	finally
     //   6	32	122	java/lang/Exception
     //   114	122	122	java/lang/Exception
-    //   132	150	122	java/lang/Exception
-    //   232	240	122	java/lang/Exception
-    //   242	260	122	java/lang/Exception
-    //   264	293	122	java/lang/Exception
-    //   150	163	229	finally
-    //   163	226	229	finally
-    //   230	232	229	finally
-    //   240	242	229	finally
+    //   132	151	122	java/lang/Exception
+    //   233	241	122	java/lang/Exception
+    //   243	261	122	java/lang/Exception
+    //   265	294	122	java/lang/Exception
+    //   151	164	230	finally
+    //   164	227	230	finally
+    //   231	233	230	finally
+    //   241	243	230	finally
   }
   
   private void notifyMainStreamChange(boolean paramBoolean, String paramString1, String paramString2)
@@ -2048,7 +2050,47 @@ public class WXLivePusher
     AppMethodBeat.i(13971);
     if (this.mIsTRTC)
     {
-      this.mTRTCCloud.playBGM(paramString, new WXLivePusher.3(this));
+      this.mTRTCCloud.playBGM(paramString, new TRTCCloud.BGMNotify()
+      {
+        public void onBGMComplete(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(170246);
+          if (WXLivePusher.this.mBGMNotify != null)
+          {
+            TXLivePusher.OnBGMNotify localOnBGMNotify = (TXLivePusher.OnBGMNotify)WXLivePusher.this.mBGMNotify.get();
+            if (localOnBGMNotify != null) {
+              localOnBGMNotify.onBGMComplete(paramAnonymousInt);
+            }
+          }
+          AppMethodBeat.o(170246);
+        }
+        
+        public void onBGMProgress(long paramAnonymousLong1, long paramAnonymousLong2)
+        {
+          AppMethodBeat.i(170245);
+          if (WXLivePusher.this.mBGMNotify != null)
+          {
+            TXLivePusher.OnBGMNotify localOnBGMNotify = (TXLivePusher.OnBGMNotify)WXLivePusher.this.mBGMNotify.get();
+            if (localOnBGMNotify != null) {
+              localOnBGMNotify.onBGMProgress(paramAnonymousLong1, paramAnonymousLong2);
+            }
+          }
+          AppMethodBeat.o(170245);
+        }
+        
+        public void onBGMStart(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(170244);
+          if (WXLivePusher.this.mBGMNotify != null)
+          {
+            TXLivePusher.OnBGMNotify localOnBGMNotify = (TXLivePusher.OnBGMNotify)WXLivePusher.this.mBGMNotify.get();
+            if (localOnBGMNotify != null) {
+              localOnBGMNotify.onBGMStart();
+            }
+          }
+          AppMethodBeat.o(170244);
+        }
+      });
       AppMethodBeat.o(13971);
       return true;
     }
@@ -2301,12 +2343,22 @@ public class WXLivePusher
     }
   }
   
-  public void snapshot(TXLivePusher.ITXSnapshotListener paramITXSnapshotListener)
+  public void snapshot(final TXLivePusher.ITXSnapshotListener paramITXSnapshotListener)
   {
     AppMethodBeat.i(13969);
     if (this.mIsTRTC)
     {
-      this.mTRTCCloud.snapshotVideo(null, 0, new WXLivePusher.2(this, paramITXSnapshotListener));
+      this.mTRTCCloud.snapshotVideo(null, 0, new TRTCCloudListener.TRTCSnapshotListener()
+      {
+        public void onSnapshotComplete(Bitmap paramAnonymousBitmap)
+        {
+          AppMethodBeat.i(182245);
+          if (paramITXSnapshotListener != null) {
+            paramITXSnapshotListener.onSnapshot(paramAnonymousBitmap);
+          }
+          AppMethodBeat.o(182245);
+        }
+      });
       AppMethodBeat.o(13969);
       return;
     }

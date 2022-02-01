@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.n;
 import com.tencent.mm.sdk.b.b;
 
 public final class ft
   extends b
 {
-  public a dfS;
-  public b dfT;
+  public a drd;
+  public b dre;
   
   public ft()
   {
@@ -16,24 +17,26 @@ public final class ft
   
   private ft(byte paramByte)
   {
-    AppMethodBeat.i(116020);
-    this.dfS = new a();
-    this.dfT = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(116018);
+    this.drd = new a();
+    this.dre = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116020);
+    AppMethodBeat.o(116018);
   }
   
   public static final class a
   {
-    public int op;
-    public String username;
+    public String content;
+    public String drf;
+    public int flags;
+    public int type;
   }
   
   public static final class b
   {
-    public boolean dbS = false;
-    public String fileName;
+    public n drg;
+    public long msgId = 0L;
   }
 }
 

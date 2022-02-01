@@ -1,68 +1,175 @@
 package com.tencent.mm.plugin.webview.j;
 
 import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
+import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
-import java.util.HashMap;
+import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class f
 {
-  public HashMap<String, a> CPl;
-  
-  public f()
+  private static int XV(int paramInt)
   {
-    AppMethodBeat.i(82381);
-    this.CPl = new HashMap();
-    AppMethodBeat.o(82381);
-  }
-  
-  public static void a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    AppMethodBeat.i(82382);
-    d.a locala = new d.a(paramContext);
-    locala.yf(false);
-    locala.acI(3);
-    locala.aRH(paramContext.getString(2131766123));
-    if (!bs.isNullOrNil(paramString))
-    {
-      locala.yd(true);
-      locala.au(paramString);
+    if (paramInt == 1) {
+      return 1;
     }
-    locala.ye(true);
-    locala.aRM(paramContext.getString(2131766122));
-    locala.aRO(paramContext.getString(2131755835));
-    locala.acO(paramContext.getResources().getColor(2131100547));
-    locala.b(paramOnClickListener);
-    locala.aRP(paramContext.getString(2131755691));
-    paramString = aw.aKT("key_webview_menu_haokan");
-    if (paramString.decodeBool("show_first_tips", true))
-    {
-      paramString.encode("show_first_tips", false);
-      paramString.apply();
-      locala.at(paramContext.getString(2131766121));
+    if (paramInt == 2) {
+      return 2;
     }
-    locala.fvp().show();
-    AppMethodBeat.o(82382);
+    if (paramInt == 3) {
+      return 4;
+    }
+    if (paramInt == 4) {
+      return 6;
+    }
+    return 2;
   }
   
-  public final a aEa(String paramString)
+  public static int a(Context paramContext, e parame, String paramString)
   {
-    AppMethodBeat.i(82383);
-    paramString = (a)this.CPl.get(paramString);
-    AppMethodBeat.o(82383);
-    return paramString;
+    AppMethodBeat.i(82379);
+    try
+    {
+      localax = ax.gh("WebViewFontUtil", 2);
+      bool = localax.getBoolean("webview_key_font_use_system", false);
+      ad.i("MicroMsg.WebViewFontUtil", "useSystemFont = %b", new Object[] { Boolean.valueOf(bool) });
+      if (bool)
+      {
+        i = hd(paramContext);
+        AppMethodBeat.o(82379);
+        return i;
+      }
+      bool = localax.getBoolean("webview_key_font_has_set", false);
+      if ((!bt.isNullOrNil(paramString)) && (com.tencent.mm.plugin.webview.a.DFz.matcher(paramString).matches()))
+      {
+        j = parame.ja(16388, 2);
+        if ((j == 2) && (!bool)) {
+          i = j;
+        }
+      }
+    }
+    catch (Exception paramContext)
+    {
+      ax localax;
+      boolean bool;
+      int j;
+      int k;
+      i = 2;
+    }
+    try
+    {
+      j = hd(paramContext);
+      AppMethodBeat.o(82379);
+      return j;
+    }
+    catch (Exception paramContext)
+    {
+      break label312;
+    }
+    int i = j;
+    bool = localax.getBoolean("webview_key_has_transfer_mp", false);
+    if (bool)
+    {
+      AppMethodBeat.o(82379);
+      return j;
+    }
+    i = j;
+    k = XV(j);
+    i = j;
+    localax.putBoolean("webview_key_has_transfer_mp", true);
+    i = j;
+    parame.jb(16388, k);
+    AppMethodBeat.o(82379);
+    return k;
+    j = parame.ja(16384, 2);
+    if ((j == 2) && (!bool))
+    {
+      i = j;
+      j = hd(paramContext);
+      AppMethodBeat.o(82379);
+      return j;
+    }
+    i = j;
+    bool = localax.getBoolean("webview_key_has_transfer_reader", false);
+    if (bool)
+    {
+      AppMethodBeat.o(82379);
+      return j;
+    }
+    i = j;
+    k = XV(j);
+    i = j;
+    localax.putBoolean("webview_key_has_transfer_reader", true);
+    i = j;
+    parame.jb(16384, k);
+    AppMethodBeat.o(82379);
+    return k;
+    label312:
+    ad.e("MicroMsg.WebViewFontUtil", "onLoadJsApiFinished, ex = " + paramContext.getMessage());
+    AppMethodBeat.o(82379);
+    return i;
   }
   
-  public static final class a
+  public static int hd(Context paramContext)
   {
-    public int CPm;
-    public int permission;
-    public String title;
+    AppMethodBeat.i(82380);
+    float f = paramContext.getSharedPreferences(aj.fkC(), 0).getFloat("current_text_size_scale_key", 1.0F);
+    if (f == com.tencent.mm.cc.a.hY(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 1;
+    }
+    if (f == com.tencent.mm.cc.a.hZ(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 2;
+    }
+    if (f == com.tencent.mm.cc.a.ia(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 3;
+    }
+    if (f == com.tencent.mm.cc.a.ib(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 4;
+    }
+    if (f == com.tencent.mm.cc.a.ic(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 5;
+    }
+    if (f == com.tencent.mm.cc.a.id(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 6;
+    }
+    if (f == com.tencent.mm.cc.a.ie(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 7;
+    }
+    if (f == com.tencent.mm.cc.a.jdMethod_if(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 8;
+    }
+    AppMethodBeat.o(82380);
+    return 2;
+  }
+  
+  public static void vu(boolean paramBoolean)
+  {
+    AppMethodBeat.i(160473);
+    ax localax = ax.gh("WebViewFontUtil", 2);
+    localax.putBoolean("webview_key_font_use_system", paramBoolean);
+    localax.apply();
+    AppMethodBeat.o(160473);
   }
 }
 

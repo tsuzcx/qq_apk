@@ -11,9 +11,9 @@ import com.tencent.mm.plugin.appbrand.r.a.e.a;
 import com.tencent.mm.plugin.appbrand.r.a.e.b;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.task.g;
-import com.tencent.mm.plugin.appbrand.ui.y;
+import com.tencent.mm.plugin.appbrand.ui.aa;
 import com.tencent.mm.plugin.appbrand.widget.input.n;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class a
   extends AppBrandRuntimeContainer<c>
@@ -25,7 +25,7 @@ public class a
     AppMethodBeat.o(146890);
   }
   
-  public boolean Dw()
+  public boolean EV()
   {
     AppMethodBeat.i(146894);
     if (getStackSize() <= 0)
@@ -46,27 +46,27 @@ public class a
       AppMethodBeat.o(146891);
       return;
     }
-    com.tencent.mm.sdk.f.a.jg(this.mContext).runOnUiThread(new Runnable()
+    com.tencent.mm.sdk.f.a.jq(this.mContext).runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(169444);
-        n.I(com.tencent.mm.sdk.f.a.jg(a.this.mContext));
+        n.I(com.tencent.mm.sdk.f.a.jq(a.this.mContext));
         if (paramc == null) {
           a.a(a.this);
         }
         c localc = (c)a.a(a.this, paramAppBrandInitConfigLU.appId);
-        paramAppBrandInitConfigLU.ccl = paramAppBrandStatObject;
+        paramAppBrandInitConfigLU.cmC = paramAppBrandStatObject;
         if (localc == null)
         {
           localc = (c)a.a(a.this, paramAppBrandInitConfigLU);
           a.a(a.this, localc);
           a.a(a.this, paramc, localc, paramAppBrandInitConfigLU);
         }
-        while (a.this.A(localc)) {
-          if (localc.aSz() != null)
+        while (a.this.x(localc)) {
+          if (localc.aVM() != null)
           {
-            localc.jdQ = true;
+            localc.jwY = true;
             AppMethodBeat.o(169444);
             return;
             if (paramc == localc)
@@ -81,7 +81,7 @@ public class a
           }
           else
           {
-            localc.jdQ = false;
+            localc.jwY = false;
           }
         }
         AppMethodBeat.o(169444);
@@ -96,7 +96,7 @@ public class a
     if (paramAppBrandRuntime1 == null) {}
     for (String str = "null";; str = paramAppBrandRuntime1.mAppId)
     {
-      ac.i("Luggage.AppBrandRuntimeContainerLU", "onRuntimeClose entered, in.appId[%s], out.appId[%s], out.isFinishing[%b], out.canDoCloseAnimation[%b], mIsActivityPaused[%b], stackSize[%d]", new Object[] { str, paramAppBrandRuntime2.mAppId, Boolean.valueOf(paramAppBrandRuntime2.QM), Boolean.valueOf(paramAppBrandRuntime2.aSU()), Boolean.valueOf(this.jff), Integer.valueOf(getStackSize()) });
+      ad.i("Luggage.AppBrandRuntimeContainerLU[AppBrandSplashAd]", "onRuntimeClose entered, in.appId[%s], out.appId[%s], out.isFinishing[%b], out.canDoCloseAnimation[%b], mIsActivityPaused[%b], stackSize[%d]", new Object[] { str, paramAppBrandRuntime2.mAppId, Boolean.valueOf(paramAppBrandRuntime2.SB), Boolean.valueOf(paramAppBrandRuntime2.aWi()), Boolean.valueOf(this.jym), Integer.valueOf(getStackSize()) });
       paramRunnable = new Runnable()
       {
         public final void run()
@@ -106,19 +106,19 @@ public class a
           AppMethodBeat.o(169447);
         }
       };
-      if (this.jff) {
-        paramAppBrandRuntime2.jdR = false;
+      if (this.jym) {
+        paramAppBrandRuntime2.jwZ = false;
       }
-      if (paramAppBrandRuntime2.QM) {
+      if (paramAppBrandRuntime2.SB) {
         break label177;
       }
       if (getStackSize() <= 1) {
         break label166;
       }
-      if (!paramAppBrandRuntime2.aSU()) {
+      if (!paramAppBrandRuntime2.aWi()) {
         break;
       }
-      ((y)e.K(y.class)).a(paramAppBrandRuntime1, paramAppBrandRuntime2, paramRunnable);
+      ((aa)e.K(aa.class)).a(paramAppBrandRuntime1, paramAppBrandRuntime2, paramRunnable);
       AppMethodBeat.o(146893);
       return;
     }
@@ -130,7 +130,7 @@ public class a
     AppMethodBeat.o(146893);
     return;
     label177:
-    if (!A(paramAppBrandRuntime2))
+    if (!x(paramAppBrandRuntime2))
     {
       paramRunnable.run();
       AppMethodBeat.o(146893);
@@ -138,9 +138,9 @@ public class a
     }
     if (getStackSize() > 1)
     {
-      if (paramAppBrandRuntime2.aSU())
+      if (paramAppBrandRuntime2.aWi())
       {
-        ((y)e.K(y.class)).a(paramAppBrandRuntime1, paramAppBrandRuntime2, paramRunnable);
+        ((aa)e.K(aa.class)).a(paramAppBrandRuntime1, paramAppBrandRuntime2, paramRunnable);
         AppMethodBeat.o(146893);
         return;
       }
@@ -155,7 +155,7 @@ public class a
   protected void bx(boolean paramBoolean)
   {
     AppMethodBeat.i(146892);
-    Activity localActivity = com.tencent.mm.sdk.f.a.jg(this.mContext);
+    Activity localActivity = com.tencent.mm.sdk.f.a.jq(this.mContext);
     if (localActivity == null)
     {
       AppMethodBeat.o(146892);
@@ -163,7 +163,7 @@ public class a
     }
     if (!localActivity.isFinishing())
     {
-      if ((this.jfc.aTs()) && (paramBoolean)) {
+      if ((this.jyj.aWA()) && (paramBoolean)) {
         localActivity.moveTaskToBack(true);
       }
       while (getStackSize() <= 0)
@@ -173,7 +173,7 @@ public class a
         return;
         localActivity.finish();
       }
-      ((y)e.K(y.class)).m(localActivity);
+      ((aa)e.K(aa.class)).m(localActivity);
     }
     AppMethodBeat.o(146892);
   }
@@ -181,7 +181,7 @@ public class a
   public final void onBackPressed()
   {
     AppMethodBeat.i(146895);
-    if (Dw())
+    if (EV())
     {
       AppMethodBeat.o(146895);
       return;
@@ -189,17 +189,10 @@ public class a
     super.onBackPressed();
     AppMethodBeat.o(146895);
   }
-  
-  public void setResizeable(boolean paramBoolean)
-  {
-    AppMethodBeat.i(206126);
-    super.setResizeable(paramBoolean);
-    AppMethodBeat.o(206126);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.sdk.d.a
  * JD-Core Version:    0.7.0.1
  */

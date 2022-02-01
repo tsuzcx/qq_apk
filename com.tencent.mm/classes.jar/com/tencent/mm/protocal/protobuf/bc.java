@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bc
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String text;
   public String url;
@@ -40,9 +40,9 @@ public final class bc
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(113932);
@@ -58,11 +58,11 @@ public final class bc
           AppMethodBeat.o(113932);
           return -1;
         case 1: 
-          localbc.text = locala.LVo.readString();
+          localbc.text = locala.NPN.readString();
           AppMethodBeat.o(113932);
           return 0;
         }
-        localbc.url = locala.LVo.readString();
+        localbc.url = locala.NPN.readString();
         AppMethodBeat.o(113932);
         return 0;
       }
@@ -73,7 +73,7 @@ public final class bc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bc
  * JD-Core Version:    0.7.0.1
  */

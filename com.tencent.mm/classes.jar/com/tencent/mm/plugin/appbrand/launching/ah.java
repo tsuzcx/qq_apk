@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.launching;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
 
 abstract class ah
-  extends be
+  extends bh
 {
   ah(String paramString1, int paramInt1, int paramInt2, int paramInt3, WxaAttributes.WxaVersionInfo paramWxaVersionInfo, String paramString2)
   {

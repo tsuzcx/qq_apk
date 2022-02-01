@@ -1,35 +1,35 @@
 package com.tencent.magicbrush;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.n;
-import d.g.b.w;
+import d.g.b.t;
+import d.g.b.z;
 import d.l;
 import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(fNY={1, 1, 13})
+@l(gfx={1, 1, 13})
 final class g
-  extends n
+  extends t
 {
-  public static final h cnf;
+  public static final h cxK;
   
   static
   {
     AppMethodBeat.i(140100);
-    cnf = new g();
+    cxK = new g();
     AppMethodBeat.o(140100);
   }
   
-  public final String FZ()
+  public final String Hu()
   {
     return "getAdjust_thread_priority()Z";
   }
   
-  public final d Ga()
+  public final d Hv()
   {
     AppMethodBeat.i(140101);
-    b localb = w.bn(MBRuntime.MBParams.class);
+    b localb = z.bp(MBRuntime.MBParams.class);
     AppMethodBeat.o(140101);
     return localb;
   }
@@ -56,7 +56,7 @@ final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.g
  * JD-Core Version:    0.7.0.1
  */

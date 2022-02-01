@@ -1,87 +1,72 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.d;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.HashMap;
 
 public final class u
 {
-  private boolean CmW;
-  private String CmX;
-  private String CmY;
-  private String CmZ;
-  private String Cna;
-  private String Cnb;
-  private String Cnc;
-  private String lang;
+  public g DOl;
+  public final HashMap<String, String> DQo;
+  public final HashMap<String, a.d> DQp;
+  public final HashMap<String, String> DQq;
   
-  public u(Bundle paramBundle)
+  public u(g paramg)
   {
-    AppMethodBeat.i(78478);
-    this.CmW = paramBundle.getBoolean("close_window_confirm_dialog_switch");
-    this.CmX = paramBundle.getString("close_window_confirm_dialog_title_cn");
-    this.CmY = paramBundle.getString("close_window_confirm_dialog_title_eng");
-    this.CmZ = paramBundle.getString("close_window_confirm_dialog_ok_cn");
-    this.Cna = paramBundle.getString("close_window_confirm_dialog_ok_eng");
-    this.Cnb = paramBundle.getString("close_window_confirm_dialog_cancel_cn");
-    this.Cnc = paramBundle.getString("close_window_confirm_dialog_cancel_eng");
-    this.lang = ab.iC(ai.getContext());
-    AppMethodBeat.o(78478);
+    AppMethodBeat.i(78474);
+    this.DQo = new HashMap();
+    this.DQp = new HashMap();
+    this.DQq = new HashMap();
+    this.DOl = paramg;
+    AppMethodBeat.o(78474);
   }
   
-  public final boolean eAS()
+  public static String aHc(String paramString)
   {
-    AppMethodBeat.i(78479);
-    if ((this.CmW) && (!bs.isNullOrNil(eAT())) && (!bs.isNullOrNil(eAU())) && (!bs.isNullOrNil(eAV())))
+    AppMethodBeat.i(78476);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(78479);
-      return true;
+      AppMethodBeat.o(78476);
+      return paramString;
     }
-    AppMethodBeat.o(78479);
-    return false;
+    int i = paramString.indexOf("#");
+    if (i < 0)
+    {
+      AppMethodBeat.o(78476);
+      return paramString;
+    }
+    paramString = paramString.substring(0, i);
+    AppMethodBeat.o(78476);
+    return paramString;
   }
   
-  public final String eAT()
+  public final String ePJ()
   {
-    AppMethodBeat.i(78480);
-    if ("zh_CN".equals(this.lang))
+    AppMethodBeat.i(78477);
+    String str = getAppId();
+    if (bt.isNullOrNil(str))
     {
-      str = this.CmX;
-      AppMethodBeat.o(78480);
-      return str;
+      AppMethodBeat.o(78477);
+      return null;
     }
-    String str = this.CmY;
-    AppMethodBeat.o(78480);
+    str = (String)this.DQq.get(str);
+    AppMethodBeat.o(78477);
     return str;
   }
   
-  public final String eAU()
+  public final String getAppId()
   {
-    AppMethodBeat.i(78481);
-    if ("zh_CN".equals(this.lang))
+    AppMethodBeat.i(78475);
+    String str = this.DOl.getUrl();
+    if (bt.isNullOrNil(str))
     {
-      str = this.CmZ;
-      AppMethodBeat.o(78481);
-      return str;
+      AppMethodBeat.o(78475);
+      return null;
     }
-    String str = this.Cna;
-    AppMethodBeat.o(78481);
-    return str;
-  }
-  
-  public final String eAV()
-  {
-    AppMethodBeat.i(78482);
-    if ("zh_CN".equals(this.lang))
-    {
-      str = this.Cnb;
-      AppMethodBeat.o(78482);
-      return str;
-    }
-    String str = this.Cnc;
-    AppMethodBeat.o(78482);
+    str = aHc(str);
+    str = (String)this.DQo.get(str);
+    AppMethodBeat.o(78475);
     return str;
   }
 }

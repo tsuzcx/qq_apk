@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class DartExecutor$a
 {
-  public final String KMa;
-  public final String KMb;
+  public final String MCX;
+  public final String MCY;
   
   public DartExecutor$a(String paramString1, String paramString2)
   {
-    this.KMa = paramString1;
-    this.KMb = paramString2;
+    this.MCX = paramString1;
+    this.MCY = paramString2;
   }
   
   public DartExecutor$a(String paramString1, String paramString2, byte paramByte)
@@ -32,12 +32,12 @@ public final class DartExecutor$a
       return false;
     }
     paramObject = (a)paramObject;
-    if (!this.KMa.equals(paramObject.KMa))
+    if (!this.MCX.equals(paramObject.MCX))
     {
       AppMethodBeat.o(10213);
       return false;
     }
-    boolean bool = this.KMb.equals(paramObject.KMb);
+    boolean bool = this.MCY.equals(paramObject.MCY);
     AppMethodBeat.o(10213);
     return bool;
   }
@@ -45,8 +45,8 @@ public final class DartExecutor$a
   public final int hashCode()
   {
     AppMethodBeat.i(10214);
-    int i = this.KMa.hashCode();
-    int j = this.KMb.hashCode();
+    int i = this.MCX.hashCode();
+    int j = this.MCY.hashCode();
     AppMethodBeat.o(10214);
     return i * 31 + j;
   }
@@ -54,7 +54,7 @@ public final class DartExecutor$a
   public final String toString()
   {
     AppMethodBeat.i(10212);
-    String str = "DartEntrypoint( bundle path: " + this.KMa + ", function: " + this.KMb + " )";
+    String str = "DartEntrypoint( bundle path: " + this.MCX + ", function: " + this.MCY + " )";
     AppMethodBeat.o(10212);
     return str;
   }

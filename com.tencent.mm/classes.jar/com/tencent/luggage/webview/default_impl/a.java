@@ -8,11 +8,12 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.webkit.ValueCallback;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import com.tencent.luggage.d.k;
+import com.tencent.luggage.d.p;
 import com.tencent.luggage.webview.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
@@ -20,8 +21,8 @@ import java.util.Map;
 public class a
   implements com.tencent.luggage.webview.a
 {
-  private k bXF;
-  private DefaultWebView cgm;
+  private p chX;
+  private DefaultWebView cqC;
   private Context mContext;
   private Handler mainThreadHandler;
   
@@ -30,7 +31,7 @@ public class a
     AppMethodBeat.i(140543);
     this.mainThreadHandler = new Handler(Looper.getMainLooper());
     this.mContext = paramContext;
-    this.cgm = new DefaultWebView(paramContext);
+    this.cqC = new DefaultWebView(paramContext);
     AppMethodBeat.o(140543);
   }
   
@@ -78,32 +79,10 @@ public class a
     AppMethodBeat.o(140553);
   }
   
-  public final void bE(final String paramString)
-  {
-    AppMethodBeat.i(140554);
-    paramString = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(140535);
-        a.a(a.this).bE(paramString);
-        AppMethodBeat.o(140535);
-      }
-    };
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      paramString.run();
-      AppMethodBeat.o(140554);
-      return;
-    }
-    this.mainThreadHandler.post(paramString);
-    AppMethodBeat.o(140554);
-  }
-  
   public boolean canGoBack()
   {
     AppMethodBeat.i(140551);
-    boolean bool = this.cgm.canGoBack();
+    boolean bool = this.cqC.canGoBack();
     AppMethodBeat.o(140551);
     return bool;
   }
@@ -111,8 +90,30 @@ public class a
   public void destroy()
   {
     AppMethodBeat.i(140552);
-    this.cgm.destroy();
+    this.cqC.destroy();
     AppMethodBeat.o(140552);
+  }
+  
+  public void evaluateJavascript(final String paramString, final ValueCallback<String> paramValueCallback)
+  {
+    AppMethodBeat.i(187605);
+    paramString = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(140535);
+        a.a(a.this).evaluateJavascript(paramString, paramValueCallback);
+        AppMethodBeat.o(140535);
+      }
+    };
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      paramString.run();
+      AppMethodBeat.o(187605);
+      return;
+    }
+    this.mainThreadHandler.post(paramString);
+    AppMethodBeat.o(187605);
   }
   
   public Context getContext()
@@ -120,22 +121,27 @@ public class a
     return this.mContext;
   }
   
+  public String getUserAgent()
+  {
+    return "";
+  }
+  
   public View getView()
   {
-    return this.cgm;
+    return this.cqC;
   }
   
   public void goBack()
   {
     AppMethodBeat.i(140550);
-    this.cgm.goBack();
+    this.cqC.goBack();
     AppMethodBeat.o(140550);
   }
   
   public void loadData(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(140548);
-    this.cgm.loadData(paramString1, paramString2, paramString3);
+    this.cqC.loadData(paramString1, paramString2, paramString3);
     AppMethodBeat.o(140548);
   }
   
@@ -164,7 +170,7 @@ public class a
   public void loadUrl(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(140547);
-    this.cgm.loadUrl(paramString, paramMap);
+    this.cqC.loadUrl(paramString, paramMap);
     AppMethodBeat.o(140547);
   }
   
@@ -177,15 +183,15 @@ public class a
     AppMethodBeat.o(140545);
   }
   
-  public void setWebCore(k paramk)
+  public void setWebCore(p paramp)
   {
-    this.bXF = paramk;
+    this.chX = paramp;
   }
   
   public void stopLoading()
   {
     AppMethodBeat.i(140549);
-    this.cgm.stopLoading();
+    this.cqC.stopLoading();
     AppMethodBeat.o(140549);
   }
 }

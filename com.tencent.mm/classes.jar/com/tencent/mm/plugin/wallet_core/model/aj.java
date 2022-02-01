@@ -1,91 +1,137 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import android.text.TextUtils;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.util.ArrayList;
+import com.tencent.mm.g.c.gy;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.cjd;
+import com.tencent.mm.protocal.protobuf.ebe;
+import com.tencent.mm.protocal.protobuf.ebk;
+import com.tencent.mm.protocal.protobuf.ebl;
+import com.tencent.mm.protocal.protobuf.ebn;
+import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.lang.reflect.Field;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
 
 public final class aj
+  extends gy
 {
-  public ArrayList<Bankcard> BAv;
-  public String BAw;
+  public static c.a info;
+  private cjd DaF;
+  public ebe DaG;
+  public ebl DaH;
+  public boolean DaI;
+  public String DaJ;
+  public String DaK;
+  public String DaL;
+  public String DaM;
+  public String vqh;
+  
+  static
+  {
+    AppMethodBeat.i(70471);
+    c.a locala = new c.a();
+    locala.IhA = new Field[2];
+    locala.columns = new String[3];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "wallet_region";
+    locala.IhC.put("wallet_region", "INTEGER PRIMARY KEY ");
+    localStringBuilder.append(" wallet_region INTEGER PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IhB = "wallet_region";
+    locala.columns[1] = "wallet_grey_item_buf";
+    locala.IhC.put("wallet_grey_item_buf", "BLOB");
+    localStringBuilder.append(" wallet_grey_item_buf BLOB");
+    locala.columns[2] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(70471);
+  }
   
   public aj()
   {
-    AppMethodBeat.i(70472);
-    this.BAv = new ArrayList();
-    AppMethodBeat.o(70472);
+    AppMethodBeat.i(70469);
+    this.DaF = new cjd();
+    this.DaG = null;
+    this.DaH = null;
+    this.DaI = false;
+    this.DaJ = "";
+    this.DaK = "";
+    this.DaL = "";
+    this.vqh = "";
+    this.DaM = "";
+    if (this.DaG == null) {
+      this.DaG = new ebe();
+    }
+    if (this.DaH == null) {
+      this.DaH = new ebl();
+    }
+    AppMethodBeat.o(70469);
   }
   
-  public final Bankcard azk(String paramString)
+  public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(70473);
-    Bankcard localBankcard;
-    if (this.BAv.size() > 0)
+    AppMethodBeat.i(70470);
+    super.convertFrom(paramCursor);
+    this.DaF = new cjd();
+    try
     {
-      Iterator localIterator = this.BAv.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localBankcard = (Bankcard)localIterator.next();
-      } while (!localBankcard.field_bindSerial.equals(paramString));
-    }
-    for (paramString = localBankcard;; paramString = null)
-    {
-      if (paramString == null) {
-        ac.e("MicroMsg.WalletRepaymentBankcardMgr", "getBankcardBySerialNo return null");
-      }
+      this.DaF = ((cjd)this.DaF.parseFrom(this.field_wallet_grey_item_buf));
+      this.DaG = this.DaF.HcT;
+      this.DaH = this.DaF.HcU;
+      this.DaI = this.DaF.HcV;
+      this.DaM = "";
+      paramCursor = this.DaF.HcW.iterator();
       for (;;)
       {
-        AppMethodBeat.o(70473);
-        return paramString;
-        ac.i("MicroMsg.WalletRepaymentBankcardMgr", "getBankcardBySerialNo succ");
-        continue;
-        ac.e("MicroMsg.WalletRepaymentBankcardMgr", "repayment bankcard list size is 0");
-        paramString = null;
+        if (paramCursor.hasNext())
+        {
+          String str = (String)paramCursor.next();
+          this.DaM = (this.DaM + str + "\n");
+          continue;
+          if (this.DaG != null) {
+            break;
+          }
+        }
       }
     }
-  }
-  
-  public final boolean erM()
-  {
-    AppMethodBeat.i(70474);
-    if (this.BAv.size() > 0)
+    catch (Exception paramCursor)
     {
-      AppMethodBeat.o(70474);
-      return true;
+      ad.e("WalletRegionGreyItem", "parser PayIBGGetOverseaWalletRsp error");
     }
-    AppMethodBeat.o(70474);
-    return false;
-  }
-  
-  public final Bankcard erN()
-  {
-    AppMethodBeat.i(70475);
-    if (erM())
+    for (;;)
     {
-      if (!TextUtils.isEmpty(this.BAw))
+      this.DaG = new ebe();
+      if (this.DaH == null) {
+        this.DaH = new ebl();
+      }
+      AppMethodBeat.o(70470);
+      return;
+      if (this.DaF.HcR != null)
       {
-        localBankcard = azk(this.BAw);
-        AppMethodBeat.o(70475);
-        return localBankcard;
+        this.DaJ = z.a(this.DaF.HcR.HOd);
+        this.DaK = z.a(this.DaF.HcR.HOe);
       }
-      ac.i("MicroMsg.WalletRepaymentBankcardMgr", "last_use_card_serialno is empty,return the first one");
-      Bankcard localBankcard = (Bankcard)this.BAv.get(0);
-      AppMethodBeat.o(70475);
-      return localBankcard;
+      if (this.DaF.HcS != null)
+      {
+        this.DaL = z.a(this.DaF.HcS.HOb);
+        this.vqh = z.a(this.DaF.HcS.HOc);
+      }
+      ad.v("WalletRegionGreyItem", "noticeContent %s", new Object[] { this.DaL });
     }
-    ac.e("MicroMsg.WalletRepaymentBankcardMgr", "Repayment card list is null");
-    AppMethodBeat.o(70475);
-    return null;
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.aj
  * JD-Core Version:    0.7.0.1
  */

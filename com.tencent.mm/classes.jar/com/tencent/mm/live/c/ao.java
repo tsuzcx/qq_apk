@@ -8,96 +8,96 @@ import com.tencent.mm.live.b.g;
 import com.tencent.mm.live.core.core.a.b.a;
 import com.tencent.mm.live.core.view.LivePreviewView;
 import com.tencent.mm.live.d.e;
-import com.tencent.mm.protocal.protobuf.bqd;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.buq;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/plugin/LivePreviewPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "liveCore", "Lcom/tencent/mm/live/core/core/anchor/IMMLiveAnchorCore;", "previewView", "Lcom/tencent/mm/live/core/view/LivePreviewView;", "dp2px", "", "dpVal", "", "floatMode", "", "mount", "orientationChanged", "orientation", "userId", "", "streamType", "pause", "refreshPreviewView", "resume", "setPreviewMoveListener", "callback", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "xOffset", "yOffset", "setPreviewTouchListener", "x", "y", "showMicLayout", "startPreview", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "switchCamera", "unMount", "Companion", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LivePreviewPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "liveCore", "Lcom/tencent/mm/live/core/core/anchor/IMMLiveAnchorCore;", "previewView", "Lcom/tencent/mm/live/core/view/LivePreviewView;", "dp2px", "", "dpVal", "", "floatMode", "", "mount", "orientationChanged", "orientation", "userId", "", "streamType", "pause", "refreshPreviewView", "resume", "setPreviewMoveListener", "callback", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "xOffset", "yOffset", "setPreviewTouchListener", "x", "y", "showMicLayout", "startPreview", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "switchCamera", "unMount", "Companion", "plugin-logic_release"})
 public final class ao
   extends a
 {
-  public static final ao.a gCV;
+  public static final ao.a gWF;
   private final Context context;
-  private com.tencent.mm.live.core.core.a.a gCU;
-  public final LivePreviewView goF;
-  private final b gzb;
+  public final LivePreviewView gIn;
+  private final b gSM;
+  private com.tencent.mm.live.core.core.a.a gWE;
   
   static
   {
-    AppMethodBeat.i(190263);
-    gCV = new ao.a((byte)0);
-    AppMethodBeat.o(190263);
+    AppMethodBeat.i(212553);
+    gWF = new ao.a((byte)0);
+    AppMethodBeat.o(212553);
   }
   
   public ao(ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(190262);
-    this.gzb = paramb;
+    AppMethodBeat.i(212552);
+    this.gSM = paramb;
     this.context = paramViewGroup.getContext();
     paramb = paramViewGroup.findViewById(2131307720);
-    k.g(paramb, "root.findViewById(R.id.live_preview_view)");
-    this.goF = ((LivePreviewView)paramb);
-    paramb = com.tencent.mm.live.core.core.a.b.gnC;
+    p.g(paramb, "root.findViewById(R.id.live_preview_view)");
+    this.gIn = ((LivePreviewView)paramb);
+    paramb = com.tencent.mm.live.core.core.a.b.gHl;
     paramb = paramViewGroup.getContext();
-    k.g(paramb, "root.context");
-    this.gCU = ((com.tencent.mm.live.core.core.a.a)b.a.ct(paramb));
+    p.g(paramb, "root.context");
+    this.gWE = ((com.tencent.mm.live.core.core.a.a)b.a.cq(paramb));
     paramViewGroup.setPadding(0, 0, 0, 0);
-    AppMethodBeat.o(190262);
+    AppMethodBeat.o(212552);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
     int i = 0;
-    AppMethodBeat.i(190261);
-    k.h(paramc, "status");
+    AppMethodBeat.i(212551);
+    p.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (ap.cfA[paramc.ordinal()])
+    switch (ap.cpQ[paramc.ordinal()])
     {
     }
     do
     {
-      AppMethodBeat.o(190261);
+      AppMethodBeat.o(212551);
       return;
-      nj(0);
-      AppMethodBeat.o(190261);
+      nI(0);
+      AppMethodBeat.o(212551);
       return;
-      ac.i("MicroMsg.LiveCoreAnchor", "switchCamera");
-      paramc = this.gCU;
+      ad.i("MicroMsg.LiveCoreAnchor", "switchCamera");
+      paramc = this.gWE;
       if (paramc != null) {
         paramc.switchCamera();
       }
-      paramc = g.guG;
-      paramc = g.akA();
-      paramBundle = g.guG;
-      long l = g.akF().DMV;
-      paramBundle = g.guG;
-      paramBundle = g.akH();
-      com.tencent.mm.live.core.core.trtc.a.a locala = com.tencent.mm.live.core.core.trtc.a.a.aiX();
-      k.g(locala, "ConfigHelper.getInstance()");
-      if (locala.ajb().gpy == 0) {
+      paramc = g.gOr;
+      paramc = g.anm();
+      paramBundle = g.gOr;
+      long l = g.ans().Fsa;
+      paramBundle = g.gOr;
+      paramBundle = g.anu();
+      com.tencent.mm.live.core.core.trtc.a.a locala = com.tencent.mm.live.core.core.trtc.a.a.alJ();
+      p.g(locala, "ConfigHelper.getInstance()");
+      if (locala.alN().gJh == 0) {
         i = 1;
       }
       e.a(paramc, l, paramBundle, 1, i);
-      com.tencent.mm.live.d.a.amA();
-      AppMethodBeat.o(190261);
+      com.tencent.mm.live.d.a.apn();
+      AppMethodBeat.o(212551);
       return;
-      nj(8);
-      paramc = this.gCU;
+      nI(8);
+      paramc = this.gWE;
     } while (paramc == null);
-    paramc.aiq();
-    AppMethodBeat.o(190261);
+    paramc.alc();
+    AppMethodBeat.o(212551);
   }
   
-  public final void alM() {}
-  
-  public final void alN()
+  public final void aoA()
   {
-    AppMethodBeat.i(190260);
-    ac.i("MicroMsg.LiveCoreAnchor", "unMount");
-    AppMethodBeat.o(190260);
+    AppMethodBeat.i(212550);
+    ad.i("MicroMsg.LiveCoreAnchor", "unMount");
+    AppMethodBeat.o(212550);
   }
+  
+  public final void aoz() {}
   
   public final void pause() {}
   
@@ -105,15 +105,15 @@ public final class ao
   
   public final void startPreview()
   {
-    AppMethodBeat.i(190259);
-    com.tencent.mm.live.core.core.a.a locala = this.gCU;
+    AppMethodBeat.i(212549);
+    com.tencent.mm.live.core.core.a.a locala = this.gWE;
     if (locala != null)
     {
-      locala.a(this.goF);
-      AppMethodBeat.o(190259);
+      locala.a(this.gIn);
+      AppMethodBeat.o(212549);
       return;
     }
-    AppMethodBeat.o(190259);
+    AppMethodBeat.o(212549);
   }
 }
 

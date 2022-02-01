@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static a fMk;
-  private static a fMl;
+  private static a gfK;
+  private static a gfL;
   
   static
   {
@@ -23,27 +23,27 @@ public final class c
       
       public final void w(String paramAnonymousString1, String paramAnonymousString2) {}
     };
-    fMk = local1;
-    fMl = local1;
+    gfK = local1;
+    gfL = local1;
     AppMethodBeat.o(102977);
   }
   
   public static void a(a parama)
   {
-    fMl = parama;
+    gfL = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102972);
-    if (fMl != null)
+    if (gfL != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      fMl.d(paramString1, paramString2);
+      gfL.d(paramString1, paramString2);
     }
     AppMethodBeat.o(102972);
   }
@@ -51,14 +51,14 @@ public final class c
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102975);
-    if (fMl != null)
+    if (gfL != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      fMl.e(paramString1, paramString2);
+      gfL.e(paramString1, paramString2);
     }
     AppMethodBeat.o(102975);
   }
@@ -66,14 +66,14 @@ public final class c
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102973);
-    if (fMl != null)
+    if (gfL != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      fMl.i(paramString1, paramString2);
+      gfL.i(paramString1, paramString2);
     }
     AppMethodBeat.o(102973);
   }
@@ -81,7 +81,7 @@ public final class c
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102976);
-    if (fMl != null)
+    if (gfL != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
@@ -89,7 +89,7 @@ public final class c
         paramString2 = "";
       }
       paramThrowable = paramString2 + "  " + Log.getStackTraceString(paramThrowable);
-      fMl.e(paramString1, paramThrowable);
+      gfL.e(paramString1, paramThrowable);
     }
     AppMethodBeat.o(102976);
   }
@@ -97,14 +97,14 @@ public final class c
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102971);
-    if (fMl != null)
+    if (gfL != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      fMl.v(paramString1, paramString2);
+      gfL.v(paramString1, paramString2);
     }
     AppMethodBeat.o(102971);
   }
@@ -112,14 +112,14 @@ public final class c
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102974);
-    if (fMl != null)
+    if (gfL != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      fMl.w(paramString1, paramString2);
+      gfL.w(paramString1, paramString2);
     }
     AppMethodBeat.o(102974);
   }
@@ -139,7 +139,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.a.c
  * JD-Core Version:    0.7.0.1
  */

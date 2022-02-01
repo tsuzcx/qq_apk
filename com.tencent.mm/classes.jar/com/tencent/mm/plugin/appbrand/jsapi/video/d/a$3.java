@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.g.d;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.jsapi.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class a$3
   implements f.b
@@ -15,28 +15,28 @@ final class a$3
   
   public final void onBackground()
   {
-    AppMethodBeat.i(194407);
-    g.d locald = g.Hg(this.khm.getAppId());
-    ac.i("MicroMsg.JsApiInsertVideoPlayer", "VideoPlayer enter background, pause type:%s", new Object[] { locald.name() });
-    if (locald == g.d.jdi)
+    AppMethodBeat.i(206219);
+    g.d locald = g.Kv(this.kCd.getAppId());
+    ad.i("MicroMsg.JsApiInsertVideoPlayer", "VideoPlayer enter background, pause type:%s", new Object[] { locald.name() });
+    if (locald == g.d.jwr)
     {
-      this.kTn.sM(2);
-      AppMethodBeat.o(194407);
+      this.lpQ.tp(2);
+      AppMethodBeat.o(206219);
       return;
     }
-    if (locald == g.d.jde)
+    if (locald == g.d.jwn)
     {
-      this.kTn.sM(1);
-      AppMethodBeat.o(194407);
+      this.lpQ.tp(1);
+      AppMethodBeat.o(206219);
       return;
     }
-    this.kTn.sM(3);
-    AppMethodBeat.o(194407);
+    this.lpQ.tp(3);
+    AppMethodBeat.o(206219);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.d.a.3
  * JD-Core Version:    0.7.0.1
  */

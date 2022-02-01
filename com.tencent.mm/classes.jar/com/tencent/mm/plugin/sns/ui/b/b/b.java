@@ -4,15 +4,15 @@ import com.tencent.mm.ui.MMActivity;
 
 public abstract class b
 {
+  protected a AsL;
   protected MMActivity activity;
-  protected a zaU;
+  
+  public abstract void At(long paramLong);
   
   public final void a(a parama)
   {
-    this.zaU = parama;
+    this.AsL = parama;
   }
-  
-  public abstract void xV(long paramLong);
   
   public static abstract interface a
   {

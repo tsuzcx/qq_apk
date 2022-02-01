@@ -19,9 +19,9 @@ public class BizInfoPayInfoIconPreference
   extends Preference
 {
   private LayoutInflater mInflater;
-  private LinearLayout vIK;
-  private List<String> vIL;
-  private int vIM;
+  private LinearLayout wPR;
+  private List<String> wPS;
+  private int wPT;
   
   public BizInfoPayInfoIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,51 +32,51 @@ public class BizInfoPayInfoIconPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(26936);
-    this.vIM = -1;
+    this.wPT = -1;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
     setLayoutResource(2131494804);
     AppMethodBeat.o(26936);
   }
   
-  private void Lg(int paramInt)
+  private void MI(int paramInt)
   {
     AppMethodBeat.i(26942);
     ImageView localImageView = (ImageView)this.mInflater.inflate(2131493604, null);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(a.fromDPToPix(this.mContext, 20), a.fromDPToPix(this.mContext, 20));
     localLayoutParams.rightMargin = a.fromDPToPix(this.mContext, 6);
     localImageView.setImageResource(paramInt);
-    this.vIK.addView(localImageView, localLayoutParams);
+    this.wPR.addView(localImageView, localLayoutParams);
     AppMethodBeat.o(26942);
   }
   
-  private void apA(String paramString)
+  private void auG(String paramString)
   {
     AppMethodBeat.i(26943);
     CdnImageView localCdnImageView = new CdnImageView(this.mContext);
     localCdnImageView.setUrl(paramString);
     paramString = new LinearLayout.LayoutParams(a.fromDPToPix(this.mContext, 20), a.fromDPToPix(this.mContext, 20));
     paramString.rightMargin = a.fromDPToPix(this.mContext, 6);
-    this.vIK.addView(localCdnImageView, paramString);
+    this.wPR.addView(localCdnImageView, paramString);
     AppMethodBeat.o(26943);
   }
   
-  private void cL()
+  private void updateView()
   {
     AppMethodBeat.i(26941);
-    if (this.vIK == null)
+    if (this.wPR == null)
     {
       AppMethodBeat.o(26941);
       return;
     }
-    this.vIK.removeAllViews();
-    if (this.vIM >= 0)
+    this.wPR.removeAllViews();
+    if (this.wPT >= 0)
     {
-      int i = this.vIM;
+      int i = this.wPT;
       int j = 0;
       if (j < 5)
       {
         if (i <= 0) {
-          Lg(2131689766);
+          MI(2131689766);
         }
         for (;;)
         {
@@ -84,12 +84,12 @@ public class BizInfoPayInfoIconPreference
           break;
           if (i <= 10)
           {
-            Lg(2131689764);
+            MI(2131689764);
             i -= 20;
           }
           else
           {
-            Lg(2131689765);
+            MI(2131689765);
             i -= 20;
           }
         }
@@ -97,34 +97,34 @@ public class BizInfoPayInfoIconPreference
       AppMethodBeat.o(26941);
       return;
     }
-    if (this.vIL != null)
+    if (this.wPS != null)
     {
-      Iterator localIterator = this.vIL.iterator();
+      Iterator localIterator = this.wPS.iterator();
       while (localIterator.hasNext()) {
-        apA((String)localIterator.next());
+        auG((String)localIterator.next());
       }
     }
     AppMethodBeat.o(26941);
   }
   
-  public final void Lf(int paramInt)
+  public final void MH(int paramInt)
   {
     AppMethodBeat.i(26939);
-    if (paramInt == this.vIM)
+    if (paramInt == this.wPT)
     {
       AppMethodBeat.o(26939);
       return;
     }
-    this.vIM = paramInt;
-    cL();
+    this.wPT = paramInt;
+    updateView();
     AppMethodBeat.o(26939);
   }
   
-  public final void eB(List<String> paramList)
+  public final void eO(List<String> paramList)
   {
     AppMethodBeat.i(26940);
-    this.vIL = paramList;
-    cL();
+    this.wPS = paramList;
+    updateView();
     AppMethodBeat.o(26940);
   }
   
@@ -132,8 +132,8 @@ public class BizInfoPayInfoIconPreference
   {
     AppMethodBeat.i(26938);
     super.onBindView(paramView);
-    this.vIK = ((LinearLayout)paramView.findViewById(2131305546));
-    cL();
+    this.wPR = ((LinearLayout)paramView.findViewById(2131305546));
+    updateView();
     AppMethodBeat.o(26938);
   }
   
@@ -150,7 +150,7 @@ public class BizInfoPayInfoIconPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.BizInfoPayInfoIconPreference
  * JD-Core Version:    0.7.0.1
  */

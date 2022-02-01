@@ -8,15 +8,15 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.v4.app.s.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.a;
+import com.tencent.mm.br.a;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.AppBrandBackgroundRunningApp;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.d;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.e;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.e.a;
 import com.tencent.mm.plugin.appbrand.backgroundrunning.e.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -25,8 +25,8 @@ import java.util.List;
 public class AppBrandForegroundNotificationService
   extends Service
 {
-  public static int jyC = 1025;
-  private NotificationManager Gu;
+  public static int jSz = 1025;
+  private NotificationManager Im;
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -37,14 +37,14 @@ public class AppBrandForegroundNotificationService
   {
     AppMethodBeat.i(44807);
     super.onCreate();
-    ac.i("MicroMsg.AppBrandForegroundNotificationService", "onCreate");
+    ad.i("MicroMsg.AppBrandForegroundNotificationService", "onCreate");
     AppMethodBeat.o(44807);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(44808);
-    ac.i("MicroMsg.AppBrandForegroundNotificationService", "onDestroy");
+    ad.i("MicroMsg.AppBrandForegroundNotificationService", "onDestroy");
     stopForeground(false);
     super.onDestroy();
     AppMethodBeat.o(44808);
@@ -54,32 +54,32 @@ public class AppBrandForegroundNotificationService
   {
     paramInt1 = 1;
     AppMethodBeat.i(44809);
-    ac.i("MicroMsg.AppBrandForegroundNotificationService", "onStartCommand");
+    ad.i("MicroMsg.AppBrandForegroundNotificationService", "onStartCommand");
     if ((paramIntent == null) || (paramIntent.getExtras() == null))
     {
-      ac.i("MicroMsg.AppBrandForegroundNotificationService", "onStartCommand, intent is null");
+      ad.i("MicroMsg.AppBrandForegroundNotificationService", "onStartCommand, intent is null");
       AppMethodBeat.o(44809);
       return 2;
     }
     Object localObject2 = paramIntent.getParcelableArrayListExtra("key_apps");
     if ((localObject2 == null) || (((List)localObject2).isEmpty()))
     {
-      ac.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildForegroundNotifications, apps is null");
+      ad.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildForegroundNotifications, apps is null");
       paramIntent = null;
     }
     while ((paramIntent == null) || (paramIntent.isEmpty()))
     {
-      ac.i("MicroMsg.AppBrandForegroundNotificationService", "onStartCommand, notificationWrappers is empty");
+      ad.i("MicroMsg.AppBrandForegroundNotificationService", "onStartCommand, notificationWrappers is empty");
       AppMethodBeat.o(44809);
       return 2;
-      ac.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "preProcessApps");
+      ad.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "preProcessApps");
       Object localObject3;
       if (((List)localObject2).isEmpty())
       {
         paramIntent = null;
         if (paramIntent == null)
         {
-          ac.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildForegroundNotifications, backgroundRunningApps is null");
+          ad.w("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildForegroundNotifications, backgroundRunningApps is null");
           paramIntent = null;
         }
       }
@@ -94,40 +94,40 @@ public class AppBrandForegroundNotificationService
             break;
           }
           paramIntent = (AppBrandBackgroundRunningApp)((Iterator)localObject3).next();
-          if (!bs.isNullOrNil(paramIntent.jxV))
+          if (!bt.isNullOrNil(paramIntent.jRR))
           {
-            if (((e.a)localObject1).jym == null) {
-              ((e.a)localObject1).jym = new ArrayList(((List)localObject2).size());
+            if (((e.a)localObject1).jSj == null) {
+              ((e.a)localObject1).jSj = new ArrayList(((List)localObject2).size());
             }
-            ((e.a)localObject1).jym.add(paramIntent);
+            ((e.a)localObject1).jSj.add(paramIntent);
           }
           else
           {
-            if (((e.a)localObject1).jyn == null) {
-              ((e.a)localObject1).jyn = new ArrayList(((List)localObject2).size());
+            if (((e.a)localObject1).jSk == null) {
+              ((e.a)localObject1).jSk = new ArrayList(((List)localObject2).size());
             }
-            ((e.a)localObject1).jyn.add(paramIntent);
+            ((e.a)localObject1).jSk.add(paramIntent);
           }
         }
       }
-      localObject2 = paramIntent.jyn;
+      localObject2 = paramIntent.jSk;
       if ((localObject2 == null) || (((List)localObject2).isEmpty())) {
-        ac.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildNormalForegroundNotification, apps is null");
+        ad.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildNormalForegroundNotification, apps is null");
       }
-      for (localObject1 = null;; localObject1 = new e.b((Notification)localObject1, jyC))
+      for (localObject1 = null;; localObject1 = new e.b((Notification)localObject1, jSz))
       {
-        localObject2 = e.ba(paramIntent.jym);
+        localObject2 = e.bc(paramIntent.jSj);
         if ((localObject1 != null) || ((localObject2 != null) && (!((List)localObject2).isEmpty()))) {
           break label448;
         }
         paramIntent = null;
         break;
-        ac.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildNormalForegroundNotification, apps:%s", new Object[] { localObject2 });
-        localObject1 = d.aX((List)localObject2);
-        localObject2 = d.aZ((List)localObject2);
-        localObject3 = new s.c(ai.getContext(), "reminder_channel_id");
+        ad.i("MicroMsg.AppBrand.AppBrandForegroundNotificationCommons", "buildNormalForegroundNotification, apps:%s", new Object[] { localObject2 });
+        localObject1 = d.aZ((List)localObject2);
+        localObject2 = d.bb((List)localObject2);
+        localObject3 = new s.c(aj.getContext(), "reminder_channel_id");
         ((s.c)localObject3).f(2, true);
-        ((s.c)localObject3).f((CharSequence)localObject1).g((CharSequence)localObject2).as(a.dlN()).i(System.currentTimeMillis());
+        ((s.c)localObject3).f((CharSequence)localObject1).g((CharSequence)localObject2).as(a.dwe()).i(System.currentTimeMillis());
         localObject1 = ((s.c)localObject3).build();
         ((Notification)localObject1).flags = 8;
         ((Notification)localObject1).defaults = -1;
@@ -142,16 +142,16 @@ public class AppBrandForegroundNotificationService
       }
     }
     Object localObject1 = (e.b)paramIntent.get(0);
-    startForeground(((e.b)localObject1).notificationId, ((e.b)localObject1).jyo);
+    startForeground(((e.b)localObject1).notificationId, ((e.b)localObject1).jSl);
     paramInt2 = paramIntent.size();
     if (1 < paramInt2) {
       while (paramInt1 < paramInt2)
       {
         localObject1 = (e.b)paramIntent.get(paramInt1);
-        if (this.Gu == null) {
-          this.Gu = ((NotificationManager)getSystemService("notification"));
+        if (this.Im == null) {
+          this.Im = ((NotificationManager)getSystemService("notification"));
         }
-        this.Gu.notify(((e.b)localObject1).notificationId, ((e.b)localObject1).jyo);
+        this.Im.notify(((e.b)localObject1).notificationId, ((e.b)localObject1).jSl);
         paramInt1 += 1;
       }
     }
@@ -163,15 +163,15 @@ public class AppBrandForegroundNotificationService
   {
     AppMethodBeat.i(44810);
     super.onTaskRemoved(paramIntent);
-    ac.i("MicroMsg.AppBrandForegroundNotificationService", "onTaskRemoved");
-    ((NotificationManager)ai.getContext().getSystemService("notification")).cancel(jyC);
+    ad.i("MicroMsg.AppBrandForegroundNotificationService", "onTaskRemoved");
+    ((NotificationManager)aj.getContext().getSystemService("notification")).cancel(jSz);
     stopSelf();
     AppMethodBeat.o(44810);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.service.AppBrandForegroundNotificationService
  * JD-Core Version:    0.7.0.1
  */

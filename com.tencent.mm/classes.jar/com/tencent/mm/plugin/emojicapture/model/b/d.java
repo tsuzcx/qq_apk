@@ -5,17 +5,17 @@ import com.tencent.mm.sticker.f;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixInfo;", "", "scene", "", "timeEnter", "", "videoPath", "", "outputPath", "retriever", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "videoPlayRate", "isRemoveBg", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "outputGif", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(IJLjava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;IZLcom/tencent/mm/sticker/StickerPack;ZLcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "()Z", "getOutputGif", "getOutputPath", "()Ljava/lang/String;", "getRetriever", "()Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "getScene", "()I", "getStickerPack", "()Lcom/tencent/mm/sticker/StickerPack;", "getTimeEnter", "()J", "getVideoPath", "getVideoPlayRate", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixInfo;", "", "scene", "", "timeEnter", "", "videoPath", "", "outputPath", "retriever", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "videoPlayRate", "isRemoveBg", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "outputGif", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(IJLjava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;IZLcom/tencent/mm/sticker/StickerPack;ZLcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "()Z", "getOutputGif", "getOutputPath", "()Ljava/lang/String;", "getRetriever", "()Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "getScene", "()I", "getStickerPack", "()Lcom/tencent/mm/sticker/StickerPack;", "getTimeEnter", "()J", "getVideoPath", "getVideoPlayRate", "plugin-emojicapture_release"})
 public final class d
 {
-  final EmojiInfo fPB;
-  final long fWr;
-  final String poB;
-  final a poG;
-  final int poH;
-  final boolean poI;
-  final f poJ;
-  final boolean poK;
+  final EmojiInfo gjb;
+  final long gpU;
+  final String pSc;
+  final a pSh;
+  final int pSi;
+  final boolean pSj;
+  final f pSk;
+  final boolean pSl;
   final int scene;
   final String videoPath;
   
@@ -23,15 +23,15 @@ public final class d
   {
     AppMethodBeat.i(270);
     this.scene = paramInt1;
-    this.fWr = paramLong;
+    this.gpU = paramLong;
     this.videoPath = paramString1;
-    this.poB = paramString2;
-    this.poG = parama;
-    this.poH = paramInt2;
-    this.poI = paramBoolean1;
-    this.poJ = paramf;
-    this.poK = paramBoolean2;
-    this.fPB = paramEmojiInfo;
+    this.pSc = paramString2;
+    this.pSh = parama;
+    this.pSi = paramInt2;
+    this.pSj = paramBoolean1;
+    this.pSk = paramf;
+    this.pSl = paramBoolean2;
+    this.gjb = paramEmojiInfo;
     AppMethodBeat.o(270);
   }
 }

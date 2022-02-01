@@ -7,7 +7,6 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -23,18 +22,18 @@ import com.tencent.mm.ui.widget.snackbar.a.c;
 public class VoipScoreDialog
   extends MMActivity
 {
-  private VoipScoreState ABX;
-  private ViewGroup AKL;
-  private ImageView[] AKM;
-  private d AKN;
-  private int AKO;
+  private VoipScoreState CaW;
+  private ViewGroup CjN;
+  private ImageView[] CjO;
+  private d CjP;
+  private int CjQ;
   
   public VoipScoreDialog()
   {
     AppMethodBeat.i(115385);
-    this.AKM = new ImageView[5];
-    this.AKN = null;
-    this.AKO = 0;
+    this.CjO = new ImageView[5];
+    this.CjP = null;
+    this.CjQ = 0;
     AppMethodBeat.o(115385);
   }
   
@@ -47,38 +46,30 @@ public class VoipScoreDialog
   {
     AppMethodBeat.i(115386);
     super.onCreate(paramBundle);
-    this.ABX = ((VoipScoreState)getIntent().getParcelableExtra("key_score_state"));
-    if (this.ABX == null)
+    this.CaW = ((VoipScoreState)getIntent().getParcelableExtra("key_score_state"));
+    if (this.CaW == null)
     {
       com.tencent.mm.ipcinvoker.h.b.e("MicroMsg.VoipScoreDialog", "onCreate error, scoreState is null", new Object[0]);
       finish();
       AppMethodBeat.o(115386);
       return;
     }
-    this.AKL = ((ViewGroup)View.inflate(this, 2131495880, null));
-    this.AKM[0] = ((ImageView)this.AKL.findViewById(2131304349));
-    this.AKM[1] = ((ImageView)this.AKL.findViewById(2131304350));
-    this.AKM[2] = ((ImageView)this.AKL.findViewById(2131304351));
-    this.AKM[3] = ((ImageView)this.AKL.findViewById(2131304352));
-    this.AKM[4] = ((ImageView)this.AKL.findViewById(2131304353));
-    final int i = 0;
-    while (i < this.AKM.length)
+    this.CjN = ((ViewGroup)View.inflate(this, 2131495880, null));
+    this.CjO[0] = ((ImageView)this.CjN.findViewById(2131304349));
+    this.CjO[1] = ((ImageView)this.CjN.findViewById(2131304350));
+    this.CjO[2] = ((ImageView)this.CjN.findViewById(2131304351));
+    this.CjO[3] = ((ImageView)this.CjN.findViewById(2131304352));
+    this.CjO[4] = ((ImageView)this.CjN.findViewById(2131304353));
+    int i = 0;
+    while (i < this.CjO.length)
     {
-      this.AKM[i].setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(115379);
-          VoipScoreDialog.a(VoipScoreDialog.this, i);
-          AppMethodBeat.o(115379);
-        }
-      });
+      this.CjO[i].setOnClickListener(new VoipScoreDialog.1(this, i));
       i += 1;
     }
     paramBundle = new f.a(this);
-    paramBundle.av(this.ABX.AEC);
-    paramBundle.gK(this.AKL);
-    paramBundle.aRU(getString(2131764912));
+    paramBundle.av(this.CaW.CdC);
+    paramBundle.hb(this.CjN);
+    paramBundle.aXS(getString(2131764912));
     paramBundle.b(new f.c()
     {
       public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
@@ -89,7 +80,7 @@ public class VoipScoreDialog
         AppMethodBeat.o(115380);
       }
     });
-    paramBundle.yi(false);
+    paramBundle.yU(false);
     paramBundle.b(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
@@ -99,10 +90,10 @@ public class VoipScoreDialog
         AppMethodBeat.o(115381);
       }
     });
-    this.AKN = paramBundle.iJj;
-    if (this.AKN != null)
+    this.CjP = paramBundle.jcs;
+    if (this.CjP != null)
     {
-      this.AKN.show();
+      this.CjP.show();
       AppMethodBeat.o(115386);
       return;
     }

@@ -1,78 +1,68 @@
 package com.tencent.mm.plugin.multitalk.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.plugin.multitalk.model.f;
-import com.tencent.mm.plugin.multitalk.model.p;
-import com.tencent.mm.pluginsdk.d.b;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.pb.common.b.a.a.a.ay;
-import com.tencent.pb.talkroom.sdk.MultiTalkGroup;
-import com.tencent.wecall.talkroom.model.TalkRoom;
-import d.g.b.k;
-import d.l;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.plugin.report.service.g;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/multitalk/utils/MultitalkUtils;", "", "()V", "TAG", "", "getMemberId", "", "username", "getMultitalkMaxLimitedNumber", "plugin-multitalk_release"})
 public final class c
 {
-  public static final c vcn;
-  
-  static
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, String paramString, int paramInt10)
   {
-    AppMethodBeat.i(178995);
-    vcn = new c();
-    AppMethodBeat.o(178995);
+    AppMethodBeat.i(164089);
+    g.yhR.a(19192, true, true, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt9), paramString, Integer.valueOf(paramInt10) });
+    AppMethodBeat.o(164089);
   }
   
-  public static final int amJ(String paramString)
+  public static void ar(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(178994);
-    a.ay localay;
-    if (!bs.isNullOrNil(paramString))
+    AppMethodBeat.i(164087);
+    if (paramBoolean) {}
+    for (int i = 2;; i = 1)
     {
-      Object localObject = p.dgx();
-      k.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
-      if (((f)localObject).dfS() != null)
-      {
-        localObject = p.dgx();
-        k.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
-        localObject = ((f)localObject).dfS().fCa();
-        localObject = com.tencent.wecall.talkroom.model.c.fIe().aUb((String)localObject);
-        if (localObject != null)
-        {
-          localObject = ((TalkRoom)localObject).fHY().iterator();
-          do
-          {
-            if (!((Iterator)localObject).hasNext()) {
-              break;
-            }
-            localay = (a.ay)((Iterator)localObject).next();
-          } while (!k.g(localay.dhV, paramString));
-        }
-      }
-    }
-    for (int i = localay.osF;; i = -1)
-    {
-      AppMethodBeat.o(178994);
-      return i;
+      a(paramInt, 0, 0, 0, 0, 0, i, 0, 0, "", 0);
+      AppMethodBeat.o(164087);
+      return;
     }
   }
   
-  public static final int dhi()
+  public static void as(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(178993);
-    int i = ((b)g.ab(b.class)).a(b.a.qaT, d.b.Dfr);
-    AppMethodBeat.o(178993);
-    return i;
+    AppMethodBeat.i(164088);
+    if (paramBoolean) {}
+    for (int i = 2;; i = 1)
+    {
+      a(paramInt, 0, 0, 0, 0, 0, 0, i, 0, "", 0);
+      AppMethodBeat.o(164088);
+      return;
+    }
+  }
+  
+  public static void f(int paramInt, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(164085);
+    if (paramBoolean) {}
+    for (int i = 2;; i = 1)
+    {
+      a(paramInt, 0, 0, 0, i, 0, 0, 0, 0, paramString, 0);
+      AppMethodBeat.o(164085);
+      return;
+    }
+  }
+  
+  public static void g(int paramInt, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(164086);
+    if (paramBoolean) {}
+    for (int i = 2;; i = 1)
+    {
+      a(paramInt, 0, 0, 0, 0, i, 0, 0, 0, paramString, 0);
+      AppMethodBeat.o(164086);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class op
   extends b
 {
-  public a dqX;
+  public a dCy;
   
   public op()
   {
@@ -16,20 +15,16 @@ public final class op
   
   private op(byte paramByte)
   {
-    AppMethodBeat.i(125623);
-    this.dqX = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(117549);
+    this.dCy = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(125623);
+    AppMethodBeat.o(117549);
   }
   
   public static final class a
   {
-    public int dgm = 0;
-    public long dqY = 0L;
-    public boolean dqZ = false;
-    public List list;
-    public int scene = 0;
+    public int ret;
   }
 }
 

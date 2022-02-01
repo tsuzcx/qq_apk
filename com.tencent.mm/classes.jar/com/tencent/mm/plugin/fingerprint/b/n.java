@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.fingerprint.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vj;
+import com.tencent.mm.g.a.wc;
 import com.tencent.mm.sdk.b.c;
 
 public final class n
-  extends c<vj>
+  extends c<wc>
 {
   public n()
   {
     AppMethodBeat.i(160798);
-    this.__eventId = vj.class.getName().hashCode();
+    this.__eventId = wc.class.getName().hashCode();
     AppMethodBeat.o(160798);
   }
 }

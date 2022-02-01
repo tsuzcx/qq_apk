@@ -2,11 +2,11 @@ package com.tencent.xweb;
 
 public final class p
 {
-  public static a Kzl;
+  public static a MpG;
   
   public static abstract interface a
   {
-    public abstract void sC(String paramString);
+    public abstract void vr(String paramString);
   }
 }
 

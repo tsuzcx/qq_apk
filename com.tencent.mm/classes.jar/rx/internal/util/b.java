@@ -8,17 +8,17 @@ public final class b
   extends AtomicLong
   implements f
 {
-  Throwable KTh;
-  boolean Mcy;
-  final a Mfc;
+  Throwable MKf;
+  boolean NXA;
+  final a Oae;
   public volatile boolean terminated;
   
   public b(a parama)
   {
-    this.Mfc = parama;
+    this.Oae = parama;
   }
   
-  public final void CI(long paramLong)
+  public final void FO(long paramLong)
   {
     AppMethodBeat.i(90200);
     if (paramLong == 0L)
@@ -69,12 +69,12 @@ public final class b
     }
   }
   
-  public final void O(Throwable paramThrowable)
+  public final void P(Throwable paramThrowable)
   {
     AppMethodBeat.i(90199);
     if (!this.terminated)
     {
-      this.KTh = paramThrowable;
+      this.MKf = paramThrowable;
       this.terminated = true;
       drain();
     }
@@ -87,10 +87,10 @@ public final class b
     int k;
     try
     {
-      if (this.Mcy) {
+      if (this.NXA) {
         return;
       }
-      this.Mcy = true;
+      this.NXA = true;
       bool1 = this.terminated;
       l1 = get();
       k = 0;
@@ -104,7 +104,7 @@ public final class b
     }
     try
     {
-      locala = this.Mfc;
+      locala = this.Oae;
     }
     finally
     {
@@ -126,7 +126,7 @@ public final class b
       if (locala.peek() == null)
       {
         i = 1;
-        locala.M(this.KTh);
+        locala.N(this.MKf);
         AppMethodBeat.o(90201);
         return;
       }
@@ -176,7 +176,7 @@ public final class b
       }
       try
       {
-        this.Mcy = false;
+        this.NXA = false;
         i = j;
         AppMethodBeat.o(90201);
         return;
@@ -209,7 +209,7 @@ public final class b
         if (i == 0) {}
         try
         {
-          this.Mcy = false;
+          this.NXA = false;
           throw localObject3;
         }
         finally
@@ -231,14 +231,14 @@ public final class b
     } while (i == 0);
     j = 1;
     i = j;
-    this.Mcy = false;
+    this.NXA = false;
     i = j;
     AppMethodBeat.o(90201);
   }
   
   public static abstract interface a
   {
-    public abstract void M(Throwable paramThrowable);
+    public abstract void N(Throwable paramThrowable);
     
     public abstract boolean accept(Object paramObject);
     

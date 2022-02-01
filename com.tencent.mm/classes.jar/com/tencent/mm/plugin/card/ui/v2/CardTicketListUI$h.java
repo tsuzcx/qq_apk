@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.widget.a.e;
-import d.g.b.k;
+import d.g.b.p;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
 final class CardTicketListUI$h
   implements MenuItem.OnMenuItemClickListener
 {
@@ -20,45 +20,45 @@ final class CardTicketListUI$h
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(206261);
-    paramMenuItem = new e((Context)this.oiY.getContext(), 1, false);
-    paramMenuItem.a((n.c)new n.c()
+    AppMethodBeat.i(215457);
+    paramMenuItem = new e((Context)this.oMu.getContext(), 1, false);
+    paramMenuItem.a((n.d)new n.d()
     {
       public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
       {
-        AppMethodBeat.i(206259);
-        paramAnonymousl.add(0, 0, 1, (CharSequence)this.ojd.oiY.getString(2131764414));
-        AppMethodBeat.o(206259);
+        AppMethodBeat.i(215455);
+        paramAnonymousl.add(0, 0, 1, (CharSequence)this.oMz.oMu.getString(2131764414));
+        AppMethodBeat.o(215455);
       }
     });
-    paramMenuItem.a((n.d)new n.d()
+    paramMenuItem.a((n.e)new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
-        AppMethodBeat.i(206260);
-        k.g(paramAnonymousMenuItem, "menuItem");
+        AppMethodBeat.i(215456);
+        p.g(paramAnonymousMenuItem, "menuItem");
         if (paramAnonymousMenuItem.getItemId() == 0)
         {
-          ac.i("MicroMsg.CardTicketListUI", "click history wording");
-          Object localObject = new Intent((Context)this.ojd.oiY, CardInvalidTicketListUI.class);
-          paramAnonymousMenuItem = this.ojd.oiY;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/card/ui/v2/CardTicketListUI$updateTextMenu$1$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+          ad.i("MicroMsg.CardTicketListUI", "click history wording");
+          Object localObject = new Intent((Context)this.oMz.oMu, CardInvalidTicketListUI.class);
+          paramAnonymousMenuItem = this.oMz.oMu;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/card/ui/v2/CardTicketListUI$updateTextMenu$1$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, "com/tencent/mm/plugin/card/ui/v2/CardTicketListUI$updateTextMenu$1$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          h.wUl.f(16322, new Object[] { Integer.valueOf(8) });
+          g.yhR.f(16322, new Object[] { Integer.valueOf(8) });
         }
-        AppMethodBeat.o(206260);
+        AppMethodBeat.o(215456);
       }
     });
-    paramMenuItem.cED();
-    AppMethodBeat.o(206261);
+    paramMenuItem.cMW();
+    AppMethodBeat.o(215457);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.v2.CardTicketListUI.h
  * JD-Core Version:    0.7.0.1
  */

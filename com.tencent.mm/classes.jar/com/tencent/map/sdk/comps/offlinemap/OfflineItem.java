@@ -12,15 +12,15 @@ public class OfflineItem
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(191272);
+    AppMethodBeat.i(195064);
     if (this == paramObject)
     {
-      AppMethodBeat.o(191272);
+      AppMethodBeat.o(195064);
       return true;
     }
     if (!(paramObject instanceof OfflineItem))
     {
-      AppMethodBeat.o(191272);
+      AppMethodBeat.o(195064);
       return false;
     }
     paramObject = (OfflineItem)paramObject;
@@ -31,22 +31,22 @@ public class OfflineItem
     else {
       while (paramObject.name != null)
       {
-        AppMethodBeat.o(191272);
+        AppMethodBeat.o(195064);
         return false;
       }
     }
     if (this.pinyin != null)
     {
       boolean bool = this.pinyin.equals(paramObject.pinyin);
-      AppMethodBeat.o(191272);
+      AppMethodBeat.o(195064);
       return bool;
     }
     if (paramObject.pinyin == null)
     {
-      AppMethodBeat.o(191272);
+      AppMethodBeat.o(195064);
       return true;
     }
-    AppMethodBeat.o(191272);
+    AppMethodBeat.o(195064);
     return false;
   }
   
@@ -73,14 +73,14 @@ public class OfflineItem
   public int hashCode()
   {
     int j = 0;
-    AppMethodBeat.i(191273);
+    AppMethodBeat.i(195065);
     if (this.name != null) {}
     for (int i = this.name.hashCode();; i = 0)
     {
       if (this.pinyin != null) {
         j = this.pinyin.hashCode();
       }
-      AppMethodBeat.o(191273);
+      AppMethodBeat.o(195065);
       return i * 31 + j;
     }
   }
@@ -117,7 +117,7 @@ public class OfflineItem
   
   public String toString()
   {
-    AppMethodBeat.i(191274);
+    AppMethodBeat.i(195066);
     Object localObject = new StringBuffer("OfflineItem{");
     ((StringBuffer)localObject).append("name='").append(this.name).append('\'');
     ((StringBuffer)localObject).append(", pinyin='").append(this.pinyin).append('\'');
@@ -126,13 +126,13 @@ public class OfflineItem
     ((StringBuffer)localObject).append(", percentage=").append(this.percentage);
     ((StringBuffer)localObject).append('}');
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(191274);
+    AppMethodBeat.o(195066);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.comps.offlinemap.OfflineItem
  * JD-Core Version:    0.7.0.1
  */

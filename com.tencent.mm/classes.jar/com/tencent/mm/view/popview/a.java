@@ -2,16 +2,16 @@ package com.tencent.mm.view.popview;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/view/popview/BasePopupHelper;", "", "()V", "onLongPress", "", "anchor", "Landroid/view/View;", "item", "onMove", "", "onOutsideTouched", "onTouchEnd", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/view/popview/BasePopupHelper;", "", "()V", "onLongPress", "", "anchor", "Landroid/view/View;", "item", "onMove", "", "onOutsideTouched", "onTouchEnd", "plugin-emojisdk_release"})
 public class a
 {
   public boolean c(View paramView, Object paramObject)
   {
     AppMethodBeat.i(183994);
-    k.h(paramView, "anchor");
+    p.h(paramView, "anchor");
     AppMethodBeat.o(183994);
     return false;
   }
@@ -19,11 +19,11 @@ public class a
   public void d(View paramView, Object paramObject)
   {
     AppMethodBeat.i(183995);
-    k.h(paramView, "anchor");
+    p.h(paramView, "anchor");
     AppMethodBeat.o(183995);
   }
   
-  public void dLc() {}
+  public void dXt() {}
 }
 
 

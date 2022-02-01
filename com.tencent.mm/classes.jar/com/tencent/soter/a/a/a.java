@@ -11,47 +11,47 @@ import junit.framework.Assert;
 
 public final class a
 {
-  public CancellationSignal GnW;
+  public CancellationSignal HZJ;
   
   public a()
   {
     AppMethodBeat.i(11);
-    this.GnW = null;
+    this.HZJ = null;
     if (Build.VERSION.SDK_INT >= 16) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      fDD();
+      fUV();
       AppMethodBeat.o(11);
       return;
     }
   }
   
   @SuppressLint({"NewApi"})
-  public final void fDD()
+  public final void fUV()
   {
     AppMethodBeat.i(13);
-    this.GnW = new CancellationSignal();
+    this.HZJ = new CancellationSignal();
     AppMethodBeat.o(13);
   }
   
   @SuppressLint({"NewApi"})
-  public final boolean yE(final boolean paramBoolean)
+  public final boolean zr(final boolean paramBoolean)
   {
     AppMethodBeat.i(12);
     d.v("Soter.SoterBiometricCanceller", "soter: publishing cancellation. should publish: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (!this.GnW.isCanceled())
+    if (!this.HZJ.isCanceled())
     {
       if (Build.VERSION.SDK_INT < 23) {
-        g.fDP().ag(new Runnable()
+        g.fVh().af(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(8);
             d.v("Soter.SoterBiometricCanceller", "soter: enter worker thread. perform cancel", new Object[0]);
-            a.this.GnW.cancel();
+            a.this.HZJ.cancel();
             if (paramBoolean) {
-              f.fDM().fDO();
+              f.fVe().fVg();
             }
             AppMethodBeat.o(8);
           }
@@ -61,22 +61,22 @@ public final class a
       {
         AppMethodBeat.o(12);
         return true;
-        g.fDP().ag(new Runnable()
+        g.fVh().af(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(9);
-            a.this.GnW.cancel();
+            a.this.HZJ.cancel();
             AppMethodBeat.o(9);
           }
         });
-        g.fDP().o(new Runnable()
+        g.fVh().p(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(10);
             d.w("Soter.SoterBiometricCanceller", "hy: waiting for %s ms not callback to system callback. cancel manually", new Object[] { Long.valueOf(350L) });
-            f.fDM().fDO();
+            f.fVe().fVg();
             AppMethodBeat.o(10);
           }
         }, 350L);

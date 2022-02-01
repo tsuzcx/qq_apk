@@ -5,26 +5,26 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  public static a cEr = null;
-  public static int cEs = 0;
+  public static a cPw = null;
+  public static int cPx = 0;
   
-  private static String Iz()
+  private static String JZ()
   {
-    AppMethodBeat.i(193556);
-    if (cEr != null)
+    AppMethodBeat.i(195147);
+    if (cPw != null)
     {
-      str = cEr.getStack();
-      AppMethodBeat.o(193556);
+      str = cPw.getStack();
+      AppMethodBeat.o(195147);
       return str;
     }
-    String str = bs.eWi().toString();
-    AppMethodBeat.o(193556);
+    String str = bt.flS().toString();
+    AppMethodBeat.o(195147);
     return str;
   }
   
@@ -42,24 +42,24 @@ public final class a
     if (paramIntent != null) {}
     for (Object localObject = paramIntent;; localObject = "null")
     {
-      ac.i("MicroMsg.AlarmHelper", "set(type:%s requestCode:%s triggerAtMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong), localObject, Integer.valueOf(paramInt3), Iz() });
+      ad.i("MicroMsg.AlarmHelper", "set(type:%s requestCode:%s triggerAtMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong), localObject, Integer.valueOf(paramInt3), JZ() });
       if (paramContext != null) {
         break;
       }
-      ac.e("MicroMsg.AlarmHelper", "set(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt1) });
+      ad.e("MicroMsg.AlarmHelper", "set(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(185210);
       return null;
     }
     localObject = (AlarmManager)paramContext.getSystemService("alarm");
     if (localObject == null)
     {
-      ac.e("MicroMsg.AlarmHelper", "set(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt1) });
+      ad.e("MicroMsg.AlarmHelper", "set(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(185210);
       return null;
     }
     if (!isRequestCodeValid(paramInt1))
     {
-      ac.e("MicroMsg.AlarmHelper", "set(requestCode:%s): requestCode invalid", new Object[] { Integer.valueOf(paramInt1) });
+      ad.e("MicroMsg.AlarmHelper", "set(requestCode:%s): requestCode invalid", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(185210);
       return null;
     }
@@ -80,12 +80,12 @@ public final class a
     {
       for (;;)
       {
-        ac.e("MicroMsg.AlarmHelper", "set Exception:%s %s", new Object[] { paramIntent.getClass().getSimpleName(), paramIntent.getMessage() });
-        if (cEr != null)
+        ad.e("MicroMsg.AlarmHelper", "set Exception:%s %s", new Object[] { paramIntent.getClass().getSimpleName(), paramIntent.getMessage() });
+        if (cPw != null)
         {
-          paramIntent = cEr;
-          Iz();
-          paramIntent.cb(paramInt1, 1);
+          paramIntent = cPw;
+          JZ();
+          paramIntent.cd(paramInt1, 1);
         }
       }
     }
@@ -105,17 +105,17 @@ public final class a
     if (paramIntent != null) {}
     for (Object localObject = paramIntent;; localObject = "null")
     {
-      ac.i("MicroMsg.AlarmHelper", "getPendingIntent(requestCode:%s intent:%s flags:%s)", new Object[] { Integer.valueOf(paramInt1), localObject, Integer.valueOf(paramInt2) });
+      ad.i("MicroMsg.AlarmHelper", "getPendingIntent(requestCode:%s intent:%s flags:%s)", new Object[] { Integer.valueOf(paramInt1), localObject, Integer.valueOf(paramInt2) });
       if (paramContext != null) {
         break;
       }
-      ac.e("MicroMsg.AlarmHelper", "getPendingIntent(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt1) });
+      ad.e("MicroMsg.AlarmHelper", "getPendingIntent(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(182037);
       return null;
     }
     if (!isRequestCodeValid(paramInt1))
     {
-      ac.e("MicroMsg.AlarmHelper", "getPendingIntent(requestCode:%s): requestCode invalid", new Object[] { Integer.valueOf(paramInt1) });
+      ad.e("MicroMsg.AlarmHelper", "getPendingIntent(requestCode:%s): requestCode invalid", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(182037);
       return null;
     }
@@ -130,24 +130,24 @@ public final class a
     if (paramIntent != null) {}
     for (Object localObject = paramIntent;; localObject = "null")
     {
-      ac.i("MicroMsg.AlarmHelper", "setRepeating(type:%s requestCode:%s triggerAtMillis:%s intervalMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), localObject, Integer.valueOf(268435456), Iz() });
+      ad.i("MicroMsg.AlarmHelper", "setRepeating(type:%s requestCode:%s triggerAtMillis:%s intervalMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), localObject, Integer.valueOf(268435456), JZ() });
       if (paramContext != null) {
         break;
       }
-      ac.e("MicroMsg.AlarmHelper", "setRepeating(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt1) });
+      ad.e("MicroMsg.AlarmHelper", "setRepeating(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(186107);
       return null;
     }
     localObject = (AlarmManager)paramContext.getSystemService("alarm");
     if (localObject == null)
     {
-      ac.e("MicroMsg.AlarmHelper", "setRepeating(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt1) });
+      ad.e("MicroMsg.AlarmHelper", "setRepeating(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(186107);
       return null;
     }
     if (!isRequestCodeValid(paramInt1))
     {
-      ac.e("MicroMsg.AlarmHelper", "setRepeating(requestCode:%s): requestCode invalid", new Object[] { Integer.valueOf(paramInt1) });
+      ad.e("MicroMsg.AlarmHelper", "setRepeating(requestCode:%s): requestCode invalid", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(186107);
       return null;
     }
@@ -162,12 +162,12 @@ public final class a
     {
       for (;;)
       {
-        ac.e("MicroMsg.AlarmHelper", "setRepeating Exception:%s %s", new Object[] { paramIntent.getClass().getSimpleName(), paramIntent.getMessage() });
-        if (cEr != null)
+        ad.e("MicroMsg.AlarmHelper", "setRepeating Exception:%s %s", new Object[] { paramIntent.getClass().getSimpleName(), paramIntent.getMessage() });
+        if (cPw != null)
         {
-          paramIntent = cEr;
-          Iz();
-          paramIntent.cb(paramInt1, 1);
+          paramIntent = cPw;
+          JZ();
+          paramIntent.cd(paramInt1, 1);
         }
       }
     }
@@ -179,25 +179,25 @@ public final class a
     if (paramIntent != null) {}
     for (Object localObject = paramIntent;; localObject = "null")
     {
-      ac.i("MicroMsg.AlarmHelper", "setExact(type:%s requestCode:%s triggerAtMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt), Long.valueOf(paramLong), localObject, Integer.valueOf(268435456), Iz() });
-      cEs += 1;
+      ad.i("MicroMsg.AlarmHelper", "setExact(type:%s requestCode:%s triggerAtMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt), Long.valueOf(paramLong), localObject, Integer.valueOf(268435456), JZ() });
+      cPx += 1;
       if (paramContext != null) {
         break;
       }
-      ac.e("MicroMsg.AlarmHelper", "setExact(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt) });
+      ad.e("MicroMsg.AlarmHelper", "setExact(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(186106);
       return null;
     }
     localObject = (AlarmManager)paramContext.getSystemService("alarm");
     if (localObject == null)
     {
-      ac.e("MicroMsg.AlarmHelper", "setExact(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt) });
+      ad.e("MicroMsg.AlarmHelper", "setExact(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(186106);
       return null;
     }
     if (!isRequestCodeValid(paramInt))
     {
-      ac.e("MicroMsg.AlarmHelper", "setExact(requestCode:%s): requestCode invalid", new Object[] { Integer.valueOf(paramInt) });
+      ad.e("MicroMsg.AlarmHelper", "setExact(requestCode:%s): requestCode invalid", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(186106);
       return null;
     }
@@ -212,12 +212,12 @@ public final class a
     {
       for (;;)
       {
-        ac.e("MicroMsg.AlarmHelper", "setExact Exception:%s %s", new Object[] { paramIntent.getClass().getSimpleName(), paramIntent.getMessage() });
-        if (cEr != null)
+        ad.e("MicroMsg.AlarmHelper", "setExact Exception:%s %s", new Object[] { paramIntent.getClass().getSimpleName(), paramIntent.getMessage() });
+        if (cPw != null)
         {
-          paramIntent = cEr;
-          Iz();
-          paramIntent.cb(paramInt, 1);
+          paramIntent = cPw;
+          JZ();
+          paramIntent.cd(paramInt, 1);
         }
       }
     }
@@ -234,17 +234,17 @@ public final class a
   public static void c(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(186108);
-    ac.i("MicroMsg.AlarmHelper", "cancel(requestCode:%s intent:%s flags:%s)", new Object[] { Integer.valueOf(111), paramIntent, Integer.valueOf(268435456) });
+    ad.i("MicroMsg.AlarmHelper", "cancel(requestCode:%s intent:%s flags:%s)", new Object[] { Integer.valueOf(111), paramIntent, Integer.valueOf(268435456) });
     if (paramContext == null)
     {
-      ac.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): context == null", new Object[] { Integer.valueOf(111) });
+      ad.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): context == null", new Object[] { Integer.valueOf(111) });
       AppMethodBeat.o(186108);
       return;
     }
     AlarmManager localAlarmManager = (AlarmManager)paramContext.getSystemService("alarm");
     if (localAlarmManager == null)
     {
-      ac.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): am == null", new Object[] { Integer.valueOf(111) });
+      ad.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): am == null", new Object[] { Integer.valueOf(111) });
       AppMethodBeat.o(186108);
       return;
     }
@@ -257,12 +257,12 @@ public final class a
     }
     catch (Exception paramContext)
     {
-      ac.e("MicroMsg.AlarmHelper", "cancel Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
-      if (cEr != null)
+      ad.e("MicroMsg.AlarmHelper", "cancel Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
+      if (cPw != null)
       {
-        paramContext = cEr;
-        Iz();
-        paramContext.cb(111, 2);
+        paramContext = cPw;
+        JZ();
+        paramContext.cd(111, 2);
       }
       AppMethodBeat.o(186108);
     }
@@ -274,18 +274,18 @@ public final class a
     if (paramPendingIntent != null) {}
     for (String str = paramPendingIntent.toString();; str = "null")
     {
-      ac.i("MicroMsg.AlarmHelper", "cancel(requestCode:%s operation:%s)", new Object[] { Integer.valueOf(paramInt), str });
+      ad.i("MicroMsg.AlarmHelper", "cancel(requestCode:%s operation:%s)", new Object[] { Integer.valueOf(paramInt), str });
       if (paramContext != null) {
         break;
       }
-      ac.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt) });
+      ad.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(182035);
       return;
     }
     paramContext = (AlarmManager)paramContext.getSystemService("alarm");
     if (paramContext == null)
     {
-      ac.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt) });
+      ad.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(182035);
       return;
     }
@@ -297,12 +297,12 @@ public final class a
     }
     catch (Exception paramContext)
     {
-      ac.e("MicroMsg.AlarmHelper", "cancel Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
-      if (cEr != null)
+      ad.e("MicroMsg.AlarmHelper", "cancel Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
+      if (cPw != null)
       {
-        paramContext = cEr;
-        Iz();
-        paramContext.cb(paramInt, 2);
+        paramContext = cPw;
+        JZ();
+        paramContext.cd(paramInt, 2);
       }
       AppMethodBeat.o(182035);
     }
@@ -323,7 +323,7 @@ public final class a
   
   public static abstract interface a
   {
-    public abstract void cb(int paramInt1, int paramInt2);
+    public abstract void cd(int paramInt1, int paramInt2);
     
     public abstract String getStack();
   }

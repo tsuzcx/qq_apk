@@ -6,13 +6,14 @@ import android.util.AndroidRuntimeException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.m;
+import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.g;
 import com.tencent.mm.plugin.appbrand.page.web_renderingcache.WebRenderingCacheDirectoryDescriptor;
 import com.tencent.mm.plugin.appbrand.page.web_renderingcache.h;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.appbrand.task.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class j
 {
@@ -27,60 +28,60 @@ public final class j
         Context localContext = this.val$context;
         AppBrandInitConfigWC localAppBrandInitConfigWC = paramAppBrandInitConfigWC;
         AppBrandStatObject localAppBrandStatObject = paramAppBrandStatObject;
-        localAppBrandInitConfigWC.jDz = bs.eWj();
-        if (com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.f.c(localContext, localAppBrandInitConfigWC, localAppBrandStatObject))
+        localAppBrandInitConfigWC.jXv = bt.flT();
+        if (g.c(localContext, localAppBrandInitConfigWC, localAppBrandStatObject))
         {
           if ((localContext instanceof Activity))
           {
-            localAppBrandInitConfigWC.ccl = localAppBrandStatObject;
-            com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.k.a((Activity)localContext, localAppBrandInitConfigWC, localAppBrandStatObject);
+            localAppBrandInitConfigWC.cmC = localAppBrandStatObject;
+            com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.m.a((Activity)localContext, localAppBrandInitConfigWC, localAppBrandStatObject);
           }
-          ac.i("MicroMsg.AppBrand.AppLaunchLogic", "startAppImpl [applaunch] start functional runtime, config[%s]", new Object[] { localAppBrandInitConfigWC });
+          ad.i("MicroMsg.AppBrand.AppLaunchLogic", "startAppImpl [applaunch] start functional runtime, config[%s]", new Object[] { localAppBrandInitConfigWC });
           AppMethodBeat.o(47118);
           return;
         }
-        if (localAppBrandInitConfigWC.CC())
+        if (localAppBrandInitConfigWC.Eb())
         {
-          localAppBrandInitConfigWC.jDG = null;
+          localAppBrandInitConfigWC.jXC = null;
           if (localAppBrandInitConfigWC.launchMode == 1) {
-            localAppBrandInitConfigWC.jBP = "portrait";
+            localAppBrandInitConfigWC.jVL = "portrait";
           }
         }
         for (;;)
         {
           try
           {
-            int i = com.tencent.mm.plugin.appbrand.task.f.d(localContext, localAppBrandInitConfigWC, localAppBrandStatObject);
+            int i = f.d(localContext, localAppBrandInitConfigWC, localAppBrandStatObject);
             if ((localContext instanceof Activity)) {
-              localAppBrandInitConfigWC.ccl = localAppBrandStatObject;
+              localAppBrandInitConfigWC.cmC = localAppBrandStatObject;
             }
-            ac.i("MicroMsg.AppBrand.AppLaunchLogic", "[applaunch] startAppOnInitConfigGot %s", new Object[] { localAppBrandInitConfigWC });
+            ad.i("MicroMsg.AppBrand.AppLaunchLogic", "[applaunch] startAppOnInitConfigGot %s", new Object[] { localAppBrandInitConfigWC });
             if (i == 1)
             {
-              ac.i("MicroMsg.AppBrand.AppLaunchLogic", "[applaunch] init AppLaunchPrepareProcess boost instance");
-              new k(localAppBrandInitConfigWC, localAppBrandStatObject).bne();
-              m.a(21, localAppBrandInitConfigWC.appId, localAppBrandInitConfigWC.aBM, localAppBrandInitConfigWC.joY, localAppBrandInitConfigWC.CC());
+              ad.i("MicroMsg.AppBrand.AppLaunchLogic", "[applaunch] init AppLaunchPrepareProcess boost instance");
+              new k(localAppBrandInitConfigWC, localAppBrandStatObject).bqQ();
+              com.tencent.mm.plugin.appbrand.m.a(21, localAppBrandInitConfigWC.appId, localAppBrandInitConfigWC.aDD, localAppBrandInitConfigWC.dPf, localAppBrandInitConfigWC.Eb());
             }
             AppMethodBeat.o(47118);
             return;
           }
           catch (AndroidRuntimeException localAndroidRuntimeException)
           {
-            ac.e("MicroMsg.AppBrand.AppLaunchLogic", "startAppImpl re = %s", new Object[] { localAndroidRuntimeException });
+            ad.e("MicroMsg.AppBrand.AppLaunchLogic", "startAppImpl re = %s", new Object[] { localAndroidRuntimeException });
             AppMethodBeat.o(47118);
           }
-          localAppBrandInitConfigWC.jDG = new WebRenderingCacheDirectoryDescriptor();
-          localAppBrandInitConfigWC.jDG.lHe = h.Qf(localAppBrandInitConfigWC.appId);
+          localAppBrandInitConfigWC.jXC = new WebRenderingCacheDirectoryDescriptor();
+          localAppBrandInitConfigWC.jXC.mgQ = h.TK(localAppBrandInitConfigWC.appId);
         }
       }
     };
-    if (ap.isMainThread())
+    if (aq.isMainThread())
     {
       paramContext.run();
       AppMethodBeat.o(47119);
       return;
     }
-    ap.f(paramContext);
+    aq.f(paramContext);
     AppMethodBeat.o(47119);
   }
 }

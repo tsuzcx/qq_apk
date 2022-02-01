@@ -10,7 +10,7 @@ public abstract interface b
   
   public abstract void a(g paramg);
   
-  public abstract g aTE(String paramString);
+  public abstract g aZE(String paramString);
   
   public abstract void b(g paramg);
   
@@ -18,7 +18,7 @@ public abstract interface b
   
   public abstract void d(g paramg);
   
-  public abstract Map<String, Integer> fEt();
+  public abstract Map<String, Integer> fVL();
 }
 
 

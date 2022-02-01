@@ -9,52 +9,52 @@ import java.util.Calendar;
 
 public final class b
 {
-  public a isf;
+  public a iLi;
   
   public b(Context paramContext, e parame)
   {
     AppMethodBeat.i(175330);
-    this.isf = new a(2);
-    this.isf.context = paramContext;
-    this.isf.ish = parame;
+    this.iLi = new a(2);
+    this.iLi.context = paramContext;
+    this.iLi.iLk = parame;
     AppMethodBeat.o(175330);
   }
   
   public final b a(Calendar paramCalendar)
   {
-    this.isf.isn = paramCalendar;
+    this.iLi.iLq = paramCalendar;
     return this;
   }
   
   public final b a(Calendar paramCalendar1, Calendar paramCalendar2)
   {
-    this.isf.iso = paramCalendar1;
-    this.isf.isp = paramCalendar2;
+    this.iLi.iLr = paramCalendar1;
+    this.iLi.iLs = paramCalendar2;
     return this;
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(175331);
-    paramc.b(this.isf);
+    paramc.b(this.iLi);
     AppMethodBeat.o(175331);
   }
   
-  public final b aMK()
+  public final b aPV()
   {
-    this.isf.isk = false;
+    this.iLi.iLn = false;
     return this;
   }
   
   public final b b(boolean[] paramArrayOfBoolean)
   {
-    this.isf.ism = paramArrayOfBoolean;
+    this.iLi.iLp = paramArrayOfBoolean;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.picker.b.b
  * JD-Core Version:    0.7.0.1
  */

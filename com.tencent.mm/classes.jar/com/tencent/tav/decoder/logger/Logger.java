@@ -4,123 +4,119 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class Logger
 {
-  private static boolean DEBUG = false;
-  public static final int MAX_LOG_LENGTH = 4096;
-  private static ILog logger;
+  public static final int NO_LOG = 2147483647;
+  private static int level;
+  private static ILog logProxy;
+  
+  static
+  {
+    AppMethodBeat.i(218467);
+    level = 3;
+    logProxy = new DefaultLogProxy(null);
+    AppMethodBeat.o(218467);
+  }
   
   public static void d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(198062);
-    if (logger != null) {
-      logger.d(paramString1, paramString2);
+    AppMethodBeat.i(218462);
+    if ((logProxy == null) || (level > 3))
+    {
+      AppMethodBeat.o(218462);
+      return;
     }
-    AppMethodBeat.o(198062);
+    logProxy.d(paramString1, paramString2);
+    AppMethodBeat.o(218462);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(198064);
-    if (logger != null) {
-      logger.e(paramString1, paramString2);
+    AppMethodBeat.i(218465);
+    if ((logProxy == null) || (level > 6))
+    {
+      AppMethodBeat.o(218465);
+      return;
     }
-    AppMethodBeat.o(198064);
+    logProxy.e(paramString1, paramString2);
+    AppMethodBeat.o(218465);
   }
   
   public static void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    AppMethodBeat.i(198066);
-    if (logger != null) {
-      logger.e(paramString1, paramString2, paramThrowable);
-    }
-    AppMethodBeat.o(198066);
-  }
-  
-  public static void e(String paramString, Throwable paramThrowable)
-  {
-    AppMethodBeat.i(198065);
-    if (logger != null)
+    AppMethodBeat.i(218466);
+    if ((logProxy == null) || (level > 6))
     {
-      logger.e(paramString, paramThrowable);
-      AppMethodBeat.o(198065);
+      AppMethodBeat.o(218466);
       return;
     }
-    if (DEBUG) {
-      new StringBuilder().append(paramThrowable.getMessage());
-    }
-    AppMethodBeat.o(198065);
+    logProxy.e(paramString1, paramString2, paramThrowable);
+    AppMethodBeat.o(218466);
   }
   
-  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
+  public static void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(198063);
-    if (logger != null)
+    AppMethodBeat.i(218463);
+    if ((logProxy == null) || (level > 4))
     {
-      logger.i(paramString1, paramString2, paramVarArgs);
-      AppMethodBeat.o(198063);
+      AppMethodBeat.o(218463);
       return;
     }
-    if (DEBUG) {
-      String.format(paramString2, paramVarArgs);
-    }
-    AppMethodBeat.o(198063);
+    logProxy.i(paramString1, paramString2);
+    AppMethodBeat.o(218463);
   }
   
-  public static void longlogd(String paramString1, String paramString2)
+  public static void setLevel(int paramInt)
   {
-    AppMethodBeat.i(198069);
-    int m = paramString2.length();
-    int i = 4096;
-    int j = 0;
-    int k = 0;
-    while (j < 100) {
-      if (m > i)
-      {
-        d(paramString1 + j, paramString2.substring(k, i));
-        j += 1;
-        k = i;
-        i += 4096;
-      }
-      else
-      {
-        d(paramString1, paramString2.substring(k, m));
-        AppMethodBeat.o(198069);
-        return;
-      }
-    }
-    AppMethodBeat.o(198069);
+    level = paramInt;
   }
   
-  public static void setLogAble(boolean paramBoolean)
+  public static void setLogProxy(ILog paramILog)
   {
-    DEBUG = paramBoolean;
-  }
-  
-  public static void setLogger(ILog paramILog)
-  {
-    logger = paramILog;
+    logProxy = paramILog;
   }
   
   public static void v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(198067);
-    if (logger != null) {
-      logger.v(paramString1, paramString2);
+    AppMethodBeat.i(218461);
+    if ((logProxy == null) || (level > 2))
+    {
+      AppMethodBeat.o(218461);
+      return;
     }
-    AppMethodBeat.o(198067);
+    logProxy.v(paramString1, paramString2);
+    AppMethodBeat.o(218461);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(198068);
-    if (logger != null) {
-      logger.w(paramString1, paramString2);
+    AppMethodBeat.i(218464);
+    if ((logProxy == null) || (level > 5))
+    {
+      AppMethodBeat.o(218464);
+      return;
     }
-    AppMethodBeat.o(198068);
+    logProxy.w(paramString1, paramString2);
+    AppMethodBeat.o(218464);
+  }
+  
+  static class DefaultLogProxy
+    implements ILog
+  {
+    public void d(String paramString1, String paramString2) {}
+    
+    public void e(String paramString1, String paramString2) {}
+    
+    public void e(String paramString1, String paramString2, Throwable paramThrowable) {}
+    
+    public void i(String paramString1, String paramString2) {}
+    
+    public void v(String paramString1, String paramString2) {}
+    
+    public void w(String paramString1, String paramString2) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.decoder.logger.Logger
  * JD-Core Version:    0.7.0.1
  */

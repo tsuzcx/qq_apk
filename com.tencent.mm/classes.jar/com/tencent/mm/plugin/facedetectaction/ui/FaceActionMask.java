@@ -15,23 +15,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class FaceActionMask
   extends RelativeLayout
 {
-  private Paint qFZ;
-  private Paint qGa;
-  private PorterDuffXfermode qGb;
-  private boolean qGc;
   private Rect rect;
+  private Paint rpS;
+  private Paint rpT;
+  private PorterDuffXfermode rpU;
+  private boolean rpV;
   
   public FaceActionMask(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(104229);
     this.rect = new Rect();
-    this.qGc = false;
-    this.qFZ = new Paint(1);
-    this.qFZ.setStyle(Paint.Style.FILL);
-    this.qGa = new Paint(1);
+    this.rpV = false;
+    this.rpS = new Paint(1);
+    this.rpS.setStyle(Paint.Style.FILL);
+    this.rpT = new Paint(1);
     setWillNotDraw(false);
-    this.qGb = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    this.rpU = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
     setLayerType(1, null);
     AppMethodBeat.o(104229);
   }
@@ -47,14 +47,14 @@ public class FaceActionMask
     this.rect.right = getWidth();
     this.rect.top = 0;
     this.rect.bottom = getHeight();
-    this.qFZ.setColor(getContext().getResources().getColor(2131101179));
+    this.rpS.setColor(getContext().getResources().getColor(2131101179));
     paramCanvas.drawARGB(255, 0, 0, 0);
-    paramCanvas.drawRect(this.rect, this.qFZ);
-    if (!this.qGc)
+    paramCanvas.drawRect(this.rect, this.rpS);
+    if (!this.rpV)
     {
-      this.qGa.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.qGa.setXfermode(this.qGb);
-      paramCanvas.drawCircle(f2, f3, f1, this.qGa);
+      this.rpT.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.rpT.setXfermode(this.rpU);
+      paramCanvas.drawCircle(f2, f3, f1, this.rpT);
     }
     paramCanvas.restore();
     AppMethodBeat.o(104230);
@@ -62,7 +62,7 @@ public class FaceActionMask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.ui.FaceActionMask
  * JD-Core Version:    0.7.0.1
  */

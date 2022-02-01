@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fingerprint.d;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mm.g.a.nv;
+import com.tencent.mm.g.a.od;
 import com.tencent.mm.plugin.fingerprint.b.a.i;
 import java.util.Map;
 
@@ -13,51 +13,51 @@ public abstract interface a
   
   public abstract int a(c paramc, boolean paramBoolean);
   
-  public abstract void a(nv paramnv, int paramInt);
+  public abstract void a(od paramod, int paramInt);
   
-  public abstract void a(nv paramnv, int paramInt, String paramString);
+  public abstract void a(od paramod, int paramInt, String paramString);
   
   public abstract void a(i parami);
   
   public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle);
   
-  public abstract void cGY();
+  public abstract boolean cPA();
   
-  public abstract boolean cGZ();
+  public abstract boolean cPB();
   
-  public abstract boolean cHa();
+  public abstract boolean cPC();
   
-  public abstract boolean cHb();
+  public abstract void cPn();
   
-  public abstract boolean cHc();
+  public abstract boolean cPo();
   
-  public abstract String cHd();
+  public abstract boolean cPp();
   
-  public abstract boolean cHe();
+  public abstract boolean cPq();
   
-  public abstract boolean cHf();
+  public abstract boolean cPr();
   
-  public abstract void cHg();
+  public abstract String cPs();
   
-  public abstract boolean cHh();
+  public abstract boolean cPt();
   
-  public abstract boolean cHi();
+  public abstract boolean cPu();
   
-  public abstract Map<String, String> cHj();
+  public abstract void cPv();
   
-  public abstract Map<String, String> cHk();
+  public abstract boolean cPw();
   
-  public abstract boolean cHl();
+  public abstract boolean cPx();
   
-  public abstract boolean cHm();
+  public abstract Map<String, String> cPy();
   
-  public abstract boolean cHn();
+  public abstract Map<String, String> cPz();
   
-  public abstract void eY(Context paramContext);
+  public abstract void fb(Context paramContext);
   
-  public abstract void mh(boolean paramBoolean);
+  public abstract void my(boolean paramBoolean);
   
-  public abstract void mi(boolean paramBoolean);
+  public abstract void mz(boolean paramBoolean);
   
   public abstract int type();
   

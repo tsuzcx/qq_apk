@@ -10,121 +10,121 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 
 public final class e
 {
-  private ImageView dkL;
-  private MMActivity nTt;
-  View nZH;
-  b nZI;
-  protected LinearLayout nZJ;
-  protected LinearLayout nZK;
-  private TextView nZL;
+  private ImageView dwy;
+  View oDb;
+  b oDc;
+  protected LinearLayout oDd;
+  protected LinearLayout oDe;
+  private TextView oDf;
+  private MMActivity owO;
   
   public e(MMActivity paramMMActivity)
   {
-    this.nTt = paramMMActivity;
+    this.owO = paramMMActivity;
   }
   
-  private void bQY()
+  private void bVD()
   {
     AppMethodBeat.i(113085);
-    this.nZJ.setVisibility(8);
-    this.nZK.setVisibility(8);
+    this.oDd.setVisibility(8);
+    this.oDe.setVisibility(8);
     AppMethodBeat.o(113085);
   }
   
-  private void bRb()
+  private void bVG()
   {
     AppMethodBeat.i(113088);
-    this.nZJ.setVisibility(8);
-    this.nZK.setVisibility(8);
+    this.oDd.setVisibility(8);
+    this.oDe.setVisibility(8);
     AppMethodBeat.o(113088);
   }
   
-  public final void bQX()
+  public final void bVC()
   {
     AppMethodBeat.i(113084);
-    if (this.nZH == null)
+    if (this.oDb == null)
     {
-      this.nZH = View.inflate(this.nTt, 2131493327, null);
-      this.dkL = ((ImageView)this.nZH.findViewById(2131296594));
-      this.nZL = ((TextView)this.nZH.findViewById(2131304789));
-      this.nZJ = ((LinearLayout)this.nZH.findViewById(2131301504));
-      this.nZK = ((LinearLayout)this.nZH.findViewById(2131301499));
-      this.nZJ.setVisibility(8);
-      this.nZK.setVisibility(8);
+      this.oDb = View.inflate(this.owO, 2131493327, null);
+      this.dwy = ((ImageView)this.oDb.findViewById(2131296594));
+      this.oDf = ((TextView)this.oDb.findViewById(2131304789));
+      this.oDd = ((LinearLayout)this.oDb.findViewById(2131301504));
+      this.oDe = ((LinearLayout)this.oDb.findViewById(2131301499));
+      this.oDd.setVisibility(8);
+      this.oDe.setVisibility(8);
       RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
       localRotateAnimation.setDuration(1000L);
       localRotateAnimation.setRepeatCount(-1);
       localRotateAnimation.setInterpolator(new LinearInterpolator());
-      this.dkL.startAnimation(localRotateAnimation);
+      this.dwy.startAnimation(localRotateAnimation);
     }
-    cL();
+    updateView();
     AppMethodBeat.o(113084);
   }
   
-  public final void bQZ()
+  public final void bVE()
   {
     AppMethodBeat.i(113086);
-    this.nZJ.setVisibility(0);
-    this.nZK.setVisibility(8);
+    this.oDd.setVisibility(0);
+    this.oDe.setVisibility(8);
     AppMethodBeat.o(113086);
   }
   
-  public final void bRa()
+  public final void bVF()
   {
     AppMethodBeat.i(113087);
-    this.nZJ.setVisibility(8);
+    this.oDd.setVisibility(8);
     AppMethodBeat.o(113087);
   }
   
-  public final void bRc()
+  public final void bVH()
   {
     AppMethodBeat.i(113089);
-    bRb();
-    this.nZL.setVisibility(8);
+    bVG();
+    this.oDf.setVisibility(8);
     AppMethodBeat.o(113089);
   }
   
-  public final void cL()
+  public final void updateView()
   {
     AppMethodBeat.i(113090);
-    Integer localInteger2 = (Integer)am.bQn().getValue("key_share_card_show_type");
+    Integer localInteger2 = (Integer)am.bUS().getValue("key_share_card_show_type");
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
       localInteger1 = Integer.valueOf(0);
     }
-    if ((this.nZI != null) && (b.bQQ()) && ((localInteger1.intValue() == 1) || (localInteger1.intValue() == 4)) && (b.bQN()))
+    if ((this.oDc != null) && (b.bVv()) && ((localInteger1.intValue() == 1) || (localInteger1.intValue() == 4)) && (b.bVs()))
     {
-      this.nZL.setVisibility(0);
-      bRb();
+      this.oDf.setVisibility(0);
+      bVG();
     }
     do
     {
       AppMethodBeat.o(113090);
       return;
-      this.nZL.setVisibility(8);
-      if (this.nZI == null) {
+      this.oDf.setVisibility(8);
+      if (this.oDc == null) {
         break;
       }
-      ac.d("MicroMsg.ShareCardFooterController", "updateView isLocalEnd %s isOtherEnd %s ", new Object[] { Boolean.valueOf(b.bQQ()), Boolean.valueOf(b.bQR()) });
-      if ((!b.bQQ()) || (!b.bQR()))
+      ad.d("MicroMsg.ShareCardFooterController", "updateView isLocalEnd %s isOtherEnd %s ", new Object[] { Boolean.valueOf(b.bVv()), Boolean.valueOf(b.bVw()) });
+      if ((!b.bVv()) || (!b.bVw()))
       {
-        bQZ();
+        bVE();
         AppMethodBeat.o(113090);
         return;
       }
-    } while ((!b.bQQ()) || (!b.bQR()));
-    bQY();
+    } while ((!b.bVv()) || (!b.bVw()));
+    bVD();
     AppMethodBeat.o(113090);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.e
  * JD-Core Version:    0.7.0.1
  */

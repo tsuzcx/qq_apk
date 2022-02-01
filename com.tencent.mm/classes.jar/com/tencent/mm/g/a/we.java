@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class we
   extends b
 {
-  public a dzc;
-  public b dzd;
+  public a dKy;
   
   public we()
   {
@@ -16,27 +15,22 @@ public final class we
   
   private we(byte paramByte)
   {
-    AppMethodBeat.i(116054);
-    this.dzc = new a();
-    this.dzd = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(149890);
+    this.dKy = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116054);
+    AppMethodBeat.o(149890);
   }
   
   public static final class a
   {
-    public String id;
-  }
-  
-  public static final class b
-  {
-    public boolean dze;
+    public String dKz;
+    public int drI = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.we
  * JD-Core Version:    0.7.0.1
  */

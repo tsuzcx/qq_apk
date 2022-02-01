@@ -1,23 +1,16 @@
 package com.tencent.mm.model;
 
-import android.os.Bundle;
-import android.os.Looper;
-import com.tencent.mm.storage.bo;
-import java.util.List;
+import android.app.Notification;
 
 public abstract interface at
 {
-  public abstract void M(List<bo> paramList);
+  public abstract void cancel(int paramInt);
   
-  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle);
-  
-  public abstract void a(bo parambo);
-  
-  public abstract Looper getLooper();
+  public abstract void notify(int paramInt, Notification paramNotification);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.model.at
  * JD-Core Version:    0.7.0.1
  */

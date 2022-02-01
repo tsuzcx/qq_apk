@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class yw
   extends b
 {
-  public a dCN;
+  public a dNS;
   
   public yw()
   {
@@ -15,21 +15,21 @@ public final class yw
   
   private yw(byte paramByte)
   {
-    AppMethodBeat.i(149896);
-    this.dCN = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(91232);
+    this.dNS = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(149896);
+    AppMethodBeat.o(91232);
   }
   
   public static final class a
   {
-    public boolean success = false;
+    public int result;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.yw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.performance.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -11,58 +11,58 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public enum a
   implements c
 {
-  private List<c> vAd;
-  private Map<Class<? extends c>, c> vAe;
+  private List<c> wGo;
+  private Map<Class<? extends c>, c> wGp;
   
   static
   {
     AppMethodBeat.i(145998);
-    vAc = new a("INSTANCE");
-    vAf = new a[] { vAc };
+    wGn = new a("INSTANCE");
+    wGq = new a[] { wGn };
     AppMethodBeat.o(145998);
   }
   
   private a()
   {
     AppMethodBeat.i(145994);
-    this.vAd = new CopyOnWriteArrayList();
-    this.vAe = new ConcurrentHashMap();
+    this.wGo = new CopyOnWriteArrayList();
+    this.wGp = new ConcurrentHashMap();
     AppMethodBeat.o(145994);
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(145995);
-    if (this.vAe.containsKey(paramc.getClass()))
+    if (this.wGp.containsKey(paramc.getClass()))
     {
       AppMethodBeat.o(145995);
       return;
     }
-    this.vAd.add(paramc);
-    this.vAe.put(paramc.getClass(), paramc);
+    this.wGo.add(paramc);
+    this.wGp.put(paramc.getClass(), paramc);
     AppMethodBeat.o(145995);
   }
   
   public final <T extends c> T aR(Class<T> paramClass)
   {
     AppMethodBeat.i(145996);
-    paramClass = (c)this.vAe.get(paramClass);
+    paramClass = (c)this.wGp.get(paramClass);
     AppMethodBeat.o(145996);
     return paramClass;
   }
   
-  public final void ap(Map<String, String> paramMap)
+  public final void au(Map<String, String> paramMap)
   {
     AppMethodBeat.i(145997);
-    if (!paramMap.containsKey(".cmd.diagnostic"))
+    if ((paramMap == null) || (!paramMap.containsKey(".cmd.diagnostic")))
     {
-      ac.d("MicroMsg.DiagnosticManager", "just ignore other ipxx cmd");
+      ad.d("MicroMsg.DiagnosticManager", "just ignore other ipxx cmd");
       AppMethodBeat.o(145997);
       return;
     }
-    Iterator localIterator = this.vAd.iterator();
+    Iterator localIterator = this.wGo.iterator();
     while (localIterator.hasNext()) {
-      ((c)localIterator.next()).ap(paramMap);
+      ((c)localIterator.next()).au(paramMap);
     }
     AppMethodBeat.o(145997);
   }

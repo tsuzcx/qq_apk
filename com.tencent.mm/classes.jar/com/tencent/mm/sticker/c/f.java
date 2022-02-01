@@ -2,12 +2,12 @@ package com.tencent.mm.sticker.c;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"KEY_DATA", "", "KEY_ERR_TYPE", "KEY_RESULT", "TAG", "plugin-sticker_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"KEY_DATA", "", "KEY_ERR_TYPE", "KEY_RESULT", "TAG", "plugin-sticker_release"})
 public final class f
 {
-  private static final String GBp = "data";
-  private static final String GBq = "err_type";
-  private static final String GBr = "result";
+  private static final String Inj = "data";
+  private static final String Ink = "err_type";
+  private static final String Inl = "result";
   private static final String TAG = "MicroMsg.GetLensInfoTask";
 }
 

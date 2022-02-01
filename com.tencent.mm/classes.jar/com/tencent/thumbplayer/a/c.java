@@ -6,6 +6,7 @@ import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.thumbplayer.b.k;
 import com.tencent.thumbplayer.b.n;
+import com.tencent.thumbplayer.utils.d;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,49 +17,49 @@ import java.util.Set;
 
 public final class c
 {
-  private Map<String, d> Kcl;
-  Map<String, a> Kcm;
-  ArrayList<c> Kcn;
-  private Map<Integer, com.tencent.thumbplayer.b.f> Kco;
-  public f Kcp;
-  public b Kcq;
-  public boolean Kcr;
-  public float Kcs;
-  public float Kct;
-  public Map<Integer, n> Kcu;
-  ArrayList<n> Kcv;
-  k Kcw;
+  private Map<String, d> LWh;
+  Map<String, a> LWi;
+  ArrayList<c> LWj;
+  private Map<Integer, com.tencent.thumbplayer.b.f> LWk;
+  public f LWl;
+  public b LWm;
+  public boolean LWn;
+  public float LWo;
+  public float LWp;
+  public Map<Integer, n> LWq;
+  ArrayList<n> LWr;
+  k LWs;
   public Surface mSurface;
   int trackId;
   
   public c()
   {
-    AppMethodBeat.i(187520);
+    AppMethodBeat.i(191541);
     this.trackId = -1;
-    this.Kcl = new HashMap(0);
-    this.Kcm = new HashMap(0);
-    this.Kcp = new f();
-    this.Kco = new HashMap(0);
-    this.Kcu = new HashMap(0);
-    this.Kcv = new ArrayList();
-    this.Kcn = new ArrayList();
-    AppMethodBeat.o(187520);
+    this.LWh = new HashMap(0);
+    this.LWi = new HashMap(0);
+    this.LWl = new f();
+    this.LWk = new HashMap(0);
+    this.LWq = new HashMap(0);
+    this.LWr = new ArrayList();
+    this.LWj = new ArrayList();
+    AppMethodBeat.o(191541);
   }
   
   public final void a(int paramInt, long paramLong, n paramn)
   {
-    AppMethodBeat.i(187528);
-    this.Kcu.put(Integer.valueOf(paramn.trackType), paramn);
-    if ((paramInt < 0) || (paramInt >= this.Kcv.size()))
+    AppMethodBeat.i(191549);
+    this.LWq.put(Integer.valueOf(paramn.trackType), paramn);
+    if ((paramInt < 0) || (paramInt >= this.LWr.size()))
     {
-      com.tencent.thumbplayer.utils.f.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.Kcv.size());
-      AppMethodBeat.o(187528);
+      d.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.LWr.size());
+      AppMethodBeat.o(191549);
       return;
     }
     c localc = new c();
     localc.trackIndex = paramInt;
-    localc.KcB = paramLong;
-    Iterator localIterator = this.Kcv.iterator();
+    localc.LWx = paramLong;
+    Iterator localIterator = this.LWr.iterator();
     while (localIterator.hasNext())
     {
       n localn = (n)localIterator.next();
@@ -66,7 +67,7 @@ public final class c
         if (((TextUtils.isEmpty(localn.name)) && (TextUtils.isEmpty(paramn.name))) || (localn.name.equals(paramn.name)))
         {
           localn.isSelected = true;
-          localc.KcC = localn;
+          localc.LWy = localn;
         }
         else
         {
@@ -74,21 +75,21 @@ public final class c
         }
       }
     }
-    this.Kcn.add(localc);
-    AppMethodBeat.o(187528);
+    this.LWj.add(localc);
+    AppMethodBeat.o(191549);
   }
   
   public final void a(int paramInt, n paramn)
   {
-    AppMethodBeat.i(187529);
-    this.Kcu.remove(Integer.valueOf(paramn.trackType));
-    if ((paramInt < 0) || (paramInt >= this.Kcv.size()))
+    AppMethodBeat.i(191550);
+    this.LWq.remove(Integer.valueOf(paramn.trackType));
+    if ((paramInt < 0) || (paramInt >= this.LWr.size()))
     {
-      com.tencent.thumbplayer.utils.f.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.Kcv.size());
-      AppMethodBeat.o(187529);
+      d.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.LWr.size());
+      AppMethodBeat.o(191550);
       return;
     }
-    Iterator localIterator = this.Kcv.iterator();
+    Iterator localIterator = this.LWr.iterator();
     Object localObject;
     while (localIterator.hasNext())
     {
@@ -97,66 +98,66 @@ public final class c
         ((n)localObject).isSelected = false;
       }
     }
-    localIterator = this.Kcn.iterator();
+    localIterator = this.LWj.iterator();
     while (localIterator.hasNext())
     {
       localObject = (c)localIterator.next();
-      if ((((c)localObject).KcC != null) && (((c)localObject).KcC.equals(paramn)))
+      if ((((c)localObject).LWy != null) && (((c)localObject).LWy.equals(paramn)))
       {
-        this.Kcn.remove(localObject);
-        AppMethodBeat.o(187529);
+        this.LWj.remove(localObject);
+        AppMethodBeat.o(191550);
         return;
       }
     }
-    AppMethodBeat.o(187529);
+    AppMethodBeat.o(191550);
   }
   
   public final void a(com.tencent.thumbplayer.b.f paramf)
   {
-    AppMethodBeat.i(187522);
+    AppMethodBeat.i(191543);
     if (paramf != null) {
-      this.Kco.put(Integer.valueOf(paramf.key), paramf);
+      this.LWk.put(Integer.valueOf(paramf.key), paramf);
     }
-    AppMethodBeat.o(187522);
+    AppMethodBeat.o(191543);
   }
   
-  public final com.tencent.thumbplayer.b.f aev(int paramInt)
+  public final com.tencent.thumbplayer.b.f agV(int paramInt)
   {
-    AppMethodBeat.i(187535);
-    com.tencent.thumbplayer.b.f localf = (com.tencent.thumbplayer.b.f)this.Kco.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(187535);
+    AppMethodBeat.i(191556);
+    com.tencent.thumbplayer.b.f localf = (com.tencent.thumbplayer.b.f)this.LWk.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(191556);
     return localf;
   }
   
   public final void b(ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    AppMethodBeat.i(187527);
-    f localf = this.Kcp;
+    AppMethodBeat.i(191548);
+    f localf = this.LWl;
     localf.mUrl = null;
     localf.mType = 1;
     localf.mHttpHeaders.clear();
-    localf.KcZ = paramParcelFileDescriptor;
-    AppMethodBeat.o(187527);
+    localf.LWV = paramParcelFileDescriptor;
+    AppMethodBeat.o(191548);
   }
   
-  public final void bb(String paramString1, String paramString2, String paramString3)
+  public final void bk(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(187530);
+    AppMethodBeat.i(191551);
     if (TextUtils.isEmpty(paramString1))
     {
-      AppMethodBeat.o(187530);
+      AppMethodBeat.o(191551);
       return;
     }
     if (TextUtils.isEmpty(paramString3))
     {
-      AppMethodBeat.o(187530);
+      AppMethodBeat.o(191551);
       return;
     }
     d locald = new d();
     locald.url = paramString1;
     locald.mimeType = paramString2;
     locald.name = paramString3;
-    this.Kcl.put(paramString1, locald);
+    this.LWh.put(paramString1, locald);
     this.trackId += 1;
     paramString1 = new n();
     paramString1.trackType = 3;
@@ -164,107 +165,107 @@ public final class c
     paramString1.isSelected = false;
     paramString1.isExclusive = true;
     paramString1.isInternal = false;
-    this.Kcv.add(paramString1);
-    AppMethodBeat.o(187530);
+    this.LWr.add(paramString1);
+    AppMethodBeat.o(191551);
   }
   
   public final void c(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(187524);
-    if (this.Kcq == null) {
-      this.Kcq = new b();
+    AppMethodBeat.i(191545);
+    if (this.LWm == null) {
+      this.LWm = new b();
     }
-    this.Kcq.Kcy = paramBoolean;
-    this.Kcq.Kcz = paramLong1;
-    this.Kcq.KcA = paramLong2;
-    AppMethodBeat.o(187524);
+    this.LWm.LWu = paramBoolean;
+    this.LWm.LWv = paramLong1;
+    this.LWm.LWw = paramLong2;
+    AppMethodBeat.o(191545);
   }
   
-  public final boolean fEK()
+  public final boolean fWc()
   {
-    AppMethodBeat.i(187531);
-    if (this.Kcp != null)
+    AppMethodBeat.i(191552);
+    if (this.LWl != null)
     {
-      f localf = this.Kcp;
-      if ((!TextUtils.isEmpty(localf.mUrl)) || (localf.KcZ != null) || (localf.Kda != null)) {}
+      f localf = this.LWl;
+      if ((!TextUtils.isEmpty(localf.mUrl)) || (localf.LWV != null) || (localf.LWW != null)) {}
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(187531);
+        AppMethodBeat.o(191552);
         return true;
       }
     }
-    AppMethodBeat.o(187531);
+    AppMethodBeat.o(191552);
     return false;
   }
   
-  public final List<d> fEL()
+  public final List<d> fWd()
   {
-    AppMethodBeat.i(187532);
-    ArrayList localArrayList = new ArrayList(this.Kcl.size());
-    Iterator localIterator = this.Kcl.entrySet().iterator();
+    AppMethodBeat.i(191553);
+    ArrayList localArrayList = new ArrayList(this.LWh.size());
+    Iterator localIterator = this.LWh.entrySet().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((Map.Entry)localIterator.next()).getValue());
     }
-    AppMethodBeat.o(187532);
+    AppMethodBeat.o(191553);
     return localArrayList;
   }
   
-  public final List<a> fEM()
+  public final List<a> fWe()
   {
-    AppMethodBeat.i(187533);
-    ArrayList localArrayList = new ArrayList(this.Kcm.size());
-    Iterator localIterator = this.Kcm.entrySet().iterator();
+    AppMethodBeat.i(191554);
+    ArrayList localArrayList = new ArrayList(this.LWi.size());
+    Iterator localIterator = this.LWi.entrySet().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((Map.Entry)localIterator.next()).getValue());
     }
-    AppMethodBeat.o(187533);
+    AppMethodBeat.o(191554);
     return localArrayList;
   }
   
-  public final List<com.tencent.thumbplayer.b.f> fEN()
+  public final List<com.tencent.thumbplayer.b.f> fWf()
   {
-    AppMethodBeat.i(187534);
-    ArrayList localArrayList = new ArrayList(this.Kco.size());
-    Iterator localIterator = this.Kco.entrySet().iterator();
+    AppMethodBeat.i(191555);
+    ArrayList localArrayList = new ArrayList(this.LWk.size());
+    Iterator localIterator = this.LWk.entrySet().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((Map.Entry)localIterator.next()).getValue());
     }
-    AppMethodBeat.o(187534);
+    AppMethodBeat.o(191555);
     return localArrayList;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(187521);
-    this.Kcl.clear();
-    this.Kcm.clear();
-    this.Kcr = false;
-    this.Kcs = 1.0F;
-    this.Kct = 1.0F;
-    this.Kcu.clear();
+    AppMethodBeat.i(191542);
+    this.LWh.clear();
+    this.LWi.clear();
+    this.LWn = false;
+    this.LWo = 1.0F;
+    this.LWp = 1.0F;
+    this.LWq.clear();
     this.mSurface = null;
-    this.Kco.clear();
-    this.Kcp = new f();
-    this.Kcq = null;
-    this.Kcw = null;
+    this.LWk.clear();
+    this.LWl = new f();
+    this.LWm = null;
+    this.LWs = null;
     this.trackId = -1;
-    this.Kcv.clear();
-    this.Kcn.clear();
-    AppMethodBeat.o(187521);
+    this.LWr.clear();
+    this.LWj.clear();
+    AppMethodBeat.o(191542);
   }
   
   public final void setDataSource(String paramString)
   {
-    AppMethodBeat.i(187525);
-    this.Kcp.setUrl(paramString);
-    AppMethodBeat.o(187525);
+    AppMethodBeat.i(191546);
+    this.LWl.setUrl(paramString);
+    AppMethodBeat.o(191546);
   }
   
   public final void setDataSource(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(187526);
-    this.Kcp.setUrl(paramString);
-    paramString = this.Kcp;
+    AppMethodBeat.i(191547);
+    this.LWl.setUrl(paramString);
+    paramString = this.LWl;
     paramString.mHttpHeaders.clear();
     Map localMap = paramString.mHttpHeaders;
     paramString = paramMap;
@@ -272,39 +273,39 @@ public final class c
       paramString = new HashMap(0);
     }
     localMap.putAll(paramString);
-    AppMethodBeat.o(187526);
+    AppMethodBeat.o(191547);
   }
   
-  public final void yI(boolean paramBoolean)
+  public final void zv(boolean paramBoolean)
   {
-    AppMethodBeat.i(187523);
-    if (this.Kcq == null) {
-      this.Kcq = new b();
+    AppMethodBeat.i(191544);
+    if (this.LWm == null) {
+      this.LWm = new b();
     }
-    this.Kcq.Kcy = paramBoolean;
-    this.Kcq.Kcz = 0L;
-    this.Kcq.KcA = -1L;
-    AppMethodBeat.o(187523);
+    this.LWm.LWu = paramBoolean;
+    this.LWm.LWv = 0L;
+    this.LWm.LWw = -1L;
+    AppMethodBeat.o(191544);
   }
   
   public static final class a
   {
-    public List<com.tencent.thumbplayer.b.f> Kcx;
+    public List<com.tencent.thumbplayer.b.f> LWt;
     public String name;
     public String url;
   }
   
   public static final class b
   {
-    public long KcA;
-    public boolean Kcy;
-    public long Kcz;
+    public boolean LWu;
+    public long LWv;
+    public long LWw;
   }
   
   public static final class c
   {
-    public long KcB;
-    public n KcC;
+    public long LWx;
+    public n LWy;
     public int trackIndex;
   }
   
@@ -317,7 +318,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.a.c
  * JD-Core Version:    0.7.0.1
  */

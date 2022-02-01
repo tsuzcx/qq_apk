@@ -2,7 +2,8 @@ package d.l.b.a.b.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
+import d.g.b.q;
 import d.l.b.a.b.b.y;
 import d.l.b.a.b.m.ab;
 import d.l.b.a.b.m.aj;
@@ -13,12 +14,12 @@ import java.util.List;
 
 public final class h
 {
-  public static final h LFu;
+  public static final h Nws;
   
   static
   {
     AppMethodBeat.i(60059);
-    LFu = new h();
+    Nws = new h();
     AppMethodBeat.o(60059);
   }
   
@@ -31,7 +32,7 @@ public final class h
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = ((Iterator)localObject1).next();
-      localObject2 = ((h)this).fq(localObject2);
+      localObject2 = ((h)this).fs(localObject2);
       if (localObject2 != null) {
         paramList.add(localObject2);
       }
@@ -44,14 +45,14 @@ public final class h
   public static b a(List<? extends g<?>> paramList, ab paramab)
   {
     AppMethodBeat.i(60056);
-    k.h(paramList, "value");
-    k.h(paramab, "type");
+    p.h(paramList, "value");
+    p.h(paramab, "type");
     paramList = new b(paramList, (d.g.a.b)new a(paramab));
     AppMethodBeat.o(60056);
     return paramList;
   }
   
-  public final g<?> fq(Object paramObject)
+  public final g<?> fs(Object paramObject)
   {
     AppMethodBeat.i(60057);
     if ((paramObject instanceof Byte))
@@ -110,49 +111,49 @@ public final class h
     }
     if ((paramObject instanceof byte[]))
     {
-      paramObject = (g)a(d.a.e.cQ((byte[])paramObject), d.l.b.a.b.a.h.LaO);
+      paramObject = (g)a(d.a.e.cW((byte[])paramObject), d.l.b.a.b.a.h.MRJ);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof short[]))
     {
-      paramObject = (g)a(d.a.e.b((short[])paramObject), d.l.b.a.b.a.h.LaP);
+      paramObject = (g)a(d.a.e.b((short[])paramObject), d.l.b.a.b.a.h.MRK);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof int[]))
     {
-      paramObject = (g)a(d.a.e.P((int[])paramObject), d.l.b.a.b.a.h.LaQ);
+      paramObject = (g)a(d.a.e.P((int[])paramObject), d.l.b.a.b.a.h.MRL);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof long[]))
     {
-      paramObject = (g)a(d.a.e.f((long[])paramObject), d.l.b.a.b.a.h.LaS);
+      paramObject = (g)a(d.a.e.f((long[])paramObject), d.l.b.a.b.a.h.MRN);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof char[]))
     {
-      paramObject = (g)a(d.a.e.d((char[])paramObject), d.l.b.a.b.a.h.LaN);
+      paramObject = (g)a(d.a.e.d((char[])paramObject), d.l.b.a.b.a.h.MRI);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof float[]))
     {
-      paramObject = (g)a(d.a.e.s((float[])paramObject), d.l.b.a.b.a.h.LaR);
+      paramObject = (g)a(d.a.e.s((float[])paramObject), d.l.b.a.b.a.h.MRM);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof double[]))
     {
-      paramObject = (g)a(d.a.e.d((double[])paramObject), d.l.b.a.b.a.h.LaT);
+      paramObject = (g)a(d.a.e.d((double[])paramObject), d.l.b.a.b.a.h.MRO);
       AppMethodBeat.o(60057);
       return paramObject;
     }
     if ((paramObject instanceof boolean[]))
     {
-      paramObject = (g)a(d.a.e.d((boolean[])paramObject), d.l.b.a.b.a.h.LaM);
+      paramObject = (g)a(d.a.e.d((boolean[])paramObject), d.l.b.a.b.a.h.MRH);
       AppMethodBeat.o(60057);
       return paramObject;
     }
@@ -167,7 +168,7 @@ public final class h
   }
   
   static final class a
-    extends d.g.b.l
+    extends q
     implements d.g.a.b<y, ab>
   {
     a(ab paramab)
@@ -177,7 +178,7 @@ public final class h
   }
   
   static final class b
-    extends d.g.b.l
+    extends q
     implements d.g.a.b<y, aj>
   {
     b(d.l.b.a.b.a.h paramh)
@@ -188,7 +189,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.b.h
  * JD-Core Version:    0.7.0.1
  */

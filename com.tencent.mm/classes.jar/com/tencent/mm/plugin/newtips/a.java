@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.newtips;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cc;
+import com.tencent.mm.model.cd;
 import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.plugin.messenger.foundation.a.r;
 import com.tencent.mm.plugin.newtips.a.i;
 import com.tencent.mm.plugin.newtips.a.l;
 import com.tencent.mm.plugin.newtips.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
@@ -18,25 +18,19 @@ public final class a
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.c
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private static a vmD;
-  private i vmE;
-  private b vmF;
-  private com.tencent.mm.plugin.newtips.b.d vmG;
-  private com.tencent.mm.plugin.newtips.a.e vmH;
-  private l vmI;
+  private static a wrV;
+  private i wrW;
+  private b wrX;
+  private com.tencent.mm.plugin.newtips.b.d wrY;
+  private com.tencent.mm.plugin.newtips.a.e wrZ;
+  private l wsa;
   
   static
   {
     AppMethodBeat.i(127207);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("NEWTIPSCOMPAT_TABLE".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        return b.SQL_CREATE;
-      }
-    });
+    localHashMap.put(Integer.valueOf("NEWTIPSCOMPAT_TABLE".hashCode()), new a.1());
     baseDBFactories.put(Integer.valueOf("NEWTIPS_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
@@ -51,91 +45,91 @@ public final class a
   {
     super(c.class);
     AppMethodBeat.i(127199);
-    this.vmE = null;
-    this.vmF = null;
-    this.vmG = null;
-    this.vmH = null;
-    this.vmI = new l();
+    this.wrW = null;
+    this.wrX = null;
+    this.wrY = null;
+    this.wrZ = null;
+    this.wsa = new l();
     AppMethodBeat.o(127199);
   }
   
-  public static a djZ()
+  public static a dul()
   {
     try
     {
       AppMethodBeat.i(127200);
-      if (vmD == null) {
-        vmD = new a();
+      if (wrV == null) {
+        wrV = new a();
       }
-      a locala = vmD;
+      a locala = wrV;
       AppMethodBeat.o(127200);
       return locala;
     }
     finally {}
   }
   
-  public static l dka()
+  public static l dum()
   {
-    AppMethodBeat.i(204964);
-    g.agP().afT();
-    if (djZ().vmE == null) {
-      djZ().vmE = new i();
+    AppMethodBeat.i(214422);
+    g.ajA().aiF();
+    if (dul().wrW == null) {
+      dul().wrW = new i();
     }
-    l locall = djZ().vmI;
-    AppMethodBeat.o(204964);
+    l locall = dul().wsa;
+    AppMethodBeat.o(214422);
     return locall;
   }
   
-  public static i dkb()
+  public static i dun()
   {
     AppMethodBeat.i(127203);
-    g.agP().afT();
-    if (djZ().vmE == null) {
-      djZ().vmE = new i();
+    g.ajA().aiF();
+    if (dul().wrW == null) {
+      dul().wrW = new i();
     }
-    i locali = djZ().vmE;
+    i locali = dul().wrW;
     AppMethodBeat.o(127203);
     return locali;
   }
   
-  public static b dkc()
+  public static b duo()
   {
     AppMethodBeat.i(127204);
-    g.agP().afT();
-    if (djZ().vmF == null)
+    g.ajA().aiF();
+    if (dul().wrX == null)
     {
-      localObject = djZ();
-      g.agS();
-      ((a)localObject).vmF = new b(g.agR().ghG);
+      localObject = dul();
+      g.ajD();
+      ((a)localObject).wrX = new b(g.ajC().gBq);
     }
-    Object localObject = djZ().vmF;
+    Object localObject = dul().wrX;
     AppMethodBeat.o(127204);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.newtips.b.d dkd()
+  public static com.tencent.mm.plugin.newtips.b.d dup()
   {
     AppMethodBeat.i(127205);
-    g.agP().afT();
-    if (djZ().vmG == null)
+    g.ajA().aiF();
+    if (dul().wrY == null)
     {
-      localObject = djZ();
-      g.agS();
-      ((a)localObject).vmG = new com.tencent.mm.plugin.newtips.b.d(g.agR().ghG);
+      localObject = dul();
+      g.ajD();
+      ((a)localObject).wrY = new com.tencent.mm.plugin.newtips.b.d(g.ajC().gBq);
     }
-    Object localObject = djZ().vmG;
+    Object localObject = dul().wrY;
     AppMethodBeat.o(127205);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.newtips.a.e dke()
+  public static com.tencent.mm.plugin.newtips.a.e duq()
   {
     AppMethodBeat.i(127206);
-    g.agP().afT();
-    if (djZ().vmH == null) {
-      djZ().vmH = new com.tencent.mm.plugin.newtips.a.e();
+    g.ajA().aiF();
+    if (dul().wrZ == null) {
+      dul().wrZ = new com.tencent.mm.plugin.newtips.a.e();
     }
-    com.tencent.mm.plugin.newtips.a.e locale = djZ().vmH;
+    com.tencent.mm.plugin.newtips.a.e locale = dul().wrZ;
     AppMethodBeat.o(127206);
     return locale;
   }
@@ -149,12 +143,12 @@ public final class a
   {
     AppMethodBeat.i(127201);
     super.onAccountInitialized(paramc);
-    ((q)g.ad(q.class)).getSysCmdMsgExtension().a("newtips", this.vmI);
-    dkb();
-    int i = com.tencent.mm.plugin.newtips.a.d.vmQ;
-    paramc = com.tencent.mm.plugin.newtips.a.d.vmX;
-    i.g(i, com.tencent.mm.plugin.newtips.a.d.vmP, "", paramc);
-    ac.i("MicroMsg.NewTips.NewTipsManager", "dancy register dynamic newtips, tipsId:%s, path:%s", new Object[] { Integer.valueOf(i), paramc });
+    ((r)g.ad(r.class)).getSysCmdMsgExtension().a("newtips", this.wsa);
+    dun();
+    int i = com.tencent.mm.plugin.newtips.a.d.wsi;
+    paramc = com.tencent.mm.plugin.newtips.a.d.wsp;
+    i.g(i, com.tencent.mm.plugin.newtips.a.d.wsh, "", paramc);
+    ad.i("MicroMsg.NewTips.NewTipsManager", "dancy register dynamic newtips, tipsId:%s, path:%s", new Object[] { Integer.valueOf(i), paramc });
     AppMethodBeat.o(127201);
   }
   
@@ -162,7 +156,7 @@ public final class a
   {
     AppMethodBeat.i(127202);
     super.onAccountRelease();
-    ((q)g.ad(q.class)).getSysCmdMsgExtension().b("newtips", this.vmI);
+    ((r)g.ad(r.class)).getSysCmdMsgExtension().b("newtips", this.wsa);
     AppMethodBeat.o(127202);
   }
 }

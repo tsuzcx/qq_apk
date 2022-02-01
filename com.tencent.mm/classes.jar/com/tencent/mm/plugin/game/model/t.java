@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.hz;
-import com.tencent.mm.g.a.hz.a;
+import com.tencent.mm.g.a.ig;
+import com.tencent.mm.g.a.ig.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.api.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.game.api.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class t
 {
-  public static void a(hz paramhz)
+  public static void a(ig paramig)
   {
     AppMethodBeat.i(41500);
-    paramhz = paramhz.dja.param;
-    ac.d("MicroMsg.GameJsapiProcessor", "writeMsg param=%s", new Object[] { paramhz });
-    if (paramhz != null)
+    paramig = paramig.duM.param;
+    ad.d("MicroMsg.GameJsapiProcessor", "writeMsg param=%s", new Object[] { paramig });
+    if (paramig != null)
     {
       try
       {
-        paramhz = new JSONObject(paramhz);
-        if ((paramhz.isNull("type")) || (bs.getInt(paramhz.optString("type"), 0) == 0))
+        paramig = new JSONObject(paramig);
+        if ((paramig.isNull("type")) || (bt.getInt(paramig.optString("type"), 0) == 0))
         {
           new JSONArray();
-          paramhz = paramhz.getJSONArray("localIdList");
-          int j = paramhz.length();
+          paramig = paramig.getJSONArray("localIdList");
+          int j = paramig.length();
           long[] arrayOfLong = new long[j];
           int i = 0;
           while (i < j)
           {
-            arrayOfLong[i] = paramhz.getLong(i);
+            arrayOfLong[i] = paramig.getLong(i);
             i += 1;
           }
-          ((e)g.ab(e.class)).cOm().c(arrayOfLong);
+          ((f)g.ab(f.class)).cWH().c(arrayOfLong);
           AppMethodBeat.o(41500);
           return;
         }
-        if (bs.getInt(paramhz.optString("type"), 0) == 65536)
+        if (bt.getInt(paramig.optString("type"), 0) == 65536)
         {
-          ((e)g.ab(e.class)).cOm().execSQL("GameRawMessage", "update GameRawMessage set isRead=1 where 1=1");
+          ((f)g.ab(f.class)).cWH().execSQL("GameRawMessage", "update GameRawMessage set isRead=1 where 1=1");
           AppMethodBeat.o(41500);
           return;
         }
       }
-      catch (JSONException paramhz)
+      catch (JSONException paramig)
       {
-        ac.w("MicroMsg.GameJsapiProcessor", "JSONException : %s", new Object[] { paramhz.getMessage() });
+        ad.w("MicroMsg.GameJsapiProcessor", "JSONException : %s", new Object[] { paramig.getMessage() });
         AppMethodBeat.o(41500);
         return;
       }
@@ -60,7 +60,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.t
  * JD-Core Version:    0.7.0.1
  */

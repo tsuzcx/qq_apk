@@ -8,8 +8,8 @@ import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class c
 {
@@ -18,28 +18,28 @@ public final class c
     AppMethodBeat.i(40088);
     final Context localContext = paramContext;
     if (paramContext == null) {
-      localContext = ai.getContext();
+      localContext = aj.getContext();
     }
-    if (aAe())
+    if (aDh())
     {
-      if (bs.isNullOrNil(paramString))
+      if (bt.isNullOrNil(paramString))
       {
-        paramb.og(1);
+        paramb.oG(1);
         AppMethodBeat.o(40088);
         return;
       }
-      g.fBc().h(new c.2(parama, paramString, paramb)).g(new com.tencent.mm.vending.c.a() {});
+      g.fSm().h(new c.2(parama, paramString, paramb)).g(new com.tencent.mm.vending.c.a() {});
       AppMethodBeat.o(40088);
       return;
     }
-    paramb.og(0);
+    paramb.oG(0);
     AppMethodBeat.o(40088);
   }
   
-  public static boolean aAe()
+  public static boolean aDh()
   {
     AppMethodBeat.i(40087);
-    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", IPCVoid.gey, a.class);
+    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", IPCVoid.gyi, a.class);
     if ((localIPCBoolean != null) && (localIPCBoolean.value))
     {
       AppMethodBeat.o(40087);

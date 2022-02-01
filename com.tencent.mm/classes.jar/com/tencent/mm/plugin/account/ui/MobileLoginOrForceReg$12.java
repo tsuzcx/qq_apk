@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kz;
+import com.tencent.mm.g.a.li;
 import com.tencent.mm.sdk.b.c;
 
 final class MobileLoginOrForceReg$12
-  extends c<kz>
+  extends c<li>
 {
   MobileLoginOrForceReg$12(MobileLoginOrForceReg paramMobileLoginOrForceReg)
   {
     AppMethodBeat.i(161705);
-    this.__eventId = kz.class.getName().hashCode();
+    this.__eventId = li.class.getName().hashCode();
     AppMethodBeat.o(161705);
   }
 }

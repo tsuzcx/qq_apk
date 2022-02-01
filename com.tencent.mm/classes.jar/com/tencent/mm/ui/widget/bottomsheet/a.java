@@ -9,21 +9,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends LinearLayout
 {
-  private TextView lfN;
+  private TextView lCL;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(143515);
     LayoutInflater.from(paramContext).inflate(2131493235, this);
-    this.lfN = ((TextView)findViewById(2131305902));
+    this.lCL = ((TextView)findViewById(2131305902));
     AppMethodBeat.o(143515);
   }
   
   public final void setTitle(String paramString)
   {
     AppMethodBeat.i(143516);
-    this.lfN.setText(paramString);
+    this.lCL.setText(paramString);
     AppMethodBeat.o(143516);
   }
 }

@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 public final class h
   extends g
 {
-  protected final c bgB()
+  protected final c bkg()
   {
-    return l.kAf;
+    return l.kWp;
   }
 }
 

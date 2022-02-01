@@ -6,12 +6,12 @@ import java.util.List;
 
 final class b$f
 {
-  List<b.e> xEV;
+  List<b.e> yTF;
   
   private b$f()
   {
     AppMethodBeat.i(28674);
-    this.xEV = new LinkedList();
+    this.yTF = new LinkedList();
     AppMethodBeat.o(28674);
   }
 }

@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.ipcall;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.xg;
+import com.tencent.mm.g.a.ya;
 
 final class c$2
-  extends com.tencent.mm.sdk.b.c<xg>
+  extends com.tencent.mm.sdk.b.c<ya>
 {
   c$2(c paramc)
   {
     AppMethodBeat.i(161377);
-    this.__eventId = xg.class.getName().hashCode();
+    this.__eventId = ya.class.getName().hashCode();
     AppMethodBeat.o(161377);
   }
 }

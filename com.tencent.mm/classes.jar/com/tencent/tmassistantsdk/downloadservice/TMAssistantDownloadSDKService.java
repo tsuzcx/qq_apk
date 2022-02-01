@@ -8,7 +8,8 @@ import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.hellhoundlib.b.c;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.tmassistantsdk.aidl.ITMAssistantDownloadSDKServiceCallback;
 import com.tencent.tmassistantsdk.aidl.ITMAssistantDownloadSDKServiceInterface.Stub;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
@@ -27,6 +28,7 @@ public class TMAssistantDownloadSDKService
   implements IServiceDownloadTaskManagerListener
 {
   protected static final String TAG = "TMAssistantDownloadSDKService";
+  private byte _hellAccFlag_;
   protected final TMAssistantDownloadSDKServiceImpl downloadSDKServiceImpl;
   protected final HashMap<ITMAssistantDownloadSDKServiceCallback, String> mCallbackHashMap;
   protected final RemoteCallbackList<ITMAssistantDownloadSDKServiceCallback> mCallbacks;
@@ -152,7 +154,11 @@ public class TMAssistantDownloadSDKService
     NetworkMonitorReceiver.getInstance().unregisterReceiver();
     GlobalUtil.getInstance().destroy();
     SystemClock.sleep(300L);
-    Process.killProcess(Process.myPid());
+    com.tencent.mm.hellhoundlib.b.a locala = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/tencent/tmassistantsdk/downloadservice/TMAssistantDownloadSDKService", "onDestroy", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    Process.killProcess(((Integer)locala.mq(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/tmassistantsdk/downloadservice/TMAssistantDownloadSDKService", "onDestroy", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     AppMethodBeat.o(102039);
   }
   
@@ -223,7 +229,7 @@ public class TMAssistantDownloadSDKService
       {
         for (;;)
         {
-          ac.printErrStackTrace("TMAssistantDownloadSDKService", paramString1, "", new Object[0]);
+          ad.printErrStackTrace("TMAssistantDownloadSDKService", paramString1, "", new Object[0]);
         }
       }
     }

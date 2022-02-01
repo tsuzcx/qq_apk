@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class l
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String Desc;
   public String IconUrl;
   public String Title;
-  public String thP;
-  public int thR;
-  public String thh;
+  public String ueY;
+  public String ufG;
+  public int ufI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -31,7 +31,7 @@ public final class l
         AppMethodBeat.o(41715);
         throw paramVarArgs;
       }
-      if (this.thh == null)
+      if (this.ueY == null)
       {
         paramVarArgs = new b("Not all required fields were included: JumpUrl");
         AppMethodBeat.o(41715);
@@ -46,12 +46,12 @@ public final class l
       if (this.Desc != null) {
         paramVarArgs.d(3, this.Desc);
       }
-      if (this.thh != null) {
-        paramVarArgs.d(4, this.thh);
+      if (this.ueY != null) {
+        paramVarArgs.d(4, this.ueY);
       }
-      paramVarArgs.aR(5, this.thR);
-      if (this.thP != null) {
-        paramVarArgs.d(6, this.thP);
+      paramVarArgs.aS(5, this.ufI);
+      if (this.ufG != null) {
+        paramVarArgs.d(6, this.ufG);
       }
       AppMethodBeat.o(41715);
       return 0;
@@ -73,22 +73,22 @@ public final class l
         i = paramInt + f.a.a.b.b.a.e(3, this.Desc);
       }
       paramInt = i;
-      if (this.thh != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.thh);
+      if (this.ueY != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.ueY);
       }
-      i = paramInt + f.a.a.b.b.a.bx(5, this.thR);
+      i = paramInt + f.a.a.b.b.a.bz(5, this.ufI);
       paramInt = i;
-      if (this.thP != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.thP);
+      if (this.ufG != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.ufG);
       }
       AppMethodBeat.o(41715);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         if (this.IconUrl == null)
@@ -103,7 +103,7 @@ public final class l
           AppMethodBeat.o(41715);
           throw paramVarArgs;
         }
-        if (this.thh == null)
+        if (this.ueY == null)
         {
           paramVarArgs = new b("Not all required fields were included: JumpUrl");
           AppMethodBeat.o(41715);
@@ -122,27 +122,27 @@ public final class l
           AppMethodBeat.o(41715);
           return -1;
         case 1: 
-          locall.IconUrl = locala.LVo.readString();
+          locall.IconUrl = locala.NPN.readString();
           AppMethodBeat.o(41715);
           return 0;
         case 2: 
-          locall.Title = locala.LVo.readString();
+          locall.Title = locala.NPN.readString();
           AppMethodBeat.o(41715);
           return 0;
         case 3: 
-          locall.Desc = locala.LVo.readString();
+          locall.Desc = locala.NPN.readString();
           AppMethodBeat.o(41715);
           return 0;
         case 4: 
-          locall.thh = locala.LVo.readString();
+          locall.ueY = locala.NPN.readString();
           AppMethodBeat.o(41715);
           return 0;
         case 5: 
-          locall.thR = locala.LVo.xF();
+          locall.ufI = locala.NPN.zc();
           AppMethodBeat.o(41715);
           return 0;
         }
-        locall.thP = locala.LVo.readString();
+        locall.ufG = locala.NPN.readString();
         AppMethodBeat.o(41715);
         return 0;
       }
@@ -153,7 +153,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.l
  * JD-Core Version:    0.7.0.1
  */

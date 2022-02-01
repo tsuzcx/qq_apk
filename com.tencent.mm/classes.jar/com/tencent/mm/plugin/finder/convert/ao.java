@@ -1,28 +1,20 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.support.v7.widget.RecyclerView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.ae;
-import com.tencent.mm.view.recyclerview.b;
-import com.tencent.mm.view.recyclerview.e;
-import d.g.b.k;
+import com.tencent.mm.plugin.finder.model.aa;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgSysMsgConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgSysHead;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgFollowNewConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgFollow;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"})
 public final class ao
-  extends b<ae>
+  extends ak<aa>
 {
-  public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
-  {
-    AppMethodBeat.i(201360);
-    k.h(paramRecyclerView, "recyclerView");
-    k.h(parame, "holder");
-    AppMethodBeat.o(201360);
-  }
+  private final String TAG;
+  private final int scene;
   
-  public final int getLayoutId()
+  public ao(int paramInt)
   {
-    return 2131496235;
+    super(2131496394, paramInt);
+    this.scene = paramInt;
+    this.TAG = "Finder.FinderMsgFollowConvert";
   }
 }
 

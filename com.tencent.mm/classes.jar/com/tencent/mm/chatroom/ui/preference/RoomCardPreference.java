@@ -12,24 +12,24 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RoomCardPreference
   extends Preference
 {
-  public boolean daU;
-  private TextView fBF;
-  public CharSequence fBG;
-  public CharSequence fBH;
-  private LinearLayout fBI;
+  public boolean dmo;
+  private TextView fUS;
+  public CharSequence fUT;
+  public CharSequence fUU;
+  private LinearLayout fUV;
   private View mView;
   
   public RoomCardPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.daU = false;
+    this.dmo = false;
   }
   
   public RoomCardPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(13010);
-    this.daU = false;
+    this.dmo = false;
     setLayoutResource(2131494804);
     AppMethodBeat.o(13010);
   }
@@ -39,26 +39,26 @@ public class RoomCardPreference
     AppMethodBeat.i(13012);
     super.onBindView(paramView);
     paramView = (ViewGroup)paramView.findViewById(2131298739).findViewById(2131305937);
-    if (this.fBI == null) {
-      this.fBI = ((LinearLayout)paramView.getChildAt(1));
+    if (this.fUV == null) {
+      this.fUV = ((LinearLayout)paramView.getChildAt(1));
     }
-    if (this.fBF == null) {
-      this.fBF = ((TextView)paramView.findViewById(2131304215));
+    if (this.fUS == null) {
+      this.fUS = ((TextView)paramView.findViewById(2131304215));
     }
-    if (this.daU)
+    if (this.dmo)
     {
-      this.fBI.setVisibility(0);
-      this.fBF.setVisibility(0);
+      this.fUV.setVisibility(0);
+      this.fUS.setVisibility(0);
     }
     for (;;)
     {
-      if (this.fBH != null) {
-        this.fBF.setText(this.fBH);
+      if (this.fUU != null) {
+        this.fUS.setText(this.fUU);
       }
       AppMethodBeat.o(13012);
       return;
-      this.fBI.setVisibility(8);
-      this.fBF.setVisibility(8);
+      this.fUV.setVisibility(8);
+      this.fUS.setVisibility(8);
     }
   }
   
@@ -80,7 +80,7 @@ public class RoomCardPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.preference.RoomCardPreference
  * JD-Core Version:    0.7.0.1
  */

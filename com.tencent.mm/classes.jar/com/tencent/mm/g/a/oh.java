@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class oh
   extends b
 {
-  public a dqI;
+  public a dCh;
   
   public oh()
   {
@@ -15,32 +16,25 @@ public final class oh
   
   private oh(byte paramByte)
   {
-    AppMethodBeat.i(117550);
-    this.dqI = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(127409);
+    this.dCh = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(117550);
+    AppMethodBeat.o(127409);
   }
   
   public static final class a
   {
-    public String appId;
-    public int dcB;
-    public String dqJ;
-    public String dqK;
-    public int dqL;
-    public int dqM;
-    public String nonceStr;
-    public String packageExt;
-    public String partnerId;
-    public String signType;
-    public String timeStamp;
-    public String url;
+    public Context context;
+    public boolean dBt = true;
+    public String dCi;
+    public long msgId = -1L;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.oh
  * JD-Core Version:    0.7.0.1
  */

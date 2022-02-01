@@ -6,7 +6,7 @@ import com.google.firebase.components.d;
 final class h
   implements d
 {
-  static final d bAU;
+  static final d bLi;
   
   public final Object a(b arg1) {}
 }

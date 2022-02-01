@@ -23,7 +23,7 @@ public final class t
   public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(128881);
-    e.kqZ.execute(new Runnable()
+    e.kMv.execute(new Runnable()
     {
       public final void run()
       {
@@ -33,7 +33,7 @@ public final class t
           AppMethodBeat.o(128880);
           return;
         }
-        Object localObject = paramc.DH().aYc();
+        Object localObject = paramc.Fg().bbA();
         JSONArray localJSONArray = new JSONArray();
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
@@ -45,7 +45,7 @@ public final class t
             {
               JSONObject localJSONObject = new JSONObject();
               localJSONObject.put("filePath", locala.getFileName());
-              localJSONObject.put("size", locala.aXW());
+              localJSONObject.put("size", locala.bbu());
               localJSONObject.put("createTime", TimeUnit.MILLISECONDS.toSeconds(locala.lastModified()));
               localJSONArray.put(localJSONObject);
             }
@@ -54,21 +54,21 @@ public final class t
         }
         localObject = new HashMap(1);
         ((Map)localObject).put("fileList", localJSONArray);
-        paramc.h(paramInt, t.this.k("ok", (Map)localObject));
+        paramc.h(paramInt, t.this.m("ok", (Map)localObject));
         AppMethodBeat.o(128880);
       }
     });
     AppMethodBeat.o(128881);
   }
   
-  public final boolean bex()
+  public final boolean bib()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.t
  * JD-Core Version:    0.7.0.1
  */

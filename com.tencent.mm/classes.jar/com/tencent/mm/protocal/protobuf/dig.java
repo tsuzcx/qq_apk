@@ -3,89 +3,41 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dig
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String FRg;
-  public String FRh;
-  public String appId;
-  public String desc;
-  public String dxv;
-  public String ruB;
-  public String title;
+  public String HwZ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(153000);
+    AppMethodBeat.i(125843);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.d(1, this.title);
+      if (this.HwZ != null) {
+        paramVarArgs.d(1, this.HwZ);
       }
-      if (this.desc != null) {
-        paramVarArgs.d(2, this.desc);
-      }
-      if (this.dxv != null) {
-        paramVarArgs.d(3, this.dxv);
-      }
-      if (this.FRg != null) {
-        paramVarArgs.d(4, this.FRg);
-      }
-      if (this.FRh != null) {
-        paramVarArgs.d(5, this.FRh);
-      }
-      if (this.appId != null) {
-        paramVarArgs.d(6, this.appId);
-      }
-      if (this.ruB != null) {
-        paramVarArgs.d(7, this.ruB);
-      }
-      AppMethodBeat.o(153000);
+      AppMethodBeat.o(125843);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label578;
+      if (this.HwZ == null) {
+        break label213;
       }
     }
-    label578:
-    for (int i = f.a.a.b.b.a.e(1, this.title) + 0;; i = 0)
+    label213:
+    for (paramInt = f.a.a.b.b.a.e(1, this.HwZ) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.desc != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.desc);
-      }
-      i = paramInt;
-      if (this.dxv != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.dxv);
-      }
-      paramInt = i;
-      if (this.FRg != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.FRg);
-      }
-      i = paramInt;
-      if (this.FRh != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.FRh);
-      }
-      paramInt = i;
-      if (this.appId != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.appId);
-      }
-      i = paramInt;
-      if (this.ruB != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.ruB);
-      }
-      AppMethodBeat.o(153000);
-      return i;
+      AppMethodBeat.o(125843);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(153000);
+        AppMethodBeat.o(125843);
         return 0;
       }
       if (paramInt == 3)
@@ -95,45 +47,21 @@ public final class dig
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(153000);
+          AppMethodBeat.o(125843);
           return -1;
-        case 1: 
-          localdig.title = locala.LVo.readString();
-          AppMethodBeat.o(153000);
-          return 0;
-        case 2: 
-          localdig.desc = locala.LVo.readString();
-          AppMethodBeat.o(153000);
-          return 0;
-        case 3: 
-          localdig.dxv = locala.LVo.readString();
-          AppMethodBeat.o(153000);
-          return 0;
-        case 4: 
-          localdig.FRg = locala.LVo.readString();
-          AppMethodBeat.o(153000);
-          return 0;
-        case 5: 
-          localdig.FRh = locala.LVo.readString();
-          AppMethodBeat.o(153000);
-          return 0;
-        case 6: 
-          localdig.appId = locala.LVo.readString();
-          AppMethodBeat.o(153000);
-          return 0;
         }
-        localdig.ruB = locala.LVo.readString();
-        AppMethodBeat.o(153000);
+        localdig.HwZ = locala.NPN.readString();
+        AppMethodBeat.o(125843);
         return 0;
       }
-      AppMethodBeat.o(153000);
+      AppMethodBeat.o(125843);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dig
  * JD-Core Version:    0.7.0.1
  */

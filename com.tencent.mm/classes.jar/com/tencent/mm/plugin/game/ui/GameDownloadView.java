@@ -10,40 +10,42 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.plugin.game.model.k.a;
 import com.tencent.mm.plugin.game.model.l;
 import com.tencent.mm.plugin.game.widget.TextProgressBar;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class GameDownloadView
   extends FrameLayout
   implements View.OnClickListener
 {
-  private k.a toP;
-  private l toR;
-  private Button tpW;
-  private TextProgressBar tpX;
-  private d tpY;
+  private k.a unm;
+  private l uno;
+  private Button uot;
+  private TextProgressBar uou;
+  private d uov;
   
   public GameDownloadView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(42066);
-    this.toP = new k.a()
+    this.unm = new k.a()
     {
       public final void e(int paramAnonymousInt, String paramAnonymousString, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(42065);
-        if ((!paramAnonymousBoolean) || (bs.isNullOrNil(paramAnonymousString)))
+        if ((!paramAnonymousBoolean) || (bt.isNullOrNil(paramAnonymousString)))
         {
           AppMethodBeat.o(42065);
           return;
         }
-        if ((GameDownloadView.b(GameDownloadView.this) == null) || (GameDownloadView.b(GameDownloadView.this).tdF == null) || (!GameDownloadView.b(GameDownloadView.this).tdF.field_appId.equals(paramAnonymousString)))
+        if ((GameDownloadView.b(GameDownloadView.this) == null) || (GameDownloadView.b(GameDownloadView.this).ubv == null) || (!GameDownloadView.b(GameDownloadView.this).ubv.field_appId.equals(paramAnonymousString)))
         {
           AppMethodBeat.o(42065);
           return;
@@ -55,15 +57,15 @@ public class GameDownloadView
     AppMethodBeat.o(42066);
   }
   
-  private void cRr()
+  private void cZW()
   {
     AppMethodBeat.i(42072);
-    ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(42064);
-        GameDownloadView.e(GameDownloadView.this).a(GameDownloadView.c(GameDownloadView.this), GameDownloadView.d(GameDownloadView.this), GameDownloadView.b(GameDownloadView.this).tdF, GameDownloadView.b(GameDownloadView.this));
+        GameDownloadView.e(GameDownloadView.this).a(GameDownloadView.c(GameDownloadView.this), GameDownloadView.d(GameDownloadView.this), GameDownloadView.b(GameDownloadView.this).ubv, GameDownloadView.b(GameDownloadView.this));
         AppMethodBeat.o(42064);
       }
     });
@@ -74,15 +76,19 @@ public class GameDownloadView
   {
     AppMethodBeat.i(42069);
     super.onAttachedToWindow();
-    k.a(this.toP);
+    k.a(this.unm);
     AppMethodBeat.o(42069);
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(42073);
-    this.toR.fu(ai.getContext());
-    this.tpY.a(this.toR.tdF, this.toR);
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/game/ui/GameDownloadView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    this.uno.fy(aj.getContext());
+    this.uov.a(this.uno.ubv, this.uno);
+    a.a(this, "com/tencent/mm/plugin/game/ui/GameDownloadView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42073);
   }
   
@@ -90,7 +96,7 @@ public class GameDownloadView
   {
     AppMethodBeat.i(42068);
     super.onDetachedFromWindow();
-    k.b(this.toP);
+    k.b(this.unm);
     AppMethodBeat.o(42068);
   }
   
@@ -99,13 +105,13 @@ public class GameDownloadView
     AppMethodBeat.i(42067);
     super.onFinishInflate();
     View localView = LayoutInflater.from(getContext()).inflate(2131494295, this, true);
-    this.tpW = ((Button)localView.findViewById(2131300434));
-    this.tpX = ((TextProgressBar)localView.findViewById(2131300436));
-    this.tpX.setTextSize(14);
-    this.tpW.setOnClickListener(this);
-    this.tpX.setOnClickListener(this);
-    this.tpY = new d(getContext());
-    this.tpY.tmD = new DialogInterface.OnClickListener()
+    this.uot = ((Button)localView.findViewById(2131300434));
+    this.uou = ((TextProgressBar)localView.findViewById(2131300436));
+    this.uou.setTextSize(14);
+    this.uot.setOnClickListener(this);
+    this.uou.setOnClickListener(this);
+    this.uov = new d(getContext());
+    this.uov.ulc = new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -120,11 +126,11 @@ public class GameDownloadView
   public final void refresh()
   {
     AppMethodBeat.i(42070);
-    if (this.toR != null)
+    if (this.uno != null)
     {
-      this.toR.fu(ai.getContext());
-      this.toR.bYH();
-      cRr();
+      this.uno.fy(aj.getContext());
+      this.uno.cdl();
+      cZW();
     }
     AppMethodBeat.o(42070);
   }
@@ -132,25 +138,25 @@ public class GameDownloadView
   public void setDownloadInfo(l paraml)
   {
     AppMethodBeat.i(42071);
-    this.toR = paraml;
-    com.tencent.mm.plugin.game.f.c.bUw().postToWorker(new Runnable()
+    this.uno = paraml;
+    com.tencent.mm.plugin.game.f.c.bZb().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(42063);
-        GameDownloadView.b(GameDownloadView.this).fu(ai.getContext());
-        GameDownloadView.b(GameDownloadView.this).bYH();
+        GameDownloadView.b(GameDownloadView.this).fy(aj.getContext());
+        GameDownloadView.b(GameDownloadView.this).cdl();
         GameDownloadView.a(GameDownloadView.this);
         AppMethodBeat.o(42063);
       }
     });
-    cRr();
+    cZW();
     AppMethodBeat.o(42071);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDownloadView
  * JD-Core Version:    0.7.0.1
  */

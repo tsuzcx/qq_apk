@@ -8,27 +8,27 @@ import java.util.Arrays;
 final class g
   implements d
 {
-  private int aVX = -1;
-  int[] aVY;
-  private int[] aVZ;
-  private boolean aWa;
   private boolean active;
-  private ByteBuffer buffer = aUx;
+  private int bgs = -1;
+  int[] bgt;
+  private int[] bgu;
+  private boolean bgv;
+  private ByteBuffer buffer = beR;
   private int channelCount = -1;
-  private ByteBuffer outputBuffer = aUx;
+  private ByteBuffer outputBuffer = beR;
   
   public final void f(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(91803);
     int i = paramByteBuffer.position();
     int k = paramByteBuffer.limit();
-    int j = (k - i) / (this.channelCount * 2) * this.aVZ.length * 2;
+    int j = (k - i) / (this.channelCount * 2) * this.bgu.length * 2;
     if (this.buffer.capacity() < j) {
       this.buffer = ByteBuffer.allocateDirect(j).order(ByteOrder.nativeOrder());
     }
     while (i < k)
     {
-      int[] arrayOfInt = this.aVZ;
+      int[] arrayOfInt = this.bgu;
       int m = arrayOfInt.length;
       j = 0;
       for (;;)
@@ -53,8 +53,8 @@ final class g
   
   public final void flush()
   {
-    this.outputBuffer = aUx;
-    this.aWa = false;
+    this.outputBuffer = beR;
+    this.bgv = false;
   }
   
   public final boolean isActive()
@@ -62,19 +62,14 @@ final class g
     return this.active;
   }
   
-  public final boolean rX()
-  {
-    return (this.aWa) && (this.outputBuffer == aUx);
-  }
-  
   public final void reset()
   {
     AppMethodBeat.i(91804);
     flush();
-    this.buffer = aUx;
+    this.buffer = beR;
     this.channelCount = -1;
-    this.aVX = -1;
-    this.aVZ = null;
+    this.bgs = -1;
+    this.bgu = null;
     this.active = false;
     AppMethodBeat.o(91804);
   }
@@ -82,11 +77,11 @@ final class g
   public final boolean s(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(91802);
-    if (!Arrays.equals(this.aVY, this.aVZ)) {}
+    if (!Arrays.equals(this.bgt, this.bgu)) {}
     for (int k = 1;; k = 0)
     {
-      this.aVZ = this.aVY;
-      if (this.aVZ != null) {
+      this.bgu = this.bgt;
+      if (this.bgu != null) {
         break;
       }
       this.active = false;
@@ -100,23 +95,23 @@ final class g
       AppMethodBeat.o(91802);
       throw locala;
     }
-    if ((k == 0) && (this.aVX == paramInt1) && (this.channelCount == paramInt2))
+    if ((k == 0) && (this.bgs == paramInt1) && (this.channelCount == paramInt2))
     {
       AppMethodBeat.o(91802);
       return false;
     }
-    this.aVX = paramInt1;
+    this.bgs = paramInt1;
     this.channelCount = paramInt2;
-    if (paramInt2 != this.aVZ.length) {}
+    if (paramInt2 != this.bgu.length) {}
     int i;
     for (k = 1;; k = 0)
     {
       this.active = k;
       i = 0;
-      if (i >= this.aVZ.length) {
+      if (i >= this.bgu.length) {
         break label231;
       }
-      j = this.aVZ[i];
+      j = this.bgu[i];
       if (j < paramInt2) {
         break;
       }
@@ -137,29 +132,34 @@ final class g
     return true;
   }
   
-  public final int sd()
+  public final int tC()
   {
-    if (this.aVZ == null) {
+    if (this.bgu == null) {
       return this.channelCount;
     }
-    return this.aVZ.length;
+    return this.bgu.length;
   }
   
-  public final void se()
+  public final void tD()
   {
-    this.aWa = true;
+    this.bgv = true;
   }
   
-  public final ByteBuffer sf()
+  public final ByteBuffer tE()
   {
     ByteBuffer localByteBuffer = this.outputBuffer;
-    this.outputBuffer = aUx;
+    this.outputBuffer = beR;
     return localByteBuffer;
+  }
+  
+  public final boolean tw()
+  {
+    return (this.bgv) && (this.outputBuffer == beR);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.a.g
  * JD-Core Version:    0.7.0.1
  */

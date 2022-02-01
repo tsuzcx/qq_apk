@@ -16,24 +16,24 @@ import javax.crypto.spec.SecretKeySpec;
 
 final class j
 {
-  final HashMap<String, i> bvQ;
-  final SparseArray<String> bvR;
-  final b bvS;
-  private final Cipher bvT;
-  private final SecretKeySpec bvU;
-  private final boolean bvV;
-  boolean bvW;
-  private q bvt;
+  private q bFH;
+  final HashMap<String, i> bGe;
+  final SparseArray<String> bGf;
+  final b bGg;
+  private final Cipher bGh;
+  private final SecretKeySpec bGi;
+  private final boolean bGj;
+  boolean bGk;
   
   public j(File paramFile)
   {
     AppMethodBeat.i(92981);
-    this.bvV = false;
-    this.bvT = null;
-    this.bvU = null;
-    this.bvQ = new HashMap();
-    this.bvR = new SparseArray();
-    this.bvS = new b(new File(paramFile, "cached_content_index.exi"));
+    this.bGj = false;
+    this.bGh = null;
+    this.bGi = null;
+    this.bGe = new HashMap();
+    this.bGf = new SparseArray();
+    this.bGg = new b(new File(paramFile, "cached_content_index.exi"));
     AppMethodBeat.o(92981);
   }
   
@@ -70,8 +70,8 @@ final class j
   private void a(i parami)
   {
     AppMethodBeat.i(92989);
-    this.bvQ.put(parami.key, parami);
-    this.bvR.put(parami.id, parami.key);
+    this.bGe.put(parami.key, parami);
+    this.bGf.put(parami.id, parami.key);
     AppMethodBeat.o(92989);
   }
   
@@ -79,27 +79,14 @@ final class j
   {
     AppMethodBeat.i(92990);
     a(parami);
-    this.bvW = true;
+    this.bGk = true;
     AppMethodBeat.o(92990);
   }
   
-  public final void aA(String paramString)
-  {
-    AppMethodBeat.i(92986);
-    paramString = (i)this.bvQ.remove(paramString);
-    if (paramString != null)
-    {
-      a.checkState(paramString.bvP.isEmpty());
-      this.bvR.remove(paramString.id);
-      this.bvW = true;
-    }
-    AppMethodBeat.o(92986);
-  }
-  
-  public final i ax(String paramString)
+  public final i bq(String paramString)
   {
     AppMethodBeat.i(92983);
-    i locali2 = (i)this.bvQ.get(paramString);
+    i locali2 = (i)this.bGe.get(paramString);
     i locali1 = locali2;
     if (locali2 == null) {
       locali1 = g(paramString, -1L);
@@ -108,33 +95,46 @@ final class j
     return locali1;
   }
   
-  public final i ay(String paramString)
+  public final i br(String paramString)
   {
     AppMethodBeat.i(92984);
-    paramString = (i)this.bvQ.get(paramString);
+    paramString = (i)this.bGe.get(paramString);
     AppMethodBeat.o(92984);
     return paramString;
   }
   
-  public final int az(String paramString)
+  public final int bs(String paramString)
   {
     AppMethodBeat.i(92985);
-    int i = ax(paramString).id;
+    int i = bq(paramString).id;
     AppMethodBeat.o(92985);
     return i;
+  }
+  
+  public final void bt(String paramString)
+  {
+    AppMethodBeat.i(92986);
+    paramString = (i)this.bGe.remove(paramString);
+    if (paramString != null)
+    {
+      a.checkState(paramString.bGd.isEmpty());
+      this.bGf.remove(paramString.id);
+      this.bGk = true;
+    }
+    AppMethodBeat.o(92986);
   }
   
   final i g(String paramString, long paramLong)
   {
     AppMethodBeat.i(92991);
-    paramString = new i(a(this.bvR), paramString, paramLong);
+    paramString = new i(a(this.bGf), paramString, paramLong);
     b(paramString);
     AppMethodBeat.o(92991);
     return paramString;
   }
   
   /* Error */
-  public final void vp()
+  public final void wM()
   {
     // Byte code:
     //   0: aconst_null
@@ -144,28 +144,28 @@ final class j
     //   4: ldc 164
     //   6: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: getfield 104	com/google/android/exoplayer2/h/a/j:bvW	Z
+    //   10: getfield 104	com/google/android/exoplayer2/h/a/j:bGk	Z
     //   13: ifne +9 -> 22
     //   16: ldc 164
     //   18: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: return
     //   22: aload_0
-    //   23: getfield 62	com/google/android/exoplayer2/h/a/j:bvS	Lcom/google/android/exoplayer2/i/b;
-    //   26: invokevirtual 168	com/google/android/exoplayer2/i/b:vt	()Ljava/io/OutputStream;
+    //   23: getfield 62	com/google/android/exoplayer2/h/a/j:bGg	Lcom/google/android/exoplayer2/i/b;
+    //   26: invokevirtual 168	com/google/android/exoplayer2/i/b:wQ	()Ljava/io/OutputStream;
     //   29: astore 4
     //   31: aload_0
-    //   32: getfield 170	com/google/android/exoplayer2/h/a/j:bvt	Lcom/google/android/exoplayer2/i/q;
+    //   32: getfield 170	com/google/android/exoplayer2/h/a/j:bFH	Lcom/google/android/exoplayer2/i/q;
     //   35: ifnonnull +296 -> 331
     //   38: aload_0
     //   39: new 172	com/google/android/exoplayer2/i/q
     //   42: dup
     //   43: aload 4
     //   45: invokespecial 175	com/google/android/exoplayer2/i/q:<init>	(Ljava/io/OutputStream;)V
-    //   48: putfield 170	com/google/android/exoplayer2/h/a/j:bvt	Lcom/google/android/exoplayer2/i/q;
+    //   48: putfield 170	com/google/android/exoplayer2/h/a/j:bFH	Lcom/google/android/exoplayer2/i/q;
     //   51: new 177	java/io/DataOutputStream
     //   54: dup
     //   55: aload_0
-    //   56: getfield 170	com/google/android/exoplayer2/h/a/j:bvt	Lcom/google/android/exoplayer2/i/q;
+    //   56: getfield 170	com/google/android/exoplayer2/h/a/j:bFH	Lcom/google/android/exoplayer2/i/q;
     //   59: invokespecial 178	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   62: astore 5
     //   64: aload 5
@@ -176,12 +176,12 @@ final class j
     //   74: aload 5
     //   76: astore 4
     //   78: aload_0
-    //   79: getfield 35	com/google/android/exoplayer2/h/a/j:bvV	Z
+    //   79: getfield 35	com/google/android/exoplayer2/h/a/j:bGj	Z
     //   82: ifeq +302 -> 384
     //   85: aload 5
     //   87: astore 4
     //   89: aload_0
-    //   90: getfield 37	com/google/android/exoplayer2/h/a/j:bvT	Ljavax/crypto/Cipher;
+    //   90: getfield 37	com/google/android/exoplayer2/h/a/j:bGh	Ljavax/crypto/Cipher;
     //   93: ifnull +291 -> 384
     //   96: iconst_1
     //   97: istore_1
@@ -222,10 +222,10 @@ final class j
     //   165: aload 5
     //   167: astore 4
     //   169: aload_0
-    //   170: getfield 37	com/google/android/exoplayer2/h/a/j:bvT	Ljavax/crypto/Cipher;
+    //   170: getfield 37	com/google/android/exoplayer2/h/a/j:bGh	Ljavax/crypto/Cipher;
     //   173: iconst_1
     //   174: aload_0
-    //   175: getfield 39	com/google/android/exoplayer2/h/a/j:bvU	Ljavax/crypto/spec/SecretKeySpec;
+    //   175: getfield 39	com/google/android/exoplayer2/h/a/j:bGi	Ljavax/crypto/spec/SecretKeySpec;
     //   178: aload_3
     //   179: invokevirtual 201	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
     //   182: aload 5
@@ -239,9 +239,9 @@ final class j
     //   199: new 206	javax/crypto/CipherOutputStream
     //   202: dup
     //   203: aload_0
-    //   204: getfield 170	com/google/android/exoplayer2/h/a/j:bvt	Lcom/google/android/exoplayer2/i/q;
+    //   204: getfield 170	com/google/android/exoplayer2/h/a/j:bFH	Lcom/google/android/exoplayer2/i/q;
     //   207: aload_0
-    //   208: getfield 37	com/google/android/exoplayer2/h/a/j:bvT	Ljavax/crypto/Cipher;
+    //   208: getfield 37	com/google/android/exoplayer2/h/a/j:bGh	Ljavax/crypto/Cipher;
     //   211: invokespecial 209	javax/crypto/CipherOutputStream:<init>	(Ljava/io/OutputStream;Ljavax/crypto/Cipher;)V
     //   214: invokespecial 178	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   217: astore_3
@@ -249,13 +249,13 @@ final class j
     //   219: astore 4
     //   221: aload_3
     //   222: aload_0
-    //   223: getfield 44	com/google/android/exoplayer2/h/a/j:bvQ	Ljava/util/HashMap;
+    //   223: getfield 44	com/google/android/exoplayer2/h/a/j:bGe	Ljava/util/HashMap;
     //   226: invokevirtual 210	java/util/HashMap:size	()I
     //   229: invokevirtual 181	java/io/DataOutputStream:writeInt	(I)V
     //   232: aload_3
     //   233: astore 4
     //   235: aload_0
-    //   236: getfield 44	com/google/android/exoplayer2/h/a/j:bvQ	Ljava/util/HashMap;
+    //   236: getfield 44	com/google/android/exoplayer2/h/a/j:bGe	Ljava/util/HashMap;
     //   239: invokevirtual 214	java/util/HashMap:values	()Ljava/util/Collection;
     //   242: invokeinterface 220 1 0
     //   247: astore 5
@@ -293,7 +293,7 @@ final class j
     //   315: aload_3
     //   316: astore 4
     //   318: aload 6
-    //   320: invokevirtual 243	com/google/android/exoplayer2/h/a/i:vo	()I
+    //   320: invokevirtual 243	com/google/android/exoplayer2/h/a/i:wL	()I
     //   323: istore_2
     //   324: iload_2
     //   325: iload_1
@@ -301,7 +301,7 @@ final class j
     //   327: istore_1
     //   328: goto -77 -> 251
     //   331: aload_0
-    //   332: getfield 170	com/google/android/exoplayer2/h/a/j:bvt	Lcom/google/android/exoplayer2/i/q;
+    //   332: getfield 170	com/google/android/exoplayer2/h/a/j:bFH	Lcom/google/android/exoplayer2/i/q;
     //   335: aload 4
     //   337: invokevirtual 245	com/google/android/exoplayer2/i/q:a	(Ljava/io/OutputStream;)V
     //   340: goto -289 -> 51
@@ -360,7 +360,7 @@ final class j
     //   439: aload_3
     //   440: astore 4
     //   442: aload_0
-    //   443: getfield 62	com/google/android/exoplayer2/h/a/j:bvS	Lcom/google/android/exoplayer2/i/b;
+    //   443: getfield 62	com/google/android/exoplayer2/h/a/j:bGg	Lcom/google/android/exoplayer2/i/b;
     //   446: astore 5
     //   448: aload_3
     //   449: astore 4
@@ -369,14 +369,14 @@ final class j
     //   455: aload_3
     //   456: astore 4
     //   458: aload 5
-    //   460: getfield 270	com/google/android/exoplayer2/i/b:bwl	Ljava/io/File;
+    //   460: getfield 270	com/google/android/exoplayer2/i/b:bGz	Ljava/io/File;
     //   463: invokevirtual 273	java/io/File:delete	()Z
     //   466: pop
     //   467: aconst_null
     //   468: invokestatic 256	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
     //   471: aload_0
     //   472: iconst_0
-    //   473: putfield 104	com/google/android/exoplayer2/h/a/j:bvW	Z
+    //   473: putfield 104	com/google/android/exoplayer2/h/a/j:bGk	Z
     //   476: ldc 164
     //   478: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   481: return
@@ -479,27 +479,27 @@ final class j
     //   169	182	498	java/security/InvalidKeyException
   }
   
-  public final void vq()
+  public final void wN()
   {
     AppMethodBeat.i(92987);
     Object localObject = new LinkedList();
-    Iterator localIterator = this.bvQ.values().iterator();
+    Iterator localIterator = this.bGe.values().iterator();
     while (localIterator.hasNext())
     {
       i locali = (i)localIterator.next();
-      if (locali.bvP.isEmpty()) {
+      if (locali.bGd.isEmpty()) {
         ((LinkedList)localObject).add(locali.key);
       }
     }
     localObject = ((LinkedList)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      aA((String)((Iterator)localObject).next());
+      bt((String)((Iterator)localObject).next());
     }
     AppMethodBeat.o(92987);
   }
   
   /* Error */
-  final boolean vr()
+  final boolean wO()
   {
     // Byte code:
     //   0: ldc_w 291
@@ -513,14 +513,14 @@ final class j
     //   16: aload 8
     //   18: astore 7
     //   20: aload_0
-    //   21: getfield 62	com/google/android/exoplayer2/h/a/j:bvS	Lcom/google/android/exoplayer2/i/b;
+    //   21: getfield 62	com/google/android/exoplayer2/h/a/j:bGg	Lcom/google/android/exoplayer2/i/b;
     //   24: astore 9
     //   26: aload 5
     //   28: astore 6
     //   30: aload 8
     //   32: astore 7
     //   34: aload 9
-    //   36: getfield 270	com/google/android/exoplayer2/i/b:bwl	Ljava/io/File;
+    //   36: getfield 270	com/google/android/exoplayer2/i/b:bGz	Ljava/io/File;
     //   39: invokevirtual 294	java/io/File:exists	()Z
     //   42: ifeq +42 -> 84
     //   45: aload 5
@@ -528,7 +528,7 @@ final class j
     //   49: aload 8
     //   51: astore 7
     //   53: aload 9
-    //   55: getfield 297	com/google/android/exoplayer2/i/b:bwk	Ljava/io/File;
+    //   55: getfield 297	com/google/android/exoplayer2/i/b:bGy	Ljava/io/File;
     //   58: invokevirtual 273	java/io/File:delete	()Z
     //   61: pop
     //   62: aload 5
@@ -536,9 +536,9 @@ final class j
     //   66: aload 8
     //   68: astore 7
     //   70: aload 9
-    //   72: getfield 270	com/google/android/exoplayer2/i/b:bwl	Ljava/io/File;
+    //   72: getfield 270	com/google/android/exoplayer2/i/b:bGz	Ljava/io/File;
     //   75: aload 9
-    //   77: getfield 297	com/google/android/exoplayer2/i/b:bwk	Ljava/io/File;
+    //   77: getfield 297	com/google/android/exoplayer2/i/b:bGy	Ljava/io/File;
     //   80: invokevirtual 301	java/io/File:renameTo	(Ljava/io/File;)Z
     //   83: pop
     //   84: aload 5
@@ -550,7 +550,7 @@ final class j
     //   96: new 305	java/io/FileInputStream
     //   99: dup
     //   100: aload 9
-    //   102: getfield 297	com/google/android/exoplayer2/i/b:bwk	Ljava/io/File;
+    //   102: getfield 297	com/google/android/exoplayer2/i/b:bGy	Ljava/io/File;
     //   105: invokespecial 306	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   108: invokespecial 309	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   111: astore 9
@@ -581,7 +581,7 @@ final class j
     //   162: iand
     //   163: ifeq +216 -> 379
     //   166: aload_0
-    //   167: getfield 37	com/google/android/exoplayer2/h/a/j:bvT	Ljavax/crypto/Cipher;
+    //   167: getfield 37	com/google/android/exoplayer2/h/a/j:bGh	Ljavax/crypto/Cipher;
     //   170: astore 6
     //   172: aload 6
     //   174: ifnonnull +16 -> 190
@@ -603,10 +603,10 @@ final class j
     //   209: invokespecial 195	javax/crypto/spec/IvParameterSpec:<init>	([B)V
     //   212: astore 6
     //   214: aload_0
-    //   215: getfield 37	com/google/android/exoplayer2/h/a/j:bvT	Ljavax/crypto/Cipher;
+    //   215: getfield 37	com/google/android/exoplayer2/h/a/j:bGh	Ljavax/crypto/Cipher;
     //   218: iconst_2
     //   219: aload_0
-    //   220: getfield 39	com/google/android/exoplayer2/h/a/j:bvU	Ljavax/crypto/spec/SecretKeySpec;
+    //   220: getfield 39	com/google/android/exoplayer2/h/a/j:bGi	Ljavax/crypto/spec/SecretKeySpec;
     //   223: aload 6
     //   225: invokevirtual 201	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
     //   228: new 311	java/io/DataInputStream
@@ -615,7 +615,7 @@ final class j
     //   235: dup
     //   236: aload 9
     //   238: aload_0
-    //   239: getfield 37	com/google/android/exoplayer2/h/a/j:bvT	Ljavax/crypto/Cipher;
+    //   239: getfield 37	com/google/android/exoplayer2/h/a/j:bGh	Ljavax/crypto/Cipher;
     //   242: invokespecial 323	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
     //   245: invokespecial 312	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   248: astore 6
@@ -656,7 +656,7 @@ final class j
     //   314: aload 5
     //   316: astore 7
     //   318: aload 8
-    //   320: invokevirtual 243	com/google/android/exoplayer2/h/a/i:vo	()I
+    //   320: invokevirtual 243	com/google/android/exoplayer2/h/a/i:wL	()I
     //   323: istore 4
     //   325: iload_1
     //   326: iload 4
@@ -687,11 +687,11 @@ final class j
     //   377: iconst_0
     //   378: ireturn
     //   379: aload_0
-    //   380: getfield 37	com/google/android/exoplayer2/h/a/j:bvT	Ljavax/crypto/Cipher;
+    //   380: getfield 37	com/google/android/exoplayer2/h/a/j:bGh	Ljavax/crypto/Cipher;
     //   383: ifnull +8 -> 391
     //   386: aload_0
     //   387: iconst_1
-    //   388: putfield 104	com/google/android/exoplayer2/h/a/j:bvW	Z
+    //   388: putfield 104	com/google/android/exoplayer2/h/a/j:bGk	Z
     //   391: goto -137 -> 254
     //   394: aload 5
     //   396: astore 6

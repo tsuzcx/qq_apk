@@ -6,32 +6,31 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.d;
 
 public final class j
 {
-  private d jId;
+  private d kcp;
   public Context mContext;
   public Resources mResources;
-  a ubl;
+  a vdU;
   
   public j(Context paramContext, a parama)
   {
     AppMethodBeat.i(55961);
-    this.jId = null;
+    this.kcp = null;
     this.mContext = paramContext;
-    this.ubl = parama;
+    this.vdU = parama;
     this.mResources = this.mContext.getResources();
     AppMethodBeat.o(55961);
   }
   
-  public final void cXA()
+  public final void dgM()
   {
     AppMethodBeat.i(55962);
-    Object localObject = g.agR().agA().get(67590, null);
+    Object localObject = com.tencent.mm.kernel.g.ajC().ajl().get(67590, null);
     if (localObject == null) {}
     for (boolean bool = false; !bool; bool = ((Boolean)localObject).booleanValue())
     {
@@ -40,8 +39,8 @@ public final class j
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(55957);
-          if (j.this.ubl != null) {
-            j.this.ubl.cXB();
+          if (j.this.vdU != null) {
+            j.this.vdU.dgN();
           }
           AppMethodBeat.o(55957);
         }
@@ -49,28 +48,28 @@ public final class j
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
       });
-      g.agR().agA().set(67590, Boolean.TRUE);
+      com.tencent.mm.kernel.g.ajC().ajl().set(67590, Boolean.TRUE);
       AppMethodBeat.o(55962);
       return;
     }
-    if (this.ubl != null) {
-      this.ubl.cXB();
+    if (this.vdU != null) {
+      this.vdU.dgN();
     }
     AppMethodBeat.o(55962);
   }
   
   public static abstract interface a
   {
-    public abstract void HB(int paramInt);
+    public abstract void IX(int paramInt);
     
-    public abstract void cXB();
+    public abstract void dgN();
     
-    public abstract void cXC();
+    public abstract void dgO();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.j
  * JD-Core Version:    0.7.0.1
  */

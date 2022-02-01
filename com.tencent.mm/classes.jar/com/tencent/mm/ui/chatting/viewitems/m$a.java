@@ -5,36 +5,36 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class m$a
   extends c.a
 {
-  public int IjS;
-  ImageView Ili;
-  TextView Ilj;
-  TextView Ilk;
-  public ImageView Ill;
-  TextView fuZ;
+  public int Kaq;
+  ImageView KbG;
+  TextView KbH;
+  TextView KbI;
+  public ImageView KbJ;
+  TextView fOg;
   
   public final a B(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(163329);
-    super.fX(paramView);
-    this.Ili = ((ImageView)this.sSS.findViewById(2131298057));
-    this.fAz = ((TextView)this.sSS.findViewById(2131298178));
-    this.Ilj = ((TextView)this.sSS.findViewById(2131298182));
-    this.Ilk = ((TextView)this.sSS.findViewById(2131298186));
-    this.fuZ = ((TextView)this.sSS.findViewById(2131298152));
-    this.xpH = ((TextView)this.sSS.findViewById(2131298185));
-    this.nDl = this.sSS.findViewById(2131298069);
-    this.gGk = this.sSS.findViewById(2131298147);
+    super.gn(paramView);
+    this.KbG = ((ImageView)this.tPw.findViewById(2131298057));
+    this.fTP = ((TextView)this.tPw.findViewById(2131298178));
+    this.KbH = ((TextView)this.tPw.findViewById(2131298182));
+    this.KbI = ((TextView)this.tPw.findViewById(2131298186));
+    this.fOg = ((TextView)this.tPw.findViewById(2131298152));
+    this.yEk = ((TextView)this.tPw.findViewById(2131298185));
+    this.ofK = this.tPw.findViewById(2131298069);
+    this.gZU = this.tPw.findViewById(2131298147);
     if (paramBoolean)
     {
-      this.vYf = ((ProgressBar)paramView.findViewById(2131306220));
-      this.Ill = ((ImageView)paramView.findViewById(2131298176));
+      this.xfR = ((ProgressBar)paramView.findViewById(2131306220));
+      this.KbJ = ((ImageView)paramView.findViewById(2131298176));
     }
-    this.IjS = c.kb(ai.getContext());
+    this.Kaq = c.kn(aj.getContext());
     AppMethodBeat.o(163329);
     return this;
   }

@@ -7,10 +7,10 @@ public enum NoMeasuredTextView$a
   static
   {
     AppMethodBeat.i(142370);
-    HCv = new a("NORMAL", 0);
-    HCw = new a("SPANNABLE", 1);
-    HCx = new a("EDITABLE", 2);
-    HCy = new a[] { HCv, HCw, HCx };
+    Jqk = new a("NORMAL", 0);
+    Jql = new a("SPANNABLE", 1);
+    Jqm = new a("EDITABLE", 2);
+    Jqn = new a[] { Jqk, Jql, Jqm };
     AppMethodBeat.o(142370);
   }
   

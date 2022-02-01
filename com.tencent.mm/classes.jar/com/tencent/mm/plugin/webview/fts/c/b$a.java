@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.webview.fts.c;
 
 public abstract interface b$a
 {
-  public abstract void Cb();
+  public abstract void DA();
   
-  public abstract void ezA();
+  public abstract void eOp();
   
-  public abstract void ezB();
+  public abstract void eOq();
   
   public abstract boolean onBackPressed();
   

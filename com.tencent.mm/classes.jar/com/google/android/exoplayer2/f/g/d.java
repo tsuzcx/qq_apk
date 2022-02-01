@@ -7,39 +7,39 @@ import java.util.List;
 
 final class d
 {
+  String aQh;
+  int bCT;
+  boolean bCU;
+  boolean bCV;
+  int bCW;
+  int bCX;
+  int bCY;
+  int bCZ;
+  String bDA;
+  int bDa;
+  Layout.Alignment bDc;
+  String bDy;
+  List<String> bDz;
   int backgroundColor;
-  int bsB;
-  boolean bsC;
-  boolean bsD;
-  int bsE;
-  int bsF;
-  int bsG;
-  int bsH;
-  int bsI;
-  float bsJ;
-  Layout.Alignment bsL;
-  String bth;
-  String bti;
-  List<String> btj;
-  String btk;
-  String jD;
+  String fontFamily;
+  float fontSize;
   
   public d()
   {
     AppMethodBeat.i(92891);
-    this.bth = "";
-    this.bti = "";
-    this.btj = Collections.emptyList();
-    this.btk = "";
-    this.jD = null;
-    this.bsC = false;
-    this.bsD = false;
-    this.bsE = -1;
-    this.bsF = -1;
-    this.bsG = -1;
-    this.bsH = -1;
-    this.bsI = -1;
-    this.bsL = null;
+    this.aQh = "";
+    this.bDy = "";
+    this.bDz = Collections.emptyList();
+    this.bDA = "";
+    this.fontFamily = null;
+    this.bCU = false;
+    this.bCV = false;
+    this.bCW = -1;
+    this.bCX = -1;
+    this.bCY = -1;
+    this.bCZ = -1;
+    this.bDa = -1;
+    this.bDc = null;
     AppMethodBeat.o(92891);
   }
   
@@ -63,13 +63,13 @@ final class d
   public final int getStyle()
   {
     int j = 0;
-    if ((this.bsG == -1) && (this.bsH == -1)) {
+    if ((this.bCY == -1) && (this.bCZ == -1)) {
       return -1;
     }
-    if (this.bsG == 1) {}
+    if (this.bCY == 1) {}
     for (int i = 1;; i = 0)
     {
-      if (this.bsH == 1) {
+      if (this.bCZ == 1) {
         j = 2;
       }
       return i | j;
@@ -78,7 +78,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g.d
  * JD-Core Version:    0.7.0.1
  */

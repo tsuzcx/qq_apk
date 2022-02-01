@@ -12,13 +12,13 @@ import com.tencent.mm.plugin.cdndownloader.ipc.CDNTaskState;
 public abstract interface a
   extends IInterface
 {
-  public abstract void Ai(int paramInt);
+  public abstract void AR(int paramInt);
   
-  public abstract boolean VL(String paramString);
+  public abstract boolean Zu(String paramString);
   
-  public abstract boolean VM(String paramString);
+  public abstract boolean Zv(String paramString);
   
-  public abstract CDNTaskState VN(String paramString);
+  public abstract CDNTaskState Zw(String paramString);
   
   public abstract int a(CDNTaskInfo paramCDNTaskInfo);
   
@@ -28,11 +28,11 @@ public abstract interface a
   
   public abstract void b(b paramb);
   
-  public abstract void bUl();
+  public abstract void bYQ();
   
-  public abstract void bUm();
+  public abstract void bYR();
   
-  public abstract void bUn();
+  public abstract void bYS();
   
   public static abstract class a
     extends Binder
@@ -94,7 +94,7 @@ public abstract interface a
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        bool = VL(paramParcel1.readString());
+        bool = Zu(paramParcel1.readString());
         paramParcel2.writeNoException();
         if (bool) {}
         for (paramInt1 = 1;; paramInt1 = 0)
@@ -104,7 +104,7 @@ public abstract interface a
         }
       case 4: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        bool = VM(paramParcel1.readString());
+        bool = Zv(paramParcel1.readString());
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -114,7 +114,7 @@ public abstract interface a
         return true;
       case 5: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        paramParcel1 = VN(paramParcel1.readString());
+        paramParcel1 = Zw(paramParcel1.readString());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -136,22 +136,22 @@ public abstract interface a
         return true;
       case 8: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        Ai(paramParcel1.readInt());
+        AR(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        bUl();
+        bYQ();
         paramParcel2.writeNoException();
         return true;
       case 10: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        bUm();
+        bYR();
         paramParcel2.writeNoException();
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-      bUn();
+      bYS();
       paramParcel2.writeNoException();
       return true;
     }
@@ -166,7 +166,7 @@ public abstract interface a
         this.mRemote = paramIBinder;
       }
       
-      public final void Ai(int paramInt)
+      public final void AR(int paramInt)
       {
         AppMethodBeat.i(120700);
         Parcel localParcel1 = Parcel.obtain();
@@ -187,7 +187,7 @@ public abstract interface a
         }
       }
       
-      public final boolean VL(String paramString)
+      public final boolean Zu(String paramString)
       {
         boolean bool = false;
         AppMethodBeat.i(120695);
@@ -213,7 +213,7 @@ public abstract interface a
         }
       }
       
-      public final boolean VM(String paramString)
+      public final boolean Zv(String paramString)
       {
         boolean bool = false;
         AppMethodBeat.i(120696);
@@ -240,7 +240,7 @@ public abstract interface a
       }
       
       /* Error */
-      public final CDNTaskState VN(String paramString)
+      public final CDNTaskState Zw(String paramString)
       {
         // Byte code:
         //   0: ldc 72
@@ -577,7 +577,7 @@ public abstract interface a
         //   30	54	73	finally
       }
       
-      public final void bUl()
+      public final void bYQ()
       {
         AppMethodBeat.i(120701);
         Parcel localParcel1 = Parcel.obtain();
@@ -597,7 +597,7 @@ public abstract interface a
         }
       }
       
-      public final void bUm()
+      public final void bYR()
       {
         AppMethodBeat.i(120702);
         Parcel localParcel1 = Parcel.obtain();
@@ -617,7 +617,7 @@ public abstract interface a
         }
       }
       
-      public final void bUn()
+      public final void bYS()
       {
         AppMethodBeat.i(120703);
         Parcel localParcel1 = Parcel.obtain();

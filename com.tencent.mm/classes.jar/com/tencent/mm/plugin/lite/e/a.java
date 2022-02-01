@@ -2,35 +2,33 @@ package com.tencent.mm.plugin.lite.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.a.h;
-import com.tencent.mm.plugin.websearch.api.z;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import org.json.JSONObject;
 
 public class a
   extends com.tencent.mm.plugin.lite.jsapi.a
 {
-  public void invoke(String paramString, JSONObject paramJSONObject)
+  public final int cXg()
   {
-    AppMethodBeat.i(205717);
-    ac.i("LiteAppJsApiDoGoToRecVideoList", "doGoToRecVideoList");
+    return 1;
+  }
+  
+  public final void j(String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(217196);
+    com.tencent.mm.sdk.platformtools.ad.i("LiteAppJsApiDoGoToRecVideoList", "doGoToRecVideoList");
     try
     {
-      paramString = h.aK(paramJSONObject);
-      z.b(ai.getContext(), paramString);
-      AppMethodBeat.o(205717);
+      paramString = h.aS(paramJSONObject);
+      com.tencent.mm.plugin.websearch.api.ad.b(aj.getContext(), paramString);
+      AppMethodBeat.o(217196);
       return;
     }
     catch (Exception paramString)
     {
-      ac.printErrStackTrace("LiteAppJsApiDoGoToRecVideoList", paramString, "doGoToRecVideoList", new Object[0]);
-      AppMethodBeat.o(205717);
+      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("LiteAppJsApiDoGoToRecVideoList", paramString, "doGoToRecVideoList", new Object[0]);
+      AppMethodBeat.o(217196);
     }
-  }
-  
-  public int runModel()
-  {
-    return 1;
   }
 }
 

@@ -12,12 +12,12 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.PopupWindow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.an;
+import com.tencent.mm.ui.ap;
 
 public class o
   extends PopupWindow
 {
-  private View.OnTouchListener Hyq;
+  private View.OnTouchListener Jmh;
   private Context mContext;
   
   public o(Context paramContext)
@@ -69,7 +69,7 @@ public class o
     }
     catch (Exception localException)
     {
-      an.e("MicroMsg.MMPopupWindow", "dismiss exception, e = " + localException.getMessage(), new Object[0]);
+      ap.e("MicroMsg.MMPopupWindow", "dismiss exception, e = " + localException.getMessage(), new Object[0]);
       AppMethodBeat.o(159251);
     }
   }
@@ -161,7 +161,7 @@ public class o
   
   public void setTouchInterceptor(View.OnTouchListener paramOnTouchListener)
   {
-    this.Hyq = paramOnTouchListener;
+    this.Jmh = paramOnTouchListener;
   }
   
   final class a

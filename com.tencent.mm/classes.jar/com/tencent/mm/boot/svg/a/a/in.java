@@ -45,7 +45,7 @@ public final class in
       c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-5066062);
+      localPaint.setColor(-8421505);
       localObject = c.n(paramVarArgs);
       ((Path)localObject).moveTo(47.897362F, 164.64719F);
       ((Path)localObject).lineTo(47.897362F, 168.0F);
@@ -198,7 +198,7 @@ public final class in
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.in
  * JD-Core Version:    0.7.0.1
  */

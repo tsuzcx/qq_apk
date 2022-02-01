@@ -1,18 +1,18 @@
 package d.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"buildString", "", "capacity", "", "builderAction", "Lkotlin/Function1;", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "", "Lkotlin/ExtensionFunctionType;", "append", "obj", "", "value", "", "(Ljava/lang/StringBuilder;[Ljava/lang/Object;)Ljava/lang/StringBuilder;", "(Ljava/lang/StringBuilder;[Ljava/lang/String;)Ljava/lang/StringBuilder;", "kotlin-stdlib"}, fOb=1)
+@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"buildString", "", "capacity", "", "builderAction", "Lkotlin/Function1;", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "", "Lkotlin/ExtensionFunctionType;", "append", "obj", "", "value", "", "(Ljava/lang/StringBuilder;[Ljava/lang/Object;)Ljava/lang/StringBuilder;", "(Ljava/lang/StringBuilder;[Ljava/lang/String;)Ljava/lang/StringBuilder;", "kotlin-stdlib"})
 public class t
   extends s
 {
   public static final StringBuilder a(StringBuilder paramStringBuilder, String... paramVarArgs)
   {
     AppMethodBeat.i(129465);
-    k.h(paramStringBuilder, "$this$append");
-    k.h(paramVarArgs, "value");
+    p.h(paramStringBuilder, "$this$append");
+    p.h(paramVarArgs, "value");
     int i = 0;
     while (i < 3)
     {

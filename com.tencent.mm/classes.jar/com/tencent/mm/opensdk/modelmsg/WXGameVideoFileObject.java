@@ -3,7 +3,7 @@ package com.tencent.mm.opensdk.modelmsg;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXGameVideoFileObject
   implements WXMediaMessage.IMediaObject
@@ -17,22 +17,26 @@ public class WXGameVideoFileObject
   
   public WXGameVideoFileObject()
   {
+    AppMethodBeat.i(196950);
     this.filePath = null;
     this.videoUrl = null;
     this.thumbUrl = null;
+    AppMethodBeat.o(196950);
   }
   
   public WXGameVideoFileObject(String paramString1, String paramString2, String paramString3)
   {
+    AppMethodBeat.i(196951);
     this.filePath = paramString1;
     this.videoUrl = paramString2;
     this.thumbUrl = paramString3;
+    AppMethodBeat.o(196951);
   }
   
   private int getFileSize(String paramString)
   {
     AppMethodBeat.i(4027);
-    int i = d.getFileSize(paramString);
+    int i = b.a(paramString);
     AppMethodBeat.o(4027);
     return i;
   }
@@ -40,32 +44,35 @@ public class WXGameVideoFileObject
   public boolean checkArgs()
   {
     AppMethodBeat.i(4026);
-    if ((this.filePath == null) || (this.filePath.length() == 0))
+    String str = this.filePath;
+    if ((str != null) && (str.length() != 0))
     {
-      Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, filePath is null");
+      if (getFileSize(this.filePath) > 104857600)
+      {
+        Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, video file size is too large");
+        AppMethodBeat.o(4026);
+        return false;
+      }
+      str = this.videoUrl;
+      if ((str != null) && (str.length() > 10240))
+      {
+        Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, videoUrl is too long");
+        AppMethodBeat.o(4026);
+        return false;
+      }
+      str = this.thumbUrl;
+      if ((str != null) && (str.length() > 10240))
+      {
+        Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, thumbUrl is too long");
+        AppMethodBeat.o(4026);
+        return false;
+      }
       AppMethodBeat.o(4026);
-      return false;
+      return true;
     }
-    if (getFileSize(this.filePath) > 104857600)
-    {
-      Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, video file size is too large");
-      AppMethodBeat.o(4026);
-      return false;
-    }
-    if ((this.videoUrl != null) && (this.videoUrl.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, videoUrl is too long");
-      AppMethodBeat.o(4026);
-      return false;
-    }
-    if ((this.thumbUrl != null) && (this.thumbUrl.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, thumbUrl is too long");
-      AppMethodBeat.o(4026);
-      return false;
-    }
+    Log.e("MicroMsg.SDK.WXGameVideoFileObject", "checkArgs fail, filePath is null");
     AppMethodBeat.o(4026);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

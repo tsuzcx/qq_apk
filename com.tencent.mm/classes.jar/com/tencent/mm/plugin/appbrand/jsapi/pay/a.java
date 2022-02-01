@@ -7,7 +7,7 @@ public abstract interface a
 {
   public static abstract interface a
   {
-    public abstract void m(String paramString, Map<String, Object> paramMap);
+    public abstract void o(String paramString, Map<String, Object> paramMap);
   }
   
   public static abstract interface b
@@ -16,8 +16,14 @@ public abstract interface a
   }
   
   public static abstract interface c
+    extends a.b
   {
-    public abstract void m(boolean paramBoolean, String paramString);
+    public abstract void b(int paramInt, String paramString, Map<String, Object> paramMap);
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void p(boolean paramBoolean, String paramString);
   }
 }
 

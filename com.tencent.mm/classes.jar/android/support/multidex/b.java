@@ -23,18 +23,18 @@ import java.util.zip.ZipOutputStream;
 
 final class b
 {
-  private static Method xG;
+  private static Method zA;
   
   static
   {
     try
     {
-      xG = SharedPreferences.Editor.class.getMethod("apply", new Class[0]);
+      zA = SharedPreferences.Editor.class.getMethod("apply", new Class[0]);
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      xG = null;
+      zA = null;
     }
   }
   
@@ -81,10 +81,10 @@ final class b
       paramContext.putLong("timestamp", l2);
       paramContext.putLong("crc", l1);
       paramContext.putInt("dex.number", i + 1);
-      if (xG != null) {}
+      if (zA != null) {}
       try
       {
-        xG.invoke(paramContext, new Object[0]);
+        zA.invoke(paramContext, new Object[0]);
         paramContext = paramApplicationInfo;
       }
       catch (InvocationTargetException paramFile)
@@ -267,7 +267,7 @@ final class b
     {
       public final boolean accept(File paramAnonymousFile)
       {
-        return !paramAnonymousFile.getName().startsWith(this.xH);
+        return !paramAnonymousFile.getName().startsWith(this.zB);
       }
     });
     if (paramString == null)

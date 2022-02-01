@@ -10,7 +10,7 @@ import android.view.View;
 public abstract class ExpandableTransformationBehavior
   extends ExpandableBehavior
 {
-  private AnimatorSet kI;
+  private AnimatorSet my;
   
   public ExpandableTransformationBehavior() {}
   
@@ -21,23 +21,23 @@ public abstract class ExpandableTransformationBehavior
   
   protected boolean a(View paramView1, View paramView2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.kI != null) {}
+    if (this.my != null) {}
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
-        this.kI.cancel();
+        this.my.cancel();
       }
-      this.kI = b(paramView1, paramView2, paramBoolean1, bool);
-      this.kI.addListener(new AnimatorListenerAdapter()
+      this.my = b(paramView1, paramView2, paramBoolean1, bool);
+      this.my.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           ExpandableTransformationBehavior.a(ExpandableTransformationBehavior.this);
         }
       });
-      this.kI.start();
+      this.my.start();
       if (!paramBoolean2) {
-        this.kI.end();
+        this.my.end();
       }
       return true;
     }

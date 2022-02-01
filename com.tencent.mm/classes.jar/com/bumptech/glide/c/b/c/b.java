@@ -18,13 +18,13 @@ final class b
     int j = Runtime.getRuntime().availableProcessors();
     int i = j;
     if (Build.VERSION.SDK_INT < 17) {
-      i = Math.max(oU(), j);
+      i = Math.max(pm(), j);
     }
     AppMethodBeat.o(77196);
     return i;
   }
   
-  private static int oU()
+  private static int pm()
   {
     AppMethodBeat.i(77197);
     Object localObject1 = null;

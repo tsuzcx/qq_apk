@@ -3,38 +3,36 @@ package com.tencent.mm.plugin.music.model;
 import android.content.ClipboardManager;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ec;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.music.e.k;
 import com.tencent.mm.plugin.music.e.m;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bb;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bc;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class f
-  implements aw
+  implements ax
 {
-  private com.tencent.mm.sdk.b.c ney;
-  private com.tencent.mm.sdk.b.c vco;
-  private com.tencent.mm.plugin.music.model.e.b vfA;
-  private ClipboardManager vfB;
-  private com.tencent.mm.plugin.music.model.e.d vfC;
-  private com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.d> vfD;
+  private com.tencent.mm.sdk.b.c nEU;
+  private com.tencent.mm.sdk.b.c whK;
+  private com.tencent.mm.plugin.music.model.e.b wkV;
+  private ClipboardManager wkW;
+  private com.tencent.mm.plugin.music.model.e.d wkX;
+  private com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.d> wkY;
   
   public f()
   {
     AppMethodBeat.i(63029);
-    this.vco = new com.tencent.mm.plugin.music.e.f();
-    this.ney = new f.3(this);
-    this.vfD = new com.tencent.mm.sdk.b.c() {};
+    this.whK = new com.tencent.mm.plugin.music.e.f();
+    this.nEU = new f.3(this);
+    this.wkY = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(63029);
   }
   
-  private static f diS()
+  private static f dte()
   {
     AppMethodBeat.i(63030);
     f localf = (f)t.ap(f.class);
@@ -42,35 +40,35 @@ public class f
     return localf;
   }
   
-  public static com.tencent.mm.plugin.music.model.e.b diT()
+  public static com.tencent.mm.plugin.music.model.e.b dtf()
   {
     AppMethodBeat.i(63032);
-    if (diS().vfA == null) {
-      diS().vfA = new com.tencent.mm.plugin.music.model.e.b(g.agR().ghG);
+    if (dte().wkV == null) {
+      dte().wkV = new com.tencent.mm.plugin.music.model.e.b(g.ajC().gBq);
     }
-    com.tencent.mm.plugin.music.model.e.b localb = diS().vfA;
+    com.tencent.mm.plugin.music.model.e.b localb = dte().wkV;
     AppMethodBeat.o(63032);
     return localb;
   }
   
-  public static ClipboardManager diU()
+  public static ClipboardManager dtg()
   {
     AppMethodBeat.i(63033);
-    if (diS().vfB == null) {
-      diS().vfB = ((ClipboardManager)ai.getContext().getSystemService("clipboard"));
+    if (dte().wkW == null) {
+      dte().wkW = ((ClipboardManager)aj.getContext().getSystemService("clipboard"));
     }
-    ClipboardManager localClipboardManager = diS().vfB;
+    ClipboardManager localClipboardManager = dte().wkW;
     AppMethodBeat.o(63033);
     return localClipboardManager;
   }
   
-  public static com.tencent.mm.plugin.music.model.e.d diV()
+  public static com.tencent.mm.plugin.music.model.e.d dth()
   {
     AppMethodBeat.i(63034);
-    if (diS().vfC == null) {
-      diS().vfC = new com.tencent.mm.plugin.music.model.e.d(g.agR().ghG);
+    if (dte().wkX == null) {
+      dte().wkX = new com.tencent.mm.plugin.music.model.e.d(g.ajC().gBq);
     }
-    com.tencent.mm.plugin.music.model.e.d locald = diS().vfC;
+    com.tencent.mm.plugin.music.model.e.d locald = dte().wkX;
     AppMethodBeat.o(63034);
     return locald;
   }
@@ -81,16 +79,7 @@ public class f
   {
     AppMethodBeat.i(63031);
     HashMap localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf("Music".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        AppMethodBeat.i(63025);
-        String str = j.getCreateSQLs(ec.Th(), "Music");
-        AppMethodBeat.o(63025);
-        return new String[] { str };
-      }
-    });
+    localHashMap.put(Integer.valueOf("Music".hashCode()), new f.1(this));
     localHashMap.put(Integer.valueOf("PieceMusicInfo".hashCode()), new f.2(this));
     AppMethodBeat.o(63031);
     return localHashMap;
@@ -99,16 +88,16 @@ public class f
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(63035);
-    this.vfD.alive();
-    this.vco.alive();
-    Object localObject = a.a.vfl;
-    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).a(6, ((a)localObject).jPm);
-    ((a)localObject).vfg.alive();
-    ((a)localObject).jyt = new bb();
-    ((a)localObject).jyt.iR(ai.getContext());
-    ((a)localObject).jyt.a(((a)localObject).jyu);
-    ((a)localObject).jyw.alive();
-    this.ney.alive();
+    this.wkY.alive();
+    this.whK.alive();
+    Object localObject = a.a.wkG;
+    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).a(6, ((a)localObject).kjw);
+    ((a)localObject).wkB.alive();
+    ((a)localObject).jSq = new bc();
+    ((a)localObject).jSq.jb(aj.getContext());
+    ((a)localObject).jSq.a(((a)localObject).jSr);
+    ((a)localObject).jSt.alive();
+    this.nEU.alive();
     localObject = new m();
     k.a((com.tencent.mm.plugin.music.e.a)localObject);
     com.tencent.mm.plugin.music.f.c.b.a(com.tencent.mm.plugin.music.e.e.class, (com.tencent.mm.plugin.music.f.c.a)localObject);
@@ -119,21 +108,21 @@ public class f
   public void onAccountRelease()
   {
     AppMethodBeat.i(63036);
-    k.diP();
+    k.dtb();
     com.tencent.mm.plugin.music.f.c.b.ac(com.tencent.mm.plugin.music.e.e.class);
-    this.vfA = null;
-    this.vfB = null;
-    this.vfC = null;
-    a locala = a.a.vfl;
-    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).b(6, locala.jPm);
-    locala.vfg.dead();
-    locala.jyt.b(locala.jyu);
-    locala.jyt.end();
-    locala.jyw.dead();
-    com.tencent.mm.sdk.b.a.GpY.d(this.vco);
-    this.vco.dead();
-    this.ney.dead();
-    this.vfD.dead();
+    this.wkV = null;
+    this.wkW = null;
+    this.wkX = null;
+    a locala = a.a.wkG;
+    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).b(6, locala.kjw);
+    locala.wkB.dead();
+    locala.jSq.b(locala.jSr);
+    locala.jSq.end();
+    locala.jSt.dead();
+    com.tencent.mm.sdk.b.a.IbL.d(this.whK);
+    this.whK.dead();
+    this.nEU.dead();
+    this.wkY.dead();
     AppMethodBeat.o(63036);
   }
   

@@ -8,31 +8,32 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.task.e;
 import com.tencent.mm.plugin.appbrand.task.i;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.aw;
-import d.g.b.u;
-import d.g.b.w;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ax;
+import d.f;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
 import d.n.n;
-import d.y;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingLogic;", "", "ctx", "Landroid/content/Context;", "startAppBrandIntent", "Landroid/content/Intent;", "cfg", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "task", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandUITask;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/task/AppBrandUITask;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;)V", "connect", "Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingServiceConnection;", "getConnect", "()Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingServiceConnection;", "connect$delegate", "Lkotlin/Lazy;", "pendingIntentKey", "", "forceDisable", "", "getUiFlavor", "needPreLoadingUi", "onNeedPreLoadingUI", "", "setupOpenAnim", "Landroid/app/Activity;", "startAppBrandProgress", "targetServiceClassName", "", "startPreLoadingActivity", "targetActivityName", "xLabIsOpen", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingLogic;", "", "ctx", "Landroid/content/Context;", "startAppBrandIntent", "Landroid/content/Intent;", "cfg", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "task", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandUITask;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "(Landroid/content/Context;Landroid/content/Intent;Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/task/AppBrandUITask;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;)V", "connect", "Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingServiceConnection;", "getConnect", "()Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingServiceConnection;", "connect$delegate", "Lkotlin/Lazy;", "pendingIntentKey", "", "forceDisable", "", "getUiFlavor", "needPreLoadingUi", "onNeedPreLoadingUI", "", "setupOpenAnim", "Landroid/app/Activity;", "startAppBrandProgress", "targetServiceClassName", "", "startPreLoadingActivity", "targetActivityName", "xLabIsOpen", "Companion", "plugin-appbrand-integration_release"})
 public final class a
 {
-  private static ServiceConnection lqq;
-  public static final a lqr;
+  private static ServiceConnection lNO;
+  public static final a.a lNP;
   public final Context ctx;
-  public final AppBrandInitConfigWC jjQ;
-  public final AppBrandStatObject jjR;
-  public int lqm;
-  private final d.f lqn;
-  public final Intent lqo;
-  public final i lqp;
+  public final AppBrandInitConfigWC jDG;
+  public final AppBrandStatObject jDH;
+  public int lNK;
+  private final f lNL;
+  public final Intent lNM;
+  public final i lNN;
   
   static
   {
     AppMethodBeat.i(50818);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(a.class), "connect", "getConnect()Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingServiceConnection;")) };
-    lqr = new a((byte)0);
+    lNP = new a.a((byte)0);
     AppMethodBeat.o(50818);
   }
   
@@ -40,78 +41,78 @@ public final class a
   {
     AppMethodBeat.i(50817);
     this.ctx = paramContext;
-    this.lqo = paramIntent;
-    this.jjQ = paramAppBrandInitConfigWC;
-    this.lqp = parami;
-    this.jjR = paramAppBrandStatObject;
-    this.lqm = -1;
-    this.lqn = d.g.K((d.g.a.a)new b(this));
+    this.lNM = paramIntent;
+    this.jDG = paramAppBrandInitConfigWC;
+    this.lNN = parami;
+    this.jDH = paramAppBrandStatObject;
+    this.lNK = -1;
+    this.lNL = d.g.O((d.g.a.a)new b(this));
     AppMethodBeat.o(50817);
   }
   
-  public final b boj()
+  public final b bsc()
   {
     AppMethodBeat.i(175200);
-    b localb = (b)this.lqn.getValue();
+    b localb = (b)this.lNL.getValue();
     AppMethodBeat.o(175200);
     return localb;
   }
   
-  public final int bok()
+  public final int bsd()
   {
-    if ((this.lqp instanceof com.tencent.mm.plugin.appbrand.task.b)) {
+    if ((this.lNN instanceof com.tencent.mm.plugin.appbrand.task.b)) {
       return 4;
     }
     return 5;
   }
   
-  public final boolean bol()
+  public final boolean bse()
   {
     AppMethodBeat.i(50816);
-    if ((this.lqp.buG() == e.lYr) && (!this.jjQ.jDF))
+    if ((this.lNN.byK() == e.myg) && (!this.jDG.jXB))
     {
-      Object localObject = this.lqp.buH();
-      d.g.b.k.g(localObject, "task.processTriggerServiceClass");
+      Object localObject = this.lNN.byL();
+      p.g(localObject, "task.processTriggerServiceClass");
       localObject = (CharSequence)((Class)localObject).getCanonicalName();
       label102:
       label125:
       boolean bool;
-      if ((localObject == null) || (n.aD((CharSequence)localObject)))
+      if ((localObject == null) || (n.aE((CharSequence)localObject)))
       {
         i = 1;
-        if ((i != 0) || (com.tencent.mm.plugin.appbrand.ab.g.RI(this.jjQ.appId)) || (com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.f.d(this.jjQ, this.jjR))) {
-          break label192;
+        if ((i != 0) || (com.tencent.mm.plugin.appbrand.ab.g.Vn(this.jDG.appId)) || (com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.g.e(this.jDG, this.jDH))) {
+          break label191;
         }
-        if (com.tencent.mm.protocal.d.DId) {
-          break label172;
+        if (com.tencent.mm.protocal.d.Fnk) {
+          break label171;
         }
         i = 1;
-        if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pYr, i) != 1) {
-          break label177;
+        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qDx, i) != 1) {
+          break label176;
         }
         i = 1;
         if (i == 0) {
-          break label192;
+          break label191;
         }
-        localObject = com.tencent.mm.plugin.appbrand.app.d.jjJ;
-        localObject = com.tencent.mm.plugin.appbrand.app.d.JW();
+        localObject = com.tencent.mm.plugin.appbrand.app.d.jDy;
+        localObject = com.tencent.mm.plugin.appbrand.app.d.Lv();
         if (localObject == null) {
-          break label182;
+          break label181;
         }
-        bool = ((aw)localObject).getBoolean("enable_pre_loading", true);
-        label150:
+        bool = ((ax)localObject).getBoolean("enable_pre_loading", true);
+        label149:
         if (bool) {
-          break label187;
+          break label186;
         }
       }
-      label172:
-      label177:
-      label182:
-      label187:
+      label171:
+      label176:
+      label181:
+      label186:
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
-          break label192;
+          break label191;
         }
         AppMethodBeat.o(50816);
         return true;
@@ -122,20 +123,17 @@ public final class a
         i = 0;
         break label125;
         bool = true;
-        break label150;
+        break label149;
       }
     }
-    label192:
+    label191:
     AppMethodBeat.o(50816);
     return false;
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingLogic$Companion;", "", "()V", "INTENT_KEY_APP_ID", "", "INTENT_KEY_ATTR_VERSION_INFO", "INTENT_KEY_ICON", "INTENT_KEY_NAME", "INTENT_KEY_PENDING_INTENT", "INTENT_KEY_SCENE", "INTENT_KEY_SERVICE_NAME", "INTENT_KEY_SPLASH_FLAVOR", "INTENT_KEY_TARGET_ACTIVITY_NAME", "IPC_PRE_LOAD_SUCCESS", "", "IPC_TRIGGER_PROGRESS", "IPC_TRIGGER_PROGRESS_FAIL", "IPC_TRIGGER_PROGRESS_SUCCESS", "NORMAL", "PLUGIN", "TAG", "connectionRefForUnbind", "Landroid/content/ServiceConnection;", "getConnectionRefForUnbind", "()Landroid/content/ServiceConnection;", "setConnectionRefForUnbind", "(Landroid/content/ServiceConnection;)V", "plugin-appbrand-integration_release"})
-  public static final class a {}
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingServiceConnection;", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingServiceConnection;", "invoke"})
   static final class b
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<b>
   {
     b(a parama)
@@ -144,10 +142,10 @@ public final class a
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   public static final class c
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     public c(a parama, String paramString)
     {
@@ -157,7 +155,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.loading.a
  * JD-Core Version:    0.7.0.1
  */

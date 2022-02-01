@@ -9,9 +9,9 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.h.e;
+import com.tencent.mm.pluginsdk.ui.i.e;
 import com.tencent.mm.pluginsdk.ui.tools.u;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.MMTextureView;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
@@ -23,7 +23,7 @@ public class MPExoVideoTextureView
 {
   private int mVideoHeight;
   private int mVideoWidth;
-  private u nQg;
+  private u osN;
   
   public MPExoVideoTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,7 +34,7 @@ public class MPExoVideoTextureView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(6261);
-    this.nQg = new u();
+    this.osN = new u();
     this.mVideoWidth = 0;
     this.mVideoHeight = 0;
     AppMethodBeat.o(6261);
@@ -64,7 +64,7 @@ public class MPExoVideoTextureView
     AppMethodBeat.o(6267);
   }
   
-  public final void bNN()
+  public final void bSn()
   {
     AppMethodBeat.i(6263);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
@@ -73,7 +73,7 @@ public class MPExoVideoTextureView
     AppMethodBeat.o(6263);
   }
   
-  public final void bNO()
+  public final void bSo()
   {
     AppMethodBeat.i(6266);
     try
@@ -81,7 +81,7 @@ public class MPExoVideoTextureView
       SurfaceTexture localSurfaceTexture = getSurfaceTexture();
       if (localSurfaceTexture != null)
       {
-        ac.i("MicroMsg.MPExoVideoTextureView", "%d releaseSurface", new Object[] { Integer.valueOf(hashCode()) });
+        ad.i("MicroMsg.MPExoVideoTextureView", "%d releaseSurface", new Object[] { Integer.valueOf(hashCode()) });
         h(localSurfaceTexture);
       }
       AppMethodBeat.o(6266);
@@ -89,7 +89,7 @@ public class MPExoVideoTextureView
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.MPExoVideoTextureView", localException, "release surface", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.MPExoVideoTextureView", localException, "release surface", new Object[0]);
       AppMethodBeat.o(6266);
     }
   }
@@ -97,7 +97,7 @@ public class MPExoVideoTextureView
   public final void h(final Surface paramSurface)
   {
     AppMethodBeat.i(6268);
-    h.JZN.aS(new Runnable()
+    h.LTJ.aR(new Runnable()
     {
       public final void run()
       {
@@ -106,7 +106,7 @@ public class MPExoVideoTextureView
         {
           if ((paramSurface != null) && (paramSurface.isValid()))
           {
-            ac.i("MicroMsg.MPExoVideoTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramSurface.hashCode()) });
+            ad.i("MicroMsg.MPExoVideoTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramSurface.hashCode()) });
             paramSurface.release();
           }
           AppMethodBeat.o(6260);
@@ -114,7 +114,7 @@ public class MPExoVideoTextureView
         }
         catch (Exception localException)
         {
-          ac.printErrStackTrace("MicroMsg.MPExoVideoTextureView", localException, "release Surface error", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.MPExoVideoTextureView", localException, "release Surface error", new Object[0]);
           AppMethodBeat.o(6260);
         }
       }
@@ -135,15 +135,15 @@ public class MPExoVideoTextureView
     paramInt2 = getDefaultSize(1, paramInt2);
     int i = this.mVideoWidth;
     int j = this.mVideoHeight;
-    this.nQg.x(paramInt1, paramInt2, i, j);
-    setMeasuredDimension(this.nQg.kWD, this.nQg.kWE);
+    this.osN.y(paramInt1, paramInt2, i, j);
+    setMeasuredDimension(this.osN.ltC, this.osN.ltD);
     AppMethodBeat.o(6265);
   }
   
-  public void setScaleType(h.e parame)
+  public void setScaleType(i.e parame)
   {
     AppMethodBeat.i(6264);
-    this.nQg.a(parame);
+    this.osN.a(parame);
     requestLayout();
     AppMethodBeat.o(6264);
   }
@@ -157,8 +157,8 @@ public class MPExoVideoTextureView
   public final void stop()
   {
     AppMethodBeat.i(6262);
-    bNO();
-    this.nQg.reset();
+    bSo();
+    this.osN.reset();
     AppMethodBeat.o(6262);
   }
 }

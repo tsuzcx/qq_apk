@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.sdk.b.b;
 
 public final class hh
   extends b
 {
-  public a dir;
+  public a dtJ;
   
   public hh()
   {
@@ -16,24 +15,23 @@ public final class hh
   
   private hh(byte paramByte)
   {
-    AppMethodBeat.i(194872);
-    this.dir = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(190900);
+    this.dtJ = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(194872);
+    AppMethodBeat.o(190900);
   }
   
   public static final class a
   {
-    public WXMediaMessage dis;
-    public int dit;
-    public String diu;
-    public String username;
+    public int aHQ;
+    public int dtK;
+    public String dtL;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.hh
  * JD-Core Version:    0.7.0.1
  */

@@ -3,22 +3,23 @@ package com.tencent.mm.plugin.appbrand.ui.recommend;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b.h;
+import com.tencent.mm.sdk.platformtools.g;
 
 public final class f
   implements b.h
 {
-  public static final f mmA;
-  public int huL = 0;
-  public int mmz = 0;
+  public static final f mNc;
+  public int hNd = 0;
+  public int mNb = 0;
   
   static
   {
     AppMethodBeat.i(49296);
-    mmA = new f();
+    mNc = new f();
     AppMethodBeat.o(49296);
   }
   
-  public final String Ap()
+  public final String BM()
   {
     return "WxaRecommendIcon";
   }
@@ -35,17 +36,17 @@ public final class f
     float f1;
     if (paramBitmap.getWidth() == paramBitmap.getHeight())
     {
-      f2 = this.mmz;
+      f2 = this.mNb;
       f1 = f2;
-      if (this.huL > 0)
+      if (this.hNd > 0)
       {
         f1 = f2;
-        if (this.mmz > 0) {
-          f1 = this.mmz * paramBitmap.getWidth() / this.huL;
+        if (this.mNb > 0) {
+          f1 = this.mNb * paramBitmap.getWidth() / this.hNd;
         }
       }
     }
-    for (paramBitmap = com.tencent.mm.sdk.platformtools.f.a(paramBitmap, false, f1);; paramBitmap = com.tencent.mm.sdk.platformtools.f.a(paramBitmap, false, f1))
+    for (paramBitmap = g.a(paramBitmap, false, f1);; paramBitmap = g.a(paramBitmap, false, f1))
     {
       AppMethodBeat.o(49295);
       return paramBitmap;
@@ -54,14 +55,14 @@ public final class f
       if (j <= 0) {
         i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
       }
-      paramBitmap = com.tencent.mm.sdk.platformtools.f.b(paramBitmap, i, i, true);
-      f2 = this.mmz;
+      paramBitmap = g.b(paramBitmap, i, i, true);
+      f2 = this.mNb;
       f1 = f2;
-      if (this.huL > 0)
+      if (this.hNd > 0)
       {
         f1 = f2;
-        if (this.mmz > 0) {
-          f1 = this.mmz * paramBitmap.getWidth() / this.huL;
+        if (this.mNb > 0) {
+          f1 = this.mNb * paramBitmap.getWidth() / this.hNd;
         }
       }
     }

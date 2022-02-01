@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.media.widget.camerarecordview.preview.e;
 import com.tencent.mm.plugin.recordvideo.d.c;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
@@ -17,150 +18,157 @@ import com.tencent.mm.plugin.recordvideo.jumper.XEffectConfig;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
 import com.tencent.mm.plugin.recordvideo.plugin.t;
+import com.tencent.mm.plugin.recordvideo.plugin.t.a;
 import com.tencent.mm.plugin.xlabeffect.XLabEffectSettingView;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.i;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/plugin/FinderRecordBeautifyPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "cameraView", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;)V", "backEnable", "", "frontEnable", "icon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "iconCheck", "Landroid/widget/ImageView;", "isBack", "pluginEnable", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/ViewGroup;", "setView", "(Landroid/view/ViewGroup;)V", "enableBeauty", "initConfig", "", "config", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "setEnable", "enable", "setIsUseBackCamera", "isBackCamera", "setVisibility", "visibility", "", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/plugin/FinderRecordBeautifyPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "cameraView", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;)V", "backEnable", "", "frontEnable", "icon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "iconCheck", "Landroid/widget/ImageView;", "isBack", "pluginEnable", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/ViewGroup;", "setView", "(Landroid/view/ViewGroup;)V", "enableBeauty", "initConfig", "", "config", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "setEnable", "enable", "setIsUseBackCamera", "isBackCamera", "setVisibility", "visibility", "", "plugin-finder_release"})
 public final class a
   implements t
 {
-  boolean iWQ;
-  private boolean rTN;
-  boolean rTO;
-  boolean rTP;
-  private final WeImageView rTQ;
-  private final ImageView rTR;
-  ViewGroup rTS;
-  private d rTT;
-  final e rTU;
+  boolean jpZ;
+  boolean sQA;
+  private final WeImageView sQB;
+  private final ImageView sQC;
+  ViewGroup sQD;
+  private d sQE;
+  final e sQF;
+  private boolean sQy;
+  boolean sQz;
   
   public a(ViewGroup paramViewGroup, d paramd, e parame)
   {
-    AppMethodBeat.i(203964);
-    this.rTS = paramViewGroup;
-    this.rTT = paramd;
-    this.rTU = parame;
-    this.iWQ = true;
-    this.rTP = true;
-    this.rTQ = ((WeImageView)this.rTS.findViewById(2131307278));
-    this.rTR = ((ImageView)this.rTS.findViewById(2131307279));
-    this.rTQ.setIconColor(-1);
-    this.rTR.setImageDrawable(com.tencent.mm.cc.a.l(this.rTS.getContext(), 2131691551));
-    this.rTS.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    AppMethodBeat.i(204921);
+    this.sQD = paramViewGroup;
+    this.sQE = paramd;
+    this.sQF = parame;
+    this.jpZ = true;
+    this.sQA = true;
+    this.sQB = ((WeImageView)this.sQD.findViewById(2131307278));
+    this.sQC = ((ImageView)this.sQD.findViewById(2131307279));
+    this.sQB.setIconColor(-1);
+    this.sQC.setImageDrawable(com.tencent.mm.cc.a.l(this.sQD.getContext(), 2131691551));
+    this.sQD.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        boolean bool2 = true;
-        boolean bool1 = true;
-        AppMethodBeat.i(203957);
-        if (this.rTV.iWQ)
+        boolean bool = true;
+        AppMethodBeat.i(204914);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/video/plugin/FinderRecordBeautifyPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (this.sQG.jpZ)
         {
-          paramAnonymousView = this.rTV;
-          if (!this.rTV.rTO) {}
-          for (;;)
+          paramAnonymousView = this.sQG;
+          if (!this.sQG.sQz) {}
+          for (bool = true;; bool = false)
           {
-            paramAnonymousView.rTO = bool1;
-            this.rTV.setEnable(this.rTV.rTO);
-            AppMethodBeat.o(203957);
+            paramAnonymousView.sQz = bool;
+            this.sQG.setEnable(this.sQG.sQz);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/video/plugin/FinderRecordBeautifyPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(204914);
             return;
-            bool1 = false;
           }
         }
-        paramAnonymousView = this.rTV;
-        if (!this.rTV.rTP) {}
-        for (bool1 = bool2;; bool1 = false)
+        paramAnonymousView = this.sQG;
+        if (!this.sQG.sQA) {}
+        for (;;)
         {
-          paramAnonymousView.rTP = bool1;
-          this.rTV.setEnable(this.rTV.rTP);
-          AppMethodBeat.o(203957);
-          return;
+          paramAnonymousView.sQA = bool;
+          this.sQG.setEnable(this.sQG.sQA);
+          break;
+          bool = false;
         }
       }
     });
-    if ((bt.eWo()) || (h.IS_FLAVOR_PURPLE)) {
-      this.rTS.setOnLongClickListener((View.OnLongClickListener)new View.OnLongClickListener()
+    if ((bu.flY()) || (i.IS_FLAVOR_PURPLE)) {
+      this.sQD.setOnLongClickListener((View.OnLongClickListener)new View.OnLongClickListener()
       {
         public final boolean onLongClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(203958);
-          paramAnonymousView = new android.support.design.widget.a(this.rTV.rTS.getContext());
-          Object localObject = paramAnonymousView.getWindow();
+          AppMethodBeat.i(204915);
+          Object localObject = new b();
+          ((b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/video/plugin/FinderRecordBeautifyPlugin$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).ahq());
+          paramAnonymousView = new android.support.design.widget.a(this.sQG.sQD.getContext());
+          localObject = paramAnonymousView.getWindow();
           if (localObject != null) {
             ((Window)localObject).clearFlags(2);
           }
-          localObject = this.rTV.rTS.getContext();
-          k.g(localObject, "view.context");
+          localObject = this.sQG.sQD.getContext();
+          p.g(localObject, "view.context");
           localObject = new XLabEffectSettingView((Context)localObject);
-          ((XLabEffectSettingView)localObject).setCameraView(this.rTV.rTU);
+          ((XLabEffectSettingView)localObject).setCameraView(this.sQG.sQF);
           paramAnonymousView.setContentView((View)localObject);
           paramAnonymousView.show();
-          AppMethodBeat.o(203958);
+          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/finder/video/plugin/FinderRecordBeautifyPlugin$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+          AppMethodBeat.o(204915);
           return true;
         }
       });
     }
-    AppMethodBeat.o(203964);
+    AppMethodBeat.o(204921);
   }
   
   public final void a(RecordConfigProvider paramRecordConfigProvider)
   {
-    AppMethodBeat.i(203961);
-    k.h(paramRecordConfigProvider, "config");
-    this.rTN = paramRecordConfigProvider.wqP.wqT;
-    if (this.rTN)
+    AppMethodBeat.i(204918);
+    p.h(paramRecordConfigProvider, "config");
+    this.sQy = paramRecordConfigProvider.xyG.xyK;
+    if (this.sQy)
     {
-      this.rTS.setVisibility(0);
-      if (this.iWQ) {}
-      for (boolean bool = this.rTO;; bool = this.rTP)
+      this.sQD.setVisibility(0);
+      if (this.jpZ) {}
+      for (boolean bool = this.sQz;; bool = this.sQA)
       {
         setEnable(bool);
-        AppMethodBeat.o(203961);
+        AppMethodBeat.o(204918);
         return;
       }
     }
-    this.rTS.setVisibility(8);
-    AppMethodBeat.o(203961);
+    this.sQD.setVisibility(8);
+    AppMethodBeat.o(204918);
   }
   
-  public final boolean alO()
+  public final boolean aoB()
   {
     return false;
   }
   
-  public final void awk() {}
+  public final void ayX() {}
   
-  public final boolean cEr()
+  public final boolean cML()
   {
-    AppMethodBeat.i(203963);
-    ImageView localImageView = this.rTR;
-    k.g(localImageView, "iconCheck");
+    AppMethodBeat.i(204920);
+    ImageView localImageView = this.sQC;
+    p.g(localImageView, "iconCheck");
     if (localImageView.getVisibility() == 0)
     {
-      AppMethodBeat.o(203963);
+      AppMethodBeat.o(204920);
       return true;
     }
-    AppMethodBeat.o(203963);
+    AppMethodBeat.o(204920);
     return false;
   }
   
-  public final void lT(boolean paramBoolean)
+  public final void ml(boolean paramBoolean)
   {
-    AppMethodBeat.i(203960);
-    this.iWQ = paramBoolean;
-    if (this.rTN) {
-      if (!this.iWQ) {
+    AppMethodBeat.i(204917);
+    this.jpZ = paramBoolean;
+    if (this.sQy) {
+      if (!this.jpZ) {
         break label40;
       }
     }
     label40:
-    for (paramBoolean = this.rTO;; paramBoolean = this.rTP)
+    for (paramBoolean = this.sQz;; paramBoolean = this.sQA)
     {
       setEnable(paramBoolean);
-      AppMethodBeat.o(203960);
+      AppMethodBeat.o(204917);
       return;
     }
   }
@@ -176,6 +184,15 @@ public final class a
   
   public final void onPause() {}
   
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(204922);
+    p.h(paramArrayOfString, "permissions");
+    p.h(paramArrayOfInt, "grantResults");
+    t.a.a(paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(204922);
+  }
+  
   public final void onResume() {}
   
   public final void release() {}
@@ -184,35 +201,35 @@ public final class a
   
   final void setEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(203962);
-    Object localObject = this.rTR;
-    k.g(localObject, "iconCheck");
+    AppMethodBeat.i(204919);
+    Object localObject = this.sQC;
+    p.g(localObject, "iconCheck");
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
       ((ImageView)localObject).setVisibility(i);
-      localObject = c.wyg;
-      c.w("KEY_RECORD_IS_BEAUTIFY", Boolean.valueOf(paramBoolean));
+      localObject = c.xHa;
+      c.u("KEY_RECORD_IS_BEAUTIFY", Boolean.valueOf(paramBoolean));
       localObject = new Bundle();
       ((Bundle)localObject).putBoolean("PARAM_BEAUTIFY_ENABLE", paramBoolean);
-      this.rTT.a(d.c.wwd, (Bundle)localObject);
-      AppMethodBeat.o(203962);
+      this.sQE.a(d.c.xEl, (Bundle)localObject);
+      AppMethodBeat.o(204919);
       return;
     }
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(203959);
-    if (this.rTN) {
-      this.rTS.setVisibility(paramInt);
+    AppMethodBeat.i(204916);
+    if (this.sQy) {
+      this.sQD.setVisibility(paramInt);
     }
-    AppMethodBeat.o(203959);
+    AppMethodBeat.o(204916);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.plugin.a
  * JD-Core Version:    0.7.0.1
  */

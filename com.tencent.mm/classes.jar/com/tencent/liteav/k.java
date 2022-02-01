@@ -9,7 +9,7 @@ public abstract interface k
   
   public abstract void b(b paramb);
   
-  public abstract void t();
+  public abstract void s();
 }
 
 

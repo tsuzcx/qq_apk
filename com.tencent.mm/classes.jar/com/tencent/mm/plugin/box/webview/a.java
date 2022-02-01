@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.box.webview;
 import android.webkit.ConsoleMessage;
 import android.webkit.ConsoleMessage.MessageLevel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.o;
@@ -17,7 +17,7 @@ public final class a
   public final boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(76339);
-    ac.i("MicroMsg.Box.BoxWebChromeClient", "onJsAlert %s %s", new Object[] { paramString1, paramString2 });
+    ad.i("MicroMsg.Box.BoxWebChromeClient", "onJsAlert %s %s", new Object[] { paramString1, paramString2 });
     boolean bool = super.a(paramWebView, paramString1, paramString2, paramJsResult);
     AppMethodBeat.o(76339);
     return bool;
@@ -26,7 +26,7 @@ public final class a
   public final boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, o paramo)
   {
     AppMethodBeat.i(76338);
-    ac.i("MicroMsg.Box.BoxWebChromeClient", "onJsPrompt %s %s", new Object[] { paramString1, paramString2 });
+    ad.i("MicroMsg.Box.BoxWebChromeClient", "onJsPrompt %s %s", new Object[] { paramString1, paramString2 });
     boolean bool = super.a(paramWebView, paramString1, paramString2, paramString3, paramo);
     AppMethodBeat.o(76338);
     return bool;
@@ -35,7 +35,7 @@ public final class a
   public final boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(76337);
-    ac.i("MicroMsg.Box.BoxWebChromeClient", "onJsConfirm %s %s", new Object[] { paramString1, paramString2 });
+    ad.i("MicroMsg.Box.BoxWebChromeClient", "onJsConfirm %s %s", new Object[] { paramString1, paramString2 });
     boolean bool = super.b(paramWebView, paramString1, paramString2, paramJsResult);
     AppMethodBeat.o(76337);
     return bool;
@@ -44,7 +44,7 @@ public final class a
   public final boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
     AppMethodBeat.i(76340);
-    ac.i("MicroMsg.Box.BoxWebChromeClient", "onConsoleMessage %d %s %s %s", new Object[] { Integer.valueOf(paramConsoleMessage.lineNumber()), paramConsoleMessage.messageLevel().name(), paramConsoleMessage.message(), paramConsoleMessage.sourceId() });
+    ad.i("MicroMsg.Box.BoxWebChromeClient", "onConsoleMessage %d %s %s %s", new Object[] { Integer.valueOf(paramConsoleMessage.lineNumber()), paramConsoleMessage.messageLevel().name(), paramConsoleMessage.message(), paramConsoleMessage.sourceId() });
     boolean bool = super.onConsoleMessage(paramConsoleMessage);
     AppMethodBeat.o(76340);
     return bool;

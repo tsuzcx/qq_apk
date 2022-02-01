@@ -12,14 +12,14 @@ import android.os.Message;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.beauty.c;
+import com.tencent.liteav.beauty.e;
 import com.tencent.liteav.videoencoder.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 
 public class a
-  implements com.tencent.liteav.beauty.d, com.tencent.liteav.videoencoder.d
+  implements e, com.tencent.liteav.videoencoder.d
 {
   private static final String a;
   private int b;
@@ -29,7 +29,7 @@ public class a
   private boolean f;
   private b g;
   private TXSNALPacket h;
-  private c i;
+  private com.tencent.liteav.beauty.d i;
   private ByteBuffer j;
   private Bitmap k;
   private int l;

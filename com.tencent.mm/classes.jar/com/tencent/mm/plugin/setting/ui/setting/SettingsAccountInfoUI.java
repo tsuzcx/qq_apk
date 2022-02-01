@@ -13,13 +13,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.bh;
-import com.tencent.mm.g.a.bh.a;
-import com.tencent.mm.g.a.ra;
-import com.tencent.mm.g.a.ra.b;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.c;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.a.bk;
+import com.tencent.mm.g.a.bk.a;
+import com.tencent.mm.g.a.rl;
+import com.tencent.mm.g.a.rl.b;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.c;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
 import com.tencent.mm.plugin.account.ui.RegByMobileSetPwdUI;
@@ -29,12 +29,12 @@ import com.tencent.mm.sdk.b.b;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.am;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference;
@@ -43,110 +43,110 @@ import com.tencent.mm.ui.base.preference.PluginTextPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import com.tencent.mm.ui.base.t;
-import com.tencent.mm.y.c;
+import com.tencent.mm.z.c;
 
 public class SettingsAccountInfoUI
   extends MMPreference
   implements n.b
 {
   private f screen;
-  private View xrp;
-  private TextView xrq;
-  private EditText xrr;
-  private boolean xrs;
-  private SparseIntArray xrt;
+  private View yFY;
+  private TextView yFZ;
+  private EditText yGa;
+  private boolean yGb;
+  private SparseIntArray yGc;
   
   public SettingsAccountInfoUI()
   {
     AppMethodBeat.i(74075);
-    this.xrt = new SparseIntArray();
-    this.xrt.put(0, 2131763202);
-    this.xrt.put(-82, 2131763138);
-    this.xrt.put(-83, 2131763135);
-    this.xrt.put(-84, 2131763136);
-    this.xrt.put(-85, 2131763129);
-    this.xrt.put(-86, 2131763140);
+    this.yGc = new SparseIntArray();
+    this.yGc.put(0, 2131763202);
+    this.yGc.put(-82, 2131763138);
+    this.yGc.put(-83, 2131763135);
+    this.yGc.put(-84, 2131763136);
+    this.yGc.put(-85, 2131763129);
+    this.yGc.put(-86, 2131763140);
     AppMethodBeat.o(74075);
   }
   
-  private void dBY()
+  private void dNB()
   {
     AppMethodBeat.i(74082);
-    Preference localPreference = this.screen.aPN("settings_username");
-    String str1 = u.axw();
-    String str2 = u.axx();
-    if (bs.isNullOrNil(str2))
+    Preference localPreference = this.screen.aVD("settings_username");
+    String str1 = u.aAm();
+    String str2 = u.aAn();
+    if (bt.isNullOrNil(str2))
     {
-      if (ai.aNf(str1)) {
+      if (am.aSX(str1)) {
         localPreference.setSummary(getString(2131763339));
       }
-      while ((!ai.aNg(u.axw())) && (com.tencent.mm.m.g.ZY().getInt("EnableModAlias", 0) == 0))
+      while ((!am.aSY(u.aAm())) && (com.tencent.mm.n.g.acA().getInt("EnableModAlias", 0) == 0))
       {
-        localPreference.aam(8);
+        localPreference.acw(8);
         AppMethodBeat.o(74082);
         return;
         localPreference.setSummary(str1);
       }
     }
     localPreference.setSummary(str2);
-    if (com.tencent.mm.m.g.ZY().getInt("EnableModAlias", 0) == 0) {
-      localPreference.aam(8);
+    if (com.tencent.mm.n.g.acA().getInt("EnableModAlias", 0) == 0) {
+      localPreference.acw(8);
     }
     AppMethodBeat.o(74082);
   }
   
-  private void dBZ()
+  private void dNC()
   {
     AppMethodBeat.i(74083);
-    if (this.screen.aPN("settings_manage_login_device") == null)
+    if (this.screen.aVD("settings_manage_login_device") == null)
     {
-      ac.e("MicroMsg.SettingsAccountInfoUI", "safedevicesate preference is null");
+      ad.e("MicroMsg.SettingsAccountInfoUI", "safedevicesate preference is null");
       AppMethodBeat.o(74083);
       return;
     }
-    this.screen.cK("settings_manage_login_device", false);
+    this.screen.cP("settings_manage_login_device", false);
     AppMethodBeat.o(74083);
   }
   
-  private void dCa()
+  private void dND()
   {
     AppMethodBeat.i(74084);
-    IconSwitchKeyValuePreference localIconSwitchKeyValuePreference = (IconSwitchKeyValuePreference)this.screen.aPN("settings_mobile");
+    IconSwitchKeyValuePreference localIconSwitchKeyValuePreference = (IconSwitchKeyValuePreference)this.screen.aVD("settings_mobile");
     if (localIconSwitchKeyValuePreference == null)
     {
-      ac.e("MicroMsg.SettingsAccountInfoUI", "updateMobile Preference null");
+      ad.e("MicroMsg.SettingsAccountInfoUI", "updateMobile Preference null");
       AppMethodBeat.o(74084);
       return;
     }
-    String str = (String)com.tencent.mm.kernel.g.agR().agA().get(6, null);
-    ac.d("MicroMsg.SettingsAccountInfoUI", "mobile :".concat(String.valueOf(str)));
+    String str = (String)com.tencent.mm.kernel.g.ajC().ajl().get(6, null);
+    ad.d("MicroMsg.SettingsAccountInfoUI", "mobile :".concat(String.valueOf(str)));
     if ((str == null) || (str.length() <= 0))
     {
       localIconSwitchKeyValuePreference.setSummary(getString(2131763187));
-      localIconSwitchKeyValuePreference.aai(0);
+      localIconSwitchKeyValuePreference.acs(0);
       AppMethodBeat.o(74084);
       return;
     }
     localIconSwitchKeyValuePreference.setSummary(str);
-    localIconSwitchKeyValuePreference.aai(1);
+    localIconSwitchKeyValuePreference.acs(1);
     AppMethodBeat.o(74084);
   }
   
-  private void dCb()
+  private void dNE()
   {
     boolean bool = true;
     AppMethodBeat.i(74085);
-    Object localObject = new bh();
-    com.tencent.mm.sdk.b.a.GpY.l((b)localObject);
-    if ((((bh)localObject).daW.daX) && (((bh)localObject).daW.daY) && (((bh)localObject).daW.daZ)) {}
+    Object localObject = new bk();
+    com.tencent.mm.sdk.b.a.IbL.l((b)localObject);
+    if ((((bk)localObject).dmq.dmr) && (((bk)localObject).dmq.dms) && (((bk)localObject).dmq.dmt)) {}
     for (int i = 1;; i = 0)
     {
-      ac.i("MicroMsg.SettingsAccountInfoUI", "check is support soter, isSupportSoter: %b, isSupportFP: %b, isSystemHasFPEnrolled: %b", new Object[] { Boolean.valueOf(((bh)localObject).daW.daX), Boolean.valueOf(((bh)localObject).daW.daY), Boolean.valueOf(((bh)localObject).daW.daZ) });
+      ad.i("MicroMsg.SettingsAccountInfoUI", "check is support soter, isSupportSoter: %b, isSupportFP: %b, isSystemHasFPEnrolled: %b", new Object[] { Boolean.valueOf(((bk)localObject).dmq.dmr), Boolean.valueOf(((bk)localObject).dmq.dms), Boolean.valueOf(((bk)localObject).dmq.dmt) });
       localObject = this.screen;
       if (i == 0) {}
       for (;;)
       {
-        ((f)localObject).cK("settings_fingerprint_title", bool);
+        ((f)localObject).cP("settings_fingerprint_title", bool);
         AppMethodBeat.o(74085);
         return;
         bool = false;
@@ -157,10 +157,10 @@ public class SettingsAccountInfoUI
   public final void a(int paramInt, n paramn, Object paramObject)
   {
     AppMethodBeat.i(74081);
-    dBY();
-    dCa();
-    dBZ();
-    dCb();
+    dNB();
+    dND();
+    dNC();
+    dNE();
     AppMethodBeat.o(74081);
   }
   
@@ -179,13 +179,13 @@ public class SettingsAccountInfoUI
     AppMethodBeat.i(74078);
     setMMTitle(2131763161);
     this.screen = getPreferenceScreen();
-    this.xrp = View.inflate(this, 2131495371, null);
-    this.xrq = ((TextView)this.xrp.findViewById(2131304591));
-    this.xrq.setText(getString(2131763244));
-    this.xrr = ((EditText)this.xrp.findViewById(2131304590));
-    this.xrr.setInputType(129);
-    if (bs.getInt(com.tencent.mm.m.g.ZY().getValue("VoiceprintEntry"), 0) != 1) {
-      this.screen.cK("settings_voiceprint_title", true);
+    this.yFY = View.inflate(this, 2131495371, null);
+    this.yFZ = ((TextView)this.yFY.findViewById(2131304591));
+    this.yFZ.setText(getString(2131763244));
+    this.yGa = ((EditText)this.yFY.findViewById(2131304590));
+    this.yGa.setInputType(129);
+    if (bt.getInt(com.tencent.mm.n.g.acA().getValue("VoiceprintEntry"), 0) != 1) {
+      this.screen.cP("settings_voiceprint_title", true);
     }
     for (;;)
     {
@@ -202,18 +202,18 @@ public class SettingsAccountInfoUI
       });
       AppMethodBeat.o(74078);
       return;
-      if (!com.tencent.mm.kernel.g.agM())
+      if (!com.tencent.mm.kernel.g.ajx())
       {
-        ac.e("MicroMsg.SettingsAccountInfoUI", "update voiceprint dot, account not ready!");
+        ad.e("MicroMsg.SettingsAccountInfoUI", "update voiceprint dot, account not ready!");
         AppMethodBeat.o(74078);
         return;
       }
-      IconPreference localIconPreference = (IconPreference)this.screen.aPN("settings_voiceprint_title");
-      if ((((Boolean)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GEC, Boolean.FALSE)).booleanValue()) && ((com.tencent.mm.kernel.g.agR().agA().getInt(40, 0) & 0x20000) == 0))
+      IconPreference localIconPreference = (IconPreference)this.screen.aVD("settings_voiceprint_title");
+      if ((((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IqV, Boolean.FALSE)).booleanValue()) && ((com.tencent.mm.kernel.g.ajC().ajl().getInt(40, 0) & 0x20000) == 0))
       {
-        localIconPreference.fZ(getString(2131755829), 2131233430);
-        localIconPreference.aab(0);
-        ac.i("MicroMsg.SettingsAccountInfoUI", "show voiceprint dot");
+        localIconPreference.gw(getString(2131755829), 2131233430);
+        localIconPreference.acl(0);
+        ad.i("MicroMsg.SettingsAccountInfoUI", "show voiceprint dot");
         this.screen.notifyDataSetChanged();
       }
     }
@@ -224,7 +224,7 @@ public class SettingsAccountInfoUI
     AppMethodBeat.i(74076);
     super.onCreate(paramBundle);
     initView();
-    com.tencent.mm.kernel.g.agR().agA().a(this);
+    com.tencent.mm.kernel.g.ajC().ajl().a(this);
     AppMethodBeat.o(74076);
   }
   
@@ -232,7 +232,7 @@ public class SettingsAccountInfoUI
   {
     AppMethodBeat.i(74077);
     super.onDestroy();
-    com.tencent.mm.kernel.g.agR().agA().b(this);
+    com.tencent.mm.kernel.g.ajC().ajl().b(this);
     AppMethodBeat.o(74077);
   }
   
@@ -240,40 +240,40 @@ public class SettingsAccountInfoUI
   {
     AppMethodBeat.i(74080);
     paramf = paramPreference.mKey;
-    ac.i("MicroMsg.SettingsAccountInfoUI", paramf + " item has been clicked!");
-    u.axw();
-    if (bs.isNullOrNil(paramf))
+    ad.i("MicroMsg.SettingsAccountInfoUI", paramf + " item has been clicked!");
+    u.aAm();
+    if (bt.isNullOrNil(paramf))
     {
       AppMethodBeat.o(74080);
       return false;
     }
     if (paramf.equals("settings_username"))
     {
-      if ((bs.isNullOrNil(u.axx())) && (ai.aNg(u.axw())) && (com.tencent.mm.m.g.ZY().getInt("EnableModAlias", 0) == 0))
+      if ((bt.isNullOrNil(u.aAn())) && (am.aSY(u.aAm())) && (com.tencent.mm.n.g.acA().getInt("EnableModAlias", 0) == 0))
       {
         startActivity(SettingsCreateAliasUI.class);
         AppMethodBeat.o(74080);
         return true;
       }
-      if (com.tencent.mm.m.g.ZY().getInt("EnableModAlias", 0) != 0)
+      if (com.tencent.mm.n.g.acA().getInt("EnableModAlias", 0) != 0)
       {
         paramPreference = new Intent(this, SettingsAliasUI.class);
         paramPreference.putExtra("WizardRootClass", SettingsAccountInfoUI.class.getCanonicalName());
-        MMWizardActivity.aj(this, paramPreference);
+        MMWizardActivity.al(this, paramPreference);
       }
     }
     if (paramf.equals("settings_mobile"))
     {
       paramf = new Intent(this, BindMContactIntroUI.class);
       paramf.putExtra("key_upload_scene", 4);
-      MMWizardActivity.aj(this, paramf);
+      MMWizardActivity.al(this, paramf);
       AppMethodBeat.o(74080);
       return true;
     }
     if (paramf.equals("settings_about_vuser_about"))
     {
-      paramf = String.format("https://weixin.qq.com/cgi-bin/readtemplate?check=false&t=weixin_faq_verifyaccount&platform=android&lang=%s", new Object[] { ab.eUO() });
-      bs.bY(getContext(), paramf);
+      paramf = String.format("https://weixin.qq.com/cgi-bin/readtemplate?check=false&t=weixin_faq_verifyaccount&platform=android&lang=%s", new Object[] { ac.fks() });
+      bt.cd(getContext(), paramf);
     }
     for (;;)
     {
@@ -287,15 +287,15 @@ public class SettingsAccountInfoUI
       }
       else if (paramf.equals("settings_manage_login_device"))
       {
-        d.N(this, "account", ".security.ui.MySafeDeviceListUI");
+        d.Q(this, "account", ".security.ui.MySafeDeviceListUI");
       }
       else if (paramf.equals("settings_security_center"))
       {
-        paramPreference = com.tencent.mm.m.g.ZY().getValue("WeChatSafeCenterUrl");
-        ac.i("MicroMsg.SettingsAccountInfoUI", "safe center url %s", new Object[] { paramPreference });
+        paramPreference = com.tencent.mm.n.g.acA().getValue("WeChatSafeCenterUrl");
+        ad.i("MicroMsg.SettingsAccountInfoUI", "safe center url %s", new Object[] { paramPreference });
         paramf = paramPreference;
-        if (bs.isNullOrNil(paramPreference)) {
-          paramf = getString(2131766193) + ab.eUO();
+        if (bt.isNullOrNil(paramPreference)) {
+          paramf = getString(2131766193) + ac.fks();
         }
         paramPreference = getContext();
         Intent localIntent = new Intent();
@@ -303,28 +303,28 @@ public class SettingsAccountInfoUI
         localIntent.putExtra("showShare", true);
         localIntent.putExtra("show_bottom", false);
         localIntent.putExtra("needRedirect", false);
-        localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.DIw);
-        localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.DIs);
+        localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FnD);
+        localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Fnz);
         d.b(paramPreference, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
       }
       else if (paramf.equals("settings_voiceprint_title"))
       {
-        if ((bs.getInt(com.tencent.mm.m.g.ZY().getValue("VoiceprintEntry"), 0) == 1) && ((com.tencent.mm.kernel.g.agR().agA().getInt(40, 0) & 0x20000) == 0))
+        if ((bt.getInt(com.tencent.mm.n.g.acA().getValue("VoiceprintEntry"), 0) == 1) && ((com.tencent.mm.kernel.g.ajC().ajl().getInt(40, 0) & 0x20000) == 0))
         {
-          com.tencent.mm.kernel.g.agR().agA().set(ah.a.GEC, Boolean.FALSE);
-          ((IconPreference)this.screen.aPN("settings_voiceprint_title")).aab(8);
+          com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IqV, Boolean.FALSE);
+          ((IconPreference)this.screen.aVD("settings_voiceprint_title")).acl(8);
           this.screen.notifyDataSetChanged();
-          ac.i("MicroMsg.SettingsAccountInfoUI", "unset setting account info new show");
+          ad.i("MicroMsg.SettingsAccountInfoUI", "unset setting account info new show");
         }
-        d.N(getContext(), "voiceprint", "com.tencent.mm.plugin.voiceprint.ui.SettingsVoicePrintUI");
+        d.Q(getContext(), "voiceprint", "com.tencent.mm.plugin.voiceprint.ui.SettingsVoicePrintUI");
       }
       else if (paramf.equals("settings_facedect_title"))
       {
-        paramf = new ra();
-        paramf.dug.context = this;
-        com.tencent.mm.sdk.b.a.GpY.l(paramf);
-        boolean bool = paramf.duh.dtV;
-        ac.i("MicroMsg.SettingsAccountInfoUI", "hy: is start to face settings succ: %b", new Object[] { Boolean.valueOf(bool) });
+        paramf = new rl();
+        paramf.dGg.context = this;
+        com.tencent.mm.sdk.b.a.IbL.l(paramf);
+        boolean bool = paramf.dGh.dFV;
+        ad.i("MicroMsg.SettingsAccountInfoUI", "hy: is start to face settings succ: %b", new Object[] { Boolean.valueOf(bool) });
         if (!bool) {
           t.makeText(getContext(), getString(2131758759), 0).show();
         }
@@ -335,7 +335,7 @@ public class SettingsAccountInfoUI
       }
       else if (paramf.equals("settings_more_safe"))
       {
-        c.aeH().c(ah.a.GQM, ah.a.GQN);
+        c.aht().c(al.a.IDj, al.a.IDk);
         startActivity(SettingsMoreSafeUI.class);
       }
     }
@@ -344,41 +344,41 @@ public class SettingsAccountInfoUI
   public void onResume()
   {
     AppMethodBeat.i(74079);
-    dBY();
-    dCa();
-    this.xrs = false;
-    Object localObject = (IconPreference)this.screen.aPN("settings_more_safe");
+    dNB();
+    dND();
+    this.yGb = false;
+    Object localObject = (IconPreference)this.screen.aVD("settings_more_safe");
     SelfVuserPreference localSelfVuserPreference;
     Preference localPreference;
-    if (c.aeH().b(ah.a.GQM, ah.a.GQN))
+    if (c.aht().b(al.a.IDj, al.a.IDk))
     {
-      ((IconPreference)localObject).aad(0);
-      dBZ();
-      dCb();
-      this.screen.cK("settings_facedect_title", true);
-      localObject = (PluginTextPreference)this.screen.aPN("settings_about_vusertitle");
-      localSelfVuserPreference = (SelfVuserPreference)this.screen.aPN("settings_about_vuserinfo");
-      localPreference = this.screen.aPN("settings_about_vuser_about");
-      int i = bs.m((Integer)com.tencent.mm.kernel.g.agR().agA().get(66049, null));
+      ((IconPreference)localObject).acn(0);
+      dNC();
+      dNE();
+      this.screen.cP("settings_facedect_title", true);
+      localObject = (PluginTextPreference)this.screen.aVD("settings_about_vusertitle");
+      localSelfVuserPreference = (SelfVuserPreference)this.screen.aVD("settings_about_vuserinfo");
+      localPreference = this.screen.aVD("settings_about_vuser_about");
+      int i = bt.n((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(66049, null));
       if (i == 0) {
         break label241;
       }
       ((PluginTextPreference)localObject).visibility = 8;
-      ((PluginTextPreference)localObject).aal(2131757895);
-      if (ar.a.hny == null) {
+      ((PluginTextPreference)localObject).acv(2131757895);
+      if (as.a.hFQ == null) {
         break label236;
       }
-      localObject = BackwardSupportUtil.b.n(ar.a.hny.nR(i), 2.0F);
+      localObject = BackwardSupportUtil.b.o(as.a.hFQ.or(i), 2.0F);
       label180:
       localSelfVuserPreference.drawable = new BitmapDrawable(getResources(), (Bitmap)localObject);
-      localSelfVuserPreference.text = ((String)com.tencent.mm.kernel.g.agR().agA().get(66050, null));
+      localSelfVuserPreference.text = ((String)com.tencent.mm.kernel.g.ajC().ajl().get(66050, null));
     }
     for (;;)
     {
       super.onResume();
       AppMethodBeat.o(74079);
       return;
-      ((IconPreference)localObject).aad(8);
+      ((IconPreference)localObject).acn(8);
       break;
       label236:
       localObject = null;

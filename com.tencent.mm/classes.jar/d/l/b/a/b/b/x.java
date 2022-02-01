@@ -1,15 +1,15 @@
 package d.l.b.a.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 
 public final class x
 {
   public static final boolean p(e parame)
   {
     AppMethodBeat.i(56863);
-    k.h(parame, "$this$isFinalClass");
-    if ((parame.fPZ() == w.LdG) && (parame.fPY() != f.Ldy))
+    p.h(parame, "$this$isFinalClass");
+    if ((parame.ghx() == w.MUB) && (parame.ghw() != f.MUt))
     {
       AppMethodBeat.o(56863);
       return true;
@@ -20,7 +20,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.x
  * JD-Core Version:    0.7.0.1
  */

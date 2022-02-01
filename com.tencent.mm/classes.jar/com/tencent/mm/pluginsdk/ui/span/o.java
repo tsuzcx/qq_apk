@@ -7,9 +7,9 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.u;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.base.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.base.span.a;
 import java.lang.ref.WeakReference;
 
 public class o
@@ -155,7 +155,7 @@ public class o
   protected void setColorConfig(int paramInt)
   {
     AppMethodBeat.i(152342);
-    Context localContext = ai.getContext();
+    Context localContext = aj.getContext();
     switch (paramInt)
     {
     }
@@ -210,8 +210,8 @@ public class o
   public void updateDrawState(TextPaint paramTextPaint)
   {
     AppMethodBeat.i(152344);
-    if (ac.getLogLevel() <= 1) {
-      ac.d("MicroMsg.PressableClickSpan", "updateDrawState, isPressed:%b", new Object[] { Boolean.valueOf(this.isPressed) });
+    if (ad.getLogLevel() <= 1) {
+      ad.d("MicroMsg.PressableClickSpan", "updateDrawState, isPressed:%b", new Object[] { Boolean.valueOf(this.isPressed) });
     }
     super.updateDrawState(paramTextPaint);
     paramTextPaint.setColor(this.mLinkColor);

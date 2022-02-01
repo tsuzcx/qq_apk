@@ -9,24 +9,24 @@ import android.graphics.RectF;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
   extends View
 {
-  public int ANm;
-  public int ANn;
-  public int ANo;
-  private int ANp;
-  private int ANq;
-  private int ANr;
-  private int ANs;
-  private boolean ANt;
-  private int ANu;
+  public int CmA;
+  public int CmB;
+  private int CmC;
+  private int CmD;
+  private int CmE;
+  private int CmF;
+  private boolean CmG;
+  private int CmH;
+  public int Cmz;
+  private RectF mGJ;
   private Matrix mMatrix;
   private Paint mPaint;
-  private RectF mgi;
-  public int qU;
+  public int sP;
   
   public e(Context paramContext)
   {
@@ -40,7 +40,7 @@ public final class e
     AppMethodBeat.o(115580);
   }
   
-  private static int cX(int paramInt1, int paramInt2)
+  private static int cZ(int paramInt1, int paramInt2)
   {
     if (paramInt1 < 0) {
       paramInt1 = 0;
@@ -57,11 +57,11 @@ public final class e
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(115582);
-    if (this.mgi != null)
+    if (this.mGJ != null)
     {
       paramCanvas.save();
       paramCanvas.rotate(0.0F);
-      paramCanvas.drawRect(this.mgi, this.mPaint);
+      paramCanvas.drawRect(this.mGJ, this.mPaint);
       paramCanvas.restore();
     }
     AppMethodBeat.o(115582);
@@ -78,48 +78,48 @@ public final class e
     int j;
     if (paramArrayOfInt != null)
     {
-      this.ANp = paramArrayOfInt[0];
-      this.ANq = paramArrayOfInt[1];
-      this.ANr = paramArrayOfInt[2];
-      this.ANs = paramArrayOfInt[3];
-      if ((this.ANn != 0) && (this.ANo != 0) && (this.qU != 0) && (this.ANm != 0))
+      this.CmC = paramArrayOfInt[0];
+      this.CmD = paramArrayOfInt[1];
+      this.CmE = paramArrayOfInt[2];
+      this.CmF = paramArrayOfInt[3];
+      if ((this.CmA != 0) && (this.CmB != 0) && (this.sP != 0) && (this.Cmz != 0))
       {
-        m = this.ANr;
-        n = this.ANp;
-        i1 = this.ANs;
-        i2 = this.ANq;
-        ac.d("MicroMsg.FaceRectView", "mLeftTopX:%d, mLeftTopY:%d, mRightBottomX:%d, mRightBottomY:%d", new Object[] { Integer.valueOf(this.ANp), Integer.valueOf(this.ANq), Integer.valueOf(this.ANr), Integer.valueOf(this.ANr) });
-        ac.d("MicroMsg.FaceRectView", "mPicWidth:%d, mPicHeight:%d, mirror:%b, angle:%d", new Object[] { Integer.valueOf(this.ANn), Integer.valueOf(this.ANo), Boolean.valueOf(this.ANt), Integer.valueOf(this.ANu) });
-        i = (this.ANr + this.ANp) / 2;
-        j = (this.ANs + this.ANq) / 2;
-        if ((this.ANu != 90) && (this.ANu != 270)) {
+        m = this.CmE;
+        n = this.CmC;
+        i1 = this.CmF;
+        i2 = this.CmD;
+        ad.d("MicroMsg.FaceRectView", "mLeftTopX:%d, mLeftTopY:%d, mRightBottomX:%d, mRightBottomY:%d", new Object[] { Integer.valueOf(this.CmC), Integer.valueOf(this.CmD), Integer.valueOf(this.CmE), Integer.valueOf(this.CmE) });
+        ad.d("MicroMsg.FaceRectView", "mPicWidth:%d, mPicHeight:%d, mirror:%b, angle:%d", new Object[] { Integer.valueOf(this.CmA), Integer.valueOf(this.CmB), Boolean.valueOf(this.CmG), Integer.valueOf(this.CmH) });
+        i = (this.CmE + this.CmC) / 2;
+        j = (this.CmF + this.CmD) / 2;
+        if ((this.CmH != 90) && (this.CmH != 270)) {
           break label552;
         }
       }
     }
     for (;;)
     {
-      ac.d("MicroMsg.FaceRectView", "centerX:%d, centerY:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+      ad.d("MicroMsg.FaceRectView", "centerX:%d, centerY:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
       float f2;
-      if ((this.ANu == 90) || (this.ANu == 270)) {
-        f2 = this.qU / this.ANn;
+      if ((this.CmH == 90) || (this.CmH == 270)) {
+        f2 = this.sP / this.CmA;
       }
-      for (float f1 = this.ANm / this.ANo;; f1 = this.qU / this.ANo)
+      for (float f1 = this.Cmz / this.CmB;; f1 = this.sP / this.CmB)
       {
         f1 = Math.max(f2, f1);
         f2 = (int)((m - n) * f1);
         float f3 = (int)((i1 - i2) * f1);
         j = (int)(j * f1);
         i = (int)(i * f1);
-        this.ANp = cX((int)(j - f2 / 2.0F), this.ANm);
-        this.ANq = cX((int)(i - f3 / 2.0F), this.qU);
-        this.ANr = cX((int)(j + f2 / 2.0F), this.ANm);
-        this.ANs = cX((int)(i + f3 / 2.0F), this.qU);
-        this.mgi = new RectF(this.ANp, this.ANq, this.ANr, this.ANs);
-        ac.d("MicroMsg.FaceRectView", "after translate, mLeftTopX:%.2f, mLeftTopY:%.2f, mRightBottomX:%.2f, mRightBottomY:%.2f", new Object[] { Float.valueOf(this.mgi.left), Float.valueOf(this.mgi.top), Float.valueOf(this.mgi.right), Float.valueOf(this.mgi.bottom) });
+        this.CmC = cZ((int)(j - f2 / 2.0F), this.Cmz);
+        this.CmD = cZ((int)(i - f3 / 2.0F), this.sP);
+        this.CmE = cZ((int)(j + f2 / 2.0F), this.Cmz);
+        this.CmF = cZ((int)(i + f3 / 2.0F), this.sP);
+        this.mGJ = new RectF(this.CmC, this.CmD, this.CmE, this.CmF);
+        ad.d("MicroMsg.FaceRectView", "after translate, mLeftTopX:%.2f, mLeftTopY:%.2f, mRightBottomX:%.2f, mRightBottomY:%.2f", new Object[] { Float.valueOf(this.mGJ.left), Float.valueOf(this.mGJ.top), Float.valueOf(this.mGJ.right), Float.valueOf(this.mGJ.bottom) });
         AppMethodBeat.o(115581);
         return;
-        f2 = this.ANm / this.ANn;
+        f2 = this.Cmz / this.CmA;
       }
       label552:
       int k = i;
@@ -130,17 +130,17 @@ public final class e
   
   public final void setMirror(boolean paramBoolean)
   {
-    this.ANt = paramBoolean;
+    this.CmG = paramBoolean;
   }
   
   public final void setRotateAngle(int paramInt)
   {
-    this.ANu = paramInt;
+    this.CmH = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.e
  * JD-Core Version:    0.7.0.1
  */

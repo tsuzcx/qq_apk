@@ -3,9 +3,9 @@ package com.tencent.mm.console.a;
 import android.content.Context;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gt;
+import com.tencent.mm.g.a.gw;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class d
   implements com.tencent.mm.pluginsdk.cmd.a
@@ -23,7 +23,7 @@ public final class d
   {
     int i = 0;
     AppMethodBeat.i(20175);
-    if (ac.getLogLevel() > 1)
+    if (ad.getLogLevel() > 1)
     {
       AppMethodBeat.o(20175);
       return false;
@@ -57,16 +57,16 @@ public final class d
       }
       i = 1;
       break label75;
-      paramContext = new gt();
-      paramContext.dhx.type = 39;
-      paramContext.dhx.dhG = paramArrayOfString[2];
-      paramContext.dhx.dhH = paramArrayOfString[3];
-      com.tencent.mm.sdk.b.a.GpY.a(paramContext, Looper.getMainLooper());
+      paramContext = new gw();
+      paramContext.dsV.type = 39;
+      paramContext.dsV.dte = paramArrayOfString[2];
+      paramContext.dsV.dtf = paramArrayOfString[3];
+      com.tencent.mm.sdk.b.a.IbL.a(paramContext, Looper.getMainLooper());
       continue;
-      paramContext = new gt();
-      paramContext.dhx.type = 38;
-      paramContext.dhx.dhG = paramArrayOfString[2];
-      com.tencent.mm.sdk.b.a.GpY.a(paramContext, Looper.getMainLooper());
+      paramContext = new gw();
+      paramContext.dsV.type = 38;
+      paramContext.dsV.dte = paramArrayOfString[2];
+      com.tencent.mm.sdk.b.a.IbL.a(paramContext, Looper.getMainLooper());
     }
   }
 }

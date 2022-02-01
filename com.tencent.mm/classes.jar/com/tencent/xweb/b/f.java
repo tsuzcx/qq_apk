@@ -4,11 +4,11 @@ import java.io.File;
 
 public abstract interface f
 {
-  public abstract d aVd(String paramString);
+  public abstract d ah(File paramFile);
   
-  public abstract d af(File paramFile);
+  public abstract d bbg(String paramString);
   
-  public abstract e fKe();
+  public abstract e gby();
 }
 
 

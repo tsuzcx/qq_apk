@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.m;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.plugin.appbrand.appcache.a.a;
+import java.util.Locale;
 
 public final class av
+  extends a
 {
-  public final void clear(final String paramString)
+  final int jHt;
+  final int jHu;
+  final bi.a jHv;
+  
+  av(String paramString1, int paramInt1, int paramInt2, String paramString2, bi.a parama)
   {
-    AppMethodBeat.i(44352);
-    paramString = new m()
-    {
-      public final boolean ui(String paramAnonymousString)
-      {
-        AppMethodBeat.i(174708);
-        boolean bool = paramAnonymousString.endsWith("_" + paramString);
-        AppMethodBeat.o(174708);
-        return bool;
-      }
-    };
-    e locale = new e(com.tencent.mm.plugin.appbrand.jsruntime.ac.bmD());
-    if ((locale.exists()) && (locale.isDirectory()))
-    {
-      paramString = locale.b(paramString);
-      if ((paramString != null) && (paramString.length > 0))
-      {
-        int j = paramString.length;
-        int i = 0;
-        while (i < j)
-        {
-          locale = paramString[i];
-          i.cU(q.B(locale.mUri), true);
-          com.tencent.mm.sdk.platformtools.ac.i("WxaJsCacheStorage", "clear file:%s", new Object[] { locale.getName() });
-          i += 1;
-        }
-      }
+    super(B(paramString1, paramInt1, paramInt2), ay.baz() + String.format(Locale.US, "_%s_%d_%d.wxapkg.diff", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), paramString2, paramString1, 0, paramInt2);
+    AppMethodBeat.i(90591);
+    this.jHt = paramInt1;
+    this.jHu = paramInt2;
+    this.jHv = parama;
+    if (!"@LibraryAppId".equals(paramString1)) {
+      bool = true;
     }
-    AppMethodBeat.o(44352);
+    this.jJv = bool;
+    AppMethodBeat.o(90591);
+  }
+  
+  static String B(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(90590);
+    paramString = String.format(Locale.US, "WxaPkgDiff_%s_%d_%d", new Object[] { Integer.valueOf(paramString.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(90590);
+    return paramString;
+  }
+  
+  public final String bao()
+  {
+    AppMethodBeat.i(90592);
+    String str = az.aL(this.appId, this.jHu);
+    AppMethodBeat.o(90592);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.av
  * JD-Core Version:    0.7.0.1
  */

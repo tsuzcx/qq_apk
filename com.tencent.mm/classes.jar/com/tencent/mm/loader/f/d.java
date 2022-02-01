@@ -1,11 +1,12 @@
 package com.tencent.mm.loader.f;
 
 import com.tencent.mm.loader.e.b.g;
-import com.tencent.mm.loader.h.a.a;
+import d.l;
 
-public abstract interface d<T, R>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/listener/IImageLoaderAnimation;", "", "onLoadCompleted", "", "holder", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "onLoadStart", "libimageloader_release"})
+public abstract interface d
 {
-  public abstract void a(a<T> parama, g<?> paramg, R paramR);
+  public abstract void b(g<?> paramg);
 }
 
 

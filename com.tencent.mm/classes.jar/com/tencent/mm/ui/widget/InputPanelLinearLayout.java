@@ -9,8 +9,8 @@ public class InputPanelLinearLayout
   extends LinearLayout
   implements b.a
 {
-  private b IZb;
-  private b.a IZc;
+  private b KQh;
+  private b.a KQi;
   
   public InputPanelLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,35 +21,35 @@ public class InputPanelLinearLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143334);
-    this.IZb = new b(this, this);
+    this.KQh = new b(this, this);
     AppMethodBeat.o(143334);
   }
   
   public void g(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(182572);
-    if (this.IZc != null) {
-      this.IZc.g(paramBoolean, paramInt);
+    if (this.KQi != null) {
+      this.KQi.g(paramBoolean, paramInt);
     }
     AppMethodBeat.o(182572);
   }
   
   public b getInputPanelHelper()
   {
-    return this.IZb;
+    return this.KQh;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(143335);
-    this.IZb.acB(paramInt2);
+    this.KQh.aeY(paramInt2);
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(143335);
   }
   
   public void setExternalListener(b.a parama)
   {
-    this.IZc = parama;
+    this.KQi = parama;
   }
 }
 

@@ -1,18 +1,8 @@
 package com.tencent.mm.al;
 
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.storage.q;
-
 public abstract interface p
-  extends a
 {
-  public abstract String aCK();
-  
-  public abstract com.tencent.mm.storage.p awE();
-  
-  public abstract q awF();
-  
-  public abstract String awU();
+  public abstract int aEM();
 }
 
 

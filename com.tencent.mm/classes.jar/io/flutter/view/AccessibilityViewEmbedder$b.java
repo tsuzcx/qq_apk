@@ -22,7 +22,7 @@ final class AccessibilityViewEmbedder$b
       AppMethodBeat.o(9826);
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    if (!(paramObject instanceof b))
     {
       AppMethodBeat.o(9826);
       return false;
@@ -48,7 +48,7 @@ final class AccessibilityViewEmbedder$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     io.flutter.view.AccessibilityViewEmbedder.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,9 @@ package d.l.b.a.b.d.a.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.v;
-import d.aa;
+import d.ac;
 import d.g.a.b<-Ld.l.b.a.b.f.f;+Ljava.util.Collection<+Ld.l.b.a.b.b.am;>;>;
+import d.l.b.a.b.b.a.g.a;
 import d.l.b.a.b.b.ah;
 import d.l.b.a.b.b.ai;
 import d.l.b.a.b.b.am;
@@ -12,7 +13,6 @@ import d.l.b.a.b.b.as;
 import d.l.b.a.b.b.c.ae;
 import d.l.b.a.b.b.t.a;
 import d.l.b.a.b.b.w;
-import d.l.b.a.b.d.a.e.q;
 import d.l.b.a.b.d.a.e.x;
 import d.l.b.a.b.d.a.m;
 import d.l.b.a.b.d.a.m.a;
@@ -35,44 +35,44 @@ import java.util.Set;
 public final class g
   extends k
 {
-  private final d.l.b.a.b.d.a.e.g LnZ;
-  private final d.l.b.a.b.l.f<Map<d.l.b.a.b.f.f, d.l.b.a.b.d.a.e.n>> LoA;
-  private final d.l.b.a.b.l.d<d.l.b.a.b.f.f, d.l.b.a.b.b.c.g> LoB;
-  final d.l.b.a.b.b.e LoC;
-  private final boolean LoD;
-  final d.l.b.a.b.l.f<List<d.l.b.a.b.b.d>> Loy;
-  private final d.l.b.a.b.l.f<Set<d.l.b.a.b.f.f>> Loz;
+  private final d.l.b.a.b.d.a.e.g NeW;
+  private final boolean NfA;
+  final d.l.b.a.b.l.f<List<d.l.b.a.b.b.d>> Nfv;
+  private final d.l.b.a.b.l.f<Set<d.l.b.a.b.f.f>> Nfw;
+  private final d.l.b.a.b.l.f<Map<d.l.b.a.b.f.f, d.l.b.a.b.d.a.e.n>> Nfx;
+  private final d.l.b.a.b.l.d<d.l.b.a.b.f.f, d.l.b.a.b.b.c.g> Nfy;
+  final d.l.b.a.b.b.e Nfz;
   
   public g(final d.l.b.a.b.d.a.c.h paramh, d.l.b.a.b.b.e parame, d.l.b.a.b.d.a.e.g paramg, boolean paramBoolean, g paramg1)
   {
     super(paramh, (k)paramg1);
     AppMethodBeat.i(57876);
-    this.LoC = parame;
-    this.LnZ = paramg;
-    this.LoD = paramBoolean;
-    this.Loy = paramh.LnL.KZf.O((d.g.a.a)new f(this, paramh));
-    this.Loz = paramh.LnL.KZf.O((d.g.a.a)new i(this));
-    this.LoA = paramh.LnL.KZf.O((d.g.a.a)new g(this));
-    this.LoB = paramh.LnL.KZf.J((d.g.a.b)new j(this, paramh));
+    this.Nfz = parame;
+    this.NeW = paramg;
+    this.NfA = paramBoolean;
+    this.Nfv = paramh.NeI.MQa.S((d.g.a.a)new f(this, paramh));
+    this.Nfw = paramh.NeI.MQa.S((d.g.a.a)new i(this));
+    this.Nfx = paramh.NeI.MQa.S((d.g.a.a)new g(this));
+    this.Nfy = paramh.NeI.MQa.J((d.g.a.b)new j(this, paramh));
     AppMethodBeat.o(57876);
   }
   
   private final am a(ah paramah, d.g.a.b<? super d.l.b.a.b.f.f, ? extends Collection<? extends am>> paramb)
   {
     AppMethodBeat.i(57850);
-    Object localObject1 = paramah.fRK();
+    Object localObject1 = paramah.gjj();
     if (localObject1 != null)
     {
       localObject1 = (ai)d.l.b.a.b.d.a.t.m((d.l.b.a.b.b.b)localObject1);
       if (localObject1 == null) {
         break label84;
       }
-      localObject2 = d.l.b.a.b.d.a.e.Lll;
+      localObject2 = d.l.b.a.b.d.a.e.Nci;
     }
     label84:
     for (Object localObject2 = d.l.b.a.b.d.a.e.l((d.l.b.a.b.b.b)localObject1);; localObject2 = null)
     {
-      if ((localObject2 == null) || (d.l.b.a.b.d.a.t.a(this.LoC, (d.l.b.a.b.b.a)localObject1))) {
+      if ((localObject2 == null) || (d.l.b.a.b.d.a.t.a(this.Nfz, (d.l.b.a.b.b.a)localObject1))) {
         break label90;
       }
       paramah = a(paramah, (String)localObject2, paramb);
@@ -82,8 +82,8 @@ public final class g
       break;
     }
     label90:
-    localObject1 = o.aWm(paramah.fRf().rf());
-    d.g.b.k.g(localObject1, "JvmAbi.getterName(name.asString())");
+    localObject1 = o.bcp(paramah.giD().sD());
+    d.g.b.p.g(localObject1, "JvmAbi.getterName(name.asString())");
     paramah = a(paramah, (String)localObject1, paramb);
     AppMethodBeat.o(57850);
     return paramah;
@@ -92,9 +92,9 @@ public final class g
   private static am a(ah paramah, String paramString, d.g.a.b<? super d.l.b.a.b.f.f, ? extends Collection<? extends am>> paramb)
   {
     AppMethodBeat.i(57851);
-    paramString = d.l.b.a.b.f.f.aWB(paramString);
-    d.g.b.k.g(paramString, "Name.identifier(getterName)");
-    paramb = ((Iterable)paramb.ay(paramString)).iterator();
+    paramString = d.l.b.a.b.f.f.bcE(paramString);
+    d.g.b.p.g(paramString, "Name.identifier(getterName)");
+    paramb = ((Iterable)paramb.invoke(paramString)).iterator();
     label119:
     label122:
     while (paramb.hasNext())
@@ -103,10 +103,10 @@ public final class g
       d.l.b.a.b.m.a.g localg;
       d.l.b.a.b.m.ab localab;
       boolean bool;
-      if (paramString.fQU().size() == 0)
+      if (paramString.gis().size() == 0)
       {
-        localg = d.l.b.a.b.m.a.g.LMg;
-        localab = paramString.fQS();
+        localg = d.l.b.a.b.m.a.g.NDb;
+        localab = paramString.giq();
         if (localab == null)
         {
           bool = false;
@@ -122,7 +122,7 @@ public final class g
         }
         AppMethodBeat.o(57851);
         return paramString;
-        bool = localg.c(localab, paramah.fRV());
+        bool = localg.c(localab, paramah.gju());
         break;
         paramString = null;
       }
@@ -134,14 +134,14 @@ public final class g
   private static am a(am paramam, d.g.a.b<? super d.l.b.a.b.f.f, ? extends Collection<? extends am>> paramb)
   {
     AppMethodBeat.i(57857);
-    if (!paramam.fRw())
+    if (!paramam.giV())
     {
       AppMethodBeat.o(57857);
       return null;
     }
-    Object localObject = paramam.fRf();
-    d.g.b.k.g(localObject, "descriptor.name");
-    localObject = ((Iterable)paramb.ay(localObject)).iterator();
+    Object localObject = paramam.giD();
+    d.g.b.p.g(localObject, "descriptor.name");
+    localObject = ((Iterable)paramb.invoke(localObject)).iterator();
     while (((Iterator)localObject).hasNext())
     {
       paramb = h((am)((Iterator)localObject).next());
@@ -171,7 +171,7 @@ public final class g
       if (paramCollection.hasNext())
       {
         am localam = (am)paramCollection.next();
-        if (((d.g.b.k.g(paramam, localam) ^ true)) && (localam.fRr() == null) && (b((d.l.b.a.b.b.a)localam, parama)))
+        if (((d.g.b.p.i(paramam, localam) ^ true)) && (localam.giQ() == null) && (b((d.l.b.a.b.b.a)localam, parama)))
         {
           i = 1;
           label91:
@@ -194,9 +194,9 @@ public final class g
       break;
     }
     label118:
-    paramam = paramam.fRx().fRB().fRD();
+    paramam = paramam.giW().gja().gjc();
     if (paramam == null) {
-      d.g.b.k.fOy();
+      d.g.b.p.gfZ();
     }
     paramam = (am)paramam;
     AppMethodBeat.o(57858);
@@ -206,13 +206,13 @@ public final class g
   private static am a(am paramam, d.l.b.a.b.f.f paramf)
   {
     AppMethodBeat.i(57847);
-    paramam = paramam.fRx();
+    paramam = paramam.giW();
     paramam.d(paramf);
-    paramam.fRy();
-    paramam.fRz();
-    paramam = paramam.fRD();
+    paramam.giX();
+    paramam.giY();
+    paramam = paramam.gjc();
     if (paramam == null) {
-      d.g.b.k.fOy();
+      d.g.b.p.gfZ();
     }
     paramam = (am)paramam;
     AppMethodBeat.o(57847);
@@ -249,11 +249,11 @@ public final class g
         break;
         localObject1 = d.l.b.a.b.d.a.t.p((d.l.b.a.b.b.b)paramCollection2);
         if (localObject1 == null) {
-          d.g.b.k.fOy();
+          d.g.b.p.gfZ();
         }
-        localObject1 = d.l.b.a.b.f.f.aWB((String)localObject1);
-        d.g.b.k.g(localObject1, "Name.identifier(nameInJava)");
-        localObject1 = ((Collection)paramb.ay(localObject1)).iterator();
+        localObject1 = d.l.b.a.b.f.f.bcE((String)localObject1);
+        d.g.b.p.g(localObject1, "Name.identifier(nameInJava)");
+        localObject1 = ((Collection)paramb.invoke(localObject1)).iterator();
         label149:
         if (!((Iterator)localObject1).hasNext()) {
           break label52;
@@ -265,9 +265,9 @@ public final class g
         paramCollection2 = a((am)localObject2, (d.l.b.a.b.b.a)paramCollection2, paramCollection1);
         break label54;
         label201:
-        paramCollection2 = ((d.l.b.a.b.b.t)localObject1).fRf();
-        d.g.b.k.g(paramCollection2, "overridden.name");
-        localObject2 = ((Iterable)paramb.ay(paramCollection2)).iterator();
+        paramCollection2 = ((d.l.b.a.b.b.t)localObject1).giD();
+        d.g.b.p.g(paramCollection2, "overridden.name");
+        localObject2 = ((Iterable)paramb.invoke(paramCollection2)).iterator();
         do
         {
           if (!((Iterator)localObject2).hasNext()) {
@@ -281,29 +281,29 @@ public final class g
           if (localObject2 == null) {
             break label520;
           }
-          paramCollection2 = ((am)localObject2).fRx();
-          localObject3 = ((d.l.b.a.b.b.t)localObject1).fQU();
-          d.g.b.k.g(localObject3, "overridden.valueParameters");
+          paramCollection2 = ((am)localObject2).giW();
+          localObject3 = ((d.l.b.a.b.b.t)localObject1).gis();
+          d.g.b.p.g(localObject3, "overridden.valueParameters");
           Object localObject4 = (Iterable)localObject3;
           localObject3 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject4, 10));
           localObject4 = ((Iterable)localObject4).iterator();
           while (((Iterator)localObject4).hasNext())
           {
             d.l.b.a.b.b.av localav = (d.l.b.a.b.b.av)((Iterator)localObject4).next();
-            d.g.b.k.g(localav, "it");
-            d.l.b.a.b.m.ab localab = localav.fRV();
-            d.g.b.k.g(localab, "it.type");
-            ((Collection)localObject3).add(new d.l.b.a.b.d.a.b.l(localab, localav.fRX()));
+            d.g.b.p.g(localav, "it");
+            d.l.b.a.b.m.ab localab = localav.gju();
+            d.g.b.p.g(localab, "it.type");
+            ((Collection)localObject3).add(new d.l.b.a.b.d.a.b.l(localab, localav.gjw()));
           }
           paramCollection2 = null;
         }
         Object localObject3 = (Collection)localObject3;
-        localObject2 = ((am)localObject2).fQU();
-        d.g.b.k.g(localObject2, "override.valueParameters");
-        paramCollection2.iW(d.l.b.a.b.d.a.b.k.a((Collection)localObject3, (Collection)localObject2, (d.l.b.a.b.b.a)localObject1));
-        paramCollection2.fRy();
-        paramCollection2.fRz();
-        paramCollection2 = (am)paramCollection2.fRD();
+        localObject2 = ((am)localObject2).gis();
+        d.g.b.p.g(localObject2, "override.valueParameters");
+        paramCollection2.jk(d.l.b.a.b.d.a.b.k.a((Collection)localObject3, (Collection)localObject2, (d.l.b.a.b.b.a)localObject1));
+        paramCollection2.giX();
+        paramCollection2.giY();
+        paramCollection2 = (am)paramCollection2.gjc();
         label487:
         if (paramCollection2 != null)
         {
@@ -331,8 +331,8 @@ public final class g
   private final void a(Collection<am> paramCollection, d.l.b.a.b.f.f paramf, Collection<? extends am> paramCollection1, boolean paramBoolean)
   {
     AppMethodBeat.i(57855);
-    paramf = d.l.b.a.b.d.a.a.a.a(paramf, paramCollection1, paramCollection, this.LoC, this.LnD.LnL.Lnk, this.LnD.LnL.Lnx.gcH());
-    d.g.b.k.g(paramf, "resolveOverridesForNonSt….overridingUtil\n        )");
+    paramf = d.l.b.a.b.d.a.a.a.a(paramf, paramCollection1, paramCollection, this.Nfz, this.NeA.NeI.Neh, this.NeA.NeI.Neu.gui());
+    d.g.b.p.g(paramf, "resolveOverridesForNonSt….overridingUtil\n        )");
     if (!paramBoolean)
     {
       paramCollection.addAll(paramf);
@@ -352,7 +352,7 @@ public final class g
       {
         localCollection.add(paramf);
         break;
-        d.g.b.k.g(paramf, "resolvedOverride");
+        d.g.b.p.g(paramf, "resolvedOverride");
         paramf = a(paramf, (d.l.b.a.b.b.a)localam, (Collection)paramCollection1);
       }
     }
@@ -360,20 +360,20 @@ public final class g
     AppMethodBeat.o(57855);
   }
   
-  private final void a(List<d.l.b.a.b.b.av> paramList, d.l.b.a.b.b.k paramk, int paramInt, q paramq, d.l.b.a.b.m.ab paramab1, d.l.b.a.b.m.ab paramab2)
+  private final void a(List<d.l.b.a.b.b.av> paramList, d.l.b.a.b.b.k paramk, int paramInt, d.l.b.a.b.d.a.e.q paramq, d.l.b.a.b.m.ab paramab1, d.l.b.a.b.m.ab paramab2)
   {
     AppMethodBeat.i(57867);
     d.l.b.a.b.b.a locala = (d.l.b.a.b.b.a)paramk;
-    paramk = d.l.b.a.b.b.a.g.LeU;
-    d.l.b.a.b.b.a.g localg = d.l.b.a.b.b.a.g.a.fSm();
-    d.l.b.a.b.f.f localf = paramq.fRf();
+    paramk = d.l.b.a.b.b.a.g.MVP;
+    d.l.b.a.b.b.a.g localg = g.a.gjL();
+    d.l.b.a.b.f.f localf = paramq.giD();
     paramab1 = bc.aE(paramab1);
-    d.g.b.k.g(paramab1, "TypeUtils.makeNotNullable(returnType)");
-    boolean bool = paramq.fTC();
+    d.g.b.p.g(paramab1, "TypeUtils.makeNotNullable(returnType)");
+    boolean bool = paramq.glb();
     if (paramab2 != null) {}
     for (paramk = bc.aE(paramab2);; paramk = null)
     {
-      paramList.add(new d.l.b.a.b.b.c.aj(locala, null, paramInt, localg, localf, paramab1, bool, false, false, paramk, (an)this.LnD.LnL.Lno.a((d.l.b.a.b.d.a.e.l)paramq)));
+      paramList.add(new d.l.b.a.b.b.c.aj(locala, null, paramInt, localg, localf, paramab1, bool, false, false, paramk, (an)this.NeA.NeI.Nel.a((d.l.b.a.b.d.a.e.l)paramq)));
       AppMethodBeat.o(57867);
       return;
     }
@@ -399,13 +399,13 @@ public final class g
   private static boolean a(am paramam, d.l.b.a.b.b.t paramt)
   {
     AppMethodBeat.i(57848);
-    d.l.b.a.b.d.a.c localc = d.l.b.a.b.d.a.c.LkK;
+    d.l.b.a.b.d.a.c localc = d.l.b.a.b.d.a.c.NbH;
     if (d.l.b.a.b.d.a.c.c(paramam)) {
-      paramt = paramt.fRq();
+      paramt = paramt.giP();
     }
     for (;;)
     {
-      d.g.b.k.g(paramt, "if (superDescriptor.isRe…iginal else subDescriptor");
+      d.g.b.p.g(paramt, "if (superDescriptor.isRe…iginal else subDescriptor");
       boolean bool = b((d.l.b.a.b.b.a)paramt, (d.l.b.a.b.b.a)paramam);
       AppMethodBeat.o(57848);
       return bool;
@@ -415,17 +415,17 @@ public final class g
   private static am b(ah paramah, d.g.a.b<? super d.l.b.a.b.f.f, ? extends Collection<? extends am>> paramb)
   {
     AppMethodBeat.i(57852);
-    Object localObject1 = d.l.b.a.b.f.f.aWB(o.aWn(paramah.fRf().rf()));
-    d.g.b.k.g(localObject1, "Name.identifier(JvmAbi.s…terName(name.asString()))");
-    localObject1 = ((Iterable)paramb.ay(localObject1)).iterator();
+    Object localObject1 = d.l.b.a.b.f.f.bcE(o.bcq(paramah.giD().sD()));
+    d.g.b.p.g(localObject1, "Name.identifier(JvmAbi.s…terName(name.asString()))");
+    localObject1 = ((Iterable)paramb.invoke(localObject1)).iterator();
     label172:
     while (((Iterator)localObject1).hasNext())
     {
       paramb = (am)((Iterator)localObject1).next();
       Object localObject2;
-      if (paramb.fQU().size() == 1)
+      if (paramb.gis().size() == 1)
       {
-        localObject2 = paramb.fQS();
+        localObject2 = paramb.giq();
         if (localObject2 != null) {}
       }
       else
@@ -442,12 +442,12 @@ public final class g
         if (!d.l.b.a.b.a.g.C((d.l.b.a.b.m.ab)localObject2)) {
           break;
         }
-        localObject2 = d.l.b.a.b.m.a.g.LMg;
-        Object localObject3 = paramb.fQU();
-        d.g.b.k.g(localObject3, "descriptor.valueParameters");
-        localObject3 = d.a.j.iS((List)localObject3);
-        d.g.b.k.g(localObject3, "descriptor.valueParameters.single()");
-        if (!((d.l.b.a.b.m.a.g)localObject2).d(((d.l.b.a.b.b.av)localObject3).fRV(), paramah.fRV())) {
+        localObject2 = d.l.b.a.b.m.a.g.NDb;
+        Object localObject3 = paramb.gis();
+        d.g.b.p.g(localObject3, "descriptor.valueParameters");
+        localObject3 = d.a.j.jg((List)localObject3);
+        d.g.b.p.g(localObject3, "descriptor.valueParameters.single()");
+        if (!((d.l.b.a.b.m.a.g)localObject2).d(((d.l.b.a.b.b.av)localObject3).gju(), paramah.gju())) {
           break;
         }
       }
@@ -459,13 +459,13 @@ public final class g
   private static boolean b(d.l.b.a.b.b.a parama1, d.l.b.a.b.b.a parama2)
   {
     AppMethodBeat.i(57849);
-    Object localObject = d.l.b.a.b.j.i.LEO.b(parama2, parama1, true);
-    d.g.b.k.g(localObject, "OverridingUtil.DEFAULT.i…erDescriptor, this, true)");
-    localObject = ((i.a)localObject).gbv();
-    d.g.b.k.g(localObject, "OverridingUtil.DEFAULT.i…iptor, this, true).result");
-    if (localObject == i.a.a.LFe)
+    Object localObject = d.l.b.a.b.j.i.NvN.b(parama2, parama1, true);
+    d.g.b.p.g(localObject, "OverridingUtil.DEFAULT.i…erDescriptor, this, true)");
+    localObject = ((i.a)localObject).gsV();
+    d.g.b.p.g(localObject, "OverridingUtil.DEFAULT.i…iptor, this, true).result");
+    if (localObject == i.a.a.Nwc)
     {
-      localObject = m.Llt;
+      localObject = m.Ncq;
       if (!m.a.a(parama2, parama1))
       {
         AppMethodBeat.o(57849);
@@ -480,9 +480,9 @@ public final class g
   {
     AppMethodBeat.i(57866);
     String str = d.l.b.a.b.d.b.t.a((d.l.b.a.b.b.t)paramam, false, false, 2);
-    d.l.b.a.b.b.t localt = paramt.fRq();
-    d.g.b.k.g(localt, "builtinWithErasedParameters.original");
-    if ((d.g.b.k.g(str, d.l.b.a.b.d.b.t.a(localt, false, false, 2))) && (!b((d.l.b.a.b.b.a)paramam, (d.l.b.a.b.b.a)paramt)))
+    d.l.b.a.b.b.t localt = paramt.giP();
+    d.g.b.p.g(localt, "builtinWithErasedParameters.original");
+    if ((d.g.b.p.i(str, d.l.b.a.b.d.b.t.a(localt, false, false, 2))) && (!b((d.l.b.a.b.b.a)paramam, (d.l.b.a.b.b.a)paramt)))
     {
       AppMethodBeat.o(57866);
       return true;
@@ -506,12 +506,12 @@ public final class g
       AppMethodBeat.o(57853);
       return false;
     }
-    if (!paramah.fSc())
+    if (!paramah.gjB())
     {
       AppMethodBeat.o(57853);
       return true;
     }
-    if ((paramb != null) && (paramb.fPZ() == localam.fPZ()))
+    if ((paramb != null) && (paramb.ghx() == localam.ghx()))
     {
       AppMethodBeat.o(57853);
       return true;
@@ -531,38 +531,38 @@ public final class g
     }
     am localam = a(paramah, paramb);
     if (localam == null) {
-      d.g.b.k.fOy();
+      d.g.b.p.gfZ();
     }
     int i;
-    if (paramah.fSc())
+    if (paramah.gjB())
     {
       localObject = b(paramah, paramb);
       paramb = (d.g.a.b<? super d.l.b.a.b.f.f, ? extends Collection<? extends am>>)localObject;
       if (localObject == null)
       {
-        d.g.b.k.fOy();
+        d.g.b.p.gfZ();
         paramb = (d.g.a.b<? super d.l.b.a.b.f.f, ? extends Collection<? extends am>>)localObject;
       }
       i = j;
       if (paramb != null)
       {
-        if (paramb.fPZ() != localam.fPZ()) {
+        if (paramb.ghx() != localam.ghx()) {
           break label203;
         }
         i = j;
       }
       label98:
-      if ((!aa.KTq) || (i != 0)) {
+      if ((!ac.MKp) || (i != 0)) {
         break label213;
       }
-      localObject = new StringBuilder("Different accessors modalities when creating overrides for ").append(paramah).append(" in ").append(this.LoC).append("for getter is ").append(localam.fPZ()).append(", but for setter is ");
+      localObject = new StringBuilder("Different accessors modalities when creating overrides for ").append(paramah).append(" in ").append(this.Nfz).append("for getter is ").append(localam.ghx()).append(", but for setter is ");
       if (paramb == null) {
         break label208;
       }
     }
     label203:
     label208:
-    for (paramah = paramb.fPZ();; paramah = null)
+    for (paramah = paramb.ghx();; paramah = null)
     {
       paramah = (Throwable)new AssertionError(paramah);
       AppMethodBeat.o(57862);
@@ -573,29 +573,29 @@ public final class g
       break label98;
     }
     label213:
-    Object localObject = new d.l.b.a.b.d.a.b.e(this.LoC, localam, paramb, paramah);
-    paramah = localam.fQS();
+    Object localObject = new d.l.b.a.b.d.a.b.e(this.Nfz, localam, paramb, paramah);
+    paramah = localam.giq();
     if (paramah == null) {
-      d.g.b.k.fOy();
+      d.g.b.p.gfZ();
     }
-    ((d.l.b.a.b.d.a.b.e)localObject).a(paramah, (List)v.KTF, fQQ(), null);
-    d.l.b.a.b.b.c.ab localab = d.l.b.a.b.j.b.a((ah)localObject, localam.fQj(), false, localam.fQk());
-    localab.Lhr = ((d.l.b.a.b.b.t)localam);
-    localab.K(((d.l.b.a.b.d.a.b.e)localObject).fRV());
-    d.g.b.k.g(localab, "DescriptorFactory.create…escriptor.type)\n        }");
+    ((d.l.b.a.b.d.a.b.e)localObject).a(paramah, (List)v.MKE, gio(), null);
+    d.l.b.a.b.b.c.ab localab = d.l.b.a.b.j.b.a((ah)localObject, localam.ghH(), false, localam.ghI());
+    localab.MYn = ((d.l.b.a.b.b.t)localam);
+    localab.K(((d.l.b.a.b.d.a.b.e)localObject).gju());
+    d.g.b.p.g(localab, "DescriptorFactory.create…escriptor.type)\n        }");
     if (paramb != null)
     {
-      paramah = paramb.fQU();
-      d.g.b.k.g(paramah, "setterMethod.valueParameters");
-      paramah = (d.l.b.a.b.b.av)d.a.j.iP(paramah);
+      paramah = paramb.gis();
+      d.g.b.p.g(paramah, "setterMethod.valueParameters");
+      paramah = (d.l.b.a.b.b.av)d.a.j.jd(paramah);
       if (paramah == null)
       {
         paramah = (Throwable)new AssertionError("No parameter found for ".concat(String.valueOf(paramb)));
         AppMethodBeat.o(57862);
         throw paramah;
       }
-      paramah = d.l.b.a.b.j.b.a((ah)localObject, paramb.fQj(), paramah.fQj(), false, paramb.fQb(), paramb.fQk());
-      paramah.Lhr = ((d.l.b.a.b.b.t)paramb);
+      paramah = d.l.b.a.b.j.b.a((ah)localObject, paramb.ghH(), paramah.ghH(), false, paramb.ghz(), paramb.ghI());
+      paramah.MYn = ((d.l.b.a.b.b.t)paramb);
     }
     for (;;)
     {
@@ -610,8 +610,8 @@ public final class g
   private final boolean d(final am paramam)
   {
     AppMethodBeat.i(57842);
-    Object localObject1 = paramam.fRf();
-    d.g.b.k.g(localObject1, "function.name");
+    Object localObject1 = paramam.giD();
+    d.g.b.p.g(localObject1, "function.name");
     localObject1 = (Iterable)s.i((d.l.b.a.b.f.f)localObject1);
     if ((!(localObject1 instanceof Collection)) || (!((Collection)localObject1).isEmpty()))
     {
@@ -628,7 +628,7 @@ public final class g
           if (((Iterator)localObject2).hasNext())
           {
             ah localah = (ah)((Iterator)localObject2).next();
-            if ((c(localah, (d.g.a.b)new h(this, paramam))) && ((localah.fSc()) || (!o.aWl(paramam.fRf().rf()))))
+            if ((c(localah, (d.g.a.b)new h(this, paramam))) && ((localah.gjB()) || (!o.bco(paramam.giD().sD()))))
             {
               i = 1;
               if (i == 0) {
@@ -672,16 +672,16 @@ public final class g
   private final boolean e(am paramam)
   {
     AppMethodBeat.i(57843);
-    Object localObject1 = d.l.b.a.b.d.a.d.LkT;
-    localObject1 = paramam.fRf();
-    d.g.b.k.g(localObject1, "name");
+    Object localObject1 = d.l.b.a.b.d.a.d.NbQ;
+    localObject1 = paramam.giD();
+    d.g.b.p.g(localObject1, "name");
     if (!d.l.b.a.b.d.a.d.g((d.l.b.a.b.f.f)localObject1))
     {
       AppMethodBeat.o(57843);
       return false;
     }
-    localObject1 = paramam.fRf();
-    d.g.b.k.g(localObject1, "name");
+    localObject1 = paramam.giD();
+    d.g.b.p.g(localObject1, "name");
     Object localObject2 = (Iterable)l((d.l.b.a.b.f.f)localObject1);
     localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
@@ -711,9 +711,9 @@ public final class g
   private final boolean f(am paramam)
   {
     AppMethodBeat.i(57844);
-    Object localObject1 = d.l.b.a.b.d.a.c.LkK;
-    localObject1 = paramam.fRf();
-    d.g.b.k.g(localObject1, "name");
+    Object localObject1 = d.l.b.a.b.d.a.c.NbH;
+    localObject1 = paramam.giD();
+    d.g.b.p.g(localObject1, "name");
     localObject1 = (Iterable)d.l.b.a.b.d.a.c.f((d.l.b.a.b.f.f)localObject1);
     if ((!(localObject1 instanceof Collection)) || (!((Collection)localObject1).isEmpty()))
     {
@@ -758,23 +758,6 @@ public final class g
     return false;
   }
   
-  private final Collection<d.l.b.a.b.m.ab> fQp()
-  {
-    AppMethodBeat.i(57864);
-    if (this.LoD)
-    {
-      localObject = this.LoC.fPW();
-      d.g.b.k.g(localObject, "ownerDescriptor.typeConstructor");
-      localObject = ((at)localObject).fSt();
-      d.g.b.k.g(localObject, "ownerDescriptor.typeConstructor.supertypes");
-      AppMethodBeat.o(57864);
-      return localObject;
-    }
-    Object localObject = this.LnD.LnL.Lnx.gcG().D(this.LoC);
-    AppMethodBeat.o(57864);
-    return localObject;
-  }
-  
   private final boolean g(am paramam)
   {
     AppMethodBeat.i(57845);
@@ -784,8 +767,8 @@ public final class g
       AppMethodBeat.o(57845);
       return false;
     }
-    paramam = paramam.fRf();
-    d.g.b.k.g(paramam, "name");
+    paramam = paramam.giD();
+    d.g.b.p.g(paramam, "name");
     paramam = (Iterable)l(paramam);
     if (!((Collection)paramam).isEmpty())
     {
@@ -793,7 +776,7 @@ public final class g
       while (paramam.hasNext())
       {
         am localam2 = (am)paramam.next();
-        if ((localam2.fRw()) && (b((d.l.b.a.b.b.a)localam1, (d.l.b.a.b.b.a)localam2))) {}
+        if ((localam2.giV()) && (b((d.l.b.a.b.b.a)localam1, (d.l.b.a.b.b.a)localam2))) {}
         for (int i = 1; i != 0; i = 0)
         {
           AppMethodBeat.o(57845);
@@ -805,15 +788,32 @@ public final class g
     return false;
   }
   
+  private final Collection<d.l.b.a.b.m.ab> ghN()
+  {
+    AppMethodBeat.i(57864);
+    if (this.NfA)
+    {
+      localObject = this.Nfz.ghu();
+      d.g.b.p.g(localObject, "ownerDescriptor.typeConstructor");
+      localObject = ((at)localObject).gjR();
+      d.g.b.p.g(localObject, "ownerDescriptor.typeConstructor.supertypes");
+      AppMethodBeat.o(57864);
+      return localObject;
+    }
+    Object localObject = this.NeA.NeI.Neu.guh().D(this.Nfz);
+    AppMethodBeat.o(57864);
+    return localObject;
+  }
+  
   private static am h(am paramam)
   {
     AppMethodBeat.i(57846);
-    Object localObject1 = paramam.fQU();
-    d.g.b.k.g(localObject1, "valueParameters");
-    Object localObject2 = (d.l.b.a.b.b.av)d.a.j.iR((List)localObject1);
+    Object localObject1 = paramam.gis();
+    d.g.b.p.g(localObject1, "valueParameters");
+    Object localObject2 = (d.l.b.a.b.b.av)d.a.j.jf((List)localObject1);
     if (localObject2 != null)
     {
-      localObject1 = ((d.l.b.a.b.b.av)localObject2).fRV().gbz().fQq();
+      localObject1 = ((d.l.b.a.b.b.av)localObject2).gju().gsZ().ghO();
       if (localObject1 == null) {
         break label106;
       }
@@ -821,13 +821,13 @@ public final class g
       if (localObject1 == null) {
         break label106;
       }
-      if (!((d.l.b.a.b.f.c)localObject1).fZK()) {
+      if (!((d.l.b.a.b.f.c)localObject1).grj()) {
         break label101;
       }
       if (localObject1 == null) {
         break label106;
       }
-      localObject1 = ((d.l.b.a.b.f.c)localObject1).fZL();
+      localObject1 = ((d.l.b.a.b.f.c)localObject1).grk();
       label79:
       if (!d.l.b.a.b.a.k.a((d.l.b.a.b.f.b)localObject1, false)) {
         break label111;
@@ -849,13 +849,13 @@ public final class g
       break label79;
     }
     label116:
-    localObject2 = paramam.fRx();
-    paramam = paramam.fQU();
-    d.g.b.k.g(paramam, "valueParameters");
-    paramam = (am)((t.a)localObject2).iW(d.a.j.iU(paramam)).H(((d.l.b.a.b.m.av)((d.l.b.a.b.b.av)localObject1).fRV().gbw().get(0)).fRV()).fRD();
+    localObject2 = paramam.giW();
+    paramam = paramam.gis();
+    d.g.b.p.g(paramam, "valueParameters");
+    paramam = (am)((t.a)localObject2).jk(d.a.j.ji(paramam)).H(((d.l.b.a.b.m.av)((d.l.b.a.b.b.av)localObject1).gju().gsW().get(0)).gju()).gjc();
     localObject1 = (ae)paramam;
     if (localObject1 != null) {
-      ((d.l.b.a.b.b.c.p)localObject1).Lhk = true;
+      ((d.l.b.a.b.b.c.p)localObject1).MYg = true;
     }
     AppMethodBeat.o(57846);
     return paramam;
@@ -864,11 +864,11 @@ public final class g
   private final Set<am> l(d.l.b.a.b.f.f paramf)
   {
     AppMethodBeat.i(57859);
-    Object localObject = (Iterable)fQp();
+    Object localObject = (Iterable)ghN();
     Collection localCollection = (Collection)new LinkedHashSet();
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      d.a.j.a(localCollection, (Iterable)((d.l.b.a.b.m.ab)((Iterator)localObject).next()).fQN().b(paramf, (d.l.b.a.b.c.a.a)d.l.b.a.b.c.a.c.Lkg));
+      d.a.j.a(localCollection, (Iterable)((d.l.b.a.b.m.ab)((Iterator)localObject).next()).gil().b(paramf, (d.l.b.a.b.c.a.a)d.l.b.a.b.c.a.c.Nbd));
     }
     paramf = (Set)localCollection;
     AppMethodBeat.o(57859);
@@ -878,12 +878,12 @@ public final class g
   private final Set<ah> m(d.l.b.a.b.f.f paramf)
   {
     AppMethodBeat.i(57863);
-    Object localObject1 = (Iterable)fQp();
+    Object localObject1 = (Iterable)ghN();
     Collection localCollection1 = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      Object localObject2 = (Iterable)((d.l.b.a.b.m.ab)((Iterator)localObject1).next()).fQN().a(paramf, (d.l.b.a.b.c.a.a)d.l.b.a.b.c.a.c.Lkg);
+      Object localObject2 = (Iterable)((d.l.b.a.b.m.ab)((Iterator)localObject1).next()).gil().a(paramf, (d.l.b.a.b.c.a.a)d.l.b.a.b.c.a.c.Nbd);
       Collection localCollection2 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
       localObject2 = ((Iterable)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
@@ -896,37 +896,37 @@ public final class g
     return paramf;
   }
   
-  protected final k.a a(q paramq, List<? extends as> paramList, d.l.b.a.b.m.ab paramab, List<? extends d.l.b.a.b.b.av> paramList1)
+  protected final k.a a(d.l.b.a.b.d.a.e.q paramq, List<? extends as> paramList, d.l.b.a.b.m.ab paramab, List<? extends d.l.b.a.b.b.av> paramList1)
   {
     AppMethodBeat.i(57865);
-    d.g.b.k.h(paramq, "method");
-    d.g.b.k.h(paramList, "methodTypeParameters");
-    d.g.b.k.h(paramab, "returnType");
-    d.g.b.k.h(paramList1, "valueParameters");
-    Object localObject = this.LnD.LnL.Lnj.a(paramq, this.LoC, paramab, paramList1, paramList);
-    d.g.b.k.g(localObject, "c.components.signaturePr…dTypeParameters\n        )");
-    paramq = ((d.l.b.a.b.d.a.a.k.a)localObject).Liw;
+    d.g.b.p.h(paramq, "method");
+    d.g.b.p.h(paramList, "methodTypeParameters");
+    d.g.b.p.h(paramab, "returnType");
+    d.g.b.p.h(paramList1, "valueParameters");
+    Object localObject = this.NeA.NeI.Neg.a(paramq, this.Nfz, paramab, paramList1, paramList);
+    d.g.b.p.g(localObject, "c.components.signaturePr…dTypeParameters\n        )");
+    paramq = ((d.l.b.a.b.d.a.a.k.a)localObject).MZs;
     if (paramq == null) {
-      d.l.b.a.b.d.a.a.k.a.agL(4);
+      d.l.b.a.b.d.a.a.k.a.ajm(4);
     }
-    d.g.b.k.g(paramq, "propagated.returnType");
-    paramList = ((d.l.b.a.b.d.a.a.k.a)localObject).LmH;
-    paramab = ((d.l.b.a.b.d.a.a.k.a)localObject).LmI;
+    d.g.b.p.g(paramq, "propagated.returnType");
+    paramList = ((d.l.b.a.b.d.a.a.k.a)localObject).NdE;
+    paramab = ((d.l.b.a.b.d.a.a.k.a)localObject).NdF;
     if (paramab == null) {
-      d.l.b.a.b.d.a.a.k.a.agL(5);
+      d.l.b.a.b.d.a.a.k.a.ajm(5);
     }
-    d.g.b.k.g(paramab, "propagated.valueParameters");
-    paramList1 = ((d.l.b.a.b.d.a.a.k.a)localObject).LdP;
+    d.g.b.p.g(paramab, "propagated.valueParameters");
+    paramList1 = ((d.l.b.a.b.d.a.a.k.a)localObject).MUK;
     if (paramList1 == null) {
-      d.l.b.a.b.d.a.a.k.a.agL(6);
+      d.l.b.a.b.d.a.a.k.a.ajm(6);
     }
-    d.g.b.k.g(paramList1, "propagated.typeParameters");
-    boolean bool = ((d.l.b.a.b.d.a.a.k.a)localObject).Lhl;
-    localObject = ((d.l.b.a.b.d.a.a.k.a)localObject).LmJ;
+    d.g.b.p.g(paramList1, "propagated.typeParameters");
+    boolean bool = ((d.l.b.a.b.d.a.a.k.a)localObject).MYh;
+    localObject = ((d.l.b.a.b.d.a.a.k.a)localObject).NdG;
     if (localObject == null) {
-      d.l.b.a.b.d.a.a.k.a.agL(7);
+      d.l.b.a.b.d.a.a.k.a.ajm(7);
     }
-    d.g.b.k.g(localObject, "propagated.errors");
+    d.g.b.p.g(localObject, "propagated.errors");
     paramq = new k.a(paramq, paramList, paramab, paramList1, bool, (List)localObject);
     AppMethodBeat.o(57865);
     return paramq;
@@ -935,8 +935,8 @@ public final class g
   public final Collection<ah> a(d.l.b.a.b.f.f paramf, d.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(57871);
-    d.g.b.k.h(paramf, "name");
-    d.g.b.k.h(parama, "location");
+    d.g.b.p.h(paramf, "name");
+    d.g.b.p.h(parama, "location");
     d(paramf, parama);
     paramf = super.a(paramf, parama);
     AppMethodBeat.o(57871);
@@ -946,22 +946,22 @@ public final class g
   protected final Set<d.l.b.a.b.f.f> a(d.l.b.a.b.j.f.d paramd)
   {
     AppMethodBeat.i(57873);
-    d.g.b.k.h(paramd, "kindFilter");
-    if (this.LnZ.fTl())
+    d.g.b.p.h(paramd, "kindFilter");
+    if (this.NeW.gkK())
     {
-      paramd = fSy();
+      paramd = gjW();
       AppMethodBeat.o(57873);
       return paramd;
     }
-    paramd = new LinkedHashSet((Collection)((b)this.LoV.invoke()).fUi());
-    Object localObject = this.LoC.fPW();
-    d.g.b.k.g(localObject, "ownerDescriptor.typeConstructor");
-    localObject = ((at)localObject).fSt();
-    d.g.b.k.g(localObject, "ownerDescriptor.typeConstructor.supertypes");
+    paramd = new LinkedHashSet((Collection)((b)this.NfS.invoke()).glH());
+    Object localObject = this.Nfz.ghu();
+    d.g.b.p.g(localObject, "ownerDescriptor.typeConstructor");
+    localObject = ((at)localObject).gjR();
+    d.g.b.p.g(localObject, "ownerDescriptor.typeConstructor.supertypes");
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      Iterable localIterable = (Iterable)((d.l.b.a.b.m.ab)((Iterator)localObject).next()).fQN().fSz();
+      Iterable localIterable = (Iterable)((d.l.b.a.b.m.ab)((Iterator)localObject).next()).gil().gjX();
       d.a.j.a((Collection)paramd, localIterable);
     }
     paramd = (Set)paramd;
@@ -972,13 +972,13 @@ public final class g
   protected final void a(Collection<am> paramCollection, d.l.b.a.b.f.f paramf)
   {
     AppMethodBeat.i(57854);
-    d.g.b.k.h(paramCollection, "result");
-    d.g.b.k.h(paramf, "name");
+    d.g.b.p.h(paramCollection, "result");
+    d.g.b.p.h(paramf, "name");
     Object localObject1 = l(paramf);
-    Object localObject2 = d.l.b.a.b.d.a.c.LkK;
+    Object localObject2 = d.l.b.a.b.d.a.c.NbH;
     if (!d.l.b.a.b.d.a.c.e(paramf))
     {
-      localObject2 = d.l.b.a.b.d.a.d.LkT;
+      localObject2 = d.l.b.a.b.d.a.d.NbQ;
       if (!d.l.b.a.b.d.a.d.g(paramf))
       {
         localObject2 = (Iterable)localObject1;
@@ -987,7 +987,7 @@ public final class g
         {
           localObject2 = ((Iterable)localObject2).iterator();
           while (((Iterator)localObject2).hasNext()) {
-            if (((d.l.b.a.b.b.t)((Iterator)localObject2).next()).fRw()) {
+            if (((d.l.b.a.b.b.t)((Iterator)localObject2).next()).giV()) {
               i = 0;
             }
           }
@@ -1017,10 +1017,10 @@ public final class g
         }
       }
     }
-    localObject2 = d.l.b.a.b.o.i.LPk;
-    localObject2 = i.b.gcT();
-    Object localObject3 = d.l.b.a.b.d.a.a.a.a(paramf, (Collection)localObject1, (Collection)v.KTF, this.LoC, r.LIg, this.LnD.LnL.Lnx.gcH());
-    d.g.b.k.g(localObject3, "resolveOverridesForNonSt….overridingUtil\n        )");
+    localObject2 = d.l.b.a.b.o.i.NGf;
+    localObject2 = i.b.guu();
+    Object localObject3 = d.l.b.a.b.d.a.a.a.a(paramf, (Collection)localObject1, (Collection)v.MKE, this.Nfz, r.Nze, this.NeA.NeI.Neu.gui());
+    d.g.b.p.g(localObject3, "resolveOverridesForNonSt….overridingUtil\n        )");
     a(paramf, paramCollection, (Collection)localObject3, paramCollection, (d.g.a.b)new b((g)this));
     a(paramf, paramCollection, (Collection)localObject3, (Collection)localObject2, (d.g.a.b)new c((g)this));
     localObject3 = (Iterable)localObject1;
@@ -1040,8 +1040,8 @@ public final class g
   protected final boolean a(d.l.b.a.b.d.a.b.f paramf)
   {
     AppMethodBeat.i(57841);
-    d.g.b.k.h(paramf, "$this$isVisibleAsFunction");
-    if (this.LnZ.fTl())
+    d.g.b.p.h(paramf, "$this$isVisibleAsFunction");
+    if (this.NeW.gkK())
     {
       AppMethodBeat.o(57841);
       return false;
@@ -1054,8 +1054,8 @@ public final class g
   public final Collection<am> b(d.l.b.a.b.f.f paramf, d.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(57870);
-    d.g.b.k.h(paramf, "name");
-    d.g.b.k.h(parama, "location");
+    d.g.b.p.h(paramf, "name");
+    d.g.b.p.h(parama, "location");
     d(paramf, parama);
     paramf = super.b(paramf, parama);
     AppMethodBeat.o(57870);
@@ -1065,12 +1065,12 @@ public final class g
   protected final void b(d.l.b.a.b.f.f paramf, Collection<ah> paramCollection)
   {
     AppMethodBeat.i(57860);
-    d.g.b.k.h(paramf, "name");
-    d.g.b.k.h(paramCollection, "result");
+    d.g.b.p.h(paramf, "name");
+    d.g.b.p.h(paramCollection, "result");
     Object localObject1;
-    if (this.LnZ.fTl())
+    if (this.NeW.gkK())
     {
-      localObject1 = (q)d.a.j.g((Iterable)((b)this.LoV.invoke()).j(paramf));
+      localObject1 = (d.l.b.a.b.d.a.e.q)d.a.j.g((Iterable)((b)this.NfS.invoke()).j(paramf));
       if (localObject1 != null) {
         break label86;
       }
@@ -1084,26 +1084,26 @@ public final class g
       AppMethodBeat.o(57860);
       return;
       label86:
-      localObject2 = w.LdG;
-      Object localObject3 = d.l.b.a.b.d.a.c.f.a(this.LnD, (d.l.b.a.b.d.a.e.d)localObject1);
-      localObject2 = d.l.b.a.b.d.a.b.g.a((d.l.b.a.b.b.l)this.LoC, (d.l.b.a.b.b.a.g)localObject3, (w)localObject2, ((q)localObject1).fQb(), false, ((q)localObject1).fRf(), (an)this.LnD.LnL.Lno.a((d.l.b.a.b.d.a.e.l)localObject1), false);
-      d.g.b.k.g(localObject2, "JavaPropertyDescriptor.c…inal = */ false\n        )");
+      localObject2 = w.MUB;
+      Object localObject3 = d.l.b.a.b.d.a.c.f.a(this.NeA, (d.l.b.a.b.d.a.e.d)localObject1);
+      localObject2 = d.l.b.a.b.d.a.b.g.a((d.l.b.a.b.b.l)this.Nfz, (d.l.b.a.b.b.a.g)localObject3, (w)localObject2, ((d.l.b.a.b.d.a.e.q)localObject1).ghz(), false, ((d.l.b.a.b.d.a.e.q)localObject1).giD(), (an)this.NeA.NeI.Nel.a((d.l.b.a.b.d.a.e.l)localObject1), false);
+      d.g.b.p.g(localObject2, "JavaPropertyDescriptor.c…inal = */ false\n        )");
       localObject3 = (ah)localObject2;
-      d.l.b.a.b.b.a.g.a locala = d.l.b.a.b.b.a.g.LeU;
-      localObject3 = d.l.b.a.b.j.b.a((ah)localObject3, d.l.b.a.b.b.a.g.a.fSm());
-      d.g.b.k.g(localObject3, "DescriptorFactory.create…iptor, Annotations.EMPTY)");
+      g.a locala = d.l.b.a.b.b.a.g.MVP;
+      localObject3 = d.l.b.a.b.j.b.a((ah)localObject3, g.a.gjL());
+      d.g.b.p.g(localObject3, "DescriptorFactory.create…iptor, Annotations.EMPTY)");
       ((d.l.b.a.b.d.a.b.g)localObject2).a((d.l.b.a.b.b.c.ab)localObject3, null);
-      localObject1 = a((q)localObject1, d.l.b.a.b.d.a.c.a.a(this.LnD, (d.l.b.a.b.b.l)localObject2, (x)localObject1, 0));
-      ((d.l.b.a.b.d.a.b.g)localObject2).a((d.l.b.a.b.m.ab)localObject1, (List)v.KTF, fQQ(), null);
+      localObject1 = a((d.l.b.a.b.d.a.e.q)localObject1, d.l.b.a.b.d.a.c.a.a(this.NeA, (d.l.b.a.b.b.l)localObject2, (x)localObject1, 0));
+      ((d.l.b.a.b.d.a.b.g)localObject2).a((d.l.b.a.b.m.ab)localObject1, (List)v.MKE, gio(), null);
       ((d.l.b.a.b.b.c.ab)localObject3).K((d.l.b.a.b.m.ab)localObject1);
       paramCollection.add(localObject2);
     }
-    Object localObject2 = d.l.b.a.b.o.i.LPk;
-    localObject2 = i.b.gcT();
+    Object localObject2 = d.l.b.a.b.o.i.NGf;
+    localObject2 = i.b.guu();
     a((Set)localObject1, paramCollection, (d.g.a.b)new d(this));
     a((Set)localObject1, (Collection)localObject2, (d.g.a.b)new e(this));
-    paramf = d.l.b.a.b.d.a.a.a.a(paramf, (Collection)d.a.ak.a((Set)localObject1, (Iterable)localObject2), paramCollection, this.LoC, this.LnD.LnL.Lnk, this.LnD.LnL.Lnx.gcH());
-    d.g.b.k.g(paramf, "resolveOverridesForNonSt…rridingUtil\n            )");
+    paramf = d.l.b.a.b.d.a.a.a.a(paramf, (Collection)d.a.ak.b((Set)localObject1, (Iterable)localObject2), paramCollection, this.Nfz, this.NeA.NeI.Neh, this.NeA.NeI.Neu.gui());
+    d.g.b.p.g(paramf, "resolveOverridesForNonSt…rridingUtil\n            )");
     paramCollection.addAll(paramf);
     AppMethodBeat.o(57860);
   }
@@ -1111,16 +1111,16 @@ public final class g
   public final d.l.b.a.b.b.h c(d.l.b.a.b.f.f paramf, d.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(57869);
-    d.g.b.k.h(paramf, "name");
-    d.g.b.k.h(parama, "location");
+    d.g.b.p.h(paramf, "name");
+    d.g.b.p.h(parama, "location");
     d(paramf, parama);
-    parama = (g)this.Lpb;
+    parama = (g)this.NfY;
     if (parama != null)
     {
-      parama = parama.LoB;
+      parama = parama.Nfy;
       if (parama != null)
       {
-        parama = (d.l.b.a.b.b.c.g)parama.ay(paramf);
+        parama = (d.l.b.a.b.b.c.g)parama.invoke(paramf);
         if (parama != null)
         {
           paramf = (d.l.b.a.b.b.h)parama;
@@ -1129,7 +1129,7 @@ public final class g
         }
       }
     }
-    paramf = (d.l.b.a.b.b.h)this.LoB.ay(paramf);
+    paramf = (d.l.b.a.b.b.h)this.Nfy.invoke(paramf);
     AppMethodBeat.o(57869);
     return paramf;
   }
@@ -1137,8 +1137,8 @@ public final class g
   protected final Set<d.l.b.a.b.f.f> c(d.l.b.a.b.j.f.d paramd, d.g.a.b<? super d.l.b.a.b.f.f, Boolean> paramb)
   {
     AppMethodBeat.i(57872);
-    d.g.b.k.h(paramd, "kindFilter");
-    paramd = d.a.ak.a((Set)this.Loz.invoke(), (Iterable)((Map)this.LoA.invoke()).keySet());
+    d.g.b.p.h(paramd, "kindFilter");
+    paramd = d.a.ak.b((Set)this.Nfw.invoke(), (Iterable)((Map)this.Nfx.invoke()).keySet());
     AppMethodBeat.o(57872);
     return paramd;
   }
@@ -1146,16 +1146,16 @@ public final class g
   public final void d(d.l.b.a.b.f.f paramf, d.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(57874);
-    d.g.b.k.h(paramf, "name");
-    d.g.b.k.h(parama, "location");
-    d.l.b.a.b.c.a.a(this.LnD.LnL.Lnr, parama, this.LoC, paramf);
+    d.g.b.p.h(paramf, "name");
+    d.g.b.p.h(parama, "location");
+    d.l.b.a.b.c.a.a(this.NeA.NeI.Neo, parama, this.Nfz, paramf);
     AppMethodBeat.o(57874);
   }
   
-  protected final d.l.b.a.b.b.ak fQQ()
+  protected final d.l.b.a.b.b.ak gio()
   {
     AppMethodBeat.i(57868);
-    d.l.b.a.b.b.ak localak = d.l.b.a.b.j.c.l((d.l.b.a.b.b.l)this.LoC);
+    d.l.b.a.b.b.ak localak = d.l.b.a.b.j.c.l((d.l.b.a.b.b.l)this.Nfz);
     AppMethodBeat.o(57868);
     return localak;
   }
@@ -1163,32 +1163,13 @@ public final class g
   public final String toString()
   {
     AppMethodBeat.i(57875);
-    String str = "Lazy Java member scope for " + this.LnZ.fRH();
+    String str = "Lazy Java member scope for " + this.NeW.gjg();
     AppMethodBeat.o(57875);
     return str;
   }
   
-  static final class a
-    extends d.g.b.l
-    implements d.g.a.b<d.l.b.a.b.d.a.e.p, Boolean>
-  {
-    public static final a LoE;
-    
-    static
-    {
-      AppMethodBeat.i(57826);
-      LoE = new a();
-      AppMethodBeat.o(57826);
-    }
-    
-    a()
-    {
-      super();
-    }
-  }
-  
   static final class d
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.b<d.l.b.a.b.f.f, Collection<? extends am>>
   {
     d(g paramg)
@@ -1198,7 +1179,7 @@ public final class g
   }
   
   static final class e
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.b<d.l.b.a.b.f.f, Collection<? extends am>>
   {
     e(g paramg)
@@ -1208,7 +1189,7 @@ public final class g
   }
   
   static final class f
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<List<? extends d.l.b.a.b.b.d>>
   {
     f(g paramg, d.l.b.a.b.d.a.c.h paramh)
@@ -1218,7 +1199,7 @@ public final class g
   }
   
   static final class g
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<Map<d.l.b.a.b.f.f, ? extends d.l.b.a.b.d.a.e.n>>
   {
     g(g paramg)
@@ -1228,7 +1209,7 @@ public final class g
   }
   
   static final class h
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.b<d.l.b.a.b.f.f, Collection<? extends am>>
   {
     h(g paramg, am paramam)
@@ -1238,7 +1219,7 @@ public final class g
   }
   
   static final class i
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<Set<? extends d.l.b.a.b.f.f>>
   {
     i(g paramg)
@@ -1248,7 +1229,7 @@ public final class g
   }
   
   static final class j
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.b<d.l.b.a.b.f.f, d.l.b.a.b.b.c.g>
   {
     j(g paramg, d.l.b.a.b.d.a.c.h paramh)
@@ -1257,7 +1238,7 @@ public final class g
     }
     
     static final class a
-      extends d.g.b.l
+      extends d.g.b.q
       implements d.g.a.a<Set<? extends d.l.b.a.b.f.f>>
     {
       a(g.j paramj)
@@ -1269,7 +1250,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.a.g
  * JD-Core Version:    0.7.0.1
  */

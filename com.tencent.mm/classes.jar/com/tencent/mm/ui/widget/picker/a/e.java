@@ -6,7 +6,7 @@ public abstract interface e<T>
   
   public abstract int getItemsCount();
   
-  public abstract String qk(int paramInt);
+  public abstract String qL(int paramInt);
 }
 
 

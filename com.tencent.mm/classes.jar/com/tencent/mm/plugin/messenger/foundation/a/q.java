@@ -1,23 +1,15 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.kernel.b.a;
-import com.tencent.mm.model.am;
-import com.tencent.mm.model.cc;
+import com.tencent.mm.al.e.a;
+import java.util.Map;
 
 public abstract interface q
-  extends a
 {
-  public abstract cc getSysCmdMsgExtension();
-  
-  public abstract boolean ifAddTicketByActionFlag(String paramString);
-  
-  public abstract void setEnSendMsgActionFlag(int paramInt);
-  
-  public abstract void setIDataTransferFactoryDelegate(am paramam);
+  public abstract void onNewXmlReceived(String paramString, Map<String, String> paramMap, e.a parama);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.q
  * JD-Core Version:    0.7.0.1
  */

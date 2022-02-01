@@ -3,13 +3,13 @@ package com.tencent.luggage.bridge.impl.a;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g.a.b;
-import com.tencent.mm.plugin.appbrand.g.a.c;
+import com.tencent.mm.plugin.appbrand.f.a.b;
+import com.tencent.mm.plugin.appbrand.f.a.c;
 
 public class c
   extends a
 {
-  public final String Ap()
+  public final String BM()
   {
     return "NetworkImageReader";
   }
@@ -41,7 +41,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.bridge.impl.a.c
  * JD-Core Version:    0.7.0.1
  */

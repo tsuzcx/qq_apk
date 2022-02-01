@@ -11,47 +11,47 @@ import java.lang.reflect.InvocationTargetException;
 public final class m
   implements g
 {
-  private g aXs;
-  private final g buQ;
-  private g buR;
-  private g buS;
-  private g buT;
-  private g buU;
-  private final w<? super g> bur;
+  private final w<? super g> bEG;
+  private final g bFf;
+  private g bFg;
+  private g bFh;
+  private g bFi;
+  private g bFj;
+  private g bhN;
   private final Context context;
   
   public m(Context paramContext, w<? super g> paramw, g paramg)
   {
     AppMethodBeat.i(93059);
     this.context = paramContext.getApplicationContext();
-    this.bur = paramw;
-    this.buQ = ((g)a.checkNotNull(paramg));
+    this.bEG = paramw;
+    this.bFf = ((g)a.checkNotNull(paramg));
     AppMethodBeat.o(93059);
   }
   
-  private g vg()
+  private g wD()
   {
     AppMethodBeat.i(93064);
-    if (this.buS == null) {
-      this.buS = new c(this.context, this.bur);
+    if (this.bFh == null) {
+      this.bFh = new c(this.context, this.bEG);
     }
-    g localg = this.buS;
+    g localg = this.bFh;
     AppMethodBeat.o(93064);
     return localg;
   }
   
-  private g vh()
+  private g wE()
   {
     AppMethodBeat.i(93065);
-    if (this.buU == null) {}
+    if (this.bFj == null) {}
     try
     {
-      this.buU = ((g)Class.forName("com.google.android.exoplayer2.ext.rtmp.RtmpDataSource").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
+      this.bFj = ((g)Class.forName("com.google.android.exoplayer2.ext.rtmp.RtmpDataSource").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
       label38:
-      if (this.buU == null) {
-        this.buU = this.buQ;
+      if (this.bFj == null) {
+        this.bFj = this.bFf;
       }
-      g localg = this.buU;
+      g localg = this.bFj;
       AppMethodBeat.o(93065);
       return localg;
     }
@@ -82,7 +82,7 @@ public final class m
     AppMethodBeat.i(93060);
     boolean bool;
     String str;
-    if (this.aXs == null)
+    if (this.bhN == null)
     {
       bool = true;
       a.checkState(bool);
@@ -93,40 +93,40 @@ public final class m
       if (!paramj.uri.getPath().startsWith("/android_asset/")) {
         break label83;
       }
-      this.aXs = vg();
+      this.bhN = wD();
     }
     for (;;)
     {
-      long l = this.aXs.a(paramj);
+      long l = this.bhN.a(paramj);
       AppMethodBeat.o(93060);
       return l;
       bool = false;
       break;
       label83:
-      if (this.buR == null) {
-        this.buR = new q(this.bur);
+      if (this.bFg == null) {
+        this.bFg = new q(this.bEG);
       }
-      this.aXs = this.buR;
+      this.bhN = this.bFg;
       continue;
       label116:
       if ("asset".equals(str))
       {
-        this.aXs = vg();
+        this.bhN = wD();
       }
       else if ("content".equals(str))
       {
-        if (this.buT == null) {
-          this.buT = new e(this.context, this.bur);
+        if (this.bFi == null) {
+          this.bFi = new e(this.context, this.bEG);
         }
-        this.aXs = this.buT;
+        this.bhN = this.bFi;
       }
       else if ("rtmp".equals(str))
       {
-        this.aXs = vh();
+        this.bhN = wE();
       }
       else
       {
-        this.aXs = this.buQ;
+        this.bhN = this.bFf;
       }
     }
   }
@@ -134,15 +134,15 @@ public final class m
   public final void close()
   {
     AppMethodBeat.i(93063);
-    if (this.aXs != null) {
+    if (this.bhN != null) {
       try
       {
-        this.aXs.close();
+        this.bhN.close();
         return;
       }
       finally
       {
-        this.aXs = null;
+        this.bhN = null;
         AppMethodBeat.o(93063);
       }
     }
@@ -152,12 +152,12 @@ public final class m
   public final Uri getUri()
   {
     AppMethodBeat.i(93062);
-    if (this.aXs == null)
+    if (this.bhN == null)
     {
       AppMethodBeat.o(93062);
       return null;
     }
-    Uri localUri = this.aXs.getUri();
+    Uri localUri = this.bhN.getUri();
     AppMethodBeat.o(93062);
     return localUri;
   }
@@ -165,7 +165,7 @@ public final class m
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(93061);
-    paramInt1 = this.aXs.read(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = this.bhN.read(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(93061);
     return paramInt1;
   }

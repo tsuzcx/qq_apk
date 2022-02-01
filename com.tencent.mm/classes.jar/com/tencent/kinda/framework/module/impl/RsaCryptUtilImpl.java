@@ -6,8 +6,8 @@ import com.tencent.kinda.gen.RsaEncryptResult;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.MMProtocalJni;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class RsaCryptUtilImpl
   implements RsaCryptUtil
@@ -18,23 +18,23 @@ public class RsaCryptUtilImpl
   {
     AppMethodBeat.i(18680);
     RsaEncryptResult localRsaEncryptResult = new RsaEncryptResult();
-    if (bs.T(new String[] { paramString1, paramString2 }))
+    if (bt.V(new String[] { paramString1, paramString2 }))
     {
-      ac.w("MicroMsg.RsaCryptUtilImpl", "input is null");
+      ad.w("MicroMsg.RsaCryptUtilImpl", "input is null");
       localRsaEncryptResult.mRet = 0;
       AppMethodBeat.o(18680);
       return localRsaEncryptResult;
     }
     PByteArray localPByteArray = new PByteArray();
     boolean bool = MMProtocalJni.rsaPublicEncryptPemkey(paramString1.getBytes(), localPByteArray, paramString2.getBytes());
-    if ((bool) && (!bs.cv(localPByteArray.value))) {
+    if ((bool) && (!bt.cC(localPByteArray.value))) {
       localRsaEncryptResult.mBase64Str = Base64.encodeToString(localPByteArray.value, 2);
     }
     if (bool) {}
     for (int i = 0;; i = 1)
     {
       localRsaEncryptResult.mRet = i;
-      ac.d("MicroMsg.RsaCryptUtilImpl", "encrypt ret: %s", new Object[] { localRsaEncryptResult });
+      ad.d("MicroMsg.RsaCryptUtilImpl", "encrypt ret: %s", new Object[] { localRsaEncryptResult });
       AppMethodBeat.o(18680);
       return localRsaEncryptResult;
     }

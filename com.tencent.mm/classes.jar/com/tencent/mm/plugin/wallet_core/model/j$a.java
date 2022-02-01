@@ -5,10 +5,10 @@ import org.json.JSONObject;
 
 public final class j$a
 {
-  public Orders.ShowInfo BwD;
+  public Orders.ShowInfo CWT;
   public int id;
   
-  public static a ba(JSONObject paramJSONObject)
+  public static a bi(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70281);
     if (paramJSONObject == null)
@@ -24,10 +24,10 @@ public final class j$a
       Orders.ShowInfo localShowInfo = new Orders.ShowInfo();
       localShowInfo.name = paramJSONObject.optString("name");
       localShowInfo.value = paramJSONObject.optString("value");
-      localShowInfo.Bzl = paramJSONObject.optInt("value_attr");
-      localShowInfo.tda = paramJSONObject.optString("name_color");
-      localShowInfo.Bzg = paramJSONObject.optString("value_color");
-      locala.BwD = localShowInfo;
+      localShowInfo.CZE = paramJSONObject.optInt("value_attr");
+      localShowInfo.uaQ = paramJSONObject.optString("name_color");
+      localShowInfo.CZz = paramJSONObject.optString("value_color");
+      locala.CWT = localShowInfo;
     }
     AppMethodBeat.o(70281);
     return locala;
@@ -35,7 +35,7 @@ public final class j$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.j.a
  * JD-Core Version:    0.7.0.1
  */

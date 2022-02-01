@@ -17,66 +17,66 @@ public final class b
     super(paramf);
   }
   
-  public final void aa(int paramInt, String paramString)
+  public final void ac(int paramInt, String paramString)
   {
     AppMethodBeat.i(184045);
-    super.aa(paramInt, paramString);
-    bGv().nfG = 10;
-    if (com.tencent.mm.plugin.voip.c.ehb() != null) {
-      bGv().dlk = String.valueOf(com.tencent.mm.plugin.voip.c.ehb().AEF.Ayh.ABJ.tIG);
+    super.ac(paramInt, paramString);
+    bKG().nGc = 10;
+    if (com.tencent.mm.plugin.voip.c.euM() != null) {
+      bKG().dwX = String.valueOf(com.tencent.mm.plugin.voip.c.euM().CdF.BXC.CaI.uLt);
     }
-    bGr();
+    bKC();
     AppMethodBeat.o(184045);
   }
   
-  public final void bGh()
+  public final void bKs()
   {
-    AppMethodBeat.i(208207);
-    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).iM(true);
-    super.bGh();
-    AppMethodBeat.o(208207);
+    AppMethodBeat.i(216238);
+    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).iV(true);
+    super.bKs();
+    AppMethodBeat.o(216238);
   }
   
-  public final boolean bcV()
-  {
-    return false;
-  }
-  
-  public final boolean bcW()
+  public final boolean bgA()
   {
     return false;
   }
   
-  public final void bcY()
+  public final void bgC()
   {
     AppMethodBeat.i(184048);
-    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).iM(false);
-    this.nfN.nfD.opType = 4;
-    if (this.nfP != null) {
-      this.nfP.q(this.nfN);
+    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).iV(false);
+    this.nGj.nFZ.opType = 4;
+    if (this.nGl != null) {
+      this.nGl.r(this.nGj);
     }
     AppMethodBeat.o(184048);
   }
   
-  public final void bcZ()
+  public final void bgD()
   {
     AppMethodBeat.i(184047);
-    super.bcZ();
-    this.ngF.gb(false);
+    super.bgD();
+    this.nHb.gg(false);
     AppMethodBeat.o(184047);
   }
   
-  public final boolean rT(int paramInt)
+  public final boolean bgz()
+  {
+    return false;
+  }
+  
+  public final boolean sv(int paramInt)
   {
     AppMethodBeat.i(184046);
-    boolean bool = super.rT(paramInt);
+    boolean bool = super.sv(paramInt);
     AppMethodBeat.o(184046);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.a.b
  * JD-Core Version:    0.7.0.1
  */

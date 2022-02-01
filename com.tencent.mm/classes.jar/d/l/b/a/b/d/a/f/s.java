@@ -2,13 +2,9 @@ package d.l.b.a.b.d.a.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.aa;
 import d.l.b.a.b.b.as;
 import d.l.b.a.b.b.e;
-import d.l.b.a.b.b.h;
-import d.l.b.a.b.d.a.p;
 import d.l.b.a.b.m.ab;
-import d.l.b.a.b.m.ac;
 import d.l.b.a.b.m.ad;
 import d.l.b.a.b.m.aj;
 import d.l.b.a.b.m.at;
@@ -27,47 +23,47 @@ import java.util.List;
 
 public final class s
 {
-  private static final b Lrk;
-  private static final b Lrl;
+  private static final b Nih;
+  private static final b Nii;
   
   static
   {
     AppMethodBeat.i(58143);
-    d.l.b.a.b.f.b localb = p.LlJ;
-    d.g.b.k.g(localb, "JvmAnnotationNames.ENHANCED_NULLABILITY_ANNOTATION");
-    Lrk = new b(localb);
-    localb = p.LlK;
-    d.g.b.k.g(localb, "JvmAnnotationNames.ENHANCED_MUTABILITY_ANNOTATION");
-    Lrl = new b(localb);
+    d.l.b.a.b.f.b localb = d.l.b.a.b.d.a.p.NcG;
+    d.g.b.p.g(localb, "JvmAnnotationNames.ENHANCED_NULLABILITY_ANNOTATION");
+    Nih = new b(localb);
+    localb = d.l.b.a.b.d.a.p.NcH;
+    d.g.b.p.g(localb, "JvmAnnotationNames.ENHANCED_MUTABILITY_ANNOTATION");
+    Nii = new b(localb);
     AppMethodBeat.o(58143);
   }
   
   public static final boolean U(ab paramab)
   {
     AppMethodBeat.i(58132);
-    d.g.b.k.h(paramab, "$this$hasEnhancedNullability");
-    boolean bool = a((bb)d.l.b.a.b.m.a.s.LMz, (d.l.b.a.b.m.c.g)paramab);
+    d.g.b.p.h(paramab, "$this$hasEnhancedNullability");
+    boolean bool = a((bb)d.l.b.a.b.m.a.s.NDu, (d.l.b.a.b.m.c.h)paramab);
     AppMethodBeat.o(58132);
     return bool;
   }
   
-  private static final c<h> a(h paramh, d paramd, q paramq)
+  private static final c<d.l.b.a.b.b.h> a(d.l.b.a.b.b.h paramh, d paramd, q paramq)
   {
     AppMethodBeat.i(58141);
     if (!a(paramq))
     {
-      paramh = fd(paramh);
+      paramh = ff(paramh);
       AppMethodBeat.o(58141);
       return paramh;
     }
     if (!(paramh instanceof e))
     {
-      paramh = fd(paramh);
+      paramh = ff(paramh);
       AppMethodBeat.o(58141);
       return paramh;
     }
-    d.l.b.a.b.a.b.c localc = d.l.b.a.b.a.b.c.Lcr;
-    paramd = paramd.Lqb;
+    d.l.b.a.b.a.b.c localc = d.l.b.a.b.a.b.c.MTm;
+    paramd = paramd.NgY;
     if (paramd == null) {}
     do
     {
@@ -75,19 +71,19 @@ public final class s
       {
         for (;;)
         {
-          paramh = fd(paramh);
+          paramh = ff(paramh);
           AppMethodBeat.o(58141);
           return paramh;
-          switch (t.cfA[paramd.ordinal()])
+          switch (t.cpQ[paramd.ordinal()])
           {
           }
         }
-      } while ((paramq != q.Lrg) || (!d.l.b.a.b.a.b.c.h((e)paramh)));
-      paramh = ff(d.l.b.a.b.a.b.c.j((e)paramh));
+      } while ((paramq != q.Nid) || (!d.l.b.a.b.a.b.c.h((e)paramh)));
+      paramh = fh(d.l.b.a.b.a.b.c.j((e)paramh));
       AppMethodBeat.o(58141);
       return paramh;
-    } while ((paramq != q.Lrh) || (!d.l.b.a.b.a.b.c.i((e)paramh)));
-    paramh = ff(d.l.b.a.b.a.b.c.k((e)paramh));
+    } while ((paramq != q.Nie) || (!d.l.b.a.b.a.b.c.i((e)paramh)));
+    paramh = fh(d.l.b.a.b.a.b.c.k((e)paramh));
     AppMethodBeat.o(58141);
     return paramh;
   }
@@ -97,25 +93,25 @@ public final class s
     AppMethodBeat.i(58142);
     if (!a(paramq))
     {
-      paramab = fd(Boolean.valueOf(paramab.fUx()));
+      paramab = ff(Boolean.valueOf(paramab.glW()));
       AppMethodBeat.o(58142);
       return paramab;
     }
-    paramd = paramd.Lqa;
+    paramd = paramd.NgX;
     if (paramd == null) {}
     for (;;)
     {
-      paramab = fd(Boolean.valueOf(paramab.fUx()));
+      paramab = ff(Boolean.valueOf(paramab.glW()));
       AppMethodBeat.o(58142);
       return paramab;
-      switch (t.fTL[paramd.ordinal()])
+      switch (t.gnp[paramd.ordinal()])
       {
       }
     }
-    paramab = fe(Boolean.TRUE);
+    paramab = fg(Boolean.TRUE);
     AppMethodBeat.o(58142);
     return paramab;
-    paramab = fe(Boolean.FALSE);
+    paramab = fg(Boolean.FALSE);
     AppMethodBeat.o(58142);
     return paramab;
   }
@@ -134,42 +130,42 @@ public final class s
     o localo2;
     if ((parambg instanceof d.l.b.a.b.m.v))
     {
-      localo1 = a(((d.l.b.a.b.m.v)parambg).LLa, paramb, paramInt, q.Lrg);
-      localo2 = a(((d.l.b.a.b.m.v)parambg).LLb, paramb, paramInt, q.Lrh);
-      if (localo1.LqG == localo2.LqG) {}
-      for (paramInt = 1; (aa.KTq) && (paramInt == 0); paramInt = 0)
+      localo1 = a(((d.l.b.a.b.m.v)parambg).NBV, paramb, paramInt, q.Nid);
+      localo2 = a(((d.l.b.a.b.m.v)parambg).NBW, paramb, paramInt, q.Nie);
+      if (localo1.NhD == localo2.NhD) {}
+      for (paramInt = 1; (d.ac.MKp) && (paramInt == 0); paramInt = 0)
       {
-        parambg = (Throwable)new AssertionError("Different tree sizes of bounds: lower = (" + ((d.l.b.a.b.m.v)parambg).LLa + ", " + localo1.LqG + "), upper = (" + ((d.l.b.a.b.m.v)parambg).LLb + ", " + localo2.LqG + ')');
+        parambg = (Throwable)new AssertionError("Different tree sizes of bounds: lower = (" + ((d.l.b.a.b.m.v)parambg).NBV + ", " + localo1.NhD + "), upper = (" + ((d.l.b.a.b.m.v)parambg).NBW + ", " + localo2.NhD + ')');
         AppMethodBeat.o(58134);
         throw parambg;
       }
-      if ((localo1.LqH) || (localo2.LqH)) {
+      if ((localo1.NhE) || (localo2.NhE)) {
         bool = true;
       }
-      paramb = be.aK((ab)localo1.Lre);
+      paramb = be.aK((ab)localo1.Nib);
       if (paramb != null) {
         break label369;
       }
-      paramb = be.aK((ab)localo2.Lre);
+      paramb = be.aK((ab)localo2.Nib);
     }
     label369:
     for (;;)
     {
       if (!bool)
       {
-        parambg = new k((ab)parambg, localo1.LqG, bool);
+        parambg = new k((ab)parambg, localo1.NhD, bool);
         AppMethodBeat.o(58134);
         return parambg;
       }
       if ((parambg instanceof d.l.b.a.b.d.a.c.b.g)) {}
-      for (parambg = (bg)new d.l.b.a.b.d.a.c.b.g(localo1.Lre, localo2.Lre);; parambg = ac.a(localo1.Lre, localo2.Lre))
+      for (parambg = (bg)new d.l.b.a.b.d.a.c.b.g(localo1.Nib, localo2.Nib);; parambg = d.l.b.a.b.m.ac.a(localo1.Nib, localo2.Nib))
       {
         parambg = be.b(parambg, paramb);
         break;
       }
       if ((parambg instanceof aj))
       {
-        parambg = (k)a((aj)parambg, paramb, paramInt, q.Lri);
+        parambg = (k)a((aj)parambg, paramb, paramInt, q.Nif);
         AppMethodBeat.o(58134);
         return parambg;
       }
@@ -182,26 +178,26 @@ public final class s
   private static final o a(aj paramaj, d.g.a.b<? super Integer, d> paramb, int paramInt, q paramq)
   {
     AppMethodBeat.i(58135);
-    if ((!a(paramq)) && (paramaj.gbw().isEmpty()))
+    if ((!a(paramq)) && (paramaj.gsW().isEmpty()))
     {
       paramaj = new o(paramaj, 1, false);
       AppMethodBeat.o(58135);
       return paramaj;
     }
-    Object localObject1 = paramaj.gbz().fQq();
+    Object localObject1 = paramaj.gsZ().ghO();
     if (localObject1 == null)
     {
       paramaj = new o(paramaj, 1, false);
       AppMethodBeat.o(58135);
       return paramaj;
     }
-    d.g.b.k.g(localObject1, "constructor.declarationD…pleResult(this, 1, false)");
-    d locald = (d)paramb.ay(Integer.valueOf(paramInt));
-    localObject1 = a((h)localObject1, locald, paramq);
-    h localh = (h)((c)localObject1).result;
-    d.l.b.a.b.b.a.g localg = ((c)localObject1).LpZ;
-    at localat = localh.fPW();
-    d.g.b.k.g(localat, "enhancedClassifier.typeConstructor");
+    d.g.b.p.g(localObject1, "constructor.declarationD…pleResult(this, 1, false)");
+    d locald = (d)paramb.invoke(Integer.valueOf(paramInt));
+    localObject1 = a((d.l.b.a.b.b.h)localObject1, locald, paramq);
+    d.l.b.a.b.b.h localh = (d.l.b.a.b.b.h)((c)localObject1).result;
+    d.l.b.a.b.b.a.g localg = ((c)localObject1).NgW;
+    at localat = localh.ghu();
+    d.g.b.p.g(localat, "enhancedClassifier.typeConstructor");
     if (localg != null) {}
     Collection localCollection;
     int j;
@@ -209,7 +205,7 @@ public final class s
     int m;
     for (int i = 1;; i = 0)
     {
-      localObject1 = (Iterable)paramaj.gbw();
+      localObject1 = (Iterable)paramaj.gsW();
       localCollection = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
       Iterator localIterator = ((Iterable)localObject1).iterator();
       j = 0;
@@ -222,29 +218,29 @@ public final class s
         }
         localObject1 = localIterator.next();
         if (j < 0) {
-          j.fOc();
+          j.gfB();
         }
         localObject1 = (av)localObject1;
-        if (!((av)localObject1).gcB()) {
+        if (!((av)localObject1).guc()) {
           break;
         }
         i = k + 1;
-        localObject1 = localh.fPW();
-        d.g.b.k.g(localObject1, "enhancedClassifier.typeConstructor");
+        localObject1 = localh.ghu();
+        d.g.b.p.g(localObject1, "enhancedClassifier.typeConstructor");
         localObject1 = bc.d((as)((at)localObject1).getParameters().get(j));
         localCollection.add(localObject1);
         j += 1;
         k = i;
       }
     }
-    Object localObject2 = a(((av)localObject1).fRV().gcz(), paramb, k);
-    if ((m != 0) || (((k)localObject2).LqH)) {}
+    Object localObject2 = a(((av)localObject1).gju().gua(), paramb, k);
+    if ((m != 0) || (((k)localObject2).NhE)) {}
     for (i = 1;; i = 0)
     {
-      k = ((k)localObject2).LqG + k;
-      localObject2 = ((k)localObject2).fRV();
-      localObject1 = ((av)localObject1).gcC();
-      d.g.b.k.g(localObject1, "arg.projectionKind");
+      k = ((k)localObject2).NhD + k;
+      localObject2 = ((k)localObject2).gju();
+      localObject1 = ((av)localObject1).gud();
+      d.g.b.p.g(localObject1, "arg.projectionKind");
       localObject1 = a.a((ab)localObject2, (bh)localObject1, (as)localat.getParameters().get(j));
       m = i;
       i = k;
@@ -254,7 +250,7 @@ public final class s
     paramb = (List)localCollection;
     paramq = a((ab)paramaj, locald, paramq);
     boolean bool = ((Boolean)paramq.result).booleanValue();
-    paramq = paramq.LpZ;
+    paramq = paramq.NgW;
     if ((m != 0) || (paramq != null)) {}
     for (i = 1;; i = 0)
     {
@@ -266,11 +262,11 @@ public final class s
       AppMethodBeat.o(58135);
       return paramaj;
     }
-    paramb = ac.c(jc(j.ac(new d.l.b.a.b.b.a.g[] { paramaj.fQj(), localg, paramq })), localat, paramb, bool);
-    if (locald.Lqc)
+    paramb = d.l.b.a.b.m.ac.c(jq(j.ad(new d.l.b.a.b.b.a.g[] { paramaj.ghH(), localg, paramq })), localat, paramb, bool);
+    if (locald.NgZ)
     {
       paramb = (aj)new f(paramb);
-      if ((paramq == null) || (!locald.Lqd)) {
+      if ((paramq == null) || (!locald.Nha)) {
         break label626;
       }
       paramInt = 1;
@@ -302,11 +298,11 @@ public final class s
   public static final ab a(ab paramab, d.g.a.b<? super Integer, d> paramb)
   {
     AppMethodBeat.i(58131);
-    d.g.b.k.h(paramab, "$this$enhance");
-    d.g.b.k.h(paramb, "qualifiers");
-    paramab = a(paramab.gcz(), paramb, 0);
-    paramb = paramab.fRV();
-    if (paramab.LqH)
+    d.g.b.p.h(paramab, "$this$enhance");
+    d.g.b.p.h(paramb, "qualifiers");
+    paramab = a(paramab.gua(), paramb, 0);
+    paramb = paramab.gju();
+    if (paramab.NhE)
     {
       AppMethodBeat.o(58131);
       return paramb;
@@ -318,8 +314,8 @@ public final class s
   private static boolean a(q paramq)
   {
     AppMethodBeat.i(58137);
-    d.g.b.k.h(paramq, "$this$shouldEnhance");
-    if (paramq != q.Lri)
+    d.g.b.p.h(paramq, "$this$shouldEnhance");
+    if (paramq != q.Nif)
     {
       AppMethodBeat.o(58137);
       return true;
@@ -328,19 +324,19 @@ public final class s
     return false;
   }
   
-  public static final boolean a(bb parambb, d.l.b.a.b.m.c.g paramg)
+  public static final boolean a(bb parambb, d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(58133);
-    d.g.b.k.h(parambb, "$this$hasEnhancedNullability");
-    d.g.b.k.h(paramg, "type");
-    d.l.b.a.b.f.b localb = p.LlJ;
-    d.g.b.k.g(localb, "JvmAnnotationNames.ENHANCED_NULLABILITY_ANNOTATION");
-    boolean bool = parambb.a(paramg, localb);
+    d.g.b.p.h(parambb, "$this$hasEnhancedNullability");
+    d.g.b.p.h(paramh, "type");
+    d.l.b.a.b.f.b localb = d.l.b.a.b.d.a.p.NcG;
+    d.g.b.p.g(localb, "JvmAnnotationNames.ENHANCED_NULLABILITY_ANNOTATION");
+    boolean bool = parambb.a(paramh, localb);
     AppMethodBeat.o(58133);
     return bool;
   }
   
-  private static final <T> c<T> fd(T paramT)
+  private static final <T> c<T> ff(T paramT)
   {
     AppMethodBeat.i(58138);
     paramT = new c(paramT, null);
@@ -348,23 +344,23 @@ public final class s
     return paramT;
   }
   
-  private static final <T> c<T> fe(T paramT)
+  private static final <T> c<T> fg(T paramT)
   {
     AppMethodBeat.i(58139);
-    paramT = new c(paramT, (d.l.b.a.b.b.a.g)Lrk);
+    paramT = new c(paramT, (d.l.b.a.b.b.a.g)Nih);
     AppMethodBeat.o(58139);
     return paramT;
   }
   
-  private static final <T> c<T> ff(T paramT)
+  private static final <T> c<T> fh(T paramT)
   {
     AppMethodBeat.i(58140);
-    paramT = new c(paramT, (d.l.b.a.b.b.a.g)Lrl);
+    paramT = new c(paramT, (d.l.b.a.b.b.a.g)Nii);
     AppMethodBeat.o(58140);
     return paramT;
   }
   
-  private static final d.l.b.a.b.b.a.g jc(List<? extends d.l.b.a.b.b.a.g> paramList)
+  private static final d.l.b.a.b.b.a.g jq(List<? extends d.l.b.a.b.b.a.g> paramList)
   {
     AppMethodBeat.i(58136);
     switch (paramList.size())
@@ -378,14 +374,14 @@ public final class s
       AppMethodBeat.o(58136);
       throw paramList;
     }
-    paramList = (d.l.b.a.b.b.a.g)j.iS(paramList);
+    paramList = (d.l.b.a.b.b.a.g)j.jg(paramList);
     AppMethodBeat.o(58136);
     return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.s
  * JD-Core Version:    0.7.0.1
  */

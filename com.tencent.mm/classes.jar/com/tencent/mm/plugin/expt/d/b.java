@@ -1,91 +1,49 @@
 package com.tencent.mm.plugin.expt.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public final class b
 {
-  private static b qrg;
-  private String name = null;
+  private static Boolean qPF;
+  private static ThreadPoolExecutor qPG;
   
-  public static b clN()
+  static
   {
-    AppMethodBeat.i(122358);
-    if (qrg == null) {
-      qrg = new b();
-    }
-    b localb = qrg;
-    AppMethodBeat.o(122358);
-    return localb;
+    AppMethodBeat.i(210222);
+    qPG = new ThreadPoolExecutor(1, 3, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
+    AppMethodBeat.o(210222);
   }
   
-  final aw JW()
+  public static ThreadPoolExecutor cnh()
   {
-    AppMethodBeat.i(122359);
-    int i = a.agb();
-    if (i == 0)
-    {
-      AppMethodBeat.o(122359);
-      return null;
-    }
-    Object localObject = i + "_WxPageFlow";
-    if (!bs.lr(this.name, (String)localObject))
-    {
-      ac.i("MicroMsg.MMPageFlowMMKV", "get mmkv change uin old[%s] new[%s]", new Object[] { this.name, localObject });
-      this.name = ((String)localObject);
-    }
-    localObject = aw.aKT(this.name);
-    AppMethodBeat.o(122359);
-    return localObject;
+    return qPG;
   }
   
-  public final String[] allKeys()
+  public static boolean cni()
   {
-    AppMethodBeat.i(122362);
-    Object localObject = JW();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(122362);
-      return null;
+    AppMethodBeat.i(210221);
+    if (qPF == null) {
+      qPF = Boolean.valueOf(((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qHN, true));
     }
-    localObject = ((aw)localObject).allKeys();
-    AppMethodBeat.o(122362);
-    return localObject;
-  }
-  
-  public final String get(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(122361);
-    aw localaw = JW();
-    if (localaw == null)
+    if (!qPF.booleanValue())
     {
-      AppMethodBeat.o(122361);
-      return paramString2;
+      ad.i("EdgeComputingUtils", "[EdgeComputingUtils] isOpenEdgeComputing cloudSwitch isClose!");
+      AppMethodBeat.o(210221);
+      return false;
     }
-    paramString1 = localaw.getString(paramString1, paramString2);
-    AppMethodBeat.o(122361);
-    return paramString1;
-  }
-  
-  public final void remove(String paramString)
-  {
-    AppMethodBeat.i(122360);
-    aw localaw = JW();
-    if (localaw == null)
-    {
-      AppMethodBeat.o(122360);
-      return;
-    }
-    localaw.remove(paramString);
-    AppMethodBeat.o(122360);
+    AppMethodBeat.o(210221);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.b
  * JD-Core Version:    0.7.0.1
  */

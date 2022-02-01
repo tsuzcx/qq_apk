@@ -11,19 +11,19 @@ import java.util.Set;
 public final class x<Data>
   implements n<Uri, Data>
 {
-  private static final Set<String> aIT;
-  private final n<g, Data> aIV;
+  private static final Set<String> aKK;
+  private final n<g, Data> aKM;
   
   static
   {
     AppMethodBeat.i(77326);
-    aIT = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[] { "http", "https" })));
+    aKK = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[] { "http", "https" })));
     AppMethodBeat.o(77326);
   }
   
   public x(n<g, Data> paramn)
   {
-    this.aIV = paramn;
+    this.aKM = paramn;
   }
   
   public static final class a

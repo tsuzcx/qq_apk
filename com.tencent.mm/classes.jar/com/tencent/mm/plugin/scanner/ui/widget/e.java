@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.scanner.ui.widget;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnSelectedListener;", "", "onTabSelected", "", "tabId", "", "tabSelectedAction", "onTabUnSelected", "plugin-scan_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnSelectedListener;", "", "onTabSelected", "", "tabId", "", "tabSelectedAction", "onTabUnSelected", "plugin-scan_release"})
 public abstract interface e
 {
-  public abstract void Ni(int paramInt);
+  public abstract void OK(int paramInt);
   
-  public abstract void gY(int paramInt1, int paramInt2);
+  public abstract void hp(int paramInt1, int paramInt2);
 }
 
 

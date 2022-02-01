@@ -1,25 +1,41 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import com.tencent.mm.plugin.finder.model.x;
+import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.feed.w;
+import com.tencent.mm.view.recyclerview.b;
+import com.tencent.mm.view.recyclerview.e;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgCommentConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgComment;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderMoreLikeDividerConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/feed/FinderMoreLikeDivider;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
 public final class ag
-  extends ah<x>
+  extends b<w>
 {
-  private final String TAG;
-  private final int scene;
-  
-  public ag(int paramInt)
+  public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
   {
-    super(2131494073);
-    this.scene = paramInt;
-    this.TAG = "Finder.FinderMsgCommentConvert";
+    AppMethodBeat.i(201442);
+    p.h(paramRecyclerView, "recyclerView");
+    p.h(parame, "holder");
+    paramRecyclerView = (TextView)parame.Gd(2131300729);
+    if (paramRecyclerView != null)
+    {
+      paramRecyclerView.setText((CharSequence)"");
+      AppMethodBeat.o(201442);
+      return;
+    }
+    AppMethodBeat.o(201442);
+  }
+  
+  public final int getLayoutId()
+  {
+    return 2131496458;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.ag
  * JD-Core Version:    0.7.0.1
  */

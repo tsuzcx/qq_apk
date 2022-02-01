@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.websearch;
 
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bi;
-import com.tencent.mm.g.a.bk;
-import com.tencent.mm.g.a.bk.a;
-import com.tencent.mm.g.a.kx;
-import com.tencent.mm.g.a.kx.a;
-import com.tencent.mm.kernel.b.f;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.g.a.bl;
+import com.tencent.mm.g.a.bn;
+import com.tencent.mm.g.a.bn.a;
+import com.tencent.mm.g.a.lg;
+import com.tencent.mm.g.a.lg.a;
+import com.tencent.mm.g.a.st;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.d;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.cc;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.model.cd;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.plugin.websearch.api.ak;
-import com.tencent.mm.plugin.websearch.api.k;
-import com.tencent.mm.plugin.websearch.api.z;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.plugin.websearch.api.al;
+import com.tencent.mm.plugin.websearch.api.al.a;
+import com.tencent.mm.plugin.websearch.api.ao;
+import com.tencent.mm.plugin.websearch.api.l;
+import com.tencent.mm.plugin.websearch.api.o;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
+import java.util.Map;
 
 public class PluginWebSearch
-  extends f
-  implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.a, com.tencent.mm.kernel.api.bucket.c
+  extends com.tencent.mm.kernel.b.f
+  implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.a, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.websearch.api.c
 {
-  static final int[] BXI;
-  private static HashMap<Integer, h.b> cDZ;
-  private a BXG;
-  private b BXH;
-  private com.tencent.mm.sdk.b.c BXJ;
+  static final int[] DAy;
+  private static HashMap<Integer, h.b> cPe;
+  private q BqG;
+  private a DAw;
+  private b DAx;
   private final com.tencent.mm.sdk.b.c checkLanguageChangeIListener;
-  private com.tencent.mm.sdk.b.c iOv;
-  private p zYU;
+  private com.tencent.mm.sdk.b.c jhE;
+  private com.tencent.mm.sdk.b.c nVf;
   
   static
   {
     AppMethodBeat.i(116525);
-    cDZ = new HashMap();
-    String str = j.getCreateSQLs(com.tencent.mm.plugin.websearch.widget.a.a.info, "WidgetSafeMode");
-    cDZ.put(Integer.valueOf("WidgetSafeMode".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        return this.cEb;
-      }
-    });
-    BXI = new int[] { 64 };
+    cPe = new HashMap();
+    String str = com.tencent.mm.sdk.e.j.getCreateSQLs(com.tencent.mm.plugin.websearch.widget.a.a.info, "WidgetSafeMode");
+    cPe.put(Integer.valueOf("WidgetSafeMode".hashCode()), new PluginWebSearch.1(new String[] { str }));
+    DAy = new int[] { 64 };
     AppMethodBeat.o(116525);
   }
   
@@ -57,66 +57,66 @@ public class PluginWebSearch
   {
     AppMethodBeat.i(116518);
     this.checkLanguageChangeIListener = new com.tencent.mm.sdk.b.c() {};
-    this.iOv = new com.tencent.mm.sdk.b.c()
+    this.jhE = new com.tencent.mm.sdk.b.c()
     {
-      private static boolean a(bk paramAnonymousbk)
+      private static boolean a(bn paramAnonymousbn)
       {
         AppMethodBeat.i(168797);
         int k;
-        if (paramAnonymousbk != null)
+        if (paramAnonymousbn != null)
         {
           int i;
           int m;
-          if ((paramAnonymousbk.dbc.dbd == 27) && (paramAnonymousbk.dbc.subType == 1))
+          if ((paramAnonymousbn.dmw.dmx == 27) && (paramAnonymousbn.dmw.subType == 1))
           {
             i = 0;
             k = i * 30;
-            com.tencent.mm.plugin.report.e.wTc.idkeyStat(1181L, k + 0, 1L, false);
-            m = ak.aAB(paramAnonymousbk.dbc.filePath);
+            com.tencent.mm.plugin.report.e.ygI.idkeyStat(1181L, k + 0, 1L, false);
+            m = ao.aFV(paramAnonymousbn.dmw.filePath);
             if (m != 1) {
               break label317;
             }
-            com.tencent.mm.plugin.report.e.wTc.idkeyStat(1181L, k + 1, 1L, false);
+            com.tencent.mm.plugin.report.e.ygI.idkeyStat(1181L, k + 1, 1L, false);
           }
-          ak localak;
+          ao localao;
           for (;;)
           {
-            localak = z.Uj(i);
-            if (m < localak.aEh()) {
+            localao = com.tencent.mm.plugin.websearch.api.ad.Wc(i);
+            if (m < localao.aHm()) {
               break label417;
             }
-            com.tencent.mm.plugin.report.e.wTc.idkeyStat(1181L, k + 4, 1L, false);
+            com.tencent.mm.plugin.report.e.ygI.idkeyStat(1181L, k + 4, 1L, false);
             int j = 0;
             while (j < 3)
             {
-              localak.aAA(paramAnonymousbk.dbc.filePath);
-              if (localak.exJ()) {
+              localao.aFU(paramAnonymousbn.dmw.filePath);
+              if (localao.eMA()) {
                 break;
               }
-              ac.i("MicroMsg.WebSearch.PluginWebSearch", "checkResUpdate invalid md5 and delete template folder retryTimes:%s", new Object[] { Integer.valueOf(j) });
+              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.PluginWebSearch", "checkResUpdate invalid md5 and delete template folder retryTimes:%s", new Object[] { Integer.valueOf(j) });
               j += 1;
             }
-            if ((paramAnonymousbk.dbc.dbd == 27) && (paramAnonymousbk.dbc.subType == 2))
+            if ((paramAnonymousbn.dmw.dmx == 27) && (paramAnonymousbn.dmw.subType == 2))
             {
               i = 1;
               break;
             }
-            if ((paramAnonymousbk.dbc.dbd == 62) && (paramAnonymousbk.dbc.subType == 1))
+            if ((paramAnonymousbn.dmw.dmx == 62) && (paramAnonymousbn.dmw.subType == 1))
             {
               i = 2;
               break;
             }
-            if ((paramAnonymousbk.dbc.dbd == 40) && (paramAnonymousbk.dbc.subType == 1))
+            if ((paramAnonymousbn.dmw.dmx == 40) && (paramAnonymousbn.dmw.subType == 1))
             {
               i = 3;
               break;
             }
-            if ((paramAnonymousbk.dbc.dbd == 64) && (paramAnonymousbk.dbc.subType == 1))
+            if ((paramAnonymousbn.dmw.dmx == 64) && (paramAnonymousbn.dmw.subType == 1))
             {
               i = 4;
               break;
             }
-            if ((paramAnonymousbk.dbc.dbd == 66) && (paramAnonymousbk.dbc.subType == 1))
+            if ((paramAnonymousbn.dmw.dmx == 66) && (paramAnonymousbn.dmw.subType == 1))
             {
               i = 5;
               break;
@@ -124,15 +124,15 @@ public class PluginWebSearch
             AppMethodBeat.o(168797);
             return false;
             label317:
-            com.tencent.mm.plugin.report.e.wTc.idkeyStat(1181L, k + 2, 1L, false);
+            com.tencent.mm.plugin.report.e.ygI.idkeyStat(1181L, k + 2, 1L, false);
           }
-          if (!localak.exJ()) {
+          if (!localao.eMA()) {
             break label392;
           }
-          com.tencent.mm.plugin.report.e.wTc.idkeyStat(1181L, k + 6, 1L, false);
-          ac.w("MicroMsg.WebSearch.PluginWebSearch", "checkResUpdate final update success version %d", new Object[] { Integer.valueOf(m) });
+          com.tencent.mm.plugin.report.e.ygI.idkeyStat(1181L, k + 6, 1L, false);
+          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.WebSearch.PluginWebSearch", "checkResUpdate final update success version %d", new Object[] { Integer.valueOf(m) });
           if (i == 0) {
-            z.exp();
+            com.tencent.mm.plugin.websearch.api.ad.eMf();
           }
         }
         for (;;)
@@ -140,47 +140,47 @@ public class PluginWebSearch
           AppMethodBeat.o(168797);
           return false;
           label392:
-          com.tencent.mm.plugin.report.e.wTc.idkeyStat(1181L, k + 5, 1L, false);
-          ac.w("MicroMsg.WebSearch.PluginWebSearch", "checkResUpdate final md5 is invalid!");
+          com.tencent.mm.plugin.report.e.ygI.idkeyStat(1181L, k + 5, 1L, false);
+          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.WebSearch.PluginWebSearch", "checkResUpdate final md5 is invalid!");
           continue;
           label417:
-          com.tencent.mm.plugin.report.e.wTc.idkeyStat(1181L, k + 3, 1L, false);
+          com.tencent.mm.plugin.report.e.ygI.idkeyStat(1181L, k + 3, 1L, false);
         }
       }
     };
-    this.BXJ = new com.tencent.mm.sdk.b.c()
+    this.nVf = new com.tencent.mm.sdk.b.c()
     {
-      private static boolean a(kx paramAnonymouskx)
+      private static boolean a(lg paramAnonymouslg)
       {
         int i = 1;
         AppMethodBeat.i(168799);
-        if ((paramAnonymouskx.dmO.dbd == 27) && (paramAnonymouskx.dmO.subType == 1)) {
+        if ((paramAnonymouslg.dyC.dmx == 27) && (paramAnonymouslg.dyC.subType == 1)) {
           i = 0;
         }
         for (;;)
         {
-          z.Uj(i).aAA(paramAnonymouskx.dmO.filePath);
+          com.tencent.mm.plugin.websearch.api.ad.Wc(i).aFU(paramAnonymouslg.dyC.filePath);
           if (i == 0) {
-            z.exp();
+            com.tencent.mm.plugin.websearch.api.ad.eMf();
           }
           AppMethodBeat.o(168799);
           return false;
-          if ((paramAnonymouskx.dmO.dbd != 27) || (paramAnonymouskx.dmO.subType != 2)) {
-            if ((paramAnonymouskx.dmO.dbd == 62) && (paramAnonymouskx.dmO.subType == 1))
+          if ((paramAnonymouslg.dyC.dmx != 27) || (paramAnonymouslg.dyC.subType != 2)) {
+            if ((paramAnonymouslg.dyC.dmx == 62) && (paramAnonymouslg.dyC.subType == 1))
             {
               i = 2;
             }
-            else if ((paramAnonymouskx.dmO.dbd == 40) && (paramAnonymouskx.dmO.subType == 1))
+            else if ((paramAnonymouslg.dyC.dmx == 40) && (paramAnonymouslg.dyC.subType == 1))
             {
               i = 3;
             }
-            else if ((paramAnonymouskx.dmO.dbd == 64) && (paramAnonymouskx.dmO.subType == 1))
+            else if ((paramAnonymouslg.dyC.dmx == 64) && (paramAnonymouslg.dyC.subType == 1))
             {
               i = 4;
             }
             else
             {
-              if ((paramAnonymouskx.dmO.dbd != 66) || (paramAnonymouskx.dmO.subType != 1)) {
+              if ((paramAnonymouslg.dyC.dmx != 66) || (paramAnonymouslg.dyC.subType != 1)) {
                 break;
               }
               i = 5;
@@ -191,107 +191,146 @@ public class PluginWebSearch
         return false;
       }
     };
-    this.zYU = new PluginWebSearch.7(this);
+    this.BqG = new q()
+    {
+      public final void onNewXmlReceived(String paramAnonymousString, Map<String, String> paramAnonymousMap, e.a paramAnonymousa)
+      {
+        AppMethodBeat.i(168801);
+        long l2;
+        al localal;
+        if ((paramAnonymousMap != null) && (paramAnonymousString != null) && (paramAnonymousString.equals("mmsearch_reddot_new")))
+        {
+          int i = bt.aRe((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.entry"));
+          if (i == 1)
+          {
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.PluginWebSearch", "recv %s, %s", new Object[] { "mmsearch_reddot_new", paramAnonymousMap.toString() });
+            int j = bt.aRe((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.clear"));
+            paramAnonymousa = bt.x((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.msgid"), new Object[0]);
+            int k = bt.aRe((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.discovery"));
+            int m = bt.aRe((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.android_cli_version"));
+            long l1 = bt.aRf((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.expire_time"));
+            int n = bt.aRe((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.h5_version"));
+            int i1 = bt.aRe((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.reddot_type"));
+            String str1 = (String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.reddot_text");
+            String str2 = (String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.reddot_icon");
+            l2 = bt.aRf((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.timestamp"));
+            localal = al.eMo();
+            paramAnonymousString = null;
+            switch (i)
+            {
+            default: 
+              paramAnonymousMap = paramAnonymousString;
+              if (paramAnonymousString == null) {
+                paramAnonymousMap = new al.a();
+              }
+              if (paramAnonymousMap.timestamp < l2)
+              {
+                paramAnonymousMap.id = paramAnonymousa;
+                paramAnonymousMap.DCx = k;
+                paramAnonymousMap.DCv = i;
+                paramAnonymousMap.DCw = m;
+                paramAnonymousMap.iJn = l1;
+                paramAnonymousMap.DBB = n;
+                paramAnonymousMap.type = i1;
+                paramAnonymousMap.text = str1;
+                paramAnonymousMap.dDH = str2;
+                paramAnonymousMap.timestamp = l2;
+                paramAnonymousMap.clear = j;
+                paramAnonymousMap.hWw = System.currentTimeMillis();
+              }
+              break;
+            }
+          }
+        }
+        for (;;)
+        {
+          localal.save();
+          paramAnonymousString = new st();
+          com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousString);
+          AppMethodBeat.o(168801);
+          return;
+          paramAnonymousString = localal.DCs;
+          break;
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.WebSearchRedPointMgr", "timestamp %d not big than last msg %d", new Object[] { Long.valueOf(l2), Long.valueOf(paramAnonymousMap.timestamp) });
+        }
+      }
+    };
     AppMethodBeat.o(116518);
   }
   
   private void checkWebSearchTemplate(boolean paramBoolean)
   {
     AppMethodBeat.i(116523);
-    ac.i("MicroMsg.WebSearch.PluginWebSearch", "checkWebSearchTemplate %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    int[] arrayOfInt = new int[6];
-    int[] tmp31_29 = arrayOfInt;
-    tmp31_29[0] = 0;
-    int[] tmp35_31 = tmp31_29;
-    tmp35_31[1] = 1;
-    int[] tmp39_35 = tmp35_31;
-    tmp39_35[2] = 2;
-    int[] tmp43_39 = tmp39_35;
-    tmp43_39[3] = 3;
-    int[] tmp47_43 = tmp43_39;
-    tmp47_43[4] = 4;
-    int[] tmp51_47 = tmp47_43;
-    tmp51_47[5] = 5;
-    tmp51_47;
-    int i;
-    ak localak;
-    if (paramBoolean)
-    {
-      i = 0;
-      while (i < 6)
-      {
-        localak = z.Uj(arrayOfInt[i]);
-        com.tencent.mm.vfs.i.cU(localak.exF(), true);
-        localak.exD();
-        i += 1;
-      }
-    }
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.PluginWebSearch", "checkWebSearchTemplate %b", new Object[] { Boolean.valueOf(paramBoolean) });
     int j = 0;
     int k;
+    ao localao;
     int m;
     int n;
+    int i;
     if (j < 6)
     {
-      k = arrayOfInt[j];
-      localak = z.Uj(k);
-      m = localak.aEi();
-      localak.exD();
-      n = localak.aEh();
+      k = new int[] { 0, 1, 2, 3, 4, 5 }[j];
+      localao = com.tencent.mm.plugin.websearch.api.ad.Wc(k);
+      m = localao.aHn();
+      localao.eMu();
+      n = localao.aHm();
       if (n == 1)
       {
-        ac.i("MicroMsg.WebSearch.PluginWebSearch", "first time init template");
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.PluginWebSearch", "first time init template");
         i = 1;
       }
     }
     for (;;)
     {
       if (i != 0) {
-        localak.exK();
+        localao.eMB();
       }
-      if (!localak.exJ())
+      if (!localao.eMA())
       {
         i = 1;
         for (;;)
         {
           if (i <= 3)
           {
-            ac.i("MicroMsg.WebSearch.PluginWebSearch", "checkWebSearchTemplate invalid md5 and delete template folder retryTimes:%s", new Object[] { Integer.valueOf(i) });
-            localak.exK();
-            if (!localak.exJ())
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.PluginWebSearch", "checkWebSearchTemplate invalid md5 and delete template folder retryTimes:%s", new Object[] { Integer.valueOf(i) });
+            localao.eMB();
+            if (!localao.eMA())
             {
               i += 1;
               continue;
-              if ((com.tencent.mm.kernel.g.agR().agA().getInt(ah.a.GWl, 0) & 0x8) > 0) {}
+              com.tencent.mm.util.c localc = com.tencent.mm.util.c.LgD;
+              if (com.tencent.mm.util.c.aXU(com.tencent.mm.util.c.ms("search", "openResetTemplate")) == 1) {}
               for (i = 1;; i = 0)
               {
                 if (i == 0) {
-                  break label258;
+                  break label208;
                 }
-                ac.i("MicroMsg.WebSearch.PluginWebSearch", "expt reset template");
+                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.PluginWebSearch", "expt reset template");
                 i = 1;
                 break;
               }
-              label258:
+              label208:
               if (n >= m) {
-                break label345;
+                break label295;
               }
-              ac.i("MicroMsg.WebSearch.PluginWebSearch", "update template currentVersion %d assetVersion %d", new Object[] { Integer.valueOf(n), Integer.valueOf(m) });
+              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.PluginWebSearch", "update template currentVersion %d assetVersion %d", new Object[] { Integer.valueOf(n), Integer.valueOf(m) });
               i = 1;
               break;
             }
           }
         }
       }
-      if (!localak.exJ())
+      if (!localao.eMA())
       {
-        ac.w("MicroMsg.WebSearch.PluginWebSearch", "checkWebSearchTemplate final md5 is invalid!");
-        com.tencent.mm.plugin.report.e.wTc.idkeyStat(1181L, k * 30 + 7, 1L, false);
+        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.WebSearch.PluginWebSearch", "checkWebSearchTemplate final md5 is invalid!");
+        com.tencent.mm.plugin.report.e.ygI.idkeyStat(1181L, k * 30 + 7, 1L, false);
       }
       j += 1;
       break;
       AppMethodBeat.o(116523);
       return;
-      label345:
+      label295:
       i = 0;
     }
   }
@@ -299,31 +338,31 @@ public class PluginWebSearch
   private void manualCheckRes()
   {
     AppMethodBeat.i(168802);
-    aw localaw = aw.aKU("MicroMsg.WebSearch.PluginWebSearch");
-    long l1 = localaw.decodeLong("last_check_res_time", 0L);
+    ax localax = ax.aQA("MicroMsg.WebSearch.PluginWebSearch");
+    long l1 = localax.decodeLong("last_check_res_time", 0L);
     long l2 = System.currentTimeMillis();
     long l3 = Math.abs(l2 - l1);
     if (l3 < 86400000L)
     {
-      ac.i("MicroMsg.WebSearch.PluginWebSearch", "manualCheckRes return lastCheckTime %d, current %d, gap %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3) });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.PluginWebSearch", "manualCheckRes return lastCheckTime %d, current %d, gap %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3) });
       AppMethodBeat.o(168802);
       return;
     }
-    localaw.encode("last_check_res_time", l2);
-    ac.i("MicroMsg.WebSearch.PluginWebSearch", "manualCheckRes");
-    ap.n(new Runnable()
+    localax.encode("last_check_res_time", l2);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.PluginWebSearch", "manualCheckRes");
+    aq.o(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(168796);
-        int[] arrayOfInt = PluginWebSearch.BXI;
+        int[] arrayOfInt = PluginWebSearch.DAy;
         int j = arrayOfInt.length;
         int i = 0;
         while (i < j)
         {
           int k = arrayOfInt[i];
-          com.tencent.mm.pluginsdk.h.a.a.b.eLH();
-          com.tencent.mm.pluginsdk.h.a.a.b.WB(k);
+          com.tencent.mm.pluginsdk.j.a.a.b.faE();
+          com.tencent.mm.pluginsdk.j.a.a.b.Yx(k);
           i += 1;
         }
         AppMethodBeat.o(168796);
@@ -334,22 +373,22 @@ public class PluginWebSearch
   
   public HashMap<Integer, h.b> collectDatabaseFactory()
   {
-    return cDZ;
+    return cPe;
   }
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(116520);
     super.configure(paramg);
-    this.BXG = new a();
-    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.websearch.api.g.class, new com.tencent.mm.kernel.c.e(this.BXG));
-    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.websearch.api.i.class, new com.tencent.mm.kernel.c.e(new c()));
-    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.websearch.api.e.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.websearch.widget.b()));
-    com.tencent.mm.kernel.g.a(k.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.websearch.widget.c()));
-    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.agO().agp()).ahL())
+    this.DAw = new a();
+    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.websearch.api.h.class, new com.tencent.mm.kernel.c.e(this.DAw));
+    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.websearch.api.j.class, new com.tencent.mm.kernel.c.e(new c()));
+    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.websearch.api.f.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.websearch.widget.b()));
+    com.tencent.mm.kernel.g.a(l.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.websearch.widget.c()));
+    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajz().ajb()).akw())
     {
-      this.BXH = new b();
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.websearch.api.h.class, new com.tencent.mm.kernel.c.e(this.BXH));
+      this.DAx = new b();
+      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.websearch.api.i.class, new com.tencent.mm.kernel.c.e(this.DAx));
     }
     AppMethodBeat.o(116520);
   }
@@ -363,70 +402,144 @@ public class PluginWebSearch
     AppMethodBeat.o(116519);
   }
   
+  public boolean isOpenFingerSearch()
+  {
+    AppMethodBeat.i(219996);
+    com.tencent.mm.util.c localc = com.tencent.mm.util.c.LgD;
+    if (com.tencent.mm.util.c.fNM())
+    {
+      localc = com.tencent.mm.util.c.LgD;
+      if (com.tencent.mm.util.c.aXU(com.tencent.mm.util.c.ms("search", "openFingerSearch")) == 1)
+      {
+        AppMethodBeat.o(219996);
+        return true;
+      }
+      AppMethodBeat.o(219996);
+      return false;
+    }
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qDC, 0) == 1)
+    {
+      AppMethodBeat.o(219996);
+      return true;
+    }
+    AppMethodBeat.o(219996);
+    return false;
+  }
+  
+  public boolean isOpenHotWordSearch()
+  {
+    AppMethodBeat.i(221670);
+    com.tencent.mm.util.c localc = com.tencent.mm.util.c.LgD;
+    if (com.tencent.mm.util.c.fNM())
+    {
+      localc = com.tencent.mm.util.c.LgD;
+      if (com.tencent.mm.util.c.aXU(com.tencent.mm.util.c.ms("search", "openHotWordSearch")) == 1)
+      {
+        AppMethodBeat.o(221670);
+        return true;
+      }
+      AppMethodBeat.o(221670);
+      return false;
+    }
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.CZl, 0) == 1)
+    {
+      AppMethodBeat.o(221670);
+      return true;
+    }
+    AppMethodBeat.o(221670);
+    return false;
+  }
+  
+  public boolean isOpenImageSearch()
+  {
+    AppMethodBeat.i(219997);
+    com.tencent.mm.util.c localc = com.tencent.mm.util.c.LgD;
+    if (com.tencent.mm.util.c.fNM())
+    {
+      localc = com.tencent.mm.util.c.LgD;
+      if (com.tencent.mm.util.c.aXU(com.tencent.mm.util.c.ms("search", "openImageSearch")) == 1)
+      {
+        AppMethodBeat.o(219997);
+        return true;
+      }
+      AppMethodBeat.o(219997);
+      return false;
+    }
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qDD, 0) == 1)
+    {
+      AppMethodBeat.o(219997);
+      return true;
+    }
+    AppMethodBeat.o(219997);
+    return false;
+  }
+  
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(116521);
-    this.iOv.alive();
-    this.BXJ.alive();
+    this.jhE.alive();
+    this.nVf.alive();
     manualCheckRes();
     this.checkLanguageChangeIListener.alive();
     b.init();
-    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().a("mmsearch_reddot_new", this.zYU);
-    com.tencent.e.h.JZN.f(new a(paramc.ghX), "WebSearchThread");
-    z.zx(5000L);
-    z.uT(5000L);
-    com.tencent.e.h.JZN.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(116511);
-        long l = z.Ul(0);
-        if (((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GRW, Long.valueOf(0L))).longValue() != l)
-        {
-          com.tencent.mm.plugin.report.service.h.wUl.f(17040, new Object[] { Integer.valueOf(2), Long.valueOf(l) });
-          com.tencent.mm.kernel.g.agR().agA().set(ah.a.GRW, Long.valueOf(l));
-          com.tencent.mm.kernel.g.agR().agA().faa();
-        }
-        AppMethodBeat.o(116511);
-      }
-    }, "WebSearchThread");
+    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().a("mmsearch_reddot_new", this.BqG);
+    com.tencent.e.h.LTJ.f(new a(paramc.gBH), "WebSearchThread");
+    com.tencent.mm.plugin.websearch.api.ad.Ck(5000L);
+    com.tencent.mm.plugin.websearch.api.ad.Cl(5000L);
+    com.tencent.e.h.LTJ.f(new PluginWebSearch.3(this), "WebSearchThread");
     AppMethodBeat.o(116521);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(116522);
-    this.iOv.dead();
-    this.BXJ.dead();
+    this.jhE.dead();
+    this.nVf.dead();
     this.checkLanguageChangeIListener.dead();
-    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().b("mmsearch_reddot_new", this.zYU);
-    com.tencent.mm.plugin.websearch.api.ad.BZi = null;
+    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().b("mmsearch_reddot_new", this.BqG);
+    com.tencent.mm.plugin.websearch.api.ah.DCe = null;
     AppMethodBeat.o(116522);
   }
   
   public void parallelsDependency() {}
   
+  public void startImageSearch(o paramo)
+  {
+    AppMethodBeat.i(219998);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.PluginWebSearch", "startImageSearch %s %s", new Object[] { Long.valueOf(paramo.dBd.field_msgId), Integer.valueOf(paramo.dnM) });
+    Object localObject = new Intent();
+    ((Intent)localObject).setClassName(aj.getPackageName(), "com.tencent.mm.plugin.websearch.ui.WebSearchImageLoadingUI");
+    ((Intent)localObject).putExtra("key_source", paramo.dnM);
+    ((Intent)localObject).putExtra("key_msg_id", paramo.dBd.field_msgId);
+    paramo = paramo.context;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramo, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/websearch/PluginWebSearch", "startImageSearch", "(Lcom/tencent/mm/plugin/websearch/api/ImageSearchContext;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramo.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramo, "com/tencent/mm/plugin/websearch/PluginWebSearch", "startImageSearch", "(Lcom/tencent/mm/plugin/websearch/api/ImageSearchContext;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(219998);
+  }
+  
   final class a
     implements Runnable
   {
-    boolean BXL;
+    boolean DAA;
     
     a(boolean paramBoolean)
     {
-      this.BXL = paramBoolean;
+      this.DAA = paramBoolean;
     }
     
     public final void run()
     {
       AppMethodBeat.i(116517);
-      PluginWebSearch.access$100(PluginWebSearch.this, this.BXL);
+      PluginWebSearch.access$100(PluginWebSearch.this, this.DAA);
       AppMethodBeat.o(116517);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.PluginWebSearch
  * JD-Core Version:    0.7.0.1
  */

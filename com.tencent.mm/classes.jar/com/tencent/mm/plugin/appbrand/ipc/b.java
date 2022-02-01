@@ -6,50 +6,52 @@ import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.appbrand.utils.j;
 import d.g.a.a;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandRuntimeLaunchConditionForMainProcessIPC;", "", "()V", "connect", "", "waitFor", "block", "Lkotlin/Function0;", "IPCInvokerConnector", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandRuntimeLaunchConditionForMainProcessIPC;", "", "()V", "connect", "", "waitFor", "block", "Lkotlin/Function0;", "IPCInvokerConnector", "plugin-appbrand-integration_release"})
 public final class b
 {
-  public static final b jVn;
+  public static final b kpB;
   
   static
   {
-    AppMethodBeat.i(187148);
-    jVn = new b();
-    AppMethodBeat.o(187148);
+    AppMethodBeat.i(189053);
+    kpB = new b();
+    AppMethodBeat.o(189053);
   }
   
   public static final void connect()
   {
-    AppMethodBeat.i(187146);
-    s((a)b.jVo);
-    AppMethodBeat.o(187146);
+    AppMethodBeat.i(189051);
+    t((a)b.kpC);
+    AppMethodBeat.o(189051);
   }
   
-  public static final void s(a<y> parama)
+  public static final void t(a<z> parama)
   {
-    AppMethodBeat.i(187147);
-    k.h(parama, "block");
+    AppMethodBeat.i(189052);
+    p.h(parama, "block");
     parama = new j((Runnable)new e(parama), 2);
-    AppBrandMainProcessService.W((Runnable)new c(parama));
-    XIPCInvoker.a("com.tencent.mm", IPCVoid.gey, b.a.class, (d)new d(parama));
-    AppMethodBeat.o(187147);
+    AppBrandMainProcessService.V((Runnable)new c(parama));
+    XIPCInvoker.a("com.tencent.mm", IPCVoid.gyi, b.a.class, (d)new d(parama));
+    AppMethodBeat.o(189052);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class b
-    extends d.g.b.l
-    implements a<y>
+    extends q
+    implements a<z>
   {
-    public static final b jVo;
+    public static final b kpC;
     
     static
     {
-      AppMethodBeat.i(187142);
-      jVo = new b();
-      AppMethodBeat.o(187142);
+      AppMethodBeat.i(189047);
+      kpC = new b();
+      AppMethodBeat.o(189047);
     }
     
     b()
@@ -58,7 +60,7 @@ public final class b
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -66,20 +68,20 @@ public final class b
     
     public final void run()
     {
-      AppMethodBeat.i(187143);
-      this.jVp.countDown();
-      AppMethodBeat.o(187143);
+      AppMethodBeat.i(189048);
+      this.kpD.countDown();
+      AppMethodBeat.o(189048);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class d<T>
     implements d<ResultType>
   {
     d(j paramj) {}
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -87,9 +89,9 @@ public final class b
     
     public final void run()
     {
-      AppMethodBeat.i(187145);
-      this.gmj.invoke();
-      AppMethodBeat.o(187145);
+      AppMethodBeat.i(189050);
+      this.gFS.invoke();
+      AppMethodBeat.o(189050);
     }
   }
 }

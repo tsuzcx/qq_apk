@@ -5,40 +5,40 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public abstract class a
 {
-  a miJ;
+  a mJk;
   
   protected void a(WeImageView paramWeImageView) {}
   
-  public abstract void bwo();
+  public abstract void bAu();
   
-  public abstract View bwp();
+  public abstract View bAv();
   
-  protected final boolean bwq()
+  protected final boolean bAw()
   {
-    if (bwp() == null) {}
-    while (bwp().getVisibility() != 0) {
+    if (bAv() == null) {}
+    while (bAv().getVisibility() != 0) {
       return false;
     }
     return true;
   }
   
-  protected final void hB(boolean paramBoolean)
+  protected final void hL(boolean paramBoolean)
   {
-    if (bwp() == null) {}
+    if (bAv() == null) {}
     for (;;)
     {
       return;
       if (paramBoolean) {
-        if (bwp().getVisibility() != 0) {
-          bwp().setVisibility(0);
+        if (bAv().getVisibility() != 0) {
+          bAv().setVisibility(0);
         }
       }
-      while (this.miJ != null)
+      while (this.mJk != null)
       {
-        this.miJ.a(this, bwp(), paramBoolean);
+        this.mJk.a(this, bAv(), paramBoolean);
         return;
-        if (bwp().getVisibility() != 8) {
-          bwp().setVisibility(8);
+        if (bAv().getVisibility() != 8) {
+          bAv().setVisibility(8);
         }
       }
     }
@@ -50,9 +50,9 @@ public abstract class a
   
   public abstract void onResume();
   
-  public abstract void uV(int paramInt);
+  public abstract void vA(int paramInt);
   
-  public abstract void uW(int paramInt);
+  public abstract void vB(int paramInt);
   
   static abstract interface a
   {

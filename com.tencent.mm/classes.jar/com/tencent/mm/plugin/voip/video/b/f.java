@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.voip.video.b;
 
 import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.f.a;
-import com.tencent.mm.media.f.c;
-import com.tencent.mm.media.f.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.media.g.a;
+import com.tencent.mm.media.g.c;
+import com.tencent.mm.media.g.d;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class f
 {
-  private static volatile int AQU = 0;
+  private static volatile int Cqm = 0;
   
   public static int createProgram(String paramString1, String paramString2)
   {
@@ -29,7 +29,7 @@ public final class f
     }
     int j = GLES20.glCreateProgram();
     if (j == 0) {
-      ac.e("MicroMsg.VoipRenderUtils", "Could not create program");
+      ad.e("MicroMsg.VoipRenderUtils", "Could not create program");
     }
     GLES20.glAttachShader(j, k);
     GLES20.glAttachShader(j, m);
@@ -38,8 +38,8 @@ public final class f
     GLES20.glGetProgramiv(j, 35714, paramString1, 0);
     if (paramString1[0] != 1)
     {
-      ac.e("MicroMsg.VoipRenderUtils", "Could not link program: ");
-      ac.e("MicroMsg.VoipRenderUtils", GLES20.glGetProgramInfoLog(j));
+      ad.e("MicroMsg.VoipRenderUtils", "Could not link program: ");
+      ad.e("MicroMsg.VoipRenderUtils", GLES20.glGetProgramInfoLog(j));
       GLES20.glDeleteProgram(j);
     }
     for (;;)
@@ -50,7 +50,7 @@ public final class f
     }
   }
   
-  static d emO()
+  static d eAM()
   {
     AppMethodBeat.i(115742);
     d locald = c.a(true, 14L);
@@ -58,11 +58,11 @@ public final class f
     return locald;
   }
   
-  static a emP()
+  static a eAN()
   {
     AppMethodBeat.i(115743);
-    Object localObject = c.gRV;
-    localObject = c.pq(14L);
+    Object localObject = c.hkn;
+    localObject = c.rq(14L);
     AppMethodBeat.o(115743);
     return localObject;
   }
@@ -78,7 +78,7 @@ public final class f
     GLES20.glGetShaderiv(j, 35713, paramString, 0);
     if (paramString[0] == 0)
     {
-      ac.e("MicroMsg.VoipRenderUtils", "Could not compile shader %s and shader info is %s", new Object[] { Integer.valueOf(paramInt), GLES20.glGetShaderInfoLog(j) });
+      ad.e("MicroMsg.VoipRenderUtils", "Could not compile shader %s and shader info is %s", new Object[] { Integer.valueOf(paramInt), GLES20.glGetShaderInfoLog(j) });
       GLES20.glDeleteShader(j);
     }
     for (paramInt = i;; paramInt = j)

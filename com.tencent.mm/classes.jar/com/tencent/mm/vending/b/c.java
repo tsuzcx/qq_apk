@@ -17,20 +17,20 @@ public abstract class c<_Callback>
   
   private void b(final com.tencent.mm.vending.j.a parama)
   {
-    Iterator localIterator = fxk().iterator();
+    Iterator localIterator = fNX().iterator();
     while (localIterator.hasNext())
     {
       final b localb = (b)localIterator.next();
       if (localb != null)
       {
-        if (localb.cII != null) {
-          this.Jqe.c(localb.cII);
+        if (localb.cTQ != null) {
+          this.LhJ.c(localb.cTQ);
         }
         for (;;)
         {
-          this.Jqe.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.Jql, true);
+          this.LhJ.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.LhQ, true);
           break;
-          this.Jqe.c(d.fxu());
+          this.LhJ.c(d.fOh());
         }
       }
     }
@@ -52,7 +52,7 @@ public abstract class c<_Callback>
   
   public abstract void a(_Callback param_Callback, com.tencent.mm.vending.j.a parama);
   
-  public final b<_Callback> bs(_Callback param_Callback)
+  public final b<_Callback> bu(_Callback param_Callback)
   {
     return a(new b(param_Callback, this));
   }
@@ -78,7 +78,7 @@ public abstract class c<_Callback>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.vending.b.c
  * JD-Core Version:    0.7.0.1
  */

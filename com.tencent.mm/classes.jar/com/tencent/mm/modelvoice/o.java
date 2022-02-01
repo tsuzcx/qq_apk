@@ -1,30 +1,32 @@
 package com.tencent.mm.modelvoice;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.d;
+import com.tencent.mm.al.e.d;
 import com.tencent.mm.app.n.a;
 import com.tencent.mm.audio.b.i;
-import com.tencent.mm.g.a.rg;
+import com.tencent.mm.g.a.rr;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ch;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.cn;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import junit.framework.Assert;
 
 public class o
-  implements aw
+  implements ax
 {
   private static HashMap<Integer, h.b> baseDBFactories;
   private n.a appForegroundListener;
-  private w idK;
-  private ch idL;
-  private i idM;
-  private t idN;
-  private c idO;
+  private w ixf;
+  private cn ixg;
+  private i ixh;
+  private t ixi;
+  private c ixj;
   
   static
   {
@@ -42,7 +44,7 @@ public class o
     {
       public final String[] getSQLs()
       {
-        return ch.SQL_CREATE;
+        return cn.SQL_CREATE;
       }
     });
     AppMethodBeat.o(148445);
@@ -51,17 +53,17 @@ public class o
   public o()
   {
     AppMethodBeat.i(148438);
-    this.idN = new t();
-    this.idO = new c() {};
+    this.ixi = new t();
+    this.ixj = new c() {};
     this.appForegroundListener = new n.a()
     {
       public final void onAppBackground(String paramAnonymousString)
       {
         AppMethodBeat.i(148436);
-        if ((g.agM()) && (g.agP().ggT))
+        if ((g.ajx()) && (g.ajA().gAD))
         {
-          g.agP();
-          com.tencent.mm.kernel.a.afS();
+          g.ajA();
+          com.tencent.mm.kernel.a.aiE();
         }
         AppMethodBeat.o(148436);
       }
@@ -69,16 +71,16 @@ public class o
       public final void onAppForeground(String paramAnonymousString)
       {
         AppMethodBeat.i(148435);
-        if ((g.agM()) && (g.agP().ggT))
+        if ((g.ajx()) && (g.ajA().gAD))
         {
-          g.agP();
-          if (!com.tencent.mm.kernel.a.afS()) {
-            com.tencent.mm.blink.b.TR().w(new Runnable()
+          g.ajA();
+          if (!com.tencent.mm.kernel.a.aiE()) {
+            com.tencent.mm.blink.b.Wi().w(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(148434);
-                o.aKr().run();
+                o.aNA().run();
                 AppMethodBeat.o(148434);
               }
             });
@@ -90,7 +92,20 @@ public class o
     AppMethodBeat.o(148438);
   }
   
-  private static o aKo()
+  public static i aNA()
+  {
+    AppMethodBeat.i(148442);
+    g.ajA().aiF();
+    if (aNx().ixh == null) {
+      aNx().ixh = i.Qd();
+    }
+    ad.i("MicroMsg.SubCoreVoice", "getVoiceService %s", new Object[] { aNx().ixh.toString() });
+    i locali = aNx().ixh;
+    AppMethodBeat.o(148442);
+    return locali;
+  }
+  
+  private static o aNx()
   {
     AppMethodBeat.i(148439);
     o localo = (o)com.tencent.mm.model.t.ap(o.class);
@@ -98,12 +113,12 @@ public class o
     return localo;
   }
   
-  public static w aKp()
+  public static w aNy()
   {
     AppMethodBeat.i(148440);
-    g.agP().afT();
-    if (aKo().idK == null) {
-      if (g.agR().ghG == null) {
+    g.ajA().aiF();
+    if (aNx().ixf == null) {
+      if (g.ajC().gBq == null) {
         break label70;
       }
     }
@@ -111,19 +126,19 @@ public class o
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("dataDB is null ", bool);
-      aKo().idK = new w(g.agR().ghG);
-      w localw = aKo().idK;
+      aNx().ixf = new w(g.ajC().gBq);
+      w localw = aNx().ixf;
       AppMethodBeat.o(148440);
       return localw;
     }
   }
   
-  public static ch aKq()
+  public static cn aNz()
   {
     AppMethodBeat.i(148441);
-    g.agP().afT();
-    if (aKo().idL == null) {
-      if (g.agR().ghG == null) {
+    g.ajA().aiF();
+    if (aNx().ixg == null) {
+      if (g.ajC().gBq == null) {
         break label70;
       }
     }
@@ -131,24 +146,11 @@ public class o
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("dataDB is null ", bool);
-      aKo().idL = new ch(g.agR().ghG);
-      ch localch = aKo().idL;
+      aNx().ixg = new cn(g.ajC().gBq);
+      cn localcn = aNx().ixg;
       AppMethodBeat.o(148441);
-      return localch;
+      return localcn;
     }
-  }
-  
-  public static i aKr()
-  {
-    AppMethodBeat.i(148442);
-    g.agP().afT();
-    if (aKo().idM == null) {
-      aKo().idM = i.EF();
-    }
-    ac.i("MicroMsg.SubCoreVoice", "getVoiceService %s", new Object[] { aKo().idM.toString() });
-    i locali = aKo().idM;
-    AppMethodBeat.o(148442);
-    return locali;
   }
   
   public void clearPluginData(int paramInt) {}
@@ -161,27 +163,65 @@ public class o
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(148444);
-    f.d.a(Integer.valueOf(34), this.idN);
-    com.tencent.mm.sdk.b.a.GpY.c(this.idO);
+    e.d.a(Integer.valueOf(34), this.ixi);
+    com.tencent.mm.sdk.b.a.IbL.c(this.ixj);
     this.appForegroundListener.alive();
-    com.tencent.mm.pluginsdk.cmd.b.a(new o.a(), new String[] { "//voicetrymore" });
+    com.tencent.mm.pluginsdk.cmd.b.a(new a(), new String[] { "//voicetrymore" });
     AppMethodBeat.o(148444);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(148443);
-    if (aKo().idM != null) {
-      aKo().idM.cXb = 0;
+    if (aNx().ixh != null) {
+      aNx().ixh.dis = 0;
     }
     this.appForegroundListener.dead();
-    f.d.b(Integer.valueOf(34), this.idN);
-    com.tencent.mm.sdk.b.a.GpY.d(this.idO);
-    com.tencent.mm.pluginsdk.cmd.b.Q(new String[] { "//voicetrymore" });
+    e.d.b(Integer.valueOf(34), this.ixi);
+    com.tencent.mm.sdk.b.a.IbL.d(this.ixj);
+    com.tencent.mm.pluginsdk.cmd.b.S(new String[] { "//voicetrymore" });
     AppMethodBeat.o(148443);
   }
   
   public void onSdcardMount(boolean paramBoolean) {}
+  
+  static final class a
+    implements com.tencent.mm.pluginsdk.cmd.a
+  {
+    public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
+    {
+      AppMethodBeat.i(148437);
+      paramContext = paramArrayOfString[0];
+      int i = -1;
+      switch (paramContext.hashCode())
+      {
+      default: 
+        switch (i)
+        {
+        }
+        break;
+      }
+      do
+      {
+        AppMethodBeat.o(148437);
+        return false;
+        if (!paramContext.equals("//voicetrymore")) {
+          break;
+        }
+        i = 0;
+        break;
+      } while ((paramArrayOfString.length <= 1) || (paramArrayOfString[1] == null));
+      i = bt.getInt(paramArrayOfString[1], 1);
+      if (i == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        i.div = bool;
+        ad.i("MicroMsg.SubCoreVoice", "summervoicetrymore enable[%d]", new Object[] { Integer.valueOf(i) });
+        AppMethodBeat.o(148437);
+        return true;
+      }
+    }
+  }
 }
 
 

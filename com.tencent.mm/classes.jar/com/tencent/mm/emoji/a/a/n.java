@@ -1,19 +1,20 @@
 package com.tencent.mm.emoji.a.a;
 
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/GroupDataListener;", "", "onGroupChange", "", "start", "", "count", "onGroupInsert", "onGroupMoved", "from", "to", "onGroupRemove", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/ExternalPanelDataProvider;", "", "createGroupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "createGroupModel", "Lcom/tencent/mm/emoji/model/panel/PanelGroupModel;", "getGroupId", "", "plugin-emojisdk_release"})
 public abstract interface n
 {
-  public abstract void cv(int paramInt1, int paramInt2);
+  public abstract String afw();
   
-  public abstract void cw(int paramInt1, int paramInt2);
+  public abstract EmojiGroupInfo afx();
   
-  public abstract void cx(int paramInt1, int paramInt2);
+  public abstract ab<?> afy();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.a.a.n
  * JD-Core Version:    0.7.0.1
  */

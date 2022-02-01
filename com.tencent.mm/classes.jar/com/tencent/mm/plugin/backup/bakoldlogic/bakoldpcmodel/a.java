@@ -7,63 +7,63 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends com.tencent.mm.plugin.backup.b.d
 {
-  private static a nap;
-  private e naq;
-  private c nar;
-  private b nas;
+  private static a nAM;
+  private e nAN;
+  private c nAO;
+  private b nAP;
   
-  public static a bEZ()
+  public static a bJi()
   {
     AppMethodBeat.i(21859);
-    if (nap == null)
+    if (nAM == null)
     {
       locala = new a();
-      nap = locala;
+      nAM = locala;
       a(locala);
     }
-    a locala = nap;
+    a locala = nAM;
     AppMethodBeat.o(21859);
     return locala;
   }
   
-  public final void bCK()
+  public final void bGS()
   {
-    nap = null;
+    nAM = null;
   }
   
-  public final void bCQ() {}
+  public final void bGY() {}
   
-  public final void bCR() {}
+  public final void bGZ() {}
   
-  public final e bFa()
+  public final e bJj()
   {
     AppMethodBeat.i(21861);
-    if (this.naq == null) {
-      this.naq = new e();
+    if (this.nAN == null) {
+      this.nAN = new e();
     }
-    e locale = this.naq;
+    e locale = this.nAN;
     AppMethodBeat.o(21861);
     return locale;
   }
   
-  public final c bFb()
+  public final c bJk()
   {
     AppMethodBeat.i(21862);
-    if (this.nar == null) {
-      this.nar = new c();
+    if (this.nAO == null) {
+      this.nAO = new c();
     }
-    c localc = this.nar;
+    c localc = this.nAO;
     AppMethodBeat.o(21862);
     return localc;
   }
   
-  public final b bFc()
+  public final b bJl()
   {
     AppMethodBeat.i(21863);
-    if (this.nas == null) {
-      this.nas = new b();
+    if (this.nAP == null) {
+      this.nAP = new b();
     }
-    b localb = this.nas;
+    b localb = this.nAP;
     AppMethodBeat.o(21863);
     return localb;
   }
@@ -72,9 +72,9 @@ public final class a
   {
     AppMethodBeat.i(21860);
     paramVarArgs = (Context)paramVarArgs[0];
-    bEZ().bFc().bFd();
+    bJi().bJl().bJm();
     com.tencent.mm.plugin.backup.g.b.clear();
-    com.tencent.mm.br.d.ba(new Intent().setClassName(paramVarArgs, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService"));
+    com.tencent.mm.bs.d.bf(new Intent().setClassName(paramVarArgs, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService"));
     AppMethodBeat.o(21860);
   }
 }

@@ -4,75 +4,75 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static boolean kjB;
-  public static a kjo;
-  public static boolean kjr;
-  public static boolean kjs;
-  public static boolean kju;
-  public static boolean kjw;
-  public static int kjx;
-  public boolean aNj;
-  public int gbd;
-  public boolean kjA;
-  public boolean kjp;
-  public long kjq;
-  public boolean kjt;
-  public boolean kjv;
-  public String kjy;
-  public int kjz;
+  public static a kEm;
+  public static boolean kEp;
+  public static boolean kEq;
+  public static boolean kEs;
+  public static boolean kEu;
+  public static int kEv;
+  public static boolean kEz;
+  public boolean aXD;
+  public int guN;
+  public boolean kEn;
+  public long kEo;
+  public boolean kEr;
+  public boolean kEt;
+  public String kEw;
+  public int kEx;
+  public boolean kEy;
   
   static
   {
     AppMethodBeat.i(144530);
-    kjo = new a().bfJ();
-    kjr = false;
-    kjs = true;
-    kju = true;
-    kjw = false;
-    kjx = 5;
-    kjB = true;
+    kEm = new a().bjn();
+    kEp = false;
+    kEq = true;
+    kEs = true;
+    kEu = false;
+    kEv = 5;
+    kEz = true;
     AppMethodBeat.o(144530);
   }
   
   public a(a parama)
   {
-    this.gbd = parama.gbd;
-    this.kjp = parama.kjp;
-    this.kjq = parama.kjq;
-    this.aNj = parama.aNj;
-    this.kjt = parama.kjt;
-    this.kjv = parama.kjv;
-    this.kjy = parama.kjy;
-    this.kjz = parama.kjz;
-    this.kjA = parama.kjA;
+    this.guN = parama.guN;
+    this.kEn = parama.kEn;
+    this.kEo = parama.kEo;
+    this.aXD = parama.aXD;
+    this.kEr = parama.kEr;
+    this.kEt = parama.kEt;
+    this.kEw = parama.kEw;
+    this.kEx = parama.kEx;
+    this.kEy = parama.kEy;
   }
   
   public static void a(a parama)
   {
-    kjo = parama;
+    kEm = parama;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(144529);
-    String str = "BleConfig{interval=" + this.gbd + ", allowDuplicatesKey=" + this.kjp + ", actionTimeOutTime=" + this.kjq + ", debug=" + this.aNj + ", mainThread=" + this.kjt + ", serial=" + this.kjv + ", mode='" + this.kjy + '\'' + ", actionDelayTime=" + this.kjz + '}';
+    String str = "BleConfig{interval=" + this.guN + ", allowDuplicatesKey=" + this.kEn + ", actionTimeOutTime=" + this.kEo + ", debug=" + this.aXD + ", mainThread=" + this.kEr + ", serial=" + this.kEt + ", mode='" + this.kEw + '\'' + ", actionDelayTime=" + this.kEx + '}';
     AppMethodBeat.o(144529);
     return str;
   }
   
   public static final class a
   {
-    public boolean aNj = a.kjr;
-    public int gbd = 0;
-    public boolean kjA = true;
-    public boolean kjp = false;
-    long kjq = 20000L;
-    public boolean kjt = a.kjs;
-    public boolean kjv = a.kju;
-    public String kjy = "medium";
-    public int kjz = 10;
+    public boolean aXD = a.kEp;
+    public int guN = 0;
+    public boolean kEn = false;
+    long kEo = 20000L;
+    public boolean kEr = a.kEq;
+    public boolean kEt = a.kEs;
+    public String kEw = "medium";
+    public int kEx = 10;
+    public boolean kEy = true;
     
-    public final a bfJ()
+    public final a bjn()
     {
       AppMethodBeat.i(144528);
       a locala = new a(this);
@@ -83,7 +83,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a
  * JD-Core Version:    0.7.0.1
  */

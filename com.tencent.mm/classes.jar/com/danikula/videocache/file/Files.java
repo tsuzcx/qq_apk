@@ -16,7 +16,7 @@ class Files
 {
   static List<File> getLruListFiles(File paramFile)
   {
-    AppMethodBeat.i(192550);
+    AppMethodBeat.i(215897);
     LinkedList localLinkedList = new LinkedList();
     File[] arrayOfFile = paramFile.listFiles();
     paramFile = localLinkedList;
@@ -25,39 +25,39 @@ class Files
       paramFile = Arrays.asList(arrayOfFile);
       Collections.sort(paramFile, new LastModifiedComparator(null));
     }
-    AppMethodBeat.o(192550);
+    AppMethodBeat.o(215897);
     return paramFile;
   }
   
   static void makeDir(File paramFile)
   {
-    AppMethodBeat.i(192549);
+    AppMethodBeat.i(215896);
     if (paramFile.exists())
     {
       if (!paramFile.isDirectory())
       {
         paramFile = new IOException("File " + paramFile + " is not directory!");
-        AppMethodBeat.o(192549);
+        AppMethodBeat.o(215896);
         throw paramFile;
       }
     }
     else if (!paramFile.mkdirs())
     {
       paramFile = new IOException(String.format("Directory %s can't be created", new Object[] { paramFile.getAbsolutePath() }));
-      AppMethodBeat.o(192549);
+      AppMethodBeat.o(215896);
       throw paramFile;
     }
-    AppMethodBeat.o(192549);
+    AppMethodBeat.o(215896);
   }
   
   static void modify(File paramFile)
   {
-    AppMethodBeat.i(192552);
+    AppMethodBeat.i(215899);
     long l = paramFile.length();
     if (l == 0L)
     {
       recreateZeroSizeFile(paramFile);
-      AppMethodBeat.o(192552);
+      AppMethodBeat.o(215899);
       return;
     }
     paramFile = new RandomAccessFile(paramFile, "rwd");
@@ -66,24 +66,24 @@ class Files
     paramFile.seek(l - 1L);
     paramFile.write(i);
     paramFile.close();
-    AppMethodBeat.o(192552);
+    AppMethodBeat.o(215899);
   }
   
   private static void recreateZeroSizeFile(File paramFile)
   {
-    AppMethodBeat.i(192553);
+    AppMethodBeat.i(215900);
     if ((!paramFile.delete()) || (!paramFile.createNewFile()))
     {
       paramFile = new IOException("Error recreate zero-size file ".concat(String.valueOf(paramFile)));
-      AppMethodBeat.o(192553);
+      AppMethodBeat.o(215900);
       throw paramFile;
     }
-    AppMethodBeat.o(192553);
+    AppMethodBeat.o(215900);
   }
   
   static void setLastModifiedNow(File paramFile)
   {
-    AppMethodBeat.i(192551);
+    AppMethodBeat.i(215898);
     if (paramFile.exists())
     {
       long l = System.currentTimeMillis();
@@ -95,7 +95,7 @@ class Files
         }
       }
     }
-    AppMethodBeat.o(192551);
+    AppMethodBeat.o(215898);
   }
   
   static final class LastModifiedComparator
@@ -114,16 +114,16 @@ class Files
     
     public final int compare(File paramFile1, File paramFile2)
     {
-      AppMethodBeat.i(192548);
+      AppMethodBeat.i(215895);
       int i = compareLong(paramFile1.lastModified(), paramFile2.lastModified());
-      AppMethodBeat.o(192548);
+      AppMethodBeat.o(215895);
       return i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.danikula.videocache.file.Files
  * JD-Core Version:    0.7.0.1
  */

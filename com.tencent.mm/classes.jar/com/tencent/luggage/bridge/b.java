@@ -7,14 +7,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(140314);
-    bVZ = new b("NONE", 0);
-    bWa = new b("READY", 1);
-    bWb = new b("INVOKE", 2);
-    bWc = new b("CALLBACK", 3);
-    bWd = new b("EVENT", 4);
-    bWe = new b("SUBSCRIBE", 5);
-    bWf = new b("UNSUBSCRIBE", 6);
-    bWg = new b[] { bVZ, bWa, bWb, bWc, bWd, bWe, bWf };
+    cgo = new b("NONE", 0);
+    cgp = new b("READY", 1);
+    cgq = new b("INVOKE", 2);
+    cgr = new b("CALLBACK", 3);
+    cgs = new b("EVENT", 4);
+    cgt = new b("SUBSCRIBE", 5);
+    cgu = new b("UNSUBSCRIBE", 6);
+    cgv = new b[] { cgo, cgp, cgq, cgr, cgs, cgt, cgu };
     AppMethodBeat.o(140314);
   }
   

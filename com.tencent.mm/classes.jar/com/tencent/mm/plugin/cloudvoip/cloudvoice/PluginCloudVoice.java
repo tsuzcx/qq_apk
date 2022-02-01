@@ -7,26 +7,26 @@ import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.a.a;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class PluginCloudVoice
   extends f
   implements c, a
 {
-  private static final String[] osz = { "confService", "marsbridgenetwork", "marsbridgexlog" };
+  private static final String[] oVV = { "confService", "ilink_network", "ilink_xlog" };
   
   public void configure(g paramg)
   {
     AppMethodBeat.i(90784);
     super.configure(paramg);
-    ac.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: PluginCloudVoice configure");
+    ad.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: PluginCloudVoice configure");
     AppMethodBeat.o(90784);
   }
   
   public void execute(g paramg)
   {
     AppMethodBeat.i(90783);
-    ac.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: PluginCloudVoice execute");
+    ad.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: PluginCloudVoice execute");
     AppMethodBeat.o(90783);
   }
   
@@ -35,15 +35,15 @@ public class PluginCloudVoice
   public void onAccountRelease()
   {
     AppMethodBeat.i(90785);
-    ac.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: account release. uninit openvoice so");
-    p localp = p.otZ;
-    localp.ag(localp.ouO);
+    ad.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: account release. uninit openvoice so");
+    p localp = p.oXv;
+    localp.af(localp.oYj);
     AppMethodBeat.o(90785);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.PluginCloudVoice
  * JD-Core Version:    0.7.0.1
  */

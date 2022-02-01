@@ -8,7 +8,7 @@ import android.view.View;
 final class c
   implements b
 {
-  static final b azf = new c();
+  static final b aAW = new c();
   
   public final void a(RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
@@ -63,7 +63,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.widget.a.c
  * JD-Core Version:    0.7.0.1
  */

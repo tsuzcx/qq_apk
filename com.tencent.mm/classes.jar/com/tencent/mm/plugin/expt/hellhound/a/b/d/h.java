@@ -5,10 +5,10 @@ import android.support.v7.widget.RecyclerView.a;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.a.a;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.lang.ref.WeakReference;
@@ -17,104 +17,104 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/TopicParamsCatcher;", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/params/IFeedParamCatcher;", "()V", "recyclerViewRef", "Ljava/lang/ref/WeakReference;", "Landroid/support/v7/widget/RecyclerView;", "getFeedId", "", "view", "Landroid/view/View;", "position", "", "getFeedInfo", "", "pLikeCount", "Lcom/tencent/mm/pointers/PInt;", "pCommentCount", "getFeedNickName", "getFeedUserName", "getSessionBuffer", "isAd", "", "setRecyclerView", "recyclerView", "Companion", "plugin-expt_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/TopicParamsCatcher;", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/params/IFeedParamCatcher;", "()V", "recyclerViewRef", "Ljava/lang/ref/WeakReference;", "Landroid/support/v7/widget/RecyclerView;", "getFeedId", "", "view", "Landroid/view/View;", "position", "", "getFeedInfo", "", "pLikeCount", "Lcom/tencent/mm/pointers/PInt;", "pCommentCount", "getFeedNickName", "getFeedUserName", "getSessionBuffer", "isAd", "", "setRecyclerView", "recyclerView", "Companion", "plugin-expt_release"})
 public final class h
   implements com.tencent.mm.plugin.expt.hellhound.a.a.a.b
 {
-  private static Field qkJ;
-  private static Field qkK;
-  private static Field qkL;
-  private static Method qkM;
-  private static Method qkN;
-  private static Method qkO;
-  private static Method qnq;
-  private static Field qnr;
-  public static final h.a qoR;
-  private WeakReference<RecyclerView> qnp;
+  private static Field qTF;
+  private static Field qTG;
+  private static Field qTH;
+  private static Method qTI;
+  private static Method qTJ;
+  private static Method qTK;
+  private static Method qWo;
+  private static Field qWp;
+  public static final h.a qXQ;
+  private WeakReference<RecyclerView> qWn;
   
   static
   {
-    AppMethodBeat.i(195576);
-    qoR = new h.a((byte)0);
-    AppMethodBeat.o(195576);
+    AppMethodBeat.i(210934);
+    qXQ = new h.a((byte)0);
+    AppMethodBeat.o(210934);
   }
   
   public h()
   {
-    AppMethodBeat.i(195575);
-    ac.w("HABBYGE-MALI.TopicParamsCatcher", "TopicParamsCatcher");
+    AppMethodBeat.i(210933);
+    ad.w("HABBYGE-MALI.TopicParamsCatcher", "TopicParamsCatcher");
     try
     {
       Object localObject = Class.forName("com.tencent.mm.view.recyclerview.WxRecyclerAdapter");
-      k.g(localObject, "Class.forName(WxRecyclerAdapter_Name)");
+      p.g(localObject, "Class.forName(WxRecyclerAdapter_Name)");
       localObject = ((Class)localObject).getDeclaredField("data");
-      qkJ = (Field)localObject;
+      qTF = (Field)localObject;
       if (localObject != null) {
         ((Field)localObject).setAccessible(true);
       }
       localObject = Class.forName("com.tencent.mm.plugin.finder.view.adapter.FinderMediaBannerAdapter");
-      k.g(localObject, "Class.forName(FinderMediaBannerAdapter_Name)");
+      p.g(localObject, "Class.forName(FinderMediaBannerAdapter_Name)");
       localObject = ((Class)localObject).getDeclaredField("feed");
-      qkK = (Field)localObject;
+      qTG = (Field)localObject;
       if (localObject != null) {
         ((Field)localObject).setAccessible(true);
       }
       localObject = Class.forName("com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-      k.g(localObject, "Class.forName(BaseFinderFeed_Name)");
+      p.g(localObject, "Class.forName(BaseFinderFeed_Name)");
       localObject = ((Class)localObject).getDeclaredField("feedObject");
-      qkL = (Field)localObject;
+      qTH = (Field)localObject;
       if (localObject != null) {
         ((Field)localObject).setAccessible(true);
       }
       localObject = Class.forName("com.tencent.mm.plugin.finder.storage.FinderItem");
-      k.g(localObject, "Class.forName(FinderItem_Name)");
+      p.g(localObject, "Class.forName(FinderItem_Name)");
       Method localMethod = ((Class)localObject).getDeclaredMethod("getId", new Class[0]);
-      qkM = localMethod;
+      qTI = localMethod;
       if (localMethod != null) {
         localMethod.setAccessible(true);
       }
       localMethod = ((Class)localObject).getDeclaredMethod("getUserName", new Class[0]);
-      qkN = localMethod;
+      qTJ = localMethod;
       if (localMethod != null) {
         localMethod.setAccessible(true);
       }
       localMethod = ((Class)localObject).getDeclaredMethod("getNickName", new Class[0]);
-      qkO = localMethod;
+      qTK = localMethod;
       if (localMethod != null) {
         localMethod.setAccessible(true);
       }
       localObject = ((Class)localObject).getDeclaredMethod("getFinderObject", new Class[0]);
-      k.g(localObject, "FinderItem_Class.getDecl…FinderObject_Method_Name)");
-      qnq = (Method)localObject;
+      p.g(localObject, "FinderItem_Class.getDecl…FinderObject_Method_Name)");
+      qWo = (Method)localObject;
       if (localObject == null) {
-        k.aVY("getFinderObject_Method");
+        p.bcb("getFinderObject_Method");
       }
       ((Method)localObject).setAccessible(true);
       localObject = Class.forName("com.tencent.mm.protocal.protobuf.FinderObject").getDeclaredField("sessionBuffer");
-      k.g(localObject, "FinderObject_Class.getDe…sessionBuffer_Field_Name)");
-      qnr = (Field)localObject;
+      p.g(localObject, "FinderObject_Class.getDe…sessionBuffer_Field_Name)");
+      qWp = (Field)localObject;
       if (localObject == null) {
-        k.aVY("sessionBuffer_Field");
+        p.bcb("sessionBuffer_Field");
       }
       ((Field)localObject).setAccessible(true);
-      AppMethodBeat.o(195575);
+      AppMethodBeat.o(210933);
       return;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)localException, "reflect crash: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(195575);
+      ad.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)localException, "reflect crash: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(210933);
     }
   }
   
-  public final String Cn(int paramInt)
+  public final String Da(int paramInt)
   {
-    AppMethodBeat.i(195574);
+    AppMethodBeat.i(210932);
     Object localObject1;
     RecyclerView.a locala;
-    if (this.qnp != null)
+    if (this.qWn != null)
     {
-      localObject1 = this.qnp;
+      localObject1 = this.qWn;
       if (localObject1 == null) {
         break label401;
       }
@@ -131,14 +131,14 @@ public final class h
     {
       try
       {
-        localObject1 = qkJ;
+        localObject1 = qTF;
         if (localObject1 == null) {
           break label406;
         }
         localObject1 = ((Field)localObject1).get(locala);
         if (localObject1 == null)
         {
-          AppMethodBeat.o(195574);
+          AppMethodBeat.o(210932);
           return null;
         }
         if (!(localObject1 instanceof ArrayList)) {
@@ -154,10 +154,10 @@ public final class h
         localObject1 = ((ArrayList)localObject1).get(paramInt);
         if (localObject1 == null)
         {
-          AppMethodBeat.o(195574);
+          AppMethodBeat.o(210932);
           return null;
         }
-        localObject4 = qkL;
+        localObject4 = qTH;
         if (localObject4 == null) {
           continue;
         }
@@ -167,7 +167,7 @@ public final class h
       {
         try
         {
-          Object localObject2 = qkK;
+          Object localObject2 = qTG;
           if (localObject2 == null) {
             continue;
           }
@@ -175,25 +175,25 @@ public final class h
           if (localObject2 != null) {
             continue;
           }
-          AppMethodBeat.o(195574);
+          AppMethodBeat.o(210932);
           return null;
           localObject2 = null;
           continue;
-          AppMethodBeat.o(195574);
+          AppMethodBeat.o(210932);
           return null;
           localObject2 = null;
           continue;
-          Object localObject4 = qnq;
+          Object localObject4 = qWo;
           if (localObject4 != null) {
             continue;
           }
-          k.aVY("getFinderObject_Method");
+          p.bcb("getFinderObject_Method");
           localObject2 = ((Method)localObject4).invoke(localObject2, new Object[0]);
-          localObject4 = qnr;
+          localObject4 = qWp;
           if (localObject4 != null) {
             continue;
           }
-          k.aVY("sessionBuffer_Field");
+          p.bcb("sessionBuffer_Field");
           localObject4 = ((Field)localObject4).get(localObject2);
           localObject2 = localObject4;
           if ((localObject4 instanceof String)) {
@@ -201,24 +201,24 @@ public final class h
           }
           localObject2 = null;
           localObject2 = (String)localObject2;
-          AppMethodBeat.o(195574);
+          AppMethodBeat.o(210932);
           return localObject2;
         }
         catch (Exception localException2)
         {
-          ac.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)localException2, "getSessionBuffer crash: " + localException2.getMessage(), new Object[0]);
-          AppMethodBeat.o(195574);
+          ad.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)localException2, "getSessionBuffer crash: " + localException2.getMessage(), new Object[0]);
+          AppMethodBeat.o(210932);
           return null;
         }
       }
-      localObject4 = qnq;
+      localObject4 = qWo;
       if (localObject4 == null) {
-        k.aVY("getFinderObject_Method");
+        p.bcb("getFinderObject_Method");
       }
       localObject1 = ((Method)localObject4).invoke(localObject1, new Object[0]);
-      localObject4 = qnr;
+      localObject4 = qWp;
       if (localObject4 == null) {
-        k.aVY("sessionBuffer_Field");
+        p.bcb("sessionBuffer_Field");
       }
       localObject4 = ((Field)localObject4).get(localObject1);
       localObject1 = localObject4;
@@ -226,11 +226,11 @@ public final class h
         localObject1 = null;
       }
       localObject1 = (String)localObject1;
-      AppMethodBeat.o(195574);
+      AppMethodBeat.o(210932);
       return localObject1;
-      AppMethodBeat.o(195574);
+      AppMethodBeat.o(210932);
       return null;
-      AppMethodBeat.o(195574);
+      AppMethodBeat.o(210932);
       return null;
       label401:
       Object localObject3 = null;
@@ -245,13 +245,13 @@ public final class h
   
   public final void a(View paramView, PInt paramPInt1, PInt paramPInt2, int paramInt) {}
   
-  public final String ac(View paramView, int paramInt)
+  public final String ad(View paramView, int paramInt)
   {
-    AppMethodBeat.i(195570);
+    AppMethodBeat.i(210928);
     Object localObject;
-    if (this.qnp != null)
+    if (this.qWn != null)
     {
-      paramView = this.qnp;
+      paramView = this.qWn;
       if (paramView == null) {
         break label393;
       }
@@ -267,7 +267,7 @@ public final class h
             {
               try
               {
-                localObject = qkJ;
+                localObject = qTF;
                 if (localObject == null) {
                   break label398;
                 }
@@ -275,26 +275,26 @@ public final class h
                 label63:
                 if (paramView == null)
                 {
-                  AppMethodBeat.o(195570);
+                  AppMethodBeat.o(210928);
                   return null;
                 }
                 paramView = (ArrayList)paramView;
                 if ((paramView.isEmpty()) || (paramInt < 0) || (paramInt >= paramView.size()))
                 {
-                  AppMethodBeat.o(195570);
+                  AppMethodBeat.o(210928);
                   return null;
                 }
                 paramView = paramView.get(paramInt);
                 if (paramView == null)
                 {
-                  AppMethodBeat.o(195570);
+                  AppMethodBeat.o(210928);
                   return null;
                 }
-                localObject = qkL;
+                localObject = qTH;
                 if (localObject != null)
                 {
                   paramView = ((Field)localObject).get(paramView);
-                  localObject = qkM;
+                  localObject = qTI;
                   if (localObject == null) {
                     break label221;
                   }
@@ -303,14 +303,14 @@ public final class h
                     break;
                   }
                   paramView = new v("null cannot be cast to non-null type kotlin.Long");
-                  AppMethodBeat.o(195570);
+                  AppMethodBeat.o(210928);
                   throw paramView;
                 }
               }
               catch (Exception paramView)
               {
-                ac.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)paramView, "_getFeedId, e2, crash: " + paramView.getMessage(), new Object[0]);
-                AppMethodBeat.o(195570);
+                ad.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)paramView, "_getFeedId, e2, crash: " + paramView.getMessage(), new Object[0]);
+                AppMethodBeat.o(210928);
                 return null;
               }
               paramView = null;
@@ -318,8 +318,8 @@ public final class h
               label221:
               paramView = null;
             }
-            paramView = com.tencent.mm.plugin.expt.hellhound.core.b.pb(((Long)paramView).longValue());
-            AppMethodBeat.o(195570);
+            paramView = com.tencent.mm.plugin.expt.hellhound.core.b.rc(((Long)paramView).longValue());
+            AppMethodBeat.o(210928);
             return paramView;
           }
           if (!(paramView instanceof a)) {}
@@ -330,17 +330,17 @@ public final class h
     {
       try
       {
-        localObject = qkK;
+        localObject = qTG;
         if (localObject == null) {
           break label403;
         }
         paramView = ((Field)localObject).get(paramView);
         if (paramView == null)
         {
-          AppMethodBeat.o(195570);
+          AppMethodBeat.o(210928);
           return null;
         }
-        localObject = qkM;
+        localObject = qTI;
         if (localObject != null)
         {
           paramView = ((Method)localObject).invoke(paramView, new Object[0]);
@@ -348,25 +348,25 @@ public final class h
             break label361;
           }
           paramView = new v("null cannot be cast to non-null type kotlin.Long");
-          AppMethodBeat.o(195570);
+          AppMethodBeat.o(210928);
           throw paramView;
         }
       }
       catch (Exception paramView)
       {
-        ac.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)paramView, "_getFeedId, e1, crash: " + paramView.getMessage(), new Object[0]);
-        AppMethodBeat.o(195570);
+        ad.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)paramView, "_getFeedId, e1, crash: " + paramView.getMessage(), new Object[0]);
+        AppMethodBeat.o(210928);
         return null;
       }
       paramView = null;
       continue;
       label361:
-      paramView = com.tencent.mm.plugin.expt.hellhound.core.b.pb(((Long)paramView).longValue());
-      AppMethodBeat.o(195570);
+      paramView = com.tencent.mm.plugin.expt.hellhound.core.b.rc(((Long)paramView).longValue());
+      AppMethodBeat.o(210928);
       return paramView;
-      AppMethodBeat.o(195570);
+      AppMethodBeat.o(210928);
       return null;
-      AppMethodBeat.o(195570);
+      AppMethodBeat.o(210928);
       return null;
       label393:
       paramView = null;
@@ -379,155 +379,15 @@ public final class h
     }
   }
   
-  public final String ad(View paramView, int paramInt)
-  {
-    AppMethodBeat.i(195571);
-    Object localObject;
-    label67:
-    int i;
-    if (this.qnp != null)
-    {
-      paramView = this.qnp;
-      if (paramView == null) {
-        break label412;
-      }
-      paramView = (RecyclerView)paramView.get();
-      if (paramView != null)
-      {
-        paramView = paramView.getAdapter();
-        if (paramView != null)
-        {
-          if ((paramView instanceof WxRecyclerAdapter))
-          {
-            for (;;)
-            {
-              try
-              {
-                localObject = qkJ;
-                if (localObject == null) {
-                  break label417;
-                }
-                paramView = ((Field)localObject).get(paramView);
-                if (paramView == null)
-                {
-                  AppMethodBeat.o(195571);
-                  return null;
-                }
-                if (!(paramView instanceof ArrayList)) {
-                  break;
-                }
-                if (((Collection)paramView).isEmpty()) {
-                  break label422;
-                }
-                i = 1;
-                label100:
-                if ((i == 0) || (paramInt < 0) || (paramInt >= ((ArrayList)paramView).size())) {
-                  break;
-                }
-                paramView = ((ArrayList)paramView).get(paramInt);
-                if (paramView == null)
-                {
-                  AppMethodBeat.o(195571);
-                  return null;
-                }
-                localObject = qkL;
-                if (localObject != null)
-                {
-                  paramView = ((Field)localObject).get(paramView);
-                  localObject = qkN;
-                  if (localObject == null) {
-                    break label252;
-                  }
-                  paramView = ((Method)localObject).invoke(paramView, new Object[0]);
-                  localObject = paramView;
-                  if (!(paramView instanceof String)) {
-                    localObject = null;
-                  }
-                  paramView = (String)localObject;
-                  AppMethodBeat.o(195571);
-                  return paramView;
-                }
-              }
-              catch (Exception paramView)
-              {
-                ac.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)paramView, "getFeedUserName e1: " + paramView.getMessage(), new Object[0]);
-                AppMethodBeat.o(195571);
-                return null;
-              }
-              paramView = null;
-              continue;
-              label252:
-              paramView = null;
-            }
-            AppMethodBeat.o(195571);
-            return null;
-          }
-          if (!(paramView instanceof a)) {}
-        }
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject = qkK;
-        if (localObject == null) {
-          break label427;
-        }
-        paramView = ((Field)localObject).get(paramView);
-        if (paramView == null)
-        {
-          AppMethodBeat.o(195571);
-          return null;
-        }
-        localObject = qkN;
-        if (localObject != null)
-        {
-          paramView = ((Method)localObject).invoke(paramView, new Object[0]);
-          localObject = paramView;
-          if (!(paramView instanceof String)) {
-            localObject = null;
-          }
-          paramView = (String)localObject;
-          AppMethodBeat.o(195571);
-          return paramView;
-        }
-      }
-      catch (Exception paramView)
-      {
-        ac.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)paramView, "getFeedUserName e2: " + paramView.getMessage(), new Object[0]);
-        AppMethodBeat.o(195571);
-        return null;
-      }
-      paramView = null;
-      continue;
-      AppMethodBeat.o(195571);
-      return null;
-      AppMethodBeat.o(195571);
-      return null;
-      label412:
-      paramView = null;
-      break;
-      label417:
-      paramView = null;
-      break label67;
-      label422:
-      i = 0;
-      break label100;
-      label427:
-      paramView = null;
-    }
-  }
-  
   public final String ae(View paramView, int paramInt)
   {
-    AppMethodBeat.i(195572);
+    AppMethodBeat.i(210929);
     Object localObject;
     label67:
     int i;
-    if (this.qnp != null)
+    if (this.qWn != null)
     {
-      paramView = this.qnp;
+      paramView = this.qWn;
       if (paramView == null) {
         break label412;
       }
@@ -543,14 +403,14 @@ public final class h
             {
               try
               {
-                localObject = qkJ;
+                localObject = qTF;
                 if (localObject == null) {
                   break label417;
                 }
                 paramView = ((Field)localObject).get(paramView);
                 if (paramView == null)
                 {
-                  AppMethodBeat.o(195572);
+                  AppMethodBeat.o(210929);
                   return null;
                 }
                 if (!(paramView instanceof ArrayList)) {
@@ -567,14 +427,14 @@ public final class h
                 paramView = ((ArrayList)paramView).get(paramInt);
                 if (paramView == null)
                 {
-                  AppMethodBeat.o(195572);
+                  AppMethodBeat.o(210929);
                   return null;
                 }
-                localObject = qkL;
+                localObject = qTH;
                 if (localObject != null)
                 {
                   paramView = ((Field)localObject).get(paramView);
-                  localObject = qkO;
+                  localObject = qTJ;
                   if (localObject == null) {
                     break label252;
                   }
@@ -584,14 +444,14 @@ public final class h
                     localObject = null;
                   }
                   paramView = (String)localObject;
-                  AppMethodBeat.o(195572);
+                  AppMethodBeat.o(210929);
                   return paramView;
                 }
               }
               catch (Exception paramView)
               {
-                ac.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)paramView, "getFeedNickName e1: " + paramView.getMessage(), new Object[0]);
-                AppMethodBeat.o(195572);
+                ad.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)paramView, "getFeedUserName e1: " + paramView.getMessage(), new Object[0]);
+                AppMethodBeat.o(210929);
                 return null;
               }
               paramView = null;
@@ -599,7 +459,7 @@ public final class h
               label252:
               paramView = null;
             }
-            AppMethodBeat.o(195572);
+            AppMethodBeat.o(210929);
             return null;
           }
           if (!(paramView instanceof a)) {}
@@ -610,17 +470,17 @@ public final class h
     {
       try
       {
-        localObject = qkK;
+        localObject = qTG;
         if (localObject == null) {
           break label427;
         }
         paramView = ((Field)localObject).get(paramView);
         if (paramView == null)
         {
-          AppMethodBeat.o(195572);
+          AppMethodBeat.o(210929);
           return null;
         }
-        localObject = qkO;
+        localObject = qTJ;
         if (localObject != null)
         {
           paramView = ((Method)localObject).invoke(paramView, new Object[0]);
@@ -629,21 +489,21 @@ public final class h
             localObject = null;
           }
           paramView = (String)localObject;
-          AppMethodBeat.o(195572);
+          AppMethodBeat.o(210929);
           return paramView;
         }
       }
       catch (Exception paramView)
       {
-        ac.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)paramView, "getFeedNickName e2: " + paramView.getMessage(), new Object[0]);
-        AppMethodBeat.o(195572);
+        ad.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)paramView, "getFeedUserName e2: " + paramView.getMessage(), new Object[0]);
+        AppMethodBeat.o(210929);
         return null;
       }
       paramView = null;
       continue;
-      AppMethodBeat.o(195572);
+      AppMethodBeat.o(210929);
       return null;
-      AppMethodBeat.o(195572);
+      AppMethodBeat.o(210929);
       return null;
       label412:
       paramView = null;
@@ -659,22 +519,162 @@ public final class h
     }
   }
   
-  public final boolean dS(View paramView)
+  public final String af(View paramView, int paramInt)
+  {
+    AppMethodBeat.i(210930);
+    Object localObject;
+    label67:
+    int i;
+    if (this.qWn != null)
+    {
+      paramView = this.qWn;
+      if (paramView == null) {
+        break label412;
+      }
+      paramView = (RecyclerView)paramView.get();
+      if (paramView != null)
+      {
+        paramView = paramView.getAdapter();
+        if (paramView != null)
+        {
+          if ((paramView instanceof WxRecyclerAdapter))
+          {
+            for (;;)
+            {
+              try
+              {
+                localObject = qTF;
+                if (localObject == null) {
+                  break label417;
+                }
+                paramView = ((Field)localObject).get(paramView);
+                if (paramView == null)
+                {
+                  AppMethodBeat.o(210930);
+                  return null;
+                }
+                if (!(paramView instanceof ArrayList)) {
+                  break;
+                }
+                if (((Collection)paramView).isEmpty()) {
+                  break label422;
+                }
+                i = 1;
+                label100:
+                if ((i == 0) || (paramInt < 0) || (paramInt >= ((ArrayList)paramView).size())) {
+                  break;
+                }
+                paramView = ((ArrayList)paramView).get(paramInt);
+                if (paramView == null)
+                {
+                  AppMethodBeat.o(210930);
+                  return null;
+                }
+                localObject = qTH;
+                if (localObject != null)
+                {
+                  paramView = ((Field)localObject).get(paramView);
+                  localObject = qTK;
+                  if (localObject == null) {
+                    break label252;
+                  }
+                  paramView = ((Method)localObject).invoke(paramView, new Object[0]);
+                  localObject = paramView;
+                  if (!(paramView instanceof String)) {
+                    localObject = null;
+                  }
+                  paramView = (String)localObject;
+                  AppMethodBeat.o(210930);
+                  return paramView;
+                }
+              }
+              catch (Exception paramView)
+              {
+                ad.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)paramView, "getFeedNickName e1: " + paramView.getMessage(), new Object[0]);
+                AppMethodBeat.o(210930);
+                return null;
+              }
+              paramView = null;
+              continue;
+              label252:
+              paramView = null;
+            }
+            AppMethodBeat.o(210930);
+            return null;
+          }
+          if (!(paramView instanceof a)) {}
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject = qTG;
+        if (localObject == null) {
+          break label427;
+        }
+        paramView = ((Field)localObject).get(paramView);
+        if (paramView == null)
+        {
+          AppMethodBeat.o(210930);
+          return null;
+        }
+        localObject = qTK;
+        if (localObject != null)
+        {
+          paramView = ((Method)localObject).invoke(paramView, new Object[0]);
+          localObject = paramView;
+          if (!(paramView instanceof String)) {
+            localObject = null;
+          }
+          paramView = (String)localObject;
+          AppMethodBeat.o(210930);
+          return paramView;
+        }
+      }
+      catch (Exception paramView)
+      {
+        ad.printErrStackTrace("HABBYGE-MALI.TopicParamsCatcher", (Throwable)paramView, "getFeedNickName e2: " + paramView.getMessage(), new Object[0]);
+        AppMethodBeat.o(210930);
+        return null;
+      }
+      paramView = null;
+      continue;
+      AppMethodBeat.o(210930);
+      return null;
+      AppMethodBeat.o(210930);
+      return null;
+      label412:
+      paramView = null;
+      break;
+      label417:
+      paramView = null;
+      break label67;
+      label422:
+      i = 0;
+      break label100;
+      label427:
+      paramView = null;
+    }
+  }
+  
+  public final boolean dX(View paramView)
   {
     return false;
   }
   
   public final void setRecyclerView(RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(195573);
+    AppMethodBeat.i(210931);
     if (paramRecyclerView == null)
     {
-      AppMethodBeat.o(195573);
+      AppMethodBeat.o(210931);
       return;
     }
-    if (this.qnp != null)
+    if (this.qWn != null)
     {
-      localObject = this.qnp;
+      localObject = this.qWn;
       if (localObject == null) {
         break label64;
       }
@@ -683,9 +683,9 @@ public final class h
     for (Object localObject = (RecyclerView)((WeakReference)localObject).get();; localObject = null)
     {
       if (localObject == null) {
-        this.qnp = new WeakReference(paramRecyclerView);
+        this.qWn = new WeakReference(paramRecyclerView);
       }
-      AppMethodBeat.o(195573);
+      AppMethodBeat.o(210931);
       return;
     }
   }

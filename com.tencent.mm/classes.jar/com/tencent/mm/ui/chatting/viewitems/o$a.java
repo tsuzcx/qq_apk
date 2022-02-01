@@ -9,25 +9,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class o$a
   extends c.a
 {
-  public ImageView Ill;
-  TextView fuZ;
-  ImageView fxQ;
-  TextView rFt;
-  ImageView rqZ;
+  public ImageView KbJ;
+  TextView fOg;
+  ImageView fRd;
+  TextView sEx;
+  ImageView sgf;
   
   public final a D(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(163352);
-    super.fX(paramView);
-    this.fxQ = ((ImageView)paramView.findViewById(2131299973));
-    this.fuZ = ((TextView)paramView.findViewById(2131300019));
-    this.rqZ = ((ImageView)paramView.findViewById(2131300003));
-    this.rFt = ((TextView)paramView.findViewById(2131300004));
-    this.xpH = ((TextView)paramView.findViewById(2131298185));
+    super.gn(paramView);
+    this.fRd = ((ImageView)paramView.findViewById(2131299973));
+    this.fOg = ((TextView)paramView.findViewById(2131300019));
+    this.sgf = ((ImageView)paramView.findViewById(2131300003));
+    this.sEx = ((TextView)paramView.findViewById(2131300004));
+    this.yEk = ((TextView)paramView.findViewById(2131298185));
     if (paramBoolean)
     {
-      this.vYf = ((ProgressBar)paramView.findViewById(2131306220));
-      this.Ill = ((ImageView)paramView.findViewById(2131298176));
+      this.xfR = ((ProgressBar)paramView.findViewById(2131306220));
+      this.KbJ = ((ImageView)paramView.findViewById(2131298176));
     }
     AppMethodBeat.o(163352);
     return this;
@@ -35,7 +35,7 @@ final class o$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.o.a
  * JD-Core Version:    0.7.0.1
  */

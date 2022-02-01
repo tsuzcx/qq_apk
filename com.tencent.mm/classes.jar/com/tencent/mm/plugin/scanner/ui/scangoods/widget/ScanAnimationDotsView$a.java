@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsView$Companion;", "", "()V", "DEFAULT_SIZE_ANIMATION_DURATION", "", "DOTS_ANIMATION_PERIOD_IN_MS", "TAG", "", "plugin-scan_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsView$Companion;", "", "()V", "DEFAULT_SIZE_ANIMATION_DURATION", "", "DOTS_ANIMATION_PERIOD_IN_MS", "TAG", "", "plugin-scan_release"})
 public final class ScanAnimationDotsView$a {}
 
 

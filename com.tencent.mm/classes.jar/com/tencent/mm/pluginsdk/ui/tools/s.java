@@ -7,18 +7,18 @@ import android.view.View.OnLayoutChangeListener;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class s
 {
-  private static int DFZ = -1;
+  private static int Fle = -1;
   
   public static void a(View paramView, VideoSightView paramVideoSightView)
   {
     AppMethodBeat.i(116268);
     if ((paramView == null) || (paramVideoSightView == null))
     {
-      ac.e("VideoSightHelper", "null view object " + paramView + "," + paramVideoSightView);
+      ad.e("VideoSightHelper", "null view object " + paramView + "," + paramVideoSightView);
       AppMethodBeat.o(116268);
       return;
     }
@@ -36,26 +36,26 @@ public final class s
               {
                 AppMethodBeat.i(116266);
                 int j = paramAnonymousView.getResources().getDisplayMetrics().heightPixels - paramAnonymousView.getHeight() >>> 1;
-                int i = (int)(j / 1.618D - (s.1.this.DGa.getHeight() >>> 1));
+                int i = (int)(j / 1.618D - (s.1.this.Flf.getHeight() >>> 1));
                 if (i >= 0)
                 {
-                  if (s.DFZ < 0) {
+                  if (s.Fle < 0) {
                     s.access$002(BackwardSupportUtil.b.g(paramAnonymousView.getContext(), 20.0F));
                   }
-                  if (s.1.this.DGa.getHeight() + i + s.DFZ <= j) {
+                  if (s.1.this.Flf.getHeight() + i + s.Fle <= j) {
                     break label192;
                   }
-                  i -= s.1.this.DGa.getHeight() + i + s.DFZ - j;
+                  i -= s.1.this.Flf.getHeight() + i + s.Fle - j;
                 }
                 label192:
                 for (;;)
                 {
-                  RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)s.1.this.DGa.getLayoutParams();
+                  RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)s.1.this.Flf.getLayoutParams();
                   if ((i > 0) && (i != localLayoutParams.bottomMargin))
                   {
-                    ac.i("VideoSightHelper", "setting tip marginBottom ".concat(String.valueOf(i)));
+                    ad.i("VideoSightHelper", "setting tip marginBottom ".concat(String.valueOf(i)));
                     localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, i);
-                    s.1.this.DGa.setLayoutParams(localLayoutParams);
+                    s.1.this.Flf.setLayoutParams(localLayoutParams);
                   }
                   AppMethodBeat.o(116266);
                   return;

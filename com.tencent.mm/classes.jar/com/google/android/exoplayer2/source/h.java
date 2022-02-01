@@ -15,15 +15,15 @@ public abstract interface h
   
   public abstract void a(a parama, long paramLong);
   
-  public abstract void tI();
+  public abstract void vh();
   
-  public abstract p tJ();
+  public abstract p vi();
   
-  public abstract long tK();
+  public abstract long vj();
   
-  public abstract long tL();
+  public abstract long vk();
   
-  public abstract long tM();
+  public abstract long vl();
   
   public static abstract interface a
     extends m.a<h>
@@ -33,7 +33,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.source.h
  * JD-Core Version:    0.7.0.1
  */

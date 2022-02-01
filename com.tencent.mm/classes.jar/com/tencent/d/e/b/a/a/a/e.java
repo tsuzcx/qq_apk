@@ -17,7 +17,7 @@ public final class e
     int i = 0;
     AppMethodBeat.i(138444);
     String str = paramContext.getPackageName();
-    paramContext = b.cr(paramContext, str);
+    paramContext = b.cw(paramContext, str);
     if (paramContext != null)
     {
       int j = paramContext.length;
@@ -64,7 +64,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.e.b.a.a.a.e
  * JD-Core Version:    0.7.0.1
  */

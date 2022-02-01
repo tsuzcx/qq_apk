@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.e.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
@@ -20,23 +20,23 @@ import java.util.List;
 public class DanmuView
   extends View
 {
-  private LinkedList<Float> cBB;
-  private int kSO;
-  private int kSP;
-  private int kSQ;
-  private float kSR;
-  private float kSS;
-  private boolean kST;
-  private boolean kSU;
-  private c kSV;
-  private HashMap<Integer, ArrayList<d>> kSW;
-  public final Deque<d> kSX;
-  public List<d> kSY;
-  private int[] kSZ;
-  private volatile boolean kTa;
-  private LinkedList<Long> kTb;
-  private Paint kTc;
-  private long kTd;
+  private LinkedList<Float> cMA;
+  public final Deque<d> lpA;
+  public List<d> lpB;
+  private int[] lpC;
+  private volatile boolean lpD;
+  private LinkedList<Long> lpE;
+  private Paint lpF;
+  private long lpG;
+  private int lpr;
+  private int lps;
+  private int lpt;
+  private float lpu;
+  private float lpv;
+  private boolean lpw;
+  private boolean lpx;
+  private c lpy;
+  private HashMap<Integer, ArrayList<d>> lpz;
   private final Context mContext;
   private volatile int status;
   
@@ -49,22 +49,22 @@ public class DanmuView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(137862);
-    this.kSO = 5;
-    this.kSP = 500;
-    this.kSQ = 10;
-    this.kSR = 0.0F;
-    this.kSS = 0.6F;
-    this.kST = false;
-    this.kSU = false;
-    this.kSX = new LinkedList();
-    this.kSY = new LinkedList();
+    this.lpr = 5;
+    this.lps = 500;
+    this.lpt = 10;
+    this.lpu = 0.0F;
+    this.lpv = 0.6F;
+    this.lpw = false;
+    this.lpx = false;
+    this.lpA = new LinkedList();
+    this.lpB = new LinkedList();
     this.status = 3;
-    this.kTd = 0L;
+    this.lpG = 0L;
     this.mContext = paramContext;
     AppMethodBeat.o(137862);
   }
   
-  private static void I(float paramFloat1, float paramFloat2)
+  private static void J(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(137863);
     IllegalArgumentException localIllegalArgumentException;
@@ -89,17 +89,17 @@ public class DanmuView
     int i = 0;
     try
     {
-      while (i < this.kSO)
+      while (i < this.lpr)
       {
-        int j = (i + 0) % this.kSO;
-        ArrayList localArrayList = (ArrayList)this.kSW.get(Integer.valueOf(j));
+        int j = (i + 0) % this.lpr;
+        ArrayList localArrayList = (ArrayList)this.lpz.get(Integer.valueOf(j));
         int k = localArrayList.size();
         if (k == 0)
         {
           AppMethodBeat.o(137869);
           return j;
         }
-        if (localArrayList.size() <= this.kSQ)
+        if (localArrayList.size() <= this.lpt)
         {
           boolean bool = paramd.a((d)localArrayList.get(localArrayList.size() - 1));
           if (!bool)
@@ -114,95 +114,95 @@ public class DanmuView
     }
     catch (Exception paramd)
     {
-      ac.w("MicroMsg.DanmuView", "findVacant,Exception:" + paramd.getMessage());
+      ad.w("MicroMsg.DanmuView", "findVacant,Exception:" + paramd.getMessage());
       AppMethodBeat.o(137869);
     }
   }
   
-  private void bko()
+  private void bnZ()
   {
     AppMethodBeat.i(137865);
-    bkp();
-    bkq();
+    boa();
+    bob();
     AppMethodBeat.o(137865);
   }
   
-  private void bkp()
+  private void boa()
   {
     AppMethodBeat.i(137866);
-    this.kSW = new HashMap(this.kSO);
+    this.lpz = new HashMap(this.lpr);
     int i = 0;
-    while (i < this.kSO)
+    while (i < this.lpr)
     {
-      ArrayList localArrayList = new ArrayList(this.kSQ);
-      this.kSW.put(Integer.valueOf(i), localArrayList);
+      ArrayList localArrayList = new ArrayList(this.lpt);
+      this.lpz.put(Integer.valueOf(i), localArrayList);
       i += 1;
     }
     AppMethodBeat.o(137866);
   }
   
-  private void bkq()
+  private void bob()
   {
     int j = 0;
     AppMethodBeat.i(137867);
-    this.kSZ = new int[this.kSO];
-    float f1 = b.dz(this.mContext);
+    this.lpC = new int[this.lpr];
+    float f1 = b.dx(this.mContext);
     float f2 = getHeight();
-    f2 = this.kSR * f2;
+    f2 = this.lpu * f2;
     int i = 0;
-    while (i < this.kSO)
+    while (i < this.lpr)
     {
-      this.kSZ[i] = ((int)((i + 1) * f1 + f2 - 3.0F * f1 / 4.0F));
+      this.lpC[i] = ((int)((i + 1) * f1 + f2 - 3.0F * f1 / 4.0F));
       i += 1;
     }
-    if (this.kSU)
+    if (this.lpx)
     {
-      this.cBB.clear();
-      this.cBB.add(Float.valueOf(f2));
+      this.cMA.clear();
+      this.cMA.add(Float.valueOf(f2));
       i = j;
-      while (i < this.kSO)
+      while (i < this.lpr)
       {
-        this.cBB.add(Float.valueOf((i + 1) * f1 + f2));
+        this.cMA.add(Float.valueOf((i + 1) * f1 + f2));
         i += 1;
       }
     }
     AppMethodBeat.o(137867);
   }
   
-  private void bkt()
+  private void boe()
   {
     AppMethodBeat.i(137878);
-    if ((this.kSW != null) && (!this.kSW.isEmpty())) {
-      this.kSW.clear();
+    if ((this.lpz != null) && (!this.lpz.isEmpty())) {
+      this.lpz.clear();
     }
     AppMethodBeat.o(137878);
   }
   
-  private void bku()
+  private void bof()
   {
     AppMethodBeat.i(137879);
-    synchronized (this.kSX)
+    synchronized (this.lpA)
     {
-      if (!this.kSX.isEmpty()) {
-        this.kSX.clear();
+      if (!this.lpA.isEmpty()) {
+        this.lpA.clear();
       }
       AppMethodBeat.o(137879);
       return;
     }
   }
   
-  private double bkw()
+  private double boh()
   {
     AppMethodBeat.i(137883);
     long l = System.nanoTime();
-    this.kTb.addLast(Long.valueOf(l));
-    double d = (l - ((Long)this.kTb.getFirst()).longValue()) / 1000000000.0D;
-    if (this.kTb.size() > 100) {
-      this.kTb.removeFirst();
+    this.lpE.addLast(Long.valueOf(l));
+    double d = (l - ((Long)this.lpE.getFirst()).longValue()) / 1000000000.0D;
+    if (this.lpE.size() > 100) {
+      this.lpE.removeFirst();
     }
     if (d > 0.0D)
     {
-      d = this.kTb.size() / d;
+      d = this.lpE.size() / d;
       AppMethodBeat.o(137883);
       return d;
     }
@@ -222,12 +222,12 @@ public class DanmuView
     return false;
   }
   
-  public final void bkr()
+  public final void boc()
   {
     AppMethodBeat.i(137871);
     if (isMainThread())
     {
-      this.kTa = true;
+      this.lpD = true;
       AppMethodBeat.o(137871);
       return;
     }
@@ -243,12 +243,12 @@ public class DanmuView
     AppMethodBeat.o(137871);
   }
   
-  public final void bks()
+  public final void bod()
   {
     AppMethodBeat.i(137872);
     if (isMainThread())
     {
-      this.kTa = false;
+      this.lpD = false;
       invalidate();
       AppMethodBeat.o(137872);
       return;
@@ -266,10 +266,10 @@ public class DanmuView
     AppMethodBeat.o(137872);
   }
   
-  public final void bkv()
+  public final void bog()
   {
-    this.kSR = 0.0F;
-    this.kSS = 0.8F;
+    this.lpu = 0.0F;
+    this.lpv = 0.8F;
   }
   
   public final void clear()
@@ -277,7 +277,7 @@ public class DanmuView
     AppMethodBeat.i(137876);
     this.status = 3;
     clearItems();
-    this.kSY.clear();
+    this.lpB.clear();
     invalidate();
     AppMethodBeat.o(137876);
   }
@@ -285,14 +285,14 @@ public class DanmuView
   public final void clearItems()
   {
     AppMethodBeat.i(137877);
-    bkt();
-    bku();
+    boe();
+    bof();
     AppMethodBeat.o(137877);
   }
   
   public float getYOffset()
   {
-    return this.kSS - this.kSR;
+    return this.lpv - this.lpu;
   }
   
   public final void hide()
@@ -307,9 +307,9 @@ public class DanmuView
   {
     AppMethodBeat.i(137868);
     super.onDraw(paramCanvas);
-    if (this.kTa)
+    if (this.lpD)
     {
-      ac.i("MicroMsg.DanmuView", "inTransition");
+      ad.i("MicroMsg.DanmuView", "inTransition");
       AppMethodBeat.o(137868);
       return;
     }
@@ -322,15 +322,15 @@ public class DanmuView
       {
         paramCanvas.drawColor(0);
         i = 0;
-        if (i >= this.kSW.size()) {
+        if (i >= this.lpz.size()) {
           break label160;
         }
-        localObject1 = ((ArrayList)this.kSW.get(Integer.valueOf(i))).iterator();
+        localObject1 = ((ArrayList)this.lpz.get(Integer.valueOf(i))).iterator();
         if (!((Iterator)localObject1).hasNext()) {
           break label698;
         }
         ??? = (d)((Iterator)localObject1).next();
-        if (((d)???).bkl())
+        if (((d)???).bnW())
         {
           ((Iterator)localObject1).remove();
           continue;
@@ -339,61 +339,61 @@ public class DanmuView
       }
       catch (Exception paramCanvas)
       {
-        ac.w("MicroMsg.DanmuView", "STATUS_RUNNING onDraw e=%s", new Object[] { paramCanvas });
+        ad.w("MicroMsg.DanmuView", "STATUS_RUNNING onDraw e=%s", new Object[] { paramCanvas });
         invalidate();
         AppMethodBeat.o(137868);
         return;
       }
       continue;
       label160:
-      if (System.currentTimeMillis() - this.kTd > this.kSP) {
-        this.kTd = System.currentTimeMillis();
+      if (System.currentTimeMillis() - this.lpG > this.lps) {
+        this.lpG = System.currentTimeMillis();
       }
       float f;
-      synchronized (this.kSX)
+      synchronized (this.lpA)
       {
-        if (this.kSX.size() > 0)
+        if (this.lpA.size() > 0)
         {
-          localObject1 = (d)this.kSX.getFirst();
-          i = this.kSV.aDG();
-          while ((localObject1 != null) && (((d)localObject1).sY(i)))
+          localObject1 = (d)this.lpA.getFirst();
+          i = this.lpy.aGL();
+          while ((localObject1 != null) && (((d)localObject1).tB(i)))
           {
-            this.kSX.pollFirst();
-            localObject1 = (d)this.kSX.getFirst();
+            this.lpA.pollFirst();
+            localObject1 = (d)this.lpA.getFirst();
           }
-          if ((localObject1 != null) && (((d)localObject1).sX(i)))
+          if ((localObject1 != null) && (((d)localObject1).tA(i)))
           {
             i = b((d)localObject1);
             if (i >= 0)
             {
-              ((d)localObject1).dT(paramCanvas.getWidth() - 2, this.kSZ[i]);
+              ((d)localObject1).dV(paramCanvas.getWidth() - 2, this.lpC[i]);
               ((d)localObject1).b(paramCanvas, false);
-              ((ArrayList)this.kSW.get(Integer.valueOf(i))).add(localObject1);
-              this.kSX.pollFirst();
+              ((ArrayList)this.lpz.get(Integer.valueOf(i))).add(localObject1);
+              this.lpA.pollFirst();
             }
           }
         }
-        if ((this.kST) && (this.kTb != null)) {
-          paramCanvas.drawText("FPS:".concat(String.valueOf((int)bkw())), 5.0F, 20.0F, this.kTc);
+        if ((this.lpw) && (this.lpE != null)) {
+          paramCanvas.drawText("FPS:".concat(String.valueOf((int)boh())), 5.0F, 20.0F, this.lpF);
         }
-        if ((!this.kSU) || (this.cBB == null)) {
+        if ((!this.lpx) || (this.cMA == null)) {
           continue;
         }
-        localObject1 = this.cBB.iterator();
+        localObject1 = this.cMA.iterator();
         if (!((Iterator)localObject1).hasNext()) {
           continue;
         }
         f = ((Float)((Iterator)localObject1).next()).floatValue();
-        paramCanvas.drawLine(0.0F, f, getWidth(), f, this.kTc);
+        paramCanvas.drawLine(0.0F, f, getWidth(), f, this.lpF);
       }
       if (this.status == 2) {
         try
         {
           paramCanvas.drawColor(0);
           i = 0;
-          if (i < this.kSW.size())
+          if (i < this.lpz.size())
           {
-            localObject1 = ((ArrayList)this.kSW.get(Integer.valueOf(i))).iterator();
+            localObject1 = ((ArrayList)this.lpz.get(Integer.valueOf(i))).iterator();
             while (((Iterator)localObject1).hasNext())
             {
               ((d)((Iterator)localObject1).next()).b(paramCanvas, true);
@@ -404,7 +404,7 @@ public class DanmuView
         }
         catch (Exception paramCanvas)
         {
-          ac.w("MicroMsg.DanmuView", "STATUS_PAUSE onDraw e=%s", new Object[] { paramCanvas });
+          ad.w("MicroMsg.DanmuView", "STATUS_PAUSE onDraw e=%s", new Object[] { paramCanvas });
         }
       }
       for (;;)
@@ -413,16 +413,16 @@ public class DanmuView
         return;
         i += 1;
         break;
-        if ((this.kST) && (this.kTb != null)) {
-          paramCanvas.drawText("FPS:".concat(String.valueOf((int)bkw())), 5.0F, 20.0F, this.kTc);
+        if ((this.lpw) && (this.lpE != null)) {
+          paramCanvas.drawText("FPS:".concat(String.valueOf((int)boh())), 5.0F, 20.0F, this.lpF);
         }
-        if ((this.kSU) && (this.cBB != null))
+        if ((this.lpx) && (this.cMA != null))
         {
-          localObject1 = this.cBB.iterator();
+          localObject1 = this.cMA.iterator();
           while (((Iterator)localObject1).hasNext())
           {
             f = ((Float)((Iterator)localObject1).next()).floatValue();
-            paramCanvas.drawLine(0.0F, f, getWidth(), f, this.kTc);
+            paramCanvas.drawLine(0.0F, f, getWidth(), f, this.lpF);
           }
         }
       }
@@ -435,7 +435,7 @@ public class DanmuView
   {
     AppMethodBeat.i(137870);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    bkq();
+    bob();
     AppMethodBeat.o(137870);
   }
   
@@ -450,42 +450,42 @@ public class DanmuView
   public final void prepare()
   {
     AppMethodBeat.i(137864);
-    I(this.kSR, this.kSS);
+    J(this.lpu, this.lpv);
     setBackgroundColor(0);
     setDrawingCacheBackgroundColor(0);
-    bko();
+    bnZ();
     AppMethodBeat.o(137864);
   }
   
   public void setDanmuViewCallBack(c paramc)
   {
-    this.kSV = paramc;
+    this.lpy = paramc;
   }
   
   public void setMaxRow(int paramInt)
   {
     AppMethodBeat.i(137880);
-    this.kSO = paramInt;
+    this.lpr = paramInt;
     HashMap localHashMap;
-    if (this.kSW != null)
+    if (this.lpz != null)
     {
-      localHashMap = this.kSW;
+      localHashMap = this.lpz;
       paramInt = 0;
     }
     for (;;)
     {
       try
       {
-        if (paramInt < this.kSW.size())
+        if (paramInt < this.lpz.size())
         {
-          ArrayList localArrayList = (ArrayList)this.kSW.get(Integer.valueOf(paramInt));
+          ArrayList localArrayList = (ArrayList)this.lpz.get(Integer.valueOf(paramInt));
           if (localArrayList != null) {
             localArrayList.clear();
           }
         }
         else
         {
-          bko();
+          bnZ();
           AppMethodBeat.o(137880);
           return;
         }
@@ -500,24 +500,24 @@ public class DanmuView
   
   public void setMaxRunningPerRow(int paramInt)
   {
-    this.kSQ = paramInt;
+    this.lpt = paramInt;
   }
   
   public void setPickItemInterval(int paramInt)
   {
-    this.kSP = paramInt;
+    this.lps = paramInt;
   }
   
   public void setShowFps(boolean paramBoolean)
   {
     AppMethodBeat.i(137881);
-    this.kST = paramBoolean;
-    if ((paramBoolean) && ((this.kTc == null) || (this.kTb == null)))
+    this.lpw = paramBoolean;
+    if ((paramBoolean) && ((this.lpF == null) || (this.lpE == null)))
     {
-      this.kTc = new TextPaint(1);
-      this.kTc.setColor(-256);
-      this.kTc.setTextSize(20.0F);
-      this.kTb = new LinkedList();
+      this.lpF = new TextPaint(1);
+      this.lpF.setColor(-256);
+      this.lpF.setTextSize(20.0F);
+      this.lpE = new LinkedList();
     }
     AppMethodBeat.o(137881);
   }
@@ -525,9 +525,9 @@ public class DanmuView
   public void setShowLines(boolean paramBoolean)
   {
     AppMethodBeat.i(137882);
-    this.kSU = paramBoolean;
-    if ((paramBoolean) && (this.cBB == null)) {
-      this.cBB = new LinkedList();
+    this.lpx = paramBoolean;
+    if ((paramBoolean) && (this.cMA == null)) {
+      this.cMA = new LinkedList();
     }
     AppMethodBeat.o(137882);
   }
@@ -542,7 +542,7 @@ public class DanmuView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.danmu.DanmuView
  * JD-Core Version:    0.7.0.1
  */

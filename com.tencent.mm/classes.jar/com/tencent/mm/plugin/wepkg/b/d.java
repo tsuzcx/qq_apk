@@ -6,8 +6,8 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wepkg.model.WepkgPreloadFile;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,53 +15,53 @@ import java.util.List;
 public class d
   extends j<c>
 {
-  private static volatile d CZH;
+  private static volatile d EDG;
   public static final String[] SQL_CREATE;
-  private final h hpA;
-  public final boolean jQO;
+  private final h hHS;
+  public final boolean kld;
   
   static
   {
     AppMethodBeat.i(110569);
-    SQL_CREATE = new String[] { j.getCreateSQLs(c.hlR, "WepkgPreloadFiles") };
-    CZH = null;
+    SQL_CREATE = new String[] { j.getCreateSQLs(c.hEe, "WepkgPreloadFiles") };
+    EDG = null;
     AppMethodBeat.o(110569);
   }
   
   private d(h paramh)
   {
-    super(paramh, c.hlR, "WepkgPreloadFiles", c.INDEX_CREATE);
+    super(paramh, c.hEe, "WepkgPreloadFiles", c.INDEX_CREATE);
     AppMethodBeat.i(110564);
-    this.hpA = paramh;
+    this.hHS = paramh;
     if (paramh != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jQO = bool;
-      if (!this.jQO) {
-        ac.e("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "storage can not work!!!");
+      this.kld = bool;
+      if (!this.kld) {
+        ad.e("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "storage can not work!!!");
       }
       AppMethodBeat.o(110564);
       return;
     }
   }
   
-  public static d eIS()
+  public static d eXM()
   {
     AppMethodBeat.i(110563);
     d locald;
-    if (!g.agM())
+    if (!g.ajx())
     {
       locald = new d(null);
       AppMethodBeat.o(110563);
       return locald;
     }
-    if (CZH == null) {}
+    if (EDG == null) {}
     try
     {
-      if ((CZH == null) || (!CZH.jQO)) {
-        CZH = new d(g.agR().ghG);
+      if ((EDG == null) || (!EDG.kld)) {
+        EDG = new d(g.ajC().gBq);
       }
-      locald = CZH;
+      locald = EDG;
       AppMethodBeat.o(110563);
       return locald;
     }
@@ -71,20 +71,20 @@ public class d
     }
   }
   
-  public final List<WepkgPreloadFile> aEW(String paramString)
+  public final List<WepkgPreloadFile> aKw(String paramString)
   {
     AppMethodBeat.i(110566);
-    if ((!this.jQO) || (bs.isNullOrNil(paramString)))
+    if ((!this.kld) || (bt.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110566);
       return null;
     }
     Object localObject = String.format("select * from %s where %s=?", new Object[] { "WepkgPreloadFiles", "pkgId" });
     paramString = rawQuery((String)localObject, new String[] { paramString });
-    ac.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "getPreLoadFileList queryStr:%s", new Object[] { localObject });
+    ad.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "getPreLoadFileList queryStr:%s", new Object[] { localObject });
     if (paramString == null)
     {
-      ac.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "cursor is null");
+      ad.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "cursor is null");
       AppMethodBeat.o(110566);
       return null;
     }
@@ -100,20 +100,20 @@ public class d
         ((List)localObject).add(localWepkgPreloadFile);
       } while (paramString.moveToNext());
       paramString.close();
-      ac.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "record list size:%s", new Object[] { Integer.valueOf(((List)localObject).size()) });
+      ad.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "record list size:%s", new Object[] { Integer.valueOf(((List)localObject).size()) });
       AppMethodBeat.o(110566);
       return localObject;
     }
     paramString.close();
-    ac.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "no record");
+    ad.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "no record");
     AppMethodBeat.o(110566);
     return null;
   }
   
-  public final boolean aEX(String paramString)
+  public final boolean aKx(String paramString)
   {
     AppMethodBeat.i(110567);
-    if ((!this.jQO) || (bs.isNullOrNil(paramString)))
+    if ((!this.kld) || (bt.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110567);
       return false;
@@ -121,7 +121,7 @@ public class d
     c localc = new c();
     localc.field_pkgId = paramString;
     boolean bool = super.delete(localc, new String[] { "pkgId" });
-    ac.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "deleteRecordByPkgid pkgid:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(bool) });
+    ad.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "deleteRecordByPkgid pkgid:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(bool) });
     AppMethodBeat.o(110567);
     return bool;
   }
@@ -129,12 +129,12 @@ public class d
   public final boolean f(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(110568);
-    if ((!this.jQO) || (bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
+    if ((!this.kld) || (bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(110568);
       return false;
     }
-    c localc = kM(paramString1, paramString2);
+    c localc = lj(paramString1, paramString2);
     if (localc == null)
     {
       AppMethodBeat.o(110568);
@@ -143,31 +143,31 @@ public class d
     localc.field_completeDownload = paramBoolean;
     localc.field_filePath = paramString3;
     boolean bool = super.update(localc, new String[0]);
-    ac.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "updateDownloadCompleteState pkgid:%s, rid:%s, completeDownload:%s, filePath:%s, ret:%s", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean), paramString3, Boolean.valueOf(bool) });
+    ad.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "updateDownloadCompleteState pkgid:%s, rid:%s, completeDownload:%s, filePath:%s, ret:%s", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean), paramString3, Boolean.valueOf(bool) });
     AppMethodBeat.o(110568);
     return bool;
   }
   
-  public final c kM(String paramString1, String paramString2)
+  public final c lj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(110565);
-    if ((!this.jQO) || (bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
+    if ((!this.kld) || (bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(110565);
       return null;
     }
-    Object localObject = com.tencent.mm.plugin.wepkg.utils.d.kS(paramString1, paramString2);
+    Object localObject = com.tencent.mm.plugin.wepkg.utils.d.lp(paramString1, paramString2);
     localObject = rawQuery(String.format("select * from %s where %s=?", new Object[] { "WepkgPreloadFiles", "key" }), new String[] { localObject });
     if (((Cursor)localObject).moveToFirst())
     {
       paramString1 = new c();
       paramString1.convertFrom((Cursor)localObject);
       ((Cursor)localObject).close();
-      ac.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "getRecordByRid exist record in DB, pkgid:%s, rid:%s, version:%s", new Object[] { paramString1.field_pkgId, paramString1.field_rid, paramString1.field_version });
+      ad.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "getRecordByRid exist record in DB, pkgid:%s, rid:%s, version:%s", new Object[] { paramString1.field_pkgId, paramString1.field_rid, paramString1.field_version });
       AppMethodBeat.o(110565);
       return paramString1;
     }
-    ac.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "getRecordByRid pkgid:%s, rid:%s, no record in DB", new Object[] { paramString1, paramString2 });
+    ad.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "getRecordByRid pkgid:%s, rid:%s, no record in DB", new Object[] { paramString1, paramString2 });
     ((Cursor)localObject).close();
     AppMethodBeat.o(110565);
     return null;
@@ -175,7 +175,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.b.d
  * JD-Core Version:    0.7.0.1
  */

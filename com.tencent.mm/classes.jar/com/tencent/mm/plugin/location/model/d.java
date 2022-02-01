@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.location.model;
 
 public final class d
 {
-  public double tWI;
-  public double tWJ;
+  public double uZr;
+  public double uZs;
   
   public d(double paramDouble1, double paramDouble2)
   {
-    this.tWI = paramDouble2;
-    this.tWJ = paramDouble1;
+    this.uZr = paramDouble2;
+    this.uZs = paramDouble1;
   }
 }
 

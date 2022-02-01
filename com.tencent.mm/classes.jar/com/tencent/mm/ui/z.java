@@ -18,15 +18,15 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
 import com.tencent.mm.cd.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.widget.MMCollapsibleTextView;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 
 public final class z
 {
-  public static final int[] HoZ = { 16843087, 16843088, 16843379 };
-  public static final int[] Hpa = { 16843379 };
+  public static final int[] JcF = { 16843087, 16843088, 16843379 };
+  public static final int[] JcG = { 16843379 };
   
   public static LayoutInflater b(LayoutInflater paramLayoutInflater)
   {
@@ -40,7 +40,7 @@ public final class z
     return paramLayoutInflater;
   }
   
-  public static LayoutInflater jD(Context paramContext)
+  public static LayoutInflater jO(Context paramContext)
   {
     AppMethodBeat.i(141466);
     a.eb(paramContext);
@@ -301,27 +301,27 @@ public final class z
               f1 = f2;
               localObject2 = localObject1;
               localObject3 = localObject1;
-              if (paramContext.getSharedPreferences(ai.eUX(), 0).getBoolean("screenResolution_isModifyDensity", true))
+              if (paramContext.getSharedPreferences(aj.fkC(), 0).getBoolean("screenResolution_isModifyDensity", true))
               {
                 localObject2 = localObject1;
                 localObject3 = localObject1;
-                if (aj.ah(f2, 1.1F)) {
+                if (al.al(f2, 1.1F)) {
                   break label2801;
                 }
                 f1 = f2;
                 localObject2 = localObject1;
                 localObject3 = localObject1;
-                if (aj.ah(f2, 0.8F)) {
+                if (al.al(f2, 0.8F)) {
                   break label2801;
                 }
               }
               localObject2 = localObject1;
               localObject3 = localObject1;
-              if (!aj.ah(f1, a.hV(paramContext)))
+              if (!al.al(f1, a.ie(paramContext)))
               {
                 localObject2 = localObject1;
                 localObject3 = localObject1;
-                if (!aj.ah(f1, a.hW(paramContext))) {
+                if (!al.al(f1, a.jdMethod_if(paramContext))) {
                   break label2785;
                 }
               }
@@ -357,7 +357,7 @@ public final class z
               }
               localObject2 = localObject1;
               localObject3 = localObject1;
-              f1 = a.hU(paramContext);
+              f1 = a.id(paramContext);
               localObject2 = localObject1;
               localObject3 = localObject1;
               if (!paramString.equals("TextView"))
@@ -389,20 +389,20 @@ public final class z
               paramContext.getAssets();
               localObject2 = localObject1;
               localObject3 = localObject1;
-              g.eSH();
+              g.fib();
               localObject2 = localObject1;
               localObject4 = localObject1;
               localObject3 = localObject1;
-              if (!g.eSI()) {
+              if (!g.fic()) {
                 continue;
               }
               localObject2 = localObject1;
               localObject3 = localObject1;
-              paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.HoZ);
+              paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.JcF);
               i = 0;
               localObject2 = localObject1;
               localObject3 = localObject1;
-              if (i >= z.HoZ.length) {
+              if (i >= z.JcF.length) {
                 continue;
               }
               localObject2 = localObject1;
@@ -413,7 +413,7 @@ public final class z
               }
               localObject2 = localObject1;
               localObject3 = localObject1;
-              if (z.HoZ[i] == 16843379)
+              if (z.JcF[i] == 16843379)
               {
                 localObject2 = localObject1;
                 localObject3 = localObject1;
@@ -430,7 +430,7 @@ public final class z
             }
             localObject2 = localObject1;
             localObject3 = localObject1;
-            if (z.HoZ[i] == 16843088)
+            if (z.JcF[i] == 16843088)
             {
               localObject2 = localObject1;
               localObject3 = localObject1;
@@ -439,7 +439,7 @@ public final class z
           }
           catch (ClassNotFoundException paramContext)
           {
-            ac.w("MicroMsg.MMLayoutInflater", "[cpan] class not found. name:%s. Use default Inflate.", new Object[] { paramString });
+            ad.w("MicroMsg.MMLayoutInflater", "[cpan] class not found. name:%s. Use default Inflate.", new Object[] { paramString });
             localObject4 = localObject2;
             AppMethodBeat.o(141463);
             return localObject4;
@@ -449,7 +449,7 @@ public final class z
           }
           catch (InflateException paramContext)
           {
-            ac.w("MicroMsg.MMLayoutInflater", "[cpan] Inflate failed. name:%s. Use default Inflate.", new Object[] { paramString });
+            ad.w("MicroMsg.MMLayoutInflater", "[cpan] Inflate failed. name:%s. Use default Inflate.", new Object[] { paramString });
             localObject4 = localObject3;
             continue;
             localObject2 = localObject1;
@@ -474,19 +474,19 @@ public final class z
           paramContext.getAssets();
           localObject2 = localObject1;
           localObject3 = localObject1;
-          g.eSH();
+          g.fib();
           localObject2 = localObject1;
           localObject4 = localObject1;
           localObject3 = localObject1;
-          if (g.eSI())
+          if (g.fic())
           {
             localObject2 = localObject1;
             localObject3 = localObject1;
-            paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.HoZ);
+            paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.JcF);
             i = 0;
             localObject2 = localObject1;
             localObject3 = localObject1;
-            if (i < z.HoZ.length)
+            if (i < z.JcF.length)
             {
               localObject2 = localObject1;
               localObject3 = localObject1;
@@ -496,7 +496,7 @@ public final class z
               }
               localObject2 = localObject1;
               localObject3 = localObject1;
-              if (z.HoZ[i] == 16843379)
+              if (z.JcF[i] == 16843379)
               {
                 localObject2 = localObject1;
                 localObject3 = localObject1;
@@ -505,7 +505,7 @@ public final class z
               }
               localObject2 = localObject1;
               localObject3 = localObject1;
-              if (z.HoZ[i] == 16843088)
+              if (z.JcF[i] == 16843088)
               {
                 localObject2 = localObject1;
                 localObject3 = localObject1;
@@ -573,19 +573,19 @@ public final class z
             paramContext.getAssets();
             localObject2 = localObject1;
             localObject3 = localObject1;
-            g.eSH();
+            g.fib();
             localObject2 = localObject1;
             localObject4 = localObject1;
             localObject3 = localObject1;
-            if (g.eSI())
+            if (g.fic())
             {
               localObject2 = localObject1;
               localObject3 = localObject1;
-              paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.HoZ);
+              paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.JcF);
               i = 0;
               localObject2 = localObject1;
               localObject3 = localObject1;
-              if (i < z.HoZ.length)
+              if (i < z.JcF.length)
               {
                 localObject2 = localObject1;
                 localObject3 = localObject1;
@@ -595,7 +595,7 @@ public final class z
                 }
                 localObject2 = localObject1;
                 localObject3 = localObject1;
-                if (z.HoZ[i] == 16843379)
+                if (z.JcF[i] == 16843379)
                 {
                   localObject2 = localObject1;
                   localObject3 = localObject1;
@@ -604,7 +604,7 @@ public final class z
                 }
                 localObject2 = localObject1;
                 localObject3 = localObject1;
-                if (z.HoZ[i] == 16843088)
+                if (z.JcF[i] == 16843088)
                 {
                   localObject2 = localObject1;
                   localObject3 = localObject1;
@@ -637,19 +637,19 @@ public final class z
               paramContext.getAssets();
               localObject2 = localObject1;
               localObject3 = localObject1;
-              g.eSH();
+              g.fib();
               localObject2 = localObject1;
               localObject4 = localObject1;
               localObject3 = localObject1;
-              if (g.eSI())
+              if (g.fic())
               {
                 localObject2 = localObject1;
                 localObject3 = localObject1;
-                paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.HoZ);
+                paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.JcF);
                 i = 0;
                 localObject2 = localObject1;
                 localObject3 = localObject1;
-                if (i < z.HoZ.length)
+                if (i < z.JcF.length)
                 {
                   localObject2 = localObject1;
                   localObject3 = localObject1;
@@ -659,7 +659,7 @@ public final class z
                   }
                   localObject2 = localObject1;
                   localObject3 = localObject1;
-                  if (z.HoZ[i] == 16843379)
+                  if (z.JcF[i] == 16843379)
                   {
                     localObject2 = localObject1;
                     localObject3 = localObject1;
@@ -668,7 +668,7 @@ public final class z
                   }
                   localObject2 = localObject1;
                   localObject3 = localObject1;
-                  if (z.HoZ[i] == 16843088)
+                  if (z.JcF[i] == 16843088)
                   {
                     localObject2 = localObject1;
                     localObject3 = localObject1;
@@ -701,11 +701,11 @@ public final class z
         paramContext.getAssets();
         localObject2 = localObject1;
         localObject3 = localObject1;
-        g.eSH();
+        g.fib();
         localObject2 = localObject1;
         localObject4 = localObject1;
         localObject3 = localObject1;
-      } while (!g.eSI());
+      } while (!g.fic());
       label1472:
       label1634:
       label2041:
@@ -713,13 +713,13 @@ public final class z
       label1879:
       label2167:
       localObject3 = localObject1;
-      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.Hpa);
+      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.JcG);
       int i = 0;
       for (;;)
       {
         localObject2 = localObject1;
         localObject3 = localObject1;
-        if (i < z.Hpa.length)
+        if (i < z.JcG.length)
         {
           localObject2 = localObject1;
           localObject3 = localObject1;
@@ -728,7 +728,7 @@ public final class z
           {
             localObject2 = localObject1;
             localObject3 = localObject1;
-            if (z.Hpa[i] == 16843379)
+            if (z.JcG[i] == 16843379)
             {
               localObject2 = localObject1;
               localObject3 = localObject1;
@@ -789,7 +789,7 @@ public final class z
           label2755:
           localObject2 = localObject1;
           localObject3 = localObject1;
-          ac.w("MicroMsg.MMLayoutInflater", "Inflate view, ClassNotFound ".concat(String.valueOf(paramString)));
+          ad.w("MicroMsg.MMLayoutInflater", "Inflate view, ClassNotFound ".concat(String.valueOf(paramString)));
           localObject4 = localObject1;
           break label1274;
           label2785:

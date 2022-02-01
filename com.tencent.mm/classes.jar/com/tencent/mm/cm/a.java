@@ -6,9 +6,9 @@ import android.graphics.BitmapFactory.Options;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 
 public final class a
@@ -33,30 +33,30 @@ public final class a
     return j;
   }
   
-  public static String aRX(String paramString)
+  public static String aXW(String paramString)
   {
     AppMethodBeat.i(9345);
-    paramString = b.app() + String.format("%s%d.%s", new Object[] { "wx_photo_edit_", Long.valueOf(System.currentTimeMillis()), paramString });
+    paramString = b.asd() + String.format("%s%d.%s", new Object[] { "wx_photo_edit_", Long.valueOf(System.currentTimeMillis()), paramString });
     AppMethodBeat.o(9345);
     return paramString;
   }
   
-  public static void aRY(String paramString)
+  public static void aXX(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(9347);
-    ac.i("MicroMsg.MMPhotoEditUtil", "[deleteDirAllFile] dir:%s", new Object[] { paramString });
+    ad.i("MicroMsg.MMPhotoEditUtil", "[deleteDirAllFile] dir:%s", new Object[] { paramString });
     paramString = new e(paramString);
     if (paramString.exists())
     {
-      paramString = paramString.fxX();
+      paramString = paramString.fOM();
       if (paramString != null)
       {
         int j = paramString.length;
         while (i < j)
         {
           Object localObject = paramString[i];
-          if ((localObject.isFile()) && (!bs.isNullOrNil(localObject.getName())) && (localObject.getName().startsWith("wx_photo_edit_"))) {
+          if ((localObject.isFile()) && (!bt.isNullOrNil(localObject.getName())) && (localObject.getName().startsWith("wx_photo_edit_"))) {
             localObject.delete();
           }
           i += 1;
@@ -66,17 +66,17 @@ public final class a
     AppMethodBeat.o(9347);
   }
   
-  public static int bY(float paramFloat)
+  public static int cd(float paramFloat)
   {
     AppMethodBeat.i(9346);
-    int i = (int)(ai.getContext().getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    int i = (int)(aj.getContext().getResources().getDisplayMetrics().density * paramFloat + 0.5F);
     AppMethodBeat.o(9346);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.cm.a
  * JD-Core Version:    0.7.0.1
  */

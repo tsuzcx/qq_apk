@@ -17,33 +17,34 @@ import android.widget.TextView;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.scanner.api.BaseScanRequest;
-import com.tencent.mm.plugin.scanner.model.ab;
+import com.tencent.mm.plugin.scanner.model.ae;
 import com.tencent.mm.plugin.scanner.ui.ScanTranslationResultUI;
 import com.tencent.mm.pluginsdk.ui.tools.q;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/view/ScanTranslationMaskView;", "Lcom/tencent/mm/plugin/scanner/view/BaseScanMaskView;", "Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "Landroid/hardware/Camera$PreviewCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "captureBtn", "Landroid/view/View;", "captureTime", "", "isDestroyed", "", "startTimeArray", "", "attachFlashSwitcherView", "", "flashSwitcher", "attachGalleryButton", "galleryButton", "attachScanTipsView", "tipsView", "Landroid/widget/TextView;", "init", "initView", "rootView", "jumpResultUI", "originPath", "", "source", "originBitmap", "Landroid/graphics/Bitmap;", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onNetworkChange", "state", "onPreviewFrame", "bytes", "", "camera", "Landroid/hardware/Camera;", "onPreviewReady", "isSwitchTab", "onResume", "onViewDestroy", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "onViewReady", "processFrame", "processImage", "filePath", "setBottomExtraHeight", "bottomHeight", "updateViewByNetwork", "Companion", "scan-translation_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/view/ScanTranslationMaskView;", "Lcom/tencent/mm/plugin/scanner/view/BaseScanMaskView;", "Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "Landroid/hardware/Camera$PreviewCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "captureBtn", "Landroid/view/View;", "captureTime", "", "isDestroyed", "", "startTimeArray", "", "attachFlashSwitcherView", "", "flashSwitcher", "attachGalleryButton", "galleryButton", "attachScanTipsView", "tipsView", "Landroid/widget/TextView;", "init", "initView", "rootView", "jumpResultUI", "originPath", "", "source", "originBitmap", "Landroid/graphics/Bitmap;", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onNetworkChange", "state", "onPreviewFrame", "bytes", "", "camera", "Landroid/hardware/Camera;", "onPreviewReady", "isSwitchTab", "onResume", "onViewDestroy", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "onViewReady", "processFrame", "processImage", "filePath", "setBottomExtraHeight", "bottomHeight", "updateViewByNetwork", "Companion", "scan-translation_release"})
 public final class ScanTranslationMaskView
   extends BaseScanMaskView<BaseScanRequest>
   implements Camera.PreviewCallback
 {
-  public static final ScanTranslationMaskView.a xng;
-  private boolean aKE;
+  public static final ScanTranslationMaskView.a yBh;
+  private boolean aMv;
   private long captureTime;
-  private View xeK;
-  private final long[] xfe;
+  private View ysM;
+  private final long[] ytg;
   
   static
   {
     AppMethodBeat.i(121028);
-    xng = new ScanTranslationMaskView.a((byte)0);
+    yBh = new ScanTranslationMaskView.a((byte)0);
     AppMethodBeat.o(121028);
   }
   
@@ -65,20 +66,20 @@ public final class ScanTranslationMaskView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(121027);
-    this.xfe = new long[2];
+    this.ytg = new long[2];
     paramContext = LayoutInflater.from(paramContext).inflate(2131494569, (ViewGroup)this);
-    k.g(paramContext, "view");
+    p.g(paramContext, "view");
     paramContext = paramContext.findViewById(2131304307);
-    k.g(paramContext, "rootView.findViewById(R.id.scan_capture_btn)");
-    this.xeK = paramContext;
-    paramContext = this.xeK;
+    p.g(paramContext, "rootView.findViewById(R.id.scan_capture_btn)");
+    this.ysM = paramContext;
+    paramContext = this.ysM;
     if (paramContext == null) {
-      k.aVY("captureBtn");
+      p.bcb("captureBtn");
     }
     paramContext.setEnabled(false);
-    paramContext = this.xeK;
+    paramContext = this.ysM;
     if (paramContext == null) {
-      k.aVY("captureBtn");
+      p.bcb("captureBtn");
     }
     paramContext.setOnClickListener((View.OnClickListener)new c(this));
     AppMethodBeat.o(121027);
@@ -87,22 +88,22 @@ public final class ScanTranslationMaskView
   private final void a(String paramString, int paramInt, Bitmap paramBitmap)
   {
     AppMethodBeat.i(121018);
-    ac.i("MicroMsg.ScanTranslationMaskView", "alvinluo jumpResultUI originPath: %s", new Object[] { paramString });
-    ab.r(paramString, paramBitmap);
+    ad.i("MicroMsg.ScanTranslationMaskView", "alvinluo jumpResultUI originPath: %s", new Object[] { paramString });
+    ae.r(paramString, paramBitmap);
     paramBitmap = new Intent();
     paramBitmap.putExtra("key_translation_origin_image_path", paramString);
     paramBitmap.putExtra("key_translation_source", paramInt);
     paramBitmap.putExtra("key_translation_capture_time", this.captureTime);
     paramBitmap.setClass(getContext(), ScanTranslationResultUI.class);
     paramString = getContext();
-    paramBitmap = new com.tencent.mm.hellhoundlib.b.a().ba(paramBitmap);
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, paramBitmap.aeD(), "com/tencent/mm/plugin/scanner/view/ScanTranslationMaskView", "jumpResultUI", "(Ljava/lang/String;ILandroid/graphics/Bitmap;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramString.startActivity((Intent)paramBitmap.lR(0));
+    paramBitmap = new com.tencent.mm.hellhoundlib.b.a().bc(paramBitmap);
+    com.tencent.mm.hellhoundlib.a.a.a(paramString, paramBitmap.ahp(), "com/tencent/mm/plugin/scanner/view/ScanTranslationMaskView", "jumpResultUI", "(Ljava/lang/String;ILandroid/graphics/Bitmap;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramString.startActivity((Intent)paramBitmap.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/scanner/view/ScanTranslationMaskView", "jumpResultUI", "(Ljava/lang/String;ILandroid/graphics/Bitmap;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(121018);
   }
   
-  private final void dAQ()
+  private final void dMo()
   {
     AppMethodBeat.i(121024);
     if (getCurrentNetworkAvailable())
@@ -115,9 +116,9 @@ public final class ScanTranslationMaskView
       if (localObject != null) {
         ((View)localObject).setVisibility(0);
       }
-      localObject = this.xeK;
+      localObject = this.ysM;
       if (localObject == null) {
-        k.aVY("captureBtn");
+        p.bcb("captureBtn");
       }
       ((View)localObject).setVisibility(0);
       AppMethodBeat.o(121024);
@@ -131,9 +132,9 @@ public final class ScanTranslationMaskView
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    localObject = this.xeK;
+    localObject = this.ysM;
     if (localObject == null) {
-      k.aVY("captureBtn");
+      p.bcb("captureBtn");
     }
     ((View)localObject).setVisibility(8);
     AppMethodBeat.o(121024);
@@ -142,35 +143,35 @@ public final class ScanTranslationMaskView
   public final void a(Animator.AnimatorListener paramAnimatorListener)
   {
     AppMethodBeat.i(121020);
-    synchronized (Boolean.valueOf(this.aKE))
+    synchronized (Boolean.valueOf(this.aMv))
     {
-      this.aKE = true;
-      y localy = y.KTp;
+      this.aMv = true;
+      z localz = z.MKo;
       a((View)this, 1.0F, 0.0F, paramAnimatorListener);
       AppMethodBeat.o(121020);
       return;
     }
   }
   
-  public final void dAP()
+  public final void dMn()
   {
     AppMethodBeat.i(121019);
-    super.dAP();
-    synchronized (Boolean.valueOf(this.aKE))
+    super.dMn();
+    synchronized (Boolean.valueOf(this.aMv))
     {
-      this.aKE = false;
-      y localy = y.KTp;
-      dAQ();
+      this.aMv = false;
+      z localz = z.MKo;
+      dMo();
       AppMethodBeat.o(121019);
       return;
     }
   }
   
-  public final void ev(View paramView)
+  public final void eH(View paramView)
   {
     AppMethodBeat.i(121013);
-    k.h(paramView, "flashSwitcher");
-    super.ev(paramView);
+    p.h(paramView, "flashSwitcher");
+    super.eH(paramView);
     paramView = getFlashSwitcher();
     if (paramView != null)
     {
@@ -181,11 +182,11 @@ public final class ScanTranslationMaskView
     AppMethodBeat.o(121013);
   }
   
-  public final void ex(View paramView)
+  public final void eJ(View paramView)
   {
     AppMethodBeat.i(121015);
-    k.h(paramView, "galleryButton");
-    super.ex(paramView);
+    p.h(paramView, "galleryButton");
+    super.eJ(paramView);
     paramView = getMGalleryButton();
     if (paramView != null)
     {
@@ -199,7 +200,7 @@ public final class ScanTranslationMaskView
   public final void o(TextView paramTextView)
   {
     AppMethodBeat.i(121014);
-    k.h(paramTextView, "tipsView");
+    p.h(paramTextView, "tipsView");
     super.o(paramTextView);
     AppMethodBeat.o(121014);
   }
@@ -208,8 +209,8 @@ public final class ScanTranslationMaskView
   {
     AppMethodBeat.i(121023);
     super.onNetworkChange(paramInt);
-    ac.i("MicroMsg.ScanTranslationMaskView", "alvinluo onNetworkChange state: %d, currentNetworkAvailable: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(getCurrentNetworkAvailable()) });
-    dAQ();
+    ad.i("MicroMsg.ScanTranslationMaskView", "alvinluo onNetworkChange state: %d, currentNetworkAvailable: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(getCurrentNetworkAvailable()) });
+    dMo();
     AppMethodBeat.o(121023);
   }
   
@@ -219,14 +220,14 @@ public final class ScanTranslationMaskView
     if (paramArrayOfByte != null) {}
     for (paramCamera = Integer.valueOf(paramArrayOfByte.length);; paramCamera = null)
     {
-      ac.i("MicroMsg.ScanTranslationMaskView", "alvinluo onPreviewFrame data size: %d", new Object[] { paramCamera });
+      ad.i("MicroMsg.ScanTranslationMaskView", "alvinluo onPreviewFrame data size: %d", new Object[] { paramCamera });
       if (paramArrayOfByte != null) {
         break;
       }
       AppMethodBeat.o(121017);
       return;
     }
-    h.JZN.aS((Runnable)new e(this, paramArrayOfByte));
+    h.LTJ.aR((Runnable)new e(this, paramArrayOfByte));
     AppMethodBeat.o(121017);
   }
   
@@ -234,21 +235,21 @@ public final class ScanTranslationMaskView
   {
     AppMethodBeat.i(121022);
     super.onResume();
-    ac.i("MicroMsg.ScanTranslationMaskView", "alvinluo onResume");
-    this.xfe[0] = System.currentTimeMillis();
+    ad.i("MicroMsg.ScanTranslationMaskView", "alvinluo onResume");
+    this.ytg[0] = System.currentTimeMillis();
     AppMethodBeat.o(121022);
   }
   
-  public final void qb(boolean paramBoolean)
+  public final void qz(boolean paramBoolean)
   {
     AppMethodBeat.i(121021);
-    super.qb(paramBoolean);
-    View localView = this.xeK;
+    super.qz(paramBoolean);
+    View localView = this.ysM;
     if (localView == null) {
-      k.aVY("captureBtn");
+      p.bcb("captureBtn");
     }
     localView.setEnabled(true);
-    this.xfe[0] = System.currentTimeMillis();
+    this.ytg[0] = System.currentTimeMillis();
     setVisibility(0);
     if (getCurrentNetworkAvailable()) {
       a((View)this, 0.0F, 1.0F, null);
@@ -260,13 +261,13 @@ public final class ScanTranslationMaskView
   {
     AppMethodBeat.i(121016);
     super.setBottomExtraHeight(paramInt);
-    View localView = this.xeK;
+    View localView = this.ysM;
     if (localView == null) {
-      k.aVY("captureBtn");
+      p.bcb("captureBtn");
     }
-    Object localObject = this.xeK;
+    Object localObject = this.ysM;
     if (localObject == null) {
-      k.aVY("captureBtn");
+      p.bcb("captureBtn");
     }
     localObject = ((View)localObject).getLayoutParams();
     if ((localObject instanceof ViewGroup.MarginLayoutParams)) {
@@ -276,7 +277,7 @@ public final class ScanTranslationMaskView
     AppMethodBeat.o(121016);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -285,9 +286,12 @@ public final class ScanTranslationMaskView
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(121009);
-      if ((this.xnh.getActivity() instanceof MMActivity))
+      b localb = new b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/view/ScanTranslationMaskView$attachGalleryButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      if ((this.yBi.getActivity() instanceof MMActivity))
       {
-        paramView = this.xnh.getActivity();
+        paramView = this.yBi.getActivity();
         if (paramView == null)
         {
           paramView = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
@@ -303,8 +307,8 @@ public final class ScanTranslationMaskView
             if (paramAnonymousIntent == null) {}
             for (;;)
             {
-              ac.i("MicroMsg.ScanTranslationMaskView", "alvinluo onActivityResult requestCode: %d, resultCode: %d, data == null: %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(bool) });
-              ScanTranslationMaskView.a(this.xni.xnh, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
+              ad.i("MicroMsg.ScanTranslationMaskView", "alvinluo onActivityResult requestCode: %d, resultCode: %d, data == null: %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(bool) });
+              ScanTranslationMaskView.a(this.yBj.yBi, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
               AppMethodBeat.o(121008);
               return;
               bool = false;
@@ -312,12 +316,13 @@ public final class ScanTranslationMaskView
           }
         });
       }
-      q.a(this.xnh.getActivity(), 561, 1, 0, 1, null);
+      q.a(this.yBi.getActivity(), 561, 1, 0, 1, null);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/view/ScanTranslationMaskView$attachGalleryButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(121009);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -326,17 +331,21 @@ public final class ScanTranslationMaskView
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(121010);
-      ac.d("MicroMsg.ScanTranslationMaskView", "alvinluo onCaptureBtn click");
-      paramView = this.xnh.getScanCamera();
+      b localb = new b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/view/ScanTranslationMaskView$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      ad.d("MicroMsg.ScanTranslationMaskView", "alvinluo onCaptureBtn click");
+      paramView = this.yBi.getScanCamera();
       if (paramView != null) {
-        paramView.a((Camera.PreviewCallback)this.xnh);
+        paramView.a((Camera.PreviewCallback)this.yBi);
       }
-      ScanTranslationMaskView.a(this.xnh, (int)(System.currentTimeMillis() - ScanTranslationMaskView.a(this.xnh)[0]));
+      ScanTranslationMaskView.a(this.yBi, (int)(System.currentTimeMillis() - ScanTranslationMaskView.a(this.yBi)[0]));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/view/ScanTranslationMaskView$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(121010);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -345,23 +354,23 @@ public final class ScanTranslationMaskView
     public final void run()
     {
       AppMethodBeat.i(121011);
-      synchronized (Boolean.valueOf(ScanTranslationMaskView.b(this.xnh)))
+      synchronized (Boolean.valueOf(ScanTranslationMaskView.b(this.yBi)))
       {
-        if (ScanTranslationMaskView.b(this.xnh))
+        if (ScanTranslationMaskView.b(this.yBi))
         {
-          ac.i("MicroMsg.ScanTranslationMaskView", "alvinluo onActivityResult isDestroyed and ignore");
+          ad.i("MicroMsg.ScanTranslationMaskView", "alvinluo onActivityResult isDestroyed and ignore");
           AppMethodBeat.o(121011);
           return;
         }
-        y localy = y.KTp;
-        ScanTranslationMaskView.a(this.xnh, this.wDH);
+        z localz = z.MKo;
+        ScanTranslationMaskView.a(this.yBi, this.xRo);
         AppMethodBeat.o(121011);
         return;
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -370,16 +379,16 @@ public final class ScanTranslationMaskView
     public final void run()
     {
       AppMethodBeat.i(121012);
-      synchronized (Boolean.valueOf(ScanTranslationMaskView.b(this.xnh)))
+      synchronized (Boolean.valueOf(ScanTranslationMaskView.b(this.yBi)))
       {
-        if (ScanTranslationMaskView.b(this.xnh))
+        if (ScanTranslationMaskView.b(this.yBi))
         {
-          ac.i("MicroMsg.ScanTranslationMaskView", "alvinluo onPreviewFrame isDestroyed and ignore");
+          ad.i("MicroMsg.ScanTranslationMaskView", "alvinluo onPreviewFrame isDestroyed and ignore");
           AppMethodBeat.o(121012);
           return;
         }
-        y localy = y.KTp;
-        ScanTranslationMaskView.a(this.xnh, paramArrayOfByte);
+        z localz = z.MKo;
+        ScanTranslationMaskView.a(this.yBi, paramArrayOfByte);
         AppMethodBeat.o(121012);
         return;
       }

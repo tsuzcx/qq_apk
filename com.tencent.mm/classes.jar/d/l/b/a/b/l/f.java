@@ -5,7 +5,7 @@ import d.g.a.a;
 public abstract interface f<T>
   extends a<T>
 {
-  public abstract boolean gcp();
+  public abstract boolean gtO();
 }
 
 

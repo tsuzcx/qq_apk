@@ -31,6 +31,8 @@ public abstract interface a
   
   public abstract void setUploadCode(Context paramContext, int paramInt);
   
+  public abstract void setWebContentsDebuggingEnabled(boolean paramBoolean);
+  
   public abstract int startMiniQBToLoadUrl(Context paramContext, String paramString, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback);
 }
 

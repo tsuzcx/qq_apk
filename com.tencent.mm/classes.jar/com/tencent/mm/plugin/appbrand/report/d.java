@@ -1,90 +1,124 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.aa;
-import d.g.b.k;
-import d.l;
-import d.v;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.debugger.o;
+import com.tencent.mm.plugin.appbrand.jsruntime.c;
+import com.tencent.mm.plugin.appbrand.jsruntime.x;
+import com.tencent.mm.plugin.appbrand.page.ar;
+import com.tencent.mm.plugin.appbrand.page.ay;
+import com.tencent.xweb.WebView;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReportProvider;", "Landroid/app/Application$ActivityLifecycleCallbacks;", "()V", "hasAddActivityLifecycleCallbacks", "", "reporters", "", "Landroid/support/v4/app/FragmentActivity;", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReporter;", "of", "activity", "onActivityCreated", "", "Landroid/app/Activity;", "savedInstanceState", "Landroid/os/Bundle;", "onActivityDestroyed", "onActivityPaused", "onActivityResumed", "onActivitySaveInstanceState", "outState", "onActivityStarted", "onActivityStopped", "plugin-appbrand-integration_release"})
-public final class d
-  implements Application.ActivityLifecycleCallbacks
+public enum d
 {
-  private static boolean lRh;
-  private static final Map<FragmentActivity, AppBrandLauncherDesktopReporter> lRi;
-  public static final d lRj;
+  public static final d[] mqV;
   
   static
   {
-    AppMethodBeat.i(180644);
-    lRj = new d();
-    lRi = (Map)new LinkedHashMap();
-    AppMethodBeat.o(180644);
+    AppMethodBeat.i(48043);
+    mqL = new d("X5", 0);
+    mqM = new d("MMV8", 1);
+    mqN = new d("WebViewBased", 2);
+    mqO = new d("NativeScript", 3);
+    mqP = new d("NodeJS", 4);
+    mqQ = new d("J2V8", 5);
+    mqR = new d("WebViewX5", 6);
+    mqS = new d("WebViewXW", 7);
+    mqT = new d("WebViewSystem", 8);
+    mqU = new d("Invalid", 9);
+    mqW = new d[] { mqL, mqM, mqN, mqO, mqP, mqQ, mqR, mqS, mqT, mqU };
+    mqV = new d[] { mqM, mqQ, mqP };
+    AppMethodBeat.o(48043);
   }
   
-  public static AppBrandLauncherDesktopReporter b(FragmentActivity paramFragmentActivity)
+  private d() {}
+  
+  public static d d(com.tencent.mm.plugin.appbrand.jsruntime.i parami)
   {
-    AppMethodBeat.i(180642);
-    k.h(paramFragmentActivity, "activity");
-    synchronized (lRi)
+    AppMethodBeat.i(48041);
+    if ((parami instanceof c))
     {
-      if (!lRh)
-      {
-        paramFragmentActivity.getApplication().registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)lRj);
-        lRh = true;
+      parami = mqQ;
+      AppMethodBeat.o(48041);
+      return parami;
+    }
+    if ((parami instanceof x))
+    {
+      parami = mqP;
+      AppMethodBeat.o(48041);
+      return parami;
+    }
+    if ((parami instanceof o))
+    {
+      parami = mqU;
+      AppMethodBeat.o(48041);
+      return parami;
+    }
+    if ((parami instanceof ay))
+    {
+      if (!(parami instanceof ar)) {
+        break label221;
       }
-      AppBrandLauncherDesktopReporter localAppBrandLauncherDesktopReporter2 = (AppBrandLauncherDesktopReporter)lRi.get(paramFragmentActivity);
-      AppBrandLauncherDesktopReporter localAppBrandLauncherDesktopReporter1 = localAppBrandLauncherDesktopReporter2;
-      if (localAppBrandLauncherDesktopReporter2 == null)
+      parami = ((ar)parami).meh;
+    }
+    label221:
+    for (;;)
+    {
+      if ((parami instanceof WebView))
       {
-        localAppBrandLauncherDesktopReporter1 = new AppBrandLauncherDesktopReporter();
-        lRi.put(paramFragmentActivity, localAppBrandLauncherDesktopReporter1);
+        parami = (WebView)parami;
+        if (parami.isSysKernel())
+        {
+          parami = mqT;
+          AppMethodBeat.o(48041);
+          return parami;
+        }
+        if (parami.isXWalkKernel())
+        {
+          parami = mqS;
+          AppMethodBeat.o(48041);
+          return parami;
+        }
+        if (parami.getX5WebViewExtension() != null)
+        {
+          parami = mqR;
+          AppMethodBeat.o(48041);
+          return parami;
+        }
       }
-      AppMethodBeat.o(180642);
-      return localAppBrandLauncherDesktopReporter1;
+      parami = mqU;
+      AppMethodBeat.o(48041);
+      return parami;
+      if (com.tencent.mm.sdk.platformtools.i.DEBUG)
+      {
+        if (parami == null) {}
+        for (parami = "null";; parami = parami.getClass().getSimpleName())
+        {
+          parami = new IllegalStateException(String.format("Unrecognized JsRuntime %s", new Object[] { parami }));
+          AppMethodBeat.o(48041);
+          throw parami;
+        }
+      }
+      parami = mqU;
+      AppMethodBeat.o(48041);
+      return parami;
     }
   }
   
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityDestroyed(Activity paramActivity)
+  public static String e(com.tencent.mm.plugin.appbrand.jsruntime.i parami)
   {
-    AppMethodBeat.i(180643);
-    Map localMap2;
-    synchronized (lRi)
-    {
-      localMap2 = lRi;
-      if (localMap2 == null)
-      {
-        paramActivity = new v("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
-        AppMethodBeat.o(180643);
-        throw paramActivity;
-      }
+    AppMethodBeat.i(48042);
+    String str2 = d(parami).name();
+    String str1 = str2;
+    if ((parami instanceof o)) {
+      str1 = str2 + "(remote_debug)";
     }
-    aa.eS(localMap2).remove(paramActivity);
-    AppMethodBeat.o(180643);
+    AppMethodBeat.o(48042);
+    return str1;
   }
-  
-  public final void onActivityPaused(Activity paramActivity) {}
-  
-  public final void onActivityResumed(Activity paramActivity) {}
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity) {}
-  
-  public final void onActivityStopped(Activity paramActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.d
  * JD-Core Version:    0.7.0.1
  */

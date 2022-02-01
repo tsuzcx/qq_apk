@@ -3,44 +3,44 @@ package com.tencent.mm.plugin.luckymoney.sns.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class a
 {
-  public static void HR(int paramInt)
+  public static void Jn(int paramInt)
   {
     AppMethodBeat.i(65409);
-    g.agS();
-    g.agR().agA().set(ah.a.GId, Integer.valueOf(paramInt));
-    g.agS();
-    g.agR().agA().faa();
+    g.ajD();
+    g.ajC().ajl().set(al.a.Iuv, Integer.valueOf(paramInt));
+    g.ajD();
+    g.ajC().ajl().fqc();
     AppMethodBeat.o(65409);
   }
   
-  public static int cZw()
+  public static int diI()
   {
     AppMethodBeat.i(65408);
-    g.agS();
-    int i = ((Integer)g.agR().agA().get(ah.a.GId, Integer.valueOf(0))).intValue();
+    g.ajD();
+    int i = ((Integer)g.ajC().ajl().get(al.a.Iuv, Integer.valueOf(0))).intValue();
     AppMethodBeat.o(65408);
     return i;
   }
   
-  public static String cZx()
+  public static String diJ()
   {
     AppMethodBeat.i(65410);
-    g.agS();
-    String str = (String)g.agR().agA().get(ah.a.GIi, "");
+    g.ajD();
+    String str = (String)g.ajC().ajl().get(al.a.IuA, "");
     AppMethodBeat.o(65410);
     return str;
   }
   
-  public static String cZy()
+  public static String diK()
   {
     AppMethodBeat.i(65411);
-    g.agS();
-    String str = (String)g.agR().agA().get(ah.a.GIj, "");
+    g.ajD();
+    String str = (String)g.ajC().ajl().get(al.a.IuB, "");
     AppMethodBeat.o(65411);
     return str;
   }

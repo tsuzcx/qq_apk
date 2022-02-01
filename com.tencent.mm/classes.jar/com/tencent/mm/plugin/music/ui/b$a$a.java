@@ -8,23 +8,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b$a$a
   extends Animation
 {
-  final int gNV;
-  final int vhX;
+  final int targetHeight;
   View view;
+  final int wns;
   
   public b$a$a(b.a parama, View paramView, int paramInt)
   {
     AppMethodBeat.i(63214);
     this.view = paramView;
-    this.gNV = paramInt;
-    this.vhX = paramView.getHeight();
+    this.targetHeight = paramInt;
+    this.wns = paramView.getHeight();
     AppMethodBeat.o(63214);
   }
   
   protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     AppMethodBeat.i(63215);
-    int i = (int)(this.vhX + (this.gNV - this.vhX) * paramFloat);
+    int i = (int)(this.wns + (this.targetHeight - this.wns) * paramFloat);
     this.view.getLayoutParams().height = i;
     this.view.requestLayout();
     AppMethodBeat.o(63215);

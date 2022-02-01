@@ -4,11 +4,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class j
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int drx;
-  public String lze;
-  public g vFE;
+  public int dDp;
+  public String lYC;
+  public g wMK;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -16,14 +16,14 @@ public final class j
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.drx);
-      if (this.vFE != null)
+      paramVarArgs.aS(1, this.dDp);
+      if (this.wMK != null)
       {
-        paramVarArgs.ln(2, this.vFE.computeSize());
-        this.vFE.writeFields(paramVarArgs);
+        paramVarArgs.lC(2, this.wMK.computeSize());
+        this.wMK.writeFields(paramVarArgs);
       }
-      if (this.lze != null) {
-        paramVarArgs.d(3, this.lze);
+      if (this.lYC != null) {
+        paramVarArgs.d(3, this.lYC);
       }
       AppMethodBeat.o(91276);
       return 0;
@@ -31,14 +31,14 @@ public final class j
     int i;
     if (paramInt == 1)
     {
-      i = f.a.a.b.b.a.bx(1, this.drx) + 0;
+      i = f.a.a.b.b.a.bz(1, this.dDp) + 0;
       paramInt = i;
-      if (this.vFE != null) {
-        paramInt = i + f.a.a.a.lm(2, this.vFE.computeSize());
+      if (this.wMK != null) {
+        paramInt = i + f.a.a.a.lB(2, this.wMK.computeSize());
       }
       i = paramInt;
-      if (this.lze != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.lze);
+      if (this.lYC != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.lYC);
       }
       AppMethodBeat.o(91276);
       return i;
@@ -46,9 +46,9 @@ public final class j
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(91276);
@@ -65,11 +65,11 @@ public final class j
         AppMethodBeat.o(91276);
         return -1;
       case 1: 
-        localj.drx = ((f.a.a.a.a)localObject1).LVo.xF();
+        localj.dDp = ((f.a.a.a.a)localObject1).NPN.zc();
         AppMethodBeat.o(91276);
         return 0;
       case 2: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -77,14 +77,14 @@ public final class j
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new g();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((g)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localj.vFE = ((g)localObject1);
+          for (boolean bool = true; bool; bool = ((g)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localj.wMK = ((g)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(91276);
         return 0;
       }
-      localj.lze = ((f.a.a.a.a)localObject1).LVo.readString();
+      localj.lYC = ((f.a.a.a.a)localObject1).NPN.readString();
       AppMethodBeat.o(91276);
       return 0;
     }
@@ -94,7 +94,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.c.j
  * JD-Core Version:    0.7.0.1
  */

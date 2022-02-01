@@ -9,30 +9,30 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class d
 {
-  List<Runnable> Gji;
-  c Gjj;
+  List<Runnable> HUV;
+  c HUW;
   private Context context;
-  private ServiceConnection onI;
+  private ServiceConnection oRd;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(152748);
-    this.Gji = new LinkedList();
-    this.onI = new ServiceConnection()
+    this.HUV = new LinkedList();
+    this.oRd = new ServiceConnection()
     {
       public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
       {
         AppMethodBeat.i(152747);
-        d.this.Gjj = c.a.K(paramAnonymousIBinder);
-        paramAnonymousComponentName = (Runnable[])d.this.Gji.toArray(new Runnable[d.this.Gji.size()]);
+        d.this.HUW = c.a.K(paramAnonymousIBinder);
+        paramAnonymousComponentName = (Runnable[])d.this.HUV.toArray(new Runnable[d.this.HUV.size()]);
         int j = paramAnonymousComponentName.length;
         int i = 0;
         while (i < j)
@@ -43,18 +43,18 @@ public final class d
           }
           i += 1;
         }
-        d.this.Gji.clear();
+        d.this.HUV.clear();
         AppMethodBeat.o(152747);
       }
       
       public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
       {
-        d.this.Gjj = null;
+        d.this.HUW = null;
       }
     };
     Context localContext = paramContext;
     if ((paramContext instanceof Activity)) {
-      localContext = ai.getContext();
+      localContext = aj.getContext();
     }
     this.context = localContext;
     AppMethodBeat.o(152748);
@@ -66,13 +66,13 @@ public final class d
     if (isConnected()) {
       try
       {
-        this.Gjj.a(paramb.getClass().getName(), paramString, paramBundle, paramb);
+        this.HUW.a(paramb.getClass().getName(), paramString, paramBundle, paramb);
         AppMethodBeat.o(152752);
         return;
       }
       catch (RemoteException paramb)
       {
-        ac.e("MicroMsg.RemoteServiceProxy", "exception:%s", new Object[] { bs.m(paramb) });
+        ad.e("MicroMsg.RemoteServiceProxy", "exception:%s", new Object[] { bt.n(paramb) });
       }
     }
     AppMethodBeat.o(152752);
@@ -93,16 +93,16 @@ public final class d
       AppMethodBeat.o(152749);
       return;
     }
-    this.Gji.add(paramRunnable);
+    this.HUV.add(paramRunnable);
     paramRunnable = new Intent(this.context, RemoteService.class);
-    this.context.bindService(paramRunnable, this.onI, 1);
+    this.context.bindService(paramRunnable, this.oRd, 1);
     AppMethodBeat.o(152749);
   }
   
   public final boolean isConnected()
   {
     AppMethodBeat.i(152750);
-    if ((this.Gjj != null) && (this.Gjj.asBinder().isBinderAlive()))
+    if ((this.HUW != null) && (this.HUW.asBinder().isBinderAlive()))
     {
       AppMethodBeat.o(152750);
       return true;
@@ -114,10 +114,10 @@ public final class d
   public final void release()
   {
     AppMethodBeat.i(152751);
-    if ((this.Gjj != null) && (this.onI != null))
+    if ((this.HUW != null) && (this.oRd != null))
     {
-      this.context.unbindService(this.onI);
-      this.Gjj = null;
+      this.context.unbindService(this.oRd);
+      this.HUW = null;
     }
     this.context = null;
     AppMethodBeat.o(152751);

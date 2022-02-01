@@ -13,7 +13,7 @@ import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cj.b;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
@@ -21,19 +21,19 @@ import java.util.HashMap;
 public class MemoryLeakActivity
   extends HellActivity
 {
-  private AlertDialog iqU;
-  private ao mHandler;
+  private AlertDialog iJY;
+  private ap mHandler;
   private String mKey;
   
   public MemoryLeakActivity()
   {
     AppMethodBeat.i(145579);
-    this.mHandler = new ao()
+    this.mHandler = new ap()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(145575);
-        if (((WeakReference)a.iqX.get(MemoryLeakActivity.a(MemoryLeakActivity.this))).get() == null)
+        if (((WeakReference)a.iKb.get(MemoryLeakActivity.a(MemoryLeakActivity.this))).get() == null)
         {
           MemoryLeakActivity.this.finish();
           AppMethodBeat.o(145575);
@@ -61,14 +61,14 @@ public class MemoryLeakActivity
       paramBundle = str1.substring(str1.indexOf(" "));
     }
     str1 = paramBundle.replace(".", "_");
-    localBuilder.setMessage(str2 + paramBundle + "\n\npath:" + b.Hee + str1 + ".zip");
+    localBuilder.setMessage(str2 + paramBundle + "\n\npath:" + b.IRu + str1 + ".zip");
     localBuilder.setCancelable(true);
     localBuilder.setPositiveButton("dumphprof", new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(145576);
-        b.aPn(str1);
+        b.aVe(str1);
         if ((MemoryLeakActivity.b(MemoryLeakActivity.this) != null) && (MemoryLeakActivity.b(MemoryLeakActivity.this).isShowing())) {
           MemoryLeakActivity.b(MemoryLeakActivity.this).dismiss();
         }
@@ -97,8 +97,8 @@ public class MemoryLeakActivity
         AppMethodBeat.o(145578);
       }
     });
-    this.iqU = localBuilder.create();
-    b.fen();
+    this.iJY = localBuilder.create();
+    b.fuv();
     this.mHandler.sendEmptyMessageDelayed(0, 200L);
     AppMethodBeat.o(145580);
   }
@@ -107,12 +107,12 @@ public class MemoryLeakActivity
   {
     AppMethodBeat.i(145581);
     super.onDestroy();
-    a.iqX.remove(this.mKey);
+    a.iKb.remove(this.mKey);
     this.mHandler.removeCallbacksAndMessages(null);
-    if ((this.iqU != null) && (this.iqU.isShowing()))
+    if ((this.iJY != null) && (this.iJY.isShowing()))
     {
-      this.iqU.dismiss();
-      this.iqU = null;
+      this.iJY.dismiss();
+      this.iJY = null;
     }
     AppMethodBeat.o(145581);
   }

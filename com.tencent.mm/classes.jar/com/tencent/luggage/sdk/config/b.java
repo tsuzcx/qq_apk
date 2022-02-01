@@ -6,64 +6,64 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.a;
-import com.tencent.mm.plugin.appbrand.config.x;
+import com.tencent.mm.plugin.appbrand.config.y;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Map;
 
 public class b
   implements k.a
 {
-  public static b cbU;
-  private static String[] cbX = { "username", "appId", "versionInfo", "appInfo", "smallHeadURL", "nickname" };
-  protected final Map<String, AppBrandInitConfigLU> cbV;
-  private final Map<String, String> cbW;
+  public static b cml;
+  private static String[] cmo = { "username", "appId", "versionInfo", "appInfo", "smallHeadURL", "nickname" };
+  protected final Map<String, AppBrandInitConfigLU> cmm;
+  private final Map<String, String> cmn;
   
   protected b()
   {
     AppMethodBeat.i(146685);
-    this.cbV = new a();
-    this.cbW = new a();
+    this.cmm = new a();
+    this.cmn = new a();
     AppMethodBeat.o(146685);
   }
   
-  public static b Cy()
+  public static b DX()
   {
     try
     {
-      b localb = cbU;
+      b localb = cml;
       return localb;
     }
     finally {}
   }
   
-  private AppBrandInitConfigLU cf(String paramString)
+  private AppBrandInitConfigLU cZ(String paramString)
   {
     AppMethodBeat.i(146688);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(146688);
       return null;
     }
     Object localObject2;
-    synchronized (this.cbW)
+    synchronized (this.cmn)
     {
-      localObject2 = (String)this.cbW.get(paramString);
-      if (bs.isNullOrNil((String)localObject2))
+      localObject2 = (String)this.cmn.get(paramString);
+      if (bt.isNullOrNil((String)localObject2))
       {
-        x.baS();
-        localObject2 = a(x.f(String.format("%s=?", new Object[] { "username" }), new String[] { paramString }));
+        y.bes();
+        localObject2 = a(y.f(String.format("%s=?", new Object[] { "username" }), new String[] { paramString }));
         ??? = localObject2;
         if (localObject2 == null) {}
       }
     }
     for (;;)
     {
-      synchronized (this.cbW)
+      synchronized (this.cmn)
       {
-        this.cbW.put(paramString, ((AppBrandInitConfigLU)localObject2).appId);
+        this.cmn.put(paramString, ((AppBrandInitConfigLU)localObject2).appId);
         ??? = localObject2;
         AppMethodBeat.o(146688);
         return ???;
@@ -71,7 +71,7 @@ public class b
         AppMethodBeat.o(146688);
         throw paramString;
       }
-      ??? = cg((String)localObject2);
+      ??? = df((String)localObject2);
     }
   }
   
@@ -79,7 +79,7 @@ public class b
   {
     try
     {
-      cbU = null;
+      cml = null;
       return;
     }
     finally {}
@@ -94,61 +94,61 @@ public class b
       localAppBrandInitConfigLU = new AppBrandInitConfigLU();
       localAppBrandInitConfigLU.username = paramWxaAttributes.field_username;
       localAppBrandInitConfigLU.appId = paramWxaAttributes.field_appId;
-      localAppBrandInitConfigLU.ddh = paramWxaAttributes.field_nickname;
+      localAppBrandInitConfigLU.doD = paramWxaAttributes.field_nickname;
       localAppBrandInitConfigLU.iconUrl = paramWxaAttributes.field_smallHeadURL;
-      if (paramWxaAttributes.baL() == null) {
+      if (paramWxaAttributes.bel() == null) {
         break label143;
       }
-      localAppBrandInitConfigLU.cca = paramWxaAttributes.baL().cFI;
-      localAppBrandInitConfigLU.originalFlag = paramWxaAttributes.baL().originalFlag;
-      localAppBrandInitConfigLU.jDu = paramWxaAttributes.baL().jDu;
-      if (paramWxaAttributes.baN() == null) {
+      localAppBrandInitConfigLU.cmr = paramWxaAttributes.bel().cQN;
+      localAppBrandInitConfigLU.originalFlag = paramWxaAttributes.bel().originalFlag;
+      localAppBrandInitConfigLU.jXq = paramWxaAttributes.bel().jXq;
+      if (paramWxaAttributes.ben() == null) {
         break label171;
       }
-      localAppBrandInitConfigLU.ccg = paramWxaAttributes.baN().ccg;
-      localAppBrandInitConfigLU.aBM = paramWxaAttributes.baN().aBM;
-      localAppBrandInitConfigLU.cch = paramWxaAttributes.baN();
+      localAppBrandInitConfigLU.cmx = paramWxaAttributes.ben().cmx;
+      localAppBrandInitConfigLU.aDD = paramWxaAttributes.ben().aDD;
+      localAppBrandInitConfigLU.cmy = paramWxaAttributes.ben();
     }
     for (;;)
     {
-      localAppBrandInitConfigLU.cci = paramWxaAttributes.field_passThroughInfo;
+      localAppBrandInitConfigLU.cmz = paramWxaAttributes.field_passThroughInfo;
       AppMethodBeat.o(146689);
       return localAppBrandInitConfigLU;
       label143:
-      ac.e("Luggage.WXA.AppBrandInitConfigHelper", "assembleConfig username[%s] appId[%s], NULL appInfo", new Object[] { paramWxaAttributes.field_username, paramWxaAttributes.field_appId });
+      ad.e("Luggage.WXA.AppBrandInitConfigHelper", "assembleConfig username[%s] appId[%s], NULL appInfo", new Object[] { paramWxaAttributes.field_username, paramWxaAttributes.field_appId });
       break;
       label171:
-      ac.e("Luggage.WXA.AppBrandInitConfigHelper", "assembleConfig username[%s] appId[%s], NULL versionInfo", new Object[] { paramWxaAttributes.field_username, paramWxaAttributes.field_appId });
+      ad.e("Luggage.WXA.AppBrandInitConfigHelper", "assembleConfig username[%s] appId[%s], NULL versionInfo", new Object[] { paramWxaAttributes.field_username, paramWxaAttributes.field_appId });
     }
   }
   
   public final void a(String paramString, AppBrandInitConfigLU paramAppBrandInitConfigLU)
   {
-    AppMethodBeat.i(206115);
-    if ((paramAppBrandInitConfigLU == null) || (bs.isNullOrNil(paramAppBrandInitConfigLU.appId)))
+    AppMethodBeat.i(192183);
+    if ((paramAppBrandInitConfigLU == null) || (bt.isNullOrNil(paramAppBrandInitConfigLU.appId)))
     {
-      AppMethodBeat.o(206115);
+      AppMethodBeat.o(192183);
       return;
     }
-    ac.i("Luggage.WXA.AppBrandInitConfigHelper", "stash username:%s, appId:%s, appVersion:%d", new Object[] { paramString, paramAppBrandInitConfigLU.appId, Integer.valueOf(paramAppBrandInitConfigLU.aBM) });
-    synchronized (this.cbV)
+    ad.i("Luggage.WXA.AppBrandInitConfigHelper", "stash username:%s, appId:%s, appVersion:%d", new Object[] { paramString, paramAppBrandInitConfigLU.appId, Integer.valueOf(paramAppBrandInitConfigLU.aDD) });
+    synchronized (this.cmm)
     {
-      this.cbV.put(paramAppBrandInitConfigLU.appId, paramAppBrandInitConfigLU);
-      if (bs.isNullOrNil(paramString)) {
+      this.cmm.put(paramAppBrandInitConfigLU.appId, paramAppBrandInitConfigLU);
+      if (bt.isNullOrNil(paramString)) {
         break label138;
       }
     }
-    synchronized (this.cbW)
+    synchronized (this.cmn)
     {
-      this.cbW.put(paramString, paramAppBrandInitConfigLU.appId);
-      AppMethodBeat.o(206115);
+      this.cmn.put(paramString, paramAppBrandInitConfigLU.appId);
+      AppMethodBeat.o(192183);
       return;
       paramString = finally;
-      AppMethodBeat.o(206115);
+      AppMethodBeat.o(192183);
       throw paramString;
     }
     label138:
-    AppMethodBeat.o(206115);
+    AppMethodBeat.o(192183);
   }
   
   public final void a(String arg1, m paramm)
@@ -159,26 +159,26 @@ public class b
       if (String.class.isInstance(paramm.obj))
       {
         paramm = String.valueOf(paramm.obj);
-        if (!bs.isNullOrNil(paramm)) {
+        if (!bt.isNullOrNil(paramm)) {
           try
           {
-            cf(paramm);
+            cZ(paramm);
             AppMethodBeat.o(146686);
             return;
           }
           catch (RuntimeException localRuntimeException)
           {
-            ac.printErrStackTrace("Luggage.WXA.AppBrandInitConfigHelper", localRuntimeException, "onNotifyChange event[%s] username[%s]", new Object[] { ???, paramm });
-            synchronized (this.cbW)
+            ad.printErrStackTrace("Luggage.WXA.AppBrandInitConfigHelper", localRuntimeException, "onNotifyChange event[%s] username[%s]", new Object[] { ???, paramm });
+            synchronized (this.cmn)
             {
-              paramm = (String)this.cbW.remove(paramm);
+              paramm = (String)this.cmn.remove(paramm);
               if (TextUtils.isEmpty(paramm)) {
                 break label150;
               }
             }
-            synchronized (this.cbV)
+            synchronized (this.cmm)
             {
-              this.cbV.remove(paramm);
+              this.cmm.remove(paramm);
               AppMethodBeat.o(146686);
               return;
               paramm = finally;
@@ -193,9 +193,9 @@ public class b
       return;
     }
     if ("batch".equals(???)) {
-      synchronized (this.cbV)
+      synchronized (this.cmm)
       {
-        this.cbV.clear();
+        this.cmm.clear();
         AppMethodBeat.o(146686);
         return;
       }
@@ -203,39 +203,39 @@ public class b
     AppMethodBeat.o(146686);
   }
   
-  public AppBrandInitConfigLU cg(String paramString)
+  public AppBrandInitConfigLU df(String paramString)
   {
     AppMethodBeat.i(146690);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      ac.w("Luggage.WXA.AppBrandInitConfigHelper", "obtainByAppId with EMPTY appId");
+      ad.w("Luggage.WXA.AppBrandInitConfigHelper", "obtainByAppId with EMPTY appId");
       AppMethodBeat.o(146690);
       return null;
     }
     for (;;)
     {
       AppBrandInitConfigLU localAppBrandInitConfigLU;
-      synchronized (this.cbV)
+      synchronized (this.cmm)
       {
-        localAppBrandInitConfigLU = (AppBrandInitConfigLU)this.cbV.remove(paramString);
+        localAppBrandInitConfigLU = (AppBrandInitConfigLU)this.cmm.remove(paramString);
         if (localAppBrandInitConfigLU != null) {
           break label129;
         }
-        x.baS();
-        localAppBrandInitConfigLU = a(x.e(paramString, cbX));
+        y.bes();
+        localAppBrandInitConfigLU = a(y.e(paramString, cmo));
         if (localAppBrandInitConfigLU == null)
         {
           i = -1;
-          ac.i("Luggage.WXA.AppBrandInitConfigHelper", "obtainByAppId appId:%s, get from db, appVersion:%d", new Object[] { paramString, Integer.valueOf(i) });
+          ad.i("Luggage.WXA.AppBrandInitConfigHelper", "obtainByAppId appId:%s, get from db, appVersion:%d", new Object[] { paramString, Integer.valueOf(i) });
           paramString = localAppBrandInitConfigLU;
           AppMethodBeat.o(146690);
           return paramString;
         }
       }
-      int i = localAppBrandInitConfigLU.aBM;
+      int i = localAppBrandInitConfigLU.aDD;
       continue;
       label129:
-      ac.i("Luggage.WXA.AppBrandInitConfigHelper", "obtainByAppId appId:%s, get from memory, appVersion:%d", new Object[] { paramString, Integer.valueOf(localAppBrandInitConfigLU.aBM) });
+      ad.i("Luggage.WXA.AppBrandInitConfigHelper", "obtainByAppId appId:%s, get from memory, appVersion:%d", new Object[] { paramString, Integer.valueOf(localAppBrandInitConfigLU.aDD) });
       paramString = localAppBrandInitConfigLU;
     }
   }

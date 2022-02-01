@@ -11,26 +11,26 @@ import java.util.List;
 public final class d
   extends com.tencent.mm.plugin.appbrand.y.c<c>
 {
-  public static final String[] hlS;
-  private final e jnc;
+  public static final String[] hEf;
+  private final e jHa;
   
   static
   {
     AppMethodBeat.i(44439);
-    hlS = new String[] { j.getCreateSQLs(c.hlR, "PredownloadCmdGetCodePersistentInfo2"), "DROP TABLE IF EXISTS PredownloadCmdGetCodePersistentInfo" };
+    hEf = new String[] { j.getCreateSQLs(c.hEe, "PredownloadCmdGetCodePersistentInfo2"), "DROP TABLE IF EXISTS PredownloadCmdGetCodePersistentInfo" };
     AppMethodBeat.o(44439);
   }
   
   public d(e parame)
   {
-    super(parame, c.hlR, "PredownloadCmdGetCodePersistentInfo2", c.INDEX_CREATE);
-    this.jnc = parame;
+    super(parame, c.hEe, "PredownloadCmdGetCodePersistentInfo2", c.INDEX_CREATE);
+    this.jHa = parame;
   }
   
   public final List<c> c(String paramString, String... paramVarArgs)
   {
     AppMethodBeat.i(44438);
-    paramString = this.jnc.query("PredownloadCmdGetCodePersistentInfo2", null, paramString, paramVarArgs, null, null, null);
+    paramString = this.jHa.query("PredownloadCmdGetCodePersistentInfo2", null, paramString, paramVarArgs, null, null, null);
     if ((paramString == null) || (paramString.isClosed()))
     {
       paramString = Collections.emptyList();

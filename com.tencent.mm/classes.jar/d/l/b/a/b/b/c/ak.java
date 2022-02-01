@@ -19,7 +19,7 @@ public abstract class ak
   extends k
   implements ax
 {
-  protected ab LiR;
+  protected ab MZN;
   
   static
   {
@@ -34,13 +34,13 @@ public abstract class ak
   public ak(l paraml, g paramg, f paramf, ab paramab, an paraman)
   {
     super(paraml, paramg, paramf, paraman);
-    this.LiR = paramab;
+    this.MZN = paramab;
   }
   
   public final void N(ab paramab)
   {
-    assert (this.LiR == null);
-    this.LiR = paramab;
+    assert (this.MZN == null);
+    this.MZN = paramab;
   }
   
   public <V> V a(a.a<V> parama)
@@ -48,83 +48,83 @@ public abstract class ak
     return null;
   }
   
-  public d.l.b.a.b.b.ak fQP()
+  public d.l.b.a.b.b.ak gin()
   {
     return null;
   }
   
-  public d.l.b.a.b.b.ak fQQ()
+  public d.l.b.a.b.b.ak gio()
   {
     return null;
   }
   
-  public List<as> fQR()
+  public List<as> gip()
   {
     List localList = Collections.emptyList();
     if (localList == null) {
-      agL(8);
+      ajm(8);
     }
     return localList;
   }
   
-  public ab fQS()
+  public ab giq()
   {
-    ab localab = fRV();
+    ab localab = gju();
     if (localab == null) {
-      agL(9);
+      ajm(9);
     }
     return localab;
   }
   
-  public final List<av> fQU()
+  public final List<av> gis()
   {
     List localList = Collections.emptyList();
     if (localList == null) {
-      agL(6);
+      ajm(6);
     }
     return localList;
   }
   
-  public boolean fQV()
+  public boolean git()
   {
     return false;
   }
   
-  public Collection<? extends a> fQW()
+  public Collection<? extends a> giu()
   {
     Set localSet = Collections.emptySet();
     if (localSet == null) {
-      agL(7);
+      ajm(7);
     }
     return localSet;
   }
   
-  public final ab fRV()
+  public boolean gjD()
   {
-    ab localab = this.LiR;
+    return false;
+  }
+  
+  public final ab gju()
+  {
+    ab localab = this.MZN;
     if (localab == null) {
-      agL(4);
+      ajm(4);
     }
     return localab;
   }
   
-  public ax fSN()
+  public ax gkm()
   {
-    ax localax = (ax)super.fSr();
+    ax localax = (ax)super.gjP();
     if (localax == null) {
-      agL(5);
+      ajm(5);
     }
     return localax;
-  }
-  
-  public boolean fSe()
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.c.ak
  * JD-Core Version:    0.7.0.1
  */

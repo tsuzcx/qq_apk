@@ -14,22 +14,22 @@ public final class f
   extends BaseAdapter
   implements b
 {
-  private e IKa;
-  private List<b> IKb;
+  private e KBh;
+  private List<b> KBi;
   
   public f(e parame)
   {
     AppMethodBeat.i(142848);
-    this.IKa = parame;
+    this.KBh = parame;
     parame.registerDataSetObserver(new a((byte)0));
-    this.IKb = a(parame);
+    this.KBi = a(parame);
     AppMethodBeat.o(142848);
   }
   
   public final View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142851);
-    paramView = this.IKa.a(((b)this.IKb.get(paramInt)).IKd, paramView, paramViewGroup);
+    paramView = this.KBh.a(((b)this.KBi.get(paramInt)).KBk, paramView, paramViewGroup);
     AppMethodBeat.o(142851);
     return paramView;
   }
@@ -42,7 +42,7 @@ public final class f
     int i = 0;
     while (i < parame.getCount())
     {
-      long l = parame.An(i);
+      long l = parame.AW(i);
       b localb2 = (b)localHashMap.get(Long.valueOf(l));
       b localb1 = localb2;
       if (localb2 == null)
@@ -58,12 +58,12 @@ public final class f
     return localArrayList;
   }
   
-  public final int ack(int paramInt)
+  public final int aeI(int paramInt)
   {
     AppMethodBeat.i(142850);
     try
     {
-      paramInt = ((b)this.IKb.get(paramInt)).mCount;
+      paramInt = ((b)this.KBi.get(paramInt)).mCount;
       AppMethodBeat.o(142850);
       return paramInt;
     }
@@ -74,10 +74,10 @@ public final class f
     return 0;
   }
   
-  public final int fsT()
+  public final int fJH()
   {
     AppMethodBeat.i(142854);
-    int i = this.IKb.size();
+    int i = this.KBi.size();
     AppMethodBeat.o(142854);
     return i;
   }
@@ -85,7 +85,7 @@ public final class f
   public final int getCount()
   {
     AppMethodBeat.i(142849);
-    int i = this.IKa.getCount();
+    int i = this.KBh.getCount();
     AppMethodBeat.o(142849);
     return i;
   }
@@ -93,7 +93,7 @@ public final class f
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(142852);
-    Object localObject = this.IKa.getItem(paramInt);
+    Object localObject = this.KBh.getItem(paramInt);
     AppMethodBeat.o(142852);
     return localObject;
   }
@@ -101,7 +101,7 @@ public final class f
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(142853);
-    long l = this.IKa.getItemId(paramInt);
+    long l = this.KBh.getItemId(paramInt);
     AppMethodBeat.o(142853);
     return l;
   }
@@ -109,7 +109,7 @@ public final class f
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142855);
-    paramView = this.IKa.getView(paramInt, paramView, paramViewGroup);
+    paramView = this.KBh.getView(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(142855);
     return paramView;
   }
@@ -138,12 +138,12 @@ public final class f
   
   final class b
   {
-    int IKd;
+    int KBk;
     int mCount;
     
     public b(int paramInt)
     {
-      this.IKd = paramInt;
+      this.KBk = paramInt;
       this.mCount = 0;
     }
   }

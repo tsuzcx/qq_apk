@@ -1,8 +1,8 @@
 package com.tencent.mm.blink;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.vending.c.a;
 import com.tencent.mm.vending.g.g;
 import com.tencent.mm.vending.h.e;
@@ -13,54 +13,54 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class b
 {
-  private static b fll;
-  private final Queue<a> flm;
-  private boolean fln;
-  private volatile boolean flo;
-  private boolean flp;
-  private volatile com.tencent.mm.vending.g.c flq;
-  private AtomicBoolean flr;
-  private ao fls;
+  private static b fDs;
+  private final Queue<a> fDt;
+  private boolean fDu;
+  private volatile boolean fDv;
+  private boolean fDw;
+  private volatile com.tencent.mm.vending.g.c fDx;
+  private AtomicBoolean fDy;
+  private ap fDz;
   
   static
   {
     AppMethodBeat.i(131832);
-    fll = new b();
+    fDs = new b();
     AppMethodBeat.o(131832);
   }
   
   public b()
   {
     AppMethodBeat.i(131823);
-    this.flm = new LinkedList();
-    this.fln = false;
-    this.flo = false;
-    this.flp = true;
-    this.flq = g.fxs();
-    this.flr = new AtomicBoolean(false);
-    this.fls = new ao("pending-stage");
+    this.fDt = new LinkedList();
+    this.fDu = false;
+    this.fDv = false;
+    this.fDw = true;
+    this.fDx = g.fOf();
+    this.fDy = new AtomicBoolean(false);
+    this.fDz = new ap("pending-stage");
     AppMethodBeat.o(131823);
   }
   
-  public static b TR()
+  public static b Wi()
   {
-    return fll;
+    return fDs;
   }
   
   /* Error */
-  private boolean TW()
+  private boolean Wn()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 56	com/tencent/mm/blink/b:fln	Z
+    //   3: getfield 56	com/tencent/mm/blink/b:fDu	Z
     //   6: ifeq +10 -> 16
     //   9: aload_0
-    //   10: getfield 60	com/tencent/mm/blink/b:flp	Z
+    //   10: getfield 60	com/tencent/mm/blink/b:fDw	Z
     //   13: ifeq +18 -> 31
     //   16: aload_0
-    //   17: getfield 58	com/tencent/mm/blink/b:flo	Z
+    //   17: getfield 58	com/tencent/mm/blink/b:fDv	Z
     //   20: istore_1
     //   21: iload_1
     //   22: ifeq +9 -> 31
@@ -89,31 +89,31 @@ public final class b
     //   16	21	36	finally
   }
   
-  private void TX()
+  private void Wo()
   {
     AppMethodBeat.i(131827);
-    a(b.flx);
-    TY();
+    a(b.fDE);
+    Wp();
     AppMethodBeat.o(131827);
   }
   
-  private void TY()
+  private void Wp()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(131828);
-        if (!TW())
+        if (!Wn())
         {
           AppMethodBeat.o(131828);
           return;
         }
-        a locala = (a)this.flm.poll();
+        a locala = (a)this.fDt.poll();
         if (locala != null)
         {
-          ac.i("MicroMsg.FirstScreenArrangement", "FirstScreenArrangement tryConsumingWaitingQueue runnable %s, %s", new Object[] { a.a(locala), a.b(locala).getType() });
-          this.flq.c(locala);
+          ad.i("MicroMsg.FirstScreenArrangement", "FirstScreenArrangement tryConsumingWaitingQueue runnable %s, %s", new Object[] { a.a(locala), a.b(locala).getType() });
+          this.fDx.c(locala);
         }
         else
         {
@@ -124,11 +124,11 @@ public final class b
     }
   }
   
-  public final void TS()
+  public final void Wj()
   {
     try
     {
-      this.fln = true;
+      this.fDu = true;
       return;
     }
     finally
@@ -138,14 +138,14 @@ public final class b
     }
   }
   
-  public final void TT()
+  public final void Wk()
   {
     try
     {
       AppMethodBeat.i(131824);
-      this.flp = true;
-      if (this.fln) {
-        TX();
+      this.fDw = true;
+      if (this.fDu) {
+        Wo();
       }
       AppMethodBeat.o(131824);
       return;
@@ -153,11 +153,11 @@ public final class b
     finally {}
   }
   
-  public final void TU()
+  public final void Wl()
   {
     try
     {
-      this.flp = false;
+      this.fDw = false;
       return;
     }
     finally
@@ -167,15 +167,15 @@ public final class b
     }
   }
   
-  public final void TV()
+  public final void Wm()
   {
     try
     {
       AppMethodBeat.i(131825);
-      if (this.fln)
+      if (this.fDu)
       {
-        this.fln = false;
-        TX();
+        this.fDu = false;
+        Wo();
       }
       AppMethodBeat.o(131825);
       return;
@@ -186,16 +186,16 @@ public final class b
   public final void a(final b paramb)
   {
     AppMethodBeat.i(131829);
-    if (this.flr.compareAndSet(false, true))
+    if (this.fDy.compareAndSet(false, true))
     {
-      if (paramb == b.flv)
+      if (paramb == b.fDC)
       {
-        ac.i("MicroMsg.FirstScreenArrangement", "initialize pending plugins from %s", new Object[] { paramb });
-        com.tencent.mm.kernel.a.c.ahe().ahh();
+        ad.i("MicroMsg.FirstScreenArrangement", "initialize pending plugins from %s", new Object[] { paramb });
+        com.tencent.mm.kernel.a.c.ajP().ajS();
         try
         {
-          this.flo = true;
-          TY();
+          this.fDv = true;
+          Wp();
           return;
         }
         finally
@@ -203,16 +203,16 @@ public final class b
           AppMethodBeat.o(131829);
         }
       }
-      h localh = new h(new com.tencent.mm.cn.d(this.fls), "pending-stage");
+      h localh = new h(new com.tencent.mm.cn.d(this.fDz), "pending-stage");
       try
       {
-        this.flq.b(localh).c(new a()
+        this.fDx.b(localh).c(new a()
         {
-          private Object TZ()
+          private Object Wq()
           {
             AppMethodBeat.i(131815);
-            ac.i("MicroMsg.FirstScreenArrangement", "initialize pending plugins from %s", new Object[] { paramb });
-            com.tencent.mm.kernel.a.c.ahe().ahh();
+            ad.i("MicroMsg.FirstScreenArrangement", "initialize pending plugins from %s", new Object[] { paramb });
+            com.tencent.mm.kernel.a.c.ajP().ajS();
             try
             {
               b.a(b.this);
@@ -243,7 +243,7 @@ public final class b
     //   1: monitorenter
     //   2: ldc 186
     //   4: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: invokestatic 190	com/tencent/mm/vending/h/d:fxu	()Lcom/tencent/mm/vending/h/d;
+    //   7: invokestatic 190	com/tencent/mm/vending/h/d:fOh	()Lcom/tencent/mm/vending/h/d;
     //   10: astore_2
     //   11: aload_2
     //   12: instanceof 192
@@ -253,7 +253,7 @@ public final class b
     //   22: aload_2
     //   23: invokestatic 197	com/tencent/mm/vending/h/g:a	(Ljava/lang/String;Lcom/tencent/mm/vending/h/d;)V
     //   26: aload_0
-    //   27: invokespecial 103	com/tencent/mm/blink/b:TW	()Z
+    //   27: invokespecial 103	com/tencent/mm/blink/b:Wn	()Z
     //   30: ifne +78 -> 108
     //   33: ldc 111
     //   35: ldc 199
@@ -262,29 +262,29 @@ public final class b
     //   41: dup
     //   42: iconst_0
     //   43: aload_0
-    //   44: getfield 56	com/tencent/mm/blink/b:fln	Z
+    //   44: getfield 56	com/tencent/mm/blink/b:fDu	Z
     //   47: invokestatic 205	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   50: aastore
     //   51: dup
     //   52: iconst_1
     //   53: aload_0
-    //   54: getfield 60	com/tencent/mm/blink/b:flp	Z
+    //   54: getfield 60	com/tencent/mm/blink/b:fDw	Z
     //   57: invokestatic 205	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   60: aastore
     //   61: dup
     //   62: iconst_2
     //   63: aload_0
-    //   64: getfield 58	com/tencent/mm/blink/b:flo	Z
+    //   64: getfield 58	com/tencent/mm/blink/b:fDv	Z
     //   67: invokestatic 205	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   70: aastore
     //   71: dup
     //   72: iconst_3
     //   73: aload_0
-    //   74: getfield 54	com/tencent/mm/blink/b:flm	Ljava/util/Queue;
+    //   74: getfield 54	com/tencent/mm/blink/b:fDt	Ljava/util/Queue;
     //   77: aastore
-    //   78: invokestatic 130	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   78: invokestatic 130	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   81: aload_0
-    //   82: getfield 54	com/tencent/mm/blink/b:flm	Ljava/util/Queue;
+    //   82: getfield 54	com/tencent/mm/blink/b:fDt	Ljava/util/Queue;
     //   85: new 10	com/tencent/mm/blink/b$a
     //   88: dup
     //   89: aload_1
@@ -305,9 +305,9 @@ public final class b
     //   117: iconst_0
     //   118: aload_1
     //   119: aastore
-    //   120: invokestatic 130	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   120: invokestatic 130	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   123: aload_0
-    //   124: getfield 68	com/tencent/mm/blink/b:flq	Lcom/tencent/mm/vending/g/c;
+    //   124: getfield 68	com/tencent/mm/blink/b:fDx	Lcom/tencent/mm/vending/g/c;
     //   127: new 10	com/tencent/mm/blink/b$a
     //   130: dup
     //   131: aload_1
@@ -338,31 +338,31 @@ public final class b
   static final class a
     implements e
   {
-    private com.tencent.mm.vending.h.d cII;
+    private com.tencent.mm.vending.h.d cTQ;
     private Runnable mRunnable;
     
     public a(Runnable paramRunnable, com.tencent.mm.vending.h.d paramd)
     {
       this.mRunnable = paramRunnable;
-      this.cII = paramd;
+      this.cTQ = paramd;
     }
     
-    public final String Ua()
+    public final String Wr()
     {
       AppMethodBeat.i(131819);
-      if ((this.cII instanceof com.tencent.mm.vending.h.c))
+      if ((this.cTQ instanceof com.tencent.mm.vending.h.c))
       {
-        if ((com.tencent.mm.vending.h.d.fxu() instanceof com.tencent.mm.vending.h.c))
+        if ((com.tencent.mm.vending.h.d.fOh() instanceof com.tencent.mm.vending.h.c))
         {
-          str = com.tencent.mm.vending.h.d.Jrg.mType;
+          str = com.tencent.mm.vending.h.d.LiL.mType;
           AppMethodBeat.o(131819);
           return str;
         }
-        str = com.tencent.mm.vending.h.d.fxu().getType();
+        str = com.tencent.mm.vending.h.d.fOh().getType();
         AppMethodBeat.o(131819);
         return str;
       }
-      String str = this.cII.getType();
+      String str = this.cTQ.getType();
       AppMethodBeat.o(131819);
       return str;
     }
@@ -385,10 +385,10 @@ public final class b
       //   20: dup
       //   21: iconst_1
       //   22: aload_0
-      //   23: getfield 22	com/tencent/mm/blink/b$a:cII	Lcom/tencent/mm/vending/h/d;
+      //   23: getfield 22	com/tencent/mm/blink/b$a:cTQ	Lcom/tencent/mm/vending/h/d;
       //   26: invokevirtual 59	com/tencent/mm/vending/h/d:getType	()Ljava/lang/String;
       //   29: aastore
-      //   30: invokestatic 71	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   30: invokestatic 71	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   33: aload_0
       //   34: getfield 20	com/tencent/mm/blink/b$a:mRunnable	Ljava/lang/Runnable;
       //   37: ifnull +24 -> 61
@@ -404,7 +404,7 @@ public final class b
       //   60: areturn
       //   61: ldc 64
       //   63: ldc 78
-      //   65: invokestatic 82	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   65: invokestatic 82	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   68: goto -19 -> 49
       //   71: astore_1
       //   72: aload_0
@@ -430,10 +430,10 @@ public final class b
     static
     {
       AppMethodBeat.i(131822);
-      flv = new b("Now", 0);
-      flw = new b("Timeout", 1);
-      flx = new b("FirstScreen", 2);
-      fly = new b[] { flv, flw, flx };
+      fDC = new b("Now", 0);
+      fDD = new b("Timeout", 1);
+      fDE = new b("FirstScreen", 2);
+      fDF = new b[] { fDC, fDD, fDE };
       AppMethodBeat.o(131822);
     }
     

@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class sd
   extends b
 {
-  public a dve;
+  public a dGF;
   
   public sd()
   {
@@ -15,23 +16,23 @@ public final class sd
   
   private sd(byte paramByte)
   {
-    AppMethodBeat.i(120831);
-    this.dve = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19831);
+    this.dGF = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(120831);
+    AppMethodBeat.o(19831);
   }
   
   public static final class a
   {
-    public int daq;
-    public String filePath;
-    public int scene = 0;
+    public Context context;
+    public String[] djJ;
+    public String[] selectionArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.sd
  * JD-Core Version:    0.7.0.1
  */

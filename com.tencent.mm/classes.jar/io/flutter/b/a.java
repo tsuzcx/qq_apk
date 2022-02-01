@@ -7,7 +7,7 @@ import java.io.File;
 
 public final class a
 {
-  public static String ly(Context paramContext)
+  public static String lK(Context paramContext)
   {
     AppMethodBeat.i(9593);
     if (Build.VERSION.SDK_INT >= 21)
@@ -23,7 +23,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     io.flutter.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,49 +3,73 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bz
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String desc;
-  public String drM;
+  public String hyC;
+  public String pkw;
+  public String title;
+  public String uiN;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41798);
+    AppMethodBeat.i(41792);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.drM != null) {
-        paramVarArgs.d(1, this.drM);
+      if (this.title != null) {
+        paramVarArgs.d(1, this.title);
+      }
+      if (this.hyC != null) {
+        paramVarArgs.d(2, this.hyC);
+      }
+      if (this.pkw != null) {
+        paramVarArgs.d(3, this.pkw);
       }
       if (this.desc != null) {
-        paramVarArgs.d(2, this.desc);
+        paramVarArgs.d(4, this.desc);
       }
-      AppMethodBeat.o(41798);
+      if (this.uiN != null) {
+        paramVarArgs.d(5, this.uiN);
+      }
+      AppMethodBeat.o(41792);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.drM == null) {
-        break label274;
+      if (this.title == null) {
+        break label454;
       }
     }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.drM) + 0;; paramInt = 0)
+    label454:
+    for (int i = f.a.a.b.b.a.e(1, this.title) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.desc != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.desc);
+      paramInt = i;
+      if (this.hyC != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.hyC);
       }
-      AppMethodBeat.o(41798);
+      i = paramInt;
+      if (this.pkw != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.pkw);
+      }
+      paramInt = i;
+      if (this.desc != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.desc);
+      }
+      i = paramInt;
+      if (this.uiN != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.uiN);
+      }
+      AppMethodBeat.o(41792);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(41798);
+        AppMethodBeat.o(41792);
         return 0;
       }
       if (paramInt == 3)
@@ -55,25 +79,37 @@ public final class bz
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41798);
+          AppMethodBeat.o(41792);
           return -1;
         case 1: 
-          localbz.drM = locala.LVo.readString();
-          AppMethodBeat.o(41798);
+          localbz.title = locala.NPN.readString();
+          AppMethodBeat.o(41792);
+          return 0;
+        case 2: 
+          localbz.hyC = locala.NPN.readString();
+          AppMethodBeat.o(41792);
+          return 0;
+        case 3: 
+          localbz.pkw = locala.NPN.readString();
+          AppMethodBeat.o(41792);
+          return 0;
+        case 4: 
+          localbz.desc = locala.NPN.readString();
+          AppMethodBeat.o(41792);
           return 0;
         }
-        localbz.desc = locala.LVo.readString();
-        AppMethodBeat.o(41798);
+        localbz.uiN = locala.NPN.readString();
+        AppMethodBeat.o(41792);
         return 0;
       }
-      AppMethodBeat.o(41798);
+      AppMethodBeat.o(41792);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.bz
  * JD-Core Version:    0.7.0.1
  */

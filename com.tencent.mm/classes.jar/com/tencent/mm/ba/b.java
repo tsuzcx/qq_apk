@@ -1,181 +1,84 @@
 package com.tencent.mm.ba;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.l;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
-import com.tencent.mm.protocal.l.b;
-import com.tencent.mm.protocal.l.c;
-import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cbu;
-import com.tencent.mm.protocal.protobuf.cbv;
-import com.tencent.mm.protocal.protobuf.xv;
-import com.tencent.mm.protocal.protobuf.xw;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class b
-  extends n
-  implements k
+public final class b
+  extends a
 {
-  private g callback;
-  public a hOV;
-  public final List<j.b> hOW;
+  public String dpf;
+  public String ihU;
+  public LinkedList<String> ihV;
+  public String ihW;
+  public String text;
   
-  public b(List<j.b> paramList)
+  public b(Map<String, String> paramMap, bu parambu)
   {
-    AppMethodBeat.i(43049);
-    this.hOW = new ArrayList();
-    this.hOW.addAll(paramList);
-    this.hOV = new a();
-    ((b)this.hOV.getReqObj()).hOZ.Fnk = ap(paramList);
-    AppMethodBeat.o(43049);
+    super(paramMap, parambu);
+    AppMethodBeat.i(101782);
+    this.ihV = new LinkedList();
+    this.text = null;
+    this.ihW = null;
+    this.dpf = null;
+    AppMethodBeat.o(101782);
   }
   
-  private static xw ap(List<j.b> paramList)
+  protected final boolean aAc()
   {
-    AppMethodBeat.i(43050);
-    xw localxw = new xw();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(101783);
+    if (this.values == null)
     {
-      j.b localb = (j.b)localIterator.next();
-      byte[] arrayOfByte = localb.getBuffer();
-      xv localxv = new xv();
-      localxv.ErL = localb.getCmdId();
-      localxv.ErM = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
-      localxw.ncM.add(localxv);
+      ad.e("MicroMsg.ChatroomAccessVerifyApprovalNewXmlMsg", "[parseXml] values == null ");
+      AppMethodBeat.o(101783);
+      return false;
     }
-    localxw.ncL = paramList.size();
-    ac.d("MicroMsg.NetSceneOplog", "summeroplog oplogs size=" + paramList.size());
-    AppMethodBeat.o(43050);
-    return localxw;
-  }
-  
-  public int doScene(e parame, g paramg)
-  {
-    AppMethodBeat.i(43051);
-    this.callback = paramg;
-    int i = dispatch(parame, this.hOV, this);
-    AppMethodBeat.o(43051);
-    return i;
-  }
-  
-  public int getType()
-  {
-    return 681;
-  }
-  
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(43052);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(43052);
-  }
-  
-  public int securityLimitCount()
-  {
-    return 5;
-  }
-  
-  public n.b securityVerificationChecked(q paramq)
-  {
-    return n.b.hwa;
-  }
-  
-  public static final class a
-    extends l
-  {
-    private final b.b hOX;
-    private final b.c hOY;
-    
-    public a()
+    ad.i("MicroMsg.ChatroomAccessVerifyApprovalNewXmlMsg", "[parseXml] type:%s, values size:%s", new Object[] { bt.nullAsNil(this.TYPE), Integer.valueOf(this.values.size()) });
+    if ((!bt.isNullOrNil(this.TYPE)) && (this.TYPE.equalsIgnoreCase("NewXmlChatRoomAccessVerifyApproval")))
     {
-      AppMethodBeat.i(43044);
-      this.hOX = new b.b();
-      this.hOY = new b.c();
-      AppMethodBeat.o(43044);
+      this.ihU = ((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApproval.RoomName"));
+      if (this.values.containsKey(ihM)) {
+        this.text = bt.nullAsNil((String)this.values.get(ihM));
+      }
+      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.text")) {
+        this.ihW = bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.text"));
+      }
+      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.ticket")) {
+        this.dpf = bt.nullAsNil((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.ticket"));
+      }
+      this.ihO = this.text;
+      if (!this.dBd.fsh())
+      {
+        this.ihQ.add(this.ihW);
+        this.ihR.add(Integer.valueOf(this.ihO.length()));
+        this.ihO += this.ihW;
+        this.ihS.add(Integer.valueOf(this.ihO.length()));
+      }
+      for (;;)
+      {
+        Iterator localIterator = this.values.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if (str.startsWith(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.memberlist.username")) {
+            this.ihV.add(this.values.get(str));
+          }
+        }
+        this.ihO = (this.ihO + " " + aj.getContext().getString(2131760234));
+      }
+      AppMethodBeat.o(101783);
+      return true;
     }
-    
-    public final l.d getReqObjImp()
-    {
-      return this.hOX;
-    }
-    
-    public final l.e getRespObj()
-    {
-      return this.hOY;
-    }
-    
-    public final int getType()
-    {
-      return 681;
-    }
-    
-    public final String getUri()
-    {
-      return "/cgi-bin/micromsg-bin/oplog";
-    }
-  }
-  
-  static final class b
-    extends l.d
-    implements l.b
-  {
-    public cbu hOZ;
-    
-    b()
-    {
-      AppMethodBeat.i(43045);
-      this.hOZ = new cbu();
-      AppMethodBeat.o(43045);
-    }
-    
-    public final int getFuncId()
-    {
-      return 681;
-    }
-    
-    public final byte[] toProtoBuf()
-    {
-      AppMethodBeat.i(43046);
-      byte[] arrayOfByte = this.hOZ.toByteArray();
-      AppMethodBeat.o(43046);
-      return arrayOfByte;
-    }
-  }
-  
-  public static final class c
-    extends l.e
-    implements l.c
-  {
-    public cbv hPa;
-    
-    public c()
-    {
-      AppMethodBeat.i(43047);
-      this.hPa = new cbv();
-      AppMethodBeat.o(43047);
-    }
-    
-    public final int fromProtoBuf(byte[] paramArrayOfByte)
-    {
-      AppMethodBeat.i(43048);
-      this.hPa = ((cbv)new cbv().parseFrom(paramArrayOfByte));
-      int i = this.hPa.Ret;
-      AppMethodBeat.o(43048);
-      return i;
-    }
+    ad.e("MicroMsg.ChatroomAccessVerifyApprovalNewXmlMsg", "[parseXml] type err :%s", new Object[] { bt.nullAsNil(this.TYPE) });
+    AppMethodBeat.o(101783);
+    return false;
   }
 }
 

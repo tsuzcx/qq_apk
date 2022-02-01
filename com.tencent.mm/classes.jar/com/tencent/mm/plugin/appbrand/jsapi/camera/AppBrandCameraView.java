@@ -18,25 +18,26 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.g;
+import com.tencent.mm.plugin.appbrand.appstorage.l;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
-import com.tencent.mm.plugin.appbrand.jsapi.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.at;
 import com.tencent.mm.plugin.appbrand.jsapi.camera.a.c.a;
 import com.tencent.mm.plugin.appbrand.jsapi.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.f.c;
 import com.tencent.mm.plugin.appbrand.jsapi.f.d;
+import com.tencent.mm.plugin.appbrand.jsapi.media.t;
+import com.tencent.mm.plugin.appbrand.jsruntime.s;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.a;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.c;
-import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.d;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.e;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.f;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.g;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.qbar.QbarNative.QBarPoint;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,49 +52,49 @@ public class AppBrandCameraView
   extends RelativeLayout
   implements f, f.b, f.c, f.d
 {
-  private String cjm;
-  private ImageView dhf;
-  private String hcV;
-  private String kmA;
-  private String kmB;
-  int kmC;
-  private boolean kmD;
-  private long kmE;
-  private long kmF;
-  private d kmG;
-  private boolean kmH;
-  private float kmI;
-  private AtomicBoolean kmJ;
-  private List<Runnable> kmK;
-  private com.tencent.mm.plugin.appbrand.jsapi.c kme;
-  private String kmf;
-  private int kmg;
-  private a kmh;
-  private int kmi;
-  private String kmj;
-  private String kmk;
-  private String kml;
-  private boolean kmm;
-  private boolean kmn;
-  private boolean kmo;
-  private boolean kmp;
-  private int kmq;
-  private int kmr;
-  private int kms;
-  private int kmt;
-  private Rect kmu;
-  private int kmv;
-  private Size kmw;
-  private c kmx;
-  private b kmy;
-  private MMSightRecordView kmz;
+  private String ctC;
+  private ImageView dsD;
+  private String hvd;
+  private String kHA;
+  private String kHB;
+  int kHC;
+  private boolean kHD;
+  private long kHE;
+  private long kHF;
+  private d kHG;
+  private boolean kHH;
+  private float kHI;
+  private AtomicBoolean kHJ;
+  private List<Runnable> kHK;
+  private com.tencent.mm.plugin.appbrand.jsapi.c kHe;
+  private String kHf;
+  private int kHg;
+  private a kHh;
+  private int kHi;
+  private String kHj;
+  private String kHk;
+  private String kHl;
+  private boolean kHm;
+  private boolean kHn;
+  private boolean kHo;
+  private boolean kHp;
+  private int kHq;
+  private int kHr;
+  private int kHs;
+  private int kHt;
+  private Rect kHu;
+  private int kHv;
+  private Size kHw;
+  private c kHx;
+  private b kHy;
+  private MMSightRecordView kHz;
   private String mAppId;
   private Context mContext;
   
   static
   {
     AppMethodBeat.i(46215);
-    g.aVl();
+    com.tencent.mm.plugin.appbrand.app.g.aYG();
     AppMethodBeat.o(46215);
   }
   
@@ -101,22 +102,22 @@ public class AppBrandCameraView
   {
     super(paramContext);
     AppMethodBeat.i(46180);
-    this.kmf = "scanCode";
-    this.cjm = "back";
-    this.kmj = "auto";
-    this.kmk = "high";
-    this.kmm = false;
-    this.kmn = false;
-    this.kmp = false;
-    this.kmq = 1080;
-    this.kmr = 1920;
-    this.kms = 1080;
-    this.kmt = 1920;
-    this.kmC = -1;
-    this.kmD = false;
-    this.kmE = -1L;
-    this.kmF = -1L;
-    this.kmJ = new AtomicBoolean(false);
+    this.kHf = "scanCode";
+    this.ctC = "back";
+    this.kHj = "auto";
+    this.kHk = "high";
+    this.kHm = false;
+    this.kHn = false;
+    this.kHp = false;
+    this.kHq = 1080;
+    this.kHr = 1920;
+    this.kHs = 1080;
+    this.kHt = 1920;
+    this.kHC = -1;
+    this.kHD = false;
+    this.kHE = -1L;
+    this.kHF = -1L;
+    this.kHJ = new AtomicBoolean(false);
     init(paramContext);
     AppMethodBeat.o(46180);
   }
@@ -125,22 +126,22 @@ public class AppBrandCameraView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(46181);
-    this.kmf = "scanCode";
-    this.cjm = "back";
-    this.kmj = "auto";
-    this.kmk = "high";
-    this.kmm = false;
-    this.kmn = false;
-    this.kmp = false;
-    this.kmq = 1080;
-    this.kmr = 1920;
-    this.kms = 1080;
-    this.kmt = 1920;
-    this.kmC = -1;
-    this.kmD = false;
-    this.kmE = -1L;
-    this.kmF = -1L;
-    this.kmJ = new AtomicBoolean(false);
+    this.kHf = "scanCode";
+    this.ctC = "back";
+    this.kHj = "auto";
+    this.kHk = "high";
+    this.kHm = false;
+    this.kHn = false;
+    this.kHp = false;
+    this.kHq = 1080;
+    this.kHr = 1920;
+    this.kHs = 1080;
+    this.kHt = 1920;
+    this.kHC = -1;
+    this.kHD = false;
+    this.kHE = -1L;
+    this.kHF = -1L;
+    this.kHJ = new AtomicBoolean(false);
     init(paramContext);
     AppMethodBeat.o(46181);
   }
@@ -149,52 +150,52 @@ public class AppBrandCameraView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(46182);
-    this.kmf = "scanCode";
-    this.cjm = "back";
-    this.kmj = "auto";
-    this.kmk = "high";
-    this.kmm = false;
-    this.kmn = false;
-    this.kmp = false;
-    this.kmq = 1080;
-    this.kmr = 1920;
-    this.kms = 1080;
-    this.kmt = 1920;
-    this.kmC = -1;
-    this.kmD = false;
-    this.kmE = -1L;
-    this.kmF = -1L;
-    this.kmJ = new AtomicBoolean(false);
+    this.kHf = "scanCode";
+    this.ctC = "back";
+    this.kHj = "auto";
+    this.kHk = "high";
+    this.kHm = false;
+    this.kHn = false;
+    this.kHp = false;
+    this.kHq = 1080;
+    this.kHr = 1920;
+    this.kHs = 1080;
+    this.kHt = 1920;
+    this.kHC = -1;
+    this.kHD = false;
+    this.kHE = -1L;
+    this.kHF = -1L;
+    this.kHJ = new AtomicBoolean(false);
     init(paramContext);
     AppMethodBeat.o(46182);
   }
   
-  public static void bga()
+  public static void bjE()
   {
     AppMethodBeat.i(46179);
-    l.kne = new l.a() {};
+    l.kIe = new AppBrandCameraView.1();
     AppMethodBeat.o(46179);
   }
   
-  private void bgc()
+  private void bjG()
   {
     int j = 0;
     AppMethodBeat.i(46197);
-    ac.i("MicroMsg.AppBrandCameraView", "initCamera.");
-    if (!a.a.bfZ().bfY())
+    ad.i("MicroMsg.AppBrandCameraView", "initCamera.");
+    if (!a.a.bjD().bjC())
     {
       Toast.makeText(this.mContext, 2131761241, 1).show();
-      ac.w("MicroMsg.AppBrandCameraView", "no permission");
+      ad.w("MicroMsg.AppBrandCameraView", "no permission");
       AppMethodBeat.o(46197);
       return;
     }
-    if (this.kmz != null)
+    if (this.kHz != null)
     {
-      ac.i("MicroMsg.AppBrandCameraView", "initCamera recordView not null.");
+      ad.i("MicroMsg.AppBrandCameraView", "initCamera recordView not null.");
       AppMethodBeat.o(46197);
       return;
     }
-    Object localObject = a.a.bfZ().bfX();
+    Object localObject = a.a.bjD().bjB();
     int i;
     if (localObject.length > 0)
     {
@@ -203,45 +204,45 @@ public class AppBrandCameraView
       while (i < k)
       {
         int m = localObject[i];
-        if (m != this.kmi)
+        if (m != this.kHi)
         {
-          a.a.bfZ().I(m, false);
-          ac.i("MicroMsg.AppBrandCameraView", "release camera before init new camera, id: %d", new Object[] { Integer.valueOf(m) });
+          a.a.bjD().I(m, false);
+          ad.i("MicroMsg.AppBrandCameraView", "release camera before init new camera, id: %d", new Object[] { Integer.valueOf(m) });
         }
         i += 1;
       }
     }
-    if (this.dhf == null)
+    if (this.dsD == null)
     {
-      this.dhf = new ImageView(this.mContext);
-      this.dhf.setScaleType(ImageView.ScaleType.FIT_XY);
-      addView(this.dhf, new ViewGroup.LayoutParams(-1, -1));
+      this.dsD = new ImageView(this.mContext);
+      this.dsD.setScaleType(ImageView.ScaleType.FIT_XY);
+      addView(this.dsD, new ViewGroup.LayoutParams(-1, -1));
     }
     for (;;)
     {
-      this.kmz = e(this.mContext, this.kmq, this.kmr);
-      if (this.kmz == null) {
-        this.kmz = new MMSightRecordView(this.mContext);
+      this.kHz = e(this.mContext, this.kHq, this.kHr);
+      if (this.kHz == null) {
+        this.kHz = new MMSightRecordView(this.mContext);
       }
-      this.kmH = false;
-      addView(this.kmz);
-      bgm();
-      this.kmz.setRGBSizeLimit(this.kmg);
-      this.kmz.uJM.aSg();
-      this.kmz.setDisplayRatio(this.kmq * 1.0F / this.kmr);
-      localObject = this.kmz;
+      this.kHH = false;
+      addView(this.kHz);
+      bjQ();
+      this.kHz.setRGBSizeLimit(this.kHg);
+      this.kHz.vMS.aVs();
+      this.kHz.setDisplayRatio(this.kHq * 1.0F / this.kHr);
+      localObject = this.kHz;
       i = j;
-      if (this.kmm) {
+      if (this.kHm) {
         i = 1;
       }
       ((MMSightRecordView)localObject).setPreviewMode(i);
-      this.kmz.setVideoPara$2e715812(600000);
-      this.kmz.setVideoFilePath(this.kmA);
-      this.kmz.setClipPictureSize(true);
-      this.kmz.setClipVideoSize(true);
-      this.kmz.setDisplayScreenSize(this.kmw);
-      this.kmz.setUseBackCamera("back".equals(this.cjm));
-      this.kmz.setFrameDataCallback(new MMSightRecordView.a()
+      this.kHz.setVideoPara$2e715812(600000);
+      this.kHz.setVideoFilePath(this.kHA);
+      this.kHz.setClipPictureSize(true);
+      this.kHz.setClipVideoSize(true);
+      this.kHz.setDisplayScreenSize(this.kHw);
+      this.kHz.setUseBackCamera("back".equals(this.ctC));
+      this.kHz.setFrameDataCallback(new MMSightRecordView.a()
       {
         public final void s(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt1, int paramAnonymousInt2)
         {
@@ -252,26 +253,14 @@ public class AppBrandCameraView
           AppMethodBeat.o(46147);
         }
       });
-      this.kmz.setInitErrorCallback(new MMSightRecordView.d()
+      this.kHz.setInitErrorCallback(new AppBrandCameraView.3(this));
+      this.kHz.setInitDoneCallback(new MMSightRecordView.c()
       {
-        public final void bgn()
-        {
-          AppMethodBeat.i(46148);
-          ac.w("MicroMsg.AppBrandCameraView", "InitErrorCallback");
-          Object localObject = new HashMap();
-          ((Map)localObject).put("cameraId", Integer.valueOf(AppBrandCameraView.b(AppBrandCameraView.this)));
-          localObject = new JSONObject((Map)localObject).toString();
-          new i().h(AppBrandCameraView.c(AppBrandCameraView.this)).LO((String)localObject).beN();
-          AppMethodBeat.o(46148);
-        }
-      });
-      this.kmz.setInitDoneCallback(new MMSightRecordView.c()
-      {
-        public final void bgo()
+        public final void bjS()
         {
           AppMethodBeat.i(46149);
           AppBrandCameraView.d(AppBrandCameraView.this);
-          ac.i("MicroMsg.AppBrandCameraView", "InitDoneCallback");
+          ad.i("MicroMsg.AppBrandCameraView", "InitDoneCallback");
           h localh = new h();
           HashMap localHashMap = new HashMap();
           localHashMap.put("cameraId", Integer.valueOf(AppBrandCameraView.b(AppBrandCameraView.this)));
@@ -283,7 +272,7 @@ public class AppBrandCameraView
             AppBrandCameraView.a(AppBrandCameraView.this, localObject[(localObject.length - 1)]);
           }
           localHashMap.put("maxZoom", Float.valueOf(AppBrandCameraView.f(AppBrandCameraView.this)));
-          localh.LO(new JSONObject(localHashMap).toString());
+          localh.Pi(new JSONObject(localHashMap).toString());
           AppBrandCameraView.c(AppBrandCameraView.this).b(localh);
           if (AppBrandCameraView.g(AppBrandCameraView.this) != null)
           {
@@ -296,105 +285,105 @@ public class AppBrandCameraView
           AppMethodBeat.o(46149);
         }
       });
-      this.kmz.uJM.startPreview();
-      this.kmz.uJM.aSa();
-      this.kmC = 1;
+      this.kHz.vMS.startPreview();
+      this.kHz.vMS.aVm();
+      this.kHC = 1;
       AppMethodBeat.o(46197);
       return;
-      this.dhf.setImageBitmap(null);
+      this.dsD.setImageBitmap(null);
     }
   }
   
-  private void bgf()
+  private void bjJ()
   {
     AppMethodBeat.i(46201);
-    this.hcV = (com.tencent.mm.loader.j.b.aps() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
+    this.hvd = (com.tencent.mm.loader.j.b.asg() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
     AppMethodBeat.o(46201);
   }
   
-  private void bgg()
+  private void bjK()
   {
     AppMethodBeat.i(46202);
     String str = "MicroMsg_" + System.currentTimeMillis();
-    if (!com.tencent.mm.vfs.i.eA(com.tencent.mm.loader.j.b.apf())) {
-      com.tencent.mm.vfs.i.aSh(com.tencent.mm.loader.j.b.apf());
+    if (!com.tencent.mm.vfs.i.fv(com.tencent.mm.loader.j.b.arS())) {
+      com.tencent.mm.vfs.i.aYg(com.tencent.mm.loader.j.b.arS());
     }
-    this.kmA = (com.tencent.mm.loader.j.b.apf() + str + ".mp4");
-    this.kmB = (com.tencent.mm.loader.j.b.apf() + str + ".jpeg");
-    if (this.kmz != null) {
-      this.kmz.setVideoFilePath(this.kmA);
+    this.kHA = (com.tencent.mm.loader.j.b.arS() + str + ".mp4");
+    this.kHB = (com.tencent.mm.loader.j.b.arS() + str + ".jpeg");
+    if (this.kHz != null) {
+      this.kHz.setVideoFilePath(this.kHA);
     }
     AppMethodBeat.o(46202);
   }
   
-  private void bgh()
+  private void bjL()
   {
     AppMethodBeat.i(46203);
-    if ((this.kmz == null) || (this.kmj == null))
+    if ((this.kHz == null) || (this.kHj == null))
     {
       AppMethodBeat.o(46203);
       return;
     }
-    if (this.kmj.equals("auto"))
+    if (this.kHj.equals("auto"))
     {
-      this.kmz.setFlashMode(3);
+      this.kHz.setFlashMode(3);
       AppMethodBeat.o(46203);
       return;
     }
-    if (this.kmj.equals("torch"))
+    if (this.kHj.equals("torch"))
     {
-      this.kmz.setFlashMode(1);
+      this.kHz.setFlashMode(1);
       AppMethodBeat.o(46203);
       return;
     }
-    if (this.kmj.equals("on"))
+    if (this.kHj.equals("on"))
     {
-      if ((this.kmC == 2) || (this.kmC == 4) || (!this.kmj.equals("on")))
+      if ((this.kHC == 2) || (this.kHC == 4) || (!this.kHj.equals("on")))
       {
-        this.kmz.setFlashMode(1);
+        this.kHz.setFlashMode(1);
         AppMethodBeat.o(46203);
       }
     }
-    else if (this.kmj.equals("torch"))
+    else if (this.kHj.equals("torch"))
     {
-      this.kmz.setFlashMode(1);
+      this.kHz.setFlashMode(1);
       AppMethodBeat.o(46203);
       return;
     }
-    this.kmz.setFlashMode(2);
+    this.kHz.setFlashMode(2);
     AppMethodBeat.o(46203);
   }
   
-  private void bgi()
+  private void bjM()
   {
     AppMethodBeat.i(46204);
-    ac.i("MicroMsg.AppBrandCameraView", "setCameraMode mode:%s", new Object[] { this.kmf });
-    bgj();
-    this.kmh = Md(this.kmf);
-    this.kmh.init();
+    ad.i("MicroMsg.AppBrandCameraView", "setCameraMode mode:%s", new Object[] { this.kHf });
+    bjN();
+    this.kHh = Pz(this.kHf);
+    this.kHh.init();
     AppMethodBeat.o(46204);
   }
   
-  private void bgj()
+  private void bjN()
   {
     AppMethodBeat.i(46206);
-    if (this.kmh != null)
+    if (this.kHh != null)
     {
-      this.kmh.release();
-      this.kmh = null;
+      this.kHh.release();
+      this.kHh = null;
     }
     AppMethodBeat.o(46206);
   }
   
-  private void bgm()
+  private void bjQ()
   {
     int j = 720;
     AppMethodBeat.i(46211);
     int i = j;
     String str;
-    if (!bs.isNullOrNil(this.kml))
+    if (!bt.isNullOrNil(this.kHl))
     {
-      str = this.kml;
+      str = this.kHl;
       i = -1;
       switch (str.hashCode())
       {
@@ -410,12 +399,12 @@ public class AppBrandCameraView
     for (;;)
     {
       j = i;
-      if (this.kmg > i)
+      if (this.kHg > i)
       {
-        ac.i("MicroMsg.AppBrandCameraView", "framesize is : %d, large than preview size: %d", new Object[] { Integer.valueOf(this.kmg), Integer.valueOf(i) });
-        j = this.kmg;
+        ad.i("MicroMsg.AppBrandCameraView", "framesize is : %d, large than preview size: %d", new Object[] { Integer.valueOf(this.kHg), Integer.valueOf(i) });
+        j = this.kHg;
       }
-      this.kmz.setPreviewSizeLimit(j);
+      this.kHz.setPreviewSizeLimit(j);
       AppMethodBeat.o(46211);
       return;
       if (!str.equals("high")) {
@@ -443,15 +432,15 @@ public class AppBrandCameraView
   {
     AppMethodBeat.i(46183);
     this.mContext = paramContext;
-    this.kmJ.set(false);
+    this.kHJ.set(false);
     LayoutInflater.from(paramContext).inflate(2131492976, this);
     AppMethodBeat.o(46183);
   }
   
-  protected a Md(String paramString)
+  protected a Pz(String paramString)
   {
     AppMethodBeat.i(46205);
-    if ((!bs.isNullOrNil(paramString)) && (paramString.equals("scanCode"))) {}
+    if ((!bt.isNullOrNil(paramString)) && (paramString.equals("scanCode"))) {}
     for (paramString = new c();; paramString = new b((byte)0))
     {
       AppMethodBeat.o(46205);
@@ -459,30 +448,30 @@ public class AppBrandCameraView
     }
   }
   
-  public final void ao(String paramString, boolean paramBoolean)
+  public final void ap(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(46186);
-    if (bs.lr(this.cjm, paramString))
+    if (bt.lQ(this.ctC, paramString))
     {
       AppMethodBeat.o(46186);
       return;
     }
-    if (bs.lr(this.kmf, "scanCode"))
+    if (bt.lQ(this.kHf, "scanCode"))
     {
       AppMethodBeat.o(46186);
       return;
     }
-    this.cjm = paramString;
-    if ((!paramBoolean) && (this.kmz != null)) {
-      this.kmz.uJM.switchCamera();
+    this.ctC = paramString;
+    if ((!paramBoolean) && (this.kHz != null)) {
+      this.kHz.vMS.switchCamera();
     }
     AppMethodBeat.o(46186);
   }
   
-  public final float aw(float paramFloat)
+  public final float az(float paramFloat)
   {
     AppMethodBeat.i(46196);
-    if (this.kmz != null)
+    if (this.kHz != null)
     {
       if (paramFloat < 1.0F)
       {
@@ -490,8 +479,8 @@ public class AppBrandCameraView
         return paramFloat;
       }
       float f = paramFloat;
-      if (paramFloat > this.kmI) {}
-      for (f = this.kmI; (!this.kmz.uJM.aq(f)) && (f > 0.0F); f -= 0.1F) {}
+      if (paramFloat > this.kHI) {}
+      for (f = this.kHI; (!this.kHz.vMS.at(f)) && (f > 0.0F); f -= 0.1F) {}
       AppMethodBeat.o(46196);
       return f;
     }
@@ -499,76 +488,76 @@ public class AppBrandCameraView
     return 0.0F;
   }
   
-  public final void bgb()
+  public final void bjF()
   {
     AppMethodBeat.i(46195);
-    if (this.kmh != null) {
-      this.kmh.bgb();
+    if (this.kHh != null) {
+      this.kHh.bjF();
     }
     AppMethodBeat.o(46195);
   }
   
-  public final void bgd()
+  public final void bjH()
   {
     AppMethodBeat.i(46198);
-    if (this.kmz == null)
+    if (this.kHz == null)
     {
-      ac.i("MicroMsg.AppBrandCameraView", "recordView is null");
+      ad.i("MicroMsg.AppBrandCameraView", "recordView is null");
       AppMethodBeat.o(46198);
       return;
     }
-    bgi();
-    bgh();
+    bjM();
+    bjL();
     AppMethodBeat.o(46198);
   }
   
-  public final void bge()
+  public final void bjI()
   {
     AppMethodBeat.i(46200);
-    if (this.kmx == null)
+    if (this.kHx == null)
     {
       AppMethodBeat.o(46200);
       return;
     }
-    if (this.kmG == null)
+    if (this.kHG == null)
     {
       AppMethodBeat.o(46200);
       return;
     }
-    this.kmG.a(this.kmz);
-    this.kmG = null;
+    this.kHG.a(this.kHz);
+    this.kHG = null;
     AppMethodBeat.o(46200);
   }
   
-  public final void bgk()
+  public final void bjO()
   {
     AppMethodBeat.i(46209);
-    if (this.kmh != null) {
-      this.kmh.bgk();
+    if (this.kHh != null) {
+      this.kHh.bjO();
     }
     AppMethodBeat.o(46209);
   }
   
-  public final void bgl()
+  public final void bjP()
   {
     AppMethodBeat.i(46210);
-    if (this.kmh != null) {
-      this.kmh.bgl();
+    if (this.kHh != null) {
+      this.kHh.bjP();
     }
     AppMethodBeat.o(46210);
   }
   
-  public final boolean dM(int paramInt1, int paramInt2)
+  public final boolean dO(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(46190);
-    if ((this.kmq == paramInt1) && (this.kmr == paramInt2))
+    if ((this.kHq == paramInt1) && (this.kHr == paramInt2))
     {
       AppMethodBeat.o(46190);
       return false;
     }
-    ac.i("MicroMsg.AppBrandCameraView", "setViewSize");
-    this.kmq = paramInt1;
-    this.kmr = paramInt2;
+    ad.i("MicroMsg.AppBrandCameraView", "setViewSize");
+    this.kHq = paramInt1;
+    this.kHr = paramInt2;
     AppMethodBeat.o(46190);
     return true;
   }
@@ -580,12 +569,12 @@ public class AppBrandCameraView
   
   public int getCameraId()
   {
-    return this.kmi;
+    return this.kHi;
   }
   
   protected MMSightRecordView getRecordView()
   {
-    return this.kmz;
+    return this.kHz;
   }
   
   public View getView()
@@ -596,38 +585,38 @@ public class AppBrandCameraView
   public final void initView()
   {
     AppMethodBeat.i(46184);
-    ac.i("MicroMsg.AppBrandCameraView", "initView");
-    if (!a.a.bfZ().bfY())
+    ad.i("MicroMsg.AppBrandCameraView", "initView");
+    if (!a.a.bjD().bjC())
     {
       AppMethodBeat.o(46184);
       return;
     }
-    bgg();
-    bgf();
-    bgc();
-    bgd();
-    this.kmJ.compareAndSet(false, true);
+    bjK();
+    bjJ();
+    bjG();
+    bjH();
+    this.kHJ.compareAndSet(false, true);
     AppMethodBeat.o(46184);
   }
   
   public final void o(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
   {
     AppMethodBeat.i(46199);
-    ac.i("MicroMsg.AppBrandCameraView", "listenFrameChange");
-    if (this.kmx == null)
+    ad.i("MicroMsg.AppBrandCameraView", "listenFrameChange");
+    if (this.kHx == null)
     {
       AppMethodBeat.o(46199);
       return;
     }
-    if (this.kmz == null)
+    if (this.kHz == null)
     {
-      ac.w("MicroMsg.AppBrandCameraView", "listenFrameChange recordView null");
-      this.kmx.h("camera illegal state", -1, -1, -1);
+      ad.w("MicroMsg.AppBrandCameraView", "listenFrameChange recordView null");
+      this.kHx.h("camera illegal state", -1, -1, -1);
       AppMethodBeat.o(46199);
       return;
     }
-    if (this.kmG == null) {
-      this.kmG = new d(paramc);
+    if (this.kHG == null) {
+      this.kHG = new d(paramc);
     }
     paramc = new Runnable()
     {
@@ -641,7 +630,7 @@ public class AppBrandCameraView
         int i;
         if (localMMSightRecordView == null)
         {
-          ac.w("MicroMsg.FrameDataCallbackHelper", "listenFrameChange recordView null");
+          ad.w("MicroMsg.FrameDataCallbackHelper", "listenFrameChange recordView null");
           i = -1;
         }
         while (i < 0)
@@ -649,34 +638,34 @@ public class AppBrandCameraView
           AppBrandCameraView.i(AppBrandCameraView.this).h(String.format(Locale.US, "illegal state:%d", new Object[] { Integer.valueOf(i) }), -1, -1, -1);
           AppMethodBeat.o(46150);
           return;
-          if (locald.kmX == null)
+          if (locald.kHX == null)
           {
             i = -2;
           }
           else
           {
-            if (locald.kmZ != -2147483648)
+            if (locald.kHZ != -2147483648)
             {
-              ac.i("MicroMsg.FrameDataCallbackHelper", "listenFrameChange destroy last one bufferId:%d", new Object[] { Integer.valueOf(locald.kmZ) });
-              locald.kmX.tr(locald.kmZ);
+              ad.i("MicroMsg.FrameDataCallbackHelper", "listenFrameChange destroy last one bufferId:%d", new Object[] { Integer.valueOf(locald.kHZ) });
+              locald.kHX.tU(locald.kHZ);
             }
-            locald.kmZ = locald.kmX.tt(j * k * 4);
-            ac.i("MicroMsg.FrameDataCallbackHelper", "listenFrameChange bufferId:%d height:%d width:%d", new Object[] { Integer.valueOf(locald.kmZ), Integer.valueOf(k), Integer.valueOf(j) });
-            locald.kmY = true;
-            localMMSightRecordView.a(locald.kmX.ts(locald.kmZ), locald);
-            i = locald.kmZ;
+            locald.kHZ = locald.kHX.tW(j * k * 4);
+            ad.i("MicroMsg.FrameDataCallbackHelper", "listenFrameChange bufferId:%d height:%d width:%d", new Object[] { Integer.valueOf(locald.kHZ), Integer.valueOf(k), Integer.valueOf(j) });
+            locald.kHY = true;
+            localMMSightRecordView.a(locald.kHX.tV(locald.kHZ), locald);
+            i = locald.kHZ;
           }
         }
         AppBrandCameraView.i(AppBrandCameraView.this).h(null, i, j, k);
         AppMethodBeat.o(46150);
       }
     };
-    if (!this.kmH)
+    if (!this.kHH)
     {
-      if (this.kmK == null) {
-        this.kmK = new ArrayList();
+      if (this.kHK == null) {
+        this.kHK = new ArrayList();
       }
-      this.kmK.add(paramc);
+      this.kHK.add(paramc);
       AppMethodBeat.o(46199);
       return;
     }
@@ -687,34 +676,34 @@ public class AppBrandCameraView
   public final void onBackground()
   {
     AppMethodBeat.i(46191);
-    ac.i("MicroMsg.AppBrandCameraView", "onUIPause");
+    ad.i("MicroMsg.AppBrandCameraView", "onUIPause");
     Object localObject;
-    if (this.kmC == 2)
+    if (this.kHC == 2)
     {
-      ac.d("MicroMsg.AppBrandCameraView", "onStopRecord fromOnPause");
+      ad.d("MicroMsg.AppBrandCameraView", "onStopRecord fromOnPause");
       localObject = new HashMap();
-      ((Map)localObject).put("cameraId", Integer.valueOf(this.kmi));
+      ((Map)localObject).put("cameraId", Integer.valueOf(this.kHi));
       ((Map)localObject).put("errMsg", "stop on record");
       localObject = new JSONObject((Map)localObject).toString();
-      new m().h(this.kme).LO((String)localObject).beN();
+      new m().h(this.kHe).Pi((String)localObject).bir();
     }
-    if (this.kmz != null)
+    if (this.kHz != null)
     {
-      localObject = this.kmz.getCurrentFramePicture();
+      localObject = this.kHz.getCurrentFramePicture();
       if (localObject != null) {
-        this.dhf.setImageBitmap((Bitmap)localObject);
+        this.dsD.setImageBitmap((Bitmap)localObject);
       }
     }
     MMSightRecordView localMMSightRecordView;
-    if (this.kmG != null)
+    if (this.kHG != null)
     {
-      localObject = this.kmG;
-      localMMSightRecordView = this.kmz;
-      ac.i("MicroMsg.FrameDataCallbackHelper", "onUIPause mNeedCallback:%b", new Object[] { Boolean.valueOf(((d)localObject).kmY) });
+      localObject = this.kHG;
+      localMMSightRecordView = this.kHz;
+      ad.i("MicroMsg.FrameDataCallbackHelper", "onUIPause mNeedCallback:%b", new Object[] { Boolean.valueOf(((d)localObject).kHY) });
       if (localMMSightRecordView != null) {
         break label250;
       }
-      ac.w("MicroMsg.FrameDataCallbackHelper", "onUIPause recordView null");
+      ad.w("MicroMsg.FrameDataCallbackHelper", "onUIPause recordView null");
     }
     for (;;)
     {
@@ -722,7 +711,7 @@ public class AppBrandCameraView
       localObject = new HashMap();
       ((Map)localObject).put("cameraId", Integer.valueOf(getCameraId()));
       localObject = new JSONObject((Map)localObject).toString();
-      new k().h(this.kme).LO((String)localObject).beN();
+      new k().h(this.kHe).Pi((String)localObject).bir();
       AppMethodBeat.o(46191);
       return;
       label250:
@@ -733,52 +722,52 @@ public class AppBrandCameraView
   public final void onDestroy()
   {
     AppMethodBeat.i(46193);
-    if (this.kmG != null) {
-      this.kmG.a(this.kmz);
+    if (this.kHG != null) {
+      this.kHG.a(this.kHz);
     }
     release();
-    this.kmJ.compareAndSet(true, false);
+    this.kHJ.compareAndSet(true, false);
     AppMethodBeat.o(46193);
   }
   
   public final void onForeground()
   {
     AppMethodBeat.i(46192);
-    ac.i("MicroMsg.AppBrandCameraView", "onUIResume");
+    ad.i("MicroMsg.AppBrandCameraView", "onUIResume");
     for (;;)
     {
       MMSightRecordView localMMSightRecordView;
       try
       {
-        if (!this.kmJ.get())
+        if (!this.kHJ.get())
         {
-          ac.w("MicroMsg.AppBrandCameraView", "no execute initView");
+          ad.w("MicroMsg.AppBrandCameraView", "no execute initView");
           return;
         }
-        bgc();
-        bgi();
-        bgh();
+        bjG();
+        bjM();
+        bjL();
         d locald;
-        if (this.kmG != null)
+        if (this.kHG != null)
         {
-          locald = this.kmG;
-          localMMSightRecordView = this.kmz;
-          ac.i("MicroMsg.FrameDataCallbackHelper", "onUIResume mNeedCallback:%b", new Object[] { Boolean.valueOf(locald.kmY) });
-          if (locald.kmY)
+          locald = this.kHG;
+          localMMSightRecordView = this.kHz;
+          ad.i("MicroMsg.FrameDataCallbackHelper", "onUIResume mNeedCallback:%b", new Object[] { Boolean.valueOf(locald.kHY) });
+          if (locald.kHY)
           {
             if (localMMSightRecordView != null) {
               continue;
             }
-            ac.w("MicroMsg.FrameDataCallbackHelper", "onUIResume recordView null");
+            ad.w("MicroMsg.FrameDataCallbackHelper", "onUIResume recordView null");
           }
         }
         return;
-        if (locald.kmZ == -2147483648)
+        if (locald.kHZ == -2147483648)
         {
-          ac.w("MicroMsg.FrameDataCallbackHelper", "onUIResume invalid mCurrentSharedBufferId");
+          ad.w("MicroMsg.FrameDataCallbackHelper", "onUIResume invalid mCurrentSharedBufferId");
           continue;
         }
-        if (localf.kmX != null) {
+        if (localf.kHX != null) {
           break label180;
         }
       }
@@ -786,37 +775,37 @@ public class AppBrandCameraView
       {
         AppMethodBeat.o(46192);
       }
-      ac.w("MicroMsg.FrameDataCallbackHelper", "onUIResume mSharedBufferAddon null");
+      ad.w("MicroMsg.FrameDataCallbackHelper", "onUIResume mSharedBufferAddon null");
       continue;
       label180:
-      localMMSightRecordView.a(localf.kmX.ts(localf.kmZ), localf);
+      localMMSightRecordView.a(localf.kHX.tV(localf.kHZ), localf);
     }
   }
   
   public final void release()
   {
     AppMethodBeat.i(46194);
-    ac.i("MicroMsg.AppBrandCameraView", "release");
+    ad.i("MicroMsg.AppBrandCameraView", "release");
     try
     {
-      if (this.kmz != null)
+      if (this.kHz != null)
       {
-        this.kmz.uJM.release();
-        removeView(this.kmz);
-        this.kmC = -1;
-        this.kmz.setFrameDataCallback(null);
-        this.kmz.setInitErrorCallback(null);
-        this.kmz.setInitDoneCallback(null);
-        this.kmz = null;
+        this.kHz.vMS.release();
+        removeView(this.kHz);
+        this.kHC = -1;
+        this.kHz.setFrameDataCallback(null);
+        this.kHz.setInitErrorCallback(null);
+        this.kHz.setInitDoneCallback(null);
+        this.kHz = null;
       }
-      if (this.dhf != null) {
-        this.dhf.setImageBitmap(null);
+      if (this.dsD != null) {
+        this.dsD.setImageBitmap(null);
       }
-      if (this.kmK != null) {
-        this.kmK.clear();
+      if (this.kHK != null) {
+        this.kHK.clear();
       }
-      this.kmI = 0.0F;
-      bgj();
+      this.kHI = 0.0F;
+      bjN();
       AppMethodBeat.o(46194);
       return;
     }
@@ -833,135 +822,135 @@ public class AppBrandCameraView
   
   public void setCameraId(int paramInt)
   {
-    this.kmi = paramInt;
+    this.kHi = paramInt;
   }
   
   public void setCompressRecord(boolean paramBoolean)
   {
-    this.kmn = paramBoolean;
+    this.kHn = paramBoolean;
   }
   
   public void setDisplayScreenSize(Size paramSize)
   {
-    AppMethodBeat.i(186580);
+    AppMethodBeat.i(188300);
     if ((paramSize == null) || (paramSize.getHeight() <= 0) || (paramSize.getWidth() <= 0))
     {
-      AppMethodBeat.o(186580);
+      AppMethodBeat.o(188300);
       return;
     }
-    this.kmw = paramSize;
-    AppMethodBeat.o(186580);
+    this.kHw = paramSize;
+    AppMethodBeat.o(188300);
   }
   
   public void setFlash(String paramString)
   {
     AppMethodBeat.i(46187);
-    if (bs.lr(this.kmj, paramString))
+    if (bt.lQ(this.kHj, paramString))
     {
       AppMethodBeat.o(46187);
       return;
     }
-    this.kmj = paramString;
+    this.kHj = paramString;
     AppMethodBeat.o(46187);
   }
   
   public void setFrameLimitSize(int paramInt)
   {
     AppMethodBeat.i(46185);
-    ac.i("MicroMsg.AppBrandCameraView", "setFrameLimitSize:%d", new Object[] { Integer.valueOf(paramInt) });
-    this.kmg = paramInt;
+    ad.i("MicroMsg.AppBrandCameraView", "setFrameLimitSize:%d", new Object[] { Integer.valueOf(paramInt) });
+    this.kHg = paramInt;
     AppMethodBeat.o(46185);
   }
   
   public void setMode(String paramString)
   {
-    this.kmf = paramString;
+    this.kHf = paramString;
   }
   
   public void setNeedOutput(boolean paramBoolean)
   {
-    this.kmo = paramBoolean;
+    this.kHo = paramBoolean;
   }
   
   public void setOperateCallBack(c paramc)
   {
-    this.kmx = paramc;
+    this.kHx = paramc;
   }
   
   public void setOutPutCallBack(b paramb)
   {
-    this.kmy = paramb;
+    this.kHy = paramb;
   }
   
   public void setPage(com.tencent.mm.plugin.appbrand.jsapi.e parame)
   {
-    this.kme = parame;
+    this.kHe = parame;
   }
   
   public void setPreviewCenterCrop(boolean paramBoolean)
   {
-    this.kmm = paramBoolean;
+    this.kHm = paramBoolean;
   }
   
   public void setQuality(String paramString)
   {
     AppMethodBeat.i(46188);
-    if (bs.lr(this.kmk, paramString))
+    if (bt.lQ(this.kHk, paramString))
     {
       AppMethodBeat.o(46188);
       return;
     }
-    this.kmk = paramString;
+    this.kHk = paramString;
     AppMethodBeat.o(46188);
   }
   
   public void setResolution(String paramString)
   {
     AppMethodBeat.i(46189);
-    if (bs.lr(this.kml, paramString))
+    if (bt.lQ(this.kHl, paramString))
     {
       AppMethodBeat.o(46189);
       return;
     }
-    ac.i("MicroMsg.AppBrandCameraView", "setPreviewResolution: %s", new Object[] { paramString });
-    this.kml = paramString;
+    ad.i("MicroMsg.AppBrandCameraView", "setPreviewResolution: %s", new Object[] { paramString });
+    this.kHl = paramString;
     AppMethodBeat.o(46189);
   }
   
   public void setScanFreq(int paramInt)
   {
     AppMethodBeat.i(46207);
-    ac.i("MicroMsg.AppBrandCameraView", "scanFreq:%d", new Object[] { Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.AppBrandCameraView", "scanFreq:%d", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt <= 0)
     {
-      ac.e("MicroMsg.AppBrandCameraView", "scanFreq is err");
+      ad.e("MicroMsg.AppBrandCameraView", "scanFreq is err");
       AppMethodBeat.o(46207);
       return;
     }
-    this.kmv = paramInt;
+    this.kHv = paramInt;
     AppMethodBeat.o(46207);
   }
   
-  public final void w(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void x(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(46208);
-    ac.i("MicroMsg.AppBrandCameraView", "x:%d, y:%d, w:%d, h:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    ad.i("MicroMsg.AppBrandCameraView", "x:%d, y:%d, w:%d, h:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
     if ((paramInt3 <= 0) || (paramInt4 <= 0))
     {
       AppMethodBeat.o(46208);
       return;
     }
-    this.kmu = new Rect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
+    this.kHu = new Rect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
     AppMethodBeat.o(46208);
   }
   
   public static abstract interface a
   {
-    public abstract void bgb();
+    public abstract void bjF();
     
-    public abstract void bgk();
+    public abstract void bjO();
     
-    public abstract void bgl();
+    public abstract void bjP();
     
     public abstract void init();
     
@@ -975,11 +964,11 @@ public class AppBrandCameraView
   {
     private b() {}
     
-    private void ae(int paramInt, String paramString)
+    private void ag(int paramInt, String paramString)
     {
       AppMethodBeat.i(46161);
       if (AppBrandCameraView.i(AppBrandCameraView.this) != null) {
-        AppBrandCameraView.i(AppBrandCameraView.this).ae(paramInt, paramString);
+        AppBrandCameraView.i(AppBrandCameraView.this).ag(paramInt, paramString);
       }
       AppMethodBeat.o(46161);
     }
@@ -987,9 +976,9 @@ public class AppBrandCameraView
     private static void c(String paramString, int[] paramArrayOfInt)
     {
       AppMethodBeat.i(46166);
-      if (!com.tencent.mm.vfs.i.eA(paramString))
+      if (!com.tencent.mm.vfs.i.fv(paramString))
       {
-        ac.i("MicroMsg.AppBrandCameraView", "getInfoFromMetaData file isn't exist, filename: %s", new Object[] { paramString });
+        ad.i("MicroMsg.AppBrandCameraView", "getInfoFromMetaData file isn't exist, filename: %s", new Object[] { paramString });
         AppMethodBeat.o(46166);
         return;
       }
@@ -999,20 +988,20 @@ public class AppBrandCameraView
         try
         {
           locald.setDataSource(paramString);
-          paramArrayOfInt[0] = bs.getInt(locald.extractMetadata(9), 0);
-          int i = bs.getInt(locald.extractMetadata(24), 0);
+          paramArrayOfInt[0] = bt.getInt(locald.extractMetadata(9), 0);
+          int i = bt.getInt(locald.extractMetadata(24), 0);
           if ((i == 90) || (i == 270))
           {
-            paramArrayOfInt[1] = bs.getInt(locald.extractMetadata(19), 0);
-            paramArrayOfInt[2] = bs.getInt(locald.extractMetadata(18), 0);
+            paramArrayOfInt[1] = bt.getInt(locald.extractMetadata(19), 0);
+            paramArrayOfInt[2] = bt.getInt(locald.extractMetadata(18), 0);
           }
           for (;;)
           {
             locald.release();
             AppMethodBeat.o(46166);
             return;
-            paramArrayOfInt[1] = bs.getInt(locald.extractMetadata(18), 0);
-            paramArrayOfInt[2] = bs.getInt(locald.extractMetadata(19), 0);
+            paramArrayOfInt[1] = bt.getInt(locald.extractMetadata(18), 0);
+            paramArrayOfInt[2] = bt.getInt(locald.extractMetadata(19), 0);
           }
           if (paramArrayOfInt == null) {
             break label159;
@@ -1049,7 +1038,7 @@ public class AppBrandCameraView
         int[] arrayOfInt = new int[3];
         c(paramString3, arrayOfInt);
         i = (int)Math.round(arrayOfInt[0] * 1.0D / 1000.0D);
-        l = com.tencent.mm.vfs.i.aSp(paramString3);
+        l = com.tencent.mm.vfs.i.aYo(paramString3);
         j = arrayOfInt[1];
         k = arrayOfInt[2];
       }
@@ -1069,13 +1058,13 @@ public class AppBrandCameraView
     static String f(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString)
     {
       AppMethodBeat.i(46167);
-      if (bs.isNullOrNil(paramString))
+      if (bt.isNullOrNil(paramString))
       {
         AppMethodBeat.o(46167);
         return paramString;
       }
       com.tencent.mm.plugin.appbrand.z.i locali = new com.tencent.mm.plugin.appbrand.z.i();
-      if (paramc.DH().a(new com.tencent.mm.vfs.e(paramString), "", true, locali) == com.tencent.mm.plugin.appbrand.appstorage.l.jsB)
+      if (paramc.Fg().a(new com.tencent.mm.vfs.e(paramString), "", true, locali) == l.jMv)
       {
         paramc = (String)locali.value;
         AppMethodBeat.o(46167);
@@ -1099,8 +1088,8 @@ public class AppBrandCameraView
           }
           for (;;)
           {
-            com.tencent.mm.sdk.platformtools.f.a(paramBitmap, i, Bitmap.CompressFormat.JPEG, paramString, true);
-            ac.i("MicroMsg.AppBrandCameraView", "bitmap filelen %s", new Object[] { Long.valueOf(com.tencent.mm.vfs.i.aSp(paramString)) });
+            com.tencent.mm.sdk.platformtools.g.a(paramBitmap, i, Bitmap.CompressFormat.JPEG, paramString, true);
+            ad.i("MicroMsg.AppBrandCameraView", "bitmap filelen %s", new Object[] { Long.valueOf(com.tencent.mm.vfs.i.aYo(paramString)) });
             AppMethodBeat.o(46159);
             return true;
             boolean bool = "low".equals(AppBrandCameraView.r(AppBrandCameraView.this));
@@ -1112,42 +1101,42 @@ public class AppBrandCameraView
         }
         catch (Exception paramBitmap)
         {
-          ac.e("MicroMsg.AppBrandCameraView", "error for saveBitmapToImage %s", new Object[] { paramBitmap.getMessage() });
+          ad.e("MicroMsg.AppBrandCameraView", "error for saveBitmapToImage %s", new Object[] { paramBitmap.getMessage() });
         }
       }
       return false;
     }
     
-    public final void bgb()
+    public final void bjF()
     {
       AppMethodBeat.i(46158);
-      ac.i("MicroMsg.AppBrandCameraView", "takePicture.");
+      ad.i("MicroMsg.AppBrandCameraView", "takePicture.");
       if (AppBrandCameraView.e(AppBrandCameraView.this) == null)
       {
-        ac.i("MicroMsg.AppBrandCameraView", "recordView is null");
+        ad.i("MicroMsg.AppBrandCameraView", "recordView is null");
         AppMethodBeat.o(46158);
         return;
       }
       if (AppBrandCameraView.k(AppBrandCameraView.this) == 2)
       {
-        ac.w("MicroMsg.AppBrandCameraView", "takePicture is recording!!");
+        ad.w("MicroMsg.AppBrandCameraView", "takePicture is recording!!");
         AppMethodBeat.o(46158);
         return;
       }
-      if ((AppBrandCameraView.l(AppBrandCameraView.this)) || (bs.aO(AppBrandCameraView.m(AppBrandCameraView.this)) < 300L))
+      if ((AppBrandCameraView.l(AppBrandCameraView.this)) || (bt.aO(AppBrandCameraView.m(AppBrandCameraView.this)) < 300L))
       {
-        ac.i("MicroMsg.AppBrandCameraView", "not the right time to take picture.");
+        ad.i("MicroMsg.AppBrandCameraView", "not the right time to take picture.");
         AppMethodBeat.o(46158);
         return;
       }
       if (!AppBrandCameraView.n(AppBrandCameraView.this))
       {
-        ac.w("MicroMsg.AppBrandCameraView", "takePicture err, isn't init done");
+        ad.w("MicroMsg.AppBrandCameraView", "takePicture err, isn't init done");
         AppBrandCameraView.a(AppBrandCameraView.this, -1, null, "camera has not been initialized");
         AppMethodBeat.o(46158);
         return;
       }
-      AppBrandCameraView.a(AppBrandCameraView.this, bs.Gn());
+      AppBrandCameraView.a(AppBrandCameraView.this, bt.HI());
       AppBrandCameraView.o(AppBrandCameraView.this);
       AppBrandCameraView.a(AppBrandCameraView.this, 3);
       AppBrandCameraView.e(AppBrandCameraView.this).a(new MMSightRecordView.g()
@@ -1171,7 +1160,7 @@ public class AppBrandCameraView
           AppMethodBeat.o(46151);
         }
         
-        public final void bgq()
+        public final void bjU()
         {
           AppMethodBeat.i(46152);
           AppBrandCameraView.a(AppBrandCameraView.this, -1, null, "take picture error");
@@ -1181,59 +1170,59 @@ public class AppBrandCameraView
       AppMethodBeat.o(46158);
     }
     
-    public final void bgk()
+    public final void bjO()
     {
       AppMethodBeat.i(46160);
-      ac.i("MicroMsg.AppBrandCameraView", "startRecord.");
-      a locala = a.a.bfZ();
-      if ((!locala.kma) || (!locala.kmb)) {
-        ac.i("MicroMsg.AppBrandCameraMrg", "no all permission");
+      ad.i("MicroMsg.AppBrandCameraView", "startRecord.");
+      a locala = a.a.bjD();
+      if ((!locala.kHa) || (!locala.kHb)) {
+        ad.i("MicroMsg.AppBrandCameraMrg", "no all permission");
       }
-      if ((locala.kma) && (locala.kmb)) {}
+      if ((locala.kHa) && (locala.kHb)) {}
       for (int i = 1; i == 0; i = 0)
       {
         Toast.makeText(AppBrandCameraView.s(AppBrandCameraView.this), 2131761241, 1).show();
-        ac.w("MicroMsg.AppBrandCameraView", "no micro phone permission");
-        ae(-1, "permission");
+        ad.w("MicroMsg.AppBrandCameraView", "no micro phone permission");
+        ag(-1, "permission");
         AppMethodBeat.o(46160);
         return;
       }
       if (AppBrandCameraView.k(AppBrandCameraView.this) == 2)
       {
-        ac.w("MicroMsg.AppBrandCameraView", "startRecord is recording!!");
-        ae(-1, "is recording");
+        ad.w("MicroMsg.AppBrandCameraView", "startRecord is recording!!");
+        ag(-1, "is recording");
         AppMethodBeat.o(46160);
         return;
       }
       if (!AppBrandCameraView.n(AppBrandCameraView.this))
       {
-        ac.w("MicroMsg.AppBrandCameraView", "startRecord err, isn't init done");
-        ae(-1, "camera has not been initialized");
+        ad.w("MicroMsg.AppBrandCameraView", "startRecord err, isn't init done");
+        ag(-1, "camera has not been initialized");
         AppMethodBeat.o(46160);
         return;
       }
-      if (AppBrandCameraView.e(AppBrandCameraView.this).uJM.Og())
+      if (AppBrandCameraView.e(AppBrandCameraView.this).vMS.PP())
       {
-        AppBrandCameraView.b(AppBrandCameraView.this, bs.Gn());
+        AppBrandCameraView.b(AppBrandCameraView.this, bt.HI());
         AppBrandCameraView.a(AppBrandCameraView.this, 2);
-        ae(0, "");
+        ag(0, "");
         AppBrandCameraView.t(AppBrandCameraView.this);
         AppMethodBeat.o(46160);
         return;
       }
-      ac.w("MicroMsg.AppBrandCameraView", "startRecord fail !!");
-      ae(-1, "startRecord fail");
+      ad.w("MicroMsg.AppBrandCameraView", "startRecord fail !!");
+      ag(-1, "startRecord fail");
       AppMethodBeat.o(46160);
     }
     
-    public final void bgl()
+    public final void bjP()
     {
       AppMethodBeat.i(46165);
-      long l = bs.aO(AppBrandCameraView.y(AppBrandCameraView.this));
+      long l = bt.aO(AppBrandCameraView.y(AppBrandCameraView.this));
       if (l < 1500L)
       {
-        ac.i("MicroMsg.AppBrandCameraView", "stopRecord in %d ms later", new Object[] { Long.valueOf(1500L - l) });
-        ap.n(new Runnable()
+        ad.i("MicroMsg.AppBrandCameraView", "stopRecord in %d ms later", new Object[] { Long.valueOf(1500L - l) });
+        aq.o(new Runnable()
         {
           public final void run()
           {
@@ -1249,7 +1238,7 @@ public class AppBrandCameraView
       AppMethodBeat.o(46165);
     }
     
-    final void bgp()
+    final void bjT()
     {
       AppMethodBeat.i(46163);
       AppBrandCameraView.x(AppBrandCameraView.this);
@@ -1275,24 +1264,24 @@ public class AppBrandCameraView
     public final void stopRecord()
     {
       AppMethodBeat.i(46162);
-      ac.i("MicroMsg.AppBrandCameraView", "stopRecord");
+      ad.i("MicroMsg.AppBrandCameraView", "stopRecord");
       if (AppBrandCameraView.e(AppBrandCameraView.this) == null)
       {
-        ac.i("MicroMsg.AppBrandCameraView", "recordView is null");
+        ad.i("MicroMsg.AppBrandCameraView", "recordView is null");
         d(-1, "camera is null", null, null);
         AppMethodBeat.o(46162);
         return;
       }
       if (AppBrandCameraView.k(AppBrandCameraView.this) != 2)
       {
-        ac.w("MicroMsg.AppBrandCameraView", "stopRecord is not recording!!");
+        ad.w("MicroMsg.AppBrandCameraView", "stopRecord is not recording!!");
         d(-1, "is not recording", null, null);
         AppMethodBeat.o(46162);
         return;
       }
       if (AppBrandCameraView.u(AppBrandCameraView.this))
       {
-        ac.i("MicroMsg.AppBrandCameraView", "recordView is IsStopping");
+        ad.i("MicroMsg.AppBrandCameraView", "recordView is IsStopping");
         d(-1, "is stopping", null, null);
         AppMethodBeat.o(46162);
         return;
@@ -1300,29 +1289,29 @@ public class AppBrandCameraView
       AppBrandCameraView.a(AppBrandCameraView.this, true);
       AppBrandCameraView.e(AppBrandCameraView.this).a(new MMSightRecordView.h()
       {
-        public final void gq(boolean paramAnonymousBoolean)
+        public final void gw(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(46153);
-          ac.i("MicroMsg.AppBrandCameraView", "onRecordFinish error %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          ad.i("MicroMsg.AppBrandCameraView", "onRecordFinish error %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
           if (AppBrandCameraView.e(AppBrandCameraView.this) == null)
           {
-            ac.i("MicroMsg.AppBrandCameraView", "onRecordFinish recordView is null");
+            ad.i("MicroMsg.AppBrandCameraView", "onRecordFinish recordView is null");
             AppBrandCameraView.b.a(AppBrandCameraView.b.this, "camera is null");
             AppMethodBeat.o(46153);
             return;
           }
-          AppBrandCameraView.this.kmC = 1;
+          AppBrandCameraView.this.kHC = 1;
           if (paramAnonymousBoolean)
           {
             AppBrandCameraView.b.a(AppBrandCameraView.b.this, "stop error");
-            AppBrandCameraView.b.this.bgp();
+            AppBrandCameraView.b.this.bjT();
             AppMethodBeat.o(46153);
             return;
           }
           if (AppBrandCameraView.v(AppBrandCameraView.this))
           {
             AppBrandCameraView.b localb = AppBrandCameraView.b.this;
-            com.tencent.e.h.JZN.aS(new AppBrandCameraView.b.3(localb));
+            com.tencent.e.h.LTJ.aR(new AppBrandCameraView.b.3(localb));
             AppMethodBeat.o(46153);
             return;
           }
@@ -1337,112 +1326,112 @@ public class AppBrandCameraView
   protected class c
     implements AppBrandCameraView.a, c.a
   {
-    private int aNa;
-    private int aNb;
+    private int aXs;
+    private int aXt;
     private int duration;
-    private float gWZ;
-    private Point jbP;
-    private com.tencent.mm.plugin.appbrand.jsapi.camera.a.c kmP;
-    AtomicBoolean kmQ;
-    private int kmR;
-    private Rect kmS;
-    private int kmT;
-    int kmU;
-    private int kmV;
+    private float hpf;
+    private Point juY;
+    private com.tencent.mm.plugin.appbrand.jsapi.camera.a.c kHP;
+    AtomicBoolean kHQ;
+    private int kHR;
+    private Rect kHS;
+    private int kHT;
+    int kHU;
+    private int kHV;
     
     protected c()
     {
       AppMethodBeat.i(46171);
-      this.kmQ = new AtomicBoolean(false);
-      this.kmR = 200;
-      this.duration = this.kmR;
-      this.gWZ = (AppBrandCameraView.z(AppBrandCameraView.this) * 1.0F / AppBrandCameraView.A(AppBrandCameraView.this));
+      this.kHQ = new AtomicBoolean(false);
+      this.kHR = 200;
+      this.duration = this.kHR;
+      this.hpf = (AppBrandCameraView.z(AppBrandCameraView.this) * 1.0F / AppBrandCameraView.A(AppBrandCameraView.this));
       if (AppBrandCameraView.B(AppBrandCameraView.this)) {
         i = 1;
       }
-      this.kmU = i;
+      this.kHU = i;
       AppMethodBeat.o(46171);
     }
     
     public final void a(int paramInt1, int paramInt2, String paramString, byte[] paramArrayOfByte, QbarNative.QBarPoint paramQBarPoint)
     {
-      AppMethodBeat.i(186579);
-      if (this.kmQ.compareAndSet(false, true))
+      AppMethodBeat.i(188299);
+      if (this.kHQ.compareAndSet(false, true))
       {
-        ap.n(new Runnable()
+        aq.o(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(46170);
-            AppBrandCameraView.c.this.kmQ.set(false);
+            AppBrandCameraView.c.this.kHQ.set(false);
             AppMethodBeat.o(46170);
           }
         }, this.duration);
-        ac.d("MicroMsg.AppBrandCameraView", "resultText:%s, resultType:%d, codeVersion:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        if ((paramQBarPoint != null) && (this.kmV % 4 == 0))
+        ad.d("MicroMsg.AppBrandCameraView", "resultText:%s, resultType:%d, codeVersion:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        if ((paramQBarPoint != null) && (this.kHV % 4 == 0))
         {
-          ac.i("MicroMsg.AppBrandCameraView", "x: %f, y: %f, w: %f, h: %f; x0:%f, x1:%f, x2:%f, x3:%f, y0:%f, y1:%f, y2:%f, y3:%f", new Object[] { Float.valueOf(paramQBarPoint.x0), Float.valueOf(paramQBarPoint.y0), Float.valueOf(paramQBarPoint.x1 - paramQBarPoint.x0), Float.valueOf(paramQBarPoint.y3 - paramQBarPoint.y0), Float.valueOf(paramQBarPoint.x0), Float.valueOf(paramQBarPoint.x1), Float.valueOf(paramQBarPoint.x2), Float.valueOf(paramQBarPoint.x3), Float.valueOf(paramQBarPoint.y0), Float.valueOf(paramQBarPoint.y1), Float.valueOf(paramQBarPoint.y2), Float.valueOf(paramQBarPoint.y3) });
-          this.kmV += 1;
+          ad.i("MicroMsg.AppBrandCameraView", "x: %f, y: %f, w: %f, h: %f; x0:%f, x1:%f, x2:%f, x3:%f, y0:%f, y1:%f, y2:%f, y3:%f", new Object[] { Float.valueOf(paramQBarPoint.x0), Float.valueOf(paramQBarPoint.y0), Float.valueOf(paramQBarPoint.x1 - paramQBarPoint.x0), Float.valueOf(paramQBarPoint.y3 - paramQBarPoint.y0), Float.valueOf(paramQBarPoint.x0), Float.valueOf(paramQBarPoint.x1), Float.valueOf(paramQBarPoint.x2), Float.valueOf(paramQBarPoint.x3), Float.valueOf(paramQBarPoint.y0), Float.valueOf(paramQBarPoint.y1), Float.valueOf(paramQBarPoint.y2), Float.valueOf(paramQBarPoint.y3) });
+          this.kHV += 1;
         }
       }
       switch (paramInt1)
       {
       default: 
-        ac.w("MicroMsg.AppBrandCameraView", "resultType:%d is not support, ignore");
-        AppMethodBeat.o(186579);
+        ad.w("MicroMsg.AppBrandCameraView", "resultType:%d is not support, ignore");
+        AppMethodBeat.o(188299);
         return;
       case 1: 
         j.a(AppBrandCameraView.c(AppBrandCameraView.this), AppBrandCameraView.this.getCameraId(), "qrcode", paramInt2, paramString, paramArrayOfByte, paramQBarPoint);
-        AppMethodBeat.o(186579);
+        AppMethodBeat.o(188299);
         return;
       }
       j.a(AppBrandCameraView.c(AppBrandCameraView.this), AppBrandCameraView.this.getCameraId(), "barcode", paramInt2, paramString, paramArrayOfByte, paramQBarPoint);
-      AppMethodBeat.o(186579);
+      AppMethodBeat.o(188299);
     }
     
-    public final void bgb()
+    public final void bjF()
     {
       AppMethodBeat.i(46175);
-      ac.e("MicroMsg.AppBrandCameraView", "ScanCodeMode, takePicture err");
+      ad.e("MicroMsg.AppBrandCameraView", "ScanCodeMode, takePicture err");
       AppMethodBeat.o(46175);
     }
     
-    public final void bgk()
+    public final void bjO()
     {
       AppMethodBeat.i(46176);
-      ac.e("MicroMsg.AppBrandCameraView", "ScanCodeMode, startRecord err");
+      ad.e("MicroMsg.AppBrandCameraView", "ScanCodeMode, startRecord err");
       AppMethodBeat.o(46176);
     }
     
-    public final void bgl()
+    public final void bjP()
     {
       AppMethodBeat.i(46177);
-      ac.e("MicroMsg.AppBrandCameraView", "ScanCodeMode, safeStopRecord err");
+      ad.e("MicroMsg.AppBrandCameraView", "ScanCodeMode, safeStopRecord err");
       AppMethodBeat.o(46177);
     }
     
     public void init()
     {
       AppMethodBeat.i(46172);
-      this.kmP = new com.tencent.mm.plugin.appbrand.jsapi.camera.a.d();
-      this.kmP.init();
-      this.kmP.knK = this;
+      this.kHP = new com.tencent.mm.plugin.appbrand.jsapi.camera.a.d();
+      this.kHP.init();
+      this.kHP.kIK = this;
       AppBrandCameraView.a(AppBrandCameraView.this, 4);
       if (AppBrandCameraView.C(AppBrandCameraView.this) > 0) {
         this.duration = (1000 / AppBrandCameraView.C(AppBrandCameraView.this));
       }
-      this.kmV = 0;
+      this.kHV = 0;
       AppMethodBeat.o(46172);
     }
     
     public final void release()
     {
       AppMethodBeat.i(46178);
-      if (this.kmP != null) {
-        this.kmP.release();
+      if (this.kHP != null) {
+        this.kHP.release();
       }
-      this.jbP = null;
-      this.kmV = 0;
+      this.juY = null;
+      this.kHV = 0;
       AppMethodBeat.o(46178);
     }
     
@@ -1454,36 +1443,36 @@ public class AppBrandCameraView
       int k;
       label140:
       float f2;
-      if ((this.aNa != AppBrandCameraView.z(AppBrandCameraView.this)) || (this.aNb != AppBrandCameraView.A(AppBrandCameraView.this))) {
-        switch (((WindowManager)ai.getContext().getSystemService("window")).getDefaultDisplay().getRotation())
+      if ((this.aXs != AppBrandCameraView.z(AppBrandCameraView.this)) || (this.aXt != AppBrandCameraView.A(AppBrandCameraView.this))) {
+        switch (((WindowManager)aj.getContext().getSystemService("window")).getDefaultDisplay().getRotation())
         {
         default: 
           i = 0;
           k = AppBrandCameraView.e(AppBrandCameraView.this).getCameraRotation();
           if ("front".equals(AppBrandCameraView.E(AppBrandCameraView.this)))
           {
-            this.kmT = (k % 360);
-            this.kmT = ((360 - this.kmT) % 360);
+            this.kHT = (k % 360);
+            this.kHT = ((360 - this.kHT) % 360);
             if (AppBrandCameraView.e(AppBrandCameraView.this) != null)
             {
-              this.aNa = AppBrandCameraView.z(AppBrandCameraView.this);
-              this.aNb = AppBrandCameraView.A(AppBrandCameraView.this);
+              this.aXs = AppBrandCameraView.z(AppBrandCameraView.this);
+              this.aXt = AppBrandCameraView.A(AppBrandCameraView.this);
             }
             AppBrandCameraView.z(AppBrandCameraView.this);
             AppBrandCameraView.A(AppBrandCameraView.this);
-            k = this.kmT;
-            f2 = this.gWZ;
+            k = this.kHT;
+            f2 = this.hpf;
             if ((paramInt1 > 0) && (paramInt2 > 0)) {
               break label332;
             }
             localObject = null;
             label211:
-            this.jbP = ((Point)localObject);
-            if (this.jbP != null)
+            this.juY = ((Point)localObject);
+            if (this.juY != null)
             {
               localObject = AppBrandCameraView.D(AppBrandCameraView.this);
               i = AppBrandCameraView.z(AppBrandCameraView.this);
-              j = this.jbP.x;
+              j = this.juY.x;
               if (localObject != null) {
                 break label517;
               }
@@ -1496,11 +1485,11 @@ public class AppBrandCameraView
       float f1;
       for (Object localObject = null;; localObject = new Rect(Math.round(((Rect)localObject).left / f1), Math.round(((Rect)localObject).top / f1), Math.round(((Rect)localObject).right / f1), Math.round(((Rect)localObject).bottom / f1)))
       {
-        this.kmS = ((Rect)localObject);
-        if (!this.kmQ.get()) {
+        this.kHS = ((Rect)localObject);
+        if (!this.kHQ.get()) {
           break label588;
         }
-        ac.d("MicroMsg.AppBrandCameraView", "[onFrameData] isScanPause, return");
+        ad.d("MicroMsg.AppBrandCameraView", "[onFrameData] isScanPause, return");
         AppMethodBeat.o(46173);
         return;
         i = 90;
@@ -1509,7 +1498,7 @@ public class AppBrandCameraView
         break;
         i = 270;
         break;
-        this.kmT = ((k - i + 360) % 360);
+        this.kHT = ((k - i + 360) % 360);
         break label140;
         if (k != 90)
         {
@@ -1527,7 +1516,7 @@ public class AppBrandCameraView
         f1 = 1.0F / f1;
         if (i == 0)
         {
-          this.kmU = 1;
+          this.kHU = 1;
           i = Math.max(paramInt2, paramInt1);
           j = (int)(f1 * i);
           if ((k == 90) || (k == 270))
@@ -1551,8 +1540,8 @@ public class AppBrandCameraView
         f1 = i * 1.0F / j;
       }
       label588:
-      if ((this.kmP != null) && (AppBrandCameraView.e(AppBrandCameraView.this) != null)) {
-        this.kmP.b(paramArrayOfByte, paramInt1, paramInt2, AppBrandCameraView.z(AppBrandCameraView.this), AppBrandCameraView.A(AppBrandCameraView.this), this.jbP, this.kmS, this.kmT, this.kmU);
+      if ((this.kHP != null) && (AppBrandCameraView.e(AppBrandCameraView.this) != null)) {
+        this.kHP.b(paramArrayOfByte, paramInt1, paramInt2, AppBrandCameraView.z(AppBrandCameraView.this), AppBrandCameraView.A(AppBrandCameraView.this), this.juY, this.kHS, this.kHT, this.kHU);
       }
       AppMethodBeat.o(46173);
     }
@@ -1560,7 +1549,7 @@ public class AppBrandCameraView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.AppBrandCameraView
  * JD-Core Version:    0.7.0.1
  */

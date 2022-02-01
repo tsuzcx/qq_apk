@@ -12,15 +12,15 @@ public abstract interface w<T>
   
   public abstract T t(e parame);
   
-  public abstract ab u(Collection<ab> paramCollection);
-  
   public abstract String u(e parame);
+  
+  public abstract ab v(Collection<ab> paramCollection);
   
   public abstract String v(e parame);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.b.w
  * JD-Core Version:    0.7.0.1
  */

@@ -9,24 +9,24 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.k.a;
-import com.tencent.mm.ak.k.b;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.j.a;
+import com.tencent.mm.al.j.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.ck.a.a;
-import com.tencent.mm.model.ah;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ai;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.plugin.masssend.a.f;
 import com.tencent.mm.plugin.transvoice.a.c.a;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bc;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.t;
 import java.util.List;
@@ -34,77 +34,77 @@ import java.util.List;
 public final class b
   implements com.tencent.mm.pluginsdk.ui.chat.b
 {
-  private List<String> fwF;
-  final au iga;
-  private Vibrator njY;
-  long oPI;
-  Toast oPJ;
-  final au oPT;
+  private List<String> fPS;
+  final av izu;
+  private Vibrator nKv;
+  final av ptD;
+  long ptq;
+  Toast ptt;
   p tipDialog;
-  MassSendMsgUI uEs;
-  ChatFooter uEt;
-  a uEu;
-  private String uEv;
-  private boolean uEw;
-  private final k.a uEx;
-  private final k.b uEy;
+  MassSendMsgUI vHs;
+  ChatFooter vHt;
+  a vHu;
+  private String vHv;
+  private boolean vHw;
+  private final j.a vHx;
+  private final j.b vHy;
   
   public b(MassSendMsgUI paramMassSendMsgUI, ChatFooter paramChatFooter, String paramString, List<String> paramList, boolean paramBoolean)
   {
     AppMethodBeat.i(26394);
-    this.oPI = -1L;
+    this.ptq = -1L;
     this.tipDialog = null;
-    this.iga = new au(new au.a()
+    this.izu = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(26387);
-        b.this.uEt.Xk(b.this.uEu.getMaxAmplitude());
+        b.this.vHt.Zg(b.this.vHu.getMaxAmplitude());
         AppMethodBeat.o(26387);
         return true;
       }
     }, true);
-    this.uEx = new k.a()
+    this.vHx = new j.a()
     {
       public final void onError()
       {
         AppMethodBeat.i(26388);
-        b.this.uEu.reset();
-        b.this.iga.stopTimer();
-        b.this.oPT.stopTimer();
-        am.aKP("keep_app_silent");
-        b.this.uEt.a(ChatFooter.h.DxW);
-        ac.v("MicroMsg.MassSendFooterEventImpl", "record stop on error");
-        Toast.makeText(b.this.uEs, b.this.uEs.getString(2131757276), 0).show();
+        b.this.vHu.reset();
+        b.this.izu.stopTimer();
+        b.this.ptD.stopTimer();
+        an.aQv("keep_app_silent");
+        b.this.vHt.a(ChatFooter.h.Fdf);
+        ad.v("MicroMsg.MassSendFooterEventImpl", "record stop on error");
+        Toast.makeText(b.this.vHs, b.this.vHs.getString(2131757276), 0).show();
         AppMethodBeat.o(26388);
       }
     };
-    this.uEy = new k.b()
+    this.vHy = new j.b()
     {
-      public final void aBG()
+      public final void aEI()
       {
         AppMethodBeat.i(26389);
-        b.this.uEt.eOu();
+        b.this.vHt.fdt();
         AppMethodBeat.o(26389);
       }
     };
-    this.oPT = new au(new au.a()
+    this.ptD = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(26390);
-        if (b.this.oPI == -1L) {
-          b.this.oPI = bs.Gn();
+        if (b.this.ptq == -1L) {
+          b.this.ptq = bt.HI();
         }
-        long l = bs.aO(b.this.oPI);
+        long l = bt.aO(b.this.ptq);
         int i;
         if ((l >= 50000L) && (l <= 60000L))
         {
-          if (b.this.oPJ == null)
+          if (b.this.ptt == null)
           {
             i = (int)((60000L - l) / 1000L);
-            b.this.oPJ = Toast.makeText(b.this.uEs, b.this.uEs.getResources().getQuantityString(2131623938, i, new Object[] { Integer.valueOf(i) }), 0);
-            b.this.oPJ.show();
+            b.this.ptt = Toast.makeText(b.this.vHs, b.this.vHs.getResources().getQuantityString(2131623938, i, new Object[] { Integer.valueOf(i) }), 0);
+            b.this.ptt.show();
           }
         }
         else
@@ -112,49 +112,49 @@ public final class b
           if (l < 60000L) {
             break label278;
           }
-          ac.v("MicroMsg.MassSendFooterEventImpl", "record stop on countdown");
-          if (!b.this.uEt.ePk()) {
+          ad.v("MicroMsg.MassSendFooterEventImpl", "record stop on countdown");
+          if (!b.this.vHt.fel()) {
             break label242;
           }
-          b.this.uEt.eOS();
+          b.this.vHt.fdS();
         }
         for (;;)
         {
-          bc.aF(b.this.uEs, 2131764424);
+          bd.aI(b.this.vHs, 2131764424);
           AppMethodBeat.o(26390);
           return false;
           i = (int)((60000L - l) / 1000L);
-          b.this.oPJ.setText(b.this.uEs.getResources().getQuantityString(2131623938, i, new Object[] { Integer.valueOf(i) }));
+          b.this.ptt.setText(b.this.vHs.getResources().getQuantityString(2131623938, i, new Object[] { Integer.valueOf(i) }));
           break;
           label242:
-          if (b.this.uEu.Fb()) {
-            b.this.dbD();
+          if (b.this.vHu.Gv()) {
+            b.this.dkX();
           }
-          b.this.uEt.a(ChatFooter.h.DxR);
+          b.this.vHt.a(ChatFooter.h.Fda);
         }
         label278:
         AppMethodBeat.o(26390);
         return true;
       }
     }, true);
-    this.uEs = paramMassSendMsgUI;
-    this.uEt = paramChatFooter;
-    this.uEv = paramString;
-    this.fwF = paramList;
-    this.uEw = paramBoolean;
-    this.uEu = new a(paramMassSendMsgUI);
-    this.uEu.a(this.uEx);
-    this.uEu.a(this.uEy);
-    this.njY = ((Vibrator)paramMassSendMsgUI.getSystemService("vibrator"));
+    this.vHs = paramMassSendMsgUI;
+    this.vHt = paramChatFooter;
+    this.vHv = paramString;
+    this.fPS = paramList;
+    this.vHw = paramBoolean;
+    this.vHu = new a(paramMassSendMsgUI);
+    this.vHu.a(this.vHx);
+    this.vHu.a(this.vHy);
+    this.nKv = ((Vibrator)paramMassSendMsgUI.getSystemService("vibrator"));
     AppMethodBeat.o(26394);
   }
   
-  public final long Oq()
+  public final long PZ()
   {
     AppMethodBeat.i(26404);
-    if (this.uEu != null)
+    if (this.vHu != null)
     {
-      long l = this.uEu.Oq();
+      long l = this.vHu.PZ();
       AppMethodBeat.o(26404);
       return l;
     }
@@ -162,11 +162,11 @@ public final class b
     return 0L;
   }
   
-  public final void W(MotionEvent paramMotionEvent) {}
+  public final void V(MotionEvent paramMotionEvent) {}
   
-  public final void aim(String paramString) {}
+  public final void amZ(String paramString) {}
   
-  public final boolean akA(final String paramString)
+  public final boolean apn(final String paramString)
   {
     AppMethodBeat.i(26400);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -174,22 +174,22 @@ public final class b
       AppMethodBeat.o(26400);
       return false;
     }
-    MassSendMsgUI.akE(paramString);
+    MassSendMsgUI.apr(paramString);
     Object localObject = new com.tencent.mm.plugin.masssend.a.a();
-    ((com.tencent.mm.plugin.masssend.a.a)localObject).uEc = this.uEv;
-    ((com.tencent.mm.plugin.masssend.a.a)localObject).uEd = this.fwF.size();
+    ((com.tencent.mm.plugin.masssend.a.a)localObject).vHc = this.vHv;
+    ((com.tencent.mm.plugin.masssend.a.a)localObject).vHd = this.fPS.size();
     ((com.tencent.mm.plugin.masssend.a.a)localObject).filename = paramString;
     ((com.tencent.mm.plugin.masssend.a.a)localObject).msgType = 1;
-    paramString = new f((com.tencent.mm.plugin.masssend.a.a)localObject, this.uEw);
-    az.agi().a(paramString, 0);
-    localObject = this.uEs;
-    this.uEs.getString(2131755906);
-    this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject, this.uEs.getString(2131763077), true, new DialogInterface.OnCancelListener()
+    paramString = new f((com.tencent.mm.plugin.masssend.a.a)localObject, this.vHw);
+    ba.aiU().a(paramString, 0);
+    localObject = this.vHs;
+    this.vHs.getString(2131755906);
+    this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject, this.vHs.getString(2131763077), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(26392);
-        az.agi().a(paramString);
+        ba.aiU().a(paramString);
         if (b.this.tipDialog != null)
         {
           b.this.tipDialog.dismiss();
@@ -202,76 +202,76 @@ public final class b
     return true;
   }
   
-  public final boolean akB(String paramString)
+  public final boolean apo(String paramString)
   {
     AppMethodBeat.i(26402);
-    boolean bool = s.EI(paramString);
+    boolean bool = s.HX(paramString);
     AppMethodBeat.o(26402);
     return bool;
   }
   
-  public final boolean dI(String paramString, int paramInt)
+  public final boolean dZ(String paramString, int paramInt)
   {
     AppMethodBeat.i(26401);
-    dbD();
+    dkX();
     AppMethodBeat.o(26401);
     return true;
   }
   
-  public final boolean dbB()
+  public final boolean dkV()
   {
     AppMethodBeat.i(26395);
-    this.iga.stopTimer();
-    this.oPT.stopTimer();
-    this.oPI = -1L;
-    if (this.uEu.Fb())
+    this.izu.stopTimer();
+    this.ptD.stopTimer();
+    this.ptq = -1L;
+    if (this.vHu.Gv())
     {
-      c.a locala = com.tencent.mm.plugin.transvoice.a.c.Akm;
-      com.tencent.mm.plugin.transvoice.a.c.efd().setExitType(0);
-      dbD();
-      this.uEt.a(ChatFooter.h.DxR);
+      c.a locala = com.tencent.mm.plugin.transvoice.a.c.BBY;
+      com.tencent.mm.plugin.transvoice.a.c.eru().setExitType(0);
+      dkX();
+      this.vHt.a(ChatFooter.h.Fda);
     }
     for (;;)
     {
-      az.Lt().Ud();
+      ba.Nb().Wu();
       AppMethodBeat.o(26395);
       return false;
-      this.uEt.bZu();
+      this.vHt.cdY();
     }
   }
   
-  public final boolean dbC()
+  public final boolean dkW()
   {
     AppMethodBeat.i(26396);
-    this.iga.stopTimer();
-    this.oPT.stopTimer();
-    this.oPI = -1L;
-    this.uEu.Fb();
-    this.uEt.a(ChatFooter.h.DxS);
-    az.Lt().Ud();
+    this.izu.stopTimer();
+    this.ptD.stopTimer();
+    this.ptq = -1L;
+    this.vHu.Gv();
+    this.vHt.a(ChatFooter.h.Fdb);
+    ba.Nb().Wu();
     AppMethodBeat.o(26396);
     return true;
   }
   
-  final void dbD()
+  final void dkX()
   {
     AppMethodBeat.i(26397);
     Object localObject = new com.tencent.mm.plugin.masssend.a.a();
-    ((com.tencent.mm.plugin.masssend.a.a)localObject).uEc = this.uEv;
-    ((com.tencent.mm.plugin.masssend.a.a)localObject).uEd = this.fwF.size();
-    ((com.tencent.mm.plugin.masssend.a.a)localObject).filename = this.uEu.fileName;
+    ((com.tencent.mm.plugin.masssend.a.a)localObject).vHc = this.vHv;
+    ((com.tencent.mm.plugin.masssend.a.a)localObject).vHd = this.fPS.size();
+    ((com.tencent.mm.plugin.masssend.a.a)localObject).filename = this.vHu.fileName;
     ((com.tencent.mm.plugin.masssend.a.a)localObject).msgType = 34;
-    ((com.tencent.mm.plugin.masssend.a.a)localObject).uEe = this.uEu.cWJ;
-    localObject = new f((com.tencent.mm.plugin.masssend.a.a)localObject, this.uEw);
-    az.agi().a((n)localObject, 0);
-    MassSendMsgUI localMassSendMsgUI = this.uEs;
-    this.uEs.getString(2131755906);
-    this.tipDialog = com.tencent.mm.ui.base.h.b(localMassSendMsgUI, this.uEs.getString(2131763077), true, new DialogInterface.OnCancelListener()
+    ((com.tencent.mm.plugin.masssend.a.a)localObject).vHe = this.vHu.dhZ;
+    localObject = new f((com.tencent.mm.plugin.masssend.a.a)localObject, this.vHw);
+    ba.aiU().a((n)localObject, 0);
+    MassSendMsgUI localMassSendMsgUI = this.vHs;
+    this.vHs.getString(2131755906);
+    this.tipDialog = com.tencent.mm.ui.base.h.b(localMassSendMsgUI, this.vHs.getString(2131763077), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(26391);
-        az.agi().a(this.uEA);
+        ba.aiU().a(this.vHA);
         if (b.this.tipDialog != null)
         {
           b.this.tipDialog.dismiss();
@@ -283,90 +283,90 @@ public final class b
     AppMethodBeat.o(26397);
   }
   
-  public final boolean dbE()
+  public final boolean dkY()
   {
     AppMethodBeat.i(26398);
-    this.iga.stopTimer();
-    this.oPT.stopTimer();
-    this.oPI = -1L;
-    this.uEt.a(ChatFooter.h.DxU);
-    this.uEu.cos();
-    az.Lt().Ud();
+    this.izu.stopTimer();
+    this.ptD.stopTimer();
+    this.ptq = -1L;
+    this.vHt.a(ChatFooter.h.Fdd);
+    this.vHu.ctX();
+    ba.Nb().Wu();
     AppMethodBeat.o(26398);
     return false;
   }
   
-  public final void dbF()
+  public final void dkZ()
   {
     AppMethodBeat.i(185750);
-    this.uEt.a(ChatFooter.h.DxU);
-    this.uEu.cos();
+    this.vHt.a(ChatFooter.h.Fdd);
+    this.vHu.ctX();
     AppMethodBeat.o(185750);
   }
   
-  public final boolean dbG()
+  public final boolean dla()
   {
     AppMethodBeat.i(26399);
-    az.ayM();
+    ba.aBQ();
     if (!com.tencent.mm.model.c.isSDCardAvailable())
     {
-      t.g(this.uEs, null);
+      t.g(this.vHs, null);
       AppMethodBeat.o(26399);
       return false;
     }
-    if (com.tencent.mm.r.a.ch(this.uEs))
+    if (com.tencent.mm.s.a.ce(this.vHs))
     {
       AppMethodBeat.o(26399);
       return false;
     }
-    this.njY.vibrate(50L);
-    Object localObject = com.tencent.mm.plugin.transvoice.a.c.Akm;
-    com.tencent.mm.plugin.transvoice.a.c.efd().AjT = true;
-    this.iga.au(100L, 100L);
-    this.oPT.au(200L, 200L);
-    localObject = this.uEs.getResources().getDisplayMetrics();
-    this.uEt.Xj(((DisplayMetrics)localObject).heightPixels - this.uEt.getHeight());
-    this.uEu.fF("_USER_FOR_THROWBOTTLE_");
-    this.uEu.a(this.uEy);
-    this.uEu.a(this.uEx);
-    az.Lt().Ue();
+    this.nKv.vibrate(50L);
+    Object localObject = com.tencent.mm.plugin.transvoice.a.c.BBY;
+    com.tencent.mm.plugin.transvoice.a.c.eru().BBF = true;
+    this.izu.az(100L, 100L);
+    this.ptD.az(200L, 200L);
+    localObject = this.vHs.getResources().getDisplayMetrics();
+    this.vHt.Zf(((DisplayMetrics)localObject).heightPixels - this.vHt.getHeight());
+    this.vHu.gA("_USER_FOR_THROWBOTTLE_");
+    this.vHu.a(this.vHy);
+    this.vHu.a(this.vHx);
+    ba.Nb().Wv();
     AppMethodBeat.o(26399);
     return false;
   }
   
-  public final void dbH() {}
+  public final void dlb() {}
   
-  public final void dbI() {}
+  public final void dlc() {}
   
-  public final void dbJ() {}
+  public final void dld() {}
   
   public final String getFileName()
   {
-    if (this.uEu != null) {
-      return this.uEu.fileName;
+    if (this.vHu != null) {
+      return this.vHu.fileName;
     }
     return "";
   }
   
-  public final void nU(boolean paramBoolean) {}
-  
   public final void onPause()
   {
     AppMethodBeat.i(26403);
-    this.iga.stopTimer();
-    this.oPT.stopTimer();
-    this.oPI = -1L;
-    a.a locala = com.tencent.mm.ck.a.Hez;
-    if (!a.a.aPr(this.uEu.fileName))
+    this.izu.stopTimer();
+    this.ptD.stopTimer();
+    this.ptq = -1L;
+    a.a locala = com.tencent.mm.ck.a.IRP;
+    if (!a.a.aVi(this.vHu.fileName))
     {
-      locala = com.tencent.mm.ck.a.Hez;
-      if (!a.a.aPt(this.uEu.fileName)) {
-        this.uEu.Fb();
+      locala = com.tencent.mm.ck.a.IRP;
+      if (!a.a.aVk(this.vHu.fileName)) {
+        this.vHu.Gv();
       }
     }
-    az.Lt().Ud();
+    ba.Nb().Wu();
     AppMethodBeat.o(26403);
   }
+  
+  public final void oo(boolean paramBoolean) {}
   
   public final void release() {}
   
@@ -380,21 +380,21 @@ public final class b
       super(false);
     }
     
-    public final boolean Fb()
+    public final boolean Gv()
     {
       AppMethodBeat.i(26393);
       this.fileName = super.getFileName();
-      boolean bool = super.Fb();
+      boolean bool = super.Gv();
       super.reset();
       AppMethodBeat.o(26393);
       return bool;
     }
     
-    public final void cos()
+    public final void ctX()
     {
       AppMethodBeat.i(185749);
-      Fb();
-      s.EI(this.fileName);
+      Gv();
+      s.HX(this.fileName);
       AppMethodBeat.o(185749);
     }
     

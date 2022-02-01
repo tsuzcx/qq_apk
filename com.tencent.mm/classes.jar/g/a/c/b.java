@@ -5,9 +5,9 @@ import java.io.InputStream;
 
 public final class b
 {
-  public int FMB;
-  public int MhC;
-  public InputStream MhD;
+  public int Hxm;
+  public int OcE;
+  public InputStream OcF;
   
   public static void c(short[] paramArrayOfShort)
   {
@@ -23,26 +23,26 @@ public final class b
   {
     AppMethodBeat.i(155362);
     int i = paramArrayOfShort[paramInt];
-    int j = (this.MhC >>> 11) * i;
-    if ((this.FMB ^ 0x80000000) < (0x80000000 ^ j))
+    int j = (this.OcE >>> 11) * i;
+    if ((this.Hxm ^ 0x80000000) < (0x80000000 ^ j))
     {
-      this.MhC = j;
+      this.OcE = j;
       paramArrayOfShort[paramInt] = ((short)(i + (2048 - i >>> 5)));
-      if ((this.MhC & 0xFF000000) == 0)
+      if ((this.OcE & 0xFF000000) == 0)
       {
-        this.FMB = (this.FMB << 8 | this.MhD.read());
-        this.MhC <<= 8;
+        this.Hxm = (this.Hxm << 8 | this.OcF.read());
+        this.OcE <<= 8;
       }
       AppMethodBeat.o(155362);
       return 0;
     }
-    this.MhC -= j;
-    this.FMB -= j;
+    this.OcE -= j;
+    this.Hxm -= j;
     paramArrayOfShort[paramInt] = ((short)(i - (i >>> 5)));
-    if ((this.MhC & 0xFF000000) == 0)
+    if ((this.OcE & 0xFF000000) == 0)
     {
-      this.FMB = (this.FMB << 8 | this.MhD.read());
-      this.MhC <<= 8;
+      this.Hxm = (this.Hxm << 8 | this.OcF.read());
+      this.OcE <<= 8;
     }
     AppMethodBeat.o(155362);
     return 1;
@@ -50,7 +50,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     g.a.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,21 +7,21 @@ import java.util.ArrayList;
 
 public final class b
 {
-  public final Bundle eA;
+  public final Bundle gt;
   public final Intent intent;
   
   private b(Intent paramIntent, Bundle paramBundle)
   {
     this.intent = paramIntent;
-    this.eA = paramBundle;
+    this.gt = paramBundle;
   }
   
   public static final class a
   {
-    public ArrayList<Bundle> eB = null;
-    public Bundle eC = null;
-    public ArrayList<Bundle> eD = null;
-    public boolean eE = true;
+    public ArrayList<Bundle> gu = null;
+    public Bundle gv = null;
+    public ArrayList<Bundle> gw = null;
+    public boolean gx = true;
     public final Intent mIntent = new Intent("android.intent.action.VIEW");
     
     public a()

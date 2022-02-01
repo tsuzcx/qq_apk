@@ -1,15 +1,14 @@
 package com.tencent.mm.plugin.emoji.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.f;
@@ -18,17 +17,17 @@ import java.util.ArrayList;
 
 public class c
 {
-  public static c oYK;
-  public ArrayList<String> oYL;
-  public boolean oYM;
-  public boolean oYN;
+  public static c pCu;
+  public ArrayList<String> pCv;
+  public boolean pCw;
+  public boolean pCx;
   
   public c()
   {
     AppMethodBeat.i(108415);
-    this.oYL = new ArrayList();
-    this.oYM = true;
-    this.oYN = false;
+    this.pCv = new ArrayList();
+    this.pCw = true;
+    this.pCx = false;
     AppMethodBeat.o(108415);
   }
   
@@ -38,15 +37,15 @@ public class c
     if (paramEmojiInfo != null)
     {
       paramEmojiInfo.field_reserved4 = 0;
-      k.getEmojiStorageMgr().GXZ.M(paramEmojiInfo);
-      k.ccl().u(paramEmojiInfo);
+      k.getEmojiStorageMgr().ILn.L(paramEmojiInfo);
+      k.cgP().u(paramEmojiInfo);
       if (paramBoolean)
       {
-        h.wUl.idkeyStat(231L, 0L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(231L, 0L, 1L, false);
         AppMethodBeat.o(108417);
         return;
       }
-      h.wUl.idkeyStat(231L, 1L, 1L, false);
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(231L, 1L, 1L, false);
     }
     AppMethodBeat.o(108417);
   }
@@ -54,30 +53,30 @@ public class c
   private void c(EmojiInfo paramEmojiInfo, boolean paramBoolean)
   {
     AppMethodBeat.i(108418);
-    if (this.oYL == null) {
-      this.oYL = new ArrayList();
+    if (this.pCv == null) {
+      this.pCv = new ArrayList();
     }
-    this.oYL.add(paramEmojiInfo.field_groupId);
+    this.pCv.add(paramEmojiInfo.field_groupId);
     paramEmojiInfo = new com.tencent.mm.plugin.emoji.f.g(paramEmojiInfo.field_groupId);
-    com.tencent.mm.kernel.g.agQ().ghe.a(paramEmojiInfo, 0);
+    com.tencent.mm.kernel.g.ajB().gAO.a(paramEmojiInfo, 0);
     if (paramBoolean)
     {
-      h.wUl.idkeyStat(231L, 3L, 1L, false);
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(231L, 3L, 1L, false);
       AppMethodBeat.o(108418);
       return;
     }
-    h.wUl.idkeyStat(231L, 2L, 1L, false);
+    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(231L, 2L, 1L, false);
     AppMethodBeat.o(108418);
   }
   
-  public static c cbM()
+  public static c cgq()
   {
     AppMethodBeat.i(108416);
-    if (oYK == null) {}
+    if (pCu == null) {}
     try
     {
-      oYK = new c();
-      c localc = oYK;
+      pCu = new c();
+      c localc = pCu;
       AppMethodBeat.o(108416);
       return localc;
     }
@@ -87,10 +86,10 @@ public class c
     }
   }
   
-  private static boolean cbN()
+  private static boolean cgr()
   {
     AppMethodBeat.i(108419);
-    if ((ax.is3G(ai.getContext())) || (ax.is4G(ai.getContext())) || (ax.is2G(ai.getContext())))
+    if ((ay.is3G(aj.getContext())) || (ay.is4G(aj.getContext())) || (ay.is2G(aj.getContext())))
     {
       AppMethodBeat.o(108419);
       return true;
@@ -101,7 +100,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.c
  * JD-Core Version:    0.7.0.1
  */

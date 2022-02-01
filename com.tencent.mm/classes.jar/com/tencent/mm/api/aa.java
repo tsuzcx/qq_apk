@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aa
 {
-  public static a cGT;
+  public static a cRX;
   
-  public static z JP()
+  public static z Lo()
   {
     AppMethodBeat.i(131335);
-    z localz = cGT.JQ();
+    z localz = cRX.Lp();
     AppMethodBeat.o(131335);
     return localz;
   }
@@ -18,7 +18,7 @@ public final class aa
   public static SmileyPanel bh(Context paramContext)
   {
     AppMethodBeat.i(131332);
-    paramContext = cGT.bj(paramContext);
+    paramContext = cRX.bj(paramContext);
     AppMethodBeat.o(131332);
     return paramContext;
   }
@@ -26,7 +26,7 @@ public final class aa
   public static int bi(Context paramContext)
   {
     AppMethodBeat.i(131334);
-    int i = cGT.bi(paramContext);
+    int i = cRX.bi(paramContext);
     AppMethodBeat.o(131334);
     return i;
   }
@@ -34,14 +34,14 @@ public final class aa
   public static SmileyPanel k(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(131333);
-    paramContext = cGT.l(paramContext, paramBoolean);
+    paramContext = cRX.l(paramContext, paramBoolean);
     AppMethodBeat.o(131333);
     return paramContext;
   }
   
   public static abstract interface a
   {
-    public abstract z JQ();
+    public abstract z Lp();
     
     public abstract int bi(Context paramContext);
     

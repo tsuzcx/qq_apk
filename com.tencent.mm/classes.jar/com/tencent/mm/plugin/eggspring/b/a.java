@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.eggspring.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.bnm;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.protocal.protobuf.brx;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/eggspring/model/BrandCardContent;", "", "()V", "acceptRedPocketCoverUrl", "", "getAcceptRedPocketCoverUrl", "()Ljava/lang/String;", "setAcceptRedPocketCoverUrl", "(Ljava/lang/String;)V", "aid", "", "getAid", "()I", "setAid", "(I)V", "appId", "getAppId", "setAppId", "blessingMediaShowType", "getBlessingMediaShowType", "setBlessingMediaShowType", "blessingMediaType", "getBlessingMediaType", "setBlessingMediaType", "blessingWordImgUrl", "getBlessingWordImgUrl", "setBlessingWordImgUrl", "brandCardType", "getBrandCardType", "setBrandCardType", "clickableTxt", "getClickableTxt", "setClickableTxt", "couponInfo", "Lcom/tencent/mm/protobuf/ByteString;", "getCouponInfo", "()Lcom/tencent/mm/protobuf/ByteString;", "setCouponInfo", "(Lcom/tencent/mm/protobuf/ByteString;)V", "jumpInfo", "Lcom/tencent/mm/protocal/protobuf/JumpInfo;", "getJumpInfo", "()Lcom/tencent/mm/protocal/protobuf/JumpInfo;", "setJumpInfo", "(Lcom/tencent/mm/protocal/protobuf/JumpInfo;)V", "mainMediaUrl", "getMainMediaUrl", "setMainMediaUrl", "manWording", "getManWording", "setManWording", "subWording", "getSubWording", "setSubWording", "traceId", "getTraceId", "setTraceId", "toString", "plugin-eggspring_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/eggspring/model/BrandCardContent;", "", "()V", "acceptRedPocketCoverUrl", "", "getAcceptRedPocketCoverUrl", "()Ljava/lang/String;", "setAcceptRedPocketCoverUrl", "(Ljava/lang/String;)V", "aid", "", "getAid", "()I", "setAid", "(I)V", "appId", "getAppId", "setAppId", "blessingMediaShowType", "getBlessingMediaShowType", "setBlessingMediaShowType", "blessingMediaType", "getBlessingMediaType", "setBlessingMediaType", "blessingWordImgUrl", "getBlessingWordImgUrl", "setBlessingWordImgUrl", "brandCardType", "getBrandCardType", "setBrandCardType", "clickableTxt", "getClickableTxt", "setClickableTxt", "couponInfo", "Lcom/tencent/mm/protobuf/ByteString;", "getCouponInfo", "()Lcom/tencent/mm/protobuf/ByteString;", "setCouponInfo", "(Lcom/tencent/mm/protobuf/ByteString;)V", "jumpInfo", "Lcom/tencent/mm/protocal/protobuf/JumpInfo;", "getJumpInfo", "()Lcom/tencent/mm/protocal/protobuf/JumpInfo;", "setJumpInfo", "(Lcom/tencent/mm/protocal/protobuf/JumpInfo;)V", "mainMediaUrl", "getMainMediaUrl", "setMainMediaUrl", "manWording", "getManWording", "setManWording", "subWording", "getSubWording", "setSubWording", "traceId", "getTraceId", "setTraceId", "toString", "plugin-eggspring_release"})
 public final class a
 {
   public String appId;
-  public String jyU;
-  public int oVl = 4;
-  public String oVm;
-  public String oVn;
-  public bnm oVo;
-  public String oVp;
-  public String oVq;
-  public String oVr;
-  public b oVs;
-  public String oVt;
-  public int oVu = 1;
-  public int oVv = 1;
-  public int oVw;
+  public String jSR;
+  public int pyV = 4;
+  public String pyW;
+  public String pyX;
+  public brx pyY;
+  public String pyZ;
+  public String pza;
+  public String pzb;
+  public b pzc;
+  public String pzd;
+  public int pze = 1;
+  public int pzf = 1;
+  public int pzg;
   
   public final String toString()
   {
     AppMethodBeat.i(108150);
-    String str = "BrandCardContent(brandCardType=" + this.oVl + ", clickableTxt=" + this.oVm + ", mainMediaUrl=" + this.oVn + ", jumpInfo=" + this.oVo + ", manWording=" + this.oVp + ", subWording=" + this.oVq + ", acceptRedPocketCoverUrl=" + this.oVr + ", couponInfo=" + this.oVs + ", blessingWordImgUrl=" + this.oVt + ", blessingMediaType=" + this.oVu + ", blessingMediaShowType=" + this.oVv + ", appId=" + this.appId + ", aid=" + this.oVw + ", traceId=" + this.jyU + ')';
+    String str = "BrandCardContent(brandCardType=" + this.pyV + ", clickableTxt=" + this.pyW + ", mainMediaUrl=" + this.pyX + ", jumpInfo=" + this.pyY + ", manWording=" + this.pyZ + ", subWording=" + this.pza + ", acceptRedPocketCoverUrl=" + this.pzb + ", couponInfo=" + this.pzc + ", blessingWordImgUrl=" + this.pzd + ", blessingMediaType=" + this.pze + ", blessingMediaShowType=" + this.pzf + ", appId=" + this.appId + ", aid=" + this.pzg + ", traceId=" + this.jSR + ')';
     AppMethodBeat.o(108150);
     return str;
   }

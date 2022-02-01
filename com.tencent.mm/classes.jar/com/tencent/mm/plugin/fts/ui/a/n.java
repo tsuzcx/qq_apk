@@ -14,49 +14,48 @@ import com.tencent.mm.plugin.fts.a.d;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
-import com.tencent.mm.plugin.fts.ui.m;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class n
   extends a
 {
-  public String ikc;
-  private b sES;
-  private a sET;
+  public String iDt;
+  private b tBK;
+  private a tBL;
   
   public n(int paramInt)
   {
     super(8, paramInt);
     AppMethodBeat.i(112105);
-    this.sES = new b();
-    this.sET = new a();
+    this.tBK = new b();
+    this.tBL = new a();
     AppMethodBeat.o(112105);
   }
   
   public void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112106);
-    parama = m.FI(this.pil);
+    parama = com.tencent.mm.plugin.fts.ui.n.GX(this.pLM);
     if (parama == null) {}
-    for (this.ikc = "";; this.ikc = paramContext.getResources().getString(2131762914, new Object[] { parama }))
+    for (this.iDt = "";; this.iDt = paramContext.getResources().getString(2131762914, new Object[] { parama }))
     {
-      ac.i("MicroMsg.FTS.FTSMoreDataItem", "fillDataItem: tip=%s", new Object[] { this.ikc });
+      ad.i("MicroMsg.FTS.FTSMoreDataItem", "fillDataItem: tip=%s", new Object[] { this.iDt });
       AppMethodBeat.o(112106);
       return;
     }
   }
   
-  public a.b adW()
+  public a.b agC()
   {
-    return this.sES;
+    return this.tBK;
   }
   
   public final class a
     extends a.a
   {
     public View contentView;
-    public ImageView lzC;
-    public TextView sDL;
+    public ImageView lZa;
+    public TextView tAA;
     
     public a()
     {
@@ -77,8 +76,8 @@ public class n
       AppMethodBeat.i(112102);
       paramContext = LayoutInflater.from(paramContext).inflate(2131494216, paramViewGroup, false);
       paramViewGroup = new n.a(n.this);
-      paramViewGroup.sDL = ((TextView)paramContext.findViewById(2131305880));
-      paramViewGroup.lzC = ((ImageView)paramContext.findViewById(2131300891));
+      paramViewGroup.tAA = ((TextView)paramContext.findViewById(2131305880));
+      paramViewGroup.lZa = ((ImageView)paramContext.findViewById(2131300891));
       paramViewGroup.contentView = paramContext.findViewById(2131304428);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112102);
@@ -90,9 +89,9 @@ public class n
       AppMethodBeat.i(112103);
       paramContext = (n.a)parama;
       parama = (n)parama1;
-      m.q(paramContext.contentView, n.this.szt);
-      paramContext.sDL.setText(parama.ikc);
-      paramContext.lzC.setImageResource(2131690258);
+      com.tencent.mm.plugin.fts.ui.n.q(paramContext.contentView, n.this.tvU);
+      paramContext.tAA.setText(parama.iDt);
+      paramContext.lZa.setImageResource(2131690258);
       AppMethodBeat.o(112103);
     }
     
@@ -100,10 +99,10 @@ public class n
     {
       AppMethodBeat.i(112104);
       paramVarArgs = new Intent();
-      paramVarArgs.putExtra("detail_query", n.this.sxM.syk);
-      paramVarArgs.putExtra("detail_type", n.this.pil);
-      paramVarArgs.putExtra("Search_Scene", n.this.kNw);
-      d.c(paramContext, ".ui.FTSDetailUI", paramVarArgs);
+      paramVarArgs.putExtra("detail_query", n.this.tun.tuL);
+      paramVarArgs.putExtra("detail_type", n.this.pLM);
+      paramVarArgs.putExtra("Search_Scene", n.this.ljZ);
+      d.d(paramContext, ".ui.FTSDetailUI", paramVarArgs);
       AppMethodBeat.o(112104);
       return true;
     }
@@ -111,7 +110,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.n
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,19 @@
 package io.flutter.embedding.android;
 
-import android.content.Context;
-import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface g
+public enum g
 {
-  public abstract void aW(Runnable paramRunnable);
+  static
+  {
+    AppMethodBeat.i(213317);
+    MCa = new g("surface", 0);
+    MCb = new g("texture", 1);
+    MCc = new g[] { MCa, MCb };
+    AppMethodBeat.o(213317);
+  }
   
-  public abstract View lv(Context paramContext);
+  private g() {}
 }
 
 

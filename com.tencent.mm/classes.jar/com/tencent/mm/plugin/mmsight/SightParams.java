@@ -8,27 +8,27 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.modelcontrol.d;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
 
 public class SightParams
   implements Parcelable
 {
   public static final Parcelable.Creator<SightParams> CREATOR;
-  public VideoTransPara hcZ;
+  public VideoTransPara hvh;
   public int mode;
   public int scene;
-  public String uJA;
-  public boolean uJB;
-  public boolean uJC;
-  public String uJD;
-  public boolean uJE;
-  public boolean uJF;
-  public int uJG;
-  public int uJv;
-  public String uJw;
-  public String uJx;
-  public String uJy;
-  public String uJz;
+  public int vMB;
+  public String vMC;
+  public String vMD;
+  public String vME;
+  public String vMF;
+  public String vMG;
+  public boolean vMH;
+  public boolean vMI;
+  public String vMJ;
+  public boolean vMK;
+  public boolean vML;
+  public int vMM;
   
   static
   {
@@ -41,35 +41,35 @@ public class SightParams
   {
     AppMethodBeat.i(148784);
     this.mode = 0;
-    this.uJv = 2;
-    this.uJw = "";
-    this.uJx = "";
-    this.uJy = "";
-    this.uJz = "";
-    this.uJA = "";
-    this.uJB = true;
+    this.vMB = 2;
+    this.vMC = "";
+    this.vMD = "";
+    this.vME = "";
+    this.vMF = "";
+    this.vMG = "";
+    this.vMH = true;
     this.scene = -1;
-    this.uJC = true;
-    this.uJD = "";
-    this.uJE = true;
-    this.uJF = false;
+    this.vMI = true;
+    this.vMJ = "";
+    this.vMK = true;
+    this.vML = false;
     if (paramInt1 == 1) {
-      this.hcZ = d.aDL().aDM();
+      this.hvh = d.aGQ().aGR();
     }
     for (;;)
     {
       this.scene = paramInt1;
       this.mode = paramInt2;
-      g.agS();
-      this.uJG = ((Integer)g.agR().agA().get(344066, Integer.valueOf(0))).intValue();
+      g.ajD();
+      this.vMM = ((Integer)g.ajC().ajl().get(344066, Integer.valueOf(0))).intValue();
       AppMethodBeat.o(148784);
       return;
       if ((paramInt1 == 2) || (paramInt1 == 3) || (paramInt1 == 4)) {
-        this.hcZ = d.aDL().aDN();
+        this.hvh = d.aGQ().aGS();
       } else if (paramInt1 == 7) {
-        this.hcZ = d.aDL().aDS();
+        this.hvh = d.aGQ().aGX();
       } else {
-        this.hcZ = d.aDL().aDN();
+        this.hvh = d.aGQ().aGS();
       }
     }
   }
@@ -78,44 +78,44 @@ public class SightParams
   {
     AppMethodBeat.i(148785);
     this.mode = 0;
-    this.uJv = 2;
-    this.uJw = "";
-    this.uJx = "";
-    this.uJy = "";
-    this.uJz = "";
-    this.uJA = "";
-    this.uJB = true;
+    this.vMB = 2;
+    this.vMC = "";
+    this.vMD = "";
+    this.vME = "";
+    this.vMF = "";
+    this.vMG = "";
+    this.vMH = true;
     this.scene = -1;
-    this.uJC = true;
-    this.uJD = "";
-    this.uJE = true;
-    this.uJF = false;
+    this.vMI = true;
+    this.vMJ = "";
+    this.vMK = true;
+    this.vML = false;
     this.mode = paramParcel.readInt();
-    this.hcZ = ((VideoTransPara)paramParcel.readParcelable(VideoTransPara.class.getClassLoader()));
-    this.uJw = paramParcel.readString();
-    this.uJx = paramParcel.readString();
-    this.uJy = paramParcel.readString();
-    this.uJz = paramParcel.readString();
-    this.uJG = paramParcel.readInt();
-    this.uJv = paramParcel.readInt();
+    this.hvh = ((VideoTransPara)paramParcel.readParcelable(VideoTransPara.class.getClassLoader()));
+    this.vMC = paramParcel.readString();
+    this.vMD = paramParcel.readString();
+    this.vME = paramParcel.readString();
+    this.vMF = paramParcel.readString();
+    this.vMM = paramParcel.readInt();
+    this.vMB = paramParcel.readInt();
     if (paramParcel.readInt() > 0)
     {
       bool1 = true;
-      this.uJB = bool1;
+      this.vMH = bool1;
       this.scene = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
         break label237;
       }
       bool1 = true;
       label185:
-      this.uJC = bool1;
-      this.uJD = paramParcel.readString();
+      this.vMI = bool1;
+      this.vMJ = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
         break label242;
       }
       bool1 = true;
       label207:
-      this.uJE = bool1;
+      this.vMK = bool1;
       if (paramParcel.readByte() == 0) {
         break label247;
       }
@@ -125,7 +125,7 @@ public class SightParams
     label247:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.uJF = bool1;
+      this.vML = bool1;
       AppMethodBeat.o(148785);
       return;
       bool1 = false;
@@ -144,10 +144,10 @@ public class SightParams
   
   public final SightParams r(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.uJy = paramString1;
-    this.uJw = paramString2;
-    this.uJx = paramString3;
-    this.uJz = paramString4;
+    this.vME = paramString1;
+    this.vMC = paramString2;
+    this.vMD = paramString3;
+    this.vMF = paramString4;
     return this;
   }
   
@@ -156,33 +156,33 @@ public class SightParams
     int i = 1;
     AppMethodBeat.i(148786);
     paramParcel.writeInt(this.mode);
-    paramParcel.writeParcelable(this.hcZ, paramInt);
-    paramParcel.writeString(this.uJw);
-    paramParcel.writeString(this.uJx);
-    paramParcel.writeString(this.uJy);
-    paramParcel.writeString(this.uJz);
-    paramParcel.writeInt(this.uJG);
-    paramParcel.writeInt(this.uJv);
+    paramParcel.writeParcelable(this.hvh, paramInt);
+    paramParcel.writeString(this.vMC);
+    paramParcel.writeString(this.vMD);
+    paramParcel.writeString(this.vME);
+    paramParcel.writeString(this.vMF);
+    paramParcel.writeInt(this.vMM);
+    paramParcel.writeInt(this.vMB);
     byte b;
-    if (this.uJB)
+    if (this.vMH)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
       paramParcel.writeInt(this.scene);
-      if (!this.uJC) {
+      if (!this.vMI) {
         break label159;
       }
       b = 1;
       label104:
       paramParcel.writeByte(b);
-      paramParcel.writeString(this.uJD);
-      if (!this.uJE) {
+      paramParcel.writeString(this.vMJ);
+      if (!this.vMK) {
         break label164;
       }
       paramInt = 1;
       label126:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.uJF) {
+      if (!this.vML) {
         break label169;
       }
     }

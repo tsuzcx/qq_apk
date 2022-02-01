@@ -6,6 +6,7 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public final class a
   extends c
@@ -23,14 +24,18 @@ public final class a
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(137965);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/picker/AppBrandBottomPicker$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         a.this.hide();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/picker/AppBrandBottomPicker$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(137965);
       }
     });
     AppMethodBeat.o(137967);
   }
   
-  public static a dq(View paramView)
+  public static a ds(View paramView)
   {
     AppMethodBeat.i(137966);
     paramView = (a)paramView.getRootView().findViewById(VIEW_ID);
@@ -53,7 +58,7 @@ public final class a
       if ((getParent() != null) && ((getParent() instanceof ViewGroup))) {}
       for (int i = ((ViewGroup)getParent()).getMeasuredHeight(); i > 0; i = 0)
       {
-        ex(paramInt1, View.MeasureSpec.makeMeasureSpec(i, 1073741824));
+        ez(paramInt1, View.MeasureSpec.makeMeasureSpec(i, 1073741824));
         AppMethodBeat.o(137968);
         return;
       }
@@ -80,7 +85,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.a
  * JD-Core Version:    0.7.0.1
  */

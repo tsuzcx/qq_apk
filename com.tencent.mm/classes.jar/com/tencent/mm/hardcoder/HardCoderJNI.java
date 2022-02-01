@@ -232,13 +232,13 @@ public class HardCoderJNI
         connect = true;
         if (connectStatusCallback != null)
         {
-          connectStatusCallback.dt(connect);
+          connectStatusCallback.dv(connect);
           AppMethodBeat.o(62467);
           return;
           connect = false;
           if (connectStatusCallback != null)
           {
-            connectStatusCallback.dt(connect);
+            connectStatusCallback.dv(connect);
             AppMethodBeat.o(62467);
             return;
             connect = true;
@@ -457,10 +457,10 @@ public class HardCoderJNI
     }
     a locala = hcPerfManager;
     a.c localc = new a.c();
-    localc.gbW = System.currentTimeMillis();
-    localc.aFZ = paramInt;
+    localc.gvG = System.currentTimeMillis();
+    localc.aHQ = paramInt;
     if (paramInt != 0) {}
-    for (boolean bool = locala.gbU.offer(localc);; bool = false)
+    for (boolean bool = locala.gvE.offer(localc);; bool = false)
     {
       d.d("Hardcoder.HCPerfManager", String.format("stop ret:%b, hashcode:%x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
       d.i("Hardcoder.HardCoderJNI", String.format("stopPerformance:%d, ret:%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));

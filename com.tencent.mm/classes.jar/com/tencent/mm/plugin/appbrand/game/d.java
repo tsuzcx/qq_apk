@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.game;
 
-import com.tencent.mm.plugin.appbrand.service.l;
+import com.tencent.mm.plugin.appbrand.service.m;
 
 public final class d
-  implements l
+  implements m
 {}
 
 

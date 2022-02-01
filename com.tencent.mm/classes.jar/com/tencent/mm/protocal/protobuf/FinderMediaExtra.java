@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FinderMediaExtra
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String text;
   
@@ -32,9 +32,9 @@ public class FinderMediaExtra
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(169006);
@@ -50,7 +50,7 @@ public class FinderMediaExtra
           AppMethodBeat.o(169006);
           return -1;
         }
-        localFinderMediaExtra.text = locala.LVo.readString();
+        localFinderMediaExtra.text = locala.NPN.readString();
         AppMethodBeat.o(169006);
         return 0;
       }
@@ -61,7 +61,7 @@ public class FinderMediaExtra
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.FinderMediaExtra
  * JD-Core Version:    0.7.0.1
  */

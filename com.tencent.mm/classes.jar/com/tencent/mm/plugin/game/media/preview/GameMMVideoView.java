@@ -23,24 +23,24 @@ public class GameMMVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void aJn()
+  public final void aMx()
   {
     AppMethodBeat.i(41216);
-    super.aJn();
+    super.aMx();
     AppMethodBeat.o(41216);
   }
   
-  public final boolean cPH()
+  public final boolean cYm()
   {
     AppMethodBeat.i(41217);
-    boolean bool = super.cPH();
+    boolean bool = super.cYm();
     AppMethodBeat.o(41217);
     return bool;
   }
   
   public String getFilePath()
   {
-    return this.hYr;
+    return this.irN;
   }
   
   public String getMediaId()

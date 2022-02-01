@@ -11,9 +11,9 @@ import java.io.InputStream;
 public final class c
   implements g
 {
-  private final AssetManager aDu;
-  private final w<? super c> bur;
-  private long bus;
+  private final AssetManager aFl;
+  private final w<? super c> bEG;
+  private long bEH;
   private InputStream inputStream;
   private boolean opened;
   private Uri uri;
@@ -21,8 +21,8 @@ public final class c
   public c(Context paramContext, w<? super c> paramw)
   {
     AppMethodBeat.i(92955);
-    this.aDu = paramContext.getAssets();
-    this.bur = paramw;
+    this.aFl = paramContext.getAssets();
+    this.bEG = paramw;
     AppMethodBeat.o(92955);
   }
   
@@ -39,7 +39,7 @@ public final class c
         if (str2.startsWith("/android_asset/"))
         {
           str1 = str2.substring(15);
-          this.inputStream = this.aDu.open(str1, 1);
+          this.inputStream = this.aFl.open(str1, 1);
           if (this.inputStream.skip(paramj.position) >= paramj.position) {
             break;
           }
@@ -60,20 +60,20 @@ public final class c
       }
     }
     if (paramj.length != -1L) {
-      this.bus = paramj.length;
+      this.bEH = paramj.length;
     }
     for (;;)
     {
       this.opened = true;
-      if (this.bur != null) {
-        this.bur.ve();
+      if (this.bEG != null) {
+        this.bEG.a(this, paramj);
       }
-      long l = this.bus;
+      long l = this.bEH;
       AppMethodBeat.o(92956);
       return l;
-      this.bus = this.inputStream.available();
-      if (this.bus == 2147483647L) {
-        this.bus = -1L;
+      this.bEH = this.inputStream.available();
+      if (this.bEH == 2147483647L) {
+        this.bEH = -1L;
       }
     }
   }
@@ -101,8 +101,8 @@ public final class c
       if (this.opened)
       {
         this.opened = false;
-        if (this.bur != null) {
-          this.bur.vf();
+        if (this.bEG != null) {
+          this.bEG.ah(this);
         }
       }
       AppMethodBeat.o(92958);
@@ -123,27 +123,27 @@ public final class c
       AppMethodBeat.o(92957);
       return 0;
     }
-    if (this.bus == 0L)
+    if (this.bEH == 0L)
     {
       AppMethodBeat.o(92957);
       return -1;
     }
     try
     {
-      if (this.bus == -1L) {}
+      if (this.bEH == -1L) {}
       for (;;)
       {
         paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, paramInt2);
         if (paramInt1 != -1) {
           break label134;
         }
-        if (this.bus == -1L) {
+        if (this.bEH == -1L) {
           break;
         }
         paramArrayOfByte = new a(new EOFException());
         AppMethodBeat.o(92957);
         throw paramArrayOfByte;
-        long l = Math.min(this.bus, paramInt2);
+        long l = Math.min(this.bEH, paramInt2);
         paramInt2 = (int)l;
       }
       AppMethodBeat.o(92957);
@@ -156,11 +156,11 @@ public final class c
     }
     return -1;
     label134:
-    if (this.bus != -1L) {
-      this.bus -= paramInt1;
+    if (this.bEH != -1L) {
+      this.bEH -= paramInt1;
     }
-    if (this.bur != null) {
-      this.bur.eV(paramInt1);
+    if (this.bEG != null) {
+      this.bEG.e(this, paramInt1);
     }
     AppMethodBeat.o(92957);
     return paramInt1;

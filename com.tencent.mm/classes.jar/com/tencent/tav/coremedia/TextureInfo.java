@@ -6,6 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TextureInfo
 {
+  private int format = 6407;
   private int frameBuffer = -1;
   public final int height;
   private boolean mixAlpha = true;
@@ -39,11 +40,16 @@ public class TextureInfo
   
   public TextureInfo clone()
   {
-    AppMethodBeat.i(195744);
+    AppMethodBeat.i(219465);
     TextureInfo localTextureInfo = new TextureInfo(this.textureID, this.textureType, this.width, this.height, this.textureMatrix, this.preferRotation);
     localTextureInfo.needRelease = true;
-    AppMethodBeat.o(195744);
+    AppMethodBeat.o(219465);
     return localTextureInfo;
+  }
+  
+  public int getFormat()
+  {
+    return this.format;
   }
   
   public int getFrameBuffer()
@@ -73,7 +79,7 @@ public class TextureInfo
   
   public void release()
   {
-    AppMethodBeat.i(195745);
+    AppMethodBeat.i(219466);
     this.released = true;
     if (this.frameBuffer != -1)
     {
@@ -81,7 +87,12 @@ public class TextureInfo
       this.frameBuffer = -1;
     }
     GLES20.glDeleteTextures(1, new int[] { this.textureID }, 0);
-    AppMethodBeat.o(195745);
+    AppMethodBeat.o(219466);
+  }
+  
+  public void setFormat(int paramInt)
+  {
+    this.format = paramInt;
   }
   
   public void setFrameBuffer(int paramInt)
@@ -101,15 +112,15 @@ public class TextureInfo
   
   public String toString()
   {
-    AppMethodBeat.i(195746);
-    String str = "TextureInfo{textureID=" + this.textureID + ", textureType=" + this.textureType + ", width=" + this.width + ", height=" + this.height + ", preferRotation=" + this.preferRotation + ", textureMatrix=" + this.textureMatrix + ", frameBuffer=" + this.frameBuffer + ", needRelease=" + this.needRelease + '}';
-    AppMethodBeat.o(195746);
+    AppMethodBeat.i(219467);
+    String str = "TextureInfo{textureID=" + this.textureID + ", textureType=" + this.textureType + ", width=" + this.width + ", height=" + this.height + ", preferRotation=" + this.preferRotation + ", textureMatrix=" + this.textureMatrix + ", frameBuffer=" + this.frameBuffer + ", needRelease=" + this.needRelease + ", mixAlpha=" + this.mixAlpha + ", format=" + this.format + '}';
+    AppMethodBeat.o(219467);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.coremedia.TextureInfo
  * JD-Core Version:    0.7.0.1
  */

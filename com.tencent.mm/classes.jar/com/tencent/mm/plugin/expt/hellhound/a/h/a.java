@@ -3,46 +3,51 @@ package com.tencent.mm.plugin.expt.hellhound.a.h;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.expt.hellhound.core.b.c.d;
+import com.tencent.mm.plugin.expt.hellhound.core.b.c.e;
+import com.tencent.mm.protocal.protobuf.dwc;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.l;
 import d.v;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor;", "", "()V", "Companion", "SubMenuListener", "plugin-expt_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor;", "", "()V", "Companion", "SubMenuListener", "plugin-expt_release"})
 public final class a
 {
-  private static boolean qqL;
-  private static final b qqM;
-  private static boolean qqN;
-  public static final a.a qqO;
+  private static boolean qZP;
+  private static final b qZQ;
+  private static boolean qZR;
+  public static final a.a qZS;
   
   static
   {
     AppMethodBeat.i(169403);
-    qqO = new a.a((byte)0);
-    qqM = new b();
+    qZS = new a.a((byte)0);
+    qZQ = new b();
     AppMethodBeat.o(169403);
   }
   
-  public static final void cjz()
+  public static final void coL()
   {
     AppMethodBeat.i(169404);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Pair.create("processOnItemClick", "(II)V"));
     HashMap localHashMap = new HashMap();
     ((Map)localHashMap).put("com/tencent/mm/ui/PlusSubMenuHelper", localArrayList);
-    com.tencent.mm.hellhoundlib.a.aeC();
-    com.tencent.mm.hellhoundlib.a.a((Map)localHashMap, (c)qqM);
+    com.tencent.mm.hellhoundlib.a.aho();
+    com.tencent.mm.hellhoundlib.a.a((Map)localHashMap, (c)qZQ);
     AppMethodBeat.o(169404);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor$SubMenuListener;", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "()V", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor$SubMenuListener;", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "()V", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "viewCallback", "id", "", "plugin-expt_release"})
   static final class b
     implements c
   {
-    public final void b(String paramString1, String paramString2, String paramString3, Object paramObject, Object[] paramArrayOfObject)
+    public final void a(String paramString1, String paramString2, String paramString3, Object paramObject1, Object paramObject2) {}
+    
+    public final void a(String paramString1, String paramString2, String paramString3, Object paramObject, Object[] paramArrayOfObject)
     {
       boolean bool2 = true;
       AppMethodBeat.i(184286);
@@ -65,33 +70,37 @@ public final class a
         throw paramString1;
       }
       i = ((Integer)paramString1).intValue();
-      paramString1 = a.qqO;
+      paramString1 = a.qZS;
       if (10 == i)
       {
         bool1 = true;
-        a.kO(bool1);
-        paramString1 = a.qqO;
+        a.lg(bool1);
+        paramString1 = a.qZS;
         if (2147483647 != i) {
-          break label187;
+          break label256;
         }
       }
-      label187:
+      label256:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        a.kP(bool1);
-        paramString1 = new StringBuilder("HABBYGE-MALI, SubMenuMonitor, runOnEnter: ").append(i).append(", ");
-        paramString2 = a.qqO;
-        paramString1 = paramString1.append(a.clx()).append(", ");
-        paramString2 = a.qqO;
-        ac.i("SubMenuMonitor", a.cly());
+        a.lh(bool1);
+        paramString1 = new dwc();
+        paramString1.id = String.valueOf(i);
+        paramString1.timestamp = System.currentTimeMillis();
+        paramString1.HIB = paramString1.id;
+        paramString1.typeName = "MMPopupWindow$PopupViewContainer";
+        paramString1.HIC = "MMPopupWindow$PopupViewContainer";
+        paramString1.dtK = d.qSq.value;
+        paramString1.type = 0;
+        ad.i("HABBYGE-MALI.SubMenuMonitor", "SubMenuMonitor, viewCallback:\nid=" + paramString1.id + '\n' + "timestamp=" + paramString1.timestamp + '\n' + "eventId=" + paramString1.dtK);
+        paramString2 = e.qSF;
+        e.a(paramString1);
         AppMethodBeat.o(184286);
         return;
         bool1 = false;
         break;
       }
     }
-    
-    public final void f(String paramString, Object paramObject) {}
   }
 }
 

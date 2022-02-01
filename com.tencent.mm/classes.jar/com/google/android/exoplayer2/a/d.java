@@ -5,7 +5,7 @@ import java.nio.ByteOrder;
 
 public abstract interface d
 {
-  public static final ByteBuffer aUx = ByteBuffer.allocateDirect(0).order(ByteOrder.nativeOrder());
+  public static final ByteBuffer beR = ByteBuffer.allocateDirect(0).order(ByteOrder.nativeOrder());
   
   public abstract void f(ByteBuffer paramByteBuffer);
   
@@ -13,21 +13,21 @@ public abstract interface d
   
   public abstract boolean isActive();
   
-  public abstract boolean rX();
-  
   public abstract void reset();
   
   public abstract boolean s(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract int sd();
+  public abstract int tC();
   
-  public abstract void se();
+  public abstract void tD();
   
-  public abstract ByteBuffer sf();
+  public abstract ByteBuffer tE();
+  
+  public abstract boolean tw();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.a.d
  * JD-Core Version:    0.7.0.1
  */

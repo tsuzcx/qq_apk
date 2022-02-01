@@ -90,6 +90,7 @@ public class ShareConstants
   public static final String PACKAGE_META_FILE = "assets/package_meta.txt";
   public static final String PATCH_BASE_NAME = "patch-";
   public static final String PATCH_DIRECTORY_NAME = "tinker";
+  public static final String PATCH_DIRECTORY_NAME_SPEC = "wc_tinker_dir";
   public static final String PATCH_INFO_LOCK_NAME = "info.lock";
   public static final String PATCH_INFO_NAME = "patch.info";
   public static final String PATCH_SUFFIX = ".apk";
@@ -128,7 +129,7 @@ public class ShareConstants
   public static final String TINKER_SAFE_MODE_COUNT_PREFIX = "safe_mode_count_";
   public static final int TINKER_SAFE_MODE_MAX_COUNT = 3;
   public static final String TINKER_SHARE_PREFERENCE_CONFIG = "tinker_share_config";
-  public static final String TINKER_VERSION = "1.9.14.7-fix2-INTERNALv4";
+  public static final String TINKER_VERSION = "1.9.14.7-fix7-INTERNALv4";
   public static final int TYPE_ARKHOT_SO = 8;
   public static final int TYPE_CLASS_N_DEX = 7;
   public static final int TYPE_DEX = 3;

@@ -7,15 +7,16 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class DragRecyclerView
   extends RecyclerView
   implements GestureDetector.OnGestureListener
 {
-  private GestureDetector kVo;
-  boolean mxR = false;
-  DragFeatureView mxY;
+  private GestureDetector lsn;
+  DragFeatureView mYG;
+  boolean mYz = false;
   
   public DragRecyclerView(Context paramContext)
   {
@@ -37,17 +38,20 @@ public abstract class DragRecyclerView
   
   private void init(Context paramContext)
   {
-    this.kVo = new GestureDetector(paramContext, this);
+    this.lsn = new GestureDetector(paramContext, this);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = false;
-    this.kVo.onTouchEvent(paramMotionEvent);
-    if (this.mxR)
+    GestureDetector localGestureDetector = this.lsn;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.ahp(), "com/tencent/mm/plugin/appbrand/widget/desktop/DragRecyclerView", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.mq(0)), "com/tencent/mm/plugin/appbrand/widget/desktop/DragRecyclerView", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    if (this.mYz)
     {
-      if (this.mxY != null) {
-        this.mxY.onTouch(this, paramMotionEvent);
+      if (this.mYG != null) {
+        this.mYG.onTouch(this, paramMotionEvent);
       }
       int j = paramMotionEvent.getAction();
       paramMotionEvent.setAction(3);
@@ -62,7 +66,7 @@ public abstract class DragRecyclerView
     if (paramMotionEvent.getAction() != 3) {
       paramMotionEvent.getAction();
     }
-    if ((this.mxR) || (super.dispatchTouchEvent(paramMotionEvent))) {
+    if ((this.mYz) || (super.dispatchTouchEvent(paramMotionEvent))) {
       bool = true;
     }
     return bool;
@@ -70,12 +74,12 @@ public abstract class DragRecyclerView
   
   public DragFeatureView getDragRubbishView()
   {
-    return this.mxY;
+    return this.mYG;
   }
   
   public final void l(DragFeatureView paramDragFeatureView)
   {
-    this.mxY = paramDragFeatureView;
+    this.mYG = paramDragFeatureView;
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
@@ -90,17 +94,27 @@ public abstract class DragRecyclerView
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (this.mxR) {
-      ac.i("DragRecyclerView", "alvinluo onLongPress ignore");
-    }
-    while (this.mxY == null) {
+    b localb = new b();
+    localb.bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/DragRecyclerView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+    if (this.mYz)
+    {
+      ad.i("DragRecyclerView", "alvinluo onLongPress ignore");
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/desktop/DragRecyclerView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
       return;
     }
-    this.mxY.onLongPress(paramMotionEvent);
-    if (this.mxY.getVisibility() == 0) {}
+    if (this.mYG != null)
+    {
+      this.mYG.onLongPress(paramMotionEvent);
+      if (this.mYG.getVisibility() != 0) {
+        break label101;
+      }
+    }
+    label101:
     for (boolean bool = true;; bool = false)
     {
-      this.mxR = bool;
+      this.mYz = bool;
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/desktop/DragRecyclerView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
       return;
     }
   }
@@ -114,17 +128,21 @@ public abstract class DragRecyclerView
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
+    b localb = new b();
+    localb.bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/DragRecyclerView", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/appbrand/widget/desktop/DragRecyclerView", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
     return false;
   }
   
   public void setLongPress(boolean paramBoolean)
   {
-    this.mxR = paramBoolean;
+    this.mYz = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.DragRecyclerView
  * JD-Core Version:    0.7.0.1
  */

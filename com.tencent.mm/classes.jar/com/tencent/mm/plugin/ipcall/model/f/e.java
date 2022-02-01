@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.ipcall.model.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 
 public final class e
   extends a
 {
-  public long tKX = 0L;
-  public long tKY = 0L;
+  public long uNK = 0L;
+  public long uNL = 0L;
   
-  public final void btF()
+  public final void bxK()
   {
     AppMethodBeat.i(25502);
-    h.wUl.f(12935, new Object[] { Long.valueOf(this.tKX), Long.valueOf(this.tKY) });
+    g.yhR.f(12935, new Object[] { Long.valueOf(this.uNK), Long.valueOf(this.uNL) });
     AppMethodBeat.o(25502);
   }
 }

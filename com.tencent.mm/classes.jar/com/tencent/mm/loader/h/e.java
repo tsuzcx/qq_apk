@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 public final class e<T>
 {
-  private e<?> gMw;
+  private e<?> hgt;
   public T value;
   
   public e() {}
@@ -14,9 +14,9 @@ public final class e<T>
     this.value = paramT;
   }
   
-  public final e aoP()
+  public final e arC()
   {
-    return this.gMw;
+    return this.hgt;
   }
   
   public final T getValue()

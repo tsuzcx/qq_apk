@@ -6,109 +6,66 @@ import com.tencent.mm.plugin.report.a;
 public final class ei
   extends a
 {
-  private String dEE;
-  private String dUC;
-  private String dUE;
-  public long dUF = 0L;
-  public long dUG = 0L;
-  public long dUH = 0L;
-  public long dUI = 0L;
-  public long dUJ = 0L;
-  private String dUx;
+  public String dVa;
+  private long dWo;
+  public long dZW;
+  public String dZX = "";
+  public long eaa;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(110282);
+    AppMethodBeat.i(200898);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dEE);
+    ((StringBuffer)localObject).append(this.dVa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUx);
+    ((StringBuffer)localObject).append(this.dWo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUE);
+    ((StringBuffer)localObject).append(this.dZW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUF);
+    ((StringBuffer)localObject).append(this.eaa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUG);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUH);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUI);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUJ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUC);
+    ((StringBuffer)localObject).append(this.dZX);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(110282);
+    awz((String)localObject);
+    AppMethodBeat.o(200898);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(110283);
+    AppMethodBeat.i(200899);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ChatName:").append(this.dEE);
+    ((StringBuffer)localObject).append("Sessionid:").append(this.dVa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("LaunchUserName:").append(this.dUx);
+    ((StringBuffer)localObject).append("EnterTimeStampMs:").append(this.dWo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MsgUserName:").append(this.dUE);
+    ((StringBuffer)localObject).append("RedDotCtrlType:").append(this.dZW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionSvrId:").append(this.dUF);
+    ((StringBuffer)localObject).append("RedDotShowInfoType:").append(this.eaa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasHeader:").append(this.dUG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasTail:").append(this.dUH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasExample:").append(this.dUI);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ActiveScene:").append(this.dUJ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Identifier:").append(this.dUC);
+    ((StringBuffer)localObject).append("RedDotTipsID:").append(this.dZX);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(110283);
+    AppMethodBeat.o(200899);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18244;
+    return 20491;
   }
   
-  public final ei mc(String paramString)
+  public final ei jX(long paramLong)
   {
-    AppMethodBeat.i(110278);
-    this.dEE = t("ChatName", paramString, true);
-    AppMethodBeat.o(110278);
-    return this;
-  }
-  
-  public final ei md(String paramString)
-  {
-    AppMethodBeat.i(110279);
-    this.dUx = t("LaunchUserName", paramString, true);
-    AppMethodBeat.o(110279);
-    return this;
-  }
-  
-  public final ei me(String paramString)
-  {
-    AppMethodBeat.i(110280);
-    this.dUE = t("MsgUserName", paramString, true);
-    AppMethodBeat.o(110280);
-    return this;
-  }
-  
-  public final ei mf(String paramString)
-  {
-    AppMethodBeat.i(110281);
-    this.dUC = t("Identifier", paramString, true);
-    AppMethodBeat.o(110281);
+    AppMethodBeat.i(200897);
+    this.dWo = paramLong;
+    super.bg("EnterTimeStampMs", this.dWo);
+    AppMethodBeat.o(200897);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ei
  * JD-Core Version:    0.7.0.1
  */

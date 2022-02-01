@@ -8,13 +8,13 @@ public abstract class dd
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elM = "payMsgId".hashCode();
-  private static final int elP = "msgId".hashCode();
+  private static final int fen = "chatRoomName".hashCode();
+  private static final int feo = "BindAppData".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean elI = true;
-  private boolean elL = true;
-  public long field_msgId;
-  public String field_payMsgId;
+  private boolean fel = true;
+  private boolean fem = true;
+  public byte[] field_BindAppData;
+  public String field_chatRoomName;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +29,11 @@ public abstract class dd
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elM != k) {
+      if (fen != k) {
         break label65;
       }
-      this.field_payMsgId = paramCursor.getString(i);
-      this.elI = true;
+      this.field_chatRoomName = paramCursor.getString(i);
+      this.fel = true;
     }
     for (;;)
     {
@@ -41,8 +41,8 @@ public abstract class dd
       break label20;
       break;
       label65:
-      if (elP == k) {
-        this.field_msgId = paramCursor.getLong(i);
+      if (feo == k) {
+        this.field_BindAppData = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +52,14 @@ public abstract class dd
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.elI) {
-      localContentValues.put("payMsgId", this.field_payMsgId);
+    if (this.field_chatRoomName == null) {
+      this.field_chatRoomName = "群username";
     }
-    if (this.elL) {
-      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
+    if (this.fel) {
+      localContentValues.put("chatRoomName", this.field_chatRoomName);
+    }
+    if (this.fem) {
+      localContentValues.put("BindAppData", this.field_BindAppData);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -66,7 +69,7 @@ public abstract class dd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.dd
  * JD-Core Version:    0.7.0.1
  */

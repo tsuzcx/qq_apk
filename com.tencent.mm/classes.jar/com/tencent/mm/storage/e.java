@@ -1,55 +1,57 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.model.bi.b;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h.b;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h.c;
-import com.tencent.mm.plugin.messenger.foundation.a.m;
+import com.tencent.mm.model.bj.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.storagebase.h;
 
 public abstract class e
 {
-  public static m GBO;
-  protected com.tencent.mm.plugin.messenger.foundation.a.a.h GBN;
+  public static n InI;
+  protected i InH;
   
-  public e(com.tencent.mm.plugin.messenger.foundation.a.a.h paramh)
+  public e(i parami)
   {
-    this.GBN = paramh;
+    this.InH = parami;
   }
   
-  protected final void a(h.b paramb)
+  protected final void a(i.b paramb)
   {
-    this.GBN.a(paramb);
+    this.InH.a(paramb);
   }
   
-  protected final void a(h.c paramc)
+  protected final void a(i.c paramc)
   {
-    this.GBN.a(paramc);
+    this.InH.a(paramc);
   }
   
-  protected boolean a(bo parambo, bi.b paramb)
+  protected boolean a(bu parambu, bj.b paramb)
   {
     return true;
   }
   
-  public abstract String aME(String paramString);
+  public abstract String aiu(String paramString);
   
-  protected final String alA(String paramString)
+  protected final String aqo(String paramString)
   {
-    return this.GBN.alA(paramString);
+    return this.InH.aqo(paramString);
   }
   
-  protected final void c(com.tencent.mm.storagebase.h paramh, String paramString)
+  protected final void d(h paramh, String paramString)
   {
-    this.GBN.c(paramh, paramString);
+    this.InH.d(paramh, paramString);
   }
   
-  public final com.tencent.mm.storagebase.h getDB()
+  public final h getDB()
   {
-    return this.GBN.getDB();
+    return this.InH.getDB();
   }
   
-  protected final void lu(String paramString1, String paramString2)
+  protected final void lT(String paramString1, String paramString2)
   {
-    this.GBN.b(paramString1, paramString2, null);
+    this.InH.c(paramString1, paramString2, null);
   }
 }
 

@@ -1,23 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
-import com.tencent.luggage.h.e.b;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.service.c;
 
 public final class ap
-  extends a<q>
-{
-  public static final int CTRL_INDEX = 286;
-  public static final String NAME = "chooseInvoiceTitle";
-}
+  extends ao<c>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ap
  * JD-Core Version:    0.7.0.1
  */

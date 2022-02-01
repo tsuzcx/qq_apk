@@ -7,10 +7,10 @@ public enum b
   static
   {
     AppMethodBeat.i(48505);
-    lZd = new b("LOW_LEVEL", 0);
-    lZe = new b("MIDDLE_LEVEL", 1);
-    lZf = new b("HIGH_LEVEL", 2);
-    lZg = new b[] { lZd, lZe, lZf };
+    myT = new b("LOW_LEVEL", 0);
+    myU = new b("MIDDLE_LEVEL", 1);
+    myV = new b("HIGH_LEVEL", 2);
+    myW = new b[] { myT, myU, myV };
     AppMethodBeat.o(48505);
   }
   
@@ -18,7 +18,7 @@ public enum b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.preload.b
  * JD-Core Version:    0.7.0.1
  */

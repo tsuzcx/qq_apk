@@ -8,58 +8,58 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.f.c;
-import com.tencent.mm.plugin.appbrand.menu.p;
+import com.tencent.mm.plugin.appbrand.menu.q;
 import com.tencent.mm.plugin.appbrand.r.a.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.widget.a.e;
 import java.util.List;
 
 public class s
   implements f.b, f.c
 {
-  aa caw;
-  private e jiS;
-  private List<p> jiT;
-  private View lAH;
+  aa ckN;
+  private e jCA;
+  private List<q> jCB;
   private String mAppId;
+  private View mag;
   
-  public s(aa paramaa, List<p> paramList)
+  public s(aa paramaa, List<q> paramList)
   {
     this(paramaa, paramList, true);
     AppMethodBeat.i(135013);
     AppMethodBeat.o(135013);
   }
   
-  public s(aa paramaa, List<p> paramList, boolean paramBoolean)
+  public s(aa paramaa, List<q> paramList, boolean paramBoolean)
   {
     AppMethodBeat.i(176563);
-    this.lAH = null;
+    this.mag = null;
     this.mAppId = paramaa.getAppId();
-    this.caw = paramaa;
-    this.jiT = paramList;
+    this.ckN = paramaa;
+    this.jCB = paramList;
     paramList = paramaa.getRuntime().getWindowAndroid();
-    if ((paramList != null) && (paramList.aTx())) {}
+    if ((paramList != null) && (paramList.aWN())) {}
     for (boolean bool = false;; bool = true)
     {
       paramaa = paramaa.getContext();
       if (paramBoolean) {}
       for (;;)
       {
-        this.jiS = new e(paramaa, bool, i);
-        paramaa = this.caw.CQ();
+        this.jCA = new e(paramaa, bool, i);
+        paramaa = this.ckN.Ep();
         if (paramaa != null)
         {
-          this.jiS.J(paramaa, true);
-          this.lAH = paramaa;
+          this.jCA.K(paramaa, true);
+          this.mag = paramaa;
         }
-        paramList = this.caw.bqL();
+        paramList = this.ckN.buL();
         if (paramList != null) {
-          this.jiS.setFooterView(paramList);
+          this.jCA.setFooterView(paramList);
         }
-        this.jiS.ISu = new n.c()
+        this.jCA.KJy = new n.d()
         {
           public final void onCreateMMMenu(l paramAnonymousl)
           {
@@ -68,7 +68,7 @@ public class s
             AppMethodBeat.o(135008);
           }
         };
-        this.jiS.ISv = new n.d()
+        this.jCA.KJz = new n.e()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
           {
@@ -77,7 +77,7 @@ public class s
             AppMethodBeat.o(135009);
           }
         };
-        this.jiS.Jfj = new n.c()
+        this.jCA.KWs = new n.d()
         {
           public final void onCreateMMMenu(l paramAnonymousl)
           {
@@ -86,7 +86,7 @@ public class s
             AppMethodBeat.o(135010);
           }
         };
-        this.jiS.Jfl = new n.d()
+        this.jCA.KWv = new n.e()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
           {
@@ -95,10 +95,10 @@ public class s
             AppMethodBeat.o(135011);
           }
         };
-        if (this.caw.lCx) {
-          this.jiS.setBackgroundColor(Color.parseColor("#000000"));
+        if (this.ckN.mbY) {
+          this.jCA.setBackgroundColor(Color.parseColor("#000000"));
         }
-        paramList = this.caw.getRuntime().getWindowAndroid();
+        paramList = this.ckN.getRuntime().getWindowAndroid();
         if ((paramaa != null) && (paramList != null)) {
           paramaa.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener()
           {
@@ -106,7 +106,7 @@ public class s
             {
               AppMethodBeat.i(135012);
               paramAnonymousView = paramAnonymousView.getRootView().findViewById(2131297463);
-              if ((s.this.caw.bqM()) || (paramAnonymousView == null))
+              if ((s.this.ckN.buM()) || (paramAnonymousView == null))
               {
                 AppMethodBeat.o(135012);
                 return;
@@ -124,20 +124,20 @@ public class s
     }
   }
   
-  private boolean aUY()
+  private boolean aYs()
   {
     AppMethodBeat.i(135015);
     try
     {
-      this.jiS.bmi();
-      this.caw.b(this);
-      this.caw.b(this);
+      this.jCA.bpT();
+      this.ckN.b(this);
+      this.ckN.b(this);
       AppMethodBeat.o(135015);
       return true;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.AppBrandPageActionSheet", "hide exception = %s", new Object[] { localException });
+      ad.e("MicroMsg.AppBrandPageActionSheet", "hide exception = %s", new Object[] { localException });
       AppMethodBeat.o(135015);
     }
     return false;
@@ -145,32 +145,32 @@ public class s
   
   protected void a(e parame) {}
   
-  public final boolean aUX()
+  public final boolean aYr()
   {
     AppMethodBeat.i(135014);
     for (;;)
     {
       try
       {
-        e locale = this.jiS;
-        if (!this.caw.bqM())
+        e locale = this.jCA;
+        if (!this.ckN.buM())
         {
-          if (this.caw.isFullScreen())
+          if (this.ckN.isFullScreen())
           {
             break label142;
-            locale.lcG = bool;
-            locale = this.jiS;
-            if (this.caw.bqM()) {
+            locale.lzG = bool;
+            locale = this.jCA;
+            if (this.ckN.buM()) {
               break label147;
             }
-            if (this.caw.isFullScreen())
+            if (this.ckN.isFullScreen())
             {
               break label147;
-              locale.lcH = bool;
-              a(this.jiS);
-              this.jiS.cED();
-              this.caw.a(this);
-              this.caw.a(this);
+              locale.lzH = bool;
+              a(this.jCA);
+              this.jCA.cMW();
+              this.ckN.a(this);
+              this.ckN.a(this);
               AppMethodBeat.o(135014);
               return true;
             }
@@ -187,7 +187,7 @@ public class s
       }
       catch (Exception localException)
       {
-        ac.e("MicroMsg.AppBrandPageActionSheet", "show exception = %s", new Object[] { localException });
+        ad.e("MicroMsg.AppBrandPageActionSheet", "show exception = %s", new Object[] { localException });
         AppMethodBeat.o(135014);
         return false;
       }
@@ -201,20 +201,20 @@ public class s
   public final void onBackground()
   {
     AppMethodBeat.i(135017);
-    aUY();
+    aYs();
     AppMethodBeat.o(135017);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(135016);
-    aUY();
+    aYs();
     AppMethodBeat.o(135016);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.s
  * JD-Core Version:    0.7.0.1
  */

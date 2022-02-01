@@ -4,101 +4,101 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.protocal.protobuf.bup;
-import com.tencent.mm.protocal.protobuf.bws;
-import com.tencent.mm.protocal.protobuf.cfo;
-import com.tencent.mm.protocal.protobuf.cfp;
-import com.tencent.mm.protocal.protobuf.cfq;
-import com.tencent.mm.protocal.protobuf.djd;
-import com.tencent.mm.protocal.protobuf.in;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.al.a;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.protocal.protobuf.bze;
+import com.tencent.mm.protocal.protobuf.cbi;
+import com.tencent.mm.protocal.protobuf.ckn;
+import com.tencent.mm.protocal.protobuf.cko;
+import com.tencent.mm.protocal.protobuf.ckp;
+import com.tencent.mm.protocal.protobuf.dos;
+import com.tencent.mm.protocal.protobuf.iu;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class CgiLqtPlanIndex
-  extends c<cfp>
+  extends a<cko>
 {
   public CgiLqtPlanIndex()
   {
     AppMethodBeat.i(68434);
     b.a locala = new b.a();
-    locala.hvt = new cfo();
-    locala.hvu = new cfp();
+    locala.hNM = new ckn();
+    locala.hNN = new cko();
     locala.funcId = 2796;
     locala.uri = "/cgi-bin/mmpay-bin/planindex";
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aAz();
-    ac.i("MicroMsg.CgiLqtPlanIndex", "isfirstclick: %s");
+    c(locala.aDC());
+    ad.i("MicroMsg.CgiLqtPlanIndex", "isfirstclick: %s");
     AppMethodBeat.o(68434);
   }
   
-  public static PlanIndexParcel a(cfp paramcfp)
+  public static PlanIndexParcel a(cko paramcko)
   {
     AppMethodBeat.i(68435);
-    if (paramcfp == null)
+    if (paramcko == null)
     {
       AppMethodBeat.o(68435);
       return null;
     }
     PlanIndexParcel localPlanIndexParcel = new PlanIndexParcel();
-    localPlanIndexParcel.nWx = paramcfp.nWx;
-    localPlanIndexParcel.nWy = paramcfp.nWy;
-    Iterator localIterator1 = paramcfp.FtU.iterator();
+    localPlanIndexParcel.ozR = paramcko.ozR;
+    localPlanIndexParcel.ozS = paramcko.ozS;
+    Iterator localIterator1 = paramcko.HdZ.iterator();
     while (localIterator1.hasNext())
     {
-      cfq localcfq = (cfq)localIterator1.next();
+      ckp localckp = (ckp)localIterator1.next();
       PlanItemParcel localPlanItemParcel = new PlanItemParcel();
-      localPlanItemParcel.fsg = localcfq.fsg;
-      localPlanItemParcel.dBN = localcfq.dBN;
-      localPlanItemParcel.cZz = localcfq.cZz;
-      localPlanItemParcel.vxk = localcfq.vxk;
-      localPlanItemParcel.AWI = localcfq.AWI;
-      localPlanItemParcel.AWJ = localcfq.AWJ;
-      localPlanItemParcel.wEw = localcfq.wEw;
-      localPlanItemParcel.AWO = localcfq.AWO;
-      if (localcfq.FtX != null)
+      localPlanItemParcel.fKG = localckp.fKG;
+      localPlanItemParcel.dOa = localckp.dOa;
+      localPlanItemParcel.dkR = localckp.dkR;
+      localPlanItemParcel.wCE = localckp.wCE;
+      localPlanItemParcel.CwR = localckp.CwR;
+      localPlanItemParcel.CwS = localckp.CwS;
+      localPlanItemParcel.xSd = localckp.xSd;
+      localPlanItemParcel.CwX = localckp.CwX;
+      if (localckp.Hec != null)
       {
-        localPlanItemParcel.AWK = new TransTipsItemParcel();
-        localPlanItemParcel.AWK.AWP = localcfq.FtX.AWP;
-        localPlanItemParcel.AWK.hiu = localcfq.FtX.hiu;
+        localPlanItemParcel.CwT = new TransTipsItemParcel();
+        localPlanItemParcel.CwT.CwY = localckp.Hec.CwY;
+        localPlanItemParcel.CwT.hAD = localckp.Hec.hAD;
       }
-      if (localcfq.FtY != null)
+      if (localckp.Hed != null)
       {
-        localPlanItemParcel.AWL = new MoreRecordsParcel();
-        localPlanItemParcel.AWL.title = localcfq.FtY.title;
-        localPlanItemParcel.AWL.url = localcfq.FtY.url;
+        localPlanItemParcel.CwU = new MoreRecordsParcel();
+        localPlanItemParcel.CwU.title = localckp.Hed.title;
+        localPlanItemParcel.CwU.url = localckp.Hed.url;
       }
-      if (localcfq.FtZ != null)
+      if (localckp.Hee != null)
       {
-        localPlanItemParcel.AWM = new MngPlanItemParcel();
-        localPlanItemParcel.AWM.AWz = localcfq.FtZ.AWz;
-        localPlanItemParcel.AWM.AWA = localcfq.FtZ.AWA;
-        Iterator localIterator2 = localcfq.FtZ.Fky.iterator();
+        localPlanItemParcel.CwV = new MngPlanItemParcel();
+        localPlanItemParcel.CwV.CwI = localckp.Hee.CwI;
+        localPlanItemParcel.CwV.CwJ = localckp.Hee.CwJ;
+        Iterator localIterator2 = localckp.Hee.GUg.iterator();
         while (localIterator2.hasNext())
         {
           Integer localInteger = (Integer)localIterator2.next();
-          localPlanItemParcel.AWM.AWB.add(localInteger);
+          localPlanItemParcel.CwV.CwK.add(localInteger);
         }
       }
-      localPlanItemParcel.AWN = localcfq.AWN;
-      localPlanItemParcel.state = localcfq.state;
-      localPlanItemParcel.tGS = localcfq.tGS;
-      localPlanIndexParcel.AWC.add(localPlanItemParcel);
+      localPlanItemParcel.CwW = localckp.CwW;
+      localPlanItemParcel.state = localckp.state;
+      localPlanItemParcel.uJF = localckp.uJF;
+      localPlanIndexParcel.CwL.add(localPlanItemParcel);
     }
-    localPlanIndexParcel.AWD = paramcfp.AWD;
-    localPlanIndexParcel.AWE = paramcfp.AWE;
-    if (paramcfp.FtV != null)
+    localPlanIndexParcel.CwM = paramcko.CwM;
+    localPlanIndexParcel.CwN = paramcko.CwN;
+    if (paramcko.Hea != null)
     {
-      localPlanIndexParcel.AWF = new BannerParcel();
-      localPlanIndexParcel.AWF.title = paramcfp.FtV.title;
-      localPlanIndexParcel.AWF.url = paramcfp.FtV.url;
+      localPlanIndexParcel.CwO = new BannerParcel();
+      localPlanIndexParcel.CwO.title = paramcko.Hea.title;
+      localPlanIndexParcel.CwO.url = paramcko.Hea.url;
     }
-    localPlanIndexParcel.AWG = paramcfp.AWG;
-    localPlanIndexParcel.AWH = paramcfp.AWH;
+    localPlanIndexParcel.CwP = paramcko.CwP;
+    localPlanIndexParcel.CwQ = paramcko.CwQ;
     AppMethodBeat.o(68435);
     return localPlanIndexParcel;
   }
@@ -145,9 +145,9 @@ public final class CgiLqtPlanIndex
     implements Parcelable
   {
     public static final Parcelable.Creator<MngPlanItemParcel> CREATOR;
-    public String AWA;
-    public ArrayList<Integer> AWB;
-    public boolean AWz;
+    public boolean CwI;
+    public String CwJ;
+    public ArrayList<Integer> CwK;
     
     static
     {
@@ -159,21 +159,21 @@ public final class CgiLqtPlanIndex
     public MngPlanItemParcel()
     {
       AppMethodBeat.i(68414);
-      this.AWB = new ArrayList();
+      this.CwK = new ArrayList();
       AppMethodBeat.o(68414);
     }
     
     protected MngPlanItemParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(68415);
-      this.AWB = new ArrayList();
+      this.CwK = new ArrayList();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.AWz = bool;
-        this.AWA = paramParcel.readString();
-        this.AWB = new ArrayList();
-        paramParcel.readList(this.AWB, Integer.class.getClassLoader());
+        this.CwI = bool;
+        this.CwJ = paramParcel.readString();
+        this.CwK = new ArrayList();
+        paramParcel.readList(this.CwK, Integer.class.getClassLoader());
         AppMethodBeat.o(68415);
         return;
       }
@@ -187,12 +187,12 @@ public final class CgiLqtPlanIndex
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(68413);
-      if (this.AWz) {}
+      if (this.CwI) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeString(this.AWA);
-        paramParcel.writeList(this.AWB);
+        paramParcel.writeString(this.CwJ);
+        paramParcel.writeList(this.CwK);
         AppMethodBeat.o(68413);
         return;
       }
@@ -241,14 +241,14 @@ public final class CgiLqtPlanIndex
     implements Parcelable
   {
     public static final Parcelable.Creator<PlanIndexParcel> CREATOR;
-    public ArrayList<CgiLqtPlanIndex.PlanItemParcel> AWC;
-    public long AWD;
-    public String AWE;
-    public CgiLqtPlanIndex.BannerParcel AWF;
-    public String AWG;
-    public String AWH;
-    public int nWx;
-    public String nWy;
+    public ArrayList<CgiLqtPlanIndex.PlanItemParcel> CwL;
+    public long CwM;
+    public String CwN;
+    public CgiLqtPlanIndex.BannerParcel CwO;
+    public String CwP;
+    public String CwQ;
+    public int ozR;
+    public String ozS;
     
     static
     {
@@ -260,23 +260,23 @@ public final class CgiLqtPlanIndex
     public PlanIndexParcel()
     {
       AppMethodBeat.i(68423);
-      this.AWC = new ArrayList();
+      this.CwL = new ArrayList();
       AppMethodBeat.o(68423);
     }
     
     protected PlanIndexParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(68424);
-      this.AWC = new ArrayList();
-      this.nWx = paramParcel.readInt();
-      this.nWy = paramParcel.readString();
-      this.AWC = new ArrayList();
-      paramParcel.readList(this.AWC, CgiLqtPlanIndex.PlanItemParcel.class.getClassLoader());
-      this.AWD = paramParcel.readLong();
-      this.AWE = paramParcel.readString();
-      this.AWF = ((CgiLqtPlanIndex.BannerParcel)paramParcel.readParcelable(CgiLqtPlanIndex.BannerParcel.class.getClassLoader()));
-      this.AWG = paramParcel.readString();
-      this.AWH = paramParcel.readString();
+      this.CwL = new ArrayList();
+      this.ozR = paramParcel.readInt();
+      this.ozS = paramParcel.readString();
+      this.CwL = new ArrayList();
+      paramParcel.readList(this.CwL, CgiLqtPlanIndex.PlanItemParcel.class.getClassLoader());
+      this.CwM = paramParcel.readLong();
+      this.CwN = paramParcel.readString();
+      this.CwO = ((CgiLqtPlanIndex.BannerParcel)paramParcel.readParcelable(CgiLqtPlanIndex.BannerParcel.class.getClassLoader()));
+      this.CwP = paramParcel.readString();
+      this.CwQ = paramParcel.readString();
       AppMethodBeat.o(68424);
     }
     
@@ -288,14 +288,14 @@ public final class CgiLqtPlanIndex
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(68422);
-      paramParcel.writeInt(this.nWx);
-      paramParcel.writeString(this.nWy);
-      paramParcel.writeList(this.AWC);
-      paramParcel.writeLong(this.AWD);
-      paramParcel.writeString(this.AWE);
-      paramParcel.writeParcelable(this.AWF, paramInt);
-      paramParcel.writeString(this.AWG);
-      paramParcel.writeString(this.AWH);
+      paramParcel.writeInt(this.ozR);
+      paramParcel.writeString(this.ozS);
+      paramParcel.writeList(this.CwL);
+      paramParcel.writeLong(this.CwM);
+      paramParcel.writeString(this.CwN);
+      paramParcel.writeParcelable(this.CwO, paramInt);
+      paramParcel.writeString(this.CwP);
+      paramParcel.writeString(this.CwQ);
       AppMethodBeat.o(68422);
     }
   }
@@ -304,20 +304,20 @@ public final class CgiLqtPlanIndex
     implements Parcelable
   {
     public static final Parcelable.Creator<PlanItemParcel> CREATOR;
-    public String AWI;
-    public String AWJ;
-    public CgiLqtPlanIndex.TransTipsItemParcel AWK;
-    public CgiLqtPlanIndex.MoreRecordsParcel AWL;
-    public CgiLqtPlanIndex.MngPlanItemParcel AWM;
-    public int AWN;
-    public String AWO;
-    public String cZz;
-    public long dBN;
-    public int fsg;
+    public String CwR;
+    public String CwS;
+    public CgiLqtPlanIndex.TransTipsItemParcel CwT;
+    public CgiLqtPlanIndex.MoreRecordsParcel CwU;
+    public CgiLqtPlanIndex.MngPlanItemParcel CwV;
+    public int CwW;
+    public String CwX;
+    public long dOa;
+    public String dkR;
+    public int fKG;
     public int state;
-    public String tGS;
-    public String vxk;
-    public String wEw;
+    public String uJF;
+    public String wCE;
+    public String xSd;
     
     static
     {
@@ -331,20 +331,20 @@ public final class CgiLqtPlanIndex
     protected PlanItemParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(68428);
-      this.fsg = paramParcel.readInt();
-      this.dBN = paramParcel.readLong();
-      this.cZz = paramParcel.readString();
-      this.vxk = paramParcel.readString();
-      this.AWI = paramParcel.readString();
-      this.AWJ = paramParcel.readString();
-      this.AWK = ((CgiLqtPlanIndex.TransTipsItemParcel)paramParcel.readParcelable(CgiLqtPlanIndex.TransTipsItemParcel.class.getClassLoader()));
-      this.AWL = ((CgiLqtPlanIndex.MoreRecordsParcel)paramParcel.readParcelable(CgiLqtPlanIndex.MoreRecordsParcel.class.getClassLoader()));
-      this.AWM = ((CgiLqtPlanIndex.MngPlanItemParcel)paramParcel.readParcelable(CgiLqtPlanIndex.MngPlanItemParcel.class.getClassLoader()));
-      this.AWN = paramParcel.readInt();
+      this.fKG = paramParcel.readInt();
+      this.dOa = paramParcel.readLong();
+      this.dkR = paramParcel.readString();
+      this.wCE = paramParcel.readString();
+      this.CwR = paramParcel.readString();
+      this.CwS = paramParcel.readString();
+      this.CwT = ((CgiLqtPlanIndex.TransTipsItemParcel)paramParcel.readParcelable(CgiLqtPlanIndex.TransTipsItemParcel.class.getClassLoader()));
+      this.CwU = ((CgiLqtPlanIndex.MoreRecordsParcel)paramParcel.readParcelable(CgiLqtPlanIndex.MoreRecordsParcel.class.getClassLoader()));
+      this.CwV = ((CgiLqtPlanIndex.MngPlanItemParcel)paramParcel.readParcelable(CgiLqtPlanIndex.MngPlanItemParcel.class.getClassLoader()));
+      this.CwW = paramParcel.readInt();
       this.state = paramParcel.readInt();
-      this.tGS = paramParcel.readString();
-      this.wEw = paramParcel.readString();
-      this.AWO = paramParcel.readString();
+      this.uJF = paramParcel.readString();
+      this.xSd = paramParcel.readString();
+      this.CwX = paramParcel.readString();
       AppMethodBeat.o(68428);
     }
     
@@ -356,20 +356,20 @@ public final class CgiLqtPlanIndex
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(68427);
-      paramParcel.writeInt(this.fsg);
-      paramParcel.writeLong(this.dBN);
-      paramParcel.writeString(this.cZz);
-      paramParcel.writeString(this.vxk);
-      paramParcel.writeString(this.AWI);
-      paramParcel.writeString(this.AWJ);
-      paramParcel.writeParcelable(this.AWK, paramInt);
-      paramParcel.writeParcelable(this.AWL, paramInt);
-      paramParcel.writeParcelable(this.AWM, paramInt);
-      paramParcel.writeInt(this.AWN);
+      paramParcel.writeInt(this.fKG);
+      paramParcel.writeLong(this.dOa);
+      paramParcel.writeString(this.dkR);
+      paramParcel.writeString(this.wCE);
+      paramParcel.writeString(this.CwR);
+      paramParcel.writeString(this.CwS);
+      paramParcel.writeParcelable(this.CwT, paramInt);
+      paramParcel.writeParcelable(this.CwU, paramInt);
+      paramParcel.writeParcelable(this.CwV, paramInt);
+      paramParcel.writeInt(this.CwW);
       paramParcel.writeInt(this.state);
-      paramParcel.writeString(this.tGS);
-      paramParcel.writeString(this.wEw);
-      paramParcel.writeString(this.AWO);
+      paramParcel.writeString(this.uJF);
+      paramParcel.writeString(this.xSd);
+      paramParcel.writeString(this.CwX);
       AppMethodBeat.o(68427);
     }
   }
@@ -378,8 +378,8 @@ public final class CgiLqtPlanIndex
     implements Parcelable
   {
     public static final Parcelable.Creator<TransTipsItemParcel> CREATOR;
-    public String AWP;
-    public String hiu;
+    public String CwY;
+    public String hAD;
     
     static
     {
@@ -393,8 +393,8 @@ public final class CgiLqtPlanIndex
     protected TransTipsItemParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(68432);
-      this.AWP = paramParcel.readString();
-      this.hiu = paramParcel.readString();
+      this.CwY = paramParcel.readString();
+      this.hAD = paramParcel.readString();
       AppMethodBeat.o(68432);
     }
     
@@ -406,8 +406,8 @@ public final class CgiLqtPlanIndex
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(68431);
-      paramParcel.writeString(this.AWP);
-      paramParcel.writeString(this.hiu);
+      paramParcel.writeString(this.CwY);
+      paramParcel.writeString(this.hAD);
       AppMethodBeat.o(68431);
     }
   }

@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class la
   extends b
 {
-  public a dmU;
+  public a dyj;
   
   public la()
   {
@@ -15,22 +16,21 @@ public final class la
   
   private la(byte paramByte)
   {
-    AppMethodBeat.i(116031);
-    this.dmU = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(121050);
+    this.dyj = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116031);
+    AppMethodBeat.o(121050);
   }
   
   public static final class a
   {
-    public int reason = 0;
-    public int status = 0;
+    public Intent dyk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.la
  * JD-Core Version:    0.7.0.1
  */

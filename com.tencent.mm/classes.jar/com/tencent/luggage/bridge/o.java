@@ -1,43 +1,43 @@
 package com.tencent.luggage.bridge;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONException;
 
 public final class o
 {
-  public p bWA;
-  public ConcurrentHashMap<String, l> bWB;
-  private ConcurrentHashMap<String, j> bWC;
-  private ConcurrentHashMap<Integer, h> bWD;
-  private AtomicInteger bWE;
-  private s bWx;
-  n bWy;
-  public f bWz;
+  private s cgM;
+  n cgN;
+  public f cgO;
+  public p cgP;
+  public ConcurrentHashMap<String, l> cgQ;
+  private ConcurrentHashMap<String, j> cgR;
+  private ConcurrentHashMap<Integer, h> cgS;
+  private AtomicInteger cgT;
   
   public o(s params)
   {
     AppMethodBeat.i(140336);
-    this.bWB = new ConcurrentHashMap();
-    this.bWC = new ConcurrentHashMap();
-    this.bWD = new ConcurrentHashMap();
-    this.bWE = new AtomicInteger(1);
-    this.bWx = params;
-    this.bWy = new n(this);
-    this.bWz = new f(this.bWx);
-    this.bWA = new q(this);
-    this.bWx.addJavascriptInterface(new r(this.bWy), "_luggageBridgeNative");
+    this.cgQ = new ConcurrentHashMap();
+    this.cgR = new ConcurrentHashMap();
+    this.cgS = new ConcurrentHashMap();
+    this.cgT = new AtomicInteger(1);
+    this.cgM = params;
+    this.cgN = new n(this);
+    this.cgO = new f(this.cgM);
+    this.cgP = new q(this);
+    this.cgM.addJavascriptInterface(new r(this.cgN), "_luggageBridgeNative");
     AppMethodBeat.o(140336);
   }
   
   private void a(i parami)
   {
     AppMethodBeat.i(140340);
-    if ((j)this.bWC.get(parami.bWn) == null)
+    if ((j)this.cgR.get(parami.cgC) == null)
     {
-      ac.e("LuggageBridge", "no listener for event: %s", new Object[] { parami.bWn });
+      ad.e("LuggageBridge", "no listener for event: %s", new Object[] { parami.cgC });
       AppMethodBeat.o(140340);
       return;
     }
@@ -45,7 +45,7 @@ public final class o
   }
   
   /* Error */
-  public final void Ao()
+  public final void BL()
   {
     // Byte code:
     //   0: ldc 114
@@ -60,7 +60,7 @@ public final class o
     //   21: new 119	java/io/InputStreamReader
     //   24: dup
     //   25: aload_0
-    //   26: getfield 50	com/tencent/luggage/bridge/o:bWx	Lcom/tencent/luggage/bridge/s;
+    //   26: getfield 50	com/tencent/luggage/bridge/o:cgM	Lcom/tencent/luggage/bridge/s;
     //   29: invokeinterface 123 1 0
     //   34: invokevirtual 129	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   37: ldc 131
@@ -95,7 +95,7 @@ public final class o
     //   87: iconst_0
     //   88: aload 4
     //   90: aastore
-    //   91: invokestatic 110	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   91: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   94: aload_3
     //   95: ifnull +7 -> 102
     //   98: aload_3
@@ -106,94 +106,95 @@ public final class o
     //   108: aload_3
     //   109: invokevirtual 153	java/io/InputStreamReader:close	()V
     //   112: aload_0
-    //   113: getfield 50	com/tencent/luggage/bridge/o:bWx	Lcom/tencent/luggage/bridge/s;
+    //   113: getfield 50	com/tencent/luggage/bridge/o:cgM	Lcom/tencent/luggage/bridge/s;
     //   116: aload 4
     //   118: invokevirtual 157	java/io/StringWriter:toString	()Ljava/lang/String;
-    //   121: invokeinterface 161 2 0
-    //   126: ldc 114
-    //   128: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   131: return
-    //   132: astore_2
-    //   133: ldc 102
-    //   135: ldc 163
-    //   137: iconst_1
-    //   138: anewarray 4	java/lang/Object
-    //   141: dup
-    //   142: iconst_0
-    //   143: aload_2
-    //   144: aastore
-    //   145: invokestatic 110	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   148: goto -36 -> 112
-    //   151: astore_2
-    //   152: ldc 102
-    //   154: ldc 163
-    //   156: iconst_1
-    //   157: anewarray 4	java/lang/Object
-    //   160: dup
-    //   161: iconst_0
-    //   162: aload_2
-    //   163: aastore
-    //   164: invokestatic 110	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   167: ldc 114
-    //   169: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   172: return
-    //   173: astore_3
-    //   174: aconst_null
-    //   175: astore_2
-    //   176: aload_2
-    //   177: ifnull +7 -> 184
-    //   180: aload_2
-    //   181: invokevirtual 153	java/io/InputStreamReader:close	()V
-    //   184: ldc 114
-    //   186: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   189: aload_3
-    //   190: athrow
-    //   191: astore_2
-    //   192: ldc 102
-    //   194: ldc 163
-    //   196: iconst_1
-    //   197: anewarray 4	java/lang/Object
-    //   200: dup
-    //   201: iconst_0
-    //   202: aload_2
-    //   203: aastore
-    //   204: invokestatic 110	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   207: goto -23 -> 184
-    //   210: astore_3
-    //   211: goto -35 -> 176
-    //   214: astore 4
-    //   216: aconst_null
-    //   217: astore_3
-    //   218: goto -142 -> 76
+    //   121: aconst_null
+    //   122: invokeinterface 161 3 0
+    //   127: ldc 114
+    //   129: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   132: return
+    //   133: astore_2
+    //   134: ldc 102
+    //   136: ldc 163
+    //   138: iconst_1
+    //   139: anewarray 4	java/lang/Object
+    //   142: dup
+    //   143: iconst_0
+    //   144: aload_2
+    //   145: aastore
+    //   146: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   149: goto -37 -> 112
+    //   152: astore_2
+    //   153: ldc 102
+    //   155: ldc 163
+    //   157: iconst_1
+    //   158: anewarray 4	java/lang/Object
+    //   161: dup
+    //   162: iconst_0
+    //   163: aload_2
+    //   164: aastore
+    //   165: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   168: ldc 114
+    //   170: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   173: return
+    //   174: astore_3
+    //   175: aconst_null
+    //   176: astore_2
+    //   177: aload_2
+    //   178: ifnull +7 -> 185
+    //   181: aload_2
+    //   182: invokevirtual 153	java/io/InputStreamReader:close	()V
+    //   185: ldc 114
+    //   187: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   190: aload_3
+    //   191: athrow
+    //   192: astore_2
+    //   193: ldc 102
+    //   195: ldc 163
+    //   197: iconst_1
+    //   198: anewarray 4	java/lang/Object
+    //   201: dup
+    //   202: iconst_0
+    //   203: aload_2
+    //   204: aastore
+    //   205: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   208: goto -23 -> 185
+    //   211: astore_3
+    //   212: goto -35 -> 177
+    //   215: astore 4
+    //   217: aconst_null
+    //   218: astore_3
+    //   219: goto -143 -> 76
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	221	0	this	o
+    //   0	222	0	this	o
     //   54	14	1	i	int
     //   47	31	2	localInputStreamReader1	java.io.InputStreamReader
-    //   132	12	2	localException1	java.lang.Exception
-    //   151	12	2	localException2	java.lang.Exception
-    //   175	6	2	localObject1	Object
-    //   191	12	2	localException3	java.lang.Exception
+    //   133	12	2	localException1	java.lang.Exception
+    //   152	12	2	localException2	java.lang.Exception
+    //   176	6	2	localObject1	Object
+    //   192	12	2	localException3	java.lang.Exception
     //   45	64	3	localInputStreamReader2	java.io.InputStreamReader
-    //   173	17	3	localObject2	Object
-    //   210	1	3	localObject3	Object
-    //   217	1	3	localObject4	Object
+    //   174	17	3	localObject2	Object
+    //   211	1	3	localObject3	Object
+    //   218	1	3	localObject4	Object
     //   19	44	4	localStringWriter	java.io.StringWriter
     //   74	43	4	localException4	java.lang.Exception
-    //   214	1	4	localException5	java.lang.Exception
+    //   215	1	4	localException5	java.lang.Exception
     //   10	55	5	arrayOfChar	char[]
     // Exception table:
     //   from	to	target	type
     //   48	55	74	java/lang/Exception
     //   62	71	74	java/lang/Exception
-    //   108	112	132	java/lang/Exception
-    //   98	102	151	java/lang/Exception
-    //   21	46	173	finally
-    //   180	184	191	java/lang/Exception
-    //   48	55	210	finally
-    //   62	71	210	finally
-    //   78	94	210	finally
-    //   21	46	214	java/lang/Exception
+    //   108	112	133	java/lang/Exception
+    //   98	102	152	java/lang/Exception
+    //   21	46	174	finally
+    //   181	185	192	java/lang/Exception
+    //   48	55	211	finally
+    //   62	71	211	finally
+    //   78	94	211	finally
+    //   21	46	215	java/lang/Exception
   }
   
   final e a(m paramm, boolean paramBoolean)
@@ -203,26 +204,26 @@ public final class o
     {
       try
       {
-        paramm = new k(this.bWz, paramm, paramBoolean);
-        l locall = (l)this.bWB.get(paramm.bWk);
+        paramm = new k(this.cgO, paramm, paramBoolean);
+        l locall = (l)this.cgQ.get(paramm.cgz);
         if (locall != null)
         {
           locall.a(paramm);
-          if (!paramm.bWq) {
+          if (!paramm.cgF) {
             break;
           }
-          paramm = paramm.An();
+          paramm = paramm.BK();
           AppMethodBeat.o(140338);
           return paramm;
         }
       }
       catch (JSONException paramm)
       {
-        ac.e("LuggageBridge", "inflate Js2JavaInvokeContext failed: %s", new Object[] { paramm });
+        ad.e("LuggageBridge", "inflate Js2JavaInvokeContext failed: %s", new Object[] { paramm });
         AppMethodBeat.o(140338);
         return null;
       }
-      ac.e("LuggageBridge", "Invoke Listener Not Found: %s", new Object[] { paramm.bWk });
+      ad.e("LuggageBridge", "Invoke Listener Not Found: %s", new Object[] { paramm.cgz });
       paramm.a("system:function_not_exist", null);
     }
     AppMethodBeat.o(140338);
@@ -235,14 +236,14 @@ public final class o
     try
     {
       paramm = new i(paramm);
-      ac.i("LuggageBridge", "processEventFromJs, EventName = %s", new Object[] { paramm.bWn });
+      ad.i("LuggageBridge", "processEventFromJs, EventName = %s", new Object[] { paramm.cgC });
       a(paramm);
       AppMethodBeat.o(140339);
       return;
     }
     catch (JSONException paramm)
     {
-      ac.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
+      ad.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
       AppMethodBeat.o(140339);
     }
   }
@@ -253,29 +254,29 @@ public final class o
     try
     {
       paramm = new g(paramm);
-      if ((h)this.bWD.get(Integer.valueOf(paramm.bWl)) == null)
+      if ((h)this.cgS.get(Integer.valueOf(paramm.cgA)) == null)
       {
-        ac.e("LuggageBridge", "no listener for callback: %d", new Object[] { Integer.valueOf(paramm.bWl) });
+        ad.e("LuggageBridge", "no listener for callback: %d", new Object[] { Integer.valueOf(paramm.cgA) });
         AppMethodBeat.o(140341);
         return;
       }
     }
     catch (JSONException paramm)
     {
-      ac.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
+      ad.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
       AppMethodBeat.o(140341);
       return;
     }
-    if (!paramm.bWm) {
-      this.bWD.remove(Integer.valueOf(paramm.bWl));
+    if (!paramm.cgB) {
+      this.cgS.remove(Integer.valueOf(paramm.cgA));
     }
     AppMethodBeat.o(140341);
   }
   
-  public final void bC(String paramString)
+  public final void cv(String paramString)
   {
     AppMethodBeat.i(140337);
-    this.bWx.bE(paramString);
+    this.cgM.evaluateJavascript(paramString, null);
     AppMethodBeat.o(140337);
   }
 }

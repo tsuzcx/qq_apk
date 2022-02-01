@@ -5,7 +5,7 @@ import android.view.View;
 
 abstract interface q
 {
-  public abstract void Q(int paramInt1, int paramInt2);
+  public abstract void R(int paramInt1, int paramInt2);
   
   public abstract void e(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -13,9 +13,9 @@ abstract interface q
   
   public abstract boolean getUseCompatPadding();
   
-  public abstract Drawable iZ();
+  public abstract Drawable jp();
   
-  public abstract View ja();
+  public abstract View jq();
   
   public abstract void q(Drawable paramDrawable);
 }

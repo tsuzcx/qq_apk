@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.dbbackup;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -14,20 +14,20 @@ final class d$6
   public final void run()
   {
     AppMethodBeat.i(23084);
-    Object localObject = this.oEB + "corrupted/EnMicroMsg.db";
-    if (i.eA((String)localObject + ".corrupt"))
+    Object localObject = this.pib + "corrupted/EnMicroMsg.db";
+    if (i.fv((String)localObject + ".corrupt"))
     {
       AppMethodBeat.o(23084);
       return;
     }
     long l = System.currentTimeMillis();
-    localObject = new e(this.oEB + "corrupted");
+    localObject = new e(this.pib + "corrupted");
     if (!((e)localObject).isDirectory())
     {
       AppMethodBeat.o(23084);
       return;
     }
-    e[] arrayOfe = ((e)localObject).fxX();
+    e[] arrayOfe = ((e)localObject).fOM();
     int j = arrayOfe.length;
     int i = 0;
     while (i < j)
@@ -39,8 +39,8 @@ final class d$6
       }
       i += 1;
     }
-    if (i.cU(q.B(((e)localObject).mUri), true)) {
-      ac.i("MicroMsg.SubCoreDBBackup", "Corrupted databases removed.");
+    if (i.cZ(q.B(((e)localObject).mUri), true)) {
+      ad.i("MicroMsg.SubCoreDBBackup", "Corrupted databases removed.");
     }
     AppMethodBeat.o(23084);
   }

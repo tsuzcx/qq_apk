@@ -10,18 +10,18 @@ import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
 import android.widget.TimePicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ai;
-import com.tencent.mm.ui.an;
+import com.tencent.mm.ui.ak;
+import com.tencent.mm.ui.ap;
 
 public class CustomTimePicker
   extends TimePicker
 {
-  private NumberPicker mKG;
-  private NumberPicker mKH;
   private int mMaxTimeHour;
   private int mMaxTimeMinute;
   private int mMinTimeHour;
   private int mMinTimeMinute;
+  private NumberPicker nlc;
+  private NumberPicker nld;
   
   public CustomTimePicker(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,26 +47,26 @@ public class CustomTimePicker
     AppMethodBeat.o(159510);
   }
   
-  private NumberPicker RY(String paramString)
+  private NumberPicker Vv(String paramString)
   {
     AppMethodBeat.i(159517);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      paramString = Sa(paramString);
+      paramString = Vx(paramString);
       AppMethodBeat.o(159517);
       return paramString;
     }
-    paramString = RZ(paramString);
+    paramString = Vw(paramString);
     AppMethodBeat.o(159517);
     return paramString;
   }
   
-  private NumberPicker RZ(String paramString)
+  private NumberPicker Vw(String paramString)
   {
     AppMethodBeat.i(159518);
     try
     {
-      paramString = (NumberPicker)new ai(this, paramString).get();
+      paramString = (NumberPicker)new ak(this, paramString).get();
       AppMethodBeat.o(159518);
       return paramString;
     }
@@ -77,22 +77,22 @@ public class CustomTimePicker
     return null;
   }
   
-  private NumberPicker Sa(String paramString)
+  private NumberPicker Vx(String paramString)
   {
     AppMethodBeat.i(159519);
     try
     {
-      Object localObject = new ai(this, "mDelegate").get();
+      Object localObject = new ak(this, "mDelegate").get();
       if (localObject != null)
       {
-        paramString = (NumberPicker)new ai(localObject, paramString).get();
+        paramString = (NumberPicker)new ak(localObject, paramString).get();
         AppMethodBeat.o(159519);
         return paramString;
       }
     }
     catch (NoSuchFieldException paramString)
     {
-      an.printErrStackTrace("CustomTimePicker", paramString, "super_getNumberPickerApi21 NoSuchFieldException", new Object[0]);
+      ap.printErrStackTrace("CustomTimePicker", paramString, "super_getNumberPickerApi21 NoSuchFieldException", new Object[0]);
       AppMethodBeat.o(159519);
       return null;
     }
@@ -100,17 +100,17 @@ public class CustomTimePicker
     {
       for (;;)
       {
-        an.printErrStackTrace("CustomTimePicker", paramString, "super_getNumberPickerApi21 IllegalAccessException", new Object[0]);
+        ap.printErrStackTrace("CustomTimePicker", paramString, "super_getNumberPickerApi21 IllegalAccessException", new Object[0]);
       }
     }
   }
   
-  private void fvV()
+  private void fMJ()
   {
     AppMethodBeat.i(159520);
     Drawable localDrawable = getResources().getDrawable(2131233617);
-    f.a(this.mKG, localDrawable);
-    f.a(this.mKH, localDrawable);
+    f.a(this.nlc, localDrawable);
+    f.a(this.nld, localDrawable);
     AppMethodBeat.o(159520);
   }
   
@@ -118,13 +118,13 @@ public class CustomTimePicker
   {
     AppMethodBeat.i(159511);
     setIs24HourView(Boolean.TRUE);
-    this.mKG = RY("mHourSpinner");
-    this.mKH = RY("mMinuteSpinner");
-    f.d(this.mKG);
-    f.d(this.mKH);
-    fvV();
-    if (this.mKG != null) {
-      this.mKG.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+    this.nlc = Vv("mHourSpinner");
+    this.nld = Vv("mMinuteSpinner");
+    f.d(this.nlc);
+    f.d(this.nld);
+    fMJ();
+    if (this.nlc != null) {
+      this.nlc.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
       {
         public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2)
         {
@@ -134,14 +134,14 @@ public class CustomTimePicker
         }
       });
     }
-    if ((this.mKH != null) && (Build.VERSION.SDK_INT >= 21)) {
-      this.mKH.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+    if ((this.nld != null) && (Build.VERSION.SDK_INT >= 21)) {
+      this.nld.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
       {
         public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2) {}
       });
     }
-    f.f(this.mKG);
-    f.f(this.mKH);
+    f.f(this.nlc);
+    f.f(this.nld);
     AppMethodBeat.o(159511);
   }
   
@@ -149,8 +149,8 @@ public class CustomTimePicker
   {
     AppMethodBeat.i(159513);
     super.onAttachedToWindow();
-    f.e(this.mKG);
-    f.e(this.mKH);
+    f.e(this.nlc);
+    f.e(this.nld);
     AppMethodBeat.o(159513);
   }
 }

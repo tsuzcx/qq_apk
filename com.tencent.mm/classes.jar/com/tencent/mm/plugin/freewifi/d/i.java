@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.freewifi.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.protocal.protobuf.bcc;
-import com.tencent.mm.protocal.protobuf.bcd;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.protocal.protobuf.bgg;
+import com.tencent.mm.protocal.protobuf.bgh;
 
 public final class i
   extends c
@@ -14,39 +14,39 @@ public final class i
   public i(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(24862);
-    cJr();
-    bcc localbcc = (bcc)this.rr.hvr.hvw;
-    localbcc.dbq = paramString1;
-    localbcc.sqm = paramString2;
-    localbcc.sqn = paramString3;
-    localbcc.sqo = paramString4;
-    localbcc.ddJ = paramString5;
-    localbcc.DLD = paramString6;
+    cRG();
+    bgg localbgg = (bgg)this.rr.hNK.hNQ;
+    localbgg.dmM = paramString1;
+    localbgg.tmO = paramString2;
+    localbgg.tmP = paramString3;
+    localbgg.tmQ = paramString4;
+    localbgg.dpf = paramString5;
+    localbgg.FqI = paramString6;
     AppMethodBeat.o(24862);
   }
   
-  public final String cJA()
-  {
-    return ((bcd)this.rr.hvs.hvw).srs;
-  }
-  
-  public final String cJB()
-  {
-    return ((bcd)this.rr.hvs.hvw).srt;
-  }
-  
-  protected final void cJr()
+  protected final void cRG()
   {
     AppMethodBeat.i(24861);
     b.a locala = new b.a();
-    locala.hvt = new bcc();
-    locala.hvu = new bcd();
+    locala.hNM = new bgg();
+    locala.hNN = new bgh();
     locala.uri = "/cgi-bin/mmo2o-bin/getportalapinfo";
     locala.funcId = 1709;
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aAz();
+    this.rr = locala.aDC();
     AppMethodBeat.o(24861);
+  }
+  
+  public final String cRP()
+  {
+    return ((bgh)this.rr.hNL.hNQ).tnT;
+  }
+  
+  public final String cRQ()
+  {
+    return ((bgh)this.rr.hNL.hNQ).tnU;
   }
   
   public final int getType()

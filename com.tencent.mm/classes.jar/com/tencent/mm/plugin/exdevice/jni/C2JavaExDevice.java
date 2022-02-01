@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.model.j;
 import com.tencent.mm.plugin.exdevice.service.a;
 import com.tencent.mm.plugin.exdevice.service.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class C2JavaExDevice
 {
@@ -49,8 +49,8 @@ public final class C2JavaExDevice
   public static void onAirKissCallback(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(23186);
-    ac.v("MicroMsg.exdevice.C2JavaExDevice", "onAirKissCallback(errType : %d, errCode : %d)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    j.cgG().h(0, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.v("MicroMsg.exdevice.C2JavaExDevice", "onAirKissCallback(errType : %d, errCode : %d)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    j.clk().h(0, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(23186);
   }
   
@@ -67,8 +67,8 @@ public final class C2JavaExDevice
     if (paramArrayOfByte == null) {}
     for (int i = 0;; i = paramArrayOfByte.length)
     {
-      ac.i("MicroMsg.exdevice.C2JavaExDevice", "onReceiveWCLanDeviceDiscPackage, dataLen(%d).", new Object[] { Integer.valueOf(i) });
-      j.cgG().h(10, new Object[] { paramArrayOfByte });
+      ad.i("MicroMsg.exdevice.C2JavaExDevice", "onReceiveWCLanDeviceDiscPackage, dataLen(%d).", new Object[] { Integer.valueOf(i) });
+      j.clk().h(10, new Object[] { paramArrayOfByte });
       AppMethodBeat.o(23187);
       return;
     }
@@ -80,8 +80,8 @@ public final class C2JavaExDevice
     if (paramArrayOfByte == null) {}
     for (int i = 0;; i = paramArrayOfByte.length)
     {
-      ac.i("MicroMsg.exdevice.C2JavaExDevice", "onReceiveWCLanDeviceProfile, data(%d).", new Object[] { Integer.valueOf(i) });
-      j.cgG().h(14, new Object[] { paramArrayOfByte });
+      ad.i("MicroMsg.exdevice.C2JavaExDevice", "onReceiveWCLanDeviceProfile, data(%d).", new Object[] { Integer.valueOf(i) });
+      j.clk().h(14, new Object[] { paramArrayOfByte });
       AppMethodBeat.o(23191);
       return;
     }
@@ -90,16 +90,16 @@ public final class C2JavaExDevice
   public static void onWCLanDeviceConnectStateNotify(String paramString, int paramInt)
   {
     AppMethodBeat.i(23190);
-    ac.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanDeviceConnectStateNotify, devclassinfo(%s), stateCode(%d).", new Object[] { paramString, Integer.valueOf(paramInt) });
-    j.cgG().h(13, new Object[] { paramString, Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanDeviceConnectStateNotify, devclassinfo(%s), stateCode(%d).", new Object[] { paramString, Integer.valueOf(paramInt) });
+    j.clk().h(13, new Object[] { paramString, Integer.valueOf(paramInt) });
     AppMethodBeat.o(23190);
   }
   
   public static void onWCLanDeviceUdpError(int paramInt)
   {
     AppMethodBeat.i(23188);
-    ac.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanDeviceUdpError, errCode(%d).", new Object[] { Integer.valueOf(paramInt) });
-    j.cgG().h(11, new Object[] { Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanDeviceUdpError, errCode(%d).", new Object[] { Integer.valueOf(paramInt) });
+    j.clk().h(11, new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(23188);
   }
   
@@ -109,8 +109,8 @@ public final class C2JavaExDevice
     if (paramArrayOfByte == null) {}
     for (int i = 0;; i = paramArrayOfByte.length)
     {
-      ac.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanFileTransferUpdate, cmdId(%d), data(%d).", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      j.cgG().h(15, new Object[] { Integer.valueOf(paramInt), paramArrayOfByte });
+      ad.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanFileTransferUpdate, cmdId(%d), data(%d).", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      j.clk().h(15, new Object[] { Integer.valueOf(paramInt), paramArrayOfByte });
       AppMethodBeat.o(23192);
       return;
     }
@@ -122,8 +122,8 @@ public final class C2JavaExDevice
     if (paramArrayOfByte == null) {}
     for (int i = 0;; i = paramArrayOfByte.length)
     {
-      ac.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanReceiveNotify, devclassinfo(%s), data(%d).", new Object[] { paramString, Integer.valueOf(i) });
-      j.cgG().h(16, new Object[] { paramString, paramArrayOfByte });
+      ad.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanReceiveNotify, devclassinfo(%s), data(%d).", new Object[] { paramString, Integer.valueOf(i) });
+      j.clk().h(16, new Object[] { paramString, paramArrayOfByte });
       AppMethodBeat.o(23193);
       return;
     }
@@ -135,8 +135,8 @@ public final class C2JavaExDevice
     if (paramArrayOfByte == null) {}
     for (int i = 0;; i = paramArrayOfByte.length)
     {
-      ac.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanReceiveResponse, cmdId(%d), data(%d).", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      j.cgG().h(12, new Object[] { Integer.valueOf(paramInt), paramArrayOfByte });
+      ad.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanReceiveResponse, cmdId(%d), data(%d).", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      j.clk().h(12, new Object[] { Integer.valueOf(paramInt), paramArrayOfByte });
       AppMethodBeat.o(23189);
       return;
     }
@@ -152,7 +152,7 @@ public final class C2JavaExDevice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.jni.C2JavaExDevice
  * JD-Core Version:    0.7.0.1
  */

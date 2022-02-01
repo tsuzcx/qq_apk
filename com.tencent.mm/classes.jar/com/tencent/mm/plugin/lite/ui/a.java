@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.lite.ui;
 
 public abstract interface a
 {
-  public abstract void Hz(int paramInt);
+  public abstract void IV(int paramInt);
   
-  public abstract void bjx();
+  public abstract void bnj();
   
-  public abstract void cWw();
+  public abstract void dfI();
   
-  public abstract void cWx();
+  public abstract void dfJ();
 }
 
 

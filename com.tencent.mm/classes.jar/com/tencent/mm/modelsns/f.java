@@ -1,55 +1,35 @@
 package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.c;
+import java.util.Map;
 
 public final class f
 {
-  StringBuffer hTX;
-  StringBuffer hTY;
-  private int index;
+  public static int inq;
+  public static f inr;
   
-  public f()
+  static
   {
-    AppMethodBeat.i(150969);
-    this.hTX = new StringBuffer();
-    this.hTY = new StringBuffer();
-    this.index = 0;
-    AppMethodBeat.o(150969);
+    AppMethodBeat.i(125681);
+    inq = 0;
+    inr = new f();
+    AppMethodBeat.o(125681);
   }
   
-  public final String PS()
+  public static void aLl()
   {
-    AppMethodBeat.i(150973);
-    this.index = 0;
-    this.hTX.append("--end--\n\n");
-    String str = this.hTX.toString();
-    AppMethodBeat.o(150973);
-    return str;
-  }
-  
-  public final void m(String paramString, Object paramObject)
-  {
-    AppMethodBeat.i(150970);
-    this.hTX.append(this.index + " " + paramString + "->" + paramObject + "\n");
-    this.hTY.append(paramObject);
-    this.index += 1;
-    AppMethodBeat.o(150970);
-  }
-  
-  public final void n(String paramString, Object paramObject)
-  {
-    AppMethodBeat.i(150971);
-    this.hTX.append(paramString + "->" + paramObject + "\n");
-    this.hTY.append(paramObject);
-    AppMethodBeat.o(150971);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(150972);
-    String str = this.hTY.toString();
-    AppMethodBeat.o(150972);
-    return str;
+    AppMethodBeat.i(125680);
+    c localc = com.tencent.mm.model.c.d.aDs().wz("100024");
+    ad.i("MicroMsg.StatisticsOplogAbTest", "test " + localc.field_rawXML + " " + localc.isValid());
+    if (localc.isValid())
+    {
+      inq = bt.aRe((String)localc.foF().get("Switch"));
+      ad.i("MicroMsg.StatisticsOplogAbTest", "switchVal " + inq);
+    }
+    AppMethodBeat.o(125680);
   }
 }
 

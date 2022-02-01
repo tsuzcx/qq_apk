@@ -2,15 +2,13 @@ package com.tencent.liteav.audio;
 
 import android.content.Context;
 import com.tencent.liteav.audio.impl.a.a;
-import com.tencent.liteav.audio.impl.a.f;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
 
 public class TXCAudioUGCRecorder
-  implements f
+  implements com.tencent.liteav.audio.impl.a.f
 {
   private static final String TAG = "AudioCenter:TXCAudioUGCRecorder";
   static TXCAudioUGCRecorder instance;
@@ -37,7 +35,7 @@ public class TXCAudioUGCRecorder
   static
   {
     AppMethodBeat.i(16329);
-    d.f();
+    com.tencent.liteav.basic.util.f.f();
     instance = new TXCAudioUGCRecorder();
     AppMethodBeat.o(16329);
   }

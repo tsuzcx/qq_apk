@@ -9,19 +9,19 @@ public final class b
   extends h
   implements Iterable<h>
 {
-  public final List<h> aGG;
+  public final List<h> aIx;
   
   public b()
   {
     AppMethodBeat.i(74687);
-    this.aGG = new ArrayList();
+    this.aIx = new ArrayList();
     AppMethodBeat.o(74687);
   }
   
   public final b a(int paramInt, double paramDouble)
   {
     AppMethodBeat.i(74697);
-    this.aGG.set(paramInt, a.d(paramDouble));
+    this.aIx.set(paramInt, a.d(paramDouble));
     AppMethodBeat.o(74697);
     return this;
   }
@@ -35,7 +35,7 @@ public final class b
       AppMethodBeat.o(74699);
       throw paramh;
     }
-    this.aGG.set(paramInt, paramh);
+    this.aIx.set(paramInt, paramh);
     AppMethodBeat.o(74699);
     return this;
   }
@@ -49,7 +49,7 @@ public final class b
       AppMethodBeat.o(74694);
       throw paramh;
     }
-    this.aGG.add(paramh);
+    this.aIx.add(paramh);
     AppMethodBeat.o(74694);
     return this;
   }
@@ -57,63 +57,63 @@ public final class b
   final void a(i parami)
   {
     AppMethodBeat.i(74702);
-    parami.rg();
+    parami.sE();
     Iterator localIterator = iterator();
     for (int i = 1; localIterator.hasNext(); i = 0)
     {
       if (i == 0) {
-        parami.ri();
+        parami.sG();
       }
       ((h)localIterator.next()).a(parami);
     }
-    parami.rh();
+    parami.sF();
     AppMethodBeat.o(74702);
   }
   
-  public final b aM(boolean paramBoolean)
+  public final b aN(boolean paramBoolean)
   {
     AppMethodBeat.i(74692);
-    this.aGG.add(a.aL(paramBoolean));
+    this.aIx.add(a.aM(paramBoolean));
     AppMethodBeat.o(74692);
     return this;
   }
   
-  public final b aZ(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(74695);
-    this.aGG.set(paramInt1, a.dB(paramInt2));
-    AppMethodBeat.o(74695);
-    return this;
-  }
-  
-  public final b aa(float paramFloat)
-  {
-    AppMethodBeat.i(74690);
-    this.aGG.add(a.Z(paramFloat));
-    AppMethodBeat.o(74690);
-    return this;
-  }
-  
-  public final b aa(String paramString)
+  public final b aT(String paramString)
   {
     AppMethodBeat.i(74693);
-    this.aGG.add(a.X(paramString));
+    this.aIx.add(a.aQ(paramString));
     AppMethodBeat.o(74693);
     return this;
   }
   
-  public final b dC(int paramInt)
+  public final b ac(float paramFloat)
+  {
+    AppMethodBeat.i(74690);
+    this.aIx.add(a.ab(paramFloat));
+    AppMethodBeat.o(74690);
+    return this;
+  }
+  
+  public final b bb(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(74695);
+    this.aIx.set(paramInt1, a.dF(paramInt2));
+    AppMethodBeat.o(74695);
+    return this;
+  }
+  
+  public final b dG(int paramInt)
   {
     AppMethodBeat.i(74688);
-    this.aGG.add(a.dB(paramInt));
+    this.aIx.add(a.dF(paramInt));
     AppMethodBeat.o(74688);
     return this;
   }
   
-  public final h dD(int paramInt)
+  public final h dH(int paramInt)
   {
     AppMethodBeat.i(74700);
-    h localh = (h)this.aGG.get(paramInt);
+    h localh = (h)this.aIx.get(paramInt);
     AppMethodBeat.o(74700);
     return localh;
   }
@@ -121,7 +121,7 @@ public final class b
   public final b e(double paramDouble)
   {
     AppMethodBeat.i(74691);
-    this.aGG.add(a.d(paramDouble));
+    this.aIx.add(a.d(paramDouble));
     AppMethodBeat.o(74691);
     return this;
   }
@@ -145,7 +145,7 @@ public final class b
       return false;
     }
     paramObject = (b)paramObject;
-    boolean bool = this.aGG.equals(paramObject.aGG);
+    boolean bool = this.aIx.equals(paramObject.aIx);
     AppMethodBeat.o(74704);
     return bool;
   }
@@ -153,7 +153,7 @@ public final class b
   public final b f(int paramInt, long paramLong)
   {
     AppMethodBeat.i(74696);
-    this.aGG.set(paramInt, a.s(paramLong));
+    this.aIx.set(paramInt, a.s(paramLong));
     AppMethodBeat.o(74696);
     return this;
   }
@@ -161,7 +161,7 @@ public final class b
   public final int hashCode()
   {
     AppMethodBeat.i(74703);
-    int i = this.aGG.hashCode();
+    int i = this.aIx.hashCode();
     AppMethodBeat.o(74703);
     return i;
   }
@@ -174,24 +174,7 @@ public final class b
   public final Iterator<h> iterator()
   {
     AppMethodBeat.i(74701);
-    Iterator local1 = new Iterator()
-    {
-      public final boolean hasNext()
-      {
-        AppMethodBeat.i(74684);
-        boolean bool = this.aPp.hasNext();
-        AppMethodBeat.o(74684);
-        return bool;
-      }
-      
-      public final void remove()
-      {
-        AppMethodBeat.i(74685);
-        UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-        AppMethodBeat.o(74685);
-        throw localUnsupportedOperationException;
-      }
-    };
+    b.1 local1 = new b.1(this, this.aIx.iterator());
     AppMethodBeat.o(74701);
     return local1;
   }
@@ -199,12 +182,12 @@ public final class b
   public final b l(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(74698);
-    this.aGG.set(paramInt, a.aL(paramBoolean));
+    this.aIx.set(paramInt, a.aM(paramBoolean));
     AppMethodBeat.o(74698);
     return this;
   }
   
-  public final b qC()
+  public final b sa()
   {
     return this;
   }
@@ -212,14 +195,14 @@ public final class b
   public final b t(long paramLong)
   {
     AppMethodBeat.i(74689);
-    this.aGG.add(a.s(paramLong));
+    this.aIx.add(a.s(paramLong));
     AppMethodBeat.o(74689);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.eclipsesource.a.b
  * JD-Core Version:    0.7.0.1
  */

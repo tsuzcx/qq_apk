@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public class EmotionDonor
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String HeadUrl;
   
@@ -39,9 +39,9 @@ public class EmotionDonor
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         if (this.HeadUrl == null)
@@ -63,7 +63,7 @@ public class EmotionDonor
           AppMethodBeat.o(104778);
           return -1;
         }
-        localEmotionDonor.HeadUrl = locala.LVo.readString();
+        localEmotionDonor.HeadUrl = locala.NPN.readString();
         AppMethodBeat.o(104778);
         return 0;
       }
@@ -74,7 +74,7 @@ public class EmotionDonor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionDonor
  * JD-Core Version:    0.7.0.1
  */

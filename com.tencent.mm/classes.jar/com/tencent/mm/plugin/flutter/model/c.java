@@ -5,8 +5,8 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.al;
 import io.flutter.plugin.a.j;
 import io.flutter.plugin.a.k.c;
 import io.flutter.plugin.a.k.d;
@@ -17,11 +17,11 @@ import org.json.JSONObject;
 public final class c
   implements k.c
 {
-  private final m.c aRg;
+  private final m.c bbB;
   
   c(m.c paramc)
   {
-    this.aRg = paramc;
+    this.bbB = paramc;
   }
   
   public final void a(j paramj, k.d paramd)
@@ -29,8 +29,8 @@ public final class c
     AppMethodBeat.i(148873);
     if (paramj.method.equals("getDisplayParams"))
     {
-      DisplayMetrics localDisplayMetrics = this.aRg.Ir().getResources().getDisplayMetrics();
-      Point localPoint = aj.cl(this.aRg.Ir());
+      DisplayMetrics localDisplayMetrics = this.bbB.JR().getResources().getDisplayMetrics();
+      Point localPoint = al.ci(this.bbB.JR());
       paramj = new JSONObject();
       try
       {
@@ -38,7 +38,7 @@ public final class c
         paramj.put("screenHeight", localPoint.y);
         paramj.put("densityDpi", localDisplayMetrics.densityDpi);
         paramj.put("density", localDisplayMetrics.density);
-        paramd.db(paramj.toString());
+        paramd.de(paramj.toString());
         AppMethodBeat.o(148873);
         return;
       }
@@ -46,17 +46,17 @@ public final class c
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.Flutter.FlutterLvCppHandler", localJSONException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.Flutter.FlutterLvCppHandler", localJSONException, "", new Object[0]);
         }
       }
     }
-    paramd.daE();
+    paramd.djR();
     AppMethodBeat.o(148873);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.model.c
  * JD-Core Version:    0.7.0.1
  */

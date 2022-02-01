@@ -17,13 +17,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wxcredit.a.c;
 import com.tencent.mm.plugin.wxcredit.a.e;
 import com.tencent.mm.plugin.wxcredit.a.l;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.t;
-import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.util.ArrayList;
@@ -33,34 +33,34 @@ public class WalletWXCreditChangeAmountUI
   extends WalletBaseUI
   implements View.OnClickListener
 {
-  private List<l> DcW;
-  private List<l> DcX;
-  private l DcY;
-  private l DcZ;
-  private int Dda;
-  private boolean Ddb;
-  private boolean Ddc;
-  private TextView Ddd;
-  private TextView Dde;
-  private TextView Ddf;
-  private TextView Ddg;
-  private TextView Ddh;
-  private TextView Ddi;
-  private EditText Ddj;
-  private EditText Ddk;
-  private EditText Ddl;
-  private EditText Ddm;
-  private BaseAdapter Ddn;
-  private BaseAdapter Ddo;
+  private List<l> EGW;
+  private List<l> EGX;
+  private l EGY;
+  private l EGZ;
+  private int EHa;
+  private boolean EHb;
+  private boolean EHc;
+  private TextView EHd;
+  private TextView EHe;
+  private TextView EHf;
+  private TextView EHg;
+  private TextView EHh;
+  private TextView EHi;
+  private EditText EHj;
+  private EditText EHk;
+  private EditText EHl;
+  private EditText EHm;
+  private BaseAdapter EHn;
+  private BaseAdapter EHo;
   
   public WalletWXCreditChangeAmountUI()
   {
     AppMethodBeat.i(72347);
-    this.DcX = new ArrayList();
-    this.Dda = -1;
-    this.Ddn = new BaseAdapter()
+    this.EGX = new ArrayList();
+    this.EHa = -1;
+    this.EHn = new BaseAdapter()
     {
-      private l Wk(int paramAnonymousInt)
+      private l Yb(int paramAnonymousInt)
       {
         AppMethodBeat.i(72344);
         l locall = (l)WalletWXCreditChangeAmountUI.j(WalletWXCreditChangeAmountUI.this).get(paramAnonymousInt);
@@ -90,9 +90,9 @@ public class WalletWXCreditChangeAmountUI
       {
         AppMethodBeat.i(72345);
         paramAnonymousView = (CheckedTextView)View.inflate(WalletWXCreditChangeAmountUI.this, 2131495971, null);
-        paramAnonymousViewGroup = Wk(paramAnonymousInt);
+        paramAnonymousViewGroup = Yb(paramAnonymousInt);
         paramAnonymousView.setText(paramAnonymousViewGroup.desc);
-        if (paramAnonymousViewGroup.DcN != 0) {}
+        if (paramAnonymousViewGroup.EGN != 0) {}
         for (boolean bool = true;; bool = false)
         {
           paramAnonymousView.setChecked(bool);
@@ -101,7 +101,7 @@ public class WalletWXCreditChangeAmountUI
         }
       }
     };
-    this.Ddo = new BaseAdapter()
+    this.EHo = new BaseAdapter()
     {
       public final int getCount()
       {
@@ -127,7 +127,7 @@ public class WalletWXCreditChangeAmountUI
           if (!WalletWXCreditChangeAmountUI.l(WalletWXCreditChangeAmountUI.this)) {
             break label137;
           }
-          if ((WalletWXCreditChangeAmountUI.c(WalletWXCreditChangeAmountUI.this).DcQ == null) || (!"Y".equals(WalletWXCreditChangeAmountUI.c(WalletWXCreditChangeAmountUI.this).umW))) {
+          if ((WalletWXCreditChangeAmountUI.c(WalletWXCreditChangeAmountUI.this).EGQ == null) || (!"Y".equals(WalletWXCreditChangeAmountUI.c(WalletWXCreditChangeAmountUI.this).vpC))) {
             break label114;
           }
           if (paramAnonymousInt != 0) {
@@ -152,7 +152,7 @@ public class WalletWXCreditChangeAmountUI
           break;
         }
         label137:
-        if ((WalletWXCreditChangeAmountUI.f(WalletWXCreditChangeAmountUI.this).DcQ != null) && ("Y".equals(WalletWXCreditChangeAmountUI.f(WalletWXCreditChangeAmountUI.this).umW)))
+        if ((WalletWXCreditChangeAmountUI.f(WalletWXCreditChangeAmountUI.this).EGQ != null) && ("Y".equals(WalletWXCreditChangeAmountUI.f(WalletWXCreditChangeAmountUI.this).vpC)))
         {
           if (paramAnonymousInt == 0) {}
           for (bool1 = bool3;; bool1 = false)
@@ -172,75 +172,75 @@ public class WalletWXCreditChangeAmountUI
     AppMethodBeat.o(72347);
   }
   
-  private void cL()
+  private void updateView()
   {
     AppMethodBeat.i(72350);
-    if (this.DcY != null)
+    if (this.EGY != null)
     {
-      this.Ddd.setText(this.DcY.desc);
-      if (this.DcY.DcQ == null) {
+      this.EHd.setText(this.EGY.desc);
+      if (this.EGY.EGQ == null) {
         break label300;
       }
-      this.Ddh.setVisibility(0);
-      this.Ddj.setVisibility(8);
-      this.Ddf.setText(this.DcY.DcQ.desc);
-      this.Ddk.setHint(this.DcY.DcQ.nYv);
-      if (!"Y".equals(this.DcY.umW)) {
+      this.EHh.setVisibility(0);
+      this.EHj.setVisibility(8);
+      this.EHf.setText(this.EGY.EGQ.desc);
+      this.EHk.setHint(this.EGY.EGQ.oBP);
+      if (!"Y".equals(this.EGY.vpC)) {
         break label255;
       }
-      this.Ddf.setVisibility(0);
-      this.Ddk.setVisibility(0);
-      this.Ddh.setText(2131755939);
+      this.EHf.setVisibility(0);
+      this.EHk.setVisibility(0);
+      this.EHh.setText(2131755939);
     }
-    while (this.DcZ != null)
+    while (this.EGZ != null)
     {
-      this.Dde.setText(this.DcZ.desc);
-      if (this.DcZ.DcQ != null)
+      this.EHe.setText(this.EGZ.desc);
+      if (this.EGZ.EGQ != null)
       {
-        this.Ddi.setVisibility(0);
-        this.Ddl.setVisibility(8);
-        this.Ddg.setText(this.DcZ.DcQ.desc);
-        this.Ddm.setHint(this.DcZ.DcQ.nYv);
-        if ("Y".equals(this.DcZ.umW))
+        this.EHi.setVisibility(0);
+        this.EHl.setVisibility(8);
+        this.EHg.setText(this.EGZ.EGQ.desc);
+        this.EHm.setHint(this.EGZ.EGQ.oBP);
+        if ("Y".equals(this.EGZ.vpC))
         {
-          this.Ddg.setVisibility(0);
-          this.Ddm.setVisibility(0);
-          this.Ddi.setText(2131755939);
+          this.EHg.setVisibility(0);
+          this.EHm.setVisibility(0);
+          this.EHi.setText(2131755939);
           AppMethodBeat.o(72350);
           return;
           label255:
-          this.Ddf.setVisibility(8);
-          this.Ddk.setVisibility(8);
-          if ("N".equals(this.DcY.umW))
+          this.EHf.setVisibility(8);
+          this.EHk.setVisibility(8);
+          if ("N".equals(this.EGY.vpC))
           {
-            this.Ddh.setText(2131755831);
+            this.EHh.setText(2131755831);
             continue;
             label300:
-            this.Ddh.setVisibility(8);
-            this.Ddj.setVisibility(0);
-            this.Ddj.setHint(this.DcY.nYv);
-            this.Ddf.setVisibility(8);
-            this.Ddk.setVisibility(8);
+            this.EHh.setVisibility(8);
+            this.EHj.setVisibility(0);
+            this.EHj.setHint(this.EGY.oBP);
+            this.EHf.setVisibility(8);
+            this.EHk.setVisibility(8);
           }
         }
         else
         {
-          this.Ddg.setVisibility(8);
-          this.Ddm.setVisibility(8);
-          if ("N".equals(this.DcZ.umW))
+          this.EHg.setVisibility(8);
+          this.EHm.setVisibility(8);
+          if ("N".equals(this.EGZ.vpC))
           {
-            this.Ddi.setText(2131755831);
+            this.EHi.setText(2131755831);
             AppMethodBeat.o(72350);
           }
         }
       }
       else
       {
-        this.Ddi.setVisibility(8);
-        this.Ddl.setVisibility(0);
-        this.Ddl.setHint(this.DcZ.nYv);
-        this.Ddg.setVisibility(8);
-        this.Ddm.setVisibility(8);
+        this.EHi.setVisibility(8);
+        this.EHl.setVisibility(0);
+        this.EHl.setHint(this.EGZ.oBP);
+        this.EHg.setVisibility(8);
+        this.EHm.setVisibility(8);
       }
     }
     AppMethodBeat.o(72350);
@@ -255,37 +255,45 @@ public class WalletWXCreditChangeAmountUI
   {
     AppMethodBeat.i(72349);
     setMMTitle(2131766028);
-    this.Ddd = ((TextView)findViewById(2131306856));
-    this.Ddf = ((TextView)findViewById(2131306857));
-    this.Dde = ((TextView)findViewById(2131306858));
-    this.Ddg = ((TextView)findViewById(2131306859));
-    this.Ddj = ((EditText)findViewById(2131306846));
-    this.Ddk = ((EditText)findViewById(2131306847));
-    this.Ddl = ((EditText)findViewById(2131306848));
-    this.Ddm = ((EditText)findViewById(2131306849));
-    this.Ddh = ((TextView)findViewById(2131306850));
-    this.Ddi = ((TextView)findViewById(2131306851));
-    this.Ddh.setOnClickListener(this);
-    this.Ddi.setOnClickListener(this);
-    this.Ddd.setOnClickListener(new View.OnClickListener()
+    this.EHd = ((TextView)findViewById(2131306856));
+    this.EHf = ((TextView)findViewById(2131306857));
+    this.EHe = ((TextView)findViewById(2131306858));
+    this.EHg = ((TextView)findViewById(2131306859));
+    this.EHj = ((EditText)findViewById(2131306846));
+    this.EHk = ((EditText)findViewById(2131306847));
+    this.EHl = ((EditText)findViewById(2131306848));
+    this.EHm = ((EditText)findViewById(2131306849));
+    this.EHh = ((TextView)findViewById(2131306850));
+    this.EHi = ((TextView)findViewById(2131306851));
+    this.EHh.setOnClickListener(this);
+    this.EHi.setOnClickListener(this);
+    this.EHd.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72332);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditChangeAmountUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         WalletWXCreditChangeAmountUI.a(WalletWXCreditChangeAmountUI.this, true);
         WalletWXCreditChangeAmountUI.a(WalletWXCreditChangeAmountUI.this);
         WalletWXCreditChangeAmountUI.this.showDialog(1);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditChangeAmountUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(72332);
       }
     });
-    this.Dde.setOnClickListener(new View.OnClickListener()
+    this.EHe.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72336);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditChangeAmountUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         WalletWXCreditChangeAmountUI.a(WalletWXCreditChangeAmountUI.this, false);
         WalletWXCreditChangeAmountUI.a(WalletWXCreditChangeAmountUI.this);
         WalletWXCreditChangeAmountUI.this.showDialog(1);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditChangeAmountUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(72336);
       }
     });
@@ -305,36 +313,43 @@ public class WalletWXCreditChangeAmountUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72338);
-        if (WalletWXCreditChangeAmountUI.b(WalletWXCreditChangeAmountUI.this))
-        {
-          if (WalletWXCreditChangeAmountUI.c(WalletWXCreditChangeAmountUI.this).DcQ != null)
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditChangeAmountUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        if (WalletWXCreditChangeAmountUI.b(WalletWXCreditChangeAmountUI.this)) {
+          if (WalletWXCreditChangeAmountUI.c(WalletWXCreditChangeAmountUI.this).EGQ != null)
           {
             if (WalletWXCreditChangeAmountUI.d(WalletWXCreditChangeAmountUI.this).getVisibility() == 0) {
-              WalletWXCreditChangeAmountUI.c(WalletWXCreditChangeAmountUI.this).DcQ.umW = WalletWXCreditChangeAmountUI.d(WalletWXCreditChangeAmountUI.this).getText().toString();
+              WalletWXCreditChangeAmountUI.c(WalletWXCreditChangeAmountUI.this).EGQ.vpC = WalletWXCreditChangeAmountUI.d(WalletWXCreditChangeAmountUI.this).getText().toString();
             }
-            if (WalletWXCreditChangeAmountUI.f(WalletWXCreditChangeAmountUI.this).DcQ == null) {
-              break label231;
+            if (WalletWXCreditChangeAmountUI.f(WalletWXCreditChangeAmountUI.this).EGQ == null) {
+              break label272;
             }
-            if (WalletWXCreditChangeAmountUI.g(WalletWXCreditChangeAmountUI.this).getVisibility() != 0) {}
-          }
-          label231:
-          for (WalletWXCreditChangeAmountUI.f(WalletWXCreditChangeAmountUI.this).DcQ.umW = WalletWXCreditChangeAmountUI.g(WalletWXCreditChangeAmountUI.this).getText().toString();; WalletWXCreditChangeAmountUI.f(WalletWXCreditChangeAmountUI.this).umW = WalletWXCreditChangeAmountUI.h(WalletWXCreditChangeAmountUI.this).getText().toString())
-          {
+            if (WalletWXCreditChangeAmountUI.g(WalletWXCreditChangeAmountUI.this).getVisibility() == 0) {
+              WalletWXCreditChangeAmountUI.f(WalletWXCreditChangeAmountUI.this).EGQ.vpC = WalletWXCreditChangeAmountUI.g(WalletWXCreditChangeAmountUI.this).getText().toString();
+            }
+            label148:
             paramAnonymousView = new ArrayList();
             paramAnonymousView.add(WalletWXCreditChangeAmountUI.c(WalletWXCreditChangeAmountUI.this));
             paramAnonymousView.add(WalletWXCreditChangeAmountUI.f(WalletWXCreditChangeAmountUI.this));
-            String str = WalletWXCreditChangeAmountUI.this.getInput().getString("kreq_token");
+            localObject = WalletWXCreditChangeAmountUI.this.getInput().getString("kreq_token");
             WalletWXCreditChangeAmountUI.this.getInput().getString("key_bank_type");
-            paramAnonymousView = new c(paramAnonymousView, str);
+            paramAnonymousView = new c(paramAnonymousView, (String)localObject);
             WalletWXCreditChangeAmountUI.this.doSceneForceProgress(paramAnonymousView);
-            AppMethodBeat.o(72338);
-            return;
-            WalletWXCreditChangeAmountUI.c(WalletWXCreditChangeAmountUI.this).umW = WalletWXCreditChangeAmountUI.e(WalletWXCreditChangeAmountUI.this).getText().toString();
-            break;
           }
         }
-        t.makeText(WalletWXCreditChangeAmountUI.this.getContext(), 2131766024, 0).show();
-        AppMethodBeat.o(72338);
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditChangeAmountUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(72338);
+          return;
+          WalletWXCreditChangeAmountUI.c(WalletWXCreditChangeAmountUI.this).vpC = WalletWXCreditChangeAmountUI.e(WalletWXCreditChangeAmountUI.this).getText().toString();
+          break;
+          label272:
+          WalletWXCreditChangeAmountUI.f(WalletWXCreditChangeAmountUI.this).vpC = WalletWXCreditChangeAmountUI.h(WalletWXCreditChangeAmountUI.this).getText().toString();
+          break label148;
+          t.makeText(WalletWXCreditChangeAmountUI.this.getContext(), 2131766024, 0).show();
+        }
       }
     });
     AppMethodBeat.o(72349);
@@ -343,19 +358,25 @@ public class WalletWXCreditChangeAmountUI
   public void onClick(View paramView)
   {
     AppMethodBeat.i(72352);
+    b localb = new b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditChangeAmountUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
     if (paramView.getId() == 2131306850)
     {
-      this.Ddc = true;
+      this.EHc = true;
       showDialog(2);
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditChangeAmountUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(72352);
       return;
+      if (paramView.getId() == 2131306851)
+      {
+        this.EHc = false;
+        showDialog(2);
+      }
     }
-    if (paramView.getId() == 2131306851)
-    {
-      this.Ddc = false;
-      showDialog(2);
-    }
-    AppMethodBeat.o(72352);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -363,7 +384,7 @@ public class WalletWXCreditChangeAmountUI
     AppMethodBeat.i(72348);
     super.onCreate(paramBundle);
     initView();
-    cL();
+    updateView();
     AppMethodBeat.o(72348);
   }
   
@@ -374,16 +395,16 @@ public class WalletWXCreditChangeAmountUI
     {
       if ((paramn instanceof e))
       {
-        this.DcW = ((e)paramn).Dcv;
-        this.Dda = ((e)paramn).Dcw;
-        if ((this.DcW != null) && (this.DcW.size() >= 2))
+        this.EGW = ((e)paramn).EGv;
+        this.EHa = ((e)paramn).EGw;
+        if ((this.EGW != null) && (this.EGW.size() >= 2))
         {
-          this.DcY = ((l)this.DcW.get(0));
-          this.DcZ = ((l)this.DcW.get(1));
-          this.DcY.DcN = 1;
-          this.DcZ.DcN = 2;
+          this.EGY = ((l)this.EGW.get(0));
+          this.EGZ = ((l)this.EGW.get(1));
+          this.EGY.EGN = 1;
+          this.EGZ.EGN = 2;
         }
-        cL();
+        updateView();
         AppMethodBeat.o(72351);
         return true;
       }
@@ -395,7 +416,7 @@ public class WalletWXCreditChangeAmountUI
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(72335);
-          paramAnonymousDialogInterface = a.br(WalletWXCreditChangeAmountUI.this);
+          paramAnonymousDialogInterface = com.tencent.mm.wallet_core.a.br(WalletWXCreditChangeAmountUI.this);
           if (paramAnonymousDialogInterface != null)
           {
             paramAnonymousDialogInterface.b(WalletWXCreditChangeAmountUI.this, WalletWXCreditChangeAmountUI.this.getInput());

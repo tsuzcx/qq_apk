@@ -1,7 +1,7 @@
 package com.tencent.liteav.audio;
 
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TXCAudioLocalRecorder
@@ -13,7 +13,7 @@ public class TXCAudioLocalRecorder
   static
   {
     AppMethodBeat.i(16303);
-    d.f();
+    f.f();
     b = TXCAudioLocalRecorder.class.getSimpleName();
     AppMethodBeat.o(16303);
   }

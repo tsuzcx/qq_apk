@@ -10,7 +10,7 @@ public abstract interface h
   
   public abstract u<?> b(com.bumptech.glide.c.h paramh);
   
-  public abstract void oC();
+  public abstract void oU();
   
   public abstract void trimMemory(int paramInt);
   

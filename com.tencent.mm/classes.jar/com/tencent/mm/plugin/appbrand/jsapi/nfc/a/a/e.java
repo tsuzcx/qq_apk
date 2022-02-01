@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "T", "", "()V", "Failure", "Success", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult$Success;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult$Failure;", "luggage-commons-jsapi-nfc-ext_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "T", "", "()V", "Failure", "Success", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult$Success;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult$Failure;", "luggage-commons-jsapi-nfc-ext_release"})
 public abstract class e<T>
 {
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult$Failure;", "T", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "errCode", "", "errMsg", "", "(ILjava/lang/String;)V", "getErrCode", "()I", "getErrMsg", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "", "hashCode", "toString", "luggage-commons-jsapi-nfc-ext_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult$Failure;", "T", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "errCode", "", "errMsg", "", "(ILjava/lang/String;)V", "getErrCode", "()I", "getErrMsg", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "", "hashCode", "toString", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class a<T>
     extends e<T>
   {
@@ -31,7 +31,7 @@ public abstract class e<T>
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.errCode != paramObject.errCode) || (!k.g(this.errMsg, paramObject.errMsg))) {}
+          if ((this.errCode != paramObject.errCode) || (!p.i(this.errMsg, paramObject.errMsg))) {}
         }
       }
       else
@@ -65,16 +65,16 @@ public abstract class e<T>
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult$Success;", "T", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "ret", "(Ljava/lang/Object;)V", "getRet", "()Ljava/lang/Object;", "Ljava/lang/Object;", "component1", "copy", "(Ljava/lang/Object;)Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult$Success;", "equals", "", "other", "", "hashCode", "", "toString", "", "luggage-commons-jsapi-nfc-ext_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult$Success;", "T", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "ret", "(Ljava/lang/Object;)V", "getRet", "()Ljava/lang/Object;", "Ljava/lang/Object;", "component1", "copy", "(Ljava/lang/Object;)Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult$Success;", "equals", "", "other", "", "hashCode", "", "toString", "", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class b<T>
     extends e<T>
   {
-    public final T kDL;
+    public final T kZU;
     
     public b(T paramT)
     {
       super();
-      this.kDL = paramT;
+      this.kZU = paramT;
     }
     
     public final boolean equals(Object paramObject)
@@ -85,7 +85,7 @@ public abstract class e<T>
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if (!k.g(this.kDL, paramObject.kDL)) {}
+          if (!p.i(this.kZU, paramObject.kZU)) {}
         }
       }
       else
@@ -100,7 +100,7 @@ public abstract class e<T>
     public final int hashCode()
     {
       AppMethodBeat.i(183694);
-      Object localObject = this.kDL;
+      Object localObject = this.kZU;
       if (localObject != null)
       {
         int i = localObject.hashCode();
@@ -114,7 +114,7 @@ public abstract class e<T>
     public final String toString()
     {
       AppMethodBeat.i(183693);
-      String str = "Success(ret=" + this.kDL + ")";
+      String str = "Success(ret=" + this.kZU + ")";
       AppMethodBeat.o(183693);
       return str;
     }
@@ -122,7 +122,7 @@ public abstract class e<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public abstract interface a
 {
   public abstract void a(b paramb);
   
-  public abstract int tN(int paramInt);
+  public abstract int ur(int paramInt);
   
   public static abstract class a
     extends Binder
@@ -50,7 +50,7 @@ public abstract interface a
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCall");
-        paramInt1 = tN(paramParcel1.readInt());
+        paramInt1 = ur(paramParcel1.readInt());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -152,7 +152,7 @@ public abstract interface a
         return this.mRemote;
       }
       
-      public final int tN(int paramInt)
+      public final int ur(int paramInt)
       {
         AppMethodBeat.i(47999);
         Parcel localParcel1 = Parcel.obtain();

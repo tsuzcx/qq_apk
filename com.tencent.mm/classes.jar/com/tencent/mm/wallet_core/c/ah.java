@@ -6,34 +6,10 @@ import com.tencent.mm.model.u;
 
 public final class ah
 {
-  public static int fAA()
-  {
-    AppMethodBeat.i(207326);
-    if (u.axL())
-    {
-      AppMethodBeat.o(207326);
-      return 2131757460;
-    }
-    AppMethodBeat.o(207326);
-    return 2131757459;
-  }
-  
-  public static int fAB()
-  {
-    AppMethodBeat.i(72827);
-    if (u.axL())
-    {
-      AppMethodBeat.o(72827);
-      return 2131765186;
-    }
-    AppMethodBeat.o(72827);
-    return 2131765185;
-  }
-  
-  public static int fAv()
+  public static int fRF()
   {
     AppMethodBeat.i(72821);
-    if (u.axL())
+    if (u.aAB())
     {
       AppMethodBeat.o(72821);
       return 2131765737;
@@ -42,15 +18,15 @@ public final class ah
     return 2131765738;
   }
   
-  public static String fAw()
+  public static String fRG()
   {
     AppMethodBeat.i(72822);
-    if (u.axL())
+    if (u.aAB())
     {
       AppMethodBeat.o(72822);
       return "R";
     }
-    if (u.axM())
+    if (u.aAC())
     {
       AppMethodBeat.o(72822);
       return "HK$";
@@ -59,10 +35,10 @@ public final class ah
     return "¥";
   }
   
-  public static int fAx()
+  public static int fRH()
   {
     AppMethodBeat.i(72823);
-    if (u.axL())
+    if (u.aAB())
     {
       AppMethodBeat.o(72823);
       return 2131496009;
@@ -71,10 +47,10 @@ public final class ah
     return 2131495941;
   }
   
-  public static int fAy()
+  public static int fRI()
   {
     AppMethodBeat.i(72824);
-    if (u.axL())
+    if (u.aAB())
     {
       AppMethodBeat.o(72824);
       return 2131765118;
@@ -83,10 +59,10 @@ public final class ah
     return 2131765115;
   }
   
-  public static int fAz()
+  public static int fRJ()
   {
     AppMethodBeat.i(72825);
-    if (u.axL())
+    if (u.aAB())
     {
       AppMethodBeat.o(72825);
       return 2131493681;
@@ -95,10 +71,34 @@ public final class ah
     return 2131493680;
   }
   
-  public static String kB(Context paramContext)
+  public static int fRK()
+  {
+    AppMethodBeat.i(199368);
+    if (u.aAB())
+    {
+      AppMethodBeat.o(199368);
+      return 2131757460;
+    }
+    AppMethodBeat.o(199368);
+    return 2131757459;
+  }
+  
+  public static int fRL()
+  {
+    AppMethodBeat.i(72827);
+    if (u.aAB())
+    {
+      AppMethodBeat.o(72827);
+      return 2131765186;
+    }
+    AppMethodBeat.o(72827);
+    return 2131765185;
+  }
+  
+  public static String kN(Context paramContext)
   {
     AppMethodBeat.i(72826);
-    if (u.axL())
+    if (u.aAB())
     {
       paramContext = paramContext.getString(2131765748);
       AppMethodBeat.o(72826);

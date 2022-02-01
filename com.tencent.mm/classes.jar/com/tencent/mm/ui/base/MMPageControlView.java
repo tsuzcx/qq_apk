@@ -12,10 +12,10 @@ import java.util.Map;
 public class MMPageControlView
   extends LinearLayout
 {
-  protected int Hyp;
+  protected int Jmg;
   protected Context context;
   protected int count;
-  protected ImageView dhf;
+  protected ImageView dsD;
   protected Map<Integer, ImageView> map;
   
   public MMPageControlView(Context paramContext)
@@ -23,7 +23,7 @@ public class MMPageControlView
     super(paramContext);
     AppMethodBeat.i(142054);
     this.map = new HashMap();
-    this.Hyp = 2131494916;
+    this.Jmg = 2131494916;
     this.context = paramContext;
     AppMethodBeat.o(142054);
   }
@@ -33,12 +33,12 @@ public class MMPageControlView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142055);
     this.map = new HashMap();
-    this.Hyp = 2131494916;
+    this.Jmg = 2131494916;
     this.context = paramContext;
     AppMethodBeat.o(142055);
   }
   
-  protected void ON(int paramInt)
+  protected void Qv(int paramInt)
   {
     AppMethodBeat.i(142056);
     removeAllViews();
@@ -51,64 +51,64 @@ public class MMPageControlView
     int i = 0;
     if (i < j)
     {
-      this.dhf = null;
+      this.dsD = null;
       if (paramInt == i)
       {
         if (this.map.size() > i) {
-          this.dhf = ((ImageView)this.map.get(Integer.valueOf(i)));
+          this.dsD = ((ImageView)this.map.get(Integer.valueOf(i)));
         }
-        if (this.dhf == null)
+        if (this.dsD == null)
         {
-          this.dhf = ((ImageView)View.inflate(this.context, this.Hyp, null).findViewById(2131302343));
-          this.map.put(Integer.valueOf(i), this.dhf);
+          this.dsD = ((ImageView)View.inflate(this.context, this.Jmg, null).findViewById(2131302343));
+          this.map.put(Integer.valueOf(i), this.dsD);
         }
-        this.dhf.setSelected(true);
+        this.dsD.setSelected(true);
       }
       for (;;)
       {
         if (i == 0) {
-          this.dhf.setPadding(0, 0, 0, 0);
+          this.dsD.setPadding(0, 0, 0, 0);
         }
-        addView(this.dhf);
+        addView(this.dsD);
         i += 1;
         break;
         if (this.map.size() > i) {
-          this.dhf = ((ImageView)this.map.get(Integer.valueOf(i)));
+          this.dsD = ((ImageView)this.map.get(Integer.valueOf(i)));
         }
-        if (this.dhf == null)
+        if (this.dsD == null)
         {
-          this.dhf = ((ImageView)View.inflate(this.context, this.Hyp, null).findViewById(2131302343));
-          this.map.put(Integer.valueOf(i), this.dhf);
+          this.dsD = ((ImageView)View.inflate(this.context, this.Jmg, null).findViewById(2131302343));
+          this.map.put(Integer.valueOf(i), this.dsD);
         }
-        this.dhf.setSelected(false);
+        this.dsD.setSelected(false);
       }
     }
     AppMethodBeat.o(142056);
   }
   
-  public final void jy(int paramInt1, int paramInt2)
+  public final void jK(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142052);
     this.count = paramInt1;
-    ON(paramInt2);
+    Qv(paramInt2);
     AppMethodBeat.o(142052);
   }
   
   public void setIndicatorLayoutRes(int paramInt)
   {
-    this.Hyp = paramInt;
+    this.Jmg = paramInt;
   }
   
   public void setPage(int paramInt)
   {
     AppMethodBeat.i(142053);
-    ON(paramInt);
+    Qv(paramInt);
     AppMethodBeat.o(142053);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMPageControlView
  * JD-Core Version:    0.7.0.1
  */

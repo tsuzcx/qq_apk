@@ -6,18 +6,18 @@ import java.io.File;
 public class d
   implements a.a
 {
-  private final long aHk = 262144000L;
-  private final a aHl;
+  private final long aJb = 262144000L;
+  private final a aJc;
   
   public d(a parama)
   {
-    this.aHl = parama;
+    this.aJc = parama;
   }
   
-  public final a oI()
+  public final a pa()
   {
     AppMethodBeat.i(77149);
-    Object localObject = this.aHl.oK();
+    Object localObject = this.aJc.pc();
     if (localObject == null)
     {
       AppMethodBeat.o(77149);
@@ -28,14 +28,14 @@ public class d
       AppMethodBeat.o(77149);
       return null;
     }
-    localObject = new e((File)localObject, this.aHk);
+    localObject = new e((File)localObject, this.aJb);
     AppMethodBeat.o(77149);
     return localObject;
   }
   
   public static abstract interface a
   {
-    public abstract File oK();
+    public abstract File pc();
   }
 }
 

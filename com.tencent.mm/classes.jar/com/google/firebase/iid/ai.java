@@ -12,21 +12,21 @@ import javax.annotation.concurrent.GuardedBy;
 public final class ai
 {
   @GuardedBy("MessengerIpcClient.class")
-  private static ai bCa;
-  final Context bAR;
-  final ScheduledExecutorService bCb;
+  private static ai bMo;
+  final Context bLf;
+  final ScheduledExecutorService bMp;
   @GuardedBy("this")
-  private aj bCc;
+  private aj bMq;
   @GuardedBy("this")
-  private int bCd;
+  private int bMr;
   
   private ai(Context paramContext, ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(4254);
-    this.bCc = new aj(this, (byte)0);
-    this.bCd = 1;
-    this.bCb = paramScheduledExecutorService;
-    this.bAR = paramContext.getApplicationContext();
+    this.bMq = new aj(this, (byte)0);
+    this.bMr = 1;
+    this.bMp = paramScheduledExecutorService;
+    this.bLf = paramContext.getApplicationContext();
     AppMethodBeat.o(4254);
   }
   
@@ -35,10 +35,10 @@ public final class ai
     try
     {
       AppMethodBeat.i(4253);
-      if (bCa == null) {
-        bCa = new ai(paramContext, Executors.newSingleThreadScheduledExecutor());
+      if (bMo == null) {
+        bMo = new ai(paramContext, Executors.newSingleThreadScheduledExecutor());
       }
-      paramContext = bCa;
+      paramContext = bMo;
       AppMethodBeat.o(4253);
       return paramContext;
     }
@@ -55,24 +55,24 @@ public final class ai
         String str = String.valueOf(paramc);
         new StringBuilder(String.valueOf(str).length() + 9).append("Queueing ").append(str);
       }
-      if (!this.bCc.b(paramc))
+      if (!this.bMq.b(paramc))
       {
-        this.bCc = new aj(this, (byte)0);
-        this.bCc.b(paramc);
+        this.bMq = new aj(this, (byte)0);
+        this.bMq.b(paramc);
       }
-      paramc = paramc.bAP.getTask();
+      paramc = paramc.bLd.getTask();
       AppMethodBeat.o(4255);
       return paramc;
     }
     finally {}
   }
   
-  public final int wR()
+  public final int yo()
   {
     try
     {
-      int i = this.bCd;
-      this.bCd = (i + 1);
+      int i = this.bMr;
+      this.bMr = (i + 1);
       return i;
     }
     finally

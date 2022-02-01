@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.appbrand.appusage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.bhj;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.blr;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.storage.c;
 import java.util.Collections;
 import java.util.Map;
@@ -15,26 +15,26 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public enum q
 {
-  private static volatile bhj juY;
-  private static final Set<Object> juZ;
+  private static volatile blr jOR;
+  private static final Set<Object> jOS;
   
   static
   {
     AppMethodBeat.i(44546);
-    jva = new q[0];
-    juZ = Collections.newSetFromMap(new ConcurrentHashMap());
+    jOT = new q[0];
+    jOS = Collections.newSetFromMap(new ConcurrentHashMap());
     AppMethodBeat.o(44546);
   }
   
-  public static boolean aYD()
+  public static boolean bcb()
   {
     return true;
   }
   
-  public static boolean aYE()
+  public static boolean bcc()
   {
     AppMethodBeat.i(44539);
-    switch (1.jvb[aYF().ordinal()])
+    switch (1.jOU[bcd().ordinal()])
     {
     }
     do
@@ -45,13 +45,13 @@ public enum q
       return false;
       AppMethodBeat.o(44539);
       return true;
-      if (aYG())
+      if (bce())
       {
         AppMethodBeat.o(44539);
         return true;
       }
-    } while (juY == null);
-    if (juY.mUg >= juY.EWA)
+    } while (jOR == null);
+    if (jOR.nuE >= jOR.GFX)
     {
       AppMethodBeat.o(44539);
       return true;
@@ -60,20 +60,20 @@ public enum q
     return false;
   }
   
-  static a aYF()
+  static a bcd()
   {
     int i = 0;
     AppMethodBeat.i(44541);
-    if (!g.agM())
+    if (!g.ajx())
     {
-      localObject = a.jvc;
+      localObject = a.jOV;
       AppMethodBeat.o(44541);
       return localObject;
     }
-    Object localObject = com.tencent.mm.model.c.d.aAp().tJ("100215");
+    Object localObject = com.tencent.mm.model.c.d.aDs().wz("100215");
     if (((c)localObject).isValid())
     {
-      int j = bs.getInt((String)((c)localObject).eYV().get("isOpenNewNearEntry"), 0);
+      int j = bt.getInt((String)((c)localObject).foF().get("isOpenNewNearEntry"), 0);
       localObject = a.values();
       int k = localObject.length;
       while (i < k)
@@ -87,34 +87,34 @@ public enum q
         i += 1;
       }
     }
-    localObject = a.jvc;
+    localObject = a.jOV;
     AppMethodBeat.o(44541);
     return localObject;
   }
   
-  static boolean aYG()
+  static boolean bce()
   {
     AppMethodBeat.i(44542);
-    boolean bool = g.agR().agA().getBoolean(ah.a.GJp, false);
+    boolean bool = g.ajC().ajl().getBoolean(al.a.IvH, false);
     AppMethodBeat.o(44542);
     return bool;
   }
   
-  static void aYH()
+  static void bcf()
   {
     AppMethodBeat.i(44543);
-    g.agR().agA().set(ah.a.GJp, Boolean.TRUE);
+    g.ajC().ajl().set(al.a.IvH, Boolean.TRUE);
     AppMethodBeat.o(44543);
   }
   
-  public static bhj aYI()
+  public static blr bcg()
   {
-    return juY;
+    return jOR;
   }
   
   public static void clearData()
   {
-    juY = null;
+    jOR = null;
   }
   
   static enum a
@@ -124,10 +124,10 @@ public enum q
     static
     {
       AppMethodBeat.i(44534);
-      jvc = new a("FORCE_OFF", 0, 0);
-      jvd = new a("FORCE_ON", 1, 1);
-      jve = new a("DYNAMIC_THRESHOLD", 2, 2);
-      jvf = new a[] { jvc, jvd, jve };
+      jOV = new a("FORCE_OFF", 0, 0);
+      jOW = new a("FORCE_ON", 1, 1);
+      jOX = new a("DYNAMIC_THRESHOLD", 2, 2);
+      jOY = new a[] { jOV, jOW, jOX };
       AppMethodBeat.o(44534);
     }
     

@@ -5,27 +5,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
 {
   public static int MAX_FRAME_SIZE = 2000;
-  private byte[] JRm;
-  public byte[] JRn;
-  private long JRo;
-  public long JRp;
-  public TRSpeexNative JRq;
+  private byte[] LLe;
+  public byte[] LLf;
+  private long LLg;
+  public long LLh;
+  public TRSpeexNative LLi;
   
   public a()
   {
     AppMethodBeat.i(87694);
-    this.JRm = null;
-    this.JRn = null;
-    this.JRo = 0L;
-    this.JRp = 0L;
-    this.JRq = new TRSpeexNative();
+    this.LLe = null;
+    this.LLf = null;
+    this.LLg = 0L;
+    this.LLh = 0L;
+    this.LLi = new TRSpeexNative();
     AppMethodBeat.o(87694);
   }
   
-  public final byte[] ab(byte[] paramArrayOfByte, int paramInt)
+  public final byte[] ac(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(87696);
-    if (this.JRo == 0L)
+    if (this.LLg == 0L)
     {
       paramArrayOfByte = new b(-102);
       AppMethodBeat.o(87696);
@@ -37,7 +37,7 @@ public final class a
       AppMethodBeat.o(87696);
       throw paramArrayOfByte;
     }
-    paramInt = this.JRq.nativeTRSpeexEncode(this.JRo, paramArrayOfByte, 0, paramInt, this.JRm);
+    paramInt = this.LLi.nativeTRSpeexEncode(this.LLg, paramArrayOfByte, 0, paramInt, this.LLe);
     if (paramInt < 0)
     {
       paramArrayOfByte = new b(paramInt);
@@ -50,50 +50,50 @@ public final class a
       return null;
     }
     paramArrayOfByte = new byte[paramInt];
-    System.arraycopy(this.JRm, 0, paramArrayOfByte, 0, paramInt);
+    System.arraycopy(this.LLe, 0, paramArrayOfByte, 0, paramInt);
     AppMethodBeat.o(87696);
     return paramArrayOfByte;
   }
   
-  public final int fCp()
+  public final int fTF()
   {
     AppMethodBeat.i(87695);
-    if (this.JRo != 0L)
+    if (this.LLg != 0L)
     {
       AppMethodBeat.o(87695);
       return -103;
     }
-    long l = this.JRq.nativeTRSpeexInit();
+    long l = this.LLi.nativeTRSpeexInit();
     if (l == -1L)
     {
       int i = (int)l;
       AppMethodBeat.o(87695);
       return i;
     }
-    this.JRo = l;
-    this.JRm = new byte[MAX_FRAME_SIZE * 10];
+    this.LLg = l;
+    this.LLe = new byte[MAX_FRAME_SIZE * 10];
     AppMethodBeat.o(87695);
     return 0;
   }
   
-  public final int fCq()
+  public final int fTG()
   {
     AppMethodBeat.i(87697);
-    if (this.JRo == 0L)
+    if (this.LLg == 0L)
     {
       AppMethodBeat.o(87697);
       return -102;
     }
-    this.JRm = null;
-    int i = this.JRq.nativeTRSpeexRelease(this.JRo);
-    this.JRo = 0L;
+    this.LLe = null;
+    int i = this.LLi.nativeTRSpeexRelease(this.LLg);
+    this.LLg = 0L;
     AppMethodBeat.o(87697);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqpinyin.voicerecoapi.a
  * JD-Core Version:    0.7.0.1
  */

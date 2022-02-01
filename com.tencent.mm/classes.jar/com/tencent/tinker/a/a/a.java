@@ -5,19 +5,19 @@ import com.tencent.tinker.a.a.b.e;
 public final class a
   extends s.a.a<a>
 {
-  public k KmA;
-  public byte Kmz;
+  public byte Mcx;
+  public k Mcy;
   
   public a(int paramInt, byte paramByte, k paramk)
   {
     super(paramInt);
-    this.Kmz = paramByte;
-    this.KmA = paramk;
+    this.Mcx = paramByte;
+    this.Mcy = paramk;
   }
   
   private int a(a parama)
   {
-    return this.KmA.b(parama.KmA);
+    return this.Mcy.b(parama.Mcy);
   }
   
   public final boolean equals(Object paramObject)
@@ -31,12 +31,12 @@ public final class a
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Byte.valueOf(this.Kmz), this.KmA });
+    return e.hash(new Object[] { Byte.valueOf(this.Mcx), this.Mcy });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.a.a.a
  * JD-Core Version:    0.7.0.1
  */

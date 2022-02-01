@@ -1,21 +1,44 @@
 package com.tencent.mm.emoji.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/ItemsDataListener;", "", "onGroupItemsChange", "", "start", "", "count", "onGroupItemsInsert", "onGroupItemsMoved", "from", "to", "onGroupItemsRemove", "plugin-emojisdk_release"})
-public abstract interface t
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/GroupExpandItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "expand", "", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;Z)V", "getExpand", "()Z", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "contentEquals", "other", "", "equals", "plugin-emojisdk_release"})
+public final class t
+  extends ac
 {
-  public abstract void cA(int paramInt1, int paramInt2);
+  private final EmojiGroupInfo gin;
+  public final boolean glv;
   
-  public abstract void cB(int paramInt1, int paramInt2);
+  public final boolean aS(Object paramObject)
+  {
+    AppMethodBeat.i(105560);
+    if ((super.aS(paramObject)) && ((paramObject instanceof t)) && (p.i(((t)paramObject).gin.fxi(), this.gin.fxi())) && (((t)paramObject).glv == this.glv))
+    {
+      AppMethodBeat.o(105560);
+      return true;
+    }
+    AppMethodBeat.o(105560);
+    return false;
+  }
   
-  public abstract void cy(int paramInt1, int paramInt2);
-  
-  public abstract void cz(int paramInt1, int paramInt2);
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(105559);
+    if ((super.equals(paramObject)) && ((paramObject instanceof t)) && (p.i(((t)paramObject).gin.fxi(), this.gin.fxi())))
+    {
+      AppMethodBeat.o(105559);
+      return true;
+    }
+    AppMethodBeat.o(105559);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.a.a.t
  * JD-Core Version:    0.7.0.1
  */

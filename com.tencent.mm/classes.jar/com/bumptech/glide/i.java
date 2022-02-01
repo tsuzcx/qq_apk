@@ -17,43 +17,43 @@ import java.util.Set;
 public final class i<TranscodeType>
   implements Cloneable
 {
-  protected static final com.bumptech.glide.f.e aBk;
-  private final com.bumptech.glide.f.e aAJ;
-  private final c aAq;
-  private final e aAw;
-  private final j aBl;
-  private final Class<TranscodeType> aBm;
-  protected com.bumptech.glide.f.e aBn;
-  private k<?, ? super TranscodeType> aBo;
-  private Object aBp;
-  private d<TranscodeType> aBq;
-  private i<TranscodeType> aBr;
-  private i<TranscodeType> aBs;
-  private Float aBt;
-  private boolean aBu;
-  private boolean aBv;
-  private boolean aBw;
+  protected static final com.bumptech.glide.f.e aDb;
+  private final com.bumptech.glide.f.e aCA;
+  private final c aCh;
+  private final e aCn;
+  private final j aDc;
+  private final Class<TranscodeType> aDd;
+  protected com.bumptech.glide.f.e aDe;
+  private k<?, ? super TranscodeType> aDf;
+  private Object aDg;
+  private d<TranscodeType> aDh;
+  private i<TranscodeType> aDi;
+  private i<TranscodeType> aDj;
+  private Float aDk;
+  private boolean aDl;
+  private boolean aDm;
+  private boolean aDn;
   private final Context context;
   
   static
   {
     AppMethodBeat.i(76817);
-    aBk = new com.bumptech.glide.f.e().b(com.bumptech.glide.c.b.i.aFs).b(g.aAY).pE();
+    aDb = new com.bumptech.glide.f.e().b(com.bumptech.glide.c.b.i.aHj).b(g.aCP).pW();
     AppMethodBeat.o(76817);
   }
   
   protected i(c paramc, j paramj, Class<TranscodeType> paramClass, Context paramContext)
   {
     AppMethodBeat.i(76807);
-    this.aBu = true;
-    this.aAq = paramc;
-    this.aBl = paramj;
-    this.aBm = paramClass;
-    this.aAJ = paramj.aBn;
+    this.aDl = true;
+    this.aCh = paramc;
+    this.aDc = paramj;
+    this.aDd = paramClass;
+    this.aCA = paramj.aDe;
     this.context = paramContext;
-    this.aBo = paramj.j(paramClass);
-    this.aBn = this.aAJ;
-    this.aAw = paramc.aAw;
+    this.aDf = paramj.j(paramClass);
+    this.aDe = this.aCA;
+    this.aCn = paramc.aCn;
     AppMethodBeat.o(76807);
   }
   
@@ -61,7 +61,7 @@ public final class i<TranscodeType>
   {
     AppMethodBeat.i(76813);
     Object localObject1;
-    if (this.aBs != null) {
+    if (this.aDj != null) {
       localObject1 = new a(paramc);
     }
     Object localObject2;
@@ -73,21 +73,21 @@ public final class i<TranscodeType>
         AppMethodBeat.o(76813);
         return paramk;
       }
-      int k = this.aBs.aBn.aLw;
-      int m = this.aBs.aBn.aLv;
+      int k = this.aDj.aDe.aNn;
+      int m = this.aDj.aDe.aNm;
       int j = k;
       int i = m;
-      if (com.bumptech.glide.h.j.aY(paramInt1, paramInt2))
+      if (com.bumptech.glide.h.j.aZ(paramInt1, paramInt2))
       {
         j = k;
         i = m;
-        if (!this.aBs.aBn.pI())
+        if (!this.aDj.aDe.qa())
         {
-          j = parame1.aLw;
-          i = parame1.aLv;
+          j = parame1.aNn;
+          i = parame1.aNm;
         }
       }
-      paramc.a(paramk, this.aBs.a(parame, paramd, paramc, this.aBs.aBo, this.aBs.aBn.aEt, j, i, this.aBs.aBn));
+      paramc.a(paramk, this.aDj.a(parame, paramd, paramc, this.aDj.aDf, this.aDj.aDe.aGk, j, i, this.aDj.aDe));
       AppMethodBeat.o(76813);
       return paramc;
       localObject2 = null;
@@ -98,7 +98,7 @@ public final class i<TranscodeType>
   private b a(com.bumptech.glide.f.a.e<TranscodeType> parame, d<TranscodeType> paramd, com.bumptech.glide.f.e parame1, com.bumptech.glide.f.c paramc, k<?, ? super TranscodeType> paramk, g paramg, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(76815);
-    parame = com.bumptech.glide.f.g.a(this.context, this.aAw, this.aBp, this.aBm, parame1, paramInt1, paramInt2, paramg, parame, paramd, this.aBq, paramc, this.aAw.aAs, paramk.aBI);
+    parame = com.bumptech.glide.f.g.a(this.context, this.aCn, this.aDg, this.aDd, parame1, paramInt1, paramInt2, paramg, parame, paramd, this.aDh, paramc, this.aCn.aCj, paramk.aDz);
     AppMethodBeat.o(76815);
     return parame;
   }
@@ -106,22 +106,22 @@ public final class i<TranscodeType>
   private g a(g paramg)
   {
     AppMethodBeat.i(76812);
-    switch (1.aBx[paramg.ordinal()])
+    switch (1.aDo[paramg.ordinal()])
     {
     default: 
-      paramg = new IllegalArgumentException("unknown priority: " + this.aBn.aEt);
+      paramg = new IllegalArgumentException("unknown priority: " + this.aDe.aGk);
       AppMethodBeat.o(76812);
       throw paramg;
     case 1: 
-      paramg = g.aAX;
+      paramg = g.aCO;
       AppMethodBeat.o(76812);
       return paramg;
     case 2: 
-      paramg = g.aAW;
+      paramg = g.aCN;
       AppMethodBeat.o(76812);
       return paramg;
     }
-    paramg = g.aAV;
+    paramg = g.aCM;
     AppMethodBeat.o(76812);
     return paramg;
   }
@@ -130,16 +130,16 @@ public final class i<TranscodeType>
   {
     AppMethodBeat.i(76814);
     Object localObject;
-    if (this.aBr != null)
+    if (this.aDi != null)
     {
-      if (this.aBw)
+      if (this.aDn)
       {
         parame = new IllegalStateException("You cannot use a request as both the main request and a thumbnail, consider using clone() on the request(s) passed to thumbnail()");
         AppMethodBeat.o(76814);
         throw parame;
       }
-      localObject = this.aBr.aBo;
-      if (!this.aBr.aBu) {
+      localObject = this.aDi.aDf;
+      if (!this.aDi.aDl) {
         break label340;
       }
       localObject = paramk;
@@ -151,33 +151,33 @@ public final class i<TranscodeType>
       g localg;
       int j;
       int i;
-      if (this.aBr.aBn.pJ())
+      if (this.aDi.aDe.qb())
       {
-        localg = this.aBr.aBn.aEt;
-        j = this.aBr.aBn.aLw;
-        i = this.aBr.aBn.aLv;
-        if ((!com.bumptech.glide.h.j.aY(paramInt1, paramInt2)) || (this.aBr.aBn.pI())) {
+        localg = this.aDi.aDe.aGk;
+        j = this.aDi.aDe.aNn;
+        i = this.aDi.aDe.aNm;
+        if ((!com.bumptech.glide.h.j.aZ(paramInt1, paramInt2)) || (this.aDi.aDe.qa())) {
           break label337;
         }
-        j = parame1.aLw;
-        i = parame1.aLv;
+        j = parame1.aNn;
+        i = parame1.aNm;
       }
       for (;;)
       {
         paramc = new h(paramc);
         paramk = a(parame, paramd, parame1, paramc, paramk, paramg, paramInt1, paramInt2);
-        this.aBw = true;
-        parame = this.aBr.a(parame, paramd, paramc, (k)localObject, localg, j, i, this.aBr.aBn);
-        this.aBw = false;
+        this.aDn = true;
+        parame = this.aDi.a(parame, paramd, paramc, (k)localObject, localg, j, i, this.aDi.aDe);
+        this.aDn = false;
         paramc.a(paramk, parame);
         AppMethodBeat.o(76814);
         return paramc;
         localg = a(paramg);
         break;
-        if (this.aBt != null)
+        if (this.aDk != null)
         {
           paramc = new h(paramc);
-          paramc.a(a(parame, paramd, parame1, paramc, paramk, paramg, paramInt1, paramInt2), a(parame, paramd, parame1.pF().S(this.aBt.floatValue()), paramc, paramk, a(paramg), paramInt1, paramInt2));
+          paramc.a(a(parame, paramd, parame1, paramc, paramk, paramg, paramInt1, paramInt2), a(parame, paramd, parame1.pX().Q(this.aDk.floatValue()), paramc, paramk, a(paramg), paramInt1, paramInt2));
           AppMethodBeat.o(76814);
           return paramc;
         }
@@ -188,28 +188,28 @@ public final class i<TranscodeType>
     }
   }
   
-  private com.bumptech.glide.f.e nu()
+  private com.bumptech.glide.f.e nM()
   {
     AppMethodBeat.i(76809);
-    if (this.aAJ == this.aBn)
+    if (this.aCA == this.aDe)
     {
-      locale = this.aBn.pF();
+      locale = this.aDe.pX();
       AppMethodBeat.o(76809);
       return locale;
     }
-    com.bumptech.glide.f.e locale = this.aBn;
+    com.bumptech.glide.f.e locale = this.aDe;
     AppMethodBeat.o(76809);
     return locale;
   }
   
-  private i<TranscodeType> nv()
+  private i<TranscodeType> nN()
   {
     AppMethodBeat.i(76810);
     try
     {
       i locali = (i)super.clone();
-      locali.aBn = locali.aBn.pF();
-      locali.aBo = locali.aBo.nx();
+      locali.aDe = locali.aDe.pX();
+      locali.aDf = locali.aDf.nP();
       AppMethodBeat.o(76810);
       return locali;
     }
@@ -221,10 +221,10 @@ public final class i<TranscodeType>
     }
   }
   
-  public final i<TranscodeType> P(Object paramObject)
+  public final i<TranscodeType> Q(Object paramObject)
   {
-    this.aBp = paramObject;
-    this.aBv = true;
+    this.aDg = paramObject;
+    this.aDm = true;
     return this;
   }
   
@@ -232,82 +232,82 @@ public final class i<TranscodeType>
   {
     AppMethodBeat.i(76808);
     com.bumptech.glide.h.i.checkNotNull(parame, "Argument must not be null");
-    for (com.bumptech.glide.f.e locale = nu(); locale.aLB; locale = locale.pF()) {}
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 2)) {
-      locale.aLq = parame.aLq;
+    for (com.bumptech.glide.f.e locale = nM(); locale.aNs; locale = locale.pX()) {}
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 2)) {
+      locale.aNh = parame.aNh;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 262144)) {
-      locale.aLC = parame.aLC;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 262144)) {
+      locale.aNt = parame.aNt;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 1048576)) {
-      locale.aFS = parame.aFS;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 1048576)) {
+      locale.aHJ = parame.aHJ;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 4)) {
-      locale.aEu = parame.aEu;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 4)) {
+      locale.aGl = parame.aGl;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 8)) {
-      locale.aEt = parame.aEt;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 8)) {
+      locale.aGk = parame.aGk;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 16)) {
-      locale.aLr = parame.aLr;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 16)) {
+      locale.aNi = parame.aNi;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 32)) {
-      locale.aLs = parame.aLs;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 32)) {
+      locale.aNj = parame.aNj;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 64)) {
-      locale.aLt = parame.aLt;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 64)) {
+      locale.aNk = parame.aNk;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 128)) {
-      locale.aLu = parame.aLu;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 128)) {
+      locale.aNl = parame.aNl;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 256)) {
-      locale.aDZ = parame.aDZ;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 256)) {
+      locale.aFQ = parame.aFQ;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 512))
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 512))
     {
-      locale.aLw = parame.aLw;
-      locale.aLv = parame.aLv;
+      locale.aNn = parame.aNn;
+      locale.aNm = parame.aNm;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 1024)) {
-      locale.aEk = parame.aEk;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 1024)) {
+      locale.aGb = parame.aGb;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 4096)) {
-      locale.aEo = parame.aEo;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 4096)) {
+      locale.aGf = parame.aGf;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 8192)) {
-      locale.aLy = parame.aLy;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 8192)) {
+      locale.aNp = parame.aNp;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 16384)) {
-      locale.aLz = parame.aLz;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 16384)) {
+      locale.aNq = parame.aNq;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 32768)) {
-      locale.aLA = parame.aLA;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 32768)) {
+      locale.aNr = parame.aNr;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 65536)) {
-      locale.aLx = parame.aLx;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 65536)) {
+      locale.aNo = parame.aNo;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 131072)) {
-      locale.aEv = parame.aEv;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 131072)) {
+      locale.aGm = parame.aGm;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 2048))
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 2048))
     {
-      locale.aEq.putAll(parame.aEq);
-      locale.aEw = parame.aEw;
+      locale.aGh.putAll(parame.aGh);
+      locale.aGn = parame.aGn;
     }
-    if (com.bumptech.glide.f.e.aV(parame.aLp, 524288)) {
-      locale.aEI = parame.aEI;
+    if (com.bumptech.glide.f.e.aW(parame.aNg, 524288)) {
+      locale.aGz = parame.aGz;
     }
-    if (!locale.aLx)
+    if (!locale.aNo)
     {
-      locale.aEq.clear();
-      locale.aLp &= 0xFFFFF7FF;
-      locale.aEv = false;
-      locale.aLp &= 0xFFFDFFFF;
-      locale.aEw = true;
+      locale.aGh.clear();
+      locale.aNg &= 0xFFFFF7FF;
+      locale.aGm = false;
+      locale.aNg &= 0xFFFDFFFF;
+      locale.aGn = true;
     }
-    locale.aLp |= parame.aLp;
-    locale.aEm.a(parame.aEm);
-    this.aBn = locale.pH();
+    locale.aNg |= parame.aNg;
+    locale.aGd.a(parame.aGd);
+    this.aDe = locale.pZ();
     AppMethodBeat.o(76808);
     return this;
   }
@@ -315,21 +315,21 @@ public final class i<TranscodeType>
   public final <Y extends com.bumptech.glide.f.a.e<TranscodeType>> Y b(Y paramY)
   {
     AppMethodBeat.i(76811);
-    Object localObject1 = nu();
-    com.bumptech.glide.h.j.qa();
+    Object localObject1 = nM();
+    com.bumptech.glide.h.j.qs();
     com.bumptech.glide.h.i.checkNotNull(paramY, "Argument must not be null");
-    if (!this.aBv)
+    if (!this.aDm)
     {
       paramY = new IllegalArgumentException("You must call #load() before calling #into()");
       AppMethodBeat.o(76811);
       throw paramY;
     }
-    Object localObject2 = ((com.bumptech.glide.f.e)localObject1).pG();
-    localObject1 = a(paramY, null, null, this.aBo, ((com.bumptech.glide.f.e)localObject2).aEt, ((com.bumptech.glide.f.e)localObject2).aLw, ((com.bumptech.glide.f.e)localObject2).aLv, (com.bumptech.glide.f.e)localObject2);
-    b localb = paramY.pU();
+    Object localObject2 = ((com.bumptech.glide.f.e)localObject1).pY();
+    localObject1 = a(paramY, null, null, this.aDf, ((com.bumptech.glide.f.e)localObject2).aGk, ((com.bumptech.glide.f.e)localObject2).aNn, ((com.bumptech.glide.f.e)localObject2).aNm, (com.bumptech.glide.f.e)localObject2);
+    b localb = paramY.qm();
     if (((b)localObject1).a(localb))
     {
-      if ((!((com.bumptech.glide.f.e)localObject2).aDZ) && (localb.isComplete())) {}
+      if ((!((com.bumptech.glide.f.e)localObject2).aFQ) && (localb.isComplete())) {}
       for (int i = 1; i == 0; i = 0)
       {
         ((b)localObject1).recycle();
@@ -340,12 +340,12 @@ public final class i<TranscodeType>
         return paramY;
       }
     }
-    this.aBl.c(paramY);
+    this.aDc.c(paramY);
     paramY.h((b)localObject1);
-    localObject2 = this.aBl;
-    ((j)localObject2).aBD.aLd.add(paramY);
-    localObject2 = ((j)localObject2).aBB;
-    ((n)localObject2).aKY.add(localObject1);
+    localObject2 = this.aDc;
+    ((j)localObject2).aDu.aMU.add(paramY);
+    localObject2 = ((j)localObject2).aDs;
+    ((n)localObject2).aMP.add(localObject1);
     if (!((n)localObject2).isPaused) {
       ((b)localObject1).begin();
     }
@@ -354,7 +354,7 @@ public final class i<TranscodeType>
       AppMethodBeat.o(76811);
       return paramY;
       Log.isLoggable("RequestTracker", 2);
-      ((n)localObject2).aKZ.add(localObject1);
+      ((n)localObject2).aMQ.add(localObject1);
     }
   }
 }

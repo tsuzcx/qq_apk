@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fl;
+import com.tencent.mm.g.c.fv;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class SmileyInfo
-  extends fl
+  extends fv
   implements Parcelable
 {
   public static final Parcelable.Creator<SmileyInfo> CREATOR;
@@ -20,48 +20,48 @@ public class SmileyInfo
   {
     AppMethodBeat.i(105142);
     c.a locala = new c.a();
-    locala.GvF = new Field[10];
+    locala.IhA = new Field[10];
     locala.columns = new String[11];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "key";
-    locala.GvH.put("key", "TEXT PRIMARY KEY ");
+    locala.IhC.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "key";
+    locala.IhB = "key";
     locala.columns[1] = "cnValue";
-    locala.GvH.put("cnValue", "TEXT");
+    locala.IhC.put("cnValue", "TEXT");
     localStringBuilder.append(" cnValue TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "qqValue";
-    locala.GvH.put("qqValue", "TEXT");
+    locala.IhC.put("qqValue", "TEXT");
     localStringBuilder.append(" qqValue TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "twValue";
-    locala.GvH.put("twValue", "TEXT");
+    locala.IhC.put("twValue", "TEXT");
     localStringBuilder.append(" twValue TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "enValue";
-    locala.GvH.put("enValue", "TEXT");
+    locala.IhC.put("enValue", "TEXT");
     localStringBuilder.append(" enValue TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "thValue";
-    locala.GvH.put("thValue", "TEXT");
+    locala.IhC.put("thValue", "TEXT");
     localStringBuilder.append(" thValue TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "fileName";
-    locala.GvH.put("fileName", "TEXT");
+    locala.IhC.put("fileName", "TEXT");
     localStringBuilder.append(" fileName TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "eggIndex";
-    locala.GvH.put("eggIndex", "INTEGER default '-1' ");
+    locala.IhC.put("eggIndex", "INTEGER default '-1' ");
     localStringBuilder.append(" eggIndex INTEGER default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "position";
-    locala.GvH.put("position", "INTEGER default '-1' ");
+    locala.IhC.put("position", "INTEGER default '-1' ");
     localStringBuilder.append(" position INTEGER default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "flag";
-    locala.GvH.put("flag", "INTEGER");
+    locala.IhC.put("flag", "INTEGER");
     localStringBuilder.append(" flag INTEGER");
     locala.columns[10] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -157,7 +157,7 @@ public class SmileyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.SmileyInfo
  * JD-Core Version:    0.7.0.1
  */

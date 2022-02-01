@@ -10,13 +10,13 @@ public abstract interface a
   
   public abstract boolean K(CharSequence paramCharSequence);
   
-  public abstract String Xw(String paramString);
-  
   public abstract SpannableString a(Context paramContext, CharSequence paramCharSequence, float paramFloat);
+  
+  public abstract String abd(String paramString);
   
   public abstract SpannableString b(Context paramContext, CharSequence paramCharSequence, float paramFloat);
   
-  public abstract String fh(String paramString1, String paramString2);
+  public abstract String fr(String paramString1, String paramString2);
 }
 
 

@@ -2,37 +2,47 @@ package com.tencent.mm.ui.chatting.viewitems;
 
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 final class bp
-  extends c.a
 {
-  TextView IrS;
-  RelativeLayout IrT;
-  TextView IrU;
-  WeImageView IrV;
-  ImageView fxQ;
-  TextView nMU;
-  TextView titleTv;
-  
-  public final c.a gw(View paramView)
-  {
-    AppMethodBeat.i(196726);
-    super.fX(paramView);
-    this.IrS = ((TextView)paramView.findViewById(2131298003));
-    this.IrT = ((RelativeLayout)paramView.findViewById(2131297991));
-    this.fxQ = ((ImageView)paramView.findViewById(2131297985));
-    this.nMU = ((TextView)paramView.findViewById(2131298000));
-    this.IrU = ((TextView)paramView.findViewById(2131298001));
-    this.IrV = ((WeImageView)paramView.findViewById(2131297986));
-    this.titleTv = ((TextView)paramView.findViewById(2131298002));
-    this.gGk = paramView.findViewById(2131298147);
-    AppMethodBeat.o(196726);
-    return this;
-  }
+  View KhN;
+  ImageView KhO;
+  View KhP;
+  ImageView KhQ;
+  TextView KhR;
+  View KhS;
+  ImageView KhT;
+  View KhU;
+  View KhV;
+  TextView KhW;
+  TextView KhX;
+  View KhY;
+  LinearLayout KhZ;
+  TextView Kia;
+  TextView Kib;
+  TextView Kic;
+  TextView Kid;
+  View Kie;
+  LinearLayout Kif;
+  View Kig;
+  LinearLayout Kih;
+  LinearLayout Kii;
+  View Kij;
+  LinearLayout Kik;
+  LinearLayout Kil;
+  View Kim;
+  TextView Kin;
+  TextView Kio;
+  ImageView Kip;
+  ImageView Kiq;
+  ImageView Kir;
+  View Kis;
+  ImageView Kit;
+  TextView Kiu;
+  LinearLayout Kiv;
+  TextView Kiw;
 }
 
 

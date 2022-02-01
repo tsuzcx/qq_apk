@@ -54,26 +54,26 @@ public final class my
       ((Path)localObject).lineTo(84.0F, 15.0F);
       ((Path)localObject).lineTo(10.0F, 15.0F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(59.0F, 64.989258F);
-      ((Path)localObject).lineTo(69.0F, 64.989258F);
-      ((Path)localObject).lineTo(69.0F, 31.989258F);
-      ((Path)localObject).lineTo(77.0F, 31.989258F);
-      ((Path)localObject).lineTo(77.0F, 64.989258F);
-      ((Path)localObject).lineTo(88.0F, 64.989258F);
-      ((Path)localObject).lineTo(72.89502F, 81.0F);
-      ((Path)localObject).lineTo(59.0F, 64.989258F);
+      ((Path)localObject).moveTo(59.0F, 48.0F);
+      ((Path)localObject).lineTo(69.0F, 48.0F);
+      ((Path)localObject).lineTo(69.0F, 81.0F);
+      ((Path)localObject).lineTo(77.0F, 81.0F);
+      ((Path)localObject).lineTo(77.0F, 48.0F);
+      ((Path)localObject).lineTo(88.0F, 48.0F);
+      ((Path)localObject).lineTo(72.89502F, 31.989258F);
+      ((Path)localObject).lineTo(59.0F, 48.0F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(10.0F, 65.0F);
-      ((Path)localObject).lineTo(50.145832F, 65.0F);
-      ((Path)localObject).lineTo(57.0F, 73.0F);
-      ((Path)localObject).lineTo(10.0F, 73.0F);
-      ((Path)localObject).lineTo(10.0F, 65.0F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(10.0F, 40.0F);
-      ((Path)localObject).lineTo(61.0F, 40.0F);
-      ((Path)localObject).lineTo(61.0F, 48.0F);
-      ((Path)localObject).lineTo(10.0F, 48.0F);
+      ((Path)localObject).moveTo(10.0F, 48.0F);
+      ((Path)localObject).lineTo(50.145832F, 48.0F);
+      ((Path)localObject).lineTo(57.0F, 40.0F);
       ((Path)localObject).lineTo(10.0F, 40.0F);
+      ((Path)localObject).lineTo(10.0F, 48.0F);
+      ((Path)localObject).close();
+      ((Path)localObject).moveTo(10.0F, 73.0F);
+      ((Path)localObject).lineTo(61.0F, 73.0F);
+      ((Path)localObject).lineTo(61.0F, 65.0F);
+      ((Path)localObject).lineTo(10.0F, 65.0F);
+      ((Path)localObject).lineTo(10.0F, 73.0F);
       ((Path)localObject).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
       localCanvas.drawPath((Path)localObject, localPaint);
@@ -84,7 +84,7 @@ public final class my
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.my
  * JD-Core Version:    0.7.0.1
  */

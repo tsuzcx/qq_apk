@@ -3,34 +3,34 @@ package com.tencent.mm.plugin.fts.ui;
 import android.text.TextPaint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class b$c
 {
-  public static final int sBC;
-  public static final TextPaint sBD;
-  public static final int sBE;
-  public static final TextPaint sBF;
-  public static final int sBG;
-  public static final TextPaint sBH;
-  public static final int sBI;
-  public static final TextPaint sBJ;
+  public static final int tyd;
+  public static final TextPaint tye;
+  public static final int tyf;
+  public static final TextPaint tyg;
+  public static final int tyh;
+  public static final TextPaint tyi;
+  public static final int tyj;
+  public static final TextPaint tyk;
   
   static
   {
     AppMethodBeat.i(111812);
-    sBC = a.au(ai.getContext(), 2131165192);
-    sBD = new TextPaint();
-    sBE = a.au(ai.getContext(), 2131165517);
-    sBF = new TextPaint();
-    sBG = a.au(ai.getContext(), 2131165466);
-    sBH = new TextPaint();
-    sBI = a.au(ai.getContext(), 2131165574);
-    sBJ = new TextPaint();
-    sBD.setTextSize(sBC);
-    sBF.setTextSize(sBE);
-    sBH.setTextSize(sBG);
-    sBJ.setTextSize(sBI);
+    tyd = a.ax(aj.getContext(), 2131165192);
+    tye = new TextPaint();
+    tyf = a.ax(aj.getContext(), 2131165517);
+    tyg = new TextPaint();
+    tyh = a.ax(aj.getContext(), 2131165466);
+    tyi = new TextPaint();
+    tyj = a.ax(aj.getContext(), 2131165574);
+    tyk = new TextPaint();
+    tye.setTextSize(tyd);
+    tyg.setTextSize(tyf);
+    tyi.setTextSize(tyh);
+    tyk.setTextSize(tyj);
     AppMethodBeat.o(111812);
   }
 }

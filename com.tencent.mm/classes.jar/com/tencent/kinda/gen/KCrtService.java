@@ -2,6 +2,8 @@ package com.tencent.kinda.gen;
 
 public abstract interface KCrtService
 {
+  public abstract void delCert();
+  
   public abstract String getCrtNo();
   
   public abstract boolean hasCrt();

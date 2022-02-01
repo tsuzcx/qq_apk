@@ -8,14 +8,14 @@ public final class j
 {
   public j(String paramString)
   {
-    super(i.cS(paramString, false));
+    super(i.cX(paramString, false));
     AppMethodBeat.i(13305);
     AppMethodBeat.o(13305);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.vfs.j
  * JD-Core Version:    0.7.0.1
  */

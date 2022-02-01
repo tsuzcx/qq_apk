@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.story.f.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItemScene;", "", "(Ljava/lang/String;I)V", "NORMAL", "UNREAD_FIRST", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItemScene;", "", "(Ljava/lang/String;I)V", "NORMAL", "UNREAD_FIRST", "plugin-story_release"})
 public enum i
 {
   static
   {
     AppMethodBeat.i(118933);
     i locali1 = new i("NORMAL", 0);
-    zuL = locali1;
+    AMG = locali1;
     i locali2 = new i("UNREAD_FIRST", 1);
-    zuM = locali2;
-    zuN = new i[] { locali1, locali2 };
+    AMH = locali2;
+    AMI = new i[] { locali1, locali2 };
     AppMethodBeat.o(118933);
   }
   

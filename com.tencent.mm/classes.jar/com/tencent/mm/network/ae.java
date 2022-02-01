@@ -3,17 +3,17 @@ package com.tencent.mm.network;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.a.b;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ay;
 
 public final class ae
 {
-  public b inc = null;
-  public boolean ind = false;
+  public b iGu = null;
+  public boolean iGv = false;
   
-  public static boolean cR(Context paramContext)
+  public static boolean cO(Context paramContext)
   {
     AppMethodBeat.i(132931);
-    if ((paramContext != null) && (!ax.isWap(paramContext)))
+    if ((paramContext != null) && (!ay.isWap(paramContext)))
     {
       AppMethodBeat.o(132931);
       return true;
@@ -22,10 +22,10 @@ public final class ae
     return false;
   }
   
-  public static boolean cS(Context paramContext)
+  public static boolean cP(Context paramContext)
   {
     AppMethodBeat.i(132932);
-    if ((paramContext != null) && (ax.isWifi(paramContext)))
+    if ((paramContext != null) && (ay.isWifi(paramContext)))
     {
       AppMethodBeat.o(132932);
       return true;
@@ -36,7 +36,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.network.ae
  * JD-Core Version:    0.7.0.1
  */

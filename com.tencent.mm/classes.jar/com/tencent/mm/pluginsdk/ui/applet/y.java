@@ -4,7 +4,7 @@ public abstract interface y
 {
   public static abstract interface b
   {
-    public abstract void nu(boolean paramBoolean);
+    public abstract void nO(boolean paramBoolean);
   }
 }
 

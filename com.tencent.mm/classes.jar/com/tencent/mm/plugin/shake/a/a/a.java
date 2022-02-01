@@ -8,31 +8,31 @@ public abstract class a
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eBs = "svrid".hashCode();
-  private static final int eBx;
-  private static final int eBy;
-  private static final int eBz;
-  private static final int eCi;
-  private static final int eEC;
-  private static final int eEQ;
-  private static final int eMo;
-  private static final int elV;
-  private static final int eqK;
+  private static final int eDc;
+  private static final int eHT;
+  private static final int eSQ = "svrid".hashCode();
+  private static final int eSV;
+  private static final int eSW;
+  private static final int eSX;
+  private static final int eTG;
+  private static final int eWa;
+  private static final int eWo;
+  private static final int feK;
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE = "type".hashCode();
-  private static final int xwH;
-  private static final int xwI;
+  private static final int yLs;
+  private static final int yLt;
   private boolean __hadSettype = true;
-  private boolean eAG = true;
-  private boolean eAL = true;
-  private boolean eAM = true;
-  private boolean eAN = true;
-  private boolean eCe = true;
-  private boolean eEA = true;
-  private boolean eEG = true;
-  private boolean eMf = true;
-  private boolean elS = true;
-  private boolean eqH = true;
+  private boolean eCZ = true;
+  private boolean eHQ = true;
+  private boolean eSe = true;
+  private boolean eSj = true;
+  private boolean eSk = true;
+  private boolean eSl = true;
+  private boolean eTC = true;
+  private boolean eVY = true;
+  private boolean eWe = true;
+  private boolean feB = true;
   public long field_createtime;
   public String field_desc;
   public String field_reserved1;
@@ -46,22 +46,22 @@ public abstract class a
   public String field_thumburl;
   public String field_title;
   public int field_type;
-  private boolean xwF = true;
-  private boolean xwG = true;
+  private boolean yLq = true;
+  private boolean yLr = true;
   
   static
   {
-    eEC = "subtype".hashCode();
-    eMo = "createtime".hashCode();
-    eEQ = "tag".hashCode();
-    elV = "status".hashCode();
-    eqK = "title".hashCode();
-    eCi = "desc".hashCode();
-    xwH = "thumburl".hashCode();
-    eBx = "reserved1".hashCode();
-    eBy = "reserved2".hashCode();
-    eBz = "reserved3".hashCode();
-    xwI = "reservedBuf".hashCode();
+    eWa = "subtype".hashCode();
+    feK = "createtime".hashCode();
+    eWo = "tag".hashCode();
+    eDc = "status".hashCode();
+    eHT = "title".hashCode();
+    eTG = "desc".hashCode();
+    yLs = "thumburl".hashCode();
+    eSV = "reserved1".hashCode();
+    eSW = "reserved2".hashCode();
+    eSX = "reserved3".hashCode();
+    yLt = "reservedBuf".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -77,11 +77,11 @@ public abstract class a
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eBs != k) {
+      if (eSQ != k) {
         break label65;
       }
       this.field_svrid = paramCursor.getLong(i);
-      this.eAG = true;
+      this.eSe = true;
     }
     for (;;)
     {
@@ -91,27 +91,27 @@ public abstract class a
       label65:
       if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eEC == k) {
+      } else if (eWa == k) {
         this.field_subtype = paramCursor.getInt(i);
-      } else if (eMo == k) {
+      } else if (feK == k) {
         this.field_createtime = paramCursor.getLong(i);
-      } else if (eEQ == k) {
+      } else if (eWo == k) {
         this.field_tag = paramCursor.getString(i);
-      } else if (elV == k) {
+      } else if (eDc == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (eqK == k) {
+      } else if (eHT == k) {
         this.field_title = paramCursor.getString(i);
-      } else if (eCi == k) {
+      } else if (eTG == k) {
         this.field_desc = paramCursor.getString(i);
-      } else if (xwH == k) {
+      } else if (yLs == k) {
         this.field_thumburl = paramCursor.getString(i);
-      } else if (eBx == k) {
+      } else if (eSV == k) {
         this.field_reserved1 = paramCursor.getString(i);
-      } else if (eBy == k) {
+      } else if (eSW == k) {
         this.field_reserved2 = paramCursor.getString(i);
-      } else if (eBz == k) {
+      } else if (eSX == k) {
         this.field_reserved3 = paramCursor.getInt(i);
-      } else if (xwI == k) {
+      } else if (yLt == k) {
         this.field_reservedBuf = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -122,43 +122,43 @@ public abstract class a
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eAG) {
+    if (this.eSe) {
       localContentValues.put("svrid", Long.valueOf(this.field_svrid));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eEA) {
+    if (this.eVY) {
       localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
     }
-    if (this.eMf) {
+    if (this.feB) {
       localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
-    if (this.eEG) {
+    if (this.eWe) {
       localContentValues.put("tag", this.field_tag);
     }
-    if (this.elS) {
+    if (this.eCZ) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eqH) {
+    if (this.eHQ) {
       localContentValues.put("title", this.field_title);
     }
-    if (this.eCe) {
+    if (this.eTC) {
       localContentValues.put("desc", this.field_desc);
     }
-    if (this.xwF) {
+    if (this.yLq) {
       localContentValues.put("thumburl", this.field_thumburl);
     }
-    if (this.eAL) {
+    if (this.eSj) {
       localContentValues.put("reserved1", this.field_reserved1);
     }
-    if (this.eAM) {
+    if (this.eSk) {
       localContentValues.put("reserved2", this.field_reserved2);
     }
-    if (this.eAN) {
+    if (this.eSl) {
       localContentValues.put("reserved3", Integer.valueOf(this.field_reserved3));
     }
-    if (this.xwG) {
+    if (this.yLr) {
       localContentValues.put("reservedBuf", this.field_reservedBuf);
     }
     if (this.systemRowid > 0L) {

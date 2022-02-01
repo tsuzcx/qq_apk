@@ -3,7 +3,7 @@ package com.tencent.mm.opensdk.modelmsg;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXDynamicVideoMiniProgramObject
   extends WXMiniProgramObject
@@ -15,26 +15,27 @@ public class WXDynamicVideoMiniProgramObject
   public boolean checkArgs()
   {
     AppMethodBeat.i(4016);
-    if (d.b(this.webpageUrl))
+    if (b.b(this.webpageUrl))
     {
       Log.e("MicroMsg.SDK.WXDynamicVideoMiniProgramObject", "webPageUrl is null");
       AppMethodBeat.o(4016);
       return false;
     }
-    if (d.b(this.userName))
+    if (b.b(this.userName))
     {
       Log.e("MicroMsg.SDK.WXDynamicVideoMiniProgramObject", "userName is null");
       AppMethodBeat.o(4016);
       return false;
     }
-    if ((this.miniprogramType < 0) || (this.miniprogramType > 2))
+    int i = this.miniprogramType;
+    if ((i >= 0) && (i <= 2))
     {
-      Log.e("MicroMsg.SDK.WXDynamicVideoMiniProgramObject", "miniprogram type should between MINIPTOGRAM_TYPE_RELEASE and MINIPROGRAM_TYPE_PREVIEW");
       AppMethodBeat.o(4016);
-      return false;
+      return true;
     }
+    Log.e("MicroMsg.SDK.WXDynamicVideoMiniProgramObject", "miniprogram type should between MINIPTOGRAM_TYPE_RELEASE and MINIPROGRAM_TYPE_PREVIEW");
     AppMethodBeat.o(4016);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)
@@ -72,7 +73,7 @@ public class WXDynamicVideoMiniProgramObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXDynamicVideoMiniProgramObject
  * JD-Core Version:    0.7.0.1
  */

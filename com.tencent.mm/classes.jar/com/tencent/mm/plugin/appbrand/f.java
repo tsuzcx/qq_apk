@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.n.n;
 import d.v;
@@ -14,26 +14,26 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/AppBrandFakeNativeCheckXWebConfig;", "", "()V", "DEFAULT_CONFIG", "", "kotlin.jvm.PlatformType", "checkIfXWebRequired", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/AppBrandFakeNativeCheckXWebConfig;", "", "()V", "DEFAULT_CONFIG", "", "kotlin.jvm.PlatformType", "checkIfXWebRequired", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"})
 public final class f
 {
-  private static final String jcO;
-  public static final f jcP;
+  private static final String jvX;
+  public static final f jvY;
   
   static
   {
     AppMethodBeat.i(175098);
-    jcP = new f();
-    jcO = org.apache.commons.b.g.a(new String[] { "wxfe02ecfe70800f46", "wx1d9b0b103d81d15d", "wx162102d2ff543cb2" }, ',', 3);
+    jvY = new f();
+    jvX = org.apache.commons.b.g.a(new String[] { "wxfe02ecfe70800f46", "wx1d9b0b103d81d15d", "wx162102d2ff543cb2" }, ',', 3);
     AppMethodBeat.o(175098);
   }
   
   public static final boolean a(AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
     AppMethodBeat.i(175097);
-    k.h(paramAppBrandInitConfigWC, "config");
-    Object localObject1 = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.pQE, jcO);
-    k.g(localObject1, "MMKernel.service(IExptSe…required, DEFAULT_CONFIG)");
+    p.h(paramAppBrandInitConfigWC, "config");
+    Object localObject1 = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.quV, jvX);
+    p.g(localObject1, "MMKernel.service(IExptSe…required, DEFAULT_CONFIG)");
     Object localObject2 = (Iterable)n.a((CharSequence)localObject1, new String[] { "," });
     localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();

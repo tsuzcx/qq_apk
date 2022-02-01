@@ -5,21 +5,21 @@ import com.tencent.mm.audio.mix.h.b;
 
 public final class e<T>
 {
-  private T cUl;
+  private T dfB;
   
   public e(T paramT)
   {
-    this.cUl = paramT;
+    this.dfB = paramT;
   }
   
-  public final T aM(T paramT)
+  public final T aO(T paramT)
   {
     try
     {
       AppMethodBeat.i(136943);
-      Object localObject = this.cUl;
-      this.cUl = paramT;
-      b.i("StateRunner", localObject.toString() + " -> " + this.cUl.toString());
+      Object localObject = this.dfB;
+      this.dfB = paramT;
+      b.i("StateRunner", localObject.toString() + " -> " + this.dfB.toString());
       AppMethodBeat.o(136943);
       return localObject;
     }
@@ -34,7 +34,7 @@ public final class e<T>
   {
     try
     {
-      Object localObject1 = this.cUl;
+      Object localObject1 = this.dfB;
       return localObject1;
     }
     finally
@@ -63,7 +63,7 @@ public final class e<T>
     //   17: aaload
     //   18: astore 4
     //   20: aload_0
-    //   21: getfield 15	com/tencent/mm/audio/mix/f/e:cUl	Ljava/lang/Object;
+    //   21: getfield 15	com/tencent/mm/audio/mix/f/e:dfB	Ljava/lang/Object;
     //   24: aload 4
     //   26: invokevirtual 62	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   29: ifeq +14 -> 43

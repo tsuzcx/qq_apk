@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.desktop.a;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/dynamicbackground/DynamicBgServiceImpl$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/dynamicbackground/DynamicBgServiceImpl$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
 public final class e$a {}
 
 

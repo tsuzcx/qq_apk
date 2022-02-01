@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.wear.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.e.i;
-import com.tencent.mm.pluginsdk.n.c.a;
-import com.tencent.mm.protocal.protobuf.dwt;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.pluginsdk.o.c.a;
+import com.tencent.mm.protocal.protobuf.ect;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class c
-  implements n.c.a
+  implements o.c.a
 {
-  public final String eww()
+  public final String eKC()
   {
     AppMethodBeat.i(29977);
-    Object localObject = a.ewp().BWt.BXg;
+    Object localObject = a.eKv().DwN.Dxz;
     if (localObject != null)
     {
-      localObject = ((dwt)localObject).GdB + "\n" + ((dwt)localObject).GdC + "\n" + ((dwt)localObject).GdD;
+      localObject = ((ect)localObject).HOH + "\n" + ((ect)localObject).HOI + "\n" + ((ect)localObject).HOJ;
       AppMethodBeat.o(29977);
       return localObject;
     }
@@ -23,18 +23,18 @@ public final class c
     return "Not Connect";
   }
   
-  public final void ewx()
+  public final void eKD()
   {
     AppMethodBeat.i(29978);
-    a.ewq().a(new com.tencent.mm.plugin.wear.model.f.a());
+    a.eKw().a(new com.tencent.mm.plugin.wear.model.f.a());
     AppMethodBeat.o(29978);
   }
   
-  public final boolean ewy()
+  public final boolean eKE()
   {
     AppMethodBeat.i(29979);
-    Object localObject = a.ewp().BWt.BXg;
-    if ((bs.isNullOrNil(null)) && (bs.isNullOrNil(null)))
+    Object localObject = a.eKv().DwN.Dxz;
+    if ((bt.isNullOrNil(null)) && (bt.isNullOrNil(null)))
     {
       if (localObject != null)
       {
@@ -44,7 +44,7 @@ public final class c
       AppMethodBeat.o(29979);
       return false;
     }
-    if (bs.isNullOrNil(null))
+    if (bt.isNullOrNil(null))
     {
       if (localObject != null) {
         throw new NullPointerException();
@@ -52,11 +52,11 @@ public final class c
       AppMethodBeat.o(29979);
       return false;
     }
-    if (bs.isNullOrNil(null))
+    if (bt.isNullOrNil(null))
     {
       if (localObject != null)
       {
-        localObject = ((dwt)localObject).Gdy;
+        localObject = ((ect)localObject).HOE;
         throw new NullPointerException();
       }
       AppMethodBeat.o(29979);

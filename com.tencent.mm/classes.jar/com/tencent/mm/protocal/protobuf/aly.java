@@ -1,59 +1,43 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class aly
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<String> EFA;
-  public String EFy;
-  public long EFz;
-  
-  public aly()
-  {
-    AppMethodBeat.i(195091);
-    this.EFA = new LinkedList();
-    AppMethodBeat.o(195091);
-  }
+  public String GlF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(195092);
+    AppMethodBeat.i(209274);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.EFy != null) {
-        paramVarArgs.d(1, this.EFy);
+      if (this.GlF != null) {
+        paramVarArgs.d(1, this.GlF);
       }
-      paramVarArgs.aO(2, this.EFz);
-      paramVarArgs.e(3, 1, this.EFA);
-      AppMethodBeat.o(195092);
+      AppMethodBeat.o(209274);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.EFy == null) {
-        break label318;
+      if (this.GlF == null) {
+        break label213;
       }
     }
-    label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.EFy) + 0;; paramInt = 0)
+    label213:
+    for (paramInt = f.a.a.b.b.a.e(1, this.GlF) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.p(2, this.EFz);
-      int j = f.a.a.a.c(3, 1, this.EFA);
-      AppMethodBeat.o(195092);
-      return paramInt + i + j;
+      AppMethodBeat.o(209274);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.EFA.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(195092);
+        AppMethodBeat.o(209274);
         return 0;
       }
       if (paramInt == 3)
@@ -63,29 +47,21 @@ public final class aly
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(195092);
+          AppMethodBeat.o(209274);
           return -1;
-        case 1: 
-          localaly.EFy = locala.LVo.readString();
-          AppMethodBeat.o(195092);
-          return 0;
-        case 2: 
-          localaly.EFz = locala.LVo.xG();
-          AppMethodBeat.o(195092);
-          return 0;
         }
-        localaly.EFA.add(locala.LVo.readString());
-        AppMethodBeat.o(195092);
+        localaly.GlF = locala.NPN.readString();
+        AppMethodBeat.o(209274);
         return 0;
       }
-      AppMethodBeat.o(195092);
+      AppMethodBeat.o(209274);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aly
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.mmsight.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
   public static void a(a.a parama)
   {
     AppMethodBeat.i(94389);
-    ac.i("MicroMsg.VideoEditReporter", "[report-VideoEditCountData] %s", new Object[] { parama.toString() });
-    h.wUl.f(14529, new Object[] { Integer.valueOf(parama.scene), Integer.valueOf(parama.dbL) });
+    ad.i("MicroMsg.VideoEditReporter", "[report-VideoEditCountData] %s", new Object[] { parama.toString() });
+    g.yhR.f(14529, new Object[] { Integer.valueOf(parama.scene), Integer.valueOf(parama.dnh) });
     AppMethodBeat.o(94389);
   }
   
   public static void a(b paramb, String paramString)
   {
     AppMethodBeat.i(94388);
-    h localh = h.wUl;
+    g localg = g.yhR;
     int j = paramb.scene;
-    if (paramb.gRx) {}
+    if (paramb.hjP) {}
     for (int i = 2;; i = 1)
     {
-      localh.f(14362, new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramb.uNW), Integer.valueOf(paramb.uNX), Integer.valueOf(paramb.uNZ), Boolean.valueOf(paramb.uNY), Integer.valueOf(paramb.fqa), Integer.valueOf(paramb.uNU), Integer.valueOf(paramb.uNV), Integer.valueOf(paramb.uOa), Integer.valueOf(0), Integer.valueOf(paramb.textColor), paramString, Long.valueOf(bs.aNx()) });
-      ac.i("MicroMsg.VideoEditReporter", "[report-VideoEditDetailData] %s", new Object[] { paramb.toString() });
+      localg.f(14362, new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramb.vRf), Integer.valueOf(paramb.vRg), Integer.valueOf(paramb.vRi), Boolean.valueOf(paramb.vRh), Integer.valueOf(paramb.fIh), Integer.valueOf(paramb.vRd), Integer.valueOf(paramb.vRe), Integer.valueOf(paramb.vRj), Integer.valueOf(0), Integer.valueOf(paramb.textColor), paramString, Long.valueOf(bt.aQJ()) });
+      ad.i("MicroMsg.VideoEditReporter", "[report-VideoEditDetailData] %s", new Object[] { paramb.toString() });
       AppMethodBeat.o(94388);
       return;
     }
@@ -32,17 +32,17 @@ public final class a
   
   public static final class b
   {
-    public int fqa;
-    public boolean gRx;
+    public int fIh;
+    public boolean hjP;
     public int scene;
     public int textColor;
-    public int uNU;
-    public int uNV;
-    public int uNW;
-    public int uNX;
-    public boolean uNY;
-    public int uNZ;
-    public int uOa;
+    public int vRd;
+    public int vRe;
+    public int vRf;
+    public int vRg;
+    public boolean vRh;
+    public int vRi;
+    public int vRj;
     
     public b(int paramInt)
     {
@@ -74,7 +74,7 @@ public final class a
     public final String toString()
     {
       AppMethodBeat.i(94387);
-      String str = "VideoEditDetailData{scene=" + this.scene + ", isCancel=" + this.gRx + ", rawDuration=" + this.uNU + ", cropDuration=" + this.uNV + ", emojiItemCount=" + this.uNW + ", textItemCount=" + this.uNX + ", isCrop=" + this.uNY + ", undoCount=" + this.fqa + ", doodleCount=" + this.uNZ + ", penColors=" + this.uOa + ", textColor=" + this.textColor + '}';
+      String str = "VideoEditDetailData{scene=" + this.scene + ", isCancel=" + this.hjP + ", rawDuration=" + this.vRd + ", cropDuration=" + this.vRe + ", emojiItemCount=" + this.vRf + ", textItemCount=" + this.vRg + ", isCrop=" + this.vRh + ", undoCount=" + this.fIh + ", doodleCount=" + this.vRi + ", penColors=" + this.vRj + ", textColor=" + this.textColor + '}';
       AppMethodBeat.o(94387);
       return str;
     }
@@ -82,7 +82,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.a.a
  * JD-Core Version:    0.7.0.1
  */

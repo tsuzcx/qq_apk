@@ -1,79 +1,81 @@
 package com.tencent.mm.roomsdk.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
 {
-  private int GkH;
-  protected com.tencent.mm.roomsdk.a.b.a Gkv;
-  protected com.tencent.mm.roomsdk.a.b.a Gkw;
-  protected com.tencent.mm.roomsdk.a.b.a Gkx;
-  private com.tencent.mm.ak.g hwV;
+  protected com.tencent.mm.roomsdk.a.b.a HWh;
+  protected com.tencent.mm.roomsdk.a.b.a HWi;
+  protected com.tencent.mm.roomsdk.a.b.a HWj;
+  private int HWt;
+  private f hPn;
   
   public e()
   {
     AppMethodBeat.i(152787);
-    this.hwV = new com.tencent.mm.ak.g()
+    this.hPn = new f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
         AppMethodBeat.i(152786);
         if ((paramAnonymousn instanceof com.tencent.mm.roomsdk.a.a)) {
-          ((com.tencent.mm.roomsdk.a.a)paramAnonymousn).a(e.this.Gkx);
+          ((com.tencent.mm.roomsdk.a.a)paramAnonymousn).a(e.this.HWj);
         }
-        if (e.this.Gkx != null) {
-          e.this.Gkx.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, e.this.Gkx);
+        if (e.this.HWj != null) {
+          e.this.HWj.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, e.this.HWj);
         }
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          if (e.this.Gkv != null)
+          if (e.this.HWh != null)
           {
-            e.this.Gkv.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, e.this.Gkv);
+            e.this.HWh.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, e.this.HWh);
             AppMethodBeat.o(152786);
           }
         }
-        else if (e.this.Gkw != null) {
-          e.this.Gkw.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, e.this.Gkw);
+        else if (e.this.HWi != null) {
+          e.this.HWi.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, e.this.HWi);
         }
         AppMethodBeat.o(152786);
       }
     };
-    this.GkH = 700;
+    this.HWt = 700;
     AppMethodBeat.o(152787);
   }
   
   public final void dead()
   {
     AppMethodBeat.i(152789);
-    ac.i("MicroMsg.RoomWatchCallbackFactory", "dead");
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(this.GkH, this.hwV);
+    ad.i("MicroMsg.RoomWatchCallbackFactory", "dead");
+    g.ajD();
+    g.ajB().gAO.b(this.HWt, this.hPn);
     AppMethodBeat.o(152789);
   }
   
   public final e e(com.tencent.mm.roomsdk.a.b.a parama)
   {
-    this.Gkv = parama;
-    return this;
-  }
-  
-  public final e eSK()
-  {
-    AppMethodBeat.i(152788);
-    ac.i("MicroMsg.RoomWatchCallbackFactory", "alive");
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(this.GkH, this.hwV);
-    AppMethodBeat.o(152788);
+    this.HWh = parama;
     return this;
   }
   
   public final e f(com.tencent.mm.roomsdk.a.b.a parama)
   {
-    this.Gkw = parama;
+    this.HWi = parama;
+    return this;
+  }
+  
+  public final e fim()
+  {
+    AppMethodBeat.i(152788);
+    ad.i("MicroMsg.RoomWatchCallbackFactory", "alive");
+    g.ajD();
+    g.ajB().gAO.a(this.HWt, this.hPn);
+    AppMethodBeat.o(152788);
     return this;
   }
 }

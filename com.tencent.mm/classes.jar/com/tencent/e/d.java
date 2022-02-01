@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public static e JZB;
-  public static f JZC;
-  public static a JZD;
+  public static e LTw;
+  public static f LTx;
+  public static a LTy;
   
   static
   {
     AppMethodBeat.i(183137);
-    JZB = new c((byte)0);
-    JZC = new d((byte)0);
-    JZD = new b((byte)0);
+    LTw = new c((byte)0);
+    LTx = new d((byte)0);
+    LTy = new b((byte)0);
     AppMethodBeat.o(183137);
   }
   

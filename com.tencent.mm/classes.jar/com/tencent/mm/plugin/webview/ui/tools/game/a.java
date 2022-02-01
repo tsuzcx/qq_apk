@@ -13,15 +13,14 @@ import android.webkit.ConsoleMessage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
 import com.tencent.mm.plugin.webview.c.f;
-import com.tencent.mm.plugin.webview.e.g;
 import com.tencent.mm.plugin.webview.ui.tools.k;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bh;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bi;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.qqvideo.proxy.api.FactoryProxyManager;
 import com.tencent.qqvideo.proxy.api.IPlayManager;
@@ -36,37 +35,37 @@ import java.util.Set;
 
 public final class a
 {
-  GameWebViewUI CEI;
-  private i CEJ;
-  com.tencent.mm.plugin.webview.stub.e CEK;
-  f CEL;
-  com.tencent.mm.plugin.wepkg.c CEM;
-  b CEN;
-  private a CEO;
-  com.tencent.mm.plugin.webview.c.i CEP;
-  m CEQ;
-  ViewGroup UK;
-  MMWebView hqK;
+  private boolean ABc;
+  m EiA;
+  GameWebViewUI Eis;
+  private h Eit;
+  com.tencent.mm.plugin.webview.stub.e Eiu;
+  f Eiv;
+  com.tencent.mm.plugin.wepkg.d Eiw;
+  b Eix;
+  private a Eiy;
+  com.tencent.mm.plugin.webview.c.i Eiz;
+  ViewGroup WA;
+  MMWebView hJc;
   Context mContext;
-  String sXV;
-  GameWebPerformanceInfo sYb;
-  c sYm;
-  long sYn;
-  h sYo;
-  private boolean zjc;
+  g tVA;
+  String tVg;
+  GameWebPerformanceInfo tVm;
+  c tVy;
+  long tVz;
   
   public a(GameWebViewUI paramGameWebViewUI, ViewGroup paramViewGroup, String paramString)
   {
     AppMethodBeat.i(80844);
-    this.sYm = new c()
+    this.tVy = new c()
     {
-      protected final void ad(Bundle paramAnonymousBundle)
+      protected final void ag(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(80818);
         try
         {
-          if ((a.this.CEK != null) && (paramAnonymousBundle != null)) {
-            a.this.CEK.k(96, paramAnonymousBundle);
+          if ((a.this.Eiu != null) && (paramAnonymousBundle != null)) {
+            a.this.Eiu.k(96, paramAnonymousBundle);
           }
           AppMethodBeat.o(80818);
           return;
@@ -77,15 +76,15 @@ public final class a
         }
       }
     };
-    this.CEQ = new m()
+    this.EiA = new m()
     {
-      public final void aD(Bundle paramAnonymousBundle)
+      public final void az(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(80825);
-        ac.i("MicroMsg.GameFloatWebView", "closeWindow");
+        ad.i("MicroMsg.GameFloatWebView", "closeWindow");
         try
         {
-          a.this.UK.removeView(a.this.hqK);
+          a.this.WA.removeView(a.this.hJc);
           a.this.onDestroy();
           AppMethodBeat.o(80825);
           return;
@@ -99,34 +98,34 @@ public final class a
       public final Bundle k(final int paramAnonymousInt, final Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(80826);
-        ac.i("MicroMsg.GameFloatWebView", "game float invokeAsResult, actionCode = ".concat(String.valueOf(paramAnonymousInt)));
+        ad.i("MicroMsg.GameFloatWebView", "game float invokeAsResult, actionCode = ".concat(String.valueOf(paramAnonymousInt)));
         final Bundle localBundle = new Bundle();
         switch (paramAnonymousInt)
         {
         default: 
-          ac.e("MicroMsg.GameFloatWebView", "undefine action code!!!");
+          ad.e("MicroMsg.GameFloatWebView", "undefine action code!!!");
         }
         for (;;)
         {
           AppMethodBeat.o(80826);
           return localBundle;
           paramAnonymousBundle.setClassLoader(GameWebViewUI.class.getClassLoader());
-          com.tencent.mm.br.d.b(a.this.mContext, paramAnonymousBundle.getString("open_ui_with_webview_ui_plugin_name"), paramAnonymousBundle.getString("open_ui_with_webview_ui_plugin_entry"), new Intent().putExtras(paramAnonymousBundle.getBundle("open_ui_with_webview_ui_extras")).putExtra("KPublisherId", i.dvr));
+          com.tencent.mm.bs.d.b(a.this.mContext, paramAnonymousBundle.getString("open_ui_with_webview_ui_plugin_name"), paramAnonymousBundle.getString("open_ui_with_webview_ui_plugin_entry"), new Intent().putExtras(paramAnonymousBundle.getBundle("open_ui_with_webview_ui_extras")).putExtra("KPublisherId", h.dHu));
           continue;
-          localBundle.putString("KPublisherId", i.dvr);
-          localBundle.putInt("getA8KeyScene", a.this.fu(i.CGq, i.dCr));
+          localBundle.putString("KPublisherId", h.dHu);
+          localBundle.putInt("getA8KeyScene", a.this.fR(h.Ekc, h.dOE));
           continue;
-          paramAnonymousInt = i.dCr;
+          paramAnonymousInt = h.dOE;
           localBundle.putInt("geta8key_scene", paramAnonymousInt);
-          ac.i("MicroMsg.GameFloatWebView", "Key value: getA8KeyScene(%d)", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          ad.i("MicroMsg.GameFloatWebView", "Key value: getA8KeyScene(%d)", new Object[] { Integer.valueOf(paramAnonymousInt) });
           continue;
-          if (a.this.CEK.isSDCardAvailable())
+          if (a.this.Eiu.isSDCardAvailable())
           {
-            long l = bh.eVQ();
-            ac.i("MicroMsg.GameFloatWebView", "availableSize = %d", new Object[] { Long.valueOf(l) });
+            long l = bi.flA();
+            ad.i("MicroMsg.GameFloatWebView", "availableSize = %d", new Object[] { Long.valueOf(l) });
             if (l < 524288000L)
             {
-              ac.e("MicroMsg.GameFloatWebView", "available size not enough");
+              ad.e("MicroMsg.GameFloatWebView", "available size not enough");
               label418:
               paramAnonymousInt = FactoryProxyManager.getPlayManager().init(a.this.mContext, null);
             }
@@ -136,20 +135,20 @@ public final class a
           {
             localBundle.putInt("webview_video_proxy_init", paramAnonymousInt);
             break;
-            paramAnonymousBundle = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.webview.a.CcB);
+            paramAnonymousBundle = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.webview.a.DFA);
             bool = true;
             if (!paramAnonymousBundle.exists())
             {
               bool = paramAnonymousBundle.mkdirs();
-              ac.i("MicroMsg.GameFloatWebView", "create proxy cache path : %s, %b", new Object[] { com.tencent.mm.vfs.q.B(paramAnonymousBundle.fxV()), Boolean.valueOf(bool) });
+              ad.i("MicroMsg.GameFloatWebView", "create proxy cache path : %s, %b", new Object[] { com.tencent.mm.vfs.q.B(paramAnonymousBundle.fOK()), Boolean.valueOf(bool) });
             }
             if (!bool) {
               break label418;
             }
-            paramAnonymousInt = FactoryProxyManager.getPlayManager().init(a.this.mContext, com.tencent.mm.b.q.k(com.tencent.mm.vfs.q.B(paramAnonymousBundle.fxV()), false));
+            paramAnonymousInt = FactoryProxyManager.getPlayManager().init(a.this.mContext, com.tencent.mm.b.q.k(com.tencent.mm.vfs.q.B(paramAnonymousBundle.fOK()), false));
             FactoryProxyManager.getPlayManager().setMaxStorageSize(200L);
             continue;
-            ac.i("MicroMsg.GameFloatWebView", "sdcard not available");
+            ad.i("MicroMsg.GameFloatWebView", "sdcard not available");
             paramAnonymousInt = FactoryProxyManager.getPlayManager().init(a.this.mContext, null);
           }
           Object localObject1 = paramAnonymousBundle.getString("webview_video_proxy_cdn_urls");
@@ -159,12 +158,12 @@ public final class a
           int j = paramAnonymousBundle.getInt("webview_video_proxy_file_type");
           int k = FactoryProxyManager.getPlayManager().startPlay((String)localObject1, j, (String)localObject2, paramAnonymousInt, i);
           paramAnonymousBundle = FactoryProxyManager.getPlayManager().buildPlayURLMp4(k);
-          ac.i("MicroMsg.GameFloatWebView", "cdnurls = %s, filedId = %s, fileSize = %d, fileDuration = %d, fileType = %d, playDataId = %d, localUrl = %s", new Object[] { localObject1, localObject2, Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), paramAnonymousBundle });
+          ad.i("MicroMsg.GameFloatWebView", "cdnurls = %s, filedId = %s, fileSize = %d, fileDuration = %d, fileType = %d, playDataId = %d, localUrl = %s", new Object[] { localObject1, localObject2, Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), paramAnonymousBundle });
           localBundle.putInt("webview_video_proxy_play_data_id", k);
           localBundle.putString("webview_video_proxy_local_url", paramAnonymousBundle);
           continue;
           paramAnonymousInt = paramAnonymousBundle.getInt("webview_video_proxy_play_data_id");
-          ac.i("MicroMsg.GameFloatWebView", "webview proxy stop play, play id = %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          ad.i("MicroMsg.GameFloatWebView", "webview proxy stop play, play id = %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
           if (paramAnonymousInt > 0)
           {
             FactoryProxyManager.getPlayManager().stopPlay(paramAnonymousInt);
@@ -181,75 +180,75 @@ public final class a
             continue;
             paramAnonymousInt = paramAnonymousBundle.getInt("webview_video_proxy_play_data_id");
             i = paramAnonymousBundle.getInt("webview_video_proxy_preload_duration");
-            ac.i("MicroMsg.GameFloatWebView", "playid = %d, duration = %d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
+            ad.i("MicroMsg.GameFloatWebView", "playid = %d, duration = %d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
             localBundle.putInt("webview_video_proxy_pre_load_result", FactoryProxyManager.getPlayManager().preLoad(paramAnonymousInt, i));
             continue;
             localObject1 = paramAnonymousBundle.getString("show_kb_placeholder");
             paramAnonymousInt = paramAnonymousBundle.getInt("show_kb_max_length");
-            a.this.CEI.runOnUiThread(new Runnable()
+            a.this.Eis.runOnUiThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(80821);
-                a.this.CEI.ft(this.CyC, paramAnonymousInt);
+                a.this.Eis.fQ(this.Ecl, paramAnonymousInt);
                 AppMethodBeat.o(80821);
               }
             });
             continue;
-            a.this.CEI.runOnUiThread(new Runnable()
+            a.this.Eis.runOnUiThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(80822);
-                int i = a.this.CEI.eDX();
+                int i = a.this.Eis.eSP();
                 localBundle.putInt("height", i);
                 AppMethodBeat.o(80822);
               }
             });
             continue;
             localObject1 = paramAnonymousBundle.getString("set_page_title_text");
-            paramAnonymousInt = com.tencent.mm.plugin.webview.ui.tools.e.fr(paramAnonymousBundle.getString("set_page_title_color"), a.this.CEI.getResources().getColor(2131099874));
-            a.this.CEI.runOnUiThread(new Runnable()
+            paramAnonymousInt = com.tencent.mm.plugin.webview.ui.tools.e.fO(paramAnonymousBundle.getString("set_page_title_color"), a.this.Eis.getResources().getColor(2131099874));
+            a.this.Eis.runOnUiThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(80823);
-                if (this.cNi != null) {
-                  a.this.CEI.setMMTitle(this.cNi);
+                if (this.cYy != null) {
+                  a.this.Eis.setMMTitle(this.cYy);
                 }
-                a.this.CEI.setMMTitleColor(paramAnonymousInt);
+                a.this.Eis.setMMTitleColor(paramAnonymousInt);
                 AppMethodBeat.o(80823);
               }
             });
             continue;
             bool = paramAnonymousBundle.getBoolean("clear_webview_cache_clear_cookie", false);
-            ac.i("MicroMsg.GameFloatWebView", "includeCookie = %b", new Object[] { Boolean.valueOf(bool) });
+            ad.i("MicroMsg.GameFloatWebView", "includeCookie = %b", new Object[] { Boolean.valueOf(bool) });
             paramAnonymousBundle = new Intent();
             paramAnonymousBundle.putExtra("tools_process_action_code_key", "com.tencent.mm.intent.ACTION_CLEAR_WEBVIEW_CACHE");
             paramAnonymousBundle.putExtra("tools_clean_webview_cache_ignore_cookie", bool);
-            com.tencent.mm.cq.d.bt(paramAnonymousBundle);
+            com.tencent.mm.cq.d.by(paramAnonymousBundle);
             continue;
-            a.this.CEI.runOnUiThread(new Runnable()
+            a.this.Eis.runOnUiThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(80824);
-                a.this.CEI.aJ(paramAnonymousBundle);
+                a.this.Eis.aO(paramAnonymousBundle);
                 AppMethodBeat.o(80824);
               }
             });
             continue;
             paramAnonymousBundle = getCurrentUrl();
-            localObject1 = com.tencent.xweb.c.fJa().getCookie(paramAnonymousBundle);
-            ac.i("MicroMsg.GameFloatWebView", "url = %s, cookie = %s", new Object[] { paramAnonymousBundle, localObject1 });
+            localObject1 = com.tencent.xweb.c.gaw().getCookie(paramAnonymousBundle);
+            ad.i("MicroMsg.GameFloatWebView", "url = %s, cookie = %s", new Object[] { paramAnonymousBundle, localObject1 });
             localBundle.putString("cookie", (String)localObject1);
-            localBundle.putFloat("density", com.tencent.mm.cc.a.getDensity(a.this.CEI));
+            localBundle.putFloat("density", com.tencent.mm.cc.a.getDensity(a.this.Eis));
             continue;
             localObject1 = paramAnonymousBundle.getString("traceid");
             paramAnonymousBundle = paramAnonymousBundle.getString("username");
-            k.Cya.kC((String)localObject1, paramAnonymousBundle);
+            k.EbJ.kY((String)localObject1, paramAnonymousBundle);
             continue;
-            paramAnonymousBundle = a.this.CEI.getMMTitle();
+            paramAnonymousBundle = a.this.Eis.getMMTitle();
             localObject1 = getCurrentUrl();
             localBundle.putString("webview_current_url", (String)localObject1);
             if (paramAnonymousBundle != null) {}
@@ -260,46 +259,46 @@ public final class a
               break;
             }
             bool = paramAnonymousBundle.getBoolean("add_shortcut_status");
-            if (a.this.CEL != null)
+            if (a.this.Eiv != null)
             {
-              a.this.CEL.uj(bool);
+              a.this.Eiv.uX(bool);
               continue;
-              bool = a.this.CEN.eGv();
-              paramAnonymousBundle = a.this.CEN.eAr();
-              localObject1 = a.this.CEN.eGw();
+              bool = a.this.Eix.eVv();
+              paramAnonymousBundle = a.this.Eix.ePh();
+              localObject1 = a.this.Eix.eVw();
               if (bool)
               {
                 localBundle.putString("result", "not_return");
               }
               else
               {
-                localBundle.putString("full_url", bs.nullAsNil(paramAnonymousBundle));
+                localBundle.putString("full_url", bt.nullAsNil(paramAnonymousBundle));
                 if ((localObject1 != null) && (((Map)localObject1).size() != 0))
                 {
                   localBundle.putInt("set_cookie", 1);
-                  com.tencent.xweb.d.li(ai.getContext());
-                  localObject2 = com.tencent.xweb.c.fJa();
+                  com.tencent.xweb.d.lv(aj.getContext());
+                  localObject2 = com.tencent.xweb.c.gaw();
                   Iterator localIterator = ((Map)localObject1).keySet().iterator();
                   while (localIterator.hasNext())
                   {
                     String str = (String)localIterator.next();
-                    ((com.tencent.xweb.c)localObject2).setCookie(bs.nullAsNil(paramAnonymousBundle), str + "=" + (String)((Map)localObject1).get(str));
+                    ((com.tencent.xweb.c)localObject2).setCookie(bt.nullAsNil(paramAnonymousBundle), str + "=" + (String)((Map)localObject1).get(str));
                   }
-                  com.tencent.xweb.d.fJc();
+                  com.tencent.xweb.d.gay();
                   com.tencent.xweb.d.sync();
-                  ac.i("MicroMsg.GameFloatWebView", "cookies:%s", new Object[] { ((com.tencent.xweb.c)localObject2).getCookie(bs.nullAsNil(paramAnonymousBundle)) });
+                  ad.i("MicroMsg.GameFloatWebView", "cookies:%s", new Object[] { ((com.tencent.xweb.c)localObject2).getCookie(bt.nullAsNil(paramAnonymousBundle)) });
                 }
                 else
                 {
                   localBundle.putInt("set_cookie", 0);
                   continue;
-                  a.this.sYm.CEW.aU(paramAnonymousBundle);
-                  ac.i("MicroMsg.GameFloatWebView", "set game float page time data");
+                  a.this.tVy.EiG.aZ(paramAnonymousBundle);
+                  ad.i("MicroMsg.GameFloatWebView", "set game float page time data");
                   continue;
-                  a.this.sYb.fYP = 1;
-                  a.this.sYo.CFK = System.currentTimeMillis();
+                  a.this.tVm.gsl = 1;
+                  a.this.tVA.Ejv = System.currentTimeMillis();
                   continue;
-                  a.this.sYo.CFL = System.currentTimeMillis();
+                  a.this.tVA.Ejw = System.currentTimeMillis();
                 }
               }
             }
@@ -307,71 +306,71 @@ public final class a
         }
       }
     };
-    this.sYb = GameWebPerformanceInfo.tr(paramString);
-    this.sYb.url = paramString;
-    this.sYb.fYI = ((paramGameWebViewUI.hashCode() & 0x7FFFFFFF) + "_" + (paramString.hashCode() & 0x7FFFFFFF));
+    this.tVm = GameWebPerformanceInfo.wh(paramString);
+    this.tVm.url = paramString;
+    this.tVm.gse = ((paramGameWebViewUI.hashCode() & 0x7FFFFFFF) + "_" + (paramString.hashCode() & 0x7FFFFFFF));
     long l = System.currentTimeMillis();
-    this.sYb.startTime = paramGameWebViewUI.getIntent().getLongExtra("start_time", l);
-    this.sYb.fYT = paramGameWebViewUI.getIntent().getLongExtra("start_activity_time", l);
-    this.sYb.fYY = l;
-    this.sYb.fZa = l;
-    this.sYo = h.aDB(paramString);
-    this.sYo.startTime = System.currentTimeMillis();
+    this.tVm.startTime = paramGameWebViewUI.getIntent().getLongExtra("start_time", l);
+    this.tVm.gsp = paramGameWebViewUI.getIntent().getLongExtra("start_activity_time", l);
+    this.tVm.gsu = l;
+    this.tVm.gsw = l;
+    this.tVA = g.aJc(paramString);
+    this.tVA.startTime = System.currentTimeMillis();
     this.mContext = paramGameWebViewUI;
-    this.CEI = paramGameWebViewUI;
-    this.UK = paramViewGroup;
-    paramViewGroup = MMWebViewWithJsApi.a.gU(this.mContext);
+    this.Eis = paramGameWebViewUI;
+    this.WA = paramViewGroup;
+    paramViewGroup = MMWebViewWithJsApi.a.gZ(this.mContext);
     paramViewGroup.setBackgroundResource(17170445);
     paramViewGroup.setBackgroundColor(0);
     paramViewGroup.setVisibility(4);
-    this.CEN = new b(paramViewGroup);
-    paramViewGroup.setWebViewClient(this.CEN);
-    this.CEO = new a((MMWebViewWithJsApi)paramViewGroup);
-    paramViewGroup.setWebChromeClient(this.CEO);
-    ac.i("MicroMsg.GameFloatWebView", "createFloatWebView, webview: %d, floatWebViewClient: %d", new Object[] { Integer.valueOf(paramViewGroup.hashCode()), Integer.valueOf(this.CEN.hashCode()) });
+    this.Eix = new b(paramViewGroup);
+    paramViewGroup.setWebViewClient(this.Eix);
+    this.Eiy = new a((MMWebViewWithJsApi)paramViewGroup);
+    paramViewGroup.setWebChromeClient(this.Eiy);
+    ad.i("MicroMsg.GameFloatWebView", "createFloatWebView, webview: %d, floatWebViewClient: %d", new Object[] { Integer.valueOf(paramViewGroup.hashCode()), Integer.valueOf(this.Eix.hashCode()) });
     if (paramViewGroup.getIsX5Kernel()) {
       paramViewGroup.setWebViewClientExtension(new c((byte)0));
     }
     paramViewGroup.getSettings().setJavaScriptEnabled(true);
-    paramViewGroup.getSettings().fJH();
+    paramViewGroup.getSettings().gbb();
     paramViewGroup.getSettings().setBuiltInZoomControls(false);
     paramViewGroup.getSettings().setUseWideViewPort(true);
     paramViewGroup.getSettings().setLoadWithOverviewMode(true);
-    paramViewGroup.getSettings().fJA();
-    paramViewGroup.getSettings().fJz();
+    paramViewGroup.getSettings().gaU();
+    paramViewGroup.getSettings().gaT();
     paramViewGroup.getSettings().setGeolocationEnabled(true);
     paramViewGroup.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-    paramViewGroup.getSettings().fJJ();
-    paramViewGroup.getSettings().fJF();
+    paramViewGroup.getSettings().gbd();
+    paramViewGroup.getSettings().gaZ();
     paramViewGroup.getSettings().setAppCachePath(this.mContext.getDir("webviewcache", 0).getAbsolutePath());
-    paramViewGroup.getSettings().fJE();
-    paramViewGroup.getSettings().fJG();
-    paramViewGroup.getSettings().setDatabasePath(com.tencent.mm.loader.j.b.aoY() + "databases/");
-    com.tencent.xweb.c.fJa().fJb();
-    com.tencent.xweb.c.fJa().e(paramViewGroup);
-    this.hqK = paramViewGroup;
-    this.CEJ = new i(paramGameWebViewUI.getIntent());
-    this.CEM = new com.tencent.mm.plugin.wepkg.c();
-    this.CEM.CZv = new com.tencent.mm.plugin.wepkg.event.b()
+    paramViewGroup.getSettings().gaY();
+    paramViewGroup.getSettings().gba();
+    paramViewGroup.getSettings().setDatabasePath(com.tencent.mm.loader.j.b.arL() + "databases/");
+    com.tencent.xweb.c.gaw().gax();
+    com.tencent.xweb.c.gaw().e(paramViewGroup);
+    this.hJc = paramViewGroup;
+    this.Eit = new h(paramGameWebViewUI.getIntent());
+    this.Eiw = new com.tencent.mm.plugin.wepkg.d();
+    this.Eiw.EDt = new com.tencent.mm.plugin.wepkg.event.b()
     {
-      public final void cOX()
+      public final void cXA()
       {
         AppMethodBeat.i(80819);
-        ac.i("MicroMsg.GameFloatWebView", "float page, reload url:%s from net", new Object[] { a.this.sXV });
-        if ((a.this.hqK != null) && (a.this.hqK.getParent() != null) && (a.this.CEN != null) && (!bs.isNullOrNil(a.this.sXV)))
+        ad.i("MicroMsg.GameFloatWebView", "float page, reload url:%s from net", new Object[] { a.this.tVg });
+        if ((a.this.hJc != null) && (a.this.hJc.getParent() != null) && (a.this.Eix != null) && (!bt.isNullOrNil(a.this.tVg)))
         {
-          a.this.hqK.stopLoading();
-          a.this.hqK.loadUrl(a.this.CEN.eAr());
+          a.this.hJc.stopLoading();
+          a.this.hJc.loadUrl(a.this.Eix.ePh());
         }
         AppMethodBeat.o(80819);
       }
     };
-    this.sYb.fZb = System.currentTimeMillis();
-    this.sYo.CFF = System.currentTimeMillis();
+    this.tVm.gsx = System.currentTimeMillis();
+    this.tVA.Ejq = System.currentTimeMillis();
     AppMethodBeat.o(80844);
   }
   
-  final int fu(String paramString, int paramInt)
+  final int fR(String paramString, int paramInt)
   {
     AppMethodBeat.i(80845);
     int i = paramInt;
@@ -380,25 +379,25 @@ public final class a
       if ((paramString == null) || (paramString.length() <= 0)) {
         break label137;
       }
-      if (this.CEK != null) {
+      if (this.Eiu != null) {
         break label59;
       }
       i = 1;
     }
     for (;;)
     {
-      ac.i("MicroMsg.GameFloatWebView", "KGetA8KeyScene = %s", new Object[] { Integer.valueOf(i) });
+      ad.i("MicroMsg.GameFloatWebView", "KGetA8KeyScene = %s", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(80845);
       return i;
       try
       {
         label59:
-        if (this.CEK.xr(paramString))
+        if (this.Eiu.Ap(paramString))
         {
           i = 8;
           continue;
         }
-        boolean bool = this.CEK.wH(paramString);
+        boolean bool = this.Eiu.zE(paramString);
         if (bool)
         {
           i = 7;
@@ -408,7 +407,7 @@ public final class a
       }
       catch (Exception paramString)
       {
-        ac.e("MicroMsg.GameFloatWebView", "getScene fail, ex = " + paramString.getMessage());
+        ad.e("MicroMsg.GameFloatWebView", "getScene fail, ex = " + paramString.getMessage());
         i = 1;
       }
       continue;
@@ -420,23 +419,23 @@ public final class a
   public final void onDestroy()
   {
     AppMethodBeat.i(80846);
-    if (!this.zjc)
+    if (!this.ABc)
     {
-      ac.i("MicroMsg.GameFloatWebView", "onDestroy");
-      this.zjc = true;
-      c.a(this.sYm.CEW.CEX);
-      this.CEM.uO(true);
-      if (this.hqK != null)
+      ad.i("MicroMsg.GameFloatWebView", "onDestroy");
+      this.ABc = true;
+      c.a(this.tVy.EiG.EiH);
+      this.Eiw.vz(true);
+      if (this.hJc != null)
       {
-        this.hqK.setWebViewClient(null);
-        this.hqK.setWebChromeClient(null);
+        this.hJc.setWebViewClient(null);
+        this.hJc.setWebChromeClient(null);
       }
-      GameWebPerformanceInfo localGameWebPerformanceInfo = this.sYb;
-      localGameWebPerformanceInfo.fZi += System.currentTimeMillis() - this.sYn;
-      this.sYb.fZj = System.currentTimeMillis();
-      com.tencent.mm.game.report.api.a.fYF.a(this.sYb);
-      GameWebPerformanceInfo.ts(this.sXV);
-      h.aDE(this.sXV);
+      GameWebPerformanceInfo localGameWebPerformanceInfo = this.tVm;
+      localGameWebPerformanceInfo.gsE += System.currentTimeMillis() - this.tVz;
+      this.tVm.gsF = System.currentTimeMillis();
+      com.tencent.mm.game.report.api.a.gsb.a(this.tVm);
+      GameWebPerformanceInfo.wi(this.tVg);
+      g.aJf(this.tVg);
     }
     AppMethodBeat.o(80846);
   }
@@ -452,8 +451,8 @@ public final class a
     public final boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
     {
       AppMethodBeat.i(80827);
-      if (a.this.CEM != null) {
-        a.this.CEM.a(paramConsoleMessage);
+      if (a.this.Eiw != null) {
+        a.this.Eiw.a(paramConsoleMessage);
       }
       boolean bool = super.onConsoleMessage(paramConsoleMessage);
       AppMethodBeat.o(80827);
@@ -478,7 +477,7 @@ public final class a
         AppMethodBeat.o(80838);
         return paramWebView;
       }
-      WebResourceResponse localWebResourceResponse = a.this.CEM.aET(paramWebResourceRequest.getUrl().toString());
+      WebResourceResponse localWebResourceResponse = a.this.Eiw.o(paramWebView, paramWebResourceRequest.getUrl().toString());
       if (localWebResourceResponse != null)
       {
         AppMethodBeat.o(80838);
@@ -498,7 +497,7 @@ public final class a
         AppMethodBeat.o(80839);
         return paramWebView;
       }
-      WebResourceResponse localWebResourceResponse = a.this.CEM.aET(paramWebResourceRequest.getUrl().toString());
+      WebResourceResponse localWebResourceResponse = a.this.Eiw.o(paramWebView, paramWebResourceRequest.getUrl().toString());
       if (localWebResourceResponse != null)
       {
         AppMethodBeat.o(80839);
@@ -511,64 +510,56 @@ public final class a
     
     public final void a(f paramf)
     {
-      AppMethodBeat.i(188551);
-      ac.i("MicroMsg.GameFloatWebView", "jsapi ready");
-      a.this.CEL = paramf;
-      AppMethodBeat.o(188551);
+      AppMethodBeat.i(208221);
+      ad.i("MicroMsg.GameFloatWebView", "jsapi ready");
+      a.this.Eiv = paramf;
+      AppMethodBeat.o(208221);
     }
     
-    public final void a(com.tencent.mm.plugin.webview.c.i parami)
+    public final void a(com.tencent.mm.plugin.webview.stub.e parame, com.tencent.mm.plugin.webview.e.g paramg)
     {
-      AppMethodBeat.i(188552);
-      ac.i("MicroMsg.GameFloatWebView", "jsloader ready");
-      a.this.CEP = parami;
-      AppMethodBeat.o(188552);
-    }
-    
-    public final void a(com.tencent.mm.plugin.webview.stub.e parame, g paramg)
-    {
-      a.this.CEK = parame;
+      a.this.Eiu = parame;
     }
     
     public final void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
     {
       AppMethodBeat.i(80828);
       long l = System.currentTimeMillis();
-      ac.i("MicroMsg.GameFloatWebView", "onPageStarted opt, url = %s, now = %d", new Object[] { paramString, Long.valueOf(l) });
-      if (a.this.sYb.fZe == 0L) {
-        a.this.sYb.fZe = l;
+      ad.i("MicroMsg.GameFloatWebView", "onPageStarted opt, url = %s, now = %d", new Object[] { paramString, Long.valueOf(l) });
+      if (a.this.tVm.gsA == 0L) {
+        a.this.tVm.gsA = l;
       }
-      if (a.this.sYo.CFG == 0L) {
-        a.this.sYo.CFG = l;
+      if (a.this.tVA.Ejr == 0L) {
+        a.this.tVA.Ejr = l;
       }
-      a.this.sYm.CEW.eFr();
-      a.this.CEM.o(paramWebView, paramString);
+      a.this.tVy.EiG.eUn();
+      a.this.Eiw.aKt(paramString);
       AppMethodBeat.o(80828);
     }
     
-    public final boolean aDx(String paramString)
+    public final boolean aIY(String paramString)
     {
       AppMethodBeat.i(80832);
-      boolean bool = a.this.CEM.aEU(paramString);
+      boolean bool = a.this.Eiw.aKu(paramString);
       AppMethodBeat.o(80832);
       return bool;
     }
     
-    public final boolean aDy(String paramString)
+    public final boolean aIZ(String paramString)
     {
       AppMethodBeat.i(80834);
-      boolean bool = super.aDy(paramString);
+      boolean bool = super.aIZ(paramString);
       AppMethodBeat.o(80834);
       return bool;
     }
     
-    public final void aDz(String paramString)
+    public final void aJa(String paramString)
     {
       AppMethodBeat.i(80835);
       try
       {
-        ac.i("MicroMsg.GameFloatWebView", "onURLFilteredOut url:%s", new Object[] { paramString });
-        a.this.UK.removeView(this.hqK);
+        ad.i("MicroMsg.GameFloatWebView", "onURLFilteredOut url:%s", new Object[] { paramString });
+        a.this.WA.removeView(this.hJc);
         AppMethodBeat.o(80835);
         return;
       }
@@ -578,43 +569,65 @@ public final class a
       }
     }
     
-    public final boolean aS(Bundle paramBundle)
+    public final boolean aX(Bundle paramBundle)
     {
       AppMethodBeat.i(80842);
       long l = System.currentTimeMillis();
-      if (a.this.sYb.fZh == 0L) {
-        a.this.sYb.fZh = l;
+      if (a.this.tVm.gsD == 0L) {
+        a.this.tVm.gsD = l;
       }
-      if (a.this.sYo.CFJ == 0L) {
-        a.this.sYo.CFJ = l;
+      if (a.this.tVA.Eju == 0L) {
+        a.this.tVA.Eju = l;
       }
-      boolean bool = super.aS(paramBundle);
+      boolean bool = super.aX(paramBundle);
       AppMethodBeat.o(80842);
       return bool;
     }
     
-    public final void ahb(String paramString)
+    public final void alz(String paramString)
     {
       AppMethodBeat.i(80833);
-      if (a.this.CEM.eIL())
+      if (a.this.Eiw.eXE())
       {
-        this.hqK.loadUrl(paramString);
+        this.hJc.loadUrl(paramString);
         AppMethodBeat.o(80833);
         return;
       }
-      super.ahb(paramString);
+      super.alz(paramString);
       AppMethodBeat.o(80833);
     }
     
-    public final m blA()
+    public final void at(String paramString, boolean paramBoolean)
     {
-      return a.this.CEQ;
+      AppMethodBeat.i(80841);
+      long l = System.currentTimeMillis();
+      if (a.this.tVm.gsC == 0L) {
+        a.this.tVm.gsC = l;
+      }
+      if (a.this.tVA.Ejt == 0L) {
+        a.this.tVA.Ejt = l;
+      }
+      super.at(paramString, paramBoolean);
+      AppMethodBeat.o(80841);
+    }
+    
+    public final void b(com.tencent.mm.plugin.webview.c.i parami)
+    {
+      AppMethodBeat.i(208222);
+      ad.i("MicroMsg.GameFloatWebView", "jsloader ready");
+      a.this.Eiz = parami;
+      AppMethodBeat.o(208222);
+    }
+    
+    public final m bpl()
+    {
+      return a.this.EiA;
     }
     
     public final WebResourceResponse c(WebView paramWebView, String paramString)
     {
       AppMethodBeat.i(80837);
-      WebResourceResponse localWebResourceResponse = a.this.CEM.aET(paramString);
+      WebResourceResponse localWebResourceResponse = a.this.Eiw.o(paramWebView, paramString);
       if (localWebResourceResponse != null)
       {
         AppMethodBeat.o(80837);
@@ -625,37 +638,23 @@ public final class a
       return paramWebView;
     }
     
-    public final void cl(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(80841);
-      long l = System.currentTimeMillis();
-      if (a.this.sYb.fZg == 0L) {
-        a.this.sYb.fZg = l;
-      }
-      if (a.this.sYo.CFI == 0L) {
-        a.this.sYo.CFI = l;
-      }
-      super.cl(paramString, paramBoolean);
-      AppMethodBeat.o(80841);
-    }
-    
-    public final void eFp()
+    public final void eUl()
     {
       AppMethodBeat.i(80836);
       if (Build.VERSION.SDK_INT >= 11)
       {
-        this.hqK.removeJavascriptInterface("MicroMsg");
-        this.hqK.removeJavascriptInterface("JsApi");
+        this.hJc.removeJavascriptInterface("MicroMsg");
+        this.hJc.removeJavascriptInterface("JsApi");
       }
       try
       {
-        this.hqK.setWebChromeClient(null);
-        this.hqK.setWebViewClient(null);
-        this.hqK.setOnTouchListener(null);
-        this.hqK.setOnLongClickListener(null);
-        this.hqK.setVisibility(8);
-        this.hqK.removeAllViews();
-        this.hqK.clearView();
+        this.hJc.setWebChromeClient(null);
+        this.hJc.setWebViewClient(null);
+        this.hJc.setOnTouchListener(null);
+        this.hJc.setOnLongClickListener(null);
+        this.hJc.setVisibility(8);
+        this.hJc.removeAllViews();
+        this.hJc.clearView();
       }
       catch (Exception localException1)
       {
@@ -663,26 +662,26 @@ public final class a
         {
           try
           {
-            this.hqK.destroy();
+            this.hJc.destroy();
             AppMethodBeat.o(80836);
             return;
           }
           catch (Exception localException2)
           {
-            ac.w("MicroMsg.GameFloatWebView", "onDestroy, viewWV destroy, ex = %s", new Object[] { localException2.getMessage() });
+            ad.w("MicroMsg.GameFloatWebView", "onDestroy, viewWV destroy, ex = %s", new Object[] { localException2.getMessage() });
             AppMethodBeat.o(80836);
           }
           localException1 = localException1;
-          ac.e("MicroMsg.GameFloatWebView", "onDestroy, set web infos to null,  ex = %s", new Object[] { localException1.getMessage() });
+          ad.e("MicroMsg.GameFloatWebView", "onDestroy, set web infos to null,  ex = %s", new Object[] { localException1.getMessage() });
         }
       }
     }
     
-    public final void eFq()
+    public final void eUm()
     {
       AppMethodBeat.i(80840);
-      a.this.sYb.fZd = System.currentTimeMillis();
-      super.eFq();
+      a.this.tVm.gsz = System.currentTimeMillis();
+      super.eUm();
       AppMethodBeat.o(80840);
     }
     
@@ -690,27 +689,27 @@ public final class a
     {
       AppMethodBeat.i(80829);
       long l = System.currentTimeMillis();
-      ac.i("MicroMsg.GameFloatWebView", "onPageFinished opt, url = %s, now = %d", new Object[] { paramString, Long.valueOf(l) });
-      if (a.this.sYb.fZf == 0L) {
-        a.this.sYb.fZf = l;
+      ad.i("MicroMsg.GameFloatWebView", "onPageFinished opt, url = %s, now = %d", new Object[] { paramString, Long.valueOf(l) });
+      if (a.this.tVm.gsB == 0L) {
+        a.this.tVm.gsB = l;
       }
-      if (a.this.sYo.CFH == 0L) {
-        a.this.sYo.CFH = l;
+      if (a.this.tVA.Ejs == 0L) {
+        a.this.tVA.Ejs = l;
       }
-      if (a.this.sYb.fYZ == 0L)
+      if (a.this.tVm.gsv == 0L)
       {
-        a.this.sYb.fYZ = l;
-        a.this.sYn = l;
+        a.this.tVm.gsv = l;
+        a.this.tVz = l;
       }
-      this.hqK.setVisibility(0);
-      a.this.CEM.p(paramWebView, paramString);
-      a.this.sYm.CEW.Bb();
+      this.hJc.setVisibility(0);
+      a.this.Eiw.n(paramWebView, paramString);
+      a.this.tVy.EiG.CA();
       AppMethodBeat.o(80829);
     }
     
     public final String getSource()
     {
-      return i.dvr;
+      return h.dHu;
     }
   }
   
@@ -722,7 +721,7 @@ public final class a
     public final Object onMiscCallBack(String paramString, Bundle paramBundle)
     {
       AppMethodBeat.i(80843);
-      Object localObject = a.this.CEM.onMiscCallBack(paramString, paramBundle);
+      Object localObject = a.this.Eiw.onMiscCallBack(paramString, paramBundle);
       if (localObject != null)
       {
         AppMethodBeat.o(80843);

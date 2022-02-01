@@ -2,18 +2,20 @@ package com.tencent.mm.plugin.story.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.m;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "i", "", "j", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "i", "", "j", "invoke"})
 final class f$b
-  extends d.g.b.l
+  extends q
   implements m<Long, Long, Boolean>
 {
-  public static final b zCs;
+  public static final b ATR;
   
   static
   {
     AppMethodBeat.i(119489);
-    zCs = new b();
+    ATR = new b();
     AppMethodBeat.o(119489);
   }
   

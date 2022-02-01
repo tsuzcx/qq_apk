@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.wallet.pay.a.d;
 
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wallet_core.model.v;
 
 public final class m
   extends g
 {
-  public m(u paramu, Orders paramOrders)
+  public m(v paramv, Orders paramOrders)
   {
-    super(paramu, paramOrders);
+    super(paramv, paramOrders);
   }
   
   public final int getFuncId()

@@ -179,4 +179,7 @@
     <color name="aar">#80ffffff</color>
     <color name="aas">#0dffffff</color>
     <color name="aat">#ccffffff</color>
+    <color name="ab6">@color/BW_100_Alpha_0_8</color>
+    <color name="aba">#08ffffff</color>
+    <color name="abb">@color/BW_100_Alpha_0_8</color>
 </resources>

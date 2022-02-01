@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.q;
 
 public final class d
 {
-  private static c uUZ;
-  public static boolean uVa = false;
+  private static c vYh;
+  public static boolean vYi = false;
   
   public static void a(c paramc)
   {
-    uUZ = paramc;
+    vYh = paramc;
   }
   
-  public static c dfa()
+  public static c doy()
   {
-    return uUZ;
+    return vYh;
   }
 }
 

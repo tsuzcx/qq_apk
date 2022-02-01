@@ -6,15 +6,15 @@ import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aq;
+import com.tencent.mm.model.ar;
 import com.tencent.mm.plugin.multitalk.model.MultiTalkingForegroundService;
 import com.tencent.mm.plugin.notification.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class MultiTalkMainUI$10
-  extends ao
+  extends ap
 {
   MultiTalkMainUI$10(MultiTalkMainUI paramMultiTalkMainUI) {}
   
@@ -29,25 +29,25 @@ final class MultiTalkMainUI$10
     {
       AppMethodBeat.o(114661);
       return;
-      if (!MultiTalkMainUI.c(this.uYZ))
+      if (!MultiTalkMainUI.c(this.wdX))
       {
-        paramMessage = this.uYZ;
-        ac.i("MicroMsg.MT.MultiTalkMainUI", "bindVoiceServiceIfNeed");
+        paramMessage = this.wdX;
+        ad.i("MicroMsg.MT.MultiTalkMainUI", "bindVoiceServiceIfNeed");
         try
         {
-          if (d.kZ(26))
+          if (d.ly(26))
           {
-            paramMessage.uYT = true;
+            paramMessage.wdR = true;
             Intent localIntent = new Intent();
-            localIntent.setClass(ai.getContext(), MultiTalkingForegroundService.class);
-            ai.getContext().bindService(localIntent, paramMessage, 1);
+            localIntent.setClass(aj.getContext(), MultiTalkingForegroundService.class);
+            aj.getContext().bindService(localIntent, paramMessage, 1);
           }
           AppMethodBeat.o(114661);
           return;
         }
         catch (Exception paramMessage)
         {
-          ac.printErrStackTrace("MicroMsg.MT.MultiTalkMainUI", paramMessage, "bindVoiceServiceIfNeed error: %s", new Object[] { paramMessage.getMessage() });
+          ad.printErrStackTrace("MicroMsg.MT.MultiTalkMainUI", paramMessage, "bindVoiceServiceIfNeed error: %s", new Object[] { paramMessage.getMessage() });
           AppMethodBeat.o(114661);
           return;
         }
@@ -58,7 +58,7 @@ final class MultiTalkMainUI$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI.10
  * JD-Core Version:    0.7.0.1
  */

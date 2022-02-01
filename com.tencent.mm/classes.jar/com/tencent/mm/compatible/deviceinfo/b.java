@@ -1,130 +1,141 @@
 package com.tencent.mm.compatible.deviceinfo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  public boolean fCT;
-  public int fCU;
-  public int fCV;
-  public int fCW;
-  public int fCX;
-  public int fCY;
-  public int fCZ;
-  public int fDA;
-  public int fDB;
-  public int fDC;
-  public int fDD;
-  public int fDE;
-  public int fDF;
-  public int fDG;
-  public int fDH;
-  public int fDI;
-  public int fDJ;
-  public int fDK;
-  public int fDL;
-  public int fDM;
-  public int fDN;
-  public int fDO;
-  public int fDP;
-  public int fDQ;
-  public int fDR;
-  public short[] fDS;
-  public short[] fDT;
-  public boolean fDU;
-  public int fDV;
-  public boolean fDW;
-  public int fDX;
-  public int fDY;
-  public int fDZ;
-  public int fDa;
-  public int fDb;
-  public int fDc;
-  public int fDd;
-  public int fDe;
-  public int fDf;
-  public int fDg;
-  public int fDh;
-  public int fDi;
-  public int fDj;
-  public int fDk;
-  public int fDl;
-  public int fDm;
-  public int fDn;
-  public int fDo;
-  public int fDp;
-  public int fDq;
-  public int fDr;
-  public int fDs;
-  public int fDt;
-  public int fDu;
-  public int fDv;
-  public int fDw;
-  public int fDx;
-  public boolean fDy;
-  public int fDz;
-  public int fEA;
-  public int fEa;
-  public int fEb;
-  public int fEc;
-  public int fEd;
-  public int fEe;
-  public int fEf;
-  public int fEg;
-  public int fEh;
-  public int fEi;
-  public int fEj;
-  public int fEk;
-  public int fEl;
-  public int fEm;
-  public int fEn;
-  public int fEo;
-  public int fEp;
-  public int fEq;
-  public int fEr;
-  public int fEs;
-  public int fEt;
-  public int fEu;
-  public int fEv;
-  public int fEw;
-  public int fEx;
-  public int fEy;
-  public int fEz;
+  public int fWA;
+  public int fWB;
+  public int fWC;
+  public int fWD;
+  public int fWE;
+  public int fWF;
+  public int fWG;
+  public int fWH;
+  public int fWI;
+  public int fWJ;
+  public int fWK;
+  public int fWL;
+  public boolean fWM;
+  public int fWN;
+  public int fWO;
+  public int fWP;
+  public int fWQ;
+  public int fWR;
+  public int fWS;
+  public int fWT;
+  public int fWU;
+  public int fWV;
+  public int fWW;
+  public int fWX;
+  public int fWY;
+  public int fWZ;
+  public boolean fWh;
+  public int fWi;
+  public int fWj;
+  public int fWk;
+  public int fWl;
+  public int fWm;
+  public int fWn;
+  public int fWo;
+  public int fWp;
+  public int fWq;
+  public int fWr;
+  public int fWs;
+  public int fWt;
+  public int fWu;
+  public int fWv;
+  public int fWw;
+  public int fWx;
+  public int fWy;
+  public int fWz;
+  public int fXA;
+  public int fXB;
+  public int fXC;
+  public int fXD;
+  public int fXE;
+  public int fXF;
+  public int fXG;
+  public int fXH;
+  public int fXI;
+  public int fXJ;
+  public int fXK;
+  public int fXL;
+  public int fXM;
+  public int fXN;
+  public int fXO;
+  public int fXP;
+  public int fXQ;
+  public int fXR;
+  public int fXS;
+  public int fXT;
+  public int fXU;
+  public int fXV;
+  public int fXW;
+  public int fXX;
+  public int fXY;
+  public int fXZ;
+  public int fXa;
+  public int fXb;
+  public int fXc;
+  public int fXd;
+  public int fXe;
+  public int fXf;
+  public int fXg;
+  public int fXh;
+  public int fXi;
+  public int fXj;
+  public int fXk;
+  public int fXl;
+  public int fXm;
+  public int fXn;
+  public int fXo;
+  public int fXp;
+  public int fXq;
+  public short[] fXr;
+  public short[] fXs;
+  public boolean fXt;
+  public int fXu;
+  public boolean fXv;
+  public int fXw;
+  public int fXx;
+  public int fXy;
+  public int fXz;
   
   public b()
   {
     AppMethodBeat.i(155632);
-    this.fCT = false;
-    this.fDS = new short[15];
-    this.fDT = new short[2];
-    this.fDW = false;
+    this.fWh = false;
+    this.fXr = new short[15];
+    this.fXs = new short[2];
+    this.fXv = false;
     reset();
     AppMethodBeat.o(155632);
   }
   
-  public final boolean Xm()
+  public final boolean ZN()
   {
-    return ((this.fCV >= 0) && (this.fCW < 0)) || ((this.fCV < 0) && (this.fCW >= 0)) || (this.fCX > 0);
+    return ((this.fWj >= 0) && (this.fWk < 0)) || ((this.fWj < 0) && (this.fWk >= 0)) || (this.fWl > 0);
   }
   
-  public final boolean Xn()
+  public final boolean ZO()
   {
-    return this.fCY >= 0;
+    return this.fWm >= 0;
   }
   
-  public final boolean Xo()
+  public final boolean ZP()
   {
-    return this.fCZ >= 0;
+    return this.fWn >= 0;
   }
   
-  public final int Xp()
+  public final int ZQ()
   {
     AppMethodBeat.i(155633);
-    if (Xn())
+    if (ZO())
     {
-      int i = (this.fCY & 0xE0) >> 5;
-      ac.d("VoipAudioInfo", "getEnableMode ".concat(String.valueOf(i)));
+      int i = (this.fWm & 0xE0) >> 5;
+      ad.d("VoipAudioInfo", "getEnableMode ".concat(String.valueOf(i)));
       if (i == 7)
       {
         AppMethodBeat.o(155633);
@@ -137,17 +148,17 @@ public final class b
     return -1;
   }
   
-  public final boolean Xq()
+  public final boolean ZR()
   {
     AppMethodBeat.i(155634);
-    if (Xn())
+    if (ZO())
     {
-      int i = this.fCY & 0x10;
+      int i = this.fWm & 0x10;
       StringBuilder localStringBuilder = new StringBuilder("enableSpeaker ");
       if (i > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        ac.d("VoipAudioInfo", bool);
+        ad.d("VoipAudioInfo", bool);
         if (i <= 0) {
           break;
         }
@@ -161,13 +172,13 @@ public final class b
     return false;
   }
   
-  public final int Xr()
+  public final int ZS()
   {
     AppMethodBeat.i(155635);
-    if (Xn())
+    if (ZO())
     {
-      int i = (this.fCY & 0xE) >> 1;
-      ac.d("VoipAudioInfo", "getDisableMode ".concat(String.valueOf(i)));
+      int i = (this.fWm & 0xE) >> 1;
+      ad.d("VoipAudioInfo", "getDisableMode ".concat(String.valueOf(i)));
       if (i == 7)
       {
         AppMethodBeat.o(155635);
@@ -180,17 +191,17 @@ public final class b
     return -1;
   }
   
-  public final boolean Xs()
+  public final boolean ZT()
   {
     AppMethodBeat.i(155636);
-    if (Xn())
+    if (ZO())
     {
-      int i = this.fCY & 0x1;
+      int i = this.fWm & 0x1;
       StringBuilder localStringBuilder = new StringBuilder("disableSpeaker ");
       if (i > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        ac.d("VoipAudioInfo", bool);
+        ad.d("VoipAudioInfo", bool);
         if (i <= 0) {
           break;
         }
@@ -204,13 +215,13 @@ public final class b
     return false;
   }
   
-  public final int Xt()
+  public final int ZU()
   {
     AppMethodBeat.i(155637);
-    if (Xo())
+    if (ZP())
     {
-      int i = (this.fCZ & 0xE0) >> 5;
-      ac.d("VoipAudioInfo", "getEnableMode ".concat(String.valueOf(i)));
+      int i = (this.fWn & 0xE0) >> 5;
+      ad.d("VoipAudioInfo", "getEnableMode ".concat(String.valueOf(i)));
       if (i == 7)
       {
         AppMethodBeat.o(155637);
@@ -223,17 +234,17 @@ public final class b
     return -1;
   }
   
-  public final boolean Xu()
+  public final boolean ZV()
   {
     AppMethodBeat.i(155638);
-    if (Xo())
+    if (ZP())
     {
-      int i = this.fCZ & 0x10;
+      int i = this.fWn & 0x10;
       StringBuilder localStringBuilder = new StringBuilder("enableSpeaker ");
       if (i > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        ac.d("VoipAudioInfo", bool);
+        ad.d("VoipAudioInfo", bool);
         if (i <= 0) {
           break;
         }
@@ -247,13 +258,13 @@ public final class b
     return false;
   }
   
-  public final int Xv()
+  public final int ZW()
   {
     AppMethodBeat.i(155639);
-    if (Xo())
+    if (ZP())
     {
-      int i = (this.fCZ & 0xE) >> 1;
-      ac.d("VoipAudioInfo", "getDisableMode ".concat(String.valueOf(i)));
+      int i = (this.fWn & 0xE) >> 1;
+      ad.d("VoipAudioInfo", "getDisableMode ".concat(String.valueOf(i)));
       if (i == 7)
       {
         AppMethodBeat.o(155639);
@@ -266,17 +277,17 @@ public final class b
     return -1;
   }
   
-  public final boolean Xw()
+  public final boolean ZX()
   {
     AppMethodBeat.i(155640);
-    if (Xo())
+    if (ZP())
     {
-      int i = this.fCZ & 0x1;
+      int i = this.fWn & 0x1;
       StringBuilder localStringBuilder = new StringBuilder("disableSpeaker ");
       if (i > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        ac.d("VoipAudioInfo", bool);
+        ad.d("VoipAudioInfo", bool);
         if (i <= 0) {
           break;
         }
@@ -293,166 +304,188 @@ public final class b
   public final void dump()
   {
     AppMethodBeat.i(155641);
-    ac.d("VoipAudioInfo", "streamtype " + this.fCU);
-    ac.d("VoipAudioInfo", "smode " + this.fCV);
-    ac.d("VoipAudioInfo", "omode " + this.fCW);
-    ac.d("VoipAudioInfo", "ospeaker " + this.fCX);
-    ac.d("VoipAudioInfo", "operating" + this.fCY);
-    ac.d("VoipAudioInfo", "moperating" + this.fCZ);
-    ac.d("VoipAudioInfo", "mstreamtype" + this.fDa);
-    ac.d("VoipAudioInfo", "mVoiceRecordMode" + this.fDb);
-    ac.d("VoipAudioInfo", "agcMode :" + this.fDI);
-    ac.d("VoipAudioInfo", "nsMode:" + this.fDe);
-    ac.d("VoipAudioInfo", "aecMode:" + this.fDd);
-    ac.d("VoipAudioInfo", "volumMode:" + this.fDf);
-    ac.d("VoipAudioInfo", "micMode:" + this.fDr);
-    ac.d("VoipAudioInfo", "sourceMode:" + this.fDs);
-    ac.d("VoipAudioInfo", "speakerMode:" + this.fDt);
-    ac.d("VoipAudioInfo", "phoneMode:" + this.fDu);
-    ac.d("VoipAudioInfo", "voipstreamType:" + this.fDv);
-    ac.d("VoipAudioInfo", "speakerstreamtype:" + this.fDw);
-    ac.d("VoipAudioInfo", "phonestreamtype:" + this.fDx);
-    ac.d("VoipAudioInfo", "ringphonestream:" + this.fDz);
-    ac.d("VoipAudioInfo", "ringphonemode:" + this.fDA);
-    ac.d("VoipAudioInfo", "ringspeakerstream:" + this.fDB);
-    ac.d("VoipAudioInfo", "ringspeakermode:" + this.fDC);
-    ac.d("VoipAudioInfo", "agcModeNew :" + this.fDH);
-    ac.d("VoipAudioInfo", "nsModeNew:" + this.fDE);
-    ac.d("VoipAudioInfo", "nsModeNewMulti:" + this.fDF);
-    ac.d("VoipAudioInfo", "voipfullbandcfg:" + this.fDG);
-    ac.d("VoipAudioInfo", "aecModeNew:" + this.fDD);
-    ac.d("VoipAudioInfo", "agctargetdb:" + this.fDJ);
-    ac.d("VoipAudioInfo", "agcgaindb:" + this.fDK);
-    ac.d("VoipAudioInfo", "agcflag:" + this.fDL);
-    ac.d("VoipAudioInfo", "agclimiter:" + this.fDM);
-    ac.d("VoipAudioInfo", "agcCompRatio:" + this.fDN);
-    ac.d("VoipAudioInfo", "agcDnGainThr:" + this.fDO);
-    ac.d("VoipAudioInfo", "inputVolumeScale:" + this.fDg);
-    ac.d("VoipAudioInfo", "outputVolumeScale:" + this.fDh);
-    ac.d("VoipAudioInfo", "inputVolumeScaleForSpeaker:" + this.fDi);
-    ac.d("VoipAudioInfo", "outputVolumeScaleForSpeaker:" + this.fDj);
-    ac.d("VoipAudioInfo", "ehanceHeadsetEC:" + this.fDm);
-    ac.d("VoipAudioInfo", "setECModeLevelForHeadSet:" + this.fDn);
-    ac.d("VoipAudioInfo", "setECModeLevelForSpeaker:" + this.fDo);
-    ac.d("VoipAudioInfo", "enableSpeakerEnhanceEC:" + this.fDp);
-    ac.d("VoipAudioInfo", "enableRecTimer:" + this.fDP);
-    ac.d("VoipAudioInfo", "enablePlayTimer:" + this.fDQ);
-    ac.d("VoipAudioInfo", "setPlayerPrecorrectCofOnOrOff:" + this.fDR);
-    ac.d("VoipAudioInfo", "outputVolumeGainForPhone:" + this.fDk);
-    ac.d("VoipAudioInfo", "outputVolumeGainForSpeaker:" + this.fDl);
-    ac.d("VoipAudioInfo", "noisegateon" + this.fDU);
-    ac.d("VoipAudioInfo", "noisegatestrength[0]" + this.fDT[0]);
-    ac.d("VoipAudioInfo", "noisegatestrength[1]" + this.fDT[1]);
-    ac.d("VoipAudioInfo", "spkecenable:" + this.fDV);
-    ac.d("VoipAudioInfo", "agcRxFlag:" + this.fEd);
-    ac.d("VoipAudioInfo", "agcRxTargetdb:" + this.fEe);
-    ac.d("VoipAudioInfo", "agcRxGaindb:" + this.fEf);
-    ac.d("VoipAudioInfo", "agcRxLimiter:" + this.fEg);
-    ac.d("VoipAudioInfo", "enableXnoiseSup:" + this.fDq);
-    ac.d("VoipAudioInfo", "mt3dFlag:" + this.fEh);
-    ac.d("VoipAudioInfo", "mt3dAzim1:" + this.fEi);
-    ac.d("VoipAudioInfo", "mt3dAzim2:" + this.fEj);
-    ac.d("VoipAudioInfo", "mt3dAzim3:" + this.fEk);
-    ac.d("VoipAudioInfo", "mt3dAzim4:" + this.fEl);
-    ac.d("VoipAudioInfo", "mt3dAzim5:" + this.fEm);
-    ac.d("VoipAudioInfo", "mt3dAzim6:" + this.fEn);
-    ac.d("VoipAudioInfo", "mt3dAzim7:" + this.fEo);
-    ac.d("VoipAudioInfo", "mt3dAzim8:" + this.fEp);
-    ac.d("VoipAudioInfo", "mt3dElvl1:" + this.fEq);
-    ac.d("VoipAudioInfo", "mt3dElvl2:" + this.fEr);
-    ac.d("VoipAudioInfo", "mt3dElvl3:" + this.fEs);
-    ac.d("VoipAudioInfo", "mt3dElvl4:" + this.fEt);
-    ac.d("VoipAudioInfo", "mt3dElvl5:" + this.fEu);
-    ac.d("VoipAudioInfo", "mt3dElvl6:" + this.fEv);
-    ac.d("VoipAudioInfo", "mt3dElvl7:" + this.fEw);
-    ac.d("VoipAudioInfo", "mt3dElvl8:" + this.fEx);
-    ac.d("VoipAudioInfo", "mt3dPhi:" + this.fEy);
-    ac.d("VoipAudioInfo", "mt3dtheta1:" + this.fEz);
-    ac.d("VoipAudioInfo", "mt3dTheta2:" + this.fEA);
+    ad.d("VoipAudioInfo", "streamtype " + this.fWi);
+    ad.d("VoipAudioInfo", "smode " + this.fWj);
+    ad.d("VoipAudioInfo", "omode " + this.fWk);
+    ad.d("VoipAudioInfo", "ospeaker " + this.fWl);
+    ad.d("VoipAudioInfo", "operating" + this.fWm);
+    ad.d("VoipAudioInfo", "moperating" + this.fWn);
+    ad.d("VoipAudioInfo", "mstreamtype" + this.fWo);
+    ad.d("VoipAudioInfo", "mVoiceRecordMode" + this.fWp);
+    ad.d("VoipAudioInfo", "agcMode :" + this.fWW);
+    ad.d("VoipAudioInfo", "nsMode:" + this.fWs);
+    ad.d("VoipAudioInfo", "aecMode:" + this.fWr);
+    ad.d("VoipAudioInfo", "volumMode:" + this.fWt);
+    ad.d("VoipAudioInfo", "micMode:" + this.fWF);
+    ad.d("VoipAudioInfo", "sourceMode:" + this.fWG);
+    ad.d("VoipAudioInfo", "speakerMode:" + this.fWH);
+    ad.d("VoipAudioInfo", "phoneMode:" + this.fWI);
+    ad.d("VoipAudioInfo", "voipstreamType:" + this.fWJ);
+    ad.d("VoipAudioInfo", "speakerstreamtype:" + this.fWK);
+    ad.d("VoipAudioInfo", "phonestreamtype:" + this.fWL);
+    ad.d("VoipAudioInfo", "ringphonestream:" + this.fWN);
+    ad.d("VoipAudioInfo", "ringphonemode:" + this.fWO);
+    ad.d("VoipAudioInfo", "ringspeakerstream:" + this.fWP);
+    ad.d("VoipAudioInfo", "ringspeakermode:" + this.fWQ);
+    ad.d("VoipAudioInfo", "agcModeNew :" + this.fWV);
+    ad.d("VoipAudioInfo", "nsModeNew:" + this.fWS);
+    ad.d("VoipAudioInfo", "nsModeNewMulti:" + this.fWT);
+    ad.d("VoipAudioInfo", "voipfullbandcfg:" + this.fWU);
+    ad.d("VoipAudioInfo", "aecModeNew:" + this.fWR);
+    ad.d("VoipAudioInfo", "agctargetdb:" + this.fWX);
+    ad.d("VoipAudioInfo", "agcgaindb:" + this.fWY);
+    ad.d("VoipAudioInfo", "agcflag:" + this.fWZ);
+    ad.d("VoipAudioInfo", "agclimiter:" + this.fXa);
+    ad.d("VoipAudioInfo", "agcCompRatio:" + this.fXb);
+    ad.d("VoipAudioInfo", "agcDnGainThr:" + this.fXc);
+    ad.d("VoipAudioInfo", "inputVolumeScale:" + this.fWu);
+    ad.d("VoipAudioInfo", "outputVolumeScale:" + this.fWv);
+    ad.d("VoipAudioInfo", "inputVolumeScaleForSpeaker:" + this.fWw);
+    ad.d("VoipAudioInfo", "outputVolumeScaleForSpeaker:" + this.fWx);
+    ad.d("VoipAudioInfo", "ehanceHeadsetEC:" + this.fWA);
+    ad.d("VoipAudioInfo", "setECModeLevelForHeadSet:" + this.fWB);
+    ad.d("VoipAudioInfo", "setECModeLevelForSpeaker:" + this.fWC);
+    ad.d("VoipAudioInfo", "enableSpeakerEnhanceEC:" + this.fWD);
+    ad.d("VoipAudioInfo", "enableRecTimer:" + this.fXo);
+    ad.d("VoipAudioInfo", "enablePlayTimer:" + this.fXp);
+    ad.d("VoipAudioInfo", "setPlayerPrecorrectCofOnOrOff:" + this.fXq);
+    ad.d("VoipAudioInfo", "outputVolumeGainForPhone:" + this.fWy);
+    ad.d("VoipAudioInfo", "outputVolumeGainForSpeaker:" + this.fWz);
+    ad.d("VoipAudioInfo", "noisegateon" + this.fXt);
+    ad.d("VoipAudioInfo", "noisegatestrength[0]" + this.fXs[0]);
+    ad.d("VoipAudioInfo", "noisegatestrength[1]" + this.fXs[1]);
+    ad.d("VoipAudioInfo", "spkecenable:" + this.fXu);
+    ad.d("VoipAudioInfo", "agcRxFlag:" + this.fXC);
+    ad.d("VoipAudioInfo", "agcRxTargetdb:" + this.fXD);
+    ad.d("VoipAudioInfo", "agcRxGaindb:" + this.fXE);
+    ad.d("VoipAudioInfo", "agcRxLimiter:" + this.fXF);
+    ad.d("VoipAudioInfo", "enableXnoiseSup:" + this.fWE);
+    ad.d("VoipAudioInfo", "mt3dFlag:" + this.fXG);
+    ad.d("VoipAudioInfo", "mt3dAzim1:" + this.fXH);
+    ad.d("VoipAudioInfo", "mt3dAzim2:" + this.fXI);
+    ad.d("VoipAudioInfo", "mt3dAzim3:" + this.fXJ);
+    ad.d("VoipAudioInfo", "mt3dAzim4:" + this.fXK);
+    ad.d("VoipAudioInfo", "mt3dAzim5:" + this.fXL);
+    ad.d("VoipAudioInfo", "mt3dAzim6:" + this.fXM);
+    ad.d("VoipAudioInfo", "mt3dAzim7:" + this.fXN);
+    ad.d("VoipAudioInfo", "mt3dAzim8:" + this.fXO);
+    ad.d("VoipAudioInfo", "mt3dElvl1:" + this.fXP);
+    ad.d("VoipAudioInfo", "mt3dElvl2:" + this.fXQ);
+    ad.d("VoipAudioInfo", "mt3dElvl3:" + this.fXR);
+    ad.d("VoipAudioInfo", "mt3dElvl4:" + this.fXS);
+    ad.d("VoipAudioInfo", "mt3dElvl5:" + this.fXT);
+    ad.d("VoipAudioInfo", "mt3dElvl6:" + this.fXU);
+    ad.d("VoipAudioInfo", "mt3dElvl7:" + this.fXV);
+    ad.d("VoipAudioInfo", "mt3dElvl8:" + this.fXW);
+    ad.d("VoipAudioInfo", "mt3dPhi:" + this.fXX);
+    ad.d("VoipAudioInfo", "mt3dtheta1:" + this.fXY);
+    ad.d("VoipAudioInfo", "mt3dTheta2:" + this.fXZ);
+    ad.d("VoipAudioInfo", "waveAgcMode" + this.fXd);
+    ad.d("VoipAudioInfo", "waveAgcSpkGain" + this.fXe);
+    ad.d("VoipAudioInfo", "waveAgcPhnGain" + this.fXf);
+    ad.d("VoipAudioInfo", "waveAgcHeadsetGain" + this.fXg);
+    ad.d("VoipAudioInfo", "waveAgcTarget" + this.fXh);
+    ad.d("VoipAudioInfo", "waveAgcCRatio" + this.fXi);
+    ad.d("VoipAudioInfo", "waveAgcDnTHR" + this.fXj);
+    ad.d("VoipAudioInfo", "waveAgcBase" + this.fXk);
+    ad.d("VoipAudioInfo", "waveAgcGainTHR" + this.fXl);
+    ad.d("VoipAudioInfo", "waveAgcDampTHR" + this.fXm);
+    ad.d("VoipAudioInfo", "waveAgcDamper" + this.fXn);
     AppMethodBeat.o(155641);
   }
   
   public final void reset()
   {
-    this.fCT = false;
-    this.fCU = -1;
-    this.fCV = -1;
-    this.fCW = -1;
-    this.fCX = -1;
-    this.fCY = -1;
-    this.fCZ = -1;
-    this.fDa = -1;
-    this.fDc = -1;
-    this.fDb = -1;
-    this.fDI = -1;
-    this.fDd = -1;
-    this.fDe = -1;
-    this.fDf = -1;
-    this.fDr = -1;
-    this.fDs = -1;
-    this.fDt = -1;
-    this.fDu = -1;
-    this.fDv = -1;
-    this.fDw = -1;
-    this.fDx = -1;
-    this.fDy = false;
-    this.fDz = -1;
-    this.fDA = -1;
-    this.fDC = -1;
-    this.fDB = -1;
-    this.fDH = -1;
-    this.fDD = -1;
-    this.fDE = -1;
-    this.fDF = -1;
-    this.fDG = -1;
-    this.fDJ = -1;
-    this.fDK = -1;
-    this.fDL = -1;
-    this.fDM = -1;
-    this.fDN = -1;
-    this.fDO = -1;
-    this.fDg = -1;
-    this.fDh = -1;
-    this.fDi = -1;
-    this.fDj = -1;
-    this.fDm = -1;
-    this.fDn = -1;
-    this.fDo = -1;
-    this.fDp = -1;
-    this.fDP = 0;
-    this.fDQ = 0;
-    this.fDR = -1;
-    this.fDl = -1;
-    this.fDk = -1;
-    this.fDU = false;
-    this.fDT[0] = -1;
-    this.fDT[1] = -1;
-    this.fDV = -1;
-    this.fEd = -1;
-    this.fEe = -1;
-    this.fEf = -1;
-    this.fEg = -1;
-    this.fDq = -1;
-    this.fEh = -1;
-    this.fEi = -1;
-    this.fEj = -1;
-    this.fEk = -1;
-    this.fEl = -1;
-    this.fEm = -1;
-    this.fEn = -1;
-    this.fEo = -1;
-    this.fEp = -1;
-    this.fEq = -1;
-    this.fEr = -1;
-    this.fEs = -1;
-    this.fEt = -1;
-    this.fEu = -1;
-    this.fEv = -1;
-    this.fEw = -1;
-    this.fEx = -1;
-    this.fEy = -1;
-    this.fEz = -1;
-    this.fEA = -1;
+    this.fWh = false;
+    this.fWi = -1;
+    this.fWj = -1;
+    this.fWk = -1;
+    this.fWl = -1;
+    this.fWm = -1;
+    this.fWn = -1;
+    this.fWo = -1;
+    this.fWq = -1;
+    this.fWp = -1;
+    this.fWW = -1;
+    this.fWr = -1;
+    this.fWs = -1;
+    this.fWt = -1;
+    this.fWF = -1;
+    this.fWG = -1;
+    this.fWH = -1;
+    this.fWI = -1;
+    this.fWJ = -1;
+    this.fWK = -1;
+    this.fWL = -1;
+    this.fWM = false;
+    this.fWN = -1;
+    this.fWO = -1;
+    this.fWQ = -1;
+    this.fWP = -1;
+    this.fWV = -1;
+    this.fWR = -1;
+    this.fWS = -1;
+    this.fWT = -1;
+    this.fWU = -1;
+    this.fWX = -1;
+    this.fWY = -1;
+    this.fWZ = -1;
+    this.fXa = -1;
+    this.fXb = -1;
+    this.fXc = -1;
+    this.fXd = -1;
+    this.fXe = -1;
+    this.fXf = -1;
+    this.fXg = -1;
+    this.fXh = -1;
+    this.fXi = -1;
+    this.fXj = -1;
+    this.fXk = -1;
+    this.fXl = -1;
+    this.fXm = -1;
+    this.fXn = -1;
+    this.fWu = -1;
+    this.fWv = -1;
+    this.fWw = -1;
+    this.fWx = -1;
+    this.fWA = -1;
+    this.fWB = -1;
+    this.fWC = -1;
+    this.fWD = -1;
+    this.fXo = 0;
+    this.fXp = 0;
+    this.fXq = -1;
+    this.fWz = -1;
+    this.fWy = -1;
+    this.fXt = false;
+    this.fXs[0] = -1;
+    this.fXs[1] = -1;
+    this.fXu = -1;
+    this.fXC = -1;
+    this.fXD = -1;
+    this.fXE = -1;
+    this.fXF = -1;
+    this.fWE = -1;
+    this.fXG = -1;
+    this.fXH = -1;
+    this.fXI = -1;
+    this.fXJ = -1;
+    this.fXK = -1;
+    this.fXL = -1;
+    this.fXM = -1;
+    this.fXN = -1;
+    this.fXO = -1;
+    this.fXP = -1;
+    this.fXQ = -1;
+    this.fXR = -1;
+    this.fXS = -1;
+    this.fXT = -1;
+    this.fXU = -1;
+    this.fXV = -1;
+    this.fXW = -1;
+    this.fXX = -1;
+    this.fXY = -1;
+    this.fXZ = -1;
   }
 }
 

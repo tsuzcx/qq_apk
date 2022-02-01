@@ -7,24 +7,24 @@ import com.tencent.xweb.o;
 public final class g$h
   extends o
 {
-  public JsPromptResult KEy;
+  public JsPromptResult MuY;
   
   public g$h(JsPromptResult paramJsPromptResult)
   {
-    this.KEy = paramJsPromptResult;
+    this.MuY = paramJsPromptResult;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(153857);
-    this.KEy.cancel();
+    this.MuY.cancel();
     AppMethodBeat.o(153857);
   }
   
   public final void confirm()
   {
     AppMethodBeat.i(153856);
-    this.KEy.confirm();
+    this.MuY.confirm();
     AppMethodBeat.o(153856);
   }
   

@@ -16,36 +16,36 @@ import android.view.ViewPropertyAnimator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.m.e;
-import com.tencent.mm.plugin.transvoice.ui.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.n.e;
 import com.tencent.mm.plugin.transvoice.ui.a.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ui.ar;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LanguageChoiceLayout
   extends RelativeLayout
 {
-  private RecyclerView Akx;
-  public a Aky;
-  private a Akz;
-  private Button gAJ;
-  private Button gCY;
-  private View gCi;
-  public ViewGroup gDh;
+  private RecyclerView BCj;
+  public com.tencent.mm.plugin.transvoice.ui.a.a BCk;
+  private a BCl;
+  private Button gUt;
+  private View gVS;
+  private Button gWI;
+  public ViewGroup gWR;
   
   public LanguageChoiceLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(185271);
-    this.gCY = null;
-    this.gAJ = null;
-    this.gCi = null;
-    this.gDh = null;
-    this.Akx = null;
-    this.Aky = null;
-    this.Akz = null;
+    this.gWI = null;
+    this.gUt = null;
+    this.gVS = null;
+    this.gWR = null;
+    this.BCj = null;
+    this.BCk = null;
+    this.BCl = null;
     init();
     AppMethodBeat.o(185271);
   }
@@ -54,47 +54,47 @@ public class LanguageChoiceLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(185272);
-    this.gCY = null;
-    this.gAJ = null;
-    this.gCi = null;
-    this.gDh = null;
-    this.Akx = null;
-    this.Aky = null;
-    this.Akz = null;
+    this.gWI = null;
+    this.gUt = null;
+    this.gVS = null;
+    this.gWR = null;
+    this.BCj = null;
+    this.BCk = null;
+    this.BCl = null;
     init();
     AppMethodBeat.o(185272);
   }
   
-  private void efg()
+  private void erx()
   {
     AppMethodBeat.i(185274);
     ArrayList localArrayList = new ArrayList();
-    int i = com.tencent.mm.m.g.ZY().getInt("VoiceInputLanguageSupportType", com.tencent.mm.modelvoiceaddr.g.ieO);
-    if (ab.eUK())
+    int i = com.tencent.mm.n.g.acA().getInt("VoiceInputLanguageSupportType", com.tencent.mm.modelvoiceaddr.g.iyi);
+    if (ac.fko())
     {
-      localArrayList.add(new a.a(getContext().getString(2131760625), com.tencent.mm.modelvoiceaddr.g.ieO));
-      if ((com.tencent.mm.modelvoiceaddr.g.ieP & i) != 0) {
-        localArrayList.add(new a.a(getContext().getString(2131760623), com.tencent.mm.modelvoiceaddr.g.ieP));
+      localArrayList.add(new a.a(getContext().getString(2131760625), com.tencent.mm.modelvoiceaddr.g.iyi));
+      if ((com.tencent.mm.modelvoiceaddr.g.iyj & i) != 0) {
+        localArrayList.add(new a.a(getContext().getString(2131760623), com.tencent.mm.modelvoiceaddr.g.iyj));
       }
-      if ((com.tencent.mm.modelvoiceaddr.g.ieQ & i) != 0) {
-        localArrayList.add(new a.a(getContext().getString(2131760624), com.tencent.mm.modelvoiceaddr.g.ieQ));
+      if ((com.tencent.mm.modelvoiceaddr.g.iyk & i) != 0) {
+        localArrayList.add(new a.a(getContext().getString(2131760624), com.tencent.mm.modelvoiceaddr.g.iyk));
       }
-      if ((i & com.tencent.mm.modelvoiceaddr.g.ieR) != 0) {
-        localArrayList.add(new a.a(getContext().getString(2131760626), com.tencent.mm.modelvoiceaddr.g.ieR));
+      if ((i & com.tencent.mm.modelvoiceaddr.g.iyl) != 0) {
+        localArrayList.add(new a.a(getContext().getString(2131760626), com.tencent.mm.modelvoiceaddr.g.iyl));
       }
     }
     for (;;)
     {
-      this.Aky.gh(localArrayList);
-      this.Aky.arg.notifyChanged();
+      this.BCk.gs(localArrayList);
+      this.BCk.asY.notifyChanged();
       AppMethodBeat.o(185274);
       return;
-      if (ab.eUO().equals("en"))
+      if (ac.fks().equals("en"))
       {
-        localArrayList.add(new a.a(getContext().getString(2131760624), com.tencent.mm.modelvoiceaddr.g.ieQ));
-        localArrayList.add(new a.a(getContext().getString(2131760625), com.tencent.mm.modelvoiceaddr.g.ieO));
-        if ((i & com.tencent.mm.modelvoiceaddr.g.ieP) != 0) {
-          localArrayList.add(new a.a(getContext().getString(2131760623), com.tencent.mm.modelvoiceaddr.g.ieP));
+        localArrayList.add(new a.a(getContext().getString(2131760624), com.tencent.mm.modelvoiceaddr.g.iyk));
+        localArrayList.add(new a.a(getContext().getString(2131760625), com.tencent.mm.modelvoiceaddr.g.iyi));
+        if ((i & com.tencent.mm.modelvoiceaddr.g.iyj) != 0) {
+          localArrayList.add(new a.a(getContext().getString(2131760623), com.tencent.mm.modelvoiceaddr.g.iyj));
         }
       }
     }
@@ -104,55 +104,67 @@ public class LanguageChoiceLayout
   {
     AppMethodBeat.i(185273);
     View.inflate(getContext(), 2131495022, this);
-    this.gDh = ((ViewGroup)findViewById(2131302825));
-    this.gCY = ((Button)findViewById(2131302824));
-    this.gAJ = ((Button)findViewById(2131302828));
-    this.gCi = findViewById(2131302823);
-    this.Akx = ((RecyclerView)findViewById(2131302827));
-    this.Aky = new a();
-    RecyclerView localRecyclerView = this.Akx;
+    this.gWR = ((ViewGroup)findViewById(2131302825));
+    this.gWI = ((Button)findViewById(2131302824));
+    this.gUt = ((Button)findViewById(2131302828));
+    this.gVS = findViewById(2131302823);
+    this.BCj = ((RecyclerView)findViewById(2131302827));
+    this.BCk = new com.tencent.mm.plugin.transvoice.ui.a.a();
+    RecyclerView localRecyclerView = this.BCj;
     getContext();
     localRecyclerView.setLayoutManager(new LinearLayoutManager());
-    this.Akx.setAdapter(this.Aky);
-    efg();
-    this.gDh.setTranslationY(ap.cl(getContext()).y);
-    this.gCi.setOnClickListener(new View.OnClickListener()
+    this.BCj.setAdapter(this.BCk);
+    erx();
+    this.gWR.setTranslationY(ar.ci(getContext()).y);
+    this.gVS.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(185265);
-        LanguageChoiceLayout.this.efh();
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/transvoice/ui/LanguageChoiceLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        LanguageChoiceLayout.this.ery();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/transvoice/ui/LanguageChoiceLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(185265);
       }
     });
-    this.gCY.setOnClickListener(new View.OnClickListener()
+    this.gWI.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(185266);
-        LanguageChoiceLayout.this.efh();
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/transvoice/ui/LanguageChoiceLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        LanguageChoiceLayout.this.ery();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/transvoice/ui/LanguageChoiceLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(185266);
       }
     });
-    this.gAJ.setOnClickListener(new View.OnClickListener()
+    this.gUt.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(185267);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/transvoice/ui/LanguageChoiceLayout$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (LanguageChoiceLayout.a(LanguageChoiceLayout.this) != null) {
-          LanguageChoiceLayout.a(LanguageChoiceLayout.this).RJ(LanguageChoiceLayout.b(LanguageChoiceLayout.this).Amy);
+          LanguageChoiceLayout.a(LanguageChoiceLayout.this).Tt(LanguageChoiceLayout.b(LanguageChoiceLayout.this).BEk);
         }
-        LanguageChoiceLayout.this.efh();
+        LanguageChoiceLayout.this.ery();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/transvoice/ui/LanguageChoiceLayout$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(185267);
       }
     });
     AppMethodBeat.o(185273);
   }
   
-  public final void efh()
+  public final void ery()
   {
     AppMethodBeat.i(185275);
-    this.gDh.animate().translationY(ap.cl(getContext()).y).setDuration(200L).setListener(new AnimatorListenerAdapter()
+    this.gWR.animate().translationY(ar.ci(getContext()).y).setDuration(200L).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -166,23 +178,23 @@ public class LanguageChoiceLayout
   
   public void setSelectLanguageListener(a parama)
   {
-    this.Akz = parama;
+    this.BCl = parama;
   }
   
   public void setSelectedLang(int paramInt)
   {
     AppMethodBeat.i(185276);
-    if (this.Aky != null)
+    if (this.BCk != null)
     {
-      this.Aky.Amy = paramInt;
-      this.Aky.arg.notifyChanged();
+      this.BCk.BEk = paramInt;
+      this.BCk.asY.notifyChanged();
     }
     AppMethodBeat.o(185276);
   }
   
   public static abstract interface a
   {
-    public abstract void RJ(int paramInt);
+    public abstract void Tt(int paramInt);
   }
 }
 

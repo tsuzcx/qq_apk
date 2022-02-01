@@ -14,11 +14,11 @@ public final class b
   extends rx.g
   implements j
 {
-  static final int MdT;
-  static final c MdU;
-  static final b MdV;
-  final ThreadFactory JZs;
-  public final AtomicReference<b> MdG;
+  static final int NYV;
+  static final c NYW;
+  static final b NYX;
+  final ThreadFactory LTn;
+  public final AtomicReference<b> NYI;
   
   static
   {
@@ -35,19 +35,19 @@ public final class b
     {
       i = k;
     }
-    MdT = i;
-    c localc = new c(rx.internal.util.g.Mfv);
-    MdU = localc;
-    localc.ggm();
-    MdV = new b(null, 0);
+    NYV = i;
+    c localc = new c(rx.internal.util.g.Oax);
+    NYW = localc;
+    localc.gyQ();
+    NYX = new b(null, 0);
     AppMethodBeat.o(90360);
   }
   
   public b(ThreadFactory paramThreadFactory)
   {
     AppMethodBeat.i(90356);
-    this.JZs = paramThreadFactory;
-    this.MdG = new AtomicReference(MdV);
+    this.LTn = paramThreadFactory;
+    this.NYI = new AtomicReference(NYX);
     start();
     AppMethodBeat.o(90356);
   }
@@ -55,7 +55,7 @@ public final class b
   public final g.a createWorker()
   {
     AppMethodBeat.i(90357);
-    a locala = new a(((b)this.MdG.get()).ggw());
+    a locala = new a(((b)this.NYI.get()).gza());
     AppMethodBeat.o(90357);
     return locala;
   }
@@ -66,13 +66,13 @@ public final class b
     b localb;
     do
     {
-      localb = (b)this.MdG.get();
-      if (localb == MdV)
+      localb = (b)this.NYI.get();
+      if (localb == NYX)
       {
         AppMethodBeat.o(90359);
         return;
       }
-    } while (!this.MdG.compareAndSet(localb, MdV));
+    } while (!this.NYI.compareAndSet(localb, NYX));
     localb.shutdown();
     AppMethodBeat.o(90359);
   }
@@ -80,8 +80,8 @@ public final class b
   public final void start()
   {
     AppMethodBeat.i(90358);
-    b localb = new b(this.JZs, MdT);
-    if (!this.MdG.compareAndSet(MdV, localb)) {
+    b localb = new b(this.LTn, NYV);
+    if (!this.NYI.compareAndSet(NYX, localb)) {
       localb.shutdown();
     }
     AppMethodBeat.o(90358);
@@ -90,37 +90,37 @@ public final class b
   static final class a
     extends g.a
   {
-    private final rx.internal.util.i MdW;
-    private final rx.f.b MdX;
-    final rx.internal.util.i MdY;
-    private final b.c MdZ;
+    private final rx.internal.util.i NYY;
+    private final rx.f.b NYZ;
+    final rx.internal.util.i NZa;
+    private final b.c NZb;
     
     a(b.c paramc)
     {
       AppMethodBeat.i(90352);
-      this.MdW = new rx.internal.util.i();
-      this.MdX = new rx.f.b();
-      this.MdY = new rx.internal.util.i(new rx.j[] { this.MdW, this.MdX });
-      this.MdZ = paramc;
+      this.NYY = new rx.internal.util.i();
+      this.NYZ = new rx.f.b();
+      this.NZa = new rx.internal.util.i(new rx.j[] { this.NYY, this.NYZ });
+      this.NZb = paramc;
       AppMethodBeat.o(90352);
     }
     
     public final rx.j a(final a parama)
     {
       AppMethodBeat.i(90354);
-      if (this.MdY.MfG)
+      if (this.NZa.OaI)
       {
-        parama = d.ggZ();
+        parama = d.gzD();
         AppMethodBeat.o(90354);
         return parama;
       }
-      b.c localc = this.MdZ;
+      b.c localc = this.NZb;
       Object localObject = new a()
       {
         public final void call()
         {
           AppMethodBeat.i(90350);
-          if (b.a.this.MdY.MfG)
+          if (b.a.this.NZa.OaI)
           {
             AppMethodBeat.o(90350);
             return;
@@ -129,11 +129,11 @@ public final class b
           AppMethodBeat.o(90350);
         }
       };
-      parama = this.MdW;
+      parama = this.NYY;
       localObject = new i(c.b((a)localObject), parama);
       parama.b((rx.j)localObject);
       if (0L <= 0L) {}
-      for (parama = localc.Mes.submit((Runnable)localObject);; parama = localc.Mes.schedule((Runnable)localObject, 0L, null))
+      for (parama = localc.NZu.submit((Runnable)localObject);; parama = localc.NZu.schedule((Runnable)localObject, 0L, null))
       {
         ((i)localObject).b(parama);
         AppMethodBeat.o(90354);
@@ -144,19 +144,19 @@ public final class b
     public final rx.j a(final a parama, long paramLong, TimeUnit paramTimeUnit)
     {
       AppMethodBeat.i(90355);
-      if (this.MdY.MfG)
+      if (this.NZa.OaI)
       {
-        parama = d.ggZ();
+        parama = d.gzD();
         AppMethodBeat.o(90355);
         return parama;
       }
-      b.c localc = this.MdZ;
+      b.c localc = this.NZb;
       Object localObject = new a()
       {
         public final void call()
         {
           AppMethodBeat.i(90351);
-          if (b.a.this.MdY.MfG)
+          if (b.a.this.NZa.OaI)
           {
             AppMethodBeat.o(90351);
             return;
@@ -165,11 +165,11 @@ public final class b
           AppMethodBeat.o(90351);
         }
       };
-      parama = this.MdX;
+      parama = this.NYZ;
       localObject = new i(c.b((a)localObject), parama);
       parama.b((rx.j)localObject);
       if (paramLong <= 0L) {}
-      for (parama = localc.Mes.submit((Runnable)localObject);; parama = localc.Mes.schedule((Runnable)localObject, paramLong, paramTimeUnit))
+      for (parama = localc.NZu.submit((Runnable)localObject);; parama = localc.NZu.schedule((Runnable)localObject, paramLong, paramTimeUnit))
       {
         ((i)localObject).b(parama);
         AppMethodBeat.o(90355);
@@ -177,46 +177,46 @@ public final class b
       }
     }
     
-    public final void ggm()
+    public final void gyQ()
     {
       AppMethodBeat.i(90353);
-      this.MdY.ggm();
+      this.NZa.gyQ();
       AppMethodBeat.o(90353);
     }
     
-    public final boolean ggn()
+    public final boolean gyR()
     {
-      return this.MdY.MfG;
+      return this.NZa.OaI;
     }
   }
   
   public static final class b
   {
-    final int Meb;
-    final b.c[] Mec;
+    final int NZd;
+    final b.c[] NZe;
     long n;
     
     b(ThreadFactory paramThreadFactory, int paramInt)
     {
       AppMethodBeat.i(90348);
-      this.Meb = paramInt;
-      this.Mec = new b.c[paramInt];
+      this.NZd = paramInt;
+      this.NZe = new b.c[paramInt];
       int i = 0;
       while (i < paramInt)
       {
-        this.Mec[i] = new b.c(paramThreadFactory);
+        this.NZe[i] = new b.c(paramThreadFactory);
         i += 1;
       }
       AppMethodBeat.o(90348);
     }
     
-    public final b.c ggw()
+    public final b.c gza()
     {
-      int i = this.Meb;
+      int i = this.NZd;
       if (i == 0) {
-        return b.MdU;
+        return b.NYW;
       }
-      b.c[] arrayOfc = this.Mec;
+      b.c[] arrayOfc = this.NZe;
       long l = this.n;
       this.n = (1L + l);
       return arrayOfc[((int)(l % i))];
@@ -225,12 +225,12 @@ public final class b
     public final void shutdown()
     {
       AppMethodBeat.i(90349);
-      b.c[] arrayOfc = this.Mec;
+      b.c[] arrayOfc = this.NZe;
       int j = arrayOfc.length;
       int i = 0;
       while (i < j)
       {
-        arrayOfc[i].ggm();
+        arrayOfc[i].gyQ();
         i += 1;
       }
       AppMethodBeat.o(90349);

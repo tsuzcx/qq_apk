@@ -13,20 +13,20 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 final class ab
   implements ae
 {
-  private final a bAE;
-  private final f bAF;
-  final m bBT;
-  private final ScheduledThreadPoolExecutor bBU;
-  private final FirebaseInstanceId bBu;
+  private final a bKS;
+  private final f bKT;
+  private final FirebaseInstanceId bLI;
+  final m bMh;
+  private final ScheduledThreadPoolExecutor bMi;
   
   ab(a parama, FirebaseInstanceId paramFirebaseInstanceId, f paramf)
   {
     AppMethodBeat.i(4230);
-    this.bAE = parama;
-    this.bBu = paramFirebaseInstanceId;
-    this.bAF = paramf;
-    this.bBT = new m(parama.getApplicationContext(), paramf);
-    this.bBU = new ScheduledThreadPoolExecutor(1);
+    this.bKS = parama;
+    this.bLI = paramFirebaseInstanceId;
+    this.bKT = paramf;
+    this.bMh = new m(parama.getApplicationContext(), paramf);
+    this.bMi = new ScheduledThreadPoolExecutor(1);
     AppMethodBeat.o(4230);
   }
   
@@ -37,11 +37,11 @@ final class ab
     paramBundle.putString("sender", paramString1);
     paramBundle.putString("subtype", paramString1);
     paramBundle.putString("appid", FirebaseInstanceId.zzf());
-    paramBundle.putString("gmp_app_id", this.bAE.wm().zzs);
-    paramBundle.putString("gmsv", Integer.toString(this.bAF.wK()));
+    paramBundle.putString("gmp_app_id", this.bKS.xJ().zzs);
+    paramBundle.putString("gmsv", Integer.toString(this.bKT.yh()));
     paramBundle.putString("osv", Integer.toString(Build.VERSION.SDK_INT));
-    paramBundle.putString("app_ver", this.bAF.wI());
-    paramBundle.putString("app_ver_name", this.bAF.wJ());
+    paramBundle.putString("app_ver", this.bKT.yf());
+    paramBundle.putString("app_ver_name", this.bKT.yg());
     paramBundle.putString("cliv", "fiid-12451000");
     AppMethodBeat.o(4232);
     return paramBundle;
@@ -71,7 +71,7 @@ final class ab
     str = paramBundle.getString("error");
     if ("RST".equals(str))
     {
-      this.bBu.wC();
+      this.bLI.xZ();
       paramBundle = new IOException("INSTANCE_ID_RESET");
       AppMethodBeat.o(4233);
       throw paramBundle;
@@ -96,8 +96,8 @@ final class ab
     Bundle localBundle = new Bundle();
     c(paramString1, paramString2, localBundle);
     paramString1 = new TaskCompletionSource();
-    this.bBU.execute(new ac(this, localBundle, paramString1));
-    paramString1 = paramString1.getTask().continueWith(this.bBU, new ad(this));
+    this.bMi.execute(new ac(this, localBundle, paramString1));
+    paramString1 = paramString1.getTask().continueWith(this.bMi, new ad(this));
     AppMethodBeat.o(4231);
     return paramString1;
   }

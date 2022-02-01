@@ -4,28 +4,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.m.b;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.n.b;
 
 public final class c
 {
-  public static final int hYk;
+  public static final int irG;
   Context context;
   int duration;
   String fileName;
-  public a hYl;
-  String hYm;
-  final AsyncTask<String, Integer, String> hYn;
   Intent intent;
+  public a irH;
+  String irI;
+  final AsyncTask<String, Integer, String> irJ;
   String thumbPath;
   String videoPath;
   
   static
   {
     AppMethodBeat.i(126785);
-    hYk = b.ZH();
+    irG = b.ach();
     AppMethodBeat.o(126785);
   }
   
@@ -33,19 +30,19 @@ public final class c
   {
     AppMethodBeat.i(126783);
     this.context = null;
-    this.hYl = null;
-    this.hYm = null;
+    this.irH = null;
+    this.irI = null;
     this.duration = 0;
     this.intent = null;
     this.fileName = null;
     this.thumbPath = null;
     this.videoPath = null;
-    this.hYn = new AsyncTask()
+    this.irJ = new AsyncTask()
     {
       int ret = 0;
       
       /* Error */
-      private String aJi()
+      private String aMs()
       {
         // Byte code:
         //   0: ldc 26
@@ -53,14 +50,14 @@ public final class c
         //   5: aload_0
         //   6: iconst_0
         //   7: putfield 20	com/tencent/mm/modelvideo/c$1:ret	I
-        //   10: invokestatic 38	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
-        //   13: invokestatic 44	com/tencent/mm/sdk/platformtools/ax:is2G	(Landroid/content/Context;)Z
+        //   10: invokestatic 38	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+        //   13: invokestatic 44	com/tencent/mm/sdk/platformtools/ay:is2G	(Landroid/content/Context;)Z
         //   16: istore_3
         //   17: aload_0
-        //   18: getfield 15	com/tencent/mm/modelvideo/c$1:hYo	Lcom/tencent/mm/modelvideo/c;
+        //   18: getfield 15	com/tencent/mm/modelvideo/c$1:irK	Lcom/tencent/mm/modelvideo/c;
         //   21: getfield 48	com/tencent/mm/modelvideo/c:context	Landroid/content/Context;
         //   24: aload_0
-        //   25: getfield 15	com/tencent/mm/modelvideo/c$1:hYo	Lcom/tencent/mm/modelvideo/c;
+        //   25: getfield 15	com/tencent/mm/modelvideo/c$1:irK	Lcom/tencent/mm/modelvideo/c;
         //   28: getfield 52	com/tencent/mm/modelvideo/c:intent	Landroid/content/Intent;
         //   31: invokestatic 58	com/tencent/mm/compatible/h/a:j	(Landroid/content/Context;Landroid/content/Intent;)Lcom/tencent/mm/compatible/h/a$a;
         //   34: astore 4
@@ -68,13 +65,13 @@ public final class c
         //   38: ifnonnull +64 -> 102
         //   41: ldc 60
         //   43: ldc 62
-        //   45: invokestatic 68	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-        //   48: getstatic 74	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+        //   45: invokestatic 68	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   48: getstatic 74	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
         //   51: ldc2_w 75
         //   54: ldc2_w 77
         //   57: lconst_1
         //   58: iconst_0
-        //   59: invokevirtual 82	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+        //   59: invokevirtual 82	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
         //   62: aload_0
         //   63: ldc 83
         //   65: putfield 20	com/tencent/mm/modelvideo/c$1:ret	I
@@ -90,21 +87,21 @@ public final class c
         //   85: dup
         //   86: iconst_0
         //   87: aload 4
-        //   89: invokestatic 96	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+        //   89: invokestatic 96	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
         //   92: aastore
-        //   93: invokestatic 99	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   93: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   96: aconst_null
         //   97: astore 4
         //   99: goto -63 -> 36
         //   102: aload_0
-        //   103: getfield 15	com/tencent/mm/modelvideo/c$1:hYo	Lcom/tencent/mm/modelvideo/c;
+        //   103: getfield 15	com/tencent/mm/modelvideo/c$1:irK	Lcom/tencent/mm/modelvideo/c;
         //   106: aload 4
         //   108: getfield 105	com/tencent/mm/compatible/h/a$a:filename	Ljava/lang/String;
-        //   111: putfield 108	com/tencent/mm/modelvideo/c:hYm	Ljava/lang/String;
+        //   111: putfield 108	com/tencent/mm/modelvideo/c:irI	Ljava/lang/String;
         //   114: aload_0
-        //   115: getfield 15	com/tencent/mm/modelvideo/c$1:hYo	Lcom/tencent/mm/modelvideo/c;
-        //   118: getfield 108	com/tencent/mm/modelvideo/c:hYm	Ljava/lang/String;
-        //   121: invokestatic 114	com/tencent/mm/vfs/i:aSp	(Ljava/lang/String;)J
+        //   115: getfield 15	com/tencent/mm/modelvideo/c$1:irK	Lcom/tencent/mm/modelvideo/c;
+        //   118: getfield 108	com/tencent/mm/modelvideo/c:irI	Ljava/lang/String;
+        //   121: invokestatic 114	com/tencent/mm/vfs/i:aYo	(Ljava/lang/String;)J
         //   124: l2i
         //   125: istore_2
         //   126: ldc 60
@@ -130,18 +127,18 @@ public final class c
         //   159: dup
         //   160: iconst_3
         //   161: aload_0
-        //   162: getfield 15	com/tencent/mm/modelvideo/c$1:hYo	Lcom/tencent/mm/modelvideo/c;
-        //   165: getfield 108	com/tencent/mm/modelvideo/c:hYm	Ljava/lang/String;
+        //   162: getfield 15	com/tencent/mm/modelvideo/c$1:irK	Lcom/tencent/mm/modelvideo/c;
+        //   165: getfield 108	com/tencent/mm/modelvideo/c:irI	Ljava/lang/String;
         //   168: aastore
-        //   169: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   169: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   172: iload_2
         //   173: ifgt +30 -> 203
-        //   176: getstatic 74	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+        //   176: getstatic 74	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
         //   179: ldc2_w 75
         //   182: ldc2_w 77
         //   185: lconst_1
         //   186: iconst_0
-        //   187: invokevirtual 82	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+        //   187: invokevirtual 82	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
         //   190: aload_0
         //   191: ldc 133
         //   193: putfield 20	com/tencent/mm/modelvideo/c$1:ret	I
@@ -156,12 +153,12 @@ public final class c
         //   210: iload_2
         //   211: iload_1
         //   212: if_icmple +37 -> 249
-        //   215: getstatic 74	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+        //   215: getstatic 74	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
         //   218: ldc2_w 75
         //   221: ldc2_w 135
         //   224: lconst_1
         //   225: iconst_0
-        //   226: invokevirtual 82	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+        //   226: invokevirtual 82	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
         //   229: aload_0
         //   230: ldc 137
         //   232: putfield 20	com/tencent/mm/modelvideo/c$1:ret	I
@@ -169,19 +166,19 @@ public final class c
         //   237: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   240: aconst_null
         //   241: areturn
-        //   242: getstatic 140	com/tencent/mm/modelvideo/c:hYk	I
+        //   242: getstatic 140	com/tencent/mm/modelvideo/c:irG	I
         //   245: istore_1
         //   246: goto -36 -> 210
         //   249: aload_0
-        //   250: getfield 15	com/tencent/mm/modelvideo/c$1:hYo	Lcom/tencent/mm/modelvideo/c;
-        //   253: getfield 108	com/tencent/mm/modelvideo/c:hYm	Ljava/lang/String;
+        //   250: getfield 15	com/tencent/mm/modelvideo/c$1:irK	Lcom/tencent/mm/modelvideo/c;
+        //   253: getfield 108	com/tencent/mm/modelvideo/c:irI	Ljava/lang/String;
         //   256: aload_0
-        //   257: getfield 15	com/tencent/mm/modelvideo/c$1:hYo	Lcom/tencent/mm/modelvideo/c;
+        //   257: getfield 15	com/tencent/mm/modelvideo/c$1:irK	Lcom/tencent/mm/modelvideo/c;
         //   260: getfield 143	com/tencent/mm/modelvideo/c:videoPath	Ljava/lang/String;
-        //   263: invokestatic 147	com/tencent/mm/vfs/i:lZ	(Ljava/lang/String;Ljava/lang/String;)J
+        //   263: invokestatic 147	com/tencent/mm/vfs/i:mz	(Ljava/lang/String;Ljava/lang/String;)J
         //   266: pop2
         //   267: aload_0
-        //   268: getfield 15	com/tencent/mm/modelvideo/c$1:hYo	Lcom/tencent/mm/modelvideo/c;
+        //   268: getfield 15	com/tencent/mm/modelvideo/c$1:irK	Lcom/tencent/mm/modelvideo/c;
         //   271: aload 4
         //   273: getfield 130	com/tencent/mm/compatible/h/a$a:duration	I
         //   276: sipush 1000
@@ -199,51 +196,51 @@ public final class c
         //   300: bipush 60
         //   302: getstatic 158	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
         //   305: aload_0
-        //   306: getfield 15	com/tencent/mm/modelvideo/c$1:hYo	Lcom/tencent/mm/modelvideo/c;
+        //   306: getfield 15	com/tencent/mm/modelvideo/c$1:irK	Lcom/tencent/mm/modelvideo/c;
         //   309: getfield 161	com/tencent/mm/modelvideo/c:thumbPath	Ljava/lang/String;
         //   312: iconst_1
-        //   313: invokestatic 167	com/tencent/mm/sdk/platformtools/f:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
+        //   313: invokestatic 167	com/tencent/mm/sdk/platformtools/g:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
         //   316: pop
-        //   317: getstatic 74	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+        //   317: getstatic 74	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
         //   320: ldc2_w 75
         //   323: ldc2_w 168
         //   326: lconst_1
         //   327: iconst_0
-        //   328: invokevirtual 82	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+        //   328: invokevirtual 82	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
         //   331: iconst_0
         //   332: istore_1
         //   333: iload_1
         //   334: ifeq +45 -> 379
-        //   337: getstatic 74	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+        //   337: getstatic 74	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
         //   340: ldc2_w 75
         //   343: ldc2_w 170
         //   346: lconst_1
         //   347: iconst_0
-        //   348: invokevirtual 82	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+        //   348: invokevirtual 82	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
         //   351: ldc 172
         //   353: sipush 320
         //   356: sipush 480
-        //   359: invokestatic 176	com/tencent/mm/sdk/platformtools/f:aH	(III)Landroid/graphics/Bitmap;
+        //   359: invokestatic 176	com/tencent/mm/sdk/platformtools/g:aJ	(III)Landroid/graphics/Bitmap;
         //   362: bipush 60
         //   364: getstatic 158	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
         //   367: aload_0
-        //   368: getfield 15	com/tencent/mm/modelvideo/c$1:hYo	Lcom/tencent/mm/modelvideo/c;
+        //   368: getfield 15	com/tencent/mm/modelvideo/c$1:irK	Lcom/tencent/mm/modelvideo/c;
         //   371: getfield 161	com/tencent/mm/modelvideo/c:thumbPath	Ljava/lang/String;
         //   374: iconst_1
-        //   375: invokestatic 167	com/tencent/mm/sdk/platformtools/f:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
+        //   375: invokestatic 167	com/tencent/mm/sdk/platformtools/g:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
         //   378: pop
         //   379: aload_0
-        //   380: getfield 15	com/tencent/mm/modelvideo/c$1:hYo	Lcom/tencent/mm/modelvideo/c;
+        //   380: getfield 15	com/tencent/mm/modelvideo/c$1:irK	Lcom/tencent/mm/modelvideo/c;
         //   383: getfield 143	com/tencent/mm/modelvideo/c:videoPath	Ljava/lang/String;
-        //   386: invokestatic 180	com/tencent/mm/vfs/i:eA	(Ljava/lang/String;)Z
+        //   386: invokestatic 180	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
         //   389: ifne +9 -> 398
         //   392: aload_0
         //   393: ldc 181
         //   395: putfield 20	com/tencent/mm/modelvideo/c$1:ret	I
         //   398: aload_0
-        //   399: getfield 15	com/tencent/mm/modelvideo/c$1:hYo	Lcom/tencent/mm/modelvideo/c;
+        //   399: getfield 15	com/tencent/mm/modelvideo/c$1:irK	Lcom/tencent/mm/modelvideo/c;
         //   402: getfield 161	com/tencent/mm/modelvideo/c:thumbPath	Ljava/lang/String;
-        //   405: invokestatic 180	com/tencent/mm/vfs/i:eA	(Ljava/lang/String;)Z
+        //   405: invokestatic 180	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
         //   408: ifne +9 -> 417
         //   411: aload_0
         //   412: ldc 182
@@ -262,9 +259,9 @@ public final class c
         //   436: dup
         //   437: iconst_0
         //   438: aload 4
-        //   440: invokestatic 96	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+        //   440: invokestatic 96	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
         //   443: aastore
-        //   444: invokestatic 99	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   444: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   447: goto -114 -> 333
         //   450: astore 4
         //   452: ldc 60
@@ -274,9 +271,9 @@ public final class c
         //   460: dup
         //   461: iconst_0
         //   462: aload 4
-        //   464: invokestatic 96	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+        //   464: invokestatic 96	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
         //   467: aastore
-        //   468: invokestatic 99	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   468: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   471: goto -92 -> 379
         //   474: astore 4
         //   476: iconst_0
@@ -305,19 +302,19 @@ public final class c
     AppMethodBeat.o(126783);
   }
   
-  public final void a(Context paramContext, Intent paramIntent, a parama)
+  public final void a(Context paramContext, Intent paramIntent, String paramString, a parama)
   {
-    AppMethodBeat.i(126784);
+    AppMethodBeat.i(218842);
     this.context = paramContext;
     this.intent = paramIntent;
-    this.fileName = t.DU((String)g.agR().agA().get(2, ""));
-    o.aJy();
-    this.thumbPath = t.DW(this.fileName);
-    o.aJy();
-    this.videoPath = t.DV(this.fileName);
-    this.hYl = parama;
-    this.hYn.execute(new String[0]);
-    AppMethodBeat.o(126784);
+    this.fileName = t.Hg(paramString);
+    o.aMJ();
+    this.thumbPath = t.Hi(this.fileName);
+    o.aMJ();
+    this.videoPath = t.Hh(this.fileName);
+    this.irH = parama;
+    this.irJ.execute(new String[0]);
+    AppMethodBeat.o(218842);
   }
   
   public static abstract interface a

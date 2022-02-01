@@ -3,43 +3,43 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/WebPrefetcherFile;", "Lcom/tencent/mm/vfs/VFSFile;", "path", "", "(Ljava/lang/String;)V", "clearAll", "", "contains", "id", "content", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/WebPrefetcherFile;", "Lcom/tencent/mm/vfs/VFSFile;", "path", "", "(Ljava/lang/String;)V", "clearAll", "", "contains", "id", "content", "plugin-brandservice_release"})
 public final class v
   extends e
 {
   public v(String paramString)
   {
     super(paramString);
-    AppMethodBeat.i(198998);
-    AppMethodBeat.o(198998);
+    AppMethodBeat.i(209946);
+    AppMethodBeat.o(209946);
   }
   
-  public final e TY(String paramString)
+  public final e XH(String paramString)
   {
-    AppMethodBeat.i(198996);
-    k.h(paramString, "id");
+    AppMethodBeat.i(209944);
+    p.h(paramString, "id");
     paramString = new e(getPath() + '/' + paramString);
-    AppMethodBeat.o(198996);
+    AppMethodBeat.o(209944);
     return paramString;
   }
   
-  public final boolean ayU()
+  public final boolean aBY()
   {
-    AppMethodBeat.i(198997);
-    boolean bool = i.cU(getPath(), true);
-    AppMethodBeat.o(198997);
+    AppMethodBeat.i(209945);
+    boolean bool = i.cZ(getPath(), true);
+    AppMethodBeat.o(209945);
     return bool;
   }
   
   public final boolean contains(String paramString)
   {
-    AppMethodBeat.i(198995);
-    k.h(paramString, "id");
-    boolean bool = i.eA(getPath() + '/' + paramString);
-    AppMethodBeat.o(198995);
+    AppMethodBeat.i(209943);
+    p.h(paramString, "id");
+    boolean bool = i.fv(getPath() + '/' + paramString);
+    AppMethodBeat.o(209943);
     return bool;
   }
 }

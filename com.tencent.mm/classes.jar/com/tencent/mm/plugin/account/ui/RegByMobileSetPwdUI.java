@@ -12,23 +12,24 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bb;
 import com.tencent.mm.model.u;
 import com.tencent.mm.modelsimple.t;
 import com.tencent.mm.modelsimple.z;
 import com.tencent.mm.plugin.account.a.b.a.a;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactUI;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.he;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.protocal.protobuf.hl;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ba;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.am;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.h;
 import java.io.IOException;
@@ -36,24 +37,24 @@ import java.io.IOException;
 public class RegByMobileSetPwdUI
   extends SetPwdUI
 {
-  private String ddJ = null;
+  private String dpf = null;
   private String hint = null;
-  private TextView iTy;
-  private TextView iWp;
-  private View iWq;
-  private View iWr;
-  private TextView iWs;
-  public View iWt;
-  public EditText iWu;
-  private boolean iWv = false;
-  public boolean iWw;
-  private int iWx = 0;
-  private SKBuiltinBuffer_t iWy = null;
+  private TextView jmG;
+  private View jpA;
+  private TextView jpB;
+  public View jpC;
+  public EditText jpD;
+  private boolean jpE = false;
+  public boolean jpF;
+  private int jpG = 0;
+  private SKBuiltinBuffer_t jpH = null;
+  private TextView jpy;
+  private View jpz;
   
   protected final void a(a.a parama)
   {
     AppMethodBeat.i(128613);
-    switch (3.iOC[parama.ordinal()])
+    switch (3.jhL[parama.ordinal()])
     {
     }
     for (;;)
@@ -73,18 +74,18 @@ public class RegByMobileSetPwdUI
     }
   }
   
-  protected final n aQZ()
+  protected final n aUl()
   {
     AppMethodBeat.i(128610);
-    if (bs.isNullOrNil(this.ddJ)) {
-      this.ddJ = ((String)g.agR().agA().get(77830, null));
+    if (bt.isNullOrNil(this.dpf)) {
+      this.dpf = ((String)g.ajC().ajl().get(77830, null));
     }
-    z localz = new z(this.iXK, this.ddJ, this.iWx, this.iWy);
+    z localz = new z(this.jqT, this.dpf, this.jpG, this.jpH);
     AppMethodBeat.o(128610);
     return localz;
   }
   
-  protected final String aRa()
+  protected final String aUm()
   {
     AppMethodBeat.i(128609);
     String str = ((EditText)findViewById(2131303957)).getText().toString();
@@ -92,7 +93,7 @@ public class RegByMobileSetPwdUI
     return str;
   }
   
-  protected final String aRb()
+  protected final String aUn()
   {
     AppMethodBeat.i(128611);
     String str = ((EditText)findViewById(2131303956)).getText().toString();
@@ -100,23 +101,23 @@ public class RegByMobileSetPwdUI
     return str;
   }
   
-  protected final void aRj()
+  protected final void aUv()
   {
     AppMethodBeat.i(128612);
-    if ((bs.isNullOrNil(this.ddJ)) && (this.iWw))
+    if ((bt.isNullOrNil(this.dpf)) && (this.jpF))
     {
-      com.tencent.mm.modelsimple.ac localac = new com.tencent.mm.modelsimple.ac(this.iWu.getText().toString(), "", "", "");
-      g.agi().a(localac, 0);
+      com.tencent.mm.modelsimple.ac localac = new com.tencent.mm.modelsimple.ac(this.jpD.getText().toString(), "", "", "");
+      g.aiU().a(localac, 0);
       getString(2131755906);
-      this.fts = h.b(this, getString(2131755886), false, null);
+      this.fMu = h.b(this, getString(2131755886), false, null);
       AppMethodBeat.o(128612);
       return;
     }
-    super.aRj();
+    super.aUv();
     AppMethodBeat.o(128612);
   }
   
-  public final boolean aRk()
+  public final boolean aUw()
   {
     return true;
   }
@@ -129,29 +130,32 @@ public class RegByMobileSetPwdUI
   public void initView()
   {
     AppMethodBeat.i(128608);
-    if (!this.mz) {
+    if (!this.ov) {
       showMMLogo();
     }
     setMMTitle(2131762361);
-    this.iWp = ((TextView)findViewById(2131306253));
-    this.iWr = findViewById(2131296331);
-    this.iTy = ((TextView)findViewById(2131303951));
-    this.iWs = ((TextView)findViewById(2131296339));
+    this.jpy = ((TextView)findViewById(2131306253));
+    this.jpA = findViewById(2131296331);
+    this.jmG = ((TextView)findViewById(2131303951));
+    this.jpB = ((TextView)findViewById(2131296339));
     if ((this.hint != null) && (this.hint.length() > 0)) {
-      this.iTy.setText(this.hint);
+      this.jmG.setText(this.hint);
     }
-    this.iWt = findViewById(2131303949);
-    this.iWu = ((EditText)this.iWt.findViewById(2131303955));
-    this.iWq = findViewById(2131300225);
-    this.iWq.setOnClickListener(new View.OnClickListener()
+    this.jpC = findViewById(2131303949);
+    this.jpD = ((EditText)this.jpC.findViewById(2131303955));
+    this.jpz = findViewById(2131300225);
+    this.jpz.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(128602);
-        paramAnonymousView = (String)g.agR().agA().get(6, null);
-        if (bs.isNullOrNil(paramAnonymousView))
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/RegByMobileSetPwdUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        paramAnonymousView = (String)g.ajC().ajl().get(6, null);
+        if (bt.isNullOrNil(paramAnonymousView))
         {
-          com.tencent.mm.sdk.platformtools.ac.i("MicorMsg.RegByMobileSetPwdUI", "has not bind mobile");
+          ad.i("MicorMsg.RegByMobileSetPwdUI", "has not bind mobile");
           paramAnonymousView = new Intent(RegByMobileSetPwdUI.this, BindMContactUI.class);
           paramAnonymousView.putExtra("bind_scene", 4);
           h.a(RegByMobileSetPwdUI.this, RegByMobileSetPwdUI.this.getString(2131762354), "", RegByMobileSetPwdUI.this.getString(2131756550), RegByMobileSetPwdUI.this.getString(2131755691), true, new DialogInterface.OnClickListener()
@@ -159,38 +163,41 @@ public class RegByMobileSetPwdUI
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(128600);
-              MMWizardActivity.aj(RegByMobileSetPwdUI.this, paramAnonymousView);
+              MMWizardActivity.al(RegByMobileSetPwdUI.this, paramAnonymousView);
               AppMethodBeat.o(128600);
             }
           }, null);
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileSetPwdUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(128602);
           return;
-        }
-        com.tencent.mm.sdk.platformtools.ac.i("MicorMsg.RegByMobileSetPwdUI", "has bind mobile");
-        h.a(RegByMobileSetPwdUI.this, RegByMobileSetPwdUI.this.getString(2131762352, new Object[] { paramAnonymousView }), "", RegByMobileSetPwdUI.this.getString(2131755884), RegByMobileSetPwdUI.this.getString(2131755691), true, new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+          ad.i("MicorMsg.RegByMobileSetPwdUI", "has bind mobile");
+          h.a(RegByMobileSetPwdUI.this, RegByMobileSetPwdUI.this.getString(2131762352, new Object[] { paramAnonymousView }), "", RegByMobileSetPwdUI.this.getString(2131755884), RegByMobileSetPwdUI.this.getString(2131755691), true, new DialogInterface.OnClickListener()
           {
-            AppMethodBeat.i(128601);
-            paramAnonymous2DialogInterface = new Intent(RegByMobileSetPwdUI.this, MobileVerifyUI.class);
-            paramAnonymous2DialogInterface.putExtra("bindmcontact_mobile", paramAnonymousView);
-            paramAnonymous2DialogInterface.putExtra("mobile_verify_purpose", 5);
-            RegByMobileSetPwdUI.this.startActivityForResult(paramAnonymous2DialogInterface, 10001);
-            AppMethodBeat.o(128601);
-          }
-        }, null);
-        AppMethodBeat.o(128602);
+            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            {
+              AppMethodBeat.i(128601);
+              paramAnonymous2DialogInterface = new Intent(RegByMobileSetPwdUI.this, MobileVerifyUI.class);
+              paramAnonymous2DialogInterface.putExtra("bindmcontact_mobile", paramAnonymousView);
+              paramAnonymous2DialogInterface.putExtra("mobile_verify_purpose", 5);
+              RegByMobileSetPwdUI.this.startActivityForResult(paramAnonymous2DialogInterface, 10001);
+              AppMethodBeat.o(128601);
+            }
+          }, null);
+        }
       }
     });
-    if ((this.iWv) || (!g.agP().afY()))
+    if ((this.jpE) || (!g.ajA().aiK()))
     {
-      this.iWr.setVisibility(8);
+      this.jpA.setVisibility(8);
       localObject1 = (TextView)findViewById(2131303001);
       localObject2 = (TextView)findViewById(2131303146);
       TextView localTextView = (TextView)findViewById(2131298573);
       EditText localEditText1 = (EditText)findViewById(2131303957);
       EditText localEditText2 = (EditText)findViewById(2131303956);
-      if (!ab.eUK())
+      if (!com.tencent.mm.sdk.platformtools.ac.fko())
       {
         ((TextView)localObject1).setTextSize(1, 14.0F);
         ((TextView)localObject2).setTextSize(1, 14.0F);
@@ -198,43 +205,43 @@ public class RegByMobileSetPwdUI
         localEditText1.setTextSize(1, 14.0F);
         localEditText2.setTextSize(1, 14.0F);
       }
-      float f1 = this.iWs.getPaint().measureText(this.iWs.getText().toString());
+      float f1 = this.jpB.getPaint().measureText(this.jpB.getText().toString());
       float f2 = ((TextView)localObject1).getPaint().measureText(((TextView)localObject1).getText().toString());
       float f3 = ((TextView)localObject2).getPaint().measureText(((TextView)localObject2).getText().toString());
       float f4 = localTextView.getPaint().measureText(localTextView.getText().toString());
       f1 = Math.max(Math.max(Math.max(f1, f3), f4), f2);
       ((TextView)localObject1).setWidth((int)f1);
-      this.iWs.setWidth((int)f1);
+      this.jpB.setWidth((int)f1);
       ((TextView)localObject2).setWidth((int)f1);
       ((TextView)localObject2).setWidth((int)f1);
       AppMethodBeat.o(128608);
       return;
     }
-    this.iWr.setVisibility(0);
-    Object localObject2 = u.axx();
+    this.jpA.setVisibility(0);
+    Object localObject2 = u.aAn();
     Object localObject1 = localObject2;
-    if (bs.isNullOrNil((String)localObject2))
+    if (bt.isNullOrNil((String)localObject2))
     {
-      localObject2 = u.axw();
+      localObject2 = u.aAm();
       localObject1 = localObject2;
-      if (ai.aNf((String)localObject2)) {
+      if (am.aSX((String)localObject2)) {
         localObject1 = null;
       }
     }
-    if (bs.isNullOrNil((String)localObject1))
+    if (bt.isNullOrNil((String)localObject1))
     {
-      localObject2 = (String)g.agR().agA().get(6, null);
-      localObject1 = (String)g.agR().agA().get(5, null);
-      if (!bs.isNullOrNil((String)localObject2)) {
-        if (bs.aLH((String)localObject2).booleanValue())
+      localObject2 = (String)g.ajC().ajl().get(6, null);
+      localObject1 = (String)g.ajC().ajl().get(5, null);
+      if (!bt.isNullOrNil((String)localObject2)) {
+        if (bt.aRn((String)localObject2).booleanValue())
         {
-          new az();
+          new ba();
           localObject1 = "86";
           if (!((String)localObject2).startsWith("+")) {
             break label691;
           }
           localObject2 = ((String)localObject2).replace("+", "");
-          localObject1 = az.ajo((String)localObject2);
+          localObject1 = ba.aob((String)localObject2);
           if (localObject1 == null) {
             break label688;
           }
@@ -246,22 +253,22 @@ public class RegByMobileSetPwdUI
     label691:
     for (;;)
     {
-      localObject1 = az.formatNumber((String)localObject1, (String)localObject2);
-      this.iWs.setText(2131763280);
-      this.iWp.setText((CharSequence)localObject1);
-      this.iTy.setText(2131762363);
+      localObject1 = ba.formatNumber((String)localObject1, (String)localObject2);
+      this.jpB.setText(2131763280);
+      this.jpy.setText((CharSequence)localObject1);
+      this.jmG.setText(2131762363);
       break;
-      if (!bs.isNullOrNil((String)localObject1))
+      if (!bt.isNullOrNil((String)localObject1))
       {
-        this.iWp.setText((CharSequence)localObject1);
-        this.iWs.setText(2131763209);
-        this.iTy.setText(2131762362);
+        this.jpy.setText((CharSequence)localObject1);
+        this.jpB.setText(2131763209);
+        this.jmG.setText(2131762362);
         break;
       }
-      this.iWr.setVisibility(8);
+      this.jpA.setVisibility(8);
       break;
-      this.iWs.setText(2131763490);
-      this.iWp.setText((CharSequence)localObject1);
+      this.jpB.setText(2131763490);
+      this.jpy.setText((CharSequence)localObject1);
       break;
     }
   }
@@ -286,13 +293,13 @@ public class RegByMobileSetPwdUI
     if ((paramInt1 == 10001) && (paramInt2 == -1))
     {
       paramIntent = paramIntent.getStringExtra("setpwd_ticket");
-      com.tencent.mm.sdk.platformtools.ac.i("MicorMsg.RegByMobileSetPwdUI", "get reset pwd ticket %s", new Object[] { paramIntent });
-      if (!bs.isNullOrNil(paramIntent))
+      ad.i("MicorMsg.RegByMobileSetPwdUI", "get reset pwd ticket %s", new Object[] { paramIntent });
+      if (!bt.isNullOrNil(paramIntent))
       {
-        this.ddJ = paramIntent;
-        this.iWx = 6;
-        this.iWt.setVisibility(8);
-        this.iWq.setVisibility(8);
+        this.dpf = paramIntent;
+        this.jpG = 6;
+        this.jpC.setVisibility(8);
+        this.jpz.setVisibility(8);
       }
     }
     AppMethodBeat.o(128616);
@@ -303,22 +310,22 @@ public class RegByMobileSetPwdUI
     AppMethodBeat.i(128605);
     super.onCreate(paramBundle);
     this.hint = getIntent().getStringExtra("kintent_hint");
-    this.mz = getIntent().getBooleanExtra("kintent_cancelable", true);
-    this.iWv = getIntent().getBooleanExtra("from_unbind", false);
-    g.agi().a(384, this);
-    g.agi().a(255, this);
+    this.ov = getIntent().getBooleanExtra("kintent_cancelable", true);
+    this.jpE = getIntent().getBooleanExtra("from_unbind", false);
+    g.aiU().a(384, this);
+    g.aiU().a(255, this);
     initView();
-    paramBundle = bs.aLu(ba.ayR().getString("_auth_key", ""));
-    he localhe = new he();
-    if (!bs.cv(paramBundle)) {}
-    for (this.iWy = new SKBuiltinBuffer_t().setBuffer(paramBundle);; this.iWy = new SKBuiltinBuffer_t().setBuffer(new byte[0])) {
+    paramBundle = bt.aRa(bb.aBV().getString("_auth_key", ""));
+    hl localhl = new hl();
+    if (!bt.cC(paramBundle)) {}
+    for (this.jpH = new SKBuiltinBuffer_t().setBuffer(paramBundle);; this.jpH = new SKBuiltinBuffer_t().setBuffer(new byte[0])) {
       try
       {
-        localhe.parseFrom(paramBundle);
+        localhl.parseFrom(paramBundle);
         paramBundle = new t(1);
-        g.agi().a(paramBundle, 0);
+        g.aiU().a(paramBundle, 0);
         getString(2131755906);
-        this.fts = h.b(this, getString(2131755804), false, null);
+        this.fMu = h.b(this, getString(2131755804), false, null);
         AppMethodBeat.o(128605);
         return;
       }
@@ -326,7 +333,7 @@ public class RegByMobileSetPwdUI
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicorMsg.RegByMobileSetPwdUI", paramBundle, "summersetpwd Failed parse autoauthkey buf", new Object[0]);
+          ad.printErrStackTrace("MicorMsg.RegByMobileSetPwdUI", paramBundle, "summersetpwd Failed parse autoauthkey buf", new Object[0]);
         }
       }
     }
@@ -336,8 +343,8 @@ public class RegByMobileSetPwdUI
   {
     AppMethodBeat.i(128606);
     super.onDestroy();
-    g.agi().b(384, this);
-    g.agi().b(255, this);
+    g.aiU().b(384, this);
+    g.aiU().b(255, this);
     AppMethodBeat.o(128606);
   }
   
@@ -346,13 +353,13 @@ public class RegByMobileSetPwdUI
     AppMethodBeat.i(128607);
     super.onNewIntent(paramIntent);
     paramIntent = paramIntent.getStringExtra("setpwd_ticket");
-    com.tencent.mm.sdk.platformtools.ac.i("MicorMsg.RegByMobileSetPwdUI", "onNewIntent get reset pwd ticket %s", new Object[] { paramIntent });
-    if (!bs.isNullOrNil(paramIntent))
+    ad.i("MicorMsg.RegByMobileSetPwdUI", "onNewIntent get reset pwd ticket %s", new Object[] { paramIntent });
+    if (!bt.isNullOrNil(paramIntent))
     {
-      this.ddJ = paramIntent;
-      this.iWx = 4;
-      this.iWt.setVisibility(8);
-      this.iWq.setVisibility(8);
+      this.dpf = paramIntent;
+      this.jpG = 4;
+      this.jpC.setVisibility(8);
+      this.jpz.setVisibility(8);
     }
     AppMethodBeat.o(128607);
   }
@@ -360,32 +367,32 @@ public class RegByMobileSetPwdUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(128615);
-    com.tencent.mm.sdk.platformtools.ac.i("MicorMsg.RegByMobileSetPwdUI", "errorCode %d, errorMsg %s, scene %s", new Object[] { Integer.valueOf(paramInt2), paramString, paramn });
+    ad.i("MicorMsg.RegByMobileSetPwdUI", "errorCode %d, errorMsg %s, scene %s", new Object[] { Integer.valueOf(paramInt2), paramString, paramn });
     super.onSceneEnd(paramInt1, paramInt2, paramString, paramn);
     if (paramn.getType() == 255)
     {
-      if (((t)paramn).hSP == 1)
+      if (((t)paramn).img == 1)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          this.iWt.setVisibility(0);
-          this.iWq.setVisibility(0);
-          this.iWw = true;
+          this.jpC.setVisibility(0);
+          this.jpz.setVisibility(0);
+          this.jpF = true;
           AppMethodBeat.o(128615);
           return;
         }
         if ((paramInt2 == -3) && (paramInt1 == 4))
         {
-          this.iWw = false;
+          this.jpF = false;
           AppMethodBeat.o(128615);
           return;
         }
-        this.iWt.setVisibility(0);
-        this.iWq.setVisibility(0);
-        paramString = com.tencent.mm.h.a.rM(paramString);
+        this.jpC.setVisibility(0);
+        this.jpz.setVisibility(0);
+        paramString = com.tencent.mm.h.a.uz(paramString);
         if (paramString != null)
         {
-          com.tencent.mm.sdk.platformtools.ac.i("MicorMsg.RegByMobileSetPwdUI", "summertips errCode[%d], showType[%d], url[%s], desc[%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramString.cZX), paramString.url, paramString.desc });
+          ad.i("MicorMsg.RegByMobileSetPwdUI", "summertips errCode[%d], showType[%d], url[%s], desc[%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramString.dlp), paramString.url, paramString.desc });
           h.a(this, paramString.desc, paramString.Title, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -403,8 +410,8 @@ public class RegByMobileSetPwdUI
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        g.agR().agA().set(77830, ((com.tencent.mm.modelsimple.ac)paramn).aEr());
-        aRy();
+        g.ajC().ajl().set(77830, ((com.tencent.mm.modelsimple.ac)paramn).aHw());
+        aUK();
         AppMethodBeat.o(128615);
         return;
       }
@@ -421,7 +428,7 @@ public class RegByMobileSetPwdUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByMobileSetPwdUI
  * JD-Core Version:    0.7.0.1
  */

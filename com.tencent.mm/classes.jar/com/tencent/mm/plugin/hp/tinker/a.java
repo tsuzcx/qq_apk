@@ -19,7 +19,7 @@ public final class a
   {
     AppMethodBeat.i(117454);
     this.handler = new Handler(Looper.getMainLooper());
-    Boolean localBoolean = cH(paramContext);
+    Boolean localBoolean = cE(paramContext);
     ShareTinkerLog.v("Tinker.ScreenOffRetryPatch", "try post ScreenOffRetryPatch delay time: %d, screen: %b", new Object[] { Long.valueOf(6000L), localBoolean });
     IntentFilter localIntentFilter = new IntentFilter();
     parama = new Runnable()
@@ -30,7 +30,7 @@ public final class a
         if (parama != null)
         {
           ShareTinkerLog.v("Tinker.ScreenOffRetryPatch", "ScreenOffRetryPatch runnable try to start", new Object[0]);
-          parama.cTm();
+          parama.dcu();
         }
         AppMethodBeat.o(117452);
       }
@@ -52,7 +52,7 @@ public final class a
           for (paramAnonymousIntent = ""; "android.intent.action.SCREEN_OFF".equals(paramAnonymousIntent); paramAnonymousIntent = paramAnonymousIntent.getAction())
           {
             ShareTinkerLog.v("Tinker.ScreenOffRetryPatch", "ScreenOffRetryPatch screen off now, send message now", new Object[0]);
-            a.this.handler.postDelayed(parama, this.tGh);
+            a.this.handler.postDelayed(parama, this.uIT);
             AppMethodBeat.o(117453);
             return;
           }
@@ -69,7 +69,7 @@ public final class a
     }
   }
   
-  private static Boolean cH(Context paramContext)
+  private static Boolean cE(Context paramContext)
   {
     AppMethodBeat.i(117455);
     try
@@ -87,7 +87,7 @@ public final class a
   
   public static abstract interface a
   {
-    public abstract void cTm();
+    public abstract void dcu();
   }
 }
 

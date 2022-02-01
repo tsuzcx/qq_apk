@@ -6,11 +6,11 @@ import android.support.v4.e.j;
 final class f$a
   implements d.b
 {
-  final MediaSessionManager.RemoteUserInfo Kp;
+  final MediaSessionManager.RemoteUserInfo Mf;
   
   f$a(String paramString, int paramInt1, int paramInt2)
   {
-    this.Kp = new MediaSessionManager.RemoteUserInfo(paramString, paramInt1, paramInt2);
+    this.Mf = new MediaSessionManager.RemoteUserInfo(paramString, paramInt1, paramInt2);
   }
   
   public final boolean equals(Object paramObject)
@@ -22,12 +22,12 @@ final class f$a
       return false;
     }
     paramObject = (a)paramObject;
-    return this.Kp.equals(paramObject.Kp);
+    return this.Mf.equals(paramObject.Mf);
   }
   
   public final int hashCode()
   {
-    return j.hash(new Object[] { this.Kp });
+    return j.hash(new Object[] { this.Mf });
   }
 }
 

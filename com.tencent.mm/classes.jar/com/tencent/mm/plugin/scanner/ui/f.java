@@ -34,14 +34,14 @@ public final class f
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(210217);
+    AppMethodBeat.i(221338);
     super.onBindView(paramView);
-    AppMethodBeat.o(210217);
+    AppMethodBeat.o(221338);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.f
  * JD-Core Version:    0.7.0.1
  */

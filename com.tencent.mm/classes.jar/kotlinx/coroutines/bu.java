@@ -1,33 +1,50 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.a.b;
-import d.d.d;
-import d.d.f;
-import d.g.a.m;
 import d.l;
-import d.y;
-import kotlinx.coroutines.a.a;
+import d.v;
+import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/LazyDeferredCoroutine;", "T", "Lkotlinx/coroutines/DeferredCoroutine;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;)V", "continuation", "", "onStart", "kotlinx-coroutines-core"})
-final class bu<T>
-  extends aq<T>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/JobNode;", "J", "Lkotlinx/coroutines/Job;", "Lkotlinx/coroutines/CompletionHandlerBase;", "Lkotlinx/coroutines/DisposableHandle;", "Lkotlinx/coroutines/Incomplete;", "job", "(Lkotlinx/coroutines/Job;)V", "isActive", "", "()Z", "Lkotlinx/coroutines/Job;", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "dispose", "", "kotlinx-coroutines-core"})
+public abstract class bu<J extends br>
+  extends y
+  implements ba, bm
 {
-  private final d<y> LRr;
+  public final J NIO;
   
-  public bu(f paramf, m<? super ag, ? super d<? super T>, ? extends Object> paramm)
+  public bu(J paramJ)
   {
-    super(paramf, false);
-    AppMethodBeat.i(118208);
-    this.LRr = b.a(paramm, this, (d)this);
-    AppMethodBeat.o(118208);
+    this.NIO = paramJ;
   }
   
-  protected final void onStart()
+  public final void dispose()
   {
-    AppMethodBeat.i(118207);
-    a.a(this.LRr, (d)this);
-    AppMethodBeat.o(118207);
+    Object localObject1 = this.NIO;
+    if (localObject1 == null) {
+      throw new v("null cannot be cast to non-null type kotlinx.coroutines.JobSupport");
+    }
+    localObject1 = (bv)localObject1;
+    Object localObject2;
+    do
+    {
+      localObject2 = ((bv)localObject1).gvE();
+      if (!(localObject2 instanceof bu)) {
+        break;
+      }
+    } while ((localObject2 == this) && (!bv.NHD.compareAndSet(localObject1, localObject2, bw.gvL())));
+    while ((!(localObject2 instanceof bm)) || (((bm)localObject2).gvq() == null)) {
+      return;
+    }
+    remove();
+  }
+  
+  public final ca gvq()
+  {
+    return null;
+  }
+  
+  public final boolean isActive()
+  {
+    return true;
   }
 }
 

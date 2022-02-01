@@ -14,15 +14,15 @@ import com.tencent.mm.ui.f.a.a;
 public final class HeadImgNewPreference
   extends Preference
 {
-  private View Dsq;
-  private String HEd;
-  private boolean HEe;
-  private boolean HEf;
-  private TextView HEh;
-  private a HEi;
+  private View EXu;
+  private String JrT;
+  private boolean JrU;
+  private boolean JrV;
+  private TextView JrX;
+  private a JrY;
   private int height;
-  private ImageView ig;
-  public View.OnClickListener uWS;
+  private ImageView ka;
+  public View.OnClickListener waa;
   
   public HeadImgNewPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,87 +34,87 @@ public final class HeadImgNewPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164166);
     this.height = -1;
-    this.HEf = false;
-    this.HEi = null;
+    this.JrV = false;
+    this.JrY = null;
     setLayoutResource(2131494804);
     AppMethodBeat.o(164166);
   }
   
   public final void a(a parama)
   {
-    this.HEi = parama;
+    this.JrY = parama;
   }
   
-  public final void aPM(String paramString)
+  public final void aVC(String paramString)
   {
     AppMethodBeat.i(164168);
-    this.HEd = null;
-    if (this.ig != null) {
-      if (this.HEi != null) {
-        this.HEi.b(paramString, this.ig);
+    this.JrT = null;
+    if (this.ka != null) {
+      if (this.JrY != null) {
+        this.JrY.b(paramString, this.ka);
       }
     }
     while (paramString == null)
     {
-      this.HEf = false;
+      this.JrV = false;
       AppMethodBeat.o(164168);
       return;
-      if (this.HEe)
+      if (this.JrU)
       {
-        a.d(this.ig, paramString);
+        a.d(this.ka, paramString);
       }
       else
       {
-        a.c(this.ig, paramString);
+        a.c(this.ka, paramString);
         continue;
-        this.HEd = paramString;
+        this.JrT = paramString;
       }
     }
-    this.HEf = true;
+    this.JrV = true;
     AppMethodBeat.o(164168);
   }
   
-  public final void f(View.OnClickListener paramOnClickListener)
+  public final void d(View.OnClickListener paramOnClickListener)
   {
-    this.uWS = paramOnClickListener;
+    this.waa = paramOnClickListener;
   }
   
-  public final void fjk()
+  public final void fzz()
   {
-    this.HEe = true;
+    this.JrU = true;
   }
   
   protected final void onBindView(View paramView)
   {
     AppMethodBeat.i(164169);
     super.onBindView(paramView);
-    if (this.ig == null) {
-      this.ig = ((ImageView)paramView.findViewById(2131300940));
+    if (this.ka == null) {
+      this.ka = ((ImageView)paramView.findViewById(2131300940));
     }
-    if (this.HEh == null) {
-      this.HEh = ((TextView)paramView.findViewById(2131302878));
+    if (this.JrX == null) {
+      this.JrX = ((TextView)paramView.findViewById(2131302878));
     }
-    if (this.Dsq == null) {
-      this.Dsq = paramView.findViewById(2131302161);
+    if (this.EXu == null) {
+      this.EXu = paramView.findViewById(2131302161);
     }
-    if (this.uWS != null) {
-      this.Dsq.setOnClickListener(this.uWS);
+    if (this.waa != null) {
+      this.EXu.setOnClickListener(this.waa);
     }
-    if (this.HEd != null)
+    if (this.JrT != null)
     {
-      if (this.HEi != null)
+      if (this.JrY != null)
       {
-        this.HEi.b(this.HEd, this.ig);
-        this.HEd = null;
+        this.JrY.b(this.JrT, this.ka);
+        this.JrT = null;
       }
     }
     else
     {
-      if (this.HEf) {
+      if (this.JrV) {
         break label212;
       }
-      this.Dsq.setVisibility(8);
-      this.HEh.setVisibility(0);
+      this.EXu.setVisibility(8);
+      this.JrX.setVisibility(0);
     }
     for (;;)
     {
@@ -124,20 +124,20 @@ public final class HeadImgNewPreference
       }
       AppMethodBeat.o(164169);
       return;
-      if (this.HEe)
+      if (this.JrU)
       {
-        a.d(this.ig, this.HEd);
+        a.d(this.ka, this.JrT);
         break;
       }
-      a.c(this.ig, this.HEd);
+      a.c(this.ka, this.JrT);
       break;
       label212:
-      this.HEh.setVisibility(8);
-      this.Dsq.setVisibility(0);
-      if (this.HEe) {
-        this.Dsq.setBackground(this.mContext.getDrawable(2131233939));
+      this.JrX.setVisibility(8);
+      this.EXu.setVisibility(0);
+      if (this.JrU) {
+        this.EXu.setBackground(this.mContext.getDrawable(2131233939));
       } else {
-        this.Dsq.setBackground(this.mContext.getDrawable(2131233937));
+        this.EXu.setBackground(this.mContext.getDrawable(2131233937));
       }
     }
   }
@@ -149,9 +149,9 @@ public final class HeadImgNewPreference
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
     View.inflate(this.mContext, 2131494822, localViewGroup);
-    this.ig = ((ImageView)paramViewGroup.findViewById(2131300940));
-    this.HEh = ((TextView)paramViewGroup.findViewById(2131302878));
-    this.Dsq = paramViewGroup.findViewById(2131302161);
+    this.ka = ((ImageView)paramViewGroup.findViewById(2131300940));
+    this.JrX = ((TextView)paramViewGroup.findViewById(2131302878));
+    this.EXu = paramViewGroup.findViewById(2131302161);
     AppMethodBeat.o(164167);
     return paramViewGroup;
   }
@@ -163,7 +163,7 @@ public final class HeadImgNewPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.HeadImgNewPreference
  * JD-Core Version:    0.7.0.1
  */

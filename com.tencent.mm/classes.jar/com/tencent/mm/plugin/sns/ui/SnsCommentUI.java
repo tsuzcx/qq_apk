@@ -11,12 +11,13 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.p;
@@ -27,38 +28,38 @@ import com.tencent.mm.ui.tools.b.c.a;
 @a(17)
 public class SnsCommentUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  private int dga;
-  private int dwR;
+  private SnsEditText AcO;
+  private boolean AcP = false;
+  private boolean AcQ = false;
+  private int dJd;
+  private int drw;
+  private int sHx = 0;
   private p tipDialog = null;
-  private SnsEditText yLs;
-  private int yLt = 0;
-  private boolean yLu = false;
-  private boolean yLv = false;
   
   public void finish()
   {
     AppMethodBeat.i(98688);
     super.finish();
-    if ((!this.yLv) && (this.yLt == 2))
+    if ((!this.AcQ) && (this.sHx == 2))
     {
       long l1 = getIntent().getLongExtra("sns_id", 0L);
       long l2 = getIntent().getLongExtra("action_st_time", 0L);
-      String str1 = bs.bG(getIntent().getStringExtra("sns_uxinfo"), "");
-      String str2 = bs.bG(getIntent().getStringExtra("sns_actionresult"), "");
+      String str1 = bt.bI(getIntent().getStringExtra("sns_uxinfo"), "");
+      String str2 = bt.bI(getIntent().getStringExtra("sns_actionresult"), "");
       str2 = str2 + "|4:0:";
       long l3 = System.currentTimeMillis();
-      Object localObject = af.dHJ().dJn();
-      if ((localObject == null) || (!((com.tencent.mm.plugin.sns.h.h)localObject).dJo()))
+      Object localObject = ag.dTW().dVA();
+      if ((localObject == null) || (!((com.tencent.mm.plugin.sns.h.h)localObject).dVB()))
       {
         AppMethodBeat.o(98688);
         return;
       }
-      String str3 = ((com.tencent.mm.plugin.sns.h.h)localObject).xZF;
-      localObject = ((com.tencent.mm.plugin.sns.h.h)localObject).xZE;
-      ac.d("MicroMsg.SnsCommentUI", "report abtestnotlike " + l1 + " uxinfo:" + str1 + " actionresult: " + str2 + " " + l2 + " " + l3);
-      com.tencent.mm.plugin.report.service.h.wUl.f(11988, new Object[] { str3, localObject, "", "", com.tencent.mm.plugin.sns.data.q.wW(l1), str1, str2, Long.valueOf(l2 / 1000L), Long.valueOf(l3 / 1000L) });
+      String str3 = ((com.tencent.mm.plugin.sns.h.h)localObject).zpE;
+      localObject = ((com.tencent.mm.plugin.sns.h.h)localObject).zpD;
+      ad.d("MicroMsg.SnsCommentUI", "report abtestnotlike " + l1 + " uxinfo:" + str1 + " actionresult: " + str2 + " " + l2 + " " + l3);
+      com.tencent.mm.plugin.report.service.g.yhR.f(11988, new Object[] { str3, localObject, "", "", com.tencent.mm.plugin.sns.data.q.zw(l1), str1, str2, Long.valueOf(l2 / 1000L), Long.valueOf(l3 / 1000L) });
     }
     AppMethodBeat.o(98688);
   }
@@ -71,24 +72,24 @@ public class SnsCommentUI
   public void initView()
   {
     AppMethodBeat.i(98686);
-    this.yLs = ((SnsEditText)findViewById(2131298739));
-    this.yLs.requestFocus();
+    this.AcO = ((SnsEditText)findViewById(2131298739));
+    this.AcO.requestFocus();
     addTextOptionMenu(0, getString(2131755884), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(98679);
         if (SnsCommentUI.a(SnsCommentUI.this) == 0) {
-          com.tencent.mm.m.b.ZC();
+          com.tencent.mm.n.b.acc();
         }
         if (SnsCommentUI.a(SnsCommentUI.this) == 2) {}
-        for (int i = 200;; i = com.tencent.mm.m.b.ZB())
+        for (int i = 200;; i = com.tencent.mm.n.b.acb())
         {
-          paramAnonymousMenuItem = c.d(SnsCommentUI.b(SnsCommentUI.this)).acw(i);
-          paramAnonymousMenuItem.IVj = true;
+          paramAnonymousMenuItem = c.d(SnsCommentUI.b(SnsCommentUI.this)).aeU(i);
+          paramAnonymousMenuItem.KMn = true;
           paramAnonymousMenuItem.a(new c.a()
           {
-            public final void GK(String paramAnonymous2String)
+            public final void JZ(String paramAnonymous2String)
             {
               AppMethodBeat.i(98677);
               String str1 = SnsCommentUI.b(SnsCommentUI.this).getText().toString().trim();
@@ -113,28 +114,28 @@ public class SnsCommentUI
                 SnsCommentUI.this.hideVKB();
                 long l1 = SnsCommentUI.this.getIntent().getLongExtra("sns_id", 0L);
                 long l2 = SnsCommentUI.this.getIntent().getLongExtra("action_st_time", 0L);
-                paramAnonymous2String = bs.bG(SnsCommentUI.this.getIntent().getStringExtra("sns_uxinfo"), "");
-                String str2 = bs.bG(SnsCommentUI.this.getIntent().getStringExtra("sns_actionresult"), "");
+                paramAnonymous2String = bt.bI(SnsCommentUI.this.getIntent().getStringExtra("sns_uxinfo"), "");
+                String str2 = bt.bI(SnsCommentUI.this.getIntent().getStringExtra("sns_actionresult"), "");
                 str1 = str2 + "|4:1:" + str1;
                 long l3 = System.currentTimeMillis();
-                Object localObject = af.dHJ().dJn();
-                if ((localObject == null) || (!((com.tencent.mm.plugin.sns.h.h)localObject).dJo()))
+                Object localObject = ag.dTW().dVA();
+                if ((localObject == null) || (!((com.tencent.mm.plugin.sns.h.h)localObject).dVB()))
                 {
                   AppMethodBeat.o(98677);
                   return;
                 }
-                str2 = ((com.tencent.mm.plugin.sns.h.h)localObject).xZF;
-                localObject = ((com.tencent.mm.plugin.sns.h.h)localObject).xZE;
-                ac.d("MicroMsg.SnsCommentUI", "report abtestnotlike " + l1 + " uxinfo:" + paramAnonymous2String + " actionresult: " + str1 + " " + l2 + " " + l3);
-                com.tencent.mm.plugin.report.service.h.wUl.f(11988, new Object[] { str2, localObject, "", "", com.tencent.mm.plugin.sns.data.q.wW(l1), paramAnonymous2String, str1, Long.valueOf(l2 / 1000L), Long.valueOf(l3 / 1000L) });
+                str2 = ((com.tencent.mm.plugin.sns.h.h)localObject).zpE;
+                localObject = ((com.tencent.mm.plugin.sns.h.h)localObject).zpD;
+                ad.d("MicroMsg.SnsCommentUI", "report abtestnotlike " + l1 + " uxinfo:" + paramAnonymous2String + " actionresult: " + str1 + " " + l2 + " " + l3);
+                com.tencent.mm.plugin.report.service.g.yhR.f(11988, new Object[] { str2, localObject, "", "", com.tencent.mm.plugin.sns.data.q.zw(l1), paramAnonymous2String, str1, Long.valueOf(l2 / 1000L), Long.valueOf(l3 / 1000L) });
                 SnsCommentUI.c(SnsCommentUI.this);
                 SnsCommentUI.this.finish();
               }
             }
             
-            public final void aRi() {}
+            public final void aUu() {}
             
-            public final void ca(String paramAnonymous2String)
+            public final void cU(String paramAnonymous2String)
             {
               AppMethodBeat.i(163119);
               com.tencent.mm.ui.base.h.l(SnsCommentUI.this, 2131764058, 2131764059);
@@ -145,8 +146,8 @@ public class SnsCommentUI
           return false;
         }
       }
-    }, null, s.b.Hom);
-    if (this.yLt == 0) {
+    }, null, s.b.JbS);
+    if (this.sHx == 0) {
       setMMTitle(2131763795);
     }
     for (;;)
@@ -162,7 +163,7 @@ public class SnsCommentUI
           return true;
         }
       });
-      this.yLs.addTextChangedListener(new TextWatcher()
+      this.AcO.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable) {}
         
@@ -183,22 +184,22 @@ public class SnsCommentUI
       });
       AppMethodBeat.o(98686);
       return;
-      if (this.yLt == 1)
+      if (this.sHx == 1)
       {
         setMMTitle(2131764068);
-        com.tencent.mm.kernel.g.agS();
-        String str = bs.bG((String)com.tencent.mm.kernel.g.agR().agA().get(68408, ""), "");
-        com.tencent.mm.kernel.g.agS();
-        int i = bs.a((Integer)com.tencent.mm.kernel.g.agR().agA().get(7489, Integer.valueOf(0)), 0);
-        this.yLs.setPasterLen(i);
-        this.yLs.append(bs.bG(str, ""));
+        com.tencent.mm.kernel.g.ajD();
+        String str = bt.bI((String)com.tencent.mm.kernel.g.ajC().ajl().get(68408, ""), "");
+        com.tencent.mm.kernel.g.ajD();
+        int i = bt.a((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(7489, Integer.valueOf(0)), 0);
+        this.AcO.setPasterLen(i);
+        this.AcO.append(bt.bI(str, ""));
         if ((str != null) && (str.length() > 0)) {
           enableOptionMenu(true);
         } else {
           enableOptionMenu(false);
         }
       }
-      else if (this.yLt == 2)
+      else if (this.sHx == 2)
       {
         setMMTitle(2131763735);
         enableOptionMenu(false);
@@ -210,11 +211,11 @@ public class SnsCommentUI
   {
     AppMethodBeat.i(98682);
     super.onCreate(paramBundle);
-    this.dwR = getIntent().getIntExtra("sns_comment_localId", 0);
-    this.yLt = getIntent().getIntExtra("sns_comment_type", 0);
-    this.dga = getIntent().getIntExtra("sns_source", 0);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(213, this);
+    this.dJd = getIntent().getIntExtra("sns_comment_localId", 0);
+    this.sHx = getIntent().getIntExtra("sns_comment_type", 0);
+    this.drw = getIntent().getIntExtra("sns_source", 0);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.a(213, this);
     initView();
     AppMethodBeat.o(98682);
   }
@@ -223,8 +224,8 @@ public class SnsCommentUI
   {
     AppMethodBeat.i(98685);
     super.onDestroy();
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(213, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(213, this);
     AppMethodBeat.o(98685);
   }
   
@@ -247,20 +248,20 @@ public class SnsCommentUI
   {
     AppMethodBeat.i(98683);
     super.onPause();
-    if (this.yLs != null)
+    if (this.AcO != null)
     {
-      String str = this.yLs.getText().toString().trim();
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agR().agA().set(68408, str);
-      if (!bs.isNullOrNil(str))
+      String str = this.AcO.getText().toString().trim();
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajC().ajl().set(68408, str);
+      if (!bt.isNullOrNil(str))
       {
-        com.tencent.mm.kernel.g.agS();
-        com.tencent.mm.kernel.g.agR().agA().set(7489, Integer.valueOf(this.yLs.getPasterLen()));
+        com.tencent.mm.kernel.g.ajD();
+        com.tencent.mm.kernel.g.ajC().ajl().set(7489, Integer.valueOf(this.AcO.getPasterLen()));
         AppMethodBeat.o(98683);
         return;
       }
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agR().agA().set(7489, Integer.valueOf(0));
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajC().ajl().set(7489, Integer.valueOf(0));
     }
     AppMethodBeat.o(98683);
   }
@@ -276,7 +277,7 @@ public class SnsCommentUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(98687);
-    ac.i("MicroMsg.SnsCommentUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramn.getType() + " @" + hashCode());
+    ad.i("MicroMsg.SnsCommentUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramn.getType() + " @" + hashCode());
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
@@ -287,7 +288,7 @@ public class SnsCommentUI
     {
       AppMethodBeat.o(98687);
       return;
-      if (this.yLu) {
+      if (this.AcP) {
         finish();
       }
     }

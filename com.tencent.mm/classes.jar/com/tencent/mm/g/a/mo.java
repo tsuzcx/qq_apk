@@ -1,14 +1,15 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.btk;
 import com.tencent.mm.sdk.b.b;
+import java.util.List;
 
 public final class mo
   extends b
 {
-  public a dpd;
+  public a dAn;
+  public b dAo;
   
   public mo()
   {
@@ -17,19 +18,32 @@ public final class mo
   
   private mo(byte paramByte)
   {
-    AppMethodBeat.i(116036);
-    this.dpd = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(89749);
+    this.dAn = new a();
+    this.dAo = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116036);
+    AppMethodBeat.o(89749);
   }
   
   public static final class a
   {
-    public Activity activity;
-    public String dam;
-    public int dpb = 0;
-    public Bundle dpe;
+    public float dAp = 0.0F;
+    public int dAq = 0;
+    public int dAr = 0;
+    public String dAs;
+    public String dAt;
+    public int drI = 0;
+    public float dyz = 0.0F;
+    public boolean dzW = false;
+  }
+  
+  public static final class b
+  {
+    public boolean dAu = false;
+    public List<btk> dAv;
+    public int dAw = -1;
+    public int drI = 0;
   }
 }
 

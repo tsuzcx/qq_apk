@@ -7,18 +7,18 @@ import java.util.LinkedList;
 public final class g
   extends j
 {
-  public String ncW;
-  public int pAK;
-  public int pAL;
-  public int pAM;
-  public int pAN;
-  public int pAO;
-  public String pAP;
-  public int pAQ;
-  public String pAR;
-  public int pAS;
-  public int pAT;
-  public String pAU;
+  public String nDt;
+  public int qep;
+  public int qeq;
+  public int qer;
+  public int qes;
+  public int qet;
+  public String qeu;
+  public int qev;
+  public String qew;
+  public int qex;
+  public int qey;
+  public String qez;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -26,66 +26,66 @@ public final class g
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.pAX == null)
+      if (this.qeC == null)
       {
         paramVarArgs = new b("Not all required fields were included: BaseResponse");
         AppMethodBeat.o(23491);
         throw paramVarArgs;
       }
-      if (this.pAX != null)
+      if (this.qeC != null)
       {
-        paramVarArgs.ln(1, this.pAX.computeSize());
-        this.pAX.writeFields(paramVarArgs);
+        paramVarArgs.lC(1, this.qeC.computeSize());
+        this.qeC.writeFields(paramVarArgs);
       }
-      paramVarArgs.aR(2, this.pAK);
-      paramVarArgs.aR(3, this.pAL);
-      paramVarArgs.aR(4, this.pAM);
-      paramVarArgs.aR(5, this.pAN);
-      paramVarArgs.aR(6, this.pAO);
-      if (this.pAP != null) {
-        paramVarArgs.d(11, this.pAP);
+      paramVarArgs.aS(2, this.qep);
+      paramVarArgs.aS(3, this.qeq);
+      paramVarArgs.aS(4, this.qer);
+      paramVarArgs.aS(5, this.qes);
+      paramVarArgs.aS(6, this.qet);
+      if (this.qeu != null) {
+        paramVarArgs.d(11, this.qeu);
       }
-      paramVarArgs.aR(12, this.pAQ);
-      if (this.ncW != null) {
-        paramVarArgs.d(13, this.ncW);
+      paramVarArgs.aS(12, this.qev);
+      if (this.nDt != null) {
+        paramVarArgs.d(13, this.nDt);
       }
-      if (this.pAR != null) {
-        paramVarArgs.d(14, this.pAR);
+      if (this.qew != null) {
+        paramVarArgs.d(14, this.qew);
       }
-      paramVarArgs.aR(15, this.pAS);
-      paramVarArgs.aR(16, this.pAT);
-      if (this.pAU != null) {
-        paramVarArgs.d(17, this.pAU);
+      paramVarArgs.aS(15, this.qex);
+      paramVarArgs.aS(16, this.qey);
+      if (this.qez != null) {
+        paramVarArgs.d(17, this.qez);
       }
       AppMethodBeat.o(23491);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.pAX == null) {
+      if (this.qeC == null) {
         break label993;
       }
     }
     label993:
-    for (paramInt = f.a.a.a.lm(1, this.pAX.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lB(1, this.qeC.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bx(2, this.pAK) + f.a.a.b.b.a.bx(3, this.pAL) + f.a.a.b.b.a.bx(4, this.pAM) + f.a.a.b.b.a.bx(5, this.pAN) + f.a.a.b.b.a.bx(6, this.pAO);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.qep) + f.a.a.b.b.a.bz(3, this.qeq) + f.a.a.b.b.a.bz(4, this.qer) + f.a.a.b.b.a.bz(5, this.qes) + f.a.a.b.b.a.bz(6, this.qet);
       paramInt = i;
-      if (this.pAP != null) {
-        paramInt = i + f.a.a.b.b.a.e(11, this.pAP);
+      if (this.qeu != null) {
+        paramInt = i + f.a.a.b.b.a.e(11, this.qeu);
       }
-      i = paramInt + f.a.a.b.b.a.bx(12, this.pAQ);
+      i = paramInt + f.a.a.b.b.a.bz(12, this.qev);
       paramInt = i;
-      if (this.ncW != null) {
-        paramInt = i + f.a.a.b.b.a.e(13, this.ncW);
+      if (this.nDt != null) {
+        paramInt = i + f.a.a.b.b.a.e(13, this.nDt);
       }
       i = paramInt;
-      if (this.pAR != null) {
-        i = paramInt + f.a.a.b.b.a.e(14, this.pAR);
+      if (this.qew != null) {
+        i = paramInt + f.a.a.b.b.a.e(14, this.qew);
       }
-      i = i + f.a.a.b.b.a.bx(15, this.pAS) + f.a.a.b.b.a.bx(16, this.pAT);
+      i = i + f.a.a.b.b.a.bz(15, this.qex) + f.a.a.b.b.a.bz(16, this.qey);
       paramInt = i;
-      if (this.pAU != null) {
-        paramInt = i + f.a.a.b.b.a.e(17, this.pAU);
+      if (this.qez != null) {
+        paramInt = i + f.a.a.b.b.a.e(17, this.qez);
       }
       AppMethodBeat.o(23491);
       return paramInt;
@@ -94,10 +94,10 @@ public final class g
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = j.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = j.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.pAX == null)
+        if (this.qeC == null)
         {
           paramVarArgs = new b("Not all required fields were included: BaseResponse");
           AppMethodBeat.o(23491);
@@ -121,7 +121,7 @@ public final class g
           AppMethodBeat.o(23491);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -129,58 +129,58 @@ public final class g
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new e();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((e)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, j.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localg.pAX = ((e)localObject1);
+            for (boolean bool = true; bool; bool = ((e)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, j.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localg.qeC = ((e)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(23491);
           return 0;
         case 2: 
-          localg.pAK = ((f.a.a.a.a)localObject1).LVo.xF();
+          localg.qep = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(23491);
           return 0;
         case 3: 
-          localg.pAL = ((f.a.a.a.a)localObject1).LVo.xF();
+          localg.qeq = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(23491);
           return 0;
         case 4: 
-          localg.pAM = ((f.a.a.a.a)localObject1).LVo.xF();
+          localg.qer = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(23491);
           return 0;
         case 5: 
-          localg.pAN = ((f.a.a.a.a)localObject1).LVo.xF();
+          localg.qes = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(23491);
           return 0;
         case 6: 
-          localg.pAO = ((f.a.a.a.a)localObject1).LVo.xF();
+          localg.qet = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(23491);
           return 0;
         case 11: 
-          localg.pAP = ((f.a.a.a.a)localObject1).LVo.readString();
+          localg.qeu = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(23491);
           return 0;
         case 12: 
-          localg.pAQ = ((f.a.a.a.a)localObject1).LVo.xF();
+          localg.qev = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(23491);
           return 0;
         case 13: 
-          localg.ncW = ((f.a.a.a.a)localObject1).LVo.readString();
+          localg.nDt = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(23491);
           return 0;
         case 14: 
-          localg.pAR = ((f.a.a.a.a)localObject1).LVo.readString();
+          localg.qew = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(23491);
           return 0;
         case 15: 
-          localg.pAS = ((f.a.a.a.a)localObject1).LVo.xF();
+          localg.qex = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(23491);
           return 0;
         case 16: 
-          localg.pAT = ((f.a.a.a.a)localObject1).LVo.xF();
+          localg.qey = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(23491);
           return 0;
         }
-        localg.pAU = ((f.a.a.a.a)localObject1).LVo.readString();
+        localg.qez = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(23491);
         return 0;
       }
@@ -191,7 +191,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.f.g
  * JD-Core Version:    0.7.0.1
  */

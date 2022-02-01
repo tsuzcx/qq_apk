@@ -1,58 +1,58 @@
 package com.tencent.mm.plugin.account.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelsimple.s;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.b;
 
 public final class f
   extends SecurityImage.b
 {
-  private static f iSy = null;
+  private static f jlG = null;
   public String account = null;
-  public String iJl = null;
-  public byte[] iJm = null;
-  public String iJn = null;
-  public String iJo = null;
-  public String iSw = null;
-  public int iSx = 0;
+  public String jcu = null;
+  public byte[] jcv = null;
+  public String jcw = null;
+  public String jcx = null;
+  public String jlE = null;
+  public int jlF = 0;
   
   public static void a(f paramf)
   {
-    iSy = paramf;
+    jlG = paramf;
   }
   
-  public static String aQM()
+  public static String aTY()
   {
-    if (iSy != null) {
-      return iSy.account;
+    if (jlG != null) {
+      return jlG.account;
     }
     return null;
   }
   
-  public static String aQN()
+  public static String aTZ()
   {
-    if (iSy != null) {
-      return iSy.iJl;
+    if (jlG != null) {
+      return jlG.jcu;
     }
     return null;
   }
   
-  public final void aPj()
+  public final void aSv()
   {
     AppMethodBeat.i(128184);
-    if (!bs.isNullOrNil(this.iSw))
+    if (!bt.isNullOrNil(this.jlE))
     {
-      locals = new s(this.account, this.iSw, this.Hup.getSecCodeType(), "", "", "", 0, "", false, true);
-      g.agi().a(locals, 0);
+      locals = new s(this.account, this.jlE, this.Jif.getSecCodeType(), "", "", "", 0, "", false, true);
+      g.aiU().a(locals, 0);
       AppMethodBeat.o(128184);
       return;
     }
-    s locals = new s(this.account, this.iJl, this.Hup.getSecCodeType(), "", "", "", 0, "", false, false);
-    g.agi().a(locals, 0);
+    s locals = new s(this.account, this.jcu, this.Jif.getSecCodeType(), "", "", "", 0, "", false, false);
+    g.aiU().a(locals, 0);
     AppMethodBeat.o(128184);
   }
 }

@@ -1,79 +1,53 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.e;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.b;
+import com.tencent.mm.al.e.c;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import java.util.Map;
+import junit.framework.Assert;
 
 public final class bw
-  extends com.tencent.mm.bw.a
+  implements e
 {
-  public long gLX;
-  public String hpH;
-  public int key;
-  
-  public final int op(int paramInt, Object... paramVarArgs)
+  public final e.b b(e.a parama)
   {
-    AppMethodBeat.i(143730);
-    if (paramInt == 0)
+    boolean bool2 = true;
+    AppMethodBeat.i(20393);
+    parama = parama.gqE;
+    if (parama != null)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.key);
-      if (this.hpH != null) {
-        paramVarArgs.d(2, this.hpH);
+      bool1 = true;
+      Assert.assertTrue(bool1);
+      if (parama.Fvk == null) {
+        break label100;
       }
-      paramVarArgs.aO(3, this.gLX);
-      AppMethodBeat.o(143730);
-      return 0;
     }
-    if (paramInt == 1)
+    label100:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      int i = f.a.a.b.b.a.bx(1, this.key) + 0;
-      paramInt = i;
-      if (this.hpH != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.hpH);
-      }
-      i = f.a.a.b.b.a.p(3, this.gLX);
-      AppMethodBeat.o(143730);
-      return paramInt + i;
+      Assert.assertTrue(bool1);
+      parama = (String)com.tencent.mm.sdk.platformtools.bw.M(z.a(parama.Fvk), "tips").get(".tips.tip.url");
+      ad.v("MicroMsg.SoftwareMsgExtension", "url:".concat(String.valueOf(parama)));
+      ba.aBQ();
+      c.ajl().set(12308, parama);
+      AppMethodBeat.o(20393);
+      return null;
+      bool1 = false;
+      break;
     }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
-        }
-      }
-      AppMethodBeat.o(143730);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      bw localbw = (bw)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(143730);
-        return -1;
-      case 1: 
-        localbw.key = locala.LVo.xF();
-        AppMethodBeat.o(143730);
-        return 0;
-      case 2: 
-        localbw.hpH = locala.LVo.readString();
-        AppMethodBeat.o(143730);
-        return 0;
-      }
-      localbw.gLX = locala.LVo.xG();
-      AppMethodBeat.o(143730);
-      return 0;
-    }
-    AppMethodBeat.o(143730);
-    return -1;
   }
+  
+  public final void b(e.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.bw
  * JD-Core Version:    0.7.0.1
  */

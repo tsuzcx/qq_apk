@@ -1,7 +1,6 @@
 package com.tencent.mm.dynamicbackground.view;
 
 import android.content.Context;
-import android.opengl.GLException;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -9,12 +8,9 @@ import android.view.SurfaceHolder.Callback2;
 import android.view.SurfaceView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.dynamicbackground.a.c;
-import java.io.IOException;
-import java.io.Writer;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGL11;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
 import javax.microedition.khronos.egl.EGLDisplay;
@@ -25,24 +21,24 @@ public class GameGLSurfaceView
   extends SurfaceView
   implements SurfaceHolder.Callback2
 {
-  private static final k fMO;
-  private final WeakReference<GameGLSurfaceView> fMP;
-  private j fMQ;
-  private n fMR;
-  private e fMS;
-  private f fMT;
-  private h fMU;
-  private l fMV;
-  private boolean fMW;
-  private int fMX;
-  private int fMY;
-  private boolean fMZ;
+  private static final k ggo;
+  private final WeakReference<GameGLSurfaceView> ggp;
+  private j ggq;
+  private n ggr;
+  private e ggs;
+  private f ggt;
+  private h ggu;
+  private l ggv;
+  private boolean ggw;
+  private int ggx;
+  private int ggy;
+  private boolean ggz;
   private boolean mDetached;
   
   static
   {
     AppMethodBeat.i(103073);
-    fMO = new k((byte)0);
+    ggo = new k((byte)0);
     AppMethodBeat.o(103073);
   }
   
@@ -50,16 +46,16 @@ public class GameGLSurfaceView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(103053);
-    this.fMP = new WeakReference(this);
-    this.fMW = false;
+    this.ggp = new WeakReference(this);
+    this.ggw = false;
     getHolder().addCallback(this);
     AppMethodBeat.o(103053);
   }
   
-  private void abA()
+  private void aee()
   {
     AppMethodBeat.i(103072);
-    if (this.fMQ != null)
+    if (this.ggq != null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("setRenderer has already been called for this instance.");
       AppMethodBeat.o(103072);
@@ -68,7 +64,7 @@ public class GameGLSurfaceView
     AppMethodBeat.o(103072);
   }
   
-  public final void abz()
+  public final void aed()
   {
     AppMethodBeat.i(103060);
     setEGLConfigChooser(new b());
@@ -80,8 +76,8 @@ public class GameGLSurfaceView
     AppMethodBeat.i(103054);
     try
     {
-      if (this.fMQ != null) {
-        this.fMQ.abJ();
+      if (this.ggq != null) {
+        this.ggq.aen();
       }
       return;
     }
@@ -94,23 +90,23 @@ public class GameGLSurfaceView
   
   public int getDebugFlags()
   {
-    return this.fMX;
+    return this.ggx;
   }
   
   public boolean getIsSwapNow()
   {
-    return this.fMW;
+    return this.ggw;
   }
   
   public boolean getPreserveEGLContextOnPause()
   {
-    return this.fMZ;
+    return this.ggz;
   }
   
   public int getRenderMode()
   {
     AppMethodBeat.i(103063);
-    int i = this.fMQ.getRenderMode();
+    int i = this.ggq.getRenderMode();
     AppMethodBeat.o(103063);
     return i;
   }
@@ -120,19 +116,19 @@ public class GameGLSurfaceView
     AppMethodBeat.i(103070);
     super.onAttachedToWindow();
     c.i("MicroMsg.GameGLSurfaceView", "onAttachedToWindow reattach =" + this.mDetached, new Object[0]);
-    if ((this.mDetached) && (this.fMR != null)) {
-      if (this.fMQ == null) {
+    if ((this.mDetached) && (this.ggr != null)) {
+      if (this.ggq == null) {
         break label112;
       }
     }
     label112:
-    for (int i = this.fMQ.getRenderMode();; i = 1)
+    for (int i = this.ggq.getRenderMode();; i = 1)
     {
-      this.fMQ = new j(this.fMP);
+      this.ggq = new j(this.ggp);
       if (i != 1) {
-        this.fMQ.setRenderMode(i);
+        this.ggq.setRenderMode(i);
       }
-      this.fMQ.start();
+      this.ggq.start();
       this.mDetached = false;
       AppMethodBeat.o(103070);
       return;
@@ -143,8 +139,8 @@ public class GameGLSurfaceView
   {
     AppMethodBeat.i(103071);
     c.i("MicroMsg.GameGLSurfaceView", "onDetachedFromWindow", new Object[0]);
-    if (this.fMQ != null) {
-      this.fMQ.abJ();
+    if (this.ggq != null) {
+      this.ggq.aen();
     }
     this.mDetached = true;
     super.onDetachedFromWindow();
@@ -154,20 +150,20 @@ public class GameGLSurfaceView
   public final void onPause()
   {
     AppMethodBeat.i(103068);
-    j localj = this.fMQ;
-    synchronized (fMO)
+    j localj = this.ggq;
+    synchronized (ggo)
     {
       c.i("MicroMsg.GLThread", "onPause tid=" + localj.getId(), new Object[0]);
-      localj.fNy = true;
-      fMO.notifyAll();
+      localj.ggY = true;
+      ggo.notifyAll();
       for (;;)
       {
-        if ((!localj.fNw) && (!localj.AC))
+        if ((!localj.ggW) && (!localj.Ct))
         {
           c.i("MicroMsg.GLThread", "onPause waiting for mPaused.", new Object[0]);
           try
           {
-            fMO.wait();
+            ggo.wait();
           }
           catch (InterruptedException localInterruptedException)
           {
@@ -183,23 +179,23 @@ public class GameGLSurfaceView
   {
     AppMethodBeat.i(103069);
     c.i("MicroMsg.GameGLSurfaceView", "onResume", new Object[0]);
-    j localj = this.fMQ;
-    synchronized (fMO)
+    j localj = this.ggq;
+    synchronized (ggo)
     {
       c.i("MicroMsg.GLThread", "onResume tid=" + localj.getId(), new Object[0]);
-      localj.fNy = false;
-      localj.fNA = false;
-      localj.fNI = true;
-      localj.fNK = false;
-      fMO.notifyAll();
+      localj.ggY = false;
+      localj.gha = false;
+      localj.ghi = true;
+      localj.ghk = false;
+      ggo.notifyAll();
       for (;;)
       {
-        if ((!localj.fNw) && (localj.AC) && (!localj.fNK))
+        if ((!localj.ggW) && (localj.Ct) && (!localj.ghk))
         {
           c.i("MicroMsg.GLThread", "onResume waiting for !mPaused.", new Object[0]);
           try
           {
-            fMO.wait();
+            ggo.wait();
           }
           catch (InterruptedException localInterruptedException)
           {
@@ -213,14 +209,14 @@ public class GameGLSurfaceView
   
   public void setDebugFlags(int paramInt)
   {
-    this.fMX = paramInt;
+    this.ggx = paramInt;
   }
   
   public void setEGLConfigChooser(e parame)
   {
     AppMethodBeat.i(103058);
-    abA();
-    this.fMS = parame;
+    aee();
+    this.ggs = parame;
     AppMethodBeat.o(103058);
   }
   
@@ -234,24 +230,24 @@ public class GameGLSurfaceView
   public void setEGLContextClientVersion(int paramInt)
   {
     AppMethodBeat.i(103061);
-    abA();
-    this.fMY = paramInt;
+    aee();
+    this.ggy = paramInt;
     AppMethodBeat.o(103061);
   }
   
   public void setEGLContextFactory(f paramf)
   {
     AppMethodBeat.i(103056);
-    abA();
-    this.fMT = paramf;
+    aee();
+    this.ggt = paramf;
     AppMethodBeat.o(103056);
   }
   
   public void setEGLWindowSurfaceFactory(h paramh)
   {
     AppMethodBeat.i(103057);
-    abA();
-    this.fMU = paramh;
+    aee();
+    this.ggu = paramh;
     AppMethodBeat.o(103057);
   }
   
@@ -259,52 +255,52 @@ public class GameGLSurfaceView
   
   public void setGLWrapper(l paraml)
   {
-    this.fMV = paraml;
+    this.ggv = paraml;
   }
   
   public void setPreserveEGLContextOnPause(boolean paramBoolean)
   {
-    this.fMZ = paramBoolean;
+    this.ggz = paramBoolean;
   }
   
   public void setRenderMode(int paramInt)
   {
     AppMethodBeat.i(103062);
-    this.fMQ.setRenderMode(paramInt);
+    this.ggq.setRenderMode(paramInt);
     AppMethodBeat.o(103062);
   }
   
   public void setRenderer(n paramn)
   {
     AppMethodBeat.i(103055);
-    abA();
-    if (this.fMS == null) {
-      this.fMS = new o();
+    aee();
+    if (this.ggs == null) {
+      this.ggs = new o();
     }
-    if (this.fMT == null) {
-      this.fMT = new c((byte)0);
+    if (this.ggt == null) {
+      this.ggt = new c((byte)0);
     }
-    if (this.fMU == null) {
-      this.fMU = new d((byte)0);
+    if (this.ggu == null) {
+      this.ggu = new d((byte)0);
     }
-    this.fMR = paramn;
-    this.fMQ = new j(this.fMP);
-    this.fMQ.start();
+    this.ggr = paramn;
+    this.ggq = new j(this.ggp);
+    this.ggq.start();
     AppMethodBeat.o(103055);
   }
   
   public void setSwapNow(boolean paramBoolean)
   {
-    this.fMW = paramBoolean;
+    this.ggw = paramBoolean;
   }
   
   public void surfaceChanged(SurfaceHolder arg1, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(103066);
-    j localj = this.fMQ;
+    j localj = this.ggq;
     for (;;)
     {
-      synchronized (fMO)
+      synchronized (ggo)
       {
         if ((localj.mWidth == paramInt2) && (localj.mHeight == paramInt3))
         {
@@ -313,20 +309,20 @@ public class GameGLSurfaceView
         }
         localj.mWidth = paramInt2;
         localj.mHeight = paramInt3;
-        localj.fNM = true;
-        localj.fNI = true;
-        localj.fNK = false;
-        localj.fNz = true;
+        localj.ghm = true;
+        localj.ghi = true;
+        localj.ghk = false;
+        localj.ggZ = true;
         if (Thread.currentThread() == localj)
         {
           AppMethodBeat.o(103066);
           return;
         }
-        fMO.notifyAll();
-        if ((localj.fNw) || (localj.AC) || (localj.fNK)) {
+        ggo.notifyAll();
+        if ((localj.ggW) || (localj.Ct) || (localj.ghk)) {
           break;
         }
-        if ((localj.fNE) && (localj.fNF) && (localj.abH()))
+        if ((localj.ghe) && (localj.ghf) && (localj.ael()))
         {
           paramInt1 = 1;
           if (paramInt1 == 0) {
@@ -335,7 +331,7 @@ public class GameGLSurfaceView
           c.i("MicroMsg.GLThread", "onWindowResize waiting for render complete from tid=" + localj.getId(), new Object[0]);
           try
           {
-            fMO.wait();
+            ggo.wait();
           }
           catch (InterruptedException localInterruptedException)
           {
@@ -352,23 +348,23 @@ public class GameGLSurfaceView
   {
     AppMethodBeat.i(103064);
     c.i("MicroMsg.GameGLSurfaceView", "alvinluo GameGLSurfaceView surfaceCreated", new Object[0]);
-    j localj = this.fMQ;
-    synchronized (fMO)
+    j localj = this.ggq;
+    synchronized (ggo)
     {
       c.i("MicroMsg.GLThread", "surfaceCreated tid=" + localj.getId(), new Object[0]);
-      localj.fNB = true;
-      localj.fNG = false;
-      localj.fNz = true;
-      fMO.notifyAll();
+      localj.ghb = true;
+      localj.ghg = false;
+      localj.ggZ = true;
+      ggo.notifyAll();
       for (;;)
       {
-        if ((localj.fND) && (!localj.fNG))
+        if ((localj.ghd) && (!localj.ghg))
         {
-          boolean bool = localj.fNw;
+          boolean bool = localj.ggW;
           if (!bool) {
             try
             {
-              fMO.wait();
+              ggo.wait();
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -384,22 +380,22 @@ public class GameGLSurfaceView
   public void surfaceDestroyed(SurfaceHolder arg1)
   {
     AppMethodBeat.i(103065);
-    j localj = this.fMQ;
-    synchronized (fMO)
+    j localj = this.ggq;
+    synchronized (ggo)
     {
       c.i("MicroMsg.GLThread", "surfaceDestroyed tid=" + localj.getId(), new Object[0]);
-      localj.fNB = false;
-      localj.fNz = true;
-      fMO.notifyAll();
+      localj.ghb = false;
+      localj.ggZ = true;
+      ggo.notifyAll();
       for (;;)
       {
-        if (!localj.fND)
+        if (!localj.ghd)
         {
-          boolean bool = localj.fNw;
+          boolean bool = localj.ggW;
           if (!bool) {
             try
             {
-              fMO.wait();
+              ggo.wait();
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -415,13 +411,13 @@ public class GameGLSurfaceView
   public void surfaceRedrawNeeded(SurfaceHolder arg1)
   {
     AppMethodBeat.i(103067);
-    if (this.fMQ != null)
+    if (this.ggq != null)
     {
-      j localj = this.fMQ;
-      synchronized (fMO)
+      j localj = this.ggq;
+      synchronized (ggo)
       {
-        localj.fNI = true;
-        fMO.notifyAll();
+        localj.ghi = true;
+        ggo.notifyAll();
         AppMethodBeat.o(103067);
         return;
       }
@@ -432,13 +428,13 @@ public class GameGLSurfaceView
   abstract class a
     implements GameGLSurfaceView.e
   {
-    protected int[] fNa;
+    protected int[] ggA;
     
     public a(int[] paramArrayOfInt)
     {
       if ((GameGLSurfaceView.a(GameGLSurfaceView.this) != 2) && (GameGLSurfaceView.a(GameGLSurfaceView.this) != 3))
       {
-        this.fNa = paramArrayOfInt;
+        this.ggA = paramArrayOfInt;
         return;
       }
       this$1 = new int[15];
@@ -461,7 +457,7 @@ public class GameGLSurfaceView
     public final EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
     {
       int[] arrayOfInt = new int[1];
-      if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.fNa, null, 0, arrayOfInt)) {
+      if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.ggA, null, 0, arrayOfInt)) {
         throw new IllegalArgumentException("eglChooseConfig failed");
       }
       int i = arrayOfInt[0];
@@ -469,7 +465,7 @@ public class GameGLSurfaceView
         throw new IllegalArgumentException("No configs match configSpec");
       }
       EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-      if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.fNa, arrayOfEGLConfig, i, arrayOfInt)) {
+      if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.ggA, arrayOfEGLConfig, i, arrayOfInt)) {
         throw new IllegalArgumentException("eglChooseConfig#2 failed");
       }
       paramEGL10 = b(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
@@ -483,34 +479,34 @@ public class GameGLSurfaceView
   class b
     extends GameGLSurfaceView.a
   {
-    private int[] fNc;
-    protected int fNd;
-    protected int fNe;
-    protected int fNf;
-    protected int fNg;
-    protected int fNh;
-    protected int fNi;
+    private int[] ggC;
+    protected int ggD;
+    protected int ggE;
+    protected int ggF;
+    protected int ggG;
+    protected int ggH;
+    protected int ggI;
     
     public b()
     {
       super(new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 16, 12326, 8, 12344 });
       AppMethodBeat.i(102978);
-      this.fNc = new int[1];
-      this.fNd = 8;
-      this.fNe = 8;
-      this.fNf = 8;
-      this.fNg = 8;
-      this.fNh = 16;
-      this.fNi = 8;
+      this.ggC = new int[1];
+      this.ggD = 8;
+      this.ggE = 8;
+      this.ggF = 8;
+      this.ggG = 8;
+      this.ggH = 16;
+      this.ggI = 8;
       AppMethodBeat.o(102978);
     }
     
     private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt)
     {
       AppMethodBeat.i(102980);
-      if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.fNc))
+      if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.ggC))
       {
-        paramInt = this.fNc[0];
+        paramInt = this.ggC[0];
         AppMethodBeat.o(102980);
         return paramInt;
       }
@@ -528,13 +524,13 @@ public class GameGLSurfaceView
         EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
         int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
         int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
-        if ((k >= this.fNh) && (m >= this.fNi))
+        if ((k >= this.ggH) && (m >= this.ggI))
         {
           k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324);
           m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
           int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
           int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
-          if ((k == this.fNd) && (m == this.fNe) && (n == this.fNf) && (i1 == this.fNg))
+          if ((k == this.ggD) && (m == this.ggE) && (n == this.ggF) && (i1 == this.ggG))
           {
             AppMethodBeat.o(102979);
             return localEGLConfig;
@@ -554,7 +550,7 @@ public class GameGLSurfaceView
     
     private c() {}
     
-    public final EGLContext b(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, EGLContext paramEGLContext)
+    public final EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, EGLContext paramEGLContext)
     {
       AppMethodBeat.i(102981);
       c.i("MicroMsg.GLThread", "createContext", new Object[0]);
@@ -579,7 +575,7 @@ public class GameGLSurfaceView
       if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
       {
         c.e("MicroMsg.GLThread", "display:" + paramEGLDisplay + " context: " + paramEGLContext, new Object[0]);
-        GameGLSurfaceView.i.K("eglDestroyContex", paramEGL10.eglGetError());
+        GameGLSurfaceView.i.N("eglDestroyContex", paramEGL10.eglGetError());
       }
       AppMethodBeat.o(102982);
     }
@@ -623,698 +619,9 @@ public class GameGLSurfaceView
   
   public static abstract interface f
   {
-    public abstract EGLContext b(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, EGLContext paramEGLContext);
+    public abstract EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, EGLContext paramEGLContext);
     
     public abstract void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext);
-  }
-  
-  public static final class g
-    implements EGL11
-  {
-    private EGL10 fNj;
-    Writer fNk;
-    boolean fNl;
-    boolean fNm;
-    private int fNn;
-    
-    private void J(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(103016);
-      aj(paramString, Integer.toString(paramInt));
-      AppMethodBeat.o(103016);
-    }
-    
-    private void a(String paramString, EGLContext paramEGLContext)
-    {
-      AppMethodBeat.i(103019);
-      if (paramEGLContext == EGL10.EGL_NO_CONTEXT)
-      {
-        aj(paramString, "EGL10.EGL_NO_CONTEXT");
-        AppMethodBeat.o(103019);
-        return;
-      }
-      aj(paramString, toString(paramEGLContext));
-      AppMethodBeat.o(103019);
-    }
-    
-    private void a(String paramString, EGLDisplay paramEGLDisplay)
-    {
-      AppMethodBeat.i(103018);
-      if (paramEGLDisplay == EGL10.EGL_DEFAULT_DISPLAY)
-      {
-        aj(paramString, "EGL10.EGL_DEFAULT_DISPLAY");
-        AppMethodBeat.o(103018);
-        return;
-      }
-      if (paramEGLDisplay == EGL_NO_DISPLAY)
-      {
-        aj(paramString, "EGL10.EGL_NO_DISPLAY");
-        AppMethodBeat.o(103018);
-        return;
-      }
-      aj(paramString, toString(paramEGLDisplay));
-      AppMethodBeat.o(103018);
-    }
-    
-    private void a(String paramString, EGLSurface paramEGLSurface)
-    {
-      AppMethodBeat.i(103020);
-      if (paramEGLSurface == EGL10.EGL_NO_SURFACE)
-      {
-        aj(paramString, "EGL10.EGL_NO_SURFACE");
-        AppMethodBeat.o(103020);
-        return;
-      }
-      aj(paramString, toString(paramEGLSurface));
-      AppMethodBeat.o(103020);
-    }
-    
-    private void a(String paramString, int[] paramArrayOfInt)
-    {
-      AppMethodBeat.i(103026);
-      if (paramArrayOfInt == null)
-      {
-        aj(paramString, "null");
-        AppMethodBeat.o(103026);
-        return;
-      }
-      aj(paramString, c(paramArrayOfInt.length, paramArrayOfInt));
-      AppMethodBeat.o(103026);
-    }
-    
-    private void aO(Object paramObject)
-    {
-      AppMethodBeat.i(103024);
-      tb(toString(paramObject));
-      AppMethodBeat.o(103024);
-    }
-    
-    private void aj(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(103013);
-      int i = this.fNn;
-      this.fNn = (i + 1);
-      if (i > 0) {
-        log(", ");
-      }
-      if (this.fNl) {
-        log(paramString1 + "=");
-      }
-      log(paramString2);
-      AppMethodBeat.o(103013);
-    }
-    
-    private static String b(int paramInt, Object[] paramArrayOfObject)
-    {
-      AppMethodBeat.i(103029);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("{\n");
-      int j = paramArrayOfObject.length;
-      int i = 0;
-      if (i < paramInt)
-      {
-        int k = i + 0;
-        localStringBuilder.append(" [" + k + "] = ");
-        if ((k < 0) || (k >= j)) {
-          localStringBuilder.append("out of bounds");
-        }
-        for (;;)
-        {
-          localStringBuilder.append('\n');
-          i += 1;
-          break;
-          localStringBuilder.append(paramArrayOfObject[k]);
-        }
-      }
-      localStringBuilder.append("}");
-      paramArrayOfObject = localStringBuilder.toString();
-      AppMethodBeat.o(103029);
-      return paramArrayOfObject;
-    }
-    
-    private static String c(int paramInt, int[] paramArrayOfInt)
-    {
-      AppMethodBeat.i(103028);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("{\n");
-      int j = paramArrayOfInt.length;
-      int i = 0;
-      if (i < paramInt)
-      {
-        int k = i + 0;
-        localStringBuilder.append(" [" + k + "] = ");
-        if ((k < 0) || (k >= j)) {
-          localStringBuilder.append("out of bounds");
-        }
-        for (;;)
-        {
-          localStringBuilder.append('\n');
-          i += 1;
-          break;
-          localStringBuilder.append(paramArrayOfInt[k]);
-        }
-      }
-      localStringBuilder.append("}");
-      paramArrayOfInt = localStringBuilder.toString();
-      AppMethodBeat.o(103028);
-      return paramArrayOfInt;
-    }
-    
-    private void c(String paramString, Object paramObject)
-    {
-      AppMethodBeat.i(103017);
-      aj(paramString, toString(paramObject));
-      AppMethodBeat.o(103017);
-    }
-    
-    private void cY(boolean paramBoolean)
-    {
-      AppMethodBeat.i(103023);
-      tb(Boolean.toString(paramBoolean));
-      AppMethodBeat.o(103023);
-    }
-    
-    private void checkError()
-    {
-      AppMethodBeat.i(103009);
-      int i = this.fNj.eglGetError();
-      if (i != 12288)
-      {
-        Object localObject = "eglError: " + getErrorString(i);
-        sZ((String)localObject);
-        if (this.fNm)
-        {
-          localObject = new GLException(i, (String)localObject);
-          AppMethodBeat.o(103009);
-          throw ((Throwable)localObject);
-        }
-      }
-      AppMethodBeat.o(103009);
-    }
-    
-    private void end()
-    {
-      AppMethodBeat.i(103014);
-      log(");\n");
-      flush();
-      AppMethodBeat.o(103014);
-    }
-    
-    private void flush()
-    {
-      AppMethodBeat.i(103015);
-      try
-      {
-        this.fNk.flush();
-        AppMethodBeat.o(103015);
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        this.fNk = null;
-        AppMethodBeat.o(103015);
-      }
-    }
-    
-    private void g(String paramString, Object[] paramArrayOfObject)
-    {
-      AppMethodBeat.i(103027);
-      if (paramArrayOfObject == null)
-      {
-        aj(paramString, "null");
-        AppMethodBeat.o(103027);
-        return;
-      }
-      aj(paramString, b(paramArrayOfObject.length, paramArrayOfObject));
-      AppMethodBeat.o(103027);
-    }
-    
-    public static String getErrorString(int paramInt)
-    {
-      AppMethodBeat.i(103031);
-      switch (paramInt)
-      {
-      default: 
-        String str = lu(paramInt);
-        AppMethodBeat.o(103031);
-        return str;
-      case 12288: 
-        AppMethodBeat.o(103031);
-        return "EGL_SUCCESS";
-      case 12289: 
-        AppMethodBeat.o(103031);
-        return "EGL_NOT_INITIALIZED";
-      case 12290: 
-        AppMethodBeat.o(103031);
-        return "EGL_BAD_ACCESS";
-      case 12291: 
-        AppMethodBeat.o(103031);
-        return "EGL_BAD_ALLOC";
-      case 12292: 
-        AppMethodBeat.o(103031);
-        return "EGL_BAD_ATTRIBUTE";
-      case 12293: 
-        AppMethodBeat.o(103031);
-        return "EGL_BAD_CONFIG";
-      case 12294: 
-        AppMethodBeat.o(103031);
-        return "EGL_BAD_CONTEXT";
-      case 12295: 
-        AppMethodBeat.o(103031);
-        return "EGL_BAD_CURRENT_SURFACE";
-      case 12296: 
-        AppMethodBeat.o(103031);
-        return "EGL_BAD_DISPLAY";
-      case 12297: 
-        AppMethodBeat.o(103031);
-        return "EGL_BAD_MATCH";
-      case 12298: 
-        AppMethodBeat.o(103031);
-        return "EGL_BAD_NATIVE_PIXMAP";
-      case 12299: 
-        AppMethodBeat.o(103031);
-        return "EGL_BAD_NATIVE_WINDOW";
-      case 12300: 
-        AppMethodBeat.o(103031);
-        return "EGL_BAD_PARAMETER";
-      case 12301: 
-        AppMethodBeat.o(103031);
-        return "EGL_BAD_SURFACE";
-      }
-      AppMethodBeat.o(103031);
-      return "EGL_CONTEXT_LOST";
-    }
-    
-    private void log(String paramString)
-    {
-      AppMethodBeat.i(103011);
-      try
-      {
-        this.fNk.write(paramString);
-        AppMethodBeat.o(103011);
-        return;
-      }
-      catch (IOException paramString)
-      {
-        AppMethodBeat.o(103011);
-      }
-    }
-    
-    private void lt(int paramInt)
-    {
-      AppMethodBeat.i(103022);
-      tb(Integer.toString(paramInt));
-      AppMethodBeat.o(103022);
-    }
-    
-    private static String lu(int paramInt)
-    {
-      AppMethodBeat.i(103030);
-      String str = "0x" + Integer.toHexString(paramInt);
-      AppMethodBeat.o(103030);
-      return str;
-    }
-    
-    private void sZ(String paramString)
-    {
-      AppMethodBeat.i(103010);
-      log(paramString + '\n');
-      AppMethodBeat.o(103010);
-    }
-    
-    private void ta(String paramString)
-    {
-      AppMethodBeat.i(103012);
-      log(paramString + '(');
-      this.fNn = 0;
-      AppMethodBeat.o(103012);
-    }
-    
-    private void tb(String paramString)
-    {
-      AppMethodBeat.i(103021);
-      log(" returns " + paramString + ";\n");
-      flush();
-      AppMethodBeat.o(103021);
-    }
-    
-    private static String toString(Object paramObject)
-    {
-      AppMethodBeat.i(103025);
-      if (paramObject == null)
-      {
-        AppMethodBeat.o(103025);
-        return "null";
-      }
-      paramObject = paramObject.toString();
-      AppMethodBeat.o(103025);
-      return paramObject;
-    }
-    
-    public final boolean eglChooseConfig(EGLDisplay paramEGLDisplay, int[] paramArrayOfInt1, EGLConfig[] paramArrayOfEGLConfig, int paramInt, int[] paramArrayOfInt2)
-    {
-      AppMethodBeat.i(102985);
-      ta("eglChooseConfig");
-      a("display", paramEGLDisplay);
-      a("attrib_list", paramArrayOfInt1);
-      J("config_size", paramInt);
-      end();
-      boolean bool = this.fNj.eglChooseConfig(paramEGLDisplay, paramArrayOfInt1, paramArrayOfEGLConfig, paramInt, paramArrayOfInt2);
-      g("configs", paramArrayOfEGLConfig);
-      a("num_config", paramArrayOfInt2);
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(102985);
-      return bool;
-    }
-    
-    public final boolean eglCopyBuffers(EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface, Object paramObject)
-    {
-      AppMethodBeat.i(102986);
-      ta("eglCopyBuffers");
-      a("display", paramEGLDisplay);
-      a("surface", paramEGLSurface);
-      c("native_pixmap", paramObject);
-      end();
-      boolean bool = this.fNj.eglCopyBuffers(paramEGLDisplay, paramEGLSurface, paramObject);
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(102986);
-      return bool;
-    }
-    
-    public final EGLContext eglCreateContext(EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, EGLContext paramEGLContext, int[] paramArrayOfInt)
-    {
-      AppMethodBeat.i(102987);
-      ta("eglCreateContext");
-      a("display", paramEGLDisplay);
-      c("config", paramEGLConfig);
-      a("share_context", paramEGLContext);
-      a("attrib_list", paramArrayOfInt);
-      end();
-      paramEGLDisplay = this.fNj.eglCreateContext(paramEGLDisplay, paramEGLConfig, paramEGLContext, paramArrayOfInt);
-      aO(paramEGLDisplay);
-      checkError();
-      AppMethodBeat.o(102987);
-      return paramEGLDisplay;
-    }
-    
-    public final EGLSurface eglCreatePbufferSurface(EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int[] paramArrayOfInt)
-    {
-      AppMethodBeat.i(102988);
-      ta("eglCreatePbufferSurface");
-      a("display", paramEGLDisplay);
-      c("config", paramEGLConfig);
-      a("attrib_list", paramArrayOfInt);
-      end();
-      paramEGLDisplay = this.fNj.eglCreatePbufferSurface(paramEGLDisplay, paramEGLConfig, paramArrayOfInt);
-      aO(paramEGLDisplay);
-      checkError();
-      AppMethodBeat.o(102988);
-      return paramEGLDisplay;
-    }
-    
-    public final EGLSurface eglCreatePixmapSurface(EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject, int[] paramArrayOfInt)
-    {
-      AppMethodBeat.i(102989);
-      ta("eglCreatePixmapSurface");
-      a("display", paramEGLDisplay);
-      c("config", paramEGLConfig);
-      c("native_pixmap", paramObject);
-      a("attrib_list", paramArrayOfInt);
-      end();
-      paramEGLDisplay = this.fNj.eglCreatePixmapSurface(paramEGLDisplay, paramEGLConfig, paramObject, paramArrayOfInt);
-      aO(paramEGLDisplay);
-      checkError();
-      AppMethodBeat.o(102989);
-      return paramEGLDisplay;
-    }
-    
-    public final EGLSurface eglCreateWindowSurface(EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject, int[] paramArrayOfInt)
-    {
-      AppMethodBeat.i(102990);
-      ta("eglCreateWindowSurface");
-      a("display", paramEGLDisplay);
-      c("config", paramEGLConfig);
-      c("native_window", paramObject);
-      a("attrib_list", paramArrayOfInt);
-      end();
-      paramEGLDisplay = this.fNj.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, paramArrayOfInt);
-      aO(paramEGLDisplay);
-      checkError();
-      AppMethodBeat.o(102990);
-      return paramEGLDisplay;
-    }
-    
-    public final boolean eglDestroyContext(EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-    {
-      AppMethodBeat.i(102991);
-      ta("eglDestroyContext");
-      a("display", paramEGLDisplay);
-      a("context", paramEGLContext);
-      end();
-      boolean bool = this.fNj.eglDestroyContext(paramEGLDisplay, paramEGLContext);
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(102991);
-      return bool;
-    }
-    
-    public final boolean eglDestroySurface(EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
-    {
-      AppMethodBeat.i(102992);
-      ta("eglDestroySurface");
-      a("display", paramEGLDisplay);
-      a("surface", paramEGLSurface);
-      end();
-      boolean bool = this.fNj.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(102992);
-      return bool;
-    }
-    
-    public final boolean eglGetConfigAttrib(EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt, int[] paramArrayOfInt)
-    {
-      AppMethodBeat.i(102993);
-      ta("eglGetConfigAttrib");
-      a("display", paramEGLDisplay);
-      c("config", paramEGLConfig);
-      J("attribute", paramInt);
-      end();
-      boolean bool = this.fNj.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, paramArrayOfInt);
-      a("value", paramArrayOfInt);
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(102993);
-      return false;
-    }
-    
-    public final boolean eglGetConfigs(EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig, int paramInt, int[] paramArrayOfInt)
-    {
-      AppMethodBeat.i(102994);
-      ta("eglGetConfigs");
-      a("display", paramEGLDisplay);
-      J("config_size", paramInt);
-      end();
-      boolean bool = this.fNj.eglGetConfigs(paramEGLDisplay, paramArrayOfEGLConfig, paramInt, paramArrayOfInt);
-      g("configs", paramArrayOfEGLConfig);
-      a("num_config", paramArrayOfInt);
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(102994);
-      return bool;
-    }
-    
-    public final EGLContext eglGetCurrentContext()
-    {
-      AppMethodBeat.i(102995);
-      ta("eglGetCurrentContext");
-      end();
-      EGLContext localEGLContext = this.fNj.eglGetCurrentContext();
-      aO(localEGLContext);
-      checkError();
-      AppMethodBeat.o(102995);
-      return localEGLContext;
-    }
-    
-    public final EGLDisplay eglGetCurrentDisplay()
-    {
-      AppMethodBeat.i(102996);
-      ta("eglGetCurrentDisplay");
-      end();
-      EGLDisplay localEGLDisplay = this.fNj.eglGetCurrentDisplay();
-      aO(localEGLDisplay);
-      checkError();
-      AppMethodBeat.o(102996);
-      return localEGLDisplay;
-    }
-    
-    public final EGLSurface eglGetCurrentSurface(int paramInt)
-    {
-      AppMethodBeat.i(102997);
-      ta("eglGetCurrentSurface");
-      J("readdraw", paramInt);
-      end();
-      EGLSurface localEGLSurface = this.fNj.eglGetCurrentSurface(paramInt);
-      aO(localEGLSurface);
-      checkError();
-      AppMethodBeat.o(102997);
-      return localEGLSurface;
-    }
-    
-    public final EGLDisplay eglGetDisplay(Object paramObject)
-    {
-      AppMethodBeat.i(102998);
-      ta("eglGetDisplay");
-      c("native_display", paramObject);
-      end();
-      paramObject = this.fNj.eglGetDisplay(paramObject);
-      aO(paramObject);
-      checkError();
-      AppMethodBeat.o(102998);
-      return paramObject;
-    }
-    
-    public final int eglGetError()
-    {
-      AppMethodBeat.i(102999);
-      ta("eglGetError");
-      end();
-      int i = this.fNj.eglGetError();
-      tb(getErrorString(i));
-      AppMethodBeat.o(102999);
-      return i;
-    }
-    
-    public final boolean eglInitialize(EGLDisplay paramEGLDisplay, int[] paramArrayOfInt)
-    {
-      AppMethodBeat.i(103000);
-      ta("eglInitialize");
-      a("display", paramEGLDisplay);
-      end();
-      boolean bool = this.fNj.eglInitialize(paramEGLDisplay, paramArrayOfInt);
-      cY(bool);
-      a("major_minor", paramArrayOfInt);
-      checkError();
-      AppMethodBeat.o(103000);
-      return bool;
-    }
-    
-    public final boolean eglMakeCurrent(EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface1, EGLSurface paramEGLSurface2, EGLContext paramEGLContext)
-    {
-      AppMethodBeat.i(103001);
-      ta("eglMakeCurrent");
-      a("display", paramEGLDisplay);
-      a("draw", paramEGLSurface1);
-      a("read", paramEGLSurface2);
-      a("context", paramEGLContext);
-      end();
-      boolean bool = this.fNj.eglMakeCurrent(paramEGLDisplay, paramEGLSurface1, paramEGLSurface2, paramEGLContext);
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(103001);
-      return bool;
-    }
-    
-    public final boolean eglQueryContext(EGLDisplay paramEGLDisplay, EGLContext paramEGLContext, int paramInt, int[] paramArrayOfInt)
-    {
-      AppMethodBeat.i(103002);
-      ta("eglQueryContext");
-      a("display", paramEGLDisplay);
-      a("context", paramEGLContext);
-      J("attribute", paramInt);
-      end();
-      boolean bool = this.fNj.eglQueryContext(paramEGLDisplay, paramEGLContext, paramInt, paramArrayOfInt);
-      lt(paramArrayOfInt[0]);
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(103002);
-      return bool;
-    }
-    
-    public final String eglQueryString(EGLDisplay paramEGLDisplay, int paramInt)
-    {
-      AppMethodBeat.i(103003);
-      ta("eglQueryString");
-      a("display", paramEGLDisplay);
-      J("name", paramInt);
-      end();
-      paramEGLDisplay = this.fNj.eglQueryString(paramEGLDisplay, paramInt);
-      tb(paramEGLDisplay);
-      checkError();
-      AppMethodBeat.o(103003);
-      return paramEGLDisplay;
-    }
-    
-    public final boolean eglQuerySurface(EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface, int paramInt, int[] paramArrayOfInt)
-    {
-      AppMethodBeat.i(103004);
-      ta("eglQuerySurface");
-      a("display", paramEGLDisplay);
-      a("surface", paramEGLSurface);
-      J("attribute", paramInt);
-      end();
-      boolean bool = this.fNj.eglQuerySurface(paramEGLDisplay, paramEGLSurface, paramInt, paramArrayOfInt);
-      lt(paramArrayOfInt[0]);
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(103004);
-      return bool;
-    }
-    
-    public final boolean eglSwapBuffers(EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
-    {
-      AppMethodBeat.i(103005);
-      ta("eglSwapBuffers");
-      a("display", paramEGLDisplay);
-      a("surface", paramEGLSurface);
-      end();
-      boolean bool = this.fNj.eglSwapBuffers(paramEGLDisplay, paramEGLSurface);
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(103005);
-      return bool;
-    }
-    
-    public final boolean eglTerminate(EGLDisplay paramEGLDisplay)
-    {
-      AppMethodBeat.i(103006);
-      ta("eglTerminate");
-      a("display", paramEGLDisplay);
-      end();
-      boolean bool = this.fNj.eglTerminate(paramEGLDisplay);
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(103006);
-      return bool;
-    }
-    
-    public final boolean eglWaitGL()
-    {
-      AppMethodBeat.i(103007);
-      ta("eglWaitGL");
-      end();
-      boolean bool = this.fNj.eglWaitGL();
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(103007);
-      return bool;
-    }
-    
-    public final boolean eglWaitNative(int paramInt, Object paramObject)
-    {
-      AppMethodBeat.i(103008);
-      ta("eglWaitNative");
-      J("engine", paramInt);
-      c("bindTarget", paramObject);
-      end();
-      boolean bool = this.fNj.eglWaitNative(paramInt, paramObject);
-      cY(bool);
-      checkError();
-      AppMethodBeat.o(103008);
-      return bool;
-    }
   }
   
   public static abstract interface h
@@ -1326,30 +633,30 @@ public class GameGLSurfaceView
   
   static final class i
   {
-    WeakReference<GameGLSurfaceView> fNo;
-    EGL10 fNp;
-    EGLDisplay fNq;
-    EGLSurface fNr;
-    EGLConfig fNs;
-    EGLContext fNt;
-    EGLSurface fNu;
+    WeakReference<GameGLSurfaceView> ggO;
+    EGL10 ggP;
+    EGLDisplay ggQ;
+    EGLSurface ggR;
+    EGLConfig ggS;
+    EGLContext ggT;
+    EGLSurface ggU;
     
     public i(WeakReference<GameGLSurfaceView> paramWeakReference)
     {
-      this.fNo = paramWeakReference;
+      this.ggO = paramWeakReference;
     }
     
-    public static void K(String paramString, int paramInt)
+    public static void N(String paramString, int paramInt)
     {
       AppMethodBeat.i(103034);
-      paramString = L(paramString, paramInt);
+      paramString = O(paramString, paramInt);
       c.e("MicroMsg.GLThread", "throwEglException tid=" + Thread.currentThread().getId() + " " + paramString, new Object[0]);
       paramString = new RuntimeException(paramString);
       AppMethodBeat.o(103034);
       throw paramString;
     }
     
-    private static String L(String paramString, int paramInt)
+    private static String O(String paramString, int paramInt)
     {
       AppMethodBeat.i(103036);
       paramString = paramString + " failed: " + GameGLSurfaceView.g.getErrorString(paramInt);
@@ -1357,27 +664,27 @@ public class GameGLSurfaceView
       return paramString;
     }
     
-    public static void i(String paramString1, String paramString2, int paramInt)
+    public static void h(String paramString1, String paramString2, int paramInt)
     {
       AppMethodBeat.i(103035);
-      c.w(paramString1, L(paramString2, paramInt), new Object[0]);
+      c.w(paramString1, O(paramString2, paramInt), new Object[0]);
       AppMethodBeat.o(103035);
     }
     
-    final void abC()
+    final void aeg()
     {
       AppMethodBeat.i(103033);
-      if ((this.fNr != null) && (this.fNr != EGL10.EGL_NO_SURFACE))
+      if ((this.ggR != null) && (this.ggR != EGL10.EGL_NO_SURFACE))
       {
-        Object localObject = this.fNp;
-        EGLDisplay localEGLDisplay = this.fNq;
+        Object localObject = this.ggP;
+        EGLDisplay localEGLDisplay = this.ggQ;
         EGLSurface localEGLSurface = EGL10.EGL_NO_SURFACE;
         ((EGL10)localObject).eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, EGL10.EGL_NO_CONTEXT);
-        localObject = (GameGLSurfaceView)this.fNo.get();
+        localObject = (GameGLSurfaceView)this.ggO.get();
         if (localObject != null) {
-          GameGLSurfaceView.d((GameGLSurfaceView)localObject).destroySurface(this.fNp, this.fNq, this.fNr);
+          GameGLSurfaceView.d((GameGLSurfaceView)localObject).destroySurface(this.ggP, this.ggQ, this.ggR);
         }
-        this.fNr = null;
+        this.ggR = null;
       }
       AppMethodBeat.o(103033);
     }
@@ -1386,44 +693,44 @@ public class GameGLSurfaceView
     {
       AppMethodBeat.i(103032);
       c.w("MicroMsg.GLThread", "start() tid=" + Thread.currentThread().getId(), new Object[0]);
-      this.fNp = ((EGL10)EGLContext.getEGL());
-      this.fNq = this.fNp.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-      if (this.fNq == EGL10.EGL_NO_DISPLAY)
+      this.ggP = ((EGL10)EGLContext.getEGL());
+      this.ggQ = this.ggP.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+      if (this.ggQ == EGL10.EGL_NO_DISPLAY)
       {
         localObject = new RuntimeException("eglGetDisplay failed");
         AppMethodBeat.o(103032);
         throw ((Throwable)localObject);
       }
       Object localObject = new int[2];
-      if (!this.fNp.eglInitialize(this.fNq, (int[])localObject))
+      if (!this.ggP.eglInitialize(this.ggQ, (int[])localObject))
       {
         localObject = new RuntimeException("eglInitialize failed");
         AppMethodBeat.o(103032);
         throw ((Throwable)localObject);
       }
-      localObject = (GameGLSurfaceView)this.fNo.get();
+      localObject = (GameGLSurfaceView)this.ggO.get();
       if (localObject == null)
       {
-        this.fNs = null;
-        this.fNt = null;
+        this.ggS = null;
+        this.ggT = null;
         c.w("MicroMsg.GameGLSurfaceView", "alvinluo EglHelper start but view is null and set mEglConfig = null, mEglContext = null", new Object[0]);
       }
       for (;;)
       {
-        if ((this.fNt == null) || (this.fNt == EGL10.EGL_NO_CONTEXT))
+        if ((this.ggT == null) || (this.ggT == EGL10.EGL_NO_CONTEXT))
         {
-          this.fNt = null;
-          K("createContext", this.fNp.eglGetError());
+          this.ggT = null;
+          N("createContext", this.ggP.eglGetError());
         }
-        c.w("MicroMsg.GLThread", "createContext " + this.fNt + " tid=" + Thread.currentThread().getId(), new Object[0]);
-        this.fNu = this.fNp.eglCreatePbufferSurface(this.fNq, this.fNs, new int[] { 12375, 16, 12374, 16, 12344 });
-        this.fNp.eglMakeCurrent(this.fNq, this.fNu, this.fNu, this.fNt);
-        this.fNr = null;
+        c.w("MicroMsg.GLThread", "createContext " + this.ggT + " tid=" + Thread.currentThread().getId(), new Object[0]);
+        this.ggU = this.ggP.eglCreatePbufferSurface(this.ggQ, this.ggS, new int[] { 12375, 16, 12374, 16, 12344 });
+        this.ggP.eglMakeCurrent(this.ggQ, this.ggU, this.ggU, this.ggT);
+        this.ggR = null;
         AppMethodBeat.o(103032);
         return;
-        this.fNs = GameGLSurfaceView.b((GameGLSurfaceView)localObject).chooseConfig(this.fNp, this.fNq);
-        c.i("MicroMsg.GameGLSurfaceView", "alvinluo EglHelper start chooseConfig end config: %s, display: %s", new Object[] { Integer.valueOf(this.fNs.hashCode()), Integer.valueOf(this.fNq.hashCode()) });
-        this.fNt = GameGLSurfaceView.c((GameGLSurfaceView)localObject).b(this.fNp, this.fNq, this.fNs, EGL10.EGL_NO_CONTEXT);
+        this.ggS = GameGLSurfaceView.b((GameGLSurfaceView)localObject).chooseConfig(this.ggP, this.ggQ);
+        c.i("MicroMsg.GameGLSurfaceView", "alvinluo EglHelper start chooseConfig end config: %s, display: %s", new Object[] { Integer.valueOf(this.ggS.hashCode()), Integer.valueOf(this.ggQ.hashCode()) });
+        this.ggT = GameGLSurfaceView.c((GameGLSurfaceView)localObject).a(this.ggP, this.ggQ, this.ggS, EGL10.EGL_NO_CONTEXT);
         c.i("MicroMsg.GameGLSurfaceView", "alvinluo EglHelper start createContext end", new Object[0]);
       }
     }
@@ -1432,27 +739,27 @@ public class GameGLSurfaceView
   static final class j
     extends Thread
   {
-    boolean AC;
-    boolean fNA;
-    boolean fNB;
-    private boolean fNC;
-    boolean fND;
-    boolean fNE;
-    boolean fNF;
-    boolean fNG;
-    private boolean fNH;
-    boolean fNI;
-    private boolean fNJ;
-    boolean fNK;
-    private LinkedList<Runnable> fNL;
-    boolean fNM;
-    private GameGLSurfaceView.i fNN;
-    private WeakReference<GameGLSurfaceView> fNo;
-    private boolean fNv;
-    boolean fNw;
-    private boolean fNx;
-    boolean fNy;
-    boolean fNz;
+    boolean Ct;
+    private WeakReference<GameGLSurfaceView> ggO;
+    private boolean ggV;
+    boolean ggW;
+    private boolean ggX;
+    boolean ggY;
+    boolean ggZ;
+    boolean gha;
+    boolean ghb;
+    private boolean ghc;
+    boolean ghd;
+    boolean ghe;
+    boolean ghf;
+    boolean ghg;
+    private boolean ghh;
+    boolean ghi;
+    private boolean ghj;
+    boolean ghk;
+    private LinkedList<Runnable> ghl;
+    boolean ghm;
+    private GameGLSurfaceView.i ghn;
     int mHeight;
     private int mRenderMode;
     int mWidth;
@@ -1460,18 +767,18 @@ public class GameGLSurfaceView
     j(WeakReference<GameGLSurfaceView> paramWeakReference)
     {
       AppMethodBeat.i(103037);
-      this.fNL = new LinkedList();
-      this.fNM = true;
+      this.ghl = new LinkedList();
+      this.ghm = true;
       try
       {
         setPriority(10);
         label31:
         this.mWidth = 0;
         this.mHeight = 0;
-        this.fNI = true;
+        this.ghi = true;
         this.mRenderMode = 1;
-        this.fNJ = false;
-        this.fNo = paramWeakReference;
+        this.ghj = false;
+        this.ggO = paramWeakReference;
         AppMethodBeat.o(103037);
         return;
       }
@@ -1481,28 +788,28 @@ public class GameGLSurfaceView
       }
     }
     
-    private void abD()
+    private void aeh()
     {
-      if (this.fNF)
+      if (this.ghf)
       {
-        this.fNF = false;
-        this.fNG = false;
+        this.ghf = false;
+        this.ghg = false;
       }
     }
     
-    private void abE()
+    private void aei()
     {
       AppMethodBeat.i(103039);
-      if (this.fNE)
+      if (this.ghe)
       {
-        this.fNE = false;
-        GameGLSurfaceView.abB().notifyAll();
+        this.ghe = false;
+        GameGLSurfaceView.aef().notifyAll();
       }
       AppMethodBeat.o(103039);
     }
     
     /* Error */
-    private void abF()
+    private void aej()
     {
       // Byte code:
       //   0: ldc 106
@@ -1511,22 +818,22 @@ public class GameGLSurfaceView
       //   6: new 108	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i
       //   9: dup
       //   10: aload_0
-      //   11: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNo	Ljava/lang/ref/WeakReference;
+      //   11: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggO	Ljava/lang/ref/WeakReference;
       //   14: invokespecial 110	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:<init>	(Ljava/lang/ref/WeakReference;)V
-      //   17: putfield 112	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNN	Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i;
+      //   17: putfield 112	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghn	Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i;
       //   20: aload_0
       //   21: iconst_0
-      //   22: putfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNE	Z
+      //   22: putfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghe	Z
       //   25: aload_0
       //   26: iconst_0
-      //   27: putfield 85	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNF	Z
-      //   30: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   27: putfield 85	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghf	Z
+      //   30: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   33: astore 15
       //   35: aload 15
       //   37: monitorenter
       //   38: aload_0
       //   39: iconst_0
-      //   40: putfield 72	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNJ	Z
+      //   40: putfield 72	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghj	Z
       //   43: aload 15
       //   45: monitorexit
       //   46: iconst_0
@@ -1551,7 +858,7 @@ public class GameGLSurfaceView
       //   72: astore 15
       //   74: iconst_0
       //   75: istore_1
-      //   76: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   76: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   79: astore 16
       //   81: aload 16
       //   83: monitorenter
@@ -1562,7 +869,7 @@ public class GameGLSurfaceView
       //   89: iload 8
       //   91: istore_1
       //   92: aload_0
-      //   93: getfield 114	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNv	Z
+      //   93: getfield 114	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggV	Z
       //   96: ifeq +25 -> 121
       //   99: aload 16
       //   101: monitorexit
@@ -1577,17 +884,17 @@ public class GameGLSurfaceView
       //   118: aload 16
       //   120: athrow
       //   121: aload_0
-      //   122: getfield 116	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:AC	Z
+      //   122: getfield 116	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:Ct	Z
       //   125: ifne +62 -> 187
       //   128: aload_0
-      //   129: getfield 87	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNG	Z
+      //   129: getfield 87	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghg	Z
       //   132: ifeq +55 -> 187
       //   135: aload_0
-      //   136: getfield 57	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNL	Ljava/util/LinkedList;
+      //   136: getfield 57	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghl	Ljava/util/LinkedList;
       //   139: invokevirtual 120	java/util/LinkedList:isEmpty	()Z
       //   142: ifne +45 -> 187
       //   145: aload_0
-      //   146: getfield 57	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNL	Ljava/util/LinkedList;
+      //   146: getfield 57	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghl	Ljava/util/LinkedList;
       //   149: iconst_0
       //   150: invokevirtual 124	java/util/LinkedList:remove	(I)Ljava/lang/Object;
       //   153: checkcast 126	java/lang/Runnable
@@ -1610,21 +917,21 @@ public class GameGLSurfaceView
       //   187: iconst_0
       //   188: istore 14
       //   190: aload_0
-      //   191: getfield 116	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:AC	Z
+      //   191: getfield 116	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:Ct	Z
       //   194: aload_0
-      //   195: getfield 131	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNy	Z
+      //   195: getfield 131	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggY	Z
       //   198: if_icmpeq +95 -> 293
       //   201: aload_0
-      //   202: getfield 131	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNy	Z
+      //   202: getfield 131	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggY	Z
       //   205: istore 14
       //   207: aload_0
       //   208: aload_0
-      //   209: getfield 131	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNy	Z
-      //   212: putfield 116	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:AC	Z
+      //   209: getfield 131	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggY	Z
+      //   212: putfield 116	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:Ct	Z
       //   215: iload 14
       //   217: ifeq +472 -> 689
       //   220: aload_0
-      //   221: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNo	Ljava/lang/ref/WeakReference;
+      //   221: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggO	Ljava/lang/ref/WeakReference;
       //   224: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   227: checkcast 6	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView
       //   230: astore 17
@@ -1633,7 +940,7 @@ public class GameGLSurfaceView
       //   237: aload 17
       //   239: invokestatic 141	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:g	(Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView;)Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$n;
       //   242: invokeinterface 146 1 0
-      //   247: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   247: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   250: invokevirtual 100	java/lang/Object:notifyAll	()V
       //   253: ldc 148
       //   255: new 150	java/lang/StringBuilder
@@ -1641,7 +948,7 @@ public class GameGLSurfaceView
       //   259: ldc 152
       //   261: invokespecial 155	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   264: aload_0
-      //   265: getfield 116	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:AC	Z
+      //   265: getfield 116	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:Ct	Z
       //   268: invokevirtual 159	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
       //   271: ldc 161
       //   273: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1653,7 +960,7 @@ public class GameGLSurfaceView
       //   287: anewarray 97	java/lang/Object
       //   290: invokestatic 180	com/tencent/mm/dynamicbackground/a/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   293: aload_0
-      //   294: getfield 182	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNH	Z
+      //   294: getfield 182	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghh	Z
       //   297: ifeq +46 -> 343
       //   300: ldc 148
       //   302: new 150	java/lang/StringBuilder
@@ -1668,12 +975,12 @@ public class GameGLSurfaceView
       //   322: anewarray 97	java/lang/Object
       //   325: invokestatic 180	com/tencent/mm/dynamicbackground/a/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   328: aload_0
-      //   329: invokespecial 186	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:abD	()V
+      //   329: invokespecial 186	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:aeh	()V
       //   332: aload_0
-      //   333: invokespecial 188	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:abE	()V
+      //   333: invokespecial 188	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:aei	()V
       //   336: aload_0
       //   337: iconst_0
-      //   338: putfield 182	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNH	Z
+      //   338: putfield 182	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghh	Z
       //   341: iconst_1
       //   342: istore_1
       //   343: iload 7
@@ -1681,15 +988,15 @@ public class GameGLSurfaceView
       //   347: iload 7
       //   349: ifeq +14 -> 363
       //   352: aload_0
-      //   353: invokespecial 186	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:abD	()V
+      //   353: invokespecial 186	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:aeh	()V
       //   356: aload_0
-      //   357: invokespecial 188	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:abE	()V
+      //   357: invokespecial 188	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:aei	()V
       //   360: iconst_0
       //   361: istore 12
       //   363: iload 14
       //   365: ifeq +42 -> 407
       //   368: aload_0
-      //   369: getfield 85	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNF	Z
+      //   369: getfield 85	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghf	Z
       //   372: ifeq +35 -> 407
       //   375: ldc 148
       //   377: new 150	java/lang/StringBuilder
@@ -1704,14 +1011,14 @@ public class GameGLSurfaceView
       //   397: anewarray 97	java/lang/Object
       //   400: invokestatic 180	com/tencent/mm/dynamicbackground/a/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   403: aload_0
-      //   404: invokespecial 186	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:abD	()V
+      //   404: invokespecial 186	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:aeh	()V
       //   407: iload 14
       //   409: ifeq +67 -> 476
       //   412: aload_0
-      //   413: getfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNE	Z
+      //   413: getfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghe	Z
       //   416: ifeq +60 -> 476
       //   419: aload_0
-      //   420: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNo	Ljava/lang/ref/WeakReference;
+      //   420: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggO	Ljava/lang/ref/WeakReference;
       //   423: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   426: checkcast 6	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView
       //   429: astore 17
@@ -1722,7 +1029,7 @@ public class GameGLSurfaceView
       //   439: iload 14
       //   441: ifne +35 -> 476
       //   444: aload_0
-      //   445: invokespecial 188	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:abE	()V
+      //   445: invokespecial 188	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:aei	()V
       //   448: ldc 148
       //   450: new 150	java/lang/StringBuilder
       //   453: dup
@@ -1736,10 +1043,10 @@ public class GameGLSurfaceView
       //   470: anewarray 97	java/lang/Object
       //   473: invokestatic 180	com/tencent/mm/dynamicbackground/a/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   476: aload_0
-      //   477: getfield 194	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNB	Z
+      //   477: getfield 194	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghb	Z
       //   480: ifne +65 -> 545
       //   483: aload_0
-      //   484: getfield 196	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fND	Z
+      //   484: getfield 196	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghd	Z
       //   487: ifne +58 -> 545
       //   490: ldc 148
       //   492: new 150	java/lang/StringBuilder
@@ -1754,23 +1061,23 @@ public class GameGLSurfaceView
       //   512: anewarray 97	java/lang/Object
       //   515: invokestatic 180	com/tencent/mm/dynamicbackground/a/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   518: aload_0
-      //   519: getfield 85	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNF	Z
+      //   519: getfield 85	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghf	Z
       //   522: ifeq +7 -> 529
       //   525: aload_0
-      //   526: invokespecial 186	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:abD	()V
+      //   526: invokespecial 186	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:aeh	()V
       //   529: aload_0
       //   530: iconst_1
-      //   531: putfield 196	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fND	Z
+      //   531: putfield 196	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghd	Z
       //   534: aload_0
       //   535: iconst_0
-      //   536: putfield 200	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNC	Z
-      //   539: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   536: putfield 200	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghc	Z
+      //   539: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   542: invokevirtual 100	java/lang/Object:notifyAll	()V
       //   545: aload_0
-      //   546: getfield 194	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNB	Z
+      //   546: getfield 194	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghb	Z
       //   549: ifeq +49 -> 598
       //   552: aload_0
-      //   553: getfield 196	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fND	Z
+      //   553: getfield 196	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghd	Z
       //   556: ifeq +42 -> 598
       //   559: ldc 148
       //   561: new 150	java/lang/StringBuilder
@@ -1786,8 +1093,8 @@ public class GameGLSurfaceView
       //   584: invokestatic 180	com/tencent/mm/dynamicbackground/a/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   587: aload_0
       //   588: iconst_0
-      //   589: putfield 196	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fND	Z
-      //   592: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   589: putfield 196	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghd	Z
+      //   592: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   595: invokevirtual 100	java/lang/Object:notifyAll	()V
       //   598: iload 6
       //   600: istore 13
@@ -1807,16 +1114,16 @@ public class GameGLSurfaceView
       //   632: invokestatic 180	com/tencent/mm/dynamicbackground/a/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   635: aload_0
       //   636: iconst_0
-      //   637: putfield 72	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNJ	Z
+      //   637: putfield 72	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghj	Z
       //   640: iconst_0
       //   641: istore 13
       //   643: aload_0
       //   644: iconst_1
-      //   645: putfield 206	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNK	Z
-      //   648: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   645: putfield 206	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghk	Z
+      //   648: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   651: invokevirtual 100	java/lang/Object:notifyAll	()V
       //   654: aload_0
-      //   655: getfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNE	Z
+      //   655: getfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghe	Z
       //   658: ifne +179 -> 837
       //   661: ldc 148
       //   663: ldc 208
@@ -1833,7 +1140,7 @@ public class GameGLSurfaceView
       //   684: istore 7
       //   686: goto -528 -> 158
       //   689: aload_0
-      //   690: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNo	Ljava/lang/ref/WeakReference;
+      //   690: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggO	Ljava/lang/ref/WeakReference;
       //   693: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   696: checkcast 6	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView
       //   699: astore 17
@@ -1858,7 +1165,7 @@ public class GameGLSurfaceView
       //   741: anewarray 97	java/lang/Object
       //   744: invokestatic 217	com/tencent/mm/dynamicbackground/a/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   747: aload_0
-      //   748: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNo	Ljava/lang/ref/WeakReference;
+      //   748: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggO	Ljava/lang/ref/WeakReference;
       //   751: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   754: checkcast 6	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView
       //   757: astore 15
@@ -1875,12 +1182,12 @@ public class GameGLSurfaceView
       //   785: istore 14
       //   787: goto -348 -> 439
       //   790: aload_0
-      //   791: getfield 112	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNN	Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i;
+      //   791: getfield 112	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghn	Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i;
       //   794: invokevirtual 227	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:start	()V
       //   797: aload_0
       //   798: iconst_1
-      //   799: putfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNE	Z
-      //   802: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   799: putfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghe	Z
+      //   802: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   805: invokevirtual 100	java/lang/Object:notifyAll	()V
       //   808: iconst_1
       //   809: istore_3
@@ -1890,19 +1197,19 @@ public class GameGLSurfaceView
       //   816: istore 7
       //   818: goto -660 -> 158
       //   821: astore 15
-      //   823: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   823: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   826: invokevirtual 100	java/lang/Object:notifyAll	()V
       //   829: ldc 106
       //   831: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   834: aload 15
       //   836: athrow
       //   837: aload_0
-      //   838: invokevirtual 230	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:abH	()Z
+      //   838: invokevirtual 230	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ael	()Z
       //   841: ifeq +1543 -> 2384
       //   844: iload_3
       //   845: istore 6
       //   847: aload_0
-      //   848: getfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNE	Z
+      //   848: getfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghe	Z
       //   851: ifne +1542 -> 2393
       //   854: ldc 148
       //   856: ldc 208
@@ -1920,7 +1227,7 @@ public class GameGLSurfaceView
       //   878: iload 5
       //   880: istore 8
       //   882: aload_0
-      //   883: getfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNE	Z
+      //   883: getfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghe	Z
       //   886: ifeq +46 -> 932
       //   889: iload_2
       //   890: istore 7
@@ -1929,7 +1236,7 @@ public class GameGLSurfaceView
       //   896: iload 5
       //   898: istore 8
       //   900: aload_0
-      //   901: getfield 85	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNF	Z
+      //   901: getfield 85	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghf	Z
       //   904: ifne +28 -> 932
       //   907: ldc 148
       //   909: ldc 232
@@ -1938,7 +1245,7 @@ public class GameGLSurfaceView
       //   915: invokestatic 180	com/tencent/mm/dynamicbackground/a/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   918: aload_0
       //   919: iconst_1
-      //   920: putfield 85	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNF	Z
+      //   920: putfield 85	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghf	Z
       //   923: iconst_1
       //   924: istore 6
       //   926: iconst_1
@@ -1946,10 +1253,10 @@ public class GameGLSurfaceView
       //   929: iconst_1
       //   930: istore 7
       //   932: aload_0
-      //   933: getfield 85	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNF	Z
+      //   933: getfield 85	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghf	Z
       //   936: ifeq +159 -> 1095
       //   939: aload_0
-      //   940: getfield 59	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNM	Z
+      //   940: getfield 59	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghm	Z
       //   943: ifeq +1427 -> 2370
       //   946: iconst_1
       //   947: istore 7
@@ -1961,7 +1268,7 @@ public class GameGLSurfaceView
       //   958: istore 4
       //   960: aload_0
       //   961: iconst_1
-      //   962: putfield 72	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNJ	Z
+      //   962: putfield 72	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghj	Z
       //   965: ldc 148
       //   967: new 150	java/lang/StringBuilder
       //   970: dup
@@ -1978,14 +1285,14 @@ public class GameGLSurfaceView
       //   994: istore 5
       //   996: aload_0
       //   997: iconst_0
-      //   998: putfield 59	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNM	Z
+      //   998: putfield 59	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghm	Z
       //   1001: aload_0
       //   1002: iconst_0
-      //   1003: putfield 68	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNI	Z
-      //   1006: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   1003: putfield 68	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghi	Z
+      //   1006: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   1009: invokevirtual 100	java/lang/Object:notifyAll	()V
       //   1012: aload_0
-      //   1013: getfield 72	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNJ	Z
+      //   1013: getfield 72	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghj	Z
       //   1016: istore 14
       //   1018: iload 14
       //   1020: ifeq +1321 -> 2341
@@ -2007,18 +1314,18 @@ public class GameGLSurfaceView
       //   1050: istore 5
       //   1052: goto -894 -> 158
       //   1055: aload_0
-      //   1056: getfield 112	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNN	Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i;
+      //   1056: getfield 112	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghn	Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i;
       //   1059: invokevirtual 227	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:start	()V
       //   1062: aload_0
       //   1063: iconst_1
-      //   1064: putfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNE	Z
+      //   1064: putfield 91	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghe	Z
       //   1067: iconst_1
       //   1068: istore 6
-      //   1070: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   1070: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   1073: invokevirtual 100	java/lang/Object:notifyAll	()V
       //   1076: goto +1317 -> 2393
       //   1079: astore 15
-      //   1081: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   1081: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   1084: invokevirtual 100	java/lang/Object:notifyAll	()V
       //   1087: ldc 106
       //   1089: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -2036,7 +1343,7 @@ public class GameGLSurfaceView
       //   1114: iload 7
       //   1116: istore_2
       //   1117: aload_0
-      //   1118: invokespecial 242	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:abI	()Z
+      //   1118: invokespecial 242	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:aem	()Z
       //   1121: ifeq +35 -> 1156
       //   1124: ldc 148
       //   1126: ldc 244
@@ -2045,7 +1352,7 @@ public class GameGLSurfaceView
       //   1132: dup
       //   1133: iconst_0
       //   1134: aload_0
-      //   1135: getfield 116	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:AC	Z
+      //   1135: getfield 116	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:Ct	Z
       //   1138: invokestatic 250	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
       //   1141: aastore
       //   1142: invokestatic 180	com/tencent/mm/dynamicbackground/a/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
@@ -2054,7 +1361,7 @@ public class GameGLSurfaceView
       //   1149: iload 12
       //   1151: istore 7
       //   1153: goto -995 -> 158
-      //   1156: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   1156: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   1159: invokevirtual 253	java/lang/Object:wait	()V
       //   1162: iload 13
       //   1164: istore 6
@@ -2069,7 +1376,7 @@ public class GameGLSurfaceView
       //   1183: anewarray 97	java/lang/Object
       //   1186: invokestatic 258	com/tencent/mm/dynamicbackground/a/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   1189: aload_0
-      //   1190: getfield 112	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNN	Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i;
+      //   1190: getfield 112	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghn	Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i;
       //   1193: astore 16
       //   1195: ldc 148
       //   1197: new 150	java/lang/StringBuilder
@@ -2084,7 +1391,7 @@ public class GameGLSurfaceView
       //   1220: anewarray 97	java/lang/Object
       //   1223: invokestatic 258	com/tencent/mm/dynamicbackground/a/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   1226: aload 16
-      //   1228: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNp	Ljavax/microedition/khronos/egl/EGL10;
+      //   1228: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggP	Ljavax/microedition/khronos/egl/EGL10;
       //   1231: ifnonnull +33 -> 1264
       //   1234: new 105	java/lang/RuntimeException
       //   1237: dup
@@ -2101,7 +1408,7 @@ public class GameGLSurfaceView
       //   1261: aload 15
       //   1263: athrow
       //   1264: aload 16
-      //   1266: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNq	Ljavax/microedition/khronos/egl/EGLDisplay;
+      //   1266: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggQ	Ljavax/microedition/khronos/egl/EGLDisplay;
       //   1269: ifnonnull +23 -> 1292
       //   1272: new 105	java/lang/RuntimeException
       //   1275: dup
@@ -2113,7 +1420,7 @@ public class GameGLSurfaceView
       //   1289: aload 15
       //   1291: athrow
       //   1292: aload 16
-      //   1294: getfield 282	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNs	Ljavax/microedition/khronos/egl/EGLConfig;
+      //   1294: getfield 282	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggS	Ljavax/microedition/khronos/egl/EGLConfig;
       //   1297: ifnonnull +23 -> 1320
       //   1300: new 105	java/lang/RuntimeException
       //   1303: dup
@@ -2125,9 +1432,9 @@ public class GameGLSurfaceView
       //   1317: aload 15
       //   1319: athrow
       //   1320: aload 16
-      //   1322: invokevirtual 287	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:abC	()V
+      //   1322: invokevirtual 287	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:aeg	()V
       //   1325: aload 16
-      //   1327: getfield 288	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNo	Ljava/lang/ref/WeakReference;
+      //   1327: getfield 288	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggO	Ljava/lang/ref/WeakReference;
       //   1330: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1333: checkcast 6	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView
       //   1336: astore 17
@@ -2137,24 +1444,24 @@ public class GameGLSurfaceView
       //   1345: aload 17
       //   1347: invokestatic 292	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:d	(Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView;)Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$h;
       //   1350: aload 16
-      //   1352: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNp	Ljavax/microedition/khronos/egl/EGL10;
+      //   1352: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggP	Ljavax/microedition/khronos/egl/EGL10;
       //   1355: aload 16
-      //   1357: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNq	Ljavax/microedition/khronos/egl/EGLDisplay;
+      //   1357: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggQ	Ljavax/microedition/khronos/egl/EGLDisplay;
       //   1360: aload 16
-      //   1362: getfield 282	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNs	Ljavax/microedition/khronos/egl/EGLConfig;
+      //   1362: getfield 282	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggS	Ljavax/microedition/khronos/egl/EGLConfig;
       //   1365: aload 17
       //   1367: invokevirtual 296	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:getHolder	()Landroid/view/SurfaceHolder;
       //   1370: invokeinterface 302 5 0
-      //   1375: putfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNr	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   1375: putfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggR	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1378: aload 16
-      //   1380: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNr	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   1380: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggR	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1383: ifnull +14 -> 1397
       //   1386: aload 16
-      //   1388: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNr	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   1388: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggR	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1391: getstatic 311	javax/microedition/khronos/egl/EGL10:EGL_NO_SURFACE	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1394: if_acmpne +307 -> 1701
       //   1397: aload 16
-      //   1399: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNp	Ljavax/microedition/khronos/egl/EGL10;
+      //   1399: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggP	Ljavax/microedition/khronos/egl/EGL10;
       //   1402: invokeinterface 315 1 0
       //   1407: sipush 12299
       //   1410: if_icmpne +989 -> 2399
@@ -2166,14 +1473,14 @@ public class GameGLSurfaceView
       //   1425: goto +974 -> 2399
       //   1428: iload 8
       //   1430: ifeq +383 -> 1813
-      //   1433: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   1433: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   1436: astore 16
       //   1438: aload 16
       //   1440: monitorenter
       //   1441: aload_0
       //   1442: iconst_1
-      //   1443: putfield 87	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNG	Z
-      //   1446: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   1443: putfield 87	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghg	Z
+      //   1446: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   1449: invokevirtual 100	java/lang/Object:notifyAll	()V
       //   1452: aload 16
       //   1454: monitorexit
@@ -2185,7 +1492,7 @@ public class GameGLSurfaceView
       //   1465: anewarray 97	java/lang/Object
       //   1468: invokestatic 180	com/tencent/mm/dynamicbackground/a/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   1471: aload_0
-      //   1472: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNo	Ljava/lang/ref/WeakReference;
+      //   1472: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggO	Ljava/lang/ref/WeakReference;
       //   1475: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1478: checkcast 6	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView
       //   1481: astore 16
@@ -2205,14 +1512,14 @@ public class GameGLSurfaceView
       //   1516: anewarray 97	java/lang/Object
       //   1519: invokestatic 258	com/tencent/mm/dynamicbackground/a/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   1522: aload_0
-      //   1523: getfield 112	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNN	Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i;
+      //   1523: getfield 112	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghn	Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i;
       //   1526: astore 17
       //   1528: aload 17
-      //   1530: getfield 328	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNt	Ljavax/microedition/khronos/egl/EGLContext;
+      //   1530: getfield 328	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggT	Ljavax/microedition/khronos/egl/EGLContext;
       //   1533: invokevirtual 334	javax/microedition/khronos/egl/EGLContext:getGL	()Ljavax/microedition/khronos/opengles/GL;
       //   1536: astore 16
       //   1538: aload 17
-      //   1540: getfield 288	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNo	Ljava/lang/ref/WeakReference;
+      //   1540: getfield 288	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggO	Ljava/lang/ref/WeakReference;
       //   1543: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1546: checkcast 6	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView
       //   1549: astore 17
@@ -2257,7 +1564,7 @@ public class GameGLSurfaceView
       //   1634: iload_3
       //   1635: ifeq +11 -> 1646
       //   1638: aload_0
-      //   1639: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNo	Ljava/lang/ref/WeakReference;
+      //   1639: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggO	Ljava/lang/ref/WeakReference;
       //   1642: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1645: pop
       //   1646: iload_3
@@ -2268,7 +1575,7 @@ public class GameGLSurfaceView
       //   1656: anewarray 97	java/lang/Object
       //   1659: invokestatic 258	com/tencent/mm/dynamicbackground/a/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   1662: aload_0
-      //   1663: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNo	Ljava/lang/ref/WeakReference;
+      //   1663: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggO	Ljava/lang/ref/WeakReference;
       //   1666: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1669: checkcast 6	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView
       //   1672: astore 16
@@ -2280,43 +1587,43 @@ public class GameGLSurfaceView
       //   1689: goto +728 -> 2417
       //   1692: aload 16
       //   1694: aconst_null
-      //   1695: putfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNr	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   1695: putfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggR	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1698: goto -320 -> 1378
       //   1701: aload 16
-      //   1703: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNp	Ljavax/microedition/khronos/egl/EGL10;
+      //   1703: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggP	Ljavax/microedition/khronos/egl/EGL10;
       //   1706: aload 16
-      //   1708: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNq	Ljavax/microedition/khronos/egl/EGLDisplay;
+      //   1708: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggQ	Ljavax/microedition/khronos/egl/EGLDisplay;
       //   1711: aload 16
-      //   1713: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNr	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   1713: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggR	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1716: aload 16
-      //   1718: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNr	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   1718: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggR	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1721: aload 16
-      //   1723: getfield 328	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNt	Ljavax/microedition/khronos/egl/EGLContext;
+      //   1723: getfield 328	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggT	Ljavax/microedition/khronos/egl/EGLContext;
       //   1726: invokeinterface 364 5 0
       //   1731: ifne +28 -> 1759
       //   1734: ldc_w 366
       //   1737: ldc_w 367
       //   1740: aload 16
-      //   1742: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNp	Ljavax/microedition/khronos/egl/EGL10;
+      //   1742: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggP	Ljavax/microedition/khronos/egl/EGL10;
       //   1745: invokeinterface 315 1 0
-      //   1750: invokestatic 370	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:i	(Ljava/lang/String;Ljava/lang/String;I)V
+      //   1750: invokestatic 370	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:h	(Ljava/lang/String;Ljava/lang/String;I)V
       //   1753: iconst_0
       //   1754: istore 8
       //   1756: goto -328 -> 1428
       //   1759: aload 16
-      //   1761: getfield 373	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNu	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   1761: getfield 373	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggU	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1764: ifnull +30 -> 1794
       //   1767: aload 16
-      //   1769: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNp	Ljavax/microedition/khronos/egl/EGL10;
+      //   1769: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggP	Ljavax/microedition/khronos/egl/EGL10;
       //   1772: aload 16
-      //   1774: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNq	Ljavax/microedition/khronos/egl/EGLDisplay;
+      //   1774: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggQ	Ljavax/microedition/khronos/egl/EGLDisplay;
       //   1777: aload 16
-      //   1779: getfield 373	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNu	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   1779: getfield 373	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggU	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1782: invokeinterface 377 3 0
       //   1787: pop
       //   1788: aload 16
       //   1790: aconst_null
-      //   1791: putfield 373	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNu	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   1791: putfield 373	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggU	Ljavax/microedition/khronos/egl/EGLSurface;
       //   1794: iconst_1
       //   1795: istore 8
       //   1797: goto -369 -> 1428
@@ -2332,17 +1639,17 @@ public class GameGLSurfaceView
       //   1818: iconst_0
       //   1819: anewarray 97	java/lang/Object
       //   1822: invokestatic 239	com/tencent/mm/dynamicbackground/a/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   1825: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   1825: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   1828: astore 16
       //   1830: aload 16
       //   1832: monitorenter
       //   1833: aload_0
       //   1834: iconst_1
-      //   1835: putfield 87	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNG	Z
+      //   1835: putfield 87	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghg	Z
       //   1838: aload_0
       //   1839: iconst_1
-      //   1840: putfield 200	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNC	Z
-      //   1843: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   1840: putfield 200	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghc	Z
+      //   1843: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   1846: invokevirtual 100	java/lang/Object:notifyAll	()V
       //   1849: aload 16
       //   1851: monitorexit
@@ -2386,7 +1693,7 @@ public class GameGLSurfaceView
       //   1933: anewarray 97	java/lang/Object
       //   1936: invokestatic 258	com/tencent/mm/dynamicbackground/a/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   1939: aload_0
-      //   1940: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNo	Ljava/lang/ref/WeakReference;
+      //   1940: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggO	Ljava/lang/ref/WeakReference;
       //   1943: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1946: checkcast 6	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView
       //   1949: astore 16
@@ -2404,7 +1711,7 @@ public class GameGLSurfaceView
       //   1979: invokestatic 239	com/tencent/mm/dynamicbackground/a/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   1982: goto +452 -> 2434
       //   1985: aload_0
-      //   1986: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNo	Ljava/lang/ref/WeakReference;
+      //   1986: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggO	Ljava/lang/ref/WeakReference;
       //   1989: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   1992: checkcast 6	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView
       //   1995: astore 16
@@ -2414,7 +1721,7 @@ public class GameGLSurfaceView
       //   2004: invokestatic 141	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:g	(Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView;)Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$n;
       //   2007: invokeinterface 399 1 0
       //   2012: aload_0
-      //   2013: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNo	Ljava/lang/ref/WeakReference;
+      //   2013: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggO	Ljava/lang/ref/WeakReference;
       //   2016: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   2019: pop
       //   2020: sipush 12288
@@ -2422,7 +1729,7 @@ public class GameGLSurfaceView
       //   2025: iconst_1
       //   2026: istore 14
       //   2028: aload_0
-      //   2029: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNo	Ljava/lang/ref/WeakReference;
+      //   2029: getfield 74	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ggO	Ljava/lang/ref/WeakReference;
       //   2032: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   2035: checkcast 6	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView
       //   2038: astore 16
@@ -2434,44 +1741,44 @@ public class GameGLSurfaceView
       //   2052: iload 14
       //   2054: ifeq +107 -> 2161
       //   2057: aload_0
-      //   2058: getfield 112	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNN	Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i;
+      //   2058: getfield 112	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghn	Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i;
       //   2061: astore 17
       //   2063: sipush 12288
       //   2066: istore 5
       //   2068: iload 5
       //   2070: istore 12
       //   2072: aload 17
-      //   2074: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNq	Ljavax/microedition/khronos/egl/EGLDisplay;
+      //   2074: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggQ	Ljavax/microedition/khronos/egl/EGLDisplay;
       //   2077: ifnull +84 -> 2161
       //   2080: iload 5
       //   2082: istore 12
       //   2084: aload 17
-      //   2086: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNq	Ljavax/microedition/khronos/egl/EGLDisplay;
+      //   2086: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggQ	Ljavax/microedition/khronos/egl/EGLDisplay;
       //   2089: getstatic 405	javax/microedition/khronos/egl/EGL10:EGL_NO_DISPLAY	Ljavax/microedition/khronos/egl/EGLDisplay;
       //   2092: if_acmpeq +69 -> 2161
       //   2095: iload 5
       //   2097: istore 12
       //   2099: aload 17
-      //   2101: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNr	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   2101: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggR	Ljavax/microedition/khronos/egl/EGLSurface;
       //   2104: ifnull +57 -> 2161
       //   2107: iload 5
       //   2109: istore 12
       //   2111: aload 17
-      //   2113: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNr	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   2113: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggR	Ljavax/microedition/khronos/egl/EGLSurface;
       //   2116: getstatic 311	javax/microedition/khronos/egl/EGL10:EGL_NO_SURFACE	Ljavax/microedition/khronos/egl/EGLSurface;
       //   2119: if_acmpeq +42 -> 2161
       //   2122: iload 5
       //   2124: istore 12
       //   2126: aload 17
-      //   2128: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNp	Ljavax/microedition/khronos/egl/EGL10;
+      //   2128: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggP	Ljavax/microedition/khronos/egl/EGL10;
       //   2131: aload 17
-      //   2133: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNq	Ljavax/microedition/khronos/egl/EGLDisplay;
+      //   2133: getfield 276	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggQ	Ljavax/microedition/khronos/egl/EGLDisplay;
       //   2136: aload 17
-      //   2138: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNr	Ljavax/microedition/khronos/egl/EGLSurface;
+      //   2138: getfield 306	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggR	Ljavax/microedition/khronos/egl/EGLSurface;
       //   2141: invokeinterface 408 3 0
       //   2146: ifne +15 -> 2161
       //   2149: aload 17
-      //   2151: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:fNp	Ljavax/microedition/khronos/egl/EGL10;
+      //   2151: getfield 269	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:ggP	Ljavax/microedition/khronos/egl/EGL10;
       //   2154: invokeinterface 315 1 0
       //   2159: istore 12
       //   2161: aload 16
@@ -2483,15 +1790,15 @@ public class GameGLSurfaceView
       //   2175: ldc_w 414
       //   2178: ldc_w 415
       //   2181: iload 12
-      //   2183: invokestatic 370	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:i	(Ljava/lang/String;Ljava/lang/String;I)V
-      //   2186: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   2183: invokestatic 370	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$i:h	(Ljava/lang/String;Ljava/lang/String;I)V
+      //   2186: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   2189: astore 16
       //   2191: aload 16
       //   2193: monitorenter
       //   2194: aload_0
       //   2195: iconst_1
-      //   2196: putfield 200	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:fNC	Z
-      //   2199: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:abB	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
+      //   2196: putfield 200	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:ghc	Z
+      //   2199: invokestatic 95	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView:aef	()Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$k;
       //   2202: invokevirtual 100	java/lang/Object:notifyAll	()V
       //   2205: aload 16
       //   2207: monitorexit
@@ -2504,7 +1811,7 @@ public class GameGLSurfaceView
       //   2220: iconst_0
       //   2221: istore 6
       //   2223: aload_0
-      //   2224: invokespecial 418	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:abG	()V
+      //   2224: invokespecial 418	com/tencent/mm/dynamicbackground/view/GameGLSurfaceView$j:aek	()V
       //   2227: iload 6
       //   2229: istore 9
       //   2231: iload_2
@@ -2803,51 +2110,51 @@ public class GameGLSurfaceView
       //   2313	2316	2311	finally
     }
     
-    private void abG()
+    private void aek()
     {
       AppMethodBeat.i(103041);
       Runnable localRunnable = null;
       label207:
       for (;;)
       {
-        synchronized (GameGLSurfaceView.abB())
+        synchronized (GameGLSurfaceView.aef())
         {
-          if (!abI())
+          if (!aem())
           {
             AppMethodBeat.o(103041);
             return;
           }
-          if (this.fNz)
+          if (this.ggZ)
           {
-            this.fNz = false;
+            this.ggZ = false;
             c.i("MicroMsg.GLThread", "Request leave PAUSE_ALSO_DO_DRAW", new Object[0]);
             AppMethodBeat.o(103041);
             return;
           }
-          if (this.fNL.isEmpty()) {
+          if (this.ghl.isEmpty()) {
             break label207;
           }
-          localRunnable = (Runnable)this.fNL.remove(0);
+          localRunnable = (Runnable)this.ghl.remove(0);
           if (localRunnable != null)
           {
             localRunnable.run();
             localRunnable = null;
           }
         }
-        ??? = (GameGLSurfaceView)this.fNo.get();
+        ??? = (GameGLSurfaceView)this.ggO.get();
         if (??? != null) {
           try
           {
-            GameGLSurfaceView.g((GameGLSurfaceView)???).abv();
+            GameGLSurfaceView.g((GameGLSurfaceView)???).adZ();
           }
           catch (Exception localException)
           {
             c.e("MicroMsg.GLThread", Log.getStackTraceString(localException) + " readyToPauseAlsoDoDraw while() ", new Object[0]);
           }
         } else {
-          synchronized (GameGLSurfaceView.abB())
+          synchronized (GameGLSurfaceView.aef())
           {
-            this.fNv = true;
+            this.ggV = true;
             AppMethodBeat.o(103041);
             return;
           }
@@ -2855,33 +2162,33 @@ public class GameGLSurfaceView
       }
     }
     
-    private boolean abI()
+    private boolean aem()
     {
-      return (this.AC) && (this.fNA) && (this.mWidth > 0) && (this.mHeight > 0) && ((!this.fNI) || (this.mRenderMode == 1));
+      return (this.Ct) && (this.gha) && (this.mWidth > 0) && (this.mHeight > 0) && ((!this.ghi) || (this.mRenderMode == 1));
     }
     
-    final boolean abH()
+    final boolean ael()
     {
-      return (!this.AC) && (this.fNB) && (!this.fNC) && (this.mWidth > 0) && (this.mHeight > 0) && ((this.fNI) || (this.mRenderMode == 1));
+      return (!this.Ct) && (this.ghb) && (!this.ghc) && (this.mWidth > 0) && (this.mHeight > 0) && ((this.ghi) || (this.mRenderMode == 1));
     }
     
-    public final void abJ()
+    public final void aen()
     {
       AppMethodBeat.i(103044);
-      synchronized (GameGLSurfaceView.abB())
+      synchronized (GameGLSurfaceView.aef())
       {
         c.i("MicroMsg.GLThread", "requestExitAndWaitForDestory tid=" + getId(), new Object[0]);
-        this.fNv = true;
-        this.fNx = true;
-        this.fNz = true;
-        GameGLSurfaceView.abB().notifyAll();
+        this.ggV = true;
+        this.ggX = true;
+        this.ggZ = true;
+        GameGLSurfaceView.aef().notifyAll();
         for (;;)
         {
-          boolean bool = this.fNw;
+          boolean bool = this.ggW;
           if (!bool) {
             try
             {
-              GameGLSurfaceView.abB().wait();
+              GameGLSurfaceView.aef().wait();
             }
             catch (InterruptedException localInterruptedException)
             {
@@ -2896,7 +2203,7 @@ public class GameGLSurfaceView
     public final int getRenderMode()
     {
       AppMethodBeat.i(103043);
-      synchronized (GameGLSurfaceView.abB())
+      synchronized (GameGLSurfaceView.aef())
       {
         int i = this.mRenderMode;
         AppMethodBeat.o(103043);
@@ -2911,7 +2218,7 @@ public class GameGLSurfaceView
       c.i("MicroMsg.GLThread", "starting tid=" + getId(), new Object[0]);
       try
       {
-        abF();
+        aej();
         return;
       }
       catch (InterruptedException localInterruptedException)
@@ -2922,15 +2229,15 @@ public class GameGLSurfaceView
       catch (Throwable localThrowable)
       {
         c.e("MicroMsg.GLThread", "alvinluo GLThread#run() stack = [%s]", new Object[] { Log.getStackTraceString(localThrowable) });
-        GameGLSurfaceView localGameGLSurfaceView = (GameGLSurfaceView)this.fNo.get();
+        GameGLSurfaceView localGameGLSurfaceView = (GameGLSurfaceView)this.ggO.get();
         if (localGameGLSurfaceView != null) {
-          GameGLSurfaceView.g(localGameGLSurfaceView).abw();
+          GameGLSurfaceView.g(localGameGLSurfaceView).aea();
         }
         return;
       }
       finally
       {
-        GameGLSurfaceView.abB().f(this);
+        GameGLSurfaceView.aef().f(this);
         AppMethodBeat.o(103038);
       }
     }
@@ -2944,10 +2251,10 @@ public class GameGLSurfaceView
         AppMethodBeat.o(103042);
         throw ((Throwable)???);
       }
-      synchronized (GameGLSurfaceView.abB())
+      synchronized (GameGLSurfaceView.aef())
       {
         this.mRenderMode = paramInt;
-        GameGLSurfaceView.abB().notifyAll();
+        GameGLSurfaceView.aef().notifyAll();
         AppMethodBeat.o(103042);
         return;
       }
@@ -2973,7 +2280,7 @@ public class GameGLSurfaceView
             GameGLSurfaceView.g(localGameGLSurfaceView1).onDestroy();
             locali = GameGLSurfaceView.j.b(paramj);
             c.w("MicroMsg.GLThread", "destroySurface()  tid=" + Thread.currentThread().getId(), new Object[0]);
-            locali.abC();
+            locali.aeg();
             GameGLSurfaceView.j.c(paramj);
             GameGLSurfaceView.j.d(paramj);
           }
@@ -2983,18 +2290,18 @@ public class GameGLSurfaceView
         {
           locali = GameGLSurfaceView.j.b(paramj);
           c.w("MicroMsg.GLThread", "finish() tid=" + Thread.currentThread().getId(), new Object[0]);
-          if (locali.fNt != null)
+          if (locali.ggT != null)
           {
-            GameGLSurfaceView localGameGLSurfaceView2 = (GameGLSurfaceView)locali.fNo.get();
+            GameGLSurfaceView localGameGLSurfaceView2 = (GameGLSurfaceView)locali.ggO.get();
             if (localGameGLSurfaceView2 != null) {
-              GameGLSurfaceView.c(localGameGLSurfaceView2).destroyContext(locali.fNp, locali.fNq, locali.fNt);
+              GameGLSurfaceView.c(localGameGLSurfaceView2).destroyContext(locali.ggP, locali.ggQ, locali.ggT);
             }
-            locali.fNt = null;
+            locali.ggT = null;
           }
-          if (locali.fNq != null)
+          if (locali.ggQ != null)
           {
-            locali.fNp.eglTerminate(locali.fNq);
-            locali.fNq = null;
+            locali.ggP.eglTerminate(locali.ggQ);
+            locali.ggQ = null;
           }
         }
         catch (Throwable localThrowable)
@@ -3003,7 +2310,7 @@ public class GameGLSurfaceView
           if (localGameGLSurfaceView1 == null) {
             continue;
           }
-          GameGLSurfaceView.g(localGameGLSurfaceView1).abw();
+          GameGLSurfaceView.g(localGameGLSurfaceView1).aea();
           continue;
         }
         GameGLSurfaceView.j.e(paramj);
@@ -3017,20 +2324,20 @@ public class GameGLSurfaceView
   
   public static abstract interface l
   {
-    public abstract GL abK();
+    public abstract GL aeo();
   }
   
   public static abstract interface n
   {
-    public abstract void abs();
+    public abstract void adW();
     
-    public abstract void abt();
+    public abstract void adX();
     
-    public abstract void abv();
+    public abstract void adZ();
     
-    public abstract void abw();
+    public abstract void aea();
     
-    public abstract void cs(int paramInt1, int paramInt2);
+    public abstract void cu(int paramInt1, int paramInt2);
     
     public abstract void onDestroy();
     
@@ -3050,7 +2357,7 @@ public class GameGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.view.GameGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

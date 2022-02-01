@@ -1,6 +1,6 @@
 package d;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/Function;", "R", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/Function;", "R", "", "kotlin-stdlib"})
 public abstract interface c<R> {}
 
 

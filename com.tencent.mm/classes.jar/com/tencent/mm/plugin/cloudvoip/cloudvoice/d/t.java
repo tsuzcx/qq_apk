@@ -16,10 +16,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.a;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.b;
 import com.tencent.mm.plugin.voip.video.OpenGlRender;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.i;
 import com.tencent.mm.ui.base.MMTextureView;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,22 +29,22 @@ public final class t
   extends MMTextureView
   implements TextureView.SurfaceTextureListener, c
 {
-  private TextPaint gZ;
-  private boolean jSj;
-  protected ao jdu;
+  private TextPaint iU;
+  protected ap jwD;
+  private boolean kmx;
   private Bitmap mBitmap;
   private boolean mInited;
   private Timer mTimer;
   private int mVideoHeight;
   private int mVideoWidth;
   private int mViewId;
-  private String otp;
-  private int otq;
-  private int owc;
-  private Paint owg;
-  private int owh;
-  private boolean owi;
-  private boolean owj;
+  private String oWL;
+  private int oWM;
+  private Paint oZB;
+  private int oZC;
+  private boolean oZD;
+  private boolean oZE;
+  private int oZx;
   private String text;
   
   public t(Context paramContext, b paramb, JSONObject paramJSONObject)
@@ -52,55 +52,55 @@ public final class t
     super(paramContext);
     AppMethodBeat.i(90948);
     this.mViewId = 0;
-    this.owc = 0;
-    this.owg = null;
-    this.otp = "";
-    this.otq = -1;
+    this.oZx = 0;
+    this.oZB = null;
+    this.oWL = "";
+    this.oWM = -1;
     this.mBitmap = null;
     this.mVideoWidth = 0;
     this.mVideoHeight = 0;
-    this.jSj = false;
+    this.kmx = false;
     this.mInited = false;
-    this.gZ = null;
+    this.iU = null;
     this.text = "";
-    this.owi = false;
-    this.owj = false;
-    this.otq = paramb.osF;
-    this.otp = paramb.openId;
-    this.owg = new Paint();
-    this.owg.setColor(-16777216);
-    this.owg.setFilterBitmap(false);
+    this.oZD = false;
+    this.oZE = false;
+    this.oWM = paramb.oWb;
+    this.oWL = paramb.openId;
+    this.oZB = new Paint();
+    this.oZB.setColor(-16777216);
+    this.oZB.setFilterBitmap(false);
     setSurfaceTextureListener(this);
-    this.owi = paramJSONObject.optBoolean("debug", false);
-    if ((this.owi) || (h.IS_FLAVOR_RED) || (bt.eWo())) {}
+    this.oZD = paramJSONObject.optBoolean("debug", false);
+    if ((this.oZD) || (i.IS_FLAVOR_RED) || (bu.flY())) {}
     for (boolean bool = true;; bool = false)
     {
-      this.owi = bool;
-      if (!this.owi) {
+      this.oZD = bool;
+      if (!this.oZD) {
         break label315;
       }
-      this.owh = 0;
-      this.gZ = new TextPaint();
-      this.gZ.setColor(-65536);
-      this.gZ.setTextSize(25.0F);
-      this.gZ.setAntiAlias(true);
-      this.owj = false;
+      this.oZC = 0;
+      this.iU = new TextPaint();
+      this.iU.setColor(-65536);
+      this.iU.setTextSize(25.0F);
+      this.iU.setAntiAlias(true);
+      this.oZE = false;
       this.mTimer = new Timer("CloudVoIP_video_info");
       this.text = "debug...";
-      this.jdu = new ao();
-      if ((this.mTimer != null) && (!this.owj) && (this.jdu != null)) {
+      this.jwD = new ap();
+      if ((this.mTimer != null) && (!this.oZE) && (this.jwD != null)) {
         break;
       }
       AppMethodBeat.o(90948);
       return;
     }
-    this.owj = true;
+    this.oZE = true;
     paramContext = new TimerTask()
     {
       public final void run()
       {
         AppMethodBeat.i(90947);
-        t.this.jdu.post(new Runnable()
+        t.this.jwD.post(new Runnable()
         {
           public final void run()
           {
@@ -117,21 +117,21 @@ public final class t
     AppMethodBeat.o(90948);
   }
   
-  private static int b(byte paramByte)
+  private static int c(byte paramByte)
   {
     return (paramByte >> 4 & 0xF) * 16 + (paramByte & 0xF);
   }
   
-  public final void Ap(int paramInt)
+  public final void AY(int paramInt)
   {
     AppMethodBeat.i(90952);
-    if (paramInt == this.otq)
+    if (paramInt == this.oWM)
     {
       AppMethodBeat.o(90952);
       return;
     }
-    ac.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "updateMemberId, viewId:" + this.mViewId + ", openId:" + this.otp + ", memberId:[" + this.otq + "->" + paramInt + "]");
-    this.otq = paramInt;
+    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "updateMemberId, viewId:" + this.mViewId + ", openId:" + this.oWL + ", memberId:[" + this.oWM + "->" + paramInt + "]");
+    this.oWM = paramInt;
     AppMethodBeat.o(90952);
   }
   
@@ -144,7 +144,7 @@ public final class t
     int k;
     try
     {
-      if ((!this.jSj) || (!this.mInited)) {
+      if ((!this.kmx) || (!this.mInited)) {
         return;
       }
       if ((this.mVideoWidth != parama.width) || (this.mVideoHeight != parama.height) || (this.mBitmap == null))
@@ -153,8 +153,8 @@ public final class t
         this.mVideoHeight = parama.height;
         this.mBitmap = Bitmap.createBitmap(parama.width, parama.height, Bitmap.Config.ARGB_8888);
       }
-      localObject2 = parama.osD;
-      j = parama.cGX;
+      localObject2 = parama.oVZ;
+      j = parama.cSb;
       if (j == 0)
       {
         parama = (a)localObject1;
@@ -170,11 +170,11 @@ public final class t
           if (!parama.isRecycled()) {
             continue;
           }
-          ac.e("MicroMsg.OpenVoice.OpenVoiceVideoView", "DrawBitmap, bitmap is null or recycled");
+          ad.e("MicroMsg.OpenVoice.OpenVoiceVideoView", "DrawBitmap, bitmap is null or recycled");
         }
         catch (Exception parama)
         {
-          ac.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceVideoView", parama, "drawBitmap unlockCanvasAndPost crash", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceVideoView", parama, "drawBitmap unlockCanvasAndPost crash", new Object[0]);
           continue;
         }
         return;
@@ -184,7 +184,7 @@ public final class t
         if (i >= j) {
           break;
         }
-        localObject1[i] = (b(localObject2[(i * 4)]) | b(localObject2[(i * 4 + 1)]) << 8 | b(localObject2[(i * 4 + 2)]) << 16 | b(localObject2[(i * 4 + 3)]) << 24);
+        localObject1[i] = (c(localObject2[(i * 4)]) | c(localObject2[(i * 4 + 1)]) << 8 | c(localObject2[(i * 4 + 2)]) << 16 | c(localObject2[(i * 4 + 3)]) << 24);
         i += 1;
         continue;
         j = parama.getWidth();
@@ -193,9 +193,9 @@ public final class t
         if (localObject1 != null) {
           break label376;
         }
-        ac.e("MicroMsg.OpenVoice.OpenVoiceVideoView", "drawBitmap, getCanvas failed, viewId:" + this.mViewId + ", openId:" + this.otp + ", mId:" + this.otq);
+        ad.e("MicroMsg.OpenVoice.OpenVoiceVideoView", "drawBitmap, getCanvas failed, viewId:" + this.mViewId + ", openId:" + this.oWL + ", mId:" + this.oWM);
       }
-      this.owc += 1;
+      this.oZx += 1;
     }
     finally
     {
@@ -214,10 +214,10 @@ public final class t
         ((Matrix)localObject2).postScale(-1.0F, 1.0F);
         ((Matrix)localObject2).postTranslate(j, 0.0F);
       }
-      if (this.owc % 50 == 0)
+      if (this.oZx % 50 == 0)
       {
-        this.owc = 0;
-        ac.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "drawBitmap, canvas:[width:" + ((Canvas)localObject1).getWidth() + ", height:" + ((Canvas)localObject1).getHeight() + "], bitmap:[width:" + j + ", height:" + k + "]");
+        this.oZx = 0;
+        ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "drawBitmap, canvas:[width:" + ((Canvas)localObject1).getWidth() + ", height:" + ((Canvas)localObject1).getHeight() + "], bitmap:[width:" + j + ", height:" + k + "]");
       }
       f1 = ((Canvas)localObject1).getWidth() / k;
       f2 = ((Canvas)localObject1).getHeight() / j;
@@ -231,12 +231,12 @@ public final class t
       ((Matrix)localObject2).postScale(f1, f1);
       ((Canvas)localObject1).drawColor(0, PorterDuff.Mode.CLEAR);
       if (!parama.isRecycled()) {
-        ((Canvas)localObject1).drawBitmap(parama, (Matrix)localObject2, this.owg);
+        ((Canvas)localObject1).drawBitmap(parama, (Matrix)localObject2, this.oZB);
       }
-      if (this.owi)
+      if (this.oZD)
       {
-        this.owh += 1;
-        new StaticLayout(this.text, this.gZ, 300, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true).draw((Canvas)localObject1);
+        this.oZC += 1;
+        new StaticLayout(this.text, this.iU, 300, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true).draw((Canvas)localObject1);
       }
       unlockCanvasAndPost((Canvas)localObject1);
       break;
@@ -250,11 +250,11 @@ public final class t
     }
   }
   
-  public final void al(JSONObject paramJSONObject)
+  public final void ao(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(90949);
     this.mViewId = paramJSONObject.optInt("viewId");
-    ac.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "init, viewId:" + this.mViewId + ", openId:" + this.otp + ", memberId:" + this.otq + ", data:" + paramJSONObject.toString());
+    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "init, viewId:" + this.mViewId + ", openId:" + this.oWL + ", memberId:" + this.oWM + ", data:" + paramJSONObject.toString());
     try
     {
       this.mInited = true;
@@ -266,28 +266,28 @@ public final class t
     }
   }
   
-  public final void am(JSONObject paramJSONObject)
+  public final void ap(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(90950);
-    ac.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "update, viewId:" + this.mViewId + ", openId:" + this.otp + ", memberId:" + this.otq + ", data:" + paramJSONObject.toString());
+    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "update, viewId:" + this.mViewId + ", openId:" + this.oWL + ", memberId:" + this.oWM + ", data:" + paramJSONObject.toString());
     uint();
-    al(paramJSONObject);
+    ao(paramJSONObject);
     AppMethodBeat.o(90950);
   }
   
-  public final boolean bVo()
+  public final boolean bZT()
   {
     return false;
   }
   
   public final int getMemberId()
   {
-    return this.otq;
+    return this.oWM;
   }
   
   public final String getOpenId()
   {
-    return this.otp;
+    return this.oWL;
   }
   
   public final int getViewId()
@@ -304,8 +304,8 @@ public final class t
     }
     for (;;)
     {
-      ac.i("MicroMsg.OpenVoice.OpenVoiceVideoView", paramSurfaceTexture + ", viewId:" + this.mViewId + ", openId:" + this.otp + ", mId:" + this.otq + ", width:" + paramInt1 + ", height:" + paramInt2);
-      fiQ();
+      ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", paramSurfaceTexture + ", viewId:" + this.mViewId + ", openId:" + this.oWL + ", mId:" + this.oWM + ", width:" + paramInt1 + ", height:" + paramInt2);
+      fzf();
       try
       {
         paramSurfaceTexture = lockCanvas();
@@ -313,7 +313,7 @@ public final class t
         unlockCanvasAndPost(paramSurfaceTexture);
         try
         {
-          this.jSj = true;
+          this.kmx = true;
           return;
         }
         finally
@@ -326,7 +326,7 @@ public final class t
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceVideoView", paramSurfaceTexture, "drawColor for background, unlockCanvasAndPost crash", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceVideoView", paramSurfaceTexture, "drawColor for background, unlockCanvasAndPost crash", new Object[0]);
         }
       }
     }
@@ -335,17 +335,17 @@ public final class t
   public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(90956);
-    ac.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "onSurfaceTextureDestroyed, viewId:" + this.mViewId + ", openId:" + this.otp + ", mId:" + this.otq);
+    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "onSurfaceTextureDestroyed, viewId:" + this.mViewId + ", openId:" + this.oWL + ", mId:" + this.oWM);
     try
     {
-      this.jSj = false;
+      this.kmx = false;
       if (this.mTimer != null)
       {
         this.mTimer.cancel();
         this.mTimer = null;
       }
-      if (this.jdu != null) {
-        this.jdu.removeCallbacksAndMessages(null);
+      if (this.jwD != null) {
+        this.jwD.removeCallbacksAndMessages(null);
       }
       AppMethodBeat.o(90956);
       return false;
@@ -359,7 +359,7 @@ public final class t
   public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(90955);
-    ac.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "onSurfaceTextureSizeChanged, viewId:" + this.mViewId + ", openId:" + this.otp + ", mId:" + this.otq + ", width:" + paramInt1 + ", height:" + paramInt2);
+    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "onSurfaceTextureSizeChanged, viewId:" + this.mViewId + ", openId:" + this.oWL + ", mId:" + this.oWM + ", width:" + paramInt1 + ", height:" + paramInt2);
     AppMethodBeat.o(90955);
   }
   
@@ -368,7 +368,7 @@ public final class t
   public final void uint()
   {
     AppMethodBeat.i(90951);
-    ac.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "uint, viewId:" + this.mViewId + ", openId:" + this.otp + ", memberId:" + this.otq);
+    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "uint, viewId:" + this.mViewId + ", openId:" + this.oWL + ", memberId:" + this.oWM);
     try
     {
       this.mInited = false;
@@ -382,7 +382,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.t
  * JD-Core Version:    0.7.0.1
  */

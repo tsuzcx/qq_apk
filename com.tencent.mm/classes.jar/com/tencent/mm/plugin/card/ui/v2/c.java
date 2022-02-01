@@ -3,32 +3,32 @@ package com.tencent.mm.plugin.card.ui.v2;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.aj;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"radius_4dp", "", "getRadius_4dp", "()I", "plugin-card_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"radius_4dp", "", "getRadius_4dp", "()I", "plugin-card_release"})
 public final class c
 {
-  private static final int oje;
+  private static final int oMA;
   
   static
   {
     AppMethodBeat.i(112554);
-    Context localContext = ai.getContext();
-    k.g(localContext, "MMApplicationContext.getContext()");
-    oje = localContext.getResources().getDimensionPixelOffset(2131165970);
+    Context localContext = aj.getContext();
+    p.g(localContext, "MMApplicationContext.getContext()");
+    oMA = localContext.getResources().getDimensionPixelOffset(2131165970);
     AppMethodBeat.o(112554);
   }
   
-  public static final int bTA()
+  public static final int bYf()
   {
-    return oje;
+    return oMA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.v2.c
  * JD-Core Version:    0.7.0.1
  */

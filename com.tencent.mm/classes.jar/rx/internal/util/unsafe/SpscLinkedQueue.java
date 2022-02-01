@@ -51,7 +51,7 @@ public final class SpscLinkedQueue<E>
     b localb = (b)this.consumerNode.get();
     if (localb != null)
     {
-      Object localObject = localb.ggF();
+      Object localObject = localb.gzj();
       this.consumerNode = localb;
       AppMethodBeat.o(90160);
       return localObject;

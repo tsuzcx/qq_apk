@@ -2,12 +2,13 @@ package com.tencent.mm.plugin.game.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.api.f;
 import com.tencent.mm.plugin.game.e.a;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,9 +20,9 @@ public final class r
   public static boolean c(o paramo)
   {
     AppMethodBeat.i(41480);
-    paramo = bs.nullAsNil(paramo.field_gameMsgId);
-    Object localObject = bs.nullAsNil((String)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GNU, ""));
-    ac.i("MicroMsg.GameMessageService", "filter msgIds:%s", new Object[] { localObject });
+    paramo = bt.nullAsNil(paramo.field_gameMsgId);
+    Object localObject = bt.nullAsNil((String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IAl, ""));
+    ad.i("MicroMsg.GameMessageService", "filter msgIds:%s", new Object[] { localObject });
     try
     {
       localObject = new JSONArray((String)localObject);
@@ -30,7 +31,7 @@ public final class r
       {
         if (paramo.equals(((JSONArray)localObject).getString(i)))
         {
-          ac.i("MicroMsg.GameMessageService", "filter deleted message. gameMsgId:%s", new Object[] { paramo });
+          ad.i("MicroMsg.GameMessageService", "filter deleted message. gameMsgId:%s", new Object[] { paramo });
           AppMethodBeat.o(41480);
           return true;
         }
@@ -44,39 +45,39 @@ public final class r
     }
   }
   
-  public static o cQq()
+  public static o cYV()
   {
     AppMethodBeat.i(183863);
-    Object localObject2 = cQr();
+    Object localObject2 = cYW();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = cQu();
+      localObject1 = cYZ();
     }
     localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject2 = cQw();
+      localObject2 = cZb();
     }
     localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = cQy();
+      localObject1 = cZd();
     }
     if (localObject1 != null) {
-      ((o)localObject1).cQp();
+      ((o)localObject1).cYU();
     }
     AppMethodBeat.o(183863);
     return localObject1;
   }
   
-  public static o cQr()
+  public static o cYW()
   {
     AppMethodBeat.i(41481);
-    long l = ((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GGU, Long.valueOf(0L))).longValue();
+    long l = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Itm, Long.valueOf(0L))).longValue();
     if (l != 0L) {}
-    for (o localo = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().vy(l);; localo = null)
+    for (o localo = ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH().xF(l);; localo = null)
     {
       if ((localo == null) || (localo.field_isHidden) || (i(localo)))
       {
-        a.ahF("");
+        a.amh("");
         AppMethodBeat.o(41481);
         return null;
       }
@@ -85,45 +86,45 @@ public final class r
     }
   }
   
-  public static void cQs()
+  public static void cYX()
   {
     AppMethodBeat.i(41482);
-    long l = ((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GGU, Long.valueOf(0L))).longValue();
+    long l = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Itm, Long.valueOf(0L))).longValue();
     o localo = null;
     if (l != 0L) {
-      localo = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().vy(l);
+      localo = ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH().xF(l);
     }
     if ((localo == null) || (localo.field_isHidden))
     {
       AppMethodBeat.o(41482);
       return;
     }
-    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GGU, Long.valueOf(0L));
+    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Itm, Long.valueOf(0L));
     AppMethodBeat.o(41482);
   }
   
-  public static o cQt()
+  public static o cYY()
   {
     AppMethodBeat.i(41483);
-    long l = ((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GGU, Long.valueOf(0L))).longValue();
+    long l = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Itm, Long.valueOf(0L))).longValue();
     o localo = null;
     if (l != 0L) {
-      localo = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().vy(l);
+      localo = ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH().xF(l);
     }
     AppMethodBeat.o(41483);
     return localo;
   }
   
-  public static o cQu()
+  public static o cYZ()
   {
     AppMethodBeat.i(41484);
-    long l = ((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GGY, Long.valueOf(0L))).longValue();
+    long l = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Itq, Long.valueOf(0L))).longValue();
     if (l == 0L)
     {
       AppMethodBeat.o(41484);
       return null;
     }
-    o localo = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().vy(l);
+    o localo = ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH().xF(l);
     if ((localo == null) || (localo.field_isHidden) || (i(localo)))
     {
       AppMethodBeat.o(41484);
@@ -133,33 +134,33 @@ public final class r
     return localo;
   }
   
-  public static void cQv()
+  public static void cZa()
   {
     AppMethodBeat.i(41485);
-    long l = ((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GGY, Long.valueOf(0L))).longValue();
+    long l = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Itq, Long.valueOf(0L))).longValue();
     o localo = null;
     if (l != 0L) {
-      localo = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().vy(l);
+      localo = ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH().xF(l);
     }
     if ((localo == null) || (localo.field_isHidden))
     {
       AppMethodBeat.o(41485);
       return;
     }
-    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GGY, Long.valueOf(0L));
+    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Itq, Long.valueOf(0L));
     AppMethodBeat.o(41485);
   }
   
-  public static o cQw()
+  public static o cZb()
   {
     AppMethodBeat.i(41486);
-    long l = ((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GGV, Long.valueOf(0L))).longValue();
+    long l = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Itn, Long.valueOf(0L))).longValue();
     if (l == 0L)
     {
       AppMethodBeat.o(41486);
       return null;
     }
-    o localo = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().vy(l);
+    o localo = ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH().xF(l);
     if ((localo == null) || (localo.field_isHidden) || (i(localo)))
     {
       AppMethodBeat.o(41486);
@@ -169,33 +170,33 @@ public final class r
     return localo;
   }
   
-  public static void cQx()
+  public static void cZc()
   {
     AppMethodBeat.i(41487);
-    long l = ((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GGV, Long.valueOf(0L))).longValue();
+    long l = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Itn, Long.valueOf(0L))).longValue();
     o localo = null;
     if (l != 0L) {
-      localo = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().vy(l);
+      localo = ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH().xF(l);
     }
     if ((localo == null) || (localo.field_isHidden))
     {
       AppMethodBeat.o(41487);
       return;
     }
-    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GGV, Long.valueOf(0L));
+    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Itn, Long.valueOf(0L));
     AppMethodBeat.o(41487);
   }
   
-  public static o cQy()
+  private static o cZd()
   {
     AppMethodBeat.i(41488);
-    long l = ((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GGZ, Long.valueOf(0L))).longValue();
+    long l = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Itr, Long.valueOf(0L))).longValue();
     if (l == 0L)
     {
       AppMethodBeat.o(41488);
       return null;
     }
-    o localo = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().vy(l);
+    o localo = ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH().xF(l);
     if ((localo == null) || (localo.field_isHidden) || (i(localo)))
     {
       AppMethodBeat.o(41488);
@@ -205,91 +206,91 @@ public final class r
     return localo;
   }
   
-  public static void cQz()
+  public static void cZe()
   {
     AppMethodBeat.i(41489);
-    long l = ((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GGZ, Long.valueOf(0L))).longValue();
+    long l = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Itr, Long.valueOf(0L))).longValue();
     o localo = null;
     if (l != 0L) {
-      localo = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().vy(l);
+      localo = ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH().xF(l);
     }
     if ((localo == null) || (localo.field_isHidden))
     {
       AppMethodBeat.o(41489);
       return;
     }
-    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GGZ, Long.valueOf(0L));
+    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Itr, Long.valueOf(0L));
     AppMethodBeat.o(41489);
   }
   
   public static void d(o paramo)
   {
     AppMethodBeat.i(183859);
-    if (paramo.tdV)
+    if (paramo.ubL)
     {
-      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GGU, Long.valueOf(paramo.field_msgId));
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Itm, Long.valueOf(paramo.field_msgId));
       AppMethodBeat.o(183859);
       return;
     }
-    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GGU, Long.valueOf(0L));
+    com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Itm, Long.valueOf(0L));
     AppMethodBeat.o(183859);
   }
   
   public static void e(o paramo)
   {
     AppMethodBeat.i(183860);
-    if (!bs.isNullOrNil(paramo.tem.url))
+    if (!bt.isNullOrNil(paramo.ucc.url))
     {
-      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GGY, Long.valueOf(paramo.field_msgId));
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Itq, Long.valueOf(paramo.field_msgId));
       AppMethodBeat.o(183860);
       return;
     }
-    cQv();
+    cZa();
     AppMethodBeat.o(183860);
   }
   
   public static void f(o paramo)
   {
     AppMethodBeat.i(183861);
-    if (paramo.tdX)
+    if (paramo.ubN)
     {
-      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GGV, Long.valueOf(paramo.field_msgId));
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Itn, Long.valueOf(paramo.field_msgId));
       AppMethodBeat.o(183861);
       return;
     }
-    cQx();
+    cZc();
     AppMethodBeat.o(183861);
   }
   
   public static void g(o paramo)
   {
     AppMethodBeat.i(183862);
-    if (!bs.isNullOrNil(paramo.teD.teR))
+    if (!bt.isNullOrNil(paramo.uct.ucJ))
     {
-      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GGZ, Long.valueOf(paramo.field_msgId));
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Itr, Long.valueOf(paramo.field_msgId));
       AppMethodBeat.o(183862);
       return;
     }
-    cQz();
+    cZe();
     AppMethodBeat.o(183862);
   }
   
   public static boolean h(o paramo)
   {
-    AppMethodBeat.i(199228);
-    Object localObject = g.cQk();
-    long l = bs.aNx();
+    AppMethodBeat.i(206832);
+    Object localObject = g.cYP();
+    long l = bt.aQJ();
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       g.a locala = (g.a)((Iterator)localObject).next();
-      if ((locala.startTime <= l) && (locala.endTime >= l) && ((paramo.tdW.teY == locala.tdv) || (locala.tdw.contains(paramo.field_gameMsgId))))
+      if ((locala.startTime <= l) && (locala.endTime >= l) && ((paramo.ubM.ucO == locala.ubl) || (locala.ubm.contains(paramo.field_gameMsgId))))
       {
-        AppMethodBeat.o(199228);
+        AppMethodBeat.o(206832);
         return true;
       }
     }
-    AppMethodBeat.o(199228);
+    AppMethodBeat.o(206832);
     return false;
   }
   
@@ -315,9 +316,9 @@ public final class r
     Object localObject3;
     if (paramo.field_showType != 0)
     {
-      if ((paramo.teG.tft > 1) && (!bs.isNullOrNil(paramo.teG.tfs)))
+      if ((paramo.ucw.udj > 1) && (!bt.isNullOrNil(paramo.ucw.udi)))
       {
-        localObject2 = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm();
+        localObject2 = ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH();
         localObject1 = paramo.field_interactiveMergeId;
         localObject3 = "select * from GameRawMessage where showType=1 and interactiveMergeId= \"" + (String)localObject1 + "\" and isRead=0 order by createTime desc";
         localObject1 = new LinkedList();
@@ -339,14 +340,14 @@ public final class r
           }
           ((Cursor)localObject2).close();
         }
-        if (i >= paramo.teG.tft)
+        if (i >= paramo.ucw.udj)
         {
           paramo.field_hasMergedCount = i;
           paramo = ((List)localObject1).iterator();
           while (paramo.hasNext())
           {
             localObject1 = (o)paramo.next();
-            ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().delete((c)localObject1, new String[0]);
+            ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH().delete((c)localObject1, new String[0]);
           }
         }
         AppMethodBeat.o(41491);
@@ -354,12 +355,12 @@ public final class r
     }
     else
     {
-      if (bs.isNullOrNil(paramo.field_mergerId))
+      if (bt.isNullOrNil(paramo.field_mergerId))
       {
         AppMethodBeat.o(41491);
         return;
       }
-      localObject2 = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm();
+      localObject2 = ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH();
       localObject1 = paramo.field_mergerId;
       i = paramo.field_msgType;
       localObject3 = "select * from GameRawMessage where msgType=" + i + " and mergerId= \"" + (String)localObject1 + "\" order by createTime desc limit 1";
@@ -374,30 +375,30 @@ public final class r
     {
       if (localObject1 != null)
       {
-        ((o)localObject1).cQp();
-        if (!bs.gY(((o)localObject1).tdU))
+        ((o)localObject1).cYU();
+        if (!bt.hj(((o)localObject1).ubK))
         {
-          paramo.cQp();
-          localObject2 = new LinkedList(((o)localObject1).tdU);
-          if (!bs.gY(paramo.tdU))
+          paramo.cYU();
+          localObject2 = new LinkedList(((o)localObject1).ubK);
+          if (!bt.hj(paramo.ubK))
           {
-            localObject3 = ((o.i)paramo.tdU.get(0)).userName;
-            if (!bs.isNullOrNil((String)localObject3))
+            localObject3 = ((o.j)paramo.ubK.get(0)).userName;
+            if (!bt.isNullOrNil((String)localObject3))
             {
-              Iterator localIterator = ((o)localObject1).tdU.iterator();
+              Iterator localIterator = ((o)localObject1).ubK.iterator();
               while (localIterator.hasNext())
               {
-                o.i locali = (o.i)localIterator.next();
-                if (locali.userName.equals(localObject3)) {
-                  ((LinkedList)localObject2).remove(locali);
+                o.j localj = (o.j)localIterator.next();
+                if (localj.userName.equals(localObject3)) {
+                  ((LinkedList)localObject2).remove(localj);
                 }
               }
             }
           }
-          if (!bs.gY((List)localObject2)) {
-            paramo.field_rawXML = ah.a(paramo.field_rawXML, (LinkedList)localObject2, ((o)localObject1).tdZ);
+          if (!bt.hj((List)localObject2)) {
+            paramo.field_rawXML = ah.a(paramo.field_rawXML, (LinkedList)localObject2, ((o)localObject1).ubP);
           }
-          ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().delete((c)localObject1, new String[0]);
+          ((f)com.tencent.mm.kernel.g.ab(f.class)).cWH().delete((c)localObject1, new String[0]);
         }
       }
       AppMethodBeat.o(41491);
@@ -418,19 +419,19 @@ public final class r
       AppMethodBeat.o(183864);
       return false;
     }
-    if (paramo.tdW.teZ)
+    if (paramo.ubM.ucP)
     {
       AppMethodBeat.o(183864);
       return false;
     }
-    boolean bool = e.Gu(paramo.tdW.teY);
+    boolean bool = e.HO(paramo.ubM.ucO);
     AppMethodBeat.o(183864);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.r
  * JD-Core Version:    0.7.0.1
  */

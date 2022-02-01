@@ -8,8 +8,8 @@ import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.appbrand.utils.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.snackbar.b;
 
 final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$8
@@ -17,11 +17,11 @@ final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$8
 {
   JsApiShowImageOperateSheet$BottomSheetLogicHelper$8(JsApiShowImageOperateSheet.BottomSheetLogicHelper paramBottomSheetLogicHelper) {}
   
-  public final void Jr(String paramString)
+  public final void MK(String paramString)
   {
     AppMethodBeat.i(45662);
-    ac.i("MicroMsg.JsApiShowImageOperateSheet", "fav localPath:%s", new Object[] { paramString });
-    if (bs.isNullOrNil(paramString))
+    ad.i("MicroMsg.JsApiShowImageOperateSheet", "fav localPath:%s", new Object[] { paramString });
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(45662);
       return;

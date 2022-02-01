@@ -8,15 +8,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.sns.b.o;
-import com.tencent.mm.protocal.protobuf.dbt;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.dhg;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -24,10 +24,10 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class SettingsAboutTimelineUI
   extends MMPreference
 {
-  private String fnC = "";
+  private String fFK = "";
   private com.tencent.mm.ui.base.preference.f screen;
-  private boolean xrm = false;
-  private boolean xrn = false;
+  private boolean yFV = false;
+  private boolean yFW = false;
   
   public int getResourceId()
   {
@@ -50,7 +50,7 @@ public class SettingsAboutTimelineUI
         return true;
       }
     });
-    this.fnC = u.axw();
+    this.fFK = u.aAm();
     AppMethodBeat.o(74073);
   }
   
@@ -66,16 +66,16 @@ public class SettingsAboutTimelineUI
   {
     AppMethodBeat.i(74072);
     super.onDestroy();
-    if ((this.xrm) && (o.xMb != null))
+    if ((this.yFV) && (o.zbT != null))
     {
-      dbt localdbt = o.xMb.bD(this.fnC, this.xrn);
-      if (localdbt == null)
+      dhg localdhg = o.zbT.bK(this.fFK, this.yFW);
+      if (localdhg == null)
       {
         AppMethodBeat.o(74072);
         return;
       }
-      ac.d("MicroMsg.SettingsAboutTimelineUI", "userinfo " + localdbt.toString());
-      ((k)g.ab(k.class)).awA().c(new j.a(51, localdbt));
+      ad.d("MicroMsg.SettingsAboutTimelineUI", "userinfo " + localdhg.toString());
+      ((l)g.ab(l.class)).azo().c(new k.a(51, localdhg));
     }
     AppMethodBeat.o(74072);
   }
@@ -99,18 +99,18 @@ public class SettingsAboutTimelineUI
       d.b(this, "sns", ".ui.SnsTagDetailUI", paramPreference);
     }
     if (paramf.equals("timeline_stranger_show")) {
-      if (this.xrn) {
+      if (this.yFW) {
         break label156;
       }
     }
     label156:
     for (boolean bool = true;; bool = false)
     {
-      this.xrn = bool;
-      if (o.xMb != null) {
-        o.xMb.bC(this.fnC, this.xrn);
+      this.yFW = bool;
+      if (o.zbT != null) {
+        o.zbT.bJ(this.fFK, this.yFW);
       }
-      this.xrm = true;
+      this.yFV = true;
       AppMethodBeat.o(74071);
       return false;
     }
@@ -120,37 +120,37 @@ public class SettingsAboutTimelineUI
   {
     AppMethodBeat.i(74070);
     super.onResume();
-    Object localObject = new dbt();
-    if (o.xMb != null) {
-      localObject = o.xMb.asG(this.fnC);
+    Object localObject = new dhg();
+    if (o.zbT != null) {
+      localObject = o.zbT.axI(this.fFK);
     }
     if (localObject == null) {
-      ac.e("MicroMsg.SettingsAboutTimelineUI", "userinfo is null");
+      ad.e("MicroMsg.SettingsAboutTimelineUI", "userinfo is null");
     }
     for (;;)
     {
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(74070);
       return;
-      int i = ((dbt)localObject).FLb;
-      localObject = (CheckBoxPreference)this.screen.aPN("timeline_stranger_show");
+      int i = ((dhg)localObject).HvJ;
+      localObject = (CheckBoxPreference)this.screen.aVD("timeline_stranger_show");
       if (localObject != null)
       {
         if ((i & 0x1) > 0) {}
         SharedPreferences localSharedPreferences;
         for (boolean bool = true;; bool = false)
         {
-          this.xrn = bool;
+          this.yFW = bool;
           localSharedPreferences = getSharedPreferences(getPackageName() + "_preferences", 0);
-          if (this.xrn) {
+          if (this.yFW) {
             break label169;
           }
-          ((CheckBoxPreference)localObject).mF = true;
+          ((CheckBoxPreference)localObject).oB = true;
           localSharedPreferences.edit().putBoolean("timeline_stranger_show", true).commit();
           break;
         }
         label169:
-        ((CheckBoxPreference)localObject).mF = false;
+        ((CheckBoxPreference)localObject).oB = false;
         localSharedPreferences.edit().putBoolean("timeline_stranger_show", false).commit();
       }
     }

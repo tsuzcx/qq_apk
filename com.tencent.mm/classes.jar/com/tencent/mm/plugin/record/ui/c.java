@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.record.ui;
 import android.content.Context;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.go;
-import com.tencent.mm.g.a.go.a;
-import com.tencent.mm.g.a.go.b;
-import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.g.a.gr;
+import com.tencent.mm.g.a.gr.a;
+import com.tencent.mm.g.a.gr.b;
+import com.tencent.mm.protocal.protobuf.ajn;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
   implements h.a
@@ -16,48 +16,48 @@ public final class c
   public c(Context paramContext)
   {
     AppMethodBeat.i(27831);
-    go localgo = new go();
-    localgo.dhc.opType = 3;
-    localgo.dhc.context = paramContext;
-    a.GpY.l(localgo);
+    gr localgr = new gr();
+    localgr.dsA.opType = 3;
+    localgr.dsA.context = paramContext;
+    a.IbL.l(localgr);
     AppMethodBeat.o(27831);
   }
   
   public final Bitmap a(h.a.b paramb)
   {
     AppMethodBeat.i(27834);
-    go localgo = new go();
-    localgo.dhc.opType = 2;
-    localgo.dhc.dhj = false;
-    if (paramb.dhh)
+    gr localgr = new gr();
+    localgr.dsA.opType = 2;
+    localgr.dsA.dsH = false;
+    if (paramb.dsF)
     {
-      localgo.dhc.dhe = paramb.dhe;
-      localgo.dhc.dhh = paramb.dhh;
+      localgr.dsA.dsC = paramb.dsC;
+      localgr.dsA.dsF = paramb.dsF;
     }
     for (;;)
     {
-      a.GpY.l(localgo);
-      ac.d("MicroMsg.FavImageServiceProxy", "getSuitableBigImg favLocalId %s, dataId %s, retBmp %s, fromCache", new Object[] { Long.valueOf(paramb.wkf), paramb.dhe.dhw, localgo.dhd.dhk, Boolean.valueOf(localgo.dhc.dhh) });
-      paramb = localgo.dhd.dhk;
+      a.IbL.l(localgr);
+      ad.d("MicroMsg.FavImageServiceProxy", "getSuitableBigImg favLocalId %s, dataId %s, retBmp %s, fromCache", new Object[] { Long.valueOf(paramb.xrW), paramb.dsC.dsU, localgr.dsB.dsI, Boolean.valueOf(localgr.dsA.dsF) });
+      paramb = localgr.dsB.dsI;
       AppMethodBeat.o(27834);
       return paramb;
-      localgo.dhc.dhe = paramb.dhe;
-      localgo.dhc.dcg = paramb.wkf;
-      localgo.dhc.maxWidth = paramb.maxWidth;
-      localgo.dhc.dhi = paramb.dhi;
+      localgr.dsA.dsC = paramb.dsC;
+      localgr.dsA.dnC = paramb.xrW;
+      localgr.dsA.maxWidth = paramb.maxWidth;
+      localgr.dsA.dsG = paramb.dsG;
     }
   }
   
   public final Bitmap a(h.a.c paramc)
   {
     AppMethodBeat.i(27833);
-    go localgo = new go();
-    localgo.dhc.opType = 0;
-    localgo.dhc.dhe = paramc.dhe;
-    localgo.dhc.dcg = paramc.wkf;
-    a.GpY.l(localgo);
-    ac.d("MicroMsg.FavImageServiceProxy", "getThumb favLocalId %s, retBmp %s", new Object[] { Long.valueOf(paramc.wkf), localgo.dhd.dhk });
-    paramc = localgo.dhd.dhk;
+    gr localgr = new gr();
+    localgr.dsA.opType = 0;
+    localgr.dsA.dsC = paramc.dsC;
+    localgr.dsA.dnC = paramc.xrW;
+    a.IbL.l(localgr);
+    ad.d("MicroMsg.FavImageServiceProxy", "getThumb favLocalId %s, retBmp %s", new Object[] { Long.valueOf(paramc.xrW), localgr.dsB.dsI });
+    paramc = localgr.dsB.dsI;
     AppMethodBeat.o(27833);
     return paramc;
   }
@@ -65,31 +65,31 @@ public final class c
   public final void a(h.a.a parama)
   {
     AppMethodBeat.i(27832);
-    ac.d("MicroMsg.FavImageServiceProxy", "attachThumb favLocalId %s", new Object[] { Long.valueOf(parama.wkf) });
-    go localgo = new go();
-    localgo.dhc.opType = 1;
-    localgo.dhc.dhf = parama.dhf;
-    localgo.dhc.dhe = parama.dhe;
-    localgo.dhc.dcg = parama.wkf;
-    localgo.dhc.dhg = parama.dhg;
-    localgo.dhc.width = parama.width;
-    localgo.dhc.height = parama.height;
-    a.GpY.l(localgo);
+    ad.d("MicroMsg.FavImageServiceProxy", "attachThumb favLocalId %s", new Object[] { Long.valueOf(parama.xrW) });
+    gr localgr = new gr();
+    localgr.dsA.opType = 1;
+    localgr.dsA.dsD = parama.dsD;
+    localgr.dsA.dsC = parama.dsC;
+    localgr.dsA.dnC = parama.xrW;
+    localgr.dsA.dsE = parama.dsE;
+    localgr.dsA.width = parama.width;
+    localgr.dsA.height = parama.height;
+    a.IbL.l(localgr);
     AppMethodBeat.o(27832);
   }
   
-  public final void dtQ()
+  public final void dEn()
   {
     AppMethodBeat.i(27835);
-    go localgo = new go();
-    localgo.dhc.opType = 4;
-    a.GpY.l(localgo);
+    gr localgr = new gr();
+    localgr.dsA.opType = 4;
+    a.IbL.l(localgr);
     AppMethodBeat.o(27835);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.c
  * JD-Core Version:    0.7.0.1
  */

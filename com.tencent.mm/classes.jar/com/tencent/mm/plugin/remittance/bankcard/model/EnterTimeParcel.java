@@ -4,17 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aem;
+import com.tencent.mm.protocal.protobuf.agv;
 
 public class EnterTimeParcel
   implements Parcelable
 {
   public static final Parcelable.Creator<EnterTimeParcel> CREATOR;
-  public String hiu;
-  public int wEF;
-  public String wEG;
-  public String wEH;
-  public int wEI;
+  public String hAD;
+  public int xSm;
+  public String xSn;
+  public String xSo;
+  public int xSp;
   
   static
   {
@@ -28,21 +28,21 @@ public class EnterTimeParcel
   public EnterTimeParcel(Parcel paramParcel)
   {
     AppMethodBeat.i(67406);
-    this.wEF = paramParcel.readInt();
-    this.wEG = paramParcel.readString();
-    this.wEH = paramParcel.readString();
-    this.wEI = paramParcel.readInt();
-    this.hiu = paramParcel.readString();
+    this.xSm = paramParcel.readInt();
+    this.xSn = paramParcel.readString();
+    this.xSo = paramParcel.readString();
+    this.xSp = paramParcel.readInt();
+    this.hAD = paramParcel.readString();
     AppMethodBeat.o(67406);
   }
   
-  public EnterTimeParcel(aem paramaem)
+  public EnterTimeParcel(agv paramagv)
   {
-    this.wEF = paramaem.wEF;
-    this.wEG = paramaem.wEG;
-    this.wEH = paramaem.wEH;
-    this.wEI = paramaem.wEI;
-    this.hiu = paramaem.hiu;
+    this.xSm = paramagv.xSm;
+    this.xSn = paramagv.xSn;
+    this.xSo = paramagv.xSo;
+    this.xSp = paramagv.xSp;
+    this.hAD = paramagv.hAD;
   }
   
   public int describeContents()
@@ -53,11 +53,11 @@ public class EnterTimeParcel
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(67407);
-    paramParcel.writeInt(this.wEF);
-    paramParcel.writeString(this.wEG);
-    paramParcel.writeString(this.wEH);
-    paramParcel.writeInt(this.wEI);
-    paramParcel.writeString(this.hiu);
+    paramParcel.writeInt(this.xSm);
+    paramParcel.writeString(this.xSn);
+    paramParcel.writeString(this.xSo);
+    paramParcel.writeInt(this.xSp);
+    paramParcel.writeString(this.hAD);
     AppMethodBeat.o(67407);
   }
 }

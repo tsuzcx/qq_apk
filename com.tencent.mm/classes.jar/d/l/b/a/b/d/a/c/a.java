@@ -2,6 +2,8 @@ package d.l.b.a.b.d.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.f;
+import d.g.b.p;
+import d.g.b.q;
 import d.l.b.a.b.b.a.c;
 import d.l.b.a.b.d.a.e.x;
 import d.l.b.a.b.o.e;
@@ -17,11 +19,11 @@ public final class a
   public static final d a(h paramh, d.l.b.a.b.b.a.g paramg)
   {
     AppMethodBeat.i(57737);
-    d.g.b.k.h(paramh, "$this$computeNewDefaultTypeQualifiers");
-    d.g.b.k.h(paramg, "additionalAnnotations");
-    if (paramh.LnL.Lnt.Bky)
+    p.h(paramh, "$this$computeNewDefaultTypeQualifiers");
+    p.h(paramg, "additionalAnnotations");
+    if (paramh.NeI.Neq.CKM)
     {
-      paramh = paramh.fUg();
+      paramh = paramh.glF();
       AppMethodBeat.o(57737);
       return paramh;
     }
@@ -36,9 +38,9 @@ public final class a
     while (((Iterator)localObject3).hasNext())
     {
       c localc1 = (c)((Iterator)localObject3).next();
-      localObject4 = paramh.LnL.Lnt;
-      d.g.b.k.h(localc1, "annotationDescriptor");
-      if (((d.l.b.a.b.d.a.a)localObject4).Lkr.gcN())
+      localObject4 = paramh.NeI.Neq;
+      p.h(localc1, "annotationDescriptor");
+      if (((d.l.b.a.b.d.a.a)localObject4).Nbo.guo())
       {
         paramg = null;
         localObject1 = paramg;
@@ -58,13 +60,13 @@ public final class a
         }
         ((Collection)localObject2).add(localObject1);
         break;
-        paramg = (k)d.l.b.a.b.d.a.b.fTN().get(localc1.fRH());
+        paramg = (k)d.l.b.a.b.d.a.b.glm().get(localc1.gjg());
         if (paramg != null)
         {
-          localObject1 = paramg.LnS;
-          localObject5 = paramg.LnT;
+          localObject1 = paramg.NeP;
+          localObject5 = paramg.NeQ;
           paramg = ((d.l.b.a.b.d.a.a)localObject4).f(localc1);
-          if (paramg != d.l.b.a.b.o.g.LOZ)
+          if (paramg != d.l.b.a.b.o.g.NFU)
           {
             i = 1;
             if (i == 0) {
@@ -84,29 +86,29 @@ public final class a
             paramg = null;
           }
           label228:
-          paramg = new k(d.l.b.a.b.d.a.f.h.a((d.l.b.a.b.d.a.f.h)localObject1, paramg.gcO()), (Collection)localObject5);
+          paramg = new k(d.l.b.a.b.d.a.f.h.a((d.l.b.a.b.d.a.f.h)localObject1, paramg.gup()), (Collection)localObject5);
           break label118;
         }
         paramg = null;
         break label118;
         label254:
-        c localc2 = paramg.Lkx;
-        Object localObject5 = paramg.fTJ();
+        c localc2 = paramg.Nbu;
+        Object localObject5 = paramg.gli();
         localObject1 = ((d.l.b.a.b.d.a.a)localObject4).g(localc1);
         paramg = (d.l.b.a.b.b.a.g)localObject1;
         if (localObject1 == null) {
           paramg = ((d.l.b.a.b.d.a.a)localObject4).f(localc2);
         }
-        if (paramg.gcP())
+        if (paramg.guq())
         {
           localObject1 = null;
         }
         else
         {
-          localObject1 = paramh.LnL.Lnu.i(localc2);
+          localObject1 = paramh.NeI.Ner.i(localc2);
           if (localObject1 != null)
           {
-            paramg = d.l.b.a.b.d.a.f.h.a((d.l.b.a.b.d.a.f.h)localObject1, paramg.gcO());
+            paramg = d.l.b.a.b.d.a.f.h.a((d.l.b.a.b.d.a.f.h)localObject1, paramg.gup());
             if (paramg != null) {}
           }
           else
@@ -121,14 +123,14 @@ public final class a
     Object localObject1 = (List)localObject2;
     if (((List)localObject1).isEmpty())
     {
-      paramh = paramh.fUg();
+      paramh = paramh.glF();
       AppMethodBeat.o(57737);
       return paramh;
     }
-    paramg = paramh.fUg();
+    paramg = paramh.glF();
     if (paramg != null)
     {
-      paramg = paramg.LnB;
+      paramg = paramg.Ney;
       if (paramg != null)
       {
         paramg = new EnumMap(paramg);
@@ -142,8 +144,8 @@ public final class a
         break label511;
       }
       localObject3 = (k)((Iterator)localObject1).next();
-      localObject2 = ((k)localObject3).LnS;
-      localObject3 = ((k)localObject3).LnT.iterator();
+      localObject2 = ((k)localObject3).NeP;
+      localObject3 = ((k)localObject3).NeQ.iterator();
       for (;;)
       {
         if (((Iterator)localObject3).hasNext())
@@ -160,7 +162,7 @@ public final class a
     label511:
     if (i == 0)
     {
-      paramh = paramh.fUg();
+      paramh = paramh.glF();
       AppMethodBeat.o(57737);
       return paramh;
     }
@@ -172,10 +174,10 @@ public final class a
   public static final h a(h paramh, d.l.b.a.b.b.l paraml, x paramx, int paramInt)
   {
     AppMethodBeat.i(57739);
-    d.g.b.k.h(paramh, "$this$childForMethod");
-    d.g.b.k.h(paraml, "containingDeclaration");
-    d.g.b.k.h(paramx, "typeParameterOwner");
-    paramh = a(paramh, paraml, paramx, paramInt, paramh.LnN);
+    p.h(paramh, "$this$childForMethod");
+    p.h(paraml, "containingDeclaration");
+    p.h(paramx, "typeParameterOwner");
+    paramh = a(paramh, paraml, paramx, paramInt, paramh.NeK);
     AppMethodBeat.o(57739);
     return paramh;
   }
@@ -183,9 +185,9 @@ public final class a
   private static final h a(h paramh, d.l.b.a.b.b.l paraml, x paramx, int paramInt, f<d> paramf)
   {
     AppMethodBeat.i(57738);
-    b localb = paramh.LnL;
+    b localb = paramh.NeI;
     if (paramx != null) {}
-    for (paramh = (m)new i(paramh, paraml, paramx, paramInt);; paramh = paramh.LnM)
+    for (paramh = (m)new i(paramh, paraml, paramx, paramInt);; paramh = paramh.NeJ)
     {
       paramh = new h(localb, paramh, paramf);
       AppMethodBeat.o(57738);
@@ -196,20 +198,20 @@ public final class a
   public static final h b(h paramh, final d.l.b.a.b.b.a.g paramg)
   {
     AppMethodBeat.i(57741);
-    d.g.b.k.h(paramh, "$this$copyWithNewDefaultTypeQualifiers");
-    d.g.b.k.h(paramg, "additionalAnnotations");
+    p.h(paramh, "$this$copyWithNewDefaultTypeQualifiers");
+    p.h(paramg, "additionalAnnotations");
     if (paramg.isEmpty())
     {
       AppMethodBeat.o(57741);
       return paramh;
     }
-    paramh = new h(paramh.LnL, paramh.LnM, d.g.a(d.k.KTe, (d.g.a.a)new b(paramh, paramg)));
+    paramh = new h(paramh.NeI, paramh.NeJ, d.g.a(d.k.MKc, (d.g.a.a)new b(paramh, paramg)));
     AppMethodBeat.o(57741);
     return paramh;
   }
   
   static final class a
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<d>
   {
     a(h paramh, d.l.b.a.b.b.g paramg)
@@ -219,7 +221,7 @@ public final class a
   }
   
   static final class b
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<d>
   {
     b(h paramh, d.l.b.a.b.b.a.g paramg)
@@ -230,7 +232,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.a
  * JD-Core Version:    0.7.0.1
  */

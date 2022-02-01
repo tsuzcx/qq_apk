@@ -7,36 +7,43 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.lite.d.b;
 import com.tencent.mm.plugin.lite.d.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 
 public class LiteAppContentProvider
   extends ContentProvider
 {
-  private static final UriMatcher pcJ;
-  private c tVY;
+  private static final UriMatcher pGt;
+  private c uYH;
   
   static
   {
-    AppMethodBeat.i(205699);
+    AppMethodBeat.i(217176);
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    pcJ = localUriMatcher;
+    pGt = localUriMatcher;
     localUriMatcher.addURI("com.tencent.mm.plugin.lite.logic.LiteAppInfo", "LiteAppInfo", 1);
-    AppMethodBeat.o(205699);
+    AppMethodBeat.o(217176);
   }
   
   public Bundle call(String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(205698);
-    if (this.tVY == null) {
-      this.tVY = new c(g.agR().ghG);
+    AppMethodBeat.i(217175);
+    if ((!g.ajD().gBW) || (!g.ajA().aiK()))
+    {
+      ad.w("MicroMsg.LiteAppContentProvider", "kernel or account not init.");
+      AppMethodBeat.o(217175);
+      return null;
     }
-    ac.i("MicroMsg.LiteAppContentProvider", "call %s %s", new Object[] { paramString1, paramString2 });
+    if (this.uYH == null) {
+      this.uYH = new c(g.ajC().gBq);
+    }
+    ad.i("MicroMsg.LiteAppContentProvider", "call %s %s", new Object[] { paramString1, paramString2 });
     int i = -1;
     switch (paramString1.hashCode())
     {
@@ -46,7 +53,7 @@ public class LiteAppContentProvider
       switch (i)
       {
       default: 
-        AppMethodBeat.o(205698);
+        AppMethodBeat.o(217175);
         return null;
         if (paramString1.equals("getLiteAppInfo"))
         {
@@ -61,7 +68,7 @@ public class LiteAppContentProvider
     }
     try
     {
-      paramString1 = this.tVY.ajL(paramString2);
+      paramString1 = this.uYH.aoy(paramString2);
       if (paramString1 != null)
       {
         paramString2 = new Bundle();
@@ -72,20 +79,20 @@ public class LiteAppContentProvider
         paramString2.putString("pkgType", paramString1.field_pkgType);
         paramString2.putString("pkgPath", paramString1.field_pkgPath);
         paramString2.putLong("updateTime", paramString1.field_updateTime);
-        AppMethodBeat.o(205698);
+        AppMethodBeat.o(217175);
         return paramString2;
       }
     }
     catch (Exception paramString1)
     {
-      ac.e("MicroMsg.LiteAppContentProvider", "getLiteAppInfo failed. :%s", new Object[] { bs.m(paramString1) });
-      AppMethodBeat.o(205698);
+      ad.e("MicroMsg.LiteAppContentProvider", "getLiteAppInfo failed. :%s", new Object[] { bt.n(paramString1) });
+      AppMethodBeat.o(217175);
       return null;
     }
     paramString1 = paramBundle.getString("appId");
     if (paramString1 == null)
     {
-      AppMethodBeat.o(205698);
+      AppMethodBeat.o(217175);
       return null;
     }
     paramString2 = new b();
@@ -95,14 +102,14 @@ public class LiteAppContentProvider
     paramString2.field_pkgPath = paramBundle.getString("pkgPath");
     paramString2.field_patchId = paramBundle.getString("patchId");
     paramString2.field_updateTime = paramBundle.getLong("updateTime");
-    if (this.tVY.ajL(paramString1) == null) {
-      this.tVY.c(paramString2);
+    if (this.uYH.aoy(paramString1) == null) {
+      this.uYH.d(paramString2);
     }
     for (;;)
     {
-      AppMethodBeat.o(205698);
+      AppMethodBeat.o(217175);
       return null;
-      this.tVY.update(paramString2, new String[0]);
+      this.uYH.update(paramString2, new String[0]);
     }
   }
   

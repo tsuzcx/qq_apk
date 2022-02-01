@@ -14,28 +14,28 @@ import com.tencent.wecall.talkroom.model.k;
 public final class e
   extends d
 {
-  public long AMc;
-  public String KvP;
-  public int Kyc;
-  public int tOL;
-  public String tmu;
+  public long Clq;
+  public String MlO;
+  public int Mod;
+  public int uRy;
+  public String ukT;
   
   public e(e parame)
   {
     AppMethodBeat.i(62542);
-    this.tmu = null;
-    this.tOL = 0;
-    this.AMc = 0L;
-    this.Kyc = 0;
-    this.KvP = null;
-    this.tmu = parame.tmu;
-    this.tOL = parame.tOL;
-    this.AMc = parame.AMc;
-    this.Kyc = parame.Kyc;
-    this.KvP = parame.KvP;
-    this.JLE = parame.JLE;
-    this.JLG = parame.JLG;
-    this.JLH = parame.JLH;
+    this.ukT = null;
+    this.uRy = 0;
+    this.Clq = 0L;
+    this.Mod = 0;
+    this.MlO = null;
+    this.ukT = parame.ukT;
+    this.uRy = parame.uRy;
+    this.Clq = parame.Clq;
+    this.Mod = parame.Mod;
+    this.MlO = parame.MlO;
+    this.LFn = parame.LFn;
+    this.LFp = parame.LFp;
+    this.LFq = parame.LFq;
     this.mNetType = 1;
     AppMethodBeat.o(62542);
   }
@@ -43,11 +43,11 @@ public final class e
   public e(String paramString1, int paramInt1, long paramLong, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString2)
   {
     AppMethodBeat.i(62543);
-    this.tmu = null;
-    this.tOL = 0;
-    this.AMc = 0L;
-    this.Kyc = 0;
-    this.KvP = null;
+    this.ukT = null;
+    this.uRy = 0;
+    this.Clq = 0L;
+    this.Mod = 0;
+    this.MlO = null;
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "enter2", paramString1, Integer.valueOf(paramInt1), Long.valueOf(paramLong), paramString2 });
     a.e locale = new a.e();
     for (;;)
@@ -55,18 +55,18 @@ public final class e
       try
       {
         locale.groupId = paramString1;
-        this.tmu = paramString1;
-        locale.ADE = paramInt1;
-        this.tOL = paramInt1;
-        locale.ADF = paramLong;
-        this.AMc = paramLong;
-        locale.urD = paramInt3;
-        this.Kyc = paramInt3;
+        this.ukT = paramString1;
+        locale.CcE = paramInt1;
+        this.uRy = paramInt1;
+        locale.CcF = paramLong;
+        this.Clq = paramLong;
+        locale.vug = paramInt3;
+        this.Mod = paramInt3;
         paramString1 = new a.aw();
-        paramString1.JOI = paramString2;
-        locale.JMo = paramString1;
-        this.KvP = paramString2;
-        b.d("MicroMsg.Voip", new Object[] { this.TAG2, "wXgroupId", locale.JMo.JOI });
+        paramString1.LIu = paramString2;
+        locale.LFX = paramString1;
+        this.MlO = paramString2;
+        b.d("MicroMsg.Voip", new Object[] { this.TAG2, "wXgroupId", locale.LFX.LIu });
         paramString1 = new a.an();
         if (paramArrayOfByte == null) {
           continue;
@@ -75,12 +75,12 @@ public final class e
         paramString1.iLen = paramArrayOfByte.length;
         paramArrayOfByte = new a.bd();
         paramArrayOfByte.type = 3;
-        paramArrayOfByte.JPB = paramString1;
-        locale.JMq = paramArrayOfByte;
+        paramArrayOfByte.LJn = paramString1;
+        locale.LFZ = paramArrayOfByte;
         this.mNetType = 2;
-        this.JLH = paramInt2;
-        locale.JMs = 2;
-        locale.netType = k.lf(c.AMx);
+        this.LFq = paramInt2;
+        locale.LGb = 2;
+        locale.netType = k.ls(c.ClL);
       }
       catch (Exception paramString1)
       {
@@ -94,7 +94,7 @@ public final class e
     }
   }
   
-  public final Object cB(byte[] paramArrayOfByte)
+  public final Object cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62544);
     if (paramArrayOfByte != null) {}
@@ -116,7 +116,7 @@ public final class e
     }
   }
   
-  public final String fBB()
+  public final String fSQ()
   {
     return "CsCmd.Cmd_V_CSEnterVoiceRoomReq";
   }
@@ -128,7 +128,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import android.os.IBinder;
 public class PostMessageService
   extends Service
 {
-  private f.a eN = new f.a()
+  private f.a gG = new f.a()
   {
     public final void a(d paramAnonymousd, Bundle paramAnonymousBundle)
     {
@@ -23,7 +23,7 @@ public class PostMessageService
   
   public IBinder onBind(Intent paramIntent)
   {
-    return this.eN;
+    return this.gG;
   }
 }
 

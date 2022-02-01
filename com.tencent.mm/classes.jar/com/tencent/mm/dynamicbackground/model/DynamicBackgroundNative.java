@@ -3,17 +3,17 @@ package com.tencent.mm.dynamicbackground.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/model/DynamicBackgroundNative;", "", "()V", "draw", "", "initView", "nativeInit", "nativeRelease", "setColor", "particleColor1", "", "particleColor2", "particleColor3", "bgColor1", "bgColor2", "setupGlslFiles", "vertexShader", "", "fragmentShader", "vertexFrameBuffer", "fragFrameBuffer", "textureVertexShader", "textureFragmentShader", "bgVertexShader", "bgFragmentShader", "surfaceChanged", "width", "height", "surfaceCreated", "dynamicbg_release"})
+@l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/model/DynamicBackgroundNative;", "", "()V", "draw", "", "initView", "nativeInit", "nativeRelease", "setColor", "particleColor1", "", "particleColor2", "particleColor3", "bgColor1", "bgColor2", "setupGlslFiles", "vertexShader", "", "fragmentShader", "vertexFrameBuffer", "fragFrameBuffer", "textureVertexShader", "textureFragmentShader", "bgVertexShader", "bgFragmentShader", "surfaceChanged", "width", "height", "surfaceCreated", "dynamicbg_release"})
 public final class DynamicBackgroundNative
 {
   public DynamicBackgroundNative()
   {
     AppMethodBeat.i(103077);
-    Object localObject = d.fLZ;
-    localObject = d.abq();
+    Object localObject = d.gfz;
+    localObject = d.adU();
     if (localObject != null)
     {
-      ((c)localObject).abg();
+      ((c)localObject).adK();
       AppMethodBeat.o(103077);
       return;
     }
@@ -38,7 +38,7 @@ public final class DynamicBackgroundNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.model.DynamicBackgroundNative
  * JD-Core Version:    0.7.0.1
  */

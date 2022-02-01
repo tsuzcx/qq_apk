@@ -18,17 +18,17 @@ import com.tencent.mm.plugin.ipcall.model.h.d;
 import com.tencent.mm.plugin.ipcall.model.h.k;
 import com.tencent.mm.plugin.ipcall.model.h.l;
 import com.tencent.mm.plugin.ipcall.model.i;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.r;
 
 public class IPCallAllRecordUI
   extends MMActivity
 {
-  private String dwc;
-  private String dxO;
-  private ListView tNw;
-  private boolean tNx = false;
+  private String dIm;
+  private String dKb;
+  private ListView uQj;
+  private boolean uQk = false;
   
   public int getForceOrientation()
   {
@@ -44,9 +44,9 @@ public class IPCallAllRecordUI
   {
     AppMethodBeat.i(25686);
     super.onCreate(paramBundle);
-    this.dwc = getIntent().getStringExtra("IPCallAllRecordUI_phoneNumber");
-    this.dxO = getIntent().getStringExtra("IPCallAllRecordUI_contactId");
-    this.tNx = getIntent().getBooleanExtra("IPCallAllRecordUI_isSinglePhoneNumber", false);
+    this.dIm = getIntent().getStringExtra("IPCallAllRecordUI_phoneNumber");
+    this.dKb = getIntent().getStringExtra("IPCallAllRecordUI_contactId");
+    this.uQk = getIntent().getBooleanExtra("IPCallAllRecordUI_isSinglePhoneNumber", false);
     setMMTitle(2131760483);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -58,8 +58,8 @@ public class IPCallAllRecordUI
         return true;
       }
     });
-    this.tNw = ((ListView)findViewById(2131296645));
-    this.tNw.setAdapter(new a(this));
+    this.uQj = ((ListView)findViewById(2131296645));
+    this.uQj.setAdapter(new a(this));
     AppMethodBeat.o(25686);
   }
   
@@ -76,22 +76,22 @@ public class IPCallAllRecordUI
     {
       super(null);
       AppMethodBeat.i(25681);
-      wy(true);
+      xk(true);
       AppMethodBeat.o(25681);
     }
     
-    public final void Xb()
+    public final void Zu()
     {
       Object localObject2 = null;
       AppMethodBeat.i(25682);
       Object localObject1;
-      if (!bs.isNullOrNil(IPCallAllRecordUI.a(IPCallAllRecordUI.this)))
+      if (!bt.isNullOrNil(IPCallAllRecordUI.a(IPCallAllRecordUI.this)))
       {
         Object localObject3 = IPCallAllRecordUI.a(IPCallAllRecordUI.this);
         localObject1 = localObject2;
-        if (!bs.isNullOrNil((String)localObject3))
+        if (!bt.isNullOrNil((String)localObject3))
         {
-          localObject3 = i.cUB().aiM((String)localObject3);
+          localObject3 = i.ddM().anz((String)localObject3);
           localObject1 = localObject2;
           if (localObject3 != null)
           {
@@ -99,7 +99,7 @@ public class IPCallAllRecordUI
             if (((com.tencent.mm.plugin.ipcall.model.h.c)localObject3).systemRowid != -1L)
             {
               long l = ((com.tencent.mm.plugin.ipcall.model.h.c)localObject3).systemRowid;
-              localObject1 = i.cUC().vG(l);
+              localObject1 = i.ddN().xQ(l);
             }
           }
         }
@@ -110,17 +110,17 @@ public class IPCallAllRecordUI
         AppMethodBeat.o(25682);
         return;
         localObject1 = localObject2;
-        if (!bs.isNullOrNil(IPCallAllRecordUI.b(IPCallAllRecordUI.this))) {
-          localObject1 = i.cUC().aiR(IPCallAllRecordUI.b(IPCallAllRecordUI.this));
+        if (!bt.isNullOrNil(IPCallAllRecordUI.b(IPCallAllRecordUI.this))) {
+          localObject1 = i.ddN().anE(IPCallAllRecordUI.b(IPCallAllRecordUI.this));
         }
       }
     }
     
-    public final void Xc()
+    public final void Zv()
     {
       AppMethodBeat.i(25683);
-      cVi();
-      Xb();
+      det();
+      Zu();
       AppMethodBeat.o(25683);
     }
     
@@ -132,31 +132,31 @@ public class IPCallAllRecordUI
       {
         localView = IPCallAllRecordUI.this.getLayoutInflater().inflate(2131494513, paramViewGroup, false);
         paramView = new a();
-        paramView.tNz = ((TextView)localView.findViewById(2131303486));
-        paramView.tNA = ((TextView)localView.findViewById(2131303488));
-        paramView.fBE = ((TextView)localView.findViewById(2131303489));
+        paramView.uQm = ((TextView)localView.findViewById(2131303486));
+        paramView.uQn = ((TextView)localView.findViewById(2131303488));
+        paramView.fUR = ((TextView)localView.findViewById(2131303489));
         localView.setTag(paramView);
       }
       paramView = (k)getItem(paramInt);
       paramViewGroup = (a)localView.getTag();
-      paramViewGroup.tNA.setText(a.ajs(paramView.field_phonenumber));
+      paramViewGroup.uQn.setText(a.aof(paramView.field_phonenumber));
       if (paramView.field_duration > 0L) {
-        paramViewGroup.fBE.setText(com.tencent.mm.plugin.ipcall.a.c.vL(paramView.field_duration));
+        paramViewGroup.fUR.setText(com.tencent.mm.plugin.ipcall.a.c.xV(paramView.field_duration));
       }
       for (;;)
       {
-        paramViewGroup.tNz.setText(com.tencent.mm.plugin.ipcall.a.c.vH(paramView.field_calltime));
+        paramViewGroup.uQm.setText(com.tencent.mm.plugin.ipcall.a.c.xR(paramView.field_calltime));
         AppMethodBeat.o(25684);
         return localView;
-        paramViewGroup.fBE.setText(com.tencent.mm.plugin.ipcall.a.c.Hu(paramView.field_status));
+        paramViewGroup.fUR.setText(com.tencent.mm.plugin.ipcall.a.c.IQ(paramView.field_status));
       }
     }
     
     final class a
     {
-      TextView fBE;
-      TextView tNA;
-      TextView tNz;
+      TextView fUR;
+      TextView uQm;
+      TextView uQn;
       
       a() {}
     }

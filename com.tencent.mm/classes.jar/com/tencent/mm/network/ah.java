@@ -4,30 +4,30 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class ah
 {
-  public static final String inj;
-  private static long ink;
+  public static final String iGB;
+  private static long iGC;
   private static long lastUpdateTime;
   
   static
   {
     AppMethodBeat.i(132942);
-    inj = b.apb() + "/tencent/noop.dat";
+    iGB = b.arO() + "/tencent/noop.dat";
     lastUpdateTime = 0L;
-    Object localObject = ai.getContext().getSharedPreferences("noop_prefs", 0);
+    Object localObject = aj.getContext().getSharedPreferences("noop_prefs", 0);
     int i = ((SharedPreferences)localObject).getInt("noop_strategy", 1);
     if (1 == i)
     {
-      ink = 270L;
-      new StringBuilder("getNoopIntervalInMs use hard code noop:").append(ink);
-      l = ink * 1000L;
+      iGC = 270L;
+      new StringBuilder("getNoopIntervalInMs use hard code noop:").append(iGC);
+      l = iGC * 1000L;
     }
     for (;;)
     {
-      ink = l / 1000L;
+      iGC = l / 1000L;
       AppMethodBeat.o(132942);
       return;
       if (3 != i) {
@@ -36,36 +36,36 @@ public final class ah
       l = ((SharedPreferences)localObject).getLong("noop_min_interval", 270L);
       if ((l >= 180L) && (l <= 3600L))
       {
-        ink = l;
+        iGC = l;
         l *= 1000L;
       }
       else
       {
-        ink = 270L;
-        new StringBuilder("getNoopIntervalInMs use wx noop:").append(ink);
-        l = ink * 1000L;
+        iGC = 270L;
+        new StringBuilder("getNoopIntervalInMs use wx noop:").append(iGC);
+        l = iGC * 1000L;
       }
     }
     long l = System.currentTimeMillis() / 1000L;
     if (l - lastUpdateTime > 3600L)
     {
-      localObject = aMj();
+      localObject = aPr();
       if ((localObject[0] < 180L) || (localObject[0] > 3600L)) {
         break label262;
       }
     }
     label262:
-    for (ink = localObject[0];; ink = 270L)
+    for (iGC = localObject[0];; iGC = 270L)
     {
       lastUpdateTime = l;
-      new StringBuilder("getNoopIntervalInMs use sync noop:").append(ink);
-      l = ink * 1000L;
+      new StringBuilder("getNoopIntervalInMs use sync noop:").append(iGC);
+      l = iGC * 1000L;
       break;
     }
   }
   
   /* Error */
-  private static long[] aMj()
+  private static long[] aPr()
   {
     // Byte code:
     //   0: ldc 109
@@ -85,7 +85,7 @@ public final class ah
     //   20: pop
     //   21: new 111	com/tencent/mm/vfs/e
     //   24: dup
-    //   25: getstatic 40	com/tencent/mm/network/ah:inj	Ljava/lang/String;
+    //   25: getstatic 40	com/tencent/mm/network/ah:iGB	Ljava/lang/String;
     //   28: invokespecial 112	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   31: astore_3
     //   32: aload_3
@@ -98,7 +98,7 @@ public final class ah
     //   47: new 118	java/io/DataInputStream
     //   50: dup
     //   51: aload_3
-    //   52: invokestatic 124	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   52: invokestatic 124	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   55: invokespecial 127	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   58: astore 4
     //   60: aload 4
@@ -285,7 +285,7 @@ public final class ah
     //   35: lconst_0
     //   36: lcmp
     //   37: ifgt +37 -> 74
-    //   40: invokestatic 48	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   40: invokestatic 48	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   43: ldc 50
     //   45: iconst_0
     //   46: invokevirtual 56	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
@@ -306,7 +306,7 @@ public final class ah
     //   83: ldc2_w 90
     //   86: lcmp
     //   87: ifgt +45 -> 132
-    //   90: invokestatic 48	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   90: invokestatic 48	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   93: ldc 50
     //   95: iconst_0
     //   96: invokevirtual 56	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
@@ -336,7 +336,7 @@ public final class ah
     //   155: ldc 146
     //   157: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   160: return
-    //   161: invokestatic 48	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   161: invokestatic 48	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   164: ldc 50
     //   166: iconst_0
     //   167: invokevirtual 56	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
@@ -368,13 +368,13 @@ public final class ah
     //   228: return
     //   229: new 111	com/tencent/mm/vfs/e
     //   232: dup
-    //   233: getstatic 40	com/tencent/mm/network/ah:inj	Ljava/lang/String;
+    //   233: getstatic 40	com/tencent/mm/network/ah:iGB	Ljava/lang/String;
     //   236: invokespecial 112	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   239: astore 8
     //   241: aload 8
     //   243: invokevirtual 116	com/tencent/mm/vfs/e:exists	()Z
     //   246: ifeq +36 -> 282
-    //   249: invokestatic 103	com/tencent/mm/network/ah:aMj	()[J
+    //   249: invokestatic 103	com/tencent/mm/network/ah:aPr	()[J
     //   252: astore 8
     //   254: aload 8
     //   256: iconst_1
@@ -409,7 +409,7 @@ public final class ah
     //   308: astore 8
     //   310: new 111	com/tencent/mm/vfs/e
     //   313: dup
-    //   314: getstatic 40	com/tencent/mm/network/ah:inj	Ljava/lang/String;
+    //   314: getstatic 40	com/tencent/mm/network/ah:iGB	Ljava/lang/String;
     //   317: invokespecial 112	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   320: astore 11
     //   322: aload 9
@@ -444,7 +444,7 @@ public final class ah
     //   386: new 178	java/io/DataOutputStream
     //   389: dup
     //   390: aload 11
-    //   392: invokestatic 182	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   392: invokestatic 182	com/tencent/mm/vfs/i:aj	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
     //   395: invokespecial 185	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   398: astore 9
     //   400: lload_0

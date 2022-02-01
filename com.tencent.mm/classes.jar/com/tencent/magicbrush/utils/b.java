@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static float cpO = -1.0F;
+  private static float cAF = -1.0F;
   
   public static Point aL(Context paramContext)
   {
@@ -36,10 +36,10 @@ public final class b
   public static float getDensity(Context paramContext)
   {
     AppMethodBeat.i(140067);
-    if (cpO < 0.0F) {
-      cpO = paramContext.getResources().getDisplayMetrics().density;
+    if (cAF < 0.0F) {
+      cAF = paramContext.getResources().getDisplayMetrics().density;
     }
-    float f = cpO;
+    float f = cAF;
     AppMethodBeat.o(140067);
     return f;
   }
@@ -54,7 +54,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.magicbrush.utils.b
  * JD-Core Version:    0.7.0.1
  */

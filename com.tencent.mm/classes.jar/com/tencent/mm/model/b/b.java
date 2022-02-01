@@ -2,231 +2,231 @@ package com.tencent.mm.model.b;
 
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
 public class b
 {
-  private boolean hqv;
+  private boolean hIN;
   public ArrayList<a> mListeners;
   
   public b()
   {
     AppMethodBeat.i(20401);
     this.mListeners = new ArrayList();
-    this.hqv = false;
+    this.hIN = false;
     AppMethodBeat.o(20401);
   }
   
   private void a(String paramString1, String paramString2, long paramLong1, boolean paramBoolean1, boolean paramBoolean2, String paramString3, String paramString4, long paramLong2, boolean paramBoolean3, boolean paramBoolean4, String paramString5)
   {
     AppMethodBeat.i(20410);
-    az.ayM();
-    c.agA().set(ah.a.GNq, paramString3);
-    az.ayM();
-    c.agA().set(ah.a.GNr, paramString4);
-    az.ayM();
-    c.agA().set(ah.a.GNs, Long.valueOf(paramLong2));
-    az.ayM();
-    c.agA().set(ah.a.GNt, Boolean.valueOf(paramBoolean3));
-    az.ayM();
-    c.agA().set(ah.a.GNu, Boolean.valueOf(paramBoolean4));
-    az.ayM();
-    c.agA().set(ah.a.GNw, paramString5);
-    az.ayM();
-    c.agA().set(ah.a.GNv, Boolean.FALSE);
-    az.ayM();
-    c.agA().set(ah.a.GNx, paramString1);
-    az.ayM();
-    c.agA().set(ah.a.GNy, paramString2);
-    az.ayM();
-    c.agA().set(ah.a.GNz, Long.valueOf(paramLong1));
-    az.ayM();
-    c.agA().set(ah.a.GNA, Boolean.valueOf(paramBoolean1));
-    az.ayM();
-    c.agA().set(ah.a.GNB, Boolean.valueOf(paramBoolean2));
-    az.ayM();
-    c.agA().set(ah.a.GND, Long.valueOf(bs.aNx()));
-    az.ayM();
-    c.agA().set(ah.a.GNC, Boolean.FALSE);
-    az.ayM();
-    c.agA().set(ah.a.GNE, Boolean.FALSE);
-    az.ayM();
-    c.agA().faa();
-    azZ();
+    ba.aBQ();
+    c.ajl().set(al.a.IzH, paramString3);
+    ba.aBQ();
+    c.ajl().set(al.a.IzI, paramString4);
+    ba.aBQ();
+    c.ajl().set(al.a.IzJ, Long.valueOf(paramLong2));
+    ba.aBQ();
+    c.ajl().set(al.a.IzK, Boolean.valueOf(paramBoolean3));
+    ba.aBQ();
+    c.ajl().set(al.a.IzL, Boolean.valueOf(paramBoolean4));
+    ba.aBQ();
+    c.ajl().set(al.a.IzN, paramString5);
+    ba.aBQ();
+    c.ajl().set(al.a.IzM, Boolean.FALSE);
+    ba.aBQ();
+    c.ajl().set(al.a.IzO, paramString1);
+    ba.aBQ();
+    c.ajl().set(al.a.IzP, paramString2);
+    ba.aBQ();
+    c.ajl().set(al.a.IzQ, Long.valueOf(paramLong1));
+    ba.aBQ();
+    c.ajl().set(al.a.IzR, Boolean.valueOf(paramBoolean1));
+    ba.aBQ();
+    c.ajl().set(al.a.IzS, Boolean.valueOf(paramBoolean2));
+    ba.aBQ();
+    c.ajl().set(al.a.IzU, Long.valueOf(bt.aQJ()));
+    ba.aBQ();
+    c.ajl().set(al.a.IzT, Boolean.FALSE);
+    ba.aBQ();
+    c.ajl().set(al.a.IzV, Boolean.FALSE);
+    ba.aBQ();
+    c.ajl().fqc();
+    aDc();
     AppMethodBeat.o(20410);
   }
   
   public static boolean a(b paramb)
   {
     AppMethodBeat.i(20413);
-    ac.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: is checking monitor banner scene: %s", new Object[] { paramb });
-    long l2 = bs.aNx();
-    az.ayM();
-    long l3 = ((Long)c.agA().get(ah.a.GND, Long.valueOf(-1L))).longValue();
-    az.ayM();
-    String str = (String)c.agA().get(ah.a.GNw, "");
+    ad.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: is checking monitor banner scene: %s", new Object[] { paramb });
+    long l2 = bt.aQJ();
+    ba.aBQ();
+    long l3 = ((Long)c.ajl().get(al.a.IzU, Long.valueOf(-1L))).longValue();
+    ba.aBQ();
+    String str = (String)c.ajl().get(al.a.IzN, "");
     long l1;
     boolean bool2;
     boolean bool1;
-    if (paramb == b.hqx)
+    if (paramb == b.hIP)
     {
-      az.ayM();
-      l1 = ((Long)c.agA().get(ah.a.GNs, Long.valueOf(0L))).longValue();
-      az.ayM();
-      bool2 = ((Boolean)c.agA().get(ah.a.GNv, Boolean.FALSE)).booleanValue();
-      bool1 = azX();
-      paramb = azU();
+      ba.aBQ();
+      l1 = ((Long)c.ajl().get(al.a.IzJ, Long.valueOf(0L))).longValue();
+      ba.aBQ();
+      bool2 = ((Boolean)c.ajl().get(al.a.IzM, Boolean.FALSE)).booleanValue();
+      bool1 = aDa();
+      paramb = aCX();
     }
-    while (!bs.isNullOrNil(str)) {
+    while (!bt.isNullOrNil(str)) {
       if (!str.equals(Build.FINGERPRINT))
       {
-        h.wUl.idkeyStat(633L, 5L, 1L, false);
-        ac.d("MicroMsg.ChattingMonitoredBannerStorage", "ocr banner: fingerprint [%s] NOT equals current device's [%s] , should NOT show banner", new Object[] { str, Build.FINGERPRINT });
+        g.yhR.idkeyStat(633L, 5L, 1L, false);
+        ad.d("MicroMsg.ChattingMonitoredBannerStorage", "ocr banner: fingerprint [%s] NOT equals current device's [%s] , should NOT show banner", new Object[] { str, Build.FINGERPRINT });
         AppMethodBeat.o(20413);
         return false;
-        az.ayM();
-        l1 = ((Long)c.agA().get(ah.a.GNz, Long.valueOf(0L))).longValue();
-        az.ayM();
-        bool2 = ((Boolean)c.agA().get(ah.a.GNC, Boolean.FALSE)).booleanValue();
-        az.ayM();
-        bool1 = ((Boolean)c.agA().get(ah.a.GNB, Boolean.FALSE)).booleanValue();
-        paramb = azR();
+        ba.aBQ();
+        l1 = ((Long)c.ajl().get(al.a.IzQ, Long.valueOf(0L))).longValue();
+        ba.aBQ();
+        bool2 = ((Boolean)c.ajl().get(al.a.IzT, Boolean.FALSE)).booleanValue();
+        ba.aBQ();
+        bool1 = ((Boolean)c.ajl().get(al.a.IzS, Boolean.FALSE)).booleanValue();
+        paramb = aCU();
       }
       else
       {
-        ac.d("MicroMsg.ChattingMonitoredBannerStorage", "ocr banner: fingerprint [%s] equals current device's [%s] , should show banner", new Object[] { str, Build.FINGERPRINT });
+        ad.d("MicroMsg.ChattingMonitoredBannerStorage", "ocr banner: fingerprint [%s] equals current device's [%s] , should show banner", new Object[] { str, Build.FINGERPRINT });
       }
     }
-    if (bs.isNullOrNil(paramb))
+    if (bt.isNullOrNil(paramb))
     {
-      ac.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: not get wording");
+      ad.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: not get wording");
       AppMethodBeat.o(20413);
       return false;
     }
     if (bool2)
     {
-      ac.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: not check trigger and already closed");
+      ad.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: not check trigger and already closed");
       AppMethodBeat.o(20413);
       return false;
     }
     if (l3 < 0L)
     {
-      ac.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: no msg occurs");
+      ad.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: no msg occurs");
       AppMethodBeat.o(20413);
       return false;
     }
-    if ((bool1) && (!azY()))
+    if ((bool1) && (!aDb()))
     {
-      ac.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: should check triggered but not triggered");
+      ad.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: should check triggered but not triggered");
       AppMethodBeat.o(20413);
       return false;
     }
     if (l1 == -1L)
     {
-      ac.i("MicroMsg.ChattingMonitoredBannerStorage", "hy: should always show");
+      ad.i("MicroMsg.ChattingMonitoredBannerStorage", "hy: should always show");
       AppMethodBeat.o(20413);
       return true;
     }
     if (l3 + l1 > l2)
     {
-      ac.i("MicroMsg.ChattingMonitoredBannerStorage", "hy: still in show time. show banner");
+      ad.i("MicroMsg.ChattingMonitoredBannerStorage", "hy: still in show time. show banner");
       AppMethodBeat.o(20413);
       return true;
     }
-    ac.i("MicroMsg.ChattingMonitoredBannerStorage", "hy: expired.");
+    ad.i("MicroMsg.ChattingMonitoredBannerStorage", "hy: expired.");
     AppMethodBeat.o(20413);
     return false;
   }
   
-  public static String azR()
+  public static String aCU()
   {
     AppMethodBeat.i(20402);
-    az.ayM();
-    String str = (String)c.agA().get(ah.a.GNx, "");
+    ba.aBQ();
+    String str = (String)c.ajl().get(al.a.IzO, "");
     AppMethodBeat.o(20402);
     return str;
   }
   
-  public static String azS()
+  public static String aCV()
   {
     AppMethodBeat.i(20403);
-    az.ayM();
-    String str = (String)c.agA().get(ah.a.GNy, "");
+    ba.aBQ();
+    String str = (String)c.ajl().get(al.a.IzP, "");
     AppMethodBeat.o(20403);
     return str;
   }
   
-  public static boolean azT()
+  public static boolean aCW()
   {
     AppMethodBeat.i(20404);
-    az.ayM();
-    boolean bool = ((Boolean)c.agA().get(ah.a.GNA, Boolean.FALSE)).booleanValue();
+    ba.aBQ();
+    boolean bool = ((Boolean)c.ajl().get(al.a.IzR, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(20404);
     return bool;
   }
   
-  public static String azU()
+  public static String aCX()
   {
     AppMethodBeat.i(20405);
-    az.ayM();
-    String str = (String)c.agA().get(ah.a.GNq, "");
+    ba.aBQ();
+    String str = (String)c.ajl().get(al.a.IzH, "");
     AppMethodBeat.o(20405);
     return str;
   }
   
-  public static String azV()
+  public static String aCY()
   {
     AppMethodBeat.i(20406);
-    az.ayM();
-    String str = (String)c.agA().get(ah.a.GNr, "");
+    ba.aBQ();
+    String str = (String)c.ajl().get(al.a.IzI, "");
     AppMethodBeat.o(20406);
     return str;
   }
   
-  public static boolean azW()
+  public static boolean aCZ()
   {
     AppMethodBeat.i(20407);
-    az.ayM();
-    boolean bool = ((Boolean)c.agA().get(ah.a.GNt, Boolean.FALSE)).booleanValue();
+    ba.aBQ();
+    boolean bool = ((Boolean)c.ajl().get(al.a.IzK, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(20407);
     return bool;
   }
   
-  private static boolean azX()
+  private static boolean aDa()
   {
     AppMethodBeat.i(20408);
-    az.ayM();
-    boolean bool = ((Boolean)c.agA().get(ah.a.GNu, Boolean.FALSE)).booleanValue();
+    ba.aBQ();
+    boolean bool = ((Boolean)c.ajl().get(al.a.IzL, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(20408);
     return bool;
   }
   
-  private static boolean azY()
+  private static boolean aDb()
   {
     AppMethodBeat.i(20409);
-    az.ayM();
-    boolean bool = ((Boolean)c.agA().get(ah.a.GNE, Boolean.FALSE)).booleanValue();
+    ba.aBQ();
+    boolean bool = ((Boolean)c.ajl().get(al.a.IzV, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(20409);
     return bool;
   }
   
-  private void azZ()
+  private void aDc()
   {
     AppMethodBeat.i(20414);
     try
     {
       Iterator localIterator = this.mListeners.iterator();
       while (localIterator.hasNext()) {
-        ((a)localIterator.next()).aAb();
+        ((a)localIterator.next()).aDe();
       }
     }
     finally
@@ -236,43 +236,43 @@ public class b
     AppMethodBeat.o(20414);
   }
   
-  private void g(String paramString, Map<String, String> paramMap)
+  private void h(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(20412);
     String str4 = paramString + "chatting.";
-    String str1 = bs.nullAsNil((String)paramMap.get(str4 + "fingerprint"));
-    if ((str4.equals(".sysmsg.banner.monitorbanner_n.")) && (!bs.isNullOrNil(str1)))
+    String str1 = bt.nullAsNil((String)paramMap.get(str4 + "fingerprint"));
+    if ((str4.equals(".sysmsg.banner.monitorbanner_n.")) && (!bt.isNullOrNil(str1)))
     {
-      ac.e("MicroMsg.ChattingMonitoredBannerStorage", "monitorbanner_n must NOT contain fingerprint.");
+      ad.e("MicroMsg.ChattingMonitoredBannerStorage", "monitorbanner_n must NOT contain fingerprint.");
       AppMethodBeat.o(20412);
       return;
     }
-    String str2 = bs.nullAsNil((String)paramMap.get(str4 + "url"));
-    String str3 = bs.nullAsNil((String)paramMap.get(str4 + "wording"));
-    long l1 = bs.getLong((String)paramMap.get(str4 + "duration"), 0L);
+    String str2 = bt.nullAsNil((String)paramMap.get(str4 + "url"));
+    String str3 = bt.nullAsNil((String)paramMap.get(str4 + "wording"));
+    long l1 = bt.getLong((String)paramMap.get(str4 + "duration"), 0L);
     boolean bool1;
     boolean bool2;
     label284:
     String str5;
     long l2;
     boolean bool3;
-    if (bs.getInt((String)paramMap.get(str4 + "autotrigger"), 0) == 1)
+    if (bt.getInt((String)paramMap.get(str4 + "autotrigger"), 0) == 1)
     {
       bool1 = true;
-      if (bs.getInt((String)paramMap.get(str4 + "closable"), 0) != 1) {
+      if (bt.getInt((String)paramMap.get(str4 + "closable"), 0) != 1) {
         break label619;
       }
       bool2 = true;
       paramString = paramString + "mainframe.";
-      str4 = bs.nullAsNil((String)paramMap.get(paramString + "url"));
-      str5 = bs.nullAsNil((String)paramMap.get(paramString + "wording"));
-      l2 = bs.getLong((String)paramMap.get(paramString + "duration"), 0L);
-      if (bs.getInt((String)paramMap.get(paramString + "autotrigger"), 0) != 1) {
+      str4 = bt.nullAsNil((String)paramMap.get(paramString + "url"));
+      str5 = bt.nullAsNil((String)paramMap.get(paramString + "wording"));
+      l2 = bt.getLong((String)paramMap.get(paramString + "duration"), 0L);
+      if (bt.getInt((String)paramMap.get(paramString + "autotrigger"), 0) != 1) {
         break label625;
       }
       bool3 = true;
       label448:
-      if (bs.getInt((String)paramMap.get(paramString + "closable"), 0) != 1) {
+      if (bt.getInt((String)paramMap.get(paramString + "closable"), 0) != 1) {
         break label631;
       }
     }
@@ -281,9 +281,9 @@ public class b
     label631:
     for (boolean bool4 = true;; bool4 = false)
     {
-      if ((!bs.isNullOrNil(str5)) || (!bs.isNullOrNil(str3)))
+      if ((!bt.isNullOrNil(str5)) || (!bt.isNullOrNil(str3)))
       {
-        ac.d("MicroMsg.ChattingMonitoredBannerStorage", "received msg:\nchattingUrl = " + str2 + "\nchattingWording = " + str3 + "\nchattingDuration = " + l1 + "\nchattingAutotrigger = " + bool1 + "\nchattingCloseable = " + bool2 + "\nfingerPrint = " + str1);
+        ad.d("MicroMsg.ChattingMonitoredBannerStorage", "received msg:\nchattingUrl = " + str2 + "\nchattingWording = " + str3 + "\nchattingDuration = " + l1 + "\nchattingAutotrigger = " + bool1 + "\nchattingCloseable = " + bool2 + "\nfingerPrint = " + str1);
         a(str5, str4, l2, bool4, bool3, str3, str2, l1, bool2, bool1, str1);
       }
       AppMethodBeat.o(20412);
@@ -297,17 +297,17 @@ public class b
     }
   }
   
-  public final void aAa()
+  public final void aDd()
   {
     AppMethodBeat.i(20415);
-    if (azY() != true)
+    if (aDb() != true)
     {
-      ac.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: monitored illegal set text. mark now as the start time ");
-      az.ayM();
-      c.agA().set(ah.a.GND, Long.valueOf(bs.aNx()));
-      az.ayM();
-      c.agA().set(ah.a.GNE, Boolean.TRUE);
-      azZ();
+      ad.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: monitored illegal set text. mark now as the start time ");
+      ba.aBQ();
+      c.ajl().set(al.a.IzU, Long.valueOf(bt.aQJ()));
+      ba.aBQ();
+      c.ajl().set(al.a.IzV, Boolean.TRUE);
+      aDc();
     }
     AppMethodBeat.o(20415);
   }
@@ -315,51 +315,51 @@ public class b
   public final void b(b paramb)
   {
     AppMethodBeat.i(20416);
-    if (paramb == b.hqw)
+    if (paramb == b.hIO)
     {
-      az.ayM();
-      c.agA().set(ah.a.GNC, Boolean.FALSE);
+      ba.aBQ();
+      c.ajl().set(al.a.IzT, Boolean.FALSE);
     }
     for (;;)
     {
-      azZ();
+      aDc();
       AppMethodBeat.o(20416);
       return;
-      az.ayM();
-      c.agA().set(ah.a.GNv, Boolean.FALSE);
+      ba.aBQ();
+      c.ajl().set(al.a.IzM, Boolean.FALSE);
     }
   }
   
   public final void c(b paramb)
   {
     AppMethodBeat.i(20417);
-    if (paramb == b.hqw)
+    if (paramb == b.hIO)
     {
-      az.ayM();
-      c.agA().set(ah.a.GNz, Long.valueOf(0L));
+      ba.aBQ();
+      c.ajl().set(al.a.IzQ, Long.valueOf(0L));
     }
     for (;;)
     {
-      azZ();
+      aDc();
       do
       {
         AppMethodBeat.o(20417);
         return;
-      } while (paramb != b.hqx);
-      if (!azX())
+      } while (paramb != b.hIP);
+      if (!aDa())
       {
-        az.ayM();
-        c.agA().set(ah.a.GNs, Long.valueOf(0L));
+        ba.aBQ();
+        c.ajl().set(al.a.IzJ, Long.valueOf(0L));
       }
       else
       {
-        az.ayM();
-        c.agA().set(ah.a.GNv, Boolean.TRUE);
+        ba.aBQ();
+        c.ajl().set(al.a.IzM, Boolean.TRUE);
       }
     }
   }
   
-  public final void s(Map<String, String> paramMap)
+  public final void t(Map<String, String> paramMap)
   {
     AppMethodBeat.i(20411);
     if (paramMap == null)
@@ -367,16 +367,16 @@ public class b
       AppMethodBeat.o(20411);
       return;
     }
-    h.wUl.idkeyStat(633L, 3L, 1L, false);
-    ac.d("MicroMsg.ChattingMonitoredBannerStorage", "origin values: ".concat(String.valueOf(paramMap)));
-    g(".sysmsg.banner.monitorbanner_n.", paramMap);
-    g(".sysmsg.banner.monitorbanner_o.", paramMap);
+    g.yhR.idkeyStat(633L, 3L, 1L, false);
+    ad.d("MicroMsg.ChattingMonitoredBannerStorage", "origin values: ".concat(String.valueOf(paramMap)));
+    h(".sysmsg.banner.monitorbanner_n.", paramMap);
+    h(".sysmsg.banner.monitorbanner_o.", paramMap);
     AppMethodBeat.o(20411);
   }
   
   public static abstract interface a
   {
-    public abstract void aAb();
+    public abstract void aDe();
   }
   
   public static enum b
@@ -384,9 +384,9 @@ public class b
     static
     {
       AppMethodBeat.i(20400);
-      hqw = new b("Main", 0);
-      hqx = new b("Chatting", 1);
-      hqy = new b[] { hqw, hqx };
+      hIO = new b("Main", 0);
+      hIP = new b("Chatting", 1);
+      hIQ = new b[] { hIO, hIP };
       AppMethodBeat.o(20400);
     }
     

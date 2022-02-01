@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ec
   extends b
 {
-  public a ddZ;
+  public a dpi;
   
   public ec()
   {
@@ -15,23 +15,21 @@ public final class ec
   
   private ec(byte paramByte)
   {
-    AppMethodBeat.i(115993);
-    this.ddZ = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(115990);
+    this.dpi = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(115993);
+    AppMethodBeat.o(115990);
   }
   
   public static final class a
   {
-    public String cIZ;
-    public String ddh;
-    public int dea;
+    public boolean dpj = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ec
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.dialog;
 
 public abstract interface m
 {
-  public static final m mCm = new m()
+  public static final m swA = new m()
   {
     public final void a(l paramAnonymousl) {}
     
@@ -23,7 +23,7 @@ public abstract interface m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.m
  * JD-Core Version:    0.7.0.1
  */

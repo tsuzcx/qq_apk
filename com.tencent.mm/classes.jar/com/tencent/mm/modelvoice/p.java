@@ -1,14 +1,14 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
 
 public final class p
 {
-  public String iaC;
-  public boolean iaD;
+  public String itY;
+  public boolean itZ;
   public long time;
   
   public p(String paramString)
@@ -23,17 +23,17 @@ public final class p
           str = paramString.substring(0, paramString.length() - 1);
         }
         paramString = str.split(":");
-        if ((paramString.length == 4) && (ai.ww(paramString[0])))
+        if ((paramString.length == 4) && (am.zs(paramString[0])))
         {
           i = 1;
           if (paramString.length > i) {
-            this.iaC = paramString[i];
+            this.itY = paramString[i];
           }
           if (paramString.length > i + 1) {
-            this.time = bs.getLong(paramString[(i + 1)], 0L);
+            this.time = bt.getLong(paramString[(i + 1)], 0L);
           }
           if (paramString.length > i + 2) {
-            this.iaD = paramString[(i + 2)].equals("1");
+            this.itZ = paramString[(i + 2)].equals("1");
           }
           AppMethodBeat.o(130092);
           return;
@@ -41,12 +41,12 @@ public final class p
       }
       catch (Exception paramString)
       {
-        if (this.iaC == null) {
-          this.iaC = "";
+        if (this.itY == null) {
+          this.itY = "";
         }
-        this.iaD = false;
+        this.itZ = false;
         this.time = 0L;
-        ac.e("MicroMsg.VoiceContent", "VoiceContent parse failed.");
+        ad.e("MicroMsg.VoiceContent", "VoiceContent parse failed.");
         AppMethodBeat.o(130092);
         return;
       }
@@ -67,9 +67,9 @@ public final class p
     }
   }
   
-  public final String aJH()
+  public final String aMS()
   {
-    return this.iaC;
+    return this.itY;
   }
 }
 

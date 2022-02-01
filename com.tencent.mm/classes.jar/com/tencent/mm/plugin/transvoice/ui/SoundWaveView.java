@@ -19,8 +19,8 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.PathInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.transvoice.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.aq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -29,24 +29,24 @@ import java.util.Random;
 public class SoundWaveView
   extends View
 {
-  private SoundWaveView.d AkD;
-  private b AkE;
-  private ArrayList<Integer> AkF;
-  private ArrayList<Integer> AkG;
-  private ArrayList<AnimatorSet> AkH;
-  private List<List<Float>> AkI;
-  private List<List<Float>> AkJ;
-  private Interpolator AkK;
-  private int AkL;
-  private int AkM;
-  private int AkN;
-  private int AkO;
-  private int AkP;
-  private int AkQ;
-  private int AkR;
-  private Runnable AkS;
-  private int AkT;
-  private a AkU;
+  private int BCA;
+  private int BCB;
+  private int BCC;
+  private int BCD;
+  private Runnable BCE;
+  private int BCF;
+  private a BCG;
+  private SoundWaveView.d BCp;
+  private SoundWaveView.b BCq;
+  private ArrayList<Integer> BCr;
+  private ArrayList<Integer> BCs;
+  private ArrayList<AnimatorSet> BCt;
+  private List<List<Float>> BCu;
+  private List<List<Float>> BCv;
+  private Interpolator BCw;
+  private int BCx;
+  private int BCy;
+  private int BCz;
   private int mHeight;
   private Paint mPaint;
   private int mWidth;
@@ -60,36 +60,36 @@ public class SoundWaveView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(185288);
-    this.AkD = SoundWaveView.d.AlA;
-    this.AkE = b.Alb;
-    this.AkI = new ArrayList();
-    this.AkJ = new ArrayList();
-    this.AkS = new Runnable()
+    this.BCp = SoundWaveView.d.BDl;
+    this.BCq = SoundWaveView.b.BCN;
+    this.BCu = new ArrayList();
+    this.BCv = new ArrayList();
+    this.BCE = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(185277);
-        ac.i("MicroMsg.NewTrans2Txt.SoundWaveView", "active waiting!!!");
-        SoundWaveView.a(SoundWaveView.this, SoundWaveView.b.Alb);
+        ad.i("MicroMsg.NewTrans2Txt.SoundWaveView", "active waiting!!!");
+        SoundWaveView.a(SoundWaveView.this, SoundWaveView.b.BCN);
         SoundWaveView.a(SoundWaveView.this);
         AppMethodBeat.o(185277);
       }
     };
-    this.AkT = -1;
-    this.AkU = new a((byte)0);
+    this.BCF = -1;
+    this.BCG = new a((byte)0);
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(185288);
   }
   
-  private boolean RL(int paramInt)
+  private boolean Tv(int paramInt)
   {
-    return (paramInt >= this.AkU.start) && (paramInt <= this.AkU.end);
+    return (paramInt >= this.BCG.start) && (paramInt <= this.BCG.end);
   }
   
-  private boolean RM(int paramInt)
+  private boolean Tw(int paramInt)
   {
     AppMethodBeat.i(185297);
-    if (!RL(paramInt))
+    if (!Tv(paramInt))
     {
       AppMethodBeat.o(185297);
       return true;
@@ -101,12 +101,12 @@ public class SoundWaveView
   private void a(float paramFloat, final List<Float> paramList)
   {
     AppMethodBeat.i(186026);
-    int j = c.Aln;
+    int j = c.BCY;
     int k = j / 2;
     final int i = 0;
     if (i < j)
     {
-      final float f = (float)(paramFloat * Math.pow(c.Alu, Math.abs(k - i)));
+      final float f = (float)(paramFloat * Math.pow(c.BDf, Math.abs(k - i)));
       if (2 == Math.abs(k - i)) {
         postDelayed(new Runnable()
         {
@@ -140,86 +140,73 @@ public class SoundWaveView
     AppMethodBeat.o(186026);
   }
   
-  private void ahw()
+  private void akh()
   {
     AppMethodBeat.i(185295);
-    this.AkT = -1;
-    efj();
-    efn();
-    efo();
+    this.BCF = -1;
+    erA();
+    erE();
+    erF();
     AppMethodBeat.o(185295);
   }
   
-  private void efi()
-  {
-    AppMethodBeat.i(185290);
-    int j = getBundleCount();
-    int i = 0;
-    while (i < j)
-    {
-      this.AkF.set(i, Integer.valueOf(this.AkO));
-      i += 1;
-    }
-    AppMethodBeat.o(185290);
-  }
-  
-  private void efj()
+  private void erA()
   {
     AppMethodBeat.i(185291);
     int j = getVolumeItemCount();
     int i = 0;
     while (i < j)
     {
-      this.AkG.set(i, Integer.valueOf(this.AkO));
+      this.BCs.set(i, Integer.valueOf(this.BCA));
       i += 1;
     }
     AppMethodBeat.o(185291);
   }
   
-  private void efk()
+  private void erB()
   {
     AppMethodBeat.i(186024);
-    Iterator localIterator = this.AkI.iterator();
+    Iterator localIterator = this.BCu.iterator();
     while (localIterator.hasNext())
     {
       List localList = (List)localIterator.next();
       int i = 0;
       while (i < localList.size())
       {
-        localList.set(i, Float.valueOf(this.AkO));
+        localList.set(i, Float.valueOf(this.BCA));
         i += 1;
       }
     }
     AppMethodBeat.o(186024);
   }
   
-  private void efl()
+  private void erC()
   {
     AppMethodBeat.i(186025);
-    Iterator localIterator = this.AkJ.iterator();
+    Iterator localIterator = this.BCv.iterator();
     while (localIterator.hasNext())
     {
       List localList = (List)localIterator.next();
       int i = 0;
       while (i < localList.size())
       {
-        localList.set(i, Float.valueOf(this.AkO));
+        localList.set(i, Float.valueOf(this.BCA));
         i += 1;
       }
     }
     AppMethodBeat.o(186025);
   }
   
-  private void efm()
+  private void erD()
   {
     AppMethodBeat.i(185298);
-    this.AkH.clear();
+    this.BCt.clear();
     int j = getVolumeItemCount();
     final int i = 0;
     while (i < j)
     {
       AnimatorSet localAnimatorSet = new AnimatorSet();
-      localAnimatorSet.setStartDelay(c.Alr * i);
+      localAnimatorSet.setStartDelay(c.BDc * i);
       localAnimatorSet.setInterpolator(new LinearInterpolator());
       ValueAnimator.AnimatorUpdateListener local6 = new ValueAnimator.AnimatorUpdateListener()
       {
@@ -231,14 +218,14 @@ public class SoundWaveView
           AppMethodBeat.o(186022);
         }
       };
-      ValueAnimator localValueAnimator1 = ValueAnimator.ofInt(new int[] { this.AkO, this.AkQ });
-      localValueAnimator1.setDuration(c.Als);
+      ValueAnimator localValueAnimator1 = ValueAnimator.ofInt(new int[] { this.BCA, this.BCC });
+      localValueAnimator1.setDuration(c.BDd);
       localValueAnimator1.addUpdateListener(local6);
-      ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { this.AkQ, this.AkO });
-      localValueAnimator2.setDuration(c.Als);
+      ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { this.BCC, this.BCA });
+      localValueAnimator2.setDuration(c.BDd);
       localValueAnimator2.addUpdateListener(local6);
-      ValueAnimator localValueAnimator3 = ValueAnimator.ofInt(new int[] { this.AkO, this.AkO });
-      localValueAnimator3.setDuration(c.Alt);
+      ValueAnimator localValueAnimator3 = ValueAnimator.ofInt(new int[] { this.BCA, this.BCA });
+      localValueAnimator3.setDuration(c.BDe);
       localValueAnimator3.addUpdateListener(local6);
       localAnimatorSet.addListener(new Animator.AnimatorListener()
       {
@@ -247,10 +234,10 @@ public class SoundWaveView
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(186023);
-          ac.d("MicroMsg.NewTrans2Txt.SoundWaveView", "AnimatorSet onAnimationEnd, mode: %s", new Object[] { SoundWaveView.e(SoundWaveView.this) });
-          if ((SoundWaveView.b.Alb == SoundWaveView.e(SoundWaveView.this)) && (i == SoundWaveView.f(SoundWaveView.this).size() - 1) && (SoundWaveView.this.isShown()))
+          ad.d("MicroMsg.NewTrans2Txt.SoundWaveView", "AnimatorSet onAnimationEnd, mode: %s", new Object[] { SoundWaveView.e(SoundWaveView.this) });
+          if ((SoundWaveView.b.BCN == SoundWaveView.e(SoundWaveView.this)) && (i == SoundWaveView.f(SoundWaveView.this).size() - 1) && (SoundWaveView.this.isShown()))
           {
-            ac.d("MicroMsg.NewTrans2Txt.SoundWaveView", "restart waiting anim!!!");
+            ad.d("MicroMsg.NewTrans2Txt.SoundWaveView", "restart waiting anim!!!");
             SoundWaveView.g(SoundWaveView.this);
           }
           AppMethodBeat.o(186023);
@@ -261,33 +248,33 @@ public class SoundWaveView
         public final void onAnimationStart(Animator paramAnonymousAnimator) {}
       });
       localAnimatorSet.playSequentially(new Animator[] { localValueAnimator1, localValueAnimator2, localValueAnimator3 });
-      this.AkH.add(localAnimatorSet);
+      this.BCt.add(localAnimatorSet);
       i += 1;
     }
     AppMethodBeat.o(185298);
   }
   
-  private void efn()
+  private void erE()
   {
     AppMethodBeat.i(185299);
-    Iterator localIterator = this.AkH.iterator();
+    Iterator localIterator = this.BCt.iterator();
     while (localIterator.hasNext()) {
       ((AnimatorSet)localIterator.next()).end();
     }
     AppMethodBeat.o(185299);
   }
   
-  private void efo()
+  private void erF()
   {
     AppMethodBeat.i(185300);
-    Iterator localIterator = this.AkH.iterator();
+    Iterator localIterator = this.BCt.iterator();
     while (localIterator.hasNext()) {
       ((AnimatorSet)localIterator.next()).start();
     }
     AppMethodBeat.o(185300);
   }
   
-  private void efp()
+  private void erG()
   {
     AppMethodBeat.i(185301);
     int j = getBundleCount();
@@ -303,9 +290,9 @@ public class SoundWaveView
     }
     for (;;)
     {
-      this.AkU.start = i;
-      this.AkU.end = j;
-      ac.i("MicroMsg.NewTrans2Txt.SoundWaveView", "initBaseBundleGroupInfo: %s", new Object[] { this.AkU.toString() });
+      this.BCG.start = i;
+      this.BCG.end = j;
+      ad.i("MicroMsg.NewTrans2Txt.SoundWaveView", "initBaseBundleGroupInfo: %s", new Object[] { this.BCG.toString() });
       AppMethodBeat.o(185301);
       return;
       i = k - 1;
@@ -315,14 +302,27 @@ public class SoundWaveView
     }
   }
   
+  private void erz()
+  {
+    AppMethodBeat.i(185290);
+    int j = getBundleCount();
+    int i = 0;
+    while (i < j)
+    {
+      this.BCr.set(i, Integer.valueOf(this.BCA));
+      i += 1;
+    }
+    AppMethodBeat.o(185290);
+  }
+  
   private int getActiveBundleIndex()
   {
     AppMethodBeat.i(185302);
-    ac.d("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, mLastActiveBundleIndex: %s.", new Object[] { Integer.valueOf(this.AkT) });
-    if (-1 == this.AkT)
+    ad.d("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, mLastActiveBundleIndex: %s.", new Object[] { Integer.valueOf(this.BCF) });
+    if (-1 == this.BCF)
     {
-      this.AkT = (new Random().nextInt(this.AkU.end - this.AkU.start + 1) + this.AkU.start);
-      i = this.AkT;
+      this.BCF = (new Random().nextInt(this.BCG.end - this.BCG.start + 1) + this.BCG.start);
+      i = this.BCF;
       AppMethodBeat.o(185302);
       return i;
     }
@@ -330,16 +330,16 @@ public class SoundWaveView
     int j;
     if (1 == i)
     {
-      j = this.AkT - 1;
+      j = this.BCF - 1;
       i = j;
-      if (RM(j))
+      if (Tw(j))
       {
-        j = this.AkT + 1;
+        j = this.BCF + 1;
         i = j;
-        if (RM(j))
+        if (Tw(j))
         {
-          ac.i("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, keep! %s %s", new Object[] { Integer.valueOf(this.AkT), this.AkU });
-          i = this.AkT;
+          ad.i("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, keep! %s %s", new Object[] { Integer.valueOf(this.BCF), this.BCG });
+          i = this.BCF;
           AppMethodBeat.o(185302);
           return i;
         }
@@ -349,16 +349,16 @@ public class SoundWaveView
     }
     if (2 == i)
     {
-      j = this.AkT + 1;
+      j = this.BCF + 1;
       i = j;
-      if (RM(j))
+      if (Tw(j))
       {
-        j = this.AkT - 1;
+        j = this.BCF - 1;
         i = j;
-        if (RM(j))
+        if (Tw(j))
         {
-          ac.i("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, keep! %s %s", new Object[] { Integer.valueOf(this.AkT), this.AkU });
-          i = this.AkT;
+          ad.i("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, keep! %s %s", new Object[] { Integer.valueOf(this.BCF), this.BCG });
+          i = this.BCF;
           AppMethodBeat.o(185302);
           return i;
         }
@@ -366,16 +366,16 @@ public class SoundWaveView
       AppMethodBeat.o(185302);
       return i;
     }
-    i = this.AkT;
+    i = this.BCF;
     AppMethodBeat.o(185302);
     return i;
   }
   
   private int getBundleCount()
   {
-    int i = c.Alo;
-    if (SoundWaveView.d.AlB == this.AkD) {
-      i = c.Alp;
+    int i = c.BCZ;
+    if (SoundWaveView.d.BDm == this.BCp) {
+      i = c.BDa;
     }
     return i;
   }
@@ -384,7 +384,7 @@ public class SoundWaveView
   {
     AppMethodBeat.i(185296);
     int i = getBundleCount();
-    int j = c.Aln;
+    int j = c.BCY;
     AppMethodBeat.o(185296);
     return i * j;
   }
@@ -396,77 +396,77 @@ public class SoundWaveView
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.SoundWaveView, 0, 0);
-      i = paramContext.getInt(0, SoundWaveView.d.AlA.ordinal());
-      if (i == SoundWaveView.d.AlA.ordinal())
+      i = paramContext.getInt(0, SoundWaveView.d.BDl.ordinal());
+      if (i == SoundWaveView.d.BDl.ordinal())
       {
-        this.AkD = SoundWaveView.d.AlA;
+        this.BCp = SoundWaveView.d.BDl;
         paramContext.recycle();
-        ac.i("MicroMsg.NewTrans2Txt.SoundWaveView", "init style %s", new Object[] { this.AkD });
+        ad.i("MicroMsg.NewTrans2Txt.SoundWaveView", "init style %s", new Object[] { this.BCp });
       }
     }
     else
     {
-      this.AkL = ao.fromDPToPix(getContext(), c.Alf);
-      this.AkM = ao.fromDPToPix(getContext(), c.Alg);
-      this.AkN = ao.fromDPToPix(getContext(), c.Alh);
-      this.AkO = ao.fromDPToPix(getContext(), c.Ali);
-      this.AkP = ao.fromDPToPix(getContext(), c.Alj);
-      this.AkQ = ao.fromDPToPix(getContext(), c.Alk);
-      this.AkR = ao.fromDPToPix(getContext(), c.Alx);
-      this.mWidth = ao.fromDPToPix(getContext(), c.Aly);
-      this.mHeight = ao.fromDPToPix(getContext(), c.Alj);
-      this.AkF = new ArrayList();
+      this.BCx = aq.fromDPToPix(getContext(), c.BCR);
+      this.BCy = aq.fromDPToPix(getContext(), c.BCS);
+      this.BCz = aq.fromDPToPix(getContext(), c.BCT);
+      this.BCA = aq.fromDPToPix(getContext(), c.BCU);
+      this.BCB = aq.fromDPToPix(getContext(), c.BCV);
+      this.BCC = aq.fromDPToPix(getContext(), c.BCW);
+      this.BCD = aq.fromDPToPix(getContext(), c.BDi);
+      this.mWidth = aq.fromDPToPix(getContext(), c.BDj);
+      this.mHeight = aq.fromDPToPix(getContext(), c.BCV);
+      this.BCr = new ArrayList();
       i = 0;
     }
     for (;;)
     {
-      if (i >= c.Alo) {
+      if (i >= c.BCZ) {
         break label376;
       }
-      this.AkF.add(Integer.valueOf(this.AkO));
+      this.BCr.add(Integer.valueOf(this.BCA));
       paramContext = new ArrayList();
       paramAttributeSet = new ArrayList();
       int j = 0;
       for (;;)
       {
-        if (j < c.Aln)
+        if (j < c.BCY)
         {
-          paramContext.add(Float.valueOf(this.AkO));
-          paramAttributeSet.add(Float.valueOf(this.AkO));
+          paramContext.add(Float.valueOf(this.BCA));
+          paramAttributeSet.add(Float.valueOf(this.BCA));
           j += 1;
           continue;
-          if (i == SoundWaveView.d.AlB.ordinal())
+          if (i == SoundWaveView.d.BDm.ordinal())
           {
-            this.AkD = SoundWaveView.d.AlB;
+            this.BCp = SoundWaveView.d.BDm;
             break;
           }
-          ac.e("MicroMsg.NewTrans2Txt.SoundWaveView", "style err! %s", new Object[] { Integer.valueOf(i) });
+          ad.e("MicroMsg.NewTrans2Txt.SoundWaveView", "style err! %s", new Object[] { Integer.valueOf(i) });
           break;
         }
       }
-      this.AkI.add(paramContext);
-      this.AkJ.add(paramAttributeSet);
+      this.BCu.add(paramContext);
+      this.BCv.add(paramAttributeSet);
       i += 1;
     }
     label376:
-    this.AkG = new ArrayList();
+    this.BCs = new ArrayList();
     int i = k;
-    while (i < c.Aln * c.Alo)
+    while (i < c.BCY * c.BCZ)
     {
-      this.AkG.add(Integer.valueOf(this.AkO));
+      this.BCs.add(Integer.valueOf(this.BCA));
       i += 1;
     }
-    efi();
-    efj();
-    this.AkH = new ArrayList(c.Aln * c.Alo);
+    erz();
+    erA();
+    this.BCt = new ArrayList(c.BCY * c.BCZ);
     if (Build.VERSION.SDK_INT >= 21) {}
     for (paramContext = new PathInterpolator(0.0F, 0.5F, 0.2F, 1.0F);; paramContext = new e())
     {
-      this.AkK = paramContext;
-      efp();
-      efm();
+      this.BCw = paramContext;
+      erG();
+      erD();
       this.mPaint = new Paint(1);
-      this.mPaint.setColor(Color.parseColor(c.Alm));
+      this.mPaint.setColor(Color.parseColor(c.BCX));
       this.mPaint.setAlpha(128);
       AppMethodBeat.o(185289);
       return;
@@ -476,18 +476,18 @@ public class SoundWaveView
   private void reset()
   {
     AppMethodBeat.i(185305);
-    efk();
-    efl();
-    this.AkE = b.Alb;
-    ahw();
+    erB();
+    erC();
+    this.BCq = SoundWaveView.b.BCN;
+    akh();
     AppMethodBeat.o(185305);
   }
   
-  public final void RK(int paramInt)
+  public final void Tu(int paramInt)
   {
     AppMethodBeat.i(185294);
     float f = paramInt / 100.0F;
-    ac.d("MicroMsg.NewTrans2Txt.SoundWaveView", "iVolume %s, fVolume %s", new Object[] { Integer.valueOf(paramInt), Float.valueOf(f) });
+    ad.d("MicroMsg.NewTrans2Txt.SoundWaveView", "iVolume %s, fVolume %s", new Object[] { Integer.valueOf(paramInt), Float.valueOf(f) });
     int j;
     final int i;
     ArrayList localArrayList;
@@ -496,36 +496,36 @@ public class SoundWaveView
     int m;
     if (f <= 0.05D)
     {
-      if (b.Alc == this.AkE)
+      if (SoundWaveView.b.BCO == this.BCq)
       {
-        this.AkE = b.Ald;
-        postDelayed(this.AkS, c.Alq);
+        this.BCq = SoundWaveView.b.BCP;
+        postDelayed(this.BCE, c.BDb);
       }
-      if ((b.Alc != this.AkE) && (b.Ald != this.AkE)) {
+      if ((SoundWaveView.b.BCO != this.BCq) && (SoundWaveView.b.BCP != this.BCq)) {
         break label799;
       }
-      efi();
-      f = this.AkK.getInterpolation(f);
-      ac.d("MicroMsg.NewTrans2Txt.SoundWaveView", "PathInterpolatorCompat value: %s.", new Object[] { Float.valueOf(f) });
-      j = (int)(f * this.AkP);
+      erz();
+      f = this.BCw.getInterpolation(f);
+      ad.d("MicroMsg.NewTrans2Txt.SoundWaveView", "PathInterpolatorCompat value: %s.", new Object[] { Float.valueOf(f) });
+      j = (int)(f * this.BCB);
       i = getActiveBundleIndex();
-      ac.d("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, activeBundleIndex: %s", new Object[] { Integer.valueOf(i) });
-      this.AkF.set(i, Integer.valueOf(j));
+      ad.d("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, activeBundleIndex: %s", new Object[] { Integer.valueOf(i) });
+      this.BCr.set(i, Integer.valueOf(j));
       paramInt = new Random().nextInt(2);
-      if (this.AkU.start != i) {
+      if (this.BCG.start != i) {
         break label470;
       }
-      this.AkF.set(this.AkU.end, Integer.valueOf((int)(j * c.Alv[paramInt])));
-      if (this.AkU.end - 1 != this.AkU.start)
+      this.BCr.set(this.BCG.end, Integer.valueOf((int)(j * c.BDg[paramInt])));
+      if (this.BCG.end - 1 != this.BCG.start)
       {
-        localArrayList = this.AkF;
-        i = this.AkU.end;
+        localArrayList = this.BCr;
+        i = this.BCG.end;
         f = j;
-        localArrayList.set(i - 1, Integer.valueOf((int)(c.Alv[(1 - paramInt)] * f)));
+        localArrayList.set(i - 1, Integer.valueOf((int)(c.BDg[(1 - paramInt)] * f)));
       }
       k = getBundleCount();
       paramInt = new Random().nextInt(2);
-      if (k != c.Alo) {
+      if (k != c.BCZ) {
         break label714;
       }
       m = k / 2;
@@ -534,10 +534,10 @@ public class SoundWaveView
       if (i >= k) {
         break label795;
       }
-      if (!RM(i)) {
+      if (!Tw(i)) {
         break label809;
       }
-      this.AkF.set(i, Integer.valueOf((int)(j * c.Alw[paramInt])));
+      this.BCr.set(i, Integer.valueOf((int)(j * c.BDh[paramInt])));
       paramInt = 1 - paramInt;
     }
     label795:
@@ -561,37 +561,37 @@ public class SoundWaveView
       {
         i += 1;
         break label327;
-        if (b.Ald == this.AkE)
+        if (SoundWaveView.b.BCP == this.BCq)
         {
-          ac.i("MicroMsg.NewTrans2Txt.SoundWaveView", "cancel judging!!!");
-          this.AkE = b.Alc;
-          removeCallbacks(this.AkS);
+          ad.i("MicroMsg.NewTrans2Txt.SoundWaveView", "cancel judging!!!");
+          this.BCq = SoundWaveView.b.BCO;
+          removeCallbacks(this.BCE);
         }
-        if (b.Alb != this.AkE) {
+        if (SoundWaveView.b.BCN != this.BCq) {
           break;
         }
-        ac.i("MicroMsg.NewTrans2Txt.SoundWaveView", "active reacting!!!");
-        this.AkE = b.Alc;
-        efn();
+        ad.i("MicroMsg.NewTrans2Txt.SoundWaveView", "active reacting!!!");
+        this.BCq = SoundWaveView.b.BCO;
+        erE();
         break;
         label470:
-        if (this.AkU.end == i)
+        if (this.BCG.end == i)
         {
-          this.AkF.set(this.AkU.start, Integer.valueOf((int)(j * c.Alv[paramInt])));
-          if (this.AkU.start + 1 == this.AkU.end) {
+          this.BCr.set(this.BCG.start, Integer.valueOf((int)(j * c.BDg[paramInt])));
+          if (this.BCG.start + 1 == this.BCG.end) {
             break label293;
           }
-          localArrayList = this.AkF;
-          i = this.AkU.start;
+          localArrayList = this.BCr;
+          i = this.BCG.start;
           f = j;
-          localArrayList.set(i + 1, Integer.valueOf((int)(c.Alv[(1 - paramInt)] * f)));
+          localArrayList.set(i + 1, Integer.valueOf((int)(c.BDg[(1 - paramInt)] * f)));
           break label293;
         }
-        this.AkF.set(this.AkU.start, Integer.valueOf((int)(j * c.Alv[paramInt])));
-        localArrayList = this.AkF;
-        i = this.AkU.end;
+        this.BCr.set(this.BCG.start, Integer.valueOf((int)(j * c.BDg[paramInt])));
+        localArrayList = this.BCr;
+        i = this.BCG.end;
         f = j;
-        localArrayList.set(i, Integer.valueOf((int)(c.Alv[paramInt] * f)));
+        localArrayList.set(i, Integer.valueOf((int)(c.BDg[paramInt] * f)));
         break label293;
         if (1 == Math.abs(m - i)) {
           postDelayed(new Runnable()
@@ -604,22 +604,22 @@ public class SoundWaveView
             }
           }, 160L);
         } else if (Math.abs(m - i) == 0) {
-          a(((Integer)this.AkF.get(i)).intValue(), (List)this.AkJ.get(i));
+          a(((Integer)this.BCr.get(i)).intValue(), (List)this.BCv.get(i));
         }
       }
       label714:
       i = 0;
       if (i < k)
       {
-        if (!RM(i)) {
+        if (!Tw(i)) {
           break label806;
         }
-        this.AkF.set(i, Integer.valueOf((int)(j * c.Alw[paramInt])));
+        this.BCr.set(i, Integer.valueOf((int)(j * c.BDh[paramInt])));
         paramInt = 1 - paramInt;
       }
       for (;;)
       {
-        a(((Integer)this.AkF.get(i)).intValue(), (List)this.AkJ.get(i));
+        a(((Integer)this.BCr.get(i)).intValue(), (List)this.BCv.get(i));
         i += 1;
         break;
         invalidate();
@@ -632,12 +632,12 @@ public class SoundWaveView
   public final void a(SoundWaveView.d paramd)
   {
     AppMethodBeat.i(185304);
-    this.AkD = paramd;
-    efi();
-    efj();
-    efp();
-    efm();
-    ac.i("MicroMsg.NewTrans2Txt.SoundWaveView", "update style %s", new Object[] { this.AkD });
+    this.BCp = paramd;
+    erz();
+    erA();
+    erG();
+    erD();
+    ad.i("MicroMsg.NewTrans2Txt.SoundWaveView", "update style %s", new Object[] { this.BCp });
     requestLayout();
     reset();
     AppMethodBeat.o(185304);
@@ -649,58 +649,58 @@ public class SoundWaveView
     super.onDraw(paramCanvas);
     int k;
     int i;
-    if ((b.Alc == this.AkE) || (b.Ald == this.AkE))
+    if ((SoundWaveView.b.BCO == this.BCq) || (SoundWaveView.b.BCP == this.BCq))
     {
       k = getBundleCount();
       i = 0;
     }
     while (i < k)
     {
-      ((Integer)this.AkF.get(i)).intValue();
-      int m = c.Aln;
+      ((Integer)this.BCr.get(i)).intValue();
+      int m = c.BCY;
       int j = 0;
       float f1;
       float f2;
       while (j < m)
       {
-        f1 = ((Float)((List)this.AkJ.get(i)).get(j)).floatValue();
-        f2 = ((Float)((List)this.AkI.get(i)).get(j)).floatValue();
-        ((List)this.AkI.get(i)).set(j, Float.valueOf((f1 - f2) / 6.0F + f2));
+        f1 = ((Float)((List)this.BCv.get(i)).get(j)).floatValue();
+        f2 = ((Float)((List)this.BCu.get(i)).get(j)).floatValue();
+        ((List)this.BCu.get(i)).set(j, Float.valueOf((f1 - f2) / 6.0F + f2));
         j += 1;
       }
-      int n = this.AkR;
-      int i1 = this.AkM;
+      int n = this.BCD;
+      int i1 = this.BCy;
       j = 0;
       while (j < m)
       {
-        int i2 = this.AkL * j + this.AkM * j + (n * i + i1 * i);
-        f2 = ((Float)((List)this.AkI.get(i)).get(j)).floatValue();
+        int i2 = this.BCx * j + this.BCy * j + (n * i + i1 * i);
+        f2 = ((Float)((List)this.BCu.get(i)).get(j)).floatValue();
         f1 = f2;
-        if (f2 < this.AkO) {
-          f1 = this.AkO;
+        if (f2 < this.BCA) {
+          f1 = this.BCA;
         }
         f2 = f1;
-        if (f1 > this.AkP) {
-          f2 = this.AkP;
+        if (f1 > this.BCB) {
+          f2 = this.BCB;
         }
         f1 = (this.mHeight - f2) / 2.0F;
-        int i3 = this.AkL;
-        paramCanvas.drawRoundRect(i2, f1, i3 + i2, f1 + f2, this.AkN, this.AkN, this.mPaint);
+        int i3 = this.BCx;
+        paramCanvas.drawRoundRect(i2, f1, i3 + i2, f1 + f2, this.BCz, this.BCz, this.mPaint);
         j += 1;
       }
       i += 1;
       continue;
-      if (b.Alb == this.AkE)
+      if (SoundWaveView.b.BCN == this.BCq)
       {
         j = getVolumeItemCount();
         i = 0;
         while (i < j)
         {
-          k = this.mWidth - (i + 1) * this.AkL - this.AkM * i;
-          m = (this.mHeight - ((Integer)this.AkG.get(i)).intValue()) / 2;
-          n = this.AkL;
-          i1 = ((Integer)this.AkG.get(i)).intValue();
-          paramCanvas.drawRoundRect(k, m, k + n, i1 + m, this.AkN, this.AkN, this.mPaint);
+          k = this.mWidth - (i + 1) * this.BCx - this.BCy * i;
+          m = (this.mHeight - ((Integer)this.BCs.get(i)).intValue()) / 2;
+          n = this.BCx;
+          i1 = ((Integer)this.BCs.get(i)).intValue();
+          paramCanvas.drawRoundRect(k, m, k + n, i1 + m, this.BCz, this.BCz, this.mPaint);
           i += 1;
         }
       }
@@ -713,10 +713,10 @@ public class SoundWaveView
   {
     AppMethodBeat.i(185292);
     super.onMeasure(paramInt1, paramInt2);
-    if (SoundWaveView.d.AlB == this.AkD) {}
-    for (this.mWidth = ao.fromDPToPix(getContext(), c.Alz);; this.mWidth = ao.fromDPToPix(getContext(), c.Aly))
+    if (SoundWaveView.d.BDm == this.BCp) {}
+    for (this.mWidth = aq.fromDPToPix(getContext(), c.BDk);; this.mWidth = aq.fromDPToPix(getContext(), c.BDj))
     {
-      ac.d("MicroMsg.NewTrans2Txt.SoundWaveView", "style: %s, w: %s, h: %s.", new Object[] { this.AkD, Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
+      ad.d("MicroMsg.NewTrans2Txt.SoundWaveView", "style: %s, w: %s, h: %s.", new Object[] { this.BCp, Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
       setMeasuredDimension(this.mWidth, this.mHeight);
       AppMethodBeat.o(185292);
       return;
@@ -726,8 +726,8 @@ public class SoundWaveView
   public void setStyle(SoundWaveView.d paramd)
   {
     AppMethodBeat.i(185303);
-    this.AkD = paramd;
-    ac.i("MicroMsg.NewTrans2Txt.SoundWaveView", "set style %s", new Object[] { this.AkD });
+    this.BCp = paramd;
+    ad.i("MicroMsg.NewTrans2Txt.SoundWaveView", "set style %s", new Object[] { this.BCp });
     AppMethodBeat.o(185303);
   }
   
@@ -757,79 +757,64 @@ public class SoundWaveView
     }
   }
   
-  public static enum b
-  {
-    static
-    {
-      AppMethodBeat.i(185283);
-      Alb = new b("WAITING", 0);
-      Alc = new b("REACTING", 1);
-      Ald = new b("JUDGING", 2);
-      Ale = new b[] { Alb, Alc, Ald };
-      AppMethodBeat.o(185283);
-    }
-    
-    private b() {}
-  }
-  
   static final class c
   {
-    static int Alf;
-    static int Alg;
-    static int Alh;
-    static int Ali;
-    static int Alj;
-    static int Alk;
-    static String Alm;
-    static int Aln;
-    static int Alo;
-    static int Alp;
-    static int Alq;
-    static int Alr;
-    static int Als;
-    static int Alt;
-    static float Alu;
-    static float[] Alv;
-    static float[] Alw;
-    static int Alx;
-    static int Aly;
-    static int Alz;
+    static int BCR;
+    static int BCS;
+    static int BCT;
+    static int BCU;
+    static int BCV;
+    static int BCW;
+    static String BCX;
+    static int BCY;
+    static int BCZ;
+    static int BDa;
+    static int BDb;
+    static int BDc;
+    static int BDd;
+    static int BDe;
+    static float BDf;
+    static float[] BDg;
+    static float[] BDh;
+    static int BDi;
+    static int BDj;
+    static int BDk;
     
     static
     {
       AppMethodBeat.i(185284);
-      Alf = 2;
-      Alg = 1;
-      Alh = 1;
-      Ali = 4;
-      Alj = 34;
-      Alk = 10;
-      Alm = "#000000";
-      Aln = 5;
-      Alo = 5;
-      Alp = 2;
-      Alq = 300;
-      Alr = 100;
-      Als = 500;
-      Alt = 1000;
-      Alu = 0.8F;
-      Alv = new float[] { 0.8F, 0.6F };
-      Alw = new float[] { 0.5F, 0.3F };
-      Alx = RN(Aln);
-      Aly = RN(Aln * Alo);
-      Alz = RN(Aln * Alp);
+      BCR = 2;
+      BCS = 1;
+      BCT = 1;
+      BCU = 4;
+      BCV = 34;
+      BCW = 10;
+      BCX = "#000000";
+      BCY = 5;
+      BCZ = 5;
+      BDa = 2;
+      BDb = 300;
+      BDc = 100;
+      BDd = 500;
+      BDe = 1000;
+      BDf = 0.8F;
+      BDg = new float[] { 0.8F, 0.6F };
+      BDh = new float[] { 0.5F, 0.3F };
+      BDi = Tx(BCY);
+      BDj = Tx(BCY * BCZ);
+      BDk = Tx(BCY * BDa);
       AppMethodBeat.o(185284);
     }
     
-    private static int RN(int paramInt)
+    private static int Tx(int paramInt)
     {
-      return (paramInt - 1) * Alg + Alf * paramInt;
+      return (paramInt - 1) * BCS + BCR * paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.transvoice.ui.SoundWaveView
  * JD-Core Version:    0.7.0.1
  */

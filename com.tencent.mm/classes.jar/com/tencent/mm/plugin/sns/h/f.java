@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.sns.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class f
 {
-  public static final Pattern yam;
-  public static String[] yan;
-  public static HashMap<String, a> yao;
+  public static final Pattern zqk;
+  public static String[] zql;
+  public static HashMap<String, a> zqm;
   
   static
   {
     AppMethodBeat.i(96137);
-    yam = Pattern.compile("\\{([\\s\\S]*?)\\}");
-    yan = new String[] { "{sex", "{username", "{richtext" };
-    yao = new HashMap();
+    zqk = Pattern.compile("\\{([\\s\\S]*?)\\}");
+    zql = new String[] { "{sex", "{username", "{richtext" };
+    zqm = new HashMap();
     AppMethodBeat.o(96137);
   }
   
   public static String a(d.a parama)
   {
     AppMethodBeat.i(96136);
-    if (yao.containsKey(parama.yaj))
+    if (zqm.containsKey(parama.zqh))
     {
-      if ((a)yao.get(parama.yaj) == a.yap)
+      if ((a)zqm.get(parama.zqh) == a.zqn)
       {
-        parama = parama.yaj;
+        parama = parama.zqh;
         AppMethodBeat.o(96136);
         return parama;
       }
-      parama = parama.yai;
+      parama = parama.zqg;
       AppMethodBeat.o(96136);
       return parama;
     }
-    Object localObject2 = parama.yaj;
+    Object localObject2 = parama.zqh;
     Object localObject1 = localObject2;
-    if (bs.isNullOrNil((String)localObject2))
+    if (bt.isNullOrNil((String)localObject2))
     {
-      parama = parama.yai;
+      parama = parama.zqg;
       AppMethodBeat.o(96136);
       return parama;
     }
@@ -49,32 +49,32 @@ public final class f
     label240:
     for (;;)
     {
-      localObject2 = yam.matcher((CharSequence)localObject1);
+      localObject2 = zqk.matcher((CharSequence)localObject1);
       if (((Matcher)localObject2).find())
       {
         i = ((Matcher)localObject2).groupCount();
         localObject2 = ((Matcher)localObject2).group();
-        ac.i("MicroMsg.SnsAbTestUtil", "hello matcher group() " + i + " " + (String)localObject2);
+        ad.i("MicroMsg.SnsAbTestUtil", "hello matcher group() " + i + " " + (String)localObject2);
         localObject1 = ((String)localObject1).replace((CharSequence)localObject2, "");
         i = 0;
-        if (i >= yan.length) {
+        if (i >= zql.length) {
           break label237;
         }
-        if (((String)localObject2).indexOf(yan[i]) < 0) {}
+        if (((String)localObject2).indexOf(zql[i]) < 0) {}
       }
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
           break label240;
         }
-        yao.put(parama.yaj, a.yaq);
-        parama = parama.yai;
+        zqm.put(parama.zqh, a.zqo);
+        parama = parama.zqg;
         AppMethodBeat.o(96136);
         return parama;
         i += 1;
         break;
-        yao.put(parama.yaj, a.yap);
-        parama = parama.yaj;
+        zqm.put(parama.zqh, a.zqn);
+        parama = parama.zqh;
         AppMethodBeat.o(96136);
         return parama;
       }
@@ -86,9 +86,9 @@ public final class f
     static
     {
       AppMethodBeat.i(96135);
-      yap = new a("OK", 0);
-      yaq = new a("FAIL", 1);
-      yar = new a[] { yap, yaq };
+      zqn = new a("OK", 0);
+      zqo = new a("FAIL", 1);
+      zqp = new a[] { zqn, zqo };
       AppMethodBeat.o(96135);
     }
     

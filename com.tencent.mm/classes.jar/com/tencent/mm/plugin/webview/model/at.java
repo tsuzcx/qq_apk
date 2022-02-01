@@ -1,92 +1,76 @@
 package com.tencent.mm.plugin.webview.model;
 
-import android.os.Bundle;
-import android.os.Parcelable;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.modelsns.SnsAdClick;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
-import d.l;
-import java.util.ArrayList;
-import java.util.Collection;
+import com.tencent.mm.aw.a.c.h;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/model/WebViewSnsAdReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "errCode", "", "loadReportInfo", "Ljava/util/ArrayList;", "", "snsAdClick", "Lcom/tencent/mm/modelsns/SnsAdClick;", "report", "", "setErrorCode", "setLoadReportInfo", "loadReports", "", "([Ljava/lang/String;)V", "setSnsAdClick", "adClick", "plugin-webview_release"})
 public final class at
 {
-  private final ArrayList<String> CqS;
-  public int errCode;
-  public SnsAdClick vKt;
-  
-  public at()
+  public static Intent a(Bitmap paramBitmap, String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(189457);
-    this.CqS = new ArrayList();
-    AppMethodBeat.o(189457);
-  }
-  
-  public final void P(String... paramVarArgs)
-  {
-    AppMethodBeat.i(189455);
-    k.h(paramVarArgs, "loadReports");
-    int i = 0;
-    while (i < 4)
+    AppMethodBeat.i(79043);
+    ad.i("MicroMsg.WebViewShortcutManager", "buildIntent, install = %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if ((paramBitmap == null) && (paramBoolean))
     {
-      String str = paramVarArgs[i];
-      this.CqS.add(str);
-      i += 1;
+      ad.e("MicroMsg.WebViewShortcutManager", "no bmp");
+      AppMethodBeat.o(79043);
+      return null;
     }
-    AppMethodBeat.o(189455);
-  }
-  
-  public final void report()
-  {
-    AppMethodBeat.i(189456);
+    Object localObject;
+    if (paramBoolean) {
+      localObject = "com.android.launcher.action.INSTALL_SHORTCUT";
+    }
     for (;;)
     {
+      localObject = new Intent((String)localObject);
+      ((Intent)localObject).putExtra("android.intent.extra.shortcut.NAME", paramString2);
+      ((Intent)localObject).putExtra("duplicate", false);
+      paramString2 = new Intent("com.tencent.mm.action.WX_SHORTCUT");
+      paramString2.putExtra("type", 4);
       try
       {
-        if (((Collection)this.CqS).isEmpty()) {
-          continue;
-        }
-        i = 1;
-        if (i != 0)
+        paramString2.putExtra("ext_info", URLEncoder.encode(paramString1, "utf-8"));
+        label113:
+        paramString2.setPackage(aj.getPackageName());
+        paramString2.addFlags(67108864);
+        ((Intent)localObject).putExtra("android.intent.extra.shortcut.INTENT", paramString2);
+        if (paramBitmap != null)
         {
-          Bundle localBundle = new Bundle();
-          localBundle.putStringArrayList("reportAdH5Load", new ArrayList((Collection)this.CqS));
-          localBundle.putInt("errCode", this.errCode);
-          localBundle.putParcelable("snsAdClick", (Parcelable)this.vKt);
-          h.a("com.tencent.mm", (Parcelable)localBundle, a.CqT.getClass(), null);
+          ((Intent)localObject).putExtra("android.intent.extra.shortcut.ICON", paramBitmap);
+          ((Intent)localObject).putExtra("shortcut_is_adaptive_icon", true);
         }
+        AppMethodBeat.o(79043);
+        return localObject;
+        localObject = "com.android.launcher.action.UNINSTALL_SHORTCUT";
       }
-      catch (Exception localException)
+      catch (UnsupportedEncodingException paramString1)
       {
-        int i;
-        ac.printErrStackTrace("MicroMsg.WebviewReporter", (Throwable)localException, "", new Object[0]);
-        continue;
+        break label113;
       }
-      this.vKt = null;
-      this.CqS.clear();
-      AppMethodBeat.o(189456);
-      return;
-      i = 0;
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
-  static final class a<InputType, ResultType>
-    implements b<Bundle, IPCVoid>
+  public static void a(a parama, boolean paramBoolean)
   {
-    public static final a CqT;
-    
-    static
-    {
-      AppMethodBeat.i(189454);
-      CqT = new a();
-      AppMethodBeat.o(189454);
+    AppMethodBeat.i(79042);
+    if (parama != null) {
+      parama.vc(paramBoolean);
     }
+    AppMethodBeat.o(79042);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void vc(boolean paramBoolean);
   }
 }
 

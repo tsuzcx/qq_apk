@@ -2,9 +2,9 @@ package com.google.android.exoplayer2.f.e;
 
 final class c
 {
-  public final float bpF;
-  public final int bpG;
-  public final float bpH;
+  public final float bAa;
+  public final int bAb;
+  public final float bAc;
   public final String id;
   public final int lineType;
   public final float width;
@@ -17,16 +17,16 @@ final class c
   public c(String paramString, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, float paramFloat3)
   {
     this.id = paramString;
-    this.bpH = paramFloat1;
-    this.bpF = paramFloat2;
+    this.bAc = paramFloat1;
+    this.bAa = paramFloat2;
     this.lineType = paramInt1;
-    this.bpG = paramInt2;
+    this.bAb = paramInt2;
     this.width = paramFloat3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.f.e.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package d.l.b.a.b.e.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.e.a.p;
 import d.l.b.a.b.e.a.p.b;
 import d.l.b.a.b.e.a.s;
@@ -13,18 +13,18 @@ import java.util.List;
 
 public final class h
 {
-  private final List<a.p> zZS;
+  private final List<a.p> BrE;
   
   public h(a.s params)
   {
     AppMethodBeat.i(59084);
-    Object localObject = params.Lwr;
+    Object localObject = params.Nno;
     Collection localCollection;
-    if (params.fYk())
+    if (params.gpJ())
     {
-      int j = params.Lws;
-      params = params.Lwr;
-      k.g(params, "typeTable.typeList");
+      int j = params.Nnp;
+      params = params.Nno;
+      p.g(params, "typeTable.typeList");
       params = (Iterable)params;
       localCollection = (Collection)new ArrayList(j.a(params, 10));
       int i = 0;
@@ -33,12 +33,12 @@ public final class h
       {
         params = localIterator.next();
         if (i < 0) {
-          j.fOc();
+          j.gfB();
         }
         localObject = (a.p)params;
         params = (a.s)localObject;
         if (i >= j) {
-          params = ((a.p)localObject).fXH().zp(true).fXP();
+          params = ((a.p)localObject).gpg().Ad(true).gpo();
         }
         localCollection.add(params);
         i += 1;
@@ -46,24 +46,24 @@ public final class h
     }
     for (params = (List)localCollection;; params = (a.s)localObject)
     {
-      this.zZS = params;
+      this.BrE = params;
       AppMethodBeat.o(59084);
       return;
-      k.g(localObject, "originalTypes");
+      p.g(localObject, "originalTypes");
     }
   }
   
-  public final a.p ain(int paramInt)
+  public final a.p akO(int paramInt)
   {
     AppMethodBeat.i(59083);
-    a.p localp = (a.p)this.zZS.get(paramInt);
+    a.p localp = (a.p)this.BrE.get(paramInt);
     AppMethodBeat.o(59083);
     return localp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.e.b.h
  * JD-Core Version:    0.7.0.1
  */

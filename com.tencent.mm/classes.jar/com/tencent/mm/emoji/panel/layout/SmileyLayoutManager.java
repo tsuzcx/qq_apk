@@ -7,20 +7,20 @@ import android.support.v7.widget.RecyclerView.o;
 import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/layout/SmileyLayoutManager;", "Landroid/support/v7/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "hideRect", "Landroid/graphics/Rect;", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "scrollVerticallyBy", "dy", "updateChildren", "updateHideArea", "rect", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/layout/SmileyLayoutManager;", "Landroid/support/v7/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "hideRect", "Landroid/graphics/Rect;", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "scrollVerticallyBy", "dy", "updateChildren", "updateHideArea", "rect", "plugin-emojisdk_release"})
 public final class SmileyLayoutManager
   extends GridLayoutManager
 {
-  public final Rect fTv;
+  public final Rect gmZ;
   
   public SmileyLayoutManager(Context paramContext, int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(105722);
-    this.fTv = new Rect();
+    this.gmZ = new Rect();
     AppMethodBeat.o(105722);
   }
   
@@ -28,15 +28,15 @@ public final class SmileyLayoutManager
   {
     AppMethodBeat.i(105719);
     paramInt = super.a(paramInt, paramo, paramt);
-    ado();
+    afU();
     AppMethodBeat.o(105719);
     return paramInt;
   }
   
-  public final void ado()
+  public final void afU()
   {
     AppMethodBeat.i(105721);
-    if (this.fTv.isEmpty())
+    if (this.gmZ.isEmpty())
     {
       AppMethodBeat.o(105721);
       return;
@@ -53,7 +53,7 @@ public final class SmileyLayoutManager
       }
       else
       {
-        k.g(localView, "getChildAt(i) ?: continue");
+        p.g(localView, "getChildAt(i) ?: continue");
         boolean bool;
         if (bC(localView) != 1)
         {
@@ -67,10 +67,10 @@ public final class SmileyLayoutManager
           c(localView, localRect);
           int m = bI(localView);
           int k = bJ(localView);
-          if ((m > this.fTv.left) && (k > this.fTv.top)) {
+          if ((m > this.gmZ.left) && (k > this.gmZ.top)) {
             m = bH(localView);
           }
-          for (float f = 1.0F - (k - this.fTv.top) / ((k - m) * 0.4F);; f = 1.0F)
+          for (float f = 1.0F - (k - this.gmZ.top) / ((k - m) * 0.4F);; f = 1.0F)
           {
             localView.setAlpha(f);
             if (f <= 0.7D) {
@@ -91,7 +91,7 @@ public final class SmileyLayoutManager
   {
     AppMethodBeat.i(105720);
     paramInt = super.b(paramInt, paramo, paramt);
-    ado();
+    afU();
     AppMethodBeat.o(105720);
     return paramInt;
   }
@@ -100,7 +100,7 @@ public final class SmileyLayoutManager
   {
     AppMethodBeat.i(105718);
     super.c(paramo, paramt);
-    ado();
+    afU();
     AppMethodBeat.o(105718);
   }
 }

@@ -13,8 +13,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AppBrandActionSingleHeaderView
   extends LinearLayout
 {
-  private ImageView dhf;
-  private TextView tr;
+  private ImageView dsD;
+  private TextView vk;
   
   public AppBrandActionSingleHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,41 +37,41 @@ public class AppBrandActionSingleHeaderView
   {
     AppMethodBeat.i(134942);
     ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131493092, this);
-    this.dhf = ((ImageView)findViewById(2131296889));
-    this.tr = ((TextView)findViewById(2131296890));
+    this.dsD = ((ImageView)findViewById(2131296889));
+    this.vk = ((TextView)findViewById(2131296890));
     AppMethodBeat.o(134942);
   }
   
   public ImageView getImageView()
   {
-    return this.dhf;
+    return this.dsD;
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(134944);
-    this.dhf.setImageDrawable(paramDrawable);
+    this.dsD.setImageDrawable(paramDrawable);
     AppMethodBeat.o(134944);
   }
   
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(134943);
-    this.dhf.setImageResource(paramInt);
+    this.dsD.setImageResource(paramInt);
     AppMethodBeat.o(134943);
   }
   
   public void setTextViewText(String paramString)
   {
     AppMethodBeat.i(134945);
-    this.tr.setText(paramString);
+    this.vk.setText(paramString);
     AppMethodBeat.o(134945);
   }
   
   public void setTextViewTextColor(int paramInt)
   {
     AppMethodBeat.i(134946);
-    this.tr.setTextColor(paramInt);
+    this.vk.setTextColor(paramInt);
     AppMethodBeat.o(134946);
   }
 }

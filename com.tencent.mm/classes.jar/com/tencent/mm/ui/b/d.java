@@ -43,30 +43,30 @@ public final class d
   extends ActionBar
   implements ActionBarOverlayLayout.a
 {
-  private static final boolean Htl;
-  private static final Interpolator Yn;
-  private static final Interpolator Yo;
-  a Htm;
-  u XS;
-  private boolean XW;
-  private ArrayList<Object> XX;
-  private int YA;
-  private boolean YB;
-  private boolean YC;
-  private boolean YD;
-  private boolean YE;
-  private boolean YF;
-  private android.support.v7.view.h YG;
-  private boolean YH;
-  final y YJ;
-  final y YK;
-  final aa YL;
-  private Context Yp;
-  private ActionBarContainer Yr;
-  private ActionBarContextView Ys;
-  private boolean Yv;
-  b Yx;
-  b.a Yy;
+  private static final boolean Jhb;
+  private static final Interpolator aac;
+  private static final Interpolator aad;
+  a Jhc;
+  u ZH;
+  private boolean ZL;
+  private ArrayList<Object> ZM;
+  final aa aaA;
+  private Context aae;
+  private ActionBarContainer aag;
+  private ActionBarContextView aah;
+  private boolean aak;
+  b aam;
+  b.a aan;
+  private int aap;
+  private boolean aaq;
+  private boolean aar;
+  private boolean aas;
+  private boolean aat;
+  private boolean aau;
+  private android.support.v7.view.h aav;
+  private boolean aaw;
+  final y aay;
+  final y aaz;
   private Activity mActivity;
   private View mContentView;
   private Context mContext;
@@ -74,12 +74,12 @@ public final class d
   static
   {
     AppMethodBeat.i(141577);
-    Yn = new AccelerateInterpolator();
-    Yo = new DecelerateInterpolator();
+    aac = new AccelerateInterpolator();
+    aad = new DecelerateInterpolator();
     if (Build.VERSION.SDK_INT >= 14) {}
     for (boolean bool = true;; bool = false)
     {
-      Htl = bool;
+      Jhb = bool;
       AppMethodBeat.o(141577);
       return;
     }
@@ -88,11 +88,11 @@ public final class d
   public d(Activity paramActivity, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(141538);
-    this.XX = new ArrayList();
-    this.YA = 0;
-    this.YB = true;
-    this.YF = true;
-    this.YJ = new z()
+    this.ZM = new ArrayList();
+    this.aap = 0;
+    this.aaq = true;
+    this.aau = true;
+    this.aay = new z()
     {
       public final void aI(View paramAnonymousView)
       {
@@ -106,16 +106,16 @@ public final class d
         d.c(d.this).setTransitioning(false);
         d.d(d.this);
         paramAnonymousView = d.this;
-        if (paramAnonymousView.Yy != null)
+        if (paramAnonymousView.aan != null)
         {
-          paramAnonymousView.Yy.a(paramAnonymousView.Yx);
-          paramAnonymousView.Yx = null;
-          paramAnonymousView.Yy = null;
+          paramAnonymousView.aan.a(paramAnonymousView.aam);
+          paramAnonymousView.aam = null;
+          paramAnonymousView.aan = null;
         }
         AppMethodBeat.o(141518);
       }
     };
-    this.YK = new z()
+    this.aaz = new z()
     {
       public final void aI(View paramAnonymousView)
       {
@@ -125,9 +125,9 @@ public final class d
         AppMethodBeat.o(141519);
       }
     };
-    this.YL = new aa()
+    this.aaA = new aa()
     {
-      public final void fj()
+      public final void fA()
       {
         AppMethodBeat.i(141520);
         ((View)d.c(d.this).getParent()).invalidate();
@@ -139,10 +139,10 @@ public final class d
     if ((paramActivity instanceof u)) {}
     for (paramActivity = (u)paramActivity;; paramActivity = ((Toolbar)paramActivity).getWrapper())
     {
-      this.XS = paramActivity;
-      this.Ys = ((ActionBarContextView)paramViewGroup.findViewById(2131296357));
-      this.Yr = ((ActionBarContainer)paramViewGroup.findViewById(2131296345));
-      if ((this.XS != null) && (this.Ys != null) && (this.Yr != null)) {
+      this.ZH = paramActivity;
+      this.aah = ((ActionBarContextView)paramViewGroup.findViewById(2131296357));
+      this.aag = ((ActionBarContainer)paramViewGroup.findViewById(2131296345));
+      if ((this.ZH != null) && (this.aah != null) && (this.aag != null)) {
         break label247;
       }
       paramActivity = new IllegalStateException(getClass().getSimpleName() + " can only be used with a compatible window decor layout");
@@ -160,14 +160,14 @@ public final class d
       throw paramActivity;
     }
     label247:
-    this.mContext = this.XS.getContext();
-    if ((this.XS.getDisplayOptions() & 0x4) != 0) {}
+    this.mContext = this.ZH.getContext();
+    if ((this.ZH.getDisplayOptions() & 0x4) != 0) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        this.Yv = true;
+        this.aak = true;
       }
-      android.support.v7.view.a.Z(this.mContext).he();
+      android.support.v7.view.a.Z(this.mContext).hu();
       paramActivity = this.mContext.obtainStyledAttributes(null, a.a.ActionBar, 2130968602, 0);
       paramActivity.getBoolean(14, false);
       i = paramActivity.getDimensionPixelSize(12, 0);
@@ -184,18 +184,18 @@ public final class d
   private void V(boolean paramBoolean)
   {
     AppMethodBeat.i(141563);
-    if (c(this.YC, this.YD, this.YE))
+    if (c(this.aar, this.aas, this.aat))
     {
-      if (!this.YF)
+      if (!this.aau)
       {
-        this.YF = true;
+        this.aau = true;
         W(paramBoolean);
         AppMethodBeat.o(141563);
       }
     }
-    else if (this.YF)
+    else if (this.aau)
     {
-      this.YF = false;
+      this.aau = false;
       X(paramBoolean);
     }
     AppMethodBeat.o(141563);
@@ -204,14 +204,14 @@ public final class d
   private void W(boolean paramBoolean)
   {
     AppMethodBeat.i(141564);
-    if (this.YG != null) {
-      this.YG.cancel();
+    if (this.aav != null) {
+      this.aav.cancel();
     }
-    this.Yr.setVisibility(0);
-    if ((this.YA == 0) && (Htl) && ((this.YH) || (paramBoolean)))
+    this.aag.setVisibility(0);
+    if ((this.aap == 0) && (Jhb) && ((this.aaw) || (paramBoolean)))
     {
-      t.e(this.Yr, 0.0F);
-      float f2 = -this.Yr.getHeight();
+      t.e(this.aag, 0.0F);
+      float f2 = -this.aag.getHeight();
       float f1 = f2;
       if (paramBoolean)
       {
@@ -221,48 +221,48 @@ public final class d
         Object tmp87_83 = tmp83_81;
         tmp87_83[1] = 0;
         tmp87_83;
-        this.Yr.getLocationInWindow((int[])localObject);
+        this.aag.getLocationInWindow((int[])localObject);
         f1 = f2 - localObject[1];
       }
-      t.e(this.Yr, f1);
+      t.e(this.aag, f1);
       Object localObject = new android.support.v7.view.h();
-      x localx = t.ag(this.Yr).B(0.0F);
-      localx.a(this.YL);
+      x localx = t.ag(this.aag).z(0.0F);
+      localx.a(this.aaA);
       ((android.support.v7.view.h)localObject).a(localx);
-      if ((this.YB) && (this.mContentView != null))
+      if ((this.aaq) && (this.mContentView != null))
       {
         t.e(this.mContentView, f1);
-        ((android.support.v7.view.h)localObject).a(t.ag(this.mContentView).B(0.0F));
+        ((android.support.v7.view.h)localObject).a(t.ag(this.mContentView).z(0.0F));
       }
-      ((android.support.v7.view.h)localObject).b(Yo);
-      ((android.support.v7.view.h)localObject).hj();
-      ((android.support.v7.view.h)localObject).b(this.YK);
-      this.YG = ((android.support.v7.view.h)localObject);
+      ((android.support.v7.view.h)localObject).b(aad);
+      ((android.support.v7.view.h)localObject).hz();
+      ((android.support.v7.view.h)localObject).b(this.aaz);
+      this.aav = ((android.support.v7.view.h)localObject);
       ((android.support.v7.view.h)localObject).start();
       AppMethodBeat.o(141564);
       return;
     }
-    t.f(this.Yr, 1.0F);
-    t.e(this.Yr, 0.0F);
-    if ((this.YB) && (this.mContentView != null)) {
+    t.f(this.aag, 1.0F);
+    t.e(this.aag, 0.0F);
+    if ((this.aaq) && (this.mContentView != null)) {
       t.e(this.mContentView, 0.0F);
     }
-    this.YK.aI(null);
+    this.aaz.aI(null);
     AppMethodBeat.o(141564);
   }
   
   private void X(boolean paramBoolean)
   {
     AppMethodBeat.i(141565);
-    if (this.YG != null) {
-      this.YG.cancel();
+    if (this.aav != null) {
+      this.aav.cancel();
     }
-    if ((this.YA == 0) && (Htl) && ((this.YH) || (paramBoolean)))
+    if ((this.aap == 0) && (Jhb) && ((this.aaw) || (paramBoolean)))
     {
-      t.f(this.Yr, 1.0F);
-      this.Yr.setTransitioning(true);
+      t.f(this.aag, 1.0F);
+      this.aag.setTransitioning(true);
       android.support.v7.view.h localh = new android.support.v7.view.h();
-      float f2 = -this.Yr.getHeight();
+      float f2 = -this.aag.getHeight();
       float f1 = f2;
       if (paramBoolean)
       {
@@ -272,24 +272,24 @@ public final class d
         Object tmp96_92 = tmp92_90;
         tmp96_92[1] = 0;
         tmp96_92;
-        this.Yr.getLocationInWindow((int[])localObject);
+        this.aag.getLocationInWindow((int[])localObject);
         f1 = f2 - localObject[1];
       }
-      Object localObject = t.ag(this.Yr).B(f1);
-      ((x)localObject).a(this.YL);
+      Object localObject = t.ag(this.aag).z(f1);
+      ((x)localObject).a(this.aaA);
       localh.a((x)localObject);
-      if ((this.YB) && (this.mContentView != null)) {
-        localh.a(t.ag(this.mContentView).B(f1));
+      if ((this.aaq) && (this.mContentView != null)) {
+        localh.a(t.ag(this.mContentView).z(f1));
       }
-      localh.b(Yn);
-      localh.hj();
-      localh.b(this.YJ);
-      this.YG = localh;
+      localh.b(aac);
+      localh.hz();
+      localh.b(this.aay);
+      this.aav = localh;
       localh.start();
       AppMethodBeat.o(141565);
       return;
     }
-    this.YJ.aI(null);
+    this.aay.aI(null);
     AppMethodBeat.o(141565);
   }
   
@@ -302,43 +302,43 @@ public final class d
     return false;
   }
   
-  private void gA()
-  {
-    AppMethodBeat.i(141561);
-    if (this.YE)
-    {
-      this.YE = false;
-      V(false);
-    }
-    AppMethodBeat.o(141561);
-  }
-  
-  private void gy()
+  private void gP()
   {
     AppMethodBeat.i(141558);
-    if (!this.YE)
+    if (!this.aat)
     {
-      this.YE = true;
+      this.aat = true;
       V(false);
     }
     AppMethodBeat.o(141558);
   }
   
+  private void gR()
+  {
+    AppMethodBeat.i(141561);
+    if (this.aat)
+    {
+      this.aat = false;
+      V(false);
+    }
+    AppMethodBeat.o(141561);
+  }
+  
   private void setDisplayOptions(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141550);
-    int i = this.XS.getDisplayOptions();
+    int i = this.ZH.getDisplayOptions();
     if ((paramInt2 & 0x4) != 0) {
-      this.Yv = true;
+      this.aak = true;
     }
-    this.XS.setDisplayOptions(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
+    this.ZH.setDisplayOptions(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
     AppMethodBeat.o(141550);
   }
   
   public final void Q(boolean paramBoolean)
   {
     AppMethodBeat.i(141575);
-    if (!this.Yv) {
+    if (!this.aak) {
       setDisplayHomeAsUpEnabled(paramBoolean);
     }
     AppMethodBeat.o(141575);
@@ -347,9 +347,9 @@ public final class d
   public final void R(boolean paramBoolean)
   {
     AppMethodBeat.i(141541);
-    this.YH = paramBoolean;
-    if ((!paramBoolean) && (this.YG != null)) {
-      this.YG.cancel();
+    this.aaw = paramBoolean;
+    if ((!paramBoolean) && (this.aav != null)) {
+      this.aav.cancel();
     }
     AppMethodBeat.o(141541);
   }
@@ -357,17 +357,17 @@ public final class d
   public final void S(boolean paramBoolean)
   {
     AppMethodBeat.i(141542);
-    if (paramBoolean == this.XW)
+    if (paramBoolean == this.ZL)
     {
       AppMethodBeat.o(141542);
       return;
     }
-    this.XW = paramBoolean;
-    int j = this.XX.size();
+    this.ZL = paramBoolean;
+    int j = this.ZM.size();
     int i = 0;
     while (i < j)
     {
-      this.XX.get(i);
+      this.ZM.get(i);
       i += 1;
     }
     AppMethodBeat.o(141542);
@@ -375,7 +375,7 @@ public final class d
   
   public final void U(boolean paramBoolean)
   {
-    this.YB = paramBoolean;
+    this.aaq = paramBoolean;
   }
   
   public final void Y(boolean paramBoolean)
@@ -385,12 +385,12 @@ public final class d
     x localx2;
     if (paramBoolean)
     {
-      gy();
+      gP();
       if (!paramBoolean) {
         break label81;
       }
-      localx1 = this.XS.c(8, 100L);
-      localx2 = this.Ys.c(0, 200L);
+      localx1 = this.ZH.c(8, 100L);
+      localx2 = this.aah.c(0, 200L);
     }
     for (;;)
     {
@@ -399,29 +399,29 @@ public final class d
       localh.start();
       AppMethodBeat.o(141567);
       return;
-      gA();
+      gR();
       break;
       label81:
-      localx2 = this.XS.c(0, 200L);
-      localx1 = this.Ys.c(8, 100L);
+      localx2 = this.ZH.c(0, 200L);
+      localx1 = this.aah.c(8, 100L);
     }
   }
   
   public final b a(b.a parama)
   {
     AppMethodBeat.i(141555);
-    if (this.Htm != null) {
-      this.Htm.finish();
+    if (this.Jhc != null) {
+      this.Jhc.finish();
     }
-    this.Ys.hX();
-    parama = new a(this.Ys.getContext(), parama);
-    if (parama.gD())
+    this.aah.ip();
+    parama = new a(this.aah.getContext(), parama);
+    if (parama.gU())
     {
       parama.invalidate();
-      this.Ys.c(parama);
+      this.aah.c(parama);
       Y(true);
-      this.Ys.sendAccessibilityEvent(32);
-      this.Htm = parama;
+      this.aah.sendAccessibilityEvent(32);
+      this.Jhc = parama;
       AppMethodBeat.o(141555);
       return parama;
     }
@@ -432,9 +432,9 @@ public final class d
   public final boolean collapseActionView()
   {
     AppMethodBeat.i(141571);
-    if ((this.XS != null) && (this.XS.hasExpandedActionView()))
+    if ((this.ZH != null) && (this.ZH.hasExpandedActionView()))
     {
-      this.XS.collapseActionView();
+      this.ZH.collapseActionView();
       AppMethodBeat.o(141571);
       return true;
     }
@@ -442,54 +442,35 @@ public final class d
     return false;
   }
   
-  public final void fS()
+  public final void gQ()
   {
-    AppMethodBeat.i(141573);
-    this.XS.setIcon(2131234429);
-    AppMethodBeat.o(141573);
+    AppMethodBeat.i(141559);
+    if (this.aas)
+    {
+      this.aas = false;
+      V(true);
+    }
+    AppMethodBeat.o(141559);
   }
   
-  public final void fT()
-  {
-    AppMethodBeat.i(141544);
-    setDisplayOptions(0, 2);
-    AppMethodBeat.o(141544);
-  }
-  
-  public final void fU()
-  {
-    AppMethodBeat.i(141546);
-    setDisplayOptions(0, 8);
-    AppMethodBeat.o(141546);
-  }
-  
-  public final void fV()
-  {
-    AppMethodBeat.i(141547);
-    setDisplayOptions(16, 16);
-    AppMethodBeat.o(141547);
-  }
-  
-  public final void fW() {}
-  
-  public final void gB()
+  public final void gS()
   {
     AppMethodBeat.i(141562);
-    if (!this.YD)
+    if (!this.aas)
     {
-      this.YD = true;
+      this.aas = true;
       V(true);
     }
     AppMethodBeat.o(141562);
   }
   
-  public final void gC()
+  public final void gT()
   {
     AppMethodBeat.i(141570);
-    if (this.YG != null)
+    if (this.aav != null)
     {
-      this.YG.cancel();
-      this.YG = null;
+      this.aav.cancel();
+      this.aav = null;
     }
     AppMethodBeat.o(141570);
   }
@@ -497,7 +478,7 @@ public final class d
   public final View getCustomView()
   {
     AppMethodBeat.i(141552);
-    View localView = this.XS.getCustomView();
+    View localView = this.ZH.getCustomView();
     AppMethodBeat.o(141552);
     return localView;
   }
@@ -505,7 +486,7 @@ public final class d
   public final int getDisplayOptions()
   {
     AppMethodBeat.i(141554);
-    int i = this.XS.getDisplayOptions();
+    int i = this.ZH.getDisplayOptions();
     AppMethodBeat.o(141554);
     return i;
   }
@@ -513,7 +494,7 @@ public final class d
   public final int getHeight()
   {
     AppMethodBeat.i(141556);
-    int i = this.Yr.getHeight();
+    int i = this.aag.getHeight();
     AppMethodBeat.o(141556);
     return i;
   }
@@ -523,7 +504,7 @@ public final class d
     AppMethodBeat.i(141568);
     Object localObject;
     int i;
-    if (this.Yp == null)
+    if (this.aae == null)
     {
       localObject = new TypedValue();
       this.mContext.getTheme().resolveAttribute(2130968607, (TypedValue)localObject, true);
@@ -533,9 +514,9 @@ public final class d
       }
     }
     label75:
-    for (this.Yp = new ContextThemeWrapper(this.mContext, i);; this.Yp = this.mContext)
+    for (this.aae = new ContextThemeWrapper(this.mContext, i);; this.aae = this.mContext)
     {
-      localObject = this.Yp;
+      localObject = this.aae;
       AppMethodBeat.o(141568);
       return localObject;
     }
@@ -544,28 +525,47 @@ public final class d
   public final CharSequence getTitle()
   {
     AppMethodBeat.i(141553);
-    CharSequence localCharSequence = this.XS.getTitle();
+    CharSequence localCharSequence = this.ZH.getTitle();
     AppMethodBeat.o(141553);
     return localCharSequence;
   }
   
-  public final void gz()
+  public final void gk()
   {
-    AppMethodBeat.i(141559);
-    if (this.YD)
-    {
-      this.YD = false;
-      V(true);
-    }
-    AppMethodBeat.o(141559);
+    AppMethodBeat.i(141573);
+    this.ZH.setIcon(2131234429);
+    AppMethodBeat.o(141573);
   }
+  
+  public final void gl()
+  {
+    AppMethodBeat.i(141544);
+    setDisplayOptions(0, 2);
+    AppMethodBeat.o(141544);
+  }
+  
+  public final void gm()
+  {
+    AppMethodBeat.i(141546);
+    setDisplayOptions(0, 8);
+    AppMethodBeat.o(141546);
+  }
+  
+  public final void gn()
+  {
+    AppMethodBeat.i(141547);
+    setDisplayOptions(16, 16);
+    AppMethodBeat.o(141547);
+  }
+  
+  public final void go() {}
   
   public final void hide()
   {
     AppMethodBeat.i(141560);
-    if (!this.YC)
+    if (!this.aar)
     {
-      this.YC = true;
+      this.aar = true;
       V(false);
     }
     AppMethodBeat.o(141560);
@@ -574,8 +574,8 @@ public final class d
   public final boolean isShowing()
   {
     AppMethodBeat.i(141566);
-    int i = this.Yr.getHeight();
-    if ((this.YF) && ((i == 0) || (i > 0)))
+    int i = this.aag.getHeight();
+    if ((this.aau) && ((i == 0) || (i > 0)))
     {
       AppMethodBeat.o(141566);
       return true;
@@ -587,37 +587,37 @@ public final class d
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(141540);
-    paramConfiguration = this.XS.jd().getLayoutParams();
+    paramConfiguration = this.ZH.jt().getLayoutParams();
     if (paramConfiguration != null) {
-      paramConfiguration.height = com.tencent.mm.compatible.util.a.cd(this.mActivity);
+      paramConfiguration.height = com.tencent.mm.compatible.util.a.cb(this.mActivity);
     }
-    this.XS.jd().setLayoutParams(paramConfiguration);
+    this.ZH.jt().setLayoutParams(paramConfiguration);
     AppMethodBeat.o(141540);
   }
   
   public final void onWindowVisibilityChanged(int paramInt)
   {
-    this.YA = paramInt;
+    this.aap = paramInt;
   }
   
   public final void setBackgroundDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(141551);
-    this.Yr.setPrimaryBackground(paramDrawable);
+    this.aag.setPrimaryBackground(paramDrawable);
     AppMethodBeat.o(141551);
   }
   
   public final void setCustomView(int paramInt)
   {
     AppMethodBeat.i(141543);
-    setCustomView(LayoutInflater.from(getThemedContext()).inflate(paramInt, this.XS.jd(), false));
+    setCustomView(LayoutInflater.from(getThemedContext()).inflate(paramInt, this.ZH.jt(), false));
     AppMethodBeat.o(141543);
   }
   
   public final void setCustomView(View paramView)
   {
     AppMethodBeat.i(141572);
-    this.XS.setCustomView(paramView);
+    this.ZH.setCustomView(paramView);
     AppMethodBeat.o(141572);
   }
   
@@ -637,46 +637,46 @@ public final class d
   {
     AppMethodBeat.i(141549);
     if ((paramInt & 0x4) != 0) {
-      this.Yv = true;
+      this.aak = true;
     }
-    this.XS.setDisplayOptions(paramInt);
+    this.ZH.setDisplayOptions(paramInt);
     AppMethodBeat.o(141549);
   }
   
   public final void setElevation(float paramFloat)
   {
     AppMethodBeat.i(141539);
-    t.k(this.Yr, paramFloat);
+    t.k(this.aag, paramFloat);
     AppMethodBeat.o(141539);
   }
   
   public final void setHomeActionContentDescription(int paramInt)
   {
     AppMethodBeat.i(141569);
-    this.XS.setNavigationContentDescription(paramInt);
+    this.ZH.setNavigationContentDescription(paramInt);
     AppMethodBeat.o(141569);
   }
   
   public final void setLogo(Drawable paramDrawable)
   {
     AppMethodBeat.i(141574);
-    this.XS.setLogo(paramDrawable);
+    this.ZH.setLogo(paramDrawable);
     AppMethodBeat.o(141574);
   }
   
   public final void setWindowTitle(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(141548);
-    this.XS.setWindowTitle(paramCharSequence);
+    this.ZH.setWindowTitle(paramCharSequence);
     AppMethodBeat.o(141548);
   }
   
   public final void show()
   {
     AppMethodBeat.i(141557);
-    if (this.YC)
+    if (this.aar)
     {
-      this.YC = false;
+      this.aar = false;
       V(false);
     }
     AppMethodBeat.o(141557);
@@ -686,29 +686,29 @@ public final class d
     extends b
     implements h.a
   {
-    private final Context YN;
-    private final android.support.v7.view.menu.h YO;
-    private b.a YP;
-    private WeakReference<View> YQ;
+    private final Context aaC;
+    private final android.support.v7.view.menu.h aaD;
+    private b.a aaE;
+    private WeakReference<View> aaF;
     
     public a(Context paramContext, b.a parama)
     {
       AppMethodBeat.i(141521);
-      this.YN = paramContext;
-      this.YP = parama;
+      this.aaC = paramContext;
+      this.aaE = parama;
       this$1 = new android.support.v7.view.menu.h(paramContext);
-      d.this.aes = 1;
-      this.YO = d.this;
-      this.YO.a(this);
+      d.this.agj = 1;
+      this.aaD = d.this;
+      this.aaD.a(this);
       AppMethodBeat.o(141521);
     }
     
     public final boolean a(android.support.v7.view.menu.h paramh, MenuItem paramMenuItem)
     {
       AppMethodBeat.i(141536);
-      if (this.YP != null)
+      if (this.aaE != null)
       {
-        boolean bool = this.YP.a(this, paramMenuItem);
+        boolean bool = this.aaE.a(this, paramMenuItem);
         AppMethodBeat.o(141536);
         return bool;
       }
@@ -719,7 +719,7 @@ public final class d
     public final void b(android.support.v7.view.menu.h paramh)
     {
       AppMethodBeat.i(141537);
-      if (this.YP == null)
+      if (this.aaE == null)
       {
         AppMethodBeat.o(141537);
         return;
@@ -732,41 +732,41 @@ public final class d
     public final void finish()
     {
       AppMethodBeat.i(141523);
-      if (d.this.Htm != this)
+      if (d.this.Jhc != this)
       {
         AppMethodBeat.o(141523);
         return;
       }
-      if (!d.aM(d.e(d.this), d.f(d.this)))
+      if (!d.aU(d.e(d.this), d.f(d.this)))
       {
-        d.this.Yx = this;
-        d.this.Yy = this.YP;
+        d.this.aam = this;
+        d.this.aan = this.aaE;
       }
       for (;;)
       {
-        this.YP = null;
+        this.aaE = null;
         d.this.Y(false);
-        d.g(d.this).hW();
-        d.h(d.this).jd().sendAccessibilityEvent(32);
-        d.this.Htm = null;
+        d.g(d.this).in();
+        d.h(d.this).jt().sendAccessibilityEvent(32);
+        d.this.Jhc = null;
         AppMethodBeat.o(141523);
         return;
-        this.YP.a(this);
+        this.aaE.a(this);
       }
     }
     
-    public final boolean gD()
+    public final boolean gU()
     {
       AppMethodBeat.i(141525);
-      this.YO.hB();
+      this.aaD.hR();
       try
       {
-        boolean bool = this.YP.a(this, this.YO);
+        boolean bool = this.aaE.a(this, this.aaD);
         return bool;
       }
       finally
       {
-        this.YO.hC();
+        this.aaD.hS();
         AppMethodBeat.o(141525);
       }
     }
@@ -774,9 +774,9 @@ public final class d
     public final View getCustomView()
     {
       AppMethodBeat.i(141535);
-      if (this.YQ != null)
+      if (this.aaF != null)
       {
-        View localView = (View)this.YQ.get();
+        View localView = (View)this.aaF.get();
         AppMethodBeat.o(141535);
         return localView;
       }
@@ -786,13 +786,13 @@ public final class d
     
     public final Menu getMenu()
     {
-      return this.YO;
+      return this.aaD;
     }
     
     public final MenuInflater getMenuInflater()
     {
       AppMethodBeat.i(141522);
-      g localg = new g(this.YN);
+      g localg = new g(this.aaC);
       AppMethodBeat.o(141522);
       return localg;
     }
@@ -816,20 +816,20 @@ public final class d
     public final void invalidate()
     {
       AppMethodBeat.i(141524);
-      if (d.this.Htm != this)
+      if (d.this.Jhc != this)
       {
         AppMethodBeat.o(141524);
         return;
       }
-      this.YO.hB();
+      this.aaD.hR();
       try
       {
-        this.YP.b(this, this.YO);
+        this.aaE.b(this, this.aaD);
         return;
       }
       finally
       {
-        this.YO.hC();
+        this.aaD.hS();
         AppMethodBeat.o(141524);
       }
     }
@@ -837,7 +837,7 @@ public final class d
     public final boolean isTitleOptional()
     {
       AppMethodBeat.i(141534);
-      boolean bool = d.g(d.this).afK;
+      boolean bool = d.g(d.this).ahB;
       AppMethodBeat.o(141534);
       return bool;
     }
@@ -846,7 +846,7 @@ public final class d
     {
       AppMethodBeat.i(141526);
       d.g(d.this).setCustomView(paramView);
-      this.YQ = new WeakReference(paramView);
+      this.aaF = new WeakReference(paramView);
       AppMethodBeat.o(141526);
     }
     

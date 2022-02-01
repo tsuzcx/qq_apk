@@ -2,12 +2,12 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.b.e;
-import com.tencent.mm.av.q;
+import com.tencent.mm.aw.a.b.e;
+import com.tencent.mm.aw.t;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.io.Closeable;
@@ -15,50 +15,50 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnection;", "Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpClientFactory$ImageHttpUrlConnection;", "url", "", "forceNormal", "", "connectionListener", "Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;)V", "mConnection", "Ljava/net/HttpURLConnection;", "mConnectionListener", "requestImageType", "", "closeInputStream", "", "inputStream", "Ljava/io/InputStream;", "disconnect", "forceWebp", "getDataResponse", "Lcom/tencent/mm/modelimage/loader/model/Response;", "getInputStream", "getResponseCode", "newConnection", "onRequest", "onResultError", "responseCode", "onResultSuccess", "response", "Companion", "plugin-biz_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnection;", "Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpClientFactory$ImageHttpUrlConnection;", "url", "", "forceNormal", "", "connectionListener", "Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;)V", "mConnection", "Ljava/net/HttpURLConnection;", "mConnectionListener", "requestImageType", "", "closeInputStream", "", "inputStream", "Ljava/io/InputStream;", "disconnect", "forceWebp", "getDataResponse", "Lcom/tencent/mm/modelimage/loader/model/Response;", "getInputStream", "getResponseCode", "newConnection", "onRequest", "onResultError", "responseCode", "onResultSuccess", "response", "Companion", "plugin-biz_release"})
 public final class i
   implements h.b
 {
-  public static final i.a Dqn;
-  private final j Dqk;
-  private final boolean Dql;
-  private int Dqm = -1;
+  public static final i.a EVq;
+  private final j EVn;
+  private final boolean EVo;
+  private int EVp = -1;
   private HttpURLConnection mConnection;
   private String url;
   
   static
   {
     AppMethodBeat.i(124876);
-    Dqn = new i.a((byte)0);
+    EVq = new i.a((byte)0);
     AppMethodBeat.o(124876);
   }
   
   public i(String paramString, boolean paramBoolean, j paramj)
   {
     this.url = paramString;
-    this.Dql = paramBoolean;
-    this.Dqk = paramj;
+    this.EVo = paramBoolean;
+    this.EVn = paramj;
   }
   
-  public final void M(InputStream paramInputStream)
+  public final void P(InputStream paramInputStream)
   {
     AppMethodBeat.i(124871);
-    j localj = this.Dqk;
+    j localj = this.EVn;
     if (localj != null) {
-      localj.eNv();
+      localj.fcu();
     }
-    bs.d((Closeable)paramInputStream);
-    paramInputStream = this.Dqk;
+    bt.d((Closeable)paramInputStream);
+    paramInputStream = this.EVn;
     if (paramInputStream != null)
     {
-      paramInputStream.eNw();
+      paramInputStream.fcv();
       AppMethodBeat.o(124871);
       return;
     }
     AppMethodBeat.o(124871);
   }
   
-  public final com.tencent.mm.av.a.d.b N(InputStream paramInputStream)
+  public final com.tencent.mm.aw.a.d.b Q(InputStream paramInputStream)
   {
     Object localObject3 = null;
     AppMethodBeat.i(124872);
@@ -74,10 +74,10 @@ public final class i
       }
       localObject2 = Integer.valueOf(((HttpURLConnection)localObject2).getContentLength());
       label49:
-      ac.d("MicroMsg.BizImageHttpUrlConnection", "alvinluo getDataResponse contentType: %s, url: %s, contentLength: %s", new Object[] { localObject1, str, localObject2 });
-      localObject1 = this.Dqk;
+      ad.d("MicroMsg.BizImageHttpUrlConnection", "alvinluo getDataResponse contentType: %s, url: %s, contentLength: %s", new Object[] { localObject1, str, localObject2 });
+      localObject1 = this.EVn;
       if (localObject1 != null) {
-        ((j)localObject1).eNt();
+        ((j)localObject1).fcs();
       }
       localObject1 = paramInputStream;
       if (paramInputStream == null)
@@ -89,13 +89,13 @@ public final class i
         localObject1 = paramInputStream.getInputStream();
       }
       label109:
-      localObject1 = e.o((InputStream)localObject1);
+      localObject1 = e.s((InputStream)localObject1);
       localObject2 = this.mConnection;
       paramInputStream = localObject3;
       if (localObject2 != null) {
         paramInputStream = ((HttpURLConnection)localObject2).getContentType();
       }
-      paramInputStream = new com.tencent.mm.av.a.d.b((byte[])localObject1, paramInputStream, (byte)0);
+      paramInputStream = new com.tencent.mm.aw.a.d.b((byte[])localObject1, paramInputStream, (byte)0);
       localObject1 = this.mConnection;
       if (localObject1 == null) {
         break label202;
@@ -106,10 +106,10 @@ public final class i
     label202:
     for (int i = ((HttpURLConnection)localObject1).getContentLength();; i = 0)
     {
-      paramInputStream.pg(i);
-      localObject1 = this.Dqk;
+      paramInputStream.pJ(i);
+      localObject1 = this.EVn;
       if (localObject1 != null) {
-        ((j)localObject1).eNu();
+        ((j)localObject1).fct();
       }
       AppMethodBeat.o(124872);
       return paramInputStream;
@@ -122,24 +122,24 @@ public final class i
     }
   }
   
-  public final void WU(int paramInt)
+  public final void YQ(int paramInt)
   {
     AppMethodBeat.i(124875);
-    j localj = this.Dqk;
+    j localj = this.EVn;
     if (localj != null)
     {
-      localj.WU(paramInt);
+      localj.YQ(paramInt);
       AppMethodBeat.o(124875);
       return;
     }
     AppMethodBeat.o(124875);
   }
   
-  public final void b(com.tencent.mm.av.a.d.b paramb)
+  public final void b(com.tencent.mm.aw.a.d.b paramb)
   {
     AppMethodBeat.i(124874);
-    k.h(paramb, "response");
-    j localj = this.Dqk;
+    p.h(paramb, "response");
+    j localj = this.EVn;
     if (localj != null)
     {
       localj.b(paramb);
@@ -166,10 +166,10 @@ public final class i
       if (localObject != null) {
         ((HttpURLConnection)localObject).disconnect();
       }
-      localObject = this.Dqk;
+      localObject = this.EVn;
       if (localObject != null)
       {
-        ((j)localObject).eNx();
+        ((j)localObject).fcw();
         AppMethodBeat.o(124873);
         return;
       }
@@ -182,7 +182,7 @@ public final class i
     }
   }
   
-  public final HttpURLConnection eNn()
+  public final HttpURLConnection fcm()
   {
     AppMethodBeat.i(124868);
     Object localObject1 = (CharSequence)this.url;
@@ -193,7 +193,7 @@ public final class i
       return null;
     }
     String str = this.url;
-    if (this.Dql)
+    if (this.EVo)
     {
       localObject1 = this.url;
       if (localObject1 != null) {
@@ -205,20 +205,20 @@ public final class i
     for (localObject1 = null;; localObject1 = com.tencent.mm.api.b.l((String)localObject2, false))
     {
       this.url = ((String)localObject1);
-      localObject1 = this.Dqk;
+      localObject1 = this.EVn;
       if (localObject1 != null) {
-        ((j)localObject1).dV(str, this.url);
+        ((j)localObject1).ef(str, this.url);
       }
-      if (this.Dql)
+      if (this.EVo)
       {
-        localObject1 = this.Dqk;
+        localObject1 = this.EVn;
         if (localObject1 != null) {
-          ((j)localObject1).eNo();
+          ((j)localObject1).fcn();
         }
       }
-      localObject1 = this.Dqk;
+      localObject1 = this.EVn;
       if (localObject1 != null) {
-        ((j)localObject1).eNp();
+        ((j)localObject1).fco();
       }
       localObject1 = new URL(this.url).openConnection();
       if (localObject1 != null) {
@@ -227,11 +227,11 @@ public final class i
       localObject1 = new v("null cannot be cast to non-null type java.net.HttpURLConnection");
       AppMethodBeat.o(124868);
       throw ((Throwable)localObject1);
-      localObject2 = g.Dqh;
+      localObject2 = g.EVk;
       localObject2 = Uri.parse((String)localObject1);
-      k.g(localObject2, "Uri.parse(url)");
+      p.g(localObject2, "Uri.parse(url)");
       localObject2 = g.c((Uri)localObject2, "tp");
-      ac.d("MicroMsg.BizImageHttpUrlConnection", "alvinluo forceWebp url: %s, temp: %s", new Object[] { localObject1, localObject2 });
+      ad.d("MicroMsg.BizImageHttpUrlConnection", "alvinluo forceWebp url: %s, temp: %s", new Object[] { localObject1, localObject2 });
     }
     this.mConnection = ((HttpURLConnection)localObject1);
     localObject1 = this.mConnection;
@@ -242,10 +242,10 @@ public final class i
     if (localObject1 != null) {
       ((HttpURLConnection)localObject1).setReadTimeout(20000);
     }
-    if ((!this.Dql) && (com.tencent.mm.api.b.dB(this.url)))
+    if ((!this.EVo) && (com.tencent.mm.api.b.ex(this.url)))
     {
-      ac.v("MicroMsg.BizImageHttpUrlConnection", "alvinluo BizImage get WxPic");
-      this.Dqm = 1;
+      ad.v("MicroMsg.BizImageHttpUrlConnection", "alvinluo BizImage get WxPic");
+      this.EVp = 1;
       localObject1 = this.mConnection;
       if (localObject1 != null) {
         ((HttpURLConnection)localObject1).addRequestProperty("Accept", "image/wxpic");
@@ -253,26 +253,26 @@ public final class i
     }
     for (;;)
     {
-      localObject1 = this.Dqk;
+      localObject1 = this.EVn;
       if (localObject1 != null) {
-        ((j)localObject1).eNq();
+        ((j)localObject1).fcp();
       }
       localObject1 = this.mConnection;
       AppMethodBeat.o(124868);
       return localObject1;
-      if (com.tencent.mm.api.b.dz(this.url))
+      if (com.tencent.mm.api.b.ev(this.url))
       {
-        ac.v("MicroMsg.BizImageHttpUrlConnection", "alvinluo BizImage get Webp");
-        this.Dqm = 2;
+        ad.v("MicroMsg.BizImageHttpUrlConnection", "alvinluo BizImage get Webp");
+        this.EVp = 2;
         localObject1 = this.mConnection;
         if (localObject1 != null) {
-          ((HttpURLConnection)localObject1).setRequestProperty("Referer", q.pa(d.DIc));
+          ((HttpURLConnection)localObject1).setRequestProperty("Referer", t.pD(d.Fnj));
         }
       }
       else
       {
-        ac.v("MicroMsg.BizImageHttpUrlConnection", "alvinluo BizImage get jpeg");
-        this.Dqm = 0;
+        ad.v("MicroMsg.BizImageHttpUrlConnection", "alvinluo BizImage get jpeg");
+        this.EVp = 0;
       }
     }
   }
@@ -294,21 +294,21 @@ public final class i
   public final int getResponseCode()
   {
     AppMethodBeat.i(124869);
-    Object localObject = this.Dqk;
+    Object localObject = this.EVn;
     if (localObject != null) {
-      ((j)localObject).aS(this.Dqm, this.Dql);
+      ((j)localObject).aZ(this.EVp, this.EVo);
     }
-    localObject = this.Dqk;
+    localObject = this.EVn;
     if (localObject != null) {
-      ((j)localObject).eNr();
+      ((j)localObject).fcq();
     }
     localObject = this.mConnection;
     if (localObject != null) {}
     for (int i = ((HttpURLConnection)localObject).getResponseCode();; i = -1)
     {
-      localObject = this.Dqk;
+      localObject = this.EVn;
       if (localObject != null) {
-        ((j)localObject).eNs();
+        ((j)localObject).fcr();
       }
       AppMethodBeat.o(124869);
       return i;
@@ -317,7 +317,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.i
  * JD-Core Version:    0.7.0.1
  */

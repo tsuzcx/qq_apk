@@ -37,10 +37,10 @@ public class Scope
     }
   }
   
-  public ScopeType getType()
+  public Scope.ScopeType getType()
   {
     AppMethodBeat.i(61525);
-    ScopeType localScopeType = ScopeType.values()[this.v8Object.executeIntegerFunction("scopeType", null)];
+    Scope.ScopeType localScopeType = Scope.ScopeType.values()[this.v8Object.executeIntegerFunction("scopeType", null)];
     AppMethodBeat.o(61525);
     return localScopeType;
   }
@@ -134,34 +134,10 @@ public class Scope
       AppMethodBeat.o(61528);
     }
   }
-  
-  public static enum ScopeType
-  {
-    int index;
-    
-    static
-    {
-      AppMethodBeat.i(61524);
-      Global = new ScopeType("Global", 0, 0);
-      Local = new ScopeType("Local", 1, 1);
-      With = new ScopeType("With", 2, 2);
-      Closure = new ScopeType("Closure", 3, 3);
-      Catch = new ScopeType("Catch", 4, 4);
-      Block = new ScopeType("Block", 5, 5);
-      Script = new ScopeType("Script", 6, 6);
-      $VALUES = new ScopeType[] { Global, Local, With, Closure, Catch, Block, Script };
-      AppMethodBeat.o(61524);
-    }
-    
-    private ScopeType(int paramInt)
-    {
-      this.index = paramInt;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.Scope
  * JD-Core Version:    0.7.0.1
  */

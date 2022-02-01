@@ -9,31 +9,31 @@ import java.util.Map;
 public final class f
   extends k
 {
-  static final c.a hlR;
+  static final c.a hEe;
   
   static
   {
     AppMethodBeat.i(44739);
     c.a locala = new c.a();
-    locala.GvF = new Field[2];
+    locala.IhA = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.GvH.put("username", "TEXT");
+    locala.IhC.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "token";
-    locala.GvH.put("token", "TEXT");
+    locala.IhC.put("token", "TEXT");
     localStringBuilder.append(" token TEXT");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
-    hlR = locala;
+    hEe = locala;
     AppMethodBeat.o(44739);
   }
   
   public final c.a getDBInfo()
   {
-    return hlR;
+    return hEe;
   }
 }
 

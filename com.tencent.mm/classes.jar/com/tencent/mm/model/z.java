@@ -1,16 +1,16 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.b;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.g.a.cp;
-import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.al.e;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.b;
+import com.tencent.mm.al.e.c;
+import com.tencent.mm.g.a.cs;
+import com.tencent.mm.protocal.protobuf.cv;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.ByteArrayInputStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -22,20 +22,20 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 public final class z
-  implements f
+  implements e
 {
-  public final f.b b(f.a parama)
+  public final e.b b(e.a parama)
   {
     AppMethodBeat.i(150155);
-    parama = parama.fXi;
-    if ((parama == null) || (parama.DPV == null))
+    parama = parama.gqE;
+    if ((parama == null) || (parama.Fvk == null))
     {
-      ac.f("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension failed, invalid cmdAM");
+      ad.f("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension failed, invalid cmdAM");
       AppMethodBeat.o(150155);
       return null;
     }
-    ac.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension start");
-    parama = com.tencent.mm.platformtools.z.a(parama.DPV);
+    ad.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension start");
+    parama = com.tencent.mm.platformtools.z.a(parama.Fvk);
     Object localObject = DocumentBuilderFactory.newInstance();
     for (;;)
     {
@@ -64,20 +64,20 @@ public final class z
             if (localObject == null) {
               break label298;
             }
-            int k = bs.getInt(((Node)localObject).getNodeValue(), 0);
-            localObject = new cp();
-            ((cp)localObject).dci.dcj = k;
-            a.GpY.l((b)localObject);
+            int k = bt.getInt(((Node)localObject).getNodeValue(), 0);
+            localObject = new cs();
+            ((cs)localObject).dnE.dnF = k;
+            a.IbL.l((b)localObject);
             break label298;
           }
         }
-        ac.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension end");
+        ad.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension end");
         AppMethodBeat.o(150155);
         return null;
       }
       catch (Exception parama)
       {
-        ac.e("MicroMsg.DeletePackageMsgExtension", "exception:%s", new Object[] { bs.m(parama) });
+        ad.e("MicroMsg.DeletePackageMsgExtension", "exception:%s", new Object[] { bt.n(parama) });
         AppMethodBeat.o(150155);
         return null;
       }
@@ -86,11 +86,11 @@ public final class z
     }
   }
   
-  public final void b(f.c paramc) {}
+  public final void b(e.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.model.z
  * JD-Core Version:    0.7.0.1
  */

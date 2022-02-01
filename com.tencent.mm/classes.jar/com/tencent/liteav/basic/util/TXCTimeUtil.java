@@ -7,7 +7,7 @@ public class TXCTimeUtil
   static
   {
     AppMethodBeat.i(14727);
-    d.f();
+    f.f();
     AppMethodBeat.o(14727);
   }
   

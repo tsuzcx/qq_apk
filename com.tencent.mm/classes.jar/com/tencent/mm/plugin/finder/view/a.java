@@ -11,108 +11,112 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.finder.storage.t;
-import com.tencent.mm.plugin.finder.utils.n;
-import com.tencent.mm.plugin.i.a.f;
-import com.tencent.mm.protocal.protobuf.amf;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.plugin.finder.model.m;
+import com.tencent.mm.plugin.finder.storage.ab;
+import com.tencent.mm.plugin.i.a.j;
+import com.tencent.mm.plugin.i.a.s;
+import com.tencent.mm.protocal.protobuf.apl;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.i;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import d.v;
-import d.y;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/CommentMenu;", "", "()V", "BottomSheetMenuListener", "Companion", "MenuItemCreateListener", "MenuItemSelectListener", "plugin-finder_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/CommentMenu;", "", "()V", "BottomSheetMenuListener", "Companion", "MenuItemCreateListener", "MenuItemSelectListener", "plugin-finder_release"})
 public final class a
 {
-  private static final int rVj = 0;
-  private static final int rVk = 1;
-  private static final int rVl = 2;
-  private static final int rVm = 3;
-  private static final int rVn = 999;
-  public static final a.b rVo;
+  private static final int sRR = 0;
+  private static final int sRS = 1;
+  private static final int sRT = 2;
+  private static final int sRU = 3;
+  private static final int sRV = 999;
+  public static final b sRW;
   
   static
   {
     AppMethodBeat.i(178469);
-    rVo = new a.b((byte)0);
-    rVk = 1;
-    rVl = 2;
-    rVm = 3;
-    rVn = 999;
+    sRW = new b((byte)0);
+    sRS = 1;
+    sRT = 2;
+    sRU = 3;
+    sRV = 999;
     AppMethodBeat.o(178469);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/CommentMenu$BottomSheetMenuListener;", "Lcom/tencent/mm/ui/base/MMMenuListener$OnCreateMMMenuListener;", "commentItem", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "feedUsername", "", "(Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;Ljava/lang/String;)V", "getFeedUsername", "()Ljava/lang/String;", "onCreateMMMenu", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "plugin-finder_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/CommentMenu$BottomSheetMenuListener;", "Lcom/tencent/mm/ui/base/MMMenuListener$OnCreateMMMenuListener;", "commentItem", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "feedUsername", "", "(Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;Ljava/lang/String;)V", "getFeedUsername", "()Ljava/lang/String;", "onCreateMMMenu", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "plugin-finder_release"})
   public static final class a
-    implements n.c
+    implements n.d
   {
-    private final String qXv;
-    private com.tencent.mm.plugin.finder.model.l rVp;
+    private final String rIE;
+    private m sRX;
     
-    public a(com.tencent.mm.plugin.finder.model.l paraml, String paramString)
+    public a(m paramm, String paramString)
     {
-      AppMethodBeat.i(204086);
-      this.rVp = paraml;
-      this.qXv = paramString;
-      AppMethodBeat.o(204086);
+      AppMethodBeat.i(205040);
+      this.sRX = paramm;
+      this.rIE = paramString;
+      AppMethodBeat.o(205040);
     }
     
     public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
     {
-      AppMethodBeat.i(204085);
-      d.g.b.k.h(paraml, "menu");
-      Object localObject = n.rPN;
-      if (n.aeD(this.qXv))
+      AppMethodBeat.i(205039);
+      d.g.b.p.h(paraml, "menu");
+      Object localObject = com.tencent.mm.plugin.finder.utils.p.sMo;
+      if (com.tencent.mm.plugin.finder.utils.p.aiX(this.rIE))
       {
-        paraml.jw(a.cEy(), 2131755701);
-        if (((d.g.b.k.g(this.rVp.ruO.getUsername(), u.axE()) ^ true)) && ((d.g.b.k.g(this.rVp.ruO.getUsername(), u.axw()) ^ true))) {}
+        paraml.jI(a.cMR(), 2131755701);
+        if (((d.g.b.p.i(this.sRX.skh.getUsername(), u.aAu()) ^ true)) && ((d.g.b.p.i(this.sRX.skh.getUsername(), u.aAm()) ^ true))) {}
         for (int i = 1;; i = 0)
         {
           if (i != 0) {
-            paraml.jw(a.cEz(), 2131755735);
+            paraml.jI(a.cMS(), 2131755735);
           }
-          paraml.jw(a.cEA(), 2131755707);
+          paraml.jI(a.cMT(), 2131755707);
           if (i == 0) {
             break label175;
           }
-          localObject = n.rPN;
-          if (!n.aeD(this.qXv)) {
+          localObject = com.tencent.mm.plugin.finder.utils.p.sMo;
+          if (!com.tencent.mm.plugin.finder.utils.p.aiX(this.rIE)) {
             break label175;
           }
-          if (!this.rVp.ruO.cAW()) {
+          if (!this.sRX.skh.cIS()) {
             break;
           }
-          localObject = com.tencent.mm.plugin.finder.storage.b.rCU;
-          if (!com.tencent.mm.plugin.finder.storage.b.czD()) {
+          localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
+          if (!com.tencent.mm.plugin.finder.storage.b.cGn()) {
             break label175;
           }
-          paraml.jw(a.cEB(), 2131759146);
-          AppMethodBeat.o(204085);
+          paraml.jI(a.cMU(), 2131759146);
+          AppMethodBeat.o(205039);
           return;
         }
-        paraml.jw(a.cEB(), 2131759146);
+        paraml.jI(a.cMU(), 2131759146);
       }
       label175:
-      AppMethodBeat.o(204085);
+      AppMethodBeat.o(205039);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/CommentMenu$MenuItemCreateListener;", "Landroid/view/View$OnCreateContextMenuListener;", "commentItem", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "feedUsername", "", "isFinderScene", "", "(Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;Ljava/lang/String;Z)V", "getFeedUsername", "()Ljava/lang/String;", "()Z", "onCreateContextMenu", "", "menu", "Landroid/view/ContextMenu;", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "plugin-finder_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/CommentMenu$Companion;", "", "()V", "MENU_BAN", "", "MENU_COPY", "MENU_DEBUG", "MENU_DEL", "MENU_EXPOSE", "plugin-finder_release"})
+  public static final class b {}
+  
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/CommentMenu$MenuItemCreateListener;", "Landroid/view/View$OnCreateContextMenuListener;", "commentItem", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "feedUsername", "", "isFinderScene", "", "(Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;Ljava/lang/String;Z)V", "getFeedUsername", "()Ljava/lang/String;", "()Z", "onCreateContextMenu", "", "menu", "Landroid/view/ContextMenu;", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "plugin-finder_release"})
   public static final class c
     implements View.OnCreateContextMenuListener
   {
-    private final String qXv;
-    private com.tencent.mm.plugin.finder.model.l rVp;
-    private final boolean rVq;
+    private final String rIE;
+    private m sRX;
+    private final boolean sRY;
     
-    public c(com.tencent.mm.plugin.finder.model.l paraml, String paramString, boolean paramBoolean)
+    public c(m paramm, String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(168213);
-      this.rVp = paraml;
-      this.qXv = paramString;
-      this.rVq = paramBoolean;
+      this.sRX = paramm;
+      this.rIE = paramString;
+      this.sRY = paramBoolean;
       AppMethodBeat.o(168213);
     }
     
@@ -124,19 +128,19 @@ public final class a
       int j;
       if (paramContextMenu != null)
       {
-        paramContextMenu.add(0, a.cEy(), 0, 2131755701);
-        if ((!(d.g.b.k.g(this.rVp.ruO.getUsername(), u.axE()) ^ true)) || (!(d.g.b.k.g(this.rVp.ruO.getUsername(), u.axw()) ^ true))) {
+        paramContextMenu.add(0, a.cMR(), 0, 2131755701);
+        if ((!(d.g.b.p.i(this.sRX.skh.getUsername(), u.aAu()) ^ true)) || (!(d.g.b.p.i(this.sRX.skh.getUsername(), u.aAm()) ^ true))) {
           break label250;
         }
         i = 1;
         if (i != 0) {
-          paramContextMenu.add(0, a.cEz(), 1, 2131755735);
+          paramContextMenu.add(0, a.cMS(), 1, 2131755735);
         }
-        paramView = this.rVp.ruO;
+        paramView = this.sRX.skh;
         j = k;
-        if (!d.g.b.k.g(u.axE(), paramView.getUsername()))
+        if (!d.g.b.p.i(u.aAu(), paramView.getUsername()))
         {
-          if (!d.g.b.k.g(u.axw(), paramView.getUsername())) {
+          if (!d.g.b.p.i(u.aAm(), paramView.getUsername())) {
             break label256;
           }
           j = k;
@@ -144,32 +148,32 @@ public final class a
         label132:
         if (j == 0)
         {
-          paramView = n.rPN;
-          if (!n.aeD(this.qXv)) {}
+          paramView = com.tencent.mm.plugin.finder.utils.p.sMo;
+          if (!com.tencent.mm.plugin.finder.utils.p.aiX(this.rIE)) {}
         }
         else
         {
-          paramContextMenu.add(0, a.cEA(), 2, 2131755707);
+          paramContextMenu.add(0, a.cMT(), 2, 2131755707);
         }
         if (i != 0)
         {
-          paramView = n.rPN;
-          if (n.aeD(this.qXv))
+          paramView = com.tencent.mm.plugin.finder.utils.p.sMo;
+          if (com.tencent.mm.plugin.finder.utils.p.aiX(this.rIE))
           {
-            if (!this.rVp.ruO.cAW()) {
+            if (!this.sRX.skh.cIS()) {
               break label262;
             }
-            paramView = com.tencent.mm.plugin.finder.storage.b.rCU;
-            if (com.tencent.mm.plugin.finder.storage.b.czD()) {
-              paramContextMenu.add(0, a.cEB(), 3, 2131759146);
+            paramView = com.tencent.mm.plugin.finder.storage.b.sxa;
+            if (com.tencent.mm.plugin.finder.storage.b.cGn()) {
+              paramContextMenu.add(0, a.cMU(), 3, 2131759146);
             }
           }
         }
       }
       for (;;)
       {
-        if (h.DEBUG) {
-          paramContextMenu.add(0, a.cEC(), 4, (CharSequence)"debug");
+        if (i.DEBUG) {
+          paramContextMenu.add(0, a.cMV(), 4, (CharSequence)"debug");
         }
         AppMethodBeat.o(168212);
         return;
@@ -180,23 +184,23 @@ public final class a
         j = 0;
         break label132;
         label262:
-        paramContextMenu.add(0, a.cEB(), 3, 2131759146);
+        paramContextMenu.add(0, a.cMU(), 3, 2131759146);
       }
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/CommentMenu$MenuItemSelectListener;", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "commentItem", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "commentDelCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "comment", "", "(Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;Lkotlin/jvm/functions/Function1;)V", "getCommentDelCallback", "()Lkotlin/jvm/functions/Function1;", "setCommentDelCallback", "(Lkotlin/jvm/functions/Function1;)V", "getCommentItem", "()Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "setCommentItem", "(Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;)V", "onMMMenuItemSelected", "menuItem", "Landroid/view/MenuItem;", "index", "", "plugin-finder_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/CommentMenu$MenuItemSelectListener;", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "commentItem", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "commentDelCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "comment", "", "(Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;Lkotlin/jvm/functions/Function1;)V", "getCommentDelCallback", "()Lkotlin/jvm/functions/Function1;", "setCommentDelCallback", "(Lkotlin/jvm/functions/Function1;)V", "getCommentItem", "()Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "setCommentItem", "(Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;)V", "onMMMenuItemSelected", "menuItem", "Landroid/view/MenuItem;", "index", "", "plugin-finder_release"})
   public static final class d
-    implements n.d
+    implements n.e
   {
-    private com.tencent.mm.plugin.finder.model.l rVp;
-    private d.g.a.b<? super com.tencent.mm.plugin.finder.model.l, y> rVr;
+    private m sRX;
+    private d.g.a.b<? super m, z> sRZ;
     
-    public d(com.tencent.mm.plugin.finder.model.l paraml, d.g.a.b<? super com.tencent.mm.plugin.finder.model.l, y> paramb)
+    public d(m paramm, d.g.a.b<? super m, z> paramb)
     {
       AppMethodBeat.i(168216);
-      this.rVp = paraml;
-      this.rVr = paramb;
+      this.sRX = paramm;
+      this.sRZ = paramb;
       AppMethodBeat.o(168216);
     }
     
@@ -207,55 +211,55 @@ public final class a
       if (paramMenuItem != null)
       {
         paramInt = paramMenuItem.getItemId();
-        if (paramInt == a.cEy())
+        if (paramInt == a.cMR())
         {
-          if (!bs.isNullOrNil(this.rVp.ruO.getContent()))
+          if (!bt.isNullOrNil(this.sRX.skh.getContent()))
           {
-            paramMenuItem = ai.getContext().getSystemService("clipboard");
+            paramMenuItem = aj.getContext().getSystemService("clipboard");
             if (paramMenuItem == null)
             {
               paramMenuItem = new v("null cannot be cast to non-null type android.content.ClipboardManager");
               AppMethodBeat.o(168215);
               throw paramMenuItem;
             }
-            ((android.content.ClipboardManager)paramMenuItem).setPrimaryClip(ClipData.newPlainText((CharSequence)this.rVp.ruO.getContent(), (CharSequence)this.rVp.ruO.getContent()));
-            Toast.makeText(ai.getContext(), 2131755702, 0).show();
+            ((android.content.ClipboardManager)paramMenuItem).setPrimaryClip(ClipData.newPlainText((CharSequence)this.sRX.skh.getContent(), (CharSequence)this.sRX.skh.getContent()));
+            Toast.makeText(aj.getContext(), 2131755702, 0).show();
             AppMethodBeat.o(168215);
             return;
           }
           AppMethodBeat.o(168215);
           return;
         }
-        if (paramInt == a.cEA())
+        if (paramInt == a.cMT())
         {
-          paramMenuItem = this.rVr;
+          paramMenuItem = this.sRZ;
           if (paramMenuItem != null)
           {
-            paramMenuItem.ay(this.rVp);
+            paramMenuItem.invoke(this.sRX);
             AppMethodBeat.o(168215);
             return;
           }
           AppMethodBeat.o(168215);
           return;
         }
-        if (paramInt == a.cEz())
+        if (paramInt == a.cMS())
         {
-          paramMenuItem = com.tencent.mm.plugin.finder.feed.logic.a.rml;
-          paramMenuItem = ai.getContext();
-          d.g.b.k.g(paramMenuItem, "MMApplicationContext.getContext()");
-          com.tencent.mm.plugin.finder.feed.logic.a.b(paramMenuItem, this.rVp.ruO.field_feedId, this.rVp.ruO.cAK());
+          paramMenuItem = com.tencent.mm.plugin.finder.feed.logic.a.saO;
+          paramMenuItem = aj.getContext();
+          d.g.b.p.g(paramMenuItem, "MMApplicationContext.getContext()");
+          com.tencent.mm.plugin.finder.feed.logic.a.b(paramMenuItem, this.sRX.skh.field_feedId, this.sRX.skh.cIG());
           AppMethodBeat.o(168215);
           return;
         }
-        if (paramInt == a.cEB())
+        if (paramInt == a.cMU())
         {
-          ((f)g.ab(f.class)).a(this.rVp.lx(), this.rVp.ruO.field_feedId, this.rVp.ruO.getObjectNonceId(), (com.tencent.mm.plugin.i.a.k)new a());
+          ((j)g.ab(j.class)).a(this.sRX.lP(), this.sRX.skh.field_feedId, this.sRX.skh.getObjectNonceId(), (s)new a());
           AppMethodBeat.o(168215);
           return;
         }
-        if (paramInt == a.cEC())
+        if (paramInt == a.cMV())
         {
-          paramMenuItem = ai.getContext().getSystemService("clipboard");
+          paramMenuItem = aj.getContext().getSystemService("clipboard");
           if (paramMenuItem == null)
           {
             paramMenuItem = new v("null cannot be cast to non-null type android.text.ClipboardManager");
@@ -263,11 +267,11 @@ public final class a
             throw paramMenuItem;
           }
           localClipboardManager = (android.text.ClipboardManager)paramMenuItem;
-          paramMenuItem = this.rVp;
+          paramMenuItem = this.sRX;
           if (paramMenuItem == null) {
             break label361;
           }
-          paramMenuItem = paramMenuItem.ruO;
+          paramMenuItem = paramMenuItem.skh;
           if (paramMenuItem == null) {
             break label361;
           }
@@ -282,15 +286,15 @@ public final class a
       }
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/view/CommentMenu$MenuItemSelectListener$onMMMenuItemSelected$1$1", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
+    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/view/CommentMenu$MenuItemSelectListener$onMMMenuItemSelected$1$1", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
     public static final class a
-      implements com.tencent.mm.plugin.i.a.k<amf>
+      implements s<apl>
     {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,13 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.f;
 import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.f.c.g;
-import com.tencent.mm.protocal.protobuf.aqd;
-import com.tencent.mm.protocal.protobuf.bjt;
-import com.tencent.mm.protocal.protobuf.bju;
-import com.tencent.mm.protocal.protobuf.bjw;
-import com.tencent.mm.protocal.protobuf.ccs;
-import com.tencent.mm.protocal.protobuf.cvy;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.vending.j.a;
+import com.tencent.mm.protocal.protobuf.atz;
+import com.tencent.mm.protocal.protobuf.bob;
+import com.tencent.mm.protocal.protobuf.boc;
+import com.tencent.mm.protocal.protobuf.boe;
+import com.tencent.mm.protocal.protobuf.chk;
+import com.tencent.mm.protocal.protobuf.dbk;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,23 +24,23 @@ import org.json.JSONObject;
 
 final class h
 {
-  static void a(bjw parambjw, bjt parambjt, aqd paramaqd, ccs paramccs)
+  static void a(boe paramboe, bob parambob, atz paramatz, chk paramchk)
   {
     AppMethodBeat.i(177401);
-    abC(b(parambjw, parambjt, paramccs));
-    if ((paramaqd == null) || (paramaqd.EIZ.isEmpty()))
+    afq(b(paramboe, parambob, paramchk));
+    if ((paramatz == null) || (paramatz.Gsa.isEmpty()))
     {
       AppMethodBeat.o(177401);
       return;
     }
-    abC(c.b(parambjw, paramaqd));
+    afq(c.b(paramboe, paramatz));
     AppMethodBeat.o(177401);
   }
   
-  private static void abC(String paramString)
+  private static void afq(String paramString)
   {
     AppMethodBeat.i(122244);
-    String str2 = g.ckY();
+    String str2 = g.cqm();
     String str1 = paramString;
     if (str2 != null)
     {
@@ -52,8 +51,8 @@ final class h
     }
     for (;;)
     {
-      abD(str1);
-      g.tf(System.currentTimeMillis());
+      afr(str1);
+      g.vb(System.currentTimeMillis());
       AppMethodBeat.o(122244);
       return;
       label40:
@@ -66,7 +65,7 @@ final class h
   }
   
   @SuppressLint({"NewApi"})
-  private static void abD(String paramString)
+  private static void afr(String paramString)
   {
     AppMethodBeat.i(122245);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -74,51 +73,52 @@ final class h
       AppMethodBeat.o(122245);
       return;
     }
-    ac.i("HellSessionPageMergeReport", "HABBYGE-MALI, FuzzyMergeReport, reportSessionPageMerge: %s", new Object[] { paramString });
-    d.aO(17647, paramString);
+    ad.i("HABBYGE-MALI.HellSessionPageMergeReport", "FuzzyMergeReport, reportSessionPageMerge: %s", new Object[] { paramString });
+    d.aR(17647, paramString);
+    com.tencent.mm.plugin.expt.d.a.cng().qPn.adk(paramString);
     AppMethodBeat.o(122245);
   }
   
-  private static String b(bjw parambjw, bjt parambjt, ccs paramccs)
+  private static String b(boe paramboe, bob parambob, chk paramchk)
   {
     AppMethodBeat.i(177402);
-    parambjt = j.d(parambjt);
-    paramccs = i.a(parambjt, paramccs);
-    i.V(paramccs);
-    if ((parambjt.isEmpty()) || (paramccs.isEmpty()))
+    parambob = j.d(parambob);
+    paramchk = i.a(parambob, paramchk);
+    i.X(paramchk);
+    if ((parambob.isEmpty()) || (paramchk.isEmpty()))
     {
-      ac.i("HellSessionPageMergeReport", "HABBYGE-MALI, SessionPageMerge, toJson, PageFlowMap Empty !!");
+      ad.i("HABBYGE-MALI.HellSessionPageMergeReport", "SessionPageMerge, toJson, PageFlowMap Empty !!");
       AppMethodBeat.o(177402);
       return null;
     }
     Object localObject1 = new HashMap();
-    Object localObject2 = paramccs.entrySet().iterator();
+    Object localObject2 = paramchk.entrySet().iterator();
     Object localObject3;
     label120:
     Object localObject4;
     Object localObject5;
     while (((Iterator)localObject2).hasNext())
     {
-      parambjt = (List)((Map.Entry)((Iterator)localObject2).next()).getValue();
-      if (!parambjt.isEmpty())
+      parambob = (List)((Map.Entry)((Iterator)localObject2).next()).getValue();
+      if (!parambob.isEmpty())
       {
-        localObject3 = parambjt.iterator();
+        localObject3 = parambob.iterator();
         for (;;)
         {
           if (((Iterator)localObject3).hasNext())
           {
-            localObject4 = (cvy)((Iterator)localObject3).next();
+            localObject4 = (dbk)((Iterator)localObject3).next();
             if (localObject4 != null)
             {
-              localObject5 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aaS(((cvy)localObject4).dnh);
+              localObject5 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeG(((dbk)localObject4).dyV);
               if (localObject5 != null)
               {
                 if (!((Map)localObject1).containsKey(localObject5)) {
                   break label224;
                 }
-                paramccs = (List)((Map)localObject1).get(localObject5);
-                parambjt = paramccs;
-                if (paramccs != null) {
+                paramchk = (List)((Map)localObject1).get(localObject5);
+                parambob = paramchk;
+                if (paramchk != null) {
                   break;
                 }
               }
@@ -126,10 +126,10 @@ final class h
           }
         }
         label224:
-        for (parambjt = new ArrayList();; parambjt = new ArrayList())
+        for (parambob = new ArrayList();; parambob = new ArrayList())
         {
-          parambjt.add(localObject4);
-          ((Map)localObject1).put(localObject5, parambjt);
+          parambob.add(localObject4);
+          ((Map)localObject1).put(localObject5, parambob);
           break label120;
           break;
         }
@@ -140,49 +140,49 @@ final class h
       AppMethodBeat.o(177402);
       return null;
     }
-    parambjw = i.j(parambjw);
-    if (parambjw == null)
+    paramboe = i.j(paramboe);
+    if (paramboe == null)
     {
       AppMethodBeat.o(177402);
       return null;
     }
-    parambjt = new JSONArray();
-    paramccs = ((Map)localObject1).entrySet().iterator();
-    while (paramccs.hasNext())
+    parambob = new JSONArray();
+    paramchk = ((Map)localObject1).entrySet().iterator();
+    while (paramchk.hasNext())
     {
-      localObject2 = (Map.Entry)paramccs.next();
+      localObject2 = (Map.Entry)paramchk.next();
       localObject1 = (String)((Map.Entry)localObject2).getKey();
       localObject3 = (List)((Map.Entry)localObject2).getValue();
       localObject2 = new HashMap();
       localObject3 = ((List)localObject3).iterator();
       while (((Iterator)localObject3).hasNext())
       {
-        localObject4 = (cvy)((Iterator)localObject3).next();
+        localObject4 = (dbk)((Iterator)localObject3).next();
         long l;
-        if (((Map)localObject2).containsKey(Long.valueOf(((cvy)localObject4).EJj)))
+        if (((Map)localObject2).containsKey(Long.valueOf(((dbk)localObject4).Gsl)))
         {
-          localObject5 = (com.tencent.mm.vending.j.c)((Map)localObject2).get(Long.valueOf(((cvy)localObject4).EJj));
+          localObject5 = (com.tencent.mm.vending.j.c)((Map)localObject2).get(Long.valueOf(((dbk)localObject4).Gsl));
           if (localObject5 != null)
           {
             l = 0L;
-            Iterator localIterator = ((cvy)localObject4).FGB.iterator();
+            Iterator localIterator = ((dbk)localObject4).Hre.iterator();
             while (localIterator.hasNext()) {
-              l += ((bju)localIterator.next()).duration;
+              l += ((boc)localIterator.next()).duration;
             }
-            ((Map)localObject2).put(Long.valueOf(((cvy)localObject4).EJj), a.L(Integer.valueOf(((Integer)((com.tencent.mm.vending.j.b)localObject5).get(0)).intValue() + 1), Long.valueOf(((Long)((com.tencent.mm.vending.j.c)localObject5).get(1)).longValue() + l)));
+            ((Map)localObject2).put(Long.valueOf(((dbk)localObject4).Gsl), com.tencent.mm.vending.j.a.N(Integer.valueOf(((Integer)((com.tencent.mm.vending.j.b)localObject5).get(0)).intValue() + 1), Long.valueOf(((Long)((com.tencent.mm.vending.j.c)localObject5).get(1)).longValue() + l)));
           }
         }
         else
         {
           l = 0L;
-          localObject5 = ((cvy)localObject4).FGB.iterator();
+          localObject5 = ((dbk)localObject4).Hre.iterator();
           while (((Iterator)localObject5).hasNext()) {
-            l += ((bju)((Iterator)localObject5).next()).duration;
+            l += ((boc)((Iterator)localObject5).next()).duration;
           }
-          ((Map)localObject2).put(Long.valueOf(((cvy)localObject4).EJj), a.L(Integer.valueOf(1), Long.valueOf(l)));
+          ((Map)localObject2).put(Long.valueOf(((dbk)localObject4).Gsl), com.tencent.mm.vending.j.a.N(Integer.valueOf(1), Long.valueOf(l)));
         }
       }
-      ac.i("HellSessionPageMergeReport", "HABBYGE-MALI, SessionPageMerge, sid: %s, ppidInfoMap: %d", new Object[] { localObject1, Integer.valueOf(((Map)localObject2).size()) });
+      ad.i("HABBYGE-MALI.HellSessionPageMergeReport", "SessionPageMerge, sid: %s, ppidInfoMap: %d", new Object[] { localObject1, Integer.valueOf(((Map)localObject2).size()) });
       localObject2 = ((Map)localObject2).entrySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -194,30 +194,30 @@ final class h
           ((JSONObject)localObject4).put("pagePathId", ((Map.Entry)localObject3).getKey());
           ((JSONObject)localObject4).put("count", ((com.tencent.mm.vending.j.c)((Map.Entry)localObject3).getValue()).get(0));
           ((JSONObject)localObject4).put("in", ((com.tencent.mm.vending.j.c)((Map.Entry)localObject3).getValue()).get(1));
-          parambjt.put(localObject4);
+          parambob.put(localObject4);
         }
         catch (JSONException localJSONException)
         {
-          ac.printErrStackTrace("HellSessionPageMergeReport", localJSONException, "HABBYGE-MALI, SessionPageMerge, jsonObject: %s", new Object[] { localJSONException.getMessage() });
+          ad.printErrStackTrace("HABBYGE-MALI.HellSessionPageMergeReport", localJSONException, "SessionPageMerge, jsonObject: %s", new Object[] { localJSONException.getMessage() });
         }
       }
     }
-    if (parambjt.length() <= 0)
+    if (parambob.length() <= 0)
     {
-      ac.i("HellSessionPageMergeReport", "HABBYGE-MALI, HellSessionPageMergeReport, content is NULL !!!");
+      ad.i("HABBYGE-MALI.HellSessionPageMergeReport", "HellSessionPageMergeReport, content is NULL !!!");
       AppMethodBeat.o(177402);
       return null;
     }
     try
     {
-      parambjw.put("content", parambjt);
-      parambjw = parambjw.toString();
+      paramboe.put("content", parambob);
+      paramboe = paramboe.toString();
       AppMethodBeat.o(177402);
-      return parambjw;
+      return paramboe;
     }
-    catch (JSONException parambjw)
+    catch (JSONException paramboe)
     {
-      ac.printErrStackTrace("HellSessionPageMergeReport", parambjw, "HABBYGE-MALI, SessionPageMerge, jsonObject, crash: %s", new Object[] { parambjw.getMessage() });
+      ad.printErrStackTrace("HABBYGE-MALI.HellSessionPageMergeReport", paramboe, "SessionPageMerge, jsonObject, crash: %s", new Object[] { paramboe.getMessage() });
       AppMethodBeat.o(177402);
     }
     return null;

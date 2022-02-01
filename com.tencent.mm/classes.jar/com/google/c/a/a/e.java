@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class e
   extends g
 {
-  private final short bHE;
+  private final short bRS;
   private final short value;
   
   e(g paramg, int paramInt1, int paramInt2)
@@ -14,14 +14,14 @@ final class e
     super(paramg);
     AppMethodBeat.i(12202);
     this.value = ((short)paramInt1);
-    this.bHE = ((short)paramInt2);
+    this.bRS = ((short)paramInt2);
     AppMethodBeat.o(12202);
   }
   
   final void a(a parama, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12203);
-    parama.bF(this.value, this.bHE);
+    parama.bH(this.value, this.bRS);
     AppMethodBeat.o(12203);
   }
   
@@ -29,9 +29,9 @@ final class e
   {
     AppMethodBeat.i(12204);
     int i = this.value;
-    int j = this.bHE;
-    int k = this.bHE;
-    String str = "<" + Integer.toBinaryString(i & (1 << j) - 1 | 1 << k | 1 << this.bHE).substring(1) + '>';
+    int j = this.bRS;
+    int k = this.bRS;
+    String str = "<" + Integer.toBinaryString(i & (1 << j) - 1 | 1 << k | 1 << this.bRS).substring(1) + '>';
     AppMethodBeat.o(12204);
     return str;
   }

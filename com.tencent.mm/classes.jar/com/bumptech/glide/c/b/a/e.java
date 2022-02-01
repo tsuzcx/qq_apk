@@ -11,7 +11,7 @@ public abstract interface e
   
   public abstract void g(Bitmap paramBitmap);
   
-  public abstract void oC();
+  public abstract void oU();
   
   public abstract void trimMemory(int paramInt);
 }

@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.media.widget.camerarecordview.preview.CameraPreviewGLSurfaceView android:layout_gravity="center" android:id="@id/eh_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/abe" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.tencent.mm.emoji.view.InsectRelativeLayout android:id="@id/eux" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <com.tencent.mm.ui.widget.InsectRelativeLayout android:id="@id/eux" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView android:id="@id/abg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hsa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c8" android:layout_alignParentBottom="true">
             <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
@@ -27,6 +27,6 @@
             <Switch android:id="@id/ci3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="HDR" />
             <Switch android:id="@id/bhx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="EIS" />
         </LinearLayout>
-    </com.tencent.mm.emoji.view.InsectRelativeLayout>
+    </com.tencent.mm.ui.widget.InsectRelativeLayout>
     <Button android:id="@id/yp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hk" android:layout_marginRight="@dimen/hk" android:text="@string/a_h" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/o8" />
 </merge>

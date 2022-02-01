@@ -9,13 +9,13 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.f;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.i;
 
 public final class g
   extends j
 {
-  private ImageView oOH;
+  private ImageView psp;
   private int thumbWidth;
   
   public g(View paramView, k paramk)
@@ -23,54 +23,54 @@ public final class g
     super(paramView, paramk);
     AppMethodBeat.i(30860);
     this.thumbWidth = 0;
-    this.dhf.setVisibility(0);
-    this.iRV.setVisibility(8);
-    this.oON.setVisibility(8);
-    this.dhf.setTag(this);
-    this.dhf.setOnClickListener(this.oPc);
-    this.oOH = ((ImageView)paramView.findViewById(2131300952));
-    this.oOH.setVisibility(8);
-    this.thumbWidth = (k.mScreenWidth - (int)k.aU(20.0F));
+    this.dsD.setVisibility(0);
+    this.jld.setVisibility(8);
+    this.psv.setVisibility(8);
+    this.dsD.setTag(this);
+    this.dsD.setOnClickListener(this.psK);
+    this.psp = ((ImageView)paramView.findViewById(2131300952));
+    this.psp.setVisibility(8);
+    this.thumbWidth = (k.mScreenWidth - (int)k.aX(20.0F));
     AppMethodBeat.o(30860);
   }
   
   public final void a(com.tencent.mm.plugin.wenote.model.a.c paramc, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30861);
-    Object localObject1 = ((f)paramc).dpK;
-    Object localObject2 = ((f)paramc).oQg;
-    if (!i.eA((String)localObject1)) {
-      if (i.eA((String)localObject2)) {
+    Object localObject1 = ((f)paramc).dBx;
+    Object localObject2 = ((f)paramc).ptQ;
+    if (!i.fv((String)localObject1)) {
+      if (i.fv((String)localObject2)) {
         localObject1 = localObject2;
       }
     }
     for (;;)
     {
-      if (this.CXj.CWB == 3) {
-        if (i.eA((String)localObject2)) {
+      if (this.EBf.EAx == 3) {
+        if (i.fv((String)localObject2)) {
           localObject1 = localObject2;
         }
       }
       for (;;)
       {
         label67:
-        if (bs.isNullOrNil((String)localObject1))
+        if (bt.isNullOrNil((String)localObject1))
         {
           localObject1 = null;
           label78:
-          this.dhf.setImageBitmap(null);
-          localObject2 = this.dhf.getLayoutParams();
+          this.dsD.setImageBitmap(null);
+          localObject2 = this.dsD.getLayoutParams();
           ((ViewGroup.LayoutParams)localObject2).width = -1;
           ((ViewGroup.LayoutParams)localObject2).height = -1;
-          this.dhf.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          this.dsD.setLayoutParams((ViewGroup.LayoutParams)localObject2);
           if (localObject1 == null) {
             break label178;
           }
-          this.dhf.setImageBitmap((Bitmap)localObject1);
-          if (!paramc.oQc) {
+          this.dsD.setImageBitmap((Bitmap)localObject1);
+          if (!paramc.ptM) {
             break label237;
           }
-          this.oOH.setVisibility(0);
+          this.psp.setVisibility(0);
         }
         for (;;)
         {
@@ -81,31 +81,31 @@ public final class g
           localObject1 = null;
           break;
           break label67;
-          localObject1 = com.tencent.mm.plugin.wenote.c.c.Xe((String)localObject1);
+          localObject1 = com.tencent.mm.plugin.wenote.c.c.aaL((String)localObject1);
           break label78;
           label178:
-          this.dhf.setImageBitmap(null);
-          localObject1 = this.dhf.getLayoutParams();
+          this.dsD.setImageBitmap(null);
+          localObject1 = this.dsD.getLayoutParams();
           ((ViewGroup.LayoutParams)localObject1).width = this.thumbWidth;
           ((ViewGroup.LayoutParams)localObject1).height = this.thumbWidth;
-          this.dhf.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          this.dhf.setBackgroundColor(Color.parseColor("#f6f6f6"));
+          this.dsD.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          this.dsD.setBackgroundColor(Color.parseColor("#f6f6f6"));
           break label130;
           label237:
-          this.oOH.setVisibility(8);
+          this.psp.setVisibility(8);
         }
       }
     }
   }
   
-  public final int bZp()
+  public final int cdT()
   {
     return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.g
  * JD-Core Version:    0.7.0.1
  */

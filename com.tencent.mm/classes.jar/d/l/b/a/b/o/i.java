@@ -2,11 +2,9 @@ package d.l.b.a.b.o;
 
 import TT;;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a.ae;
 import d.a.e;
 import d.g.b.a.d;
-import d.g.b.aa;
-import d.g.b.k;
+import d.g.b.p;
 import d.v;
 import java.util.AbstractSet;
 import java.util.Arrays;
@@ -20,21 +18,21 @@ import java.util.Set;
 public final class i<T>
   extends AbstractSet<T>
 {
-  public static final b LPk;
+  public static final b NGf;
   private Object data;
   private int size;
   
   static
   {
     AppMethodBeat.i(61401);
-    LPk = new b((byte)0);
+    NGf = new b((byte)0);
     AppMethodBeat.o(61401);
   }
   
-  public static final <T> i<T> gcT()
+  public static final <T> i<T> guu()
   {
     AppMethodBeat.i(61402);
-    i locali = b.gcT();
+    i locali = b.guu();
     AppMethodBeat.o(61402);
     return locali;
   }
@@ -56,7 +54,7 @@ public final class i<T>
         if (size() != 1) {
           break;
         }
-        if (k.g(this.data, paramT))
+        if (p.i(this.data, paramT))
         {
           AppMethodBeat.o(61399);
           return false;
@@ -81,8 +79,8 @@ public final class i<T>
         if (size() == 4)
         {
           localObject = Arrays.copyOf((Object[])localObject, localObject.length);
-          k.h(localObject, "elements");
-          localObject = (LinkedHashSet)e.b((Object[])localObject, (Collection)new LinkedHashSet(ae.agH(localObject.length)));
+          p.h(localObject, "elements");
+          localObject = (LinkedHashSet)e.b((Object[])localObject, (Collection)new LinkedHashSet(d.a.ae.aji(localObject.length)));
           ((LinkedHashSet)localObject).add(paramT);
         }
         for (paramT = (TT)localObject;; paramT = (TT)localObject)
@@ -90,7 +88,7 @@ public final class i<T>
           this.data = paramT;
           break;
           localObject = Arrays.copyOf((Object[])localObject, size() + 1);
-          k.g(localObject, "java.util.Arrays.copyOf(this, newSize)");
+          p.g(localObject, "java.util.Arrays.copyOf(this, newSize)");
           localObject[(localObject.length - 1)] = paramT;
         }
       }
@@ -101,7 +99,7 @@ public final class i<T>
         AppMethodBeat.o(61399);
         throw paramT;
       }
-    } while (aa.eQ(localObject).add(paramT));
+    } while (d.g.b.ae.eT(localObject).add(paramT));
     AppMethodBeat.o(61399);
     return false;
   }
@@ -122,7 +120,7 @@ public final class i<T>
     }
     if (size() == 1)
     {
-      bool = k.g(this.data, paramObject);
+      bool = p.i(this.data, paramObject);
       AppMethodBeat.o(61400);
       return bool;
     }
@@ -186,14 +184,14 @@ public final class i<T>
       AppMethodBeat.o(61398);
       throw ((Throwable)localObject);
     }
-    localObject = aa.eQ(localObject).iterator();
+    localObject = d.g.b.ae.eT(localObject).iterator();
     AppMethodBeat.o(61398);
     return localObject;
   }
   
   public static final class b
   {
-    public static <T> i<T> gcT()
+    public static <T> i<T> guu()
     {
       AppMethodBeat.i(61395);
       i locali = new i((byte)0);
@@ -205,27 +203,27 @@ public final class i<T>
   static final class c<T>
     implements d, Iterator<T>
   {
-    private final T KUQ;
-    private boolean KVf;
+    private final T MLV;
+    private boolean MMl;
     
     public c(T paramT)
     {
-      this.KUQ = paramT;
-      this.KVf = true;
+      this.MLV = paramT;
+      this.MMl = true;
     }
     
     public final boolean hasNext()
     {
-      return this.KVf;
+      return this.MMl;
     }
     
     public final T next()
     {
       AppMethodBeat.i(61396);
-      if (this.KVf)
+      if (this.MMl)
       {
-        this.KVf = false;
-        localObject = this.KUQ;
+        this.MMl = false;
+        localObject = this.MLV;
         AppMethodBeat.o(61396);
         return localObject;
       }

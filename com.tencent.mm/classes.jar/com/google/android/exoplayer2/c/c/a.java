@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a
   implements b.a
 {
-  private final long aTs;
+  private final long bdM;
   private final int bitrate;
   private final long firstFramePosition;
   
@@ -18,7 +18,7 @@ final class a
     if (paramLong2 == -1L) {}
     for (paramLong1 = -9223372036854775807L;; paramLong1 = N(paramLong2))
     {
-      this.aTs = paramLong1;
+      this.bdM = paramLong1;
       AppMethodBeat.o(92034);
       return;
     }
@@ -27,12 +27,12 @@ final class a
   public final long L(long paramLong)
   {
     AppMethodBeat.i(92035);
-    if (this.aTs == -9223372036854775807L)
+    if (this.bdM == -9223372036854775807L)
     {
       AppMethodBeat.o(92035);
       return 0L;
     }
-    long l = x.l(paramLong, this.aTs);
+    long l = x.l(paramLong, this.bdM);
     paramLong = this.firstFramePosition;
     l = l * this.bitrate / 8000000L;
     AppMethodBeat.o(92035);
@@ -49,12 +49,12 @@ final class a
   
   public final long getDurationUs()
   {
-    return this.aTs;
+    return this.bdM;
   }
   
-  public final boolean sQ()
+  public final boolean up()
   {
-    return this.aTs != -9223372036854775807L;
+    return this.bdM != -9223372036854775807L;
   }
 }
 

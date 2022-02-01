@@ -4,6 +4,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class WalletLqtSaveFetchUI$8
   implements View.OnClickListener
@@ -12,12 +14,16 @@ final class WalletLqtSaveFetchUI$8
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(207208);
-    if (!WalletLqtSaveFetchUI.q(this.Beu).isChecked()) {}
+    AppMethodBeat.i(199236);
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    if (!WalletLqtSaveFetchUI.q(this.CEJ).isChecked()) {}
     for (boolean bool = true;; bool = false)
     {
-      WalletLqtSaveFetchUI.q(this.Beu).setChecked(bool);
-      AppMethodBeat.o(207208);
+      WalletLqtSaveFetchUI.q(this.CEJ).setChecked(bool);
+      a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(199236);
       return;
     }
   }

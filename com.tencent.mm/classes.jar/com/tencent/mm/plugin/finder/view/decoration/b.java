@@ -10,21 +10,21 @@ import android.support.v7.widget.RecyclerView.t;
 import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/decoration/ItemDividerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "divider", "Landroid/graphics/drawable/Drawable;", "dividerHeight", "", "(Landroid/graphics/drawable/Drawable;I)V", "padding", "", "(Landroid/graphics/drawable/Drawable;I[I)V", "drawHorizontal", "", "c", "Landroid/graphics/Canvas;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "drawVertical", "getItemOffsets", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "onDraw", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/decoration/ItemDividerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "divider", "Landroid/graphics/drawable/Drawable;", "dividerHeight", "", "(Landroid/graphics/drawable/Drawable;I)V", "padding", "", "(Landroid/graphics/drawable/Drawable;I[I)V", "drawHorizontal", "", "c", "Landroid/graphics/Canvas;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "drawVertical", "getItemOffsets", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "onDraw", "plugin-finder_release"})
 public final class b
   extends RecyclerView.h
 {
-  private Drawable iPH;
-  private int[] saG;
+  private Drawable jiP;
+  private int[] sXV;
   
   public b(Drawable paramDrawable, int paramInt)
   {
     AppMethodBeat.i(168501);
-    this.iPH = paramDrawable;
+    this.jiP = paramDrawable;
     paramDrawable.setBounds(0, 0, 0, paramInt);
     AppMethodBeat.o(168501);
   }
@@ -32,16 +32,16 @@ public final class b
   public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(168499);
-    k.h(paramCanvas, "c");
-    k.h(paramRecyclerView, "parent");
-    k.h(paramt, "state");
+    p.h(paramCanvas, "c");
+    p.h(paramRecyclerView, "parent");
+    p.h(paramt, "state");
     super.a(paramCanvas, paramRecyclerView, paramt);
     int n = paramRecyclerView.getChildCount();
     int i = 0;
     if (i < n)
     {
       paramt = paramRecyclerView.getChildAt(i);
-      k.g(paramt, "child");
+      p.g(paramt, "child");
       Object localObject = paramt.getLayoutParams();
       if (localObject == null)
       {
@@ -52,7 +52,7 @@ public final class b
       localObject = (RecyclerView.LayoutParams)localObject;
       int i1 = paramt.getLeft();
       int i2 = ((RecyclerView.LayoutParams)localObject).leftMargin;
-      int[] arrayOfInt = this.saG;
+      int[] arrayOfInt = this.sXV;
       int j;
       label124:
       int i3;
@@ -67,7 +67,7 @@ public final class b
         j = arrayOfInt[0];
         m = paramt.getBottom();
         i3 = ((RecyclerView.LayoutParams)localObject).bottomMargin;
-        arrayOfInt = this.saG;
+        arrayOfInt = this.sXV;
         if (arrayOfInt == null) {
           break label273;
         }
@@ -75,13 +75,13 @@ public final class b
         i3 = k + (i3 + m);
         i4 = paramt.getRight();
         i5 = ((RecyclerView.LayoutParams)localObject).rightMargin;
-        paramt = this.saG;
+        paramt = this.sXV;
         if (paramt == null) {
           break label279;
         }
         k = paramt[2];
-        i6 = this.iPH.getBounds().height();
-        paramt = this.saG;
+        i6 = this.jiP.getBounds().height();
+        paramt = this.sXV;
         if (paramt == null) {
           break label285;
         }
@@ -91,8 +91,8 @@ public final class b
       label285:
       for (int m = paramt[3];; m = 0)
       {
-        this.iPH.setBounds(i1 - i2 + j, i3, i4 + i5 - k, i3 + i6 - m);
-        this.iPH.draw(paramCanvas);
+        this.jiP.setBounds(i1 - i2 + j, i3, i4 + i5 - k, i3 + i6 - m);
+        this.jiP.draw(paramCanvas);
         i += 1;
         break;
         j = 0;
@@ -109,55 +109,63 @@ public final class b
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(168500);
-    k.h(paramRect, "outRect");
-    k.h(paramView, "view");
-    k.h(paramRecyclerView, "parent");
-    k.h(paramt, "state");
+    p.h(paramRect, "outRect");
+    p.h(paramView, "view");
+    p.h(paramRecyclerView, "parent");
+    p.h(paramt, "state");
     super.a(paramRect, paramView, paramRecyclerView, paramt);
     paramView = paramRecyclerView.bh(paramView);
     if (paramView != null)
     {
-      paramView = Integer.valueOf(paramView.ly());
+      paramView = Integer.valueOf(paramView.lQ());
       if (paramView != null) {
-        break label97;
-      }
-      label61:
-      if (paramView != null) {
-        break label112;
+        break label101;
       }
     }
-    label97:
-    label112:
+    label69:
+    label73:
+    label101:
     while (paramView.intValue() != -2)
     {
       if (paramView != null) {
-        break label127;
+        break label116;
       }
-      paramRect.set(0, 0, 0, this.iPH.getBounds().height());
+      if (paramView != null) {
+        break label128;
+      }
+      if (paramView != null) {
+        break label140;
+      }
+      paramRect.set(0, 0, 0, this.jiP.getBounds().height());
       AppMethodBeat.o(168500);
       return;
       paramView = null;
       break;
-      if (paramView.intValue() != -3) {
-        break label61;
-      }
-      AppMethodBeat.o(168500);
-      return;
     }
+    label128:
+    label140:
     for (;;)
     {
       AppMethodBeat.o(168500);
       return;
-      label127:
-      if (paramView.intValue() != -4) {
+      label116:
+      if (paramView.intValue() != -3)
+      {
         break;
+        if (paramView.intValue() != -4)
+        {
+          break label69;
+          if (paramView.intValue() != -5) {
+            break label73;
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.decoration.b
  * JD-Core Version:    0.7.0.1
  */

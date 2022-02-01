@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.backup.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.plugin.backup.i.m;
 import com.tencent.mm.plugin.backup.i.n;
 import com.tencent.mm.plugin.backup.i.o;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class k
   extends b
 {
-  public o mZA;
-  private n mZz;
+  private n nzW;
+  public o nzX;
   
   public k(String paramString)
   {
     AppMethodBeat.i(21738);
-    this.mZz = new n();
-    this.mZA = new o();
-    ac.i("MicroMsg.BackupStartScene", "BackupStartScene, id[%s]", new Object[] { paramString });
-    this.mZz.ID = paramString;
+    this.nzW = new n();
+    this.nzX = new o();
+    ad.i("MicroMsg.BackupStartScene", "BackupStartScene, id[%s]", new Object[] { paramString });
+    this.nzW.ID = paramString;
     AppMethodBeat.o(21738);
   }
   
   public final void a(long paramLong, m paramm, int paramInt)
   {
-    this.mZz.ndb = 0L;
-    this.mZz.ndc = paramLong;
-    this.mZz.ndd = 0L;
-    this.mZz.nde = paramm;
-    this.mZz.ndf = 0L;
-    this.mZz.ndg = paramInt;
+    this.nzW.nDy = 0L;
+    this.nzW.nDz = paramLong;
+    this.nzW.nDA = 0L;
+    this.nzW.nDB = paramm;
+    this.nzW.nDC = 0L;
+    this.nzW.nDD = paramInt;
   }
   
-  public final a bEr()
+  public final a bIA()
   {
-    return this.mZz;
+    return this.nzW;
   }
   
   public final int getType()
@@ -43,17 +43,17 @@ public final class k
     return 3;
   }
   
-  public final void wW(int paramInt)
+  public final void xC(int paramInt)
   {
     AppMethodBeat.i(21739);
-    ac.i("MicroMsg.BackupStartScene", "onSceneEnd.");
-    if (this.mZA.ndj != 0)
+    ad.i("MicroMsg.BackupStartScene", "onSceneEnd.");
+    if (this.nzX.nDG != 0)
     {
-      q(4, this.mZA.ndj, "BackupStartScene onSceneEnd failed");
+      q(4, this.nzX.nDG, "BackupStartScene onSceneEnd failed");
       AppMethodBeat.o(21739);
       return;
     }
-    q(0, this.mZA.ndj, "BackupStartScene onSceneEnd success");
+    q(0, this.nzX.nDG, "BackupStartScene onSceneEnd success");
     AppMethodBeat.o(21739);
   }
 }

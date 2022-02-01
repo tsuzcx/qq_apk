@@ -13,6 +13,8 @@ import java.util.Map;
 
 public abstract interface b
 {
+  public abstract void M(String paramString, int paramInt, long paramLong);
+  
   public abstract void a(c.a parama);
   
   public abstract void a(c.b paramb);
@@ -37,27 +39,27 @@ public abstract interface b
   
   public abstract void a(e parame, d paramd);
   
-  public abstract void aG(int paramInt, long paramLong);
+  public abstract void aQ(int paramInt, long paramLong);
   
-  public abstract void aH(int paramInt, long paramLong);
+  public abstract void aR(int paramInt, long paramLong);
   
-  public abstract void aI(int paramInt, long paramLong);
+  public abstract void aS(int paramInt, long paramLong);
   
   public abstract void b(ParcelFileDescriptor paramParcelFileDescriptor);
   
   public abstract void b(f paramf);
   
-  public abstract void bb(String paramString1, String paramString2, String paramString3);
+  public abstract void bk(String paramString1, String paramString2, String paramString3);
   
   public abstract void c(boolean paramBoolean, long paramLong1, long paramLong2);
   
-  public abstract void cd(float paramFloat);
+  public abstract void ci(float paramFloat);
   
-  public abstract void ce(float paramFloat);
+  public abstract void cj(float paramFloat);
   
-  public abstract n[] fEO();
+  public abstract n[] fWg();
   
-  public abstract k[] fEP();
+  public abstract k[] fWh();
   
   public abstract void g(String paramString1, String paramString2, List<f> paramList);
   
@@ -75,9 +77,7 @@ public abstract interface b
   
   public abstract int getVideoWidth();
   
-  public abstract void kD(int paramInt1, int paramInt2);
-  
-  public abstract void p(String paramString, int paramInt, long paramLong);
+  public abstract void kS(int paramInt1, int paramInt2);
   
   public abstract void pause();
   
@@ -101,13 +101,13 @@ public abstract interface b
   
   public abstract void stop();
   
-  public abstract void yI(boolean paramBoolean);
+  public abstract void zv(boolean paramBoolean);
   
-  public abstract void yJ(boolean paramBoolean);
+  public abstract void zw(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.a.a.b
  * JD-Core Version:    0.7.0.1
  */

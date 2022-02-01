@@ -1,58 +1,83 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gc;
+import com.tencent.mm.g.c.fr;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
-public final class cd
-  extends gc
+public class cd
+  extends fr
 {
-  protected static c.a info;
+  protected static Field[] IhA;
+  public static c.a info;
   
   static
   {
-    AppMethodBeat.i(32886);
+    AppMethodBeat.i(43301);
+    IhA = fr.getValidFields(cd.class);
     c.a locala = new c.a();
-    locala.GvF = new Field[3];
-    locala.columns = new String[4];
+    locala.IhA = new Field[11];
+    locala.columns = new String[12];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "openId";
-    locala.GvH.put("openId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" openId TEXT PRIMARY KEY ");
+    locala.columns[0] = "svrid";
+    locala.IhC.put("svrid", "LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(" svrid LONG default '0'  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "openId";
-    locala.columns[1] = "appId";
-    locala.GvH.put("appId", "TEXT");
-    localStringBuilder.append(" appId TEXT");
+    locala.IhB = "svrid";
+    locala.columns[1] = "status";
+    locala.IhC.put("status", "INTEGER");
+    localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "username";
-    locala.GvH.put("username", "TEXT");
-    localStringBuilder.append(" username TEXT");
-    locala.columns[3] = "rowid";
+    locala.columns[2] = "type";
+    locala.IhC.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "scene";
+    locala.IhC.put("scene", "INTEGER");
+    localStringBuilder.append(" scene INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "createtime";
+    locala.IhC.put("createtime", "LONG");
+    localStringBuilder.append(" createtime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "talker";
+    locala.IhC.put("talker", "TEXT");
+    localStringBuilder.append(" talker TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "content";
+    locala.IhC.put("content", "TEXT");
+    localStringBuilder.append(" content TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "sayhiuser";
+    locala.IhC.put("sayhiuser", "TEXT");
+    localStringBuilder.append(" sayhiuser TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "sayhicontent";
+    locala.IhC.put("sayhicontent", "TEXT");
+    localStringBuilder.append(" sayhicontent TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "imgpath";
+    locala.IhC.put("imgpath", "TEXT");
+    localStringBuilder.append(" imgpath TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "isSend";
+    locala.IhC.put("isSend", "INTEGER");
+    localStringBuilder.append(" isSend INTEGER");
+    locala.columns[11] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(32886);
+    AppMethodBeat.o(43301);
   }
   
-  public cd() {}
-  
-  public cd(String paramString1, String paramString2, String paramString3)
-  {
-    this.field_appId = paramString1;
-    this.field_username = paramString2;
-    this.field_openId = paramString3;
-  }
-  
-  public final c.a getDBInfo()
+  public c.a getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.cd
  * JD-Core Version:    0.7.0.1
  */

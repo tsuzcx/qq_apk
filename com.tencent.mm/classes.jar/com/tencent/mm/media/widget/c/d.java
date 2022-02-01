@@ -3,68 +3,68 @@ package com.tencent.mm.media.widget.c;
 import android.graphics.Point;
 import android.opengl.EGLContext;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.d.g.c;
-import com.tencent.mm.media.h.a.c;
+import com.tencent.mm.media.e.g.c;
+import com.tencent.mm.media.i.a.c;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.a.c.b;
 import com.tencent.mm.plugin.mmsight.model.a.d.a;
 import com.tencent.mm.plugin.mmsight.model.a.d.c;
-import com.tencent.mm.plugin.mmsight.model.a.j;
-import com.tencent.mm.plugin.mmsight.model.a.m;
-import com.tencent.mm.plugin.mmsight.model.a.s;
+import com.tencent.mm.plugin.mmsight.model.a.k;
+import com.tencent.mm.plugin.mmsight.model.a.n;
+import com.tencent.mm.plugin.mmsight.model.a.t;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.sight.base.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.z;
 import java.nio.IntBuffer;
 
 public final class d
   implements b
 {
-  protected int gNJ;
-  private EGLContext gWL;
-  protected boolean gkP;
-  protected boolean hbQ;
-  private boolean hba;
-  final Object hcD;
-  protected String hcE;
-  protected int hcF;
-  protected float hcG;
-  private int hcH;
-  private float hcI;
-  protected com.tencent.mm.plugin.mmsight.model.a.c hcJ;
-  protected int hcL;
-  protected int hcM;
-  protected int hcN;
-  protected int hcO;
-  protected int hcP;
-  protected s hcQ;
-  protected int hcR;
-  protected String hcT;
-  protected boolean hcU;
-  protected String hcV;
-  protected boolean hcW;
-  protected com.tencent.mm.plugin.mmsight.model.c hcX;
-  protected com.tencent.mm.plugin.mmsight.model.c hcY;
-  protected VideoTransPara hcZ;
-  protected com.tencent.mm.media.d.g hdE;
-  com.tencent.mm.media.i.a hdF;
-  public d.g.a.b hdG;
-  protected m hda;
-  protected boolean hdb;
-  protected int hdc;
-  protected d.a hdd;
-  protected Runnable hde;
-  protected boolean hdf;
-  protected boolean hdg;
-  protected boolean hdh;
-  com.tencent.mm.media.h.a hdk;
-  protected com.tencent.mm.plugin.mmsight.model.g hdv;
+  protected int bufId;
+  protected boolean gEz;
+  private EGLContext hoR;
+  protected boolean htY;
+  private boolean htg;
+  final Object huL;
+  protected String huM;
+  protected int huN;
+  protected float huO;
+  private int huP;
+  private float huQ;
+  protected com.tencent.mm.plugin.mmsight.model.a.c huR;
+  protected int huT;
+  protected int huU;
+  protected int huV;
+  protected int huW;
+  protected int huX;
+  protected t huY;
+  protected int huZ;
+  protected com.tencent.mm.plugin.mmsight.model.g hvD;
+  protected com.tencent.mm.media.e.g hvM;
+  com.tencent.mm.media.j.a hvN;
+  public d.g.a.b hvO;
+  protected String hvb;
+  protected boolean hvc;
+  protected String hvd;
+  protected boolean hve;
+  protected com.tencent.mm.plugin.mmsight.model.c hvf;
+  protected com.tencent.mm.plugin.mmsight.model.c hvg;
+  protected VideoTransPara hvh;
+  protected n hvi;
+  protected boolean hvj;
+  protected int hvk;
+  protected d.a hvl;
+  protected Runnable hvm;
+  protected boolean hvn;
+  protected boolean hvo;
+  protected boolean hvp;
+  com.tencent.mm.media.i.a hvs;
   protected String mFileName;
   protected String md5;
   protected String thumbPath;
@@ -72,62 +72,62 @@ public final class d
   private d(VideoTransPara paramVideoTransPara)
   {
     AppMethodBeat.i(93409);
-    this.hcD = new Object();
-    this.hcE = "";
-    this.hcF = 0;
-    this.hcG = 0.0F;
-    this.hcH = -1;
-    this.hcI = -1.0F;
-    this.hcL = 480;
-    this.hcM = 640;
-    this.hcN = 1600000;
-    this.hcO = 480;
-    this.hcP = 640;
-    this.gNJ = -1;
-    this.hcT = null;
-    this.hcU = false;
+    this.huL = new Object();
+    this.huM = "";
+    this.huN = 0;
+    this.huO = 0.0F;
+    this.huP = -1;
+    this.huQ = -1.0F;
+    this.huT = 480;
+    this.huU = 640;
+    this.huV = 1600000;
+    this.huW = 480;
+    this.huX = 640;
+    this.bufId = -1;
+    this.hvb = null;
+    this.hvc = false;
     this.thumbPath = null;
-    this.hcV = null;
-    this.hcW = false;
-    this.hcX = new com.tencent.mm.plugin.mmsight.model.c("yuvRecorderWriteData");
-    this.hcY = new com.tencent.mm.plugin.mmsight.model.c("frameCountCallback");
-    this.gkP = false;
-    this.hdb = false;
+    this.hvd = null;
+    this.hve = false;
+    this.hvf = new com.tencent.mm.plugin.mmsight.model.c("yuvRecorderWriteData");
+    this.hvg = new com.tencent.mm.plugin.mmsight.model.c("frameCountCallback");
+    this.gEz = false;
+    this.hvj = false;
     this.md5 = "";
-    this.hbQ = false;
-    this.hdc = 0;
-    this.hde = null;
-    this.hdf = false;
-    this.hdg = true;
-    this.hdh = false;
-    this.hba = false;
-    this.hdk = null;
-    this.gWL = null;
-    this.hdF = null;
-    this.hdv = new com.tencent.mm.plugin.mmsight.model.g()
+    this.htY = false;
+    this.hvk = 0;
+    this.hvm = null;
+    this.hvn = false;
+    this.hvo = true;
+    this.hvp = false;
+    this.htg = false;
+    this.hvs = null;
+    this.hoR = null;
+    this.hvN = null;
+    this.hvD = new com.tencent.mm.plugin.mmsight.model.g()
     {
-      public final boolean V(byte[] paramAnonymousArrayOfByte)
+      public final boolean U(byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(93399);
         if ((paramAnonymousArrayOfByte == null) || (paramAnonymousArrayOfByte.length <= 0))
         {
-          ac.e("MicroMsg.Media.X264MP4MuxRecorder", "preview callback data is null");
+          ad.e("MicroMsg.Media.X264MP4MuxRecorder", "preview callback data is null");
           AppMethodBeat.o(93399);
           return false;
         }
-        if ((d.this.hcQ.uNv == d.c.uMj) || (d.this.hcQ.uNv == d.c.uMk))
+        if ((d.this.huY.vQE == d.c.vPp) || (d.this.huY.vQE == d.c.vPq))
         {
-          if (d.this.hcQ.uNv == d.c.uMk)
+          if (d.this.huY.vQE == d.c.vPq)
           {
-            d.this.hcQ.uNv = d.c.uMl;
-            ac.v("MicroMsg.Media.X264MP4MuxRecorder", "forward one more frame");
+            d.this.huY.vQE = d.c.vPr;
+            ad.v("MicroMsg.Media.X264MP4MuxRecorder", "forward one more frame");
           }
-          d.this.hcY.vW(1L);
-          if (d.this.hcJ != null) {
-            d.this.hcJ.ddM();
+          d.this.hvg.yf(1L);
+          if (d.this.huR != null) {
+            d.this.huR.dni();
           }
-          d.this.hdk.a(paramAnonymousArrayOfByte, System.nanoTime(), new d.g.a.b() {});
-          d.this.hcX.vW(1L);
+          d.this.hvs.a(paramAnonymousArrayOfByte, System.nanoTime(), new d.g.a.b() {});
+          d.this.hvf.yf(1L);
           AppMethodBeat.o(93399);
           return true;
         }
@@ -135,120 +135,120 @@ public final class d
         return false;
       }
     };
-    this.hdG = new d.g.a.b() {};
-    this.hcZ = paramVideoTransPara;
-    this.hcL = paramVideoTransPara.width;
-    this.hcM = paramVideoTransPara.height;
-    this.hcQ = new s();
-    ac.d("MicroMsg.Media.X264MP4MuxRecorder", "create X264MP4MuxRecorder, targetWidth: %s, targetHeight: %s", new Object[] { Integer.valueOf(this.hcL), Integer.valueOf(this.hcM) });
+    this.hvO = new d.g.a.b() {};
+    this.hvh = paramVideoTransPara;
+    this.huT = paramVideoTransPara.width;
+    this.huU = paramVideoTransPara.height;
+    this.huY = new t();
+    ad.d("MicroMsg.Media.X264MP4MuxRecorder", "create X264MP4MuxRecorder, targetWidth: %s, targetHeight: %s", new Object[] { Integer.valueOf(this.huT), Integer.valueOf(this.huU) });
     AppMethodBeat.o(93409);
   }
   
-  public d(VideoTransPara paramVideoTransPara, com.tencent.mm.media.i.a parama)
+  public d(VideoTransPara paramVideoTransPara, com.tencent.mm.media.j.a parama)
   {
     this(paramVideoTransPara);
     AppMethodBeat.i(93410);
-    this.gWL = null;
-    this.hdF = parama;
-    this.hdk = new com.tencent.mm.media.h.a(parama);
-    paramVideoTransPara = com.tencent.mm.media.j.d.gWO;
-    com.tencent.mm.media.j.d.arE();
+    this.hoR = null;
+    this.hvN = parama;
+    this.hvs = new com.tencent.mm.media.i.a(parama);
+    paramVideoTransPara = com.tencent.mm.media.k.d.hoU;
+    com.tencent.mm.media.k.d.aur();
     AppMethodBeat.o(93410);
   }
   
-  private void avb()
+  private void axO()
   {
     AppMethodBeat.i(93412);
-    int i = this.hcL;
-    int j = this.hcM;
-    this.hdk.cQ(i, j);
-    this.hdk.mE(this.hcR);
-    this.hdk.cS(this.hcO, this.hcP);
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "outputWidth: %s, outputHeight: %s, cameraPreviewWidth: %s, cameraPreviewHeight: %s, getDataRotate: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.hcO), Integer.valueOf(this.hcP), Integer.valueOf(this.hcR) });
+    int i = this.huT;
+    int j = this.huU;
+    this.hvs.cS(i, j);
+    this.hvs.nd(this.huZ);
+    this.hvs.cU(this.huW, this.huX);
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "outputWidth: %s, outputHeight: %s, cameraPreviewWidth: %s, cameraPreviewHeight: %s, getDataRotate: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.huW), Integer.valueOf(this.huX), Integer.valueOf(this.huZ) });
     AppMethodBeat.o(93412);
   }
   
-  private boolean nD(int paramInt)
+  private boolean oc(int paramInt)
   {
     AppMethodBeat.i(93411);
-    long l = bs.Gn();
-    this.hcN = this.hcZ.videoBitrate;
-    if (this.hcL % 2 != 0) {
-      this.hcL += 1;
+    long l = bt.HI();
+    this.huV = this.hvh.videoBitrate;
+    if (this.huT % 2 != 0) {
+      this.huT += 1;
     }
-    if (this.hcM % 2 != 0) {
-      this.hcM += 1;
+    if (this.huU % 2 != 0) {
+      this.huU += 1;
     }
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "real width:%d, height:%d", new Object[] { Integer.valueOf(this.hcL), Integer.valueOf(this.hcM) });
-    this.gNJ = SightVideoJNI.initDataBufferForMMSightLock(this.hcO, this.hcP, paramInt, this.hcL, this.hcM, this.hcZ.fps, this.hcN, this.hcZ.hCA, 8, this.hcZ.hCz, 23.0F, false, true, this.hcZ.duration, false);
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "init, bufId: %s", new Object[] { Integer.valueOf(this.gNJ) });
-    if (this.gNJ < 0)
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "real width:%d, height:%d", new Object[] { Integer.valueOf(this.huT), Integer.valueOf(this.huU) });
+    this.bufId = SightVideoJNI.initDataBufferForMMSightLock(this.huW, this.huX, paramInt, this.huT, this.huU, this.hvh.fps, this.huV, this.hvh.hVf, 8, this.hvh.hVe, 23.0F, false, true, this.hvh.duration, false);
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "init, bufId: %s", new Object[] { Integer.valueOf(this.bufId) });
+    if (this.bufId < 0)
     {
-      ac.e("MicroMsg.Media.X264MP4MuxRecorder", "init failed!");
+      ad.e("MicroMsg.Media.X264MP4MuxRecorder", "init failed!");
       AppMethodBeat.o(93411);
       return false;
     }
-    this.hcR = paramInt;
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "mTargetRate " + this.hcN + "  videoParams.fps: " + this.hcZ.fps + " mTargetHeight:" + this.hcM + " mTargetWidth:" + this.hcL);
-    this.hdE = new com.tencent.mm.media.d.g(this.gNJ, this.hcL, this.hcM);
-    Object localObject = this.hdk;
-    EGLContext localEGLContext = this.gWL;
-    paramInt = this.hcL;
-    int i = this.hcM;
+    this.huZ = paramInt;
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "mTargetRate " + this.huV + "  videoParams.fps: " + this.hvh.fps + " mTargetHeight:" + this.huU + " mTargetWidth:" + this.huT);
+    this.hvM = new com.tencent.mm.media.e.g(this.bufId, this.huT, this.huU);
+    Object localObject = this.hvs;
+    EGLContext localEGLContext = this.hoR;
+    paramInt = this.huT;
+    int i = this.huU;
     d.g.a.b local3 = new d.g.a.b() {};
-    ac.i(((com.tencent.mm.media.h.a)localObject).TAG, ((com.tencent.mm.media.h.a)localObject).hashCode() + " initWithSize, eglContext: " + localEGLContext + ", callback: false, width:" + paramInt + ", height:" + i);
-    ((com.tencent.mm.media.h.a)localObject).i((d.g.a.a)new a.c((com.tencent.mm.media.h.a)localObject, localEGLContext, paramInt, i, local3));
-    this.hdk.gST = new d.g.a.b()
+    ad.i(((com.tencent.mm.media.i.a)localObject).TAG, ((com.tencent.mm.media.i.a)localObject).hashCode() + " initWithSize, eglContext: " + localEGLContext + ", callback: false, width:" + paramInt + ", height:" + i);
+    ((com.tencent.mm.media.i.a)localObject).i((d.g.a.a)new a.c((com.tencent.mm.media.i.a)localObject, localEGLContext, paramInt, i, local3));
+    this.hvs.hkU = new d.g.a.b()
     {
-      private y avt()
+      private z ayg()
       {
         AppMethodBeat.i(93403);
         for (;;)
         {
           Object localObject2;
-          com.tencent.mm.media.d.g localg;
+          com.tencent.mm.media.e.g localg;
           int i;
           int j;
-          synchronized (d.this.hcD)
+          synchronized (d.this.huL)
           {
-            if (d.this.hdE != null)
+            if (d.this.hvM != null)
             {
-              ??? = d.this.hdF.arh();
+              ??? = d.this.hvN.atU();
               if (??? != null)
               {
                 ((IntBuffer)???).position(0);
                 localObject2 = new int[((IntBuffer)???).remaining()];
                 ((IntBuffer)???).get((int[])localObject2);
-                localg = d.this.hdE;
-                i = d.this.hcL;
-                j = d.this.hcM;
-                k.h(localObject2, "data");
-                if (localg.gNJ >= 0) {
+                localg = d.this.hvM;
+                i = d.this.huT;
+                j = d.this.huU;
+                p.h(localObject2, "data");
+                if (localg.bufId >= 0) {
                   break label254;
                 }
-                ac.e("MicroMsg.X264TransEncoder", "writeRGBData error, buffId error");
+                ad.e("MicroMsg.X264TransEncoder", "writeRGBData error, buffId error");
               }
             }
-            if ((d.this.hdE != null) && (d.this.hcQ.uNv == d.c.uMl))
+            if ((d.this.hvM != null) && (d.this.huY.vQE == d.c.vPr))
             {
-              d.this.hdE.stop(false);
-              if (d.this.hcJ != null) {
-                d.this.hcJ.a(new c.b()
+              d.this.hvM.stop(false);
+              if (d.this.huR != null) {
+                d.this.huR.a(new c.b()
                 {
-                  public final void avr()
+                  public final void aye()
                   {
                     AppMethodBeat.i(93402);
-                    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "aac stop finish");
+                    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "aac stop finish");
                     AppMethodBeat.o(93402);
                   }
                 });
               }
-              d.this.hdk.release();
+              d.this.hvs.release();
               localObject2 = d.this;
-              ac.m("MicroMsg.Media.X264MP4MuxRecorder", "stopImpl", new Object[0]);
+              ad.m("MicroMsg.Media.X264MP4MuxRecorder", "stopImpl", new Object[0]);
               com.tencent.mm.sdk.g.b.c(new d.6((d)localObject2), "X264MP4MuxRecorder_stop");
-              if (d.this.hcQ != null) {
-                d.this.hcQ.a(d.c.uMm);
+              if (d.this.huY != null) {
+                d.this.huY.a(d.c.vPs);
               }
             }
             AppMethodBeat.o(93403);
@@ -257,7 +257,7 @@ public final class d
           label254:
           synchronized (localg.stopLock)
           {
-            localg.gRw.postToWorker((Runnable)new g.c(localg, i, j, (int[])localObject2));
+            localg.hjO.postToWorker((Runnable)new g.c(localg, i, j, (int[])localObject2));
             continue;
             localObject3 = finally;
             AppMethodBeat.o(93403);
@@ -266,22 +266,22 @@ public final class d
         }
       }
     };
-    avb();
-    paramInt = this.hcZ.audioSampleRate;
-    i = this.hcZ.audioBitrate;
-    int j = this.hcZ.gOt;
-    if (this.hcZ.hCX == 1) {}
+    axO();
+    paramInt = this.hvh.audioSampleRate;
+    i = this.hvh.audioBitrate;
+    int j = this.hvh.audioChannelCount;
+    if (this.hvh.hVC == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      this.hcJ = new a(paramInt, i, j, com.tencent.mm.plugin.sight.base.b.ac(true, bool));
-      this.hcJ.nY(this.hdf);
-      paramInt = this.hcJ.E(this.gNJ, e.asv(this.hcE));
-      ac.i("MicroMsg.Media.X264MP4MuxRecorder", "initImpl used %sms", new Object[] { Long.valueOf(bs.aO(l)) });
+      this.huR = new a(paramInt, i, j, com.tencent.mm.plugin.sight.base.b.ag(true, bool));
+      this.huR.os(this.hvn);
+      paramInt = this.huR.E(this.bufId, e.axv(this.huM));
+      ad.i("MicroMsg.Media.X264MP4MuxRecorder", "initImpl used %sms", new Object[] { Long.valueOf(bt.aO(l)) });
       if (paramInt == 0) {
         break;
       }
-      localObject = com.tencent.mm.media.j.d.gWO;
-      com.tencent.mm.media.j.d.arH();
+      localObject = com.tencent.mm.media.k.d.hoU;
+      com.tencent.mm.media.k.d.auu();
       AppMethodBeat.o(93411);
       return false;
     }
@@ -289,113 +289,113 @@ public final class d
     return true;
   }
   
-  public final void E(Runnable paramRunnable)
+  public final void D(Runnable paramRunnable)
   {
     AppMethodBeat.i(93415);
-    synchronized (this.hcD)
+    synchronized (this.huL)
     {
-      this.hde = paramRunnable;
-      ac.i("MicroMsg.Media.X264MP4MuxRecorder", "!!!!!stop, stopCallback: %s!!!", new Object[] { paramRunnable });
-      if ((this.hdE == null) || ((this.hcJ == null) && (!this.hdh)))
+      this.hvm = paramRunnable;
+      ad.i("MicroMsg.Media.X264MP4MuxRecorder", "!!!!!stop, stopCallback: %s!!!", new Object[] { paramRunnable });
+      if ((this.hvM == null) || ((this.huR == null) && (!this.hvp)))
       {
-        ac.i("MicroMsg.Media.X264MP4MuxRecorder", "error, yuvRecorder or aacRecorder is null");
+        ad.i("MicroMsg.Media.X264MP4MuxRecorder", "error, yuvRecorder or aacRecorder is null");
         if (paramRunnable != null) {
-          ap.f(paramRunnable);
+          aq.f(paramRunnable);
         }
         AppMethodBeat.o(93415);
         return;
       }
-      if ((this.hcQ != null) && (this.hcQ.uNv == d.c.uMm))
+      if ((this.huY != null) && (this.huY.vQE == d.c.vPs))
       {
-        ac.i("MicroMsg.Media.X264MP4MuxRecorder", "stop, already in stop videoRecordStatus");
-        if (this.hcJ != null) {
-          this.hcJ.clear();
+        ad.i("MicroMsg.Media.X264MP4MuxRecorder", "stop, already in stop videoRecordStatus");
+        if (this.huR != null) {
+          this.huR.clear();
         }
         if (paramRunnable != null) {
-          ap.f(paramRunnable);
+          aq.f(paramRunnable);
         }
         AppMethodBeat.o(93415);
         return;
       }
-      this.hdv = null;
-      this.hcF = ((int)bs.aO(this.hdE.startTime));
-      if (this.hcQ != null)
+      this.hvD = null;
+      this.huN = ((int)bt.aO(this.hvM.startTime));
+      if (this.huY != null)
       {
-        paramRunnable = com.tencent.mm.media.j.d.gWO;
-        com.tencent.mm.media.j.d.arI();
-        this.hcQ.a(d.c.uMk);
+        paramRunnable = com.tencent.mm.media.k.d.hoU;
+        com.tencent.mm.media.k.d.auv();
+        this.huY.a(d.c.vPq);
       }
       AppMethodBeat.o(93415);
       return;
     }
   }
   
-  public final String JC()
-  {
-    AppMethodBeat.i(93416);
-    String str = bs.bG(this.md5, "");
-    AppMethodBeat.o(93416);
-    return str;
-  }
-  
-  public final void K(int paramInt1, int paramInt2, int paramInt3)
+  public final void L(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(93425);
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "resume, cameraOrientation: %s", new Object[] { Integer.valueOf(paramInt1) });
-    this.hcR = paramInt1;
-    this.hcO = paramInt2;
-    this.hcP = paramInt3;
-    this.hdk.mE(this.hcR);
-    avb();
-    if ((this.hcQ != null) && (this.hcQ.uNv == d.c.uMr)) {
-      this.hcQ.a(d.c.uMj);
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "resume, cameraOrientation: %s", new Object[] { Integer.valueOf(paramInt1) });
+    this.huZ = paramInt1;
+    this.huW = paramInt2;
+    this.huX = paramInt3;
+    this.hvs.nd(this.huZ);
+    axO();
+    if ((this.huY != null) && (this.huY.vQE == d.c.vPx)) {
+      this.huY.a(d.c.vPp);
     }
     AppMethodBeat.o(93425);
   }
   
-  public final void a(d.a parama)
+  public final String Lb()
   {
-    this.hdd = parama;
+    AppMethodBeat.i(93416);
+    String str = bt.bI(this.md5, "");
+    AppMethodBeat.o(93416);
+    return str;
   }
   
-  public final void aj(float paramFloat)
+  public final void a(d.a parama)
+  {
+    this.hvl = parama;
+  }
+  
+  public final void am(float paramFloat)
   {
     AppMethodBeat.i(93428);
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "overrideFps: %s", new Object[] { Float.valueOf(paramFloat) });
-    this.hcI = paramFloat;
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "overrideFps: %s", new Object[] { Float.valueOf(paramFloat) });
+    this.huQ = paramFloat;
     AppMethodBeat.o(93428);
   }
   
-  public final boolean aly()
+  public final boolean aol()
   {
-    return this.hbQ;
+    return this.htY;
   }
   
-  public final String auN()
+  public final String axA()
   {
     return this.thumbPath;
   }
   
-  public final void ava() {}
+  public final void axN() {}
   
-  public final String ave()
+  public final String axR()
   {
-    return this.hcV;
+    return this.hvd;
   }
   
-  public final float avf()
+  public final float axS()
   {
-    return this.hcG;
+    return this.huO;
   }
   
-  public final long avg()
+  public final long axT()
   {
     AppMethodBeat.i(93420);
-    synchronized (this.hcD)
+    synchronized (this.huL)
     {
-      if (this.hdE != null)
+      if (this.hvM != null)
       {
-        long l = bs.aO(this.hdE.startTime);
+        long l = bt.aO(this.hvM.startTime);
         AppMethodBeat.o(93420);
         return l;
       }
@@ -404,43 +404,43 @@ public final class d
     }
   }
   
-  public final d.c avh()
+  public final d.c axU()
   {
-    return this.hcQ.uNv;
+    return this.huY.vQE;
   }
   
-  public final int avi()
+  public final int axV()
   {
     AppMethodBeat.i(93422);
-    int i = Math.round(this.hcF / 1000.0F);
+    int i = Math.round(this.huN / 1000.0F);
     AppMethodBeat.o(93422);
     return i;
   }
   
-  public final Point avj()
+  public final Point axW()
   {
     AppMethodBeat.i(93423);
-    Point localPoint = new Point(this.hcO, this.hcP);
+    Point localPoint = new Point(this.huW, this.huX);
     AppMethodBeat.o(93423);
     return localPoint;
   }
   
-  public final int avk()
+  public final int axX()
   {
-    return this.hcR;
+    return this.huZ;
   }
   
-  public final boolean avl()
+  public final boolean axY()
   {
-    return this.hdb;
+    return this.hvj;
   }
   
-  public final com.tencent.mm.audio.b.c.a avm()
+  public final com.tencent.mm.audio.b.c.a axZ()
   {
     AppMethodBeat.i(93426);
-    if (this.hcJ != null)
+    if (this.huR != null)
     {
-      com.tencent.mm.audio.b.c.a locala = this.hcJ.ddN();
+      com.tencent.mm.audio.b.c.a locala = this.huR.dnj();
       AppMethodBeat.o(93426);
       return locala;
     }
@@ -448,25 +448,25 @@ public final class d
     return null;
   }
   
-  public final void avn()
+  public final void aya()
   {
-    this.hdg = false;
+    this.hvo = false;
   }
   
   public final int b(int paramInt1, boolean paramBoolean, int paramInt2)
   {
     AppMethodBeat.i(93414);
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "start, cameraOrientation: %s, isLandscape: %s, degree: %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) });
-    this.hcX.reset();
-    this.hcF = 0;
-    this.hcY.reset();
-    this.hcU = false;
-    this.hbQ = paramBoolean;
-    this.hdc = paramInt2;
-    this.hcQ.a(d.c.uMi);
-    if (bs.isNullOrNil(this.hcE))
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "start, cameraOrientation: %s, isLandscape: %s, degree: %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) });
+    this.hvf.reset();
+    this.huN = 0;
+    this.hvg.reset();
+    this.hvc = false;
+    this.htY = paramBoolean;
+    this.hvk = paramInt2;
+    this.huY.a(d.c.vPo);
+    if (bt.isNullOrNil(this.huM))
     {
-      ac.e("MicroMsg.Media.X264MP4MuxRecorder", "start error, mCurRecordPath is null!!");
+      ad.e("MicroMsg.Media.X264MP4MuxRecorder", "start error, mCurRecordPath is null!!");
       AppMethodBeat.o(93414);
       return -1;
     }
@@ -474,63 +474,63 @@ public final class d
     {
       try
       {
-        this.mFileName = i.aSu(this.hcE);
-        String str = i.aSs(this.hcE);
+        this.mFileName = i.aYt(this.huM);
+        String str = i.aYr(this.huM);
         ??? = str;
         if (!str.endsWith("/")) {
           ??? = str + "/";
         }
-        this.hcT = ((String)??? + "tempRotate.mp4");
-        ac.i("MicroMsg.Media.X264MP4MuxRecorder", "mCurRecordPath: %s, tempRotateFilePath: %s", new Object[] { this.hcE, this.hcT });
-        this.hcR = paramInt1;
-        if (!this.gkP)
+        this.hvb = ((String)??? + "tempRotate.mp4");
+        ad.i("MicroMsg.Media.X264MP4MuxRecorder", "mCurRecordPath: %s, tempRotateFilePath: %s", new Object[] { this.huM, this.hvb });
+        this.huZ = paramInt1;
+        if (!this.gEz)
         {
-          nD(paramInt1);
-          this.gkP = true;
+          oc(paramInt1);
+          this.gEz = true;
         }
-        this.hcQ.a(d.c.uMq);
+        this.huY.a(d.c.vPw);
       }
       catch (Exception localException)
       {
-        synchronized (this.hcD)
+        synchronized (this.huL)
         {
-          this.hdE.start();
-          if ((this.hdh) || (this.hdf)) {
+          this.hvM.start();
+          if ((this.hvp) || (this.hvn)) {
             break label390;
           }
-          paramInt1 = this.hcJ.a(new com.tencent.mm.plugin.mmsight.model.a.c.a()
+          paramInt1 = this.huR.a(new com.tencent.mm.plugin.mmsight.model.a.c.a()
           {
-            public final void avs()
+            public final void ayf()
             {
               AppMethodBeat.i(93405);
-              ac.i("MicroMsg.Media.X264MP4MuxRecorder", "onPcmReady");
-              if (d.this.avh() != d.c.uMq)
+              ad.i("MicroMsg.Media.X264MP4MuxRecorder", "onPcmReady");
+              if (d.this.axU() != d.c.vPw)
               {
-                ac.w("MicroMsg.Media.X264MP4MuxRecorder", "not MediaStatus.Initialized, maybe canceled by user");
+                ad.w("MicroMsg.Media.X264MP4MuxRecorder", "not MediaStatus.Initialized, maybe canceled by user");
                 AppMethodBeat.o(93405);
                 return;
               }
-              d.this.hcQ.a(d.c.uMj);
+              d.this.huY.a(d.c.vPp);
               AppMethodBeat.o(93405);
             }
           });
-          ac.i("MicroMsg.Media.X264MP4MuxRecorder", "start aacRecorder ret: %s", new Object[] { Integer.valueOf(paramInt1) });
-          this.hdb = false;
+          ad.i("MicroMsg.Media.X264MP4MuxRecorder", "start aacRecorder ret: %s", new Object[] { Integer.valueOf(paramInt1) });
+          this.hvj = false;
           if (paramInt1 != 0)
           {
-            this.hcQ.a(d.c.uMp);
+            this.huY.a(d.c.vPv);
             AppMethodBeat.o(93414);
             return paramInt1;
             localException = localException;
-            ac.e("MicroMsg.Media.X264MP4MuxRecorder", "retrieve file name error: %s", new Object[] { localException.getMessage() });
+            ad.e("MicroMsg.Media.X264MP4MuxRecorder", "retrieve file name error: %s", new Object[] { localException.getMessage() });
           }
         }
       }
       continue;
       label390:
-      ac.i("MicroMsg.Media.X264MP4MuxRecorder", "start yuvRecorder with mute");
-      this.hcQ.a(d.c.uMj);
-      this.hdb = false;
+      ad.i("MicroMsg.Media.X264MP4MuxRecorder", "start yuvRecorder with mute");
+      this.huY.a(d.c.vPp);
+      this.hvj = false;
       paramInt1 = 0;
     }
   }
@@ -538,37 +538,37 @@ public final class d
   public final void cancel()
   {
     AppMethodBeat.i(93417);
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "cancel record");
-    synchronized (this.hcD)
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "cancel record");
+    synchronized (this.huL)
     {
-      if ((this.hdE == null) || ((this.hcJ == null) && (!this.hdh)))
+      if ((this.hvM == null) || ((this.huR == null) && (!this.hvp)))
       {
-        ac.e("MicroMsg.Media.X264MP4MuxRecorder", "error, yuvRecorder or aacRecorder is null");
+        ad.e("MicroMsg.Media.X264MP4MuxRecorder", "error, yuvRecorder or aacRecorder is null");
         AppMethodBeat.o(93417);
         return;
       }
-      this.hcQ.a(d.c.uMl);
-      this.hdE.stop(true);
-      if (this.hcJ != null) {
-        this.hcJ.a(new c.b()
+      this.huY.a(d.c.vPr);
+      this.hvM.stop(true);
+      if (this.huR != null) {
+        this.huR.a(new c.b()
         {
-          public final void avr()
+          public final void aye()
           {
             AppMethodBeat.i(93408);
-            ac.i("MicroMsg.Media.X264MP4MuxRecorder", "aac stop finish");
+            ad.i("MicroMsg.Media.X264MP4MuxRecorder", "aac stop finish");
             AppMethodBeat.o(93408);
           }
         });
       }
-      if (this.gNJ >= 0)
+      if (this.bufId >= 0)
       {
-        SightVideoJNI.releaseBigSightDataBufferLock(this.gNJ);
-        this.hcQ.a(d.c.uMm);
+        SightVideoJNI.releaseBigSightDataBufferLock(this.bufId);
+        this.huY.a(d.c.vPs);
         reset();
         AppMethodBeat.o(93417);
         return;
       }
-      ac.e("MicroMsg.Media.X264MP4MuxRecorder", "why buf id < 0 ? %d", new Object[] { Integer.valueOf(this.gNJ) });
+      ad.e("MicroMsg.Media.X264MP4MuxRecorder", "why buf id < 0 ? %d", new Object[] { Integer.valueOf(this.bufId) });
     }
   }
   
@@ -577,29 +577,29 @@ public final class d
     AppMethodBeat.i(93418);
     try
     {
-      ac.i("MicroMsg.Media.X264MP4MuxRecorder", "clear");
-      if (this.hcJ != null) {
-        this.hcJ.clear();
+      ad.i("MicroMsg.Media.X264MP4MuxRecorder", "clear");
+      if (this.huR != null) {
+        this.huR.clear();
       }
-      if (this.hdk != null) {
-        this.hdk.release();
+      if (this.hvs != null) {
+        this.hvs.release();
       }
-      if (this.gNJ >= 0) {
-        SightVideoJNI.releaseBigSightDataBufferLock(this.gNJ);
+      if (this.bufId >= 0) {
+        SightVideoJNI.releaseBigSightDataBufferLock(this.bufId);
       }
       AppMethodBeat.o(93418);
       return;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.Media.X264MP4MuxRecorder", localException, "clear error: %s", new Object[] { localException.getMessage() });
+      ad.printErrStackTrace("MicroMsg.Media.X264MP4MuxRecorder", localException, "clear error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(93418);
     }
   }
   
-  public final void eq(boolean paramBoolean)
+  public final void es(boolean paramBoolean)
   {
-    this.hdf = paramBoolean;
+    this.hvn = paramBoolean;
   }
   
   public final String getFileName()
@@ -609,46 +609,46 @@ public final class d
   
   public final String getFilePath()
   {
-    return this.hcE;
+    return this.huM;
   }
   
   public final com.tencent.mm.plugin.mmsight.model.g getFrameDataCallback()
   {
-    return this.hdv;
+    return this.hvD;
   }
   
-  public final boolean nE(int paramInt)
+  public final boolean od(int paramInt)
   {
     AppMethodBeat.i(93413);
-    if (!this.gkP)
+    if (!this.gEz)
     {
-      ac.i("MicroMsg.Media.X264MP4MuxRecorder", "preInit, cameraOrientation");
-      boolean bool = nD(paramInt);
-      this.gkP = true;
-      ac.i("MicroMsg.Media.X264MP4MuxRecorder", "initImpl result: %s", new Object[] { Boolean.valueOf(bool) });
+      ad.i("MicroMsg.Media.X264MP4MuxRecorder", "preInit, cameraOrientation");
+      boolean bool = oc(paramInt);
+      this.gEz = true;
+      ad.i("MicroMsg.Media.X264MP4MuxRecorder", "initImpl result: %s", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(93413);
       return bool;
     }
-    com.tencent.mm.media.j.d locald = com.tencent.mm.media.j.d.gWO;
-    com.tencent.mm.media.j.d.arF();
+    com.tencent.mm.media.k.d locald = com.tencent.mm.media.k.d.hoU;
+    com.tencent.mm.media.k.d.aus();
     AppMethodBeat.o(93413);
     return true;
   }
   
-  public final void nF(int paramInt)
+  public final void oe(int paramInt)
   {
     AppMethodBeat.i(93427);
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "overrideDurationMs: %s", new Object[] { Integer.valueOf(paramInt) });
-    this.hcH = paramInt;
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "overrideDurationMs: %s", new Object[] { Integer.valueOf(paramInt) });
+    this.huP = paramInt;
     AppMethodBeat.o(93427);
   }
   
   public final void pause()
   {
     AppMethodBeat.i(93424);
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "pause");
-    if ((this.hcQ != null) && (this.hcQ.uNv == d.c.uMj)) {
-      this.hcQ.a(d.c.uMr);
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "pause");
+    if ((this.huY != null) && (this.huY.vQE == d.c.vPp)) {
+      this.huY.a(d.c.vPx);
     }
     AppMethodBeat.o(93424);
   }
@@ -656,15 +656,15 @@ public final class d
   public final void reset()
   {
     AppMethodBeat.i(93419);
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "reset, yuvRecorder: %s, aacRecorder: %s, muxer: %s", new Object[] { this.hdE, this.hcJ, this.hda });
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "reset, yuvRecorder: %s, aacRecorder: %s", new Object[] { this.hdE, this.hcJ });
-    synchronized (this.hcD)
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "reset, yuvRecorder: %s, aacRecorder: %s, muxer: %s", new Object[] { this.hvM, this.huR, this.hvi });
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "reset, yuvRecorder: %s, aacRecorder: %s", new Object[] { this.hvM, this.huR });
+    synchronized (this.huL)
     {
-      this.hdE = null;
-      this.hcJ = null;
-      this.hda = null;
-      this.gkP = false;
-      this.hdb = false;
+      this.hvM = null;
+      this.huR = null;
+      this.hvi = null;
+      this.gEz = false;
+      this.hvj = false;
       AppMethodBeat.o(93419);
       return;
     }
@@ -673,58 +673,58 @@ public final class d
   public final void s(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(93421);
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "setSize, width: %s, height: %s, targetWidth: %s, targetHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "setSize, width: %s, height: %s, targetWidth: %s, targetHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
     int i = paramInt3;
     if (paramInt3 % 16 != 0) {
-      i = com.tencent.mm.plugin.mmsight.d.IJ(paramInt3);
+      i = com.tencent.mm.plugin.mmsight.d.Kg(paramInt3);
     }
     paramInt3 = paramInt4;
     if (paramInt4 % 16 != 0) {
-      paramInt3 = com.tencent.mm.plugin.mmsight.d.IJ(paramInt4);
+      paramInt3 = com.tencent.mm.plugin.mmsight.d.Kg(paramInt4);
     }
-    ac.i("MicroMsg.Media.X264MP4MuxRecorder", "setSize, after align, targetWidth: %d, targetHeight: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt3) });
-    this.hcO = paramInt1;
-    this.hcP = paramInt2;
-    if (j.uMV.g(Integer.valueOf(paramInt1 * paramInt2 * 3 / 2)) == null)
+    ad.i("MicroMsg.Media.X264MP4MuxRecorder", "setSize, after align, targetWidth: %d, targetHeight: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt3) });
+    this.huW = paramInt1;
+    this.huX = paramInt2;
+    if (k.vQc.g(Integer.valueOf(paramInt1 * paramInt2 * 3 / 2)) == null)
     {
-      ac.i("MicroMsg.Media.X264MP4MuxRecorder", "preloadCameraData, width: %s, height: %s, count: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(3) });
-      long l = bs.Gn();
+      ad.i("MicroMsg.Media.X264MP4MuxRecorder", "preloadCameraData, width: %s, height: %s, count: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(3) });
+      long l = bt.HI();
       paramInt3 = 0;
       while (paramInt3 < 3)
       {
-        j.uMV.k(new byte[paramInt1 * paramInt2 * 3 / 2]);
+        k.vQc.k(new byte[paramInt1 * paramInt2 * 3 / 2]);
         paramInt3 += 1;
       }
-      ac.i("MicroMsg.Media.X264MP4MuxRecorder", "preloadCameraData used %sms", new Object[] { Long.valueOf(bs.aO(l)) });
+      ad.i("MicroMsg.Media.X264MP4MuxRecorder", "preloadCameraData used %sms", new Object[] { Long.valueOf(bt.aO(l)) });
     }
     AppMethodBeat.o(93421);
   }
   
   public final void setFilePath(String paramString)
   {
-    this.hcE = paramString;
+    this.huM = paramString;
   }
   
   public final void setMirror(boolean paramBoolean) {}
   
   public final void setMute(boolean paramBoolean)
   {
-    this.hdh = paramBoolean;
+    this.hvp = paramBoolean;
   }
   
-  public final void vx(String paramString)
+  public final void yo(String paramString)
   {
     this.thumbPath = paramString;
   }
   
-  public final void vy(String paramString)
+  public final void yp(String paramString)
   {
-    this.hcV = paramString;
+    this.hvd = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.media.widget.c.d
  * JD-Core Version:    0.7.0.1
  */

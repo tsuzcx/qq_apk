@@ -3,65 +3,67 @@ package com.tencent.mm.ui.chatting;
 import android.os.Bundle;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.at;
-import com.tencent.mm.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.au;
+import com.tencent.mm.model.w;
+import com.tencent.mm.platformtools.af;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.chatting.d.b.y;
+import com.tencent.mm.ui.chatting.e.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class x
-  implements at
+  implements au
 {
-  public z HPJ;
-  public a cLy;
+  public z JDx;
+  public a cWM;
   
   public x(a parama)
   {
     AppMethodBeat.i(34778);
-    this.cLy = parama;
-    this.HPJ = new z();
+    this.cWM = parama;
+    this.JDx = new z();
     AppMethodBeat.o(34778);
   }
   
-  private void bh(bo parambo)
+  private void bk(bu parambu)
   {
     AppMethodBeat.i(34782);
-    if (parambo == null)
+    if (parambu == null)
     {
       AppMethodBeat.o(34782);
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(parambo);
-    hN(localArrayList);
+    localArrayList.add(parambu);
+    hZ(localArrayList);
     AppMethodBeat.o(34782);
   }
   
-  private void hN(List<bo> paramList)
+  private void hZ(List<bu> paramList)
   {
     AppMethodBeat.i(34783);
-    if ((this.HPJ != null) && (this.cLy != null))
+    if ((this.JDx != null) && (this.cWM != null))
     {
-      this.HPJ.a(this.cLy.HZF.getContext(), paramList);
-      this.HPJ.H(this.cLy.foQ(), this.cLy.getTalkerUserName());
+      this.JDx.a(this.cWM.JOR.getContext(), paramList);
+      this.JDx.M(this.cWM.fFv(), this.cWM.getTalkerUserName());
     }
     AppMethodBeat.o(34783);
   }
   
-  public final void M(List<bo> paramList)
+  public final void M(List<bu> paramList)
   {
     AppMethodBeat.i(34780);
-    if (this.cLy == null)
+    if (this.cWM == null)
     {
-      ac.w("MicroMsg.ChattingUIKeywordChecker", "chatting ui is null.");
+      ad.w("MicroMsg.ChattingUIKeywordChecker", "chatting ui is null.");
       AppMethodBeat.o(34780);
       return;
     }
-    if (com.tencent.mm.model.w.sQ(this.cLy.getTalkerUserName()))
+    if (w.vF(this.cWM.getTalkerUserName()))
     {
       AppMethodBeat.o(34780);
       return;
@@ -70,48 +72,48 @@ public final class x
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bo localbo = (bo)paramList.next();
-      if ((localbo.field_talker.equals(this.cLy.getTalkerUserName())) && ((localbo.isText()) || (localbo.fbM()))) {
-        localArrayList.add(localbo);
+      bu localbu = (bu)paramList.next();
+      if ((localbu.field_talker.equals(this.cWM.getTalkerUserName())) && ((localbu.isText()) || (localbu.frQ()))) {
+        localArrayList.add(localbu);
       }
     }
-    hN(localArrayList);
+    hZ(localArrayList);
     AppMethodBeat.o(34780);
   }
   
   public final void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle) {}
   
-  public final void a(bo parambo)
+  public final void a(bu parambu)
   {
     AppMethodBeat.i(34779);
-    if (this.cLy.bf(com.tencent.mm.ui.chatting.c.b.w.class) == null)
+    if (this.cWM.bh(y.class) == null)
     {
-      ac.w("MicroMsg.ChattingUIKeywordChecker", "chatting ui maybe has exit!");
+      ad.w("MicroMsg.ChattingUIKeywordChecker", "chatting ui maybe has exit!");
       AppMethodBeat.o(34779);
       return;
     }
-    ((com.tencent.mm.ui.chatting.c.b.w)this.cLy.bf(com.tencent.mm.ui.chatting.c.b.w.class)).fnC();
-    if ((!parambo.field_talker.equals(this.cLy.getTalkerUserName())) || ((!parambo.isText()) && (!parambo.fbM())))
+    ((y)this.cWM.bh(y.class)).fDo();
+    if ((!parambu.field_talker.equals(this.cWM.getTalkerUserName())) || ((!parambu.isText()) && (!parambu.frQ())))
     {
       AppMethodBeat.o(34779);
       return;
     }
-    bh(parambo);
+    bk(parambu);
     AppMethodBeat.o(34779);
   }
   
-  public final void aim(String paramString)
+  public final void amZ(String paramString)
   {
     AppMethodBeat.i(34781);
-    if (ae.isNullOrNil(paramString))
+    if (af.isNullOrNil(paramString))
     {
       AppMethodBeat.o(34781);
       return;
     }
-    bo localbo = new bo();
-    localbo.setContent(paramString);
-    localbo.jT(1);
-    bh(localbo);
+    bu localbu = new bu();
+    localbu.setContent(paramString);
+    localbu.kr(1);
+    bk(localbu);
     AppMethodBeat.o(34781);
   }
   

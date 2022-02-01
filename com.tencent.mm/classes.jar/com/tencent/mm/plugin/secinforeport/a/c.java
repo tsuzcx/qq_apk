@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.secinforeport.a;
 
 public abstract interface c
 {
-  public abstract void Nv(int paramInt);
+  public abstract void OX(int paramInt);
   
-  public abstract void Nw(int paramInt);
-  
-  public abstract boolean ar(int paramInt, long paramLong);
-  
-  public abstract boolean as(int paramInt, long paramLong);
+  public abstract void OY(int paramInt);
   
   public abstract void asyncReportFinderSecurityInfoThroughCgi(int paramInt);
   
   public abstract void asyncReportPaySecurityInfoThroughCgi();
   
-  public abstract void dBC();
+  public abstract boolean ay(int paramInt, long paramLong);
   
-  public abstract void hd(int paramInt1, int paramInt2);
+  public abstract boolean az(int paramInt, long paramLong);
+  
+  public abstract void dMZ();
+  
+  public abstract void hu(int paramInt1, int paramInt2);
   
   public abstract void r(int paramInt, byte[] paramArrayOfByte);
 }

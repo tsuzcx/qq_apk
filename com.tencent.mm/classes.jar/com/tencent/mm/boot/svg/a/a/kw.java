@@ -59,7 +59,7 @@ public final class kw
       localCanvas.drawPath(localPath, localPaint2);
       localCanvas.restore();
       localCanvas.save();
-      localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, 15.0F, 0.0F, 1.0F, 19.0F);
+      localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, 15.0F, 0.0F, 1.0F, 15.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues((float[])localObject2);
       localCanvas.concat((Matrix)localObject1);
@@ -68,11 +68,19 @@ public final class kw
       localCanvas.save();
       localObject1 = c.a((Paint)localObject1, paramVarArgs);
       localObject2 = c.n(paramVarArgs);
-      ((Path)localObject2).moveTo(3.11127F, 6.482169F);
-      ((Path)localObject2).cubicTo(3.907513F, 5.685926F, 4.4F, 4.585926F, 4.4F, 3.370899F);
-      ((Path)localObject2).cubicTo(4.4F, 2.155873F, 3.907513F, 1.055873F, 3.11127F, 0.2596296F);
-      ((Path)localObject2).lineTo(-4.547474E-013F, 3.370899F);
-      ((Path)localObject2).lineTo(3.11127F, 6.482169F);
+      ((Path)localObject2).moveTo(5.18545F, 12.556349F);
+      ((Path)localObject2).cubicTo(6.553268F, 11.188531F, 7.333334F, 9.34425F, 7.333334F, 7.3709F);
+      ((Path)localObject2).cubicTo(7.333334F, 5.39755F, 6.553268F, 3.553268F, 5.18545F, 2.18545F);
+      ((Path)localObject2).lineTo(6.741085F, 0.629815F);
+      ((Path)localObject2).cubicTo(8.466279F, 2.355009F, 9.533334F, 4.738342F, 9.533334F, 7.3709F);
+      ((Path)localObject2).cubicTo(9.533334F, 10.003457F, 8.466279F, 12.38679F, 6.741085F, 14.111984F);
+      ((Path)localObject2).lineTo(5.18545F, 12.556349F);
+      ((Path)localObject2).close();
+      ((Path)localObject2).moveTo(3.11127F, 10.482169F);
+      ((Path)localObject2).lineTo(-4.547474E-013F, 7.3709F);
+      ((Path)localObject2).lineTo(3.11127F, 4.25963F);
+      ((Path)localObject2).cubicTo(3.907513F, 5.055873F, 4.4F, 6.155873F, 4.4F, 7.3709F);
+      ((Path)localObject2).cubicTo(4.4F, 8.585926F, 3.907513F, 9.685926F, 3.11127F, 10.482169F);
       ((Path)localObject2).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject2, 2);
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
@@ -82,11 +90,19 @@ public final class kw
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
       localObject1 = c.n(paramVarArgs);
-      ((Path)localObject1).moveTo(3.11127F, 6.482169F);
-      ((Path)localObject1).cubicTo(3.907513F, 5.685926F, 4.4F, 4.585926F, 4.4F, 3.370899F);
-      ((Path)localObject1).cubicTo(4.4F, 2.155873F, 3.907513F, 1.055873F, 3.11127F, 0.2596296F);
-      ((Path)localObject1).lineTo(-4.547474E-013F, 3.370899F);
-      ((Path)localObject1).lineTo(3.11127F, 6.482169F);
+      ((Path)localObject1).moveTo(5.18545F, 12.556349F);
+      ((Path)localObject1).cubicTo(6.553268F, 11.188531F, 7.333334F, 9.34425F, 7.333334F, 7.3709F);
+      ((Path)localObject1).cubicTo(7.333334F, 5.39755F, 6.553268F, 3.553268F, 5.18545F, 2.18545F);
+      ((Path)localObject1).lineTo(6.741085F, 0.629815F);
+      ((Path)localObject1).cubicTo(8.466279F, 2.355009F, 9.533334F, 4.738342F, 9.533334F, 7.3709F);
+      ((Path)localObject1).cubicTo(9.533334F, 10.003457F, 8.466279F, 12.38679F, 6.741085F, 14.111984F);
+      ((Path)localObject1).lineTo(5.18545F, 12.556349F);
+      ((Path)localObject1).close();
+      ((Path)localObject1).moveTo(3.11127F, 10.482169F);
+      ((Path)localObject1).lineTo(-4.547474E-013F, 7.3709F);
+      ((Path)localObject1).lineTo(3.11127F, 4.25963F);
+      ((Path)localObject1).cubicTo(3.907513F, 5.055873F, 4.4F, 6.155873F, 4.4F, 7.3709F);
+      ((Path)localObject1).cubicTo(4.4F, 8.585926F, 3.907513F, 9.685926F, 3.11127F, 10.482169F);
       ((Path)localObject1).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject1, 2);
       localCanvas.drawPath((Path)localObject1, localPaint1);
@@ -98,7 +114,7 @@ public final class kw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.kw
  * JD-Core Version:    0.7.0.1
  */

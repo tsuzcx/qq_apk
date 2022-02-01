@@ -1,58 +1,58 @@
 package com.tencent.mm.media.b;
 
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.m.e;
+import com.tencent.mm.n.e;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/config/SimpleElementConfig;", "T", "", "()V", "elementConfig", "getElementConfig", "()Ljava/lang/Object;", "setElementConfig", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "getConfig", "getFloatDynamicConfig", "", "key", "", "defValue", "getIntDynamicConfig", "", "initDefaultConfig", "loadConfig", "", "resetConfig", "update", "parse", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/config/SimpleElementConfig;", "T", "", "()V", "elementConfig", "getElementConfig", "()Ljava/lang/Object;", "setElementConfig", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "getConfig", "getFloatDynamicConfig", "", "key", "", "defValue", "getIntDynamicConfig", "", "initDefaultConfig", "loadConfig", "", "resetConfig", "update", "parse", "plugin-mediaeditor_release"})
 public abstract class c<T>
 {
-  protected T gNT;
+  protected T hhP;
   
-  protected int U(String paramString, int paramInt)
+  protected int Y(String paramString, int paramInt)
   {
-    k.h(paramString, "key");
-    if (ai.ciE())
+    p.h(paramString, "key");
+    if (aj.cnC())
     {
       com.tencent.mm.kernel.c.a locala = g.ab(com.tencent.mm.plugin.zero.b.a.class);
-      k.g(locala, "MMKernel.service<IConfig…onfigService::class.java)");
-      return bs.getInt(((com.tencent.mm.plugin.zero.b.a)locala).ZY().getValue(paramString), paramInt);
+      p.g(locala, "MMKernel.service<IConfig…onfigService::class.java)");
+      return bt.getInt(((com.tencent.mm.plugin.zero.b.a)locala).acA().getValue(paramString), paramInt);
     }
-    return bs.getInt(CaptureMMProxy.getInstance().getDynamicConfig(paramString), paramInt);
+    return bt.getInt(CaptureMMProxy.getInstance().getDynamicConfig(paramString), paramInt);
   }
   
-  protected final T aqm()
+  protected final T atb()
   {
-    Object localObject = this.gNT;
+    Object localObject = this.hhP;
     if (localObject == null) {
-      k.aVY("elementConfig");
+      p.bcb("elementConfig");
     }
     return localObject;
   }
   
-  public abstract T aqn();
+  public abstract T atc();
   
-  public abstract void aqo();
+  public abstract void atd();
   
-  public final T aqp()
+  public final T ate()
   {
-    this.gNT = aqn();
-    aqo();
-    Object localObject = this.gNT;
+    this.hhP = atc();
+    atd();
+    Object localObject = this.hhP;
     if (localObject == null) {
-      k.aVY("elementConfig");
+      p.bcb("elementConfig");
     }
     return localObject;
   }
   
-  protected final void bH(T paramT)
+  protected final void bJ(T paramT)
   {
-    k.h(paramT, "<set-?>");
-    this.gNT = paramT;
+    p.h(paramT, "<set-?>");
+    this.hhP = paramT;
   }
 }
 

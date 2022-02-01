@@ -1,0 +1,17 @@
+package com.tencent.mm.plugin.webview.ui.tools.jsapi;
+
+import com.tencent.mm.ab.a.d;
+import com.tencent.mm.ab.a.d.a;
+import com.tencent.mm.plugin.webview.c.l;
+
+final class f$21
+  implements d.a<d>
+{
+  f$21(f paramf, l paraml, f.a parama, int paramInt) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+ * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.f.21
+ * JD-Core Version:    0.7.0.1
+ */

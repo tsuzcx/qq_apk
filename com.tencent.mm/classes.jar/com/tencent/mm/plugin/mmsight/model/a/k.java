@@ -1,90 +1,87 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.mmsight.SightParams;
-import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.plugin.mmsight.model.p;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.memory.a;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class k
+  extends a<byte[]>
 {
-  private static k uMW;
-  public SightParams uMX;
+  private static int iuX;
+  public static final k vQc;
   
   static
   {
-    AppMethodBeat.i(89505);
-    uMW = new k();
-    AppMethodBeat.o(89505);
+    AppMethodBeat.i(148835);
+    vQc = new k();
+    iuX = 0;
+    AppMethodBeat.o(148835);
   }
   
-  public static k ddS()
+  public final long ayu()
   {
-    return uMW;
-  }
-  
-  public static int ddU()
-  {
-    return com.tencent.mm.plugin.mmsight.model.k.uLk.videoBitrate;
-  }
-  
-  public static int ddV()
-  {
-    return com.tencent.mm.plugin.mmsight.model.k.uLk.gXd;
-  }
-  
-  public static boolean ddW()
-  {
-    AppMethodBeat.i(89504);
-    if (CaptureMMProxy.getInstance().getInt(ah.a.GKg, 0) == 1)
-    {
-      AppMethodBeat.o(89504);
-      return true;
+    AppMethodBeat.i(148828);
+    if (iuX <= 0) {
+      iuX = ((ActivityManager)aj.getContext().getSystemService("activity")).getLargeMemoryClass();
     }
-    AppMethodBeat.o(89504);
-    return false;
+    if (iuX >= 512)
+    {
+      AppMethodBeat.o(148828);
+      return 41943040L;
+    }
+    AppMethodBeat.o(148828);
+    return 20971520L;
   }
   
-  public static String ddX()
+  public final long ayv()
   {
-    switch (com.tencent.mm.plugin.mmsight.model.k.uLk.fHJ)
-    {
-    default: 
-      return "";
-    case 2: 
-      return "ENCODER_MEDIACODEC";
-    }
-    return "RECORDER_TYPE_FFMPEG";
+    return 10485760L;
   }
   
-  public static d q(VideoTransPara paramVideoTransPara)
+  public final void ayw()
   {
-    AppMethodBeat.i(89503);
-    Object localObject = null;
-    switch (com.tencent.mm.plugin.mmsight.model.k.uLk.fHJ)
-    {
-    default: 
-      paramVideoTransPara = localObject;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(89503);
-      return paramVideoTransPara;
-      paramVideoTransPara = new n(paramVideoTransPara);
-      continue;
-      paramVideoTransPara = new l(paramVideoTransPara);
-    }
+    AppMethodBeat.i(148829);
+    super.ayw();
+    AppMethodBeat.o(148829);
   }
   
-  public final SightParams ddT()
+  public final byte[] g(Integer paramInteger)
   {
-    return this.uMX;
+    try
+    {
+      AppMethodBeat.i(148827);
+      byte[] arrayOfByte2 = (byte[])super.d(paramInteger);
+      byte[] arrayOfByte1 = arrayOfByte2;
+      if (arrayOfByte2 == null) {
+        arrayOfByte1 = new byte[paramInteger.intValue()];
+      }
+      AppMethodBeat.o(148827);
+      return arrayOfByte1;
+    }
+    finally {}
+  }
+  
+  public final void k(byte[] paramArrayOfByte)
+  {
+    try
+    {
+      AppMethodBeat.i(148826);
+      super.bL(paramArrayOfByte);
+      AppMethodBeat.o(148826);
+      return;
+    }
+    finally
+    {
+      paramArrayOfByte = finally;
+      throw paramArrayOfByte;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.k
  * JD-Core Version:    0.7.0.1
  */

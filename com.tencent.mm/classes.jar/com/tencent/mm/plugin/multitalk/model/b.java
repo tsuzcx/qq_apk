@@ -1,47 +1,38 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import android.graphics.Bitmap;
-import com.tencent.mm.plugin.multitalk.ui.widget.i;
+import d.l;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManagerUiCallback;", "", "getStatusBarHeight", "", "getTalkingAvatarContainerSize", "", "hideActionView", "", "hideMiniAction", "", "hideScreenCastPageElement", "is2GOr3G", "isCameraOpen", "setToNormal", "setToScreenCast", "showActionView", "showNickName", "name", "", "autoDismiss", "showScreenCastPageElement", "plugin-multitalk_release"})
 public abstract interface b
 {
-  public abstract void a(j.a parama);
+  public abstract void bx(String paramString, boolean paramBoolean);
   
-  public abstract void a(i parami);
+  public abstract int[] doN();
   
-  public abstract void a(String paramString, Bitmap paramBitmap, int paramInt1, int paramInt2);
+  public abstract int doO();
   
-  public abstract void a(String paramString, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3);
+  public abstract boolean doP();
   
-  public abstract int amv(String paramString);
+  public abstract void doQ();
   
-  public abstract void cUc();
+  public abstract void doR();
   
-  public abstract void cUd();
+  public abstract void doS();
   
-  public abstract void dbX();
+  public abstract void doT();
   
-  public abstract void dfp();
+  public abstract void doU();
   
-  public abstract void dfq();
+  public abstract void doV();
   
-  public abstract void dfr();
+  public abstract boolean doW();
   
-  public abstract boolean dfs();
-  
-  public abstract void gn(int paramInt1, int paramInt2);
-  
-  public abstract void om(boolean paramBoolean);
-  
-  public abstract void on(boolean paramBoolean);
-  
-  public abstract void onError(int paramInt);
-  
-  public abstract void oo(boolean paramBoolean);
+  @l(gfx={1, 1, 16})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.b
  * JD-Core Version:    0.7.0.1
  */

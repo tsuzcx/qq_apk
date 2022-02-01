@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.remittance.model;
 
-import com.tencent.mm.protocal.protobuf.aie;
+import com.tencent.mm.protocal.protobuf.aku;
 import java.util.List;
 
 public abstract interface c
 {
-  public abstract void fd(List<aie> paramList);
+  public abstract void fq(List<aku> paramList);
 }
 
 

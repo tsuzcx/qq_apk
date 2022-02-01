@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.sns.data.j;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,174 +19,185 @@ import java.util.regex.Pattern;
 
 public final class a
 {
-  public static int yeu = 0;
-  public static int yev = 1;
-  public String dqf;
-  public String dtx;
-  public String dyy;
-  public String yeA;
-  public String yeB;
-  public String yeC;
-  public String yeD;
-  public int yeE;
-  public String yeF;
-  public String yeG;
-  public String yeH;
-  public int yeI;
-  public String yeJ;
-  public String yeK;
-  public LinkedList<String> yeL;
-  boolean yeM;
-  public String yeN;
-  public String yeO;
-  public String yeP;
-  public HashMap<String, String> yeQ;
-  public b yeR;
-  public c yeS;
-  public String yeT;
-  public String yeU;
-  public String yeV;
-  public boolean yeW;
-  public String yeX;
-  public boolean yeY;
-  public d yeZ;
-  public int yew;
-  public long yex;
-  public long yey;
-  public int yez;
-  public String yfa;
-  public a yfb;
+  private static HashMap<String, String> zuu;
+  public static int zuv;
+  public static int zuw;
+  public String aQj;
+  public String dBS;
+  public String dFy;
+  public int zuA;
+  public String zuB;
+  public String zuC;
+  public String zuD;
+  public String zuE;
+  public int zuF;
+  public String zuG;
+  public String zuH;
+  public String zuI;
+  public int zuJ;
+  public String zuK;
+  public String zuL;
+  public LinkedList<String> zuM;
+  boolean zuN;
+  public String zuO;
+  public String zuP;
+  public String zuQ;
+  public HashMap<String, String> zuR;
+  public b zuS;
+  public c zuT;
+  public String zuU;
+  public String zuV;
+  public String zuW;
+  public boolean zuX;
+  public String zuY;
+  public boolean zuZ;
+  public int zux;
+  public long zuy;
+  public long zuz;
+  public d zva;
+  public String zvb;
+  public a zvc;
+  public int zvd;
+  
+  static
+  {
+    AppMethodBeat.i(197878);
+    zuu = new HashMap();
+    zuv = 0;
+    zuw = 1;
+    AppMethodBeat.o(197878);
+  }
   
   public a()
   {
     AppMethodBeat.i(96259);
-    this.dqf = "";
-    this.dtx = "";
-    this.yez = 0;
-    this.yeA = "";
-    this.yeB = "";
-    this.yeC = "";
-    this.yeD = "";
-    this.yeE = 0;
-    this.yeF = "";
-    this.yeG = "";
-    this.yeH = "";
-    this.yeI = yeu;
-    this.yeJ = "";
-    this.yeK = "";
-    this.yeL = new LinkedList();
-    this.yeP = "";
-    this.yeS = new c();
-    this.yeT = "";
-    this.yeU = "";
-    this.yeV = "";
-    this.yeW = false;
-    this.yeX = "";
-    this.yeY = false;
+    this.dBS = "";
+    this.dFy = "";
+    this.zuA = 0;
+    this.zuB = "";
+    this.zuC = "";
+    this.zuD = "";
+    this.zuE = "";
+    this.zuF = 0;
+    this.zuG = "";
+    this.zuH = "";
+    this.zuI = "";
+    this.zuJ = zuv;
+    this.zuK = "";
+    this.zuL = "";
+    this.zuM = new LinkedList();
+    this.zuQ = "";
+    this.zuT = new c();
+    this.zuU = "";
+    this.zuV = "";
+    this.zuW = "";
+    this.zuX = false;
+    this.zuY = "";
+    this.zuZ = false;
     AppMethodBeat.o(96259);
   }
   
   public a(String paramString)
   {
     AppMethodBeat.i(96260);
-    this.dqf = "";
-    this.dtx = "";
-    this.yez = 0;
-    this.yeA = "";
-    this.yeB = "";
-    this.yeC = "";
-    this.yeD = "";
-    this.yeE = 0;
-    this.yeF = "";
-    this.yeG = "";
-    this.yeH = "";
-    this.yeI = yeu;
-    this.yeJ = "";
-    this.yeK = "";
-    this.yeL = new LinkedList();
-    this.yeP = "";
-    this.yeS = new c();
-    this.yeT = "";
-    this.yeU = "";
-    this.yeV = "";
-    this.yeW = false;
-    this.yeX = "";
-    this.yeY = false;
-    this.yeM = false;
-    auB(paramString);
+    this.dBS = "";
+    this.dFy = "";
+    this.zuA = 0;
+    this.zuB = "";
+    this.zuC = "";
+    this.zuD = "";
+    this.zuE = "";
+    this.zuF = 0;
+    this.zuG = "";
+    this.zuH = "";
+    this.zuI = "";
+    this.zuJ = zuv;
+    this.zuK = "";
+    this.zuL = "";
+    this.zuM = new LinkedList();
+    this.zuQ = "";
+    this.zuT = new c();
+    this.zuU = "";
+    this.zuV = "";
+    this.zuW = "";
+    this.zuX = false;
+    this.zuY = "";
+    this.zuZ = false;
+    this.zuN = false;
+    azH(paramString);
     AppMethodBeat.o(96260);
   }
   
-  private void auB(String paramString)
+  private void azH(String paramString)
   {
     boolean bool2 = true;
     AppMethodBeat.i(96261);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(96261);
       return;
     }
-    ac.i("MicroMsg.ADInfo", "feed xml %s", new Object[] { paramString });
-    Map localMap = bv.L(paramString, "ADInfo");
+    ad.i("MicroMsg.ADInfo", "feed xml %s", new Object[] { paramString });
+    Map localMap = bw.M(paramString, "ADInfo");
     if (localMap == null)
     {
       AppMethodBeat.o(96261);
       return;
     }
-    this.dyy = bs.bG((String)localMap.get(".ADInfo.viewid"), "");
+    this.aQj = bt.bI((String)localMap.get(".ADInfo.viewid"), "");
     if (localMap.get(".ADInfo.ad_sns_pos") == null)
     {
       AppMethodBeat.o(96261);
       return;
     }
-    this.yew = bs.aLy((String)localMap.get(".ADInfo.ad_sns_pos"));
-    this.yex = bs.aLz((String)localMap.get(".ADInfo.noExposureExpireTime"));
-    this.yey = bs.aLz((String)localMap.get(".ADInfo.exposureNoActionExpireTime"));
-    this.dtx = bs.bG((String)localMap.get(".ADInfo.uxInfo"), "");
-    this.yez = bs.aLy((String)localMap.get(".ADInfo.adActionType"));
-    this.yeA = bs.bG((String)localMap.get(".ADInfo.adActionCardTitle"), "");
-    this.yeB = bs.bG((String)localMap.get(".ADInfo.adActionCardTpId"), "");
-    this.yeC = bs.bG((String)localMap.get(".ADInfo.adActionCardExt"), "");
-    this.yeD = bs.bG((String)localMap.get(".ADInfo.adActionLink"), "");
-    this.yeE = bs.aLy((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POIType"));
-    this.yeF = bs.bG((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POIId"), "");
-    this.yeG = bs.bG((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POIName"), "");
-    this.yeH = bs.bG((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POILink"), "");
-    String str2 = bs.bG((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.Wording"), "");
-    this.yeI = bs.aLy((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingType"));
-    this.yeK = bs.bG((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingLink"), "");
+    this.zux = bt.aRe((String)localMap.get(".ADInfo.ad_sns_pos"));
+    this.zuy = bt.aRf((String)localMap.get(".ADInfo.noExposureExpireTime"));
+    this.zuz = bt.aRf((String)localMap.get(".ADInfo.exposureNoActionExpireTime"));
+    this.dFy = bt.bI((String)localMap.get(".ADInfo.uxInfo"), "");
+    this.zuA = bt.aRe((String)localMap.get(".ADInfo.adActionType"));
+    this.zuB = bt.bI((String)localMap.get(".ADInfo.adActionCardTitle"), "");
+    this.zuC = bt.bI((String)localMap.get(".ADInfo.adActionCardTpId"), "");
+    this.zuD = bt.bI((String)localMap.get(".ADInfo.adActionCardExt"), "");
+    this.zuE = bt.bI((String)localMap.get(".ADInfo.adActionLink"), "");
+    this.zuF = bt.aRe((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POIType"));
+    this.zuG = bt.bI((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POIId"), "");
+    this.zuH = bt.bI((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POIName"), "");
+    this.zuI = bt.bI((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POILink"), "");
+    String str1 = bt.bI((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.Wording"), "");
+    this.zuJ = bt.aRe((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingType"));
+    this.zuL = bt.bI((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingLink"), "");
     int i;
     label658:
-    if (this.yeI == yev)
+    if (this.zuJ == zuw)
     {
-      String str3 = bs.bG((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingRepAndroid"), "");
-      this.yeL.clear();
+      String str2 = bt.bI((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingRepAndroid"), "");
+      this.zuM.clear();
       i = 0;
       if (i == 0) {}
-      for (str1 = bs.bG((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.UserNameList.UserName"), "");; str1 = bs.bG((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.UserNameList.UserName" + i), ""))
+      for (??? = bt.bI((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.UserNameList.UserName"), "");; ??? = bt.bI((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.UserNameList.UserName" + i), ""))
       {
-        if (bs.isNullOrNil(str1)) {
+        if (bt.isNullOrNil((String)???)) {
           break label541;
         }
-        this.yeL.add(str1);
+        this.zuM.add(???);
         i += 1;
         break;
       }
       label541:
-      if (str3.indexOf("%s") >= 0)
+      if (str2.indexOf("%s") >= 0)
       {
         i = 1;
-        int j = str3.indexOf("%");
-        int k = str3.lastIndexOf("%");
-        if ((bs.isNullOrNil(str3)) || (i == 0) || (j != k)) {
+        int j = str2.indexOf("%");
+        int k = str2.lastIndexOf("%");
+        if ((bt.isNullOrNil(str2)) || (i == 0) || (j != k)) {
           break label765;
         }
-        this.yeJ = str3;
+        this.zuK = str2;
         label597:
-        this.yeM = localMap.containsKey(".ADInfo.adCanvasInfo");
-        this.yeO = ((String)localMap.get(".ADInfo.session_data.aid"));
-        this.yeN = ((String)localMap.get(".ADInfo.session_data.trace_id"));
-        this.yeQ = new HashMap();
+        this.zuN = localMap.containsKey(".ADInfo.adCanvasInfo");
+        this.zuP = ((String)localMap.get(".ADInfo.session_data.aid"));
+        this.zuO = ((String)localMap.get(".ADInfo.session_data.trace_id"));
+        this.zuR = new HashMap();
         i = 0;
         if (i != 0) {
           break label797;
@@ -193,24 +205,24 @@ public final class a
       }
     }
     label797:
-    for (String str1 = ".ADInfo.adCanvasExt.adCardItemList.cardItem";; str1 = ".ADInfo.adCanvasExt.adCardItemList.cardItem" + i)
+    for (??? = ".ADInfo.adCanvasExt.adCardItemList.cardItem";; ??? = ".ADInfo.adCanvasExt.adCardItemList.cardItem" + i)
     {
-      str2 = (String)localMap.get(str1 + ".cardTpId");
-      str1 = (String)localMap.get(str1 + ".cardExt");
-      if (bs.isNullOrNil(str2)) {
+      str1 = (String)localMap.get((String)??? + ".cardTpId");
+      ??? = (String)localMap.get((String)??? + ".cardExt");
+      if (bt.isNullOrNil(str1)) {
         break label822;
       }
-      this.yeQ.put(str2, str1);
+      this.zuR.put(str1, ???);
       i += 1;
       break label658;
       i = 0;
       break;
       label765:
-      this.yeJ = str2;
-      this.yeI = yeu;
+      this.zuK = str1;
+      this.zuJ = zuv;
       break label597;
-      this.yeJ = str2;
-      this.yeI = yeu;
+      this.zuK = str1;
+      this.zuJ = zuv;
       break label597;
     }
     label822:
@@ -218,74 +230,110 @@ public final class a
     if (paramString.find())
     {
       paramString = paramString.group();
-      if (!bs.isNullOrNil(paramString)) {
-        this.yeP = paramString.replaceAll("</?adCanvasExt>", "");
+      if (!bt.isNullOrNil(paramString)) {
+        this.zuQ = paramString.replaceAll("</?adCanvasExt>", "");
       }
     }
     paramString = (String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.appUserName");
     if (!TextUtils.isEmpty(paramString))
     {
-      this.yeR = new b();
-      this.yeR.dia = paramString;
-      this.yeR.appVersion = ((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.appVersion"));
-      this.yeR.cYQ = ((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.relativePagePath"));
+      this.zuS = new b();
+      this.zuS.dtE = paramString;
+      this.zuS.appVersion = ((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.appVersion"));
+      this.zuS.dki = ((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.relativePagePath"));
     }
-    this.yeS = new c(localMap, ".ADInfo");
-    this.yeT = bs.bG((String)localMap.get(".ADInfo.dislikeInfo.Title.zh"), "");
-    this.yeV = bs.bG((String)localMap.get(".ADInfo.dislikeInfo.Title.tw"), "");
-    this.yeU = bs.bG((String)localMap.get(".ADInfo.dislikeInfo.Title.en"), "");
-    if (bs.aLy((String)localMap.get(".ADInfo.dislikeInfo.forbidClick")) > 0)
-    {
+    this.zuT = new c(localMap, ".ADInfo");
+    this.zuU = bt.bI((String)localMap.get(".ADInfo.dislikeInfo.Title.zh"), "");
+    this.zuW = bt.bI((String)localMap.get(".ADInfo.dislikeInfo.Title.tw"), "");
+    this.zuV = bt.bI((String)localMap.get(".ADInfo.dislikeInfo.Title.en"), "");
+    boolean bool1;
+    if (bt.aRe((String)localMap.get(".ADInfo.dislikeInfo.forbidClick")) > 0) {
       bool1 = true;
-      this.yeW = bool1;
-      this.yeX = bs.bG((String)localMap.get(".ADInfo.adInfoSyncBuffer"), "");
-      if (bs.aLy((String)localMap.get(".ADInfo.adInfoSyncBuffer.$imm")) != 1) {
-        break label1373;
-      }
     }
-    label1373:
-    for (boolean bool1 = bool2;; bool1 = false)
+    for (;;)
     {
-      this.yeY = bool1;
-      this.yeZ = new d(localMap);
-      this.yfa = bs.nullAsNil((String)localMap.get(".ADInfo.waid.appWaid.pkg"));
-      if (localMap.containsKey(".ADInfo.adActionExt.adActionSchemaJump"))
+      this.zuX = bool1;
+      this.zuY = bt.bI((String)localMap.get(".ADInfo.adInfoSyncBuffer"), "");
+      if (bt.aRe((String)localMap.get(".ADInfo.adInfoSyncBuffer.$imm")) == 1)
       {
-        paramString = bs.bG((String)localMap.get(".ADInfo.adActionExt.adActionSchemaJump" + ".packageName"), "");
-        str1 = bs.bG((String)localMap.get(".ADInfo.adActionExt.adActionSchemaJump" + ".openSdkAppIdAndroid"), "");
-        if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(str1)))
+        bool1 = bool2;
+        this.zuZ = bool1;
+        this.zva = new d(localMap);
+        this.zvb = bt.nullAsNil((String)localMap.get(".ADInfo.appWaid.pkg"));
+        ??? = j.axO(this.dFy);
+        paramString = (String)???;
+        if (TextUtils.isEmpty((CharSequence)???))
         {
-          this.yfb = new a();
-          this.yfb.JG = paramString;
-          this.yfb.appId = str1;
-          this.yfb.yfc = bs.bG((String)localMap.get(".ADInfo.adActionExt.adActionSchemaJump" + ".appPageUrlAndroid"), "");
-          this.yfb.appName = bs.bG((String)localMap.get(".ADInfo.adActionExt.adActionSchemaJump" + ".appName"), "");
+          ad.w("MicroMsg.ADInfo", "aid from uxinfo is empty, uxinfo=" + this.dFy + ", aid=" + this.zuP);
+          paramString = this.zuP;
         }
       }
-      AppMethodBeat.o(96261);
-      return;
-      bool1 = false;
-      break;
+      synchronized (zuu)
+      {
+        if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.zvb)))
+        {
+          ad.i("MicroMsg.ADInfo", "cache waidPkg, key=" + paramString + ", value=" + this.zvb);
+          zuu.put(paramString, this.zvb);
+        }
+        if (localMap.containsKey(".ADInfo.adActionExt.adActionSchemaJump"))
+        {
+          paramString = bt.bI((String)localMap.get(".ADInfo.adActionExt.adActionSchemaJump" + ".packageName"), "");
+          ??? = bt.bI((String)localMap.get(".ADInfo.adActionExt.adActionSchemaJump" + ".openSdkAppIdAndroid"), "");
+          if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)???)))
+          {
+            this.zvc = new a();
+            this.zvc.Lw = paramString;
+            this.zvc.appId = ((String)???);
+            this.zvc.zve = bt.bI((String)localMap.get(".ADInfo.adActionExt.adActionSchemaJump" + ".appPageUrlAndroid"), "");
+            this.zvc.appName = bt.bI((String)localMap.get(".ADInfo.adActionExt.adActionSchemaJump" + ".appName"), "");
+          }
+        }
+        this.zvd = bt.aRe((String)localMap.get(".ADInfo.adGroupEndTime"));
+        AppMethodBeat.o(96261);
+        return;
+        bool1 = false;
+        continue;
+        bool1 = false;
+      }
     }
   }
   
-  public final boolean dJC()
+  public static String azI(String paramString)
   {
-    return (this.yez == 4) && (this.yeR != null);
+    AppMethodBeat.i(197877);
+    ??? = "";
+    String str = j.axO(paramString);
+    if (!TextUtils.isEmpty(str)) {}
+    for (;;)
+    {
+      synchronized (zuu)
+      {
+        paramString = bt.nullAsNil((String)zuu.get(str));
+        AppMethodBeat.o(197877);
+        return paramString;
+      }
+      ad.e("MicroMsg.ADInfo", "getWaidPkgByUxInfo, aid is empty, uxinfo=".concat(String.valueOf(paramString)));
+      paramString = (String)???;
+    }
+  }
+  
+  public final boolean dVQ()
+  {
+    return (this.zuA == 4) && (this.zuS != null);
   }
   
   public static final class a
   {
-    public String JG;
+    public String Lw;
     public String appId;
     public String appName;
-    public String yfc;
+    public String zve;
     
     public final String toString()
     {
-      AppMethodBeat.i(200130);
-      String str = "appId=" + this.appId + ", pkg=" + this.JG + ", appName=" + this.appName + ", pageUrl=" + this.yfc;
-      AppMethodBeat.o(200130);
+      AppMethodBeat.i(197875);
+      String str = "appId=" + this.appId + ", pkg=" + this.Lw + ", appName=" + this.appName + ", pageUrl=" + this.zve;
+      AppMethodBeat.o(197875);
       return str;
     }
   }
@@ -293,40 +341,40 @@ public final class a
   public static final class b
   {
     public String appVersion;
-    public String cYQ;
-    public String dia;
+    public String dki;
+    public String dtE;
   }
   
   public static final class c
   {
-    public int yfd;
-    private List<a> yfe;
-    public Map<String, List<a>> yff;
-    public String yfg;
-    public String yfh;
-    public String yfi;
+    public int zvf;
+    private List<a> zvg;
+    public Map<String, List<a>> zvh;
+    public String zvi;
+    public String zvj;
+    public String zvk;
     
     public c()
     {
       AppMethodBeat.i(96252);
-      this.yfd = 0;
-      this.yfe = new ArrayList();
-      this.yff = new HashMap();
-      this.yfg = "";
-      this.yfh = "";
-      this.yfi = "";
+      this.zvf = 0;
+      this.zvg = new ArrayList();
+      this.zvh = new HashMap();
+      this.zvi = "";
+      this.zvj = "";
+      this.zvk = "";
       AppMethodBeat.o(96252);
     }
     
     public c(Map<String, String> paramMap, String paramString)
     {
       AppMethodBeat.i(96253);
-      this.yfd = 0;
-      this.yfe = new ArrayList();
-      this.yff = new HashMap();
-      this.yfg = "";
-      this.yfh = "";
-      this.yfi = "";
+      this.zvf = 0;
+      this.zvg = new ArrayList();
+      this.zvh = new HashMap();
+      this.zvi = "";
+      this.zvj = "";
+      this.zvk = "";
       String str2 = paramString + ".dislikeInfo.ReasonList";
       int i = 0;
       String str1 = str2 + ".Reason";
@@ -337,100 +385,100 @@ public final class a
       {
         if (paramMap.get(str1 + ".ReasonId") != null)
         {
-          this.yfe.add(new a(bs.bG((String)paramMap.get(str1 + ".Wording.zh"), ""), bs.bG((String)paramMap.get(str1 + ".Wording.tw"), ""), bs.bG((String)paramMap.get(str1 + ".Wording.en"), ""), bs.aLy((String)paramMap.get(str1 + ".ReasonId"))));
+          this.zvg.add(new a(bt.bI((String)paramMap.get(str1 + ".Wording.zh"), ""), bt.bI((String)paramMap.get(str1 + ".Wording.tw"), ""), bt.bI((String)paramMap.get(str1 + ".Wording.en"), ""), bt.aRe((String)paramMap.get(str1 + ".ReasonId"))));
           i += 1;
           break;
         }
-        this.yfd = bs.aLy((String)paramMap.get(paramString + ".dislikeInfo.unReceiveAdInterval"));
-        this.yfg = bs.bG((String)paramMap.get(paramString + ".dislikeInfo.forbidClickReason.zh"), "");
-        this.yfh = bs.bG((String)paramMap.get(paramString + ".dislikeInfo.forbidClickReason.tw"), "");
-        this.yfi = bs.bG((String)paramMap.get(paramString + ".dislikeInfo.forbidClickReason.en"), "");
+        this.zvf = bt.aRe((String)paramMap.get(paramString + ".dislikeInfo.unReceiveAdInterval"));
+        this.zvi = bt.bI((String)paramMap.get(paramString + ".dislikeInfo.forbidClickReason.zh"), "");
+        this.zvj = bt.bI((String)paramMap.get(paramString + ".dislikeInfo.forbidClickReason.tw"), "");
+        this.zvk = bt.bI((String)paramMap.get(paramString + ".dislikeInfo.forbidClickReason.en"), "");
         AppMethodBeat.o(96253);
         return;
       }
     }
     
-    public final List<a> dJD()
+    public final List<a> dVR()
     {
       AppMethodBeat.i(96251);
-      Object localObject = ab.iC(ai.getContext());
+      Object localObject = ac.iM(aj.getContext());
       if ((!"zh_CN".equals(localObject)) && (!"zh_TW".equals(localObject)) && (!"zh_HK".equals(localObject))) {
         localObject = "en";
       }
       for (;;)
       {
-        if (!this.yff.containsKey(localObject))
+        if (!this.zvh.containsKey(localObject))
         {
           ArrayList localArrayList = new ArrayList();
-          Iterator localIterator = this.yfe.iterator();
+          Iterator localIterator = this.zvg.iterator();
           while (localIterator.hasNext())
           {
             a locala = (a)localIterator.next();
-            if (("zh_CN".equals(localObject)) && (!bs.isNullOrNil(locala.yfk))) {
+            if (("zh_CN".equals(localObject)) && (!bt.isNullOrNil(locala.zvm))) {
               localArrayList.add(locala);
-            } else if ((("zh_TW".equals(localObject)) || ("zh_HK".equals(localObject))) && (!bs.isNullOrNil(locala.yfl))) {
+            } else if ((("zh_TW".equals(localObject)) || ("zh_HK".equals(localObject))) && (!bt.isNullOrNil(locala.zvn))) {
               localArrayList.add(locala);
-            } else if (("en".equals(localObject)) && (!bs.isNullOrNil(locala.yfm))) {
+            } else if (("en".equals(localObject)) && (!bt.isNullOrNil(locala.zvo))) {
               localArrayList.add(locala);
             }
           }
-          this.yff.put(localObject, localArrayList);
+          this.zvh.put(localObject, localArrayList);
         }
-        localObject = (List)this.yff.get(localObject);
+        localObject = (List)this.zvh.get(localObject);
         AppMethodBeat.o(96251);
         return localObject;
       }
     }
     
-    public final boolean dJE()
+    public final boolean dVS()
     {
-      AppMethodBeat.i(200131);
-      if (dJD().size() > 0)
+      AppMethodBeat.i(197876);
+      if (dVR().size() > 0)
       {
-        AppMethodBeat.o(200131);
+        AppMethodBeat.o(197876);
         return true;
       }
-      AppMethodBeat.o(200131);
+      AppMethodBeat.o(197876);
       return false;
     }
     
     public static final class a
     {
-      public static int yfj = 101;
-      public long xMz = 0L;
-      public String yfk = "";
-      public String yfl = "";
-      public String yfm = "";
-      public int yfn = 0;
-      public long yfo = 0L;
+      public static int zvl = 101;
+      public long zcr = 0L;
+      public String zvm = "";
+      public String zvn = "";
+      public String zvo = "";
+      public int zvp = 0;
+      public long zvq = 0L;
       
       public a() {}
       
       public a(String paramString1, String paramString2, String paramString3, int paramInt)
       {
-        this.yfk = paramString1;
-        this.yfl = paramString2;
-        this.yfm = paramString3;
-        this.yfn = paramInt;
+        this.zvm = paramString1;
+        this.zvn = paramString2;
+        this.zvo = paramString3;
+        this.zvp = paramInt;
       }
     }
   }
   
   public static final class d
   {
-    public ArrayList<a.e> yfp;
+    public ArrayList<a.e> zvr;
     
     public d()
     {
       AppMethodBeat.i(96255);
-      this.yfp = new ArrayList();
+      this.zvr = new ArrayList();
       AppMethodBeat.o(96255);
     }
     
     public d(Map<String, String> paramMap)
     {
       AppMethodBeat.i(96254);
-      this.yfp = new ArrayList();
+      this.zvr = new ArrayList();
       int i = 0;
       for (;;)
       {
@@ -440,14 +488,14 @@ public final class a
         if (i == 0)
         {
           localObject = ".ADInfo.adActionExt.adVoteInfoExt.voteItemList.voteResultInfo";
-          str = bs.bG((String)paramMap.get((String)localObject + ".id"), "");
+          str = bt.bI((String)paramMap.get((String)localObject + ".id"), "");
           if (TextUtils.isEmpty(str)) {
             break;
           }
           locale = new a.e();
           locale.id = str;
-          locale.yfq = bs.aLy((String)paramMap.get((String)localObject + ".scoring"));
-          locale.yfr = bs.aLy((String)paramMap.get((String)localObject + ".friends"));
+          locale.zvs = bt.aRe((String)paramMap.get((String)localObject + ".scoring"));
+          locale.zvt = bt.aRe((String)paramMap.get((String)localObject + ".friends"));
           str = (String)localObject + ".friendsList.userName";
           j = 0;
           label188:
@@ -458,24 +506,24 @@ public final class a
         label264:
         for (Object localObject = str;; localObject = str + j)
         {
-          localObject = bs.bG((String)paramMap.get(localObject), "");
+          localObject = bt.bI((String)paramMap.get(localObject), "");
           if (TextUtils.isEmpty((CharSequence)localObject)) {
             break label288;
           }
-          locale.yfs.add(localObject);
+          locale.zvu.add(localObject);
           j += 1;
           break label188;
           localObject = ".ADInfo.adActionExt.adVoteInfoExt.voteItemList.voteResultInfo" + i;
           break;
         }
         label288:
-        this.yfp.add(locale);
+        this.zvr.add(locale);
         i += 1;
       }
       AppMethodBeat.o(96254);
     }
     
-    private a.e auC(String paramString)
+    private a.e azJ(String paramString)
     {
       AppMethodBeat.i(96257);
       if (TextUtils.isEmpty(paramString))
@@ -483,7 +531,7 @@ public final class a
         AppMethodBeat.o(96257);
         return null;
       }
-      Iterator localIterator = this.yfp.iterator();
+      Iterator localIterator = this.zvr.iterator();
       while (localIterator.hasNext())
       {
         a.e locale = (a.e)localIterator.next();
@@ -497,12 +545,12 @@ public final class a
       return null;
     }
     
-    public final int jl(String paramString1, String paramString2)
+    public final int jx(String paramString1, String paramString2)
     {
       int j = 0;
       AppMethodBeat.i(96256);
-      paramString1 = auC(paramString1);
-      paramString2 = auC(paramString2);
+      paramString1 = azJ(paramString1);
+      paramString2 = azJ(paramString2);
       int i;
       if (paramString1 == null)
       {
@@ -519,10 +567,10 @@ public final class a
         i = i * 100 / (j + i);
         AppMethodBeat.o(96256);
         return i;
-        i = paramString1.yfq;
+        i = paramString1.zvs;
         break;
         label62:
-        j = paramString2.yfq;
+        j = paramString2.zvs;
       }
       label71:
       AppMethodBeat.o(96256);
@@ -533,14 +581,14 @@ public final class a
   public static final class e
   {
     public String id;
-    public int yfq;
-    public int yfr;
-    public ArrayList<String> yfs;
+    public int zvs;
+    public int zvt;
+    public ArrayList<String> zvu;
     
     public e()
     {
       AppMethodBeat.i(96258);
-      this.yfs = new ArrayList();
+      this.zvu = new ArrayList();
       AppMethodBeat.o(96258);
     }
   }

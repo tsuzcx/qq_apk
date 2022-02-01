@@ -10,45 +10,45 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.downloader_app.a.d;
 import com.tencent.mm.plugin.downloader_app.a.d.c;
-import com.tencent.mm.plugin.downloader_app.b;
 
 public class DeleteTaskFooterView
   extends LinearLayout
 {
-  private boolean Ua;
-  private LinearLayout oMt;
-  ImageView oMu;
-  LinearLayout oMv;
-  TextView oMw;
-  ImageView oMx;
-  boolean oMy;
-  private d.c oMz;
+  private boolean VQ;
+  private LinearLayout pqb;
+  ImageView pqc;
+  LinearLayout pqd;
+  TextView pqe;
+  ImageView pqf;
+  boolean pqg;
+  private d.c pqh;
   
   public DeleteTaskFooterView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(8981);
-    this.Ua = true;
-    this.oMy = false;
-    this.oMz = new d.c()
+    this.VQ = true;
+    this.pqg = false;
+    this.pqh = new d.c()
     {
-      public final void jN(boolean paramAnonymousBoolean)
+      public final void jY(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(8978);
         DeleteTaskFooterView localDeleteTaskFooterView = DeleteTaskFooterView.this;
         if (paramAnonymousBoolean)
         {
-          localDeleteTaskFooterView.oMv.setClickable(true);
-          b.e(localDeleteTaskFooterView.oMx, "download_delete_enable");
-          localDeleteTaskFooterView.oMw.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131099803));
+          localDeleteTaskFooterView.pqd.setClickable(true);
+          com.tencent.mm.plugin.downloader_app.b.e(localDeleteTaskFooterView.pqf, "download_delete_enable");
+          localDeleteTaskFooterView.pqe.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131099803));
           AppMethodBeat.o(8978);
           return;
         }
-        localDeleteTaskFooterView.oMv.setClickable(false);
-        b.e(localDeleteTaskFooterView.oMx, "download_delete_disable");
-        localDeleteTaskFooterView.oMw.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131099737));
+        localDeleteTaskFooterView.pqd.setClickable(false);
+        com.tencent.mm.plugin.downloader_app.b.e(localDeleteTaskFooterView.pqf, "download_delete_disable");
+        localDeleteTaskFooterView.pqe.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131099737));
         AppMethodBeat.o(8978);
       }
     };
@@ -59,7 +59,7 @@ public class DeleteTaskFooterView
   {
     AppMethodBeat.i(8983);
     super.onAttachedToWindow();
-    d.a(this.oMz);
+    d.a(this.pqh);
     AppMethodBeat.o(8983);
   }
   
@@ -67,7 +67,7 @@ public class DeleteTaskFooterView
   {
     AppMethodBeat.i(8984);
     super.onDetachedFromWindow();
-    d.b(this.oMz);
+    d.b(this.pqh);
     AppMethodBeat.o(8984);
   }
   
@@ -76,44 +76,52 @@ public class DeleteTaskFooterView
     AppMethodBeat.i(8982);
     super.onFinishInflate();
     View localView = LayoutInflater.from(getContext()).inflate(2131493691, this, true);
-    this.oMt = ((LinearLayout)localView.findViewById(2131298220));
-    this.oMu = ((ImageView)localView.findViewById(2131298219));
-    this.oMt.setOnClickListener(new View.OnClickListener()
+    this.pqb = ((LinearLayout)localView.findViewById(2131298220));
+    this.pqc = ((ImageView)localView.findViewById(2131298219));
+    this.pqb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(8979);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/downloader_app/ui/DeleteTaskFooterView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (DeleteTaskFooterView.a(DeleteTaskFooterView.this))
         {
           DeleteTaskFooterView.a(DeleteTaskFooterView.this, false);
-          b.e(DeleteTaskFooterView.b(DeleteTaskFooterView.this), "checkbox_cell_off");
+          com.tencent.mm.plugin.downloader_app.b.e(DeleteTaskFooterView.b(DeleteTaskFooterView.this), "checkbox_cell_off");
         }
         for (;;)
         {
           if (DeleteTaskFooterView.c(DeleteTaskFooterView.this)) {
-            DeleteTaskFooterView.jP(DeleteTaskFooterView.a(DeleteTaskFooterView.this));
+            DeleteTaskFooterView.ka(DeleteTaskFooterView.a(DeleteTaskFooterView.this));
           }
           DeleteTaskFooterView.d(DeleteTaskFooterView.this);
+          a.a(this, "com/tencent/mm/plugin/downloader_app/ui/DeleteTaskFooterView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(8979);
           return;
           DeleteTaskFooterView.a(DeleteTaskFooterView.this, true);
-          b.e(DeleteTaskFooterView.b(DeleteTaskFooterView.this), "checkbox_cell_on");
+          com.tencent.mm.plugin.downloader_app.b.e(DeleteTaskFooterView.b(DeleteTaskFooterView.this), "checkbox_cell_on");
         }
       }
     });
-    this.oMv = ((LinearLayout)localView.findViewById(2131298986));
-    this.oMv.setOnClickListener(new View.OnClickListener()
+    this.pqd = ((LinearLayout)localView.findViewById(2131298986));
+    this.pqd.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(8980);
-        DeleteTaskFooterView.bYA();
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/downloader_app/ui/DeleteTaskFooterView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        DeleteTaskFooterView.cde();
+        a.a(this, "com/tencent/mm/plugin/downloader_app/ui/DeleteTaskFooterView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(8980);
       }
     });
-    this.oMv.setClickable(false);
-    this.oMw = ((TextView)localView.findViewById(2131298982));
-    this.oMx = ((ImageView)localView.findViewById(2131298987));
+    this.pqd.setClickable(false);
+    this.pqe = ((TextView)localView.findViewById(2131298982));
+    this.pqf = ((ImageView)localView.findViewById(2131298987));
     AppMethodBeat.o(8982);
   }
 }

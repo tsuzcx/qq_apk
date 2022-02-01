@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
 import com.tencent.mm.protocal.protobuf.bk;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
 {
@@ -19,7 +19,7 @@ public final class c
     try
     {
       parambk = parambk.toByteArray();
-      b.o("hell_astackd_mmkv_key", parambk);
+      b.p("hell_astackd_mmkv_key", parambk);
       AppMethodBeat.o(121880);
       return;
     }
@@ -27,16 +27,16 @@ public final class c
     {
       for (;;)
       {
-        ac.printErrStackTrace("ActivityStackDao", parambk, "ActivityStackDao write", new Object[0]);
+        ad.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", parambk, "ActivityStackDao write", new Object[0]);
         parambk = localObject;
       }
     }
   }
   
-  public static bk ciP()
+  public static bk cnP()
   {
     AppMethodBeat.i(121879);
-    bk localbk2 = ciQ();
+    bk localbk2 = cnQ();
     bk localbk1 = localbk2;
     if (localbk2 == null)
     {
@@ -47,7 +47,7 @@ public final class c
     return localbk1;
   }
   
-  private static bk ciQ()
+  private static bk cnQ()
   {
     AppMethodBeat.i(121881);
     byte[] arrayOfByte = b.getBytes("hell_astackd_mmkv_key");
@@ -65,7 +65,7 @@ public final class c
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("ActivityStackDao", localException, "ActivityStackDao read", new Object[0]);
+      ad.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", localException, "ActivityStackDao read", new Object[0]);
       AppMethodBeat.o(121881);
     }
     return null;

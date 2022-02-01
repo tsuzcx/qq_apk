@@ -6,17 +6,17 @@ import com.tencent.mm.pointers.PInt;
 
 public abstract interface b
 {
-  public abstract String Cn(int paramInt);
+  public abstract String Da(int paramInt);
   
   public abstract void a(View paramView, PInt paramPInt1, PInt paramPInt2, int paramInt);
-  
-  public abstract String ac(View paramView, int paramInt);
   
   public abstract String ad(View paramView, int paramInt);
   
   public abstract String ae(View paramView, int paramInt);
   
-  public abstract boolean dS(View paramView);
+  public abstract String af(View paramView, int paramInt);
+  
+  public abstract boolean dX(View paramView);
   
   public abstract void setRecyclerView(RecyclerView paramRecyclerView);
 }

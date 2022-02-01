@@ -8,21 +8,21 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 public abstract class a
   extends RecyclerView.w
 {
-  protected k CXj;
+  protected k EBf;
   
   public a(View paramView, k paramk)
   {
     super(paramView);
-    this.CXj = paramk;
+    this.EBf = paramk;
   }
   
   public abstract void a(c paramc, int paramInt1, int paramInt2);
   
-  public abstract int bZp();
+  public abstract int cdT();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,14 +2,12 @@ package d.l.b.a.b.m.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.aa;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.as;
 import d.l.b.a.b.b.e;
 import d.l.b.a.b.b.f;
 import d.l.b.a.b.b.h;
 import d.l.b.a.b.m.ab;
-import d.l.b.a.b.m.ac;
 import d.l.b.a.b.m.aj;
 import d.l.b.a.b.m.ao;
 import d.l.b.a.b.m.at;
@@ -32,14 +30,14 @@ public final class a
   public static final ab a(ab paramab, d.l.b.a.b.b.a.g paramg)
   {
     AppMethodBeat.i(61252);
-    k.h(paramab, "$this$replaceAnnotations");
-    k.h(paramg, "newAnnotations");
-    if ((paramab.fQj().isEmpty()) && (paramg.isEmpty()))
+    p.h(paramab, "$this$replaceAnnotations");
+    p.h(paramg, "newAnnotations");
+    if ((paramab.ghH().isEmpty()) && (paramg.isEmpty()))
     {
       AppMethodBeat.o(61252);
       return paramab;
     }
-    paramab = (ab)paramab.gcz().b(paramg);
+    paramab = (ab)paramab.gua().b(paramg);
     AppMethodBeat.o(61252);
     return paramab;
   }
@@ -47,14 +45,14 @@ public final class a
   public static final av a(ab paramab, bh parambh, as paramas)
   {
     AppMethodBeat.i(61253);
-    k.h(paramab, "type");
-    k.h(parambh, "projectionKind");
+    p.h(paramab, "type");
+    p.h(parambh, "projectionKind");
     if (paramas != null) {}
-    for (paramas = paramas.fRg();; paramas = null)
+    for (paramas = paramas.giF();; paramas = null)
     {
       bh localbh = parambh;
       if (paramas == parambh) {
-        localbh = bh.LLV;
+        localbh = bh.NCP;
       }
       paramab = (av)new ax(localbh, paramab);
       AppMethodBeat.o(61253);
@@ -65,9 +63,9 @@ public final class a
   public static final ab aD(ab paramab)
   {
     AppMethodBeat.i(61248);
-    k.h(paramab, "$this$makeNullable");
+    p.h(paramab, "$this$makeNullable");
     paramab = bc.aD(paramab);
-    k.g(paramab, "TypeUtils.makeNullable(this)");
+    p.g(paramab, "TypeUtils.makeNullable(this)");
     AppMethodBeat.o(61248);
     return paramab;
   }
@@ -75,9 +73,9 @@ public final class a
   public static final ab aE(ab paramab)
   {
     AppMethodBeat.i(61249);
-    k.h(paramab, "$this$makeNotNullable");
+    p.h(paramab, "$this$makeNotNullable");
     paramab = bc.aE(paramab);
-    k.g(paramab, "TypeUtils.makeNotNullable(this)");
+    p.g(paramab, "TypeUtils.makeNotNullable(this)");
     AppMethodBeat.o(61249);
     return paramab;
   }
@@ -85,7 +83,7 @@ public final class a
   public static final boolean aI(ab paramab)
   {
     AppMethodBeat.i(61250);
-    k.h(paramab, "$this$isTypeParameter");
+    p.h(paramab, "$this$isTypeParameter");
     boolean bool = bc.aI(paramab);
     AppMethodBeat.o(61250);
     return bool;
@@ -94,9 +92,9 @@ public final class a
   public static final d.l.b.a.b.a.g aN(ab paramab)
   {
     AppMethodBeat.i(61247);
-    k.h(paramab, "$this$builtIns");
-    paramab = paramab.gbz().fRE();
-    k.g(paramab, "constructor.builtIns");
+    p.h(paramab, "$this$builtIns");
+    paramab = paramab.gsZ().gjd();
+    p.g(paramab, "constructor.builtIns");
     AppMethodBeat.o(61247);
     return paramab;
   }
@@ -104,7 +102,7 @@ public final class a
   public static final av aO(ab paramab)
   {
     AppMethodBeat.i(61254);
-    k.h(paramab, "$this$asTypeProjection");
+    p.h(paramab, "$this$asTypeProjection");
     paramab = (av)new ax(paramab);
     AppMethodBeat.o(61254);
     return paramab;
@@ -113,35 +111,35 @@ public final class a
   public static final ab aP(ab paramab)
   {
     AppMethodBeat.i(61255);
-    k.h(paramab, "$this$replaceArgumentsWithStarProjections");
-    bg localbg = paramab.gcz();
+    p.h(paramab, "$this$replaceArgumentsWithStarProjections");
+    bg localbg = paramab.gua();
     aj localaj;
     Object localObject1;
     if ((localbg instanceof v))
     {
-      localaj = ((v)localbg).LLa;
+      localaj = ((v)localbg).NBV;
       paramab = localaj;
-      if (!localaj.gbz().getParameters().isEmpty())
+      if (!localaj.gsZ().getParameters().isEmpty())
       {
-        if (localaj.gbz().fQq() == null) {
+        if (localaj.gsZ().ghO() == null) {
           paramab = localaj;
         }
       }
       else
       {
-        localaj = ((v)localbg).LLb;
-        if ((!localaj.gbz().getParameters().isEmpty()) && (localaj.gbz().fQq() != null)) {
+        localaj = ((v)localbg).NBW;
+        if ((!localaj.gsZ().getParameters().isEmpty()) && (localaj.gsZ().ghO() != null)) {
           break label218;
         }
       }
       for (;;)
       {
-        paramab = ac.a(paramab, localaj);
+        paramab = d.l.b.a.b.m.ac.a(paramab, localaj);
         paramab = (ab)be.a(paramab, (ab)localbg);
         AppMethodBeat.o(61255);
         return paramab;
-        paramab = localaj.gbz().getParameters();
-        k.g(paramab, "constructor.parameters");
+        paramab = localaj.gsZ().getParameters();
+        p.g(paramab, "constructor.parameters");
         localObject1 = (Iterable)paramab;
         paramab = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
         localObject1 = ((Iterable)localObject1).iterator();
@@ -151,8 +149,8 @@ public final class a
         paramab = az.a(localaj, (List)paramab);
         break;
         label218:
-        localObject1 = localaj.gbz().getParameters();
-        k.g(localObject1, "constructor.parameters");
+        localObject1 = localaj.gsZ().getParameters();
+        p.g(localObject1, "constructor.parameters");
         Object localObject2 = (Iterable)localObject1;
         localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
         localObject2 = ((Iterable)localObject2).iterator();
@@ -166,8 +164,8 @@ public final class a
     {
       localaj = (aj)localbg;
       paramab = localaj;
-      if (!localaj.gbz().getParameters().isEmpty()) {
-        if (localaj.gbz().fQq() != null) {
+      if (!localaj.gsZ().getParameters().isEmpty()) {
+        if (localaj.gsZ().ghO() != null) {
           break label369;
         }
       }
@@ -176,8 +174,8 @@ public final class a
         paramab = (bg)paramab;
         break;
         label369:
-        paramab = localaj.gbz().getParameters();
-        k.g(paramab, "constructor.parameters");
+        paramab = localaj.gsZ().getParameters();
+        p.g(paramab, "constructor.parameters");
         localObject1 = (Iterable)paramab;
         paramab = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
         localObject1 = ((Iterable)localObject1).iterator();
@@ -194,9 +192,9 @@ public final class a
   public static final boolean c(ab paramab1, ab paramab2)
   {
     AppMethodBeat.i(61251);
-    k.h(paramab1, "$this$isSubtypeOf");
-    k.h(paramab2, "superType");
-    boolean bool = d.l.b.a.b.m.a.g.LMg.c(paramab1, paramab2);
+    p.h(paramab1, "$this$isSubtypeOf");
+    p.h(paramab2, "superType");
+    boolean bool = d.l.b.a.b.m.a.g.NDb.c(paramab1, paramab2);
     AppMethodBeat.o(61251);
     return bool;
   }
@@ -204,24 +202,24 @@ public final class a
   public static final ab e(as paramas)
   {
     AppMethodBeat.i(61256);
-    k.h(paramas, "$this$representativeUpperBound");
-    Object localObject1 = paramas.fOJ();
-    k.g(localObject1, "upperBounds");
+    p.h(paramas, "$this$representativeUpperBound");
+    Object localObject1 = paramas.ggj();
+    p.g(localObject1, "upperBounds");
     if (!((Collection)localObject1).isEmpty()) {}
-    for (int i = 1; (aa.KTq) && (i == 0); i = 0)
+    for (int i = 1; (d.ac.MKp) && (i == 0); i = 0)
     {
       paramas = (Throwable)new AssertionError("Upper bounds should not be empty: ".concat(String.valueOf(paramas)));
       AppMethodBeat.o(61256);
       throw paramas;
     }
-    localObject1 = paramas.fOJ();
-    k.g(localObject1, "upperBounds");
+    localObject1 = paramas.ggj();
+    p.g(localObject1, "upperBounds");
     Iterator localIterator = ((Iterable)localObject1).iterator();
     Object localObject2;
     if (localIterator.hasNext())
     {
       localObject2 = localIterator.next();
-      h localh = ((ab)localObject2).gbz().fQq();
+      h localh = ((ab)localObject2).gsZ().ghO();
       localObject1 = localh;
       if (!(localh instanceof e)) {
         localObject1 = null;
@@ -243,15 +241,15 @@ public final class a
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        paramas = paramas.fOJ();
-        k.g(paramas, "upperBounds");
-        paramas = j.iO(paramas);
-        k.g(paramas, "upperBounds.first()");
+        paramas = paramas.ggj();
+        p.g(paramas, "upperBounds");
+        paramas = j.jc(paramas);
+        p.g(paramas, "upperBounds.first()");
         localObject1 = (ab)paramas;
       }
       AppMethodBeat.o(61256);
       return localObject1;
-      if ((((e)localObject1).fPY() == f.Ldx) || (((e)localObject1).fPY() == f.LdA)) {
+      if ((((e)localObject1).ghw() == f.MUs) || (((e)localObject1).ghw() == f.MUv)) {
         break label158;
       }
       i = 1;
@@ -263,7 +261,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.d.a
  * JD-Core Version:    0.7.0.1
  */

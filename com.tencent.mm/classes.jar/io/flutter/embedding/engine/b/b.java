@@ -2,9 +2,9 @@ package io.flutter.embedding.engine.b;
 
 public abstract interface b
 {
-  public abstract void cHX();
+  public abstract void cQm();
   
-  public abstract void cHY();
+  public abstract void cQn();
 }
 
 

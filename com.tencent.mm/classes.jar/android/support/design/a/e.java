@@ -7,8 +7,8 @@ import java.util.WeakHashMap;
 public final class e
   extends Property<Drawable, Integer>
 {
-  public static final Property<Drawable, Integer> eW = new e();
-  private final WeakHashMap<Drawable, Integer> eX = new WeakHashMap();
+  public static final Property<Drawable, Integer> gP = new e();
+  private final WeakHashMap<Drawable, Integer> gQ = new WeakHashMap();
   
   private e()
   {
@@ -17,7 +17,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.design.a.e
  * JD-Core Version:    0.7.0.1
  */

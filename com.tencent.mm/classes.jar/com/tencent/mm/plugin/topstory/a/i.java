@@ -1,32 +1,24 @@
 package com.tencent.mm.plugin.topstory.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.compatible.util.p;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.model.u;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.bj;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.websearch.api.a.a;
 import com.tencent.mm.plugin.websearch.api.a.b;
-import com.tencent.mm.plugin.websearch.api.r;
-import com.tencent.mm.plugin.websearch.api.v;
 import com.tencent.mm.plugin.websearch.api.z;
-import com.tencent.mm.protocal.protobuf.aij;
-import com.tencent.mm.protocal.protobuf.cpk;
-import com.tencent.mm.protocal.protobuf.dia;
-import com.tencent.mm.protocal.protobuf.dik;
-import com.tencent.mm.protocal.protobuf.dil;
-import com.tencent.mm.protocal.protobuf.dio;
-import com.tencent.mm.protocal.protobuf.dyo;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.protocal.protobuf.akz;
+import com.tencent.mm.protocal.protobuf.cup;
+import com.tencent.mm.protocal.protobuf.dnp;
+import com.tencent.mm.protocal.protobuf.dnz;
+import com.tencent.mm.protocal.protobuf.doa;
+import com.tencent.mm.protocal.protobuf.dod;
+import com.tencent.mm.protocal.protobuf.eeq;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -34,115 +26,115 @@ import java.util.Set;
 
 public final class i
 {
-  public static void Rj(int paramInt)
+  public static void ST(int paramInt)
   {
     AppMethodBeat.i(90994);
     switch (paramInt)
     {
     default: 
-      b.lA(b.rAo);
+      b.ma(b.srZ);
     }
     for (;;)
     {
-      a.lA(7);
+      a.ma(7);
       AppMethodBeat.o(90994);
       return;
-      b.lA(b.rAb);
+      b.ma(b.srM);
       continue;
-      b.lA(b.rAc);
+      b.ma(b.srN);
       continue;
-      b.lA(b.rAd);
+      b.ma(b.srO);
       continue;
-      b.lA(b.rAe);
+      b.ma(b.srP);
       continue;
-      b.lA(b.rAf);
+      b.ma(b.srQ);
       continue;
-      b.lA(b.rAg);
+      b.ma(b.srR);
       continue;
-      b.lA(b.rAh);
+      b.ma(b.srS);
       continue;
-      b.lA(b.rAi);
+      b.ma(b.srT);
       continue;
-      b.lA(b.rAj);
+      b.ma(b.srU);
       continue;
-      b.lA(b.rAk);
+      b.ma(b.srV);
       continue;
-      b.lA(b.rAl);
+      b.ma(b.srW);
       continue;
-      b.lA(b.rAm);
+      b.ma(b.srX);
       continue;
-      b.lA(b.rAn);
+      b.ma(b.srY);
     }
   }
   
-  public static void a(dia paramdia, String paramString, long paramLong)
+  public static void a(dnp paramdnp, String paramString, long paramLong)
   {
     AppMethodBeat.i(90992);
-    if ((paramdia.FQV.size() > 0) && ("clickTopStory".equals(((dik)paramdia.FQV.get(0)).name))) {}
-    for (long l = paramLong - ((dik)paramdia.FQV.get(0)).timestamp;; l = 0L)
+    if ((paramdnp.HBB.size() > 0) && ("clickTopStory".equals(((dnz)paramdnp.HBB.get(0)).name))) {}
+    for (long l = paramLong - ((dnz)paramdnp.HBB.get(0)).timestamp;; l = 0L)
     {
-      int i = z.Ul(1);
-      paramdia = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramdia.scene), paramdia.qox, paramdia.sessionId, Integer.valueOf(i), paramString, Long.valueOf(paramLong), Integer.valueOf(paramdia.zZU), Integer.valueOf(paramdia.FQW), paramdia.rzt, Long.valueOf(l), paramdia.FQX });
-      ac.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryHomeUIAction 15466 %s", new Object[] { paramdia });
-      h.wUl.kvStat(15466, paramdia);
+      int i = com.tencent.mm.plugin.websearch.api.ad.We(1);
+      paramdnp = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramdnp.scene), paramdnp.qXu, paramdnp.sessionId, Integer.valueOf(i), paramString, Long.valueOf(paramLong), Integer.valueOf(paramdnp.BrG), Integer.valueOf(paramdnp.HBC), paramdnp.srd, Long.valueOf(l), paramdnp.HBD });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryHomeUIAction 15466 %s", new Object[] { paramdnp });
+      com.tencent.mm.plugin.report.service.g.yhR.kvStat(15466, paramdnp);
       AppMethodBeat.o(90992);
       return;
     }
   }
   
-  public static final void a(dil paramdil, long paramLong, dio paramdio)
+  public static final void a(doa paramdoa, long paramLong, dod paramdod)
   {
     AppMethodBeat.i(90997);
     int i;
     long l;
     if (paramLong > 0L)
     {
-      i = paramdil.scene;
+      i = paramdoa.scene;
       paramLong /= 1000L;
-      l = paramdil.FRz;
-      if (paramdio == null) {
+      l = paramdoa.HCf;
+      if (paramdod == null) {
         break label156;
       }
     }
     label156:
-    for (paramdio = paramdio.FRQ;; paramdio = paramdil.FRw)
+    for (paramdod = paramdod.HCw;; paramdod = paramdoa.HCc)
     {
-      paramdil = String.format("videoflowbrowsereport=1&scene=%s&staytime=%s&channelid=%s&pageid=%s&nettype=%s&source=%s&expand=%s&searchid=%s", new Object[] { Integer.valueOf(i), Long.valueOf(paramLong), Long.valueOf(l), Integer.valueOf(3), "", Integer.valueOf(2), paramdio, paramdil.jKB });
-      ac.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryVideoPageBrowseTime 15018 %s", new Object[] { paramdil });
-      paramdio = new cpk();
-      paramdio.FCf = paramdil;
-      paramdil = new v(paramdio);
-      g.agi().a(paramdil, 0);
+      paramdoa = String.format("videoflowbrowsereport=1&scene=%s&staytime=%s&channelid=%s&pageid=%s&nettype=%s&source=%s&expand=%s&searchid=%s", new Object[] { Integer.valueOf(i), Long.valueOf(paramLong), Long.valueOf(l), Integer.valueOf(3), "", Integer.valueOf(2), paramdod, paramdoa.keN });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryVideoPageBrowseTime 15018 %s", new Object[] { paramdoa });
+      paramdod = new cup();
+      paramdod.Hmu = paramdoa;
+      paramdoa = new z(paramdod);
+      com.tencent.mm.kernel.g.aiU().a(paramdoa, 0);
       AppMethodBeat.o(90997);
       return;
     }
   }
   
-  public static final void a(dil paramdil, dio paramdio, int paramInt)
+  public static final void a(doa paramdoa, dod paramdod, int paramInt)
   {
     AppMethodBeat.i(177107);
-    cpk localcpk = new cpk();
-    localcpk.FCf = String.format("logname=videopoint&scene=%s&docid=%s&searchid=%s&vid=%s&actiontype=%s&itemtype=%s", new Object[] { Integer.valueOf(paramdil.scene), paramdio.sxK, paramdil.jKB, paramdio.sVF, Integer.valueOf(paramInt), Integer.valueOf(paramdio.FRR) });
-    ac.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportVideoPointAction %s", new Object[] { localcpk.FCf });
-    paramdil = new r(localcpk);
-    g.agi().a(paramdil, 0);
+    cup localcup = new cup();
+    localcup.Hmu = String.format("logname=videopoint&scene=%s&docid=%s&searchid=%s&vid=%s&actiontype=%s&itemtype=%s", new Object[] { Integer.valueOf(paramdoa.scene), paramdod.tul, paramdoa.keN, paramdod.tSk, Integer.valueOf(paramInt), Integer.valueOf(paramdod.HCx) });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportVideoPointAction %s", new Object[] { localcup.Hmu });
+    paramdoa = new com.tencent.mm.plugin.websearch.api.u(localcup);
+    com.tencent.mm.kernel.g.aiU().a(paramdoa, 0);
     AppMethodBeat.o(177107);
   }
   
-  public static void a(dil paramdil, dio paramdio, String paramString1, String paramString2, String paramString3)
+  public static void a(doa paramdoa, dod paramdod, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(90991);
-    paramdil = String.format("videosharereport=1&scene=%s&searchid=%s&docid=%s&cdnsourcetype=%s&videoid=%s&optype=%s&fromuser=%s&touser=%s&channelid=%s&optypes=%s&expand=%s", new Object[] { Integer.valueOf(paramdil.scene), paramdil.jKB, paramdio.sxK, Integer.valueOf(paramdio.FSb), paramdio.sVF, Integer.valueOf(0), paramString2, paramString3, Long.valueOf(paramdil.FRz), paramString1, paramdio.FRQ });
-    ac.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryVideoShare 15035 %s", new Object[] { paramdil });
-    paramdio = new cpk();
-    paramdio.FCf = paramdil;
-    ac.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryVideoShare:".concat(String.valueOf(paramdil)));
-    paramdil = new v(paramdio);
-    g.agi().a(paramdil, 0);
+    paramdoa = String.format("videosharereport=1&scene=%s&searchid=%s&docid=%s&cdnsourcetype=%s&videoid=%s&optype=%s&fromuser=%s&touser=%s&channelid=%s&optypes=%s&expand=%s", new Object[] { Integer.valueOf(paramdoa.scene), paramdoa.keN, paramdod.tul, Integer.valueOf(paramdod.HCH), paramdod.tSk, Integer.valueOf(0), paramString2, paramString3, Long.valueOf(paramdoa.HCf), paramString1, paramdod.HCw });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryVideoShare 15035 %s", new Object[] { paramdoa });
+    paramdod = new cup();
+    paramdod.Hmu = paramdoa;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryVideoShare:".concat(String.valueOf(paramdoa)));
+    paramdoa = new z(paramdod);
+    com.tencent.mm.kernel.g.aiU().a(paramdoa, 0);
     AppMethodBeat.o(90991);
   }
   
-  public static void a(dil paramdil, dio paramdio, Set<aij> paramSet, int paramInt)
+  public static void a(doa paramdoa, dod paramdod, Set<akz> paramSet, int paramInt)
   {
     AppMethodBeat.i(90996);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -150,22 +142,22 @@ public final class i
     localStringBuffer.append("&feedtype=0");
     localStringBuffer.append("&businesstype=2");
     localStringBuffer.append("&itemtype=");
-    localStringBuffer.append(paramdio.FRR);
+    localStringBuffer.append(paramdod.HCx);
     localStringBuffer.append("&scene=");
-    localStringBuffer.append(paramdil.scene);
+    localStringBuffer.append(paramdoa.scene);
     localStringBuffer.append("&searchid=");
-    localStringBuffer.append(paramdil.jKB);
+    localStringBuffer.append(paramdoa.keN);
     localStringBuffer.append("&clicktime=");
     localStringBuffer.append(System.currentTimeMillis());
     localStringBuffer.append("&docid=");
-    localStringBuffer.append(paramdio.sxK);
+    localStringBuffer.append(paramdod.tul);
     localStringBuffer.append("&docpos=");
     localStringBuffer.append(paramInt);
     localStringBuffer.append("&reasonid=");
     Object localObject = paramSet.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      localStringBuffer.append(((aij)((Iterator)localObject).next()).id);
+      localStringBuffer.append(((akz)((Iterator)localObject).next()).id);
       localStringBuffer.append("#");
     }
     localStringBuffer.append("&reasonwording=");
@@ -173,24 +165,24 @@ public final class i
     paramSet = paramSet.iterator();
     while (paramSet.hasNext())
     {
-      ((StringBuffer)localObject).append(((aij)paramSet.next()).dlQ);
+      ((StringBuffer)localObject).append(((akz)paramSet.next()).dxD);
       ((StringBuffer)localObject).append("#");
     }
     try
     {
-      localStringBuffer.append(p.encode(((StringBuffer)localObject).toString(), "utf8"));
+      localStringBuffer.append(com.tencent.mm.compatible.util.q.encode(((StringBuffer)localObject).toString(), "utf8"));
       label291:
       localStringBuffer.append("&offset=");
       localStringBuffer.append(paramInt);
       localStringBuffer.append("&sessionid=");
-      localStringBuffer.append(z.Ui(paramdil.scene));
+      localStringBuffer.append(com.tencent.mm.plugin.websearch.api.ad.Wb(paramdoa.scene));
       localStringBuffer.append("&reserveexpand=");
-      localStringBuffer.append(paramdio.FRS);
-      ac.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportFeedBackClick %s", new Object[] { localStringBuffer.toString() });
-      paramdil = new cpk();
-      paramdil.FCf = localStringBuffer.toString();
-      paramdil = new v(paramdil);
-      g.agi().a(paramdil, 0);
+      localStringBuffer.append(paramdod.HCy);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportFeedBackClick %s", new Object[] { localStringBuffer.toString() });
+      paramdoa = new cup();
+      paramdoa.Hmu = localStringBuffer.toString();
+      paramdoa = new z(paramdoa);
+      com.tencent.mm.kernel.g.aiU().a(paramdoa, 0);
       AppMethodBeat.o(90996);
       return;
     }
@@ -200,26 +192,26 @@ public final class i
     }
   }
   
-  public static void a(dio paramdio, int paramInt1, String paramString, int paramInt2)
+  public static void a(dod paramdod, int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(90995);
     int i;
-    if (ax.isWifi(ai.getContext()))
+    if (ay.isWifi(aj.getContext()))
     {
       i = 2;
-      if (paramdio == null) {
+      if (paramdod == null) {
         break label122;
       }
     }
     label122:
-    for (paramdio = paramdio.sxK;; paramdio = "")
+    for (paramdod = paramdod.tul;; paramdod = "")
     {
-      paramdio = String.format("%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt1), paramString, paramdio, Integer.valueOf(i), Integer.valueOf(paramInt2) });
-      ac.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportKvTopStoryVideoPlayError %s", new Object[] { paramdio });
-      e.wTc.kvStat(15248, paramdio);
+      paramdod = String.format("%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt1), paramString, paramdod, Integer.valueOf(i), Integer.valueOf(paramInt2) });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportKvTopStoryVideoPlayError %s", new Object[] { paramdod });
+      e.ygI.kvStat(15248, paramdod);
       AppMethodBeat.o(90995);
       return;
-      if (!ax.isConnected(ai.getContext()))
+      if (!ay.isConnected(aj.getContext()))
       {
         i = 1;
         break;
@@ -229,109 +221,109 @@ public final class i
     }
   }
   
-  public static void a(dyo paramdyo, bo parambo)
+  public static void a(eeq parameeq, bu parambu)
   {
     AppMethodBeat.i(90993);
     Object localObject1;
     Object localObject2;
     int i;
-    if (w.sQ(parambo.field_talker)) {
-      if (parambo.field_isSend == 1)
+    if (w.vF(parambu.field_talker)) {
+      if (parambu.field_isSend == 1)
       {
-        localObject1 = u.axw();
-        localObject2 = parambo.field_talker;
+        localObject1 = com.tencent.mm.model.u.aAm();
+        localObject2 = parambu.field_talker;
         i = 2;
-        parambo = (bo)localObject1;
+        parambu = (bu)localObject1;
         localObject1 = new StringBuffer();
         ((StringBuffer)localObject1).append("isShareClick=1");
         ((StringBuffer)localObject1).append("&relevant_vid=");
-        ((StringBuffer)localObject1).append(paramdyo.BYK);
+        ((StringBuffer)localObject1).append(parameeq.DBG);
         ((StringBuffer)localObject1).append("&relevant_pre_searchid=");
-        ((StringBuffer)localObject1).append(paramdyo.BYM);
+        ((StringBuffer)localObject1).append(parameeq.DBI);
         ((StringBuffer)localObject1).append("&relevant_shared_openid=");
-        ((StringBuffer)localObject1).append(paramdyo.BYN);
+        ((StringBuffer)localObject1).append(parameeq.DBJ);
         ((StringBuffer)localObject1).append("&rec_category=");
-        if (paramdyo.BYW <= 0L) {
+        if (parameeq.DBS <= 0L) {
           break label320;
         }
-        ((StringBuffer)localObject1).append(paramdyo.BYW);
+        ((StringBuffer)localObject1).append(parameeq.DBS);
       }
     }
     for (;;)
     {
       ((StringBuffer)localObject1).append("&source=");
-      ((StringBuffer)localObject1).append(paramdyo.source);
+      ((StringBuffer)localObject1).append(parameeq.source);
       ((StringBuffer)localObject1).append("&fromUser=");
-      ((StringBuffer)localObject1).append(parambo);
+      ((StringBuffer)localObject1).append(parambu);
       ((StringBuffer)localObject1).append("&fromScene=");
       ((StringBuffer)localObject1).append(i);
       ((StringBuffer)localObject1).append("&targetInfo=");
       ((StringBuffer)localObject1).append((String)localObject2);
       ((StringBuffer)localObject1).append("&expand=");
-      ((StringBuffer)localObject1).append(paramdyo.BYL);
-      ac.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryClickShareItem 15371 %s", new Object[] { ((StringBuffer)localObject1).toString() });
-      paramdyo = new cpk();
-      paramdyo.FCf = ((StringBuffer)localObject1).toString();
-      paramdyo = new v(paramdyo);
-      g.agi().a(paramdyo, 0);
+      ((StringBuffer)localObject1).append(parameeq.DBH);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryClickShareItem 15371 %s", new Object[] { ((StringBuffer)localObject1).toString() });
+      parameeq = new cup();
+      parameeq.Hmu = ((StringBuffer)localObject1).toString();
+      parameeq = new z(parameeq);
+      com.tencent.mm.kernel.g.aiU().a(parameeq, 0);
       AppMethodBeat.o(90993);
       return;
-      localObject1 = bi.yl(parambo.field_content);
+      localObject1 = bj.Bk(parambu.field_content);
       break;
-      if (parambo.field_isSend == 1)
+      if (parambu.field_isSend == 1)
       {
-        localObject2 = u.axw();
-        localObject1 = parambo.field_talker;
-        parambo = (bo)localObject2;
+        localObject2 = com.tencent.mm.model.u.aAm();
+        localObject1 = parambu.field_talker;
+        parambu = (bu)localObject2;
       }
       for (;;)
       {
         i = 1;
         localObject2 = localObject1;
         break;
-        parambo = parambo.field_talker;
-        localObject1 = u.axw();
+        parambu = parambu.field_talker;
+        localObject1 = com.tencent.mm.model.u.aAm();
       }
       label320:
-      ((StringBuffer)localObject1).append(paramdyo.BYO);
+      ((StringBuffer)localObject1).append(parameeq.DBK);
     }
   }
   
-  public static final void axI(String paramString)
+  public static final void aCN(String paramString)
   {
-    AppMethodBeat.i(206851);
-    ac.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryWebViewVisitTime %s", new Object[] { paramString });
-    cpk localcpk = new cpk();
-    localcpk.FCf = paramString;
-    paramString = new v(localcpk);
-    g.agi().a(paramString, 0);
-    AppMethodBeat.o(206851);
+    AppMethodBeat.i(219081);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryWebViewVisitTime %s", new Object[] { paramString });
+    cup localcup = new cup();
+    localcup.Hmu = paramString;
+    paramString = new z(localcup);
+    com.tencent.mm.kernel.g.aiU().a(paramString, 0);
+    AppMethodBeat.o(219081);
   }
   
-  public static final void c(String paramString1, String paramString2, int paramInt, long paramLong)
+  public static final void fi(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(90998);
+    if ((!bt.isNullOrNil(paramString)) && (paramString.startsWith("wrd"))) {
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(900L, paramInt, 1L, false);
+    }
+    AppMethodBeat.o(90998);
+  }
+  
+  public static final void g(String paramString1, String paramString2, int paramInt, long paramLong)
   {
     AppMethodBeat.i(90999);
-    if ((!bs.isNullOrNil(paramString1)) && (paramString1.startsWith("wrd"))) {
+    if ((!bt.isNullOrNil(paramString1)) && (paramString1.startsWith("wrd"))) {
       try
       {
-        paramString1 = String.format("%s,%s,%s,%s", new Object[] { p.encode(paramString2, "utf8"), Integer.valueOf(paramInt), paramString1, Long.valueOf(paramLong) });
-        ac.i("MicroMsg.TopStory.TopStoryReportApiLogic", "kvReportTopStoryOpenWebViewError 15728 %s", new Object[] { paramString1 });
-        h.wUl.kvStat(15728, paramString1);
+        paramString1 = String.format("%s,%s,%s,%s", new Object[] { com.tencent.mm.compatible.util.q.encode(paramString2, "utf8"), Integer.valueOf(paramInt), paramString1, Long.valueOf(paramLong) });
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryReportApiLogic", "kvReportTopStoryOpenWebViewError 15728 %s", new Object[] { paramString1 });
+        com.tencent.mm.plugin.report.service.g.yhR.kvStat(15728, paramString1);
         AppMethodBeat.o(90999);
         return;
       }
       catch (UnsupportedEncodingException paramString1) {}
     }
     AppMethodBeat.o(90999);
-  }
-  
-  public static final void eQ(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(90998);
-    if ((!bs.isNullOrNil(paramString)) && (paramString.startsWith("wrd"))) {
-      h.wUl.idkeyStat(900L, paramInt, 1L, false);
-    }
-    AppMethodBeat.o(90998);
   }
 }
 

@@ -13,7 +13,7 @@ final class LuckyMoneyPrepareUI$13
   public final void afterTextChanged(Editable paramEditable)
   {
     AppMethodBeat.i(65839);
-    this.uhS.setContentDescription(paramEditable.toString());
+    this.vkC.setContentDescription(paramEditable.toString());
     AppMethodBeat.o(65839);
   }
   
@@ -23,7 +23,7 @@ final class LuckyMoneyPrepareUI$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyPrepareUI.13
  * JD-Core Version:    0.7.0.1
  */

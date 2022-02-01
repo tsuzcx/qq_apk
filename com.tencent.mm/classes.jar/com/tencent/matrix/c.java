@@ -3,10 +3,12 @@ package com.tencent.matrix;
 import android.app.Application;
 import com.tencent.matrix.e.a;
 import com.tencent.matrix.mrs.core.MrsLogic;
+import com.tencent.matrix.report.h;
 import com.tencent.matrix.report.h.b;
 import com.tencent.mm.app.AppForegroundDelegate;
 import com.tencent.mm.app.n;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.i;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Objects;
@@ -19,14 +21,14 @@ public final class c
   static
   {
     boolean bool2 = false;
-    if ((com.tencent.mm.sdk.platformtools.h.ENABLE_MATRIX) || (com.tencent.mm.sdk.platformtools.h.DEBUG)) {}
+    if ((i.ENABLE_MATRIX) || (i.DEBUG)) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       ENABLE_MATRIX = bool1;
-      if (!com.tencent.mm.sdk.platformtools.h.ENABLE_MATRIX_TRACE)
+      if (!i.ENABLE_MATRIX_TRACE)
       {
         bool1 = bool2;
-        if (!com.tencent.mm.sdk.platformtools.h.DEBUG) {}
+        if (!i.DEBUG) {}
       }
       else
       {
@@ -45,40 +47,40 @@ public final class c
     }
     Objects.requireNonNull(parama);
     parama.a(paramApplication);
-    b.a(parama.Gr());
-    AppForegroundDelegate.cHM.a(parama.Gv());
+    b.a(parama.HM());
+    AppForegroundDelegate.cSQ.a(parama.HQ());
     MrsLogic.setStrategyCaller(new com.tencent.matrix.strategy.b());
-    Object localObject = parama.Gt();
-    com.tencent.matrix.report.h localh = parama.Gs();
-    localh.cus = parama.Gu();
+    Object localObject = parama.HO();
+    h localh = parama.HN();
+    localh.cFn = parama.HP();
     b.a locala = new b.a(paramApplication);
     locala.pluginListener = localh;
     parama.a(paramApplication, locala, (f)localObject);
     if (locala.pluginListener == null) {
       locala.pluginListener = new a(locala.application);
     }
-    b.a(new b(locala.application, locala.pluginListener, locala.cqk, (byte)0));
-    paramApplication = b.Gq().cqk.iterator();
+    b.a(new b(locala.application, locala.pluginListener, locala.cBc, (byte)0));
+    paramApplication = b.HL().cBc.iterator();
     while (paramApplication.hasNext())
     {
       localObject = (com.tencent.matrix.e.b)paramApplication.next();
-      ac.i("MicroMsg.MatrixDelegate", "[onInitialize] start plugin: ".concat(String.valueOf(localObject)));
+      ad.i("MicroMsg.MatrixDelegate", "[onInitialize] start plugin: ".concat(String.valueOf(localObject)));
       ((com.tencent.matrix.e.b)localObject).start();
     }
-    parama.b(b.Gq());
+    parama.b(b.HL());
   }
   
   public static abstract interface a
   {
-    public abstract com.tencent.matrix.g.c.a Gr();
+    public abstract com.tencent.matrix.g.c.a HM();
     
-    public abstract com.tencent.matrix.report.h Gs();
+    public abstract h HN();
     
-    public abstract f Gt();
+    public abstract f HO();
     
-    public abstract h.b Gu();
+    public abstract h.b HP();
     
-    public abstract n Gv();
+    public abstract n HQ();
     
     public abstract void a(Application paramApplication);
     

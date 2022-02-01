@@ -4,24 +4,24 @@ import android.os.Build;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.af;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b
 {
-  private static Boolean Gwe = null;
-  private static Boolean Gwf = null;
-  private static Boolean Gwg = null;
-  private static Boolean fJX = null;
-  private static Boolean fJY = null;
+  private static Boolean IhY = null;
+  private static Boolean IhZ = null;
+  private static Boolean Iia = null;
+  private static Boolean gdy = null;
+  private static Boolean gdz = null;
   
   /* Error */
-  public static boolean YI()
+  public static boolean abk()
   {
     // Byte code:
     //   0: ldc 28
     //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 14	com/tencent/mm/sdk/h/b:fJX	Ljava/lang/Boolean;
+    //   5: getstatic 14	com/tencent/mm/sdk/h/b:gdy	Ljava/lang/Boolean;
     //   8: ifnonnull +71 -> 79
     //   11: aconst_null
     //   12: astore_2
@@ -32,7 +32,7 @@ public final class b
     //   19: invokestatic 42	android/os/Environment:getRootDirectory	()Ljava/io/File;
     //   22: ldc 44
     //   24: invokespecial 48	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   27: invokestatic 54	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   27: invokestatic 54	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   30: astore_3
     //   31: aload_3
     //   32: astore_1
@@ -57,12 +57,12 @@ public final class b
     //   60: ldc 64
     //   62: invokevirtual 68	java/util/Properties:containsKey	(Ljava/lang/Object;)Z
     //   65: invokestatic 74	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   68: putstatic 14	com/tencent/mm/sdk/h/b:fJX	Ljava/lang/Boolean;
+    //   68: putstatic 14	com/tencent/mm/sdk/h/b:gdy	Ljava/lang/Boolean;
     //   71: aload_3
     //   72: ifnull +7 -> 79
     //   75: aload_3
     //   76: invokevirtual 79	java/io/InputStream:close	()V
-    //   79: getstatic 14	com/tencent/mm/sdk/h/b:fJX	Ljava/lang/Boolean;
+    //   79: getstatic 14	com/tencent/mm/sdk/h/b:gdy	Ljava/lang/Boolean;
     //   82: invokevirtual 82	java/lang/Boolean:booleanValue	()Z
     //   85: istore_0
     //   86: ldc 28
@@ -80,11 +80,11 @@ public final class b
     //   105: iconst_0
     //   106: aload_3
     //   107: aastore
-    //   108: invokestatic 95	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   108: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   111: aload_1
     //   112: astore_2
     //   113: getstatic 98	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   116: putstatic 14	com/tencent/mm/sdk/h/b:fJX	Ljava/lang/Boolean;
+    //   116: putstatic 14	com/tencent/mm/sdk/h/b:gdy	Ljava/lang/Boolean;
     //   119: aload_1
     //   120: ifnull -41 -> 79
     //   123: aload_1
@@ -135,12 +135,12 @@ public final class b
   }
   
   /* Error */
-  public static boolean YJ()
+  public static boolean abl()
   {
     // Byte code:
     //   0: ldc 100
     //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 16	com/tencent/mm/sdk/h/b:fJY	Ljava/lang/Boolean;
+    //   5: getstatic 16	com/tencent/mm/sdk/h/b:gdz	Ljava/lang/Boolean;
     //   8: ifnonnull +105 -> 113
     //   11: aconst_null
     //   12: astore_2
@@ -151,7 +151,7 @@ public final class b
     //   19: invokestatic 42	android/os/Environment:getRootDirectory	()Ljava/io/File;
     //   22: ldc 44
     //   24: invokespecial 48	com/tencent/mm/vfs/e:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   27: invokestatic 54	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   27: invokestatic 54	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   30: astore_3
     //   31: aload_3
     //   32: astore_1
@@ -183,7 +183,7 @@ public final class b
     //   72: ldc 104
     //   74: invokevirtual 108	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   77: aastore
-    //   78: invokestatic 95	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   78: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   81: aload_3
     //   82: astore_1
     //   83: aload_3
@@ -195,12 +195,12 @@ public final class b
     //   94: ldc 110
     //   96: invokevirtual 116	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   99: invokestatic 74	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   102: putstatic 16	com/tencent/mm/sdk/h/b:fJY	Ljava/lang/Boolean;
+    //   102: putstatic 16	com/tencent/mm/sdk/h/b:gdz	Ljava/lang/Boolean;
     //   105: aload_3
     //   106: ifnull +7 -> 113
     //   109: aload_3
     //   110: invokevirtual 79	java/io/InputStream:close	()V
-    //   113: getstatic 16	com/tencent/mm/sdk/h/b:fJY	Ljava/lang/Boolean;
+    //   113: getstatic 16	com/tencent/mm/sdk/h/b:gdz	Ljava/lang/Boolean;
     //   116: invokevirtual 82	java/lang/Boolean:booleanValue	()Z
     //   119: istore_0
     //   120: ldc 100
@@ -218,11 +218,11 @@ public final class b
     //   139: iconst_0
     //   140: aload_3
     //   141: aastore
-    //   142: invokestatic 95	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   142: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   145: aload_1
     //   146: astore_2
     //   147: getstatic 98	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   150: putstatic 16	com/tencent/mm/sdk/h/b:fJY	Ljava/lang/Boolean;
+    //   150: putstatic 16	com/tencent/mm/sdk/h/b:gdz	Ljava/lang/Boolean;
     //   153: aload_1
     //   154: ifnull -41 -> 113
     //   157: aload_1
@@ -274,82 +274,82 @@ public final class b
     //   173	177	188	java/lang/Exception
   }
   
-  public static boolean eWJ()
+  public static boolean fmt()
   {
     AppMethodBeat.i(153476);
-    if (Gwe == null)
+    if (IhY == null)
     {
       String str = Build.MANUFACTURER;
-      ac.i("Vendor.MIUI", "Build.MANUFACTURER = %s", new Object[] { str });
+      ad.i("Vendor.MIUI", "Build.MANUFACTURER = %s", new Object[] { str });
       if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase("Xiaomi"))) {
         break label88;
       }
-      if (!bs.lr(af.get("ro.miui.ui.version.code"), "8")) {
+      if (!bt.lQ(af.get("ro.miui.ui.version.code"), "8")) {
         break label79;
       }
-      Gwe = Boolean.TRUE;
+      IhY = Boolean.TRUE;
     }
     for (;;)
     {
-      boolean bool = Gwe.booleanValue();
+      boolean bool = IhY.booleanValue();
       AppMethodBeat.o(153476);
       return bool;
       label79:
-      Gwe = Boolean.FALSE;
+      IhY = Boolean.FALSE;
       continue;
       label88:
-      Gwe = Boolean.FALSE;
+      IhY = Boolean.FALSE;
     }
   }
   
-  public static boolean eWK()
+  public static boolean fmu()
   {
     AppMethodBeat.i(153477);
-    if (Gwf == null)
+    if (IhZ == null)
     {
       String str = Build.MANUFACTURER;
-      ac.i("Vendor.MIUI", "Build.MANUFACTURER = %s", new Object[] { str });
+      ad.i("Vendor.MIUI", "Build.MANUFACTURER = %s", new Object[] { str });
       if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase("Xiaomi"))) {
         break label66;
       }
     }
     label66:
-    for (Gwf = Boolean.TRUE;; Gwf = Boolean.FALSE)
+    for (IhZ = Boolean.TRUE;; IhZ = Boolean.FALSE)
     {
-      boolean bool = Gwf.booleanValue();
+      boolean bool = IhZ.booleanValue();
       AppMethodBeat.o(153477);
       return bool;
     }
   }
   
-  public static boolean eWL()
+  public static boolean fmv()
   {
     AppMethodBeat.i(153478);
-    if (Gwg == null)
+    if (Iia == null)
     {
       String str = Build.MANUFACTURER;
-      ac.i("Vendor.MIUI", "Build.MANUFACTURER = %s, Build.MODEL = %s", new Object[] { str, Build.MODEL });
+      ad.i("Vendor.MIUI", "Build.MANUFACTURER = %s, Build.MODEL = %s", new Object[] { str, Build.MODEL });
       if ((TextUtils.isEmpty(str)) || (!str.equals("Xiaomi"))) {
         break label144;
       }
       str = getSystemProperty("ro.miui.version.code_time");
-      ac.w("Vendor.MIUI", "ifNotificationChannelSupportNativeActionJump() versionCode:%s", new Object[] { str });
+      ad.w("Vendor.MIUI", "ifNotificationChannelSupportNativeActionJump() versionCode:%s", new Object[] { str });
       if (Long.valueOf(str).longValue() <= Long.valueOf("1536681600").longValue()) {
         break label135;
       }
-      Gwg = Boolean.TRUE;
+      Iia = Boolean.TRUE;
     }
     for (;;)
     {
-      ac.i("Vendor.MIUI", "ifNotificationChannelSupportNativeActionJump() ifNotificationChannelSupportNativeActionJump:%s", new Object[] { Boolean.valueOf(Gwg.booleanValue()) });
-      boolean bool = Gwg.booleanValue();
+      ad.i("Vendor.MIUI", "ifNotificationChannelSupportNativeActionJump() ifNotificationChannelSupportNativeActionJump:%s", new Object[] { Boolean.valueOf(Iia.booleanValue()) });
+      boolean bool = Iia.booleanValue();
       AppMethodBeat.o(153478);
       return bool;
       label135:
-      Gwg = Boolean.FALSE;
+      Iia = Boolean.FALSE;
       continue;
       label144:
-      Gwg = Boolean.FALSE;
+      Iia = Boolean.FALSE;
     }
   }
   
@@ -370,7 +370,7 @@ public final class b
     //   22: ifnonnull +17 -> 39
     //   25: ldc 87
     //   27: ldc 216
-    //   29: invokestatic 219	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   29: invokestatic 219	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   32: ldc 196
     //   34: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: aconst_null
@@ -410,7 +410,7 @@ public final class b
     //   96: aload_0
     //   97: invokevirtual 244	java/io/IOException:getMessage	()Ljava/lang/String;
     //   100: aastore
-    //   101: invokestatic 128	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   101: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   104: goto -26 -> 78
     //   107: astore_3
     //   108: aconst_null
@@ -430,7 +430,7 @@ public final class b
     //   126: aload_3
     //   127: invokevirtual 247	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   130: aastore
-    //   131: invokestatic 128	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   131: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   134: aload_2
     //   135: ifnull +7 -> 142
     //   138: aload_2
@@ -449,7 +449,7 @@ public final class b
     //   160: aload_0
     //   161: invokevirtual 244	java/io/IOException:getMessage	()Ljava/lang/String;
     //   164: aastore
-    //   165: invokestatic 128	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   165: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   168: goto -26 -> 142
     //   171: astore_0
     //   172: aconst_null
@@ -472,7 +472,7 @@ public final class b
     //   200: aload_1
     //   201: invokevirtual 244	java/io/IOException:getMessage	()Ljava/lang/String;
     //   204: aastore
-    //   205: invokestatic 128	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   205: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   208: goto -26 -> 182
     //   211: astore_0
     //   212: goto -38 -> 174
@@ -512,14 +512,14 @@ public final class b
     boolean bool1;
     if (paramInt >= Integer.parseInt(paramString1))
     {
-      if (!bs.lr(paramString2, "")) {
+      if (!bt.lQ(paramString2, "")) {
         break label97;
       }
       bool1 = bool2;
-      if (eWK())
+      if (fmu())
       {
         paramString1 = getSystemProperty("ro.miui.version.code_time");
-        if (!bs.isNullOrNil(paramString3)) {
+        if (!bt.isNullOrNil(paramString3)) {
           break label69;
         }
         paramInt = 1;

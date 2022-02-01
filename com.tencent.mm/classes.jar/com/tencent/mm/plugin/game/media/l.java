@@ -8,41 +8,41 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.j;
+import com.tencent.mm.plugin.webview.luggage.k;
 
 public final class l
-  extends j
+  extends k
 {
-  private a tao;
+  private a tYe;
   
   public l(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void bqZ()
+  public final void bva()
   {
     AppMethodBeat.i(41068);
-    super.bqZ();
-    if (this.tao != null) {
-      this.tao.cPy();
+    super.bva();
+    if (this.tYe != null) {
+      this.tYe.cYd();
     }
     AppMethodBeat.o(41068);
   }
   
-  public final void bra()
+  public final void bvb()
   {
     AppMethodBeat.i(41066);
-    if (this.tao != null) {
-      this.tao.bra();
+    if (this.tYe != null) {
+      this.tYe.bvb();
     }
     AppMethodBeat.o(41066);
   }
   
-  public final void cPx()
+  public final void cYc()
   {
     AppMethodBeat.i(41067);
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.lDo, "translationY", new float[] { 0.0F, getStayHeight() });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mcR, "translationY", new float[] { 0.0F, getStayHeight() });
     localObjectAnimator.setDuration(250L);
     localObjectAnimator.setInterpolator(new DecelerateInterpolator());
     localObjectAnimator.start();
@@ -52,41 +52,41 @@ public final class l
       {
         AppMethodBeat.i(41063);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        l.this.um((int)f);
+        l.this.uQ((int)f);
         AppMethodBeat.o(41063);
       }
     });
-    bra();
+    bvb();
     AppMethodBeat.o(41067);
   }
   
-  public final void j(View paramView1, View paramView2)
+  public final void k(View paramView1, View paramView2)
   {
     AppMethodBeat.i(41064);
-    super.j(paramView1, paramView2);
+    super.k(paramView1, paramView2);
     setPullDownBackgroundColor(-1);
     AppMethodBeat.o(41064);
   }
   
   public final void setOnPullDownListener(a parama)
   {
-    this.tao = parama;
+    this.tYe = parama;
   }
   
-  public final void um(int paramInt)
+  public final void uQ(int paramInt)
   {
     AppMethodBeat.i(41065);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.lDm.getLayoutParams();
-    localLayoutParams.topMargin = (paramInt - this.lDm.getHeight());
-    this.lDm.setLayoutParams(localLayoutParams);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mcP.getLayoutParams();
+    localLayoutParams.topMargin = (paramInt - this.mcP.getHeight());
+    this.mcP.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(41065);
   }
   
   static abstract interface a
   {
-    public abstract void bra();
+    public abstract void bvb();
     
-    public abstract void cPy();
+    public abstract void cYd();
   }
 }
 

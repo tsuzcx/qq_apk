@@ -1,41 +1,40 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.awj;
+import com.tencent.mm.protocal.protobuf.bah;
 import d.g.a.b;
 import d.g.a.q;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor;", "", "waitForDownloadUrl", "", "request", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor$LocalUnifiedGetDownloadUrlRequest;", "onSuccess", "Lkotlin/Function1;", "", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "Lcom/tencent/mm/plugin/appbrand/launching/LocalUnifiedGetDownloadUrlResp;", "onError", "Lkotlin/Function3;", "", "", "scene", "LocalUnifiedGetDownloadUrlRequest", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor;", "", "waitForDownloadUrl", "", "request", "Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor$LocalUnifiedGetDownloadUrlRequest;", "onSuccess", "Lkotlin/Function1;", "", "Lcom/tencent/mm/protocal/protobuf/GetDownloadUrlRespItem;", "Lcom/tencent/mm/plugin/appbrand/launching/LocalUnifiedGetDownloadUrlResp;", "onError", "Lkotlin/Function3;", "", "", "scene", "LocalUnifiedGetDownloadUrlRequest", "plugin-appbrand-integration_release"})
 public abstract interface z
 {
-  public abstract void a(b paramb, b<? super awj[], y> paramb1, q<? super Integer, ? super Integer, ? super String, y> paramq, int paramInt);
+  public abstract void a(b paramb, b<? super bah[], d.z> paramb1, q<? super Integer, ? super Integer, ? super String, d.z> paramq, int paramInt);
   
-  @l(fNY={1, 1, 16})
+  @l(gfx={1, 1, 16})
   public static final class a {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor$LocalUnifiedGetDownloadUrlRequest;", "", "()V", "appId", "", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "appVersion", "", "getAppVersion", "()I", "setAppVersion", "(I)V", "localPkgEncryptVersion", "getLocalPkgEncryptVersion", "setLocalPkgEncryptVersion", "localPkgVersion", "getLocalPkgVersion", "setLocalPkgVersion", "moduleName", "getModuleName", "setModuleName", "needLatestVersion", "", "getNeedLatestVersion", "()Z", "setNeedLatestVersion", "(Z)V", "packageType", "getPackageType", "setPackageType", "supportEncryptVersion", "getSupportEncryptVersion", "setSupportEncryptVersion", "versionType", "getVersionType", "setVersionType", "compareTo", "other", "equals", "", "hashCode", "toString", "Companion", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor$LocalUnifiedGetDownloadUrlRequest;", "", "()V", "appId", "", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "appVersion", "", "getAppVersion", "()I", "setAppVersion", "(I)V", "localPkgEncryptVersion", "getLocalPkgEncryptVersion", "setLocalPkgEncryptVersion", "localPkgVersion", "getLocalPkgVersion", "setLocalPkgVersion", "moduleName", "getModuleName", "setModuleName", "needLatestVersion", "", "getNeedLatestVersion", "()Z", "setNeedLatestVersion", "(Z)V", "packageType", "getPackageType", "setPackageType", "supportEncryptVersion", "getSupportEncryptVersion", "setSupportEncryptVersion", "versionType", "getVersionType", "setVersionType", "compareTo", "other", "equals", "", "hashCode", "toString", "Companion", "plugin-appbrand-integration_release"})
   public static final class b
     implements Comparable<b>
   {
     @Deprecated
-    public static final a llf;
-    int aBM;
+    public static final a lIn;
+    int aDD;
     String appId = "";
-    String ceF;
-    int dcj;
-    int hxM;
-    int lkf;
-    int llc;
-    int lld;
-    boolean lle;
+    String coW;
+    int dnF;
+    int hQh;
+    int lHn;
+    int lIk;
+    int lIl;
+    boolean lIm;
     
     static
     {
       AppMethodBeat.i(180587);
-      llf = new a((byte)0);
+      lIn = new a((byte)0);
       AppMethodBeat.o(180587);
     }
     
@@ -62,7 +61,7 @@ public abstract interface z
     public final void setAppId(String paramString)
     {
       AppMethodBeat.i(180582);
-      k.h(paramString, "<set-?>");
+      p.h(paramString, "<set-?>");
       this.appId = paramString;
       AppMethodBeat.o(180582);
     }
@@ -70,12 +69,12 @@ public abstract interface z
     public final String toString()
     {
       AppMethodBeat.i(180586);
-      String str = "LocalUnifiedGetDownloadUrlRequest(appId='" + this.appId + "', moduleName=" + this.ceF + ", packageType=" + this.dcj + ", versionType=" + this.hxM + ", appVersion=" + this.aBM + ", supportEncryptVersion=" + this.llc + ", localPkgVersion=" + this.lkf + ", localPkgEncryptVersion=" + this.lld + ", needLatestVersion=" + this.lle + ')';
+      String str = "LocalUnifiedGetDownloadUrlRequest(appId='" + this.appId + "', moduleName=" + this.coW + ", packageType=" + this.dnF + ", versionType=" + this.hQh + ", appVersion=" + this.aDD + ", supportEncryptVersion=" + this.lIk + ", localPkgVersion=" + this.lHn + ", localPkgEncryptVersion=" + this.lIl + ", needLatestVersion=" + this.lIm + ')';
       AppMethodBeat.o(180586);
       return str;
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor$LocalUnifiedGetDownloadUrlRequest$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/IGetDownloadUrlCgiExecutor$LocalUnifiedGetDownloadUrlRequest$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
     static final class a {}
   }
 }

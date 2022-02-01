@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.mf;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.a.y;
@@ -28,11 +29,11 @@ import com.tencent.mm.plugin.fav.ui.e.p;
 import com.tencent.mm.plugin.fav.ui.e.q;
 import com.tencent.mm.plugin.fav.ui.e.r;
 import com.tencent.mm.plugin.fav.ui.e.s;
-import com.tencent.mm.protocal.protobuf.ahp;
-import com.tencent.mm.protocal.protobuf.aia;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.akf;
+import com.tencent.mm.protocal.protobuf.akq;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -44,95 +45,95 @@ import java.util.TreeMap;
 public final class b
   extends a
 {
-  private com.tencent.mm.sdk.b.c kce;
-  public int nLC;
-  private boolean qPA;
-  public b.c qPB;
-  public boolean qPC;
-  public boolean qPD;
-  public ListView qPE;
-  private boolean qPp;
-  public List<com.tencent.mm.plugin.fav.a.g> qPq;
-  private List<com.tencent.mm.plugin.fav.a.g> qPr;
-  private List<com.tencent.mm.plugin.fav.a.g> qPs;
-  public List<Long> qPt;
-  public boolean qPu;
-  private Map<String, com.tencent.mm.plugin.fav.a.g> qPv;
-  private List<Integer> qPw;
-  private List<String> qPx;
-  private List<String> qPy;
-  private SparseArray<com.tencent.mm.plugin.fav.ui.e.b> qPz;
+  private com.tencent.mm.sdk.b.c kwD;
+  public int ooi;
   public String query;
+  public b.c rzA;
+  public boolean rzB;
+  public boolean rzC;
+  public ListView rzD;
+  private boolean rzo;
+  public List<com.tencent.mm.plugin.fav.a.g> rzp;
+  private List<com.tencent.mm.plugin.fav.a.g> rzq;
+  private List<com.tencent.mm.plugin.fav.a.g> rzr;
+  public List<Long> rzs;
+  public boolean rzt;
+  private Map<String, com.tencent.mm.plugin.fav.a.g> rzu;
+  private List<Integer> rzv;
+  private List<String> rzw;
+  private List<String> rzx;
+  private SparseArray<com.tencent.mm.plugin.fav.ui.e.b> rzy;
+  private boolean rzz;
   public int scene;
   
   public b(com.tencent.mm.plugin.fav.ui.o paramo, boolean paramBoolean)
   {
     AppMethodBeat.i(107086);
-    this.qPp = false;
-    this.qPq = new ArrayList();
-    this.qPr = new ArrayList();
-    this.qPs = new LinkedList();
-    this.qPt = new ArrayList();
-    this.qPu = false;
-    this.qPv = new TreeMap();
-    this.qPw = new ArrayList();
-    this.qPx = new LinkedList();
-    this.qPy = new LinkedList();
-    this.qPz = new SparseArray();
-    this.qPA = false;
-    this.qPC = false;
-    this.qPD = false;
+    this.rzo = false;
+    this.rzp = new ArrayList();
+    this.rzq = new ArrayList();
+    this.rzr = new LinkedList();
+    this.rzs = new ArrayList();
+    this.rzt = false;
+    this.rzu = new TreeMap();
+    this.rzv = new ArrayList();
+    this.rzw = new LinkedList();
+    this.rzx = new LinkedList();
+    this.rzy = new SparseArray();
+    this.rzz = false;
+    this.rzB = false;
+    this.rzC = false;
     this.query = "";
-    this.kce = new b.1(this);
+    this.kwD = new com.tencent.mm.sdk.b.c() {};
     this.type = -1;
-    this.qPz.put(1, new com.tencent.mm.plugin.fav.ui.e.o(paramo));
-    this.qPz.put(2, new f(paramo));
-    this.qPz.put(3, new s(paramo));
-    this.qPz.put(4, new r(paramo));
-    this.qPz.put(5, new q(paramo));
-    this.qPz.put(6, new com.tencent.mm.plugin.fav.ui.e.g(paramo));
-    this.qPz.put(7, new i(paramo));
-    this.qPz.put(8, new d(paramo));
-    this.qPz.put(10, new k(paramo));
-    this.qPz.put(12, new n(paramo));
-    this.qPz.put(15, new n(paramo));
-    this.qPz.put(11, new com.tencent.mm.plugin.fav.ui.e.h(paramo));
-    this.qPz.put(14, new l(paramo));
-    this.qPz.put(16, new m(paramo));
-    this.qPz.put(17, new com.tencent.mm.plugin.fav.ui.e.c(paramo));
-    this.qPz.put(18, new j(paramo));
-    this.qPz.put(20, new e(paramo));
-    this.qPz.put(19, new com.tencent.mm.plugin.fav.ui.e.a(paramo));
-    this.qPz.put(-2, new p(paramo));
-    if (paramBoolean != this.qPC)
+    this.rzy.put(1, new com.tencent.mm.plugin.fav.ui.e.o(paramo));
+    this.rzy.put(2, new f(paramo));
+    this.rzy.put(3, new s(paramo));
+    this.rzy.put(4, new r(paramo));
+    this.rzy.put(5, new q(paramo));
+    this.rzy.put(6, new com.tencent.mm.plugin.fav.ui.e.g(paramo));
+    this.rzy.put(7, new i(paramo));
+    this.rzy.put(8, new d(paramo));
+    this.rzy.put(10, new k(paramo));
+    this.rzy.put(12, new n(paramo));
+    this.rzy.put(15, new n(paramo));
+    this.rzy.put(11, new com.tencent.mm.plugin.fav.ui.e.h(paramo));
+    this.rzy.put(14, new l(paramo));
+    this.rzy.put(16, new m(paramo));
+    this.rzy.put(17, new com.tencent.mm.plugin.fav.ui.e.c(paramo));
+    this.rzy.put(18, new j(paramo));
+    this.rzy.put(20, new e(paramo));
+    this.rzy.put(19, new com.tencent.mm.plugin.fav.ui.e.a(paramo));
+    this.rzy.put(-2, new p(paramo));
+    if (paramBoolean != this.rzB)
     {
-      this.qPC = paramBoolean;
+      this.rzB = paramBoolean;
       if (paramBoolean) {
-        this.qPv.clear();
+        this.rzu.clear();
       }
     }
-    if (!this.qPC) {
-      aQh();
+    if (!this.rzB) {
+      aTt();
     }
-    cqX();
+    cwH();
     notifyDataSetChanged();
-    com.tencent.mm.sdk.b.a.GpY.d(this.kce);
-    com.tencent.mm.sdk.b.a.GpY.c(this.kce);
+    com.tencent.mm.sdk.b.a.IbL.d(this.kwD);
+    com.tencent.mm.sdk.b.a.IbL.c(this.kwD);
     AppMethodBeat.o(107086);
   }
   
-  private void cqY()
+  private void cwI()
   {
     AppMethodBeat.i(107090);
     setSubScene(0);
-    this.qPt = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cpN();
+    this.rzs = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cvs();
     AppMethodBeat.o(107090);
   }
   
-  private boolean cqZ()
+  private boolean cwJ()
   {
     AppMethodBeat.i(107092);
-    if ((!this.qPx.isEmpty()) || (!this.qPy.isEmpty()) || (!this.qPw.isEmpty()))
+    if ((!this.rzw.isEmpty()) || (!this.rzx.isEmpty()) || (!this.rzv.isEmpty()))
     {
       AppMethodBeat.o(107092);
       return true;
@@ -141,7 +142,7 @@ public final class b
     return false;
   }
   
-  private void dq(List<com.tencent.mm.plugin.fav.a.g> paramList)
+  private void ds(List<com.tencent.mm.plugin.fav.a.g> paramList)
   {
     AppMethodBeat.i(107091);
     if (paramList == null)
@@ -149,8 +150,8 @@ public final class b
       AppMethodBeat.o(107091);
       return;
     }
-    ac.d("MicroMsg.FavoriteAdapter", "before do recycle, need recycle list size[%d]", new Object[] { Integer.valueOf(paramList.size()) });
-    ac.d("MicroMsg.FavoriteAdapter", "after do recycle, current can reused list size[%d]", new Object[] { Integer.valueOf(this.qPs.size()) });
+    ad.d("MicroMsg.FavoriteAdapter", "before do recycle, need recycle list size[%d]", new Object[] { Integer.valueOf(paramList.size()) });
+    ad.d("MicroMsg.FavoriteAdapter", "after do recycle, current can reused list size[%d]", new Object[] { Integer.valueOf(this.rzr.size()) });
     paramList.clear();
     AppMethodBeat.o(107091);
   }
@@ -192,7 +193,7 @@ public final class b
         j = i;
         while ((j < i + 20) && (j < paramList1.size()))
         {
-          paramList = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().tH(((Long)paramList1.get(j)).longValue());
+          paramList = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vE(((Long)paramList1.get(j)).longValue());
           if (paramList != null) {
             localArrayList.add(paramList);
           }
@@ -207,33 +208,33 @@ public final class b
   
   private void setSubScene(int paramInt)
   {
-    int i = this.nLC;
+    int i = this.ooi;
     if (paramInt == 0) {
-      this.nLC = 0;
+      this.ooi = 0;
     }
     do
     {
       return;
       if (i == 0)
       {
-        this.nLC = paramInt;
+        this.ooi = paramInt;
         return;
       }
     } while (i == paramInt);
-    this.nLC = 4;
+    this.ooi = 4;
   }
   
-  public final com.tencent.mm.plugin.fav.a.g Dm(int paramInt)
+  public final com.tencent.mm.plugin.fav.a.g Ef(int paramInt)
   {
     AppMethodBeat.i(107104);
-    if ((paramInt < 0) || (paramInt >= this.qPq.size()))
+    if ((paramInt < 0) || (paramInt >= this.rzp.size()))
     {
-      ac.e("MicroMsg.FavoriteAdapter", "get item, but position error");
+      ad.e("MicroMsg.FavoriteAdapter", "get item, but position error");
       localg = new com.tencent.mm.plugin.fav.a.g();
       AppMethodBeat.o(107104);
       return localg;
     }
-    com.tencent.mm.plugin.fav.a.g localg = (com.tencent.mm.plugin.fav.a.g)this.qPq.get(paramInt);
+    com.tencent.mm.plugin.fav.a.g localg = (com.tencent.mm.plugin.fav.a.g)this.rzp.get(paramInt);
     AppMethodBeat.o(107104);
     return localg;
   }
@@ -243,39 +244,39 @@ public final class b
     AppMethodBeat.i(107108);
     if (paramg == null)
     {
-      ac.w("MicroMsg.FavoriteAdapter", "goFavDetail() favItemInfo is null");
+      ad.w("MicroMsg.FavoriteAdapter", "goFavDetail() favItemInfo is null");
       AppMethodBeat.o(107108);
       return;
     }
-    if ((!paramg.qIl) || (paramg.qIm == null))
+    if ((!paramg.rsm) || (paramg.rsn == null))
     {
-      ac.w("MicroMsg.FavoriteAdapter", "goFavDetail() originInfo not exist");
+      ad.w("MicroMsg.FavoriteAdapter", "goFavDetail() originInfo not exist");
       AppMethodBeat.o(107108);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = paramg.qIm;
+    Object localObject = paramg.rsn;
     String str = ((com.tencent.mm.plugin.fav.a.g)localObject).field_id + "_" + System.currentTimeMillis() / 1000L;
-    localObject = ((com.tencent.mm.plugin.fav.a.g)localObject).field_tagProto.EBX;
-    if (!bs.gY((List)localObject))
+    localObject = ((com.tencent.mm.plugin.fav.a.g)localObject).field_tagProto.GjJ;
+    if (!bt.hj((List)localObject))
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
         localStringBuilder.append((String)((Iterator)localObject).next()).append(";");
       }
     }
-    localObject = new ahp();
-    ((ahp)localObject).scene = this.scene;
-    ((ahp)localObject).nLC = this.nLC;
-    ((ahp)localObject).query = this.query;
-    ((ahp)localObject).sessionId = str;
-    ((ahp)localObject).qIF = localStringBuilder.toString();
+    localObject = new akf();
+    ((akf)localObject).scene = this.scene;
+    ((akf)localObject).ooi = this.ooi;
+    ((akf)localObject).query = this.query;
+    ((akf)localObject).sessionId = str;
+    ((akf)localObject).rsG = localStringBuilder.toString();
     if (paramView != null) {}
-    for (paramView = paramView.getContext();; paramView = ai.getContext())
+    for (paramView = paramView.getContext();; paramView = aj.getContext())
     {
-      paramg.qIm.qIn = paramg.qIn;
-      ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, paramg.qIm, (ahp)localObject);
-      ac.d("MicroMsg.FavoriteAdapter", "goFavDetail type %s %s", new Object[] { Integer.valueOf(paramg.qIm.field_type), paramg.qIn, Integer.valueOf(paramg.field_type) });
+      paramg.rsn.rso = paramg.rso;
+      ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, paramg.rsn, (akf)localObject);
+      ad.d("MicroMsg.FavoriteAdapter", "goFavDetail type %s %s", new Object[] { Integer.valueOf(paramg.rsn.field_type), paramg.rso, Integer.valueOf(paramg.field_type) });
       AppMethodBeat.o(107108);
       return;
     }
@@ -284,25 +285,25 @@ public final class b
   public final void a(boolean paramBoolean, com.tencent.mm.plugin.fav.a.g paramg)
   {
     AppMethodBeat.i(107093);
-    if (paramBoolean == this.qPu)
+    if (paramBoolean == this.rzt)
     {
       AppMethodBeat.o(107093);
       return;
     }
-    this.qPu = paramBoolean;
+    this.rzt = paramBoolean;
     com.tencent.mm.plugin.fav.a.g localg;
     if (paramBoolean)
     {
-      this.qPv.clear();
+      this.rzu.clear();
       if (paramg != null)
       {
-        localg = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().tH(paramg.field_localId);
+        localg = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vE(paramg.field_localId);
         if (localg != null)
         {
-          if (!paramg.qIl) {
+          if (!paramg.rsm) {
             break label103;
           }
-          this.qPv.put(paramg.dhm, paramg);
+          this.rzu.put(paramg.dsK, paramg);
         }
       }
     }
@@ -312,41 +313,41 @@ public final class b
       AppMethodBeat.o(107093);
       return;
       label103:
-      this.qPv.put(bs.dQ(Long.valueOf(localg.field_localId)), localg);
+      this.rzu.put(bt.dT(Long.valueOf(localg.field_localId)), localg);
     }
   }
   
-  public final void aQh()
+  public final void aTt()
   {
     AppMethodBeat.i(107088);
-    if (cqZ())
+    if (cwJ())
     {
-      ac.v("MicroMsg.FavoriteAdapter", "searching, do not load more data");
+      ad.v("MicroMsg.FavoriteAdapter", "searching, do not load more data");
       AppMethodBeat.o(107088);
       return;
     }
-    if (com.tencent.mm.plugin.fav.a.b.cpf())
+    if (com.tencent.mm.plugin.fav.a.b.cuK())
     {
-      ac.w("MicroMsg.FavoriteAdapter", "want to load more data, but now doing batchget");
+      ad.w("MicroMsg.FavoriteAdapter", "want to load more data, but now doing batchget");
       AppMethodBeat.o(107088);
       return;
     }
-    if (!this.qPC) {
+    if (!this.rzB) {
       try
       {
-        this.lastUpdateTime = com.tencent.mm.plugin.fav.a.b.x(this.lastUpdateTime, this.type);
+        this.lastUpdateTime = com.tencent.mm.plugin.fav.a.b.y(this.lastUpdateTime, this.type);
         AppMethodBeat.o(107088);
         return;
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.FavoriteAdapter", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.FavoriteAdapter", localException, "", new Object[0]);
         AppMethodBeat.o(107088);
         return;
       }
     }
-    this.qPr = k(this.qPq, this.qPt);
-    this.qPp = true;
+    this.rzq = k(this.rzp, this.rzs);
+    this.rzo = true;
     AppMethodBeat.o(107088);
   }
   
@@ -354,108 +355,108 @@ public final class b
   {
     AppMethodBeat.i(107097);
     setSubScene(0);
-    this.qPw.clear();
+    this.rzv.clear();
     if (paramList != null)
     {
-      this.qPw.addAll(paramList);
+      this.rzv.addAll(paramList);
       if (!paramList.isEmpty()) {
         setSubScene(2);
       }
     }
-    this.qPx.clear();
+    this.rzw.clear();
     if (paramList1 != null)
     {
-      this.qPx.addAll(paramList1);
+      this.rzw.addAll(paramList1);
       if (!paramList1.isEmpty()) {
         setSubScene(3);
       }
     }
-    this.qPy.clear();
+    this.rzx.clear();
     if (paramList2 != null)
     {
-      this.qPy.addAll(paramList2);
+      this.rzx.addAll(paramList2);
       if (!paramList2.isEmpty()) {
         setSubScene(1);
       }
     }
-    this.qPA = true;
-    cqX();
-    this.qPA = false;
+    this.rzz = true;
+    cwH();
+    this.rzz = false;
     AppMethodBeat.o(107097);
   }
   
-  public final void cqX()
+  public final void cwH()
   {
     AppMethodBeat.i(107098);
-    ac.v("MicroMsg.FavoriteAdapter", "reset data list beg");
-    this.qPp = false;
-    dq(this.qPr);
-    if (!cqZ())
+    ad.v("MicroMsg.FavoriteAdapter", "reset data list beg");
+    this.rzo = false;
+    ds(this.rzq);
+    if (!cwJ())
     {
-      ac.i("MicroMsg.FavoriteAdapter", "on reset data list, last update time is %d, type is %d", new Object[] { Long.valueOf(this.lastUpdateTime), Integer.valueOf(this.type) });
-      if (!this.qPC)
+      ad.i("MicroMsg.FavoriteAdapter", "on reset data list, last update time is %d, type is %d", new Object[] { Long.valueOf(this.lastUpdateTime), Integer.valueOf(this.type) });
+      if (!this.rzB)
       {
-        this.qPr = com.tencent.mm.plugin.fav.a.b.a(this.lastUpdateTime, this.type, this.qPm, this.qPn);
-        if ((this.qPr != null) && (this.lastUpdateTime == 0L) && (this.qPr.size() > 0)) {
-          this.lastUpdateTime = ((com.tencent.mm.plugin.fav.a.g)this.qPr.get(this.qPr.size() - 1)).field_updateTime;
+        this.rzq = com.tencent.mm.plugin.fav.a.b.a(this.lastUpdateTime, this.type, this.rzl, this.rzm);
+        if ((this.rzq != null) && (this.lastUpdateTime == 0L) && (this.rzq.size() > 0)) {
+          this.lastUpdateTime = ((com.tencent.mm.plugin.fav.a.g)this.rzq.get(this.rzq.size() - 1)).field_updateTime;
         }
       }
     }
     int i;
     for (;;)
     {
-      if (this.qPr == null)
+      if (this.rzq == null)
       {
-        ac.w("MicroMsg.FavoriteAdapter", "reset data list fail, get null list, new empty one");
-        this.qPr = new ArrayList();
+        ad.w("MicroMsg.FavoriteAdapter", "reset data list fail, get null list, new empty one");
+        this.rzq = new ArrayList();
       }
-      if ((!this.qPC) && (!cqZ()) && (this.qPr.size() < 20) && (!((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().A(this.lastUpdateTime, this.type)))
+      if ((!this.rzB) && (!cwJ()) && (this.rzq.size() < 20) && (!((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().B(this.lastUpdateTime, this.type)))
       {
-        ac.v("MicroMsg.FavoriteAdapter", "least than page count, loadMoreData");
-        aQh();
+        ad.v("MicroMsg.FavoriteAdapter", "least than page count, loadMoreData");
+        aTt();
       }
-      this.qPp = true;
-      ac.v("MicroMsg.FavoriteAdapter", "reset data list end");
+      this.rzo = true;
+      ad.v("MicroMsg.FavoriteAdapter", "reset data list end");
       AppMethodBeat.o(107098);
       return;
-      cqY();
-      this.qPr = k(null, this.qPt);
+      cwI();
+      this.rzq = k(null, this.rzs);
       continue;
-      ac.i("MicroMsg.FavoriteAdapter", "on reset data list, do search, searchStr:%s, tagStr:%s, searchTypes:%s", new Object[] { this.qPx, this.qPy, this.qPw });
-      if ((this.qPw == null) || (this.qPw.size() == 1)) {
+      ad.i("MicroMsg.FavoriteAdapter", "on reset data list, do search, searchStr:%s, tagStr:%s, searchTypes:%s", new Object[] { this.rzw, this.rzx, this.rzv });
+      if ((this.rzv == null) || (this.rzv.size() == 1)) {
         break;
       }
-      this.qPr = com.tencent.mm.plugin.fav.a.b.a(this.qPx, this.qPy, this.qPw, this.qPs, this.qPm, this.qPn);
-      if (this.qPr != null) {
+      this.rzq = com.tencent.mm.plugin.fav.a.b.a(this.rzw, this.rzx, this.rzv, this.rzr, this.rzl, this.rzm);
+      if (this.rzq != null) {
         break label459;
       }
       i = 0;
       label381:
-      com.tencent.mm.plugin.report.service.h.wUl.f(10649, new Object[] { Integer.valueOf(i) });
+      com.tencent.mm.plugin.report.service.g.yhR.f(10649, new Object[] { Integer.valueOf(i) });
     }
-    if (this.qPw != null) {}
-    for (Integer localInteger = (Integer)this.qPw.get(0);; localInteger = null)
+    if (this.rzv != null) {}
+    for (Integer localInteger = (Integer)this.rzv.get(0);; localInteger = null)
     {
-      this.qPr = com.tencent.mm.plugin.fav.a.b.a(this.qPx, this.qPy, localInteger.intValue(), this.qPs, this.qPm, this.qPn);
+      this.rzq = com.tencent.mm.plugin.fav.a.b.a(this.rzw, this.rzx, localInteger.intValue(), this.rzr, this.rzl, this.rzm);
       break;
       label459:
-      i = this.qPr.size();
+      i = this.rzq.size();
       break label381;
     }
   }
   
-  public final int cra()
+  public final int cwK()
   {
     AppMethodBeat.i(107095);
-    int i = this.qPv.size();
+    int i = this.rzu.size();
     AppMethodBeat.o(107095);
     return i;
   }
   
-  public final long crb()
+  public final long cwL()
   {
     AppMethodBeat.i(107096);
-    Iterator localIterator = this.qPv.values().iterator();
+    Iterator localIterator = this.rzu.values().iterator();
     long l = 0L;
     if (localIterator.hasNext())
     {
@@ -477,14 +478,14 @@ public final class b
   public final void finish()
   {
     AppMethodBeat.i(107087);
-    com.tencent.mm.sdk.b.a.GpY.d(this.kce);
+    com.tencent.mm.sdk.b.a.IbL.d(this.kwD);
     AppMethodBeat.o(107087);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(107105);
-    int i = this.qPq.size();
+    int i = this.rzp.size();
     AppMethodBeat.o(107105);
     return i + 1;
   }
@@ -502,13 +503,13 @@ public final class b
       AppMethodBeat.o(107101);
       return 0;
     }
-    com.tencent.mm.plugin.fav.a.g localg = Dm(paramInt - 1);
+    com.tencent.mm.plugin.fav.a.g localg = Ef(paramInt - 1);
     switch (localg.field_type)
     {
     case 9: 
     case 13: 
     default: 
-      ac.w("MicroMsg.FavoriteAdapter", "get item view type unknown, %d", new Object[] { Integer.valueOf(localg.field_type) });
+      ad.w("MicroMsg.FavoriteAdapter", "get item view type unknown, %d", new Object[] { Integer.valueOf(localg.field_type) });
       AppMethodBeat.o(107101);
       return -2;
     }
@@ -530,23 +531,23 @@ public final class b
       AppMethodBeat.o(107103);
       return paramView;
     }
-    com.tencent.mm.plugin.fav.a.g localg = Dm(paramInt - 1);
-    com.tencent.mm.plugin.fav.ui.e.b localb = (com.tencent.mm.plugin.fav.ui.e.b)this.qPz.get(localg.field_type);
+    com.tencent.mm.plugin.fav.a.g localg = Ef(paramInt - 1);
+    com.tencent.mm.plugin.fav.ui.e.b localb = (com.tencent.mm.plugin.fav.ui.e.b)this.rzy.get(localg.field_type);
     if (localb == null)
     {
-      ac.w("MicroMsg.FavoriteAdapter", "unknown type %d, use unknown item creator", new Object[] { Integer.valueOf(localg.field_type) });
-      localb = (com.tencent.mm.plugin.fav.ui.e.b)this.qPz.get(-2);
-      cqW();
+      ad.w("MicroMsg.FavoriteAdapter", "unknown type %d, use unknown item creator", new Object[] { Integer.valueOf(localg.field_type) });
+      localb = (com.tencent.mm.plugin.fav.ui.e.b)this.rzy.get(-2);
+      cwG();
       paramView = localb.a(paramView, paramViewGroup, localg);
       AppMethodBeat.o(107103);
       return paramView;
     }
-    localb.qTe.nwB = cqZ();
-    localb.qTe.lastUpdateTime = this.lastUpdateTime;
-    localb.qTe.qPu = this.qPu;
-    localb.qTe.qPv = this.qPv;
-    localb.qTe.qTg = this.qPB;
-    localb.qTe.qPC = this.qPC;
+    localb.rDh.nXZ = cwJ();
+    localb.rDh.lastUpdateTime = this.lastUpdateTime;
+    localb.rDh.rzt = this.rzt;
+    localb.rDh.rzu = this.rzu;
+    localb.rDh.rDj = this.rzA;
+    localb.rDh.rzB = this.rzB;
     paramView = localb.a(paramView, paramViewGroup, localg);
     AppMethodBeat.o(107103);
     return paramView;
@@ -555,7 +556,7 @@ public final class b
   public final int getViewTypeCount()
   {
     AppMethodBeat.i(107102);
-    int i = this.qPz.size();
+    int i = this.rzy.size();
     AppMethodBeat.o(107102);
     return i + 4;
   }
@@ -563,16 +564,16 @@ public final class b
   public final boolean isEmpty()
   {
     AppMethodBeat.i(107099);
-    boolean bool = this.qPq.isEmpty();
+    boolean bool = this.rzp.isEmpty();
     AppMethodBeat.o(107099);
     return bool;
   }
   
-  public final List<com.tencent.mm.plugin.fav.a.g> li(boolean paramBoolean)
+  public final List<com.tencent.mm.plugin.fav.a.g> lB(boolean paramBoolean)
   {
     AppMethodBeat.i(107094);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.qPv.values().iterator();
+    Iterator localIterator = this.rzu.values().iterator();
     while (localIterator.hasNext())
     {
       com.tencent.mm.plugin.fav.a.g localg = (com.tencent.mm.plugin.fav.a.g)localIterator.next();
@@ -581,41 +582,60 @@ public final class b
       }
     }
     if (paramBoolean) {
-      this.qPv.clear();
+      this.rzu.clear();
     }
     AppMethodBeat.o(107094);
     return localLinkedList;
   }
   
-  public final int n(long paramLong, String paramString)
+  public final void notifyDataSetChanged()
+  {
+    AppMethodBeat.i(107100);
+    ad.v("MicroMsg.FavoriteAdapter", "on notify data set changed requset, can exchange tempList[%B]", new Object[] { Boolean.valueOf(this.rzo) });
+    if (this.rzo)
+    {
+      if ((this.rzB) && (this.rzq != null) && (this.rzp != null) && (this.rzq.size() == this.rzp.size())) {
+        this.rzC = true;
+      }
+      List localList = this.rzp;
+      this.rzp = this.rzq;
+      this.rzq = localList;
+      this.rzo = false;
+    }
+    ad.v("MicroMsg.FavoriteAdapter", "on notify data set changed end");
+    super.notifyDataSetChanged();
+    AppMethodBeat.o(107100);
+  }
+  
+  public final int o(long paramLong, String paramString)
   {
     int i = 1;
     int k = 0;
     int j = 0;
     AppMethodBeat.i(107106);
-    Object localObject = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().tH(paramLong);
+    Object localObject = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vE(paramLong);
     if (localObject == null)
     {
       AppMethodBeat.o(107106);
       return -1;
     }
-    if (this.qPv.size() >= 30)
+    if (this.rzu.size() >= 30)
     {
-      ac.w("MicroMsg.FavoriteAdapter", "call select item, match max select count %d", new Object[] { Integer.valueOf(30) });
-      com.tencent.mm.ui.base.h.cg(ai.getContext(), ai.getContext().getResources().getString(2131758927, new Object[] { Integer.valueOf(30) }));
+      ad.w("MicroMsg.FavoriteAdapter", "call select item, match max select count %d", new Object[] { Integer.valueOf(30) });
+      com.tencent.mm.ui.base.h.cl(aj.getContext(), aj.getContext().getResources().getString(2131758927, new Object[] { Integer.valueOf(30) }));
       AppMethodBeat.o(107106);
       return -1;
     }
     com.tencent.mm.plugin.fav.a.g localg;
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
-      Iterator localIterator = this.qPq.iterator();
+      Iterator localIterator = this.rzp.iterator();
       while (localIterator.hasNext())
       {
         localg = (com.tencent.mm.plugin.fav.a.g)localIterator.next();
-        if (bs.lr(localg.dhm, paramString))
+        if (bt.lQ(localg.dsK, paramString))
         {
-          localg.qIm = ((com.tencent.mm.plugin.fav.a.g)localObject);
+          localg.rsn = ((com.tencent.mm.plugin.fav.a.g)localObject);
           localObject = localg;
         }
       }
@@ -624,12 +644,12 @@ public final class b
     {
       if (i != 0)
       {
-        this.qPv.put(paramString, localObject);
+        this.rzu.put(paramString, localObject);
         if (((com.tencent.mm.plugin.fav.a.g)localObject).field_updateTime < this.lastUpdateTime)
         {
           this.lastUpdateTime = ((com.tencent.mm.plugin.fav.a.g)localObject).field_updateTime;
-          cqX();
-          localObject = this.qPr.iterator();
+          cwH();
+          localObject = this.rzq.iterator();
           i = j;
         }
       }
@@ -641,7 +661,7 @@ public final class b
             break label362;
           }
           localg = (com.tencent.mm.plugin.fav.a.g)((Iterator)localObject).next();
-          if (bs.isNullOrNil(paramString))
+          if (bt.isNullOrNil(paramString))
           {
             if (localg.field_localId != paramLong) {
               break label353;
@@ -649,10 +669,10 @@ public final class b
             notifyDataSetChanged();
             AppMethodBeat.o(107106);
             return i;
-            this.qPv.put(bs.dQ(Long.valueOf(paramLong)), localObject);
+            this.rzu.put(bt.dT(Long.valueOf(paramLong)), localObject);
             break;
           }
-          if ((localg.field_localId == paramLong) && (bs.lr(paramString, localg.dhm)))
+          if ((localg.field_localId == paramLong) && (bt.lQ(paramString, localg.dsK)))
           {
             notifyDataSetChanged();
             AppMethodBeat.o(107106);
@@ -668,12 +688,12 @@ public final class b
       {
         AppMethodBeat.o(107106);
         return -1;
-        localObject = this.qPq.iterator();
+        localObject = this.rzp.iterator();
         i = k;
         while (((Iterator)localObject).hasNext())
         {
           localg = (com.tencent.mm.plugin.fav.a.g)((Iterator)localObject).next();
-          if (bs.isNullOrNil(paramString))
+          if (bt.isNullOrNil(paramString))
           {
             if (localg.field_localId == paramLong)
             {
@@ -682,7 +702,7 @@ public final class b
               return i;
             }
           }
-          else if ((localg.field_localId == paramLong) && (bs.lr(paramString, localg.dhm)))
+          else if ((localg.field_localId == paramLong) && (bt.lQ(paramString, localg.dsK)))
           {
             notifyDataSetChanged();
             AppMethodBeat.o(107106);
@@ -695,52 +715,33 @@ public final class b
     }
   }
   
-  public final void notifyDataSetChanged()
-  {
-    AppMethodBeat.i(107100);
-    ac.v("MicroMsg.FavoriteAdapter", "on notify data set changed requset, can exchange tempList[%B]", new Object[] { Boolean.valueOf(this.qPp) });
-    if (this.qPp)
-    {
-      if ((this.qPC) && (this.qPr != null) && (this.qPq != null) && (this.qPr.size() == this.qPq.size())) {
-        this.qPD = true;
-      }
-      List localList = this.qPq;
-      this.qPq = this.qPr;
-      this.qPr = localList;
-      this.qPp = false;
-    }
-    ac.v("MicroMsg.FavoriteAdapter", "on notify data set changed end");
-    super.notifyDataSetChanged();
-    AppMethodBeat.o(107100);
-  }
-  
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(107107);
     paramAdapterView = (b.b)paramView.getTag();
     if (paramAdapterView == null)
     {
-      ac.w("MicroMsg.FavoriteAdapter", "on item click, holder is null");
+      ad.w("MicroMsg.FavoriteAdapter", "on item click, holder is null");
       AppMethodBeat.o(107107);
       return;
     }
-    if (paramAdapterView.qJy == null)
+    if (paramAdapterView.rtA == null)
     {
-      ac.w("MicroMsg.FavoriteAdapter", "on item click, info is null");
+      ad.w("MicroMsg.FavoriteAdapter", "on item click, info is null");
       AppMethodBeat.o(107107);
       return;
     }
-    if ((this.qPu) || (this.qPC))
+    if ((this.rzt) || (this.rzB))
     {
-      if ((!paramAdapterView.iCi.isChecked()) && (this.qPv.size() >= 30))
+      if ((!paramAdapterView.iVs.isChecked()) && (this.rzu.size() >= 30))
       {
-        ac.w("MicroMsg.FavoriteAdapter", "call select item, match max select count %d", new Object[] { Integer.valueOf(30) });
-        com.tencent.mm.ui.base.h.cg(ai.getContext(), ai.getContext().getResources().getString(2131758927, new Object[] { Integer.valueOf(30) }));
+        ad.w("MicroMsg.FavoriteAdapter", "call select item, match max select count %d", new Object[] { Integer.valueOf(30) });
+        com.tencent.mm.ui.base.h.cl(aj.getContext(), aj.getContext().getResources().getString(2131758927, new Object[] { Integer.valueOf(30) }));
         AppMethodBeat.o(107107);
         return;
       }
-      paramView = paramAdapterView.iCi;
-      if (!paramAdapterView.iCi.isChecked()) {}
+      paramView = paramAdapterView.iVs;
+      if (!paramAdapterView.iVs.isChecked()) {}
       for (boolean bool = true;; bool = false)
       {
         paramView.setChecked(bool);
@@ -748,38 +749,38 @@ public final class b
         return;
       }
     }
-    com.tencent.mm.plugin.fav.ui.e.b localb = (com.tencent.mm.plugin.fav.ui.e.b)this.qPz.get(paramAdapterView.qJy.field_type);
+    com.tencent.mm.plugin.fav.ui.e.b localb = (com.tencent.mm.plugin.fav.ui.e.b)this.rzy.get(paramAdapterView.rtA.field_type);
     StringBuilder localStringBuilder;
     Object localObject;
     String str;
     if (localb != null)
     {
       localStringBuilder = new StringBuilder();
-      localObject = paramAdapterView.qJy;
+      localObject = paramAdapterView.rtA;
       str = ((com.tencent.mm.plugin.fav.a.g)localObject).field_id + "_" + System.currentTimeMillis() / 1000L;
-      localObject = ((com.tencent.mm.plugin.fav.a.g)localObject).field_tagProto.EBX;
-      if (!bs.gY((List)localObject))
+      localObject = ((com.tencent.mm.plugin.fav.a.g)localObject).field_tagProto.GjJ;
+      if (!bt.hj((List)localObject))
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
           localStringBuilder.append((String)((Iterator)localObject).next()).append(";");
         }
       }
-      localObject = new ahp();
-      ((ahp)localObject).scene = this.scene;
-      ((ahp)localObject).nLC = this.nLC;
-      if (this.qPE == null) {
+      localObject = new akf();
+      ((akf)localObject).scene = this.scene;
+      ((akf)localObject).ooi = this.ooi;
+      if (this.rzD == null) {
         break label439;
       }
     }
     label439:
-    for (((ahp)localObject).index = (paramInt - this.qPE.getHeaderViewsCount());; ((ahp)localObject).index = paramInt)
+    for (((akf)localObject).index = (paramInt - this.rzD.getHeaderViewsCount());; ((akf)localObject).index = paramInt)
     {
-      ((ahp)localObject).query = this.query;
-      ((ahp)localObject).sessionId = str;
-      ((ahp)localObject).qIF = localStringBuilder.toString();
-      localb.a(paramView, (ahp)localObject);
-      ac.d("MicroMsg.FavoriteAdapter", "item click type %s", new Object[] { Integer.valueOf(paramAdapterView.qJy.field_type) });
+      ((akf)localObject).query = this.query;
+      ((akf)localObject).sessionId = str;
+      ((akf)localObject).rsG = localStringBuilder.toString();
+      localb.a(paramView, (akf)localObject);
+      ad.d("MicroMsg.FavoriteAdapter", "item click type %s", new Object[] { Integer.valueOf(paramAdapterView.rtA.field_type) });
       AppMethodBeat.o(107107);
       return;
     }
@@ -787,7 +788,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,86 +1,33 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.d.a.b;
+import d.d.d;
+import d.d.f;
+import d.g.a.m;
 import d.l;
-import d.v;
-import kotlinx.coroutines.internal.g;
-import kotlinx.coroutines.internal.i;
+import d.z;
+import kotlinx.coroutines.a.a;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/NodeList;", "Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "Lkotlinx/coroutines/Incomplete;", "()V", "isActive", "", "()Z", "list", "getList", "()Lkotlinx/coroutines/NodeList;", "getString", "", "state", "toString", "kotlinx-coroutines-core"})
-public final class bx
-  extends g
-  implements bj
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/LazyDeferredCoroutine;", "T", "Lkotlinx/coroutines/DeferredCoroutine;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;)V", "continuation", "", "onStart", "kotlinx-coroutines-core"})
+final class bx<T>
+  extends ar<T>
 {
-  public final bx gdQ()
+  private final d<z> NIm;
+  
+  public bx(f paramf, m<? super ah, ? super d<? super T>, ? extends Object> paramm)
   {
-    return this;
+    super(paramf, false);
+    AppMethodBeat.i(118208);
+    this.NIm = b.a(paramm, this, (d)this);
+    AppMethodBeat.o(118208);
   }
   
-  public final String getString(String paramString)
+  protected final void onStart()
   {
-    AppMethodBeat.i(118248);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("List{");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("}[");
-    int i = 1;
-    g localg = (g)this;
-    paramString = localg.geA();
-    if (paramString == null)
-    {
-      paramString = new v("null cannot be cast to non-null type kotlinx.coroutines.internal.Node /* = kotlinx.coroutines.internal.LockFreeLinkedListNode */");
-      AppMethodBeat.o(118248);
-      throw paramString;
-    }
-    paramString = (i)paramString;
-    if ((k.g(paramString, localg) ^ true))
-    {
-      int j = i;
-      br localbr;
-      if ((paramString instanceof br))
-      {
-        localbr = (br)paramString;
-        if (i == 0) {
-          break label129;
-        }
-        i = 0;
-      }
-      for (;;)
-      {
-        localStringBuilder.append(localbr);
-        j = i;
-        paramString = paramString.geB();
-        i = j;
-        break;
-        label129:
-        localStringBuilder.append(", ");
-      }
-    }
-    localStringBuilder.append("]");
-    paramString = localStringBuilder.toString();
-    k.g(paramString, "StringBuilder().apply(builderAction).toString()");
-    AppMethodBeat.o(118248);
-    return paramString;
-  }
-  
-  public final boolean isActive()
-  {
-    return true;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118249);
-    if (al.getDEBUG())
-    {
-      str = getString("Active");
-      AppMethodBeat.o(118249);
-      return str;
-    }
-    String str = super.toString();
-    AppMethodBeat.o(118249);
-    return str;
+    AppMethodBeat.i(118207);
+    a.a(this.NIm, (d)this);
+    AppMethodBeat.o(118207);
   }
 }
 

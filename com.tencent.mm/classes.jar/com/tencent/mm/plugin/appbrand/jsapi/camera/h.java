@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
-import com.tencent.mm.plugin.appbrand.jsapi.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.at;
 
 public final class h
-  extends ar
+  extends at
 {
   private static final int CTRL_INDEX = 636;
   public static final String NAME = "onCameraInitDone";

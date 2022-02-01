@@ -5,7 +5,7 @@ import android.content.Context;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.soter.d.m;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.soter.a.c.b;
 import com.tencent.soter.a.g.e;
 import com.tencent.soter.a.g.j;
@@ -19,18 +19,18 @@ public final class f
   }
   
   @SuppressLint({"DefaultLocale"})
-  public final void e(String paramString, int[] paramArrayOfInt)
+  public final void f(String paramString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(130887);
-    ac.v("MicroMsg.SoterTaskInitForWX", "alvinluo generateAuthKeyNames");
+    ad.v("MicroMsg.SoterTaskInitForWX", "alvinluo generateAuthKeyNames");
     int j = paramArrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       int k = paramArrayOfInt[i];
-      paramString = m.Qm(k);
-      ac.i("MicroMsg.SoterTaskInitForWX", "alvinluo scene: %d, authKeyName: %s", new Object[] { Integer.valueOf(k), paramString });
-      b.fDE().fDG().put(k, paramString);
+      paramString = m.RV(k);
+      ad.i("MicroMsg.SoterTaskInitForWX", "alvinluo scene: %d, authKeyName: %s", new Object[] { Integer.valueOf(k), paramString });
+      b.fUW().fUY().put(k, paramString);
       i += 1;
     }
     AppMethodBeat.o(130887);

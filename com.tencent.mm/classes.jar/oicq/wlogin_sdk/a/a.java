@@ -6,43 +6,43 @@ import oicq.wlogin_sdk.tools.util;
 
 public class a
 {
-  public int LVH;
-  public int LVI;
-  public byte[] LVN;
-  public int LVT;
-  int LWB;
-  public int LWC;
-  public int LWD;
+  public int NQg;
+  public int NQh;
+  public byte[] NQm;
+  public int NQs;
+  int NRa;
+  public int NRb;
+  public int NRc;
   
   public a()
   {
     AppMethodBeat.i(88120);
-    this.LVH = 128;
-    this.LVI = 0;
-    this.LWB = 0;
-    this.LWC = 4;
-    this.LWD = 0;
-    this.LVN = new byte[this.LVH];
-    this.LVT = 0;
+    this.NQg = 128;
+    this.NQh = 0;
+    this.NRa = 0;
+    this.NRb = 4;
+    this.NRc = 0;
+    this.NQm = new byte[this.NQg];
+    this.NQs = 0;
     AppMethodBeat.o(88120);
   }
   
-  private void R(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private void S(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88123);
-    if (paramInt2 > this.LVH)
+    if (paramInt2 > this.NQg)
     {
-      this.LVH = (paramInt2 + 128);
-      this.LVN = new byte[this.LVH];
+      this.NQg = (paramInt2 + 128);
+      this.NQm = new byte[this.NQg];
     }
-    this.LVI = paramInt2;
-    System.arraycopy(paramArrayOfByte, paramInt1, this.LVN, 0, paramInt2);
-    this.LVT = util.ah(paramArrayOfByte, paramInt1);
-    this.LWD = (paramInt2 - this.LWC);
+    this.NQh = paramInt2;
+    System.arraycopy(paramArrayOfByte, paramInt1, this.NQm, 0, paramInt2);
+    this.NQs = util.ai(paramArrayOfByte, paramInt1);
+    this.NRc = (paramInt2 - this.NRb);
     AppMethodBeat.o(88123);
   }
   
-  private static int S(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private static int T(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88127);
     int j = paramArrayOfByte.length;
@@ -60,45 +60,45 @@ public class a
             break;
           }
           i = paramInt1;
-        } while (util.ah(paramArrayOfByte, paramInt1) == paramInt2);
+        } while (util.ai(paramArrayOfByte, paramInt1) == paramInt2);
         paramInt1 += 2;
       } while (paramInt1 + 2 > j);
-      paramInt1 += util.ah(paramArrayOfByte, paramInt1) + 2;
+      paramInt1 += util.ai(paramArrayOfByte, paramInt1) + 2;
     }
   }
   
   private int d(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(88129);
-    if (this.LWC >= paramInt)
+    if (this.NRb >= paramInt)
     {
       AppMethodBeat.o(88129);
       return -1;
     }
-    this.LWD = util.ah(paramArrayOfByte1, 2);
-    if (this.LWC + this.LWD > paramInt)
+    this.NRc = util.ai(paramArrayOfByte1, 2);
+    if (this.NRb + this.NRc > paramInt)
     {
       AppMethodBeat.o(88129);
       return -1;
     }
-    paramArrayOfByte2 = d.decrypt(paramArrayOfByte1, this.LWC, this.LWD, paramArrayOfByte2);
+    paramArrayOfByte2 = d.decrypt(paramArrayOfByte1, this.NRb, this.NRc, paramArrayOfByte2);
     if (paramArrayOfByte2 == null)
     {
       AppMethodBeat.o(88129);
       return -1015;
     }
-    if (this.LWC + paramArrayOfByte2.length > this.LVH)
+    if (this.NRb + paramArrayOfByte2.length > this.NQg)
     {
-      this.LVH = (this.LWC + paramArrayOfByte2.length);
-      this.LVN = new byte[this.LVH];
+      this.NQg = (this.NRb + paramArrayOfByte2.length);
+      this.NQm = new byte[this.NQg];
     }
-    this.LVI = 0;
-    System.arraycopy(paramArrayOfByte1, 0, this.LVN, 0, this.LWC);
-    this.LVI += this.LWC;
-    System.arraycopy(paramArrayOfByte2, 0, this.LVN, this.LVI, paramArrayOfByte2.length);
-    this.LVI += paramArrayOfByte2.length;
-    this.LWD = paramArrayOfByte2.length;
-    if (!gfy().booleanValue())
+    this.NQh = 0;
+    System.arraycopy(paramArrayOfByte1, 0, this.NQm, 0, this.NRb);
+    this.NQh += this.NRb;
+    System.arraycopy(paramArrayOfByte2, 0, this.NQm, this.NQh, paramArrayOfByte2.length);
+    this.NQh += paramArrayOfByte2.length;
+    this.NRc = paramArrayOfByte2.length;
+    if (!gxW().booleanValue())
     {
       AppMethodBeat.o(88129);
       return -1005;
@@ -107,69 +107,69 @@ public class a
     return 0;
   }
   
-  public final int T(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final int U(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88128);
-    int i = S(paramArrayOfByte, paramInt1, this.LVT);
+    int i = T(paramArrayOfByte, paramInt1, this.NQs);
     if (i < 0)
     {
       AppMethodBeat.o(88128);
       return -1;
     }
     paramInt1 = paramInt2 - (i - paramInt1);
-    if (this.LWC >= paramInt1)
+    if (this.NRb >= paramInt1)
     {
       AppMethodBeat.o(88128);
       return -1;
     }
-    this.LWD = util.ah(paramArrayOfByte, i + 2);
-    if (this.LWC + this.LWD > paramInt1)
+    this.NRc = util.ai(paramArrayOfByte, i + 2);
+    if (this.NRb + this.NRc > paramInt1)
     {
       AppMethodBeat.o(88128);
       return -1;
     }
-    R(paramArrayOfByte, i, this.LWC + this.LWD);
-    if (!gfy().booleanValue())
+    S(paramArrayOfByte, i, this.NRb + this.NRc);
+    if (!gxW().booleanValue())
     {
       AppMethodBeat.o(88128);
       return -1005;
     }
-    paramInt1 = this.LWC;
-    paramInt2 = this.LWD;
+    paramInt1 = this.NRb;
+    paramInt2 = this.NRc;
     AppMethodBeat.o(88128);
     return paramInt1 + i + paramInt2;
   }
   
-  public final void ae(byte[] paramArrayOfByte, int paramInt)
+  public final void af(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(88126);
-    if (paramInt > this.LVH - this.LWC)
+    if (paramInt > this.NQg - this.NRb)
     {
-      this.LVH = (this.LWC + paramInt + 64);
-      byte[] arrayOfByte = new byte[this.LVH];
-      System.arraycopy(this.LVN, 0, arrayOfByte, 0, this.LVI);
-      this.LVN = arrayOfByte;
+      this.NQg = (this.NRb + paramInt + 64);
+      byte[] arrayOfByte = new byte[this.NQg];
+      System.arraycopy(this.NQm, 0, arrayOfByte, 0, this.NQh);
+      this.NQm = arrayOfByte;
     }
-    this.LWD = paramInt;
-    System.arraycopy(paramArrayOfByte, 0, this.LVN, this.LVI, paramInt);
-    this.LVI += paramInt;
+    this.NRc = paramInt;
+    System.arraycopy(paramArrayOfByte, 0, this.NQm, this.NQh, paramInt);
+    this.NQh += paramInt;
     AppMethodBeat.o(88126);
   }
   
-  public final void ajl(int paramInt)
+  public final void alW(int paramInt)
   {
     AppMethodBeat.i(88124);
-    util.V(this.LVN, this.LVI, paramInt);
-    this.LVI += 2;
-    util.V(this.LVN, this.LVI, 0);
-    this.LVI += 2;
+    util.W(this.NQm, this.NQh, paramInt);
+    this.NQh += 2;
+    util.W(this.NQm, this.NQh, 0);
+    this.NQh += 2;
     AppMethodBeat.o(88124);
   }
   
   public final int b(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(88130);
-    int i = S(paramArrayOfByte1, paramInt1, this.LVT);
+    int i = T(paramArrayOfByte1, paramInt1, this.NQs);
     if (i < 0)
     {
       AppMethodBeat.o(88130);
@@ -183,32 +183,32 @@ public class a
     return paramInt1;
   }
   
-  public final byte[] gft()
+  public final byte[] gxR()
   {
     AppMethodBeat.i(88121);
-    byte[] arrayOfByte = new byte[this.LVI];
-    System.arraycopy(this.LVN, 0, arrayOfByte, 0, this.LVI);
+    byte[] arrayOfByte = new byte[this.NQh];
+    System.arraycopy(this.NQm, 0, arrayOfByte, 0, this.NQh);
     AppMethodBeat.o(88121);
     return arrayOfByte;
   }
   
-  public final byte[] gfw()
+  public final byte[] gxU()
   {
     AppMethodBeat.i(88122);
-    byte[] arrayOfByte = new byte[this.LWD];
-    System.arraycopy(this.LVN, this.LWC, arrayOfByte, 0, this.LWD);
+    byte[] arrayOfByte = new byte[this.NRc];
+    System.arraycopy(this.NQm, this.NRb, arrayOfByte, 0, this.NRc);
     AppMethodBeat.o(88122);
     return arrayOfByte;
   }
   
-  public final void gfx()
+  public final void gxV()
   {
     AppMethodBeat.i(88125);
-    util.V(this.LVN, 2, this.LVI - this.LWC);
+    util.W(this.NQm, 2, this.NQh - this.NRb);
     AppMethodBeat.o(88125);
   }
   
-  public Boolean gfy()
+  public Boolean gxW()
   {
     return Boolean.TRUE;
   }

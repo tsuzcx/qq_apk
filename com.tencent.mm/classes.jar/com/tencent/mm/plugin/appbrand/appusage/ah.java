@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.appusage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.e;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.a.c;
+import com.tencent.mm.plugin.appbrand.api.c;
 import com.tencent.mm.sdk.e.g;
 import java.util.List;
 
@@ -15,15 +15,15 @@ public abstract interface ah
   
   public abstract List<LocalUsageInfo> a(int paramInt1, a parama, int paramInt2);
   
-  public abstract boolean aV(String paramString, int paramInt);
-  
-  public abstract int aW(String paramString, int paramInt);
-  
   public abstract boolean aX(String paramString, int paramInt);
   
-  public abstract void aYp();
+  public abstract int aY(String paramString, int paramInt);
   
-  public abstract int aYq();
+  public abstract boolean aZ(String paramString, int paramInt);
+  
+  public abstract void bbN();
+  
+  public abstract int bbO();
   
   public abstract boolean g(List<LocalUsageInfo> paramList, int paramInt);
   
@@ -34,10 +34,10 @@ public abstract interface ah
     static
     {
       AppMethodBeat.i(153196);
-      jwb = new a("DESC", 0);
-      jwc = new a("ASC", 1);
-      jwd = new a("UPATE_TIME_DESC", 2);
-      jwe = new a[] { jwb, jwc, jwd };
+      jPV = new a("DESC", 0);
+      jPW = new a("ASC", 1);
+      jPX = new a("UPATE_TIME_DESC", 2);
+      jPY = new a[] { jPV, jPW, jPX };
       AppMethodBeat.o(153196);
     }
     

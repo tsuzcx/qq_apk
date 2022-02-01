@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 public final class e
 {
-  public String BuP;
-  public String BuQ;
-  public String BuR;
-  public int BuS;
-  public int BuT;
-  public int BuU;
-  public boolean fRW = false;
+  public String CVe;
+  public String CVf;
+  public String CVg;
+  public int CVh;
+  public int CVi;
+  public int CVj;
+  public boolean glA = false;
   public String pinyin;
   public long timestamp;
-  public String vkI;
+  public String wqa;
 }
 
 

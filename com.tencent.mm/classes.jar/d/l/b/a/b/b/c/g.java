@@ -3,49 +3,49 @@ package d.l.b.a.b.b.c;
 import d.l.b.a.b.b.an;
 import d.l.b.a.b.b.l;
 import d.l.b.a.b.f.f;
-import d.l.b.a.b.l.i;
+import d.l.b.a.b.l.j;
 
 public abstract class g
   extends a
 {
-  private final an LeC;
-  private final l LgE;
-  private final boolean LgF;
+  private final an MVx;
+  private final l MXA;
+  private final boolean MXB;
   
-  protected g(i parami, l paraml, f paramf, an paraman)
+  protected g(j paramj, l paraml, f paramf, an paraman)
   {
-    super(parami, paramf);
-    this.LgE = paraml;
-    this.LeC = paraman;
-    this.LgF = false;
+    super(paramj, paramf);
+    this.MXA = paraml;
+    this.MVx = paraman;
+    this.MXB = false;
   }
   
-  public final l fPU()
+  public boolean ghG()
   {
-    l locall = this.LgE;
-    if (locall == null) {
-      agL(4);
-    }
-    return locall;
+    return this.MXB;
   }
   
-  public boolean fQi()
+  public final an ghI()
   {
-    return this.LgF;
-  }
-  
-  public final an fQk()
-  {
-    an localan = this.LeC;
+    an localan = this.MVx;
     if (localan == null) {
-      agL(5);
+      ajm(5);
     }
     return localan;
+  }
+  
+  public final l ghs()
+  {
+    l locall = this.MXA;
+    if (locall == null) {
+      ajm(4);
+    }
+    return locall;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.c.g
  * JD-Core Version:    0.7.0.1
  */

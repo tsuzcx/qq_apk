@@ -1,163 +1,64 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
-import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer;", "T", "A", "", "policy", "Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Policy;", "name", "", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Policy;Ljava/lang/String;)V", "buffer", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$PageData;", "empty", "Ljava/util/concurrent/locks/Condition;", "kotlin.jvm.PlatformType", "length", "", "getLength", "()I", "setLength", "(I)V", "lock", "Ljava/util/concurrent/locks/ReentrantLock;", "clear", "", "makeList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "offer", "page", "take", "count", "expiredTimeMs", "", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Callback;", "Callback", "Companion", "PageData", "Policy", "plugin-finder_release"})
-public final class j<T, A>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/model/internal/MergeResult;", "", "insertIndex", "", "insertCount", "changeIndex", "Ljava/util/LinkedList;", "isRemoveBeforeInsert", "", "(IILjava/util/LinkedList;Z)V", "getChangeIndex", "()Ljava/util/LinkedList;", "getInsertCount", "()I", "getInsertIndex", "()Z", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder_release"})
+public final class j
 {
-  public static final j.b rou;
-  public final ReentrantLock cEu;
-  public int length;
-  public final String name;
-  public final Condition ror;
-  public final LinkedList<j.c<T, A>> ros;
-  private final j.d rot;
+  final int scX;
+  final int scY;
+  final LinkedList<Integer> scZ;
+  final boolean sda;
   
-  static
+  public j(int paramInt1, int paramInt2, LinkedList<Integer> paramLinkedList, boolean paramBoolean)
   {
-    AppMethodBeat.i(202277);
-    rou = new j.b((byte)0);
-    AppMethodBeat.o(202277);
+    AppMethodBeat.i(202585);
+    this.scX = paramInt1;
+    this.scY = paramInt2;
+    this.scZ = paramLinkedList;
+    this.sda = paramBoolean;
+    AppMethodBeat.o(202585);
   }
   
-  public j()
+  public final boolean equals(Object paramObject)
   {
-    this(null, null, 3);
-  }
-  
-  private j(j.d paramd, String paramString)
-  {
-    AppMethodBeat.i(202275);
-    this.rot = paramd;
-    this.name = paramString;
-    this.cEu = new ReentrantLock();
-    this.ror = this.cEu.newCondition();
-    this.ros = new LinkedList();
-    AppMethodBeat.o(202275);
-  }
-  
-  public final j.c<T, A> a(int paramInt, long paramLong, a parama)
-  {
-    AppMethodBeat.i(202273);
-    k.h(parama, "callback");
-    ac.i("PageDataBuffer", "[take#begin] name=" + this.name + " count=" + paramInt + " expiredTimeMs=" + paramLong);
-    long l1 = SystemClock.uptimeMillis();
-    LinkedList localLinkedList = new LinkedList();
-    j.c localc = new j.c(localLinkedList);
-    this.cEu.lock();
-    for (;;)
+    AppMethodBeat.i(202588);
+    if (this != paramObject)
     {
-      try
+      if ((paramObject instanceof j))
       {
-        if ((paramInt > this.length) && (this.rot == j.d.rox))
-        {
-          parama.csU();
-          ac.i("PageDataBuffer", "[take#request] name=" + this.name + " count=" + paramInt + " expiredTimeMs=" + paramLong);
-          this.ror.await();
-          parama = this.ros.iterator();
-          k.g(parama, "buffer.iterator()");
-          if ((!parama.hasNext()) || (localLinkedList.size() >= paramInt)) {
-            break;
-          }
-          Object localObject = parama.next();
-          k.g(localObject, "iterator.next()");
-          localObject = (j.c)localObject;
-          List localList = ((j.c)localObject).DK(paramInt - localLinkedList.size());
-          localLinkedList.addAll((Collection)localList);
-          this.length -= localList.size();
-          if (((j.c)localObject).fBS.size() <= 0) {
-            parama.remove();
-          }
-          localc.rov = ((j.c)localObject).rov;
-          continue;
-        }
-        if (this.length > 0) {
-          continue;
-        }
+        paramObject = (j)paramObject;
+        if ((this.scX != paramObject.scX) || (this.scY != paramObject.scY) || (!p.i(this.scZ, paramObject.scZ)) || (this.sda != paramObject.sda)) {}
       }
-      finally
-      {
-        this.cEu.unlock();
-        AppMethodBeat.o(202273);
-      }
-      parama.csU();
-      ac.i("PageDataBuffer", "[take#request] name=" + this.name + " count=" + paramInt + " expiredTimeMs=" + paramLong);
-      this.ror.await();
     }
-    this.cEu.unlock();
-    long l2 = paramLong - (SystemClock.uptimeMillis() - l1);
-    if ((l2 > 0L) && (localLinkedList.size() > 0)) {
-      SystemClock.sleep(l2);
+    else
+    {
+      AppMethodBeat.o(202588);
+      return true;
     }
-    ac.i("PageDataBuffer", "[take#end] name=" + this.name + ' ' + localc + " expiredTimeMs=" + paramLong + " length=" + this.length + " delay=" + l2 + " cost=" + (SystemClock.uptimeMillis() - l1) + "ms");
-    AppMethodBeat.o(202273);
-    return localc;
+    AppMethodBeat.o(202588);
+    return false;
   }
   
-  public final void a(j.c<T, A> paramc)
+  public final int hashCode()
   {
-    AppMethodBeat.i(202272);
-    k.h(paramc, "page");
-    this.cEu.lock();
-    try
-    {
-      this.ros.addLast(paramc);
-      this.length += paramc.fBS.size();
-      this.ror.signal();
-      this.cEu.unlock();
-      ac.i("PageDataBuffer", "[offer] name=" + this.name + " page=" + paramc + " length=" + this.length);
-      AppMethodBeat.o(202272);
-      return;
-    }
-    finally
-    {
-      this.cEu.unlock();
-      AppMethodBeat.o(202272);
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public final ArrayList<T> cvG()
+  public final String toString()
   {
-    AppMethodBeat.i(202274);
-    this.cEu.lock();
-    try
-    {
-      ArrayList localArrayList = new ArrayList(this.length);
-      Iterator localIterator = ((Iterable)this.ros).iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.addAll((Collection)((j.c)localIterator.next()).fBS);
-      }
-      this.cEu.unlock();
-    }
-    finally
-    {
-      this.cEu.unlock();
-      AppMethodBeat.o(202274);
-    }
-    AppMethodBeat.o(202274);
-    return localArrayList1;
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Callback;", "", "request", "", "plugin-finder_release"})
-  public static abstract interface a
-  {
-    public abstract void csU();
+    AppMethodBeat.i(202586);
+    String str = "MergeResult(insertIndex=" + this.scX + ", insertCount=" + this.scY + ", changeIndex=" + this.scZ + ", isRemoveBeforeInsert=" + this.sda + ")";
+    AppMethodBeat.o(202586);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.internal.j
  * JD-Core Version:    0.7.0.1
  */

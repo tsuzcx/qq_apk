@@ -13,15 +13,15 @@ import java.util.List;
 public class TouchCoordinatorLayout
   extends CoordinatorLayout
 {
-  private List<View.OnTouchListener> urH;
-  public boolean urI;
+  private List<View.OnTouchListener> vuk;
+  public boolean vul;
   
   public TouchCoordinatorLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(163684);
-    this.urH = new ArrayList();
-    this.urI = false;
+    this.vuk = new ArrayList();
+    this.vul = false;
     AppMethodBeat.o(163684);
   }
   
@@ -29,26 +29,26 @@ public class TouchCoordinatorLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(163685);
-    this.urH = new ArrayList();
-    this.urI = false;
+    this.vuk = new ArrayList();
+    this.vul = false;
     AppMethodBeat.o(163685);
   }
   
   public final void a(View.OnTouchListener paramOnTouchListener)
   {
     AppMethodBeat.i(163686);
-    this.urH.add(paramOnTouchListener);
+    this.vuk.add(paramOnTouchListener);
     AppMethodBeat.o(163686);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(163687);
-    Iterator localIterator = this.urH.iterator();
+    Iterator localIterator = this.vuk.iterator();
     while (localIterator.hasNext()) {
       ((View.OnTouchListener)localIterator.next()).onTouch(this, paramMotionEvent);
     }
-    if (this.urI)
+    if (this.vul)
     {
       AppMethodBeat.o(163687);
       return true;
@@ -60,7 +60,7 @@ public class TouchCoordinatorLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.TouchCoordinatorLayout
  * JD-Core Version:    0.7.0.1
  */

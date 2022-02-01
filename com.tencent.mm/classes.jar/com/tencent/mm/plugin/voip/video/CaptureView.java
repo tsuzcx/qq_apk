@@ -35,7 +35,7 @@ public class CaptureView
   private void init()
   {
     AppMethodBeat.i(115568);
-    if (j.emK()) {
+    if (j.eAI()) {
       setNeedSetType(true);
     }
     AppMethodBeat.o(115568);
@@ -43,7 +43,7 @@ public class CaptureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.CaptureView
  * JD-Core Version:    0.7.0.1
  */

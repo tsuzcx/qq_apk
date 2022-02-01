@@ -18,28 +18,28 @@ public final class b
   extends BaseAdapter
 {
   private Context mContext;
-  List<h> oAg;
+  List<h> pdB;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(64041);
-    this.oAg = new ArrayList();
+    this.pdB = new ArrayList();
     this.mContext = paramContext;
     AppMethodBeat.o(64041);
   }
   
-  public final h AA(int paramInt)
+  public final h Bj(int paramInt)
   {
     AppMethodBeat.i(64043);
-    h localh = (h)this.oAg.get(paramInt);
+    h localh = (h)this.pdB.get(paramInt);
     AppMethodBeat.o(64043);
     return localh;
   }
   
-  public final void cK(List<h> paramList)
+  public final void cL(List<h> paramList)
   {
     AppMethodBeat.i(64046);
-    this.oAg.addAll(paramList);
+    this.pdB.addAll(paramList);
     notifyDataSetChanged();
     AppMethodBeat.o(64046);
   }
@@ -47,7 +47,7 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(64042);
-    int i = this.oAg.size();
+    int i = this.pdB.size();
     AppMethodBeat.o(64042);
     return i;
   }
@@ -63,14 +63,14 @@ public final class b
     View localView = paramView;
     if (paramView == null)
     {
-      localView = z.jD(this.mContext).inflate(2131493555, paramViewGroup, false);
+      localView = z.jO(this.mContext).inflate(2131493555, paramViewGroup, false);
       localView.setTag(new a(localView));
     }
     paramView = (a)localView.getTag();
-    paramViewGroup = AA(paramInt);
-    paramView.oqk.setText(e.a(this.mContext, paramViewGroup.owV, paramViewGroup.type));
-    paramView.oAh.setText(e.Ay(paramViewGroup.dgH));
-    paramView.lgw.setText(this.mContext.getString(2131757448, new Object[] { Integer.valueOf(paramViewGroup.owW) }));
+    paramViewGroup = Bj(paramInt);
+    paramView.oTF.setText(e.a(this.mContext, paramViewGroup.paq, paramViewGroup.type));
+    paramView.pdC.setText(e.Bh(paramViewGroup.dsd));
+    paramView.lDu.setText(this.mContext.getString(2131757448, new Object[] { Integer.valueOf(paramViewGroup.par) }));
     AppMethodBeat.o(64044);
     return localView;
   }
@@ -78,33 +78,33 @@ public final class b
   public final void setData(List<h> paramList)
   {
     AppMethodBeat.i(64045);
-    this.oAg.clear();
-    this.oAg.addAll(paramList);
+    this.pdB.clear();
+    this.pdB.addAll(paramList);
     notifyDataSetChanged();
     AppMethodBeat.o(64045);
   }
   
   static final class a
   {
-    TextView lgw;
-    WalletTextView oAh;
-    TextView oAi;
-    TextView oqk;
+    TextView lDu;
+    TextView oTF;
+    WalletTextView pdC;
+    TextView pdD;
     
     public a(View paramView)
     {
       AppMethodBeat.i(64040);
-      this.oqk = ((TextView)paramView.findViewById(2131298436));
-      this.oAi = ((TextView)paramView.findViewById(2131298435));
-      this.oAh = ((WalletTextView)paramView.findViewById(2131298441));
-      this.lgw = ((TextView)paramView.findViewById(2131298437));
+      this.oTF = ((TextView)paramView.findViewById(2131298436));
+      this.pdD = ((TextView)paramView.findViewById(2131298435));
+      this.pdC = ((WalletTextView)paramView.findViewById(2131298441));
+      this.lDu = ((TextView)paramView.findViewById(2131298437));
       AppMethodBeat.o(64040);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.b
  * JD-Core Version:    0.7.0.1
  */

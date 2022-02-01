@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class h$a
 {
-  public boolean BkD;
-  public String Bkp;
-  public String dlQ;
-  public boolean nVQ;
-  public int nWx;
-  public String nWy;
+  public String CKD;
+  public boolean CKR;
+  public String dxD;
+  public int ozR;
+  public String ozS;
+  public boolean ozk;
   
-  public static a azb(String paramString)
+  public static a aEj(String paramString)
   {
     AppMethodBeat.i(69543);
     a locala = new a();
     try
     {
       paramString = new JSONObject(paramString);
-      locala.nWx = paramString.optInt("ret_code");
-      locala.nWy = paramString.optString("ret_msg");
-      locala.nVQ = paramString.optBoolean("is_show");
-      locala.BkD = paramString.optBoolean("is_open");
-      locala.Bkp = paramString.optString("entrance_name");
-      locala.dlQ = paramString.optString("wording");
+      locala.ozR = paramString.optInt("ret_code");
+      locala.ozS = paramString.optString("ret_msg");
+      locala.ozk = paramString.optBoolean("is_show");
+      locala.CKR = paramString.optBoolean("is_open");
+      locala.CKD = paramString.optString("entrance_name");
+      locala.dxD = paramString.optString("wording");
       AppMethodBeat.o(69543);
       return locala;
     }
@@ -34,30 +34,30 @@ public final class h$a
     {
       for (;;)
       {
-        ac.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetSwitch", "createFromJSONObject() Exception:%s", new Object[] { paramString.getMessage() });
+        ad.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetSwitch", "createFromJSONObject() Exception:%s", new Object[] { paramString.getMessage() });
       }
     }
   }
   
-  public final String epW()
+  public final String eDW()
   {
     AppMethodBeat.i(69542);
     Object localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("ret_code", this.nWx);
-      ((JSONObject)localObject).put("ret_msg", this.nWy);
-      ((JSONObject)localObject).put("is_show", this.nVQ);
-      ((JSONObject)localObject).put("is_open", this.BkD);
-      ((JSONObject)localObject).put("entrance_name", this.Bkp);
-      ((JSONObject)localObject).put("wording", this.dlQ);
+      ((JSONObject)localObject).put("ret_code", this.ozR);
+      ((JSONObject)localObject).put("ret_msg", this.ozS);
+      ((JSONObject)localObject).put("is_show", this.ozk);
+      ((JSONObject)localObject).put("is_open", this.CKR);
+      ((JSONObject)localObject).put("entrance_name", this.CKD);
+      ((JSONObject)localObject).put("wording", this.dxD);
       localObject = ((JSONObject)localObject).toString();
       AppMethodBeat.o(69542);
       return localObject;
     }
     catch (JSONException localJSONException)
     {
-      ac.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetSwitch", "MobileRemitSwitchConfig getJSONObjectString() Exception: %s", new Object[] { localJSONException.getMessage() });
+      ad.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetSwitch", "MobileRemitSwitchConfig getJSONObjectString() Exception: %s", new Object[] { localJSONException.getMessage() });
       AppMethodBeat.o(69542);
     }
     return "";
@@ -66,7 +66,7 @@ public final class h$a
   public final String toString()
   {
     AppMethodBeat.i(69541);
-    String str = "MobileRemitSwitchConfig{ret_code=" + this.nWx + ", ret_msg='" + this.nWy + '\'' + ", is_show=" + this.nVQ + ", is_open=" + this.BkD + ", entrance_name='" + this.Bkp + '\'' + ", wording='" + this.dlQ + '\'' + '}';
+    String str = "MobileRemitSwitchConfig{ret_code=" + this.ozR + ", ret_msg='" + this.ozS + '\'' + ", is_show=" + this.ozk + ", is_open=" + this.CKR + ", entrance_name='" + this.CKD + '\'' + ", wording='" + this.dxD + '\'' + '}';
     AppMethodBeat.o(69541);
     return str;
   }

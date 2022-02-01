@@ -9,9 +9,9 @@ import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.plugin.scanner.i;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.g;
 import java.io.IOException;
 
 public final class n
@@ -27,10 +27,10 @@ public final class n
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(52069);
-    if (s.a.iuo == parama) {}
+    if (s.a.iNr == parama) {}
     try
     {
-      f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aNl(), false);
+      g.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aQw(), false);
       AppMethodBeat.o(52069);
       return paramBitmap;
     }
@@ -38,60 +38,60 @@ public final class n
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.ScannerGetPicStrategy", parama, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ScannerGetPicStrategy", parama, "", new Object[0]);
       }
     }
   }
   
   public final void a(s.a parama, String paramString) {}
   
-  public final s.b aNk()
-  {
-    return null;
-  }
-  
-  public final String aNl()
-  {
-    AppMethodBeat.i(52068);
-    String str = i.dza().iL(this.mPicUrl, "@S");
-    AppMethodBeat.o(52068);
-    return str;
-  }
-  
-  public final String aNm()
-  {
-    return this.mPicUrl;
-  }
-  
-  public final String aNn()
-  {
-    return this.mPicUrl;
-  }
-  
-  public final boolean aNo()
+  public final boolean aQA()
   {
     return false;
   }
   
-  public final boolean aNp()
-  {
-    return false;
-  }
-  
-  public final Bitmap aNq()
+  public final Bitmap aQB()
   {
     AppMethodBeat.i(52070);
-    if (ai.getContext() == null)
+    if (aj.getContext() == null)
     {
       AppMethodBeat.o(52070);
       return null;
     }
-    Bitmap localBitmap = BitmapFactory.decodeResource(ai.getContext().getResources(), 2131233476);
+    Bitmap localBitmap = BitmapFactory.decodeResource(aj.getContext().getResources(), 2131233476);
     AppMethodBeat.o(52070);
     return localBitmap;
   }
   
-  public final void aNr() {}
+  public final void aQC() {}
+  
+  public final s.b aQv()
+  {
+    return null;
+  }
+  
+  public final String aQw()
+  {
+    AppMethodBeat.i(52068);
+    String str = i.dKy().iY(this.mPicUrl, "@S");
+    AppMethodBeat.o(52068);
+    return str;
+  }
+  
+  public final String aQx()
+  {
+    return this.mPicUrl;
+  }
+  
+  public final String aQy()
+  {
+    return this.mPicUrl;
+  }
+  
+  public final boolean aQz()
+  {
+    return false;
+  }
   
   public final void aa(String paramString, boolean paramBoolean) {}
   

@@ -1,6 +1,6 @@
 package com.tencent.liteav.beauty;
 
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 
@@ -45,7 +45,7 @@ public class NativeLoad
     static
     {
       AppMethodBeat.i(15160);
-      d.f();
+      f.f();
       a = new NativeLoad(null);
       AppMethodBeat.o(15160);
     }

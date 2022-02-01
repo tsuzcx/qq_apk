@@ -6,26 +6,30 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.a.a.ag;
 import com.tencent.mm.emoji.a.a.i;
-import d.g.b.k;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/adapter/SmileyTabAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/emoji/panel/adapter/SmileyTabAdapter$ViewHolder;", "config", "Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;", "(Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;)V", "mData", "Ljava/util/ArrayList;", "Lcom/tencent/mm/emoji/model/panel/PanelTab;", "onItemClickListener", "Lcom/tencent/mm/emoji/panel/adapter/SmileyTabAdapter$OnItemClickListener;", "selectedPosition", "", "getItem", "position", "getItemCount", "getItemId", "", "getItemViewType", "onBindViewHolder", "", "viewHolder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "setOnItemClickListener", "setSelection", "update", "data", "", "Companion", "OnItemClickListener", "ViewHolder", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/SmileyTabAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/emoji/panel/adapter/SmileyTabAdapter$ViewHolder;", "config", "Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;", "(Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig;)V", "mData", "Ljava/util/ArrayList;", "Lcom/tencent/mm/emoji/model/panel/PanelTab;", "onItemClickListener", "Lcom/tencent/mm/emoji/panel/adapter/SmileyTabAdapter$OnItemClickListener;", "selectedPosition", "", "getItem", "position", "getItemCount", "getItemId", "", "getItemViewType", "onBindViewHolder", "", "viewHolder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "setOnItemClickListener", "setSelection", "update", "data", "", "Companion", "OnItemClickListener", "ViewHolder", "plugin-emojisdk_release"})
 public final class x
   extends RecyclerView.a<c>
 {
   public static final String TAG = "MicroMsg.emoji.SmileyPanel.SmileyTabAdapter";
-  public static final x.a fUF;
-  private final i fRn;
-  public b fUE;
-  public final ArrayList<com.tencent.mm.emoji.a.a.ac> mData;
-  private int ta;
+  public static final x.a goh;
+  private final i gkN;
+  public b gog;
+  public final ArrayList<ag> mData;
+  private int uT;
   
   static
   {
     AppMethodBeat.i(105703);
-    fUF = new x.a((byte)0);
+    goh = new x.a((byte)0);
     TAG = "MicroMsg.emoji.SmileyPanel.SmileyTabAdapter";
     AppMethodBeat.o(105703);
   }
@@ -33,9 +37,9 @@ public final class x
   public x(i parami)
   {
     AppMethodBeat.i(105702);
-    this.fRn = parami;
+    this.gkN = parami;
     this.mData = new ArrayList();
-    this.ta = -1;
+    this.uT = -1;
     AppMethodBeat.o(105702);
   }
   
@@ -55,16 +59,16 @@ public final class x
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(105699);
-    com.tencent.mm.emoji.a.a.ac localac = lE(paramInt);
-    if (localac == null) {
-      k.fOy();
+    ag localag = me(paramInt);
+    if (localag == null) {
+      p.gfZ();
     }
-    paramInt = localac.type;
+    paramInt = localag.type;
     AppMethodBeat.o(105699);
     return paramInt;
   }
   
-  public final com.tencent.mm.emoji.a.a.ac lE(int paramInt)
+  public final ag me(int paramInt)
   {
     AppMethodBeat.i(105697);
     if ((this.mData.isEmpty()) || (this.mData.size() < paramInt) || (paramInt < 0))
@@ -72,48 +76,48 @@ public final class x
       AppMethodBeat.o(105697);
       return null;
     }
-    com.tencent.mm.emoji.a.a.ac localac = (com.tencent.mm.emoji.a.a.ac)this.mData.get(paramInt);
+    ag localag = (ag)this.mData.get(paramInt);
     AppMethodBeat.o(105697);
-    return localac;
+    return localag;
   }
   
   public final void setSelection(int paramInt)
   {
     AppMethodBeat.i(105696);
-    com.tencent.mm.sdk.platformtools.ac.i(TAG, "setSelection: %s", new Object[] { Integer.valueOf(paramInt) });
-    if (this.ta != paramInt)
+    ad.i(TAG, "setSelection: %s", new Object[] { Integer.valueOf(paramInt) });
+    if (this.uT != paramInt)
     {
-      cj(this.ta);
-      this.ta = paramInt;
-      cj(this.ta);
+      cj(this.uT);
+      this.uT = paramInt;
+      cj(this.uT);
     }
     AppMethodBeat.o(105696);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/adapter/SmileyTabAdapter$OnItemClickListener;", "", "onItemClick", "", "position", "", "itemView", "Landroid/view/View;", "plugin-emojisdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/SmileyTabAdapter$OnItemClickListener;", "", "onItemClick", "", "position", "", "itemView", "Landroid/view/View;", "plugin-emojisdk_release"})
   public static abstract interface b
   {
     public abstract void b(int paramInt, View paramView);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/adapter/SmileyTabAdapter$ViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "Landroid/view/View$OnClickListener;", "view", "Landroid/view/View;", "(Lcom/tencent/mm/emoji/panel/adapter/SmileyTabAdapter;Landroid/view/View;)V", "dotView", "Landroid/widget/ImageView;", "getDotView", "()Landroid/widget/ImageView;", "setDotView", "(Landroid/widget/ImageView;)V", "imageView", "getImageView", "setImageView", "onClick", "", "v", "plugin-emojisdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/SmileyTabAdapter$ViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "Landroid/view/View$OnClickListener;", "view", "Landroid/view/View;", "(Lcom/tencent/mm/emoji/panel/adapter/SmileyTabAdapter;Landroid/view/View;)V", "dotView", "Landroid/widget/ImageView;", "getDotView", "()Landroid/widget/ImageView;", "setDotView", "(Landroid/widget/ImageView;)V", "imageView", "getImageView", "setImageView", "onClick", "", "v", "plugin-emojisdk_release"})
   public final class c
     extends RecyclerView.w
     implements View.OnClickListener
   {
-    ImageView dhf;
-    ImageView fUG;
+    ImageView dsD;
+    ImageView goi;
     
     public c()
     {
       super();
       AppMethodBeat.i(105693);
       this$1 = localObject.findViewById(2131304867);
-      k.g(x.this, "view.findViewById(R.id.smiley_listview_item_view)");
-      this.dhf = ((ImageView)x.this);
+      p.g(x.this, "view.findViewById(R.id.smiley_listview_item_view)");
+      this.dsD = ((ImageView)x.this);
       this$1 = localObject.findViewById(2131304866);
-      k.g(x.this, "view.findViewById(R.id.smiley_listview_item_dot)");
-      this.fUG = ((ImageView)x.this);
+      p.g(x.this, "view.findViewById(R.id.smiley_listview_item_dot)");
+      this.goi = ((ImageView)x.this);
       localObject.setOnClickListener((View.OnClickListener)this);
       AppMethodBeat.o(105693);
     }
@@ -121,15 +125,19 @@ public final class x
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(105692);
-      k.h(paramView, "v");
+      Object localObject = new b();
+      ((b)localObject).bd(paramView);
+      a.b("com/tencent/mm/emoji/panel/adapter/SmileyTabAdapter$ViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+      p.h(paramView, "v");
       if (x.a(x.this) != null)
       {
-        x.b localb = x.a(x.this);
-        if (localb == null) {
-          k.fOy();
+        localObject = x.a(x.this);
+        if (localObject == null) {
+          p.gfZ();
         }
-        localb.b(lv(), paramView);
+        ((x.b)localObject).b(lN(), paramView);
       }
+      a.a(this, "com/tencent/mm/emoji/panel/adapter/SmileyTabAdapter$ViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(105692);
     }
   }

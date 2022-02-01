@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class id
   extends b
 {
-  public a djk;
+  public a duG;
+  public b duH;
   
   public id()
   {
@@ -15,17 +17,24 @@ public final class id
   
   private id(byte paramByte)
   {
-    AppMethodBeat.i(89646);
-    this.djk = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(89640);
+    this.duG = new a();
+    this.duH = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(89646);
+    AppMethodBeat.o(89640);
   }
   
   public static final class a
   {
-    public int cZu;
-    public String djj;
+    public int EN = 0;
+    public Context context;
+    public String param;
+  }
+  
+  public static final class b
+  {
+    public String result;
   }
 }
 

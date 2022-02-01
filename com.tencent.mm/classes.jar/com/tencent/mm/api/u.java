@@ -2,25 +2,25 @@ package com.tencent.mm.api;
 
 public abstract interface u
 {
-  public abstract int JD();
+  public abstract int Lc();
   
-  public abstract int JE();
+  public abstract int Ld();
   
-  public abstract int JF();
+  public abstract int Le();
   
-  public abstract int JG();
+  public abstract int Lf();
   
-  public abstract int JH();
+  public abstract int Lg();
   
-  public abstract boolean JI();
+  public abstract boolean Lh();
   
-  public abstract int JJ();
+  public abstract int Li();
   
-  public abstract boolean JK();
+  public abstract boolean Lj();
   
-  public abstract String JL();
+  public abstract String Lk();
   
-  public abstract String JM();
+  public abstract String Ll();
   
   public abstract int getTextColor();
   
@@ -28,7 +28,7 @@ public abstract interface u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.api.u
  * JD-Core Version:    0.7.0.1
  */

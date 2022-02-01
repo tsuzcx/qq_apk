@@ -10,49 +10,33 @@ import android.os.Bundle;
 import android.provider.ContactsContract.Settings;
 import com.jg.JgMethodChecked;
 import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.account.friend.a.l.a;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.j;
 import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.am;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class t
 {
-  private static String FD(String paramString)
-  {
-    AppMethodBeat.i(127739);
-    try
-    {
-      String str = Pattern.compile("[`~!@#$%^&*()+=|{}':;',//[//].<>/?~！@#¥￥%……&*（）——+|{}【】‘；：”“’。，、？]").matcher(paramString).replaceAll("_").trim();
-      AppMethodBeat.o(127739);
-      return str;
-    }
-    catch (Exception localException)
-    {
-      ac.e("MicroMsg.MMAccountManager", "stringFilter failed, %s, %s", new Object[] { paramString, localException.getMessage() });
-      ac.printErrStackTrace("MicroMsg.MMAccountManager", localException, "", new Object[0]);
-      AppMethodBeat.o(127739);
-    }
-    return paramString;
-  }
-  
-  public static boolean J(Context paramContext, String paramString)
+  public static boolean I(Context paramContext, String paramString)
   {
     AppMethodBeat.i(127726);
-    boolean bool = bs.isNullOrNil(paramString);
-    ac.v("MicroMsg.MMAccountManager", "remove account : ".concat(String.valueOf(paramString)));
+    boolean bool = bt.isNullOrNil(paramString);
+    ad.v("MicroMsg.MMAccountManager", "remove account : ".concat(String.valueOf(paramString)));
     if (paramContext == null)
     {
-      ac.e("MicroMsg.MMAccountManager", "null context");
+      ad.e("MicroMsg.MMAccountManager", "null context");
       AppMethodBeat.o(127726);
       return false;
     }
@@ -61,10 +45,10 @@ public final class t
       int i;
       try
       {
-        Account[] arrayOfAccount = dc(paramContext);
+        Account[] arrayOfAccount = da(paramContext);
         if ((arrayOfAccount == null) || (arrayOfAccount.length == 0))
         {
-          ac.d("MicroMsg.MMAccountManager", "get account info is null or nil");
+          ad.d("MicroMsg.MMAccountManager", "get account info is null or nil");
           AppMethodBeat.o(127726);
           return true;
         }
@@ -81,14 +65,14 @@ public final class t
           else if (localAccount.name.equals(paramString))
           {
             paramContext.removeAccount(localAccount, null, null);
-            ac.i("MicroMsg.MMAccountManager", "remove account success: ".concat(String.valueOf(paramString)));
+            ad.i("MicroMsg.MMAccountManager", "remove account success: ".concat(String.valueOf(paramString)));
           }
         }
       }
       catch (Exception paramContext)
       {
-        ac.printErrStackTrace("MicroMsg.MMAccountManager", paramContext, "", new Object[0]);
-        ac.e("MicroMsg.MMAccountManager", "exception in removeAccount() " + paramContext.getMessage());
+        ad.printErrStackTrace("MicroMsg.MMAccountManager", paramContext, "", new Object[0]);
+        ad.e("MicroMsg.MMAccountManager", "exception in removeAccount() " + paramContext.getMessage());
         AppMethodBeat.o(127726);
         return false;
       }
@@ -98,30 +82,48 @@ public final class t
     }
   }
   
-  public static void K(Context paramContext, String paramString)
+  private static String IS(String paramString)
+  {
+    AppMethodBeat.i(127739);
+    try
+    {
+      String str = Pattern.compile("[`~!@#$%^&*()+=|{}':;',//[//].<>/?~！@#¥￥%……&*（）——+|{}【】‘；：”“’。，、？]").matcher(paramString).replaceAll("_").trim();
+      AppMethodBeat.o(127739);
+      return str;
+    }
+    catch (Exception localException)
+    {
+      ad.e("MicroMsg.MMAccountManager", "stringFilter failed, %s, %s", new Object[] { paramString, localException.getMessage() });
+      ad.printErrStackTrace("MicroMsg.MMAccountManager", localException, "", new Object[0]);
+      AppMethodBeat.o(127739);
+    }
+    return paramString;
+  }
+  
+  public static void J(Context paramContext, String paramString)
   {
     AppMethodBeat.i(127731);
-    if (cZ(paramContext))
+    if (cX(paramContext))
     {
-      if (!com.tencent.mm.kernel.g.agR().agA().getBoolean(ah.a.GTw, false))
+      if (!com.tencent.mm.kernel.g.ajC().ajl().getBoolean(al.a.IGb, false))
       {
-        paramContext = new g(paramContext, db(paramContext), paramString);
-        h.JZN.aS(paramContext);
+        paramContext = new g(paramContext, cZ(paramContext), paramString);
+        h.LTJ.aR(paramContext);
         AppMethodBeat.o(127731);
       }
     }
     else
     {
-      J(paramContext, null);
-      ac.d("MicroMsg.MMAccountManager", "no account added or not current account");
+      I(paramContext, null);
+      ad.d("MicroMsg.MMAccountManager", "no account added or not current account");
     }
     AppMethodBeat.o(127731);
   }
   
-  private static boolean L(Context paramContext, String paramString)
+  private static boolean K(Context paramContext, String paramString)
   {
     AppMethodBeat.i(127736);
-    paramContext = dc(paramContext);
+    paramContext = da(paramContext);
     if ((paramContext == null) || (paramContext.length == 0))
     {
       AppMethodBeat.o(127736);
@@ -142,7 +144,7 @@ public final class t
     return false;
   }
   
-  private static Account[] M(Context paramContext, String paramString)
+  private static Account[] L(Context paramContext, String paramString)
   {
     AppMethodBeat.i(127737);
     Object localObject = null;
@@ -156,8 +158,8 @@ public final class t
     {
       for (;;)
       {
-        ac.e("MicroMsg.MMAccountManager", "get all accounts failed");
-        ac.printErrStackTrace("MicroMsg.MMAccountManager", paramContext, "", new Object[0]);
+        ad.e("MicroMsg.MMAccountManager", "get all accounts failed");
+        ad.printErrStackTrace("MicroMsg.MMAccountManager", paramContext, "", new Object[0]);
         paramContext = localObject;
       }
     }
@@ -168,21 +170,21 @@ public final class t
     AppMethodBeat.i(127723);
     if (paramContext == null)
     {
-      ac.e("MicroMsg.MMAccountManager", "context is null");
+      ad.e("MicroMsg.MMAccountManager", "context is null");
       AppMethodBeat.o(127723);
       return 0;
     }
-    Object localObject2 = aNs();
+    Object localObject2 = aQD();
     Object localObject1 = localObject2;
-    if (bs.isNullOrNil((String)localObject2))
+    if (bt.isNullOrNil((String)localObject2))
     {
-      ac.e("MicroMsg.MMAccountManager", "account username is null or nil");
-      localObject1 = (String)com.tencent.mm.kernel.g.agR().agA().get(6, "");
-      if (bs.isNullOrNil((String)localObject1)) {}
+      ad.e("MicroMsg.MMAccountManager", "account username is null or nil");
+      localObject1 = (String)com.tencent.mm.kernel.g.ajC().ajl().get(6, "");
+      if (bt.isNullOrNil((String)localObject1)) {}
     }
     else
     {
-      if (!L(paramContext, (String)localObject1)) {
+      if (!K(paramContext, (String)localObject1)) {
         break label89;
       }
       AppMethodBeat.o(127723);
@@ -191,7 +193,7 @@ public final class t
     AppMethodBeat.o(127723);
     return 0;
     label89:
-    if (!b.o(paramContext, "android.permission.READ_CONTACTS"))
+    if (!b.n(paramContext, "android.permission.READ_CONTACTS"))
     {
       AppMethodBeat.o(127723);
       return 2;
@@ -207,7 +209,7 @@ public final class t
         paramContext.putString("authAccount", (String)localObject1);
         paramContext.putString("accountType", "com.tencent.mm.account");
         if (parama != null) {
-          parama.v(paramContext);
+          parama.w(paramContext);
         }
         AppMethodBeat.o(127723);
         return 1;
@@ -215,10 +217,10 @@ public final class t
     }
     catch (Exception paramContext)
     {
-      ac.printErrStackTrace("MicroMsg.MMAccountManager", paramContext, "", new Object[0]);
-      ac.e("MicroMsg.MMAccountManager", "exception in addAccountNoNeedBindMobile() " + paramContext.getMessage());
+      ad.printErrStackTrace("MicroMsg.MMAccountManager", paramContext, "", new Object[0]);
+      ad.e("MicroMsg.MMAccountManager", "exception in addAccountNoNeedBindMobile() " + paramContext.getMessage());
       if (parama != null) {
-        parama.v(null);
+        parama.w(null);
       }
       AppMethodBeat.o(127723);
     }
@@ -230,37 +232,37 @@ public final class t
     AppMethodBeat.i(127724);
     if (paramContext == null)
     {
-      ac.e("MicroMsg.MMAccountManager", "activity is null");
+      ad.e("MicroMsg.MMAccountManager", "activity is null");
       AppMethodBeat.o(127724);
       return 0;
     }
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      ac.e("MicroMsg.MMAccountManager", "account username is null or nil");
+      ad.e("MicroMsg.MMAccountManager", "account username is null or nil");
       AppMethodBeat.o(127724);
       return 0;
     }
-    Object localObject = aNs();
-    if (bs.isNullOrNil((String)localObject)) {}
+    Object localObject = aQD();
+    if (bt.isNullOrNil((String)localObject)) {}
     for (;;)
     {
       try
       {
         localObject = AccountManager.get(paramContext);
         Account localAccount = new Account(paramString, "com.tencent.mm.account");
-        boolean bool = b.o(paramContext, "android.permission.READ_CONTACTS");
+        boolean bool = b.n(paramContext, "android.permission.READ_CONTACTS");
         if (!bool)
         {
           AppMethodBeat.o(127724);
           return 2;
         }
-        if (L(paramContext, paramString))
+        if (K(paramContext, paramString))
         {
           ContentResolver.setSyncAutomatically(localAccount, "com.android.contacts", true);
           AppMethodBeat.o(127724);
           return 3;
         }
-        J(paramContext, null);
+        I(paramContext, null);
         if (((AccountManager)localObject).addAccountExplicitly(localAccount, "", null))
         {
           ContentResolver.setSyncAutomatically(localAccount, "com.android.contacts", true);
@@ -268,7 +270,7 @@ public final class t
           ((Bundle)localObject).putString("authAccount", paramString);
           ((Bundle)localObject).putString("accountType", "com.tencent.mm.account");
           if (parama != null) {
-            parama.v((Bundle)localObject);
+            parama.w((Bundle)localObject);
           }
           localObject = new ContentValues();
           ((ContentValues)localObject).put("account_name", paramString);
@@ -282,10 +284,10 @@ public final class t
       }
       catch (Exception paramContext)
       {
-        ac.printErrStackTrace("MicroMsg.MMAccountManager", paramContext, "", new Object[0]);
-        ac.e("MicroMsg.MMAccountManager", "exception in addAccount() " + paramContext.getMessage());
+        ad.printErrStackTrace("MicroMsg.MMAccountManager", paramContext, "", new Object[0]);
+        ad.e("MicroMsg.MMAccountManager", "exception in addAccount() " + paramContext.getMessage());
         if (parama != null) {
-          parama.v(null);
+          parama.w(null);
         }
         AppMethodBeat.o(127724);
         return 2;
@@ -294,31 +296,31 @@ public final class t
     }
   }
   
-  private static String aNs()
+  private static String aQD()
   {
     AppMethodBeat.i(127728);
-    if (!com.tencent.mm.kernel.g.agM())
+    if (!com.tencent.mm.kernel.g.ajx())
     {
-      ac.e("MicroMsg.MMAccountManager", "getCurrentAccountName MMCore.acc Not Ready");
+      ad.e("MicroMsg.MMAccountManager", "getCurrentAccountName MMCore.acc Not Ready");
       AppMethodBeat.o(127728);
       return "";
     }
-    Object localObject = (String)com.tencent.mm.kernel.g.agR().agA().get(4, null);
-    if (!bs.isNullOrNil((String)localObject)) {}
+    Object localObject = (String)com.tencent.mm.kernel.g.ajC().ajl().get(4, null);
+    if (!bt.isNullOrNil((String)localObject)) {}
     for (;;)
     {
-      localObject = FD((String)localObject);
+      localObject = IS((String)localObject);
       AppMethodBeat.o(127728);
       return localObject;
-      String str = u.axx();
+      String str = u.aAn();
       localObject = str;
-      if (bs.isNullOrNil(str))
+      if (bt.isNullOrNil(str))
       {
-        str = u.axw();
-        if (!bs.isNullOrNil(str))
+        str = u.aAm();
+        if (!bt.isNullOrNil(str))
         {
           localObject = str;
-          if (!ai.aNf(str)) {}
+          if (!am.aSX(str)) {}
         }
         else
         {
@@ -328,45 +330,45 @@ public final class t
     }
   }
   
-  public static void cW(Context paramContext)
+  public static void cU(Context paramContext)
   {
     AppMethodBeat.i(127725);
-    d.eQD();
-    if (com.tencent.mm.sdk.platformtools.i.cHe == 0)
+    d.ffH();
+    if (j.cSi == 0)
     {
-      ac.d("MicroMsg.MMAccountManager", "do not auto add account");
+      ad.d("MicroMsg.MMAccountManager", "do not auto add account");
       AppMethodBeat.o(127725);
       return;
     }
-    if (com.tencent.mm.sdk.platformtools.i.cHe == 1)
+    if (j.cSi == 1)
     {
-      if (l.aPC() == l.a.iKF)
+      if (l.aSO() == l.a.jdO)
       {
-        ac.d("MicroMsg.MMAccountManager", "auto add account result: ".concat(String.valueOf(a(paramContext, l.aPE(), null))));
+        ad.d("MicroMsg.MMAccountManager", "auto add account result: ".concat(String.valueOf(a(paramContext, l.aSQ(), null))));
         AppMethodBeat.o(127725);
         return;
       }
-      ac.i("MicroMsg.MMAccountManager", "the user not bind mobile or not aggreed to upload addressbook");
+      ad.i("MicroMsg.MMAccountManager", "the user not bind mobile or not aggreed to upload addressbook");
       AppMethodBeat.o(127725);
       return;
     }
-    if (com.tencent.mm.sdk.platformtools.i.cHe == 2) {
-      ac.d("MicroMsg.MMAccountManager", "auto add account result: ".concat(String.valueOf(a(paramContext, null))));
+    if (j.cSi == 2) {
+      ad.d("MicroMsg.MMAccountManager", "auto add account result: ".concat(String.valueOf(a(paramContext, null))));
     }
     AppMethodBeat.o(127725);
   }
   
   @JgMethodChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.INTENTCHECK})
-  public static boolean cX(Context paramContext)
+  public static boolean cV(Context paramContext)
   {
     AppMethodBeat.i(127727);
     boolean bool1 = false;
     if (paramContext != null)
     {
       Intent localIntent = new Intent("com.tencent.mm.login.ACTION_LOGOUT");
-      localIntent.putExtra("accountName", aNs());
+      localIntent.putExtra("accountName", aQD());
       localIntent.putExtra("accountType", "com.tencent.mm.account");
-      boolean bool2 = J(paramContext, aNs());
+      boolean bool2 = I(paramContext, aQD());
       bool1 = bool2;
       if (bool2)
       {
@@ -378,36 +380,36 @@ public final class t
     return bool1;
   }
   
-  public static void cY(Context paramContext)
+  public static void cW(Context paramContext)
   {
     AppMethodBeat.i(127729);
-    if (cZ(paramContext))
+    if (cX(paramContext))
     {
-      if (!com.tencent.mm.kernel.g.agR().agA().getBoolean(ah.a.GTw, false))
+      if (!com.tencent.mm.kernel.g.ajC().ajl().getBoolean(al.a.IGb, false))
       {
-        paramContext = new g(paramContext, db(paramContext));
-        h.JZN.aS(paramContext);
+        paramContext = new g(paramContext, cZ(paramContext));
+        h.LTJ.aR(paramContext);
         AppMethodBeat.o(127729);
       }
     }
     else
     {
-      J(paramContext, null);
-      ac.d("MicroMsg.MMAccountManager", "no account added or not current account");
+      I(paramContext, null);
+      ad.d("MicroMsg.MMAccountManager", "no account added or not current account");
     }
     AppMethodBeat.o(127729);
   }
   
-  private static boolean cZ(Context paramContext)
+  private static boolean cX(Context paramContext)
   {
     AppMethodBeat.i(127732);
-    paramContext = db(paramContext);
+    paramContext = cZ(paramContext);
     if (paramContext == null)
     {
       AppMethodBeat.o(127732);
       return false;
     }
-    if (paramContext.name.equals(aNs()))
+    if (paramContext.name.equals(aQD()))
     {
       AppMethodBeat.o(127732);
       return true;
@@ -416,21 +418,21 @@ public final class t
     return false;
   }
   
-  public static boolean da(Context paramContext)
+  public static boolean cY(Context paramContext)
   {
     AppMethodBeat.i(127733);
-    if (!cZ(paramContext))
+    if (!cX(paramContext))
     {
-      ac.e("MicroMsg.MMAccountManager", "no account added or not current account");
+      ad.e("MicroMsg.MMAccountManager", "no account added or not current account");
       AppMethodBeat.o(127733);
       return false;
     }
-    if (!b.o(paramContext, "android.permission.READ_CONTACTS"))
+    if (!b.n(paramContext, "android.permission.READ_CONTACTS"))
     {
       AppMethodBeat.o(127733);
       return false;
     }
-    paramContext = db(paramContext);
+    paramContext = cZ(paramContext);
     if (paramContext != null)
     {
       Bundle localBundle = new Bundle();
@@ -440,22 +442,22 @@ public final class t
       AppMethodBeat.o(127733);
       return true;
     }
-    ac.e("MicroMsg.MMAccountManager", "no account added");
+    ad.e("MicroMsg.MMAccountManager", "no account added");
     AppMethodBeat.o(127733);
     return false;
   }
   
-  private static Account db(Context paramContext)
+  private static Account cZ(Context paramContext)
   {
     AppMethodBeat.i(127734);
-    String str2 = aNs();
+    String str2 = aQD();
     String str1 = str2;
-    if (bs.isNullOrNil(str2)) {
-      str1 = (String)com.tencent.mm.kernel.g.agR().agA().get(6, "");
+    if (bt.isNullOrNil(str2)) {
+      str1 = (String)com.tencent.mm.kernel.g.ajC().ajl().get(6, "");
     }
-    if (!bs.isNullOrNil(str1))
+    if (!bt.isNullOrNil(str1))
     {
-      paramContext = dc(paramContext);
+      paramContext = da(paramContext);
       if (paramContext == null)
       {
         AppMethodBeat.o(127734);
@@ -478,7 +480,7 @@ public final class t
     return null;
   }
   
-  private static Account[] dc(Context paramContext)
+  private static Account[] da(Context paramContext)
   {
     AppMethodBeat.i(127735);
     try
@@ -489,17 +491,17 @@ public final class t
     }
     catch (Exception paramContext)
     {
-      ac.e("MicroMsg.MMAccountManager", "get all accounts failed");
-      ac.printErrStackTrace("MicroMsg.MMAccountManager", paramContext, "", new Object[0]);
+      ad.e("MicroMsg.MMAccountManager", "get all accounts failed");
+      ad.printErrStackTrace("MicroMsg.MMAccountManager", paramContext, "", new Object[0]);
       AppMethodBeat.o(127735);
     }
     return null;
   }
   
-  public static String dd(Context paramContext)
+  public static String db(Context paramContext)
   {
     AppMethodBeat.i(127738);
-    Account[] arrayOfAccount = M(paramContext, "com.google");
+    Account[] arrayOfAccount = L(paramContext, "com.google");
     Object localObject = null;
     String str = null;
     paramContext = localObject;
@@ -513,10 +515,10 @@ public final class t
         for (paramContext = str; i < j; paramContext = str)
         {
           str = arrayOfAccount[i].name;
-          if (!bs.isNullOrNil(str))
+          if (!bt.isNullOrNil(str))
           {
             paramContext = str;
-            if (bs.aLm(str)) {
+            if (bt.aQS(str)) {
               break;
             }
           }
@@ -528,22 +530,22 @@ public final class t
     return paramContext;
   }
   
-  public static void l(Context paramContext, String paramString1, String paramString2)
+  public static void m(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(127730);
-    if (cZ(paramContext))
+    if (cX(paramContext))
     {
-      if (!com.tencent.mm.kernel.g.agR().agA().getBoolean(ah.a.GTw, false))
+      if (!com.tencent.mm.kernel.g.ajC().ajl().getBoolean(al.a.IGb, false))
       {
-        paramContext = new g(paramContext, db(paramContext), paramString1, paramString2);
-        h.JZN.aS(paramContext);
+        paramContext = new g(paramContext, cZ(paramContext), paramString1, paramString2);
+        h.LTJ.aR(paramContext);
         AppMethodBeat.o(127730);
       }
     }
     else
     {
-      J(paramContext, null);
-      ac.d("MicroMsg.MMAccountManager", "no account added or not current account");
+      I(paramContext, null);
+      ad.d("MicroMsg.MMAccountManager", "no account added or not current account");
     }
     AppMethodBeat.o(127730);
   }

@@ -6,37 +6,39 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.d;
-import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.b;
-import com.tencent.mm.model.ar.b.a;
-import com.tencent.mm.n.b;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.b;
+import com.tencent.mm.model.as.b.a;
+import com.tencent.mm.o.b;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class c
   extends Preference
 {
-  String foE;
-  private TextView lfN;
+  String fGM;
+  private TextView lCL;
   private Context mContext;
   String mTitle;
   private View mView;
-  private ImageView ozi;
+  private ImageView pcD;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(64187);
     this.mView = null;
-    this.lfN = null;
-    this.ozi = null;
-    this.foE = null;
+    this.lCL = null;
+    this.pcD = null;
+    this.fGM = null;
     this.mTitle = null;
     this.mContext = null;
     this.mContext = paramContext;
@@ -49,9 +51,9 @@ public final class c
     super(paramContext);
     AppMethodBeat.i(64188);
     this.mView = null;
-    this.lfN = null;
-    this.ozi = null;
-    this.foE = null;
+    this.lCL = null;
+    this.pcD = null;
+    this.fGM = null;
     this.mTitle = null;
     this.mContext = null;
     this.mContext = paramContext;
@@ -75,52 +77,52 @@ public final class c
   {
     AppMethodBeat.i(64190);
     super.onBindView(paramView);
-    this.lfN = ((TextView)paramView.findViewById(16908310));
-    this.ozi = ((ImageView)paramView.findViewById(2131298480));
-    this.lfN.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, this.mTitle, this.lfN.getTextSize()));
-    if (!bs.isNullOrNil(this.foE))
+    this.lCL = ((TextView)paramView.findViewById(16908310));
+    this.pcD = ((ImageView)paramView.findViewById(2131298480));
+    this.lCL.setText(k.b(this.mContext, this.mTitle, this.lCL.getTextSize()));
+    if (!bt.isNullOrNil(this.fGM))
     {
-      this.ozi.setVisibility(0);
-      g.agS();
-      paramView = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNs(this.foE);
-      if ((paramView == null) || ((int)paramView.fLJ <= 0))
+      this.pcD.setVisibility(0);
+      g.ajD();
+      paramView = ((l)g.ab(l.class)).azp().aTk(this.fGM);
+      if ((paramView == null) || ((int)paramView.gfj <= 0))
       {
-        ac.d("MicroMsg.CollectPayInfoPreference", "Receiver in contactStg and try to get contact");
-        final long l = bs.eWj();
-        ar.a.hnw.a(this.foE, "", new ar.b.a()
+        ad.d("MicroMsg.CollectPayInfoPreference", "Receiver in contactStg and try to get contact");
+        final long l = bt.flT();
+        as.a.hFO.a(this.fGM, "", new as.b.a()
         {
           public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
           {
             AppMethodBeat.i(64186);
             if (paramAnonymousBoolean)
             {
-              ac.v("MicroMsg.CollectPayInfoPreference", "getContact suc; cost=" + (bs.eWj() - l) + " ms");
-              com.tencent.mm.aj.c.ag(paramAnonymousString, 3);
-              p.aBy().zV(paramAnonymousString);
+              ad.v("MicroMsg.CollectPayInfoPreference", "getContact suc; cost=" + (bt.flT() - l) + " ms");
+              com.tencent.mm.ak.c.ak(paramAnonymousString, 3);
+              p.aEz().CU(paramAnonymousString);
             }
             for (;;)
             {
               a.b.c(c.a(c.this), c.b(c.this));
               AppMethodBeat.o(64186);
               return;
-              ac.w("MicroMsg.CollectPayInfoPreference", "getContact failed");
+              ad.w("MicroMsg.CollectPayInfoPreference", "getContact failed");
             }
           }
         });
         AppMethodBeat.o(64190);
         return;
       }
-      a.b.c(this.ozi, this.foE);
+      a.b.c(this.pcD, this.fGM);
       AppMethodBeat.o(64190);
       return;
     }
-    this.ozi.setVisibility(8);
+    this.pcD.setVisibility(8);
     AppMethodBeat.o(64190);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package d.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.k.d;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/text/MatchGroup;", "", "value", "", "range", "Lkotlin/ranges/IntRange;", "(Ljava/lang/String;Lkotlin/ranges/IntRange;)V", "getRange", "()Lkotlin/ranges/IntRange;", "getValue", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/text/MatchGroup;", "", "value", "", "range", "Lkotlin/ranges/IntRange;", "(Ljava/lang/String;Lkotlin/ranges/IntRange;)V", "getRange", "()Lkotlin/ranges/IntRange;", "getValue", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "kotlin-stdlib"})
 public final class f
 {
-  public final d LQe;
+  public final d NGZ;
   public final String value;
   
   public f(String paramString, d paramd)
   {
     AppMethodBeat.i(129350);
     this.value = paramString;
-    this.LQe = paramd;
+    this.NGZ = paramd;
     AppMethodBeat.o(129350);
   }
   
@@ -27,7 +27,7 @@ public final class f
       if ((paramObject instanceof f))
       {
         paramObject = (f)paramObject;
-        if ((!k.g(this.value, paramObject.value)) || (!k.g(this.LQe, paramObject.LQe))) {}
+        if ((!p.i(this.value, paramObject.value)) || (!p.i(this.NGZ, paramObject.NGZ))) {}
       }
     }
     else
@@ -47,7 +47,7 @@ public final class f
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.LQe;
+      localObject = this.NGZ;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -59,7 +59,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(129351);
-    String str = "MatchGroup(value=" + this.value + ", range=" + this.LQe + ")";
+    String str = "MatchGroup(value=" + this.value + ", range=" + this.NGZ + ")";
     AppMethodBeat.o(129351);
     return str;
   }

@@ -12,10 +12,10 @@ public class PluginAppMsg
   public void configure(g paramg)
   {
     AppMethodBeat.i(169778);
-    if (paramg.ahL())
+    if (paramg.akw())
     {
-      o.aj("attachment", "attachment", 19);
-      o.aj("Download", "Download", 23);
+      o.an("attachment", "attachment", 19);
+      o.an("Download", "Download", 23);
     }
     AppMethodBeat.o(169778);
   }
@@ -29,7 +29,7 @@ public class PluginAppMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.PluginAppMsg
  * JD-Core Version:    0.7.0.1
  */

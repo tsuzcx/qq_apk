@@ -3,25 +3,26 @@ package com.tencent.mm.plugin.wxcredit;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet_core.c.w;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d;
-import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
 import com.tencent.mm.wallet_core.ui.e;
 
 public class c
   extends d
 {
-  public final g a(MMActivity paramMMActivity, i parami)
+  public final com.tencent.mm.wallet_core.d.g a(MMActivity paramMMActivity, i parami)
   {
     AppMethodBeat.i(72257);
     if ((paramMMActivity instanceof WalletCheckPwdUI))
     {
-      paramMMActivity = new g(paramMMActivity, parami)
+      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
       {
         public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
         {
@@ -41,7 +42,7 @@ public class c
         {
           AppMethodBeat.i(72252);
           c.b(c.this).putString("key_pwd1", (String)paramAnonymousVarArgs[0]);
-          this.JFQ.a(new w((String)paramAnonymousVarArgs[0], 5, ""), true, 1);
+          this.LyU.a(new w((String)paramAnonymousVarArgs[0], 5, ""), true, 1);
           AppMethodBeat.o(72252);
           return true;
         }
@@ -62,7 +63,7 @@ public class c
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72253);
-    ac.d("MicroMsg.WXCreditChangeAmountProcess", "start Process : WXCreditCheckPwdProcess");
+    ad.d("MicroMsg.WXCreditChangeAmountProcess", "start Process : WXCreditCheckPwdProcess");
     b(paramActivity, WalletCheckPwdUI.class, paramBundle);
     AppMethodBeat.o(72253);
     return this;
@@ -84,6 +85,14 @@ public class c
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72256);
+    boolean bool = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qzF, false);
+    ad.i("MicroMsg.WXCreditChangeAmountProcess", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
+    if (bool)
+    {
+      e(paramActivity, "mall", ".ui.MallIndexUIv2");
+      AppMethodBeat.o(72256);
+      return;
+    }
     e(paramActivity, "mall", ".ui.MallIndexUI");
     AppMethodBeat.o(72256);
   }
@@ -93,7 +102,7 @@ public class c
     return false;
   }
   
-  public final String cHN()
+  public final String cQc()
   {
     return "WXCreditCheckPwdProcess";
   }
@@ -107,7 +116,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,29 +5,29 @@ import com.tencent.mm.plugin.card.ui.n;
 
 public abstract class i
 {
-  n olg;
+  n oOB;
   
   public final void a(n paramn)
   {
-    this.olg = paramn;
+    this.oOB = paramn;
     initView();
   }
   
-  public void bTM() {}
+  public void bYr() {}
   
   public void destroy()
   {
-    this.olg = null;
+    this.oOB = null;
   }
   
   protected final View findViewById(int paramInt)
   {
-    return this.olg.findViewById(paramInt);
+    return this.oOB.findViewById(paramInt);
   }
   
   protected final String getString(int paramInt)
   {
-    return this.olg.getString(paramInt);
+    return this.oOB.getString(paramInt);
   }
   
   public abstract void initView();
@@ -36,7 +36,7 @@ public abstract class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.i
  * JD-Core Version:    0.7.0.1
  */

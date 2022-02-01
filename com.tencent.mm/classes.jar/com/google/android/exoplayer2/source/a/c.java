@@ -9,7 +9,7 @@ import java.util.Arrays;
 public abstract class c
   extends a
 {
-  private volatile boolean blQ;
+  private volatile boolean bwl;
   public byte[] data;
   private int limit;
   
@@ -21,32 +21,37 @@ public abstract class c
   
   protected abstract void f(byte[] paramArrayOfByte, int paramInt);
   
-  public final void tV()
+  public final long vI()
   {
-    this.blQ = true;
+    return this.limit;
   }
   
-  public final boolean tW()
+  public final void vu()
   {
-    return this.blQ;
+    this.bwl = true;
   }
   
-  public final void tX()
+  public final boolean vv()
+  {
+    return this.bwl;
+  }
+  
+  public final void vw()
   {
     int i = 0;
     for (;;)
     {
       try
       {
-        this.aXs.a(this.bmN);
+        this.bhN.a(this.bxi);
         this.limit = 0;
-        if ((i == -1) || (this.blQ)) {
+        if ((i == -1) || (this.bwl)) {
           break;
         }
         if (this.data == null)
         {
           this.data = new byte[16384];
-          int j = this.aXs.read(this.data, this.limit, 16384);
+          int j = this.bhN.read(this.data, this.limit, 16384);
           i = j;
           if (j == -1) {
             continue;
@@ -61,19 +66,14 @@ public abstract class c
       }
       finally
       {
-        x.a(this.aXs);
+        x.a(this.bhN);
       }
       this.data = Arrays.copyOf(this.data, this.data.length + 16384);
     }
-    if (!this.blQ) {
+    if (!this.bwl) {
       f(this.data, this.limit);
     }
-    x.a(this.aXs);
-  }
-  
-  public final long uj()
-  {
-    return this.limit;
+    x.a(this.bhN);
   }
 }
 

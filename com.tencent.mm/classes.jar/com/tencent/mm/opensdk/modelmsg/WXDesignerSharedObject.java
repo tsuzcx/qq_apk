@@ -19,23 +19,25 @@ public class WXDesignerSharedObject
   
   public WXDesignerSharedObject(String paramString1, int paramInt, String paramString2, String paramString3)
   {
+    AppMethodBeat.i(196972);
     this.url = paramString2;
     this.thumburl = paramString1;
     this.designerUIN = paramInt;
     this.designerName = paramString3;
+    AppMethodBeat.o(196972);
   }
   
   public boolean checkArgs()
   {
     AppMethodBeat.i(3972);
-    if ((this.designerUIN == 0) || (TextUtils.isEmpty(this.thumburl)) || (TextUtils.isEmpty(this.url)))
+    if ((this.designerUIN != 0) && (!TextUtils.isEmpty(this.thumburl)) && (!TextUtils.isEmpty(this.url)))
     {
-      Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, packageid or thumburl is invalid");
       AppMethodBeat.o(3972);
-      return false;
+      return true;
     }
+    Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, packageid or thumburl is invalid");
     AppMethodBeat.o(3972);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

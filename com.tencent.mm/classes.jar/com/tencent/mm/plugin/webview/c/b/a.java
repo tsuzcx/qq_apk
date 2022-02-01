@@ -3,42 +3,42 @@ package com.tencent.mm.plugin.webview.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.brandservice.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.xweb.WebView;
 
 public final class a
 {
-  public WebView Cjl = null;
-  public boolean CkP = false;
+  public WebView DMr = null;
+  public boolean DNU = false;
   
   @android.webkit.JavascriptInterface
   @org.xwalk.core.JavascriptInterface
   public final boolean _customEnterFullscreen(boolean paramBoolean)
   {
-    AppMethodBeat.i(205343);
-    ac.i("MicroMsg.CustomFullscreenApi", "_customEnterFullscreen %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    paramBoolean = un(paramBoolean);
-    AppMethodBeat.o(205343);
+    AppMethodBeat.i(213945);
+    ad.i("MicroMsg.CustomFullscreenApi", "_customEnterFullscreen %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    paramBoolean = vb(paramBoolean);
+    AppMethodBeat.o(213945);
     return paramBoolean;
   }
   
-  public final boolean un(boolean paramBoolean)
+  public final boolean vb(boolean paramBoolean)
   {
-    AppMethodBeat.i(205344);
-    ac.i("MicroMsg.CustomFullscreenApi", "setCustomEnterFullscreen %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((this.Cjl == null) || (!this.Cjl.isXWalkKernel()))
+    AppMethodBeat.i(213946);
+    ad.i("MicroMsg.CustomFullscreenApi", "setCustomEnterFullscreen %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if ((this.DMr == null) || (!this.DMr.isXWalkKernel()))
     {
-      AppMethodBeat.o(205344);
+      AppMethodBeat.o(213946);
       return false;
     }
-    if (!((b)g.ab(b.class)).isMpUrl(this.Cjl.getUrl()))
+    if (!((b)g.ab(b.class)).isMpUrl(this.DMr.getUrl()))
     {
-      AppMethodBeat.o(205344);
+      AppMethodBeat.o(213946);
       return false;
     }
-    this.Cjl.disableVideoJsCallback(paramBoolean);
-    this.CkP = paramBoolean;
-    AppMethodBeat.o(205344);
+    this.DMr.disableVideoJsCallback(paramBoolean);
+    this.DNU = paramBoolean;
+    AppMethodBeat.o(213946);
     return true;
   }
 }

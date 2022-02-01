@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.webview.luggage.ipc;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public class d
@@ -18,14 +18,14 @@ public class d
     paramBundle = paramBundle.getString("data");
     if (str == null)
     {
-      ac.e("MicroMsg.JsApiMMActivityTask", "jsapi is null");
+      ad.e("MicroMsg.JsApiMMActivityTask", "jsapi is null");
       parama.q(new Bundle());
       AppMethodBeat.o(78494);
       return;
     }
     try
     {
-      ((bn)Class.forName(str).newInstance()).a(paramContext, paramBundle, new bn.a()
+      ((bq)Class.forName(str).newInstance()).a(paramContext, paramBundle, new bq.a()
       {
         public final void f(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
         {
@@ -47,7 +47,7 @@ public class d
     }
     catch (Exception paramContext)
     {
-      ac.printErrStackTrace("MicroMsg.JsApiMMActivityTask", paramContext, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.JsApiMMActivityTask", paramContext, "", new Object[0]);
       parama.q(new Bundle());
       AppMethodBeat.o(78494);
     }

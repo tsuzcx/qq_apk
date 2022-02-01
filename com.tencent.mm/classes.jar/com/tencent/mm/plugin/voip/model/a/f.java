@@ -1,18 +1,14 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.plugin.voip.b.d;
-import com.tencent.mm.plugin.voip.model.l;
-import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.protocal.protobuf.dsc;
-import com.tencent.mm.protocal.protobuf.dsd;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.protocal.protobuf.dxw;
+import com.tencent.mm.protocal.protobuf.dxx;
 
 public final class f
-  extends n<dsc, dsd>
+  extends n<dxw, dxx>
 {
   String TAG;
   
@@ -21,42 +17,25 @@ public final class f
     AppMethodBeat.i(115234);
     this.TAG = "MicroMsg.NetSceneVoipHeartBeat";
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new dsc();
-    ((b.a)localObject).hvu = new dsd();
+    ((b.a)localObject).hNM = new dxw();
+    ((b.a)localObject).hNN = new dxx();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipheartbeat";
     ((b.a)localObject).funcId = 178;
-    ((b.a)localObject).reqCmdId = 81;
+    ((b.a)localObject).hNO = 81;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (dsc)this.rr.hvr.hvw;
-    ((dsc)localObject).Exf = paramInt1;
-    ((dsc)localObject).Exg = paramLong;
-    ((dsc)localObject).FYl = System.currentTimeMillis();
-    ((dsc)localObject).FZs = paramInt2;
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (dxw)this.rr.hNK.hNQ;
+    ((dxw)localObject).GeI = paramInt1;
+    ((dxw)localObject).GeJ = paramLong;
+    ((dxw)localObject).HJh = System.currentTimeMillis();
+    ((dxw)localObject).HKo = paramInt2;
     AppMethodBeat.o(115234);
   }
   
-  public final g eks()
+  public final com.tencent.mm.al.f eyd()
   {
     AppMethodBeat.i(115235);
-    g local1 = new g()
-    {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.n paramAnonymousn)
-      {
-        AppMethodBeat.i(115233);
-        if ((paramAnonymousInt1 != 0) && (paramAnonymousInt2 == 231))
-        {
-          d.Loge(f.this.TAG, "Voip heartbeat Failed, type:" + paramAnonymousn.getType() + " errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2);
-          f.this.ACr.ABJ.AIf.ACR = 111;
-          f.this.ACr.ABJ.AIf.ACS = paramAnonymousInt2;
-          f.this.ACr.ABJ.AIf.ADj = 2;
-          f.this.ACr.H(1, -9004, "");
-          AppMethodBeat.o(115233);
-          return;
-        }
-        AppMethodBeat.o(115233);
-      }
-    };
+    f.1 local1 = new f.1(this);
     AppMethodBeat.o(115235);
     return local1;
   }
@@ -68,7 +47,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.f
  * JD-Core Version:    0.7.0.1
  */

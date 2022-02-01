@@ -2,5 +2,10 @@
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bp6" />
+    <com.tencent.mm.plugin.finder.view.FinderBubbleLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/i2j" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/cb" android:layout_marginTop="@dimen/bq" />
     <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bp2" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dwb" android:background="@drawable/ld" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ca" android:layout_marginTop="@dimen/c5">
+        <TextView android:textColor="@color/FG_1" android:id="@id/e4j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:text="@string/f28" />
+    </LinearLayout>
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bwe" />
 </LinearLayout>

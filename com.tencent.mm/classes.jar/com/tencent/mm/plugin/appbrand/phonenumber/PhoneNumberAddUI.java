@@ -9,30 +9,31 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.luggage.h.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.BaseLuggageActivity;
 import d.g.a.a;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddUI;", "Lcom/tencent/mm/ui/base/BaseLuggageActivity;", "()V", "mPhoneNumberAddLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "luggage-wechat-full-sdk_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddUI;", "Lcom/tencent/mm/ui/base/BaseLuggageActivity;", "()V", "mPhoneNumberAddLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "luggage-wechat-full-sdk_release"})
 public final class PhoneNumberAddUI
   extends BaseLuggageActivity
 {
-  public static final a lKx;
-  private l lKw;
+  public static final PhoneNumberAddUI.a mkn;
+  private l mkm;
   
   static
   {
     AppMethodBeat.i(148111);
-    lKx = new a((byte)0);
+    mkn = new PhoneNumberAddUI.a((byte)0);
     AppMethodBeat.o(148111);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(148109);
-    if (i.cgk.DT())
+    if (i.cqA.isDarkMode())
     {
       setTheme(2131821544);
       super.onCreate(paramBundle);
@@ -40,19 +41,19 @@ public final class PhoneNumberAddUI
       setActionBarColor(getResources().getColor(2131099650));
       hideActionbarLine();
       paramBundle = getIntent().getStringExtra("APPID");
-      ac.i("MicroMsg.PhoneNumberAddUI", "onCreate() appId:".concat(String.valueOf(paramBundle)));
+      ad.i("MicroMsg.PhoneNumberAddUI", "onCreate() appId:".concat(String.valueOf(paramBundle)));
       setTitle(2131756010);
       setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-      Object localObject = u.lKF;
-      localObject = u.bst();
+      Object localObject = u.mkv;
+      localObject = u.bwy();
       Context localContext = (Context)this;
-      k.g(paramBundle, "appId");
-      this.lKw = ((n)localObject).a(localContext, paramBundle, (a)new c(this));
-      paramBundle = this.lKw;
+      p.g(paramBundle, "appId");
+      this.mkm = ((n)localObject).a(localContext, paramBundle, (a)new c(this));
+      paramBundle = this.mkm;
       if (paramBundle != null) {
         paramBundle.init();
       }
-      paramBundle = this.lKw;
+      paramBundle = this.mkm;
       if (paramBundle == null) {
         break label193;
       }
@@ -72,7 +73,7 @@ public final class PhoneNumberAddUI
   {
     AppMethodBeat.i(148110);
     super.onDestroy();
-    l locall = this.lKw;
+    l locall = this.mkm;
     if (locall != null)
     {
       locall.uninit();
@@ -88,10 +89,7 @@ public final class PhoneNumberAddUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddUI$Companion;", "", "()V", "APPID", "", "TAG", "luggage-wechat-full-sdk_release"})
-  public static final class a {}
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -100,16 +98,16 @@ public final class PhoneNumberAddUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(148107);
-      this.lKy.finish();
+      this.mko.finish();
       AppMethodBeat.o(148107);
       return true;
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class c
-    extends d.g.b.l
-    implements a<y>
+    extends q
+    implements a<z>
   {
     c(PhoneNumberAddUI paramPhoneNumberAddUI)
     {
@@ -119,7 +117,7 @@ public final class PhoneNumberAddUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.PhoneNumberAddUI
  * JD-Core Version:    0.7.0.1
  */

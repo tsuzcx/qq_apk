@@ -6,20 +6,20 @@ import com.tencent.mm.plugin.webview.c.f;
 final class FTSBaseWebViewUI$15
   implements Runnable
 {
-  FTSBaseWebViewUI$15(FTSBaseWebViewUI paramFTSBaseWebViewUI) {}
+  FTSBaseWebViewUI$15(FTSBaseWebViewUI paramFTSBaseWebViewUI, int paramInt, String paramString) {}
   
   public final void run()
   {
-    AppMethodBeat.i(210074);
-    if (this.CDb.Cjc != null) {
-      this.CDb.Cjc.a(this.CDb.getTotalQuery(), this.CDb.getInEditTextQuery(), this.CDb.eEZ(), 1);
+    AppMethodBeat.i(80593);
+    if (this.EgM.DzP != null) {
+      this.EgM.DzP.cz(this.puQ, this.kqv);
     }
-    AppMethodBeat.o(210074);
+    AppMethodBeat.o(80593);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSBaseWebViewUI.15
  * JD-Core Version:    0.7.0.1
  */

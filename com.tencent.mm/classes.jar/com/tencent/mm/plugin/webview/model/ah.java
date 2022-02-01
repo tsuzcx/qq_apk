@@ -16,30 +16,33 @@ import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
+import com.tencent.mm.al.b.a;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.model.gdpr.c;
+import com.tencent.mm.plugin.appbrand.permission.a.b.c;
 import com.tencent.mm.plugin.appbrand.widget.dialog.e;
 import com.tencent.mm.plugin.appbrand.widget.dialog.i;
 import com.tencent.mm.plugin.appbrand.widget.dialog.i.b;
+import com.tencent.mm.plugin.appbrand.widget.dialog.k;
 import com.tencent.mm.plugin.appbrand.widget.dialog.o.a;
 import com.tencent.mm.plugin.appbrand.widget.dialog.o.b;
 import com.tencent.mm.plugin.appbrand.widget.dialog.o.c;
-import com.tencent.mm.protocal.protobuf.aao;
-import com.tencent.mm.protocal.protobuf.aap;
-import com.tencent.mm.protocal.protobuf.byi;
-import com.tencent.mm.protocal.protobuf.byj;
-import com.tencent.mm.protocal.protobuf.bym;
-import com.tencent.mm.protocal.protobuf.csf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.protocal.protobuf.aco;
+import com.tencent.mm.protocal.protobuf.acp;
+import com.tencent.mm.protocal.protobuf.ccz;
+import com.tencent.mm.protocal.protobuf.cda;
+import com.tencent.mm.protocal.protobuf.cdd;
+import com.tencent.mm.protocal.protobuf.cxm;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.view.TouchableLayout;
 import com.tencent.mm.view.TouchableLayout.a;
 import d.a.j;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.io.IOException;
@@ -50,63 +53,63 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr;", "", "()V", "START_CREATE_AVATAR_UI_REQUEST_CODE", "", "getSTART_CREATE_AVATAR_UI_REQUEST_CODE", "()I", "TAG", "", "getTAG", "()Ljava/lang/String;", "USER_INFO", "getUSER_INFO", "lastWebviewHash", "oauthQueue", "Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthQueue;", "webviewDelegate", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/webview/model/OauthAuthorizeLogic$WebviewUIDelegate;", "bytesListToAvatarList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/OauthAvatarInfo;", "bytesList", "", "destroy", "", "goBackWebview", "goRedirectWebview", "redirectUrl", "keyBack", "", "hashCode", "oauthAvatarListToBytesList", "avatarList", "Ljava/util/LinkedList;", "onActivityResult", "activity", "Landroid/app/Activity;", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "showDialogQueue", "context", "Landroid/content/Context;", "resp", "Landroid/os/Bundle;", "sortScopeList", "list", "Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "OauthDialog", "OauthQueue", "plugin-webview_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr;", "", "()V", "START_CREATE_AVATAR_UI_REQUEST_CODE", "", "getSTART_CREATE_AVATAR_UI_REQUEST_CODE", "()I", "TAG", "", "getTAG", "()Ljava/lang/String;", "USER_INFO", "getUSER_INFO", "lastWebviewHash", "oauthQueue", "Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthQueue;", "webviewDelegate", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/webview/model/OauthAuthorizeLogic$WebviewUIDelegate;", "bytesListToAvatarList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/OauthAvatarInfo;", "bytesList", "", "destroy", "", "goBackWebview", "goRedirectWebview", "redirectUrl", "keyBack", "", "hashCode", "oauthAvatarListToBytesList", "avatarList", "Ljava/util/LinkedList;", "onActivityResult", "activity", "Landroid/app/Activity;", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "showDialogQueue", "context", "Landroid/content/Context;", "resp", "Landroid/os/Bundle;", "sortScopeList", "list", "Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "OauthDialog", "OauthQueue", "plugin-webview_release"})
 public final class ah
 {
-  private static final String CpV = "snsapi_userinfo";
-  private static b CpW;
-  private static int CpX = 0;
-  private static WeakReference<ag.c> CpY;
-  public static final ah CpZ;
+  private static final String DTu = "snsapi_userinfo";
+  private static b DTv;
+  private static int DTw = 0;
+  private static WeakReference<ag.c> DTx;
+  public static final ah DTy;
   private static final String TAG = "MicroMsg.OauthMultiAccountMgr";
-  private static final int kfl = 4;
+  private static final int kzZ = 4;
   
   static
   {
     AppMethodBeat.i(182642);
-    CpZ = new ah();
+    DTy = new ah();
     TAG = "MicroMsg.OauthMultiAccountMgr";
-    kfl = 4;
-    CpV = "snsapi_userinfo";
+    kzZ = 4;
+    DTu = "snsapi_userinfo";
     AppMethodBeat.o(182642);
   }
   
   public static final void a(Context paramContext, Bundle paramBundle, int paramInt, ag.c paramc)
   {
     AppMethodBeat.i(182635);
-    d.g.b.k.h(paramContext, "context");
-    d.g.b.k.h(paramBundle, "resp");
-    d.g.b.k.h(paramc, "webviewDelegate");
+    p.h(paramContext, "context");
+    p.h(paramBundle, "resp");
+    p.h(paramc, "webviewDelegate");
     if (!(paramContext instanceof Activity))
     {
-      ac.v(TAG, "[showDialogQueue] context !is Activity");
+      ad.v(TAG, "[showDialogQueue] context !is Activity");
       AppMethodBeat.o(182635);
       return;
     }
-    if ((CpX != paramInt) && (CpW != null))
+    if ((DTw != paramInt) && (DTv != null))
     {
-      ac.v(TAG, "[showDialogQueue] destroy last oauthQueue");
+      ad.v(TAG, "[showDialogQueue] destroy last oauthQueue");
       destroy();
     }
-    CpX = paramInt;
-    if (CpW == null) {
-      CpW = new b(paramContext);
+    DTw = paramInt;
+    if (DTv == null) {
+      DTv = new b(paramContext);
     }
-    paramContext = CpW;
+    paramContext = DTv;
     if (paramContext == null) {
-      d.g.b.k.fOy();
+      p.gfZ();
     }
-    if (paramContext.Cqo == null) {
+    if (paramContext.DTN == null) {
       paramInt = 1;
     }
     while (paramInt != 0)
     {
-      CpY = new WeakReference(paramc);
-      paramContext = CpW;
+      DTx = new WeakReference(paramc);
+      paramContext = DTv;
       if (paramContext != null)
       {
-        d.g.b.k.h(paramBundle, "resp");
-        paramContext.Cqo = paramBundle;
+        p.h(paramBundle, "resp");
+        paramContext.DTN = paramBundle;
         paramBundle = paramBundle.getSerializable("scope_list");
         if (paramBundle == null)
         {
@@ -117,11 +120,11 @@ public final class ah
         }
         else
         {
-          paramBundle = ag.aJ((ArrayList)paramBundle);
-          d.g.b.k.g(paramBundle, "OauthAuthorizeLogic.byte…tScopeInfoList(bytesList)");
-          paramContext.CpD = paramBundle;
-          bg(paramContext.CpD);
-          paramContext.eBr();
+          paramBundle = ag.aG((ArrayList)paramBundle);
+          p.g(paramBundle, "OauthAuthorizeLogic.byte…tScopeInfoList(bytesList)");
+          paramContext.DTb = paramBundle;
+          bh(paramContext.DTb);
+          paramContext.eQj();
           AppMethodBeat.o(182635);
         }
       }
@@ -131,15 +134,15 @@ public final class ah
         return;
       }
     }
-    ac.i(TAG, "[showDialogQueue] repeat call");
+    ad.i(TAG, "[showDialogQueue] repeat call");
     AppMethodBeat.o(182635);
   }
   
-  public static ArrayList<bym> aK(ArrayList<byte[]> paramArrayList)
+  public static ArrayList<cdd> aH(ArrayList<byte[]> paramArrayList)
   {
     AppMethodBeat.i(182640);
     ArrayList localArrayList = new ArrayList();
-    if (bs.gY((List)paramArrayList))
+    if (bt.hj((List)paramArrayList))
     {
       AppMethodBeat.o(182640);
       return localArrayList;
@@ -152,13 +155,13 @@ public final class ah
         byte[] arrayOfByte = (byte[])paramArrayList.next();
         try
         {
-          bym localbym = new bym();
-          localbym.parseFrom(arrayOfByte);
-          localArrayList.add(localbym);
+          cdd localcdd = new cdd();
+          localcdd.parseFrom(arrayOfByte);
+          localArrayList.add(localcdd);
         }
         catch (IOException paramArrayList)
         {
-          ac.w(TAG, "bytesListToAvatarList: exception");
+          ad.w(TAG, "bytesListToAvatarList: exception");
           localArrayList.clear();
           AppMethodBeat.o(182640);
           return localArrayList;
@@ -169,11 +172,11 @@ public final class ah
     return localArrayList;
   }
   
-  public static final ArrayList<byte[]> bf(LinkedList<bym> paramLinkedList)
+  public static final ArrayList<byte[]> bg(LinkedList<cdd> paramLinkedList)
   {
     AppMethodBeat.i(182639);
     ArrayList localArrayList = new ArrayList();
-    if (bs.gY((List)paramLinkedList))
+    if (bt.hj((List)paramLinkedList))
     {
       AppMethodBeat.o(182639);
       return localArrayList;
@@ -183,14 +186,14 @@ public final class ah
       paramLinkedList = ((Iterable)paramLinkedList).iterator();
       while (paramLinkedList.hasNext())
       {
-        bym localbym = (bym)paramLinkedList.next();
+        cdd localcdd = (cdd)paramLinkedList.next();
         try
         {
-          localArrayList.add(localbym.toByteArray());
+          localArrayList.add(localcdd.toByteArray());
         }
         catch (IOException paramLinkedList)
         {
-          ac.w(TAG, "oauthAvatarListToBytesList exception");
+          ad.w(TAG, "oauthAvatarListToBytesList exception");
           localArrayList.clear();
           AppMethodBeat.o(182639);
           return localArrayList;
@@ -201,10 +204,10 @@ public final class ah
     return localArrayList;
   }
   
-  private static void bg(LinkedList<csf> paramLinkedList)
+  private static void bh(LinkedList<cxm> paramLinkedList)
   {
     AppMethodBeat.i(182641);
-    if ((bs.gY((List)paramLinkedList)) || (paramLinkedList.size() == 1))
+    if ((bt.hj((List)paramLinkedList)) || (paramLinkedList.size() == 1))
     {
       AppMethodBeat.o(182641);
       return;
@@ -215,9 +218,9 @@ public final class ah
     {
       Object localObject = localIterator.next();
       if (i < 0) {
-        j.fOc();
+        j.gfB();
       }
-      if (!d.g.b.k.g(((csf)localObject).EdG, CpV)) {}
+      if (!p.i(((cxm)localObject).FKf, DTu)) {}
     }
     for (;;)
     {
@@ -235,23 +238,23 @@ public final class ah
   public static final void destroy()
   {
     AppMethodBeat.i(182638);
-    b localb = CpW;
+    b localb = DTv;
     if (localb != null) {
       localb.destroy();
     }
-    CpW = null;
-    CpY = null;
+    DTv = null;
+    DTx = null;
     AppMethodBeat.o(182638);
   }
   
-  public static int eBn()
+  public static int eQf()
   {
-    return kfl;
+    return kzZ;
   }
   
-  public static String eBo()
+  public static String eQg()
   {
-    return CpV;
+    return DTu;
   }
   
   public static String getTAG()
@@ -259,54 +262,54 @@ public final class ah
     return TAG;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog;", "", "context", "Landroid/content/Context;", "container", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout;)V", "appid", "", "getAppid", "()Ljava/lang/String;", "setAppid", "(Ljava/lang/String;)V", "avatarLimit", "", "getAvatarLimit", "()I", "setAvatarLimit", "(I)V", "getContainer", "()Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout;", "getContext", "()Landroid/content/Context;", "currentCheckedAvatarId", "getCurrentCheckedAvatarId", "setCurrentCheckedAvatarId", "dialog", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog;", "getDialog", "()Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog;", "isBanModifyAvatar", "", "()Z", "setBanModifyAvatar", "(Z)V", "mCurrentItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "getMCurrentItems", "()Ljava/util/ArrayList;", "value", "Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthQueue;", "oauthQueue", "getOauthQueue", "()Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthQueue;", "setOauthQueue", "(Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthQueue;)V", "recvListener", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$Listener;", "getRecvListener", "()Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$Listener;", "scope", "Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "getScope", "()Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "setScope", "(Lcom/tencent/mm/protocal/protobuf/ScopeInfo;)V", "applyDialogItem", "", "items", "", "isBanAvatar", "destroy", "enableAddNewAvatarListener", "enable", "genDialogItem", "defaultId", "avatarList", "Lcom/tencent/mm/protocal/protobuf/OauthAvatarInfo;", "onActivityResult", "data", "Landroid/content/Intent;", "showDialog", "resp", "Landroid/os/Bundle;", "plugin-webview_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog;", "", "context", "Landroid/content/Context;", "container", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout;)V", "appid", "", "getAppid", "()Ljava/lang/String;", "setAppid", "(Ljava/lang/String;)V", "avatarLimit", "", "getAvatarLimit", "()I", "setAvatarLimit", "(I)V", "getContainer", "()Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout;", "getContext", "()Landroid/content/Context;", "currentCheckedAvatarId", "getCurrentCheckedAvatarId", "setCurrentCheckedAvatarId", "dialog", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog;", "getDialog", "()Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog;", "isBanModifyAvatar", "", "()Z", "setBanModifyAvatar", "(Z)V", "mCurrentItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "getMCurrentItems", "()Ljava/util/ArrayList;", "value", "Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthQueue;", "oauthQueue", "getOauthQueue", "()Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthQueue;", "setOauthQueue", "(Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthQueue;)V", "recvListener", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$Listener;", "getRecvListener", "()Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$Listener;", "scope", "Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "getScope", "()Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "setScope", "(Lcom/tencent/mm/protocal/protobuf/ScopeInfo;)V", "applyDialogItem", "", "items", "", "isBanAvatar", "destroy", "enableAddNewAvatarListener", "enable", "genDialogItem", "defaultId", "avatarList", "Lcom/tencent/mm/protocal/protobuf/OauthAvatarInfo;", "onActivityResult", "data", "Landroid/content/Intent;", "showDialog", "resp", "Landroid/os/Bundle;", "plugin-webview_release"})
   public static final class a
   {
-    ah.b CpW;
-    private final i.b Cqa;
-    final i Cqb;
-    private csf Cqc;
-    boolean Cqd;
-    int Cqe;
-    int Cqf;
-    final e Cqg;
+    final i DTA;
+    private cxm DTB;
+    boolean DTC;
+    int DTD;
+    int DTE;
+    final e DTF;
+    ah.b DTv;
+    private final i.b DTz;
     final Context context;
-    String djj;
-    final ArrayList<o.a> kfj;
+    String duW;
+    final ArrayList<o.a> kzX;
     
     public a(Context paramContext, e parame)
     {
       AppMethodBeat.i(182619);
       this.context = paramContext;
-      this.Cqg = parame;
-      this.Cqa = ((i.b)new b(this));
-      this.Cqb = new i(this.context, this.Cqa);
-      this.kfj = new ArrayList();
-      this.djj = "";
+      this.DTF = parame;
+      this.DTz = ((i.b)new b(this));
+      this.DTA = new i(this.context, (b.c)this.DTz);
+      this.kzX = new ArrayList();
+      this.duW = "";
       AppMethodBeat.o(182619);
     }
     
     private final void a(i parami, List<o.a> paramList, boolean paramBoolean, int paramInt)
     {
       AppMethodBeat.i(182617);
-      parami.bG(paramList);
+      parami.setSelectListItem(paramList);
       if ((paramBoolean) || (paramInt <= paramList.size()))
       {
         if (!paramBoolean)
         {
-          parami.aBP(this.context.getResources().getString(2131766177));
-          parami.MP(this.context.getResources().getColor(2131099660));
+          parami.setFunctionButtonText(this.context.getResources().getString(2131766177));
+          parami.setFunctionButtonTextColor(this.context.getResources().getColor(2131099660));
         }
         for (;;)
         {
           b(parami, false);
           AppMethodBeat.o(182617);
           return;
-          parami.aBP("");
+          parami.setFunctionButtonText("");
         }
       }
-      parami.aBP(this.context.getResources().getString(2131766177));
-      parami.MP(this.context.getResources().getColor(2131100547));
+      parami.setFunctionButtonText(this.context.getResources().getString(2131766177));
+      parami.setFunctionButtonTextColor(this.context.getResources().getColor(2131100547));
       b(parami, true);
       AppMethodBeat.o(182617);
     }
@@ -316,28 +319,29 @@ public final class ah
       AppMethodBeat.i(182618);
       if (!paramBoolean)
       {
-        parami.a(null);
+        parami.setFunctionButtonOnClickListener(null);
         AppMethodBeat.o(182618);
         return;
       }
-      parami.a((View.OnClickListener)new a(this));
+      parami.setFunctionButtonOnClickListener((View.OnClickListener)new a(this));
       AppMethodBeat.o(182618);
     }
     
-    public final void a(Bundle paramBundle, final csf paramcsf)
+    public final void a(Bundle paramBundle, final cxm paramcxm)
     {
       AppMethodBeat.i(182616);
-      d.g.b.k.h(paramBundle, "resp");
-      d.g.b.k.h(paramcsf, "scope");
-      this.Cqc = paramcsf;
-      Object localObject1 = this.Cqb;
-      ((i)localObject1).RP(((i)localObject1).getContext().getString(2131760749, new Object[] { paramBundle.getString("appname", "") }));
-      ((i)localObject1).RQ(paramcsf.Desc);
-      ((i)localObject1).RS("");
-      ((i)localObject1).Us(((i)localObject1).getContext().getResources().getString(2131760786));
-      ((i)localObject1).asC(((i)localObject1).getContext().getResources().getString(2131760741));
-      ((i)localObject1).qV(paramBundle.getString("appicon_url", ""));
-      localObject1 = ah.CpZ;
+      p.h(paramBundle, "resp");
+      p.h(paramcxm, "scope");
+      this.DTB = paramcxm;
+      this.DTA.setPosition(2);
+      Object localObject1 = this.DTA;
+      ((i)localObject1).setAppBrandName(((i)localObject1).getContext().getString(2131760749, new Object[] { paramBundle.getString("appname", "") }));
+      ((i)localObject1).setRequestDesc(paramcxm.Desc);
+      ((i)localObject1).setApplyWording("");
+      ((i)localObject1).setNegativeButtonText(((i)localObject1).getContext().getResources().getString(2131760786));
+      ((i)localObject1).setPositiveButtonText(((i)localObject1).getContext().getResources().getString(2131760741));
+      ((i)localObject1).setIconUrl(paramBundle.getString("appicon_url", ""));
+      localObject1 = ah.DTy;
       localObject1 = paramBundle.getSerializable("avatar_list");
       if (localObject1 == null)
       {
@@ -345,77 +349,77 @@ public final class ah
         AppMethodBeat.o(182616);
         throw paramBundle;
       }
-      Object localObject2 = ah.aK((ArrayList)localObject1);
+      Object localObject2 = ah.aH((ArrayList)localObject1);
       int i = paramBundle.getInt("default_avatar_id");
-      this.Cqd = paramBundle.getBoolean("is_ban_modify_avatar");
-      this.Cqe = paramBundle.getInt("avatar_limit");
-      this.Cqf = 0;
-      localObject1 = ag.b.aBK(paramBundle.getString("oauth_url", ""));
-      d.g.b.k.g(localObject1, "OauthAuthorizeLogic.Tool…ZE_RESULT_OAUTH_URL, \"\"))");
-      this.djj = ((String)localObject1);
-      localObject1 = paramcsf.EdG;
-      Object localObject3 = ah.CpZ;
-      if (d.g.b.k.g(localObject1, ah.eBo()))
+      this.DTC = paramBundle.getBoolean("is_ban_modify_avatar");
+      this.DTD = paramBundle.getInt("avatar_limit");
+      this.DTE = 0;
+      localObject1 = ag.b.aHj(paramBundle.getString("oauth_url", ""));
+      p.g(localObject1, "OauthAuthorizeLogic.Tool…ZE_RESULT_OAUTH_URL, \"\"))");
+      this.duW = ((String)localObject1);
+      localObject1 = paramcxm.FKf;
+      Object localObject3 = ah.DTy;
+      if (p.i(localObject1, ah.eQg()))
       {
-        this.Cqf = i;
-        paramBundle = this.CpW;
+        this.DTE = i;
+        paramBundle = this.DTv;
         if (paramBundle != null) {
-          paramBundle.UU(this.Cqf);
+          paramBundle.WK(this.DTE);
         }
-        this.Cqb.a((o.b)new c(this));
-        if (!bs.gY((List)localObject2))
+        this.DTA.setItemCheckedListener((o.b)new c(this));
+        if (!bt.hj((List)localObject2))
         {
-          this.kfj.clear();
-          paramBundle = this.kfj;
-          localObject1 = paramcsf.EdG;
-          d.g.b.k.g(localObject1, "scope.Scope");
+          this.kzX.clear();
+          paramBundle = this.kzX;
+          localObject1 = paramcxm.FKf;
+          p.g(localObject1, "scope.Scope");
           localObject3 = (Iterable)localObject2;
           localObject2 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
           localObject3 = ((Iterable)localObject3).iterator();
           if (((Iterator)localObject3).hasNext())
           {
-            bym localbym = (bym)((Iterator)localObject3).next();
-            String str1 = localbym.nickname;
-            String str2 = localbym.desc;
-            if (i == localbym.id) {}
+            cdd localcdd = (cdd)((Iterator)localObject3).next();
+            String str1 = localcdd.nickname;
+            String str2 = localcdd.desc;
+            if (i == localcdd.id) {}
             for (boolean bool = true;; bool = false)
             {
-              String str3 = localbym.kfi;
-              d.g.b.k.g(str3, "it.avatarurl");
-              ((Collection)localObject2).add(new o.a(str1, str2, (String)localObject1, bool, str3, localbym.id));
+              String str3 = localcdd.kzW;
+              p.g(str3, "it.avatarurl");
+              ((Collection)localObject2).add(new o.a(str1, str2, (String)localObject1, bool, str3, localcdd.id));
               break;
             }
           }
           paramBundle.addAll((Collection)localObject2);
-          a(this.Cqb, (List)this.kfj, this.Cqd, this.Cqe);
-          this.Cqb.a((o.c)new d(this, paramcsf));
-          this.Cqg.b((com.tencent.mm.plugin.appbrand.widget.dialog.k)this.Cqb);
+          a(this.DTA, (List)this.kzX, this.DTC, this.DTD);
+          this.DTA.setOnListItemLongClickListener((o.c)new d(this, paramcxm));
+          this.DTF.b((k)this.DTA);
           AppMethodBeat.o(182616);
           return;
         }
-        this.Cqf = i;
-        paramBundle = this.CpW;
+        this.DTE = i;
+        paramBundle = this.DTv;
         if (paramBundle != null) {
-          paramBundle.UU(this.Cqf);
+          paramBundle.WK(this.DTE);
         }
-        paramBundle = ah.CpZ;
-        ac.i(ah.getTAG(), "[OauthDialog.showDialog] avatarList null");
-        com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", null, ah.a.e.Cqn.getClass(), (com.tencent.mm.ipcinvoker.d)new f(this, paramcsf));
+        paramBundle = ah.DTy;
+        ad.i(ah.getTAG(), "[OauthDialog.showDialog] avatarList null");
+        com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", null, ah.a.e.DTM.getClass(), (com.tencent.mm.ipcinvoker.d)new f(this, paramcxm));
         AppMethodBeat.o(182616);
         return;
       }
-      localObject1 = ah.CpZ;
-      ac.i(ah.getTAG(), "[OauthDialog.showDialog] non snsapi_userinfo");
-      this.Cqb.RP(this.context.getString(2131760747, new Object[] { paramBundle.getString("appname", "") }));
-      paramBundle = this.Cqb;
-      paramcsf = paramcsf.EdG;
-      d.g.b.k.g(paramcsf, "scope.Scope");
-      paramBundle.aBQ(paramcsf);
-      this.Cqg.b((com.tencent.mm.plugin.appbrand.widget.dialog.k)this.Cqb);
+      localObject1 = ah.DTy;
+      ad.i(ah.getTAG(), "[OauthDialog.showDialog] non snsapi_userinfo");
+      this.DTA.setAppBrandName(this.context.getString(2131760747, new Object[] { paramBundle.getString("appname", "") }));
+      paramBundle = this.DTA;
+      paramcxm = paramcxm.FKf;
+      p.g(paramcxm, "scope.Scope");
+      paramBundle.setScope(paramcxm);
+      this.DTF.b((k)this.DTA);
       AppMethodBeat.o(182616);
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
@@ -424,9 +428,12 @@ public final class ah
       public final void onClick(View paramView)
       {
         AppMethodBeat.i(182605);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog$enableAddNewAvatarListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
         paramView = new Intent();
-        paramView.putExtra("0", this.Cqh.djj);
-        Object localObject = this.Cqh.context;
+        paramView.putExtra("0", this.DTG.duW);
+        localObject = this.DTG.context;
         if (localObject == null)
         {
           paramView = new v("null cannot be cast to non-null type android.app.Activity");
@@ -436,59 +443,61 @@ public final class ah
         localObject = (Activity)localObject;
         if (localObject == null)
         {
-          paramView = ah.CpZ;
-          ac.e(ah.getTAG(), "try start CreateAvatarUI failed by NULL activity");
+          paramView = ah.DTy;
+          ad.e(ah.getTAG(), "try start CreateAvatarUI failed by NULL activity");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog$enableAddNewAvatarListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(182605);
           return;
         }
         localObject = (Context)localObject;
-        ah localah = ah.CpZ;
-        com.tencent.mm.br.d.c((Context)localObject, ".plugin.webview.ui.tools.CreateAvatarUI", paramView, ah.eBn());
+        ah localah = ah.DTy;
+        com.tencent.mm.bs.d.c((Context)localObject, ".plugin.webview.ui.tools.CreateAvatarUI", paramView, ah.eQf());
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog$enableAddNewAvatarListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(182605);
       }
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog$recvListener$1", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$Listener;", "onMsg", "", "resultCode", "", "select", "Ljava/util/ArrayList;", "", "avatarId", "plugin-webview_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog$recvListener$1", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$Listener;", "onMsg", "", "resultCode", "", "select", "Ljava/util/ArrayList;", "", "avatarId", "plugin-webview_release"})
     public static final class b
       implements i.b
     {
       public final void a(int paramInt1, ArrayList<String> paramArrayList, int paramInt2)
       {
         AppMethodBeat.i(182606);
-        d.g.b.k.h(paramArrayList, "select");
+        p.h(paramArrayList, "select");
         Object localObject;
         switch (paramInt1)
         {
         default: 
-          localObject = ah.CpZ;
-          ac.i(ah.getTAG(), "[OauthDialog.revnListener] REJECT, scope = " + (String)paramArrayList.get(0));
-          paramArrayList = this.Cqh.CpW;
+          localObject = ah.DTy;
+          ad.i(ah.getTAG(), "[OauthDialog.revnListener] REJECT, scope = " + (String)paramArrayList.get(0));
+          paramArrayList = this.DTG.DTv;
           if (paramArrayList != null)
           {
-            paramArrayList.eBr();
+            paramArrayList.eQj();
             AppMethodBeat.o(182606);
             return;
           }
           break;
         case 1: 
-          localObject = ah.CpZ;
-          ac.i(ah.getTAG(), "[OauthDialog.revnListener] ACCEPT, scope = " + (String)paramArrayList.get(0));
-          if (!bs.gY((List)paramArrayList))
+          localObject = ah.DTy;
+          ad.i(ah.getTAG(), "[OauthDialog.revnListener] ACCEPT, scope = " + (String)paramArrayList.get(0));
+          if (!bt.hj((List)paramArrayList))
           {
-            localObject = this.Cqh.CpW;
+            localObject = this.DTG.DTv;
             if (localObject != null)
             {
               paramArrayList = paramArrayList.get(0);
-              d.g.b.k.g(paramArrayList, "select.get(0)");
+              p.g(paramArrayList, "select.get(0)");
               paramArrayList = (String)paramArrayList;
-              d.g.b.k.h(paramArrayList, "scope");
-              ((ah.b)localObject).Cqq.add(paramArrayList);
+              p.h(paramArrayList, "scope");
+              ((ah.b)localObject).DTP.add(paramArrayList);
             }
           }
-          paramArrayList = this.Cqh.CpW;
+          paramArrayList = this.DTG.DTv;
           if (paramArrayList != null)
           {
-            paramArrayList.eBr();
+            paramArrayList.eQj();
             AppMethodBeat.o(182606);
             return;
           }
@@ -499,19 +508,19 @@ public final class ah
       }
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog$showDialog$2", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$ItemCheckedListener;", "onChecked", "", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "plugin-webview_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog$showDialog$2", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$ItemCheckedListener;", "onChecked", "", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "plugin-webview_release"})
     public static final class c
       implements o.b
     {
       public final void a(o.a parama)
       {
         AppMethodBeat.i(182607);
-        d.g.b.k.h(parama, "item");
-        this.Cqh.Cqf = parama.keF;
-        parama = this.Cqh.CpW;
+        p.h(parama, "item");
+        this.DTG.DTE = parama.kzo;
+        parama = this.DTG.DTv;
         if (parama != null)
         {
-          parama.UU(this.Cqh.Cqf);
+          parama.WK(this.DTG.DTE);
           AppMethodBeat.o(182607);
           return;
         }
@@ -519,17 +528,17 @@ public final class ah
       }
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog$showDialog$3", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$OnListItemLongClickListener;", "onLongClick", "", "v", "Landroid/view/View;", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "longClickIndex", "", "plugin-webview_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog$showDialog$3", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$OnListItemLongClickListener;", "onLongClick", "", "v", "Landroid/view/View;", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "longClickIndex", "", "plugin-webview_release"})
     public static final class d
       implements o.c
     {
-      d(csf paramcsf) {}
+      d(cxm paramcxm) {}
       
       public final void a(View paramView, final o.a parama, final int paramInt)
       {
         AppMethodBeat.i(182612);
-        d.g.b.k.h(paramView, "v");
-        d.g.b.k.h(parama, "item");
+        p.h(paramView, "v");
+        p.h(parama, "item");
         com.tencent.mm.ui.widget.b.a locala = new com.tencent.mm.ui.widget.b.a(paramView.getContext());
         if (paramInt == 0)
         {
@@ -537,15 +546,15 @@ public final class ah
           return;
         }
         View.OnCreateContextMenuListener localOnCreateContextMenuListener = (View.OnCreateContextMenuListener)new a(this);
-        parama = (n.d)new b(this, paramInt, parama);
-        TouchableLayout.a locala1 = TouchableLayout.JyS;
-        int i = TouchableLayout.fyY();
-        locala1 = TouchableLayout.JyS;
-        locala.a(paramView, paramInt, 0L, localOnCreateContextMenuListener, parama, i, TouchableLayout.fyZ());
+        parama = (n.e)new b(this, paramInt, parama);
+        TouchableLayout.a locala1 = TouchableLayout.LrZ;
+        int i = TouchableLayout.fQh();
+        locala1 = TouchableLayout.LrZ;
+        locala.a(paramView, paramInt, 0L, localOnCreateContextMenuListener, parama, i, TouchableLayout.fQi());
         AppMethodBeat.o(182612);
       }
       
-      @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
+      @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
       static final class a
         implements View.OnCreateContextMenuListener
       {
@@ -554,55 +563,55 @@ public final class ah
         public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
         {
           AppMethodBeat.i(182608);
-          paramContextMenu.add(0, 1, 0, (CharSequence)this.Cqj.Cqh.context.getResources().getString(2131761557));
+          paramContextMenu.add(0, 1, 0, (CharSequence)this.DTI.DTG.context.getResources().getString(2131761557));
           AppMethodBeat.o(182608);
         }
       }
       
-      @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "i", "", "onMMMenuItemSelected"})
+      @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "i", "", "onMMMenuItemSelected"})
       static final class b
-        implements n.d
+        implements n.e
       {
         b(ah.a.d paramd, int paramInt, o.a parama) {}
         
         public final void onMMMenuItemSelected(final MenuItem paramMenuItem, int paramInt)
         {
           AppMethodBeat.i(182611);
-          paramMenuItem = new ArrayList((Collection)this.Cqj.Cqh.kfj);
+          paramMenuItem = new ArrayList((Collection)this.DTI.DTG.kzX);
           paramMenuItem.remove(paramInt);
-          if (((o.a)this.Cqj.Cqh.kfj.get(paramInt)).keF == this.Cqj.Cqh.Cqf) {
-            ((o.a)paramMenuItem.get(0)).ikl = true;
+          if (((o.a)this.DTI.DTG.kzX.get(paramInt)).kzo == this.DTI.DTG.DTE) {
+            ((o.a)paramMenuItem.get(0)).iDC = true;
           }
-          ah.a.a(this.Cqj.Cqh, this.Cqj.Cqh.Cqb, (List)paramMenuItem, this.Cqj.Cqh.Cqd, this.Cqj.Cqh.Cqe);
-          Object localObject = ah.CpZ;
-          ac.i(ah.getTAG(), "[[OauthDialog.showDialog] try delete avatarIdx = " + paramInt);
-          localObject = new aao();
-          ((aao)localObject).EuD = parama.keF;
+          ah.a.a(this.DTI.DTG, this.DTI.DTG.DTA, (List)paramMenuItem, this.DTI.DTG.DTC, this.DTI.DTG.DTD);
+          Object localObject = ah.DTy;
+          ad.i(ah.getTAG(), "[[OauthDialog.showDialog] try delete avatarIdx = " + paramInt);
+          localObject = new aco();
+          ((aco)localObject).GbX = parama.kzo;
           b.a locala = new b.a();
-          locala.c((com.tencent.mm.bw.a)localObject);
-          locala.d((com.tencent.mm.bw.a)new aap());
-          locala.Am("/cgi-bin/mmbiz-bin/oauth_delavatar");
-          locala.op(2700);
-          locala.or(0);
-          locala.os(0);
-          IPCRunCgi.a(locala.aAz(), (IPCRunCgi.a)new IPCRunCgi.a()
+          locala.c((com.tencent.mm.bx.a)localObject);
+          locala.d((com.tencent.mm.bx.a)new acp());
+          locala.Dl("/cgi-bin/mmbiz-bin/oauth_delavatar");
+          locala.oP(2700);
+          locala.oR(0);
+          locala.oS(0);
+          IPCRunCgi.a(locala.aDC(), (IPCRunCgi.a)new IPCRunCgi.a()
           {
-            public final void a(final int paramAnonymousInt1, final int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb)
+            public final void a(final int paramAnonymousInt1, final int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb)
             {
               AppMethodBeat.i(182610);
-              ap.f((Runnable)new Runnable()
+              aq.f((Runnable)new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(182609);
                   if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
                   {
-                    this.Cqm.Cql.Cqj.Cqh.kfj.clear();
-                    this.Cqm.Cql.Cqj.Cqh.kfj.addAll((Collection)this.Cqm.kfw);
+                    this.DTL.DTK.DTI.DTG.kzX.clear();
+                    this.DTL.DTK.DTI.DTG.kzX.addAll((Collection)this.DTL.kAk);
                     AppMethodBeat.o(182609);
                     return;
                   }
-                  ah.a.a(this.Cqm.Cql.Cqj.Cqh, this.Cqm.Cql.Cqj.Cqh.Cqb, (List)this.Cqm.Cql.Cqj.Cqh.kfj, this.Cqm.Cql.Cqj.Cqh.Cqd, this.Cqm.Cql.Cqj.Cqh.Cqe);
+                  ah.a.a(this.DTL.DTK.DTI.DTG, this.DTL.DTK.DTI.DTG.DTA, (List)this.DTL.DTK.DTI.DTG.kzX, this.DTL.DTK.DTI.DTG.DTC, this.DTL.DTK.DTI.DTG.DTD);
                   AppMethodBeat.o(182609);
                 }
               });
@@ -614,33 +623,33 @@ public final class ah
       }
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
     static final class f<T>
       implements com.tencent.mm.ipcinvoker.d<ResultType>
     {
-      f(ah.a parama, csf paramcsf) {}
+      f(ah.a parama, cxm paramcxm) {}
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthQueue;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "allowScope", "Ljava/util/ArrayList;", "", "container", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout;", "getContext", "()Landroid/content/Context;", "curDialog", "Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog;", "getCurDialog", "()Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog;", "setCurDialog", "(Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog;)V", "curIndex", "", "getCurIndex", "()I", "setCurIndex", "(I)V", "resp", "Landroid/os/Bundle;", "getResp", "()Landroid/os/Bundle;", "setResp", "(Landroid/os/Bundle;)V", "scopeList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "getScopeList", "()Ljava/util/LinkedList;", "setScopeList", "(Ljava/util/LinkedList;)V", "value", "selectAvatarId", "getSelectAvatarId", "setSelectAvatarId", "accept", "", "checkEnd", "", "destroy", "enqueOauth", "isQueueEmpty", "onActivityResult", "activity", "Landroid/app/Activity;", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "recordAllowScope", "scope", "reject", "sendReq", "allow", "sendResult", "showNextOauth", "plugin-webview_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthQueue;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "allowScope", "Ljava/util/ArrayList;", "", "container", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout;", "getContext", "()Landroid/content/Context;", "curDialog", "Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog;", "getCurDialog", "()Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog;", "setCurDialog", "(Lcom/tencent/mm/plugin/webview/model/OauthMultiAccountMgr$OauthDialog;)V", "curIndex", "", "getCurIndex", "()I", "setCurIndex", "(I)V", "resp", "Landroid/os/Bundle;", "getResp", "()Landroid/os/Bundle;", "setResp", "(Landroid/os/Bundle;)V", "scopeList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "getScopeList", "()Ljava/util/LinkedList;", "setScopeList", "(Ljava/util/LinkedList;)V", "value", "selectAvatarId", "getSelectAvatarId", "setSelectAvatarId", "accept", "", "checkEnd", "", "destroy", "enqueOauth", "isQueueEmpty", "onActivityResult", "activity", "Landroid/app/Activity;", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "recordAllowScope", "scope", "reject", "sendReq", "allow", "sendResult", "showNextOauth", "plugin-webview_release"})
   public static final class b
   {
-    LinkedList<csf> CpD;
-    private e Cqg;
-    Bundle Cqo;
-    private ah.a Cqp;
-    final ArrayList<String> Cqq;
-    private int Cqr;
+    private e DTF;
+    Bundle DTN;
+    private ah.a DTO;
+    final ArrayList<String> DTP;
+    private int DTQ;
+    LinkedList<cxm> DTb;
     final Context context;
-    private int gPA;
+    private int rko;
     
     public b(Context paramContext)
     {
       AppMethodBeat.i(182634);
       this.context = paramContext;
-      this.CpD = new LinkedList();
-      this.Cqg = new e(this.context);
-      this.Cqq = new ArrayList();
+      this.DTb = new LinkedList();
+      this.DTF = new e(this.context);
+      this.DTP = new ArrayList();
       paramContext = this.context;
       if (paramContext == null)
       {
@@ -649,7 +658,7 @@ public final class ah
         throw paramContext;
       }
       paramContext = ((Activity)paramContext).getWindow();
-      d.g.b.k.g(paramContext, "(context as Activity).window");
+      p.g(paramContext, "(context as Activity).window");
       View localView = paramContext.getDecorView();
       if (localView != null)
       {
@@ -660,7 +669,7 @@ public final class ah
         paramContext = (ViewGroup)paramContext;
         if (paramContext != null)
         {
-          paramContext.addView((View)this.Cqg);
+          paramContext.addView((View)this.DTF);
           AppMethodBeat.o(182634);
           return;
         }
@@ -670,50 +679,50 @@ public final class ah
       AppMethodBeat.o(182634);
     }
     
-    private final void dvG()
+    private final void dGe()
     {
       AppMethodBeat.i(182631);
-      Object localObject = this.Cqo;
+      Object localObject = this.DTN;
       if (localObject != null) {}
       final String str;
       for (localObject = ((Bundle)localObject).getString("oauth_url", "");; localObject = null)
       {
-        str = ag.b.aBK((String)localObject);
-        if (!bs.gY((List)this.Cqq)) {
+        str = ag.b.aHj((String)localObject);
+        if (!bt.hj((List)this.DTP)) {
           break;
         }
-        localObject = ah.CpZ;
-        ac.i(ah.getTAG(), "[OauthQueue.sendResult] allowScope empty");
-        com.tencent.mm.plugin.webview.j.b localb = com.tencent.mm.plugin.webview.j.b.COZ;
+        localObject = ah.DTy;
+        ad.i(ah.getTAG(), "[OauthQueue.sendResult] allowScope empty");
+        com.tencent.mm.plugin.webview.j.b localb = com.tencent.mm.plugin.webview.j.b.EsZ;
         localObject = str;
         if (str == null) {
           localObject = "";
         }
         localb.a((String)localObject, ag.b.startTime, 0, 1, 0, 1, 0);
-        com.tencent.mm.plugin.webview.j.b.COZ.aD(2, (int)(System.currentTimeMillis() - ag.b.CpG), 0);
+        com.tencent.mm.plugin.webview.j.b.EsZ.aF(2, (int)(System.currentTimeMillis() - ag.b.DTe), 0);
         reject();
         AppMethodBeat.o(182631);
         return;
       }
-      c.a(this.context, com.tencent.mm.model.gdpr.a.hqB, str, (com.tencent.mm.model.gdpr.b)new b(this, str));
+      c.a(this.context, com.tencent.mm.model.gdpr.a.hIT, str, (com.tencent.mm.model.gdpr.b)new b(this, str));
       AppMethodBeat.o(182631);
     }
     
-    private final boolean eBs()
+    private final boolean eQk()
     {
       AppMethodBeat.i(182630);
       ah localah;
-      if (bs.gY((List)this.CpD))
+      if (bt.hj((List)this.DTb))
       {
-        localah = ah.CpZ;
-        ac.v(ah.getTAG(), "[OauthQueue.checkEnd] scopeList null");
+        localah = ah.DTy;
+        ad.v(ah.getTAG(), "[OauthQueue.checkEnd] scopeList null");
         AppMethodBeat.o(182630);
         return true;
       }
-      if (this.gPA >= this.CpD.size())
+      if (this.rko >= this.DTb.size())
       {
-        localah = ah.CpZ;
-        ac.v(ah.getTAG(), "[OauthQueue.checkEnd] curIndex end");
+        localah = ah.DTy;
+        ad.v(ah.getTAG(), "[OauthQueue.checkEnd] curIndex end");
         AppMethodBeat.o(182630);
         return true;
       }
@@ -724,11 +733,11 @@ public final class ah
     private final void reject()
     {
       AppMethodBeat.i(182632);
-      Object localObject = ah.CpZ;
-      ac.i(ah.getTAG(), "[OauthQueue.reject] reject");
-      UV(2);
-      localObject = ah.CpZ;
-      localObject = ah.eBq();
+      Object localObject = ah.DTy;
+      ad.i(ah.getTAG(), "[OauthQueue.reject] reject");
+      WL(2);
+      localObject = ah.DTy;
+      localObject = ah.eQi();
       if (localObject != null)
       {
         localObject = (ag.c)((WeakReference)localObject).get();
@@ -742,20 +751,20 @@ public final class ah
       AppMethodBeat.o(182632);
     }
     
-    public final void UU(int paramInt)
+    public final void WK(int paramInt)
     {
       AppMethodBeat.i(182627);
-      this.Cqr = paramInt;
-      ah localah = ah.CpZ;
-      ac.v(ah.getTAG(), "[QauthQueue] selectAvatartId = ".concat(String.valueOf(paramInt)));
+      this.DTQ = paramInt;
+      ah localah = ah.DTy;
+      ad.v(ah.getTAG(), "[QauthQueue] selectAvatartId = ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(182627);
     }
     
-    final void UV(int paramInt)
+    final void WL(int paramInt)
     {
       AppMethodBeat.i(182633);
-      byi localbyi = new byi();
-      Object localObject = this.Cqo;
+      ccz localccz = new ccz();
+      Object localObject = this.DTN;
       if (localObject != null)
       {
         String str = ((Bundle)localObject).getString("oauth_url", "");
@@ -766,101 +775,101 @@ public final class ah
       {
         localObject = "";
       }
-      localbyi.Fnz = ((String)localObject);
-      localbyi.FnA = paramInt;
-      localbyi.FnB.addAll((Collection)this.Cqq);
-      localbyi.EuD = this.Cqr;
-      localObject = ah.CpZ;
-      ac.v(ah.getTAG(), "[OauthQueue.sendReq] scope = " + localbyi.FnB + ", avatarId = " + this.Cqr);
+      localccz.GXi = ((String)localObject);
+      localccz.GXj = paramInt;
+      localccz.GXk.addAll((Collection)this.DTP);
+      localccz.GbX = this.DTQ;
+      localObject = ah.DTy;
+      ad.v(ah.getTAG(), "[OauthQueue.sendReq] scope = " + localccz.GXk + ", avatarId = " + this.DTQ);
       localObject = new b.a();
-      ((b.a)localObject).c((com.tencent.mm.bw.a)localbyi);
-      ((b.a)localObject).d((com.tencent.mm.bw.a)new byj());
-      ((b.a)localObject).Am("/cgi-bin/mmbiz-bin/oauth_authorize_confirm");
-      ((b.a)localObject).op(1373);
-      ((b.a)localObject).or(0);
-      ((b.a)localObject).os(0);
-      IPCRunCgi.a(((b.a)localObject).aAz(), (IPCRunCgi.a)new a(this));
+      ((b.a)localObject).c((com.tencent.mm.bx.a)localccz);
+      ((b.a)localObject).d((com.tencent.mm.bx.a)new cda());
+      ((b.a)localObject).Dl("/cgi-bin/mmbiz-bin/oauth_authorize_confirm");
+      ((b.a)localObject).oP(1373);
+      ((b.a)localObject).oR(0);
+      ((b.a)localObject).oS(0);
+      IPCRunCgi.a(((b.a)localObject).aDC(), (IPCRunCgi.a)new a(this));
       AppMethodBeat.o(182633);
     }
     
     public final void destroy()
     {
       AppMethodBeat.i(182629);
-      if (this.Cqg != null)
+      if (this.DTF != null)
       {
-        e locale = this.Cqg;
+        e locale = this.DTF;
         if (locale != null) {
-          locale.blW();
+          locale.My();
         }
-        this.Cqg = null;
-        this.Cqp = null;
+        this.DTF = null;
+        this.DTO = null;
       }
       AppMethodBeat.o(182629);
     }
     
-    public final void eBr()
+    public final void eQj()
     {
       Object localObject2 = null;
       AppMethodBeat.i(182628);
-      if (this.Cqp != null)
+      if (this.DTO != null)
       {
-        localObject1 = this.Cqp;
+        localObject1 = this.DTO;
         if (localObject1 == null) {
           break label87;
         }
       }
       label87:
-      for (Object localObject1 = ((ah.a)localObject1).Cqb;; localObject1 = null)
+      for (Object localObject1 = ((ah.a)localObject1).DTA;; localObject1 = null)
       {
         if (localObject1 != null)
         {
-          localObject3 = this.Cqg;
+          localObject3 = this.DTF;
           if (localObject3 != null)
           {
-            ah.a locala = this.Cqp;
+            ah.a locala = this.DTO;
             localObject1 = localObject2;
             if (locala != null) {
-              localObject1 = locala.Cqb;
+              localObject1 = locala.DTA;
             }
-            ((e)localObject3).c((com.tencent.mm.plugin.appbrand.widget.dialog.k)localObject1);
+            ((e)localObject3).c((k)localObject1);
           }
         }
-        if (!eBs()) {
+        if (!eQk()) {
           break;
         }
-        dvG();
+        dGe();
         AppMethodBeat.o(182628);
         return;
       }
       localObject1 = this.context;
-      localObject2 = this.Cqg;
+      localObject2 = this.DTF;
       if (localObject2 == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
       localObject1 = new ah.a((Context)localObject1, (e)localObject2);
-      ((ah.a)localObject1).CpW = ((b)this);
-      localObject2 = this.Cqo;
+      ((ah.a)localObject1).DTv = ((b)this);
+      localObject2 = this.DTN;
       if (localObject2 == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
-      Object localObject3 = this.CpD.get(this.gPA);
-      d.g.b.k.g(localObject3, "scopeList[curIndex]");
-      ((ah.a)localObject1).a((Bundle)localObject2, (csf)localObject3);
-      this.Cqp = ((ah.a)localObject1);
-      this.gPA += 1;
+      Object localObject3 = this.DTb.get(this.rko);
+      p.g(localObject3, "scopeList[curIndex]");
+      ((ah.a)localObject1).a((Bundle)localObject2, (cxm)localObject3);
+      this.DTO = ((ah.a)localObject1);
+      this.rko += 1;
       AppMethodBeat.o(182628);
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback"})
     static final class a
       implements IPCRunCgi.a
     {
       a(ah.b paramb) {}
       
-      public final void a(final int paramInt1, final int paramInt2, final String paramString, final com.tencent.mm.ak.b paramb)
+      public final void a(final int paramInt1, final int paramInt2, final String paramString, final com.tencent.mm.al.b paramb)
       {
         AppMethodBeat.i(182624);
-        ap.f((Runnable)new Runnable()
+        aq.f((Runnable)new Runnable()
         {
           public final void run()
           {
@@ -868,21 +877,21 @@ public final class ah
             if ((paramInt1 == 0) && (paramInt2 == 0))
             {
               Object localObject = paramb;
-              d.g.b.k.g(localObject, "rr");
-              localObject = ((com.tencent.mm.ak.b)localObject).aBD();
+              p.g(localObject, "rr");
+              localObject = ((com.tencent.mm.al.b)localObject).aEF();
               if (localObject == null)
               {
                 localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.OauthAuthorizeConfirmResp");
                 AppMethodBeat.o(182623);
                 throw ((Throwable)localObject);
               }
-              localObject = (byj)localObject;
-              if (!bs.isNullOrNil(((byj)localObject).DRX))
+              localObject = (cda)localObject;
+              if (!bt.isNullOrNil(((cda)localObject).Fxq))
               {
-                ah localah = ah.CpZ;
-                localObject = ((byj)localObject).DRX;
-                d.g.b.k.g(localObject, "rsp.redirect_url");
-                ah.aBL((String)localObject);
+                ah localah = ah.DTy;
+                localObject = ((cda)localObject).Fxq;
+                p.g(localObject, "rsp.redirect_url");
+                ah.aHk((String)localObject);
                 AppMethodBeat.o(182623);
                 return;
               }
@@ -890,7 +899,7 @@ public final class ah
               AppMethodBeat.o(182623);
               return;
             }
-            com.tencent.mm.ui.base.h.d(this.Cqt.Cqs.context, paramString, ai.getContext().getString(2131766178), (DialogInterface.OnClickListener)1.Cqu);
+            com.tencent.mm.ui.base.h.d(this.DTS.DTR.context, paramString, aj.getContext().getString(2131766178), (DialogInterface.OnClickListener)1.DTT);
             AppMethodBeat.o(182623);
           }
         });
@@ -898,13 +907,13 @@ public final class ah
       }
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "ret", "", "onPermissionReturn"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "ret", "", "onPermissionReturn"})
     static final class b
       implements com.tencent.mm.model.gdpr.b
     {
       b(ah.b paramb, String paramString) {}
       
-      public final void og(final int paramInt)
+      public final void oG(final int paramInt)
       {
         AppMethodBeat.i(182626);
         com.tencent.mm.ci.a.z((Runnable)new Runnable()
@@ -917,47 +926,47 @@ public final class ah
             Object localObject2;
             if (paramInt == 1)
             {
-              localObject1 = ah.CpZ;
-              ac.i(ah.getTAG(), "[OauthQueue.sendResult] MPGdprPolicyUtil.checkPolicy DENY");
-              localb = com.tencent.mm.plugin.webview.j.b.COZ;
-              localObject2 = this.Cqw.Cqv;
+              localObject1 = ah.DTy;
+              ad.i(ah.getTAG(), "[OauthQueue.sendResult] MPGdprPolicyUtil.checkPolicy DENY");
+              localb = com.tencent.mm.plugin.webview.j.b.EsZ;
+              localObject2 = this.DTV.DTU;
               localObject1 = localObject2;
               if (localObject2 == null) {
                 localObject1 = "";
               }
               localb.a((String)localObject1, ag.b.startTime, 0, 1, 0, 1, 0);
-              localObject1 = ah.CpZ;
-              ah.eBp();
+              localObject1 = ah.DTy;
+              ah.eQh();
             }
             for (;;)
             {
-              com.tencent.mm.plugin.webview.j.b.COZ.aD(2, (int)(System.currentTimeMillis() - ag.b.CpG), 0);
+              com.tencent.mm.plugin.webview.j.b.EsZ.aF(2, (int)(System.currentTimeMillis() - ag.b.DTe), 0);
               AppMethodBeat.o(182625);
               return;
-              localObject1 = ah.CpZ;
-              ac.i(ah.getTAG(), "[OauthQueue.sendResult] MPGdprPolicyUtil.checkPolicy PROCEED");
-              localb = com.tencent.mm.plugin.webview.j.b.COZ;
-              localObject2 = this.Cqw.Cqv;
+              localObject1 = ah.DTy;
+              ad.i(ah.getTAG(), "[OauthQueue.sendResult] MPGdprPolicyUtil.checkPolicy PROCEED");
+              localb = com.tencent.mm.plugin.webview.j.b.EsZ;
+              localObject2 = this.DTV.DTU;
               localObject1 = localObject2;
               if (localObject2 == null) {
                 localObject1 = "";
               }
               localb.a((String)localObject1, ag.b.startTime, 1, 1, 0, 1, 0);
-              localObject1 = this.Cqw.Cqs;
-              localObject2 = ((ah.b)localObject1).Cqo;
+              localObject1 = this.DTV.DTR;
+              localObject2 = ((ah.b)localObject1).DTN;
               if (localObject2 != null) {}
               for (boolean bool = ((Bundle)localObject2).getBoolean("is_call_server_when_confirm");; bool = false)
               {
-                localObject2 = ah.CpZ;
-                ac.i(ah.getTAG(), "[OauthQueue.accept] isCallServerWhenConfirm = ".concat(String.valueOf(bool)));
+                localObject2 = ah.DTy;
+                ad.i(ah.getTAG(), "[OauthQueue.accept] isCallServerWhenConfirm = ".concat(String.valueOf(bool)));
                 if (!bool) {
                   break label198;
                 }
-                ((ah.b)localObject1).UV(1);
+                ((ah.b)localObject1).WL(1);
                 break;
               }
               label198:
-              localObject1 = ((ah.b)localObject1).Cqo;
+              localObject1 = ((ah.b)localObject1).DTN;
               if (localObject1 != null)
               {
                 localObject2 = ((Bundle)localObject1).getString("redirect_url");
@@ -968,8 +977,8 @@ public final class ah
               {
                 localObject1 = "";
               }
-              localObject2 = ah.CpZ;
-              ah.aBL((String)localObject1);
+              localObject2 = ah.DTy;
+              ah.aHk((String)localObject1);
             }
           }
         });
@@ -980,7 +989,7 @@ public final class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.ah
  * JD-Core Version:    0.7.0.1
  */

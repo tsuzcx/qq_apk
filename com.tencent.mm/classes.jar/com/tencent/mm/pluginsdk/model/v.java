@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.model;
 
 public final class v
 {
-  public static long DhG;
+  public static long EMr;
 }
 
 

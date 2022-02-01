@@ -13,50 +13,50 @@ import com.tencent.mm.plugin.appbrand.ab.g;
 import com.tencent.mm.plugin.appbrand.ai;
 import com.tencent.mm.plugin.appbrand.al;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.k;
+import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.m;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.ui.wxa_container.BaseAppBrandUIClipped.a;
 import com.tencent.mm.plugin.ball.f.f;
 import com.tencent.mm.plugin.m.a.c.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.b;
 
 @com.tencent.mm.ui.base.a(1)
 public class AppBrandPluginUI
   extends AppBrandUI
 {
-  private boolean bvk()
+  private boolean bzq()
   {
     AppMethodBeat.i(48677);
     if (this.mRuntimeContainer == null) {}
     for (AppBrandRuntime localAppBrandRuntime = null;; localAppBrandRuntime = this.mRuntimeContainer.getActiveRuntime())
     {
-      boolean bool = g.as(localAppBrandRuntime);
+      boolean bool = g.am(localAppBrandRuntime);
       AppMethodBeat.o(48677);
       return bool;
     }
   }
   
-  private boolean bvl()
+  private boolean bzr()
   {
     AppMethodBeat.i(162169);
     try
     {
-      ActivityManager.RunningTaskInfo localRunningTaskInfo = bs.aG(this, getTaskId());
+      ActivityManager.RunningTaskInfo localRunningTaskInfo = bt.aJ(this, getTaskId());
       if ((localRunningTaskInfo == null) || (localRunningTaskInfo.baseActivity == null)) {
         break label143;
       }
       if (localRunningTaskInfo.baseActivity.equals(getComponentName()))
       {
-        ac.i("MicroMsg.AppBrandPluginUI", "shouldKeepPluginUIOpaque return true, task.baseActivity=self, keep PluginUI opaque");
+        ad.i("MicroMsg.AppBrandPluginUI", "shouldKeepPluginUIOpaque return true, task.baseActivity=self, keep PluginUI opaque");
         AppMethodBeat.o(162169);
         return true;
       }
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.AppBrandPluginUI", "shouldKeepPluginUIOpaque return false, get e=%s", new Object[] { localException });
+      ad.e("MicroMsg.AppBrandPluginUI", "shouldKeepPluginUIOpaque return false, get e=%s", new Object[] { localException });
       AppMethodBeat.o(162169);
       return false;
     }
@@ -66,7 +66,7 @@ public class AppBrandPluginUI
       String str2 = new String[] { "WXBizEntryActivity", "AppBrandLaunchProxyUI" }[i];
       if (localException.baseActivity.getShortClassName().endsWith(str2))
       {
-        ac.i("MicroMsg.AppBrandPluginUI", "shouldKeepPluginUIOpaque return true, task.baseActivity=[%s], keep PluginUI opaque", new Object[] { str2 });
+        ad.i("MicroMsg.AppBrandPluginUI", "shouldKeepPluginUIOpaque return true, task.baseActivity=[%s], keep PluginUI opaque", new Object[] { str2 });
         AppMethodBeat.o(162169);
         return true;
       }
@@ -76,37 +76,37 @@ public class AppBrandPluginUI
     if ((localException != null) && (localException.baseActivity != null)) {}
     for (String str1 = localException.baseActivity.getShortClassName();; str1 = "null")
     {
-      ac.i("MicroMsg.AppBrandPluginUI", "shouldKeepPluginUIOpaque return false, task.baseActivity=[%s]", new Object[] { str1 });
+      ad.i("MicroMsg.AppBrandPluginUI", "shouldKeepPluginUIOpaque return false, task.baseActivity=[%s]", new Object[] { str1 });
       AppMethodBeat.o(162169);
       return false;
     }
   }
   
-  final void K(Intent paramIntent)
+  final void M(Intent paramIntent)
   {
     AppMethodBeat.i(48680);
-    super.overridePendingTransition(this.mnB.mnC, this.mnB.mnD);
+    super.overridePendingTransition(this.mOd.mOe, this.mOd.mOf);
     AppMethodBeat.o(48680);
   }
   
-  protected final void L(Intent paramIntent)
+  protected final void N(Intent paramIntent)
   {
     AppMethodBeat.i(48683);
-    super.L(paramIntent);
+    super.N(paramIntent);
     if (this.mRuntimeContainer == null) {}
     for (paramIntent = null;; paramIntent = this.mRuntimeContainer.getActiveRuntime())
     {
-      if (AppBrandRuntimeWCAccessible.I(paramIntent))
+      if (AppBrandRuntimeWCAccessible.F(paramIntent))
       {
-        paramIntent.jdQ = true;
-        paramIntent.jdP = new al()
+        paramIntent.jwY = true;
+        paramIntent.jwX = new al()
         {
-          public final void rf(int paramAnonymousInt)
+          public final void rG(int paramAnonymousInt)
           {
             AppMethodBeat.i(48673);
             if (1 == paramAnonymousInt)
             {
-              ac.i("MicroMsg.AppBrandPluginUI", "load convertActivityToTranslucent");
+              ad.i("MicroMsg.AppBrandPluginUI", "load convertActivityToTranslucent");
               b.a(AppBrandPluginUI.this, null);
             }
             AppMethodBeat.o(48673);
@@ -118,36 +118,36 @@ public class AppBrandPluginUI
     }
   }
   
-  protected final void g(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
+  protected final void h(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(48679);
-    if (k.a(this, paramAppBrandInitConfigWC, paramAppBrandStatObject))
+    if (m.a(this, paramAppBrandInitConfigWC, paramAppBrandStatObject))
     {
       b.a(this, null);
-      ac.i("MicroMsg.AppBrandPluginUI", "init convertActivityToTranslucent");
+      ad.i("MicroMsg.AppBrandPluginUI", "init convertActivityToTranslucent");
       AppMethodBeat.o(48679);
       return;
     }
-    if (com.tencent.mm.plugin.appbrand.utils.a.Rs(this.jDE))
+    if (com.tencent.mm.plugin.appbrand.utils.a.UY(this.jXA))
     {
       super.overridePendingTransition(0, 0);
       AppMethodBeat.o(48679);
       return;
     }
-    if (bvk())
+    if (bzq())
     {
       e.b(this, paramAppBrandInitConfigWC);
       AppMethodBeat.o(48679);
       return;
     }
-    super.overridePendingTransition(this.mnB.mnC, this.mnB.mnD);
+    super.overridePendingTransition(this.mOd.mOe, this.mOd.mOf);
     AppMethodBeat.o(48679);
   }
   
   public void initActivityCloseAnimation()
   {
     AppMethodBeat.i(48681);
-    super.overridePendingTransition(this.mnB.mnE, this.mnB.mnF);
+    super.overridePendingTransition(this.mOd.mOg, this.mOd.mOh);
     AppMethodBeat.o(48681);
   }
   
@@ -155,8 +155,8 @@ public class AppBrandPluginUI
   {
     AppMethodBeat.i(48674);
     super.onCreate(paramBundle);
-    paramBundle = c.uAv;
-    c.akv("ui_create");
+    paramBundle = c.vCY;
+    c.api("ui_create");
     AppMethodBeat.o(48674);
   }
   
@@ -165,22 +165,22 @@ public class AppBrandPluginUI
     AppBrandRuntime localAppBrandRuntime = null;
     AppMethodBeat.i(48678);
     super.onEnterAnimationComplete();
-    if (bvl())
+    if (bzr())
     {
       if (this.mRuntimeContainer == null) {}
       for (;;)
       {
         if (localAppBrandRuntime != null) {
-          localAppBrandRuntime.jdQ = false;
+          localAppBrandRuntime.jwY = false;
         }
         AppMethodBeat.o(48678);
         return;
         localAppBrandRuntime = this.mRuntimeContainer.getActiveRuntime();
       }
     }
-    ac.i("MicroMsg.AppBrandPluginUI", "onEnterAnimationComplete convert PluginUI to translucent");
+    ad.i("MicroMsg.AppBrandPluginUI", "onEnterAnimationComplete convert PluginUI to translucent");
     b.a(this, null);
-    ac.i("MicroMsg.AppBrandPluginUI", "onEnter convertActivityToTranslucent");
+    ad.i("MicroMsg.AppBrandPluginUI", "onEnter convertActivityToTranslucent");
     AppMethodBeat.o(48678);
   }
   
@@ -188,7 +188,7 @@ public class AppBrandPluginUI
   {
     AppMethodBeat.i(48676);
     super.onPause();
-    if (bvk()) {
+    if (bzq()) {
       f.e(false, true, true);
     }
     AppMethodBeat.o(48676);
@@ -198,9 +198,9 @@ public class AppBrandPluginUI
   {
     AppMethodBeat.i(48675);
     super.onResume();
-    if (bvk())
+    if (bzq())
     {
-      r.a(getWindow(), true, false);
+      s.a(getWindow(), true, false);
       f.e(true, true, true);
     }
     AppMethodBeat.o(48675);
@@ -214,7 +214,7 @@ public class AppBrandPluginUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI
  * JD-Core Version:    0.7.0.1
  */

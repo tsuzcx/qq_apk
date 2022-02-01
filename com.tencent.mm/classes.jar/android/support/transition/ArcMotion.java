@@ -10,34 +10,34 @@ import org.xmlpull.v1.XmlPullParser;
 public class ArcMotion
   extends PathMotion
 {
-  private static final float xI = (float)Math.tan(Math.toRadians(35.0D));
-  private float xJ = 0.0F;
-  private float xK = 0.0F;
-  private float xL = 70.0F;
-  private float xM = 0.0F;
-  private float xN = 0.0F;
-  private float xO = xI;
+  private static final float zC = (float)Math.tan(Math.toRadians(35.0D));
+  private float zD = 0.0F;
+  private float zE = 0.0F;
+  private float zF = 70.0F;
+  private float zG = 0.0F;
+  private float zH = 0.0F;
+  private float zI = zC;
   
   public ArcMotion() {}
   
   public ArcMotion(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.Ab);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.BS);
     paramAttributeSet = (XmlPullParser)paramAttributeSet;
     float f = g.a(paramContext, paramAttributeSet, "minimumVerticalAngle", 1, 0.0F);
-    this.xK = f;
-    this.xN = y(f);
+    this.zE = f;
+    this.zH = w(f);
     f = g.a(paramContext, paramAttributeSet, "minimumHorizontalAngle", 0, 0.0F);
-    this.xJ = f;
-    this.xM = y(f);
+    this.zD = f;
+    this.zG = w(f);
     f = g.a(paramContext, paramAttributeSet, "maximumAngle", 2, 70.0F);
-    this.xL = f;
-    this.xO = y(f);
+    this.zF = f;
+    this.zI = w(f);
     paramContext.recycle();
   }
   
-  private static float y(float paramFloat)
+  private static float w(float paramFloat)
   {
     if ((paramFloat < 0.0F) || (paramFloat > 90.0F)) {
       throw new IllegalArgumentException("Arc must be between 0 and 90 degrees");
@@ -70,11 +70,11 @@ public class ArcMotion
       }
       f2 = paramFloat4 + f1;
       f1 = paramFloat3;
-      f3 = this.xN * f4 * this.xN;
+      f3 = this.zH * f4 * this.zH;
       f7 = f5 - f1;
       float f8 = f6 - f2;
       f7 = f8 * f8 + f7 * f7;
-      f4 = this.xO * f4 * this.xO;
+      f4 = this.zI * f4 * this.zI;
       if (f7 >= f3) {
         break label328;
       }
@@ -105,7 +105,7 @@ public class ArcMotion
         }
         for (f2 = paramFloat2;; f2 = paramFloat4)
         {
-          f3 = this.xM * f4 * this.xM;
+          f3 = this.zG * f4 * this.zG;
           break;
           f1 = paramFloat3 - f1;
         }
@@ -123,7 +123,7 @@ public class ArcMotion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.ArcMotion
  * JD-Core Version:    0.7.0.1
  */

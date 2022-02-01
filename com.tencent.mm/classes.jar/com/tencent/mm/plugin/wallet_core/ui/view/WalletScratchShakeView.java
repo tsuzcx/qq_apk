@@ -14,22 +14,22 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.j.d;
-import com.tencent.mm.pluginsdk.j.d.a;
+import com.tencent.mm.pluginsdk.l.d;
+import com.tencent.mm.pluginsdk.l.d.a;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class WalletScratchShakeView
   extends FrameLayout
 {
-  b BMp;
-  boolean BMq;
-  boolean BMr;
-  private a BMs;
+  b DmH;
+  boolean DmI;
+  boolean DmJ;
+  private a DmK;
   
   public WalletScratchShakeView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,12 +44,12 @@ public class WalletScratchShakeView
   public final void onDestroy()
   {
     AppMethodBeat.i(71547);
-    if (this.BMp != null)
+    if (this.DmH != null)
     {
-      b localb = this.BMp;
-      ac.i("MicroMsg.WalletScratchShakeView", "onDestroy");
+      b localb = this.DmH;
+      ad.i("MicroMsg.WalletScratchShakeView", "onDestroy");
       if (localb.shakeSensor != null) {
-        localb.shakeSensor.bXB();
+        localb.shakeSensor.cce();
       }
     }
     AppMethodBeat.o(71547);
@@ -57,51 +57,51 @@ public class WalletScratchShakeView
   
   public void setScratchShakeCallback(a parama)
   {
-    this.BMs = parama;
+    this.DmK = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void euB();
+    public abstract void eIH();
     
-    public abstract void tS(boolean paramBoolean);
+    public abstract void uC(boolean paramBoolean);
   }
   
   final class b
     extends View
   {
-    private float BMA;
-    private int[] BMB;
-    private int BMC = -1;
-    boolean BMD;
-    boolean BME;
-    float BMF;
-    float BMG;
-    int BMH;
-    private boolean BMI;
-    boolean BMJ;
-    private float BMK = 0.9F;
-    private Canvas BMt;
-    Drawable BMu;
-    Paint BMv;
-    Paint BMw;
-    Path BMx;
-    Path BMy;
-    private float BMz;
-    Paint aOk;
+    private Canvas DmL;
+    Drawable DmM;
+    Paint DmN;
+    Paint DmO;
+    Path DmP;
+    Path DmQ;
+    private float DmR;
+    private float DmS;
+    private int[] DmT;
+    private int DmU = -1;
+    boolean DmV;
+    boolean DmW;
+    float DmX;
+    float DmY;
+    int DmZ;
+    private boolean Dna;
+    boolean Dnb;
+    private float Dnc = 0.9F;
+    Paint aYE;
     private boolean isStartShake = false;
-    private int kzc = 0;
+    private int kVm = 0;
     long lastShakeTime;
-    int qc;
+    int rW;
     d shakeSensor;
-    private Bitmap yqx;
+    private Bitmap zHH;
     
     public b(Context paramContext)
     {
       super();
     }
     
-    static byte[] ao(Bitmap paramBitmap)
+    static byte[] aq(Bitmap paramBitmap)
     {
       int i = 0;
       AppMethodBeat.i(71538);
@@ -141,27 +141,27 @@ public class WalletScratchShakeView
       return paramBitmap;
     }
     
-    private boolean euC()
+    private boolean eII()
     {
       AppMethodBeat.i(71539);
-      if (this.BMG >= getHeight())
+      if (this.DmY >= getHeight())
       {
-        this.BMJ = true;
-        if (!this.BME)
+        this.Dnb = true;
+        if (!this.DmW)
         {
           if (WalletScratchShakeView.a(WalletScratchShakeView.this) != null) {
-            WalletScratchShakeView.a(WalletScratchShakeView.this).euB();
+            WalletScratchShakeView.a(WalletScratchShakeView.this).eIH();
           }
-          this.BME = true;
+          this.DmW = true;
         }
-        if (this.BMt != null)
+        if (this.DmL != null)
         {
-          this.BMy.reset();
-          this.BMy.moveTo(0.0F, 0.0F);
-          this.BMy.lineTo(getWidth(), 0.0F);
-          this.BMy.lineTo(getWidth(), getHeight());
-          this.BMy.lineTo(0.0F, getHeight());
-          this.BMt.drawPath(this.BMy, this.BMw);
+          this.DmQ.reset();
+          this.DmQ.moveTo(0.0F, 0.0F);
+          this.DmQ.lineTo(getWidth(), 0.0F);
+          this.DmQ.lineTo(getWidth(), getHeight());
+          this.DmQ.lineTo(0.0F, getHeight());
+          this.DmL.drawPath(this.DmQ, this.DmO);
         }
         invalidate();
         AppMethodBeat.o(71539);
@@ -171,26 +171,26 @@ public class WalletScratchShakeView
       return false;
     }
     
-    private void euD()
+    private void eIJ()
     {
       AppMethodBeat.i(71540);
-      if (this.BMt != null)
+      if (this.DmL != null)
       {
-        this.BMy.reset();
-        this.BMy.moveTo(0.0F, this.BMG);
-        this.BMy.cubicTo(getWidth() / 2, getHeight(), getWidth() / 2, 0.0F, getWidth(), this.BMF);
-        this.BMy.lineTo(getWidth(), 0.0F);
-        this.BMy.lineTo(0.0F, 0.0F);
-        this.BMt.drawPath(this.BMy, this.BMw);
+        this.DmQ.reset();
+        this.DmQ.moveTo(0.0F, this.DmY);
+        this.DmQ.cubicTo(getWidth() / 2, getHeight(), getWidth() / 2, 0.0F, getWidth(), this.DmX);
+        this.DmQ.lineTo(getWidth(), 0.0F);
+        this.DmQ.lineTo(0.0F, 0.0F);
+        this.DmL.drawPath(this.DmQ, this.DmO);
       }
       invalidate();
       AppMethodBeat.o(71540);
     }
     
-    public final boolean X(MotionEvent paramMotionEvent)
+    public final boolean Z(MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(71543);
-      if ((this.yqx != null) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 0)))
+      if ((this.zHH != null) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 0)))
       {
         int i = getWidth();
         int j = getHeight();
@@ -199,10 +199,10 @@ public class WalletScratchShakeView
         int n = m * i + k;
         int i1 = getWidth();
         int i2 = getHeight();
-        ac.d("MicroMsg.WalletScratchShakeView", "checkIsTouchEraseArea, x: %s, y: %s, width: %s, height: %s, index: %s, len: %s", new Object[] { Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(n), Integer.valueOf(i1 * i2) });
+        ad.d("MicroMsg.WalletScratchShakeView", "checkIsTouchEraseArea, x: %s, y: %s, width: %s, height: %s, index: %s, len: %s", new Object[] { Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(n), Integer.valueOf(i1 * i2) });
         if ((n > 0) && (k > 0) && (m > 0) && (k < getWidth()) && (m < getHeight()))
         {
-          if (this.yqx.getPixel(k, m) == 0)
+          if (this.zHH.getPixel(k, m) == 0)
           {
             AppMethodBeat.o(71543);
             return true;
@@ -219,22 +219,22 @@ public class WalletScratchShakeView
     {
       AppMethodBeat.i(71541);
       paramCanvas.save();
-      if (this.yqx == null)
+      if (this.zHH == null)
       {
         int i = getWidth();
         int j = getHeight();
-        ac.i("MicroMsg.WalletScratchShakeView", "createMasker width: %s, height: %s, waterMark: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), this.BMu });
-        this.yqx = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        this.BMt = new Canvas(this.yqx);
-        if (this.BMu != null)
+        ad.i("MicroMsg.WalletScratchShakeView", "createMasker width: %s, height: %s, waterMark: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), this.DmM });
+        this.zHH = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+        this.DmL = new Canvas(this.zHH);
+        if (this.DmM != null)
         {
           Rect localRect = new Rect(0, 0, i, j);
-          this.BMu.setBounds(localRect);
-          this.BMu.draw(this.BMt);
+          this.DmM.setBounds(localRect);
+          this.DmM.draw(this.DmL);
         }
-        this.BMB = new int[i * j];
+        this.DmT = new int[i * j];
       }
-      paramCanvas.drawBitmap(this.yqx, 0.0F, 0.0F, this.aOk);
+      paramCanvas.drawBitmap(this.zHH, 0.0F, 0.0F, this.aYE);
       paramCanvas.restore();
       AppMethodBeat.o(71541);
     }
@@ -253,55 +253,55 @@ public class WalletScratchShakeView
       switch (j)
       {
       }
-      while ((!this.BMJ) && (!X(paramMotionEvent)) && (i != 0))
+      while ((!this.Dnb) && (!Z(paramMotionEvent)) && (i != 0))
       {
         AppMethodBeat.o(71542);
         return true;
         float f1 = paramMotionEvent.getX();
         float f2 = paramMotionEvent.getY();
-        this.BMx.reset();
-        this.BMx.moveTo(f1, f2);
-        this.BMz = f1;
-        this.BMA = f2;
+        this.DmP.reset();
+        this.DmP.moveTo(f1, f2);
+        this.DmR = f1;
+        this.DmS = f2;
         invalidate();
-        if (!this.BMD)
+        if (!this.DmV)
         {
-          ap.n(new Runnable()
+          aq.o(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(71535);
               if (WalletScratchShakeView.a(WalletScratchShakeView.this) != null) {
-                WalletScratchShakeView.a(WalletScratchShakeView.this).tS(true);
+                WalletScratchShakeView.a(WalletScratchShakeView.this).uC(true);
               }
               AppMethodBeat.o(71535);
             }
           }, 50L);
-          this.BMD = true;
+          this.DmV = true;
           i = 1;
           continue;
           f1 = paramMotionEvent.getX();
           f2 = paramMotionEvent.getY();
-          if (this.BMt != null)
+          if (this.DmL != null)
           {
-            i = (int)Math.abs(f1 - this.BMz);
-            j = (int)Math.abs(f2 - this.BMA);
-            if ((i >= this.qc) || (j >= this.qc))
+            i = (int)Math.abs(f1 - this.DmR);
+            j = (int)Math.abs(f2 - this.DmS);
+            if ((i >= this.rW) || (j >= this.rW))
             {
-              this.BMz = f1;
-              this.BMA = f2;
-              this.BMx.quadTo((this.BMz + f1) / 2.0F, (this.BMA + f2) / 2.0F, f1, f2);
-              this.BMt.drawPath(this.BMx, this.BMv);
-              this.BMx.reset();
-              this.BMx.moveTo(this.BMz, this.BMA);
+              this.DmR = f1;
+              this.DmS = f2;
+              this.DmP.quadTo((this.DmR + f1) / 2.0F, (this.DmS + f2) / 2.0F, f1, f2);
+              this.DmL.drawPath(this.DmP, this.DmN);
+              this.DmP.reset();
+              this.DmP.moveTo(this.DmR, this.DmS);
             }
           }
           invalidate();
           i = 1;
           continue;
-          this.BMz = 0.0F;
-          this.BMA = 0.0F;
-          this.BMx.reset();
+          this.DmR = 0.0F;
+          this.DmS = 0.0F;
+          this.DmP.reset();
           b.c(new Runnable()
           {
             public final void run()

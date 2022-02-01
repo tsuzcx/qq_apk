@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.game.media.preview;
 
 import android.content.Context;
 import android.widget.RelativeLayout;
-import com.tencent.mm.pluginsdk.ui.g;
+import com.tencent.mm.pluginsdk.ui.h;
 
 public final class b
   extends RelativeLayout
-  implements g
+  implements h
 {
   public b(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void gL(boolean paramBoolean) {}
+  public final void gS(boolean paramBoolean) {}
   
   public final int getVideoTotalTime()
   {
     return 0;
   }
   
-  public final void sQ(int paramInt) {}
-  
   public final void setVideoTotalTime(int paramInt) {}
+  
+  public final void tt(int paramInt) {}
 }
 
 

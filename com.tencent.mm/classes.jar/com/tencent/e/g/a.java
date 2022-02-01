@@ -7,15 +7,15 @@ import java.util.concurrent.locks.ReentrantLock;
 public final class a
   extends e
 {
-  private final Condition KaJ;
-  private ReentrantLock cEu;
+  private final Condition LUG;
+  private ReentrantLock cPz;
   
   public a(int paramInt1, int paramInt2)
   {
     super(paramInt1, paramInt2);
     AppMethodBeat.i(183322);
-    this.cEu = new ReentrantLock();
-    this.KaJ = this.cEu.newCondition();
+    this.cPz = new ReentrantLock();
+    this.LUG = this.cPz.newCondition();
     AppMethodBeat.o(183322);
   }
   
@@ -25,13 +25,13 @@ public final class a
     super.a(paramg);
     try
     {
-      this.cEu.lock();
-      this.KaJ.signal();
+      this.cPz.lock();
+      this.LUG.signal();
       return;
     }
     finally
     {
-      this.cEu.unlock();
+      this.cPz.unlock();
       AppMethodBeat.o(183323);
     }
   }
@@ -52,13 +52,13 @@ public final class a
     //   16: iload_2
     //   17: ifne +51 -> 68
     //   20: aload_0
-    //   21: getfield 26	com/tencent/e/g/a:cEu	Ljava/util/concurrent/locks/ReentrantLock;
+    //   21: getfield 26	com/tencent/e/g/a:cPz	Ljava/util/concurrent/locks/ReentrantLock;
     //   24: invokevirtual 44	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   27: aload_0
-    //   28: getfield 32	com/tencent/e/g/a:KaJ	Ljava/util/concurrent/locks/Condition;
+    //   28: getfield 32	com/tencent/e/g/a:LUG	Ljava/util/concurrent/locks/Condition;
     //   31: invokeinterface 65 1 0
     //   36: aload_0
-    //   37: getfield 26	com/tencent/e/g/a:cEu	Ljava/util/concurrent/locks/ReentrantLock;
+    //   37: getfield 26	com/tencent/e/g/a:cPz	Ljava/util/concurrent/locks/ReentrantLock;
     //   40: invokevirtual 52	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   43: goto -33 -> 10
     //   46: astore_1
@@ -67,7 +67,7 @@ public final class a
     //   52: return
     //   53: astore_1
     //   54: aload_0
-    //   55: getfield 26	com/tencent/e/g/a:cEu	Ljava/util/concurrent/locks/ReentrantLock;
+    //   55: getfield 26	com/tencent/e/g/a:cPz	Ljava/util/concurrent/locks/ReentrantLock;
     //   58: invokevirtual 52	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   61: ldc 56
     //   63: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V

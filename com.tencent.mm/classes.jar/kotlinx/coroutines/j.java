@@ -1,23 +1,14 @@
 package kotlinx.coroutines;
 
-import d.d.d;
 import d.g.a.b;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/CancellableContinuation;", "T", "Lkotlin/coroutines/Continuation;", "isActive", "", "()Z", "isCancelled", "isCompleted", "cancel", "cause", "", "completeResume", "", "token", "", "initCancellability", "invokeOnCancellation", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "Lkotlinx/coroutines/CompletionHandler;", "resume", "value", "onCancellation", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "tryResume", "idempotent", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "tryResumeWithException", "exception", "resumeUndispatched", "Lkotlinx/coroutines/CoroutineDispatcher;", "(Lkotlinx/coroutines/CoroutineDispatcher;Ljava/lang/Object;)V", "resumeUndispatchedWithException", "kotlinx-coroutines-core"})
-public abstract interface j<T>
-  extends d<T>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/CancelHandlerBase;", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "()V", "invoke", "kotlinx-coroutines-core"})
+public abstract class j
+  implements b<Throwable, z>
 {
-  public abstract void K(b<? super Throwable, y> paramb);
-  
-  public abstract void a(ab paramab, T paramT);
-  
-  public abstract void fD(Object paramObject);
-  
-  public abstract boolean isCompleted();
-  
-  public abstract Object v(Throwable paramThrowable);
+  public abstract void v(Throwable paramThrowable);
 }
 
 

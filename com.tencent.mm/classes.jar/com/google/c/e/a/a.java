@@ -5,29 +5,29 @@ import java.lang.reflect.Array;
 
 public final class a
 {
-  private final b[] bJQ;
-  int bJR;
+  private final b[] bUd;
+  int bUe;
   private final int height;
   private final int width;
   
   a(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(12294);
-    this.bJQ = new b[paramInt1];
+    this.bUd = new b[paramInt1];
     int i = 0;
-    int j = this.bJQ.length;
+    int j = this.bUd.length;
     while (i < j)
     {
-      this.bJQ[i] = new b((paramInt2 + 4) * 17 + 1);
+      this.bUd[i] = new b((paramInt2 + 4) * 17 + 1);
       i += 1;
     }
     this.width = (paramInt2 * 17);
     this.height = paramInt1;
-    this.bJR = -1;
+    this.bUe = -1;
     AppMethodBeat.o(12294);
   }
   
-  public final byte[][] bL(int paramInt1, int paramInt2)
+  public final byte[][] bN(int paramInt1, int paramInt2)
   {
     int i = this.height;
     int j = this.width;
@@ -36,12 +36,12 @@ public final class a
     i = 0;
     while (i < k)
     {
-      b localb = this.bJQ[(i / paramInt2)];
-      byte[] arrayOfByte1 = new byte[localb.bJS.length * paramInt1];
+      b localb = this.bUd[(i / paramInt2)];
+      byte[] arrayOfByte1 = new byte[localb.bUf.length * paramInt1];
       j = 0;
       while (j < arrayOfByte1.length)
       {
-        arrayOfByte1[j] = localb.bJS[(j / paramInt1)];
+        arrayOfByte1[j] = localb.bUf[(j / paramInt1)];
         j += 1;
       }
       arrayOfByte[(k - i - 1)] = arrayOfByte1;
@@ -50,9 +50,9 @@ public final class a
     return arrayOfByte;
   }
   
-  final b yl()
+  final b zI()
   {
-    return this.bJQ[this.bJR];
+    return this.bUd[this.bUe];
   }
 }
 

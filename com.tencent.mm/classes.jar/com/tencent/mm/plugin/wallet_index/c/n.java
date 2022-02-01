@@ -10,25 +10,25 @@ import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.ig;
-import com.tencent.mm.g.a.ig.a;
-import com.tencent.mm.g.a.of;
-import com.tencent.mm.g.a.of.a;
-import com.tencent.mm.g.a.xv;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.a.io;
+import com.tencent.mm.g.a.io.a;
+import com.tencent.mm.g.a.oo;
+import com.tencent.mm.g.a.oo.a;
+import com.tencent.mm.g.a.yp;
 import com.tencent.mm.modelsimple.k;
-import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.pluginsdk.wallet.f;
-import com.tencent.mm.protocal.protobuf.dvk;
-import com.tencent.mm.protocal.protobuf.ql;
+import com.tencent.mm.protocal.protobuf.ebj;
+import com.tencent.mm.protocal.protobuf.sc;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
 import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.c.af;
 import com.tencent.mm.wallet_core.tenpay.model.o;
 import java.util.ArrayList;
@@ -37,15 +37,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class n
-  extends c<xv>
-  implements com.tencent.mm.ak.g
+  extends c<yp>
+  implements com.tencent.mm.al.f
 {
-  int BPF;
-  ig BPG;
-  of BPH;
-  private Queue<of> BPI;
-  public c BPJ;
-  public c<of> BPK;
+  int DpX;
+  io DpY;
+  oo DpZ;
+  private Queue<oo> Dqa;
+  public c Dqb;
+  public c<oo> Dqc;
   int mPayChannel;
   long mRequestTime;
   
@@ -53,30 +53,30 @@ public final class n
   {
     AppMethodBeat.i(71839);
     this.mPayChannel = 0;
-    this.BPJ = new c()
+    this.Dqb = new c()
     {
-      private boolean a(ig paramAnonymousig)
+      private boolean a(io paramAnonymousio)
       {
         int i = 0;
         AppMethodBeat.i(71830);
-        n.this.BPG = paramAnonymousig;
-        Object localObject1 = n.this.BPG.dju.result;
-        if (n.this.BPG.dju.djw != null) {
-          n.this.mPayChannel = n.this.BPG.dju.djw.getInt("pay_channel", 0);
+        n.this.DpY = paramAnonymousio;
+        Object localObject1 = n.this.DpY.dvh.result;
+        if (n.this.DpY.dvh.dvj != null) {
+          n.this.mPayChannel = n.this.DpY.dvh.dvj.getInt("pay_channel", 0);
         }
         Object localObject2;
-        switch (n.this.BPG.dju.actionCode)
+        switch (n.this.DpY.dvh.actionCode)
         {
         default: 
           AppMethodBeat.o(71830);
           return false;
         case 12: 
           n localn = n.this;
-          ac.d("MicroMsg.WalletGetA8KeyRedirectListener", "startBind reqKey = ".concat(String.valueOf(localObject1)));
+          ad.d("MicroMsg.WalletGetA8KeyRedirectListener", "startBind reqKey = ".concat(String.valueOf(localObject1)));
           String[] arrayOfString = ((String)localObject1).replace("http://p.weixin.qq.com?", "").split("&");
           int j = arrayOfString.length;
           localObject2 = null;
-          paramAnonymousig = null;
+          paramAnonymousio = null;
           localObject1 = null;
           if (i < j)
           {
@@ -86,12 +86,12 @@ public final class n
             if (str.startsWith("errcode="))
             {
               localObject4 = str.replace("errcode=", "");
-              localObject3 = paramAnonymousig;
+              localObject3 = paramAnonymousio;
             }
             for (;;)
             {
               i += 1;
-              paramAnonymousig = (ig)localObject3;
+              paramAnonymousio = (io)localObject3;
               localObject1 = localObject4;
               break;
               if (str.startsWith("errmsg="))
@@ -101,76 +101,76 @@ public final class n
               }
               else
               {
-                localObject3 = paramAnonymousig;
+                localObject3 = paramAnonymousio;
                 localObject4 = localObject1;
                 if (str.startsWith("importkey="))
                 {
                   localObject2 = str.replace("importkey=", "");
-                  localObject3 = paramAnonymousig;
+                  localObject3 = paramAnonymousio;
                   localObject4 = localObject1;
                 }
               }
             }
           }
-          if (("0".equals(localObject1)) && (!bs.isNullOrNil((String)localObject2)))
+          if (("0".equals(localObject1)) && (!bt.isNullOrNil((String)localObject2)))
           {
-            paramAnonymousig = localn.BPG.dju.context;
+            paramAnonymousio = localn.DpY.dvh.context;
             localObject1 = new Intent();
             ((Intent)localObject1).putExtra("key_import_key", (String)localObject2);
             ((Intent)localObject1).putExtra("key_bind_scene", 2);
             ((Intent)localObject1).putExtra("key_custom_bind_tips", null);
-            d.b(paramAnonymousig, "wallet", ".bind.ui.WalletBindUI", (Intent)localObject1);
-            if (localn.BPG.callback != null)
+            d.b(paramAnonymousio, "wallet", ".bind.ui.WalletBindUI", (Intent)localObject1);
+            if (localn.DpY.callback != null)
             {
-              localn.BPG.djv.ret = 1;
-              localn.BPG.callback.run();
+              localn.DpY.dvi.ret = 1;
+              localn.DpY.callback.run();
             }
           }
           for (;;)
           {
             AppMethodBeat.o(71830);
             return true;
-            localObject1 = paramAnonymousig;
-            if (bs.isNullOrNil(paramAnonymousig)) {
-              localObject1 = localn.BPG.dju.context.getString(2131765901);
+            localObject1 = paramAnonymousio;
+            if (bt.isNullOrNil(paramAnonymousio)) {
+              localObject1 = localn.DpY.dvh.context.getString(2131765901);
             }
-            com.tencent.mm.ui.base.h.d(localn.BPG.dju.context, (String)localObject1, "", new n.6(localn));
+            h.d(localn.DpY.dvh.context, (String)localObject1, "", new n.6(localn));
           }
         }
-        if (!com.tencent.mm.sdk.b.a.GpY.e(this)) {
+        if (!com.tencent.mm.sdk.b.a.IbL.e(this)) {
           alive();
         }
-        ac.d("MicroMsg.WalletGetA8KeyRedirectListener", "ReqKey = ".concat(String.valueOf(localObject1)));
+        ad.d("MicroMsg.WalletGetA8KeyRedirectListener", "ReqKey = ".concat(String.valueOf(localObject1)));
         if (localObject1 != null)
         {
           if (((String)localObject1).startsWith("weixin://wxpay")) {
-            if (bt.eWo())
+            if (bu.flY())
             {
-              ac.i("MicroMsg.WalletGetA8KeyRedirectListener", "go pay test logic");
-              localObject2 = new of();
-              ((of)localObject2).dqF.url = ((String)localObject1);
-              ((of)localObject2).dqF.scene = 4;
-              ((of)localObject2).dqF.channel = 12;
-              ((of)localObject2).dqF.sourceType = 0;
-              ((of)localObject2).dqF.source = "";
-              ((of)localObject2).dqF.context = paramAnonymousig.dju.context;
-              n.a(n.this, (of)localObject2);
-              Toast.makeText(paramAnonymousig.dju.context, "click to do pay test", 1).show();
+              ad.i("MicroMsg.WalletGetA8KeyRedirectListener", "go pay test logic");
+              localObject2 = new oo();
+              ((oo)localObject2).dCw.url = ((String)localObject1);
+              ((oo)localObject2).dCw.scene = 4;
+              ((oo)localObject2).dCw.channel = 12;
+              ((oo)localObject2).dCw.sourceType = 0;
+              ((oo)localObject2).dCw.source = "";
+              ((oo)localObject2).dCw.context = paramAnonymousio.dvh.context;
+              n.a(n.this, (oo)localObject2);
+              Toast.makeText(paramAnonymousio.dvh.context, "click to do pay test", 1).show();
             }
           }
           for (;;)
           {
             AppMethodBeat.o(71830);
             return true;
-            n.this.BPF = 4;
-            com.tencent.mm.kernel.g.agS();
-            com.tencent.mm.kernel.g.agQ().ghe.a(233, n.this);
-            paramAnonymousig = new k((String)localObject1, n.this.BPG.dju.username, 4, 0, (int)System.currentTimeMillis(), new byte[0]);
-            com.tencent.mm.kernel.g.agS();
-            com.tencent.mm.kernel.g.agQ().ghe.a(paramAnonymousig, 0);
+            n.this.DpX = 4;
+            com.tencent.mm.kernel.g.ajD();
+            com.tencent.mm.kernel.g.ajB().gAO.a(233, n.this);
+            paramAnonymousio = new k((String)localObject1, n.this.DpY.dvh.username, 4, 0, (int)System.currentTimeMillis(), new byte[0]);
+            com.tencent.mm.kernel.g.ajD();
+            com.tencent.mm.kernel.g.ajB().gAO.a(paramAnonymousio, 0);
             n.this.mRequestTime = System.currentTimeMillis();
             continue;
-            n.this.BPF = 1;
+            n.this.DpX = 1;
             n.a(n.this, (String)localObject1, n.this.mPayChannel);
           }
         }
@@ -178,26 +178,26 @@ public final class n
         return true;
       }
     };
-    this.BPK = new c()
+    this.Dqc = new c()
     {
-      private boolean a(of paramAnonymousof)
+      private boolean a(oo paramAnonymousoo)
       {
         AppMethodBeat.i(71832);
-        n.a(n.this, paramAnonymousof);
+        n.a(n.this, paramAnonymousoo);
         AppMethodBeat.o(71832);
         return false;
       }
     };
-    this.__eventId = xv.class.getName().hashCode();
+    this.__eventId = yp.class.getName().hashCode();
     AppMethodBeat.o(71839);
   }
   
-  private void eW(String paramString, int paramInt)
+  private void fp(String paramString, int paramInt)
   {
     AppMethodBeat.i(71841);
-    ac.d("MicroMsg.WalletGetA8KeyRedirectListener", "startPay reqKey = ".concat(String.valueOf(paramString)));
+    ad.d("MicroMsg.WalletGetA8KeyRedirectListener", "startPay reqKey = ".concat(String.valueOf(paramString)));
     PayInfo localPayInfo = new PayInfo();
-    localPayInfo.dqL = this.BPF;
+    localPayInfo.dCC = this.DpX;
     String[] arrayOfString = paramString.replace("http://p.qq.com?", "").split("&");
     int j = arrayOfString.length;
     int i = 0;
@@ -226,7 +226,7 @@ public final class n
         }
         else if (str2.startsWith("reqkey="))
         {
-          localPayInfo.dac = str2.replace("reqkey=", "");
+          localPayInfo.dlu = str2.replace("reqkey=", "");
           str1 = paramString;
           localObject2 = localObject1;
         }
@@ -244,7 +244,7 @@ public final class n
         }
         else if (str2.startsWith("appsource="))
         {
-          localPayInfo.BPA = str2.replace("appsource=", "");
+          localPayInfo.DpS = str2.replace("appsource=", "");
           str1 = paramString;
           localObject2 = localObject1;
         }
@@ -254,7 +254,7 @@ public final class n
           localObject2 = localObject1;
           if (str2.startsWith("productid="))
           {
-            localPayInfo.dcO = str2.replace("productid=", "");
+            localPayInfo.dok = str2.replace("productid=", "");
             str1 = paramString;
             localObject2 = localObject1;
           }
@@ -264,47 +264,47 @@ public final class n
     localPayInfo.channel = paramInt;
     if ("0".equals(localObject1))
     {
-      com.tencent.mm.wallet_core.b.fzz();
-      if ((com.tencent.mm.wallet_core.b.b(b.a.pRO, true)) && (((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).kindaCacheServiceGetBool("NEW_CASHIER_NATIVE_PAY_SWTICH_KEY")))
+      com.tencent.mm.wallet_core.b.fQJ();
+      if ((com.tencent.mm.wallet_core.b.b(b.a.qwl, true)) && (((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).kindaCacheServiceGetBool("NEW_CASHIER_NATIVE_PAY_SWTICH_KEY")))
       {
         paramInt = 1;
         if (paramInt == 0) {
           break label496;
         }
-        ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).startWxpayQueryCashierPay(localPayInfo.dac, localPayInfo.dqL);
+        ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).startWxpayQueryCashierPay(localPayInfo.dlu, localPayInfo.dCC);
         label413:
-        if (this.BPG.callback != null)
+        if (this.DpY.callback != null)
         {
-          this.BPG.djv.ret = 1;
-          this.BPG.callback.run();
+          this.DpY.dvi.ret = 1;
+          this.DpY.callback.run();
         }
       }
     }
     for (;;)
     {
       if ((!TextUtils.isEmpty(localObject1)) && (Pattern.compile("[0-9]*").matcher(localObject1).matches())) {
-        n(0, Integer.valueOf(localObject1).intValue(), 0L);
+        o(0, Integer.valueOf(localObject1).intValue(), 0L);
       }
       AppMethodBeat.o(71841);
       return;
       paramInt = 0;
       break;
       label496:
-      f.a(this.BPG.dju.context, localPayInfo, 0);
+      com.tencent.mm.pluginsdk.wallet.f.a(this.DpY.dvh.context, localPayInfo, 0);
       break label413;
       str1 = paramString;
-      if (bs.isNullOrNil(paramString)) {
-        str1 = this.BPG.dju.context.getString(2131765901);
+      if (bt.isNullOrNil(paramString)) {
+        str1 = this.DpY.dvh.context.getString(2131765901);
       }
-      com.tencent.mm.ui.base.h.d(this.BPG.dju.context, str1, "", new DialogInterface.OnClickListener()
+      h.d(this.DpY.dvh.context, str1, "", new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(71836);
-          if (n.this.BPG.callback != null)
+          if (n.this.DpY.callback != null)
           {
-            n.this.BPG.djv.ret = 1;
-            n.this.BPG.callback.run();
+            n.this.DpY.dvi.ret = 1;
+            n.this.DpY.callback.run();
           }
           AppMethodBeat.o(71836);
         }
@@ -312,11 +312,11 @@ public final class n
     }
   }
   
-  private void n(int paramInt1, int paramInt2, long paramLong)
+  private void o(int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(71842);
     int i = 132;
-    if (this.BPF == 1) {
+    if (this.DpX == 1) {
       i = 163;
     }
     ArrayList localArrayList = new ArrayList();
@@ -340,7 +340,7 @@ public final class n
         localIDKey2.SetKey(9);
       }
     }
-    else if ((this.BPF == 4) && (paramLong > 0L))
+    else if ((this.DpX == 4) && (paramLong > 0L))
     {
       localIDKey1 = new IDKey();
       localIDKey1.SetID(i);
@@ -363,7 +363,7 @@ public final class n
       localArrayList.add(localIDKey1);
       localArrayList.add(localIDKey2);
       localArrayList.add(localIDKey3);
-      com.tencent.mm.plugin.report.service.h.wUl.b(localArrayList, true);
+      com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
       AppMethodBeat.o(71842);
       return;
       if (paramInt2 <= 0) {
@@ -385,32 +385,32 @@ public final class n
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
   {
     AppMethodBeat.i(71840);
     if ((paramn instanceof k))
     {
       long l = System.currentTimeMillis() - this.mRequestTime;
-      com.tencent.mm.plugin.report.service.h.wUl.f(11170, new Object[] { Integer.valueOf(233), Integer.valueOf(0), Long.valueOf(l), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(ax.getNetType(ai.getContext())), "" });
-      n(paramInt1, paramInt2, l);
-      ac.d("MicroMsg.WalletGetA8KeyRedirectListener", "onSceneEnd errType = " + paramInt1 + ", errCode = " + paramInt2 + ",errMsg = " + paramString);
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.b(233, this);
+      com.tencent.mm.plugin.report.service.g.yhR.f(11170, new Object[] { Integer.valueOf(233), Integer.valueOf(0), Long.valueOf(l), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(ay.getNetType(aj.getContext())), "" });
+      o(paramInt1, paramInt2, l);
+      ad.d("MicroMsg.WalletGetA8KeyRedirectListener", "onSceneEnd errType = " + paramInt1 + ", errCode = " + paramInt2 + ",errMsg = " + paramString);
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajB().gAO.b(233, this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         paramn = paramString;
-        if (bs.isNullOrNil(paramString)) {
-          paramn = this.BPG.dju.context.getString(2131765901);
+        if (bt.isNullOrNil(paramString)) {
+          paramn = this.DpY.dvh.context.getString(2131765901);
         }
-        com.tencent.mm.ui.base.h.d(this.BPG.dju.context, paramn, "", new DialogInterface.OnClickListener()
+        h.d(this.DpY.dvh.context, paramn, "", new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(71834);
-            if (n.this.BPG.callback != null)
+            if (n.this.DpY.callback != null)
             {
-              n.this.BPG.djv.ret = 1;
-              n.this.BPG.callback.run();
+              n.this.DpY.dvi.ret = 1;
+              n.this.DpY.callback.run();
             }
             AppMethodBeat.o(71834);
           }
@@ -418,101 +418,101 @@ public final class n
         AppMethodBeat.o(71840);
         return;
       }
-      eW(((k)paramn).aHg(), this.mPayChannel);
+      fp(((k)paramn).aKr(), this.mPayChannel);
       AppMethodBeat.o(71840);
       return;
     }
     if ((paramn instanceof o))
     {
-      ac.d("MicroMsg.WalletGetA8KeyRedirectListener", "native auth, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.b(385, this);
-      if ((paramInt1 != 0) || (paramInt2 != 0) || (!"0".equals(((o)paramn).JGo)))
+      ad.d("MicroMsg.WalletGetA8KeyRedirectListener", "native auth, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajB().gAO.b(385, this);
+      if ((paramInt1 != 0) || (paramInt2 != 0) || (!"0".equals(((o)paramn).Lzs)))
       {
-        if (this.BPH.callback != null) {
-          this.BPH.dqG.ret = 1;
+        if (this.DpZ.callback != null) {
+          this.DpZ.dCx.ret = 1;
         }
-        if (!bs.isNullOrNil(paramString)) {}
+        if (!bt.isNullOrNil(paramString)) {}
         for (;;)
         {
-          af.x(this.BPF, "", paramInt2);
-          com.tencent.mm.ui.base.h.d(this.BPH.dqF.context, paramString, "", new DialogInterface.OnClickListener()
+          af.w(this.DpX, "", paramInt2);
+          h.d(this.DpZ.dCw.context, paramString, "", new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(71835);
-              if (n.this.BPH.callback != null)
+              if (n.this.DpZ.callback != null)
               {
-                n.this.BPH.dqG.ret = 1;
-                n.this.BPH.callback.run();
+                n.this.DpZ.dCx.ret = 1;
+                n.this.DpZ.callback.run();
               }
               AppMethodBeat.o(71835);
             }
           });
           AppMethodBeat.o(71840);
           return;
-          if (!bs.isNullOrNil(((o)paramn).jXd)) {
-            paramString = ((o)paramn).jXd;
+          if (!bt.isNullOrNil(((o)paramn).krz)) {
+            paramString = ((o)paramn).krz;
           } else {
-            paramString = this.BPH.dqF.context.getString(2131765901);
+            paramString = this.DpZ.dCw.context.getString(2131765901);
           }
         }
       }
-      if (this.BPH.callback != null)
+      if (this.DpZ.callback != null)
       {
-        this.BPH.dqG.ret = 2;
-        this.BPH.callback.run();
+        this.DpZ.dCx.ret = 2;
+        this.DpZ.callback.run();
       }
-      af.x(this.BPF, ((o)paramn).dac, paramInt2);
-      paramString = ((o)paramn).BPB;
-      if ((paramString != null) && (!bs.isNullOrNil(paramString.GcR)))
+      af.w(this.DpX, ((o)paramn).dlu, paramInt2);
+      paramString = ((o)paramn).DpT;
+      if ((paramString != null) && (!bt.isNullOrNil(paramString.HNX)))
       {
         paramn = (o)paramn;
         paramString = new Intent();
-        paramString.putExtra("prepayId", paramn.dac);
+        paramString.putExtra("prepayId", paramn.dlu);
         paramString.putExtra("is_jsapi_offline_pay", false);
-        paramn = paramn.BPB;
-        paramString.putExtra("pay_gate_url", paramn.GcR);
-        paramString.putExtra("need_dialog", paramn.GcT);
-        paramString.putExtra("dialog_text", paramn.GcU);
-        paramString.putExtra("max_count", paramn.GcS.EhK);
-        paramString.putExtra("inteval_time", paramn.GcS.EhJ);
-        paramString.putExtra("default_wording", paramn.GcS.EhL);
-        d.c((Activity)this.BPH.dqF.context, "wallet_core", ".ui.WalletMixOrderInfoUI", paramString);
-        if (this.BPH.callback != null)
+        paramn = paramn.DpT;
+        paramString.putExtra("pay_gate_url", paramn.HNX);
+        paramString.putExtra("need_dialog", paramn.HNZ);
+        paramString.putExtra("dialog_text", paramn.HOa);
+        paramString.putExtra("max_count", paramn.HNY.FOR);
+        paramString.putExtra("inteval_time", paramn.HNY.FOQ);
+        paramString.putExtra("default_wording", paramn.HNY.FOS);
+        d.c((Activity)this.DpZ.dCw.context, "wallet_core", ".ui.WalletMixOrderInfoUI", paramString);
+        if (this.DpZ.callback != null)
         {
-          this.BPH.dqG.ret = 2;
-          this.BPH.callback.run();
+          this.DpZ.dCx.ret = 2;
+          this.DpZ.callback.run();
         }
-        ac.d("MicroMsg.WalletGetA8KeyRedirectListener", "mAuthNativeEvent.data.context: %s", new Object[] { this.BPH.dqF.context });
+        ad.d("MicroMsg.WalletGetA8KeyRedirectListener", "mAuthNativeEvent.data.context: %s", new Object[] { this.DpZ.dCw.context });
         AppMethodBeat.o(71840);
         return;
       }
       paramString = (o)paramn;
       paramn = new PayInfo();
-      paramn.dqL = this.BPF;
-      paramn.dac = paramString.dac;
+      paramn.dCC = this.DpX;
+      paramn.dlu = paramString.dlu;
       paramn.appId = paramString.appId;
-      paramn.BPA = paramString.BPA;
-      paramn.dcO = paramString.dcO;
+      paramn.DpS = paramString.DpS;
+      paramn.dok = paramString.dok;
       paramn.channel = paramString.channel;
-      ac.d("MicroMsg.WalletGetA8KeyRedirectListener", "startPay native, payInfo: %s", new Object[] { paramn.toString() });
-      f.a(this.BPH.dqF.context, paramn, 0);
-      if (this.BPH.callback != null)
+      ad.d("MicroMsg.WalletGetA8KeyRedirectListener", "startPay native, payInfo: %s", new Object[] { paramn.toString() });
+      com.tencent.mm.pluginsdk.wallet.f.a(this.DpZ.dCw.context, paramn, 0);
+      if (this.DpZ.callback != null)
       {
-        this.BPH.dqG.ret = 2;
-        this.BPH.callback.run();
+        this.DpZ.dCx.ret = 2;
+        this.DpZ.callback.run();
       }
       AppMethodBeat.o(71840);
       return;
     }
-    ac.i("MicroMsg.WalletGetA8KeyRedirectListener", "other scene");
+    ad.i("MicroMsg.WalletGetA8KeyRedirectListener", "other scene");
     AppMethodBeat.o(71840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.c.n
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.downloader.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import java.io.IOException;
@@ -47,7 +47,7 @@ public final class d
       for (;;)
       {
         long l;
-        Log.e("MicroMsg.Channel.IdValueReader", "APK : " + q.B(parame.fxV()) + " not have apk signature block");
+        Log.e("MicroMsg.Channel.IdValueReader", "APK : " + q.B(parame.fOK()) + " not have apk signature block");
         continue;
         int j = (int)l;
         int k = localb1.position();
@@ -60,7 +60,7 @@ public final class d
         int m = localb2.getInt();
         localLinkedHashMap.put(Integer.valueOf(m), a.d(localb2, j - 4));
         if (m == 1896449818) {
-          ac.i("MicroMsg.Channel.V2SchemeUtil", "find V2 signature block Id : 1896449818");
+          ad.i("MicroMsg.Channel.V2SchemeUtil", "find V2 signature block Id : 1896449818");
         }
         localb2.position(k + j);
       }

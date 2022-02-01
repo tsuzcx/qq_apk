@@ -10,47 +10,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.p;
 import com.tencent.mm.plugin.downloader_app.a.i;
 import com.tencent.mm.plugin.game.commlib.c.c;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public final class b
   extends RecyclerView.a<a>
 {
   private Context mContext;
-  c<i> oNs;
-  private boolean oNt;
-  private boolean oNu;
-  private boolean oNv;
-  private boolean oNw;
-  boolean oNx;
-  boolean oNy;
+  c<i> pra;
+  private boolean prb;
+  private boolean prc;
+  private boolean prd;
+  private boolean pre;
+  boolean prf;
+  boolean prg;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(9055);
-    this.oNs = new c();
-    this.oNt = true;
-    this.oNu = false;
-    this.oNv = false;
-    this.oNw = false;
-    this.oNx = false;
-    this.oNy = true;
+    this.pra = new c();
+    this.prb = true;
+    this.prc = false;
+    this.prd = false;
+    this.pre = false;
+    this.prf = false;
+    this.prg = true;
     this.mContext = paramContext;
     AppMethodBeat.o(9055);
   }
   
-  public final void V(LinkedList<i> paramLinkedList)
+  public final void W(LinkedList<i> paramLinkedList)
   {
     AppMethodBeat.i(9058);
-    if (bs.gY(paramLinkedList))
+    if (bt.hj(paramLinkedList))
     {
       AppMethodBeat.o(9058);
       return;
     }
     if (paramLinkedList.size() == 1)
     {
-      final int i = this.oNs.indexOf(paramLinkedList.get(0));
-      this.oNs.remove(i);
+      final int i = this.pra.indexOf(paramLinkedList.get(0));
+      this.pra.remove(i);
       p.z(new Runnable()
       {
         public final void run()
@@ -63,23 +63,23 @@ public final class b
       AppMethodBeat.o(9058);
       return;
     }
-    this.oNs.removeAll(paramLinkedList);
+    this.pra.removeAll(paramLinkedList);
     p.z(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(9053);
-        b.this.arg.notifyChanged();
+        b.this.asY.notifyChanged();
         AppMethodBeat.o(9053);
       }
     });
     AppMethodBeat.o(9058);
   }
   
-  public final boolean bYs()
+  public final boolean ccW()
   {
     AppMethodBeat.i(9059);
-    if (this.oNs.size() <= 5)
+    if (this.pra.size() <= 5)
     {
       AppMethodBeat.o(9059);
       return true;
@@ -91,7 +91,7 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(9057);
-    int i = this.oNs.size();
+    int i = this.pra.size();
     AppMethodBeat.o(9057);
     return i;
   }
@@ -99,7 +99,7 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(9056);
-    paramInt = ((i)this.oNs.get(paramInt)).type;
+    paramInt = ((i)this.pra.get(paramInt)).type;
     AppMethodBeat.o(9056);
     return paramInt;
   }

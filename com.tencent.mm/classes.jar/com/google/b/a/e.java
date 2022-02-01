@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public abstract class e
 {
-  protected volatile int bGA = -1;
+  protected volatile int bQO = -1;
   
   public static <T extends e> T a(T paramT, byte[] paramArrayOfByte, int paramInt)
   {
@@ -12,7 +12,7 @@ public abstract class e
     {
       paramArrayOfByte = new a(paramArrayOfByte, paramInt);
       paramT.a(paramArrayOfByte);
-      paramArrayOfByte.fB(0);
+      paramArrayOfByte.fE(0);
       return paramT;
     }
     catch (d paramT)
@@ -27,7 +27,7 @@ public abstract class e
   
   public static final byte[] b(e parame)
   {
-    byte[] arrayOfByte = new byte[parame.xS()];
+    byte[] arrayOfByte = new byte[parame.zp()];
     int i = arrayOfByte.length;
     try
     {
@@ -53,29 +53,29 @@ public abstract class e
     return f.c(this);
   }
   
-  public final int xR()
+  public final int zo()
   {
-    if (this.bGA < 0) {
-      xS();
+    if (this.bQO < 0) {
+      zp();
     }
-    return this.bGA;
+    return this.bQO;
   }
   
-  public final int xS()
+  public final int zp()
   {
-    int i = xT();
-    this.bGA = i;
+    int i = zq();
+    this.bQO = i;
     return i;
   }
   
-  protected int xT()
+  protected int zq()
   {
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.b.a.e
  * JD-Core Version:    0.7.0.1
  */

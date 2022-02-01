@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.plugin.qqmail.ui.c;
 import com.tencent.mm.plugin.qqmail.ui.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.a;
 
 @a(7)
@@ -17,24 +17,24 @@ public class QQMailStubProxyUI
   {
     AppMethodBeat.i(122804);
     super.onCreate(paramBundle);
-    ac.d("MicroMsg.QQMail.QQMailStubProxyUI", "onCreate");
+    ad.d("MicroMsg.QQMail.QQMailStubProxyUI", "onCreate");
     paramBundle = new c(this);
     paramBundle.a(new c.a()
     {
-      public final void drP()
+      public final void dCn()
       {
         AppMethodBeat.i(122802);
-        ac.d("MicroMsg.QQMail.QQMailStubProxyUI", "onAfterVerify");
+        ad.d("MicroMsg.QQMail.QQMailStubProxyUI", "onAfterVerify");
         paramBundle.release();
         QQMailStubProxyUI.this.setResult(-1);
         QQMailStubProxyUI.this.finish();
         AppMethodBeat.o(122802);
       }
       
-      public final void drQ()
+      public final void dCo()
       {
         AppMethodBeat.i(122803);
-        ac.e("MicroMsg.QQMail.QQMailStubProxyUI", "onVerifyFail, finish self");
+        ad.e("MicroMsg.QQMail.QQMailStubProxyUI", "onVerifyFail, finish self");
         paramBundle.release();
         QQMailStubProxyUI.this.setResult(0);
         QQMailStubProxyUI.this.finish();

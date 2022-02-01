@@ -16,65 +16,62 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.aa.model.b.b.a;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.protobuf.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.vending.c.a;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.vending.g.c;
 import com.tencent.mm.vending.g.d.a;
 import com.tencent.mm.vending.j.d;
-import com.tencent.mm.wallet_core.ui.g;
 import java.util.List;
 
 public class AAQueryListUI
   extends BaseAAPresenterActivity
 {
-  private com.tencent.mm.plugin.aa.model.b.b iBQ;
-  private ListView iBR;
-  private b iBS;
-  private Dialog iBT;
-  private boolean iBU;
-  private boolean iBV;
-  private View iBW;
-  private AAQueryListH5UrlFooterView iBX;
-  private String iBY;
+  private com.tencent.mm.plugin.aa.model.b.b iVa;
+  private ListView iVb;
+  private b iVc;
+  private Dialog iVd;
+  private boolean iVe;
+  private boolean iVf;
+  private View iVg;
+  private AAQueryListH5UrlFooterView iVh;
+  private String iVi;
   private int mode;
   
   public AAQueryListUI()
   {
     AppMethodBeat.i(63518);
-    this.iBQ = ((com.tencent.mm.plugin.aa.model.b.b)am(com.tencent.mm.plugin.aa.model.b.b.class));
-    this.iBU = false;
-    this.iBV = false;
+    this.iVa = ((com.tencent.mm.plugin.aa.model.b.b)am(com.tencent.mm.plugin.aa.model.b.b.class));
+    this.iVe = false;
+    this.iVf = false;
     this.mode = 1;
     AppMethodBeat.o(63518);
   }
   
-  private void o(final boolean paramBoolean, int paramInt)
+  private void n(final boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(63520);
-    if (this.iBU)
+    if (this.iVe)
     {
-      ac.i("MicroMsg.AAQueryListUI", "getNextPage, loading");
+      ad.i("MicroMsg.AAQueryListUI", "getNextPage, loading");
       AppMethodBeat.o(63520);
       return;
     }
     if (paramBoolean)
     {
-      this.iBV = false;
-      this.iBR.removeFooterView(this.iBX);
+      this.iVf = false;
+      this.iVb.removeFooterView(this.iVh);
     }
-    this.iBU = true;
-    this.iBQ.iAU.n(paramBoolean, paramInt).f(new a() {}).a(new d.a()
+    this.iVe = true;
+    this.iVa.iUe.m(paramBoolean, paramInt).f(new com.tencent.mm.vending.c.a() {}).a(new d.a()
     {
-      public final void cc(Object paramAnonymousObject)
+      public final void ce(Object paramAnonymousObject)
       {
         AppMethodBeat.i(63515);
-        ac.i("MicroMsg.AAQueryListUI", "getNexPage failed: %s", new Object[] { paramAnonymousObject });
+        ad.i("MicroMsg.AAQueryListUI", "getNexPage failed: %s", new Object[] { paramAnonymousObject });
         if (AAQueryListUI.g(AAQueryListUI.this) != null)
         {
           AAQueryListUI.g(AAQueryListUI.this).dismiss();
@@ -112,8 +109,8 @@ public class AAQueryListUI
       int j = paramIntent.getIntExtra("item_offset", 0);
       if (bool)
       {
-        this.iBR.setSelectionFromTop(i, j);
-        o(true, this.mode);
+        this.iVb.setSelectionFromTop(i, j);
+        n(true, this.mode);
       }
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
@@ -141,7 +138,7 @@ public class AAQueryListUI
       {
         AppMethodBeat.i(63514);
         paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(AAQueryListUI.this, 1, false);
-        paramAnonymousMenuItem.ISu = new n.c()
+        paramAnonymousMenuItem.KJy = new n.d()
         {
           public final void onCreateMMMenu(l paramAnonymous2l)
           {
@@ -151,7 +148,7 @@ public class AAQueryListUI
             AppMethodBeat.o(63512);
           }
         };
-        paramAnonymousMenuItem.ISv = new n.d()
+        paramAnonymousMenuItem.KJz = new n.e()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -163,7 +160,7 @@ public class AAQueryListUI
             {
               AppMethodBeat.o(63513);
               return;
-              ac.i("MicroMsg.AAQueryListUI", "go to launch list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(AAQueryListUI.this)) });
+              ad.i("MicroMsg.AAQueryListUI", "go to launch list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(AAQueryListUI.this)) });
               if (AAQueryListUI.e(AAQueryListUI.this) == 1)
               {
                 AppMethodBeat.o(63513);
@@ -172,12 +169,12 @@ public class AAQueryListUI
               AAQueryListUI.a(AAQueryListUI.this, 1);
               AAQueryListUI.this.setMMTitle(2131755060);
               AAQueryListUI.f(AAQueryListUI.this).mode = AAQueryListUI.e(AAQueryListUI.this);
-              AAQueryListUI.f(AAQueryListUI.this).aOf();
+              AAQueryListUI.f(AAQueryListUI.this).aRr();
               AAQueryListUI.f(AAQueryListUI.this).notifyDataSetChanged();
               AAQueryListUI.a(AAQueryListUI.this, true, AAQueryListUI.e(AAQueryListUI.this));
               AppMethodBeat.o(63513);
               return;
-              ac.i("MicroMsg.AAQueryListUI", "go to pay query list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(AAQueryListUI.this)) });
+              ad.i("MicroMsg.AAQueryListUI", "go to pay query list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(AAQueryListUI.this)) });
               if (AAQueryListUI.e(AAQueryListUI.this) == 2)
               {
                 AppMethodBeat.o(63513);
@@ -185,20 +182,20 @@ public class AAQueryListUI
               }
               AAQueryListUI.this.setMMTitle(2131755063);
               AAQueryListUI.f(AAQueryListUI.this).mode = AAQueryListUI.e(AAQueryListUI.this);
-              AAQueryListUI.f(AAQueryListUI.this).aOf();
+              AAQueryListUI.f(AAQueryListUI.this).aRr();
               AAQueryListUI.f(AAQueryListUI.this).notifyDataSetChanged();
               AAQueryListUI.a(AAQueryListUI.this, 2);
               AAQueryListUI.a(AAQueryListUI.this, true, AAQueryListUI.e(AAQueryListUI.this));
             }
           }
         };
-        paramAnonymousMenuItem.cED();
+        paramAnonymousMenuItem.cMW();
         AppMethodBeat.o(63514);
         return true;
       }
     });
-    this.iBR = ((ListView)findViewById(2131296298));
-    this.iBR.setOnScrollListener(new AbsListView.OnScrollListener()
+    this.iVb = ((ListView)findViewById(2131296298));
+    this.iVb.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
@@ -213,17 +210,24 @@ public class AAQueryListUI
       
       public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt) {}
     });
-    this.iBR.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.iVb.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(63511);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousAdapterView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).qY(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/aa/ui/AAQueryListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
         int i;
         if (AAQueryListUI.f(AAQueryListUI.this) != null)
         {
           if ((paramAnonymousInt < 0) || (paramAnonymousInt >= AAQueryListUI.f(AAQueryListUI.this).getCount()))
           {
-            ac.i("MicroMsg.AAQueryListUI", "click out of bound! %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            ad.i("MicroMsg.AAQueryListUI", "click out of bound! %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/aa/ui/AAQueryListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(63511);
             return;
           }
@@ -231,43 +235,44 @@ public class AAQueryListUI
           paramAnonymousView = (k)AAQueryListUI.f(AAQueryListUI.this).getItem(paramAnonymousInt);
           if (paramAnonymousView != null)
           {
-            if (bs.isNullOrNil(paramAnonymousView.DKP)) {
-              break label140;
+            if (bt.isNullOrNil(paramAnonymousView.FpV)) {
+              break label215;
             }
-            com.tencent.mm.wallet_core.ui.e.o(AAQueryListUI.this.getContext(), paramAnonymousView.DKP, true);
+            com.tencent.mm.wallet_core.ui.e.o(AAQueryListUI.this.getContext(), paramAnonymousView.FpV, true);
           }
         }
         for (;;)
         {
-          h.wUl.f(13721, new Object[] { Integer.valueOf(5), Integer.valueOf(3) });
+          com.tencent.mm.plugin.report.service.g.yhR.f(13721, new Object[] { Integer.valueOf(5), Integer.valueOf(3) });
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/aa/ui/AAQueryListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(63511);
           return;
-          label140:
-          if (!bs.isNullOrNil(paramAnonymousView.DKA))
+          label215:
+          if (!bt.isNullOrNil(paramAnonymousView.FpG))
           {
             paramAnonymousAdapterView = null;
             if (paramAnonymousView.role == 2) {
-              paramAnonymousAdapterView = u.axw();
+              paramAnonymousAdapterView = u.aAm();
             }
-            Intent localIntent = new Intent(AAQueryListUI.this, PaylistAAUI.class);
-            localIntent.putExtra("bill_no", paramAnonymousView.DKA);
-            localIntent.putExtra("launcher_user_name", paramAnonymousAdapterView);
-            localIntent.putExtra("enter_scene", 4);
-            localIntent.putExtra("chatroom", paramAnonymousView.DKB);
-            localIntent.putExtra("item_position", paramAnonymousInt);
-            localIntent.putExtra("item_offset", i);
-            AAQueryListUI.this.startActivityForResult(localIntent, 1);
+            localObject = new Intent(AAQueryListUI.this, PaylistAAUI.class);
+            ((Intent)localObject).putExtra("bill_no", paramAnonymousView.FpG);
+            ((Intent)localObject).putExtra("launcher_user_name", paramAnonymousAdapterView);
+            ((Intent)localObject).putExtra("enter_scene", 4);
+            ((Intent)localObject).putExtra("chatroom", paramAnonymousView.FpH);
+            ((Intent)localObject).putExtra("item_position", paramAnonymousInt);
+            ((Intent)localObject).putExtra("item_offset", i);
+            AAQueryListUI.this.startActivityForResult((Intent)localObject, 1);
           }
         }
       }
     });
-    this.iBW = new AAQueryListLoadingMoreView(this);
-    this.iBX = new AAQueryListH5UrlFooterView(this);
-    this.iBT = g.a(this, false, null);
-    this.iBS = new b(this, this.mode);
-    this.iBR.setAdapter(this.iBS);
-    this.iBR.setVisibility(4);
-    o(false, this.mode);
+    this.iVg = new AAQueryListLoadingMoreView(this);
+    this.iVh = new AAQueryListH5UrlFooterView(this);
+    this.iVd = com.tencent.mm.wallet_core.ui.g.a(this, false, null);
+    this.iVc = new b(this, this.mode);
+    this.iVb.setAdapter(this.iVc);
+    this.iVb.setVisibility(4);
+    n(false, this.mode);
     AppMethodBeat.o(63519);
   }
   
@@ -279,7 +284,7 @@ public class AAQueryListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.AAQueryListUI
  * JD-Core Version:    0.7.0.1
  */

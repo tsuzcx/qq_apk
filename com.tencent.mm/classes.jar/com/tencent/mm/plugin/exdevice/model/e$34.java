@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.dk;
+import com.tencent.mm.g.a.dn;
 import com.tencent.mm.sdk.b.c;
 
 final class e$34
-  extends c<dk>
+  extends c<dn>
 {
   e$34(e parame)
   {
     AppMethodBeat.i(161348);
-    this.__eventId = dk.class.getName().hashCode();
+    this.__eventId = dn.class.getName().hashCode();
     AppMethodBeat.o(161348);
   }
 }

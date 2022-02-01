@@ -2,79 +2,120 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Arrays;
 
 public final class ed
   extends a
 {
-  public long dNc = 0L;
-  public long dTL = 0L;
-  public long dTM = 0L;
-  public long dTN = 0L;
-  public long dTO = 0L;
-  public long dTP = 0L;
-  private long dTQ = 0L;
-  public String dTR = "";
+  public long ehF;
+  public long ehG;
+  public String ehH;
+  public boolean ehI;
   
-  public final String PR()
+  public ed()
   {
-    AppMethodBeat.i(94843);
+    this.ehF = 0L;
+    this.ehG = 0L;
+    this.ehH = "";
+  }
+  
+  public ed(String paramString)
+  {
+    AppMethodBeat.i(121765);
+    this.ehF = 0L;
+    this.ehG = 0L;
+    this.ehH = "";
+    if (paramString != null)
+    {
+      paramString = paramString.split(",");
+      if (paramString != null)
+      {
+        if (paramString.length >= 4) {
+          break label117;
+        }
+        String[] arrayOfString = new String[4];
+        Arrays.fill(arrayOfString, 0, 4, "");
+        System.arraycopy(paramString, 0, arrayOfString, 0, paramString.length);
+        paramString = arrayOfString;
+      }
+    }
+    label117:
+    for (;;)
+    {
+      this.ehF = bt.getLong(paramString[0], 0L);
+      jW(bt.getLong(paramString[1], 0L));
+      nu(paramString[2]);
+      this.ehI = a.getBoolean(paramString[3]);
+      AppMethodBeat.o(121765);
+      return;
+    }
+  }
+  
+  private ed jW(long paramLong)
+  {
+    AppMethodBeat.i(121766);
+    this.ehG = paramLong;
+    super.bh("StartTimeStampSec", this.ehG);
+    AppMethodBeat.o(121766);
+    return this;
+  }
+  
+  public final String RD()
+  {
+    AppMethodBeat.i(121769);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dNc);
+    ((StringBuffer)localObject).append(this.ehF);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTL);
+    ((StringBuffer)localObject).append(this.ehG);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTM);
+    ((StringBuffer)localObject).append(this.ehH);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTN);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTO);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTP);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTQ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTR);
+    if (this.ehI) {}
+    for (int i = 1;; i = 0)
+    {
+      ((StringBuffer)localObject).append(i);
+      localObject = ((StringBuffer)localObject).toString();
+      awz((String)localObject);
+      AppMethodBeat.o(121769);
+      return localObject;
+    }
+  }
+  
+  public final String RE()
+  {
+    AppMethodBeat.i(121770);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("ExptFlag:").append(this.ehF);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("StartTimeStampSec:").append(this.ehG);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Roomname:").append(this.ehH);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("hardcodeExptBool:").append(this.ehI);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(94843);
+    AppMethodBeat.o(121770);
     return localObject;
   }
   
-  public final String PS()
+  public final ed Ti()
   {
-    AppMethodBeat.i(94844);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Source:").append(this.dNc);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UnreadLikeCount:").append(this.dTL);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UnreadCommentCount:").append(this.dTM);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StayTime:").append(this.dTN);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickLikeCount:").append(this.dTO);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickCommentCount:").append(this.dTP);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterStartTimeMs:").append(this.dTQ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("BrowseJson:").append(this.dTR);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(94844);
-    return localObject;
+    AppMethodBeat.i(121767);
+    ed localed = jW(bt.aQJ());
+    AppMethodBeat.o(121767);
+    return localed;
   }
   
   public final int getId()
   {
-    return 13677;
+    return 0;
   }
   
-  public final ed is(long paramLong)
+  public final ed nu(String paramString)
   {
-    AppMethodBeat.i(94842);
-    this.dTQ = paramLong;
-    super.bc("EnterStartTimeMs", this.dTQ);
-    AppMethodBeat.o(94842);
+    AppMethodBeat.i(121768);
+    this.ehH = t("Roomname", paramString, true);
+    AppMethodBeat.o(121768);
     return this;
   }
 }

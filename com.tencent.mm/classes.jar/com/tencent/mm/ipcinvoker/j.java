@@ -6,26 +6,26 @@ import java.util.Map;
 
 public class j
 {
-  private static volatile j gdZ;
-  Map<String, BaseIPCService> gea;
+  private static volatile j gxJ;
+  Map<String, BaseIPCService> gxK;
   
   private j()
   {
     AppMethodBeat.i(158752);
-    this.gea = new HashMap();
+    this.gxK = new HashMap();
     AppMethodBeat.o(158752);
   }
   
-  public static j aeM()
+  public static j ahy()
   {
     AppMethodBeat.i(158753);
-    if (gdZ == null) {}
+    if (gxJ == null) {}
     try
     {
-      if (gdZ == null) {
-        gdZ = new j();
+      if (gxJ == null) {
+        gxJ = new j();
       }
-      j localj = gdZ;
+      j localj = gxJ;
       AppMethodBeat.o(158753);
       return localj;
     }
@@ -35,10 +35,10 @@ public class j
     }
   }
   
-  public final BaseIPCService tH(String paramString)
+  public final BaseIPCService wx(String paramString)
   {
     AppMethodBeat.i(158754);
-    paramString = (BaseIPCService)this.gea.get(paramString);
+    paramString = (BaseIPCService)this.gxK.get(paramString);
     AppMethodBeat.o(158754);
     return paramString;
   }

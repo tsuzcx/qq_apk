@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.bx.a;
 
-public abstract interface x
+public abstract interface x<T extends a>
 {
-  public abstract void a(bo parambo, cu paramcu);
+  public abstract void a(T paramT);
   
-  public abstract void dcs();
+  public abstract void b(T paramT);
 }
 
 

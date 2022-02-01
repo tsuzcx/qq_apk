@@ -10,31 +10,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.c;
 import com.tencent.mm.compatible.deviceinfo.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class j
 {
-  public static g APb;
-  public static int APc = -1;
-  public static int APd = -1;
-  public static int APe = 0;
-  public static int APf = 0;
-  public static int APg = 0;
-  public static boolean APh = true;
+  public static int CoA = 0;
+  public static int CoB = 0;
+  public static boolean CoC = true;
+  public static g Cow;
+  public static int Cox = -1;
+  public static int Coy = -1;
+  public static int Coz = 0;
   
-  public static boolean emK()
+  public static boolean eAI()
   {
-    return (!ae.fJd.fEE) || (ae.fJd.fED != 8);
+    return (!ae.gcE.fYd) || (ae.gcE.fYc != 8);
   }
   
-  private static boolean emL()
+  private static boolean eAJ()
   {
     boolean bool = false;
     AppMethodBeat.i(115697);
     try
     {
       if (Class.forName("android.hardware.Camera").getDeclaredMethod("getNumberOfCameras", null) == null) {
-        ac.d("GetfcMethod", "GetfcMethod is null");
+        ad.d("GetfcMethod", "GetfcMethod is null");
       }
       for (;;)
       {
@@ -47,29 +47,29 @@ public final class j
     {
       for (;;)
       {
-        ac.e("MicroMsg.CameraUtil", "find getNumberOfCameras failed: " + localException.getMessage());
+        ad.e("MicroMsg.CameraUtil", "find getNumberOfCameras failed: " + localException.getMessage());
       }
     }
   }
   
-  private static void emM()
+  private static void eAK()
   {
     AppMethodBeat.i(115699);
-    APb.fEB = Camera.getNumberOfCameras();
+    Cow.fYa = Camera.getNumberOfCameras();
     Object localObject = new Camera.CameraInfo();
     int i = 0;
     for (;;)
     {
       try
       {
-        if (i < APb.fEB)
+        if (i < Cow.fYa)
         {
           Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
           if (((Camera.CameraInfo)localObject).facing != 1) {
             continue;
           }
-          if (APc != -1) {
-            ac.d("MicroMsg.CameraUtil", "device has other camera id %s in front", new Object[] { Integer.valueOf(i) });
+          if (Cox != -1) {
+            ad.d("MicroMsg.CameraUtil", "device has other camera id %s in front", new Object[] { Integer.valueOf(i) });
           }
         }
         else
@@ -79,42 +79,42 @@ public final class j
             continue;
           }
           bool = false;
-          if ((APb.ANJ != 270) && ((!bool) || (APb.ANJ != 0))) {
+          if ((Cow.CmW != 270) && ((!bool) || (Cow.CmW != 0))) {
             continue;
           }
-          APe = 1;
-          if ((APb.ANK != 270) && ((!bool) || (APb.ANK != 0))) {
+          Coz = 1;
+          if ((Cow.CmX != 270) && ((!bool) || (Cow.CmX != 0))) {
             continue;
           }
-          APf = 1;
+          CoA = 1;
           AppMethodBeat.o(115699);
           return;
         }
-        APc = i;
-        APb.ANJ = ((Camera.CameraInfo)localObject).orientation;
-        APb.ANH = true;
+        Cox = i;
+        Cow.CmW = ((Camera.CameraInfo)localObject).orientation;
+        Cow.CmU = true;
         continue;
         if (((Camera.CameraInfo)localObject).facing == 0) {
-          if (APd != -1)
+          if (Coy != -1)
           {
-            ac.d("MicroMsg.CameraUtil", "device has other camera id %s in back", new Object[] { Integer.valueOf(i) });
+            ad.d("MicroMsg.CameraUtil", "device has other camera id %s in back", new Object[] { Integer.valueOf(i) });
             continue;
           }
         }
       }
       catch (Exception localException)
       {
-        ac.e("MicroMsg.CameraUtil", "get camera info error: %s", new Object[] { localException.getMessage() });
+        ad.e("MicroMsg.CameraUtil", "get camera info error: %s", new Object[] { localException.getMessage() });
         continue;
-        APd = i;
-        APb.ANK = localException.orientation;
-        APb.ANI = true;
+        Coy = i;
+        Cow.CmX = localException.orientation;
+        Cow.CmV = true;
         continue;
         boolean bool = localException.equalsIgnoreCase("Mediatek");
         continue;
-        APe = 0;
+        Coz = 0;
         continue;
-        APf = 0;
+        CoA = 0;
         AppMethodBeat.o(115699);
         return;
         i += 1;
@@ -122,96 +122,96 @@ public final class j
     }
   }
   
-  public static void gD(Context paramContext)
+  public static void gH(Context paramContext)
   {
     AppMethodBeat.i(115698);
-    if (APb != null)
+    if (Cow != null)
     {
       AppMethodBeat.o(115698);
       return;
     }
-    APb = new g("*");
-    boolean bool = emL();
-    APh = bool;
-    if ((bool) && (!ae.fJd.fEC))
+    Cow = new g("*");
+    boolean bool = eAJ();
+    CoC = bool;
+    if ((bool) && (!ae.gcE.fYb))
     {
-      emM();
-      if (ae.fJd.aXS) {
-        APg = ae.fJd.fEH;
+      eAK();
+      if (ae.gcE.bin) {
+        CoB = ae.gcE.fYg;
       }
-      ac.i("MicroMsg.CameraUtil", "gCameraNum:" + APb.fEB + "\ngIsHasFrontCamera:" + APb.ANH + "\ngIsHasBackCamera:" + APb.ANI + "\ngFrontCameraId:" + APc + "\ngBackCameraId:" + APd + "\ngBackOrientation:" + APb.ANK + "\ngFrontOrientation:" + APb.ANJ + "\ngBestFps:" + APb.ANG + "\ngFacePreviewSize:" + APb.ANL + "\ngNonFacePreviewSize:" + APb.ANM + "\ngFaceCameraIsRotate180:" + APe + "\ngMainCameraIsRotate180:" + APf + "\ngCameraFormat:" + APg + "\ngFaceNotRotate:SDK:" + Build.VERSION.SDK_INT + "\n");
+      ad.i("MicroMsg.CameraUtil", "gCameraNum:" + Cow.fYa + "\ngIsHasFrontCamera:" + Cow.CmU + "\ngIsHasBackCamera:" + Cow.CmV + "\ngFrontCameraId:" + Cox + "\ngBackCameraId:" + Coy + "\ngBackOrientation:" + Cow.CmX + "\ngFrontOrientation:" + Cow.CmW + "\ngBestFps:" + Cow.CmT + "\ngFacePreviewSize:" + Cow.CmY + "\ngNonFacePreviewSize:" + Cow.CmZ + "\ngFaceCameraIsRotate180:" + Coz + "\ngMainCameraIsRotate180:" + CoA + "\ngCameraFormat:" + CoB + "\ngFaceNotRotate:SDK:" + Build.VERSION.SDK_INT + "\n");
       AppMethodBeat.o(115698);
       return;
     }
-    if ((APh) && (ae.fJd.fEC)) {
-      emM();
+    if ((CoC) && (ae.gcE.fYb)) {
+      eAK();
     }
-    if (ae.fJd.fEC) {
-      APb.fEB = ae.fJd.fEB;
+    if (ae.gcE.fYb) {
+      Cow.fYa = ae.gcE.fYa;
     }
-    if (ae.fJd.fEL)
+    if (ae.gcE.fYk)
     {
-      if (ae.fJd.fEK.fFp != 0) {
-        APb.ANI = true;
+      if (ae.gcE.fYj.fYO != 0) {
+        Cow.CmV = true;
       }
     }
     else {
       label339:
-      if (ae.fJd.fEJ) {
-        if (ae.fJd.fEI.fFp == 0) {
+      if (ae.gcE.fYi) {
+        if (ae.gcE.fYh.fYO == 0) {
           break label715;
         }
       }
     }
     label715:
-    for (APb.ANH = true;; APb.ANH = false)
+    for (Cow.CmU = true;; Cow.CmU = false)
     {
-      if ((ae.fJd.fEJ) && (ae.fJd.fEI.fFq >= 0))
+      if ((ae.gcE.fYi) && (ae.gcE.fYh.fYP >= 0))
       {
-        APb.ANJ = ae.fJd.fEI.fFq;
-        APe = APb.ANJ;
+        Cow.CmW = ae.gcE.fYh.fYP;
+        Coz = Cow.CmW;
       }
-      if ((ae.fJd.fEL) && (ae.fJd.fEK.fFq >= 0))
+      if ((ae.gcE.fYk) && (ae.gcE.fYj.fYP >= 0))
       {
-        APb.ANK = ae.fJd.fEK.fFq;
-        APf = APb.ANK;
+        Cow.CmX = ae.gcE.fYj.fYP;
+        CoA = Cow.CmX;
       }
-      if (ae.fJd.fEJ)
+      if (ae.gcE.fYi)
       {
-        if (APb.ANL == null) {
-          APb.ANL = new Point(0, 0);
+        if (Cow.CmY == null) {
+          Cow.CmY = new Point(0, 0);
         }
-        APb.ANL = new Point(ae.fJd.fEI.width, ae.fJd.fEI.height);
+        Cow.CmY = new Point(ae.gcE.fYh.width, ae.gcE.fYh.height);
       }
-      if (ae.fJd.fEL)
+      if (ae.gcE.fYk)
       {
-        if (APb.ANM == null) {
-          APb.ANM = new Point(0, 0);
+        if (Cow.CmZ == null) {
+          Cow.CmZ = new Point(0, 0);
         }
-        APb.ANM = new Point(ae.fJd.fEK.width, ae.fJd.fEK.height);
+        Cow.CmZ = new Point(ae.gcE.fYj.width, ae.gcE.fYj.height);
       }
-      if ((ae.fJd.fEL) && (ae.fJd.fEK.fps != 0)) {
-        APb.ANG = ae.fJd.fEK.fps;
+      if ((ae.gcE.fYk) && (ae.gcE.fYj.fps != 0)) {
+        Cow.CmT = ae.gcE.fYj.fps;
       }
-      if ((ae.fJd.fEJ) && (ae.fJd.fEI.fps != 0)) {
-        APb.ANG = ae.fJd.fEI.fps;
+      if ((ae.gcE.fYi) && (ae.gcE.fYh.fps != 0)) {
+        Cow.CmT = ae.gcE.fYh.fps;
       }
       paramContext = paramContext.getPackageManager();
-      if ((ae.fJd.fEC) || (paramContext.hasSystemFeature("android.hardware.camera"))) {
+      if ((ae.gcE.fYb) || (paramContext.hasSystemFeature("android.hardware.camera"))) {
         break;
       }
-      APb.fEB = 0;
-      APb.ANH = false;
-      APb.ANI = false;
+      Cow.fYa = 0;
+      Cow.CmU = false;
+      Cow.CmV = false;
       break;
-      APb.ANI = false;
+      Cow.CmV = false;
       break label339;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.j
  * JD-Core Version:    0.7.0.1
  */

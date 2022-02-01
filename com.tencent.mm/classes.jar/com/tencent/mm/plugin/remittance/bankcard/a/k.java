@@ -1,54 +1,56 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cbr;
-import com.tencent.mm.protocal.protobuf.cbs;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.cgi;
+import com.tencent.mm.protocal.protobuf.cgj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class k
   extends b
 {
-  private com.tencent.mm.ak.g callback;
-  private com.tencent.mm.ak.b rr;
-  public cbs wEr;
+  private f callback;
+  private com.tencent.mm.al.b rr;
+  public cgj xRY;
   
   public k()
   {
     AppMethodBeat.i(67379);
     b.a locala = new b.a();
-    locala.hvt = new cbr();
-    locala.hvu = new cbs();
+    locala.hNM = new cgi();
+    locala.hNN = new cgj();
     locala.funcId = 1280;
     locala.uri = "/cgi-bin/mmpay-bin/operation_tsbc";
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aAz();
+    this.rr = locala.aDC();
     AppMethodBeat.o(67379);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(67381);
-    ac.i("MicroMsg.NetSceneBankRemitOperation", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.wEr = ((cbs)((com.tencent.mm.ak.b)paramq).hvs.hvw);
-    ac.i("MicroMsg.NetSceneBankRemitOperation", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.wEr.dae), this.wEr.oxf });
-    if ((!this.oyl) && (!this.oym))
+    ad.i("MicroMsg.NetSceneBankRemitOperation", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.xRY = ((cgj)((com.tencent.mm.al.b)paramq).hNL.hNQ);
+    ad.i("MicroMsg.NetSceneBankRemitOperation", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.xRY.dlw), this.xRY.paA });
+    if ((!this.pbG) && (!this.pbH))
     {
-      ac.i("MicroMsg.NetSceneBankRemitOperation", "min_poundage: %s, max_amount: %s", new Object[] { Integer.valueOf(this.wEr.FpL), Integer.valueOf(this.wEr.FpM) });
-      if (this.wEr.FpL >= 0) {
-        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GPt, Integer.valueOf(this.wEr.FpL));
+      ad.i("MicroMsg.NetSceneBankRemitOperation", "min_poundage: %s, max_amount: %s", new Object[] { Integer.valueOf(this.xRY.GZv), Integer.valueOf(this.xRY.GZw) });
+      if (this.xRY.GZv >= 0) {
+        g.ajC().ajl().set(al.a.IBO, Integer.valueOf(this.xRY.GZv));
       }
-      if (this.wEr.FpM > 0) {
-        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GPu, Integer.valueOf(this.wEr.FpM));
+      if (this.xRY.GZw > 0) {
+        g.ajC().ajl().set(al.a.IBP, Integer.valueOf(this.xRY.GZw));
       }
-      if (!bs.isNullOrNil(this.wEr.FpN)) {
-        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GPv, this.wEr.FpN);
+      if (!bt.isNullOrNil(this.xRY.GZx)) {
+        g.ajC().ajl().set(al.a.IBQ, this.xRY.GZx);
       }
     }
     if (this.callback != null) {
@@ -57,10 +59,10 @@ public final class k
     AppMethodBeat.o(67381);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(67380);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(67380);
     return i;
@@ -68,9 +70,9 @@ public final class k
   
   public final void e(q paramq)
   {
-    paramq = (cbs)((com.tencent.mm.ak.b)paramq).hvs.hvw;
-    this.JFq = paramq.dae;
-    this.JFr = paramq.oxf;
+    paramq = (cgj)((com.tencent.mm.al.b)paramq).hNL.hNQ;
+    this.Lyu = paramq.dlw;
+    this.Lyv = paramq.paA;
   }
   
   public final int getType()

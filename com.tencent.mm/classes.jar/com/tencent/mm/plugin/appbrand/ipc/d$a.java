@@ -51,7 +51,7 @@ public abstract class d$a
       if (paramParcel1.readInt() != 0) {
         paramParcel2 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      F(paramParcel2);
+      G(paramParcel2);
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.appbrand.ipc.IMainProcessService");
@@ -59,7 +59,7 @@ public abstract class d$a
       if (paramParcel1.readInt() != 0) {
         localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      G((Bundle)localObject1);
+      H((Bundle)localObject1);
       paramParcel2.writeNoException();
       if (localObject1 != null)
       {
@@ -89,7 +89,7 @@ public abstract class d$a
     }
     
     /* Error */
-    public final void F(Bundle paramBundle)
+    public final void G(Bundle paramBundle)
     {
       // Byte code:
       //   0: ldc 22
@@ -146,7 +146,7 @@ public abstract class d$a
     }
     
     /* Error */
-    public final void G(Bundle paramBundle)
+    public final void H(Bundle paramBundle)
     {
       // Byte code:
       //   0: ldc 63

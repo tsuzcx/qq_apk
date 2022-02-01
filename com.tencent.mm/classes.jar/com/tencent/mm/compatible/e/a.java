@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends BitmapFactory
 {
-  private static a fJL = null;
+  private static a gdm = null;
   
   /* Error */
   private static Bitmap a(Resources paramResources, int paramInt, BitmapFactory.Options paramOptions)
@@ -19,7 +19,7 @@ public final class a
     //   1: astore 4
     //   3: ldc 20
     //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 31	com/tencent/mm/sdk/platformtools/f:eUu	()V
+    //   8: invokestatic 31	com/tencent/mm/sdk/platformtools/g:fjY	()V
     //   11: new 33	android/util/TypedValue
     //   14: dup
     //   15: invokespecial 36	android/util/TypedValue:<init>	()V
@@ -140,7 +140,7 @@ public final class a
   
   public static void a(a parama)
   {
-    fJL = parama;
+    gdm = parama;
   }
   
   public static Bitmap decodeResource(Resources paramResources, int paramInt)
@@ -154,9 +154,9 @@ public final class a
   public static Bitmap decodeResource(Resources paramResources, int paramInt, BitmapFactory.Options paramOptions)
   {
     AppMethodBeat.i(155855);
-    if (fJL != null)
+    if (gdm != null)
     {
-      Bitmap localBitmap = fJL.decodeResource(paramResources, paramInt, paramOptions);
+      Bitmap localBitmap = gdm.decodeResource(paramResources, paramInt, paramOptions);
       if (localBitmap != null)
       {
         AppMethodBeat.o(155855);

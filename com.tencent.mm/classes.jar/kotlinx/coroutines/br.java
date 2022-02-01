@@ -1,51 +1,33 @@
 package kotlinx.coroutines;
 
+import d.d.f.b;
+import d.g.a.b;
 import d.l;
-import d.v;
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import d.z;
+import java.util.concurrent.CancellationException;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/JobNode;", "J", "Lkotlinx/coroutines/Job;", "Lkotlinx/coroutines/CompletionHandlerBase;", "Lkotlinx/coroutines/DisposableHandle;", "Lkotlinx/coroutines/Incomplete;", "job", "(Lkotlinx/coroutines/Job;)V", "isActive", "", "()Z", "Lkotlinx/coroutines/Job;", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "dispose", "", "kotlinx-coroutines-core"})
-public abstract class br<J extends bo>
-  extends x
-  implements az, bj
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/Job;", "Lkotlin/coroutines/CoroutineContext$Element;", "children", "Lkotlin/sequences/Sequence;", "getChildren", "()Lkotlin/sequences/Sequence;", "isActive", "", "()Z", "isCancelled", "isCompleted", "onJoin", "Lkotlinx/coroutines/selects/SelectClause0;", "getOnJoin", "()Lkotlinx/coroutines/selects/SelectClause0;", "attachChild", "Lkotlinx/coroutines/ChildHandle;", "child", "Lkotlinx/coroutines/ChildJob;", "cancel", "", "cause", "", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "getCancellationException", "invokeOnCompletion", "Lkotlinx/coroutines/DisposableHandle;", "onCancelling", "invokeImmediately", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "Lkotlinx/coroutines/CompletionHandler;", "join", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plus", "other", "start", "Key", "kotlinx-coroutines-core"})
+public abstract interface br
+  extends f.b
 {
-  public final J LRS;
+  public static final br.b NIM = br.b.NIN;
   
-  public br(J paramJ)
-  {
-    this.LRS = paramJ;
-  }
+  public abstract ba L(b<? super Throwable, z> paramb);
   
-  public final void dispose()
-  {
-    Object localObject1 = this.LRS;
-    if (localObject1 == null) {
-      throw new v("null cannot be cast to non-null type kotlinx.coroutines.JobSupport");
-    }
-    localObject1 = (bs)localObject1;
-    Object localObject2;
-    do
-    {
-      localObject2 = ((bs)localObject1).gee();
-      if (!(localObject2 instanceof br)) {
-        break;
-      }
-    } while ((localObject2 == this) && (!bs.LQI.compareAndSet(localObject1, localObject2, bt.gel())));
-    while ((!(localObject2 instanceof bj)) || (((bj)localObject2).gdQ() == null)) {
-      return;
-    }
-    bzN();
-  }
+  public abstract q a(s params);
   
-  public final bx gdQ()
-  {
-    return null;
-  }
+  public abstract ba b(boolean paramBoolean1, boolean paramBoolean2, b<? super Throwable, z> paramb);
   
-  public final boolean isActive()
-  {
-    return true;
-  }
+  public abstract CancellationException gvC();
+  
+  public abstract void gvD();
+  
+  public abstract boolean isActive();
+  
+  public abstract boolean start();
+  
+  @l(gfx={1, 1, 16})
+  public static final class a {}
 }
 
 

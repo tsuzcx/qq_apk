@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.api;
 
 public abstract interface m
 {
-  public abstract void bO(String paramString, boolean paramBoolean);
+  public abstract void bV(String paramString, boolean paramBoolean);
 }
 
 

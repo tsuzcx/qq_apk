@@ -7,50 +7,29 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class g
 {
-  public a KaN;
-  HashMap<String, Object> csJ;
+  public a LUK;
+  HashMap<String, Object> cDF;
   
   public g(a parama)
   {
     AppMethodBeat.i(183329);
-    this.csJ = new HashMap();
-    this.KaN = parama;
+    this.cDF = new HashMap();
+    this.LUK = parama;
     AppMethodBeat.o(183329);
   }
   
-  public final int fEs()
+  public final int fVK()
   {
     AppMethodBeat.i(183330);
-    int i = this.KaN.KaP.get();
+    int i = this.LUK.LUM.get();
     AppMethodBeat.o(183330);
     return i;
-  }
-  
-  public final void gD(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(183332);
-    this.KaN.KaO.put(paramString, Integer.valueOf(paramInt));
-    AppMethodBeat.o(183332);
-  }
-  
-  public final int gE(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(183333);
-    paramString = this.KaN.KaO.get(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(183333);
-      return paramInt;
-    }
-    paramInt = ((Integer)paramString).intValue();
-    AppMethodBeat.o(183333);
-    return paramInt;
   }
   
   public final long getLong(String paramString, long paramLong)
   {
     AppMethodBeat.i(183334);
-    paramString = this.csJ.get(paramString);
+    paramString = this.cDF.get(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(183334);
@@ -61,25 +40,46 @@ public final class g
     return paramLong;
   }
   
+  public final void hb(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(183332);
+    this.LUK.LUL.put(paramString, Integer.valueOf(paramInt));
+    AppMethodBeat.o(183332);
+  }
+  
+  public final int hc(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(183333);
+    paramString = this.LUK.LUL.get(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(183333);
+      return paramInt;
+    }
+    paramInt = ((Integer)paramString).intValue();
+    AppMethodBeat.o(183333);
+    return paramInt;
+  }
+  
   public final void put(String paramString, long paramLong)
   {
     AppMethodBeat.i(183331);
-    this.csJ.put(paramString, Long.valueOf(paramLong));
+    this.cDF.put(paramString, Long.valueOf(paramLong));
     AppMethodBeat.o(183331);
   }
   
   public static final class a
   {
-    public ConcurrentHashMap<String, Object> KaO;
-    public AtomicInteger KaP;
+    public ConcurrentHashMap<String, Object> LUL;
+    public AtomicInteger LUM;
     public String key;
     
     public a(String paramString, AtomicInteger paramAtomicInteger)
     {
       AppMethodBeat.i(183328);
-      this.KaO = new ConcurrentHashMap();
+      this.LUL = new ConcurrentHashMap();
       this.key = paramString;
-      this.KaP = paramAtomicInteger;
+      this.LUM = paramAtomicInteger;
       AppMethodBeat.o(183328);
     }
   }

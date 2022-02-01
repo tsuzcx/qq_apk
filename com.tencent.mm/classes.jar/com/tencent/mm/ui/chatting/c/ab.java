@@ -1,9 +1,0 @@
-package com.tencent.mm.ui.chatting.c;
-
-public abstract interface ab {}
-
-
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
- * Qualified Name:     com.tencent.mm.ui.chatting.c.ab
- * JD-Core Version:    0.7.0.1
- */

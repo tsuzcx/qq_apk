@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.backup.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.cc.a;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.c;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.model.cd.a;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.r.f;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.Map;
 
 final class a$6
-  implements cc.a
+  implements cd.a
 {
   a$6(a parama) {}
   
-  public final void a(final f.a parama)
+  public final void a(final e.a parama)
   {
     AppMethodBeat.i(22149);
-    ac.i("MicroMsg.BackupCore.MsgSynchronize", "appMsgListener onreceive appmsg");
-    final String str1 = z.a(parama.fXi.DPV);
-    parama = bv.L(str1, "appmsg");
-    ac.d("MicroMsg.BackupCore.MsgSynchronize", "BackupCore msgcontent:%s", new Object[] { str1 });
+    ad.i("MicroMsg.BackupCore.MsgSynchronize", "appMsgListener onreceive appmsg");
+    final String str1 = z.a(parama.gqE.Fvk);
+    parama = bw.M(str1, "appmsg");
+    ad.d("MicroMsg.BackupCore.MsgSynchronize", "BackupCore msgcontent:%s", new Object[] { str1 });
     if (((String)parama.get(".appmsg.action")).equals("phone"))
     {
-      ac.i("MicroMsg.BackupCore.MsgSynchronize", "this appmsg is from phone, ignore.");
+      ad.i("MicroMsg.BackupCore.MsgSynchronize", "this appmsg is from phone, ignore.");
       AppMethodBeat.o(22149);
       return;
     }
     str1 = (String)parama.get(".appmsg.messageaction");
     final String str2 = (String)parama.get(".appmsg.extinfo");
     parama = ((String)parama.get(".appmsg.appattach.aeskey")).getBytes();
-    az.agU().az(new Runnable()
+    ba.ajF().ay(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(22148);
-        ac.i("MicroMsg.BackupCore.MsgSynchronize", "start MsgSynchronizeServer");
-        f.ok(false).d(str1, str2, parama);
+        ad.i("MicroMsg.BackupCore.MsgSynchronize", "start MsgSynchronizeServer");
+        f.oE(false).d(str1, str2, parama);
         AppMethodBeat.o(22148);
       }
     });
     AppMethodBeat.o(22149);
   }
   
-  public final void a(f.c paramc) {}
+  public final void a(e.c paramc) {}
 }
 
 

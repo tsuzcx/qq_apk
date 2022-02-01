@@ -14,105 +14,105 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.live.core.b.j;
 import com.tencent.mm.live.core.debug.LiveDebugView;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import d.g.a.m;
 import d.g.a.q;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/view/LivePreviewView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "debugView", "Lcom/tencent/mm/live/core/debug/LiveDebugView;", "downTime", "", "previewTouchListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "x", "y", "", "renderLayout", "Lcom/tencent/mm/live/core/view/TRTCVideoLayoutManager;", "getRenderLayout", "()Lcom/tencent/mm/live/core/view/TRTCVideoLayoutManager;", "setRenderLayout", "(Lcom/tencent/mm/live/core/view/TRTCVideoLayoutManager;)V", "cameraOrientationChanged", "orientation", "", "enableDebugView", "enable", "", "getCameraRootView", "getCameraView", "Landroid/view/SurfaceView;", "getSurface", "callback", "Lkotlin/Function3;", "Lcom/tencent/mm/live/core/render/RenderSurfaceHolder;", "surface", "width", "height", "getTXCloudView", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "userId", "streamType", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "orientationChanged", "recyclerCameraView", "recyclerCloudViewView", "refreshVideoView", "release", "remoteViewFullScreen", "value", "setPreviewMoveListener", "xOffset", "yOffset", "setPreviewTouchListener", "plugin-core_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/view/LivePreviewView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "debugView", "Lcom/tencent/mm/live/core/debug/LiveDebugView;", "downTime", "", "previewTouchListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "x", "y", "", "renderLayout", "Lcom/tencent/mm/live/core/view/TRTCVideoLayoutManager;", "getRenderLayout", "()Lcom/tencent/mm/live/core/view/TRTCVideoLayoutManager;", "setRenderLayout", "(Lcom/tencent/mm/live/core/view/TRTCVideoLayoutManager;)V", "cameraOrientationChanged", "orientation", "", "enableDebugView", "enable", "", "getCameraRootView", "getCameraView", "Landroid/view/SurfaceView;", "getSurface", "callback", "Lkotlin/Function3;", "Lcom/tencent/mm/live/core/render/RenderSurfaceHolder;", "surface", "width", "height", "getTXCloudView", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "userId", "streamType", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "orientationChanged", "recyclerCameraView", "recyclerCloudViewView", "refreshVideoView", "release", "remoteViewFullScreen", "value", "setPreviewMoveListener", "xOffset", "yOffset", "setPreviewTouchListener", "plugin-core_release"})
 public class LivePreviewView
   extends RelativeLayout
 {
   private final String TAG;
-  private LiveDebugView gqE;
-  public TRTCVideoLayoutManager gso;
-  private m<? super Float, ? super Float, y> gsp;
-  private long gsq;
+  private LiveDebugView gKo;
+  public TRTCVideoLayoutManager gLW;
+  private m<? super Float, ? super Float, z> gLX;
+  private long gLY;
   
   public LivePreviewView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(209380);
+    AppMethodBeat.i(217039);
     this.TAG = "MicroMsg.LiveCore";
-    this.gsq = -1L;
+    this.gLY = -1L;
     paramContext = LayoutInflater.from(paramContext).inflate(2131496355, (ViewGroup)this, true);
     paramAttributeSet = paramContext.findViewById(2131307928);
-    k.g(paramAttributeSet, "parent.findViewById(R.id.render_view)");
-    this.gso = ((TRTCVideoLayoutManager)paramAttributeSet);
+    p.g(paramAttributeSet, "parent.findViewById(R.id.render_view)");
+    this.gLW = ((TRTCVideoLayoutManager)paramAttributeSet);
     paramContext = paramContext.findViewById(2131307620);
-    k.g(paramContext, "parent.findViewById(R.id.live_debug_view)");
-    this.gqE = ((LiveDebugView)paramContext);
-    paramContext = g.agR();
-    k.g(paramContext, "MMKernel.storage()");
-    if (paramContext.agA().getInt(ah.a.GWc, 0) == 1) {}
+    p.g(paramContext, "parent.findViewById(R.id.live_debug_view)");
+    this.gKo = ((LiveDebugView)paramContext);
+    paramContext = g.ajC();
+    p.g(paramContext, "MMKernel.storage()");
+    if (paramContext.ajl().getInt(al.a.IIZ, 0) == 1) {}
     for (int i = 1; i != 0; i = 0)
     {
-      this.gqE.setVisibility(0);
-      paramContext = com.tencent.mm.live.core.debug.a.gqF;
-      com.tencent.mm.live.core.debug.a.c(this.gqE);
-      AppMethodBeat.o(209380);
+      this.gKo.setVisibility(0);
+      paramContext = com.tencent.mm.live.core.debug.a.gKp;
+      com.tencent.mm.live.core.debug.a.c(this.gKo);
+      AppMethodBeat.o(217039);
       return;
     }
-    this.gqE.setVisibility(8);
-    paramContext = com.tencent.mm.live.core.debug.a.gqF;
+    this.gKo.setVisibility(8);
+    paramContext = com.tencent.mm.live.core.debug.a.gKp;
     com.tencent.mm.live.core.debug.a.release();
-    AppMethodBeat.o(209380);
+    AppMethodBeat.o(217039);
   }
   
   private final SurfaceView getCameraView()
   {
-    AppMethodBeat.i(209376);
-    SurfaceView localSurfaceView = this.gso.ajY();
-    k.g(localSurfaceView, "renderLayout.allocCameraView()");
-    AppMethodBeat.o(209376);
+    AppMethodBeat.i(217035);
+    SurfaceView localSurfaceView = this.gLW.amK();
+    p.g(localSurfaceView, "renderLayout.allocCameraView()");
+    AppMethodBeat.o(217035);
     return localSurfaceView;
   }
   
-  public final TXCloudVideoView R(String paramString, int paramInt)
+  public final TXCloudVideoView U(String paramString, int paramInt)
   {
-    AppMethodBeat.i(209373);
-    paramString = this.gso.S(paramString, paramInt);
-    AppMethodBeat.o(209373);
+    AppMethodBeat.i(217032);
+    paramString = this.gLW.V(paramString, paramInt);
+    AppMethodBeat.o(217032);
     return paramString;
   }
   
-  public final void a(q<? super j, ? super Integer, ? super Integer, y> paramq)
+  public final void a(q<? super j, ? super Integer, ? super Integer, z> paramq)
   {
-    AppMethodBeat.i(209377);
-    k.h(paramq, "callback");
-    paramq.d(new j(getCameraView().getHolder()), Integer.valueOf(this.gso.getCameraViewWidth()), Integer.valueOf(this.gso.getCameraViewHeight()));
-    AppMethodBeat.o(209377);
+    AppMethodBeat.i(217036);
+    p.h(paramq, "callback");
+    paramq.d(new j(getCameraView().getHolder()), Integer.valueOf(this.gLW.getCameraViewWidth()), Integer.valueOf(this.gLW.getCameraViewHeight()));
+    AppMethodBeat.o(217036);
   }
   
   public final void c(int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(209375);
-    k.h(paramString, "userId");
-    this.gso.c(paramInt1, paramString, paramInt2);
-    AppMethodBeat.o(209375);
+    AppMethodBeat.i(217034);
+    p.h(paramString, "userId");
+    this.gLW.c(paramInt1, paramString, paramInt2);
+    AppMethodBeat.o(217034);
   }
   
   public final RelativeLayout getCameraRootView()
   {
-    AppMethodBeat.i(209374);
-    RelativeLayout localRelativeLayout = this.gso.getCameraContentView();
-    AppMethodBeat.o(209374);
+    AppMethodBeat.i(217033);
+    RelativeLayout localRelativeLayout = this.gLW.getCameraContentView();
+    AppMethodBeat.o(217033);
     return localRelativeLayout;
   }
   
   public final TRTCVideoLayoutManager getRenderLayout()
   {
-    return this.gso;
+    return this.gLW;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(209379);
+    AppMethodBeat.i(217038);
     Object localObject;
     if (paramMotionEvent != null)
     {
@@ -128,7 +128,7 @@ public class LivePreviewView
     for (;;)
     {
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(209379);
+      AppMethodBeat.o(217038);
       return bool;
       localObject = null;
       break;
@@ -136,50 +136,65 @@ public class LivePreviewView
       if (((Integer)localObject).intValue() != 0) {
         break label21;
       }
-      this.gsq = System.currentTimeMillis();
+      this.gLY = System.currentTimeMillis();
       continue;
       label60:
       if (((Integer)localObject).intValue() == 1)
       {
-        if ((this.gsq > 0L) && (System.currentTimeMillis() - this.gsq <= ViewConfiguration.getTapTimeout()))
+        if ((this.gLY > 0L) && (System.currentTimeMillis() - this.gLY <= ViewConfiguration.getTapTimeout()))
         {
-          ac.d(this.TAG, "preview action up");
-          localObject = this.gsp;
+          ad.d(this.TAG, "preview action up");
+          localObject = this.gLX;
           if (localObject != null) {
-            ((m)localObject).n(Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()));
+            ((m)localObject).p(Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()));
           }
         }
-        this.gsq = -1L;
+        this.gLY = -1L;
       }
     }
   }
   
-  public final void setPreviewMoveListener(m<? super Float, ? super Float, y> paramm)
+  public final void setPreviewMoveListener(m<? super Float, ? super Float, z> paramm)
   {
-    AppMethodBeat.i(209378);
-    TRTCVideoLayoutManager localTRTCVideoLayoutManager = this.gso;
+    AppMethodBeat.i(217037);
+    TRTCVideoLayoutManager localTRTCVideoLayoutManager = this.gLW;
     if (paramm != null) {
       paramm = new a(paramm);
     }
     for (;;)
     {
       localTRTCVideoLayoutManager.setGestureListener((b.a)paramm);
-      AppMethodBeat.o(209378);
+      AppMethodBeat.o(217037);
       return;
     }
   }
   
-  public final void setPreviewTouchListener(m<? super Float, ? super Float, y> paramm)
+  public final void setPreviewTouchListener(m<? super Float, ? super Float, z> paramm)
   {
-    this.gsp = paramm;
+    this.gLX = paramm;
   }
   
   public final void setRenderLayout(TRTCVideoLayoutManager paramTRTCVideoLayoutManager)
   {
-    AppMethodBeat.i(209372);
-    k.h(paramTRTCVideoLayoutManager, "<set-?>");
-    this.gso = paramTRTCVideoLayoutManager;
-    AppMethodBeat.o(209372);
+    AppMethodBeat.i(217031);
+    p.h(paramTRTCVideoLayoutManager, "<set-?>");
+    this.gLW = paramTRTCVideoLayoutManager;
+    AppMethodBeat.o(217031);
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  public static final class a
+    implements Runnable
+  {
+    public a(LivePreviewView paramLivePreviewView, String paramString) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(217029);
+      int i = this.gLZ.getRenderLayout().W(this.gMa, this.gMb);
+      this.gLZ.getRenderLayout().nr(i);
+      AppMethodBeat.o(217029);
+    }
   }
 }
 

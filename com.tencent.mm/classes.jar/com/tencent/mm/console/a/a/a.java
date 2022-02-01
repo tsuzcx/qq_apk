@@ -2,7 +2,7 @@ package com.tencent.mm.console.a.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
   implements com.tencent.mm.pluginsdk.cmd.a
@@ -15,8 +15,8 @@ public final class a
       AppMethodBeat.o(20197);
       return false;
     }
-    if (bs.getInt(paramArrayOfString[1], 0) > 0) {}
-    for (com.tencent.mm.plugin.hardcoder.a.tCd = true;; com.tencent.mm.plugin.hardcoder.a.tCd = false)
+    if (bt.getInt(paramArrayOfString[1], 0) > 0) {}
+    for (com.tencent.mm.plugin.hardcoder.a.uEM = true;; com.tencent.mm.plugin.hardcoder.a.uEM = false)
     {
       AppMethodBeat.o(20197);
       return true;
@@ -25,7 +25,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.a.a.a
  * JD-Core Version:    0.7.0.1
  */

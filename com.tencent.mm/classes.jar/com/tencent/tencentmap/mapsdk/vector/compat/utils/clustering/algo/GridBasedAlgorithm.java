@@ -19,43 +19,43 @@ public class GridBasedAlgorithm<T extends ClusterItem>
   
   public GridBasedAlgorithm()
   {
-    AppMethodBeat.i(192201);
+    AppMethodBeat.i(192929);
     this.a = Collections.synchronizedSet(new HashSet());
-    AppMethodBeat.o(192201);
+    AppMethodBeat.o(192929);
   }
   
   private static long a(long paramLong, double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(192207);
+    AppMethodBeat.i(192935);
     paramLong = (paramLong * Math.floor(paramDouble1) + Math.floor(paramDouble2));
-    AppMethodBeat.o(192207);
+    AppMethodBeat.o(192935);
     return paramLong;
   }
   
   public void addItem(T paramT)
   {
-    AppMethodBeat.i(192202);
+    AppMethodBeat.i(192930);
     this.a.add(paramT);
-    AppMethodBeat.o(192202);
+    AppMethodBeat.o(192930);
   }
   
   public void addItems(Collection<T> paramCollection)
   {
-    AppMethodBeat.i(192203);
+    AppMethodBeat.i(192931);
     this.a.addAll(paramCollection);
-    AppMethodBeat.o(192203);
+    AppMethodBeat.o(192931);
   }
   
   public void clearItems()
   {
-    AppMethodBeat.i(192204);
+    AppMethodBeat.i(192932);
     this.a.clear();
-    AppMethodBeat.o(192204);
+    AppMethodBeat.o(192932);
   }
   
   public Set<? extends Cluster<T>> getClusters(double paramDouble)
   {
-    AppMethodBeat.i(192206);
+    AppMethodBeat.i(192934);
     long l1 = Math.ceil(256.0D * Math.pow(2.0D, paramDouble) / 100.0D);
     c localc = new c(l1);
     HashSet localHashSet = new HashSet();
@@ -79,7 +79,7 @@ public class GridBasedAlgorithm<T extends ClusterItem>
         localStaticCluster1.add(localClusterItem);
       }
     }
-    AppMethodBeat.o(192206);
+    AppMethodBeat.o(192934);
     return localHashSet;
   }
   
@@ -90,14 +90,14 @@ public class GridBasedAlgorithm<T extends ClusterItem>
   
   public void removeItem(T paramT)
   {
-    AppMethodBeat.i(192205);
+    AppMethodBeat.i(192933);
     this.a.remove(paramT);
-    AppMethodBeat.o(192205);
+    AppMethodBeat.o(192933);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.clustering.algo.GridBasedAlgorithm
  * JD-Core Version:    0.7.0.1
  */

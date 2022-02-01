@@ -19,27 +19,10 @@ import org.json.JSONObject;
 public final class a
   implements d.a
 {
-  public static long ctt = 0L;
-  public static long ctu = 0L;
-  public static int ctv = 0;
-  private boolean ctA = true;
-  private String ctB;
-  public HashMap<Integer, Long> ctC;
-  public final Runnable ctD = new Runnable()
-  {
-    public final void run()
-    {
-      a.a(a.this, false, 0);
-    }
-  };
-  private final Runnable ctE = new Runnable()
-  {
-    public final void run()
-    {
-      a.a(a.this, false, 0);
-    }
-  };
-  public final Application.ActivityLifecycleCallbacks ctF = new Application.ActivityLifecycleCallbacks()
+  public static long cEp = 0L;
+  public static long cEq = 0L;
+  public static int cEr = 0;
+  public final Application.ActivityLifecycleCallbacks cEA = new Application.ActivityLifecycleCallbacks()
   {
     public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle) {}
     
@@ -58,7 +41,7 @@ public final class a
     
     public final void onActivityStopped(Activity paramAnonymousActivity) {}
   };
-  public final ComponentCallbacks2 ctG = new ComponentCallbacks2()
+  public final ComponentCallbacks2 cEB = new ComponentCallbacks2()
   {
     public final void onConfigurationChanged(Configuration paramAnonymousConfiguration) {}
     
@@ -96,32 +79,49 @@ public final class a
       });
     }
   };
-  private final com.tencent.matrix.d.a ctr;
-  public com.tencent.matrix.g.a.a cts;
-  private final com.tencent.matrix.d.a.a ctw;
-  public long cty;
-  public int ctz;
+  private final com.tencent.matrix.d.a cEn;
+  public com.tencent.matrix.g.a.a cEo;
+  private final com.tencent.matrix.d.a.a cEs;
+  public long cEt;
+  public int cEu;
+  private boolean cEv = true;
+  private String cEw;
+  public HashMap<Integer, Long> cEx;
+  public final Runnable cEy = new Runnable()
+  {
+    public final void run()
+    {
+      a.a(a.this, false, 0);
+    }
+  };
+  private final Runnable cEz = new Runnable()
+  {
+    public final void run()
+    {
+      a.a(a.this, false, 0);
+    }
+  };
   public final Context mContext;
-  public final Handler mHandler = new Handler(b.HY().getLooper());
+  public final Handler mHandler = new Handler(b.Jt().getLooper());
   public boolean mIsOpen = false;
   public long mStartTime;
   
   public a(com.tencent.matrix.d.a parama)
   {
-    this.ctr = parama;
+    this.cEn = parama;
     this.mContext = parama.getApplication();
-    this.ctw = parama.cto;
+    this.cEs = parama.cEk;
   }
   
-  public static boolean GZ()
+  public static boolean Iu()
   {
     return Build.VERSION.SDK_INT >= 23;
   }
   
   private void a(Debug.MemoryInfo paramMemoryInfo, a parama)
   {
-    parama.ctM = com.tencent.matrix.d.c.a.a("summary.java-heap", paramMemoryInfo);
-    if (parama.ctM == -1) {}
+    parama.cEH = com.tencent.matrix.d.c.a.a("summary.java-heap", paramMemoryInfo);
+    if (parama.cEH == -1) {}
     do
     {
       do
@@ -135,53 +135,53 @@ public final class a
               do
               {
                 return;
-                parama.ctN = com.tencent.matrix.d.c.a.a("summary.native-heap", paramMemoryInfo);
-              } while (parama.ctN == -1);
-              parama.ctQ = com.tencent.matrix.d.c.a.a("summary.code", paramMemoryInfo);
-            } while (parama.ctQ == -1);
-            parama.ctP = com.tencent.matrix.d.c.a.a("summary.stack", paramMemoryInfo);
-          } while (parama.ctP == -1);
-          parama.ctO = com.tencent.matrix.d.c.a.a("summary.graphics", paramMemoryInfo);
-        } while (parama.ctO == -1);
-        parama.ctR = com.tencent.matrix.d.c.a.a("summary.private-other", paramMemoryInfo);
-      } while (parama.ctR == -1);
-      parama.ctS = com.tencent.matrix.d.c.a.a("summary.total-pss", paramMemoryInfo);
-    } while (parama.ctS == -1);
-    parama.ctT = com.tencent.matrix.d.c.a.a(paramMemoryInfo);
-    parama.ctK = ((int)com.tencent.matrix.g.a.getDalvikHeap());
-    parama.ctL = ((int)com.tencent.matrix.g.a.getNativeHeap());
-    com.tencent.matrix.g.c.i("Matrix.MemoryCanaryCore", "activity:" + this.ctB + ", totalpss:" + parama.ctS + ", uss:" + parama.ctT + ", java:" + parama.ctM + " , Native:" + parama.ctN + ", code:" + parama.ctQ + ", stack:" + parama.ctP + ", Graphics:" + parama.ctO + ", other:" + parama.ctR, new Object[0]);
+                parama.cEI = com.tencent.matrix.d.c.a.a("summary.native-heap", paramMemoryInfo);
+              } while (parama.cEI == -1);
+              parama.cEL = com.tencent.matrix.d.c.a.a("summary.code", paramMemoryInfo);
+            } while (parama.cEL == -1);
+            parama.cEK = com.tencent.matrix.d.c.a.a("summary.stack", paramMemoryInfo);
+          } while (parama.cEK == -1);
+          parama.cEJ = com.tencent.matrix.d.c.a.a("summary.graphics", paramMemoryInfo);
+        } while (parama.cEJ == -1);
+        parama.cEM = com.tencent.matrix.d.c.a.a("summary.private-other", paramMemoryInfo);
+      } while (parama.cEM == -1);
+      parama.cEN = com.tencent.matrix.d.c.a.a("summary.total-pss", paramMemoryInfo);
+    } while (parama.cEN == -1);
+    parama.cEO = com.tencent.matrix.d.c.a.a(paramMemoryInfo);
+    parama.cEF = ((int)com.tencent.matrix.g.a.getDalvikHeap());
+    parama.cEG = ((int)com.tencent.matrix.g.a.getNativeHeap());
+    com.tencent.matrix.g.c.i("Matrix.MemoryCanaryCore", "activity:" + this.cEw + ", totalpss:" + parama.cEN + ", uss:" + parama.cEO + ", java:" + parama.cEH + " , Native:" + parama.cEI + ", code:" + parama.cEL + ", stack:" + parama.cEK + ", Graphics:" + parama.cEJ + ", other:" + parama.cEM, new Object[0]);
   }
   
   private static void a(JSONObject paramJSONObject, a parama, String paramString1, String paramString2)
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("pss", parama.ctS);
-    localJSONObject.put("uss", parama.ctT);
-    localJSONObject.put("java", parama.ctM);
-    localJSONObject.put("native", parama.ctN);
-    localJSONObject.put("graphics", parama.ctO);
-    localJSONObject.put("stack", parama.ctP);
-    localJSONObject.put("code", parama.ctQ);
-    localJSONObject.put("other", parama.ctR);
-    localJSONObject.put("dalvikHeap", parama.ctK);
-    localJSONObject.put("nativeHeap", parama.ctL);
-    localJSONObject.put("vmsize", com.tencent.matrix.g.a.HW());
+    localJSONObject.put("pss", parama.cEN);
+    localJSONObject.put("uss", parama.cEO);
+    localJSONObject.put("java", parama.cEH);
+    localJSONObject.put("native", parama.cEI);
+    localJSONObject.put("graphics", parama.cEJ);
+    localJSONObject.put("stack", parama.cEK);
+    localJSONObject.put("code", parama.cEL);
+    localJSONObject.put("other", parama.cEM);
+    localJSONObject.put("dalvikHeap", parama.cEF);
+    localJSONObject.put("nativeHeap", parama.cEG);
+    localJSONObject.put("vmsize", com.tencent.matrix.g.a.Jr());
     if ((paramString2 != null) && (!paramString2.isEmpty())) {
       localJSONObject.put("activity", paramString2);
     }
     paramJSONObject.put(paramString1, localJSONObject);
   }
   
-  private void gR(int paramInt)
+  private void gW(int paramInt)
   {
     if (paramInt == 0) {}
     do
     {
       return;
-      if ((this.ctC.containsKey(Integer.valueOf(paramInt))) && (System.currentTimeMillis() - ((Long)this.ctC.get(Integer.valueOf(paramInt))).longValue() < 600000L))
+      if ((this.cEx.containsKey(Integer.valueOf(paramInt))) && (System.currentTimeMillis() - ((Long)this.cEx.get(Integer.valueOf(paramInt))).longValue() < 600000L))
       {
-        com.tencent.matrix.g.c.w("Matrix.MemoryCanaryCore", "trim memory too freq activity:%s, flag:%d", new Object[] { this.ctB, Integer.valueOf(paramInt) });
+        com.tencent.matrix.g.c.w("Matrix.MemoryCanaryCore", "trim memory too freq activity:%s, flag:%d", new Object[] { this.cEw, Integer.valueOf(paramInt) });
         return;
       }
       l = System.currentTimeMillis();
@@ -194,28 +194,28 @@ public final class a
       this.mIsOpen = false;
       return;
     }
-    a locala = new a(this.ctB);
+    a locala = new a(this.cEw);
     a((Debug.MemoryInfo)localObject, locala);
     Object localObject = new com.tencent.matrix.report.c();
-    ((com.tencent.matrix.report.c)localObject).tag = this.ctr.getTag();
+    ((com.tencent.matrix.report.c)localObject).tag = this.cEn.getTag();
     ((com.tencent.matrix.report.c)localObject).type = 1;
     JSONObject localJSONObject = new JSONObject();
-    ((com.tencent.matrix.report.c)localObject).cue = localJSONObject;
+    ((com.tencent.matrix.report.c)localObject).cEZ = localJSONObject;
     try
     {
-      localJSONObject.put("sysMem", ctt);
-      localJSONObject.put("threshold", ctu);
-      localJSONObject.put("memClass", ctv);
-      localJSONObject.put("available", com.tencent.matrix.g.a.HT());
-      a(localJSONObject, locala, "appmem", this.ctB);
-      if (this.ctA) {}
+      localJSONObject.put("sysMem", cEp);
+      localJSONObject.put("threshold", cEq);
+      localJSONObject.put("memClass", cEr);
+      localJSONObject.put("available", com.tencent.matrix.g.a.Jo());
+      a(localJSONObject, locala, "appmem", this.cEw);
+      if (this.cEv) {}
       for (int i = 1;; i = 0)
       {
         localJSONObject.put("front", i);
         localJSONObject.put("trimFlag", paramInt);
         localJSONObject.put("memfree", com.tencent.matrix.g.a.aS(this.mContext));
         localJSONObject.put("islow", com.tencent.matrix.g.a.aR(this.mContext));
-        this.ctC.put(Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()));
+        this.cEx.put(Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()));
         onDetectIssue((com.tencent.matrix.report.c)localObject);
         return;
       }
@@ -227,7 +227,7 @@ public final class a
     }
   }
   
-  private int gS(int paramInt)
+  private int gX(int paramInt)
   {
     int i = 1;
     if (paramInt <= 0) {
@@ -242,13 +242,13 @@ public final class a
     if (paramInt >= 8) {
       return 30;
     }
-    return gS(paramInt - 1) + gS(paramInt - 2);
+    return gX(paramInt - 1) + gX(paramInt - 2);
   }
   
-  public final long Ha()
+  public final long Iv()
   {
     long l1;
-    if (this.ctz >= 8) {
+    if (this.cEu >= 8) {
       l1 = 1800000L;
     }
     long l2;
@@ -257,7 +257,7 @@ public final class a
     {
       return l1;
       l1 = System.currentTimeMillis();
-      l2 = (gS(this.ctz) - gS(this.ctz - 1)) * 60000;
+      l2 = (gX(this.cEu) - gX(this.cEu - 1)) * 60000;
       l3 = System.currentTimeMillis() - l1;
       l1 = l2;
     } while (l3 <= 1000L);
@@ -274,12 +274,12 @@ public final class a
     {
       localJSONObject.put("dalvikHeap", l1);
       localJSONObject.put("nativeHeap", l2);
-      localJSONObject.put("sysMem", ctt);
-      localJSONObject.put("memClass", ctv);
-      localJSONObject.put("available", com.tencent.matrix.g.a.HT());
+      localJSONObject.put("sysMem", cEp);
+      localJSONObject.put("memClass", cEr);
+      localJSONObject.put("available", com.tencent.matrix.g.a.Jo());
       localJSONObject.put("memfree", com.tencent.matrix.g.a.aS(this.mContext));
       localJSONObject.put("islow", com.tencent.matrix.g.a.aR(this.mContext));
-      localJSONObject.put("vmSize", com.tencent.matrix.g.a.HW());
+      localJSONObject.put("vmSize", com.tencent.matrix.g.a.Jr());
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -291,27 +291,27 @@ public final class a
   
   public final void onDetectIssue(com.tencent.matrix.report.c paramc)
   {
-    com.tencent.matrix.g.c.i("Matrix.MemoryCanaryCore", "detected memory json:" + paramc.cue.toString(), new Object[0]);
-    this.ctr.onDetectIssue(paramc);
+    com.tencent.matrix.g.c.i("Matrix.MemoryCanaryCore", "detected memory json:" + paramc.cEZ.toString(), new Object[0]);
+    this.cEn.onDetectIssue(paramc);
   }
   
   public static final class a
   {
-    public int ctK = -1;
-    public int ctL = -1;
-    public int ctM = -1;
-    public int ctN = -1;
-    public int ctO = -1;
-    public int ctP = -1;
-    public int ctQ = -1;
-    public int ctR = -1;
-    public int ctS = -1;
-    public int ctT = -1;
-    public String ctU;
+    public int cEF = -1;
+    public int cEG = -1;
+    public int cEH = -1;
+    public int cEI = -1;
+    public int cEJ = -1;
+    public int cEK = -1;
+    public int cEL = -1;
+    public int cEM = -1;
+    public int cEN = -1;
+    public int cEO = -1;
+    public String cEP;
     
     a(String paramString)
     {
-      this.ctU = paramString;
+      this.cEP = paramString;
     }
   }
 }

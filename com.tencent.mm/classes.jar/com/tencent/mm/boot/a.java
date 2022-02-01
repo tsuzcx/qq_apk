@@ -147,6 +147,7 @@ public final class a
     public static final int app_brand_desktop_full_empty_icon = 2131689612;
     public static final int app_brand_desktop_icon_info = 2131689613;
     public static final int app_brand_desktop_search_icon = 2131689614;
+    public static final int app_brand_destop_view_third_party_running_flag = 2131690200;
     public static final int app_brand_evaluate_dialog_close = 2131689615;
     public static final int app_brand_game_actionbar_option_light = 2131689616;
     public static final int app_brand_game_evaluate_dialog_close = 2131689617;
@@ -164,9 +165,7 @@ public final class a
     public static final int app_brand_nearby_icon = 2131689629;
     public static final int app_brand_nearby_more_arrow = 2131689630;
     public static final int app_brand_nearby_refresh = 2131689631;
-    public static final int app_brand_profile_game_original = 2131689632;
     public static final int app_brand_profile_preview_video_play_btn = 2131689633;
-    public static final int app_brand_profile_trading_guarantee_ic = 2131689634;
     public static final int app_brand_pulldown_loading_darkversion = 2131689635;
     public static final int app_brand_pulldown_loading_lightversion = 2131689636;
     public static final int app_brand_recommend_music_icon = 2131689637;
@@ -186,9 +185,7 @@ public final class a
     public static final int app_brand_single_page_mode_footer_corner_right = 2131689651;
     public static final int app_brand_star_delete = 2131689652;
     public static final int app_brand_star_option_icon = 2131689653;
-    public static final int app_brand_trading_guarantee_icon_dm = 2131689654;
-    public static final int app_brand_trading_guarantee_icon_gray = 2131689655;
-    public static final int app_brand_trading_guarantee_icon_green = 2131689656;
+    public static final int app_brand_third_party_running_flag = 2131691561;
     public static final int app_brand_video_brightness_icon = 2131689657;
     public static final int app_brand_video_cover_play_btn = 2131689658;
     public static final int app_brand_video_danmaku_hided_btn = 2131689659;
@@ -233,6 +230,8 @@ public final class a
     public static final int appbrand_menu_send_to_desktop = 2131689698;
     public static final int appbrand_menu_setting = 2131689699;
     public static final int appbrand_menu_share_appmsg = 2131689700;
+    public static final int appbrand_trading_guarantee_icon_gray = 2131691562;
+    public static final int appbrand_trading_guarantee_icon_white = 2131691563;
     public static final int appitem_del_btn_normal = 2131689701;
     public static final int appitem_del_btn_pressed = 2131689702;
     public static final int apply_credit_arrow = 2131689703;
@@ -377,6 +376,7 @@ public final class a
     public static final int bottomsheet_sms = 2131689839;
     public static final int bottomsheet_twitter = 2131689840;
     public static final int bottomsheet_whatsapp = 2131689841;
+    public static final int brand_100_loading_60_60 = 2131691568;
     public static final int c2c_aa_icon_check = 2131689842;
     public static final int c2c_aa_icon_close = 2131689843;
     public static final int c2c_aa_icon_default = 2131689844;
@@ -475,9 +475,13 @@ public final class a
     public static final int checkbox_selected_game = 2131689937;
     public static final int checkbox_selected_grey = 2131689938;
     public static final int checkbox_selected_grey_dark = 2131689939;
+    public static final int checkbox_selected_grey_dark_small = 2131689632;
+    public static final int checkbox_selected_grey_small = 2131689634;
     public static final int checkbox_selected_orange = 2131691475;
     public static final int checkbox_selected_red = 2131689940;
+    public static final int checkbox_selected_red_small = 2131689654;
     public static final int checkbox_selected_round = 2131689941;
+    public static final int checkbox_selected_small = 2131689655;
     public static final int checkbox_unselect = 2131689942;
     public static final int checkbox_unselected = 2131689943;
     public static final int checkbox_unselected_round = 2131689944;
@@ -550,6 +554,7 @@ public final class a
     public static final int default_app_brand_notify_msg = 2131690011;
     public static final int default_app_brand_service_msg = 2131690012;
     public static final int default_avatar = 2131690013;
+    public static final int default_avatar_round = 2131690195;
     public static final int default_bottle = 2131690014;
     public static final int default_brand_contact = 2131690015;
     public static final int default_chatroom = 2131690016;
@@ -592,6 +597,7 @@ public final class a
     public static final int device_rank_item_unliked = 2131690053;
     public static final int dialog_successful_icon = 2131690054;
     public static final int dialogs_successful = 2131690055;
+    public static final int diehua = 2131691569;
     public static final int doodle_selected = 2131690056;
     public static final int doodle_unselected = 2131690057;
     public static final int download_app_pause = 2131690058;
@@ -664,8 +670,10 @@ public final class a
     public static final int error_image_sub = 2131690125;
     public static final int error_offline_info = 2131690126;
     public static final int expend = 2131690127;
+    public static final int face_agreement_icon = 2131691564;
     public static final int face_id_icon = 2131690128;
     public static final int face_ready_gif = 2131690129;
+    public static final int fangda = 2131691583;
     public static final int fav_addtab_disable = 2131690130;
     public static final int fav_addtab_normal = 2131690131;
     public static final int fav_addtab_pressed = 2131690132;
@@ -727,14 +735,18 @@ public final class a
     public static final int find_more_friend_scan = 2131690187;
     public static final int find_more_friend_search = 2131690188;
     public static final int find_more_friend_shake = 2131690189;
+    public static final int finder_bubble_arrow = 2131691622;
     public static final int finder_down_arrow = 2131691476;
+    public static final int finder_fav_anim_start = 2131691595;
     public static final int finder_feed_discomment = 2131690190;
     public static final int finder_feed_dislike = 2131690191;
     public static final int finder_feed_retransmission = 2131690192;
     public static final int finder_filled_delete_sub_video = 2131691477;
     public static final int finder_filled_fav = 2131691478;
     public static final int finder_filled_fire = 2131691479;
+    public static final int finder_filled_like_lock = 2131691596;
     public static final int finder_icons_filled_food = 2131691480;
+    public static final int finder_icons_filled_share = 2131691565;
     public static final int finder_icons_filled_sight = 2131691481;
     public static final int finder_icons_filled_star = 2131691482;
     public static final int finder_icons_filled_topic = 2131691483;
@@ -742,18 +754,20 @@ public final class a
     public static final int finder_icons_outlined_star = 2131691485;
     public static final int finder_icons_outlined_subscriptions = 2131691486;
     public static final int finder_loading = 2131690193;
+    public static final int finder_message_contact = 2131691566;
     public static final int finder_no_permission_post_camera = 2131690194;
     public static final int finder_original = 2131691487;
     public static final int finder_outline_at = 2131691488;
     public static final int finder_outlined_fav = 2131691489;
+    public static final int finder_outlined_like_lock = 2131691597;
     public static final int finder_outlined_self_like = 2131691490;
     public static final int finder_outlined_share = 2131691491;
     public static final int finder_outlined_tag = 2131691492;
-    public static final int finder_profile_multi_image_icon = 2131690195;
     public static final int finder_self_feed_like_arrow = 2131691493;
     public static final int finder_share_icon = 2131690196;
     public static final int finder_suggest_hot = 2131690197;
     public static final int finder_topic_icon_filled = 2131690198;
+    public static final int finder_unlike_toast_icon = 2131691567;
     public static final int finder_video_cover_icon = 2131691494;
     public static final int findmore_appbrand_icon = 2131690199;
     public static final int fireworks = 2131690201;
@@ -878,9 +892,15 @@ public final class a
     public static final int honey_pay_watermask = 2131690319;
     public static final int ic_appbrand_actionbar_more_black = 2131690320;
     public static final int ic_appbrand_star_mark = 2131690321;
+    public static final int ic_filled_bell = 2131689656;
+    public static final int ic_filled_bell_dark = 2131691591;
+    public static final int ic_filled_loading_fail = 2131691570;
+    public static final int ic_filled_thumbs = 2131691592;
+    public static final int ic_filled_thumbs_dark = 2131691593;
     public static final int ic_sex_female = 2131690322;
     public static final int ic_sex_male = 2131690323;
     public static final int icon_arrow_light = 2131690324;
+    public static final int icon_below_arrow = 2131691598;
     public static final int icon_close = 2131691495;
     public static final int icon_dot = 2131691496;
     public static final int icon_fill_thumb = 2131691497;
@@ -892,6 +912,7 @@ public final class a
     public static final int icon_filled_mic_dialog_close = 2131691501;
     public static final int icon_filled_mike_off = 2131690327;
     public static final int icon_filled_min_window = 2131690328;
+    public static final int icon_filled_video_call_off = 2131691599;
     public static final int icon_full_screen = 2131691502;
     public static final int icon_info = 2131690329;
     public static final int icon_line_comment = 2131691503;
@@ -922,7 +943,9 @@ public final class a
     public static final int icons_filled_add2 = 2131690345;
     public static final int icons_filled_add_emoji = 2131690346;
     public static final int icons_filled_add_friends = 2131690347;
+    public static final int icons_filled_addsticker = 2131691571;
     public static final int icons_filled_album = 2131690348;
+    public static final int icons_filled_allselect = 2131691572;
     public static final int icons_filled_arrow = 2131690349;
     public static final int icons_filled_arrows_down = 2131690350;
     public static final int icons_filled_arrows_up = 2131690351;
@@ -939,6 +962,7 @@ public final class a
     public static final int icons_filled_call_end = 2131690360;
     public static final int icons_filled_camera = 2131690361;
     public static final int icons_filled_camera_switch = 2131690362;
+    public static final int icons_filled_caption = 2131691600;
     public static final int icons_filled_card = 2131690363;
     public static final int icons_filled_cards_offers = 2131690364;
     public static final int icons_filled_cellphone = 2131690365;
@@ -958,6 +982,7 @@ public final class a
     public static final int icons_filled_contacts = 2131690378;
     public static final int icons_filled_contacts_hl = 2131690379;
     public static final int icons_filled_contents = 2131690380;
+    public static final int icons_filled_continued_form = 2131691573;
     public static final int icons_filled_copy = 2131690381;
     public static final int icons_filled_crop = 2131690382;
     public static final int icons_filled_cutie = 2131690383;
@@ -988,6 +1013,7 @@ public final class a
     public static final int icons_filled_followdone = 2131690405;
     public static final int icons_filled_footstep = 2131690406;
     public static final int icons_filled_game = 2131690407;
+    public static final int icons_filled_gift = 2131691601;
     public static final int icons_filled_group_detail = 2131690408;
     public static final int icons_filled_groupcall = 2131690409;
     public static final int icons_filled_grouptool = 2131690410;
@@ -1012,10 +1038,13 @@ public final class a
     public static final int icons_filled_live_screen = 2131691524;
     public static final int icons_filled_location = 2131690422;
     public static final int icons_filled_lock = 2131690423;
+    public static final int icons_filled_magic = 2131691602;
+    public static final int icons_filled_makesticker = 2131691574;
     public static final int icons_filled_mask = 2131690424;
     public static final int icons_filled_max_window = 2131690425;
     public static final int icons_filled_me = 2131690426;
     public static final int icons_filled_me_hl = 2131690427;
+    public static final int icons_filled_message = 2131691575;
     public static final int icons_filled_mic_close = 2131691525;
     public static final int icons_filled_mic_disable = 2131691526;
     public static final int icons_filled_mic_visitor_disable = 2131691527;
@@ -1031,6 +1060,7 @@ public final class a
     public static final int icons_filled_more = 2131690436;
     public static final int icons_filled_more2 = 2131690437;
     public static final int icons_filled_multi_talk = 2131691529;
+    public static final int icons_filled_multiple_choice = 2131691576;
     public static final int icons_filled_music = 2131690438;
     public static final int icons_filled_music_off = 2131690439;
     public static final int icons_filled_myminiprogram = 2131690440;
@@ -1038,6 +1068,9 @@ public final class a
     public static final int icons_filled_news = 2131690442;
     public static final int icons_filled_note = 2131690443;
     public static final int icons_filled_official_accounts = 2131690444;
+    public static final int icons_filled_open = 2131691577;
+    public static final int icons_filled_otherapp = 2131691578;
+    public static final int icons_filled_othersticker = 2131691579;
     public static final int icons_filled_pause = 2131690445;
     public static final int icons_filled_pay = 2131690446;
     public static final int icons_filled_pay_coupon = 2131690447;
@@ -1059,14 +1092,17 @@ public final class a
     public static final int icons_filled_previous = 2131690462;
     public static final int icons_filled_previous2 = 2131690463;
     public static final int icons_filled_qr_code = 2131690464;
+    public static final int icons_filled_quote = 2131691580;
     public static final int icons_filled_radar = 2131690465;
     public static final int icons_filled_reduce2 = 2131690466;
     public static final int icons_filled_refresh = 2131690467;
     public static final int icons_filled_remove_bg = 2131690468;
     public static final int icons_filled_report_problem = 2131690469;
+    public static final int icons_filled_resume = 2131691581;
     public static final int icons_filled_retract = 2131690470;
     public static final int icons_filled_rotate = 2131690471;
     public static final int icons_filled_scan = 2131690472;
+    public static final int icons_filled_scissor = 2131691603;
     public static final int icons_filled_search = 2131690473;
     public static final int icons_filled_search_logo = 2131690474;
     public static final int icons_filled_sending = 2131690475;
@@ -1076,7 +1112,9 @@ public final class a
     public static final int icons_filled_shop = 2131690479;
     public static final int icons_filled_star = 2131690480;
     public static final int icons_filled_star_identify = 2131690481;
+    public static final int icons_filled_star_identify_enterprise = 2131691604;
     public static final int icons_filled_sticker = 2131690482;
+    public static final int icons_filled_sticker_album = 2131691582;
     public static final int icons_filled_stranger = 2131691531;
     public static final int icons_filled_subscriptions = 2131690483;
     public static final int icons_filled_tag = 2131690484;
@@ -1086,6 +1124,7 @@ public final class a
     public static final int icons_filled_transfer = 2131690488;
     public static final int icons_filled_transfer2 = 2131690489;
     public static final int icons_filled_transfer_text = 2131690490;
+    public static final int icons_filled_transform = 2131691605;
     public static final int icons_filled_translate = 2131690491;
     public static final int icons_filled_tv = 2131690492;
     public static final int icons_filled_undo = 2131690493;
@@ -1105,6 +1144,7 @@ public final class a
     public static final int icons_mic_close = 2131691533;
     public static final int icons_mic_open = 2131691534;
     public static final int icons_need_verify = 2131691535;
+    public static final int icons_outline_change_speed = 2131691606;
     public static final int icons_outline_miniprogram_friends_like = 2131690506;
     public static final int icons_outline_miniprogram_live = 2131690507;
     public static final int icons_outline_miniprogram_order = 2131690508;
@@ -1216,6 +1256,7 @@ public final class a
     public static final int icons_outlined_official_accounts = 2131690612;
     public static final int icons_outlined_one_day_blue_video = 2131690613;
     public static final int icons_outlined_one_day_video = 2131690614;
+    public static final int icons_outlined_open = 2131691607;
     public static final int icons_outlined_pad = 2131690615;
     public static final int icons_outlined_pay = 2131690616;
     public static final int icons_outlined_pay_bank_deposit = 2131690617;
@@ -1280,12 +1321,14 @@ public final class a
     public static final int icons_outlined_volume_up = 2131690676;
     public static final int icons_outlined_wallet = 2131690677;
     public static final int icons_outlined_wechat_out = 2131690678;
+    public static final int icons_outlined_wechat_search_one_search = 2131691594;
     public static final int icons_outlined_wechatout = 2131690679;
     public static final int icons_outlined_wechatpay = 2131690680;
     public static final int icons_outlined_wifi = 2131690681;
     public static final int icons_outlined_wifi_error = 2131690682;
     public static final int icons_outlined_wxwork_logo = 2131690683;
     public static final int icons_panel_close = 2131690684;
+    public static final int icons_pop_arrow = 2131691584;
     public static final int icons_right_arrow_grey = 2131690685;
     public static final int icons_tipsbar_close = 2131691537;
     public static final int icons_tipsbar_logo = 2131691538;
@@ -1351,6 +1394,7 @@ public final class a
     public static final int live_net_normal_icon = 2131691547;
     public static final int live_visitor_guide_mask_dark = 2131691548;
     public static final int live_visitor_guide_mask_normal = 2131691549;
+    public static final int loading_brand = 2131691623;
     public static final int loc = 2131690736;
     public static final int login_app_default_avatar = 2131690737;
     public static final int login_auth_state_default_select = 2131690738;
@@ -1496,6 +1540,8 @@ public final class a
     public static final int msg_state_fail_resend_pressed = 2131690876;
     public static final int msg_state_failed = 2131690877;
     public static final int msg_state_sending = 2131690878;
+    public static final int msg_tip_dark_bg = 2131691585;
+    public static final int msg_tip_light_bg = 2131691586;
     public static final int multi_selected_item = 2131690879;
     public static final int multitalk_add_action = 2131690880;
     public static final int multitalk_add_action_btn = 2131690881;
@@ -1581,6 +1627,7 @@ public final class a
     public static final int offline_dots_icon = 2131690961;
     public static final int offline_entrance_activity = 2131690962;
     public static final int offline_entrance_f2f_collect = 2131690963;
+    public static final int offline_entrance_f2f_collect_hk = 2131691587;
     public static final int offline_entrance_f2f_lucky = 2131690964;
     public static final int offline_info_icon = 2131690965;
     public static final int offline_lucky_icon = 2131690966;
@@ -1788,10 +1835,15 @@ public final class a
     public static final int shake_card_package_defaultlogo = 2131691160;
     public static final int shake_success_icon = 2131691161;
     public static final int shake_success_icon_no_activity = 2131691162;
+    public static final int shanbai = 2131691608;
+    public static final int shangyi = 2131691609;
+    public static final int shanhei = 2131691610;
     public static final int share_to_friend_icon = 2131691163;
     public static final int sharemore_videovoip = 2131691164;
     public static final int sharemore_voipvoice = 2131691165;
     public static final int shortvideo_play_btn = 2131691166;
+    public static final int shortvideo_play_btn_pressed = 2131691611;
+    public static final int shortvideo_play_icon_err = 2131691612;
     public static final int show_head_toast_bg = 2131691167;
     public static final int sight_box_delete = 2131691168;
     public static final int sight_change = 2131691169;
@@ -1883,6 +1935,9 @@ public final class a
     public static final int spannable_app_brand_link_logo_light = 2131691251;
     public static final int spannable_wxa_game_link_logo = 2131691252;
     public static final int spinner_16_outer_holo = 2131691472;
+    public static final int spinner_48_outer_holo = 2131691588;
+    public static final int spinner_76_outer_holo = 2131691589;
+    public static final int spinner_white_48_outer_holo = 2131691590;
     public static final int star_mark = 2131691253;
     public static final int status_accountkey = 2131691254;
     public static final int status_accountkey_off = 2131691255;
@@ -1897,6 +1952,7 @@ public final class a
     public static final int subscribe_msg_item_checkbox_unselected = 2131691264;
     public static final int subscribe_msg_item_checkbox_unselected_disabled = 2131691265;
     public static final int success_icon = 2131691266;
+    public static final int suoxiao = 2131691613;
     public static final int sure_crop_normal = 2131691267;
     public static final int sure_crop_press = 2131691268;
     public static final int switch_off = 2131691269;
@@ -2047,6 +2103,7 @@ public final class a
     public static final int wallet_wxcredit_success = 2131691414;
     public static final int wc_pay_keyboard_del = 2131691415;
     public static final int wcpay_security_icon = 2131691416;
+    public static final int websearch_dark_loading = 2131691614;
     public static final int websearch_icon_acount = 2131691417;
     public static final int websearch_icon_article = 2131691418;
     public static final int websearch_icon_baike = 2131691419;
@@ -2061,6 +2118,7 @@ public final class a
     public static final int websearch_icon_weapp = 2131691428;
     public static final int websearch_icon_webpage = 2131691429;
     public static final int websearch_icon_wegame = 2131691430;
+    public static final int websearch_light_loading = 2131691615;
     public static final int webview_add_shortcut = 2131691431;
     public static final int webview_bag_canceller_icon = 2131691432;
     public static final int webview_bag_default_icon = 2131691433;
@@ -2088,10 +2146,16 @@ public final class a
     public static final int welab_icon_grey = 2131691455;
     public static final int welab_icon_light = 2131691456;
     public static final int wifi_logo = 2131691457;
+    public static final int wu = 2131691616;
     public static final int wxa_lucky_money_complete_icon = 2131691458;
     public static final int wxa_lucky_money_share_arrow = 2131691459;
     public static final int wxpay_mini_program_icon = 2131691460;
     public static final int wxpay_success_page_logo = 2131691461;
+    public static final int xiayi = 2131691617;
+    public static final int youyi = 2131691618;
+    public static final int youzhuan = 2131691619;
+    public static final int zuoyi = 2131691620;
+    public static final int zuozhuan = 2131691621;
   }
 }
 

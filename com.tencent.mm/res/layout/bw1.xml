@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/i0t" android:background="@drawable/ts" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:paddingTop="@dimen/c8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="17.0sp" android:textColor="@color/BW_BG_100" android:gravity="center" android:id="@id/hb3" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="@string/r5" android:layout_marginStart="@dimen/ahh" />
+        <Button android:textSize="17.0sp" android:id="@id/hb8" android:background="@drawable/io" android:text="@string/ti" android:layout_marginEnd="@dimen/ahh" android:layout_alignParentEnd="true" style="@style/o8" />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/hb6" android:fadingEdge="vertical" android:fadingEdgeLength="@dimen/c8" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/c8" />
+</LinearLayout>

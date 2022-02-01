@@ -10,19 +10,19 @@ import java.util.concurrent.TimeUnit;
 public final class a
   extends GestureDetector.SimpleOnGestureListener
 {
-  private final WheelView irq;
+  private final WheelView iKu;
   
   public a(WheelView paramWheelView)
   {
-    this.irq = paramWheelView;
+    this.iKu = paramWheelView;
   }
   
   public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(175295);
-    paramMotionEvent1 = this.irq;
-    paramMotionEvent1.aMF();
-    paramMotionEvent1.irF = paramMotionEvent1.irE.scheduleWithFixedDelay(new com.tencent.mm.picker.base.c.a(paramMotionEvent1, paramFloat2), 0L, 5L, TimeUnit.MILLISECONDS);
+    paramMotionEvent1 = this.iKu;
+    paramMotionEvent1.aPQ();
+    paramMotionEvent1.iKI = paramMotionEvent1.iKH.scheduleWithFixedDelay(new com.tencent.mm.picker.base.c.a(paramMotionEvent1, paramFloat2), 0L, 5L, TimeUnit.MILLISECONDS);
     AppMethodBeat.o(175295);
     return true;
   }

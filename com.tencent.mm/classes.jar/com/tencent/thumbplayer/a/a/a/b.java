@@ -11,7 +11,6 @@ import com.tencent.thumbplayer.a.a.c.h;
 import com.tencent.thumbplayer.a.a.c.i;
 import com.tencent.thumbplayer.a.a.c.j;
 import com.tencent.thumbplayer.a.g;
-import com.tencent.thumbplayer.b.a.a;
 import com.tencent.thumbplayer.b.f.b;
 import com.tencent.thumbplayer.b.j;
 import com.tencent.thumbplayer.b.k;
@@ -28,146 +27,146 @@ import java.util.Map;
 public final class b
   implements com.tencent.thumbplayer.a.a.b
 {
-  com.tencent.thumbplayer.a.a.b KcD;
-  j KcE;
-  com.tencent.thumbplayer.a.e KcG;
-  com.tencent.thumbplayer.a.c KcI;
-  g KcJ;
-  com.tencent.thumbplayer.a.b KcL;
-  private a Kdc;
-  List<com.tencent.thumbplayer.b.a.e> Kdd;
-  int Kde;
-  boolean Kdf;
-  boolean Kdg;
-  LinkedList<Long> Kdh;
+  j LWA;
+  com.tencent.thumbplayer.a.e LWC;
+  com.tencent.thumbplayer.a.c LWE;
+  g LWF;
+  com.tencent.thumbplayer.a.b LWH;
+  private a LWY;
+  List<com.tencent.thumbplayer.b.a.e> LWZ;
+  com.tencent.thumbplayer.a.a.b LWz;
+  int LXa;
+  boolean LXb;
+  boolean LXc;
+  LinkedList<Long> LXd;
   private Context mContext;
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(187649);
-    this.Kde = 0;
+    AppMethodBeat.i(191670);
+    this.LXa = 0;
     this.mContext = paramContext;
-    this.KcE = new j();
-    this.KcI = new com.tencent.thumbplayer.a.c();
-    this.Kdc = new a((byte)0);
-    this.KcG = new com.tencent.thumbplayer.a.e("TPThumbPlayer[TPSystemClipPlayer.java]");
-    this.KcJ = new g(this.KcE);
-    this.Kdd = new ArrayList();
-    AppMethodBeat.o(187649);
+    this.LWA = new j();
+    this.LWE = new com.tencent.thumbplayer.a.c();
+    this.LWY = new a((byte)0);
+    this.LWC = new com.tencent.thumbplayer.a.e("TPThumbPlayer[TPSystemClipPlayer.java]");
+    this.LWF = new g(this.LWA);
+    this.LWZ = new ArrayList();
+    AppMethodBeat.o(191670);
   }
   
   private void a(com.tencent.thumbplayer.a.a.b paramb)
   {
-    AppMethodBeat.i(187691);
-    if (1 == this.KcI.Kcp.mType) {
-      paramb.b(this.KcI.Kcp.KcZ);
+    AppMethodBeat.i(191712);
+    if (1 == this.LWE.LWl.mType) {
+      paramb.b(this.LWE.LWl.LWV);
     }
-    if (this.KcI.Kcp.mType == 0) {
-      paramb.setDataSource(this.KcI.Kcp.mUrl, this.KcI.Kcp.mHttpHeaders);
+    if (this.LWE.LWl.mType == 0) {
+      paramb.setDataSource(this.LWE.LWl.mUrl, this.LWE.LWl.mHttpHeaders);
     }
-    Iterator localIterator = this.KcI.fEN().iterator();
+    Iterator localIterator = this.LWE.fWf().iterator();
     while (localIterator.hasNext()) {
       paramb.b((com.tencent.thumbplayer.b.f)localIterator.next());
     }
-    localIterator = this.KcI.fEL().iterator();
+    localIterator = this.LWE.fWd().iterator();
     Object localObject;
     while (localIterator.hasNext())
     {
       localObject = (com.tencent.thumbplayer.a.c.d)localIterator.next();
-      paramb.bb(((com.tencent.thumbplayer.a.c.d)localObject).url, ((com.tencent.thumbplayer.a.c.d)localObject).mimeType, ((com.tencent.thumbplayer.a.c.d)localObject).name);
+      paramb.bk(((com.tencent.thumbplayer.a.c.d)localObject).url, ((com.tencent.thumbplayer.a.c.d)localObject).mimeType, ((com.tencent.thumbplayer.a.c.d)localObject).name);
     }
-    localIterator = this.KcI.fEM().iterator();
+    localIterator = this.LWE.fWe().iterator();
     while (localIterator.hasNext())
     {
       localObject = (com.tencent.thumbplayer.a.c.a)localIterator.next();
-      paramb.g(((com.tencent.thumbplayer.a.c.a)localObject).url, ((com.tencent.thumbplayer.a.c.a)localObject).name, ((com.tencent.thumbplayer.a.c.a)localObject).Kcx);
+      paramb.g(((com.tencent.thumbplayer.a.c.a)localObject).url, ((com.tencent.thumbplayer.a.c.a)localObject).name, ((com.tencent.thumbplayer.a.c.a)localObject).LWt);
     }
-    if (this.KcI.Kcq != null) {
-      paramb.c(this.KcI.Kcq.Kcy, this.KcI.Kcq.Kcz, this.KcI.Kcq.KcA);
+    if (this.LWE.LWm != null) {
+      paramb.c(this.LWE.LWm.LWu, this.LWE.LWm.LWv, this.LWE.LWm.LWw);
     }
-    paramb.yJ(this.KcI.Kcr);
-    if (this.KcI.Kcs != 0.0F) {
-      paramb.cd(this.KcI.Kcs);
+    paramb.zw(this.LWE.LWn);
+    if (this.LWE.LWo != 0.0F) {
+      paramb.ci(this.LWE.LWo);
     }
-    if (this.KcI.Kct != 0.0F) {
-      paramb.ce(this.KcI.Kct);
+    if (this.LWE.LWp != 0.0F) {
+      paramb.cj(this.LWE.LWp);
     }
-    if (this.KcI.mSurface != null) {
-      paramb.setSurface(this.KcI.mSurface);
+    if (this.LWE.mSurface != null) {
+      paramb.setSurface(this.LWE.mSurface);
     }
-    paramb.a(this.Kdc);
-    paramb.a(this.Kdc);
-    paramb.a(this.Kdc);
-    paramb.a(this.Kdc);
-    paramb.a(this.Kdc);
-    paramb.a(this.Kdc);
-    paramb.a(this.Kdc);
-    AppMethodBeat.o(187691);
+    paramb.a(this.LWY);
+    paramb.a(this.LWY);
+    paramb.a(this.LWY);
+    paramb.a(this.LWY);
+    paramb.a(this.LWY);
+    paramb.a(this.LWY);
+    paramb.a(this.LWY);
+    AppMethodBeat.o(191712);
   }
   
-  private void aez(int paramInt)
+  private void agZ(int paramInt)
   {
-    AppMethodBeat.i(187671);
+    AppMethodBeat.i(191692);
     int i = 0;
     for (;;)
     {
-      if (i < this.Kdd.size())
+      if (i < this.LWZ.size())
       {
         long l;
-        if ((((com.tencent.thumbplayer.b.a.e)this.Kdd.get(i)).fFt() <= paramInt) && (paramInt <= ((com.tencent.thumbplayer.b.a.e)this.Kdd.get(i)).fFt() + ((com.tencent.thumbplayer.b.a.e)this.Kdd.get(i)).fFs())) {
+        if ((((com.tencent.thumbplayer.b.a.e)this.LWZ.get(i)).fWI() <= paramInt) && (paramInt <= ((com.tencent.thumbplayer.b.a.e)this.LWZ.get(i)).fWI() + ((com.tencent.thumbplayer.b.a.e)this.LWZ.get(i)).fWH())) {
           l = paramInt;
         }
         try
         {
-          aJ(i, l - ((com.tencent.thumbplayer.b.a.e)this.Kdd.get(i)).fFt());
+          aT(i, l - ((com.tencent.thumbplayer.b.a.e)this.LWZ.get(i)).fWI());
           i += 1;
         }
         catch (IOException localIOException)
         {
           for (;;)
           {
-            com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPSystemClipPlayer.java]", "selectClipPlayer:" + localIOException.toString());
+            com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPSystemClipPlayer.java]", "selectClipPlayer:" + localIOException.toString());
           }
         }
       }
     }
-    AppMethodBeat.o(187671);
+    AppMethodBeat.o(191692);
   }
   
-  private static List<com.tencent.thumbplayer.b.a.e> b(a parama)
+  private static List<com.tencent.thumbplayer.b.a.e> b(com.tencent.thumbplayer.b.a.a parama)
   {
     int i = 0;
-    AppMethodBeat.i(187670);
+    AppMethodBeat.i(191691);
     if ((!(parama instanceof com.tencent.thumbplayer.d.b)) && (!(parama instanceof com.tencent.thumbplayer.d.d)) && (!(parama instanceof com.tencent.thumbplayer.d.e)))
     {
       parama = new IllegalStateException("system mediaPlayer : media asset is illegal source!");
-      AppMethodBeat.o(187670);
+      AppMethodBeat.o(191691);
       throw parama;
     }
     ArrayList localArrayList = new ArrayList();
     if ((parama instanceof com.tencent.thumbplayer.d.b))
     {
-      parama = ((com.tencent.thumbplayer.d.b)parama).KgT;
-      if ((com.tencent.thumbplayer.utils.b.isEmpty(parama)) || (parama.get(0) == null))
+      parama = ((com.tencent.thumbplayer.d.b)parama).Maj;
+      if ((com.tencent.thumbplayer.utils.a.isEmpty(parama)) || (parama.get(0) == null))
       {
         parama = new IllegalStateException("empty av tracks when set data source!");
-        AppMethodBeat.o(187670);
+        AppMethodBeat.o(191691);
         throw parama;
       }
-      parama = ((com.tencent.thumbplayer.b.a.d)parama.get(0)).fFn();
+      parama = ((com.tencent.thumbplayer.b.a.d)parama.get(0)).fWE();
     }
     for (;;)
     {
       long l = 0L;
       while (i < parama.size())
       {
-        ((com.tencent.thumbplayer.b.a.e)parama.get(i)).BX(l);
-        l += ((com.tencent.thumbplayer.b.a.e)parama.get(i)).fFs();
+        ((com.tencent.thumbplayer.b.a.e)parama.get(i)).EZ(l);
+        l += ((com.tencent.thumbplayer.b.a.e)parama.get(i)).fWH();
         i += 1;
       }
       if ((parama instanceof com.tencent.thumbplayer.d.d))
       {
-        parama = ((com.tencent.thumbplayer.d.d)parama).Kha;
+        parama = ((com.tencent.thumbplayer.d.d)parama).Maq;
       }
       else
       {
@@ -175,769 +174,769 @@ public final class b
         parama = localArrayList;
       }
     }
-    AppMethodBeat.o(187670);
+    AppMethodBeat.o(191691);
     return parama;
   }
   
-  private com.tencent.thumbplayer.b.a.e fES()
+  private com.tencent.thumbplayer.b.a.e fWk()
   {
-    AppMethodBeat.i(187689);
-    com.tencent.thumbplayer.b.a.e locale = (com.tencent.thumbplayer.b.a.e)this.Kdd.get(this.Kde);
-    AppMethodBeat.o(187689);
+    AppMethodBeat.i(191710);
+    com.tencent.thumbplayer.b.a.e locale = (com.tencent.thumbplayer.b.a.e)this.LWZ.get(this.LXa);
+    AppMethodBeat.o(191710);
     return locale;
   }
   
-  private com.tencent.thumbplayer.a.a.b fET()
+  private com.tencent.thumbplayer.a.a.b fWl()
   {
-    AppMethodBeat.i(187690);
+    AppMethodBeat.i(191711);
     c localc = new c(this.mContext);
-    if (this.KcL == null) {
-      this.KcL = new com.tencent.thumbplayer.a.b();
+    if (this.LWH == null) {
+      this.LWH = new com.tencent.thumbplayer.a.b();
     }
     a(localc);
-    AppMethodBeat.o(187690);
+    AppMethodBeat.o(191711);
     return localc;
   }
   
+  public final void M(String paramString, int paramInt, long paramLong) {}
+  
   public final void a(com.tencent.thumbplayer.a.a.c.a parama)
   {
-    AppMethodBeat.i(187687);
+    AppMethodBeat.i(191708);
     parama = new IllegalStateException("system Mediaplayer cannot support audio frame out");
-    AppMethodBeat.o(187687);
+    AppMethodBeat.o(191708);
     throw parama;
   }
   
   public final void a(com.tencent.thumbplayer.a.a.c.b paramb)
   {
-    this.KcG.KcP = paramb;
+    this.LWC.LWL = paramb;
   }
   
   public final void a(c.c paramc)
   {
-    this.KcG.KcR = paramc;
+    this.LWC.LWN = paramc;
   }
   
   public final void a(com.tencent.thumbplayer.a.a.c.d paramd)
   {
-    this.KcG.KcQ = paramd;
+    this.LWC.LWM = paramd;
   }
   
   public final void a(c.e parame)
   {
-    this.KcG.KcO = parame;
+    this.LWC.LWK = parame;
   }
   
   public final void a(c.f paramf)
   {
-    this.KcG.KcS = paramf;
+    this.LWC.LWO = paramf;
   }
   
   public final void a(c.h paramh)
   {
-    this.KcG.KcU = paramh;
+    this.LWC.LWQ = paramh;
   }
   
   public final void a(c.i parami)
   {
-    AppMethodBeat.i(187686);
+    AppMethodBeat.i(191707);
     parami = new IllegalStateException("system Mediaplayer cannot support video frame out");
-    AppMethodBeat.o(187686);
+    AppMethodBeat.o(191707);
     throw parami;
   }
   
   public final void a(c.j paramj)
   {
-    this.KcG.KcT = paramj;
+    this.LWC.LWP = paramj;
   }
   
-  public final void a(a parama)
+  public final void a(com.tencent.thumbplayer.b.a.a parama)
   {
-    AppMethodBeat.i(187655);
+    AppMethodBeat.i(191676);
     parama = b(parama);
     try
     {
-      this.Kdd = parama;
-      this.KcI.setDataSource(((com.tencent.thumbplayer.b.a.e)this.Kdd.get(this.Kde)).getFilePath());
-      this.KcE.changeState(2);
-      AppMethodBeat.o(187655);
+      this.LWZ = parama;
+      this.LWE.setDataSource(((com.tencent.thumbplayer.b.a.e)this.LWZ.get(this.LXa)).getFilePath());
+      this.LWA.changeState(2);
+      AppMethodBeat.o(191676);
       return;
     }
     catch (Exception parama)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPSystemClipPlayer.java]", parama);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPSystemClipPlayer.java]", parama);
       parama = new IllegalStateException("exception when system clip player set data source!");
-      AppMethodBeat.o(187655);
+      AppMethodBeat.o(191676);
       throw parama;
     }
   }
   
-  public final void a(a parama, int paramInt, long paramLong)
+  public final void a(com.tencent.thumbplayer.b.a.a parama, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(187669);
+    AppMethodBeat.i(191690);
     parama = b(parama);
-    if (com.tencent.thumbplayer.utils.b.isEmpty(parama))
+    if (com.tencent.thumbplayer.utils.a.isEmpty(parama))
     {
       parama = new IllegalStateException("exception when switch Definition with clip mediaAsset empty source!");
-      AppMethodBeat.o(187669);
+      AppMethodBeat.o(191690);
       throw parama;
     }
     long l = getCurrentPositionMs();
     try
     {
-      this.Kdd = parama;
-      this.Kdg = true;
-      if (com.tencent.thumbplayer.utils.b.isEmpty(this.Kdh)) {
-        this.Kdh = new LinkedList();
+      this.LWZ = parama;
+      this.LXc = true;
+      if (com.tencent.thumbplayer.utils.a.isEmpty(this.LXd)) {
+        this.LXd = new LinkedList();
       }
-      this.Kdh.offer(Long.valueOf(paramLong));
-      com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPSystemClipPlayer.java]", "try to switch definition with system clip player, current clipNo:" + this.Kde);
-      aez((int)l);
-      AppMethodBeat.o(187669);
+      this.LXd.offer(Long.valueOf(paramLong));
+      com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPSystemClipPlayer.java]", "try to switch definition with system clip player, current clipNo:" + this.LXa);
+      agZ((int)l);
+      AppMethodBeat.o(191690);
       return;
     }
     catch (Exception parama)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPSystemClipPlayer.java]", parama);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPSystemClipPlayer.java]", parama);
       parama = new IllegalStateException("exception when system clip player switch definition!");
-      AppMethodBeat.o(187669);
+      AppMethodBeat.o(191690);
       throw parama;
     }
   }
   
   public final void a(com.tencent.thumbplayer.b.e parame, com.tencent.thumbplayer.b.d paramd)
   {
-    AppMethodBeat.i(187685);
-    if (this.KcD != null) {
-      this.KcD.a(parame, paramd);
+    AppMethodBeat.i(191706);
+    if (this.LWz != null) {
+      this.LWz.a(parame, paramd);
     }
-    AppMethodBeat.o(187685);
+    AppMethodBeat.o(191706);
   }
   
-  public final void aG(int paramInt, long paramLong)
+  public final void aQ(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(187658);
-    if (!this.KcJ.aex(3))
+    AppMethodBeat.i(191679);
+    if (!this.LWF.agX(3))
     {
-      AppMethodBeat.o(187658);
+      AppMethodBeat.o(191679);
       return;
     }
-    n[] arrayOfn = fEO();
+    n[] arrayOfn = fWg();
     if (arrayOfn != null)
     {
-      this.KcI.a(paramInt, paramLong, arrayOfn[paramInt]);
-      if (this.KcD != null) {
-        this.KcD.aG(paramInt, paramLong);
+      this.LWE.a(paramInt, paramLong, arrayOfn[paramInt]);
+      if (this.LWz != null) {
+        this.LWz.aQ(paramInt, paramLong);
       }
     }
-    AppMethodBeat.o(187658);
+    AppMethodBeat.o(191679);
   }
   
-  public final void aH(int paramInt, long paramLong)
+  public final void aR(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(187659);
-    if (!this.KcJ.aex(3))
+    AppMethodBeat.i(191680);
+    if (!this.LWF.agX(3))
     {
-      AppMethodBeat.o(187659);
+      AppMethodBeat.o(191680);
       return;
     }
-    if (this.KcD != null) {
-      this.KcD.aH(paramInt, paramLong);
+    if (this.LWz != null) {
+      this.LWz.aR(paramInt, paramLong);
     }
-    n[] arrayOfn = fEO();
+    n[] arrayOfn = fWg();
     if (arrayOfn != null) {
-      this.KcI.a(paramInt, arrayOfn[paramInt]);
+      this.LWE.a(paramInt, arrayOfn[paramInt]);
     }
-    AppMethodBeat.o(187659);
+    AppMethodBeat.o(191680);
   }
   
-  public final void aI(int paramInt, long paramLong) {}
+  public final void aS(int paramInt, long paramLong) {}
   
-  final void aJ(int paramInt, long paramLong)
+  final void aT(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(187688);
-    com.tencent.thumbplayer.utils.f.d("TPThumbPlayer[TPSystemClipPlayer.java]", "switchPlayer: clipNo:" + paramInt + "   startPostion:" + paramLong);
-    if (this.KcD != null) {
-      this.KcD.release();
+    AppMethodBeat.i(191709);
+    com.tencent.thumbplayer.utils.d.d("TPThumbPlayer[TPSystemClipPlayer.java]", "switchPlayer: clipNo:" + paramInt + "   startPostion:" + paramLong);
+    if (this.LWz != null) {
+      this.LWz.release();
     }
-    this.Kdf = true;
-    this.Kde = paramInt;
-    this.KcI.setDataSource(((com.tencent.thumbplayer.b.a.e)this.Kdd.get(this.Kde)).getFilePath());
-    this.KcD = fET();
-    if (this.KcD == null)
+    this.LXb = true;
+    this.LXa = paramInt;
+    this.LWE.setDataSource(((com.tencent.thumbplayer.b.a.e)this.LWZ.get(this.LXa)).getFilePath());
+    this.LWz = fWl();
+    if (this.LWz == null)
     {
       localObject = new RuntimeException("error , create player failed");
-      AppMethodBeat.o(187688);
+      AppMethodBeat.o(191709);
       throw ((Throwable)localObject);
     }
-    Object localObject = new com.tencent.thumbplayer.b.f().aK(100, paramLong);
-    this.KcD.b((com.tencent.thumbplayer.b.f)localObject);
-    this.KcD.prepare();
-    AppMethodBeat.o(187688);
+    Object localObject = new com.tencent.thumbplayer.b.f().aU(100, paramLong);
+    this.LWz.b((com.tencent.thumbplayer.b.f)localObject);
+    this.LWz.prepare();
+    AppMethodBeat.o(191709);
   }
   
   public final void b(ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    AppMethodBeat.i(187654);
-    this.KcI.b(paramParcelFileDescriptor);
-    this.KcE.changeState(2);
-    AppMethodBeat.o(187654);
+    AppMethodBeat.i(191675);
+    this.LWE.b(paramParcelFileDescriptor);
+    this.LWA.changeState(2);
+    AppMethodBeat.o(191675);
   }
   
   public final void b(com.tencent.thumbplayer.b.f paramf)
   {
-    AppMethodBeat.i(187650);
-    if (!this.KcJ.aex(3))
+    AppMethodBeat.i(191671);
+    if (!this.LWF.agX(3))
     {
       paramf = new IllegalStateException("setPlayerOptionalParam , state invalid");
-      AppMethodBeat.o(187650);
+      AppMethodBeat.o(191671);
       throw paramf;
     }
     if (paramf.key == 100)
     {
-      int j = (int)paramf.KeS.value;
-      com.tencent.thumbplayer.utils.f.d("TPThumbPlayer[TPSystemClipPlayer.java]", "start position:".concat(String.valueOf(j)));
+      int j = (int)paramf.LYO.value;
+      com.tencent.thumbplayer.utils.d.d("TPThumbPlayer[TPSystemClipPlayer.java]", "start position:".concat(String.valueOf(j)));
       int i = 0;
-      while (i < this.Kdd.size())
+      while (i < this.LWZ.size())
       {
-        if ((((com.tencent.thumbplayer.b.a.e)this.Kdd.get(i)).fFt() <= j) && (j <= ((com.tencent.thumbplayer.b.a.e)this.Kdd.get(i)).fFt() + ((com.tencent.thumbplayer.b.a.e)this.Kdd.get(i)).fFs()))
+        if ((((com.tencent.thumbplayer.b.a.e)this.LWZ.get(i)).fWI() <= j) && (j <= ((com.tencent.thumbplayer.b.a.e)this.LWZ.get(i)).fWI() + ((com.tencent.thumbplayer.b.a.e)this.LWZ.get(i)).fWH()))
         {
-          this.Kde = i;
-          this.KcI.setDataSource(((com.tencent.thumbplayer.b.a.e)this.Kdd.get(i)).getFilePath());
-          paramf.KeS.value = (j - ((com.tencent.thumbplayer.b.a.e)this.Kdd.get(i)).fFt());
+          this.LXa = i;
+          this.LWE.setDataSource(((com.tencent.thumbplayer.b.a.e)this.LWZ.get(i)).getFilePath());
+          paramf.LYO.value = (j - ((com.tencent.thumbplayer.b.a.e)this.LWZ.get(i)).fWI());
         }
         i += 1;
       }
     }
-    if (this.KcD != null) {
-      this.KcD.b(paramf);
+    if (this.LWz != null) {
+      this.LWz.b(paramf);
     }
-    this.KcI.a(paramf);
-    AppMethodBeat.o(187650);
+    this.LWE.a(paramf);
+    AppMethodBeat.o(191671);
   }
   
-  public final void bb(String paramString1, String paramString2, String paramString3)
+  public final void bk(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(187656);
-    if (!this.KcJ.aex(3))
+    AppMethodBeat.i(191677);
+    if (!this.LWF.agX(3))
     {
-      AppMethodBeat.o(187656);
+      AppMethodBeat.o(191677);
       return;
     }
-    com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPSystemClipPlayer.java]", "addSubtitleSource， url: " + paramString1 + ", name: " + paramString3 + ", mimeType: " + paramString2);
-    this.KcI.bb(paramString1, paramString2, paramString3);
-    if (this.KcD != null) {
-      this.KcD.bb(paramString1, paramString2, paramString3);
+    com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPSystemClipPlayer.java]", "addSubtitleSource， url: " + paramString1 + ", name: " + paramString3 + ", mimeType: " + paramString2);
+    this.LWE.bk(paramString1, paramString2, paramString3);
+    if (this.LWz != null) {
+      this.LWz.bk(paramString1, paramString2, paramString3);
     }
-    AppMethodBeat.o(187656);
+    AppMethodBeat.o(191677);
   }
   
   public final void c(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(187676);
-    if (!this.KcJ.aex(3))
+    AppMethodBeat.i(191697);
+    if (!this.LWF.agX(3))
     {
-      AppMethodBeat.o(187676);
+      AppMethodBeat.o(191697);
       return;
     }
-    if (this.KcD != null) {
-      this.KcD.c(paramBoolean, paramLong1, paramLong2);
+    if (this.LWz != null) {
+      this.LWz.c(paramBoolean, paramLong1, paramLong2);
     }
-    this.KcI.c(paramBoolean, paramLong1, paramLong2);
-    AppMethodBeat.o(187676);
+    this.LWE.c(paramBoolean, paramLong1, paramLong2);
+    AppMethodBeat.o(191697);
   }
   
-  public final void cd(float paramFloat)
+  public final void ci(float paramFloat)
   {
-    AppMethodBeat.i(187673);
-    if (!this.KcJ.aex(3))
+    AppMethodBeat.i(191694);
+    if (!this.LWF.agX(3))
     {
-      AppMethodBeat.o(187673);
+      AppMethodBeat.o(191694);
       return;
     }
-    if (this.KcD != null) {
-      this.KcD.cd(paramFloat);
+    if (this.LWz != null) {
+      this.LWz.ci(paramFloat);
     }
-    this.KcI.Kcs = paramFloat;
-    AppMethodBeat.o(187673);
+    this.LWE.LWo = paramFloat;
+    AppMethodBeat.o(191694);
   }
   
-  public final void ce(float paramFloat)
+  public final void cj(float paramFloat)
   {
-    AppMethodBeat.i(187674);
-    if (!this.KcJ.aex(3))
+    AppMethodBeat.i(191695);
+    if (!this.LWF.agX(3))
     {
-      AppMethodBeat.o(187674);
+      AppMethodBeat.o(191695);
       return;
     }
-    if (this.KcD != null) {
-      this.KcD.ce(paramFloat);
+    if (this.LWz != null) {
+      this.LWz.cj(paramFloat);
     }
-    this.KcI.Kct = paramFloat;
-    AppMethodBeat.o(187674);
+    this.LWE.LWp = paramFloat;
+    AppMethodBeat.o(191695);
   }
   
-  public final n[] fEO()
+  public final n[] fWg()
   {
-    AppMethodBeat.i(187684);
-    if (this.KcD != null)
+    AppMethodBeat.i(191705);
+    if (this.LWz != null)
     {
-      n[] arrayOfn = this.KcD.fEO();
-      AppMethodBeat.o(187684);
+      n[] arrayOfn = this.LWz.fWg();
+      AppMethodBeat.o(191705);
       return arrayOfn;
     }
-    AppMethodBeat.o(187684);
+    AppMethodBeat.o(191705);
     return null;
   }
   
-  public final k[] fEP()
+  public final k[] fWh()
   {
     return new k[0];
   }
   
   public final void g(String paramString1, String paramString2, List<com.tencent.thumbplayer.b.f> paramList)
   {
-    AppMethodBeat.i(187657);
-    if (this.KcD != null) {
-      this.KcD.g(paramString1, paramString2, paramList);
+    AppMethodBeat.i(191678);
+    if (this.LWz != null) {
+      this.LWz.g(paramString1, paramString2, paramList);
     }
-    AppMethodBeat.o(187657);
+    AppMethodBeat.o(191678);
   }
   
   public final long getBufferedDurationMs()
   {
-    AppMethodBeat.i(187681);
-    if (!this.KcJ.aex(15))
+    AppMethodBeat.i(191702);
+    if (!this.LWF.agX(15))
     {
-      if (this.KcL != null)
+      if (this.LWH != null)
       {
-        l = this.KcL.Kcj;
-        AppMethodBeat.o(187681);
+        l = this.LWH.LWf;
+        AppMethodBeat.o(191702);
         return l;
       }
-      AppMethodBeat.o(187681);
+      AppMethodBeat.o(191702);
       return 0L;
     }
-    long l = this.KcD.getBufferedDurationMs();
-    AppMethodBeat.o(187681);
+    long l = this.LWz.getBufferedDurationMs();
+    AppMethodBeat.o(191702);
     return l;
   }
   
   public final long getCurrentPositionMs()
   {
-    AppMethodBeat.i(187680);
+    AppMethodBeat.i(191701);
     long l1 = 0L;
     int i = 0;
-    while ((i < this.Kdd.size()) && (i < this.Kde))
+    while ((i < this.LWZ.size()) && (i < this.LXa))
     {
-      l1 += ((com.tencent.thumbplayer.b.a.e)this.Kdd.get(i)).fFs();
+      l1 += ((com.tencent.thumbplayer.b.a.e)this.LWZ.get(i)).fWH();
       i += 1;
     }
-    if (!this.KcJ.aex(12))
+    if (!this.LWF.agX(12))
     {
-      AppMethodBeat.o(187680);
+      AppMethodBeat.o(191701);
       return l1;
     }
-    long l2 = this.KcD.getCurrentPositionMs();
-    AppMethodBeat.o(187680);
+    long l2 = this.LWz.getCurrentPositionMs();
+    AppMethodBeat.o(191701);
     return l1 + l2;
   }
   
   public final long getDurationMs()
   {
-    AppMethodBeat.i(187679);
-    Iterator localIterator = this.Kdd.iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((com.tencent.thumbplayer.b.a.e)localIterator.next()).fFs() + l) {}
-    AppMethodBeat.o(187679);
+    AppMethodBeat.i(191700);
+    Iterator localIterator = this.LWZ.iterator();
+    for (long l = 0L; localIterator.hasNext(); l = ((com.tencent.thumbplayer.b.a.e)localIterator.next()).fWH() + l) {}
+    AppMethodBeat.o(191700);
     return l;
   }
   
   public final long getPropertyLong(int paramInt)
   {
-    AppMethodBeat.i(187677);
-    if (this.KcD != null)
+    AppMethodBeat.i(191698);
+    if (this.LWz != null)
     {
-      long l = this.KcD.getPropertyLong(paramInt);
-      AppMethodBeat.o(187677);
+      long l = this.LWz.getPropertyLong(paramInt);
+      AppMethodBeat.o(191698);
       return l;
     }
-    AppMethodBeat.o(187677);
+    AppMethodBeat.o(191698);
     return -1L;
   }
   
   public final String getPropertyString(int paramInt)
   {
-    AppMethodBeat.i(187678);
-    if (this.KcD != null)
+    AppMethodBeat.i(191699);
+    if (this.LWz != null)
     {
-      String str = this.KcD.getPropertyString(paramInt);
-      AppMethodBeat.o(187678);
+      String str = this.LWz.getPropertyString(paramInt);
+      AppMethodBeat.o(191699);
       return str;
     }
-    AppMethodBeat.o(187678);
+    AppMethodBeat.o(191699);
     return "";
   }
   
   public final int getVideoHeight()
   {
-    AppMethodBeat.i(187683);
-    if (this.KcL == null)
+    AppMethodBeat.i(191704);
+    if (this.LWH == null)
     {
-      AppMethodBeat.o(187683);
+      AppMethodBeat.o(191704);
       return 0;
     }
-    if (this.KcL.aQY > 0L)
+    if (this.LWH.bbt > 0L)
     {
-      i = (int)this.KcL.aQY;
-      AppMethodBeat.o(187683);
+      i = (int)this.LWH.bbt;
+      AppMethodBeat.o(191704);
       return i;
     }
-    if (!this.KcJ.aex(13))
+    if (!this.LWF.agX(13))
     {
-      AppMethodBeat.o(187683);
+      AppMethodBeat.o(191704);
       return 0;
     }
-    this.KcL.aQY = this.KcD.getVideoHeight();
-    int i = (int)this.KcL.aQY;
-    AppMethodBeat.o(187683);
+    this.LWH.bbt = this.LWz.getVideoHeight();
+    int i = (int)this.LWH.bbt;
+    AppMethodBeat.o(191704);
     return i;
   }
   
   public final int getVideoWidth()
   {
-    AppMethodBeat.i(187682);
-    if (this.KcL == null)
+    AppMethodBeat.i(191703);
+    if (this.LWH == null)
     {
-      AppMethodBeat.o(187682);
+      AppMethodBeat.o(191703);
       return 0;
     }
-    if (this.KcL.aQX > 0L)
+    if (this.LWH.bbs > 0L)
     {
-      i = (int)this.KcL.aQX;
-      AppMethodBeat.o(187682);
+      i = (int)this.LWH.bbs;
+      AppMethodBeat.o(191703);
       return i;
     }
-    if (!this.KcJ.aex(13))
+    if (!this.LWF.agX(13))
     {
-      AppMethodBeat.o(187682);
+      AppMethodBeat.o(191703);
       return 0;
     }
-    this.KcL.aQX = this.KcD.getVideoWidth();
-    int i = (int)this.KcL.aQX;
-    AppMethodBeat.o(187682);
+    this.LWH.bbs = this.LWz.getVideoWidth();
+    int i = (int)this.LWH.bbs;
+    AppMethodBeat.o(191703);
     return i;
   }
   
-  public final void kD(int paramInt1, int paramInt2)
+  public final void kS(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187668);
-    if (!this.KcJ.aex(9))
+    AppMethodBeat.i(191689);
+    if (!this.LWF.agX(9))
     {
-      AppMethodBeat.o(187668);
+      AppMethodBeat.o(191689);
       return;
     }
-    if ((paramInt1 >= fES().fFt()) && (paramInt1 <= fES().fFt() + fES().fFs()))
+    if ((paramInt1 >= fWk().fWI()) && (paramInt1 <= fWk().fWI() + fWk().fWH()))
     {
-      if (this.KcD != null)
+      if (this.LWz != null)
       {
-        com.tencent.thumbplayer.utils.f.d("TPThumbPlayer[TPSystemClipPlayer.java]", "seek to:" + paramInt1 + "/mode=" + paramInt2);
-        this.KcD.kD((int)(paramInt1 - fES().fFt()), paramInt2);
-        AppMethodBeat.o(187668);
+        com.tencent.thumbplayer.utils.d.d("TPThumbPlayer[TPSystemClipPlayer.java]", "seek to:" + paramInt1 + "/mode=" + paramInt2);
+        this.LWz.kS((int)(paramInt1 - fWk().fWI()), paramInt2);
+        AppMethodBeat.o(191689);
       }
     }
     else {
-      aez(paramInt1);
+      agZ(paramInt1);
     }
-    AppMethodBeat.o(187668);
+    AppMethodBeat.o(191689);
   }
-  
-  public final void p(String paramString, int paramInt, long paramLong) {}
   
   public final void pause()
   {
-    AppMethodBeat.i(187663);
-    if (!this.KcJ.aex(6))
+    AppMethodBeat.i(191684);
+    if (!this.LWF.agX(6))
     {
-      AppMethodBeat.o(187663);
+      AppMethodBeat.o(191684);
       return;
     }
-    if (this.KcD == null)
+    if (this.LWz == null)
     {
       IllegalStateException localIllegalStateException1 = new IllegalStateException("error , pause , player is null");
-      AppMethodBeat.o(187663);
+      AppMethodBeat.o(191684);
       throw localIllegalStateException1;
     }
     try
     {
-      this.KcD.pause();
-      this.KcE.changeState(6);
-      AppMethodBeat.o(187663);
+      this.LWz.pause();
+      this.LWA.changeState(6);
+      AppMethodBeat.o(191684);
       return;
     }
     catch (IllegalStateException localIllegalStateException2)
     {
       IllegalStateException localIllegalStateException3 = new IllegalStateException("error , pause ,state invalid");
-      AppMethodBeat.o(187663);
+      AppMethodBeat.o(191684);
       throw localIllegalStateException3;
     }
   }
   
   public final void prepare()
   {
-    AppMethodBeat.i(187660);
-    if (!this.KcJ.aex(1))
+    AppMethodBeat.i(191681);
+    if (!this.LWF.agX(1))
     {
-      AppMethodBeat.o(187660);
+      AppMethodBeat.o(191681);
       return;
     }
     Object localObject;
-    if (!this.KcI.fEK())
+    if (!this.LWE.fWc())
     {
       localObject = new IOException("error , prepare , data source invalid");
-      AppMethodBeat.o(187660);
+      AppMethodBeat.o(191681);
       throw ((Throwable)localObject);
     }
-    this.KcD = fET();
-    if (this.KcD == null)
+    this.LWz = fWl();
+    if (this.LWz == null)
     {
       localObject = new RuntimeException("error , create player failed");
-      AppMethodBeat.o(187660);
+      AppMethodBeat.o(191681);
       throw ((Throwable)localObject);
     }
-    this.KcE.changeState(3);
-    this.KcD.prepare();
-    AppMethodBeat.o(187660);
+    this.LWA.changeState(3);
+    this.LWz.prepare();
+    AppMethodBeat.o(191681);
   }
   
   public final void prepareAsync()
   {
-    AppMethodBeat.i(187661);
-    if (!this.KcJ.aex(1))
+    AppMethodBeat.i(191682);
+    if (!this.LWF.agX(1))
     {
-      AppMethodBeat.o(187661);
+      AppMethodBeat.o(191682);
       return;
     }
     Object localObject;
-    if (!this.KcI.fEK())
+    if (!this.LWE.fWc())
     {
       localObject = new IllegalStateException("error , prepare , state invalid , data source invalid");
-      AppMethodBeat.o(187661);
+      AppMethodBeat.o(191682);
       throw ((Throwable)localObject);
     }
-    this.KcD = fET();
-    if (this.KcD == null)
+    this.LWz = fWl();
+    if (this.LWz == null)
     {
       localObject = new RuntimeException("error , create player failed");
-      AppMethodBeat.o(187661);
+      AppMethodBeat.o(191682);
       throw ((Throwable)localObject);
     }
-    this.KcE.changeState(3);
-    this.KcD.prepareAsync();
-    AppMethodBeat.o(187661);
+    this.LWA.changeState(3);
+    this.LWz.prepareAsync();
+    AppMethodBeat.o(191682);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(187666);
-    if (!this.KcJ.aex(16))
+    AppMethodBeat.i(191687);
+    if (!this.LWF.agX(16))
     {
-      AppMethodBeat.o(187666);
+      AppMethodBeat.o(191687);
       return;
     }
     try
     {
-      if (this.KcD != null) {
-        this.KcD.release();
+      if (this.LWz != null) {
+        this.LWz.release();
       }
       return;
     }
     catch (Exception localException)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("error , release , exception");
-      AppMethodBeat.o(187666);
+      AppMethodBeat.o(191687);
       throw localIllegalStateException;
     }
     finally
     {
-      this.KcI.reset();
-      this.KcG.clear();
-      this.KcE.changeState(10);
-      AppMethodBeat.o(187666);
+      this.LWE.reset();
+      this.LWC.clear();
+      this.LWA.changeState(10);
+      AppMethodBeat.o(191687);
     }
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(187665);
-    if (!this.KcJ.aex(8))
+    AppMethodBeat.i(191686);
+    if (!this.LWF.agX(8))
     {
-      AppMethodBeat.o(187665);
+      AppMethodBeat.o(191686);
       return;
     }
     try
     {
-      if (this.KcD != null) {
-        this.KcD.reset();
+      if (this.LWz != null) {
+        this.LWz.reset();
       }
       return;
     }
     catch (IllegalStateException localIllegalStateException1)
     {
       IllegalStateException localIllegalStateException2 = new IllegalStateException("error , reset ,state invalid");
-      AppMethodBeat.o(187665);
+      AppMethodBeat.o(191686);
       throw localIllegalStateException2;
     }
     finally
     {
-      this.KcI.reset();
-      this.KcG.clear();
-      this.KcE.changeState(1);
-      AppMethodBeat.o(187665);
+      this.LWE.reset();
+      this.LWC.clear();
+      this.LWA.changeState(1);
+      AppMethodBeat.o(191686);
     }
   }
   
   public final void seekTo(int paramInt)
   {
-    AppMethodBeat.i(187667);
-    if (!this.KcJ.aex(9))
+    AppMethodBeat.i(191688);
+    if (!this.LWF.agX(9))
     {
-      AppMethodBeat.o(187667);
+      AppMethodBeat.o(191688);
       return;
     }
-    if ((paramInt >= fES().fFt()) && (paramInt <= fES().fFt() + fES().fFs()))
+    if ((paramInt >= fWk().fWI()) && (paramInt <= fWk().fWI() + fWk().fWH()))
     {
-      if (this.KcD != null)
+      if (this.LWz != null)
       {
-        com.tencent.thumbplayer.utils.f.d("TPThumbPlayer[TPSystemClipPlayer.java]", "seek to:".concat(String.valueOf(paramInt)));
-        this.KcD.seekTo((int)(paramInt - fES().fFt()));
-        AppMethodBeat.o(187667);
+        com.tencent.thumbplayer.utils.d.d("TPThumbPlayer[TPSystemClipPlayer.java]", "seek to:".concat(String.valueOf(paramInt)));
+        this.LWz.seekTo((int)(paramInt - fWk().fWI()));
+        AppMethodBeat.o(191688);
       }
     }
     else {
-      aez(paramInt);
+      agZ(paramInt);
     }
-    AppMethodBeat.o(187667);
+    AppMethodBeat.o(191688);
   }
   
   public final void setDataSource(String paramString)
   {
-    AppMethodBeat.i(187652);
+    AppMethodBeat.i(191673);
     setDataSource(paramString, null);
-    AppMethodBeat.o(187652);
+    AppMethodBeat.o(191673);
   }
   
   public final void setDataSource(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(187653);
-    this.KcI.setDataSource(paramString, paramMap);
-    this.KcE.changeState(2);
-    AppMethodBeat.o(187653);
+    AppMethodBeat.i(191674);
+    this.LWE.setDataSource(paramString, paramMap);
+    this.LWA.changeState(2);
+    AppMethodBeat.o(191674);
   }
   
   public final void setSurface(Surface paramSurface)
   {
-    AppMethodBeat.i(187651);
-    if (!this.KcJ.aex(4))
+    AppMethodBeat.i(191672);
+    if (!this.LWF.agX(4))
     {
       paramSurface = new IllegalStateException("setSurface , state invalid");
-      AppMethodBeat.o(187651);
+      AppMethodBeat.o(191672);
       throw paramSurface;
     }
-    if (this.KcD != null) {
-      this.KcD.setSurface(paramSurface);
+    if (this.LWz != null) {
+      this.LWz.setSurface(paramSurface);
     }
-    this.KcI.mSurface = paramSurface;
-    AppMethodBeat.o(187651);
+    this.LWE.mSurface = paramSurface;
+    AppMethodBeat.o(191672);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(187662);
-    if (!this.KcJ.aex(5))
+    AppMethodBeat.i(191683);
+    if (!this.LWF.agX(5))
     {
-      AppMethodBeat.o(187662);
+      AppMethodBeat.o(191683);
       return;
     }
-    if (this.KcD == null)
+    if (this.LWz == null)
     {
       IllegalStateException localIllegalStateException1 = new IllegalStateException("error , start , player is null");
-      AppMethodBeat.o(187662);
+      AppMethodBeat.o(191683);
       throw localIllegalStateException1;
     }
     try
     {
-      this.KcD.start();
-      this.KcE.changeState(5);
-      AppMethodBeat.o(187662);
+      this.LWz.start();
+      this.LWA.changeState(5);
+      AppMethodBeat.o(191683);
       return;
     }
     catch (IllegalStateException localIllegalStateException2)
     {
       IllegalStateException localIllegalStateException3 = new IllegalStateException("error , start ,state invalid");
-      AppMethodBeat.o(187662);
+      AppMethodBeat.o(191683);
       throw localIllegalStateException3;
     }
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(187664);
-    if (!this.KcJ.aex(7))
+    AppMethodBeat.i(191685);
+    if (!this.LWF.agX(7))
     {
-      AppMethodBeat.o(187664);
+      AppMethodBeat.o(191685);
       return;
     }
-    if (this.KcD == null)
+    if (this.LWz == null)
     {
       IllegalStateException localIllegalStateException1 = new IllegalStateException("error , stop , player is null");
-      AppMethodBeat.o(187664);
+      AppMethodBeat.o(191685);
       throw localIllegalStateException1;
     }
     try
     {
-      this.KcD.stop();
+      this.LWz.stop();
       return;
     }
     catch (IllegalStateException localIllegalStateException2)
     {
       IllegalStateException localIllegalStateException3 = new IllegalStateException("error , pause ,state invalid");
-      AppMethodBeat.o(187664);
+      AppMethodBeat.o(191685);
       throw localIllegalStateException3;
     }
     finally
     {
-      this.KcE.changeState(8);
-      AppMethodBeat.o(187664);
+      this.LWA.changeState(8);
+      AppMethodBeat.o(191685);
     }
   }
   
-  public final void yI(boolean paramBoolean)
+  public final void zv(boolean paramBoolean)
   {
-    AppMethodBeat.i(187675);
-    if (!this.KcJ.aex(3))
+    AppMethodBeat.i(191696);
+    if (!this.LWF.agX(3))
     {
-      AppMethodBeat.o(187675);
+      AppMethodBeat.o(191696);
       return;
     }
-    if (this.KcD != null) {
-      this.KcD.yI(paramBoolean);
+    if (this.LWz != null) {
+      this.LWz.zv(paramBoolean);
     }
-    this.KcI.yI(paramBoolean);
-    AppMethodBeat.o(187675);
+    this.LWE.zv(paramBoolean);
+    AppMethodBeat.o(191696);
   }
   
-  public final void yJ(boolean paramBoolean)
+  public final void zw(boolean paramBoolean)
   {
-    AppMethodBeat.i(187672);
-    if (!this.KcJ.aex(3))
+    AppMethodBeat.i(191693);
+    if (!this.LWF.agX(3))
     {
-      AppMethodBeat.o(187672);
+      AppMethodBeat.o(191693);
       return;
     }
-    if (this.KcD != null) {
-      this.KcD.yJ(paramBoolean);
+    if (this.LWz != null) {
+      this.LWz.zw(paramBoolean);
     }
-    this.KcI.Kcr = paramBoolean;
-    AppMethodBeat.o(187672);
+    this.LWE.LWn = paramBoolean;
+    AppMethodBeat.o(191693);
   }
   
   final class a
@@ -947,155 +946,155 @@ public final class b
     
     public final void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(187643);
+      AppMethodBeat.i(191664);
       b localb = b.this;
-      if (localb.KcJ.aey(4)) {
-        localb.KcG.a(paramInt1, paramInt2, paramLong1, paramLong2);
+      if (localb.LWF.agY(4)) {
+        localb.LWC.a(paramInt1, paramInt2, paramLong1, paramLong2);
       }
-      AppMethodBeat.o(187643);
+      AppMethodBeat.o(191664);
     }
     
     public final void a(int paramInt, long paramLong1, long paramLong2, Object paramObject)
     {
-      AppMethodBeat.i(187642);
+      AppMethodBeat.i(191663);
       b localb = b.this;
-      if (localb.KcJ.aey(3)) {
-        localb.KcG.a(paramInt, paramLong1, paramLong2, paramObject);
+      if (localb.LWF.agY(3)) {
+        localb.LWC.a(paramInt, paramLong1, paramLong2, paramObject);
       }
-      AppMethodBeat.o(187642);
+      AppMethodBeat.o(191663);
     }
     
     public final void a(com.tencent.thumbplayer.b.c paramc)
     {
-      AppMethodBeat.i(187648);
+      AppMethodBeat.i(191669);
       b localb = b.this;
-      if (localb.KcJ.aey(7)) {
-        localb.KcG.a(paramc);
+      if (localb.LWF.agY(7)) {
+        localb.LWC.a(paramc);
       }
-      AppMethodBeat.o(187648);
+      AppMethodBeat.o(191669);
     }
     
     public final void a(m paramm)
     {
-      AppMethodBeat.i(187646);
+      AppMethodBeat.i(191667);
       b localb = b.this;
-      if (localb.KcJ.aey(7)) {
-        localb.KcG.a(paramm);
+      if (localb.LWF.agY(7)) {
+        localb.LWC.a(paramm);
       }
-      AppMethodBeat.o(187646);
+      AppMethodBeat.o(191667);
     }
     
     public final void a(o paramo)
     {
-      AppMethodBeat.i(187647);
+      AppMethodBeat.i(191668);
       b localb = b.this;
-      if (localb.KcJ.aey(7)) {
-        localb.KcG.a(paramo);
+      if (localb.LWF.agY(7)) {
+        localb.LWC.a(paramo);
       }
-      AppMethodBeat.o(187647);
+      AppMethodBeat.o(191668);
     }
     
-    public final void ay(long paramLong1, long paramLong2)
+    public final void aD(long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(187645);
+      AppMethodBeat.i(191666);
       b localb = b.this;
-      if (localb.KcJ.aey(6))
+      if (localb.LWF.agY(6))
       {
-        localb.KcL.aQY = paramLong2;
-        localb.KcL.aQX = paramLong1;
-        localb.KcG.ay(paramLong1, paramLong2);
+        localb.LWH.bbt = paramLong2;
+        localb.LWH.bbs = paramLong1;
+        localb.LWC.aD(paramLong1, paramLong2);
       }
-      AppMethodBeat.o(187645);
+      AppMethodBeat.o(191666);
     }
     
-    public final void cfM()
+    public final void ckp()
     {
-      AppMethodBeat.i(187644);
+      AppMethodBeat.i(191665);
       b localb = b.this;
-      if (localb.KcJ.aey(5)) {
-        localb.KcG.cfM();
+      if (localb.LWF.agY(5)) {
+        localb.LWC.ckp();
       }
-      AppMethodBeat.o(187644);
+      AppMethodBeat.o(191665);
     }
     
     public final void onCompletion()
     {
-      AppMethodBeat.i(187641);
+      AppMethodBeat.i(191662);
       b localb = b.this;
-      if (localb.KcJ.aey(2))
+      if (localb.LWF.agY(2))
       {
-        if (localb.Kde >= localb.Kdd.size() - 1)
+        if (localb.LXa >= localb.LWZ.size() - 1)
         {
-          localb.KcE.changeState(7);
-          localb.KcG.onCompletion();
-          AppMethodBeat.o(187641);
+          localb.LWA.changeState(7);
+          localb.LWC.onCompletion();
+          AppMethodBeat.o(191662);
           return;
         }
         try
         {
-          localb.aJ(localb.Kde + 1, 0L);
-          AppMethodBeat.o(187641);
+          localb.aT(localb.LXa + 1, 0L);
+          AppMethodBeat.o(191662);
           return;
         }
         catch (IOException localIOException)
         {
-          com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPSystemClipPlayer.java]", "handleOnComplete:" + localIOException.toString());
+          com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPSystemClipPlayer.java]", "handleOnComplete:" + localIOException.toString());
         }
       }
-      AppMethodBeat.o(187641);
+      AppMethodBeat.o(191662);
     }
     
-    public final void rB()
+    public final void ta()
     {
-      AppMethodBeat.i(187640);
+      AppMethodBeat.i(191661);
       b localb = b.this;
-      if (localb.KcG != null) {
-        localb.KcG.a(152, localb.Kde, 0L, null);
+      if (localb.LWC != null) {
+        localb.LWC.a(152, localb.LXa, 0L, null);
       }
       Object localObject;
-      if (localb.Kdf)
+      if (localb.LXb)
       {
         localb.start();
-        if ((localb.Kdg) && (localb.KcG != null) && (!com.tencent.thumbplayer.utils.b.isEmpty(localb.Kdh)))
+        if ((localb.LXc) && (localb.LWC != null) && (!com.tencent.thumbplayer.utils.a.isEmpty(localb.LXd)))
         {
-          localObject = (Long)localb.Kdh.poll();
+          localObject = (Long)localb.LXd.poll();
           if (localObject != null) {
-            localb.KcG.a(3, ((Long)localObject).longValue(), 0L, null);
+            localb.LWC.a(3, ((Long)localObject).longValue(), 0L, null);
           }
-          localb.Kdg = false;
+          localb.LXc = false;
         }
-        AppMethodBeat.o(187640);
+        AppMethodBeat.o(191661);
         return;
       }
-      if (localb.KcJ.aey(1))
+      if (localb.LWF.agY(1))
       {
-        localb.KcE.changeState(4);
-        if (localb.KcG != null) {
-          localb.KcG.rB();
+        localb.LWA.changeState(4);
+        if (localb.LWC != null) {
+          localb.LWC.ta();
         }
-        localObject = localb.KcD;
-        n[] arrayOfn = localb.fEO();
+        localObject = localb.LWz;
+        n[] arrayOfn = localb.fWg();
         if (arrayOfn != null)
         {
           int i = 0;
           while (i < arrayOfn.length)
           {
             int j = arrayOfn[i].trackType;
-            n localn = (n)localb.KcI.Kcu.get(Integer.valueOf(j));
+            n localn = (n)localb.LWE.LWq.get(Integer.valueOf(j));
             if (arrayOfn[i].equals(localn)) {
-              ((com.tencent.thumbplayer.a.a.b)localObject).aG(i, -1L);
+              ((com.tencent.thumbplayer.a.a.b)localObject).aQ(i, -1L);
             }
             i += 1;
           }
         }
       }
-      AppMethodBeat.o(187640);
+      AppMethodBeat.o(191661);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.a.a.a.b
  * JD-Core Version:    0.7.0.1
  */

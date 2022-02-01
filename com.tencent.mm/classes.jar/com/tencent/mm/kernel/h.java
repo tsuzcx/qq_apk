@@ -7,30 +7,30 @@ import junit.framework.Assert;
 
 public final class h<_Profile extends com.tencent.mm.kernel.b.g>
 {
-  private static h gis;
-  private c git;
-  private d<_Profile> giu;
-  byte[] giv;
-  public volatile boolean giw;
-  public long gix;
-  a giy;
+  private static h gCc;
+  private c gCd;
+  private d<_Profile> gCe;
+  byte[] gCf;
+  public volatile boolean gCg;
+  public long gCh;
+  a gCi;
   
   private h(_Profile param_Profile)
   {
     AppMethodBeat.i(158311);
-    this.giv = new byte[0];
-    this.giw = false;
-    this.giy = new a();
-    this.git = new c();
-    this.giu = new d(param_Profile);
+    this.gCf = new byte[0];
+    this.gCg = false;
+    this.gCi = new a();
+    this.gCd = new c();
+    this.gCe = new d(param_Profile);
     AppMethodBeat.o(158311);
   }
   
-  public static <_Profile extends com.tencent.mm.kernel.b.g> h<_Profile> agV()
+  public static <_Profile extends com.tencent.mm.kernel.b.g> h<_Profile> ajG()
   {
     AppMethodBeat.i(158314);
-    Assert.assertNotNull("Skeleton not initialized!", gis);
-    h localh = gis;
+    Assert.assertNotNull("Skeleton not initialized!", gCc);
+    h localh = gCc;
     AppMethodBeat.o(158314);
     return localh;
   }
@@ -43,14 +43,14 @@ public final class h<_Profile extends com.tencent.mm.kernel.b.g>
     //   2: monitorenter
     //   3: ldc 86
     //   5: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 76	com/tencent/mm/kernel/h:gis	Lcom/tencent/mm/kernel/h;
+    //   8: getstatic 76	com/tencent/mm/kernel/h:gCc	Lcom/tencent/mm/kernel/h;
     //   11: ifnull +28 -> 39
     //   14: ldc 88
     //   16: ldc 90
     //   18: iconst_0
     //   19: anewarray 5	java/lang/Object
     //   22: invokestatic 95	com/tencent/mm/kernel/j:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   25: getstatic 76	com/tencent/mm/kernel/h:gis	Lcom/tencent/mm/kernel/h;
+    //   25: getstatic 76	com/tencent/mm/kernel/h:gCc	Lcom/tencent/mm/kernel/h;
     //   28: astore_0
     //   29: ldc 86
     //   31: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -69,7 +69,7 @@ public final class h<_Profile extends com.tencent.mm.kernel.b.g>
     //   55: invokespecial 98	com/tencent/mm/kernel/h:<init>	(Lcom/tencent/mm/kernel/b/g;)V
     //   58: astore_0
     //   59: aload_0
-    //   60: putstatic 76	com/tencent/mm/kernel/h:gis	Lcom/tencent/mm/kernel/h;
+    //   60: putstatic 76	com/tencent/mm/kernel/h:gCc	Lcom/tencent/mm/kernel/h;
     //   63: ldc 86
     //   65: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   68: goto -34 -> 34
@@ -91,71 +91,71 @@ public final class h<_Profile extends com.tencent.mm.kernel.b.g>
   {
     AppMethodBeat.i(158315);
     int i = 0;
-    synchronized (this.giv)
+    synchronized (this.gCf)
     {
-      if (this.giw) {
+      if (this.gCg) {
         i = 1;
       }
       if (i != 0)
       {
-        paramg.Lh();
+        paramg.MP();
         AppMethodBeat.o(158315);
         return;
       }
     }
-    this.giy.bs(paramg);
+    this.gCi.bu(paramg);
     AppMethodBeat.o(158315);
   }
   
   public final void a(com.tencent.mm.vending.h.d paramd)
   {
     AppMethodBeat.i(158318);
-    j.uk("startup");
-    synchronized (this.giv)
+    j.xa("startup");
+    synchronized (this.gCf)
     {
-      if (this.giw)
+      if (this.gCg)
       {
-        com.tencent.mm.kernel.a.a.h("warning, mmskeleton has started up already.", new Object[0]);
+        com.tencent.mm.kernel.a.a.k("warning, mmskeleton has started up already.", new Object[0]);
         AppMethodBeat.o(158318);
         return;
       }
-      ??? = agO().agp();
+      ??? = ajz().ajb();
       final long l = System.currentTimeMillis();
-      com.tencent.mm.kernel.a.a.h("mmskeleton boot startup for process [%s]...", new Object[] { ((com.tencent.mm.kernel.b.g)???).mProcessName });
-      final com.tencent.mm.kernel.a.a locala = ((com.tencent.mm.kernel.b.g)???).ghu;
-      locala.ahb();
-      com.tencent.mm.vending.g.c localc = com.tencent.mm.vending.g.g.fxs().yl(true);
-      ((com.tencent.mm.kernel.b.g)???).gkk.gkm = System.currentTimeMillis();
-      locala.Kf();
-      ((com.tencent.mm.kernel.b.g)???).gkk.gkn = System.currentTimeMillis();
-      locala.Kg();
-      j.uk("installPlugins");
-      ((com.tencent.mm.kernel.b.g)???).gkk.gko = System.currentTimeMillis();
-      locala.ahc();
-      ((com.tencent.mm.kernel.b.g)???).gkk.gkp = System.currentTimeMillis();
+      com.tencent.mm.kernel.a.a.k("mmskeleton boot startup for process [%s]...", new Object[] { ((com.tencent.mm.kernel.b.g)???).mProcessName });
+      final com.tencent.mm.kernel.a.a locala = ((com.tencent.mm.kernel.b.g)???).gBe;
+      locala.ajM();
+      com.tencent.mm.vending.g.c localc = com.tencent.mm.vending.g.g.fOf().yX(true);
+      ((com.tencent.mm.kernel.b.g)???).gDU.gDW = System.currentTimeMillis();
+      locala.LE();
+      ((com.tencent.mm.kernel.b.g)???).gDU.gDX = System.currentTimeMillis();
+      locala.LF();
+      j.xa("installPlugins");
+      ((com.tencent.mm.kernel.b.g)???).gDU.gDY = System.currentTimeMillis();
+      locala.ajN();
+      ((com.tencent.mm.kernel.b.g)???).gDU.gDZ = System.currentTimeMillis();
       locala.a((com.tencent.mm.kernel.b.g)???);
       if (paramd != null) {
         localc.b(paramd);
       }
-      ((com.tencent.mm.kernel.b.g)???).gkk.gkq = System.currentTimeMillis();
+      ((com.tencent.mm.kernel.b.g)???).gDU.gEa = System.currentTimeMillis();
       localc.c(new com.tencent.mm.vending.c.a() {});
-      ((com.tencent.mm.kernel.b.g)???).gkk.gkr = System.currentTimeMillis();
+      ((com.tencent.mm.kernel.b.g)???).gDU.gEb = System.currentTimeMillis();
       localc.c(new com.tencent.mm.vending.c.a() {});
-      ((com.tencent.mm.kernel.b.g)???).gkk.gks = System.currentTimeMillis();
-      localc.a(com.tencent.mm.vending.h.d.Jrg, new d.b()
+      ((com.tencent.mm.kernel.b.g)???).gDU.gEc = System.currentTimeMillis();
+      localc.a(com.tencent.mm.vending.h.d.LiL, new d.b()
       {
-        public final void bo(Object arg1)
+        public final void bq(Object arg1)
         {
           AppMethodBeat.i(158306);
-          j.uk("executeBootExtension");
-          synchronized (h.this.giv)
+          j.xa("executeBootExtension");
+          synchronized (h.this.gCf)
           {
-            h.this.giw = true;
-            com.tencent.mm.kernel.a.a.h("summerboot mmskeleton boot startup finished in [%s]!", new Object[] { com.tencent.mm.kernel.a.a.pa(l) });
-            h.this.giy.Lh();
-            j.uk("onStartupDone");
-            h.this.gix = System.currentTimeMillis();
-            this.cIA.gkk.gkt = h.this.gix;
+            h.this.gCg = true;
+            com.tencent.mm.kernel.a.a.k("summerboot mmskeleton boot startup finished in [%s]!", new Object[] { com.tencent.mm.kernel.a.a.rb(l) });
+            h.this.gCi.MP();
+            j.xa("onStartupDone");
+            h.this.gCh = System.currentTimeMillis();
+            this.cTI.gDU.gEd = h.this.gCh;
             AppMethodBeat.o(158306);
             return;
           }
@@ -166,20 +166,20 @@ public final class h<_Profile extends com.tencent.mm.kernel.b.g>
     }
   }
   
-  public final c agN()
+  public final c ajy()
   {
     AppMethodBeat.i(158312);
-    Assert.assertNotNull("mCorePlugins not initialized!", this.git);
-    c localc = this.git;
+    Assert.assertNotNull("mCorePlugins not initialized!", this.gCd);
+    c localc = this.gCd;
     AppMethodBeat.o(158312);
     return localc;
   }
   
-  public final d<_Profile> agO()
+  public final d<_Profile> ajz()
   {
     AppMethodBeat.i(158313);
-    Assert.assertNotNull("mCoreProcess not initialized!", this.giu);
-    d locald = this.giu;
+    Assert.assertNotNull("mCoreProcess not initialized!", this.gCe);
+    d locald = this.gCe;
     AppMethodBeat.o(158313);
     return locald;
   }
@@ -187,7 +187,7 @@ public final class h<_Profile extends com.tencent.mm.kernel.b.g>
   public final void b(com.tencent.mm.kernel.api.g paramg)
   {
     AppMethodBeat.i(158316);
-    this.giy.remove(paramg);
+    this.gCi.remove(paramg);
     AppMethodBeat.o(158316);
   }
   
@@ -200,14 +200,14 @@ public final class h<_Profile extends com.tencent.mm.kernel.b.g>
       super();
     }
     
-    public final void Lh()
+    public final void MP()
     {
       AppMethodBeat.i(158309);
       a(new a.a() {});
       AppMethodBeat.o(158309);
     }
     
-    public final void cf(final boolean paramBoolean)
+    public final void cg(final boolean paramBoolean)
     {
       AppMethodBeat.i(158310);
       a(new a.a() {});

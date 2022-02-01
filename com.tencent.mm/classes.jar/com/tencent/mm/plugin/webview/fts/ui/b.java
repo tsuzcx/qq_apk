@@ -9,8 +9,8 @@ import android.widget.AbsoluteLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.fts.c.a;
 import com.tencent.mm.plugin.webview.fts.c.b.b;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bn;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -19,27 +19,27 @@ import java.util.List;
 
 public final class b
 {
-  List<a> CiW;
-  public a CiX;
-  b.b CiY;
-  private MMWebView hqK;
-  public int lEe;
-  public float[] lEf;
-  View lEg;
-  public int lEi;
-  public ao mHandler;
+  List<a> DMd;
+  public a DMe;
+  b.b DMf;
+  private MMWebView hJc;
+  public ap mHandler;
+  public int mdI;
+  public float[] mdJ;
+  View mdK;
+  public int mdM;
   
   @SuppressLint({"ClickableViewAccessibility"})
   public b(MMWebView paramMMWebView, b.b paramb)
   {
     AppMethodBeat.i(78132);
-    this.lEe = -1;
-    this.lEi = -1;
-    this.hqK = paramMMWebView;
-    this.mHandler = new ao(Looper.getMainLooper());
-    this.CiW = new LinkedList();
-    this.lEg = new View(paramMMWebView.getContext());
-    this.CiY = paramb;
+    this.mdI = -1;
+    this.mdM = -1;
+    this.hJc = paramMMWebView;
+    this.mHandler = new ap(Looper.getMainLooper());
+    this.DMd = new LinkedList();
+    this.mdK = new View(paramMMWebView.getContext());
+    this.DMf = paramb;
     AppMethodBeat.o(78132);
   }
   
@@ -47,7 +47,7 @@ public final class b
   {
     AppMethodBeat.i(78137);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.CiW.iterator();
+    Iterator localIterator = this.DMd.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
@@ -64,14 +64,14 @@ public final class b
   {
     AppMethodBeat.i(78141);
     paramView = new a(paramView, paramInt1, paramInt2, paramInt3);
-    this.CiW.add(paramView);
+    this.DMd.add(paramView);
     AppMethodBeat.o(78141);
   }
   
-  private int ed(int paramInt1, int paramInt2)
+  private int ef(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(78138);
-    Iterator localIterator = this.CiW.iterator();
+    Iterator localIterator = this.DMd.iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
@@ -90,12 +90,12 @@ public final class b
     }
   }
   
-  final ViewGroup UJ(int paramInt)
+  final ViewGroup WA(int paramInt)
   {
     AppMethodBeat.i(78134);
     if (paramInt == 0)
     {
-      localObject = this.hqK.getTopView();
+      localObject = this.hJc.getTopView();
       if ((localObject instanceof AbsoluteLayout))
       {
         AppMethodBeat.o(78134);
@@ -104,13 +104,13 @@ public final class b
       AppMethodBeat.o(78134);
       return null;
     }
-    Object localObject = UK(paramInt);
+    Object localObject = WB(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(78134);
       return null;
     }
-    localObject = (View)((a)localObject).lEz.get();
+    localObject = (View)((a)localObject).med.get();
     if ((localObject instanceof ViewGroup))
     {
       localObject = (ViewGroup)localObject;
@@ -121,10 +121,10 @@ public final class b
     return null;
   }
   
-  public final a UK(int paramInt)
+  public final a WB(int paramInt)
   {
     AppMethodBeat.i(78139);
-    Iterator localIterator = this.CiW.iterator();
+    Iterator localIterator = this.DMd.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
@@ -141,26 +141,26 @@ public final class b
   final void a(a parama)
   {
     AppMethodBeat.i(78136);
-    this.CiW.removeAll(b(parama));
+    this.DMd.removeAll(b(parama));
     AppMethodBeat.o(78136);
   }
   
   public final boolean a(int paramInt1, float[] paramArrayOfFloat, int paramInt2)
   {
     AppMethodBeat.i(78135);
-    if (sg(paramInt1))
+    if (sI(paramInt1))
     {
       AppMethodBeat.o(78135);
       return true;
     }
-    a locala = UK(paramInt1);
+    a locala = WB(paramInt1);
     if (locala == null)
     {
       AppMethodBeat.o(78135);
       return false;
     }
-    View localView = (View)locala.lEz.get();
-    ViewGroup localViewGroup = UJ(locala.parent);
+    View localView = (View)locala.med.get();
+    ViewGroup localViewGroup = WA(locala.parent);
     if (localViewGroup == null)
     {
       AppMethodBeat.o(78135);
@@ -186,7 +186,7 @@ public final class b
     float f3 = paramArrayOfFloat[2];
     float f4 = paramArrayOfFloat[3];
     i = (int)paramArrayOfFloat[4];
-    this.CiW.remove(locala);
+    this.DMd.remove(locala);
     if (locala.z != i)
     {
       localViewGroup.removeView(localView);
@@ -214,11 +214,11 @@ public final class b
     }
     localView.requestLayout();
     e(localView, paramInt1, locala.parent, i);
-    paramInt1 = localViewGroup.indexOfChild(this.lEg);
+    paramInt1 = localViewGroup.indexOfChild(this.mdK);
     if ((localViewGroup.indexOfChild(localView) == -1) && (paramInt1 != -1))
     {
       localViewGroup.addView(localView, paramInt1);
-      localViewGroup.removeView(this.lEg);
+      localViewGroup.removeView(this.mdK);
     }
     AppMethodBeat.o(78135);
     return true;
@@ -233,7 +233,7 @@ public final class b
       AppMethodBeat.o(78133);
       return false;
     }
-    ViewGroup localViewGroup = UJ(paramInt2);
+    ViewGroup localViewGroup = WA(paramInt2);
     if (localViewGroup == null)
     {
       AppMethodBeat.o(78133);
@@ -250,7 +250,7 @@ public final class b
     float f4 = paramArrayOfFloat[3];
     int m = (int)paramArrayOfFloat[4];
     paramArrayOfFloat = new ViewGroup.LayoutParams((int)f3, (int)f4);
-    int j = ed(paramInt2, m);
+    int j = ef(paramInt2, m);
     int i = j;
     if (j < 0) {
       i = 0;
@@ -280,36 +280,36 @@ public final class b
   public final View getViewById(int paramInt)
   {
     AppMethodBeat.i(78140);
-    Object localObject = UK(paramInt);
+    Object localObject = WB(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(78140);
       return null;
     }
-    localObject = (View)((a)localObject).lEz.get();
+    localObject = (View)((a)localObject).med.get();
     AppMethodBeat.o(78140);
     return localObject;
   }
   
-  public final boolean sg(int paramInt)
+  public final boolean sI(int paramInt)
   {
-    return (this.lEi == paramInt) || (this.lEe == paramInt);
+    return (this.mdM == paramInt) || (this.mdI == paramInt);
   }
   
-  final boolean uq(int paramInt)
+  final boolean uU(int paramInt)
   {
     AppMethodBeat.i(78142);
-    if (paramInt != this.lEe)
+    if (paramInt != this.mdI)
     {
       AppMethodBeat.o(78142);
       return false;
     }
-    if (UK(paramInt) == null)
+    if (WB(paramInt) == null)
     {
       AppMethodBeat.o(78142);
       return false;
     }
-    this.CiY.ezC();
+    this.DMf.eOr();
     AppMethodBeat.o(78142);
     return true;
   }
@@ -317,14 +317,14 @@ public final class b
   public static final class a
   {
     int id;
-    public WeakReference<View> lEz;
+    public WeakReference<View> med;
     int parent;
     int z;
     
     public a(View paramView, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(78131);
-      this.lEz = new WeakReference(paramView);
+      this.med = new WeakReference(paramView);
       this.id = paramInt1;
       this.parent = paramInt2;
       this.z = paramInt3;

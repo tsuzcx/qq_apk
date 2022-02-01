@@ -14,7 +14,7 @@ public abstract class f<T>
     this.data = paramT;
   }
   
-  public abstract a aoH();
+  public abstract a aru();
   
   public abstract void b(OutputStream paramOutputStream);
   
@@ -25,7 +25,7 @@ public abstract class f<T>
   
   public static abstract interface a<T>
   {
-    public abstract a aoI();
+    public abstract a arv();
   }
 }
 

@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.webview.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
 
 public final class d
 {
-  public int CtQ = 0;
-  public int CtR = 0;
-  public int CtS = 0;
+  public int DXx = 0;
+  public int DXy = 0;
+  public int DXz = 0;
   public long endTime;
-  public int fPc = 0;
+  public int giC = 0;
   public int scene;
   public long startTime;
   
-  public final void Vf(int paramInt)
+  public final void WV(int paramInt)
   {
-    this.CtS += paramInt;
+    this.DXz += paramInt;
   }
   
-  public final void eCp()
+  public final void eRj()
   {
-    this.CtQ += 1;
+    this.DXx += 1;
   }
   
-  public final void eCq()
+  public final void eRk()
   {
-    this.CtR += 1;
+    this.DXy += 1;
   }
   
   public final void report()
@@ -36,20 +36,22 @@ public final class d
     AppMethodBeat.i(103135);
     long l = this.endTime - this.startTime;
     String str;
-    if (ax.isWifi(ai.getContext())) {
+    if (ay.isWifi(aj.getContext())) {
       str = "wifi";
     }
     for (;;)
     {
-      ac.d("MicroMsg.Preload.Kv15871", "scene:%d, requestCount:%d, responseContentUpdateCount:%d, responseContentNotUpdateCount:%d, costTime:%d responseContentTotalSize:%d, netWorkType:%s", new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.fPc), Integer.valueOf(this.CtQ), Integer.valueOf(this.CtR), Long.valueOf(l), Integer.valueOf(this.CtS), str });
-      h.wUl.f(15871, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.fPc), Integer.valueOf(this.CtQ), Integer.valueOf(this.CtR), Long.valueOf(l), Integer.valueOf(this.CtS), str });
+      ad.d("MicroMsg.Preload.Kv15871", "scene:%d, requestCount:%d, responseContentUpdateCount:%d, responseContentNotUpdateCount:%d, costTime:%d responseContentTotalSize:%d, netWorkType:%s", new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.giC), Integer.valueOf(this.DXx), Integer.valueOf(this.DXy), Long.valueOf(l), Integer.valueOf(this.DXz), str });
+      g.yhR.f(15871, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.giC), Integer.valueOf(this.DXx), Integer.valueOf(this.DXy), Long.valueOf(l), Integer.valueOf(this.DXz), str });
       AppMethodBeat.o(103135);
       return;
-      if (ax.is4G(ai.getContext())) {
+      if (ay.is5G(aj.getContext())) {
+        str = "5g";
+      } else if (ay.is4G(aj.getContext())) {
         str = "4g";
-      } else if (ax.is3G(ai.getContext())) {
+      } else if (ay.is3G(aj.getContext())) {
         str = "3g";
-      } else if (ax.is2G(ai.getContext())) {
+      } else if (ay.is2G(aj.getContext())) {
         str = "2g";
       } else {
         str = "none";

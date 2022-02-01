@@ -5,11 +5,11 @@ import com.tencent.thumbplayer.core.common.TPNativeLibraryLoader;
 public abstract class b
   implements a
 {
-  protected com.tencent.thumbplayer.a.b.a.a KeK;
+  protected com.tencent.thumbplayer.a.b.a.a LYG;
   
   public b(com.tencent.thumbplayer.a.b.a.a parama)
   {
-    this.KeK = parama;
+    this.LYG = parama;
   }
   
   private static boolean b(com.tencent.thumbplayer.a.b paramb)
@@ -25,7 +25,7 @@ public abstract class b
   public final int a(com.tencent.thumbplayer.a.b paramb)
   {
     int i = 2;
-    switch (this.KeK.KeM)
+    switch (this.LYG.LYI)
     {
     default: 
       i = 0;
@@ -58,15 +58,15 @@ public abstract class b
   
   public final int a(com.tencent.thumbplayer.a.b paramb, com.tencent.thumbplayer.a.b.a.b paramb1)
   {
-    if (paramb1.KeN == 0) {
+    if (paramb1.LYJ == 0) {
       return a(paramb);
     }
     return 0;
   }
   
-  public final int[] fFb()
+  public final int[] fWt()
   {
-    switch (this.KeK.KeL)
+    switch (this.LYG.LYH)
     {
     default: 
       return null;

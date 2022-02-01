@@ -1,12 +1,10 @@
 package com.tencent.mm.loader.e;
 
-import com.tencent.mm.b.g;
-import com.tencent.mm.loader.f.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
-  implements f
+  implements com.tencent.mm.loader.f.g
 {
   public final String b(com.tencent.mm.loader.h.a.a<?> parama)
   {
@@ -15,10 +13,10 @@ public final class a
     if (parama != null)
     {
       localObject1 = localObject2;
-      if (!bs.isNullOrNil(parama.toString()))
+      if (!bt.isNullOrNil(parama.toString()))
       {
-        localObject1 = g.getMessageDigest(parama.toString().getBytes());
-        ac.d("MicroMsg.Loader.DefaultFileNameCreator", "create image file name :%s", new Object[] { localObject1 });
+        localObject1 = com.tencent.mm.b.g.getMessageDigest(parama.toString().getBytes());
+        ad.d("MicroMsg.Loader.DefaultFileNameCreator", "create image file name :%s", new Object[] { localObject1 });
       }
     }
     return localObject1;
@@ -31,10 +29,10 @@ public final class a
     if (parama != null)
     {
       localObject1 = localObject2;
-      if (!bs.isNullOrNil(parama.toString()))
+      if (!bt.isNullOrNil(parama.toString()))
       {
-        localObject1 = g.getMessageDigest(parama.toString().getBytes());
-        ac.d("MicroMsg.Loader.DefaultFileNameCreator", "create image file name :%s", new Object[] { localObject1 });
+        localObject1 = com.tencent.mm.b.g.getMessageDigest(parama.toString().getBytes());
+        ad.d("MicroMsg.Loader.DefaultFileNameCreator", "create image file name :%s", new Object[] { localObject1 });
       }
     }
     return (String)localObject1 + ".tmp";

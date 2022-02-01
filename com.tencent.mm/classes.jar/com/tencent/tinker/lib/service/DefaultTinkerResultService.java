@@ -10,7 +10,7 @@ import java.io.File;
 public class DefaultTinkerResultService
   extends AbstractResultService
 {
-  public static void aa(File paramFile)
+  public static void ac(File paramFile)
   {
     if (!SharePatchFileUtil.isLegalFile(paramFile)) {}
     Object localObject;
@@ -30,7 +30,8 @@ public class DefaultTinkerResultService
         SharePatchFileUtil.safeDeleteFile(paramFile);
         return;
       }
-    } while (((File)localObject).getParentFile().getName().equals("tinker"));
+      localObject = ((File)localObject).getParentFile();
+    } while ((((File)localObject).getName().equals("tinker")) || (((File)localObject).getName().equals("wc_tinker_dir")));
     SharePatchFileUtil.safeDeleteFile(paramFile);
   }
   
@@ -43,9 +44,9 @@ public class DefaultTinkerResultService
     {
       return;
       ShareTinkerLog.i("Tinker.DefaultTinkerResultService", "DefaultTinkerResultService received a result:%s ", new Object[] { parama.toString() });
-      b.kY(getApplicationContext());
-    } while (!parama.deB);
-    aa(new File(parama.KqL));
+      b.ll(getApplicationContext());
+    } while (!parama.dpX);
+    ac(new File(parama.MgK));
     if (b(parama))
     {
       Process.killProcess(Process.myPid());
@@ -56,14 +57,14 @@ public class DefaultTinkerResultService
   
   public final boolean b(a parama)
   {
-    Object localObject = com.tencent.tinker.lib.e.a.kX(getApplicationContext());
-    if (((com.tencent.tinker.lib.e.a)localObject).Kra)
+    Object localObject = com.tencent.tinker.lib.e.a.lk(getApplicationContext());
+    if (((com.tencent.tinker.lib.e.a)localObject).Mhb)
     {
-      localObject = ((com.tencent.tinker.lib.e.a)localObject).KqZ;
+      localObject = ((com.tencent.tinker.lib.e.a)localObject).Mha;
       if (localObject != null)
       {
-        localObject = ((d)localObject).Kre;
-        if ((parama.KqM != null) && (parama.KqM.equals(localObject))) {
+        localObject = ((d)localObject).Mhf;
+        if ((parama.MgN != null) && (parama.MgN.equals(localObject))) {
           return false;
         }
       }
@@ -73,7 +74,7 @@ public class DefaultTinkerResultService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.lib.service.DefaultTinkerResultService
  * JD-Core Version:    0.7.0.1
  */

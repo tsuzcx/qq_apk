@@ -1,29 +1,41 @@
 package com.tencent.mm.ui;
 
-import android.graphics.Bitmap;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.c.k;
-import com.tencent.mm.g.a.ib;
+import com.tencent.mm.g.a.pl;
+import com.tencent.mm.g.a.pl.a;
+import com.tencent.mm.g.a.pm;
+import com.tencent.mm.g.a.pm.a;
 import com.tencent.mm.sdk.b.a;
 
 final class FindMoreFriendsUI$21
-  implements k
+  implements Runnable
 {
-  FindMoreFriendsUI$21(FindMoreFriendsUI paramFindMoreFriendsUI, ib paramib) {}
+  FindMoreFriendsUI$21(FindMoreFriendsUI paramFindMoreFriendsUI) {}
   
-  public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
+  public final void run()
   {
-    AppMethodBeat.i(33055);
-    this.twf.dje.CW = 2;
-    this.twf.dje.url = paramString;
-    a.GpY.l(this.twf);
-    AppMethodBeat.o(33055);
+    AppMethodBeat.i(193614);
+    FindMoreFriendsUI.fvT();
+    pm localpm = new pm();
+    a.IbL.l(localpm);
+    if (!localpm.dDG.dDJ)
+    {
+      pl localpl = new pl();
+      a.IbL.l(localpl);
+      if (localpl.dDD.dmo)
+      {
+        FindMoreFriendsUI.a(this.IWp, localpl);
+        AppMethodBeat.o(193614);
+        return;
+      }
+    }
+    FindMoreFriendsUI.a(this.IWp, localpm);
+    AppMethodBeat.o(193614);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.FindMoreFriendsUI.21
  * JD-Core Version:    0.7.0.1
  */

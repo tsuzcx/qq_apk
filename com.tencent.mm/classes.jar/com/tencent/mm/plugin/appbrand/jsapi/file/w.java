@@ -3,47 +3,47 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appcache.q;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.jsruntime.v;
 import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.utils.r;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
+import d.l;
 import d.n.d;
-import d.y;
+import d.z;
 import java.io.InputStream;
 import org.apache.commons.a.e;
 import org.json.JSONArray;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/file/JsApiLoadJsFiles;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "()V", "dispatchInJsThread", "", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wechat-full-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/file/JsApiLoadJsFiles;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "()V", "dispatchInJsThread", "", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wechat-full-sdk_release"})
 public final class w
   extends com.tencent.mm.plugin.appbrand.jsapi.a<aa>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "loadJsFiles";
-  public static final a krm;
+  public static final a kMI;
   
   static
   {
     AppMethodBeat.i(147945);
-    krm = new a((byte)0);
+    kMI = new a((byte)0);
     AppMethodBeat.o(147945);
   }
   
-  public static final void a(AppBrandRuntime paramAppBrandRuntime, JSONArray paramJSONArray, i parami, q paramq)
+  public static final void a(AppBrandRuntime paramAppBrandRuntime, JSONArray paramJSONArray, i parami, com.tencent.mm.plugin.appbrand.appcache.q paramq)
   {
     AppMethodBeat.i(183055);
-    a.a(paramAppBrandRuntime, paramJSONArray, parami, paramq, (d.g.a.a)w.a.a.krn);
+    a.a(paramAppBrandRuntime, paramJSONArray, parami, paramq, (d.g.a.a)w.a.a.kMJ);
     AppMethodBeat.o(183055);
   }
   
-  public final boolean bex()
+  public final boolean bib()
   {
     return true;
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/file/JsApiLoadJsFiles$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "loadJsFiles", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "paths", "Lorg/json/JSONArray;", "jsRuntime", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntime;", "scriptProvider", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "callback", "Lkotlin/Function0;", "toJsValidationInjectionCallback", "Lcom/tencent/mm/plugin/appbrand/utils/JsValidationInjector$JsValidationInjectionCallback;", "Landroid/webkit/ValueCallback;", "luggage-wechat-full-sdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/file/JsApiLoadJsFiles$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "loadJsFiles", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "paths", "Lorg/json/JSONArray;", "jsRuntime", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntime;", "scriptProvider", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "callback", "Lkotlin/Function0;", "toJsValidationInjectionCallback", "Lcom/tencent/mm/plugin/appbrand/utils/JsValidationInjector$JsValidationInjectionCallback;", "Landroid/webkit/ValueCallback;", "luggage-wechat-full-sdk_release"})
   public static final class a
   {
     private static com.tencent.mm.plugin.appbrand.utils.q.a a(ValueCallback<String> paramValueCallback)
@@ -59,13 +59,19 @@ public final class w
       return paramValueCallback;
     }
     
-    public static void a(AppBrandRuntime paramAppBrandRuntime, JSONArray paramJSONArray, i parami, q paramq, d.g.a.a<y> parama)
+    public static void a(AppBrandRuntime paramAppBrandRuntime, JSONArray paramJSONArray, i parami, com.tencent.mm.plugin.appbrand.appcache.q paramq, d.g.a.a<z> parama)
     {
       AppMethodBeat.i(183054);
-      k.h(paramAppBrandRuntime, "runtime");
-      k.h(parama, "callback");
+      p.h(paramAppBrandRuntime, "runtime");
+      p.h(parama, "callback");
       if (paramJSONArray == null)
       {
+        AppMethodBeat.o(183054);
+        return;
+      }
+      if (paramJSONArray.length() <= 0)
+      {
+        parama.invoke();
         AppMethodBeat.o(183054);
         return;
       }
@@ -94,23 +100,23 @@ public final class w
           com.tencent.mm.plugin.appbrand.appcache.q.a locala;
           for (ValueCallback localValueCallback = (ValueCallback)new b(parama);; localValueCallback = null)
           {
-            locala = paramq.HT((String)localObject);
+            locala = paramq.Ll((String)localObject);
             if (locala != null) {
-              break label193;
+              break label214;
             }
-            ac.e("Luggage.WXA.JsApiLoadJsFiles", "loadJsFiles appId[" + str + "] path[" + (String)localObject + "] EMPTY");
+            ad.e("Luggage.WXA.JsApiLoadJsFiles", "loadJsFiles appId[" + str + "] path[" + (String)localObject + "] EMPTY");
             if (localValueCallback == null) {
               break;
             }
             localValueCallback.onReceiveValue("404");
             break;
           }
-          label193:
+          label214:
           if ((v)parami.P(v.class) == null)
           {
-            localObject = paramq.HS((String)localObject);
+            localObject = paramq.Lk((String)localObject);
             if (localObject == null) {
-              k.fOy();
+              p.gfZ();
             }
             parami.evaluateJavascript(e.a((InputStream)localObject, d.UTF_8), localValueCallback);
           }
@@ -123,39 +129,39 @@ public final class w
       AppMethodBeat.o(183054);
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "onReceiveValue"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "onReceiveValue"})
     static final class b<T>
       implements ValueCallback<String>
     {
       b(d.g.a.a parama) {}
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/jsapi/file/JsApiLoadJsFiles$Companion$toJsValidationInjectionCallback$1", "Lcom/tencent/mm/plugin/appbrand/utils/JsValidationInjector$JsValidationInjectionCallback;", "onFailure", "", "ret", "", "onSuccess", "luggage-wechat-full-sdk_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/file/JsApiLoadJsFiles$Companion$toJsValidationInjectionCallback$1", "Lcom/tencent/mm/plugin/appbrand/utils/JsValidationInjector$JsValidationInjectionCallback;", "onFailure", "", "ret", "", "onSuccess", "luggage-wechat-full-sdk_release"})
     public static final class c
       implements com.tencent.mm.plugin.appbrand.utils.q.a
     {
       c(ValueCallback<String> paramValueCallback) {}
       
-      public final void bZ(String paramString)
+      public final void cT(String paramString)
       {
         AppMethodBeat.i(147940);
-        this.kro.onReceiveValue(paramString);
+        this.kMK.onReceiveValue(paramString);
         AppMethodBeat.o(147940);
       }
       
       public final void onSuccess(String paramString)
       {
         AppMethodBeat.i(147939);
-        this.kro.onReceiveValue(paramString);
+        this.kMK.onReceiveValue(paramString);
         AppMethodBeat.o(147939);
       }
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class b
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends d.g.b.q
+    implements d.g.a.a<z>
   {
     b(w paramw, aa paramaa, int paramInt)
     {

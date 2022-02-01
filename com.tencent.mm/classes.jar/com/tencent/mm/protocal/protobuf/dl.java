@@ -1,79 +1,64 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 import java.util.LinkedList;
 
 public final class dl
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public gk DQz;
-  public LinkedList<bii> GroupList;
-  public String tju;
+  public String FvM;
+  public LinkedList<dio> FvN;
+  public String title;
   
   public dl()
   {
-    AppMethodBeat.i(125706);
-    this.GroupList = new LinkedList();
-    AppMethodBeat.o(125706);
+    AppMethodBeat.i(32112);
+    this.FvN = new LinkedList();
+    AppMethodBeat.o(32112);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125707);
+    AppMethodBeat.i(32113);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.DQz == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ArtisAuthor");
-        AppMethodBeat.o(125707);
-        throw paramVarArgs;
+      if (this.FvM != null) {
+        paramVarArgs.d(1, this.FvM);
       }
-      if (this.DQz != null)
-      {
-        paramVarArgs.ln(1, this.DQz.computeSize());
-        this.DQz.writeFields(paramVarArgs);
+      paramVarArgs.e(2, 8, this.FvN);
+      if (this.title != null) {
+        paramVarArgs.d(3, this.title);
       }
-      paramVarArgs.e(2, 8, this.GroupList);
-      if (this.tju != null) {
-        paramVarArgs.d(3, this.tju);
-      }
-      AppMethodBeat.o(125707);
+      AppMethodBeat.o(32113);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.DQz == null) {
-        break label558;
+      if (this.FvM == null) {
+        break label427;
       }
     }
-    label558:
-    for (paramInt = f.a.a.a.lm(1, this.DQz.computeSize()) + 0;; paramInt = 0)
+    label427:
+    for (paramInt = f.a.a.b.b.a.e(1, this.FvM) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.a.c(2, 8, this.GroupList);
+      int i = paramInt + f.a.a.a.c(2, 8, this.FvN);
       paramInt = i;
-      if (this.tju != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.tju);
+      if (this.title != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.title);
       }
-      AppMethodBeat.o(125707);
+      AppMethodBeat.o(32113);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.GroupList.clear();
+        this.FvN.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.DQz == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: ArtisAuthor");
-          AppMethodBeat.o(125707);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(125707);
+        AppMethodBeat.o(32113);
         return 0;
       }
       if (paramInt == 3)
@@ -81,56 +66,43 @@ public final class dl
         Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         dl localdl = (dl)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(125707);
+          AppMethodBeat.o(32113);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new gk();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((gk)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdl.DQz = ((gk)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(125707);
+          localdl.FvM = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(32113);
           return 0;
         case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new bii();
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new dio();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((bii)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdl.GroupList.add(localObject1);
+            for (boolean bool = true; bool; bool = ((dio)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdl.FvN.add(localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(125707);
+          AppMethodBeat.o(32113);
           return 0;
         }
-        localdl.tju = ((f.a.a.a.a)localObject1).LVo.readString();
-        AppMethodBeat.o(125707);
+        localdl.title = ((f.a.a.a.a)localObject1).NPN.readString();
+        AppMethodBeat.o(32113);
         return 0;
       }
-      AppMethodBeat.o(125707);
+      AppMethodBeat.o(32113);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dl
  * JD-Core Version:    0.7.0.1
  */

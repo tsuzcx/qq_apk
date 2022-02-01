@@ -5,6 +5,6 @@
     <RelativeLayout android:background="@drawable/amv" android:paddingTop="@dimen/i_" android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/c5" android:layout_toEndOf="@id/s4">
         <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="center|left" android:id="@id/s7" android:layout_width="wrap_content" android:layout_height="@dimen/i8" android:text="@string/frw" android:layout_centerVertical="true" android:paddingEnd="@dimen/ha" />
         <com.tencent.mm.plugin.sns.ui.PreviewContactView android:id="@id/s3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/i8" android:layout_toStartOf="@id/f27" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f27" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_right" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ci" android:layout_marginEnd="@dimen/c5" android:layout_alignParentEnd="true" app:iconColor="?bi" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f27" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_right" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ci" android:layout_marginEnd="@dimen/c5" android:layout_alignParentEnd="true" app:iconColor="@color/ee" />
     </RelativeLayout>
 </RelativeLayout>

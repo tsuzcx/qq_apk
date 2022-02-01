@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  com.google.c.f.a.b bKX;
-  a bKY;
-  c bKZ;
-  int bLa = -1;
-  public b bLb;
+  com.google.c.f.a.b bVk;
+  a bVl;
+  c bVm;
+  int bVn = -1;
+  public b bVo;
   
   public final String toString()
   {
@@ -18,14 +18,14 @@ public final class f
     Object localObject = new StringBuilder(200);
     ((StringBuilder)localObject).append("<<\n");
     ((StringBuilder)localObject).append(" mode: ");
-    ((StringBuilder)localObject).append(this.bKX);
+    ((StringBuilder)localObject).append(this.bVk);
     ((StringBuilder)localObject).append("\n ecLevel: ");
-    ((StringBuilder)localObject).append(this.bKY);
+    ((StringBuilder)localObject).append(this.bVl);
     ((StringBuilder)localObject).append("\n version: ");
-    ((StringBuilder)localObject).append(this.bKZ);
+    ((StringBuilder)localObject).append(this.bVm);
     ((StringBuilder)localObject).append("\n maskPattern: ");
-    ((StringBuilder)localObject).append(this.bLa);
-    if (this.bLb == null) {
+    ((StringBuilder)localObject).append(this.bVn);
+    if (this.bVo == null) {
       ((StringBuilder)localObject).append("\n matrix: null\n");
     }
     for (;;)
@@ -35,7 +35,7 @@ public final class f
       AppMethodBeat.o(12361);
       return localObject;
       ((StringBuilder)localObject).append("\n matrix:\n");
-      ((StringBuilder)localObject).append(this.bLb);
+      ((StringBuilder)localObject).append(this.bVo);
     }
   }
 }

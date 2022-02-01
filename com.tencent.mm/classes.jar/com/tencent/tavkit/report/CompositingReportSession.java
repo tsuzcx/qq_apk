@@ -10,9 +10,9 @@ public final class CompositingReportSession
   private static final String REPORT_EVENT = "android_tavkit_compositing";
   public static final String REPORT_KEY_AVG_RENDER_TIME_US = "avg_render_time_us";
   private static final String REPORT_SERVICE = "TAVKit_Android";
-  private static final String REPORT_VERSION = "1.3.3.15";
+  private static final String REPORT_VERSION = "1.3.5.6";
   private static final String TAG = "CompositingReportSessio";
-  private static IReporter reporter;
+  private static CompositingReportSession.IReporter reporter;
   private long beginTimeMs;
   private int failureCount;
   private final FilterChainReporter filterChainReporter;
@@ -23,7 +23,7 @@ public final class CompositingReportSession
   
   public CompositingReportSession(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(192135);
+    AppMethodBeat.i(219937);
     this.beginTimeMs = 0L;
     this.successCount = 0;
     this.failureCount = 0;
@@ -32,7 +32,7 @@ public final class CompositingReportSession
     this.renderHeight = paramFloat2;
     this.filterChainReporter = new FilterChainReporter(null);
     FilterChainReportSession.setReporter(this.filterChainReporter);
-    AppMethodBeat.o(192135);
+    AppMethodBeat.o(219937);
   }
   
   private void commit() {}
@@ -44,7 +44,7 @@ public final class CompositingReportSession
     this.successCount = 0;
   }
   
-  public static void setReporter(IReporter paramIReporter)
+  public static void setReporter(CompositingReportSession.IReporter paramIReporter)
   {
     try
     {
@@ -60,17 +60,17 @@ public final class CompositingReportSession
   
   public final void flush()
   {
-    AppMethodBeat.i(192136);
+    AppMethodBeat.i(219938);
     if (this.beginTimeMs == 0L)
     {
-      AppMethodBeat.o(192136);
+      AppMethodBeat.o(219938);
       return;
     }
     if (this.successCount >= 10) {
       commit();
     }
     reset();
-    AppMethodBeat.o(192136);
+    AppMethodBeat.o(219938);
   }
   
   public final void tickFailed()
@@ -80,13 +80,13 @@ public final class CompositingReportSession
   
   public final void tickSuccess(long paramLong)
   {
-    AppMethodBeat.i(192137);
+    AppMethodBeat.i(219939);
     if (this.beginTimeMs == 0L) {
       this.beginTimeMs = (System.currentTimeMillis() - paramLong / 1000L / 1000L);
     }
     this.successCount += 1;
     this.totalCostUs += paramLong / 1000L;
-    AppMethodBeat.o(192137);
+    AppMethodBeat.o(219939);
   }
   
   static class FilterChainReporter
@@ -96,27 +96,22 @@ public final class CompositingReportSession
     
     private FilterChainReporter()
     {
-      AppMethodBeat.i(192133);
+      AppMethodBeat.i(219935);
       this.values = new HashMap();
-      AppMethodBeat.o(192133);
+      AppMethodBeat.o(219935);
     }
     
     public void onCommit(Map<String, Long> paramMap)
     {
-      AppMethodBeat.i(192134);
+      AppMethodBeat.i(219936);
       paramMap.putAll(paramMap);
-      AppMethodBeat.o(192134);
+      AppMethodBeat.o(219936);
     }
-  }
-  
-  public static abstract interface IReporter
-  {
-    public abstract void onCommit(Map<String, Long> paramMap1, Map<String, Long> paramMap2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.report.CompositingReportSession
  * JD-Core Version:    0.7.0.1
  */

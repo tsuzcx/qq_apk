@@ -8,7 +8,7 @@ public final class k
 {
   public k(e parame)
   {
-    super(i.b(parame.mUri, parame.fxS()));
+    super(i.b(parame.mUri, parame.fOH()));
     AppMethodBeat.i(13318);
     AppMethodBeat.o(13318);
   }

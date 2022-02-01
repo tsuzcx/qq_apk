@@ -1,14 +1,24 @@
 package com.tencent.mm.model;
 
-public abstract class al
+public abstract interface al
 {
-  public long hnv = 0L;
+  public abstract void AV(String paramString);
   
-  public abstract String getTag();
+  public abstract void AW(String paramString);
   
-  public abstract boolean nP(int paramInt);
+  public abstract void AX(String paramString);
   
-  public abstract void transfer(int paramInt);
+  public abstract void AY(String paramString);
+  
+  public abstract void AZ(String paramString);
+  
+  public abstract void Ba(String paramString);
+  
+  public abstract void Bb(String paramString);
+  
+  public abstract void Bc(String paramString);
+  
+  public abstract void aL(String paramString1, String paramString2);
 }
 
 

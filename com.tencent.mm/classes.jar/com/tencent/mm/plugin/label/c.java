@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.label;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.List;
 
 public final class c
 {
-  public static String dY(List<String> paramList)
+  public static String el(List<String> paramList)
   {
     AppMethodBeat.i(26131);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -30,16 +30,16 @@ public final class c
     return paramList;
   }
   
-  public static String hr(String paramString1, String paramString2)
+  public static String hD(String paramString1, String paramString2)
   {
     AppMethodBeat.i(26129);
-    ac.d("MicroMsg.Label.LabelUtils", "original:%s,waitToAddLabel:%s", new Object[] { paramString1, paramString2 });
-    if (bs.isNullOrNil(paramString2))
+    ad.d("MicroMsg.Label.LabelUtils", "original:%s,waitToAddLabel:%s", new Object[] { paramString1, paramString2 });
+    if (bt.isNullOrNil(paramString2))
     {
       AppMethodBeat.o(26129);
       return paramString1;
     }
-    if (bs.isNullOrNil(paramString1))
+    if (bt.isNullOrNil(paramString1))
     {
       paramString1 = paramString2 + "";
       AppMethodBeat.o(26129);
@@ -49,7 +49,7 @@ public final class c
     if (paramString1.endsWith("")) {
       str = paramString1.replace("", "");
     }
-    if (bs.S(str.split(",")).contains(paramString2))
+    if (bt.U(str.split(",")).contains(paramString2))
     {
       paramString1 = str + "";
       AppMethodBeat.o(26129);
@@ -60,16 +60,16 @@ public final class c
     return paramString1;
   }
   
-  public static String hs(String paramString1, String paramString2)
+  public static String hE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(26130);
-    ac.d("MicroMsg.Label.LabelUtils", "original:%s,waitToDelLabel:%s", new Object[] { paramString1, paramString2 });
-    if (bs.isNullOrNil(paramString2))
+    ad.d("MicroMsg.Label.LabelUtils", "original:%s,waitToDelLabel:%s", new Object[] { paramString1, paramString2 });
+    if (bt.isNullOrNil(paramString2))
     {
       AppMethodBeat.o(26130);
       return paramString1;
     }
-    if (bs.isNullOrNil(paramString1))
+    if (bt.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(26130);
       return "";
@@ -78,11 +78,11 @@ public final class c
     if (paramString1.endsWith("")) {
       str = paramString1.replace("", "");
     }
-    paramString1 = bs.S(str.split(","));
+    paramString1 = bt.U(str.split(","));
     if (paramString1.contains(paramString2))
     {
       paramString1.remove(paramString2);
-      paramString1 = dY(paramString1);
+      paramString1 = el(paramString1);
       AppMethodBeat.o(26130);
       return paramString1;
     }

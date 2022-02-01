@@ -11,21 +11,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class v<Model>
   implements n<Model, Model>
 {
-  private static final v<?> aIQ;
+  private static final v<?> aKH;
   
   static
   {
     AppMethodBeat.i(77313);
-    aIQ = new v();
+    aKH = new v();
     AppMethodBeat.o(77313);
   }
   
-  public static <T> v<T> oY()
+  public static <T> v<T> pq()
   {
-    return aIQ;
+    return aKH;
   }
   
-  public final boolean W(Model paramModel)
+  public final boolean X(Model paramModel)
   {
     return true;
   }
@@ -41,24 +41,24 @@ public final class v<Model>
   public static final class a<Model>
     implements o<Model, Model>
   {
-    private static final a<?> aIR;
+    private static final a<?> aKI;
     
     static
     {
       AppMethodBeat.i(77309);
-      aIR = new a();
+      aKI = new a();
       AppMethodBeat.o(77309);
     }
     
-    public static <T> a<T> oZ()
+    public static <T> a<T> pr()
     {
-      return aIR;
+      return aKI;
     }
     
     public final n<Model, Model> a(r paramr)
     {
       AppMethodBeat.i(77308);
-      paramr = v.oY();
+      paramr = v.pq();
       AppMethodBeat.o(77308);
       return paramr;
     }
@@ -67,17 +67,17 @@ public final class v<Model>
   static final class b<Model>
     implements d<Model>
   {
-    private final Model aIS;
+    private final Model aKJ;
     
     b(Model paramModel)
     {
-      this.aIS = paramModel;
+      this.aKJ = paramModel;
     }
     
     public final void a(g paramg, d.a<? super Model> parama)
     {
       AppMethodBeat.i(77310);
-      parama.R(this.aIS);
+      parama.S(this.aKJ);
       AppMethodBeat.o(77310);
     }
     
@@ -85,17 +85,17 @@ public final class v<Model>
     
     public final void cleanup() {}
     
-    public final Class<Model> nU()
+    public final Class<Model> om()
     {
       AppMethodBeat.i(77311);
-      Class localClass = this.aIS.getClass();
+      Class localClass = this.aKJ.getClass();
       AppMethodBeat.o(77311);
       return localClass;
     }
     
-    public final a nV()
+    public final a on()
     {
-      return a.aCP;
+      return a.aEG;
     }
   }
 }

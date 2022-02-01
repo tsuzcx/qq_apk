@@ -5,12 +5,12 @@ import java.util.concurrent.TimeUnit;
 
 public final class e
 {
-  public static final long nFd;
+  public static final long ohG;
   
   static
   {
     AppMethodBeat.i(6182);
-    nFd = TimeUnit.DAYS.toMillis(7L);
+    ohG = TimeUnit.DAYS.toMillis(7L);
     AppMethodBeat.o(6182);
   }
 }

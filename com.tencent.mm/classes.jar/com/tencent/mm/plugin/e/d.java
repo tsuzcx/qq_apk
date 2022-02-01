@@ -12,7 +12,7 @@ public final class d
   {
     AppMethodBeat.i(22635);
     getClass().getClassLoader();
-    j.sC("wechatvoicereco");
+    j.vr("wechatvoicereco");
     AppMethodBeat.o(22635);
   }
   

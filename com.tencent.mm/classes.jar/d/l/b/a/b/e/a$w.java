@@ -7,20 +7,20 @@ import d.l.b.a.b.h.j.b;
 public enum a$w
   implements j.a
 {
-  private static j.b<w> LtK;
+  private static j.b<w> NkH;
   private final int value;
   
   static
   {
     AppMethodBeat.i(59045);
-    LwN = new w("INTERNAL", 0, 0);
-    LwO = new w("PRIVATE", 1, 1);
-    LwP = new w("PROTECTED", 2, 2);
-    LwQ = new w("PUBLIC", 3, 3);
-    LwR = new w("PRIVATE_TO_THIS", 4, 4);
-    LwS = new w("LOCAL", 5, 5);
-    LwT = new w[] { LwN, LwO, LwP, LwQ, LwR, LwS };
-    LtK = new j.b() {};
+    NnK = new w("INTERNAL", 0, 0);
+    NnL = new w("PRIVATE", 1, 1);
+    NnM = new w("PROTECTED", 2, 2);
+    NnN = new w("PUBLIC", 3, 3);
+    NnO = new w("PRIVATE_TO_THIS", 4, 4);
+    NnP = new w("LOCAL", 5, 5);
+    NnQ = new w[] { NnK, NnL, NnM, NnN, NnO, NnP };
+    NkH = new j.b() {};
     AppMethodBeat.o(59045);
   }
   
@@ -29,24 +29,24 @@ public enum a$w
     this.value = paramInt1;
   }
   
-  public static w aii(int paramInt)
+  public static w akJ(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return LwN;
+      return NnK;
     case 1: 
-      return LwO;
+      return NnL;
     case 2: 
-      return LwP;
+      return NnM;
     case 3: 
-      return LwQ;
+      return NnN;
     case 4: 
-      return LwR;
+      return NnO;
     }
-    return LwS;
+    return NnP;
   }
   
   public final int getNumber()
@@ -56,7 +56,7 @@ public enum a$w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.e.a.w
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class et
   extends b
 {
-  public a deF;
-  public b deG;
+  public a dpR;
+  public b dpS;
   
   public et()
   {
@@ -16,24 +16,24 @@ public final class et
   
   private et(byte paramByte)
   {
-    AppMethodBeat.i(116010);
-    this.deF = new a();
-    this.deG = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(116007);
+    this.dpR = new a();
+    this.dpS = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116010);
+    AppMethodBeat.o(116007);
   }
   
   public static final class a
   {
-    public String cIZ;
-    public boolean clear;
-    public int direction;
+    public String cUi;
+    public String data;
+    public String doD;
   }
   
   public static final class b
   {
-    public boolean ddj;
+    public boolean doF;
   }
 }
 

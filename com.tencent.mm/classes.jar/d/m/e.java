@@ -7,20 +7,20 @@ import d.l;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/sequences/FilteringSequence;", "T", "Lkotlin/sequences/Sequence;", "sequence", "sendWhen", "", "predicate", "Lkotlin/Function1;", "(Lkotlin/sequences/Sequence;ZLkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/sequences/FilteringSequence;", "T", "Lkotlin/sequences/Sequence;", "sequence", "sendWhen", "", "predicate", "Lkotlin/Function1;", "(Lkotlin/sequences/Sequence;ZLkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
 public final class e<T>
   implements h<T>
 {
-  final boolean LPB;
-  final b<T, Boolean> LPC;
-  final h<T> LPy;
+  final h<T> NGt;
+  final boolean NGw;
+  final b<T, Boolean> NGx;
   
   public e(h<? extends T> paramh, boolean paramBoolean, b<? super T, Boolean> paramb)
   {
     AppMethodBeat.i(129494);
-    this.LPy = paramh;
-    this.LPB = paramBoolean;
-    this.LPC = paramb;
+    this.NGt = paramh;
+    this.NGw = paramBoolean;
+    this.NGx = paramb;
     AppMethodBeat.o(129494);
   }
   
@@ -32,47 +32,47 @@ public final class e<T>
     return localIterator;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"kotlin/sequences/FilteringSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"kotlin/sequences/FilteringSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
   public static final class a
     implements a, Iterator<T>
   {
-    private final Iterator<T> KTJ;
-    private int LPD;
-    private T LPE;
+    private final Iterator<T> MKI;
+    private int NGy;
+    private T NGz;
     
     a()
     {
       AppMethodBeat.i(129539);
-      this.KTJ = localObject.LPy.iterator();
-      this.LPD = -1;
+      this.MKI = localObject.NGt.iterator();
+      this.NGy = -1;
       AppMethodBeat.o(129539);
     }
     
-    private final void gcZ()
+    private final void guz()
     {
       AppMethodBeat.i(129536);
-      while (this.KTJ.hasNext())
+      while (this.MKI.hasNext())
       {
-        Object localObject = this.KTJ.next();
-        if (((Boolean)this.LPF.LPC.ay(localObject)).booleanValue() == this.LPF.LPB)
+        Object localObject = this.MKI.next();
+        if (((Boolean)this.NGA.NGx.invoke(localObject)).booleanValue() == this.NGA.NGw)
         {
-          this.LPE = localObject;
-          this.LPD = 1;
+          this.NGz = localObject;
+          this.NGy = 1;
           AppMethodBeat.o(129536);
           return;
         }
       }
-      this.LPD = 0;
+      this.NGy = 0;
       AppMethodBeat.o(129536);
     }
     
     public final boolean hasNext()
     {
       AppMethodBeat.i(129538);
-      if (this.LPD == -1) {
-        gcZ();
+      if (this.NGy == -1) {
+        guz();
       }
-      if (this.LPD == 1)
+      if (this.NGy == 1)
       {
         AppMethodBeat.o(129538);
         return true;
@@ -84,18 +84,18 @@ public final class e<T>
     public final T next()
     {
       AppMethodBeat.i(129537);
-      if (this.LPD == -1) {
-        gcZ();
+      if (this.NGy == -1) {
+        guz();
       }
-      if (this.LPD == 0)
+      if (this.NGy == 0)
       {
         localObject = (Throwable)new NoSuchElementException();
         AppMethodBeat.o(129537);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.LPE;
-      this.LPE = null;
-      this.LPD = -1;
+      Object localObject = this.NGz;
+      this.NGz = null;
+      this.NGy = -1;
       AppMethodBeat.o(129537);
       return localObject;
     }

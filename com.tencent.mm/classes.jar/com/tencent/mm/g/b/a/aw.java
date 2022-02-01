@@ -6,84 +6,117 @@ import com.tencent.mm.plugin.report.a;
 public final class aw
   extends a
 {
-  private String dFe = "";
-  private String dHM;
-  private String dKQ;
-  private String dKR = "";
+  private long dPH;
+  private String dVa;
+  private String dVb;
+  private String dWX;
+  private long dXA;
+  private long dXB;
+  private String dXz;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(194987);
+    AppMethodBeat.i(209115);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHM);
+    ((StringBuffer)localObject).append(this.dXz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFe);
+    ((StringBuffer)localObject).append(this.dXA);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKQ);
+    ((StringBuffer)localObject).append(this.dXB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKR);
+    ((StringBuffer)localObject).append(this.dPH);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dVa);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dVb);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dWX);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(194987);
+    awz((String)localObject);
+    AppMethodBeat.o(209115);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(194988);
+    AppMethodBeat.i(209116);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("FeedId:").append(this.dHM);
+    ((StringBuffer)localObject).append("feedid:").append(this.dXz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionId:").append(this.dFe);
+    ((StringBuffer)localObject).append("mediaType:").append(this.dXA);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PostUsername:").append(this.dKQ);
+    ((StringBuffer)localObject).append("commentscene:").append(this.dXB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("mentionedDetailInfo:").append(this.dKR);
+    ((StringBuffer)localObject).append("action:").append(this.dPH);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Sessionid:").append(this.dVa);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Contextid:").append(this.dVb);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickTabContextid:").append(this.dWX);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(194988);
+    AppMethodBeat.o(209116);
     return localObject;
+  }
+  
+  public final aw dW(long paramLong)
+  {
+    this.dXA = paramLong;
+    return this;
+  }
+  
+  public final aw dX(long paramLong)
+  {
+    this.dXB = paramLong;
+    return this;
+  }
+  
+  public final aw dY(long paramLong)
+  {
+    this.dPH = paramLong;
+    return this;
   }
   
   public final int getId()
   {
-    return 19792;
+    return 20353;
   }
   
-  public final aw ie(String paramString)
+  public final aw iu(String paramString)
   {
-    AppMethodBeat.i(194983);
-    this.dHM = t("FeedId", paramString, true);
-    AppMethodBeat.o(194983);
+    AppMethodBeat.i(209111);
+    this.dXz = t("feedid", paramString, true);
+    AppMethodBeat.o(209111);
     return this;
   }
   
-  public final aw jdMethod_if(String paramString)
+  public final aw iv(String paramString)
   {
-    AppMethodBeat.i(194984);
-    this.dFe = t("SessionId", paramString, true);
-    AppMethodBeat.o(194984);
+    AppMethodBeat.i(209112);
+    this.dVa = t("Sessionid", paramString, true);
+    AppMethodBeat.o(209112);
     return this;
   }
   
-  public final aw ig(String paramString)
+  public final aw iw(String paramString)
   {
-    AppMethodBeat.i(194985);
-    this.dKQ = t("PostUsername", paramString, true);
-    AppMethodBeat.o(194985);
+    AppMethodBeat.i(209113);
+    this.dVb = t("Contextid", paramString, true);
+    AppMethodBeat.o(209113);
     return this;
   }
   
-  public final aw ih(String paramString)
+  public final aw ix(String paramString)
   {
-    AppMethodBeat.i(194986);
-    this.dKR = t("mentionedDetailInfo", paramString, true);
-    AppMethodBeat.o(194986);
+    AppMethodBeat.i(209114);
+    this.dWX = t("ClickTabContextid", paramString, true);
+    AppMethodBeat.o(209114);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.aw
  * JD-Core Version:    0.7.0.1
  */

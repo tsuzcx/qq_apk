@@ -21,7 +21,8 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.ui.ar;
 
 public final class b
   extends e
@@ -38,11 +39,11 @@ public final class b
     super(paramContext, 2131820861);
     AppMethodBeat.i(159284);
     this.mContext = paramContext;
-    gt();
+    gK();
     AppMethodBeat.o(159284);
   }
   
-  private boolean aly()
+  private boolean aol()
   {
     AppMethodBeat.i(159291);
     if (this.mContext.getResources().getConfiguration().orientation == 2)
@@ -62,13 +63,13 @@ public final class b
     label70:
     ViewGroup localViewGroup;
     View localView;
-    if (aly())
+    if (aol())
     {
       ((Window)localObject1).setGravity(5);
       ((Window)localObject1).setWindowAnimations(2131821249);
       ((Window)localObject1).getDecorView().setPadding(0, 0, 0, 0);
       localObject2 = ((Window)localObject1).getAttributes();
-      if (!aly()) {
+      if (!aol()) {
         break label270;
       }
       ((WindowManager.LayoutParams)localObject2).width = -2;
@@ -84,7 +85,7 @@ public final class b
           localObject1 = getLayoutInflater().inflate(paramInt, localViewGroup, false);
         }
       }
-      if (!ap.jF(this.mContext)) {
+      if (!ar.jR(this.mContext)) {
         break label364;
       }
     }
@@ -92,9 +93,9 @@ public final class b
     label210:
     label354:
     label364:
-    for (paramInt = ap.ej(this.mContext);; paramInt = 0)
+    for (paramInt = ar.ej(this.mContext);; paramInt = 0)
     {
-      if (aly())
+      if (aol())
       {
         localObject2 = (FrameLayout)localViewGroup.findViewById(2131302250);
         paramView = (View)localObject2;
@@ -119,15 +120,19 @@ public final class b
       }
       for (;;)
       {
-        if (eFx()) {
+        if (eUt()) {
           localView.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(159283);
+              com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+              localb.bd(paramAnonymousView);
+              a.b("com/tencent/mm/ui/widget/dialog/CustomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
               if (b.this.isShowing()) {
                 b.this.cancel();
               }
+              a.a(this, "com/tencent/mm/ui/widget/dialog/CustomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(159283);
             }
           });
@@ -160,7 +165,7 @@ public final class b
     }
   }
   
-  private boolean eFx()
+  private boolean eUt()
   {
     AppMethodBeat.i(159290);
     if (Build.VERSION.SDK_INT < 11)

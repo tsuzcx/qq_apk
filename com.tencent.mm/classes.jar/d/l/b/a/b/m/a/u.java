@@ -5,14 +5,14 @@ import d.l.b.a.b.m.ab;
 
 final class u
 {
-  final ab KXI;
-  final u LMB;
+  final ab MOF;
+  final u NDw;
   
   public u(ab paramab, u paramu)
   {
     AppMethodBeat.i(61150);
-    this.KXI = paramab;
-    this.LMB = paramu;
+    this.MOF = paramab;
+    this.NDw = paramu;
     AppMethodBeat.o(61150);
   }
 }

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.gallery.model;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class GalleryItem$ImageMediaItem
   extends GalleryItem.MediaItem
@@ -29,16 +29,16 @@ public class GalleryItem$ImageMediaItem
     super(paramLong, paramString1, paramString2, paramString3);
   }
   
-  public final String auN()
+  public final String axA()
   {
     AppMethodBeat.i(111316);
-    if (!bs.isNullOrNil(this.qCJ))
+    if (!bt.isNullOrNil(this.rmz))
     {
-      str = this.qCJ;
+      str = this.rmz;
       AppMethodBeat.o(111316);
       return str;
     }
-    String str = this.sKh;
+    String str = this.tGS;
     AppMethodBeat.o(111316);
     return str;
   }
@@ -56,12 +56,12 @@ public class GalleryItem$ImageMediaItem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(111317);
-    paramParcel.writeString(this.sKh);
-    paramParcel.writeString(this.qCJ);
-    paramParcel.writeLong(this.sKk);
-    paramParcel.writeLong(this.sKl);
+    paramParcel.writeString(this.tGS);
+    paramParcel.writeString(this.rmz);
+    paramParcel.writeLong(this.tGV);
+    paramParcel.writeLong(this.tGW);
     paramParcel.writeString(this.mMimeType);
-    paramParcel.writeSerializable(this.sKp);
+    paramParcel.writeSerializable(this.tHa);
     AppMethodBeat.o(111317);
   }
 }

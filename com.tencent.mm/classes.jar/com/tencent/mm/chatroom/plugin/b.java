@@ -6,22 +6,22 @@ import com.tencent.mm.model.t;
 public final class b
   extends t
 {
-  private static b fsY;
+  private static b fLy;
   
   public b()
   {
     super(com.tencent.mm.chatroom.b.class);
   }
   
-  public static b VS()
+  public static b Yj()
   {
     try
     {
       AppMethodBeat.i(12505);
-      if (fsY == null) {
-        fsY = new b();
+      if (fLy == null) {
+        fLy = new b();
       }
-      b localb = fsY;
+      b localb = fLy;
       AppMethodBeat.o(12505);
       return localb;
     }

@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.emoji.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.c;
 
 public final class a
 {
-  public static boolean YB(String paramString)
+  public static boolean ach(String paramString)
   {
     AppMethodBeat.i(109441);
     if (paramString == null)
@@ -17,7 +17,7 @@ public final class a
       AppMethodBeat.o(109441);
       return false;
     }
-    boolean bool = paramString.equals(cew());
+    boolean bool = paramString.equals(ciZ());
     AppMethodBeat.o(109441);
     return bool;
   }
@@ -30,25 +30,25 @@ public final class a
       AppMethodBeat.o(109440);
       return false;
     }
-    boolean bool = YB(paramEmojiGroupInfo.field_productID);
+    boolean bool = ach(paramEmojiGroupInfo.field_productID);
     AppMethodBeat.o(109440);
     return bool;
   }
   
-  public static boolean cdF()
-  {
-    AppMethodBeat.i(109438);
-    boolean bool = k.getEmojiStorageMgr().GYa.fcJ();
-    AppMethodBeat.o(109438);
-    return bool;
-  }
-  
-  public static final String cew()
+  public static final String ciZ()
   {
     AppMethodBeat.i(109442);
-    String str = EmojiGroupInfo.Jsp;
+    String str = EmojiGroupInfo.OeK;
     AppMethodBeat.o(109442);
     return str;
+  }
+  
+  public static boolean cii()
+  {
+    AppMethodBeat.i(109438);
+    boolean bool = k.getEmojiStorageMgr().ILo.fsQ();
+    AppMethodBeat.o(109438);
+    return bool;
   }
   
   public static boolean g(EmotionSummary paramEmotionSummary)
@@ -59,7 +59,7 @@ public final class a
       AppMethodBeat.o(109439);
       return false;
     }
-    boolean bool = YB(paramEmotionSummary.ProductID);
+    boolean bool = ach(paramEmotionSummary.ProductID);
     AppMethodBeat.o(109439);
     return bool;
   }

@@ -2,10 +2,10 @@ package com.tencent.mm.live.core.core.trtc.a.a;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/core/trtc/sdkadapter/feature/CameraConfig;", "", "()V", "cameraId", "", "getCameraId", "()I", "setCameraId", "(I)V", "plugin-core_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/core/trtc/sdkadapter/feature/CameraConfig;", "", "()V", "cameraId", "", "getCameraId", "()I", "setCameraId", "(I)V", "plugin-core_release"})
 public final class b
 {
-  public int gpy = -1;
+  public int gJh = -1;
 }
 
 

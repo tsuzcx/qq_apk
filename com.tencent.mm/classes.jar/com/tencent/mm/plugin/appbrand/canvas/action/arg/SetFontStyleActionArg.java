@@ -11,7 +11,7 @@ public class SetFontStyleActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetFontStyleActionArg> CREATOR;
-  public String jzA;
+  public String fontStyle;
   
   static
   {
@@ -51,7 +51,7 @@ public class SetFontStyleActionArg
       return false;
     }
     paramObject = (SetFontStyleActionArg)paramObject;
-    boolean bool = Objects.equals(this.jzA, paramObject.jzA);
+    boolean bool = Objects.equals(this.fontStyle, paramObject.fontStyle);
     AppMethodBeat.o(145165);
     return bool;
   }
@@ -60,14 +60,14 @@ public class SetFontStyleActionArg
   {
     AppMethodBeat.i(145162);
     super.h(paramParcel);
-    this.jzA = paramParcel.readString();
+    this.fontStyle = paramParcel.readString();
     AppMethodBeat.o(145162);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145166);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jzA });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.fontStyle });
     AppMethodBeat.o(145166);
     return i;
   }
@@ -76,7 +76,7 @@ public class SetFontStyleActionArg
   {
     AppMethodBeat.i(145163);
     super.parse(paramJSONObject);
-    this.jzA = paramJSONObject.optJSONArray("data").optString(0);
+    this.fontStyle = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145163);
   }
   
@@ -84,7 +84,7 @@ public class SetFontStyleActionArg
   {
     AppMethodBeat.i(145164);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jzA);
+    paramParcel.writeString(this.fontStyle);
     AppMethodBeat.o(145164);
   }
 }

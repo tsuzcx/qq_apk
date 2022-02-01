@@ -8,24 +8,27 @@ public abstract class ft
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEW = "timestamp".hashCode();
-  private static final int eNy;
-  private static final int eRE;
-  private static final int ewX = "id".hashCode();
+  private static final int eMl = "card_id".hashCode();
+  private static final int eYo = "retryCount".hashCode();
+  private static final int fjF;
+  private static final int fns;
+  private static final int fsf = "state_flag".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEM = true;
-  private boolean eNx = true;
-  private boolean eRD = true;
-  private boolean ewT = true;
-  public String field_date;
-  public int field_id;
-  public int field_step;
-  public long field_timestamp;
+  private boolean eLS = true;
+  private boolean eYe = true;
+  public String field_card_id;
+  public int field_retryCount;
+  public long field_seq;
+  public int field_state_flag;
+  public long field_update_time;
+  private boolean fjx = true;
+  private boolean fno = true;
+  private boolean fse = true;
   
   static
   {
-    eRE = "date".hashCode();
-    eNy = "step".hashCode();
+    fjF = "update_time".hashCode();
+    fns = "seq".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -41,11 +44,11 @@ public abstract class ft
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ewX != k) {
+      if (eMl != k) {
         break label65;
       }
-      this.field_id = paramCursor.getInt(i);
-      this.ewT = true;
+      this.field_card_id = paramCursor.getString(i);
+      this.eLS = true;
     }
     for (;;)
     {
@@ -53,12 +56,14 @@ public abstract class ft
       break label20;
       break;
       label65:
-      if (eRE == k) {
-        this.field_date = paramCursor.getString(i);
-      } else if (eNy == k) {
-        this.field_step = paramCursor.getInt(i);
-      } else if (eEW == k) {
-        this.field_timestamp = paramCursor.getLong(i);
+      if (fsf == k) {
+        this.field_state_flag = paramCursor.getInt(i);
+      } else if (fjF == k) {
+        this.field_update_time = paramCursor.getLong(i);
+      } else if (fns == k) {
+        this.field_seq = paramCursor.getLong(i);
+      } else if (eYo == k) {
+        this.field_retryCount = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -68,17 +73,20 @@ public abstract class ft
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ewT) {
-      localContentValues.put("id", Integer.valueOf(this.field_id));
+    if (this.eLS) {
+      localContentValues.put("card_id", this.field_card_id);
     }
-    if (this.eRD) {
-      localContentValues.put("date", this.field_date);
+    if (this.fse) {
+      localContentValues.put("state_flag", Integer.valueOf(this.field_state_flag));
     }
-    if (this.eNx) {
-      localContentValues.put("step", Integer.valueOf(this.field_step));
+    if (this.fjx) {
+      localContentValues.put("update_time", Long.valueOf(this.field_update_time));
     }
-    if (this.eEM) {
-      localContentValues.put("timestamp", Long.valueOf(this.field_timestamp));
+    if (this.fno) {
+      localContentValues.put("seq", Long.valueOf(this.field_seq));
+    }
+    if (this.eYe) {
+      localContentValues.put("retryCount", Integer.valueOf(this.field_retryCount));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

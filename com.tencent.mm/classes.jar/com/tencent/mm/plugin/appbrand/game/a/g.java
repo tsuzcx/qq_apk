@@ -1,40 +1,35 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.expt.b.b.a;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigNativeSwitchThread;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigNativeBufferType;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableKv", "getConfigDefaultValue", "onProcessConfig", "input", "plugin-appbrand-integration_release"})
 public final class g
-  extends q<Boolean>
+  extends t<String>
 {
-  public static final g jQv;
+  public static final g kkH;
   
   static
   {
-    AppMethodBeat.i(180449);
-    jQv = new g();
-    AppMethodBeat.o(180449);
+    AppMethodBeat.i(50373);
+    kkH = new g();
+    AppMethodBeat.o(50373);
   }
   
-  protected final String bdx()
+  protected final String bhb()
   {
-    return "nativeSwitchThread";
+    return "nativebuffertype";
   }
   
-  protected final b.a bdy()
+  protected final b.a bhc()
   {
-    return b.a.qbB;
-  }
-  
-  protected final boolean bdz()
-  {
-    return true;
+    return b.a.qFa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.g
  * JD-Core Version:    0.7.0.1
  */

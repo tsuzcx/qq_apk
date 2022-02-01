@@ -18,14 +18,9 @@ public final class c<T, V>
     super(paramb);
   }
   
-  public final T avY()
+  public final T ayL()
   {
     return null;
-  }
-  
-  public final V bN(V paramV)
-  {
-    return paramV;
   }
   
   public final V bP(V paramV)
@@ -33,7 +28,7 @@ public final class c<T, V>
     return paramV;
   }
   
-  public final V r(T paramT, V paramV)
+  public final V bR(V paramV)
   {
     return paramV;
   }
@@ -41,9 +36,14 @@ public final class c<T, V>
   public final Map<T, V> snapshot()
   {
     AppMethodBeat.i(156489);
-    Map localMap = this.hfs.snapshot();
+    Map localMap = this.hxA.snapshot();
     AppMethodBeat.o(156489);
     return localMap;
+  }
+  
+  public final V t(T paramT, V paramV)
+  {
+    return paramV;
   }
 }
 

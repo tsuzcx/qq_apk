@@ -7,21 +7,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static ConnectivityManager KJK = null;
+  private static ConnectivityManager MAw = null;
   
   public static boolean isConnected(Context paramContext)
   {
     boolean bool1 = false;
     AppMethodBeat.i(3459);
-    if (KJK == null) {
-      KJK = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (MAw == null) {
+      MAw = (ConnectivityManager)paramContext.getSystemService("connectivity");
     }
-    if (KJK == null)
+    if (MAw == null)
     {
       AppMethodBeat.o(3459);
       return false;
     }
-    paramContext = KJK.getActiveNetworkInfo();
+    paramContext = MAw.getActiveNetworkInfo();
     if (paramContext != null) {}
     for (;;)
     {
@@ -46,15 +46,15 @@ public final class a
   public static boolean isWifi(Context paramContext)
   {
     AppMethodBeat.i(3460);
-    if (KJK == null) {
-      KJK = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (MAw == null) {
+      MAw = (ConnectivityManager)paramContext.getSystemService("connectivity");
     }
-    if (KJK == null)
+    if (MAw == null)
     {
       AppMethodBeat.o(3460);
       return false;
     }
-    paramContext = KJK.getActiveNetworkInfo();
+    paramContext = MAw.getActiveNetworkInfo();
     if ((paramContext != null) && (paramContext.getType() == 1))
     {
       AppMethodBeat.o(3460);

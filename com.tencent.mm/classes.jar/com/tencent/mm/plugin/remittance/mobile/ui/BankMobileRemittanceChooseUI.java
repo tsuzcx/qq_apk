@@ -13,18 +13,19 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.b.a.gg;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.b.a.hj;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.newtips.NormalIconNewTipPreference;
 import com.tencent.mm.plugin.newtips.a.i;
 import com.tencent.mm.plugin.remittance.a.c;
 import com.tencent.mm.pluginsdk.ui.span.j.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -36,32 +37,36 @@ public class BankMobileRemittanceChooseUI
   extends MMPreference
 {
   private f screen;
-  private NormalIconNewTipPreference wHJ;
-  private NormalIconNewTipPreference wHK;
+  private NormalIconNewTipPreference xVq;
+  private NormalIconNewTipPreference xVr;
   
-  private static void Mx(int paramInt)
+  private static void NZ(int paramInt)
   {
     AppMethodBeat.i(67672);
-    gg localgg = new gg();
-    localgg.dCQ = paramInt;
-    localgg.aHZ();
+    hj localhj = new hj();
+    localhj.dPl = paramInt;
+    localhj.aLk();
     AppMethodBeat.o(67672);
   }
   
   public View getBottomView()
   {
     AppMethodBeat.i(67669);
-    LinearLayout localLinearLayout = (LinearLayout)z.jD(getContext()).inflate(2131493146, null);
+    LinearLayout localLinearLayout = (LinearLayout)z.jO(getContext()).inflate(2131493146, null);
     localLinearLayout.findViewById(2131297125).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67665);
-        ac.i("MicroMsg.BankMobile.BankMobileRemittanceChooseUI", "onClick() go to WalletPasswordSettingUI");
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/mobile/ui/BankMobileRemittanceChooseUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        ad.i("MicroMsg.BankMobile.BankMobileRemittanceChooseUI", "onClick() go to WalletPasswordSettingUI");
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("key_enter_scene", 1);
         d.b(BankMobileRemittanceChooseUI.this.getContext(), "wallet", ".pwd.ui.WalletPasswordSettingUI", paramAnonymousView);
-        BankMobileRemittanceChooseUI.dxL();
+        BankMobileRemittanceChooseUI.dJd();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/mobile/ui/BankMobileRemittanceChooseUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(67665);
       }
     });
@@ -99,20 +104,20 @@ public class BankMobileRemittanceChooseUI
       }
     });
     this.screen = getPreferenceScreen();
-    this.wHJ = ((NormalIconNewTipPreference)this.screen.aPN("bank_mobile_remit_choose_bank"));
-    this.wHK = ((NormalIconNewTipPreference)this.screen.aPN("bank_mobile_remit_choose_mobile"));
-    this.wHJ.HED = true;
-    this.wHJ.setDesc(getString(2131756350));
-    this.wHJ.fjl();
-    this.wHJ.aag(8);
-    this.wHJ.a(this.screen);
-    com.tencent.mm.plugin.newtips.a.dkb().h(this.wHJ);
-    this.wHK.HED = true;
-    this.wHK.setDesc(getString(2131756352));
-    this.wHK.fjl();
-    this.wHK.aag(8);
-    this.wHK.a(this.screen);
-    com.tencent.mm.plugin.newtips.a.dkb().h(this.wHK);
+    this.xVq = ((NormalIconNewTipPreference)this.screen.aVD("bank_mobile_remit_choose_bank"));
+    this.xVr = ((NormalIconNewTipPreference)this.screen.aVD("bank_mobile_remit_choose_mobile"));
+    this.xVq.Jst = true;
+    this.xVq.setDesc(getString(2131756350));
+    this.xVq.fzA();
+    this.xVq.acq(8);
+    this.xVq.a(this.screen);
+    com.tencent.mm.plugin.newtips.a.dun().h(this.xVq);
+    this.xVr.Jst = true;
+    this.xVr.setDesc(getString(2131756352));
+    this.xVr.fzA();
+    this.xVr.acq(8);
+    this.xVr.a(this.screen);
+    com.tencent.mm.plugin.newtips.a.dun().h(this.xVr);
     this.screen.notifyDataSetChanged();
     AppMethodBeat.o(67667);
   }
@@ -123,15 +128,15 @@ public class BankMobileRemittanceChooseUI
     AppMethodBeat.i(67666);
     super.onCreate(paramBundle);
     initView();
-    paramBundle = com.tencent.mm.pluginsdk.g.a.eLv();
-    if (!bs.aj(paramBundle))
+    paramBundle = com.tencent.mm.pluginsdk.i.a.faq();
+    if (!bt.ai(paramBundle))
     {
       paramBundle = paramBundle.toString().replace(" ", "");
-      if ((!bs.isNullOrNil(paramBundle)) && ((c.dxj().wEc == null) || (!bs.lr(c.dxj().wEc.toString(), paramBundle))))
+      if ((!bt.isNullOrNil(paramBundle)) && ((c.dIB().xRJ == null) || (!bt.lQ(c.dIB().xRJ.toString(), paramBundle))))
       {
         paramBundle = paramBundle.trim();
-        ac.d("MicroMsg.BankMobile.BankMobileRemittanceChooseUI", "text:%s", new Object[] { paramBundle });
-        if (!j.a.DCt.matcher(paramBundle).find()) {
+        ad.d("MicroMsg.BankMobile.BankMobileRemittanceChooseUI", "text:%s", new Object[] { paramBundle });
+        if (!j.a.FhA.matcher(paramBundle).find()) {
           break label132;
         }
         a.a(this, false, paramBundle);
@@ -140,12 +145,12 @@ public class BankMobileRemittanceChooseUI
     for (;;)
     {
       if (i != 0) {
-        c.dxj().wEc = paramBundle;
+        c.dIB().xRJ = paramBundle;
       }
       AppMethodBeat.o(67666);
       return;
       label132:
-      if (j.a.DCs.matcher(paramBundle).find()) {
+      if (j.a.Fhz.matcher(paramBundle).find()) {
         a.a(this, true, paramBundle);
       } else {
         i = 0;
@@ -163,26 +168,26 @@ public class BankMobileRemittanceChooseUI
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(67671);
-    ac.i("MicroMsg.BankMobile.BankMobileRemittanceChooseUI", "onPreferenceTreeClick() key:%s", new Object[] { paramPreference.mKey });
-    if (bs.lr("bank_mobile_remit_choose_bank", paramPreference.mKey))
+    ad.i("MicroMsg.BankMobile.BankMobileRemittanceChooseUI", "onPreferenceTreeClick() key:%s", new Object[] { paramPreference.mKey });
+    if (bt.lQ("bank_mobile_remit_choose_bank", paramPreference.mKey))
     {
-      com.tencent.mm.plugin.newtips.a.dkb().Ko(21);
-      d.N(getContext(), "remittance", ".bankcard.ui.BankRemitBankcardInputUI");
+      com.tencent.mm.plugin.newtips.a.dun().LQ(21);
+      d.Q(getContext(), "remittance", ".bankcard.ui.BankRemitBankcardInputUI");
       AppMethodBeat.o(67671);
       return true;
     }
-    if (bs.lr("bank_mobile_remit_choose_mobile", paramPreference.mKey))
+    if (bt.lQ("bank_mobile_remit_choose_mobile", paramPreference.mKey))
     {
-      com.tencent.mm.plugin.newtips.a.dkb().Ko(22);
-      if (g.agR().agA().getBoolean(ah.a.GTC, true)) {
-        d.N(getContext(), "remittance", ".mobile.ui.MobileRemitWelcomeUI");
+      com.tencent.mm.plugin.newtips.a.dun().LQ(22);
+      if (g.ajC().ajl().getBoolean(al.a.IGh, true)) {
+        d.Q(getContext(), "remittance", ".mobile.ui.MobileRemitWelcomeUI");
       }
       for (;;)
       {
-        Mx(4);
+        NZ(4);
         AppMethodBeat.o(67671);
         return true;
-        d.N(getContext(), "remittance", ".mobile.ui.MobileRemitNumberInputUI");
+        d.Q(getContext(), "remittance", ".mobile.ui.MobileRemitNumberInputUI");
       }
     }
     AppMethodBeat.o(67671);

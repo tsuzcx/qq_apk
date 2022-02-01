@@ -46,7 +46,7 @@ public final class g
   
   public final void update(final Bundle paramBundle, final TBSOneCallback<Void> paramTBSOneCallback)
   {
-    AppMethodBeat.i(192428);
+    AppMethodBeat.i(190667);
     String str = this.b.b;
     f.a("[%s] Updating", new Object[] { str });
     if (this.b.h())
@@ -55,7 +55,7 @@ public final class g
       if (paramTBSOneCallback != null) {
         paramTBSOneCallback.onCompleted(null);
       }
-      AppMethodBeat.o(192428);
+      AppMethodBeat.o(190667);
       return;
     }
     m.a(new Runnable()
@@ -67,7 +67,7 @@ public final class g
         AppMethodBeat.o(174138);
       }
     });
-    AppMethodBeat.o(192428);
+    AppMethodBeat.o(190667);
   }
 }
 

@@ -11,16 +11,16 @@ import org.xwalk.core.XWalkView;
 public final class h
   implements e
 {
-  m KGm;
-  o KGn;
-  XWalkView KGo;
+  m MwM;
+  o MwN;
+  XWalkView MwO;
   
   public h(XWalkView paramXWalkView)
   {
     AppMethodBeat.i(154285);
-    this.KGo = paramXWalkView;
-    this.KGm = new m(paramXWalkView);
-    this.KGn = new o(paramXWalkView);
+    this.MwO = paramXWalkView;
+    this.MwM = new m(paramXWalkView);
+    this.MwN = new o(paramXWalkView);
     AppMethodBeat.o(154285);
   }
   
@@ -29,7 +29,7 @@ public final class h
     AppMethodBeat.i(154289);
     if ((paramJsResult instanceof g.c))
     {
-      boolean bool = this.KGm.b(this.KGo, paramString1, paramString2, ((g.c)paramJsResult).KGi);
+      boolean bool = this.MwM.b(this.MwO, paramString1, paramString2, ((g.c)paramJsResult).MwI);
       AppMethodBeat.o(154289);
       return bool;
     }
@@ -42,7 +42,7 @@ public final class h
     AppMethodBeat.i(154291);
     if ((paramo instanceof g.e))
     {
-      boolean bool = this.KGm.a(this.KGo, paramString1, paramString2, paramString3, ((g.e)paramo).KGi);
+      boolean bool = this.MwM.a(this.MwO, paramString1, paramString2, paramString3, ((g.e)paramo).MwI);
       AppMethodBeat.o(154291);
       return bool;
     }
@@ -55,7 +55,7 @@ public final class h
     AppMethodBeat.i(154290);
     if ((paramJsResult instanceof g.c))
     {
-      boolean bool = this.KGm.a(this.KGo, paramString1, paramString2, ((g.c)paramJsResult).KGi);
+      boolean bool = this.MwM.a(this.MwO, paramString1, paramString2, ((g.c)paramJsResult).MwI);
       AppMethodBeat.o(154290);
       return bool;
     }
@@ -66,7 +66,7 @@ public final class h
   public final void onHideCustomView()
   {
     AppMethodBeat.i(154288);
-    this.KGm.fLr();
+    this.MwM.gcM();
     AppMethodBeat.o(154288);
   }
   
@@ -74,7 +74,7 @@ public final class h
   {
     AppMethodBeat.i(154287);
     if ((paramCustomViewCallback instanceof g.a)) {
-      this.KGm.a(paramView, ((g.a)paramCustomViewCallback).KGg);
+      this.MwM.a(paramView, ((g.a)paramCustomViewCallback).MwG);
     }
     AppMethodBeat.o(154287);
   }
@@ -82,7 +82,7 @@ public final class h
   public final void y(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(154286);
-    this.KGm.a(this.KGo, paramString);
+    this.MwM.a(this.MwO, paramString);
     AppMethodBeat.o(154286);
   }
 }

@@ -9,16 +9,16 @@ import java.util.Arrays;
 
 public final class h
 {
-  private static final LruCache<String, LruCache<String, Field>> vpN;
-  private static final LruCache<String, LruCache<String, Method>> vpO;
-  private static final LruCache<String, LruCache<String, Constructor<?>>> vpP;
+  private static final LruCache<String, LruCache<String, Field>> wvf;
+  private static final LruCache<String, LruCache<String, Method>> wvg;
+  private static final LruCache<String, LruCache<String, Constructor<?>>> wvh;
   
   static
   {
     AppMethodBeat.i(149105);
-    vpN = new LruCache(50);
-    vpO = new LruCache(50);
-    vpP = new LruCache(50);
+    wvf = new LruCache(50);
+    wvg = new LruCache(50);
+    wvh = new LruCache(50);
     AppMethodBeat.o(149105);
   }
   
@@ -68,11 +68,11 @@ public final class h
   private static Method b(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
     AppMethodBeat.i(149104);
-    LruCache localLruCache = (LruCache)vpO.get(paramClass.getName());
+    LruCache localLruCache = (LruCache)wvg.get(paramClass.getName());
     if (localLruCache == null)
     {
       localLruCache = new LruCache(30);
-      vpO.put(paramClass.getName(), localLruCache);
+      wvg.put(paramClass.getName(), localLruCache);
     }
     for (;;)
     {
@@ -169,11 +169,11 @@ public final class h
   private static Field d(Class<?> paramClass, String paramString)
   {
     AppMethodBeat.i(149103);
-    LruCache localLruCache = (LruCache)vpN.get(paramClass.getName());
+    LruCache localLruCache = (LruCache)wvf.get(paramClass.getName());
     if (localLruCache == null)
     {
       localLruCache = new LruCache(30);
-      vpN.put(paramClass.getName(), localLruCache);
+      wvf.put(paramClass.getName(), localLruCache);
     }
     for (;;)
     {
@@ -220,7 +220,7 @@ public final class h
     }
   }
   
-  public static <T> T jdMethod_if(String paramString1, String paramString2)
+  public static <T> T iq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(149097);
     paramString1 = c(findClass(paramString1), paramString2);

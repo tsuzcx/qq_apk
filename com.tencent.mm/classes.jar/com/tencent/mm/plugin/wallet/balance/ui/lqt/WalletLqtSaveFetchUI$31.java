@@ -13,13 +13,13 @@ final class WalletLqtSaveFetchUI$31
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(69003);
-    e.o(this.Beu.getContext(), this.BeL, false);
+    e.o(this.CEJ.getContext(), this.CFa, false);
     AppMethodBeat.o(69003);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchUI.31
  * JD-Core Version:    0.7.0.1
  */

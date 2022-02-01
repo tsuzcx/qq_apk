@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 
 public abstract interface h
 {
-  public static final Charset aDo = Charset.forName("UTF-8");
+  public static final Charset aFf = Charset.forName("UTF-8");
   
   public abstract void a(MessageDigest paramMessageDigest);
   

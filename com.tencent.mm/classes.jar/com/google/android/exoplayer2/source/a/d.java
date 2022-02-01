@@ -7,13 +7,13 @@ import com.google.android.exoplayer2.h.j;
 public abstract class d
   extends a
 {
-  public final int bmT;
+  public final int bxo;
   
   public d(g paramg, j paramj, Format paramFormat, int paramInt1, Object paramObject, long paramLong1, long paramLong2, int paramInt2)
   {
     super(paramg, paramj, 1, paramFormat, paramInt1, paramObject, paramLong1, paramLong2);
     com.google.android.exoplayer2.i.a.checkNotNull(paramFormat);
-    this.bmT = paramInt2;
+    this.bxo = paramInt2;
   }
 }
 

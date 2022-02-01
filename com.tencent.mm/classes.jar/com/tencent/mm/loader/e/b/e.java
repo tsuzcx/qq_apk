@@ -1,75 +1,63 @@
 package com.tencent.mm.loader.e.b;
 
-import com.tencent.mm.sdk.platformtools.ac;
 import d.f;
-import d.g.b.k;
+import d.g;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
 import d.o;
-import d.y;
+import d.z;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/impr/target/TargetCenter;", "", "()V", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lkotlin/Pair;", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;", "clean", "", "dispatch", "R", "target", "resource", "waitUI", "Lcom/tencent/mm/loader/impr/target/IWaitUI;", "(Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;Ljava/lang/Object;Lcom/tencent/mm/loader/impr/target/IWaitUI;)V", "isNeed", "", "url", "", "onDataItemLoadEnd", "data", "result", "Lcom/tencent/mm/loader/model/LoadResult;", "register", "unregister", "reason", "Companion", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/impr/target/TargetCenter;", "", "()V", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lkotlin/Pair;", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;", "clean", "", "dispatch", "R", "target", "resource", "waitUI", "Lcom/tencent/mm/loader/impr/target/IWaitUI;", "(Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;Ljava/lang/Object;Lcom/tencent/mm/loader/impr/target/IWaitUI;)V", "isNeed", "", "url", "", "onDataItemLoadEnd", "data", "result", "Lcom/tencent/mm/loader/model/LoadResult;", "register", "unregister", "reason", "Companion", "libimageloader_release"})
 public final class e
 {
   public static final String TAG = "MicroMsg.Loader.TargetCenter";
-  private static final f gKX;
-  public static final a gKY = new a((byte)0);
-  public ConcurrentHashMap<Integer, o<com.tencent.mm.loader.h.a.a<?>, d<Object>>> cfp = new ConcurrentHashMap();
+  private static final f heM;
+  public static final a heN = new a((byte)0);
+  public ConcurrentHashMap<Integer, o<com.tencent.mm.loader.h.a.a<?>, d<Object>>> cpF = new ConcurrentHashMap();
   
   static
   {
-    gKX = d.g.K((d.g.a.a)b.gKZ);
+    heM = g.O((d.g.a.a)b.heO);
   }
   
   public final void a(d<Object> paramd, com.tencent.mm.loader.h.a.a<?> parama, String paramString)
   {
-    k.h(paramd, "target");
-    k.h(parama, "data");
-    k.h(paramString, "reason");
-    o localo = (o)this.cfp.get(Integer.valueOf(paramd.aov()));
-    if (localo != null)
-    {
-      if (k.g((com.tencent.mm.loader.h.a.a)localo.first, parama))
-      {
-        this.cfp.remove(Integer.valueOf(paramd.aov()));
-        ac.i(TAG, "unregister " + paramd + " and code " + paramd.aov() + " data " + parama + " and remove done " + paramString + "  try get: " + paramd.gKS.get());
-      }
+    p.h(paramd, "target");
+    p.h(parama, "data");
+    p.h(paramString, "reason");
+    paramString = (o)this.cpF.get(Integer.valueOf(paramd.arh()));
+    if ((paramString != null) && (p.i((com.tencent.mm.loader.h.a.a)paramString.first, parama))) {
+      this.cpF.remove(Integer.valueOf(paramd.arh()));
     }
-    else {
-      return;
-    }
-    ac.i(TAG, "unregister " + paramd + " and code " + paramd.aov() + " data " + parama + " no need remove " + paramString + "  try get: " + paramd.gKS.get());
   }
   
   public final <R> void a(final com.tencent.mm.loader.h.a.a<?> parama, final com.tencent.mm.loader.h.c<R> paramc)
   {
-    k.h(parama, "data");
-    k.h(paramc, "result");
-    com.tencent.mm.ac.c.g((d.g.a.a)new c(this, parama, paramc));
+    p.h(parama, "data");
+    p.h(paramc, "result");
+    com.tencent.mm.ad.c.g((d.g.a.a)new c(this, parama, paramc));
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/impr/target/TargetCenter$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "instance", "Lcom/tencent/mm/loader/impr/target/TargetCenter;", "getInstance", "()Lcom/tencent/mm/loader/impr/target/TargetCenter;", "instance$delegate", "Lkotlin/Lazy;", "libimageloader_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/impr/target/TargetCenter$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "instance", "Lcom/tencent/mm/loader/impr/target/TargetCenter;", "getInstance", "()Lcom/tencent/mm/loader/impr/target/TargetCenter;", "instance$delegate", "Lkotlin/Lazy;", "libimageloader_release"})
   public static final class a
   {
-    public static e aox()
+    public static e arj()
     {
-      f localf = e.aow();
-      a locala = e.gKY;
+      f localf = e.ari();
+      a locala = e.heN;
       return (e)localf.getValue();
-    }
-    
-    public static String getTAG()
-    {
-      return e.access$getTAG$cp();
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/loader/impr/target/TargetCenter;", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/loader/impr/target/TargetCenter;", "invoke"})
   static final class b
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<e>
   {
-    public static final b gKZ = new b();
+    public static final b heO = new b();
     
     b()
     {
@@ -77,26 +65,26 @@ public final class e
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "R", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "R", "invoke"})
   static final class c
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     c(e parame, com.tencent.mm.loader.h.a.a parama, com.tencent.mm.loader.h.c paramc)
     {
       super();
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/loader/impr/target/TargetCenter$onDataItemLoadEnd$1$1$1$1", "Lcom/tencent/mm/loader/impr/target/IWaitUI;", "uiDone", "", "isRemove", "", "libimageloader_release", "com/tencent/mm/loader/impr/target/TargetCenter$onDataItemLoadEnd$1$$special$$inlined$let$lambda$1"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/loader/impr/target/TargetCenter$onDataItemLoadEnd$1$1$1$1", "Lcom/tencent/mm/loader/impr/target/IWaitUI;", "uiDone", "", "isRemove", "", "libimageloader_release", "com/tencent/mm/loader/impr/target/TargetCenter$onDataItemLoadEnd$1$$special$$inlined$let$lambda$1"})
     public static final class a
       implements b
     {
       a(Map.Entry paramEntry, e.c paramc) {}
       
-      public final void dW(boolean paramBoolean)
+      public final void dY(boolean paramBoolean)
       {
         if (paramBoolean) {
-          this.gLe.gLa.a((d)((o)this.gLd.getValue()).second, this.gLe.gLb, "onDataItemLoadEnd");
+          this.heT.heP.a((d)((o)this.heS.getValue()).second, this.heT.heQ, "onDataItemLoadEnd");
         }
       }
     }

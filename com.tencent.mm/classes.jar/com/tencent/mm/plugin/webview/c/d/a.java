@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.webview.c.d;
 
 public abstract interface a
 {
-  public abstract boolean aAU(String paramString);
+  public abstract boolean aGp(String paramString);
   
-  public abstract boolean aAV(String paramString);
+  public abstract boolean aGq(String paramString);
 }
 
 

@@ -3,13 +3,14 @@ package com.tencent.kinda.framework.widget.base;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.EditText;
+import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
 import com.tencent.kinda.gen.KRegionEditView;
 import com.tencent.kinda.gen.KRegionEditViewOnRegionSelectedCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
 import com.tencent.mm.framework.app.UIPageFragmentActivity.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -47,7 +48,7 @@ public class KindaRegionEditViewImpl
           return;
         }
         KindaRegionEditViewImpl.access$002(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("Country"));
-        if (!bs.isNullOrNil(paramAnonymousIntent.getStringExtra("Contact_City")))
+        if (!bt.isNullOrNil(paramAnonymousIntent.getStringExtra("Contact_City")))
         {
           KindaRegionEditViewImpl.access$102(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("Contact_Province"));
           KindaRegionEditViewImpl.access$202(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("Contact_City"));
@@ -58,13 +59,13 @@ public class KindaRegionEditViewImpl
           String str2 = paramAnonymousIntent.getStringExtra("ProviceName");
           paramAnonymousIntent = paramAnonymousIntent.getStringExtra("CityName");
           StringBuilder localStringBuilder = new StringBuilder();
-          if (!bs.isNullOrNil(str1)) {
+          if (!bt.isNullOrNil(str1)) {
             localStringBuilder.append(str1);
           }
-          if (!bs.isNullOrNil(str2)) {
+          if (!bt.isNullOrNil(str2)) {
             localStringBuilder.append(" ").append(str2);
           }
-          if (!bs.isNullOrNil(paramAnonymousIntent)) {
+          if (!bt.isNullOrNil(paramAnonymousIntent)) {
             localStringBuilder.append(" ").append(paramAnonymousIntent);
           }
           KindaRegionEditViewImpl.this.mEditText.setText(localStringBuilder.toString());
@@ -73,7 +74,7 @@ public class KindaRegionEditViewImpl
           }
           AppMethodBeat.o(18938);
           return;
-          if (!bs.isNullOrNil(paramAnonymousIntent.getStringExtra("Contact_Province"))) {
+          if (!bt.isNullOrNil(paramAnonymousIntent.getStringExtra("Contact_Province"))) {
             KindaRegionEditViewImpl.access$202(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("Contact_Province"));
           } else {
             KindaRegionEditViewImpl.access$202(KindaRegionEditViewImpl.this, KindaRegionEditViewImpl.this.countryCode);
@@ -92,12 +93,12 @@ public class KindaRegionEditViewImpl
     this.mEditText.setFocusable(false);
     this.mEditText.setBackground(null);
     this.mEditText.setHint(2131765161);
-    this.mEditText.setTextSize(16.0F);
+    this.mEditText.setTextSize(0, MMKViewUtil.dpToPx(aj.getContext(), 17.0F));
     this.mEditText.setPadding(0, 0, 0, 0);
     this.mContext = paramContext;
     if ((this.mContext instanceof UIPageFragmentActivity))
     {
-      this.REQUEST_CODE = ((UIPageFragmentActivity)this.mContext).fXU.getAndIncrement();
+      this.REQUEST_CODE = ((UIPageFragmentActivity)this.mContext).grp.getAndIncrement();
       UIPageFragmentActivity.a(this.REQUEST_CODE, this.intentHandler);
     }
     paramContext = this.mEditText;
@@ -146,7 +147,7 @@ public class KindaRegionEditViewImpl
   public boolean isUSOrCA()
   {
     AppMethodBeat.i(18942);
-    if (bs.isNullOrNil(this.countryCode))
+    if (bt.isNullOrNil(this.countryCode))
     {
       AppMethodBeat.o(18942);
       return false;
@@ -177,7 +178,7 @@ public class KindaRegionEditViewImpl
     {
       ((BaseFrActivity)this.mContext).hideTenpayKB();
       Intent localIntent = new Intent();
-      localIntent.setClassName(ai.getPackageName(), ai.eUW() + ".ui.tools.MultiStageCitySelectUI");
+      localIntent.setClassName(aj.getPackageName(), aj.fkB() + ".ui.tools.MultiStageCitySelectUI");
       localIntent.putExtra("GetAddress", true);
       localIntent.putExtra("IsNeedShowSearchBar", this.mShowDomesticCity);
       localIntent.putExtra("IsRealNameVerifyScene", this.mShowDomesticCity);
@@ -202,7 +203,7 @@ public class KindaRegionEditViewImpl
     this.countryCode = paramString1;
     this.provinceCode = paramString2;
     this.cityCode = paramString3;
-    if (!bs.isNullOrNil(paramString4)) {
+    if (!bt.isNullOrNil(paramString4)) {
       this.mEditText.setText(paramString4);
     }
     AppMethodBeat.o(18941);

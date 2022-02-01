@@ -9,47 +9,47 @@ import com.tencent.mm.plugin.base.stub.d;
 import com.tencent.mm.plugin.base.stub.d.a;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil.ReportArgs;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 final class FavOpenApiEntry$1
-  implements au.a
+  implements av.a
 {
   FavOpenApiEntry$1(FavOpenApiEntry paramFavOpenApiEntry) {}
   
   public final boolean onTimerExpired()
   {
     AppMethodBeat.i(24617);
-    if ((this.qVk.getWindow() == null) || (this.qVk.getWindow().getDecorView() == null) || (this.qVk.getWindow().getDecorView().getWindowToken() == null))
+    if ((this.rFy.getWindow() == null) || (this.rFy.getWindow().getDecorView() == null) || (this.rFy.getWindow().getDecorView().getWindowToken() == null))
     {
-      if (FavOpenApiEntry.a(this.qVk) < 10)
+      if (FavOpenApiEntry.a(this.rFy) < 10)
       {
-        FavOpenApiEntry.b(this.qVk);
+        FavOpenApiEntry.b(this.rFy);
         AppMethodBeat.o(24617);
         return true;
       }
       AppMethodBeat.o(24617);
       return false;
     }
-    new d(this.qVk, FavOpenApiEntry.c(this.qVk), FavOpenApiEntry.d(this.qVk).openId, new d.a()
+    new d(this.rFy, FavOpenApiEntry.c(this.rFy), FavOpenApiEntry.d(this.rFy).openId, new d.a()
     {
-      public final void iT(boolean paramAnonymousBoolean)
+      public final void jc(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(24616);
-        boolean bool = FavOpenApiEntry.1.this.qVk.isFinishing();
-        ac.i("MicroMsg.FavOpenApiEntry", "onCheckEnd, isPass = " + paramAnonymousBoolean + ", isFinishing = " + bool);
+        boolean bool = FavOpenApiEntry.1.this.rFy.isFinishing();
+        ad.i("MicroMsg.FavOpenApiEntry", "onCheckEnd, isPass = " + paramAnonymousBoolean + ", isFinishing = " + bool);
         if ((paramAnonymousBoolean) && (!bool))
         {
-          FavOpenApiEntry.a(FavOpenApiEntry.1.this.qVk, FavOpenApiEntry.d(FavOpenApiEntry.1.this.qVk).message);
+          FavOpenApiEntry.a(FavOpenApiEntry.1.this.rFy, FavOpenApiEntry.d(FavOpenApiEntry.1.this.rFy).message);
           AppMethodBeat.o(24616);
           return;
         }
-        ReportUtil.ReportArgs localReportArgs = ReportUtil.c(FavOpenApiEntry.1.this.qVk.getIntent().getExtras(), -3);
-        ReportUtil.a(FavOpenApiEntry.1.this.qVk, localReportArgs, false);
-        FavOpenApiEntry.1.this.qVk.finish();
+        ReportUtil.ReportArgs localReportArgs = ReportUtil.d(FavOpenApiEntry.1.this.rFy.getIntent().getExtras(), -3);
+        ReportUtil.a(FavOpenApiEntry.1.this.rFy, localReportArgs, false);
+        FavOpenApiEntry.1.this.rFy.finish();
         AppMethodBeat.o(24616);
       }
-    }).bHP();
+    }).bMa();
     AppMethodBeat.o(24617);
     return false;
   }

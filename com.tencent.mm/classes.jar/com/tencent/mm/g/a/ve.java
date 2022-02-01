@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ve
   extends b
 {
-  public a dye;
+  public a dJq;
   
   public ve()
   {
@@ -15,17 +15,19 @@ public final class ve
   
   private ve(byte paramByte)
   {
-    AppMethodBeat.i(118479);
-    this.dye = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(125647);
+    this.dJq = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(118479);
+    AppMethodBeat.o(125647);
   }
   
   public static final class a
   {
-    public boolean dyf = false;
-    public long dyg = 0L;
+    public String dJr;
+    public String id;
+    public String result;
+    public int type;
   }
 }
 

@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b
 {
-  final byte[] bJS;
-  private int bJT;
+  final byte[] bUf;
+  private int bUg;
   
   b(int paramInt)
   {
     AppMethodBeat.i(12222);
-    this.bJS = new byte[paramInt];
-    this.bJT = 0;
+    this.bUf = new byte[paramInt];
+    this.bUg = 0;
     AppMethodBeat.o(12222);
   }
   
@@ -20,9 +20,9 @@ final class b
     int i = 0;
     if (i < paramInt)
     {
-      int k = this.bJT;
-      this.bJT = (k + 1);
-      byte[] arrayOfByte = this.bJS;
+      int k = this.bUg;
+      this.bUg = (k + 1);
+      byte[] arrayOfByte = this.bUf;
       if (paramBoolean) {}
       for (int j = 1;; j = 0)
       {

@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public class MyKeyboardWindow
   extends LinearLayout
@@ -76,11 +78,17 @@ public class MyKeyboardWindow
     this.mKeyD = ((RelativeLayout)paramContext.findViewById(getId("tenpay_keyboard_d")));
     paramContext = new View.OnClickListener()
     {
+      private byte _hellAccFlag_;
+      
       public void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130946);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (MyKeyboardWindow.this.mInputEditText == null)
         {
+          a.a(this, "com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(130946);
           return;
         }
@@ -91,15 +99,13 @@ public class MyKeyboardWindow
           }
           for (;;)
           {
-            AppMethodBeat.o(130946);
-            return;
+            a.a(this, "com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(130946);
             return;
             MyKeyboardWindow.this.mInputEditText.dispatchKeyEvent(new KeyEvent(0, 59));
             MyKeyboardWindow.this.mInputEditText.dispatchKeyEvent(new KeyEvent(0, 52));
             MyKeyboardWindow.this.mInputEditText.dispatchKeyEvent(new KeyEvent(1, 59));
-            AppMethodBeat.o(130946);
-            return;
+            continue;
             MyKeyboardWindow.this.mInputEditText.dispatchKeyEvent(new KeyEvent(0, 56));
           }
         }
@@ -111,6 +117,7 @@ public class MyKeyboardWindow
         {
           MyKeyboardWindow.this.mInputEditText.dispatchKeyEvent(new KeyEvent(0, i));
           MyKeyboardWindow.this.mInputEditText.dispatchKeyEvent(new KeyEvent(1, i));
+          a.a(this, "com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(130946);
           return;
           if (paramAnonymousView.getId() == MyKeyboardWindow.this.getId("tenpay_keyboard_2")) {

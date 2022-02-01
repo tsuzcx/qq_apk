@@ -4,27 +4,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.g.a.b;
 import d.g.a.m;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/fetcher/FetcherFactory;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "fetch", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/fetcher/FetcherFactory;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "fetch", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "plugin-emojisdk_release"})
 public final class h
 {
   private static final String TAG = "MicroMsg.EmojiLoader.FetcherFactory";
-  public static final h fPI;
+  public static final h gji;
   
   static
   {
     AppMethodBeat.i(105443);
-    fPI = new h();
+    gji = new h();
     TAG = "MicroMsg.EmojiLoader.FetcherFactory";
     AppMethodBeat.o(105443);
   }
   
-  public static void d(EmojiInfo paramEmojiInfo, final b<? super Boolean, y> paramb)
+  public static void d(EmojiInfo paramEmojiInfo, final b<? super Boolean, z> paramb)
   {
     AppMethodBeat.i(105442);
-    k.h(paramEmojiInfo, "emojiInfo");
+    p.h(paramEmojiInfo, "emojiInfo");
     new f(paramEmojiInfo, (m)new a(paramEmojiInfo, paramb));
     AppMethodBeat.o(105442);
   }
@@ -34,10 +36,10 @@ public final class h
     return TAG;
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "success", "", "config", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "success", "", "config", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "invoke"})
   static final class a
-    extends d.g.b.l
-    implements m<Boolean, e, y>
+    extends q
+    implements m<Boolean, e, z>
   {
     a(EmojiInfo paramEmojiInfo, b paramb)
     {

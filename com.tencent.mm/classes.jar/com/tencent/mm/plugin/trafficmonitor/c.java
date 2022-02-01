@@ -10,51 +10,51 @@ import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class c
 {
-  private static Map<Integer, Long> AiA;
-  private static Map<Integer, Long> AiB;
-  private static Map<Integer, Long> AiC;
-  private static Map<Integer, Long> AiD;
-  private static Map<Integer, Long> AiE;
-  private static Map<Integer, Long> AiF;
-  private static Map<Integer, Long> AiG;
-  private static Map<Integer, Long> AiH;
+  private static Map<Integer, Long> BAm;
+  private static Map<Integer, Long> BAn;
+  private static Map<Integer, Long> BAo;
+  private static Map<Integer, Long> BAp;
+  private static Map<Integer, Long> BAq;
+  private static Map<Integer, Long> BAr;
+  private static Map<Integer, Long> BAs;
+  private static Map<Integer, Long> BAt;
   
   static
   {
     AppMethodBeat.i(123897);
-    AiA = new HashMap();
-    AiB = new HashMap();
-    AiC = new HashMap();
-    AiD = new HashMap();
-    AiE = new HashMap();
-    AiF = new HashMap();
-    AiG = new HashMap();
-    AiH = new HashMap();
+    BAm = new HashMap();
+    BAn = new HashMap();
+    BAo = new HashMap();
+    BAp = new HashMap();
+    BAq = new HashMap();
+    BAr = new HashMap();
+    BAs = new HashMap();
+    BAt = new HashMap();
     AppMethodBeat.o(123897);
   }
   
-  public static long RC(int paramInt)
+  public static long Tm(int paramInt)
   {
     AppMethodBeat.i(123892);
-    if (AiG == null)
+    if (BAs == null)
     {
       AppMethodBeat.o(123892);
       return 0L;
     }
-    if (AiG.get(Integer.valueOf(paramInt)) == null)
+    if (BAs.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123892);
       return 0L;
     }
-    if (((Long)AiG.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)BAs.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)AiG.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)BAs.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123892);
       return l;
     }
@@ -62,22 +62,22 @@ public final class c
     return 0L;
   }
   
-  public static long RD(int paramInt)
+  public static long Tn(int paramInt)
   {
     AppMethodBeat.i(123893);
-    if (AiH == null)
+    if (BAt == null)
     {
       AppMethodBeat.o(123893);
       return 0L;
     }
-    if (AiH.get(Integer.valueOf(paramInt)) == null)
+    if (BAt.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123893);
       return 0L;
     }
-    if (((Long)AiH.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)BAt.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)AiH.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)BAt.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123893);
       return l;
     }
@@ -85,22 +85,22 @@ public final class c
     return 0L;
   }
   
-  public static long RE(int paramInt)
+  public static long To(int paramInt)
   {
     AppMethodBeat.i(123894);
-    if (AiE == null)
+    if (BAq == null)
     {
       AppMethodBeat.o(123894);
       return 0L;
     }
-    if (AiE.get(Integer.valueOf(paramInt)) == null)
+    if (BAq.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123894);
       return 0L;
     }
-    if (((Long)AiE.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)BAq.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)AiE.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)BAq.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123894);
       return l;
     }
@@ -108,22 +108,22 @@ public final class c
     return 0L;
   }
   
-  public static long RF(int paramInt)
+  public static long Tp(int paramInt)
   {
     AppMethodBeat.i(123895);
-    if (AiF == null)
+    if (BAr == null)
     {
       AppMethodBeat.o(123895);
       return 0L;
     }
-    if (AiF.get(Integer.valueOf(paramInt)) == null)
+    if (BAr.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123895);
       return 0L;
     }
-    if (((Long)AiF.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)BAr.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)AiF.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)BAr.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123895);
       return l;
     }
@@ -134,24 +134,24 @@ public final class c
   public static void init(int paramInt)
   {
     AppMethodBeat.i(123890);
-    AiA.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    AiB.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    AiC.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    AiD.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    AiE.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    AiF.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    AiG.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    AiH.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    BAm.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    BAn.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    BAo.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    BAp.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    BAq.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    BAr.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    BAs.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    BAt.put(Integer.valueOf(paramInt), Long.valueOf(0L));
     AppMethodBeat.o(123890);
   }
   
   public static void reset(int paramInt)
   {
     AppMethodBeat.i(123891);
-    AiB.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    AiA.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    AiD.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    AiC.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    BAn.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    BAm.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    BAp.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    BAo.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
     AppMethodBeat.o(123891);
   }
   
@@ -162,7 +162,7 @@ public final class c
     l7 = 0L;
     l5 = 0L;
     long l6 = 0L;
-    Object localObject2 = (NetworkStatsManager)ai.getContext().getSystemService("netstats");
+    Object localObject2 = (NetworkStatsManager)aj.getContext().getSystemService("netstats");
     Object localObject1 = new NetworkStats.Bucket();
     l1 = l6;
     l2 = l5;
@@ -197,7 +197,7 @@ public final class c
       l4 = 0L + l4;
       l1 = l3;
       l2 = l4;
-      if (!b.o(ai.getContext(), "android.permission.READ_PHONE_STATE"))
+      if (!b.n(aj.getContext(), "android.permission.READ_PHONE_STATE"))
       {
         l1 = l3;
         l2 = l4;
@@ -207,7 +207,7 @@ public final class c
       }
       l1 = l3;
       l2 = l4;
-      localObject2 = ((NetworkStatsManager)localObject2).querySummary(0, q.XR(), 0L, System.currentTimeMillis());
+      localObject2 = ((NetworkStatsManager)localObject2).querySummary(0, q.aas(), 0L, System.currentTimeMillis());
       l5 = 0L;
       l6 = 0L;
       for (;;)
@@ -242,14 +242,14 @@ public final class c
     {
       for (;;)
       {
-        AiE.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-        AiF.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-        AiG.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-        AiH.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-        AiA.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-        AiB.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-        AiC.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-        AiD.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+        BAq.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+        BAr.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+        BAs.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+        BAt.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+        BAm.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+        BAn.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+        BAo.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+        BAp.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
         long l3 = 0L;
         long l4 = l7;
         continue;
@@ -262,45 +262,45 @@ public final class c
         l5 = l1;
       }
     }
-    if (((Long)AiB.get(Integer.valueOf(paramInt))).longValue() < 0L) {
-      AiB.put(Integer.valueOf(paramInt), Long.valueOf(l3));
+    if (((Long)BAn.get(Integer.valueOf(paramInt))).longValue() < 0L) {
+      BAn.put(Integer.valueOf(paramInt), Long.valueOf(l3));
     }
-    if (((Long)AiA.get(Integer.valueOf(paramInt))).longValue() < 0L) {
-      AiA.put(Integer.valueOf(paramInt), Long.valueOf(l4));
+    if (((Long)BAm.get(Integer.valueOf(paramInt))).longValue() < 0L) {
+      BAm.put(Integer.valueOf(paramInt), Long.valueOf(l4));
     }
-    if (((Long)AiD.get(Integer.valueOf(paramInt))).longValue() < 0L) {
-      AiD.put(Integer.valueOf(paramInt), Long.valueOf(l1));
+    if (((Long)BAp.get(Integer.valueOf(paramInt))).longValue() < 0L) {
+      BAp.put(Integer.valueOf(paramInt), Long.valueOf(l1));
     }
-    if (((Long)AiC.get(Integer.valueOf(paramInt))).longValue() < 0L) {
-      AiC.put(Integer.valueOf(paramInt), Long.valueOf(l2));
+    if (((Long)BAo.get(Integer.valueOf(paramInt))).longValue() < 0L) {
+      BAo.put(Integer.valueOf(paramInt), Long.valueOf(l2));
     }
-    localObject1 = AiE;
-    if (l4 >= ((Long)AiA.get(Integer.valueOf(paramInt))).longValue())
+    localObject1 = BAq;
+    if (l4 >= ((Long)BAm.get(Integer.valueOf(paramInt))).longValue())
     {
-      l5 = l4 - ((Long)AiA.get(Integer.valueOf(paramInt))).longValue();
+      l5 = l4 - ((Long)BAm.get(Integer.valueOf(paramInt))).longValue();
       ((Map)localObject1).put(Integer.valueOf(paramInt), Long.valueOf(l5));
-      localObject1 = AiF;
-      if (l3 < ((Long)AiB.get(Integer.valueOf(paramInt))).longValue()) {
+      localObject1 = BAr;
+      if (l3 < ((Long)BAn.get(Integer.valueOf(paramInt))).longValue()) {
         break label989;
       }
-      l5 = l3 - ((Long)AiB.get(Integer.valueOf(paramInt))).longValue();
+      l5 = l3 - ((Long)BAn.get(Integer.valueOf(paramInt))).longValue();
       ((Map)localObject1).put(Integer.valueOf(paramInt), Long.valueOf(l5));
-      localObject1 = AiG;
-      if (l2 < ((Long)AiC.get(Integer.valueOf(paramInt))).longValue()) {
+      localObject1 = BAs;
+      if (l2 < ((Long)BAo.get(Integer.valueOf(paramInt))).longValue()) {
         break label996;
       }
-      l5 = l2 - ((Long)AiC.get(Integer.valueOf(paramInt))).longValue();
+      l5 = l2 - ((Long)BAo.get(Integer.valueOf(paramInt))).longValue();
       ((Map)localObject1).put(Integer.valueOf(paramInt), Long.valueOf(l5));
-      localObject1 = AiH;
-      if (l1 < ((Long)AiD.get(Integer.valueOf(paramInt))).longValue()) {
+      localObject1 = BAt;
+      if (l1 < ((Long)BAp.get(Integer.valueOf(paramInt))).longValue()) {
         break label1002;
       }
-      l5 = l1 - ((Long)AiD.get(Integer.valueOf(paramInt))).longValue();
+      l5 = l1 - ((Long)BAp.get(Integer.valueOf(paramInt))).longValue();
       ((Map)localObject1).put(Integer.valueOf(paramInt), Long.valueOf(l5));
-      AiA.put(Integer.valueOf(paramInt), Long.valueOf(l4));
-      AiB.put(Integer.valueOf(paramInt), Long.valueOf(l3));
-      AiC.put(Integer.valueOf(paramInt), Long.valueOf(l2));
-      AiD.put(Integer.valueOf(paramInt), Long.valueOf(l1));
+      BAm.put(Integer.valueOf(paramInt), Long.valueOf(l4));
+      BAn.put(Integer.valueOf(paramInt), Long.valueOf(l3));
+      BAo.put(Integer.valueOf(paramInt), Long.valueOf(l2));
+      BAp.put(Integer.valueOf(paramInt), Long.valueOf(l1));
       AppMethodBeat.o(123896);
     }
   }

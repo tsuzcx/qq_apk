@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.flutter.a.c;
 import com.tencent.mm.plugin.flutter.ui.MMFlutterActivity;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -25,22 +25,22 @@ public final class b
       return;
     }
     String str = UUID.randomUUID().toString();
-    paramc.slL = 2;
-    paramc.slK = new HashMap();
-    paramc.slK.put("fontScale", Float.valueOf(com.tencent.mm.cc.a.eb(ai.getContext())));
-    paramc.slK.put("layoutScale", Float.valueOf(com.tencent.mm.cc.a.ic(ai.getContext())));
-    paramc.slK.put("language", ab.eUO());
-    paramc.slK.put("sessionId", str);
+    paramc.tio = 2;
+    paramc.tin = new HashMap();
+    paramc.tin.put("fontScale", Float.valueOf(com.tencent.mm.cc.a.eb(aj.getContext())));
+    paramc.tin.put("layoutScale", Float.valueOf(com.tencent.mm.cc.a.il(aj.getContext())));
+    paramc.tin.put("language", ac.fks());
+    paramc.tin.put("sessionId", str);
     boolean bool = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().a(paramc, "mmNative");
-    ac.i("MicroMsg.Flutter.FlutterService", "startEmbeddingFlutterView firstCreate %b", new Object[] { Boolean.valueOf(bool) });
+    ad.i("MicroMsg.Flutter.FlutterService", "startEmbeddingFlutterView firstCreate %b", new Object[] { Boolean.valueOf(bool) });
     paramc = new Intent(paramContext, MMFlutterActivity.class);
     paramc.putExtra("first_create", bool);
     if (!(paramContext instanceof Activity)) {
       paramc.addFlags(268435456);
     }
-    paramc = new com.tencent.mm.hellhoundlib.b.a().ba(paramc);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramc.aeD(), "com/tencent/mm/plugin/flutter/FlutterService", "startFlutterPage", "(Landroid/content/Context;Lcom/tencent/mm/plugin/flutter/api/MMFlutterRoute;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramc.lR(0));
+    paramc = new com.tencent.mm.hellhoundlib.b.a().bc(paramc);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramc.ahp(), "com/tencent/mm/plugin/flutter/FlutterService", "startFlutterPage", "(Landroid/content/Context;Lcom/tencent/mm/plugin/flutter/api/MMFlutterRoute;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramc.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/flutter/FlutterService", "startFlutterPage", "(Landroid/content/Context;Lcom/tencent/mm/plugin/flutter/api/MMFlutterRoute;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(148837);
   }
@@ -53,18 +53,18 @@ public final class b
     return paramClass;
   }
   
-  public final boolean cHV()
+  public final boolean cQk()
   {
     AppMethodBeat.i(148839);
-    com.tencent.mm.plugin.expansions.a.cil();
-    ac.i("MicroMsg.FlutterABTestLogic", "expansions is not yet installed, disabled flutter");
+    com.tencent.mm.plugin.expansions.a.cmP();
+    ad.i("MicroMsg.FlutterABTestLogic", "expansions is not yet installed, disabled flutter");
     AppMethodBeat.o(148839);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.b
  * JD-Core Version:    0.7.0.1
  */

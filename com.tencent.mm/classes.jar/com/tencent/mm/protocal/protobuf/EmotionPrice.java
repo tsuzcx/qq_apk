@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public class EmotionPrice
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String IapProductId;
   public String Label;
@@ -75,9 +75,9 @@ public class EmotionPrice
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         if (this.Label == null)
@@ -111,19 +111,19 @@ public class EmotionPrice
           AppMethodBeat.o(104779);
           return -1;
         case 1: 
-          localEmotionPrice.Label = locala.LVo.readString();
+          localEmotionPrice.Label = locala.NPN.readString();
           AppMethodBeat.o(104779);
           return 0;
         case 2: 
-          localEmotionPrice.Number = locala.LVo.readString();
+          localEmotionPrice.Number = locala.NPN.readString();
           AppMethodBeat.o(104779);
           return 0;
         case 3: 
-          localEmotionPrice.Type = locala.LVo.readString();
+          localEmotionPrice.Type = locala.NPN.readString();
           AppMethodBeat.o(104779);
           return 0;
         }
-        localEmotionPrice.IapProductId = locala.LVo.readString();
+        localEmotionPrice.IapProductId = locala.NPN.readString();
         AppMethodBeat.o(104779);
         return 0;
       }
@@ -134,7 +134,7 @@ public class EmotionPrice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionPrice
  * JD-Core Version:    0.7.0.1
  */

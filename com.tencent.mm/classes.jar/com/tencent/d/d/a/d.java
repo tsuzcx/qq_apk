@@ -11,14 +11,14 @@ import java.util.List;
 public final class d
   implements b
 {
-  private final HashSet<Integer> JSZ;
-  private final List<d.a> JTa;
+  private final HashSet<Integer> LMQ;
+  private final List<d.a> LMR;
   
   public d()
   {
     AppMethodBeat.i(138347);
-    this.JSZ = new HashSet();
-    this.JTa = new ArrayList();
+    this.LMQ = new HashSet();
+    this.LMR = new ArrayList();
     AppMethodBeat.o(138347);
   }
   
@@ -30,34 +30,34 @@ public final class d
       AppMethodBeat.o(138348);
       return;
     }
-    if ((parama.JTf == 1) && (!"/sbin/adbd".equals(parama.name)))
+    if ((parama.LMW == 1) && (!"/sbin/adbd".equals(parama.name)))
     {
       new StringBuilder("ProcessRelationAnalyzer parent : ").append(parama.toString());
-      h.feg();
-      this.JSZ.add(Integer.valueOf(parama.pid));
+      h.fuo();
+      this.LMQ.add(Integer.valueOf(parama.pid));
       AppMethodBeat.o(138348);
       return;
     }
-    if ((parama.JTf > 1) && ("sh".equals(parama.name)) && ("/system/bin/sh".equals(parama.name)))
+    if ((parama.LMW > 1) && ("sh".equals(parama.name)) && ("/system/bin/sh".equals(parama.name)))
     {
       new StringBuilder("ProcessRelationAnalyzer child : ").append(parama.toString());
-      h.feg();
-      this.JTa.add(parama);
+      h.fuo();
+      this.LMR.add(parama);
     }
     AppMethodBeat.o(138348);
   }
   
-  public final boolean fCu()
+  public final boolean fTK()
   {
     AppMethodBeat.i(138349);
-    Iterator localIterator = this.JTa.iterator();
+    Iterator localIterator = this.LMR.iterator();
     while (localIterator.hasNext())
     {
       d.a locala = (d.a)localIterator.next();
-      if (this.JSZ.contains(Integer.valueOf(locala.JTf)))
+      if (this.LMQ.contains(Integer.valueOf(locala.LMW)))
       {
         new StringBuilder("ProcessRelationAnalyzer match : ").append(locala.toString());
-        h.fCO();
+        h.fUg();
         AppMethodBeat.o(138349);
         return true;
       }

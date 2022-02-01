@@ -2,9 +2,9 @@ package rx;
 
 public abstract interface j
 {
-  public abstract void ggm();
+  public abstract void gyQ();
   
-  public abstract boolean ggn();
+  public abstract boolean gyR();
 }
 
 

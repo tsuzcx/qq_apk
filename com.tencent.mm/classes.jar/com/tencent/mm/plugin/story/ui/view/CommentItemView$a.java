@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.story.ui.view;
 
 import android.animation.TypeEvaluator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/CommentItemView$ArgbEvaluator;", "Landroid/animation/TypeEvaluator;", "", "()V", "evaluate", "fraction", "", "startValue", "endValue", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/CommentItemView$ArgbEvaluator;", "Landroid/animation/TypeEvaluator;", "", "()V", "evaluate", "fraction", "", "startValue", "endValue", "plugin-story_release"})
 public final class CommentItemView$a
   implements TypeEvaluator<Object>
 {
   public final Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
     AppMethodBeat.i(120022);
-    k.h(paramObject1, "startValue");
-    k.h(paramObject2, "endValue");
+    p.h(paramObject1, "startValue");
+    p.h(paramObject2, "endValue");
     int i = ((Integer)paramObject1).intValue();
     float f1 = (i >> 24 & 0xFF) / 255.0F;
     float f4 = (i >> 16 & 0xFF) / 255.0F;

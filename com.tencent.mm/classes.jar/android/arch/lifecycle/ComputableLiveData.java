@@ -56,7 +56,7 @@ public abstract class ComputableLiveData<T>
   
   public ComputableLiveData()
   {
-    this(a.Q());
+    this(a.R());
   }
   
   public ComputableLiveData(Executor paramExecutor)

@@ -20,38 +20,38 @@ import java.nio.ByteBuffer;
 public final class r<T>
   implements k<T, Bitmap>
 {
-  public static final i<Long> aJR;
-  public static final i<Integer> aJS;
-  private static final b aJT;
-  private final e aAt;
-  private final c<T> aJU;
-  private final b aJV;
+  public static final i<Long> aLI;
+  public static final i<Integer> aLJ;
+  private static final b aLK;
+  private final e aCk;
+  private final c<T> aLL;
+  private final b aLM;
   
   static
   {
     AppMethodBeat.i(77449);
-    aJR = i.a("com.bumptech.glide.load.resource.bitmap.VideoBitmapDecode.TargetFrame", Long.valueOf(-1L), new i.a()
+    aLI = i.a("com.bumptech.glide.load.resource.bitmap.VideoBitmapDecode.TargetFrame", Long.valueOf(-1L), new i.a()
     {
       private final ByteBuffer buffer;
     });
-    aJS = i.a("com.bumptech.glide.load.resource.bitmap.VideoBitmapDecode.FrameOption", Integer.valueOf(2), new i.a()
+    aLJ = i.a("com.bumptech.glide.load.resource.bitmap.VideoBitmapDecode.FrameOption", Integer.valueOf(2), new i.a()
     {
       private final ByteBuffer buffer;
     });
-    aJT = new b();
+    aLK = new b();
     AppMethodBeat.o(77449);
   }
   
   private r(e parame, c<T> paramc)
   {
-    this(parame, paramc, aJT);
+    this(parame, paramc, aLK);
   }
   
   private r(e parame, c<T> paramc, b paramb)
   {
-    this.aAt = parame;
-    this.aJU = paramc;
-    this.aJV = paramb;
+    this.aCk = parame;
+    this.aLL = paramc;
+    this.aLM = paramb;
   }
   
   @TargetApi(27)
@@ -110,29 +110,29 @@ public final class r<T>
   public final u<Bitmap> a(T paramT, int paramInt1, int paramInt2, j paramj)
   {
     AppMethodBeat.i(77447);
-    long l = ((Long)paramj.a(aJR)).longValue();
+    long l = ((Long)paramj.a(aLI)).longValue();
     if ((l < 0L) && (l != -1L))
     {
       paramT = new IllegalArgumentException("Requested frame must be non-negative, or DEFAULT_FRAME, given: ".concat(String.valueOf(l)));
       AppMethodBeat.o(77447);
       throw paramT;
     }
-    Integer localInteger = (Integer)paramj.a(aJS);
+    Integer localInteger = (Integer)paramj.a(aLJ);
     if (localInteger == null) {
       localInteger = Integer.valueOf(2);
     }
     for (;;)
     {
-      paramj = (g)paramj.a(g.aJp);
+      paramj = (g)paramj.a(g.aLg);
       if (paramj == null) {
-        paramj = g.aJo;
+        paramj = g.aLf;
       }
       for (;;)
       {
         MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
         try
         {
-          this.aJU.a(localMediaMetadataRetriever, paramT);
+          this.aLL.a(localMediaMetadataRetriever, paramT);
           int i = localInteger.intValue();
           localInteger = null;
           paramT = localInteger;
@@ -145,7 +145,7 @@ public final class r<T>
               if (paramInt2 != -2147483648)
               {
                 paramT = localInteger;
-                if (paramj != g.aJn) {
+                if (paramj != g.aLe) {
                   paramT = a(localMediaMetadataRetriever, l, i, paramInt1, paramInt2, paramj);
                 }
               }
@@ -156,7 +156,7 @@ public final class r<T>
             paramj = localMediaMetadataRetriever.getFrameAtTime(l, i);
           }
           localMediaMetadataRetriever.release();
-          paramT = d.a(paramj, this.aAt);
+          paramT = d.a(paramj, this.aCk);
           AppMethodBeat.o(77447);
           return paramT;
         }

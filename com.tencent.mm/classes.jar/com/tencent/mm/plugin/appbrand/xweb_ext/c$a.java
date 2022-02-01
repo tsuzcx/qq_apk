@@ -2,23 +2,25 @@ package com.tencent.mm.plugin.appbrand.xweb_ext;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.g.a.a;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class c$a
-  extends d.g.b.l
+  extends q
   implements a<Boolean>
 {
-  public static final a mQE;
+  public static final a nre;
   
   static
   {
-    AppMethodBeat.i(187510);
-    mQE = new a();
-    AppMethodBeat.o(187510);
+    AppMethodBeat.i(189741);
+    nre = new a();
+    AppMethodBeat.o(189741);
   }
   
   c$a()
@@ -26,14 +28,14 @@ final class c$a
     super(0);
   }
   
-  private static boolean hJ()
+  private static boolean hZ()
   {
-    AppMethodBeat.i(187509);
+    AppMethodBeat.i(189740);
     for (;;)
     {
       try
       {
-        int i = ((b)g.ab(b.class)).a(b.a.pRo, 0);
+        int i = ((b)g.ab(b.class)).a(b.a.qvJ, 0);
         if (i != 1) {
           continue;
         }
@@ -44,8 +46,8 @@ final class c$a
         boolean bool = false;
         continue;
       }
-      ac.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "abtestXWebCameraEnable: ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(187509);
+      ad.i("MicroMsg.AppBrand.SameLayer.XWebABTests", "abtestXWebCameraEnable: ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(189740);
       return bool;
       bool = false;
     }

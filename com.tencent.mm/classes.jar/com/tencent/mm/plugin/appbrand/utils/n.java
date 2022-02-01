@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n
 {
-  private long mol;
-  private long mom;
-  private a mon;
+  private long mON;
+  private long mOO;
+  private a mOP;
   
   public n() {}
   
   public n(long paramLong, a parama)
   {
-    this.mol = paramLong;
-    this.mon = parama;
+    this.mON = paramLong;
+    this.mOP = parama;
   }
   
-  private boolean bxp()
+  private boolean bBt()
   {
     AppMethodBeat.i(137914);
-    if (System.currentTimeMillis() - this.mom < this.mol)
+    if (System.currentTimeMillis() - this.mOO < this.mON)
     {
       AppMethodBeat.o(137914);
       return true;
@@ -31,19 +31,19 @@ public final class n
   public final boolean m(Object... paramVarArgs)
   {
     AppMethodBeat.i(137915);
-    if (bxp())
+    if (bBt())
     {
       AppMethodBeat.o(137915);
       return false;
     }
-    if (this.mon == null)
+    if (this.mOP == null)
     {
       AppMethodBeat.o(137915);
       return false;
     }
-    boolean bool = this.mon.k(paramVarArgs);
+    boolean bool = this.mOP.k(paramVarArgs);
     if (bool) {
-      this.mom = System.currentTimeMillis();
+      this.mOO = System.currentTimeMillis();
     }
     AppMethodBeat.o(137915);
     return bool;
@@ -56,7 +56,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.n
  * JD-Core Version:    0.7.0.1
  */

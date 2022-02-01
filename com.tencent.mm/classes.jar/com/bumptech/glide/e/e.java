@@ -10,31 +10,31 @@ import java.util.Map;
 
 public final class e
 {
-  private final List<String> aLk;
-  private final Map<String, List<a<?, ?>>> aLl;
+  private final List<String> aNb;
+  private final Map<String, List<a<?, ?>>> aNc;
   
   public e()
   {
     AppMethodBeat.i(77610);
-    this.aLk = new ArrayList();
-    this.aLl = new HashMap();
+    this.aNb = new ArrayList();
+    this.aNc = new HashMap();
     AppMethodBeat.o(77610);
   }
   
-  private List<a<?, ?>> U(String paramString)
+  private List<a<?, ?>> T(String paramString)
   {
     try
     {
       AppMethodBeat.i(77615);
-      if (!this.aLk.contains(paramString)) {
-        this.aLk.add(paramString);
+      if (!this.aNb.contains(paramString)) {
+        this.aNb.add(paramString);
       }
-      List localList = (List)this.aLl.get(paramString);
+      List localList = (List)this.aNc.get(paramString);
       Object localObject = localList;
       if (localList == null)
       {
         localObject = new ArrayList();
-        this.aLl.put(paramString, localObject);
+        this.aNc.put(paramString, localObject);
       }
       AppMethodBeat.o(77615);
       return localObject;
@@ -47,7 +47,7 @@ public final class e
     try
     {
       AppMethodBeat.i(77614);
-      U(paramString).add(new a(paramClass, paramClass1, paramk));
+      T(paramString).add(new a(paramClass, paramClass1, paramk));
       AppMethodBeat.o(77614);
       return;
     }
@@ -65,11 +65,11 @@ public final class e
     {
       AppMethodBeat.i(77612);
       localArrayList = new ArrayList();
-      Iterator localIterator = this.aLk.iterator();
+      Iterator localIterator = this.aNb.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (String)localIterator.next();
-        localObject = (List)this.aLl.get(localObject);
+        localObject = (List)this.aNc.get(localObject);
         if (localObject != null)
         {
           localObject = ((List)localObject).iterator();
@@ -77,7 +77,7 @@ public final class e
           {
             a locala = (a)((Iterator)localObject).next();
             if (locala.e(paramClass, paramClass1)) {
-              localArrayList.add(locala.aJa);
+              localArrayList.add(locala.aKR);
             }
           }
         }
@@ -95,19 +95,19 @@ public final class e
     {
       AppMethodBeat.i(77613);
       localArrayList = new ArrayList();
-      Iterator localIterator = this.aLk.iterator();
+      Iterator localIterator = this.aNb.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (String)localIterator.next();
-        localObject = (List)this.aLl.get(localObject);
+        localObject = (List)this.aNc.get(localObject);
         if (localObject != null)
         {
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
             a locala = (a)((Iterator)localObject).next();
-            if ((locala.e(paramClass, paramClass1)) && (!localArrayList.contains(locala.aEo))) {
-              localArrayList.add(locala.aEo);
+            if ((locala.e(paramClass, paramClass1)) && (!localArrayList.contains(locala.aGf))) {
+              localArrayList.add(locala.aGf);
             }
           }
         }
@@ -123,15 +123,15 @@ public final class e
     try
     {
       AppMethodBeat.i(77611);
-      Object localObject = new ArrayList(this.aLk);
-      this.aLk.clear();
-      this.aLk.addAll(paramList);
+      Object localObject = new ArrayList(this.aNb);
+      this.aNb.clear();
+      this.aNb.addAll(paramList);
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
         if (!paramList.contains(str)) {
-          this.aLk.add(str);
+          this.aNb.add(str);
         }
       }
       AppMethodBeat.o(77611);
@@ -141,21 +141,21 @@ public final class e
   
   static final class a<T, R>
   {
-    final Class<R> aEo;
-    private final Class<T> aFl;
-    final k<T, R> aJa;
+    final Class<R> aGf;
+    private final Class<T> aHc;
+    final k<T, R> aKR;
     
     public a(Class<T> paramClass, Class<R> paramClass1, k<T, R> paramk)
     {
-      this.aFl = paramClass;
-      this.aEo = paramClass1;
-      this.aJa = paramk;
+      this.aHc = paramClass;
+      this.aGf = paramClass1;
+      this.aKR = paramk;
     }
     
     public final boolean e(Class<?> paramClass1, Class<?> paramClass2)
     {
       AppMethodBeat.i(77609);
-      if ((this.aFl.isAssignableFrom(paramClass1)) && (paramClass2.isAssignableFrom(this.aEo)))
+      if ((this.aHc.isAssignableFrom(paramClass1)) && (paramClass2.isAssignableFrom(this.aGf)))
       {
         AppMethodBeat.o(77609);
         return true;

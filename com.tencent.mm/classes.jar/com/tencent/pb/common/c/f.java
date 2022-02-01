@@ -18,16 +18,16 @@ public final class f
     return localStringBuilder.toString();
   }
   
-  public static String aSZ(String paramString)
+  public static String aYZ(String paramString)
   {
     String str = paramString;
-    if (cX(paramString)) {
+    if (ea(paramString)) {
       str = "";
     }
     return str;
   }
   
-  public static boolean cX(String paramString)
+  public static boolean ea(String paramString)
   {
     return (paramString == null) || (paramString.length() == 0);
   }
@@ -42,7 +42,7 @@ public final class f
     return (paramString == null) || ("".equals(paramString.trim()));
   }
   
-  public static boolean ml(String paramString1, String paramString2)
+  public static boolean mJ(String paramString1, String paramString2)
   {
     if (paramString1 == null) {
       return paramString2 == null;
@@ -52,7 +52,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.pb.common.c.f
  * JD-Core Version:    0.7.0.1
  */

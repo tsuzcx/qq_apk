@@ -1,103 +1,93 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bio
-  extends com.tencent.mm.bw.a
+  extends cvc
 {
-  public String desc;
-  public String drM;
-  public String title;
-  public String url;
+  public String GDj;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91516);
+    AppMethodBeat.i(91511);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.d(1, this.title);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.desc != null) {
-        paramVarArgs.d(2, this.desc);
+      if (this.GDj != null) {
+        paramVarArgs.d(2, this.GDj);
       }
-      if (this.drM != null) {
-        paramVarArgs.d(3, this.drM);
-      }
-      if (this.url != null) {
-        paramVarArgs.d(4, this.url);
-      }
-      AppMethodBeat.o(91516);
+      AppMethodBeat.o(91511);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label394;
+      if (this.BaseRequest == null) {
+        break label370;
       }
     }
-    label394:
-    for (int i = f.a.a.b.b.a.e(1, this.title) + 0;; i = 0)
+    label370:
+    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.desc != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.desc);
+      int i = paramInt;
+      if (this.GDj != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.GDj);
       }
-      i = paramInt;
-      if (this.drM != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.drM);
-      }
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.url);
-      }
-      AppMethodBeat.o(91516);
-      return paramInt;
+      AppMethodBeat.o(91511);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(91516);
+        AppMethodBeat.o(91511);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         bio localbio = (bio)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(91516);
+          AppMethodBeat.o(91511);
           return -1;
         case 1: 
-          localbio.title = locala.LVo.readString();
-          AppMethodBeat.o(91516);
-          return 0;
-        case 2: 
-          localbio.desc = locala.LVo.readString();
-          AppMethodBeat.o(91516);
-          return 0;
-        case 3: 
-          localbio.drM = locala.LVo.readString();
-          AppMethodBeat.o(91516);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jc();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbio.BaseRequest = ((jc)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91511);
           return 0;
         }
-        localbio.url = locala.LVo.readString();
-        AppMethodBeat.o(91516);
+        localbio.GDj = ((f.a.a.a.a)localObject1).NPN.readString();
+        AppMethodBeat.o(91511);
         return 0;
       }
-      AppMethodBeat.o(91516);
+      AppMethodBeat.o(91511);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bio
  * JD-Core Version:    0.7.0.1
  */

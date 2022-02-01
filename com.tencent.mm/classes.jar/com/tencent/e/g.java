@@ -8,7 +8,7 @@ import java.util.concurrent.Executor;
 
 public final class g
 {
-  private static Executor JZM;
+  private static Executor LTI;
   
   public static void a(Context paramContext, a parama)
   {
@@ -17,41 +17,41 @@ public final class g
     {
       public final void a(d.a paramAnonymousa)
       {
-        d.JZD = paramAnonymousa;
+        d.LTy = paramAnonymousa;
       }
       
       public final void a(d.e paramAnonymouse)
       {
-        d.JZB = paramAnonymouse;
+        d.LTw = paramAnonymouse;
       }
       
       public final void a(d.f paramAnonymousf)
       {
-        d.JZC = paramAnonymousf;
+        d.LTx = paramAnonymousf;
       }
     });
     parama = parama.a(new a.a());
-    b.Kap = new com.tencent.e.b.a(paramContext, parama);
-    com.tencent.e.g.h.KaQ = com.tencent.e.g.h.b(parama);
+    b.LUm = new com.tencent.e.b.a(paramContext, parama);
+    com.tencent.e.g.h.LUN = com.tencent.e.g.h.b(parama);
     h.a(parama);
-    if (parama.JZh) {
-      fEd();
+    if (parama.LTc) {
+      fVv();
     }
     AppMethodBeat.o(183142);
   }
   
-  private static void fEd()
+  private static void fVv()
   {
     AppMethodBeat.i(183144);
     try
     {
-      JZM = (Executor)com.tencent.e.k.c.f(AsyncTask.class, "THREAD_POOL_EXECUTOR");
+      LTI = (Executor)com.tencent.e.k.c.f(AsyncTask.class, "THREAD_POOL_EXECUTOR");
       com.tencent.e.k.c.c(AsyncTask.class, "THREAD_POOL_EXECUTOR", new Executor()
       {
         public final void execute(Runnable paramAnonymousRunnable)
         {
           AppMethodBeat.i(183141);
-          h.JZN.aS(paramAnonymousRunnable);
+          h.LTJ.aR(paramAnonymousRunnable);
           AppMethodBeat.o(183141);
         }
       });
@@ -60,7 +60,7 @@ public final class g
     }
     catch (Exception localException)
     {
-      d.JZD.e("ThreadModuleBoot", localException.toString(), new Object[0]);
+      d.LTy.e("ThreadModuleBoot", localException.toString(), new Object[0]);
       AppMethodBeat.o(183144);
     }
   }
@@ -68,13 +68,13 @@ public final class g
   public static void shutdown()
   {
     AppMethodBeat.i(183143);
-    h.JZN.fEe();
-    b.Kap.onShutdown();
-    if (h.JZN.fEf().JZh) {}
+    h.LTJ.fVw();
+    b.LUm.onShutdown();
+    if (h.LTJ.fVx().LTc) {}
     try
     {
-      com.tencent.e.k.c.c(AsyncTask.class, "THREAD_POOL_EXECUTOR", JZM);
-      JZM = null;
+      com.tencent.e.k.c.c(AsyncTask.class, "THREAD_POOL_EXECUTOR", LTI);
+      LTI = null;
       AppMethodBeat.o(183143);
       return;
     }
@@ -82,7 +82,7 @@ public final class g
     {
       for (;;)
       {
-        d.JZD.e("ThreadModuleBoot", localException.toString(), new Object[0]);
+        d.LTy.e("ThreadModuleBoot", localException.toString(), new Object[0]);
       }
     }
   }
@@ -98,9 +98,9 @@ public final class g
   {
     public abstract void a(Thread paramThread, String paramString);
     
-    public abstract boolean doB();
+    public abstract boolean dyV();
     
-    public abstract boolean doC();
+    public abstract boolean dyW();
   }
   
   public static abstract interface c

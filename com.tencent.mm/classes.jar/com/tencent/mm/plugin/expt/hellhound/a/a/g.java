@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.expt.hellhound.a.a;
 
 final class g
 {
-  long qkC = 0L;
-  long qkD = 0L;
-  long qkE = 0L;
-  long qkF = 0L;
-  long qkG = 0L;
-  long qkH = 0L;
+  long qTA = 0L;
+  long qTB = 0L;
+  long qTC = 0L;
+  long qTD = 0L;
+  long qTy = 0L;
+  long qTz = 0L;
   
-  final void cju()
+  final void coG()
   {
-    this.qkC = 0L;
-    this.qkD = 0L;
+    this.qTy = 0L;
+    this.qTz = 0L;
   }
   
-  final void cjv()
+  final void coH()
   {
-    this.qkE = 0L;
-    this.qkF = 0L;
+    this.qTA = 0L;
+    this.qTB = 0L;
   }
 }
 

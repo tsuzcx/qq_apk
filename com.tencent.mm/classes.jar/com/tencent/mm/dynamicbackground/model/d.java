@@ -1,40 +1,40 @@
 package com.tencent.mm.dynamicbackground.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgServiceManager;", "", "()V", "TAG", "", "service", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "getDynamicBgService", "setDynamicBgService", "", "dynamicBgService", "dynamicbg_release"})
+@l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgServiceManager;", "", "()V", "TAG", "", "service", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "getDynamicBgService", "setDynamicBgService", "", "dynamicBgService", "dynamicbg_release"})
 public final class d
 {
-  private static c fLY;
-  public static final d fLZ;
+  private static c gfy;
+  public static final d gfz;
   
   static
   {
     AppMethodBeat.i(103080);
-    fLZ = new d();
-    fLY = (c)new a();
+    gfz = new d();
+    gfy = (c)new a();
     AppMethodBeat.o(103080);
   }
   
   public static void a(c paramc)
   {
     AppMethodBeat.i(103079);
-    k.h(paramc, "dynamicBgService");
+    p.h(paramc, "dynamicBgService");
     com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgServiceManager", "alvinluo setDynamicBgService", new Object[0]);
-    fLY = paramc;
+    gfy = paramc;
     AppMethodBeat.o(103079);
   }
   
-  public static c abq()
+  public static c adU()
   {
-    return fLY;
+    return gfy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.model.d
  * JD-Core Version:    0.7.0.1
  */

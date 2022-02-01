@@ -47,17 +47,17 @@ public final class ij
       localObject = c.a(localPaint, paramVarArgs);
       ((Paint)localObject).setColor(-1);
       Path localPath = c.n(paramVarArgs);
-      localPath.moveTo(12.0F, 15.0F);
-      localPath.lineTo(45.0F, 15.0F);
-      localPath.lineTo(45.0F, 48.0F);
-      localPath.lineTo(12.0F, 48.0F);
-      localPath.lineTo(12.0F, 15.0F);
+      localPath.moveTo(11.0F, 15.0F);
+      localPath.lineTo(44.0F, 15.0F);
+      localPath.lineTo(44.0F, 48.0F);
+      localPath.lineTo(11.0F, 48.0F);
+      localPath.lineTo(11.0F, 15.0F);
       localPath.close();
       localCanvas.drawPath(localPath, (Paint)localObject);
       localCanvas.restore();
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-764844);
+      localPaint.setColor(-2012855);
       localObject = c.n(paramVarArgs);
       ((Path)localObject).moveTo(30.0F, 28.378679F);
       ((Path)localObject).lineTo(20.454058F, 18.832739F);
@@ -88,7 +88,7 @@ public final class ij
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.ij
  * JD-Core Version:    0.7.0.1
  */

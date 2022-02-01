@@ -13,32 +13,32 @@ import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.PrivateAlbumItem;
 import com.tencent.mm.plugin.gallery.model.e;
 import com.tencent.mm.plugin.gallery.model.o;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public final class b
   extends BaseAdapter
 {
   private Context mContext;
-  LinkedList<GalleryItem.AlbumItem> sQF;
-  String sQG;
-  volatile int sQH;
+  LinkedList<GalleryItem.AlbumItem> tNj;
+  String tNk;
+  volatile int tNl;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(111496);
-    this.sQG = "";
+    this.tNk = "";
     this.mContext = paramContext;
-    this.sQF = new LinkedList();
+    this.tNj = new LinkedList();
     AppMethodBeat.o(111496);
   }
   
-  public final GalleryItem.AlbumItem Ga(int paramInt)
+  public final GalleryItem.AlbumItem Hp(int paramInt)
   {
     AppMethodBeat.i(111498);
-    GalleryItem.AlbumItem localAlbumItem = (GalleryItem.AlbumItem)this.sQF.get(paramInt);
+    GalleryItem.AlbumItem localAlbumItem = (GalleryItem.AlbumItem)this.tNj.get(paramInt);
     AppMethodBeat.o(111498);
     return localAlbumItem;
   }
@@ -49,20 +49,20 @@ public final class b
     int i;
     int j;
     GalleryItem.AlbumItem localAlbumItem;
-    if ((this.sQF != null) && ((paramPrivateAlbumItem != null) || (this.sQF.size() > 0))) {
+    if ((this.tNj != null) && ((paramPrivateAlbumItem != null) || (this.tNj.size() > 0))) {
       if (paramPrivateAlbumItem != null)
       {
-        ac.i("MicroMsg.GalleryAdapter", "add favorite album item.");
-        if (bs.gY(this.sQF)) {
+        ad.i("MicroMsg.GalleryAdapter", "add favorite album item.");
+        if (bt.hj(this.tNj)) {
           break label187;
         }
         i = 0;
         j = -1;
-        if (i >= this.sQF.size()) {
+        if (i >= this.tNj.size()) {
           break label181;
         }
-        localAlbumItem = (GalleryItem.AlbumItem)this.sQF.get(i);
-        if (!localAlbumItem.xNm) {
+        localAlbumItem = (GalleryItem.AlbumItem)this.tNj.get(i);
+        if (!localAlbumItem.Odp) {
           break label151;
         }
       }
@@ -70,25 +70,25 @@ public final class b
     for (;;)
     {
       i += 1;
-      if (i < this.sQF.size()) {
-        this.sQF.add(i, paramPrivateAlbumItem);
+      if (i < this.tNj.size()) {
+        this.tNj.add(i, paramPrivateAlbumItem);
       }
       for (;;)
       {
         if (paramLinkedList.size() > 0)
         {
-          ac.i("MicroMsg.GalleryAdapter", "add other private album, size: [%s].", new Object[] { Integer.valueOf(paramLinkedList.size()) });
-          this.sQF.addAll(paramLinkedList);
+          ad.i("MicroMsg.GalleryAdapter", "add other private album, size: [%s].", new Object[] { Integer.valueOf(paramLinkedList.size()) });
+          this.tNj.addAll(paramLinkedList);
         }
         AppMethodBeat.o(179460);
         return;
         label151:
-        if (localAlbumItem.xIc) {
+        if (localAlbumItem.Odo) {
           j = i;
         }
         i += 1;
         break;
-        this.sQF.add(paramPrivateAlbumItem);
+        this.tNj.add(paramPrivateAlbumItem);
       }
       label181:
       i = j;
@@ -101,7 +101,7 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(111497);
-    int i = this.sQF.size();
+    int i = this.tNj.size();
     AppMethodBeat.o(111497);
     return i;
   }
@@ -114,104 +114,104 @@ public final class b
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(111499);
-    ac.i("MicroMsg.GalleryAdapter", "duanyi test getView:".concat(String.valueOf(paramInt)));
-    GalleryItem.AlbumItem localAlbumItem = Ga(paramInt);
+    ad.i("MicroMsg.GalleryAdapter", "duanyi test getView:".concat(String.valueOf(paramInt)));
+    GalleryItem.AlbumItem localAlbumItem = Hp(paramInt);
     if (paramView == null)
     {
       paramView = LayoutInflater.from(this.mContext).inflate(2131495311, paramViewGroup, false);
       paramViewGroup = new a((byte)0);
-      paramViewGroup.sFo = ((ImageView)paramView.findViewById(2131300187));
-      paramViewGroup.ijE = ((TextView)paramView.findViewById(2131300182));
-      paramViewGroup.qTB = ((ImageView)paramView.findViewById(2131306355));
-      paramViewGroup.sQI = ((TextView)paramView.findViewById(2131300178));
-      paramViewGroup.sQJ = ((ImageView)paramView.findViewById(2131300186));
-      paramViewGroup.sQK = paramView.findViewById(2131300188);
-      paramViewGroup.sQL = paramView.findViewById(2131300180);
-      paramViewGroup.sQM = paramView.findViewById(2131300181);
+      paramViewGroup.tCh = ((ImageView)paramView.findViewById(2131300187));
+      paramViewGroup.iCV = ((TextView)paramView.findViewById(2131300182));
+      paramViewGroup.rDE = ((ImageView)paramView.findViewById(2131306355));
+      paramViewGroup.tNm = ((TextView)paramView.findViewById(2131300178));
+      paramViewGroup.tNn = ((ImageView)paramView.findViewById(2131300186));
+      paramViewGroup.tNo = paramView.findViewById(2131300188);
+      paramViewGroup.tNp = paramView.findViewById(2131300180);
+      paramViewGroup.tNq = paramView.findViewById(2131300181);
       paramView.setTag(paramViewGroup);
-      if (!this.sQG.equals(localAlbumItem.sJZ)) {
+      if (!this.tNk.equals(localAlbumItem.tGK)) {
         break label357;
       }
-      paramViewGroup.sQJ.setVisibility(0);
+      paramViewGroup.tNn.setVisibility(0);
       label177:
-      paramViewGroup.sQL.setVisibility(0);
-      paramViewGroup.sQM.setVisibility(8);
+      paramViewGroup.tNp.setVisibility(0);
+      paramViewGroup.tNq.setVisibility(8);
       if (paramInt != 0) {
         break label412;
       }
-      paramViewGroup.sFo.setImageResource(2131233613);
-      if (localAlbumItem.xIb != null) {
-        h.a(paramViewGroup.sFo, localAlbumItem.cMS(), localAlbumItem.auN(), localAlbumItem.cMQ(), localAlbumItem.cMR(), paramInt, localAlbumItem.dzx());
+      paramViewGroup.tCh.setImageResource(2131233613);
+      if (localAlbumItem.Odn != null) {
+        h.a(paramViewGroup.tCh, localAlbumItem.cVl(), localAlbumItem.axA(), localAlbumItem.cVj(), localAlbumItem.cVk(), paramInt, localAlbumItem.fsO());
       }
-      paramViewGroup.sFo.setVisibility(0);
-      if (e.cMt().sKz != 1) {
+      paramViewGroup.tCh.setVisibility(0);
+      if (e.cUM().tHk != 1) {
         break label368;
       }
-      localAlbumItem.bLs = ai.getContext().getString(2131759757);
+      localAlbumItem.bVF = aj.getContext().getString(2131759757);
     }
     for (;;)
     {
-      paramViewGroup.ijE.setText(localAlbumItem.bLs);
-      paramViewGroup.ijE.setVisibility(0);
-      paramViewGroup.sQI.setVisibility(0);
-      paramViewGroup.sQI.setText(this.mContext.getString(2131759762, new Object[] { Integer.valueOf(localAlbumItem.dfy) }));
+      paramViewGroup.iCV.setText(localAlbumItem.bVF);
+      paramViewGroup.iCV.setVisibility(0);
+      paramViewGroup.tNm.setVisibility(0);
+      paramViewGroup.tNm.setText(this.mContext.getString(2131759762, new Object[] { Integer.valueOf(localAlbumItem.dqU) }));
       AppMethodBeat.o(111499);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
       break;
       label357:
-      paramViewGroup.sQJ.setVisibility(4);
+      paramViewGroup.tNn.setVisibility(4);
       break label177;
       label368:
-      if (e.cMt().sKz == 3) {
-        localAlbumItem.bLs = ai.getContext().getString(2131759758);
+      if (e.cUM().tHk == 3) {
+        localAlbumItem.bVF = aj.getContext().getString(2131759758);
       } else {
-        localAlbumItem.bLs = ai.getContext().getString(2131759759);
+        localAlbumItem.bVF = aj.getContext().getString(2131759759);
       }
     }
     label412:
-    paramViewGroup.sFo.setVisibility(0);
-    paramViewGroup.ijE.setVisibility(0);
-    paramViewGroup.ijE.setText(localAlbumItem.bLs);
-    paramViewGroup.sQI.setVisibility(0);
-    paramViewGroup.sQI.setText(this.mContext.getString(2131759762, new Object[] { Integer.valueOf(localAlbumItem.dfy) }));
-    paramViewGroup.sQK.setVisibility(8);
-    String str = localAlbumItem.auN();
-    if (!bs.isNullOrNil(str)) {
-      h.a(paramViewGroup.sFo, localAlbumItem.cMS(), str, localAlbumItem.cMQ(), localAlbumItem.cMR(), paramInt, localAlbumItem.dzx());
+    paramViewGroup.tCh.setVisibility(0);
+    paramViewGroup.iCV.setVisibility(0);
+    paramViewGroup.iCV.setText(localAlbumItem.bVF);
+    paramViewGroup.tNm.setVisibility(0);
+    paramViewGroup.tNm.setText(this.mContext.getString(2131759762, new Object[] { Integer.valueOf(localAlbumItem.dqU) }));
+    paramViewGroup.tNo.setVisibility(8);
+    String str = localAlbumItem.axA();
+    if (!bt.isNullOrNil(str)) {
+      h.a(paramViewGroup.tCh, localAlbumItem.cVl(), str, localAlbumItem.cVj(), localAlbumItem.cVk(), paramInt, localAlbumItem.fsO());
     }
     for (;;)
     {
       AppMethodBeat.o(111499);
       return paramView;
-      if ((localAlbumItem.xIb != null) && (localAlbumItem.xIb.getType() == 2))
+      if ((localAlbumItem.Odn != null) && (localAlbumItem.Odn.getType() == 2))
       {
-        h.a(paramViewGroup.sFo, localAlbumItem.cMS(), null, localAlbumItem.cMQ(), localAlbumItem.cMR(), paramInt, localAlbumItem.dzx());
+        h.a(paramViewGroup.tCh, localAlbumItem.cVl(), null, localAlbumItem.cVj(), localAlbumItem.cVk(), paramInt, localAlbumItem.fsO());
       }
       else
       {
-        ac.e("MicroMsg.GalleryAdapter", "get folder failed");
-        paramViewGroup.sFo.setVisibility(8);
-        paramViewGroup.ijE.setVisibility(8);
+        ad.e("MicroMsg.GalleryAdapter", "get folder failed");
+        paramViewGroup.tCh.setVisibility(8);
+        paramViewGroup.iCV.setVisibility(8);
       }
     }
   }
   
   static final class a
   {
-    public TextView ijE;
-    public ImageView qTB;
-    public ImageView sFo;
-    public TextView sQI;
-    public ImageView sQJ;
-    public View sQK;
-    View sQL;
-    View sQM;
+    public TextView iCV;
+    public ImageView rDE;
+    public ImageView tCh;
+    public TextView tNm;
+    public ImageView tNn;
+    public View tNo;
+    View tNp;
+    View tNq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.b
  * JD-Core Version:    0.7.0.1
  */

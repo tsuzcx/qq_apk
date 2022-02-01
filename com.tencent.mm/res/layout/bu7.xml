@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="60.0dip" android:layout_marginBottom="130.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:id="@id/f0b" style="@style/o7" />
+    <Button android:id="@id/f05" android:layout_marginTop="@dimen/c5" style="@style/od" />
+</LinearLayout>

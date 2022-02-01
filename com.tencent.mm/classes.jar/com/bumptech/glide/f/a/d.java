@@ -2,7 +2,7 @@ package com.bumptech.glide.f.a;
 
 public abstract interface d
 {
-  public abstract void aX(int paramInt1, int paramInt2);
+  public abstract void aY(int paramInt1, int paramInt2);
 }
 
 

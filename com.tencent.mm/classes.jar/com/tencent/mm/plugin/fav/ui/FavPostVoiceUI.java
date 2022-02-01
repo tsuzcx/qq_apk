@@ -22,16 +22,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.j;
 import com.tencent.mm.audio.b.j.a;
 import com.tencent.mm.compatible.b.c.a;
-import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.ahn;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.akd;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMBaseActivity;
 import com.tencent.mm.ui.z;
 import com.tencent.mm.vfs.e;
@@ -40,35 +39,35 @@ import java.util.LinkedList;
 public class FavPostVoiceUI
   extends MMBaseActivity
 {
-  private static final int[] ifU = { 2131230925, 2131230926, 2131230927, 2131230928, 2131230929, 2131230930, 2131230931 };
-  private static final int[] qNl = { 0, 15, 30, 45, 60, 75, 90, 100 };
+  private static final int[] izo = { 2131230925, 2131230926, 2131230927, 2131230928, 2131230929, 2131230930, 2131230931 };
+  private static final int[] rxn = { 0, 15, 30, 45, 60, 75, 90, 100 };
   private long duration;
-  private final au iga;
   boolean isFinishing;
-  private int kWC;
-  private boolean oPF;
-  private long oPG;
-  private boolean oPH;
-  private long oPI;
-  private Toast oPJ;
-  private j oPK;
-  private final ao oPS;
-  private final au oPT;
+  private final av izu;
+  private int ltB;
   private String path;
-  private Button qNd;
-  private View qNe;
-  private View qNf;
-  private ImageView qNg;
-  private View qNh;
-  private View qNi;
-  private TextView qNj;
-  private View qNk;
+  private final ap ptC;
+  private final av ptD;
+  private boolean ptn;
+  private long pto;
+  private boolean ptp;
+  private long ptq;
+  private Toast ptt;
+  private j ptu;
+  private Button rxf;
+  private View rxg;
+  private View rxh;
+  private ImageView rxi;
+  private View rxj;
+  private View rxk;
+  private TextView rxl;
+  private View rxm;
   
   public FavPostVoiceUI()
   {
     AppMethodBeat.i(106798);
-    this.oPI = -1L;
-    this.iga = new au(new au.a()
+    this.ptq = -1L;
+    this.izu = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
@@ -78,18 +77,18 @@ public class FavPostVoiceUI
         int i;
         if (localj.status == 1)
         {
-          i = localj.cXl.getMaxAmplitude();
-          if (i > j.cXn) {
-            j.cXn = i;
+          i = localj.diD.getMaxAmplitude();
+          if (i > j.diF) {
+            j.diF = i;
           }
-          i = i * 100 / j.cXn;
+          i = i * 100 / j.diF;
         }
         for (;;)
         {
-          if (j < FavPostVoiceUI.ifU.length)
+          if (j < FavPostVoiceUI.izo.length)
           {
-            if ((i >= FavPostVoiceUI.cqK()[j]) && (i < FavPostVoiceUI.cqK()[(j + 1)])) {
-              FavPostVoiceUI.b(FavPostVoiceUI.this).setBackgroundResource(FavPostVoiceUI.ifU[j]);
+            if ((i >= FavPostVoiceUI.cwu()[j]) && (i < FavPostVoiceUI.cwu()[(j + 1)])) {
+              FavPostVoiceUI.b(FavPostVoiceUI.this).setBackgroundResource(FavPostVoiceUI.izo[j]);
             }
           }
           else
@@ -103,27 +102,27 @@ public class FavPostVoiceUI
         }
       }
     }, true);
-    this.oPS = new ao()
+    this.ptC = new ap()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(106794);
         super.handleMessage(paramAnonymousMessage);
-        FavPostVoiceUI.this.cqI();
+        FavPostVoiceUI.this.cws();
         FavPostVoiceUI.g(FavPostVoiceUI.this).setBackgroundResource(2131233811);
         FavPostVoiceUI.g(FavPostVoiceUI.this).setEnabled(true);
         AppMethodBeat.o(106794);
       }
     };
-    this.oPT = new au(new au.a()
+    this.ptD = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(106795);
         if (FavPostVoiceUI.q(FavPostVoiceUI.this) == -1L) {
-          FavPostVoiceUI.a(FavPostVoiceUI.this, bs.Gn());
+          FavPostVoiceUI.a(FavPostVoiceUI.this, bt.HI());
         }
-        long l = bs.aO(FavPostVoiceUI.q(FavPostVoiceUI.this));
+        long l = bt.aO(FavPostVoiceUI.q(FavPostVoiceUI.this));
         if ((l >= 3590000L) && (l <= 3600000L))
         {
           if (FavPostVoiceUI.r(FavPostVoiceUI.this) != null) {
@@ -137,7 +136,7 @@ public class FavPostVoiceUI
           if (l < 3600000L) {
             break;
           }
-          ac.v("MicroMsg.FavPostVoiceUI", "record stop on countdown");
+          ad.v("MicroMsg.FavPostVoiceUI", "record stop on countdown");
           FavPostVoiceUI.s(FavPostVoiceUI.this);
           FavPostVoiceUI.p(FavPostVoiceUI.this);
           AppMethodBeat.o(106795);
@@ -153,40 +152,40 @@ public class FavPostVoiceUI
     AppMethodBeat.o(106798);
   }
   
-  private void bZt()
+  private void cdX()
   {
     long l = 0L;
     AppMethodBeat.i(106801);
-    if (!this.oPF)
+    if (!this.ptn)
     {
       AppMethodBeat.o(106801);
       return;
     }
-    this.qNd.setKeepScreenOn(true);
-    this.qNd.setBackgroundResource(2131233810);
-    this.qNd.setText(2131758953);
-    this.oPK.NX();
+    this.rxf.setKeepScreenOn(true);
+    this.rxf.setBackgroundResource(2131233810);
+    this.rxf.setText(2131758953);
+    this.ptu.PG();
     int i;
     label81:
     String str;
-    if (this.oPG == 0L)
+    if (this.pto == 0L)
     {
       this.duration = l;
       if (this.duration >= 800L) {
         break label163;
       }
       i = 1;
-      this.iga.stopTimer();
-      this.oPT.stopTimer();
+      this.izu.stopTimer();
+      this.ptD.stopTimer();
       if (i != 0) {
         break label294;
       }
       str = this.path;
       i = (int)this.duration;
-      if (!bs.isNullOrNil(str)) {
+      if (!bt.isNullOrNil(str)) {
         break label168;
       }
-      ac.e("MicroMsg.FavPostLogic", "postVoice path null");
+      ad.e("MicroMsg.FavPostLogic", "postVoice path null");
       label126:
       setResult(-1);
       finish();
@@ -194,40 +193,40 @@ public class FavPostVoiceUI
     }
     for (;;)
     {
-      this.oPF = false;
+      this.ptn = false;
       AppMethodBeat.o(106801);
       return;
-      l = bs.aO(this.oPG);
+      l = bt.aO(this.pto);
       break;
       label163:
       i = 0;
       break label81;
       label168:
-      g localg = new g();
+      com.tencent.mm.plugin.fav.a.g localg = new com.tencent.mm.plugin.fav.a.g();
       localg.field_type = 3;
       localg.field_sourceType = 6;
       k.G(localg);
-      agx localagx = new agx();
-      localagx.aIQ(str);
-      localagx.XL(i);
-      localagx.vz(true);
-      localagx.XM(localg.field_type);
-      localagx.aIM("amr");
-      localg.field_favProto.nxC.add(localagx);
+      ajn localajn = new ajn();
+      localajn.aOt(str);
+      localajn.ZH(i);
+      localajn.wl(true);
+      localajn.ZI(localg.field_type);
+      localajn.aOp("amr");
+      localg.field_favProto.nZa.add(localajn);
       b.C(localg);
-      h.wUl.f(10648, new Object[] { Integer.valueOf(1), Integer.valueOf(0) });
+      com.tencent.mm.plugin.report.service.g.yhR.f(10648, new Object[] { Integer.valueOf(1), Integer.valueOf(0) });
       break label126;
       label294:
-      bZv();
-      this.qNd.setEnabled(false);
-      this.qNd.setBackgroundResource(2131233809);
-      this.qNf.setVisibility(0);
-      this.qNe.setVisibility(8);
-      this.oPS.sendEmptyMessageDelayed(0, 500L);
+      cdZ();
+      this.rxf.setEnabled(false);
+      this.rxf.setBackgroundResource(2131233809);
+      this.rxh.setVisibility(0);
+      this.rxg.setVisibility(8);
+      this.ptC.sendEmptyMessageDelayed(0, 500L);
     }
   }
   
-  private void bZv()
+  private void cdZ()
   {
     AppMethodBeat.i(106803);
     e locale = new e(this.path);
@@ -237,12 +236,12 @@ public class FavPostVoiceUI
     AppMethodBeat.o(106803);
   }
   
-  private j cqH()
+  private j cwr()
   {
     AppMethodBeat.i(106800);
-    Object localObject = c.a.fCn;
+    Object localObject = c.a.fVB;
     localObject = new j();
-    ((j)localObject).cXm = new j.a()
+    ((j)localObject).diE = new j.a()
     {
       public final void onError()
       {
@@ -256,7 +255,7 @@ public class FavPostVoiceUI
     return localObject;
   }
   
-  private void cqJ()
+  private void cwt()
   {
     AppMethodBeat.i(106808);
     if (this.isFinishing)
@@ -294,25 +293,25 @@ public class FavPostVoiceUI
     });
     findViewById(2131306517).setVisibility(8);
     findViewById(2131299817).setVisibility(8);
-    this.qNk.setVisibility(8);
-    this.qNk.startAnimation(localAlphaAnimation);
+    this.rxm.setVisibility(8);
+    this.rxm.startAnimation(localAlphaAnimation);
     findViewById(2131306517).startAnimation(localAlphaAnimation);
     findViewById(2131299817).startAnimation(localTranslateAnimation);
     AppMethodBeat.o(106808);
   }
   
-  public final void cqI()
+  public final void cws()
   {
     AppMethodBeat.i(106802);
-    this.qNe.setVisibility(0);
-    this.qNf.setVisibility(8);
-    this.qNi.setVisibility(8);
-    this.qNh.setVisibility(0);
-    this.qNj.setText(2131758841);
-    this.qNd.setBackgroundResource(2131233811);
-    this.qNd.setText(2131758953);
-    this.qNg.setVisibility(4);
-    this.oPF = false;
+    this.rxg.setVisibility(0);
+    this.rxh.setVisibility(8);
+    this.rxk.setVisibility(8);
+    this.rxj.setVisibility(0);
+    this.rxl.setText(2131758841);
+    this.rxf.setBackgroundResource(2131233811);
+    this.rxf.setText(2131758953);
+    this.rxi.setVisibility(4);
+    this.ptn = false;
     AppMethodBeat.o(106802);
   }
   
@@ -320,36 +319,32 @@ public class FavPostVoiceUI
   {
     AppMethodBeat.i(106799);
     super.onCreate(paramBundle);
-    setContentView(z.jD(this).inflate(2131493974, null));
-    this.qNg = ((ImageView)findViewById(2131306518));
-    this.qNh = findViewById(2131306519);
-    this.qNi = findViewById(2131306521);
-    this.qNe = findViewById(2131306525);
-    this.qNf = findViewById(2131306526);
-    this.qNj = ((TextView)findViewById(2131306527));
-    this.qNk = findViewById(2131306520);
+    setContentView(z.jO(this).inflate(2131493974, null));
+    this.rxi = ((ImageView)findViewById(2131306518));
+    this.rxj = findViewById(2131306519);
+    this.rxk = findViewById(2131306521);
+    this.rxg = findViewById(2131306525);
+    this.rxh = findViewById(2131306526);
+    this.rxl = ((TextView)findViewById(2131306527));
+    this.rxm = findViewById(2131306520);
     findViewById(2131306517).setVisibility(8);
-    this.qNk.setVisibility(8);
-    findViewById(2131306517).setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(106790);
-        FavPostVoiceUI.c(FavPostVoiceUI.this);
-        AppMethodBeat.o(106790);
-        return false;
-      }
-    });
+    this.rxm.setVisibility(8);
+    findViewById(2131306517).setOnTouchListener(new FavPostVoiceUI.2(this));
     findViewById(2131299817).setVisibility(8);
-    this.oPK = cqH();
-    this.qNd = ((Button)findViewById(2131299816));
-    this.qNd.setOnTouchListener(new View.OnTouchListener()
+    this.ptu = cwr();
+    this.rxf = ((Button)findViewById(2131299816));
+    this.rxf.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(106793);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        a.b("com/tencent/mm/plugin/fav/ui/FavPostVoiceUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
         if (paramAnonymousView != FavPostVoiceUI.g(FavPostVoiceUI.this))
         {
+          a.a(false, this, "com/tencent/mm/plugin/fav/ui/FavPostVoiceUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(106793);
           return false;
         }
@@ -363,6 +358,7 @@ public class FavPostVoiceUI
         }
         for (;;)
         {
+          a.a(false, this, "com/tencent/mm/plugin/fav/ui/FavPostVoiceUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(106793);
           return false;
           if (!FavPostVoiceUI.h(FavPostVoiceUI.this))
@@ -383,19 +379,20 @@ public class FavPostVoiceUI
               continue;
               if (!FavPostVoiceUI.h(FavPostVoiceUI.this))
               {
+                a.a(false, this, "com/tencent/mm/plugin/fav/ui/FavPostVoiceUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
                 AppMethodBeat.o(106793);
                 return false;
               }
               if (FavPostVoiceUI.m(FavPostVoiceUI.this).getVisibility() == 0)
               {
-                ac.w("MicroMsg.FavPostVoiceUI", "action up -> cancel");
+                ad.w("MicroMsg.FavPostVoiceUI", "action up -> cancel");
                 FavPostVoiceUI.n(FavPostVoiceUI.this);
               }
               else if (!FavPostVoiceUI.o(FavPostVoiceUI.this))
               {
                 FavPostVoiceUI.p(FavPostVoiceUI.this);
                 continue;
-                ac.w("MicroMsg.FavPostVoiceUI", "action cancel");
+                ad.w("MicroMsg.FavPostVoiceUI", "action cancel");
                 FavPostVoiceUI.n(FavPostVoiceUI.this);
               }
             }
@@ -403,8 +400,8 @@ public class FavPostVoiceUI
         }
       }
     });
-    cqI();
-    paramBundle = com.tencent.mm.plugin.fav.a.b.cpe();
+    cws();
+    paramBundle = com.tencent.mm.plugin.fav.a.b.cuJ();
     Object localObject = new e(paramBundle);
     if (!((e)localObject).exists()) {
       ((e)localObject).mkdirs();
@@ -414,7 +411,7 @@ public class FavPostVoiceUI
       localObject = paramBundle + "/" + System.currentTimeMillis();
     } while (new e((String)localObject).exists());
     this.path = ((String)localObject);
-    this.qNj.post(new Runnable()
+    this.rxl.post(new Runnable()
     {
       public final void run()
       {
@@ -447,7 +444,7 @@ public class FavPostVoiceUI
     AppMethodBeat.i(106807);
     if (4 == paramInt)
     {
-      cqJ();
+      cwt();
       AppMethodBeat.o(106807);
       return true;
     }
@@ -460,7 +457,7 @@ public class FavPostVoiceUI
   {
     AppMethodBeat.i(106806);
     super.onPause();
-    bZt();
+    cdX();
     AppMethodBeat.o(106806);
   }
   
@@ -479,7 +476,7 @@ public class FavPostVoiceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavPostVoiceUI
  * JD-Core Version:    0.7.0.1
  */

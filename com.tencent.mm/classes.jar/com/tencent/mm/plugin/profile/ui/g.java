@@ -5,18 +5,20 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.jg;
-import com.tencent.mm.model.az;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.a.jo;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.r;
 
@@ -28,22 +30,22 @@ public final class g
   {
     super(paramContext, new q(paramContext));
     AppMethodBeat.i(27137);
-    paramContext = new jg();
-    a.GpY.l(paramContext);
+    paramContext = new jo();
+    a.IbL.l(paramContext);
     AppMethodBeat.o(27137);
   }
   
   public static void clearData()
   {
     AppMethodBeat.i(27138);
-    az.ayM();
-    c.awD().alq("feedsapp");
-    az.ayM();
-    c.awG().aNG("feedsapp");
+    ba.aBQ();
+    c.azs().aqe("feedsapp");
+    ba.aBQ();
+    c.azv().aTx("feedsapp");
     AppMethodBeat.o(27138);
   }
   
-  public final boolean WZ(String paramString)
+  public final boolean aaG(String paramString)
   {
     AppMethodBeat.i(27142);
     if ("contact_info_plugin_view".equals(paramString))
@@ -69,19 +71,19 @@ public final class g
     }
     if (paramString.equals("contact_info_plugin_uninstall"))
     {
-      com.tencent.mm.ui.base.h.d(this.context, this.context.getString(2131763367), "", this.context.getString(2131755902), this.context.getString(2131755691), new DialogInterface.OnClickListener()
+      h.e(this.context, this.context.getString(2131763367), "", this.context.getString(2131755902), this.context.getString(2131755691), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(27136);
-          g.this.oS(false);
+          g.this.pr(false);
           AppMethodBeat.o(27136);
         }
       }, null);
       AppMethodBeat.o(27142);
       return true;
     }
-    boolean bool = super.WZ(paramString);
+    boolean bool = super.aaG(paramString);
     AppMethodBeat.o(27142);
     return bool;
   }
@@ -93,10 +95,10 @@ public final class g
     AppMethodBeat.o(27139);
   }
   
-  protected final boolean dqi()
+  protected final boolean dAL()
   {
     AppMethodBeat.i(27141);
-    if ((u.axI() & 0x8000) == 0)
+    if ((u.aAy() & 0x8000) == 0)
     {
       AppMethodBeat.o(27141);
       return true;
@@ -105,7 +107,7 @@ public final class g
     return false;
   }
   
-  protected final void oS(boolean paramBoolean)
+  protected final void pr(boolean paramBoolean)
   {
     AppMethodBeat.i(27140);
     Context localContext = this.context;
@@ -113,36 +115,36 @@ public final class g
     for (String str = localContext.getString(2131763362);; str = localContext.getString(2131763370))
     {
       localContext.getString(2131755906);
-      new au(new au.a()
+      new av(new av.a()
       {
         public final boolean onTimerExpired()
         {
           AppMethodBeat.i(27135);
-          int i = u.axI();
-          if (this.oNP) {
+          int i = u.aAy();
+          if (this.prx) {
             i &= 0xFFFF7FFF;
           }
           for (;;)
           {
-            az.ayM();
-            c.agA().set(34, Integer.valueOf(i));
-            az.ayM();
-            c.awA().c(new com.tencent.mm.ba.l("", "", "", "", "", "", "", "", i, "", ""));
-            if (!this.oNP) {
+            ba.aBQ();
+            c.ajl().set(34, Integer.valueOf(i));
+            ba.aBQ();
+            c.azo().c(new com.tencent.mm.bb.l("", "", "", "", "", "", "", "", i, "", ""));
+            if (!this.prx) {
               g.clearData();
             }
-            if (this.uEr != null) {
-              this.uEr.a(null, null);
+            if (this.vHr != null) {
+              this.vHr.a(null, null);
             }
-            if (this.oDw != null) {
-              this.oDw.dismiss();
+            if (this.pgW != null) {
+              this.pgW.dismiss();
             }
             AppMethodBeat.o(27135);
             return true;
             i |= 0x8000;
           }
         }
-      }, false).au(1500L, 1500L);
+      }, false).az(1500L, 1500L);
       AppMethodBeat.o(27140);
       return;
     }

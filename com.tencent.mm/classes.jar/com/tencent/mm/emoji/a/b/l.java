@@ -3,20 +3,20 @@ package com.tencent.mm.emoji.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/search/SuggestEmojiItem;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "type", "", "reportPosition", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;II)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getReportPosition", "()I", "setReportPosition", "(I)V", "getType", "setType", "plugin-emojisdk_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/search/SuggestEmojiItem;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "type", "", "reportPosition", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;II)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getReportPosition", "()I", "setReportPosition", "(I)V", "getType", "setType", "plugin-emojisdk_release"})
 public final class l
 {
-  public final EmojiInfo fPB;
-  public int fSV;
+  public final EmojiInfo gjb;
+  public int gmz;
   public int type;
   
   public l(EmojiInfo paramEmojiInfo, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(209858);
-    this.fPB = paramEmojiInfo;
+    AppMethodBeat.i(218983);
+    this.gjb = paramEmojiInfo;
     this.type = paramInt1;
-    this.fSV = paramInt2;
-    AppMethodBeat.o(209858);
+    this.gmz = paramInt2;
+    AppMethodBeat.o(218983);
   }
 }
 

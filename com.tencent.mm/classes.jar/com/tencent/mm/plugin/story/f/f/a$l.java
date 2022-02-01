@@ -5,14 +5,14 @@ import d.b.a;
 import d.l;
 import java.util.Comparator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
 public final class a$l<T>
   implements Comparator<T>
 {
   public final int compare(T paramT1, T paramT2)
   {
     AppMethodBeat.i(119002);
-    int i = a.a((Comparable)Integer.valueOf(((c)paramT2).hGU), (Comparable)Integer.valueOf(((c)paramT1).hGU));
+    int i = a.a((Comparable)Integer.valueOf(((c)paramT2).hZE), (Comparable)Integer.valueOf(((c)paramT1).hZE));
     AppMethodBeat.o(119002);
     return i;
   }

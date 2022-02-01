@@ -7,39 +7,39 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.plugin.wenote.model.a.i;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.e;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.u;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class m
   extends a
 {
-  private WXRTEditText CYS;
+  private WXRTEditText ECO;
   
   public m(View paramView, com.tencent.mm.plugin.wenote.model.nativenote.manager.k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30879);
-    this.CYS = ((WXRTEditText)paramView.findViewById(2131304265));
-    if ((paramk.CWB != 2) || (!this.CXj.CWC))
+    this.ECO = ((WXRTEditText)paramView.findViewById(2131304265));
+    if ((paramk.EAx != 2) || (!this.EBf.EAy))
     {
-      this.CYS.setKeyListener(null);
-      this.CYS.setFocusable(false);
-      this.CYS.setClickable(true);
+      this.ECO.setKeyListener(null);
+      this.ECO.setFocusable(false);
+      this.ECO.setClickable(true);
     }
-    this.CYS.oRB = this;
-    this.CYS.setEditTextType(0);
-    this.CXj.q(this.CYS);
-    this.CYS.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+    this.ECO.pvl = this;
+    this.ECO.setEditTextType(0);
+    this.EBf.q(this.ECO);
+    this.ECO.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(30876);
-        az.agU().az(new Runnable()
+        ba.ajF().ay(new Runnable()
         {
           public final void run()
           {
@@ -57,81 +57,81 @@ public final class m
   public final void a(final com.tencent.mm.plugin.wenote.model.a.c paramc, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30880);
-    this.CYS.setPosInDataList(paramInt1);
+    this.ECO.setPosInDataList(paramInt1);
     paramc = (i)paramc;
-    paramc.CVF = this.CYS;
-    paramc.CVD = null;
-    paramc.CVE = null;
-    Object localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().Wh(paramInt1 - 1);
+    paramc.EzC = this.ECO;
+    paramc.EzA = null;
+    paramc.EzB = null;
+    Object localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().XY(paramInt1 - 1);
     if ((localObject != null) && (((com.tencent.mm.plugin.wenote.model.a.c)localObject).getType() == 1))
     {
-      localObject = (LinearLayout.LayoutParams)this.CYS.getLayoutParams();
+      localObject = (LinearLayout.LayoutParams)this.ECO.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).topMargin = 0;
-      this.CYS.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.ECO.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().Wh(paramInt1 + 1);
+    localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().XY(paramInt1 + 1);
     if ((localObject != null) && (((com.tencent.mm.plugin.wenote.model.a.c)localObject).getType() == 1))
     {
-      localObject = (LinearLayout.LayoutParams)this.CYS.getLayoutParams();
+      localObject = (LinearLayout.LayoutParams)this.ECO.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).bottomMargin = 0;
-      this.CYS.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.ECO.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    if ((this.CXj.CWB != 2) || (!this.CXj.CWC))
+    if ((this.EBf.EAx != 2) || (!this.EBf.EAy))
     {
-      this.CYS.setRichTextEditing(paramc.content);
-      com.tencent.mm.pluginsdk.ui.span.k.v(this.CYS);
+      this.ECO.setRichTextEditing(paramc.content);
+      com.tencent.mm.pluginsdk.ui.span.k.v(this.ECO);
     }
     for (;;)
     {
-      ac.i("MicroMsg.Note.NoteTextItemHolder", "TextItemHolder position is " + lu());
+      ad.i("MicroMsg.Note.NoteTextItemHolder", "TextItemHolder position is " + lM());
       AppMethodBeat.o(30880);
       return;
-      ap.f(new Runnable()
+      aq.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(30878);
           m.a(m.this).setRichTextEditing(paramc.content);
-          m.a(m.this).bZY();
-          m.a(m.this).caa();
+          m.a(m.this).ceC();
+          m.a(m.this).ceE();
           com.tencent.mm.pluginsdk.ui.span.k.v(m.a(m.this));
-          m.a(m.this).cab();
-          m.a(m.this).bZZ();
-          if (paramc.oPV) {
-            if ((paramc.oPX != -1) && (paramc.oPX < m.a(m.this).getText().toString().length()))
+          m.a(m.this).ceF();
+          m.a(m.this).ceD();
+          if (paramc.ptF) {
+            if ((paramc.ptH != -1) && (paramc.ptH < m.a(m.this).getText().toString().length()))
             {
-              m.a(m.this).setSelection(paramc.oPX);
+              m.a(m.this).setSelection(paramc.ptH);
               m.a(m.this).requestFocus();
-              ap.n(new Runnable()
+              aq.o(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(30877);
-                  if (m.2.this.CYV.oQe != 0)
+                  if (m.2.this.ECR.ptO != 0)
                   {
-                    int i = m.a(m.this).getSelection().atr;
-                    if (i == m.2.this.CYV.content.length())
+                    int i = m.a(m.this).getSelection().avj;
+                    if (i == m.2.this.ECR.content.length())
                     {
-                      m.a(m.this).bZY();
+                      m.a(m.this).ceC();
                       m.a(m.this).getText().append("\n");
-                      m.a(m.this).bZZ();
+                      m.a(m.this).ceD();
                       m.a(m.this).setSelection(i);
                     }
-                    m.2.this.CYV.oQe = 0;
-                    if (m.2.this.CYV.oQf == 1)
+                    m.2.this.ECR.ptO = 0;
+                    if (m.2.this.ECR.ptP == 1)
                     {
-                      m.a(m.this).a(u.CXd, Boolean.TRUE);
+                      m.a(m.this).a(u.EAZ, Boolean.TRUE);
                       AppMethodBeat.o(30877);
                       return;
                     }
-                    if (m.2.this.CYV.oQf == 3)
+                    if (m.2.this.ECR.ptP == 3)
                     {
-                      m.a(m.this).a(u.CXc, Boolean.TRUE);
+                      m.a(m.this).a(u.EAY, Boolean.TRUE);
                       AppMethodBeat.o(30877);
                       return;
                     }
-                    if (m.2.this.CYV.oQf == 2) {
-                      m.a(m.this).a(u.CXe, Boolean.TRUE);
+                    if (m.2.this.ECR.ptP == 2) {
+                      m.a(m.this).a(u.EBa, Boolean.TRUE);
                     }
                   }
                   AppMethodBeat.o(30877);
@@ -141,10 +141,10 @@ public final class m
           }
           for (;;)
           {
-            if (paramc.oQd)
+            if (paramc.ptN)
             {
-              paramc.oQd = false;
-              m.a(m.this).oQd = true;
+              paramc.ptN = false;
+              m.a(m.this).ptN = true;
               m.a(m.this).onTextContextMenuItem(16908322);
             }
             AppMethodBeat.o(30878);
@@ -160,14 +160,14 @@ public final class m
     }
   }
   
-  public final int bZp()
+  public final int cdT()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.m
  * JD-Core Version:    0.7.0.1
  */

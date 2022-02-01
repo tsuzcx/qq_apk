@@ -8,10 +8,10 @@ import java.util.Map;
 public class e
   implements b<d>
 {
-  protected d iBa;
-  public final b iBb;
-  public final c iBc;
-  public final a iBd;
+  protected d iUk;
+  public final b iUl;
+  public final c iUm;
+  public final a iUn;
   
   public e()
   {
@@ -23,10 +23,10 @@ public class e
   private e(d paramd)
   {
     AppMethodBeat.i(63452);
-    this.iBb = new b();
-    this.iBc = new c();
-    this.iBd = new a();
-    this.iBa = paramd;
+    this.iUl = new b();
+    this.iUm = new c();
+    this.iUn = new a();
+    this.iUk = paramd;
     AppMethodBeat.o(63452);
   }
   
@@ -35,7 +35,7 @@ public class e
   {
     public a() {}
     
-    public final String Ua()
+    public final String Wr()
     {
       return "Vending.LOGIC";
     }
@@ -46,7 +46,7 @@ public class e
   {
     public b() {}
     
-    public final String Ua()
+    public final String Wr()
     {
       return "Vending.LOGIC";
     }
@@ -54,7 +54,7 @@ public class e
     public final com.tencent.mm.vending.g.c<Boolean> c(int paramInt, Map<String, Object> paramMap)
     {
       AppMethodBeat.i(63447);
-      paramMap = g.J(Integer.valueOf(paramInt), paramMap).c(this);
+      paramMap = g.L(Integer.valueOf(paramInt), paramMap).c(this);
       AppMethodBeat.o(63447);
       return paramMap;
     }
@@ -65,7 +65,7 @@ public class e
   {
     public c() {}
     
-    public final String Ua()
+    public final String Wr()
     {
       return "Vending.LOGIC";
     }
@@ -73,7 +73,7 @@ public class e
     public final com.tencent.mm.vending.g.c<com.tencent.mm.vending.j.d<Boolean, String, Long>> x(Map<String, Object> paramMap)
     {
       AppMethodBeat.i(63449);
-      paramMap = g.ef(paramMap).c(this);
+      paramMap = g.ei(paramMap).c(this);
       AppMethodBeat.o(63449);
       return paramMap;
     }
@@ -81,7 +81,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.b.e
  * JD-Core Version:    0.7.0.1
  */

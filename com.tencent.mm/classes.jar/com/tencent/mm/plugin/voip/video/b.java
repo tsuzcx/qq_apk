@@ -9,34 +9,34 @@ final class b
   implements GLTextureView.e
 {
   private static int EGL_OPENGL_ES2_BIT = 4;
-  private static int[] gVp = { 12324, 4, 12323, 4, 12322, 4, 12352, EGL_OPENGL_ES2_BIT, 12344 };
-  private int[] fNc;
-  protected int fNd;
-  protected int fNe;
-  protected int fNf;
-  protected int fNg;
-  protected int fNh;
-  protected int fNi;
+  private static int[] hns = { 12324, 4, 12323, 4, 12322, 4, 12352, EGL_OPENGL_ES2_BIT, 12344 };
+  private int[] ggC;
+  protected int ggD;
+  protected int ggE;
+  protected int ggF;
+  protected int ggG;
+  protected int ggH;
+  protected int ggI;
   
   public b()
   {
     AppMethodBeat.i(115569);
-    this.fNc = new int[1];
-    this.fNd = 5;
-    this.fNe = 6;
-    this.fNf = 5;
-    this.fNg = 0;
-    this.fNh = 0;
-    this.fNi = 0;
+    this.ggC = new int[1];
+    this.ggD = 5;
+    this.ggE = 6;
+    this.ggF = 5;
+    this.ggG = 0;
+    this.ggH = 0;
+    this.ggI = 0;
     AppMethodBeat.o(115569);
   }
   
   private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt)
   {
     AppMethodBeat.i(115572);
-    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.fNc))
+    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.ggC))
     {
-      paramInt = this.fNc[0];
+      paramInt = this.ggC[0];
       AppMethodBeat.o(115572);
       return paramInt;
     }
@@ -54,13 +54,13 @@ final class b
       EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
       int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
       int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
-      if ((k >= this.fNh) && (m >= this.fNi))
+      if ((k >= this.ggH) && (m >= this.ggI))
       {
         k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324);
         m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
         int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
         int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
-        if ((k == this.fNd) && (m == this.fNe) && (n == this.fNf) && (i1 == this.fNg))
+        if ((k == this.ggD) && (m == this.ggE) && (n == this.ggF) && (i1 == this.ggG))
         {
           AppMethodBeat.o(115571);
           return localEGLConfig;
@@ -76,7 +76,7 @@ final class b
   {
     AppMethodBeat.i(115570);
     int[] arrayOfInt = new int[1];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, gVp, null, 0, arrayOfInt);
+    paramEGL10.eglChooseConfig(paramEGLDisplay, hns, null, 0, arrayOfInt);
     int i = arrayOfInt[0];
     if (i <= 0)
     {
@@ -85,7 +85,7 @@ final class b
       throw paramEGL10;
     }
     EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, gVp, arrayOfEGLConfig, i, arrayOfInt);
+    paramEGL10.eglChooseConfig(paramEGLDisplay, hns, arrayOfEGLConfig, i, arrayOfInt);
     paramEGL10 = b(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
     AppMethodBeat.o(115570);
     return paramEGL10;
@@ -93,7 +93,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.b
  * JD-Core Version:    0.7.0.1
  */

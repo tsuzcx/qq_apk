@@ -45,49 +45,49 @@ public class TPImageGenerator
   
   public void cancelAllImageGenerations()
   {
-    AppMethodBeat.i(193883);
+    AppMethodBeat.i(220665);
     if (!this.mInited)
     {
-      AppMethodBeat.o(193883);
+      AppMethodBeat.o(220665);
       return;
     }
     _cancelAllImageGenerations();
-    AppMethodBeat.o(193883);
+    AppMethodBeat.o(220665);
   }
   
   public void generateImageAsyncAtTime(long paramLong1, long paramLong2, TPImageGeneratorParams paramTPImageGeneratorParams)
   {
-    AppMethodBeat.i(193881);
+    AppMethodBeat.i(220663);
     if (!this.mInited)
     {
       paramTPImageGeneratorParams = new IllegalStateException("Failed to generate image at time " + paramLong1 + " due to invalid state.");
-      AppMethodBeat.o(193881);
+      AppMethodBeat.o(220663);
       throw paramTPImageGeneratorParams;
     }
     _generateImageAsyncAtTime(paramLong1, paramLong2, paramTPImageGeneratorParams);
-    AppMethodBeat.o(193881);
+    AppMethodBeat.o(220663);
   }
   
   public void generateImagesAsyncForTimes(long[] paramArrayOfLong, long paramLong, TPImageGeneratorParams paramTPImageGeneratorParams)
   {
-    AppMethodBeat.i(193882);
+    AppMethodBeat.i(220664);
     if (!this.mInited)
     {
       paramArrayOfLong = new IllegalStateException("Failed to generate images due to invalid state.");
-      AppMethodBeat.o(193882);
+      AppMethodBeat.o(220664);
       throw paramArrayOfLong;
     }
     _generateImagesAsyncForTimes(paramArrayOfLong, paramLong, paramTPImageGeneratorParams);
-    AppMethodBeat.o(193882);
+    AppMethodBeat.o(220664);
   }
   
   public void init()
   {
-    AppMethodBeat.i(193879);
+    AppMethodBeat.i(220661);
     if (this.mInited)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Failed to init due to invalid state.");
-      AppMethodBeat.o(193879);
+      AppMethodBeat.o(220661);
       throw localIllegalStateException;
     }
     this.mInited = true;
@@ -96,30 +96,30 @@ public class TPImageGenerator
       if (this.mUrl != null)
       {
         _createWithUrl(this.mUrl, this.mCallback);
-        AppMethodBeat.o(193879);
+        AppMethodBeat.o(220661);
         return;
       }
       _createWithFd(this.mFd, this.mCallback);
     }
-    AppMethodBeat.o(193879);
+    AppMethodBeat.o(220661);
   }
   
   public void unInit()
   {
-    AppMethodBeat.i(193880);
+    AppMethodBeat.i(220662);
     if (!this.mInited)
     {
-      AppMethodBeat.o(193880);
+      AppMethodBeat.o(220662);
       return;
     }
     this.mInited = false;
     _release();
-    AppMethodBeat.o(193880);
+    AppMethodBeat.o(220662);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.core.imagegenerator.TPImageGenerator
  * JD-Core Version:    0.7.0.1
  */

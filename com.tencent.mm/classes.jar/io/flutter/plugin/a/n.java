@@ -20,25 +20,25 @@ import java.util.Set;
 public final class n
   implements i<Object>
 {
-  private static final Charset JJA;
-  public static final n KPb;
-  private static final boolean KPc;
+  private static final Charset LDj;
+  public static final n MFY;
+  private static final boolean MFZ;
   
   static
   {
     AppMethodBeat.i(9865);
-    KPb = new n();
+    MFY = new n();
     if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {}
     for (boolean bool = true;; bool = false)
     {
-      KPc = bool;
-      JJA = Charset.forName("UTF8");
+      MFZ = bool;
+      LDj = Charset.forName("UTF8");
       AppMethodBeat.o(9865);
       return;
     }
   }
   
-  private static int L(ByteBuffer paramByteBuffer)
+  private static int M(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(9860);
     if (!paramByteBuffer.hasRemaining())
@@ -64,10 +64,10 @@ public final class n
     return i;
   }
   
-  private static byte[] M(ByteBuffer paramByteBuffer)
+  private static byte[] N(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(9861);
-    byte[] arrayOfByte = new byte[L(paramByteBuffer)];
+    byte[] arrayOfByte = new byte[M(paramByteBuffer)];
     paramByteBuffer.get(arrayOfByte);
     AppMethodBeat.o(9861);
     return arrayOfByte;
@@ -110,35 +110,35 @@ public final class n
         continue;
         localObject1 = Long.valueOf(paramByteBuffer.getLong());
         continue;
-        localObject1 = new BigInteger(new String(M(paramByteBuffer), JJA), 16);
+        localObject1 = new BigInteger(new String(N(paramByteBuffer), LDj), 16);
         continue;
         f(paramByteBuffer, 8);
         localObject1 = Double.valueOf(paramByteBuffer.getDouble());
         continue;
-        localObject1 = new String(M(paramByteBuffer), JJA);
+        localObject1 = new String(N(paramByteBuffer), LDj);
         continue;
-        localObject1 = M(paramByteBuffer);
+        localObject1 = N(paramByteBuffer);
         continue;
-        paramByte = L(paramByteBuffer);
+        paramByte = M(paramByteBuffer);
         localObject1 = new int[paramByte];
         f(paramByteBuffer, 4);
         paramByteBuffer.asIntBuffer().get((int[])localObject1);
         paramByteBuffer.position(paramByte * 4 + paramByteBuffer.position());
         continue;
-        paramByte = L(paramByteBuffer);
+        paramByte = M(paramByteBuffer);
         localObject1 = new long[paramByte];
         f(paramByteBuffer, 8);
         paramByteBuffer.asLongBuffer().get((long[])localObject1);
         paramByteBuffer.position(paramByte * 8 + paramByteBuffer.position());
         continue;
-        paramByte = L(paramByteBuffer);
+        paramByte = M(paramByteBuffer);
         localObject1 = new double[paramByte];
         f(paramByteBuffer, 8);
         paramByteBuffer.asDoubleBuffer().get((double[])localObject1);
         paramByteBuffer.position(paramByte * 8 + paramByteBuffer.position());
       }
     case 12: 
-      b2 = L(paramByteBuffer);
+      b2 = M(paramByteBuffer);
       localObject2 = new ArrayList(b2);
       paramByte = b1;
       for (;;)
@@ -147,11 +147,11 @@ public final class n
         if (paramByte >= b2) {
           break;
         }
-        ((List)localObject2).add(N(paramByteBuffer));
+        ((List)localObject2).add(O(paramByteBuffer));
         paramByte += 1;
       }
     }
-    b1 = L(paramByteBuffer);
+    b1 = M(paramByteBuffer);
     Object localObject2 = new HashMap();
     paramByte = b2;
     for (;;)
@@ -160,7 +160,7 @@ public final class n
       if (paramByte >= b1) {
         break;
       }
-      ((Map)localObject2).put(N(paramByteBuffer), N(paramByteBuffer));
+      ((Map)localObject2).put(O(paramByteBuffer), O(paramByteBuffer));
       paramByte += 1;
     }
   }
@@ -184,7 +184,7 @@ public final class n
     if (paramInt <= 65535)
     {
       paramByteArrayOutputStream.write(254);
-      if (KPc)
+      if (MFZ)
       {
         paramByteArrayOutputStream.write(paramInt);
         paramByteArrayOutputStream.write(paramInt >>> 8);
@@ -204,7 +204,7 @@ public final class n
   private static void a(ByteArrayOutputStream paramByteArrayOutputStream, long paramLong)
   {
     AppMethodBeat.i(9855);
-    if (KPc)
+    if (MFZ)
     {
       paramByteArrayOutputStream.write((byte)(int)paramLong);
       paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 8));
@@ -239,7 +239,7 @@ public final class n
   private static void b(ByteArrayOutputStream paramByteArrayOutputStream, int paramInt)
   {
     AppMethodBeat.i(9854);
-    if (KPc)
+    if (MFZ)
     {
       paramByteArrayOutputStream.write(paramInt);
       paramByteArrayOutputStream.write(paramInt >>> 8);
@@ -281,7 +281,7 @@ public final class n
     AppMethodBeat.o(9862);
   }
   
-  public final Object I(ByteBuffer paramByteBuffer)
+  public final Object J(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(9852);
     if (paramByteBuffer == null)
@@ -290,7 +290,7 @@ public final class n
       return null;
     }
     paramByteBuffer.order(ByteOrder.nativeOrder());
-    Object localObject = N(paramByteBuffer);
+    Object localObject = O(paramByteBuffer);
     if (paramByteBuffer.hasRemaining())
     {
       paramByteBuffer = new IllegalArgumentException("Message corrupted");
@@ -301,7 +301,7 @@ public final class n
     return localObject;
   }
   
-  protected final Object N(ByteBuffer paramByteBuffer)
+  protected final Object O(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(9863);
     if (!paramByteBuffer.hasRemaining())
@@ -366,7 +366,7 @@ public final class n
       if ((paramObject instanceof BigInteger))
       {
         paramByteArrayOutputStream.write(5);
-        a(paramByteArrayOutputStream, ((BigInteger)paramObject).toString(16).getBytes(JJA));
+        a(paramByteArrayOutputStream, ((BigInteger)paramObject).toString(16).getBytes(LDj));
         AppMethodBeat.o(9859);
         return;
       }
@@ -377,7 +377,7 @@ public final class n
     if ((paramObject instanceof String))
     {
       paramByteArrayOutputStream.write(7);
-      a(paramByteArrayOutputStream, ((String)paramObject).getBytes(JJA));
+      a(paramByteArrayOutputStream, ((String)paramObject).getBytes(LDj));
       AppMethodBeat.o(9859);
       return;
     }
@@ -467,7 +467,7 @@ public final class n
     throw paramByteArrayOutputStream;
   }
   
-  public final ByteBuffer eD(Object paramObject)
+  public final ByteBuffer eG(Object paramObject)
   {
     AppMethodBeat.i(9851);
     if (paramObject == null)
@@ -494,7 +494,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.a.n
  * JD-Core Version:    0.7.0.1
  */

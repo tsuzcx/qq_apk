@@ -3,101 +3,57 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.plugin.webview.luggage.l;
-import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.luggage.m;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public class bc
-  extends bo<f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  public final void b(a<f>.a parama)
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78625);
-    ac.i("MicroMsg.JsApiSetNavigationBarButtons", "invokeInOwn");
-    String str1 = parama.bWS.bVY.optString("left");
-    Object localObject = parama.bWS.bVY.optString("right");
-    if ((bs.isNullOrNil(str1)) && (bs.isNullOrNil((String)localObject)))
+    AppMethodBeat.i(78623);
+    ad.i("MicroMsg.JsApiSetCloseWindowConfirmDialogInfo", "invoke");
+    boolean bool = paramb.chh.cgn.optBoolean("switch");
+    String str1 = paramb.chh.cgn.optString("title_cn");
+    String str2 = paramb.chh.cgn.optString("title_eng");
+    String str3 = paramb.chh.cgn.optString("ok_cn");
+    String str4 = paramb.chh.cgn.optString("ok_eng");
+    String str5 = paramb.chh.cgn.optString("cancel_cn");
+    String str6 = paramb.chh.cgn.optString("cancel_eng");
+    m localm = ((g)paramb.chg).ePe();
+    if (localm == null)
     {
-      parama.a("fail", null);
-      AppMethodBeat.o(78625);
+      AppMethodBeat.o(78623);
       return;
     }
     Bundle localBundle = new Bundle();
-    try
-    {
-      str1 = new JSONObject(str1).optString("color", "");
-      if (!bs.isNullOrNil(str1)) {
-        localBundle.putString("set_navigation_bar_buttons_left_text_color", str1);
-      }
-      try
-      {
-        localObject = new JSONObject((String)localObject);
-        boolean bool1 = ((JSONObject)localObject).optBoolean("hidden", false);
-        str1 = ((JSONObject)localObject).optString("text", "");
-        String str2 = bs.nullAsNil(x.aIf(((JSONObject)localObject).optString("iconData", "")));
-        String str3 = ((JSONObject)localObject).optString("color", "");
-        boolean bool2 = ((JSONObject)localObject).optBoolean("needClickEvent", false);
-        if (bool1) {
-          break label259;
-        }
-        localBundle.putString("set_navigation_bar_buttons_text", str1);
-        localBundle.putString("set_navigation_bar_buttons_icon_data", str2);
-        localBundle.putString("set_navigation_bar_buttons_text_color", str3);
-        localBundle.putBoolean("set_navigation_bar_buttons_need_click_event", bool2);
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          ac.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException1, "setNavigationBarButtons opt right ", new Object[0]);
-        }
-        l locall = ((f)parama.bWR).eAo();
-        if (locall != null) {
-          break label318;
-        }
-        parama.a("fail", null);
-        AppMethodBeat.o(78625);
-        return;
-        locall.setNavigationBarButtons(localBundle);
-        parama.a("", null);
-        AppMethodBeat.o(78625);
-      }
-      if (localBundle.size() < 0)
-      {
-        parama.a("fail", null);
-        AppMethodBeat.o(78625);
-        return;
-      }
-    }
-    catch (Exception localException2)
-    {
-      for (;;)
-      {
-        ac.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException2, "setNavigationBarButtons opt left ", new Object[0]);
-        continue;
-        label259:
-        localBundle.putBoolean("set_navigation_bar_buttons_hide_right_button", true);
-      }
-    }
-    label318:
+    localBundle.putBoolean("close_window_confirm_dialog_switch", Boolean.valueOf(bool).booleanValue());
+    localBundle.putString("close_window_confirm_dialog_title_cn", str1);
+    localBundle.putString("close_window_confirm_dialog_title_eng", str2);
+    localBundle.putString("close_window_confirm_dialog_ok_cn", str3);
+    localBundle.putString("close_window_confirm_dialog_ok_eng", str4);
+    localBundle.putString("close_window_confirm_dialog_cancel_cn", str5);
+    localBundle.putString("close_window_confirm_dialog_cancel_eng", str6);
+    localm.setCloseWindowConfirmInfo(localBundle);
+    paramb.a("", null);
+    AppMethodBeat.o(78623);
   }
   
-  public final int bYk()
+  public final int ccO()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setNavigationBarButtons";
+    return "setCloseWindowConfirmDialogInfo";
   }
 }
 

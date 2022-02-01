@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.util.Iterator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"iterator", "", "T", "array", "", "([Ljava/lang/Object;)Ljava/util/Iterator;", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"iterator", "", "T", "array", "", "([Ljava/lang/Object;)Ljava/util/Iterator;", "kotlin-stdlib"})
 public final class b
 {
-  public static final <T> Iterator<T> ad(T[] paramArrayOfT)
+  public static final <T> Iterator<T> ae(T[] paramArrayOfT)
   {
     AppMethodBeat.i(129344);
-    k.h(paramArrayOfT, "array");
+    p.h(paramArrayOfT, "array");
     paramArrayOfT = (Iterator)new a(paramArrayOfT);
     AppMethodBeat.o(129344);
     return paramArrayOfT;

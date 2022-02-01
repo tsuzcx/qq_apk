@@ -4,16 +4,16 @@ import android.os.Build.VERSION;
 
 public final class d$a
 {
-  d.b Ko;
+  d.b Me;
   
   public d$a(String paramString, int paramInt1, int paramInt2)
   {
     if (Build.VERSION.SDK_INT >= 28)
     {
-      this.Ko = new f.a(paramString, paramInt1, paramInt2);
+      this.Me = new f.a(paramString, paramInt1, paramInt2);
       return;
     }
-    this.Ko = new g.a(paramString, paramInt1, paramInt2);
+    this.Me = new g.a(paramString, paramInt1, paramInt2);
   }
   
   public final boolean equals(Object paramObject)
@@ -24,12 +24,12 @@ public final class d$a
     if (!(paramObject instanceof a)) {
       return false;
     }
-    return this.Ko.equals(((a)paramObject).Ko);
+    return this.Me.equals(((a)paramObject).Me);
   }
   
   public final int hashCode()
   {
-    return this.Ko.hashCode();
+    return this.Me.hashCode();
   }
 }
 

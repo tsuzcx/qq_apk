@@ -13,9 +13,9 @@ public abstract interface e
 {
   public abstract boolean a(d paramd);
   
-  public abstract boolean as();
+  public abstract boolean aI();
   
-  public abstract Bundle av();
+  public abstract Bundle aL();
   
   public abstract boolean b(d paramd);
   
@@ -59,7 +59,7 @@ public abstract interface e
       case 2: 
         paramParcel1.enforceInterface("android.support.customtabs.ICustomTabsService");
         paramParcel1.readLong();
-        bool = as();
+        bool = aI();
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -101,7 +101,7 @@ public abstract interface e
         if (paramParcel1.readInt() != 0) {
           Bundle.CREATOR.createFromParcel(paramParcel1);
         }
-        paramParcel1 = av();
+        paramParcel1 = aL();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {

@@ -1,83 +1,83 @@
 package com.tencent.mm.plugin.wallet.pay.a.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.f;
 import com.tencent.mm.network.e;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.v;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Map;
 import org.json.JSONObject;
 
 public class b
   extends g
 {
-  private boolean Bim;
-  private boolean Bin;
+  private boolean CIA;
+  private boolean CIB;
   
-  public b(u paramu, Orders paramOrders)
+  public b(v paramv, Orders paramOrders)
   {
-    super(paramu, paramOrders);
+    super(paramv, paramOrders);
     AppMethodBeat.i(69284);
-    this.Bim = false;
-    epx();
+    this.CIA = false;
+    eDx();
     AppMethodBeat.o(69284);
   }
   
-  private void epx()
+  private void eDx()
   {
     AppMethodBeat.i(69285);
-    this.Bim = false;
-    s.epp();
-    if ((s.epq().BAI != null) && (this.Bio.wfX != null))
+    this.CIA = false;
+    s.eDp();
+    if ((s.eDq().Dba != null) && (this.CIC.xnF != null))
     {
-      String str = this.Bio.cZz;
-      s.epp();
-      if (str.equals(s.epq().BAI.field_bankcardType))
+      String str = this.CIC.dkR;
+      s.eDp();
+      if (str.equals(s.eDq().Dba.field_bankcardType))
       {
-        if ((this.Bio.wfX.dqL != 31) && (this.Bio.wfX.dqL != 32) && (this.Bio.wfX.dqL != 33) && (this.Bio.wfX.dqL != 42) && (this.Bio.wfX.dqL != 37) && (this.Bio.wfX.dqL != 56)) {
+        if ((this.CIC.xnF.dCC != 31) && (this.CIC.xnF.dCC != 32) && (this.CIC.xnF.dCC != 33) && (this.CIC.xnF.dCC != 42) && (this.CIC.xnF.dCC != 37) && (this.CIC.xnF.dCC != 56)) {
           break label193;
         }
-        this.Bim = true;
+        this.CIA = true;
       }
     }
     for (;;)
     {
-      ac.i("MicroMsg.NetSceneTenpayPayVertify", "isLqtSns: %s, isLqtTs: %s", new Object[] { Boolean.valueOf(this.Bim), Boolean.valueOf(this.Bin) });
+      ad.i("MicroMsg.NetSceneTenpayPayVertify", "isLqtSns: %s, isLqtTs: %s", new Object[] { Boolean.valueOf(this.CIA), Boolean.valueOf(this.CIB) });
       AppMethodBeat.o(69285);
       return;
       label193:
-      this.Bin = true;
+      this.CIB = true;
     }
   }
   
-  protected void aP(Map<String, String> paramMap)
+  protected void aS(Map<String, String> paramMap)
   {
     AppMethodBeat.i(69286);
-    epx();
-    if ((this.Bim) || (this.Bin)) {
-      paramMap.put("busi_scene", this.Bio.cZz);
+    eDx();
+    if ((this.CIA) || (this.CIB)) {
+      paramMap.put("busi_scene", this.CIC.dkR);
     }
     AppMethodBeat.o(69286);
   }
   
-  public int doScene(e parame, com.tencent.mm.ak.g paramg)
+  public int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(69289);
-    if (this.Bim) {
-      h.wUl.idkeyStat(663L, 26L, 1L, false);
+    if (this.CIA) {
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(663L, 26L, 1L, false);
     }
     for (;;)
     {
-      int i = super.doScene(parame, paramg);
+      int i = super.doScene(parame, paramf);
       AppMethodBeat.o(69289);
       return i;
-      if (this.Bin) {
-        h.wUl.idkeyStat(663L, 22L, 1L, false);
+      if (this.CIB) {
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(663L, 22L, 1L, false);
       }
     }
   }
@@ -85,13 +85,13 @@ public class b
   public int getFuncId()
   {
     AppMethodBeat.i(69287);
-    epx();
-    if (this.Bim)
+    eDx();
+    if (this.CIA)
     {
       AppMethodBeat.o(69287);
       return 1281;
     }
-    if (this.Bin)
+    if (this.CIB)
     {
       AppMethodBeat.o(69287);
       return 1305;
@@ -108,13 +108,13 @@ public class b
   public String getUri()
   {
     AppMethodBeat.i(69288);
-    epx();
-    if (this.Bim)
+    eDx();
+    if (this.CIA)
     {
       AppMethodBeat.o(69288);
       return "/cgi-bin/mmpay-bin/tenpay/snslqtpaybindverify";
     }
-    if (this.Bin)
+    if (this.CIB)
     {
       AppMethodBeat.o(69288);
       return "/cgi-bin/mmpay-bin/tenpay/lqtpaybindverify";
@@ -129,14 +129,14 @@ public class b
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
     if (paramInt != 0)
     {
-      if (this.Bim)
+      if (this.CIA)
       {
-        h.wUl.idkeyStat(663L, 27L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(663L, 27L, 1L, false);
         AppMethodBeat.o(69290);
         return;
       }
-      if (this.Bin) {
-        h.wUl.idkeyStat(663L, 23L, 1L, false);
+      if (this.CIB) {
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(663L, 23L, 1L, false);
       }
     }
     AppMethodBeat.o(69290);

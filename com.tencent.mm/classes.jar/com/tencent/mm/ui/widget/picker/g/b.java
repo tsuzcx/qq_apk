@@ -9,73 +9,73 @@ import java.util.List;
 
 public final class b<T>
 {
-  WheelView.b JjZ;
-  d JkO;
-  WheelView JkS;
-  public WheelView JkT;
-  private int irK;
-  float isJ;
-  boolean isl;
-  public List<T> itc;
-  public boolean itd = true;
+  WheelView.b Lbw;
+  d Lcl;
+  WheelView Lcp;
+  public WheelView Lcq;
+  private int iKN;
+  float iLM;
+  boolean iLo;
+  public List<T> iMf;
+  public boolean iMg = true;
   
   @Deprecated
-  private void aMU()
+  private void aQf()
   {
-    AppMethodBeat.i(199851);
-    this.JkT.setDividerColor(this.irK);
-    AppMethodBeat.o(199851);
+    AppMethodBeat.i(192801);
+    this.Lcq.setDividerColor(this.iKN);
+    AppMethodBeat.o(192801);
   }
   
-  private void qw(int paramInt)
+  private void qW(int paramInt)
   {
-    AppMethodBeat.i(199854);
-    if (this.itc != null) {
-      this.JkT.setCurrentItem(paramInt);
+    AppMethodBeat.i(192804);
+    if (this.iMf != null) {
+      this.Lcq.setCurrentItem(paramInt);
     }
-    AppMethodBeat.o(199854);
+    AppMethodBeat.o(192804);
   }
   
-  public final int[] aMV()
+  public final int[] aQg()
   {
-    AppMethodBeat.i(199852);
+    AppMethodBeat.i(192802);
     int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.JkT.getCurrentItem();
-    AppMethodBeat.o(199852);
+    arrayOfInt[0] = this.Lcq.getCurrentItem();
+    AppMethodBeat.o(192802);
     return arrayOfInt;
   }
   
-  public final void ds(int paramInt1, int paramInt2)
+  public final void du(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(199856);
-    this.JkT.setPadding(0, paramInt1, 0, paramInt2);
-    AppMethodBeat.o(199856);
+    AppMethodBeat.i(192806);
+    this.Lcq.setPadding(0, paramInt1, 0, paramInt2);
+    AppMethodBeat.o(192806);
   }
   
-  public final void qv(int paramInt)
+  public final void qV(int paramInt)
   {
-    AppMethodBeat.i(199853);
-    if (this.itd)
+    AppMethodBeat.i(192803);
+    if (this.iMg)
     {
-      qw(paramInt);
-      AppMethodBeat.o(199853);
+      qW(paramInt);
+      AppMethodBeat.o(192803);
       return;
     }
-    this.JkT.setCurrentItem(paramInt);
-    AppMethodBeat.o(199853);
+    this.Lcq.setCurrentItem(paramInt);
+    AppMethodBeat.o(192803);
   }
   
   public final void setDividerColor(int paramInt)
   {
-    AppMethodBeat.i(199855);
-    this.irK = paramInt;
-    aMU();
-    AppMethodBeat.o(199855);
+    AppMethodBeat.i(192805);
+    this.iKN = paramInt;
+    aQf();
+    AppMethodBeat.o(192805);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.g.b
  * JD-Core Version:    0.7.0.1
  */

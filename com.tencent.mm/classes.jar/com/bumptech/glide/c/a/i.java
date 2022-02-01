@@ -12,7 +12,7 @@ public final class i
     super(paramContentResolver, paramUri);
   }
   
-  public final Class<ParcelFileDescriptor> nU()
+  public final Class<ParcelFileDescriptor> om()
   {
     return ParcelFileDescriptor.class;
   }

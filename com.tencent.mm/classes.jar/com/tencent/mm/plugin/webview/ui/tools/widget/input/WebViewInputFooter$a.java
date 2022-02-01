@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.widget.input;
 
 public abstract interface WebViewInputFooter$a
 {
-  public abstract boolean RU(String paramString);
+  public abstract boolean Vr(String paramString);
 }
 
 

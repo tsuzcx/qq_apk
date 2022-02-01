@@ -7,33 +7,33 @@ import java.util.concurrent.ConcurrentMap;
 
 public final class i
 {
-  private static ConcurrentMap<WebView.c, f> KDi;
+  private static ConcurrentMap<WebView.c, f> MtI;
   
   static
   {
     AppMethodBeat.i(183531);
-    KDi = new ConcurrentHashMap(3);
+    MtI = new ConcurrentHashMap(3);
     AppMethodBeat.o(183531);
   }
   
   public static void a(WebView.c paramc, f paramf)
   {
     AppMethodBeat.i(183529);
-    KDi.put(paramc, paramf);
+    MtI.put(paramc, paramf);
     AppMethodBeat.o(183529);
   }
   
   public static f f(WebView.c paramc)
   {
     AppMethodBeat.i(183530);
-    paramc = (f)KDi.get(paramc);
+    paramc = (f)MtI.get(paramc);
     AppMethodBeat.o(183530);
     return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.internal.i
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,19 @@ import java.io.InputStream;
 public final class n
   extends l<InputStream>
 {
-  private static final UriMatcher aDJ;
+  private static final UriMatcher aFA;
   
   static
   {
     AppMethodBeat.i(76902);
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    aDJ = localUriMatcher;
+    aFA = localUriMatcher;
     localUriMatcher.addURI("com.android.contacts", "contacts/lookup/*/#", 1);
-    aDJ.addURI("com.android.contacts", "contacts/lookup/*", 1);
-    aDJ.addURI("com.android.contacts", "contacts/#/photo", 2);
-    aDJ.addURI("com.android.contacts", "contacts/#", 3);
-    aDJ.addURI("com.android.contacts", "contacts/#/display_photo", 4);
-    aDJ.addURI("com.android.contacts", "phone_lookup/*", 5);
+    aFA.addURI("com.android.contacts", "contacts/lookup/*", 1);
+    aFA.addURI("com.android.contacts", "contacts/#/photo", 2);
+    aFA.addURI("com.android.contacts", "contacts/#", 3);
+    aFA.addURI("com.android.contacts", "contacts/#/display_photo", 4);
+    aFA.addURI("com.android.contacts", "phone_lookup/*", 5);
     AppMethodBeat.o(76902);
   }
   
@@ -30,14 +30,14 @@ public final class n
     super(paramContentResolver, paramUri);
   }
   
-  public final Class<InputStream> nU()
+  public final Class<InputStream> om()
   {
     return InputStream.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.bumptech.glide.c.a.n
  * JD-Core Version:    0.7.0.1
  */

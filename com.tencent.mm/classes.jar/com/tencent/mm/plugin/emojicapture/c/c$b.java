@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer;
 import com.tencent.mm.plugin.emojicapture.ui.editor.a;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/IEditorItemView;", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/IEditorItemView;", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "plugin-emojicapture_release"})
 public abstract interface c$b
   extends a
 {

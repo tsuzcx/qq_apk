@@ -8,25 +8,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.a.i;
+import com.tencent.mm.ui.widget.a.j;
 
 public class g
-  extends i
+  extends j
   implements k, k.a
 {
   private View contentView;
-  private DialogInterface.OnCancelListener iPU;
-  private m ijS;
-  private boolean mA;
-  private DialogInterface.OnDismissListener mAn;
-  private DialogInterface.OnShowListener mAq;
-  private boolean mz;
+  private m iDj;
+  private DialogInterface.OnCancelListener jjc;
+  private DialogInterface.OnDismissListener naV;
+  private DialogInterface.OnShowListener ncc;
+  private boolean ov;
+  private boolean ow;
   
   public g(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(147741);
-    this.mz = true;
+    this.ov = true;
     try
     {
       onCreate(null);
@@ -42,31 +42,31 @@ public class g
   public final void a(m paramm)
   {
     AppMethodBeat.i(147742);
-    if (this.mAq != null) {
-      this.mAq.onShow(this);
+    if (this.ncc != null) {
+      this.ncc.onShow(this);
     }
-    this.ijS = paramm;
+    this.iDj = paramm;
     AppMethodBeat.o(147742);
   }
   
-  public final boolean aLl()
+  public final boolean aOv()
   {
     return false;
   }
   
-  public final boolean aLm()
+  public final boolean aOw()
   {
-    return this.mA;
+    return this.ow;
   }
   
   public void dismiss()
   {
     AppMethodBeat.i(147747);
-    if (this.ijS != null)
+    if (this.iDj != null)
     {
-      this.ijS.c(this);
-      if (this.mAn != null) {
-        this.mAn.onDismiss(this);
+      this.iDj.c(this);
+      if (this.naV != null) {
+        this.naV.onDismiss(this);
       }
     }
     AppMethodBeat.o(147747);
@@ -84,25 +84,25 @@ public class g
   
   public final boolean isCancelable()
   {
-    return this.mz;
+    return this.ov;
   }
   
   public final void onCancel()
   {
     AppMethodBeat.i(147746);
-    if (this.iPU != null) {
-      this.iPU.onCancel(this);
+    if (this.jjc != null) {
+      this.jjc.onCancel(this);
     }
     AppMethodBeat.o(147746);
   }
   
-  public final void pW(int paramInt) {}
+  public final void qy(int paramInt) {}
   
   public void setCancelable(boolean paramBoolean)
   {
     AppMethodBeat.i(147750);
     super.setCancelable(paramBoolean);
-    this.mz = paramBoolean;
+    this.ov = paramBoolean;
     AppMethodBeat.o(147750);
   }
   
@@ -110,7 +110,7 @@ public class g
   {
     AppMethodBeat.i(147749);
     super.setCanceledOnTouchOutside(paramBoolean);
-    this.mA = paramBoolean;
+    this.ow = paramBoolean;
     AppMethodBeat.o(147749);
   }
   
@@ -140,7 +140,7 @@ public class g
   {
     AppMethodBeat.i(147751);
     super.setOnCancelListener(paramOnCancelListener);
-    this.iPU = paramOnCancelListener;
+    this.jjc = paramOnCancelListener;
     AppMethodBeat.o(147751);
   }
   
@@ -148,7 +148,7 @@ public class g
   {
     AppMethodBeat.i(147748);
     super.setOnDismissListener(paramOnDismissListener);
-    this.mAn = paramOnDismissListener;
+    this.naV = paramOnDismissListener;
     AppMethodBeat.o(147748);
   }
   
@@ -156,7 +156,7 @@ public class g
   {
     AppMethodBeat.i(147745);
     super.setOnShowListener(paramOnShowListener);
-    this.mAq = paramOnShowListener;
+    this.ncc = paramOnShowListener;
     AppMethodBeat.o(147745);
   }
   
@@ -164,7 +164,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.g
  * JD-Core Version:    0.7.0.1
  */

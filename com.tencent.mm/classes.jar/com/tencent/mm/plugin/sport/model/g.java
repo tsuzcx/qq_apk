@@ -10,255 +10,264 @@ import android.hardware.SensorManager;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.g.a.oz;
+import com.tencent.mm.g.a.pi;
 import com.tencent.mm.plugin.sport.a.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.i;
 import org.json.JSONObject;
 
 public final class g
   implements SensorEventListener
 {
-  private static long zpb = 0L;
-  private static long zpc = 0L;
-  private static long zpd = 0L;
-  private static long zpe = 0L;
-  private static long zpf = 0L;
-  private static long zpg = 0L;
-  private static long zph = 0L;
-  private static long zpi = 0L;
+  private static long AGV = 0L;
+  private static long AGW = 0L;
+  private static long AGX = 0L;
+  private static long AGY = 0L;
+  private static long AGZ = 0L;
+  private static long AHa = 0L;
+  private static long AHb = 0L;
+  private static long AHc = 0L;
+  private boolean AGN;
+  private c<pi> AHd;
   private Sensor sensor;
   private SensorManager sensorManager;
-  private boolean zoT;
-  private c<oz> zpj;
   
   public g()
   {
     AppMethodBeat.i(149309);
-    this.zoT = false;
-    this.zpj = new c() {};
-    if (d.kZ(28))
+    this.AGN = false;
+    this.AHd = new c() {};
+    if (d.ly(28))
     {
-      ac.i("MicroMsg.Sport.PushSportStepDetector", "register push keep alive event");
-      this.zpj.alive();
+      ad.i("MicroMsg.Sport.PushSportStepDetector", "register push keep alive event");
+      this.AHd.alive();
     }
     boolean bool;
-    if ((l.gn(ai.getContext())) && (l.dUn()))
+    if ((l.gq(aj.getContext())) && (l.egB()))
     {
       bool = true;
-      this.zoT = bool;
-      ac.i("MicroMsg.Sport.PushSportStepDetector", "isSupportDeviceStep %b", new Object[] { Boolean.valueOf(this.zoT) });
-      if (this.zoT) {
-        dTV();
+      this.AGN = bool;
+      ad.i("MicroMsg.Sport.PushSportStepDetector", "isSupportDeviceStep %b", new Object[] { Boolean.valueOf(this.AGN) });
+      if (this.AGN) {
+        egj();
       }
-      zpi = 0L;
+      AHc = 0L;
     }
     for (;;)
     {
       try
       {
-        if (i.eA(a.zoD))
-        {
-          localObject = new j(a.zoD);
-          zpe = ((j)localObject).getLong(202, 0L) * 10000L;
-          zpc = ((j)localObject).getLong(201, 0L);
-          zpb = ((j)localObject).getLong(203, 0L);
-          zpf = ((j)localObject).getLong(204, 0L);
-          zph = ((j)localObject).getLong(209, 0L);
-          zpd = zpc;
-          zpg = zpf;
-          k.awk(dTY());
-          i.deleteFile(a.zoD);
-          ac.i("MicroMsg.Sport.PushSportStepDetector", "Init PushSportStepDetector currentTodayStep: %d saveTodayBeginTime: %s", new Object[] { Long.valueOf(zpc), l.qn(zpe) });
-          AppMethodBeat.o(149309);
-          return;
-          bool = false;
-          break;
+        if (!i.fv(a.AGx)) {
+          continue;
         }
-        Object localObject = k.dUh();
-        ac.i("MicroMsg.Sport.PushSportStepDetector", "Read Info From Push Config %s", new Object[] { localObject });
-        if (!bs.isNullOrNil((String)localObject))
-        {
-          localObject = l.awl((String)localObject);
-          zpe = localObject[0];
-          zpf = localObject[1];
-          zpg = localObject[2];
-          zph = localObject[3];
-          zpb = localObject[4];
-          zpc = localObject[5];
-          zpd = localObject[6];
-        }
-        else
-        {
-          long[] arrayOfLong = new long[7];
-        }
+        localObject = new j(a.AGx);
+        AGY = ((j)localObject).getLong(202, 0L) * 10000L;
+        AGW = ((j)localObject).getLong(201, 0L);
+        AGV = ((j)localObject).getLong(203, 0L);
+        AGZ = ((j)localObject).getLong(204, 0L);
+        AHb = ((j)localObject).getLong(209, 0L);
+        AGX = AGW;
+        AHa = AGZ;
+        k.aBq(egm());
+        i.deleteFile(a.AGx);
+        ad.i("MicroMsg.Sport.PushSportStepDetector", "Init PushSportStepDetector currentTodayStep: %d saveTodayBeginTime: %s", new Object[] { Long.valueOf(AGW), l.sm(AGY) });
       }
       catch (Exception localException)
       {
-        zpe = 0L;
-        zpf = 0L;
-        zpg = 0L;
-        zph = 0L;
-        zpb = 0L;
-        zpc = 0L;
-        zpd = 0L;
-        ac.printErrStackTrace("MicroMsg.Sport.PushSportStepDetector", localException, "PushSportStepDetector constructor", new Object[0]);
-        AppMethodBeat.o(149309);
-        return;
+        Object localObject;
+        AGY = 0L;
+        AGZ = 0L;
+        AHa = 0L;
+        AHb = 0L;
+        AGV = 0L;
+        AGW = 0L;
+        AGX = 0L;
+        ad.printErrStackTrace("MicroMsg.Sport.PushSportStepDetector", localException, "PushSportStepDetector constructor", new Object[0]);
+        continue;
+        long[] arrayOfLong = new long[7];
+        continue;
       }
+      if (AGY != l.egz())
+      {
+        ad.i("MicroMsg.Sport.PushSportStepDetector", "invalid begin time %s", new Object[] { l.sm(AGY) });
+        AGY = 0L;
+        AGZ = 0L;
+        AHa = 0L;
+        AHb = 0L;
+        AGV = 0L;
+        AGW = 0L;
+        AGX = 0L;
+      }
+      AppMethodBeat.o(149309);
+      return;
+      bool = false;
+      break;
+      localObject = k.egv();
+      ad.i("MicroMsg.Sport.PushSportStepDetector", "Read Info From Push Config %s", new Object[] { localObject });
+      if (bt.isNullOrNil((String)localObject)) {
+        continue;
+      }
+      localObject = l.aBr((String)localObject);
+      AGY = localObject[0];
+      AGZ = localObject[1];
+      AHa = localObject[2];
+      AHb = localObject[3];
+      AGV = localObject[4];
+      AGW = localObject[5];
+      AGX = localObject[6];
     }
   }
   
-  private void dTU()
+  private void egi()
   {
     AppMethodBeat.i(149315);
     try
     {
       if (this.sensorManager == null) {
-        this.sensorManager = ((SensorManager)ai.getContext().getSystemService("sensor"));
+        this.sensorManager = ((SensorManager)aj.getContext().getSystemService("sensor"));
       }
       this.sensorManager.unregisterListener(this);
-      ac.i("MicroMsg.Sport.PushSportStepDetector", "unregisterDetector() success!");
+      ad.i("MicroMsg.Sport.PushSportStepDetector", "unregisterDetector() success!");
       AppMethodBeat.o(149315);
       return;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.Sport.PushSportStepDetector", "Exception in unregisterDetector %s", new Object[] { localException.getMessage() });
+      ad.e("MicroMsg.Sport.PushSportStepDetector", "Exception in unregisterDetector %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(149315);
     }
   }
   
-  private boolean dTV()
+  private boolean egj()
   {
     AppMethodBeat.i(149314);
     try
     {
       if (this.sensorManager == null) {
-        this.sensorManager = ((SensorManager)ai.getContext().getSystemService("sensor"));
+        this.sensorManager = ((SensorManager)aj.getContext().getSystemService("sensor"));
       }
-      if ((this.sensorManager != null) && (ai.getContext().getPackageManager().hasSystemFeature("android.hardware.sensor.stepcounter")))
+      if ((this.sensorManager != null) && (aj.getContext().getPackageManager().hasSystemFeature("android.hardware.sensor.stepcounter")))
       {
         this.sensor = this.sensorManager.getDefaultSensor(19);
         if (this.sensor == null)
         {
-          ac.i("MicroMsg.Sport.PushSportStepDetector", " TYPE_STEP_COUNTER sensor null");
+          ad.i("MicroMsg.Sport.PushSportStepDetector", " TYPE_STEP_COUNTER sensor null");
           AppMethodBeat.o(149314);
           return false;
         }
-        JSONObject localJSONObject = h.dUc();
+        JSONObject localJSONObject = h.egq();
         boolean bool = this.sensorManager.registerListener(this, this.sensor, localJSONObject.optInt("stepCounterRateUs", 60000));
         if (!bool) {
-          dTU();
+          egi();
         }
-        ac.i("MicroMsg.Sport.PushSportStepDetector", "registerDetector() ok.(result : %s)", new Object[] { Boolean.valueOf(bool) });
+        ad.i("MicroMsg.Sport.PushSportStepDetector", "registerDetector() ok.(result : %s)", new Object[] { Boolean.valueOf(bool) });
         AppMethodBeat.o(149314);
         return bool;
       }
-      ac.i("MicroMsg.Sport.PushSportStepDetector", "no step sensor");
+      ad.i("MicroMsg.Sport.PushSportStepDetector", "no step sensor");
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ac.e("MicroMsg.Sport.PushSportStepDetector", "Exception in registerDetector %s", new Object[] { localException.getMessage() });
+        ad.e("MicroMsg.Sport.PushSportStepDetector", "Exception in registerDetector %s", new Object[] { localException.getMessage() });
       }
     }
     AppMethodBeat.o(149314);
     return false;
   }
   
-  public static long dTW()
+  public static long egk()
   {
-    return zpc;
+    return AGW;
   }
   
-  public static long dTX()
+  public static long egl()
   {
-    return zpe;
+    return AGY;
   }
   
-  private static String dTY()
+  private static String egm()
   {
     AppMethodBeat.i(149312);
-    String str = String.format("%d,%d,%d,%d,%d,%d,%d", new Object[] { Long.valueOf(zpe), Long.valueOf(zpf), Long.valueOf(zpg), Long.valueOf(zph), Long.valueOf(zpb), Long.valueOf(zpc), Long.valueOf(zpd) });
+    String str = String.format("%d,%d,%d,%d,%d,%d,%d", new Object[] { Long.valueOf(AGY), Long.valueOf(AGZ), Long.valueOf(AHa), Long.valueOf(AHb), Long.valueOf(AGV), Long.valueOf(AGW), Long.valueOf(AGX) });
     AppMethodBeat.o(149312);
     return str;
   }
   
-  private static void dTZ()
+  private static void egn()
   {
     AppMethodBeat.i(149313);
-    ac.i("MicroMsg.Sport.PushSportStepDetector", "notifyUploadStep");
+    ad.i("MicroMsg.Sport.PushSportStepDetector", "notifyUploadStep");
     Intent localIntent = new Intent();
-    localIntent.setPackage(ai.getContext().getPackageName());
+    localIntent.setPackage(aj.getContext().getPackageName());
     localIntent.setAction("com.tencent.mm.plugin.sport.uploadstep");
-    ai.getContext().sendBroadcast(localIntent);
+    aj.getContext().sendBroadcast(localIntent);
     AppMethodBeat.o(149313);
   }
   
   public final void b(long paramLong1, long paramLong2, String paramString)
   {
     AppMethodBeat.i(149311);
-    JSONObject localJSONObject = h.dUc();
+    JSONObject localJSONObject = h.egq();
     if (localJSONObject.optInt("deviceStepSwitch") != 1)
     {
-      dTU();
-      ac.i("MicroMsg.Sport.PushSportStepDetector", "device step switch off");
+      egi();
+      ad.i("MicroMsg.Sport.PushSportStepDetector", "device step switch off");
       AppMethodBeat.o(149311);
       return;
     }
     int j = localJSONObject.optInt("stepCounterMaxStep5m", 3000);
-    long l1 = l.dUl();
+    long l1 = l.egz();
     if (paramLong1 < 0L)
     {
       AppMethodBeat.o(149311);
       return;
     }
     long l4 = System.currentTimeMillis();
-    if (zpe != l1)
+    if (AGY != l1)
     {
-      ac.i("MicroMsg.Sport.PushSportStepDetector", "new day beginOfToday: %s saveTodayBeginTime: %s, ", new Object[] { l.qn(l1), l.qn(zpe) });
-      zpb = paramLong1;
-      zpc = 0L;
-      zpd = 0L;
-      zpe = l1;
-      zpf = l4;
-      zpg = l4;
-      zph = paramLong2;
-      k.awk(dTY());
+      ad.i("MicroMsg.Sport.PushSportStepDetector", "new day beginOfToday: %s saveTodayBeginTime: %s, ", new Object[] { l.sm(l1), l.sm(AGY) });
+      AGV = paramLong1;
+      AGW = 0L;
+      AGX = 0L;
+      AGY = l1;
+      AGZ = l4;
+      AHa = l4;
+      AHb = paramLong2;
+      k.aBq(egm());
       AppMethodBeat.o(149311);
       return;
     }
     long l2 = System.currentTimeMillis() - SystemClock.elapsedRealtime();
     l1 = 0L;
-    long l3 = (l4 - zpg) / 300000L;
+    long l3 = (l4 - AHa) / 300000L;
     int i;
     long l5;
     label254:
     long l6;
     boolean bool;
     Object localObject1;
-    if ((l4 - zpg) % 300000L > 0L)
+    if ((l4 - AHa) % 300000L > 0L)
     {
       i = 1;
       l5 = l3 + i;
-      l3 = (paramLong2 / 1000000L - zph / 1000000L) / 300000L;
-      if ((paramLong2 / 1000000L - zph / 1000000L) % 300000L <= 0L) {
+      l3 = (paramLong2 / 1000000L - AHb / 1000000L) / 300000L;
+      if ((paramLong2 / 1000000L - AHb / 1000000L) % 300000L <= 0L) {
         break label635;
       }
       i = 1;
       l6 = l3 + i;
       bool = false;
       localObject1 = "";
-      if (l2 <= zpf) {
+      if (l2 <= AGZ) {
         break label641;
       }
-      ac.i("MicroMsg.Sport.PushSportStepDetector", "reboot %d %s lastSaveStepTime %d", new Object[] { Long.valueOf(l2), l.qn(l2), Long.valueOf(zpf) });
-      l3 = paramLong1 - zpd;
+      ad.i("MicroMsg.Sport.PushSportStepDetector", "reboot %d %s lastSaveStepTime %d", new Object[] { Long.valueOf(l2), l.sm(l2), Long.valueOf(AGZ) });
+      l3 = paramLong1 - AGX;
       if ((l3 <= 0L) || ((l3 >= j * l6) && (l3 >= j * l5))) {
         break label770;
       }
@@ -288,23 +297,23 @@ public final class g
       bool = true;
       for (;;)
       {
-        ac.i("MicroMsg.Sport.PushSportStepDetector", "%s increase step %s %d %b %d todayStep:%d %d", new Object[] { paramString, localObject1, Long.valueOf(l1), Boolean.valueOf(bool), Long.valueOf(zpi), Long.valueOf(zpc), Long.valueOf(zpd) });
-        zpc += l1;
-        zpi += l1;
-        if ((l4 - zpf > localJSONObject.optInt("stepCounterSaveInterval", 60000)) || (paramLong1 - zpd > localJSONObject.optInt("stepCounterSaveStep")) || (bool))
+        ad.i("MicroMsg.Sport.PushSportStepDetector", "%s increase step %s %d %b %d todayStep:%d %d", new Object[] { paramString, localObject1, Long.valueOf(l1), Boolean.valueOf(bool), Long.valueOf(AHc), Long.valueOf(AGW), Long.valueOf(AGX) });
+        AGW += l1;
+        AHc += l1;
+        if ((l4 - AGZ > localJSONObject.optInt("stepCounterSaveInterval", 60000)) || (paramLong1 - AGX > localJSONObject.optInt("stepCounterSaveStep")) || (bool))
         {
-          zpf = l4;
-          zpd = paramLong1;
-          zpb = paramLong1;
-          zpg = l4;
-          zph = paramLong2;
-          paramString = dTY();
-          ac.i("MicroMsg.Sport.PushSportStepDetector", "save to [file] detailInfo %s", new Object[] { paramString });
-          k.awk(paramString);
-          if (zpi >= 500L)
+          AGZ = l4;
+          AGX = paramLong1;
+          AGV = paramLong1;
+          AHa = l4;
+          AHb = paramLong2;
+          paramString = egm();
+          ad.i("MicroMsg.Sport.PushSportStepDetector", "save to [file] detailInfo %s", new Object[] { paramString });
+          k.aBq(paramString);
+          if (AHc >= 500L)
           {
-            dTZ();
-            zpi = 0L;
+            egn();
+            AHc = 0L;
           }
           AppMethodBeat.o(149311);
           return;
@@ -313,23 +322,23 @@ public final class g
           label635:
           i = 0;
           break label254;
-          if (paramLong1 < zpb)
+          if (paramLong1 < AGV)
           {
-            ac.i("MicroMsg.Sport.PushSportStepDetector", "invalid currentSensorStep %d preSensorStep %d lastSaveSensorStep %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(zpb), Long.valueOf(zpd) });
-            zpb = paramLong1;
-            zpd = paramLong1;
+            ad.i("MicroMsg.Sport.PushSportStepDetector", "invalid currentSensorStep %d preSensorStep %d lastSaveSensorStep %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(AGV), Long.valueOf(AGX) });
+            AGV = paramLong1;
+            AGX = paramLong1;
             bool = true;
           }
-          if ((paramLong1 - zpb >= l6 * j) && (paramLong1 - zpb >= l5 * j)) {
+          if ((paramLong1 - AGV >= l6 * j) && (paramLong1 - AGV >= l5 * j)) {
             break label762;
           }
-          l1 = paramLong1 - zpb;
+          l1 = paramLong1 - AGV;
           localObject1 = "normalIncrease Valid Step";
           continue;
         }
-        zpb = paramLong1;
-        zpg = l4;
-        zph = paramLong2;
+        AGV = paramLong1;
+        AHa = l4;
+        AHb = paramLong2;
         AppMethodBeat.o(149311);
         return;
         label762:
@@ -338,22 +347,22 @@ public final class g
     }
   }
   
-  public final boolean dTT()
+  public final boolean egh()
   {
     AppMethodBeat.i(149316);
-    if ((l.gn(ai.getContext())) && (l.dUn())) {}
+    if ((l.gq(aj.getContext())) && (l.egB())) {}
     for (boolean bool = true;; bool = false)
     {
-      this.zoT = bool;
-      if (!this.zoT) {
+      this.AGN = bool;
+      if (!this.AGN) {
         break;
       }
-      dTU();
-      bool = dTV();
+      egi();
+      bool = egj();
       AppMethodBeat.o(149316);
       return bool;
     }
-    dTU();
+    egi();
     AppMethodBeat.o(149316);
     return false;
   }
@@ -364,16 +373,16 @@ public final class g
   {
     boolean bool2 = false;
     AppMethodBeat.i(149310);
-    ac.v("MicroMsg.Sport.PushSportStepDetector", "onSensorChange %d %d", new Object[] { Long.valueOf(paramSensorEvent.values[0]), Long.valueOf(paramSensorEvent.timestamp) });
-    if ((ai.eVi()) && (!SportForegroundService.dUk()))
+    ad.v("MicroMsg.Sport.PushSportStepDetector", "onSensorChange %d %d", new Object[] { Long.valueOf(paramSensorEvent.values[0]), Long.valueOf(paramSensorEvent.timestamp) });
+    if ((aj.fkO()) && (!SportForegroundService.egy()))
     {
-      ac.v("MicroMsg.Sport.PushSportStepDetector", "SportForegroundService Not Running");
+      ad.v("MicroMsg.Sport.PushSportStepDetector", "SportForegroundService Not Running");
       AppMethodBeat.o(149310);
       return;
     }
     if ((paramSensorEvent != null) && (paramSensorEvent.values != null) && (paramSensorEvent.values.length > 0))
     {
-      ac.i("MicroMsg.Sport.PushSportStepDetector", "Step change %f, accuracy %s, %s", new Object[] { Float.valueOf(paramSensorEvent.values[0]), Integer.valueOf(paramSensorEvent.accuracy), Long.valueOf(paramSensorEvent.timestamp) });
+      ad.i("MicroMsg.Sport.PushSportStepDetector", "Step change %f, accuracy %s, %s", new Object[] { Float.valueOf(paramSensorEvent.values[0]), Integer.valueOf(paramSensorEvent.accuracy), Long.valueOf(paramSensorEvent.timestamp) });
       b(paramSensorEvent.values[0], paramSensorEvent.timestamp, "PUSH");
       AppMethodBeat.o(149310);
       return;
@@ -386,19 +395,19 @@ public final class g
         if (paramSensorEvent != null) {
           bool2 = true;
         }
-        ac.e("MicroMsg.Sport.PushSportStepDetector", "[Willen][Step] SensorEvent Exception. event==null:%s , event.values==null:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        ad.e("MicroMsg.Sport.PushSportStepDetector", "[Willen][Step] SensorEvent Exception. event==null:%s , event.values==null:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
         AppMethodBeat.o(149310);
         return;
       }
     }
-    ac.e("MicroMsg.Sport.PushSportStepDetector", "[Willen][Step] SensorEvent Exception accuracy: %d, timestamp: %s", new Object[] { Integer.valueOf(paramSensorEvent.accuracy), Long.valueOf(paramSensorEvent.timestamp) });
+    ad.e("MicroMsg.Sport.PushSportStepDetector", "[Willen][Step] SensorEvent Exception accuracy: %d, timestamp: %s", new Object[] { Integer.valueOf(paramSensorEvent.accuracy), Long.valueOf(paramSensorEvent.timestamp) });
     paramSensorEvent = paramSensorEvent.values;
     int k = paramSensorEvent.length;
     int j = 0;
     int i = 0;
     while (j < k)
     {
-      ac.e("MicroMsg.Sport.PushSportStepDetector", "[Willen][Step] SensorEvent Exception event[%d]: %f", new Object[] { Integer.valueOf(i), Float.valueOf(paramSensorEvent[j]) });
+      ad.e("MicroMsg.Sport.PushSportStepDetector", "[Willen][Step] SensorEvent Exception event[%d]: %f", new Object[] { Integer.valueOf(i), Float.valueOf(paramSensorEvent[j]) });
       j += 1;
       i += 1;
     }
@@ -407,7 +416,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.g
  * JD-Core Version:    0.7.0.1
  */

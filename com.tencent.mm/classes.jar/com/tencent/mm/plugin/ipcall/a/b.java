@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.ipcall.a;
 
 public final class b
 {
-  public String tTf;
-  public String tTg;
-  public String tTh;
+  public String uVS;
+  public String uVT;
+  public String uVU;
 }
 
 

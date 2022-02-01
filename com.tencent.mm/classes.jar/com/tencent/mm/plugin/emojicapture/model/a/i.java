@@ -2,51 +2,51 @@ package com.tencent.mm.plugin.emojicapture.model.a;
 
 import android.support.v7.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bpl;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.bty;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.l;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendData;", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerListDiffCallback;", "callback", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;", "adapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "(Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;Landroid/support/v7/widget/RecyclerView$Adapter;)V", "TAG", "", "getCallback", "()Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;", "preferIndex", "", "recommendList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/sticker/LensItem;", "selectedId", "updateSelection", "", "onInsert", "", "start", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "setPreferIndex", "index", "setSelection", "updateData", "lensList", "", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendData;", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerListDiffCallback;", "callback", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;", "adapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "(Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;Landroid/support/v7/widget/RecyclerView$Adapter;)V", "TAG", "", "getCallback", "()Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;", "preferIndex", "", "recommendList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/sticker/LensItem;", "selectedId", "updateSelection", "", "onInsert", "", "start", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "setPreferIndex", "index", "setSelection", "updateData", "lensList", "", "plugin-emojicapture_release"})
 public final class i
   implements c
 {
   private final String TAG;
-  private final RecyclerView.a<?> fUp;
-  private final LinkedList<com.tencent.mm.sticker.c> pnO;
-  private String poq;
-  public int por;
-  private boolean pot;
-  private final h pou;
+  private final RecyclerView.a<?> gnR;
+  private String pRQ;
+  public int pRR;
+  private boolean pRS;
+  private final h pRT;
+  private final LinkedList<com.tencent.mm.sticker.c> pRo;
   
   public i(h paramh, RecyclerView.a<?> parama)
   {
     AppMethodBeat.i(258);
-    this.pou = paramh;
-    this.fUp = parama;
+    this.pRT = paramh;
+    this.gnR = parama;
     this.TAG = "MicroMsg.StickerRecommendData";
-    this.pnO = new LinkedList();
-    this.por = 1;
-    this.pot = true;
+    this.pRo = new LinkedList();
+    this.pRR = 1;
+    this.pRS = true;
     AppMethodBeat.o(258);
   }
   
-  public final void U(List<com.tencent.mm.sticker.c> paramList)
+  public final void V(List<com.tencent.mm.sticker.c> paramList)
   {
     int j = 0;
     AppMethodBeat.i(253);
-    k.h(paramList, "lensList");
-    ac.i(this.TAG, "updateData: " + paramList.size() + ", " + bs.eWi());
-    this.pnO.clear();
-    this.pnO.addAll((Collection)paramList);
-    this.pou.U((List)this.pnO);
+    p.h(paramList, "lensList");
+    ad.i(this.TAG, "updateData: " + paramList.size() + ", " + bt.flS());
+    this.pRo.clear();
+    this.pRo.addAll((Collection)paramList);
+    this.pRT.V((List)this.pRo);
     int i;
-    if (this.pot)
+    if (this.pRS)
     {
       if (((Collection)paramList).isEmpty()) {
         break label147;
@@ -54,11 +54,11 @@ public final class i
       i = 1;
       if (i != 0)
       {
-        if (this.poq != null) {
+        if (this.pRQ != null) {
           break label152;
         }
-        j = this.por;
-        this.pot = false;
+        j = this.pRR;
+        this.pRS = false;
       }
     }
     label147:
@@ -67,7 +67,7 @@ public final class i
     label219:
     for (;;)
     {
-      this.pou.BI(j);
+      this.pRT.Cq(j);
       AppMethodBeat.o(253);
       return;
       i = 0;
@@ -75,14 +75,14 @@ public final class i
       paramList = paramList.iterator();
       i = 0;
       if (paramList.hasNext()) {
-        if (!k.g(((com.tencent.mm.sticker.c)paramList.next()).GzM.Ewy, this.poq)) {}
+        if (!p.i(((com.tencent.mm.sticker.c)paramList.next()).IlG.Geb, this.pRQ)) {}
       }
       for (;;)
       {
         if (i <= 0) {
           break label219;
         }
-        this.pot = false;
+        this.pRS = false;
         j = i;
         break;
         i += 1;
@@ -92,38 +92,38 @@ public final class i
     }
   }
   
-  public final void fm(int paramInt1, int paramInt2)
+  public final void fq(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(254);
-    this.fUp.aq(paramInt1, paramInt2);
+    this.gnR.ar(paramInt1, paramInt2);
     AppMethodBeat.o(254);
   }
   
-  public final void fn(int paramInt1, int paramInt2)
+  public final void fr(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(255);
-    this.fUp.ar(paramInt1, paramInt2);
+    this.gnR.as(paramInt1, paramInt2);
     AppMethodBeat.o(255);
   }
   
-  public final void fo(int paramInt1, int paramInt2)
+  public final void fs(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(256);
-    this.fUp.ap(paramInt1, paramInt2);
+    this.gnR.aq(paramInt1, paramInt2);
     AppMethodBeat.o(256);
   }
   
-  public final void fp(int paramInt1, int paramInt2)
+  public final void ft(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(257);
-    this.fUp.ao(paramInt1, paramInt2);
+    this.gnR.ap(paramInt1, paramInt2);
     AppMethodBeat.o(257);
   }
   
   public final void setSelection(String paramString)
   {
-    this.poq = paramString;
-    this.pot = true;
+    this.pRQ = paramString;
+    this.pRS = true;
   }
 }
 

@@ -9,11 +9,11 @@ import org.json.JSONObject;
 public final class i
   extends m
 {
-  public String BsC;
-  public String BsD;
-  public String BsE;
-  public String BsF;
-  public String BsG;
+  public String CSR;
+  public String CSS;
+  public String CST;
+  public String CSU;
+  public String CSV;
   
   public i(String paramString)
   {
@@ -21,7 +21,7 @@ public final class i
     HashMap localHashMap = new HashMap();
     localHashMap.put("channel", "1");
     setRequestData(localHashMap);
-    this.BsG = paramString;
+    this.CSV = paramString;
     AppMethodBeat.o(70154);
   }
   
@@ -45,10 +45,10 @@ public final class i
     AppMethodBeat.i(70155);
     if ((paramInt == 0) && (paramJSONObject != null))
     {
-      this.BsC = paramJSONObject.optString("guide_flag");
-      this.BsD = paramJSONObject.optString("guide_wording");
-      this.BsE = paramJSONObject.optString("left_button_wording");
-      this.BsF = paramJSONObject.optString("right_button_wording");
+      this.CSR = paramJSONObject.optString("guide_flag");
+      this.CSS = paramJSONObject.optString("guide_wording");
+      this.CST = paramJSONObject.optString("left_button_wording");
+      this.CSU = paramJSONObject.optString("right_button_wording");
     }
     AppMethodBeat.o(70155);
   }

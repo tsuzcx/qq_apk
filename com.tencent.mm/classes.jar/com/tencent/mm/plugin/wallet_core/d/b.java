@@ -5,13 +5,13 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.wallet_core.c.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.c;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -27,147 +27,89 @@ import org.json.JSONObject;
 
 public final class b
 {
-  private static Map<String, String> BBw;
-  private static final String nWl;
+  private static Map<String, String> DbO;
+  private static final String ozF;
   
   static
   {
     AppMethodBeat.i(70590);
-    nWl = c.fzD();
-    BBw = null;
+    ozF = c.fQN();
+    DbO = null;
     AppMethodBeat.o(70590);
   }
   
-  public static boolean aY(LinkedList<String> paramLinkedList)
-  {
-    AppMethodBeat.i(70583);
-    long l = System.currentTimeMillis() / 1000L;
-    try
-    {
-      if (BBw == null) {
-        BBw = new HashMap();
-      }
-      SharedPreferences.Editor localEditor = ai.getContext().getSharedPreferences("bank_logo", 0).edit();
-      int j = paramLinkedList.size();
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = new JSONObject((String)paramLinkedList.get(i));
-        if (u.axL()) {}
-        for (String str = ((JSONObject)localObject).optString("bank_desc");; str = ((JSONObject)localObject).optString("bank_type"))
-        {
-          ((JSONObject)localObject).put("timestamp", l);
-          localObject = ((JSONObject)localObject).toString();
-          if ((bs.isNullOrNil(str)) || (bs.isNullOrNil((String)localObject))) {
-            break label165;
-          }
-          localEditor.putString(str, (String)localObject);
-          BBw.put(str, localObject);
-          i += 1;
-          break;
-        }
-      }
-      label165:
-      localEditor.commit();
-      ac.d("MicroMsg.WalletBankLogoStorage", "update BankLogo config file. success!");
-      AppMethodBeat.o(70583);
-      return true;
-    }
-    catch (Exception paramLinkedList)
-    {
-      ac.e("MicroMsg.WalletBankLogoStorage", "parse band logo error. %s", new Object[] { paramLinkedList.getMessage() });
-      ac.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramLinkedList, "", new Object[0]);
-      AppMethodBeat.o(70583);
-    }
-    return false;
-  }
-  
-  public static String apw(String paramString)
-  {
-    AppMethodBeat.i(70589);
-    if (bs.isNullOrNil(paramString))
-    {
-      ac.w("MicroMsg.WalletBankLogoStorage", "getStoragePath: but url is null");
-      AppMethodBeat.o(70589);
-      return null;
-    }
-    paramString = String.format("%s/%s", new Object[] { nWl, com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) });
-    AppMethodBeat.o(70589);
-    return paramString;
-  }
-  
-  public static boolean azv(String paramString)
+  public static boolean aEF(String paramString)
   {
     AppMethodBeat.i(70582);
     try
     {
-      if (BBw == null) {
-        BBw = new HashMap();
+      if (DbO == null) {
+        DbO = new HashMap();
       }
-      ac.d("MicroMsg.WalletBankLogoStorage", "bank logo:".concat(String.valueOf(paramString)));
-      SharedPreferences.Editor localEditor = ai.getContext().getSharedPreferences("bank_logo", 0).edit();
+      ad.d("MicroMsg.WalletBankLogoStorage", "bank logo:".concat(String.valueOf(paramString)));
+      SharedPreferences.Editor localEditor = aj.getContext().getSharedPreferences("bank_logo", 0).edit();
       JSONArray localJSONArray = new JSONObject(paramString).getJSONArray("bank_urls_list");
       int j = localJSONArray.length();
       int i = 0;
       if (i < j)
       {
         Object localObject = localJSONArray.getJSONObject(i);
-        if (u.axL()) {}
+        if (u.aAB()) {}
         for (paramString = ((JSONObject)localObject).optString("bank_desc");; paramString = ((JSONObject)localObject).optString("bank_type"))
         {
           localObject = ((JSONObject)localObject).toString();
-          if ((bs.isNullOrNil(paramString)) || (bs.isNullOrNil((String)localObject))) {
+          if ((bt.isNullOrNil(paramString)) || (bt.isNullOrNil((String)localObject))) {
             break label162;
           }
           localEditor.putString(paramString, (String)localObject);
-          BBw.put(paramString, localObject);
+          DbO.put(paramString, localObject);
           i += 1;
           break;
         }
       }
       label162:
       localEditor.commit();
-      ac.d("MicroMsg.WalletBankLogoStorage", "update BankLogo config file. success!");
+      ad.d("MicroMsg.WalletBankLogoStorage", "update BankLogo config file. success!");
       AppMethodBeat.o(70582);
       return true;
     }
     catch (Exception paramString)
     {
-      ac.e("MicroMsg.WalletBankLogoStorage", "parse band logo error. %s", new Object[] { paramString.getMessage() });
-      ac.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramString, "", new Object[0]);
+      ad.e("MicroMsg.WalletBankLogoStorage", "parse band logo error. %s", new Object[] { paramString.getMessage() });
+      ad.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramString, "", new Object[0]);
       AppMethodBeat.o(70582);
     }
     return false;
   }
   
-  public static com.tencent.mm.plugin.wallet_core.model.e azw(String paramString)
+  public static com.tencent.mm.plugin.wallet_core.model.e aEG(String paramString)
   {
     AppMethodBeat.i(70584);
-    if (BBw == null) {
-      efW();
+    if (DbO == null) {
+      esJ();
     }
-    if (!bs.isNullOrNil((String)BBw.get(paramString))) {}
+    if (!bt.isNullOrNil((String)DbO.get(paramString))) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(70584);
       return null;
     }
-    Object localObject = (String)BBw.get(paramString);
-    if (!bs.isNullOrNil((String)localObject))
+    Object localObject = (String)DbO.get(paramString);
+    if (!bt.isNullOrNil((String)localObject))
     {
       paramString = new com.tencent.mm.plugin.wallet_core.model.e();
       try
       {
         localObject = new JSONObject((String)localObject);
         long l = ((JSONObject)localObject).optLong("timestamp", 0L);
-        paramString.vkI = ((JSONObject)localObject).getString("logo2x_url");
-        paramString.BuP = ((JSONObject)localObject).getString("bg2x_url");
-        paramString.BuQ = ((JSONObject)localObject).getString("wl2x_url");
+        paramString.wqa = ((JSONObject)localObject).getString("logo2x_url");
+        paramString.CVe = ((JSONObject)localObject).getString("bg2x_url");
+        paramString.CVf = ((JSONObject)localObject).getString("wl2x_url");
         if (System.currentTimeMillis() / 1000L - l > 7200L) {}
         for (boolean bool = true;; bool = false)
         {
-          paramString.fRW = bool;
-          paramString.BuR = apw(paramString.vkI);
+          paramString.glA = bool;
+          paramString.CVg = auC(paramString.wqa);
           paramString.pinyin = ((JSONObject)localObject).optString("bank_name_pinyin", "");
           paramString.timestamp = l;
           AppMethodBeat.o(70584);
@@ -177,7 +119,7 @@ public final class b
       }
       catch (JSONException paramString)
       {
-        ac.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramString, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramString, "", new Object[0]);
         AppMethodBeat.o(70584);
         return null;
       }
@@ -185,39 +127,97 @@ public final class b
     return null;
   }
   
-  private static com.tencent.mm.plugin.wallet_core.model.e bp(Context paramContext, String paramString)
+  public static boolean aZ(LinkedList<String> paramLinkedList)
+  {
+    AppMethodBeat.i(70583);
+    long l = System.currentTimeMillis() / 1000L;
+    try
+    {
+      if (DbO == null) {
+        DbO = new HashMap();
+      }
+      SharedPreferences.Editor localEditor = aj.getContext().getSharedPreferences("bank_logo", 0).edit();
+      int j = paramLinkedList.size();
+      int i = 0;
+      if (i < j)
+      {
+        Object localObject = new JSONObject((String)paramLinkedList.get(i));
+        if (u.aAB()) {}
+        for (String str = ((JSONObject)localObject).optString("bank_desc");; str = ((JSONObject)localObject).optString("bank_type"))
+        {
+          ((JSONObject)localObject).put("timestamp", l);
+          localObject = ((JSONObject)localObject).toString();
+          if ((bt.isNullOrNil(str)) || (bt.isNullOrNil((String)localObject))) {
+            break label165;
+          }
+          localEditor.putString(str, (String)localObject);
+          DbO.put(str, localObject);
+          i += 1;
+          break;
+        }
+      }
+      label165:
+      localEditor.commit();
+      ad.d("MicroMsg.WalletBankLogoStorage", "update BankLogo config file. success!");
+      AppMethodBeat.o(70583);
+      return true;
+    }
+    catch (Exception paramLinkedList)
+    {
+      ad.e("MicroMsg.WalletBankLogoStorage", "parse band logo error. %s", new Object[] { paramLinkedList.getMessage() });
+      ad.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramLinkedList, "", new Object[0]);
+      AppMethodBeat.o(70583);
+    }
+    return false;
+  }
+  
+  public static String auC(String paramString)
+  {
+    AppMethodBeat.i(70589);
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.w("MicroMsg.WalletBankLogoStorage", "getStoragePath: but url is null");
+      AppMethodBeat.o(70589);
+      return null;
+    }
+    paramString = String.format("%s/%s", new Object[] { ozF, com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) });
+    AppMethodBeat.o(70589);
+    return paramString;
+  }
+  
+  private static com.tencent.mm.plugin.wallet_core.model.e bs(Context paramContext, String paramString)
   {
     boolean bool2 = true;
     AppMethodBeat.i(70587);
     Object localObject1;
     Object localObject2;
     int i;
-    if (BBw == null)
+    if (DbO == null)
     {
-      efW();
-      localObject1 = (String)BBw.get(paramString);
-      if (!bs.isNullOrNil((String)localObject1)) {
+      esJ();
+      localObject1 = (String)DbO.get(paramString);
+      if (!bt.isNullOrNil((String)localObject1)) {
         break label402;
       }
-      com.tencent.mm.kernel.g.agS();
-      if (com.tencent.mm.kernel.g.agR().isSDCardAvailable())
+      com.tencent.mm.kernel.g.ajD();
+      if (com.tencent.mm.kernel.g.ajC().isSDCardAvailable())
       {
         localObject2 = new LinkedList();
         ((LinkedList)localObject2).add(paramString);
         localObject2 = new f((LinkedList)localObject2);
-        com.tencent.mm.kernel.g.agS();
-        com.tencent.mm.kernel.g.agQ().ghe.a((n)localObject2, 0);
+        com.tencent.mm.kernel.g.ajD();
+        com.tencent.mm.kernel.g.ajB().gAO.a((n)localObject2, 0);
       }
-      azv(bq(paramContext, "config/bank_logo.xml"));
-      if (BBw == null) {
+      aEF(bt(paramContext, "config/bank_logo.xml"));
+      if (DbO == null) {
         break label397;
       }
-      localObject1 = (String)BBw.get(paramString);
+      localObject1 = (String)DbO.get(paramString);
       i = 1;
     }
     for (;;)
     {
-      if (!bs.isNullOrNil((String)localObject1)) {
+      if (!bt.isNullOrNil((String)localObject1)) {
         paramContext = new com.tencent.mm.plugin.wallet_core.model.e();
       }
       for (;;)
@@ -226,9 +226,9 @@ public final class b
         {
           paramString = new JSONObject((String)localObject1);
           long l = paramString.optLong("timestamp", 0L);
-          paramContext.vkI = paramString.getString("logo2x_url");
-          paramContext.BuP = paramString.getString("bg2x_url");
-          paramContext.BuQ = paramString.getString("wl2x_url");
+          paramContext.wqa = paramString.getString("logo2x_url");
+          paramContext.CVe = paramString.getString("bg2x_url");
+          paramContext.CVf = paramString.getString("wl2x_url");
           boolean bool1 = bool2;
           if (i == 0)
           {
@@ -238,25 +238,25 @@ public final class b
           }
           else
           {
-            paramContext.fRW = bool1;
-            paramContext.BuR = apw(paramContext.vkI);
+            paramContext.glA = bool1;
+            paramContext.CVg = auC(paramContext.wqa);
             paramContext.pinyin = paramString.optString("bank_name_pinyin", "");
             paramContext.timestamp = l;
             AppMethodBeat.o(70587);
             return paramContext;
-            localObject2 = (String)BBw.get(paramString);
+            localObject2 = (String)DbO.get(paramString);
             localObject1 = localObject2;
             if (localObject2 != null) {
               break;
             }
-            ac.i("MicroMsg.WalletBankLogoStorage", "can not get from bankLogoCache %s", new Object[] { paramString });
-            localObject2 = ai.getContext().getSharedPreferences("bank_logo", 0).getString(paramString, "");
+            ad.i("MicroMsg.WalletBankLogoStorage", "can not get from bankLogoCache %s", new Object[] { paramString });
+            localObject2 = aj.getContext().getSharedPreferences("bank_logo", 0).getString(paramString, "");
             localObject1 = localObject2;
             if (localObject2 == null) {
               break;
             }
-            ac.w("MicroMsg.WalletBankLogoStorage", "get from sp %s", new Object[] { paramString });
-            BBw.put(paramString, localObject2);
+            ad.w("MicroMsg.WalletBankLogoStorage", "get from sp %s", new Object[] { paramString });
+            DbO.put(paramString, localObject2);
             localObject1 = localObject2;
             break;
           }
@@ -266,7 +266,7 @@ public final class b
         }
         catch (JSONException paramContext)
         {
-          ac.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramContext, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramContext, "", new Object[0]);
           AppMethodBeat.o(70587);
           return null;
         }
@@ -279,7 +279,7 @@ public final class b
     }
   }
   
-  private static String bq(Context paramContext, String paramString)
+  private static String bt(Context paramContext, String paramString)
   {
     AppMethodBeat.i(70588);
     String str = "";
@@ -305,7 +305,7 @@ public final class b
       catch (Exception paramContext)
       {
         localObject2 = localObject1;
-        ac.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramContext, "getFromAssets", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramContext, "getFromAssets", new Object[0]);
         paramString = str;
         if (localObject1 == null) {
           continue;
@@ -317,7 +317,7 @@ public final class b
         }
         catch (Exception paramContext)
         {
-          ac.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramContext, "close", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramContext, "close", new Object[0]);
           paramString = str;
         }
         continue;
@@ -335,7 +335,7 @@ public final class b
       }
       catch (Exception paramContext)
       {
-        ac.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramContext, "close", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramContext, "close", new Object[0]);
         paramString = (String)localObject1;
       }
     }
@@ -352,27 +352,27 @@ public final class b
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramString, "close", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.WalletBankLogoStorage", paramString, "close", new Object[0]);
       }
     }
   }
   
-  private static void efW()
+  public static String eHa()
+  {
+    return ozF;
+  }
+  
+  private static void esJ()
   {
     AppMethodBeat.i(70585);
-    BBw = new HashMap();
-    Iterator localIterator = ai.getContext().getSharedPreferences("bank_logo", 0).getAll().entrySet().iterator();
+    DbO = new HashMap();
+    Iterator localIterator = aj.getContext().getSharedPreferences("bank_logo", 0).getAll().entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      BBw.put(localEntry.getKey(), (String)localEntry.getValue());
+      DbO.put(localEntry.getKey(), (String)localEntry.getValue());
     }
     AppMethodBeat.o(70585);
-  }
-  
-  public static String esU()
-  {
-    return nWl;
   }
   
   public static com.tencent.mm.plugin.wallet_core.model.e i(Context paramContext, String paramString, boolean paramBoolean)
@@ -380,7 +380,7 @@ public final class b
     AppMethodBeat.i(70586);
     if (!paramBoolean)
     {
-      paramContext = bp(paramContext, paramString);
+      paramContext = bs(paramContext, paramString);
       AppMethodBeat.o(70586);
       return paramContext;
     }
@@ -388,13 +388,13 @@ public final class b
     if ("CITIC_CREDIT".equals(paramString))
     {
       com.tencent.mm.plugin.wallet_core.model.e locale = new com.tencent.mm.plugin.wallet_core.model.e();
-      locale.BuT = 2131234634;
-      locale.BuU = 2131234636;
-      paramContext = bp(paramContext, paramString);
+      locale.CVi = 2131234634;
+      locale.CVj = 2131234636;
+      paramContext = bs(paramContext, paramString);
       localObject = locale;
       if (paramContext != null)
       {
-        locale.vkI = paramContext.vkI;
+        locale.wqa = paramContext.wqa;
         localObject = locale;
       }
     }

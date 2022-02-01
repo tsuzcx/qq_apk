@@ -11,11 +11,11 @@ import java.net.URL;
 public final class e
   implements n<URL, InputStream>
 {
-  private final n<g, InputStream> aIY;
+  private final n<g, InputStream> aKP;
   
   public e(n<g, InputStream> paramn)
   {
-    this.aIY = paramn;
+    this.aKP = paramn;
   }
   
   public static final class a

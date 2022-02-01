@@ -1,68 +1,105 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.task.c;
+import com.tencent.mm.plugin.appbrand.task.c.a;
+import com.tencent.mm.plugin.appbrand.task.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.q;
 import d.l;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/WxaComponentAdapter;", "", "()V", "asPage", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "asService", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "luggage-wxa-app_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/PrivateJSApiPreloadMiniProgramEnv;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "IPC_PreloadNextGame", "PreloadType", "plugin-appbrand-integration_release"})
 public final class cl
+  extends a<d>
 {
-  public static final cl kaN;
+  public static final int CTRL_INDEX = 644;
+  public static final String NAME = "preloadMiniProgramEnv";
+  @Deprecated
+  public static final a kuV;
   
   static
   {
-    AppMethodBeat.i(135576);
-    kaN = new cl();
-    AppMethodBeat.o(135576);
+    AppMethodBeat.i(50418);
+    kuV = new a((byte)0);
+    AppMethodBeat.o(50418);
   }
   
-  public static final aa i(c paramc)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/PrivateJSApiPreloadMiniProgramEnv$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  static final class a {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  static final class b$a
+    extends q
+    implements d.g.a.a<z>
   {
-    AppMethodBeat.i(135574);
-    if (paramc == null)
+    public static final a kuW;
+    
+    static
     {
-      AppMethodBeat.o(135574);
-      return null;
+      AppMethodBeat.i(50411);
+      kuW = new a();
+      AppMethodBeat.o(50411);
     }
-    if ((paramc instanceof aa))
+    
+    b$a()
     {
-      paramc = (aa)paramc;
-      AppMethodBeat.o(135574);
-      return paramc;
+      super();
     }
-    if ((paramc instanceof q))
-    {
-      paramc = ((q)paramc).getCurrentPageView();
-      AppMethodBeat.o(135574);
-      return paramc;
-    }
-    AppMethodBeat.o(135574);
-    return null;
   }
   
-  public static final q j(c paramc)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/PrivateJSApiPreloadMiniProgramEnv$PreloadType;", "", "serviceType", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandServiceType;", "(Ljava/lang/String;ILcom/tencent/mm/plugin/appbrand/task/AppBrandServiceType;)V", "getServiceType", "()Lcom/tencent/mm/plugin/appbrand/task/AppBrandServiceType;", "APP", "GAME", "Companion", "plugin-appbrand-integration_release"})
+  static enum c
   {
-    AppMethodBeat.i(135575);
-    if (paramc == null)
+    public static final a kvb;
+    final e kva;
+    
+    static
     {
-      AppMethodBeat.o(135575);
-      return null;
+      AppMethodBeat.i(50413);
+      c localc1 = new c("APP", 0, e.myg);
+      kuX = localc1;
+      c localc2 = new c("GAME", 1, e.myh);
+      kuY = localc2;
+      kuZ = new c[] { localc1, localc2 };
+      kvb = new a((byte)0);
+      AppMethodBeat.o(50413);
     }
-    if ((paramc instanceof aa))
+    
+    private c(e parame)
     {
-      paramc = ((aa)paramc).CX();
-      AppMethodBeat.o(135575);
-      return paramc;
+      this.kva = parame;
     }
-    if ((paramc instanceof q))
+    
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/PrivateJSApiPreloadMiniProgramEnv$PreloadType$Companion;", "", "()V", "safeValueOf", "Lcom/tencent/mm/plugin/appbrand/jsapi/PrivateJSApiPreloadMiniProgramEnv$PreloadType;", "name", "", "plugin-appbrand-integration_release"})
+    public static final class a {}
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onReady"})
+  static final class d
+    implements c.a
+  {
+    d(cl paramcl, d paramd, int paramInt) {}
+    
+    public final void onReady()
     {
-      paramc = (q)paramc;
-      AppMethodBeat.o(135575);
-      return paramc;
+      AppMethodBeat.i(50416);
+      if (c.byx() != null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        cl.bix();
+        ad.i("MicroMsg.AppBrand.PrivateJSApiPreloadMiniProgramEnv", "onReady, preloaded[" + bool + ']');
+        if (!bool) {
+          break;
+        }
+        this.ktS.h(this.krv, this.kvc.Pg("ok"));
+        AppMethodBeat.o(50416);
+        return;
+      }
+      this.ktS.h(this.krv, this.kvc.Pg("fail"));
+      AppMethodBeat.o(50416);
     }
-    AppMethodBeat.o(135575);
-    return null;
   }
 }
 

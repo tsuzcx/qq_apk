@@ -14,39 +14,39 @@ import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.lang.ref.SoftReference;
 
 public class ChattingItemSendOkProgressBar
   extends ProgressBar
 {
-  private static SoftReference<Bitmap> IoX;
-  private static SoftReference<Bitmap> IoY;
-  private static SoftReference<Bitmap> IoZ;
-  private static int Ipf;
-  private static int Ipg;
-  private int IoT = 0;
-  private int IoU = 0;
-  private boolean IoV = false;
-  private boolean IoW = false;
-  private Bitmap Ipa = null;
-  private Bitmap Ipb = null;
-  private Bitmap Ipc = null;
-  private boolean Ipd = false;
-  private a Ipe = null;
-  private boolean hDs = false;
+  private static int KfF;
+  private static int KfG;
+  private static SoftReference<Bitmap> Kfx;
+  private static SoftReference<Bitmap> Kfy;
+  private static SoftReference<Bitmap> Kfz;
+  private Bitmap KfA = null;
+  private Bitmap KfB = null;
+  private Bitmap KfC = null;
+  private boolean KfD = false;
+  private a KfE = null;
+  private int Kft = 0;
+  private int Kfu = 0;
+  private boolean Kfv = false;
+  private boolean Kfw = false;
+  private boolean hVX = false;
   private float rotation = 0.0F;
   
   static
   {
     AppMethodBeat.i(37374);
-    IoX = null;
-    IoY = null;
-    IoZ = null;
-    Ipf = 0;
-    Ipg = 0;
-    Ipf = a.fromDPToPix(ai.getContext(), 1);
-    Ipg = a.fromDPToPix(ai.getContext(), 6);
+    Kfx = null;
+    Kfy = null;
+    Kfz = null;
+    KfF = 0;
+    KfG = 0;
+    KfF = a.fromDPToPix(aj.getContext(), 1);
+    KfG = a.fromDPToPix(aj.getContext(), 6);
     AppMethodBeat.o(37374);
   }
   
@@ -62,44 +62,44 @@ public class ChattingItemSendOkProgressBar
   
   public a getDrawListener()
   {
-    return this.Ipe;
+    return this.KfE;
   }
   
   @SuppressLint({"DrawAllocation"})
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(37373);
-    if (!this.Ipd)
+    if (!this.KfD)
     {
       super.onDraw(paramCanvas);
       AppMethodBeat.o(37373);
       return;
     }
-    paramCanvas.saveLayerAlpha(new RectF(0.0F, 0.0F, this.Ipa.getWidth(), this.Ipa.getHeight()), 255, 31);
-    if (this.hDs)
+    paramCanvas.saveLayerAlpha(new RectF(0.0F, 0.0F, this.KfA.getWidth(), this.KfA.getHeight()), 255, 31);
+    if (this.hVX)
     {
-      if (!this.IoV)
+      if (!this.Kfv)
       {
-        if (((int)(this.rotation - 270.0F) % 360 == 0) && (this.IoW))
+        if (((int)(this.rotation - 270.0F) % 360 == 0) && (this.Kfw))
         {
-          this.IoV = true;
+          this.Kfv = true;
           invalidate();
           AppMethodBeat.o(37373);
           return;
         }
         localObject1 = new Matrix();
-        ((Matrix)localObject1).setRotate(this.rotation, this.Ipa.getWidth() / 2, this.Ipa.getHeight() / 2);
-        paramCanvas.drawBitmap(this.Ipa, (Matrix)localObject1, null);
+        ((Matrix)localObject1).setRotate(this.rotation, this.KfA.getWidth() / 2, this.KfA.getHeight() / 2);
+        paramCanvas.drawBitmap(this.KfA, (Matrix)localObject1, null);
         this.rotation += 6.0F;
         invalidate();
         AppMethodBeat.o(37373);
         return;
       }
-      if (this.IoT <= this.Ipb.getWidth())
+      if (this.Kft <= this.KfB.getWidth())
       {
         localObject1 = new Matrix();
         this.rotation += 6.0F;
-        ((Matrix)localObject1).setRotate(this.rotation, this.Ipa.getWidth() / 2, this.Ipa.getHeight() / 2);
+        ((Matrix)localObject1).setRotate(this.rotation, this.KfA.getWidth() / 2, this.KfA.getHeight() / 2);
         int j = (int)this.rotation % 360;
         int i = j;
         if (j < 270) {
@@ -109,50 +109,50 @@ public class ChattingItemSendOkProgressBar
         {
           localObject2 = new Paint();
           ((Paint)localObject2).setColor(-16776961);
-          paramCanvas.drawBitmap(this.Ipa, (Matrix)localObject1, (Paint)localObject2);
+          paramCanvas.drawBitmap(this.KfA, (Matrix)localObject1, (Paint)localObject2);
           ((Paint)localObject2).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-          paramCanvas.drawRect(0.0F, 0.0F, this.Ipa.getWidth(), this.Ipa.getHeight() / 2, (Paint)localObject2);
+          paramCanvas.drawRect(0.0F, 0.0F, this.KfA.getWidth(), this.KfA.getHeight() / 2, (Paint)localObject2);
         }
-        localObject1 = new Rect(0, 0, this.IoT, this.Ipb.getHeight());
-        localObject2 = new Rect(Ipf, Ipg, this.IoT + Ipf, this.Ipb.getHeight() + Ipg);
-        paramCanvas.drawBitmap(this.Ipb, (Rect)localObject1, (Rect)localObject2, null);
-        this.IoT += 2;
+        localObject1 = new Rect(0, 0, this.Kft, this.KfB.getHeight());
+        localObject2 = new Rect(KfF, KfG, this.Kft + KfF, this.KfB.getHeight() + KfG);
+        paramCanvas.drawBitmap(this.KfB, (Rect)localObject1, (Rect)localObject2, null);
+        this.Kft += 2;
         invalidate();
         AppMethodBeat.o(37373);
         return;
       }
-      localObject1 = new Rect(0, 0, this.Ipb.getWidth(), this.Ipb.getHeight());
-      localObject2 = new Rect(Ipf, Ipg, this.Ipb.getWidth() + Ipf, this.Ipb.getHeight() + Ipg);
-      paramCanvas.drawBitmap(this.Ipb, (Rect)localObject1, (Rect)localObject2, null);
-      if (this.IoU < 255)
+      localObject1 = new Rect(0, 0, this.KfB.getWidth(), this.KfB.getHeight());
+      localObject2 = new Rect(KfF, KfG, this.KfB.getWidth() + KfF, this.KfB.getHeight() + KfG);
+      paramCanvas.drawBitmap(this.KfB, (Rect)localObject1, (Rect)localObject2, null);
+      if (this.Kfu < 255)
       {
         Paint localPaint = new Paint();
-        localPaint.setAlpha(this.IoU);
-        paramCanvas.drawBitmap(this.Ipc, (Rect)localObject1, (Rect)localObject2, localPaint);
-        this.IoU += 20;
+        localPaint.setAlpha(this.Kfu);
+        paramCanvas.drawBitmap(this.KfC, (Rect)localObject1, (Rect)localObject2, localPaint);
+        this.Kfu += 20;
         invalidate();
         AppMethodBeat.o(37373);
         return;
       }
-      paramCanvas.drawBitmap(this.Ipc, (Rect)localObject1, (Rect)localObject2, null);
-      this.hDs = false;
+      paramCanvas.drawBitmap(this.KfC, (Rect)localObject1, (Rect)localObject2, null);
+      this.hVX = false;
       this.rotation = 0.0F;
-      this.IoT = 0;
-      this.IoU = 0;
-      this.IoW = false;
-      this.IoV = false;
+      this.Kft = 0;
+      this.Kfu = 0;
+      this.Kfw = false;
+      this.Kfv = false;
       AppMethodBeat.o(37373);
       return;
     }
-    Object localObject1 = new Rect(0, 0, this.Ipc.getWidth(), this.Ipc.getHeight());
-    Object localObject2 = new Rect(Ipf, Ipg, this.Ipc.getWidth() + Ipf, this.Ipc.getHeight() + Ipg);
-    paramCanvas.drawBitmap(this.Ipc, (Rect)localObject1, (Rect)localObject2, null);
+    Object localObject1 = new Rect(0, 0, this.KfC.getWidth(), this.KfC.getHeight());
+    Object localObject2 = new Rect(KfF, KfG, this.KfC.getWidth() + KfF, this.KfC.getHeight() + KfG);
+    paramCanvas.drawBitmap(this.KfC, (Rect)localObject1, (Rect)localObject2, null);
     AppMethodBeat.o(37373);
   }
   
   public void setDrawListener(a parama)
   {
-    this.Ipe = parama;
+    this.KfE = parama;
   }
   
   public static abstract interface a {}

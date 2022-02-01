@@ -4,18 +4,18 @@ import com.tencent.mm.sticker.c;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "updateData", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "updateData", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "plugin-finder_release"})
 public abstract interface d
 {
-  public abstract void U(List<c> paramList);
+  public abstract void V(List<c> paramList);
   
-  public abstract void fm(int paramInt1, int paramInt2);
+  public abstract void fq(int paramInt1, int paramInt2);
   
-  public abstract void fn(int paramInt1, int paramInt2);
+  public abstract void fr(int paramInt1, int paramInt2);
   
-  public abstract void fo(int paramInt1, int paramInt2);
+  public abstract void fs(int paramInt1, int paramInt2);
   
-  public abstract void fp(int paramInt1, int paramInt2);
+  public abstract void ft(int paramInt1, int paramInt2);
 }
 
 

@@ -5,18 +5,18 @@ import com.google.android.exoplayer2.source.b.a.b;
 
 public final class e
 {
-  public final a bnt;
-  public final b bnu;
+  public final a bxO;
+  public final b bxP;
   
   e(a parama, b paramb)
   {
-    this.bnt = parama;
-    this.bnu = paramb;
+    this.bxO = parama;
+    this.bxP = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.e
  * JD-Core Version:    0.7.0.1
  */

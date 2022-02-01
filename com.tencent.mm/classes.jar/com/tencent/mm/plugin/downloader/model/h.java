@@ -6,8 +6,8 @@ import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.plugin.downloader.c.b.q;
 import com.tencent.mm.plugin.downloader.g.a;
 import com.tencent.mm.plugin.downloader_app.api.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.i;
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +18,7 @@ import java.util.List;
 public final class h
 {
   /* Error */
-  public static String WJ(String paramString)
+  public static String aaq(String paramString)
   {
     // Byte code:
     //   0: ldc 9
@@ -62,7 +62,7 @@ public final class h
     //   69: iconst_1
     //   70: aload_2
     //   71: aastore
-    //   72: invokestatic 58	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   72: invokestatic 58	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   75: aload_0
     //   76: ifnull +14 -> 90
     //   79: aload_0
@@ -78,7 +78,7 @@ public final class h
     //   98: ldc 45
     //   100: aload_3
     //   101: invokevirtual 78	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   104: invokestatic 82	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   104: invokestatic 82	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   107: goto -21 -> 86
     //   110: aload_0
     //   111: ifnull +14 -> 125
@@ -95,7 +95,7 @@ public final class h
     //   134: ldc 45
     //   136: aload_2
     //   137: invokevirtual 78	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   140: invokestatic 82	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   140: invokestatic 82	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   143: goto -22 -> 121
     //   146: astore_3
     //   147: aload 4
@@ -111,7 +111,7 @@ public final class h
     //   162: aload_3
     //   163: invokevirtual 78	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   166: aastore
-    //   167: invokestatic 88	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   167: invokestatic 88	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   170: aload_0
     //   171: ifnull -46 -> 125
     //   174: aload_0
@@ -124,7 +124,7 @@ public final class h
     //   189: ldc 45
     //   191: aload_2
     //   192: invokevirtual 78	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   195: invokestatic 82	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   195: invokestatic 82	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   198: goto -17 -> 181
     //   201: astore_0
     //   202: aload_2
@@ -142,7 +142,7 @@ public final class h
     //   225: ldc 45
     //   227: aload_3
     //   228: invokevirtual 78	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   231: invokestatic 82	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   231: invokestatic 82	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   234: goto -21 -> 213
     //   237: astore_3
     //   238: aload_0
@@ -184,42 +184,42 @@ public final class h
   {
     AppMethodBeat.i(89016);
     a locala = new a();
-    locala.field_downloadUrl = paramg.job;
-    locala.field_secondaryUrl = paramg.oIP;
+    locala.field_downloadUrl = paramg.jHX;
+    locala.field_secondaryUrl = paramg.pmv;
     locala.field_fileSize = paramg.mFileSize;
-    locala.field_downloadUrlHashCode = paramg.job.hashCode();
+    locala.field_downloadUrlHashCode = paramg.jHX.hashCode();
     locala.field_fileName = paramg.mFileName;
-    locala.field_fileType = paramg.oIR;
-    locala.field_md5 = paramg.oIQ;
+    locala.field_fileType = paramg.pmx;
+    locala.field_md5 = paramg.pmw;
     locala.field_appId = paramg.mAppId;
-    locala.field_autoInstall = paramg.oIS;
-    locala.field_showNotification = paramg.kaU;
+    locala.field_autoInstall = paramg.pmy;
+    locala.field_showNotification = paramg.kvq;
     locala.field_packageName = paramg.mPackageName;
-    locala.field_autoDownload = paramg.oIU;
+    locala.field_autoDownload = paramg.pmA;
     locala.field_scene = paramg.mScene;
-    locala.field_downloadInWifi = paramg.jZH;
-    locala.field_fromWeApp = paramg.oIX;
-    locala.field_extInfo = paramg.jYy;
-    locala.field_isSecondDownload = paramg.oIY;
-    locala.field_fromDownloadApp = paramg.oIZ;
-    locala.field_reserveInWifi = paramg.jZH;
+    locala.field_downloadInWifi = paramg.kud;
+    locala.field_fromWeApp = paramg.pmD;
+    locala.field_extInfo = paramg.ksU;
+    locala.field_isSecondDownload = paramg.pmE;
+    locala.field_fromDownloadApp = paramg.pmF;
+    locala.field_reserveInWifi = paramg.kud;
     locala.field_downloadType = paramg.mDownloadType;
-    locala.field_uiarea = paramg.oJd;
-    locala.field_noticeId = paramg.oJc;
-    locala.field_ssid = paramg.oJb;
+    locala.field_uiarea = paramg.pmJ;
+    locala.field_noticeId = paramg.pmI;
+    locala.field_ssid = paramg.pmH;
     locala.field_startScene = paramg.mScene;
-    LinkedList localLinkedList = paramg.oJe;
+    LinkedList localLinkedList = paramg.pmK;
     q localq;
-    if (!bs.gY(localLinkedList))
+    if (!bt.hj(localLinkedList))
     {
       localq = new q();
-      localq.oGL = localLinkedList;
+      localq.pkp = localLinkedList;
     }
     try
     {
       locala.field_sectionMd5Byte = localq.toByteArray();
       label241:
-      locala.field_rawAppId = paramg.oJf;
+      locala.field_rawAppId = paramg.pmL;
       AppMethodBeat.o(89016);
       return locala;
     }
@@ -229,11 +229,11 @@ public final class h
     }
   }
   
-  private static boolean oR(long paramLong)
+  private static boolean qR(long paramLong)
   {
     AppMethodBeat.i(89019);
     long l = Environment.getExternalStorageDirectory().getFreeSpace();
-    ac.d("MicroMsg.FileDownloadUtil", "isSDCardHaveEnoughSpace, freeSpace = %d, needSize = %d", new Object[] { Long.valueOf(l), Long.valueOf(paramLong) });
+    ad.d("MicroMsg.FileDownloadUtil", "isSDCardHaveEnoughSpace, freeSpace = %d, needSize = %d", new Object[] { Long.valueOf(l), Long.valueOf(paramLong) });
     if (l >= paramLong)
     {
       AppMethodBeat.o(89019);
@@ -243,16 +243,16 @@ public final class h
     return false;
   }
   
-  public static boolean sl(long paramLong)
+  public static boolean uj(long paramLong)
   {
     AppMethodBeat.i(89017);
-    if (sm(paramLong))
+    if (uk(paramLong))
     {
       AppMethodBeat.o(89017);
       return true;
     }
-    Object localObject = d.bXI();
-    if (bs.gY((List)localObject))
+    Object localObject = d.cck();
+    if (bt.hj((List)localObject))
     {
       AppMethodBeat.o(89017);
       return false;
@@ -263,11 +263,11 @@ public final class h
       a locala = (a)((Iterator)localObject).next();
       if ((locala.field_status != 3) && (locala.field_status != 6) && (locala.field_status != 1))
       {
-        ac.i("MicroMsg.FileDownloadUtil", "delete appId : %s, path : %s", new Object[] { locala.field_appId, locala.field_filePath });
-        d.sd(locala.field_downloadId);
+        ad.i("MicroMsg.FileDownloadUtil", "delete appId : %s, path : %s", new Object[] { locala.field_appId, locala.field_filePath });
+        d.ub(locala.field_downloadId);
         i.deleteFile(locala.field_filePath);
-        ((c)com.tencent.mm.kernel.g.ab(c.class)).tc(locala.field_appId);
-        if (oR(paramLong))
+        ((c)com.tencent.mm.kernel.g.ab(c.class)).vR(locala.field_appId);
+        if (qR(paramLong))
         {
           AppMethodBeat.o(89017);
           return true;
@@ -278,12 +278,12 @@ public final class h
     return false;
   }
   
-  public static boolean sm(long paramLong)
+  public static boolean uk(long paramLong)
   {
     AppMethodBeat.i(89018);
     long l = (1.3F * (float)paramLong);
-    ac.d("MicroMsg.FileDownloadUtil", "checkHasEnoughSpace, realSize = %d, needSize = %d", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
-    boolean bool = e.oR(l);
+    ad.d("MicroMsg.FileDownloadUtil", "checkHasEnoughSpace, realSize = %d, needSize = %d", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
+    boolean bool = e.qR(l);
     AppMethodBeat.o(89018);
     return bool;
   }

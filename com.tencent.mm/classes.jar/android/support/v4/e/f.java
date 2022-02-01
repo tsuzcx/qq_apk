@@ -13,7 +13,7 @@ public final class f
     this.mTag = paramString;
   }
   
-  private void eZ()
+  private void fq()
   {
     if (this.mBuilder.length() > 0) {
       this.mBuilder.delete(0, this.mBuilder.length());
@@ -22,12 +22,12 @@ public final class f
   
   public final void close()
   {
-    eZ();
+    fq();
   }
   
   public final void flush()
   {
-    eZ();
+    fq();
   }
   
   public final void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
@@ -37,7 +37,7 @@ public final class f
     {
       char c = paramArrayOfChar[(paramInt1 + i)];
       if (c == '\n') {
-        eZ();
+        fq();
       }
       for (;;)
       {

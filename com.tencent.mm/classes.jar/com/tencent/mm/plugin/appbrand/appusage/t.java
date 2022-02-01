@@ -1,28 +1,35 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cc;
-import com.tencent.mm.model.cc.a;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.x;
+import com.tencent.mm.al.x.a;
+import com.tencent.mm.model.cd;
+import com.tencent.mm.model.cd.a;
+import com.tencent.mm.modelgeo.d;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.appbrand.z.l.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.plugin.appbrand.z.m.a;
+import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.protocal.protobuf.dtf;
+import com.tencent.mm.protocal.protobuf.dtg;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.util.Arrays;
 
 public final class t
 {
-  public static final t.c jvg;
+  public static final c jOZ;
   
   static
   {
     AppMethodBeat.i(44575);
-    jvg = new t.c();
+    jOZ = new c();
     AppMethodBeat.o(44575);
   }
   
@@ -30,49 +37,49 @@ public final class t
   {
     long l = 0L;
     AppMethodBeat.i(44567);
-    ae localae = g.agR().agA();
-    ah.a locala = ah.a.GJl;
+    ai localai = com.tencent.mm.kernel.g.ajC().ajl();
+    al.a locala = al.a.IvD;
     if (!paramBoolean) {}
     for (paramLong1 = l;; paramLong1 = Math.max(0L, paramLong1) + l)
     {
-      localae.set(locala, Long.valueOf(paramLong1));
-      localae = g.agR().agA();
-      locala = ah.a.GJn;
+      localai.set(locala, Long.valueOf(paramLong1));
+      localai = com.tencent.mm.kernel.g.ajC().ajl();
+      locala = al.a.IvF;
       if (!paramBoolean) {
         paramLong2 = 9223372036854775807L;
       }
-      localae.set(locala, Long.valueOf(paramLong2));
+      localai.set(locala, Long.valueOf(paramLong2));
       AppMethodBeat.o(44567);
       return;
-      l = bs.aNx();
+      l = bt.aQJ();
     }
   }
   
-  public static boolean aYJ()
+  public static boolean bch()
   {
     AppMethodBeat.i(44568);
-    q.aYD();
-    if (!g.agM())
+    q.bcb();
+    if (!com.tencent.mm.kernel.g.ajx())
     {
       AppMethodBeat.o(44568);
       return false;
     }
-    boolean bool = ((Boolean)g.agR().agA().get(ah.a.GJo, Boolean.FALSE)).booleanValue();
+    boolean bool = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IvG, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(44568);
     return bool;
   }
   
-  static a aYK()
+  static a bci()
   {
     int i = 0;
     AppMethodBeat.i(44569);
-    if (!aYL())
+    if (!bcj())
     {
-      localObject = a.jvh;
+      localObject = a.jPa;
       AppMethodBeat.o(44569);
       return localObject;
     }
-    int j = ((Integer)g.agR().agA().get(ah.a.GJf, Integer.valueOf(0))).intValue();
+    int j = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivx, Integer.valueOf(0))).intValue();
     Object localObject = a.values();
     int k = localObject.length;
     while (i < k)
@@ -85,66 +92,66 @@ public final class t
       }
       i += 1;
     }
-    localObject = a.jvh;
+    localObject = a.jPa;
     AppMethodBeat.o(44569);
     return localObject;
   }
   
-  public static boolean aYL()
+  public static boolean bcj()
   {
     AppMethodBeat.i(44570);
-    if (!g.agM())
+    if (!com.tencent.mm.kernel.g.ajx())
     {
       AppMethodBeat.o(44570);
       return false;
     }
-    long l = ((Long)g.agR().agA().get(ah.a.GJc, Long.valueOf(0L))).longValue();
-    if (l > bs.aNx()) {}
+    long l = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivu, Long.valueOf(0L))).longValue();
+    if (l > bt.aQJ()) {}
     for (boolean bool = true;; bool = false)
     {
       if ((!bool) && (l > 0L))
       {
-        g.agR().agA().set(ah.a.GJc, Long.valueOf(0L));
-        e locale = e.jvs;
-        e.aYP();
+        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Ivu, Long.valueOf(0L));
+        e locale = e.jPl;
+        e.bcn();
       }
       AppMethodBeat.o(44570);
       return bool;
     }
   }
   
-  static void aYM()
+  static void bck()
   {
     AppMethodBeat.i(44571);
-    q.aYD();
-    if (!g.agM())
+    q.bcb();
+    if (!com.tencent.mm.kernel.g.ajx())
     {
       AppMethodBeat.o(44571);
       return;
     }
-    e locale = e.jvs;
-    if (!((Boolean)g.agR().agA().get(ah.a.GJi, Boolean.FALSE)).booleanValue())
+    e locale = e.jPl;
+    if (!((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IvA, Boolean.FALSE)).booleanValue())
     {
-      e.a((String)g.agR().agA().get(ah.a.GJd, ""), ((Long)g.agR().agA().get(ah.a.GJe, Long.valueOf(0L))).longValue(), 0, e.aYR());
-      g.agR().agA().set(ah.a.GJi, Boolean.TRUE);
+      e.a((String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivv, ""), ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivw, Long.valueOf(0L))).longValue(), 0, e.bcp());
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IvA, Boolean.TRUE);
     }
     AppMethodBeat.o(44571);
   }
   
-  public static void aYN()
+  public static void bcl()
   {
     AppMethodBeat.i(44572);
-    if (!g.agM())
+    if (!com.tencent.mm.kernel.g.ajx())
     {
       AppMethodBeat.o(44572);
       return;
     }
-    if (aYL())
+    if (bcj())
     {
       c(false, 0L);
       a(false, 0L, 0L);
-      e locale = e.jvs;
-      e.a((String)g.agR().agA().get(ah.a.GJd, ""), ((Long)g.agR().agA().get(ah.a.GJe, Long.valueOf(0L))).longValue(), 2, e.aYR());
+      e locale = e.jPl;
+      e.a((String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivv, ""), ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivw, Long.valueOf(0L))).longValue(), 2, e.bcp());
     }
     AppMethodBeat.o(44572);
   }
@@ -154,18 +161,18 @@ public final class t
     AppMethodBeat.i(44566);
     if (!paramBoolean)
     {
-      g.agR().agA().set(ah.a.GJc, Long.valueOf(0L));
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Ivu, Long.valueOf(0L));
       AppMethodBeat.o(44566);
       return;
     }
     if (paramLong == 0L) {}
-    for (paramLong = 9223372036854775807L;; paramLong = bs.aNx() + Math.max(0L, paramLong))
+    for (paramLong = 9223372036854775807L;; paramLong = bt.aQJ() + Math.max(0L, paramLong))
     {
-      g.agR().agA().set(ah.a.GJc, Long.valueOf(paramLong));
-      g.agR().agA().set(ah.a.GJo, Boolean.TRUE);
-      g.agR().agA().set(ah.a.GJi, Boolean.FALSE);
-      e locale = e.jvs;
-      e.a((String)g.agR().agA().get(ah.a.GJd, ""), ((Long)g.agR().agA().get(ah.a.GJe, Long.valueOf(0L))).longValue(), 1, e.aYR());
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Ivu, Long.valueOf(paramLong));
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IvG, Boolean.TRUE);
+      com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IvA, Boolean.FALSE);
+      e locale = e.jPl;
+      e.a((String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivv, ""), ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivw, Long.valueOf(0L))).longValue(), 1, e.bcp());
       AppMethodBeat.o(44566);
       return;
     }
@@ -178,10 +185,10 @@ public final class t
     static
     {
       AppMethodBeat.i(44551);
-      jvh = new a("NONE", 0, 0);
-      jvi = new a("REDDOT", 1, 1);
-      jvj = new a("NEW", 2, 2);
-      jvk = new a[] { jvh, jvi, jvj };
+      jPa = new a("NONE", 0, 0);
+      jPb = new a("REDDOT", 1, 1);
+      jPc = new a("NEW", 2, 2);
+      jPd = new a[] { jPa, jPb, jPc };
       AppMethodBeat.o(44551);
     }
     
@@ -192,119 +199,121 @@ public final class t
   }
   
   public static final class b
-    implements cc.a
+    implements cd.a
   {
-    private static final b jvl;
+    private static final b jPe;
     
     static
     {
       AppMethodBeat.i(44557);
-      jvl = new b();
+      jPe = new b();
       AppMethodBeat.o(44557);
     }
     
-    public static void AY()
+    public static void Cx()
     {
       AppMethodBeat.i(44553);
-      q.aYD();
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a("wxareddot", jvl, true);
+      q.bcb();
+      ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().a("wxareddot", jPe, true);
       AppMethodBeat.o(44553);
     }
     
     public static void unregister()
     {
       AppMethodBeat.i(44554);
-      q.aYD();
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b("wxareddot", jvl, true);
+      q.bcb();
+      ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().b("wxareddot", jPe, true);
       AppMethodBeat.o(44554);
     }
     
-    public final void a(final f.a parama)
+    public final void a(final e.a parama)
     {
       AppMethodBeat.i(44555);
-      parama = z.a(parama.fXi.DPV);
-      if (bs.isNullOrNil(parama))
+      parama = z.a(parama.gqE.Fvk);
+      if (bt.isNullOrNil(parama))
       {
         AppMethodBeat.o(44555);
         return;
       }
-      com.tencent.mm.plugin.appbrand.utils.e.bxj().postToWorker(new Runnable()
+      com.tencent.mm.plugin.appbrand.utils.e.bBp().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(44552);
-          t.b.Jn(parama);
+          t.b.MG(parama);
           AppMethodBeat.o(44552);
         }
       });
       AppMethodBeat.o(44555);
     }
     
-    public final void a(f.c paramc) {}
+    public final void a(e.c paramc) {}
   }
+  
+  public static final class c {}
   
   public static final class d
   {
-    public final String[] jvr;
+    public final String[] jPk;
     
     public d()
     {
       AppMethodBeat.i(44560);
-      this.jvr = new String[9];
-      Arrays.fill(this.jvr, "0");
-      this.jvr[0] = ((String)g.agR().agA().get(ah.a.GJd, ""));
-      this.jvr[1] = String.valueOf(g.agR().agA().get(ah.a.GJe, Long.valueOf(0L)));
-      this.jvr[2] = String.valueOf(bs.aNx());
+      this.jPk = new String[9];
+      Arrays.fill(this.jPk, "0");
+      this.jPk[0] = ((String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivv, ""));
+      this.jPk[1] = String.valueOf(com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivw, Long.valueOf(0L)));
+      this.jPk[2] = String.valueOf(bt.aQJ());
       AppMethodBeat.o(44560);
     }
     
-    public final void aYO()
+    public final void bcm()
     {
-      this.jvr[8] = "1";
+      this.jPk[8] = "1";
     }
   }
   
   public static final class e
   {
-    public static final e jvs;
+    public static final e jPl;
     
     static
     {
       AppMethodBeat.i(44565);
-      jvs = new e();
+      jPl = new e();
       AppMethodBeat.o(44565);
     }
     
     static void a(String paramString, long paramLong, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(44564);
-      h.wUl.f(14112, new Object[] { Integer.valueOf(1), bs.nullAsNil(paramString), Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      com.tencent.mm.plugin.report.service.g.yhR.f(14112, new Object[] { Integer.valueOf(1), bt.nullAsNil(paramString), Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       AppMethodBeat.o(44564);
     }
     
-    static void aYP()
+    static void bcn()
     {
       AppMethodBeat.i(44561);
-      a((String)g.agR().agA().get(ah.a.GJd, ""), ((Long)g.agR().agA().get(ah.a.GJe, Long.valueOf(0L))).longValue(), 3, aYR());
+      a((String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivv, ""), ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivw, Long.valueOf(0L))).longValue(), 3, bcp());
       AppMethodBeat.o(44561);
     }
     
-    public static void aYQ()
+    public static void bco()
     {
       AppMethodBeat.i(44562);
       a("", 0L, 1, 1);
       AppMethodBeat.o(44562);
     }
     
-    static int aYR()
+    static int bcp()
     {
       AppMethodBeat.i(44563);
-      if (g.agR().agA().getBoolean(ah.a.GJj, false))
+      if (com.tencent.mm.kernel.g.ajC().ajl().getBoolean(al.a.IvB, false))
       {
         AppMethodBeat.o(44563);
         return 1;
       }
-      int j = ((Integer)g.agR().agA().get(ah.a.GJg, Integer.valueOf(0))).intValue();
+      int j = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Ivy, Integer.valueOf(0))).intValue();
       int i = j;
       if (j > 0) {
         i = j + 1;

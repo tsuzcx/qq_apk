@@ -14,7 +14,7 @@
     <PreferenceSmallCategory />
     <IconPreference android:key="settings_welab" android:layout="@layout/aop" android:title="@string/fcs" />
     <PreferenceSmallCategory />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/fax" android:key="settings_switch_account" android:title_color="?i" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/fax" android:key="settings_switch_account" android:title_color="@color/FG_0" />
     <PreferenceSmallCategory />
     <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/f76" android:key="settings_logout" android:layout="@layout/aop" />
     <PreferenceCategory />

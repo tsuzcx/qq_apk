@@ -34,7 +34,7 @@ public class RealSetFillStyleActionNormalArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145055);
-    paramd = paramd.jzc;
+    paramd = paramd.jSZ;
     paramd.setShader(null);
     paramd.setColor(this.color);
     AppMethodBeat.o(145055);
@@ -84,7 +84,7 @@ public class RealSetFillStyleActionNormalArg
       AppMethodBeat.o(145058);
       return;
     }
-    this.color = g.p(paramJSONArray);
+    this.color = g.q(paramJSONArray);
     AppMethodBeat.o(145058);
   }
   

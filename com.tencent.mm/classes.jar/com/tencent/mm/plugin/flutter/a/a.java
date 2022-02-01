@@ -9,11 +9,11 @@ public abstract interface a
   
   public abstract <T> T aO(Class<T> paramClass);
   
-  public abstract boolean cHV();
+  public abstract boolean cQk();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.a.a
  * JD-Core Version:    0.7.0.1
  */

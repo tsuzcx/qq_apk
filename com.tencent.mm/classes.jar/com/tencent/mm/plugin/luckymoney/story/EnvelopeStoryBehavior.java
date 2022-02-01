@@ -17,40 +17,40 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.animation.DecelerateInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class EnvelopeStoryBehavior
   extends AppBarLayout.Behavior
   implements View.OnTouchListener
 {
-  private Vibrator mtQ;
-  private boolean sMe;
-  private boolean sMf;
-  private EnvelopeAppBarLayout uqH;
-  private int uqI;
-  private RecyclerView uqJ;
-  private float uqK;
-  private float uqL;
-  private boolean uqM;
-  private boolean uqN;
-  private int uqO;
-  boolean uqP;
-  AppBarLayout.b uqQ;
-  private boolean uqR;
-  boolean uqa;
+  private Vibrator mUw;
+  private boolean tIL;
+  private boolean tIM;
+  boolean vsE;
+  private EnvelopeAppBarLayout vtm;
+  private int vtn;
+  private RecyclerView vto;
+  private float vtp;
+  private float vtq;
+  private boolean vtr;
+  private boolean vts;
+  private int vtt;
+  boolean vtu;
+  AppBarLayout.b vtv;
+  private boolean vtw;
   
   public EnvelopeStoryBehavior()
   {
     AppMethodBeat.i(163614);
-    this.uqI = 0;
-    this.mtQ = ((Vibrator)ai.getContext().getSystemService("vibrator"));
-    this.uqO = a.fromDPToPix(ai.getContext(), 130);
-    this.uqP = false;
-    this.uqa = false;
-    this.sMe = false;
-    this.sMf = false;
+    this.vtn = 0;
+    this.mUw = ((Vibrator)aj.getContext().getSystemService("vibrator"));
+    this.vtt = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 300);
+    this.vtu = false;
+    this.vsE = false;
+    this.tIL = false;
+    this.tIM = false;
     AppMethodBeat.o(163614);
   }
   
@@ -58,21 +58,21 @@ public class EnvelopeStoryBehavior
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(163615);
-    this.uqI = 0;
-    this.mtQ = ((Vibrator)ai.getContext().getSystemService("vibrator"));
-    this.uqO = a.fromDPToPix(ai.getContext(), 130);
-    this.uqP = false;
-    this.uqa = false;
-    this.sMe = false;
-    this.sMf = false;
+    this.vtn = 0;
+    this.mUw = ((Vibrator)aj.getContext().getSystemService("vibrator"));
+    this.vtt = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 300);
+    this.vtu = false;
+    this.vsE = false;
+    this.tIL = false;
+    this.tIM = false;
     AppMethodBeat.o(163615);
   }
   
-  private boolean cZE()
+  private boolean diQ()
   {
     AppMethodBeat.i(163620);
-    int i = bC();
-    if (this.uqH.getTotalScrollRange() == Math.abs(i))
+    int i = bR();
+    if (this.vtm.getTotalScrollRange() == Math.abs(i))
     {
       AppMethodBeat.o(163620);
       return true;
@@ -81,10 +81,10 @@ public class EnvelopeStoryBehavior
     return false;
   }
   
-  private boolean cZF()
+  private boolean diR()
   {
     AppMethodBeat.i(163621);
-    if (Math.abs(bC()) <= 0)
+    if (Math.abs(bR()) <= 0)
     {
       AppMethodBeat.o(163621);
       return true;
@@ -93,56 +93,56 @@ public class EnvelopeStoryBehavior
     return false;
   }
   
-  private void cZG()
+  private void diS()
   {
     AppMethodBeat.i(163623);
-    if (((this.sMf) && (bC() + this.uqH.getTotalScrollRange() <= this.uqI)) || ((this.sMe) && (Math.abs(bC()) >= this.uqI)))
+    if (((this.tIM) && (bR() + this.vtm.getTotalScrollRange() <= this.vtn)) || ((this.tIL) && (Math.abs(bR()) >= this.vtn)))
     {
-      this.uqH.b(false, true, true);
+      this.vtm.b(false, true, true);
       AppMethodBeat.o(163623);
       return;
     }
-    this.uqH.b(true, true, true);
+    this.vtm.b(true, true, true);
     AppMethodBeat.o(163623);
   }
   
-  private void cZH()
+  private void diT()
   {
     AppMethodBeat.i(174342);
-    int i = bC();
-    int j = this.uqH.getTotalScrollRange();
-    if (this.uqR)
+    int i = bR();
+    int j = this.vtm.getTotalScrollRange();
+    if (this.vtw)
     {
-      if (j - Math.abs(i) < this.uqO)
+      if (j - Math.abs(i) < this.vtt)
       {
-        this.uqH.b(false, true, true);
+        this.vtm.b(false, true, true);
         AppMethodBeat.o(174342);
         return;
       }
-      cZI();
+      diU();
       AppMethodBeat.o(174342);
       return;
     }
-    if (this.sMf)
+    if (this.tIM)
     {
-      if (bC() + this.uqH.getTotalScrollRange() <= this.uqI)
+      if (bR() + this.vtm.getTotalScrollRange() <= this.vtn)
       {
-        this.uqH.b(false, true, true);
+        this.vtm.b(false, true, true);
         AppMethodBeat.o(174342);
         return;
       }
-      cZI();
+      diU();
     }
     AppMethodBeat.o(174342);
   }
   
-  private void cZI()
+  private void diU()
   {
     AppMethodBeat.i(174343);
     ValueAnimator localValueAnimator = new ValueAnimator();
     localValueAnimator.setInterpolator(new DecelerateInterpolator());
     localValueAnimator.setDuration(200L);
-    localValueAnimator.setIntValues(new int[] { bC(), -(this.uqH.getTotalScrollRange() - this.uqO) });
+    localValueAnimator.setIntValues(new int[] { bR(), -(this.vtm.getTotalScrollRange() - this.vtt) });
     localValueAnimator.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
@@ -160,14 +160,14 @@ public class EnvelopeStoryBehavior
     });
     localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
-      int uqA;
+      int vtf;
       
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
         AppMethodBeat.i(174341);
         int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
-        this.uqA = i;
-        ac.d("MicroMsg.EnvelopeStoryBehavior", "animate middle: %s", new Object[] { Integer.valueOf(i) });
+        this.vtf = i;
+        ad.d("MicroMsg.EnvelopeStoryBehavior", "animate middle: %s", new Object[] { Integer.valueOf(i) });
         EnvelopeStoryBehavior.this.G(i);
         if (EnvelopeStoryBehavior.c(EnvelopeStoryBehavior.this) != null) {
           EnvelopeStoryBehavior.c(EnvelopeStoryBehavior.this).c(EnvelopeStoryBehavior.a(EnvelopeStoryBehavior.this), i);
@@ -182,21 +182,21 @@ public class EnvelopeStoryBehavior
   public final void a(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(163619);
-    if ((paramInt5 == 1) && (this.sMf))
+    if ((paramInt5 == 1) && (this.tIM))
     {
       if (paramInt2 == 0)
       {
-        ac.i("MicroMsg.EnvelopeStoryBehavior", "stop verticalRecyclerView scroll!");
-        this.uqJ.kt();
+        ad.i("MicroMsg.EnvelopeStoryBehavior", "stop verticalRecyclerView scroll!");
+        this.vto.kJ();
       }
       AppMethodBeat.o(163619);
       return;
     }
     int i = Math.abs(paramInt4);
-    i = this.uqH.getTotalScrollRange() - Math.abs(bC()) + i;
-    ac.d("MicroMsg.EnvelopeStoryBehavior", "distance: ".concat(String.valueOf(i)));
+    i = this.vtm.getTotalScrollRange() - Math.abs(bR()) + i;
+    ad.d("MicroMsg.EnvelopeStoryBehavior", "distance: ".concat(String.valueOf(i)));
     float f1 = 0.7F;
-    float f2 = this.uqH.getTotalScrollRange();
+    float f2 = this.vtm.getTotalScrollRange();
     if (f2 != 0.0F)
     {
       if (i > f2) {
@@ -241,9 +241,9 @@ public class EnvelopeStoryBehavior
   public final boolean b(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, int paramInt)
   {
     AppMethodBeat.i(163616);
-    this.uqH = ((EnvelopeAppBarLayout)paramAppBarLayout);
-    this.uqJ = ((RecyclerView)paramCoordinatorLayout.findViewById(2131301770));
-    this.uqI = ((int)(paramCoordinatorLayout.getHeight() / 10.0F));
+    this.vtm = ((EnvelopeAppBarLayout)paramAppBarLayout);
+    this.vto = ((RecyclerView)paramCoordinatorLayout.findViewById(2131301770));
+    this.vtn = ((int)(paramCoordinatorLayout.getHeight() / 10.0F));
     if ((paramCoordinatorLayout instanceof TouchCoordinatorLayout)) {
       ((TouchCoordinatorLayout)paramCoordinatorLayout).a(this);
     }
@@ -254,66 +254,66 @@ public class EnvelopeStoryBehavior
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
     AppMethodBeat.i(163622);
+    b localb = new b();
+    localb.bd(paramView);
+    localb.bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/story/EnvelopeStoryBehavior", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
     int i;
-    boolean bool1;
+    boolean bool;
     if (paramMotionEvent.getAction() == 0)
     {
-      this.uqK = paramMotionEvent.getX();
-      this.uqL = paramMotionEvent.getY();
-      this.uqM = false;
-      this.uqN = false;
-      this.sMe = cZF();
-      this.sMf = cZE();
-      i = bC();
-      if (this.uqH.getTotalScrollRange() - Math.abs(i) == this.uqO)
+      this.vtp = paramMotionEvent.getX();
+      this.vtq = paramMotionEvent.getY();
+      this.vtr = false;
+      this.vts = false;
+      this.tIL = diR();
+      this.tIM = diQ();
+      i = bR();
+      if (this.vtm.getTotalScrollRange() - Math.abs(i) == this.vtt)
       {
         i = 1;
-        bool1 = bool2;
-        if (i == 0)
-        {
-          if ((this.sMf) || (this.sMe)) {
-            break label134;
-          }
-          bool1 = bool2;
+        if ((i == 0) && ((this.tIM) || (this.tIL))) {
+          break label185;
         }
-        label114:
-        this.uqR = bool1;
+        bool = true;
+        label148:
+        this.vtw = bool;
       }
     }
     for (;;)
     {
+      com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/luckymoney/story/EnvelopeStoryBehavior", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(163622);
       return false;
       i = 0;
       break;
-      label134:
-      bool1 = false;
-      break label114;
+      label185:
+      bool = false;
+      break label148;
       if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
       {
-        if (this.uqP) {
-          cZH();
-        } else if ((this.uqH != null) && (this.uqa)) {
-          this.uqH.b(false, true, true);
-        } else if ((!cZF()) && (!cZE())) {
-          cZG();
+        if (this.vtu) {
+          diT();
+        } else if ((this.vtm != null) && (this.vsE)) {
+          this.vtm.b(false, true, true);
+        } else if ((!diR()) && (!diQ())) {
+          diS();
         }
       }
       else if (paramMotionEvent.getAction() == 2)
       {
         float f1 = paramMotionEvent.getY();
-        float f2 = this.uqL;
-        if ((this.uqH != null) && (!this.uqa) && (f1 - f2 > 0.0F) && (!this.uqM) && (bC() != 0)) {
-          if (bC() + this.uqH.getTotalScrollRange() < this.uqI)
+        float f2 = this.vtq;
+        if ((this.vtm != null) && (!this.vsE) && (f1 - f2 > 0.0F) && (!this.vtr) && (bR() != 0)) {
+          if (bR() + this.vtm.getTotalScrollRange() < this.vtn)
           {
-            this.uqN = true;
+            this.vts = true;
           }
-          else if ((this.uqN) && (bC() + this.uqH.getTotalScrollRange() >= this.uqI))
+          else if ((this.vts) && (bR() + this.vtm.getTotalScrollRange() >= this.vtn))
           {
-            this.uqM = true;
-            this.mtQ.vibrate(10L);
+            this.vtr = true;
+            this.mUw.vibrate(10L);
           }
         }
       }
@@ -322,7 +322,7 @@ public class EnvelopeStoryBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.EnvelopeStoryBehavior
  * JD-Core Version:    0.7.0.1
  */

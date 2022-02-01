@@ -1,24 +1,25 @@
 package d.l.b.a.b.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.y;
+import d.g.b.p;
+import d.z;
 
 public abstract class k
-  extends g<y>
+  extends g<z>
 {
-  public static final a LFz = new a((byte)0);
+  public static final a Nwx = new a((byte)0);
   
   public k()
   {
-    super(y.KTp);
+    super(z.MKo);
   }
   
   public static final class a
   {
-    public static k aWM(String paramString)
+    public static k bcP(String paramString)
     {
       AppMethodBeat.i(60066);
-      d.g.b.k.h(paramString, "message");
+      p.h(paramString, "message");
       paramString = (k)new k.b(paramString);
       AppMethodBeat.o(60066);
       return paramString;
@@ -45,7 +46,7 @@ public abstract class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.b.k
  * JD-Core Version:    0.7.0.1
  */

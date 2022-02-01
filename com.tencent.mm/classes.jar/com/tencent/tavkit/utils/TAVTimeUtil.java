@@ -12,23 +12,23 @@ public class TAVTimeUtil
 {
   public static float factorForTime(CMTime paramCMTime, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(192183);
+    AppMethodBeat.i(219985);
     if (paramCMTimeRange == null)
     {
-      AppMethodBeat.o(192183);
+      AppMethodBeat.o(219985);
       return 0.0F;
     }
     float f = paramCMTime.sub(paramCMTimeRange.getStart()).getTimeSeconds() / paramCMTimeRange.getDuration().getTimeSeconds();
-    AppMethodBeat.o(192183);
+    AppMethodBeat.o(219985);
     return f;
   }
   
   public static CMTimeRange getIntersection(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2)
   {
-    AppMethodBeat.i(192184);
+    AppMethodBeat.i(219986);
     if ((paramCMTimeRange1 == null) || (paramCMTimeRange2 == null))
     {
-      AppMethodBeat.o(192184);
+      AppMethodBeat.o(219986);
       return null;
     }
     if (paramCMTimeRange1.getStart().bigThan(paramCMTimeRange2.getStart())) {}
@@ -36,7 +36,7 @@ public class TAVTimeUtil
     {
       if (paramCMTimeRange2.getEnd().smallThan(paramCMTimeRange1.getStart()))
       {
-        AppMethodBeat.o(192184);
+        AppMethodBeat.o(219986);
         return null;
       }
       if (paramCMTimeRange2.getStart().bigThan(paramCMTimeRange1.getStart()))
@@ -50,7 +50,7 @@ public class TAVTimeUtil
       for (paramCMTimeRange1 = paramCMTimeRange2.getEnd();; paramCMTimeRange1 = paramCMTimeRange1.getEnd())
       {
         paramCMTimeRange1 = new CMTimeRange((CMTime)localObject, paramCMTimeRange1.sub((CMTime)localObject));
-        AppMethodBeat.o(192184);
+        AppMethodBeat.o(219986);
         return paramCMTimeRange1;
         localObject = paramCMTimeRange1.getStart();
         break;
@@ -63,7 +63,7 @@ public class TAVTimeUtil
   
   public static List<CMTimeRange> mixTimeRangesWithMinTimeRange(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2, CMTimeRange paramCMTimeRange3)
   {
-    AppMethodBeat.i(192186);
+    AppMethodBeat.i(219988);
     if (paramCMTimeRange3.containsTimeRange(paramCMTimeRange1))
     {
       paramCMTimeRange1 = new ArrayList();
@@ -76,14 +76,14 @@ public class TAVTimeUtil
       if (paramCMTimeRange3.getTimeSeconds() > 0.0F) {
         paramCMTimeRange1.add(new CMTimeRange(paramCMTimeRange2.getEnd(), paramCMTimeRange3));
       }
-      AppMethodBeat.o(192186);
+      AppMethodBeat.o(219988);
       return paramCMTimeRange1;
     }
     if (paramCMTimeRange1.equals(paramCMTimeRange3))
     {
       paramCMTimeRange1 = new ArrayList();
       paramCMTimeRange1.add(paramCMTimeRange2);
-      AppMethodBeat.o(192186);
+      AppMethodBeat.o(219988);
       return paramCMTimeRange1;
     }
     Object localObject = new ArrayList();
@@ -98,13 +98,13 @@ public class TAVTimeUtil
     if (paramCMTimeRange1.getDuration().getTimeSeconds() > 0.0F) {
       ((List)localObject).add(paramCMTimeRange1);
     }
-    AppMethodBeat.o(192186);
+    AppMethodBeat.o(219988);
     return localObject;
   }
   
   public static List<CMTimeRange> sliceTimeRangesForTimeRange1(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2)
   {
-    AppMethodBeat.i(192185);
+    AppMethodBeat.i(219987);
     Object localObject = getIntersection(paramCMTimeRange1, paramCMTimeRange2);
     if (((CMTimeRange)localObject).getDuration().getTimeSeconds() > 0.0F) {
       if ((paramCMTimeRange2.containsTimeRange(paramCMTimeRange1)) || ((paramCMTimeRange1.getStart().getTimeSeconds() < paramCMTimeRange2.getStart().getTimeSeconds()) && (paramCMTimeRange1.getEnd().getTimeSeconds() < paramCMTimeRange2.getEnd().getTimeSeconds()))) {
@@ -117,17 +117,24 @@ public class TAVTimeUtil
       {
         public final int compare(CMTimeRange paramAnonymousCMTimeRange1, CMTimeRange paramAnonymousCMTimeRange2)
         {
-          AppMethodBeat.i(192181);
-          if (paramAnonymousCMTimeRange1.getStart().smallThan(paramAnonymousCMTimeRange2.getStart()))
+          AppMethodBeat.i(219983);
+          paramAnonymousCMTimeRange1 = paramAnonymousCMTimeRange1.getStart();
+          paramAnonymousCMTimeRange2 = paramAnonymousCMTimeRange2.getStart();
+          if (paramAnonymousCMTimeRange1.equalsTo(paramAnonymousCMTimeRange2))
           {
-            AppMethodBeat.o(192181);
+            AppMethodBeat.o(219983);
+            return 0;
+          }
+          if (paramAnonymousCMTimeRange1.smallThan(paramAnonymousCMTimeRange2))
+          {
+            AppMethodBeat.o(219983);
             return -1;
           }
-          AppMethodBeat.o(192181);
+          AppMethodBeat.o(219983);
           return 1;
         }
       });
-      AppMethodBeat.o(192185);
+      AppMethodBeat.o(219987);
       return paramCMTimeRange1;
       paramCMTimeRange1 = mixTimeRangesWithMinTimeRange(paramCMTimeRange2, (CMTimeRange)localObject, paramCMTimeRange1);
       continue;
@@ -140,13 +147,13 @@ public class TAVTimeUtil
   
   public static List<CMTimeRange> timeRange(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2)
   {
-    AppMethodBeat.i(192187);
+    AppMethodBeat.i(219989);
     CMTimeRange localCMTimeRange1 = getIntersection(paramCMTimeRange1, paramCMTimeRange2);
     if ((localCMTimeRange1 == null) || (localCMTimeRange1.getDuration().getTimeSeconds() <= 0.0F))
     {
       paramCMTimeRange2 = new ArrayList();
       paramCMTimeRange2.add(paramCMTimeRange1);
-      AppMethodBeat.o(192187);
+      AppMethodBeat.o(219989);
       return paramCMTimeRange2;
     }
     paramCMTimeRange2 = new ArrayList();
@@ -158,13 +165,13 @@ public class TAVTimeUtil
     if (paramCMTimeRange1.getDuration().getTimeSeconds() > 0.0F) {
       paramCMTimeRange2.add(paramCMTimeRange1);
     }
-    AppMethodBeat.o(192187);
+    AppMethodBeat.o(219989);
     return paramCMTimeRange2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.utils.TAVTimeUtil
  * JD-Core Version:    0.7.0.1
  */

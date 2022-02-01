@@ -1,35 +1,34 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.c.a;
+import com.tencent.mm.al.a.a;
+import com.tencent.mm.al.b.a;
 import com.tencent.mm.cn.f;
-import com.tencent.mm.protocal.protobuf.cpx;
-import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.protocal.protobuf.cvc;
+import com.tencent.mm.protocal.protobuf.cvp;
 
-public abstract class a<Req extends cpx, Resp extends cqk>
+public abstract class a<Req extends cvc, Resp extends cvp>
 {
-  private c ugn;
-  Req ugo;
-  private Resp ugp;
+  private com.tencent.mm.al.a viX;
+  Req viY;
+  private Resp viZ;
   
-  public final <T> f<T> b(com.tencent.mm.vending.c.a<T, c.a<Resp>> parama)
+  public final <T> f<T> b(com.tencent.mm.vending.c.a<T, a.a<Resp>> parama)
   {
     boolean bool2 = true;
-    cYA();
-    this.ugp = cYz();
-    this.ugn = new c();
-    c localc = this.ugn;
-    cpx localcpx = this.ugo;
-    cqk localcqk = this.ugp;
-    if ((localcpx == null) || (localcqk == null))
+    dhM();
+    this.viZ = dhL();
+    this.viX = new com.tencent.mm.al.a();
+    com.tencent.mm.al.a locala = this.viX;
+    cvc localcvc = this.viY;
+    cvp localcvp = this.viZ;
+    if ((localcvc == null) || (localcvp == null))
     {
       parama = new StringBuilder("CgiBase called withoud req or resp req?[");
-      if (localcpx == null)
+      if (localcvc == null)
       {
         bool1 = true;
         parama = parama.append(bool1).append("] resp?[");
-        if (localcqk != null) {
+        if (localcvp != null) {
           break label114;
         }
       }
@@ -41,20 +40,20 @@ public abstract class a<Req extends cpx, Resp extends cqk>
         break;
       }
     }
-    b.a locala = new b.a();
-    locala.funcId = getFuncId();
-    locala.uri = getUri();
-    locala.hvt = localcpx;
-    locala.hvu = localcqk;
-    localc.rr = locala.aAz();
-    this.ugn.aBB().g(new com.tencent.mm.vending.c.a() {}).b(parama);
+    b.a locala1 = new b.a();
+    locala1.funcId = getFuncId();
+    locala1.uri = getUri();
+    locala1.hNM = localcvc;
+    locala1.hNN = localcvp;
+    locala.c(locala1.aDC());
+    this.viX.aED().g(new com.tencent.mm.vending.c.a() {}).b(parama);
   }
   
-  protected void cYA() {}
+  protected abstract Resp dhL();
   
-  protected void cYB() {}
+  protected void dhM() {}
   
-  protected abstract Resp cYz();
+  protected void dhN() {}
   
   protected abstract int getFuncId();
   
@@ -62,7 +61,7 @@ public abstract class a<Req extends cpx, Resp extends cqk>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.a.a
  * JD-Core Version:    0.7.0.1
  */

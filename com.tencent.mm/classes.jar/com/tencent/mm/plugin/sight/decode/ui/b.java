@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.sight.decode.ui;
 
 public abstract interface b
 {
-  public abstract void anR();
+  public abstract void aqD();
   
-  public abstract void nn(int paramInt);
+  public abstract void nM(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.ui.b
  * JD-Core Version:    0.7.0.1
  */

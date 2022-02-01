@@ -1,11 +1,11 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public abstract interface e$l
 {
-  public static final String Hhq = ;
-  public static final String jLX = ai.getPackageName() + ":tools";
+  public static final String IUG = ;
+  public static final String kgi = aj.getPackageName() + ":tools";
 }
 
 

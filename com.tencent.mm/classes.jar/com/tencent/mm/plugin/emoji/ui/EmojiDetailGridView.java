@@ -9,9 +9,9 @@ import com.tencent.mm.view.SmileySubGrid;
 public class EmojiDetailGridView
   extends SmileySubGrid
 {
-  private String pbW;
-  private EmojiDetailScrollView pfM;
-  private volatile boolean pfN = true;
+  private String pFG;
+  private EmojiDetailScrollView pJo;
+  private volatile boolean pJp = true;
   
   public EmojiDetailGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,7 +25,7 @@ public class EmojiDetailGridView
   
   public String getProductId()
   {
-    return this.pbW;
+    return this.pFG;
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
@@ -37,19 +37,19 @@ public class EmojiDetailGridView
   
   public void setEmojiDetailScrollView(EmojiDetailScrollView paramEmojiDetailScrollView)
   {
-    this.pfM = paramEmojiDetailScrollView;
+    this.pJo = paramEmojiDetailScrollView;
   }
   
   public void setProductId(String paramString)
   {
-    this.pbW = paramString;
+    this.pFG = paramString;
   }
   
   public void setScrollEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(108928);
-    if (this.pfM != null) {
-      this.pfM.setScrollEnable(paramBoolean);
+    if (this.pJo != null) {
+      this.pJo.setScrollEnable(paramBoolean);
     }
     AppMethodBeat.o(108928);
   }

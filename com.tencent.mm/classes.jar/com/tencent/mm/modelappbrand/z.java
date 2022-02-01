@@ -3,12 +3,12 @@ package com.tencent.mm.modelappbrand;
 public abstract class z
   implements o
 {
+  public abstract void Cl(String paramString);
+  
   public final String getName()
   {
     return "onWidgetDrawDataInvalid";
   }
-  
-  public abstract void zm(String paramString);
 }
 
 

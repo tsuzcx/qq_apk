@@ -7,8 +7,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.plugin.gallery.model.e;
 import com.tencent.mm.plugin.gallery.model.o;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.a;
 import java.util.ArrayList;
 
@@ -17,8 +17,8 @@ public final class GalleryEntryUI
   extends HellActivity
 {
   private boolean mInit = false;
-  private int sPN;
-  private int sPO;
+  private int tMr;
+  private int tMs;
   
   protected final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -27,7 +27,7 @@ public final class GalleryEntryUI
     if (paramIntent == null)
     {
       str = "";
-      ac.i("MicroMsg.GalleryEntryUI", "on activity result, requestCode %d resultCode %d, data:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
+      ad.i("MicroMsg.GalleryEntryUI", "on activity result, requestCode %d resultCode %d, data:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
       switch (paramInt2)
       {
       }
@@ -39,7 +39,7 @@ public final class GalleryEntryUI
       return;
       str = paramIntent.toString();
       break;
-      ac.d("MicroMsg.GalleryEntryUI", "user choose canceld");
+      ad.d("MicroMsg.GalleryEntryUI", "user choose canceld");
       setResult(0);
       continue;
       if (paramIntent == null)
@@ -56,14 +56,14 @@ public final class GalleryEntryUI
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(111501);
-    ac.i("MicroMsg.GalleryEntryUI", "on create");
+    ad.i("MicroMsg.GalleryEntryUI", "on create");
     super.onCreate(paramBundle);
-    ac.i("MicroMsg.GalleryEntryUI", "checktask onCreate:%s#0x%x task:%s", new Object[] { getClass().getSimpleName(), Integer.valueOf(hashCode()), bs.jb(this) });
-    this.sPN = getIntent().getIntExtra("query_source_type", 3);
-    this.sPO = getIntent().getIntExtra("query_media_type", 1);
-    ac.i("MicroMsg.GalleryEntryUI", "query souce: " + this.sPN + ", queryType: " + this.sPO);
-    e.cMt().setQueryType(this.sPO);
-    e.cMt().kxr = this.sPN;
+    ad.i("MicroMsg.GalleryEntryUI", "checktask onCreate:%s#0x%x task:%s", new Object[] { getClass().getSimpleName(), Integer.valueOf(hashCode()), bt.jl(this) });
+    this.tMr = getIntent().getIntExtra("query_source_type", 3);
+    this.tMs = getIntent().getIntExtra("query_media_type", 1);
+    ad.i("MicroMsg.GalleryEntryUI", "query souce: " + this.tMr + ", queryType: " + this.tMs);
+    e.cUM().setQueryType(this.tMs);
+    e.cUM().kTx = this.tMr;
     AppMethodBeat.o(111501);
   }
   
@@ -71,14 +71,14 @@ public final class GalleryEntryUI
   {
     AppMethodBeat.i(111504);
     super.onNewIntent(paramIntent);
-    ac.d("MicroMsg.GalleryEntryUI", "on new intent, #0x%x", new Object[] { Integer.valueOf(hashCode()) });
+    ad.d("MicroMsg.GalleryEntryUI", "on new intent, #0x%x", new Object[] { Integer.valueOf(hashCode()) });
     AppMethodBeat.o(111504);
   }
   
   protected final void onRestoreInstanceState(Bundle paramBundle)
   {
     AppMethodBeat.i(111502);
-    ac.d("MicroMsg.GalleryEntryUI", "onRestoreInstanceState");
+    ad.d("MicroMsg.GalleryEntryUI", "onRestoreInstanceState");
     super.onRestoreInstanceState(paramBundle);
     this.mInit = true;
     AppMethodBeat.o(111502);
@@ -87,22 +87,22 @@ public final class GalleryEntryUI
   public final void onResume()
   {
     AppMethodBeat.i(111503);
-    ac.i("MicroMsg.GalleryEntryUI", "on resume, init %B", new Object[] { Boolean.valueOf(this.mInit) });
+    ad.i("MicroMsg.GalleryEntryUI", "on resume, init %B", new Object[] { Boolean.valueOf(this.mInit) });
     super.onResume();
     Object localObject;
     if (!this.mInit)
     {
-      ac.i("MicroMsg.GalleryEntryUI", "doRedirect %s", new Object[] { bs.eWi() });
+      ad.i("MicroMsg.GalleryEntryUI", "doRedirect %s", new Object[] { bt.flS() });
       localObject = getIntent();
       if (!((Intent)localObject).getBooleanExtra("preview_image", false)) {
         break label284;
       }
-      ac.d("MicroMsg.GalleryEntryUI", "jump to preview ui directly");
+      ad.d("MicroMsg.GalleryEntryUI", "jump to preview ui directly");
       ArrayList localArrayList = ((Intent)localObject).getStringArrayListExtra("preview_image_list");
       Intent localIntent = new Intent(this, ImagePreviewUI.class);
       localIntent.addFlags(67108864);
       localIntent.putExtra("max_select_count", ((Intent)localObject).getIntExtra("max_select_count", 9));
-      localIntent.putExtra("query_source_type", this.sPN);
+      localIntent.putExtra("query_source_type", this.tMr);
       localIntent.putExtra("isPreviewPhoto", ((Intent)localObject).getBooleanExtra("isPreviewPhoto", false));
       localIntent.putExtra("preview_image", ((Intent)localObject).getBooleanExtra("preview_image", false));
       localIntent.putExtra("key_force_hide_edit_image_button", getIntent().getBooleanExtra("key_force_hide_edit_image_button", false));
@@ -110,10 +110,10 @@ public final class GalleryEntryUI
       localIntent.putExtra("key_is_raw_image_button_disable", getIntent().getBooleanExtra("key_is_raw_image_button_disable", false));
       localObject = getIntent().getStringExtra("GalleryUI_FromUser");
       String str = getIntent().getStringExtra("GalleryUI_ToUser");
-      if (!bs.isNullOrNil((String)localObject)) {
+      if (!bt.isNullOrNil((String)localObject)) {
         localIntent.putExtra("GalleryUI_FromUser", (String)localObject);
       }
-      if (!bs.isNullOrNil(str)) {
+      if (!bt.isNullOrNil(str)) {
         localIntent.putExtra("GalleryUI_ToUser", str);
       }
       localIntent.putStringArrayListExtra("preview_image_list", localArrayList);
@@ -137,6 +137,9 @@ public final class GalleryEntryUI
       ((Intent)localObject).putExtra("key_force_show_raw_image_button", getIntent().getBooleanExtra("key_force_show_raw_image_button", false));
       ((Intent)localObject).putExtra("key_is_raw_image_button_disable", getIntent().getBooleanExtra("key_is_raw_image_button_disable", false));
       ((Intent)localObject).putExtra("GalleryUI_SkipVideoSizeLimit", getIntent().getBooleanExtra("GalleryUI_SkipVideoSizeLimit", false));
+      ((Intent)localObject).putExtra("album_business_tag", getIntent().getStringExtra("album_business_tag"));
+      ((Intent)localObject).putExtra("album_video_max_duration", getIntent().getIntExtra("album_video_max_duration", 10));
+      ((Intent)localObject).putExtra("album_video_min_duration", getIntent().getIntExtra("album_video_min_duration", 0));
       startActivityForResult((Intent)localObject, 0);
     }
   }

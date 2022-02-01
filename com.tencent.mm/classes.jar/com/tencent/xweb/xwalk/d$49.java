@@ -4,6 +4,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class d$49
   implements View.OnClickListener
@@ -13,11 +15,15 @@ final class d$49
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(154212);
-    paramView = this.KFZ;
-    if (!this.KFZ.isChecked()) {}
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/xweb/xwalk/WebDebugPage$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    paramView = this.Mwz;
+    if (!this.Mwz.isChecked()) {}
     for (boolean bool = true;; bool = false)
     {
       paramView.setChecked(bool);
+      a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(154212);
       return;
     }

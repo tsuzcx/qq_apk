@@ -16,18 +16,18 @@ import java.util.Queue;
 
 public final class j
 {
-  private static final char[] aMo;
-  private static final char[] aMp;
+  private static final char[] aOf;
+  private static final char[] aOg;
   
   static
   {
     AppMethodBeat.i(77784);
-    aMo = "0123456789abcdef".toCharArray();
-    aMp = new char[64];
+    aOf = "0123456789abcdef".toCharArray();
+    aOg = new char[64];
     AppMethodBeat.o(77784);
   }
   
-  public static boolean aY(int paramInt1, int paramInt2)
+  public static boolean aZ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(77774);
     if ((dw(paramInt1)) && (dw(paramInt2)))
@@ -87,7 +87,7 @@ public final class j
     return localArrayDeque;
   }
   
-  public static boolean e(Object paramObject1, Object paramObject2)
+  public static boolean g(Object paramObject1, Object paramObject2)
   {
     AppMethodBeat.i(77780);
     if (paramObject1 == null)
@@ -105,7 +105,7 @@ public final class j
     return bool;
   }
   
-  public static boolean f(Object paramObject1, Object paramObject2)
+  public static boolean h(Object paramObject1, Object paramObject2)
   {
     AppMethodBeat.i(77781);
     if (paramObject1 == null)
@@ -120,7 +120,7 @@ public final class j
     }
     if ((paramObject1 instanceof l))
     {
-      bool = ((l)paramObject1).oW();
+      bool = ((l)paramObject1).po();
       AppMethodBeat.o(77781);
       return bool;
     }
@@ -150,7 +150,7 @@ public final class j
       localConfig = Bitmap.Config.ARGB_8888;
     }
     int i;
-    switch (j.1.$SwitchMap$android$graphics$Bitmap$Config[localConfig.ordinal()])
+    switch (1.$SwitchMap$android$graphics$Bitmap$Config[localConfig.ordinal()])
     {
     default: 
       i = 4;
@@ -195,15 +195,15 @@ public final class j
   public static String m(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(77771);
-    synchronized (aMp)
+    synchronized (aOg)
     {
-      char[] arrayOfChar2 = aMp;
+      char[] arrayOfChar2 = aOg;
       int i = 0;
       while (i < paramArrayOfByte.length)
       {
         int j = paramArrayOfByte[i] & 0xFF;
-        arrayOfChar2[(i * 2)] = aMo[(j >>> 4)];
-        arrayOfChar2[(i * 2 + 1)] = aMo[(j & 0xF)];
+        arrayOfChar2[(i * 2)] = aOf[(j >>> 4)];
+        arrayOfChar2[(i * 2 + 1)] = aOf[(j & 0xF)];
         i += 1;
       }
       paramArrayOfByte = new String(arrayOfChar2);
@@ -212,10 +212,10 @@ public final class j
     }
   }
   
-  public static void qa()
+  public static void qs()
   {
     AppMethodBeat.i(77775);
-    if (!qb())
+    if (!qt())
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("You must call this method on the main thread");
       AppMethodBeat.o(77775);
@@ -224,7 +224,7 @@ public final class j
     AppMethodBeat.o(77775);
   }
   
-  public static boolean qb()
+  public static boolean qt()
   {
     AppMethodBeat.i(77776);
     if (Looper.myLooper() == Looper.getMainLooper())
@@ -236,10 +236,10 @@ public final class j
     return false;
   }
   
-  public static boolean qc()
+  public static boolean qu()
   {
     AppMethodBeat.i(77777);
-    if (!qb())
+    if (!qt())
     {
       AppMethodBeat.o(77777);
       return true;

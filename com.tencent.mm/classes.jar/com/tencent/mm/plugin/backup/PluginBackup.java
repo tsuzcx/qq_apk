@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.model.t;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.o;
 
 public class PluginBackup
@@ -14,12 +14,12 @@ public class PluginBackup
   public void configure(g paramg)
   {
     AppMethodBeat.i(21164);
-    if (paramg.ahL())
+    if (paramg.akw())
     {
       o.b("msgsynchronize", "msgsynchronize", 2592000000L, 107);
-      ac.i("VFS.Debug", "msgsynchronize FS registered");
+      ad.i("VFS.Debug", "msgsynchronize FS registered");
       o.b("backupRecover", "backupRecover", 2592000000L, 99);
-      ac.i("VFS.Debug", "backupRecover FS registered");
+      ad.i("VFS.Debug", "backupRecover FS registered");
     }
     AppMethodBeat.o(21164);
   }
@@ -27,9 +27,9 @@ public class PluginBackup
   public void execute(g paramg)
   {
     AppMethodBeat.i(21165);
-    if (paramg.ahL())
+    if (paramg.akw())
     {
-      ac.i("MicroMsg.PluginBackup", "PluginMonitor execute PluginMonitor new BackupCore");
+      ad.i("MicroMsg.PluginBackup", "PluginMonitor execute PluginMonitor new BackupCore");
       pin(new t(com.tencent.mm.plugin.backup.j.a.class));
     }
     AppMethodBeat.o(21165);

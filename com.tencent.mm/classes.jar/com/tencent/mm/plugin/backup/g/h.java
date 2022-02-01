@@ -2,65 +2,65 @@ package com.tencent.mm.plugin.backup.g;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 public final class h
 {
   static int index = 0;
-  private a mXE;
-  int[] mZj;
-  int mZk;
-  au mZl;
+  private a nyb;
+  int[] nzG;
+  int nzH;
+  av nzI;
   boolean stopped;
   
   public h(a parama)
   {
     AppMethodBeat.i(21732);
-    this.mZj = new int[] { 1000, 1000, 1000, 2000, 5000, 9000, 1000 };
-    this.mZk = 0;
+    this.nzG = new int[] { 1000, 1000, 1000, 2000, 5000, 9000, 1000 };
+    this.nzH = 0;
     this.stopped = false;
-    this.mZl = new au(Looper.getMainLooper(), new au.a()
+    this.nzI = new av(Looper.getMainLooper(), new av.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(21731);
         if (h.a(h.this))
         {
-          ac.e("MicroMsg.BackupReconnectHandler", "backupReconnectTimeHandler stopped is true, index[%d]", new Object[] { Integer.valueOf(h.index) });
-          h.this.mZk = 0;
+          ad.e("MicroMsg.BackupReconnectHandler", "backupReconnectTimeHandler stopped is true, index[%d]", new Object[] { Integer.valueOf(h.index) });
+          h.this.nzH = 0;
           AppMethodBeat.o(21731);
           return false;
         }
-        ac.i("MicroMsg.BackupReconnectHandler", "backupReconnectTimeHandler start reconnect, index[%d]", new Object[] { Integer.valueOf(h.index) });
+        ad.i("MicroMsg.BackupReconnectHandler", "backupReconnectTimeHandler start reconnect, index[%d]", new Object[] { Integer.valueOf(h.index) });
         if (h.index < h.b(h.this).length)
         {
-          h.c(h.this).bEh();
-          au localau = h.d(h.this);
+          h.c(h.this).bIq();
+          av localav = h.d(h.this);
           long l = h.b(h.this)[h.index];
-          localau.au(l, l);
-          h.aBu();
+          localav.az(l, l);
+          h.Qf();
         }
         for (;;)
         {
           AppMethodBeat.o(21731);
           return false;
           h.e(h.this);
-          h.this.mZk = 0;
-          h.c(h.this).bEi();
+          h.this.nzH = 0;
+          h.c(h.this).bIr();
         }
       }
     }, false);
-    this.mXE = parama;
+    this.nyb = parama;
     AppMethodBeat.o(21732);
   }
   
   public static abstract interface a
   {
-    public abstract void bEh();
+    public abstract void bIq();
     
-    public abstract void bEi();
+    public abstract void bIr();
   }
 }
 

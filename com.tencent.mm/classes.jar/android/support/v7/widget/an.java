@@ -14,25 +14,25 @@ import android.graphics.drawable.Drawable;
 final class an
   extends Drawable
 {
-  float asW;
-  private final RectF asX;
-  private final Rect asY;
-  float asZ;
-  private boolean ata = false;
-  private boolean atb = true;
-  ColorStateList atc;
+  float auN;
+  private final RectF auO;
+  private final Rect auP;
+  float auQ;
+  private boolean auR = false;
+  private boolean auS = true;
+  ColorStateList auT;
   private final Paint mPaint;
-  private PorterDuffColorFilter vn;
-  private ColorStateList wm;
-  private PorterDuff.Mode wn = PorterDuff.Mode.SRC_IN;
+  private PorterDuffColorFilter xg;
+  private ColorStateList ye;
+  private PorterDuff.Mode yf = PorterDuff.Mode.SRC_IN;
   
   an(ColorStateList paramColorStateList, float paramFloat)
   {
-    this.asW = paramFloat;
+    this.auN = paramFloat;
     this.mPaint = new Paint(5);
     g(paramColorStateList);
-    this.asX = new RectF();
-    this.asY = new Rect();
+    this.auO = new RectF();
+    this.auP = new Rect();
   }
   
   private PorterDuffColorFilter b(ColorStateList paramColorStateList, PorterDuff.Mode paramMode)
@@ -45,12 +45,12 @@ final class an
   
   final void a(float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramFloat == this.asZ) && (this.ata == paramBoolean1) && (this.atb == paramBoolean2)) {
+    if ((paramFloat == this.auQ) && (this.auR == paramBoolean1) && (this.auS == paramBoolean2)) {
       return;
     }
-    this.asZ = paramFloat;
-    this.ata = paramBoolean1;
-    this.atb = paramBoolean2;
+    this.auQ = paramFloat;
+    this.auR = paramBoolean1;
+    this.auS = paramBoolean2;
     h(null);
     invalidateSelf();
   }
@@ -58,12 +58,12 @@ final class an
   public final void draw(Canvas paramCanvas)
   {
     Paint localPaint = this.mPaint;
-    if ((this.vn != null) && (localPaint.getColorFilter() == null)) {
-      localPaint.setColorFilter(this.vn);
+    if ((this.xg != null) && (localPaint.getColorFilter() == null)) {
+      localPaint.setColorFilter(this.xg);
     }
     for (int i = 1;; i = 0)
     {
-      paramCanvas.drawRoundRect(this.asX, this.asW, this.asW, localPaint);
+      paramCanvas.drawRoundRect(this.auO, this.auN, this.auN, localPaint);
       if (i != 0) {
         localPaint.setColorFilter(null);
       }
@@ -77,8 +77,8 @@ final class an
     if (paramColorStateList == null) {
       localColorStateList = ColorStateList.valueOf(0);
     }
-    this.atc = localColorStateList;
-    this.mPaint.setColor(this.atc.getColorForState(getState(), this.atc.getDefaultColor()));
+    this.auT = localColorStateList;
+    this.mPaint.setColor(this.auT.getColorForState(getState(), this.auT.getDefaultColor()));
   }
   
   public final int getOpacity()
@@ -88,7 +88,7 @@ final class an
   
   public final void getOutline(Outline paramOutline)
   {
-    paramOutline.setRoundRect(this.asY, this.asW);
+    paramOutline.setRoundRect(this.auP, this.auN);
   }
   
   final void h(Rect paramRect)
@@ -97,20 +97,20 @@ final class an
     if (paramRect == null) {
       localRect = getBounds();
     }
-    this.asX.set(localRect.left, localRect.top, localRect.right, localRect.bottom);
-    this.asY.set(localRect);
-    if (this.ata)
+    this.auO.set(localRect.left, localRect.top, localRect.right, localRect.bottom);
+    this.auP.set(localRect);
+    if (this.auR)
     {
-      float f1 = ao.a(this.asZ, this.asW, this.atb);
-      float f2 = ao.b(this.asZ, this.asW, this.atb);
-      this.asY.inset((int)Math.ceil(f2), (int)Math.ceil(f1));
-      this.asX.set(this.asY);
+      float f1 = ao.a(this.auQ, this.auN, this.auS);
+      float f2 = ao.b(this.auQ, this.auN, this.auS);
+      this.auP.inset((int)Math.ceil(f2), (int)Math.ceil(f1));
+      this.auO.set(this.auP);
     }
   }
   
   public final boolean isStateful()
   {
-    return ((this.wm != null) && (this.wm.isStateful())) || ((this.atc != null) && (this.atc.isStateful())) || (super.isStateful());
+    return ((this.ye != null) && (this.ye.isStateful())) || ((this.auT != null) && (this.auT.isStateful())) || (super.isStateful());
   }
   
   protected final void onBoundsChange(Rect paramRect)
@@ -121,17 +121,17 @@ final class an
   
   protected final boolean onStateChange(int[] paramArrayOfInt)
   {
-    int i = this.atc.getColorForState(paramArrayOfInt, this.atc.getDefaultColor());
+    int i = this.auT.getColorForState(paramArrayOfInt, this.auT.getDefaultColor());
     if (i != this.mPaint.getColor()) {}
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
         this.mPaint.setColor(i);
       }
-      if ((this.wm == null) || (this.wn == null)) {
+      if ((this.ye == null) || (this.yf == null)) {
         break;
       }
-      this.vn = b(this.wm, this.wn);
+      this.xg = b(this.ye, this.yf);
       return true;
     }
     return bool;
@@ -149,15 +149,15 @@ final class an
   
   public final void setTintList(ColorStateList paramColorStateList)
   {
-    this.wm = paramColorStateList;
-    this.vn = b(this.wm, this.wn);
+    this.ye = paramColorStateList;
+    this.xg = b(this.ye, this.yf);
     invalidateSelf();
   }
   
   public final void setTintMode(PorterDuff.Mode paramMode)
   {
-    this.wn = paramMode;
-    this.vn = b(this.wm, this.wn);
+    this.yf = paramMode;
+    this.xg = b(this.ye, this.yf);
     invalidateSelf();
   }
 }

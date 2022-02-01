@@ -8,37 +8,37 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.ui.m;
+import com.tencent.mm.plugin.fts.ui.n;
 
 public final class j
   extends a
 {
-  a.a IAj;
-  private b IAl;
-  public boolean rVH;
+  a.a Krp;
+  private b Krr;
   public int resId;
+  public boolean sSq;
   
   public j(int paramInt)
   {
     super(1, paramInt);
     AppMethodBeat.i(102967);
-    this.IAl = new b();
-    this.IAj = new a();
+    this.Krr = new b();
+    this.Krp = new a();
     AppMethodBeat.o(102967);
   }
   
   public final void a(Context paramContext, a.a parama) {}
   
-  public final a.b aOg()
+  public final a.b aRs()
   {
-    return this.IAl;
+    return this.Krr;
   }
   
   public final class a
     extends a.a
   {
-    public TextView rAS;
-    public ImageView sDT;
+    public TextView stf;
+    public ImageView tAI;
     
     public a()
     {
@@ -58,9 +58,9 @@ public final class j
     {
       AppMethodBeat.i(102965);
       paramContext = LayoutInflater.from(paramContext).inflate(2131495364, paramViewGroup, false);
-      paramViewGroup = (j.a)j.this.IAj;
-      paramViewGroup.rAS = ((TextView)paramContext.findViewById(2131302483));
-      paramViewGroup.sDT = ((ImageView)paramContext.findViewById(2131302455));
+      paramViewGroup = (j.a)j.this.Krp;
+      paramViewGroup.stf = ((TextView)paramContext.findViewById(2131302483));
+      paramViewGroup.tAI = ((ImageView)paramContext.findViewById(2131302455));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102965);
       return paramContext;
@@ -72,19 +72,19 @@ public final class j
       parama = (j.a)parama;
       parama1 = (j)parama1;
       paramContext = paramContext.getResources();
-      if (j.this.rVH)
+      if (j.this.sSq)
       {
-        m.a(paramContext.getString(2131762958, new Object[] { paramContext.getString(parama1.resId) }), parama.rAS);
-        parama.sDT.setRotation(0.0F);
+        n.a(paramContext.getString(2131762958, new Object[] { paramContext.getString(parama1.resId) }), parama.stf);
+        parama.tAI.setRotation(0.0F);
         AppMethodBeat.o(102966);
         return;
       }
-      m.a(paramContext.getString(2131762959), parama.rAS);
-      parama.sDT.setRotation(180.0F);
+      n.a(paramContext.getString(2131762959), parama.stf);
+      parama.tAI.setRotation(180.0F);
       AppMethodBeat.o(102966);
     }
     
-    public final boolean aOh()
+    public final boolean aRt()
     {
       return false;
     }

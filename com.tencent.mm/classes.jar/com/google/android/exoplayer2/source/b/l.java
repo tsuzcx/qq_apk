@@ -17,39 +17,39 @@ import java.util.regex.Pattern;
 final class l
   implements e
 {
-  private static final Pattern bon;
-  private static final Pattern boo;
-  private final String aTm;
-  private final u bcR;
-  private g beR;
-  private final com.google.android.exoplayer2.i.m bop;
-  private byte[] boq;
+  private static final Pattern byI;
+  private static final Pattern byJ;
+  private final u bnm;
+  private g bpm;
+  private final com.google.android.exoplayer2.i.m byK;
+  private byte[] byL;
+  private final String language;
   private int sampleSize;
   
   static
   {
     AppMethodBeat.i(62932);
-    bon = Pattern.compile("LOCAL:([^,]+)");
-    boo = Pattern.compile("MPEGTS:(\\d+)");
+    byI = Pattern.compile("LOCAL:([^,]+)");
+    byJ = Pattern.compile("MPEGTS:(\\d+)");
     AppMethodBeat.o(62932);
   }
   
   public l(String paramString, u paramu)
   {
     AppMethodBeat.i(62926);
-    this.aTm = paramString;
-    this.bcR = paramu;
-    this.bop = new com.google.android.exoplayer2.i.m();
-    this.boq = new byte[1024];
+    this.language = paramString;
+    this.bnm = paramu;
+    this.byK = new com.google.android.exoplayer2.i.m();
+    this.byL = new byte[1024];
     AppMethodBeat.o(62926);
   }
   
   private com.google.android.exoplayer2.c.m ag(long paramLong)
   {
     AppMethodBeat.i(62931);
-    com.google.android.exoplayer2.c.m localm = this.beR.dW(0);
-    localm.f(Format.a("text/vtt", this.aTm, paramLong));
-    this.beR.sU();
+    com.google.android.exoplayer2.c.m localm = this.bpm.eb(0);
+    localm.f(Format.a("text/vtt", this.language, paramLong));
+    this.bpm.ut();
     AppMethodBeat.o(62931);
     return localm;
   }
@@ -58,18 +58,18 @@ final class l
   {
     AppMethodBeat.i(62930);
     int j = (int)paramf.getLength();
-    if (this.sampleSize == this.boq.length)
+    if (this.sampleSize == this.byL.length)
     {
-      paramk = this.boq;
+      paramk = this.byL;
       if (j == -1) {
         break label115;
       }
     }
     label115:
-    for (int i = j;; i = this.boq.length)
+    for (int i = j;; i = this.byL.length)
     {
-      this.boq = Arrays.copyOf(paramk, i * 3 / 2);
-      i = paramf.read(this.boq, this.sampleSize, this.boq.length - this.sampleSize);
+      this.byL = Arrays.copyOf(paramk, i * 3 / 2);
+      i = paramf.read(this.byL, this.sampleSize, this.byL.length - this.sampleSize);
       if (i == -1) {
         break;
       }
@@ -80,7 +80,7 @@ final class l
       AppMethodBeat.o(62930);
       return 0;
     }
-    paramf = new com.google.android.exoplayer2.i.m(this.boq);
+    paramf = new com.google.android.exoplayer2.i.m(this.byL);
     long l2;
     long l1;
     for (;;)
@@ -98,7 +98,7 @@ final class l
         if (!paramk.startsWith("X-TIMESTAMP-MAP")) {
           continue;
         }
-        localMatcher1 = bon.matcher(paramk);
+        localMatcher1 = byI.matcher(paramk);
         if (!localMatcher1.find())
         {
           paramf = new o("X-TIMESTAMP-MAP doesn't contain local timestamp: ".concat(String.valueOf(paramk)));
@@ -112,14 +112,14 @@ final class l
         AppMethodBeat.o(62930);
         throw paramf;
       }
-      Matcher localMatcher2 = boo.matcher(paramk);
+      Matcher localMatcher2 = byJ.matcher(paramk);
       if (!localMatcher2.find())
       {
         paramf = new o("X-TIMESTAMP-MAP doesn't contain media timestamp: ".concat(String.valueOf(paramk)));
         AppMethodBeat.o(62930);
         throw paramf;
       }
-      l2 = h.au(localMatcher1.group(1));
+      l2 = h.bn(localMatcher1.group(1));
       l1 = u.aq(Long.parseLong(localMatcher2.group(1)));
     }
     paramf = h.J(paramf);
@@ -130,11 +130,11 @@ final class l
     {
       AppMethodBeat.o(62930);
       return -1;
-      long l3 = h.au(paramf.group(1));
-      l1 = this.bcR.ao(u.ar(l1 + l3 - l2));
+      long l3 = h.bn(paramf.group(1));
+      l1 = this.bnm.ao(u.ar(l1 + l3 - l2));
       paramf = ag(l1 - l3);
-      this.bop.n(this.boq, this.sampleSize);
-      paramf.a(this.bop, this.sampleSize);
+      this.byK.n(this.byL, this.sampleSize);
+      paramf.a(this.byK, this.sampleSize);
       paramf.a(l1, 1, this.sampleSize, 0, null);
     }
   }
@@ -142,7 +142,7 @@ final class l
   public final void a(g paramg)
   {
     AppMethodBeat.i(62928);
-    this.beR = paramg;
+    this.bpm = paramg;
     paramg.a(new l.a(-9223372036854775807L));
     AppMethodBeat.o(62928);
   }
@@ -165,7 +165,7 @@ final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.l
  * JD-Core Version:    0.7.0.1
  */

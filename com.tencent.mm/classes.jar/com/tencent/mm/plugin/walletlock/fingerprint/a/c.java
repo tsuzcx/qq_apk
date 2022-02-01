@@ -2,38 +2,38 @@ package com.tencent.mm.plugin.walletlock.fingerprint.a;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.plugin.walletlock.c.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.soter.a.a;
 
 public final class c
-  implements com.tencent.mm.ak.g, d
+  implements com.tencent.mm.al.f, d
 {
-  d.a BTN = null;
-  private d.a BTO = null;
-  private boolean BTP = false;
-  private String iXf = null;
+  d.a Duh = null;
+  private d.a Dui = null;
+  private boolean Duj = false;
   boolean isCancelled = false;
+  private String jqo = null;
   
-  static void kd(String paramString1, String paramString2)
+  static void kx(String paramString1, String paramString2)
   {
     AppMethodBeat.i(129679);
     paramString1 = new e(paramString1, paramString2);
-    com.tencent.mm.kernel.g.agi().a(paramString1, 0);
+    com.tencent.mm.kernel.g.aiU().a(paramString1, 0);
     AppMethodBeat.o(129679);
   }
   
-  private void tV(boolean paramBoolean)
+  private void uF(boolean paramBoolean)
   {
     AppMethodBeat.i(129678);
-    ac.i("MicroMsg.FingerprintLockOpenDelegate", "alvinluo prepareAuthKey isNeedChangeAuthKey: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.i("MicroMsg.FingerprintLockOpenDelegate", "alvinluo prepareAuthKey isNeedChangeAuthKey: %b", new Object[] { Boolean.valueOf(paramBoolean) });
     com.tencent.soter.a.b.b local1 = new com.tencent.soter.a.b.b() {};
-    if (this.BTP) {}
-    for (Object localObject = null;; localObject = new g(this.iXf))
+    if (this.Duj) {}
+    for (Object localObject = null;; localObject = new g(this.jqo))
     {
       a.a(local1, paramBoolean, 3, (com.tencent.soter.a.f.e)localObject, new com.tencent.mm.plugin.soter.b.f());
       AppMethodBeat.o(129678);
@@ -44,40 +44,40 @@ public final class c
   public final void a(d.a parama, Bundle paramBundle)
   {
     AppMethodBeat.i(129677);
-    this.iXf = paramBundle.getString("key_pay_passwd");
-    this.BTP = paramBundle.getBoolean("key_fp_lock_offline_mode");
-    ac.i("MicroMsg.FingerprintLockOpenDelegate", "alvinluo prepare pwd: %s, isOfflineMode: %b", new Object[] { this.iXf, Boolean.valueOf(this.BTP) });
-    this.BTN = parama;
+    this.jqo = paramBundle.getString("key_pay_passwd");
+    this.Duj = paramBundle.getBoolean("key_fp_lock_offline_mode");
+    ad.i("MicroMsg.FingerprintLockOpenDelegate", "alvinluo prepare pwd: %s, isOfflineMode: %b", new Object[] { this.jqo, Boolean.valueOf(this.Duj) });
+    this.Duh = parama;
     this.isCancelled = false;
-    com.tencent.mm.plugin.walletlock.c.g.BVG.BVH = null;
-    com.tencent.mm.plugin.walletlock.c.g.BVG.BVI = null;
-    com.tencent.mm.kernel.g.agi().a(1967, this);
-    com.tencent.mm.kernel.g.agi().a(1548, this);
-    if (this.BTP)
+    com.tencent.mm.plugin.walletlock.c.g.Dwa.Dwb = null;
+    com.tencent.mm.plugin.walletlock.c.g.Dwa.Dwc = null;
+    com.tencent.mm.kernel.g.aiU().a(1967, this);
+    com.tencent.mm.kernel.g.aiU().a(1548, this);
+    if (this.Duj)
     {
       long l = System.currentTimeMillis();
-      com.tencent.mm.plugin.walletlock.c.g.BVG.BVH = String.valueOf(l);
-      tV(false);
+      com.tencent.mm.plugin.walletlock.c.g.Dwa.Dwb = String.valueOf(l);
+      uF(false);
       AppMethodBeat.o(129677);
       return;
     }
-    if (ai.eUY() == null)
+    if (aj.fkD() == null)
     {
-      if (this.BTN != null) {
-        this.BTN.aZ(2, "system error");
+      if (this.Duh != null) {
+        this.Duh.bc(2, "system error");
       }
       AppMethodBeat.o(129677);
       return;
     }
-    paramBundle = com.tencent.mm.plugin.soter.d.d.dTq();
-    parama = paramBundle.znE;
-    paramBundle = paramBundle.znF;
-    ac.i("MicroMsg.FingerprintLockOpenDelegate", "alvinluo cpuId: %s, uid: %s", new Object[] { parama, paramBundle });
-    if ((bs.isNullOrNil(parama)) || (bs.isNullOrNil(paramBundle)))
+    paramBundle = com.tencent.mm.plugin.soter.d.d.efE();
+    parama = paramBundle.AFy;
+    paramBundle = paramBundle.AFz;
+    ad.i("MicroMsg.FingerprintLockOpenDelegate", "alvinluo cpuId: %s, uid: %s", new Object[] { parama, paramBundle });
+    if ((bt.isNullOrNil(parama)) || (bt.isNullOrNil(paramBundle)))
     {
       com.tencent.mm.plugin.soter.e.b.a(true, new com.tencent.mm.plugin.soter.d.g()
       {
-        public final void aZ(int paramAnonymousInt, String paramAnonymousString)
+        public final void bc(int paramAnonymousInt, String paramAnonymousString)
         {
           AppMethodBeat.i(129676);
           if (c.this.isCancelled)
@@ -87,13 +87,13 @@ public final class c
           }
           if (paramAnonymousInt == 0)
           {
-            paramAnonymousString = com.tencent.mm.plugin.soter.d.d.dTq();
-            c.kd(paramAnonymousString.znE, paramAnonymousString.znF);
+            paramAnonymousString = com.tencent.mm.plugin.soter.d.d.efE();
+            c.kx(paramAnonymousString.AFy, paramAnonymousString.AFz);
             AppMethodBeat.o(129676);
             return;
           }
-          if (c.this.BTN != null) {
-            c.this.BTN.aZ(2, "init soter failed");
+          if (c.this.Duh != null) {
+            c.this.Duh.bc(2, "init soter failed");
           }
           AppMethodBeat.o(129676);
         }
@@ -101,23 +101,23 @@ public final class c
       AppMethodBeat.o(129677);
       return;
     }
-    kd(parama, paramBundle);
+    kx(parama, paramBundle);
     AppMethodBeat.o(129677);
   }
   
   public final void a(d.a parama, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(129680);
-    ac.i("MicroMsg.FingerprintLockOpenDelegate", "alvinluo do open fingerprint lock");
-    this.BTO = parama;
-    com.tencent.mm.kernel.g.agi().a(new f(paramString2, paramString3, paramString1), 0);
+    ad.i("MicroMsg.FingerprintLockOpenDelegate", "alvinluo do open fingerprint lock");
+    this.Dui = parama;
+    com.tencent.mm.kernel.g.aiU().a(new f(paramString2, paramString3, paramString1), 0);
     AppMethodBeat.o(129680);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(129682);
-    ac.i("MicroMsg.FingerprintLockOpenDelegate", "alvinluo fingerprint wallet lock open delegate errType: %d, errCode: %d, errMsg: %s, cgi type: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
+    ad.i("MicroMsg.FingerprintLockOpenDelegate", "alvinluo fingerprint wallet lock open delegate errType: %d, errCode: %d, errMsg: %s, cgi type: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
     if (this.isCancelled)
     {
       AppMethodBeat.o(129682);
@@ -128,15 +128,15 @@ public final class c
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         paramString = (e)paramn;
-        paramn = paramString.skD;
-        com.tencent.mm.plugin.walletlock.c.g.BVG.BVH = paramn;
-        tV(paramString.BTR);
+        paramn = paramString.thf;
+        com.tencent.mm.plugin.walletlock.c.g.Dwa.Dwb = paramn;
+        uF(paramString.Dul);
         AppMethodBeat.o(129682);
         return;
       }
-      if (this.BTN != null)
+      if (this.Duh != null)
       {
-        this.BTN.aZ(7, "get challenge failed");
+        this.Duh.bc(7, "get challenge failed");
         AppMethodBeat.o(129682);
       }
     }
@@ -144,19 +144,19 @@ public final class c
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        h.tZ(true);
-        if (this.BTO != null)
+        h.uJ(true);
+        if (this.Dui != null)
         {
-          this.BTO.aZ(0, "open touch lock ok");
+          this.Dui.bc(0, "open touch lock ok");
           AppMethodBeat.o(129682);
         }
       }
       else
       {
-        a.aeo(3);
-        h.tZ(false);
-        if (this.BTO != null) {
-          this.BTO.aZ(6, "open touch lock failed");
+        a.agO(3);
+        h.uJ(false);
+        if (this.Dui != null) {
+          this.Dui.bc(6, "open touch lock failed");
         }
       }
     }
@@ -166,12 +166,12 @@ public final class c
   public final void release()
   {
     AppMethodBeat.i(129681);
-    ac.d("MicroMsg.FingerprintLockOpenDelegate", "alvinluo release open delegate");
-    this.BTN = null;
-    this.BTO = null;
+    ad.d("MicroMsg.FingerprintLockOpenDelegate", "alvinluo release open delegate");
+    this.Duh = null;
+    this.Dui = null;
     this.isCancelled = true;
-    com.tencent.mm.kernel.g.agi().b(1967, this);
-    com.tencent.mm.kernel.g.agi().b(1548, this);
+    com.tencent.mm.kernel.g.aiU().b(1967, this);
+    com.tencent.mm.kernel.g.aiU().b(1548, this);
     AppMethodBeat.o(129681);
   }
 }

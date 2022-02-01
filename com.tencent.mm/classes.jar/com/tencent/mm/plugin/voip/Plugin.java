@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.voip;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
   implements com.tencent.mm.pluginsdk.b.d
 {
-  public final m createApplication()
+  public final n createApplication()
   {
     AppMethodBeat.i(114797);
     d locald = new d();
@@ -15,7 +15,7 @@ public final class Plugin
     return locald;
   }
   
-  public final aw createSubCore()
+  public final ax createSubCore()
   {
     AppMethodBeat.i(114798);
     c localc = new c();
@@ -30,7 +30,7 @@ public final class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.Plugin
  * JD-Core Version:    0.7.0.1
  */

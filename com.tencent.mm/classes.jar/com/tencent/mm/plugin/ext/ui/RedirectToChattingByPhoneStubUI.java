@@ -6,21 +6,21 @@ import android.os.IBinder;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
 public class RedirectToChattingByPhoneStubUI
   extends HellActivity
-  implements g
+  implements f
 {
-  private p quM = null;
+  private p reC = null;
   
   public final boolean hideVKB()
   {
@@ -46,7 +46,7 @@ public class RedirectToChattingByPhoneStubUI
     try
     {
       bool = localInputMethodManager.hideSoftInputFromWindow((IBinder)localObject, 0);
-      ac.v("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB result %B", new Object[] { Boolean.valueOf(bool) });
+      ad.v("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB result %B", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(24515);
       return bool;
     }
@@ -54,7 +54,7 @@ public class RedirectToChattingByPhoneStubUI
     {
       for (;;)
       {
-        ac.e("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB exception %s", new Object[] { localIllegalArgumentException });
+        ad.e("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB exception %s", new Object[] { localIllegalArgumentException });
         boolean bool = false;
       }
     }
@@ -65,8 +65,8 @@ public class RedirectToChattingByPhoneStubUI
     AppMethodBeat.i(24512);
     super.onCreate(paramBundle);
     getString(2131755936);
-    this.quM = h.b(this, "", false, null);
-    ap.n(new Runnable()
+    this.reC = h.b(this, "", false, null);
+    aq.o(new Runnable()
     {
       public final void run()
       {
@@ -75,7 +75,7 @@ public class RedirectToChattingByPhoneStubUI
         AppMethodBeat.o(24511);
       }
     }, 500L);
-    az.agi().a(106, this);
+    ba.aiU().a(106, this);
     AppMethodBeat.o(24512);
   }
   
@@ -83,11 +83,11 @@ public class RedirectToChattingByPhoneStubUI
   {
     AppMethodBeat.i(24513);
     super.onDestroy();
-    az.agi().b(106, this);
-    if (this.quM != null)
+    ba.aiU().b(106, this);
+    if (this.reC != null)
     {
-      this.quM.dismiss();
-      this.quM = null;
+      this.reC.dismiss();
+      this.reC = null;
     }
     AppMethodBeat.o(24513);
   }
@@ -107,7 +107,7 @@ public class RedirectToChattingByPhoneStubUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.ui.RedirectToChattingByPhoneStubUI
  * JD-Core Version:    0.7.0.1
  */

@@ -7,18 +7,18 @@ import com.tencent.mm.sdk.e.j;
 public class h
   extends j<g>
 {
-  public static final String[] hlS;
+  public static final String[] hEf;
   
   static
   {
     AppMethodBeat.i(44445);
-    hlS = new String[] { j.getCreateSQLs(g.hlR, "WxaAttrVersionServerNotifyRecord") };
+    hEf = new String[] { j.getCreateSQLs(g.hEe, "WxaAttrVersionServerNotifyRecord") };
     AppMethodBeat.o(44445);
   }
   
   public h(e parame)
   {
-    super(parame, g.hlR, "WxaAttrVersionServerNotifyRecord", g.INDEX_CREATE);
+    super(parame, g.hEe, "WxaAttrVersionServerNotifyRecord", g.INDEX_CREATE);
   }
 }
 

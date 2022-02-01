@@ -3,7 +3,7 @@ package com.tencent.mm.modelappbrand;
 public abstract class ag
   implements o
 {
-  public abstract void aAQ();
+  public abstract void aDT();
   
   public final String getName()
   {

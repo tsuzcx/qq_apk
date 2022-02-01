@@ -11,52 +11,54 @@ import com.tencent.magicbrush.f.a;
 import com.tencent.magicbrush.f.b;
 import com.tencent.magicbrush.handler.fs.IMBFileSystem;
 import com.tencent.magicbrush.handler.glfont.IMBFontHandler;
-import com.tencent.magicbrush.handler.glfont.h;
+import com.tencent.magicbrush.handler.glfont.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(fNY={1, 1, 13}, fNZ={""}, fOa={"logIfVerbose", "", "Lcom/tencent/magicbrush/MagicBrushBuilder;", "message", "", "processAndAbortIfNeeded", "", "processAssetManagerOrThrow", "processDprWidthHeightOrThrow", "processImageHandler", "lib-magicbrush-nano_release"})
+@l(gfx={1, 1, 13}, gfy={""}, gfz={"logIfVerbose", "", "Lcom/tencent/magicbrush/MagicBrushBuilder;", "message", "", "processAndAbortIfNeeded", "", "processAssetManagerOrThrow", "processDprWidthHeightOrThrow", "processImageHandler", "lib-magicbrush-nano_release"})
 public final class a
 {
   private static void a(e parame, String paramString)
   {
     AppMethodBeat.i(140200);
-    k.h(parame, "receiver$0");
-    k.h(paramString, "message");
-    if (parame.cmO) {
+    p.h(parame, "receiver$0");
+    p.h(paramString, "message");
+    if (parame.cxr) {
       c.c.i("MagicBrush", paramString, new Object[0]);
     }
     AppMethodBeat.o(140200);
   }
   
-  private static void b(e parame)
+  private static void c(e parame)
   {
     AppMethodBeat.i(140201);
-    k.h(parame, "receiver$0");
-    if (!parame.cmA.cna)
+    p.h(parame, "receiver$0");
+    if (!parame.cxd.cxF)
     {
-      if (parame.cmA.cne == null)
+      if (parame.cxd.cxJ == null)
       {
         a(parame, "ImageHandler invalid, BindingImage can not use. BE CAUTIOUS!");
-        parame = y.KTp;
+        parame = z.MKo;
       }
       AppMethodBeat.o(140201);
       return;
     }
     BaseImageDecodeService localBaseImageDecodeService = new BaseImageDecodeService();
-    localBaseImageDecodeService.addImageStreamFetcher((com.github.henryye.nativeiv.b.b)new com.tencent.magicbrush.b.a(), false);
-    Object localObject1 = parame.cmA.cnb;
+    localBaseImageDecodeService.addImageStreamFetcher((com.github.henryye.nativeiv.b.b)new com.tencent.magicbrush.b.b(), false);
+    Object localObject1 = parame.cxd.cxG;
     Iterator localIterator = ((Iterable)localObject1).iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
       Object localObject2 = localIterator.next();
       if (i < 0) {
-        j.fOc();
+        j.gfB();
       }
       localObject2 = (com.github.henryye.nativeiv.b.b)localObject2;
       if (i == ((List)localObject1).size() - 1) {}
@@ -67,31 +69,31 @@ public final class a
         break;
       }
     }
-    if (parame.cmA.cnc != null) {
-      localBaseImageDecodeService.setKvReportDelegate(parame.cmA.cnc);
+    if (parame.cxd.cxH != null) {
+      localBaseImageDecodeService.setKvReportDelegate(parame.cxd.cxH);
     }
-    if (parame.cmA.cnd != null)
+    if (parame.cxd.cxI != null)
     {
-      localObject1 = parame.cmA.cnd;
+      localObject1 = parame.cxd.cxI;
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       localBaseImageDecodeService.setBitmapDecodeSlave((IImageDecodeService.a)localObject1);
     }
-    parame.cmA.cne = localBaseImageDecodeService;
+    parame.cxd.cxJ = localBaseImageDecodeService;
     AppMethodBeat.o(140201);
   }
   
-  public static final boolean c(e parame)
+  public static final boolean d(e parame)
   {
     AppMethodBeat.i(140202);
-    k.h(parame, "receiver$0");
+    p.h(parame, "receiver$0");
     int i;
     for (;;)
     {
       try
       {
-        double d = parame.FY();
+        double d = parame.Ht();
         if ((d < 0.0D) || (d > 1.0D)) {
           break label99;
         }
@@ -99,13 +101,13 @@ public final class a
         if (i != 0) {
           break;
         }
-        Throwable localThrowable = (Throwable)new IllegalStateException(("GcFactor must in [0, 1], but " + parame.FY()).toString());
+        Throwable localThrowable = (Throwable)new IllegalStateException(("GcFactor must in [0, 1], but " + parame.Ht()).toString());
         AppMethodBeat.o(140202);
         throw localThrowable;
       }
       catch (Exception localException)
       {
-        if (!parame.cmN) {
+        if (!parame.cxq) {
           break label673;
         }
       }
@@ -121,20 +123,20 @@ public final class a
       AppMethodBeat.o(140202);
       throw ((Throwable)localObject1);
     }
-    if (parame.cmt == null)
+    if (parame.cwW == null)
     {
       localObject1 = (Throwable)new IllegalStateException("JsThreadHandler invalid.".toString());
       AppMethodBeat.o(140202);
       throw ((Throwable)localObject1);
     }
-    if (parame.cmu == null)
+    if (parame.cwX == null)
     {
       localObject1 = (Throwable)new IllegalStateException("v8RawPointer invalid. Please define which JsEngine magicbrush should use.".toString());
       AppMethodBeat.o(140202);
       throw ((Throwable)localObject1);
     }
-    k.h(parame, "receiver$0");
-    if (parame.FW() == null)
+    p.h(parame, "receiver$0");
+    if (parame.Hr() == null)
     {
       localObject1 = parame.context;
       if (localObject1 == null) {
@@ -145,28 +147,28 @@ public final class a
     label680:
     for (Object localObject1 = ((Context)localObject1).getAssets();; localObject1 = null)
     {
-      parame.cmz.a(f.$$delegatedProperties[4], localObject1);
-      if (parame.FW() == null)
+      parame.cxc.a(f.cwV[4], localObject1);
+      if (parame.Hr() == null)
       {
         localObject1 = (Throwable)new IllegalStateException("AssetManager invalid. Either assetManager or context should be provided.".toString());
         AppMethodBeat.o(140202);
         throw ((Throwable)localObject1);
       }
-      k.h(parame, "receiver$0");
+      p.h(parame, "receiver$0");
       if ((parame.getDevicePixelRatio() <= 0.0F) && (parame.context != null))
       {
         localObject1 = parame.context;
         if (localObject1 == null) {
-          k.fOy();
+          p.gfZ();
         }
-        parame.ab(com.tencent.magicbrush.utils.b.getDensity((Context)localObject1));
+        parame.ad(com.tencent.magicbrush.utils.b.getDensity((Context)localObject1));
       }
       localObject1 = (d.g.a.a)new a(parame);
       if (!((Boolean)((d.g.a.a)localObject1).invoke()).booleanValue())
       {
         if (parame.context == null)
         {
-          localObject1 = (Throwable)new IllegalStateException(("w/h invalid. context invalid. " + parame.FU() + '/' + parame.FV()).toString());
+          localObject1 = (Throwable)new IllegalStateException(("w/h invalid. context invalid. " + parame.Hp() + '/' + parame.Hq()).toString());
           AppMethodBeat.o(140202);
           throw ((Throwable)localObject1);
         }
@@ -174,31 +176,31 @@ public final class a
         {
           Object localObject2 = parame.context;
           if (localObject2 == null) {
-            k.fOy();
+            p.gfZ();
           }
           localObject2 = com.tencent.magicbrush.utils.b.aL((Context)localObject2);
-          k.g(localObject2, "DisplayUtil.getDisplayLogicSize(context!!)");
+          p.g(localObject2, "DisplayUtil.getDisplayLogicSize(context!!)");
           i = ((Point)localObject2).x;
-          parame.cmw.a(f.$$delegatedProperties[1], Integer.valueOf(i));
+          parame.cwZ.a(f.cwV[1], Integer.valueOf(i));
           i = ((Point)localObject2).y;
-          parame.cmx.a(f.$$delegatedProperties[2], Integer.valueOf(i));
-          a(parame, "w/h invalid, use context automatically. " + parame.FU() + '/' + parame.FV());
+          parame.cxa.a(f.cwV[2], Integer.valueOf(i));
+          a(parame, "w/h invalid, use context automatically. " + parame.Hp() + '/' + parame.Hq());
         }
       }
       if (!((Boolean)((d.g.a.a)localObject1).invoke()).booleanValue())
       {
-        localObject1 = (Throwable)new IllegalStateException(("dpr/w/h invalid. " + parame.getDevicePixelRatio() + '/' + parame.FU() + '/' + parame.FV()).toString());
+        localObject1 = (Throwable)new IllegalStateException(("dpr/w/h invalid. " + parame.getDevicePixelRatio() + '/' + parame.Hp() + '/' + parame.Hq()).toString());
         AppMethodBeat.o(140202);
         throw ((Throwable)localObject1);
       }
-      if ((IMBFileSystem)parame.cmy.a(f.$$delegatedProperties[3]) == null)
+      if ((IMBFileSystem)parame.cxb.a(f.cwV[3]) == null)
       {
         a(parame, "FileSystem invalid, BindingFileSystem can not use. BE CAUTIOUS!");
-        localObject1 = y.KTp;
+        localObject1 = z.MKo;
       }
-      b(parame);
-      if (parame.cmB == null) {
-        parame.cmB = ((IMBFontHandler)new h());
+      c(parame);
+      if (parame.cxe == null) {
+        parame.cxe = ((IMBFontHandler)new i());
       }
       AppMethodBeat.o(140202);
       return true;
@@ -207,9 +209,9 @@ public final class a
     }
   }
   
-  @d.l(fNY={1, 1, 13}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 13}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class a
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<Boolean>
   {
     a(e parame)
@@ -220,7 +222,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.internal.a
  * JD-Core Version:    0.7.0.1
  */

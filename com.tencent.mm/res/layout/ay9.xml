@@ -18,8 +18,8 @@
                 <TextView android:textSize="12.0sp" android:textColor="@color/rj" android:id="@id/ef2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
             </LinearLayout>
             <ProgressBar android:id="@id/ef3" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
-            <TextView android:textColor="@color/a0i" android:id="@id/ef4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e94" />
-            <ImageView android:id="@id/ef1" android:visibility="gone" android:src="@drawable/a7p" style="@style/a5d" />
+            <TextView android:textColor="@color/a0i" android:id="@id/ef4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e94" />
+            <ImageView android:id="@id/ef1" android:src="@drawable/a7p" style="@style/a5d" />
             <ImageView android:id="@id/eex" android:padding="5.0dip" android:paddingRight="0.0dip" android:src="@drawable/a1t" style="@style/a5d" />
         </LinearLayout>
     </LinearLayout>

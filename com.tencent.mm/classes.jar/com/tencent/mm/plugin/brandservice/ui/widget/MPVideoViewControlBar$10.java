@@ -4,7 +4,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.brandservice.ui.timeline.video.util.c;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,23 +16,23 @@ final class MPVideoViewControlBar$10
   
   public final void run()
   {
-    AppMethodBeat.i(198787);
-    MPVideoViewControlBar.g(this.nRW).removeAllViews();
-    Object localObject = this.fzk;
-    if (!bs.gY((List)localObject))
+    AppMethodBeat.i(209604);
+    MPVideoViewControlBar.g(this.ouE).removeAllViews();
+    Object localObject = this.fSx;
+    if (!bt.hj((List)localObject))
     {
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         c localc = (c)((Iterator)localObject).next();
-        ImageView localImageView = new ImageView(this.nRW.getContext());
-        MPVideoViewControlBar.g(this.nRW).addView(localImageView);
-        if (!MPVideoViewControlBar.a(this.nRW, localImageView, localc)) {
-          MPVideoViewControlBar.g(this.nRW).removeView(localImageView);
+        ImageView localImageView = new ImageView(this.ouE.getContext());
+        MPVideoViewControlBar.g(this.ouE).addView(localImageView);
+        if (!MPVideoViewControlBar.a(this.ouE, localImageView, localc)) {
+          MPVideoViewControlBar.g(this.ouE).removeView(localImageView);
         }
       }
     }
-    AppMethodBeat.o(198787);
+    AppMethodBeat.o(209604);
   }
 }
 

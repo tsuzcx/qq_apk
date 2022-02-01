@@ -8,30 +8,30 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class VoiceHeaderPreference
   extends Preference
 {
-  private ImageView fBA;
-  private MMActivity iMV;
-  private TextView ijF;
+  private MMActivity fLP;
+  private ImageView fUN;
+  private TextView iCW;
   private String mTitle;
-  private int qBD;
-  private Button qBE;
-  private View qBF;
-  private View.OnClickListener qBG;
-  private String qBH;
-  private String qBI;
+  private int rlt;
+  private Button rlu;
+  private View rlv;
+  private View.OnClickListener rlw;
+  private String rlx;
+  private String rly;
   private TextView titleTv;
   
   public VoiceHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(29867);
-    this.iMV = ((MMActivity)paramContext);
+    this.fLP = ((MMActivity)paramContext);
     AppMethodBeat.o(29867);
   }
   
@@ -40,55 +40,55 @@ public final class VoiceHeaderPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29868);
     this.mTitle = "";
-    this.qBD = 255;
-    this.qBG = null;
-    this.qBH = "";
-    this.qBI = "";
-    this.iMV = ((MMActivity)paramContext);
+    this.rlt = 255;
+    this.rlw = null;
+    this.rlx = "";
+    this.rly = "";
+    this.fLP = ((MMActivity)paramContext);
     setLayoutResource(2131495865);
     AppMethodBeat.o(29868);
   }
   
-  public final void c(View.OnClickListener paramOnClickListener)
+  public final void b(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(29870);
-    this.qBG = paramOnClickListener;
-    if ((this.qBE == null) || (this.qBF == null))
+    this.rlw = paramOnClickListener;
+    if ((this.rlu == null) || (this.rlv == null))
     {
       AppMethodBeat.o(29870);
       return;
     }
-    if ((this.qBE != null) && (this.qBG != null))
+    if ((this.rlu != null) && (this.rlw != null))
     {
-      this.qBE.setOnClickListener(paramOnClickListener);
-      this.qBE.setVisibility(0);
-      this.qBF.setVisibility(0);
+      this.rlu.setOnClickListener(paramOnClickListener);
+      this.rlu.setVisibility(0);
+      this.rlv.setVisibility(0);
       AppMethodBeat.o(29870);
       return;
     }
-    this.qBE.setVisibility(8);
-    this.qBF.setVisibility(8);
+    this.rlu.setVisibility(8);
+    this.rlv.setVisibility(8);
     AppMethodBeat.o(29870);
   }
   
-  public final void fX(String paramString1, String paramString2)
+  public final void gg(String paramString1, String paramString2)
   {
     AppMethodBeat.i(29869);
-    this.qBH = paramString1;
-    this.qBI = paramString2;
+    this.rlx = paramString1;
+    this.rly = paramString2;
     if (this.titleTv != null)
     {
-      if (bs.isNullOrNil(this.qBH)) {
+      if (bt.isNullOrNil(this.rlx)) {
         break label95;
       }
-      this.titleTv.setText(this.qBH);
+      this.titleTv.setText(this.rlx);
       this.titleTv.setVisibility(0);
     }
-    while (this.ijF != null) {
-      if (!bs.isNullOrNil(this.qBI))
+    while (this.iCW != null) {
+      if (!bt.isNullOrNil(this.rly))
       {
-        this.ijF.setText(this.qBI);
-        this.ijF.setVisibility(0);
+        this.iCW.setText(this.rly);
+        this.iCW.setVisibility(0);
         AppMethodBeat.o(29869);
         return;
         label95:
@@ -96,7 +96,7 @@ public final class VoiceHeaderPreference
       }
       else
       {
-        this.ijF.setVisibility(8);
+        this.iCW.setVisibility(8);
       }
     }
     AppMethodBeat.o(29869);
@@ -106,39 +106,39 @@ public final class VoiceHeaderPreference
   {
     AppMethodBeat.i(29871);
     super.onBindView(paramView);
-    this.fBA = ((ImageView)paramView.findViewById(2131306513));
+    this.fUN = ((ImageView)paramView.findViewById(2131306513));
     this.titleTv = ((TextView)paramView.findViewById(2131306514));
-    this.ijF = ((TextView)paramView.findViewById(2131306516));
-    this.qBE = ((Button)paramView.findViewById(2131304179));
-    this.qBF = paramView.findViewById(2131297656);
-    if (!bs.isNullOrNil(this.qBH))
+    this.iCW = ((TextView)paramView.findViewById(2131306516));
+    this.rlu = ((Button)paramView.findViewById(2131304179));
+    this.rlv = paramView.findViewById(2131297656);
+    if (!bt.isNullOrNil(this.rlx))
     {
-      this.titleTv.setText(this.qBH);
+      this.titleTv.setText(this.rlx);
       this.titleTv.setVisibility(0);
-      if (bs.isNullOrNil(this.qBI)) {
+      if (bt.isNullOrNil(this.rly)) {
         break label191;
       }
-      this.ijF.setText(this.qBI);
-      this.ijF.setVisibility(0);
+      this.iCW.setText(this.rly);
+      this.iCW.setVisibility(0);
     }
     for (;;)
     {
-      if ((this.qBE == null) || (this.qBG == null)) {
+      if ((this.rlu == null) || (this.rlw == null)) {
         break label203;
       }
-      this.qBE.setOnClickListener(this.qBG);
-      this.qBE.setVisibility(0);
-      this.qBF.setVisibility(0);
+      this.rlu.setOnClickListener(this.rlw);
+      this.rlu.setVisibility(0);
+      this.rlv.setVisibility(0);
       AppMethodBeat.o(29871);
       return;
       this.titleTv.setVisibility(8);
       break;
       label191:
-      this.ijF.setVisibility(8);
+      this.iCW.setVisibility(8);
     }
     label203:
-    this.qBE.setVisibility(8);
-    this.qBF.setVisibility(8);
+    this.rlu.setVisibility(8);
+    this.rlv.setVisibility(8);
     AppMethodBeat.o(29871);
   }
 }

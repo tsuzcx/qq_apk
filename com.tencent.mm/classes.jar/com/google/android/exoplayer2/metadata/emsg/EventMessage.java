@@ -11,10 +11,10 @@ public final class EventMessage
   implements Metadata.Entry
 {
   public static final Parcelable.Creator<EventMessage> CREATOR;
-  private int aFZ;
-  public final String bjT;
-  public final long bjU;
-  public final byte[] bjV;
+  private int aHQ;
+  public final String buo;
+  public final long bup;
+  public final byte[] buq;
   public final long id;
   public final String value;
   
@@ -28,21 +28,21 @@ public final class EventMessage
   EventMessage(Parcel paramParcel)
   {
     AppMethodBeat.i(92390);
-    this.bjT = paramParcel.readString();
+    this.buo = paramParcel.readString();
     this.value = paramParcel.readString();
-    this.bjU = paramParcel.readLong();
+    this.bup = paramParcel.readLong();
     this.id = paramParcel.readLong();
-    this.bjV = paramParcel.createByteArray();
+    this.buq = paramParcel.createByteArray();
     AppMethodBeat.o(92390);
   }
   
   public EventMessage(String paramString1, String paramString2, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
   {
-    this.bjT = paramString1;
+    this.buo = paramString1;
     this.value = paramString2;
-    this.bjU = paramLong1;
+    this.bup = paramLong1;
     this.id = paramLong2;
-    this.bjV = paramArrayOfByte;
+    this.buq = paramArrayOfByte;
   }
   
   public final int describeContents()
@@ -64,7 +64,7 @@ public final class EventMessage
       return false;
     }
     paramObject = (EventMessage)paramObject;
-    if ((this.bjU == paramObject.bjU) && (this.id == paramObject.id) && (x.g(this.bjT, paramObject.bjT)) && (x.g(this.value, paramObject.value)) && (Arrays.equals(this.bjV, paramObject.bjV)))
+    if ((this.bup == paramObject.bup) && (this.id == paramObject.id) && (x.i(this.buo, paramObject.buo)) && (x.i(this.value, paramObject.value)) && (Arrays.equals(this.buq, paramObject.buq)))
     {
       AppMethodBeat.o(92392);
       return true;
@@ -77,19 +77,19 @@ public final class EventMessage
   {
     int j = 0;
     AppMethodBeat.i(92391);
-    if (this.aFZ == 0) {
-      if (this.bjT == null) {
+    if (this.aHQ == 0) {
+      if (this.buo == null) {
         break label115;
       }
     }
     label115:
-    for (int i = this.bjT.hashCode();; i = 0)
+    for (int i = this.buo.hashCode();; i = 0)
     {
       if (this.value != null) {
         j = this.value.hashCode();
       }
-      this.aFZ = (((((i + 527) * 31 + j) * 31 + (int)(this.bjU ^ this.bjU >>> 32)) * 31 + (int)(this.id ^ this.id >>> 32)) * 31 + Arrays.hashCode(this.bjV));
-      i = this.aFZ;
+      this.aHQ = (((((i + 527) * 31 + j) * 31 + (int)(this.bup ^ this.bup >>> 32)) * 31 + (int)(this.id ^ this.id >>> 32)) * 31 + Arrays.hashCode(this.buq));
+      i = this.aHQ;
       AppMethodBeat.o(92391);
       return i;
     }
@@ -98,11 +98,11 @@ public final class EventMessage
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92393);
-    paramParcel.writeString(this.bjT);
+    paramParcel.writeString(this.buo);
     paramParcel.writeString(this.value);
-    paramParcel.writeLong(this.bjU);
+    paramParcel.writeLong(this.bup);
     paramParcel.writeLong(this.id);
-    paramParcel.writeByteArray(this.bjV);
+    paramParcel.writeByteArray(this.buq);
     AppMethodBeat.o(92393);
   }
 }

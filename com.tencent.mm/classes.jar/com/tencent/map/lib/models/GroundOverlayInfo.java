@@ -25,14 +25,14 @@ public class GroundOverlayInfo
   
   public void setBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(191271);
+    AppMethodBeat.i(195060);
     this.mBitmap = paramBitmap;
     if (this.mBitmap != null)
     {
       this.mBitmapWidth = this.mBitmap.getWidth();
       this.mBitmapHeight = this.mBitmap.getHeight();
     }
-    AppMethodBeat.o(191271);
+    AppMethodBeat.o(195060);
   }
   
   public void setLatLngBounds(LatLngBounds paramLatLngBounds)
@@ -57,7 +57,7 @@ public class GroundOverlayInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.map.lib.models.GroundOverlayInfo
  * JD-Core Version:    0.7.0.1
  */

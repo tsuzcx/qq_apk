@@ -38,7 +38,7 @@ public final class JsApiFinderEndorsementFinished
       this.username = paramString;
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       AppMethodBeat.i(163943);
       AppMethodBeat.o(163943);

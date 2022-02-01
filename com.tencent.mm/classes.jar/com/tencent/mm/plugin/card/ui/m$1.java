@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.base.h;
 
 final class m$1
@@ -19,18 +20,21 @@ final class m$1
   public final void onClick(final View paramView)
   {
     AppMethodBeat.i(113610);
+    b localb = new b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/CellAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
     paramView = (String)paramView.getTag();
     if (!TextUtils.isEmpty(paramView))
     {
       if (!paramView.contains(";")) {
-        break label96;
+        break label137;
       }
       paramView = paramView.substring(0, paramView.indexOf(";"));
     }
-    label96:
+    label137:
     for (;;)
     {
-      h.a(m.a(this.ogM), true, paramView, "", m.a(this.ogM).getString(2131756823), m.a(this.ogM).getString(2131757558), new DialogInterface.OnClickListener()
+      h.a(m.a(this.oKf), true, paramView, "", m.a(this.oKf).getString(2131756823), m.a(this.oKf).getString(2131757558), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -38,14 +42,15 @@ final class m$1
           Object localObject = new Intent("android.intent.action.DIAL");
           ((Intent)localObject).setFlags(268435456);
           ((Intent)localObject).setData(Uri.parse("tel:" + paramView));
-          paramAnonymousDialogInterface = m.a(m.1.this.ogM);
-          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/card/ui/CellAdapter$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+          paramAnonymousDialogInterface = m.a(m.1.this.oKf);
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/card/ui/CellAdapter$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/card/ui/CellAdapter$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(113609);
         }
       }, null);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/CellAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(113610);
       return;
     }

@@ -11,11 +11,11 @@ public class RealAlphabetScrollBar
     super(paramContext, paramAttributeSet);
   }
   
-  protected final void WY()
+  protected final void Zr()
   {
-    this.tNY = new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
-    this.tNW = 1.3F;
-    this.tNX = 79;
+    this.uQL = new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
+    this.uQJ = 1.3F;
+    this.uQK = 79;
   }
   
   protected int getToastLayoutId()

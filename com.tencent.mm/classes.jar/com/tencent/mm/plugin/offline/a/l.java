@@ -7,7 +7,7 @@ import org.json.JSONObject;
 public final class l
   extends h
 {
-  public String vrZ;
+  public String wxr;
   
   public final int getTenpayCgicmd()
   {
@@ -24,7 +24,7 @@ public final class l
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66304);
-    this.vrZ = paramJSONObject.optString("barcode");
+    this.wxr = paramJSONObject.optString("barcode");
     AppMethodBeat.o(66304);
   }
 }

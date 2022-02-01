@@ -7,11 +7,11 @@ public abstract interface d
 {
   public abstract d a(ba paramba);
   
-  public abstract d fRi();
+  public abstract d giH();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d
  * JD-Core Version:    0.7.0.1
  */

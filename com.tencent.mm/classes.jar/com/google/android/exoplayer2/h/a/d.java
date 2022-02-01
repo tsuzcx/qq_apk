@@ -11,49 +11,49 @@ import java.io.InterruptedIOException;
 public final class d
   implements com.google.android.exoplayer2.h.g
 {
-  private long bus;
-  private final boolean bvA;
-  private com.google.android.exoplayer2.h.g bvB;
-  private boolean bvC;
-  private long bvD;
-  private g bvE;
-  private boolean bvF;
-  private boolean bvG;
-  private long bvH;
-  private final a bvo;
-  private final com.google.android.exoplayer2.h.g bvu;
-  private final com.google.android.exoplayer2.h.g bvv;
-  private final com.google.android.exoplayer2.h.g bvw;
-  private final d.a bvx;
-  private final boolean bvy;
-  private final boolean bvz;
+  private long bEH;
+  private final a bFC;
+  private final com.google.android.exoplayer2.h.g bFI;
+  private final com.google.android.exoplayer2.h.g bFJ;
+  private final com.google.android.exoplayer2.h.g bFK;
+  private final a bFL;
+  private final boolean bFM;
+  private final boolean bFN;
+  private final boolean bFO;
+  private com.google.android.exoplayer2.h.g bFP;
+  private boolean bFQ;
+  private long bFR;
+  private g bFS;
+  private boolean bFT;
+  private boolean bFU;
+  private long bFV;
   private int flags;
   private String key;
   private Uri uri;
   
-  public d(a parama, com.google.android.exoplayer2.h.g paramg1, com.google.android.exoplayer2.h.g paramg2, f paramf, int paramInt, d.a parama1)
+  public d(a parama, com.google.android.exoplayer2.h.g paramg1, com.google.android.exoplayer2.h.g paramg2, f paramf, int paramInt, a parama1)
   {
     AppMethodBeat.i(92966);
-    this.bvo = parama;
-    this.bvu = paramg2;
+    this.bFC = parama;
+    this.bFI = paramg2;
     boolean bool1;
     if ((paramInt & 0x1) != 0)
     {
       bool1 = true;
-      this.bvy = bool1;
+      this.bFM = bool1;
       if ((paramInt & 0x2) == 0) {
         break label113;
       }
       bool1 = true;
       label48:
-      this.bvz = bool1;
+      this.bFN = bool1;
       if ((paramInt & 0x4) == 0) {
         break label119;
       }
       bool1 = bool2;
       label65:
-      this.bvA = bool1;
-      this.bvw = paramg1;
+      this.bFO = bool1;
+      this.bFK = paramg1;
       if (paramf == null) {
         break label125;
       }
@@ -61,9 +61,9 @@ public final class d
     label113:
     label119:
     label125:
-    for (this.bvv = new v(paramg1, paramf);; this.bvv = null)
+    for (this.bFJ = new v(paramg1, paramf);; this.bFJ = null)
     {
-      this.bvx = parama1;
+      this.bFL = parama1;
       AppMethodBeat.o(92966);
       return;
       bool1 = false;
@@ -75,18 +75,18 @@ public final class d
     }
   }
   
-  private boolean aW(boolean paramBoolean)
+  private boolean aX(boolean paramBoolean)
   {
     AppMethodBeat.i(92971);
     Object localObject1;
-    if (this.bvG)
+    if (this.bFU)
     {
       localObject1 = null;
       if (localObject1 != null) {
         break label203;
       }
-      this.bvB = this.bvw;
-      localObject1 = new j(this.uri, this.bvD, this.bus, this.key, this.flags);
+      this.bFP = this.bFK;
+      localObject1 = new j(this.uri, this.bFR, this.bEH, this.key, this.flags);
       label57:
       if (((j)localObject1).length != -1L) {
         break label431;
@@ -98,11 +98,11 @@ public final class d
     {
       for (;;)
       {
-        this.bvC = bool;
+        this.bFQ = bool;
         bool = false;
         try
         {
-          l1 = this.bvB.a((j)localObject1);
+          l1 = this.bFP.a((j)localObject1);
           paramBoolean = true;
         }
         catch (IOException localIOException1)
@@ -117,7 +117,7 @@ public final class d
             if (!paramBoolean)
             {
               localIOException2 = localIOException1;
-              if (!this.bvC) {}
+              if (!this.bFQ) {}
             }
             for (Object localObject4 = localIOException1;; localObject4 = ((Throwable)localObject4).getCause())
             {
@@ -141,17 +141,17 @@ public final class d
             paramBoolean = bool;
           }
         }
-        if ((this.bvC) && (l1 != -1L))
+        if ((this.bFQ) && (l1 != -1L))
         {
-          this.bus = l1;
-          setContentLength(((j)localObject1).position + this.bus);
+          this.bEH = l1;
+          setContentLength(((j)localObject1).position + this.bEH);
         }
         AppMethodBeat.o(92971);
         return paramBoolean;
-        if (this.bvy) {
+        if (this.bFM) {
           try
           {
-            localObject1 = this.bvo.d(this.key, this.bvD);
+            localObject1 = this.bFC.d(this.key, this.bFR);
           }
           catch (InterruptedException localInterruptedException)
           {
@@ -161,43 +161,43 @@ public final class d
           }
         }
       }
-      localObject2 = this.bvo.e(this.key, this.bvD);
+      localObject2 = this.bFC.e(this.key, this.bFR);
       break;
       label203:
-      if (((g)localObject2).bvL)
+      if (((g)localObject2).bFZ)
       {
         localObject3 = Uri.fromFile(((g)localObject2).file);
-        l3 = this.bvD - ((g)localObject2).position;
+        l3 = this.bFR - ((g)localObject2).position;
         l2 = ((g)localObject2).length - l3;
         l1 = l2;
-        if (this.bus != -1L) {
-          l1 = Math.min(l2, this.bus);
+        if (this.bEH != -1L) {
+          l1 = Math.min(l2, this.bEH);
         }
-        localObject2 = new j((Uri)localObject3, this.bvD, l3, l1, this.key, this.flags);
-        this.bvB = this.bvu;
+        localObject2 = new j((Uri)localObject3, this.bFR, l3, l1, this.key, this.flags);
+        this.bFP = this.bFI;
         break label57;
       }
-      if (((g)localObject2).vn()) {
-        l1 = this.bus;
+      if (((g)localObject2).wK()) {
+        l1 = this.bEH;
       }
       for (;;)
       {
-        localObject3 = new j(this.uri, this.bvD, l1, this.key, this.flags);
-        if (this.bvv == null) {
+        localObject3 = new j(this.uri, this.bFR, l1, this.key, this.flags);
+        if (this.bFJ == null) {
           break label405;
         }
-        this.bvB = this.bvv;
-        this.bvE = ((g)localObject2);
+        this.bFP = this.bFJ;
+        this.bFS = ((g)localObject2);
         localObject2 = localObject3;
         break;
         l2 = ((g)localObject2).length;
         l1 = l2;
-        if (this.bus != -1L) {
-          l1 = Math.min(l2, this.bus);
+        if (this.bEH != -1L) {
+          l1 = Math.min(l2, this.bEH);
         }
       }
-      this.bvB = this.bvw;
-      this.bvo.a((g)localObject2);
+      this.bFP = this.bFK;
+      this.bFC.a((g)localObject2);
       localObject2 = localObject3;
       break label57;
     }
@@ -205,41 +205,41 @@ public final class d
   
   private void b(IOException paramIOException)
   {
-    if ((this.bvB == this.bvu) || ((paramIOException instanceof a.a))) {
-      this.bvF = true;
+    if ((this.bFP == this.bFI) || ((paramIOException instanceof a.a))) {
+      this.bFT = true;
     }
   }
   
   private void setContentLength(long paramLong)
   {
     AppMethodBeat.i(92972);
-    if (this.bvB == this.bvv) {
-      this.bvo.f(this.key, paramLong);
+    if (this.bFP == this.bFJ) {
+      this.bFC.f(this.key, paramLong);
     }
     AppMethodBeat.o(92972);
   }
   
-  private void vl()
+  private void wI()
   {
     AppMethodBeat.i(92973);
-    if (this.bvB == null)
+    if (this.bFP == null)
     {
       AppMethodBeat.o(92973);
       return;
     }
     try
     {
-      this.bvB.close();
-      this.bvB = null;
-      this.bvC = false;
+      this.bFP.close();
+      this.bFP = null;
+      this.bFQ = false;
       return;
     }
     finally
     {
-      if (this.bvE != null)
+      if (this.bFS != null)
       {
-        this.bvo.a(this.bvE);
-        this.bvE = null;
+        this.bFC.a(this.bFS);
+        this.bFS = null;
       }
       AppMethodBeat.o(92973);
     }
@@ -255,39 +255,39 @@ public final class d
       this.uri = paramj.uri;
       this.flags = paramj.flags;
       this.key = h.c(paramj);
-      this.bvD = paramj.position;
+      this.bFR = paramj.position;
       boolean bool1;
-      if (this.bvz)
+      if (this.bFN)
       {
         bool1 = bool2;
-        if (this.bvF) {}
+        if (this.bFT) {}
       }
       else
       {
-        if ((paramj.length != -1L) || (!this.bvA)) {
+        if ((paramj.length != -1L) || (!this.bFO)) {
           break label126;
         }
         bool1 = bool2;
       }
-      this.bvG = bool1;
-      if ((paramj.length != -1L) || (this.bvG)) {
-        this.bus = paramj.length;
+      this.bFU = bool1;
+      if ((paramj.length != -1L) || (this.bFU)) {
+        this.bEH = paramj.length;
       }
       label126:
       do
       {
         do
         {
-          aW(true);
-          long l = this.bus;
+          aX(true);
+          long l = this.bEH;
           AppMethodBeat.o(92967);
           return l;
           bool1 = false;
           break;
-          this.bus = this.bvo.aw(this.key);
-        } while (this.bus == -1L);
-        this.bus -= paramj.position;
-      } while (this.bus > 0L);
+          this.bEH = this.bFC.bp(this.key);
+        } while (this.bEH == -1L);
+        this.bEH -= paramj.position;
+      } while (this.bEH > 0L);
       paramj = new com.google.android.exoplayer2.h.h();
       AppMethodBeat.o(92967);
       throw paramj;
@@ -304,14 +304,14 @@ public final class d
   {
     AppMethodBeat.i(92970);
     this.uri = null;
-    if ((this.bvx != null) && (this.bvH > 0L))
+    if ((this.bFL != null) && (this.bFV > 0L))
     {
-      this.bvx.k(this.bvo.vi(), this.bvH);
-      this.bvH = 0L;
+      this.bFL.k(this.bFC.wF(), this.bFV);
+      this.bFV = 0L;
     }
     try
     {
-      vl();
+      wI();
       AppMethodBeat.o(92970);
       return;
     }
@@ -326,9 +326,9 @@ public final class d
   public final Uri getUri()
   {
     AppMethodBeat.i(92969);
-    if (this.bvB == this.bvw)
+    if (this.bFP == this.bFK)
     {
-      localUri = this.bvB.getUri();
+      localUri = this.bFP.getUri();
       AppMethodBeat.o(92969);
       return localUri;
     }
@@ -345,35 +345,35 @@ public final class d
       AppMethodBeat.o(92968);
       return 0;
     }
-    if (this.bus == 0L)
+    if (this.bEH == 0L)
     {
       AppMethodBeat.o(92968);
       return -1;
     }
     try
     {
-      int i = this.bvB.read(paramArrayOfByte, paramInt1, paramInt2);
+      int i = this.bFP.read(paramArrayOfByte, paramInt1, paramInt2);
       if (i >= 0)
       {
-        if (this.bvB == this.bvu) {
-          this.bvH += i;
+        if (this.bFP == this.bFI) {
+          this.bFV += i;
         }
-        this.bvD += i;
-        if (this.bus != -1L) {
-          this.bus -= i;
+        this.bFR += i;
+        if (this.bEH != -1L) {
+          this.bEH -= i;
         }
       }
       do
       {
         AppMethodBeat.o(92968);
         return i;
-        if (this.bvC)
+        if (this.bFQ)
         {
-          setContentLength(this.bvD);
-          this.bus = 0L;
+          setContentLength(this.bFR);
+          this.bEH = 0L;
         }
-        vl();
-      } while (((this.bus <= 0L) && (this.bus != -1L)) || (!aW(false)));
+        wI();
+      } while (((this.bEH <= 0L) && (this.bEH != -1L)) || (!aX(false)));
       paramInt1 = read(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(92968);
       return paramInt1;
@@ -384,6 +384,11 @@ public final class d
       AppMethodBeat.o(92968);
       throw paramArrayOfByte;
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void k(long paramLong1, long paramLong2);
   }
 }
 

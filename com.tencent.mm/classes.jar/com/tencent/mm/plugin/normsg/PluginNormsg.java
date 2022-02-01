@@ -1,28 +1,22 @@
 package com.tencent.mm.plugin.normsg;
 
-import android.content.Context;
-import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.util.Base64;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
+import com.tencent.mm.al.e.a;
 import com.tencent.mm.i.g.a;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.cc;
+import com.tencent.mm.model.cd;
 import com.tencent.mm.normsg.c.p;
-import com.tencent.mm.normsg.c.q;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.plugin.messenger.foundation.a.r;
 import com.tencent.mm.plugin.normsg.c.a.a;
 import com.tencent.mm.plugin.normsg.c.a.c;
 import com.tencent.mm.plugin.normsg.c.b.f;
 import com.tencent.mm.plugin.normsg.c.j;
-import com.tencent.mm.plugin.soter.d.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.Map;
@@ -31,28 +25,28 @@ import java.util.concurrent.TimeUnit;
 
 public class PluginNormsg
   extends com.tencent.mm.kernel.b.f
-  implements com.tencent.mm.kernel.api.c, com.tencent.mm.normsg.a, p, a
+  implements com.tencent.mm.kernel.api.c, q, a
 {
-  private static final String vol;
-  private static final String vom;
-  private static final String von;
+  private static final String wtD;
+  private static final String wtE;
+  private static final String wtF;
   
   static
   {
     AppMethodBeat.i(149007);
-    vol = b.vog.aon("\034:/-9+\n.\"0:41\r\"!");
-    vom = b.vog.aon("\005#64 2\004(,");
-    von = b.vog.aon("");
+    wtD = b.wty.atn("\034:/-9+\n.\"0:41\r\"!");
+    wtE = b.wty.atn("\005#64 2\004(,");
+    wtF = b.wty.atn("");
     AppMethodBeat.o(149007);
   }
   
   private void processUpdateCCEncryptKey(final Map<String, String> paramMap)
   {
     AppMethodBeat.i(149005);
-    String str1 = (String)paramMap.get(b.vog.aon("k5>3,1$b\030>+)=/\016:6$. %\0316%s+-4"));
-    if (bs.isNullOrNil(str1))
+    String str1 = (String)paramMap.get(b.wty.atn("k5>3,1$b\030>+)=/\016:6$. %\0316%s+-4"));
+    if (bt.isNullOrNil(str1))
     {
-      ac.e("MicroMsg.PluginNormsg", "uccek: cannot get required url.");
+      ad.e("MicroMsg.PluginNormsg", "uccek: cannot get required url.");
       AppMethodBeat.o(149005);
       return;
     }
@@ -60,8 +54,8 @@ public class PluginNormsg
     if (str2 != null) {}
     for (paramMap = new File(str2); paramMap == null; paramMap = null)
     {
-      ac.e("MicroMsg.PluginNormsg", "uccek: failure to get required path.");
-      com.tencent.mm.plugin.report.service.h.wUl.n(876L, 0L, 1L);
+      ad.e("MicroMsg.PluginNormsg", "uccek: failure to get required path.");
+      com.tencent.mm.plugin.report.service.g.yhR.n(876L, 0L, 1L);
       AppMethodBeat.o(149005);
       return;
     }
@@ -70,8 +64,8 @@ public class PluginNormsg
       localFile = paramMap.getParentFile();
       if ((!localFile.exists()) && (!localFile.mkdirs()))
       {
-        ac.e("MicroMsg.PluginNormsg", "uccek: failure to create required path.");
-        com.tencent.mm.plugin.report.service.h.wUl.n(876L, 1L, 1L);
+        ad.e("MicroMsg.PluginNormsg", "uccek: failure to create required path.");
+        com.tencent.mm.plugin.report.service.g.yhR.n(876L, 1L, 1L);
         AppMethodBeat.o(149005);
         return;
       }
@@ -83,32 +77,33 @@ public class PluginNormsg
     for (;;)
     {
       com.tencent.mm.i.g localg = new com.tencent.mm.i.g();
-      localg.dBE = false;
-      localg.fre = str1;
-      localg.field_fileType = com.tencent.mm.i.a.fqD;
+      localg.fJi = "task_PluginNormsg_1";
+      localg.dNR = false;
+      localg.fJm = str1;
+      localg.field_fileType = com.tencent.mm.i.a.fIK;
       localg.field_fullpath = localFile.getAbsolutePath();
       localg.field_mediaId = str2;
       localg.allow_mobile_net_download = false;
-      localg.fri = true;
+      localg.fJq = true;
       localg.is_resume_task = false;
       localg.field_autostart = true;
-      localg.frf = ((int)TimeUnit.MINUTES.toSeconds(1L));
-      localg.frg = ((int)TimeUnit.MINUTES.toSeconds(10L));
-      localg.frb = new g.a()
+      localg.fJn = ((int)TimeUnit.MINUTES.toSeconds(1L));
+      localg.fJo = ((int)TimeUnit.MINUTES.toSeconds(10L));
+      localg.fJj = new g.a()
       {
         public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(148983);
           if (paramAnonymousInt == -21006)
           {
-            ac.w("MicroMsg.PluginNormsg", "uccek: duplicate request to download meta, ignore this request.");
+            ad.w("MicroMsg.PluginNormsg", "uccek: duplicate request to download meta, ignore this request.");
             AppMethodBeat.o(148983);
             return 0;
           }
           if (paramAnonymousInt != 0)
           {
-            ac.e("MicroMsg.PluginNormsg", "uccek: start failed : %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-            com.tencent.mm.plugin.report.service.h.wUl.n(876L, 3L, 1L);
+            ad.e("MicroMsg.PluginNormsg", "uccek: start failed : %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            com.tencent.mm.plugin.report.service.g.yhR.n(876L, 3L, 1L);
             AppMethodBeat.o(148983);
             return 0;
           }
@@ -117,22 +112,22 @@ public class PluginNormsg
             if (paramAnonymousd.field_retCode == 0) {
               break label156;
             }
-            ac.e("MicroMsg.PluginNormsg", "uccek: download failure, sceneResult.retCode:%d sceneResult[%s]", new Object[] { Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
+            ad.e("MicroMsg.PluginNormsg", "uccek: download failure, sceneResult.retCode:%d sceneResult[%s]", new Object[] { Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
             if ((paramAnonymousc != null) && (paramAnonymousc.field_finishedLength > 0L))
             {
-              ac.w("MicroMsg.PluginNormsg", "uccek: download interrupt, clear broken file.");
+              ad.w("MicroMsg.PluginNormsg", "uccek: download interrupt, clear broken file.");
               localFile.delete();
             }
-            com.tencent.mm.plugin.report.service.h.wUl.n(876L, 4L, 1L);
+            com.tencent.mm.plugin.report.service.g.yhR.n(876L, 4L, 1L);
           }
           for (;;)
           {
             AppMethodBeat.o(148983);
             return 0;
             label156:
-            ac.i("MicroMsg.PluginNormsg", "uccek: cdn trans suceess.");
+            ad.i("MicroMsg.PluginNormsg", "uccek: cdn trans suceess.");
             localFile.renameTo(paramMap);
-            com.tencent.mm.plugin.report.service.h.wUl.n(876L, 2L, 1L);
+            com.tencent.mm.plugin.report.service.g.yhR.n(876L, 2L, 1L);
           }
         }
         
@@ -143,7 +138,7 @@ public class PluginNormsg
           return new byte[0];
         }
       };
-      com.tencent.mm.an.f.aDD().b(localg, -1);
+      com.tencent.mm.ao.f.aGI().b(localg, -1);
       AppMethodBeat.o(149005);
       return;
       localFile.getParentFile().mkdirs();
@@ -153,10 +148,10 @@ public class PluginNormsg
   private void processUpdateRqtSignKey(final Map<String, String> paramMap, int paramInt)
   {
     AppMethodBeat.i(149006);
-    String str1 = (String)paramMap.get(b.vog.aon("b<7:%8-k\0217\" 4&\020,(q++4"));
-    if (bs.isNullOrNil(str1))
+    String str1 = (String)paramMap.get(b.wty.atn("b<7:%8-k\0217\" 4&\020,(q++4"));
+    if (bt.isNullOrNil(str1))
     {
-      ac.e("MicroMsg.PluginNormsg", "uccek: cannot get required url.");
+      ad.e("MicroMsg.PluginNormsg", "uccek: cannot get required url.");
       AppMethodBeat.o(149006);
       return;
     }
@@ -164,8 +159,8 @@ public class PluginNormsg
     if (str2 != null) {}
     for (paramMap = new File(str2); paramMap == null; paramMap = null)
     {
-      ac.e("MicroMsg.PluginNormsg", "urqtk: failure to get required path.");
-      com.tencent.mm.plugin.report.service.h.wUl.n(876L, 27L, 1L);
+      ad.e("MicroMsg.PluginNormsg", "urqtk: failure to get required path.");
+      com.tencent.mm.plugin.report.service.g.yhR.n(876L, 27L, 1L);
       AppMethodBeat.o(149006);
       return;
     }
@@ -174,8 +169,8 @@ public class PluginNormsg
       localFile = paramMap.getParentFile();
       if ((!localFile.exists()) && (!localFile.mkdirs()))
       {
-        ac.e("MicroMsg.PluginNormsg", "urqtk: failure to create required path.");
-        com.tencent.mm.plugin.report.service.h.wUl.n(876L, 28L, 1L);
+        ad.e("MicroMsg.PluginNormsg", "urqtk: failure to create required path.");
+        com.tencent.mm.plugin.report.service.g.yhR.n(876L, 28L, 1L);
         AppMethodBeat.o(149006);
         return;
       }
@@ -187,32 +182,33 @@ public class PluginNormsg
     for (;;)
     {
       com.tencent.mm.i.g localg = new com.tencent.mm.i.g();
-      localg.dBE = false;
-      localg.fre = str1;
-      localg.field_fileType = com.tencent.mm.i.a.fqD;
+      localg.fJi = "task_PluginNormsg_2";
+      localg.dNR = false;
+      localg.fJm = str1;
+      localg.field_fileType = com.tencent.mm.i.a.fIK;
       localg.field_fullpath = localFile.getAbsolutePath();
       localg.field_mediaId = str2;
       localg.allow_mobile_net_download = false;
-      localg.fri = true;
+      localg.fJq = true;
       localg.is_resume_task = false;
       localg.field_autostart = true;
-      localg.frf = ((int)TimeUnit.MINUTES.toSeconds(1L));
-      localg.frg = ((int)TimeUnit.MINUTES.toSeconds(10L));
-      localg.frb = new g.a()
+      localg.fJn = ((int)TimeUnit.MINUTES.toSeconds(1L));
+      localg.fJo = ((int)TimeUnit.MINUTES.toSeconds(10L));
+      localg.fJj = new g.a()
       {
         public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(148984);
           if (paramAnonymousInt == -21006)
           {
-            ac.w("MicroMsg.PluginNormsg", "urqtk: duplicate request to download meta, ignore this request.");
+            ad.w("MicroMsg.PluginNormsg", "urqtk: duplicate request to download meta, ignore this request.");
             AppMethodBeat.o(148984);
             return 0;
           }
           if (paramAnonymousInt != 0)
           {
-            ac.e("MicroMsg.PluginNormsg", "urqtk: start failed : %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-            com.tencent.mm.plugin.report.service.h.wUl.n(876L, 30L, 1L);
+            ad.e("MicroMsg.PluginNormsg", "urqtk: start failed : %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            com.tencent.mm.plugin.report.service.g.yhR.n(876L, 30L, 1L);
             AppMethodBeat.o(148984);
             return 0;
           }
@@ -221,22 +217,22 @@ public class PluginNormsg
             if (paramAnonymousd.field_retCode == 0) {
               break label156;
             }
-            ac.e("MicroMsg.PluginNormsg", "urqtk: download failure, sceneResult.retCode:%d sceneResult[%s]", new Object[] { Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
+            ad.e("MicroMsg.PluginNormsg", "urqtk: download failure, sceneResult.retCode:%d sceneResult[%s]", new Object[] { Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
             if ((paramAnonymousc != null) && (paramAnonymousc.field_finishedLength > 0L))
             {
-              ac.w("MicroMsg.PluginNormsg", "urqtk: download interrupt, clear broken file.");
+              ad.w("MicroMsg.PluginNormsg", "urqtk: download interrupt, clear broken file.");
               localFile.delete();
             }
-            com.tencent.mm.plugin.report.service.h.wUl.n(876L, 31L, 1L);
+            com.tencent.mm.plugin.report.service.g.yhR.n(876L, 31L, 1L);
           }
           for (;;)
           {
             AppMethodBeat.o(148984);
             return 0;
             label156:
-            ac.i("MicroMsg.PluginNormsg", "urqtk: cdn trans suceess.");
+            ad.i("MicroMsg.PluginNormsg", "urqtk: cdn trans suceess.");
             localFile.renameTo(paramMap);
-            com.tencent.mm.plugin.report.service.h.wUl.n(876L, 29L, 1L);
+            com.tencent.mm.plugin.report.service.g.yhR.n(876L, 29L, 1L);
           }
         }
         
@@ -247,7 +243,7 @@ public class PluginNormsg
           return new byte[0];
         }
       };
-      com.tencent.mm.an.f.aDD().b(localg, -1);
+      com.tencent.mm.ao.f.aGI().b(localg, -1);
       AppMethodBeat.o(149006);
       return;
       localFile.getParentFile().mkdirs();
@@ -257,9 +253,8 @@ public class PluginNormsg
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(148987);
-    c.q.c0(this);
-    com.tencent.mm.plugin.normsg.a.b.a(b.vog);
-    com.tencent.e.h.JZN.aS(new com.tencent.e.i.h()
+    com.tencent.mm.plugin.normsg.a.b.a(b.wty);
+    com.tencent.e.h.LTJ.aR(new com.tencent.e.i.h()
     {
       public final String getKey()
       {
@@ -269,13 +264,13 @@ public class PluginNormsg
       public final void run()
       {
         AppMethodBeat.i(148982);
-        b.vog.getOAID();
-        b localb = b.vog;
-        com.tencent.mm.sdk.a.b.vQ(b.dkA());
-        localb = b.vog;
-        com.tencent.mm.sdk.a.b.vR(b.dkB());
-        localb = b.vog;
-        com.tencent.mm.sdk.a.b.vS(b.dkz());
+        com.tencent.d.e.b.a.a.b.kT(aj.getContext());
+        b localb = b.wty;
+        com.tencent.mm.sdk.a.b.wC(b.duM());
+        localb = b.wty;
+        com.tencent.mm.sdk.a.b.wD(b.duN());
+        localb = b.wty;
+        com.tencent.mm.sdk.a.b.wE(b.duL());
         AppMethodBeat.o(148982);
       }
     });
@@ -287,111 +282,15 @@ public class PluginNormsg
     AppMethodBeat.i(148986);
     dependsOn(com.tencent.mm.plugin.zero.a.d.class);
     dependsOn(com.tencent.mm.plugin.report.c.class);
-    if (ai.cin())
+    if (aj.cmR())
     {
       dependsOn(com.tencent.mm.plugin.comm.a.a.class);
-      dependsOn(com.tencent.mm.plugin.messenger.foundation.a.q.class);
+      dependsOn(r.class);
     }
     AppMethodBeat.o(148986);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg) {}
-  
-  public String getAPKName(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(149004);
-    paramContext = bs.nullAsNil(NormsgDataProvider.getAPKName(paramContext, paramString));
-    AppMethodBeat.o(149004);
-    return paramContext;
-  }
-  
-  public byte[] getByteFromMMKV(String paramString)
-  {
-    AppMethodBeat.i(149001);
-    paramString = aw.aKT(new StringBuilder("atadtsurt_").reverse().toString()).decodeBytes(paramString);
-    AppMethodBeat.o(149001);
-    return paramString;
-  }
-  
-  public String getDeviceId()
-  {
-    AppMethodBeat.i(148999);
-    String str = com.tencent.mm.compatible.deviceinfo.q.XX();
-    AppMethodBeat.o(148999);
-    return str;
-  }
-  
-  public long getLuckyPackTASCount()
-  {
-    AppMethodBeat.i(148992);
-    long l = com.tencent.mm.plugin.normsg.c.a.dkH().dkI();
-    AppMethodBeat.o(148992);
-    return l;
-  }
-  
-  public String getOAID()
-  {
-    AppMethodBeat.i(149003);
-    String str = b.vog.getOAID();
-    AppMethodBeat.o(149003);
-    return str;
-  }
-  
-  public boolean getPhoneState(Context paramContext)
-  {
-    AppMethodBeat.i(206474);
-    boolean bool = NormsgDataProvider.getPhoneState(paramContext);
-    AppMethodBeat.o(206474);
-    return bool;
-  }
-  
-  public String getRiskScanDataBase64()
-  {
-    AppMethodBeat.i(148991);
-    String str2 = "";
-    Object localObject = com.tencent.mm.lib.riskscanner.a.a.cr(ai.getContext());
-    String str1 = str2;
-    if (localObject != null)
-    {
-      str1 = str2;
-      if (((Bundle)localObject).getInt("errCode", -100) == 0)
-      {
-        localObject = ((Bundle)localObject).getByteArray("reqBufferBase64");
-        str1 = str2;
-        if (localObject != null) {
-          str1 = Base64.encodeToString((byte[])localObject, 2);
-        }
-      }
-    }
-    AppMethodBeat.o(148991);
-    return str1;
-  }
-  
-  public String getSoterId()
-  {
-    AppMethodBeat.i(148996);
-    String str = com.tencent.mm.plugin.soter.d.d.dTq().znE;
-    if (str != null)
-    {
-      AppMethodBeat.o(148996);
-      return str;
-    }
-    AppMethodBeat.o(148996);
-    return "";
-  }
-  
-  public String getSoterUid()
-  {
-    AppMethodBeat.i(148998);
-    String str = com.tencent.mm.plugin.soter.d.d.dTq().znF;
-    if (str != null)
-    {
-      AppMethodBeat.o(148998);
-      return str;
-    }
-    AppMethodBeat.o(148998);
-    return "";
-  }
   
   public void installed()
   {
@@ -400,51 +299,43 @@ public class PluginNormsg
     AppMethodBeat.o(148985);
   }
   
-  public boolean isUSBConnected()
-  {
-    AppMethodBeat.i(148997);
-    boolean bool = j.isConnected();
-    AppMethodBeat.o(148997);
-    return bool;
-  }
-  
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(148988);
-    paramc = com.tencent.mm.plugin.normsg.c.a.dkH();
-    com.tencent.mm.kernel.b.g localg = com.tencent.mm.kernel.g.agO().agp();
+    paramc = com.tencent.mm.plugin.normsg.c.a.duY();
+    com.tencent.mm.kernel.b.g localg = com.tencent.mm.kernel.g.ajz().ajb();
     if (!a.c.isEnabled()) {
-      ac.w("MircoMsg.AEDHLP", "[tomys] aedh is not enabled.");
+      ad.w("MircoMsg.AEDHLP", "[tomys] aedh is not enabled.");
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a(vol, this);
+      ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().a(wtD, this);
       j.start();
       AppMethodBeat.o(148988);
       return;
-      int j = a.c.dkO();
+      int j = a.c.dvf();
       int i = j;
       if (j <= 0) {
         i = 26;
       }
       if (Build.VERSION.SDK_INT > i) {
-        ac.w("MircoMsg.AEDHLP", "[tomys] unsupported system, aedh is not enabled.");
-      } else if (com.tencent.mm.plugin.normsg.c.a.vow.contains(com.tencent.mm.plugin.normsg.c.a.ev(localg.mProcessName))) {
+        ad.w("MircoMsg.AEDHLP", "[tomys] unsupported system, aedh is not enabled.");
+      } else if (com.tencent.mm.plugin.normsg.c.a.wtP.contains(com.tencent.mm.plugin.normsg.c.a.fq(localg.mProcessName))) {
         try
         {
-          com.tencent.mm.plugin.normsg.c.b localb = com.tencent.mm.plugin.normsg.c.b.dkQ();
+          com.tencent.mm.plugin.normsg.c.b localb = com.tencent.mm.plugin.normsg.c.b.dvh();
           localb.initialize(localg.ca);
           localb.ensureInitialized();
-          localb.vpc.add(paramc);
-          ac.i("MircoMsg.AEDHLP", "[tomys] aed installed.");
+          localb.wuv.add(paramc);
+          ad.i("MircoMsg.AEDHLP", "[tomys] aed installed.");
         }
         catch (b.f localf)
         {
-          ac.printErrStackTrace("MircoMsg.AEDHLP", localf, "[tomys] aed install failed.", new Object[0]);
-          paramc.k(localf);
+          ad.printErrStackTrace("MircoMsg.AEDHLP", localf, "[tomys] aed install failed.", new Object[0]);
+          paramc.l(localf);
         }
       } else {
-        ac.w("MircoMsg.AEDHLP", "[tomys] not target process, skip installing aed.");
+        ad.w("MircoMsg.AEDHLP", "[tomys] not target process, skip installing aed.");
       }
     }
   }
@@ -452,73 +343,31 @@ public class PluginNormsg
   public void onAccountRelease()
   {
     AppMethodBeat.i(148989);
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b(vol, this);
+    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().b(wtD, this);
     j.stop();
     AppMethodBeat.o(148989);
   }
   
-  public void onNewXmlReceived(String paramString, Map<String, String> paramMap, f.a parama)
+  public void onNewXmlReceived(String paramString, Map<String, String> paramMap, e.a parama)
   {
     AppMethodBeat.i(148990);
-    ac.i("MicroMsg.PluginNormsg", "xml cmd received, subType: %s", new Object[] { paramString });
-    if (vol.equals(paramString))
+    ad.i("MicroMsg.PluginNormsg", "xml cmd received, subType: %s", new Object[] { paramString });
+    if (wtD.equals(paramString))
     {
       processUpdateCCEncryptKey(paramMap);
       AppMethodBeat.o(148990);
       return;
     }
-    if (vom.equals(paramString))
+    if (wtE.equals(paramString))
     {
       processUpdateRqtSignKey(paramMap, 0);
       AppMethodBeat.o(148990);
       return;
     }
-    if (von.equals(paramString)) {
+    if (wtF.equals(paramString)) {
       processUpdateRqtSignKey(paramMap, 1);
     }
     AppMethodBeat.o(148990);
-  }
-  
-  public boolean putByteToMMKV(String paramString, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(149000);
-    aw localaw = aw.aKT(new StringBuilder("atadtsurt_").reverse().toString());
-    if (!localaw.encode(paramString, paramArrayOfByte))
-    {
-      AppMethodBeat.o(149000);
-      return false;
-    }
-    boolean bool = localaw.commit();
-    AppMethodBeat.o(149000);
-    return bool;
-  }
-  
-  public void removeFromMMKV(String paramString)
-  {
-    AppMethodBeat.i(149002);
-    aw.aKT(new StringBuilder("atadtsurt_").reverse().toString()).remove(paramString).commit();
-    AppMethodBeat.o(149002);
-  }
-  
-  public void reportGroupedIdKey(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(148995);
-    com.tencent.mm.plugin.report.service.h.wUl.c(paramInt1, paramInt2, paramInt3, paramInt4, true);
-    AppMethodBeat.o(148995);
-  }
-  
-  public void reportIdKey(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(148994);
-    com.tencent.mm.plugin.report.service.h.wUl.n(paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(148994);
-  }
-  
-  public void reportKVStat(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(148993);
-    com.tencent.mm.plugin.report.service.h.wUl.kvStat(paramInt, paramString);
-    AppMethodBeat.o(148993);
   }
 }
 

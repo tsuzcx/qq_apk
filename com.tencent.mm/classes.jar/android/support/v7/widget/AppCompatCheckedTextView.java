@@ -13,8 +13,8 @@ import android.widget.CheckedTextView;
 public class AppCompatCheckedTextView
   extends CheckedTextView
 {
-  private static final int[] adN = { 16843016 };
-  private final l ahZ = new l(this);
+  private static final int[] afE = { 16843016 };
+  private final l ajQ = new l(this);
   
   public AppCompatCheckedTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,18 +24,18 @@ public class AppCompatCheckedTextView
   public AppCompatCheckedTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(aw.ac(paramContext), paramAttributeSet, paramInt);
-    this.ahZ.a(paramAttributeSet, paramInt);
-    this.ahZ.iP();
-    paramContext = az.a(getContext(), paramAttributeSet, adN, paramInt, 0);
+    this.ajQ.a(paramAttributeSet, paramInt);
+    this.ajQ.jf();
+    paramContext = az.a(getContext(), paramAttributeSet, afE, paramInt, 0);
     setCheckMarkDrawable(paramContext.getDrawable(0));
-    paramContext.awJ.recycle();
+    paramContext.ayA.recycle();
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.ahZ != null) {
-      this.ahZ.iP();
+    if (this.ajQ != null) {
+      this.ajQ.jf();
     }
   }
   
@@ -57,8 +57,8 @@ public class AppCompatCheckedTextView
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.ahZ != null) {
-      this.ahZ.u(paramContext, paramInt);
+    if (this.ajQ != null) {
+      this.ajQ.u(paramContext, paramInt);
     }
   }
 }

@@ -5,11 +5,11 @@ import android.view.accessibility.AccessibilityManager.TouchExplorationStateChan
 public final class b$b
   implements AccessibilityManager.TouchExplorationStateChangeListener
 {
-  final b.a Pl;
+  final b.a Ra;
   
   public b$b(b.a parama)
   {
-    this.Pl = parama;
+    this.Ra = parama;
   }
   
   public final boolean equals(Object paramObject)
@@ -21,17 +21,17 @@ public final class b$b
       return false;
     }
     paramObject = (b)paramObject;
-    return this.Pl.equals(paramObject.Pl);
+    return this.Ra.equals(paramObject.Ra);
   }
   
   public final int hashCode()
   {
-    return this.Pl.hashCode();
+    return this.Ra.hashCode();
   }
   
   public final void onTouchExplorationStateChanged(boolean paramBoolean)
   {
-    this.Pl.onTouchExplorationStateChanged(paramBoolean);
+    this.Ra.onTouchExplorationStateChanged(paramBoolean);
   }
 }
 

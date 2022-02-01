@@ -1,22 +1,17 @@
 package com.tencent.tav.decoder;
 
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import java.nio.ByteBuffer;
 
 public abstract interface IDecoder
 {
-  public static final CMTime SAMPLE_TIME_ERROR = new CMTime(-3L);
-  public static final CMTime SAMPLE_TIME_FAILED;
-  public static final CMTime SAMPLE_TIME_FINISH;
-  public static final CMTime SAMPLE_TIME_TIMEOUT = new CMTime(-4L);
-  public static final CMTime SAMPLE_TIME_UNSTART = new CMTime(-100L);
-  
-  static
-  {
-    SAMPLE_TIME_FINISH = new CMTime(-1L);
-    SAMPLE_TIME_FAILED = new CMTime(-2L);
-  }
+  public static final long SAMPLE_STATE_ERROR = -3L;
+  public static final long SAMPLE_STATE_FAILED = -2L;
+  public static final long SAMPLE_STATE_FINISH = -1L;
+  public static final long SAMPLE_STATE_TIMEOUT = -4L;
+  public static final long SAMPLE_STATE_UN_START = -100L;
   
   public abstract String getSourcePath();
   
@@ -24,9 +19,9 @@ public abstract interface IDecoder
   
   public abstract ByteBuffer outputBuffer();
   
-  public abstract CMTime readSample();
+  public abstract CMSampleState readSample();
   
-  public abstract CMTime readSample(CMTime paramCMTime);
+  public abstract CMSampleState readSample(CMTime paramCMTime);
   
   public abstract void release();
   
@@ -38,7 +33,7 @@ public abstract interface IDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.decoder.IDecoder
  * JD-Core Version:    0.7.0.1
  */

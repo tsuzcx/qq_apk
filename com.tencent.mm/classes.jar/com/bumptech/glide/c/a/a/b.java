@@ -6,7 +6,7 @@ import java.util.List;
 
 public final class b
 {
-  public static boolean aT(int paramInt1, int paramInt2)
+  public static boolean aU(int paramInt1, int paramInt2)
   {
     return (paramInt1 != -2147483648) && (paramInt2 != -2147483648) && (paramInt1 <= 512) && (paramInt2 <= 384);
   }

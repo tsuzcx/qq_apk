@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wallet_core.model.v;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,16 +10,16 @@ import org.json.JSONObject;
 public final class ah
   extends m
 {
-  public String BoN;
-  public String Bpa;
+  public String CPc;
+  public String CPp;
   
-  public ah(u paramu, String paramString)
+  public ah(v paramv, String paramString)
   {
     AppMethodBeat.i(69960);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("verify_code", paramu.BzM);
-    localHashMap.put("token", paramu.token);
-    localHashMap.put("passwd", paramu.iJA);
+    localHashMap.put("verify_code", paramv.Daf);
+    localHashMap.put("token", paramv.token);
+    localHashMap.put("passwd", paramv.jcJ);
     localHashMap.put("relation_key", paramString);
     setRequestData(localHashMap);
     AppMethodBeat.o(69960);
@@ -45,8 +45,8 @@ public final class ah
     AppMethodBeat.i(69961);
     if ((paramJSONObject != null) && (paramInt == 0))
     {
-      this.BoN = paramJSONObject.optString("token_type");
-      this.Bpa = paramJSONObject.optString("usertoken");
+      this.CPc = paramJSONObject.optString("token_type");
+      this.CPp = paramJSONObject.optString("usertoken");
     }
     AppMethodBeat.o(69961);
   }

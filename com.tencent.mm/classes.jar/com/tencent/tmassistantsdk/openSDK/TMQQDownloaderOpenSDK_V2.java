@@ -409,7 +409,7 @@ public class TMQQDownloaderOpenSDK_V2
     //   81: ldc_w 321
     //   84: iconst_0
     //   85: anewarray 323	java/lang/Object
-    //   88: invokestatic 329	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   88: invokestatic 329	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   91: goto -31 -> 60
     //   94: ldc_w 312
     //   97: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V

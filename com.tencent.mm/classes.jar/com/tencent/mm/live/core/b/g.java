@@ -3,13 +3,13 @@ package com.tencent.mm.live.core.b;
 import d.g.a.a;
 import d.l;
 
-@l(fNY={1, 1, 16})
+@l(gfx={1, 1, 16})
 final class g
   implements Runnable
 {
   g(a parama)
   {
-    this.bYd = parama;
+    this.civ = parama;
   }
 }
 

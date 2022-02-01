@@ -6,27 +6,29 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.g;
+import android.support.v4.app.k;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.i;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 
 @i
 @a(3)
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/collection/AppBrandCollectionSortUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "finish", "", "getLayoutId", "", "initActivityCloseAnimation", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onResume", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/collection/AppBrandCollectionSortUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "finish", "", "getLayoutId", "", "initActivityCloseAnimation", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onResume", "Companion", "plugin-appbrand-integration_release"})
 public final class AppBrandCollectionSortUI
   extends MMActivity
 {
-  public static final a mhZ;
+  public static final a mIA;
   
   static
   {
     AppMethodBeat.i(51203);
-    mhZ = new a((byte)0);
+    mIA = new a((byte)0);
     AppMethodBeat.o(51203);
   }
   
@@ -69,8 +71,8 @@ public final class AppBrandCollectionSortUI
     overridePendingTransition(2130771981, 2130771986);
     setActionbarColor(getContext().getResources().getColor(2131100705));
     getContentView().setBackgroundColor(getActionbarColor());
-    android.support.v4.app.k localk = getSupportFragmentManager().beginTransaction();
-    Object localObject = AppBrandCollectionVerticalSortList.mic;
+    k localk = getSupportFragmentManager().beginTransaction();
+    Object localObject = AppBrandCollectionVerticalSortList.mIE;
     localObject = getIntent();
     if (localObject != null) {}
     for (int i = ((Intent)localObject).getIntExtra("KEY_OPERATE_REPORT_SCENE", 0);; i = 0)
@@ -79,7 +81,7 @@ public final class AppBrandCollectionSortUI
       if (localObject != null) {
         str = ((Intent)localObject).getStringExtra("KEY_OPERATE_REPORT_SCENE_ID");
       }
-      d.g.b.k.h(paramBundle, "list");
+      p.h(paramBundle, "list");
       localObject = new AppBrandCollectionVerticalSortList();
       Bundle localBundle = new Bundle(1);
       localBundle.putParcelableArrayList("KEY_SORT_DATA_LIST", paramBundle);
@@ -107,7 +109,7 @@ public final class AppBrandCollectionSortUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/collection/AppBrandCollectionSortUI$Companion;", "", "()V", "KEY_OPERATE_REPORT_SCENE", "", "KEY_OPERATE_REPORT_SCENE_ID", "KEY_SORT_DATA_LIST", "startSortList", "", "context", "Landroid/content/Context;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "Lkotlin/collections/ArrayList;", "operateReportScene", "", "operateReportSceneId", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/collection/AppBrandCollectionSortUI$Companion;", "", "()V", "KEY_OPERATE_REPORT_SCENE", "", "KEY_OPERATE_REPORT_SCENE_ID", "KEY_SORT_DATA_LIST", "startSortList", "", "context", "Landroid/content/Context;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "Lkotlin/collections/ArrayList;", "operateReportScene", "", "operateReportSceneId", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

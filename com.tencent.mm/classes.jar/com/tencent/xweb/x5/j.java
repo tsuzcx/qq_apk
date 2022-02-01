@@ -12,16 +12,16 @@ import com.tencent.xweb.o;
 public final class j
   implements e
 {
-  c KEF;
-  b KEG;
-  WebView KEH;
+  c Mvf;
+  b Mvg;
+  WebView Mvh;
   
   public j(WebView paramWebView)
   {
     AppMethodBeat.i(153868);
-    this.KEH = paramWebView;
-    this.KEF = new c();
-    this.KEG = new b();
+    this.Mvh = paramWebView;
+    this.Mvf = new c();
+    this.Mvg = new b();
     AppMethodBeat.o(153868);
   }
   
@@ -43,7 +43,7 @@ public final class j
   public final void onHideCustomView()
   {
     AppMethodBeat.i(153870);
-    this.KEG.fLr();
+    this.Mvg.gcM();
     AppMethodBeat.o(153870);
   }
   
@@ -52,7 +52,7 @@ public final class j
   public final void y(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(153869);
-    this.KEF.b(this.KEH, paramString, paramBitmap);
+    this.Mvf.b(this.Mvh, paramString, paramBitmap);
     AppMethodBeat.o(153869);
   }
 }

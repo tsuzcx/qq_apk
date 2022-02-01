@@ -1,18 +1,18 @@
 package com.tencent.mm.loader.g.a;
 
 import com.tencent.mm.loader.h.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "()V", "retryCount", "", "(I)V", "retryTime", "(II)V", "MAX_URL_SIZE", "mRetryMap", "Lcom/tencent/mm/loader/model/MMLRUMap;", "", "Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "canRetry", "", "task", "Lcom/tencent/mm/loader/loader/IWorkTask;", "RecentDownInfo", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "()V", "retryCount", "", "(I)V", "retryTime", "(II)V", "MAX_URL_SIZE", "mRetryMap", "Lcom/tencent/mm/loader/model/MMLRUMap;", "", "Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "canRetry", "", "task", "Lcom/tencent/mm/loader/loader/IWorkTask;", "RecentDownInfo", "libimageloader_release"})
 public final class a
   implements c
 {
-  private final d<String, a> gKO;
-  private final int gLV;
-  private final int gLW;
+  private final d<String, a> heD;
+  private final int hfS;
+  private final int hfT;
   private final int retryCount;
   
   public a()
@@ -28,51 +28,51 @@ public final class a
   public a(int paramInt)
   {
     this.retryCount = paramInt;
-    this.gLW = 2147483647;
-    this.gLV = 100;
-    this.gKO = new d(this.gLV);
+    this.hfT = 2147483647;
+    this.hfS = 100;
+    this.heD = new d(this.hfS);
   }
   
   public final boolean a(com.tencent.mm.loader.g.c paramc)
   {
-    k.h(paramc, "task");
-    if (this.gKO.aK(paramc.acg()))
+    p.h(paramc, "task");
+    if (this.heD.aM(paramc.aeK()))
     {
-      long l = bs.aNx();
-      a locala2 = (a)this.gKO.aJ(paramc.acg());
-      if ((locala2.gLY >= this.retryCount) && (l - locala2.gLX < this.gLW))
+      long l = bt.aQJ();
+      a locala2 = (a)this.heD.aL(paramc.aeK());
+      if ((locala2.hfV >= this.retryCount) && (l - locala2.hfU < this.hfT))
       {
-        ac.w("DefaultRetrySg", "check block by recentdown: " + paramc.acg() + " count " + locala2.gLY + "  time: " + (l - locala2.gLX));
+        ad.w("DefaultRetrySg", "check block by recentdown: " + paramc.aeK() + " count " + locala2.hfV + "  time: " + (l - locala2.hfU));
         return false;
       }
       a locala1 = locala2;
-      if (l - locala2.gLX > this.gLW)
+      if (l - locala2.hfU > this.hfT)
       {
-        ac.v("DefaultRetrySg", "reset: " + paramc.acg());
+        ad.v("DefaultRetrySg", "reset: " + paramc.aeK());
         locala1 = new a(l, 0);
       }
-      locala1.gLY += 1;
-      locala1.gLX = l;
-      this.gKO.put(paramc.acg(), locala1);
+      locala1.hfV += 1;
+      locala1.hfU = l;
+      this.heD.put(paramc.aeK(), locala1);
     }
     for (;;)
     {
       return true;
-      this.gKO.put(paramc.acg(), new a(bs.aNx(), 1));
+      this.heD.put(paramc.aeK(), new a(bt.aQJ(), 1));
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "", "lastTime", "", "tryCount", "", "(Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;JI)V", "getLastTime", "()J", "setLastTime", "(J)V", "getTryCount", "()I", "setTryCount", "(I)V", "libimageloader_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "", "lastTime", "", "tryCount", "", "(Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;JI)V", "getLastTime", "()J", "setLastTime", "(J)V", "getTryCount", "()I", "setTryCount", "(I)V", "libimageloader_release"})
   public final class a
   {
-    long gLX;
-    int gLY;
+    long hfU;
+    int hfV;
     
     public a(int paramInt)
     {
-      this.gLX = ???;
+      this.hfU = ???;
       int i;
-      this.gLY = i;
+      this.hfV = i;
     }
   }
 }

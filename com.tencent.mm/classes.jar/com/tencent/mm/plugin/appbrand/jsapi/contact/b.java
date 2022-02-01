@@ -9,13 +9,13 @@ import android.os.RemoteException;
 import android.provider.ContactsContract.Contacts;
 import android.view.MenuItem;
 import com.tencent.luggage.h.e;
-import com.tencent.luggage.h.e.a;
+import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.n.e;
 import java.util.ArrayList;
 import org.json.JSONObject;
 
@@ -58,12 +58,12 @@ public final class b
   private static void a(ArrayList<ContentValues> paramArrayList, a.a parama, int paramInt)
   {
     AppMethodBeat.i(137494);
-    if ((parama != null) && (parama.bgx().length() > 0))
+    if ((parama != null) && (parama.bkb().length() > 0))
     {
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("mimetype", "vnd.android.cursor.item/postal-address_v2");
-      localContentValues.put("data1", parama.bgx());
-      localContentValues.put("data9", parama.koJ);
+      localContentValues.put("data1", parama.bkb());
+      localContentValues.put("data9", parama.kJJ);
       localContentValues.put("data2", Integer.valueOf(paramInt));
       paramArrayList.add(localContentValues);
     }
@@ -95,14 +95,14 @@ public final class b
     if (paramJSONObject == null)
     {
       paramc.h(paramInt, e("fail:data is null", null));
-      ac.e("MicroMsg.JsApiAddPhoneContact", "data is null");
+      ad.e("MicroMsg.JsApiAddPhoneContact", "data is null");
       AppMethodBeat.o(137492);
       return;
     }
-    if (bs.isNullOrNil(paramJSONObject.optString("firstName")))
+    if (bt.isNullOrNil(paramJSONObject.optString("firstName")))
     {
       paramc.h(paramInt, e("fail:firstName is null", null));
-      ac.e("MicroMsg.JsApiAddPhoneContact", "firstName is null");
+      ad.e("MicroMsg.JsApiAddPhoneContact", "firstName is null");
       AppMethodBeat.o(137492);
       return;
     }
@@ -110,36 +110,36 @@ public final class b
     if ((localContext == null) || (!(localContext instanceof Activity)))
     {
       paramc.h(paramInt, e("fail", null));
-      ac.e("MicroMsg.JsApiAddPhoneContact", "activity is null, invoke fail!");
+      ad.e("MicroMsg.JsApiAddPhoneContact", "activity is null, invoke fail!");
       AppMethodBeat.o(137492);
       return;
     }
     a locala = new a();
-    locala.kow = paramJSONObject.optString("photoFilePath");
-    locala.bLs = paramJSONObject.optString("nickName");
-    locala.kov = new a.b(paramJSONObject.optString("firstName"), paramJSONObject.optString("middleName"), paramJSONObject.optString("lastName"));
-    locala.iAC = paramJSONObject.optString("remark");
-    locala.koA = paramJSONObject.optString("mobilePhoneNumber");
-    locala.koH = paramJSONObject.optString("weChatNumber");
-    locala.koz = d(paramJSONObject, "address");
-    locala.koE = paramJSONObject.optString("organization");
+    locala.kJw = paramJSONObject.optString("photoFilePath");
+    locala.bVF = paramJSONObject.optString("nickName");
+    locala.kJv = new a.b(paramJSONObject.optString("firstName"), paramJSONObject.optString("middleName"), paramJSONObject.optString("lastName"));
+    locala.iTM = paramJSONObject.optString("remark");
+    locala.kJA = paramJSONObject.optString("mobilePhoneNumber");
+    locala.kJH = paramJSONObject.optString("weChatNumber");
+    locala.kJz = d(paramJSONObject, "address");
+    locala.kJE = paramJSONObject.optString("organization");
     locala.title = paramJSONObject.optString("title");
-    locala.koF = paramJSONObject.optString("workFaxNumber");
-    locala.koD = paramJSONObject.optString("workPhoneNumber");
-    locala.koC = paramJSONObject.optString("hostNumber");
-    locala.exO = paramJSONObject.optString("email");
+    locala.kJF = paramJSONObject.optString("workFaxNumber");
+    locala.kJD = paramJSONObject.optString("workPhoneNumber");
+    locala.kJC = paramJSONObject.optString("hostNumber");
+    locala.ePn = paramJSONObject.optString("email");
     locala.url = paramJSONObject.optString("url");
-    locala.koy = d(paramJSONObject, "workAddress");
-    locala.koG = paramJSONObject.optString("homeFaxNumber");
-    locala.koB = paramJSONObject.optString("homePhoneNumber");
-    locala.kox = d(paramJSONObject, "homeAddress");
-    paramc.N(new b.1(this, localContext, locala, paramc, paramInt));
+    locala.kJy = d(paramJSONObject, "workAddress");
+    locala.kJG = paramJSONObject.optString("homeFaxNumber");
+    locala.kJB = paramJSONObject.optString("homePhoneNumber");
+    locala.kJx = d(paramJSONObject, "homeAddress");
+    paramc.M(new b.1(this, localContext, locala, paramc, paramInt));
     AppMethodBeat.o(137492);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.contact.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ public enum i
   static
   {
     AppMethodBeat.i(48224);
-    lUZ = new i("CreateOnRuntimeInit", 0);
-    lVa = new i("PreloadOnProcessCreated", 1);
-    lVb = new i("PreloadBeforeRuntimeInit", 2);
-    lVc = new i[] { lUZ, lVa, lVb };
+    muP = new i("CreateOnRuntimeInit", 0);
+    muQ = new i("PreloadOnProcessCreated", 1);
+    muR = new i("PreloadBeforeRuntimeInit", 2);
+    muS = new i[] { muP, muQ, muR };
     AppMethodBeat.o(48224);
   }
   

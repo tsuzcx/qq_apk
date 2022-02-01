@@ -12,126 +12,134 @@ public final class d
 {
   public static SchedulerConfig a(a.b paramb, String paramString)
   {
-    AppMethodBeat.i(208960);
+    AppMethodBeat.i(195600);
     SchedulerConfig localSchedulerConfig = new SchedulerConfig();
-    com.tencent.xweb.internal.a.c.aVf(paramString);
-    Object localObject1;
-    if ((paramb == null) || (paramb.KHV == null) || (paramb.KHV.length == 0))
+    com.tencent.xweb.internal.a.c.bbi(paramString);
+    Object localObject;
+    if ((paramb == null) || (paramb.Myy == null) || (paramb.Myy.length == 0))
     {
-      localObject1 = null;
-      com.tencent.xweb.internal.a.c.aVf(null);
-      if ((localObject1 == null) || (((a.f)localObject1).version <= XWebCoreInfo.getBackupCoreInfo(paramString).ver)) {
-        break label518;
+      localObject = null;
+      com.tencent.xweb.internal.a.c.bbi(null);
+      if ((localObject == null) || (((a.f)localObject).version <= XWebCoreInfo.getBackupCoreInfo(paramString).ver)) {
+        break label587;
       }
       XWalkInitializer.addXWalkInitializeLog("got matched version");
-      localSchedulerConfig.KHU = paramb.KHU;
-      localSchedulerConfig.KHS = ((a.f)localObject1).KHS;
-      localSchedulerConfig.version = ((a.f)localObject1).version;
-      localSchedulerConfig.KIs = ((a.f)localObject1).KIa.KIc;
-      localSchedulerConfig.KHT = ((a.f)localObject1).KHT;
-      localSchedulerConfig.bUseCdn = ((a.f)localObject1).bUseCdn;
-      localSchedulerConfig.bTryUseSharedCore = ((a.f)localObject1).bTryUseSharedCore;
-      paramb = a((a.f)localObject1, paramString);
-      localSchedulerConfig.KIq = ((a.f)localObject1).KHL;
-      localSchedulerConfig.strAbi = ((a.f)localObject1).KCh.KCH;
-      localSchedulerConfig.KHK = ((a.f)localObject1).KHK;
-      localSchedulerConfig.KIv = ((a.f)localObject1).KHM;
-      localSchedulerConfig.KIw = ((a.f)localObject1).KHN;
+      localSchedulerConfig.Myx = paramb.Myx;
+      localSchedulerConfig.Mys = ((a.f)localObject).Mys;
+      localSchedulerConfig.Myu = ((a.f)localObject).Myu;
+      localSchedulerConfig.Myv = ((a.f)localObject).Myv;
+      localSchedulerConfig.Myw = ((a.f)localObject).Myw;
+      localSchedulerConfig.version = ((a.f)localObject).version;
+      localSchedulerConfig.MyX = ((a.f)localObject).MyD.MyG;
+      localSchedulerConfig.Myt = ((a.f)localObject).Myt;
+      localSchedulerConfig.bUseCdn = ((a.f)localObject).bUseCdn;
+      localSchedulerConfig.bTryUseSharedCore = ((a.f)localObject).bTryUseSharedCore;
+      paramb = a((a.f)localObject, paramString);
+      localSchedulerConfig.MyV = ((a.f)localObject).Myl;
+      localSchedulerConfig.strAbi = ((a.f)localObject).MsC.Mtg;
+      localSchedulerConfig.Myk = ((a.f)localObject).Myk;
+      localSchedulerConfig.Mza = ((a.f)localObject).Mym;
+      localSchedulerConfig.Mzb = ((a.f)localObject).Myn;
       if (paramb == null) {
-        break label499;
+        break label568;
       }
-      localSchedulerConfig.KIp = true;
-      localSchedulerConfig.nPatchTargetVersion = paramb.KHX;
-      localSchedulerConfig.KHL = paramb.KHL;
-      localSchedulerConfig.patchMd5 = paramb.KHS;
-      localSchedulerConfig.KHT = paramb.KHT;
+      localSchedulerConfig.MyT = true;
+      localSchedulerConfig.nPatchTargetVersion = paramb.MyA;
+      localSchedulerConfig.Myl = paramb.Myl;
+      localSchedulerConfig.patchMd5 = paramb.Mys;
+      localSchedulerConfig.Myt = paramb.Myt;
       localSchedulerConfig.bUseCdn = paramb.bUseCdn;
     }
     for (;;)
     {
-      localSchedulerConfig.KIr = c.a((a.a)localObject1, "XWebCore");
-      AppMethodBeat.o(208960);
+      localSchedulerConfig.MyW = c.a((a.a)localObject, "XWebCore");
+      AppMethodBeat.o(195600);
       return localSchedulerConfig;
       int i = Build.VERSION.SDK_INT;
-      localObject1 = paramb.KHV;
-      int j = localObject1.length;
+      a.f[] arrayOff = paramb.Myy;
+      int j = arrayOff.length;
       i = 0;
+      label322:
       if (i < j)
       {
-        Object localObject2 = localObject1[i];
-        if (localObject2 == null) {
+        a.f localf = arrayOff[i];
+        if (localf == null) {
           XWalkInitializer.addXWalkInitializeLog("no matched version  version == null");
         }
         for (;;)
         {
           i += 1;
-          break;
-          Log.i("VersionMatcher", "try match version = " + localObject2.version + " version runtime abi is " + localObject2.KCh.KCH);
-          if (localObject2.version < 49)
+          break label322;
+          Log.i("VersionMatcher", "try match version = " + localf.version + " version runtime abi is " + localf.MsC.Mtg);
+          if (localf.version < 49)
           {
             Log.i("VersionMatcher", " apk is not support, below 49");
           }
           else
           {
-            int k = XWalkEnvironment.getInstalledNewstVersion(localObject2.KCh.KCH);
-            if (localObject2.version <= k)
+            int k = XWalkEnvironment.getInstalledNewstVersion(localf.MsC.Mtg);
+            if (localf.version <= k)
             {
               Log.i("VersionMatcher", " apk is too old, now installed version ".concat(String.valueOf(k)));
             }
+            else if (!localf.MsC.gbC())
+            {
+              Log.i("VersionMatcher", " apk filter out ");
+            }
             else
             {
-              if (localObject2.KCh.fKi()) {
-                break label443;
+              localObject = localf.MsC.Mtg;
+              XWalkUpdater.getLastTryInstallVer((String)localObject);
+              if (!"arm64-v8a".equalsIgnoreCase((String)localObject)) {
+                "armeabi-v7a".equalsIgnoreCase((String)localObject);
               }
-              Log.i("VersionMatcher", " apk filter out ");
+              localObject = localf;
+              if (!com.tencent.xweb.internal.a.c.gbF()) {
+                break;
+              }
+              localObject = localf;
+              if (localf.MyE) {
+                break;
+              }
+              Log.i("VersionMatcher", " version.supportPredown is false, apkver = " + localf.version);
             }
           }
         }
-        label443:
-        String str = localObject2.KCh.KCH;
-        XWalkUpdater.getLastTryInstallVer(str);
-        localObject1 = localObject2;
-        if ("arm64-v8a".equalsIgnoreCase(str)) {
-          break;
-        }
-        "armeabi-v7a".equalsIgnoreCase(str);
-        localObject1 = localObject2;
-        break;
       }
       XWalkInitializer.addXWalkInitializeLog("no matched version");
-      localObject1 = null;
+      localObject = null;
       break;
-      label499:
-      localSchedulerConfig.KIp = false;
-      localSchedulerConfig.KHL = ((a.f)localObject1).KHL;
+      label568:
+      localSchedulerConfig.MyT = false;
+      localSchedulerConfig.Myl = ((a.f)localObject).Myl;
     }
-    label518:
-    AppMethodBeat.o(208960);
+    label587:
+    AppMethodBeat.o(195600);
     return null;
   }
   
   private static a.c a(a.f paramf, String paramString)
   {
-    AppMethodBeat.i(208961);
-    if (paramf.KHQ != null)
+    AppMethodBeat.i(195601);
+    if (paramf.Myq != null)
     {
-      paramf = paramf.KHQ;
+      paramf = paramf.Myq;
       int j = paramf.length;
       int i = 0;
       while (i < j)
       {
         a.c localc = paramf[i];
-        if (localc.KHX == XWalkEnvironment.getInstalledNewstVersion(paramString))
+        if (localc.MyA == XWalkEnvironment.getInstalledNewstVersion(paramString))
         {
-          XWalkInitializer.addXWalkInitializeLog("got matched patch to upgrade " + localc.KHX);
-          AppMethodBeat.o(208961);
+          XWalkInitializer.addXWalkInitializeLog("got matched patch to upgrade " + localc.MyA);
+          AppMethodBeat.o(195601);
           return localc;
         }
         i += 1;
       }
     }
     XWalkInitializer.addXWalkInitializeLog("no matched patch");
-    AppMethodBeat.o(208961);
+    AppMethodBeat.o(195601);
     return null;
   }
 }

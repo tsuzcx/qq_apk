@@ -46,8 +46,8 @@ public class CircleAnimateView
   private void el(Context paramContext)
   {
     AppMethodBeat.i(106372);
-    this.defaultWidth = a.av(paramContext, 2131166308);
-    this.defaultHeight = a.av(paramContext, 2131166308);
+    this.defaultWidth = a.ay(paramContext, 2131166308);
+    this.defaultHeight = a.ay(paramContext, 2131166308);
     AppMethodBeat.o(106372);
   }
   

@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.scanner.view;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "", "onSuccessAnimationEnd", "", "onSuccessAnimationStart", "scan-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "", "onSuccessAnimationEnd", "", "onSuccessAnimationStart", "scan-sdk_release"})
 public abstract interface c
 {
-  public abstract void dAf();
+  public abstract void dLD();
 }
 
 

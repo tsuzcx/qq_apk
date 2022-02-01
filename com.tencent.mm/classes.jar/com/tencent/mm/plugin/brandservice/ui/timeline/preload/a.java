@@ -2,57 +2,60 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.brandservice.c;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.plugin.webcanvas.b.g;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.ax;
 import d.l;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/AppMsgContextEx;", "", "()V", "testClear", "", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/AppMsgContextEx;", "", "()V", "testClear", "", "plugin-brandservice_release"})
 public final class a
 {
-  public static final a nEK;
+  public static final a ohn;
   
   static
   {
     AppMethodBeat.i(6548);
-    nEK = new a();
+    ohn = new a();
     AppMethodBeat.o(6548);
   }
   
-  public static final void bKs()
+  public static final void bOT()
   {
     AppMethodBeat.i(6547);
-    Object localObject = k.nGP;
-    k.bKW().clearAll();
-    localObject = k.nGP;
-    k.bKX().clearAll();
-    localObject = t.nHC;
-    t.bLi().clearAll();
-    localObject = t.nHC;
-    t.bLl().ayU();
-    localObject = t.nHC;
-    t.bLj().clearAll();
-    localObject = t.nHC;
-    t.bLm().ayU();
-    localObject = t.nHC;
-    t.bLk().clearAll();
-    localObject = t.nHC;
-    t.bLn().ayU();
-    localObject = w.nIY;
+    Object localObject = k.ojs;
+    k.bPx().clearAll();
+    localObject = k.ojs;
+    k.bPy().clearAll();
+    localObject = t.okg;
+    t.bPJ().clearAll();
+    localObject = t.okg;
+    t.bPM().aBY();
+    localObject = t.okg;
+    t.bPK().clearAll();
+    localObject = t.okg;
+    t.bPN().aBY();
+    localObject = t.okg;
+    t.bPL().clearAll();
+    localObject = t.okg;
+    t.bPO().aBY();
+    localObject = w.olE;
     w.clearAll();
-    localObject = c.nup;
-    c.bIU().clearAll();
-    localObject = c.nup;
-    c.bIV().clearAll();
-    localObject = c.nup;
-    c.bIW().clearAll();
-    localObject = t.nHC;
-    t.bLo().clearAll();
-    s.bLh().clearAll();
-    b.bKu().clear();
-    b.bKt().clear();
+    localObject = c.nVH;
+    c.bNn().clearAll();
+    localObject = c.nVH;
+    c.bNo().clearAll();
+    localObject = c.nVH;
+    c.bNp().clearAll();
+    localObject = t.okg;
+    t.bPP().clearAll();
+    s.bPI().clearAll();
+    localObject = com.tencent.mm.plugin.webcanvas.b.Dys;
+    b.g.eLh().clearAll();
+    b.bOV().clear();
+    b.bOU().clear();
     AppMethodBeat.o(6547);
   }
 }

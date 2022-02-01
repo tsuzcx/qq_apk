@@ -8,32 +8,32 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.z;
 import java.util.List;
 
 public class RecentAppBrandViewContainer
   extends LinearLayout
 {
-  Runnable aal;
+  Runnable acb;
   private Context mContext;
-  RecentAppBrandView mwu;
-  private View myr;
-  boolean mys;
-  private View.OnClickListener myt;
+  RecentAppBrandView mWZ;
+  private View mYZ;
+  boolean mZa;
+  private View.OnClickListener mZb;
   
   public RecentAppBrandViewContainer(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(49704);
-    this.aal = null;
-    this.mys = true;
-    this.myt = null;
+    this.acb = null;
+    this.mZa = true;
+    this.mZb = null;
     init(paramContext);
     AppMethodBeat.o(49704);
   }
@@ -42,9 +42,9 @@ public class RecentAppBrandViewContainer
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(49705);
-    this.aal = null;
-    this.mys = true;
-    this.myt = null;
+    this.acb = null;
+    this.mZa = true;
+    this.mZb = null;
     init(paramContext);
     AppMethodBeat.o(49705);
   }
@@ -53,23 +53,23 @@ public class RecentAppBrandViewContainer
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(49706);
-    this.aal = null;
-    this.mys = true;
-    this.myt = null;
+    this.acb = null;
+    this.mZa = true;
+    this.mZb = null;
     init(paramContext);
     AppMethodBeat.o(49706);
   }
   
-  private void bze()
+  private void bDi()
   {
     AppMethodBeat.i(49710);
-    if (this.mwu.getDataCount() > this.mwu.getMaxShowItemCountIncludeMore())
+    if (this.mWZ.getDataCount() > this.mWZ.getMaxShowItemCountIncludeMore())
     {
-      this.myr.setVisibility(0);
+      this.mYZ.setVisibility(0);
       AppMethodBeat.o(49710);
       return;
     }
-    this.myr.setVisibility(4);
+    this.mYZ.setVisibility(4);
     AppMethodBeat.o(49710);
   }
   
@@ -77,28 +77,32 @@ public class RecentAppBrandViewContainer
   {
     AppMethodBeat.i(49712);
     this.mContext = paramContext;
-    paramContext = z.jD(paramContext).inflate(2131492988, this);
-    this.mwu = ((RecentAppBrandView)paramContext.findViewById(2131303807));
-    this.myr = paramContext.findViewById(2131302475);
-    paramContext = new e(this.myr);
+    paramContext = z.jO(paramContext).inflate(2131492988, this);
+    this.mWZ = ((RecentAppBrandView)paramContext.findViewById(2131303807));
+    this.mYZ = paramContext.findViewById(2131302475);
+    paramContext = new f(this.mYZ);
     int i = (int)d.ea(getContext());
-    paramContext.mxB.getLayoutParams().width = ((int)(a.av(getContext(), 2131165568) * 2 * d.eb(getContext())) + i);
-    paramContext.mxB.getLayoutParams().height = ((int)(a.av(getContext(), 2131165568) * 2 * d.eb(getContext())) + i);
-    paramContext.lzC.getLayoutParams().width = i;
-    paramContext.lzC.getLayoutParams().height = i;
-    paramContext.mxA.getLayoutParams().width = i;
-    paramContext.mxA.getLayoutParams().height = i;
-    paramContext.lzC.setImageResource(2131690904);
-    paramContext.mxC.setVisibility(8);
+    paramContext.mYi.getLayoutParams().width = ((int)(com.tencent.mm.cc.a.ay(getContext(), 2131165568) * 2 * d.eb(getContext())) + i);
+    paramContext.mYi.getLayoutParams().height = ((int)(com.tencent.mm.cc.a.ay(getContext(), 2131165568) * 2 * d.eb(getContext())) + i);
+    paramContext.lZa.getLayoutParams().width = i;
+    paramContext.lZa.getLayoutParams().height = i;
+    paramContext.mYh.getLayoutParams().width = i;
+    paramContext.mYh.getLayoutParams().height = i;
+    paramContext.lZa.setImageResource(2131690904);
+    paramContext.mYj.setVisibility(8);
     paramContext.titleTv.setText("");
-    paramContext.asD.setOnClickListener(new View.OnClickListener()
+    paramContext.auu.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(49702);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandViewContainer$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (RecentAppBrandViewContainer.b(RecentAppBrandViewContainer.this) != null) {
           RecentAppBrandViewContainer.b(RecentAppBrandViewContainer.this).onClick(paramAnonymousView);
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/desktop/RecentAppBrandViewContainer$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(49702);
       }
     });
@@ -107,15 +111,15 @@ public class RecentAppBrandViewContainer
   
   public RecentAppBrandView getRecentView()
   {
-    return this.mwu;
+    return this.mWZ;
   }
   
   public int getShowLines()
   {
     AppMethodBeat.i(49709);
-    if (this.mwu != null)
+    if (this.mWZ != null)
     {
-      int i = this.mwu.getShowLines();
+      int i = this.mWZ.getShowLines();
       AppMethodBeat.o(49709);
       return i;
     }
@@ -126,10 +130,10 @@ public class RecentAppBrandViewContainer
   public final void notifyDataSetChanged()
   {
     AppMethodBeat.i(49707);
-    if (this.mwu != null)
+    if (this.mWZ != null)
     {
-      bze();
-      this.mwu.bzd();
+      bDi();
+      this.mWZ.bDh();
     }
     AppMethodBeat.o(49707);
   }
@@ -137,10 +141,10 @@ public class RecentAppBrandViewContainer
   public void setDataList(List<AppBrandDesktopView.c> paramList)
   {
     AppMethodBeat.i(49708);
-    if (this.mwu != null)
+    if (this.mWZ != null)
     {
-      this.mwu.setDataList(paramList);
-      bze();
+      this.mWZ.setDataList(paramList);
+      bDi();
     }
     AppMethodBeat.o(49708);
   }
@@ -148,25 +152,25 @@ public class RecentAppBrandViewContainer
   public void setItemPadding(int paramInt)
   {
     AppMethodBeat.i(49711);
-    if (this.mwu != null) {
-      this.mwu.setItemPadding(paramInt);
+    if (this.mWZ != null) {
+      this.mWZ.setItemPadding(paramInt);
     }
-    if (this.myr != null)
+    if (this.mYZ != null)
     {
-      View localView = this.myr;
-      localView.setPadding(paramInt, localView.getPaddingTop(), paramInt, this.myr.getPaddingBottom());
+      View localView = this.mYZ;
+      localView.setPadding(paramInt, localView.getPaddingTop(), paramInt, this.mYZ.getPaddingBottom());
     }
     AppMethodBeat.o(49711);
   }
   
   public void setOnMoreClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.myt = paramOnClickListener;
+    this.mZb = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.RecentAppBrandViewContainer
  * JD-Core Version:    0.7.0.1
  */

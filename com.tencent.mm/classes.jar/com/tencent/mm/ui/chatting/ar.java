@@ -8,15 +8,15 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.by;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bz;
 import com.tencent.mm.opensdk.channel.MMessageActV2;
 import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
 import com.tencent.mm.opensdk.modelmsg.GetMessageFromWX.Req;
 import com.tencent.mm.opensdk.modelmsg.GetMessageFromWX.Resp;
 import com.tencent.mm.opensdk.modelmsg.WXImageObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.j;
 import com.tencent.mm.pluginsdk.model.app.m;
@@ -24,13 +24,13 @@ import com.tencent.mm.pluginsdk.model.app.q;
 import com.tencent.mm.pluginsdk.ui.applet.o;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
 import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.ui.chatting.e.a;
 import com.tencent.mm.ui.s;
 import java.util.Collection;
 import java.util.HashSet;
@@ -40,24 +40,24 @@ import java.util.Set;
 public final class ar
   implements aa
 {
-  private static l<aa, Bundle> HRg;
-  private MMFragment HRe;
-  private final Set<String> HRf;
-  private a cLy;
+  private static l<aa, Bundle> JEW;
+  private MMFragment JEU;
+  private final Set<String> JEV;
+  private a cWM;
   
   static
   {
     AppMethodBeat.i(34974);
-    HRg = new l() {};
+    JEW = new l() {};
     AppMethodBeat.o(34974);
   }
   
   public ar(a parama)
   {
     AppMethodBeat.i(34965);
-    this.HRf = new HashSet();
-    this.HRe = parama.HZF;
-    this.cLy = parama;
+    this.JEV = new HashSet();
+    this.JEU = parama.JOR;
+    this.cWM = parama;
     AppMethodBeat.o(34965);
   }
   
@@ -76,7 +76,7 @@ public final class ar
           {
             if (paramWXMediaMessage.thumbData == null)
             {
-              ac.e("MicroMsg.WXAppMessageReceiver", "code should not reach here due to WXMediaMessage::checkArgs, sendEmoji Fail cause thumbData is null");
+              ad.e("MicroMsg.WXAppMessageReceiver", "code should not reach here due to WXMediaMessage::checkArgs, sendEmoji Fail cause thumbData is null");
               AppMethodBeat.o(34964);
               return;
             }
@@ -84,13 +84,13 @@ public final class ar
             paramAnonymousString = str;
             if (str == null)
             {
-              ac.v("MicroMsg.WXAppMessageReceiver", "sendEmoji Fail cause emojiconmd5 is null");
+              ad.v("MicroMsg.WXAppMessageReceiver", "sendEmoji Fail cause emojiconmd5 is null");
               AppMethodBeat.o(34964);
               return;
             }
           }
-          by.azu().d(27, new Object[] { Integer.valueOf(1) });
-          ac.v("MicroMsg.WXAppMessageReceiver", "onDialogClick, messageAction = %s, messageExt = %s", new Object[] { paramWXMediaMessage.messageAction, paramWXMediaMessage.messageExt });
+          bz.aCx().d(27, new Object[] { Integer.valueOf(1) });
+          ad.v("MicroMsg.WXAppMessageReceiver", "onDialogClick, messageAction = %s, messageExt = %s", new Object[] { paramWXMediaMessage.messageAction, paramWXMediaMessage.messageExt });
           m.a(paramWXMediaMessage, paramg.field_appId, paramg.field_appName, ar.d(ar.this).getTalkerUserName(), 1, paramAnonymousString);
         }
         AppMethodBeat.o(34964);
@@ -103,7 +103,7 @@ public final class ar
   public static void a(ar paramar)
   {
     AppMethodBeat.i(34969);
-    HRg.a(paramar, null);
+    JEW.a(paramar, null);
     AppMethodBeat.o(34969);
   }
   
@@ -128,7 +128,7 @@ public final class ar
         localObject1 = ((StringBuilder)localObject1).toString();
       }
     }
-    paramContext = paramContext.getSharedPreferences(ai.eVa(), 0).edit();
+    paramContext = paramContext.getSharedPreferences(aj.fkF(), 0).edit();
     paramContext.putString("transactions_array_key", (String)localObject1);
     if (Build.VERSION.SDK_INT > 8)
     {
@@ -143,36 +143,36 @@ public final class ar
   public static void b(ar paramar)
   {
     AppMethodBeat.i(34970);
-    HRg.remove(paramar);
-    paramar.HRf.clear();
-    b(paramar.HRe.getContext(), null);
+    JEW.remove(paramar);
+    paramar.JEV.clear();
+    b(paramar.JEU.getContext(), null);
     AppMethodBeat.o(34970);
   }
   
-  public static void bc(Bundle paramBundle)
+  public static void bh(Bundle paramBundle)
   {
     AppMethodBeat.i(34966);
-    HRg.dS(paramBundle);
-    HRg.doNotify();
+    JEW.dV(paramBundle);
+    JEW.doNotify();
     AppMethodBeat.o(34966);
   }
   
   private String s(com.tencent.mm.pluginsdk.model.app.g paramg)
   {
     AppMethodBeat.i(34971);
-    paramg = this.HRe.getString(2131757563, new Object[] { h.a(this.HRe.getContext(), paramg, null) });
+    paramg = this.JEU.getString(2131757563, new Object[] { h.a(this.JEU.getContext(), paramg, null) });
     AppMethodBeat.o(34971);
     return paramg;
   }
   
-  public final void bb(Bundle paramBundle)
+  public final void bg(Bundle paramBundle)
   {
     int j = 1;
     int k = 0;
     AppMethodBeat.i(34967);
-    if ((this.cLy == null) || (!this.cLy.cqM))
+    if ((this.cWM == null) || (!this.cWM.cBJ))
     {
-      ac.v("MicroMsg.WXAppMessageReceiver", "handleResp Chatting is a fragment but not foregound");
+      ad.v("MicroMsg.WXAppMessageReceiver", "handleResp Chatting is a fragment but not foregound");
       AppMethodBeat.o(34967);
       return;
     }
@@ -181,11 +181,11 @@ public final class ar
     paramBundle = ((GetMessageFromWX.Resp)localObject1).message;
     Object localObject4;
     Object localObject3;
-    if (this.HRf.size() == 0)
+    if (this.JEV.size() == 0)
     {
-      localObject4 = this.HRe.getContext();
+      localObject4 = this.JEU.getContext();
       localObject3 = new HashSet();
-      localObject4 = ((Context)localObject4).getSharedPreferences(ai.eVa(), 0).getString("transactions_array_key", null);
+      localObject4 = ((Context)localObject4).getSharedPreferences(aj.fkF(), 0).getString("transactions_array_key", null);
       if ((localObject4 != null) && (((String)localObject4).length() > 0))
       {
         localObject4 = ((String)localObject4).split(";");
@@ -197,22 +197,22 @@ public final class ar
           i += 1;
         }
       }
-      this.HRf.addAll((Collection)localObject3);
+      this.JEV.addAll((Collection)localObject3);
     }
-    if (!this.HRf.contains(((GetMessageFromWX.Resp)localObject1).transaction))
+    if (!this.JEV.contains(((GetMessageFromWX.Resp)localObject1).transaction))
     {
-      ac.e("MicroMsg.WXAppMessageReceiver", "invalid resp, check transaction failed, transaction=" + ((GetMessageFromWX.Resp)localObject1).transaction);
+      ad.e("MicroMsg.WXAppMessageReceiver", "invalid resp, check transaction failed, transaction=" + ((GetMessageFromWX.Resp)localObject1).transaction);
       AppMethodBeat.o(34967);
       return;
     }
-    this.HRf.remove(((GetMessageFromWX.Resp)localObject1).transaction);
-    b(this.HRe.getContext(), this.HRf);
+    this.JEV.remove(((GetMessageFromWX.Resp)localObject1).transaction);
+    b(this.JEU.getContext(), this.JEV);
     localObject1 = new com.tencent.mm.pluginsdk.model.app.g();
     ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_appId = ((String)localObject2);
-    ac.d("MicroMsg.WXAppMessageReceiver", "handleResp, appId = ".concat(String.valueOf(localObject2)));
-    if (!ap.dny().get((com.tencent.mm.sdk.e.c)localObject1, new String[0]))
+    ad.d("MicroMsg.WXAppMessageReceiver", "handleResp, appId = ".concat(String.valueOf(localObject2)));
+    if (!ao.dxQ().get((com.tencent.mm.sdk.e.c)localObject1, new String[0]))
     {
-      ac.e("MicroMsg.WXAppMessageReceiver", "unregistered app, ignore request, appId = ".concat(String.valueOf(localObject2)));
+      ad.e("MicroMsg.WXAppMessageReceiver", "unregistered app, ignore request, appId = ".concat(String.valueOf(localObject2)));
       AppMethodBeat.o(34967);
       return;
     }
@@ -221,7 +221,7 @@ public final class ar
     {
     case 6: 
     default: 
-      ac.e("MicroMsg.WXAppMessageReceiver", "unknown type = ".concat(String.valueOf(i)));
+      ad.e("MicroMsg.WXAppMessageReceiver", "unknown type = ".concat(String.valueOf(i)));
       i = 0;
     case 1: 
     case 2: 
@@ -231,11 +231,11 @@ public final class ar
       for (;;)
       {
         if (i == 0) {
-          ac.e("MicroMsg.WXAppMessageReceiver", "deal fail, result is false");
+          ad.e("MicroMsg.WXAppMessageReceiver", "deal fail, result is false");
         }
         AppMethodBeat.o(34967);
         return;
-        localObject2 = this.HRe.getController();
+        localObject2 = this.JEU.getController();
         localObject3 = paramBundle.description;
         s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
         if (o.a((s)localObject2, (String)localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1)) != null) {}
@@ -244,14 +244,14 @@ public final class ar
         }
         if ((paramBundle.thumbData != null) && (paramBundle.thumbData.length > 0))
         {
-          localObject2 = this.HRe.getController();
+          localObject2 = this.JEU.getController();
           localObject3 = paramBundle.thumbData;
           s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
           paramBundle = o.a((s)localObject2, (byte[])localObject3, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));
           if (paramBundle != null) {
             break label654;
           }
-          ac.e("MicroMsg.WXAppMessageReceiver", "showDialogItem3 fail, invalid argument");
+          ad.e("MicroMsg.WXAppMessageReceiver", "showDialogItem3 fail, invalid argument");
         }
         for (i = k;; i = 1)
         {
@@ -259,13 +259,13 @@ public final class ar
           localObject2 = (WXImageObject)paramBundle.mediaObject;
           if ((((WXImageObject)localObject2).imageData != null) && (((WXImageObject)localObject2).imageData.length > 0))
           {
-            localObject3 = this.HRe.getController();
+            localObject3 = this.JEU.getController();
             localObject2 = ((WXImageObject)localObject2).imageData;
             s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
             paramBundle = o.a((s)localObject3, (byte[])localObject2, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));
             break label526;
           }
-          localObject3 = this.HRe.getController();
+          localObject3 = this.JEU.getController();
           localObject2 = ((WXImageObject)localObject2).imagePath;
           s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
           paramBundle = o.b((s)localObject3, (String)localObject2, false, a(paramBundle, (com.tencent.mm.pluginsdk.model.app.g)localObject1));
@@ -273,7 +273,7 @@ public final class ar
         }
         if ((paramBundle.thumbData != null) && (paramBundle.thumbData.length > 0))
         {
-          localObject2 = this.HRe.getController();
+          localObject2 = this.JEU.getController();
           localObject3 = paramBundle.title;
           s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
         }
@@ -285,13 +285,13 @@ public final class ar
           }
           i = 0;
           break;
-          localObject2 = this.HRe.getController();
+          localObject2 = this.JEU.getController();
           localObject3 = paramBundle.title;
           s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
         }
         if ((paramBundle.thumbData != null) && (paramBundle.thumbData.length > 0))
         {
-          localObject2 = this.HRe.getController();
+          localObject2 = this.JEU.getController();
           localObject3 = paramBundle.title;
           s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
         }
@@ -303,11 +303,11 @@ public final class ar
           }
           i = 0;
           break;
-          localObject2 = this.HRe.getController();
+          localObject2 = this.JEU.getController();
           localObject3 = paramBundle.title;
           s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
         }
-        localObject2 = this.HRe.getController();
+        localObject2 = this.JEU.getController();
         localObject3 = paramBundle.title;
         localObject4 = paramBundle.description;
         s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
@@ -320,7 +320,7 @@ public final class ar
       label526:
       if ((paramBundle.thumbData != null) && (paramBundle.thumbData.length > 0))
       {
-        localObject2 = this.HRe.getController();
+        localObject2 = this.JEU.getController();
         localObject3 = paramBundle.title;
         s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
       }
@@ -333,14 +333,14 @@ public final class ar
         }
         i = 0;
         break;
-        localObject2 = this.HRe.getController();
+        localObject2 = this.JEU.getController();
         localObject3 = paramBundle.title;
         s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
       }
     }
     if ((paramBundle.thumbData != null) && (paramBundle.thumbData.length > 0))
     {
-      localObject2 = this.HRe.getController();
+      localObject2 = this.JEU.getController();
       localObject3 = paramBundle.thumbData;
       s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
     }
@@ -352,35 +352,35 @@ public final class ar
       }
       i = 0;
       break;
-      localObject2 = this.HRe.getController();
+      localObject2 = this.JEU.getController();
       localObject3 = paramBundle.title;
       s((com.tencent.mm.pluginsdk.model.app.g)localObject1);
     }
   }
   
-  public final boolean lM(String paramString1, String paramString2)
+  public final boolean mk(String paramString1, String paramString2)
   {
     AppMethodBeat.i(34968);
-    ac.d("MicroMsg.WXAppMessageReceiver", "request, pkg = " + paramString1 + ", openId = " + paramString2);
+    ad.d("MicroMsg.WXAppMessageReceiver", "request, pkg = " + paramString1 + ", openId = " + paramString2);
     GetMessageFromWX.Req localReq = new GetMessageFromWX.Req();
-    localReq.username = this.cLy.getTalkerUserName();
-    localReq.transaction = com.tencent.mm.b.g.getMessageDigest(bs.eWj().getBytes());
+    localReq.username = this.cWM.getTalkerUserName();
+    localReq.transaction = com.tencent.mm.b.g.getMessageDigest(bt.flT().getBytes());
     localReq.openId = paramString2;
-    paramString2 = this.HRe.getSharedPreferences(ai.eUX(), 0);
-    this.HRe.getContext();
-    localReq.lang = ab.f(paramString2);
-    az.ayM();
-    localReq.country = ((String)com.tencent.mm.model.c.agA().get(274436, null));
+    paramString2 = this.JEU.getSharedPreferences(aj.fkC(), 0);
+    this.JEU.getContext();
+    localReq.lang = ac.f(paramString2);
+    ba.aBQ();
+    localReq.country = ((String)com.tencent.mm.model.c.ajl().get(274436, null));
     paramString2 = new Bundle();
     localReq.toBundle(paramString2);
-    q.aW(paramString2);
-    q.aX(paramString2);
+    q.bb(paramString2);
+    q.bc(paramString2);
     MMessageActV2.Args localArgs = new MMessageActV2.Args();
     localArgs.targetPkgName = paramString1;
     localArgs.bundle = paramString2;
-    boolean bool = MMessageActV2.send(this.HRe.getContext(), localArgs);
-    this.HRf.add(localReq.transaction);
-    b(this.HRe.getContext(), this.HRf);
+    boolean bool = MMessageActV2.send(this.JEU.getContext(), localArgs);
+    this.JEV.add(localReq.transaction);
+    b(this.JEU.getContext(), this.JEV);
     AppMethodBeat.o(34968);
     return bool;
   }

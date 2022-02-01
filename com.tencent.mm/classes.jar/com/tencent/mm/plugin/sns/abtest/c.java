@@ -4,69 +4,73 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewStub;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.tq;
+import com.tencent.mm.g.a.uj;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.a.e;
 import com.tencent.mm.model.a.f;
 import com.tencent.mm.model.a.g;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class c
 {
-  private static String xHX;
-  private static Set<Long> xHY;
-  private static View.OnClickListener xHZ;
-  private static boolean xHm;
-  private static com.tencent.mm.sdk.b.c xHv;
+  private static boolean yVW;
+  private static String yWH;
+  private static Set<Long> yWI;
+  private static View.OnClickListener yWJ;
+  private static com.tencent.mm.sdk.b.c yWf;
   
   static
   {
     AppMethodBeat.i(94961);
-    xHX = "0";
-    xHY = new HashSet();
-    xHv = new com.tencent.mm.sdk.b.c() {};
-    xHm = false;
+    yWH = "0";
+    yWI = new HashSet();
+    yWf = new com.tencent.mm.sdk.b.c() {};
+    yVW = false;
     AppMethodBeat.o(94961);
   }
   
   public static void b(View paramView, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(94958);
-    if (xHm)
+    if (yVW)
     {
-      paramBaseViewHolder.zdN = false;
-      paramBaseViewHolder.zdL = ((ViewStub)paramView.findViewById(2131305042));
-      paramBaseViewHolder.zdL.setVisibility(8);
+      paramBaseViewHolder.AvD = false;
+      paramBaseViewHolder.AvB = ((ViewStub)paramView.findViewById(2131305042));
+      paramBaseViewHolder.AvB.setVisibility(8);
     }
     AppMethodBeat.o(94958);
   }
   
-  public static void dFA()
+  public static void dRc()
   {
     AppMethodBeat.i(94956);
-    if (g.azO().yF("6") != null)
+    if (g.aCR().BE("6") != null)
     {
-      xHX = g.azO().yF("6").value;
-      ac.d("MicroMsg.SellerABTestManager", "startABTest, value:%s", new Object[] { xHX });
-      xHm = true;
-      a.GpY.c(xHv);
-      xHZ = new View.OnClickListener()
+      yWH = g.aCR().BE("6").value;
+      ad.d("MicroMsg.SellerABTestManager", "startABTest, value:%s", new Object[] { yWH });
+      yVW = true;
+      com.tencent.mm.sdk.b.a.IbL.c(yWf);
+      yWJ = new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(94955);
+          Object localObject = new b();
+          ((b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/abtest/SellerABTestManager$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
           if ((paramAnonymousView.getTag() instanceof p))
           {
-            p localp = (p)paramAnonymousView.getTag();
-            if ((localp != null) && (!bs.isNullOrNil(localp.getSnsId()))) {
-              c.S(paramAnonymousView.getContext(), localp.getSnsId());
+            localObject = (p)paramAnonymousView.getTag();
+            if ((localObject != null) && (!bt.isNullOrNil(((p)localObject).getSnsId()))) {
+              c.R(paramAnonymousView.getContext(), ((p)localObject).getSnsId());
             }
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/abtest/SellerABTestManager$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(94955);
         }
       };
@@ -74,21 +78,21 @@ public final class c
     AppMethodBeat.o(94956);
   }
   
-  public static void dFB()
+  public static void dRd()
   {
     AppMethodBeat.i(94957);
-    xHZ = null;
-    a.GpY.d(xHv);
-    if (xHm)
+    yWJ = null;
+    com.tencent.mm.sdk.b.a.IbL.d(yWf);
+    if (yVW)
     {
-      g.azO().yF("6").gRQ = 2L;
-      g.azO().yF("6").result = xHY.size();
-      f.a(g.azO().yF("6"));
-      ac.d("MicroMsg.SellerABTestManager", "endABTestWhenExitTimeline, scene:%d, result:%s", new Object[] { Integer.valueOf(2), xHY.size() });
+      g.aCR().BE("6").hki = 2L;
+      g.aCR().BE("6").result = yWI.size();
+      f.a(g.aCR().BE("6"));
+      ad.d("MicroMsg.SellerABTestManager", "endABTestWhenExitTimeline, scene:%d, result:%s", new Object[] { Integer.valueOf(2), yWI.size() });
     }
-    xHX = "0";
-    xHm = false;
-    xHY.clear();
+    yWH = "0";
+    yVW = false;
+    yWI.clear();
     AppMethodBeat.o(94957);
   }
 }

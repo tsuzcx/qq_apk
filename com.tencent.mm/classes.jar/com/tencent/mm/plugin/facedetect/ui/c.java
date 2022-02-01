@@ -6,32 +6,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  String ikb = null;
-  boolean qCa = false;
-  public boolean qCb = true;
-  boolean qCc = true;
-  boolean qCd = false;
-  boolean qCe = false;
-  boolean qCf = false;
-  boolean qCg = false;
-  int qCh = 0;
-  Bitmap qCi = null;
-  public String qCj = null;
-  String qCk = null;
-  String qCl = null;
-  int qCm = -1;
-  String qCn = null;
-  a.a qCo = null;
-  View.OnClickListener qCp;
-  View.OnClickListener qCq;
-  View.OnClickListener qCr;
-  View.OnClickListener qCs;
+  String iDs = null;
+  boolean rlQ = false;
+  public boolean rlR = true;
+  boolean rlS = true;
+  boolean rlT = false;
+  boolean rlU = false;
+  boolean rlV = false;
+  boolean rlW = false;
+  int rlX = 0;
+  Bitmap rlY = null;
+  public String rlZ = null;
+  String rma = null;
+  String rmb = null;
+  int rmc = -1;
+  String rmd = null;
+  a.a rme = null;
+  View.OnClickListener rmf;
+  View.OnClickListener rmg;
+  View.OnClickListener rmh;
+  View.OnClickListener rmi;
   public int status = 1;
   
   public final String toString()
   {
     AppMethodBeat.i(104047);
-    String str = "JumperConfig{isShowMainButton=" + this.qCa + ", isShowStatusWordingTv=" + this.qCb + ", isShowUploadStatusIv=" + this.qCc + ", isShowCancelBtn=" + this.qCd + ", isShowSubButton=" + this.qCe + ", isShowOneByOne=" + this.qCf + ", isShowFeedback=" + this.qCg + ", oneByOneIndexStart=" + this.qCh + ", bgBm=" + this.qCi + ", statusWording='" + this.qCj + '\'' + ", mainBtnText='" + this.qCk + '\'' + ", subBtnText='" + this.qCl + '\'' + ", cancelBtnText='" + this.ikb + '\'' + ", statusIvRes=" + this.qCm + ", feedbackText='" + this.qCn + '\'' + ", status=" + this.status + ", onJumperShowEndCallback=" + this.qCo + ", onMainBtnClickListener=" + this.qCp + ", onSubBtnClickListener=" + this.qCq + ", onFeedbackClickListener=" + this.qCr + ", onCancelBtnClickListener=" + this.qCs + '}';
+    String str = "JumperConfig{isShowMainButton=" + this.rlQ + ", isShowStatusWordingTv=" + this.rlR + ", isShowUploadStatusIv=" + this.rlS + ", isShowCancelBtn=" + this.rlT + ", isShowSubButton=" + this.rlU + ", isShowOneByOne=" + this.rlV + ", isShowFeedback=" + this.rlW + ", oneByOneIndexStart=" + this.rlX + ", bgBm=" + this.rlY + ", statusWording='" + this.rlZ + '\'' + ", mainBtnText='" + this.rma + '\'' + ", subBtnText='" + this.rmb + '\'' + ", cancelBtnText='" + this.iDs + '\'' + ", statusIvRes=" + this.rmc + ", feedbackText='" + this.rmd + '\'' + ", status=" + this.status + ", onJumperShowEndCallback=" + this.rme + ", onMainBtnClickListener=" + this.rmf + ", onSubBtnClickListener=" + this.rmg + ", onFeedbackClickListener=" + this.rmh + ", onCancelBtnClickListener=" + this.rmi + '}';
     AppMethodBeat.o(104047);
     return str;
   }

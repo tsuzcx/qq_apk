@@ -6,87 +6,87 @@ import com.tencent.mm.plugin.report.a;
 public final class fw
   extends a
 {
-  public String dJb = "";
-  public long dQE = 0L;
-  public long dXp = 0L;
-  public String dZU = "";
-  public long eaM = 0L;
-  public long eaN = 0L;
-  public long eaO = 0L;
-  public long eaP = 0L;
-  public long eaQ = 0L;
-  public long eaR = 0L;
-  public String eaS;
+  private long emq = 0L;
+  private long emr = 0L;
+  private long ems = 0L;
+  private long emt = 0L;
+  private int emu = 0;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(43458);
+    AppMethodBeat.i(118500);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dJb);
+    ((StringBuffer)localObject).append(this.emq);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZU);
+    ((StringBuffer)localObject).append(this.emr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaM);
+    ((StringBuffer)localObject).append(this.ems);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaN);
+    ((StringBuffer)localObject).append(this.emt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQE);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXp);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaO);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaP);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaQ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaS);
+    ((StringBuffer)localObject).append(this.emu);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(43458);
+    awz((String)localObject);
+    AppMethodBeat.o(118500);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(43459);
+    AppMethodBeat.i(118501);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Username:").append(this.dJb);
+    ((StringBuffer)localObject).append("StartZipTime:").append(this.emq);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Appid:").append(this.dZU);
+    ((StringBuffer)localObject).append("Enable:").append(this.emr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppVersion:").append(this.eaM);
+    ((StringBuffer)localObject).append("Exceed:").append(this.ems);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsEncrypt:").append(this.eaN);
+    ((StringBuffer)localObject).append("Cost:").append(this.emt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NetworkType:").append(this.dQE);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsSuccess:").append(this.dXp);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RetryCount:").append(this.eaO);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CmdSequence:").append(this.eaP);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ReportId:").append(this.eaQ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PackageType:").append(this.eaR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PackageKey:").append(this.eaS);
+    ((StringBuffer)localObject).append("Result:").append(this.emu);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43459);
+    AppMethodBeat.o(118501);
     return localObject;
+  }
+  
+  public final fw Tz()
+  {
+    this.ems = 1L;
+    return this;
   }
   
   public final int getId()
   {
-    return 16636;
+    return 17654;
+  }
+  
+  public final fw iK(int paramInt)
+  {
+    this.emu = paramInt;
+    return this;
+  }
+  
+  public final fw kT(long paramLong)
+  {
+    this.emq = paramLong;
+    return this;
+  }
+  
+  public final fw kU(long paramLong)
+  {
+    this.emr = paramLong;
+    return this;
+  }
+  
+  public final fw kV(long paramLong)
+  {
+    this.emt = paramLong;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.fw
  * JD-Core Version:    0.7.0.1
  */

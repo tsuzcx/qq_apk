@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.os.HandlerThread;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,61 +21,56 @@ import java.util.concurrent.ExecutorService;
 
 public final class e
 {
-  private static int bQb = 0;
-  private static volatile e sJC;
-  public static boolean sJv = false;
-  public static boolean sJw = false;
-  public static boolean sJx = false;
-  public static boolean sJy = false;
-  private o rXK;
-  private ArrayList<Bundle> sJA;
-  private HashMap<Integer, Boolean> sJB;
-  private SparseArray<GalleryItem.a> sJD;
-  private c sJr;
-  private g sJs;
-  private ArrayList<GalleryItem.MediaItem> sJt;
-  private LinkedHashSet<GalleryItem.MediaItem> sJu;
-  private HashSet<GalleryItem.MediaItem> sJz;
-  
-  static
-  {
-    sJC = null;
-  }
+  private static int cao = 0;
+  public static boolean tGg = false;
+  public static boolean tGh = false;
+  public static boolean tGi = false;
+  public static boolean tGj = false;
+  private static volatile e tGn = null;
+  private o sUE;
+  private c tGc;
+  private g tGd;
+  private ArrayList<GalleryItem.MediaItem> tGe;
+  private LinkedHashSet<GalleryItem.MediaItem> tGf;
+  private HashSet<GalleryItem.MediaItem> tGk;
+  private ArrayList<Bundle> tGl;
+  private HashMap<Integer, Boolean> tGm;
+  private SparseArray<GalleryItem.a> tGo;
   
   private e()
   {
     AppMethodBeat.i(111261);
-    this.sJt = null;
-    this.sJu = new LinkedHashSet();
-    this.sJz = new HashSet();
-    this.sJA = new ArrayList();
-    this.sJB = new HashMap();
-    this.sJD = new SparseArray();
-    if (this.rXK == null) {
-      this.rXK = new o();
+    this.tGe = null;
+    this.tGf = new LinkedHashSet();
+    this.tGk = new HashSet();
+    this.tGl = new ArrayList();
+    this.tGm = new HashMap();
+    this.tGo = new SparseArray();
+    if (this.sUE == null) {
+      this.sUE = new o();
     }
-    if (this.sJs == null) {
-      this.sJs = new g();
+    if (this.tGd == null) {
+      this.tGd = new g();
     }
-    if (this.sJr == null) {
-      this.sJr = new c();
+    if (this.tGc == null) {
+      this.tGc = new c();
     }
-    Object localObject = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.qaK, "");
-    ac.i("MicroMsg.GalleryCore", "localAlbumName: %s.", new Object[] { localObject });
+    Object localObject = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGh, "");
+    ad.i("MicroMsg.GalleryCore", "localAlbumName: %s.", new Object[] { localObject });
     try
     {
-      localObject = new com.tencent.mm.ab.i((String)localObject).tX("localAlbumName");
+      localObject = new com.tencent.mm.ac.i((String)localObject).wN("localAlbumName");
       int i = 0;
-      while (i < ((com.tencent.mm.ab.f)localObject).length())
+      while (i < ((com.tencent.mm.ac.f)localObject).length())
       {
-        com.tencent.mm.ab.i locali = ((com.tencent.mm.ab.f)localObject).mk(i);
+        com.tencent.mm.ac.i locali = ((com.tencent.mm.ac.f)localObject).mJ(i);
         GalleryItem.a locala = new GalleryItem.a();
         locala.key = locali.optString("key");
         locala.path = locali.optString("path");
-        locala.sKf = locali.optString("default");
-        locala.sKg = com.tencent.mm.plugin.gallery.a.d.agL(locala.path);
-        ac.d("MicroMsg.GalleryCore", "albumName info: %s.", new Object[] { locala });
-        this.sJD.put(locala.sKg, locala);
+        locala.tGQ = locali.optString("default");
+        locala.tGR = com.tencent.mm.plugin.gallery.a.d.ali(locala.path);
+        ad.d("MicroMsg.GalleryCore", "albumName info: %s.", new Object[] { locala });
+        this.tGo.put(locala.tGR, locala);
         i += 1;
       }
       AppMethodBeat.o(111261);
@@ -87,17 +82,17 @@ public final class e
     }
   }
   
-  public static void FO(int paramInt)
+  public static void Hd(int paramInt)
   {
     AppMethodBeat.i(111271);
-    cMr().sJB.put(Integer.valueOf(paramInt), Boolean.TRUE);
+    cUK().tGm.put(Integer.valueOf(paramInt), Boolean.TRUE);
     AppMethodBeat.o(111271);
   }
   
   public static void a(String paramString, int[] paramArrayOfInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(111275);
-    int j = cMt().kxr;
+    int j = cUM().kTx;
     int i;
     switch (j)
     {
@@ -106,17 +101,17 @@ public final class e
     }
     for (;;)
     {
-      ac.i("MicroMsg.GalleryCore", "[handleSelectImagePreviewReport] source:%s", new Object[] { Integer.valueOf(j) });
-      com.tencent.mm.plugin.gallery.a.d.bi(14205, i + "," + i + "," + paramArrayOfInt[0] + "," + paramArrayOfInt[1] + "," + paramArrayOfInt[2] + "," + paramArrayOfInt[3] + "," + paramBoolean1 + "," + paramBoolean2 + "," + sJv + "," + sJw + "," + sJx + "," + sJy);
-      sJv = false;
-      sJw = false;
-      sJx = false;
-      sJy = false;
+      ad.i("MicroMsg.GalleryCore", "[handleSelectImagePreviewReport] source:%s", new Object[] { Integer.valueOf(j) });
+      com.tencent.mm.plugin.gallery.a.d.bl(14205, i + "," + i + "," + paramArrayOfInt[0] + "," + paramArrayOfInt[1] + "," + paramArrayOfInt[2] + "," + paramArrayOfInt[3] + "," + paramBoolean1 + "," + paramBoolean2 + "," + tGg + "," + tGh + "," + tGi + "," + tGj);
+      tGg = false;
+      tGh = false;
+      tGi = false;
+      tGj = false;
       AppMethodBeat.o(111275);
       return;
       i = 1;
       continue;
-      if ((!bs.isNullOrNil(paramString)) && (paramString.equals(ai.getContext().getString(2131758845))))
+      if ((!bt.isNullOrNil(paramString)) && (paramString.equals(aj.getContext().getString(2131758845))))
       {
         i = 6;
       }
@@ -129,23 +124,23 @@ public final class e
     }
   }
   
-  public static void ab(ArrayList<GalleryItem.MediaItem> paramArrayList)
+  public static void aa(ArrayList<GalleryItem.MediaItem> paramArrayList)
   {
     AppMethodBeat.i(111270);
-    cMr().sJt = paramArrayList;
+    cUK().tGe = paramArrayList;
     AppMethodBeat.o(111270);
   }
   
-  public static GalleryItem.MediaItem ags(String paramString)
+  public static GalleryItem.MediaItem akQ(String paramString)
   {
     AppMethodBeat.i(111260);
     paramString = GalleryItem.MediaItem.a(0, 0L, paramString, "", "");
-    if (cMr().sJt != null)
+    if (cUK().tGe != null)
     {
-      int i = cMr().sJt.indexOf(paramString);
+      int i = cUK().tGe.indexOf(paramString);
       if (i >= 0)
       {
-        paramString = (GalleryItem.MediaItem)cMr().sJt.get(i);
+        paramString = (GalleryItem.MediaItem)cUK().tGe.get(i);
         AppMethodBeat.o(111260);
         return paramString;
       }
@@ -154,35 +149,126 @@ public final class e
     return null;
   }
   
-  public static int cMA()
+  public static SparseArray<GalleryItem.a> cUJ()
+  {
+    AppMethodBeat.i(173729);
+    SparseArray localSparseArray = cUK().tGo;
+    AppMethodBeat.o(173729);
+    return localSparseArray;
+  }
+  
+  private static e cUK()
+  {
+    AppMethodBeat.i(111262);
+    if (tGn == null) {
+      tGn = new e();
+    }
+    e locale = tGn;
+    AppMethodBeat.o(111262);
+    return locale;
+  }
+  
+  public static c cUL()
+  {
+    AppMethodBeat.i(111263);
+    if (cUK().tGc == null) {
+      cUK().tGc = new c();
+    }
+    c localc = cUK().tGc;
+    AppMethodBeat.o(111263);
+    return localc;
+  }
+  
+  public static o cUM()
+  {
+    AppMethodBeat.i(111264);
+    if (cUK().sUE == null) {
+      cUK().sUE = new o();
+    }
+    o localo = cUK().sUE;
+    AppMethodBeat.o(111264);
+    return localo;
+  }
+  
+  public static g cUN()
+  {
+    AppMethodBeat.i(111265);
+    if (cUK().tGd == null) {
+      cUK().tGd = new g();
+    }
+    g localg = cUK().tGd;
+    AppMethodBeat.o(111265);
+    return localg;
+  }
+  
+  public static ArrayList<GalleryItem.MediaItem> cUO()
+  {
+    AppMethodBeat.i(221184);
+    ArrayList localArrayList = cUK().tGe;
+    AppMethodBeat.o(221184);
+    return localArrayList;
+  }
+  
+  public static HashSet<GalleryItem.MediaItem> cUP()
+  {
+    AppMethodBeat.i(111267);
+    HashSet localHashSet = cUK().tGk;
+    AppMethodBeat.o(111267);
+    return localHashSet;
+  }
+  
+  public static ArrayList<Bundle> cUQ()
+  {
+    AppMethodBeat.i(111268);
+    ArrayList localArrayList = cUK().tGl;
+    AppMethodBeat.o(111268);
+    return localArrayList;
+  }
+  
+  public static LinkedHashSet<GalleryItem.MediaItem> cUR()
+  {
+    AppMethodBeat.i(111269);
+    LinkedHashSet localLinkedHashSet = cUK().tGf;
+    AppMethodBeat.o(111269);
+    return localLinkedHashSet;
+  }
+  
+  public static void cUS()
+  {
+    AppMethodBeat.i(111272);
+    cUK().tGm.clear();
+    AppMethodBeat.o(111272);
+  }
+  
+  public static int cUT()
   {
     AppMethodBeat.i(111273);
-    int i = cMr().sJB.size();
+    int i = cUK().tGm.size();
     AppMethodBeat.o(111273);
     return i;
   }
   
-  public static void cMB()
+  public static void cUU()
   {
     AppMethodBeat.i(111276);
-    bQb += 1;
-    ac.i("MicroMsg.GalleryCore", "pennqin, refGallery %d.", new Object[] { Integer.valueOf(bQb) });
+    cao += 1;
+    ad.i("MicroMsg.GalleryCore", "pennqin, refGallery %d.", new Object[] { Integer.valueOf(cao) });
     AppMethodBeat.o(111276);
   }
   
-  public static boolean cMC()
+  public static boolean cUV()
   {
     AppMethodBeat.i(111277);
-    if (bQb > 0) {
-      bQb -= 1;
+    if (cao > 0) {
+      cao -= 1;
     }
-    ac.i("MicroMsg.GalleryCore", "pennqin, defGallery %d.", new Object[] { Integer.valueOf(bQb) });
-    if (bQb == 0)
+    ad.i("MicroMsg.GalleryCore", "pennqin, defGallery %d.", new Object[] { Integer.valueOf(cao) });
+    if (cao == 0)
     {
-      if ((sJC != null) && (sJC.sJs != null) && (sJC.sJr != null))
+      if ((tGn != null) && (tGn.tGd != null) && (tGn.tGc != null))
       {
-        if (bQb != 0) {
-          ac.w("MicroMsg.GalleryCore", "oh, ref count not right!!! Maybe because quick enter/back.");
+        if (cao != 0) {
+          ad.w("MicroMsg.GalleryCore", "oh, ref count not right!!! Maybe because quick enter/back.");
         }
       }
       else
@@ -191,206 +277,115 @@ public final class e
         return true;
       }
       d locald;
-      if (cMr().sJr != null)
+      if (cUK().tGc != null)
       {
-        ??? = p.sKH;
-        ??? = p.cNd();
-        ((p)???).sKD.clear();
-        ((p)???).sKE.clear();
-        cMs().cMn();
-        sJC.sJr.b(null);
-        locald = sJC.sJr.sIY;
-        if (locald.sJm != null)
+        ??? = p.tHs;
+        ??? = p.cVv();
+        ((p)???).tHo.clear();
+        ((p)???).tHp.clear();
+        cUL().cUG();
+        tGn.tGc.b(null);
+        locald = tGn.tGc.tFJ;
+        if (locald.tFX != null)
         {
-          locald.sJm.a(new d.4(locald));
-          locald.sJm = null;
+          locald.tFX.a(new d.4(locald));
+          locald.tFX = null;
         }
       }
       for (;;)
       {
         synchronized (locald.lock)
         {
-          if (locald.sJn != null)
+          if (locald.tFY != null)
           {
-            f localf = locald.sJn;
-            localf.cME();
-            localf.cMF();
-            ai.getContext().getSharedPreferences(ai.eUX(), 0).edit().putInt("com.tencent.mm.gallery.cache.suffix", localf.sJI).apply();
-            locald.sJn = null;
+            f localf = locald.tFY;
+            localf.cUX();
+            localf.cUY();
+            aj.getContext().getSharedPreferences(aj.fkC(), 0).edit().putInt("com.tencent.mm.gallery.cache.suffix", localf.tGt).apply();
+            locald.tFY = null;
           }
-          sJC.sJr = null;
-          sJC.rXK = null;
-          if (sJC.sJs != null)
+          tGn.tGc = null;
+          tGn.sUE = null;
+          if (tGn.tGd != null)
           {
-            ??? = sJC.sJs.cML();
+            ??? = tGn.tGd.cVe();
             if (??? != null)
             {
-              ((ao)???).removeCallbacksAndMessages(null);
-              sJC.sJs.cMM().removeCallbacksAndMessages(null);
-              ??? = sJC.sJs.cMN();
+              ((ap)???).removeCallbacksAndMessages(null);
+              tGn.tGd.cVf().removeCallbacksAndMessages(null);
+              ??? = tGn.tGd.cVg();
               if (??? == null) {
                 break label533;
               }
-              ((ao)???).removeCallbacksAndMessages(null);
-              ??? = sJC.sJs.cMO();
+              ((ap)???).removeCallbacksAndMessages(null);
+              ??? = tGn.tGd.cVh();
               if (??? == null) {
                 break label545;
               }
-              ((ao)???).removeCallbacksAndMessages(null);
-              ??? = sJC.sJs;
-              if (((g)???).sJK != null)
+              ((ap)???).removeCallbacksAndMessages(null);
+              ??? = tGn.tGd;
+              if (((g)???).tGv != null)
               {
-                ((g)???).sJK.quit();
-                ((g)???).sJK = null;
+                ((g)???).tGv.quit();
+                ((g)???).tGv = null;
               }
-              ((g)???).sJM = null;
-              ((g)???).gox = null;
-              if (((g)???).sJN != null)
+              ((g)???).tGx = null;
+              ((g)???).gIf = null;
+              if (((g)???).tGy != null)
               {
-                ((g)???).sJN.shutdown();
-                ((g)???).sJN = null;
+                ((g)???).tGy.shutdown();
+                ((g)???).tGy = null;
               }
-              if (((g)???).sJO != null)
+              if (((g)???).tGz != null)
               {
-                ((g)???).sJO.shutdown();
-                ((g)???).sJO = null;
+                ((g)???).tGz.shutdown();
+                ((g)???).tGz = null;
               }
-              if (((g)???).sJP != null)
+              if (((g)???).tGA != null)
               {
-                ((g)???).sJP.shutdown();
-                ((g)???).sJP = null;
+                ((g)???).tGA.shutdown();
+                ((g)???).tGA = null;
               }
-              if (((g)???).sJQ != null)
+              if (((g)???).tGB != null)
               {
-                ((g)???).sJQ.quit();
-                ((g)???).sJQ = null;
+                ((g)???).tGB.quit();
+                ((g)???).tGB = null;
               }
-              ((g)???).sJR = null;
-              if (((g)???).sJJ != null)
+              ((g)???).tGC = null;
+              if (((g)???).tGu != null)
               {
-                ((g)???).sJJ.quit();
-                ((g)???).sJJ = null;
+                ((g)???).tGu.quit();
+                ((g)???).tGu = null;
               }
-              ((g)???).sJL = null;
-              sJC.sJs = null;
+              ((g)???).tGw = null;
+              tGn.tGd = null;
             }
           }
           else
           {
-            sJC = null;
-            ac.i("MicroMsg.GalleryCore", "stopServices: finish.");
+            tGn = null;
+            ad.i("MicroMsg.GalleryCore", "stopServices: finish.");
           }
         }
-        ac.w("MicroMsg.GalleryHandlerThread", "assistHandler is null.");
+        ad.w("MicroMsg.GalleryHandlerThread", "assistHandler is null.");
         continue;
         label533:
-        ac.w("MicroMsg.GalleryHandlerThread", "querySubHandler is null.");
+        ad.w("MicroMsg.GalleryHandlerThread", "querySubHandler is null.");
         continue;
         label545:
-        ac.w("MicroMsg.GalleryHandlerThread", "querySubHandler is null.");
+        ad.w("MicroMsg.GalleryHandlerThread", "querySubHandler is null.");
       }
     }
     AppMethodBeat.o(111277);
     return false;
   }
   
-  public static SparseArray<GalleryItem.a> cMq()
-  {
-    AppMethodBeat.i(173729);
-    SparseArray localSparseArray = cMr().sJD;
-    AppMethodBeat.o(173729);
-    return localSparseArray;
-  }
-  
-  private static e cMr()
-  {
-    AppMethodBeat.i(111262);
-    if (sJC == null) {
-      sJC = new e();
-    }
-    e locale = sJC;
-    AppMethodBeat.o(111262);
-    return locale;
-  }
-  
-  public static c cMs()
-  {
-    AppMethodBeat.i(111263);
-    if (cMr().sJr == null) {
-      cMr().sJr = new c();
-    }
-    c localc = cMr().sJr;
-    AppMethodBeat.o(111263);
-    return localc;
-  }
-  
-  public static o cMt()
-  {
-    AppMethodBeat.i(111264);
-    if (cMr().rXK == null) {
-      cMr().rXK = new o();
-    }
-    o localo = cMr().rXK;
-    AppMethodBeat.o(111264);
-    return localo;
-  }
-  
-  public static g cMu()
-  {
-    AppMethodBeat.i(111265);
-    if (cMr().sJs == null) {
-      cMr().sJs = new g();
-    }
-    g localg = cMr().sJs;
-    AppMethodBeat.o(111265);
-    return localg;
-  }
-  
-  public static ArrayList<GalleryItem.MediaItem> cMv()
-  {
-    AppMethodBeat.i(210015);
-    ArrayList localArrayList = cMr().sJt;
-    AppMethodBeat.o(210015);
-    return localArrayList;
-  }
-  
-  public static HashSet<GalleryItem.MediaItem> cMw()
-  {
-    AppMethodBeat.i(111267);
-    HashSet localHashSet = cMr().sJz;
-    AppMethodBeat.o(111267);
-    return localHashSet;
-  }
-  
-  public static ArrayList<Bundle> cMx()
-  {
-    AppMethodBeat.i(111268);
-    ArrayList localArrayList = cMr().sJA;
-    AppMethodBeat.o(111268);
-    return localArrayList;
-  }
-  
-  public static LinkedHashSet<GalleryItem.MediaItem> cMy()
-  {
-    AppMethodBeat.i(111269);
-    LinkedHashSet localLinkedHashSet = cMr().sJu;
-    AppMethodBeat.o(111269);
-    return localLinkedHashSet;
-  }
-  
-  public static void cMz()
-  {
-    AppMethodBeat.i(111272);
-    cMr().sJB.clear();
-    AppMethodBeat.o(111272);
-  }
-  
-  public static void e(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public static void f(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(111274);
-    ac.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] selectSize:%s isSendRaw:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1) });
+    ad.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] selectSize:%s isSendRaw:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1) });
     int i;
-    if (cMt().kxr == 3) {
+    if (cUM().kTx == 3) {
       i = 1;
     }
     for (;;)
@@ -401,15 +396,15 @@ public final class e
       label180:
       label324:
       int k;
-      if (cMr().sJz != null)
+      if (cUK().tGk != null)
       {
-        j = cMr().sJz.size();
-        ac.i("MicroMsg.GalleryCore", "[reportPhotoEdit] fromScene:%s,selectSize:%s,editSize:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(j) });
+        j = cUK().tGk.size();
+        ad.i("MicroMsg.GalleryCore", "[reportPhotoEdit] fromScene:%s,selectSize:%s,editSize:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(j) });
         if (j > 0) {
-          com.tencent.mm.plugin.gallery.a.d.bi(13858, i + "," + paramInt + "," + j + ",0");
+          com.tencent.mm.plugin.gallery.a.d.bl(13858, i + "," + paramInt + "," + j + ",0");
         }
-        ac.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] imageState:%s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.gallery.a.d.cOa()) });
-        Iterator localIterator = cMr().sJA.iterator();
+        ad.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] imageState:%s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.gallery.a.d.cWt()) });
+        Iterator localIterator = cUK().tGl.iterator();
         int n;
         int i1;
         int i2;
@@ -427,9 +422,9 @@ public final class e
           String str = ((Bundle)localObject).getString("after_photo_edit");
           if (!paramBoolean2)
           {
-            ac.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] delete file:%s", new Object[] { str });
+            ad.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] delete file:%s", new Object[] { str });
             com.tencent.mm.vfs.i.deleteFile(str);
-            com.tencent.mm.sdk.f.b.k(str, ai.getContext());
+            com.tencent.mm.sdk.f.b.k(str, aj.getContext());
           }
           n = ((Bundle)localObject).getInt("report_info_emotion_count");
           i1 = ((Bundle)localObject).getInt("report_info_text_count");
@@ -446,7 +441,7 @@ public final class e
             break label555;
           }
           k = 1;
-          ac.i("MicroMsg.GalleryCore", "[reportPhotoEdit] emojiCount:%s,textCount:%s,mosaicCount:%s,penCount:%s,isCrop:%s,undoCount:%s,isRotation:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt), Integer.valueOf(m), Integer.valueOf(k) });
+          ad.i("MicroMsg.GalleryCore", "[reportPhotoEdit] emojiCount:%s,textCount:%s,mosaicCount:%s,penCount:%s,isCrop:%s,undoCount:%s,isRotation:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt), Integer.valueOf(m), Integer.valueOf(k) });
         } while (j <= 0);
         localObject = new StringBuilder().append(i).append(",").append(paramBoolean1).append(",").append(n).append(",").append(i1).append(",").append(i2).append(",").append(i3).append(",");
         if (!bool1) {
@@ -464,9 +459,9 @@ public final class e
       label566:
       for (paramInt = 1;; paramInt = 0)
       {
-        com.tencent.mm.plugin.gallery.a.d.bi(13857, paramInt);
+        com.tencent.mm.plugin.gallery.a.d.bl(13857, paramInt);
         break label180;
-        if (cMt().kxr != 4) {
+        if (cUM().kTx != 4) {
           break label578;
         }
         i = 2;

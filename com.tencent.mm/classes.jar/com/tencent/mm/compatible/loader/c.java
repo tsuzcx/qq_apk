@@ -5,10 +5,10 @@ import java.lang.reflect.Field;
 
 public final class c<T>
 {
-  private Field bCy;
+  private Field bMM;
   private String classname;
-  private boolean fJw;
   private String fieldName;
+  private boolean gcX;
   private Object obj;
   
   public c(Object paramObject, String paramString1, String paramString2)
@@ -29,19 +29,19 @@ public final class c<T>
   private void prepare()
   {
     AppMethodBeat.i(157480);
-    if (this.fJw)
+    if (this.gcX)
     {
       AppMethodBeat.o(157480);
       return;
     }
-    this.fJw = true;
+    this.gcX = true;
     Class localClass = this.obj.getClass();
     while (localClass != null) {
       try
       {
         Field localField1 = localClass.getDeclaredField(this.fieldName);
         localField1.setAccessible(true);
-        this.bCy = localField1;
+        this.bMM = localField1;
         return;
       }
       catch (Exception localException1)
@@ -62,7 +62,7 @@ public final class c<T>
                   continue;
                 }
                 localField2.setAccessible(true);
-                this.bCy = localField2;
+                this.bMM = localField2;
               }
             }
           }
@@ -85,11 +85,11 @@ public final class c<T>
     AppMethodBeat.o(157480);
   }
   
-  public final boolean Yw()
+  public final boolean aaY()
   {
     AppMethodBeat.i(157483);
     prepare();
-    if (this.bCy != null)
+    if (this.bMM != null)
     {
       AppMethodBeat.o(157483);
       return true;
@@ -103,7 +103,7 @@ public final class c<T>
     AppMethodBeat.i(157481);
     prepare();
     Object localObject;
-    if (this.bCy == null)
+    if (this.bMM == null)
     {
       localObject = new NoSuchFieldException();
       AppMethodBeat.o(157481);
@@ -111,7 +111,7 @@ public final class c<T>
     }
     try
     {
-      localObject = this.bCy.get(this.obj);
+      localObject = this.bMM.get(this.obj);
       AppMethodBeat.o(157481);
       return localObject;
     }
@@ -127,13 +127,13 @@ public final class c<T>
   {
     AppMethodBeat.i(157482);
     prepare();
-    if (this.bCy == null)
+    if (this.bMM == null)
     {
       paramT = new NoSuchFieldException();
       AppMethodBeat.o(157482);
       throw paramT;
     }
-    this.bCy.set(this.obj, paramT);
+    this.bMM.set(this.obj, paramT);
     AppMethodBeat.o(157482);
   }
 }

@@ -1,8 +1,12 @@
 package com.tencent.mm.plugin.mmsight.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.nio.ByteBuffer;
+
 public final class a
 {
-  public static int IN(int paramInt)
+  public static int Kk(int paramInt)
   {
     switch (paramInt)
     {
@@ -33,6 +37,21 @@ public final class a
       return 11;
     }
     return 12;
+  }
+  
+  public static void a(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    AppMethodBeat.i(213677);
+    ad.d("MicroMsg.ADTSUtils", "addADTStoPacket params: %d, %d, %d, %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
+    paramInt4 = Kk(paramInt4);
+    paramByteBuffer.put(paramInt1, (byte)-1);
+    paramByteBuffer.put(paramInt1 + 1, (byte)-7);
+    paramByteBuffer.put(paramInt1 + 2, (byte)((paramInt4 << 2) + (paramInt3 - 1 << 6) + (paramInt5 >> 2)));
+    paramByteBuffer.put(paramInt1 + 3, (byte)(((paramInt5 & 0x3) << 6) + (paramInt2 >> 11)));
+    paramByteBuffer.put(paramInt1 + 4, (byte)((paramInt2 & 0x7FF) >> 3));
+    paramByteBuffer.put(paramInt1 + 5, (byte)(((paramInt2 & 0x7) << 5) + 31));
+    paramByteBuffer.put(paramInt1 + 6, (byte)-4);
+    AppMethodBeat.o(213677);
   }
 }
 

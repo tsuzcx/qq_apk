@@ -6,7 +6,7 @@
             <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
                     <ImageView android:id="@id/buu" android:contentDescription="@string/ge" style="@style/iv" />
-                    <ImageView android:layout_gravity="center" android:id="@id/buy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ar4" android:contentDescription="@string/ge" />
+                    <ImageView android:layout_gravity="center" android:id="@id/buy" android:visibility="gone" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:src="@raw/shortvideo_play_btn" android:contentDescription="@string/ge" />
                 </FrameLayout>
                 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dz">
                     <TextView android:id="@id/bwa" android:text="{title}" style="@style/j2" />

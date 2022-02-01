@@ -14,16 +14,15 @@ import com.tencent.mm.plugin.appbrand.page.ah.b;
 import com.tencent.mm.plugin.appbrand.page.an;
 import com.tencent.mm.plugin.appbrand.page.aq;
 import com.tencent.mm.plugin.appbrand.page.ay;
-import com.tencent.mm.plugin.appbrand.page.br;
-import com.tencent.mm.plugin.appbrand.page.br.a;
-import com.tencent.mm.plugin.appbrand.page.bu;
-import com.tencent.mm.plugin.appbrand.page.bx;
+import com.tencent.mm.plugin.appbrand.page.bq;
+import com.tencent.mm.plugin.appbrand.page.bq.a;
+import com.tencent.mm.plugin.appbrand.page.bt;
+import com.tencent.mm.plugin.appbrand.page.bw;
 import com.tencent.mm.plugin.appbrand.widget.base.AppBrandViewMotionCompat;
 import com.tencent.mm.plugin.appbrand.widget.base.d;
 import com.tencent.mm.plugin.appbrand.widget.base.e;
 import com.tencent.mm.plugin.appbrand.widget.base.e.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,25 +30,25 @@ import java.util.List;
 @SuppressLint({"ViewConstructor"})
 public final class g
   extends AbsoluteLayout
-  implements ah.b, an, aq, br, bu, d
+  implements ah.b, an, aq, bq, bt, d
 {
-  private final aa cbd;
-  final e mCF;
-  private boolean mCG;
-  private int mCH;
-  private int mCI;
-  private final AbsoluteLayout mre;
-  private final List<br.a> mrf;
+  private final aa clu;
+  private final AbsoluteLayout mRJ;
+  private final List<bq.a> mRK;
+  final e ndf;
+  private boolean ndg;
+  private int ndh;
+  private int ndi;
   
   public g(aa paramaa)
   {
     super(paramaa.getContext());
     AppMethodBeat.i(136331);
-    this.mrf = new LinkedList();
+    this.mRK = new LinkedList();
     super.setId(2131296779);
-    this.cbd = paramaa;
-    this.mre = this;
-    this.mCF = new e(this.mre);
+    this.clu = paramaa;
+    this.mRJ = this;
+    this.ndf = new e(this.mRJ);
     AppMethodBeat.o(136331);
   }
   
@@ -57,12 +56,12 @@ public final class g
   {
     AppMethodBeat.i(136334);
     paramay = paramay.getWrapperView();
-    if ((this.mre.getWidth() != paramay.getWidth()) || (this.mre.getHeight() != paramay.getHeight()))
+    if ((this.mRJ.getWidth() != paramay.getWidth()) || (this.mRJ.getHeight() != paramay.getHeight()))
     {
-      ViewGroup.LayoutParams localLayoutParams = this.mre.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.mRJ.getLayoutParams();
       localLayoutParams.width = paramay.getWidth();
       localLayoutParams.height = paramay.getHeight();
-      this.mre.setLayoutParams(localLayoutParams);
+      this.mRJ.setLayoutParams(localLayoutParams);
     }
     AppMethodBeat.o(136334);
   }
@@ -77,13 +76,13 @@ public final class g
     }
     b(paramay);
     paramay = new AbsoluteLayout.LayoutParams(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.mre.addView(paramInput, paramay);
-    ((ab)paramInput).A(this.cbd);
+    this.mRJ.addView(paramInput, paramay);
+    ((ab)paramInput).A(this.clu);
     AppMethodBeat.o(136333);
     return true;
   }
   
-  private <Input extends View,  extends ab> boolean cZ(Input paramInput)
+  private <Input extends View,  extends ab> boolean db(Input paramInput)
   {
     AppMethodBeat.i(136336);
     if (paramInput == null)
@@ -91,15 +90,15 @@ public final class g
       AppMethodBeat.o(136336);
       return false;
     }
-    if (this.mre == null)
+    if (this.mRJ == null)
     {
       AppMethodBeat.o(136336);
       return false;
     }
     int i = 0;
-    while (i < this.mre.getChildCount())
+    while (i < this.mRJ.getChildCount())
     {
-      if (paramInput == this.mre.getChildAt(i))
+      if (paramInput == this.mRJ.getChildAt(i))
       {
         AppMethodBeat.o(136336);
         return true;
@@ -110,19 +109,19 @@ public final class g
     return false;
   }
   
-  private boolean d(boolean paramBoolean, int paramInt1, int paramInt2)
+  private boolean e(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(136347);
-    if (this.mre == null)
+    if (this.mRJ == null)
     {
       AppMethodBeat.o(136347);
       return false;
     }
-    ViewGroup.LayoutParams localLayoutParams = this.mre.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.mRJ.getLayoutParams();
     if (localLayoutParams == null)
     {
       localLayoutParams = new ViewGroup.LayoutParams(paramInt1, paramInt2);
-      this.mre.setLayoutParams(localLayoutParams);
+      this.mRJ.setLayoutParams(localLayoutParams);
       AppMethodBeat.o(136347);
       return true;
     }
@@ -130,7 +129,7 @@ public final class g
     {
       localLayoutParams.width = paramInt1;
       localLayoutParams.height = paramInt2;
-      this.mre.setLayoutParams(localLayoutParams);
+      this.mRJ.setLayoutParams(localLayoutParams);
       AppMethodBeat.o(136347);
       return true;
     }
@@ -138,7 +137,7 @@ public final class g
     return paramBoolean;
   }
   
-  public final boolean L(MotionEvent paramMotionEvent)
+  public final boolean J(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(136341);
     if ((paramMotionEvent == null) || (paramMotionEvent.getActionMasked() != 0))
@@ -146,13 +145,13 @@ public final class g
       AppMethodBeat.o(136341);
       return false;
     }
-    e locale = this.mCF;
-    if ((paramMotionEvent == null) || (paramMotionEvent.getActionMasked() != 0) || (locale.mtK == null))
+    e locale = this.ndf;
+    if ((paramMotionEvent == null) || (paramMotionEvent.getActionMasked() != 0) || (locale.mUq == null))
     {
       AppMethodBeat.o(136341);
       return false;
     }
-    if ((paramMotionEvent.getDownTime() == locale.mtK.gsq) && (paramMotionEvent.getEventTime() == locale.mtK.kpY))
+    if ((paramMotionEvent.getDownTime() == locale.mUq.gLY) && (paramMotionEvent.getEventTime() == locale.mUq.kLa))
     {
       AppMethodBeat.o(136341);
       return true;
@@ -161,7 +160,7 @@ public final class g
     return false;
   }
   
-  public final void a(br.a parama)
+  public final void a(bq.a parama)
   {
     AppMethodBeat.i(136342);
     if (parama == null)
@@ -169,12 +168,12 @@ public final class g
       AppMethodBeat.o(136342);
       return;
     }
-    if (this.mrf.contains(parama))
+    if (this.mRK.contains(parama))
     {
       AppMethodBeat.o(136342);
       return;
     }
-    this.mrf.add(parama);
+    this.mRK.add(parama);
     AppMethodBeat.o(136342);
   }
   
@@ -186,7 +185,7 @@ public final class g
     return bool;
   }
   
-  public final void b(br.a parama)
+  public final void b(bq.a parama)
   {
     AppMethodBeat.i(136343);
     if (parama == null)
@@ -194,11 +193,11 @@ public final class g
       AppMethodBeat.o(136343);
       return;
     }
-    this.mrf.remove(parama);
+    this.mRK.remove(parama);
     AppMethodBeat.o(136343);
   }
   
-  public final boolean bym()
+  public final boolean bCr()
   {
     AppMethodBeat.i(136340);
     if (getChildCount() <= 0)
@@ -209,7 +208,7 @@ public final class g
     int i = 0;
     while (i <= getChildCount())
     {
-      if (AppBrandViewMotionCompat.cT(getChildAt(i)))
+      if (AppBrandViewMotionCompat.cV(getChildAt(i)))
       {
         AppMethodBeat.o(136340);
         return true;
@@ -220,20 +219,37 @@ public final class g
     return false;
   }
   
+  public final void c(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(136346);
+    if (e(paramBoolean, paramInt3 - paramInt1, paramInt4 - paramInt2)) {
+      post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(136330);
+          g.a(g.this);
+          AppMethodBeat.o(136330);
+        }
+      });
+    }
+    AppMethodBeat.o(136346);
+  }
+  
   public final boolean c(Canvas paramCanvas)
   {
     AppMethodBeat.i(136348);
     paramCanvas.save();
     paramCanvas.translate(-getScrollX(), -getScrollY());
-    if (bx.k(this)) {
-      bx.a(paramCanvas, this, 0.0F, 0.0F);
+    if (bw.k(this)) {
+      bw.a(paramCanvas, this, 0.0F, 0.0F);
     }
     for (;;)
     {
       paramCanvas.restore();
       AppMethodBeat.o(136348);
       return true;
-      f.a(paramCanvas, this);
+      com.tencent.mm.sdk.platformtools.g.a(paramCanvas, this);
     }
   }
   
@@ -245,7 +261,7 @@ public final class g
       AppMethodBeat.o(136335);
       return false;
     }
-    if (!cZ(paramInput))
+    if (!db(paramInput))
     {
       AppMethodBeat.o(136335);
       return false;
@@ -269,24 +285,7 @@ public final class g
     return true;
   }
   
-  public final void d(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(136346);
-    if (d(paramBoolean, paramInt3 - paramInt1, paramInt4 - paramInt2)) {
-      post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(136330);
-          g.a(g.this);
-          AppMethodBeat.o(136330);
-        }
-      });
-    }
-    AppMethodBeat.o(136346);
-  }
-  
-  public final <Input extends View,  extends ab> void da(Input paramInput)
+  public final <Input extends View,  extends ab> void dc(Input paramInput)
   {
     AppMethodBeat.i(136337);
     if (paramInput == null)
@@ -295,13 +294,13 @@ public final class g
       return;
     }
     paramInput.setVisibility(8);
-    ac.v("MicroMsg.AppBrandInputContainer", "clearWebView imm active = %b", new Object[] { Boolean.valueOf(aj.dn(this).isActive()) });
-    this.mre.removeView(paramInput);
-    ((ab)paramInput).B(this.cbd);
+    ad.v("MicroMsg.AppBrandInputContainer", "clearWebView imm active = %b", new Object[] { Boolean.valueOf(aj.dp(this).isActive()) });
+    this.mRJ.removeView(paramInput);
+    ((ab)paramInput).B(this.clu);
     AppMethodBeat.o(136337);
   }
   
-  public final void gt(int paramInt)
+  public final void gw(int paramInt)
   {
     AppMethodBeat.i(136339);
     setTranslationY(paramInt);
@@ -311,7 +310,7 @@ public final class g
   protected final void measureChild(View paramView, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(136345);
-    if (this.mCG) {
+    if (this.ndg) {
       paramView.forceLayout();
     }
     super.measureChild(paramView, paramInt1, paramInt2);
@@ -321,14 +320,14 @@ public final class g
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(136344);
-    if ((isLayoutRequested()) || (paramInt1 != this.mCH) || (paramInt2 != this.mCI)) {}
+    if ((isLayoutRequested()) || (paramInt1 != this.ndh) || (paramInt2 != this.ndi)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.mCG = bool;
-      this.mCH = paramInt1;
-      this.mCI = paramInt2;
+      this.ndg = bool;
+      this.ndh = paramInt1;
+      this.ndi = paramInt2;
       super.onMeasure(paramInt1, paramInt2);
-      this.mCG = false;
+      this.ndg = false;
       AppMethodBeat.o(136344);
       return;
     }
@@ -337,15 +336,15 @@ public final class g
   public final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     AppMethodBeat.i(136338);
-    ac.v("MicroMsg.AppBrandInputContainer", "onScrollChanged, left = %d, top = %d, oldLeft = %d, oldTop = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    if (this.mre != null)
+    ad.v("MicroMsg.AppBrandInputContainer", "onScrollChanged, left = %d, top = %d, oldLeft = %d, oldTop = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    if (this.mRJ != null)
     {
-      d(false, paramView.getWidth(), paramView.getHeight());
-      this.mre.scrollTo(paramInt1, paramInt2);
+      e(false, paramView.getWidth(), paramView.getHeight());
+      this.mRJ.scrollTo(paramInt1, paramInt2);
     }
-    paramView = this.mrf.iterator();
+    paramView = this.mRK.iterator();
     while (paramView.hasNext()) {
-      ((br.a)paramView.next()).ee(paramInt1, paramInt2);
+      ((bq.a)paramView.next()).eg(paramInt1, paramInt2);
     }
     AppMethodBeat.o(136338);
   }
@@ -359,7 +358,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.g
  * JD-Core Version:    0.7.0.1
  */

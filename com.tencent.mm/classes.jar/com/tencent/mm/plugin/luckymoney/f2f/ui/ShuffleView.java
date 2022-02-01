@@ -16,57 +16,58 @@ import android.view.View;
 import android.view.View.OnLayoutChangeListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShuffleView
   extends FrameLayout
 {
-  public static DisplayMetrics iuy;
-  View iSA;
-  GestureDetector irA;
-  ValueAnimator pmy;
+  public static DisplayMetrics iNB;
+  GestureDetector iKD;
+  View jlI;
+  ValueAnimator pPY;
+  private ValueAnimator rUt;
+  ValueAnimator rUu;
   private float translationX;
   private float translationY;
-  private ValueAnimator ukA;
-  ValueAnimator ukB;
-  private a ukC;
-  private a ukD;
-  private b ukE;
-  View ukF;
-  private View ukG;
-  int ukH;
-  private View ukI;
-  private int ukJ;
-  int ukK;
-  private final float ukL;
-  private final float ukM;
-  private final float ukN;
-  private ArrayList<Float> ukO;
-  private ArrayList<Float> ukP;
-  private boolean ukQ;
-  private int ukR;
-  private int ukS;
-  List<View> ukx;
-  private c uky;
-  ValueAnimator ukz;
+  List<View> vnf;
+  private c vng;
+  ValueAnimator vnh;
+  private a vni;
+  private a vnj;
+  private b vnk;
+  View vnl;
+  private View vnm;
+  int vnn;
+  private View vno;
+  private int vnp;
+  int vnq;
+  private final float vnr;
+  private final float vns;
+  private final float vnt;
+  private ArrayList<Float> vnu;
+  private ArrayList<Float> vnv;
+  private boolean vnw;
+  private int vnx;
+  private int vny;
   
   public ShuffleView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65134);
-    this.ukL = 0.23F;
-    this.ukM = 0.28F;
-    this.ukN = 0.33F;
-    this.ukS = 2500;
-    this.irA = new GestureDetector(new GestureDetector.OnGestureListener()
+    this.vnr = 0.23F;
+    this.vns = 0.28F;
+    this.vnt = 0.33F;
+    this.vny = 2500;
+    this.iKD = new GestureDetector(new GestureDetector.OnGestureListener()
     {
       public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(65129);
-        ac.d("ShuffleView", "gesture down");
-        switch (ShuffleView.l(ShuffleView.this).ukY)
+        ad.d("ShuffleView", "gesture down");
+        switch (ShuffleView.l(ShuffleView.this).vnE)
         {
         }
         for (;;)
@@ -91,7 +92,7 @@ public class ShuffleView
                 AppMethodBeat.o(65129);
                 return true;
               }
-              ac.i("ShuffleView", "down on the select card");
+              ad.i("ShuffleView", "down on the select card");
               AppMethodBeat.o(65129);
               return true;
             }
@@ -103,10 +104,10 @@ public class ShuffleView
       public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(65132);
-        ac.i("ShuffleView", "fling up ".concat(String.valueOf(paramAnonymousFloat2)));
+        ad.i("ShuffleView", "fling up ".concat(String.valueOf(paramAnonymousFloat2)));
         if (paramAnonymousFloat2 < -ShuffleView.r(ShuffleView.this))
         {
-          switch (ShuffleView.l(ShuffleView.this).ukY)
+          switch (ShuffleView.l(ShuffleView.this).vnE)
           {
           }
           for (;;)
@@ -122,7 +123,7 @@ public class ShuffleView
               {
                 paramAnonymousMotionEvent1 = ShuffleView.n(ShuffleView.this);
                 ShuffleView.i(ShuffleView.this);
-                paramAnonymousMotionEvent1.HH(ShuffleView.d(ShuffleView.this));
+                paramAnonymousMotionEvent1.Jd(ShuffleView.d(ShuffleView.this));
               }
               ShuffleView.c(ShuffleView.this, ShuffleView.i(ShuffleView.this));
             }
@@ -132,7 +133,15 @@ public class ShuffleView
         return false;
       }
       
-      public final void onLongPress(MotionEvent paramAnonymousMotionEvent) {}
+      public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(199003);
+        b localb = new b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/f2f/ui/ShuffleView$8", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/f2f/ui/ShuffleView$8", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
+        AppMethodBeat.o(199003);
+      }
       
       public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
@@ -143,7 +152,7 @@ public class ShuffleView
         {
           j = (int)paramAnonymousMotionEvent2.getX();
           k = (int)paramAnonymousMotionEvent2.getY();
-          switch (ShuffleView.l(ShuffleView.this).ukY)
+          switch (ShuffleView.l(ShuffleView.this).vnE)
           {
           }
         }
@@ -176,11 +185,11 @@ public class ShuffleView
                 i += 1;
                 break;
               }
-              ac.i("ShuffleView", "scroll on the select card");
+              ad.i("ShuffleView", "scroll on the select card");
             }
           }
         } while (Math.abs(paramAnonymousFloat1) >= ShuffleView.o(ShuffleView.this));
-        ac.d("ShuffleView", "scroll distanceY:".concat(String.valueOf(paramAnonymousFloat2)));
+        ad.d("ShuffleView", "scroll distanceY:".concat(String.valueOf(paramAnonymousFloat2)));
         if (ShuffleView.k(ShuffleView.this) != null) {
           paramAnonymousMotionEvent1 = ShuffleView.k(ShuffleView.this);
         }
@@ -188,7 +197,7 @@ public class ShuffleView
         {
           if (paramAnonymousMotionEvent1 != null)
           {
-            ac.i("ShuffleView", "scroll translationY:" + paramAnonymousMotionEvent1.getTranslationY() + "," + paramAnonymousMotionEvent1.getHeight() / 7);
+            ad.i("ShuffleView", "scroll translationY:" + paramAnonymousMotionEvent1.getTranslationY() + "," + paramAnonymousMotionEvent1.getHeight() / 7);
             if ((int)paramAnonymousMotionEvent1.getTranslationY() > -paramAnonymousMotionEvent1.getHeight() / 7) {
               break label502;
             }
@@ -205,7 +214,7 @@ public class ShuffleView
                 ShuffleView.d(ShuffleView.this, ShuffleView.f(ShuffleView.this));
                 if (ShuffleView.q(ShuffleView.this).isStarted())
                 {
-                  ac.i("ShuffleView", "scroll when select view is animation");
+                  ad.i("ShuffleView", "scroll when select view is animation");
                   ShuffleView.q(ShuffleView.this).cancel();
                 }
                 ShuffleView.b(ShuffleView.this, null);
@@ -260,17 +269,21 @@ public class ShuffleView
       public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(65130);
-        switch (ShuffleView.l(ShuffleView.this).ukY)
+        b localb = new b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/f2f/ui/ShuffleView$8", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        switch (ShuffleView.l(ShuffleView.this).vnE)
         {
         default: 
+          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/luckymoney/f2f/ui/ShuffleView$8", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(65130);
           return false;
         }
         if (ShuffleView.h(ShuffleView.this) != null)
         {
-          ac.d("ShuffleView", "click the select card");
+          ad.d("ShuffleView", "click the select card");
           if (ShuffleView.n(ShuffleView.this) != null) {
-            ShuffleView.n(ShuffleView.this).ge(ShuffleView.f(ShuffleView.this), ShuffleView.d(ShuffleView.this));
+            ShuffleView.n(ShuffleView.this).gv(ShuffleView.f(ShuffleView.this), ShuffleView.d(ShuffleView.this));
           }
           ShuffleView.m(ShuffleView.this);
         }
@@ -280,29 +293,30 @@ public class ShuffleView
           {
             paramAnonymousMotionEvent = ShuffleView.n(ShuffleView.this);
             ShuffleView.i(ShuffleView.this);
-            paramAnonymousMotionEvent.HH(ShuffleView.d(ShuffleView.this));
+            paramAnonymousMotionEvent.Jd(ShuffleView.d(ShuffleView.this));
           }
           ShuffleView.c(ShuffleView.this, ShuffleView.i(ShuffleView.this));
         }
+        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/luckymoney/f2f/ui/ShuffleView$8", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(65130);
         return true;
       }
     });
-    this.uky = new c();
-    this.ukx = new ArrayList();
-    this.ukO = new ArrayList();
-    this.ukP = new ArrayList();
-    this.ukR = getResources().getDimensionPixelSize(2131166504);
+    this.vng = new c();
+    this.vnf = new ArrayList();
+    this.vnu = new ArrayList();
+    this.vnv = new ArrayList();
+    this.vnx = getResources().getDimensionPixelSize(2131166504);
     AppMethodBeat.o(65134);
   }
   
-  private Rect HL(int paramInt)
+  private Rect Jh(int paramInt)
   {
     AppMethodBeat.i(65146);
-    if ((paramInt >= 0) && (paramInt < this.ukK)) {
-      localObject = (View)this.ukx.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.vnq)) {
+      localObject = (View)this.vnf.get(paramInt);
     }
-    switch (this.uky.ukY)
+    switch (this.vng.vnE)
     {
     default: 
       AppMethodBeat.o(65146);
@@ -321,7 +335,7 @@ public class ShuffleView
       AppMethodBeat.o(65146);
       return localObject;
     }
-    View localView = (View)this.ukx.get(paramInt - 1);
+    View localView = (View)this.vnf.get(paramInt - 1);
     paramInt = localView.getRight();
     int i = (int)localView.getTranslationX();
     int j = ((View)localObject).getTop();
@@ -334,24 +348,24 @@ public class ShuffleView
     return localObject;
   }
   
-  private void cYQ()
+  private void dic()
   {
     AppMethodBeat.i(65137);
-    if (this.ukK > 1)
+    if (this.vnq > 1)
     {
-      ac.d("ShuffleView", "card width: %d,height: %d", new Object[] { Integer.valueOf(((View)this.ukx.get(0)).getWidth()), Integer.valueOf(((View)this.ukx.get(0)).getHeight()) });
-      if (this.uky.ukX == 2)
+      ad.d("ShuffleView", "card width: %d,height: %d", new Object[] { Integer.valueOf(((View)this.vnf.get(0)).getWidth()), Integer.valueOf(((View)this.vnf.get(0)).getHeight()) });
+      if (this.vng.vnD == 2)
       {
-        this.translationX = (((View)this.ukx.get(0)).getWidth() * 1.5F / this.ukK);
-        if (this.translationX > ((View)this.ukx.get(0)).getWidth() * 0.23F)
+        this.translationX = (((View)this.vnf.get(0)).getWidth() * 1.5F / this.vnq);
+        if (this.translationX > ((View)this.vnf.get(0)).getWidth() * 0.23F)
         {
-          this.translationX = (((View)this.ukx.get(0)).getWidth() * 0.23F);
+          this.translationX = (((View)this.vnf.get(0)).getWidth() * 0.23F);
           AppMethodBeat.o(65137);
         }
       }
-      else if (this.uky.ukX == 1)
+      else if (this.vng.vnD == 1)
       {
-        this.translationY = (((View)this.ukx.get(0)).getHeight() * 1.0F / this.ukK);
+        this.translationY = (((View)this.vnf.get(0)).getHeight() * 1.0F / this.vnq);
         AppMethodBeat.o(65137);
       }
     }
@@ -363,30 +377,30 @@ public class ShuffleView
     AppMethodBeat.o(65137);
   }
   
-  private void cYS()
+  private void die()
   {
     AppMethodBeat.i(65140);
-    if (this.iSA != null)
+    if (this.jlI != null)
     {
-      ac.i("ShuffleView", "selectView != null, cancel select");
-      if (this.ukB.isStarted()) {
-        this.ukB.cancel();
+      ad.i("ShuffleView", "selectView != null, cancel select");
+      if (this.vnh.isStarted()) {
+        this.vnh.cancel();
       }
-      this.ukB.removeAllUpdateListeners();
-      this.ukB.removeAllListeners();
-      switch (this.uky.ukY)
+      this.vnh.removeAllUpdateListeners();
+      this.vnh.removeAllListeners();
+      switch (this.vng.vnE)
       {
       }
     }
     for (;;)
     {
-      this.iSA = null;
-      this.ukH = 0;
-      this.ukB.start();
+      this.jlI = null;
+      this.vnn = 0;
+      this.vnh.start();
       AppMethodBeat.o(65140);
       return;
-      if (this.ukH >= 0) {
-        this.ukB.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      if (this.vnn >= 0) {
+        this.vnh.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
@@ -409,8 +423,8 @@ public class ShuffleView
             i = 0;
             while (i < ShuffleView.d(ShuffleView.this))
             {
-              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.HI(i) * f);
-              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.HJ(i) * f);
+              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.Je(i) * f);
+              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.Jf(i) * f);
               i += 1;
             }
             AppMethodBeat.o(65123);
@@ -420,30 +434,30 @@ public class ShuffleView
     }
   }
   
-  private void cYT()
+  private void dif()
   {
     AppMethodBeat.i(65143);
-    if (this.ukI != null)
+    if (this.vno != null)
     {
-      ac.i("ShuffleView", "touchView != null,cancel touch");
-      if (this.ukB.isStarted()) {
-        this.ukB.cancel();
+      ad.i("ShuffleView", "touchView != null,cancel touch");
+      if (this.vnh.isStarted()) {
+        this.vnh.cancel();
       }
-      this.ukB.removeAllUpdateListeners();
-      this.ukB.removeAllListeners();
-      switch (this.uky.ukY)
+      this.vnh.removeAllUpdateListeners();
+      this.vnh.removeAllListeners();
+      switch (this.vng.vnE)
       {
       }
     }
     for (;;)
     {
-      this.ukI = null;
-      this.ukJ = -1;
-      this.ukB.start();
+      this.vno = null;
+      this.vnp = -1;
+      this.vnh.start();
       AppMethodBeat.o(65143);
       return;
-      if (this.ukJ >= 0) {
-        this.ukB.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      if (this.vnp >= 0) {
+        this.vnh.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
@@ -466,8 +480,8 @@ public class ShuffleView
             i = 0;
             while (i < ShuffleView.d(ShuffleView.this))
             {
-              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.HI(i) * f);
-              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.HJ(i) * f);
+              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.Je(i) * f);
+              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.Jf(i) * f);
               i += 1;
             }
             AppMethodBeat.o(65126);
@@ -480,12 +494,12 @@ public class ShuffleView
   private float getSelectScaleTranslationX()
   {
     AppMethodBeat.i(65141);
-    if (this.iSA != null)
+    if (this.jlI != null)
     {
-      float f1 = this.iSA.getWidth();
+      float f1 = this.jlI.getWidth();
       float f2 = this.translationX;
-      int j = this.ukH - 1;
-      int k = this.ukK - 1 - this.ukH;
+      int j = this.vnn - 1;
+      int k = this.vnq - 1 - this.vnn;
       int i = 0;
       if (j > 0) {
         i = j + 0;
@@ -508,12 +522,12 @@ public class ShuffleView
   private float getTouchScaleTranslationX()
   {
     AppMethodBeat.i(65144);
-    if (this.ukI != null)
+    if (this.vno != null)
     {
-      float f1 = this.ukI.getWidth();
+      float f1 = this.vno.getWidth();
       float f2 = this.translationX;
-      int j = this.ukJ - 1;
-      int k = this.ukK - 1 - this.ukJ;
+      int j = this.vnp - 1;
+      int k = this.vnq - 1 - this.vnp;
       int i = 0;
       if (j > 0) {
         i = j + 0;
@@ -533,62 +547,62 @@ public class ShuffleView
     return 0.0F;
   }
   
-  public final float HI(int paramInt)
+  public final float Je(int paramInt)
   {
-    if ((this.uky.ukX == 2) && (this.ukK > 0))
+    if ((this.vng.vnD == 2) && (this.vnq > 0))
     {
-      if (this.uky.ukY == 3) {
-        return (this.ukK - 1) * 0.5F * this.translationX - this.translationX * paramInt;
+      if (this.vng.vnE == 3) {
+        return (this.vnq - 1) * 0.5F * this.translationX - this.translationX * paramInt;
       }
-      if (this.uky.ukY == 4) {
-        return this.translationX * paramInt - (this.ukK - 1) * 0.5F * this.translationX;
+      if (this.vng.vnE == 4) {
+        return this.translationX * paramInt - (this.vnq - 1) * 0.5F * this.translationX;
       }
     }
     return 0.0F;
   }
   
-  public final float HJ(int paramInt)
+  public final float Jf(int paramInt)
   {
-    if (this.uky.ukX == 1)
+    if (this.vng.vnD == 1)
     {
-      if (this.uky.ukY == 1) {
-        return (this.ukK - 1) * 0.5F * this.translationY - this.translationY * paramInt;
+      if (this.vng.vnE == 1) {
+        return (this.vnq - 1) * 0.5F * this.translationY - this.translationY * paramInt;
       }
-      if (this.uky.ukY == 2) {
-        return this.translationY * paramInt - (this.ukK - 1) * 0.5F * this.translationY;
+      if (this.vng.vnE == 2) {
+        return this.translationY * paramInt - (this.vnq - 1) * 0.5F * this.translationY;
       }
     }
     return 0.0F;
   }
   
-  final void HK(int paramInt)
+  final void Jg(int paramInt)
   {
     AppMethodBeat.i(65142);
-    if ((paramInt >= 0) && (paramInt < this.ukK))
+    if ((paramInt >= 0) && (paramInt < this.vnq))
     {
-      ac.i("ShuffleView", "select card ".concat(String.valueOf(paramInt)));
-      if (this.ukB.isStarted()) {
-        this.ukB.cancel();
+      ad.i("ShuffleView", "select card ".concat(String.valueOf(paramInt)));
+      if (this.vnh.isStarted()) {
+        this.vnh.cancel();
       }
-      this.ukB.removeAllUpdateListeners();
-      this.ukB.removeAllListeners();
-      this.iSA = ((View)this.ukx.get(paramInt));
-      this.ukH = paramInt;
-      this.ukI = null;
-      this.ukJ = -1;
-      switch (this.uky.ukY)
+      this.vnh.removeAllUpdateListeners();
+      this.vnh.removeAllListeners();
+      this.jlI = ((View)this.vnf.get(paramInt));
+      this.vnn = paramInt;
+      this.vno = null;
+      this.vnp = -1;
+      switch (this.vng.vnE)
       {
       }
     }
     for (;;)
     {
-      this.ukB.start();
+      this.vnh.start();
       AppMethodBeat.o(65142);
       return;
       if (paramInt > 0)
       {
-        int i = this.ukK;
-        this.ukB.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+        int i = this.vnq;
+        this.vnh.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
@@ -608,41 +622,41 @@ public class ShuffleView
               AppMethodBeat.o(65124);
               return;
             }
-            if (this.ukV > 0)
+            if (this.vnB > 0)
             {
               i = 0;
               while (i < ShuffleView.f(ShuffleView.this) - 1)
               {
-                ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + (ShuffleView.this.HI(i) - (i + 1) * ShuffleView.g(ShuffleView.this)) * f);
-                ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.HJ(i) * f);
+                ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + (ShuffleView.this.Je(i) - (i + 1) * ShuffleView.g(ShuffleView.this)) * f);
+                ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.Jf(i) * f);
                 i += 1;
               }
-              ((View)ShuffleView.e(ShuffleView.this).get(ShuffleView.f(ShuffleView.this) - 1)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(ShuffleView.f(ShuffleView.this) - 1)).floatValue() * (1.0F - f) + (ShuffleView.this.HI(ShuffleView.f(ShuffleView.this) - 1) - ShuffleView.g(ShuffleView.this) * this.ukV / 2.0F) * f);
-              ((View)ShuffleView.e(ShuffleView.this).get(ShuffleView.f(ShuffleView.this) - 1)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(ShuffleView.f(ShuffleView.this) - 1)).floatValue() * (1.0F - f) + ShuffleView.this.HJ(ShuffleView.f(ShuffleView.this) - 1) * f);
+              ((View)ShuffleView.e(ShuffleView.this).get(ShuffleView.f(ShuffleView.this) - 1)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(ShuffleView.f(ShuffleView.this) - 1)).floatValue() * (1.0F - f) + (ShuffleView.this.Je(ShuffleView.f(ShuffleView.this) - 1) - ShuffleView.g(ShuffleView.this) * this.vnB / 2.0F) * f);
+              ((View)ShuffleView.e(ShuffleView.this).get(ShuffleView.f(ShuffleView.this) - 1)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(ShuffleView.f(ShuffleView.this) - 1)).floatValue() * (1.0F - f) + ShuffleView.this.Jf(ShuffleView.f(ShuffleView.this) - 1) * f);
             }
-            while (this.ukW > 0)
+            while (this.vnC > 0)
             {
-              ShuffleView.h(ShuffleView.this).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(ShuffleView.f(ShuffleView.this))).floatValue() * (1.0F - f) + (ShuffleView.this.HI(ShuffleView.f(ShuffleView.this)) + ShuffleView.g(ShuffleView.this) * this.ukW / 2.0F) * f);
+              ShuffleView.h(ShuffleView.this).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(ShuffleView.f(ShuffleView.this))).floatValue() * (1.0F - f) + (ShuffleView.this.Je(ShuffleView.f(ShuffleView.this)) + ShuffleView.g(ShuffleView.this) * this.vnC / 2.0F) * f);
               i = ShuffleView.f(ShuffleView.this) + 1;
               while (i < ShuffleView.d(ShuffleView.this))
               {
-                ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + (ShuffleView.this.HI(i) + (ShuffleView.d(ShuffleView.this) - i) * ShuffleView.g(ShuffleView.this)) * f);
-                ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.HJ(i) * f);
+                ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + (ShuffleView.this.Je(i) + (ShuffleView.d(ShuffleView.this) - i) * ShuffleView.g(ShuffleView.this)) * f);
+                ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.Jf(i) * f);
                 i += 1;
               }
               i = 0;
               while (i < ShuffleView.f(ShuffleView.this))
               {
-                ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.HI(i) * f);
-                ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.HJ(i) * f);
+                ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.Je(i) * f);
+                ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.Jf(i) * f);
                 i += 1;
               }
             }
             i = ShuffleView.f(ShuffleView.this);
             while (i < ShuffleView.d(ShuffleView.this))
             {
-              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.HI(i) * f);
-              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.HJ(i) * f);
+              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.Je(i) * f);
+              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.Jf(i) * f);
               i += 1;
             }
             ShuffleView.h(ShuffleView.this).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(ShuffleView.f(ShuffleView.this))).floatValue() * (1.0F - f) - ShuffleView.h(ShuffleView.this).getHeight() * f / 7.0F);
@@ -652,7 +666,7 @@ public class ShuffleView
       }
       else
       {
-        this.ukB.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+        this.vnh.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
@@ -676,8 +690,8 @@ public class ShuffleView
             i = 1;
             while (i < ShuffleView.d(ShuffleView.this))
             {
-              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.HI(i) * f);
-              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.HJ(i) * f);
+              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.Je(i) * f);
+              ((View)ShuffleView.e(ShuffleView.this).get(i)).setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f) + ShuffleView.this.Jf(i) * f);
               i += 1;
             }
             AppMethodBeat.o(65125);
@@ -687,19 +701,19 @@ public class ShuffleView
     }
   }
   
-  final void HM(final int paramInt)
+  final void Ji(final int paramInt)
   {
     AppMethodBeat.i(65147);
-    this.pmy.removeAllUpdateListeners();
-    this.pmy.removeAllListeners();
-    if (this.ukx.size() < this.ukK)
+    this.pPY.removeAllUpdateListeners();
+    this.pPY.removeAllListeners();
+    if (this.vnf.size() < this.vnq)
     {
-      this.ukK -= 1;
-      if (this.ukK == 1) {
-        ((View)this.ukx.get(0)).findViewById(2131301827).setVisibility(0);
+      this.vnq -= 1;
+      if (this.vnq == 1) {
+        ((View)this.vnf.get(0)).findViewById(2131301827).setVisibility(0);
       }
-      cYQ();
-      this.pmy.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      dic();
+      this.pPY.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -725,24 +739,24 @@ public class ShuffleView
             View localView = (View)ShuffleView.e(ShuffleView.this).get(i);
             float f2;
             float f3;
-            if (ShuffleView.l(ShuffleView.this).ukX == 1)
+            if (ShuffleView.l(ShuffleView.this).vnD == 1)
             {
               f2 = ShuffleView.l(ShuffleView.this).scaleX;
               f3 = i + 1;
               localView.setScaleX(((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue() * ShuffleView.l(ShuffleView.this).scaleX + (1.0F - f2 * f3));
-              f2 = ShuffleView.this.HJ(i);
+              f2 = ShuffleView.this.Jf(i);
               localView.setTranslationY(((Float)ShuffleView.c(ShuffleView.this).get(i)).floatValue() * (1.0F - f1) + f1 * f2);
             }
             for (;;)
             {
               i += 1;
               break;
-              if (ShuffleView.l(ShuffleView.this).ukX == 2)
+              if (ShuffleView.l(ShuffleView.this).vnD == 2)
               {
                 f2 = ShuffleView.l(ShuffleView.this).scaleY;
                 f3 = i + 1;
                 localView.setScaleY(((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue() * ShuffleView.l(ShuffleView.this).scaleY + (1.0F - f2 * f3));
-                f2 = ShuffleView.this.HI(i);
+                f2 = ShuffleView.this.Je(i);
                 localView.setTranslationX(((Float)ShuffleView.b(ShuffleView.this).get(i)).floatValue() * (1.0F - f1) + f1 * f2);
               }
             }
@@ -750,7 +764,7 @@ public class ShuffleView
           AppMethodBeat.o(65133);
         }
       });
-      this.pmy.addListener(new Animator.AnimatorListener()
+      this.pPY.addListener(new Animator.AnimatorListener()
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
         
@@ -772,22 +786,22 @@ public class ShuffleView
           AppMethodBeat.o(65115);
         }
       });
-      this.pmy.start();
+      this.pPY.start();
       AppMethodBeat.o(65147);
       return;
     }
-    this.ukG = ((View)this.ukx.get(this.ukK - 1));
-    ai(this.ukG, this.ukK - 1);
-    addView(this.ukG, 0);
-    if (this.ukA != null) {
-      switch (this.uky.ukZ)
+    this.vnm = ((View)this.vnf.get(this.vnq - 1));
+    aj(this.vnm, this.vnq - 1);
+    addView(this.vnm, 0);
+    if (this.rUt != null) {
+      switch (this.vng.vnF)
       {
       }
     }
     for (;;)
     {
-      this.ukG.setVisibility(4);
-      this.pmy.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.vnm.setVisibility(4);
+      this.pPY.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -798,37 +812,37 @@ public class ShuffleView
             View localView = (View)ShuffleView.e(ShuffleView.this).get(i);
             float f1;
             float f2;
-            if (ShuffleView.l(ShuffleView.this).ukX == 1)
+            if (ShuffleView.l(ShuffleView.this).vnD == 1)
             {
               f1 = ShuffleView.l(ShuffleView.this).scaleX;
               f2 = i + 1;
               localView.setScaleX(((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue() * ShuffleView.l(ShuffleView.this).scaleX + (1.0F - f1 * f2));
-              if (ShuffleView.l(ShuffleView.this).ukY == 2) {
-                localView.setTranslationY(ShuffleView.this.HJ(i + 1) - ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue() * ShuffleView.s(ShuffleView.this));
+              if (ShuffleView.l(ShuffleView.this).vnE == 2) {
+                localView.setTranslationY(ShuffleView.this.Jf(i + 1) - ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue() * ShuffleView.s(ShuffleView.this));
               }
             }
             for (;;)
             {
               i += 1;
               break;
-              if (ShuffleView.l(ShuffleView.this).ukY == 1)
+              if (ShuffleView.l(ShuffleView.this).vnE == 1)
               {
-                f1 = ShuffleView.this.HJ(i + 1);
+                f1 = ShuffleView.this.Jf(i + 1);
                 localView.setTranslationY(((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue() * ShuffleView.s(ShuffleView.this) + f1);
                 continue;
-                if (ShuffleView.l(ShuffleView.this).ukX == 2)
+                if (ShuffleView.l(ShuffleView.this).vnD == 2)
                 {
                   f1 = ShuffleView.l(ShuffleView.this).scaleY;
                   f2 = i + 1;
                   localView.setScaleY(((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue() * ShuffleView.l(ShuffleView.this).scaleY + (1.0F - f1 * f2));
-                  if (ShuffleView.l(ShuffleView.this).ukY == 3)
+                  if (ShuffleView.l(ShuffleView.this).vnE == 3)
                   {
-                    f1 = ShuffleView.this.HI(i + 1);
+                    f1 = ShuffleView.this.Je(i + 1);
                     localView.setTranslationX(((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue() * ShuffleView.t(ShuffleView.this) + f1);
                   }
-                  else if (ShuffleView.l(ShuffleView.this).ukY == 4)
+                  else if (ShuffleView.l(ShuffleView.this).vnE == 4)
                   {
-                    localView.setTranslationX(ShuffleView.this.HI(i + 1) - ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue() * ShuffleView.t(ShuffleView.this));
+                    localView.setTranslationX(ShuffleView.this.Je(i + 1) - ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue() * ShuffleView.t(ShuffleView.this));
                   }
                 }
               }
@@ -837,7 +851,7 @@ public class ShuffleView
           AppMethodBeat.o(65117);
         }
       });
-      this.pmy.addListener(new Animator.AnimatorListener()
+      this.pPY.addListener(new Animator.AnimatorListener()
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
         
@@ -862,116 +876,117 @@ public class ShuffleView
         }
       });
       break;
-      this.ukG.setTranslationY(-iuy.heightPixels);
+      this.vnm.setTranslationY(-iNB.heightPixels);
       continue;
-      this.ukG.setTranslationY(iuy.heightPixels);
+      this.vnm.setTranslationY(iNB.heightPixels);
       continue;
-      this.ukG.setTranslationX(-iuy.widthPixels);
+      this.vnm.setTranslationX(-iNB.widthPixels);
       continue;
-      this.ukG.setTranslationX(iuy.widthPixels);
+      this.vnm.setTranslationX(iNB.widthPixels);
     }
   }
   
-  final void ai(View paramView, int paramInt)
+  final void aj(View paramView, int paramInt)
   {
     AppMethodBeat.i(65138);
-    if (this.uky.ukX == 1)
+    if (this.vng.vnD == 1)
     {
-      paramView.setScaleX(1.0F - this.uky.scaleX * paramInt);
-      paramView.setTranslationY(HJ(paramInt));
+      paramView.setScaleX(1.0F - this.vng.scaleX * paramInt);
+      paramView.setTranslationY(Jf(paramInt));
       AppMethodBeat.o(65138);
       return;
     }
-    if (this.uky.ukX == 2)
+    if (this.vng.vnD == 2)
     {
-      paramView.setScaleY(1.0F - this.uky.scaleY * paramInt);
-      paramView.setTranslationX(HI(paramInt));
+      paramView.setScaleY(1.0F - this.vng.scaleY * paramInt);
+      paramView.setTranslationX(Je(paramInt));
     }
     AppMethodBeat.o(65138);
   }
   
-  final int cYR()
+  final int did()
   {
     AppMethodBeat.i(65139);
-    int i = (int)(Math.random() * this.ukK);
+    int i = (int)(Math.random() * this.vnq);
     AppMethodBeat.o(65139);
     return i;
   }
   
   public View getEnterView()
   {
-    return this.ukG;
+    return this.vnm;
   }
   
   public View getExitView()
   {
-    return this.ukF;
+    return this.vnl;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(65145);
-    if (this.ukQ)
+    if (this.vnw)
     {
       AppMethodBeat.o(65145);
       return true;
     }
     int j = (int)paramMotionEvent.getX();
     int k = (int)paramMotionEvent.getY();
-    if (this.ukK <= 0)
+    if (this.vnq <= 0)
     {
       AppMethodBeat.o(65145);
       return false;
     }
-    ac.d("ShuffleView", "y:%d,packet largest:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(getHeight() - ((View)this.ukx.get(0)).getHeight() - ((View)this.ukx.get(0)).getHeight() / 7) });
-    if (k < getHeight() - ((View)this.ukx.get(0)).getHeight() - ((View)this.ukx.get(0)).getHeight() / 7)
+    ad.d("ShuffleView", "y:%d,packet largest:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(getHeight() - ((View)this.vnf.get(0)).getHeight() - ((View)this.vnf.get(0)).getHeight() / 7) });
+    if (k < getHeight() - ((View)this.vnf.get(0)).getHeight() - ((View)this.vnf.get(0)).getHeight() / 7)
     {
-      if ((this.iSA != null) && (paramMotionEvent.getActionMasked() == 0))
+      if ((this.jlI != null) && (paramMotionEvent.getActionMasked() == 0))
       {
-        if (this.ukE != null) {
-          this.ukE.ge(this.ukH, this.ukK);
+        if (this.vnk != null) {
+          this.vnk.gv(this.vnn, this.vnq);
         }
-        cYS();
+        die();
       }
       for (;;)
       {
         AppMethodBeat.o(65145);
         return false;
-        if ((this.ukI != null) && (this.ukI.getTranslationY() == -this.ukI.getHeight() / 7))
+        if ((this.vno != null) && (this.vno.getTranslationY() == -this.vno.getHeight() / 7))
         {
-          if (this.ukE != null) {
-            this.ukE.HH(this.ukK);
+          if (this.vnk != null) {
+            this.vnk.Jd(this.vnq);
           }
-          HK(this.ukJ);
+          Jg(this.vnp);
         }
-        else if (this.ukI != null)
+        else if (this.vno != null)
         {
-          cYT();
+          dif();
         }
       }
     }
     int i = 0;
-    if (i < this.ukK)
+    Object localObject;
+    if (i < this.vnq)
     {
-      Rect localRect = HL(i);
-      if ((localRect == null) || (!localRect.contains(j, k))) {}
+      localObject = Jh(i);
+      if ((localObject == null) || (!((Rect)localObject).contains(j, k))) {}
     }
     for (i = 1;; i = 0)
     {
       if (i == 0)
       {
-        ac.d("ShuffleView", "event %d out of cards,%d,%d", new Object[] { Integer.valueOf(paramMotionEvent.getActionMasked()), Integer.valueOf(j), Integer.valueOf(k) });
-        if ((this.iSA == null) || (paramMotionEvent.getActionMasked() != 0)) {
+        ad.d("ShuffleView", "event %d out of cards,%d,%d", new Object[] { Integer.valueOf(paramMotionEvent.getActionMasked()), Integer.valueOf(j), Integer.valueOf(k) });
+        if ((this.jlI == null) || (paramMotionEvent.getActionMasked() != 0)) {
           break label428;
         }
-        if (this.ukE != null) {
-          this.ukE.ge(this.ukH, this.ukK);
+        if (this.vnk != null) {
+          this.vnk.gv(this.vnn, this.vnq);
         }
-        cYS();
+        die();
       }
       for (;;)
       {
-        if (this.ukK > 1) {
+        if (this.vnq > 1) {
           break label503;
         }
         AppMethodBeat.o(65145);
@@ -979,38 +994,41 @@ public class ShuffleView
         i += 1;
         break;
         label428:
-        if ((this.ukI != null) && (this.ukI.getTranslationY() == -this.ukI.getHeight() / 7))
+        if ((this.vno != null) && (this.vno.getTranslationY() == -this.vno.getHeight() / 7))
         {
-          if (this.ukE != null) {
-            this.ukE.HH(this.ukK);
+          if (this.vnk != null) {
+            this.vnk.Jd(this.vnq);
           }
-          HK(this.ukJ);
+          Jg(this.vnp);
         }
-        else if (this.ukI != null)
+        else if (this.vno != null)
         {
-          cYT();
+          dif();
         }
       }
       label503:
-      boolean bool = this.irA.onTouchEvent(paramMotionEvent);
-      ac.i("ShuffleView", "ret:%s,action:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramMotionEvent.getActionMasked()) });
+      localObject = this.iKD;
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/tencent/mm/plugin/luckymoney/f2f/ui/ShuffleView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      boolean bool = com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.mq(0)), "com/tencent/mm/plugin/luckymoney/f2f/ui/ShuffleView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      ad.i("ShuffleView", "ret:%s,action:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramMotionEvent.getActionMasked()) });
       if ((!bool) && (paramMotionEvent.getActionMasked() == 1))
       {
-        if ((this.ukI == null) || (this.ukI.getTranslationY() != -this.ukI.getHeight() / 7)) {
-          break label622;
+        if ((this.vno == null) || (this.vno.getTranslationY() != -this.vno.getHeight() / 7)) {
+          break label698;
         }
-        if (this.ukE != null) {
-          this.ukE.HH(this.ukK);
+        if (this.vnk != null) {
+          this.vnk.Jd(this.vnq);
         }
-        HK(this.ukJ);
+        Jg(this.vnp);
       }
       for (;;)
       {
         AppMethodBeat.o(65145);
         return true;
-        label622:
-        if (this.ukI != null) {
-          cYT();
+        label698:
+        if (this.vno != null) {
+          dif();
         }
       }
     }
@@ -1019,27 +1037,27 @@ public class ShuffleView
   public void setAllShuffleCards(List<View> paramList)
   {
     AppMethodBeat.i(65136);
-    this.ukx.clear();
-    this.ukx.addAll(paramList);
-    this.ukH = 0;
-    this.iSA = null;
-    this.ukJ = -1;
-    this.ukI = null;
+    this.vnf.clear();
+    this.vnf.addAll(paramList);
+    this.vnn = 0;
+    this.jlI = null;
+    this.vnp = -1;
+    this.vno = null;
     removeAllViews();
-    paramList = this.ukx;
+    paramList = this.vnf;
     if (paramList.size() > 100) {
-      this.ukK = 100;
+      this.vnq = 100;
     }
     for (;;)
     {
-      int i = this.ukK - 1;
+      int i = this.vnq - 1;
       while (i >= 0)
       {
         addView((View)paramList.get(i));
         i -= 1;
       }
-      this.ukK = paramList.size();
-      if (this.ukK == 1) {
+      this.vnq = paramList.size();
+      if (this.vnq == 1) {
         ((View)paramList.get(0)).findViewById(2131301827).setVisibility(0);
       }
     }
@@ -1051,9 +1069,9 @@ public class ShuffleView
         ShuffleView.a(ShuffleView.this);
         paramAnonymousView = ShuffleView.this;
         paramAnonymousInt1 = 0;
-        while (paramAnonymousInt1 < paramAnonymousView.ukK)
+        while (paramAnonymousInt1 < paramAnonymousView.vnq)
         {
-          paramAnonymousView.ai((View)paramAnonymousView.ukx.get(paramAnonymousInt1), paramAnonymousInt1);
+          paramAnonymousView.aj((View)paramAnonymousView.vnf.get(paramAnonymousInt1), paramAnonymousInt1);
           paramAnonymousInt1 += 1;
         }
         ShuffleView.this.removeOnLayoutChangeListener(this);
@@ -1065,20 +1083,20 @@ public class ShuffleView
   
   public void setCardListener(b paramb)
   {
-    this.ukE = paramb;
+    this.vnk = paramb;
   }
   
   public void setEnterAnimator(ValueAnimator paramValueAnimator)
   {
     AppMethodBeat.i(65149);
-    if (this.ukA != null)
+    if (this.rUt != null)
     {
-      this.ukA.removeAllListeners();
-      this.ukA.cancel();
+      this.rUt.removeAllListeners();
+      this.rUt.cancel();
     }
-    this.ukA = paramValueAnimator;
-    if (this.ukA != null) {
-      this.ukA.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.rUt = paramValueAnimator;
+    if (this.rUt != null) {
+      this.rUt.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -1095,20 +1113,20 @@ public class ShuffleView
   
   public void setEnterAnimatorListener(a parama)
   {
-    this.ukD = parama;
+    this.vnj = parama;
   }
   
   public void setExitAnimator(ValueAnimator paramValueAnimator)
   {
     AppMethodBeat.i(65148);
-    if (this.ukz != null)
+    if (this.rUu != null)
     {
-      this.ukz.removeAllListeners();
-      this.ukz.cancel();
+      this.rUu.removeAllListeners();
+      this.rUu.cancel();
     }
-    this.ukz = paramValueAnimator;
-    if (this.ukz != null) {
-      this.ukz.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.rUu = paramValueAnimator;
+    if (this.rUu != null) {
+      this.rUu.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -1125,15 +1143,15 @@ public class ShuffleView
   
   public void setExitAnimatorListener(a parama)
   {
-    this.ukC = parama;
+    this.vni = parama;
   }
   
   public void setShuffleSetting(c paramc)
   {
     AppMethodBeat.i(65135);
-    this.uky = paramc;
-    this.pmy = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(paramc.ula);
-    this.ukB = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(paramc.ulb);
+    this.vng = paramc;
+    this.pPY = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(paramc.vnG);
+    this.vnh = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(paramc.vnH);
     AppMethodBeat.o(65135);
   }
   
@@ -1144,22 +1162,22 @@ public class ShuffleView
   
   static abstract interface b
   {
-    public abstract void HH(int paramInt);
+    public abstract void Jd(int paramInt);
     
-    public abstract void gd(int paramInt1, int paramInt2);
+    public abstract void gu(int paramInt1, int paramInt2);
     
-    public abstract void ge(int paramInt1, int paramInt2);
+    public abstract void gv(int paramInt1, int paramInt2);
   }
   
   static final class c
   {
     public float scaleX = 0.01F;
     public float scaleY = 0.01F;
-    public int ukX = 1;
-    public int ukY = 1;
-    public int ukZ = 2;
-    public int ula = 200;
-    public int ulb = 80;
+    public int vnD = 1;
+    public int vnE = 1;
+    public int vnF = 2;
+    public int vnG = 200;
+    public int vnH = 80;
   }
 }
 

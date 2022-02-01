@@ -15,27 +15,26 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.fingerprint.b.a.c;
 import com.tencent.mm.plugin.fingerprint.b.a.d;
 import com.tencent.mm.plugin.fingerprint.b.a.e;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.ui.ao;
 
 public class WcPayCashierFingerprintDialog
   extends com.tencent.mm.ui.base.i
   implements LifecycleObserver
 {
-  private ImageView BKY;
-  TextView BLb;
-  ImageView BLc;
-  TextView BLd;
-  a BLe;
-  b BLf;
-  private ViewGroup lyD;
+  private ImageView Dlq;
+  TextView Dlt;
+  ImageView Dlu;
+  TextView Dlv;
+  a Dlw;
+  b Dlx;
+  private ViewGroup lYb;
   
   public WcPayCashierFingerprintDialog(Context paramContext)
   {
@@ -57,16 +56,16 @@ public class WcPayCashierFingerprintDialog
   {
     AppMethodBeat.i(71430);
     initView();
-    setContentView(this.lyD);
+    setContentView(this.lYb);
     setCanceledOnTouchOutside(false);
-    this.BLe = new a();
+    this.Dlw = new a();
     setOnCancelListener(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(71418);
         if (WcPayCashierFingerprintDialog.a(WcPayCashierFingerprintDialog.this) != null) {
-          WcPayCashierFingerprintDialog.a(WcPayCashierFingerprintDialog.this).eup();
+          WcPayCashierFingerprintDialog.a(WcPayCashierFingerprintDialog.this).eIv();
         }
         AppMethodBeat.o(71418);
       }
@@ -76,10 +75,10 @@ public class WcPayCashierFingerprintDialog
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(71419);
-        ac.i("MicroMsg.WcPayCashierFingerprintDialog", "dialog dismiss");
+        ad.i("MicroMsg.WcPayCashierFingerprintDialog", "dialog dismiss");
         if (WcPayCashierFingerprintDialog.b(WcPayCashierFingerprintDialog.this) != null)
         {
-          WcPayCashierFingerprintDialog.b(WcPayCashierFingerprintDialog.this).eus();
+          WcPayCashierFingerprintDialog.b(WcPayCashierFingerprintDialog.this).eIy();
           WcPayCashierFingerprintDialog.c(WcPayCashierFingerprintDialog.this);
         }
         WcPayCashierFingerprintDialog.d(WcPayCashierFingerprintDialog.this);
@@ -92,29 +91,33 @@ public class WcPayCashierFingerprintDialog
   private void initView()
   {
     AppMethodBeat.i(71431);
-    this.lyD = ((ViewGroup)View.inflate(getContext(), 2131496058, null));
-    this.BKY = ((ImageView)this.lyD.findViewById(2131307048));
-    this.BLb = ((TextView)this.lyD.findViewById(2131307049));
-    this.BLc = ((ImageView)this.lyD.findViewById(2131307051));
-    this.BLd = ((TextView)this.lyD.findViewById(2131307050));
-    this.BKY.setOnClickListener(new View.OnClickListener()
+    this.lYb = ((ViewGroup)View.inflate(getContext(), 2131496058, null));
+    this.Dlq = ((ImageView)this.lYb.findViewById(2131307048));
+    this.Dlt = ((TextView)this.lYb.findViewById(2131307049));
+    this.Dlu = ((ImageView)this.lYb.findViewById(2131307051));
+    this.Dlv = ((TextView)this.lYb.findViewById(2131307050));
+    this.Dlq.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71420);
-        ac.i("MicroMsg.WcPayCashierFingerprintDialog", "click back icon");
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierFingerprintDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        ad.i("MicroMsg.WcPayCashierFingerprintDialog", "click back icon");
         WcPayCashierFingerprintDialog.this.cancel();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierFingerprintDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(71420);
       }
     });
     AppMethodBeat.o(71431);
   }
   
-  public final void eur()
+  public final void eIx()
   {
     AppMethodBeat.i(71435);
-    this.BLc.setImageDrawable(am.k(getContext(), 2131690621, getContext().getResources().getColor(2131099735)));
-    this.BLd.setTextColor(getContext().getResources().getColor(2131100482));
+    this.Dlu.setImageDrawable(ao.k(getContext(), 2131690621, getContext().getResources().getColor(2131099735)));
+    this.Dlv.setTextColor(getContext().getResources().getColor(2131100482));
     AppMethodBeat.o(71435);
   }
   
@@ -122,14 +125,14 @@ public class WcPayCashierFingerprintDialog
   public void onActivityDestroy()
   {
     AppMethodBeat.i(71434);
-    ac.i("MicroMsg.WcPayCashierFingerprintDialog", "activity destroy");
-    if (this.BLe != null)
+    ad.i("MicroMsg.WcPayCashierFingerprintDialog", "activity destroy");
+    if (this.Dlw != null)
     {
-      this.BLe.eus();
-      this.BLe = null;
+      this.Dlw.eIy();
+      this.Dlw = null;
     }
-    this.BKY = null;
-    this.BLf = null;
+    this.Dlq = null;
+    this.Dlx = null;
     AppMethodBeat.o(71434);
   }
   
@@ -137,7 +140,7 @@ public class WcPayCashierFingerprintDialog
   public void onActivityPause()
   {
     AppMethodBeat.i(71433);
-    ac.i("MicroMsg.WcPayCashierFingerprintDialog", "activity paused, release and dismiss");
+    ad.i("MicroMsg.WcPayCashierFingerprintDialog", "activity paused, release and dismiss");
     cancel();
     AppMethodBeat.o(71433);
   }
@@ -146,41 +149,41 @@ public class WcPayCashierFingerprintDialog
   {
     AppMethodBeat.i(71432);
     super.onCreate(paramBundle);
-    paramBundle = this.BLe;
-    ac.i("MicroMsg.WcPayCashierFingerprintDialog", "req fingerprint auth 2");
-    com.tencent.mm.plugin.soter.d.a.dTo();
-    h.wUl.dB(1104, 38);
-    com.tencent.mm.plugin.fingerprint.b.a.i locali = (com.tencent.mm.plugin.fingerprint.b.a.i)g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class);
-    com.tencent.mm.plugin.fingerprint.b.a.f localf = new com.tencent.mm.plugin.fingerprint.b.a.f(paramBundle.skD);
-    localf.dac = paramBundle.dac;
-    locali.a(ai.getContext(), localf, new WcPayCashierFingerprintDialog.a.1(paramBundle));
+    paramBundle = this.Dlw;
+    ad.i("MicroMsg.WcPayCashierFingerprintDialog", "req fingerprint auth 2");
+    com.tencent.mm.plugin.soter.d.a.efC();
+    com.tencent.mm.plugin.report.service.g.yhR.dD(1104, 38);
+    com.tencent.mm.plugin.fingerprint.b.a.i locali = (com.tencent.mm.plugin.fingerprint.b.a.i)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class);
+    com.tencent.mm.plugin.fingerprint.b.a.f localf = new com.tencent.mm.plugin.fingerprint.b.a.f(paramBundle.thf);
+    localf.dlu = paramBundle.dlu;
+    locali.a(aj.getContext(), localf, new WcPayCashierFingerprintDialog.a.1(paramBundle));
     AppMethodBeat.o(71432);
   }
   
   final class a
   {
-    int BIm;
-    com.tencent.mm.plugin.fingerprint.b.a.i BLh;
-    public String dac;
-    com.tencent.mm.plugin.fingerprint.d.a sjO;
-    public String skD;
+    int DiE;
+    com.tencent.mm.plugin.fingerprint.b.a.i Dlz;
+    public String dlu;
+    com.tencent.mm.plugin.fingerprint.d.a tgq;
+    public String thf;
     
     a()
     {
       AppMethodBeat.i(71426);
-      this.sjO = ((com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class));
-      this.BLh = ((com.tencent.mm.plugin.fingerprint.b.a.i)g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class));
+      this.tgq = ((com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.d.a.class));
+      this.Dlz = ((com.tencent.mm.plugin.fingerprint.b.a.i)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class));
       AppMethodBeat.o(71426);
     }
     
-    public final void eus()
+    public final void eIy()
     {
       AppMethodBeat.i(71427);
-      ac.i("MicroMsg.WcPayCashierFingerprintDialog", "release fingerprint");
-      this.BLh.cancel();
-      com.tencent.soter.a.g.f.fDM().fDN();
-      this.sjO = null;
-      this.BLh = null;
+      ad.i("MicroMsg.WcPayCashierFingerprintDialog", "release fingerprint");
+      this.Dlz.cancel();
+      com.tencent.soter.a.g.f.fVe().fVf();
+      this.tgq = null;
+      this.Dlz = null;
       AppMethodBeat.o(71427);
     }
   }
@@ -189,16 +192,16 @@ public class WcPayCashierFingerprintDialog
   {
     public abstract void a(e parame);
     
-    public abstract void eup();
+    public abstract void eIv();
     
-    public abstract void euq();
+    public abstract void eIw();
     
-    public abstract void tQ(boolean paramBoolean);
+    public abstract void uA(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.cashier.WcPayCashierFingerprintDialog
  * JD-Core Version:    0.7.0.1
  */

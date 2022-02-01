@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.multitalk.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aj;
+import com.tencent.mm.model.ak;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.multitalk.ui.widget.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.contact.n;
 import com.tencent.mm.ui.contact.q;
 import java.util.ArrayList;
@@ -18,24 +18,24 @@ public final class a
   extends q
 {
   private String chatroomName;
-  private List<String> iCx;
+  private List<String> iVH;
   
   public a(n paramn, String paramString)
   {
     super(paramn, null, true, true);
     AppMethodBeat.i(114707);
     this.chatroomName = paramString;
-    WN();
+    Zh();
     AppMethodBeat.o(114707);
   }
   
-  public final void WN()
+  public final void Zh()
   {
     AppMethodBeat.i(114708);
-    ac.i("MicroMsg.multitalk.MultiTalkSelectInitAdapter", "resetData");
-    this.iCx = ((c)g.ab(c.class)).awK().xR(this.chatroomName);
-    if (this.iCx == null) {
-      this.iCx = new ArrayList();
+    ad.i("MicroMsg.multitalk.MultiTalkSelectInitAdapter", "resetData");
+    this.iVH = ((c)g.ab(c.class)).azz().AR(this.chatroomName);
+    if (this.iVH == null) {
+      this.iVH = new ArrayList();
     }
     AppMethodBeat.o(114708);
   }
@@ -43,19 +43,19 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(114710);
-    int i = this.iCx.size();
+    int i = this.iVH.size();
     AppMethodBeat.o(114710);
     return i;
   }
   
-  public final com.tencent.mm.ui.contact.a.a qH(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a rh(int paramInt)
   {
     AppMethodBeat.i(114709);
-    Object localObject = (String)this.iCx.get(paramInt);
-    localObject = ((k)g.ab(k.class)).awB().aNt((String)localObject);
+    Object localObject = (String)this.iVH.get(paramInt);
+    localObject = ((l)g.ab(l.class)).azp().Bf((String)localObject);
     e locale = new e(paramInt);
-    locale.contact = ((ai)localObject);
-    locale.Iwh = dFi();
+    locale.contact = ((am)localObject);
+    locale.KmP = dQK();
     AppMethodBeat.o(114709);
     return locale;
   }

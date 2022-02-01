@@ -4,15 +4,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelappbrand.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.bo;
-import d.l;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bu;
+import d.g.b.p;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class AppBrandVideoPreviewUI$a
   implements View.OnClickListener
 {
@@ -21,30 +21,34 @@ final class AppBrandVideoPreviewUI$a
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(51155);
-    ac.i(this.mfL.TAG, "hy: request start to appid " + AppBrandVideoPreviewUI.c(this.mfL));
-    paramView = g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-    d.g.b.k.g(paramView, "MMKernel.service(IMessengerStorage::class.java)");
-    paramView = ((com.tencent.mm.plugin.messenger.foundation.a.k)paramView).dcr();
-    Object localObject = AppBrandVideoPreviewUI.b(this.mfL);
+    Object localObject = new b();
+    ((b)localObject).bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandVideoPreviewUI$initVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    ad.i(this.mGm.TAG, "hy: request start to appid " + AppBrandVideoPreviewUI.c(this.mGm));
+    paramView = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+    p.g(paramView, "MMKernel.service(IMessengerStorage::class.java)");
+    paramView = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramView).dlK();
+    localObject = AppBrandVideoPreviewUI.b(this.mGm);
     if (localObject == null) {
-      d.g.b.k.fOy();
+      p.gfZ();
     }
-    paramView = paramView.vP(((Long)localObject).longValue());
+    paramView = paramView.xY(((Long)localObject).longValue());
     localObject = new Bundle();
     ((Bundle)localObject).putInt("stat_scene", 11);
-    ((Bundle)localObject).putString("stat_msg_id", "msg_" + Long.toString(paramView.TA()));
-    ((Bundle)localObject).putString("stat_chat_talker_username", AppBrandVideoPreviewUI.a(this.mfL));
-    ((Bundle)localObject).putString("stat_send_msg_user", AppBrandVideoPreviewUI.d(this.mfL));
-    String str = AppBrandVideoPreviewUI.a(this.mfL);
+    ((Bundle)localObject).putString("stat_msg_id", "msg_" + Long.toString(paramView.VQ()));
+    ((Bundle)localObject).putString("stat_chat_talker_username", AppBrandVideoPreviewUI.a(this.mGm));
+    ((Bundle)localObject).putString("stat_send_msg_user", AppBrandVideoPreviewUI.d(this.mGm));
+    String str = AppBrandVideoPreviewUI.a(this.mGm);
     if (str == null) {
-      d.g.b.k.fOy();
+      p.gfZ();
     }
-    if (AppBrandVideoPreviewUI.d(this.mfL) == null) {
-      d.g.b.k.fOy();
+    if (AppBrandVideoPreviewUI.d(this.mGm) == null) {
+      p.gfZ();
     }
-    a.a(str, 1136, k.b.vA(paramView.getContent()), (Bundle)localObject);
-    AppBrandVideoPreviewUI.a(this.mfL, 5);
-    this.mfL.finish();
+    com.tencent.mm.modelappbrand.a.a(str, 1136, k.b.yr(paramView.getContent()), (Bundle)localObject);
+    AppBrandVideoPreviewUI.a(this.mGm, 5);
+    this.mGm.finish();
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandVideoPreviewUI$initVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(51155);
   }
 }

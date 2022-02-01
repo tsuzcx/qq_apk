@@ -16,7 +16,7 @@
         <View android:layout_width="fill_parent" style="@style/hp" />
         <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/o" android:layout_marginBottom="@dimen/o">
             <TextView android:textSize="@dimen/jo" android:textColor="@color/to" android:layout_gravity="center_vertical" android:id="@id/fhs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/ok" />
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/biz_item_more_icon" app:iconColor="?i" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/biz_item_more_icon" app:iconColor="@color/FG_0" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

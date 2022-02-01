@@ -3,25 +3,25 @@ package com.tencent.mm.plugin.messenger;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.messenger.a.b;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.am;
 
 public final class a
   implements b
 {
-  public final String b(ai paramai)
+  public final String b(am paramam)
   {
     AppMethodBeat.i(90704);
-    paramai = v.b(paramai);
+    paramam = v.b(paramam);
     AppMethodBeat.o(90704);
-    return paramai;
+    return paramam;
   }
   
-  public final String b(ai paramai, String paramString)
+  public final String b(am paramam, String paramString)
   {
     AppMethodBeat.i(90702);
-    paramai = v.b(paramai, paramString);
+    paramam = v.b(paramam, paramString);
     AppMethodBeat.o(90702);
-    return paramai;
+    return paramam;
   }
   
   public final String getDisplayName(String paramString1, String paramString2)
@@ -32,26 +32,26 @@ public final class a
     return paramString1;
   }
   
-  public final String wj(String paramString)
+  public final String ze(String paramString)
   {
     AppMethodBeat.i(90703);
-    paramString = v.wj(paramString);
+    paramString = v.ze(paramString);
     AppMethodBeat.o(90703);
     return paramString;
   }
   
-  public final String wk(String paramString)
+  public final String zf(String paramString)
   {
     AppMethodBeat.i(90701);
-    paramString = v.wk(paramString);
+    paramString = v.zf(paramString);
     AppMethodBeat.o(90701);
     return paramString;
   }
   
-  public final String wm(String paramString)
+  public final String zh(String paramString)
   {
     AppMethodBeat.i(168685);
-    paramString = v.wm(paramString);
+    paramString = v.zh(paramString);
     AppMethodBeat.o(168685);
     return paramString;
   }

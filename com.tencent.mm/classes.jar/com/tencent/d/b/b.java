@@ -9,11 +9,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private int JRE;
-  private int JRF;
-  private String JRG;
-  private com.tencent.d.c.a.c JRH;
-  private com.tencent.d.c.a.a JRI;
+  private com.tencent.d.c.a.a LLA;
+  private int LLw;
+  private int LLx;
+  private String LLy;
+  private com.tencent.d.c.a.c LLz;
   private String mChannelId;
   private Context mContext;
   private String mVersionName;
@@ -22,24 +22,24 @@ public final class b
   {
     AppMethodBeat.i(138313);
     this.mContext = null;
-    this.JRE = -1;
-    this.JRF = -1;
+    this.LLw = -1;
+    this.LLx = -1;
     this.mVersionName = null;
     this.mChannelId = null;
-    this.JRG = null;
-    this.JRH = null;
-    this.JRI = null;
+    this.LLy = null;
+    this.LLz = null;
+    this.LLA = null;
     this.mContext = paramContext;
-    paramContext = com.tencent.d.f.a.ct(paramContext, paramContext.getPackageName());
+    paramContext = com.tencent.d.f.a.cy(paramContext, paramContext.getPackageName());
     this.mVersionName = paramContext.versionName;
-    this.JRF = paramContext.versionCode;
-    this.JRE = 82;
+    this.LLx = paramContext.versionCode;
+    this.LLw = 82;
     this.mChannelId = "105901";
-    this.JRG = "7AD75E27CD5842F6";
+    this.LLy = "7AD75E27CD5842F6";
     AppMethodBeat.o(138313);
   }
   
-  private static String aTg(String paramString)
+  private static String aZg(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -48,17 +48,17 @@ public final class b
     return str;
   }
   
-  private com.tencent.d.c.a.c fCt()
+  private com.tencent.d.c.a.c fTJ()
   {
     int m = 2;
     AppMethodBeat.i(138315);
-    if (this.JRH == null)
+    if (this.LLz == null)
     {
-      this.JRH = new com.tencent.d.c.a.c();
-      this.JRH.JRS = this.JRE;
-      this.JRH.JRX = this.JRF;
-      this.JRH.JRP = this.mChannelId;
-      this.JRH.JRO = this.JRG;
+      this.LLz = new com.tencent.d.c.a.c();
+      this.LLz.LLJ = this.LLw;
+      this.LLz.LLO = this.LLx;
+      this.LLz.LLH = this.mChannelId;
+      this.LLz.LLG = this.LLy;
     }
     try
     {
@@ -81,26 +81,26 @@ public final class b
         int k = 0;
       }
     }
-    this.JRH.JRT = new com.tencent.d.c.a.b();
-    this.JRH.JRT.JRL = k;
-    this.JRH.JRT.JRM = j;
-    this.JRH.JRT.JRN = i;
-    this.JRH.JRU = 0;
-    this.JRH.JRW = d.getSDKVersion();
-    this.JRH.imei = aTg(d.getIMEI(this.mContext));
-    this.JRH.imsi = aTg(d.kJ(this.mContext));
-    this.JRH.JRQ = aTg(Build.MODEL);
-    this.JRH.yeO = aTg(d.kK(this.mContext));
-    this.JRH.JSc = aTg(d.yD(true));
-    this.JRH.JSd = aTg(d.yD(false));
-    this.JRH.guid = null;
-    this.JRH.JRV = 0;
-    localObject = this.JRH;
-    if (d.kL(this.mContext) == d.a.JUG) {}
+    this.LLz.LLK = new com.tencent.d.c.a.b();
+    this.LLz.LLK.LLD = k;
+    this.LLz.LLK.LLE = j;
+    this.LLz.LLK.LLF = i;
+    this.LLz.LLL = 0;
+    this.LLz.LLN = d.getSDKVersion();
+    this.LLz.imei = aZg(d.getIMEI(this.mContext));
+    this.LLz.imsi = aZg(d.kW(this.mContext));
+    this.LLz.FtF = aZg(Build.MODEL);
+    this.LLz.zuP = aZg(d.kX(this.mContext));
+    this.LLz.LLT = aZg(d.zq(true));
+    this.LLz.LLU = aZg(d.zq(false));
+    this.LLz.guid = null;
+    this.LLz.LLM = 0;
+    localObject = this.LLz;
+    if (d.kY(this.mContext) == d.a.LOz) {}
     for (i = m;; i = 1)
     {
-      ((com.tencent.d.c.a.c)localObject).JRR = i;
-      localObject = this.JRH;
+      ((com.tencent.d.c.a.c)localObject).LLI = i;
+      localObject = this.LLz;
       AppMethodBeat.o(138315);
       return localObject;
     }
@@ -113,20 +113,20 @@ public final class b
     try
     {
       l locall = new l();
-      locall.fCQ();
-      locall.aTp("viruscheck");
-      locall.aTq("RiskCheck");
-      locall.aTo("UTF-8");
-      if (this.JRI == null)
+      locall.fUi();
+      locall.aZp("viruscheck");
+      locall.aZq("RiskCheck");
+      locall.aZo("UTF-8");
+      if (this.LLA == null)
       {
-        this.JRI = new com.tencent.d.c.a.a();
-        this.JRI.JRJ = 2;
-        this.JRI.JRK = 201;
+        this.LLA = new com.tencent.d.c.a.a();
+        this.LLA.LLB = 2;
+        this.LLA.LLC = 201;
       }
-      locall.put("phonetype", this.JRI);
-      locall.put("userinfo", fCt());
+      locall.put("phonetype", this.LLA);
+      locall.put("userinfo", fTJ());
       locall.put("req", parama);
-      parama = com.tencent.d.f.b.compress(locall.JT());
+      parama = com.tencent.d.f.b.compress(locall.Ls());
       if (parama == null)
       {
         parama = new RuntimeException("compress data fail");
@@ -142,7 +142,7 @@ public final class b
     {
       AppMethodBeat.o(138314);
       return parama;
-      parama = com.tencent.d.f.c.n(parama, com.tencent.d.f.c.fCL());
+      parama = com.tencent.d.f.c.n(parama, com.tencent.d.f.c.fUd());
     }
   }
 }

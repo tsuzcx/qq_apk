@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.e;
 import com.tencent.mm.plugin.fts.a.a.m;
@@ -13,30 +13,30 @@ import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.ui.b.c;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bp;
 
 public final class o
   extends f
 {
-  private a sEV;
+  private a tBN;
   
   public o(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112108);
-    this.sEV = new a();
+    this.tBN = new a();
     AppMethodBeat.o(112108);
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112109);
-    String str = this.sEg.sxG;
+    String str = this.tAX.tuh;
     boolean bool2;
     boolean bool1;
-    switch (this.sEg.sxF)
+    switch (this.tAX.tug)
     {
     case 4: 
     default: 
@@ -47,17 +47,17 @@ public final class o
     case 3: 
       for (;;)
       {
-        this.sEd = str;
-        if (bs.isNullOrNil(paramVarArgs)) {
+        this.tAU = str;
+        if (bt.isNullOrNil(paramVarArgs)) {
           break;
         }
-        this.sEc = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.sEg.sxM, bool2, bool1, b.c.sBD, paramVarArgs + "(", ")")).syd;
-        this.sEc = TextUtils.concat(new CharSequence[] { "\"", this.sEc, paramContext.getString(2131762968) });
+        this.tAT = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tAX.tun, bool2, bool1, b.c.tye, paramVarArgs + "(", ")")).tuE;
+        this.tAT = TextUtils.concat(new CharSequence[] { "\"", this.tAT, paramContext.getString(2131762968) });
         AppMethodBeat.o(112109);
         return;
         bool1 = true;
         bool2 = true;
-        parama = d.acr(str);
+        parama = d.agg(str);
         paramVarArgs = null;
       }
     case 7: 
@@ -70,10 +70,10 @@ public final class o
     }
     for (;;)
     {
-      parama = ((k)g.ab(k.class)).awB().aNt(str).field_nickname;
-      paramVarArgs = d.acr(str);
+      parama = ((l)g.ab(l.class)).azp().Bf(str).field_nickname;
+      paramVarArgs = d.agg(str);
       break;
-      this.sEc = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.sEg.sxM, bool2, bool1, 400.0F, b.c.sBD)).syd;
+      this.tAT = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.tAX.tun, bool2, bool1, 400.0F, b.c.tye)).tuE;
       break label136;
       bool1 = false;
       break label177;
@@ -87,9 +87,9 @@ public final class o
     }
   }
   
-  public final a.b adW()
+  public final a.b agC()
   {
-    return this.sEV;
+    return this.tBN;
   }
   
   public final class a
@@ -104,14 +104,14 @@ public final class o
     {
       AppMethodBeat.i(112107);
       super.a(paramContext, parama, parama1, paramVarArgs);
-      ((f.b)parama).sEo.setVisibility(8);
+      ((f.b)parama).tBf.setVisibility(8);
       AppMethodBeat.o(112107);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.o
  * JD-Core Version:    0.7.0.1
  */

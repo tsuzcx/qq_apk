@@ -1,29 +1,29 @@
 package d.l;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/reflect/KTypeProjection;", "", "variance", "Lkotlin/reflect/KVariance;", "type", "Lkotlin/reflect/KType;", "(Lkotlin/reflect/KVariance;Lkotlin/reflect/KType;)V", "getType", "()Lkotlin/reflect/KType;", "getVariance", "()Lkotlin/reflect/KVariance;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "Companion", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/reflect/KTypeProjection;", "", "variance", "Lkotlin/reflect/KVariance;", "type", "Lkotlin/reflect/KType;", "(Lkotlin/reflect/KVariance;Lkotlin/reflect/KType;)V", "getType", "()Lkotlin/reflect/KType;", "getVariance", "()Lkotlin/reflect/KVariance;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "Companion", "kotlin-stdlib"})
 public final class q
 {
-  private static final q KVv;
-  public static final a KVw;
-  private final r KVt;
-  private final o KVu;
+  private static final q MMB;
+  public static final a MMC;
+  private final o MMA;
+  private final r MMz;
   
   static
   {
     AppMethodBeat.i(129547);
-    KVw = new a((byte)0);
-    KVv = new q(null, null);
+    MMC = new a((byte)0);
+    MMB = new q(null, null);
     AppMethodBeat.o(129547);
   }
   
   public q(r paramr, o paramo)
   {
-    this.KVt = paramr;
-    this.KVu = paramo;
+    this.MMz = paramr;
+    this.MMA = paramo;
   }
   
   public final boolean equals(Object paramObject)
@@ -34,7 +34,7 @@ public final class q
       if ((paramObject instanceof q))
       {
         paramObject = (q)paramObject;
-        if ((!k.g(this.KVt, paramObject.KVt)) || (!k.g(this.KVu, paramObject.KVu))) {}
+        if ((!p.i(this.MMz, paramObject.MMz)) || (!p.i(this.MMA, paramObject.MMA))) {}
       }
     }
     else
@@ -50,11 +50,11 @@ public final class q
   {
     int j = 0;
     AppMethodBeat.i(129549);
-    Object localObject = this.KVt;
+    Object localObject = this.MMz;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.KVu;
+      localObject = this.MMA;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -66,12 +66,12 @@ public final class q
   public final String toString()
   {
     AppMethodBeat.i(129548);
-    String str = "KTypeProjection(variance=" + this.KVt + ", type=" + this.KVu + ")";
+    String str = "KTypeProjection(variance=" + this.MMz + ", type=" + this.MMA + ")";
     AppMethodBeat.o(129548);
     return str;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/reflect/KTypeProjection$Companion;", "", "()V", "STAR", "Lkotlin/reflect/KTypeProjection;", "getSTAR", "()Lkotlin/reflect/KTypeProjection;", "contravariant", "type", "Lkotlin/reflect/KType;", "covariant", "invariant", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/reflect/KTypeProjection$Companion;", "", "()V", "STAR", "Lkotlin/reflect/KTypeProjection;", "getSTAR", "()Lkotlin/reflect/KTypeProjection;", "contravariant", "type", "Lkotlin/reflect/KType;", "covariant", "invariant", "kotlin-stdlib"})
   public static final class a {}
 }
 

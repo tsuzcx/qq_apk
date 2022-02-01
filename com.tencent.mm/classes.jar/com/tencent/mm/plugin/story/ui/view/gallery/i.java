@@ -5,23 +5,23 @@ import android.support.v7.widget.aj;
 import android.support.v7.widget.ak;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper;", "Landroid/support/v7/widget/PagerSnapHelper;", "()V", "horizontalHelper", "Landroid/support/v7/widget/OrientationHelper;", "verticalHelper", "calculateDistanceToFinalSnap", "", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "targetView", "Landroid/view/View;", "distanceToCenter", "", "helper", "getHorizontalHelper", "getVerticalHelper", "Companion", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper;", "Landroid/support/v7/widget/PagerSnapHelper;", "()V", "horizontalHelper", "Landroid/support/v7/widget/OrientationHelper;", "verticalHelper", "calculateDistanceToFinalSnap", "", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "targetView", "Landroid/view/View;", "distanceToCenter", "", "helper", "getHorizontalHelper", "getVerticalHelper", "Companion", "plugin-story_release"})
 public final class i
   extends ak
 {
+  public static final i.a BdJ;
   private static final String TAG = "MicroMsg.PageScrollHelper";
-  public static final i.a zMi;
-  private aj zMg;
-  private aj zMh;
+  private aj BdH;
+  private aj BdI;
   
   static
   {
     AppMethodBeat.i(120396);
-    zMi = new i.a((byte)0);
+    BdJ = new i.a((byte)0);
     TAG = "MicroMsg.PageScrollHelper";
     AppMethodBeat.o(120396);
   }
@@ -31,7 +31,7 @@ public final class i
     AppMethodBeat.i(120395);
     int j;
     int k;
-    if (parami.jM())
+    if (parami.kc())
     {
       i = RecyclerView.i.bM(paramView) + RecyclerView.i.bN(paramView);
       j = paramaj.bn(paramView);
@@ -41,7 +41,7 @@ public final class i
       }
     }
     label85:
-    for (int i = paramaj.kl() + paramaj.kn() / 2;; i = paramaj.getEnd() / 2)
+    for (int i = paramaj.kB() + paramaj.kD() / 2;; i = paramaj.getEnd() / 2)
     {
       AppMethodBeat.o(120395);
       return j + k - i;
@@ -54,16 +54,16 @@ public final class i
   {
     Object localObject2 = null;
     AppMethodBeat.i(120394);
-    k.h(parami, "layoutManager");
-    k.h(paramView, "targetView");
-    ac.i(TAG, "LogStory: calculateDistanceToFinalSnap " + RecyclerView.i.bB(paramView));
+    p.h(parami, "layoutManager");
+    p.h(paramView, "targetView");
+    ad.i(TAG, "LogStory: calculateDistanceToFinalSnap " + RecyclerView.i.bB(paramView));
     int[] arrayOfInt = new int[2];
     Object localObject1;
-    if (parami.jM())
+    if (parami.kc())
     {
-      if (this.zMh != null)
+      if (this.BdI != null)
       {
-        localObject1 = this.zMh;
+        localObject1 = this.BdI;
         if (localObject1 == null) {
           break label190;
         }
@@ -72,20 +72,20 @@ public final class i
       }
       else
       {
-        this.zMh = aj.d(parami);
+        this.BdI = aj.d(parami);
       }
-      localObject1 = this.zMh;
+      localObject1 = this.BdI;
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       arrayOfInt[0] = a(parami, paramView, (aj)localObject1);
       label113:
-      if (!parami.jN()) {
+      if (!parami.kd()) {
         break label203;
       }
-      if (this.zMg != null)
+      if (this.BdH != null)
       {
-        aj localaj = this.zMg;
+        aj localaj = this.BdH;
         localObject1 = localObject2;
         if (localaj != null) {
           localObject1 = localaj.getLayoutManager();
@@ -94,11 +94,11 @@ public final class i
       }
       else
       {
-        this.zMg = aj.e(parami);
+        this.BdH = aj.e(parami);
       }
-      localObject1 = this.zMg;
+      localObject1 = this.BdH;
       if (localObject1 == null) {
-        k.fOy();
+        p.gfZ();
       }
       arrayOfInt[1] = a(parami, paramView, (aj)localObject1);
     }

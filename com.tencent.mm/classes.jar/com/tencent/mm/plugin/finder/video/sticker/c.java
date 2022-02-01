@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.finder.video.sticker;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerDataCallback;", "", "onHistory", "", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "onMore", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerDataCallback;", "", "onHistory", "", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "onMore", "plugin-finder_release"})
 public abstract interface c
 {
   public abstract void cT(List<com.tencent.mm.sticker.c> paramList);
   
-  public abstract void dD(List<com.tencent.mm.sticker.c> paramList);
+  public abstract void dM(List<com.tencent.mm.sticker.c> paramList);
 }
 
 

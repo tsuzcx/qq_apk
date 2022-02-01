@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.network;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.TMOpenSDKAuthorizedInfo;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.data.ActionButton;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.data.AuthorizedResult;
@@ -105,7 +105,7 @@ public class GetAuthorizedHttpRequest
       catch (JSONException paramJSONObject)
       {
         this.mGetAuthorizedListener.onGetAuthorizedRequestFinished(null, 704);
-        ac.printErrStackTrace("GetAuthorizedHttpRequest", paramJSONObject, "", new Object[0]);
+        ad.printErrStackTrace("GetAuthorizedHttpRequest", paramJSONObject, "", new Object[0]);
         AppMethodBeat.o(102078);
         return;
       }

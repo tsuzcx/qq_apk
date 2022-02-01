@@ -7,79 +7,79 @@ import com.google.b.a.e;
 public final class a$bc
   extends e
 {
-  private static volatile bc[] JPx;
-  public int JPA = 0;
-  public int JPy = 0;
-  public int JPz = 0;
-  public int oxC = 0;
+  private static volatile bc[] LJj;
+  public int LJk = 0;
+  public int LJl = 0;
+  public int LJm = 0;
+  public int paX = 0;
   public int rtt = 0;
   
   public a$bc()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
-  public static bc[] fBS()
+  public static bc[] fTh()
   {
-    if (JPx == null) {}
-    synchronized (c.bGz)
+    if (LJj == null) {}
+    synchronized (c.bQN)
     {
-      if (JPx == null) {
-        JPx = new bc[0];
+      if (LJj == null) {
+        LJj = new bc[0];
       }
-      return JPx;
+      return LJj;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.oxC != 0) {
-      paramb.bv(1, this.oxC);
+    if (this.paX != 0) {
+      paramb.bx(1, this.paX);
     }
     if (this.rtt != 0) {
-      paramb.bv(2, this.rtt);
+      paramb.bx(2, this.rtt);
     }
-    if (this.JPy != 0) {
-      paramb.bv(3, this.JPy);
+    if (this.LJk != 0) {
+      paramb.bx(3, this.LJk);
     }
-    if (this.JPz != 0) {
-      paramb.bv(4, this.JPz);
+    if (this.LJl != 0) {
+      paramb.bx(4, this.LJl);
     }
-    if (this.JPA != 0) {
-      paramb.bv(5, this.JPA);
+    if (this.LJm != 0) {
+      paramb.bx(5, this.LJm);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.oxC != 0) {
-      i = j + b.bx(1, this.oxC);
+    if (this.paX != 0) {
+      i = j + b.bz(1, this.paX);
     }
     j = i;
     if (this.rtt != 0) {
-      j = i + b.bx(2, this.rtt);
+      j = i + b.bz(2, this.rtt);
     }
     i = j;
-    if (this.JPy != 0) {
-      i = j + b.bx(3, this.JPy);
+    if (this.LJk != 0) {
+      i = j + b.bz(3, this.LJk);
     }
     j = i;
-    if (this.JPz != 0) {
-      j = i + b.bx(4, this.JPz);
+    if (this.LJl != 0) {
+      j = i + b.bz(4, this.LJl);
     }
     i = j;
-    if (this.JPA != 0) {
-      i = j + b.bx(5, this.JPA);
+    if (this.LJm != 0) {
+      i = j + b.bz(5, this.LJm);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.bc
  * JD-Core Version:    0.7.0.1
  */

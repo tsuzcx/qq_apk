@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.bucket.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.bn;
+import com.tencent.mm.storage.bt;
 import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
@@ -11,16 +11,16 @@ import java.util.HashMap;
 public final class a
   implements com.tencent.mm.kernel.api.bucket.a, d, com.tencent.mm.plugin.n.a.a
 {
-  private bn uFq;
+  private bt vIq;
   
-  public final bn awI()
+  public final bt azx()
   {
     AppMethodBeat.i(151497);
-    g.agS();
-    g.agP().afT();
-    bn localbn = this.uFq;
+    g.ajD();
+    g.ajA().aiF();
+    bt localbt = this.vIq;
     AppMethodBeat.o(151497);
-    return localbn;
+    return localbt;
   }
   
   public final HashMap<Integer, h.b> collectDatabaseFactory()
@@ -31,7 +31,7 @@ public final class a
     {
       public final String[] getSQLs()
       {
-        return bn.SQL_CREATE;
+        return bt.SQL_CREATE;
       }
     });
     AppMethodBeat.o(151499);
@@ -43,7 +43,7 @@ public final class a
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(151498);
-    this.uFq = new bn(paramh1);
+    this.vIq = new bt(paramh1);
     AppMethodBeat.o(151498);
   }
 }

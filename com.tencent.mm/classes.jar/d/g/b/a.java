@@ -5,23 +5,23 @@ import d.l;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/jvm/internal/ArrayIterator;", "T", "", "array", "", "([Ljava/lang/Object;)V", "getArray", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "index", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/jvm/internal/ArrayIterator;", "T", "", "array", "", "([Ljava/lang/Object;)V", "getArray", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "index", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
 final class a<T>
   implements d.g.b.a.a, Iterator<T>
 {
-  private final T[] KUx;
+  private final T[] MLw;
   private int index;
   
   public a(T[] paramArrayOfT)
   {
     AppMethodBeat.i(129329);
-    this.KUx = paramArrayOfT;
+    this.MLw = paramArrayOfT;
     AppMethodBeat.o(129329);
   }
   
   public final boolean hasNext()
   {
-    return this.index < this.KUx.length;
+    return this.index < this.MLw.length;
   }
   
   public final T next()
@@ -29,7 +29,7 @@ final class a<T>
     AppMethodBeat.i(129328);
     try
     {
-      Object localObject = this.KUx;
+      Object localObject = this.MLw;
       int i = this.index;
       this.index = (i + 1);
       localObject = localObject[i];

@@ -2,39 +2,14 @@ package com.tencent.mm.plugin.downloader_app.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  public static c bYz()
-  {
-    AppMethodBeat.i(8962);
-    if (g.agP().afY())
-    {
-      g.agP();
-      if (!com.tencent.mm.kernel.a.afS()) {}
-    }
-    else
-    {
-      ac.e("MicroMsg.DownloadTaskItemDbHelp", "no user login");
-      AppMethodBeat.o(8962);
-      return null;
-    }
-    if (g.ab(com.tencent.mm.plugin.downloader.a.d.class) == null)
-    {
-      ac.e("MicroMsg.DownloadTaskItemDbHelp", "service not ready");
-      AppMethodBeat.o(8962);
-      return null;
-    }
-    c localc = ((com.tencent.mm.plugin.downloader_app.api.d)g.ab(com.tencent.mm.plugin.downloader_app.api.d.class)).bYf();
-    AppMethodBeat.o(8962);
-    return localc;
-  }
-  
-  public static boolean cL(String paramString, int paramInt)
+  public static boolean cO(String paramString, int paramInt)
   {
     AppMethodBeat.i(8963);
-    if (bYz() == null)
+    if (cdd() == null)
     {
       AppMethodBeat.o(8963);
       return false;
@@ -43,9 +18,34 @@ public final class b
     locala.field_appId = paramString;
     locala.field_status = paramInt;
     locala.field_modifyTime = System.currentTimeMillis();
-    boolean bool = bYz().a(locala);
+    boolean bool = cdd().a(locala);
     AppMethodBeat.o(8963);
     return bool;
+  }
+  
+  public static c cdd()
+  {
+    AppMethodBeat.i(8962);
+    if (g.ajA().aiK())
+    {
+      g.ajA();
+      if (!com.tencent.mm.kernel.a.aiE()) {}
+    }
+    else
+    {
+      ad.e("MicroMsg.DownloadTaskItemDbHelp", "no user login");
+      AppMethodBeat.o(8962);
+      return null;
+    }
+    if (g.ab(com.tencent.mm.plugin.downloader.a.d.class) == null)
+    {
+      ad.e("MicroMsg.DownloadTaskItemDbHelp", "service not ready");
+      AppMethodBeat.o(8962);
+      return null;
+    }
+    c localc = ((com.tencent.mm.plugin.downloader_app.api.d)g.ab(com.tencent.mm.plugin.downloader_app.api.d.class)).ccJ();
+    AppMethodBeat.o(8962);
+    return localc;
   }
 }
 

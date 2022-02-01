@@ -3,14 +3,16 @@ package com.tencent.mm.plugin.card.b;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelgeo.d;
 import com.tencent.mm.plugin.card.model.v;
-import com.tencent.mm.protocal.protobuf.rr;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.protocal.protobuf.tl;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,25 +22,25 @@ import java.util.Map;
 import java.util.Set;
 
 public final class m
-  implements com.tencent.mm.ak.g, b.a
+  implements f, b.a
 {
-  private ao handler;
-  public Map<String, Set<a>> nUl;
-  public HashMap<String, String> nUm;
-  private String nUn;
-  public v nUo;
+  private ap handler;
+  public Map<String, Set<a>> oxG;
+  public HashMap<String, String> oxH;
+  private String oxI;
+  public v oxJ;
   
   public m()
   {
     AppMethodBeat.i(112704);
-    this.nUl = new HashMap();
-    this.nUm = new HashMap();
-    com.tencent.mm.kernel.g.agQ().ghe.a(1058, this);
-    this.handler = new ao(Looper.getMainLooper());
+    this.oxG = new HashMap();
+    this.oxH = new HashMap();
+    g.ajB().gAO.a(1058, this);
+    this.handler = new ap(Looper.getMainLooper());
     AppMethodBeat.o(112704);
   }
   
-  private void a(final String paramString, final boolean paramBoolean, final ArrayList<rr> paramArrayList)
+  private void a(final String paramString, final boolean paramBoolean, final ArrayList<tl> paramArrayList)
   {
     AppMethodBeat.i(112706);
     this.handler.post(new Runnable()
@@ -46,9 +48,9 @@ public final class m
       public final void run()
       {
         AppMethodBeat.i(112703);
-        synchronized (m.this.nUl)
+        synchronized (m.this.oxG)
         {
-          Object localObject2 = (Set)m.this.nUl.get(paramString);
+          Object localObject2 = (Set)m.this.oxG.get(paramString);
           if ((localObject2 != null) && (((Set)localObject2).size() > 0))
           {
             ??? = new HashSet();
@@ -75,15 +77,15 @@ public final class m
     try
     {
       label45:
-      synchronized (this.nUl)
+      synchronized (this.oxG)
       {
-        if (this.nUl.get(paramString) != null) {
-          ((Set)this.nUl.get(paramString)).remove(???);
+        if (this.oxG.get(paramString) != null) {
+          ((Set)this.oxG.get(paramString)).remove(???);
         }
       }
-      synchronized (this.nUm)
+      synchronized (this.oxH)
       {
-        this.nUm.remove(paramString);
+        this.oxH.remove(paramString);
         AppMethodBeat.o(112705);
         return;
         paramString = finally;
@@ -100,33 +102,33 @@ public final class m
   public final boolean a(String paramString1, String paramString2, a arg3)
   {
     AppMethodBeat.i(112707);
-    ac.d("MicroMsg.CardShopLBSManager", "getShopList, cardTpId = %s, card_id = %s", new Object[] { paramString1, paramString2 });
-    this.nUn = paramString1;
-    synchronized (this.nUl)
+    ad.d("MicroMsg.CardShopLBSManager", "getShopList, cardTpId = %s, card_id = %s", new Object[] { paramString1, paramString2 });
+    this.oxI = paramString1;
+    synchronized (this.oxG)
     {
-      if (!this.nUl.containsKey(paramString1)) {
-        this.nUl.put(paramString1, new HashSet());
+      if (!this.oxG.containsKey(paramString1)) {
+        this.oxG.put(paramString1, new HashSet());
       }
-      if (!((Set)this.nUl.get(paramString1)).contains(???)) {
-        ((Set)this.nUl.get(paramString1)).add(???);
+      if (!((Set)this.oxG.get(paramString1)).contains(???)) {
+        ((Set)this.oxG.get(paramString1)).add(???);
       }
     }
     for (;;)
     {
-      synchronized (this.nUm)
+      synchronized (this.oxH)
       {
         if (!TextUtils.isEmpty(paramString2)) {
-          this.nUm.put(paramString1, paramString2);
+          this.oxH.put(paramString1, paramString2);
         }
-        paramString1 = d.aEL();
+        paramString1 = d.aHQ();
         if (paramString1 == null)
         {
-          ac.e("MicroMsg.CardShopLBSManager", "getShopList fail, get IGetLocation fail, plugin no loaded?");
+          ad.e("MicroMsg.CardShopLBSManager", "getShopList fail, get IGetLocation fail, plugin no loaded?");
           i = 0;
           if (i != 0) {
             break;
           }
-          ac.e("MicroMsg.CardShopLBSManager", "getShopList fail, get IGetLocation fail, plugin no loaded?");
+          ad.e("MicroMsg.CardShopLBSManager", "getShopList fail, get IGetLocation fail, plugin no loaded?");
           AppMethodBeat.o(112707);
           return false;
           paramString1 = finally;
@@ -137,8 +139,8 @@ public final class m
       paramString1.b(this);
       int i = 1;
     }
-    if (this.nUo != null) {
-      com.tencent.mm.kernel.g.agQ().ghe.a(this.nUo);
+    if (this.oxJ != null) {
+      g.ajB().gAO.a(this.oxJ);
     }
     AppMethodBeat.o(112707);
     return true;
@@ -152,57 +154,57 @@ public final class m
       AppMethodBeat.o(112709);
       return true;
     }
-    ??? = d.aEL();
+    ??? = d.aHQ();
     if (??? != null) {
       ((com.tencent.mm.modelgeo.b)???).c(this);
     }
-    ac.d("MicroMsg.CardShopLBSManager", "onGetLocation, fLongitude = %f, fLatitude = %f, locType = %d, speed = %f, accuracy = %f", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt), Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) });
-    synchronized (this.nUl)
+    ad.d("MicroMsg.CardShopLBSManager", "onGetLocation, fLongitude = %f, fLatitude = %f, locType = %d, speed = %f, accuracy = %f", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt), Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) });
+    synchronized (this.oxG)
     {
-      Set localSet = (Set)this.nUl.get(this.nUn);
+      Set localSet = (Set)this.oxG.get(this.oxI);
       if ((localSet == null) || (localSet.size() == 0))
       {
-        ac.e("MicroMsg.CardShopLBSManager", "onGetLocation, already cancelled, no need to doScene");
+        ad.e("MicroMsg.CardShopLBSManager", "onGetLocation, already cancelled, no need to doScene");
         AppMethodBeat.o(112709);
         return false;
       }
     }
     for (;;)
     {
-      synchronized (this.nUm)
+      synchronized (this.oxH)
       {
-        String str = (String)this.nUm.get(this.nUn);
-        ??? = new v(this.nUn, paramFloat1, paramFloat2, str);
-        if (com.tencent.mm.kernel.g.agQ().ghe.a((n)???, 0))
+        String str = (String)this.oxH.get(this.oxI);
+        ??? = new v(this.oxI, paramFloat1, paramFloat2, str);
+        if (g.ajB().gAO.a((n)???, 0))
         {
-          this.nUo = ((v)???);
+          this.oxJ = ((v)???);
           AppMethodBeat.o(112709);
           return true;
         }
       }
-      ac.e("MicroMsg.CardShopLBSManager", "doScene fail, callback immediate");
-      a(this.nUn, false, null);
+      ad.e("MicroMsg.CardShopLBSManager", "doScene fail, callback immediate");
+      a(this.oxI, false, null);
     }
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(112708);
-    this.nUo = null;
-    paramString = ((v)paramn).nWD;
-    ac.i("MicroMsg.CardShopLBSManager", "onSceneEnd, reqCardTpId = %s, errType = %d, errCode = %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.oxJ = null;
+    paramString = ((v)paramn).ozX;
+    ad.i("MicroMsg.CardShopLBSManager", "onSceneEnd, reqCardTpId = %s, errType = %d, errCode = %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ac.e("MicroMsg.CardShopLBSManager", "onSceneEnd, cardshoplbs fail");
+      ad.e("MicroMsg.CardShopLBSManager", "onSceneEnd, cardshoplbs fail");
       a(paramString, false, null);
       AppMethodBeat.o(112708);
       return;
     }
-    paramn = ((v)paramn).nWE;
+    paramn = ((v)paramn).ozY;
     if (paramn == null) {}
     for (paramInt1 = 0;; paramInt1 = paramn.size())
     {
-      ac.d("MicroMsg.CardShopLBSManager", "onSceneEnd, respShopList size = %d", new Object[] { Integer.valueOf(paramInt1) });
+      ad.d("MicroMsg.CardShopLBSManager", "onSceneEnd, respShopList size = %d", new Object[] { Integer.valueOf(paramInt1) });
       a(paramString, true, paramn);
       AppMethodBeat.o(112708);
       return;
@@ -211,7 +213,7 @@ public final class m
   
   public static abstract interface a
   {
-    public abstract void a(boolean paramBoolean, ArrayList<rr> paramArrayList);
+    public abstract void a(boolean paramBoolean, ArrayList<tl> paramArrayList);
   }
 }
 

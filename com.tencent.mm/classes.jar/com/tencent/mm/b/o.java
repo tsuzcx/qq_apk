@@ -7,7 +7,7 @@ public final class o
     return (paramArrayOfByte[3] & 0xFF) << 24 | (paramArrayOfByte[2] & 0xFF) << 16 | (paramArrayOfByte[1] & 0xFF) << 8 | (paramArrayOfByte[0] & 0xFF) << 0;
   }
   
-  public static byte[] ha(int paramInt)
+  public static byte[] hh(int paramInt)
   {
     int j = 0;
     byte[] arrayOfByte1 = new byte[4];
@@ -34,7 +34,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.b.o
  * JD-Core Version:    0.7.0.1
  */

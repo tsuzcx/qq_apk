@@ -11,6 +11,7 @@ import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.TXCStatus;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.liteav.network.a.c;
 import com.tencent.liteav.network.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -306,8 +307,8 @@ public class d
     for (;;)
     {
       this.l = l1;
-      localObject = com.tencent.liteav.basic.util.d.a();
-      i1 = com.tencent.liteav.basic.util.d.b();
+      localObject = f.a();
+      i1 = f.b();
       l1 = TXCStatus.a(this.x, 6008);
       TXCDRApi.txSetEventIntValue(str, com.tencent.liteav.basic.datareport.a.V, "u32_avg_cache_count", l1);
       TXCDRApi.txSetEventIntValue(str, com.tencent.liteav.basic.datareport.a.V, "u32_cpu_usage", localObject[1]);
@@ -512,10 +513,10 @@ public class d
     ((TXCDRExtInfo)localObject2).report_common = false;
     ((TXCDRExtInfo)localObject2).report_status = true;
     ((TXCDRExtInfo)localObject2).url = this.c;
-    Object localObject1 = com.tencent.liteav.basic.util.d.a();
+    Object localObject1 = f.a();
     int i1 = localObject1[0];
     int i2 = localObject1[1];
-    int i3 = com.tencent.liteav.basic.util.d.b();
+    int i3 = f.b();
     long l1 = TXCStatus.a(this.x, 7013);
     int i4 = TXCStatus.c(this.x, 7004);
     int i5 = TXCStatus.c(this.x, 7003);
@@ -547,7 +548,7 @@ public class d
     TXCDRApi.txSetEventIntValue(str4, com.tencent.liteav.basic.datareport.a.Q, "u32_hw_enc", i9);
     try
     {
-      if ((this.h != null) && (com.tencent.liteav.basic.util.d.e(this.h) == 1))
+      if ((this.h != null) && (f.e(this.h) == 1))
       {
         localObject2 = (WifiManager)this.h.getSystemService("wifi");
         if (localObject2 != null)
@@ -583,13 +584,13 @@ public class d
     AppMethodBeat.i(14404);
     this.m = false;
     this.n = 0L;
-    this.b.put("str_user_id", com.tencent.liteav.basic.util.d.b(this.h));
-    this.b.put("str_device_type", com.tencent.liteav.basic.util.d.c());
-    this.b.put("str_device_type", com.tencent.liteav.basic.util.d.c());
-    this.b.put("u32_network_type", Integer.valueOf(com.tencent.liteav.basic.util.d.e(this.h)));
-    this.b.put("token", com.tencent.liteav.basic.util.d.e());
-    this.b.put("str_package_name", com.tencent.liteav.basic.util.d.c(this.h));
-    this.b.put("dev_uuid", com.tencent.liteav.basic.util.d.f(this.h));
+    this.b.put("str_user_id", f.b(this.h));
+    this.b.put("str_device_type", f.c());
+    this.b.put("str_device_type", f.c());
+    this.b.put("u32_network_type", Integer.valueOf(f.e(this.h)));
+    this.b.put("token", f.e());
+    this.b.put("str_package_name", f.c(this.h));
+    this.b.put("dev_uuid", f.f(this.h));
     AppMethodBeat.o(14404);
   }
   
@@ -674,10 +675,10 @@ public class d
       this.l = l1;
       l1 = TXCStatus.a(this.x, 6008);
       TXCDRApi.txSetEventIntValue(str, com.tencent.liteav.basic.datareport.a.Y, "u32_video_cache_count", l1);
-      localObject = com.tencent.liteav.basic.util.d.a();
+      localObject = f.a();
       TXCDRApi.txSetEventIntValue(str, com.tencent.liteav.basic.datareport.a.Y, "u32_cpu_usage", localObject[1]);
       TXCDRApi.txSetEventIntValue(str, com.tencent.liteav.basic.datareport.a.Y, "u32_app_cpu_usage", localObject[0]);
-      i1 = com.tencent.liteav.basic.util.d.b();
+      i1 = f.b();
       TXCDRApi.txSetEventIntValue(str, com.tencent.liteav.basic.datareport.a.Y, "u32_app_mem_usage", i1);
       TXCDRApi.txSetEventValue(str, com.tencent.liteav.basic.datareport.a.Y, "str_app_version", this.i);
       TXCDRApi.txSetEventValue(str, com.tencent.liteav.basic.datareport.a.Y, "str_device_type", (String)this.b.get("str_device_type"));

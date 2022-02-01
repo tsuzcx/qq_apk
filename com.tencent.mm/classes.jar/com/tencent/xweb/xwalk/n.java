@@ -13,32 +13,32 @@ import org.xwalk.core.XWalkCoreWrapper;
 public final class n
   implements f
 {
-  private boolean KGV;
+  private boolean Mxv;
   
-  public final m fKo()
+  public final m gbJ()
   {
     AppMethodBeat.i(183742);
-    s locals = s.a.fLG();
+    s locals = s.a.gdc();
     AppMethodBeat.o(183742);
     return locals;
   }
   
-  public final void fKp()
+  public final void gbK()
   {
     AppMethodBeat.i(183743);
     Object localObject1;
     int j;
     Object localObject2;
-    if (!this.KGV)
+    if (!this.Mxv)
     {
-      localObject1 = a.aUx(WebView.getCurStrModule());
-      j = a.aUw(WebView.getCurStrModule());
-      localObject2 = a.mx("enableWindowPerformanceSampleRatio", WebView.getCurStrModule());
+      localObject1 = a.baA(WebView.getCurStrModule());
+      j = a.baz(WebView.getCurStrModule());
+      localObject2 = a.mV("enableWindowPerformanceSampleRatio", WebView.getCurStrModule());
     }
     try
     {
       i = Integer.parseInt((String)localObject2);
-      s.a.fLG();
+      s.a.gdc();
       Log.d("XWalkExtensionInternal", "setProfileConfig with enabledTraceCategory: " + (String)localObject1 + " traceSampleRatio: " + j + " enableWindowPerformanceSampleRatio: " + i);
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("enabledTraceCategory", (String)localObject1);
@@ -48,7 +48,7 @@ public final class n
       {
         Log.d("XWebProfilerController", "setProfileConfig via INTERNAL_XPROFILE_NG");
         XWalkCoreWrapper.invokeRuntimeChannel(80012, new Object[] { localObject2 });
-        this.KGV = true;
+        this.Mxv = true;
         AppMethodBeat.o(183743);
         return;
       }

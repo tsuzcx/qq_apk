@@ -6,11 +6,11 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.cma;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.cra;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,21 +20,21 @@ public class ECardInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ECardInfo> CREATOR;
-  public int BvD;
-  public int BvE;
-  public String BvF;
-  public String BvG;
-  public String BvH;
-  public int BvI;
-  public ArrayList<String> BvJ;
-  public String BvK;
-  public String BvL;
-  public String BvM;
-  public String BvN;
-  public String dAF;
-  public String dAJ;
-  public String dcz;
-  public int nuJ;
+  public int CVS;
+  public int CVT;
+  public String CVU;
+  public String CVW;
+  public String CVX;
+  public int CVY;
+  public ArrayList<String> CVZ;
+  public String CWa;
+  public String CWb;
+  public String CWc;
+  public String CWd;
+  public String dMS;
+  public String dMW;
+  public String dnV;
+  public int nWh;
   public String subtitle;
   public String title;
   
@@ -48,77 +48,77 @@ public class ECardInfo
   public ECardInfo()
   {
     AppMethodBeat.i(70261);
-    this.BvJ = new ArrayList();
+    this.CVZ = new ArrayList();
     AppMethodBeat.o(70261);
   }
   
   public ECardInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(70262);
-    this.BvJ = new ArrayList();
-    this.nuJ = paramParcel.readInt();
-    this.dcz = paramParcel.readString();
-    this.BvD = paramParcel.readInt();
-    this.BvE = paramParcel.readInt();
-    this.BvF = paramParcel.readString();
-    this.BvG = paramParcel.readString();
-    this.BvH = paramParcel.readString();
-    this.BvI = paramParcel.readInt();
+    this.CVZ = new ArrayList();
+    this.nWh = paramParcel.readInt();
+    this.dnV = paramParcel.readString();
+    this.CVS = paramParcel.readInt();
+    this.CVT = paramParcel.readInt();
+    this.CVU = paramParcel.readString();
+    this.CVW = paramParcel.readString();
+    this.CVX = paramParcel.readString();
+    this.CVY = paramParcel.readInt();
     this.title = paramParcel.readString();
-    paramParcel.readStringList(this.BvJ);
-    this.BvK = paramParcel.readString();
-    this.BvL = paramParcel.readString();
-    this.BvM = paramParcel.readString();
-    this.BvN = paramParcel.readString();
-    this.dAF = paramParcel.readString();
+    paramParcel.readStringList(this.CVZ);
+    this.CWa = paramParcel.readString();
+    this.CWb = paramParcel.readString();
+    this.CWc = paramParcel.readString();
+    this.CWd = paramParcel.readString();
+    this.dMS = paramParcel.readString();
     this.subtitle = paramParcel.readString();
     AppMethodBeat.o(70262);
   }
   
-  public static void aX(JSONObject paramJSONObject)
+  public static void bf(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70264);
     if (paramJSONObject != null)
     {
-      g.agR().agA().set(ah.a.GSA, paramJSONObject.toString());
+      g.ajC().ajl().set(al.a.IFf, paramJSONObject.toString());
       AppMethodBeat.o(70264);
       return;
     }
-    g.agR().agA().set(ah.a.GSA, "");
+    g.ajC().ajl().set(al.a.IFf, "");
     AppMethodBeat.o(70264);
   }
   
-  public static cma erf()
+  public static cra eFf()
   {
     AppMethodBeat.i(70265);
-    Object localObject = (String)g.agR().agA().get(ah.a.GSA, null);
-    if (!bs.isNullOrNil((String)localObject)) {
+    Object localObject = (String)g.ajC().ajl().get(al.a.IFf, null);
+    if (!bt.isNullOrNil((String)localObject)) {
       try
       {
-        cma localcma = new cma();
+        cra localcra = new cra();
         localObject = new JSONObject((String)localObject);
-        localcma.DLr = ((JSONObject)localObject).optInt("guide_flag");
-        localcma.unV = ((JSONObject)localObject).optString("guide_wording");
-        localcma.unW = ((JSONObject)localObject).optString("left_button_wording");
-        localcma.unX = ((JSONObject)localObject).optString("right_button_wording");
-        localcma.unY = ((JSONObject)localObject).optString("upload_credit_url");
+        localcra.Fqw = ((JSONObject)localObject).optInt("guide_flag");
+        localcra.vqB = ((JSONObject)localObject).optString("guide_wording");
+        localcra.kzK = ((JSONObject)localObject).optString("left_button_wording");
+        localcra.kzL = ((JSONObject)localObject).optString("right_button_wording");
+        localcra.vqC = ((JSONObject)localObject).optString("upload_credit_url");
         AppMethodBeat.o(70265);
-        return localcma;
+        return localcra;
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.ECardInfo", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ECardInfo", localException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(70265);
     return null;
   }
   
-  public static ECardInfo erg()
+  public static ECardInfo eFg()
   {
     AppMethodBeat.i(70266);
-    Object localObject1 = (String)g.agR().agA().get(ah.a.GSA, null);
-    if (!bs.isNullOrNil((String)localObject1)) {
+    Object localObject1 = (String)g.ajC().ajl().get(al.a.IFf, null);
+    if (!bt.isNullOrNil((String)localObject1)) {
       try
       {
         localObject1 = new JSONObject((String)localObject1);
@@ -137,23 +137,23 @@ public class ECardInfo
         {
           localObject2 = ((JSONObject)localObject1).optJSONObject("ecard_info");
           ECardInfo localECardInfo = new ECardInfo();
-          localECardInfo.dAF = ((JSONObject)localObject1).optString("guide_flag");
+          localECardInfo.dMS = ((JSONObject)localObject1).optString("guide_flag");
           localECardInfo.title = ((JSONObject)localObject1).optString("title");
           localECardInfo.subtitle = ((JSONObject)localObject1).optString("subtitle");
-          localECardInfo.BvJ = new ArrayList(localArrayList);
-          localECardInfo.BvL = ((JSONObject)localObject1).optString("protocol_url");
-          localECardInfo.BvM = ((JSONObject)localObject1).optString("left_protocol_wording");
-          localECardInfo.BvN = ((JSONObject)localObject1).optString("right_protocol_wording");
-          localECardInfo.BvK = ((JSONObject)localObject1).optString("done_button_wording");
-          localECardInfo.nuJ = ((JSONObject)localObject2).optInt("ecard_open_scene", 0);
-          localECardInfo.dcz = ((JSONObject)localObject2).optString("ecard_type", "");
-          localECardInfo.BvD = ((JSONObject)localObject2).optInt("show_check_box", 0);
-          localECardInfo.BvE = ((JSONObject)localObject2).optInt("check_box_selected", 0);
-          localECardInfo.BvF = ((JSONObject)localObject2).optString("check_box_left_wording", "");
-          localECardInfo.BvG = ((JSONObject)localObject2).optString("check_box_right_wording", "");
-          localECardInfo.BvH = ((JSONObject)localObject2).optString("check_box_url", "");
-          localECardInfo.BvI = ((JSONObject)localObject2).optInt("is_upload_credid", 0);
-          localECardInfo.dAJ = ((JSONObject)localObject2).optString("upload_credit_url", "");
+          localECardInfo.CVZ = new ArrayList(localArrayList);
+          localECardInfo.CWb = ((JSONObject)localObject1).optString("protocol_url");
+          localECardInfo.CWc = ((JSONObject)localObject1).optString("left_protocol_wording");
+          localECardInfo.CWd = ((JSONObject)localObject1).optString("right_protocol_wording");
+          localECardInfo.CWa = ((JSONObject)localObject1).optString("done_button_wording");
+          localECardInfo.nWh = ((JSONObject)localObject2).optInt("ecard_open_scene", 0);
+          localECardInfo.dnV = ((JSONObject)localObject2).optString("ecard_type", "");
+          localECardInfo.CVS = ((JSONObject)localObject2).optInt("show_check_box", 0);
+          localECardInfo.CVT = ((JSONObject)localObject2).optInt("check_box_selected", 0);
+          localECardInfo.CVU = ((JSONObject)localObject2).optString("check_box_left_wording", "");
+          localECardInfo.CVW = ((JSONObject)localObject2).optString("check_box_right_wording", "");
+          localECardInfo.CVX = ((JSONObject)localObject2).optString("check_box_url", "");
+          localECardInfo.CVY = ((JSONObject)localObject2).optInt("is_upload_credid", 0);
+          localECardInfo.dMW = ((JSONObject)localObject2).optString("upload_credit_url", "");
           AppMethodBeat.o(70266);
           return localECardInfo;
         }
@@ -162,7 +162,7 @@ public class ECardInfo
       }
       catch (JSONException localJSONException)
       {
-        ac.printErrStackTrace("MicroMsg.ECardInfo", localJSONException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ECardInfo", localJSONException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(70266);
@@ -177,21 +177,21 @@ public class ECardInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70263);
-    paramParcel.writeInt(this.nuJ);
-    paramParcel.writeString(this.dcz);
-    paramParcel.writeInt(this.BvD);
-    paramParcel.writeInt(this.BvE);
-    paramParcel.writeString(this.BvF);
-    paramParcel.writeString(this.BvG);
-    paramParcel.writeString(this.BvH);
-    paramParcel.writeInt(this.BvI);
+    paramParcel.writeInt(this.nWh);
+    paramParcel.writeString(this.dnV);
+    paramParcel.writeInt(this.CVS);
+    paramParcel.writeInt(this.CVT);
+    paramParcel.writeString(this.CVU);
+    paramParcel.writeString(this.CVW);
+    paramParcel.writeString(this.CVX);
+    paramParcel.writeInt(this.CVY);
     paramParcel.writeString(this.title);
-    paramParcel.writeStringList(this.BvJ);
-    paramParcel.writeString(this.BvK);
-    paramParcel.writeString(this.BvL);
-    paramParcel.writeString(this.BvM);
-    paramParcel.writeString(this.BvN);
-    paramParcel.writeString(this.dAF);
+    paramParcel.writeStringList(this.CVZ);
+    paramParcel.writeString(this.CWa);
+    paramParcel.writeString(this.CWb);
+    paramParcel.writeString(this.CWc);
+    paramParcel.writeString(this.CWd);
+    paramParcel.writeString(this.dMS);
     paramParcel.writeString(this.subtitle);
     AppMethodBeat.o(70263);
   }

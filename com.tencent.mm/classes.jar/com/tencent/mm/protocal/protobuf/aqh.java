@@ -3,41 +3,38 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aqh
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public boolean EJk;
-  public boolean EJl;
-  public boolean EJm;
+  public int Gop;
+  public int action;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(116470);
+    AppMethodBeat.i(209346);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bl(1, this.EJk);
-      paramVarArgs.bl(2, this.EJl);
-      paramVarArgs.bl(3, this.EJm);
-      AppMethodBeat.o(116470);
+      paramVarArgs.aS(1, this.Gop);
+      paramVarArgs.aS(2, this.action);
+      AppMethodBeat.o(209346);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.fK(1);
-      int i = f.a.a.b.b.a.fK(2);
-      int j = f.a.a.b.b.a.fK(3);
-      AppMethodBeat.o(116470);
-      return paramInt + 1 + 0 + (i + 1) + (j + 1);
+      paramInt = f.a.a.b.b.a.bz(1, this.Gop);
+      int i = f.a.a.b.b.a.bz(2, this.action);
+      AppMethodBeat.o(209346);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(116470);
+      AppMethodBeat.o(209346);
       return 0;
     }
     if (paramInt == 3)
@@ -47,28 +44,24 @@ public final class aqh
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(116470);
+        AppMethodBeat.o(209346);
         return -1;
       case 1: 
-        localaqh.EJk = locala.LVo.fZX();
-        AppMethodBeat.o(116470);
-        return 0;
-      case 2: 
-        localaqh.EJl = locala.LVo.fZX();
-        AppMethodBeat.o(116470);
+        localaqh.Gop = locala.NPN.zc();
+        AppMethodBeat.o(209346);
         return 0;
       }
-      localaqh.EJm = locala.LVo.fZX();
-      AppMethodBeat.o(116470);
+      localaqh.action = locala.NPN.zc();
+      AppMethodBeat.o(209346);
       return 0;
     }
-    AppMethodBeat.o(116470);
+    AppMethodBeat.o(209346);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aqh
  * JD-Core Version:    0.7.0.1
  */

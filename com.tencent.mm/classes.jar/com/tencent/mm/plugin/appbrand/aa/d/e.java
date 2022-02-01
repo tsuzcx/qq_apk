@@ -8,117 +8,117 @@ import java.util.Arrays;
 public class e
   implements c
 {
-  protected static byte[] mqB = new byte[0];
-  protected boolean mqC;
-  protected d.a mqD;
-  private ByteBuffer mqE;
-  protected boolean mqF;
+  protected static byte[] mRh = new byte[0];
+  protected boolean mRi;
+  protected d.a mRj;
+  private ByteBuffer mRk;
+  protected boolean mRl;
   
   public e() {}
   
   public e(d.a parama)
   {
     AppMethodBeat.i(156660);
-    this.mqD = parama;
-    this.mqE = ByteBuffer.wrap(mqB);
+    this.mRj = parama;
+    this.mRk = ByteBuffer.wrap(mRh);
     AppMethodBeat.o(156660);
   }
   
   public e(d paramd)
   {
     AppMethodBeat.i(156661);
-    this.mqC = paramd.bxF();
-    this.mqD = paramd.bxH();
-    this.mqE = paramd.bxE();
-    this.mqF = paramd.bxG();
+    this.mRi = paramd.bBK();
+    this.mRj = paramd.bBM();
+    this.mRk = paramd.bBJ();
+    this.mRl = paramd.bBL();
     AppMethodBeat.o(156661);
   }
   
   public void A(ByteBuffer paramByteBuffer)
   {
-    this.mqE = paramByteBuffer;
+    this.mRk = paramByteBuffer;
   }
   
   public final void a(d.a parama)
   {
-    this.mqD = parama;
+    this.mRj = parama;
   }
   
-  public ByteBuffer bxE()
+  public ByteBuffer bBJ()
   {
-    return this.mqE;
+    return this.mRk;
   }
   
-  public final boolean bxF()
+  public final boolean bBK()
   {
-    return this.mqC;
+    return this.mRi;
   }
   
-  public final boolean bxG()
+  public final boolean bBL()
   {
-    return this.mqF;
+    return this.mRl;
   }
   
-  public final d.a bxH()
+  public final d.a bBM()
   {
-    return this.mqD;
+    return this.mRj;
   }
   
   public final void e(d paramd)
   {
     AppMethodBeat.i(156662);
-    ByteBuffer localByteBuffer1 = paramd.bxE();
-    if (this.mqE == null)
+    ByteBuffer localByteBuffer1 = paramd.bBJ();
+    if (this.mRk == null)
     {
-      this.mqE = ByteBuffer.allocate(localByteBuffer1.remaining());
+      this.mRk = ByteBuffer.allocate(localByteBuffer1.remaining());
       localByteBuffer1.mark();
-      this.mqE.put(localByteBuffer1);
+      this.mRk.put(localByteBuffer1);
       localByteBuffer1.reset();
-      this.mqC = paramd.bxF();
+      this.mRi = paramd.bBK();
       AppMethodBeat.o(156662);
       return;
     }
     localByteBuffer1.mark();
-    this.mqE.position(this.mqE.limit());
-    this.mqE.limit(this.mqE.capacity());
-    if (localByteBuffer1.remaining() > this.mqE.remaining())
+    this.mRk.position(this.mRk.limit());
+    this.mRk.limit(this.mRk.capacity());
+    if (localByteBuffer1.remaining() > this.mRk.remaining())
     {
-      ByteBuffer localByteBuffer2 = ByteBuffer.allocate(localByteBuffer1.remaining() + this.mqE.capacity());
-      this.mqE.flip();
-      localByteBuffer2.put(this.mqE);
+      ByteBuffer localByteBuffer2 = ByteBuffer.allocate(localByteBuffer1.remaining() + this.mRk.capacity());
+      this.mRk.flip();
+      localByteBuffer2.put(this.mRk);
       localByteBuffer2.put(localByteBuffer1);
-      this.mqE = localByteBuffer2;
+      this.mRk = localByteBuffer2;
     }
     for (;;)
     {
-      this.mqE.rewind();
+      this.mRk.rewind();
       localByteBuffer1.reset();
       break;
-      this.mqE.put(localByteBuffer1);
+      this.mRk.put(localByteBuffer1);
     }
   }
   
-  public final void hH(boolean paramBoolean)
+  public final void hS(boolean paramBoolean)
   {
-    this.mqC = paramBoolean;
+    this.mRi = paramBoolean;
   }
   
-  public final void hI(boolean paramBoolean)
+  public final void hT(boolean paramBoolean)
   {
-    this.mqF = paramBoolean;
+    this.mRl = paramBoolean;
   }
   
   public String toString()
   {
     AppMethodBeat.i(156663);
-    String str = "Framedata{ optcode:" + this.mqD + ", fin:" + this.mqC + ", payloadlength:[pos:" + this.mqE.position() + ", len:" + this.mqE.remaining() + "], payload:" + Arrays.toString(b.RG(new String(this.mqE.array()))) + "}";
+    String str = "Framedata{ optcode:" + this.mRj + ", fin:" + this.mRi + ", payloadlength:[pos:" + this.mRk.position() + ", len:" + this.mRk.remaining() + "], payload:" + Arrays.toString(b.Vl(new String(this.mRk.array()))) + "}";
     AppMethodBeat.o(156663);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa.d.e
  * JD-Core Version:    0.7.0.1
  */

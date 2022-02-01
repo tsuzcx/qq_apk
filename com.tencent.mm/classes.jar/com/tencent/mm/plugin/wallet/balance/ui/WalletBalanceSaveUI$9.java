@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wallet.balance.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 
 final class WalletBalanceSaveUI$9
   implements DialogInterface.OnClickListener
@@ -13,7 +13,7 @@ final class WalletBalanceSaveUI$9
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(68704);
-    h.wUl.f(17084, new Object[] { Integer.valueOf(7) });
+    g.yhR.f(17084, new Object[] { Integer.valueOf(7) });
     paramDialogInterface.dismiss();
     AppMethodBeat.o(68704);
   }

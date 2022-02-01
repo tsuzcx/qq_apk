@@ -8,16 +8,16 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class a
 {
-  private static ConcurrentLinkedQueue<Long> Kao;
+  private static ConcurrentLinkedQueue<Long> LUl;
   
   static
   {
     AppMethodBeat.i(183234);
-    Kao = new ConcurrentLinkedQueue();
+    LUl = new ConcurrentLinkedQueue();
     AppMethodBeat.o(183234);
   }
   
-  static HandlerThread gx(String paramString, int paramInt)
+  static HandlerThread gV(String paramString, int paramInt)
   {
     AppMethodBeat.i(183232);
     paramString = new HandlerThread("[GT]".concat(String.valueOf(paramString)))
@@ -26,14 +26,14 @@ public class a
       {
         AppMethodBeat.i(183224);
         super.interrupt();
-        d.JZC.a(this, getName(), getId());
+        d.LTx.a(this, getName(), getId());
         AppMethodBeat.o(183224);
       }
       
       public final boolean quit()
       {
         AppMethodBeat.i(183222);
-        d.JZC.a(this, getName(), getId());
+        d.LTx.a(this, getName(), getId());
         boolean bool = super.quit();
         AppMethodBeat.o(183222);
         return bool;
@@ -42,7 +42,7 @@ public class a
       public final boolean quitSafely()
       {
         AppMethodBeat.i(183223);
-        d.JZC.a(this, getName(), getId());
+        d.LTx.a(this, getName(), getId());
         boolean bool = super.quitSafely();
         AppMethodBeat.o(183223);
         return bool;
@@ -54,7 +54,7 @@ public class a
         {
           AppMethodBeat.i(183225);
           super.start();
-          d.JZC.b(this, getName(), getId());
+          d.LTx.b(this, getName(), getId());
           AppMethodBeat.o(183225);
           return;
         }

@@ -3,102 +3,102 @@ package com.tencent.mm.plugin.subapp.d;
 import android.content.ContentValues;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.k.a;
-import com.tencent.mm.ak.k.b;
-import com.tencent.mm.model.bi;
+import com.tencent.mm.al.j.a;
+import com.tencent.mm.al.j.b;
+import com.tencent.mm.model.bj;
 import com.tencent.mm.model.u;
 import com.tencent.mm.modelvoice.m;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
 import d.g.a.b;
-import d.y;
+import d.z;
 
 public final class i
-  implements com.tencent.mm.ak.k
+  implements com.tencent.mm.al.j
 {
-  private static int cXn = 100;
-  private m cLR;
+  private static int diF = 100;
+  protected j.b BhV;
+  protected j.a BhW;
+  private a BhX;
+  private long BhY;
+  private int BhZ;
+  private com.tencent.mm.plugin.subapp.a.a Bia;
+  private av Bib;
+  private m cXf;
   private String fileName;
-  private int ntv;
-  private long oPG;
-  private au zQA;
-  protected k.b zQu;
-  protected k.a zQv;
-  private a zQw;
-  private long zQx;
-  private int zQy;
-  private com.tencent.mm.plugin.subapp.a.a zQz;
+  private int nUr;
+  private long pto;
   
   public i()
   {
     AppMethodBeat.i(28977);
-    this.cLR = null;
-    this.zQv = null;
-    this.ntv = 0;
+    this.cXf = null;
+    this.BhW = null;
+    this.nUr = 0;
     this.fileName = "";
-    this.oPG = 0L;
-    this.zQx = 0L;
-    this.zQy = 0;
-    this.zQA = new au(new au.a()
+    this.pto = 0L;
+    this.BhY = 0L;
+    this.BhZ = 0;
+    this.Bib = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(196085);
+        AppMethodBeat.i(193358);
         String str = i.b(i.this);
         g localg;
         if (str != null)
         {
-          localg = d.eaJ().axx(str);
+          localg = d.emZ().aCB(str);
           if (localg != null) {
             break label83;
           }
-          ac.d("MicroMsg.VoiceRemindLogic", "startSend null record : ".concat(String.valueOf(str)));
+          ad.d("MicroMsg.VoiceRemindLogic", "startSend null record : ".concat(String.valueOf(str)));
         }
         for (;;)
         {
-          d.eaK().run();
-          ac.d("MicroMsg.VoiceRemindRecorder", "Start Send fileName :" + i.b(i.this));
-          AppMethodBeat.o(196085);
+          d.ena().run();
+          ad.d("MicroMsg.VoiceRemindRecorder", "Start Send fileName :" + i.b(i.this));
+          AppMethodBeat.o(193358);
           return false;
           label83:
           if (localg.field_status == 1)
           {
             localg.field_status = 2;
-            localg.drx = 64;
+            localg.dDp = 64;
             h.a(localg);
           }
         }
       }
     }, true);
-    this.zQz = new com.tencent.mm.plugin.subapp.a.a(new b() {});
+    this.Bia = new com.tencent.mm.plugin.subapp.a.a(new b() {});
     AppMethodBeat.o(28977);
   }
   
-  public final boolean Fb()
+  public final boolean Gv()
   {
     boolean bool1 = true;
     boolean bool2 = false;
     AppMethodBeat.i(28982);
-    com.tencent.mm.plugin.audio.c.a.Sm("record").Sl("record");
-    ac.d("MicroMsg.VoiceRemindRecorder", "stop Record :" + this.fileName);
+    com.tencent.mm.plugin.audio.c.a.VK("record").VJ("record");
+    ad.d("MicroMsg.VoiceRemindRecorder", "stop Record :" + this.fileName);
     try
     {
-      ac.d("MicroMsg.VoiceRemindRecorder", "stop synchronized Record :" + this.fileName);
-      if (this.cLR != null) {
-        this.cLR.NX();
+      ad.d("MicroMsg.VoiceRemindRecorder", "stop synchronized Record :" + this.fileName);
+      if (this.cXf != null) {
+        this.cXf.PG();
       }
-      if (this.zQy != 2)
+      if (this.BhZ != 2)
       {
-        h.EH(this.fileName);
+        h.HW(this.fileName);
         this.fileName = null;
-        ac.d("MicroMsg.VoiceRemindRecorder", "Stop " + this.fileName + " by not onPart: " + bs.aO(this.zQx));
+        ad.d("MicroMsg.VoiceRemindRecorder", "Stop " + this.fileName + " by not onPart: " + bt.aO(this.BhY));
         bool1 = bool2;
-        this.zQy = -1;
+        this.BhZ = -1;
         AppMethodBeat.o(28982);
         return bool1;
       }
@@ -107,11 +107,11 @@ public final class i
     {
       AppMethodBeat.o(28982);
     }
-    this.ntv = ((int)Oq());
-    if ((this.ntv < 800L) || (this.ntv < 1000L))
+    this.nUr = ((int)PZ());
+    if ((this.nUr < 800L) || (this.nUr < 1000L))
     {
-      ac.d("MicroMsg.VoiceRemindRecorder", "Stop " + this.fileName + " by voiceLen: " + this.ntv);
-      h.EH(this.fileName);
+      ad.d("MicroMsg.VoiceRemindRecorder", "Stop " + this.fileName + " by voiceLen: " + this.nUr);
+      h.HW(this.fileName);
       this.fileName = "";
       bool1 = false;
     }
@@ -123,117 +123,117 @@ public final class i
       this.fileName = "";
       break;
       str = this.fileName;
-      i = this.ntv;
+      i = this.nUr;
       if (str != null)
       {
-        ac.d("MicroMsg.VoiceRemindLogic", "StopRecord fileName[" + str + "]");
-        localg = d.eaJ().axx(str);
+        ad.d("MicroMsg.VoiceRemindLogic", "StopRecord fileName[" + str + "]");
+        localg = d.emZ().aCB(str);
         if (localg != null)
         {
           if ((localg.field_status != 97) && (localg.field_status != 98)) {
             localg.field_status = 3;
           }
-          localg.field_totallen = c.DX(h.bW(str, false));
+          localg.field_totallen = c.Hj(h.cd(str, false));
           if (localg.field_totallen > 0) {
             break label414;
           }
-          h.Ea(str);
+          h.Hp(str);
         }
       }
-      d.eaK().run();
-      ac.d("MicroMsg.VoiceRemindRecorder", "Stop file success: " + this.fileName);
+      d.ena().run();
+      ad.d("MicroMsg.VoiceRemindRecorder", "Stop file success: " + this.fileName);
     }
     label414:
     localg.field_lastmodifytime = (System.currentTimeMillis() / 1000L);
     localg.field_voicelenght = i;
-    localg.drx = 3424;
-    bo localbo = new bo();
-    localbo.re(localg.field_user);
-    localbo.setType(34);
-    localbo.jT(1);
-    localbo.rf(str);
+    localg.dDp = 3424;
+    bu localbu = new bu();
+    localbu.tN(localg.field_user);
+    localbu.setType(34);
+    localbu.kr(1);
+    localbu.tO(str);
     if (localg.field_status == 97)
     {
-      localbo.setStatus(2);
-      localbo.setContent(f.b(localg.field_human, localg.field_voicelenght, false));
+      localbu.setStatus(2);
+      localbu.setContent(f.b(localg.field_human, localg.field_voicelenght, false));
     }
     for (;;)
     {
-      localbo.oA(bi.yp(localg.field_user));
-      localg.field_msglocalid = ((int)bi.u(localbo));
+      localbu.qA(bj.Bo(localg.field_user));
+      localg.field_msglocalid = ((int)bj.v(localbu));
       h.a(localg);
       break;
       if (localg.field_status == 98)
       {
-        localbo.setStatus(5);
-        localbo.setContent(f.b(localg.field_human, -1L, true));
+        localbu.setStatus(5);
+        localbu.setContent(f.b(localg.field_human, -1L, true));
       }
       else
       {
-        localbo.setStatus(1);
+        localbu.setStatus(1);
       }
     }
   }
   
-  public final int Oo()
+  public final int PX()
   {
-    return this.ntv;
+    return this.nUr;
   }
   
-  public final void Op() {}
+  public final void PY() {}
   
-  public final long Oq()
+  public final long PZ()
   {
     AppMethodBeat.i(28983);
-    if (this.oPG <= 0L)
+    if (this.pto <= 0L)
     {
       AppMethodBeat.o(28983);
       return 0L;
     }
-    long l = bs.aO(this.oPG);
+    long l = bt.aO(this.pto);
     AppMethodBeat.o(28983);
     return l;
   }
   
-  public final int Or()
+  public final int Qa()
   {
     return 0;
   }
   
-  public final void a(k.a parama)
+  public final void a(j.a parama)
   {
-    this.zQv = parama;
+    this.BhW = parama;
   }
   
-  public final void a(k.b paramb)
+  public final void a(j.b paramb)
   {
-    this.zQu = paramb;
+    this.BhV = paramb;
   }
   
   public final boolean cancel()
   {
     AppMethodBeat.i(28981);
-    ac.d("MicroMsg.VoiceRemindRecorder", "cancel Record :" + this.fileName);
+    ad.d("MicroMsg.VoiceRemindRecorder", "cancel Record :" + this.fileName);
     try
     {
-      ac.d("MicroMsg.VoiceRemindRecorder", "stop synchronized Record :" + this.fileName);
-      if (this.cLR != null) {
-        this.cLR.NX();
+      ad.d("MicroMsg.VoiceRemindRecorder", "stop synchronized Record :" + this.fileName);
+      if (this.cXf != null) {
+        this.cXf.PG();
       }
       String str = this.fileName;
       if (str != null)
       {
-        ac.d("MicroMsg.VoiceRemindLogic", "Mark Canceled fileName[" + str + "]");
-        g localg = d.eaJ().axx(str);
+        ad.d("MicroMsg.VoiceRemindLogic", "Mark Canceled fileName[" + str + "]");
+        g localg = d.emZ().aCB(str);
         if (localg != null)
         {
           localg.field_status = 8;
-          localg.field_totallen = c.DX(h.bW(str, false));
-          localg.drx = 64;
+          localg.field_totallen = c.Hj(h.cd(str, false));
+          localg.dDp = 64;
           h.a(localg);
         }
       }
-      d.eaK().run();
+      d.ena().run();
       this.fileName = "";
       AppMethodBeat.o(28981);
       return true;
@@ -244,10 +244,10 @@ public final class i
     }
   }
   
-  public final boolean fF(String paramString)
+  public final boolean gA(String paramString)
   {
     AppMethodBeat.i(28980);
-    String str = k.DU(u.axw());
+    String str = k.Hg(u.aAm());
     Object localObject = new g();
     ((g)localObject).field_filename = str;
     ((g)localObject).field_user = paramString;
@@ -255,20 +255,20 @@ public final class i
     ((g)localObject).field_clientid = str;
     ((g)localObject).field_lastmodifytime = (System.currentTimeMillis() / 1000L);
     ((g)localObject).field_status = 1;
-    ((g)localObject).field_human = u.axw();
-    ((g)localObject).drx = -1;
-    paramString = d.eaJ();
-    ac.d("MicroMsg.VoiceRemindStorage", "VoiceRemindStorage Insert");
+    ((g)localObject).field_human = u.aAm();
+    ((g)localObject).dDp = -1;
+    paramString = d.emZ();
+    ad.d("MicroMsg.VoiceRemindStorage", "VoiceRemindStorage Insert");
     localObject = ((g)localObject).convertTo();
     int i = (int)paramString.db.insert("VoiceRemindInfo", "", (ContentValues)localObject);
-    ac.d("MicroMsg.VoiceRemindStorage", "VoiceRemindStorage Insert result".concat(String.valueOf(i)));
+    ad.d("MicroMsg.VoiceRemindStorage", "VoiceRemindStorage Insert result".concat(String.valueOf(i)));
     paramString = str;
     if (i == -1) {
       paramString = null;
     }
     this.fileName = paramString;
-    this.zQz.Sl("record");
-    this.zQz.Mv();
+    this.Bia.VJ("record");
+    this.Bia.Oe();
     AppMethodBeat.o(28980);
     return false;
   }
@@ -281,14 +281,14 @@ public final class i
   public final int getMaxAmplitude()
   {
     AppMethodBeat.i(28979);
-    if (this.cLR != null)
+    if (this.cXf != null)
     {
-      int i = this.cLR.getMaxAmplitude();
-      if (i > cXn) {
-        cXn = i;
+      int i = this.cXf.getMaxAmplitude();
+      if (i > diF) {
+        diF = i;
       }
-      ac.d("getMaxAmplitude", " map: " + i + " max:" + cXn + " per:" + i * 100 / cXn);
-      i = i * 100 / cXn;
+      ad.d("getMaxAmplitude", " map: " + i + " max:" + diF + " per:" + i * 100 / diF);
+      i = i * 100 / diF;
       AppMethodBeat.o(28979);
       return i;
     }
@@ -298,8 +298,8 @@ public final class i
   
   public final boolean isRecording()
   {
-    if (this.cLR == null) {}
-    while (this.cLR.mStatus != 1) {
+    if (this.cXf == null) {}
+    while (this.cXf.mStatus != 1) {
       return false;
     }
     return true;
@@ -308,28 +308,28 @@ public final class i
   public final void reset()
   {
     AppMethodBeat.i(28984);
-    if (this.cLR != null)
+    if (this.cXf != null)
     {
-      this.cLR.NX();
-      ac.e("MicroMsg.VoiceRemindRecorder", "Reset recorder.stopReocrd");
+      this.cXf.PG();
+      ad.e("MicroMsg.VoiceRemindRecorder", "Reset recorder.stopReocrd");
     }
     this.fileName = "";
-    this.zQx = 0L;
-    this.zQw = null;
-    this.zQy = 0;
-    this.oPG = 0L;
+    this.BhY = 0L;
+    this.BhX = null;
+    this.BhZ = 0;
+    this.pto = 0L;
     AppMethodBeat.o(28984);
   }
   
   final class a
     implements Runnable
   {
-    ao handler;
+    ap handler;
     
     public a()
     {
       AppMethodBeat.i(28975);
-      this.handler = new ao()
+      this.handler = new ap()
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
@@ -340,13 +340,13 @@ public final class i
             return;
           }
           paramAnonymousMessage = new StringBuilder("On Part :");
-          if (i.this.zQu == null) {}
+          if (i.this.BhV == null) {}
           for (boolean bool = true;; bool = false)
           {
-            ac.d("MicroMsg.VoiceRemindRecorder", bool);
+            ad.d("MicroMsg.VoiceRemindRecorder", bool);
             i.d(i.this);
-            if (i.this.zQu != null) {
-              i.this.zQu.aBG();
+            if (i.this.BhV != null) {
+              i.this.BhV.aEI();
             }
             AppMethodBeat.o(28974);
             return;
@@ -361,21 +361,21 @@ public final class i
       AppMethodBeat.i(28976);
       if (i.e(i.this) == null)
       {
-        ac.e("MicroMsg.VoiceRemindRecorder", "Stop Record Failed recorder == null");
+        ad.e("MicroMsg.VoiceRemindRecorder", "Stop Record Failed recorder == null");
         AppMethodBeat.o(28976);
         return;
       }
       synchronized (i.this)
       {
-        if (!i.e(i.this).fE(h.bW(i.b(i.this), true)))
+        if (!i.e(i.this).gz(h.cd(i.b(i.this), true)))
         {
-          i.axv(i.b(i.this));
+          i.aCz(i.b(i.this));
           i.f(i.this);
-          ac.d("MicroMsg.VoiceRemindRecorder", "Thread Start Record  Error fileName[" + i.b(i.this) + "]");
+          ad.d("MicroMsg.VoiceRemindRecorder", "Thread Start Record  Error fileName[" + i.b(i.this) + "]");
           i.g(i.this);
         }
-        i.a(i.this, bs.Gn());
-        ac.d("MicroMsg.VoiceRemindRecorder", "Thread Started Record fileName[" + i.b(i.this) + "] time:" + bs.aO(i.h(i.this)));
+        i.a(i.this, bt.HI());
+        ad.d("MicroMsg.VoiceRemindRecorder", "Thread Started Record fileName[" + i.b(i.this) + "] time:" + bt.aO(i.h(i.this)));
         this.handler.sendEmptyMessageDelayed(0, 1L);
         AppMethodBeat.o(28976);
         return;

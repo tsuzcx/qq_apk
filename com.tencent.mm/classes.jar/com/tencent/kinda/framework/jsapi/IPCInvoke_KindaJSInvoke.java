@@ -2,8 +2,8 @@ package com.tencent.kinda.framework.jsapi;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kl;
-import com.tencent.mm.g.a.kl.b;
+import com.tencent.mm.g.a.ku;
+import com.tencent.mm.g.a.ku.b;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.sdk.b.a;
@@ -13,22 +13,22 @@ public class IPCInvoke_KindaJSInvoke
 {
   public void invoke(Bundle paramBundle, final d<Bundle> paramd)
   {
-    AppMethodBeat.i(205762);
-    final kl localkl = new kl();
-    localkl.dmd.dmg = paramBundle.getString("jsapiName", "");
-    localkl.dmd.type = paramBundle.getInt("jsapi_type", 0);
-    localkl.dmd.dmf = paramBundle;
-    localkl.dmd.csS = new Runnable()
+    AppMethodBeat.i(217041);
+    final ku localku = new ku();
+    localku.dxR.dxU = paramBundle.getString("jsapiName", "");
+    localku.dxR.type = paramBundle.getInt("jsapi_type", 0);
+    localku.dxR.dxT = paramBundle;
+    localku.dxR.cDO = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(205761);
-        paramd.bc(localkl.dme.dmh);
-        AppMethodBeat.o(205761);
+        AppMethodBeat.i(217040);
+        paramd.be(localku.dxS.dxV);
+        AppMethodBeat.o(217040);
       }
     };
-    a.GpY.l(localkl);
-    AppMethodBeat.o(205762);
+    a.IbL.l(localku);
+    AppMethodBeat.o(217041);
   }
 }
 

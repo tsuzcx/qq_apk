@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/c9l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/c0" android:minHeight="@dimen/cg">
+        <ProgressBar android:layout_gravity="center" android:id="@id/i4j" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
+    </LinearLayout>
+</LinearLayout>

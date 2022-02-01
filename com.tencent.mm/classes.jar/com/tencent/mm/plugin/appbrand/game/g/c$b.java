@@ -7,8 +7,8 @@ public final class c$b
   public int fps = -1;
   public int gop = -1;
   public int height = -1;
-  public c.a jUl = null;
-  public c.a jUm = null;
+  public c.a koA = null;
+  public c.a koz = null;
   public int width = -1;
 }
 

@@ -15,14 +15,14 @@ import com.tencent.mm.ui.widget.picker.g;
 
 public final class AppBrandTimePicker
   extends TimePicker
-  implements com.tencent.mm.plugin.appbrand.jsapi.m.c<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.p.c<String>
 {
-  public NumberPicker mKG;
-  private NumberPicker mKH;
   public int mMaxTimeHour;
   public int mMaxTimeMinute;
   public int mMinTimeHour;
   public int mMinTimeMinute;
+  public NumberPicker nlc;
+  private NumberPicker nld;
   
   @Keep
   public AppBrandTimePicker(Context paramContext)
@@ -34,17 +34,17 @@ public final class AppBrandTimePicker
     this.mMaxTimeHour = -1;
     this.mMaxTimeMinute = -1;
     setIs24HourView(Boolean.TRUE);
-    this.mKG = RY("mHourSpinner");
-    this.mKH = RY("mMinuteSpinner");
-    f.d(this.mKG);
-    f.d(this.mKH);
-    d.a(this.mKG);
-    d.a(this.mKH);
+    this.nlc = Vv("mHourSpinner");
+    this.nld = Vv("mMinuteSpinner");
+    f.d(this.nlc);
+    f.d(this.nld);
+    d.a(this.nlc);
+    d.a(this.nld);
     paramContext = getResources().getDrawable(2131231055);
-    f.a(this.mKG, paramContext);
-    f.a(this.mKH, paramContext);
-    if (this.mKG != null) {
-      this.mKG.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+    f.a(this.nlc, paramContext);
+    f.a(this.nld, paramContext);
+    if (this.nlc != null) {
+      this.nlc.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
       {
         public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2)
         {
@@ -54,32 +54,32 @@ public final class AppBrandTimePicker
         }
       });
     }
-    if ((this.mKH != null) && (Build.VERSION.SDK_INT >= 21)) {
-      this.mKH.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+    if ((this.nld != null) && (Build.VERSION.SDK_INT >= 21)) {
+      this.nld.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
       {
         public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2) {}
       });
     }
-    f.f(this.mKG);
-    f.f(this.mKH);
+    f.f(this.nlc);
+    f.f(this.nld);
     AppMethodBeat.o(138065);
   }
   
-  private NumberPicker RY(String paramString)
+  private NumberPicker Vv(String paramString)
   {
     AppMethodBeat.i(138069);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      paramString = Sa(paramString);
+      paramString = Vx(paramString);
       AppMethodBeat.o(138069);
       return paramString;
     }
-    paramString = RZ(paramString);
+    paramString = Vw(paramString);
     AppMethodBeat.o(138069);
     return paramString;
   }
   
-  private NumberPicker RZ(String paramString)
+  private NumberPicker Vw(String paramString)
   {
     AppMethodBeat.i(138070);
     try
@@ -95,7 +95,7 @@ public final class AppBrandTimePicker
     return null;
   }
   
-  private NumberPicker Sa(String paramString)
+  private NumberPicker Vx(String paramString)
   {
     AppMethodBeat.i(138071);
     try
@@ -115,28 +115,28 @@ public final class AppBrandTimePicker
     return null;
   }
   
-  public final void bAe()
+  public final void bEb()
   {
     AppMethodBeat.i(138066);
-    if ((e.wf(this.mMinTimeHour)) && (g.we(this.mMinTimeMinute)) && (this.mKG != null) && (this.mKH != null))
+    if ((e.wK(this.mMinTimeHour)) && (g.wJ(this.mMinTimeMinute)) && (this.nlc != null) && (this.nld != null))
     {
-      if (this.mKG.getValue() != this.mMinTimeHour) {
+      if (this.nlc.getValue() != this.mMinTimeHour) {
         break label119;
       }
-      this.mKH.setMinValue(this.mMinTimeMinute);
+      this.nld.setMinValue(this.mMinTimeMinute);
     }
-    while ((e.wf(this.mMaxTimeHour)) && (this.mKG != null) && (this.mKH != null)) {
-      if (this.mKG.getValue() == this.mMaxTimeHour)
+    while ((e.wK(this.mMaxTimeHour)) && (this.nlc != null) && (this.nld != null)) {
+      if (this.nlc.getValue() == this.mMaxTimeHour)
       {
-        this.mKH.setMaxValue(this.mMaxTimeMinute);
+        this.nld.setMaxValue(this.mMaxTimeMinute);
         AppMethodBeat.o(138066);
         return;
         label119:
-        this.mKH.setMinValue(0);
+        this.nld.setMinValue(0);
       }
       else
       {
-        this.mKH.setMaxValue(59);
+        this.nld.setMaxValue(59);
       }
     }
     AppMethodBeat.o(138066);
@@ -153,8 +153,8 @@ public final class AppBrandTimePicker
   {
     AppMethodBeat.i(138072);
     super.onAttachedToWindow();
-    f.e(this.mKG);
-    f.e(this.mKH);
+    f.e(this.nlc);
+    f.e(this.nld);
     AppMethodBeat.o(138072);
   }
   
@@ -171,7 +171,7 @@ public final class AppBrandTimePicker
     for (int i = 0;; i = paramInteger.intValue())
     {
       super.setCurrentHour(Integer.valueOf(i));
-      bAe();
+      bEb();
       AppMethodBeat.o(138068);
       return;
     }
@@ -184,7 +184,7 @@ public final class AppBrandTimePicker
     for (int i = 0;; i = paramInteger.intValue())
     {
       super.setCurrentMinute(Integer.valueOf(i));
-      bAe();
+      bEb();
       AppMethodBeat.o(138067);
       return;
     }

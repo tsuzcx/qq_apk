@@ -4,15 +4,15 @@ public abstract class f
   extends com.tencent.matrix.trace.e.c
   implements d
 {
-  public volatile boolean czg = false;
+  public volatile boolean cKc = false;
   
-  public final void HP()
+  public final void Jk()
   {
     try
     {
-      if (!this.czg)
+      if (!this.cKc)
       {
-        this.czg = true;
+        this.cKc = true;
         onAlive();
       }
       return;
@@ -24,13 +24,13 @@ public abstract class f
     }
   }
   
-  public final void HQ()
+  public final void Jl()
   {
     try
     {
-      if (this.czg)
+      if (this.cKc)
       {
-        this.czg = false;
+        this.cKc = false;
         onDead();
       }
       return;

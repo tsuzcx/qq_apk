@@ -2026,6 +2026,64 @@ public class TXCGLSurfaceViewBase
     public abstract GL a(GL paramGL);
   }
   
+  static class l
+    extends Writer
+  {
+    private StringBuilder a;
+    
+    l()
+    {
+      AppMethodBeat.i(16842);
+      this.a = new StringBuilder();
+      AppMethodBeat.o(16842);
+    }
+    
+    private void a()
+    {
+      AppMethodBeat.i(16846);
+      if (this.a.length() > 0)
+      {
+        TXCLog.v("TXCGLSurfaceViewBase", this.a.toString());
+        this.a.delete(0, this.a.length());
+      }
+      AppMethodBeat.o(16846);
+    }
+    
+    public void close()
+    {
+      AppMethodBeat.i(16843);
+      a();
+      AppMethodBeat.o(16843);
+    }
+    
+    public void flush()
+    {
+      AppMethodBeat.i(16844);
+      a();
+      AppMethodBeat.o(16844);
+    }
+    
+    public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(16845);
+      int i = 0;
+      if (i < paramInt2)
+      {
+        char c = paramArrayOfChar[(paramInt1 + i)];
+        if (c == '\n') {
+          a();
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          this.a.append(c);
+        }
+      }
+      AppMethodBeat.o(16845);
+    }
+  }
+  
   class m
     extends TXCGLSurfaceViewBase.b
   {

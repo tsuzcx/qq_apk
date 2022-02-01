@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class mi
   extends b
 {
-  public a doN;
-  public b doO;
+  public a dzQ;
   
   public mi()
   {
@@ -16,29 +15,23 @@ public final class mi
   
   private mi(byte paramByte)
   {
-    AppMethodBeat.i(116462);
-    this.doN = new a();
-    this.doO = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(43442);
+    this.dzQ = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116462);
+    AppMethodBeat.o(43442);
   }
   
   public static final class a
   {
-    public String chatroomName;
-    public String doP;
-    public boolean doi = false;
-  }
-  
-  public static final class b
-  {
+    public String businessType;
+    public String dzP;
     public int errCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.mi
  * JD-Core Version:    0.7.0.1
  */

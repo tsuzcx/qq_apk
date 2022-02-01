@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class qv
   extends b
 {
-  public a dtQ;
+  public a dFt;
   
   public qv()
   {
@@ -17,22 +15,21 @@ public final class qv
   
   private qv(byte paramByte)
   {
-    AppMethodBeat.i(91217);
-    this.dtQ = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(125625);
+    this.dFt = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91217);
+    AppMethodBeat.o(125625);
   }
   
   public static final class a
   {
-    public Context context;
-    public Intent intent;
+    public int state = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.qv
  * JD-Core Version:    0.7.0.1
  */

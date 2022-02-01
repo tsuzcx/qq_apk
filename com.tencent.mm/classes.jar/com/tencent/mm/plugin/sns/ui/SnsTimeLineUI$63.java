@@ -8,38 +8,38 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.SightCaptureResult;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
-import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.b;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.c;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo;
 import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.protocal.protobuf.bsz;
+import com.tencent.mm.protocal.protobuf.bxm;
 import com.tencent.mm.vfs.i;
 import com.tencent.xweb.util.d;
 
 final class SnsTimeLineUI$63
-  implements CaptureDataManager.b
+  extends CaptureDataManager.c
 {
   SnsTimeLineUI$63(SnsTimeLineUI paramSnsTimeLineUI) {}
   
   public final void a(Context paramContext, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel, Bundle paramBundle)
   {
-    AppMethodBeat.i(200587);
-    q.atg(paramCaptureVideoNormalModel.dvk().x("KEY_EDIT_PUBLISHID_INT", Integer.valueOf(-1)));
-    paramBundle = new bsz();
-    paramBundle.FhZ = true;
-    paramBundle.FhY = false;
-    String str = i.aSu(paramCaptureVideoNormalModel.videoPath);
-    paramBundle = new SightCaptureResult(true, paramCaptureVideoNormalModel.videoPath, paramCaptureVideoNormalModel.thumbPath, str, d.getMD5(paramCaptureVideoNormalModel.videoPath), (int)(paramCaptureVideoNormalModel.wqk.longValue() / 1000L), paramBundle);
-    if (paramCaptureVideoNormalModel.wql.booleanValue())
+    AppMethodBeat.i(198452);
+    q.ayl(paramCaptureVideoNormalModel.dFF().v("KEY_EDIT_PUBLISHID_INT", Integer.valueOf(-1)));
+    paramBundle = new bxm();
+    paramBundle.GRA = true;
+    paramBundle.GRz = false;
+    String str = i.aYt(paramCaptureVideoNormalModel.videoPath);
+    paramBundle = new SightCaptureResult(true, paramCaptureVideoNormalModel.videoPath, paramCaptureVideoNormalModel.thumbPath, str, d.getMD5(paramCaptureVideoNormalModel.videoPath), (int)(paramCaptureVideoNormalModel.xya.longValue() / 1000L), paramBundle);
+    if (paramCaptureVideoNormalModel.xyb.booleanValue())
     {
-      paramBundle.uJm = true;
-      paramBundle.oWm = false;
-      paramBundle.uJu = paramCaptureVideoNormalModel.thumbPath;
+      paramBundle.vMs = true;
+      paramBundle.pzW = false;
+      paramBundle.vMA = paramCaptureVideoNormalModel.thumbPath;
     }
     paramCaptureVideoNormalModel = new Intent();
     paramCaptureVideoNormalModel.putExtra("key_req_result", paramBundle);
     ((Activity)paramContext).setResult(-1, paramCaptureVideoNormalModel);
     ((Activity)paramContext).finish();
-    AppMethodBeat.o(200587);
+    AppMethodBeat.o(198452);
   }
   
   public final boolean a(Context paramContext, Bundle paramBundle, CaptureDataManager.a parama)

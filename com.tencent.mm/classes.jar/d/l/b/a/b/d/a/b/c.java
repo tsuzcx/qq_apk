@@ -12,8 +12,8 @@ public class c
   extends d.l.b.a.b.b.c.f
   implements b
 {
-  private Boolean LmN;
-  private Boolean LmO;
+  private Boolean NdK;
+  private Boolean NdL;
   
   static
   {
@@ -31,8 +31,8 @@ public class c
   {
     super(parame, paramc, paramg, paramBoolean, parama, paraman);
     AppMethodBeat.i(57696);
-    this.LmN = null;
-    this.LmO = null;
+    this.NdK = null;
+    this.NdL = null;
     AppMethodBeat.o(57696);
   }
   
@@ -40,15 +40,15 @@ public class c
   {
     AppMethodBeat.i(57697);
     if (parame == null) {
-      agL(4);
+      ajm(4);
     }
     if (paramg == null) {
-      agL(5);
+      ajm(5);
     }
     if (paraman == null) {
-      agL(6);
+      ajm(6);
     }
-    parame = new c(parame, null, paramg, paramBoolean, b.a.Ldo, paraman);
+    parame = new c(parame, null, paramg, paramBoolean, b.a.MUj, paraman);
     AppMethodBeat.o(57697);
     return parame;
   }
@@ -57,18 +57,18 @@ public class c
   {
     AppMethodBeat.i(57702);
     if (paraml == null) {
-      agL(7);
+      ajm(7);
     }
     if (parama == null) {
-      agL(8);
+      ajm(8);
     }
     if (paramg == null) {
-      agL(9);
+      ajm(9);
     }
     if (paraman == null) {
-      agL(10);
+      ajm(10);
     }
-    if ((parama != b.a.Ldo) && (parama != b.a.Ldr))
+    if ((parama != b.a.MUj) && (parama != b.a.MUm))
     {
       paraml = new IllegalStateException("Attempt at creating a constructor that is not a declaration: \ncopy from: " + this + "\nnewOwner: " + paraml + "\nkind: " + parama);
       AppMethodBeat.o(57702);
@@ -83,69 +83,69 @@ public class c
     paraml = (e)paraml;
     paramt = (c)paramt;
     if (paraml == null) {
-      agL(12);
+      ajm(12);
     }
     if (parama == null) {
-      agL(13);
+      ajm(13);
     }
     if (paraman == null) {
-      agL(14);
+      ajm(14);
     }
     if (paramg == null) {
-      agL(15);
+      ajm(15);
     }
-    paraml = new c(paraml, paramt, paramg, this.kkz, parama, paraman);
-    paraml.zk(fSA());
-    paraml.zl(fQV());
+    paraml = new c(paraml, paramt, paramg, this.kFz, parama, paraman);
+    paraml.zY(gjY());
+    paraml.zZ(git());
     AppMethodBeat.o(57702);
     return paraml;
   }
   
-  public final boolean fQV()
+  public final boolean git()
   {
     AppMethodBeat.i(57700);
-    if ((!$assertionsDisabled) && (this.LmO == null))
+    if ((!$assertionsDisabled) && (this.NdL == null))
     {
       AssertionError localAssertionError = new AssertionError("hasSynthesizedParameterNames was not set: ".concat(String.valueOf(this)));
       AppMethodBeat.o(57700);
       throw localAssertionError;
     }
-    boolean bool = this.LmO.booleanValue();
+    boolean bool = this.NdL.booleanValue();
     AppMethodBeat.o(57700);
     return bool;
   }
   
-  public final boolean fSA()
+  public final boolean gjY()
   {
     AppMethodBeat.i(57698);
-    if ((!$assertionsDisabled) && (this.LmN == null))
+    if ((!$assertionsDisabled) && (this.NdK == null))
     {
       AssertionError localAssertionError = new AssertionError("hasStableParameterNames was not set: ".concat(String.valueOf(this)));
       AppMethodBeat.o(57698);
       throw localAssertionError;
     }
-    boolean bool = this.LmN.booleanValue();
+    boolean bool = this.NdK.booleanValue();
     AppMethodBeat.o(57698);
     return bool;
   }
   
-  public final void zk(boolean paramBoolean)
+  public final void zY(boolean paramBoolean)
   {
     AppMethodBeat.i(57699);
-    this.LmN = Boolean.valueOf(paramBoolean);
+    this.NdK = Boolean.valueOf(paramBoolean);
     AppMethodBeat.o(57699);
   }
   
-  public final void zl(boolean paramBoolean)
+  public final void zZ(boolean paramBoolean)
   {
     AppMethodBeat.i(57701);
-    this.LmO = Boolean.valueOf(paramBoolean);
+    this.NdL = Boolean.valueOf(paramBoolean);
     AppMethodBeat.o(57701);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.b.c
  * JD-Core Version:    0.7.0.1
  */

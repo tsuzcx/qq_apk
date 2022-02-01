@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ia
   extends b
 {
-  public a djd;
+  public a duz;
   
   public ia()
   {
@@ -15,21 +15,21 @@ public final class ia
   
   private ia(byte paramByte)
   {
-    AppMethodBeat.i(89644);
-    this.djd = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(125616);
+    this.duz = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(89644);
+    AppMethodBeat.o(125616);
   }
   
   public static final class a
   {
-    public String cZV;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ia
  * JD-Core Version:    0.7.0.1
  */

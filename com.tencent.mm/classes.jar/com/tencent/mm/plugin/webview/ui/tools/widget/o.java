@@ -8,7 +8,7 @@ import android.util.TypedValue;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"toColor", "", "context", "Landroid/content/Context;", "toDrawable", "Landroid/graphics/drawable/Drawable;", "plugin-webview_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"toColor", "", "context", "Landroid/content/Context;", "toDrawable", "Landroid/graphics/drawable/Drawable;", "plugin-webview_release"})
 public final class o
 {
   static final int c(int paramInt, Context paramContext)
@@ -21,7 +21,7 @@ public final class o
     return paramInt;
   }
   
-  static final Drawable gV(Context paramContext)
+  static final Drawable ha(Context paramContext)
   {
     AppMethodBeat.i(175713);
     TypedValue localTypedValue = new TypedValue();

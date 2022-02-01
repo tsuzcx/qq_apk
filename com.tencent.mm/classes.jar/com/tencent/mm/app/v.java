@@ -6,9 +6,9 @@ import android.support.v4.app.Fragment;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.bz;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.model.ca;
 import com.tencent.mm.model.d.a.1;
 import com.tencent.mm.model.d.b;
 import com.tencent.mm.model.d.b.1;
@@ -16,8 +16,8 @@ import com.tencent.mm.model.d.c;
 import com.tencent.mm.model.d.c.1;
 import com.tencent.mm.model.d.c.a;
 import com.tencent.mm.plugin.sns.b.o;
-import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.HomeUI;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.MainTabUI;
@@ -29,14 +29,14 @@ import java.util.Iterator;
 
 public final class v
 {
-  public static v cJo;
-  public boolean cJp;
-  public ao cJq;
+  public static v cUB;
+  public boolean cUC;
+  public ap cUD;
   
   public v()
   {
     AppMethodBeat.i(19458);
-    this.cJq = new ao(Looper.getMainLooper())
+    this.cUD = new ap(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -45,26 +45,26 @@ public final class v
         Object localObject;
         if (paramAnonymousMessage.what == -1999)
         {
-          if (!v.this.cJp)
+          if (!v.this.cUC)
           {
             paramAnonymousMessage = LauncherUI.getInstance();
-            if ((paramAnonymousMessage != null) && (paramAnonymousMessage.Hll))
+            if ((paramAnonymousMessage != null) && (paramAnonymousMessage.IYS))
             {
-              paramAnonymousMessage.Hlj.getMainTabUI().aPD("tab_main");
+              paramAnonymousMessage.IYQ.getMainTabUI().aVt("tab_main");
               localObject = paramAnonymousMessage.getHomeUI();
-              if (((HomeUI)localObject).HjQ) {
-                ((HomeUI)localObject).HjS = true;
+              if (((HomeUI)localObject).IXx) {
+                ((HomeUI)localObject).IXz = true;
               }
-              localObject = o.xMa;
+              localObject = o.zbS;
               if (localObject != null) {
-                ((com.tencent.mm.plugin.sns.b.g)localObject).dGo();
+                ((com.tencent.mm.plugin.sns.b.g)localObject).dSB();
               }
-              paramAnonymousMessage = paramAnonymousMessage.Hlj.getMainTabUI().HpB.values().iterator();
+              paramAnonymousMessage = paramAnonymousMessage.IYQ.getMainTabUI().Jdh.values().iterator();
               while (paramAnonymousMessage.hasNext())
               {
                 localObject = (Fragment)paramAnonymousMessage.next();
                 if (!(localObject instanceof MainUI)) {
-                  ((m)localObject).feH();
+                  ((m)localObject).fuO();
                 }
               }
             }
@@ -74,7 +74,7 @@ public final class v
         }
         else if (paramAnonymousMessage.what == -2999)
         {
-          if (v.this.cJp)
+          if (v.this.cUC)
           {
             AppMethodBeat.o(19457);
             return;
@@ -82,26 +82,26 @@ public final class v
           paramAnonymousMessage = LauncherUI.getInstance();
           if (paramAnonymousMessage != null)
           {
-            paramAnonymousMessage = paramAnonymousMessage.Hlj.getMainTabUI();
-            if (paramAnonymousMessage.HpB.containsKey(Integer.valueOf(0))) {
-              ((m)paramAnonymousMessage.HpB.get(Integer.valueOf(0))).feH();
+            paramAnonymousMessage = paramAnonymousMessage.IYQ.getMainTabUI();
+            if (paramAnonymousMessage.Jdh.containsKey(Integer.valueOf(0))) {
+              ((m)paramAnonymousMessage.Jdh.get(Integer.valueOf(0))).fuO();
             }
           }
-          if (com.tencent.mm.kernel.g.agP().afY())
+          if (com.tencent.mm.kernel.g.ajA().aiK())
           {
-            az.ayG();
-            paramAnonymousMessage = bz.yz("plugin.emoji");
+            ba.aBK();
+            paramAnonymousMessage = ca.By("plugin.emoji");
             if (paramAnonymousMessage != null) {
               paramAnonymousMessage.clearPluginData(0);
             }
-            paramAnonymousMessage = b.aAv();
-            localObject = com.tencent.mm.model.d.a.aAs();
-            c localc = c.aAx();
-            az.agU().az(new b.1(paramAnonymousMessage));
-            h.JZN.aS(new a.1((com.tencent.mm.model.d.a)localObject));
+            paramAnonymousMessage = b.aDy();
+            localObject = com.tencent.mm.model.d.a.aDv();
+            c localc = c.aDA();
+            ba.ajF().ay(new b.1(paramAnonymousMessage));
+            h.LTJ.aR(new a.1((com.tencent.mm.model.d.a)localObject));
             localc.a(paramAnonymousMessage);
             localc.a((c.a)localObject);
-            az.agU().az(new c.1(localc));
+            ba.ajF().ay(new c.1(localc));
           }
           System.gc();
         }
@@ -111,13 +111,13 @@ public final class v
     AppMethodBeat.o(19458);
   }
   
-  public static v KE()
+  public static v Ml()
   {
     AppMethodBeat.i(19459);
-    if (cJo == null) {
-      cJo = new v();
+    if (cUB == null) {
+      cUB = new v();
     }
-    v localv = cJo;
+    v localv = cUB;
     AppMethodBeat.o(19459);
     return localv;
   }
@@ -125,11 +125,11 @@ public final class v
   public final void start()
   {
     AppMethodBeat.i(19460);
-    this.cJp = false;
-    this.cJq.removeMessages(-1999);
-    this.cJq.removeMessages(-2999);
-    this.cJq.sendEmptyMessageDelayed(-1999, 3000L);
-    this.cJq.sendEmptyMessageDelayed(-2999, 30000L);
+    this.cUC = false;
+    this.cUD.removeMessages(-1999);
+    this.cUD.removeMessages(-2999);
+    this.cUD.sendEmptyMessageDelayed(-1999, 3000L);
+    this.cUD.sendEmptyMessageDelayed(-2999, 30000L);
     AppMethodBeat.o(19460);
   }
 }

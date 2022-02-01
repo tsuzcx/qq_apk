@@ -1,126 +1,118 @@
 package com.tencent.mm.plugin.emojicapture.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aza;
-import com.tencent.mm.protocal.protobuf.bpk;
-import com.tencent.mm.protocal.protobuf.bpl;
-import com.tencent.mm.protocal.protobuf.bpn;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.bde;
+import com.tencent.mm.protocal.protobuf.btx;
+import com.tencent.mm.protocal.protobuf.bty;
+import com.tencent.mm.protocal.protobuf.bua;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.sticker.c.d.a;
 import com.tencent.mm.sticker.c.h;
 import com.tencent.mm.sticker.c.i;
 import com.tencent.mm.sticker.c.i.a;
 import d.a.j;
 import d.a.v;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData;", "", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "callback", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelCallback;", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelCallback;)V", "appendList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "getCallback", "()Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelCallback;", "codeMore", "", "ctxBuff", "", "dataHasMore", "", "firstLoaded", "firstPage", "historyList", "isLoading", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "moreList", "pageBuff", "recommendHasMore", "recommendList", "requestType", "appendRecommend", "", "info", "lensId", "", "destroy", "loadData", "loadMore", "processData", "lensList", "", "processMore", "processRecommend", "setup", "timeEnter", "", "username", "updateHistory", "Companion", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData;", "", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "callback", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelCallback;", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelCallback;)V", "appendList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "getCallback", "()Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelCallback;", "codeMore", "", "ctxBuff", "", "dataHasMore", "", "firstLoaded", "firstPage", "historyList", "isLoading", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "moreList", "pageBuff", "recommendHasMore", "recommendList", "requestType", "appendRecommend", "", "info", "lensId", "", "destroy", "loadData", "loadMore", "processData", "lensList", "", "processMore", "processRecommend", "setup", "timeEnter", "", "username", "updateHistory", "Companion", "plugin-emojicapture_release"})
 public final class f
 {
-  private static final bpl poi;
-  private static final bpl poj;
-  private static final bpl pok;
-  private static final bpl pol;
-  private static final bpl pom;
-  private static final bpl pon;
-  public static final a poo;
-  private final com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> fSt;
+  private static final bty pRI;
+  private static final bty pRJ;
+  private static final bty pRK;
+  private static final bty pRL;
+  private static final bty pRM;
+  private static final bty pRN;
+  public static final a pRO;
+  private final com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> glX;
   private boolean isLoading;
-  public final LinkedList<bpl> pnO;
-  private final int pnX;
-  private byte[] pnY;
-  private boolean pnZ;
-  private boolean poa;
-  private boolean pob;
-  public boolean poc;
-  public byte[] pod;
-  private final LinkedList<bpl> poe;
-  private final LinkedList<bpl> pof;
-  private final LinkedList<bpl> pog;
-  final d poh;
+  private boolean pRA;
+  private boolean pRB;
+  public boolean pRC;
+  public byte[] pRD;
+  private final LinkedList<bty> pRE;
+  private final LinkedList<bty> pRF;
+  private final LinkedList<bty> pRG;
+  final d pRH;
+  public final LinkedList<bty> pRo;
+  private final int pRx;
+  private byte[] pRy;
+  private boolean pRz;
   public int requestType;
   
   static
   {
     AppMethodBeat.i(249);
-    poo = new a((byte)0);
-    poi = new bpl();
-    poj = new bpl();
-    pok = new bpl();
-    pol = new bpl();
-    pom = new bpl();
-    pon = new bpl();
+    pRO = new a((byte)0);
+    pRI = new bty();
+    pRJ = new bty();
+    pRK = new bty();
+    pRL = new bty();
+    pRM = new bty();
+    pRN = new bty();
     AppMethodBeat.o(249);
   }
   
   public f(com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a> paramb, d paramd)
   {
     AppMethodBeat.i(248);
-    this.fSt = paramb;
-    this.poh = paramd;
-    this.pnX = 2;
-    this.pnZ = true;
-    this.poa = true;
+    this.glX = paramb;
+    this.pRH = paramd;
+    this.pRx = 2;
+    this.pRz = true;
+    this.pRA = true;
     this.requestType = 1;
-    this.pnO = new LinkedList();
-    this.poe = new LinkedList();
-    this.pof = new LinkedList();
-    this.pog = new LinkedList();
+    this.pRo = new LinkedList();
+    this.pRE = new LinkedList();
+    this.pRF = new LinkedList();
+    this.pRG = new LinkedList();
     AppMethodBeat.o(248);
   }
   
   public static void destroy()
   {
     AppMethodBeat.i(245);
-    com.tencent.mm.sticker.a.b localb = com.tencent.mm.sticker.a.b.GBj;
-    com.tencent.mm.sticker.a.b.H(null);
+    com.tencent.mm.sticker.a.b localb = com.tencent.mm.sticker.a.b.Ind;
+    com.tencent.mm.sticker.a.b.L(null);
     AppMethodBeat.o(245);
   }
   
-  public final void YH(String paramString)
-  {
-    AppMethodBeat.i(243);
-    k.h(paramString, "lensId");
-    bpl localbpl = new bpl();
-    localbpl.Ewy = paramString;
-    a(localbpl);
-    AppMethodBeat.o(243);
-  }
-  
-  public final void a(bpl parambpl)
+  public final void a(bty parambty)
   {
     AppMethodBeat.i(244);
-    k.h(parambpl, "info");
-    Object localObject2 = ((Iterable)this.pnO).iterator();
+    p.h(parambty, "info");
+    Object localObject2 = ((Iterable)this.pRo).iterator();
     Object localObject1;
     while (((Iterator)localObject2).hasNext())
     {
       localObject1 = ((Iterator)localObject2).next();
-      if (k.g(((bpl)localObject1).Ewy, parambpl.Ewy))
+      if (p.i(((bty)localObject1).Geb, parambty.Geb))
       {
-        localObject2 = (bpl)localObject1;
-        Iterator localIterator = ((Iterable)this.poe).iterator();
+        localObject2 = (bty)localObject1;
+        Iterator localIterator = ((Iterable)this.pRE).iterator();
         for (;;)
         {
           if (localIterator.hasNext())
           {
             localObject1 = localIterator.next();
-            if (k.g(((bpl)localObject1).Ewy, parambpl.Ewy))
+            if (p.i(((bty)localObject1).Geb, parambty.Geb))
             {
               label112:
-              localObject1 = (bpl)localObject1;
+              localObject1 = (bty)localObject1;
               if (localObject2 == null) {
                 break label155;
               }
               if (localObject1 == null) {
-                this.poe.add(localObject2);
+                this.pRE.add(localObject2);
               }
             }
           }
@@ -129,7 +121,7 @@ public final class f
     }
     for (;;)
     {
-      cfr();
+      cjU();
       AppMethodBeat.o(244);
       return;
       localObject1 = null;
@@ -139,68 +131,78 @@ public final class f
       label155:
       if (localObject1 == null)
       {
-        localObject1 = parambpl.Ewy;
-        if ((localObject1 != null) && (!a.b(parambpl)))
+        localObject1 = parambty.Geb;
+        if ((localObject1 != null) && (!a.b(parambty)))
         {
-          parambpl = com.tencent.mm.sticker.c.d.GBn;
-          d.a.a(this.fSt, (String)localObject1, (com.tencent.mm.sticker.c.c)new b(this));
+          parambty = com.tencent.mm.sticker.c.d.Inh;
+          d.a.a(this.glX, (String)localObject1, (com.tencent.mm.sticker.c.c)new b(this));
         }
         else
         {
-          this.poe.add(parambpl);
+          this.pRE.add(parambty);
         }
       }
     }
   }
   
-  public final void cfp()
+  public final void acn(String paramString)
+  {
+    AppMethodBeat.i(243);
+    p.h(paramString, "lensId");
+    bty localbty = new bty();
+    localbty.Geb = paramString;
+    a(localbty);
+    AppMethodBeat.o(243);
+  }
+  
+  public final void cjS()
   {
     AppMethodBeat.i(241);
-    ac.i(g.abZ(), "loadMore: " + this.isLoading + ", " + this.pnZ);
-    if ((!this.pnZ) || (this.isLoading))
+    ad.i(g.aeD(), "loadMore: " + this.isLoading + ", " + this.pRz);
+    if ((!this.pRz) || (this.isLoading))
     {
       AppMethodBeat.o(241);
       return;
     }
     this.isLoading = true;
-    i.a locala = i.GBw;
-    i.a.a(this.requestType, this.pnY, this.pod, this.fSt, (h)new d(this));
+    i.a locala = i.Inq;
+    i.a.a(this.requestType, this.pRy, this.pRD, this.glX, (h)new d(this));
     AppMethodBeat.o(241);
   }
   
-  public final void cfq()
+  public final void cjT()
   {
     AppMethodBeat.i(242);
-    this.pof.clear();
-    LinkedList localLinkedList = this.pof;
-    com.tencent.mm.sticker.a.b localb = com.tencent.mm.sticker.a.b.GBj;
-    localLinkedList.addAll((Collection)com.tencent.mm.sticker.a.b.eYC());
-    ac.i(g.abZ(), "updateHistory: " + this.pof.size());
-    cfs();
+    this.pRF.clear();
+    LinkedList localLinkedList = this.pRF;
+    com.tencent.mm.sticker.a.b localb = com.tencent.mm.sticker.a.b.Ind;
+    localLinkedList.addAll((Collection)com.tencent.mm.sticker.a.b.fom());
+    ad.i(g.aeD(), "updateHistory: " + this.pRF.size());
+    cjV();
     AppMethodBeat.o(242);
   }
   
-  public final void cfr()
+  public final void cjU()
   {
     AppMethodBeat.i(246);
-    com.tencent.mm.ac.c.g((d.g.a.a)new f(this));
+    com.tencent.mm.ad.c.g((d.g.a.a)new f(this));
     AppMethodBeat.o(246);
   }
   
-  public final void cfs()
+  public final void cjV()
   {
     int j = 0;
     AppMethodBeat.i(247);
-    ac.i(g.abZ(), "processMore: " + this.pof.size() + ", " + this.pog.size());
+    ad.i(g.aeD(), "processMore: " + this.pRF.size() + ", " + this.pRG.size());
     LinkedList localLinkedList = new LinkedList();
     Object localObject1;
     Collection localCollection;
     int i;
     Object localObject2;
-    if (this.pof.size() > 0)
+    if (this.pRF.size() > 0)
     {
-      localLinkedList.add(new com.tencent.mm.sticker.c(pol, 0, 6, (byte)0));
-      localObject1 = (Iterable)this.pof;
+      localLinkedList.add(new com.tencent.mm.sticker.c(pRL, 0, 6, (byte)0));
+      localObject1 = (Iterable)this.pRF;
       localCollection = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
       localObject1 = ((Iterable)localObject1).iterator();
       i = 0;
@@ -208,18 +210,18 @@ public final class f
       {
         localObject2 = ((Iterator)localObject1).next();
         if (i < 0) {
-          j.fOc();
+          j.gfB();
         }
-        localCollection.add(new com.tencent.mm.sticker.c((bpl)localObject2, i + 1, 2));
+        localCollection.add(new com.tencent.mm.sticker.c((bty)localObject2, i + 1, 2));
         i += 1;
       }
       localLinkedList.addAll((Collection)localCollection);
-      localLinkedList.add(new com.tencent.mm.sticker.c(pom, 0, 6, (byte)0));
+      localLinkedList.add(new com.tencent.mm.sticker.c(pRM, 0, 6, (byte)0));
     }
-    if (this.pog.size() > 0)
+    if (this.pRG.size() > 0)
     {
-      localLinkedList.add(new com.tencent.mm.sticker.c(pon, 0, 6, (byte)0));
-      localObject1 = (Iterable)this.pog;
+      localLinkedList.add(new com.tencent.mm.sticker.c(pRN, 0, 6, (byte)0));
+      localObject1 = (Iterable)this.pRG;
       localCollection = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
       localObject1 = ((Iterable)localObject1).iterator();
       i = j;
@@ -227,37 +229,37 @@ public final class f
       {
         localObject2 = ((Iterator)localObject1).next();
         if (i < 0) {
-          j.fOc();
+          j.gfB();
         }
-        localCollection.add(new com.tencent.mm.sticker.c((bpl)localObject2, i + 1, 3));
+        localCollection.add(new com.tencent.mm.sticker.c((bty)localObject2, i + 1, 3));
         i += 1;
       }
       localLinkedList.addAll((Collection)localCollection);
     }
-    this.poh.cT((List)localLinkedList);
+    this.pRH.cT((List)localLinkedList);
     AppMethodBeat.o(247);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData$Companion;", "", "()V", "EMPTY_STICKER", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "getEMPTY_STICKER", "()Lcom/tencent/mm/protocal/protobuf/LensInfo;", "HISTORY_END", "getHISTORY_END", "HISTORY_HEADER", "getHISTORY_HEADER", "MORE_STICKER", "getMORE_STICKER", "MORE_STICKER_DISABLE", "getMORE_STICKER_DISABLE", "RECOMMEND_HEADER", "getRECOMMEND_HEADER", "isValidLensInfo", "", "lensInfo", "plugin-emojicapture_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData$Companion;", "", "()V", "EMPTY_STICKER", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "getEMPTY_STICKER", "()Lcom/tencent/mm/protocal/protobuf/LensInfo;", "HISTORY_END", "getHISTORY_END", "HISTORY_HEADER", "getHISTORY_HEADER", "MORE_STICKER", "getMORE_STICKER", "MORE_STICKER_DISABLE", "getMORE_STICKER_DISABLE", "RECOMMEND_HEADER", "getRECOMMEND_HEADER", "isValidLensInfo", "", "lensInfo", "plugin-emojicapture_release"})
   public static final class a
   {
-    public static boolean b(bpl parambpl)
+    public static boolean b(bty parambty)
     {
       Object localObject2 = null;
       AppMethodBeat.i(235);
-      k.h(parambpl, "lensInfo");
-      if (!bs.isNullOrNil(parambpl.Ewy))
+      p.h(parambty, "lensInfo");
+      if (!bt.isNullOrNil(parambty.Geb))
       {
-        Object localObject1 = parambpl.FeL;
+        Object localObject1 = parambty.GOp;
         if (localObject1 != null) {}
-        for (localObject1 = ((bpk)localObject1).Url; !bs.isNullOrNil((String)localObject1); localObject1 = null)
+        for (localObject1 = ((btx)localObject1).Url; !bt.isNullOrNil((String)localObject1); localObject1 = null)
         {
-          localObject1 = parambpl.FeM;
-          parambpl = localObject2;
+          localObject1 = parambty.GOq;
+          parambty = localObject2;
           if (localObject1 != null) {
-            parambpl = ((bpn)localObject1).DUJ;
+            parambty = ((bua)localObject1).FAe;
           }
-          if (bs.isNullOrNil(parambpl)) {
+          if (bt.isNullOrNil(parambty)) {
             break;
           }
           AppMethodBeat.o(235);
@@ -269,27 +271,27 @@ public final class f
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData$appendRecommend$1", "Lcom/tencent/mm/sticker/task/GetLensInfoCallback;", "onResult", "", "errType", "", "info", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "plugin-emojicapture_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData$appendRecommend$1", "Lcom/tencent/mm/sticker/task/GetLensInfoCallback;", "onResult", "", "errType", "", "info", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "plugin-emojicapture_release"})
   public static final class b
     implements com.tencent.mm.sticker.c.c
   {
-    public final void a(int paramInt, bpl parambpl)
+    public final void a(int paramInt, bty parambty)
     {
       AppMethodBeat.i(236);
-      ac.i(g.abZ(), "getLensInfo onResult: ".concat(String.valueOf(parambpl)));
-      if (parambpl != null)
+      ad.i(g.aeD(), "getLensInfo onResult: ".concat(String.valueOf(parambty)));
+      if (parambty != null)
       {
-        f.f(this.pop).add(parambpl);
-        f.g(this.pop);
+        f.f(this.pRP).add(parambty);
+        f.g(this.pRP);
       }
       AppMethodBeat.o(236);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   public static final class c
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     public c(f paramf)
     {
@@ -297,28 +299,28 @@ public final class f
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData$loadMore$1", "Lcom/tencent/mm/sticker/task/GetLensListCallback;", "onResult", "", "errType", "", "errCode", "response", "Lcom/tencent/mm/protocal/protobuf/GetLensListResponse;", "plugin-emojicapture_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/emojicapture/model/capture/StickerPanelData$loadMore$1", "Lcom/tencent/mm/sticker/task/GetLensListCallback;", "onResult", "", "errType", "", "errCode", "response", "Lcom/tencent/mm/protocal/protobuf/GetLensListResponse;", "plugin-emojicapture_release"})
   public static final class d
     implements h
   {
-    public final void a(int paramInt1, int paramInt2, aza paramaza)
+    public final void a(int paramInt1, int paramInt2, bde parambde)
     {
       Object localObject2 = null;
       Object localObject1 = null;
       boolean bool = true;
       AppMethodBeat.i(238);
-      f.b(this.pop);
+      f.b(this.pRP);
       Object localObject3;
-      if ((paramInt1 == 4) && (paramInt2 == f.c(this.pop)) && (paramaza != null))
+      if ((paramInt1 == 4) && (paramInt2 == f.c(this.pRP)) && (parambde != null))
       {
-        localObject2 = this.pop;
-        localObject3 = paramaza.EQy;
+        localObject2 = this.pRP;
+        localObject3 = parambde.GzP;
         if (localObject3 != null) {
-          localObject1 = ((com.tencent.mm.bw.b)localObject3).getBytes();
+          localObject1 = ((com.tencent.mm.bx.b)localObject3).getBytes();
         }
         f.a((f)localObject2, (byte[])localObject1);
-        localObject1 = this.pop;
-        localObject2 = f.d(this.pop);
+        localObject1 = this.pRP;
+        localObject2 = f.d(this.pRP);
         if (localObject2 != null) {
           if (localObject2.length == 0)
           {
@@ -333,16 +335,16 @@ public final class f
             }
             label112:
             f.a((f)localObject1, bool);
-            localObject1 = this.pop;
-            paramaza = paramaza.EQA;
-            k.g(paramaza, "response.LensList");
-            f.a((f)localObject1, (List)paramaza);
+            localObject1 = this.pRP;
+            parambde = parambde.GzR;
+            p.g(parambde, "response.LensList");
+            f.a((f)localObject1, (List)parambde);
           }
         }
       }
       for (;;)
       {
-        ac.i(g.abZ(), "getLensList onResult: " + f.a(this.pop) + ", " + f.e(this.pop));
+        ad.i(g.aeD(), "getLensList onResult: " + f.a(this.pRP) + ", " + f.e(this.pRP));
         AppMethodBeat.o(238);
         return;
         paramInt1 = 0;
@@ -353,33 +355,33 @@ public final class f
         label205:
         bool = false;
         break label112;
-        if ((paramInt1 == 0) && (paramInt2 == 0) && (paramaza != null))
+        if ((paramInt1 == 0) && (paramInt2 == 0) && (parambde != null))
         {
-          f.a(this.pop, false);
-          localObject3 = this.pop;
-          com.tencent.mm.bw.b localb = paramaza.EQy;
+          f.a(this.pRP, false);
+          localObject3 = this.pRP;
+          com.tencent.mm.bx.b localb = parambde.GzP;
           localObject1 = localObject2;
           if (localb != null) {
             localObject1 = localb.getBytes();
           }
           f.a((f)localObject3, (byte[])localObject1);
-          localObject1 = this.pop;
-          paramaza = paramaza.EQA;
-          k.g(paramaza, "response.LensList");
-          f.a((f)localObject1, (List)paramaza);
+          localObject1 = this.pRP;
+          parambde = parambde.GzR;
+          p.g(parambde, "response.LensList");
+          f.a((f)localObject1, (List)parambde);
         }
         else
         {
-          f.a(this.pop, (List)v.KTF);
+          f.a(this.pRP, (List)v.MKE);
         }
       }
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class e
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     e(f paramf, List paramList)
     {
@@ -387,10 +389,10 @@ public final class f
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class f
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     f(f paramf)
     {

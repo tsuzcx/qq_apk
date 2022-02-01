@@ -6,8 +6,8 @@ import com.tencent.soter.a.b.d;
 public final class a
   implements com.tencent.mm.vending.c.a<c<Boolean, Boolean>, c<Boolean, Boolean>>
 {
-  private com.tencent.mm.vending.g.b izm = null;
-  private int znP = -1;
+  private int AFJ = -1;
+  private com.tencent.mm.vending.g.b iSv = null;
 }
 
 

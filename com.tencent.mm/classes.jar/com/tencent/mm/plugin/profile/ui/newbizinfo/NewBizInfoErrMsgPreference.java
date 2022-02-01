@@ -5,17 +5,19 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.widget.MMNeat7extView;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoErrMsgPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bindView", "", "value", "", "errMsg", "getErrMsg", "()Ljava/lang/String;", "setErrMsg", "(Ljava/lang/String;)V", "errMsgTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "onBindView", "", "view", "Landroid/view/View;", "setText", "app_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoErrMsgPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bindView", "", "value", "", "errMsg", "getErrMsg", "()Ljava/lang/String;", "setErrMsg", "(Ljava/lang/String;)V", "errMsgTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "onBindView", "", "view", "Landroid/view/View;", "setText", "app_release"})
 public final class NewBizInfoErrMsgPreference
   extends Preference
 {
   private String errMsg = "";
-  private boolean pDN;
-  private MMNeat7extView vOp;
+  private boolean qhs;
+  private MMNeat7extView wVy;
   
   public NewBizInfoErrMsgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,40 +29,40 @@ public final class NewBizInfoErrMsgPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private final void dqQ()
+  private final void dBs()
   {
     AppMethodBeat.i(39609);
-    MMNeat7extView localMMNeat7extView = this.vOp;
+    MMNeat7extView localMMNeat7extView = this.wVy;
     if (localMMNeat7extView == null) {
-      d.g.b.k.aVY("errMsgTv");
+      p.bcb("errMsgTv");
     }
-    localMMNeat7extView.ar((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.g(localMMNeat7extView.getContext(), (CharSequence)this.errMsg, (int)localMMNeat7extView.getTextSize()));
+    localMMNeat7extView.ar((CharSequence)k.g(localMMNeat7extView.getContext(), (CharSequence)this.errMsg, (int)localMMNeat7extView.getTextSize()));
     AppMethodBeat.o(39609);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(39608);
-    d.g.b.k.h(paramView, "view");
+    p.h(paramView, "view");
     super.onBindView(paramView);
     paramView = paramView.findViewById(2131297289);
     MMNeat7extView localMMNeat7extView = (MMNeat7extView)paramView;
     localMMNeat7extView.setTextSize(1, 16.0F);
     localMMNeat7extView.setTextColor(localMMNeat7extView.getResources().getColor(2131100479));
-    d.g.b.k.g(paramView, "view.findViewById<MMNeat…ey_text_color))\n        }");
-    this.vOp = ((MMNeat7extView)paramView);
-    this.pDN = true;
-    dqQ();
+    p.g(paramView, "view.findViewById<MMNeat…ey_text_color))\n        }");
+    this.wVy = ((MMNeat7extView)paramView);
+    this.qhs = true;
+    dBs();
     AppMethodBeat.o(39608);
   }
   
   public final void setErrMsg(String paramString)
   {
     AppMethodBeat.i(39610);
-    d.g.b.k.h(paramString, "value");
+    p.h(paramString, "value");
     this.errMsg = paramString;
-    if (this.pDN) {
-      dqQ();
+    if (this.qhs) {
+      dBs();
     }
     AppMethodBeat.o(39610);
   }

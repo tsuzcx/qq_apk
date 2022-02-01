@@ -6,21 +6,21 @@ import io.flutter.plugin.platform.e;
 
 public final class a$b
 {
-  private final io.flutter.plugin.a.c KLU;
-  private final io.flutter.view.c KMD;
-  private final e KME;
-  private final a.a KMF;
+  private final io.flutter.plugin.a.c MCR;
+  private final io.flutter.view.c MDA;
+  private final e MDB;
+  private final a.a MDC;
   private final Context applicationContext;
-  private final a slN;
+  private final a tiq;
   
   public a$b(Context paramContext, a parama, io.flutter.plugin.a.c paramc, io.flutter.view.c paramc1, e parame, a.a parama1)
   {
     this.applicationContext = paramContext;
-    this.slN = parama;
-    this.KLU = paramc;
-    this.KMD = paramc1;
-    this.KME = parame;
-    this.KMF = parama1;
+    this.tiq = parama;
+    this.MCR = paramc;
+    this.MDA = paramc1;
+    this.MDB = parame;
+    this.MDC = parama1;
   }
 }
 

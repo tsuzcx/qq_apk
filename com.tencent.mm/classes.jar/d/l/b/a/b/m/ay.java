@@ -1,42 +1,42 @@
 package d.l.b.a.b.m;
 
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.a.g;
 
 public abstract class ay
 {
-  public static final ay LLI = (ay)new b();
-  public static final a LLJ = new a((byte)0);
+  public static final ay NCD = (ay)new b();
+  public static final a NCE = new a((byte)0);
   
   public abstract av O(ab paramab);
   
   public ab a(ab paramab, bh parambh)
   {
-    k.h(paramab, "topLevelType");
-    k.h(parambh, "position");
+    p.h(paramab, "topLevelType");
+    p.h(parambh, "position");
     return paramab;
   }
   
-  public boolean gbB()
+  public boolean gtT()
   {
     return false;
   }
   
-  public final ba gcD()
+  public boolean gtb()
+  {
+    return false;
+  }
+  
+  public final ba gue()
   {
     ba localba = ba.d(this);
-    k.g(localba, "TypeSubstitutor.create(this)");
+    p.g(localba, "TypeSubstitutor.create(this)");
     return localba;
-  }
-  
-  public boolean gct()
-  {
-    return false;
   }
   
   public g h(g paramg)
   {
-    k.h(paramg, "annotations");
+    p.h(paramg, "annotations");
     return paramg;
   }
   
@@ -63,7 +63,7 @@ public abstract class ay
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.ay
  * JD-Core Version:    0.7.0.1
  */

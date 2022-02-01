@@ -2,9 +2,9 @@ package com.bumptech.glide.f;
 
 public abstract interface d<R>
 {
-  public abstract boolean pB();
+  public abstract boolean pT();
   
-  public abstract boolean pC();
+  public abstract boolean pU();
 }
 
 

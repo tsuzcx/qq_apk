@@ -2,52 +2,55 @@ package com.tencent.mm.plugin.story.f.a;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.f;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.f.m;
 import com.tencent.mm.plugin.story.f.n.a;
 import com.tencent.mm.plugin.story.f.o.a;
 import com.tencent.mm.plugin.story.f.q.a;
 import com.tencent.mm.plugin.story.i.a.a;
+import com.tencent.mm.plugin.story.i.g;
 import com.tencent.mm.plugin.story.i.h;
 import com.tencent.mm.plugin.story.i.i;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ddu;
-import com.tencent.mm.protocal.protobuf.ddv;
-import com.tencent.mm.protocal.protobuf.ddw;
-import com.tencent.mm.protocal.protobuf.def;
-import com.tencent.mm.protocal.protobuf.dep;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.djh;
+import com.tencent.mm.protocal.protobuf.dji;
+import com.tencent.mm.protocal.protobuf.djj;
+import com.tencent.mm.protocal.protobuf.djs;
+import com.tencent.mm.protocal.protobuf.dkc;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.l;
 import d.n.d;
 import d.v;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStoryHistoryPage;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "userName", "", "maxId", "", "isSelf", "", "(Ljava/lang/String;JZ)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "forSameMd5Count", "", "fp", "getFp", "()Z", "setFp", "(Z)V", "setSelf", "getMaxId", "()J", "setMaxId", "(J)V", "minId", "getMinId", "setMinId", "originMaxId", "recentLimitID", "getRecentLimitID", "setRecentLimitID", "requestMd5", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "sourceType", "getUserName", "()Ljava/lang/String;", "setUserName", "(Ljava/lang/String;)V", "deleteFaultdData", "", "storyId", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "existFaultData", "getType", "insertList", "resp", "Lcom/tencent/mm/protocal/protobuf/StoryHistoryPageResponse;", "onGYNetEnd", "netId", "errType", "errCode", "errMsg", "irr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStoryHistoryPage;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "userName", "", "maxId", "", "isSelf", "", "(Ljava/lang/String;JZ)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "forSameMd5Count", "", "fp", "getFp", "()Z", "setFp", "(Z)V", "setSelf", "getMaxId", "()J", "setMaxId", "(J)V", "minId", "getMinId", "setMinId", "originMaxId", "recentLimitID", "getRecentLimitID", "setRecentLimitID", "requestMd5", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "sourceType", "getUserName", "()Ljava/lang/String;", "setUserName", "(Ljava/lang/String;)V", "deleteFaultdData", "", "storyId", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "existFaultData", "getType", "insertList", "resp", "Lcom/tencent/mm/protocal/protobuf/StoryHistoryPageResponse;", "onGYNetEnd", "netId", "errType", "errCode", "errMsg", "irr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-story_release"})
 public final class e
-  extends com.tencent.mm.ak.n
+  extends com.tencent.mm.al.n
   implements com.tencent.mm.network.k
 {
+  public static final e.a ALk;
   private static final String TAG = "MicroMsg.StoryCgi.NetSceneStoryHistoryPage";
-  public static final e.a ztq;
-  private com.tencent.mm.ak.g callback;
-  private boolean dfZ;
-  private com.tencent.mm.ak.b rr;
+  private long ALi;
+  private f callback;
+  private boolean drv;
+  private com.tencent.mm.al.b rr;
   private int sourceType;
   public String userName;
-  private String xRS;
-  public boolean xRn;
-  private long xRo;
-  private long xRp;
-  public long xSH;
-  private long zto;
+  private String zhM;
+  public boolean zhh;
+  private long zhi;
+  private long zhj;
+  public long ziB;
   
   static
   {
     AppMethodBeat.i(118812);
-    ztq = new e.a((byte)0);
+    ALk = new e.a((byte)0);
     TAG = "MicroMsg.StoryCgi.NetSceneStoryHistoryPage";
     AppMethodBeat.o(118812);
   }
@@ -56,65 +59,65 @@ public final class e
   {
     AppMethodBeat.i(118811);
     this.userName = paramString;
-    this.xRo = paramLong;
-    this.dfZ = paramBoolean;
-    this.xRS = "";
-    if (this.xRo == 0L) {
-      ac.i(TAG, "fp mUserName " + this.userName);
+    this.zhi = paramLong;
+    this.drv = paramBoolean;
+    this.zhM = "";
+    if (this.zhi == 0L) {
+      ad.i(TAG, "fp mUserName " + this.userName);
     }
     int j;
     for (;;)
     {
-      paramString = com.tencent.mm.plugin.story.i.a.zBQ;
-      j = com.tencent.mm.plugin.story.i.a.dYk();
-      paramString = com.tencent.mm.plugin.story.i.a.zBQ;
-      this.sourceType = (j | com.tencent.mm.plugin.story.i.a.dYi());
+      paramString = com.tencent.mm.plugin.story.i.a.ATp;
+      j = com.tencent.mm.plugin.story.i.a.ekz();
+      paramString = com.tencent.mm.plugin.story.i.a.ATp;
+      this.sourceType = (j | com.tencent.mm.plugin.story.i.a.ekx());
       paramString = new b.a();
-      paramString.c((com.tencent.mm.bw.a)new ddv());
-      paramString.d((com.tencent.mm.bw.a)new ddw());
-      paramString.Am("/cgi-bin/micromsg-bin/mmstoryhistorypage");
-      paramString.op(191);
-      paramString.or(0);
-      paramString.os(0);
-      paramString = paramString.aAz();
-      d.g.b.k.g(paramString, "builder.buildInstance()");
+      paramString.c((com.tencent.mm.bx.a)new dji());
+      paramString.d((com.tencent.mm.bx.a)new djj());
+      paramString.Dl("/cgi-bin/micromsg-bin/mmstoryhistorypage");
+      paramString.oP(191);
+      paramString.oR(0);
+      paramString.oS(0);
+      paramString = paramString.aDC();
+      p.g(paramString, "builder.buildInstance()");
       this.rr = paramString;
-      paramString = this.rr.aBC();
+      paramString = this.rr.aEE();
       if (paramString != null) {
         break;
       }
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StoryHistoryPageRequest");
       AppMethodBeat.o(118811);
       throw paramString;
-      ac.i(TAG, "np mUserName " + this.userName);
+      ad.i(TAG, "np mUserName " + this.userName);
     }
-    paramString = (ddv)paramString;
-    paramString.ncR = this.userName;
-    paramString.FJn = this.xRo;
+    paramString = (dji)paramString;
+    paramString.nDo = this.userName;
+    paramString.HtV = this.zhi;
     Object localObject;
-    if (this.xRo == 0L)
+    if (this.zhi == 0L)
     {
       paramBoolean = true;
-      this.xRn = paramBoolean;
-      localObject = com.tencent.mm.plugin.story.f.j.zsh;
-      j.b.dVN();
-      j = o.a.awH(this.userName);
-      localObject = com.tencent.mm.plugin.story.f.j.zsh;
-      localObject = j.b.dVE();
-      if (!this.xRn) {
+      this.zhh = paramBoolean;
+      localObject = com.tencent.mm.plugin.story.f.j.AKb;
+      j.b.eic();
+      j = o.a.aBM(this.userName);
+      localObject = com.tencent.mm.plugin.story.f.j.AKb;
+      localObject = j.b.ehT();
+      if (!this.zhh) {
         break label531;
       }
     }
     label531:
-    for (paramLong = l;; paramLong = this.xRo)
+    for (paramLong = l;; paramLong = this.zhi)
     {
-      this.xRp = ((com.tencent.mm.plugin.story.i.k)localObject).V(paramLong, j);
-      paramString.FKy = this.xRp;
-      paramString.FKz = 0;
+      this.zhj = ((com.tencent.mm.plugin.story.i.k)localObject).aa(paramLong, j);
+      paramString.Hvg = this.zhj;
+      paramString.Hvh = 0;
       try
       {
-        localObject = bs.eWc();
-        d.g.b.k.g(localObject, "Util.getTimeZoneOffset()");
+        localObject = bt.flM();
+        p.g(localObject, "Util.getTimeZoneOffset()");
         float f = Float.parseFloat((String)localObject);
         i = (int)f;
       }
@@ -124,20 +127,20 @@ public final class e
         a.a locala;
         break label359;
       }
-      paramString.pAT = i;
-      if (this.xRn)
+      paramString.qey = i;
+      if (this.zhh)
       {
-        localObject = com.tencent.mm.plugin.story.f.j.zsh;
-        localObject = j.b.dVF();
-        locala = com.tencent.mm.plugin.story.i.a.zBQ;
-        this.xRS = ((com.tencent.mm.plugin.story.i.g)localObject).axc(com.tencent.mm.plugin.story.i.a.dYo());
-        if (this.xRS == null) {
-          this.xRS = "";
+        localObject = com.tencent.mm.plugin.story.f.j.AKb;
+        localObject = j.b.ehU();
+        locala = com.tencent.mm.plugin.story.i.a.ATp;
+        this.zhM = ((g)localObject).aCg(com.tencent.mm.plugin.story.i.a.ekD());
+        if (this.zhM == null) {
+          this.zhM = "";
         }
-        paramString.FJm = this.xRS;
+        paramString.HtU = this.zhM;
       }
-      this.zto = this.xRo;
-      ac.i(TAG, "req.mUserName:" + paramString.ncR + " req.MaxId:" + paramString.FJn + " req.MinFilterId:" + paramString.FKy + " req.LastRequestTime:" + paramString.FKz + " req.FirstPageMd5:" + paramString.FJm + " req.TimeZone:" + paramString.pAT);
+      this.ALi = this.zhi;
+      ad.i(TAG, "req.mUserName:" + paramString.nDo + " req.MaxId:" + paramString.HtV + " req.MinFilterId:" + paramString.Hvg + " req.LastRequestTime:" + paramString.Hvh + " req.FirstPageMd5:" + paramString.HtU + " req.TimeZone:" + paramString.qey);
       AppMethodBeat.o(118811);
       return;
       paramBoolean = false;
@@ -145,82 +148,82 @@ public final class e
     }
   }
   
-  private final void a(ddw paramddw)
+  private final void a(djj paramdjj)
   {
     AppMethodBeat.i(118810);
-    Object localObject1 = paramddw.FNA;
-    d.g.b.k.g(localObject1, "resp.HistoryItemList");
+    Object localObject1 = paramdjj.Hyl;
+    p.g(localObject1, "resp.HistoryItemList");
     Iterator localIterator = ((Iterable)localObject1).iterator();
     if (localIterator.hasNext())
     {
-      ddu localddu = (ddu)localIterator.next();
-      ac.d(TAG, "date=" + localddu.EvH + " count=" + localddu.FMU + " id=" + localddu.Id);
-      localObject1 = com.tencent.mm.plugin.story.f.n.zsw;
+      djh localdjh = (djh)localIterator.next();
+      ad.d(TAG, "date=" + localdjh.Gdd + " count=" + localdjh.HxF + " id=" + localdjh.Id);
+      localObject1 = com.tencent.mm.plugin.story.f.n.AKq;
       Object localObject4 = this.userName;
-      Object localObject3 = localddu.FNl;
-      d.g.b.k.g(localObject3, "it.StoryObject");
+      Object localObject3 = localdjh.HxW;
+      p.g(localObject3, "it.StoryObject");
       int i = this.sourceType;
-      d.g.b.k.h(localObject4, "userName");
-      d.g.b.k.h(localObject3, "storyObj");
-      localObject1 = com.tencent.mm.plugin.story.f.j.zsh;
-      localObject1 = j.b.dVE();
-      ac.d(com.tencent.mm.plugin.story.f.n.access$getTAG$cp(), "insertStory storyObj.id:" + ((def)localObject3).Id);
-      Object localObject2 = ((com.tencent.mm.plugin.story.i.k)localObject1).yw(((def)localObject3).Id);
+      p.h(localObject4, "userName");
+      p.h(localObject3, "storyObj");
+      localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
+      localObject1 = j.b.ehT();
+      ad.d(com.tencent.mm.plugin.story.f.n.access$getTAG$cp(), "insertStory storyObj.id:" + ((djs)localObject3).Id);
+      Object localObject2 = ((com.tencent.mm.plugin.story.i.k)localObject1).AU(((djs)localObject3).Id);
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = new com.tencent.mm.plugin.story.i.j();
       }
-      d.g.b.k.h(localObject1, "storyInfo");
-      d.g.b.k.h(localObject3, "storyObj");
-      d.g.b.k.h(localObject4, "userName");
-      if ((((def)localObject3).FNN == null) || (((def)localObject3).FNN.getBuffer() == null)) {
-        ac.i(com.tencent.mm.plugin.story.f.n.access$getTAG$cp(), "object desc is null");
+      p.h(localObject1, "storyInfo");
+      p.h(localObject3, "storyObj");
+      p.h(localObject4, "userName");
+      if ((((djs)localObject3).Hyy == null) || (((djs)localObject3).Hyy.getBuffer() == null)) {
+        ad.i(com.tencent.mm.plugin.story.f.n.access$getTAG$cp(), "object desc is null");
       }
       for (;;)
       {
-        localObject1 = m.zsv;
-        d.g.b.k.g(localddu, "it");
-        d.g.b.k.h(localddu, "item");
-        localObject1 = h.zCA;
-        d.g.b.k.h(localddu, "item");
+        localObject1 = m.AKp;
+        p.g(localdjh, "it");
+        p.h(localdjh, "item");
+        localObject1 = h.ATZ;
+        p.h(localdjh, "item");
         localObject3 = new h();
-        localObject2 = localddu.EvH;
+        localObject2 = localdjh.Gdd;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
         ((h)localObject3).field_date = ((String)localObject1);
-        ((h)localObject3).field_count = localddu.FMU;
-        localObject1 = com.tencent.mm.plugin.story.f.j.zsh;
-        j.b.dVJ().a((h)localObject3);
+        ((h)localObject3).field_count = localdjh.HxF;
+        localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
+        j.b.ehY().a((h)localObject3);
         break;
-        localObject2 = ((def)localObject3).FNN.getBuffer().toByteArray();
-        d.g.b.k.g(localObject2, "storyObj.ObjDesc.getBuffer().toByteArray()");
+        localObject2 = ((djs)localObject3).Hyy.getBuffer().toByteArray();
+        p.g(localObject2, "storyObj.ObjDesc.getBuffer().toByteArray()");
         localObject2 = new String((byte[])localObject2, d.UTF_8);
-        ac.d(com.tencent.mm.plugin.story.f.n.access$getTAG$cp(), "from server %d \n%s", new Object[] { Long.valueOf(((def)localObject3).Id), localObject2 });
-        localObject4 = com.tencent.mm.plugin.story.f.q.zsy;
-        localObject4 = q.a.awJ((String)localObject2);
-        if ((!bs.isNullOrNil((String)localObject2)) && (localObject4 != null) && (((com.tencent.mm.plugin.story.i.j)localObject1).c((dep)localObject4)))
+        ad.d(com.tencent.mm.plugin.story.f.n.access$getTAG$cp(), "from server %d \n%s", new Object[] { Long.valueOf(((djs)localObject3).Id), localObject2 });
+        localObject4 = com.tencent.mm.plugin.story.f.q.AKs;
+        localObject4 = q.a.aBN((String)localObject2);
+        if ((!bt.isNullOrNil((String)localObject2)) && (localObject4 != null) && (((com.tencent.mm.plugin.story.i.j)localObject1).c((dkc)localObject4)))
         {
-          ac.d(com.tencent.mm.plugin.story.f.n.access$getTAG$cp(), "from server xml ok %d \n ".concat(String.valueOf(localObject2)), new Object[] { Long.valueOf(((def)localObject3).Id) });
-          ((def)localObject3).FNN.setBuffer(new byte[0]);
-          ((com.tencent.mm.plugin.story.i.j)localObject1).field_userName = ((def)localObject3).ncR;
-          ((com.tencent.mm.plugin.story.i.j)localObject1).field_createTime = ((def)localObject3).CreateTime;
-          ((com.tencent.mm.plugin.story.i.j)localObject1).field_storyID = ((def)localObject3).Id;
-          if (!((def)localObject3).FNO.isEmpty()) {
-            ((com.tencent.mm.plugin.story.i.j)localObject1).field_attrBuf = ((def)localObject3).toByteArray();
+          ad.d(com.tencent.mm.plugin.story.f.n.access$getTAG$cp(), "from server xml ok %d \n ".concat(String.valueOf(localObject2)), new Object[] { Long.valueOf(((djs)localObject3).Id) });
+          ((djs)localObject3).Hyy.setBuffer(new byte[0]);
+          ((com.tencent.mm.plugin.story.i.j)localObject1).field_userName = ((djs)localObject3).nDo;
+          ((com.tencent.mm.plugin.story.i.j)localObject1).field_createTime = ((djs)localObject3).CreateTime;
+          ((com.tencent.mm.plugin.story.i.j)localObject1).field_storyID = ((djs)localObject3).Id;
+          if (!((djs)localObject3).Hyz.isEmpty()) {
+            ((com.tencent.mm.plugin.story.i.j)localObject1).field_attrBuf = ((djs)localObject3).toByteArray();
           }
-          ac.i(com.tencent.mm.plugin.story.f.n.access$getTAG$cp(), "id:" + ((com.tencent.mm.plugin.story.i.j)localObject1).field_storyID + " createTime:" + ((com.tencent.mm.plugin.story.i.j)localObject1).field_createTime + " CommentListSize:" + ((def)localObject3).FNO.size() + " BubbleListSize:" + ((def)localObject3).FNQ.size());
-          ((com.tencent.mm.plugin.story.i.j)localObject1).Pb(i);
-          localObject2 = ((com.tencent.mm.plugin.story.i.j)localObject1).dZi();
-          ((dep)localObject2).ncR = ((def)localObject3).ncR;
-          ((com.tencent.mm.plugin.story.i.j)localObject1).b((dep)localObject2);
-          localObject2 = com.tencent.mm.plugin.story.f.j.zsh;
-          localObject2 = j.b.dVE();
-          long l = ((def)localObject3).Id;
+          ad.i(com.tencent.mm.plugin.story.f.n.access$getTAG$cp(), "id:" + ((com.tencent.mm.plugin.story.i.j)localObject1).field_storyID + " createTime:" + ((com.tencent.mm.plugin.story.i.j)localObject1).field_createTime + " CommentListSize:" + ((djs)localObject3).Hyz.size() + " BubbleListSize:" + ((djs)localObject3).HyB.size());
+          ((com.tencent.mm.plugin.story.i.j)localObject1).QJ(i);
+          localObject2 = ((com.tencent.mm.plugin.story.i.j)localObject1).elx();
+          ((dkc)localObject2).nDo = ((djs)localObject3).nDo;
+          ((com.tencent.mm.plugin.story.i.j)localObject1).b((dkc)localObject2);
+          localObject2 = com.tencent.mm.plugin.story.f.j.AKb;
+          localObject2 = j.b.ehT();
+          long l = ((djs)localObject3).Id;
           localObject4 = "select *,rowid from MMStoryInfo  where " + com.tencent.mm.plugin.story.i.k.TABLE + ".storyID = " + l;
           localObject2 = ((com.tencent.mm.plugin.story.i.k)localObject2).db.rawQuery((String)localObject4, null);
-          d.g.b.k.g(localObject2, "cu");
+          p.g(localObject2, "cu");
           i = ((Cursor)localObject2).getCount();
           ((Cursor)localObject2).close();
           if (i > 0) {}
@@ -229,36 +232,36 @@ public final class e
             if (i == 0) {
               break label803;
             }
-            localObject2 = com.tencent.mm.plugin.story.f.j.zsh;
-            j.b.dVE().e((com.tencent.mm.plugin.story.i.j)localObject1);
-            localObject1 = com.tencent.mm.plugin.story.f.j.zsh;
-            j.b.dVE().yz(((def)localObject3).Id);
+            localObject2 = com.tencent.mm.plugin.story.f.j.AKb;
+            j.b.ehT().e((com.tencent.mm.plugin.story.i.j)localObject1);
+            localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
+            j.b.ehT().AX(((djs)localObject3).Id);
             break;
           }
           label803:
-          localObject2 = com.tencent.mm.plugin.story.f.j.zsh;
-          j.b.dVE().f((com.tencent.mm.plugin.story.i.j)localObject1);
+          localObject2 = com.tencent.mm.plugin.story.f.j.AKb;
+          j.b.ehT().f((com.tencent.mm.plugin.story.i.j)localObject1);
         }
       }
     }
-    if (this.xRo == 0L)
+    if (this.zhi == 0L)
     {
-      localObject1 = paramddw.FNA;
-      d.g.b.k.g(localObject1, "resp.HistoryItemList");
-      this.xRo = ((ddu)((LinkedList)localObject1).getFirst()).Id;
+      localObject1 = paramdjj.Hyl;
+      p.g(localObject1, "resp.HistoryItemList");
+      this.zhi = ((djh)((LinkedList)localObject1).getFirst()).Id;
     }
-    localObject1 = paramddw.FNA;
-    d.g.b.k.g(localObject1, "resp.HistoryItemList");
-    this.xRp = ((ddu)((LinkedList)localObject1).getLast()).Id;
-    ac.i(TAG, "insertList mUserName %s maxId %s minId %s NewRequestTime %s", new Object[] { this.userName, Long.valueOf(this.xRo), Long.valueOf(this.xRp), Integer.valueOf(paramddw.FKH) });
+    localObject1 = paramdjj.Hyl;
+    p.g(localObject1, "resp.HistoryItemList");
+    this.zhj = ((djh)((LinkedList)localObject1).getLast()).Id;
+    ad.i(TAG, "insertList mUserName %s maxId %s minId %s NewRequestTime %s", new Object[] { this.userName, Long.valueOf(this.zhi), Long.valueOf(this.zhj), Integer.valueOf(paramdjj.Hvp) });
     AppMethodBeat.o(118810);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(118808);
-    d.g.b.k.h(paramg, "callback");
-    this.callback = paramg;
+    p.h(paramf, "callback");
+    this.callback = paramf;
     int i = dispatch(parame, (com.tencent.mm.network.q)this.rr, (com.tencent.mm.network.k)this);
     AppMethodBeat.o(118808);
     return i;
@@ -272,43 +275,43 @@ public final class e
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(118809);
-    ac.d(TAG, "netId=" + paramInt1 + " errType=" + paramInt2 + " errCode=" + paramInt3 + " errMsg=" + paramString);
-    paramq = this.rr.aBD();
+    ad.d(TAG, "netId=" + paramInt1 + " errType=" + paramInt2 + " errCode=" + paramInt3 + " errMsg=" + paramString);
+    paramq = this.rr.aEF();
     if (paramq == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StoryHistoryPageResponse");
       AppMethodBeat.o(118809);
       throw paramString;
     }
-    ddw localddw = (ddw)paramq;
-    this.xSH = localddw.FNn;
-    paramArrayOfByte = localddw.FJm;
+    djj localdjj = (djj)paramq;
+    this.ziB = localdjj.HxY;
+    paramArrayOfByte = localdjj.HtU;
     paramq = paramArrayOfByte;
     if (paramArrayOfByte == null) {
       paramq = "";
     }
-    ac.i(TAG, "objCount:" + localddw.FNz + " firstPageMd5:" + paramq + ", expiredTime:" + localddw.DLH);
-    if (localddw.FNA.isEmpty())
+    ad.i(TAG, "objCount:" + localdjj.Hyk + " firstPageMd5:" + paramq + ", expiredTime:" + localdjj.FqM);
+    if (localdjj.Hyl.isEmpty())
     {
-      ac.i(TAG, "server give size zero");
+      ad.i(TAG, "server give size zero");
       paramq = this.callback;
       if (paramq == null) {
-        d.g.b.k.aVY("callback");
+        p.bcb("callback");
       }
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.ak.n)this);
+      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.al.n)this);
       AppMethodBeat.o(118809);
       return;
     }
-    paramArrayOfByte = com.tencent.mm.plugin.story.f.j.zsh;
-    paramArrayOfByte = j.b.dVF();
-    a.a locala = com.tencent.mm.plugin.story.i.a.zBQ;
-    paramArrayOfByte.jR(com.tencent.mm.plugin.story.i.a.dYo(), paramq);
+    paramArrayOfByte = com.tencent.mm.plugin.story.f.j.AKb;
+    paramArrayOfByte = j.b.ehU();
+    a.a locala = com.tencent.mm.plugin.story.i.a.ATp;
+    paramArrayOfByte.kg(com.tencent.mm.plugin.story.i.a.ekD(), paramq);
     long l;
-    if (this.xRn)
+    if (this.zhh)
     {
-      l = ((ddu)localddw.FNA.get(localddw.FNA.size() - 1)).Id;
-      paramq = com.tencent.mm.plugin.story.f.n.zsw;
-      if (l <= n.a.awG(this.userName).field_storyID) {
+      l = ((djh)localdjj.Hyl.get(localdjj.Hyl.size() - 1)).Id;
+      paramq = com.tencent.mm.plugin.story.f.n.AKq;
+      if (l <= n.a.aBL(this.userName).field_storyID) {
         break label551;
       }
     }
@@ -317,30 +320,30 @@ public final class e
     {
       if (paramInt1 != 0)
       {
-        l = ((ddu)localddw.FNA.get(localddw.FNA.size() - 1)).Id;
+        l = ((djh)localdjj.Hyl.get(localdjj.Hyl.size() - 1)).Id;
         paramq = this.userName;
-        paramArrayOfByte = com.tencent.mm.plugin.story.f.j.zsh;
-        if (bs.lr(paramq, j.b.dHx()))
+        paramArrayOfByte = com.tencent.mm.plugin.story.f.j.AKb;
+        if (bt.lQ(paramq, j.b.dTJ()))
         {
-          paramq = com.tencent.mm.plugin.story.f.n.zsw;
+          paramq = com.tencent.mm.plugin.story.f.n.AKq;
           paramq = this.userName;
-          d.g.b.k.h(paramq, "userName");
-          paramArrayOfByte = com.tencent.mm.plugin.story.f.j.zsh;
-          paramArrayOfByte = j.b.dVE();
-          locala = com.tencent.mm.plugin.story.i.a.zBQ;
-          paramInt1 = com.tencent.mm.plugin.story.i.a.dYi();
-          d.g.b.k.h(paramq, "userName");
+          p.h(paramq, "userName");
+          paramArrayOfByte = com.tencent.mm.plugin.story.f.j.AKb;
+          paramArrayOfByte = j.b.ehT();
+          locala = com.tencent.mm.plugin.story.i.a.ATp;
+          paramInt1 = com.tencent.mm.plugin.story.i.a.ekx();
+          p.h(paramq, "userName");
           paramq = "UPDATE " + com.tencent.mm.plugin.story.i.k.TABLE + " SET sourceType = " + paramInt1 + " Where userName = '" + paramq + "' AND storyID < " + l;
-          ac.d(com.tencent.mm.plugin.story.i.k.TAG, "updateSourceTypeBefore sql ".concat(String.valueOf(paramq)));
+          ad.d(com.tencent.mm.plugin.story.i.k.TAG, "updateSourceTypeBefore sql ".concat(String.valueOf(paramq)));
           paramArrayOfByte.db.execSQL(com.tencent.mm.plugin.story.i.k.TABLE, paramq);
         }
       }
-      a(localddw);
+      a(localdjj);
       paramq = this.callback;
       if (paramq == null) {
-        d.g.b.k.aVY("callback");
+        p.bcb("callback");
       }
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.ak.n)this);
+      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.al.n)this);
       AppMethodBeat.o(118809);
       return;
     }

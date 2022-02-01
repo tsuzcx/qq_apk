@@ -6,52 +6,49 @@ import com.tencent.mm.plugin.report.a;
 public final class gq
   extends a
 {
-  public long ecE = 0L;
-  public long ecF = 0L;
-  public long ecG = 0L;
-  public long ecH = 0L;
-  public long ecI = 0L;
+  private int eoV = 0;
+  private int eoW = -1;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(43478);
+    AppMethodBeat.i(210161);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ecE);
+    ((StringBuffer)localObject).append(this.eoV);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecF);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecG);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecH);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecI);
+    ((StringBuffer)localObject).append(this.eoW);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(43478);
+    awz((String)localObject);
+    AppMethodBeat.o(210161);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(43479);
+    AppMethodBeat.i(210162);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("AllPackageSize:").append(this.ecE);
+    ((StringBuffer)localObject).append("configId:").append(this.eoV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AllPackageClientStoragePercent:").append(this.ecF);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClientStorageFreePercent:").append(this.ecG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AbtestStatus:").append(this.ecH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WeappCountThatHasPackage:").append(this.ecI);
+    ((StringBuffer)localObject).append("result:").append(this.eoW);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43479);
+    AppMethodBeat.o(210162);
     return localObject;
   }
   
   public final int getId()
   {
-    return 15401;
+    return 20151;
+  }
+  
+  public final gq iL(int paramInt)
+  {
+    this.eoV = paramInt;
+    return this;
+  }
+  
+  public final gq iM(int paramInt)
+  {
+    this.eoW = paramInt;
+    return this;
   }
 }
 

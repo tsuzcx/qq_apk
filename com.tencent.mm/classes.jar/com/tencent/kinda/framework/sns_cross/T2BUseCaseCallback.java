@@ -31,7 +31,7 @@ public class T2BUseCaseCallback
       }
       if ((paramITransmitKvData.getInt("retcode") == 1) && (this.mBean != null) && (this.mBean.getPayInfo() != null))
       {
-        paramITransmitKvData = this.mBean.getPayInfo().hbR;
+        paramITransmitKvData = this.mBean.getPayInfo().htZ;
         if (paramITransmitKvData != null)
         {
           paramITransmitKvData = paramITransmitKvData.getString("key_transfer_bill_id");

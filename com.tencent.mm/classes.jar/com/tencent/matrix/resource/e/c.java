@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class c
 {
-  private final d cxH;
+  private final d cIC;
   final Context mContext;
   private final Handler mMainHandler;
   
@@ -29,13 +29,13 @@ public final class c
   private c(Context paramContext, d paramd, Handler paramHandler)
   {
     this.mContext = paramContext;
-    this.cxH = paramd;
+    this.cIC = paramd;
     this.mMainHandler = paramHandler;
   }
   
-  public final File Hr()
+  public final File IM()
   {
-    File localFile = this.cxH.Hs();
+    File localFile = this.cIC.IN();
     if (localFile == null)
     {
       com.tencent.matrix.g.c.w("Matrix.AndroidHeapDumper", "hprof file is null.", new Object[0]);
@@ -66,10 +66,10 @@ public final class c
         {
           public final boolean queueIdle()
           {
-            a locala = c.1.this.cxQ;
+            a locala = c.1.this.cIL;
             Toast localToast = localToast;
-            locala.cxA.set(localToast);
-            locala.cxB.countDown();
+            locala.cIv.set(localToast);
+            locala.cIw.countDown();
             return false;
           }
         });
@@ -83,7 +83,7 @@ public final class c
     try
     {
       Debug.dumpHprofData(localFile.getAbsolutePath());
-      if (((a)localObject).cxB.getCount() > 0L) {
+      if (((a)localObject).cIw.getCount() > 0L) {
         throw new IllegalStateException("Call wait() and check its result");
       }
     }
@@ -92,7 +92,7 @@ public final class c
       com.tencent.matrix.g.c.printErrStackTrace("Matrix.AndroidHeapDumper", localException, "failed to dump heap into file: %s.", new Object[] { localFile.getAbsolutePath() });
       return null;
     }
-    final Toast localToast = (Toast)localException.cxA.get();
+    final Toast localToast = (Toast)localException.cIv.get();
     this.mMainHandler.post(new Runnable()
     {
       public final void run()

@@ -2,28 +2,30 @@ package com.tencent.thumbplayer.f;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.thumbplayer.b.b.b;
 import com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadParam;
+import com.tencent.thumbplayer.utils.a;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class h
 {
-  static TPDownloadParam b(String paramString, com.tencent.thumbplayer.b.b.b paramb)
+  static TPDownloadParam b(String paramString, b paramb)
   {
-    AppMethodBeat.i(187944);
+    AppMethodBeat.i(191965);
     Object localObject;
     if (paramb != null)
     {
       localObject = new ArrayList();
-      if ((paramb.KfA == null) || (paramb.KfA.isEmpty()))
+      if ((paramb.LZu == null) || (paramb.LZu.isEmpty()))
       {
         if (!TextUtils.isEmpty(paramString)) {
           ((ArrayList)localObject).add(paramString);
         }
         for (;;)
         {
-          paramString = paramb.Kfw;
+          paramString = paramb.LZq;
           if ((paramString == null) || (paramString.length <= 0)) {
             break;
           }
@@ -39,100 +41,100 @@ public final class h
         }
         paramString = (String)localObject;
         localObject = new HashMap();
-        if (!com.tencent.thumbplayer.utils.b.isEmpty(paramb.Kfy)) {
-          ((Map)localObject).put("dl_param_url_host", paramb.Kfy);
+        if (!a.isEmpty(paramb.LZs)) {
+          ((Map)localObject).put("dl_param_url_host", paramb.LZs);
         }
-        if (!com.tencent.thumbplayer.utils.b.isEmpty(paramb.Kfz)) {
-          ((Map)localObject).put("dl_param_url_cookie", paramb.Kfz);
+        if (!a.isEmpty(paramb.LZt)) {
+          ((Map)localObject).put("dl_param_url_cookie", paramb.LZt);
         }
-        if (paramb.KfB > 0) {
-          ((Map)localObject).put("dl_param_url_expire_time", Integer.valueOf(paramb.KfB));
+        if (paramb.LZv > 0) {
+          ((Map)localObject).put("dl_param_url_expire_time", Integer.valueOf(paramb.LZv));
         }
         if (paramb.fileSize > 0L) {
           ((Map)localObject).put("dl_param_file_size", Long.valueOf(paramb.fileSize));
         }
-        if (paramb.KfC > 0L) {
-          ((Map)localObject).put("dl_param_file_duration", Long.valueOf(paramb.KfC));
+        if (paramb.LZw > 0L) {
+          ((Map)localObject).put("dl_param_file_duration", Long.valueOf(paramb.LZw));
         }
-        if (!TextUtils.isEmpty(paramb.Kfx)) {
-          ((Map)localObject).put("dl_param_play_keyid", paramb.Kfx);
+        if (!TextUtils.isEmpty(paramb.LZr)) {
+          ((Map)localObject).put("dl_param_play_keyid", paramb.LZr);
         }
-        if (!TextUtils.isEmpty(paramb.hhd)) {
-          ((Map)localObject).put("dl_param_vid", paramb.hhd);
+        if (!TextUtils.isEmpty(paramb.hzm)) {
+          ((Map)localObject).put("dl_param_vid", paramb.hzm);
         }
-        if (!TextUtils.isEmpty(paramb.KfD))
+        if (!TextUtils.isEmpty(paramb.LZx))
         {
-          ((Map)localObject).put("dl_param_play_definition", paramb.KfD);
-          ((Map)localObject).put("dl_param_current_format", paramb.KfD);
+          ((Map)localObject).put("dl_param_play_definition", paramb.LZx);
+          ((Map)localObject).put("dl_param_current_format", paramb.LZx);
         }
-        if (paramb.KfE > 0) {
-          ((Map)localObject).put("dl_param_current_formatid", Integer.valueOf(paramb.KfE));
+        if (paramb.LZy > 0) {
+          ((Map)localObject).put("dl_param_current_formatid", Integer.valueOf(paramb.LZy));
         }
-        if (!com.tencent.thumbplayer.utils.b.isEmpty(paramb.KfF)) {
-          ((Map)localObject).put("dl_param_format_info", paramb.KfF);
+        if (!a.isEmpty(paramb.LZz)) {
+          ((Map)localObject).put("dl_param_format_info", paramb.LZz);
         }
-        ((Map)localObject).put("dl_param_source_is_charge", Boolean.valueOf(paramb.KfG));
-        ((Map)localObject).put("dl_param_cache_need_encrypt", Boolean.valueOf(paramb.KfH));
-        ((Map)localObject).put("dl_param_is_offline", Boolean.valueOf(paramb.KfV));
-        ((Map)localObject).put("dl_param_enable_expand_donwload_url", Boolean.valueOf(paramb.KfR));
-        if (paramb.KfT > 0L) {
-          ((Map)localObject).put("dl_param_preload_size", Long.valueOf(paramb.KfT));
+        ((Map)localObject).put("dl_param_source_is_charge", Boolean.valueOf(paramb.LZA));
+        ((Map)localObject).put("dl_param_cache_need_encrypt", Boolean.valueOf(paramb.LZB));
+        ((Map)localObject).put("dl_param_is_offline", Boolean.valueOf(paramb.LZP));
+        ((Map)localObject).put("dl_param_enable_expand_donwload_url", Boolean.valueOf(paramb.LZL));
+        if (paramb.LZN > 0L) {
+          ((Map)localObject).put("dl_param_preload_size", Long.valueOf(paramb.LZN));
         }
-        if (paramb.KfU > 0L) {
-          ((Map)localObject).put("dl_param_preload_duration", Long.valueOf(paramb.KfU));
+        if (paramb.LZO > 0L) {
+          ((Map)localObject).put("dl_param_preload_duration", Long.valueOf(paramb.LZO));
         }
         if (!TextUtils.isEmpty(paramb.savePath)) {
           ((Map)localObject).put("dl_param_save_path", paramb.savePath);
         }
-        if (paramb.KfI > 0) {
-          ((Map)localObject).put("dl_param_play_start_time", Integer.valueOf(paramb.KfI));
+        if (paramb.LZC > 0) {
+          ((Map)localObject).put("dl_param_play_start_time", Integer.valueOf(paramb.LZC));
         }
-        if (paramb.KfJ > 0) {
-          ((Map)localObject).put("dl_param_play_end_time", Integer.valueOf(paramb.KfJ));
+        if (paramb.LZD > 0) {
+          ((Map)localObject).put("dl_param_play_end_time", Integer.valueOf(paramb.LZD));
         }
-        if (paramb.KfK > 0) {
-          ((Map)localObject).put("dl_param_play_clip_count", Integer.valueOf(paramb.KfK));
+        if (paramb.LZE > 0) {
+          ((Map)localObject).put("dl_param_play_clip_count", Integer.valueOf(paramb.LZE));
         }
-        if (paramb.KfL > 0) {
-          ((Map)localObject).put("dl_param_play_clip_no", Integer.valueOf(paramb.KfL));
+        if (paramb.LZF > 0) {
+          ((Map)localObject).put("dl_param_play_clip_no", Integer.valueOf(paramb.LZF));
         }
-        if (!TextUtils.isEmpty(paramb.KfM)) {
-          ((Map)localObject).put("dl_param_vinfo_base", paramb.KfM);
+        if (!TextUtils.isEmpty(paramb.LZG)) {
+          ((Map)localObject).put("dl_param_vinfo_base", paramb.LZG);
         }
-        if (!TextUtils.isEmpty(paramb.KfN)) {
-          ((Map)localObject).put("dl_param_vinfo_link_vid", paramb.KfN);
+        if (!TextUtils.isEmpty(paramb.LZH)) {
+          ((Map)localObject).put("dl_param_vinfo_link_vid", paramb.LZH);
         }
-        if (!TextUtils.isEmpty(paramb.qYF)) {
-          ((Map)localObject).put("dl_param_file_md5", paramb.qYF);
+        if (!TextUtils.isEmpty(paramb.rJV)) {
+          ((Map)localObject).put("dl_param_file_md5", paramb.rJV);
         }
-        if (!TextUtils.isEmpty(paramb.KfO)) {
-          ((Map)localObject).put("dl_param_vinfo_m3u8", paramb.KfO);
+        if (!TextUtils.isEmpty(paramb.LZI)) {
+          ((Map)localObject).put("dl_param_vinfo_m3u8", paramb.LZI);
         }
-        if (paramb.KfP > 0L) {
-          ((Map)localObject).put("dl_param_vinfo_tm", Long.valueOf(paramb.KfP));
+        if (paramb.LZJ > 0L) {
+          ((Map)localObject).put("dl_param_vinfo_tm", Long.valueOf(paramb.LZJ));
         }
-        if (paramb.KfQ > 0) {
-          ((Map)localObject).put("dl_param_vinfo_fp2p", Integer.valueOf(paramb.KfQ));
+        if (paramb.LZK > 0) {
+          ((Map)localObject).put("dl_param_vinfo_fp2p", Integer.valueOf(paramb.LZK));
         }
-        if (paramb.KfS > 0) {
-          ((Map)localObject).put("dl_param_vinfo_testid", Integer.valueOf(paramb.KfS));
+        if (paramb.LZM > 0) {
+          ((Map)localObject).put("dl_param_vinfo_testid", Integer.valueOf(paramb.LZM));
         }
-        if (!com.tencent.thumbplayer.utils.b.isEmpty(paramb.extInfoMap)) {
+        if (!a.isEmpty(paramb.extInfoMap)) {
           ((Map)localObject).putAll(paramb.extInfoMap);
         }
-        if (!paramb.KfW) {
+        if (!paramb.LZQ) {
           break label839;
         }
         ((Map)localObject).put("dl_param_adaptive_type", Integer.valueOf(3));
         label794:
-        ((Map)localObject).put("dl_param_format_nodes", paramb.KfX);
+        ((Map)localObject).put("dl_param_format_nodes", paramb.LZR);
       }
     }
-    for (paramString = new TPDownloadParam(paramString, e.aeQ(paramb.dlType), (Map)localObject);; paramString = new TPDownloadParam(paramb, 0, null))
+    for (paramString = new TPDownloadParam(paramString, e.ahq(paramb.dlType), (Map)localObject);; paramString = new TPDownloadParam(paramb, 0, null))
     {
-      AppMethodBeat.o(187944);
+      AppMethodBeat.o(191965);
       return paramString;
-      paramString = paramb.KfA;
+      paramString = paramb.LZu;
       break;
       label839:
       ((Map)localObject).put("dl_param_adaptive_type", Integer.valueOf(0));

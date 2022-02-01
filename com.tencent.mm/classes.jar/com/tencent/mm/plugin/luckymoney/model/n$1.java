@@ -15,13 +15,13 @@ public final class n$1
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
-    this.umr.cancel();
+    this.voX.cancel();
     AppMethodBeat.o(163568);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.n.1
  * JD-Core Version:    0.7.0.1
  */

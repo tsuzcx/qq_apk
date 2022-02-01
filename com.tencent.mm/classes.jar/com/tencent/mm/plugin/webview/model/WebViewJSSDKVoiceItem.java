@@ -32,21 +32,21 @@ public class WebViewJSSDKVoiceItem
     return 0;
   }
   
-  public final WebViewJSSDKFileItem fcG()
+  public final WebViewJSSDKFileItem fts()
   {
     AppMethodBeat.i(79026);
-    this.jAH = s.getFullPath(this.fileName);
-    this.dgl = aw.aBZ(this.jAH);
+    this.jUC = s.getFullPath(this.fileName);
+    this.drH = ax.aHA(this.jUC);
     AppMethodBeat.o(79026);
     return this;
   }
   
-  public final String fcH()
+  public final String ftt()
   {
     return "speex";
   }
   
-  public final String fda()
+  public final String ftu()
   {
     return "voice";
   }

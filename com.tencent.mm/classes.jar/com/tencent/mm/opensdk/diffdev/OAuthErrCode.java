@@ -15,14 +15,17 @@ public enum OAuthErrCode
     WechatAuth_Err_JsonDecodeErr = new OAuthErrCode("WechatAuth_Err_JsonDecodeErr", 3, -3);
     WechatAuth_Err_Cancel = new OAuthErrCode("WechatAuth_Err_Cancel", 4, -4);
     WechatAuth_Err_Timeout = new OAuthErrCode("WechatAuth_Err_Timeout", 5, -5);
-    WechatAuth_Err_Auth_Stopped = new OAuthErrCode("WechatAuth_Err_Auth_Stopped", 6, -6);
-    $VALUES = new OAuthErrCode[] { WechatAuth_Err_OK, WechatAuth_Err_NormalErr, WechatAuth_Err_NetworkErr, WechatAuth_Err_JsonDecodeErr, WechatAuth_Err_Cancel, WechatAuth_Err_Timeout, WechatAuth_Err_Auth_Stopped };
+    OAuthErrCode localOAuthErrCode = new OAuthErrCode("WechatAuth_Err_Auth_Stopped", 6, -6);
+    WechatAuth_Err_Auth_Stopped = localOAuthErrCode;
+    $VALUES = new OAuthErrCode[] { WechatAuth_Err_OK, WechatAuth_Err_NormalErr, WechatAuth_Err_NetworkErr, WechatAuth_Err_JsonDecodeErr, WechatAuth_Err_Cancel, WechatAuth_Err_Timeout, localOAuthErrCode };
     AppMethodBeat.o(3748);
   }
   
   private OAuthErrCode(int paramInt)
   {
+    AppMethodBeat.i(196974);
     this.code = paramInt;
+    AppMethodBeat.o(196974);
   }
   
   public final int getCode()
@@ -40,7 +43,7 @@ public enum OAuthErrCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.OAuthErrCode
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,19 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.mm.plugin.sns.storage.p;
+import com.tencent.mm.vending.base.Vending;
+
 public abstract interface z
 {
-  public abstract aj dNi();
+  public abstract p QT(int paramInt);
   
-  public abstract b dNj();
+  public abstract void dZO();
   
-  public abstract bm dNk();
+  public abstract Vending dZP();
   
-  public abstract bo dNl();
+  public abstract int getCount();
+  
+  public abstract void notifyDataSetChanged();
 }
 
 

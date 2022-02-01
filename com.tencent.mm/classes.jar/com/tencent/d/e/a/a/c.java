@@ -3,20 +3,20 @@ package com.tencent.d.e.a.a;
 public abstract class c
   implements Runnable
 {
-  public abstract void aQi();
+  public abstract void aTu();
   
-  public abstract void fCC();
+  public abstract void fTS();
   
   public void run()
   {
     try
     {
-      aQi();
+      aTu();
       return;
     }
     catch (Throwable localThrowable)
     {
-      fCC();
+      fTS();
     }
   }
 }

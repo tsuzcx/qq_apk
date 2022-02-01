@@ -15,13 +15,13 @@ import org.xmlpull.v1.XmlPullParser;
 
 public final class a
 {
-  private static final ThreadLocal<TypedValue> YR = new ThreadLocal();
-  private static final WeakHashMap<Context, SparseArray<a>> YS = new WeakHashMap(0);
-  private static final Object YT = new Object();
+  private static final ThreadLocal<TypedValue> aaG = new ThreadLocal();
+  private static final WeakHashMap<Context, SparseArray<a>> aaH = new WeakHashMap(0);
+  private static final Object aaI = new Object();
   
   public static Drawable l(Context paramContext, int paramInt)
   {
-    return g.iL().l(paramContext, paramInt);
+    return g.jb().l(paramContext, paramInt);
   }
   
   public static ColorStateList m(Context paramContext, int paramInt)
@@ -39,14 +39,14 @@ public final class a
     } while (localObject2 != null);
     ColorStateList localColorStateList = p(paramContext, paramInt);
     if (localColorStateList != null) {
-      synchronized (YT)
+      synchronized (aaI)
       {
-        localObject2 = (SparseArray)YS.get(paramContext);
+        localObject2 = (SparseArray)aaH.get(paramContext);
         localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = new SparseArray();
-          YS.put(paramContext, localObject1);
+          aaH.put(paramContext, localObject1);
         }
         ((SparseArray)localObject1).append(paramInt, new a(localColorStateList, paramContext.getResources().getConfiguration()));
         return localColorStateList;
@@ -58,12 +58,12 @@ public final class a
   private static ColorStateList p(Context paramContext, int paramInt)
   {
     Resources localResources = paramContext.getResources();
-    Object localObject2 = (TypedValue)YR.get();
+    Object localObject2 = (TypedValue)aaG.get();
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new TypedValue();
-      YR.set(localObject1);
+      aaG.set(localObject1);
     }
     localResources.getValue(paramInt, (TypedValue)localObject1, true);
     if ((((TypedValue)localObject1).type >= 28) && (((TypedValue)localObject1).type <= 31)) {}
@@ -83,17 +83,17 @@ public final class a
   
   private static ColorStateList q(Context paramContext, int paramInt)
   {
-    synchronized (YT)
+    synchronized (aaI)
     {
-      SparseArray localSparseArray = (SparseArray)YS.get(paramContext);
+      SparseArray localSparseArray = (SparseArray)aaH.get(paramContext);
       if ((localSparseArray != null) && (localSparseArray.size() > 0))
       {
         a locala = (a)localSparseArray.get(paramInt);
         if (locala != null)
         {
-          if (locala.YV.equals(paramContext.getResources().getConfiguration()))
+          if (locala.aaK.equals(paramContext.getResources().getConfiguration()))
           {
-            paramContext = locala.YU;
+            paramContext = locala.aaJ;
             return paramContext;
           }
           localSparseArray.remove(paramInt);
@@ -105,13 +105,13 @@ public final class a
   
   static final class a
   {
-    final ColorStateList YU;
-    final Configuration YV;
+    final ColorStateList aaJ;
+    final Configuration aaK;
     
     a(ColorStateList paramColorStateList, Configuration paramConfiguration)
     {
-      this.YU = paramColorStateList;
-      this.YV = paramConfiguration;
+      this.aaJ = paramColorStateList;
+      this.aaK = paramConfiguration;
     }
   }
 }

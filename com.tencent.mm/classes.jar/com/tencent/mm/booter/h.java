@@ -6,34 +6,34 @@ import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.h.a;
-import com.tencent.mm.bb.i;
-import com.tencent.mm.model.az;
+import com.tencent.mm.bc.i;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.u;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.plugin.webwx.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
 
 public final class h
 {
   public static void run()
   {
     AppMethodBeat.i(19885);
-    Object localObject1 = ai.getContext();
+    Object localObject1 = aj.getContext();
     Object localObject4 = new h.a()
     {
-      public final void hl(int paramAnonymousInt)
+      public final void hs(int paramAnonymousInt)
       {
         AppMethodBeat.i(19884);
-        ac.i("MicroMsg.PostTaskLightweightJob", "CrashStatus report: key %s ", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(25L, paramAnonymousInt, 1L, false);
+        ad.i("MicroMsg.PostTaskLightweightJob", "CrashStatus report: key %s ", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(25L, paramAnonymousInt, 1L, false);
         AppMethodBeat.o(19884);
       }
     };
@@ -77,27 +77,27 @@ public final class h
         if (199 != i) {
           continue;
         }
-        if (!u.axw().equals(localObject5)) {
+        if (!u.aAm().equals(localObject5)) {
           break;
         }
       }
-      localObject1 = ai.getContext();
-      i = com.tencent.mm.m.g.ZY().getInt("AndroidGooglePlayCrashUploadSizeLimit", 8192);
+      localObject1 = aj.getContext();
+      i = com.tencent.mm.n.g.acA().getInt("AndroidGooglePlayCrashUploadSizeLimit", 8192);
       if ((localObject1 == null) || (i <= 0))
       {
-        az.ayM();
-        if (bs.Ap(bs.a((Long)c.agA().get(ah.a.GDx, null), 0L)) > 21600000L)
+        ba.aBQ();
+        if (bt.Df(bt.a((Long)c.ajl().get(al.a.IpQ, null), 0L)) > 21600000L)
         {
-          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(279L, com.tencent.mm.m.g.ZY().getInt("AndroidDynamicConfigVer", 0) % 16, 1L, false);
-          az.ayM();
-          c.agA().set(ah.a.GDx, Long.valueOf(bs.eWj()));
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(279L, com.tencent.mm.n.g.acA().getInt("AndroidDynamicConfigVer", 0) % 16, 1L, false);
+          ba.aBQ();
+          c.ajl().set(al.a.IpQ, Long.valueOf(bt.flT()));
         }
-        az.ayM();
-        if (bs.Ap(bs.a((Long)c.agA().get(ah.a.GDy, null), 0L)) > 21600000L)
+        ba.aBQ();
+        if (bt.Df(bt.a((Long)c.ajl().get(al.a.IpR, null), 0L)) > 21600000L)
         {
-          az.ayM();
-          c.agA().set(ah.a.GDy, Long.valueOf(bs.eWj()));
-          localObject4 = o.aJy();
+          ba.aBQ();
+          c.ajl().set(al.a.IpR, Long.valueOf(bt.flT()));
+          localObject4 = o.aMJ();
           localObject1 = new int[6];
           Object tmp229_227 = localObject1;
           tmp229_227[0] = 0;
@@ -114,9 +114,9 @@ public final class h
           tmp249_245;
           try
           {
-            localObject5 = "select status, videofuncflag, human from videoinfo2 where lastmodifytime > ".concat(String.valueOf(bs.aNx() - 21600L));
-            ac.i("MicroMsg.VideoInfoStorage", "reportVideoMsgCount sql:%s", new Object[] { localObject5 });
-            localObject4 = ((t)localObject4).hpA.a((String)localObject5, null, 2);
+            localObject5 = "select status, videofuncflag, human from videoinfo2 where lastmodifytime > ".concat(String.valueOf(bt.aQJ() - 21600L));
+            ad.i("MicroMsg.VideoInfoStorage", "reportVideoMsgCount sql:%s", new Object[] { localObject5 });
+            localObject4 = ((t)localObject4).hHS.a((String)localObject5, null, 2);
             if (!((Cursor)localObject4).moveToNext()) {
               break label1152;
             }
@@ -132,11 +132,11 @@ public final class h
             i = 0;
             localObject1[i] += 1;
             continue;
-            l = bs.a((Long)com.tencent.mm.kernel.g.agR().agA().get(81939, null), 0L);
+            l = bt.a((Long)com.tencent.mm.kernel.g.ajC().ajl().get(81939, null), 0L);
           }
           catch (Exception localException) {}
         }
-        if (bs.eWj() - l <= 86400000L) {
+        if (bt.flT() - l <= 86400000L) {
           break label1246;
         }
         i = 1;
@@ -144,21 +144,21 @@ public final class h
           new i();
         }
         l = System.currentTimeMillis();
-        az.ayM();
-        bool = ((Boolean)c.agA().get(233475, Boolean.FALSE)).booleanValue();
-        az.ayM();
-        if (c.awB().fav() > 0) {
+        ba.aBQ();
+        bool = ((Boolean)c.ajl().get(233475, Boolean.FALSE)).booleanValue();
+        ba.aBQ();
+        if (c.azp().fqy() > 0) {
           break label1251;
         }
         if (!bool)
         {
-          az.ayM();
-          c.awG().aNG("officialaccounts");
-          az.ayM();
-          c.agA().set(233475, Boolean.TRUE);
+          ba.aBQ();
+          c.azv().aTx("officialaccounts");
+          ba.aBQ();
+          c.ajl().set(233475, Boolean.TRUE);
         }
-        com.tencent.mm.plugin.webwx.a.g.eHq().eHs().eHp();
-        ac.i("MicroMsg.PostTaskLightweightJob", "use time %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+        com.tencent.mm.plugin.webwx.a.g.eWj().eWl().eWi();
+        ad.i("MicroMsg.PostTaskLightweightJob", "use time %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
         AppMethodBeat.o(19885);
         return;
         localObject2 = localException.edit();
@@ -176,7 +176,7 @@ public final class h
           }
           if (localObject2[1].equals("anr"))
           {
-            ((h.a)localObject4).hl(10);
+            ((h.a)localObject4).hs(10);
             break label1274;
           }
         }
@@ -185,67 +185,67 @@ public final class h
           localObject2 = localObject5[i].split(",");
           continue;
         }
-        ((h.a)localObject4).hl(11);
+        ((h.a)localObject4).hs(11);
         if ("com.tencent.mm".equals(localObject2[0])) {
-          ((h.a)localObject4).hl(14);
+          ((h.a)localObject4).hs(14);
         }
         if ("com.tencent.mm:push".equals(localObject2[0])) {
-          ((h.a)localObject4).hl(17);
+          ((h.a)localObject4).hs(17);
         }
         if ("com.tencent.mm:tools".equals(localObject2[0])) {
-          ((h.a)localObject4).hl(20);
+          ((h.a)localObject4).hs(20);
         }
         if ("com.tencent.mm:toolsmp".equals(localObject2[0])) {
-          ((h.a)localObject4).hl(20);
+          ((h.a)localObject4).hs(20);
         }
         if (localObject2[1].equals("java"))
         {
-          ((h.a)localObject4).hl(12);
+          ((h.a)localObject4).hs(12);
           if ("com.tencent.mm".equals(localObject2[0])) {
-            ((h.a)localObject4).hl(15);
+            ((h.a)localObject4).hs(15);
           }
           if ("com.tencent.mm:push".equals(localObject2[0])) {
-            ((h.a)localObject4).hl(18);
+            ((h.a)localObject4).hs(18);
           }
           if ("com.tencent.mm:tools".equals(localObject2[0])) {
-            ((h.a)localObject4).hl(21);
+            ((h.a)localObject4).hs(21);
           }
           if ("com.tencent.mm:toolsmp".equals(localObject2[0])) {
-            ((h.a)localObject4).hl(21);
+            ((h.a)localObject4).hs(21);
           }
         }
         if (localObject2[1].equals("jni"))
         {
-          ((h.a)localObject4).hl(13);
+          ((h.a)localObject4).hs(13);
           if ("com.tencent.mm".equals(localObject2[0])) {
-            ((h.a)localObject4).hl(16);
+            ((h.a)localObject4).hs(16);
           }
           if ("com.tencent.mm:push".equals(localObject2[0])) {
-            ((h.a)localObject4).hl(19);
+            ((h.a)localObject4).hs(19);
           }
           if ("com.tencent.mm:tools".equals(localObject2[0])) {
-            ((h.a)localObject4).hl(22);
+            ((h.a)localObject4).hs(22);
           }
           if ("com.tencent.mm:toolsmp".equals(localObject2[0])) {
-            ((h.a)localObject4).hl(22);
+            ((h.a)localObject4).hs(22);
           }
         }
         if (!localObject2[1].equals("first")) {
           break label1274;
         }
         if ("com.tencent.mm".equals(localObject2[0])) {
-          ((h.a)localObject4).hl(23);
+          ((h.a)localObject4).hs(23);
         }
         if ("com.tencent.mm:push".equals(localObject2[0])) {
-          ((h.a)localObject4).hl(24);
+          ((h.a)localObject4).hs(24);
         }
         if ("com.tencent.mm:tools".equals(localObject2[0])) {
-          ((h.a)localObject4).hl(25);
+          ((h.a)localObject4).hs(25);
         }
         if (!"com.tencent.mm:toolsmp".equals(localObject2[0])) {
           break label1274;
         }
-        ((h.a)localObject4).hl(25);
+        ((h.a)localObject4).hs(25);
         break label1274;
       }
       if (j == 3)
@@ -254,7 +254,7 @@ public final class h
         break label1281;
         label1152:
         ((Cursor)localObject4).close();
-        com.tencent.mm.plugin.report.service.h.wUl.f(12696, new Object[] { Integer.valueOf(10010), Integer.valueOf(localThrowable2[0]), Integer.valueOf(localThrowable2[1]), Integer.valueOf(localThrowable2[2]), Integer.valueOf(localThrowable2[3]), Integer.valueOf(localThrowable2[4]), Integer.valueOf(localThrowable2[5]) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(12696, new Object[] { Integer.valueOf(10010), Integer.valueOf(localThrowable2[0]), Integer.valueOf(localThrowable2[1]), Integer.valueOf(localThrowable2[2]), Integer.valueOf(localThrowable2[3]), Integer.valueOf(localThrowable2[4]), Integer.valueOf(localThrowable2[5]) });
         continue;
         label1246:
         i = 0;
@@ -263,8 +263,8 @@ public final class h
         if (!bool) {
           continue;
         }
-        az.ayM();
-        c.agA().set(233475, Boolean.FALSE);
+        ba.aBQ();
+        c.ajl().set(233475, Boolean.FALSE);
         continue;
         label1274:
         i += 1;

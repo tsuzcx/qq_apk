@@ -7,7 +7,7 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.g;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.h;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -19,9 +19,9 @@ import java.util.Objects;
 public final class c
 {
   public Context context;
-  public Map<String, d> kjK;
-  public h kjL;
-  public g kjM;
+  public Map<String, d> kEI;
+  public h kEJ;
+  public g kEK;
   
   public c(Context paramContext)
   {
@@ -51,16 +51,16 @@ public final class c
     return false;
   }
   
-  public final List<com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d> bfD()
+  public final List<com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d> bjg()
   {
     AppMethodBeat.i(175628);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.kjK.values().iterator();
+    Iterator localIterator = this.kEI.values().iterator();
     while (localIterator.hasNext())
     {
       d locald = (d)localIterator.next();
-      if (locald.kjP != null) {
-        localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d(bs.nullAsNil(locald.kjP.getDevice().getName()), locald.cIZ));
+      if (locald.kEN != null) {
+        localArrayList.add(new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d(bt.nullAsNil(locald.kEN.getDevice().getName()), locald.cUi));
       }
     }
     AppMethodBeat.o(175628);
@@ -69,7 +69,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.c
  * JD-Core Version:    0.7.0.1
  */

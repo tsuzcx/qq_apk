@@ -1,54 +1,68 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc.a;
 
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ar;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.jsapi.at;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.a.ae;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
+import d.o;
 import d.u;
 import d.v;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiEventOnNFCDiscovered;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiEvent;", "()V", "dispatch", "", "techs", "", "", "data", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "setContext", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiEventOnNFCDiscovered;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiEvent;", "()V", "dispatch", "", "id", "", "techs", "", "", "data", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "setContext", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
 public final class c
-  extends ar
+  extends at
 {
   public static final int CTRL_INDEX = 790;
   public static final String NAME = "onNFCDiscovered";
-  public static final a kCN;
+  public static final a kYU;
   
   static
   {
     AppMethodBeat.i(183645);
-    kCN = new a((byte)0);
+    kYU = new a((byte)0);
     AppMethodBeat.o(183645);
   }
   
-  public final void a(List<String> paramList, HashMap<String, Object> paramHashMap)
+  public final void a(byte[] paramArrayOfByte, List<String> paramList, HashMap<String, Object> paramHashMap)
   {
-    AppMethodBeat.i(183640);
-    k.h(paramList, "techs");
+    AppMethodBeat.i(199665);
+    p.h(paramList, "techs");
+    Object localObject = paramArrayOfByte;
+    if (paramArrayOfByte == null) {
+      localObject = new byte[0];
+    }
+    paramArrayOfByte = Base64.encode((byte[])localObject, 2);
+    p.g(paramArrayOfByte, "Base64.encode(id ?: ByteArray(0), Base64.NO_WRAP)");
+    localObject = StandardCharsets.UTF_8;
+    p.g(localObject, "StandardCharsets.UTF_8");
+    paramArrayOfByte = new String(paramArrayOfByte, (Charset)localObject);
     if (paramHashMap != null)
     {
+      paramHashMap.put("id", paramArrayOfByte);
       paramHashMap.put("techs", paramList);
       if (paramHashMap == null) {}
     }
-    for (paramList = (Map)paramHashMap;; paramList = ae.b(u.Q("techs", paramList)))
+    for (paramArrayOfByte = (Map)paramHashMap;; paramArrayOfByte = ae.a(new o[] { u.S("id", paramArrayOfByte), u.S("techs", paramList) }))
     {
-      B(paramList).beN();
-      AppMethodBeat.o(183640);
+      B(paramArrayOfByte).bir();
+      AppMethodBeat.o(199665);
       return;
     }
   }
   
-  public final void beN()
+  public final void bir()
   {
     AppMethodBeat.i(183642);
-    ac.d("MicroMsg.AppBrand.JsApiEventOnNFCDiscovered", "dispatch, data: " + getData());
-    super.beN();
+    ad.d("MicroMsg.AppBrand.JsApiEventOnNFCDiscovered", "dispatch, data: " + getData());
+    super.bir();
     AppMethodBeat.o(183642);
   }
   
@@ -67,12 +81,12 @@ public final class c
     return paramc;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiEventOnNFCDiscovered$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_TECHS", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiEventOnNFCDiscovered$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_ID", "PARAM_TECHS", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.a.c
  * JD-Core Version:    0.7.0.1
  */

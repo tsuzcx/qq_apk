@@ -10,9 +10,9 @@ import com.tencent.mm.booter.MMReceivers.ConnectionReceiver;
 import com.tencent.mm.booter.MountReceiver;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.downloader.model.FileDownloadReceiver;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 
 public class BroadcastHelper
@@ -60,11 +60,11 @@ public class BroadcastHelper
   {
     int j = 0;
     AppMethodBeat.i(20708);
-    ac.i("MicroMsg.BroadcastHelper", "registerBroadcast: " + paramBroadcastReceiver.getClass().getSimpleName());
+    ad.i("MicroMsg.BroadcastHelper", "registerBroadcast: " + paramBroadcastReceiver.getClass().getSimpleName());
     IntentFilter localIntentFilter = new IntentFilter();
     int k;
     int i;
-    if (!bs.T(paramArrayOfString1))
+    if (!bt.V(paramArrayOfString1))
     {
       k = paramArrayOfString1.length;
       i = 0;
@@ -74,7 +74,7 @@ public class BroadcastHelper
         i += 1;
       }
     }
-    if (!bs.T(paramArrayOfString2))
+    if (!bt.V(paramArrayOfString2))
     {
       k = paramArrayOfString2.length;
       i = j;
@@ -84,16 +84,16 @@ public class BroadcastHelper
         i += 1;
       }
     }
-    ai.getContext().registerReceiver(paramBroadcastReceiver, localIntentFilter);
+    aj.getContext().registerReceiver(paramBroadcastReceiver, localIntentFilter);
     AppMethodBeat.o(20708);
   }
   
   public static void unRegisterBroadcast(BroadcastReceiver paramBroadcastReceiver)
   {
     AppMethodBeat.i(20709);
-    ac.i("MicroMsg.BroadcastHelper", "unRegisterBroadcast: " + paramBroadcastReceiver.getClass().getSimpleName());
+    ad.i("MicroMsg.BroadcastHelper", "unRegisterBroadcast: " + paramBroadcastReceiver.getClass().getSimpleName());
     if (paramBroadcastReceiver != null) {
-      ai.getContext().unregisterReceiver(paramBroadcastReceiver);
+      aj.getContext().unregisterReceiver(paramBroadcastReceiver);
     }
     AppMethodBeat.o(20709);
   }
@@ -101,15 +101,15 @@ public class BroadcastHelper
   public void registerBroadcasts()
   {
     AppMethodBeat.i(20710);
-    ac.i("MicroMsg.BroadcastHelper", "registerBroadcasts()");
+    ad.i("MicroMsg.BroadcastHelper", "registerBroadcasts()");
     Object localObject;
-    if ((ai.eVb()) && (d.kZ(24)))
+    if ((aj.fkG()) && (d.ly(24)))
     {
       localObject = new MMReceivers.ConnectionReceiver();
       broadcastReceiverHashMap.put(MMReceivers.ConnectionReceiver.class.getSimpleName(), localObject);
       registerBroadcast((BroadcastReceiver)localObject, "android.net.conn.CONNECTIVITY_CHANGE");
     }
-    if ((ai.ciE()) && (d.kZ(26)))
+    if ((aj.cnC()) && (d.ly(26)))
     {
       localObject = new FileDownloadReceiver();
       broadcastReceiverHashMap.put(FileDownloadReceiver.class.getSimpleName(), localObject);
@@ -124,13 +124,13 @@ public class BroadcastHelper
   public void unRegisterBroadcasts()
   {
     AppMethodBeat.i(20711);
-    ac.i("MicroMsg.BroadcastHelper", "unRegisterBroadcasts()");
+    ad.i("MicroMsg.BroadcastHelper", "unRegisterBroadcasts()");
     try
     {
-      if ((ai.eVb()) && (d.kZ(24))) {
+      if ((aj.fkG()) && (d.ly(24))) {
         unRegisterBroadcast((MMReceivers.ConnectionReceiver)broadcastReceiverHashMap.get(MMReceivers.ConnectionReceiver.class.getSimpleName()));
       }
-      if ((ai.ciE()) && (d.kZ(26)))
+      if ((aj.cnC()) && (d.ly(26)))
       {
         unRegisterBroadcast((FileDownloadReceiver)broadcastReceiverHashMap.get(FileDownloadReceiver.class.getSimpleName()));
         unRegisterBroadcast((InstallReceiver)broadcastReceiverHashMap.get(InstallReceiver.class.getSimpleName()));
@@ -141,7 +141,7 @@ public class BroadcastHelper
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.BroadcastHelper", "unRegisterBroadcasts() Exception = %s ", new Object[] { localException.getMessage() });
+      ad.e("MicroMsg.BroadcastHelper", "unRegisterBroadcasts() Exception = %s ", new Object[] { localException.getMessage() });
       AppMethodBeat.o(20711);
     }
   }

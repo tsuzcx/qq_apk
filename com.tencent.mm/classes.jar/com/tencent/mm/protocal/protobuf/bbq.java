@@ -4,51 +4,53 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bbq
-  extends cpx
+  extends cvc
 {
-  public int DWS;
-  public int DWT;
-  public int ESd;
+  public String duW;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91499);
+    AppMethodBeat.i(40107);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
+        paramVarArgs.lC(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aR(2, this.DWS);
-      paramVarArgs.aR(3, this.DWT);
-      paramVarArgs.aR(4, this.ESd);
-      AppMethodBeat.o(91499);
+      if (this.duW != null) {
+        paramVarArgs.d(2, this.duW);
+      }
+      paramVarArgs.aS(3, this.scene);
+      AppMethodBeat.o(40107);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label446;
+        break label414;
       }
     }
-    label446:
-    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label414:
+    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bx(2, this.DWS);
-      int j = f.a.a.b.b.a.bx(3, this.DWT);
-      int k = f.a.a.b.b.a.bx(4, this.ESd);
-      AppMethodBeat.o(91499);
-      return paramInt + i + j + k;
+      int i = paramInt;
+      if (this.duW != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.duW);
+      }
+      paramInt = f.a.a.b.b.a.bz(3, this.scene);
+      AppMethodBeat.o(40107);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(91499);
+        AppMethodBeat.o(40107);
         return 0;
       }
       if (paramInt == 3)
@@ -59,44 +61,40 @@ public final class bbq
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(91499);
+          AppMethodBeat.o(40107);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
+            localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbbq.BaseRequest = ((iv)localObject1);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbbq.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(91499);
+          AppMethodBeat.o(40107);
           return 0;
         case 2: 
-          localbbq.DWS = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(91499);
-          return 0;
-        case 3: 
-          localbbq.DWT = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(91499);
+          localbbq.duW = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(40107);
           return 0;
         }
-        localbbq.ESd = ((f.a.a.a.a)localObject1).LVo.xF();
-        AppMethodBeat.o(91499);
+        localbbq.scene = ((f.a.a.a.a)localObject1).NPN.zc();
+        AppMethodBeat.o(40107);
         return 0;
       }
-      AppMethodBeat.o(91499);
+      AppMethodBeat.o(40107);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bbq
  * JD-Core Version:    0.7.0.1
  */

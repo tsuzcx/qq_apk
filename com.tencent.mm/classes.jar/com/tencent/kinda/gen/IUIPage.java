@@ -43,6 +43,8 @@ public abstract class IUIPage
   
   public abstract void stopLoading();
   
+  public abstract boolean useSafeAreaToLayout();
+  
   public abstract void viewDidTransitionToNewSize();
   
   static final class CppProxy
@@ -114,6 +116,8 @@ public abstract class IUIPage
     private native void native_startLoading(long paramLong, String paramString, boolean paramBoolean);
     
     private native void native_stopLoading(long paramLong);
+    
+    private native boolean native_useSafeAreaToLayout(long paramLong);
     
     private native void native_viewDidTransitionToNewSize(long paramLong);
     
@@ -372,6 +376,20 @@ public abstract class IUIPage
       }
       native_stopLoading(this.nativeRef);
       AppMethodBeat.o(135770);
+    }
+    
+    public final boolean useSafeAreaToLayout()
+    {
+      AppMethodBeat.i(190324);
+      if ((!$assertionsDisabled) && (this.destroyed.get()))
+      {
+        AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(190324);
+        throw localAssertionError;
+      }
+      boolean bool = native_useSafeAreaToLayout(this.nativeRef);
+      AppMethodBeat.o(190324);
+      return bool;
     }
     
     public final void viewDidTransitionToNewSize()

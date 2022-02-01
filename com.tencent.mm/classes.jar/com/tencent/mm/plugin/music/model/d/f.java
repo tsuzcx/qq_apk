@@ -3,70 +3,58 @@ package com.tencent.mm.plugin.music.model.d;
 import android.text.TextUtils;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.a;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.x;
 import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.bxd;
-import com.tencent.mm.protocal.protobuf.cpc;
-import com.tencent.mm.protocal.protobuf.cpd;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.cbt;
+import com.tencent.mm.protocal.protobuf.cuh;
+import com.tencent.mm.protocal.protobuf.cui;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 
 public final class f
   implements com.tencent.mm.plugin.music.e.d
 {
-  private g vgp;
-  private d vgq;
-  private a vgr;
-  private com.tencent.mm.ay.d vgs;
+  private g wlK;
+  private d wlL;
+  private a wlM;
+  private com.tencent.mm.az.d wlN;
   
   public f()
   {
     AppMethodBeat.i(63156);
-    this.vgs = null;
-    this.vgp = new g();
-    this.vgq = new d();
-    this.vgr = new a();
+    this.wlN = null;
+    this.wlK = new g();
+    this.wlL = new d();
+    this.wlM = new a();
     AppMethodBeat.o(63156);
   }
   
-  private void Z(long paramLong1, long paramLong2)
+  private void aa(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(63167);
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new cpc();
-    ((b.a)localObject).hvu = new cpd();
+    ((b.a)localObject).hNM = new cuh();
+    ((b.a)localObject).hNN = new cui();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/reportmusic";
     ((b.a)localObject).funcId = 2718;
-    localObject = ((b.a)localObject).aAz();
-    cpc localcpc = (cpc)((com.tencent.mm.ak.b)localObject).hvr.hvw;
-    localcpc.FBQ = new bxd();
-    if (this.vgs != null)
+    localObject = ((b.a)localObject).aDC();
+    cuh localcuh = (cuh)((com.tencent.mm.al.b)localObject).hNK.hNQ;
+    localcuh.Hmf = new cbt();
+    if (this.wlN != null)
     {
-      localcpc.FBQ.FlV = this.vgs.hNO;
-      localcpc.FBR = this.vgs.hNP;
-      this.vgs = null;
+      localcuh.Hmf.GVE = this.wlN.ihc;
+      localcuh.Hmg = this.wlN.ihd;
+      this.wlN = null;
     }
-    localcpc.FBQ.FlW = String.valueOf(paramLong2);
-    localcpc.FBQ.FlX = String.valueOf(paramLong1);
-    x.a((com.tencent.mm.ak.b)localObject, new x.a()
-    {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
-      {
-        AppMethodBeat.i(63155);
-        ac.i("MicroMsg.Music.MusicWechatReportService", "reportMusicInfo callback errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-        AppMethodBeat.o(63155);
-        return 0;
-      }
-    });
+    localcuh.Hmf.GVF = String.valueOf(paramLong2);
+    localcuh.Hmf.GVG = String.valueOf(paramLong1);
+    x.a((com.tencent.mm.al.b)localObject, new f.1(this));
     AppMethodBeat.o(63167);
   }
   
-  public final void JJ(int paramInt)
+  public final void Ll(int paramInt)
   {
     AppMethodBeat.i(63163);
     if ((paramInt == 300) || (paramInt == 301) || (paramInt == 302) || (paramInt == 303))
@@ -77,63 +65,63 @@ public final class f
       localIDKey.SetValue(1L);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localIDKey);
-      h.wUl.b(localArrayList, true);
+      com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
     }
     AppMethodBeat.o(63163);
   }
   
-  public final void a(com.tencent.mm.ay.d paramd)
+  public final void a(com.tencent.mm.az.d paramd)
   {
     AppMethodBeat.i(63166);
-    ac.i("MicroMsg.Music.MusicWechatReportService", "reportMusicPlayerTime");
+    ad.i("MicroMsg.Music.MusicWechatReportService", "reportMusicPlayerTime");
     if (paramd != null) {
-      ac.i("MicroMsg.Music.MusicWechatReportService", "MusicReportInfo h5CurrentMusicIDOfReport:%s, h5ReportListIDOfReport:%s", new Object[] { paramd.hNO, paramd.hNP });
+      ad.i("MicroMsg.Music.MusicWechatReportService", "MusicReportInfo h5CurrentMusicIDOfReport:%s, h5ReportListIDOfReport:%s", new Object[] { paramd.ihc, paramd.ihd });
     }
-    com.tencent.mm.ay.f localf = k.diO().diz();
-    if ((k.diO().diB().aGv()) && (localf != null) && (localf.hNQ == 10))
+    com.tencent.mm.az.f localf = k.dta().dsL();
+    if ((k.dta().dsN().aJG()) && (localf != null) && (localf.ihe == 10))
     {
-      this.vgs = paramd;
-      ac.i("MicroMsg.Music.MusicWechatReportService", "H5 music is playing, not report first");
+      this.wlN = paramd;
+      ad.i("MicroMsg.Music.MusicWechatReportService", "H5 music is playing, not report first");
       AppMethodBeat.o(63166);
       return;
     }
-    this.vgs = paramd;
-    ac.i("MicroMsg.Music.MusicWechatReportService", "report music info");
-    Z(0L, 0L);
+    this.wlN = paramd;
+    ad.i("MicroMsg.Music.MusicWechatReportService", "report music info");
+    aa(0L, 0L);
     AppMethodBeat.o(63166);
   }
   
-  public final void a(com.tencent.mm.ay.f paramf, long paramLong1, long paramLong2, long paramLong3)
+  public final void a(com.tencent.mm.az.f paramf, long paramLong1, long paramLong2, long paramLong3)
   {
     AppMethodBeat.i(63165);
     if (paramf != null)
     {
-      ac.i("MicroMsg.Music.MusicWechatReportService", "scene:%d, endPosition:%d, totalPlayTime:%d, duration:%d", new Object[] { Integer.valueOf(paramf.hNQ), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
-      if (paramf.hNQ == 10) {
-        Z(paramLong1, paramLong2);
+      ad.i("MicroMsg.Music.MusicWechatReportService", "scene:%d, endPosition:%d, totalPlayTime:%d, duration:%d", new Object[] { Integer.valueOf(paramf.ihe), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
+      if (paramf.ihe == 10) {
+        aa(paramLong1, paramLong2);
       }
     }
     AppMethodBeat.o(63165);
   }
   
-  public final void a(com.tencent.mm.ay.f paramf, String paramString)
+  public final void a(com.tencent.mm.az.f paramf, String paramString)
   {
     AppMethodBeat.i(63162);
-    Object localObject = this.vgq;
+    Object localObject = this.wlL;
     String str = paramString;
     if (TextUtils.isEmpty(paramString))
     {
       str = paramString;
-      if (((d)localObject).vgk != null) {
+      if (((d)localObject).wlF != null) {
         str = ((d)localObject).getMimeType();
       }
     }
-    ac.i("MicroMsg.Music.MusicPlayerReportImpl", "idKeyReportMusicMimeType mineType:%s, hasStatForMimeType:%b", new Object[] { str, Boolean.valueOf(((d)localObject).vgi) });
+    ad.i("MicroMsg.Music.MusicPlayerReportImpl", "idKeyReportMusicMimeType mineType:%s, hasStatForMimeType:%b", new Object[] { str, Boolean.valueOf(((d)localObject).wlD) });
     int i;
-    if ((!TextUtils.isEmpty(str)) && (!((d)localObject).vgi))
+    if ((!TextUtils.isEmpty(str)) && (!((d)localObject).wlD))
     {
-      ac.i("MicroMsg.Music.MusicPlayerReportImpl", "idKeyReportMusicMimeType OK");
-      ((d)localObject).vgi = true;
+      ad.i("MicroMsg.Music.MusicPlayerReportImpl", "idKeyReportMusicMimeType OK");
+      ((d)localObject).wlD = true;
       paramString = new IDKey();
       paramString.SetID(558);
       if (!"audio/3gpp".equalsIgnoreCase(str)) {
@@ -147,11 +135,11 @@ public final class f
       paramString.SetValue(1L);
       localObject = new ArrayList();
       ((ArrayList)localObject).add(paramString);
-      h.wUl.b((ArrayList)localObject, true);
+      com.tencent.mm.plugin.report.service.g.yhR.b((ArrayList)localObject, true);
       if (paramf != null)
       {
-        i = c.anJ(str);
-        h.wUl.f(14486, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.hNQ), Integer.valueOf(i), str });
+        i = c.asI(str);
+        com.tencent.mm.plugin.report.service.g.yhR.f(14486, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.ihe), Integer.valueOf(i), str });
       }
       AppMethodBeat.o(63162);
       return;
@@ -196,10 +184,10 @@ public final class f
   
   public final void a(com.tencent.mm.plugin.music.c.b paramb)
   {
-    this.vgq.vgk = paramb;
+    this.wlL.wlF = paramb;
   }
   
-  public final void b(com.tencent.mm.ay.f paramf, int paramInt)
+  public final void b(com.tencent.mm.az.f paramf, int paramInt)
   {
     AppMethodBeat.i(63158);
     IDKey localIDKey1 = new IDKey();
@@ -208,8 +196,8 @@ public final class f
     localIDKey1.SetValue(1L);
     IDKey localIDKey2 = new IDKey();
     localIDKey2.SetID(558);
-    int i = paramf.hNQ;
-    ac.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
+    int i = paramf.ihe;
+    ad.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
     IDKey localIDKey3;
     IDKey localIDKey4;
     ArrayList localArrayList;
@@ -227,7 +215,7 @@ public final class f
       localIDKey2.SetValue(1L);
       localIDKey3 = new IDKey();
       localIDKey3.SetID(558);
-      localIDKey3.SetKey(c.JP(paramInt));
+      localIDKey3.SetKey(c.Lr(paramInt));
       localIDKey3.SetValue(1L);
       localIDKey4 = new IDKey();
       localIDKey4.SetID(558);
@@ -237,8 +225,8 @@ public final class f
       m = 0;
       if (paramInt == 80)
       {
-        i = paramf.hNQ;
-        ac.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerNetworkErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
+        i = paramf.ihe;
+        ad.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerNetworkErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
         switch (i)
         {
         case 2: 
@@ -249,14 +237,14 @@ public final class f
           localIDKey4.SetKey(i);
           localArrayList.add(localIDKey4);
           k = 1;
-          i = com.tencent.mm.plugin.music.cache.g.anv(paramf.playUrl);
-          j = com.tencent.mm.plugin.music.cache.g.anw(paramf.playUrl);
-          if (com.tencent.mm.plugin.music.cache.g.anv(paramf.playUrl) == 403)
+          i = com.tencent.mm.plugin.music.cache.g.asu(paramf.playUrl);
+          j = com.tencent.mm.plugin.music.cache.g.asv(paramf.playUrl);
+          if (com.tencent.mm.plugin.music.cache.g.asu(paramf.playUrl) == 403)
           {
             localIDKey4 = new IDKey();
             localIDKey4.SetID(558);
             localIDKey4.SetValue(1L);
-            localIDKey4.SetKey(c.JP(700));
+            localIDKey4.SetKey(c.Lr(700));
             localArrayList.add(localIDKey4);
           }
           break;
@@ -266,11 +254,11 @@ public final class f
     }
     for (;;)
     {
-      h.wUl.f(14777, new Object[] { Integer.valueOf(1), Integer.valueOf(paramf.hNQ), Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j) });
+      com.tencent.mm.plugin.report.service.g.yhR.f(14777, new Object[] { Integer.valueOf(1), Integer.valueOf(paramf.ihe), Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j) });
       localArrayList.add(localIDKey1);
       localArrayList.add(localIDKey2);
       localArrayList.add(localIDKey3);
-      h.wUl.b(localArrayList, true);
+      com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
       AppMethodBeat.o(63158);
       return;
       i = 49;
@@ -311,13 +299,13 @@ public final class f
       break label316;
       i = 175;
       break label316;
-      if ((com.tencent.mm.plugin.music.cache.g.anr(paramf.playUrl) != null) && (com.tencent.mm.plugin.music.cache.g.anr(paramf.playUrl).contains("text/html")))
+      if ((com.tencent.mm.plugin.music.cache.g.asq(paramf.playUrl) != null) && (com.tencent.mm.plugin.music.cache.g.asq(paramf.playUrl).contains("text/html")))
       {
         i = 701;
         localIDKey4 = new IDKey();
         localIDKey4.SetID(558);
         localIDKey4.SetValue(1L);
-        localIDKey4.SetKey(c.JP(701));
+        localIDKey4.SetKey(c.Lr(701));
         localArrayList.add(localIDKey4);
         j = 0;
       }
@@ -335,8 +323,8 @@ public final class f
               localIDKey5 = new IDKey();
               localIDKey5.SetID(558);
               localIDKey5.SetValue(1L);
-              i = paramf.hNQ;
-              ac.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerDecodeErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
+              i = paramf.ihe;
+              ad.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerDecodeErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
             }
             switch (i)
             {
@@ -348,8 +336,8 @@ public final class f
               label880:
               localIDKey5.SetKey(i);
               localArrayList.add(localIDKey5);
-              i = paramf.hNQ;
-              ac.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerPlayErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
+              i = paramf.ihe;
+              ad.i("MicroMsg.Music.MusicPlayIdKeyReport", "getQQMusicPlayerPlayErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
               switch (i)
               {
               case 2: 
@@ -412,7 +400,7 @@ public final class f
     }
   }
   
-  public final void c(com.tencent.mm.ay.f paramf, int paramInt)
+  public final void c(com.tencent.mm.az.f paramf, int paramInt)
   {
     AppMethodBeat.i(63159);
     Object localObject = new IDKey();
@@ -426,14 +414,14 @@ public final class f
       ((IDKey)localObject).SetValue(1L);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localObject);
-      h.wUl.b(localArrayList, true);
-      localObject = com.tencent.mm.plugin.music.cache.g.anr(paramf.playUrl);
-      ac.i("MicroMsg.Music.QQMusicPlayerReportImpl", "mineTypeStr:%s", new Object[] { localObject });
+      com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
+      localObject = com.tencent.mm.plugin.music.cache.g.asq(paramf.playUrl);
+      ad.i("MicroMsg.Music.QQMusicPlayerReportImpl", "mineTypeStr:%s", new Object[] { localObject });
       if ((paramf == null) || (TextUtils.isEmpty((CharSequence)localObject))) {
         break;
       }
-      paramInt = c.anJ((String)localObject);
-      h.wUl.f(14486, new Object[] { Integer.valueOf(1), Integer.valueOf(paramf.hNQ), Integer.valueOf(paramInt), localObject });
+      paramInt = c.asI((String)localObject);
+      com.tencent.mm.plugin.report.service.g.yhR.f(14486, new Object[] { Integer.valueOf(1), Integer.valueOf(paramf.ihe), Integer.valueOf(paramInt), localObject });
       AppMethodBeat.o(63159);
       return;
       if (paramInt == 3) {
@@ -454,22 +442,22 @@ public final class f
         paramInt = 100;
       }
     }
-    ac.e("MicroMsg.Music.QQMusicPlayerReportImpl", "music is null or mineTypeStr is empty");
+    ad.e("MicroMsg.Music.QQMusicPlayerReportImpl", "music is null or mineTypeStr is empty");
     AppMethodBeat.o(63159);
   }
   
-  public final void c(com.tencent.mm.ay.f paramf, int paramInt1, int paramInt2)
+  public final void c(com.tencent.mm.az.f paramf, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(63161);
-    Object localObject1 = this.vgq;
+    Object localObject1 = this.wlL;
     Object localObject2 = new IDKey();
     ((IDKey)localObject2).SetID(558);
     ((IDKey)localObject2).SetKey(3);
     ((IDKey)localObject2).SetValue(1L);
     IDKey localIDKey2 = new IDKey();
     localIDKey2.SetID(558);
-    int i = paramf.hNQ;
-    ac.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
+    int i = paramf.ihe;
+    ad.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
     IDKey localIDKey1;
     label182:
     ArrayList localArrayList;
@@ -497,8 +485,8 @@ public final class f
           if (paramInt1 != 21) {
             break label1509;
           }
-          i = paramf.hNQ;
-          ac.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerPlayErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
+          i = paramf.ihe;
+          ad.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerPlayErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
         }
         switch (i)
         {
@@ -514,70 +502,70 @@ public final class f
           localArrayList.add(localObject2);
           localArrayList.add(localIDKey2);
           localArrayList.add(localIDKey1);
-          ac.i("MicroMsg.Music.MusicPlayerReportImpl", "hasStatForHttpErr:%b, hasStatForUrlErr:%b, hasStatForNetworkErr:%b, hasStatForHttpRangeErr:%b, hasStatDownloadExceptionErr:%b", new Object[] { Boolean.valueOf(((d)localObject1).vga), Boolean.valueOf(((d)localObject1).vgc), Boolean.valueOf(((d)localObject1).vgf), Boolean.valueOf(((d)localObject1).vgb), Boolean.valueOf(((d)localObject1).vgd) });
-          if ((paramInt1 == -1) && (!((d)localObject1).vga))
+          ad.i("MicroMsg.Music.MusicPlayerReportImpl", "hasStatForHttpErr:%b, hasStatForUrlErr:%b, hasStatForNetworkErr:%b, hasStatForHttpRangeErr:%b, hasStatDownloadExceptionErr:%b", new Object[] { Boolean.valueOf(((d)localObject1).wlv), Boolean.valueOf(((d)localObject1).wlx), Boolean.valueOf(((d)localObject1).wlA), Boolean.valueOf(((d)localObject1).wlw), Boolean.valueOf(((d)localObject1).wly) });
+          if ((paramInt1 == -1) && (!((d)localObject1).wlv))
           {
-            ((d)localObject1).vga = true;
+            ((d)localObject1).wlv = true;
             i = 0;
-            if (((d)localObject1).vgk != null) {
-              i = ((d)localObject1).vgk.vev;
+            if (((d)localObject1).wlF != null) {
+              i = ((d)localObject1).wlF.wjQ;
             }
             if (i == 403)
             {
               localObject2 = new IDKey();
               ((IDKey)localObject2).SetID(558);
               ((IDKey)localObject2).SetValue(1L);
-              ((IDKey)localObject2).SetKey(c.JQ(700));
+              ((IDKey)localObject2).SetKey(c.Ls(700));
               localArrayList.add(localObject2);
             }
-            h.wUl.b(localArrayList, true);
-            h.wUl.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.hNQ), Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(0) });
+            com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
+            com.tencent.mm.plugin.report.service.g.yhR.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.ihe), Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(0) });
           }
-          if ((paramInt1 == 6) && (!((d)localObject1).vgb))
+          if ((paramInt1 == 6) && (!((d)localObject1).wlw))
           {
-            ((d)localObject1).vgb = true;
-            h.wUl.b(localArrayList, true);
-            h.wUl.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.hNQ), Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(0) });
+            ((d)localObject1).wlw = true;
+            com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
+            com.tencent.mm.plugin.report.service.g.yhR.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.ihe), Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(0) });
           }
-          if ((paramInt1 == -2) && (!((d)localObject1).vgc))
+          if ((paramInt1 == -2) && (!((d)localObject1).wlx))
           {
-            ((d)localObject1).vgc = true;
-            h.wUl.b(localArrayList, true);
-            h.wUl.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.hNQ), Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(0) });
+            ((d)localObject1).wlx = true;
+            com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
+            com.tencent.mm.plugin.report.service.g.yhR.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.ihe), Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(0) });
           }
-          if ((paramInt1 == 5) && (!((d)localObject1).vgd))
+          if ((paramInt1 == 5) && (!((d)localObject1).wly))
           {
-            ((d)localObject1).vgd = true;
-            h.wUl.b(localArrayList, true);
+            ((d)localObject1).wly = true;
+            com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
             i = 0;
-            if (((d)localObject1).vgk != null) {
-              i = ((d)localObject1).vgk.cRY;
+            if (((d)localObject1).wlF != null) {
+              i = ((d)localObject1).wlF.ddo;
             }
-            h.wUl.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.hNQ), Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(i) });
+            com.tencent.mm.plugin.report.service.g.yhR.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.ihe), Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(i) });
           }
-          if ((paramInt1 == 19) && (!((d)localObject1).vge))
+          if ((paramInt1 == 19) && (!((d)localObject1).wlz))
           {
-            ((d)localObject1).vge = true;
-            h.wUl.b(localArrayList, true);
-            h.wUl.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.hNQ), Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(0) });
+            ((d)localObject1).wlz = true;
+            com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
+            com.tencent.mm.plugin.report.service.g.yhR.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.ihe), Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(0) });
           }
-          if ((paramInt1 == 4) && (!((d)localObject1).vgf))
+          if ((paramInt1 == 4) && (!((d)localObject1).wlA))
           {
-            ((d)localObject1).vgf = true;
-            h.wUl.b(localArrayList, true);
-            h.wUl.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.hNQ), Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(0) });
+            ((d)localObject1).wlA = true;
+            com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
+            com.tencent.mm.plugin.report.service.g.yhR.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.ihe), Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(0) });
           }
-          if ((paramInt1 == 20) && (!((d)localObject1).vgg))
+          if ((paramInt1 == 20) && (!((d)localObject1).wlB))
           {
-            ((d)localObject1).vgg = true;
-            ((d)localObject1).vgj = paramInt2;
+            ((d)localObject1).wlB = true;
+            ((d)localObject1).wlE = paramInt2;
             localObject2 = new ArrayList();
             ((ArrayList)localObject2).add(localIDKey1);
-            h.wUl.b((ArrayList)localObject2, true);
+            com.tencent.mm.plugin.report.service.g.yhR.b((ArrayList)localObject2, true);
           }
-          if ((paramInt1 == 21) && (!((d)localObject1).vgh) && (((d)localObject1).vgg))
+          if ((paramInt1 == 21) && (!((d)localObject1).wlC) && (((d)localObject1).wlB))
           {
-            ((d)localObject1).vgh = true;
+            ((d)localObject1).wlC = true;
             if ((((d)localObject1).getMimeType() == null) || (!((d)localObject1).getMimeType().contains("text/html"))) {
               break label1695;
             }
@@ -585,7 +573,7 @@ public final class f
             localObject1 = new IDKey();
             ((IDKey)localObject1).SetID(558);
             ((IDKey)localObject1).SetValue(1L);
-            ((IDKey)localObject1).SetKey(c.JQ(701));
+            ((IDKey)localObject1).SetKey(c.Ls(701));
             localArrayList.add(localObject1);
           }
           break;
@@ -599,8 +587,8 @@ public final class f
     label1767:
     do
     {
-      h.wUl.b(localArrayList, true);
-      h.wUl.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.hNQ), Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(0) });
+      com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
+      com.tencent.mm.plugin.report.service.g.yhR.f(14777, new Object[] { Integer.valueOf(0), Integer.valueOf(paramf.ihe), Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(0) });
       AppMethodBeat.o(63161);
       return;
       i = 60;
@@ -671,8 +659,8 @@ public final class f
       if ((paramInt1 != -1) && (paramInt1 != 6) && (paramInt1 != -2) && (paramInt1 != 5) && (paramInt1 != 4)) {
         break label352;
       }
-      i = paramf.hNQ;
-      ac.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerNetworkErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
+      i = paramf.ihe;
+      ad.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerNetworkErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
       switch (i)
       {
       case 2: 
@@ -703,7 +691,7 @@ public final class f
       localObject1 = new IDKey();
       ((IDKey)localObject1).SetID(558);
       ((IDKey)localObject1).SetValue(1L);
-      ((IDKey)localObject1).SetKey(c.JQ(paramInt2));
+      ((IDKey)localObject1).SetKey(c.Ls(paramInt2));
       localArrayList.add(localObject1);
       switch (paramInt2)
       {
@@ -715,8 +703,8 @@ public final class f
     localObject1 = new IDKey();
     ((IDKey)localObject1).SetID(558);
     ((IDKey)localObject1).SetValue(1L);
-    i = paramf.hNQ;
-    ac.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerDecodeErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
+    i = paramf.ihe;
+    ad.i("MicroMsg.Music.MusicPlayIdKeyReport", "getMusicPlayerDecodeErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
     switch (i)
     {
     case 2: 
@@ -749,7 +737,7 @@ public final class f
     }
   }
   
-  public final void d(com.tencent.mm.ay.f paramf, int paramInt1, int paramInt2)
+  public final void d(com.tencent.mm.az.f paramf, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(63164);
     IDKey localIDKey1 = new IDKey();
@@ -758,8 +746,8 @@ public final class f
     localIDKey1.SetValue(1L);
     IDKey localIDKey2 = new IDKey();
     localIDKey2.SetID(797);
-    int i = paramf.hNQ;
-    ac.i("MicroMsg.Music.ExoPlayIdkeyReport", "getExoMusicPlayerErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
+    int i = paramf.ihe;
+    ad.i("MicroMsg.Music.ExoPlayIdkeyReport", "getExoMusicPlayerErrIdKeyByMusicType, musicType:".concat(String.valueOf(i)));
     label259:
     IDKey localIDKey3;
     switch (i)
@@ -773,7 +761,7 @@ public final class f
       localIDKey2.SetValue(1L);
       paramf = new IDKey();
       paramf.SetID(797);
-      ac.i("MicroMsg.Music.ExoPlayIdkeyReport", "getExoMusicPlayerErrTypeIdKey, errType:".concat(String.valueOf(paramInt1)));
+      ad.i("MicroMsg.Music.ExoPlayIdkeyReport", "getExoMusicPlayerErrTypeIdKey, errType:".concat(String.valueOf(paramInt1)));
       switch (paramInt1)
       {
       default: 
@@ -782,7 +770,7 @@ public final class f
         paramf.SetValue(1L);
         localIDKey3 = new IDKey();
         localIDKey3.SetID(797);
-        ac.i("MicroMsg.Music.ExoPlayIdkeyReport", "getExoMusicPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt2)));
+        ad.i("MicroMsg.Music.ExoPlayIdkeyReport", "getExoMusicPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt2)));
         switch (paramInt2)
         {
         default: 
@@ -801,7 +789,7 @@ public final class f
       localArrayList.add(localIDKey2);
       localArrayList.add(paramf);
       localArrayList.add(localIDKey3);
-      h.wUl.b(localArrayList, true);
+      com.tencent.mm.plugin.report.service.g.yhR.b(localArrayList, true);
       AppMethodBeat.o(63164);
       return;
       i = 62;
@@ -862,25 +850,25 @@ public final class f
     }
   }
   
-  public final void diC()
+  public final void dsO()
   {
     AppMethodBeat.i(63160);
-    d locald = this.vgq;
-    ac.i("MicroMsg.Music.MusicPlayerReportImpl", "initIdKeyStatDataForMusicPlayer");
-    locald.vga = false;
-    locald.vgb = false;
-    locald.vgc = false;
-    locald.vgd = false;
-    locald.vge = false;
-    locald.vgf = false;
-    locald.vgg = false;
-    locald.vgh = false;
-    locald.vgi = false;
-    locald.vgj = 0;
+    d locald = this.wlL;
+    ad.i("MicroMsg.Music.MusicPlayerReportImpl", "initIdKeyStatDataForMusicPlayer");
+    locald.wlv = false;
+    locald.wlw = false;
+    locald.wlx = false;
+    locald.wly = false;
+    locald.wlz = false;
+    locald.wlA = false;
+    locald.wlB = false;
+    locald.wlC = false;
+    locald.wlD = false;
+    locald.wlE = 0;
     AppMethodBeat.o(63160);
   }
   
-  public final void v(com.tencent.mm.ay.f paramf)
+  public final void v(com.tencent.mm.az.f paramf)
   {
     AppMethodBeat.i(63157);
     e.a(paramf, false);

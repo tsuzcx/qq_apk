@@ -9,16 +9,16 @@ import org.json.JSONObject;
 public final class q
   extends m
 {
-  public int dgH;
-  public long owV;
-  public int owW;
-  public String ows;
+  public int dsd;
+  public String oZN;
+  public long paq;
+  public int par;
   public int type;
   
   public q(String paramString, int paramInt, long paramLong)
   {
     AppMethodBeat.i(63841);
-    this.ows = paramString;
+    this.oZN = paramString;
     HashMap localHashMap = new HashMap();
     localHashMap.put("bill_id", paramString);
     localHashMap.put("type", String.valueOf(paramInt));
@@ -45,16 +45,16 @@ public final class q
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(63842);
-    this.owW = paramJSONObject.optInt("total_num", 0);
-    this.dgH = paramJSONObject.optInt("total_amt", 0);
+    this.par = paramJSONObject.optInt("total_num", 0);
+    this.dsd = paramJSONObject.optInt("total_amt", 0);
     this.type = paramJSONObject.optInt("type", 0);
-    this.owV = paramJSONObject.optLong("from_timestamp", 0L);
+    this.paq = paramJSONObject.optLong("from_timestamp", 0L);
     AppMethodBeat.o(63842);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.q
  * JD-Core Version:    0.7.0.1
  */

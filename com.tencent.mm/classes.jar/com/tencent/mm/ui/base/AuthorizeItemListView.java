@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AuthorizeItemListView
   extends ListView
 {
-  public int ahX;
+  public int ajO;
   
   public AuthorizeItemListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,7 +24,7 @@ public class AuthorizeItemListView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(131596);
-    if (this.ahX <= 5)
+    if (this.ajO <= 5)
     {
       super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(536870911, -2147483648));
       AppMethodBeat.o(131596);

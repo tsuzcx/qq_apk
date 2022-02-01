@@ -5,7 +5,7 @@ import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 import java.io.ByteArrayOutputStream;
 
 public final class WXMediaMessage
@@ -35,37 +35,53 @@ public final class WXMediaMessage
   
   public WXMediaMessage(IMediaObject paramIMediaObject)
   {
+    AppMethodBeat.i(196988);
     this.mediaObject = paramIMediaObject;
+    AppMethodBeat.o(196988);
   }
   
   final boolean checkArgs()
   {
     AppMethodBeat.i(3993);
-    if ((getType() == 8) && ((this.thumbData == null) || (this.thumbData.length == 0)))
+    if (getType() == 8)
     {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, thumbData should not be null when send emoji");
-      AppMethodBeat.o(3993);
-      return false;
+      localObject = this.thumbData;
+      if ((localObject == null) || (localObject.length == 0))
+      {
+        Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, thumbData should not be null when send emoji");
+        AppMethodBeat.o(3993);
+        return false;
+      }
     }
-    if ((d.a(getType())) && ((this.thumbData == null) || (this.thumbData.length > 131072)))
+    if (b.a(getType()))
     {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, thumbData should not be null or exceed 128kb");
-      AppMethodBeat.o(3993);
-      return false;
+      localObject = this.thumbData;
+      if ((localObject == null) || (localObject.length > 131072))
+      {
+        Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, thumbData should not be null or exceed 128kb");
+        AppMethodBeat.o(3993);
+        return false;
+      }
     }
-    if ((!d.a(getType())) && (this.thumbData != null) && (this.thumbData.length > 65536))
+    if (!b.a(getType()))
     {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, thumbData is invalid");
-      AppMethodBeat.o(3993);
-      return false;
+      localObject = this.thumbData;
+      if ((localObject != null) && (localObject.length > 65536))
+      {
+        Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, thumbData is invalid");
+        AppMethodBeat.o(3993);
+        return false;
+      }
     }
-    if ((this.title != null) && (this.title.length() > 512))
+    Object localObject = this.title;
+    if ((localObject != null) && (((String)localObject).length() > 512))
     {
       Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, title is invalid");
       AppMethodBeat.o(3993);
       return false;
     }
-    if ((this.description != null) && (this.description.length() > 1024))
+    localObject = this.description;
+    if ((localObject != null) && (((String)localObject).length() > 1024))
     {
       Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, description is invalid");
       AppMethodBeat.o(3993);
@@ -77,19 +93,22 @@ public final class WXMediaMessage
       AppMethodBeat.o(3993);
       return false;
     }
-    if ((this.mediaTagName != null) && (this.mediaTagName.length() > 64))
+    localObject = this.mediaTagName;
+    if ((localObject != null) && (((String)localObject).length() > 64))
     {
       Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, mediaTagName is too long");
       AppMethodBeat.o(3993);
       return false;
     }
-    if ((this.messageAction != null) && (this.messageAction.length() > 2048))
+    localObject = this.messageAction;
+    if ((localObject != null) && (((String)localObject).length() > 2048))
     {
       Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, messageAction is too long");
       AppMethodBeat.o(3993);
       return false;
     }
-    if ((this.messageExt != null) && (this.messageExt.length() > 2048))
+    localObject = this.messageExt;
+    if ((localObject != null) && (((String)localObject).length() > 2048))
     {
       Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, messageExt is too long");
       AppMethodBeat.o(3993);
@@ -103,12 +122,13 @@ public final class WXMediaMessage
   public final int getType()
   {
     AppMethodBeat.i(3991);
-    if (this.mediaObject == null)
+    IMediaObject localIMediaObject = this.mediaObject;
+    if (localIMediaObject == null)
     {
       AppMethodBeat.o(3991);
       return 0;
     }
-    int i = this.mediaObject.type();
+    int i = localIMediaObject.type();
     AppMethodBeat.o(3991);
     return i;
   }
@@ -148,36 +168,36 @@ public final class WXMediaMessage
       localWXMediaMessage.messageAction = paramBundle.getString("_wxobject_message_action");
       localWXMediaMessage.messageExt = paramBundle.getString("_wxobject_message_ext");
       String str = pathOldToNew(paramBundle.getString("_wxobject_identifier_"));
-      if ((str == null) || (str.length() <= 0))
-      {
-        AppMethodBeat.o(4029);
-        return localWXMediaMessage;
+      if ((str != null) && (str.length() > 0)) {
+        try
+        {
+          WXMediaMessage.IMediaObject localIMediaObject = (WXMediaMessage.IMediaObject)Class.forName(str).newInstance();
+          localWXMediaMessage.mediaObject = localIMediaObject;
+          localIMediaObject.unserialize(paramBundle);
+          AppMethodBeat.o(4029);
+          return localWXMediaMessage;
+        }
+        catch (Exception paramBundle)
+        {
+          Log.e("MicroMsg.SDK.WXMediaMessage", "get media object from bundle failed: unknown ident " + str + ", ex = " + paramBundle.getMessage());
+          AppMethodBeat.o(4029);
+          return localWXMediaMessage;
+        }
       }
-      try
-      {
-        localWXMediaMessage.mediaObject = ((WXMediaMessage.IMediaObject)Class.forName(str).newInstance());
-        localWXMediaMessage.mediaObject.unserialize(paramBundle);
-        AppMethodBeat.o(4029);
-        return localWXMediaMessage;
-      }
-      catch (Exception paramBundle)
-      {
-        Log.e("MicroMsg.SDK.WXMediaMessage", "get media object from bundle failed: unknown ident " + str + ", ex = " + paramBundle.getMessage());
-        AppMethodBeat.o(4029);
-      }
+      AppMethodBeat.o(4029);
       return localWXMediaMessage;
     }
     
     private static String pathNewToOld(String paramString)
     {
       AppMethodBeat.i(4030);
-      if ((paramString == null) || (paramString.length() == 0))
+      if ((paramString != null) && (paramString.length() != 0))
       {
-        Log.e("MicroMsg.SDK.WXMediaMessage", "pathNewToOld fail, newPath is null");
+        paramString = paramString.replace("com.tencent.mm.opensdk.modelmsg", "com.tencent.mm.sdk.openapi");
         AppMethodBeat.o(4030);
         return paramString;
       }
-      paramString = paramString.replace("com.tencent.mm.opensdk.modelmsg", "com.tencent.mm.sdk.openapi");
+      Log.e("MicroMsg.SDK.WXMediaMessage", "pathNewToOld fail, newPath is null");
       AppMethodBeat.o(4030);
       return paramString;
     }
@@ -186,20 +206,20 @@ public final class WXMediaMessage
     {
       AppMethodBeat.i(4031);
       Log.i("MicroMsg.SDK.WXMediaMessage", "pathOldToNew, oldPath = ".concat(String.valueOf(paramString)));
-      if ((paramString == null) || (paramString.length() == 0))
+      if ((paramString != null) && (paramString.length() != 0))
       {
-        Log.e("MicroMsg.SDK.WXMediaMessage", "pathOldToNew fail, oldPath is null");
+        int i = paramString.lastIndexOf('.');
+        if (i == -1)
+        {
+          Log.e("MicroMsg.SDK.WXMediaMessage", "pathOldToNew fail, invalid pos, oldPath = ".concat(String.valueOf(paramString)));
+          AppMethodBeat.o(4031);
+          return paramString;
+        }
+        paramString = "com.tencent.mm.opensdk.modelmsg" + paramString.substring(i);
         AppMethodBeat.o(4031);
         return paramString;
       }
-      int i = paramString.lastIndexOf('.');
-      if (i == -1)
-      {
-        Log.e("MicroMsg.SDK.WXMediaMessage", "pathOldToNew fail, invalid pos, oldPath = ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(4031);
-        return paramString;
-      }
-      paramString = "com.tencent.mm.opensdk.modelmsg" + paramString.substring(i);
+      Log.e("MicroMsg.SDK.WXMediaMessage", "pathOldToNew fail, oldPath is null");
       AppMethodBeat.o(4031);
       return paramString;
     }
@@ -212,9 +232,10 @@ public final class WXMediaMessage
       localBundle.putString("_wxobject_title", paramWXMediaMessage.title);
       localBundle.putString("_wxobject_description", paramWXMediaMessage.description);
       localBundle.putByteArray("_wxobject_thumbdata", paramWXMediaMessage.thumbData);
-      if (paramWXMediaMessage.mediaObject != null)
+      WXMediaMessage.IMediaObject localIMediaObject = paramWXMediaMessage.mediaObject;
+      if (localIMediaObject != null)
       {
-        localBundle.putString("_wxobject_identifier_", pathNewToOld(paramWXMediaMessage.mediaObject.getClass().getName()));
+        localBundle.putString("_wxobject_identifier_", pathNewToOld(localIMediaObject.getClass().getName()));
         paramWXMediaMessage.mediaObject.serialize(localBundle);
       }
       localBundle.putString("_wxobject_mediatagname", paramWXMediaMessage.mediaTagName);
@@ -250,6 +271,7 @@ public final class WXMediaMessage
     public static final int TYPE_OLD_TV = 14;
     public static final int TYPE_OPENSDK_APPBRAND = 36;
     public static final int TYPE_OPENSDK_APPBRAND_WEISHIVIDEO = 46;
+    public static final int TYPE_OPENSDK_LITEAPP = 68;
     public static final int TYPE_OPENSDK_WEWORK_OBJECT = 49;
     public static final int TYPE_PRODUCT = 10;
     public static final int TYPE_RECORD = 19;
@@ -271,7 +293,7 @@ public final class WXMediaMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXMediaMessage
  * JD-Core Version:    0.7.0.1
  */

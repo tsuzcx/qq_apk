@@ -1,7 +1,7 @@
 package d.l.b.a.b.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -10,22 +10,31 @@ import java.util.List;
 public final class l
   implements g
 {
-  private final g Lff;
-  private final d.g.a.b<d.l.b.a.b.f.b, Boolean> Lfg;
+  private final g MWa;
+  private final boolean MWb;
+  private final d.g.a.b<d.l.b.a.b.f.b, Boolean> MWc;
   
-  public l(g paramg, d.g.a.b<? super d.l.b.a.b.f.b, Boolean> paramb)
+  private l(g paramg, d.g.a.b<? super d.l.b.a.b.f.b, Boolean> paramb)
   {
     AppMethodBeat.i(56975);
-    this.Lff = paramg;
-    this.Lfg = paramb;
+    this.MWa = paramg;
+    this.MWb = false;
+    this.MWc = paramb;
     AppMethodBeat.o(56975);
+  }
+  
+  public l(g paramg, d.g.a.b<? super d.l.b.a.b.f.b, Boolean> paramb, byte paramByte)
+  {
+    this(paramg, paramb);
+    AppMethodBeat.i(187768);
+    AppMethodBeat.o(187768);
   }
   
   private final boolean c(c paramc)
   {
     AppMethodBeat.i(56974);
-    paramc = paramc.fRH();
-    if ((paramc != null) && (((Boolean)this.Lfg.ay(paramc)).booleanValue()))
+    paramc = paramc.gjg();
+    if ((paramc != null) && (((Boolean)this.MWc.invoke(paramc)).booleanValue()))
     {
       AppMethodBeat.o(56974);
       return true;
@@ -37,10 +46,10 @@ public final class l
   public final c g(d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(56971);
-    k.h(paramb, "fqName");
-    if (((Boolean)this.Lfg.ay(paramb)).booleanValue())
+    p.h(paramb, "fqName");
+    if (((Boolean)this.MWc.invoke(paramb)).booleanValue())
     {
-      paramb = this.Lff.g(paramb);
+      paramb = this.MWa.g(paramb);
       AppMethodBeat.o(56971);
       return paramb;
     }
@@ -51,10 +60,10 @@ public final class l
   public final boolean h(d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(56970);
-    k.h(paramb, "fqName");
-    if (((Boolean)this.Lfg.ay(paramb)).booleanValue())
+    p.h(paramb, "fqName");
+    if (((Boolean)this.MWc.invoke(paramb)).booleanValue())
     {
-      boolean bool = this.Lff.h(paramb);
+      boolean bool = this.MWa.h(paramb);
       AppMethodBeat.o(56970);
       return bool;
     }
@@ -65,28 +74,40 @@ public final class l
   public final boolean isEmpty()
   {
     AppMethodBeat.i(56973);
-    Object localObject = (Iterable)this.Lff;
+    Object localObject = (Iterable)this.MWa;
+    boolean bool;
     if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
     {
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         c localc = (c)((Iterator)localObject).next();
-        if (((l)this).c(localc))
-        {
-          AppMethodBeat.o(56973);
-          return true;
+        if (((l)this).c(localc)) {
+          bool = true;
         }
       }
     }
+    while (this.MWb) {
+      if (!bool)
+      {
+        AppMethodBeat.o(56973);
+        return true;
+        bool = false;
+      }
+      else
+      {
+        AppMethodBeat.o(56973);
+        return false;
+      }
+    }
     AppMethodBeat.o(56973);
-    return false;
+    return bool;
   }
   
   public final Iterator<c> iterator()
   {
     AppMethodBeat.i(56972);
-    Object localObject2 = (Iterable)this.Lff;
+    Object localObject2 = (Iterable)this.MWa;
     Object localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())

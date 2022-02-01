@@ -31,20 +31,20 @@ class DatabaseSourceInfoStorage
   
   private ContentValues convert(SourceInfo paramSourceInfo)
   {
-    AppMethodBeat.i(192560);
+    AppMethodBeat.i(215907);
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("url", paramSourceInfo.url);
     localContentValues.put("length", Long.valueOf(paramSourceInfo.length));
     localContentValues.put("mime", paramSourceInfo.mime);
-    AppMethodBeat.o(192560);
+    AppMethodBeat.o(215907);
     return localContentValues;
   }
   
   private SourceInfo convert(Cursor paramCursor)
   {
-    AppMethodBeat.i(192559);
+    AppMethodBeat.i(215906);
     paramCursor = new SourceInfo(paramCursor.getString(paramCursor.getColumnIndexOrThrow("url")), paramCursor.getLong(paramCursor.getColumnIndexOrThrow("length")), paramCursor.getString(paramCursor.getColumnIndexOrThrow("mime")));
-    AppMethodBeat.o(192559);
+    AppMethodBeat.o(215906);
     return paramCursor;
   }
   
@@ -161,9 +161,9 @@ class DatabaseSourceInfoStorage
   
   public void release()
   {
-    AppMethodBeat.i(192558);
+    AppMethodBeat.i(215905);
     close();
-    AppMethodBeat.o(192558);
+    AppMethodBeat.o(215905);
   }
 }
 

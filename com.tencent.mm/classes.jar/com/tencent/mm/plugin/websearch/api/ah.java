@@ -1,202 +1,144 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ax.b;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.model.u;
+import com.tencent.mm.model.w;
+import com.tencent.mm.protocal.protobuf.cbk;
+import com.tencent.mm.protocal.protobuf.cbl;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
 
 public final class ah
 {
-  private static ah BZy;
-  public a BZw;
-  private boolean BZx;
+  public static cbl DCe;
   
-  static
+  public static void aFS(String paramString)
   {
-    AppMethodBeat.i(117764);
-    BZy = new ah();
-    AppMethodBeat.o(117764);
+    AppMethodBeat.i(117732);
+    if (b.FU((String)g.ajC().ajl().get(274436, null)))
+    {
+      AppMethodBeat.o(117732);
+      return;
+    }
+    if (!w.zE(paramString))
+    {
+      AppMethodBeat.o(117732);
+      return;
+    }
+    if (DCe == null) {
+      eMm();
+    }
+    long l1 = System.currentTimeMillis();
+    Object localObject1 = null;
+    int i = 0;
+    Object localObject2;
+    if (i < DCe.nDj.size())
+    {
+      localObject2 = (cbk)DCe.nDj.get(i);
+      long l2 = (l1 - ((cbk)localObject2).GVB) / 86400000L;
+      ((cbk)localObject2).GVA *= Math.pow(0.98D, l2);
+      ((cbk)localObject2).GVB = (l2 * 86400000L + ((cbk)localObject2).GVB);
+      ad.d("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "after update: %.2f %d %s", new Object[] { Double.valueOf(((cbk)localObject2).GVA), Long.valueOf(((cbk)localObject2).GVB), ((cbk)localObject2).Username });
+      if (!((cbk)localObject2).Username.equals(paramString)) {
+        break label479;
+      }
+      localObject1 = localObject2;
+    }
+    label479:
+    for (;;)
+    {
+      i += 1;
+      break;
+      if (localObject1 == null)
+      {
+        localObject1 = new cbk();
+        ((cbk)localObject1).GVA = 1.0D;
+        ((cbk)localObject1).GVB = l1;
+        ((cbk)localObject1).Username = paramString;
+        DCe.nDj.add(localObject1);
+        ad.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "add new use %s", new Object[] { paramString });
+      }
+      for (;;)
+      {
+        Collections.sort(DCe.nDj, new Comparator() {});
+        i = DCe.nDj.size() - 1;
+        while ((i < DCe.nDj.size()) && (DCe.nDj.size() > 8))
+        {
+          if (((cbk)DCe.nDj.get(i)).GVA < 0.5D) {
+            DCe.nDj.remove(i);
+          }
+          i += 1;
+        }
+        ((cbk)localObject1).GVA += 1.0D;
+        ad.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "update use %s %.2f", new Object[] { paramString, Double.valueOf(((cbk)localObject1).GVA) });
+      }
+      paramString = aj.getContext().getSharedPreferences("fts_recent_biz_sp", 0);
+      try
+      {
+        localObject1 = bnU();
+        localObject2 = Base64.encodeToString(DCe.toByteArray(), 0);
+        paramString.edit().putString((String)localObject1, (String)localObject2).commit();
+        ad.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "useBiz pbListString %s", new Object[] { localObject2 });
+        AppMethodBeat.o(117732);
+        return;
+      }
+      catch (IOException paramString)
+      {
+        AppMethodBeat.o(117732);
+        return;
+      }
+    }
   }
   
-  private ah()
+  public static String bnU()
   {
-    AppMethodBeat.i(117760);
-    Object localObject = (String)g.agR().agA().get(com.tencent.mm.storage.ah.a.GOg, "");
-    this.BZw = new a();
-    a locala = this.BZw;
+    AppMethodBeat.i(117731);
+    String str = "key_pb_most_search_biz_list" + u.aAm();
+    AppMethodBeat.o(117731);
+    return str;
+  }
+  
+  public static cbl eMm()
+  {
+    AppMethodBeat.i(117730);
+    Object localObject;
+    if (DCe == null)
+    {
+      localObject = bnU();
+      DCe = new cbl();
+    }
     try
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      localObject = aj.getContext().getSharedPreferences("fts_recent_biz_sp", 0).getString((String)localObject, "");
+      if (!bt.isNullOrNil((String)localObject))
       {
-        localObject = ((String)localObject).split("&");
-        locala.id = bs.u(localObject[0], new Object[0]);
-        locala.BZz = bs.aLy(localObject[1]);
-        locala.BZA = bs.aLy(localObject[2]);
-        locala.ipQ = bs.aLz(localObject[3]);
-        locala.BYF = bs.aLy(localObject[4]);
-        locala.type = bs.aLy(localObject[5]);
-        locala.text = localObject[6];
-        locala.drM = localObject[7];
-        locala.timestamp = bs.aLz(localObject[8]);
-        locala.BZB = bs.aLy(localObject[9]);
-        locala.hDR = bs.aLz(localObject[10]);
-        locala.BZC = bs.aLy(localObject[11]);
+        localObject = Base64.decode(((String)localObject).getBytes(), 0);
+        DCe.parseFrom((byte[])localObject);
       }
-      AppMethodBeat.o(117760);
-      return;
+      label67:
+      if (b.FU((String)g.ajC().ajl().get(274436, null))) {
+        DCe.nDj.clear();
+      }
+      localObject = DCe;
+      AppMethodBeat.o(117730);
+      return localObject;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.WebSearch.WebSearchRedPointMgr", localException, "", new Object[0]);
-      AppMethodBeat.o(117760);
-    }
-  }
-  
-  public static ah exx()
-  {
-    return BZy;
-  }
-  
-  public static long exy()
-  {
-    AppMethodBeat.i(117762);
-    Object localObject = g.agR().agA().get(com.tencent.mm.storage.ah.a.GRa, null);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(117762);
-      return 0L;
-    }
-    long l = ((Long)localObject).longValue();
-    AppMethodBeat.o(117762);
-    return l;
-  }
-  
-  public final void Uq(int paramInt)
-  {
-    int i = 0;
-    AppMethodBeat.i(117763);
-    if (this.BZw != null)
-    {
-      boolean bool = this.BZw.isValid();
-      if ((this.BZx) && (paramInt == 1) && (!bool))
-      {
-        AppMethodBeat.o(117763);
-        return;
-      }
-      String str2 = this.BZw.id;
-      if (str2 != null)
-      {
-        str1 = str2;
-        if (!str2.equals("null")) {}
-      }
-      else
-      {
-        str1 = "";
-      }
-      if (bool) {
-        i = 1;
-      }
-      String str1 = String.format("%d,%d,%s,%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), str1, Long.valueOf(System.currentTimeMillis()) });
-      ac.i("MicroMsg.WebSearch.WebSearchRedPointMgr", "report websearch reddot 17513: ".concat(String.valueOf(str1)));
-      com.tencent.mm.plugin.report.e.wTc.kvStat(17513, str1);
-      if ((paramInt == 1) && (!bool)) {
-        this.BZx = true;
-      }
-    }
-    AppMethodBeat.o(117763);
-  }
-  
-  public final void save()
-  {
-    AppMethodBeat.i(117761);
-    if (this.BZw == null) {}
-    for (String str = "";; str = this.BZw.bgx())
-    {
-      g.agR().agA().set(com.tencent.mm.storage.ah.a.GOg, str);
-      AppMethodBeat.o(117761);
-      return;
-    }
-  }
-  
-  public static final class a
-  {
-    public int BYF;
-    public int BZA;
-    public int BZB;
-    int BZC;
-    public int BZz;
-    public int clear;
-    public String drM;
-    public long hDR;
-    public String id;
-    public long ipQ;
-    public String text;
-    public long timestamp;
-    public int type;
-    
-    public a()
-    {
-      AppMethodBeat.i(117756);
-      this.hDR = System.currentTimeMillis();
-      AppMethodBeat.o(117756);
-    }
-    
-    private boolean isExpired()
-    {
-      AppMethodBeat.i(117757);
-      if (System.currentTimeMillis() > this.hDR + this.ipQ * 1000L)
-      {
-        AppMethodBeat.o(117757);
-        return true;
-      }
-      AppMethodBeat.o(117757);
-      return false;
-    }
-    
-    final String bgx()
-    {
-      AppMethodBeat.i(117759);
-      String str = this.id + "&" + this.BZz + "&" + this.BZA + "&" + this.ipQ + "&" + this.BYF + "&" + this.type + "&" + this.text + "&" + this.drM + "&" + this.timestamp + "&" + this.BZB + "&" + this.hDR + "&" + this.BZC;
-      AppMethodBeat.o(117759);
-      return str;
-    }
-    
-    public final boolean isValid()
-    {
-      AppMethodBeat.i(117758);
-      if (this.clear == 1)
-      {
-        AppMethodBeat.o(117758);
-        return false;
-      }
-      if (this.BZA > d.DIc)
-      {
-        ac.i("MicroMsg.WebSearch.WebSearchRedPointMgr", "msgid %s clientVersion %d invalid ,curVer is %d", new Object[] { this.id, Integer.valueOf(this.BZA), Integer.valueOf(d.DIc) });
-        AppMethodBeat.o(117758);
-        return false;
-      }
-      if (isExpired())
-      {
-        ac.i("MicroMsg.WebSearch.WebSearchRedPointMgr", "msgid %s expired", new Object[] { this.id });
-        AppMethodBeat.o(117758);
-        return false;
-      }
-      String str = this.BZz + "h5 version valid ? %b, red.h5 %d, cur.h5 %s, red.timestamp %d, last rec.timestamp %d";
-      if (z.Ul(0) >= this.BYF) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ac.i("MicroMsg.WebSearch.WebSearchRedPointMgr", str, new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.BYF), Integer.valueOf(z.Ul(0)), Long.valueOf(this.timestamp), Long.valueOf(ah.exy()) });
-        if ((z.Ul(0) < this.BYF) || (this.timestamp <= ah.exy())) {
-          break;
-        }
-        AppMethodBeat.o(117758);
-        return true;
-      }
-      AppMethodBeat.o(117758);
-      return false;
+      break label67;
     }
   }
 }

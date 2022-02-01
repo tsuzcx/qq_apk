@@ -1,26 +1,26 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.byb;
+import com.tencent.mm.protocal.protobuf.ccs;
 
 public final class v$b
   extends l.e
   implements l.c
 {
-  public byb DJr;
+  public ccs Foy;
   
   public v$b()
   {
     AppMethodBeat.i(133117);
-    this.DJr = new byb();
+    this.Foy = new ccs();
     AppMethodBeat.o(133117);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(133118);
-    this.DJr = ((byb)new byb().parseFrom(paramArrayOfByte));
-    int i = this.DJr.Ret;
+    this.Foy = ((ccs)new ccs().parseFrom(paramArrayOfByte));
+    int i = this.Foy.Ret;
     AppMethodBeat.o(133118);
     return i;
   }

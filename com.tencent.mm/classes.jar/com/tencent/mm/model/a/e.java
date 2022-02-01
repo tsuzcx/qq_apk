@@ -3,10 +3,10 @@ package com.tencent.mm.model.a;
 public final class e
 {
   public long endTime;
-  public long gRQ = 0L;
-  public String hqo;
-  public long hqp;
-  public boolean hqq = false;
+  public String hIG;
+  public long hIH;
+  public boolean hII = false;
+  public long hki = 0L;
   public String id;
   public String result;
   public long startTime;

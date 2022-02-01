@@ -6,20 +6,20 @@ import android.os.Looper;
 import android.os.Message;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.an;
+import com.tencent.mm.ui.ap;
 import com.tencent.toybrick.c.f;
 import com.tencent.toybrick.g.b;
 import java.lang.ref.WeakReference;
 
 public final class c
 {
-  public static volatile c Ktz;
+  public static volatile c MjA;
   private Handler mMainHandler;
   
   static
   {
     AppMethodBeat.i(159981);
-    Ktz = new c();
+    MjA = new c();
     AppMethodBeat.o(159981);
   }
   
@@ -36,20 +36,20 @@ public final class c
         {
           paramAnonymousMessage = (c.c)paramAnonymousMessage.obj;
           com.tencent.toybrick.f.a locala = (com.tencent.toybrick.f.a)c.c.a(paramAnonymousMessage).get();
-          if ((locala != null) && (locala.KtH.hashCode() == c.c.b(paramAnonymousMessage)))
+          if ((locala != null) && (locala.MjI.hashCode() == c.c.b(paramAnonymousMessage)))
           {
-            c.c.d(paramAnonymousMessage).P(locala, c.c.c(paramAnonymousMessage));
+            c.c.d(paramAnonymousMessage).R(locala, c.c.c(paramAnonymousMessage));
             AppMethodBeat.o(159971);
             return;
           }
-          an.w("WhenHandler", "[WhenHandler] has loaded! but not right,holder has changed!", new Object[0]);
+          ap.w("WhenHandler", "[WhenHandler] has loaded! but not right,holder has changed!", new Object[0]);
           AppMethodBeat.o(159971);
           return;
         }
         if (paramAnonymousMessage.what == 3)
         {
           paramAnonymousMessage = (c.d)paramAnonymousMessage.obj;
-          c.d.c(paramAnonymousMessage).g(c.d.a(paramAnonymousMessage).get(), ((Boolean)c.d.b(paramAnonymousMessage)).booleanValue());
+          c.d.c(paramAnonymousMessage).h(c.d.a(paramAnonymousMessage).get(), ((Boolean)c.d.b(paramAnonymousMessage)).booleanValue());
         }
         AppMethodBeat.o(159971);
       }
@@ -59,52 +59,52 @@ public final class c
   
   public static void execute(Runnable paramRunnable)
   {
-    AppMethodBeat.i(210318);
-    a.fHr().execute(paramRunnable);
-    AppMethodBeat.o(210318);
+    AppMethodBeat.i(221681);
+    a.fYI().execute(paramRunnable);
+    AppMethodBeat.o(221681);
   }
   
   public final void a(com.tencent.toybrick.f.a parama, b paramb, ImageView paramImageView)
   {
     AppMethodBeat.i(159979);
-    parama = new c(parama, paramb, new a() {}, parama.KtH.hashCode());
-    a.fHr().execute(parama);
+    parama = new c(parama, paramb, new a() {}, parama.MjI.hashCode());
+    a.fYI().execute(parama);
     AppMethodBeat.o(159979);
   }
   
   public final void a(com.tencent.toybrick.f.a parama, b paramb, a parama1)
   {
     AppMethodBeat.i(159978);
-    parama = new c(parama, paramb, parama1, parama.KtH.hashCode());
-    a.fHr().execute(parama);
+    parama = new c(parama, paramb, parama1, parama.MjI.hashCode());
+    a.fYI().execute(parama);
     AppMethodBeat.o(159978);
   }
   
   public static abstract interface a<H, T>
   {
-    public abstract void P(H paramH, T paramT);
+    public abstract void R(H paramH, T paramT);
   }
   
   public static abstract interface b<T>
   {
-    public abstract void g(T paramT, boolean paramBoolean);
+    public abstract void h(T paramT, boolean paramBoolean);
   }
   
   final class c
     implements Runnable
   {
-    private WeakReference<com.tencent.toybrick.f.a> KtC;
-    private WeakReference<b> KtD;
-    private c.a KtE;
+    private WeakReference<com.tencent.toybrick.f.a> MjD;
+    private WeakReference<b> MjE;
+    private c.a MjF;
     private int key;
     private Object object;
     
     public c(com.tencent.toybrick.f.a parama, b paramb, c.a parama1, int paramInt)
     {
       AppMethodBeat.i(159973);
-      this.KtC = new WeakReference(parama);
-      this.KtD = new WeakReference(paramb);
-      this.KtE = parama1;
+      this.MjD = new WeakReference(parama);
+      this.MjE = new WeakReference(paramb);
+      this.MjF = parama1;
       this.key = paramInt;
       AppMethodBeat.o(159973);
     }
@@ -112,11 +112,11 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(159974);
-      Object localObject = (com.tencent.toybrick.f.a)this.KtC.get();
-      b localb = (b)this.KtD.get();
+      Object localObject = (com.tencent.toybrick.f.a)this.MjD.get();
+      b localb = (b)this.MjE.get();
       if ((localObject != null) && (localb != null))
       {
-        this.object = localb.fHs();
+        this.object = localb.fYJ();
         localObject = new Message();
         ((Message)localObject).what = 2;
         ((Message)localObject).obj = this;
@@ -129,28 +129,28 @@ public final class c
   public final class d
     implements Runnable
   {
-    private WeakReference<b> KtD;
-    private WeakReference<f> KtF;
-    private c.b KtG;
+    private WeakReference<b> MjE;
+    private WeakReference<f> MjG;
+    private c.b MjH;
     private Object object;
     
     public d(f paramf, b paramb, c.b paramb1)
     {
       AppMethodBeat.i(159975);
-      this.KtF = new WeakReference(paramf);
-      this.KtD = new WeakReference(paramb);
-      this.KtG = paramb1;
+      this.MjG = new WeakReference(paramf);
+      this.MjE = new WeakReference(paramb);
+      this.MjH = paramb1;
       AppMethodBeat.o(159975);
     }
     
     public final void run()
     {
       AppMethodBeat.i(159976);
-      Object localObject = (b)this.KtD.get();
-      f localf = (f)this.KtF.get();
+      Object localObject = (b)this.MjE.get();
+      f localf = (f)this.MjG.get();
       if ((localObject != null) && (localf != null))
       {
-        this.object = ((b)localObject).fHs();
+        this.object = ((b)localObject).fYJ();
         localObject = new Message();
         ((Message)localObject).what = 3;
         ((Message)localObject).obj = this;
@@ -162,7 +162,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.toybrick.e.c
  * JD-Core Version:    0.7.0.1
  */

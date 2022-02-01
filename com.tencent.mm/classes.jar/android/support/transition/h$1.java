@@ -13,13 +13,13 @@ final class h$1
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    ImageView.ScaleType localScaleType = (ImageView.ScaleType)this.zz.getTag(2131304287);
-    this.zz.setScaleType(localScaleType);
-    this.zz.setTag(2131304287, null);
+    ImageView.ScaleType localScaleType = (ImageView.ScaleType)this.Bq.getTag(2131304287);
+    this.Bq.setScaleType(localScaleType);
+    this.Bq.setTag(2131304287, null);
     if (localScaleType == ImageView.ScaleType.MATRIX)
     {
-      this.zz.setImageMatrix((Matrix)this.zz.getTag(2131304283));
-      this.zz.setTag(2131304283, null);
+      this.Bq.setImageMatrix((Matrix)this.Bq.getTag(2131304283));
+      this.Bq.setTag(2131304283, null);
     }
     paramAnimator.removeListener(this);
   }

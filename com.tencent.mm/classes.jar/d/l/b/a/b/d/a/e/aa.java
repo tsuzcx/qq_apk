@@ -8,10 +8,10 @@ public enum aa
   {
     AppMethodBeat.i(58008);
     aa localaa1 = new aa("SOURCE", 0);
-    LpU = localaa1;
+    NgR = localaa1;
     aa localaa2 = new aa("BINARY", 1);
-    LpV = localaa2;
-    LpW = new aa[] { localaa1, localaa2 };
+    NgS = localaa2;
+    NgT = new aa[] { localaa1, localaa2 };
     AppMethodBeat.o(58008);
   }
   

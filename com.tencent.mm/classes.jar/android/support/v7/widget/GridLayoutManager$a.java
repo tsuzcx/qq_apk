@@ -3,7 +3,7 @@ package android.support.v7.widget;
 public final class GridLayoutManager$a
   extends GridLayoutManager.b
 {
-  public final int Y(int paramInt1, int paramInt2)
+  public final int Z(int paramInt1, int paramInt2)
   {
     return paramInt1 % paramInt2;
   }

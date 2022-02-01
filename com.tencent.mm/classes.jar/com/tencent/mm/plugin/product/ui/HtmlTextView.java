@@ -13,22 +13,22 @@ import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aq.a;
 import java.net.URL;
 import org.xml.sax.XMLReader;
 
 public class HtmlTextView
   extends TextView
 {
-  Html.ImageGetter vFM;
-  Html.TagHandler vFN;
+  Html.ImageGetter wMS;
+  Html.TagHandler wMT;
   
   public HtmlTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(66922);
-    this.vFM = new Html.ImageGetter()
+    this.wMS = new Html.ImageGetter()
     {
       public final Drawable getDrawable(String paramAnonymousString)
       {
@@ -49,7 +49,7 @@ public class HtmlTextView
         return null;
       }
     };
-    this.vFN = new Html.TagHandler()
+    this.wMT = new Html.TagHandler()
     {
       private static Object a(Editable paramAnonymousEditable, Class paramAnonymousClass)
       {
@@ -104,7 +104,7 @@ public class HtmlTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(66921);
-    this.vFM = new Html.ImageGetter()
+    this.wMS = new Html.ImageGetter()
     {
       public final Drawable getDrawable(String paramAnonymousString)
       {
@@ -125,7 +125,7 @@ public class HtmlTextView
         return null;
       }
     };
-    this.vFN = new Html.TagHandler()
+    this.wMT = new Html.TagHandler()
     {
       private static Object a(Editable paramAnonymousEditable, Class paramAnonymousClass)
       {
@@ -179,22 +179,22 @@ public class HtmlTextView
   public void setText(final String paramString)
   {
     AppMethodBeat.i(66923);
-    g.agU().a(new ap.a()
+    g.ajF().a(new aq.a()
     {
-      private volatile Spanned vFO;
+      private volatile Spanned wMU;
       
-      public final boolean aBj()
+      public final boolean aEm()
       {
         AppMethodBeat.i(66915);
-        this.vFO = HtmlTextView.a(HtmlTextView.this, paramString);
+        this.wMU = HtmlTextView.a(HtmlTextView.this, paramString);
         AppMethodBeat.o(66915);
         return true;
       }
       
-      public final boolean aBk()
+      public final boolean aEn()
       {
         AppMethodBeat.i(66916);
-        HtmlTextView.a(HtmlTextView.this, this.vFO, TextView.BufferType.SPANNABLE);
+        HtmlTextView.a(HtmlTextView.this, this.wMU, TextView.BufferType.SPANNABLE);
         HtmlTextView.this.setMovementMethod(LinkMovementMethod.getInstance());
         AppMethodBeat.o(66916);
         return true;
@@ -213,7 +213,7 @@ public class HtmlTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.HtmlTextView
  * JD-Core Version:    0.7.0.1
  */

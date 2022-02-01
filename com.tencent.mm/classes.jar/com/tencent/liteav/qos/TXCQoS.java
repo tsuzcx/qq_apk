@@ -2,15 +2,23 @@ package com.tencent.liteav.qos;
 
 import android.os.Bundle;
 import android.os.Handler;
+import com.tencent.liteav.basic.a.c;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class TXCQoS
 {
   public static final int AUTO_ADJUST_LIVEPUSH_RESOLUTION_STRATEGY = 1;
   public static final int AUTO_ADJUST_REALTIME_VIDEOCHAT_STRATEGY = 5;
+  private static final Map<Integer, c> RESOLUTION_MAP;
   static final String TAG = "TXCQos";
   private int mAutoStrategy;
   private int mBitrate;
@@ -28,7 +36,29 @@ public class TXCQoS
   static
   {
     AppMethodBeat.i(16221);
-    d.f();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(Integer.valueOf(0), c.b);
+    localHashMap.put(Integer.valueOf(1), c.c);
+    localHashMap.put(Integer.valueOf(2), c.d);
+    localHashMap.put(Integer.valueOf(3), c.e);
+    localHashMap.put(Integer.valueOf(4), c.f);
+    localHashMap.put(Integer.valueOf(5), c.g);
+    localHashMap.put(Integer.valueOf(6), c.h);
+    localHashMap.put(Integer.valueOf(7), c.i);
+    localHashMap.put(Integer.valueOf(8), c.j);
+    localHashMap.put(Integer.valueOf(9), c.k);
+    localHashMap.put(Integer.valueOf(10), c.l);
+    localHashMap.put(Integer.valueOf(11), c.m);
+    localHashMap.put(Integer.valueOf(12), c.n);
+    localHashMap.put(Integer.valueOf(13), c.o);
+    localHashMap.put(Integer.valueOf(14), c.p);
+    localHashMap.put(Integer.valueOf(15), c.q);
+    localHashMap.put(Integer.valueOf(16), c.r);
+    localHashMap.put(Integer.valueOf(17), c.s);
+    localHashMap.put(Integer.valueOf(18), c.t);
+    localHashMap.put(Integer.valueOf(19), c.u);
+    RESOLUTION_MAP = Collections.unmodifiableMap(localHashMap);
+    f.f();
     AppMethodBeat.o(16221);
   }
   
@@ -115,6 +145,15 @@ public class TXCQoS
     AppMethodBeat.o(16203);
   }
   
+  public static c getProperResolutionByVideoBitrate(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(187217);
+    paramInt1 = nativeGetProperResolutionByVideoBitrate(paramBoolean, paramInt1, paramInt2);
+    c localc = (c)RESOLUTION_MAP.get(Integer.valueOf(paramInt1));
+    AppMethodBeat.o(187217);
+    return localc;
+  }
+  
   private native void nativeAddQueueInputSize(long paramLong, int paramInt);
   
   private native void nativeAddQueueOutputSize(long paramLong, int paramInt);
@@ -127,7 +166,7 @@ public class TXCQoS
   
   private native int nativeGetHeight(long paramLong);
   
-  public static native int nativeGetProperResolutionByVideoBitrate(boolean paramBoolean, int paramInt1, int paramInt2);
+  private static native int nativeGetProperResolutionByVideoBitrate(boolean paramBoolean, int paramInt1, int paramInt2);
   
   private native int nativeGetWidth(long paramLong);
   
@@ -209,14 +248,30 @@ public class TXCQoS
     AppMethodBeat.o(16211);
   }
   
-  public void setDefaultVideoResolution(int paramInt)
+  public void setDefaultVideoResolution(c paramc)
   {
-    AppMethodBeat.i(16212);
-    TXCLog.i("TXCQos", "DefaultVideoResolution is ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.i(187216);
+    TXCLog.i("TXCQos", "DefaultVideoResolution is ".concat(String.valueOf(paramc)));
     this.mWidth = 0;
     this.mHeight = 0;
-    nativeSetVideoDefaultResolution(this.mInstance, paramInt);
-    AppMethodBeat.o(16212);
+    Iterator localIterator = RESOLUTION_MAP.entrySet().iterator();
+    int i = 0;
+    if (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (localEntry.getValue() != paramc) {
+        break label111;
+      }
+      i = ((Integer)localEntry.getKey()).intValue();
+    }
+    label111:
+    for (;;)
+    {
+      break;
+      nativeSetVideoDefaultResolution(this.mInstance, i);
+      AppMethodBeat.o(187216);
+      return;
+    }
   }
   
   public void setHasVideo(boolean paramBoolean)

@@ -8,15 +8,16 @@ import android.text.TextUtils;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.base.f;
 import com.tencent.mm.plugin.appbrand.widget.g.a;
 
 @SuppressLint({"AppCompatCustomView"})
 public class e
   extends TextView
-  implements com.tencent.mm.plugin.appbrand.jsapi.base.e
+  implements f
 {
-  private boolean lqM;
-  private a msk;
+  private boolean lOj;
+  private a mSQ;
   
   public e(Context paramContext)
   {
@@ -40,23 +41,23 @@ public class e
     AppMethodBeat.o(137936);
   }
   
-  public final boolean bfw()
+  public final boolean biZ()
   {
-    return this.lqM;
+    return this.lOj;
   }
   
   public void setInterceptEvent(boolean paramBoolean)
   {
-    this.lqM = paramBoolean;
+    this.lOj = paramBoolean;
   }
   
   public void setLineHeight(int paramInt)
   {
     AppMethodBeat.i(137937);
-    if (this.msk == null) {
-      this.msk = new a(paramInt);
+    if (this.mSQ == null) {
+      this.mSQ = new a(paramInt);
     }
-    if (!this.msk.aM(paramInt))
+    if (!this.mSQ.aP(paramInt))
     {
       AppMethodBeat.o(137937);
       return;
@@ -78,7 +79,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.e
  * JD-Core Version:    0.7.0.1
  */

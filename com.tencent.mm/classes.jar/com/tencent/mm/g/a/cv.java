@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class cv
   extends b
 {
+  public cv.a dnG;
+  public b dnH;
+  
   public cv()
   {
     this((byte)0);
@@ -12,8 +16,17 @@ public final class cv
   
   private cv(byte paramByte)
   {
-    this.Gqe = false;
+    AppMethodBeat.i(127402);
+    this.dnG = new cv.a();
+    this.dnH = new b();
+    this.IbR = false;
     this.callback = null;
+    AppMethodBeat.o(127402);
+  }
+  
+  public static final class b
+  {
+    public int ret = 0;
   }
 }
 

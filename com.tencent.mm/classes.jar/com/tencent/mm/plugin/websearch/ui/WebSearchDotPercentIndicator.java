@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class WebSearchDotPercentIndicator
   extends LinearLayout
 {
-  private int kVl;
+  private int lsk;
   private LayoutInflater mInflater;
   
   public WebSearchDotPercentIndicator(Context paramContext, AttributeSet paramAttributeSet)
@@ -43,10 +43,10 @@ public class WebSearchDotPercentIndicator
     if (paramInt > 1) {}
     for (;;)
     {
-      this.kVl = paramInt;
+      this.lsk = paramInt;
       removeAllViews();
       paramInt = 0;
-      while (paramInt < this.kVl)
+      while (paramInt < this.lsk)
       {
         addView((ImageView)this.mInflater.inflate(2131494223, this, false));
         paramInt += 1;
@@ -73,8 +73,8 @@ public class WebSearchDotPercentIndicator
     label118:
     for (;;)
     {
-      int k = (int)Math.rint(this.kVl * paramFloat);
-      ac.v("MicroMsg.AppBrandDotPercentIndicator", "setPercent percent:%s dotsOnNum:%d", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(k) });
+      int k = (int)Math.rint(this.lsk * paramFloat);
+      ad.v("MicroMsg.AppBrandDotPercentIndicator", "setPercent percent:%s dotsOnNum:%d", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(k) });
       int i = 0;
       for (;;)
       {

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.appcache;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.concurrent.Callable;
 
 final class WxaCommLibRuntimeReader$1
@@ -14,13 +14,13 @@ final class WxaCommLibRuntimeReader$1
     AppMethodBeat.i(90569);
     try
     {
-      Object localObject = XIPCInvoker.a("com.tencent.mm", IPCVoid.gey, WxaCommLibRuntimeReader.a.class);
+      Object localObject = XIPCInvoker.a("com.tencent.mm", IPCVoid.gyi, WxaCommLibRuntimeReader.a.class);
       AppMethodBeat.o(90569);
       return localObject;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.WxaCommLibRuntimeReader", localException, "load() ipc read lib", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.WxaCommLibRuntimeReader", localException, "load() ipc read lib", new Object[0]);
       AppMethodBeat.o(90569);
       return localException;
     }

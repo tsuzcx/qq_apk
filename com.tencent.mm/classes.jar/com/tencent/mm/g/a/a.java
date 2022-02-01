@@ -12,7 +12,7 @@ public final class a
   
   private a(byte paramByte)
   {
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
   }
 }

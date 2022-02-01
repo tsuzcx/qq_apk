@@ -1,6 +1,8 @@
 package a;
 
 import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
@@ -10,34 +12,34 @@ import java.util.concurrent.TimeUnit;
 
 final class a
 {
-  private static final a azI;
-  private static final int azK;
-  static final int azL;
-  static final int azM;
-  private final Executor azJ;
+  private static final int aBB;
+  static final int aBC;
+  static final int aBD;
+  private static final a aBz;
+  private final Executor aBA;
   
   static
   {
     AppMethodBeat.i(52976);
-    azI = new a();
+    aBz = new a();
     int i = Runtime.getRuntime().availableProcessors();
-    azK = i;
-    azL = i + 1;
-    azM = azK * 2 + 1;
+    aBB = i;
+    aBC = i + 1;
+    aBD = aBB * 2 + 1;
     AppMethodBeat.o(52976);
   }
   
   private a()
   {
     AppMethodBeat.i(52974);
-    this.azJ = new a.a((byte)0);
+    this.aBA = new a((byte)0);
     AppMethodBeat.o(52974);
   }
   
   public static ExecutorService newCachedThreadPool()
   {
     AppMethodBeat.i(52975);
-    ThreadPoolExecutor localThreadPoolExecutor = new ThreadPoolExecutor(azL, azM, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue());
+    ThreadPoolExecutor localThreadPoolExecutor = new ThreadPoolExecutor(aBC, aBD, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue());
     if (Build.VERSION.SDK_INT >= 9) {
       localThreadPoolExecutor.allowCoreThreadTimeOut(true);
     }
@@ -45,9 +47,20 @@ final class a
     return localThreadPoolExecutor;
   }
   
-  public static Executor nh()
+  public static Executor nz()
   {
-    return azI.azJ;
+    return aBz.aBA;
+  }
+  
+  static final class a
+    implements Executor
+  {
+    public final void execute(Runnable paramRunnable)
+    {
+      AppMethodBeat.i(52973);
+      new Handler(Looper.getMainLooper()).post(paramRunnable);
+      AppMethodBeat.o(52973);
+    }
   }
 }
 

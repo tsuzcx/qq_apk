@@ -14,38 +14,38 @@ import com.tencent.toybrick.g.b.b;
 public final class a
   extends g<a, a>
 {
-  public static final int Ksp = 2131493530;
-  private Drawable Ksq;
-  private b.b<a> Ksr;
-  private b.a<a> Kss;
-  private CharSequence vNf;
+  public static final int Miq = 2131493530;
+  private Drawable Mir;
+  private b.b<a> Mis;
+  private b.a<a> Mit;
+  private CharSequence wUo;
   
   public final int getLayoutResource()
   {
-    return Ksp;
+    return Miq;
   }
   
   public final class a
     extends com.tencent.toybrick.f.a
   {
-    public TextView Ksu;
-    public ImageView Ksv;
-    public ImageView Ksw;
-    public MMSwitchBtn Ksx;
+    public TextView Miv;
+    public ImageView Miw;
+    public ImageView Mix;
+    public MMSwitchBtn Miy;
     public TextView titleTv;
-    public TextView vLf;
+    public TextView wSo;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(159933);
       this.titleTv = ((TextView)paramView.findViewById(16908310));
-      this.Ksw = ((ImageView)paramView.findViewById(2131301384));
-      this.Ksu = ((TextView)paramView.findViewById(2131305740));
-      this.Ksv = ((ImageView)paramView.findViewById(2131300957));
-      this.vLf = ((TextView)paramView.findViewById(2131305546));
-      this.Ksx = ((MMSwitchBtn)paramView.findViewById(2131298255));
-      this.Ksx.setSwitchListener(new MMSwitchBtn.a()
+      this.Mix = ((ImageView)paramView.findViewById(2131301384));
+      this.Miv = ((TextView)paramView.findViewById(2131305740));
+      this.Miw = ((ImageView)paramView.findViewById(2131300957));
+      this.wSo = ((TextView)paramView.findViewById(2131305546));
+      this.Miy = ((MMSwitchBtn)paramView.findViewById(2131298255));
+      this.Miy.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean) {}
       });
@@ -55,7 +55,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.toybrick.c.a
  * JD-Core Version:    0.7.0.1
  */

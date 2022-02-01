@@ -1,211 +1,66 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.do;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
-import com.tencent.mm.plugin.appbrand.config.r;
-import com.tencent.mm.plugin.appbrand.permission.AppRuntimeApiPermissionBundle;
-import com.tencent.mm.plugin.appbrand.z.j;
-import com.tencent.mm.protocal.protobuf.bd;
-import com.tencent.mm.protocal.protobuf.bot;
-import com.tencent.mm.protocal.protobuf.cbq;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.lang.reflect.Field;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.report.h;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class au
-  extends do
 {
-  static final c.a jmW;
-  public transient boolean lnb;
-  
-  static
+  static void a(b paramb, String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(47285);
-    c.a locala = new c.a();
-    locala.GvF = new Field[7];
-    locala.columns = new String[8];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appIdHash";
-    locala.GvH.put("appIdHash", "INTEGER PRIMARY KEY ");
-    localStringBuilder.append(" appIdHash INTEGER PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.GvG = "appIdHash";
-    locala.columns[1] = "appId";
-    locala.GvH.put("appId", "TEXT");
-    localStringBuilder.append(" appId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "launchAction";
-    locala.GvH.put("launchAction", "BLOB");
-    localStringBuilder.append(" launchAction BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "jsapiInfo";
-    locala.GvH.put("jsapiInfo", "BLOB");
-    localStringBuilder.append(" jsapiInfo BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "hostInfo";
-    locala.GvH.put("hostInfo", "BLOB");
-    localStringBuilder.append(" hostInfo BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "actionsheetInfo";
-    locala.GvH.put("actionsheetInfo", "BLOB");
-    localStringBuilder.append(" actionsheetInfo BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "operationInfo";
-    locala.GvH.put("operationInfo", "BLOB");
-    localStringBuilder.append(" operationInfo BLOB");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    jmW = locala;
-    AppMethodBeat.o(47285);
+    AppMethodBeat.i(47270);
+    a(paramb, paramString, paramInt1, paramInt2, paramInt3, paramLong, 0);
+    AppMethodBeat.o(47270);
   }
   
-  public final boolean Ot(String paramString)
+  static void a(b paramb, String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4)
   {
-    AppMethodBeat.i(47283);
-    if ((this.field_operationInfo != null) && (!bs.isNullOrNil(this.field_operationInfo.FpK))) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(this.field_operationInfo.FpK);
-        boolean bool = localJSONObject.has("jumpWeAppFromLongPressCodeBanInfo");
-        if (!bool)
-        {
-          AppMethodBeat.o(47283);
-          return false;
-        }
-        localJSONObject = localJSONObject.getJSONObject("jumpWeAppFromLongPressCodeBanInfo");
-        bool = localJSONObject.has(paramString);
-        if (!bool)
-        {
-          AppMethodBeat.o(47283);
-          return false;
-        }
-        if (localJSONObject.optInt(paramString, 0) == 1)
-        {
-          AppMethodBeat.o(47283);
-          return true;
-        }
-        AppMethodBeat.o(47283);
-        return false;
-      }
-      catch (JSONException paramString)
-      {
-        ac.e("MicroMsg.AppBrand.LaunchWxaAppInfo", "[banjump] shouldBanJumpInternal fail", new Object[] { paramString });
-      }
-    }
-    AppMethodBeat.o(47283);
-    return false;
+    AppMethodBeat.i(188619);
+    int i = h.Ui(paramString);
+    ad.d("MicroMsg.AppBrand.LaunchStepCostReporter", "report %s | %s | %d | %d | %d", new Object[] { paramb.name(), paramString, Long.valueOf(paramLong), Integer.valueOf(i), Integer.valueOf(paramInt4) });
+    g.yhR.f(13886, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2 + 1), Integer.valueOf(paramb.dtK), "", "", Long.valueOf(paramLong), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(paramInt4) });
+    AppMethodBeat.o(188619);
   }
   
-  public final void a(AppBrandSysConfigWC paramAppBrandSysConfigWC)
+  public static enum a
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(47282);
-    boolean bool1;
-    label51:
-    label75:
-    int i;
-    if ((this.field_actionsheetInfo != null) && (this.field_actionsheetInfo.DNF))
+    static
     {
-      bool1 = true;
-      paramAppBrandSysConfigWC.jEj = bool1;
-      if ((this.field_actionsheetInfo == null) || (!this.field_actionsheetInfo.DNG)) {
-        break label220;
-      }
-      bool1 = true;
-      paramAppBrandSysConfigWC.jEk = bool1;
-      if ((this.field_actionsheetInfo == null) || (!this.field_actionsheetInfo.DNI)) {
-        break label225;
-      }
-      bool1 = true;
-      paramAppBrandSysConfigWC.jEl = bool1;
-      if (this.field_actionsheetInfo == null) {
-        break label230;
-      }
-      i = this.field_actionsheetInfo.DNH;
-      label95:
-      paramAppBrandSysConfigWC.jEm = i;
-      paramAppBrandSysConfigWC.ccr = new AppRuntimeApiPermissionBundle(this.field_jsapiInfo);
-      if ((this.field_operationInfo != null) && (!bs.isNullOrNil(this.field_operationInfo.FpK))) {
-        paramAppBrandSysConfigWC.cct = this.field_operationInfo.FpK;
-      }
+      AppMethodBeat.i(47266);
+      lJY = new a("NONE", 0);
+      lJZ = new a("MISSING_PKG", 1);
+      lKa = new a("NO_USE_RECENT", 2);
+      lKb = new a("INVALID_FIELDS", 3);
+      lKc = new a("VERSION_NOT_FOUND", 4);
+      lKd = new a("PATH_NOT_FOUND", 5);
+      lKe = new a("CMD_UPDATE_VERSION", 6);
+      lKf = new a("ATTRS_NOT_FOUND", 7);
+      lKg = new a[] { lJY, lJZ, lKa, lKb, lKc, lKd, lKe, lKf };
+      AppMethodBeat.o(47266);
     }
-    for (;;)
+    
+    private a() {}
+  }
+  
+  public static enum b
+  {
+    final int dtK;
+    
+    static
     {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramAppBrandSysConfigWC.cct).getJSONObject("privacy");
-        if (localJSONObject.getInt("banLocationIfEmptyDesc") != 1) {
-          continue;
-        }
-        bool1 = true;
-        paramAppBrandSysConfigWC.jEc = bool1;
-        if (localJSONObject.getInt("banGetWifiListIfEmptyDesc") != 1) {
-          continue;
-        }
-        bool1 = bool2;
-        paramAppBrandSysConfigWC.jEd = bool1;
-      }
-      catch (JSONException localJSONException)
-      {
-        label220:
-        label225:
-        label230:
-        paramAppBrandSysConfigWC.jEc = false;
-        paramAppBrandSysConfigWC.jEd = false;
-        continue;
-      }
-      r.a(paramAppBrandSysConfigWC, paramAppBrandSysConfigWC.cct);
-      AppMethodBeat.o(47282);
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label51;
-      bool1 = false;
-      break label75;
-      i = 0;
-      break label95;
-      bool1 = false;
-      continue;
-      bool1 = false;
+      AppMethodBeat.i(47269);
+      lKh = new b("SYNC_GET_ATTRS", 0, 20);
+      lKi = new b("SYNC_LAUNCH", 1, 21);
+      lKj = new b("GET_DOWNLOAD_URL", 2, 22);
+      lKk = new b[] { lKh, lKi, lKj };
+      AppMethodBeat.o(47269);
     }
-  }
-  
-  public final void a(bot parambot)
-  {
-    this.field_launchAction = parambot.Fef;
-    this.field_jsapiInfo = parambot.Feg;
-    this.field_hostInfo = parambot.Feh;
-    this.field_actionsheetInfo = parambot.Fej;
-    this.field_operationInfo = parambot.Fek;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(47284);
-    if ((paramObject instanceof au))
+    
+    private b(int paramInt)
     {
-      paramObject = (au)paramObject;
-      if ((this.field_appId.equals(paramObject.field_appId)) && (this.field_launchAction != null) && (j.a(this.field_launchAction, paramObject.field_launchAction)) && (this.field_jsapiInfo != null) && (j.a(this.field_jsapiInfo, paramObject.field_jsapiInfo)) && (this.field_hostInfo != null) && (j.a(this.field_hostInfo, paramObject.field_hostInfo)) && (this.field_actionsheetInfo != null) && (j.a(this.field_actionsheetInfo, paramObject.field_actionsheetInfo)) && (this.field_operationInfo != null) && (j.a(this.field_operationInfo, paramObject.field_operationInfo)))
-      {
-        AppMethodBeat.o(47284);
-        return true;
-      }
-      AppMethodBeat.o(47284);
-      return false;
+      this.dtK = paramInt;
     }
-    AppMethodBeat.o(47284);
-    return false;
-  }
-  
-  public final c.a getDBInfo()
-  {
-    return jmW;
   }
 }
 

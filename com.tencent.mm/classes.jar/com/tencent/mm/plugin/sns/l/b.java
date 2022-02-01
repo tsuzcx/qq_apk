@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.sns.l;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.vending.j.f;
 
 public class b
   implements com.tencent.mm.vending.c.b<a>
 {
-  protected a zmi;
-  public final b.a zmj;
-  public final b.b zmk;
-  public final b.c zml;
+  protected a AEd;
+  public final a AEe;
+  public final b AEf;
+  public final c AEg;
   
   public b()
   {
@@ -20,16 +21,49 @@ public class b
   private b(a parama)
   {
     AppMethodBeat.i(100583);
-    this.zmj = new b.a(this);
-    this.zmk = new b.b(this);
-    this.zml = new b.c(this);
-    this.zmi = parama;
+    this.AEe = new a();
+    this.AEf = new b();
+    this.AEg = new c();
+    this.AEd = parama;
     AppMethodBeat.o(100583);
   }
   
-  public final a dSV()
+  public final a efh()
   {
-    return this.zmi;
+    return this.AEd;
+  }
+  
+  public final class a
+    implements com.tencent.mm.vending.h.e<Void, com.tencent.mm.vending.j.e<String, Boolean, Boolean, Integer>>
+  {
+    public a() {}
+    
+    public final String Wr()
+    {
+      return "Vending.LOGIC";
+    }
+  }
+  
+  public final class b
+    implements com.tencent.mm.vending.h.e<Void, com.tencent.mm.vending.j.e<String, Boolean, Boolean, Integer>>
+  {
+    public b() {}
+    
+    public final String Wr()
+    {
+      return "Vending.LOGIC";
+    }
+  }
+  
+  public final class c
+    implements com.tencent.mm.vending.h.e<Void, f<String, Integer, Boolean, Integer, Long>>
+  {
+    public c() {}
+    
+    public final String Wr()
+    {
+      return "Vending.LOGIC";
+    }
   }
 }
 

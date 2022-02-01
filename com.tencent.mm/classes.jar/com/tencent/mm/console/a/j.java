@@ -8,14 +8,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.websearch.api.z;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import com.tencent.mm.sdk.platformtools.i;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.base.h;
 import java.util.Map;
 
 public final class j
@@ -34,18 +32,18 @@ public final class j
   {
     AppMethodBeat.i(20187);
     paramString = new StringBuilder();
-    paramString.append(String.format("[ver  ] %s %08X\n", new Object[] { i.c(paramContext, d.DIc, true), Integer.valueOf(d.DIc) }));
-    paramString.append(com.tencent.mm.sdk.platformtools.h.info());
-    paramString.append(String.format("[cid  ] %d\n", new Object[] { Integer.valueOf(i.cGY) }));
-    paramString.append(String.format("[s.ver] %d\n", new Object[] { Integer.valueOf(z.Ul(0)) }));
-    paramString.append(String.format("[l.ver] %d %s\n", new Object[] { Integer.valueOf(z.Ul(1)), ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getWebViewType() }));
-    paramString.append(String.format("[w.ver] %d\n", new Object[] { Integer.valueOf(z.Ul(3)) }));
-    paramString.append(String.format("[b.ver] %d\n", new Object[] { Integer.valueOf(z.Ul(2)) }));
-    paramString.append(String.format("[r.ver] %s\n", new Object[] { com.tencent.mm.sdk.platformtools.h.gMJ }));
-    if (com.tencent.mm.sdk.platformtools.h.EX_DEVICE_LOGIN) {
+    paramString.append(String.format("[ver  ] %s %08X\n", new Object[] { com.tencent.mm.sdk.platformtools.j.c(paramContext, d.Fnj, true), Integer.valueOf(d.Fnj) }));
+    paramString.append(i.info());
+    paramString.append(String.format("[cid  ] %d\n", new Object[] { Integer.valueOf(com.tencent.mm.sdk.platformtools.j.cSc) }));
+    paramString.append(String.format("[s.ver] %d\n", new Object[] { Integer.valueOf(com.tencent.mm.plugin.websearch.api.ad.We(0)) }));
+    paramString.append(String.format("[l.ver] %d %s\n", new Object[] { Integer.valueOf(com.tencent.mm.plugin.websearch.api.ad.We(1)), ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getWebViewType() }));
+    paramString.append(String.format("[w.ver] %d\n", new Object[] { Integer.valueOf(com.tencent.mm.plugin.websearch.api.ad.We(3)) }));
+    paramString.append(String.format("[b.ver] %d\n", new Object[] { Integer.valueOf(com.tencent.mm.plugin.websearch.api.ad.We(2)) }));
+    paramString.append(String.format("[r.ver] %s\n", new Object[] { i.hgG }));
+    if (i.EX_DEVICE_LOGIN) {
       try
       {
-        Map localMap = bv.L(bs.convertStreamToString(paramContext.getAssets().open("merged_features.xml")), "merged");
+        Map localMap = bw.M(bt.convertStreamToString(paramContext.getAssets().open("merged_features.xml")), "merged");
         if (localMap != null)
         {
           i = 0;
@@ -66,7 +64,7 @@ public final class j
       }
       catch (Exception paramArrayOfString)
       {
-        ac.printErrStackTrace("MicroMsg.Version", paramArrayOfString, "", new Object[0]);
+        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.Version", paramArrayOfString, "", new Object[0]);
       }
     }
     label344:
@@ -74,18 +72,18 @@ public final class j
     paramArrayOfString.setGravity(19);
     paramArrayOfString.setTextSize(1, 10.0F);
     paramArrayOfString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    paramArrayOfString.setTextColor(ao.aJ(paramContext, 2130968584));
+    paramArrayOfString.setTextColor(paramContext.getResources().getColor(2131099732));
     paramArrayOfString.setTypeface(Typeface.MONOSPACE);
     int i = paramContext.getResources().getDimensionPixelSize(2131165480);
     paramArrayOfString.setPadding(i, i, i, i);
-    com.tencent.mm.ui.base.h.a(paramContext, null, paramArrayOfString, null);
+    h.a(paramContext, null, paramArrayOfString, null);
     AppMethodBeat.o(20187);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.console.a.j
  * JD-Core Version:    0.7.0.1
  */

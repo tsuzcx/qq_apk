@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a$a
   implements com.tencent.smtt.sdk.DownloadListener
 {
-  android.webkit.DownloadListener KEi;
+  android.webkit.DownloadListener MuI;
   
   public a$a(android.webkit.DownloadListener paramDownloadListener)
   {
-    this.KEi = paramDownloadListener;
+    this.MuI = paramDownloadListener;
   }
   
   public final void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
     AppMethodBeat.i(153812);
-    if (this.KEi != null) {
-      this.KEi.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
+    if (this.MuI != null) {
+      this.MuI.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
     }
     AppMethodBeat.o(153812);
   }

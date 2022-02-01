@@ -230,7 +230,7 @@ public final class u
   }
   
   /* Error */
-  public static boolean mL(String paramString1, String paramString2)
+  public static boolean nj(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: aconst_null
@@ -290,7 +290,7 @@ public final class u
     //   114: ifne -33 -> 81
     //   117: aload 7
     //   119: aload 6
-    //   121: invokestatic 155	com/tencent/xweb/xwalk/u:mM	(Ljava/lang/String;Ljava/lang/String;)V
+    //   121: invokestatic 155	com/tencent/xweb/xwalk/u:nk	(Ljava/lang/String;Ljava/lang/String;)V
     //   124: aload_1
     //   125: invokevirtual 156	java/util/zip/ZipEntry:isDirectory	()Z
     //   128: ifeq +98 -> 226
@@ -480,7 +480,7 @@ public final class u
     //   285	293	417	java/io/IOException
   }
   
-  private static void mM(String paramString1, String paramString2)
+  private static void nk(String paramString1, String paramString2)
   {
     AppMethodBeat.i(154507);
     paramString1 = paramString1.split("/");
@@ -504,7 +504,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.u
  * JD-Core Version:    0.7.0.1
  */

@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.story.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/storage/ConstantsStory$StoryRangeDatailUI;", "", "()V", "KEY_STORY_LOCAL_ID", "", "getKEY_STORY_LOCAL_ID", "()Ljava/lang/String;", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/ConstantsStory$StoryRangeDatailUI;", "", "()V", "KEY_STORY_LOCAL_ID", "", "getKEY_STORY_LOCAL_ID", "()Ljava/lang/String;", "plugin-story_release"})
 public final class a$f
 {
-  private static final String zCc = "key_story_local_id";
-  public static final f zCd;
+  private static final String ATB = "key_story_local_id";
+  public static final f ATC;
   
   static
   {
     AppMethodBeat.i(119472);
-    zCd = new f();
-    zCc = "key_story_local_id";
+    ATC = new f();
+    ATB = "key_story_local_id";
     AppMethodBeat.o(119472);
   }
   
-  public static String dYT()
+  public static String eli()
   {
-    return zCc;
+    return ATB;
   }
 }
 

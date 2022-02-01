@@ -1,63 +1,41 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.btm;
-import d.g.b.k;
+import com.tencent.mm.plugin.finder.feed.model.internal.i;
+import com.tencent.mm.plugin.finder.storage.ac;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/model/StreamMarkReadStat;", "", "feedId", "", "isRead", "", "timestamp", "stat", "Lcom/tencent/mm/protocal/protobuf/MarkReadStat;", "(JZJLcom/tencent/mm/protocal/protobuf/MarkReadStat;)V", "getFeedId", "()J", "()Z", "setRead", "(Z)V", "getStat", "()Lcom/tencent/mm/protocal/protobuf/MarkReadStat;", "setStat", "(Lcom/tencent/mm/protocal/protobuf/MarkReadStat;)V", "getTimestamp", "compareTo", "", "other", "component1", "component2", "component3", "component4", "copy", "equals", "", "hashCode", "toString", "", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/model/FinderMsgLike;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"})
 public final class af
-  implements Comparable<af>
+  extends a
 {
-  final long dig;
-  boolean rvi;
-  btm rvj;
-  private final long timestamp;
-  
-  private af(long paramLong1, long paramLong2)
+  public af(ac paramac)
   {
-    this.dig = paramLong1;
-    this.rvi = false;
-    this.timestamp = paramLong2;
-    this.rvj = null;
+    super(paramac);
+    AppMethodBeat.i(166406);
+    AppMethodBeat.o(166406);
   }
   
-  public final boolean equals(Object paramObject)
+  public final int a(i parami)
   {
-    AppMethodBeat.i(202591);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof af))
-      {
-        paramObject = (af)paramObject;
-        if ((this.dig != paramObject.dig) || (this.rvi != paramObject.rvi) || (this.timestamp != paramObject.timestamp) || (!k.g(this.rvj, paramObject.rvj))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(202591);
-      return true;
-    }
-    AppMethodBeat.o(202591);
-    return false;
+    AppMethodBeat.i(166405);
+    p.h(parami, "obj");
+    AppMethodBeat.o(166405);
+    return 0;
   }
   
-  public final int hashCode()
+  public final int bYk()
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(202589);
-    String str = "StreamMarkReadStat(feedId=" + this.dig + ", isRead=" + this.rvi + ", timestamp=" + this.timestamp + ", stat=" + this.rvj + ")";
-    AppMethodBeat.o(202589);
-    return str;
+    AppMethodBeat.i(166404);
+    int i = af.class.getName().hashCode();
+    AppMethodBeat.o(166404);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.af
  * JD-Core Version:    0.7.0.1
  */

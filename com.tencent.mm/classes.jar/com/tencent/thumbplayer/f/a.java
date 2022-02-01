@@ -7,7 +7,7 @@ import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
 
 public abstract interface a
 {
-  public abstract void BY(long paramLong);
+  public abstract void Fa(long paramLong);
   
   public abstract com.tencent.thumbplayer.b.a.a a(com.tencent.thumbplayer.b.a.a parama, long paramLong, p paramp);
   
@@ -19,27 +19,27 @@ public abstract interface a
   
   public abstract void a(ITPPlayListener paramITPPlayListener);
   
-  public abstract String aTM(String paramString);
+  public abstract String aZM(String paramString);
   
-  public abstract void aeL(int paramInt);
+  public abstract void ahl(int paramInt);
   
   public abstract void b(f paramf);
   
   public abstract com.tencent.thumbplayer.b.a.a c(com.tencent.thumbplayer.b.a.a parama);
   
-  public abstract void fFI();
+  public abstract void fWX();
   
-  public abstract boolean fFJ();
+  public abstract boolean fWY();
   
-  public abstract String fFK();
+  public abstract String fWZ();
   
-  public abstract com.tencent.thumbplayer.b.b.a fFL();
+  public abstract void fWu();
   
-  public abstract void fFd();
+  public abstract com.tencent.thumbplayer.b.b.a fXa();
   
   public abstract boolean isEnable();
   
-  public abstract void ms(String paramString1, String paramString2);
+  public abstract void mQ(String paramString1, String paramString2);
   
   public abstract void pauseDownload();
   
@@ -49,7 +49,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.f.a
  * JD-Core Version:    0.7.0.1
  */

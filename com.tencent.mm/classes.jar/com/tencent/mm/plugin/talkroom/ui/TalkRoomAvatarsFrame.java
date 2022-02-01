@@ -3,43 +3,36 @@ package com.tencent.mm.plugin.talkroom.ui;
 import android.content.Context;
 import android.os.Looper;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.MMHorList;
 import com.tencent.mm.ui.base.MMHorList.a;
-import java.util.LinkedList;
 import java.util.List;
 
 public class TalkRoomAvatarsFrame
   extends FrameLayout
 {
-  private ao mHandler;
-  private final int uaa;
-  private String uao;
-  private final int zXd;
-  private final int zXe;
-  private MMHorList zXf;
-  private a zXg;
-  private au zXh;
+  private final int BoH;
+  private final int BoI;
+  private MMHorList BoJ;
+  private TalkRoomAvatarsFrame.a BoK;
+  private av BoL;
+  private ap mHandler;
+  private final int vcJ;
+  private String vcX;
   
   public TalkRoomAvatarsFrame(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(29582);
-    this.zXd = 2000;
-    this.zXe = 5;
-    this.uaa = a.fromDPToPix(null, 58);
+    this.BoH = 2000;
+    this.BoI = 5;
+    this.vcJ = a.fromDPToPix(null, 58);
     initView();
     AppMethodBeat.o(29582);
   }
@@ -48,43 +41,43 @@ public class TalkRoomAvatarsFrame
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29583);
-    this.zXd = 2000;
-    this.zXe = 5;
-    this.uaa = a.fromDPToPix(null, 58);
+    this.BoH = 2000;
+    this.BoI = 5;
+    this.vcJ = a.fromDPToPix(null, 58);
     initView();
     AppMethodBeat.o(29583);
   }
   
-  private void cWl()
+  private void dfw()
   {
     AppMethodBeat.i(29587);
-    this.zXg.uao = this.uao;
-    if (bs.isNullOrNil(this.uao))
+    this.BoK.vcX = this.vcX;
+    if (bt.isNullOrNil(this.vcX))
     {
-      this.zXg.notifyDataSetChanged();
+      this.BoK.notifyDataSetChanged();
       AppMethodBeat.o(29587);
       return;
     }
-    if (this.zXf.getIsTouching())
+    if (this.BoJ.getIsTouching())
     {
       AppMethodBeat.o(29587);
       return;
     }
-    int i = this.zXg.indexOf(this.uao) * this.uaa;
-    int j = this.zXf.getCurrentPosition();
+    int i = this.BoK.indexOf(this.vcX) * this.vcJ;
+    int j = this.BoJ.getCurrentPosition();
     if (i < j)
     {
-      this.zXf.ZZ(i);
+      this.BoJ.acj(i);
       AppMethodBeat.o(29587);
       return;
     }
-    if (i > j + this.uaa * 4)
+    if (i > j + this.vcJ * 4)
     {
-      this.zXf.ZZ(i - this.uaa * 4);
+      this.BoJ.acj(i - this.vcJ * 4);
       AppMethodBeat.o(29587);
       return;
     }
-    this.zXg.notifyDataSetChanged();
+    this.BoK.notifyDataSetChanged();
     AppMethodBeat.o(29587);
   }
   
@@ -92,16 +85,16 @@ public class TalkRoomAvatarsFrame
   {
     AppMethodBeat.i(29584);
     inflate(getContext(), 2131495741, this);
-    this.zXf = ((MMHorList)findViewById(2131300761));
-    this.zXf.setOverScrollEnabled(true);
-    this.zXf.setCenterInParent(true);
-    this.zXf.setItemWidth(this.uaa);
-    this.zXg = new a(getContext());
-    this.zXf.setAdapter(this.zXg);
-    this.mHandler = new ao(Looper.getMainLooper());
-    this.zXf.setHorListLitener(new MMHorList.a()
+    this.BoJ = ((MMHorList)findViewById(2131300761));
+    this.BoJ.setOverScrollEnabled(true);
+    this.BoJ.setCenterInParent(true);
+    this.BoJ.setItemWidth(this.vcJ);
+    this.BoK = new TalkRoomAvatarsFrame.a(getContext());
+    this.BoJ.setAdapter(this.BoK);
+    this.mHandler = new ap(Looper.getMainLooper());
+    this.BoJ.setHorListLitener(new MMHorList.a()
     {
-      public final void bzs()
+      public final void bDw()
       {
         AppMethodBeat.i(29575);
         TalkRoomAvatarsFrame.c(TalkRoomAvatarsFrame.this).post(new Runnable()
@@ -116,21 +109,21 @@ public class TalkRoomAvatarsFrame
         AppMethodBeat.o(29575);
       }
       
-      public final void dLc()
+      public final void dXt()
       {
         AppMethodBeat.i(29574);
-        TalkRoomAvatarsFrame.a(TalkRoomAvatarsFrame.this).au(2000L, 2000L);
+        TalkRoomAvatarsFrame.a(TalkRoomAvatarsFrame.this).az(2000L, 2000L);
         AppMethodBeat.o(29574);
       }
       
-      public final void ebJ()
+      public final void eoa()
       {
         AppMethodBeat.i(29573);
         TalkRoomAvatarsFrame.a(TalkRoomAvatarsFrame.this).stopTimer();
         AppMethodBeat.o(29573);
       }
     });
-    this.zXh = new au(new au.a()
+    this.BoL = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
@@ -146,127 +139,44 @@ public class TalkRoomAvatarsFrame
   public void setCurMemeber(String paramString)
   {
     AppMethodBeat.i(29586);
-    if (this.zXf == null)
+    if (this.BoJ == null)
     {
       AppMethodBeat.o(29586);
       return;
     }
-    if ((bs.isNullOrNil(this.uao)) && (bs.isNullOrNil(paramString)))
+    if ((bt.isNullOrNil(this.vcX)) && (bt.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(29586);
       return;
     }
-    if ((!bs.isNullOrNil(this.uao)) && (this.uao.equals(paramString)))
+    if ((!bt.isNullOrNil(this.vcX)) && (this.vcX.equals(paramString)))
     {
       AppMethodBeat.o(29586);
       return;
     }
-    this.uao = paramString;
-    cWl();
+    this.vcX = paramString;
+    dfw();
     AppMethodBeat.o(29586);
   }
   
   public void setMembersList(List<String> paramList)
   {
     AppMethodBeat.i(29585);
-    if (this.zXg == null)
+    if (this.BoK == null)
     {
       AppMethodBeat.o(29585);
       return;
     }
-    a locala = this.zXg;
+    TalkRoomAvatarsFrame.a locala = this.BoK;
     if (paramList == null) {
-      locala.zXk.clear();
+      locala.BoO.clear();
     }
     for (;;)
     {
       locala.notifyDataSetChanged();
       AppMethodBeat.o(29585);
       return;
-      locala.zXk = paramList;
-    }
-  }
-  
-  static final class a
-    extends BaseAdapter
-  {
-    private Context mContext;
-    String uao;
-    List<String> zXk;
-    
-    public a(Context paramContext)
-    {
-      AppMethodBeat.i(29577);
-      this.zXk = new LinkedList();
-      this.mContext = paramContext;
-      AppMethodBeat.o(29577);
-    }
-    
-    public final int getCount()
-    {
-      AppMethodBeat.i(29579);
-      int i = this.zXk.size();
-      AppMethodBeat.o(29579);
-      return i;
-    }
-    
-    public final Object getItem(int paramInt)
-    {
-      AppMethodBeat.i(29580);
-      Object localObject = this.zXk.get(paramInt);
-      AppMethodBeat.o(29580);
-      return localObject;
-    }
-    
-    public final long getItemId(int paramInt)
-    {
-      return 0L;
-    }
-    
-    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-    {
-      AppMethodBeat.i(29581);
-      String str = (String)this.zXk.get(paramInt);
-      ImageView localImageView;
-      if (paramView == null)
-      {
-        paramView = View.inflate(this.mContext, 2131495742, null);
-        paramViewGroup = new a();
-        paramViewGroup.fuY = ((ImageView)paramView.findViewById(2131301204));
-        paramViewGroup.fuZ = ((TextView)paramView.findViewById(2131306142));
-        paramView.setTag(paramViewGroup);
-        localImageView = paramViewGroup.fuY;
-        if (!str.equals(this.uao)) {
-          break label140;
-        }
-      }
-      label140:
-      for (paramInt = 2131234301;; paramInt = 0)
-      {
-        localImageView.setBackgroundResource(paramInt);
-        paramViewGroup.fuZ.setVisibility(8);
-        a.b.w(paramViewGroup.fuY, str);
-        AppMethodBeat.o(29581);
-        return paramView;
-        paramViewGroup = (a)paramView.getTag();
-        break;
-      }
-    }
-    
-    public final int indexOf(String paramString)
-    {
-      AppMethodBeat.i(29578);
-      int i = this.zXk.indexOf(paramString);
-      AppMethodBeat.o(29578);
-      return i;
-    }
-    
-    final class a
-    {
-      public ImageView fuY;
-      public TextView fuZ;
-      
-      a() {}
+      locala.BoO = paramList;
     }
   }
 }

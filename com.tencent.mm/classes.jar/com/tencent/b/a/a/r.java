@@ -13,19 +13,19 @@ import java.util.Set;
 
 public final class r
 {
-  private static r cDQ = null;
-  private Map<Integer, q> cDO;
-  private int cDP;
+  private static r cOV = null;
+  private Map<Integer, q> cOT;
+  private int cOU;
   
   private r(Context paramContext)
   {
     AppMethodBeat.i(87606);
-    this.cDO = null;
-    this.cDP = 0;
-    this.cDO = new HashMap(3);
-    this.cDO.put(Integer.valueOf(1), new o(paramContext));
-    this.cDO.put(Integer.valueOf(2), new d(paramContext));
-    this.cDO.put(Integer.valueOf(4), new k(paramContext));
+    this.cOT = null;
+    this.cOU = 0;
+    this.cOT = new HashMap(3);
+    this.cOT.put(Integer.valueOf(1), new o(paramContext));
+    this.cOT.put(Integer.valueOf(2), new d(paramContext));
+    this.cOT.put(Integer.valueOf(4), new k(paramContext));
     AppMethodBeat.o(87606);
   }
   
@@ -47,9 +47,9 @@ public final class r
           return paramList;
         }
         localObject = (Integer)paramList.next();
-        localObject = (q)this.cDO.get(localObject);
+        localObject = (q)this.cOT.get(localObject);
       } while (localObject == null);
-      localObject = ((q)localObject).Ij();
+      localObject = ((q)localObject).JJ();
     } while (localObject == null);
     AppMethodBeat.o(87611);
     return localObject;
@@ -60,10 +60,10 @@ public final class r
     try
     {
       AppMethodBeat.i(87607);
-      if (cDQ == null) {
-        cDQ = new r(paramContext);
+      if (cOV == null) {
+        cOV = new r(paramContext);
       }
-      paramContext = cDQ;
+      paramContext = cOV;
       AppMethodBeat.o(87607);
       return paramContext;
     }
@@ -88,15 +88,15 @@ public final class r
           return paramList;
         }
         localObject = (Integer)paramList.next();
-        localObject = (q)this.cDO.get(localObject);
+        localObject = (q)this.cOT.get(localObject);
       } while (localObject == null);
-      localObject = ((q)localObject).Ii();
-    } while ((localObject == null) || (!s.dp(((g)localObject).cDw)));
+      localObject = ((q)localObject).JI();
+    } while ((localObject == null) || (!s.el(((g)localObject).cOB)));
     AppMethodBeat.o(87609);
     return localObject;
   }
   
-  final g Ii()
+  final g JI()
   {
     AppMethodBeat.i(87608);
     g localg = G(new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(4) })));
@@ -104,7 +104,7 @@ public final class r
     return localg;
   }
   
-  final a Ij()
+  final a JJ()
   {
     AppMethodBeat.i(87610);
     a locala = H(new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(4) })));
@@ -115,7 +115,7 @@ public final class r
   final void b(a parama)
   {
     AppMethodBeat.i(87612);
-    Iterator localIterator = this.cDO.entrySet().iterator();
+    Iterator localIterator = this.cOT.entrySet().iterator();
     for (;;)
     {
       if (!localIterator.hasNext())
@@ -130,7 +130,7 @@ public final class r
   final void b(g paramg)
   {
     AppMethodBeat.i(87613);
-    Iterator localIterator = this.cDO.entrySet().iterator();
+    Iterator localIterator = this.cOT.entrySet().iterator();
     for (;;)
     {
       if (!localIterator.hasNext())
@@ -144,7 +144,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.b.a.a.r
  * JD-Core Version:    0.7.0.1
  */

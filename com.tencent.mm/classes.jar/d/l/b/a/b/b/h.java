@@ -6,15 +6,15 @@ import d.l.b.a.b.m.at;
 public abstract interface h
   extends m
 {
-  public abstract at fPW();
+  public abstract at ghu();
   
-  public abstract h fRd();
+  public abstract h giB();
   
-  public abstract aj fRe();
+  public abstract aj giC();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.h
  * JD-Core Version:    0.7.0.1
  */

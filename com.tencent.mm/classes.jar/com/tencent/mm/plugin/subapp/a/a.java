@@ -3,82 +3,82 @@ package com.tencent.mm.plugin.subapp.a;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.audio.b.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import d.g.a.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyRespone", "", "(Lkotlin/jvm/functions/Function1;)V", "hasbeginRec", "getOnStartRecord", "()Lkotlin/jvm/functions/Function1;", "setOnStartRecord", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecordDevice", "Companion", "app_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyRespone", "", "(Lkotlin/jvm/functions/Function1;)V", "hasbeginRec", "getOnStartRecord", "()Lkotlin/jvm/functions/Function1;", "setOnStartRecord", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecordDevice", "Companion", "app_release"})
 public final class a
   extends d
 {
-  public static final a.a zPv;
-  private b<? super Boolean, y> cQD;
-  private boolean zPu;
+  public static final a.a BgW;
+  private boolean BgV;
+  private b<? super Boolean, z> dbT;
   
   static
   {
-    AppMethodBeat.i(196998);
-    zPv = new a.a((byte)0);
-    AppMethodBeat.o(196998);
+    AppMethodBeat.i(194853);
+    BgW = new a.a((byte)0);
+    AppMethodBeat.o(194853);
   }
   
-  public a(b<? super Boolean, y> paramb)
+  public a(b<? super Boolean, z> paramb)
   {
-    AppMethodBeat.i(196997);
-    this.cQD = paramb;
-    AppMethodBeat.o(196997);
+    AppMethodBeat.i(194852);
+    this.dbT = paramb;
+    AppMethodBeat.o(194852);
   }
   
-  public final void Mv()
+  public final void Oe()
   {
-    AppMethodBeat.i(196995);
+    AppMethodBeat.i(194850);
     int i = b("record", Integer.valueOf(4));
-    this.zPu = false;
+    this.BgV = false;
     if (i != 0)
     {
-      hv(100);
-      AppMethodBeat.o(196995);
+      hC(100);
+      AppMethodBeat.o(194850);
       return;
     }
     new b(this).sendEmptyMessageDelayed(0, 50L);
-    AppMethodBeat.o(196995);
+    AppMethodBeat.o(194850);
   }
   
-  public final void hv(int paramInt)
+  public final void hC(int paramInt)
   {
-    AppMethodBeat.i(196996);
-    super.hv(paramInt);
-    ac.d("MicroMsg.VoiceRemindRecordAudioManager", " Recorder onAudioDeviceStateChange :".concat(String.valueOf(paramInt)));
-    if (this.zPu)
+    AppMethodBeat.i(194851);
+    super.hC(paramInt);
+    ad.d("MicroMsg.VoiceRemindRecordAudioManager", " Recorder onAudioDeviceStateChange :".concat(String.valueOf(paramInt)));
+    if (this.BgV)
     {
-      AppMethodBeat.o(196996);
+      AppMethodBeat.o(194851);
       return;
     }
-    this.zPu = true;
-    this.cQD.ay(Boolean.TRUE);
-    AppMethodBeat.o(196996);
+    this.BgV = true;
+    this.dbT.invoke(Boolean.TRUE);
+    AppMethodBeat.o(194851);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager$requestAudioRecordDevice$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "app_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager$requestAudioRecordDevice$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "app_release"})
   public static final class b
-    extends ao
+    extends ap
   {
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(196994);
-      k.h(paramMessage, "msg");
-      ac.d("MicroMsg.VoiceRemindRecordAudioManager", " Recorder handleMessage");
-      if (a.a(this.zPw))
+      AppMethodBeat.i(194849);
+      p.h(paramMessage, "msg");
+      ad.d("MicroMsg.VoiceRemindRecordAudioManager", " Recorder handleMessage");
+      if (a.a(this.BgX))
       {
-        AppMethodBeat.o(196994);
+        AppMethodBeat.o(194849);
         return;
       }
-      this.zPw.hv(200);
-      this.zPw.Sl("record");
-      AppMethodBeat.o(196994);
+      this.BgX.hC(200);
+      this.BgX.VJ("record");
+      AppMethodBeat.o(194849);
     }
   }
 }

@@ -2,21 +2,21 @@ package com.tencent.mm.cd;
 
 import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
 public final class h
 {
-  SparseIntArray Gkp;
-  byte[] Gkq;
+  SparseIntArray HWb;
+  byte[] HWc;
   
   private h(SparseIntArray paramSparseIntArray, byte[] paramArrayOfByte)
   {
-    this.Gkp = paramSparseIntArray;
-    this.Gkq = paramArrayOfByte;
+    this.HWb = paramSparseIntArray;
+    this.HWc = paramArrayOfByte;
   }
   
   public static h a(SparseIntArray paramSparseIntArray, InputStream paramInputStream, int paramInt)
@@ -26,7 +26,7 @@ public final class h
     try
     {
       if (paramInputStream.read(arrayOfByte, 0, arrayOfByte.length) != arrayOfByte.length) {
-        ac.e("MicroMsg.language.StringsCollection", "[cpan] newStringsCollection failed. data length no equal.");
+        ad.e("MicroMsg.language.StringsCollection", "[cpan] newStringsCollection failed. data length no equal.");
       }
       paramSparseIntArray = new h(paramSparseIntArray, arrayOfByte);
       AppMethodBeat.o(141264);
@@ -34,7 +34,7 @@ public final class h
     }
     catch (IOException paramSparseIntArray)
     {
-      ac.e("MicroMsg.language.StringsCollection", "[cpan] newStringsCollection failed. %s", new Object[] { bs.m(paramSparseIntArray) });
+      ad.e("MicroMsg.language.StringsCollection", "[cpan] newStringsCollection failed. %s", new Object[] { bt.n(paramSparseIntArray) });
       AppMethodBeat.o(141264);
     }
     return null;
@@ -47,36 +47,36 @@ public final class h
     {
       try
       {
-        paramInt = this.Gkp.indexOfKey(paramInt);
+        paramInt = this.HWb.indexOfKey(paramInt);
         if (paramInt < 0)
         {
           AppMethodBeat.o(141265);
           return null;
         }
-        i = this.Gkp.valueAt(paramInt);
-        if (paramInt >= this.Gkp.size() - 1) {
+        i = this.HWb.valueAt(paramInt);
+        if (paramInt >= this.HWb.size() - 1) {
           continue;
         }
-        paramInt = this.Gkp.valueAt(paramInt + 1) - i;
-        str = new String(this.Gkq, i, paramInt, "UTF-8");
+        paramInt = this.HWb.valueAt(paramInt + 1) - i;
+        str = new String(this.HWc, i, paramInt, "UTF-8");
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
         int i;
         String str;
-        ac.e("MicroMsg.language.StringsCollection", "[cpan] getString failed. %s", new Object[] { bs.m(localUnsupportedEncodingException) });
+        ad.e("MicroMsg.language.StringsCollection", "[cpan] getString failed. %s", new Object[] { bt.n(localUnsupportedEncodingException) });
         Object localObject1 = null;
         continue;
       }
       catch (Exception localException)
       {
-        ac.e("MicroMsg.language.StringsCollection", "[cpan] getString failed. %s", new Object[] { bs.m(localException) });
+        ad.e("MicroMsg.language.StringsCollection", "[cpan] getString failed. %s", new Object[] { bt.n(localException) });
         Object localObject2 = null;
         continue;
       }
       AppMethodBeat.o(141265);
       return str;
-      paramInt = this.Gkq.length;
+      paramInt = this.HWc.length;
       paramInt -= i;
     }
   }

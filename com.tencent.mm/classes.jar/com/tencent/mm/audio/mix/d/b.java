@@ -6,47 +6,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends i
 {
-  private j cRS;
-  public boolean cRT = false;
-  public k cRU;
+  private j ddi;
+  public boolean ddj = false;
+  public k ddk;
   
   public b(j paramj, String paramString)
   {
     super(paramString);
-    this.cRS = paramj;
+    this.ddi = paramj;
   }
   
-  public final boolean MU()
+  public final boolean OD()
   {
-    return this.cRU == null;
+    return this.ddk == null;
   }
   
   public final void b(k paramk)
   {
     AppMethodBeat.i(136798);
-    this.cRU = paramk;
-    this.cSx = System.currentTimeMillis();
+    this.ddk = paramk;
+    this.ddN = System.currentTimeMillis();
     AppMethodBeat.o(136798);
   }
   
   public final void reset()
   {
-    this.cRT = false;
+    this.ddj = false;
   }
   
   public final void run()
   {
     AppMethodBeat.i(136797);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeTask", "run task %s", new Object[] { this.name });
-    if (this.cRT)
+    if (this.ddj)
     {
       AppMethodBeat.o(136797);
       return;
     }
     Process.setThreadPriority(-16);
-    this.cRS.a(this.cRU);
-    this.cRS.a(this);
-    this.cRT = true;
+    this.ddi.a(this.ddk);
+    this.ddi.a(this);
+    this.ddj = true;
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeTask", "run task %s end", new Object[] { this.name });
     AppMethodBeat.o(136797);
   }

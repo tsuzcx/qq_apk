@@ -19,49 +19,49 @@ import java.util.Set;
 
 final class f<Transcode>
 {
-  e aAw;
-  Class<Transcode> aBm;
-  Object aBp;
-  private final List<com.bumptech.glide.c.h> aEb;
-  com.bumptech.glide.c.h aEk;
-  j aEm;
-  private final List<n.a<?>> aEn;
-  Class<?> aEo;
-  g.d aEp;
-  Map<Class<?>, m<?>> aEq;
-  private boolean aEr;
-  private boolean aEs;
-  g aEt;
-  i aEu;
-  boolean aEv;
-  boolean aEw;
+  e aCn;
+  Class<Transcode> aDd;
+  Object aDg;
+  private final List<com.bumptech.glide.c.h> aFS;
+  com.bumptech.glide.c.h aGb;
+  j aGd;
+  private final List<n.a<?>> aGe;
+  Class<?> aGf;
+  g.d aGg;
+  Map<Class<?>, m<?>> aGh;
+  private boolean aGi;
+  private boolean aGj;
+  g aGk;
+  i aGl;
+  boolean aGm;
+  boolean aGn;
   int height;
   int width;
   
   f()
   {
     AppMethodBeat.i(76932);
-    this.aEn = new ArrayList();
-    this.aEb = new ArrayList();
+    this.aGe = new ArrayList();
+    this.aFS = new ArrayList();
     AppMethodBeat.o(76932);
   }
   
   final void clear()
   {
     AppMethodBeat.i(76933);
-    this.aAw = null;
-    this.aBp = null;
-    this.aEk = null;
-    this.aEo = null;
-    this.aBm = null;
-    this.aEm = null;
-    this.aEt = null;
-    this.aEq = null;
-    this.aEu = null;
-    this.aEn.clear();
-    this.aEr = false;
-    this.aEb.clear();
-    this.aEs = false;
+    this.aCn = null;
+    this.aDg = null;
+    this.aGb = null;
+    this.aGf = null;
+    this.aDd = null;
+    this.aGd = null;
+    this.aGk = null;
+    this.aGh = null;
+    this.aGl = null;
+    this.aGe.clear();
+    this.aGi = false;
+    this.aFS.clear();
+    this.aGj = false;
     AppMethodBeat.o(76933);
   }
   
@@ -80,7 +80,7 @@ final class f<Transcode>
   final <Data> s<Data, ?, Transcode> l(Class<Data> paramClass)
   {
     AppMethodBeat.i(76936);
-    paramClass = this.aAw.aAx.a(paramClass, this.aEo, this.aBm);
+    paramClass = this.aCn.aCo.a(paramClass, this.aGf, this.aDd);
     AppMethodBeat.o(76936);
     return paramClass;
   }
@@ -88,11 +88,11 @@ final class f<Transcode>
   final <Z> m<Z> m(Class<Z> paramClass)
   {
     AppMethodBeat.i(76937);
-    m localm = (m)this.aEq.get(paramClass);
+    m localm = (m)this.aGh.get(paramClass);
     Object localObject = localm;
     if (localm == null)
     {
-      Iterator localIterator = this.aEq.entrySet().iterator();
+      Iterator localIterator = this.aGh.entrySet().iterator();
       do
       {
         localObject = localm;
@@ -105,13 +105,13 @@ final class f<Transcode>
     }
     if (localObject == null)
     {
-      if ((this.aEq.isEmpty()) && (this.aEv))
+      if ((this.aGh.isEmpty()) && (this.aGm))
       {
         paramClass = new IllegalArgumentException("Missing transformation for " + paramClass + ". If you wish to ignore unknown resource types, use the optional transformation methods.");
         AppMethodBeat.o(76937);
         throw paramClass;
       }
-      paramClass = b.pa();
+      paramClass = b.ps();
       AppMethodBeat.o(76937);
       return paramClass;
     }
@@ -119,66 +119,66 @@ final class f<Transcode>
     return localObject;
   }
   
-  final a ob()
+  final a ot()
   {
     AppMethodBeat.i(76934);
-    a locala = this.aEp.ob();
+    a locala = this.aGg.ot();
     AppMethodBeat.o(76934);
     return locala;
   }
   
-  final List<n.a<?>> oc()
+  final List<n.a<?>> ou()
   {
     AppMethodBeat.i(76939);
-    if (!this.aEr)
+    if (!this.aGi)
     {
-      this.aEr = true;
-      this.aEn.clear();
-      localList = this.aAw.aAx.O(this.aBp);
+      this.aGi = true;
+      this.aGe.clear();
+      localList = this.aCn.aCo.P(this.aDg);
       int j = localList.size();
       int i = 0;
       while (i < j)
       {
-        n.a locala = ((n)localList.get(i)).b(this.aBp, this.width, this.height, this.aEm);
+        n.a locala = ((n)localList.get(i)).b(this.aDg, this.width, this.height, this.aGd);
         if (locala != null) {
-          this.aEn.add(locala);
+          this.aGe.add(locala);
         }
         i += 1;
       }
     }
-    List localList = this.aEn;
+    List localList = this.aGe;
     AppMethodBeat.o(76939);
     return localList;
   }
   
-  final List<com.bumptech.glide.c.h> od()
+  final List<com.bumptech.glide.c.h> ov()
   {
     AppMethodBeat.i(76940);
-    if (!this.aEs)
+    if (!this.aGj)
     {
-      this.aEs = true;
-      this.aEb.clear();
-      localList = oc();
+      this.aGj = true;
+      this.aFS.clear();
+      localList = ou();
       int k = localList.size();
       int i = 0;
       while (i < k)
       {
         n.a locala = (n.a)localList.get(i);
-        if (!this.aEb.contains(locala.aEf)) {
-          this.aEb.add(locala.aEf);
+        if (!this.aFS.contains(locala.aFW)) {
+          this.aFS.add(locala.aFW);
         }
         int j = 0;
-        while (j < locala.aIx.size())
+        while (j < locala.aKo.size())
         {
-          if (!this.aEb.contains(locala.aIx.get(j))) {
-            this.aEb.add(locala.aIx.get(j));
+          if (!this.aFS.contains(locala.aKo.get(j))) {
+            this.aFS.add(locala.aKo.get(j));
           }
           j += 1;
         }
         i += 1;
       }
     }
-    List localList = this.aEb;
+    List localList = this.aFS;
     AppMethodBeat.o(76940);
     return localList;
   }
@@ -186,7 +186,7 @@ final class f<Transcode>
   final List<n<File, ?>> t(File paramFile)
   {
     AppMethodBeat.i(76938);
-    paramFile = this.aAw.aAx.O(paramFile);
+    paramFile = this.aCn.aCo.P(paramFile);
     AppMethodBeat.o(76938);
     return paramFile;
   }

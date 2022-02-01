@@ -1,44 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
-public abstract interface i
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.config.k;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.sdk.platformtools.ad;
+
+public final class i
+  extends a<d>
 {
-  public abstract void a(a parama);
+  public static final int CTRL_INDEX = 14;
+  public static final String NAME = "navigateTo";
   
-  public abstract boolean biA();
-  
-  public abstract Integer biz();
-  
-  public abstract String getKey();
-  
-  public abstract int getVideoHeight();
-  
-  public abstract int getVideoWidth();
-  
-  public abstract void pause();
-  
-  public abstract void release();
-  
-  public abstract void start();
-  
-  public static abstract interface a
+  public final boolean bib()
   {
-    public abstract void a(i parami);
-    
-    public abstract void a(i parami, float paramFloat);
-    
-    public abstract void a(i parami, boolean paramBoolean);
-    
-    public abstract void b(i parami);
-    
-    public abstract void c(i parami);
-    
-    public abstract void d(i parami);
-    
-    public abstract void e(i parami);
-    
-    public abstract void f(i parami);
-    
-    public abstract void g(i parami);
+    return true;
   }
 }
 

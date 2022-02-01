@@ -8,9 +8,9 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public final class JsApiWriteCommData
@@ -30,11 +30,11 @@ public final class JsApiWriteCommData
     extends MainProcessTask
   {
     public static final Parcelable.Creator<WriteCommDataTask> CREATOR;
-    private int bWl;
-    private boolean jYA;
-    private String jYB;
-    private m jYs;
-    private c kay;
+    private int cgA;
+    private m ksO;
+    private boolean ksW;
+    private String ksX;
+    private c kuU;
     private String mData;
     private String mPackageName;
     
@@ -55,48 +55,48 @@ public final class JsApiWriteCommData
     public WriteCommDataTask(m paramm, c paramc, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(139847);
-      this.jYs = paramm;
-      this.kay = paramc;
-      this.bWl = paramInt;
+      this.ksO = paramm;
+      this.kuU = paramc;
+      this.cgA = paramInt;
       this.mPackageName = paramJSONObject.optString("packageName");
       this.mData = paramJSONObject.optString("data");
-      this.jYA = true;
+      this.ksW = true;
       AppMethodBeat.o(139847);
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       boolean bool = false;
       AppMethodBeat.i(139849);
-      if (bs.isNullOrNil(this.mPackageName)) {
-        ac.e("MicroMsg.JsApiWriteCommData", "packageName nil");
+      if (bt.isNullOrNil(this.mPackageName)) {
+        ad.e("MicroMsg.JsApiWriteCommData", "packageName nil");
       }
       for (;;)
       {
-        bet();
+        bhX();
         AppMethodBeat.o(139849);
         return;
-        if (!ai.getContext().getSharedPreferences(ai.getPackageName() + "_comm_preferences", 0).edit().putString(this.mPackageName, this.mData).commit()) {
+        if (!aj.getContext().getSharedPreferences(aj.getPackageName() + "_comm_preferences", 0).edit().putString(this.mPackageName, this.mData).commit()) {
           bool = true;
         }
-        this.jYA = bool;
+        this.ksW = bool;
       }
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(139850);
-      if (this.jYA)
+      if (this.ksW)
       {
-        if (bs.isNullOrNil(this.jYB)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.jYB }))
+        if (bt.isNullOrNil(this.ksX)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ksX }))
         {
-          this.kay.h(this.bWl, this.jYs.e(str, null));
+          this.kuU.h(this.cgA, this.ksO.e(str, null));
           AppMethodBeat.o(139850);
           return;
         }
       }
-      this.kay.h(this.bWl, this.jYs.e("ok", null));
+      this.kuU.h(this.cgA, this.ksO.e("ok", null));
       AppMethodBeat.o(139850);
     }
     
@@ -109,8 +109,8 @@ public final class JsApiWriteCommData
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.jYA = bool;
-        this.jYB = paramParcel.readString();
+        this.ksW = bool;
+        this.ksX = paramParcel.readString();
         AppMethodBeat.o(139851);
         return;
         bool = false;
@@ -122,11 +122,11 @@ public final class JsApiWriteCommData
       AppMethodBeat.i(139852);
       paramParcel.writeString(this.mPackageName);
       paramParcel.writeString(this.mData);
-      if (this.jYA) {}
+      if (this.ksW) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.jYB);
+        paramParcel.writeString(this.ksX);
         AppMethodBeat.o(139852);
         return;
       }

@@ -9,9 +9,9 @@ import org.json.JSONObject;
 
 public abstract interface d
 {
-  public static final ArrayList<e> kXZ = new ArrayList();
+  public static final ArrayList<e> luZ = new ArrayList();
   
-  public abstract e NL(String paramString);
+  public abstract e Rk(String paramString);
   
   public abstract void a(e parame);
   
@@ -29,24 +29,24 @@ public abstract interface d
   
   public static abstract interface a
   {
-    public abstract void KH(String paramString);
+    public abstract void Ob(String paramString);
     
-    public abstract void KI(String paramString);
+    public abstract void Oc(String paramString);
     
-    public abstract void MK(String paramString);
-    
-    public abstract void Y(int paramInt, String paramString);
+    public abstract void Qh(String paramString);
     
     public abstract void a(a parama);
     
     public abstract void a(h paramh, Map<String, Long> paramMap);
     
-    public abstract void l(ByteBuffer paramByteBuffer);
+    public abstract void aa(int paramInt, String paramString);
+    
+    public abstract void k(ByteBuffer paramByteBuffer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.websocket.d
  * JD-Core Version:    0.7.0.1
  */

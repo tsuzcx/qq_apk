@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.appbrand.dynamic.ui.WxaWidgetDebugUI;
 public final class e
   implements n
 {
-  boolean jLC;
+  boolean kfN;
   
   public final boolean a(String paramString, n.a parama)
   {
@@ -23,15 +23,15 @@ public final class e
     return bool;
   }
   
-  public final boolean aAI()
+  public final boolean aDL()
   {
-    return this.jLC;
+    return this.kfN;
   }
   
-  public final boolean aAJ()
+  public final boolean aDM()
   {
     AppMethodBeat.i(121248);
-    boolean bool = com.tencent.mm.sdk.a.b.eUk();
+    boolean bool = com.tencent.mm.sdk.a.b.fjN();
     AppMethodBeat.o(121248);
     return bool;
   }
@@ -44,7 +44,7 @@ public final class e
     return bool;
   }
   
-  public final void cA(Context paramContext)
+  public final void cx(Context paramContext)
   {
     AppMethodBeat.i(121244);
     com.tencent.mm.plugin.appbrand.wxawidget.console.e.eg(paramContext);
@@ -55,25 +55,25 @@ public final class e
   {
     AppMethodBeat.i(121243);
     Intent localIntent = new Intent(paramContext, WxaWidgetDebugUI.class);
-    String str = WxaWidgetInitializer.cH(paramBundle.getString("app_id"), paramBundle.getString("msg_id"));
+    String str = WxaWidgetInitializer.cJ(paramBundle.getString("app_id"), paramBundle.getString("msg_id"));
     localIntent.putExtras(paramBundle);
     localIntent.putExtra("id", str);
-    paramBundle = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramBundle.aeD(), "com/tencent/mm/plugin/appbrand/dynamic/api/WxaWidgetDebugger", "openDebugUI", "(Landroid/content/Context;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramBundle.lR(0));
+    paramBundle = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramBundle.ahp(), "com/tencent/mm/plugin/appbrand/dynamic/api/WxaWidgetDebugger", "openDebugUI", "(Landroid/content/Context;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramBundle.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/dynamic/api/WxaWidgetDebugger", "openDebugUI", "(Landroid/content/Context;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(121243);
   }
   
-  public final void ey(boolean paramBoolean)
+  public final void eA(boolean paramBoolean)
   {
-    this.jLC = paramBoolean;
+    this.kfN = paramBoolean;
   }
   
-  public final boolean on(int paramInt)
+  public final boolean oN(int paramInt)
   {
     AppMethodBeat.i(121245);
-    boolean bool = j.a.on(paramInt);
+    boolean bool = j.a.oN(paramInt);
     AppMethodBeat.o(121245);
     return bool;
   }

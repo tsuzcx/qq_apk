@@ -5,26 +5,33 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewParent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.widget.MMEditText;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$8", "Landroid/view/View$OnTouchListener;", "onTouch", "", "view", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-webview_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$8", "Landroid/view/View$OnTouchListener;", "onTouch", "", "view", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-webview_release"})
 public final class n$8
   implements View.OnTouchListener
 {
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(175690);
-    k.h(paramView, "view");
-    k.h(paramMotionEvent, "event");
-    if ((paramView.getId() == 2131302503) && (n.b(this.CNx).getLineCount() >= 5))
+    b localb = new b();
+    localb.bd(paramView);
+    localb.bd(paramMotionEvent);
+    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    p.h(paramView, "view");
+    p.h(paramMotionEvent, "event");
+    if ((paramView.getId() == 2131302503) && (n.b(this.Erx).getLineCount() >= 5))
     {
       paramView.getParent().requestDisallowInterceptTouchEvent(true);
       if (paramMotionEvent.getAction() == 1) {
         paramView.getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
+    a.a(false, this, "com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$8", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(175690);
     return false;
   }

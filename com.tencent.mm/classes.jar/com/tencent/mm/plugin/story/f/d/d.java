@@ -5,17 +5,17 @@ import com.tencent.mm.plugin.story.api.p;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/gallery/NewestStoryDataSeed;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "key", "", "userList", "", "", "queryCondition", "", "(JLjava/util/List;I)V", "getUserList", "()Ljava/util/List;", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/gallery/NewestStoryDataSeed;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "key", "", "userList", "", "", "queryCondition", "", "(JLjava/util/List;I)V", "getUserList", "()Ljava/util/List;", "plugin-story_release"})
 public final class d
   extends p
 {
-  final List<String> hzh;
+  final List<String> hRC;
   
   public d(long paramLong, List<String> paramList, int paramInt)
   {
     super(paramLong, paramInt);
     AppMethodBeat.i(118909);
-    this.hzh = paramList;
+    this.hRC = paramList;
     AppMethodBeat.o(118909);
   }
 }

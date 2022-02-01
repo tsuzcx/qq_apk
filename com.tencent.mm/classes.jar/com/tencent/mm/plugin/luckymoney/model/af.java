@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,54 +14,54 @@ import org.json.JSONObject;
 public final class af
   extends ac
 {
-  public int dBA;
-  public int dBB;
-  public String dBy;
-  public int dBz;
-  public String uhB;
-  public au ulN;
-  public String ulO;
-  public String ulw;
-  public String una;
-  public String unb;
-  public int une;
-  public String unf;
-  public String ung;
-  public int unh;
-  public int unj;
-  public String unk;
-  public String unl;
-  public int unm;
-  public String unn;
-  public String uno;
-  public String unp;
-  public String unq;
-  public String unr;
-  public long uns;
+  public String dNL;
+  public int dNM;
+  public int dNN;
+  public int dNO;
+  public String vkl;
+  public String voc;
+  public au vot;
+  public String vou;
+  public String vpG;
+  public String vpH;
+  public int vpK;
+  public String vpL;
+  public String vpM;
+  public int vpN;
+  public int vpP;
+  public String vpQ;
+  public String vpR;
+  public int vpS;
+  public String vpT;
+  public String vpU;
+  public String vpV;
+  public String vpW;
+  public String vpX;
+  public long vpY;
   
   public af(String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(65281);
-    this.unm = 1;
-    this.unn = null;
-    this.uno = null;
-    this.unp = null;
-    this.unq = null;
-    this.unr = null;
-    this.uns = 0L;
-    this.dBy = paramString2;
-    this.uhB = paramString1;
-    this.unj = paramInt;
+    this.vpS = 1;
+    this.vpT = null;
+    this.vpU = null;
+    this.vpV = null;
+    this.vpW = null;
+    this.vpX = null;
+    this.vpY = 0L;
+    this.dNL = paramString2;
+    this.vkl = paramString1;
+    this.vpP = paramInt;
     HashMap localHashMap = new HashMap();
     localHashMap.put("sendId", paramString1);
-    if (!bs.isNullOrNil(paramString2)) {
+    if (!bt.isNullOrNil(paramString2)) {
       localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
     }
     localHashMap.put("way", String.valueOf(paramInt));
     localHashMap.put("channelId", "2");
     localHashMap.put("package", paramString3);
-    g.agS();
-    long l = ((Long)g.agR().agA().get(ah.a.GIA, Long.valueOf(0L))).longValue();
+    g.ajD();
+    long l = ((Long)g.ajC().ajl().get(al.a.IuS, Long.valueOf(0L))).longValue();
     if (l > 0L)
     {
       if (System.currentTimeMillis() >= l) {
@@ -76,12 +76,12 @@ public final class af
       return;
       label206:
       paramString1 = new StringBuilder();
-      g.agS();
-      localHashMap.put("agreeDuty", (Integer)g.agR().agA().get(ah.a.GIB, Integer.valueOf(1)));
+      g.ajD();
+      localHashMap.put("agreeDuty", (Integer)g.ajC().ajl().get(al.a.IuT, Integer.valueOf(1)));
     }
   }
   
-  public final int bVS()
+  public final int cav()
   {
     return 0;
   }
@@ -89,43 +89,43 @@ public final class af
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(65282);
-    this.unk = paramJSONObject.optString("spidLogo");
-    this.unl = paramJSONObject.optString("spidWishing");
-    this.una = paramJSONObject.optString("spidName");
-    this.unk = paramJSONObject.optString("spidLogo");
-    this.dBA = paramJSONObject.optInt("hbStatus");
-    this.dBB = paramJSONObject.optInt("receiveStatus");
-    this.ulw = paramJSONObject.optString("statusMess");
-    this.unb = paramJSONObject.optString("hintMess");
-    this.ulO = paramJSONObject.optString("watermark");
-    this.uhB = paramJSONObject.optString("sendId");
-    this.une = paramJSONObject.optInt("focusFlag");
-    this.unf = paramJSONObject.optString("focusWording");
-    this.ung = paramJSONObject.optString("focusAppidUserName");
-    this.unh = paramJSONObject.optInt("isFocus");
-    this.dBz = paramJSONObject.optInt("hbType");
+    this.vpQ = paramJSONObject.optString("spidLogo");
+    this.vpR = paramJSONObject.optString("spidWishing");
+    this.vpG = paramJSONObject.optString("spidName");
+    this.vpQ = paramJSONObject.optString("spidLogo");
+    this.dNN = paramJSONObject.optInt("hbStatus");
+    this.dNO = paramJSONObject.optInt("receiveStatus");
+    this.voc = paramJSONObject.optString("statusMess");
+    this.vpH = paramJSONObject.optString("hintMess");
+    this.vou = paramJSONObject.optString("watermark");
+    this.vkl = paramJSONObject.optString("sendId");
+    this.vpK = paramJSONObject.optInt("focusFlag");
+    this.vpL = paramJSONObject.optString("focusWording");
+    this.vpM = paramJSONObject.optString("focusAppidUserName");
+    this.vpN = paramJSONObject.optInt("isFocus");
+    this.dNM = paramJSONObject.optInt("hbType");
     paramString = paramJSONObject.optJSONObject("agree_duty");
     if (paramString != null)
     {
-      this.unn = paramString.optString("agreed_flag", "-1");
-      this.uno = paramString.optString("title", "");
-      this.unp = paramString.optString("service_protocol_wording", "");
-      this.unq = paramString.optString("service_protocol_url", "");
-      this.unr = paramString.optString("button_wording", "");
-      this.uns = paramString.optLong("delay_expired_time", 0L);
+      this.vpT = paramString.optString("agreed_flag", "-1");
+      this.vpU = paramString.optString("title", "");
+      this.vpV = paramString.optString("service_protocol_wording", "");
+      this.vpW = paramString.optString("service_protocol_url", "");
+      this.vpX = paramString.optString("button_wording", "");
+      this.vpY = paramString.optLong("delay_expired_time", 0L);
     }
-    if (this.uns > 0L)
+    if (this.vpY > 0L)
     {
-      g.agS();
-      g.agR().agA().set(ah.a.GIA, Long.valueOf(System.currentTimeMillis() + this.uns * 1000L));
+      g.ajD();
+      g.ajC().ajl().set(al.a.IuS, Long.valueOf(System.currentTimeMillis() + this.vpY * 1000L));
     }
-    this.ulN = x.aw(paramJSONObject.optJSONObject("operationTail"));
+    this.vot = x.aF(paramJSONObject.optJSONObject("operationTail"));
     AppMethodBeat.o(65282);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.af
  * JD-Core Version:    0.7.0.1
  */

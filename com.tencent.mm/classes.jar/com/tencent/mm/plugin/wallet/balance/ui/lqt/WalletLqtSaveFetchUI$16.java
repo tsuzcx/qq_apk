@@ -7,11 +7,11 @@ final class WalletLqtSaveFetchUI$16
 {
   WalletLqtSaveFetchUI$16(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI) {}
   
-  public final void eoH()
+  public final void eCH()
   {
-    AppMethodBeat.i(207225);
-    WalletLqtSaveFetchUI.a(this.Beu, true);
-    AppMethodBeat.o(207225);
+    AppMethodBeat.i(199253);
+    WalletLqtSaveFetchUI.a(this.CEJ, true);
+    AppMethodBeat.o(199253);
   }
 }
 

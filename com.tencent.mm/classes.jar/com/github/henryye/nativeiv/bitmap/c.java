@@ -7,13 +7,14 @@ public enum c
   static
   {
     AppMethodBeat.i(127365);
-    aQP = new c("JPG", 0);
-    aQQ = new c("PNG", 1);
-    aQR = new c("BMP", 2);
-    aQS = new c("GIF", 3);
-    aQT = new c("WEBP", 4);
-    aQU = new c("UNKNOWN", 5);
-    aQV = new c[] { aQP, aQQ, aQR, aQS, aQT, aQU };
+    bbj = new c("JPG", 0);
+    bbk = new c("PNG", 1);
+    bbl = new c("BMP", 2);
+    bbm = new c("GIF", 3);
+    bbn = new c("WEBP", 4);
+    bbo = new c("CUSTOM", 5);
+    bbp = new c("UNKNOWN", 6);
+    bbq = new c[] { bbj, bbk, bbl, bbm, bbn, bbo, bbp };
     AppMethodBeat.o(127365);
   }
   
@@ -21,7 +22,7 @@ public enum c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.github.henryye.nativeiv.bitmap.c
  * JD-Core Version:    0.7.0.1
  */

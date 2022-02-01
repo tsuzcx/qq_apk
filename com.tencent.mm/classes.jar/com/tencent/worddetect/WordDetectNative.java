@@ -14,7 +14,7 @@ public class WordDetectNative
     AppMethodBeat.o(40076);
   }
   
-  private native int GetDetailResult(WordDetectNative.WordDetectDetailResult paramWordDetectDetailResult, int paramInt);
+  private native int GetDetailResult(WordDetectDetailResult paramWordDetectDetailResult, int paramInt);
   
   private native int GetResult(int paramInt);
   
@@ -34,7 +34,7 @@ public class WordDetectNative
     return str;
   }
   
-  public int getDetailResult(WordDetectNative.WordDetectDetailResult paramWordDetectDetailResult)
+  public int getDetailResult(WordDetectDetailResult paramWordDetectDetailResult)
   {
     AppMethodBeat.i(40075);
     int i = GetDetailResult(paramWordDetectDetailResult, this.handleId);
@@ -87,10 +87,18 @@ public class WordDetectNative
     public String detect_model_bin;
     public String detect_model_param;
   }
+  
+  public static class WordDetectDetailResult
+  {
+    public int height;
+    public float[] rate_lang;
+    public byte[] rawData;
+    public int width;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.worddetect.WordDetectNative
  * JD-Core Version:    0.7.0.1
  */

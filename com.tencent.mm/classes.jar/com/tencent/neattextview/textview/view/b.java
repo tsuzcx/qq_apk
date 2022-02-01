@@ -15,29 +15,29 @@ import java.util.List;
 public class b
   implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, NeatTextView.c
 {
-  private a JLe;
-  private com.tencent.neattextview.textview.layout.a JLf;
-  protected c JLg;
-  private GestureDetector kVo;
+  private a LEN;
+  private com.tencent.neattextview.textview.layout.a LEO;
+  protected c LEP;
+  private GestureDetector lsn;
   protected View mView;
   
   public b(Context paramContext, a parama)
   {
     AppMethodBeat.i(39830);
-    this.JLe = parama;
-    this.kVo = new GestureDetector(paramContext, this);
-    this.kVo.setOnDoubleTapListener(this);
+    this.LEN = parama;
+    this.lsn = new GestureDetector(paramContext, this);
+    this.lsn.setOnDoubleTapListener(this);
     AppMethodBeat.o(39830);
   }
   
   protected void cancel(int paramInt)
   {
     AppMethodBeat.i(39836);
-    if (this.JLg != null)
+    if (this.LEP != null)
     {
-      this.JLg.isPressed = false;
+      this.LEP.isPressed = false;
       this.mView.invalidate();
-      this.JLg = null;
+      this.LEP = null;
     }
     AppMethodBeat.o(39836);
   }
@@ -45,9 +45,9 @@ public class b
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39837);
-    if (this.JLe.getOnDoubleClickListener() != null)
+    if (this.LEN.getOnDoubleClickListener() != null)
     {
-      this.JLe.getOnDoubleClickListener().gg(this.mView);
+      this.LEN.getOnDoubleClickListener().gx(this.mView);
       AppMethodBeat.o(39837);
       return true;
     }
@@ -63,23 +63,23 @@ public class b
   public boolean onDown(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39832);
-    if (this.JLe.fBy())
+    if (this.LEN.fSN())
     {
       AppMethodBeat.o(39832);
       return false;
     }
-    if (this.JLf.fBn() == null)
+    if (this.LEO.fSC() == null)
     {
       AppMethodBeat.o(39832);
       return false;
     }
-    Iterator localIterator = this.JLf.fBn().iterator();
+    Iterator localIterator = this.LEO.fSC().iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if (localc.ap(paramMotionEvent.getX() - this.JLe.getHorizontalOffset(), paramMotionEvent.getY() - this.JLe.getVerticalOffset()))
+      if (localc.at(paramMotionEvent.getX() - this.LEN.getHorizontalOffset(), paramMotionEvent.getY() - this.LEN.getVerticalOffset()))
       {
-        this.JLg = localc;
+        this.LEP = localc;
         localc.isPressed = true;
         this.mView.postInvalidate();
         AppMethodBeat.o(39832);
@@ -120,17 +120,17 @@ public class b
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39833);
-    if (this.JLe.fBy())
+    if (this.LEN.fSN())
     {
       AppMethodBeat.o(39833);
       return false;
     }
-    if (this.JLg != null)
+    if (this.LEP != null)
     {
-      paramMotionEvent = this.JLg;
+      paramMotionEvent = this.LEP;
       View localView = this.mView;
-      if (paramMotionEvent.JJH != null) {
-        ((ClickableSpan)paramMotionEvent.JJH).onClick(localView);
+      if (paramMotionEvent.LDq != null) {
+        ((ClickableSpan)paramMotionEvent.LDq).onClick(localView);
       }
     }
     AppMethodBeat.o(39833);
@@ -140,14 +140,17 @@ public class b
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39831);
-    if (this.JLe.getLayout() == null)
+    if (this.LEN.getLayout() == null)
     {
       AppMethodBeat.o(39831);
       return false;
     }
-    this.JLf = this.JLe.getLayout();
+    this.LEO = this.LEN.getLayout();
     this.mView = paramView;
-    boolean bool = this.kVo.onTouchEvent(paramMotionEvent);
+    paramView = this.lsn;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, locala.ahp(), "com/tencent/neattextview/textview/view/NeatViewTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    boolean bool = com.tencent.mm.hellhoundlib.a.a.a(paramView, paramView.onTouchEvent((MotionEvent)locala.mq(0)), "com/tencent/neattextview/textview/view/NeatViewTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
       cancel(2);
     }

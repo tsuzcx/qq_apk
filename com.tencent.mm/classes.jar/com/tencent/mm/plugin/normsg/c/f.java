@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.normsg.c;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.io.File;
 
 public final class f
 {
-  private static String[] vpG;
-  private static String[] vpH;
-  private static String[] vpI;
-  public static boolean vpJ;
-  public static boolean vpK;
-  public static boolean vpL;
+  private static String[] wuY;
+  private static String[] wuZ;
+  private static String[] wva;
+  public static boolean wvb;
+  public static boolean wvc;
+  public static boolean wvd;
   
   /* Error */
   static
@@ -27,7 +27,7 @@ public final class f
     //   11: new 29	java/lang/StringBuilder
     //   14: dup
     //   15: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   18: invokestatic 38	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   18: invokestatic 38	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   21: invokevirtual 44	android/content/Context:getFilesDir	()Ljava/io/File;
     //   24: invokevirtual 50	java/io/File:getParent	()Ljava/lang/String;
     //   27: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -41,7 +41,7 @@ public final class f
     //   44: new 29	java/lang/StringBuilder
     //   47: dup
     //   48: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   51: invokestatic 38	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   51: invokestatic 38	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   54: invokevirtual 44	android/content/Context:getFilesDir	()Ljava/io/File;
     //   57: invokevirtual 50	java/io/File:getParent	()Ljava/lang/String;
     //   60: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -50,7 +50,7 @@ public final class f
     //   68: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   71: invokestatic 63	com/tencent/mm/plugin/normsg/c/f:decodeString	(Ljava/lang/String;)Ljava/lang/String;
     //   74: aastore
-    //   75: putstatic 67	com/tencent/mm/plugin/normsg/c/f:vpG	[Ljava/lang/String;
+    //   75: putstatic 67	com/tencent/mm/plugin/normsg/c/f:wuY	[Ljava/lang/String;
     //   78: iconst_1
     //   79: anewarray 27	java/lang/String
     //   82: dup
@@ -58,7 +58,7 @@ public final class f
     //   84: new 29	java/lang/StringBuilder
     //   87: dup
     //   88: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   91: invokestatic 38	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   91: invokestatic 38	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   94: invokevirtual 44	android/content/Context:getFilesDir	()Ljava/io/File;
     //   97: invokevirtual 50	java/io/File:getParent	()Ljava/lang/String;
     //   100: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -67,7 +67,7 @@ public final class f
     //   108: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   111: invokestatic 63	com/tencent/mm/plugin/normsg/c/f:decodeString	(Ljava/lang/String;)Ljava/lang/String;
     //   114: aastore
-    //   115: putstatic 71	com/tencent/mm/plugin/normsg/c/f:vpH	[Ljava/lang/String;
+    //   115: putstatic 71	com/tencent/mm/plugin/normsg/c/f:wuZ	[Ljava/lang/String;
     //   118: iconst_3
     //   119: anewarray 27	java/lang/String
     //   122: dup
@@ -75,7 +75,7 @@ public final class f
     //   124: new 29	java/lang/StringBuilder
     //   127: dup
     //   128: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   131: invokestatic 38	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   131: invokestatic 38	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   134: invokevirtual 44	android/content/Context:getFilesDir	()Ljava/io/File;
     //   137: invokevirtual 50	java/io/File:getParent	()Ljava/lang/String;
     //   140: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -89,7 +89,7 @@ public final class f
     //   157: new 29	java/lang/StringBuilder
     //   160: dup
     //   161: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   164: invokestatic 38	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   164: invokestatic 38	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   167: invokevirtual 44	android/content/Context:getFilesDir	()Ljava/io/File;
     //   170: invokevirtual 50	java/io/File:getParent	()Ljava/lang/String;
     //   173: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -103,7 +103,7 @@ public final class f
     //   190: new 29	java/lang/StringBuilder
     //   193: dup
     //   194: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   197: invokestatic 38	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   197: invokestatic 38	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   200: invokevirtual 44	android/content/Context:getFilesDir	()Ljava/io/File;
     //   203: invokevirtual 50	java/io/File:getParent	()Ljava/lang/String;
     //   206: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -112,14 +112,14 @@ public final class f
     //   214: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   217: invokestatic 63	com/tencent/mm/plugin/normsg/c/f:decodeString	(Ljava/lang/String;)Ljava/lang/String;
     //   220: aastore
-    //   221: putstatic 79	com/tencent/mm/plugin/normsg/c/f:vpI	[Ljava/lang/String;
+    //   221: putstatic 79	com/tencent/mm/plugin/normsg/c/f:wva	[Ljava/lang/String;
     //   224: iconst_0
-    //   225: putstatic 81	com/tencent/mm/plugin/normsg/c/f:vpJ	Z
+    //   225: putstatic 81	com/tencent/mm/plugin/normsg/c/f:wvb	Z
     //   228: iconst_0
-    //   229: putstatic 83	com/tencent/mm/plugin/normsg/c/f:vpK	Z
+    //   229: putstatic 83	com/tencent/mm/plugin/normsg/c/f:wvc	Z
     //   232: iconst_0
-    //   233: putstatic 85	com/tencent/mm/plugin/normsg/c/f:vpL	Z
-    //   236: getstatic 67	com/tencent/mm/plugin/normsg/c/f:vpG	[Ljava/lang/String;
+    //   233: putstatic 85	com/tencent/mm/plugin/normsg/c/f:wvd	Z
+    //   236: getstatic 67	com/tencent/mm/plugin/normsg/c/f:wuY	[Ljava/lang/String;
     //   239: astore_2
     //   240: aload_2
     //   241: arraylength
@@ -138,7 +138,7 @@ public final class f
     //   260: invokevirtual 92	java/io/File:exists	()Z
     //   263: ifeq +144 -> 407
     //   266: iconst_1
-    //   267: putstatic 81	com/tencent/mm/plugin/normsg/c/f:vpJ	Z
+    //   267: putstatic 81	com/tencent/mm/plugin/normsg/c/f:wvb	Z
     //   270: new 46	java/io/File
     //   273: dup
     //   274: ldc 94
@@ -176,7 +176,7 @@ public final class f
     //   334: aload_3
     //   335: invokespecial 118	java/lang/String:<init>	([B)V
     //   338: astore_2
-    //   339: getstatic 71	com/tencent/mm/plugin/normsg/c/f:vpH	[Ljava/lang/String;
+    //   339: getstatic 71	com/tencent/mm/plugin/normsg/c/f:wuZ	[Ljava/lang/String;
     //   342: astore_3
     //   343: aload_3
     //   344: arraylength
@@ -193,8 +193,8 @@ public final class f
     //   357: invokevirtual 122	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   360: ifeq +90 -> 450
     //   363: iconst_1
-    //   364: putstatic 83	com/tencent/mm/plugin/normsg/c/f:vpK	Z
-    //   367: getstatic 79	com/tencent/mm/plugin/normsg/c/f:vpI	[Ljava/lang/String;
+    //   364: putstatic 83	com/tencent/mm/plugin/normsg/c/f:wvc	Z
+    //   367: getstatic 79	com/tencent/mm/plugin/normsg/c/f:wva	[Ljava/lang/String;
     //   370: astore_2
     //   371: aload_2
     //   372: arraylength
@@ -213,7 +213,7 @@ public final class f
     //   391: invokevirtual 92	java/io/File:exists	()Z
     //   394: ifeq +63 -> 457
     //   397: iconst_1
-    //   398: putstatic 85	com/tencent/mm/plugin/normsg/c/f:vpL	Z
+    //   398: putstatic 85	com/tencent/mm/plugin/normsg/c/f:wvd	Z
     //   401: ldc 19
     //   403: invokestatic 125	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   406: return
@@ -302,7 +302,7 @@ public final class f
   {
     AppMethodBeat.i(149092);
     String[] arrayOfString = new String[3];
-    arrayOfString[0] = ai.getContext().getFilesDir().getParent();
+    arrayOfString[0] = aj.getContext().getFilesDir().getParent();
     arrayOfString[1] = paramString;
     arrayOfString[2] = f.class.toString();
     paramString = new StringBuilder(arrayOfString[1].substring(arrayOfString[0].length() + 1)).reverse().toString();
@@ -312,7 +312,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.c.f
  * JD-Core Version:    0.7.0.1
  */

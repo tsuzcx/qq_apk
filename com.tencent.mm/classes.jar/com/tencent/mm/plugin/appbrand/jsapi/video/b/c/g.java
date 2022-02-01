@@ -13,8 +13,8 @@ public final class g
   public g(Throwable paramThrowable)
   {
     super(paramThrowable.toString(), paramThrowable);
-    AppMethodBeat.i(194280);
-    AppMethodBeat.o(194280);
+    AppMethodBeat.i(206092);
+    AppMethodBeat.o(206092);
   }
 }
 

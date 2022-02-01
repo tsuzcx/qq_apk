@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gp
   extends b
 {
-  public a dhl;
+  public a dsy;
   
   public gp()
   {
@@ -15,26 +15,21 @@ public final class gp
   
   private gp(byte paramByte)
   {
-    AppMethodBeat.i(19809);
-    this.dhl = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19808);
+    this.dsy = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19809);
+    AppMethodBeat.o(19808);
   }
   
   public static final class a
   {
-    public Object cZw;
-    public long dcg;
-    public String dhm;
-    public int dhn;
-    public Object dho;
-    public String dhp;
+    public boolean isActive;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.gp
  * JD-Core Version:    0.7.0.1
  */

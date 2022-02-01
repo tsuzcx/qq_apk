@@ -1,32 +1,78 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.support.v7.widget.RecyclerView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.n;
-import com.tencent.mm.view.recyclerview.b;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.loader.d;
+import com.tencent.mm.plugin.finder.loader.g;
+import com.tencent.mm.plugin.finder.loader.i;
+import com.tencent.mm.plugin.finder.loader.i.a;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.protocal.protobuf.bvf;
+import com.tencent.mm.ui.ao;
 import com.tencent.mm.view.recyclerview.e;
-import d.g.b.k;
+import d.a.j;
+import d.g.b.p;
+import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedLikeConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLike;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
-public final class l
-  extends b<n>
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageRoundCornerConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedRoundCornerConvert;", "()V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
+public class l
+  extends r
 {
-  public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
+  public l()
   {
-    AppMethodBeat.i(201294);
-    k.h(paramRecyclerView, "recyclerView");
-    k.h(parame, "holder");
-    AppMethodBeat.o(201294);
+    super(2131494051);
   }
   
-  public final int getLayoutId()
+  public void a(e parame, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
   {
-    return 2131496189;
+    AppMethodBeat.i(165396);
+    p.h(parame, "holder");
+    p.h(paramBaseFinderFeed, "item");
+    super.a(parame, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
+    paramList = (ImageView)parame.Gd(2131302222);
+    p.g(paramList, "mediaIcon");
+    paramList.setImageDrawable(ao.k(paramList.getContext(), 2131690348, a.n(paramList.getContext(), 2131099828)));
+    paramList.setVisibility(0);
+    paramList = (bvf)j.jc((List)paramBaseFinderFeed.feedObject.getMediaList());
+    paramBaseFinderFeed = (ImageView)parame.Gd(2131305798);
+    p.g(paramBaseFinderFeed, "thumbIv");
+    Object localObject1 = paramBaseFinderFeed.getLayoutParams();
+    Object localObject2 = parame.getContext();
+    p.g(localObject2, "holder.context");
+    localObject2 = ((Context)localObject2).getResources();
+    p.g(localObject2, "holder.context.resources");
+    paramInt1 = ((Resources)localObject2).getDisplayMetrics().widthPixels;
+    parame = parame.getContext();
+    p.g(parame, "holder.context");
+    int i = (paramInt1 - (int)parame.getResources().getDimension(2131165284)) / 2;
+    if (i > 0)
+    {
+      paramInt2 = (int)(paramList.height * i / paramList.width);
+      paramInt1 = paramInt2;
+      if (paramInt2 > i * 1.316667F) {
+        paramInt1 = (int)(i * 1.316667F);
+      }
+      ((ViewGroup.LayoutParams)localObject1).width = i;
+      ((ViewGroup.LayoutParams)localObject1).height = paramInt1;
+      paramBaseFinderFeed.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    }
+    parame = i.sja;
+    parame = i.cCB();
+    paramList = new g(paramList, com.tencent.mm.plugin.finder.storage.r.syE);
+    localObject1 = i.sja;
+    parame.a(paramList, paramBaseFinderFeed, i.a(i.a.sjb));
+    AppMethodBeat.o(165396);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.l
  * JD-Core Version:    0.7.0.1
  */

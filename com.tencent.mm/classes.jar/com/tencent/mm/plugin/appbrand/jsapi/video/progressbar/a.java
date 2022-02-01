@@ -6,14 +6,14 @@ public final class a
 {
   public static int c(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194556);
-    int i = l(paramInt2, paramFloat1 / paramFloat2) + paramInt1;
+    AppMethodBeat.i(206368);
+    int i = m(paramInt2, paramFloat1 / paramFloat2) + paramInt1;
     if (i < 0) {
       paramInt1 = 0;
     }
     for (;;)
     {
-      AppMethodBeat.o(194556);
+      AppMethodBeat.o(206368);
       return paramInt1;
       paramInt1 = paramInt2;
       if (i <= paramInt2) {
@@ -22,7 +22,7 @@ public final class a
     }
   }
   
-  private static int l(int paramInt, float paramFloat)
+  private static int m(int paramInt, float paramFloat)
   {
     int i = paramInt;
     if (paramInt > 180)

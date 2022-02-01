@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
+  public byte AFA = 1;
   public String content = null;
-  public String skD = "";
-  public byte znG = 1;
+  public String thf = "";
   
   public final String toString()
   {
     AppMethodBeat.i(145970);
-    String str = "SoterMpReqModel{reqAuthenMode=" + this.znG + ", challenge='" + this.skD + '\'' + ", content='" + this.content + '\'' + '}';
+    String str = "SoterMpReqModel{reqAuthenMode=" + this.AFA + ", challenge='" + this.thf + '\'' + ", content='" + this.content + '\'' + '}';
     AppMethodBeat.o(145970);
     return str;
   }

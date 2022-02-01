@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fav.a;
 
 public abstract interface ac
 {
-  public abstract boolean aKt();
+  public abstract boolean aNC();
   
   public abstract void run();
 }

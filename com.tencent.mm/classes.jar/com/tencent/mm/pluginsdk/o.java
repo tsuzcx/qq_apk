@@ -1,17 +1,9 @@
 package com.tencent.mm.pluginsdk;
 
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mm.kernel.c.a;
-
+@Deprecated
 public abstract interface o
-  extends a
 {
-  public abstract boolean a(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener);
-  
-  public abstract boolean eJ(String paramString);
-  
-  public abstract String w(Context paramContext, String paramString);
+  public static abstract interface c {}
 }
 
 

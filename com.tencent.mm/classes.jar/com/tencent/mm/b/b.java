@@ -1,7 +1,7 @@
 package com.tencent.mm.b;
 
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.vfs.e;
 import java.io.IOException;
 import java.util.concurrent.locks.Condition;
@@ -9,28 +9,28 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class b
 {
-  static ao cEw;
-  e cEt;
-  private ReentrantLock cEu = new ReentrantLock();
-  private Condition cEv = this.cEu.newCondition();
+  static ap cPB;
+  private Condition cPA = this.cPz.newCondition();
+  e cPy;
+  private ReentrantLock cPz = new ReentrantLock();
   
   public b(final String paramString)
   {
     try
     {
-      if (cEw == null) {
-        cEw = new ao("I/O Worker");
+      if (cPB == null) {
+        cPB = new ap("I/O Worker");
       }
       e locale = new e(paramString);
       if (locale.exists())
       {
-        this.cEt = locale;
+        this.cPy = locale;
         return;
       }
     }
     finally {}
-    ac.i("MicroMsg.ConcurrentFileBuilder", "create new file %s", new Object[] { paramString });
-    cEw.post(new Runnable()
+    ad.i("MicroMsg.ConcurrentFileBuilder", "create new file %s", new Object[] { paramString });
+    cPB.post(new Runnable()
     {
       public final void run()
       {
@@ -39,17 +39,17 @@ public class b
         if (!locale1.exists())
         {
           l = System.currentTimeMillis();
-          e locale2 = new e(paramString).fxU();
+          e locale2 = new e(paramString).fOJ();
           if ((!locale2.exists()) && ((!locale2.mkdirs()) || (!locale2.isDirectory()))) {
-            ac.e("MicroMsg.ConcurrentFileBuilder", "mkParentDir mkdir error. %s", new Object[] { paramString });
+            ad.e("MicroMsg.ConcurrentFileBuilder", "mkParentDir mkdir error. %s", new Object[] { paramString });
           }
-          ac.i("MicroMsg.ConcurrentFileBuilder", "make dir last %d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+          ad.i("MicroMsg.ConcurrentFileBuilder", "make dir last %d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
           l = System.currentTimeMillis();
         }
         try
         {
           locale1.createNewFile();
-          ac.i("MicroMsg.ConcurrentFileBuilder", "make file last %d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+          ad.i("MicroMsg.ConcurrentFileBuilder", "make file last %d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
           b.a(b.this).lock();
         }
         catch (IOException localIOException)
@@ -58,9 +58,9 @@ public class b
           {
             try
             {
-              b.this.cEt = locale1;
+              b.this.cPy = locale1;
               b.b(b.this).signal();
-              ac.i("MicroMsg.ConcurrentFileBuilder", "notify file prepared %s", new Object[] { locale1.fxW() });
+              ad.i("MicroMsg.ConcurrentFileBuilder", "notify file prepared %s", new Object[] { locale1.fOL() });
               return;
             }
             finally
@@ -68,8 +68,8 @@ public class b
               b.a(b.this).unlock();
             }
             localIOException = localIOException;
-            ac.printErrStackTrace("MicroMsg.ConcurrentFileBuilder", localIOException, "", new Object[0]);
-            ac.printErrStackTrace("MicroMsg.ConcurrentFileBuilder", localIOException, "createNewFile", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.ConcurrentFileBuilder", localIOException, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.ConcurrentFileBuilder", localIOException, "createNewFile", new Object[0]);
           }
         }
       }
@@ -77,36 +77,36 @@ public class b
   }
   
   /* Error */
-  public final e IA()
+  public final e Ka()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 24	com/tencent/mm/b/b:cEu	Ljava/util/concurrent/locks/ReentrantLock;
+    //   1: getfield 24	com/tencent/mm/b/b:cPz	Ljava/util/concurrent/locks/ReentrantLock;
     //   4: invokevirtual 76	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   7: aload_0
-    //   8: getfield 47	com/tencent/mm/b/b:cEt	Lcom/tencent/mm/vfs/e;
+    //   8: getfield 47	com/tencent/mm/b/b:cPy	Lcom/tencent/mm/vfs/e;
     //   11: ifnonnull +35 -> 46
     //   14: ldc 49
     //   16: ldc 78
-    //   18: invokestatic 81	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   18: invokestatic 81	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   21: aload_0
-    //   22: getfield 30	com/tencent/mm/b/b:cEv	Ljava/util/concurrent/locks/Condition;
+    //   22: getfield 30	com/tencent/mm/b/b:cPA	Ljava/util/concurrent/locks/Condition;
     //   25: invokeinterface 86 1 0
     //   30: goto -23 -> 7
     //   33: astore_1
     //   34: aload_0
-    //   35: getfield 24	com/tencent/mm/b/b:cEu	Ljava/util/concurrent/locks/ReentrantLock;
+    //   35: getfield 24	com/tencent/mm/b/b:cPz	Ljava/util/concurrent/locks/ReentrantLock;
     //   38: invokevirtual 89	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   41: aload_0
-    //   42: getfield 47	com/tencent/mm/b/b:cEt	Lcom/tencent/mm/vfs/e;
+    //   42: getfield 47	com/tencent/mm/b/b:cPy	Lcom/tencent/mm/vfs/e;
     //   45: areturn
     //   46: aload_0
-    //   47: getfield 24	com/tencent/mm/b/b:cEu	Ljava/util/concurrent/locks/ReentrantLock;
+    //   47: getfield 24	com/tencent/mm/b/b:cPz	Ljava/util/concurrent/locks/ReentrantLock;
     //   50: invokevirtual 89	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   53: goto -12 -> 41
     //   56: astore_1
     //   57: aload_0
-    //   58: getfield 24	com/tencent/mm/b/b:cEu	Ljava/util/concurrent/locks/ReentrantLock;
+    //   58: getfield 24	com/tencent/mm/b/b:cPz	Ljava/util/concurrent/locks/ReentrantLock;
     //   61: invokevirtual 89	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   64: aload_1
     //   65: athrow

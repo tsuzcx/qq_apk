@@ -6,7 +6,7 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.menu.a.b;
 import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class i
   implements b<ae>

@@ -6,16 +6,16 @@ import java.util.Random;
 public final class d
   implements c
 {
-  private a MbF;
+  private a NWH;
   
   public d()
   {
     AppMethodBeat.i(40570);
-    this.MbF = new a();
+    this.NWH = new a();
     AppMethodBeat.o(40570);
   }
   
-  private static Long ggf()
+  private static Long gyJ()
   {
     AppMethodBeat.i(40573);
     long l = System.currentTimeMillis() / 1000L;
@@ -26,16 +26,16 @@ public final class d
   public final String getNonce()
   {
     AppMethodBeat.i(40571);
-    long l1 = ggf().longValue();
+    long l1 = gyJ().longValue();
     long l2 = new Random().nextInt();
     AppMethodBeat.o(40571);
     return String.valueOf(l1 + l2);
   }
   
-  public final String gge()
+  public final String gyI()
   {
     AppMethodBeat.i(40572);
-    String str = String.valueOf(ggf());
+    String str = String.valueOf(gyJ());
     AppMethodBeat.o(40572);
     return str;
   }

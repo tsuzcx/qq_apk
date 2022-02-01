@@ -1,11 +1,11 @@
 package d.l.b.a.b.m.a;
 
 import d.g.a.a;
-import d.g.b.l;
+import d.g.b.q;
 import java.util.Set;
 
 final class y$b
-  extends l
+  extends q
   implements a<String>
 {
   y$b(Set paramSet)

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import android.os.Bundle;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 
 public abstract interface d
 {
@@ -9,7 +9,7 @@ public abstract interface d
   
   public abstract void f(int paramInt1, int paramInt2, String paramString, n paramn);
   
-  public abstract void n(String paramString, Bundle paramBundle);
+  public abstract void o(String paramString, Bundle paramBundle);
   
   public abstract void t(double paramDouble);
 }

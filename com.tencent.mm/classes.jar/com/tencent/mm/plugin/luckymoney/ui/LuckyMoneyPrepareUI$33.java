@@ -7,16 +7,16 @@ final class LuckyMoneyPrepareUI$33
 {
   LuckyMoneyPrepareUI$33(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
-  public final void cZN()
+  public final void dja()
   {
     AppMethodBeat.i(65865);
-    LuckyMoneyPrepareUI.a(this.uyl);
+    LuckyMoneyPrepareUI.a(this.vAO);
     AppMethodBeat.o(65865);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyPrepareUI.33
  * JD-Core Version:    0.7.0.1
  */

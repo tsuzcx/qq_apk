@@ -7,49 +7,37 @@ import com.tencent.mm.sdk.e.c;
 public abstract class fc
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eNw = "score".hashCode();
-  private static final int eYs;
-  private static final int eYt;
-  private static final int eYu;
-  private static final int eYv;
-  private static final int eYw;
-  private static final int eYx;
-  private static final int elO = "chatroom".hashCode();
-  private static final int erx;
-  private static final int etG;
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestAppIDIndex ON PredownloadBlockCgiRequest(appId)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestStartTimeIndex ON PredownloadBlockCgiRequest(startTime)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestEndTimeIndex ON PredownloadBlockCgiRequest(endTime)" };
+  private static final int eDo;
+  private static final int eDp;
+  private static final int eEU;
+  private static final int eFp = "username".hashCode();
+  private static final int eGy = "reportId".hashCode();
+  private static final int fol;
+  private static final int fom;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eNv = true;
-  private boolean eYm = true;
-  private boolean eYn = true;
-  private boolean eYo = true;
-  private boolean eYp = true;
-  private boolean eYq = true;
-  private boolean eYr = true;
-  private boolean elK = true;
-  private boolean eri = true;
-  private boolean etC = true;
-  public String field_chatroom;
-  public String field_daySec;
-  public int field_disRedDotCount;
-  public int field_enterCount;
-  public int field_isMute;
-  public String field_nickname;
-  public float field_score;
-  public int field_sendCount;
-  public long field_stayTime;
-  public int field_unReadCount;
+  private boolean eDh = true;
+  private boolean eDi = true;
+  private boolean eED = true;
+  private boolean eFm = true;
+  private boolean eGt = true;
+  public String field_appId;
+  public String field_cgiList;
+  public long field_endTime;
+  public int field_reportId;
+  public String field_sceneList;
+  public long field_startTime;
+  public String field_username;
+  private boolean foj = true;
+  private boolean fok = true;
   
   static
   {
-    eYs = "daySec".hashCode();
-    etG = "nickname".hashCode();
-    eYt = "isMute".hashCode();
-    erx = "unReadCount".hashCode();
-    eYu = "sendCount".hashCode();
-    eYv = "enterCount".hashCode();
-    eYw = "disRedDotCount".hashCode();
-    eYx = "stayTime".hashCode();
+    eEU = "appId".hashCode();
+    eDo = "startTime".hashCode();
+    eDp = "endTime".hashCode();
+    fol = "sceneList".hashCode();
+    fom = "cgiList".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -65,35 +53,30 @@ public abstract class fc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elO != k) {
-        break label60;
+      if (eFp != k) {
+        break label65;
       }
-      this.field_chatroom = paramCursor.getString(i);
+      this.field_username = paramCursor.getString(i);
+      this.eFm = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eYs == k) {
-        this.field_daySec = paramCursor.getString(i);
-      } else if (etG == k) {
-        this.field_nickname = paramCursor.getString(i);
-      } else if (eYt == k) {
-        this.field_isMute = paramCursor.getInt(i);
-      } else if (erx == k) {
-        this.field_unReadCount = paramCursor.getInt(i);
-      } else if (eYu == k) {
-        this.field_sendCount = paramCursor.getInt(i);
-      } else if (eYv == k) {
-        this.field_enterCount = paramCursor.getInt(i);
-      } else if (eYw == k) {
-        this.field_disRedDotCount = paramCursor.getInt(i);
-      } else if (eYx == k) {
-        this.field_stayTime = paramCursor.getLong(i);
-      } else if (eNw == k) {
-        this.field_score = paramCursor.getFloat(i);
+      label65:
+      if (eEU == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (eDo == k) {
+        this.field_startTime = paramCursor.getLong(i);
+      } else if (eDp == k) {
+        this.field_endTime = paramCursor.getLong(i);
+      } else if (fol == k) {
+        this.field_sceneList = paramCursor.getString(i);
+      } else if (fom == k) {
+        this.field_cgiList = paramCursor.getString(i);
+      } else if (eGy == k) {
+        this.field_reportId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -103,35 +86,26 @@ public abstract class fc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.elK) {
-      localContentValues.put("chatroom", this.field_chatroom);
+    if (this.eFm) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.eYm) {
-      localContentValues.put("daySec", this.field_daySec);
+    if (this.eED) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.etC) {
-      localContentValues.put("nickname", this.field_nickname);
+    if (this.eDh) {
+      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
     }
-    if (this.eYn) {
-      localContentValues.put("isMute", Integer.valueOf(this.field_isMute));
+    if (this.eDi) {
+      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
     }
-    if (this.eri) {
-      localContentValues.put("unReadCount", Integer.valueOf(this.field_unReadCount));
+    if (this.foj) {
+      localContentValues.put("sceneList", this.field_sceneList);
     }
-    if (this.eYo) {
-      localContentValues.put("sendCount", Integer.valueOf(this.field_sendCount));
+    if (this.fok) {
+      localContentValues.put("cgiList", this.field_cgiList);
     }
-    if (this.eYp) {
-      localContentValues.put("enterCount", Integer.valueOf(this.field_enterCount));
-    }
-    if (this.eYq) {
-      localContentValues.put("disRedDotCount", Integer.valueOf(this.field_disRedDotCount));
-    }
-    if (this.eYr) {
-      localContentValues.put("stayTime", Long.valueOf(this.field_stayTime));
-    }
-    if (this.eNv) {
-      localContentValues.put("score", Float.valueOf(this.field_score));
+    if (this.eGt) {
+      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -141,7 +115,7 @@ public abstract class fc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.fc
  * JD-Core Version:    0.7.0.1
  */

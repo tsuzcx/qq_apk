@@ -11,7 +11,7 @@ public class PluginWxPayApi
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(106597);
-    paramg.ahL();
+    paramg.akw();
     AppMethodBeat.o(106597);
   }
   
@@ -20,7 +20,7 @@ public class PluginWxPayApi
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(106598);
-    if (paramg.ahL()) {
+    if (paramg.akw()) {
       com.tencent.mm.kernel.g.b(b.class, new com.tencent.mm.plugin.p.a());
     }
     AppMethodBeat.o(106598);

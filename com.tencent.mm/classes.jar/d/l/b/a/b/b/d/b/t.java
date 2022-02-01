@@ -1,7 +1,7 @@
 package d.l.b.a.b.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.az;
 import d.l.b.a.b.b.ba;
 import d.l.b.a.b.d.a.e.r;
@@ -45,30 +45,30 @@ public abstract interface t
       int i = paramt.getModifiers();
       if (Modifier.isPublic(i))
       {
-        paramt = az.Lem;
-        k.g(paramt, "Visibilities.PUBLIC");
+        paramt = az.MVh;
+        p.g(paramt, "Visibilities.PUBLIC");
         AppMethodBeat.o(57495);
         return paramt;
       }
       if (Modifier.isPrivate(i))
       {
-        paramt = az.Lei;
-        k.g(paramt, "Visibilities.PRIVATE");
+        paramt = az.MVd;
+        p.g(paramt, "Visibilities.PRIVATE");
         AppMethodBeat.o(57495);
         return paramt;
       }
       if (Modifier.isProtected(i))
       {
         if (Modifier.isStatic(i)) {}
-        for (paramt = n.Llv;; paramt = n.Llw)
+        for (paramt = n.Ncs;; paramt = n.Nct)
         {
-          k.g(paramt, "if (Modifier.isStatic(mo…ies.PROTECTED_AND_PACKAGE");
+          p.g(paramt, "if (Modifier.isStatic(mo…ies.PROTECTED_AND_PACKAGE");
           AppMethodBeat.o(57495);
           return paramt;
         }
       }
-      paramt = n.Llu;
-      k.g(paramt, "JavaVisibilities.PACKAGE_VISIBILITY");
+      paramt = n.Ncr;
+      p.g(paramt, "JavaVisibilities.PACKAGE_VISIBILITY");
       AppMethodBeat.o(57495);
       return paramt;
     }
@@ -76,7 +76,7 @@ public abstract interface t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.t
  * JD-Core Version:    0.7.0.1
  */

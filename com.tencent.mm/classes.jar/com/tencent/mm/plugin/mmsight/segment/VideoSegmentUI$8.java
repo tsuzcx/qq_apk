@@ -14,7 +14,7 @@ final class VideoSegmentUI$8
   public final void run()
   {
     AppMethodBeat.i(94474);
-    Object localObject = i.cZ(CaptureMMProxy.getInstance().getAccVideoPath(), false);
+    Object localObject = i.de(CaptureMMProxy.getInstance().getAccVideoPath(), false);
     if (localObject == null)
     {
       AppMethodBeat.o(94474);
@@ -24,7 +24,7 @@ final class VideoSegmentUI$8
     while (((Iterator)localObject).hasNext())
     {
       FileSystem.a locala = (FileSystem.a)((Iterator)localObject).next();
-      if ((!locala.Jsg) && (locala.name != null) && (((locala.name.startsWith("vsg_output_")) && (!locala.name.equals(this.uQp))) || ((locala.name.startsWith("vsg_thumb_")) && (!locala.name.equals(this.uQq))))) {
+      if ((!locala.LjL) && (locala.name != null) && (((locala.name.startsWith("vsg_output_")) && (!locala.name.equals(this.vTz))) || ((locala.name.startsWith("vsg_thumb_")) && (!locala.name.equals(this.vTA))))) {
         locala.delete();
       }
     }

@@ -26,8 +26,8 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.luggage.h.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
@@ -36,40 +36,30 @@ public final class e
   extends RelativeLayout
   implements m
 {
-  private boolean cBT;
-  private final ao lhe;
-  private final j mAE;
-  private final LinkedList<k> mAF;
-  private final Runnable mAG;
-  private k mAH;
-  private k mAI;
-  private Set<l> mAJ;
-  private final Set<Object> mAK;
-  private final Set<Object> mAM;
-  private boolean mAN;
+  private boolean cMS;
+  private final ap lEc;
   private final View.OnClickListener mOnClickListener;
   private int mRotation;
+  private final j ndp;
+  private final LinkedList<k> ndq;
+  private final Runnable ndr;
+  private k nds;
+  private k ndt;
+  private Set<l> ndu;
+  private final Set<Object> ndv;
+  private final Set<Object> ndx;
+  private boolean ndy;
   
   public e(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(131483);
     this.mRotation = 0;
-    this.lhe = new ao(Looper.getMainLooper());
-    this.mAE = new j(this);
-    this.mAF = new LinkedList();
-    this.mOnClickListener = new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(131477);
-        if (paramAnonymousView == e.this) {
-          e.a(e.this);
-        }
-        AppMethodBeat.o(131477);
-      }
-    };
-    this.mAG = new Runnable()
+    this.lEc = new ap(Looper.getMainLooper());
+    this.ndp = new j(this);
+    this.ndq = new LinkedList();
+    this.mOnClickListener = new e.1(this);
+    this.ndr = new Runnable()
     {
       public final void run()
       {
@@ -80,11 +70,11 @@ public final class e
         AppMethodBeat.o(131478);
       }
     };
-    this.cBT = false;
-    this.mAJ = new b();
-    this.mAK = new b();
-    this.mAM = new b();
-    this.mAN = false;
+    this.cMS = false;
+    this.ndu = new b();
+    this.ndv = new b();
+    this.ndx = new b();
+    this.ndy = false;
     setVisibility(4);
     setBackgroundColor(0);
     setOnClickListener(this.mOnClickListener);
@@ -122,7 +112,7 @@ public final class e
     return localAnimatorSet;
   }
   
-  private static void cX(View paramView)
+  private static void cZ(View paramView)
   {
     AppMethodBeat.i(131487);
     if ((paramView == null) || (paramView.getParent() == null))
@@ -134,10 +124,34 @@ public final class e
     AppMethodBeat.o(131487);
   }
   
+  public final void My()
+  {
+    AppMethodBeat.i(183778);
+    if (this.ndp.isRunning()) {
+      this.ndp.cancel();
+    }
+    if (!this.ndq.isEmpty())
+    {
+      a local6 = new a() {};
+      while (!this.ndq.isEmpty()) {
+        local6.apply(this.ndq.pollFirst());
+      }
+    }
+    this.nds = null;
+    this.ndt = null;
+    this.ndy = false;
+    this.ndv.clear();
+    this.ndx.clear();
+    removeAllViewsInLayout();
+    this.lEc.removeCallbacksAndMessages(null);
+    this.ndr.run();
+    AppMethodBeat.o(183778);
+  }
+  
   public final void a(l paraml)
   {
     AppMethodBeat.i(176008);
-    this.mAJ.add(paraml);
+    this.ndu.add(paraml);
     AppMethodBeat.o(176008);
   }
   
@@ -149,10 +163,10 @@ public final class e
       AppMethodBeat.o(131484);
       return;
     }
-    ac.i("MicroMsg.AppBrandDialogContainerLayout", "showDialog dialog[%s] tid[%d]", new Object[] { paramk.getClass().getName(), Long.valueOf(Thread.currentThread().getId()) });
+    ad.i("MicroMsg.AppBrandDialogContainerLayout", "showDialog dialog[%s] tid[%d]", new Object[] { paramk.getClass().getName(), Long.valueOf(Thread.currentThread().getId()) });
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      this.lhe.post(new Runnable()
+      this.lEc.post(new Runnable()
       {
         public final void run()
         {
@@ -165,93 +179,69 @@ public final class e
       return;
     }
     f.aC(getContext());
-    if (this.mAE.isRunning()) {
-      this.mAE.cancel();
+    if (this.ndp.isRunning()) {
+      this.ndp.cancel();
     }
     View localView = paramk.getContentView();
     if (localView == null)
     {
-      ac.w("MicroMsg.AppBrandDialogContainerLayout", "showDialog NULL dialogView from dialog[%s], stack=%s", new Object[] { paramk, Log.getStackTraceString(new Throwable()) });
+      ad.w("MicroMsg.AppBrandDialogContainerLayout", "showDialog NULL dialogView from dialog[%s], stack=%s", new Object[] { paramk, Log.getStackTraceString(new Throwable()) });
       AppMethodBeat.o(131484);
       return;
     }
     RelativeLayout.LayoutParams localLayoutParams;
     if (localView.getParent() != this)
     {
-      cX(localView);
+      cZ(localView);
       if (paramk.getPosition() != 2) {
-        break label350;
+        break label357;
       }
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams.addRule(12);
       localLayoutParams.addRule(14);
       addView(localView, localLayoutParams);
-      if (this.mAI != paramk)
+      if (this.ndt != paramk)
       {
         localView.clearAnimation();
         if (paramk.getPosition() != 2) {
-          break label371;
+          break label378;
         }
         localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772064));
       }
     }
     for (;;)
     {
-      this.mAI = paramk;
+      this.ndt = paramk;
       localView.setOnClickListener(this.mOnClickListener);
-      this.mAF.add(paramk);
+      this.ndq.add(paramk);
       paramk.a(this);
       setVisibility(0);
       bringToFront();
-      this.mAE.c(Color.argb(127, 0, 0, 0), null);
-      if ((this.mAJ.isEmpty()) || (this.cBT)) {
-        break label388;
+      this.ndp.c(Color.argb(127, 0, 0, 0), null);
+      if ((this.ndu.isEmpty()) || (this.cMS)) {
+        break label395;
       }
-      paramk = this.mAJ.iterator();
+      paramk = this.ndu.iterator();
       while (paramk.hasNext()) {
-        ((l)paramk.next()).f(Boolean.TRUE);
+        ((l)paramk.next()).h(Boolean.TRUE);
       }
-      label350:
+      label357:
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(13);
       break;
-      label371:
+      label378:
       localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771999));
     }
-    label388:
-    this.cBT = true;
+    label395:
+    this.cMS = true;
     AppMethodBeat.o(131484);
   }
   
   public final void b(l paraml)
   {
     AppMethodBeat.i(176009);
-    this.mAJ.remove(paraml);
+    this.ndu.remove(paraml);
     AppMethodBeat.o(176009);
-  }
-  
-  public final void blW()
-  {
-    AppMethodBeat.i(183778);
-    if (this.mAE.isRunning()) {
-      this.mAE.cancel();
-    }
-    if (!this.mAF.isEmpty())
-    {
-      a local5 = new a() {};
-      while (!this.mAF.isEmpty()) {
-        local5.apply(this.mAF.pollFirst());
-      }
-    }
-    this.mAH = null;
-    this.mAI = null;
-    this.mAN = false;
-    this.mAK.clear();
-    this.mAM.clear();
-    removeAllViewsInLayout();
-    this.lhe.removeCallbacksAndMessages(null);
-    this.mAG.run();
-    AppMethodBeat.o(183778);
   }
   
   public final void c(final k paramk)
@@ -262,19 +252,33 @@ public final class e
       AppMethodBeat.o(131485);
       return;
     }
+    if (Looper.getMainLooper() != Looper.myLooper())
+    {
+      this.lEc.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(199401);
+          e.this.c(paramk);
+          AppMethodBeat.o(199401);
+        }
+      });
+      AppMethodBeat.o(131485);
+      return;
+    }
     if (paramk.getContentView().getParent() != this)
     {
       AppMethodBeat.o(131485);
       return;
     }
-    if (this.mAH == paramk)
+    if (this.nds == paramk)
     {
       AppMethodBeat.o(131485);
       return;
     }
-    this.mAH = paramk;
-    if (this.mAI == paramk) {
-      this.mAI = null;
+    this.nds = paramk;
+    if (this.ndt == paramk) {
+      this.ndt = null;
     }
     final View localView = paramk.getContentView();
     localView.animate().cancel();
@@ -284,14 +288,14 @@ public final class e
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(131481);
+        AppMethodBeat.i(199403);
         onAnimationEnd(paramAnonymousAnimator);
-        AppMethodBeat.o(131481);
+        AppMethodBeat.o(199403);
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(131482);
+        AppMethodBeat.i(199404);
         localView.setVisibility(8);
         e.b(e.this).remove(paramk);
         e.c(e.this);
@@ -299,8 +303,8 @@ public final class e
         {
           public final void run()
           {
-            AppMethodBeat.i(131480);
-            e.this.removeView(e.4.this.mAP);
+            AppMethodBeat.i(199402);
+            e.this.removeView(e.5.this.nbv);
             e.a(e.this, true);
             Iterator localIterator = e.d(e.this).iterator();
             while (localIterator.hasNext()) {
@@ -312,24 +316,24 @@ public final class e
               e.d(e.this).removeAll(e.e(e.this));
               e.e(e.this).clear();
             }
-            AppMethodBeat.o(131480);
+            AppMethodBeat.o(199402);
           }
         });
-        AppMethodBeat.o(131482);
+        AppMethodBeat.o(199404);
       }
     });
     localAnimator.start();
-    if (this.mAF.size() <= 1) {
-      this.mAE.c(0, this.mAG);
+    if (this.ndq.size() <= 1) {
+      this.ndp.c(0, this.ndr);
     }
-    if ((!this.mAJ.isEmpty()) && (this.cBT))
+    if ((!this.ndu.isEmpty()) && (this.cMS))
     {
-      paramk = this.mAJ.iterator();
+      paramk = this.ndu.iterator();
       while (paramk.hasNext()) {
-        ((l)paramk.next()).f(Boolean.FALSE);
+        ((l)paramk.next()).h(Boolean.FALSE);
       }
     }
-    this.cBT = false;
+    this.cMS = false;
     AppMethodBeat.o(131485);
   }
   
@@ -349,7 +353,7 @@ public final class e
   public final k getCurrentDialog()
   {
     AppMethodBeat.i(131486);
-    k localk = (k)this.mAF.peekLast();
+    k localk = (k)this.ndq.peekLast();
     AppMethodBeat.o(131486);
     return localk;
   }
@@ -357,14 +361,14 @@ public final class e
   public final boolean onBackPressed()
   {
     AppMethodBeat.i(131489);
-    k localk = (k)this.mAF.peekLast();
+    k localk = (k)this.ndq.peekLast();
     if (localk == null)
     {
       setVisibility(8);
       AppMethodBeat.o(131489);
       return false;
     }
-    if ((!localk.aLl()) && (localk.isCancelable()))
+    if ((!localk.aOv()) && (localk.isCancelable()))
     {
       localk.onCancel();
       c(localk);
@@ -384,18 +388,28 @@ public final class e
       if (this.mRotation != i)
       {
         this.mRotation = i;
-        paramConfiguration = this.mAF.iterator();
+        paramConfiguration = this.ndq.iterator();
         while (paramConfiguration.hasNext()) {
-          ((k)paramConfiguration.next()).pW(this.mRotation);
+          ((k)paramConfiguration.next()).qy(this.mRotation);
         }
       }
     }
     AppMethodBeat.o(131491);
   }
+  
+  public final void onViewRemoved(View paramView)
+  {
+    AppMethodBeat.i(199406);
+    super.onViewRemoved(paramView);
+    if (this.ndq.size() == 0) {
+      this.ndp.c(0, this.ndr);
+    }
+    AppMethodBeat.o(199406);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.e
  * JD-Core Version:    0.7.0.1
  */

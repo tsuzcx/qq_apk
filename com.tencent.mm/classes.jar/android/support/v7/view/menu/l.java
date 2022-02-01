@@ -25,7 +25,7 @@ final class l
     extends k.a
     implements ActionProvider.VisibilityListener
   {
-    b.b aeX;
+    b.b agO;
     
     public a(Context paramContext, ActionProvider paramActionProvider)
     {
@@ -34,30 +34,30 @@ final class l
     
     public final void a(b.b paramb)
     {
-      this.aeX = paramb;
-      this.aeU.setVisibilityListener(this);
+      this.agO = paramb;
+      this.agL.setVisibilityListener(this);
     }
     
     public final boolean isVisible()
     {
-      return this.aeU.isVisible();
+      return this.agL.isVisible();
     }
     
     public final void onActionProviderVisibilityChanged(boolean paramBoolean)
     {
-      if (this.aeX != null) {
-        this.aeX.fc();
+      if (this.agO != null) {
+        this.agO.ft();
       }
     }
     
     public final View onCreateActionView(MenuItem paramMenuItem)
     {
-      return this.aeU.onCreateActionView(paramMenuItem);
+      return this.agL.onCreateActionView(paramMenuItem);
     }
     
     public final boolean overridesItemVisibility()
     {
-      return this.aeU.overridesItemVisibility();
+      return this.agL.overridesItemVisibility();
     }
   }
 }

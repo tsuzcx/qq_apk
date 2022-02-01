@@ -8,21 +8,23 @@ import android.support.v7.widget.RecyclerView.i;
 public abstract interface g$a
   extends a<g.b>
 {
-  public abstract void Dp(int paramInt);
-  
   public abstract void E(boolean paramBoolean, int paramInt);
   
-  public abstract RecyclerView.a bUV();
+  public abstract void Ei(int paramInt);
   
-  public abstract <T extends RecyclerView.i> T bUW();
+  public abstract void a(f.b paramb);
   
-  public abstract boolean crq();
+  public abstract RecyclerView.a bZA();
   
-  public abstract void crr();
+  public abstract <T extends RecyclerView.i> T bZB();
   
-  public abstract void crs();
+  public abstract boolean cxc();
   
-  public abstract <T extends RecyclerView.a> T crz();
+  public abstract void cxd();
+  
+  public abstract void cxe();
+  
+  public abstract <T extends RecyclerView.a> T cxl();
   
   public abstract RecyclerView.h eK(Context paramContext);
   
@@ -30,7 +32,7 @@ public abstract interface g$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.g.a
  * JD-Core Version:    0.7.0.1
  */

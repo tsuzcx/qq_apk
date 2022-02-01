@@ -44,7 +44,7 @@ public final class zzfb
     }
     try
     {
-      FirebaseInstanceId.wx().wy();
+      FirebaseInstanceId.xU().xV();
       String str = FirebaseInstanceId.zzf();
       AppMethodBeat.o(1301);
       return str;
@@ -351,7 +351,7 @@ public final class zzfb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfb
  * JD-Core Version:    0.7.0.1
  */

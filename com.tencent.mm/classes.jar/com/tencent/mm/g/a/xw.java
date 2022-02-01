@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class xw
   extends b
 {
-  public a dBo;
+  public a dMg;
   
   public xw()
   {
@@ -16,25 +15,21 @@ public final class xw
   
   private xw(byte paramByte)
   {
-    AppMethodBeat.i(91228);
-    this.dBo = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19846);
+    this.dMg = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91228);
+    AppMethodBeat.o(19846);
   }
   
   public static final class a
   {
-    public int dBn = 0;
-    public String dac;
-    public Intent intent;
-    public int requestCode = 0;
-    public int result = 0;
+    public String path;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.xw
  * JD-Core Version:    0.7.0.1
  */

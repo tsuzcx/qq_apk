@@ -9,25 +9,25 @@ import com.tencent.mm.plugin.walletlock.gesture.ui.widget.PatternLockView;
 
 final class a
 {
-  TextView BUM;
-  FrameLayout BUN;
-  PatternLockView BUO;
-  TextView BUP;
+  TextView Dvg;
+  FrameLayout Dvh;
+  PatternLockView Dvi;
+  TextView Dvj;
   View mView;
   
   public a(Activity paramActivity)
   {
     AppMethodBeat.i(129853);
     this.mView = null;
-    this.BUM = null;
-    this.BUN = null;
-    this.BUO = null;
-    this.BUP = null;
+    this.Dvg = null;
+    this.Dvh = null;
+    this.Dvi = null;
+    this.Dvj = null;
     this.mView = View.inflate(paramActivity, 2131494482, null);
-    this.BUM = ((TextView)this.mView.findViewById(2131306135));
-    this.BUN = ((FrameLayout)this.mView.findViewById(2131303148));
-    this.BUO = ((PatternLockView)this.mView.findViewById(2131303147));
-    this.BUP = ((TextView)this.mView.findViewById(2131306126));
+    this.Dvg = ((TextView)this.mView.findViewById(2131306135));
+    this.Dvh = ((FrameLayout)this.mView.findViewById(2131303148));
+    this.Dvi = ((PatternLockView)this.mView.findViewById(2131303147));
+    this.Dvj = ((TextView)this.mView.findViewById(2131306126));
     AppMethodBeat.o(129853);
   }
 }

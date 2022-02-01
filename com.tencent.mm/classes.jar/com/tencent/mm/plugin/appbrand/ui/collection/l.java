@@ -7,26 +7,26 @@ import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "()V", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-appbrand-integration_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "()V", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-appbrand-integration_release"})
 final class l
   extends RecyclerView.h
 {
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(51279);
-    k.h(paramRect, "outRect");
-    k.h(paramView, "view");
-    k.h(paramRecyclerView, "parent");
-    k.h(paramt, "state");
+    p.h(paramRect, "outRect");
+    p.h(paramView, "view");
+    p.h(paramRecyclerView, "parent");
+    p.h(paramt, "state");
     paramView = paramRecyclerView.bh(paramView);
     if (paramView != null)
     {
       if ((paramView instanceof m))
       {
-        paramRect = ((m)paramView).miE;
-        int j = ((m)paramView).lv();
+        paramRect = ((m)paramView).mJf;
+        int j = ((m)paramView).lN();
         paramView = paramRecyclerView.getAdapter();
         if (paramView == null) {
           break label104;

@@ -1,198 +1,402 @@
 package com.tencent.mm.platformtools;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.net.Uri;
+import android.os.Debug;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.plugin.q.c;
+import com.tencent.mm.plugin.q.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.j;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+@Deprecated
 public final class af
 {
-  public static boolean a(Context paramContext, ArrayList<c> paramArrayList, boolean paramBoolean)
+  private static final TimeZone GMT;
+  private static final long[] iQc;
+  
+  static
   {
-    AppMethodBeat.i(20754);
-    if (paramArrayList.size() == 0)
+    AppMethodBeat.i(20749);
+    iQc = new long[] { 300L, 200L, 300L, 200L };
+    GMT = TimeZone.getTimeZone("GMT");
+    AppMethodBeat.o(20749);
+  }
+  
+  public static boolean a(Context paramContext, View paramView)
+  {
+    AppMethodBeat.i(20748);
+    if (paramView == null)
     {
-      AppMethodBeat.o(20754);
+      AppMethodBeat.o(20748);
       return false;
     }
-    Iterator localIterator = paramArrayList.iterator();
-    c localc;
-    Object localObject2;
-    Object localObject1;
-    Object localObject3;
-    int i;
-    label127:
-    do
+    paramContext = (InputMethodManager)paramContext.getSystemService("input_method");
+    if (paramContext == null)
     {
-      while (!((Iterator)localObject1).hasNext())
-      {
-        do
-        {
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localc = (c)localIterator.next();
-          } while (TextUtils.isEmpty(localc.dtC));
-          localObject2 = localc.dtC;
-          localObject1 = new ArrayList();
-          localObject3 = paramContext.getPackageResourcePath();
-          if (Build.VERSION.SDK_INT < 21) {
-            break label599;
-          }
-          paramArrayList = ((String)localObject3).split("/");
-          if (paramArrayList != null)
-          {
-            i = 0;
-            if (i >= paramArrayList.length) {
-              break label823;
-            }
-            if (!paramArrayList[i].contains(paramContext.getPackageName())) {
-              break;
-            }
-            paramArrayList = paramArrayList[i];
-            if (!TextUtils.isEmpty(paramArrayList))
-            {
-              String str = ((String)localObject3).replace(paramArrayList, (String)localObject2 + "-1");
-              if (new e(str).exists()) {
-                ((List)localObject1).add(str);
-              }
-              paramArrayList = ((String)localObject3).replace(paramArrayList, (String)localObject2 + "-2");
-              if (new e(paramArrayList).exists()) {
-                ((List)localObject1).add(paramArrayList);
-              }
-            }
-          }
-        } while (((List)localObject1).size() <= 0);
-        localObject1 = ((List)localObject1).iterator();
-      }
-      localObject2 = new e((String)((Iterator)localObject1).next());
-    } while (!((e)localObject2).exists());
-    label237:
-    paramArrayList = "";
-    for (;;)
-    {
-      try
-      {
-        label256:
-        long l = System.currentTimeMillis();
-        if (paramBoolean)
-        {
-          localObject2 = paramContext.getPackageManager().getPackageInfo(localc.dtC, 64);
-          if (((PackageInfo)localObject2).signatures.length <= 0) {
-            break label829;
-          }
-          paramArrayList = ah.dg(localObject2.signatures[(localObject2.signatures.length - 1)].toCharsString());
-          break label829;
-          localObject2 = localc.dtC;
-          localObject3 = localc.iwV;
-          if ((TextUtils.isEmpty(paramArrayList)) || (!paramArrayList.equalsIgnoreCase(localc.iwV))) {
-            break label832;
-          }
-          bool = true;
-          ac.i("MicroMsg.YYBMarketVerify", "summertoken containLowerMarket usesSystemApi[%b], infopkg[%s], infoMD5[%s], sigMD5[%s], equal[%b], takes[%d]ms", new Object[] { Boolean.valueOf(paramBoolean), localObject2, localObject3, paramArrayList, Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
-          if ((TextUtils.isEmpty(paramArrayList)) || (!paramArrayList.equalsIgnoreCase(localc.iwV))) {
-            break label256;
-          }
-          l = System.currentTimeMillis();
-          if (!paramBoolean) {
-            continue;
-          }
-          i = paramContext.getPackageManager().getPackageInfo(localc.dtC, 0).versionCode;
-          paramArrayList = localc.dtC;
-          int j = localc.iwU;
-          if (i > localc.iwU) {
-            continue;
-          }
-          bool = true;
-          ac.i("MicroMsg.YYBMarketVerify", "summertoken containLowerMarket usesSystemApi[%b], infopkg[%s], infovc[%d], versionCode[%d], less[%b], takes[%d]ms", new Object[] { Boolean.valueOf(paramBoolean), paramArrayList, Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
-          j = localc.iwU;
-          if (i > j) {
-            break label256;
-          }
-          AppMethodBeat.o(20754);
-          return true;
-          i += 1;
-          break;
-          label599:
-          paramArrayList = ((String)localObject3).split("/");
-          if (paramArrayList == null) {
-            break label237;
-          }
-          localObject3 = new StringBuilder();
-          i = 0;
-          if (i < paramArrayList.length)
-          {
-            if (i != paramArrayList.length - 1)
-            {
-              ((StringBuilder)localObject3).append(paramArrayList[i]);
-              ((StringBuilder)localObject3).append("/");
-            }
-            i += 1;
-            continue;
-          }
-          paramArrayList = ((StringBuilder)localObject3).toString();
-          localObject3 = paramArrayList + (String)localObject2 + "-1.apk";
-          if (new e((String)localObject3).exists()) {
-            ((List)localObject1).add(localObject3);
-          }
-          paramArrayList = paramArrayList + (String)localObject2 + "-2.apk";
-          if (!new e(paramArrayList).exists()) {
-            break label237;
-          }
-          ((List)localObject1).add(paramArrayList);
-          break label237;
-        }
-        paramArrayList = af.b.n(((e)localObject2).fxW());
-        continue;
-        i = af.a.N(paramContext, localc.dtC);
-        continue;
-        bool = false;
-        continue;
-      }
-      catch (Exception paramArrayList)
-      {
-        ac.printErrStackTrace("MicroMsg.YYBMarketVerify", paramArrayList, "", new Object[0]);
-      }
-      AppMethodBeat.o(20754);
+      AppMethodBeat.o(20748);
       return false;
-      label823:
-      paramArrayList = "";
-      break label127;
-      label829:
-      continue;
-      label832:
-      boolean bool = false;
+    }
+    paramView = paramView.getWindowToken();
+    if (paramView == null)
+    {
+      AppMethodBeat.o(20748);
+      return false;
+    }
+    try
+    {
+      bool = paramContext.hideSoftInputFromWindow(paramView, 0);
+      AppMethodBeat.o(20748);
+      return bool;
+    }
+    catch (IllegalArgumentException paramContext)
+    {
+      for (;;)
+      {
+        ad.e("MicroMsg.Util", "hide VKB(View) exception %s", new Object[] { paramContext });
+        boolean bool = false;
+      }
     }
   }
   
-  public static final class c
+  public static long aQJ()
   {
-    public final String dtC;
-    public final int iwU;
-    public final String iwV;
-    
-    public c(String paramString1, int paramInt, String paramString2)
-    {
-      this.dtC = paramString1;
-      this.iwU = paramInt;
-      this.iwV = paramString2;
+    AppMethodBeat.i(20721);
+    long l = System.currentTimeMillis() / 1000L;
+    AppMethodBeat.o(20721);
+    return l;
+  }
+  
+  public static void aQK()
+  {
+    AppMethodBeat.i(20732);
+    ad.w("MicroMsg.Util", "memory usage: h=%s/%s, e=%s/%s, n=%s/%s", new Object[] { sy(Debug.getGlobalAllocSize()), sy(Debug.getGlobalAllocSize() + Debug.getGlobalFreedSize()), sy(Debug.getGlobalExternalAllocSize()), sy(Debug.getGlobalExternalAllocSize() + Debug.getGlobalExternalFreedSize()), sy(Debug.getNativeHeapAllocatedSize()), sy(Debug.getNativeHeapSize()) });
+    AppMethodBeat.o(20732);
+  }
+  
+  public static af.a aQL()
+  {
+    AppMethodBeat.i(20745);
+    af.a locala = new af.a();
+    AppMethodBeat.o(20745);
+    return locala;
+  }
+  
+  public static String bI(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      return paramString2;
     }
+    return paramString1;
+  }
+  
+  public static List<String> bJ(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(20746);
+    String str = null;
+    if (paramString1 != null)
+    {
+      paramString2 = Pattern.compile(paramString2).matcher(paramString1);
+      int j = paramString2.groupCount();
+      int i = 1;
+      paramString1 = new ArrayList();
+      str = paramString1;
+      if (paramString2.find()) {
+        for (;;)
+        {
+          str = paramString1;
+          if (i > j) {
+            break;
+          }
+          paramString1.add(paramString2.group(i));
+          i += 1;
+        }
+      }
+    }
+    AppMethodBeat.o(20746);
+    return str;
+  }
+  
+  public static int cd(Object paramObject)
+  {
+    AppMethodBeat.i(20740);
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(20740);
+      return 0;
+    }
+    int i;
+    if ((paramObject instanceof Integer))
+    {
+      i = ((Integer)paramObject).intValue();
+      AppMethodBeat.o(20740);
+      return i;
+    }
+    if ((paramObject instanceof Long))
+    {
+      i = ((Long)paramObject).intValue();
+      AppMethodBeat.o(20740);
+      return i;
+    }
+    AppMethodBeat.o(20740);
+    return 0;
+  }
+  
+  public static long d(Long paramLong)
+  {
+    AppMethodBeat.i(20738);
+    if (paramLong == null)
+    {
+      AppMethodBeat.o(20738);
+      return 0L;
+    }
+    long l = paramLong.longValue();
+    AppMethodBeat.o(20738);
+    return l;
+  }
+  
+  public static boolean dd(Context paramContext)
+  {
+    AppMethodBeat.i(20747);
+    if (d.doy() != null) {
+      d.doy().dow();
+    }
+    if ((j.cSe & 0x1) != 0)
+    {
+      ad.e("MicroMsg.Util", "package has set external update mode");
+      Object localObject = Uri.parse(j.Icw);
+      Intent localIntent = new Intent("android.intent.action.VIEW", (Uri)localObject).addFlags(268435456);
+      int i;
+      if ((localObject != null) && (localIntent != null))
+      {
+        if (paramContext.getPackageManager().queryIntentActivities(localIntent, 65536).size() > 0)
+        {
+          i = 1;
+          if (i != 0) {
+            break label194;
+          }
+        }
+      }
+      else
+      {
+        ad.e("MicroMsg.Util", "parse market uri failed, jump to weixin.qq.com");
+        localObject = new Intent("android.intent.action.VIEW", Uri.parse("http://weixin.qq.com")).addFlags(268435456);
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(20747);
+        return true;
+        i = 0;
+        break;
+        label194:
+        ad.i("MicroMsg.Util", "parse market uri ok");
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      }
+    }
+    aj.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", System.currentTimeMillis() / 1000L).commit();
+    if (d.doy() != null)
+    {
+      paramContext = d.doy().c(paramContext, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
+      });
+      if (paramContext == null)
+      {
+        AppMethodBeat.o(20747);
+        return false;
+      }
+      paramContext.update(3);
+    }
+    AppMethodBeat.o(20747);
+    return true;
+  }
+  
+  public static boolean dw(int paramInt1, int paramInt2)
+  {
+    return paramInt2 > paramInt1 * 2.0D;
+  }
+  
+  public static boolean dx(int paramInt1, int paramInt2)
+  {
+    return paramInt1 > paramInt2 * 2.0D;
+  }
+  
+  @Deprecated
+  public static int getInt(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(20742);
+    if (paramString != null) {}
+    try
+    {
+      if (paramString.length() <= 0)
+      {
+        AppMethodBeat.o(20742);
+        return paramInt;
+      }
+      int i = Integer.parseInt(paramString);
+      AppMethodBeat.o(20742);
+      return i;
+    }
+    catch (NumberFormatException paramString)
+    {
+      ad.printErrStackTrace("MicroMsg.Util", paramString, "", new Object[0]);
+      AppMethodBeat.o(20742);
+    }
+    return paramInt;
+  }
+  
+  public static int h(Integer paramInteger)
+  {
+    AppMethodBeat.i(20737);
+    if (paramInteger == null)
+    {
+      AppMethodBeat.o(20737);
+      return 0;
+    }
+    int i = paramInteger.intValue();
+    AppMethodBeat.o(20737);
+    return i;
+  }
+  
+  public static boolean isNullOrNil(String paramString)
+  {
+    AppMethodBeat.i(20741);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(20741);
+      return true;
+    }
+    AppMethodBeat.o(20741);
+    return false;
+  }
+  
+  public static List<String> j(String[] paramArrayOfString)
+  {
+    AppMethodBeat.i(20719);
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
+    {
+      AppMethodBeat.o(20719);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramArrayOfString.length)
+    {
+      localArrayList.add(paramArrayOfString[i]);
+      i += 1;
+    }
+    AppMethodBeat.o(20719);
+    return localArrayList;
+  }
+  
+  public static String nullAsNil(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    return str;
+  }
+  
+  public static String qY(int paramInt)
+  {
+    AppMethodBeat.i(20722);
+    String str = String.format("%d:%02d", new Object[] { Long.valueOf(paramInt / 60L), Long.valueOf(paramInt % 60L) });
+    AppMethodBeat.o(20722);
+    return str;
+  }
+  
+  public static boolean qZ(int paramInt)
+  {
+    AppMethodBeat.i(20731);
+    long l1 = paramInt * 1000L;
+    long l2 = l1 - System.currentTimeMillis();
+    ad.d("MicroMsg.Util", "time " + l1 + "  systime " + System.currentTimeMillis() + " diff " + l2);
+    if (l2 < 0L)
+    {
+      AppMethodBeat.o(20731);
+      return true;
+    }
+    AppMethodBeat.o(20731);
+    return false;
+  }
+  
+  public static long rM(long paramLong)
+  {
+    AppMethodBeat.i(20724);
+    long l = System.currentTimeMillis() / 1000L;
+    AppMethodBeat.o(20724);
+    return l - paramLong;
+  }
+  
+  public static String sy(long paramLong)
+  {
+    AppMethodBeat.i(20720);
+    float f;
+    if (paramLong >> 20 > 0L)
+    {
+      f = Math.round((float)paramLong * 10.0F / 1048576.0F) / 10.0F;
+      str = f + "MB";
+      AppMethodBeat.o(20720);
+      return str;
+    }
+    if (paramLong >> 9 > 0L)
+    {
+      f = Math.round((float)paramLong * 10.0F / 1024.0F) / 10.0F;
+      str = f + "KB";
+      AppMethodBeat.o(20720);
+      return str;
+    }
+    String str = paramLong + "B";
+    AppMethodBeat.o(20720);
+    return str;
+  }
+  
+  @Deprecated
+  public static long wn(String paramString)
+  {
+    AppMethodBeat.i(20743);
+    if (paramString == null) {}
+    try
+    {
+      AppMethodBeat.o(20743);
+      return -1L;
+    }
+    catch (NumberFormatException paramString)
+    {
+      long l;
+      AppMethodBeat.o(20743);
+    }
+    l = Long.parseLong(paramString);
+    AppMethodBeat.o(20743);
+    return l;
+    return -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.platformtools.af
  * JD-Core Version:    0.7.0.1
  */

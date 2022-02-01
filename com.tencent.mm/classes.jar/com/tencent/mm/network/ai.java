@@ -5,25 +5,25 @@ import java.util.HashMap;
 
 public final class ai
 {
-  private static ai inl = null;
-  private HashMap<Integer, a> inm;
+  private static ai iGD = null;
+  private HashMap<Integer, a> iGE;
   
   public ai()
   {
     AppMethodBeat.i(132943);
-    this.inm = new HashMap();
+    this.iGE = new HashMap();
     AppMethodBeat.o(132943);
   }
   
-  public static ai aMk()
+  public static ai aPs()
   {
     try
     {
       AppMethodBeat.i(132944);
-      if (inl == null) {
-        inl = new ai();
+      if (iGD == null) {
+        iGD = new ai();
       }
-      ai localai = inl;
+      ai localai = iGD;
       AppMethodBeat.o(132944);
       return localai;
     }
@@ -39,7 +39,7 @@ public final class ai
     //   2: ldc 42
     //   4: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 32	com/tencent/mm/network/ai:inm	Ljava/util/HashMap;
+    //   8: getfield 32	com/tencent/mm/network/ai:iGE	Ljava/util/HashMap;
     //   11: iload_1
     //   12: invokestatic 48	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   15: invokevirtual 52	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
@@ -69,9 +69,9 @@ public final class ai
     //   55: aastore
     //   56: dup
     //   57: iconst_3
-    //   58: invokestatic 62	com/tencent/mm/sdk/platformtools/bs:eWi	()Lcom/tencent/mm/sdk/platformtools/as;
+    //   58: invokestatic 62	com/tencent/mm/sdk/platformtools/bt:flS	()Lcom/tencent/mm/sdk/platformtools/at;
     //   61: aastore
-    //   62: invokestatic 67	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   62: invokestatic 67	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   65: aload 4
     //   67: ifnonnull +69 -> 136
     //   70: aload_2
@@ -98,9 +98,9 @@ public final class ai
     //   102: aastore
     //   103: dup
     //   104: iconst_3
-    //   105: invokestatic 62	com/tencent/mm/sdk/platformtools/bs:eWi	()Lcom/tencent/mm/sdk/platformtools/as;
+    //   105: invokestatic 62	com/tencent/mm/sdk/platformtools/bt:flS	()Lcom/tencent/mm/sdk/platformtools/at;
     //   108: aastore
-    //   109: invokestatic 72	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   109: invokestatic 72	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   112: bipush 253
     //   114: istore_1
     //   115: ldc 42
@@ -148,12 +148,12 @@ public final class ai
   
   public static abstract interface a
   {
-    public abstract int aMl();
+    public abstract int aPt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.network.ai
  * JD-Core Version:    0.7.0.1
  */

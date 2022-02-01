@@ -1,6 +1,8 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,41 +11,42 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.q;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.x;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.MMFormVerifyCodeInputView;
 
 public class LoginSmsUI
   extends LoginHistoryUI
 {
   private static String TAG = "LoginSmsUI";
-  private x iSu;
+  private x jlC;
   
   public LoginSmsUI()
   {
     AppMethodBeat.i(169135);
-    this.iSu = new x();
+    this.jlC = new x();
     AppMethodBeat.o(169135);
   }
   
-  protected final void aQH()
+  protected final void aTT()
   {
     AppMethodBeat.i(128197);
-    super.aQH();
+    super.aTT();
     if ((isFinishing()) || (getWindow() == null))
     {
-      ac.e(TAG, "LoginHistoryUI is finishing");
+      ad.e(TAG, "LoginHistoryUI is finishing");
       AppMethodBeat.o(128197);
       return;
     }
-    if (!bs.isNullOrNil(this.iRN))
+    if (!bt.isNullOrNil(this.jkV))
     {
-      this.iRj.account = this.iRN;
+      this.jkr.account = this.jkV;
       hideVKB();
-      this.iSu.b(this, new Runnable()
+      this.jlC.b(this, new Runnable()
       {
         public final void run()
         {
@@ -60,38 +63,42 @@ public class LoginSmsUI
   {
     AppMethodBeat.i(128196);
     super.onCreate(paramBundle);
-    if (this.iSb)
+    if (this.jlj)
     {
       AppMethodBeat.o(128196);
       return;
     }
-    this.iMo = 3;
-    if ((!bs.aLH(this.iRS).booleanValue()) && (bs.aLH(this.iRN).booleanValue())) {
-      this.iRB.setText(GG(this.iRN));
+    this.jfy = 3;
+    if ((!bt.aRn(this.jla).booleanValue()) && (bt.aRn(this.jkV).booleanValue())) {
+      this.jkJ.setText(JV(this.jkV));
     }
-    this.iRZ.setVisibility(0);
-    this.iRZ.setInputType(3);
-    this.iRZ.setSendSmsBtnClickListener(new View.OnClickListener()
+    this.jlh.setVisibility(0);
+    this.jlh.setInputType(3);
+    this.jlh.setSendSmsBtnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(128191);
-        LoginSmsUI.a(LoginSmsUI.this, LoginSmsUI.this.iRN);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/LoginSmsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        LoginSmsUI.a(LoginSmsUI.this, LoginSmsUI.this.jkV);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginSmsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(128191);
       }
     });
-    this.iRZ.addTextChangedListener(new TextWatcher()
+    this.jlh.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(128192);
-        if (LoginSmsUI.this.iRZ.getText().toString().length() > 0)
+        if (LoginSmsUI.this.jlh.getText().toString().length() > 0)
         {
-          LoginSmsUI.this.iRD.setEnabled(true);
+          LoginSmsUI.this.jkL.setEnabled(true);
           AppMethodBeat.o(128192);
           return;
         }
-        LoginSmsUI.this.iRD.setEnabled(false);
+        LoginSmsUI.this.jkL.setEnabled(false);
         AppMethodBeat.o(128192);
       }
       
@@ -99,24 +106,28 @@ public class LoginSmsUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    if (this.iRZ.getText().toString().length() > 0) {
-      this.iRD.setEnabled(true);
+    if (this.jlh.getText().toString().length() > 0) {
+      this.jkL.setEnabled(true);
     }
     for (;;)
     {
-      this.iRD.setVisibility(0);
-      this.iRD.setOnClickListener(new View.OnClickListener()
+      this.jkL.setVisibility(0);
+      this.jkL.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(128193);
-          LoginSmsUI.this.aQH();
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/LoginSmsUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          LoginSmsUI.this.aTT();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginSmsUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(128193);
         }
       });
       AppMethodBeat.o(128196);
       return;
-      this.iRD.setEnabled(false);
+      this.jkL.setEnabled(false);
     }
   }
   
@@ -124,7 +135,7 @@ public class LoginSmsUI
   {
     AppMethodBeat.i(128200);
     super.onDestroy();
-    this.iRZ.reset();
+    this.jlh.reset();
     AppMethodBeat.o(128200);
   }
   
@@ -132,7 +143,7 @@ public class LoginSmsUI
   {
     AppMethodBeat.i(128198);
     super.onResume();
-    g.agi().a(145, this);
+    g.aiU().a(145, this);
     AppMethodBeat.o(128198);
   }
   
@@ -140,7 +151,7 @@ public class LoginSmsUI
   {
     AppMethodBeat.i(128199);
     super.onStop();
-    g.agi().b(145, this);
+    g.aiU().b(145, this);
     AppMethodBeat.o(128199);
   }
   

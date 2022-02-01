@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.appbrand.jsapi.pay;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.pluginsdk.wallet.WalletJsapiData;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import d.g.a.b;
-import d.y;
+import d.z;
 
 public final class c
   extends a<com.tencent.mm.plugin.appbrand.service.c>

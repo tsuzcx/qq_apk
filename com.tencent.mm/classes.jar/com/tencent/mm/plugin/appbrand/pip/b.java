@@ -6,94 +6,94 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.n.e;
-import com.tencent.mm.plugin.appbrand.jsapi.n.f;
-import com.tencent.mm.plugin.appbrand.jsapi.n.g;
-import com.tencent.mm.plugin.appbrand.jsapi.n.g.a;
-import com.tencent.mm.plugin.appbrand.jsapi.n.i;
+import com.tencent.mm.plugin.appbrand.jsapi.q.e;
+import com.tencent.mm.plugin.appbrand.jsapi.q.f;
+import com.tencent.mm.plugin.appbrand.jsapi.q.g;
+import com.tencent.mm.plugin.appbrand.jsapi.q.g.a;
+import com.tencent.mm.plugin.appbrand.jsapi.q.i;
 import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.page.ay;
 import com.tencent.mm.plugin.appbrand.utils.x;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandPipContainerView;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandPipContainerView.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  public final aa caw;
-  public final String cgL;
-  final AppBrandPipContainerView jdU;
-  final View lMC;
-  public final g lMD;
-  final i lME;
-  final x lMF;
-  public volatile boolean lMG;
-  volatile boolean lMH;
-  a lMI;
-  int lMJ;
-  int lMK;
-  int lML;
-  int lMM;
-  int lMN;
-  int lMO;
-  int lMP;
-  int lMQ;
-  int lMR;
-  int lMS;
-  int lMT;
-  int lMU;
-  int lMV;
-  int lMW;
-  int lMX;
-  int lMY;
-  int lMZ;
-  int lNa;
-  private int lNb;
-  private int lNc;
-  private int lNd;
-  int lNe;
-  int lNf;
-  int lNg;
-  private int lNh;
-  private int lNi;
-  private int lNj;
-  private int lNk;
-  private int lNl;
-  private int lNm;
-  private int lNn;
-  private int lNo;
-  private int lNp;
-  private int lNq;
-  private int lNr;
-  private int lNs;
+  public final aa ckN;
+  public final String crd;
+  final AppBrandPipContainerView jxc;
+  volatile boolean lxW;
   int mScreenHeight;
   int mScreenWidth;
+  int mmA;
+  int mmB;
+  int mmC;
+  int mmD;
+  int mmE;
+  int mmF;
+  int mmG;
+  int mmH;
+  int mmI;
+  int mmJ;
+  int mmK;
+  int mmL;
+  int mmM;
+  int mmN;
+  private int mmO;
+  private int mmP;
+  private int mmQ;
+  int mmR;
+  int mmS;
+  int mmT;
+  private int mmU;
+  private int mmV;
+  private int mmW;
+  private int mmX;
+  private int mmY;
+  private int mmZ;
+  final View mmq;
+  public final g mmr;
+  final i mms;
+  final x mmt;
+  public volatile boolean mmu;
+  a mmv;
+  int mmw;
+  int mmx;
+  int mmy;
+  int mmz;
+  private int mna;
+  private int mnb;
+  private int mnc;
+  private int mnd;
+  private int mne;
+  private int mnf;
   
   b(aa paramaa, AppBrandPipContainerView paramAppBrandPipContainerView, View paramView, g paramg, i parami, x paramx)
   {
-    AppMethodBeat.i(193441);
-    this.cgL = ("MicroMsg.AppBrand.AppBrandPipContainerOnPageSwitchHandler#" + hashCode());
-    this.lMG = false;
-    this.lMH = false;
-    this.lMI = null;
-    this.lNb = AppBrandPipContainerView.mrx;
-    this.lNc = AppBrandPipContainerView.mrw;
-    this.lNd = AppBrandPipContainerView.mry;
-    this.lNe = AppBrandPipContainerView.mrz;
-    this.lNf = AppBrandPipContainerView.mrA;
-    this.lNg = AppBrandPipContainerView.mrB;
-    this.caw = paramaa;
-    this.jdU = paramAppBrandPipContainerView;
-    this.lMC = paramView;
-    this.lMD = paramg;
-    this.lME = parami;
-    this.lMF = paramx;
-    AppMethodBeat.o(193441);
+    AppMethodBeat.i(197358);
+    this.crd = ("MicroMsg.AppBrand.AppBrandPipContainerOnPageSwitchHandler#" + hashCode());
+    this.mmu = false;
+    this.lxW = false;
+    this.mmv = null;
+    this.mmO = AppBrandPipContainerView.mSc;
+    this.mmP = AppBrandPipContainerView.mSb;
+    this.mmQ = AppBrandPipContainerView.mSd;
+    this.mmR = AppBrandPipContainerView.mSe;
+    this.mmS = AppBrandPipContainerView.mSf;
+    this.mmT = AppBrandPipContainerView.mSg;
+    this.ckN = paramaa;
+    this.jxc = paramAppBrandPipContainerView;
+    this.mmq = paramView;
+    this.mmr = paramg;
+    this.mms = parami;
+    this.mmt = paramx;
+    AppMethodBeat.o(197358);
   }
   
   final void a(float paramFloat, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12)
   {
-    AppMethodBeat.i(193446);
+    AppMethodBeat.i(197363);
     paramInt7 = (int)(paramFloat / 100.0F * paramInt7);
     paramInt8 = (int)(paramFloat / 100.0F * paramInt8);
     paramInt9 = (int)(paramFloat / 100.0F * paramInt9);
@@ -104,84 +104,84 @@ public final class b
     paramInt10 = (int)(paramFloat / 100.0F * paramInt10);
     paramInt11 = (int)(paramFloat / 100.0F * paramInt11);
     paramInt12 = (int)(paramFloat / 100.0F * paramInt12);
-    ViewGroup.LayoutParams localLayoutParams = this.jdU.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.jxc.getLayoutParams();
     localLayoutParams.width = i;
     localLayoutParams.height = j;
-    this.jdU.setLayoutParams(localLayoutParams);
-    this.jdU.setX(paramInt3 + paramInt1);
-    this.jdU.setY(paramInt4 + paramInt2);
-    localLayoutParams = this.lMC.getLayoutParams();
+    this.jxc.setLayoutParams(localLayoutParams);
+    this.jxc.setX(paramInt3 + paramInt1);
+    this.jxc.setY(paramInt4 + paramInt2);
+    localLayoutParams = this.mmq.getLayoutParams();
     localLayoutParams.width = paramInt5;
     localLayoutParams.height = paramInt6;
-    this.lMC.setLayoutParams(localLayoutParams);
-    this.jdU.b(paramInt5, paramInt7, paramInt8, paramInt9, paramInt10, paramInt11, paramInt12);
-    AppMethodBeat.o(193446);
+    this.mmq.setLayoutParams(localLayoutParams);
+    this.jxc.b(paramInt5, paramInt7, paramInt8, paramInt9, paramInt10, paramInt11, paramInt12);
+    AppMethodBeat.o(197363);
   }
   
-  final void aE(float paramFloat)
+  final void aH(float paramFloat)
   {
-    AppMethodBeat.i(193442);
-    if (!this.lMG)
+    AppMethodBeat.i(197359);
+    if (!this.mmu)
     {
-      ac.w(this.cgL, "handleVideoTransferProgress, false == mHandleStarted");
-      AppMethodBeat.o(193442);
+      ad.w(this.crd, "handleVideoTransferProgress, false == mHandleStarted");
+      AppMethodBeat.o(197359);
       return;
     }
-    this.lNh = (this.lMJ + (int)(paramFloat / 100.0F * (this.lMV - this.lMJ)));
-    this.lNi = (this.lMK + (int)(paramFloat / 100.0F * (this.lMW - this.lMK)));
-    this.lNj = (this.lML + (int)(paramFloat / 100.0F * (this.lMX - this.lML)));
-    this.lNk = (this.lMM + (int)(paramFloat / 100.0F * (this.lMY - this.lMM)));
-    this.lNl = (this.lMN + (int)(paramFloat / 100.0F * (this.lMZ - this.lMN)));
-    this.lNm = (this.lMO + (int)(paramFloat / 100.0F * (this.lNa - this.lMO)));
-    this.lNn = ((int)Math.ceil(0.5F * (this.lNh - this.lNl)));
-    this.lNo = ((int)Math.ceil(0.4F * (this.lNi - this.lNm)));
-    this.lNp = ((int)Math.ceil(0.6F * (this.lNi - this.lNm)));
-    this.lNq = (this.lMS + (int)(paramFloat / 100.0F * (this.lNe - this.lMS)));
-    this.lNr = (this.lMT + (int)(paramFloat / 100.0F * (this.lNf - this.lMT)));
-    this.lNs = (this.lMU + (int)(paramFloat / 100.0F * (this.lNg - this.lMU)));
-    a(paramFloat, this.lNh, this.lNi, this.lNj, this.lNk, this.lNl, this.lNm, this.lNn, this.lNo, this.lNp, this.lNq, this.lNr, this.lNs);
-    AppMethodBeat.o(193442);
+    this.mmU = (this.mmw + (int)(paramFloat / 100.0F * (this.mmI - this.mmw)));
+    this.mmV = (this.mmx + (int)(paramFloat / 100.0F * (this.mmJ - this.mmx)));
+    this.mmW = (this.mmy + (int)(paramFloat / 100.0F * (this.mmK - this.mmy)));
+    this.mmX = (this.mmz + (int)(paramFloat / 100.0F * (this.mmL - this.mmz)));
+    this.mmY = (this.mmA + (int)(paramFloat / 100.0F * (this.mmM - this.mmA)));
+    this.mmZ = (this.mmB + (int)(paramFloat / 100.0F * (this.mmN - this.mmB)));
+    this.mna = ((int)Math.ceil(0.5F * (this.mmU - this.mmY)));
+    this.mnb = ((int)Math.ceil(0.4F * (this.mmV - this.mmZ)));
+    this.mnc = ((int)Math.ceil(0.6F * (this.mmV - this.mmZ)));
+    this.mnd = (this.mmF + (int)(paramFloat / 100.0F * (this.mmR - this.mmF)));
+    this.mne = (this.mmG + (int)(paramFloat / 100.0F * (this.mmS - this.mmG)));
+    this.mnf = (this.mmH + (int)(paramFloat / 100.0F * (this.mmT - this.mmH)));
+    a(paramFloat, this.mmU, this.mmV, this.mmW, this.mmX, this.mmY, this.mmZ, this.mna, this.mnb, this.mnc, this.mnd, this.mne, this.mnf);
+    AppMethodBeat.o(197359);
   }
   
-  final void bsy()
+  final void bwD()
   {
-    AppMethodBeat.i(193443);
-    ac.i(this.cgL, "handleVideoPage2PipEnd");
-    if (!this.lMG) {
-      hn(false);
+    AppMethodBeat.i(197360);
+    ad.i(this.crd, "handleVideoPage2PipEnd");
+    if (!this.mmu) {
+      hu(false);
     }
-    a(100.0F, this.lMV, this.lMW, this.lMX, this.lMY, this.lMZ, this.lNa, this.lNb, this.lNc, this.lNd, this.lNe, this.lNf, this.lNg);
-    AppMethodBeat.o(193443);
+    a(100.0F, this.mmI, this.mmJ, this.mmK, this.mmL, this.mmM, this.mmN, this.mmO, this.mmP, this.mmQ, this.mmR, this.mmS, this.mmT);
+    AppMethodBeat.o(197360);
   }
   
-  final Point bsz()
+  final Point bwE()
   {
-    AppMethodBeat.i(193445);
-    Object localObject = this.caw.lyE;
+    AppMethodBeat.i(197362);
+    Object localObject = this.ckN.lYc;
     if (localObject == null)
     {
-      ac.w(this.cgL, "calculateWebView2PipContainerParentOffset, null == appBrandWebView");
-      AppMethodBeat.o(193445);
+      ad.w(this.crd, "calculateWebView2PipContainerParentOffset, null == appBrandWebView");
+      AppMethodBeat.o(197362);
       return null;
     }
     localObject = ((ay)localObject).getContentView();
     if (localObject == null)
     {
-      ac.w(this.cgL, "calculateWebView2PipContainerParentOffset, null == webView");
-      AppMethodBeat.o(193445);
+      ad.w(this.crd, "calculateWebView2PipContainerParentOffset, null == webView");
+      AppMethodBeat.o(197362);
       return null;
     }
-    ViewParent localViewParent = this.jdU.getParent();
+    ViewParent localViewParent = this.jxc.getParent();
     if (!(localViewParent instanceof ViewGroup))
     {
-      ac.w(this.cgL, "calculateWebView2PipContainerParentOffset, viewParent is not ViewGroup");
-      AppMethodBeat.o(193445);
+      ad.w(this.crd, "calculateWebView2PipContainerParentOffset, viewParent is not ViewGroup");
+      AppMethodBeat.o(197362);
       return null;
     }
     ViewGroup localViewGroup = (ViewGroup)localViewParent;
     this.mScreenWidth = localViewGroup.getWidth();
     this.mScreenHeight = localViewGroup.getHeight();
-    ac.d(this.cgL, "calculateWebView2PipContainerParentOffset, mScreenWidth: %d, mScreenHeight: %d", new Object[] { Integer.valueOf(this.mScreenWidth), Integer.valueOf(this.mScreenHeight) });
+    ad.d(this.crd, "calculateWebView2PipContainerParentOffset, mScreenWidth: %d, mScreenHeight: %d", new Object[] { Integer.valueOf(this.mScreenWidth), Integer.valueOf(this.mScreenHeight) });
     localViewParent = ((View)localObject).getParent();
     int i = 0;
     int j = 0;
@@ -189,8 +189,8 @@ public final class b
     {
       if (!(localViewParent instanceof ViewGroup))
       {
-        ac.w(this.cgL, "calculateWebView2PipContainerParentOffset, parent is not ViewGroup");
-        AppMethodBeat.o(193445);
+        ad.w(this.crd, "calculateWebView2PipContainerParentOffset, parent is not ViewGroup");
+        AppMethodBeat.o(197362);
         return null;
       }
       j = (int)(j + ((View)localObject).getX());
@@ -198,34 +198,34 @@ public final class b
       i = (int)(((View)localObject).getY() + f);
       if (localViewParent == localViewGroup)
       {
-        ac.d(this.cgL, "calculateWebView2PipContainerParentOffset, offsetX: %d, offsetY: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+        ad.d(this.crd, "calculateWebView2PipContainerParentOffset, offsetX: %d, offsetY: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
         localObject = new Point(j, i);
-        AppMethodBeat.o(193445);
+        AppMethodBeat.o(197362);
         return localObject;
       }
       localObject = (View)localViewParent;
       localViewParent = ((View)localObject).getParent();
     }
-    AppMethodBeat.o(193445);
+    AppMethodBeat.o(197362);
     return null;
   }
   
-  final boolean hn(boolean paramBoolean)
+  final boolean hu(boolean paramBoolean)
   {
-    AppMethodBeat.i(193444);
-    final int i = this.lME.getVideoWidth();
-    final int j = this.lME.getVideoHeight();
+    AppMethodBeat.i(197361);
+    final int i = this.mms.getVideoWidth();
+    final int j = this.mms.getVideoHeight();
     if ((i == 0) || (j == 0))
     {
-      ac.w(this.cgL, "handleVideoPage2PipStart, 0 == realVideoWidth || 0 == reaVideoHeight");
-      AppMethodBeat.o(193444);
+      ad.w(this.crd, "handleVideoPage2PipStart, 0 == realVideoWidth || 0 == reaVideoHeight");
+      AppMethodBeat.o(197361);
       return false;
     }
-    Object localObject = bsz();
+    Object localObject = bwE();
     if (localObject == null)
     {
-      ac.w(this.cgL, "handleVideoPage2PipStart, null == webView2PipContainerParentOffset");
-      AppMethodBeat.o(193444);
+      ad.w(this.crd, "handleVideoPage2PipStart, null == webView2PipContainerParentOffset");
+      AppMethodBeat.o(197361);
       return false;
     }
     final Point localPoint1 = new Point();
@@ -233,21 +233,21 @@ public final class b
     {
       public final void run()
       {
-        AppMethodBeat.i(193438);
-        if (b.this.lMG)
+        AppMethodBeat.i(197355);
+        if (b.this.mmu)
         {
-          ac.i(b.this.cgL, "handleVideoPage2PipStart, true == mHandleStarted");
-          AppMethodBeat.o(193438);
+          ad.i(b.this.crd, "handleVideoPage2PipStart, true == mHandleStarted");
+          AppMethodBeat.o(197355);
           return;
         }
-        int j = b.this.lMD.biv();
-        int k = b.this.lMD.biw();
+        int j = b.this.mmr.bmh();
+        int k = b.this.mmr.bmi();
         int i = localPoint1.x;
-        int m = this.lNv.x;
+        int m = this.mni.x;
         int n = localPoint1.y;
-        int i1 = this.lNv.y;
-        ac.i(b.this.cgL, "handleVideoPage2PipStart, originVideoPosX: %d, originVideoPosY: %d", new Object[] { Integer.valueOf(i + m), Integer.valueOf(n + i1) });
-        b.this.jdU.a(b.a(b.this, localPoint1.x, localPoint1.y, this.lNv));
+        int i1 = this.mni.y;
+        ad.i(b.this.crd, "handleVideoPage2PipStart, originVideoPosX: %d, originVideoPosY: %d", new Object[] { Integer.valueOf(i + m), Integer.valueOf(n + i1) });
+        b.this.jxc.a(b.a(b.this, localPoint1.x, localPoint1.y, this.mni));
         Object localObject = b.this;
         m = i;
         n = j;
@@ -269,11 +269,11 @@ public final class b
           f localf;
           if (i != 0)
           {
-            ((b)localObject).lMV = AppBrandPipContainerView.mri;
-            ((b)localObject).lMW = AppBrandPipContainerView.mrj;
-            if ((((b)localObject).lMC instanceof f))
+            ((b)localObject).mmI = AppBrandPipContainerView.mRN;
+            ((b)localObject).mmJ = AppBrandPipContainerView.mRO;
+            if ((((b)localObject).mmq instanceof f))
             {
-              localf = (f)((b)localObject).lMC;
+              localf = (f)((b)localObject).mmq;
               if (i == 0) {
                 break label542;
               }
@@ -281,24 +281,24 @@ public final class b
           }
           label513:
           label542:
-          for (localObject = e.kHS;; localObject = e.kHT)
+          for (localObject = e.lel;; localObject = e.lem)
           {
             localf.a((e)localObject);
-            localObject = b.this.jdU;
-            i = b.this.lMV;
-            j = b.this.lMW;
-            ((AppBrandPipContainerView)localObject).ek(((AppBrandPipContainerView)localObject).mrM, i);
-            ((AppBrandPipContainerView)localObject).el(((AppBrandPipContainerView)localObject).mrN, j);
-            ac.i("MicroMsg.AppBrand.AppBrandPipContainerView", "adjustStablePos, mStablePosX: " + ((AppBrandPipContainerView)localObject).mrM + ", mStablePosY: " + ((AppBrandPipContainerView)localObject).mrN);
-            ((AppBrandPipContainerView)localObject).em(((AppBrandPipContainerView)localObject).mrM, ((AppBrandPipContainerView)localObject).mrN);
-            b.this.a(0.0F, b.this.lMJ, b.this.lMK, b.this.lML, b.this.lMM, b.this.lMN, b.this.lMO, b.this.lMP, b.this.lMQ, b.this.lMR, b.this.lMS, b.this.lMT, b.this.lMU);
-            b.this.lMG = true;
-            if (b.this.lMF != null)
+            localObject = b.this.jxc;
+            i = b.this.mmI;
+            j = b.this.mmJ;
+            ((AppBrandPipContainerView)localObject).em(((AppBrandPipContainerView)localObject).mSs, i);
+            ((AppBrandPipContainerView)localObject).en(((AppBrandPipContainerView)localObject).mSt, j);
+            ad.i("MicroMsg.AppBrand.AppBrandPipContainerView", "adjustStablePos, mStablePosX: " + ((AppBrandPipContainerView)localObject).mSs + ", mStablePosY: " + ((AppBrandPipContainerView)localObject).mSt);
+            ((AppBrandPipContainerView)localObject).eo(((AppBrandPipContainerView)localObject).mSs, ((AppBrandPipContainerView)localObject).mSt);
+            b.this.a(0.0F, b.this.mmw, b.this.mmx, b.this.mmy, b.this.mmz, b.this.mmA, b.this.mmB, b.this.mmC, b.this.mmD, b.this.mmE, b.this.mmF, b.this.mmG, b.this.mmH);
+            b.this.mmu = true;
+            if (b.this.mmt != null)
             {
-              ac.i(b.this.cgL, "handleVideoPage2PipStart, run afterStartTask");
-              b.this.lMF.bxt();
+              ad.i(b.this.crd, "handleVideoPage2PipStart, run afterStartTask");
+              b.this.mmt.bBx();
             }
-            AppMethodBeat.o(193438);
+            AppMethodBeat.o(197355);
             return;
             i = 0;
             break;
@@ -307,8 +307,8 @@ public final class b
             }
             i = 1;
             break label211;
-            ((b)localObject).lMV = AppBrandPipContainerView.mrm;
-            ((b)localObject).lMW = AppBrandPipContainerView.mrn;
+            ((b)localObject).mmI = AppBrandPipContainerView.mRR;
+            ((b)localObject).mmJ = AppBrandPipContainerView.mRS;
             break label231;
           }
           label550:
@@ -317,29 +317,29 @@ public final class b
       }
     };
     if (paramBoolean) {
-      this.lMD.a(this.caw, new g.a()
+      this.mmr.a(this.ckN, new g.a()
       {
-        public final void dR(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void dT(int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          AppMethodBeat.i(193439);
-          if (b.this.lMH)
+          AppMethodBeat.i(197356);
+          if (b.this.lxW)
           {
-            ac.i(b.this.cgL, "handleVideoPage2PipStart, onVideoPositionGot, released");
-            AppMethodBeat.o(193439);
+            ad.i(b.this.crd, "handleVideoPage2PipStart, onVideoPositionGot, released");
+            AppMethodBeat.o(197356);
             return;
           }
           localPoint1.x = paramAnonymousInt1;
           localPoint1.y = paramAnonymousInt2;
-          this.lNy.run();
-          AppMethodBeat.o(193439);
+          this.mnl.run();
+          AppMethodBeat.o(197356);
         }
       });
     }
     for (;;)
     {
-      AppMethodBeat.o(193444);
+      AppMethodBeat.o(197361);
       return true;
-      Point localPoint2 = this.lMD.bix();
+      Point localPoint2 = this.mmr.bmj();
       localPoint1.x = localPoint2.x;
       localPoint1.y = localPoint2.y;
       ((Runnable)localObject).run();
@@ -349,44 +349,44 @@ public final class b
   final class a
     implements AppBrandPipContainerView.a
   {
-    int chx;
-    int chy;
-    Point lNz = null;
+    int crP;
+    int crQ;
+    Point mnm = null;
     
     private a() {}
     
-    public final void ef(int paramInt1, int paramInt2)
+    public final void eh(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(193440);
-      ac.d(b.this.cgL, "MyOnStablePositionChangeListener, onStablePositionChange");
-      if (b.this.lMH)
+      AppMethodBeat.i(197357);
+      ad.d(b.this.crd, "MyOnStablePositionChangeListener, onStablePositionChange");
+      if (b.this.lxW)
       {
-        ac.i(b.this.cgL, "onStablePositionChange, onVideoPositionGot, released");
-        AppMethodBeat.o(193440);
+        ad.i(b.this.crd, "onStablePositionChange, onVideoPositionGot, released");
+        AppMethodBeat.o(197357);
         return;
       }
-      int k = b.this.lME.getVideoWidth();
-      int j = b.this.lME.getVideoHeight();
+      int k = b.this.mms.getVideoWidth();
+      int j = b.this.mms.getVideoHeight();
       if ((k == 0) || (j == 0))
       {
-        ac.w(b.this.cgL, "MyOnStablePositionChangeListener, 0 == realVideoWidth || 0 == reaVideoHeight");
-        AppMethodBeat.o(193440);
+        ad.w(b.this.crd, "MyOnStablePositionChangeListener, 0 == realVideoWidth || 0 == reaVideoHeight");
+        AppMethodBeat.o(197357);
         return;
       }
-      int m = b.this.lMD.biv();
-      int n = b.this.lMD.biw();
-      if (this.lNz == null) {
-        this.lNz = b.this.bsz();
+      int m = b.this.mmr.bmh();
+      int n = b.this.mmr.bmi();
+      if (this.mnm == null) {
+        this.mnm = b.this.bwE();
       }
-      if (this.lNz == null)
+      if (this.mnm == null)
       {
-        ac.w(b.this.cgL, "MyOnStablePositionChangeListener, null == mWebView2PipContainerParentOffset");
-        AppMethodBeat.o(193440);
+        ad.w(b.this.crd, "MyOnStablePositionChangeListener, null == mWebView2PipContainerParentOffset");
+        AppMethodBeat.o(197357);
         return;
       }
-      int i2 = this.chx;
-      int i1 = this.chy + this.lNz.y;
-      ac.i(b.this.cgL, "MyOnStablePositionChangeListener, originVideoPosX: %d, originVideoPosY: %d", new Object[] { Integer.valueOf(i2), Integer.valueOf(i1) });
+      int i2 = this.crP;
+      int i1 = this.crQ + this.mnm.y;
+      ad.i(b.this.crd, "MyOnStablePositionChangeListener, originVideoPosX: %d, originVideoPosY: %d", new Object[] { Integer.valueOf(i2), Integer.valueOf(i1) });
       b localb = b.this;
       label259:
       int i;
@@ -405,16 +405,16 @@ public final class b
         if (paramInt1 == 0) {
           break label965;
         }
-        localb.lMV = AppBrandPipContainerView.mri;
-        localb.lMW = AppBrandPipContainerView.mrj;
-        i = AppBrandPipContainerView.mrk;
-        paramInt1 = AppBrandPipContainerView.mrl;
-        int i3 = localb.jdU.getStablePosX();
-        int i4 = localb.jdU.getStablePosY();
-        ac.i(localb.cgL, "calculateStablePipContainerSizeAndPosition, stablePosX: %d, stablePosY: %d", new Object[] { Integer.valueOf(i3), Integer.valueOf(i4) });
-        localb.lMX = Math.min(Math.max(0, i3), localb.mScreenWidth - localb.lMV);
-        localb.lMY = Math.min(Math.max(0, i4), localb.mScreenHeight - localb.lMW);
-        ac.i(localb.cgL, "calculateStablePipContainerSizeAndPosition, mEndPipContainerPosX: %d, mEndPipContainerPosY: %d", new Object[] { Integer.valueOf(localb.lMX), Integer.valueOf(localb.lMY) });
+        localb.mmI = AppBrandPipContainerView.mRN;
+        localb.mmJ = AppBrandPipContainerView.mRO;
+        i = AppBrandPipContainerView.mRP;
+        paramInt1 = AppBrandPipContainerView.mRQ;
+        int i3 = localb.jxc.getStablePosX();
+        int i4 = localb.jxc.getStablePosY();
+        ad.i(localb.crd, "calculateStablePipContainerSizeAndPosition, stablePosX: %d, stablePosY: %d", new Object[] { Integer.valueOf(i3), Integer.valueOf(i4) });
+        localb.mmK = Math.min(Math.max(0, i3), localb.mScreenWidth - localb.mmI);
+        localb.mmL = Math.min(Math.max(0, i4), localb.mScreenHeight - localb.mmJ);
+        ad.i(localb.crd, "calculateStablePipContainerSizeAndPosition, mEndPipContainerPosX: %d, mEndPipContainerPosY: %d", new Object[] { Integer.valueOf(localb.mmK), Integer.valueOf(localb.mmL) });
         if (paramInt2 == 0)
         {
           j = n;
@@ -425,37 +425,37 @@ public final class b
         if (f1 < f2) {
           break label993;
         }
-        localb.lMZ = i;
-        localb.lNa = ((int)Math.ceil(j * f1));
+        localb.mmM = i;
+        localb.mmN = ((int)Math.ceil(j * f1));
         label485:
-        localb.lMN = m;
-        localb.lMO = n;
-        ac.d(localb.cgL, "calculateStablePipContainerSize, mStartVideoContainerWidth: %d, mStartVideoContainerHeight: %d", new Object[] { Integer.valueOf(localb.lMN), Integer.valueOf(localb.lMO) });
-        localb.lMK = ((int)((localb.lMW + 0.0F) / localb.lNa * localb.lMO));
-        localb.lMJ = ((int)((localb.lMV + 0.0F) / localb.lMZ * localb.lMN));
-        ac.d(localb.cgL, "calculateStablePipContainerSize, mStartPipContainerWidth: %d, mStartPipContainerHeight: %d", new Object[] { Integer.valueOf(localb.lMJ), Integer.valueOf(localb.lMK) });
-        localb.lMZ = i;
-        localb.lNa = paramInt1;
-        f1 = (localb.lMJ + 0.0F) / localb.lMV;
-        f2 = (localb.lMK + 0.0F) / localb.lMW;
-        ac.d(localb.cgL, "calculateStablePipContainerSize, start2EndWidthRatio: %f, start2EndHeightRatio: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2) });
-        j = Math.min(Math.max(i2, -localb.lMJ), localb.mScreenWidth);
-        k = Math.min(Math.max(i1, -localb.lMK), localb.mScreenHeight);
-        ac.d(localb.cgL, "calculateStablePipContainerSize, originVideoPosX: %d, originVideoPosY: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k) });
+        localb.mmA = m;
+        localb.mmB = n;
+        ad.d(localb.crd, "calculateStablePipContainerSize, mStartVideoContainerWidth: %d, mStartVideoContainerHeight: %d", new Object[] { Integer.valueOf(localb.mmA), Integer.valueOf(localb.mmB) });
+        localb.mmx = ((int)((localb.mmJ + 0.0F) / localb.mmN * localb.mmB));
+        localb.mmw = ((int)((localb.mmI + 0.0F) / localb.mmM * localb.mmA));
+        ad.d(localb.crd, "calculateStablePipContainerSize, mStartPipContainerWidth: %d, mStartPipContainerHeight: %d", new Object[] { Integer.valueOf(localb.mmw), Integer.valueOf(localb.mmx) });
+        localb.mmM = i;
+        localb.mmN = paramInt1;
+        f1 = (localb.mmw + 0.0F) / localb.mmI;
+        f2 = (localb.mmx + 0.0F) / localb.mmJ;
+        ad.d(localb.crd, "calculateStablePipContainerSize, start2EndWidthRatio: %f, start2EndHeightRatio: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2) });
+        j = Math.min(Math.max(i2, -localb.mmw), localb.mScreenWidth);
+        k = Math.min(Math.max(i1, -localb.mmx), localb.mScreenHeight);
+        ad.d(localb.crd, "calculateStablePipContainerSize, originVideoPosX: %d, originVideoPosY: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k) });
         if (paramInt2 == 0) {
           break label1018;
         }
-        localb.lML = (j - (int)((localb.lMV - i) * f1 / 2.0F));
+        localb.mmy = (j - (int)((localb.mmI - i) * f1 / 2.0F));
       }
-      for (localb.lMM = (k - (int)((localb.lMW - paramInt1) * f2 / 2.0F));; localb.lMM = ((n - localb.lMO) / 2 + k - (localb.lMK - localb.lMO) / 2))
+      for (localb.mmz = (k - (int)((localb.mmJ - paramInt1) * f2 / 2.0F));; localb.mmz = ((n - localb.mmB) / 2 + k - (localb.mmx - localb.mmB) / 2))
       {
-        localb.lMP = ((int)Math.ceil(0.5F * (localb.lMJ - localb.lMN)));
-        localb.lMQ = ((int)Math.ceil(0.4F * (localb.lMK - localb.lMO)));
-        localb.lMR = ((int)Math.ceil(0.6F * (localb.lMK - localb.lMO)));
-        localb.lMS = ((int)(localb.lNe * f2));
-        localb.lMT = ((int)(localb.lNf * f2));
-        localb.lMU = ((int)(localb.lNg * f2));
-        AppMethodBeat.o(193440);
+        localb.mmC = ((int)Math.ceil(0.5F * (localb.mmw - localb.mmA)));
+        localb.mmD = ((int)Math.ceil(0.4F * (localb.mmx - localb.mmB)));
+        localb.mmE = ((int)Math.ceil(0.6F * (localb.mmx - localb.mmB)));
+        localb.mmF = ((int)(localb.mmR * f2));
+        localb.mmG = ((int)(localb.mmS * f2));
+        localb.mmH = ((int)(localb.mmT * f2));
+        AppMethodBeat.o(197357);
         return;
         paramInt2 = 0;
         break;
@@ -466,24 +466,24 @@ public final class b
         paramInt1 = 1;
         break label259;
         label965:
-        localb.lMV = AppBrandPipContainerView.mrm;
-        localb.lMW = AppBrandPipContainerView.mrn;
-        i = AppBrandPipContainerView.mro;
-        paramInt1 = AppBrandPipContainerView.mrp;
+        localb.mmI = AppBrandPipContainerView.mRR;
+        localb.mmJ = AppBrandPipContainerView.mRS;
+        i = AppBrandPipContainerView.mRT;
+        paramInt1 = AppBrandPipContainerView.mRU;
         break label288;
         label993:
-        localb.lMZ = ((int)Math.ceil(k * f2));
-        localb.lNa = paramInt1;
+        localb.mmM = ((int)Math.ceil(k * f2));
+        localb.mmN = paramInt1;
         break label485;
         label1018:
-        localb.lML = ((m - localb.lMN) / 2 + j - (localb.lMJ - localb.lMN) / 2);
+        localb.mmy = ((m - localb.mmA) / 2 + j - (localb.mmw - localb.mmA) / 2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.b
  * JD-Core Version:    0.7.0.1
  */

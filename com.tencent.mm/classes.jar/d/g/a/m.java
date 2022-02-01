@@ -3,11 +3,11 @@ package d.g.a;
 import d.c;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/jvm/functions/Function2;", "P1", "P2", "R", "Lkotlin/Function;", "invoke", "p1", "p2", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/jvm/functions/Function2;", "P1", "P2", "R", "Lkotlin/Function;", "invoke", "p1", "p2", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-stdlib"})
 public abstract interface m<P1, P2, R>
   extends c<R>
 {
-  public abstract R n(P1 paramP1, P2 paramP2);
+  public abstract R p(P1 paramP1, P2 paramP2);
 }
 
 

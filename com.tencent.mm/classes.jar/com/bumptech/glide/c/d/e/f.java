@@ -13,12 +13,12 @@ import java.security.MessageDigest;
 public final class f
   implements m<c>
 {
-  private final m<Bitmap> aJD;
+  private final m<Bitmap> aLu;
   
   public f(m<Bitmap> paramm)
   {
     AppMethodBeat.i(77506);
-    this.aJD = ((m)i.checkNotNull(paramm, "Argument must not be null"));
+    this.aLu = ((m)i.checkNotNull(paramm, "Argument must not be null"));
     AppMethodBeat.o(77506);
   }
   
@@ -26,15 +26,15 @@ public final class f
   {
     AppMethodBeat.i(77507);
     c localc = (c)paramu.get();
-    Object localObject = com.bumptech.glide.c.ad(paramContext).aAt;
-    localObject = new d(localc.pm(), (e)localObject);
-    paramContext = this.aJD.a(paramContext, (u)localObject, paramInt1, paramInt2);
+    Object localObject = com.bumptech.glide.c.ad(paramContext).aCk;
+    localObject = new d(localc.pE(), (e)localObject);
+    paramContext = this.aLu.a(paramContext, (u)localObject, paramInt1, paramInt2);
     if (!localObject.equals(paramContext)) {
       ((u)localObject).recycle();
     }
     paramContext = (Bitmap)paramContext.get();
-    localObject = this.aJD;
-    localc.aKc.aKh.a((m)localObject, paramContext);
+    localObject = this.aLu;
+    localc.aLT.aLY.a((m)localObject, paramContext);
     AppMethodBeat.o(77507);
     return paramu;
   }
@@ -42,7 +42,7 @@ public final class f
   public final void a(MessageDigest paramMessageDigest)
   {
     AppMethodBeat.i(77510);
-    this.aJD.a(paramMessageDigest);
+    this.aLu.a(paramMessageDigest);
     AppMethodBeat.o(77510);
   }
   
@@ -52,7 +52,7 @@ public final class f
     if ((paramObject instanceof f))
     {
       paramObject = (f)paramObject;
-      boolean bool = this.aJD.equals(paramObject.aJD);
+      boolean bool = this.aLu.equals(paramObject.aLu);
       AppMethodBeat.o(77508);
       return bool;
     }
@@ -63,7 +63,7 @@ public final class f
   public final int hashCode()
   {
     AppMethodBeat.i(77509);
-    int i = this.aJD.hashCode();
+    int i = this.aLu.hashCode();
     AppMethodBeat.o(77509);
     return i;
   }

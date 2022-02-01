@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gt;
+import com.tencent.mm.g.a.gw;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.ui.widget.snackbar.a.b;
 
@@ -10,12 +10,12 @@ final class NoteEditorUI$18
 {
   NoteEditorUI$18(NoteEditorUI paramNoteEditorUI) {}
   
-  public final void beL()
+  public final void bip()
   {
     AppMethodBeat.i(30709);
-    gt localgt = new gt();
-    localgt.dhx.type = 35;
-    a.GpY.l(localgt);
+    gw localgw = new gw();
+    localgw.dsV.type = 35;
+    a.IbL.l(localgw);
     AppMethodBeat.o(30709);
   }
 }

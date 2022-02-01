@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class y
 {
-  public static int HDi = -1;
+  public static int JqY = -1;
   
   public static void activateBroadcast(boolean paramBoolean)
   {
@@ -21,9 +21,9 @@ public final class y
   public static void d(boolean paramBoolean, Intent paramIntent)
   {
     AppMethodBeat.i(142455);
-    if (!wS(paramBoolean))
+    if (!xD(paramBoolean))
     {
-      ac.w("MicroMsg.UIStatusUtil", "isRealSend = false,just return!");
+      ad.w("MicroMsg.UIStatusUtil", "isRealSend = false,just return!");
       AppMethodBeat.o(142455);
       return;
     }
@@ -35,30 +35,30 @@ public final class y
     for (paramIntent = "com.tencent.mm.ui.ACTION_ACTIVE";; paramIntent = "com.tencent.mm.ui.ACTION_DEACTIVE")
     {
       localIntent.setAction(paramIntent);
-      localIntent.putExtra("_application_context_process_", ai.getProcessName());
+      localIntent.putExtra("_application_context_process_", aj.getProcessName());
       localIntent.putExtra("process_id", Process.myPid());
-      localIntent.putExtra("process_is_mm", ai.ciE());
-      ai.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
+      localIntent.putExtra("process_is_mm", aj.cnC());
+      aj.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
       AppMethodBeat.o(142455);
       return;
     }
   }
   
-  private static boolean wS(boolean paramBoolean)
+  private static boolean xD(boolean paramBoolean)
   {
     boolean bool = true;
     int i;
     if (paramBoolean)
     {
       i = 1;
-      if (HDi == i) {
+      if (JqY == i) {
         break label28;
       }
     }
     label28:
     for (paramBoolean = bool;; paramBoolean = false)
     {
-      HDi = i;
+      JqY = i;
       return paramBoolean;
       i = 0;
       break;

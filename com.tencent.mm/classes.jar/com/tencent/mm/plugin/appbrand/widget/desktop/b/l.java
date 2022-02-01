@@ -12,39 +12,40 @@ import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.desktop.e;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.widget.desktop.f;
+import com.tencent.mm.plugin.appbrand.widget.desktop.h;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Collections;
 import java.util.List;
 
 public final class l<T extends RecyclerView.w>
   extends i<T>
 {
-  int cUq = 0;
+  FrameLayout cuk;
+  int dfG = 0;
   int endPos = 0;
-  private m mAa;
-  private List mgF;
-  FrameLayout mqR;
-  View mxK;
-  public com.tencent.mm.plugin.appbrand.widget.desktop.g mxS = null;
-  public g mzQ;
-  Object mzZ;
+  private List mHf;
+  public h mYA = null;
+  View mYs;
+  Object naH;
+  private m naI;
+  public g nay;
   public int paddingLeft = 0;
   public int paddingTop = 0;
   
   public l(FrameLayout paramFrameLayout, List paramList, m paramm)
   {
-    this.mqR = paramFrameLayout;
-    this.mgF = paramList;
-    this.mAa = paramm;
+    this.cuk = paramFrameLayout;
+    this.mHf = paramList;
+    this.naI = paramm;
   }
   
   public final boolean O(T paramT)
   {
     AppMethodBeat.i(49840);
-    if (this.mzQ != null)
+    if (this.nay != null)
     {
-      boolean bool = this.mzQ.O(paramT);
+      boolean bool = this.nay.O(paramT);
       AppMethodBeat.o(49840);
       return bool;
     }
@@ -60,9 +61,9 @@ public final class l<T extends RecyclerView.w>
   public final boolean P(T paramT)
   {
     AppMethodBeat.i(49846);
-    if (this.mzQ != null)
+    if (this.nay != null)
     {
-      boolean bool = this.mzQ.P(paramT);
+      boolean bool = this.nay.P(paramT);
       AppMethodBeat.o(49846);
       return bool;
     }
@@ -73,9 +74,9 @@ public final class l<T extends RecyclerView.w>
   public final boolean R(T paramT)
   {
     AppMethodBeat.i(49842);
-    if (this.mzQ != null)
+    if (this.nay != null)
     {
-      boolean bool = this.mzQ.a(paramT, null);
+      boolean bool = this.nay.a(paramT, null);
       AppMethodBeat.o(49842);
       return bool;
     }
@@ -86,16 +87,16 @@ public final class l<T extends RecyclerView.w>
   public final void a(RecyclerView paramRecyclerView, T paramT, int paramInt, final Runnable paramRunnable)
   {
     AppMethodBeat.i(49844);
-    if (this.mzQ != null) {
-      this.mzQ.cN(this.mxK);
+    if (this.nay != null) {
+      this.nay.cP(this.mYs);
     }
     paramRunnable = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(49838);
-        if (l.this.mzQ != null) {
-          l.this.mzQ.b(l.this.cUq, l.this.endPos, l.this.mzZ, true);
+        if (l.this.nay != null) {
+          l.this.nay.b(l.this.dfG, l.this.endPos, l.this.naH, true);
         }
         paramRunnable.run();
         AppMethodBeat.o(49838);
@@ -104,39 +105,39 @@ public final class l<T extends RecyclerView.w>
     final RecyclerView.w localw;
     float f2;
     float f1;
-    if ((paramT != null) && (this.mxK != null))
+    if ((paramT != null) && (this.mYs != null))
     {
-      ac.i("ItemMoveHelper", "[finishMove] position" + paramT.lv() + " dragViewPosition:" + paramInt);
+      ad.i("ItemMoveHelper", "[finishMove] position" + paramT.lN() + " dragViewPosition:" + paramInt);
       localw = paramRecyclerView.ci(paramInt);
-      f2 = this.mxK.getTranslationX();
-      f1 = this.mxK.getTranslationY();
-      if ((paramInt == paramT.lv()) || (localw != null)) {
+      f2 = this.mYs.getTranslationX();
+      f1 = this.mYs.getTranslationY();
+      if ((paramInt == paramT.lN()) || (localw != null)) {
         break label253;
       }
-      if (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).jW() <= paramInt) {
+      if (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).km() <= paramInt) {
         break label240;
       }
       f1 -= paramRecyclerView.getHeight();
     }
     for (;;)
     {
-      paramT = this.mAa.cO(this.mxK);
+      paramT = this.naI.cQ(this.mYs);
       paramRecyclerView = paramT;
       if (paramT == null) {
-        paramRecyclerView = this.mxK;
+        paramRecyclerView = this.mYs;
       }
       paramRecyclerView.animate().scaleX(1.0F).scaleY(1.0F).setDuration(300L).setListener(null).start();
-      this.mxK.animate().translationX(f2).translationY(f1).setDuration(300L).setListener(new Animator.AnimatorListener()
+      this.mYs.animate().translationX(f2).translationY(f1).setDuration(300L).setListener(new Animator.AnimatorListener()
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
         
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(49839);
-          l.this.mqR.removeView(l.this.mxK);
-          l.this.mxK.setVisibility(8);
+          l.this.cuk.removeView(l.this.mYs);
+          l.this.mYs.setVisibility(8);
           if (localw != null) {
-            localw.asD.setVisibility(0);
+            localw.auu.setVisibility(0);
           }
           paramRunnable.run();
           AppMethodBeat.o(49839);
@@ -155,23 +156,23 @@ public final class l<T extends RecyclerView.w>
       if (localw != null)
       {
         f2 = f(paramRecyclerView, localw);
-        float f3 = this.mAa.bwh();
+        float f3 = this.naI.bAn();
         float f4 = Q(localw);
-        float f5 = this.mAa.bwi();
-        if (this.mxS == null) {
+        float f5 = this.naI.bAo();
+        if (this.mYA == null) {
           f1 = 0.0F;
         }
         for (;;)
         {
-          ac.i("MicroMsg.ItemMoveHelper", "alvinluo finishMove computeMoveExtraY %f", new Object[] { Float.valueOf(f1) });
+          ad.i("MicroMsg.ItemMoveHelper", "alvinluo finishMove computeMoveExtraY %f", new Object[] { Float.valueOf(f1) });
           f1 += f5 + f4;
           f2 = f3 + f2;
           break;
-          paramInt = this.mxS.computeVerticalScrollOffset();
+          paramInt = this.mYA.computeVerticalScrollOffset();
           int i = paramRecyclerView.computeVerticalScrollExtent();
-          int j = this.mxS.computeVerticalScrollRange();
+          int j = this.mYA.computeVerticalScrollRange();
           int k = j - paramRecyclerView.getMeasuredHeight() - paramInt;
-          ac.i("MicroMsg.ItemMoveHelper", "alvinluo computeMoveExtraY scrollOffset: %d, scrollExtent: %d, scrollRange: %d, height: %d, extra: %d, diff: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramRecyclerView.getMeasuredHeight()), Integer.valueOf((int)(paramRecyclerView.getResources().getDimension(2131166753) * 1.0F)), Integer.valueOf(k) });
+          ad.i("MicroMsg.ItemMoveHelper", "alvinluo computeMoveExtraY scrollOffset: %d, scrollExtent: %d, scrollRange: %d, height: %d, extra: %d, diff: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramRecyclerView.getMeasuredHeight()), Integer.valueOf((int)(paramRecyclerView.getResources().getDimension(2131166753) * 1.0F)), Integer.valueOf(k) });
           if (k > paramRecyclerView.getResources().getDimension(2131166753) * 1.0F) {
             f1 = 0.0F;
           } else {
@@ -197,15 +198,15 @@ public final class l<T extends RecyclerView.w>
   
   public final void a(g paramg)
   {
-    this.mzQ = paramg;
+    this.nay = paramg;
   }
   
   public final boolean a(RecyclerView paramRecyclerView, T paramT1, T paramT2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49843);
-    ac.i("MicroMsg.ItemMoveHelper", "[onMoved] position:" + paramT1.lv() + " target:" + paramT2.lv());
-    ac.i("MicroMsg.ItemMoveHelper", "alvinluo onMoved mList: %d", new Object[] { Integer.valueOf(this.mgF.hashCode()) });
-    if ((paramInt1 < 0) || (paramInt1 >= this.mgF.size()) || (paramInt2 < 0) || (paramInt2 >= this.mgF.size()))
+    ad.i("MicroMsg.ItemMoveHelper", "[onMoved] position:" + paramT1.lN() + " target:" + paramT2.lN());
+    ad.i("MicroMsg.ItemMoveHelper", "alvinluo onMoved mList: %d", new Object[] { Integer.valueOf(this.mHf.hashCode()) });
+    if ((paramInt1 < 0) || (paramInt1 >= this.mHf.size()) || (paramInt2 < 0) || (paramInt2 >= this.mHf.size()))
     {
       AppMethodBeat.o(49843);
       return false;
@@ -215,22 +216,22 @@ public final class l<T extends RecyclerView.w>
       i = paramInt1;
       while (i < paramInt2)
       {
-        Collections.swap(this.mgF, i, i + 1);
+        Collections.swap(this.mHf, i, i + 1);
         i += 1;
       }
     }
     int i = paramInt1;
     while (i > paramInt2)
     {
-      Collections.swap(this.mgF, i, i - 1);
+      Collections.swap(this.mHf, i, i - 1);
       i -= 1;
     }
-    ac.i("MicroMsg.ItemMoveHelper", "alvinluo onMoved end mList: %d", new Object[] { Integer.valueOf(this.mgF.hashCode()) });
-    paramRecyclerView.getAdapter().ap(paramInt1, paramInt2);
-    if (this.mAa != null)
+    ad.i("MicroMsg.ItemMoveHelper", "alvinluo onMoved end mList: %d", new Object[] { Integer.valueOf(this.mHf.hashCode()) });
+    paramRecyclerView.getAdapter().aq(paramInt1, paramInt2);
+    if (this.naI != null)
     {
       this.endPos = paramInt2;
-      this.mAa.g(this.mzZ, paramInt2);
+      this.naI.h(this.naH, paramInt2);
     }
     AppMethodBeat.o(49843);
     return true;
@@ -239,30 +240,30 @@ public final class l<T extends RecyclerView.w>
   public final View g(RecyclerView paramRecyclerView, T paramT)
   {
     AppMethodBeat.i(49841);
-    FrameLayout localFrameLayout = this.mqR;
-    paramT.asD.setVisibility(4);
-    paramRecyclerView = this.mzQ.e(paramRecyclerView, paramT);
+    FrameLayout localFrameLayout = this.cuk;
+    paramT.auu.setVisibility(4);
+    paramRecyclerView = this.nay.e(paramRecyclerView, paramT);
     paramRecyclerView.setAlpha(1.0F);
     paramRecyclerView.setScaleX(1.0F);
     paramRecyclerView.setScaleY(1.0F);
     paramRecyclerView.setVisibility(0);
-    this.mxK = paramRecyclerView;
+    this.mYs = paramRecyclerView;
     localFrameLayout.addView(paramRecyclerView);
-    ac.i("MicroMsg.ItemMoveHelper", "[onDragBegin] position:" + paramT.lv());
-    if ((paramT.lv() < 0) && (this.mxK != null))
+    ad.i("MicroMsg.ItemMoveHelper", "[onDragBegin] position:" + paramT.lN());
+    if ((paramT.lN() < 0) && (this.mYs != null))
     {
-      this.mqR.removeView(this.mxK);
-      this.mxK = null;
+      this.cuk.removeView(this.mYs);
+      this.mYs = null;
       AppMethodBeat.o(49841);
       return null;
     }
-    if ((this.mAa != null) && (this.mgF.size() > paramT.lv()))
+    if ((this.naI != null) && (this.mHf.size() > paramT.lN()))
     {
-      this.mzZ = this.mAa.cA(this.mgF.get(paramT.lv()));
-      this.cUq = paramT.lv();
-      this.endPos = this.cUq;
+      this.naH = this.naI.cC(this.mHf.get(paramT.lN()));
+      this.dfG = paramT.lN();
+      this.endPos = this.dfG;
     }
-    paramRecyclerView = this.mxK;
+    paramRecyclerView = this.mYs;
     AppMethodBeat.o(49841);
     return paramRecyclerView;
   }
@@ -270,15 +271,15 @@ public final class l<T extends RecyclerView.w>
   public final void h(RecyclerView paramRecyclerView, T paramT)
   {
     AppMethodBeat.i(49847);
-    ac.i("MicroMsg.ItemMoveHelper", "alvinluo onDelete adapter position: %d", new Object[] { Integer.valueOf(paramT.lv()) });
-    if ((paramT instanceof e)) {
-      ac.i("MicroMsg.ItemMoveHelper", "alvinluo onDelete holder: %s", new Object[] { ((e)paramT).titleTv.getText() });
+    ad.i("MicroMsg.ItemMoveHelper", "alvinluo onDelete adapter position: %d", new Object[] { Integer.valueOf(paramT.lN()) });
+    if ((paramT instanceof f)) {
+      ad.i("MicroMsg.ItemMoveHelper", "alvinluo onDelete holder: %s", new Object[] { ((f)paramT).titleTv.getText() });
     }
-    this.mgF.remove(paramT.lv());
-    ac.i("MicroMsg.ItemMoveHelper", "alvinluo mList hashCode: %d", new Object[] { Integer.valueOf(this.mgF.hashCode()) });
-    paramRecyclerView.getAdapter().cl(paramT.lv());
-    if (this.mzQ != null) {
-      this.mzQ.cz(this.mzZ);
+    this.mHf.remove(paramT.lN());
+    ad.i("MicroMsg.ItemMoveHelper", "alvinluo mList hashCode: %d", new Object[] { Integer.valueOf(this.mHf.hashCode()) });
+    paramRecyclerView.getAdapter().cl(paramT.lN());
+    if (this.nay != null) {
+      this.nay.cB(this.naH);
     }
     AppMethodBeat.o(49847);
   }
@@ -287,7 +288,7 @@ public final class l<T extends RecyclerView.w>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.b.l
  * JD-Core Version:    0.7.0.1
  */

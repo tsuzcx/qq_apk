@@ -2,7 +2,7 @@ package d.m;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"asSequence", "Lkotlin/sequences/Sequence;", "T", "Ljava/util/Enumeration;", "kotlin-stdlib"}, fOb=1)
+@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"asSequence", "Lkotlin/sequences/Sequence;", "T", "Ljava/util/Enumeration;", "kotlin-stdlib"})
 class k
   extends j
 {}

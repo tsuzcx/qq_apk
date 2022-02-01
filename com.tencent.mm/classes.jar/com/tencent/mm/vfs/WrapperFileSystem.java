@@ -13,132 +13,132 @@ import java.util.Map;
 public abstract class WrapperFileSystem<T extends FileSystem>
   extends AbstractFileSystem
 {
-  protected final T JrA;
+  protected final T Ljf;
   
   protected WrapperFileSystem(Parcel paramParcel)
   {
     q.a(paramParcel, WrapperFileSystem.class, 1);
-    this.JrA = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
-    if (this.JrA == null) {
+    this.Ljf = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
+    if (this.Ljf == null) {
       throw new IllegalArgumentException("Wrong wrapped filesystem.");
     }
   }
   
   protected WrapperFileSystem(T paramT)
   {
-    this.JrA = paramT;
+    this.Ljf = paramT;
+  }
+  
+  public boolean CA(String paramString)
+  {
+    return this.Ljf.CA(paramString);
   }
   
   public final void a(CancellationSignal paramCancellationSignal)
   {
-    this.JrA.a(paramCancellationSignal);
+    this.Ljf.a(paramCancellationSignal);
   }
   
-  public ReadableByteChannel aSc(String paramString)
+  public ReadableByteChannel aYb(String paramString)
   {
-    return this.JrA.aSd(paramString);
+    return this.Ljf.aYc(paramString);
   }
   
-  public ByteChannel aSd(String paramString)
+  public ByteChannel aYc(String paramString)
   {
-    return this.JrA.aSd(paramString);
+    return this.Ljf.aYc(paramString);
   }
   
-  public FileSystem.b aSe(String paramString)
+  public FileSystem.b aYd(String paramString)
   {
-    return this.JrA.aSe(paramString);
+    return this.Ljf.aYd(paramString);
   }
   
-  public boolean aSf(String paramString)
+  public boolean aYe(String paramString)
   {
-    return this.JrA.aSf(paramString);
+    return this.Ljf.aYe(paramString);
   }
   
-  public FileSystem.a aSg(String paramString)
+  public FileSystem.a aYf(String paramString)
   {
-    return this.JrA.aSg(paramString);
+    return this.Ljf.aYf(paramString);
   }
   
-  public final boolean aSh(String paramString)
+  public final boolean aYg(String paramString)
   {
-    return this.JrA.aSh(paramString);
+    return this.Ljf.aYg(paramString);
   }
   
   protected boolean b(String paramString1, FileSystem paramFileSystem, String paramString2)
   {
-    if ((this.JrA instanceof AbstractFileSystem)) {
-      return ((AbstractFileSystem)this.JrA).b(paramString1, paramFileSystem, paramString2);
+    if ((this.Ljf instanceof AbstractFileSystem)) {
+      return ((AbstractFileSystem)this.Ljf).b(paramString1, paramFileSystem, paramString2);
     }
     return false;
   }
   
-  public void bS(Map<String, String> paramMap)
+  public void bY(Map<String, String> paramMap)
   {
-    this.JrA.bS(paramMap);
+    this.Ljf.bY(paramMap);
   }
   
-  public WritableByteChannel cR(String paramString, boolean paramBoolean)
+  public WritableByteChannel cW(String paramString, boolean paramBoolean)
   {
-    return this.JrA.cR(paramString, paramBoolean);
+    return this.Ljf.cW(paramString, paramBoolean);
   }
   
-  public OutputStream cS(String paramString, boolean paramBoolean)
+  public OutputStream cX(String paramString, boolean paramBoolean)
   {
-    return this.JrA.cS(paramString, paramBoolean);
+    return this.Ljf.cX(paramString, paramBoolean);
   }
   
-  public Iterable<FileSystem.a> cT(String paramString, boolean paramBoolean)
+  public Iterable<FileSystem.a> cY(String paramString, boolean paramBoolean)
   {
-    return this.JrA.cT(paramString, paramBoolean);
+    return this.Ljf.cY(paramString, paramBoolean);
   }
   
-  public boolean cU(String paramString, boolean paramBoolean)
+  public boolean cZ(String paramString, boolean paramBoolean)
   {
-    return this.JrA.cU(paramString, paramBoolean);
+    return this.Ljf.cZ(paramString, paramBoolean);
   }
   
-  public String cV(String paramString, boolean paramBoolean)
+  public boolean cn(String paramString, long paramLong)
   {
-    return this.JrA.cV(paramString, paramBoolean);
-  }
-  
-  public boolean ch(String paramString, long paramLong)
-  {
-    return this.JrA.ch(paramString, paramLong);
+    return this.Ljf.cn(paramString, paramLong);
   }
   
   protected long d(String paramString1, FileSystem paramFileSystem, String paramString2)
   {
-    if ((this.JrA instanceof AbstractFileSystem)) {
-      return ((AbstractFileSystem)this.JrA).d(paramString1, paramFileSystem, paramString2);
+    if ((this.Ljf instanceof AbstractFileSystem)) {
+      return ((AbstractFileSystem)this.Ljf).d(paramString1, paramFileSystem, paramString2);
     }
-    return this.JrA.c(paramString1, paramFileSystem, paramString2);
+    return this.Ljf.c(paramString1, paramFileSystem, paramString2);
   }
   
-  public int fxC()
+  public String da(String paramString, boolean paramBoolean)
   {
-    return this.JrA.fxC();
+    return this.Ljf.da(paramString, paramBoolean);
   }
   
-  public final ParcelFileDescriptor lT(String paramString1, String paramString2)
+  public int fOp()
   {
-    return this.JrA.lT(paramString1, paramString2);
+    return this.Ljf.fOp();
+  }
+  
+  public final ParcelFileDescriptor mt(String paramString1, String paramString2)
+  {
+    return this.Ljf.mt(paramString1, paramString2);
   }
   
   public InputStream openRead(String paramString)
   {
-    return this.JrA.openRead(paramString);
+    return this.Ljf.openRead(paramString);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     q.b(paramParcel, WrapperFileSystem.class, 1);
-    paramParcel.writeParcelable(this.JrA, paramInt);
-  }
-  
-  public boolean zB(String paramString)
-  {
-    return this.JrA.zB(paramString);
+    paramParcel.writeParcelable(this.Ljf, paramInt);
   }
 }
 

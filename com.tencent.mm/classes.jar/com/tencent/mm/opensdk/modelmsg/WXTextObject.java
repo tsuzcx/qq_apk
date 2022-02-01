@@ -18,20 +18,23 @@ public class WXTextObject
   
   public WXTextObject(String paramString)
   {
+    AppMethodBeat.i(196998);
     this.text = paramString;
+    AppMethodBeat.o(196998);
   }
   
   public boolean checkArgs()
   {
     AppMethodBeat.i(3982);
-    if ((this.text == null) || (this.text.length() == 0) || (this.text.length() > 10240))
+    String str = this.text;
+    if ((str != null) && (str.length() != 0) && (this.text.length() <= 10240))
     {
-      Log.e("MicroMsg.SDK.WXTextObject", "checkArgs fail, text is invalid");
       AppMethodBeat.o(3982);
-      return false;
+      return true;
     }
+    Log.e("MicroMsg.SDK.WXTextObject", "checkArgs fail, text is invalid");
     AppMethodBeat.o(3982);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

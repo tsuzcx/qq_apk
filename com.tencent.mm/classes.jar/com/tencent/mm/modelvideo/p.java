@@ -1,114 +1,110 @@
 package com.tencent.mm.modelvideo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bk.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.bl.e;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.n.a.a;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.sight.base.c;
 import com.tencent.mm.pluginsdk.model.l;
-import com.tencent.mm.protocal.protobuf.bsz;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bn;
+import com.tencent.mm.protocal.protobuf.bxm;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
 import java.util.Arrays;
 
 public final class p
   implements w
 {
-  private String iaA;
-  Boolean iaB = Boolean.FALSE;
-  private VideoTransPara iay = null;
-  private VideoTransPara iaz = null;
+  private VideoTransPara itU = null;
+  private VideoTransPara itV = null;
+  private String itW;
+  Boolean itX = Boolean.FALSE;
   private String srcPath;
   
-  public final void DO(String paramString)
+  public final void GV(String paramString)
   {
     AppMethodBeat.i(126944);
-    o.aJy();
-    this.srcPath = t.DV(paramString);
+    o.aMJ();
+    this.srcPath = t.Hh(paramString);
     Object localObject1 = new StringBuilder();
-    o.aJy();
-    this.iaA = (t.DV(paramString) + ".tmp");
-    ac.i("MicroMsg.TransferVideoMsgSendCallback", "srcPath： %s", new Object[] { this.srcPath });
-    ac.i("MicroMsg.TransferVideoMsgSendCallback", "dstPath：%s", new Object[] { this.iaA });
-    this.iaB = Boolean.valueOf(e.Et(this.srcPath));
+    o.aMJ();
+    this.itW = (t.Hh(paramString) + ".tmp");
+    ad.i("MicroMsg.TransferVideoMsgSendCallback", "srcPath： %s", new Object[] { this.srcPath });
+    ad.i("MicroMsg.TransferVideoMsgSendCallback", "dstPath：%s", new Object[] { this.itW });
+    this.itX = Boolean.valueOf(e.HI(this.srcPath));
     long l;
-    if ((i.eA(this.srcPath)) && (this.iaB.booleanValue()))
+    if ((i.fv(this.srcPath)) && (this.itX.booleanValue()))
     {
-      ac.i("MicroMsg.TransferVideoMsgSendCallback", "before video send, is h265");
-      l = bs.Gn();
-      if (!i.eA(this.srcPath))
+      ad.i("MicroMsg.TransferVideoMsgSendCallback", "before video send, is h265");
+      l = com.tencent.mm.sdk.platformtools.bt.HI();
+      if (!i.fv(this.srcPath))
       {
-        ac.e("MicroMsg.TransferVideoMsgSendCallback", "before video send, is h265 file not exist!");
+        ad.e("MicroMsg.TransferVideoMsgSendCallback", "before video send, is h265 file not exist!");
         AppMethodBeat.o(126944);
         return;
       }
-      h.wUl.idkeyStat(354L, 249L, 1L, false);
-      this.iaz = e.Eu(this.srcPath);
-      this.iay = e.a(this.iaz, this.srcPath);
-      if ((this.iaz != null) && (this.iay != null))
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(354L, 249L, 1L, false);
+      this.itV = e.HJ(this.srcPath);
+      this.itU = e.a(this.itV, this.srcPath);
+      if ((this.itV != null) && (this.itU != null))
       {
-        if (e.a(this.srcPath, this.iaA, this.iay) < 0) {
-          h.wUl.idkeyStat(354L, 250L, 1L, false);
+        if (e.a(this.srcPath, this.itW, this.itU) < 0) {
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(354L, 250L, 1L, false);
         }
-        i.ma(this.iaA, this.srcPath);
-        i.deleteFile(this.iaA);
-        paramString = u.Ej(paramString);
+        i.mA(this.itW, this.srcPath);
+        i.deleteFile(this.itW);
+        paramString = u.Hy(paramString);
         if (paramString != null)
         {
           paramString.videoFormat = 1;
-          paramString.drx = 2;
-          o.aJy().c(paramString);
+          paramString.dDp = 2;
+          o.aMJ().c(paramString);
         }
-        ac.i("MicroMsg.TransferVideoMsgSendCallback", "transfer to h264 finish, used %sms", new Object[] { Long.valueOf(bs.aO(l)) });
+        ad.i("MicroMsg.TransferVideoMsgSendCallback", "transfer to h264 finish, used %sms", new Object[] { Long.valueOf(com.tencent.mm.sdk.platformtools.bt.aO(l)) });
       }
       AppMethodBeat.o(126944);
       return;
     }
-    ac.i("MicroMsg.TransferVideoMsgSendCallback", "video format is h264，do not need to tranfer");
-    localObject1 = u.Ej(paramString);
-    if ((localObject1 != null) && (!bs.isNullOrNil(((s)localObject1).aJJ())) && (i.eA(((s)localObject1).aJJ())))
+    ad.i("MicroMsg.TransferVideoMsgSendCallback", "video format is h264，do not need to tranfer");
+    localObject1 = u.Hy(paramString);
+    if ((localObject1 != null) && (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(((s)localObject1).aMU())) && (i.fv(((s)localObject1).aMU())))
     {
-      Object localObject2 = ((s)localObject1).iaS;
-      if ((localObject2 == null) || (!((bsz)localObject2).FhZ))
+      Object localObject2 = ((s)localObject1).iuo;
+      if ((localObject2 == null) || (!((bxm)localObject2).GRA))
       {
-        localObject2 = ((s)localObject1).aJJ();
-        o.aJy();
-        paramString = t.DV(paramString);
-        this.iaz = e.Eu((String)localObject2);
-        this.iay = e.a(this.iaz, (String)localObject2);
-        if ((!i.eA(paramString)) && (this.iaz != null) && (this.iay != null))
+        localObject2 = ((s)localObject1).aMU();
+        o.aMJ();
+        paramString = t.Hh(paramString);
+        this.itV = e.HJ((String)localObject2);
+        this.itU = e.a(this.itV, (String)localObject2);
+        if ((!i.fv(paramString)) && (this.itV != null) && (this.itU != null))
         {
           int[] arrayOfInt = new int[2];
           l.d((String)localObject2, arrayOfInt);
-          l = bs.Gn();
-          this.iaB = Boolean.valueOf(e.Et((String)localObject2));
-          ac.i("MicroMsg.TransferVideoMsgSendCallback", "before video send, local remux file path not exist, do remux here, outsize: %s, localDstFilePath: %s, importPath: %s, isH265: %s", new Object[] { Arrays.toString(arrayOfInt), paramString, localObject2, this.iaB });
+          l = com.tencent.mm.sdk.platformtools.bt.HI();
+          this.itX = Boolean.valueOf(e.HI((String)localObject2));
+          ad.i("MicroMsg.TransferVideoMsgSendCallback", "before video send, local remux file path not exist, do remux here, outsize: %s, localDstFilePath: %s, importPath: %s, isH265: %s", new Object[] { Arrays.toString(arrayOfInt), paramString, localObject2, this.itX });
           int i;
-          if (this.iaB.booleanValue())
+          if (this.itX.booleanValue())
           {
-            i = e.a((String)localObject2, paramString, this.iay);
-            ac.i("MicroMsg.TransferVideoMsgSendCallback", "transfer to h264 finish, used %sms %s", new Object[] { Long.valueOf(bs.aO(l)), Integer.valueOf(i) });
+            i = e.a((String)localObject2, paramString, this.itU);
+            ad.i("MicroMsg.TransferVideoMsgSendCallback", "transfer to h264 finish, used %sms %s", new Object[] { Long.valueOf(com.tencent.mm.sdk.platformtools.bt.aO(l)), Integer.valueOf(i) });
           }
           for (;;)
           {
-            if (this.iaz.duration > 0)
+            if (this.itV.duration > 0)
             {
-              ((s)localObject1).hpy = this.iaz.duration;
-              o.aJy().c((s)localObject1);
+              ((s)localObject1).hHQ = this.itV.duration;
+              o.aMJ().c((s)localObject1);
             }
             AppMethodBeat.o(126944);
             return;
-            i = SightVideoJNI.remuxingVFS((String)localObject2, paramString, arrayOfInt[0], arrayOfInt[1], this.iay.videoBitrate, this.iay.hCA, 8, this.iay.hCz, 25.0F, this.iay.fps, null, 0, c.xCq, 0, 51);
-            ac.i("MicroMsg.TransferVideoMsgSendCallback", "remux finish: %s, used %sms", new Object[] { Integer.valueOf(i), Long.valueOf(bs.aO(l)) });
-            ((a)g.ab(a.class)).awI().ah((String)localObject2, paramString, i);
+            i = SightVideoJNI.remuxingVFS((String)localObject2, paramString, arrayOfInt[0], arrayOfInt[1], this.itU.videoBitrate, this.itU.hVf, 8, this.itU.hVe, 25.0F, this.itU.fps, null, 0, c.yRa, 0, 51);
+            ad.i("MicroMsg.TransferVideoMsgSendCallback", "remux finish: %s, used %sms", new Object[] { Integer.valueOf(i), Long.valueOf(com.tencent.mm.sdk.platformtools.bt.aO(l)) });
+            ((a)com.tencent.mm.kernel.g.ab(a.class)).azx().al((String)localObject2, paramString, i);
           }
         }
-        ac.i("MicroMsg.TransferVideoMsgSendCallback", "before video send, is a local capture video, do nothing");
+        ad.i("MicroMsg.TransferVideoMsgSendCallback", "before video send, is a local capture video, do nothing");
       }
     }
     AppMethodBeat.o(126944);

@@ -1,29 +1,29 @@
 package com.tencent.mm.emoji.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.j;
-import d.g.b.k;
+import com.tencent.mm.bc.j;
+import d.g.b.p;
 import d.l;
 import org.xmlpull.v1.XmlPullParser;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/LuckyBagParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "luckyBag", "Lcom/tencent/mm/modelpackage/LuckyBag;", "getLuckyBag", "()Lcom/tencent/mm/modelpackage/LuckyBag;", "parseTag", "", "tag", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/LuckyBagParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "luckyBag", "Lcom/tencent/mm/modelpackage/LuckyBag;", "getLuckyBag", "()Lcom/tencent/mm/modelpackage/LuckyBag;", "parseTag", "", "tag", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "plugin-emojisdk_release"})
 public final class n
   extends a
 {
-  final j fRh;
+  final j gkH;
   
   public n()
   {
     AppMethodBeat.i(105525);
-    this.fRh = new j();
+    this.gkH = new j();
     AppMethodBeat.o(105525);
   }
   
   protected final void a(String paramString, XmlPullParser paramXmlPullParser)
   {
     AppMethodBeat.i(105524);
-    k.h(paramString, "tag");
-    k.h(paramXmlPullParser, "parser");
+    p.h(paramString, "tag");
+    p.h(paramXmlPullParser, "parser");
     switch (paramString.hashCode())
     {
     }
@@ -53,59 +53,59 @@ public final class n
                           {
                             do
                             {
-                              a(paramXmlPullParser);
+                              skip(paramXmlPullParser);
                               AppMethodBeat.o(105524);
                               return;
                             } while (!paramString.equals("BrandIcon"));
-                            this.fRh.hPR = d(paramXmlPullParser);
+                            this.gkH.ijf = c(paramXmlPullParser);
                             AppMethodBeat.o(105524);
                             return;
                           } while (!paramString.equals("BackgroundLogo"));
-                          this.fRh.hPT = d(paramXmlPullParser);
+                          this.gkH.ijh = c(paramXmlPullParser);
                           AppMethodBeat.o(105524);
                           return;
                         } while (!paramString.equals("SubTitleColor"));
-                        this.fRh.hPQ = d(paramXmlPullParser);
+                        this.gkH.ije = c(paramXmlPullParser);
                         AppMethodBeat.o(105524);
                         return;
                       } while (!paramString.equals("MainTitle"));
-                      this.fRh.hPN = d(paramXmlPullParser);
+                      this.gkH.ijb = c(paramXmlPullParser);
                       AppMethodBeat.o(105524);
                       return;
                     } while (!paramString.equals("RedEnvelopeCoverSmallTitle"));
-                    this.fRh.hPV = d(paramXmlPullParser);
+                    this.gkH.ijj = c(paramXmlPullParser);
                     AppMethodBeat.o(105524);
                     return;
                   } while (!paramString.equals("MainTitleColor"));
-                  this.fRh.hPO = d(paramXmlPullParser);
+                  this.gkH.ijc = c(paramXmlPullParser);
                   AppMethodBeat.o(105524);
                   return;
                 } while (!paramString.equals("BrandName"));
-                this.fRh.ddh = d(paramXmlPullParser);
+                this.gkH.doD = c(paramXmlPullParser);
                 AppMethodBeat.o(105524);
                 return;
               } while (!paramString.equals("AppId"));
-              this.fRh.appId = d(paramXmlPullParser);
+              this.gkH.appId = c(paramXmlPullParser);
               AppMethodBeat.o(105524);
               return;
             } while (!paramString.equals("CouponBigTitle"));
-            this.fRh.hPW = d(paramXmlPullParser);
+            this.gkH.ijk = c(paramXmlPullParser);
             AppMethodBeat.o(105524);
             return;
           } while (!paramString.equals("CouponSmallTitle"));
-          this.fRh.hPX = d(paramXmlPullParser);
+          this.gkH.ijl = c(paramXmlPullParser);
           AppMethodBeat.o(105524);
           return;
         } while (!paramString.equals("SubTitle"));
-        this.fRh.hPP = d(paramXmlPullParser);
+        this.gkH.ijd = c(paramXmlPullParser);
         AppMethodBeat.o(105524);
         return;
       } while (!paramString.equals("RedEnvelopeCoverBigTitle"));
-      this.fRh.hPU = d(paramXmlPullParser);
+      this.gkH.iji = c(paramXmlPullParser);
       AppMethodBeat.o(105524);
       return;
     } while (!paramString.equals("BackgroundColor"));
-    this.fRh.hPS = d(paramXmlPullParser);
+    this.gkH.ijg = c(paramXmlPullParser);
     AppMethodBeat.o(105524);
   }
 }

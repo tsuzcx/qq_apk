@@ -8,12 +8,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static void H(View paramView, boolean paramBoolean)
+  public static void I(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(133798);
-    paramView = gB(paramView);
+    paramView = gS(paramView);
     if (paramView != null) {
-      paramView.xK(paramBoolean);
+      paramView.yy(paramBoolean);
     }
     AppMethodBeat.o(133798);
   }
@@ -26,19 +26,19 @@ public final class a
       AppMethodBeat.o(133797);
       return;
     }
-    if (!c.ILV)
+    if (!c.KDc)
     {
       AppMethodBeat.o(133797);
       return;
     }
-    b localb = gB(paramView);
+    b localb = gS(paramView);
     if (localb != null)
     {
       localb.L(paramInt, paramBoolean);
       AppMethodBeat.o(133797);
       return;
     }
-    paramView = com.tencent.mm.sdk.f.a.jg(paramView.getContext());
+    paramView = com.tencent.mm.sdk.f.a.jq(paramView.getContext());
     if (paramView != null)
     {
       paramView.getWindow().setStatusBarColor(paramInt);
@@ -47,7 +47,7 @@ public final class a
     AppMethodBeat.o(133797);
   }
   
-  private static b gB(View paramView)
+  private static b gS(View paramView)
   {
     AppMethodBeat.i(133796);
     if (paramView == null)

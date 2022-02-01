@@ -10,12 +10,12 @@ import com.tencent.mm.plugin.appbrand.p;
 public final class b
   implements p
 {
-  public static final b lrj;
+  public static final b lQt;
   
   static
   {
     AppMethodBeat.i(47551);
-    lrj = new b();
+    lQt = new b();
     AppMethodBeat.o(47551);
   }
   
@@ -23,7 +23,7 @@ public final class b
   {
     AppMethodBeat.i(47550);
     int i;
-    if (!paramAppBrandInitConfigWC.jDv)
+    if (!paramAppBrandInitConfigWC.jXr)
     {
       String str = paramAppBrandInitConfigWC.username;
       if (str != null) {
@@ -43,7 +43,7 @@ public final class b
       else
       {
         if (paramAppBrandInitConfigWC != null) {
-          paramAppBrandInitConfigWC.aTW();
+          paramAppBrandInitConfigWC.aXg();
         }
         paramAppBrandInitConfigWC = new f(paramAppBrandRuntimeContainerWC);
         AppMethodBeat.o(47550);

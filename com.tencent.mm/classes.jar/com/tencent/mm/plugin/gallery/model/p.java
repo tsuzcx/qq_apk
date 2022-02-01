@@ -1,60 +1,59 @@
 package com.tencent.mm.plugin.gallery.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/gallery/model/PreLoadManager;", "", "()V", "lastState", "Lcom/tencent/mm/plugin/gallery/model/PreLoadManager$State;", "mediaItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Lkotlin/collections/ArrayList;", "preloadList", "Lcom/tencent/mm/plugin/gallery/model/IPreload;", "addPreload", "", "preload", "dispatchPreload", "state", "first", "", "last", "limit", "executePreload", "items", "", "removePreload", "reset", "syncMediaItems", "", "Companion", "SingletonHolder", "State", "plugin-gallery_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/model/PreLoadManager;", "", "()V", "lastState", "Lcom/tencent/mm/plugin/gallery/model/PreLoadManager$State;", "mediaItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Lkotlin/collections/ArrayList;", "preloadList", "Lcom/tencent/mm/plugin/gallery/model/IPreload;", "addPreload", "", "preload", "dispatchPreload", "state", "first", "", "last", "limit", "executePreload", "items", "", "removePreload", "reset", "syncMediaItems", "", "Companion", "SingletonHolder", "State", "plugin-gallery_release"})
 public final class p
 {
-  private static final p sKG;
-  public static final p.a sKH;
-  ArrayList<j> sKD;
-  public final ArrayList<GalleryItem.MediaItem> sKE;
-  private p.c sKF;
+  private static final p tHr;
+  public static final p.a tHs;
+  ArrayList<j> tHo;
+  public final ArrayList<GalleryItem.MediaItem> tHp;
+  private p.c tHq;
   
   static
   {
     AppMethodBeat.i(111798);
-    sKH = new p.a((byte)0);
-    p.b localb = p.b.sKJ;
-    sKG = p.b.cNe();
+    tHs = new p.a((byte)0);
+    b localb = b.tHu;
+    tHr = b.cVw();
     AppMethodBeat.o(111798);
   }
   
   private p()
   {
     AppMethodBeat.i(111797);
-    this.sKD = new ArrayList();
-    this.sKE = new ArrayList();
-    this.sKF = p.c.sKK;
+    this.tHo = new ArrayList();
+    this.tHp = new ArrayList();
+    this.tHq = p.c.tHv;
     AppMethodBeat.o(111797);
   }
   
-  private final void h(Set<Integer> paramSet)
+  private final void m(Set<Integer> paramSet)
   {
     AppMethodBeat.i(111796);
-    ac.d("MicroMsg.PreLoadManager", "mediaItems.size: %s.", new Object[] { Integer.valueOf(this.sKE.size()) });
+    ad.d("MicroMsg.PreLoadManager", "mediaItems.size: %s.", new Object[] { Integer.valueOf(this.tHp.size()) });
     paramSet = paramSet.iterator();
     while (paramSet.hasNext())
     {
       int i = ((Number)paramSet.next()).intValue();
-      if (i < this.sKE.size())
+      if (i < this.tHp.size())
       {
-        c localc = e.cMs();
-        Object localObject1 = this.sKE.get(i);
-        k.g(localObject1, "mediaItems[item]");
-        localObject1 = ((GalleryItem.MediaItem)localObject1).auN();
-        Object localObject2 = this.sKE.get(i);
-        k.g(localObject2, "mediaItems[item]");
+        c localc = e.cUL();
+        Object localObject1 = this.tHp.get(i);
+        d.g.b.p.g(localObject1, "mediaItems[item]");
+        localObject1 = ((GalleryItem.MediaItem)localObject1).axA();
+        Object localObject2 = this.tHp.get(i);
+        d.g.b.p.g(localObject2, "mediaItems[item]");
         int j = ((GalleryItem.MediaItem)localObject2).getType();
-        localObject2 = this.sKE.get(i);
-        k.g(localObject2, "mediaItems[item]");
-        localc.b((String)localObject1, j, ((GalleryItem.MediaItem)localObject2).cMQ(), ((GalleryItem.MediaItem)this.sKE.get(i)).sKk, ((GalleryItem.MediaItem)this.sKE.get(i)).sKl);
+        localObject2 = this.tHp.get(i);
+        d.g.b.p.g(localObject2, "mediaItems[item]");
+        localc.b((String)localObject1, j, ((GalleryItem.MediaItem)localObject2).cVj(), ((GalleryItem.MediaItem)this.tHp.get(i)).tGV, ((GalleryItem.MediaItem)this.tHp.get(i)).tGW);
       }
     }
     AppMethodBeat.o(111796);
@@ -63,31 +62,51 @@ public final class p
   public final void a(j paramj)
   {
     AppMethodBeat.i(111794);
-    k.h(paramj, "preload");
-    this.sKD.add(paramj);
+    d.g.b.p.h(paramj, "preload");
+    this.tHo.add(paramj);
     AppMethodBeat.o(111794);
   }
   
   public final void a(p.c paramc, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(111795);
-    k.h(paramc, "state");
-    ac.d("MicroMsg.PreLoadManager", "dispatchPreload, %s %s %s %s.", new Object[] { paramc, this.sKF, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.sKF != paramc) {
-      this.sKF = paramc;
+    d.g.b.p.h(paramc, "state");
+    ad.d("MicroMsg.PreLoadManager", "dispatchPreload, %s %s %s %s.", new Object[] { paramc, this.tHq, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.tHq != paramc) {
+      this.tHq = paramc;
     }
-    Iterator localIterator = this.sKD.iterator();
+    Iterator localIterator = this.tHo.iterator();
     while (localIterator.hasNext())
     {
       j localj = (j)localIterator.next();
-      if ((p.c.sKK == paramc) && (localj.cMW())) {
-        h(localj.a(paramc, this.sKF, paramInt1, paramInt2, paramInt3));
+      if ((p.c.tHv == paramc) && (localj.cVo())) {
+        m(localj.a(paramc, this.tHq, paramInt1, paramInt2, paramInt3));
       }
-      if (!localj.cMW()) {
-        h(localj.a(paramc, this.sKF, paramInt1, paramInt2, paramInt3));
+      if (!localj.cVo()) {
+        m(localj.a(paramc, this.tHq, paramInt1, paramInt2, paramInt3));
       }
     }
     AppMethodBeat.o(111795);
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/model/PreLoadManager$SingletonHolder;", "", "()V", "holder", "Lcom/tencent/mm/plugin/gallery/model/PreLoadManager;", "getHolder", "()Lcom/tencent/mm/plugin/gallery/model/PreLoadManager;", "plugin-gallery_release"})
+  static final class b
+  {
+    private static final p tHt;
+    public static final b tHu;
+    
+    static
+    {
+      AppMethodBeat.i(111790);
+      tHu = new b();
+      tHt = new p((byte)0);
+      AppMethodBeat.o(111790);
+    }
+    
+    public static p cVw()
+    {
+      return tHt;
+    }
   }
 }
 

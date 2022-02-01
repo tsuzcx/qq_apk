@@ -1,9 +1,9 @@
 package com.tencent.mm.cq;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.yw;
+import com.tencent.mm.g.a.zt;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.xweb.WebView.PreInitCallback;
 
 final class d$1
@@ -11,15 +11,15 @@ final class d$1
 {
   d$1(WebView.PreInitCallback paramPreInitCallback) {}
   
-  public final void aUA()
+  public final void aXM()
   {
     AppMethodBeat.i(152943);
-    ac.i("XWebUtil", "onCoreInitFailed");
-    yw localyw = new yw();
-    localyw.dCN.success = false;
-    a.GpY.l(localyw);
-    if (this.JIp != null) {
-      this.JIp.aUA();
+    ad.i("XWebUtil", "onCoreInitFailed");
+    zt localzt = new zt();
+    localzt.dPi.success = false;
+    a.IbL.l(localzt);
+    if (this.LBY != null) {
+      this.LBY.aXM();
     }
     AppMethodBeat.o(152943);
   }
@@ -27,12 +27,12 @@ final class d$1
   public final void onCoreInitFinished()
   {
     AppMethodBeat.i(152942);
-    ac.i("XWebUtil", "onCoreInitFinished");
-    yw localyw = new yw();
-    localyw.dCN.success = true;
-    a.GpY.l(localyw);
-    if (this.JIp != null) {
-      this.JIp.onCoreInitFinished();
+    ad.i("XWebUtil", "onCoreInitFinished");
+    zt localzt = new zt();
+    localzt.dPi.success = true;
+    a.IbL.l(localzt);
+    if (this.LBY != null) {
+      this.LBY.onCoreInitFinished();
     }
     AppMethodBeat.o(152942);
   }

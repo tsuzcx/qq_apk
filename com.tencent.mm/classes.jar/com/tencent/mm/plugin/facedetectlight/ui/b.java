@@ -18,6 +18,7 @@ import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.view.TextureView.SurfaceTextureListener;
 import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ae;
@@ -31,12 +32,12 @@ import com.tencent.mm.plugin.facedetectaction.b.a.a;
 import com.tencent.mm.plugin.facedetectaction.b.a.b;
 import com.tencent.mm.plugin.facedetectaction.ui.FaceActionMask;
 import com.tencent.mm.plugin.facedetectaction.ui.FaceActionUI;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.MMTextureView;
 import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface;
 import com.tencent.youtu.ytcommon.tools.YTCameraSetting;
@@ -53,71 +54,71 @@ import java.util.List;
 public final class b
   implements TextureView.SurfaceTextureListener
 {
-  public String foE;
-  private d.a.a gXJ;
-  private boolean gXl;
+  public String fGM;
+  private d.a.a hpP;
+  private boolean hpr;
   public String mAppId;
   private Context mContext;
   int mDesiredPreviewHeight;
   int mDesiredPreviewWidth;
   private boolean mIsCameraOpened;
-  private Point nkL;
-  public ImageView nle;
-  public byte[] qAD;
-  public boolean qBh;
-  private Camera.PreviewCallback qDM;
-  d.b qDN;
-  public int qFr;
-  public String qFs;
-  private FaceActionUI qFt;
-  private a.a qFv;
-  private MMTextureView qGJ;
-  private HandlerThread qGK;
-  private ao qGL;
-  v qGM;
-  public boolean qGN;
-  public TextView qGO;
-  public FaceReflectMask qGP;
-  public PreviewFrameLayout qGQ;
-  private int qGR;
-  public String qGS;
-  public ImageView qGT;
-  private Bitmap qGU;
-  private boolean qGV;
-  private int qGW;
-  private ao qGX;
-  private com.tencent.mm.plugin.facedetectlight.ui.a.b qGY;
-  public FaceActionMask qGf;
-  private Point qyo;
-  private Point qyp;
-  private boolean qyq;
-  private int qyr;
-  private Point qyt;
+  public ImageView nLL;
+  private Point nLi;
+  private Point rie;
+  private Point rif;
+  private boolean rig;
+  private int rih;
+  private Point rij;
+  public boolean rkX;
+  public byte[] rkt;
+  private Camera.PreviewCallback rnC;
+  d.b rnD;
+  public FaceActionMask rpY;
+  public int rpj;
+  public String rpk;
+  private FaceActionUI rpl;
+  private a.a rpn;
+  private MMTextureView rqI;
+  private HandlerThread rqJ;
+  private ap rqK;
+  v rqL;
+  public boolean rqM;
+  public TextView rqN;
+  public FaceReflectMask rqO;
+  public PreviewFrameLayout rqP;
+  private int rqQ;
+  public String rqR;
+  public ImageView rqS;
+  private Bitmap rqT;
+  private boolean rqU;
+  private int rqV;
+  private ap rqW;
+  private com.tencent.mm.plugin.facedetectlight.ui.a.b rqX;
   
   public b(Context paramContext, com.tencent.mm.plugin.facedetectlight.ui.a.b paramb)
   {
     AppMethodBeat.i(104294);
-    this.qyo = null;
-    this.nkL = null;
-    this.qyp = null;
-    this.qyt = null;
-    this.qGR = 0;
-    this.qGX = new ao("mPreviewHandlerThread");
-    this.qDN = new d.b()
+    this.rie = null;
+    this.nLi = null;
+    this.rif = null;
+    this.rij = null;
+    this.rqQ = 0;
+    this.rqW = new ap("mPreviewHandlerThread");
+    this.rnD = new d.b()
     {
-      public final void bj(byte[] paramAnonymousArrayOfByte)
+      public final void bm(byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(104293);
-        com.tencent.mm.plugin.facedetect.model.c.qxj.k(paramAnonymousArrayOfByte);
+        com.tencent.mm.plugin.facedetect.model.c.rgZ.k(paramAnonymousArrayOfByte);
         AppMethodBeat.o(104293);
       }
       
-      public final com.tencent.mm.memory.a<byte[]> cnk()
+      public final com.tencent.mm.memory.a<byte[]> csP()
       {
-        return com.tencent.mm.plugin.facedetect.model.c.qxj;
+        return com.tencent.mm.plugin.facedetect.model.c.rgZ;
       }
     };
-    this.qDM = new Camera.PreviewCallback()
+    this.rnC = new Camera.PreviewCallback()
     {
       public final void onPreviewFrame(final byte[] paramAnonymousArrayOfByte, final Camera paramAnonymousCamera)
       {
@@ -130,17 +131,17 @@ public final class b
               c localc = null;
               Object localObject1 = null;
               AppMethodBeat.i(104281);
-              if (b.this.qGN)
+              if (b.this.rqM)
               {
                 label129:
                 int i;
                 if (b.e(b.this) == 1)
                 {
-                  localc = c.a.coQ();
+                  localc = c.a.cuv();
                   localObject2 = paramAnonymousArrayOfByte;
                   localObject3 = paramAnonymousCamera;
-                  ac.i("MicroMsg.FaceReflectLogic", "YTAGReflectLiveCheckInterface.getProcessState() : %s ", new Object[] { Integer.valueOf(YTAGReflectLiveCheckInterface.getProcessState()) });
-                  ac.i("MicroMsg.FaceReflectLogic", "current state is:%d", new Object[] { Integer.valueOf(localc.mState) });
+                  ad.i("MicroMsg.FaceReflectLogic", "YTAGReflectLiveCheckInterface.getProcessState() : %s ", new Object[] { Integer.valueOf(YTAGReflectLiveCheckInterface.getProcessState()) });
+                  ad.i("MicroMsg.FaceReflectLogic", "current state is:%d", new Object[] { Integer.valueOf(localc.mState) });
                   if (localc.mState != 4)
                   {
                     if (YTAGReflectLiveCheckInterface.getProcessState() != 2) {
@@ -150,36 +151,36 @@ public final class b
                   }
                   for (;;)
                   {
-                    com.tencent.mm.plugin.facedetect.model.d.cnj().bi((byte[])localObject2);
+                    com.tencent.mm.plugin.facedetect.model.d.csO().bl((byte[])localObject2);
                     AppMethodBeat.o(104281);
                     return;
                     if (YTAGReflectLiveCheckInterface.getProcessState() == 0)
                     {
                       i = 7;
                       if (localc.mContext != null) {
-                        i = YTCameraSetting.getRotate(localc.mContext, localc.kmi, 1);
+                        i = YTCameraSetting.getRotate(localc.mContext, localc.kHi, 1);
                       }
                       if (PluginFace.isEnabled()) {
                         localObject1 = YTFaceTrack.getInstance().DoDetectionProcessYUV((byte[])localObject2, localc.mDesiredPreviewWidth, localc.mDesiredPreviewHeight, i, null);
                       }
                       if (localObject1 != null)
                       {
-                        ap.f(new c.2(localc, localObject1[0]));
+                        aq.f(new c.2(localc, localObject1[0]));
                       }
                       else
                       {
-                        ac.i("MicroMsg.FaceReflectLogic", "Detecting result：ADVISE_NO_FACE --- faceStatuses is null");
-                        ap.f(new c.3(localc));
+                        ad.i("MicroMsg.FaceReflectLogic", "Detecting result：ADVISE_NO_FACE --- faceStatuses is null");
+                        aq.f(new c.3(localc));
                       }
                     }
                   }
                 }
-                Object localObject2 = a.b.coH();
+                Object localObject2 = a.b.cum();
                 Object localObject3 = paramAnonymousArrayOfByte;
                 Camera localCamera = paramAnonymousCamera;
-                if (((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFz)
+                if (((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpr)
                 {
-                  i = YTCameraSetting.getRotate(((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).mContext, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).kmi, 1);
+                  i = YTCameraSetting.getRotate(((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).mContext, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).kHi, 1);
                   localObject1 = localc;
                   if (PluginFace.isEnabled()) {
                     localObject1 = YTFaceTrack.getInstance().DoDetectionProcessYUV((byte[])localObject3, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).mDesiredPreviewWidth, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).mDesiredPreviewHeight, i, null);
@@ -191,20 +192,20 @@ public final class b
                     {
                       if (localObject1 == null)
                       {
-                        ac.i("MicroMsg.FaceActionLogic", "Detecting result：out of rect");
-                        ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFu.setText(2131758750);
+                        ad.i("MicroMsg.FaceActionLogic", "Detecting result：out of rect");
+                        ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpm.setText(2131758750);
                         AppMethodBeat.o(104281);
                         return;
                       }
                       YTFaceUtils.shelterJudge(((YTFaceTrack.FaceStatus)localObject1).pointsVis);
-                      if (((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFy != null) {
-                        YTPoseDetectInterface.poseDetect(((YTFaceTrack.FaceStatus)localObject1).xys, ((YTFaceTrack.FaceStatus)localObject1).pointsVis, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFr, (byte[])localObject3, localCamera, ((YTFaceTrack.FaceStatus)localObject1).pitch, ((YTFaceTrack.FaceStatus)localObject1).yaw, ((YTFaceTrack.FaceStatus)localObject1).roll, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFy);
+                      if (((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpq != null) {
+                        YTPoseDetectInterface.poseDetect(((YTFaceTrack.FaceStatus)localObject1).xys, ((YTFaceTrack.FaceStatus)localObject1).pointsVis, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpj, (byte[])localObject3, localCamera, ((YTFaceTrack.FaceStatus)localObject1).pitch, ((YTFaceTrack.FaceStatus)localObject1).yaw, ((YTFaceTrack.FaceStatus)localObject1).roll, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpq, 0);
                       }
                     }
                     AppMethodBeat.o(104281);
                     return;
                   }
-                  ac.i("MicroMsg.FaceActionLogic", "No face");
+                  ad.i("MicroMsg.FaceActionLogic", "No face");
                 }
               }
               AppMethodBeat.o(104281);
@@ -214,12 +215,12 @@ public final class b
         AppMethodBeat.o(104282);
       }
     };
-    this.qGY = paramb;
-    this.qGW = 1;
+    this.rqX = paramb;
+    this.rqV = 1;
     this.mContext = paramContext;
     this.mIsCameraOpened = false;
-    this.qBh = false;
-    this.qGK = null;
+    this.rkX = false;
+    this.rqJ = null;
     this.mIsCameraOpened = false;
     AppMethodBeat.o(104294);
   }
@@ -227,27 +228,27 @@ public final class b
   public b(FaceActionUI paramFaceActionUI, a.a parama)
   {
     AppMethodBeat.i(104295);
-    this.qyo = null;
-    this.nkL = null;
-    this.qyp = null;
-    this.qyt = null;
-    this.qGR = 0;
-    this.qGX = new ao("mPreviewHandlerThread");
-    this.qDN = new d.b()
+    this.rie = null;
+    this.nLi = null;
+    this.rif = null;
+    this.rij = null;
+    this.rqQ = 0;
+    this.rqW = new ap("mPreviewHandlerThread");
+    this.rnD = new d.b()
     {
-      public final void bj(byte[] paramAnonymousArrayOfByte)
+      public final void bm(byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(104293);
-        com.tencent.mm.plugin.facedetect.model.c.qxj.k(paramAnonymousArrayOfByte);
+        com.tencent.mm.plugin.facedetect.model.c.rgZ.k(paramAnonymousArrayOfByte);
         AppMethodBeat.o(104293);
       }
       
-      public final com.tencent.mm.memory.a<byte[]> cnk()
+      public final com.tencent.mm.memory.a<byte[]> csP()
       {
-        return com.tencent.mm.plugin.facedetect.model.c.qxj;
+        return com.tencent.mm.plugin.facedetect.model.c.rgZ;
       }
     };
-    this.qDM = new Camera.PreviewCallback()
+    this.rnC = new Camera.PreviewCallback()
     {
       public final void onPreviewFrame(final byte[] paramAnonymousArrayOfByte, final Camera paramAnonymousCamera)
       {
@@ -260,17 +261,17 @@ public final class b
               c localc = null;
               Object localObject1 = null;
               AppMethodBeat.i(104281);
-              if (b.this.qGN)
+              if (b.this.rqM)
               {
                 label129:
                 int i;
                 if (b.e(b.this) == 1)
                 {
-                  localc = c.a.coQ();
+                  localc = c.a.cuv();
                   localObject2 = paramAnonymousArrayOfByte;
                   localObject3 = paramAnonymousCamera;
-                  ac.i("MicroMsg.FaceReflectLogic", "YTAGReflectLiveCheckInterface.getProcessState() : %s ", new Object[] { Integer.valueOf(YTAGReflectLiveCheckInterface.getProcessState()) });
-                  ac.i("MicroMsg.FaceReflectLogic", "current state is:%d", new Object[] { Integer.valueOf(localc.mState) });
+                  ad.i("MicroMsg.FaceReflectLogic", "YTAGReflectLiveCheckInterface.getProcessState() : %s ", new Object[] { Integer.valueOf(YTAGReflectLiveCheckInterface.getProcessState()) });
+                  ad.i("MicroMsg.FaceReflectLogic", "current state is:%d", new Object[] { Integer.valueOf(localc.mState) });
                   if (localc.mState != 4)
                   {
                     if (YTAGReflectLiveCheckInterface.getProcessState() != 2) {
@@ -280,36 +281,36 @@ public final class b
                   }
                   for (;;)
                   {
-                    com.tencent.mm.plugin.facedetect.model.d.cnj().bi((byte[])localObject2);
+                    com.tencent.mm.plugin.facedetect.model.d.csO().bl((byte[])localObject2);
                     AppMethodBeat.o(104281);
                     return;
                     if (YTAGReflectLiveCheckInterface.getProcessState() == 0)
                     {
                       i = 7;
                       if (localc.mContext != null) {
-                        i = YTCameraSetting.getRotate(localc.mContext, localc.kmi, 1);
+                        i = YTCameraSetting.getRotate(localc.mContext, localc.kHi, 1);
                       }
                       if (PluginFace.isEnabled()) {
                         localObject1 = YTFaceTrack.getInstance().DoDetectionProcessYUV((byte[])localObject2, localc.mDesiredPreviewWidth, localc.mDesiredPreviewHeight, i, null);
                       }
                       if (localObject1 != null)
                       {
-                        ap.f(new c.2(localc, localObject1[0]));
+                        aq.f(new c.2(localc, localObject1[0]));
                       }
                       else
                       {
-                        ac.i("MicroMsg.FaceReflectLogic", "Detecting result：ADVISE_NO_FACE --- faceStatuses is null");
-                        ap.f(new c.3(localc));
+                        ad.i("MicroMsg.FaceReflectLogic", "Detecting result：ADVISE_NO_FACE --- faceStatuses is null");
+                        aq.f(new c.3(localc));
                       }
                     }
                   }
                 }
-                Object localObject2 = a.b.coH();
+                Object localObject2 = a.b.cum();
                 Object localObject3 = paramAnonymousArrayOfByte;
                 Camera localCamera = paramAnonymousCamera;
-                if (((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFz)
+                if (((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpr)
                 {
-                  i = YTCameraSetting.getRotate(((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).mContext, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).kmi, 1);
+                  i = YTCameraSetting.getRotate(((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).mContext, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).kHi, 1);
                   localObject1 = localc;
                   if (PluginFace.isEnabled()) {
                     localObject1 = YTFaceTrack.getInstance().DoDetectionProcessYUV((byte[])localObject3, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).mDesiredPreviewWidth, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).mDesiredPreviewHeight, i, null);
@@ -321,20 +322,20 @@ public final class b
                     {
                       if (localObject1 == null)
                       {
-                        ac.i("MicroMsg.FaceActionLogic", "Detecting result：out of rect");
-                        ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFu.setText(2131758750);
+                        ad.i("MicroMsg.FaceActionLogic", "Detecting result：out of rect");
+                        ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpm.setText(2131758750);
                         AppMethodBeat.o(104281);
                         return;
                       }
                       YTFaceUtils.shelterJudge(((YTFaceTrack.FaceStatus)localObject1).pointsVis);
-                      if (((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFy != null) {
-                        YTPoseDetectInterface.poseDetect(((YTFaceTrack.FaceStatus)localObject1).xys, ((YTFaceTrack.FaceStatus)localObject1).pointsVis, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFr, (byte[])localObject3, localCamera, ((YTFaceTrack.FaceStatus)localObject1).pitch, ((YTFaceTrack.FaceStatus)localObject1).yaw, ((YTFaceTrack.FaceStatus)localObject1).roll, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFy);
+                      if (((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpq != null) {
+                        YTPoseDetectInterface.poseDetect(((YTFaceTrack.FaceStatus)localObject1).xys, ((YTFaceTrack.FaceStatus)localObject1).pointsVis, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpj, (byte[])localObject3, localCamera, ((YTFaceTrack.FaceStatus)localObject1).pitch, ((YTFaceTrack.FaceStatus)localObject1).yaw, ((YTFaceTrack.FaceStatus)localObject1).roll, ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpq, 0);
                       }
                     }
                     AppMethodBeat.o(104281);
                     return;
                   }
-                  ac.i("MicroMsg.FaceActionLogic", "No face");
+                  ad.i("MicroMsg.FaceActionLogic", "No face");
                 }
               }
               AppMethodBeat.o(104281);
@@ -344,14 +345,14 @@ public final class b
         AppMethodBeat.o(104282);
       }
     };
-    this.qGW = 2;
-    this.qFt = paramFaceActionUI;
+    this.rqV = 2;
+    this.rpl = paramFaceActionUI;
     this.mIsCameraOpened = false;
-    this.qBh = false;
-    this.qGK = null;
+    this.rkX = false;
+    this.rqJ = null;
     this.mIsCameraOpened = false;
-    this.qGV = false;
-    this.qFv = parama;
+    this.rqU = false;
+    this.rpn = parama;
     AppMethodBeat.o(104295);
   }
   
@@ -362,9 +363,9 @@ public final class b
     Collections.sort((List)localObject, new b.a((byte)0));
     Point localPoint = null;
     float f3 = paramPoint.x / paramPoint.y;
-    ac.d("MicroMsg.FaceReflectCam", "screen.x: %d, screen.y: %d, ratio: %f", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f3) });
-    long l = bs.iU(ai.getContext());
-    ac.d("MicroMsg.FaceReflectCam", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(l) });
+    ad.d("MicroMsg.FaceReflectCam", "screen.x: %d, screen.y: %d, ratio: %f", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y), Float.valueOf(f3) });
+    long l = bt.je(aj.getContext());
+    ad.d("MicroMsg.FaceReflectCam", "systemAvailableMemInMB: %d", new Object[] { Long.valueOf(l) });
     int i = paramPoint.x;
     i = paramPoint.y;
     float f1 = (1.0F / 1.0F);
@@ -377,7 +378,7 @@ public final class b
       Camera.Size localSize = (Camera.Size)((Iterator)localObject).next();
       i = localSize.width;
       j = localSize.height;
-      ac.i("MicroMsg.FaceReflectCam", "realWidth: %d, realHeight: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      ad.i("MicroMsg.FaceReflectCam", "realWidth: %d, realHeight: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       int k = i * j;
       if ((k >= 150400) && (k <= 983040))
       {
@@ -396,12 +397,12 @@ public final class b
         label357:
         for (int m = i;; m = j)
         {
-          ac.d("MicroMsg.FaceReflectCam", "maybeFlippedWidth: %d, maybeFlippedHeight: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
-          if ((k != paramPoint.x) || (m != paramPoint.y) || (!i(k, m, l))) {
+          ad.d("MicroMsg.FaceReflectCam", "maybeFlippedWidth: %d, maybeFlippedHeight: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+          if ((k != paramPoint.x) || (m != paramPoint.y) || (!j(k, m, l))) {
             break label364;
           }
           paramParameters = new Point(i, j);
-          ac.i("MicroMsg.FaceReflectCam", "Found preview size exactly matching screen size: ".concat(String.valueOf(paramParameters)));
+          ad.i("MicroMsg.FaceReflectCam", "Found preview size exactly matching screen size: ".concat(String.valueOf(paramParameters)));
           AppMethodBeat.o(104304);
           return paramParameters;
           m = 0;
@@ -413,7 +414,7 @@ public final class b
         f2 = Math.abs(k / m - f3);
         if (i % 10 == 0)
         {
-          if ((f2 >= f1) || (!i(i, j, l))) {
+          if ((f2 >= f1) || (!j(i, j, l))) {
             break label548;
           }
           localPoint = new Point(i, j);
@@ -425,7 +426,7 @@ public final class b
     label548:
     for (;;)
     {
-      ac.i("MicroMsg.FaceReflectCam", "diff:[%s] newdiff:[%s] w:[%s] h:[%s]", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
+      ad.i("MicroMsg.FaceReflectCam", "diff:[%s] newdiff:[%s] w:[%s] h:[%s]", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
       break;
       paramPoint = localPoint;
       if (localPoint == null)
@@ -435,293 +436,25 @@ public final class b
           break label534;
         }
         paramPoint = new Point(paramParameters.width, paramParameters.height);
-        ac.i("MicroMsg.FaceReflectCam", "No suitable preview sizes, using default: ".concat(String.valueOf(paramPoint)));
+        ad.i("MicroMsg.FaceReflectCam", "No suitable preview sizes, using default: ".concat(String.valueOf(paramPoint)));
       }
       for (;;)
       {
-        ac.i("MicroMsg.FaceReflectCam", "Found best approximate preview size: ".concat(String.valueOf(paramPoint)));
+        ad.i("MicroMsg.FaceReflectCam", "Found best approximate preview size: ".concat(String.valueOf(paramPoint)));
         AppMethodBeat.o(104304);
         return paramPoint;
-        ac.e("MicroMsg.FaceReflectCam", "hy: can not find default size!!");
+        ad.e("MicroMsg.FaceReflectCam", "hy: can not find default size!!");
         paramPoint = localPoint;
       }
     }
   }
   
-  private boolean coO()
-  {
-    AppMethodBeat.i(104300);
-    ac.i("MicroMsg.FaceReflectCam", "start open camera");
-    this.mIsCameraOpened = false;
-    this.gXl = true;
-    int j = Camera.getNumberOfCameras();
-    int i = 0;
-    Object localObject1;
-    if (i < j)
-    {
-      localObject1 = new Camera.CameraInfo();
-      Camera.getCameraInfo(i, (Camera.CameraInfo)localObject1);
-      if ((((Camera.CameraInfo)localObject1).facing == 1) && (this.gXl)) {
-        ac.d("MicroMsg.FaceReflectCam", "hy: front Camera found");
-      }
-    }
-    for (;;)
-    {
-      if (i == -1)
-      {
-        ac.i("MicroMsg.FaceReflectCam", "not found available camera id");
-        AppMethodBeat.o(104300);
-        return false;
-        if ((((Camera.CameraInfo)localObject1).facing == 0) && (!this.gXl))
-        {
-          ac.d("MicroMsg.FaceReflectCam", "hy: front Camera found");
-          continue;
-        }
-        i += 1;
-        break;
-      }
-      long l = bs.Gn();
-      ac.i("MicroMsg.FaceReflectCam", "openCameraRes：" + this.gXJ);
-      if (this.gXJ == null)
-      {
-        ac.i("MicroMsg.FaceReflectCam", "openCameraRes is null");
-        if (this.qGW != 1) {
-          break label290;
-        }
-        ac.i("MicroMsg.FaceReflectCam", "mFaceReflectController openCameraRe");
-      }
-      for (;;)
-      {
-        try
-        {
-          this.gXJ = com.tencent.mm.compatible.deviceinfo.d.a(this.mContext, i, null);
-          if (this.gXJ != null) {
-            break;
-          }
-          ac.i("MicroMsg.FaceReflectCam", "in open(), openCameraRes == null");
-          try
-          {
-            localObject1 = new IOException();
-            AppMethodBeat.o(104300);
-            throw ((Throwable)localObject1);
-          }
-          catch (IOException localIOException1)
-          {
-            ac.i("MicroMsg.FaceReflectCam", "set cameraRes exception" + localIOException1.getMessage());
-            AppMethodBeat.o(104300);
-            return false;
-          }
-          ac.i("MicroMsg.FaceReflectCam", "mFaceActionUI openCameraRe");
-        }
-        catch (Exception localException1)
-        {
-          AppMethodBeat.o(104300);
-          return false;
-        }
-        label290:
-        this.gXJ = com.tencent.mm.compatible.deviceinfo.d.a(this.qFt.getContext(), i, null);
-      }
-      this.qGR = i;
-      this.mIsCameraOpened = true;
-      ac.d("MicroMsg.FaceReflectCam", "openCamera done, cameraId=[%s] costTime=[%s]", new Object[] { Integer.valueOf(i), Long.valueOf(bs.aO(l)) });
-      this.qyr = this.gXJ.duc;
-      boolean bool;
-      if (this.gXJ.duc % 180 != 0)
-      {
-        bool = true;
-        this.qyq = bool;
-        this.qGM = this.gXJ.fFt;
-        if (this.qGM == null)
-        {
-          ac.e("MicroMsg.FaceReflectCam", "in open(), camera == null, bNeedRotate=[%s]", new Object[] { Boolean.valueOf(this.qyq) });
-          try
-          {
-            IOException localIOException2 = new IOException();
-            AppMethodBeat.o(104300);
-            throw localIOException2;
-          }
-          catch (IOException localIOException3)
-          {
-            ac.i("MicroMsg.FaceReflectCam", "set cameraRotation exception" + localIOException3.getMessage());
-          }
-        }
-      }
-      Camera.Parameters localParameters;
-      for (;;)
-      {
-        try
-        {
-          localParameters = this.qGM.getParameters();
-          if (this.qGW != 1) {
-            break label578;
-          }
-          j = this.mContext.getResources().getDisplayMetrics().widthPixels;
-          i = this.mContext.getResources().getDisplayMetrics().heightPixels;
-          if (localParameters != null) {
-            break label611;
-          }
-          AppMethodBeat.o(104300);
-          return false;
-        }
-        catch (Exception localException2)
-        {
-          ac.printErrStackTrace("MicroMsg.FaceReflectCam", localException2, "camera getParameters error: %s", new Object[] { localException2.getMessage() });
-          AppMethodBeat.o(104300);
-          return false;
-        }
-        bool = false;
-        break;
-        label578:
-        j = this.qFt.getResources().getDisplayMetrics().widthPixels;
-        i = this.qFt.getResources().getDisplayMetrics().heightPixels;
-      }
-      label611:
-      this.nkL = new Point(j, i);
-      Point localPoint2 = this.nkL;
-      Point localPoint1 = this.qyp;
-      Object localObject4 = localParameters.get("preview-size-values");
-      Object localObject2 = localObject4;
-      if (localObject4 == null) {
-        localObject2 = localParameters.get("preview-size-value");
-      }
-      if (localObject2 != null) {
-        ac.d("MicroMsg.FaceReflectCam", "preview-size-values parameter: ".concat(String.valueOf(localObject2)));
-      }
-      label1026:
-      label1106:
-      label1149:
-      Object localObject3;
-      for (localObject2 = a(localParameters, localPoint2);; localObject3 = null)
-      {
-        localObject4 = localObject2;
-        if (localObject2 == null) {
-          localObject4 = new Point(localPoint1.x >> 3 << 3, localPoint1.y >> 3 << 3);
-        }
-        this.qyo = ((Point)localObject4);
-        this.qyt = new Point(this.qyo);
-        ac.d("MicroMsg.FaceReflectCam", "getCameraResolution: " + this.nkL + " camera:" + this.qyo + "bestVideoEncodeSize: " + this.qyt);
-        this.mDesiredPreviewWidth = this.qyo.x;
-        this.mDesiredPreviewHeight = this.qyo.y;
-        localParameters.setPreviewSize(this.mDesiredPreviewWidth, this.mDesiredPreviewHeight);
-        ac.e("MicroMsg.FaceReflectCam", "mDesiredPreviewWidth：" + this.mDesiredPreviewWidth);
-        ac.e("MicroMsg.FaceReflectCam", "mDesiredPreviewHeight：" + this.mDesiredPreviewHeight);
-        localParameters.setZoom(0);
-        localParameters.setSceneMode("auto");
-        try
-        {
-          if ((localParameters.getSupportedFocusModes() != null) && (localParameters.getSupportedFocusModes().contains("auto")))
-          {
-            ac.i("MicroMsg.FaceReflectCam", "set FocusMode to FOCUS_MODE_AUTO");
-            localParameters.setFocusMode("auto");
-          }
-          for (;;)
-          {
-            localObject2 = localParameters.getSupportedPreviewFormats();
-            localObject4 = ((List)localObject2).iterator();
-            i = 0;
-            if (!((Iterator)localObject4).hasNext()) {
-              break label1473;
-            }
-            j = ((Integer)((Iterator)localObject4).next()).intValue();
-            ac.d("MicroMsg.FaceReflectCam", "supportedPreviewFormat: ".concat(String.valueOf(j)));
-            if (j != 17) {
-              break;
-            }
-            j = 1;
-            if (j == 0) {
-              break label1268;
-            }
-            localParameters.setPreviewFormat(17);
-            if (this.qyq) {
-              localParameters.setRotation(this.qyr);
-            }
-            double d1 = this.qGQ.getmAspectRatio();
-            ac.d("MicroMsg.FaceReflectCam", "original ratio=".concat(String.valueOf(d1)));
-            d2 = this.mDesiredPreviewWidth / this.mDesiredPreviewHeight;
-            ac.d("MicroMsg.FaceReflectCam", "new ratio=".concat(String.valueOf(d2)));
-            if (d1 != d2) {
-              break label1337;
-            }
-            ac.d("MicroMsg.FaceReflectCam", "NO NEED reset ratio");
-            e(localParameters);
-            localObject2 = localParameters.getSupportedPreviewFpsRange();
-            ac.d("MicroMsg.FaceReflectCam", "range:" + ((List)localObject2).size());
-            i = 0;
-            if (i >= ((List)localObject2).size()) {
-              break label1369;
-            }
-            localObject4 = (int[])((List)localObject2).get(i);
-            j = 0;
-            while (j < localObject4.length)
-            {
-              ac.i("MicroMsg.FaceReflectCam", "Camera SupportedPreviewFpsRange：", new Object[] { Integer.valueOf(localObject4[j]) });
-              j += 1;
-            }
-            ac.i("MicroMsg.FaceReflectCam", "camera not support FOCUS_MODE_AUTO");
-          }
-        }
-        catch (Exception localException3)
-        {
-          for (;;)
-          {
-            double d2;
-            ac.e("MicroMsg.FaceReflectCam", "set focus mode error: %s", new Object[] { localException3.getMessage() });
-            continue;
-            if (j == 842094169) {
-              i = 1;
-            }
-            for (;;)
-            {
-              break;
-              label1268:
-              if (i != 0)
-              {
-                ac.e("MicroMsg.FaceReflectCam", "Preview not support PixelFormat.YCbCr_420_SP, but hasYU12");
-                localParameters.setPreviewFormat(842094169);
-                break label1026;
-              }
-              ac.e("MicroMsg.FaceReflectCam", "Preview not support PixelFormat.YCbCr_420_SP. Use format: %s", new Object[] { localException3.get(0) });
-              localParameters.setPreviewFormat(((Integer)localException3.get(0)).intValue());
-              break label1026;
-              label1337:
-              ac.d("MicroMsg.FaceReflectCam", "start reset ratio");
-              ap.f(new b.6(this, d2));
-              break label1106;
-              i += 1;
-              break label1149;
-              label1369:
-              ac.i("MicroMsg.FaceReflectCam", "Camera preview-fps-range：" + localParameters.get("preview-fps-range"));
-              ac.i("MicroMsg.FaceReflectCam", "Camera preview-fps-range：" + localParameters.get("preview-frame-rate"));
-              try
-              {
-                this.qGM.setParameters(localParameters);
-                bool = this.mIsCameraOpened;
-                AppMethodBeat.o(104300);
-                return bool;
-              }
-              catch (Exception localException4)
-              {
-                for (;;)
-                {
-                  ac.printErrStackTrace("MicroMsg.FaceReflectCam", localException4, "setParameters error", new Object[0]);
-                }
-              }
-            }
-            label1473:
-            j = 0;
-          }
-        }
-      }
-      i = -1;
-    }
-  }
-  
-  private static void e(Camera.Parameters paramParameters)
+  private static void c(Camera.Parameters paramParameters)
   {
     AppMethodBeat.i(104305);
-    if (ae.fJd.fET > 0)
+    if (ae.gcE.fYs > 0)
     {
-      ac.i("MicroMsg.FaceReflectCam", "set frame rate > 0, do not try set preview fps range");
+      ad.i("MicroMsg.FaceReflectCam", "set frame rate > 0, do not try set preview fps range");
       AppMethodBeat.o(104305);
       return;
     }
@@ -754,7 +487,7 @@ public final class b
       }
       int i5 = arrayOfInt[0];
       int i4 = arrayOfInt[1];
-      ac.i("MicroMsg.FaceReflectCam", "dkfps %d:[%d %d]", new Object[] { Integer.valueOf(i3), Integer.valueOf(i5), Integer.valueOf(i4) });
+      ad.i("MicroMsg.FaceReflectCam", "dkfps %d:[%d %d]", new Object[] { Integer.valueOf(i3), Integer.valueOf(i5), Integer.valueOf(i4) });
       i2 = i;
       i1 = j;
       if (i5 < 0) {
@@ -792,7 +525,7 @@ public final class b
       i3 += 1;
       n = k;
       break;
-      ac.i("MicroMsg.FaceReflectCam", "dkfps get fit  [%d %d], max target fps %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(30) });
+      ad.i("MicroMsg.FaceReflectCam", "dkfps get fit  [%d %d], max target fps %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(30) });
       if ((j == 2147483647) || (i == 2147483647))
       {
         AppMethodBeat.o(104305);
@@ -801,13 +534,13 @@ public final class b
       try
       {
         paramParameters.setPreviewFpsRange(j, i);
-        ac.i("MicroMsg.FaceReflectCam", "set fps range %d %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+        ad.i("MicroMsg.FaceReflectCam", "set fps range %d %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
         AppMethodBeat.o(104305);
         return;
       }
       catch (Exception paramParameters)
       {
-        ac.i("MicroMsg.FaceReflectCam", "trySetPreviewFpsRangeParameters Exception, %s, %s", new Object[] { Looper.myLooper(), paramParameters.getMessage() });
+        ad.i("MicroMsg.FaceReflectCam", "trySetPreviewFpsRangeParameters Exception, %s, %s", new Object[] { Looper.myLooper(), paramParameters.getMessage() });
         AppMethodBeat.o(104305);
         return;
       }
@@ -818,52 +551,322 @@ public final class b
     }
   }
   
-  private static boolean i(int paramInt1, int paramInt2, long paramLong)
+  private boolean cut()
   {
-    AppMethodBeat.i(104306);
-    double d = paramInt1 * paramInt2 * 3.0D / 2.0D / 1024.0D / 1024.0D;
-    ac.d("MicroMsg.FaceReflectCam", "dataSizeInMB: %f, availableMemInMb: %d", new Object[] { Double.valueOf(d), Long.valueOf(paramLong) });
-    if (paramLong / d >= 5.0D)
+    AppMethodBeat.i(104300);
+    ad.i("MicroMsg.FaceReflectCam", "start open camera");
+    this.mIsCameraOpened = false;
+    this.hpr = true;
+    int j = Camera.getNumberOfCameras();
+    int i = 0;
+    Object localObject1;
+    if (i < j)
     {
-      AppMethodBeat.o(104306);
-      return true;
+      localObject1 = new Camera.CameraInfo();
+      Camera.getCameraInfo(i, (Camera.CameraInfo)localObject1);
+      if ((((Camera.CameraInfo)localObject1).facing == 1) && (this.hpr)) {
+        ad.d("MicroMsg.FaceReflectCam", "hy: front Camera found");
+      }
     }
-    AppMethodBeat.o(104306);
-    return false;
+    for (;;)
+    {
+      if (i == -1)
+      {
+        ad.i("MicroMsg.FaceReflectCam", "not found available camera id");
+        AppMethodBeat.o(104300);
+        return false;
+        if ((((Camera.CameraInfo)localObject1).facing == 0) && (!this.hpr))
+        {
+          ad.d("MicroMsg.FaceReflectCam", "hy: front Camera found");
+          continue;
+        }
+        i += 1;
+        break;
+      }
+      long l = bt.HI();
+      ad.i("MicroMsg.FaceReflectCam", "openCameraRes：" + this.hpP);
+      if (this.hpP == null)
+      {
+        ad.i("MicroMsg.FaceReflectCam", "openCameraRes is null");
+        if (this.rqV != 1) {
+          break label290;
+        }
+        ad.i("MicroMsg.FaceReflectCam", "mFaceReflectController openCameraRe");
+      }
+      for (;;)
+      {
+        try
+        {
+          this.hpP = com.tencent.mm.compatible.deviceinfo.d.a(this.mContext, i, null);
+          if (this.hpP != null) {
+            break;
+          }
+          ad.i("MicroMsg.FaceReflectCam", "in open(), openCameraRes == null");
+          try
+          {
+            localObject1 = new IOException();
+            AppMethodBeat.o(104300);
+            throw ((Throwable)localObject1);
+          }
+          catch (IOException localIOException1)
+          {
+            ad.i("MicroMsg.FaceReflectCam", "set cameraRes exception" + localIOException1.getMessage());
+            AppMethodBeat.o(104300);
+            return false;
+          }
+          ad.i("MicroMsg.FaceReflectCam", "mFaceActionUI openCameraRe");
+        }
+        catch (Exception localException1)
+        {
+          AppMethodBeat.o(104300);
+          return false;
+        }
+        label290:
+        this.hpP = com.tencent.mm.compatible.deviceinfo.d.a(this.rpl.getContext(), i, null);
+      }
+      this.rqQ = i;
+      this.mIsCameraOpened = true;
+      ad.d("MicroMsg.FaceReflectCam", "openCamera done, cameraId=[%s] costTime=[%s]", new Object[] { Integer.valueOf(i), Long.valueOf(bt.aO(l)) });
+      this.rih = this.hpP.dGc;
+      boolean bool;
+      if (this.hpP.dGc % 180 != 0)
+      {
+        bool = true;
+        this.rig = bool;
+        this.rqL = this.hpP.fYS;
+        if (this.rqL == null)
+        {
+          ad.e("MicroMsg.FaceReflectCam", "in open(), camera == null, bNeedRotate=[%s]", new Object[] { Boolean.valueOf(this.rig) });
+          try
+          {
+            IOException localIOException2 = new IOException();
+            AppMethodBeat.o(104300);
+            throw localIOException2;
+          }
+          catch (IOException localIOException3)
+          {
+            ad.i("MicroMsg.FaceReflectCam", "set cameraRotation exception" + localIOException3.getMessage());
+          }
+        }
+      }
+      Camera.Parameters localParameters;
+      for (;;)
+      {
+        try
+        {
+          localParameters = this.rqL.getParameters();
+          if (this.rqV != 1) {
+            break label578;
+          }
+          j = this.mContext.getResources().getDisplayMetrics().widthPixels;
+          i = this.mContext.getResources().getDisplayMetrics().heightPixels;
+          if (localParameters != null) {
+            break label611;
+          }
+          AppMethodBeat.o(104300);
+          return false;
+        }
+        catch (Exception localException2)
+        {
+          ad.printErrStackTrace("MicroMsg.FaceReflectCam", localException2, "camera getParameters error: %s", new Object[] { localException2.getMessage() });
+          AppMethodBeat.o(104300);
+          return false;
+        }
+        bool = false;
+        break;
+        label578:
+        j = this.rpl.getResources().getDisplayMetrics().widthPixels;
+        i = this.rpl.getResources().getDisplayMetrics().heightPixels;
+      }
+      label611:
+      this.nLi = new Point(j, i);
+      Point localPoint2 = this.nLi;
+      Point localPoint1 = this.rif;
+      Object localObject4 = localParameters.get("preview-size-values");
+      Object localObject2 = localObject4;
+      if (localObject4 == null) {
+        localObject2 = localParameters.get("preview-size-value");
+      }
+      if (localObject2 != null) {
+        ad.d("MicroMsg.FaceReflectCam", "preview-size-values parameter: ".concat(String.valueOf(localObject2)));
+      }
+      label1026:
+      label1106:
+      label1149:
+      Object localObject3;
+      for (localObject2 = a(localParameters, localPoint2);; localObject3 = null)
+      {
+        localObject4 = localObject2;
+        if (localObject2 == null) {
+          localObject4 = new Point(localPoint1.x >> 3 << 3, localPoint1.y >> 3 << 3);
+        }
+        this.rie = ((Point)localObject4);
+        this.rij = new Point(this.rie);
+        ad.d("MicroMsg.FaceReflectCam", "getCameraResolution: " + this.nLi + " camera:" + this.rie + "bestVideoEncodeSize: " + this.rij);
+        this.mDesiredPreviewWidth = this.rie.x;
+        this.mDesiredPreviewHeight = this.rie.y;
+        localParameters.setPreviewSize(this.mDesiredPreviewWidth, this.mDesiredPreviewHeight);
+        ad.e("MicroMsg.FaceReflectCam", "mDesiredPreviewWidth：" + this.mDesiredPreviewWidth);
+        ad.e("MicroMsg.FaceReflectCam", "mDesiredPreviewHeight：" + this.mDesiredPreviewHeight);
+        localParameters.setZoom(0);
+        localParameters.setSceneMode("auto");
+        try
+        {
+          if ((localParameters.getSupportedFocusModes() != null) && (localParameters.getSupportedFocusModes().contains("auto")))
+          {
+            ad.i("MicroMsg.FaceReflectCam", "set FocusMode to FOCUS_MODE_AUTO");
+            localParameters.setFocusMode("auto");
+          }
+          for (;;)
+          {
+            localObject2 = localParameters.getSupportedPreviewFormats();
+            localObject4 = ((List)localObject2).iterator();
+            i = 0;
+            if (!((Iterator)localObject4).hasNext()) {
+              break label1473;
+            }
+            j = ((Integer)((Iterator)localObject4).next()).intValue();
+            ad.d("MicroMsg.FaceReflectCam", "supportedPreviewFormat: ".concat(String.valueOf(j)));
+            if (j != 17) {
+              break;
+            }
+            j = 1;
+            if (j == 0) {
+              break label1268;
+            }
+            localParameters.setPreviewFormat(17);
+            if (this.rig) {
+              localParameters.setRotation(this.rih);
+            }
+            double d1 = this.rqP.getmAspectRatio();
+            ad.d("MicroMsg.FaceReflectCam", "original ratio=".concat(String.valueOf(d1)));
+            d2 = this.mDesiredPreviewWidth / this.mDesiredPreviewHeight;
+            ad.d("MicroMsg.FaceReflectCam", "new ratio=".concat(String.valueOf(d2)));
+            if (d1 != d2) {
+              break label1337;
+            }
+            ad.d("MicroMsg.FaceReflectCam", "NO NEED reset ratio");
+            c(localParameters);
+            localObject2 = localParameters.getSupportedPreviewFpsRange();
+            ad.d("MicroMsg.FaceReflectCam", "range:" + ((List)localObject2).size());
+            i = 0;
+            if (i >= ((List)localObject2).size()) {
+              break label1369;
+            }
+            localObject4 = (int[])((List)localObject2).get(i);
+            j = 0;
+            while (j < localObject4.length)
+            {
+              ad.i("MicroMsg.FaceReflectCam", "Camera SupportedPreviewFpsRange：", new Object[] { Integer.valueOf(localObject4[j]) });
+              j += 1;
+            }
+            ad.i("MicroMsg.FaceReflectCam", "camera not support FOCUS_MODE_AUTO");
+          }
+        }
+        catch (Exception localException3)
+        {
+          for (;;)
+          {
+            final double d2;
+            ad.e("MicroMsg.FaceReflectCam", "set focus mode error: %s", new Object[] { localException3.getMessage() });
+            continue;
+            if (j == 842094169) {
+              i = 1;
+            }
+            for (;;)
+            {
+              break;
+              label1268:
+              if (i != 0)
+              {
+                ad.e("MicroMsg.FaceReflectCam", "Preview not support PixelFormat.YCbCr_420_SP, but hasYU12");
+                localParameters.setPreviewFormat(842094169);
+                break label1026;
+              }
+              ad.e("MicroMsg.FaceReflectCam", "Preview not support PixelFormat.YCbCr_420_SP. Use format: %s", new Object[] { localException3.get(0) });
+              localParameters.setPreviewFormat(((Integer)localException3.get(0)).intValue());
+              break label1026;
+              label1337:
+              ad.d("MicroMsg.FaceReflectCam", "start reset ratio");
+              aq.f(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(104287);
+                  ad.d("MicroMsg.FaceReflectCam", "reset ratio");
+                  int i = b.this.rqP.getContext().getResources().getDisplayMetrics().widthPixels;
+                  RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)b.this.rqP.getLayoutParams();
+                  localLayoutParams.width = ((int)(i * 0.7D));
+                  localLayoutParams.height = ((int)(localLayoutParams.width * d2));
+                  localLayoutParams.addRule(13, -1);
+                  b.this.rqP.setLayoutParams(localLayoutParams);
+                  b.this.rqP.setAspectRatio(d2);
+                  ad.d("MicroMsg.FaceReflectCam", "after reset ratio=" + b.this.rqP.getmAspectRatio());
+                  AppMethodBeat.o(104287);
+                }
+              });
+              break label1106;
+              i += 1;
+              break label1149;
+              label1369:
+              ad.i("MicroMsg.FaceReflectCam", "Camera preview-fps-range：" + localParameters.get("preview-fps-range"));
+              ad.i("MicroMsg.FaceReflectCam", "Camera preview-fps-range：" + localParameters.get("preview-frame-rate"));
+              try
+              {
+                this.rqL.setParameters(localParameters);
+                bool = this.mIsCameraOpened;
+                AppMethodBeat.o(104300);
+                return bool;
+              }
+              catch (Exception localException4)
+              {
+                for (;;)
+                {
+                  ad.printErrStackTrace("MicroMsg.FaceReflectCam", localException4, "setParameters error", new Object[0]);
+                }
+              }
+            }
+            label1473:
+            j = 0;
+          }
+        }
+      }
+      i = -1;
+    }
   }
   
   private void j(final SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(104297);
-    ac.i("MicroMsg.FaceReflectCam", "openCameraForSurfaceTexture");
-    if (this.qGW == 1) {
-      this.qGP.setVisibility(0);
+    ad.i("MicroMsg.FaceReflectCam", "openCameraForSurfaceTexture");
+    if (this.rqV == 1) {
+      this.rqO.setVisibility(0);
     }
     for (;;)
     {
-      coP();
-      if (this.qGL == null) {
+      cuu();
+      if (this.rqK == null) {
         break;
       }
-      this.qGL.post(new Runnable()
+      this.rqK.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(104284);
-          h localh;
+          g localg;
           if (!b.d(b.this))
           {
-            localh = h.wUl;
+            localg = g.yhR;
             if (b.e(b.this) == 1)
             {
               l = 3L;
-              localh.idkeyStat(917L, l, 1L, false);
+              localg.idkeyStat(917L, l, 1L, false);
               b.d(b.this);
             }
           }
           else
           {
-            localh = h.wUl;
+            localg = g.yhR;
             if (b.e(b.this) != 1) {
               break label105;
             }
@@ -871,26 +874,26 @@ public final class b
           label105:
           for (long l = 2L;; l = 38L)
           {
-            localh.idkeyStat(917L, l, 1L, false);
-            ap.f(new Runnable()
+            localg.idkeyStat(917L, l, 1L, false);
+            aq.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(104283);
-                if ((b.f(b.this) == null) || (b.f(b.this).fHD) || (!b.g(b.this)))
+                if ((b.f(b.this) == null) || (b.f(b.this).gbd) || (!b.g(b.this)))
                 {
-                  ac.e("MicroMsg.FaceReflectCam", "camera is null or has released!");
+                  ad.e("MicroMsg.FaceReflectCam", "camera is null or has released!");
                   AppMethodBeat.o(104283);
                   return;
                 }
                 if (b.e(b.this) == 1)
                 {
-                  localObject1 = c.a.coQ();
+                  localObject1 = c.a.cuv();
                   localObject2 = b.h(b.this);
                   localObject3 = b.i(b.this);
                   localObject4 = b.f(b.this);
                   i = b.j(b.this);
-                  localObject5 = b.this.qGO;
+                  localObject5 = b.this.rqN;
                   localObject6 = b.k(b.this);
                   localObject7 = b.l(b.this);
                   str1 = b.m(b.this);
@@ -899,46 +902,46 @@ public final class b
                   k = b.p(b.this);
                   m = b.q(b.this);
                   Point localPoint = b.r(b.this);
-                  ac.i("MicroMsg.FaceReflectLogic", "initPreviewDetect（）");
+                  ad.i("MicroMsg.FaceReflectLogic", "initPreviewDetect（）");
                   ((c)localObject1).mContext = ((Context)localObject2);
-                  ((c)localObject1).qGM = ((v)localObject4);
-                  ((c)localObject1).kmi = i;
-                  ((c)localObject1).qFu = ((TextView)localObject5);
-                  ((c)localObject1).qGY = ((com.tencent.mm.plugin.facedetectlight.ui.a.b)localObject3);
-                  ((c)localObject1).qGP = ((FaceReflectMask)localObject6);
-                  ((c)localObject1).qHi = j;
+                  ((c)localObject1).rqL = ((v)localObject4);
+                  ((c)localObject1).kHi = i;
+                  ((c)localObject1).rpm = ((TextView)localObject5);
+                  ((c)localObject1).rqX = ((com.tencent.mm.plugin.facedetectlight.ui.a.b)localObject3);
+                  ((c)localObject1).rqO = ((FaceReflectMask)localObject6);
+                  ((c)localObject1).rrh = j;
                   ((c)localObject1).mDesiredPreviewWidth = k;
                   ((c)localObject1).mDesiredPreviewHeight = m;
-                  ((c)localObject1).qHj = localPoint;
-                  ((c)localObject1).qAD = ((byte[])localObject7);
-                  ((c)localObject1).qGS = str1;
+                  ((c)localObject1).rri = localPoint;
+                  ((c)localObject1).rkt = ((byte[])localObject7);
+                  ((c)localObject1).rqR = str1;
                   ((c)localObject1).mAppId = str2;
-                  ac.i("MicroMsg.FaceReflectLogic", "mConfig is ".concat(String.valueOf(localObject7)));
-                  ac.i("MicroMsg.FaceReflectLogic", "mBioID is " + ((c)localObject1).qGS);
-                  ac.i("MicroMsg.FaceReflectLogic", "mAppId is ".concat(String.valueOf(str2)));
-                  ((c)localObject1).qFw = new Rect(0, 0, 0, 0);
-                  ((c)localObject1).qFx = new Rect(0, 0, 0, 0);
-                  ac.i("MicroMsg.FaceReflectLogic", "setFaceRect（）");
-                  ((c)localObject1).qHg = ((c)localObject1).mContext.getResources().getDisplayMetrics().widthPixels;
-                  ((c)localObject1).qHh = ((c)localObject1).mContext.getResources().getDisplayMetrics().heightPixels;
-                  ((c)localObject1).qFx.left = ((int)(((c)localObject1).qHg * 0.15D));
-                  ((c)localObject1).qFx.right = ((int)(((c)localObject1).qHg * 0.85D));
-                  ((c)localObject1).qFx.top = ((int)(((c)localObject1).qHh * 0.2D));
-                  ((c)localObject1).qFx.bottom = ((int)(((c)localObject1).qHh * 0.65D));
-                  if (com.tencent.mm.plugin.facedetect.e.a.coq().qCF) {
-                    com.tencent.mm.plugin.facedetect.e.a.coq().a(((c)localObject1).qHi, ((c)localObject1).mDesiredPreviewWidth, ((c)localObject1).mDesiredPreviewHeight, ((c)localObject1).qHj.x, ((c)localObject1).mDesiredPreviewHeight, false);
+                  ad.i("MicroMsg.FaceReflectLogic", "mConfig is ".concat(String.valueOf(localObject7)));
+                  ad.i("MicroMsg.FaceReflectLogic", "mBioID is " + ((c)localObject1).rqR);
+                  ad.i("MicroMsg.FaceReflectLogic", "mAppId is ".concat(String.valueOf(str2)));
+                  ((c)localObject1).rpo = new Rect(0, 0, 0, 0);
+                  ((c)localObject1).rpp = new Rect(0, 0, 0, 0);
+                  ad.i("MicroMsg.FaceReflectLogic", "setFaceRect（）");
+                  ((c)localObject1).rrf = ((c)localObject1).mContext.getResources().getDisplayMetrics().widthPixels;
+                  ((c)localObject1).rrg = ((c)localObject1).mContext.getResources().getDisplayMetrics().heightPixels;
+                  ((c)localObject1).rpp.left = ((int)(((c)localObject1).rrf * 0.15D));
+                  ((c)localObject1).rpp.right = ((int)(((c)localObject1).rrf * 0.85D));
+                  ((c)localObject1).rpp.top = ((int)(((c)localObject1).rrg * 0.2D));
+                  ((c)localObject1).rpp.bottom = ((int)(((c)localObject1).rrg * 0.65D));
+                  if (com.tencent.mm.plugin.facedetect.e.a.ctV().rmv) {
+                    com.tencent.mm.plugin.facedetect.e.a.ctV().a(((c)localObject1).rrh, ((c)localObject1).mDesiredPreviewWidth, ((c)localObject1).mDesiredPreviewHeight, ((c)localObject1).rri.x, ((c)localObject1).mDesiredPreviewHeight, false);
                   }
-                  c.a.coQ();
-                  ac.i("MicroMsg.FaceReflectLogic", "initFaceDetect（）");
+                  c.a.cuv();
+                  ad.i("MicroMsg.FaceReflectLogic", "initFaceDetect（）");
                   AppMethodBeat.o(104283);
                   return;
                 }
-                Object localObject2 = a.b.coH();
+                Object localObject2 = a.b.cum();
                 Object localObject3 = b.s(b.this).getApplicationContext();
                 Object localObject4 = b.s(b.this);
-                Object localObject5 = b.f(b.this).fHC;
+                Object localObject5 = b.f(b.this).gbc;
                 int i = b.j(b.this);
-                Object localObject6 = b.this.qGO;
+                Object localObject6 = b.this.rqN;
                 Object localObject7 = b.t(b.this);
                 int j = b.o(b.this);
                 Object localObject1 = new Point(b.p(b.this), b.q(b.this));
@@ -946,45 +949,45 @@ public final class b
                 String str1 = b.v(b.this);
                 int m = b.p(b.this);
                 int n = b.q(b.this);
-                ac.i("MicroMsg.FaceActionLogic", "initFaceDetect（）");
+                ad.i("MicroMsg.FaceActionLogic", "initFaceDetect（）");
                 ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).mContext = ((Context)localObject3);
                 ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).mCamera = ((Camera)localObject5);
-                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).kmi = i;
-                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFu = ((TextView)localObject6);
-                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFt = ((FaceActionUI)localObject4);
-                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFv = ((a.a)localObject7);
-                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFr = k;
-                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFs = str1;
+                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).kHi = i;
+                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpm = ((TextView)localObject6);
+                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpl = ((FaceActionUI)localObject4);
+                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpn = ((a.a)localObject7);
+                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpj = k;
+                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpk = str1;
                 ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).mDesiredPreviewWidth = m;
                 ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).mDesiredPreviewHeight = n;
-                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFw = new Rect(0, 0, 0, 0);
-                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFx = new Rect(0, 0, 0, 0);
-                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFz = true;
-                ac.i("MicroMsg.FaceActionLogic", "action：%s,mActionHint:%s", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFr), ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFs });
-                if (((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFs != null) {
-                  ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFu.setText(((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFs);
+                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpo = new Rect(0, 0, 0, 0);
+                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpp = new Rect(0, 0, 0, 0);
+                ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpr = true;
+                ad.i("MicroMsg.FaceActionLogic", "action：%s,mActionHint:%s", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpj), ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpk });
+                if (((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpk != null) {
+                  ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpm.setText(((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpk);
                 }
                 for (;;)
                 {
                   YTPoseDetectInterface.start(((Context)localObject3).getApplicationContext(), (Camera)localObject5, i, new a.1((com.tencent.mm.plugin.facedetectaction.b.a)localObject2));
-                  ac.i("MicroMsg.FaceActionLogic", "init face detect, camera, rotate: %s", new Object[] { Integer.valueOf(j) });
-                  com.tencent.mm.plugin.facedetectaction.b.d.qFG.hcR = j;
-                  localObject2 = com.tencent.mm.plugin.facedetectaction.b.d.qFG;
+                  ad.i("MicroMsg.FaceActionLogic", "init face detect, camera, rotate: %s", new Object[] { Integer.valueOf(j) });
+                  com.tencent.mm.plugin.facedetectaction.b.d.rpy.huZ = j;
+                  localObject2 = com.tencent.mm.plugin.facedetectaction.b.d.rpy;
                   i = ((Point)localObject1).x;
                   j = ((Point)localObject1).y;
-                  ((com.tencent.mm.plugin.facedetectaction.b.d)localObject2).qFO = i;
-                  ((com.tencent.mm.plugin.facedetectaction.b.d)localObject2).qFP = j;
+                  ((com.tencent.mm.plugin.facedetectaction.b.d)localObject2).rpG = i;
+                  ((com.tencent.mm.plugin.facedetectaction.b.d)localObject2).rpH = j;
                   AppMethodBeat.o(104283);
                   return;
-                  switch (((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFr)
+                  switch (((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpj)
                   {
                   default: 
                     break;
                   case 1: 
-                    ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFu.setText(2131758677);
+                    ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpm.setText(2131758677);
                     break;
                   case 2: 
-                    ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).qFu.setText(2131758678);
+                    ((com.tencent.mm.plugin.facedetectaction.b.a)localObject2).rpm.setText(2131758678);
                   }
                 }
               }
@@ -996,7 +999,7 @@ public final class b
           }
         }
       });
-      this.qGL.post(new Runnable()
+      this.rqK.post(new Runnable()
       {
         public final void run()
         {
@@ -1006,22 +1009,22 @@ public final class b
             b.a(b.this, paramSurfaceTexture);
             b localb = b.this;
             Camera.PreviewCallback localPreviewCallback = b.w(b.this);
-            if (localb.qGM == null)
+            if (localb.rqL == null)
             {
-              ac.w("MicroMsg.FaceReflectCam", "hy: camera is null. setPreviewCallback failed");
+              ad.w("MicroMsg.FaceReflectCam", "hy: camera is null. setPreviewCallback failed");
               AppMethodBeat.o(104285);
               return;
             }
-            int j = localb.mDesiredPreviewWidth * localb.mDesiredPreviewHeight * ImageFormat.getBitsPerPixel(localb.qGM.getParameters().getPreviewFormat()) / 8;
+            int j = localb.mDesiredPreviewWidth * localb.mDesiredPreviewHeight * ImageFormat.getBitsPerPixel(localb.rqL.getParameters().getPreviewFormat()) / 8;
             int i = 0;
             while (i < 5)
             {
-              byte[] arrayOfByte = com.tencent.mm.plugin.facedetect.model.c.qxj.g(Integer.valueOf(j));
-              localb.qGM.addCallbackBuffer(arrayOfByte);
+              byte[] arrayOfByte = com.tencent.mm.plugin.facedetect.model.c.rgZ.g(Integer.valueOf(j));
+              localb.rqL.addCallbackBuffer(arrayOfByte);
               i += 1;
             }
-            localb.qGM.setPreviewCallbackWithBuffer(new b.9(localb, localPreviewCallback));
-            com.tencent.mm.plugin.facedetect.model.d.cnj().a(localb.qDN);
+            localb.rqL.setPreviewCallbackWithBuffer(new b.9(localb, localPreviewCallback));
+            com.tencent.mm.plugin.facedetect.model.d.csO().a(localb.rnD);
             AppMethodBeat.o(104285);
             return;
           }
@@ -1029,11 +1032,11 @@ public final class b
           {
             if (b.e(b.this) == 1)
             {
-              b.i(b.this).x(90016, "preview error", ai.getContext().getString(2131764085));
+              b.i(b.this).w(90016, "preview error", aj.getContext().getString(2131764085));
               AppMethodBeat.o(104285);
               return;
             }
-            ac.i("MicroMsg.FaceReflectCam", "preview error");
+            ad.i("MicroMsg.FaceReflectCam", "preview error");
             b.s(b.this).g("camera error", 90016, "preview error", "");
             AppMethodBeat.o(104285);
           }
@@ -1041,24 +1044,38 @@ public final class b
       });
       AppMethodBeat.o(104297);
       return;
-      this.qGf.setVisibility(0);
+      this.rpY.setVisibility(0);
     }
-    ac.i("MicroMsg.FaceReflectCam", "back thread is not running");
+    ad.i("MicroMsg.FaceReflectCam", "back thread is not running");
     AppMethodBeat.o(104297);
+  }
+  
+  private static boolean j(int paramInt1, int paramInt2, long paramLong)
+  {
+    AppMethodBeat.i(104306);
+    double d = paramInt1 * paramInt2 * 3.0D / 2.0D / 1024.0D / 1024.0D;
+    ad.d("MicroMsg.FaceReflectCam", "dataSizeInMB: %f, availableMemInMb: %d", new Object[] { Double.valueOf(d), Long.valueOf(paramLong) });
+    if (paramLong / d >= 5.0D)
+    {
+      AppMethodBeat.o(104306);
+      return true;
+    }
+    AppMethodBeat.o(104306);
+    return false;
   }
   
   public final void a(MMTextureView paramMMTextureView)
   {
     AppMethodBeat.i(104296);
-    this.qGJ = paramMMTextureView;
-    if (this.qGJ.isAvailable()) {
+    this.rqI = paramMMTextureView;
+    if (this.rqI.isAvailable()) {
       j(paramMMTextureView.getSurfaceTexture());
     }
-    this.qGJ.setSurfaceTextureListener(this);
-    this.qGJ.setVisibility(0);
-    this.qGJ.setAlpha(0.0F);
-    if ((this.qGW == 2) && (!this.qGV)) {
-      ap.n(new Runnable()
+    this.rqI.setSurfaceTextureListener(this);
+    this.rqI.setVisibility(0);
+    this.rqI.setAlpha(0.0F);
+    if ((this.rqV == 2) && (!this.rqU)) {
+      aq.o(new Runnable()
       {
         public final void run()
         {
@@ -1073,45 +1090,45 @@ public final class b
     AppMethodBeat.o(104296);
   }
   
-  public final void auj()
+  public final void awW()
   {
     AppMethodBeat.i(104302);
-    ac.i("MicroMsg.FaceReflectCam", "closeCamera start");
-    if (this.qGX != null)
+    ad.i("MicroMsg.FaceReflectCam", "closeCamera start");
+    if (this.rqW != null)
     {
-      this.qGX.quit();
-      this.qGX = null;
+      this.rqW.quit();
+      this.rqW = null;
     }
-    if (this.qGM != null) {}
+    if (this.rqL != null) {}
     try
     {
-      if (this.qBh)
+      if (this.rkX)
       {
-        this.qBh = false;
-        this.qGM.stopPreview();
-        this.qGM.setPreviewCallback(null);
-        ac.i("MicroMsg.FaceReflectCam", "stop preview, not previewing");
+        this.rkX = false;
+        this.rqL.stopPreview();
+        this.rqL.setPreviewCallback(null);
+        ad.i("MicroMsg.FaceReflectCam", "stop preview, not previewing");
       }
       try
       {
-        this.qGM.release();
-        this.qGM = null;
-        this.qGM = null;
+        this.rqL.release();
+        this.rqL = null;
+        this.rqL = null;
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          ac.i("MicroMsg.FaceReflectCam", "Error setting camera preview: " + localException2.getMessage());
-          this.qGM = null;
+          ad.i("MicroMsg.FaceReflectCam", "Error setting camera preview: " + localException2.getMessage());
+          this.rqL = null;
         }
       }
       finally
       {
-        this.qGM = null;
+        this.rqL = null;
         AppMethodBeat.o(104302);
       }
-      ac.i("MicroMsg.FaceReflectCam", "closeCamera end");
+      ad.i("MicroMsg.FaceReflectCam", "closeCamera end");
       AppMethodBeat.o(104302);
       return;
     }
@@ -1119,20 +1136,20 @@ public final class b
     {
       for (;;)
       {
-        ac.i("MicroMsg.FaceReflectCam", "Error setting camera preview: " + localException1.getMessage());
+        ad.i("MicroMsg.FaceReflectCam", "Error setting camera preview: " + localException1.getMessage());
       }
     }
   }
   
-  public final void coP()
+  public final void cuu()
   {
     AppMethodBeat.i(104303);
-    if (this.qGK == null)
+    if (this.rqJ == null)
     {
-      ac.i("MicroMsg.FaceReflectCam", "start camera thread");
-      this.qGK = com.tencent.e.c.d.gA("cameraBackground", 5);
-      this.qGK.start();
-      this.qGL = new ao(this.qGK.getLooper());
+      ad.i("MicroMsg.FaceReflectCam", "start camera thread");
+      this.rqJ = com.tencent.e.c.d.gY("cameraBackground", 5);
+      this.rqJ.start();
+      this.rqK = new ap(this.rqJ.getLooper());
     }
     AppMethodBeat.o(104303);
   }
@@ -1140,7 +1157,7 @@ public final class b
   public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(104299);
-    ac.i("MicroMsg.FaceReflectCam", "onSurfaceTextureAvailable, width: %s, height: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.FaceReflectCam", "onSurfaceTextureAvailable, width: %s, height: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     j(paramSurfaceTexture);
     AppMethodBeat.o(104299);
   }
@@ -1148,12 +1165,20 @@ public final class b
   public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(104298);
-    ac.i("MicroMsg.FaceReflectCam", "surfaceDestroyed");
-    if (this.qGL != null)
+    ad.i("MicroMsg.FaceReflectCam", "surfaceDestroyed");
+    if (this.rqK != null)
     {
-      this.qGL.post(new b.5(this));
-      if (this.qGK != null) {
-        ac.i("MicroMsg.FaceReflectCam", "stop camera thread");
+      this.rqK.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(104286);
+          b.this.awW();
+          AppMethodBeat.o(104286);
+        }
+      });
+      if (this.rqJ != null) {
+        ad.i("MicroMsg.FaceReflectCam", "stop camera thread");
       }
     }
     for (;;)
@@ -1162,32 +1187,32 @@ public final class b
       {
         Thread.sleep(500L, 0);
         if (Build.VERSION.SDK_INT >= 18) {
-          this.qGK.quitSafely();
+          this.rqJ.quitSafely();
         }
       }
       catch (InterruptedException paramSurfaceTexture)
       {
         try
         {
-          this.qGK.join();
-          this.qGK = null;
-          this.qGL = null;
-          ac.i("MicroMsg.FaceReflectCam", "stop camera thread finish");
+          this.rqJ.join();
+          this.rqJ = null;
+          this.rqK = null;
+          ad.i("MicroMsg.FaceReflectCam", "stop camera thread finish");
           AppMethodBeat.o(104298);
           return false;
           paramSurfaceTexture = paramSurfaceTexture;
-          ac.i("MicroMsg.FaceReflectCam", "background thread sleep error：" + paramSurfaceTexture.getMessage());
+          ad.i("MicroMsg.FaceReflectCam", "background thread sleep error：" + paramSurfaceTexture.getMessage());
           continue;
-          this.qGK.quit();
+          this.rqJ.quit();
           continue;
         }
         catch (InterruptedException paramSurfaceTexture)
         {
-          ac.i("MicroMsg.FaceReflectCam", "stop xbackground thread error：" + paramSurfaceTexture.getMessage());
+          ad.i("MicroMsg.FaceReflectCam", "stop xbackground thread error：" + paramSurfaceTexture.getMessage());
           continue;
         }
       }
-      ac.i("MicroMsg.FaceReflectCam", "back thread is not running");
+      ad.i("MicroMsg.FaceReflectCam", "back thread is not running");
     }
   }
   
@@ -1198,19 +1223,19 @@ public final class b
   public final void stopPreview()
   {
     AppMethodBeat.i(104301);
-    ac.i("MicroMsg.FaceReflectCam", "stopPreview, isPreviewing: %s", new Object[] { Boolean.valueOf(this.qGN) });
-    if (this.qGM != null)
+    ad.i("MicroMsg.FaceReflectCam", "stopPreview, isPreviewing: %s", new Object[] { Boolean.valueOf(this.rqM) });
+    if (this.rqL != null)
     {
-      this.qGM.stopPreview();
-      this.qGN = false;
-      com.tencent.mm.plugin.facedetect.model.c.qxj.avJ();
+      this.rqL.stopPreview();
+      this.rqM = false;
+      com.tencent.mm.plugin.facedetect.model.c.rgZ.ayw();
     }
     AppMethodBeat.o(104301);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectlight.ui.b
  * JD-Core Version:    0.7.0.1
  */

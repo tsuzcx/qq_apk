@@ -3,30 +3,32 @@ package com.tencent.mm.plugin.appbrand.page.web_renderingcache;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.sdk.e.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import d.g.a.a;
 import d.g.a.b;
-import d.g.b.k;
-import d.g.b.v.f;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.g.b.y.f;
+import d.l;
+import d.z;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheCleanupLogic;", "", "()V", "TAG", "", "clearCache", "", "appId", "versionType", "", "evictExpiredCache", "getCommLibVersionId", "useRelease", "", "getWxaAttrVersion", "toCommLibReader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;", "transaction", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;", "block", "Lkotlin/Function1;", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheCleanupLogic;", "", "()V", "TAG", "", "clearCache", "", "appId", "versionType", "", "evictExpiredCache", "getCommLibVersionId", "useRelease", "", "getWxaAttrVersion", "toCommLibReader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;", "transaction", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;", "block", "Lkotlin/Function1;", "plugin-appbrand-integration_release"})
 public final class d
 {
-  public static final d lGU;
+  public static final d mgG;
   
   static
   {
     AppMethodBeat.i(50968);
-    lGU = new d();
+    mgG = new d();
     AppMethodBeat.o(50968);
   }
   
-  public static final void bO(final String paramString, final int paramInt)
+  public static final void bR(final String paramString, final int paramInt)
   {
     AppMethodBeat.i(50967);
     Object localObject1 = (CharSequence)paramString;
@@ -42,38 +44,38 @@ public final class d
     {
       try
       {
-        localObject1 = new v.f();
-        ((v.f)localObject1).KUQ = "  appId=? ";
+        localObject1 = new y.f();
+        ((y.f)localObject1).MLV = "  appId=? ";
         switch (paramInt)
         {
         case 1: 
           localObject2 = new LinkedList();
-          localObject3 = ((c)localObject3).lGS;
-          localObject1 = (b)new a((v.f)localObject1, (LinkedList)localObject2, paramInt, paramString);
+          localObject3 = ((c)localObject3).jYQ;
+          localObject1 = (b)new a((y.f)localObject1, (LinkedList)localObject2, paramInt, paramString);
           Thread localThread = Thread.currentThread();
-          k.g(localThread, "Thread.currentThread()");
-          long l = ((f)localObject3).vE(localThread.getId());
-          ((b)localObject1).ay(localObject3);
-          ((f)localObject3).qL(l);
+          p.g(localThread, "Thread.currentThread()");
+          long l = ((f)localObject3).xO(localThread.getId());
+          ((b)localObject1).invoke(localObject3);
+          ((f)localObject3).sJ(l);
           localObject1 = ((Iterable)localObject2).iterator();
           if (!((Iterator)localObject1).hasNext()) {
             break label337;
           }
           i.deleteFile((String)((Iterator)localObject1).next());
           continue;
-          localObject2 = (String)localException.KUQ;
+          localObject2 = (String)localException.MLV;
         }
       }
       catch (Exception localException)
       {
-        ac.e("MicroMsg.AppBrand.WebRenderingCacheCleanupLogic", "clearCache with appId[" + paramString + "] versionType[" + paramInt + "], e=" + localException);
+        ad.e("MicroMsg.AppBrand.WebRenderingCacheCleanupLogic", "clearCache with appId[" + paramString + "] versionType[" + paramInt + "], e=" + localException);
         AppMethodBeat.o(50967);
         return;
       }
-      localException.KUQ = ((String)localObject2 + " and appVersionId = TEST");
+      localException.MLV = ((String)localObject2 + " and appVersionId = TEST");
       continue;
-      Object localObject2 = (String)localException.KUQ;
-      localException.KUQ = ((String)localObject2 + " and appVersionId = DEMO");
+      Object localObject2 = (String)localException.MLV;
+      localException.MLV = ((String)localObject2 + " and appVersionId = DEMO");
       continue;
       label337:
       AppMethodBeat.o(50967);
@@ -83,17 +85,17 @@ public final class d
     }
   }
   
-  public static final void brD()
+  public static final void bvH()
   {
     AppMethodBeat.i(50966);
-    final e locale = new e(h.brF());
+    final e locale = new e(h.bvJ());
     if ((!locale.exists()) || (!locale.isDirectory()))
     {
       locale.delete();
       AppMethodBeat.o(50966);
       return;
     }
-    ac.i("MicroMsg.AppBrand.WebRenderingCacheCleanupLogic", "evictExpiredCache enter");
+    ad.i("MicroMsg.AppBrand.WebRenderingCacheCleanupLogic", "evictExpiredCache enter");
     c localc = (c)j.T(c.class);
     if (localc != null)
     {
@@ -107,21 +109,21 @@ public final class d
     AppMethodBeat.o(50966);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;", "invoke", "com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheCleanupLogic$clearCache$1$1"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;", "invoke", "com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheCleanupLogic$clearCache$1$1"})
   static final class a
-    extends d.g.b.l
-    implements b<f, y>
+    extends q
+    implements b<f, z>
   {
-    a(v.f paramf, LinkedList paramLinkedList, int paramInt, String paramString)
+    a(y.f paramf, LinkedList paramLinkedList, int paramInt, String paramString)
     {
       super();
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheCleanupLogic$evictExpiredCache$1$3"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheCleanupLogic$evictExpiredCache$1$3"})
   static final class b
-    extends d.g.b.l
-    implements a<y>
+    extends q
+    implements a<z>
   {
     b(c paramc, e parame)
     {
@@ -129,10 +131,10 @@ public final class d
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheCleanupLogic$evictExpiredCache$1$4"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheCleanupLogic$evictExpiredCache$1$4"})
   static final class c
-    extends d.g.b.l
-    implements a<y>
+    extends q
+    implements a<z>
   {
     c(c paramc, e parame)
     {
@@ -140,10 +142,10 @@ public final class d
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class d
-    extends d.g.b.l
-    implements a<y>
+    extends q
+    implements a<z>
   {
     d(c paramc)
     {
@@ -151,10 +153,10 @@ public final class d
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class e
-    extends d.g.b.l
-    implements a<y>
+    extends q
+    implements a<z>
   {
     e(c paramc)
     {

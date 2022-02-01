@@ -3,7 +3,7 @@ package d.l.b.a.b.k.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
 import d.a.v;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.aa;
 import d.l.b.a.b.b.y;
 import d.l.b.a.b.e.a.a;
@@ -26,26 +26,26 @@ import java.util.List;
 public final class d
   implements c<d.l.b.a.b.b.a.c, g<?>>
 {
-  private final f LHx;
-  private final a LHy;
+  private final f Nyv;
+  private final a Nyw;
   
   public d(y paramy, aa paramaa, a parama)
   {
     AppMethodBeat.i(60278);
-    this.LHy = parama;
-    this.LHx = new f(paramy, paramaa);
+    this.Nyw = parama;
+    this.Nyv = new f(paramy, paramaa);
     AppMethodBeat.o(60278);
   }
   
   public final List<d.l.b.a.b.b.a.c> a(a.p paramp, d.l.b.a.b.e.b.c paramc)
   {
     AppMethodBeat.i(60275);
-    k.h(paramp, "proto");
-    k.h(paramc, "nameResolver");
-    Object localObject = (List)paramp.e(this.LHy.Lxh);
+    p.h(paramp, "proto");
+    p.h(paramc, "nameResolver");
+    Object localObject = (List)paramp.e(this.Nyw.Noe);
     paramp = (a.p)localObject;
     if (localObject == null) {
-      paramp = (List)v.KTF;
+      paramp = (List)v.MKE;
     }
     localObject = (Iterable)paramp;
     paramp = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
@@ -53,7 +53,7 @@ public final class d
     while (((Iterator)localObject).hasNext())
     {
       a.a locala = (a.a)((Iterator)localObject).next();
-      paramp.add(this.LHx.b(locala, paramc));
+      paramp.add(this.Nyv.b(locala, paramc));
     }
     paramp = (List)paramp;
     AppMethodBeat.o(60275);
@@ -63,12 +63,12 @@ public final class d
   public final List<d.l.b.a.b.b.a.c> a(a.r paramr, d.l.b.a.b.e.b.c paramc)
   {
     AppMethodBeat.i(60276);
-    k.h(paramr, "proto");
-    k.h(paramc, "nameResolver");
-    Object localObject = (List)paramr.e(this.LHy.Lxi);
+    p.h(paramr, "proto");
+    p.h(paramc, "nameResolver");
+    Object localObject = (List)paramr.e(this.Nyw.Nof);
     paramr = (a.r)localObject;
     if (localObject == null) {
-      paramr = (List)v.KTF;
+      paramr = (List)v.MKE;
     }
     localObject = (Iterable)paramr;
     paramr = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
@@ -76,7 +76,7 @@ public final class d
     while (((Iterator)localObject).hasNext())
     {
       a.a locala = (a.a)((Iterator)localObject).next();
-      paramr.add(this.LHx.b(locala, paramc));
+      paramr.add(this.Nyv.b(locala, paramc));
     }
     paramr = (List)paramr;
     AppMethodBeat.o(60276);
@@ -86,12 +86,12 @@ public final class d
   public final List<d.l.b.a.b.b.a.c> a(z paramz, a.f paramf)
   {
     AppMethodBeat.i(60272);
-    k.h(paramz, "container");
-    k.h(paramf, "proto");
-    Object localObject = (List)paramf.e(this.LHy.Lxf);
+    p.h(paramz, "container");
+    p.h(paramf, "proto");
+    Object localObject = (List)paramf.e(this.Nyw.Noc);
     paramf = (a.f)localObject;
     if (localObject == null) {
-      paramf = (List)v.KTF;
+      paramf = (List)v.MKE;
     }
     localObject = (Iterable)paramf;
     paramf = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
@@ -99,7 +99,7 @@ public final class d
     while (((Iterator)localObject).hasNext())
     {
       a.a locala = (a.a)((Iterator)localObject).next();
-      paramf.add(this.LHx.b(locala, paramz.KVO));
+      paramf.add(this.Nyv.b(locala, paramz.MMU));
     }
     paramz = (List)paramf;
     AppMethodBeat.o(60272);
@@ -109,9 +109,9 @@ public final class d
   public final List<d.l.b.a.b.b.a.c> a(z paramz, a.m paramm)
   {
     AppMethodBeat.i(60270);
-    k.h(paramz, "container");
-    k.h(paramm, "proto");
-    paramz = (List)v.KTF;
+    p.h(paramz, "container");
+    p.h(paramm, "proto");
+    paramz = (List)v.MKE;
     AppMethodBeat.o(60270);
     return paramz;
   }
@@ -119,17 +119,17 @@ public final class d
   public final List<d.l.b.a.b.b.a.c> a(z paramz, q paramq, b paramb)
   {
     AppMethodBeat.i(60269);
-    k.h(paramz, "container");
-    k.h(paramq, "proto");
-    k.h(paramb, "kind");
+    p.h(paramz, "container");
+    p.h(paramq, "proto");
+    p.h(paramb, "kind");
     if ((paramq instanceof a.c)) {
-      paramq = (List)((a.c)paramq).e(this.LHy.LwZ);
+      paramq = (List)((a.c)paramq).e(this.Nyw.NnW);
     }
     for (;;)
     {
       paramb = paramq;
       if (paramq == null) {
-        paramb = (List)v.KTF;
+        paramb = (List)v.MKE;
       }
       paramb = (Iterable)paramb;
       paramq = (Collection)new ArrayList(j.a(paramb, 10));
@@ -137,31 +137,31 @@ public final class d
       while (paramb.hasNext())
       {
         a.a locala = (a.a)paramb.next();
-        paramq.add(this.LHx.b(locala, paramz.KVO));
+        paramq.add(this.Nyv.b(locala, paramz.MMU));
       }
       if ((paramq instanceof a.h))
       {
-        paramq = (List)((a.h)paramq).e(this.LHy.Lxa);
+        paramq = (List)((a.h)paramq).e(this.Nyw.NnX);
       }
       else
       {
         if (!(paramq instanceof a.m)) {
           break;
         }
-        switch (e.cfA[paramb.ordinal()])
+        switch (e.cpQ[paramb.ordinal()])
         {
         default: 
           paramz = (Throwable)new IllegalStateException("Unsupported callable kind with property proto".toString());
           AppMethodBeat.o(60269);
           throw paramz;
         case 1: 
-          paramq = (List)((a.m)paramq).e(this.LHy.Lxb);
+          paramq = (List)((a.m)paramq).e(this.Nyw.NnY);
           break;
         case 2: 
-          paramq = (List)((a.m)paramq).e(this.LHy.Lxc);
+          paramq = (List)((a.m)paramq).e(this.Nyw.NnZ);
           break;
         case 3: 
-          paramq = (List)((a.m)paramq).e(this.LHy.Lxd);
+          paramq = (List)((a.m)paramq).e(this.Nyw.Noa);
         }
       }
     }
@@ -176,14 +176,14 @@ public final class d
   public final List<d.l.b.a.b.b.a.c> a(z paramz, q paramq, b paramb, int paramInt, a.t paramt)
   {
     AppMethodBeat.i(60273);
-    k.h(paramz, "container");
-    k.h(paramq, "callableProto");
-    k.h(paramb, "kind");
-    k.h(paramt, "proto");
-    paramb = (List)paramt.e(this.LHy.Lxg);
+    p.h(paramz, "container");
+    p.h(paramq, "callableProto");
+    p.h(paramb, "kind");
+    p.h(paramt, "proto");
+    paramb = (List)paramt.e(this.Nyw.Nod);
     paramq = paramb;
     if (paramb == null) {
-      paramq = (List)v.KTF;
+      paramq = (List)v.MKE;
     }
     paramb = (Iterable)paramq;
     paramq = (Collection)new ArrayList(j.a(paramb, 10));
@@ -191,7 +191,7 @@ public final class d
     while (paramb.hasNext())
     {
       paramt = (a.a)paramb.next();
-      paramq.add(this.LHx.b(paramt, paramz.KVO));
+      paramq.add(this.Nyv.b(paramt, paramz.MMU));
     }
     paramz = (List)paramq;
     AppMethodBeat.o(60273);
@@ -201,11 +201,11 @@ public final class d
   public final List<d.l.b.a.b.b.a.c> b(z.a parama)
   {
     AppMethodBeat.i(60268);
-    k.h(parama, "container");
-    Object localObject2 = (List)parama.LHz.e(this.LHy.LwY);
+    p.h(parama, "container");
+    Object localObject2 = (List)parama.Nyx.e(this.Nyw.NnV);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = (List)v.KTF;
+      localObject1 = (List)v.MKE;
     }
     localObject2 = (Iterable)localObject1;
     localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
@@ -213,7 +213,7 @@ public final class d
     while (((Iterator)localObject2).hasNext())
     {
       a.a locala = (a.a)((Iterator)localObject2).next();
-      ((Collection)localObject1).add(this.LHx.b(locala, parama.KVO));
+      ((Collection)localObject1).add(this.Nyv.b(locala, parama.MMU));
     }
     parama = (List)localObject1;
     AppMethodBeat.o(60268);
@@ -223,9 +223,9 @@ public final class d
   public final List<d.l.b.a.b.b.a.c> b(z paramz, a.m paramm)
   {
     AppMethodBeat.i(60271);
-    k.h(paramz, "container");
-    k.h(paramm, "proto");
-    paramz = (List)v.KTF;
+    p.h(paramz, "container");
+    p.h(paramm, "proto");
+    paramz = (List)v.MKE;
     AppMethodBeat.o(60271);
     return paramz;
   }
@@ -233,17 +233,17 @@ public final class d
   public final List<d.l.b.a.b.b.a.c> b(z paramz, q paramq, b paramb)
   {
     AppMethodBeat.i(60274);
-    k.h(paramz, "container");
-    k.h(paramq, "proto");
-    k.h(paramb, "kind");
-    paramz = (List)v.KTF;
+    p.h(paramz, "container");
+    p.h(paramq, "proto");
+    p.h(paramb, "kind");
+    paramz = (List)v.MKE;
     AppMethodBeat.o(60274);
     return paramz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.k.a.d
  * JD-Core Version:    0.7.0.1
  */

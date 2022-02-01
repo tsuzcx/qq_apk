@@ -8,16 +8,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class m
   implements h
 {
-  private final String aTm;
-  private int aUr;
-  private boolean aXS;
-  private com.google.android.exoplayer2.c.m aYi;
-  private String bgl;
-  private final com.google.android.exoplayer2.i.m bhC;
-  private final j bhD;
-  private int bhE;
-  private boolean bhF;
+  private int beL;
+  private com.google.android.exoplayer2.c.m biD;
+  private boolean bin;
+  private String bqF;
+  private final com.google.android.exoplayer2.i.m brW;
+  private final j brX;
+  private int brY;
+  private boolean brZ;
   private long frameDurationUs;
+  private final String language;
   private int state;
   private long timeUs;
   
@@ -30,19 +30,19 @@ public final class m
   {
     AppMethodBeat.i(92259);
     this.state = 0;
-    this.bhC = new com.google.android.exoplayer2.i.m(4);
-    this.bhC.data[0] = -1;
-    this.bhD = new j();
-    this.aTm = paramString;
+    this.brW = new com.google.android.exoplayer2.i.m(4);
+    this.brW.data[0] = -1;
+    this.brX = new j();
+    this.language = paramString;
     AppMethodBeat.o(92259);
   }
   
   public final void a(g paramg, v.d paramd)
   {
     AppMethodBeat.i(92260);
-    paramd.ts();
-    this.bgl = paramd.tt();
-    this.aYi = paramg.dW(paramd.getTrackId());
+    paramd.uR();
+    this.bqF = paramd.uS();
+    this.biD = paramg.eb(paramd.getTrackId());
     AppMethodBeat.o(92260);
   }
   
@@ -54,7 +54,7 @@ public final class m
   public final void t(com.google.android.exoplayer2.i.m paramm)
   {
     AppMethodBeat.i(92261);
-    while (paramm.vy() > 0)
+    while (paramm.wV() > 0)
     {
       Object localObject;
       int i;
@@ -75,20 +75,20 @@ public final class m
           if ((localObject[i] & 0xFF) == 255)
           {
             bool = true;
-            if ((!this.bhF) || ((localObject[i] & 0xE0) != 224)) {
+            if ((!this.brZ) || ((localObject[i] & 0xE0) != 224)) {
               break label164;
             }
           }
           for (int j = 1;; j = 0)
           {
-            this.bhF = bool;
+            this.brZ = bool;
             if (j == 0) {
               break label169;
             }
             paramm.setPosition(i + 1);
-            this.bhF = false;
-            this.bhC.data[1] = localObject[i];
-            this.bhE = 2;
+            this.brZ = false;
+            this.brW.data[1] = localObject[i];
+            this.brY = 2;
             this.state = 1;
             break;
             bool = false;
@@ -99,46 +99,46 @@ public final class m
         paramm.setPosition(k);
         break;
       case 1: 
-        i = Math.min(paramm.vy(), 4 - this.bhE);
-        paramm.readBytes(this.bhC.data, this.bhE, i);
-        this.bhE = (i + this.bhE);
-        if (this.bhE >= 4)
+        i = Math.min(paramm.wV(), 4 - this.brY);
+        paramm.readBytes(this.brW.data, this.brY, i);
+        this.brY = (i + this.brY);
+        if (this.brY >= 4)
         {
-          this.bhC.setPosition(0);
-          if (!j.a(this.bhC.readInt(), this.bhD))
+          this.brW.setPosition(0);
+          if (!j.a(this.brW.readInt(), this.brX))
           {
-            this.bhE = 0;
+            this.brY = 0;
             this.state = 1;
           }
           else
           {
-            this.aUr = this.bhD.aUr;
-            if (!this.aXS)
+            this.beL = this.brX.beL;
+            if (!this.bin)
             {
-              this.frameDurationUs = (1000000L * this.bhD.aXN / this.bhD.sampleRate);
-              localObject = Format.a(this.bgl, this.bhD.mimeType, -1, 4096, this.bhD.channels, this.bhD.sampleRate, null, null, this.aTm);
-              this.aYi.f((Format)localObject);
-              this.aXS = true;
+              this.frameDurationUs = (1000000L * this.brX.bii / this.brX.sampleRate);
+              localObject = Format.a(this.bqF, this.brX.mimeType, -1, 4096, this.brX.channels, this.brX.sampleRate, null, null, this.language);
+              this.biD.f((Format)localObject);
+              this.bin = true;
             }
-            this.bhC.setPosition(0);
-            this.aYi.a(this.bhC, 4);
+            this.brW.setPosition(0);
+            this.biD.a(this.brW, 4);
             this.state = 2;
           }
         }
         break;
       case 2: 
         label87:
-        i = Math.min(paramm.vy(), this.aUr - this.bhE);
+        i = Math.min(paramm.wV(), this.beL - this.brY);
         label164:
         label169:
         label176:
-        this.aYi.a(paramm, i);
-        this.bhE = (i + this.bhE);
-        if (this.bhE >= this.aUr)
+        this.biD.a(paramm, i);
+        this.brY = (i + this.brY);
+        if (this.brY >= this.beL)
         {
-          this.aYi.a(this.timeUs, 1, this.aUr, 0, null);
+          this.biD.a(this.timeUs, 1, this.beL, 0, null);
           this.timeUs += this.frameDurationUs;
-          this.bhE = 0;
+          this.brY = 0;
           this.state = 0;
         }
         break;
@@ -147,18 +147,18 @@ public final class m
     AppMethodBeat.o(92261);
   }
   
-  public final void tg()
+  public final void uF()
   {
     this.state = 0;
-    this.bhE = 0;
-    this.bhF = false;
+    this.brY = 0;
+    this.brZ = false;
   }
   
-  public final void th() {}
+  public final void uG() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.m
  * JD-Core Version:    0.7.0.1
  */

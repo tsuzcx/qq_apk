@@ -48,23 +48,27 @@ public final class ait
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
       localObject = c.n(paramVarArgs);
-      ((Path)localObject).moveTo(63.0F, 12.0F);
-      ((Path)localObject).cubicTo(64.656853F, 12.0F, 66.0F, 13.343145F, 66.0F, 15.0F);
-      ((Path)localObject).lineTo(66.0F, 57.0F);
-      ((Path)localObject).cubicTo(66.0F, 58.656853F, 64.656853F, 60.0F, 63.0F, 60.0F);
-      ((Path)localObject).lineTo(9.0F, 60.0F);
-      ((Path)localObject).cubicTo(7.343146F, 60.0F, 6.0F, 58.656853F, 6.0F, 57.0F);
-      ((Path)localObject).lineTo(6.0F, 15.0F);
-      ((Path)localObject).cubicTo(6.0F, 13.343145F, 7.343146F, 12.0F, 9.0F, 12.0F);
-      ((Path)localObject).lineTo(63.0F, 12.0F);
+      ((Path)localObject).moveTo(33.75F, 33.75F);
+      ((Path)localObject).lineTo(21.0F, 33.75F);
+      ((Path)localObject).lineTo(21.0F, 38.25F);
+      ((Path)localObject).lineTo(33.75F, 38.25F);
+      ((Path)localObject).lineTo(33.75F, 51.0F);
+      ((Path)localObject).lineTo(38.25F, 51.0F);
+      ((Path)localObject).lineTo(38.25F, 38.25F);
+      ((Path)localObject).lineTo(51.0F, 38.25F);
+      ((Path)localObject).lineTo(51.0F, 33.75F);
+      ((Path)localObject).lineTo(38.25F, 33.75F);
+      ((Path)localObject).lineTo(38.25F, 21.0F);
+      ((Path)localObject).lineTo(33.75F, 21.0F);
+      ((Path)localObject).lineTo(33.75F, 33.75F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(60.0F, 24.0F);
-      ((Path)localObject).lineTo(12.0F, 24.0F);
-      ((Path)localObject).lineTo(12.0F, 30.0F);
-      ((Path)localObject).lineTo(60.0F, 30.0F);
-      ((Path)localObject).lineTo(60.0F, 24.0F);
+      ((Path)localObject).moveTo(36.0F, 66.0F);
+      ((Path)localObject).cubicTo(19.431458F, 66.0F, 6.0F, 52.568542F, 6.0F, 36.0F);
+      ((Path)localObject).cubicTo(6.0F, 19.431458F, 19.431458F, 6.0F, 36.0F, 6.0F);
+      ((Path)localObject).cubicTo(52.568542F, 6.0F, 66.0F, 19.431458F, 66.0F, 36.0F);
+      ((Path)localObject).cubicTo(66.0F, 52.568542F, 52.568542F, 66.0F, 36.0F, 66.0F);
       ((Path)localObject).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
       localCanvas.drawPath((Path)localObject, localPaint);
       localCanvas.restore();
       c.l(paramVarArgs);
@@ -73,7 +77,7 @@ public final class ait
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.ait
  * JD-Core Version:    0.7.0.1
  */

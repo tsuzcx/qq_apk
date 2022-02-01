@@ -16,11 +16,11 @@ class MPGdprPolicyUtil$1$1
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(40082);
-    paramBundle = this.hqH.hqF;
+    paramBundle = this.hIZ.hIX;
     if (paramInt > 0) {}
     for (paramInt = 0;; paramInt = 1)
     {
-      paramBundle.og(paramInt);
+      paramBundle.oG(paramInt);
       AppMethodBeat.o(40082);
       return;
     }

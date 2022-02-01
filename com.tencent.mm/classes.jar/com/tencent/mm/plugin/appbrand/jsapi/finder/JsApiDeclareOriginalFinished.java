@@ -7,7 +7,7 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.finder.cgi.aw;
+import com.tencent.mm.plugin.finder.cgi.be;
 
 public final class JsApiDeclareOriginalFinished
   extends a<com.tencent.mm.plugin.appbrand.q>
@@ -22,28 +22,28 @@ public final class JsApiDeclareOriginalFinished
     
     static
     {
-      AppMethodBeat.i(186673);
+      AppMethodBeat.i(188406);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(186673);
+      AppMethodBeat.o(188406);
     }
     
     public RefreshFinderUserpageTask() {}
     
     public RefreshFinderUserpageTask(Parcel paramParcel)
     {
-      AppMethodBeat.i(186671);
+      AppMethodBeat.i(188404);
       e(paramParcel);
-      AppMethodBeat.o(186671);
+      AppMethodBeat.o(188404);
     }
     
-    public final void aLq()
+    public final void aOA()
     {
-      AppMethodBeat.i(186672);
-      aw localaw = new aw(u.axE(), 0L, null, 0, null);
-      localaw.qYP = true;
-      g.agi().a(localaw, 0);
-      bet();
-      AppMethodBeat.o(186672);
+      AppMethodBeat.i(188405);
+      be localbe = new be(u.aAu(), 0L, null, 0, null);
+      localbe.rKg = true;
+      g.aiU().a(localbe, 0);
+      bhX();
+      AppMethodBeat.o(188405);
     }
   }
 }

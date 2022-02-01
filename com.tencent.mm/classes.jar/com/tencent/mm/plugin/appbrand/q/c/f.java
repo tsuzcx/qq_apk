@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.q.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.g;
-import com.tencent.mm.ab.i;
+import com.tencent.mm.ac.g;
+import com.tencent.mm.ac.i;
 import com.tencent.mm.plugin.appbrand.q.a.b;
 import com.tencent.mm.plugin.appbrand.q.a.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class f
   extends b
@@ -22,38 +22,38 @@ public final class f
         switch (i)
         {
         case 2: 
-          ac.d("MicroMsg.NodeJs", parami);
+          ad.d("MicroMsg.NodeJs", parami);
           AppMethodBeat.o(147397);
           return;
         }
       }
       catch (g parami)
       {
-        ac.e("MicroMsg.NodeToXLog", "execute exception : %s", new Object[] { parami });
-        paramc.bpB();
+        ad.e("MicroMsg.NodeToXLog", "execute exception : %s", new Object[] { parami });
+        paramc.btC();
         AppMethodBeat.o(147397);
         return;
       }
-      ac.i("MicroMsg.NodeJs", parami);
+      ad.i("MicroMsg.NodeJs", parami);
       AppMethodBeat.o(147397);
       return;
-      ac.w("MicroMsg.NodeJs", parami);
+      ad.w("MicroMsg.NodeJs", parami);
       AppMethodBeat.o(147397);
       return;
-      ac.e("MicroMsg.NodeJs", parami);
+      ad.e("MicroMsg.NodeJs", parami);
       AppMethodBeat.o(147397);
       return;
     }
   }
   
-  public final int bpA()
+  public final int btB()
   {
     return 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.q.c.f
  * JD-Core Version:    0.7.0.1
  */

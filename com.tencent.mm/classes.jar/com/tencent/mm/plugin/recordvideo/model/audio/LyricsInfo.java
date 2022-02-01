@@ -4,19 +4,19 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.brn;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.bwa;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "lyricDatas", "", "Lcom/tencent/mm/protocal/protobuf/LyricsItemInfo;", "(Ljava/util/List;)V", "lyrics", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getLyrics", "()Ljava/util/ArrayList;", "setLyrics", "(Ljava/util/ArrayList;)V", "describeContents", "", "writeToParcel", "", "flags", "CREATOR", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "lyricDatas", "", "Lcom/tencent/mm/protocal/protobuf/LyricsItemInfo;", "(Ljava/util/List;)V", "lyrics", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getLyrics", "()Ljava/util/ArrayList;", "setLyrics", "(Ljava/util/ArrayList;)V", "describeContents", "", "writeToParcel", "", "flags", "CREATOR", "plugin-recordvideo_release"})
 public final class LyricsInfo
   implements Parcelable
 {
   public static final a CREATOR;
-  public ArrayList<byte[]> wrS;
+  public ArrayList<byte[]> xzJ;
   
   static
   {
@@ -35,21 +35,21 @@ public final class LyricsInfo
     {
       byte[] arrayOfByte = new byte[paramParcel.readInt()];
       paramParcel.readByteArray(arrayOfByte);
-      this.wrS.add(arrayOfByte);
+      this.xzJ.add(arrayOfByte);
       i += 1;
     }
     AppMethodBeat.o(75436);
   }
   
-  public LyricsInfo(List<? extends brn> paramList)
+  public LyricsInfo(List<? extends bwa> paramList)
   {
     AppMethodBeat.i(75434);
-    this.wrS = new ArrayList();
+    this.xzJ = new ArrayList();
     paramList = ((Iterable)paramList).iterator();
     while (paramList.hasNext())
     {
-      brn localbrn = (brn)paramList.next();
-      this.wrS.add(localbrn.toByteArray());
+      bwa localbwa = (bwa)paramList.next();
+      this.xzJ.add(localbwa.toByteArray());
     }
     AppMethodBeat.o(75434);
   }
@@ -62,9 +62,9 @@ public final class LyricsInfo
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(75433);
-    k.h(paramParcel, "parcel");
-    paramParcel.writeInt(this.wrS.size());
-    Iterator localIterator = ((Iterable)this.wrS).iterator();
+    p.h(paramParcel, "parcel");
+    paramParcel.writeInt(this.xzJ.size());
+    Iterator localIterator = ((Iterable)this.xzJ).iterator();
     while (localIterator.hasNext())
     {
       byte[] arrayOfByte = (byte[])localIterator.next();
@@ -74,14 +74,14 @@ public final class LyricsInfo
     AppMethodBeat.o(75433);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo;", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo;", "plugin-recordvideo_release"})
   public static final class a
     implements Parcelable.Creator<LyricsInfo>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.model.audio.LyricsInfo
  * JD-Core Version:    0.7.0.1
  */

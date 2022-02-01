@@ -11,22 +11,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract class f<VH extends RecyclerView.w>
   extends RecyclerView.a<VH>
 {
-  private boolean Rl;
-  Cursor Rn;
-  private DataSetObserver Rq;
+  private boolean Ta;
+  Cursor Tc;
+  private DataSetObserver Tf;
   private Context mContext;
   
   public f(Context paramContext, Cursor paramCursor)
   {
     this.mContext = paramContext;
-    this.Rn = paramCursor;
+    this.Tc = paramCursor;
     if (paramCursor != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.Rl = bool;
-      this.Rq = new a((byte)0);
-      if (this.Rn != null) {
-        this.Rn.registerDataSetObserver(this.Rq);
+      this.Ta = bool;
+      this.Tf = new a((byte)0);
+      if (this.Tc != null) {
+        this.Tc.registerDataSetObserver(this.Tf);
       }
       return;
     }
@@ -34,37 +34,37 @@ public abstract class f<VH extends RecyclerView.w>
   
   private Cursor swapCursor(Cursor paramCursor)
   {
-    if (paramCursor == this.Rn) {
+    if (paramCursor == this.Tc) {
       return null;
     }
-    Cursor localCursor = this.Rn;
-    if ((localCursor != null) && (this.Rq != null)) {
-      localCursor.unregisterDataSetObserver(this.Rq);
+    Cursor localCursor = this.Tc;
+    if ((localCursor != null) && (this.Tf != null)) {
+      localCursor.unregisterDataSetObserver(this.Tf);
     }
-    this.Rn = paramCursor;
-    if (this.Rn != null)
+    this.Tc = paramCursor;
+    if (this.Tc != null)
     {
-      if (this.Rq != null) {
-        this.Rn.registerDataSetObserver(this.Rq);
+      if (this.Tf != null) {
+        this.Tc.registerDataSetObserver(this.Tf);
       }
-      this.Rl = true;
-      this.arg.notifyChanged();
+      this.Ta = true;
+      this.asY.notifyChanged();
       return localCursor;
     }
-    this.Rl = false;
-    this.arg.notifyChanged();
+    this.Ta = false;
+    this.asY.notifyChanged();
     return localCursor;
   }
   
   public final void a(VH paramVH, int paramInt)
   {
-    if (!this.Rl) {
+    if (!this.Ta) {
       throw new IllegalStateException("this should only be called when the cursor is valid");
     }
-    if (!this.Rn.moveToPosition(paramInt)) {
+    if (!this.Tc.moveToPosition(paramInt)) {
       throw new IllegalStateException("couldn't move cursor to position ".concat(String.valueOf(paramInt)));
     }
-    a(paramVH, this.Rn);
+    a(paramVH, this.Tc);
   }
   
   public abstract void a(VH paramVH, Cursor paramCursor);
@@ -84,8 +84,8 @@ public abstract class f<VH extends RecyclerView.w>
   
   public final int getItemCount()
   {
-    if ((this.Rl) && (this.Rn != null)) {
-      return this.Rn.getCount();
+    if ((this.Ta) && (this.Tc != null)) {
+      return this.Tc.getCount();
     }
     return 0;
   }
@@ -100,7 +100,7 @@ public abstract class f<VH extends RecyclerView.w>
       AppMethodBeat.i(183904);
       super.onChanged();
       f.a(f.this, true);
-      f.this.arg.notifyChanged();
+      f.this.asY.notifyChanged();
       AppMethodBeat.o(183904);
     }
     
@@ -109,14 +109,14 @@ public abstract class f<VH extends RecyclerView.w>
       AppMethodBeat.i(183905);
       super.onInvalidated();
       f.a(f.this, false);
-      f.this.arg.notifyChanged();
+      f.this.asY.notifyChanged();
       AppMethodBeat.o(183905);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.message.f
  * JD-Core Version:    0.7.0.1
  */

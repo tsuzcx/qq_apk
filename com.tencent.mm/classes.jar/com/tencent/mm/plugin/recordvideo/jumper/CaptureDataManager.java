@@ -11,49 +11,49 @@ import java.util.List;
 
 public final class CaptureDataManager
 {
-  public static CaptureDataManager wqi;
-  private Bundle jOA;
-  public b wqh;
+  public static CaptureDataManager xxY;
+  private Bundle kiL;
+  public b xxX;
   
   static
   {
     AppMethodBeat.i(101494);
-    wqi = new CaptureDataManager();
+    xxY = new CaptureDataManager();
     AppMethodBeat.o(101494);
   }
   
   private CaptureDataManager()
   {
     AppMethodBeat.i(101490);
-    this.wqh = null;
-    this.jOA = new Bundle();
+    this.xxX = null;
+    this.kiL = new Bundle();
     AppMethodBeat.o(101490);
   }
   
   public final void a(Context paramContext, CaptureVideoNormalModel paramCaptureVideoNormalModel)
   {
     AppMethodBeat.i(101491);
-    if ((this.wqh == null) || (paramContext == null))
+    if ((this.xxX == null) || (paramContext == null))
     {
       AppMethodBeat.o(101491);
       return;
     }
-    this.wqh.a(paramContext, paramCaptureVideoNormalModel, this.jOA);
-    this.jOA.clear();
+    this.xxX.a(paramContext, paramCaptureVideoNormalModel, this.kiL);
+    this.kiL.clear();
     AppMethodBeat.o(101491);
   }
   
   public final void a(b paramb)
   {
-    this.wqh = paramb;
+    this.xxX = paramb;
   }
   
   public final boolean a(Context paramContext, a parama)
   {
     AppMethodBeat.i(101492);
-    if (this.wqh != null)
+    if (this.xxX != null)
     {
-      boolean bool = this.wqh.a(paramContext, this.jOA, parama);
+      boolean bool = this.xxX.a(paramContext, this.kiL, parama);
       AppMethodBeat.o(101492);
       return bool;
     }
@@ -61,16 +61,28 @@ public final class CaptureDataManager
     return false;
   }
   
-  public final void dvg()
+  public final void d(RecordMediaReportInfo paramRecordMediaReportInfo)
+  {
+    AppMethodBeat.i(209008);
+    if (this.xxX == null)
+    {
+      AppMethodBeat.o(209008);
+      return;
+    }
+    this.xxX.a(paramRecordMediaReportInfo, this.kiL);
+    AppMethodBeat.o(209008);
+  }
+  
+  public final void dFB()
   {
     AppMethodBeat.i(101493);
-    this.jOA.clear();
+    this.kiL.clear();
     AppMethodBeat.o(101493);
   }
   
   public final Bundle getExtData()
   {
-    return this.jOA;
+    return this.kiL;
   }
   
   public static class CaptureVideoNormalModel
@@ -79,11 +91,11 @@ public final class CaptureDataManager
     public static final Parcelable.Creator<CaptureVideoNormalModel> CREATOR;
     public String thumbPath;
     public String videoPath;
-    public Boolean wqj;
-    public Long wqk;
-    public Boolean wql;
-    private RecordMediaReportInfo wqm;
-    private List<String> wqn;
+    public Boolean xxZ;
+    public Long xya;
+    public Boolean xyb;
+    private RecordMediaReportInfo xyc;
+    private List<String> xyd;
     
     static
     {
@@ -95,33 +107,67 @@ public final class CaptureDataManager
     protected CaptureVideoNormalModel(Parcel paramParcel)
     {
       AppMethodBeat.i(101488);
-      this.wqn = new ArrayList();
-      this.wqj = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+      this.xyd = new ArrayList();
+      this.xxZ = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
       this.videoPath = paramParcel.readString();
       this.thumbPath = paramParcel.readString();
-      this.wqk = ((Long)paramParcel.readValue(Long.class.getClassLoader()));
-      this.wql = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
-      this.wqm = ((RecordMediaReportInfo)paramParcel.readParcelable(RecordMediaReportInfo.class.getClassLoader()));
-      this.wqn = paramParcel.readArrayList(ArrayList.class.getClassLoader());
+      this.xya = ((Long)paramParcel.readValue(Long.class.getClassLoader()));
+      this.xyb = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+      this.xyc = ((RecordMediaReportInfo)paramParcel.readParcelable(RecordMediaReportInfo.class.getClassLoader()));
+      this.xyd = paramParcel.readArrayList(ArrayList.class.getClassLoader());
       AppMethodBeat.o(101488);
     }
     
     public CaptureVideoNormalModel(Boolean paramBoolean1, String paramString1, String paramString2, Long paramLong, Boolean paramBoolean2, RecordMediaReportInfo paramRecordMediaReportInfo)
     {
-      AppMethodBeat.i(199484);
-      this.wqn = new ArrayList();
-      this.wqj = paramBoolean1;
+      AppMethodBeat.i(209006);
+      this.xyd = new ArrayList();
+      this.xxZ = paramBoolean1;
       this.videoPath = paramString1;
       this.thumbPath = paramString2;
-      this.wqk = paramLong;
-      this.wql = paramBoolean2;
-      this.wqm = paramRecordMediaReportInfo;
-      AppMethodBeat.o(199484);
+      this.xya = paramLong;
+      this.xyb = paramBoolean2;
+      this.xyc = paramRecordMediaReportInfo;
+      AppMethodBeat.o(209006);
     }
     
-    public final String auN()
+    public final String axA()
     {
       return this.thumbPath;
+    }
+    
+    public final Boolean dFC()
+    {
+      return this.xxZ;
+    }
+    
+    public final Long dFD()
+    {
+      return this.xya;
+    }
+    
+    public final Boolean dFE()
+    {
+      return this.xyb;
+    }
+    
+    public final RecordMediaReportInfo dFF()
+    {
+      AppMethodBeat.i(101486);
+      if (this.xyc == null)
+      {
+        localRecordMediaReportInfo = new RecordMediaReportInfo();
+        AppMethodBeat.o(101486);
+        return localRecordMediaReportInfo;
+      }
+      RecordMediaReportInfo localRecordMediaReportInfo = this.xyc;
+      AppMethodBeat.o(101486);
+      return localRecordMediaReportInfo;
+    }
+    
+    public final List<String> dFG()
+    {
+      return this.xyd;
     }
     
     public int describeContents()
@@ -129,47 +175,13 @@ public final class CaptureDataManager
       return 0;
     }
     
-    public final Boolean dvh()
+    public final void fb(List<String> paramList)
     {
-      return this.wqj;
-    }
-    
-    public final Long dvi()
-    {
-      return this.wqk;
-    }
-    
-    public final Boolean dvj()
-    {
-      return this.wql;
-    }
-    
-    public final RecordMediaReportInfo dvk()
-    {
-      AppMethodBeat.i(101486);
-      if (this.wqm == null)
-      {
-        localRecordMediaReportInfo = new RecordMediaReportInfo();
-        AppMethodBeat.o(101486);
-        return localRecordMediaReportInfo;
-      }
-      RecordMediaReportInfo localRecordMediaReportInfo = this.wqm;
-      AppMethodBeat.o(101486);
-      return localRecordMediaReportInfo;
-    }
-    
-    public final List<String> dvl()
-    {
-      return this.wqn;
-    }
-    
-    public final void eM(List<String> paramList)
-    {
-      AppMethodBeat.i(199485);
+      AppMethodBeat.i(209007);
       if (paramList != null) {
-        this.wqn.addAll(paramList);
+        this.xyd.addAll(paramList);
       }
-      AppMethodBeat.o(199485);
+      AppMethodBeat.o(209007);
     }
     
     public final String getVideoPath()
@@ -180,25 +192,27 @@ public final class CaptureDataManager
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(101487);
-      paramParcel.writeValue(this.wqj);
+      paramParcel.writeValue(this.xxZ);
       paramParcel.writeString(this.videoPath);
       paramParcel.writeString(this.thumbPath);
-      paramParcel.writeValue(this.wqk);
-      paramParcel.writeValue(this.wql);
-      paramParcel.writeParcelable(this.wqm, paramInt);
-      paramParcel.writeList(this.wqn);
+      paramParcel.writeValue(this.xya);
+      paramParcel.writeValue(this.xyb);
+      paramParcel.writeParcelable(this.xyc, paramInt);
+      paramParcel.writeList(this.xyd);
       AppMethodBeat.o(101487);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void dvm();
+    public abstract void dFH();
   }
   
   public static abstract interface b
   {
     public abstract void a(Context paramContext, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel, Bundle paramBundle);
+    
+    public abstract void a(RecordMediaReportInfo paramRecordMediaReportInfo, Bundle paramBundle);
     
     public abstract boolean a(Context paramContext, Bundle paramBundle, CaptureDataManager.a parama);
   }

@@ -11,6 +11,7 @@ import com.tencent.mapsdk.raster.model.CustomLayerOptions;
 import com.tencent.mapsdk.raster.model.IndoorBuilding;
 import com.tencent.mapsdk.raster.model.Language;
 import com.tencent.mapsdk.raster.model.LatLng;
+import com.tencent.mapsdk.raster.model.MapPoi;
 import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.mapsdk.raster.model.MarkerOptions;
 import com.tencent.mapsdk.raster.model.Polygon;
@@ -19,6 +20,8 @@ import com.tencent.mapsdk.raster.model.Polyline;
 import com.tencent.mapsdk.raster.model.PolylineOptions;
 import com.tencent.mapsdk.raster.model.TileOverlay;
 import com.tencent.mapsdk.raster.model.TileOverlayOptions;
+import com.tencent.tencentmap.mapsdk.maps.model.GroundOverlay;
+import com.tencent.tencentmap.mapsdk.maps.model.GroundOverlayOptions;
 
 public abstract interface TencentMap
   extends MapController
@@ -29,13 +32,30 @@ public abstract interface TencentMap
   public static final int MAP_TYPE_DARK = 1008;
   public static final int MAP_TYPE_NORMAL = 1000;
   public static final int MAP_TYPE_SATELLITE = 1011;
-  public static final String VERSION = "1.2.3";
   
   public abstract Circle addCircle(CircleOptions paramCircleOptions);
   
   public abstract CustomLayer addCustomLayer(CustomLayerOptions paramCustomLayerOptions);
   
+  public abstract GroundOverlay addGroundOverlay(GroundOverlayOptions paramGroundOverlayOptions);
+  
+  public abstract void addInfoWindowAdapter(InfoWindowAdapter paramInfoWindowAdapter);
+  
   public abstract Marker addMarker(MarkerOptions paramMarkerOptions);
+  
+  public abstract void addOnInfoWindowClickListener(OnInfoWindowClickListener paramOnInfoWindowClickListener);
+  
+  public abstract void addOnMapCameraChangeListener(OnMapCameraChangeListener paramOnMapCameraChangeListener);
+  
+  public abstract void addOnMapClickListener(OnMapClickListener paramOnMapClickListener);
+  
+  public abstract void addOnMapLoadedListener(OnMapLoadedListener paramOnMapLoadedListener);
+  
+  public abstract void addOnMapLongClickListener(OnMapLongClickListener paramOnMapLongClickListener);
+  
+  public abstract void addOnMarkerClickListener(OnMarkerClickListener paramOnMarkerClickListener);
+  
+  public abstract void addOnMarkerDraggedListener(OnMarkerDraggedListener paramOnMarkerDraggedListener);
   
   public abstract Polygon addPolygon(PolygonOptions paramPolygonOptions);
   
@@ -91,6 +111,22 @@ public abstract interface TencentMap
   
   public abstract void moveCamera(CameraUpdate paramCameraUpdate);
   
+  public abstract void remmoveOnInfoWindowClickListener(OnInfoWindowClickListener paramOnInfoWindowClickListener);
+  
+  public abstract void removeInfoWindowAdapter(InfoWindowAdapter paramInfoWindowAdapter);
+  
+  public abstract void removeOnMapCameraChangeListener(OnMapCameraChangeListener paramOnMapCameraChangeListener);
+  
+  public abstract void removeOnMapClickListener(OnMapClickListener paramOnMapClickListener);
+  
+  public abstract void removeOnMapLoadedListener(OnMapLoadedListener paramOnMapLoadedListener);
+  
+  public abstract void removeOnMapLongClickListener(OnMapLongClickListener paramOnMapLongClickListener);
+  
+  public abstract void removeOnMarkerClickListener(OnMarkerClickListener paramOnMarkerClickListener);
+  
+  public abstract void removeOnMarkerDraggedListener(OnMarkerDraggedListener paramOnMarkerDraggedListener);
+  
   public abstract void removeTencentMapGestureListener(TencentMapGestureListener paramTencentMapGestureListener);
   
   public abstract void scrollBy(float paramFloat1, float paramFloat2);
@@ -127,7 +163,7 @@ public abstract interface TencentMap
   
   public abstract void setOnIndoorStateChangeListener(OnIndoorStateChangeListener paramOnIndoorStateChangeListener);
   
-  public abstract void setOnInfoWindowClickListener(TencentMap.OnInfoWindowClickListener paramOnInfoWindowClickListener);
+  public abstract void setOnInfoWindowClickListener(OnInfoWindowClickListener paramOnInfoWindowClickListener);
   
   public abstract void setOnMapCameraChangeListener(OnMapCameraChangeListener paramOnMapCameraChangeListener);
   
@@ -137,9 +173,9 @@ public abstract interface TencentMap
   
   public abstract void setOnMapLongClickListener(OnMapLongClickListener paramOnMapLongClickListener);
   
-  public abstract void setOnMapPoiClickListener(TencentMap.OnMapPoiClickListener paramOnMapPoiClickListener);
+  public abstract void setOnMapPoiClickListener(OnMapPoiClickListener paramOnMapPoiClickListener);
   
-  public abstract void setOnMarkerClickListener(TencentMap.OnMarkerClickListener paramOnMarkerClickListener);
+  public abstract void setOnMarkerClickListener(OnMarkerClickListener paramOnMarkerClickListener);
   
   public abstract void setOnMarkerDraggedListener(OnMarkerDraggedListener paramOnMarkerDraggedListener);
   
@@ -181,6 +217,11 @@ public abstract interface TencentMap
     public abstract boolean onIndoorLevelActivated(IndoorBuilding paramIndoorBuilding);
   }
   
+  public static abstract interface OnInfoWindowClickListener
+  {
+    public abstract void onInfoWindowClick(Marker paramMarker);
+  }
+  
   public static abstract interface OnMapCameraChangeListener
   {
     public abstract void onCameraChange(CameraPosition paramCameraPosition);
@@ -201,6 +242,16 @@ public abstract interface TencentMap
   public static abstract interface OnMapLongClickListener
   {
     public abstract void onMapLongClick(LatLng paramLatLng);
+  }
+  
+  public static abstract interface OnMapPoiClickListener
+  {
+    public abstract void onClicked(MapPoi paramMapPoi);
+  }
+  
+  public static abstract interface OnMarkerClickListener
+  {
+    public abstract boolean onMarkerClick(Marker paramMarker);
   }
   
   public static abstract interface OnMarkerDraggedListener

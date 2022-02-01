@@ -32,18 +32,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.aa;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.d;
-import com.tencent.mm.model.ah;
-import com.tencent.mm.model.az;
-import com.tencent.mm.pluginsdk.j.a;
-import com.tencent.mm.pluginsdk.j.b;
-import com.tencent.mm.pluginsdk.j.f;
-import com.tencent.mm.pluginsdk.j.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.model.ai;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.pluginsdk.l.f;
+import com.tencent.mm.pluginsdk.l.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.s.b;
@@ -51,58 +49,58 @@ import com.tencent.mm.ui.s.b;
 public class VideoRecorderUI
   extends MMActivity
 {
-  private static VideoRecorderUI zUU;
-  private ProgressDialog fts;
-  private SurfaceHolder jSi;
-  private String kMh;
+  private static VideoRecorderUI Bmy;
+  private boolean BmA;
+  private String BmB;
+  private View BmC;
+  private View BmD;
+  SurfaceHolder.Callback BmE;
+  private String Bmf;
+  private com.tencent.mm.pluginsdk.l.b Bmj;
+  private ImageButton Bmk;
+  private boolean Bml;
+  private boolean Bmm;
+  private TextView Bmn;
+  private LinearLayout Bmo;
+  private ImageView Bmp;
+  private ImageButton Bmq;
+  private ImageView Bmr;
+  private TextView Bms;
+  private TextView Bmt;
+  private TextView Bmu;
+  private int Bmv;
+  private boolean Bmw;
+  private ImageButton Bmx;
+  private boolean Bmz;
+  private ProgressDialog fMu;
+  private SurfaceHolder kmw;
+  private String liK;
   private SurfaceView mSurfaceView;
-  private long oPI;
-  private au oPT;
+  private av ptD;
+  private long ptq;
   private String talker;
-  private ao uYY;
   private String videoPath;
-  private String zUB;
-  private b zUF;
-  private ImageButton zUG;
-  private boolean zUH;
-  private boolean zUI;
-  private TextView zUJ;
-  private LinearLayout zUK;
-  private ImageView zUL;
-  private ImageButton zUM;
-  private ImageView zUN;
-  private TextView zUO;
-  private TextView zUP;
-  private TextView zUQ;
-  private int zUR;
-  private boolean zUS;
-  private ImageButton zUT;
-  private boolean zUV;
-  private boolean zUW;
-  private String zUX;
-  private View zUY;
-  private View zUZ;
-  SurfaceHolder.Callback zVa;
+  private ap wdW;
   
   public VideoRecorderUI()
   {
     AppMethodBeat.i(29345);
     this.mSurfaceView = null;
-    this.jSi = null;
+    this.kmw = null;
     this.talker = null;
-    this.fts = null;
-    this.zUH = false;
-    this.zUI = false;
-    this.oPI = -1L;
-    this.zUM = null;
-    this.zUR = 0;
-    this.zUV = false;
-    this.zUW = true;
+    this.fMu = null;
+    this.Bml = false;
+    this.Bmm = false;
+    this.ptq = -1L;
+    this.Bmq = null;
+    this.Bmv = 0;
+    this.Bmz = false;
+    this.BmA = true;
     this.videoPath = null;
-    this.zUB = null;
-    this.kMh = null;
-    this.zUX = null;
-    this.oPT = new au(new au.a()
+    this.Bmf = null;
+    this.liK = null;
+    this.BmB = null;
+    this.ptD = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
@@ -112,7 +110,7 @@ public class VideoRecorderUI
         }
         long l1 = VideoRecorderUI.a(VideoRecorderUI.this);
         l1 = SystemClock.elapsedRealtime() - l1;
-        VideoRecorderUI.b(VideoRecorderUI.this).setText(f.qy((int)(l1 / 1000L)));
+        VideoRecorderUI.b(VideoRecorderUI.this).setText(f.qY((int)(l1 / 1000L)));
         if ((l1 <= 30000L) && (l1 >= 20000L))
         {
           long l2 = (30000L - l1) / 1000L;
@@ -121,7 +119,7 @@ public class VideoRecorderUI
         }
         while (l1 >= 30000L)
         {
-          ac.v("MicroMsg.VideoRecorderUI", "record stop on countdown");
+          ad.v("MicroMsg.VideoRecorderUI", "record stop on countdown");
           VideoRecorderUI.d(VideoRecorderUI.this);
           VideoRecorderUI.a(VideoRecorderUI.this, -1L);
           AppMethodBeat.o(29331);
@@ -141,7 +139,7 @@ public class VideoRecorderUI
         }
       }
     }, true);
-    this.uYY = new ao()
+    this.wdW = new ap()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -151,12 +149,12 @@ public class VideoRecorderUI
         AppMethodBeat.o(29342);
       }
     };
-    this.zVa = new SurfaceHolder.Callback()
+    this.BmE = new SurfaceHolder.Callback()
     {
       public final void surfaceChanged(SurfaceHolder paramAnonymousSurfaceHolder, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(29335);
-        ac.d("MicroMsg.VideoRecorderUI", "surfaceChanged for:" + paramAnonymousInt1 + " w:" + paramAnonymousInt2 + " h:" + paramAnonymousInt3);
+        ad.d("MicroMsg.VideoRecorderUI", "surfaceChanged for:" + paramAnonymousInt1 + " w:" + paramAnonymousInt2 + " h:" + paramAnonymousInt3);
         if (VideoRecorderUI.h(VideoRecorderUI.this).b(paramAnonymousSurfaceHolder) != 0) {
           VideoRecorderUI.s(VideoRecorderUI.this);
         }
@@ -169,7 +167,7 @@ public class VideoRecorderUI
       public final void surfaceCreated(SurfaceHolder paramAnonymousSurfaceHolder)
       {
         AppMethodBeat.i(29333);
-        ac.d("MicroMsg.VideoRecorderUI", "surfaceCreated");
+        ad.d("MicroMsg.VideoRecorderUI", "surfaceCreated");
         if (VideoRecorderUI.h(VideoRecorderUI.this).b(VideoRecorderUI.this, VideoRecorderUI.q(VideoRecorderUI.this)) != 0) {
           VideoRecorderUI.s(VideoRecorderUI.this);
         }
@@ -179,19 +177,19 @@ public class VideoRecorderUI
       public final void surfaceDestroyed(SurfaceHolder paramAnonymousSurfaceHolder)
       {
         AppMethodBeat.i(29334);
-        ac.d("MicroMsg.VideoRecorderUI", "surfaceDestroyed");
+        ad.d("MicroMsg.VideoRecorderUI", "surfaceDestroyed");
         VideoRecorderUI.b(VideoRecorderUI.this, true);
-        VideoRecorderUI.h(VideoRecorderUI.this).eMn();
+        VideoRecorderUI.h(VideoRecorderUI.this).fbk();
         AppMethodBeat.o(29334);
       }
     };
     AppMethodBeat.o(29345);
   }
   
-  private void ebf()
+  private void enw()
   {
     AppMethodBeat.i(29352);
-    if (this.zUH)
+    if (this.Bml)
     {
       h.a(this, getString(2131764695), getString(2131755906), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
@@ -212,7 +210,7 @@ public class VideoRecorderUI
     AppMethodBeat.o(29352);
   }
   
-  private void ebg()
+  private void enx()
   {
     AppMethodBeat.i(29357);
     h.a(this, 2131764670, 2131755906, new DialogInterface.OnClickListener()
@@ -220,7 +218,7 @@ public class VideoRecorderUI
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(29336);
-        VideoRecorderUI.h(VideoRecorderUI.this).eMn();
+        VideoRecorderUI.h(VideoRecorderUI.this).fbk();
         VideoRecorderUI.this.finish();
         AppMethodBeat.o(29336);
       }
@@ -239,26 +237,26 @@ public class VideoRecorderUI
   {
     AppMethodBeat.i(29353);
     getSupportActionBar().hide();
-    this.zUO.setText(f.qy(0));
-    this.zUY.setVisibility(8);
-    this.zUZ.setVisibility(8);
-    this.zUN.setVisibility(0);
-    this.zUH = false;
-    this.zUK.setVisibility(0);
+    this.Bms.setText(f.qY(0));
+    this.BmC.setVisibility(8);
+    this.BmD.setVisibility(8);
+    this.Bmr.setVisibility(0);
+    this.Bml = false;
+    this.Bmo.setVisibility(0);
     this.mSurfaceView.setVisibility(0);
-    this.zUJ.setVisibility(8);
-    this.zUM.setVisibility(8);
-    this.zUO.setText(f.qy(0));
-    this.zUL.setVisibility(8);
-    this.zUG.setEnabled(true);
-    this.zUT.setVisibility(0);
+    this.Bmn.setVisibility(8);
+    this.Bmq.setVisibility(8);
+    this.Bms.setText(f.qY(0));
+    this.Bmp.setVisibility(8);
+    this.Bmk.setEnabled(true);
+    this.Bmx.setVisibility(0);
     AppMethodBeat.o(29353);
   }
   
   public void dealContentView(View paramView)
   {
     AppMethodBeat.i(29350);
-    aj.m(aj.a(getWindow(), null), getBodyView());
+    al.n(al.a(getWindow(), null), getBodyView());
     ((ViewGroup)getBodyView().getParent()).removeView(getBodyView());
     ((ViewGroup)getWindow().getDecorView()).addView(getBodyView(), 0);
     AppMethodBeat.o(29350);
@@ -269,7 +267,7 @@ public class VideoRecorderUI
     boolean bool = true;
     AppMethodBeat.i(29359);
     int i;
-    if (ae.fJd.fEU == 1)
+    if (ae.gcE.fYt == 1)
     {
       i = 1;
       if (i == 0) {
@@ -278,8 +276,8 @@ public class VideoRecorderUI
     }
     for (;;)
     {
-      this.zUS = bool;
-      if (this.zUS) {
+      this.Bmw = bool;
+      if (this.Bmw) {
         break label81;
       }
       AppMethodBeat.o(29359);
@@ -306,130 +304,145 @@ public class VideoRecorderUI
     int j = 1;
     AppMethodBeat.i(29349);
     this.mSurfaceView = ((SurfaceView)findViewById(2131305558));
-    this.zUK = ((LinearLayout)findViewById(2131306384));
-    this.jSi = this.mSurfaceView.getHolder();
-    this.jSi.addCallback(this.zVa);
-    this.jSi.setType(3);
-    this.zUN = ((ImageView)findViewById(2131306387));
-    this.zUT = ((ImageButton)findViewById(2131306416));
-    this.zUO = ((TextView)findViewById(2131306385));
-    this.zUY = findViewById(2131306386);
-    this.zUZ = findViewById(2131306380);
-    this.zUO.setText(f.qy(0));
-    this.zUF = new b();
-    this.zUJ = ((TextView)findViewById(2131306421));
-    this.zUP = ((TextView)findViewById(2131306388));
-    this.zUQ = ((TextView)findViewById(2131306381));
-    this.zUG = ((ImageButton)findViewById(2131306418));
-    this.zUG.setOnClickListener(new View.OnClickListener()
+    this.Bmo = ((LinearLayout)findViewById(2131306384));
+    this.kmw = this.mSurfaceView.getHolder();
+    this.kmw.addCallback(this.BmE);
+    this.kmw.setType(3);
+    this.Bmr = ((ImageView)findViewById(2131306387));
+    this.Bmx = ((ImageButton)findViewById(2131306416));
+    this.Bms = ((TextView)findViewById(2131306385));
+    this.BmC = findViewById(2131306386);
+    this.BmD = findViewById(2131306380);
+    this.Bms.setText(f.qY(0));
+    this.Bmj = new com.tencent.mm.pluginsdk.l.b();
+    this.Bmn = ((TextView)findViewById(2131306421));
+    this.Bmt = ((TextView)findViewById(2131306388));
+    this.Bmu = ((TextView)findViewById(2131306381));
+    this.Bmk = ((ImageButton)findViewById(2131306418));
+    this.Bmk.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(29340);
-        az.ayM();
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sysvideo/ui/video/VideoRecorderUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        ba.aBQ();
         if (!com.tencent.mm.model.c.isSDCardAvailable())
         {
           t.g(VideoRecorderUI.this, null);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sysvideo/ui/video/VideoRecorderUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(29340);
           return;
         }
-        if (VideoRecorderUI.k(VideoRecorderUI.this))
-        {
+        if (VideoRecorderUI.k(VideoRecorderUI.this)) {
           VideoRecorderUI.d(VideoRecorderUI.this);
-          AppMethodBeat.o(29340);
-          return;
         }
-        if (VideoRecorderUI.l(VideoRecorderUI.this))
+        for (;;)
         {
-          h.a(VideoRecorderUI.this, VideoRecorderUI.this.getString(2131764696), VideoRecorderUI.this.getString(2131755906), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-          {
-            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-            {
-              AppMethodBeat.i(29339);
-              VideoRecorderUI.m(VideoRecorderUI.this).setImageResource(2131234477);
-              VideoRecorderUI.n(VideoRecorderUI.this);
-              AppMethodBeat.o(29339);
-            }
-          }, new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
-          });
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sysvideo/ui/video/VideoRecorderUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(29340);
           return;
+          if (VideoRecorderUI.l(VideoRecorderUI.this))
+          {
+            h.a(VideoRecorderUI.this, VideoRecorderUI.this.getString(2131764696), VideoRecorderUI.this.getString(2131755906), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            {
+              public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(29339);
+                VideoRecorderUI.m(VideoRecorderUI.this).setImageResource(2131234477);
+                VideoRecorderUI.n(VideoRecorderUI.this);
+                AppMethodBeat.o(29339);
+              }
+            }, new DialogInterface.OnClickListener()
+            {
+              public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
+            });
+          }
+          else
+          {
+            VideoRecorderUI.m(VideoRecorderUI.this).setImageResource(2131234477);
+            VideoRecorderUI.n(VideoRecorderUI.this);
+          }
         }
-        VideoRecorderUI.m(VideoRecorderUI.this).setImageResource(2131234477);
-        VideoRecorderUI.n(VideoRecorderUI.this);
-        AppMethodBeat.o(29340);
       }
     });
-    b localb;
+    com.tencent.mm.pluginsdk.l.b localb;
     label314:
     Object localObject;
     if (d.getNumberOfCameras() > 1)
     {
-      this.zUT.setVisibility(0);
-      this.zUT.setOnClickListener(new View.OnClickListener()
+      this.Bmx.setVisibility(0);
+      this.Bmx.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(29341);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sysvideo/ui/video/VideoRecorderUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           VideoRecorderUI.o(VideoRecorderUI.this).setEnabled(false);
           VideoRecorderUI.p(VideoRecorderUI.this).sendEmptyMessageDelayed(0, 3000L);
           VideoRecorderUI.a(VideoRecorderUI.this, true);
-          VideoRecorderUI.h(VideoRecorderUI.this).eMn();
+          VideoRecorderUI.h(VideoRecorderUI.this).fbk();
           if ((VideoRecorderUI.h(VideoRecorderUI.this).b(VideoRecorderUI.this, VideoRecorderUI.q(VideoRecorderUI.this)) != 0) || (VideoRecorderUI.h(VideoRecorderUI.this).b(VideoRecorderUI.r(VideoRecorderUI.this)) != 0)) {
             VideoRecorderUI.s(VideoRecorderUI.this);
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sysvideo/ui/video/VideoRecorderUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(29341);
         }
       });
-      this.zUM = ((ImageButton)findViewById(2131306364));
-      this.zUL = ((ImageView)findViewById(2131306383));
-      this.zUM.setOnClickListener(new View.OnClickListener()
+      this.Bmq = ((ImageButton)findViewById(2131306364));
+      this.Bmp = ((ImageView)findViewById(2131306383));
+      this.Bmq.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(29343);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sysvideo/ui/video/VideoRecorderUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           paramAnonymousView = new Intent(VideoRecorderUI.this, VideoRecorderPreviewUI.class);
           paramAnonymousView.putExtra("VideoRecorder_FileName", VideoRecorderUI.h(VideoRecorderUI.this).filename);
-          paramAnonymousView.putExtra("VideoRecorder_VideoLength", VideoRecorderUI.h(VideoRecorderUI.this).xGx.hpy);
+          paramAnonymousView.putExtra("VideoRecorder_VideoLength", VideoRecorderUI.h(VideoRecorderUI.this).yVh.hHQ);
           paramAnonymousView.putExtra("VideoRecorder_VideoSize", VideoRecorderUI.h(VideoRecorderUI.this).fileSize);
           paramAnonymousView.putExtra("VideoRecorder_ToUser", VideoRecorderUI.i(VideoRecorderUI.this));
           paramAnonymousView.putExtra("VideoRecorder_VideoFullPath", VideoRecorderUI.t(VideoRecorderUI.this));
           VideoRecorderUI.this.startActivityForResult(paramAnonymousView, 0);
           VideoRecorderUI.this.overridePendingTransition(0, 0);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sysvideo/ui/video/VideoRecorderUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(29343);
         }
       });
-      localb = this.zUF;
-      if (this.zUS) {
+      localb = this.Bmj;
+      if (this.Bmw) {
         break label579;
       }
       i = 1;
       localObject = this.videoPath;
-      String str1 = this.zUB;
-      String str2 = this.kMh;
-      String str3 = this.zUX;
-      localb.hYQ = 0;
-      if (1 != localb.hYQ) {
+      String str1 = this.Bmf;
+      String str2 = this.liK;
+      String str3 = this.BmB;
+      localb.ism = 0;
+      if (1 != localb.ism) {
         break label584;
       }
-      localb.xGx = a.eMm();
+      localb.yVh = com.tencent.mm.pluginsdk.l.a.fbj();
       label358:
-      if (ae.fJf.fIQ)
+      if (ae.gcG.gcr)
       {
-        localb.xGx.uLE = ae.fJf.mVideoHeight;
-        localb.xGx.uLF = ae.fJf.mVideoWidth;
-        localb.xGx.uLD = ae.fJf.fIS;
+        localb.yVh.vOK = ae.gcG.mVideoHeight;
+        localb.yVh.vOL = ae.gcG.mVideoWidth;
+        localb.yVh.vOJ = ae.gcG.gct;
       }
       localb.filename = str3;
-      localb.xGx.uLM = str1;
-      localb.xGx.uLK = str2;
-      localb.xGx.uLJ = ((String)localObject + "temp.pcm");
-      localb.xGx.uLI = ((String)localObject + "temp.yuv");
-      localb.xGx.uLL = ((String)localObject + "temp.vid");
-      localb.xGx.uLO = d.getNumberOfCameras();
-      localObject = localb.xGx;
+      localb.yVh.vOS = str1;
+      localb.yVh.vOQ = str2;
+      localb.yVh.vOP = ((String)localObject + "temp.pcm");
+      localb.yVh.vOO = ((String)localObject + "temp.yuv");
+      localb.yVh.vOR = ((String)localObject + "temp.vid");
+      localb.yVh.vOU = d.getNumberOfCameras();
+      localObject = localb.yVh;
       if (i == 0) {
         break label594;
       }
@@ -439,16 +452,16 @@ public class VideoRecorderUI
     label594:
     for (int i = j;; i = 0)
     {
-      ((a)localObject).duc = i;
-      localb.xGx.hpy = 0;
-      localb.Dmq = new g();
+      ((com.tencent.mm.pluginsdk.l.a)localObject).dGc = i;
+      localb.yVh.hHQ = 0;
+      localb.ERs = new g();
       AppMethodBeat.o(29349);
       return;
-      this.zUT.setVisibility(4);
+      this.Bmx.setVisibility(4);
       break;
       i = 0;
       break label314;
-      localb.xGx = a.eMl();
+      localb.yVh = com.tencent.mm.pluginsdk.l.a.fbi();
       break label358;
     }
   }
@@ -475,7 +488,7 @@ public class VideoRecorderUI
     AppMethodBeat.i(29346);
     super.onCreate(paramBundle);
     MMActivity.initLanguage(this);
-    zUU = this;
+    Bmy = this;
     getWindow().setFlags(1024, 1024);
     getSupportActionBar().hide();
     setMMTitle(2131764697);
@@ -486,14 +499,14 @@ public class VideoRecorderUI
         AppMethodBeat.i(29337);
         paramAnonymousMenuItem = new Intent();
         paramAnonymousMenuItem.putExtra("VideoRecorder_FileName", VideoRecorderUI.h(VideoRecorderUI.this).filename);
-        paramAnonymousMenuItem.putExtra("VideoRecorder_VideoLength", VideoRecorderUI.h(VideoRecorderUI.this).xGx.hpy);
+        paramAnonymousMenuItem.putExtra("VideoRecorder_VideoLength", VideoRecorderUI.h(VideoRecorderUI.this).yVh.hHQ);
         paramAnonymousMenuItem.putExtra("VideoRecorder_ToUser", VideoRecorderUI.i(VideoRecorderUI.this));
         VideoRecorderUI.this.setResult(-1, paramAnonymousMenuItem);
         VideoRecorderUI.this.finish();
         AppMethodBeat.o(29337);
         return true;
       }
-    }, null, s.b.Hom);
+    }, null, s.b.JbS);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -506,23 +519,23 @@ public class VideoRecorderUI
     });
     this.talker = getIntent().getStringExtra("VideoRecorder_ToUser");
     this.videoPath = getIntent().getStringExtra("VideoRecorder_VideoPath");
-    this.zUB = getIntent().getStringExtra("VideoRecorder_VideoFullPath");
-    this.kMh = getIntent().getStringExtra("VideoRecorder_VideoThumbPath");
-    this.zUX = getIntent().getStringExtra("VideoRecorder_FileName");
-    ac.d("MicroMsg.VideoRecorderUI", "talker :" + this.talker);
-    ac.d("MicroMsg.VideoRecorderUI", "videoPath :" + this.videoPath + " videoFullPath " + this.zUB + " videoThumbPath " + this.kMh + " KFileName " + this.zUX);
+    this.Bmf = getIntent().getStringExtra("VideoRecorder_VideoFullPath");
+    this.liK = getIntent().getStringExtra("VideoRecorder_VideoThumbPath");
+    this.BmB = getIntent().getStringExtra("VideoRecorder_FileName");
+    ad.d("MicroMsg.VideoRecorderUI", "talker :" + this.talker);
+    ad.d("MicroMsg.VideoRecorderUI", "videoPath :" + this.videoPath + " videoFullPath " + this.Bmf + " videoThumbPath " + this.liK + " KFileName " + this.BmB);
     initView();
     resetStatus();
-    az.Lt().Ue();
+    ba.Nb().Wv();
     AppMethodBeat.o(29346);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(29348);
-    zUU = null;
-    ac.v("MicroMsg.VideoRecorderUI", "on destroy");
-    az.Lt().Ud();
+    Bmy = null;
+    ad.v("MicroMsg.VideoRecorderUI", "on destroy");
+    ba.Nb().Wu();
     super.onDestroy();
     AppMethodBeat.o(29348);
   }
@@ -532,13 +545,13 @@ public class VideoRecorderUI
     AppMethodBeat.i(29351);
     if (paramInt == 4)
     {
-      ac.d("MicroMsg.VideoRecorderUI", "KEYCODE_BACK");
-      if (this.zUI)
+      ad.d("MicroMsg.VideoRecorderUI", "KEYCODE_BACK");
+      if (this.Bmm)
       {
         AppMethodBeat.o(29351);
         return true;
       }
-      ebf();
+      enw();
       AppMethodBeat.o(29351);
       return true;
     }
@@ -550,26 +563,26 @@ public class VideoRecorderUI
   public void onPause()
   {
     AppMethodBeat.i(29355);
-    if (this.zUI)
+    if (this.Bmm)
     {
-      b localb = this.zUF;
-      if (localb.uMS != null)
+      com.tencent.mm.pluginsdk.l.b localb = this.Bmj;
+      if (localb.vPZ != null)
       {
-        localb.uMS.stop();
-        localb.uMS.release();
-        localb.uMS = null;
+        localb.vPZ.stop();
+        localb.vPZ.release();
+        localb.vPZ = null;
       }
       resetStatus();
-      this.zUI = false;
+      this.Bmm = false;
       releaseWakeLock();
-      this.zUG.setImageResource(2131234476);
-      this.oPT.stopTimer();
-      this.zUJ.setVisibility(8);
-      this.zUK.setVisibility(0);
+      this.Bmk.setImageResource(2131234476);
+      this.ptD.stopTimer();
+      this.Bmn.setVisibility(8);
+      this.Bmo.setVisibility(0);
       this.mSurfaceView.setVisibility(0);
     }
-    this.zUF.eMn();
-    ac.v("MicroMsg.VideoRecorderUI", "onPause");
+    this.Bmj.fbk();
+    ad.v("MicroMsg.VideoRecorderUI", "onPause");
     super.onPause();
     AppMethodBeat.o(29355);
   }
@@ -577,11 +590,11 @@ public class VideoRecorderUI
   public void onResume()
   {
     AppMethodBeat.i(29354);
-    if ((!this.zUW) && ((this.zUF.b(this, false) != 0) || (this.zUF.b(this.jSi) != 0))) {
-      ebg();
+    if ((!this.BmA) && ((this.Bmj.b(this, false) != 0) || (this.Bmj.b(this.kmw) != 0))) {
+      enx();
     }
-    this.zUW = false;
-    ac.v("MicroMsg.VideoRecorderUI", "onResume");
+    this.BmA = false;
+    ad.v("MicroMsg.VideoRecorderUI", "onResume");
     super.onResume();
     AppMethodBeat.o(29354);
   }
@@ -590,7 +603,7 @@ public class VideoRecorderUI
   {
     AppMethodBeat.i(29347);
     super.onStart();
-    if (this.zUS)
+    if (this.Bmw)
     {
       setRequestedOrientation(0);
       AppMethodBeat.o(29347);
@@ -608,7 +621,7 @@ public class VideoRecorderUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sysvideo.ui.video.VideoRecorderUI
  * JD-Core Version:    0.7.0.1
  */

@@ -7,22 +7,22 @@ public class k
   implements j
 {
   public String appId = "appId";
-  public String ddh = "appName";
-  public String igG = "";
-  public int jDZ = 5;
-  public boolean jEa;
-  public boolean jEb;
-  public boolean jEc;
-  public boolean jEd;
-  public int jEe = 5;
-  public int jEf = 60;
-  public volatile WxaPkgWrappingInfo jEg = null;
-  public int jEh = 1;
-  public boolean jEi = false;
+  public String doD = "appName";
+  public String iAa = "";
+  public int jYa = 5;
+  public boolean jYb;
+  public boolean jYc;
+  public boolean jYd;
+  public boolean jYe;
+  public int jYf = 5;
+  public int jYg = 60;
+  public volatile WxaPkgWrappingInfo jYh = null;
+  public int jYi = 1;
+  public boolean jYj = false;
   
-  public final int baE()
+  public final int bee()
   {
-    return this.jEg.jpa;
+    return this.jYh.jIU;
   }
 }
 

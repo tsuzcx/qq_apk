@@ -5,7 +5,7 @@ public final class ak
 {
   public ak()
   {
-    this.LVT = 356;
+    this.NQs = 356;
   }
 }
 

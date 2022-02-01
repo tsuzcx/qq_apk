@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.sns.l;
 
 public class c$a
 {
-  public String bUS;
-  public String iXH;
-  public String lhM;
-  public String ySX;
-  public boolean ySY;
-  public int ySZ;
-  public boolean yzX;
+  public boolean AkA;
+  public int AkB;
+  public String Akz;
+  public String cff;
+  public String jqQ;
+  public String lEN;
+  public boolean zRo;
 }
 
 

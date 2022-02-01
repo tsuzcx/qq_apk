@@ -1,10 +1,10 @@
 package com.tencent.mm.audio.a;
 
 import d.g.a.b;
-import d.y;
+import d.z;
 
 final class a$1
-  implements b<Integer, y>
+  implements b<Integer, z>
 {
   a$1(a parama) {}
 }

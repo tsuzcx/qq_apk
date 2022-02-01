@@ -5,7 +5,7 @@ import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class MobileVerifyUI$7
   implements TextWatcher
@@ -15,20 +15,20 @@ final class MobileVerifyUI$7
   public final void afterTextChanged(Editable paramEditable)
   {
     AppMethodBeat.i(128444);
-    if (bs.isNullOrNil(this.iUU.iGY.getText().toString()))
+    if (bt.isNullOrNil(this.jod.jah.getText().toString()))
     {
-      this.iUU.iGY.setTextSize(15.0F);
-      this.iUU.iGY.setGravity(16);
+      this.jod.jah.setTextSize(15.0F);
+      this.jod.jah.setGravity(16);
     }
-    while ((this.iUU.iGY.getText() != null) && (this.iUU.iGY.getText().toString().length() > 0))
+    while ((this.jod.jah.getText() != null) && (this.jod.jah.getText().toString().length() > 0))
     {
-      this.iUU.fwU.setEnabled(true);
+      this.jod.fQh.setEnabled(true);
       AppMethodBeat.o(128444);
       return;
-      this.iUU.iGY.setTextSize(24.0F);
-      this.iUU.iGY.setGravity(16);
+      this.jod.jah.setTextSize(24.0F);
+      this.jod.jah.setGravity(16);
     }
-    this.iUU.fwU.setEnabled(false);
+    this.jod.fQh.setEnabled(false);
     AppMethodBeat.o(128444);
   }
   

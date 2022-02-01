@@ -8,9 +8,9 @@ public final class q
 {
   public final long elapsedRealtime()
   {
-    AppMethodBeat.i(194264);
+    AppMethodBeat.i(206076);
     long l = SystemClock.elapsedRealtime();
-    AppMethodBeat.o(194264);
+    AppMethodBeat.o(206076);
     return l;
   }
 }

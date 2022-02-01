@@ -11,5 +11,5 @@
         <ListView android:id="@id/he" android:background="@null" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:scrollbars="none" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@drawable/a2p" android:cacheColorHint="#00000000" android:divider="@null" android:layout_weight="1.0" />
         <com.tencent.mm.plugin.sns.ui.SnsCommentFooter android:id="@id/axf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </LinearLayout>
-    <ViewStub android:id="@id/flk" android:layout="@layout/b7b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/flk" android:layout="@layout/bvf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </FrameLayout>

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,25 +14,25 @@ import org.json.JSONObject;
 public final class r
   extends m
 {
-  public boolean hqq;
+  public boolean hII;
   public boolean isRetry;
-  public String jXd;
+  public String krz;
   private int limit;
-  public long owV;
-  public int oxu;
-  public int oxv;
-  public int oxw;
-  public int oxx;
-  public List<h> oxy;
+  public int paP;
+  public int paQ;
+  public int paR;
+  public int paS;
+  public List<h> paT;
+  public long paq;
   
   public r(int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(63843);
-    this.hqq = false;
+    this.hII = false;
     this.isRetry = false;
-    this.oxy = new ArrayList();
+    this.paT = new ArrayList();
     this.limit = paramInt2;
-    this.oxv = 0;
+    this.paQ = 0;
     HashMap localHashMap = new HashMap();
     localHashMap.put("type", String.valueOf(paramInt1));
     localHashMap.put("from_timestamp", String.valueOf(paramLong));
@@ -46,12 +46,12 @@ public final class r
   public r(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(63844);
-    this.hqq = false;
+    this.hII = false;
     this.isRetry = false;
-    this.oxy = new ArrayList();
+    this.paT = new ArrayList();
     this.isRetry = true;
     this.limit = paramInt3;
-    this.oxv = paramInt2;
+    this.paQ = paramInt2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("type", String.valueOf(paramInt1));
     localHashMap.put("from_timestamp", String.valueOf(paramLong));
@@ -81,20 +81,20 @@ public final class r
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(63845);
-    ac.d("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "json: %s", new Object[] { paramJSONObject.toString() });
-    this.oxu = paramJSONObject.optInt("choose_flag", 0);
-    this.owV = paramJSONObject.optLong("from_timestamp", -1L);
-    this.oxw = paramJSONObject.optInt("finish_flag", 0);
-    this.oxx = paramJSONObject.optInt("try_num", 0);
-    this.jXd = paramJSONObject.optString("retmsg", "");
+    ad.d("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "json: %s", new Object[] { paramJSONObject.toString() });
+    this.paP = paramJSONObject.optInt("choose_flag", 0);
+    this.paq = paramJSONObject.optLong("from_timestamp", -1L);
+    this.paR = paramJSONObject.optInt("finish_flag", 0);
+    this.paS = paramJSONObject.optInt("try_num", 0);
+    this.krz = paramJSONObject.optString("retmsg", "");
     paramString = paramJSONObject.optJSONArray("records");
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      ac.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "empty records");
-      if (this.oxw == 1)
+      ad.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "empty records");
+      if (this.paR == 1)
       {
-        ac.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "finish query");
-        this.hqq = true;
+        ad.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "finish query");
+        this.hII = true;
       }
       AppMethodBeat.o(63845);
       return;
@@ -106,17 +106,17 @@ public final class r
         paramJSONObject = paramString.getJSONObject(paramInt);
         h localh = new h();
         localh.type = paramJSONObject.optInt("type", 0);
-        localh.owV = paramJSONObject.optLong("from_timestamp", 0L);
-        localh.owW = paramJSONObject.optInt("total_num", 0);
-        localh.dgH = paramJSONObject.optInt("total_amt", 0);
-        this.oxy.add(localh);
+        localh.paq = paramJSONObject.optLong("from_timestamp", 0L);
+        localh.par = paramJSONObject.optInt("total_num", 0);
+        localh.dsd = paramJSONObject.optInt("total_amt", 0);
+        this.paT.add(localh);
         paramInt += 1;
       }
       catch (JSONException paramJSONObject)
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.NetSceneTenpayF2fHistoryRecordList", paramJSONObject, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.NetSceneTenpayF2fHistoryRecordList", paramJSONObject, "", new Object[0]);
         }
       }
     }
@@ -124,7 +124,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.r
  * JD-Core Version:    0.7.0.1
  */

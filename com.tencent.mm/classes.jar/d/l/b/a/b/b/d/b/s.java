@@ -1,7 +1,7 @@
 package d.l.b.a.b.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.d.a.e.b;
 import d.l.b.a.b.d.a.e.q;
 import d.l.b.a.b.d.a.e.y;
@@ -16,20 +16,20 @@ public final class s
   extends r
   implements q
 {
-  public final Method LjI;
+  public final Method NaE;
   
   public s(Method paramMethod)
   {
     AppMethodBeat.i(57490);
-    this.LjI = paramMethod;
+    this.NaE = paramMethod;
     AppMethodBeat.o(57490);
   }
   
-  public final List<x> fQR()
+  public final List<x> gip()
   {
     AppMethodBeat.i(57489);
-    Object localObject = this.LjI.getTypeParameters();
-    k.g(localObject, "member.typeParameters");
+    Object localObject = this.NaE.getTypeParameters();
+    p.g(localObject, "member.typeParameters");
     Collection localCollection = (Collection)new ArrayList(localObject.length);
     int j = localObject.length;
     int i = 0;
@@ -43,26 +43,26 @@ public final class s
     return localObject;
   }
   
-  public final List<y> fQU()
+  public final List<y> gis()
   {
     AppMethodBeat.i(57486);
-    Object localObject = this.LjI.getGenericParameterTypes();
-    k.g(localObject, "member.genericParameterTypes");
-    Annotation[][] arrayOfAnnotation = this.LjI.getParameterAnnotations();
-    k.g(arrayOfAnnotation, "member.parameterAnnotations");
-    localObject = a((Type[])localObject, arrayOfAnnotation, this.LjI.isVarArgs());
+    Object localObject = this.NaE.getGenericParameterTypes();
+    p.g(localObject, "member.genericParameterTypes");
+    Annotation[][] arrayOfAnnotation = this.NaE.getParameterAnnotations();
+    p.g(arrayOfAnnotation, "member.parameterAnnotations");
+    localObject = a((Type[])localObject, arrayOfAnnotation, this.NaE.isVarArgs());
     AppMethodBeat.o(57486);
     return localObject;
   }
   
-  public final b fTB()
+  public final b gla()
   {
     Object localObject1 = null;
     AppMethodBeat.i(57488);
-    Object localObject2 = this.LjI.getDefaultValue();
+    Object localObject2 = this.NaE.getDefaultValue();
     if (localObject2 != null)
     {
-      localObject1 = d.Ljt;
+      localObject1 = d.Nap;
       localObject1 = d.a.a(localObject2, null);
     }
     localObject1 = (b)localObject1;
@@ -70,10 +70,10 @@ public final class s
     return localObject1;
   }
   
-  public final boolean fTC()
+  public final boolean glb()
   {
     AppMethodBeat.i(57491);
-    if (fTB() != null)
+    if (gla() != null)
     {
       AppMethodBeat.o(57491);
       return true;
@@ -84,7 +84,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.s
  * JD-Core Version:    0.7.0.1
  */

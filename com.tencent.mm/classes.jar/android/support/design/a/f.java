@@ -7,7 +7,7 @@ import android.widget.ImageView;
 public final class f
   extends Property<ImageView, Matrix>
 {
-  private final Matrix eY = new Matrix();
+  private final Matrix gR = new Matrix();
   
   public f()
   {

@@ -60,18 +60,18 @@ public class TPNativePlayerInitConfig
   
   public TPNativePlayerInitConfig()
   {
-    AppMethodBeat.i(193926);
+    AppMethodBeat.i(220708);
     this.mIntMap = new HashMap();
     this.mLongMap = new HashMap();
     this.mBoolMap = new HashMap();
     this.mQueueIntMap = new HashMap();
     this.mQueueStringMap = new HashMap();
-    AppMethodBeat.o(193926);
+    AppMethodBeat.o(220708);
   }
   
   public void addQueueInt(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193927);
+    AppMethodBeat.i(220709);
     Vector localVector2 = (Vector)this.mQueueIntMap.get(Integer.valueOf(paramInt1));
     Vector localVector1 = localVector2;
     if (localVector2 == null)
@@ -80,12 +80,12 @@ public class TPNativePlayerInitConfig
       this.mQueueIntMap.put(Integer.valueOf(paramInt1), localVector1);
     }
     localVector1.add(Integer.valueOf(paramInt2));
-    AppMethodBeat.o(193927);
+    AppMethodBeat.o(220709);
   }
   
   public void addQueueString(int paramInt, String paramString)
   {
-    AppMethodBeat.i(193928);
+    AppMethodBeat.i(220710);
     Vector localVector2 = (Vector)this.mQueueStringMap.get(Integer.valueOf(paramInt));
     Vector localVector1 = localVector2;
     if (localVector2 == null)
@@ -94,7 +94,7 @@ public class TPNativePlayerInitConfig
       this.mQueueStringMap.put(Integer.valueOf(paramInt), localVector1);
     }
     localVector1.add(paramString);
-    AppMethodBeat.o(193928);
+    AppMethodBeat.o(220710);
   }
   
   public HashMap<Integer, Boolean> getBoolMap()
@@ -124,28 +124,28 @@ public class TPNativePlayerInitConfig
   
   public void setBool(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(193931);
+    AppMethodBeat.i(220713);
     this.mBoolMap.put(Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(193931);
+    AppMethodBeat.o(220713);
   }
   
   public void setInt(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193929);
+    AppMethodBeat.i(220711);
     this.mIntMap.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    AppMethodBeat.o(193929);
+    AppMethodBeat.o(220711);
   }
   
   public void setLong(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(193930);
+    AppMethodBeat.i(220712);
     this.mLongMap.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
-    AppMethodBeat.o(193930);
+    AppMethodBeat.o(220712);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayerInitConfig
  * JD-Core Version:    0.7.0.1
  */

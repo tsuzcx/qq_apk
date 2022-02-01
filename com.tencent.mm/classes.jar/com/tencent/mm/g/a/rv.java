@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class rv
   extends b
 {
-  public a duM;
+  public a dGs;
   
   public rv()
   {
@@ -16,18 +15,16 @@ public final class rv
   
   private rv(byte paramByte)
   {
-    AppMethodBeat.i(146075);
-    this.duM = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(55665);
+    this.dGs = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(146075);
+    AppMethodBeat.o(55665);
   }
   
   public static final class a
   {
-    public int action = 0;
-    public String cardNum;
-    public Bitmap duN;
+    public boolean active;
   }
 }
 

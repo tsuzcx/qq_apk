@@ -12,14 +12,14 @@ import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
 import com.tencent.mm.memory.a.c;
-import com.tencent.mm.platformtools.ab;
+import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.pluginsdk.ui.applet.u;
 import com.tencent.mm.pluginsdk.ui.applet.z;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.ui.al;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -28,118 +28,118 @@ import java.util.regex.Pattern;
 
 final class q
 {
-  private static final f<String, SpannableString> DCS;
-  private static Class<?>[] DDq;
-  private ArrayList<u> DCT;
-  private ArrayList<a> DCU;
-  private ArrayList<z> DCV;
-  boolean DCW;
-  boolean DCX;
-  boolean DCY;
-  boolean DCZ;
-  boolean DDa;
-  boolean DDb;
-  boolean DDc;
-  boolean DDd;
-  boolean DDe;
-  boolean DDf;
-  boolean DDg;
-  boolean DDh;
-  boolean DDi;
-  boolean DDj;
-  boolean DDk;
-  boolean DDl;
-  int DDm;
-  private int DDn;
-  boolean DDo;
-  Object DDp;
-  private TextView Up;
+  private static final f<String, SpannableString> FhY;
+  private static Class<?>[] Fiw;
+  private ArrayList<u> FhZ;
+  private ArrayList<a> Fia;
+  private ArrayList<z> Fib;
+  boolean Fic;
+  boolean Fid;
+  boolean Fie;
+  boolean Fif;
+  boolean Fig;
+  boolean Fih;
+  boolean Fii;
+  boolean Fij;
+  boolean Fik;
+  boolean Fil;
+  boolean Fim;
+  boolean Fin;
+  boolean Fio;
+  boolean Fip;
+  boolean Fiq;
+  boolean Fir;
+  int Fis;
+  private int Fit;
+  boolean Fiu;
+  Object Fiv;
+  private TextView Wf;
   private Context mContext;
   String mSessionId;
   
   static
   {
     AppMethodBeat.i(152370);
-    DCS = new c(500);
-    DDq = new Class[] { com.tencent.mm.ui.widget.a.class, o.class, ForegroundColorSpan.class };
+    FhY = new c(500);
+    Fiw = new Class[] { com.tencent.mm.ui.widget.a.class, o.class, ForegroundColorSpan.class };
     AppMethodBeat.o(152370);
   }
   
   public q(Context paramContext)
   {
     AppMethodBeat.i(152345);
-    this.DCT = new ArrayList();
-    this.DCU = new ArrayList();
-    this.DCV = new ArrayList();
-    this.Up = null;
-    this.DCW = false;
-    this.DCX = false;
-    this.DCY = true;
-    this.DCZ = false;
-    this.DDa = false;
-    this.DDb = true;
-    this.DDc = true;
-    this.DDd = false;
-    this.DDe = false;
-    this.DDf = false;
-    this.DDg = false;
-    this.DDh = false;
-    this.DDi = false;
-    this.DDj = true;
-    this.DDk = false;
-    this.DDl = false;
-    this.DDm = 0;
-    this.DDn = 0;
+    this.FhZ = new ArrayList();
+    this.Fia = new ArrayList();
+    this.Fib = new ArrayList();
+    this.Wf = null;
+    this.Fic = false;
+    this.Fid = false;
+    this.Fie = true;
+    this.Fif = false;
+    this.Fig = false;
+    this.Fih = true;
+    this.Fii = true;
+    this.Fij = false;
+    this.Fik = false;
+    this.Fil = false;
+    this.Fim = false;
+    this.Fin = false;
+    this.Fio = false;
+    this.Fip = true;
+    this.Fiq = false;
+    this.Fir = false;
+    this.Fis = 0;
+    this.Fit = 0;
     this.mContext = null;
-    this.DDo = false;
-    this.DCT = new ArrayList();
-    this.DCU = new ArrayList();
-    this.DCV = new ArrayList();
+    this.Fiu = false;
+    this.FhZ = new ArrayList();
+    this.Fia = new ArrayList();
+    this.Fib = new ArrayList();
     this.mContext = paramContext;
     AppMethodBeat.o(152345);
   }
   
-  private String T(CharSequence paramCharSequence)
+  private String S(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152347);
-    paramCharSequence = paramCharSequence + "@" + this.DDn + "@" + this.DCW + "@" + this.DCX + "@" + this.DDa + "@" + this.DDb + "@" + this.DDc + "@" + this.DDm + "@" + this.DDo + "@" + this.DDg + "@" + this.DDh + "@" + this.DDi;
+    paramCharSequence = paramCharSequence + "@" + this.Fit + "@" + this.Fic + "@" + this.Fid + "@" + this.Fig + "@" + this.Fih + "@" + this.Fii + "@" + this.Fis + "@" + this.Fiu + "@" + this.Fim + "@" + this.Fin + "@" + this.Fio;
     AppMethodBeat.o(152347);
     return paramCharSequence;
   }
   
-  private SpannableString U(CharSequence paramCharSequence)
+  private SpannableString T(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152350);
-    this.DCT = new ArrayList();
+    this.FhZ = new ArrayList();
     Object localObject;
-    if (this.DDn <= 0)
+    if (this.Fit <= 0)
     {
-      if (this.Up != null) {
-        this.DDn = ((int)this.Up.getTextSize());
+      if (this.Wf != null) {
+        this.Fit = ((int)this.Wf.getTextSize());
       }
     }
     else
     {
-      if (this.DCT == null) {
-        this.DCT = new ArrayList();
+      if (this.FhZ == null) {
+        this.FhZ = new ArrayList();
       }
-      if (this.DCU == null) {
-        this.DCU = new ArrayList();
+      if (this.Fia == null) {
+        this.Fia = new ArrayList();
       }
-      this.DCT.clear();
-      this.DCU.clear();
+      this.FhZ.clear();
+      this.Fia.clear();
       localObject = paramCharSequence;
-      if (com.tencent.mm.compatible.util.n.v(paramCharSequence))
+      if (com.tencent.mm.compatible.util.o.v(paramCharSequence))
       {
         localObject = paramCharSequence;
-        if (this.DDj)
+        if (this.Fip)
         {
           localObject = paramCharSequence;
-          if (e.a.DBY != null) {
-            if (!e.a.DBY.K(paramCharSequence))
+          if (e.a.Fhf != null) {
+            if (!e.a.Fhf.K(paramCharSequence))
             {
               localObject = paramCharSequence;
-              if (!e.a.DBY.J(paramCharSequence)) {}
+              if (!e.a.Fhf.J(paramCharSequence)) {}
             }
             else
             {
@@ -149,42 +149,42 @@ final class q
         }
       }
       paramCharSequence = (CharSequence)localObject;
-      if (this.DCW)
+      if (this.Fic)
       {
         if (!((CharSequence)localObject).toString().contains("data-miniprogram-appid")) {
           break label295;
         }
-        paramCharSequence = X((CharSequence)localObject);
+        paramCharSequence = W((CharSequence)localObject);
       }
       label187:
       localObject = paramCharSequence;
-      if (this.DDg) {
-        localObject = V(paramCharSequence);
+      if (this.Fim) {
+        localObject = U(paramCharSequence);
       }
       paramCharSequence = (CharSequence)localObject;
-      if (this.DDi) {
-        paramCharSequence = b((CharSequence)localObject, this.DDl);
+      if (this.Fio) {
+        paramCharSequence = b((CharSequence)localObject, this.Fir);
       }
-      if ((!this.DDj) || (e.a.DBY == null)) {
+      if ((!this.Fip) || (e.a.Fhf == null)) {
         break label320;
       }
-      paramCharSequence = e.a.DBY.n(paramCharSequence, this.DDn);
+      paramCharSequence = e.a.Fhf.n(paramCharSequence, this.Fit);
     }
     label295:
     label320:
     for (;;)
     {
-      if (this.DCY) {
-        Y(paramCharSequence);
+      if (this.Fie) {
+        X(paramCharSequence);
       }
       if ((paramCharSequence instanceof Spannable))
       {
         paramCharSequence = (SpannableString)paramCharSequence;
         AppMethodBeat.o(152350);
         return paramCharSequence;
-        this.DDn = com.tencent.mm.cc.a.au(this.mContext, 2131165517);
+        this.Fit = com.tencent.mm.cc.a.ax(this.mContext, 2131165517);
         break;
-        paramCharSequence = W((CharSequence)localObject);
+        paramCharSequence = V((CharSequence)localObject);
         break label187;
       }
       paramCharSequence = new SpannableString(paramCharSequence);
@@ -193,20 +193,20 @@ final class q
     }
   }
   
-  private CharSequence V(CharSequence paramCharSequence)
+  private CharSequence U(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152351);
-    Object localObject2 = j.a.DCg.matcher(paramCharSequence.toString());
+    Object localObject2 = j.a.Fhn.matcher(paramCharSequence.toString());
     Object localObject1 = paramCharSequence;
     paramCharSequence = (CharSequence)localObject2;
     if (paramCharSequence.find())
     {
-      if (this.DDh) {
+      if (this.Fin) {
         paramCharSequence = ((CharSequence)localObject1).toString().replace(paramCharSequence.group(0), "");
       }
       for (;;)
       {
-        localObject2 = j.a.DCb.matcher(paramCharSequence);
+        localObject2 = j.a.Fhi.matcher(paramCharSequence);
         localObject1 = paramCharSequence;
         paramCharSequence = (CharSequence)localObject2;
         break;
@@ -217,17 +217,17 @@ final class q
         if (j != 0)
         {
           paramCharSequence = new z(i, i + 2, j);
-          if ((!bs.isNullOrNil((String)localObject2)) && ("original_label".equals(localObject2)))
+          if ((!bt.isNullOrNil((String)localObject2)) && ("original_label".equals(localObject2)))
           {
             paramCharSequence.height = 15;
             paramCharSequence.width = 35;
           }
-          this.DCV.add(paramCharSequence);
+          this.Fib.add(paramCharSequence);
           paramCharSequence = (CharSequence)localObject1;
         }
         else
         {
-          ac.w("MicroMsg.SpanProcessor", "dz[parseImgSpan:error drawable name %s]", new Object[] { localObject2 });
+          ad.w("MicroMsg.SpanProcessor", "dz[parseImgSpan:error drawable name %s]", new Object[] { localObject2 });
           paramCharSequence = (CharSequence)localObject1;
         }
       }
@@ -236,13 +236,13 @@ final class q
     return localObject1;
   }
   
-  private CharSequence W(CharSequence paramCharSequence)
+  private CharSequence V(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152353);
     String str1 = paramCharSequence.toString();
     Matcher localMatcher;
     if (str1.length() < 1500) {
-      localMatcher = j.a.DCb.matcher(str1);
+      localMatcher = j.a.Fhi.matcher(str1);
     }
     while (localMatcher.find())
     {
@@ -263,17 +263,17 @@ final class q
         int j = str3.length() + i;
         if ((i < 0) || (j > paramCharSequence.length()))
         {
-          ac.e("MicroMsg.SpanProcessor", "parseHref error, start:%d, end:%d, source.length:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
+          ad.e("MicroMsg.SpanProcessor", "parseHref error, start:%d, end:%d, source.length:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
           continue;
-          localMatcher = j.a.DCa.matcher(str1);
+          localMatcher = j.a.Fhh.matcher(str1);
         }
         else
         {
-          aF(str2, i, j);
+          aJ(str2, i, j);
           if (str1.length() < 1500) {
-            localMatcher = j.a.DCb.matcher(str1);
+            localMatcher = j.a.Fhi.matcher(str1);
           } else {
-            localMatcher = j.a.DCa.matcher(str1);
+            localMatcher = j.a.Fhh.matcher(str1);
           }
         }
       }
@@ -282,25 +282,25 @@ final class q
     return str1;
   }
   
-  private CharSequence X(CharSequence paramCharSequence)
+  private CharSequence W(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152354);
     Object localObject1 = paramCharSequence.toString();
     Object localObject2;
     if (((String)localObject1).length() < 1500) {
-      localObject2 = j.a.DCd.matcher((CharSequence)localObject1);
+      localObject2 = j.a.Fhk.matcher((CharSequence)localObject1);
     }
     while (((Matcher)localObject2).find())
     {
       String str4 = ((Matcher)localObject2).group(0);
       String str1 = ((Matcher)localObject2).group(1);
       String str3 = ((Matcher)localObject2).group(2);
-      Object localObject3 = bv.L(str4.replace(str1, " ").replace(str3, " "), "a");
+      Object localObject3 = bw.M(str4.replace(str1, " ").replace(str3, " "), "a");
       if (localObject3 == null)
       {
-        ac.e("MicroMsg.SpanProcessor", "XmlParser parse return null, so continue");
+        ad.e("MicroMsg.SpanProcessor", "XmlParser parse return null, so continue");
         continue;
-        localObject2 = j.a.DCc.matcher((CharSequence)localObject1);
+        localObject2 = j.a.Fhj.matcher((CharSequence)localObject1);
       }
       else
       {
@@ -309,10 +309,10 @@ final class q
         int i;
         label163:
         int j;
-        if (!bs.isNullOrNil(str1))
+        if (!bt.isNullOrNil(str1))
         {
           i = 1;
-          if (bs.isNullOrNil(str2)) {
+          if (bt.isNullOrNil(str2)) {
             break label280;
           }
           j = 1;
@@ -329,7 +329,7 @@ final class q
             j = str3.length() + i;
             if ((i < 0) || (j > paramCharSequence.length()))
             {
-              ac.e("MicroMsg.SpanProcessor", "parseHref error, start:%d, end:%d, source.length:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
+              ad.e("MicroMsg.SpanProcessor", "parseHref error, start:%d, end:%d, source.length:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
               break;
               i = 0;
               break label163;
@@ -337,18 +337,18 @@ final class q
               j = 0;
               continue;
             }
-            aF(str1, i, j);
+            aJ(str1, i, j);
           }
         }
         for (;;)
         {
           if (((String)localObject1).length() < 1500)
           {
-            localObject2 = j.a.DCd.matcher((CharSequence)localObject1);
+            localObject2 = j.a.Fhk.matcher((CharSequence)localObject1);
             break;
             if (j != 0)
             {
-              if (this.DDh)
+              if (this.Fin)
               {
                 localObject1 = ((String)localObject1).toString().replace(str4, str3);
                 i = ((Matcher)localObject2).start(0);
@@ -356,7 +356,7 @@ final class q
                 localObject2 = new u(str1, 45, null);
                 ((u)localObject2).start = i;
                 ((u)localObject2).end = (j + i);
-                this.DCT.add(localObject2);
+                this.FhZ.add(localObject2);
               }
               else
               {
@@ -364,14 +364,14 @@ final class q
                 str1 = ((String)localObject1).toString().replace(str4, str3);
                 i = ((Matcher)localObject2).start(0);
                 j = str3.length();
-                if (aj.DT()) {}
+                if (al.isDarkMode()) {}
                 for (localObject1 = new z(i + 1, i + 3, 2131691250);; localObject1 = new z(i + 1, i + 3, 2131691249))
                 {
-                  this.DCV.add(localObject1);
+                  this.Fib.add(localObject1);
                   localObject1 = new u(str2, 45, localObject3);
                   ((u)localObject1).start = (i + 4);
                   ((u)localObject1).end = (i + j);
-                  this.DCT.add(localObject1);
+                  this.FhZ.add(localObject1);
                   localObject1 = str1;
                   break;
                 }
@@ -379,57 +379,57 @@ final class q
             }
             else
             {
-              ac.e("MicroMsg.SpanProcessor", "url && appId is null, continue");
+              ad.e("MicroMsg.SpanProcessor", "url && appId is null, continue");
               break;
             }
           }
         }
-        localObject2 = j.a.DCc.matcher((CharSequence)localObject1);
+        localObject2 = j.a.Fhj.matcher((CharSequence)localObject1);
       }
     }
     AppMethodBeat.o(152354);
     return localObject1;
   }
   
-  private void Y(CharSequence paramCharSequence)
+  private void X(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152355);
-    if (this.DDb) {
-      this.DCU.addAll(Z(paramCharSequence));
+    if (this.Fih) {
+      this.Fia.addAll(Y(paramCharSequence));
     }
-    if (this.DCX) {
-      this.DCU.addAll(ab(paramCharSequence));
+    if (this.Fid) {
+      this.Fia.addAll(aa(paramCharSequence));
     }
-    if (this.DCZ) {
-      this.DCU.addAll(ac(paramCharSequence));
+    if (this.Fif) {
+      this.Fia.addAll(ab(paramCharSequence));
     }
-    if (this.DDf) {
-      this.DCU.addAll(ah(paramCharSequence));
+    if (this.Fil) {
+      this.Fia.addAll(ag(paramCharSequence));
     }
-    if (this.DDc) {
-      this.DCU.addAll(ad(paramCharSequence));
+    if (this.Fii) {
+      this.Fia.addAll(ac(paramCharSequence));
     }
-    if (this.DDd) {
-      this.DCU.addAll(ae(paramCharSequence));
+    if (this.Fij) {
+      this.Fia.addAll(ad(paramCharSequence));
     }
-    if (this.DDa) {
-      this.DCU.addAll(af(paramCharSequence));
+    if (this.Fig) {
+      this.Fia.addAll(ae(paramCharSequence));
     }
-    if (this.DDe) {
-      this.DCU.addAll(ag(paramCharSequence));
+    if (this.Fik) {
+      this.Fia.addAll(af(paramCharSequence));
     }
-    if (this.DDk) {
-      this.DCU.addAll(aa(paramCharSequence));
+    if (this.Fiq) {
+      this.Fia.addAll(Z(paramCharSequence));
     }
     AppMethodBeat.o(152355);
   }
   
-  private ArrayList<a> Z(CharSequence paramCharSequence)
+  private ArrayList<a> Y(CharSequence paramCharSequence)
   {
     int i = 2000;
     AppMethodBeat.i(152356);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = j.a.DCk;
+    Object localObject = j.a.Fhr;
     if (paramCharSequence.length() > 2000) {}
     for (;;)
     {
@@ -441,9 +441,9 @@ final class q
         localObject = new u(paramCharSequence.group(), 24, null);
         ((u)localObject).start = i;
         ((u)localObject).end = j;
-        if (!a(this.DCU, new a(i, j)))
+        if (!a(this.Fia, new a(i, j)))
         {
-          this.DCT.add(localObject);
+          this.FhZ.add(localObject);
           localArrayList.add(new a(i, j));
         }
       }
@@ -453,15 +453,44 @@ final class q
     return localArrayList;
   }
   
+  private ArrayList<a> Z(CharSequence paramCharSequence)
+  {
+    int i = 2000;
+    AppMethodBeat.i(152357);
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = j.a.Fhs;
+    if (paramCharSequence.length() > 2000) {}
+    for (;;)
+    {
+      paramCharSequence = ((Pattern)localObject).matcher(paramCharSequence.subSequence(0, i));
+      while (paramCharSequence.find())
+      {
+        i = paramCharSequence.start();
+        int j = paramCharSequence.end();
+        localObject = new u(paramCharSequence.group(), 48, null);
+        ((u)localObject).start = i;
+        ((u)localObject).end = j;
+        if (!a(this.Fia, new a(i, j)))
+        {
+          this.FhZ.add(localObject);
+          localArrayList.add(new a(i, j));
+        }
+      }
+      i = paramCharSequence.length();
+    }
+    AppMethodBeat.o(152357);
+    return localArrayList;
+  }
+  
   private void a(SpannableString paramSpannableString)
   {
     int i = 0;
     AppMethodBeat.i(152368);
-    if (this.Up != null)
+    if (this.Wf != null)
     {
       paramSpannableString = new n();
       paramSpannableString.mSessionId = this.mSessionId;
-      this.Up.setOnTouchListener(paramSpannableString);
+      this.Wf.setOnTouchListener(paramSpannableString);
       AppMethodBeat.o(152368);
       return;
     }
@@ -496,17 +525,17 @@ final class q
     return false;
   }
   
-  private boolean aF(String paramString, int paramInt1, int paramInt2)
+  private boolean aJ(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(152365);
     paramString = a.a(this.mContext, paramString, paramInt1, paramInt2);
     if (paramString != null)
     {
-      if (this.DDp != null) {
-        paramString.data = this.DDp;
+      if (this.Fiv != null) {
+        paramString.data = this.Fiv;
       }
-      this.DCT.add(paramString);
-      this.DCU.add(new a(paramInt1, paramInt2));
+      this.FhZ.add(paramString);
+      this.Fia.add(new a(paramInt1, paramInt2));
       AppMethodBeat.o(152365);
       return true;
     }
@@ -516,46 +545,17 @@ final class q
   
   private ArrayList<a> aa(CharSequence paramCharSequence)
   {
-    int i = 2000;
-    AppMethodBeat.i(152357);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = j.a.DCl;
-    if (paramCharSequence.length() > 2000) {}
-    for (;;)
-    {
-      paramCharSequence = ((Pattern)localObject).matcher(paramCharSequence.subSequence(0, i));
-      while (paramCharSequence.find())
-      {
-        i = paramCharSequence.start();
-        int j = paramCharSequence.end();
-        localObject = new u(paramCharSequence.group(), 48, null);
-        ((u)localObject).start = i;
-        ((u)localObject).end = j;
-        if (!a(this.DCU, new a(i, j)))
-        {
-          this.DCT.add(localObject);
-          localArrayList.add(new a(i, j));
-        }
-      }
-      i = paramCharSequence.length();
-    }
-    AppMethodBeat.o(152357);
-    return localArrayList;
-  }
-  
-  private ArrayList<a> ab(CharSequence paramCharSequence)
-  {
     AppMethodBeat.i(152358);
     ArrayList localArrayList = new ArrayList();
     String str = paramCharSequence.toString();
     if (str.length() > 500) {
-      paramCharSequence = j.a.DCj.matcher(str.toLowerCase());
+      paramCharSequence = j.a.Fhq.matcher(str.toLowerCase());
     }
     while (paramCharSequence.find())
     {
       int i = paramCharSequence.start();
       int j = paramCharSequence.end();
-      if ((!a(this.DCU, new a(i, j))) && (i >= 0) && (j <= str.length())) {
+      if ((!a(this.Fia, new a(i, j))) && (i >= 0) && (j <= str.length())) {
         if (j < str.length())
         {
           int k = str.charAt(j);
@@ -563,13 +563,13 @@ final class q
         }
         else
         {
-          u localu = new u(str.substring(i, j), 1, this.DDp);
+          u localu = new u(str.substring(i, j), 1, this.Fiv);
           localu.start = i;
           localu.end = j;
-          this.DCT.add(localu);
+          this.FhZ.add(localu);
           localArrayList.add(new a(i, j));
           continue;
-          paramCharSequence = j.a.DCi.matcher(str.toLowerCase());
+          paramCharSequence = j.a.Fhp.matcher(str.toLowerCase());
         }
       }
     }
@@ -577,7 +577,7 @@ final class q
     return localArrayList;
   }
   
-  private ArrayList<a> ac(CharSequence paramCharSequence)
+  private ArrayList<a> ab(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152359);
     ArrayList localArrayList = new ArrayList();
@@ -587,17 +587,17 @@ final class q
       AppMethodBeat.o(152359);
       return localArrayList;
     }
-    Matcher localMatcher = j.a.DCq.matcher(paramCharSequence);
+    Matcher localMatcher = j.a.Fhx.matcher(paramCharSequence);
     while (localMatcher.find())
     {
       int i = localMatcher.start();
       int j = localMatcher.end();
-      if ((!a(this.DCU, new a(i, j))) && (i >= 0) && (j <= paramCharSequence.length()))
+      if ((!a(this.Fia, new a(i, j))) && (i >= 0) && (j <= paramCharSequence.length()))
       {
-        u localu = new u(paramCharSequence.substring(i, j), 44, this.DDp);
+        u localu = new u(paramCharSequence.substring(i, j), 44, this.Fiv);
         localu.start = i;
         localu.end = j;
-        this.DCT.add(localu);
+        this.FhZ.add(localu);
         localArrayList.add(new a(i, j));
       }
     }
@@ -605,22 +605,22 @@ final class q
     return localArrayList;
   }
   
-  private ArrayList<a> ad(CharSequence paramCharSequence)
+  private ArrayList<a> ac(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152360);
     ArrayList localArrayList = new ArrayList();
     String str = paramCharSequence.toString();
-    paramCharSequence = j.a.DCn.matcher(paramCharSequence);
+    paramCharSequence = j.a.Fhu.matcher(paramCharSequence);
     while (paramCharSequence.find())
     {
       int i = paramCharSequence.start();
       int j = paramCharSequence.end();
-      if ((!a(this.DCU, new a(i, j))) && (i >= 0) && (j <= str.length()))
+      if ((!a(this.Fia, new a(i, j))) && (i >= 0) && (j <= str.length()))
       {
         u localu = new u(str.substring(i, j), 28, null);
         localu.start = i;
         localu.end = j;
-        this.DCT.add(localu);
+        this.FhZ.add(localu);
         localArrayList.add(new a(i, j));
       }
     }
@@ -628,25 +628,25 @@ final class q
     return localArrayList;
   }
   
-  private ArrayList<a> ae(CharSequence paramCharSequence)
+  private ArrayList<a> ad(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152361);
     ArrayList localArrayList = new ArrayList();
     String str = paramCharSequence.toString();
-    paramCharSequence = j.a.DCr.matcher(paramCharSequence);
+    paramCharSequence = j.a.Fhy.matcher(paramCharSequence);
     while (paramCharSequence.find())
     {
       Object localObject = paramCharSequence.group();
-      if (b.DBT.aHE((String)localObject))
+      if (b.Fha.aNh((String)localObject))
       {
         int i = paramCharSequence.start();
         int j = paramCharSequence.end();
-        if ((!a(this.DCU, new a(i, j))) && (i >= 0) && (j <= str.length()))
+        if ((!a(this.Fia, new a(i, j))) && (i >= 0) && (j <= str.length()))
         {
-          localObject = new u(str.substring(i, j), 50, this.DDp);
+          localObject = new u(str.substring(i, j), 50, this.Fiv);
           ((u)localObject).start = i;
           ((u)localObject).end = j;
-          this.DCT.add(localObject);
+          this.FhZ.add(localObject);
           localArrayList.add(new a(i, j));
         }
       }
@@ -655,11 +655,11 @@ final class q
     return localArrayList;
   }
   
-  private ArrayList<a> af(CharSequence paramCharSequence)
+  private ArrayList<a> ae(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152362);
     ArrayList localArrayList = new ArrayList();
-    paramCharSequence = j.a.DCm.matcher(paramCharSequence);
+    paramCharSequence = j.a.Fht.matcher(paramCharSequence);
     while (paramCharSequence.find())
     {
       int k = paramCharSequence.start();
@@ -670,12 +670,12 @@ final class q
       if (((String)localObject).startsWith("+")) {
         i = j - 1;
       }
-      if (((i != 6) && (i != 5)) || (("+12306+12110+12395+12121+12117+12119+95555+95566+95533+95588+95558+95599+95568+95595+95559+95508+95528+95501+95577+95561+10086+10010+10000+17951+17911+17900+118114+116114+950718+95598+12318+12315+12358+12365+12310+12369+12333+12366+95518+95519+95511+95500+95522+95567+95017".contains((CharSequence)localObject)) && (i < 100) && (!a(this.DCU, new a(k, m)))))
+      if (((i != 6) && (i != 5)) || (("+12306+12110+12395+12121+12117+12119+95555+95566+95533+95588+95558+95599+95568+95595+95559+95508+95528+95501+95577+95561+10086+10010+10000+17951+17911+17900+118114+116114+950718+95598+12318+12315+12358+12365+12310+12369+12333+12366+95518+95519+95511+95500+95522+95567+95017".contains((CharSequence)localObject)) && (i < 100) && (!a(this.Fia, new a(k, m)))))
       {
-        localObject = new u((String)localObject, 25, this.DDp);
+        localObject = new u((String)localObject, 25, this.Fiv);
         ((u)localObject).start = k;
         ((u)localObject).end = m;
-        this.DCT.add(localObject);
+        this.FhZ.add(localObject);
         localArrayList.add(new a(k, m));
       }
     }
@@ -683,18 +683,18 @@ final class q
     return localArrayList;
   }
   
-  private ArrayList<a> ag(CharSequence paramCharSequence)
+  private ArrayList<a> af(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152363);
     ArrayList localArrayList = new ArrayList();
-    paramCharSequence = a.bO(this.mContext, paramCharSequence.toString()).iterator();
+    paramCharSequence = a.bS(this.mContext, paramCharSequence.toString()).iterator();
     while (paramCharSequence.hasNext())
     {
       u localu = (u)paramCharSequence.next();
       a locala = new a(localu.start, localu.end);
-      if (!a(this.DCU, locala))
+      if (!a(this.Fia, locala))
       {
-        this.DCT.add(localu);
+        this.FhZ.add(localu);
         localArrayList.add(locala);
       }
     }
@@ -702,12 +702,12 @@ final class q
     return localArrayList;
   }
   
-  private ArrayList<a> ah(CharSequence paramCharSequence)
+  private ArrayList<a> ag(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(152364);
     ArrayList localArrayList = new ArrayList();
     paramCharSequence = paramCharSequence.toString();
-    Matcher localMatcher = j.a.DCp.matcher(paramCharSequence);
+    Matcher localMatcher = j.a.Fhw.matcher(paramCharSequence);
     int i;
     int j;
     a locala;
@@ -717,29 +717,29 @@ final class q
       i = localMatcher.start();
       j = localMatcher.end();
       locala = new a(i, j);
-      if ((!a(this.DCU, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
+      if ((!a(this.Fia, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
       {
         localu = new u(paramCharSequence.substring(i, j), 30, null);
         localu.start = i;
         localu.end = j;
-        this.DCT.add(localu);
+        this.FhZ.add(localu);
         localArrayList.add(locala);
       }
     }
     if (localArrayList.size() <= 0)
     {
-      localMatcher = j.a.DCo.matcher(paramCharSequence);
+      localMatcher = j.a.Fhv.matcher(paramCharSequence);
       while (localMatcher.find())
       {
         i = localMatcher.start();
         j = localMatcher.end();
         locala = new a(i, j);
-        if ((!a(this.DCU, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
+        if ((!a(this.Fia, locala)) && (i >= 0) && (j <= paramCharSequence.length()))
         {
           localu = new u(paramCharSequence.substring(i, j), 30, null);
           localu.start = i;
           localu.end = j;
-          this.DCT.add(localu);
+          this.FhZ.add(localu);
           localArrayList.add(locala);
         }
       }
@@ -751,7 +751,7 @@ final class q
   private CharSequence b(CharSequence paramCharSequence, boolean paramBoolean)
   {
     AppMethodBeat.i(152352);
-    Object localObject2 = j.a.DCe.matcher(paramCharSequence);
+    Object localObject2 = j.a.Fhl.matcher(paramCharSequence);
     int i = 0;
     Object localObject1 = paramCharSequence;
     String str1;
@@ -771,19 +771,19 @@ final class q
         int k = str2.length() + j;
         if ((j < 0) || (k > paramCharSequence.length()))
         {
-          ac.e("MicroMsg.SpanProcessor", "dz[parseWCCustomLink error: start:%d, end:%d, source.length:%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramCharSequence.length()) });
+          ad.e("MicroMsg.SpanProcessor", "dz[parseWCCustomLink error: start:%d, end:%d, source.length:%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramCharSequence.length()) });
           continue;
         }
         try
         {
           i = Color.parseColor((String)localObject4);
-          if (bs.isNullOrNil(str1))
+          if (bt.isNullOrNil(str1))
           {
             localObject2 = new u(j, k);
             ((u)localObject2).linkColor = i;
-            this.DCT.add(localObject2);
-            this.DCU.add(new a(j, k));
-            localObject2 = j.a.DCe.matcher((CharSequence)localObject1);
+            this.FhZ.add(localObject2);
+            this.Fia.add(new a(j, k));
+            localObject2 = j.a.Fhl.matcher((CharSequence)localObject1);
             i = 1;
           }
         }
@@ -791,22 +791,22 @@ final class q
         {
           for (;;)
           {
-            localObject3 = ai.getContext();
+            localObject3 = aj.getContext();
             int m = ((Context)localObject3).getResources().getIdentifier((String)localObject4, "color", ((Context)localObject3).getPackageName());
             if (m <= 0) {}
-            for (i = 0;; i = ai.getContext().getResources().getColor(m))
+            for (i = 0;; i = aj.getContext().getResources().getColor(m))
             {
-              ac.w("MicroMsg.SpanProcessor", "dz[parseWCCustomLink error at color : %s, resId : %s]", new Object[] { localObject4, Integer.valueOf(m) });
+              ad.w("MicroMsg.SpanProcessor", "dz[parseWCCustomLink error at color : %s, resId : %s]", new Object[] { localObject4, Integer.valueOf(m) });
               break;
             }
             localObject3 = a.a(this.mContext, str1, j, k, i, i & 0x99FFFFFF);
             if (localObject3 != null)
             {
-              if (this.DDp != null) {
-                ((u)localObject3).data = this.DDp;
+              if (this.Fiv != null) {
+                ((u)localObject3).data = this.Fiv;
               }
-              this.DCT.add(localObject3);
-              this.DCU.add(new a(j, k));
+              this.FhZ.add(localObject3);
+              this.Fia.add(new a(j, k));
             }
           }
         }
@@ -815,7 +815,7 @@ final class q
     Object localObject4 = localObject1;
     if (i == 0)
     {
-      localObject3 = j.a.DCf.matcher(paramCharSequence);
+      localObject3 = j.a.Fhm.matcher(paramCharSequence);
       for (;;)
       {
         localObject4 = localObject1;
@@ -832,25 +832,25 @@ final class q
           j = str1.length() + i;
           if ((i < 0) || (j > paramCharSequence.length()))
           {
-            ac.e("MicroMsg.SpanProcessor", "dz[parseWCCustomLink error: start:%d, end:%d, source.length:%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
+            ad.e("MicroMsg.SpanProcessor", "dz[parseWCCustomLink error: start:%d, end:%d, source.length:%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramCharSequence.length()) });
           }
           else
           {
-            if ((!aF((String)localObject4, i, j)) && (paramBoolean))
+            if ((!aJ((String)localObject4, i, j)) && (paramBoolean))
             {
               localObject3 = new u((String)localObject4, 2147483646, null);
-              if (this.DDp != null) {
-                ((u)localObject3).data = this.DDp;
+              if (this.Fiv != null) {
+                ((u)localObject3).data = this.Fiv;
               }
               ((u)localObject3).start = i;
               ((u)localObject3).end = j;
-              if (!a(this.DCU, new a(i, j)))
+              if (!a(this.Fia, new a(i, j)))
               {
-                this.DCT.add(localObject3);
-                this.DCU.add(new a(i, j));
+                this.FhZ.add(localObject3);
+                this.Fia.add(new a(i, j));
               }
             }
-            localObject3 = j.a.DCe.matcher((CharSequence)localObject1);
+            localObject3 = j.a.Fhl.matcher((CharSequence)localObject1);
           }
         }
       }
@@ -862,7 +862,7 @@ final class q
   public static void clearCache()
   {
     AppMethodBeat.i(152369);
-    DCS.clear();
+    FhY.clear();
     AppMethodBeat.o(152369);
   }
   
@@ -877,8 +877,8 @@ final class q
       Object localObject = arrayOfObject[i];
       int j = 0;
       label42:
-      if (j < DDq.length) {
-        if (!DDq[j].isInstance(localObject)) {}
+      if (j < Fiw.length) {
+        if (!Fiw[j].isInstance(localObject)) {}
       }
       for (j = 1;; j = 0)
       {
@@ -897,15 +897,15 @@ final class q
   private void g(Spannable paramSpannable)
   {
     AppMethodBeat.i(152367);
-    if ((this.Up != null) && (!bs.isNullOrNil(paramSpannable.toString())))
+    if ((this.Wf != null) && (!bt.isNullOrNil(paramSpannable.toString())))
     {
-      if (ab.iwh)
+      if (ac.iPo)
       {
-        this.Up.setText(paramSpannable, TextView.BufferType.SPANNABLE);
+        this.Wf.setText(paramSpannable, TextView.BufferType.SPANNABLE);
         AppMethodBeat.o(152367);
         return;
       }
-      this.Up.setText(paramSpannable);
+      this.Wf.setText(paramSpannable);
     }
     AppMethodBeat.o(152367);
   }
@@ -919,11 +919,11 @@ final class q
       AppMethodBeat.o(152348);
       return paramCharSequence;
     }
-    this.DDn = paramInt;
-    String str = T(paramCharSequence);
+    this.Fit = paramInt;
+    String str = S(paramCharSequence);
     if (paramBoolean)
     {
-      localObject1 = (SpannableString)DCS.get(str);
+      localObject1 = (SpannableString)FhY.get(str);
       if (localObject1 != null)
       {
         f((Spannable)localObject1);
@@ -933,23 +933,23 @@ final class q
         return localObject1;
       }
     }
-    paramCharSequence = U(paramCharSequence);
+    paramCharSequence = T(paramCharSequence);
     Object localObject2;
-    if (this.DDo)
+    if (this.Fiu)
     {
-      localObject1 = this.DCT.iterator();
+      localObject1 = this.FhZ.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (u)((Iterator)localObject1).next();
         ((u)localObject2).mSessionId = this.mSessionId;
-        if (bs.isNullOrNil(((u)localObject2).url)) {
+        if (bt.isNullOrNil(((u)localObject2).url)) {
           paramCharSequence.setSpan(new ForegroundColorSpan(((u)localObject2).linkColor), ((u)localObject2).start, ((u)localObject2).end, 33);
         } else if ((((u)localObject2).start <= paramCharSequence.length()) && (((u)localObject2).end <= paramCharSequence.length())) {
-          paramCharSequence.setSpan(new o(this.DDm, (u)localObject2), ((u)localObject2).start, ((u)localObject2).end, 33);
+          paramCharSequence.setSpan(new o(this.Fis, (u)localObject2), ((u)localObject2).start, ((u)localObject2).end, 33);
         }
       }
     }
-    Object localObject1 = this.DCV.iterator();
+    Object localObject1 = this.Fib.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (z)((Iterator)localObject1).next();
@@ -960,13 +960,13 @@ final class q
         {
           ((Drawable)localObject3).setBounds(0, 0, com.tencent.mm.cc.a.fromDPToPix(this.mContext, ((z)localObject2).width), com.tencent.mm.cc.a.fromDPToPix(this.mContext, ((z)localObject2).height));
           localObject3 = new com.tencent.mm.ui.widget.a((Drawable)localObject3);
-          ((com.tencent.mm.ui.widget.a)localObject3).IZa = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 2);
+          ((com.tencent.mm.ui.widget.a)localObject3).KQg = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 2);
           paramCharSequence.setSpan(localObject3, ((z)localObject2).start, ((z)localObject2).start + 1, 18);
         }
         else
         {
-          if (this.Up == null) {}
-          for (paramInt = (int)(this.DDn * 1.3F);; paramInt = (int)(this.Up.getTextSize() * 1.3F))
+          if (this.Wf == null) {}
+          for (paramInt = (int)(this.Fit * 1.3F);; paramInt = (int)(this.Wf.getTextSize() * 1.3F))
           {
             ((Drawable)localObject3).setBounds(0, 0, paramInt, paramInt);
             break;
@@ -977,7 +977,7 @@ final class q
     g(paramCharSequence);
     a(paramCharSequence);
     if (paramBoolean) {
-      DCS.o(str, new SpannableString(paramCharSequence));
+      FhY.q(str, new SpannableString(paramCharSequence));
     }
     AppMethodBeat.o(152348);
     return paramCharSequence;
@@ -986,9 +986,9 @@ final class q
   public final q w(TextView paramTextView)
   {
     AppMethodBeat.i(152346);
-    this.Up = paramTextView;
+    this.Wf = paramTextView;
     if (paramTextView != null) {
-      this.mContext = this.Up.getContext();
+      this.mContext = this.Wf.getContext();
     }
     AppMethodBeat.o(152346);
     return this;

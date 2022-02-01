@@ -12,13 +12,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.fav.ui.m;
 import com.tencent.mm.plugin.fts.a.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.gridviewheaders.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,22 +26,22 @@ import java.util.regex.Pattern;
 public final class c
   extends RecyclerView.a
 {
-  public static e HRZ;
-  public static f HSa = null;
-  public String HSb;
+  public static e JFR;
+  public static f JFS = null;
+  public String JFT;
   private Context mContext;
   
   public c(Context paramContext, f paramf)
   {
-    HSa = paramf;
+    JFS = paramf;
     this.mContext = paramContext;
   }
   
-  private static long rI(long paramLong)
+  private static long tH(long paramLong)
   {
     AppMethodBeat.i(35050);
     Date localDate = new Date(paramLong);
-    paramLong = a.fsS().b(localDate);
+    paramLong = com.tencent.mm.ui.gridviewheaders.a.fJG().b(localDate);
     AppMethodBeat.o(35050);
     return paramLong;
   }
@@ -55,7 +55,7 @@ public final class c
       AppMethodBeat.o(35046);
       return paramViewGroup;
     }
-    paramViewGroup = HSa.z(paramViewGroup);
+    paramViewGroup = JFS.D(paramViewGroup);
     AppMethodBeat.o(35046);
     return paramViewGroup;
   }
@@ -64,71 +64,71 @@ public final class c
   {
     AppMethodBeat.i(35047);
     int i = getItemViewType(paramInt);
-    b localb = HSa.aaU(paramInt);
+    b localb = JFS.adg(paramInt);
     Object localObject;
     if (i == 2147483647)
     {
-      localObject = HSa.aaU(paramInt + 1);
-      if ((paramInt == getItemCount() - 1) || (rI(((b)localObject).timestamp) != rI(localb.timestamp)))
+      localObject = JFS.adg(paramInt + 1);
+      if ((paramInt == getItemCount() - 1) || (tH(((b)localObject).timestamp) != tH(localb.timestamp)))
       {
-        ((d)paramw).iBM.setVisibility(8);
+        ((d)paramw).iUW.setVisibility(8);
         AppMethodBeat.o(35047);
         return;
       }
-      ((d)paramw).iBM.setVisibility(0);
-      ((d)paramw).iBM.setText(rH(localb.timestamp));
+      ((d)paramw).iUW.setVisibility(0);
+      ((d)paramw).iUW.setText(tG(localb.timestamp));
       AppMethodBeat.o(35047);
       return;
     }
     a locala = (a)paramw;
-    locala.sSS.setTag(Integer.valueOf(paramInt));
-    a.b.c(locala.fuY, localb.username);
-    TextView localTextView = locala.iMz;
+    locala.tPw.setTag(Integer.valueOf(paramInt));
+    a.b.c(locala.fOf, localb.username);
+    TextView localTextView = locala.jfJ;
     Context localContext = this.mContext;
-    if (bs.isNullOrNil(this.HSb)) {
-      if (bs.isNullOrNil(localb.bLt)) {
-        if (bs.isNullOrNil(localb.mnK)) {
+    if (bt.isNullOrNil(this.JFT)) {
+      if (bt.isNullOrNil(localb.bVG)) {
+        if (bt.isNullOrNil(localb.mOm)) {
           localObject = localb.nickname;
         }
       }
     }
     for (;;)
     {
-      localTextView.setText(k.b(localContext, (CharSequence)localObject, locala.iMz.getTextSize()));
-      locala.fAz.setText(m.h(this.mContext, localb.timestamp));
-      locala.iCg.setText(localb.title);
-      HSa.a((a)paramw, paramInt);
-      if (!bs.isNullOrNil(this.HSb))
+      localTextView.setText(k.b(localContext, (CharSequence)localObject, locala.jfJ.getTextSize()));
+      locala.fTP.setText(m.h(this.mContext, localb.timestamp));
+      locala.iVq.setText(localb.title);
+      JFS.a((a)paramw, paramInt);
+      if (!bt.isNullOrNil(this.JFT))
       {
-        a.d(locala.iMz, this.HSb);
-        a.d(locala.iCg, this.HSb);
+        a.d(locala.jfJ, this.JFT);
+        a.d(locala.iVq, this.JFT);
       }
       AppMethodBeat.o(35047);
       return;
-      localObject = localb.mnK;
+      localObject = localb.mOm;
       continue;
-      localObject = localb.bLt;
+      localObject = localb.bVG;
       continue;
-      if (bs.isNullOrNil(localb.bLt))
+      if (bt.isNullOrNil(localb.bVG))
       {
-        if (!bs.isNullOrNil(localb.mnK))
+        if (!bt.isNullOrNil(localb.mOm))
         {
-          if ((!bs.isNullOrNil(localb.nickname)) && (localb.nickname.contains(this.HSb))) {
-            localObject = localb.mnK + "(" + localb.nickname + ")";
+          if ((!bt.isNullOrNil(localb.nickname)) && (localb.nickname.contains(this.JFT))) {
+            localObject = localb.mOm + "(" + localb.nickname + ")";
           } else {
-            localObject = localb.mnK;
+            localObject = localb.mOm;
           }
         }
         else {
           localObject = localb.nickname;
         }
       }
-      else if ((!bs.isNullOrNil(localb.mnK)) && (localb.mnK.contains(this.HSb))) {
-        localObject = localb.bLt + "(" + localb.mnK + ")";
-      } else if ((!bs.isNullOrNil(localb.nickname)) && (localb.nickname.contains(this.HSb))) {
-        localObject = localb.bLt + "(" + localb.nickname + ")";
+      else if ((!bt.isNullOrNil(localb.mOm)) && (localb.mOm.contains(this.JFT))) {
+        localObject = localb.bVG + "(" + localb.mOm + ")";
+      } else if ((!bt.isNullOrNil(localb.nickname)) && (localb.nickname.contains(this.JFT))) {
+        localObject = localb.bVG + "(" + localb.nickname + ")";
       } else {
-        localObject = localb.bLt;
+        localObject = localb.bVG;
       }
     }
   }
@@ -137,20 +137,20 @@ public final class c
   {
     AppMethodBeat.i(35048);
     int i;
-    if (HSa == null)
+    if (JFS == null)
     {
       i = 0;
-      if (HSa != null) {
+      if (JFS != null) {
         break label65;
       }
     }
     label65:
     for (boolean bool = true;; bool = false)
     {
-      ac.i("MicroMsg.MediaHistoryListAdapter", " null == mIDetail?%s getItemCount:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+      ad.i("MicroMsg.MediaHistoryListAdapter", " null == mIDetail?%s getItemCount:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
       AppMethodBeat.o(35048);
       return i;
-      i = HSa.getCount();
+      i = JFS.getCount();
       break;
     }
   }
@@ -158,16 +158,16 @@ public final class c
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(35045);
-    paramInt = HSa.aaU(paramInt).getType();
+    paramInt = JFS.adg(paramInt).getType();
     AppMethodBeat.o(35045);
     return paramInt;
   }
   
-  public final String rH(long paramLong)
+  public final String tG(long paramLong)
   {
     AppMethodBeat.i(35049);
     Object localObject = new Date(paramLong);
-    localObject = a.fsS().a((Date)localObject, this.mContext);
+    localObject = com.tencent.mm.ui.gridviewheaders.a.fJG().a((Date)localObject, this.mContext);
     AppMethodBeat.o(35049);
     return localObject;
   }
@@ -175,34 +175,38 @@ public final class c
   public static class a
     extends RecyclerView.w
   {
-    public TextView fAz;
-    public ImageView fuY;
-    public TextView iCg;
-    public TextView iMz;
-    public View sSS;
+    public ImageView fOf;
+    public TextView fTP;
+    public TextView iVq;
+    public TextView jfJ;
+    public View tPw;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(35042);
-      this.sSS = paramView;
-      this.fuY = ((ImageView)paramView.findViewById(2131299761));
-      this.iMz = ((TextView)paramView.findViewById(2131299814));
-      this.fAz = ((TextView)paramView.findViewById(2131299847));
-      this.iCg = ((TextView)paramView.findViewById(2131299848));
-      this.iCg.setSingleLine(false);
-      this.iCg.setMaxLines(2);
+      this.tPw = paramView;
+      this.fOf = ((ImageView)paramView.findViewById(2131299761));
+      this.jfJ = ((TextView)paramView.findViewById(2131299814));
+      this.fTP = ((TextView)paramView.findViewById(2131299847));
+      this.iVq = ((TextView)paramView.findViewById(2131299848));
+      this.iVq.setSingleLine(false);
+      this.iVq.setMaxLines(2);
       paramView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(35040);
-          if (c.fmh() != null)
+          Object localObject = new b();
+          ((b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/adapter/MediaHistoryListAdapter$BaseHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+          if (c.fCA() != null)
           {
             int i = ((Integer)paramAnonymousView.getTag()).intValue();
-            c.b localb = c.fmi().aaU(i);
-            c.fmh().a(paramAnonymousView, i, localb);
+            localObject = c.fCB().adg(i);
+            c.fCA().a(paramAnonymousView, i, (c.b)localObject);
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/adapter/MediaHistoryListAdapter$BaseHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(35040);
         }
       });
@@ -211,12 +215,16 @@ public final class c
         public final boolean onLongClick(View paramAnonymousView)
         {
           AppMethodBeat.i(35041);
-          if (c.fmh() != null)
+          Object localObject = new b();
+          ((b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/adapter/MediaHistoryListAdapter$BaseHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).ahq());
+          if (c.fCA() != null)
           {
             int i = ((Integer)paramAnonymousView.getTag()).intValue();
-            c.b localb = c.fmi().aaU(i);
-            c.fmh().b(paramAnonymousView, i, localb);
+            localObject = c.fCB().adg(i);
+            c.fCA().b(paramAnonymousView, i, (c.b)localObject);
           }
+          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/chatting/adapter/MediaHistoryListAdapter$BaseHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
           AppMethodBeat.o(35041);
           return true;
         }
@@ -227,7 +235,7 @@ public final class c
     public static void d(TextView paramTextView, String paramString)
     {
       AppMethodBeat.i(35043);
-      if (!bs.isNullOrNil(paramString))
+      if (!bt.isNullOrNil(paramString))
       {
         paramTextView.getContext();
         paramTextView.setText(f.b(paramTextView.getText(), paramString));
@@ -238,9 +246,9 @@ public final class c
   
   public static abstract class b
   {
-    Pattern HSd = Pattern.compile("[._a-zA-Z0-9]+");
-    public String bLt;
-    public String mnK;
+    Pattern JFV = Pattern.compile("[._a-zA-Z0-9]+");
+    public String bVG;
+    public String mOm;
     public long msgId;
     public String nickname;
     public long timestamp;
@@ -258,11 +266,11 @@ public final class c
       this.msgId = paramLong2;
       this.username = paramString2;
       this.nickname = paramString3;
-      this.bLt = paramString4;
-      this.mnK = paramString5;
+      this.bVG = paramString4;
+      this.mOm = paramString5;
     }
     
-    protected static boolean aQh(String paramString)
+    protected static boolean aVY(String paramString)
     {
       boolean bool2 = false;
       paramString = paramString.toCharArray();
@@ -283,22 +291,22 @@ public final class c
       }
     }
     
-    public boolean aQg(String paramString)
+    public boolean aVX(String paramString)
     {
-      if (!aQh(paramString))
+      if (!aVY(paramString))
       {
-        if ((!bs.isNullOrNil(this.title)) && (lN(paramString, this.title.toLowerCase()))) {}
-        while (((!bs.isNullOrNil(this.nickname)) && (lN(paramString, this.nickname.toLowerCase()))) || ((!bs.isNullOrNil(this.mnK)) && (lN(paramString, this.mnK.toLowerCase()))) || ((!bs.isNullOrNil(this.bLt)) && (lN(paramString, this.bLt.toLowerCase())))) {
+        if ((!bt.isNullOrNil(this.title)) && (ml(paramString, this.title.toLowerCase()))) {}
+        while (((!bt.isNullOrNil(this.nickname)) && (ml(paramString, this.nickname.toLowerCase()))) || ((!bt.isNullOrNil(this.mOm)) && (ml(paramString, this.mOm.toLowerCase()))) || ((!bt.isNullOrNil(this.bVG)) && (ml(paramString, this.bVG.toLowerCase())))) {
           return true;
         }
       }
       do
       {
         return false;
-        if (((!bs.isNullOrNil(this.title)) && (this.title.toLowerCase().contains(paramString))) || ((!bs.isNullOrNil(this.nickname)) && (this.nickname.toLowerCase().contains(paramString))) || ((!bs.isNullOrNil(this.mnK)) && (this.mnK.toLowerCase().contains(paramString)))) {
+        if (((!bt.isNullOrNil(this.title)) && (this.title.toLowerCase().contains(paramString))) || ((!bt.isNullOrNil(this.nickname)) && (this.nickname.toLowerCase().contains(paramString))) || ((!bt.isNullOrNil(this.mOm)) && (this.mOm.toLowerCase().contains(paramString)))) {
           break;
         }
-      } while ((bs.isNullOrNil(this.bLt)) || (!this.bLt.toLowerCase().contains(paramString)));
+      } while ((bt.isNullOrNil(this.bVG)) || (!this.bVG.toLowerCase().contains(paramString)));
       return true;
     }
     
@@ -315,17 +323,17 @@ public final class c
       return this.type;
     }
     
-    protected final boolean lN(String paramString1, String paramString2)
+    protected final boolean ml(String paramString1, String paramString2)
     {
-      if (!bs.isNullOrNil(paramString2))
+      if (!bt.isNullOrNil(paramString2))
       {
-        paramString2 = this.HSd.matcher(paramString2);
+        paramString2 = this.JFV.matcher(paramString2);
         boolean bool1 = false;
         while (paramString2.find())
         {
           String str = paramString2.group();
           boolean bool2 = str.startsWith(paramString1);
-          ac.i("MicroMsg.MediaHistoryListAdapter", "[isContains] search:%s group:%s", new Object[] { paramString1, str });
+          ad.i("MicroMsg.MediaHistoryListAdapter", "[isContains] search:%s group:%s", new Object[] { paramString1, str });
           bool1 = bool2;
           if (bool2) {
             bool1 = bool2;
@@ -345,7 +353,7 @@ public final class c
       this.timestamp = paramLong;
     }
     
-    public final boolean aQg(String paramString)
+    public final boolean aVX(String paramString)
     {
       return false;
     }
@@ -359,14 +367,14 @@ public final class c
   public final class d
     extends RecyclerView.w
   {
-    TextView iBM;
+    TextView iUW;
     
     public d(View paramView)
     {
       super();
       AppMethodBeat.i(35044);
-      this.iBM = ((TextView)paramView.findViewById(2131298930));
-      this.iBM.setTextColor(c.a(c.this).getResources().getColor(2131100358));
+      this.iUW = ((TextView)paramView.findViewById(2131298930));
+      this.iUW.setTextColor(c.a(c.this).getResources().getColor(2131100358));
       paramView.findViewById(2131298739).setBackgroundColor(c.a(c.this).getResources().getColor(2131100352));
       AppMethodBeat.o(35044);
     }
@@ -381,13 +389,13 @@ public final class c
   
   public static abstract interface f
   {
+    public abstract RecyclerView.w D(ViewGroup paramViewGroup);
+    
     public abstract void a(c.a parama, int paramInt);
     
-    public abstract c.b aaU(int paramInt);
+    public abstract c.b adg(int paramInt);
     
     public abstract int getCount();
-    
-    public abstract RecyclerView.w z(ViewGroup paramViewGroup);
   }
 }
 

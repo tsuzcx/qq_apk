@@ -6,11 +6,13 @@ import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.r.a.d;
 
 public abstract interface ay
-  extends i, bu
+  extends i, bt
 {
-  public abstract void BO();
+  public abstract void Dn();
   
-  public abstract boolean BP();
+  public abstract boolean Do();
+  
+  public abstract boolean Dp();
   
   public abstract void aw(Context paramContext);
   
@@ -62,7 +64,7 @@ public abstract interface ay
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ay
  * JD-Core Version:    0.7.0.1
  */

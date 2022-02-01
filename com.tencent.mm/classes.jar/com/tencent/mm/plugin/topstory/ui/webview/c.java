@@ -1,23 +1,21 @@
 package com.tencent.mm.plugin.topstory.ui.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.topstory.a.c.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.topstory.a.c.j;
 import com.tencent.mm.plugin.topstory.ui.PluginTopStoryUI;
 import com.tencent.mm.plugin.topstory.ui.home.d;
-import com.tencent.mm.plugin.websearch.api.ak;
-import com.tencent.mm.plugin.websearch.api.z;
-import com.tencent.mm.protocal.protobuf.cmi;
-import com.tencent.mm.protocal.protobuf.dia;
-import com.tencent.mm.protocal.protobuf.dib;
-import com.tencent.mm.protocal.protobuf.did;
-import com.tencent.mm.protocal.protobuf.dif;
-import com.tencent.mm.protocal.protobuf.dya;
-import com.tencent.mm.protocal.protobuf.dyk;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.websearch.api.ao;
+import com.tencent.mm.protocal.protobuf.crj;
+import com.tencent.mm.protocal.protobuf.dnp;
+import com.tencent.mm.protocal.protobuf.dnq;
+import com.tencent.mm.protocal.protobuf.dns;
+import com.tencent.mm.protocal.protobuf.dnu;
+import com.tencent.mm.protocal.protobuf.eea;
+import com.tencent.mm.protocal.protobuf.eek;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.IOException;
 import java.util.HashMap;
 import org.json.JSONArray;
@@ -25,21 +23,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class c
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
-  public com.tencent.mm.ak.g Adn;
-  public com.tencent.mm.ak.g AgA;
-  public com.tencent.mm.ak.g AgB;
-  public com.tencent.mm.plugin.topstory.ui.home.a Agw;
-  private boolean Agx;
-  public b Agy;
-  public byte[] Agz;
-  private com.tencent.mm.plugin.topstory.a.c.b zYV;
+  private com.tencent.mm.plugin.topstory.a.c.b BqH;
+  public com.tencent.mm.al.f BuY;
+  public com.tencent.mm.plugin.topstory.ui.home.a Byi;
+  private boolean Byj;
+  public b Byk;
+  public byte[] Byl;
+  public com.tencent.mm.al.f Bym;
+  public com.tencent.mm.al.f Byn;
   
   public c()
   {
     AppMethodBeat.i(126558);
-    this.AgA = new com.tencent.mm.ak.g()
+    this.Bym = new com.tencent.mm.al.f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
@@ -54,28 +52,28 @@ public final class c
             if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0)) {
               continue;
             }
-            ac.w("MicroMsg.TopStory.TopStoryWebData", "NetSceneTopStoryPostComment response, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.TopStory.TopStoryWebData", "NetSceneTopStoryPostComment response, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
           }
           catch (JSONException paramAnonymousString)
           {
             continue;
           }
-          if (c.this.Agw != null) {
-            c.this.Agw.axO(localJSONObject.toString());
+          if (c.this.Byi != null) {
+            c.this.Byi.aCT(localJSONObject.toString());
           }
           AppMethodBeat.o(126553);
           return;
-          if (c.this.Agw != null)
+          if (c.this.Byi != null)
           {
-            paramAnonymousString = ((f)paramAnonymousn).ecG().FRe;
-            paramAnonymousn = ((f)paramAnonymousn).ecG().FrP;
+            paramAnonymousString = ((com.tencent.mm.plugin.topstory.a.c.f)paramAnonymousn).eoX().HBK;
+            paramAnonymousn = ((com.tencent.mm.plugin.topstory.a.c.f)paramAnonymousn).eoX().HbT;
             localJSONObject.put("commentId", paramAnonymousString);
             localJSONObject.put("requestId", paramAnonymousn);
           }
         }
       }
     };
-    this.Adn = new com.tencent.mm.ak.g()
+    this.BuY = new com.tencent.mm.al.f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
@@ -90,24 +88,24 @@ public final class c
             if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0)) {
               continue;
             }
-            ac.w("MicroMsg.TopStory.TopStoryWebData", "NetSceneTopStorySetComment response, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.TopStory.TopStoryWebData", "NetSceneTopStorySetComment response, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
           }
           catch (JSONException paramAnonymousString)
           {
             continue;
           }
-          if (c.this.Agw != null) {
-            c.this.Agw.axP(localJSONObject.toString());
+          if (c.this.Byi != null) {
+            c.this.Byi.aCU(localJSONObject.toString());
           }
           AppMethodBeat.o(126554);
           return;
-          if (c.this.Agw != null) {
-            localJSONObject.put("requestId", ((j)paramAnonymousn).ecI().FrP);
+          if (c.this.Byi != null) {
+            localJSONObject.put("requestId", ((j)paramAnonymousn).eoZ().HbT);
           }
         }
       }
     };
-    this.AgB = new com.tencent.mm.ak.g()
+    this.Byn = new com.tencent.mm.al.f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
@@ -122,22 +120,22 @@ public final class c
             if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0)) {
               continue;
             }
-            ac.w("MicroMsg.TopStory.TopStoryWebData", "NetSceneSearchWebComm response, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-            localJSONObject.put("requestId", ((com.tencent.mm.plugin.topstory.a.c.a)paramAnonymousn).dlj);
+            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.TopStory.TopStoryWebData", "NetSceneSearchWebComm response, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+            localJSONObject.put("requestId", ((com.tencent.mm.plugin.topstory.a.c.a)paramAnonymousn).dwW);
           }
           catch (JSONException paramAnonymousString)
           {
             continue;
           }
-          if (c.this.Agw != null) {
-            c.this.Agw.axN(localJSONObject.toString());
+          if (c.this.Byi != null) {
+            c.this.Byi.aCS(localJSONObject.toString());
           }
           AppMethodBeat.o(126555);
           return;
-          if (c.this.Agw != null)
+          if (c.this.Byi != null)
           {
-            localJSONObject.put("commResp", ((com.tencent.mm.plugin.topstory.a.c.a)paramAnonymousn).ecC().Geg);
-            localJSONObject.put("requestId", ((com.tencent.mm.plugin.topstory.a.c.a)paramAnonymousn).ecC().dlj);
+            localJSONObject.put("commResp", ((com.tencent.mm.plugin.topstory.a.c.a)paramAnonymousn).eoT().HPm);
+            localJSONObject.put("requestId", ((com.tencent.mm.plugin.topstory.a.c.a)paramAnonymousn).eoT().dwW);
           }
         }
       }
@@ -145,32 +143,32 @@ public final class c
     AppMethodBeat.o(126558);
   }
   
-  private void a(dia paramdia, String paramString, boolean paramBoolean)
+  private void a(dnp paramdnp, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(126564);
-    if (this.Agx)
+    if (this.Byj)
     {
-      if (this.Agw != null) {
-        this.Agw.axM(paramString);
+      if (this.Byi != null) {
+        this.Byi.aCR(paramString);
       }
-      this.Agx = false;
+      this.Byj = false;
       AppMethodBeat.o(126564);
       return;
     }
-    if ((!paramBoolean) && (paramdia.cGY == 100))
+    if ((!paramBoolean) && (paramdnp.cSc == 100))
     {
-      this.Agy = new b((byte)0);
-      this.Agy.AgG = paramdia;
-      this.Agy.nvA = System.currentTimeMillis();
-      this.Agy.AgF = paramString;
+      this.Byk = new b((byte)0);
+      this.Byk.Bys = paramdnp;
+      this.Byk.nWY = System.currentTimeMillis();
+      this.Byk.Byr = paramString;
       AppMethodBeat.o(126564);
       return;
     }
-    this.Agy = null;
+    this.Byk = null;
     AppMethodBeat.o(126564);
   }
   
-  private static String eeC()
+  private static String eqT()
   {
     AppMethodBeat.i(126565);
     Object localObject = new JSONObject();
@@ -188,62 +186,62 @@ public final class c
     }
   }
   
-  public final void a(dia paramdia, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public final void a(dnp paramdnp, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     AppMethodBeat.i(126561);
-    a(paramdia, paramBoolean1, paramBoolean2, paramInt, "");
+    a(paramdnp, paramBoolean1, paramBoolean2, paramInt, "");
     AppMethodBeat.o(126561);
   }
   
-  public final void a(dia paramdia, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public final void a(dnp paramdnp, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
     AppMethodBeat.i(126562);
-    ac.i("MicroMsg.TopStory.TopStoryWebData", "loadDataFromServer directRequest:%s", new Object[] { Boolean.valueOf(paramBoolean2) });
-    if ((!paramBoolean2) && (this.zYV != null) && (paramdia.sessionId.equals(this.zYV.dyS.sessionId)))
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebData", "loadDataFromServer directRequest:%s", new Object[] { Boolean.valueOf(paramBoolean2) });
+    if ((!paramBoolean2) && (this.BqH != null) && (paramdnp.sessionId.equals(this.BqH.dLe.sessionId)))
     {
-      this.Agx = paramBoolean1;
-      ac.i("MicroMsg.TopStory.TopStoryWebData", "Wait current net scene");
-      com.tencent.mm.plugin.topstory.a.i.a(paramdia, "WaitCurrentNetScene", System.currentTimeMillis());
+      this.Byj = paramBoolean1;
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebData", "Wait current net scene");
+      com.tencent.mm.plugin.topstory.a.i.a(paramdnp, "WaitCurrentNetScene", System.currentTimeMillis());
       AppMethodBeat.o(126562);
       return;
     }
-    this.zYV = new com.tencent.mm.plugin.topstory.a.c.b(paramdia, paramInt, paramString);
-    com.tencent.mm.kernel.g.agi().a(1943, this);
-    com.tencent.mm.kernel.g.agi().a(this.zYV, 0);
-    this.Agx = paramBoolean1;
-    ac.i("MicroMsg.TopStory.TopStoryWebData", "Start new net scene");
+    this.BqH = new com.tencent.mm.plugin.topstory.a.c.b(paramdnp, paramInt, paramString);
+    g.aiU().a(1943, this);
+    g.aiU().a(this.BqH, 0);
+    this.Byj = paramBoolean1;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebData", "Start new net scene");
     AppMethodBeat.o(126562);
   }
   
-  public final void eeB()
+  public final void eqS()
   {
     AppMethodBeat.i(126559);
     a locala = new a((byte)0);
-    com.tencent.e.h.JZN.f(locala, "TopStory.LoadHtmlDataFromSdcardTask");
+    com.tencent.e.h.LTJ.f(locala, "TopStory.LoadHtmlDataFromSdcardTask");
     AppMethodBeat.o(126559);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final n paramn)
   {
     AppMethodBeat.i(126563);
-    if (paramn.equals(this.zYV))
+    if (paramn.equals(this.BqH))
     {
-      com.tencent.mm.kernel.g.agi().b(1943, this);
-      this.zYV = null;
+      g.aiU().b(1943, this);
+      this.BqH = null;
       paramString = (com.tencent.mm.plugin.topstory.a.c.b)paramn;
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ac.i("MicroMsg.TopStory.TopStoryWebData", "netscene topstory error");
-        a(paramString.dyS, eeC(), true);
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebData", "netscene topstory error");
+        a(paramString.dLe, eqT(), true);
         AppMethodBeat.o(126563);
         return;
       }
-      paramn = paramString.ecD();
-      final String str = paramn.FhN;
-      ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().yE(paramn.GeD);
-      a(paramString.dyS, str, false);
-      if ((paramString.ecD().GeC != null) && ((paramString.ecD().GeC.FzE == 1) || (((PluginTopStoryUI)com.tencent.mm.kernel.g.ad(PluginTopStoryUI.class)).getTopStoryCommand().Aad))) {
-        com.tencent.e.h.JZN.aS(new com.tencent.e.i.h()
+      paramn = paramString.eoU();
+      final String str = paramn.GDb;
+      ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().Bc(paramn.HPJ);
+      a(paramString.dLe, str, false);
+      if ((paramString.eoU().HPI != null) && ((paramString.eoU().HPI.HjM == 1) || (((PluginTopStoryUI)g.ad(PluginTopStoryUI.class)).getTopStoryCommand().BrP))) {
+        com.tencent.e.h.LTJ.aR(new com.tencent.e.i.h()
         {
           public final String getKey()
           {
@@ -253,32 +251,32 @@ public final class c
           public final void run()
           {
             AppMethodBeat.i(126556);
-            dib localdib = new dib();
-            localdib.Category = paramn.GeC.Category;
-            localdib.FRa = System.currentTimeMillis();
-            localdib.FzB = paramn.GeC.FzB;
-            localdib.FRb = paramn.GeC.FzC;
-            localdib.hkR = str;
-            localdib.FzD = paramn.GeC.FzD;
-            ((PluginTopStoryUI)com.tencent.mm.kernel.g.ad(PluginTopStoryUI.class)).getWebViewMgr().AbW.put(Integer.valueOf(localdib.Category), localdib);
+            dnq localdnq = new dnq();
+            localdnq.Category = paramn.HPI.Category;
+            localdnq.HBG = System.currentTimeMillis();
+            localdnq.HjJ = paramn.HPI.HjJ;
+            localdnq.HBH = paramn.HPI.HjK;
+            localdnq.hDa = str;
+            localdnq.HjL = paramn.HPI.HjL;
+            ((PluginTopStoryUI)g.ad(PluginTopStoryUI.class)).getWebViewMgr().BtH.put(Integer.valueOf(localdnq.Category), localdnq);
             try
             {
-              byte[] arrayOfByte = localdib.toByteArray();
-              com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.topstory.a.h.ecu());
+              byte[] arrayOfByte = localdnq.toByteArray();
+              com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.topstory.a.h.eoL());
               if (!locale.exists()) {
                 locale.mkdirs();
               }
-              com.tencent.mm.vfs.i.f(com.tencent.mm.plugin.topstory.a.h.ecu() + localdib.Category, arrayOfByte, arrayOfByte.length);
-              ac.i("MicroMsg.TopStory.TopStoryWebViewMgr", "putHomeDataCache write data key: %d length: %d", new Object[] { Integer.valueOf(localdib.Category), Integer.valueOf(arrayOfByte.length) });
+              com.tencent.mm.vfs.i.f(com.tencent.mm.plugin.topstory.a.h.eoL() + localdnq.Category, arrayOfByte, arrayOfByte.length);
+              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "putHomeDataCache write data key: %d length: %d", new Object[] { Integer.valueOf(localdnq.Category), Integer.valueOf(arrayOfByte.length) });
             }
             catch (IOException localIOException)
             {
               for (;;)
               {
-                ac.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewMgr", localIOException, "putHomeDataCache ", new Object[0]);
+                com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewMgr", localIOException, "putHomeDataCache ", new Object[0]);
               }
             }
-            ((PluginTopStoryUI)com.tencent.mm.kernel.g.ad(PluginTopStoryUI.class)).getWebViewMgr().ce(localdib.Category, "");
+            ((PluginTopStoryUI)g.ad(PluginTopStoryUI.class)).getWebViewMgr().cl(localdnq.Category, "");
             AppMethodBeat.o(126556);
           }
         });
@@ -290,13 +288,13 @@ public final class c
   public final void y(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(126560);
-    if (bs.isNullOrNil(paramString1))
+    if (bt.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(126560);
       return;
     }
     JSONObject localJSONObject;
-    if (this.Agz != null) {
+    if (this.Byl != null) {
       localJSONObject = new JSONObject();
     }
     for (;;)
@@ -311,7 +309,7 @@ public final class c
         }
         i = 1;
         localJSONObject.put("recType", i);
-        if (!bs.isNullOrNil(paramString2)) {
+        if (!bt.isNullOrNil(paramString2)) {
           localJSONObject.put("filterDocidList", new JSONArray(paramString2));
         }
       }
@@ -320,8 +318,8 @@ public final class c
         int i;
         continue;
       }
-      this.Agz = new String(this.Agz).replace("'###preloadObjFeedsData###'", localJSONObject.toString() + "\n").getBytes();
-      ac.i("MicroMsg.TopStory.TopStoryWebData", "attachDataToHtml htmlBytes:%s", new Object[] { Integer.valueOf(this.Agz.length) });
+      this.Byl = new String(this.Byl).replace("'###preloadObjFeedsData###'", localJSONObject.toString() + "\n").getBytes();
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.TopStory.TopStoryWebData", "attachDataToHtml htmlBytes:%s", new Object[] { Integer.valueOf(this.Byl.length) });
       AppMethodBeat.o(126560);
       return;
       i = 0;
@@ -336,17 +334,17 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(126557);
-      String str = String.format("%s/%s", new Object[] { z.Uj(1).exF(), "app.html" });
-      c.this.Agz = com.tencent.mm.vfs.i.aU(str, 0, -1);
+      String str = String.format("%s/%s", new Object[] { com.tencent.mm.plugin.websearch.api.ad.Wc(1).eMw(), "app.html" });
+      c.this.Byl = com.tencent.mm.vfs.i.aY(str, 0, -1);
       AppMethodBeat.o(126557);
     }
   }
   
   final class b
   {
-    String AgF;
-    dia AgG;
-    long nvA;
+    String Byr;
+    dnp Bys;
+    long nWY;
     
     private b() {}
   }

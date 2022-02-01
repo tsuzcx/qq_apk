@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.media.a;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.audio.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,77 +12,77 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  private static ArrayList<String> lrA;
-  private static Map<String, Boolean> lrB;
-  private static Map<String, c> lry;
-  private static Map<String, com.tencent.mm.sdk.b.c> lrz;
+  private static Map<String, c> lQI;
+  private static Map<String, com.tencent.mm.sdk.b.c> lQJ;
+  private static ArrayList<String> lQK;
+  private static Map<String, Boolean> lQL;
   
   static
   {
     AppMethodBeat.i(145783);
-    lry = new ConcurrentHashMap();
-    lrz = new HashMap();
-    lrA = new ArrayList();
-    lrB = new ConcurrentHashMap();
+    lQI = new ConcurrentHashMap();
+    lQJ = new HashMap();
+    lQK = new ArrayList();
+    lQL = new ConcurrentHashMap();
     AppMethodBeat.o(145783);
   }
   
-  public static void LP(String paramString)
+  public static void Pj(String paramString)
   {
     AppMethodBeat.i(145776);
-    ac.i("MicroMsg.Audio.AppBrandAudioClientService", "onDestroy");
-    b.LP(paramString);
-    lry.clear();
-    Iterator localIterator = lrA.iterator();
+    ad.i("MicroMsg.Audio.AppBrandAudioClientService", "onDestroy");
+    b.Pj(paramString);
+    lQI.clear();
+    Iterator localIterator = lQK.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (com.tencent.mm.sdk.b.c)lrz.remove(localObject);
+      localObject = (com.tencent.mm.sdk.b.c)lQJ.remove(localObject);
       if (localObject != null) {
-        com.tencent.mm.sdk.b.a.GpY.d((com.tencent.mm.sdk.b.c)localObject);
+        com.tencent.mm.sdk.b.a.IbL.d((com.tencent.mm.sdk.b.c)localObject);
       }
     }
-    lrz.clear();
-    lrA.clear();
-    lrB.remove(paramString);
+    lQJ.clear();
+    lQK.clear();
+    lQL.remove(paramString);
     AppMethodBeat.o(145776);
   }
   
-  public static c OJ(String paramString)
+  public static c Sm(String paramString)
   {
     AppMethodBeat.i(145778);
-    paramString = (c)lry.get(paramString);
+    paramString = (c)lQI.get(paramString);
     AppMethodBeat.o(145778);
     return paramString;
   }
   
-  public static void OK(String paramString)
+  public static void Sn(String paramString)
   {
     AppMethodBeat.i(145780);
-    if (!lrz.containsKey(paramString))
+    if (!lQJ.containsKey(paramString))
     {
-      ac.e("MicroMsg.Audio.AppBrandAudioClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
+      ad.e("MicroMsg.Audio.AppBrandAudioClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
       AppMethodBeat.o(145780);
       return;
     }
-    ac.d("MicroMsg.Audio.AppBrandAudioClientService", "removeAudioPlayerListener,appId:%s", new Object[] { paramString });
-    lrA.remove(paramString);
-    paramString = (com.tencent.mm.sdk.b.c)lrz.remove(paramString);
+    ad.d("MicroMsg.Audio.AppBrandAudioClientService", "removeAudioPlayerListener,appId:%s", new Object[] { paramString });
+    lQK.remove(paramString);
+    paramString = (com.tencent.mm.sdk.b.c)lQJ.remove(paramString);
     if (paramString != null) {
-      com.tencent.mm.sdk.b.a.GpY.d(paramString);
+      com.tencent.mm.sdk.b.a.IbL.d(paramString);
     }
     AppMethodBeat.o(145780);
   }
   
-  public static boolean OL(String paramString)
+  public static boolean So(String paramString)
   {
     AppMethodBeat.i(145781);
-    if (!lrB.containsKey(paramString))
+    if (!lQL.containsKey(paramString))
     {
       AppMethodBeat.o(145781);
       return false;
     }
-    boolean bool = ((Boolean)lrB.get(paramString)).booleanValue();
+    boolean bool = ((Boolean)lQL.get(paramString)).booleanValue();
     AppMethodBeat.o(145781);
     return bool;
   }
@@ -90,7 +90,7 @@ public final class a
   public static void a(String paramString, c paramc)
   {
     AppMethodBeat.i(145777);
-    lry.put(paramString, paramc);
+    lQI.put(paramString, paramc);
     AppMethodBeat.o(145777);
   }
   
@@ -99,48 +99,48 @@ public final class a
     AppMethodBeat.i(145779);
     if (TextUtils.isEmpty(paramString))
     {
-      ac.e("MicroMsg.Audio.AppBrandAudioClientService", "appId is empty");
+      ad.e("MicroMsg.Audio.AppBrandAudioClientService", "appId is empty");
       AppMethodBeat.o(145779);
       return;
     }
     if (paramc == null)
     {
-      ac.e("MicroMsg.Audio.AppBrandAudioClientService", "listener is null");
+      ad.e("MicroMsg.Audio.AppBrandAudioClientService", "listener is null");
       AppMethodBeat.o(145779);
       return;
     }
-    if (lrz.containsKey(paramString)) {
-      OK(paramString);
+    if (lQJ.containsKey(paramString)) {
+      Sn(paramString);
     }
-    ac.d("MicroMsg.Audio.AppBrandAudioClientService", "addAudioPlayerListener,appId:%s", new Object[] { paramString });
-    lrz.put(paramString, paramc);
-    if (!lrA.contains(paramString)) {
-      lrA.add(paramString);
+    ad.d("MicroMsg.Audio.AppBrandAudioClientService", "addAudioPlayerListener,appId:%s", new Object[] { paramString });
+    lQJ.put(paramString, paramc);
+    if (!lQK.contains(paramString)) {
+      lQK.add(paramString);
     }
-    com.tencent.mm.sdk.b.a.GpY.b(paramc);
+    com.tencent.mm.sdk.b.a.IbL.b(paramc);
     AppMethodBeat.o(145779);
   }
   
-  public static void at(String paramString, boolean paramBoolean)
+  public static void av(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(145782);
-    lrB.put(paramString, Boolean.valueOf(paramBoolean));
+    lQL.put(paramString, Boolean.valueOf(paramBoolean));
     AppMethodBeat.o(145782);
   }
   
   public static void onCreate(String paramString)
   {
     AppMethodBeat.i(145775);
-    ac.i("MicroMsg.Audio.AppBrandAudioClientService", "onCreate");
-    lry.clear();
+    ad.i("MicroMsg.Audio.AppBrandAudioClientService", "onCreate");
+    lQI.clear();
     b.onCreate(paramString);
-    lrB.put(paramString, Boolean.TRUE);
+    lQL.put(paramString, Boolean.TRUE);
     AppMethodBeat.o(145775);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.a.a
  * JD-Core Version:    0.7.0.1
  */

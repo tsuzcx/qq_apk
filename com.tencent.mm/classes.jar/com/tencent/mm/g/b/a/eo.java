@@ -6,52 +6,78 @@ import com.tencent.mm.plugin.report.a;
 public final class eo
   extends a
 {
-  public String dGd = "";
-  public long dUP = 0L;
-  public long dUQ = 0L;
+  private String dXm = "";
+  public long egV = 0L;
+  public int eij = 0;
+  public long eik = 0L;
+  public long eil = 0L;
+  private String eim = "";
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(118481);
+    AppMethodBeat.i(121777);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dGd);
+    ((StringBuffer)localObject).append(this.eij);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUP);
+    ((StringBuffer)localObject).append(this.dXm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUQ);
+    ((StringBuffer)localObject).append(this.egV);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eik);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eil);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eim);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(118481);
+    awz((String)localObject);
+    AppMethodBeat.o(121777);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(118482);
+    AppMethodBeat.i(121778);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("UserName:").append(this.dGd);
+    ((StringBuffer)localObject).append("PId:").append(this.eij);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.dUP);
+    ((StringBuffer)localObject).append("PName:").append(this.dXm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasUnreadStoryTips:").append(this.dUQ);
+    ((StringBuffer)localObject).append("Seq:").append(this.egV);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SubSeq:").append(this.eik);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SubSeqSum:").append(this.eil);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("DataContent:").append(this.eim);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118482);
+    AppMethodBeat.o(121778);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16656;
+    return 16974;
   }
   
-  public final String getUserName()
+  public final eo nS(String paramString)
   {
-    return this.dGd;
+    AppMethodBeat.i(121775);
+    this.dXm = t("PName", paramString, true);
+    AppMethodBeat.o(121775);
+    return this;
+  }
+  
+  public final eo nT(String paramString)
+  {
+    AppMethodBeat.i(121776);
+    this.eim = t("DataContent", paramString, false);
+    AppMethodBeat.o(121776);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.eo
  * JD-Core Version:    0.7.0.1
  */

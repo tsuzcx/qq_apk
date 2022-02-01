@@ -5,20 +5,22 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.ui.al;
 
 public final class c
 {
-  private static boolean GjZ = false;
+  private static boolean sKx = false;
   
   public static void a(Configuration paramConfiguration, Resources paramResources)
   {
     AppMethodBeat.i(162180);
-    boolean bool = aj.j(paramResources);
+    boolean bool = al.j(paramResources);
     paramConfiguration.uiMode &= 0xFFFFFFCF;
     int j = paramConfiguration.uiMode;
     if (bool)
@@ -33,7 +35,7 @@ public final class c
     label98:
     for (int i = 0;; i = paramResources.getConfiguration().uiMode)
     {
-      ac.i("MicroMsg.MMUIModeManager", "updateNightMode, isDarkMode:%s, uiMode:%s, resourcesMode:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(j), Integer.valueOf(i) });
+      ad.i("MicroMsg.MMUIModeManager", "updateNightMode, isDarkMode:%s, uiMode:%s, resourcesMode:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(j), Integer.valueOf(i) });
       AppMethodBeat.o(162180);
       return;
       i = 16;
@@ -53,71 +55,86 @@ public final class c
     }
   }
   
-  public static void eSF()
+  public static void fhY()
   {
     AppMethodBeat.i(162182);
-    if (!GjZ)
+    if (!sKx)
     {
-      ac.i("MicroMsg.MMUIModeManager", "dark mode used: %s", new Object[] { Boolean.TRUE });
-      aw.aKT(ai.eUX()).putBoolean("dark_mode_used", true);
-      GjZ = true;
+      ad.i("MicroMsg.MMUIModeManager", "dark mode used: %s", new Object[] { Boolean.TRUE });
+      ax.aQz(aj.fkC()).putBoolean("dark_mode_used", true);
+      sKx = true;
     }
     AppMethodBeat.o(162182);
   }
   
-  public static boolean eSG()
+  public static boolean fhZ()
   {
-    AppMethodBeat.i(197174);
+    AppMethodBeat.i(186431);
     String str = Build.BRAND;
-    if (!bs.isNullOrNil(str))
+    if (!bt.isNullOrNil(str))
     {
       str = str.toLowerCase();
       if (((str.contains("meizu")) || (str.contains("smartisan"))) && (Build.VERSION.SDK_INT <= 25))
       {
-        AppMethodBeat.o(197174);
+        AppMethodBeat.o(186431);
         return true;
       }
     }
-    AppMethodBeat.o(197174);
+    AppMethodBeat.o(186431);
+    return false;
+  }
+  
+  public static boolean fia()
+  {
     return false;
   }
   
   public static boolean h(Configuration paramConfiguration)
   {
     AppMethodBeat.i(162181);
-    int i = aw.aKT(ai.eUX()).getInt("uimode_change", 0);
+    int i = ax.aQz(aj.fkC()).getInt("uimode_change", 0);
     int j = paramConfiguration.uiMode;
     if (i == 0) {
-      aw.aKT(ai.eUX()).putInt("uimode_change", j);
+      ax.aQz(aj.fkC()).putInt("uimode_change", j);
     }
-    ac.i("MicroMsg.MMUIModeManager", "dancy test uimode change, mUimode:%s,mCurrentUimode:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    ad.i("MicroMsg.MMUIModeManager", "dancy test uimode change, mUimode:%s,mCurrentUimode:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
     if ((i != 0) && (i != j))
     {
-      ac.i("MicroMsg.MMUIModeManager", "uiModeChange true !! reStart!!!");
-      aw.aKT(ai.eUX()).putInt("uimode_change", j);
-      if ((!com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) && (!com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_PURPLE) && (!com.tencent.mm.sdk.platformtools.h.DEBUG) && (!aj.fhE())) {
-        break label246;
+      ad.i("MicroMsg.MMUIModeManager", "uiModeChange true !! reStart!!!");
+      ax.aQz(aj.fkC()).putInt("uimode_change", j);
+      if ((!i.IS_FLAVOR_RED) && (!i.IS_FLAVOR_PURPLE) && (!i.DEBUG) && (!al.fxT())) {
+        break label268;
       }
-      if (aj.fhJ()) {
+      if (al.fxZ()) {
         i = 1;
       }
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.wUl;
-      if (aj.i(paramConfiguration)) {}
-      for (j = 1;; j = 0)
+      g localg = g.yhR;
+      if (al.i(paramConfiguration))
       {
-        localh.f(18893, new Object[] { Integer.valueOf(2), Integer.valueOf(j), Integer.valueOf(1), Integer.valueOf(i) });
-        ac.i("MicroMsg.MMUIModeManager", "dark mode change kvReport logID:%s , action: %s, isDark:%s, mode:%s", new Object[] { Integer.valueOf(18893), Integer.valueOf(2), Boolean.valueOf(aj.i(paramConfiguration)), Integer.valueOf(i) });
+        j = 1;
+        label140:
+        if (!al.fxT()) {
+          break label256;
+        }
+      }
+      label256:
+      for (int k = 1;; k = 0)
+      {
+        localg.f(18893, new Object[] { Integer.valueOf(2), Integer.valueOf(j), Integer.valueOf(2), Integer.valueOf(i), Integer.valueOf(k) });
+        ad.i("MicroMsg.MMUIModeManager", "dark mode change kvReport logID:%s , action: %s, isDark:%s, mode:%s", new Object[] { Integer.valueOf(18893), Integer.valueOf(2), Boolean.valueOf(al.i(paramConfiguration)), Integer.valueOf(i) });
         AppMethodBeat.o(162181);
         return true;
         i = 2;
         break;
+        j = 0;
+        break label140;
       }
       AppMethodBeat.o(162181);
       return false;
-      label246:
+      label268:
       i = 0;
     }
   }

@@ -1,6 +1,6 @@
 package com.tencent.mm.ui.chatting.view;
 
-import com.tencent.mm.ui.chatting.j.c;
+import com.tencent.mm.ui.chatting.k.c;
 
 public abstract interface a<T extends c>
 {

@@ -13,7 +13,7 @@ public final class h
     return paramString1;
   }
   
-  public static ClassLoader bf(String paramString1, String paramString2, String paramString3)
+  public static ClassLoader bo(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(183532);
     paramString1 = a(paramString1, paramString2, paramString3, ClassLoader.getSystemClassLoader());

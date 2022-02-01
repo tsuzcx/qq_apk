@@ -26,38 +26,40 @@ import android.widget.ListAdapter;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class AutoFillListPopupWindowBase
 {
-  ListAdapter EN;
-  int aiV;
-  int aoZ;
-  int apa;
-  int apb;
-  boolean apd;
-  boolean apg;
-  boolean aph;
-  int api;
-  private View apj;
-  private int apk;
-  View apl;
-  private Drawable apm;
-  private AdapterView.OnItemClickListener apn;
-  private AdapterView.OnItemSelectedListener apo;
-  private Runnable apu;
-  boolean apv;
-  PopupWindow apw;
+  ListAdapter GE;
+  int akM;
+  int aqR;
+  int aqS;
+  int aqT;
+  boolean aqV;
+  boolean aqY;
+  boolean aqZ;
+  int ara;
+  private View arb;
+  private int arc;
+  View ard;
+  private Drawable are;
+  private AdapterView.OnItemClickListener arf;
+  private AdapterView.OnItemSelectedListener arg;
+  private Runnable arl;
+  boolean arm;
+  PopupWindow arn;
   private Context mContext;
-  private ao mHandler;
-  AutoFillListPopupWindowBase.a mHf;
-  private final f mHg;
-  private final e mHh;
-  private final d mHi;
-  private final b mHj;
-  private boolean mHk;
+  private ap mHandler;
   DataSetObserver mObserver;
   private Rect mTempRect;
+  AutoFillListPopupWindowBase.a nhD;
+  private final f nhE;
+  private final e nhF;
+  private final d nhG;
+  private final b nhH;
+  private boolean nhI;
   
   public AutoFillListPopupWindowBase(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -67,34 +69,34 @@ public class AutoFillListPopupWindowBase
   public AutoFillListPopupWindowBase(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     AppMethodBeat.i(136663);
-    this.aoZ = -2;
-    this.aiV = -2;
-    this.apg = false;
-    this.aph = false;
-    this.api = 2147483647;
-    this.apk = 0;
-    this.mHg = new f((byte)0);
-    this.mHh = new e((byte)0);
-    this.mHi = new d((byte)0);
-    this.mHj = new b((byte)0);
-    this.mHandler = new ao();
+    this.aqR = -2;
+    this.akM = -2;
+    this.aqY = false;
+    this.aqZ = false;
+    this.ara = 2147483647;
+    this.arc = 0;
+    this.nhE = new f((byte)0);
+    this.nhF = new e((byte)0);
+    this.nhG = new d((byte)0);
+    this.nhH = new b((byte)0);
+    this.mHandler = new ap();
     this.mTempRect = new Rect();
-    this.mHk = false;
+    this.nhI = false;
     this.mContext = paramContext;
-    this.apw = new PopupWindow(paramContext);
-    this.apw.setInputMethodMode(1);
+    this.arn = new PopupWindow(paramContext);
+    this.arn.setInputMethodMode(1);
     paramContext = this.mContext.getResources().getConfiguration().locale;
     AppMethodBeat.o(136663);
   }
   
-  private void kf()
+  private void kv()
   {
     AppMethodBeat.i(136667);
-    if (this.apj != null)
+    if (this.arb != null)
     {
-      ViewParent localViewParent = this.apj.getParent();
+      ViewParent localViewParent = this.arb.getParent();
       if ((localViewParent instanceof ViewGroup)) {
-        ((ViewGroup)localViewParent).removeView(this.apj);
+        ((ViewGroup)localViewParent).removeView(this.arb);
       }
     }
     AppMethodBeat.o(136667);
@@ -103,7 +105,7 @@ public class AutoFillListPopupWindowBase
   public final void clearListSelection()
   {
     AppMethodBeat.i(136668);
-    AutoFillListPopupWindowBase.a locala = this.mHf;
+    AutoFillListPopupWindowBase.a locala = this.nhD;
     if (locala != null)
     {
       AutoFillListPopupWindowBase.a.a(locala, true);
@@ -115,18 +117,18 @@ public class AutoFillListPopupWindowBase
   public final void dismiss()
   {
     AppMethodBeat.i(136665);
-    this.apw.dismiss();
-    kf();
-    this.apw.setContentView(null);
-    this.mHf = null;
-    this.mHandler.removeCallbacks(this.mHg);
+    this.arn.dismiss();
+    kv();
+    this.arn.setContentView(null);
+    this.nhD = null;
+    this.mHandler.removeCallbacks(this.nhE);
     AppMethodBeat.o(136665);
   }
   
   public final boolean isInputMethodNotNeeded()
   {
     AppMethodBeat.i(136669);
-    if (this.apw.getInputMethodMode() == 2)
+    if (this.arn.getInputMethodMode() == 2)
     {
       AppMethodBeat.o(136669);
       return true;
@@ -138,14 +140,14 @@ public class AutoFillListPopupWindowBase
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
     AppMethodBeat.i(136666);
-    this.apw.setOnDismissListener(paramOnDismissListener);
+    this.arn.setOnDismissListener(paramOnDismissListener);
     AppMethodBeat.o(136666);
   }
   
   public final void setVerticalOffset(int paramInt)
   {
-    this.apb = paramInt;
-    this.apd = true;
+    this.aqT = paramInt;
+    this.aqV = true;
   }
   
   public void show()
@@ -160,28 +162,45 @@ public class AutoFillListPopupWindowBase
     View localView;
     FrameLayout.LayoutParams localLayoutParams1;
     FrameLayout.LayoutParams localLayoutParams2;
-    if (this.mHf == null)
+    if (this.nhD == null)
     {
       localObject2 = this.mContext;
-      this.apu = new AutoFillListPopupWindowBase.1(this);
-      if (!this.apv)
+      this.arl = new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(136647);
+          View localView = AutoFillListPopupWindowBase.this.ard;
+          if ((localView != null) && (localView.getWindowToken() != null)) {
+            AutoFillListPopupWindowBase.this.show();
+          }
+          AppMethodBeat.o(136647);
+        }
+      };
+      if (!this.arm)
       {
         bool1 = true;
-        this.mHf = new AutoFillListPopupWindowBase.a((Context)localObject2, bool1);
-        if (this.apm != null) {
-          this.mHf.setSelector(this.apm);
+        this.nhD = new AutoFillListPopupWindowBase.a((Context)localObject2, bool1);
+        if (this.are != null) {
+          this.nhD.setSelector(this.are);
         }
-        this.mHf.setAdapter(this.EN);
-        this.mHf.setOnItemClickListener(this.apn);
-        this.mHf.setFocusable(true);
-        this.mHf.setFocusableInTouchMode(true);
-        this.mHf.setDivider(null);
-        this.mHf.setDividerHeight(0);
-        this.mHf.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        this.nhD.setAdapter(this.GE);
+        this.nhD.setOnItemClickListener(this.arf);
+        this.nhD.setFocusable(true);
+        this.nhD.setFocusableInTouchMode(true);
+        this.nhD.setDivider(null);
+        this.nhD.setDividerHeight(0);
+        this.nhD.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
           public final void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
           {
             AppMethodBeat.i(136648);
+            b localb = new b();
+            localb.bd(paramAnonymousAdapterView);
+            localb.bd(paramAnonymousView);
+            localb.mr(paramAnonymousInt);
+            localb.qY(paramAnonymousLong);
+            a.b("com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillListPopupWindowBase$2", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
             if (paramAnonymousInt != -1)
             {
               paramAnonymousAdapterView = AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this);
@@ -189,30 +208,31 @@ public class AutoFillListPopupWindowBase
                 AutoFillListPopupWindowBase.a.a(paramAnonymousAdapterView, false);
               }
             }
+            a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillListPopupWindowBase$2", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(136648);
           }
           
           public final void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
         });
-        this.mHf.setOnScrollListener(this.mHi);
-        if (this.apo != null) {
-          this.mHf.setOnItemSelectedListener(this.apo);
+        this.nhD.setOnScrollListener(this.nhG);
+        if (this.arg != null) {
+          this.nhD.setOnItemSelectedListener(this.arg);
         }
-        localObject1 = this.mHf;
-        localView = this.apj;
+        localObject1 = this.nhD;
+        localView = this.arb;
         if (localView == null) {
           break label1343;
         }
-        kf();
+        kv();
         localObject2 = new FrameLayout((Context)localObject2);
         localLayoutParams1 = new FrameLayout.LayoutParams(-1, -1);
         localLayoutParams2 = new FrameLayout.LayoutParams(-1, -2);
-        switch (this.apk)
+        switch (this.arc)
         {
         default: 
-          new StringBuilder("Invalid hint position ").append(this.apk);
+          new StringBuilder("Invalid hint position ").append(this.arc);
           label278:
-          localView.measure(View.MeasureSpec.makeMeasureSpec(this.aiV, -2147483648), 0);
+          localView.measure(View.MeasureSpec.makeMeasureSpec(this.akM, -2147483648), 0);
           localObject1 = localObject2;
         }
       }
@@ -222,11 +242,11 @@ public class AutoFillListPopupWindowBase
     label1343:
     for (;;)
     {
-      this.apw.setContentView((View)localObject1);
+      this.arn.setContentView((View)localObject1);
       int i = 0;
       for (;;)
       {
-        localObject1 = this.apw.getBackground();
+        localObject1 = this.arn.getBackground();
         int k;
         label372:
         int i1;
@@ -236,17 +256,17 @@ public class AutoFillListPopupWindowBase
           ((Drawable)localObject1).getPadding(this.mTempRect);
           j = this.mTempRect.top + this.mTempRect.bottom;
           k = j;
-          if (!this.apd)
+          if (!this.aqV)
           {
-            this.apb = (-this.mTempRect.top);
+            this.aqT = (-this.mTempRect.top);
             k = j;
           }
-          if (this.apw.getInputMethodMode() != 2) {
+          if (this.arn.getInputMethodMode() != 2) {
             break label757;
           }
           j = 1;
-          localObject1 = this.apl;
-          i1 = this.apb;
+          localObject1 = this.ard;
+          i1 = this.aqT;
           localObject2 = new Rect();
           ((View)localObject1).getWindowVisibleDisplayFrame((Rect)localObject2);
           ((View)localObject1).getLocationOnScreen(new int[2]);
@@ -259,23 +279,23 @@ public class AutoFillListPopupWindowBase
         {
           j -= i1;
           m = j;
-          if (this.apw.getBackground() != null)
+          if (this.arn.getBackground() != null)
           {
-            this.apw.getBackground().getPadding(this.mTempRect);
+            this.arn.getBackground().getPadding(this.mTempRect);
             m = j - (this.mTempRect.top + this.mTempRect.bottom);
           }
-          if ((this.apg) || (this.aoZ == -1))
+          if ((this.aqY) || (this.aqR == -1))
           {
             i = m + k;
             bool1 = isInputMethodNotNeeded();
-            if (!this.apw.isShowing()) {
+            if (!this.arn.isShowing()) {
               break label1041;
             }
-            if (this.aiV != -1) {
+            if (this.akM != -1) {
               break label910;
             }
             j = -1;
-            if (this.aoZ != -1) {
+            if (this.aqR != -1) {
               break label979;
             }
             if (!bool1) {
@@ -284,17 +304,17 @@ public class AutoFillListPopupWindowBase
             if (!bool1) {
               break label948;
             }
-            localObject1 = this.apw;
-            if (this.aiV != -1) {
+            localObject1 = this.arn;
+            if (this.akM != -1) {
               break label943;
             }
             k = n;
             label580:
             ((PopupWindow)localObject1).setWindowLayoutMode(k, 0);
             label587:
-            this.apw.update(j, i);
-            localObject1 = this.apw;
-            if ((this.aph) || (this.apg)) {
+            this.arn.update(j, i);
+            localObject1 = this.arn;
+            if ((this.aqZ) || (this.aqY)) {
               break label996;
             }
           }
@@ -303,10 +323,10 @@ public class AutoFillListPopupWindowBase
           for (bool1 = bool2;; bool1 = false)
           {
             ((PopupWindow)localObject1).setOutsideTouchable(bool1);
-            if (!this.mHk) {
+            if (!this.nhI) {
               break label1002;
             }
-            this.apw.showAtLocation(this.apl, 17, 0, 0);
+            this.arn.showAtLocation(this.ard, 17, 0, 0);
             AppMethodBeat.o(136664);
             return;
             bool1 = false;
@@ -319,8 +339,8 @@ public class AutoFillListPopupWindowBase
             ((FrameLayout)localObject2).addView((View)localObject1, localLayoutParams1);
             ((FrameLayout)localObject2).addView(localView, localLayoutParams2);
             break label278;
-            this.apw.getContentView();
-            localObject1 = this.apj;
+            this.arn.getContentView();
+            localObject1 = this.arb;
             if (localObject1 == null) {
               break label1338;
             }
@@ -332,14 +352,14 @@ public class AutoFillListPopupWindowBase
             label757:
             j = 0;
             break label385;
-            switch (this.aiV)
+            switch (this.akM)
             {
             default: 
-              j = View.MeasureSpec.makeMeasureSpec(this.aiV, 1073741824);
+              j = View.MeasureSpec.makeMeasureSpec(this.akM, 1073741824);
             }
             for (;;)
             {
-              m = this.mHf.ew(j, m - i);
+              m = this.nhD.ey(j, m - i);
               j = i;
               if (m > 0) {
                 j = i + k;
@@ -350,83 +370,83 @@ public class AutoFillListPopupWindowBase
               continue;
               j = View.MeasureSpec.makeMeasureSpec(this.mContext.getResources().getDisplayMetrics().widthPixels - (this.mTempRect.left + this.mTempRect.right), 1073741824);
             }
-            if (this.aiV == -2)
+            if (this.akM == -2)
             {
-              j = this.apl.getWidth();
+              j = this.ard.getWidth();
               break label545;
             }
-            j = this.aiV;
+            j = this.akM;
             break label545;
             i = -1;
             break label558;
             k = 0;
             break label580;
-            localObject1 = this.apw;
-            if (this.aiV == -1) {}
+            localObject1 = this.arn;
+            if (this.akM == -1) {}
             for (k = -1;; k = 0)
             {
               ((PopupWindow)localObject1).setWindowLayoutMode(k, -1);
               break;
             }
-            if (this.aoZ == -2) {
+            if (this.aqR == -2) {
               break label587;
             }
-            i = this.aoZ;
+            i = this.aqR;
             break label587;
           }
           label1002:
-          this.apw.update(this.apl, this.apa, this.apb, this.apw.getWidth(), this.apw.getHeight());
+          this.arn.update(this.ard, this.aqS, this.aqT, this.arn.getWidth(), this.arn.getHeight());
           AppMethodBeat.o(136664);
           return;
-          if (this.aiV == -1)
+          if (this.akM == -1)
           {
             j = -1;
-            if (this.aoZ != -1) {
+            if (this.aqR != -1) {
               break label1232;
             }
             i = -1;
-            this.apw.setWindowLayoutMode(j, i);
-            localObject1 = this.apw;
-            if ((this.aph) || (this.apg)) {
+            this.arn.setWindowLayoutMode(j, i);
+            localObject1 = this.arn;
+            if ((this.aqZ) || (this.aqY)) {
               break label1270;
             }
             bool1 = bool3;
             label1094:
             ((PopupWindow)localObject1).setOutsideTouchable(bool1);
-            this.apw.setTouchInterceptor(this.mHh);
-            if (!this.mHk) {
+            this.arn.setTouchInterceptor(this.nhF);
+            if (!this.nhI) {
               break label1276;
             }
-            this.apw.showAtLocation(this.apl, 17, 0, 0);
+            this.arn.showAtLocation(this.ard, 17, 0, 0);
           }
           for (;;)
           {
-            this.mHf.setSelection(-1);
-            if ((!this.apv) || (this.mHf.isInTouchMode())) {
+            this.nhD.setSelection(-1);
+            if ((!this.arm) || (this.nhD.isInTouchMode())) {
               clearListSelection();
             }
-            if (!this.apv) {
-              this.mHandler.post(this.mHj);
+            if (!this.arm) {
+              this.mHandler.post(this.nhH);
             }
             AppMethodBeat.o(136664);
             return;
-            if (this.aiV == -2)
+            if (this.akM == -2)
             {
-              this.apw.setWidth(this.apl.getWidth());
+              this.arn.setWidth(this.ard.getWidth());
               j = 0;
               break;
             }
-            this.apw.setWidth(this.aiV);
+            this.arn.setWidth(this.akM);
             j = 0;
             break;
             label1232:
-            if (this.aoZ == -2)
+            if (this.aqR == -2)
             {
-              this.apw.setHeight(i);
+              this.arn.setHeight(i);
               i = 0;
               break label1061;
             }
-            this.apw.setHeight(this.aoZ);
+            this.arn.setHeight(this.aqR);
             i = 0;
             break label1061;
             label1270:
@@ -434,9 +454,9 @@ public class AutoFillListPopupWindowBase
             break label1094;
             label1276:
             if (Build.VERSION.SDK_INT >= 19) {
-              this.apw.showAsDropDown(this.apl, this.apa, this.apb, 53);
+              this.arn.showAsDropDown(this.ard, this.aqS, this.aqT, 53);
             } else {
-              this.apw.showAtLocation(this.apl, 53, this.apa, this.apb);
+              this.arn.showAtLocation(this.ard, 53, this.aqS, this.aqT);
             }
           }
         }
@@ -455,6 +475,28 @@ public class AutoFillListPopupWindowBase
       AppMethodBeat.i(136656);
       AutoFillListPopupWindowBase.this.clearListSelection();
       AppMethodBeat.o(136656);
+    }
+  }
+  
+  final class c
+    extends DataSetObserver
+  {
+    private c() {}
+    
+    public final void onChanged()
+    {
+      AppMethodBeat.i(136657);
+      if (AutoFillListPopupWindowBase.this.arn.isShowing()) {
+        AutoFillListPopupWindowBase.this.show();
+      }
+      AppMethodBeat.o(136657);
+    }
+    
+    public final void onInvalidated()
+    {
+      AppMethodBeat.i(136658);
+      AutoFillListPopupWindowBase.this.dismiss();
+      AppMethodBeat.o(136658);
     }
   }
   
@@ -499,6 +541,10 @@ public class AutoFillListPopupWindowBase
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(136661);
+      b localb = new b();
+      localb.bd(paramView);
+      localb.bd(paramMotionEvent);
+      a.b("com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillListPopupWindowBase$PopupTouchInterceptor", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
       int i = paramMotionEvent.getAction();
       int j = (int)paramMotionEvent.getX();
       int k = (int)paramMotionEvent.getY();
@@ -507,6 +553,7 @@ public class AutoFillListPopupWindowBase
       }
       for (;;)
       {
+        a.a(false, this, "com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillListPopupWindowBase$PopupTouchInterceptor", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(136661);
         return false;
         if (i == 1) {
@@ -524,7 +571,7 @@ public class AutoFillListPopupWindowBase
     public final void run()
     {
       AppMethodBeat.i(136662);
-      if ((AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this) != null) && (AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getCount() > AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getChildCount()) && (AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getChildCount() <= AutoFillListPopupWindowBase.this.api))
+      if ((AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this) != null) && (AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getCount() > AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getChildCount()) && (AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getChildCount() <= AutoFillListPopupWindowBase.this.ara))
       {
         AutoFillListPopupWindowBase.b(AutoFillListPopupWindowBase.this).setInputMethodMode(2);
         AutoFillListPopupWindowBase.this.show();
@@ -535,7 +582,7 @@ public class AutoFillListPopupWindowBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.AutoFillListPopupWindowBase
  * JD-Core Version:    0.7.0.1
  */

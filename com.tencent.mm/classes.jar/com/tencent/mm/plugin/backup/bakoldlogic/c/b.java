@@ -1,32 +1,34 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.plugin.backup.i.ab;
+import com.tencent.mm.plugin.backup.i.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
   extends com.tencent.mm.plugin.backup.g.b
 {
-  private com.tencent.mm.plugin.backup.i.ac nbA;
-  private ab nbz;
+  private ab nBW;
+  private ac nBX;
   
   public b(int paramInt)
   {
     AppMethodBeat.i(21938);
-    this.nbz = new ab();
-    this.nbA = new com.tencent.mm.plugin.backup.i.ac();
-    this.nbz.ncx = paramInt;
+    this.nBW = new ab();
+    this.nBX = new ac();
+    this.nBW.nCU = paramInt;
     AppMethodBeat.o(21938);
   }
   
-  public final a bEq()
+  public final a bIA()
   {
-    return this.nbA;
+    return this.nBW;
   }
   
-  public final a bEr()
+  public final a bIz()
   {
-    return this.nbz;
+    return this.nBX;
   }
   
   public final int getType()
@@ -34,23 +36,23 @@ public final class b
     return 3;
   }
   
-  public final void wW(int paramInt)
+  public final void xC(int paramInt)
   {
     AppMethodBeat.i(21939);
-    if (this.nbA.ndj == 0)
+    if (this.nBX.nDG == 0)
     {
       q(0, 0, "ok");
       AppMethodBeat.o(21939);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.BakSceneCommand", " type:%d  errCode:%d", new Object[] { Integer.valueOf(this.nbz.ncx), Integer.valueOf(this.nbA.ndj) });
-    q(4, this.nbA.ndj, "fail");
+    ad.e("MicroMsg.BakSceneCommand", " type:%d  errCode:%d", new Object[] { Integer.valueOf(this.nBW.nCU), Integer.valueOf(this.nBX.nDG) });
+    q(4, this.nBX.nDG, "fail");
     AppMethodBeat.o(21939);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.c.b
  * JD-Core Version:    0.7.0.1
  */

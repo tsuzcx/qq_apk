@@ -7,17 +7,27 @@ public abstract interface a
 {
   public abstract boolean isStickerEnable();
   
-  public abstract void preCheck(Context paramContext, int paramInt, a.a parama);
+  public abstract void preCheck(Context paramContext, int paramInt, a parama);
   
-  public abstract void prepareEmojiCapture(Context paramContext, String paramString, a.b paramb);
+  public abstract void prepareEmojiCapture(Context paramContext, String paramString, b paramb);
   
-  public abstract void prepareStickerPreview(Context paramContext, String paramString, a.b paramb);
+  public abstract void prepareStickerPreview(Context paramContext, String paramString, b paramb);
   
   public abstract int stickerRecommendCount();
+  
+  public static abstract interface a
+  {
+    public abstract void ge(boolean paramBoolean);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void dg(boolean paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.api.a
  * JD-Core Version:    0.7.0.1
  */

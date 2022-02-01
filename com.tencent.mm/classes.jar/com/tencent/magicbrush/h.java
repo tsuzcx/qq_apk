@@ -2,34 +2,34 @@ package com.tencent.magicbrush;
 
 import com.tencent.magicbrush.ui.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.n;
-import d.g.b.w;
+import d.g.b.t;
+import d.g.b.z;
 import d.l;
 import d.l.b;
 import d.l.d;
 
-@l(fNY={1, 1, 13})
+@l(gfx={1, 1, 13})
 final class h
-  extends n
+  extends t
 {
-  public static final d.l.h cnf;
+  public static final d.l.h cxK;
   
   static
   {
     AppMethodBeat.i(140104);
-    cnf = new h();
+    cxK = new h();
     AppMethodBeat.o(140104);
   }
   
-  public final String FZ()
+  public final String Hu()
   {
     return "getAnimationFrameHandlerStrategy()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;";
   }
   
-  public final d Ga()
+  public final d Hv()
   {
     AppMethodBeat.i(140105);
-    b localb = w.bn(MBRuntime.MBParams.class);
+    b localb = z.bp(MBRuntime.MBParams.class);
     AppMethodBeat.o(140105);
     return localb;
   }
@@ -51,7 +51,7 @@ final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.h
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,11 @@ package com.tencent.mm.plugin.appbrand.ui.collection;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.b;
 import d.g.a.b;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onFinish"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onFinish"})
 final class AppBrandCollectionDisplayVerticalList$j
   implements h.b
 {
@@ -18,7 +20,7 @@ final class AppBrandCollectionDisplayVerticalList$j
     {
       paramCharSequence = paramCharSequence.toString();
       if (paramCharSequence != null) {
-        AppBrandCollectionDisplayVerticalList.e(paramCharSequence, (b)1.mhY);
+        AppBrandCollectionDisplayVerticalList.e(paramCharSequence, (b)1.mIz);
       }
     }
     AppMethodBeat.o(175223);

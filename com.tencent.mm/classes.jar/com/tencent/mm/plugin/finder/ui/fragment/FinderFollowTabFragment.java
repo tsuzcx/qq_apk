@@ -10,7 +10,7 @@ import d.l;
 import java.util.HashMap;
 import java.util.Set;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderFollowTabFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderFollowTabFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "plugin-finder_release"})
 public final class FinderFollowTabFragment
   extends FinderHomeTabFragment
 {
@@ -23,33 +23,33 @@ public final class FinderFollowTabFragment
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(203479);
+    AppMethodBeat.i(204305);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(203479);
+    AppMethodBeat.o(204305);
   }
   
-  public final void cCp()
+  public final Set<Class<? extends UIComponent>> cCu()
   {
-    AppMethodBeat.i(203478);
-    super.cCp();
-    ((FinderTimelineUIC)bh(FinderTimelineUIC.class)).cFT();
-    ((FinderDoubleClickTipUIC)bh(FinderDoubleClickTipUIC.class)).cFT();
-    AppMethodBeat.o(203478);
-  }
-  
-  public final Set<Class<? extends UIComponent>> cwg()
-  {
-    AppMethodBeat.i(203477);
+    AppMethodBeat.i(204303);
     Set localSet = ak.setOf(new Class[] { FinderTimelineUIC.class, FinderDoubleClickTipUIC.class, FinderStreamPartialExposeUIC.class });
-    AppMethodBeat.o(203477);
+    AppMethodBeat.o(204303);
     return localSet;
+  }
+  
+  public final void cKz()
+  {
+    AppMethodBeat.i(204304);
+    super.cKz();
+    ((FinderTimelineUIC)bj(FinderTimelineUIC.class)).cOl();
+    ((FinderDoubleClickTipUIC)bj(FinderDoubleClickTipUIC.class)).cOl();
+    AppMethodBeat.o(204304);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.fragment.FinderFollowTabFragment
  * JD-Core Version:    0.7.0.1
  */

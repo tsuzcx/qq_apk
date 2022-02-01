@@ -7,29 +7,29 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.al.af;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.am.ag;
 import com.tencent.mm.api.l;
-import com.tencent.mm.g.a.sk;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.b;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.a.sx;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.b;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
 import com.tencent.mm.model.x;
-import com.tencent.mm.n.b;
+import com.tencent.mm.o.b;
 import com.tencent.mm.plugin.exdevice.ui.ExdeviceRankDataSourceUI;
-import com.tencent.mm.plugin.messenger.a.j;
-import com.tencent.mm.plugin.newtips.a.i;
 import com.tencent.mm.pluginsdk.model.o;
 import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import java.util.Iterator;
@@ -37,21 +37,34 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class a
-  implements com.tencent.mm.ak.g, com.tencent.mm.pluginsdk.b.a
+  implements com.tencent.mm.al.f, com.tencent.mm.pluginsdk.b.a
 {
-  com.tencent.mm.storage.ai contact;
+  private CheckBoxPreference AHH;
+  am contact;
   Context context;
-  private p mcf;
-  private CheckBoxPreference oNN;
+  private p mCn;
+  private CheckBoxPreference prv;
   private com.tencent.mm.ui.base.preference.f screen;
-  private CheckBoxPreference zpN;
   
   public a(Context paramContext)
   {
     this.context = paramContext;
   }
   
-  public final boolean WZ(String paramString)
+  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, am paramam, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(28822);
+    this.screen = paramf;
+    this.contact = paramam;
+    paramf.addPreferencesFromResource(2131951657);
+    this.AHH = ((CheckBoxPreference)paramf.aVD("contact_info_top_sport"));
+    this.prv = ((CheckBoxPreference)paramf.aVD("contact_info_not_disturb"));
+    cdo();
+    AppMethodBeat.o(28822);
+    return true;
+  }
+  
+  public final boolean aaG(String paramString)
   {
     AppMethodBeat.i(28823);
     Object localObject;
@@ -59,9 +72,9 @@ public final class a
     {
       localObject = new Intent(this.context, ExdeviceRankDataSourceUI.class);
       paramString = this.context;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/sport/ui/widget/ContactWidgetSport", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/sport/ui/widget/ContactWidgetSport", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/sport/ui/widget/ContactWidgetSport", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     for (;;)
@@ -70,27 +83,27 @@ public final class a
       return false;
       if ("contact_info_top_sport".equals(paramString))
       {
-        if (this.zpN.isChecked())
+        if (this.AHH.isChecked())
         {
-          com.tencent.mm.plugin.sport.a.c.lA(20);
+          com.tencent.mm.plugin.sport.a.c.ma(20);
           w.D(this.contact.field_username, true);
         }
         else
         {
-          com.tencent.mm.plugin.sport.a.c.lA(21);
+          com.tencent.mm.plugin.sport.a.c.ma(21);
           w.E(this.contact.field_username, true);
         }
       }
       else if ("contact_info_not_disturb".equals(paramString))
       {
-        if (this.oNN.isChecked())
+        if (this.prv.isChecked())
         {
-          com.tencent.mm.plugin.sport.a.c.lA(22);
+          com.tencent.mm.plugin.sport.a.c.ma(22);
           w.s(this.contact);
         }
         else
         {
-          com.tencent.mm.plugin.sport.a.c.lA(23);
+          com.tencent.mm.plugin.sport.a.c.ma(23);
           w.t(this.contact);
         }
       }
@@ -99,22 +112,22 @@ public final class a
         paramString = new Intent();
         paramString.putExtra("Chat_User", this.contact.field_username);
         paramString.putExtra("finish_direct", true);
-        com.tencent.mm.br.d.e(this.context, ".ui.chatting.ChattingUI", paramString);
-        com.tencent.mm.plugin.sport.a.c.lA(19);
+        com.tencent.mm.bs.d.f(this.context, ".ui.chatting.ChattingUI", paramString);
+        com.tencent.mm.plugin.sport.a.c.ma(19);
       }
       else if ("contact_info_go_to_my_profile".equals(paramString))
       {
-        paramString = u.axw();
-        if (bs.isNullOrNil(paramString))
+        paramString = u.aAm();
+        if (bt.isNullOrNil(paramString))
         {
-          ac.e("MicroMsg.Sport.ContactWidgetSport", "Get username from UserInfo return null or nil.");
+          ad.e("MicroMsg.Sport.ContactWidgetSport", "Get username from UserInfo return null or nil.");
           AppMethodBeat.o(28823);
           return false;
         }
         localObject = new Intent();
         ((Intent)localObject).putExtra("username", paramString);
-        com.tencent.mm.br.d.b(this.context, "exdevice", ".ui.ExdeviceProfileUI", (Intent)localObject);
-        com.tencent.mm.plugin.sport.a.c.lA(3);
+        com.tencent.mm.bs.d.b(this.context, "exdevice", ".ui.ExdeviceProfileUI", (Intent)localObject);
+        com.tencent.mm.plugin.sport.a.c.ma(3);
       }
       else if ("contact_info_invite_friend".equals(paramString))
       {
@@ -124,8 +137,8 @@ public final class a
         paramString.putExtra("Select_Conv_Type", 3);
         paramString.putExtra("Select_Send_Card", true);
         paramString.putExtra("mutil_select_is_ret", true);
-        com.tencent.mm.br.d.c(this.context, ".ui.transmit.SelectConversationUI", paramString, 1);
-        com.tencent.mm.plugin.sport.a.c.lA(4);
+        com.tencent.mm.bs.d.c(this.context, ".ui.transmit.SelectConversationUI", paramString, 1);
+        com.tencent.mm.plugin.sport.a.c.ma(4);
       }
       else if ("contact_info_common_problem".equals(paramString))
       {
@@ -135,59 +148,59 @@ public final class a
         paramString.putExtra("prePublishId", "custom_menu");
         paramString.putExtra("preUsername", this.contact.field_username);
         paramString.putExtra("preChatName", this.contact.field_username);
-        paramString.putExtra("preChatTYPE", x.aE(this.contact.field_username, this.contact.field_username));
+        paramString.putExtra("preChatTYPE", x.aG(this.contact.field_username, this.contact.field_username));
         paramString.putExtra("rawUrl", "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=wechat_movement_faq/index");
         paramString.putExtra("geta8key_username", this.contact.field_username);
         paramString.putExtra("from_scence", 1);
-        com.tencent.mm.br.d.b(this.context, "webview", ".ui.tools.WebViewUI", paramString);
-        com.tencent.mm.plugin.sport.a.c.lA(5);
+        com.tencent.mm.bs.d.b(this.context, "webview", ".ui.tools.WebViewUI", paramString);
+        com.tencent.mm.plugin.sport.a.c.ma(5);
       }
       else if ("contact_info_privacy_and_notification".equals(paramString))
       {
-        com.tencent.mm.br.d.N(this.context, "exdevice", ".ui.ExdeviceSettingUI");
+        com.tencent.mm.bs.d.Q(this.context, "exdevice", ".ui.ExdeviceSettingUI");
       }
       else if ("contact_info_sport_install".equals(paramString))
       {
-        com.tencent.mm.plugin.sport.a.c.lA(13);
+        com.tencent.mm.plugin.sport.a.c.ma(13);
         paramString = this.context;
         this.context.getString(2131755906);
-        this.mcf = com.tencent.mm.ui.base.h.b(paramString, this.context.getString(2131763362), true, null);
-        this.mcf.show();
-        az.agi().a(30, this);
+        this.mCn = com.tencent.mm.ui.base.h.b(paramString, this.context.getString(2131763362), true, null);
+        this.mCn.show();
+        ba.aiU().a(30, this);
         paramString = new LinkedList();
         paramString.add("gh_43f2581f6fd6");
         localObject = new LinkedList();
         ((LinkedList)localObject).add(Integer.valueOf(1));
         paramString = new o(paramString, (List)localObject, "", "");
-        az.agi().a(paramString, 0);
-        com.tencent.mm.plugin.sport.model.h.ry(true);
+        ba.aiU().a(paramString, 0);
+        com.tencent.mm.plugin.sport.model.h.se(true);
       }
       else if ("contact_info_sport_uninstall".equals(paramString))
       {
-        com.tencent.mm.plugin.sport.a.c.lA(14);
-        com.tencent.mm.ui.base.h.d(this.context, this.context.getString(2131763366), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
+        com.tencent.mm.plugin.sport.a.c.ma(14);
+        com.tencent.mm.ui.base.h.e(this.context, this.context.getString(2131763366), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(28821);
-            paramAnonymousDialogInterface = com.tencent.mm.al.f.dX(a.this.contact.field_username);
+            paramAnonymousDialogInterface = com.tencent.mm.am.g.eS(a.this.contact.field_username);
             ((l)com.tencent.mm.kernel.g.ab(l.class)).a(paramAnonymousDialogInterface, (Activity)a.this.context, a.this.contact);
-            a.this.bYK();
-            com.tencent.mm.plugin.sport.model.h.ry(false);
+            a.this.cdo();
+            com.tencent.mm.plugin.sport.model.h.se(false);
             AppMethodBeat.o(28821);
           }
         }, null);
       }
       else if ("contact_info_clear_data".equals(paramString))
       {
-        com.tencent.mm.ui.base.h.d(this.context, this.context.getString(2131757630), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.e(this.context, this.context.getString(2131757630), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(28820);
-            com.tencent.mm.plugin.sport.a.c.lA(25);
-            az.ayM();
-            com.tencent.mm.model.c.awD().alq("gh_43f2581f6fd6");
+            com.tencent.mm.plugin.sport.a.c.ma(25);
+            ba.aBQ();
+            com.tencent.mm.model.c.azs().aqe("gh_43f2581f6fd6");
             AppMethodBeat.o(28820);
           }
         }, null);
@@ -195,65 +208,52 @@ public final class a
     }
   }
   
-  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, com.tencent.mm.storage.ai paramai, boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(28822);
-    this.screen = paramf;
-    this.contact = paramai;
-    paramf.addPreferencesFromResource(2131951657);
-    this.zpN = ((CheckBoxPreference)paramf.aPN("contact_info_top_sport"));
-    this.oNN = ((CheckBoxPreference)paramf.aPN("contact_info_not_disturb"));
-    bYK();
-    AppMethodBeat.o(28822);
-    return true;
-  }
-  
-  public final boolean bYJ()
+  public final boolean cdn()
   {
     return true;
   }
   
-  final void bYK()
+  final void cdo()
   {
     AppMethodBeat.i(28825);
-    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.screen.aPN("contact_info_header_helper");
-    localHelperHeaderPreference.aR(this.contact.field_username, this.contact.aaS(), this.context.getString(2131757875));
-    if (b.ln(this.contact.field_type))
+    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.screen.aVD("contact_info_header_helper");
+    localHelperHeaderPreference.aZ(this.contact.field_username, this.contact.adv(), this.context.getString(2131757875));
+    if (b.lM(this.contact.field_type))
     {
       localHelperHeaderPreference.updateStatus(1);
-      this.screen.cK("contact_info_sport_install", true);
-      this.screen.cK("contact_info_sport_uninstall", false);
-      this.screen.cK("contact_info_go_to_sport", false);
-      this.screen.cK("contact_info_go_to_my_profile", false);
-      this.screen.cK("contact_info_invite_friend", false);
-      this.screen.cK("contact_info_common_problem", false);
-      this.screen.cK("contact_info_record_data", false);
-      this.screen.cK("contact_info_privacy_and_notification", false);
-      this.screen.cK("contact_info_top_sport", false);
-      this.screen.cK("contact_info_not_disturb", false);
-      az.ayM();
-      if (com.tencent.mm.model.c.awG().aNQ(this.contact.field_username)) {}
-      for (this.zpN.mF = true; this.contact.Nw(); this.zpN.mF = false)
+      this.screen.cP("contact_info_sport_install", true);
+      this.screen.cP("contact_info_sport_uninstall", false);
+      this.screen.cP("contact_info_go_to_sport", false);
+      this.screen.cP("contact_info_go_to_my_profile", false);
+      this.screen.cP("contact_info_invite_friend", false);
+      this.screen.cP("contact_info_common_problem", false);
+      this.screen.cP("contact_info_record_data", false);
+      this.screen.cP("contact_info_privacy_and_notification", false);
+      this.screen.cP("contact_info_top_sport", false);
+      this.screen.cP("contact_info_not_disturb", false);
+      ba.aBQ();
+      if (com.tencent.mm.model.c.azv().aTH(this.contact.field_username)) {}
+      for (this.AHH.oB = true; this.contact.Pf(); this.AHH.oB = false)
       {
-        this.oNN.mF = true;
+        this.prv.oB = true;
         AppMethodBeat.o(28825);
         return;
       }
-      this.oNN.mF = false;
+      this.prv.oB = false;
       AppMethodBeat.o(28825);
       return;
     }
     localHelperHeaderPreference.updateStatus(0);
-    this.screen.cK("contact_info_sport_install", false);
-    this.screen.cK("contact_info_sport_uninstall", true);
-    this.screen.cK("contact_info_go_to_sport", true);
-    this.screen.cK("contact_info_go_to_my_profile", true);
-    this.screen.cK("contact_info_invite_friend", true);
-    this.screen.cK("contact_info_common_problem", true);
-    this.screen.cK("contact_info_record_data", true);
-    this.screen.cK("contact_info_privacy_and_notification", true);
-    this.screen.cK("contact_info_top_sport", true);
-    this.screen.cK("contact_info_not_disturb", true);
+    this.screen.cP("contact_info_sport_install", false);
+    this.screen.cP("contact_info_sport_uninstall", true);
+    this.screen.cP("contact_info_go_to_sport", true);
+    this.screen.cP("contact_info_go_to_my_profile", true);
+    this.screen.cP("contact_info_invite_friend", true);
+    this.screen.cP("contact_info_common_problem", true);
+    this.screen.cP("contact_info_record_data", true);
+    this.screen.cP("contact_info_privacy_and_notification", true);
+    this.screen.cP("contact_info_top_sport", true);
+    this.screen.cP("contact_info_not_disturb", true);
     AppMethodBeat.o(28825);
   }
   
@@ -271,21 +271,21 @@ public final class a
       return;
       if (paramIntent != null)
       {
-        Object localObject = bs.S(paramIntent.getStringExtra("received_card_name").split(","));
+        Object localObject = bt.U(paramIntent.getStringExtra("received_card_name").split(","));
         paramIntent = paramIntent.getStringExtra("custom_send_text");
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
-          j.dck().q("gh_43f2581f6fd6", str, w.sQ(str));
-          if (!bs.isNullOrNil(paramIntent))
+          com.tencent.mm.plugin.messenger.a.g.dlD().q("gh_43f2581f6fd6", str, w.vF(str));
+          if (!bt.isNullOrNil(paramIntent))
           {
-            sk localsk = new sk();
-            localsk.dvv.dvw = str;
-            localsk.dvv.content = paramIntent;
-            localsk.dvv.type = w.xt(str);
-            localsk.dvv.flags = 0;
-            com.tencent.mm.sdk.b.a.GpY.l(localsk);
+            sx localsx = new sx();
+            localsx.dHy.dHz = str;
+            localsx.dHy.content = paramIntent;
+            localsx.dHy.type = w.Ar(str);
+            localsx.dHy.flags = 0;
+            com.tencent.mm.sdk.b.a.IbL.l(localsx);
           }
         }
       }
@@ -297,17 +297,17 @@ public final class a
     AppMethodBeat.i(28826);
     if ((paramn instanceof o))
     {
-      az.agi().b(30, this);
+      ba.aiU().b(30, this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ac.e("MicroMsg.Sport.ContactWidgetSport", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-        if ((paramInt1 == 4) && ((paramInt2 == -2) || (paramInt2 == -101) || (paramInt2 == -24)) && (!bs.isNullOrNil(paramString))) {
-          Toast.makeText(com.tencent.mm.sdk.platformtools.ai.getContext(), paramString, 1).show();
+        ad.e("MicroMsg.Sport.ContactWidgetSport", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        if ((paramInt1 == 4) && ((paramInt2 == -2) || (paramInt2 == -101) || (paramInt2 == -24)) && (!bt.isNullOrNil(paramString))) {
+          Toast.makeText(aj.getContext(), paramString, 1).show();
         }
-        if (this.mcf != null) {
-          this.mcf.dismiss();
+        if (this.mCn != null) {
+          this.mCn.dismiss();
         }
-        bYK();
+        cdo();
       }
     }
     else
@@ -315,68 +315,68 @@ public final class a
       AppMethodBeat.o(28826);
       return;
     }
-    Object localObject = ((o)paramn).eKL();
-    ac.i("MicroMsg.Sport.ContactWidgetSport", "bind fitness contact %s success", new Object[] { localObject });
-    az.ayM();
-    paramn = com.tencent.mm.model.c.awB().aNt("gh_43f2581f6fd6");
-    if ((paramn == null) || (bs.isNullOrNil((String)localObject))) {
-      ac.e("MicroMsg.Sport.ContactWidgetSport", "respUsername == " + (String)localObject + ", contact = " + paramn);
+    Object localObject = ((o)paramn).eZF();
+    ad.i("MicroMsg.Sport.ContactWidgetSport", "bind fitness contact %s success", new Object[] { localObject });
+    ba.aBQ();
+    paramn = com.tencent.mm.model.c.azp().Bf("gh_43f2581f6fd6");
+    if ((paramn == null) || (bt.isNullOrNil((String)localObject))) {
+      ad.e("MicroMsg.Sport.ContactWidgetSport", "respUsername == " + (String)localObject + ", contact = " + paramn);
     }
     for (;;)
     {
-      paramString = af.aCW().AE(paramn.field_username);
-      af.aCW().g(paramString);
-      az.ayM();
-      com.tencent.mm.model.c.agA().set(327825, Boolean.TRUE);
-      com.tencent.mm.plugin.newtips.a.dkb();
-      paramInt1 = com.tencent.mm.plugin.newtips.a.d.vmS;
-      i.g(paramInt1, com.tencent.mm.plugin.newtips.a.d.vmO, "", null);
-      ac.i("MicroMsg.NewTips.NewTipsManager", "dancy register local newtips, tipsId:%s, tipsVersion:%s, key:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(1), "" });
+      paramString = ag.aFZ().DD(paramn.field_username);
+      ag.aFZ().g(paramString);
+      ba.aBQ();
+      com.tencent.mm.model.c.ajl().set(327825, Boolean.TRUE);
+      com.tencent.mm.plugin.newtips.a.dun();
+      paramInt1 = com.tencent.mm.plugin.newtips.a.d.wsk;
+      com.tencent.mm.plugin.newtips.a.i.g(paramInt1, com.tencent.mm.plugin.newtips.a.d.wsg, "", null);
+      ad.i("MicroMsg.NewTips.NewTipsManager", "dancy register local newtips, tipsId:%s, tipsVersion:%s, key:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(1), "" });
       break;
       paramString = null;
-      if (w.wF(paramn.field_username))
+      if (w.zC(paramn.field_username))
       {
-        String str = bs.nullAsNil(paramn.field_username);
-        paramString = com.tencent.mm.al.f.dX(str);
+        String str = bt.nullAsNil(paramn.field_username);
+        paramString = com.tencent.mm.am.g.eS(str);
         if (paramString != null) {
           paramString.field_username = ((String)localObject);
         }
-        af.aCW().delete(str);
-        paramn.qp(str);
+        ag.aFZ().delete(str);
+        paramn.sZ(str);
       }
       paramn.setUsername((String)localObject);
-      if ((int)paramn.fLJ == 0)
+      if ((int)paramn.gfj == 0)
       {
-        az.ayM();
-        com.tencent.mm.model.c.awB().ah(paramn);
+        ba.aBQ();
+        com.tencent.mm.model.c.azp().ah(paramn);
       }
-      if ((int)paramn.fLJ <= 0)
+      if ((int)paramn.gfj <= 0)
       {
-        ac.e("MicroMsg.Sport.ContactWidgetSport", "addContact : insert contact failed");
+        ad.e("MicroMsg.Sport.ContactWidgetSport", "addContact : insert contact failed");
       }
       else
       {
         w.u(paramn);
-        az.ayM();
-        localObject = com.tencent.mm.model.c.awB().aNt(paramn.field_username);
+        ba.aBQ();
+        localObject = com.tencent.mm.model.c.azp().Bf(paramn.field_username);
         if (paramString != null)
         {
-          af.aCW().f(paramString);
+          ag.aFZ().f(paramString);
         }
         else
         {
-          paramString = com.tencent.mm.al.f.dX(((av)localObject).field_username);
-          if ((paramString == null) || (paramString.IH()))
+          paramString = com.tencent.mm.am.g.eS(((aw)localObject).field_username);
+          if ((paramString == null) || (paramString.Kh()))
           {
-            ac.d("MicroMsg.Sport.ContactWidgetSport", "shouldUpdate");
-            ar.a.hnw.aJ(((av)localObject).field_username, "");
-            com.tencent.mm.aj.c.zU(((av)localObject).field_username);
+            ad.d("MicroMsg.Sport.ContactWidgetSport", "shouldUpdate");
+            as.a.hFO.aI(((aw)localObject).field_username, "");
+            com.tencent.mm.ak.c.CT(((aw)localObject).field_username);
           }
-          else if (((com.tencent.mm.storage.ai)localObject).fah())
+          else if (((am)localObject).fqk())
           {
-            ac.d("MicroMsg.Sport.ContactWidgetSport", "update contact, last check time=%d", new Object[] { Integer.valueOf(((av)localObject).eyc) });
-            ar.a.hnw.aJ(((av)localObject).field_username, "");
-            com.tencent.mm.aj.c.zU(((av)localObject).field_username);
+            ad.d("MicroMsg.Sport.ContactWidgetSport", "update contact, last check time=%d", new Object[] { Integer.valueOf(((aw)localObject).ePB) });
+            as.a.hFO.aI(((aw)localObject).field_username, "");
+            com.tencent.mm.ak.c.CT(((aw)localObject).field_username);
           }
         }
       }

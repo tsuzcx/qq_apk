@@ -4,29 +4,38 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
 final class FinderProgressBar$a
   implements View.OnTouchListener
 {
-  public static final a rYy;
+  public static final a sVu;
   
   static
   {
     AppMethodBeat.i(168401);
-    rYy = new a();
+    sVu = new a();
     AppMethodBeat.o(168401);
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(205179);
+    b localb = new b();
+    localb.bd(paramView);
+    localb.bd(paramMotionEvent);
+    a.b("com/tencent/mm/plugin/finder/view/FinderProgressBar$1$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    a.a(true, this, "com/tencent/mm/plugin/finder/view/FinderProgressBar$1$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+    AppMethodBeat.o(205179);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderProgressBar.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,33 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
 import android.content.Context;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.ui.chatting.c.b.d;
-import com.tencent.mm.ui.chatting.c.b.i;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.bj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.chatting.d.b.d;
+import com.tencent.mm.ui.chatting.e.a;
 import com.tencent.mm.ui.widget.MMTextView;
 import java.net.URLDecoder;
 
 public final class i$b
   extends c
 {
-  private a HNS;
+  private a JBI;
   
-  private static String aQH(String paramString)
+  private static String aWB(String paramString)
   {
     AppMethodBeat.i(36889);
     try
     {
-      paramString = k.b.vA(paramString);
+      paramString = k.b.yr(paramString);
       if (paramString != null)
       {
         paramString = URLDecoder.decode(paramString.content, "UTF-8");
@@ -39,7 +37,7 @@ public final class i$b
     }
     catch (Exception paramString)
     {
-      ac.e("MicroMsg.ChattingItemTextFrom", "getMsgContent error: %s", new Object[] { paramString.getMessage() });
+      ad.e("MicroMsg.ChattingItemTextFrom", "getMsgContent error: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(36889);
     }
     return "";
@@ -56,25 +54,25 @@ public final class i$b
     }
     else
     {
-      localObject = new ag(paramLayoutInflater, 2131493459);
+      localObject = new ah(paramLayoutInflater, 2131493459);
       ((View)localObject).setTag(new i.a().z((View)localObject, true));
     }
     AppMethodBeat.o(36887);
     return localObject;
   }
   
-  public final void a(c.a parama, int paramInt, a parama1, bo parambo, String paramString)
+  public final void a(c.a parama, int paramInt, a parama1, bu parambu, String paramString)
   {
     AppMethodBeat.i(36890);
-    this.HNS = parama1;
+    this.JBI = parama1;
     i.a locala = (i.a)parama;
-    paramString = parambo.field_content;
+    paramString = parambu.field_content;
     parama = parama1.getTalkerUserName();
-    Object localObject = (d)parama1.bf(d.class);
+    Object localObject = (d)parama1.bh(d.class);
     int i;
-    if ((parama1.foQ()) && (!((d)localObject).fmo()))
+    if ((parama1.fFv()) && (!((d)localObject).fCH()))
     {
-      i = bi.yi(paramString);
+      i = bj.Bh(paramString);
       if (i != -1)
       {
         localObject = paramString.substring(0, i).trim();
@@ -87,41 +85,41 @@ public final class i$b
     }
     for (;;)
     {
-      paramString = aQH(paramString);
-      a(locala, parama1, parambo, parama);
-      a(locala, parama1, parama, parambo);
-      locala.IkO.setText(paramString);
-      parama = locala.IkO;
-      i = parambo.getType();
+      paramString = aWB(paramString);
+      a(locala, parama1, parambu, parama);
+      a(locala, parama1, parama, parambu);
+      locala.Kbm.setText(paramString);
+      parama = locala.Kbm;
+      i = parambu.getType();
       paramString = parama1.getTalkerUserName();
       if (i != 301989937) {
-        k.a(parama, paramString);
+        com.tencent.mm.pluginsdk.ui.span.k.a(parama, paramString);
       }
       parama.getText();
-      parama = bj.b(parambo, parama1.foQ(), paramInt);
-      locala.IkO.setTag(parama);
-      locala.IkO.setOnLongClickListener(c(parama1));
-      locala.IkO.setOnDoubleClickLitsener(((i)parama1.bf(i.class)).fma());
+      parama = bk.b(parambu, parama1.fFv(), paramInt);
+      locala.Kbm.setTag(parama);
+      locala.Kbm.setOnLongClickListener(c(parama1));
+      locala.Kbm.setOnDoubleClickLitsener(((com.tencent.mm.ui.chatting.d.b.k)parama1.bh(com.tencent.mm.ui.chatting.d.b.k.class)).fCt());
       AppMethodBeat.o(36890);
       return;
       break;
     }
   }
   
-  public final boolean a(ContextMenu paramContextMenu, View paramView, bo parambo)
-  {
-    AppMethodBeat.i(36891);
-    paramContextMenu.add(((bj)paramView.getTag()).position, 100, 0, paramView.getContext().getString(2131757221));
-    AppMethodBeat.o(36891);
-    return false;
-  }
-  
-  public final boolean a(MenuItem paramMenuItem, a parama, bo parambo)
+  public final boolean a(MenuItem paramMenuItem, a parama, bu parambu)
   {
     return false;
   }
   
-  public final boolean b(View paramView, a parama, bo parambo)
+  public final boolean a(l paraml, View paramView, bu parambu)
+  {
+    AppMethodBeat.i(194337);
+    paraml.a(((bk)paramView.getTag()).position, 100, paramView.getContext().getString(2131757221), 2131690384);
+    AppMethodBeat.o(194337);
+    return false;
+  }
+  
+  public final boolean b(View paramView, a parama, bu parambu)
   {
     return false;
   }
@@ -129,22 +127,22 @@ public final class i$b
   protected final boolean b(a parama)
   {
     AppMethodBeat.i(36888);
-    boolean bool = parama.foQ();
+    boolean bool = parama.fFv();
     AppMethodBeat.o(36888);
     return bool;
   }
   
-  public final boolean bb(int paramInt, boolean paramBoolean)
+  public final boolean bi(int paramInt, boolean paramBoolean)
   {
     return (!paramBoolean) && (paramInt == 503316529);
   }
   
-  protected final boolean fqt()
+  protected final boolean fHg()
   {
     return false;
   }
   
-  public final boolean fqu()
+  public final boolean fHh()
   {
     return false;
   }

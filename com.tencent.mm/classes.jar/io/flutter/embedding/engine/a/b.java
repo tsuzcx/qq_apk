@@ -18,53 +18,53 @@ final class b
   
   final void start()
   {
-    AppMethodBeat.i(192849);
+    AppMethodBeat.i(213298);
     Object localObject = this.mContext.getCacheDir();
     if (localObject == null)
     {
-      AppMethodBeat.o(192849);
+      AppMethodBeat.o(213298);
       return;
     }
     localObject = new a(((File)localObject).listFiles(new FilenameFilter()
     {
       public final boolean accept(File paramAnonymousFile, String paramAnonymousString)
       {
-        AppMethodBeat.i(192823);
+        AppMethodBeat.i(213272);
         boolean bool = paramAnonymousString.startsWith(".org.chromium.Chromium.");
-        AppMethodBeat.o(192823);
+        AppMethodBeat.o(213272);
         return bool;
       }
     }));
-    if (!((a)localObject).fNs())
+    if (!((a)localObject).geR())
     {
-      AppMethodBeat.o(192849);
+      AppMethodBeat.o(213298);
       return;
     }
     new Handler().postDelayed(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(192848);
-        this.KMy.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-        AppMethodBeat.o(192848);
+        AppMethodBeat.i(213297);
+        this.MDv.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+        AppMethodBeat.o(213297);
       }
     }, 5000L);
-    AppMethodBeat.o(192849);
+    AppMethodBeat.o(213298);
   }
   
   static final class a
     extends AsyncTask<Void, Void, Void>
   {
-    private final File[] KMz;
+    private final File[] MDw;
     
     a(File[] paramArrayOfFile)
     {
-      this.KMz = paramArrayOfFile;
+      this.MDw = paramArrayOfFile;
     }
     
-    private void ak(File paramFile)
+    private void am(File paramFile)
     {
-      AppMethodBeat.i(192846);
+      AppMethodBeat.i(213295);
       if (paramFile.isDirectory())
       {
         File[] arrayOfFile = paramFile.listFiles();
@@ -72,17 +72,17 @@ final class b
         int i = 0;
         while (i < j)
         {
-          ak(arrayOfFile[i]);
+          am(arrayOfFile[i]);
           i += 1;
         }
       }
       paramFile.delete();
-      AppMethodBeat.o(192846);
+      AppMethodBeat.o(213295);
     }
     
-    final boolean fNs()
+    final boolean geR()
     {
-      return (this.KMz != null) && (this.KMz.length > 0);
+      return (this.MDw != null) && (this.MDw.length > 0);
     }
   }
 }

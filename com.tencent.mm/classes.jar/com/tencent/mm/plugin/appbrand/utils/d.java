@@ -4,27 +4,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.jsapi.t;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bg.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bh.a;
 
 public final class d
 {
-  public c jOV;
-  public bg.a mnW;
+  public c kjg;
+  public bh.a mOy;
   
   public d()
   {
     AppMethodBeat.i(135348);
-    this.mnW = new bg.a()
+    this.mOy = new bh.a()
     {
-      public final void Q(String paramAnonymousString, long paramAnonymousLong)
+      public final void X(String paramAnonymousString, long paramAnonymousLong)
       {
-        AppMethodBeat.i(193524);
-        ac.i("MicroMsg.AppBrandUserCaptureScreenMonitor", "onScreenShot callback");
-        paramAnonymousString = d.this.jOV;
-        ac.i("MicroMsg.AppBrandOnUserCaptureScreenEvent", "user capture screen event dispatch, appId:%s", new Object[] { paramAnonymousString.getAppId() });
-        new t().g(paramAnonymousString).beN();
-        AppMethodBeat.o(193524);
+        AppMethodBeat.i(197445);
+        ad.i("MicroMsg.AppBrandUserCaptureScreenMonitor", "onScreenShot callback");
+        paramAnonymousString = d.this.kjg;
+        ad.i("MicroMsg.AppBrandOnUserCaptureScreenEvent", "user capture screen event dispatch, appId:%s", new Object[] { paramAnonymousString.getAppId() });
+        new t().g(paramAnonymousString).bir();
+        AppMethodBeat.o(197445);
       }
     };
     AppMethodBeat.o(135348);

@@ -6,7 +6,7 @@ public final class b
 {
   public static abstract interface a
   {
-    public abstract int dh(Context paramContext);
+    public abstract int df(Context paramContext);
   }
 }
 

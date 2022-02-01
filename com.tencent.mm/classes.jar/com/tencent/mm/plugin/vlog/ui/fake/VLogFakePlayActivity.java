@@ -8,20 +8,19 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout.LayoutParams;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.mmsight.d;
-import com.tencent.mm.plugin.recordvideo.background.g;
-import com.tencent.mm.plugin.vlog.model.r;
-import com.tencent.mm.plugin.vlog.player.VLogCompositionPlayView;
-import com.tencent.mm.protocal.protobuf.cnb;
-import com.tencent.mm.protocal.protobuf.yn;
-import com.tencent.mm.protocal.protobuf.yo;
-import com.tencent.mm.protocal.protobuf.yp;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.plugin.recordvideo.background.e;
+import com.tencent.mm.plugin.vlog.model.v;
+import com.tencent.mm.protocal.protobuf.aam;
+import com.tencent.mm.protocal.protobuf.aan;
+import com.tencent.mm.protocal.protobuf.aao;
+import com.tencent.mm.protocal.protobuf.cse;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.videocomposition.play.VideoCompositionPlayView;
 import d.a.j;
 import d.g.a.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,19 +29,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 @com.tencent.mm.ui.base.a(3)
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/fake/VLogFakePlayActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "frameRetriever", "Lcom/tencent/mm/plugin/recordvideo/background/SimpleFrameRetriever;", "playView", "Lcom/tencent/mm/plugin/vlog/player/VLogCompositionPlayView;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "plugin-vlog_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/fake/VLogFakePlayActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "frameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/SimpleFrameRetriever;", "playView", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayView;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "plugin-vlog_release"})
 public final class VLogFakePlayActivity
   extends MMActivity
 {
-  public static final VLogFakePlayActivity.a Asn;
-  private com.tencent.mm.plugin.recordvideo.background.c Asm;
-  private VLogCompositionPlayView rQF;
+  public static final a BMa;
+  private com.tencent.mm.plugin.recordvideo.ui.editor.b.f BLZ;
+  private VideoCompositionPlayView sNf;
   
   static
   {
-    AppMethodBeat.i(207760);
-    Asn = new VLogFakePlayActivity.a((byte)0);
-    AppMethodBeat.o(207760);
+    AppMethodBeat.i(196096);
+    BMa = new a((byte)0);
+    AppMethodBeat.o(196096);
   }
   
   public final int getLayoutId()
@@ -56,29 +55,29 @@ public final class VLogFakePlayActivity
     supportRequestWindowFeature(1);
     super.onCreate(paramBundle);
     setSelfNavigationBarVisible(8);
-    d.nX(true);
+    com.tencent.mm.plugin.mmsight.d.or(true);
     Object localObject1 = getIntent().getByteArrayExtra("composition_proto");
-    paramBundle = new yo();
-    Object localObject2 = (com.tencent.mm.bw.a)paramBundle;
+    paramBundle = new aan();
+    Object localObject2 = (com.tencent.mm.bx.a)paramBundle;
     try
     {
-      ((com.tencent.mm.bw.a)localObject2).parseFrom((byte[])localObject1);
-      localObject1 = com.tencent.mm.plugin.vlog.model.c.a(paramBundle);
-      new com.tencent.mm.plugin.vlog.model.a().a(paramBundle, (b)new VLogFakePlayActivity.b(this));
+      ((com.tencent.mm.bx.a)localObject2).parseFrom((byte[])localObject1);
+      localObject1 = com.tencent.mm.plugin.vlog.model.f.a(paramBundle);
+      new com.tencent.mm.plugin.vlog.model.d().a(paramBundle, (b)new VLogFakePlayActivity.b(this));
       localObject2 = new Rect();
-      localObject3 = paramBundle.AmP.Eso;
-      k.g(localObject3, "compositionInfo.outputConfig.originRect");
-      com.tencent.mm.plugin.vlog.model.c.a((cnb)localObject3, (Rect)localObject2);
-      r.a((r)localObject1, paramBundle.AmP.wXZ, paramBundle.AmP.wYa, (Rect)localObject2);
-      localObject3 = g.wmx;
-      localObject3 = paramBundle.AmQ.Esi;
-      k.g(localObject3, "compositionInfo.editData.baseItemData");
-      localObject4 = ai.getContext();
-      k.g(localObject4, "MMApplicationContext.getContext()");
-      localObject3 = g.a((LinkedList)localObject3, (Context)localObject4);
-      localObject4 = paramBundle.AmQ.Esh.Fjc;
-      k.g(localObject4, "compositionInfo.editData.drawingRect.values");
-      Object localObject5 = (Iterable)localObject4;
+      localObject3 = paramBundle.BEZ.FZA;
+      p.g(localObject3, "compositionInfo.outputConfig.originRect");
+      com.tencent.mm.plugin.vlog.model.f.a((cse)localObject3, (Rect)localObject2);
+      ((v)localObject1).o((Rect)localObject2);
+      localObject3 = e.xuo;
+      localObject3 = paramBundle.BFa.FZr;
+      p.g(localObject3, "compositionInfo.editData.baseItemData");
+      localObject4 = aj.getContext();
+      p.g(localObject4, "MMApplicationContext.getContext()");
+      localObject3 = e.a((LinkedList)localObject3, (Context)localObject4);
+      localObject4 = paramBundle.BFa.FZq.GSD;
+      p.g(localObject4, "compositionInfo.editData.drawingRect.values");
+      localObject5 = (Iterable)localObject4;
       localObject4 = (Collection)new ArrayList(j.a((Iterable)localObject5, 10));
       localObject5 = ((Iterable)localObject5).iterator();
       while (((Iterator)localObject5).hasNext()) {
@@ -88,24 +87,36 @@ public final class VLogFakePlayActivity
     catch (Exception localException)
     {
       Object localObject3;
-      Object localObject4;
       for (;;)
       {
-        ac.l("safeParser", "", new Object[] { localException });
+        ad.l("safeParser", "", new Object[] { localException });
       }
-      j.p((Collection)localObject4);
-      this.Asm = new com.tencent.mm.plugin.recordvideo.background.c((List)localObject3, paramBundle.AmP.wXZ, paramBundle.AmP.wYa);
-      paramBundle = this.Asm;
+      Object localObject4 = j.q((Collection)localObject4);
+      Object localObject5 = paramBundle.BFa.FZt;
+      if (localObject5 != null)
+      {
+        localObject5 = ((cse)localObject5).GSD;
+        p.g(localObject5, "rectProto.values");
+        Object localObject6 = (Iterable)localObject5;
+        localObject5 = (Collection)new ArrayList(j.a((Iterable)localObject6, 10));
+        localObject6 = ((Iterable)localObject6).iterator();
+        while (((Iterator)localObject6).hasNext()) {
+          ((Collection)localObject5).add(Float.valueOf(((Integer)((Iterator)localObject6).next()).intValue()));
+        }
+        j.q((Collection)localObject5);
+      }
+      this.BLZ = new com.tencent.mm.plugin.recordvideo.ui.editor.b.f((float[])localObject4, (List)localObject3, paramBundle.BEZ.tJd, paramBundle.BEZ.tJe);
+      paramBundle = this.BLZ;
       if (paramBundle == null) {
-        k.fOy();
+        p.gfZ();
       }
-      localException.D((b)paramBundle);
-      paramBundle = this.Asm;
+      localException.E((b)paramBundle);
+      paramBundle = this.BLZ;
       if (paramBundle != null) {
         paramBundle.start();
       }
-      this.rQF = ((VLogCompositionPlayView)findViewById(2131308066));
-      paramBundle = this.rQF;
+      this.sNf = ((VideoCompositionPlayView)findViewById(2131308066));
+      paramBundle = this.sNf;
       if (paramBundle != null) {}
       for (paramBundle = paramBundle.getLayoutParams();; paramBundle = null)
       {
@@ -113,16 +124,16 @@ public final class VLogFakePlayActivity
         if (paramBundle != null)
         {
           paramBundle.dimensionRatio = String.valueOf(((Rect)localObject2).width() * 1.0F / ((Rect)localObject2).height());
-          localObject2 = this.rQF;
+          localObject2 = this.sNf;
           if (localObject2 != null) {
-            ((VLogCompositionPlayView)localObject2).setLayoutParams((ViewGroup.LayoutParams)paramBundle);
+            ((VideoCompositionPlayView)localObject2).setLayoutParams((ViewGroup.LayoutParams)paramBundle);
           }
         }
-        paramBundle = this.rQF;
+        paramBundle = this.sNf;
         if (paramBundle == null) {
           break;
         }
-        paramBundle.a(localException);
+        paramBundle.a(localException.getComposition());
         AppMethodBeat.o(110878);
         return;
       }
@@ -134,10 +145,10 @@ public final class VLogFakePlayActivity
   {
     AppMethodBeat.i(110882);
     super.onDestroy();
-    com.tencent.mm.plugin.recordvideo.background.c localc = this.Asm;
-    if (localc != null)
+    com.tencent.mm.plugin.recordvideo.ui.editor.b.f localf = this.BLZ;
+    if (localf != null)
     {
-      localc.destroy();
+      localf.destroy();
       AppMethodBeat.o(110882);
       return;
     }
@@ -149,10 +160,13 @@ public final class VLogFakePlayActivity
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/fake/VLogFakePlayActivity$Companion;", "", "()V", "KEY_COMPOSITION_PROTO", "", "TAG", "plugin-vlog_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.fake.VLogFakePlayActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,92 +1,234 @@
 package com.tencent.mm.pluginsdk.ui;
 
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.by.a.a;
+import com.tencent.mm.by.a.a.a;
+import com.tencent.mm.sdk.platformtools.g;
 
 public final class d
-  implements AbsListView.OnScrollListener
+  extends j
+  implements e.a
 {
-  private AbsListView.OnScrollListener DmT;
-  private ArrayList<WeakReference<a>> DmU;
+  private a ERV;
+  private int ERW;
   
-  public d()
+  public d(String paramString)
   {
-    this(null);
+    this(paramString, (byte)0);
   }
   
-  public d(AbsListView.OnScrollListener paramOnScrollListener)
+  private d(String paramString, byte paramByte)
   {
-    AppMethodBeat.i(152123);
-    this.DmU = new ArrayList();
-    this.DmT = paramOnScrollListener;
-    AppMethodBeat.o(152123);
+    super(new a(a.b.fbx()), paramString, (byte)0);
+    AppMethodBeat.i(152121);
+    this.ERV = ((a)this.wYb);
+    AppMethodBeat.o(152121);
   }
   
-  private void uW(boolean paramBoolean)
+  private void av(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(152127);
-    int i = 0;
-    if (i < this.DmU.size())
+    AppMethodBeat.i(195445);
+    if (this.ERV != null) {
+      this.ERV.aw(paramBitmap);
+    }
+    AppMethodBeat.o(195445);
+  }
+  
+  public final void YK(int paramInt)
+  {
+    AppMethodBeat.i(152122);
+    if ((this.ERW == paramInt) && (this.ERV != null) && (this.ERV.nZT != null) && (!this.ERV.nZT.isRecycled()))
     {
-      Object localObject = (WeakReference)this.DmU.get(i);
-      if (localObject != null)
+      AppMethodBeat.o(152122);
+      return;
+    }
+    this.ERW = paramInt;
+    av(g.aat(paramInt));
+    AppMethodBeat.o(152122);
+  }
+  
+  public final void a(b paramb)
+  {
+    if (this.ERV != null) {
+      this.ERV.ERX = paramb;
+    }
+  }
+  
+  static final class a
+    implements j.a
+  {
+    b ERX = null;
+    Bitmap nZT = null;
+    private j.a wYb;
+    
+    public a(j.a parama)
+    {
+      this.wYb = parama;
+    }
+    
+    private Bitmap aMu(String paramString)
+    {
+      AppMethodBeat.i(195442);
+      if (fbz())
       {
-        localObject = (a)((WeakReference)localObject).get();
-        if (localObject != null) {
-          ((a)localObject).onScrollStateChanged(paramBoolean);
+        a locala = a.a.HTy;
+        if (locala != null)
+        {
+          paramString = locala.aoz(aMv(paramString));
+          AppMethodBeat.o(195442);
+          return paramString;
         }
+      }
+      AppMethodBeat.o(195442);
+      return null;
+    }
+    
+    private String aMv(String paramString)
+    {
+      AppMethodBeat.i(195444);
+      paramString = paramString + "-" + this.ERX.hLZ;
+      AppMethodBeat.o(195444);
+      return paramString;
+    }
+    
+    private Bitmap ax(Bitmap paramBitmap)
+    {
+      AppMethodBeat.i(195441);
+      Bitmap localBitmap = paramBitmap;
+      if (paramBitmap != null)
+      {
+        localBitmap = paramBitmap;
+        if (!paramBitmap.isRecycled())
+        {
+          localBitmap = paramBitmap;
+          if (fbz()) {
+            localBitmap = g.a(paramBitmap, false, this.ERX.hLZ * paramBitmap.getWidth());
+          }
+        }
+      }
+      AppMethodBeat.o(195441);
+      return localBitmap;
+    }
+    
+    private boolean fbz()
+    {
+      return (this.ERX != null) && (this.ERX.hLZ > 0.0F);
+    }
+    
+    private void v(String paramString, Bitmap paramBitmap)
+    {
+      AppMethodBeat.i(195443);
+      if ((paramBitmap != null) && (fbz()))
+      {
+        a locala = a.a.HTy;
+        if (locala != null) {
+          locala.p(aMv(paramString), paramBitmap);
+        }
+      }
+      AppMethodBeat.o(195443);
+    }
+    
+    public final Bitmap LL()
+    {
+      AppMethodBeat.i(152119);
+      Bitmap localBitmap;
+      if ((this.nZT != null) && (!this.nZT.isRecycled()))
+      {
+        localBitmap = this.nZT;
+        AppMethodBeat.o(152119);
+        return localBitmap;
+      }
+      if (this.wYb != null)
+      {
+        localBitmap = this.wYb.LL();
+        AppMethodBeat.o(152119);
+        return localBitmap;
+      }
+      AppMethodBeat.o(152119);
+      return null;
+    }
+    
+    public final Bitmap a(String paramString, int paramInt1, int paramInt2, int paramInt3)
+    {
+      AppMethodBeat.i(152116);
+      Bitmap localBitmap = aMu(paramString);
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
+      {
+        AppMethodBeat.o(152116);
+        return localBitmap;
+      }
+      if (this.wYb != null) {
+        localBitmap = this.wYb.a(paramString, paramInt1, paramInt2, paramInt3);
+      }
+      localBitmap = ax(localBitmap);
+      v(paramString, localBitmap);
+      AppMethodBeat.o(152116);
+      return localBitmap;
+    }
+    
+    public final void a(j paramj)
+    {
+      AppMethodBeat.i(152120);
+      if (this.wYb != null) {
+        this.wYb.a(paramj);
+      }
+      AppMethodBeat.o(152120);
+    }
+    
+    public final void aw(Bitmap paramBitmap)
+    {
+      AppMethodBeat.i(195440);
+      this.nZT = paramBitmap;
+      this.nZT = ax(this.nZT);
+      AppMethodBeat.o(195440);
+    }
+    
+    public final Bitmap fg(String paramString)
+    {
+      AppMethodBeat.i(152117);
+      Bitmap localBitmap = aMu(paramString);
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
+      {
+        AppMethodBeat.o(152117);
+        return localBitmap;
+      }
+      if (this.ERX != null) {
+        localBitmap = c.a(paramString, false, -1, this.ERX);
       }
       for (;;)
       {
-        i += 1;
-        break;
-        this.DmU.remove(i);
-        continue;
-        this.DmU.remove(i);
+        localBitmap = ax(localBitmap);
+        v(paramString, localBitmap);
+        AppMethodBeat.o(152117);
+        return localBitmap;
+        if (this.wYb != null) {
+          localBitmap = this.wYb.fg(paramString);
+        }
       }
     }
-    AppMethodBeat.o(152127);
-  }
-  
-  public final void a(a parama)
-  {
-    AppMethodBeat.i(152126);
-    this.DmU.add(new WeakReference(parama));
-    AppMethodBeat.o(152126);
-  }
-  
-  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(152124);
-    if (this.DmT != null) {
-      this.DmT.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-    AppMethodBeat.o(152124);
-  }
-  
-  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    AppMethodBeat.i(152125);
-    if (paramInt == 2) {
-      uW(true);
-    }
-    for (;;)
+    
+    public final Bitmap fh(String paramString)
     {
-      if (this.DmT != null) {
-        this.DmT.onScrollStateChanged(paramAbsListView, paramInt);
+      AppMethodBeat.i(152118);
+      Bitmap localBitmap = aMu(paramString);
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
+      {
+        AppMethodBeat.o(152118);
+        return localBitmap;
       }
-      AppMethodBeat.o(152125);
-      return;
-      uW(false);
+      if (this.wYb != null)
+      {
+        paramString = this.wYb.fh(paramString);
+        AppMethodBeat.o(152118);
+        return paramString;
+      }
+      AppMethodBeat.o(152118);
+      return null;
     }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void onScrollStateChanged(boolean paramBoolean);
   }
 }
 

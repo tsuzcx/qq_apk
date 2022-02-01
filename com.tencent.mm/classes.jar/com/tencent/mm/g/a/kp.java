@@ -1,17 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.pluginsdk.model.app.am;
 import com.tencent.mm.sdk.b.b;
 
 public final class kp
   extends b
 {
-  public a dmn;
-  public b dmo;
+  public a dxC;
   
   public kp()
   {
@@ -20,32 +15,22 @@ public final class kp
   
   private kp(byte paramByte)
   {
-    AppMethodBeat.i(149868);
-    this.dmn = new a();
-    this.dmo = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(19816);
+    this.dxC = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(149868);
+    AppMethodBeat.o(19816);
   }
   
   public static final class a
   {
-    public String appId;
-    public int cZX;
-    public Context context;
-    public Bundle dcb;
-    public WXMediaMessage dis;
-    public am dmp;
-  }
-  
-  public static final class b
-  {
-    public boolean dmq;
+    public String dxD;
+    public String url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.kp
  * JD-Core Version:    0.7.0.1
  */

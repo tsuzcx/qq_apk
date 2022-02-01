@@ -10,30 +10,30 @@ public final class a$ak
   
   public a$ak()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
     if (this.ret != 0) {
-      paramb.bv(1, this.ret);
+      paramb.bx(1, this.ret);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
     if (this.ret != 0) {
-      i = j + b.bx(1, this.ret);
+      i = j + b.bz(1, this.ret);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ak
  * JD-Core Version:    0.7.0.1
  */

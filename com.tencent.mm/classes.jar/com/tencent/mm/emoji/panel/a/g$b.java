@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.panel.a;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelGroupAdapter$Companion;", "", "()V", "ViewTypeEmoji", "", "ViewTypeSmiley", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelGroupAdapter$Companion;", "", "()V", "ViewTypeEmoji", "", "ViewTypeSmiley", "plugin-emojisdk_release"})
 public final class g$b {}
 
 

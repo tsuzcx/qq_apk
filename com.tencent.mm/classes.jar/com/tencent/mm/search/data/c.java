@@ -1,48 +1,50 @@
 package com.tencent.mm.search.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/search/data/SimilarEmojiManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/search/data/ISimilarEmojiManager;", "()V", "callback", "timeStart", "", "getSimilarEmojiList", "", "model", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "onCrate", "onDestroy", "onSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/search/data/SimilarEmojiManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/search/data/ISimilarEmojiManager;", "()V", "callback", "timeStart", "", "getSimilarEmojiList", "", "model", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "onCrate", "onDestroy", "onSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-emojisdk_release"})
 public final class c
-  implements com.tencent.mm.ak.g, a
+  implements f, a
 {
-  public static final c.a Gwk;
-  private long Gwj;
-  private com.tencent.mm.ak.g callback;
+  public static final c.a Iie;
+  private long Iid;
+  private f callback;
   
   static
   {
     AppMethodBeat.i(105825);
-    Gwk = new c.a((byte)0);
+    Iie = new c.a((byte)0);
     AppMethodBeat.o(105825);
   }
   
-  public final void a(SimilarEmojiQueryModel paramSimilarEmojiQueryModel, com.tencent.mm.ak.g paramg)
+  public final void a(SimilarEmojiQueryModel paramSimilarEmojiQueryModel, f paramf)
   {
     AppMethodBeat.i(105823);
-    k.h(paramSimilarEmojiQueryModel, "model");
-    k.h(paramg, "callback");
-    ac.i("MicroMsg.SimilarEmoji", "do net request:[" + paramSimilarEmojiQueryModel + ']');
-    this.callback = paramg;
+    p.h(paramSimilarEmojiQueryModel, "model");
+    p.h(paramf, "callback");
+    ad.i("MicroMsg.SimilarEmoji", "do net request:[" + paramSimilarEmojiQueryModel + ']');
+    this.callback = paramf;
     paramSimilarEmojiQueryModel = new b(paramSimilarEmojiQueryModel);
-    this.Gwj = System.currentTimeMillis();
-    paramg = com.tencent.mm.kernel.g.agQ();
-    k.g(paramg, "MMKernel.network()");
-    paramg.agi().b((n)paramSimilarEmojiQueryModel);
+    this.Iid = System.currentTimeMillis();
+    paramf = g.ajB();
+    p.g(paramf, "MMKernel.network()");
+    paramf.aiU().b((n)paramSimilarEmojiQueryModel);
     AppMethodBeat.o(105823);
   }
   
-  public final void eWP()
+  public final void fmz()
   {
     AppMethodBeat.i(105821);
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.agQ();
-    k.g(localb, "MMKernel.network()");
-    localb.agi().a(3793, (com.tencent.mm.ak.g)this);
+    com.tencent.mm.kernel.b localb = g.ajB();
+    p.g(localb, "MMKernel.network()");
+    localb.aiU().a(3793, (f)this);
     AppMethodBeat.o(105821);
   }
   
@@ -50,30 +52,30 @@ public final class c
   {
     AppMethodBeat.i(105822);
     this.callback = null;
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.agQ();
-    k.g(localb, "MMKernel.network()");
-    localb.agi().b(3793, (com.tencent.mm.ak.g)this);
-    localb = com.tencent.mm.kernel.g.agQ();
-    k.g(localb, "MMKernel.network()");
-    localb.agi().cancel(3793);
+    com.tencent.mm.kernel.b localb = g.ajB();
+    p.g(localb, "MMKernel.network()");
+    localb.aiU().b(3793, (f)this);
+    localb = g.ajB();
+    p.g(localb, "MMKernel.network()");
+    localb.aiU().cancel(3793);
     AppMethodBeat.o(105822);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(105824);
-    Object localObject = com.tencent.mm.search.c.a.Gwx;
-    if (com.tencent.mm.search.c.a.At(this.Gwj))
+    Object localObject = com.tencent.mm.search.c.a.Iir;
+    if (com.tencent.mm.search.c.a.Dj(this.Iid))
     {
-      localObject = com.tencent.mm.search.c.a.Gwx;
-      com.tencent.mm.search.c.a.eWW();
-      localObject = com.tencent.mm.search.c.a.Gwx;
-      com.tencent.mm.search.c.a.Ar(System.currentTimeMillis() - this.Gwj);
+      localObject = com.tencent.mm.search.c.a.Iir;
+      com.tencent.mm.search.c.a.fmG();
+      localObject = com.tencent.mm.search.c.a.Iir;
+      com.tencent.mm.search.c.a.Dh(System.currentTimeMillis() - this.Iid);
     }
     localObject = this.callback;
     if (localObject != null)
     {
-      ((com.tencent.mm.ak.g)localObject).onSceneEnd(paramInt1, paramInt2, paramString, paramn);
+      ((f)localObject).onSceneEnd(paramInt1, paramInt2, paramString, paramn);
       AppMethodBeat.o(105824);
       return;
     }

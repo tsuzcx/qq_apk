@@ -4,6 +4,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.LoggingBehavior;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -46,7 +47,7 @@ public final class FileLruCache
     this.directory = new File(FacebookSdk.getCacheDir(), paramString);
     this.lock = new Object();
     if ((this.directory.mkdirs()) || (this.directory.isDirectory())) {
-      FileLruCache.BufferFile.deleteAll(this.directory);
+      BufferFile.deleteAll(this.directory);
     }
     AppMethodBeat.o(17789);
   }
@@ -100,7 +101,7 @@ public final class FileLruCache
         ??? = new PriorityQueue();
         long l3 = 0L;
         l2 = 0L;
-        File[] arrayOfFile = this.directory.listFiles(FileLruCache.BufferFile.excludeBufferFiles());
+        File[] arrayOfFile = this.directory.listFiles(BufferFile.excludeBufferFiles());
         l4 = l2;
         l1 = l3;
         if (arrayOfFile == null) {
@@ -162,7 +163,7 @@ public final class FileLruCache
   public final void clearCache()
   {
     AppMethodBeat.i(17795);
-    final File[] arrayOfFile = this.directory.listFiles(FileLruCache.BufferFile.excludeBufferFiles());
+    final File[] arrayOfFile = this.directory.listFiles(BufferFile.excludeBufferFiles());
     this.lastClearCacheTime.set(System.currentTimeMillis());
     if (arrayOfFile != null) {
       FacebookSdk.getExecutor().execute(new Runnable()
@@ -198,64 +199,64 @@ public final class FileLruCache
   {
     // Byte code:
     //   0: sipush 17792
-    //   3: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 90	java/io/File
+    //   3: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 95	java/io/File
     //   9: dup
     //   10: aload_0
-    //   11: getfield 101	com/facebook/internal/FileLruCache:directory	Ljava/io/File;
+    //   11: getfield 106	com/facebook/internal/FileLruCache:directory	Ljava/io/File;
     //   14: aload_1
-    //   15: invokestatic 150	com/facebook/internal/Utility:md5hash	(Ljava/lang/String;)Ljava/lang/String;
-    //   18: invokespecial 99	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   15: invokestatic 155	com/facebook/internal/Utility:md5hash	(Ljava/lang/String;)Ljava/lang/String;
+    //   18: invokespecial 104	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   21: astore 6
-    //   23: new 267	java/io/FileInputStream
+    //   23: new 272	java/io/FileInputStream
     //   26: dup
     //   27: aload 6
-    //   29: invokespecial 268	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   29: invokespecial 273	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   32: astore 7
-    //   34: new 270	java/io/BufferedInputStream
+    //   34: new 275	java/io/BufferedInputStream
     //   37: dup
     //   38: aload 7
     //   40: sipush 8192
-    //   43: invokespecial 273	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   43: invokespecial 278	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   46: astore 7
     //   48: aload 7
-    //   50: invokestatic 277	com/facebook/internal/FileLruCache$StreamHeader:readHeader	(Ljava/io/InputStream;)Lorg/json/JSONObject;
+    //   50: invokestatic 282	com/facebook/internal/FileLruCache$StreamHeader:readHeader	(Ljava/io/InputStream;)Lorg/json/JSONObject;
     //   53: astore 8
     //   55: aload 8
     //   57: ifnonnull +25 -> 82
     //   60: aload 7
-    //   62: invokevirtual 280	java/io/BufferedInputStream:close	()V
+    //   62: invokevirtual 285	java/io/BufferedInputStream:close	()V
     //   65: sipush 17792
-    //   68: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   68: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: aconst_null
     //   72: areturn
     //   73: astore_1
     //   74: sipush 17792
-    //   77: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   77: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   80: aconst_null
     //   81: areturn
     //   82: aload 8
-    //   84: ldc 34
-    //   86: invokevirtual 285	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   84: ldc 39
+    //   86: invokevirtual 290	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   89: astore 9
     //   91: aload 9
     //   93: ifnull +14 -> 107
     //   96: aload 9
     //   98: aload_1
-    //   99: invokevirtual 290	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   99: invokevirtual 295	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   102: istore_3
     //   103: iload_3
     //   104: ifne +16 -> 120
     //   107: aload 7
-    //   109: invokevirtual 280	java/io/BufferedInputStream:close	()V
+    //   109: invokevirtual 285	java/io/BufferedInputStream:close	()V
     //   112: sipush 17792
-    //   115: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   115: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   118: aconst_null
     //   119: areturn
     //   120: aload 8
-    //   122: ldc 37
+    //   122: ldc 42
     //   124: aconst_null
-    //   125: invokevirtual 293	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   125: invokevirtual 298	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   128: astore_1
     //   129: aload_2
     //   130: ifnonnull +7 -> 137
@@ -265,50 +266,50 @@ public final class FileLruCache
     //   138: ifnull +26 -> 164
     //   141: aload_2
     //   142: aload_1
-    //   143: invokevirtual 290	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   143: invokevirtual 295	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   146: istore_3
     //   147: iload_3
     //   148: ifne +16 -> 164
     //   151: aload 7
-    //   153: invokevirtual 280	java/io/BufferedInputStream:close	()V
+    //   153: invokevirtual 285	java/io/BufferedInputStream:close	()V
     //   156: sipush 17792
-    //   159: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   159: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   162: aconst_null
     //   163: areturn
-    //   164: new 295	java/util/Date
+    //   164: new 300	java/util/Date
     //   167: dup
-    //   168: invokespecial 296	java/util/Date:<init>	()V
-    //   171: invokevirtual 299	java/util/Date:getTime	()J
+    //   168: invokespecial 301	java/util/Date:<init>	()V
+    //   171: invokevirtual 304	java/util/Date:getTime	()J
     //   174: lstore 4
-    //   176: getstatic 167	com/facebook/LoggingBehavior:CACHE	Lcom/facebook/LoggingBehavior;
-    //   179: getstatic 66	com/facebook/internal/FileLruCache:TAG	Ljava/lang/String;
-    //   182: new 194	java/lang/StringBuilder
+    //   176: getstatic 172	com/facebook/LoggingBehavior:CACHE	Lcom/facebook/LoggingBehavior;
+    //   179: getstatic 71	com/facebook/internal/FileLruCache:TAG	Ljava/lang/String;
+    //   182: new 199	java/lang/StringBuilder
     //   185: dup
-    //   186: ldc_w 301
-    //   189: invokespecial 199	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   186: ldc_w 306
+    //   189: invokespecial 204	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   192: lload 4
-    //   194: invokestatic 209	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   197: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   200: ldc_w 303
-    //   203: invokevirtual 218	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   194: invokestatic 214	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   197: invokevirtual 218	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   200: ldc_w 308
+    //   203: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   206: aload 6
-    //   208: invokevirtual 224	java/io/File:getName	()Ljava/lang/String;
-    //   211: invokevirtual 218	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   214: invokevirtual 227	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   217: invokestatic 175	com/facebook/internal/Logger:log	(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;)V
+    //   208: invokevirtual 229	java/io/File:getName	()Ljava/lang/String;
+    //   211: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   217: invokestatic 180	com/facebook/internal/Logger:log	(Lcom/facebook/LoggingBehavior;Ljava/lang/String;Ljava/lang/String;)V
     //   220: aload 6
     //   222: lload 4
-    //   224: invokevirtual 307	java/io/File:setLastModified	(J)Z
+    //   224: invokevirtual 312	java/io/File:setLastModified	(J)Z
     //   227: pop
     //   228: sipush 17792
-    //   231: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   231: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   234: aload 7
     //   236: areturn
     //   237: astore_1
     //   238: aload 7
-    //   240: invokevirtual 280	java/io/BufferedInputStream:close	()V
+    //   240: invokevirtual 285	java/io/BufferedInputStream:close	()V
     //   243: sipush 17792
-    //   246: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   246: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   249: aload_1
     //   250: athrow
     // Local variable table:
@@ -362,121 +363,121 @@ public final class FileLruCache
   {
     // Byte code:
     //   0: sipush 17794
-    //   3: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 101	com/facebook/internal/FileLruCache:directory	Ljava/io/File;
-    //   10: invokestatic 331	com/facebook/internal/FileLruCache$BufferFile:newFile	(Ljava/io/File;)Ljava/io/File;
+    //   7: getfield 106	com/facebook/internal/FileLruCache:directory	Ljava/io/File;
+    //   10: invokestatic 336	com/facebook/internal/FileLruCache$BufferFile:newFile	(Ljava/io/File;)Ljava/io/File;
     //   13: astore_3
     //   14: aload_3
-    //   15: invokevirtual 157	java/io/File:delete	()Z
+    //   15: invokevirtual 162	java/io/File:delete	()Z
     //   18: pop
     //   19: aload_3
-    //   20: invokevirtual 334	java/io/File:createNewFile	()Z
+    //   20: invokevirtual 339	java/io/File:createNewFile	()Z
     //   23: ifne +39 -> 62
-    //   26: new 265	java/io/IOException
+    //   26: new 270	java/io/IOException
     //   29: dup
-    //   30: new 194	java/lang/StringBuilder
+    //   30: new 199	java/lang/StringBuilder
     //   33: dup
-    //   34: ldc_w 336
-    //   37: invokespecial 199	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   34: ldc_w 341
+    //   37: invokespecial 204	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   40: aload_3
-    //   41: invokevirtual 339	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   44: invokevirtual 218	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 227	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokespecial 340	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   41: invokevirtual 344	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   44: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 232	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokespecial 345	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   53: astore_1
     //   54: sipush 17794
-    //   57: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   57: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   60: aload_1
     //   61: athrow
-    //   62: new 342	java/io/FileOutputStream
+    //   62: new 347	java/io/FileOutputStream
     //   65: dup
     //   66: aload_3
-    //   67: invokespecial 343	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   67: invokespecial 348	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   70: astore 4
-    //   72: new 345	java/io/BufferedOutputStream
+    //   72: new 350	java/io/BufferedOutputStream
     //   75: dup
-    //   76: new 14	com/facebook/internal/FileLruCache$CloseCallbackOutputStream
+    //   76: new 19	com/facebook/internal/FileLruCache$CloseCallbackOutputStream
     //   79: dup
     //   80: aload 4
     //   82: new 6	com/facebook/internal/FileLruCache$1
     //   85: dup
     //   86: aload_0
-    //   87: invokestatic 252	java/lang/System:currentTimeMillis	()J
+    //   87: invokestatic 257	java/lang/System:currentTimeMillis	()J
     //   90: aload_3
     //   91: aload_1
-    //   92: invokespecial 348	com/facebook/internal/FileLruCache$1:<init>	(Lcom/facebook/internal/FileLruCache;JLjava/io/File;Ljava/lang/String;)V
-    //   95: invokespecial 351	com/facebook/internal/FileLruCache$CloseCallbackOutputStream:<init>	(Ljava/io/OutputStream;Lcom/facebook/internal/FileLruCache$StreamCloseCallback;)V
+    //   92: invokespecial 353	com/facebook/internal/FileLruCache$1:<init>	(Lcom/facebook/internal/FileLruCache;JLjava/io/File;Ljava/lang/String;)V
+    //   95: invokespecial 356	com/facebook/internal/FileLruCache$CloseCallbackOutputStream:<init>	(Ljava/io/OutputStream;Lcom/facebook/internal/FileLruCache$StreamCloseCallback;)V
     //   98: sipush 8192
-    //   101: invokespecial 354	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
+    //   101: invokespecial 359	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
     //   104: astore_3
-    //   105: new 282	org/json/JSONObject
+    //   105: new 287	org/json/JSONObject
     //   108: dup
-    //   109: invokespecial 355	org/json/JSONObject:<init>	()V
+    //   109: invokespecial 360	org/json/JSONObject:<init>	()V
     //   112: astore 4
     //   114: aload 4
-    //   116: ldc 34
+    //   116: ldc 39
     //   118: aload_1
-    //   119: invokevirtual 359	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   119: invokevirtual 364	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   122: pop
     //   123: aload_2
-    //   124: invokestatic 363	com/facebook/internal/Utility:isNullOrEmpty	(Ljava/lang/String;)Z
+    //   124: invokestatic 368	com/facebook/internal/Utility:isNullOrEmpty	(Ljava/lang/String;)Z
     //   127: ifne +12 -> 139
     //   130: aload 4
-    //   132: ldc 37
+    //   132: ldc 42
     //   134: aload_2
-    //   135: invokevirtual 359	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   135: invokevirtual 364	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   138: pop
     //   139: aload_3
     //   140: aload 4
-    //   142: invokestatic 367	com/facebook/internal/FileLruCache$StreamHeader:writeHeader	(Ljava/io/OutputStream;Lorg/json/JSONObject;)V
+    //   142: invokestatic 372	com/facebook/internal/FileLruCache$StreamHeader:writeHeader	(Ljava/io/OutputStream;Lorg/json/JSONObject;)V
     //   145: sipush 17794
-    //   148: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   148: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   151: aload_3
     //   152: areturn
     //   153: astore_1
-    //   154: getstatic 167	com/facebook/LoggingBehavior:CACHE	Lcom/facebook/LoggingBehavior;
+    //   154: getstatic 172	com/facebook/LoggingBehavior:CACHE	Lcom/facebook/LoggingBehavior;
     //   157: iconst_5
-    //   158: getstatic 66	com/facebook/internal/FileLruCache:TAG	Ljava/lang/String;
-    //   161: ldc_w 369
+    //   158: getstatic 71	com/facebook/internal/FileLruCache:TAG	Ljava/lang/String;
+    //   161: ldc_w 374
     //   164: aload_1
-    //   165: invokestatic 372	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   168: invokevirtual 375	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   171: invokestatic 378	com/facebook/internal/Logger:log	(Lcom/facebook/LoggingBehavior;ILjava/lang/String;Ljava/lang/String;)V
-    //   174: new 265	java/io/IOException
+    //   165: invokestatic 377	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   168: invokevirtual 380	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   171: invokestatic 383	com/facebook/internal/Logger:log	(Lcom/facebook/LoggingBehavior;ILjava/lang/String;Ljava/lang/String;)V
+    //   174: new 270	java/io/IOException
     //   177: dup
     //   178: aload_1
-    //   179: invokevirtual 381	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   182: invokespecial 340	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   179: invokevirtual 386	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   182: invokespecial 345	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   185: astore_1
     //   186: sipush 17794
-    //   189: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   189: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   192: aload_1
     //   193: athrow
     //   194: astore_1
-    //   195: getstatic 167	com/facebook/LoggingBehavior:CACHE	Lcom/facebook/LoggingBehavior;
+    //   195: getstatic 172	com/facebook/LoggingBehavior:CACHE	Lcom/facebook/LoggingBehavior;
     //   198: iconst_5
-    //   199: getstatic 66	com/facebook/internal/FileLruCache:TAG	Ljava/lang/String;
-    //   202: ldc_w 383
+    //   199: getstatic 71	com/facebook/internal/FileLruCache:TAG	Ljava/lang/String;
+    //   202: ldc_w 388
     //   205: aload_1
-    //   206: invokestatic 372	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   209: invokevirtual 375	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   212: invokestatic 378	com/facebook/internal/Logger:log	(Lcom/facebook/LoggingBehavior;ILjava/lang/String;Ljava/lang/String;)V
-    //   215: new 265	java/io/IOException
+    //   206: invokestatic 377	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   209: invokevirtual 380	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   212: invokestatic 383	com/facebook/internal/Logger:log	(Lcom/facebook/LoggingBehavior;ILjava/lang/String;Ljava/lang/String;)V
+    //   215: new 270	java/io/IOException
     //   218: dup
     //   219: aload_1
-    //   220: invokevirtual 384	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   223: invokespecial 340	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   220: invokevirtual 389	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   223: invokespecial 345	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   226: astore_1
     //   227: sipush 17794
-    //   230: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   230: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   233: aload_1
     //   234: athrow
     //   235: astore_1
     //   236: aload_3
-    //   237: invokevirtual 385	java/io/BufferedOutputStream:close	()V
+    //   237: invokevirtual 390	java/io/BufferedOutputStream:close	()V
     //   240: sipush 17794
-    //   243: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   243: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   246: aload_1
     //   247: athrow
     // Local variable table:
@@ -542,6 +543,78 @@ public final class FileLruCache
     String str = "{FileLruCache: tag:" + this.tag + " file:" + this.directory.getName() + "}";
     AppMethodBeat.o(17799);
     return str;
+  }
+  
+  static class BufferFile
+  {
+    private static final String FILE_NAME_PREFIX = "buffer";
+    private static final FilenameFilter filterExcludeBufferFiles;
+    private static final FilenameFilter filterExcludeNonBufferFiles;
+    
+    static
+    {
+      AppMethodBeat.i(17766);
+      filterExcludeBufferFiles = new FilenameFilter()
+      {
+        public final boolean accept(File paramAnonymousFile, String paramAnonymousString)
+        {
+          AppMethodBeat.i(17762);
+          if (!paramAnonymousString.startsWith("buffer"))
+          {
+            AppMethodBeat.o(17762);
+            return true;
+          }
+          AppMethodBeat.o(17762);
+          return false;
+        }
+      };
+      filterExcludeNonBufferFiles = new FilenameFilter()
+      {
+        public final boolean accept(File paramAnonymousFile, String paramAnonymousString)
+        {
+          AppMethodBeat.i(17763);
+          boolean bool = paramAnonymousString.startsWith("buffer");
+          AppMethodBeat.o(17763);
+          return bool;
+        }
+      };
+      AppMethodBeat.o(17766);
+    }
+    
+    static void deleteAll(File paramFile)
+    {
+      AppMethodBeat.i(17764);
+      paramFile = paramFile.listFiles(excludeNonBufferFiles());
+      if (paramFile != null)
+      {
+        int j = paramFile.length;
+        int i = 0;
+        while (i < j)
+        {
+          paramFile[i].delete();
+          i += 1;
+        }
+      }
+      AppMethodBeat.o(17764);
+    }
+    
+    static FilenameFilter excludeBufferFiles()
+    {
+      return filterExcludeBufferFiles;
+    }
+    
+    static FilenameFilter excludeNonBufferFiles()
+    {
+      return filterExcludeNonBufferFiles;
+    }
+    
+    static File newFile(File paramFile)
+    {
+      AppMethodBeat.i(17765);
+      paramFile = new File(paramFile, "buffer" + Long.valueOf(FileLruCache.bufferIndex.incrementAndGet()).toString());
+      AppMethodBeat.o(17765);
+      return paramFile;
+    }
   }
   
   static class CloseCallbackOutputStream

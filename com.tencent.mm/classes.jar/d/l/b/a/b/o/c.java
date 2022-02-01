@@ -1,19 +1,19 @@
 package d.l.b.a.b.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 
 public final class c
 {
-  public static final boolean r(Throwable paramThrowable)
+  public static final boolean s(Throwable paramThrowable)
   {
     AppMethodBeat.i(61356);
-    k.h(paramThrowable, "$this$isProcessCanceledException");
+    p.h(paramThrowable, "$this$isProcessCanceledException");
     paramThrowable = paramThrowable.getClass();
     Class localClass;
     do
     {
-      if (k.g(paramThrowable.getCanonicalName(), "com.intellij.openapi.progress.ProcessCanceledException"))
+      if (p.i(paramThrowable.getCanonicalName(), "com.intellij.openapi.progress.ProcessCanceledException"))
       {
         AppMethodBeat.o(61356);
         return true;

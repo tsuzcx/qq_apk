@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.c.t;
 import com.tencent.mm.wallet_core.d.i;
@@ -16,11 +16,11 @@ import java.lang.ref.WeakReference;
 
 public abstract class d
 {
-  public WeakReference<Context> JDn = new WeakReference(null);
-  protected WeakReference<d.a> KD;
-  public Bundle dmf = new Bundle();
+  public WeakReference<Context> Lwt = new WeakReference(null);
+  protected WeakReference<d.a> Mt;
+  public Bundle dxT = new Bundle();
   
-  private static String ek(Object paramObject)
+  private static String en(Object paramObject)
   {
     if (paramObject == null) {
       return "";
@@ -41,30 +41,30 @@ public abstract class d
   {
     int i = 0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.format("this %s, procname %s", new Object[] { this, cHN() }));
+    localStringBuilder.append(String.format("this %s, procname %s", new Object[] { this, cQc() }));
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
     {
-      ac.w("MicroMsg.ProcessManager", "vals is null, use '' as value");
+      ad.w("MicroMsg.ProcessManager", "vals is null, use '' as value");
       return localStringBuilder.toString();
     }
     int j = paramVarArgs.length - 1;
     while (i < j)
     {
-      localStringBuilder.append(ek(paramVarArgs[i])).append(',');
+      localStringBuilder.append(en(paramVarArgs[i])).append(',');
       i += 1;
     }
-    localStringBuilder.append(ek(paramVarArgs[j]));
+    localStringBuilder.append(en(paramVarArgs[j]));
     return localStringBuilder.toString();
   }
   
-  public final void J(Object... paramVarArgs)
+  public final void K(Object... paramVarArgs)
   {
-    ac.i("MicroMsg.ProcessManager", "__CURRENT__ %s", new Object[] { v(paramVarArgs) });
+    ad.i("MicroMsg.ProcessManager", "__CURRENT__ %s", new Object[] { v(paramVarArgs) });
   }
   
   public void Q(Activity paramActivity)
   {
-    J(new Object[] { "finishActivity", paramActivity });
+    K(new Object[] { "finishActivity", paramActivity });
     if ((!paramActivity.isFinishing()) && ((paramActivity instanceof MMActivity))) {
       ((MMActivity)paramActivity).finish();
     }
@@ -94,9 +94,9 @@ public abstract class d
   
   protected final void a(Activity paramActivity, Class<?> paramClass, int paramInt, Intent paramIntent, boolean paramBoolean)
   {
-    J(new Object[] { "endProcess2", paramActivity, paramClass, Integer.valueOf(paramInt), paramIntent, Boolean.valueOf(paramBoolean) });
-    if ((this.KD != null) && (this.KD.get() != null)) {
-      paramIntent = ((d.a)this.KD.get()).r(paramInt, this.dmf);
+    K(new Object[] { "endProcess2", paramActivity, paramClass, Integer.valueOf(paramInt), paramIntent, Boolean.valueOf(paramBoolean) });
+    if ((this.Mt != null) && (this.Mt.get() != null)) {
+      paramIntent = ((d.a)this.Mt.get()).s(paramInt, this.dxT);
     }
     for (;;)
     {
@@ -121,12 +121,12 @@ public abstract class d
         }
         localIntent.addFlags(67108864);
         localIntent.putExtra("key_process_is_end", true);
-        paramClass = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramClass.aeD(), "com/tencent/mm/wallet_core/WalletProcess", "endProcess", "(Landroid/app/Activity;Ljava/lang/Class;ILandroid/content/Intent;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramActivity.startActivity((Intent)paramClass.lR(0));
+        paramClass = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramClass.ahp(), "com/tencent/mm/wallet_core/WalletProcess", "endProcess", "(Landroid/app/Activity;Ljava/lang/Class;ILandroid/content/Intent;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramActivity.startActivity((Intent)paramClass.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/wallet_core/WalletProcess", "endProcess", "(Landroid/app/Activity;Ljava/lang/Class;ILandroid/content/Intent;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        if (this.dmf != null) {
-          this.dmf.clear();
+        if (this.dxT != null) {
+          this.dxT.clear();
         }
         a.remove(getClass().hashCode());
         return;
@@ -148,42 +148,42 @@ public abstract class d
   
   public final void a(Activity paramActivity, Class<?> paramClass, Bundle paramBundle, int paramInt)
   {
-    J(new Object[] { "startActivityForResult1", paramActivity, paramClass, paramBundle, Integer.valueOf(paramInt) });
+    K(new Object[] { "startActivityForResult1", paramActivity, paramClass, paramBundle, Integer.valueOf(paramInt) });
     paramClass = new Intent(paramActivity, paramClass);
     paramClass.putExtra("process_id", getClass().hashCode());
     paramClass.addFlags(67108864);
     paramActivity.startActivityForResult(paramClass, paramInt);
     if (paramBundle != null) {
-      this.dmf.putAll(paramBundle);
+      this.dxT.putAll(paramBundle);
     }
   }
   
   public final void a(Activity paramActivity, Class<?> paramClass, Bundle paramBundle1, Bundle paramBundle2)
   {
-    J(new Object[] { "startActivity1", paramActivity, paramClass, paramBundle1 });
+    K(new Object[] { "startActivity1", paramActivity, paramClass, paramBundle1 });
     paramClass = new Intent(paramActivity, paramClass);
     paramClass.putExtra("process_id", getClass().hashCode());
     if (paramBundle2 != null)
     {
       paramClass.putExtras(paramBundle2);
-      ac.d("MicroMsg.ProcessManager", "put bundle: %s", new Object[] { paramClass.getExtras().toString() });
+      ad.d("MicroMsg.ProcessManager", "put bundle: %s", new Object[] { paramClass.getExtras().toString() });
     }
-    paramClass = new com.tencent.mm.hellhoundlib.b.a().ba(paramClass);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramClass.aeD(), "com/tencent/mm/wallet_core/WalletProcess", "startActivity", "(Landroid/app/Activity;Ljava/lang/Class;Landroid/os/Bundle;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramClass.lR(0));
+    paramClass = new com.tencent.mm.hellhoundlib.b.a().bc(paramClass);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramClass.ahp(), "com/tencent/mm/wallet_core/WalletProcess", "startActivity", "(Landroid/app/Activity;Ljava/lang/Class;Landroid/os/Bundle;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramClass.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/wallet_core/WalletProcess", "startActivity", "(Landroid/app/Activity;Ljava/lang/Class;Landroid/os/Bundle;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     if (paramBundle1 != null) {
-      this.dmf.putAll(paramBundle1);
+      this.dxT.putAll(paramBundle1);
     }
-    ac.d("MicroMsg.ProcessManager", "bankcard tag :" + fzF());
+    ad.d("MicroMsg.ProcessManager", "bankcard tag :" + fQP());
   }
   
   public final void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, Intent paramIntent, boolean paramBoolean)
   {
-    J(new Object[] { "endProcess3", paramActivity, paramString1, paramString2, Integer.valueOf(paramInt), paramIntent, Boolean.valueOf(paramBoolean) });
+    K(new Object[] { "endProcess3", paramActivity, paramString1, paramString2, Integer.valueOf(paramInt), paramIntent, Boolean.valueOf(paramBoolean) });
     Intent localIntent1 = null;
-    if (this.KD.get() != null) {
-      localIntent1 = ((d.a)this.KD.get()).r(paramInt, this.dmf);
+    if (this.Mt.get() != null) {
+      localIntent1 = ((d.a)this.Mt.get()).s(paramInt, this.dxT);
     }
     Intent localIntent2;
     if (paramIntent != null)
@@ -206,9 +206,9 @@ public abstract class d
       }
       localIntent2.addFlags(67108864);
       localIntent2.putExtra("key_process_is_end", true);
-      com.tencent.mm.br.d.b(paramActivity, paramString1, paramString2, localIntent2);
-      if (this.dmf != null) {
-        this.dmf.clear();
+      com.tencent.mm.bs.d.b(paramActivity, paramString1, paramString2, localIntent2);
+      if (this.dxT != null) {
+        this.dxT.clear();
       }
       a.remove(getClass().hashCode());
       return;
@@ -224,20 +224,20 @@ public abstract class d
   
   public final void a(Activity paramActivity, String paramString1, String paramString2, Bundle paramBundle)
   {
-    J(new Object[] { "startActivity3", paramActivity, paramString1, paramString2, paramBundle });
-    Class localClass = com.tencent.mm.br.d.le(paramString1, paramString2);
+    K(new Object[] { "startActivity3", paramActivity, paramString1, paramString2, paramBundle });
+    Class localClass = com.tencent.mm.bs.d.lD(paramString1, paramString2);
     if (localClass != null)
     {
       b(paramActivity, localClass, paramBundle);
       return;
     }
-    ac.e("MicroMsg.ProcessManager", " Class Not Found! can't startActivity to " + paramString1 + paramString2);
+    ad.e("MicroMsg.ProcessManager", " Class Not Found! can't startActivity to " + paramString1 + paramString2);
   }
   
   public final void a(d.a parama, Context paramContext)
   {
-    this.KD = new WeakReference(parama);
-    this.JDn = new WeakReference(paramContext);
+    this.Mt = new WeakReference(parama);
+    this.Lwt = new WeakReference(paramContext);
   }
   
   public void a(WalletBaseUI paramWalletBaseUI) {}
@@ -249,12 +249,12 @@ public abstract class d
   
   public final void b(Activity paramActivity, int paramInt, Bundle paramBundle)
   {
-    J(new Object[] { "endProcess1", paramActivity });
+    K(new Object[] { "endProcess1", paramActivity });
     if ((!paramActivity.isFinishing()) && ((paramActivity instanceof MMActivity))) {
       ((MMActivity)paramActivity).finish();
     }
-    if (this.KD.get() != null) {
-      ((d.a)this.KD.get()).r(paramInt, paramBundle);
+    if (this.Mt.get() != null) {
+      ((d.a)this.Mt.get()).s(paramInt, paramBundle);
     }
     if (paramBundle != null) {
       paramBundle.clear();
@@ -266,64 +266,64 @@ public abstract class d
   
   public final void b(Activity paramActivity, Class<?> paramClass, Bundle paramBundle)
   {
-    J(new Object[] { "startActivity1", paramActivity, paramClass, paramBundle });
+    K(new Object[] { "startActivity1", paramActivity, paramClass, paramBundle });
     paramClass = new Intent(paramActivity, paramClass);
     paramClass.putExtra("process_id", getClass().hashCode());
-    paramClass = new com.tencent.mm.hellhoundlib.b.a().ba(paramClass);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramClass.aeD(), "com/tencent/mm/wallet_core/WalletProcess", "startActivity", "(Landroid/app/Activity;Ljava/lang/Class;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramClass.lR(0));
+    paramClass = new com.tencent.mm.hellhoundlib.b.a().bc(paramClass);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramClass.ahp(), "com/tencent/mm/wallet_core/WalletProcess", "startActivity", "(Landroid/app/Activity;Ljava/lang/Class;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramClass.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/wallet_core/WalletProcess", "startActivity", "(Landroid/app/Activity;Ljava/lang/Class;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     if (paramBundle != null) {
-      this.dmf.putAll(paramBundle);
+      this.dxT.putAll(paramBundle);
     }
-    ac.d("MicroMsg.ProcessManager", "bankcard tag :" + fzF());
+    ad.d("MicroMsg.ProcessManager", "bankcard tag :" + fQP());
   }
   
   protected final void b(Activity paramActivity, Class<?> paramClass, Bundle paramBundle, int paramInt)
   {
-    J(new Object[] { "finishActivity", paramActivity, paramClass, "errCode ".concat(String.valueOf(paramInt)) });
+    K(new Object[] { "finishActivity", paramActivity, paramClass, "errCode ".concat(String.valueOf(paramInt)) });
     paramClass = new Intent(paramActivity, paramClass);
     paramClass.putExtra("process_id", getClass().hashCode());
     paramClass.addFlags(67108864);
     if (paramBundle != null) {
       paramClass.putExtras(paramBundle);
     }
-    paramClass = new com.tencent.mm.hellhoundlib.b.a().ba(paramClass);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramClass.aeD(), "com/tencent/mm/wallet_core/WalletProcess", "backActivity", "(Landroid/app/Activity;Ljava/lang/Class;Landroid/os/Bundle;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramClass.lR(0));
+    paramClass = new com.tencent.mm.hellhoundlib.b.a().bc(paramClass);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramClass.ahp(), "com/tencent/mm/wallet_core/WalletProcess", "backActivity", "(Landroid/app/Activity;Ljava/lang/Class;Landroid/os/Bundle;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramClass.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/wallet_core/WalletProcess", "backActivity", "(Landroid/app/Activity;Ljava/lang/Class;Landroid/os/Bundle;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    this.dmf.putInt("key_err_code", paramInt);
+    this.dxT.putInt("key_err_code", paramInt);
   }
   
   public void b(WalletBaseUI paramWalletBaseUI) {}
   
-  public final d bh(Bundle paramBundle)
+  public final d bm(Bundle paramBundle)
   {
-    this.dmf.putAll(paramBundle);
+    this.dxT.putAll(paramBundle);
     return this;
   }
   
   public final void bs(Activity paramActivity)
   {
-    J(new Object[] { "specEndProcess", paramActivity });
+    K(new Object[] { "specEndProcess", paramActivity });
     if ((!paramActivity.isFinishing()) && ((paramActivity instanceof MMActivity))) {
       ((MMActivity)paramActivity).finish();
     }
-    if (this.dmf != null) {
-      this.dmf.clear();
+    if (this.dxT != null) {
+      this.dxT.clear();
     }
     a.remove(getClass().hashCode());
-    eps();
+    eDs();
   }
   
   public final void bt(Activity paramActivity)
   {
-    J(new Object[] { "endProcess1", paramActivity });
+    K(new Object[] { "endProcess1", paramActivity });
     if ((!paramActivity.isFinishing()) && ((paramActivity instanceof MMActivity))) {
       ((MMActivity)paramActivity).finish();
     }
-    if (this.dmf != null) {
-      this.dmf.clear();
+    if (this.dxT != null) {
+      this.dxT.clear();
     }
     a.remove(getClass().hashCode());
   }
@@ -335,67 +335,67 @@ public abstract class d
   
   public abstract boolean c(Activity paramActivity, Bundle paramBundle);
   
-  public abstract String cHN();
+  public abstract String cQc();
   
   protected final void e(Activity paramActivity, String paramString1, String paramString2)
   {
     a(paramActivity, paramString1, paramString2, -1, true);
   }
   
-  public void eps() {}
+  public void eDs() {}
   
-  public final boolean etU()
+  public final boolean eIa()
   {
-    return this.dmf.getBoolean("key_is_oversea", false);
+    return this.dxT.getBoolean("key_is_oversea", false);
   }
   
-  public final void fzE()
+  public final void fQO()
   {
-    this.KD = null;
-    this.JDn = null;
+    this.Mt = null;
+    this.Lwt = null;
   }
   
-  public final int fzF()
+  public final int fQP()
   {
-    return this.dmf.getInt("key_support_bankcard", 1);
+    return this.dxT.getInt("key_support_bankcard", 1);
   }
   
-  public final boolean fzG()
+  public final boolean fQQ()
   {
     boolean bool = false;
-    if (this.dmf.getInt("key_pay_flag", 0) == 2) {
+    if (this.dxT.getInt("key_pay_flag", 0) == 2) {
       bool = true;
     }
     return bool;
   }
   
-  public final boolean fzH()
+  public final boolean fQR()
   {
-    return this.dmf.getInt("key_pay_flag", 0) == 1;
+    return this.dxT.getInt("key_pay_flag", 0) == 1;
   }
   
-  public final boolean fzI()
+  public final boolean fQS()
   {
     boolean bool = false;
-    if (this.dmf.getInt("key_pay_flag", 0) == 3) {
+    if (this.dxT.getInt("key_pay_flag", 0) == 3) {
       bool = true;
     }
     return bool;
   }
   
-  public final boolean fzJ()
+  public final boolean fQT()
   {
     boolean bool2 = false;
-    String str = this.dmf.getString("key_bank_username");
-    ac.i("MicroMsg.ProcessManager", "follow bank account : isFollow " + this.dmf.getBoolean("key_is_follow_bank_username", false) + ", username : " + str);
+    String str = this.dxT.getString("key_bank_username");
+    ad.i("MicroMsg.ProcessManager", "follow bank account : isFollow " + this.dxT.getBoolean("key_is_follow_bank_username", false) + ", username : " + str);
     boolean bool1 = bool2;
-    if (this.dmf.getBoolean("key_is_follow_bank_username", false))
+    if (this.dxT.getBoolean("key_is_follow_bank_username", false))
     {
       bool1 = bool2;
-      if (!bs.isNullOrNil(str))
+      if (!bt.isNullOrNil(str))
       {
-        com.tencent.mm.kernel.g.agS();
-        com.tencent.mm.kernel.g.agQ().ghe.a(new t(str), 0);
+        com.tencent.mm.kernel.g.ajD();
+        com.tencent.mm.kernel.g.ajB().gAO.a(new t(str), 0);
         bool1 = true;
       }
     }

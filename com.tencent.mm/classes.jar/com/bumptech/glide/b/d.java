@@ -8,15 +8,15 @@ import java.util.List;
 
 public final class d
 {
-  public final byte[] aCx;
-  public ByteBuffer aCy;
-  public c aCz;
+  public final byte[] aEo;
+  public ByteBuffer aEp;
+  public c aEq;
   public int blockSize;
   
   public d()
   {
     AppMethodBeat.i(3468);
-    this.aCx = new byte[256];
+    this.aEo = new byte[256];
     this.blockSize = 0;
     AppMethodBeat.o(3468);
   }
@@ -28,7 +28,7 @@ public final class d
     byte[] arrayOfByte = new byte[paramInt * 3];
     try
     {
-      this.aCy.get(arrayOfByte);
+      this.aEp.get(arrayOfByte);
       int[] arrayOfInt = new int[256];
       int j = 0;
       int i = 0;
@@ -51,41 +51,41 @@ public final class d
     catch (BufferUnderflowException localBufferUnderflowException)
     {
       Log.isLoggable("GifHeaderParser", 3);
-      this.aCz.status = 1;
+      this.aEq.status = 1;
       AppMethodBeat.o(3472);
     }
   }
   
-  private void nN()
+  private void of()
   {
     AppMethodBeat.i(3470);
     do
     {
-      nQ();
-      if (this.aCx[0] == 1)
+      oi();
+      if (this.aEo[0] == 1)
       {
-        int i = this.aCx[1];
-        int j = this.aCx[2];
-        this.aCz.loopCount = (i & 0xFF | (j & 0xFF) << 8);
+        int i = this.aEo[1];
+        int j = this.aEo[2];
+        this.aEq.loopCount = (i & 0xFF | (j & 0xFF) << 8);
       }
-    } while ((this.blockSize > 0) && (!nR()));
+    } while ((this.blockSize > 0) && (!oj()));
     AppMethodBeat.o(3470);
   }
   
-  private void nP()
+  private void oh()
   {
     AppMethodBeat.i(3473);
     int i;
     do
     {
       i = read();
-      int j = Math.min(this.aCy.position() + i, this.aCy.limit());
-      this.aCy.position(j);
+      int j = Math.min(this.aEp.position() + i, this.aEp.limit());
+      this.aEp.position(j);
     } while (i > 0);
     AppMethodBeat.o(3473);
   }
   
-  private void nQ()
+  private void oi()
   {
     AppMethodBeat.i(3474);
     this.blockSize = read();
@@ -103,7 +103,7 @@ public final class d
             k = i;
             i = this.blockSize - j;
             k = i;
-            this.aCy.get(this.aCx, j, i);
+            this.aEp.get(this.aEo, j, i);
             j += i;
           }
           else
@@ -117,7 +117,7 @@ public final class d
           if (Log.isLoggable("GifHeaderParser", 3)) {
             new StringBuilder("Error Reading Block n: ").append(j).append(" count: ").append(k).append(" blockSize: ").append(this.blockSize);
           }
-          this.aCz.status = 1;
+          this.aEq.status = 1;
         }
       }
     }
@@ -130,25 +130,25 @@ public final class d
     int i = 0;
     try
     {
-      int j = this.aCy.get();
+      int j = this.aEp.get();
       i = j & 0xFF;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        this.aCz.status = 1;
+        this.aEq.status = 1;
       }
     }
     AppMethodBeat.o(3475);
     return i;
   }
   
-  public final void nM()
+  public final void oe()
   {
     AppMethodBeat.i(3469);
     int i = 0;
-    while ((i == 0) && (!nR()) && (this.aCz.frameCount <= 2147483647))
+    while ((i == 0) && (!oj()) && (this.aEq.frameCount <= 2147483647))
     {
       int k;
       int j;
@@ -158,43 +158,43 @@ public final class d
       switch (read())
       {
       default: 
-        this.aCz.status = 1;
+        this.aEq.status = 1;
         break;
       case 44: 
-        if (this.aCz.aCr == null) {
-          this.aCz.aCr = new b();
+        if (this.aEq.aEi == null) {
+          this.aEq.aEi = new b();
         }
-        this.aCz.aCr.aCg = this.aCy.getShort();
-        this.aCz.aCr.aCh = this.aCy.getShort();
-        this.aCz.aCr.aCi = this.aCy.getShort();
-        this.aCz.aCr.aCj = this.aCy.getShort();
+        this.aEq.aEi.aDX = this.aEp.getShort();
+        this.aEq.aEi.aDY = this.aEp.getShort();
+        this.aEq.aEi.aDZ = this.aEp.getShort();
+        this.aEq.aEi.aEa = this.aEp.getShort();
         k = read();
         int m;
         if ((k & 0x80) != 0)
         {
           j = 1;
           m = (int)Math.pow(2.0D, (k & 0x7) + 1);
-          localObject = this.aCz.aCr;
+          localObject = this.aEq.aEi;
           if ((k & 0x40) == 0) {
             break label327;
           }
           bool = true;
-          ((b)localObject).aCk = bool;
+          ((b)localObject).aEb = bool;
           if (j == 0) {
             break label333;
           }
         }
-        for (this.aCz.aCr.aCp = dm(m);; this.aCz.aCr.aCp = null)
+        for (this.aEq.aEi.aEg = dm(m);; this.aEq.aEi.aEg = null)
         {
-          this.aCz.aCr.aCo = this.aCy.position();
+          this.aEq.aEi.aEf = this.aEp.position();
           read();
-          nP();
-          if (nR()) {
+          oh();
+          if (oj()) {
             break;
           }
-          localObject = this.aCz;
+          localObject = this.aEq;
           ((c)localObject).frameCount += 1;
-          this.aCz.aCs.add(this.aCz.aCr);
+          this.aEq.aEj.add(this.aEq.aEi);
           break;
           j = 0;
           break label186;
@@ -207,51 +207,51 @@ public final class d
         switch (read())
         {
         default: 
-          nP();
+          oh();
           break;
         case 249: 
-          this.aCz.aCr = new b();
+          this.aEq.aEi = new b();
           read();
           j = read();
-          this.aCz.aCr.aCm = ((j & 0x1C) >> 2);
-          if (this.aCz.aCr.aCm == 0) {
-            this.aCz.aCr.aCm = 1;
+          this.aEq.aEi.aEd = ((j & 0x1C) >> 2);
+          if (this.aEq.aEi.aEd == 0) {
+            this.aEq.aEi.aEd = 1;
           }
-          localObject = this.aCz.aCr;
+          localObject = this.aEq.aEi;
           if ((j & 0x1) != 0) {}
           for (bool = true;; bool = false)
           {
-            ((b)localObject).aCl = bool;
-            k = this.aCy.getShort();
+            ((b)localObject).aEc = bool;
+            k = this.aEp.getShort();
             j = k;
             if (k < 2) {
               j = 10;
             }
-            this.aCz.aCr.delay = (j * 10);
-            this.aCz.aCr.aCn = read();
+            this.aEq.aEi.delay = (j * 10);
+            this.aEq.aEi.aEe = read();
             read();
             break;
           }
         case 255: 
-          nQ();
+          oi();
           localObject = new StringBuilder();
           j = 0;
           while (j < 11)
           {
-            ((StringBuilder)localObject).append((char)this.aCx[j]);
+            ((StringBuilder)localObject).append((char)this.aEo[j]);
             j += 1;
           }
           if (((StringBuilder)localObject).toString().equals("NETSCAPE2.0")) {
-            nN();
+            of();
           } else {
-            nP();
+            oh();
           }
           break;
         case 254: 
-          nP();
+          oh();
           break;
         case 1: 
-          nP();
+          oh();
         }
         break;
       case 59: 
@@ -262,7 +262,7 @@ public final class d
     AppMethodBeat.o(3469);
   }
   
-  public final void nO()
+  public final void og()
   {
     boolean bool = true;
     AppMethodBeat.i(3471);
@@ -275,25 +275,25 @@ public final class d
     }
     if (!((StringBuilder)localObject).toString().startsWith("GIF"))
     {
-      this.aCz.status = 1;
+      this.aEq.status = 1;
       AppMethodBeat.o(3471);
       return;
     }
-    this.aCz.width = this.aCy.getShort();
-    this.aCz.height = this.aCy.getShort();
+    this.aEq.width = this.aEp.getShort();
+    this.aEq.height = this.aEp.getShort();
     i = read();
-    localObject = this.aCz;
+    localObject = this.aEq;
     if ((i & 0x80) != 0) {}
     for (;;)
     {
-      ((c)localObject).aCt = bool;
-      this.aCz.aCu = ((int)Math.pow(2.0D, (i & 0x7) + 1));
-      this.aCz.aCv = read();
-      this.aCz.aCw = read();
-      if ((this.aCz.aCt) && (!nR()))
+      ((c)localObject).aEk = bool;
+      this.aEq.aEl = ((int)Math.pow(2.0D, (i & 0x7) + 1));
+      this.aEq.aEm = read();
+      this.aEq.aEn = read();
+      if ((this.aEq.aEk) && (!oj()))
       {
-        this.aCz.aCq = dm(this.aCz.aCu);
-        this.aCz.bgColor = this.aCz.aCq[this.aCz.aCv];
+        this.aEq.aEh = dm(this.aEq.aEl);
+        this.aEq.bgColor = this.aEq.aEh[this.aEq.aEm];
       }
       AppMethodBeat.o(3471);
       return;
@@ -301,9 +301,9 @@ public final class d
     }
   }
   
-  public final boolean nR()
+  public final boolean oj()
   {
-    return this.aCz.status != 0;
+    return this.aEq.status != 0;
   }
 }
 

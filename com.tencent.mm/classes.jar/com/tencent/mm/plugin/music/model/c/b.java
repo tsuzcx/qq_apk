@@ -5,15 +5,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.plugin.music.f.a.a;
 import com.tencent.mm.plugin.music.f.a.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
   implements c
 {
-  public final boolean anI(String paramString)
+  public final boolean asH(String paramString)
   {
     AppMethodBeat.i(63136);
-    boolean bool = j.sD(paramString);
+    boolean bool = j.vs(paramString);
     AppMethodBeat.o(63136);
     return bool;
   }
@@ -38,26 +38,26 @@ public final class b
     AppMethodBeat.i(63134);
     if (TextUtils.isEmpty(paramString))
     {
-      ac.e("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary lib_name is null");
+      ad.e("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary lib_name is null");
       AppMethodBeat.o(63134);
       return false;
     }
-    if (j.sD(paramString))
+    if (j.vs(paramString))
     {
       AppMethodBeat.o(63134);
       return true;
     }
-    ac.i("MicroMsg.Music.WechatMusicLoadLibrary", "load library %s", new Object[] { paramString });
+    ad.i("MicroMsg.Music.WechatMusicLoadLibrary", "load library %s", new Object[] { paramString });
     a.class.getClassLoader();
-    String str = j.sB(paramString);
+    String str = j.vq(paramString);
     if (!TextUtils.isEmpty(str))
     {
-      ac.i("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary find and load the lib %s so", new Object[] { str });
-      j.sC(paramString);
+      ad.i("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary find and load the lib %s so", new Object[] { str });
+      j.vr(paramString);
       AppMethodBeat.o(63134);
       return true;
     }
-    ac.e("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary can't find the lib %s so", new Object[] { paramString });
+    ad.e("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary can't find the lib %s so", new Object[] { paramString });
     AppMethodBeat.o(63134);
     return false;
   }

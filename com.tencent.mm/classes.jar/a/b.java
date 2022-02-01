@@ -9,15 +9,15 @@ import java.util.concurrent.ScheduledExecutorService;
 
 final class b
 {
-  private static final b azN;
-  private final ExecutorService azO;
-  private final ScheduledExecutorService azP;
-  private final Executor azQ;
+  private static final b aBE;
+  private final ExecutorService aBF;
+  private final ScheduledExecutorService aBG;
+  private final Executor aBH;
   
   static
   {
     AppMethodBeat.i(52981);
-    azN = new b();
+    aBE = new b();
     AppMethodBeat.o(52981);
   }
   
@@ -36,9 +36,9 @@ final class b
     label75:
     for (localObject = Executors.newCachedThreadPool();; localObject = a.newCachedThreadPool())
     {
-      this.azO = ((ExecutorService)localObject);
-      this.azP = Executors.newSingleThreadScheduledExecutor();
-      this.azQ = new a((byte)0);
+      this.aBF = ((ExecutorService)localObject);
+      this.aBG = Executors.newSingleThreadScheduledExecutor();
+      this.aBH = new a((byte)0);
       AppMethodBeat.o(52980);
       return;
       bool = ((String)localObject).toLowerCase(Locale.US).contains("android");
@@ -46,58 +46,58 @@ final class b
     }
   }
   
-  public static ExecutorService ni()
+  public static ExecutorService nA()
   {
-    return azN.azO;
+    return aBE.aBF;
   }
   
-  static Executor nj()
+  static Executor nB()
   {
-    return azN.azQ;
+    return aBE.aBH;
   }
   
   static final class a
     implements Executor
   {
-    private ThreadLocal<Integer> azR;
+    private ThreadLocal<Integer> aBI;
     
     private a()
     {
       AppMethodBeat.i(52977);
-      this.azR = new ThreadLocal();
+      this.aBI = new ThreadLocal();
       AppMethodBeat.o(52977);
     }
     
-    private int nk()
+    private int nC()
     {
       AppMethodBeat.i(52978);
-      Integer localInteger2 = (Integer)this.azR.get();
+      Integer localInteger2 = (Integer)this.aBI.get();
       Integer localInteger1 = localInteger2;
       if (localInteger2 == null) {
         localInteger1 = Integer.valueOf(0);
       }
       int i = localInteger1.intValue() - 1;
       if (i == 0) {
-        this.azR.remove();
+        this.aBI.remove();
       }
       for (;;)
       {
         AppMethodBeat.o(52978);
         return i;
-        this.azR.set(Integer.valueOf(i));
+        this.aBI.set(Integer.valueOf(i));
       }
     }
     
     public final void execute(Runnable paramRunnable)
     {
       AppMethodBeat.i(52979);
-      Integer localInteger2 = (Integer)this.azR.get();
+      Integer localInteger2 = (Integer)this.aBI.get();
       Integer localInteger1 = localInteger2;
       if (localInteger2 == null) {
         localInteger1 = Integer.valueOf(0);
       }
       int i = localInteger1.intValue() + 1;
-      this.azR.set(Integer.valueOf(i));
+      this.aBI.set(Integer.valueOf(i));
       if (i <= 15) {}
       for (;;)
       {
@@ -108,17 +108,17 @@ final class b
         }
         finally
         {
-          nk();
+          nC();
           AppMethodBeat.o(52979);
         }
-        b.ni().execute(paramRunnable);
+        b.nA().execute(paramRunnable);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     a.b
  * JD-Core Version:    0.7.0.1
  */

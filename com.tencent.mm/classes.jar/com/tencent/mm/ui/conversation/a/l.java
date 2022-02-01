@@ -7,18 +7,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bp.a;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bi;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.sns.b.e;
 import com.tencent.mm.plugin.sns.b.o;
-import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.HomeUI;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.MainTabUI;
@@ -27,35 +25,35 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.lang.ref.WeakReference;
 
 public final class l
-  extends b
+  extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  protected bg IHt;
-  private TextView IHu;
-  private View mZW;
-  private View mZX;
+  protected bh KyB;
+  private TextView KyC;
+  private View nAt;
+  private View nAu;
   
-  public l(Context paramContext, bg parambg)
+  public l(Context paramContext, bh parambh)
   {
     super(paramContext);
     AppMethodBeat.i(38811);
-    this.IHt = null;
-    this.IHt = parambg;
+    this.KyB = null;
+    this.KyB = parambh;
     final int i;
     final int j;
     if (this.view != null)
     {
-      this.mZW = this.view.findViewById(2131297178);
-      this.mZX = this.view.findViewById(2131297183);
+      this.nAt = this.view.findViewById(2131297178);
+      this.nAu = this.view.findViewById(2131297183);
       paramContext = (WeImageView)this.view.findViewById(2131302005);
-      paramContext.setIconColor(((Context)this.Dsc.get()).getResources().getColor(2131099676));
-      this.IHu = ((TextView)this.view.findViewById(2131302006));
-      switch (this.IHt.type)
+      paramContext.setIconColor(((Context)this.EXg.get()).getResources().getColor(2131099676));
+      this.KyC = ((TextView)this.view.findViewById(2131302006));
+      switch (this.KyB.type)
       {
       case 5: 
       default: 
-        parambg = this.view;
-        i = this.IHt.type;
-        j = this.IHt.cZX;
+        parambh = this.view;
+        i = this.KyB.type;
+        j = this.KyB.dlp;
         switch (i)
         {
         case 5: 
@@ -67,77 +65,86 @@ public final class l
     }
     for (;;)
     {
-      parambg.setOnClickListener(paramContext);
+      parambh.setOnClickListener(paramContext);
       AppMethodBeat.o(38811);
       return;
       paramContext.setImageResource(2131690530);
-      this.IHu.setText(2131756414);
+      this.KyC.setText(2131756414);
       break;
       paramContext.setImageResource(2131690548);
-      this.IHu.setText(2131759112);
+      this.KyC.setText(2131759112);
       break;
       paramContext.setImageResource(2131690520);
-      this.IHu.setText(2131756425);
+      this.KyC.setText(2131756425);
       break;
       paramContext.setImageResource(2131691354);
-      this.IHu.setText(2131756417);
+      this.KyC.setText(2131756417);
       break;
       paramContext.setImageResource(2131691349);
-      this.IHu.setText(2131756421);
+      this.KyC.setText(2131756421);
       break;
       paramContext.setImageResource(2131691350);
-      this.IHu.setText(2131756420);
+      this.KyC.setText(2131756420);
       break;
       paramContext.setImageResource(2131691352);
-      this.IHu.setText(2131756422);
+      this.KyC.setText(2131756422);
       break;
       paramContext.setImageResource(2131691353);
-      this.IHu.setText(2131756418);
+      this.KyC.setText(2131756418);
       break;
       paramContext.setImageResource(2131691348);
-      this.IHu.setText(2131756411);
+      this.KyC.setText(2131756411);
       break;
       paramContext = new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38802);
-          bh.ayS().db(i, j);
-          paramAnonymousView = (Context)l.this.Dsc.get();
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/MainFrameBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          bi.aBW().dd(i, j);
+          paramAnonymousView = (Context)l.this.EXg.get();
           if (paramAnonymousView != null)
           {
-            h.wUl.f(11002, new Object[] { Integer.valueOf(5), Integer.valueOf(1) });
-            az.ayM();
-            boolean bool = com.tencent.mm.sdk.platformtools.bs.l((Boolean)c.agA().get(4103, null));
+            g.yhR.f(11002, new Object[] { Integer.valueOf(5), Integer.valueOf(1) });
+            ba.aBQ();
+            boolean bool = com.tencent.mm.sdk.platformtools.bt.o((Boolean)c.ajl().get(4103, null));
             new Intent().putExtra("KEnterFromBanner", true);
-            if (!bool)
-            {
-              d.N(paramAnonymousView, "nearby", ".ui.NearbyFriendsIntroUI");
-              AppMethodBeat.o(38802);
-              return;
+            if (bool) {
+              break label161;
             }
-            Object localObject = com.tencent.mm.model.bs.azt();
+            d.Q(paramAnonymousView, "nearby", ".ui.NearbyFriendsIntroUI");
+          }
+          for (;;)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/MainFrameBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(38802);
+            return;
+            label161:
+            localObject = com.tencent.mm.model.bt.aCw();
             if (localObject == null)
             {
-              d.N(paramAnonymousView, "nearby", ".ui.NearbyPersonalInfoUI");
-              AppMethodBeat.o(38802);
-              return;
+              d.Q(paramAnonymousView, "nearby", ".ui.NearbyPersonalInfoUI");
             }
-            String str = com.tencent.mm.sdk.platformtools.bs.nullAsNil(((com.tencent.mm.model.bs)localObject).getProvince());
-            int i = com.tencent.mm.sdk.platformtools.bs.a(Integer.valueOf(((com.tencent.mm.model.bs)localObject).exL), 0);
-            if ((com.tencent.mm.sdk.platformtools.bs.isNullOrNil(str)) || (i == 0))
+            else
             {
-              d.N(paramAnonymousView, "nearby", ".ui.NearbyPersonalInfoUI");
-              AppMethodBeat.o(38802);
-              return;
+              String str = com.tencent.mm.sdk.platformtools.bt.nullAsNil(((com.tencent.mm.model.bt)localObject).getProvince());
+              int i = com.tencent.mm.sdk.platformtools.bt.a(Integer.valueOf(((com.tencent.mm.model.bt)localObject).ePk), 0);
+              if ((com.tencent.mm.sdk.platformtools.bt.isNullOrNil(str)) || (i == 0))
+              {
+                d.Q(paramAnonymousView, "nearby", ".ui.NearbyPersonalInfoUI");
+              }
+              else
+              {
+                localObject = LauncherUI.getInstance();
+                if (localObject != null) {
+                  ((LauncherUI)localObject).IYQ.getMainTabUI().aVt("tab_find_friend");
+                }
+                com.tencent.mm.bq.a.hh(paramAnonymousView);
+              }
             }
-            localObject = LauncherUI.getInstance();
-            if (localObject != null) {
-              ((LauncherUI)localObject).Hlj.getMainTabUI().aPD("tab_find_friend");
-            }
-            a.hc(paramAnonymousView);
           }
-          AppMethodBeat.o(38802);
         }
       };
       continue;
@@ -146,24 +153,31 @@ public final class l
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38803);
-          bh.ayS().db(i, j);
-          paramAnonymousView = (Context)l.this.Dsc.get();
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/MainFrameBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          bi.aBW().dd(i, j);
+          paramAnonymousView = (Context)l.this.EXg.get();
           if (paramAnonymousView != null)
           {
-            az.ayM();
-            if (!c.isSDCardAvailable())
-            {
-              t.g(paramAnonymousView, null);
-              AppMethodBeat.o(38803);
-              return;
+            ba.aBQ();
+            if (c.isSDCardAvailable()) {
+              break label99;
             }
-            Intent localIntent = new Intent();
-            localIntent.putExtra("intent_set_avatar", true);
-            localIntent.putExtra("KEnterFromBanner", true);
-            d.b(paramAnonymousView, "setting", ".ui.setting.SettingsPersonalInfoUI", localIntent);
-            h.wUl.f(11002, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
+            t.g(paramAnonymousView, null);
           }
-          AppMethodBeat.o(38803);
+          for (;;)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/MainFrameBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(38803);
+            return;
+            label99:
+            localObject = new Intent();
+            ((Intent)localObject).putExtra("intent_set_avatar", true);
+            ((Intent)localObject).putExtra("KEnterFromBanner", true);
+            d.b(paramAnonymousView, "setting", ".ui.setting.SettingsPersonalInfoUI", (Intent)localObject);
+            g.yhR.f(11002, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
+          }
         }
       };
       continue;
@@ -172,8 +186,12 @@ public final class l
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38804);
-          bh.ayS().db(i, j);
-          l.H((Context)l.this.Dsc.get(), false);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/MainFrameBanner$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          bi.aBW().dd(i, j);
+          l.J((Context)l.this.EXg.get(), false);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/MainFrameBanner$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(38804);
         }
       };
@@ -183,8 +201,12 @@ public final class l
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38805);
-          bh.ayS().db(i, j);
-          l.H((Context)l.this.Dsc.get(), true);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/MainFrameBanner$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          bi.aBW().dd(i, j);
+          l.J((Context)l.this.EXg.get(), true);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/MainFrameBanner$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(38805);
         }
       };
@@ -194,13 +216,17 @@ public final class l
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38806);
-          bh.ayS().db(i, j);
-          paramAnonymousView = (Context)l.this.Dsc.get();
-          Intent localIntent = new Intent();
-          localIntent.putExtra("preceding_scence", 17);
-          d.b(paramAnonymousView, "emoji", ".ui.v2.EmojiStoreV2UI", localIntent);
-          h.wUl.f(11002, new Object[] { Integer.valueOf(10), Integer.valueOf(1) });
-          h.wUl.f(12065, new Object[] { Integer.valueOf(2) });
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/MainFrameBanner$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          bi.aBW().dd(i, j);
+          paramAnonymousView = (Context)l.this.EXg.get();
+          localObject = new Intent();
+          ((Intent)localObject).putExtra("preceding_scence", 17);
+          d.b(paramAnonymousView, "emoji", ".ui.v2.EmojiStoreV2UI", (Intent)localObject);
+          g.yhR.f(11002, new Object[] { Integer.valueOf(10), Integer.valueOf(1) });
+          g.yhR.f(12065, new Object[] { Integer.valueOf(2) });
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/MainFrameBanner$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(38806);
         }
       };
@@ -210,9 +236,13 @@ public final class l
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38807);
-          bh.ayS().db(i, j);
-          d.N((Context)l.this.Dsc.get(), "game", ".ui.GameCenterUI");
-          h.wUl.f(11002, new Object[] { Integer.valueOf(9), Integer.valueOf(1) });
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/MainFrameBanner$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          bi.aBW().dd(i, j);
+          d.Q((Context)l.this.EXg.get(), "game", ".ui.GameCenterUI");
+          g.yhR.f(11002, new Object[] { Integer.valueOf(9), Integer.valueOf(1) });
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/MainFrameBanner$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(38807);
         }
       };
@@ -222,25 +252,29 @@ public final class l
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38808);
-          bh.ayS().db(i, j);
-          paramAnonymousView = (Context)l.this.Dsc.get();
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/MainFrameBanner$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          bi.aBW().dd(i, j);
+          paramAnonymousView = (Context)l.this.EXg.get();
           int i;
-          if ((u.axI() & 0x10000) == 0)
+          if ((u.aAy() & 0x10000) == 0)
           {
             i = 1;
             if (i == 0) {
-              break label95;
+              break label136;
             }
-            d.N(paramAnonymousView, "masssend", ".ui.MassSendHistoryUI");
+            d.Q(paramAnonymousView, "masssend", ".ui.MassSendHistoryUI");
           }
           for (;;)
           {
-            h.wUl.f(11002, new Object[] { Integer.valueOf(11), Integer.valueOf(1) });
+            g.yhR.f(11002, new Object[] { Integer.valueOf(11), Integer.valueOf(1) });
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/MainFrameBanner$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(38808);
             return;
             i = 0;
             break;
-            label95:
+            label136:
             d.b(paramAnonymousView, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", "masssendapp"));
           }
         }
@@ -251,28 +285,32 @@ public final class l
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38809);
-          bh.ayS().db(i, j);
-          paramAnonymousView = (Context)l.this.Dsc.get();
-          az.ayM();
-          String str = (String)c.agA().get(68377, null);
-          az.ayM();
-          c.agA().set(68377, "");
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/MainFrameBanner$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+          bi.aBW().dd(i, j);
+          paramAnonymousView = (Context)l.this.EXg.get();
+          ba.aBQ();
+          localObject = (String)c.ajl().get(68377, null);
+          ba.aBQ();
+          c.ajl().set(68377, "");
           Intent localIntent = new Intent();
           localIntent.putExtra("sns_timeline_NeedFirstLoadint", true);
-          if (!com.tencent.mm.sdk.platformtools.bs.isNullOrNil(str)) {}
+          if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil((String)localObject)) {}
           for (boolean bool1 = false;; bool1 = true)
           {
             boolean bool2 = bool1;
-            if (o.xMc != null)
+            if (o.zbU != null)
             {
               bool2 = bool1;
-              if (o.xMc.bQe() > 0) {
+              if (o.zbU.bUJ() > 0) {
                 bool2 = false;
               }
             }
             localIntent.putExtra("sns_resume_state", bool2);
             d.b(paramAnonymousView, "sns", ".ui.SnsTimeLineUI", localIntent);
-            h.wUl.f(11002, new Object[] { Integer.valueOf(8), Integer.valueOf(1) });
+            g.yhR.f(11002, new Object[] { Integer.valueOf(8), Integer.valueOf(1) });
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/MainFrameBanner$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(38809);
             return;
           }
@@ -284,45 +322,49 @@ public final class l
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38810);
-          bh.ayS().db(i, j);
-          d.b((Context)l.this.Dsc.get(), "subapp", ".ui.autoadd.AutoAddFriendUI", new Intent());
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/MainFrameBanner$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          bi.aBW().dd(i, j);
+          d.b((Context)l.this.EXg.get(), "subapp", ".ui.autoadd.AutoAddFriendUI", new Intent());
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/MainFrameBanner$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(38810);
         }
       };
     }
   }
   
-  public final boolean bvU()
+  public final boolean bAa()
   {
     AppMethodBeat.i(38812);
-    if ((this.isFirst) && (this.gRm))
+    if ((this.isFirst) && (this.hjE))
     {
-      this.mZX.setBackgroundResource(2131234377);
-      this.mZW.setBackground(null);
-      this.IHu.setBackground(null);
+      this.nAu.setBackgroundResource(2131234377);
+      this.nAt.setBackground(null);
+      this.KyC.setBackground(null);
     }
     for (;;)
     {
-      boolean bool = super.bvU();
+      boolean bool = super.bAa();
       AppMethodBeat.o(38812);
       return bool;
       if (this.isFirst)
       {
-        this.mZX.setBackgroundResource(2131232872);
-        this.mZW.setBackgroundResource(2131232870);
-        this.IHu.setBackgroundResource(2131232867);
+        this.nAu.setBackgroundResource(2131232872);
+        this.nAt.setBackgroundResource(2131232870);
+        this.KyC.setBackgroundResource(2131232867);
       }
-      else if (this.gRm)
+      else if (this.hjE)
       {
-        this.mZX.setBackgroundResource(2131232872);
-        this.mZW.setBackgroundResource(2131232867);
-        this.IHu.setBackground(null);
+        this.nAu.setBackgroundResource(2131232872);
+        this.nAt.setBackgroundResource(2131232867);
+        this.KyC.setBackground(null);
       }
       else
       {
-        this.mZX.setBackgroundResource(2131232872);
-        this.mZW.setBackground(null);
-        this.IHu.setBackgroundResource(2131232867);
+        this.nAu.setBackgroundResource(2131232872);
+        this.nAt.setBackground(null);
+        this.KyC.setBackgroundResource(2131232867);
       }
     }
   }
@@ -337,8 +379,8 @@ public final class l
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(38813);
-    if (this.mZW != null) {
-      this.mZW.setVisibility(paramInt);
+    if (this.nAt != null) {
+      this.nAt.setVisibility(paramInt);
     }
     AppMethodBeat.o(38813);
   }

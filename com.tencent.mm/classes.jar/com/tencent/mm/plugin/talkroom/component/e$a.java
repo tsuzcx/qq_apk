@@ -43,12 +43,12 @@ public abstract class e$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-      crK();
+      cxw();
       paramParcel2.writeNoException();
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-      dOc();
+      eaq();
       paramParcel2.writeNoException();
       return true;
     case 3: 
@@ -58,7 +58,7 @@ public abstract class e$a
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-      paramInt1 = ebk();
+      paramInt1 = enB();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -84,7 +84,7 @@ public abstract class e$a
       return this.mRemote;
     }
     
-    public final void crK()
+    public final void cxw()
     {
       AppMethodBeat.i(29389);
       Parcel localParcel1 = Parcel.obtain();
@@ -104,7 +104,7 @@ public abstract class e$a
       }
     }
     
-    public final void dOc()
+    public final void eaq()
     {
       AppMethodBeat.i(29390);
       Parcel localParcel1 = Parcel.obtain();
@@ -124,7 +124,7 @@ public abstract class e$a
       }
     }
     
-    public final int ebk()
+    public final int enB()
     {
       AppMethodBeat.i(29392);
       Parcel localParcel1 = Parcel.obtain();
@@ -188,7 +188,7 @@ public abstract class e$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.e.a
  * JD-Core Version:    0.7.0.1
  */

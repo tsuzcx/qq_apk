@@ -3,29 +3,31 @@ package com.tencent.mm.plugin.appbrand.jsapi.fakenative;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.plugin.appbrand.ui.t;
 import com.tencent.mm.plugin.appbrand.ui.u;
-import d.y;
+import com.tencent.mm.plugin.appbrand.ui.v;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiHideSplashScreenshot;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Constants", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiHideSplashScreenshot;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Constants", "plugin-appbrand-integration_release"})
 public final class a
   extends com.tencent.mm.plugin.appbrand.jsapi.a<c>
 {
   public static final int CTRL_INDEX = -1;
   public static final String NAME = "hideSplashScreenshot";
-  public static final a kqv;
+  public static final a kLR;
   
   static
   {
-    AppMethodBeat.i(187191);
-    kqv = new a((byte)0);
-    AppMethodBeat.o(187191);
+    AppMethodBeat.i(189124);
+    kLR = new a((byte)0);
+    AppMethodBeat.o(189124);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiHideSplashScreenshot$Constants;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiHideSplashScreenshot$Constants;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -33,30 +35,30 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(187188);
-      u localu = this.jdq.aSY();
-      if (localu == null)
+      AppMethodBeat.i(189121);
+      v localv = this.jwz.aWm();
+      if (localv == null)
       {
-        this.kqx.h(this.jXx, this.kqw.LM("fail: timeout"));
-        AppMethodBeat.o(187188);
+        this.kLT.h(this.krv, this.kLS.Pg("fail: timeout"));
+        AppMethodBeat.o(189121);
         return;
       }
-      if ((localu instanceof t))
+      if ((localv instanceof u))
       {
-        this.jdq.aSH();
-        this.kqx.h(this.jXx, this.kqw.LM("ok"));
-        AppMethodBeat.o(187188);
+        this.jwz.aVV();
+        this.kLT.h(this.krv, this.kLS.Pg("ok"));
+        AppMethodBeat.o(189121);
         return;
       }
-      this.kqx.h(this.jXx, this.kqw.LM("fail: screenshot invalid"));
-      AppMethodBeat.o(187188);
+      this.kLT.h(this.krv, this.kLS.Pg("fail: screenshot invalid"));
+      AppMethodBeat.o(189121);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class c
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     c(a parama, c paramc, int paramInt)
     {

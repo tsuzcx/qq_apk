@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.radar.ui;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarViewController$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/ui/RadarViewController$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
 public final class RadarViewController$b {}
 
 

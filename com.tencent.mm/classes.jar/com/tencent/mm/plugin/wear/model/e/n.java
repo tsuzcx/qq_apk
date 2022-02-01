@@ -8,7 +8,7 @@ import java.util.List;
 public final class n
   extends a
 {
-  public final List<Integer> ewH()
+  public final List<Integer> eKN()
   {
     AppMethodBeat.i(30096);
     ArrayList localArrayList = new ArrayList();
@@ -29,11 +29,11 @@ public final class n
       AppMethodBeat.o(30097);
       return null;
     case 11030: 
-      paramArrayOfByte = h.aAj("wechatvoicesilk");
+      paramArrayOfByte = h.aFt("wechatvoicesilk");
       AppMethodBeat.o(30097);
       return paramArrayOfByte;
     }
-    paramArrayOfByte = h.aAj("stlport_shared");
+    paramArrayOfByte = h.aFt("stlport_shared");
     AppMethodBeat.o(30097);
     return paramArrayOfByte;
   }

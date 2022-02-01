@@ -13,9 +13,9 @@ import java.util.List;
 public final class k
   extends d
 {
-  public long AMc;
-  public int tOL;
-  public String tmu;
+  public long Clq;
+  public int uRy;
+  public String ukT;
   
   public k(String paramString, int paramInt, long paramLong, List<a.ao> paramList)
   {
@@ -25,11 +25,11 @@ public final class k
     try
     {
       locali.groupId = paramString;
-      this.tmu = paramString;
+      this.ukT = paramString;
       locali.roomId = paramInt;
-      this.tOL = paramInt;
-      locali.tIG = paramLong;
-      this.AMc = paramLong;
+      this.uRy = paramInt;
+      locali.uLt = paramLong;
+      this.Clq = paramLong;
       i = paramList.size();
       arrayOfao = null;
       if (i > 0)
@@ -52,16 +52,16 @@ public final class k
         b.w(this.TAG2, new Object[] { "NetSceneSubscribeGeneralVideo constructor", paramString });
       }
     }
-    locali.JMB = arrayOfao;
+    locali.LGk = arrayOfao;
     locali.timestamp = System.currentTimeMillis();
-    b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, timestamp: %d, memberCnt: %d", Integer.valueOf(locali.roomId), Long.valueOf(locali.tIG), locali.groupId, Long.valueOf(locali.timestamp), Integer.valueOf(i) });
+    b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, timestamp: %d, memberCnt: %d", Integer.valueOf(locali.roomId), Long.valueOf(locali.uLt), locali.groupId, Long.valueOf(locali.timestamp), Integer.valueOf(i) });
     this.mNetType = 3;
-    this.JLH = c.fIe().aUe(paramString);
+    this.LFq = c.fZv().bac(paramString);
     c(257, locali);
     AppMethodBeat.o(183709);
   }
   
-  public final Object cB(byte[] paramArrayOfByte)
+  public final Object cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(183710);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -84,7 +84,7 @@ public final class k
     }
   }
   
-  public final String fBB()
+  public final String fSQ()
   {
     return "CsCmd.Cmd_V_CSSubscribeGeneralVideoReq";
   }
@@ -96,7 +96,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.k
  * JD-Core Version:    0.7.0.1
  */

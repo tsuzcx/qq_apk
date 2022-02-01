@@ -4,6 +4,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class FTSBaseWebViewUI$1
   implements View.OnTouchListener
@@ -13,8 +15,13 @@ final class FTSBaseWebViewUI$1
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(80581);
-    this.CDb.hideVKB();
-    this.CDb.eFd();
+    b localb = new b();
+    localb.bd(paramView);
+    localb.bd(paramMotionEvent);
+    a.b("com/tencent/mm/plugin/webview/ui/tools/fts/FTSBaseWebViewUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    this.EgM.hideVKB();
+    this.EgM.eTW();
+    a.a(false, this, "com/tencent/mm/plugin/webview/ui/tools/fts/FTSBaseWebViewUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(80581);
     return false;
   }

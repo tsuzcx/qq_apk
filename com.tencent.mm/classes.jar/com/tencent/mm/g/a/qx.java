@@ -1,15 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelsns.SnsAdClick;
 import com.tencent.mm.sdk.b.b;
 
 public final class qx
   extends b
 {
-  public a dtW;
-  public b dtX;
+  public a dFw;
   
   public qx()
   {
@@ -18,25 +16,21 @@ public final class qx
   
   private qx(byte paramByte)
   {
-    AppMethodBeat.i(149884);
-    this.dtW = new a();
-    this.dtX = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(125627);
+    this.dFw = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(149884);
+    AppMethodBeat.o(125627);
   }
   
   public static final class a
   {
-    public Context context;
-    public int dtY;
-    public Bundle extras;
-  }
-  
-  public static final class b
-  {
-    public boolean dtV;
-    public Bundle extras;
+    public SnsAdClick dFv;
+    public int dFx;
+    public String dFy;
+    public int errorCode;
+    public long timestamp;
+    public String url;
   }
 }
 

@@ -4,26 +4,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static c qiV;
-  public e qiW;
+  private static c qQV;
+  public e qQW;
   
   private c()
   {
     AppMethodBeat.i(121868);
-    this.qiW = new e();
+    this.qQW = new e();
     AppMethodBeat.o(121868);
   }
   
-  public static c ciO()
+  public static c cnO()
   {
     AppMethodBeat.i(121867);
-    if (qiV == null) {}
+    if (qQV == null) {}
     try
     {
-      if (qiV == null) {
-        qiV = new c();
+      if (qQV == null) {
+        qQV = new c();
       }
-      c localc = qiV;
+      c localc = qQV;
       AppMethodBeat.o(121867);
       return localc;
     }
@@ -33,12 +33,12 @@ public final class c
     }
   }
   
-  public final void Cg(int paramInt)
+  public final void CR(int paramInt)
   {
     AppMethodBeat.i(121869);
     a locala = new a();
     locala.msgType = paramInt;
-    this.qiW.b(locala);
+    this.qQW.b(locala);
     AppMethodBeat.o(121869);
   }
   
@@ -47,8 +47,8 @@ public final class c
     AppMethodBeat.i(121870);
     a locala = new a();
     locala.msgType = paramInt;
-    locala.qiS = paramObject;
-    this.qiW.b(locala);
+    locala.qQS = paramObject;
+    this.qQW.b(locala);
     AppMethodBeat.o(121870);
   }
 }

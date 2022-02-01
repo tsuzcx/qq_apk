@@ -2,9 +2,9 @@ package com.tencent.mm.ui.base.preference;
 
 public abstract interface g
 {
-  public abstract void aHC(String paramString);
+  public abstract void aNf(String paramString);
   
-  public abstract int ePO();
+  public abstract int feQ();
 }
 
 

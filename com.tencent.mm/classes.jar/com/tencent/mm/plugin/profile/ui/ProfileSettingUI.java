@@ -6,19 +6,19 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.m.e;
-import com.tencent.mm.m.g;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.w;
+import com.tencent.mm.n.e;
+import com.tencent.mm.n.g;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -28,23 +28,24 @@ public class ProfileSettingUI
   extends MMPreference
   implements n.b
 {
-  private ai piT;
-  private com.tencent.mm.plugin.profile.a.b vNi;
+  private am pMt;
+  private com.tencent.mm.plugin.profile.a.b wUr;
   
   public final void a(int paramInt, n paramn, Object paramObject)
   {
-    AppMethodBeat.i(196017);
-    if (((paramObject instanceof String)) && (this.piT.field_username.equals((String)paramObject)))
+    AppMethodBeat.i(193265);
+    if (((paramObject instanceof String)) && (this.pMt.field_username.equals((String)paramObject)))
     {
-      az.ayM();
-      this.piT = c.awB().aNt((String)paramObject);
-      if (this.piT != null)
+      ba.aBQ();
+      this.pMt = c.azp().Bf((String)paramObject);
+      if (this.pMt != null)
       {
-        this.vNi.piT = this.piT;
+        this.wUr.pMt = this.pMt;
         initView();
+        getPreferenceScreen().notifyDataSetChanged();
       }
     }
-    AppMethodBeat.o(196017);
+    AppMethodBeat.o(193265);
   }
   
   public int getResourceId()
@@ -55,81 +56,81 @@ public class ProfileSettingUI
   public void initView()
   {
     int j = 0;
-    AppMethodBeat.i(196014);
-    Preference localPreference = getPreferenceScreen().aPN("setting_remark");
+    AppMethodBeat.i(193262);
+    Preference localPreference = getPreferenceScreen().aVD("setting_remark");
     label66:
     int i;
-    if (!w.xj(this.piT.field_username)) {
-      if (ai.aNc(this.piT.field_username))
+    if (!w.Ag(this.pMt.field_username)) {
+      if (am.aSQ(this.pMt.field_username))
       {
         localPreference.setTitle(2131757927);
-        localPreference.setSummary(k.c(this, this.piT.field_conRemark));
-        localPreference = getPreferenceScreen().aPN("setting_permission");
-        if ((com.tencent.mm.n.b.ln(this.piT.field_type)) || (!getIntent().getBooleanExtra("User_Verify", false))) {
+        localPreference.setSummary(k.c(this, this.pMt.field_conRemark));
+        localPreference = getPreferenceScreen().aVD("setting_permission");
+        if ((com.tencent.mm.o.b.lM(this.pMt.field_type)) || (!getIntent().getBooleanExtra("User_Verify", false))) {
           break label479;
         }
         i = 1;
         label106:
         if (i == 0)
         {
-          if (ai.aNc(this.piT.field_username))
+          if (am.aSQ(this.pMt.field_username))
           {
             i = j;
-            if (g.ZY().getInt("SnsWxWorkPermissionEntrance", 0) == 1) {
+            if (g.acA().getInt("SnsWxWorkPermissionEntrance", 0) == 1) {
               i = 1;
             }
-            if ((i == 0) || (!ai.aNc(this.piT.field_username)) || (!"3552365301".equals(this.piT.field_openImAppid))) {
+            if ((i == 0) || (!am.aSQ(this.pMt.field_username)) || (!"3552365301".equals(this.pMt.field_openImAppid))) {
               break label493;
             }
           }
-          if ((w.xj(this.piT.field_username)) || (!com.tencent.mm.n.b.ln(this.piT.field_type))) {
+          if ((w.Ag(this.pMt.field_username)) || (!com.tencent.mm.o.b.lM(this.pMt.field_type))) {
             break label493;
           }
         }
-        if (!"3552365301".equals(this.piT.field_openImAppid)) {
+        if (!"3552365301".equals(this.pMt.field_openImAppid)) {
           break label484;
         }
         localPreference.setTitle(2131757748);
         label219:
-        localPreference = getPreferenceScreen().aPN("setting_send_card");
-        if ((!com.tencent.mm.n.b.ln(this.piT.field_type)) || (w.xj(this.piT.field_username))) {
+        localPreference = getPreferenceScreen().aVD("setting_send_card");
+        if ((!com.tencent.mm.o.b.lM(this.pMt.field_type)) || (w.Ag(this.pMt.field_username))) {
           break label526;
         }
         i = 2131757812;
-        if (this.piT.exL != 1) {
+        if (this.pMt.ePk != 1) {
           break label509;
         }
         i = 2131757810;
         label274:
         localPreference.setTitle(i);
         label279:
-        if ((com.tencent.mm.n.b.ln(this.piT.field_type)) && (!w.xj(this.piT.field_username))) {
+        if ((com.tencent.mm.o.b.lM(this.pMt.field_type)) && (!w.Ag(this.pMt.field_username))) {
           break label542;
         }
-        getPreferenceScreen().cK("setting_star", true);
+        getPreferenceScreen().cP("setting_star", true);
         label318:
-        if (!w.xj(this.piT.field_username)) {
+        if (!w.Ag(this.pMt.field_username)) {
           break label569;
         }
-        getPreferenceScreen().cK("setting_blacklist", true);
+        getPreferenceScreen().cP("setting_blacklist", true);
       }
     }
     for (;;)
     {
-      if ((w.xj(this.piT.field_username)) || (!com.tencent.mm.n.b.ln(this.piT.field_type))) {
-        getPreferenceScreen().cK("setting_report", true);
+      if ((w.Ag(this.pMt.field_username)) || (!com.tencent.mm.o.b.lM(this.pMt.field_type))) {
+        getPreferenceScreen().cP("setting_report", true);
       }
-      if (!com.tencent.mm.n.b.ln(this.piT.field_type)) {
-        getPreferenceScreen().cK("setting_shortcut", true);
+      if (!com.tencent.mm.o.b.lM(this.pMt.field_type)) {
+        getPreferenceScreen().cP("setting_shortcut", true);
       }
-      if ((!com.tencent.mm.n.b.ln(this.piT.field_type)) || (w.xj(this.piT.field_username))) {
-        getPreferenceScreen().cK("setting_delete", true);
+      if ((!com.tencent.mm.o.b.lM(this.pMt.field_type)) || (w.Ag(this.pMt.field_username))) {
+        getPreferenceScreen().cP("setting_delete", true);
       }
-      AppMethodBeat.o(196014);
+      AppMethodBeat.o(193262);
       return;
       localPreference.setTitle(2131757731);
       break;
-      getPreferenceScreen().cK("setting_remark", true);
+      getPreferenceScreen().cP("setting_remark", true);
       break label66;
       label479:
       i = 0;
@@ -138,121 +139,121 @@ public class ProfileSettingUI
       localPreference.setTitle(2131761879);
       break label219;
       label493:
-      getPreferenceScreen().cK("setting_permission", true);
+      getPreferenceScreen().cP("setting_permission", true);
       break label219;
       label509:
-      if (this.piT.exL != 2) {
+      if (this.pMt.ePk != 2) {
         break label274;
       }
       i = 2131757811;
       break label274;
       label526:
-      getPreferenceScreen().cK("setting_send_card", true);
+      getPreferenceScreen().cP("setting_send_card", true);
       break label279;
       label542:
-      ((CheckBoxPreference)getPreferenceScreen().aPN("setting_star")).mF = this.piT.aaJ();
+      ((CheckBoxPreference)getPreferenceScreen().aVD("setting_star")).oB = this.pMt.adm();
       break label318;
       label569:
-      ((CheckBoxPreference)getPreferenceScreen().aPN("setting_blacklist")).mF = this.piT.aaH();
+      ((CheckBoxPreference)getPreferenceScreen().aVD("setting_blacklist")).oB = this.pMt.adk();
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(196013);
+    AppMethodBeat.i(193261);
     super.onCreate(paramBundle);
-    paramBundle = bs.nullAsNil(getIntent().getStringExtra("Contact_User"));
-    if (bs.isNullOrNil(paramBundle))
+    paramBundle = bt.nullAsNil(getIntent().getStringExtra("Contact_User"));
+    if (bt.isNullOrNil(paramBundle))
     {
-      ac.e("MicroMsg.ProfileSettingUI", "username is null %s", new Object[] { paramBundle });
+      ad.e("MicroMsg.ProfileSettingUI", "username is null %s", new Object[] { paramBundle });
       finish();
-      AppMethodBeat.o(196013);
+      AppMethodBeat.o(193261);
       return;
     }
-    az.ayM();
-    this.piT = c.awB().aNt(paramBundle);
-    this.vNi = new com.tencent.mm.plugin.profile.a.b(this, this.piT);
+    ba.aBQ();
+    this.pMt = c.azp().Bf(paramBundle);
+    this.wUr = new com.tencent.mm.plugin.profile.a.b(this, this.pMt);
     setMMTitle(2131766376);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(196012);
+        AppMethodBeat.i(193260);
         ProfileSettingUI.this.finish();
-        AppMethodBeat.o(196012);
+        AppMethodBeat.o(193260);
         return true;
       }
     });
     initView();
-    az.ayM();
-    c.awB().a(this);
-    AppMethodBeat.o(196013);
+    ba.aBQ();
+    c.azp().a(this);
+    AppMethodBeat.o(193261);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(196015);
-    this.vNi.destroy();
-    az.ayM();
-    c.awB().b(this);
+    AppMethodBeat.i(193263);
+    this.wUr.destroy();
+    ba.aBQ();
+    c.azp().b(this);
     super.onDestroy();
-    AppMethodBeat.o(196015);
+    AppMethodBeat.o(193263);
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(196016);
+    AppMethodBeat.i(193264);
     paramf = paramPreference.mKey;
-    ac.i("MicroMsg.ProfileSettingUI", paramf + " item has been clicked!");
+    ad.i("MicroMsg.ProfileSettingUI", paramf + " item has been clicked!");
     if (paramf.equals("setting_remark"))
     {
-      this.vNi.Ld(1);
-      AppMethodBeat.o(196016);
+      this.wUr.Fq(1);
+      AppMethodBeat.o(193264);
       return true;
     }
     if (paramf.equals("setting_permission"))
     {
-      this.vNi.Ld(3);
-      AppMethodBeat.o(196016);
+      this.wUr.Fq(3);
+      AppMethodBeat.o(193264);
       return true;
     }
     if (paramf.equals("setting_send_card"))
     {
-      this.vNi.Ld(4);
-      AppMethodBeat.o(196016);
+      this.wUr.Fq(4);
+      AppMethodBeat.o(193264);
       return true;
     }
     if (paramf.equals("setting_shortcut"))
     {
-      this.vNi.Ld(7);
-      AppMethodBeat.o(196016);
+      this.wUr.Fq(7);
+      AppMethodBeat.o(193264);
       return true;
     }
     if (paramf.equals("setting_star"))
     {
-      this.vNi.Ld(2);
-      AppMethodBeat.o(196016);
+      this.wUr.Fq(2);
+      AppMethodBeat.o(193264);
       return true;
     }
     if (paramf.equals("setting_blacklist"))
     {
-      this.vNi.Ld(5);
-      AppMethodBeat.o(196016);
+      this.wUr.Fq(5);
+      AppMethodBeat.o(193264);
       return true;
     }
     if (paramf.equals("setting_report"))
     {
-      this.vNi.Ld(9);
-      AppMethodBeat.o(196016);
+      this.wUr.Fq(9);
+      AppMethodBeat.o(193264);
       return true;
     }
     if (paramf.equals("setting_delete"))
     {
-      this.vNi.Ld(6);
-      AppMethodBeat.o(196016);
+      this.wUr.Fq(6);
+      AppMethodBeat.o(193264);
       return true;
     }
-    AppMethodBeat.o(196016);
+    AppMethodBeat.o(193264);
     return false;
   }
   

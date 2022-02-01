@@ -10,17 +10,17 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class RemoteDebugMoveView
   extends FrameLayout
 {
-  float cCh;
-  float cCi;
-  int fUl;
-  float jHr;
-  float jHs;
-  int mm;
+  float cNg;
+  float cNh;
+  int gnN;
+  float kbD;
+  float kbE;
+  int of;
   
   public RemoteDebugMoveView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,13 +38,13 @@ public class RemoteDebugMoveView
     super.onConfigurationChanged(paramConfiguration);
     getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
-      private int fqZ = 0;
+      private int fJg = 0;
       
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(147040);
-        int i = this.fqZ + 1;
-        this.fqZ = i;
+        int i = this.fJg + 1;
+        this.fJg = i;
         if (i < 2)
         {
           AppMethodBeat.o(147040);
@@ -86,29 +86,29 @@ public class RemoteDebugMoveView
     {
       AppMethodBeat.o(147043);
       return true;
-      this.cCh = paramMotionEvent.getRawX();
-      this.cCi = paramMotionEvent.getRawY();
+      this.cNg = paramMotionEvent.getRawX();
+      this.cNh = paramMotionEvent.getRawY();
       continue;
-      this.jHr = paramMotionEvent.getRawX();
-      this.jHs = paramMotionEvent.getRawY();
-      float f1 = getX() + (this.jHr - this.cCh);
-      if ((0.0F < f1) && (f1 < this.fUl - getWidth())) {
+      this.kbD = paramMotionEvent.getRawX();
+      this.kbE = paramMotionEvent.getRawY();
+      float f1 = getX() + (this.kbD - this.cNg);
+      if ((0.0F < f1) && (f1 < this.gnN - getWidth())) {
         setX(f1);
       }
-      f1 = this.jHs - this.cCi;
-      float f2 = this.mm - getHeight();
+      f1 = this.kbE - this.cNh;
+      float f2 = this.of - getHeight();
       float f3 = getY() + f1;
       if (((0.0F < f3) && (f3 < f2)) || ((f3 <= 0.0F) && (f1 > 0.0F)) || ((f3 >= f2) && (f1 < 0.0F))) {
         setY(f3);
       }
-      this.cCh = this.jHr;
-      this.cCi = this.jHs;
+      this.cNg = this.kbD;
+      this.cNh = this.kbE;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.RemoteDebugMoveView
  * JD-Core Version:    0.7.0.1
  */

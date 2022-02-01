@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.record.ui;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.record.a.d;
-import com.tencent.mm.plugin.record.a.i;
+import com.tencent.mm.plugin.record.a.j;
 import com.tencent.mm.plugin.record.ui.a.b;
 import java.util.List;
 
@@ -18,19 +18,19 @@ public final class e
     super(paramContext, parama);
   }
   
-  public final void a(int paramInt, i parami)
+  public final void a(int paramInt, j paramj)
   {
     AppMethodBeat.i(27864);
-    dtY();
+    dEv();
     AppMethodBeat.o(27864);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(27863);
-    this.wkc = parama;
-    this.wjH.clear();
-    this.wjH.addAll(parama.wjH);
+    this.xrT = parama;
+    this.xrx.clear();
+    this.xrx.addAll(parama.xrx);
     notifyDataSetChanged();
     AppMethodBeat.o(27863);
   }
@@ -39,13 +39,13 @@ public final class e
   {
     paramb.dataType = 0;
     paramb.fromScene = this.fromScene;
-    paramb.msgId = ((f)this.wkc).msgId;
-    paramb.dsP = ((f)this.wkc).dsP;
+    paramb.msgId = ((f)this.xrT).msgId;
+    paramb.dEP = ((f)this.xrT).dEP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.e
  * JD-Core Version:    0.7.0.1
  */

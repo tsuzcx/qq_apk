@@ -11,29 +11,29 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private BaseToyUI KsS;
-  public a Ksm;
+  private BaseToyUI MiT;
+  public a Min;
   
   public a(BaseToyUI paramBaseToyUI)
   {
     AppMethodBeat.i(159962);
-    this.KsS = paramBaseToyUI;
-    this.Ksm = new a(paramBaseToyUI);
+    this.MiT = paramBaseToyUI;
+    this.Min = new a(paramBaseToyUI);
     AppMethodBeat.o(159962);
   }
   
   public final class a
   {
-    public LinkedList<g> Kti;
-    public boolean Ktj;
-    public Drawable Ktk;
+    public LinkedList<g> Mjj;
+    public boolean Mjk;
+    public Drawable Mjl;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(159961);
-      this.Kti = new LinkedList();
-      this.Ktj = true;
-      this.Ktk = new ColorDrawable(paramContext.getResources().getColor(2131100551));
+      this.Mjj = new LinkedList();
+      this.Mjk = true;
+      this.Mjl = new ColorDrawable(paramContext.getResources().getColor(2131100551));
       AppMethodBeat.o(159961);
     }
   }

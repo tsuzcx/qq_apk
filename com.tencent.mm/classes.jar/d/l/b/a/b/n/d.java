@@ -1,7 +1,7 @@
 package d.l.b.a.b.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.l;
+import d.g.b.q;
 import d.l.b.a.b.b.t;
 import d.l.b.a.b.f.f;
 import d.n.k;
@@ -10,19 +10,19 @@ import java.util.Collection;
 
 public final class d
 {
-  public final k LNl;
-  public final Collection<f> LNm;
-  public final d.g.a.b<t, String> LNn;
-  public final b[] LNo;
-  public final f Lgj;
+  public final f MXf;
+  public final k NEg;
+  public final Collection<f> NEh;
+  public final d.g.a.b<t, String> NEi;
+  public final b[] NEj;
   
   private d(f paramf, k paramk, Collection<f> paramCollection, d.g.a.b<? super t, String> paramb, b... paramVarArgs)
   {
-    this.Lgj = paramf;
-    this.LNl = paramk;
-    this.LNm = paramCollection;
-    this.LNn = paramb;
-    this.LNo = paramVarArgs;
+    this.MXf = paramf;
+    this.NEg = paramk;
+    this.NEh = paramCollection;
+    this.NEi = paramb;
+    this.NEj = paramVarArgs;
   }
   
   public d(f paramf, b[] paramArrayOfb, d.g.a.b<? super t, String> paramb)

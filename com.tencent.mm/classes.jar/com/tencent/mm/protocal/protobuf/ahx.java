@@ -1,111 +1,96 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class ahx
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String EBT;
-  public int bQb;
-  public String zkN;
+  public int Gfk;
+  public String Gfl;
+  public String Gfm;
+  public String Gfn;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127485);
+    AppMethodBeat.i(32199);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.zkN == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: tagName");
-        AppMethodBeat.o(127485);
-        throw paramVarArgs;
+      paramVarArgs.aS(1, this.Gfk);
+      if (this.Gfl != null) {
+        paramVarArgs.d(2, this.Gfl);
       }
-      if (this.EBT == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: tagPinYin");
-        AppMethodBeat.o(127485);
-        throw paramVarArgs;
+      if (this.Gfm != null) {
+        paramVarArgs.d(3, this.Gfm);
       }
-      if (this.zkN != null) {
-        paramVarArgs.d(1, this.zkN);
+      if (this.Gfn != null) {
+        paramVarArgs.d(4, this.Gfn);
       }
-      if (this.EBT != null) {
-        paramVarArgs.d(2, this.EBT);
-      }
-      paramVarArgs.aR(3, this.bQb);
-      AppMethodBeat.o(127485);
+      AppMethodBeat.o(32199);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.zkN == null) {
-        break label414;
-      }
-    }
-    label414:
-    for (paramInt = f.a.a.b.b.a.e(1, this.zkN) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.EBT != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.EBT);
+      int i = f.a.a.b.b.a.bz(1, this.Gfk) + 0;
+      paramInt = i;
+      if (this.Gfl != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Gfl);
       }
-      paramInt = f.a.a.b.b.a.bx(3, this.bQb);
-      AppMethodBeat.o(127485);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
-          }
-        }
-        if (this.zkN == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: tagName");
-          AppMethodBeat.o(127485);
-          throw paramVarArgs;
-        }
-        if (this.EBT == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: tagPinYin");
-          AppMethodBeat.o(127485);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(127485);
-        return 0;
+      i = paramInt;
+      if (this.Gfm != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Gfm);
       }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        ahx localahx = (ahx)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(127485);
-          return -1;
-        case 1: 
-          localahx.zkN = locala.LVo.readString();
-          AppMethodBeat.o(127485);
-          return 0;
-        case 2: 
-          localahx.EBT = locala.LVo.readString();
-          AppMethodBeat.o(127485);
-          return 0;
-        }
-        localahx.bQb = locala.LVo.xF();
-        AppMethodBeat.o(127485);
-        return 0;
+      paramInt = i;
+      if (this.Gfn != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Gfn);
       }
-      AppMethodBeat.o(127485);
-      return -1;
+      AppMethodBeat.o(32199);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gxE();
+        }
+      }
+      AppMethodBeat.o(32199);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      ahx localahx = (ahx)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(32199);
+        return -1;
+      case 1: 
+        localahx.Gfk = locala.NPN.zc();
+        AppMethodBeat.o(32199);
+        return 0;
+      case 2: 
+        localahx.Gfl = locala.NPN.readString();
+        AppMethodBeat.o(32199);
+        return 0;
+      case 3: 
+        localahx.Gfm = locala.NPN.readString();
+        AppMethodBeat.o(32199);
+        return 0;
+      }
+      localahx.Gfn = locala.NPN.readString();
+      AppMethodBeat.o(32199);
+      return 0;
+    }
+    AppMethodBeat.o(32199);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ahx
  * JD-Core Version:    0.7.0.1
  */

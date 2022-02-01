@@ -6,21 +6,21 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
+import com.tencent.mm.plugin.messenger.foundation.a.a.n;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bz;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.cf;
 import java.util.ArrayList;
 
 public class ProfileLabelView
   extends ProfileItemView
 {
-  public TextView Doz;
-  public TextView vJT;
+  public TextView ETF;
+  public TextView wRc;
   
   public ProfileLabelView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,29 +32,29 @@ public class ProfileLabelView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean dqG()
+  public final boolean dBj()
   {
     AppMethodBeat.i(31233);
-    if (this.Doz != null)
+    if (this.ETF != null)
     {
-      localObject = this.Doz.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.cc.a.au(getContext(), 2131165370);
-      this.Doz.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = this.ETF.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.cc.a.ax(getContext(), 2131165370);
+      this.ETF.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
     ArrayList localArrayList;
-    if (com.tencent.mm.n.b.ln(this.piT.field_type))
+    if (com.tencent.mm.o.b.lM(this.pMt.field_type))
     {
-      if (u.wh(this.piT.field_username))
+      if (u.za(this.pMt.field_username))
       {
         setVisibility(8);
         AppMethodBeat.o(31233);
         return false;
       }
-      localObject = this.piT.field_contactLabelIds;
-      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.cWd().ajC((String)localObject);
-      if ((!bs.isNullOrNil((String)localObject)) && (localArrayList != null) && (localArrayList.size() > 0))
+      localObject = this.pMt.field_contactLabelIds;
+      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.dfo().aoo((String)localObject);
+      if ((!bt.isNullOrNil((String)localObject)) && (localArrayList != null) && (localArrayList.size() > 0))
       {
-        this.vJT.setText(k.c(getContext(), bs.n(localArrayList, getContext().getResources().getString(2131757526))));
+        this.wRc.setText(k.c(getContext(), bt.m(localArrayList, getContext().getResources().getString(2131757526))));
         AppMethodBeat.o(31233);
         return true;
       }
@@ -62,21 +62,21 @@ public class ProfileLabelView
       AppMethodBeat.o(31233);
       return false;
     }
-    Object localObject = this.piT.field_encryptUsername;
-    if (!bs.isNullOrNil((String)localObject)) {
-      az.ayM();
+    Object localObject = this.pMt.field_encryptUsername;
+    if (!bt.isNullOrNil((String)localObject)) {
+      ba.aBQ();
     }
-    for (localObject = c.awC().alK((String)localObject); localObject != null; localObject = c.awC().alK(this.piT.field_username))
+    for (localObject = c.azq().aqz((String)localObject); localObject != null; localObject = c.azq().aqz(this.pMt.field_username))
     {
-      localObject = ((bz)localObject).field_contactLabels;
-      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.cWd().ajB((String)localObject);
-      if ((bs.isNullOrNil((String)localObject)) || (localArrayList == null) || (localArrayList.size() <= 0)) {
+      localObject = ((cf)localObject).field_contactLabels;
+      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.dfo().aon((String)localObject);
+      if ((bt.isNullOrNil((String)localObject)) || (localArrayList == null) || (localArrayList.size() <= 0)) {
         break;
       }
-      this.vJT.setText(k.c(getContext(), bs.n(localArrayList, getContext().getResources().getString(2131757526))));
+      this.wRc.setText(k.c(getContext(), bt.m(localArrayList, getContext().getResources().getString(2131757526))));
       AppMethodBeat.o(31233);
       return true;
-      az.ayM();
+      ba.aBQ();
     }
     setVisibility(8);
     AppMethodBeat.o(31233);
@@ -91,8 +91,8 @@ public class ProfileLabelView
   public final void init()
   {
     AppMethodBeat.i(31232);
-    this.vJT = ((TextView)findViewById(2131298619));
-    this.Doz = ((TextView)findViewById(2131298620));
+    this.wRc = ((TextView)findViewById(2131298619));
+    this.ETF = ((TextView)findViewById(2131298620));
     setClickable(true);
     AppMethodBeat.o(31232);
   }

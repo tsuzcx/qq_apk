@@ -4,148 +4,148 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.g.a.b;
 import d.g.a.m;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/LiveCallbacks;", "", "()V", "liveBanCommentCallbacks", "Ljava/util/HashMap;", "", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "sysTip", "", "Lkotlin/collections/HashMap;", "liveKickedCallbacks", "Lkotlin/Function0;", "liveMessageCallbacks", "liveOnlineCntChangeCallbacks", "livelinkMicCallbacks", "Lkotlin/Function2;", "", "linked", "callingUser", "callbackBanComment", "callbackKicked", "callbackLinkMic", "callbackLiveMessage", "callbackOnlineCntChanged", "registerLiveBanCommentCallback", "key", "callback", "registerLiveKickedCallback", "registerLiveLinkMicCallback", "registerLiveMessageCallback", "registerOnlineCntChangedCallback", "releaseCallbacks", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveCallbacks;", "", "()V", "liveBanCommentCallbacks", "Ljava/util/HashMap;", "", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "sysTip", "", "Lkotlin/collections/HashMap;", "liveKickedCallbacks", "Lkotlin/Function0;", "liveMessageCallbacks", "liveOnlineCntChangeCallbacks", "livelinkMicCallbacks", "Lkotlin/Function2;", "", "linked", "callingUser", "callbackBanComment", "callbackKicked", "callbackLinkMic", "callbackLiveMessage", "callbackOnlineCntChanged", "registerLiveBanCommentCallback", "key", "callback", "registerLiveKickedCallback", "registerLiveLinkMicCallback", "registerLiveMessageCallback", "registerOnlineCntChangedCallback", "releaseCallbacks", "plugin-logic_release"})
 public final class c
 {
-  private static final HashMap<String, a<y>> gsY;
-  private static final HashMap<String, a<y>> gsZ;
-  private static final HashMap<String, b<String, y>> gta;
-  private static final HashMap<String, m<Boolean, String, y>> gtb;
-  private static final HashMap<String, a<y>> gtc;
-  public static final c gtd;
+  private static final HashMap<String, a<z>> gMJ;
+  private static final HashMap<String, a<z>> gMK;
+  private static final HashMap<String, b<String, z>> gML;
+  private static final HashMap<String, m<Boolean, String, z>> gMM;
+  private static final HashMap<String, a<z>> gMN;
+  public static final c gMO;
   
   static
   {
-    AppMethodBeat.i(189749);
-    gtd = new c();
-    gsY = new HashMap();
-    gsZ = new HashMap();
-    gta = new HashMap();
-    gtb = new HashMap();
-    gtc = new HashMap();
-    AppMethodBeat.o(189749);
+    AppMethodBeat.i(212035);
+    gMO = new c();
+    gMJ = new HashMap();
+    gMK = new HashMap();
+    gML = new HashMap();
+    gMM = new HashMap();
+    gMN = new HashMap();
+    AppMethodBeat.o(212035);
   }
   
-  public static void a(String paramString, b<? super String, y> paramb)
+  public static void a(String paramString, b<? super String, z> paramb)
   {
-    AppMethodBeat.i(189744);
-    k.h(paramString, "key");
-    k.h(paramb, "callback");
-    ((Map)gta).put(paramString, paramb);
-    AppMethodBeat.o(189744);
+    AppMethodBeat.i(212030);
+    p.h(paramString, "key");
+    p.h(paramb, "callback");
+    ((Map)gML).put(paramString, paramb);
+    AppMethodBeat.o(212030);
   }
   
-  public static void a(String paramString, m<? super Boolean, ? super String, y> paramm)
+  public static void a(String paramString, m<? super Boolean, ? super String, z> paramm)
   {
-    AppMethodBeat.i(189745);
-    k.h(paramString, "key");
-    k.h(paramm, "callback");
-    ((Map)gtb).put(paramString, paramm);
-    AppMethodBeat.o(189745);
+    AppMethodBeat.i(212031);
+    p.h(paramString, "key");
+    p.h(paramm, "callback");
+    ((Map)gMM).put(paramString, paramm);
+    AppMethodBeat.o(212031);
   }
   
-  public static void akc()
+  public static void amO()
   {
-    AppMethodBeat.i(189738);
-    Iterator localIterator = ((Map)gsZ).entrySet().iterator();
+    AppMethodBeat.i(212024);
+    Iterator localIterator = ((Map)gMK).entrySet().iterator();
     while (localIterator.hasNext()) {
       ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
     }
-    AppMethodBeat.o(189738);
+    AppMethodBeat.o(212024);
   }
   
-  public static void akd()
+  public static void amP()
   {
-    AppMethodBeat.i(189741);
-    Iterator localIterator = ((Map)gsY).entrySet().iterator();
+    AppMethodBeat.i(212027);
+    Iterator localIterator = ((Map)gMJ).entrySet().iterator();
     while (localIterator.hasNext()) {
       ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
     }
-    AppMethodBeat.o(189741);
+    AppMethodBeat.o(212027);
   }
   
-  public static void ake()
+  public static void amQ()
   {
-    AppMethodBeat.i(189742);
-    Iterator localIterator = ((Map)gtc).entrySet().iterator();
+    AppMethodBeat.i(212028);
+    Iterator localIterator = ((Map)gMN).entrySet().iterator();
     while (localIterator.hasNext()) {
       ((a)((Map.Entry)localIterator.next()).getValue()).invoke();
     }
-    AppMethodBeat.o(189742);
+    AppMethodBeat.o(212028);
   }
   
-  public static void akf()
+  public static void amR()
   {
-    AppMethodBeat.i(189748);
-    gsZ.clear();
-    gta.clear();
-    gtb.clear();
-    gsY.clear();
-    gtc.clear();
-    AppMethodBeat.o(189748);
+    AppMethodBeat.i(212034);
+    gMK.clear();
+    gML.clear();
+    gMM.clear();
+    gMJ.clear();
+    gMN.clear();
+    AppMethodBeat.o(212034);
   }
   
-  public static void d(String paramString, a<y> parama)
+  public static void d(String paramString, a<z> parama)
   {
-    AppMethodBeat.i(189743);
-    k.h(paramString, "key");
-    k.h(parama, "callback");
-    ((Map)gsZ).put(paramString, parama);
-    AppMethodBeat.o(189743);
+    AppMethodBeat.i(212029);
+    p.h(paramString, "key");
+    p.h(parama, "callback");
+    ((Map)gMK).put(paramString, parama);
+    AppMethodBeat.o(212029);
   }
   
-  public static void e(String paramString, a<y> parama)
+  public static void e(String paramString, a<z> parama)
   {
-    AppMethodBeat.i(189746);
-    k.h(paramString, "key");
-    k.h(parama, "callback");
-    ((Map)gsY).put(paramString, parama);
-    AppMethodBeat.o(189746);
+    AppMethodBeat.i(212032);
+    p.h(paramString, "key");
+    p.h(parama, "callback");
+    ((Map)gMJ).put(paramString, parama);
+    AppMethodBeat.o(212032);
   }
   
-  public static void f(String paramString, a<y> parama)
+  public static void f(String paramString, a<z> parama)
   {
-    AppMethodBeat.i(189747);
-    k.h(paramString, "key");
-    k.h(parama, "callback");
-    ((Map)gtc).put(paramString, parama);
-    AppMethodBeat.o(189747);
+    AppMethodBeat.i(212033);
+    p.h(paramString, "key");
+    p.h(parama, "callback");
+    ((Map)gMN).put(paramString, parama);
+    AppMethodBeat.o(212033);
   }
   
-  public static void f(boolean paramBoolean, String paramString)
+  public static void g(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(189740);
-    k.h(paramString, "callingUser");
-    Iterator localIterator = ((Map)gtb).entrySet().iterator();
+    AppMethodBeat.i(212026);
+    p.h(paramString, "callingUser");
+    Iterator localIterator = ((Map)gMM).entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((m)((Map.Entry)localIterator.next()).getValue()).n(Boolean.valueOf(paramBoolean), paramString);
+      ((m)((Map.Entry)localIterator.next()).getValue()).p(Boolean.valueOf(paramBoolean), paramString);
     }
-    AppMethodBeat.o(189740);
+    AppMethodBeat.o(212026);
   }
   
-  public static void uN(String paramString)
+  public static void xD(String paramString)
   {
-    AppMethodBeat.i(189739);
-    k.h(paramString, "sysTip");
-    Iterator localIterator = ((Map)gta).entrySet().iterator();
+    AppMethodBeat.i(212025);
+    p.h(paramString, "sysTip");
+    Iterator localIterator = ((Map)gML).entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((b)((Map.Entry)localIterator.next()).getValue()).ay(paramString);
+      ((b)((Map.Entry)localIterator.next()).getValue()).invoke(paramString);
     }
-    AppMethodBeat.o(189739);
+    AppMethodBeat.o(212025);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.b.c
  * JD-Core Version:    0.7.0.1
  */

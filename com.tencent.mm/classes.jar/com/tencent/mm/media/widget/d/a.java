@@ -10,40 +10,42 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.x;
+import com.tencent.mm.compatible.util.k;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.media.widget.b.c;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.l;
 import d.n.n;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/util/CameraHelper;", "", "()V", "CAMERA_API_LEVEL1", "", "CAMERA_API_LEVEL2", "SCENE_APPBRAND", "SCENE_CHATTING", "SCENE_EMOJI", "SCENE_FAV", "SCENE_GAME", "SCENE_SNS", "SCENE_SNS_VLOG", "SCENE_STICK_PREVIEW", "SCENE_STORY", "SCENE_STORY_VLOG", "TAG", "", "cameraNum", "getCameraNum", "()I", "setCameraNum", "(I)V", "hasBackCamera", "", "getHasBackCamera", "()Z", "setHasBackCamera", "(Z)V", "hasFrontCamera", "getHasFrontCamera", "setHasFrontCamera", "checkSceneSupportRecordStream", "scene", "enableSwitchCamera", "hasBackCameraInThread", "hasFrontCameraInThread", "isCameraApi2CanUse", "isCaptureUseImageCallback", "isProcessCaptureUseImageCallback", "process", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "cameraApiLevel", "isProcessUseCamera2", "isProcessUseCamera2RecordStream", "isProcessUseVideoStabilization", "isRenderscriptSupported", "isUseRecordStream", "isVendorCameraEffectSupported", "isVendorDebugModeSupported", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/util/CameraHelper;", "", "()V", "CAMERA_API_LEVEL1", "", "CAMERA_API_LEVEL2", "SCENE_APPBRAND", "SCENE_CHATTING", "SCENE_EMOJI", "SCENE_FAV", "SCENE_GAME", "SCENE_SNS", "SCENE_SNS_VLOG", "SCENE_STICK_PREVIEW", "SCENE_STORY", "SCENE_STORY_VLOG", "TAG", "", "cameraNum", "getCameraNum", "()I", "setCameraNum", "(I)V", "hasBackCamera", "", "getHasBackCamera", "()Z", "setHasBackCamera", "(Z)V", "hasFrontCamera", "getHasFrontCamera", "setHasFrontCamera", "checkSceneSupportRecordStream", "scene", "enableSwitchCamera", "hasBackCameraInThread", "hasFrontCameraInThread", "isCameraApi2CanUse", "isCaptureUseImageCallback", "isProcessCaptureUseImageCallback", "process", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "cameraApiLevel", "isProcessUseCamera2", "isProcessUseCamera2RecordStream", "isProcessUseVideoStabilization", "isRenderscriptSupported", "isUseRecordStream", "isVendorCameraEffectSupported", "isVendorDebugModeSupported", "plugin-mediaeditor_release"})
 public final class a
 {
-  private static boolean fEJ;
-  private static boolean fEL;
-  private static int hej;
-  public static final a hek;
+  private static boolean fYi;
+  private static boolean fYk;
+  private static int hwr;
+  public static final a hws;
   
   static
   {
     AppMethodBeat.i(94381);
-    hek = new a();
-    hej = 2;
-    fEJ = true;
-    fEL = true;
-    h.JZN.aS((Runnable)1.hel);
+    hws = new a();
+    hwr = 2;
+    fYi = true;
+    fYk = true;
+    h.LTJ.aR((Runnable)1.hwt);
     AppMethodBeat.o(94381);
   }
   
   public static final boolean a(com.tencent.mm.media.widget.camerarecordview.d.a parama)
   {
     AppMethodBeat.i(94375);
-    d.g.b.k.h(parama, "process");
+    p.h(parama, "process");
     switch (parama.getRecordScene())
     {
     case 4: 
@@ -55,21 +57,21 @@ public final class a
       AppMethodBeat.o(94375);
       return false;
     }
-    boolean bool = avx();
+    boolean bool = ayk();
     AppMethodBeat.o(94375);
     return bool;
   }
   
-  public static final boolean auG()
+  public static final boolean axt()
   {
     AppMethodBeat.i(94380);
-    if (hej > 1) {}
+    if (hwr > 1) {}
     for (;;)
     {
       int i;
       try
       {
-        int m = hej;
+        int m = hwr;
         i = 0;
         int j = 0;
         int k = 0;
@@ -96,7 +98,7 @@ public final class a
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.CameraHelper", (Throwable)localException, " error", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.CameraHelper", (Throwable)localException, " error", new Object[0]);
         AppMethodBeat.o(94380);
         return true;
       }
@@ -107,78 +109,34 @@ public final class a
     }
   }
   
-  public static final boolean avA()
+  public static int ayh()
   {
-    if ((ae.fJk != null) && (ae.fJk.fIc != -1)) {
-      return ae.fJk.fIc == 1;
-    }
-    return false;
+    return hwr;
   }
   
-  public static final boolean avB()
+  public static boolean ayi()
   {
-    AppMethodBeat.i(94379);
-    if ((ae.fJk != null) && (ae.fJk.fIe != -1))
-    {
-      if (ae.fJk.fIe == 1)
-      {
-        AppMethodBeat.o(94379);
-        return true;
-      }
-      AppMethodBeat.o(94379);
-      return false;
-    }
-    boolean bool = ((b)g.ab(b.class)).a(b.a.pSF, false);
-    AppMethodBeat.o(94379);
-    return bool;
+    return fYi;
   }
   
-  public static final boolean avC()
+  public static boolean ayj()
   {
-    if ((ae.fJk != null) && (ae.fJk.fIf != -1)) {
-      return ae.fJk.fIf == 1;
-    }
-    return false;
+    return fYk;
   }
   
-  public static final boolean avD()
-  {
-    return fEJ;
-  }
-  
-  public static final boolean avE()
-  {
-    return fEL;
-  }
-  
-  public static int avu()
-  {
-    return hej;
-  }
-  
-  public static boolean avv()
-  {
-    return fEJ;
-  }
-  
-  public static boolean avw()
-  {
-    return fEL;
-  }
-  
-  private static boolean avx()
+  private static boolean ayk()
   {
     AppMethodBeat.i(94374);
-    if ((ae.fJk != null) && (ae.fJk.fIa != -1)) {
-      if (ae.fJk.fIa != 3) {}
+    if ((ae.gcL != null) && (ae.gcL.gbA != -1)) {
+      if (ae.gcL.gbA != 3) {}
     }
     for (int i = 1;; i = 0)
     {
-      if ((((b)g.ab(b.class)).a(b.a.pSA, 2) != 2) || (i == 0))
+      if ((((b)g.ab(b.class)).a(b.a.qxe, 2) != 2) || (i == 0))
       {
         AppMethodBeat.o(94374);
         return false;
-        if (ae.fJk.fIa == 1)
+        if (ae.gcL.gbA == 1)
         {
           AppMethodBeat.o(94374);
           return true;
@@ -186,22 +144,22 @@ public final class a
         AppMethodBeat.o(94374);
         return false;
       }
-      if (com.tencent.mm.compatible.util.d.la(21))
+      if (com.tencent.mm.compatible.util.d.lz(21))
       {
         AppMethodBeat.o(94374);
         return false;
       }
-      if (com.tencent.mm.compatible.util.k.YP())
+      if (k.abq())
       {
         AppMethodBeat.o(94374);
         return false;
       }
-      if (com.tencent.mm.compatible.util.k.YQ())
+      if (k.abr())
       {
         AppMethodBeat.o(94374);
         return false;
       }
-      Object localObject = ai.getContext().getSystemService("camera");
+      Object localObject = aj.getContext().getSystemService("camera");
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type android.hardware.camera2.CameraManager");
@@ -216,7 +174,7 @@ public final class a
           ((CameraManager)localObject).getCameraCharacteristics(localObject.getCameraIdList()[0]);
           localObject = ((CameraManager)localObject).getCameraCharacteristics("0").get(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL);
           if (localObject == null) {
-            d.g.b.k.fOy();
+            p.gfZ();
           }
           i = ((Number)localObject).intValue();
           switch (i)
@@ -225,16 +183,16 @@ public final class a
         }
         catch (Exception localException)
         {
-          ac.e("MicroMsg.CameraHelper", "a camera access exception happend");
+          ad.e("MicroMsg.CameraHelper", "a camera access exception happend");
           AppMethodBeat.o(94374);
           return false;
-          c localc1 = c.gYy;
-          c.atW();
+          c localc1 = c.hqE;
+          c.awJ();
           continue;
         }
         catch (AssertionError localAssertionError)
         {
-          ac.e("MicroMsg.CameraHelper", "some device has some problem in LegecyCamera ");
+          ad.e("MicroMsg.CameraHelper", "some device has some problem in LegecyCamera ");
           AppMethodBeat.o(94374);
           return false;
         }
@@ -243,27 +201,27 @@ public final class a
         }
         AppMethodBeat.o(94374);
         return true;
-        localObject = c.gYy;
-        c.atV();
+        localObject = c.hqE;
+        c.awI();
         continue;
-        c localc2 = c.gYy;
-        c.atX();
+        c localc2 = c.hqE;
+        c.awK();
         continue;
-        localc2 = c.gYy;
-        c.atY();
+        localc2 = c.hqE;
+        c.awL();
         continue;
-        localc2 = c.gYy;
-        c.atZ();
+        localc2 = c.hqE;
+        c.awM();
       }
       AppMethodBeat.o(94374);
       return false;
     }
   }
   
-  public static final boolean avy()
+  public static final boolean ayl()
   {
     AppMethodBeat.i(177321);
-    if (((b)g.ab(b.class)).a(b.a.pSD, true))
+    if (((b)g.ab(b.class)).a(b.a.qxh, true))
     {
       AppMethodBeat.o(177321);
       return true;
@@ -272,12 +230,12 @@ public final class a
     return false;
   }
   
-  public static final boolean avz()
+  public static final boolean aym()
   {
     AppMethodBeat.i(94378);
-    if ((ae.fJk != null) && (ae.fJk.fId != -1))
+    if ((ae.gcL != null) && (ae.gcL.gbD != -1))
     {
-      if (ae.fJk.fId == 1)
+      if (ae.gcL.gbD == 1)
       {
         AppMethodBeat.o(94378);
         return true;
@@ -285,36 +243,80 @@ public final class a
       AppMethodBeat.o(94378);
       return false;
     }
-    boolean bool = ((b)g.ab(b.class)).a(b.a.pSE, false);
+    boolean bool = ((b)g.ab(b.class)).a(b.a.qxi, false);
     AppMethodBeat.o(94378);
     return bool;
+  }
+  
+  public static final boolean ayn()
+  {
+    if ((ae.gcL != null) && (ae.gcL.gbC != -1)) {
+      return ae.gcL.gbC == 1;
+    }
+    return false;
+  }
+  
+  public static final boolean ayo()
+  {
+    AppMethodBeat.i(94379);
+    if ((ae.gcL != null) && (ae.gcL.gbE != -1))
+    {
+      if (ae.gcL.gbE == 1)
+      {
+        AppMethodBeat.o(94379);
+        return true;
+      }
+      AppMethodBeat.o(94379);
+      return false;
+    }
+    boolean bool = ((b)g.ab(b.class)).a(b.a.qxj, false);
+    AppMethodBeat.o(94379);
+    return bool;
+  }
+  
+  public static final boolean ayp()
+  {
+    if ((ae.gcL != null) && (ae.gcL.gbF != -1)) {
+      return ae.gcL.gbF == 1;
+    }
+    return false;
+  }
+  
+  public static final boolean ayq()
+  {
+    return fYi;
+  }
+  
+  public static final boolean ayr()
+  {
+    return fYk;
   }
   
   public static final boolean b(com.tencent.mm.media.widget.camerarecordview.d.a parama)
   {
     AppMethodBeat.i(94376);
-    d.g.b.k.h(parama, "process");
-    if ((ae.fJk != null) && (ae.fJk.fIb != -1)) {
-      if (ae.fJk.fIa != 3) {}
+    p.h(parama, "process");
+    if ((ae.gcL != null) && (ae.gcL.gbB != -1)) {
+      if (ae.gcL.gbA != 3) {}
     }
     for (int i = 1;; i = 0)
     {
-      if (((b)g.ab(b.class)).a(b.a.pSC, false)) {
+      if (((b)g.ab(b.class)).a(b.a.qxg, false)) {
         i = 0;
       }
       while (i != 0)
       {
         i = parama.getRecordScene();
-        parama = ((b)g.ab(b.class)).a(b.a.pSB, "");
-        if (!bs.isNullOrNil(parama))
+        parama = ((b)g.ab(b.class)).a(b.a.qxf, "");
+        if (!bt.isNullOrNil(parama))
         {
-          d.g.b.k.g(parama, "supportScene");
+          p.g(parama, "supportScene");
           if (n.a((CharSequence)parama, (CharSequence)String.valueOf(i), false))
           {
-            ac.i("MicroMsg.CameraHelper", "the scene = " + i + " is support record stream ");
+            ad.i("MicroMsg.CameraHelper", "the scene = " + i + " is support record stream ");
             AppMethodBeat.o(94376);
             return true;
-            if (ae.fJk.fIa == 1)
+            if (ae.gcL.gbA == 1)
             {
               i = 1;
               continue;
@@ -334,14 +336,14 @@ public final class a
   public static final boolean c(com.tencent.mm.media.widget.camerarecordview.d.a parama)
   {
     AppMethodBeat.i(94377);
-    d.g.b.k.h(parama, "process");
+    p.h(parama, "process");
     switch (parama.getRecordScene())
     {
     default: 
       AppMethodBeat.o(94377);
       return false;
     }
-    if ((avz()) && (a(parama)) && (avx()))
+    if ((aym()) && (a(parama)) && (ayk()))
     {
       AppMethodBeat.o(94377);
       return true;
@@ -350,24 +352,24 @@ public final class a
     return false;
   }
   
-  public static void er(boolean paramBoolean)
+  public static void et(boolean paramBoolean)
   {
-    fEJ = paramBoolean;
+    fYi = paramBoolean;
   }
   
-  public static void es(boolean paramBoolean)
+  public static void eu(boolean paramBoolean)
   {
-    fEL = paramBoolean;
+    fYk = paramBoolean;
   }
   
-  public static void nH(int paramInt)
+  public static void og(int paramInt)
   {
-    hej = paramInt;
+    hwr = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.media.widget.d.a
  * JD-Core Version:    0.7.0.1
  */

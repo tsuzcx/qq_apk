@@ -19,7 +19,7 @@ import android.view.View.MeasureSpec;
 import android.view.animation.AccelerateInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cl.a.a;
-import com.tencent.mm.ui.an;
+import com.tencent.mm.ui.ap;
 import com.tencent.mm.ui.widget.picker.a.e;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -29,40 +29,40 @@ import java.util.concurrent.TimeUnit;
 public class WheelView
   extends View
 {
-  private int Is;
-  private boolean JjY;
-  public com.tencent.mm.ui.widget.picker.d.c Jkc;
-  private e<?> Jkd;
-  private boolean Jke;
-  private int MW;
-  private Paint bLZ;
+  private int Kk;
+  private e<?> LbA;
+  private boolean LbB;
+  private boolean Lbv;
+  public com.tencent.mm.ui.widget.picker.d.c Lbz;
+  private Paint bWm;
   String content;
-  public boolean hYH;
+  private int fq;
   private Handler handler;
-  private GestureDetector irA;
-  private boolean irC;
-  public boolean irD;
-  public ScheduledExecutorService irE;
-  public ScheduledFuture<?> irF;
-  private Paint irG;
-  private int irI;
-  private float irJ;
-  private int irK;
-  private float irL;
-  private float irM;
-  private float irN;
-  private int irO;
-  private int irP;
-  private int irQ;
-  private int irR;
-  private int irS;
-  private int irT;
-  private float irU;
-  private int irV;
-  private int irW;
-  private int irx;
-  private int iry;
-  private final int irz;
+  private int iKA;
+  private int iKB;
+  private final int iKC;
+  private GestureDetector iKD;
+  private boolean iKF;
+  public boolean iKG;
+  public ScheduledExecutorService iKH;
+  public ScheduledFuture<?> iKI;
+  private Paint iKJ;
+  private int iKL;
+  private float iKM;
+  private int iKN;
+  private float iKO;
+  private float iKP;
+  private float iKQ;
+  private int iKR;
+  private int iKS;
+  private int iKT;
+  private int iKU;
+  private int iKV;
+  private int iKW;
+  private float iKX;
+  private int iKY;
+  private int iKZ;
+  public boolean isd;
   private String label;
   private Context mContext;
   private Rect rect;
@@ -79,82 +79,82 @@ public class WheelView
   public WheelView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(199797);
-    this.irx = 0;
+    AppMethodBeat.i(192743);
+    this.iKA = 0;
     this.textColor = Color.rgb(255, 255, 255);
-    this.irz = 2;
+    this.iKC = 2;
     this.content = "";
-    this.irC = false;
-    this.irD = true;
-    this.irE = Executors.newSingleThreadScheduledExecutor();
-    this.irR = 5;
-    this.MW = 0;
-    this.irU = 0.0F;
+    this.iKF = false;
+    this.iKG = true;
+    this.iKH = Executors.newSingleThreadScheduledExecutor();
+    this.iKU = 5;
+    this.fq = 0;
+    this.iKX = 0.0F;
     this.startTime = 0L;
-    this.Is = 17;
-    this.irW = 0;
+    this.Kk = 17;
+    this.iKZ = 0;
     this.rect = new Rect();
     this.mContext = paramContext;
     this.textSize = getResources().getDimensionPixelSize(2131166686);
-    this.irI = getResources().getDimensionPixelSize(2131166685);
+    this.iKL = getResources().getDimensionPixelSize(2131166685);
     if (paramAttributeSet != null)
     {
       paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WheelView, 0, 0);
-      this.Is = paramAttributeSet.getInt(1, 17);
-      this.irK = paramAttributeSet.getColor(0, -2763307);
+      this.Kk = paramAttributeSet.getInt(1, 17);
+      this.iKN = paramAttributeSet.getColor(0, -2763307);
       paramAttributeSet.recycle();
     }
     this.handler = new com.tencent.mm.ui.widget.picker.e.b(this);
-    this.irA = new GestureDetector(paramContext, new com.tencent.mm.ui.widget.picker.d.b(this));
-    this.irA.setIsLongpressEnabled(false);
-    this.hYH = true;
-    this.irN = 0.0F;
-    this.irO = -1;
-    this.bLZ = new Paint();
-    this.bLZ.setColor(this.textColor);
-    this.bLZ.setAntiAlias(true);
-    this.bLZ.setTextSize(this.textSize);
-    this.irG = new Paint();
-    this.irG.setColor(this.irK);
-    this.irG.setAntiAlias(true);
+    this.iKD = new GestureDetector(paramContext, new com.tencent.mm.ui.widget.picker.d.b(this));
+    this.iKD.setIsLongpressEnabled(false);
+    this.isd = true;
+    this.iKQ = 0.0F;
+    this.iKR = -1;
+    this.bWm = new Paint();
+    this.bWm.setColor(this.textColor);
+    this.bWm.setAntiAlias(true);
+    this.bWm.setTextSize(this.textSize);
+    this.iKJ = new Paint();
+    this.iKJ.setColor(this.iKN);
+    this.iKJ.setAntiAlias(true);
     setLayerType(2, null);
-    AppMethodBeat.o(199797);
+    AppMethodBeat.o(192743);
   }
   
-  private void aME()
+  private void aPP()
   {
-    AppMethodBeat.i(199798);
-    if (this.Jkd == null)
+    AppMethodBeat.i(192744);
+    if (this.LbA == null)
     {
-      AppMethodBeat.o(199798);
+      AppMethodBeat.o(192744);
       return;
     }
-    this.irJ = (this.irx + getPaddingBottom() + getPaddingTop());
-    this.irS = ((int)(this.irJ * this.irR));
-    this.irT = View.MeasureSpec.getSize(this.irV);
-    this.irL = ((this.irS - this.irJ) / 2.0F);
-    this.irM = ((this.irS + this.irJ) / 2.0F);
-    if (this.irO == -1) {
-      if (!this.hYH) {
+    this.iKM = (this.iKA + getPaddingBottom() + getPaddingTop());
+    this.iKV = ((int)(this.iKM * this.iKU));
+    this.iKW = View.MeasureSpec.getSize(this.iKY);
+    this.iKO = ((this.iKV - this.iKM) / 2.0F);
+    this.iKP = ((this.iKV + this.iKM) / 2.0F);
+    if (this.iKR == -1) {
+      if (!this.isd) {
         break label141;
       }
     }
     label141:
-    for (this.irO = ((this.Jkd.getItemsCount() + 1) / 2);; this.irO = 0)
+    for (this.iKR = ((this.LbA.getItemsCount() + 1) / 2);; this.iKR = 0)
     {
-      this.irQ = this.irO;
-      AppMethodBeat.o(199798);
+      this.iKT = this.iKR;
+      AppMethodBeat.o(192744);
       return;
     }
   }
   
-  private void aMG()
+  private void aPR()
   {
-    AppMethodBeat.i(199809);
+    AppMethodBeat.i(192755);
     Rect localRect = new Rect();
-    this.bLZ.getTextBounds(this.content, 0, this.content.length(), localRect);
+    this.bWm.getTextBounds(this.content, 0, this.content.length(), localRect);
     localRect = new Rect();
-    this.bLZ.getTextBounds(this.content, 0, 0, localRect);
+    this.bWm.getTextBounds(this.content, 0, 0, localRect);
     int j = this.content.length();
     int i = 0;
     int k;
@@ -166,190 +166,190 @@ public class WheelView
       }
       localRect = new Rect();
       k = (j - i >> 1) + i;
-      this.bLZ.getTextBounds(this.content, 0, k, localRect);
-      if (localRect.width() >= aMH()) {
+      this.bWm.getTextBounds(this.content, 0, k, localRect);
+      if (localRect.width() >= aPS()) {
         j = k - 1;
-      } else if (localRect.width() < aMH()) {
+      } else if (localRect.width() < aPS()) {
         i = k + 1;
       }
     }
     do
     {
       this.content = this.content.substring(0, k);
-      if (this.bLZ.measureText(this.content + "...") <= aMH()) {
+      if (this.bWm.measureText(this.content + "...") <= aPS()) {
         break;
       }
       i = k - 1;
       k = i;
     } while (i > 0);
     this.content += "...";
-    AppMethodBeat.o(199809);
+    AppMethodBeat.o(192755);
   }
   
-  private int aMH()
+  private int aPS()
   {
-    AppMethodBeat.i(199810);
-    int i = this.irT;
+    AppMethodBeat.i(192756);
+    int i = this.iKW;
     int j = getPaddingLeft();
     int k = getPaddingRight();
-    AppMethodBeat.o(199810);
+    AppMethodBeat.o(192756);
     return i - j - k;
   }
   
-  private void aMI()
+  private void aPT()
   {
-    AppMethodBeat.i(199811);
+    AppMethodBeat.i(192757);
     int i = this.textSize;
-    this.bLZ.setTextSize(i);
-    while ((i > this.irI) && (!aMJ()))
+    this.bWm.setTextSize(i);
+    while ((i > this.iKL) && (!aPU()))
     {
       i -= 1;
-      this.bLZ.setTextSize(i);
+      this.bWm.setTextSize(i);
     }
-    AppMethodBeat.o(199811);
+    AppMethodBeat.o(192757);
   }
   
-  private boolean aMJ()
+  private boolean aPU()
   {
-    AppMethodBeat.i(199812);
-    if (this.bLZ.measureText(this.content) <= this.irT - getPaddingLeft() - getPaddingRight())
+    AppMethodBeat.i(192758);
+    if (this.bWm.measureText(this.content) <= this.iKW - getPaddingLeft() - getPaddingRight())
     {
-      AppMethodBeat.o(199812);
+      AppMethodBeat.o(192758);
       return true;
     }
-    AppMethodBeat.o(199812);
+    AppMethodBeat.o(192758);
     return false;
   }
   
-  private static String bZ(Object paramObject)
+  private static String cc(Object paramObject)
   {
-    AppMethodBeat.i(199808);
+    AppMethodBeat.i(192754);
     if (paramObject == null)
     {
-      AppMethodBeat.o(199808);
+      AppMethodBeat.o(192754);
       return "";
     }
     paramObject = paramObject.toString();
-    AppMethodBeat.o(199808);
+    AppMethodBeat.o(192754);
     return paramObject;
   }
   
-  private String qn(int paramInt)
+  private String qN(int paramInt)
   {
-    AppMethodBeat.i(199806);
+    AppMethodBeat.i(192752);
     int i = paramInt;
-    if (this.hYH) {
-      i = qo(paramInt);
+    if (this.isd) {
+      i = qO(paramInt);
     }
-    String str = this.Jkd.qk(i);
-    AppMethodBeat.o(199806);
+    String str = this.LbA.qL(i);
+    AppMethodBeat.o(192752);
     return str;
   }
   
-  private int qo(int paramInt)
+  private int qO(int paramInt)
   {
-    AppMethodBeat.i(199807);
+    AppMethodBeat.i(192753);
     int i;
     if (paramInt < 0) {
-      i = qo(this.Jkd.getItemsCount() + paramInt);
+      i = qO(this.LbA.getItemsCount() + paramInt);
     }
     for (;;)
     {
-      AppMethodBeat.o(199807);
+      AppMethodBeat.o(192753);
       return i;
       i = paramInt;
-      if (paramInt > this.Jkd.getItemsCount() - 1) {
-        i = qo(paramInt - this.Jkd.getItemsCount());
+      if (paramInt > this.LbA.getItemsCount() - 1) {
+        i = qO(paramInt - this.LbA.getItemsCount());
       }
     }
   }
   
   public final void a(WheelView.a parama)
   {
-    AppMethodBeat.i(199799);
-    aMF();
-    if ((parama == WheelView.a.Jkh) || (parama == WheelView.a.Jki))
+    AppMethodBeat.i(192745);
+    aPQ();
+    if ((parama == WheelView.a.LbE) || (parama == WheelView.a.LbF))
     {
-      this.MW = ((int)((this.irN % this.irJ + this.irJ) % this.irJ));
-      if (this.MW <= this.irJ / 2.0F) {
+      this.fq = ((int)((this.iKQ % this.iKM + this.iKM) % this.iKM));
+      if (this.fq <= this.iKM / 2.0F) {
         break label117;
       }
     }
     label117:
-    for (this.MW = ((int)(this.irJ - this.MW));; this.MW = (-this.MW))
+    for (this.fq = ((int)(this.iKM - this.fq));; this.fq = (-this.fq))
     {
-      this.irF = this.irE.scheduleWithFixedDelay(new com.tencent.mm.ui.widget.picker.e.c(this, this.MW), 0L, 10L, TimeUnit.MILLISECONDS);
-      AppMethodBeat.o(199799);
+      this.iKI = this.iKH.scheduleWithFixedDelay(new com.tencent.mm.ui.widget.picker.e.c(this, this.fq), 0L, 10L, TimeUnit.MILLISECONDS);
+      AppMethodBeat.o(192745);
       return;
     }
   }
   
-  public final void aMF()
+  public final void aPQ()
   {
-    AppMethodBeat.i(199800);
-    if ((this.irF != null) && (!this.irF.isCancelled()))
+    AppMethodBeat.i(192746);
+    if ((this.iKI != null) && (!this.iKI.isCancelled()))
     {
-      this.irF.cancel(true);
-      this.irF = null;
+      this.iKI.cancel(true);
+      this.iKI = null;
     }
-    AppMethodBeat.o(199800);
+    AppMethodBeat.o(192746);
   }
   
-  public final WheelView adf(int paramInt)
+  public final WheelView afF(int paramInt)
   {
-    AppMethodBeat.i(199818);
-    this.irx = paramInt;
+    AppMethodBeat.i(192764);
+    this.iKA = paramInt;
     invalidate();
-    AppMethodBeat.o(199818);
+    AppMethodBeat.o(192764);
     return this;
   }
   
-  public final WheelView adg(int paramInt)
+  public final WheelView afG(int paramInt)
   {
-    AppMethodBeat.i(199819);
+    AppMethodBeat.i(192765);
     this.textColor = paramInt;
-    this.bLZ.setColor(this.textColor);
-    this.iry = ((int)((paramInt >> 24 & 0xFF) / 255.0F * 255.0F));
-    AppMethodBeat.o(199819);
+    this.bWm.setColor(this.textColor);
+    this.iKB = ((int)((paramInt >> 24 & 0xFF) / 255.0F * 255.0F));
+    AppMethodBeat.o(192765);
     return this;
   }
   
-  public final void fwc()
+  public final void fMQ()
   {
-    AppMethodBeat.i(199804);
-    String str = bZ(qn(getCurrentItem()));
+    AppMethodBeat.i(192750);
+    String str = cc(qN(getCurrentItem()));
     if (!TextUtils.isEmpty(str)) {
       setContentDescription(str);
     }
-    AppMethodBeat.o(199804);
+    AppMethodBeat.o(192750);
   }
   
   public final e getAdapter()
   {
-    return this.Jkd;
+    return this.LbA;
   }
   
   public final int getCurrentItem()
   {
-    AppMethodBeat.i(199803);
-    if (this.Jkd == null)
+    AppMethodBeat.i(192749);
+    if (this.LbA == null)
     {
-      AppMethodBeat.o(199803);
+      AppMethodBeat.o(192749);
       return 0;
     }
-    if ((this.JjY) && (this.irP == 0))
+    if ((this.Lbv) && (this.iKS == 0))
     {
-      AppMethodBeat.o(199803);
+      AppMethodBeat.o(192749);
       return -1;
     }
-    if ((this.hYH) && ((this.irP < 0) || (this.irP >= this.Jkd.getItemsCount())))
+    if ((this.isd) && ((this.iKS < 0) || (this.iKS >= this.LbA.getItemsCount())))
     {
-      i = Math.max(0, Math.min(Math.abs(Math.abs(this.irP) - this.Jkd.getItemsCount()), this.Jkd.getItemsCount() - 1));
-      AppMethodBeat.o(199803);
+      i = Math.max(0, Math.min(Math.abs(Math.abs(this.iKS) - this.LbA.getItemsCount()), this.LbA.getItemsCount() - 1));
+      AppMethodBeat.o(192749);
       return i;
     }
-    int i = Math.max(0, Math.min(this.irP, this.Jkd.getItemsCount() - 1));
-    AppMethodBeat.o(199803);
+    int i = Math.max(0, Math.min(this.iKS, this.LbA.getItemsCount() - 1));
+    AppMethodBeat.o(192749);
     return i;
   }
   
@@ -360,79 +360,79 @@ public class WheelView
   
   public int getInitPosition()
   {
-    return this.irO;
+    return this.iKR;
   }
   
   public float getItemHeight()
   {
-    return this.irJ;
+    return this.iKM;
   }
   
   public int getItemsCount()
   {
-    AppMethodBeat.i(199815);
-    if (this.Jkd != null)
+    AppMethodBeat.i(192761);
+    if (this.LbA != null)
     {
-      int i = this.Jkd.getItemsCount();
-      AppMethodBeat.o(199815);
+      int i = this.LbA.getItemsCount();
+      AppMethodBeat.o(192761);
       return i;
     }
-    AppMethodBeat.o(199815);
+    AppMethodBeat.o(192761);
     return 0;
   }
   
   public float getTotalScrollY()
   {
-    return this.irN;
+    return this.iKQ;
   }
   
   @SuppressLint({"DrawAllocation"})
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(199805);
+    AppMethodBeat.i(192751);
     super.onDraw(paramCanvas);
-    if (this.Jkd == null)
+    if (this.LbA == null)
     {
-      AppMethodBeat.o(199805);
+      AppMethodBeat.o(192751);
       return;
     }
-    this.irO = Math.min(Math.max(0, this.irO), this.Jkd.getItemsCount() - 1);
-    Object[] arrayOfObject = new Object[this.irR];
+    this.iKR = Math.min(Math.max(0, this.iKR), this.LbA.getItemsCount() - 1);
+    Object[] arrayOfObject = new Object[this.iKU];
     Object localObject2 = new Object();
     Object localObject1 = new Object();
-    int i = (int)(this.irN / this.irJ);
+    int i = (int)(this.iKQ / this.iKM);
     label1070:
     label1073:
     for (;;)
     {
       try
       {
-        j = this.irO;
-        this.irQ = (i % this.Jkd.getItemsCount() + j);
-        if (!this.hYH)
+        j = this.iKR;
+        this.iKT = (i % this.LbA.getItemsCount() + j);
+        if (!this.isd)
         {
-          if (this.irQ < 0) {
-            this.irQ = 0;
+          if (this.iKT < 0) {
+            this.iKT = 0;
           }
-          if (this.irQ > this.Jkd.getItemsCount() - 1) {
-            this.irQ = (this.Jkd.getItemsCount() - 1);
+          if (this.iKT > this.LbA.getItemsCount() - 1) {
+            this.iKT = (this.LbA.getItemsCount() - 1);
           }
-          f1 = this.irN;
-          f2 = this.irJ;
+          f1 = this.iKQ;
+          f2 = this.iKM;
           i = 0;
-          if (i >= this.irR) {
+          if (i >= this.iKU) {
             continue;
           }
-          j = this.irQ - (this.irR / 2 - i);
+          j = this.iKT - (this.iKU / 2 - i);
           if (i != 0) {
             break label1073;
           }
-          localObject2 = qn(j - 1);
-          if (i != this.irR - 1) {
+          localObject2 = qN(j - 1);
+          if (i != this.iKU - 1) {
             break label1070;
           }
-          localObject1 = qn(j + 1);
-          arrayOfObject[i] = qn(j);
+          localObject1 = qN(j + 1);
+          arrayOfObject[i] = qN(j);
           i += 1;
           continue;
         }
@@ -441,102 +441,102 @@ public class WheelView
       {
         float f1;
         float f2;
-        an.e("WheelView", "出错了！adapter.getItemsCount() == 0，联动数据不匹配", new Object[0]);
+        ap.e("WheelView", "出错了！adapter.getItemsCount() == 0，联动数据不匹配", new Object[0]);
         continue;
-        if (this.irQ < 0) {
-          this.irQ = (this.Jkd.getItemsCount() + this.irQ);
+        if (this.iKT < 0) {
+          this.iKT = (this.LbA.getItemsCount() + this.iKT);
         }
-        if (this.irQ <= this.Jkd.getItemsCount() - 1) {
+        if (this.iKT <= this.LbA.getItemsCount() - 1) {
           continue;
         }
-        this.irQ -= this.Jkd.getItemsCount();
+        this.iKT -= this.LbA.getItemsCount();
         continue;
-        paramCanvas.drawLine(0.0F, this.irL, this.irT, this.irL, this.irG);
-        paramCanvas.drawLine(0.0F, this.irM, this.irT, this.irM, this.irG);
+        paramCanvas.drawLine(0.0F, this.iKO, this.iKW, this.iKO, this.iKJ);
+        paramCanvas.drawLine(0.0F, this.iKP, this.iKW, this.iKP, this.iKJ);
         int j = 0;
-        if (j < this.irR + 2)
+        if (j < this.iKU + 2)
         {
           Object localObject3;
           float f3;
           if (j == 0)
           {
             localObject3 = localObject2;
-            f3 = this.irJ * j - f1 % f2 + this.irJ / 2.0F - this.irJ;
-            if ((this.irD) || (TextUtils.isEmpty(this.label)) || (TextUtils.isEmpty(bZ(localObject3))) || ((this.JjY) && (localObject3.equals(this.mContext.getString(2131766375))))) {
+            f3 = this.iKM * j - f1 % f2 + this.iKM / 2.0F - this.iKM;
+            if ((this.iKG) || (TextUtils.isEmpty(this.label)) || (TextUtils.isEmpty(cc(localObject3))) || ((this.Lbv) && (localObject3.equals(this.mContext.getString(2131766375))))) {
               continue;
             }
-            this.content = (bZ(localObject3) + this.label);
-            this.bLZ.getTextBounds(this.content, 0, this.content.length(), this.rect);
+            this.content = (cc(localObject3) + this.label);
+            this.bWm.getTextBounds(this.content, 0, this.content.length(), this.rect);
           }
           int k;
-          switch (this.Is)
+          switch (this.Kk)
           {
           default: 
-            float f4 = this.irS / 2.0F;
+            float f4 = this.iKV / 2.0F;
             f4 = Math.abs((f3 - f4) / f4);
-            k = (int)((1.0F - new AccelerateInterpolator(0.3F).getInterpolation(f4)) * this.iry);
-            if (k < this.iry * 0.14F)
+            k = (int)((1.0F - new AccelerateInterpolator(0.3F).getInterpolation(f4)) * this.iKB);
+            if (k < this.iKB * 0.14F)
             {
-              i = (int)(this.iry * 0.14F);
-              this.bLZ.setAlpha(i);
-              if ((f3 >= this.irL) && (f3 <= this.irM)) {
-                this.irP = (this.irQ - (this.irR / 2 - j) - 1);
+              i = (int)(this.iKB * 0.14F);
+              this.bWm.setAlpha(i);
+              if ((f3 >= this.iKO) && (f3 <= this.iKP)) {
+                this.iKS = (this.iKT - (this.iKU / 2 - j) - 1);
               }
-              if ((f3 >= 0.0F) && (f3 <= this.irS))
+              if ((f3 >= 0.0F) && (f3 <= this.iKV))
               {
                 localObject3 = this.content;
-                f4 = this.irW;
-                Paint.FontMetricsInt localFontMetricsInt = this.bLZ.getFontMetricsInt();
+                f4 = this.iKZ;
+                Paint.FontMetricsInt localFontMetricsInt = this.bWm.getFontMetricsInt();
                 float f5 = Math.abs(localFontMetricsInt.top);
                 float f6 = localFontMetricsInt.bottom;
-                paramCanvas.drawText((String)localObject3, f4, f3 - f6 + (f6 + f5) / 2.0F, this.bLZ);
+                paramCanvas.drawText((String)localObject3, f4, f3 - f6 + (f6 + f5) / 2.0F, this.bWm);
               }
               j += 1;
-              this.bLZ.setTextSize(this.textSize);
+              this.bWm.setTextSize(this.textSize);
               continue;
-              if (j == this.irR + 2 - 1)
+              if (j == this.iKU + 2 - 1)
               {
                 localObject3 = localObject1;
                 continue;
               }
               localObject3 = arrayOfObject[(j - 1)];
               continue;
-              this.content = bZ(localObject3);
+              this.content = cc(localObject3);
             }
             break;
           case 17: 
-            if ((this.irC) || (this.label == null) || (this.label.equals("")) || (!this.irD))
+            if ((this.iKF) || (this.label == null) || (this.label.equals("")) || (!this.iKG))
             {
-              if (this.irT < this.rect.width())
+              if (this.iKW < this.rect.width())
               {
-                aMI();
-                if (!aMJ()) {
-                  aMG();
+                aPT();
+                if (!aPU()) {
+                  aPR();
                 }
-                this.bLZ.getTextBounds(this.content, 0, this.content.length(), this.rect);
-                this.irW = ((int)((this.irT - this.rect.width()) * 0.5D));
+                this.bWm.getTextBounds(this.content, 0, this.content.length(), this.rect);
+                this.iKZ = ((int)((this.iKW - this.rect.width()) * 0.5D));
                 continue;
               }
-              this.irW = ((int)((this.irT - this.rect.width()) * 0.5D));
+              this.iKZ = ((int)((this.iKW - this.rect.width()) * 0.5D));
               continue;
             }
-            this.irW = ((int)((this.irT - this.rect.width()) * 0.25D));
+            this.iKZ = ((int)((this.iKW - this.rect.width()) * 0.25D));
             break;
           case 3: 
-            this.irW = 0;
+            this.iKZ = 0;
             break;
           case 5: 
-            this.irW = (this.irT - this.rect.width());
+            this.iKZ = (this.iKW - this.rect.width());
             continue;
             i = k;
-            if (k <= this.iry) {
+            if (k <= this.iKB) {
               continue;
             }
-            i = this.iry;
+            i = this.iKB;
             break;
           }
         }
-        AppMethodBeat.o(199805);
+        AppMethodBeat.o(192751);
         return;
       }
     }
@@ -544,31 +544,34 @@ public class WheelView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(199813);
-    this.irV = paramInt1;
-    aME();
-    setMeasuredDimension(this.irT, this.irS);
-    AppMethodBeat.o(199813);
+    AppMethodBeat.i(192759);
+    this.iKY = paramInt1;
+    aPP();
+    setMeasuredDimension(this.iKW, this.iKV);
+    AppMethodBeat.o(192759);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(199814);
-    boolean bool = this.irA.onTouchEvent(paramMotionEvent);
-    float f1 = -this.irO;
-    float f2 = this.irJ;
-    float f3 = this.Jkd.getItemsCount() - 1 - this.irO;
-    float f4 = this.irJ;
+    AppMethodBeat.i(192760);
+    GestureDetector localGestureDetector = this.iKD;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.ahp(), "com/tencent/mm/ui/widget/picker/WheelView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    boolean bool = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.mq(0)), "com/tencent/mm/ui/widget/picker/WheelView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    float f1 = -this.iKR;
+    float f2 = this.iKM;
+    float f3 = this.LbA.getItemsCount() - 1 - this.iKR;
+    float f4 = this.iKM;
     switch (paramMotionEvent.getAction())
     {
     case 1: 
     default: 
       if (bool) {
-        break label348;
+        break label424;
       }
       if (System.currentTimeMillis() - this.startTime > 120L)
       {
-        a(WheelView.a.Jki);
+        a(WheelView.a.LbF);
         i = 0;
       }
       break;
@@ -579,22 +582,22 @@ public class WheelView
         if ((i == 0) && (paramMotionEvent.getAction() != 0)) {
           invalidate();
         }
-        AppMethodBeat.o(199814);
+        AppMethodBeat.o(192760);
         return true;
         this.startTime = System.currentTimeMillis();
-        aMF();
-        this.irU = paramMotionEvent.getRawY();
+        aPQ();
+        this.iKX = paramMotionEvent.getRawY();
         i = 0;
         continue;
-        float f5 = this.irU - paramMotionEvent.getRawY();
-        this.irU = paramMotionEvent.getRawY();
-        this.irN += f5;
-        if (this.hYH) {
+        float f5 = this.iKX - paramMotionEvent.getRawY();
+        this.iKX = paramMotionEvent.getRawY();
+        this.iKQ += f5;
+        if (this.isd) {
           break;
         }
-        if (((this.irN - this.irJ * 0.25F < f1 * f2) && (f5 < 0.0F)) || ((this.irN + this.irJ * 0.25F > f3 * f4) && (f5 > 0.0F)))
+        if (((this.iKQ - this.iKM * 0.25F < f1 * f2) && (f5 < 0.0F)) || ((this.iKQ + this.iKM * 0.25F > f3 * f4) && (f5 > 0.0F)))
         {
-          this.irN -= f5;
+          this.iKQ -= f5;
           i = 1;
         }
         else
@@ -603,16 +606,16 @@ public class WheelView
         }
       }
     }
-    int i = (int)(paramMotionEvent.getY() - this.irS / 2.0F);
+    int i = (int)(paramMotionEvent.getY() - this.iKV / 2.0F);
     if (i > 0) {}
-    for (i = (int)(i + this.irJ / 2.0F);; i = (int)(i - this.irJ / 2.0F))
+    for (i = (int)(i + this.iKM / 2.0F);; i = (int)(i - this.iKM / 2.0F))
     {
-      if (this.irJ != 0.0F)
+      if (this.iKM != 0.0F)
       {
-        this.MW = ((int)((int)(i / this.irJ) * this.irJ));
-        a(WheelView.a.Jkg);
+        this.fq = ((int)((int)(i / this.iKM) * this.iKM));
+        a(WheelView.a.LbD);
       }
-      label348:
+      label424:
       i = 0;
       break;
     }
@@ -620,55 +623,55 @@ public class WheelView
   
   public final void setAdapter(e<?> parame)
   {
-    AppMethodBeat.i(199802);
-    this.Jkd = parame;
-    aME();
+    AppMethodBeat.i(192748);
+    this.LbA = parame;
+    aPP();
     invalidate();
-    AppMethodBeat.o(199802);
+    AppMethodBeat.o(192748);
   }
   
   public final void setCurrentItem(int paramInt)
   {
-    AppMethodBeat.i(199801);
-    this.irP = paramInt;
-    this.irO = paramInt;
-    this.irN = 0.0F;
-    fwc();
+    AppMethodBeat.i(192747);
+    this.iKS = paramInt;
+    this.iKR = paramInt;
+    this.iKQ = 0.0F;
+    fMQ();
     invalidate();
-    AppMethodBeat.o(199801);
+    AppMethodBeat.o(192747);
   }
   
   public final void setCyclic(boolean paramBoolean)
   {
-    this.hYH = paramBoolean;
+    this.isd = paramBoolean;
   }
   
   public void setDividerColor(int paramInt)
   {
-    AppMethodBeat.i(199816);
+    AppMethodBeat.i(192762);
     if (paramInt != 0)
     {
-      this.irK = paramInt;
-      this.irG.setColor(this.irK);
+      this.iKN = paramInt;
+      this.iKJ.setColor(this.iKN);
     }
-    AppMethodBeat.o(199816);
+    AppMethodBeat.o(192762);
   }
   
   public void setDividerHeight(float paramFloat)
   {
-    AppMethodBeat.i(199817);
-    this.irG.setStrokeWidth(paramFloat);
-    AppMethodBeat.o(199817);
+    AppMethodBeat.i(192763);
+    this.iKJ.setStrokeWidth(paramFloat);
+    AppMethodBeat.o(192763);
   }
   
   public void setGravity(int paramInt)
   {
-    this.Is = paramInt;
+    this.Kk = paramInt;
   }
   
   public void setIsOptions(boolean paramBoolean)
   {
-    this.irC = paramBoolean;
+    this.iKF = paramBoolean;
   }
   
   public void setLabel(String paramString)
@@ -678,22 +681,22 @@ public class WheelView
   
   public void setLongTermMonthDay(boolean paramBoolean)
   {
-    this.Jke = paramBoolean;
+    this.LbB = paramBoolean;
   }
   
   public void setLongTermYear(boolean paramBoolean)
   {
-    this.JjY = paramBoolean;
+    this.Lbv = paramBoolean;
   }
   
   public final void setOnItemSelectedListener(com.tencent.mm.ui.widget.picker.d.c paramc)
   {
-    this.Jkc = paramc;
+    this.Lbz = paramc;
   }
   
   public void setTotalScrollY(float paramFloat)
   {
-    this.irN = paramFloat;
+    this.iKQ = paramFloat;
   }
 }
 

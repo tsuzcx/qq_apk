@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.aa;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,15 +32,7 @@ public final class p
     AppMethodBeat.o(31044);
   }
   
-  public final boolean a(o paramo)
-  {
-    AppMethodBeat.i(31046);
-    boolean bool = super.insert(paramo);
-    AppMethodBeat.o(31046);
-    return bool;
-  }
-  
-  public final List<String> zO(long paramLong)
+  public final List<String> CC(long paramLong)
   {
     AppMethodBeat.i(31045);
     ArrayList localArrayList = new ArrayList();
@@ -52,11 +44,11 @@ public final class p
     localObject = rawQuery(((StringBuilder)localObject).toString(), new String[0]);
     if (localObject == null)
     {
-      ac.e("MicroMsg.AppSortStorage", "getAppListByFlag : cursor is null");
+      ad.e("MicroMsg.AppSortStorage", "getAppListByFlag : cursor is null");
       AppMethodBeat.o(31045);
       return null;
     }
-    ac.d("MicroMsg.AppSortStorage", "getAppListByFlag count = %d", new Object[] { Integer.valueOf(((Cursor)localObject).getCount()) });
+    ad.d("MicroMsg.AppSortStorage", "getAppListByFlag count = %d", new Object[] { Integer.valueOf(((Cursor)localObject).getCount()) });
     int i = ((Cursor)localObject).getColumnIndex("appId");
     while (((Cursor)localObject).moveToNext()) {
       localArrayList.add(((Cursor)localObject).getString(i));
@@ -64,6 +56,14 @@ public final class p
     ((Cursor)localObject).close();
     AppMethodBeat.o(31045);
     return localArrayList;
+  }
+  
+  public final boolean a(o paramo)
+  {
+    AppMethodBeat.i(31046);
+    boolean bool = super.insert(paramo);
+    AppMethodBeat.o(31046);
+    return bool;
   }
 }
 

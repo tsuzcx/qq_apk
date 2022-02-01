@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.vending.base.Vending;
+import android.view.View;
+import java.util.List;
 
 public abstract interface y
 {
-  public abstract p Pl(int paramInt);
+  public abstract void clean();
   
-  public abstract Vending dNA();
+  public abstract View getView();
   
-  public abstract void dNz();
+  public abstract void setImageClick(y.a parama);
   
-  public abstract int getCount();
+  public abstract void setIsShowAddImage(boolean paramBoolean);
   
-  public abstract void notifyDataSetChanged();
+  public abstract void setList$22875ea3(List<String> paramList);
 }
 
 

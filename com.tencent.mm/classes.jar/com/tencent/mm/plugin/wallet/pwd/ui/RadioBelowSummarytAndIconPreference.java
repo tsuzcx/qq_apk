@@ -9,30 +9,32 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class RadioBelowSummarytAndIconPreference
   extends Preference
 {
-  private LinearLayout BkV;
-  private ImageView BkW;
-  private View BkX;
-  View.OnClickListener BkY;
-  int acJ;
+  private LinearLayout CLj;
+  private ImageView CLk;
+  private View CLl;
+  View.OnClickListener CLm;
+  int aeA;
   private View mView;
   
   public RadioBelowSummarytAndIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.acJ = 0;
+    this.aeA = 0;
   }
   
   public RadioBelowSummarytAndIconPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(69580);
-    this.acJ = 0;
+    this.aeA = 0;
     setLayoutResource(2131494804);
     AppMethodBeat.o(69580);
   }
@@ -41,11 +43,11 @@ public class RadioBelowSummarytAndIconPreference
   {
     AppMethodBeat.i(69582);
     super.onBindView(paramView);
-    aam(8);
-    if ((this.BkW != null) && (this.BkY != null) && (!bs.jl(0, this.acJ)))
+    acw(8);
+    if ((this.CLk != null) && (this.CLm != null) && (!bt.jx(0, this.aeA)))
     {
-      this.BkW.setImageResource(this.acJ);
-      this.BkW.post(new Runnable()
+      this.CLk.setImageResource(this.aeA);
+      this.CLk.post(new Runnable()
       {
         public final void run()
         {
@@ -56,30 +58,34 @@ public class RadioBelowSummarytAndIconPreference
           AppMethodBeat.o(69578);
         }
       });
-      this.BkX.setOnClickListener(new View.OnClickListener()
+      this.CLl.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(69579);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/wallet/pwd/ui/RadioBelowSummarytAndIconPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           RadioBelowSummarytAndIconPreference.b(RadioBelowSummarytAndIconPreference.this).onClick(paramAnonymousView);
+          a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/RadioBelowSummarytAndIconPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(69579);
         }
       });
     }
-    while (this.BkV != null) {
-      if (this.HFU != 0)
+    while (this.CLj != null) {
+      if (this.JtL != 0)
       {
-        this.BkV.removeAllViews();
-        View.inflate(this.mContext, this.HFU, this.BkV);
+        this.CLj.removeAllViews();
+        View.inflate(this.mContext, this.JtL, this.CLj);
         AppMethodBeat.o(69582);
         return;
-        if (this.BkW != null) {
-          this.BkW.setVisibility(8);
+        if (this.CLk != null) {
+          this.CLk.setVisibility(8);
         }
       }
       else
       {
-        this.BkV.setVisibility(8);
+        this.CLj.setVisibility(8);
       }
     }
     AppMethodBeat.o(69582);
@@ -93,10 +99,10 @@ public class RadioBelowSummarytAndIconPreference
       paramViewGroup = super.onCreateView(paramViewGroup);
       ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
       localViewGroup.removeAllViews();
-      this.BkV = ((LinearLayout)paramViewGroup.findViewById(16908312));
+      this.CLj = ((LinearLayout)paramViewGroup.findViewById(16908312));
       View.inflate(this.mContext, 2131494890, localViewGroup);
-      this.BkW = ((ImageView)localViewGroup.findViewById(2131305551));
-      this.BkX = localViewGroup.findViewById(2131305549);
+      this.CLk = ((ImageView)localViewGroup.findViewById(2131305551));
+      this.CLl = localViewGroup.findViewById(2131305549);
       this.mView = paramViewGroup;
     }
     paramViewGroup = this.mView;

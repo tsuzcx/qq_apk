@@ -6,7 +6,7 @@
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:layout_marginRight="@dimen/c0" android:layout_marginBottom="@dimen/c0" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8">
             <ImageView android:id="@id/ht0" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" />
             <TextView android:textSize="@dimen/jo" android:textColor="@color/aj" android:ellipsize="end" android:id="@id/ht7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:maxWidth="110.0px" android:text="{nickname}" android:maxLines="1" />
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hsz" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:layout_marginLeft="@dimen/bq" />
+            <ImageView android:id="@id/hsz" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:layout_marginLeft="@dimen/bq" />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 </com.tencent.mm.plugin.finder.feed.RCLinearLayout>

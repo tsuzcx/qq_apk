@@ -2,26 +2,26 @@ package com.tencent.mm.emoji.loader.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "url", "", "path", "authKey", "fetcherType", "", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "getAuthKey", "()Ljava/lang/String;", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getFetcherType", "()I", "getPath", "getUrl", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "url", "", "path", "authKey", "fetcherType", "", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "getAuthKey", "()Ljava/lang/String;", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getFetcherType", "()I", "getPath", "getUrl", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "plugin-emojisdk_release"})
 public final class e
 {
-  final EmojiInfo fPB;
-  final String fPC;
-  final int fPD;
+  final EmojiInfo gjb;
+  final String gjc;
+  final int gjd;
   final String path;
   final String url;
   
   public e(EmojiInfo paramEmojiInfo, String paramString1, String paramString2, String paramString3, int paramInt)
   {
     AppMethodBeat.i(105431);
-    this.fPB = paramEmojiInfo;
+    this.gjb = paramEmojiInfo;
     this.url = paramString1;
     this.path = paramString2;
-    this.fPC = paramString3;
-    this.fPD = paramInt;
+    this.gjc = paramString3;
+    this.gjd = paramInt;
     AppMethodBeat.o(105431);
   }
   
@@ -33,7 +33,7 @@ public final class e
       if ((paramObject instanceof e))
       {
         paramObject = (e)paramObject;
-        if ((!k.g(this.fPB, paramObject.fPB)) || (!k.g(this.url, paramObject.url)) || (!k.g(this.path, paramObject.path)) || (!k.g(this.fPC, paramObject.fPC)) || (this.fPD != paramObject.fPD)) {}
+        if ((!p.i(this.gjb, paramObject.gjb)) || (!p.i(this.url, paramObject.url)) || (!p.i(this.path, paramObject.path)) || (!p.i(this.gjc, paramObject.gjc)) || (this.gjd != paramObject.gjd)) {}
       }
     }
     else
@@ -49,7 +49,7 @@ public final class e
   {
     int m = 0;
     AppMethodBeat.i(105433);
-    Object localObject = this.fPB;
+    Object localObject = this.gjb;
     int i;
     int j;
     if (localObject != null)
@@ -70,11 +70,11 @@ public final class e
     label122:
     for (int k = localObject.hashCode();; k = 0)
     {
-      localObject = this.fPC;
+      localObject = this.gjc;
       if (localObject != null) {
         m = localObject.hashCode();
       }
-      int n = this.fPD;
+      int n = this.gjd;
       AppMethodBeat.o(105433);
       return ((k + (j + i * 31) * 31) * 31 + m) * 31 + n;
       i = 0;
@@ -87,7 +87,7 @@ public final class e
   public final String toString()
   {
     AppMethodBeat.i(105432);
-    String str = "EmojiFetcherConfig(emojiInfo=" + this.fPB + ", url=" + this.url + ", path=" + this.path + ", authKey=" + this.fPC + ", fetcherType=" + this.fPD + ")";
+    String str = "EmojiFetcherConfig(emojiInfo=" + this.gjb + ", url=" + this.url + ", path=" + this.path + ", authKey=" + this.gjc + ", fetcherType=" + this.gjd + ")";
     AppMethodBeat.o(105432);
     return str;
   }

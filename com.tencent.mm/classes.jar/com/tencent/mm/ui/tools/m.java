@@ -13,54 +13,54 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.a;
 import com.tencent.mm.ui.base.n.b;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.z;
 
 public final class m
   extends s
 {
-  private l CGH;
-  private a ISF;
-  public n.c ISu;
-  public n.d ISv;
-  private n.a ISy;
-  private n.b ISz;
+  private l Ekt;
+  private n.a KJC;
+  private n.b KJD;
+  private a KJJ;
+  public n.d KJy;
+  public n.e KJz;
   private LayoutInflater mInflater;
-  private boolean xkQ;
+  private boolean yyS;
   
   public m(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(143176);
-    this.xkQ = true;
-    this.mInflater = z.jD(paramContext);
-    this.CGH = new l(paramContext);
+    this.yyS = true;
+    this.mInflater = z.jO(paramContext);
+    this.Ekt = new l(paramContext);
     AppMethodBeat.o(143176);
   }
   
-  protected final BaseAdapter WW()
+  protected final BaseAdapter Zp()
   {
     AppMethodBeat.i(143179);
-    if (this.ISF == null) {
-      this.ISF = new a((byte)0);
+    if (this.KJJ == null) {
+      this.KJJ = new a((byte)0);
     }
-    a locala = this.ISF;
+    a locala = this.KJJ;
     AppMethodBeat.o(143179);
     return locala;
   }
   
-  public final boolean hU()
+  public final boolean il()
   {
     AppMethodBeat.i(143177);
-    if (this.ISu != null) {
-      this.ISu.onCreateMMMenu(this.CGH);
+    if (this.KJy != null) {
+      this.KJy.onCreateMMMenu(this.Ekt);
     }
-    if ((this.CGH.aeu != null) && (this.CGH.aeu.length() > 0)) {}
+    if ((this.Ekt.agl != null) && (this.Ekt.agl.length() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.xkQ = bool;
-      bool = super.hU();
+      this.yyS = bool;
+      bool = super.il();
       AppMethodBeat.o(143177);
       return bool;
     }
@@ -69,17 +69,17 @@ public final class m
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(143178);
-    if ((this.xkQ) && (paramInt == 0))
+    if ((this.yyS) && (paramInt == 0))
     {
       AppMethodBeat.o(143178);
       return;
     }
     int i = paramInt;
-    if (this.xkQ) {
+    if (this.yyS) {
       i = paramInt - 1;
     }
-    if (this.ISv != null) {
-      this.ISv.onMMMenuItemSelected(this.CGH.getItem(i), i);
+    if (this.KJz != null) {
+      this.KJz.onMMMenuItemSelected(this.Ekt.getItem(i), i);
     }
     dismiss();
     AppMethodBeat.o(143178);
@@ -139,10 +139,10 @@ public final class m
         {
           paramView = m.c(m.this).inflate(2131494905, paramViewGroup, false);
           paramViewGroup = new a((byte)0);
-          paramViewGroup.fUk = ((TextView)paramView.findViewById(2131305902));
-          paramViewGroup.ig = ((ImageView)paramView.findViewById(2131300874));
+          paramViewGroup.gnM = ((TextView)paramView.findViewById(2131305902));
+          paramViewGroup.ka = ((ImageView)paramView.findViewById(2131300874));
           paramView.setTag(paramViewGroup);
-          paramViewGroup.fUk.setText(m.f(m.this));
+          paramViewGroup.gnM.setText(m.f(m.this));
         }
       }
       for (;;)
@@ -161,43 +161,43 @@ public final class m
         {
           paramView = m.c(m.this).inflate(2131494904, paramViewGroup, false);
           paramViewGroup = new a((byte)0);
-          paramViewGroup.fUk = ((TextView)paramView.findViewById(2131305902));
-          paramViewGroup.ig = ((ImageView)paramView.findViewById(2131300874));
-          paramViewGroup.fvu = paramView.findViewById(2131304239);
+          paramViewGroup.gnM = ((TextView)paramView.findViewById(2131305902));
+          paramViewGroup.ka = ((ImageView)paramView.findViewById(2131300874));
+          paramViewGroup.fOB = paramView.findViewById(2131304239);
           paramView.setTag(paramViewGroup);
           localMenuItem = m.b(m.this).getItem(i);
-          paramViewGroup.fUk.setText(localMenuItem.getTitle());
+          paramViewGroup.gnM.setText(localMenuItem.getTitle());
           if (localMenuItem.getIcon() == null) {
             break label327;
           }
-          paramViewGroup.ig.setVisibility(0);
-          paramViewGroup.ig.setImageDrawable(localMenuItem.getIcon());
+          paramViewGroup.ka.setVisibility(0);
+          paramViewGroup.ka.setImageDrawable(localMenuItem.getIcon());
         }
         for (;;)
         {
           if (m.e(m.this) != null) {
-            m.e(m.this).a(paramViewGroup.fUk, localMenuItem);
+            m.e(m.this).a(paramViewGroup.gnM, localMenuItem);
           }
           if (i != m.b(m.this).size() - 1) {
             break label378;
           }
-          paramViewGroup.fvu.setBackgroundResource(2131234277);
+          paramViewGroup.fOB.setBackgroundResource(2131234277);
           break;
           paramViewGroup = (a)paramView.getTag();
           break label199;
           label327:
           if (m.d(m.this) != null)
           {
-            paramViewGroup.ig.setVisibility(0);
-            m.d(m.this).a(paramViewGroup.ig, localMenuItem);
+            paramViewGroup.ka.setVisibility(0);
+            m.d(m.this).a(paramViewGroup.ka, localMenuItem);
           }
           else
           {
-            paramViewGroup.ig.setVisibility(8);
+            paramViewGroup.ka.setVisibility(8);
           }
         }
         label378:
-        paramViewGroup.fvu.setBackgroundResource(2131234276);
+        paramViewGroup.fOB.setBackgroundResource(2131234276);
       }
     }
     
@@ -215,9 +215,9 @@ public final class m
     
     final class a
     {
-      TextView fUk;
-      View fvu;
-      ImageView ig;
+      View fOB;
+      TextView gnM;
+      ImageView ka;
       
       private a() {}
     }

@@ -5,46 +5,46 @@ import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.plugin.voip.model.b;
 import com.tencent.mm.plugin.voip.model.c;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
 {
   public boolean isStart;
-  public c osB;
-  public final Object tJl;
-  public int tJm;
-  public boolean tJn;
-  public com.tencent.mm.plugin.ipcall.model.a.a tJo;
+  public c oVX;
+  public final Object uLY;
+  public int uLZ;
+  public boolean uMa;
+  public com.tencent.mm.plugin.ipcall.model.a.a uMb;
   
   public a(com.tencent.mm.plugin.ipcall.model.a.a parama)
   {
-    AppMethodBeat.i(196001);
-    this.osB = null;
-    this.tJl = new Object();
+    AppMethodBeat.i(193221);
+    this.oVX = null;
+    this.uLY = new Object();
     this.isStart = false;
-    this.tJm = 0;
-    this.tJn = false;
-    this.tJo = parama;
-    AppMethodBeat.o(196001);
+    this.uLZ = 0;
+    this.uMa = false;
+    this.uMb = parama;
+    AppMethodBeat.o(193221);
   }
   
-  public final void np(boolean paramBoolean)
+  public final void nJ(boolean paramBoolean)
   {
     AppMethodBeat.i(25417);
-    ac.i("MicroMsg.IPCallAudioPlayer", "setSpeakerPhoneOn, old isSpeakerPhoneOn: %b, new isSpeakerPhoneOn: %b", new Object[] { Boolean.valueOf(this.tJn), Boolean.valueOf(paramBoolean) });
-    this.tJo.ih(paramBoolean);
-    com.tencent.mm.plugin.ipcall.model.d.a locala = i.cUw();
+    ad.i("MicroMsg.IPCallAudioPlayer", "setSpeakerPhoneOn, old isSpeakerPhoneOn: %b, new isSpeakerPhoneOn: %b", new Object[] { Boolean.valueOf(this.uMa), Boolean.valueOf(paramBoolean) });
+    this.uMb.iq(paramBoolean);
+    com.tencent.mm.plugin.ipcall.model.d.a locala = i.ddH();
     if (paramBoolean) {}
-    for (int i = locala.tJF.setAppCmd(401);; i = locala.tJF.setAppCmd(402))
+    for (int i = locala.uMs.setAppCmd(401);; i = locala.uMs.setAppCmd(402))
     {
       if (i < 0) {
-        ac.e("MicroMsg.IPCallEngineManager", "setSpeakerPhoneOn, failed, ret: %d", new Object[] { Integer.valueOf(i) });
+        ad.e("MicroMsg.IPCallEngineManager", "setSpeakerPhoneOn, failed, ret: %d", new Object[] { Integer.valueOf(i) });
       }
-      if (paramBoolean != this.tJn)
+      if (paramBoolean != this.uMa)
       {
-        this.tJn = paramBoolean;
-        if ((this.osB != null) && (this.osB.Aye)) {
-          this.osB.ss(paramBoolean);
+        this.uMa = paramBoolean;
+        if ((this.oVX != null) && (this.oVX.BXz)) {
+          this.oVX.tb(paramBoolean);
         }
       }
       AppMethodBeat.o(25417);
@@ -55,31 +55,31 @@ public final class a
   public final class a
     implements Runnable
   {
-    private c tJq = null;
+    private c uMd = null;
     
     public a(c paramc)
     {
-      this.tJq = paramc;
+      this.uMd = paramc;
     }
     
     public final void run()
     {
       AppMethodBeat.i(25414);
-      if (this.tJq != null)
+      if (this.uMd != null)
       {
-        this.tJq.ehi();
-        this.tJq.ehf();
-        this.tJq = null;
-        a.this.tJn = false;
+        this.uMd.euU();
+        this.uMd.euR();
+        this.uMd = null;
+        a.this.uMa = false;
       }
-      a.this.tJo.bCr();
+      a.this.uMb.bGw();
       AppMethodBeat.o(25414);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.c.a
  * JD-Core Version:    0.7.0.1
  */

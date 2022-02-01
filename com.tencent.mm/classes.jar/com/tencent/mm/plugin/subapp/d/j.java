@@ -3,54 +3,54 @@ package com.tencent.mm.plugin.subapp.d;
 import android.os.HandlerThread;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.modelvoice.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
 public final class j
-  implements g
+  implements f
 {
-  private static int cXd = 0;
-  Queue<String> cWW;
-  Queue<String> cWX;
-  Map<String, f.a> cWY;
-  private boolean cWZ;
-  private boolean cXa;
-  int cXb;
-  private long cXc;
-  f.a cXf;
-  private au cXg;
+  private static int diu = 0;
+  Queue<String> dim;
+  Queue<String> din;
+  Map<String, f.a> dio;
+  private boolean dip;
+  private boolean diq;
+  int dis;
+  private long dit;
+  f.a diw;
+  private av dix;
   private boolean running;
   
   public j()
   {
     AppMethodBeat.i(28989);
-    this.cWW = new LinkedList();
-    this.cWX = new LinkedList();
-    this.cWY = new HashMap();
-    this.cWZ = false;
-    this.cXa = false;
+    this.dim = new LinkedList();
+    this.din = new LinkedList();
+    this.dio = new HashMap();
+    this.dip = false;
+    this.diq = false;
     this.running = false;
-    this.cXb = 0;
-    this.cXc = 0L;
-    this.cXf = new f.a();
-    this.cXg = new au(az.agU().GrZ.getLooper(), new au.a()
+    this.dis = 0;
+    this.dit = 0L;
+    this.diw = new f.a();
+    this.dix = new av(ba.ajF().IdO.getLooper(), new av.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(28988);
-        ac.d("MicroMsg.VoiceRemindService", "onTimerExpired");
+        ad.d("MicroMsg.VoiceRemindService", "onTimerExpired");
         try
         {
           j.h(j.this);
@@ -61,32 +61,32 @@ public final class j
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.VoiceRemindService", localException, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.VoiceRemindService", localException, "", new Object[0]);
           }
         }
       }
     }, false);
-    az.agi().a(329, this);
+    ba.aiU().a(329, this);
     AppMethodBeat.o(28989);
   }
   
-  private void Ou()
+  private void Qe()
   {
     AppMethodBeat.i(28991);
-    this.cWY.clear();
-    this.cWW.clear();
-    this.cWX.clear();
-    this.cXa = false;
-    this.cWZ = false;
+    this.dio.clear();
+    this.dim.clear();
+    this.din.clear();
+    this.diq = false;
+    this.dip = false;
     this.running = false;
-    ac.d("MicroMsg.VoiceRemindService", "Finish service use time(ms):" + this.cXf.YH());
+    ad.d("MicroMsg.VoiceRemindService", "Finish service use time(ms):" + this.diw.abj());
     AppMethodBeat.o(28991);
   }
   
   public final void onSceneEnd(final int paramInt1, final int paramInt2, String paramString, final n paramn)
   {
     AppMethodBeat.i(28990);
-    az.agU().az(new Runnable()
+    ba.ajF().ay(new Runnable()
     {
       public final void run()
       {
@@ -104,19 +104,19 @@ public final class j
           if (str != null)
           {
             l1 = l2;
-            if (j.this.cWY.get(str) != null)
+            if (j.this.dio.get(str) != null)
             {
-              l1 = ((f.a)j.this.cWY.get(str)).YH();
-              j.this.cWY.remove(str);
+              l1 = ((f.a)j.this.dio.get(str)).abj();
+              j.this.dio.remove(str);
             }
           }
-          ac.d("MicroMsg.VoiceRemindService", "onSceneEnd SceneType:" + paramn.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " file:" + str + " time:" + l1);
+          ad.d("MicroMsg.VoiceRemindService", "onSceneEnd SceneType:" + paramn.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " file:" + str + " time:" + l1);
           if ((paramInt1 != 3) || (i == 0)) {
             break label416;
           }
           j.c(j.this);
           label220:
-          ac.d("MicroMsg.VoiceRemindService", "onSceneEnd  inCnt:" + j.cXd + " stop:" + j.d(j.this) + " running:" + j.e(j.this) + " recving:" + j.f(j.this) + " sending:" + j.g(j.this));
+          ad.d("MicroMsg.VoiceRemindService", "onSceneEnd  inCnt:" + j.diu + " stop:" + j.d(j.this) + " running:" + j.e(j.this) + " recving:" + j.f(j.this) + " sending:" + j.g(j.this));
           if (j.d(j.this) <= 0) {
             break label435;
           }
@@ -124,7 +124,7 @@ public final class j
         }
         for (;;)
         {
-          j.Ov();
+          j.bJL();
           AppMethodBeat.o(28986);
           return;
           if (paramn.getType() == 329)
@@ -134,8 +134,8 @@ public final class j
             i = ((b)paramn).retCode;
             break;
           }
-          ac.e("MicroMsg.VoiceRemindService", "onSceneEnd Error SceneType:" + paramn.getType());
-          j.Ov();
+          ad.e("MicroMsg.VoiceRemindService", "onSceneEnd Error SceneType:" + paramn.getType());
+          j.bJL();
           AppMethodBeat.o(28986);
           return;
           label416:
@@ -157,13 +157,13 @@ public final class j
   public final void run()
   {
     AppMethodBeat.i(28992);
-    az.agU().az(new Runnable()
+    ba.ajF().ay(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(28987);
         long l = System.currentTimeMillis() - j.j(j.this);
-        ac.d("MicroMsg.VoiceRemindService", "Try Run service runningFlag:" + j.e(j.this) + " timeWait:" + l + " sending:" + j.g(j.this) + " recving:" + j.f(j.this));
+        ad.d("MicroMsg.VoiceRemindService", "Try Run service runningFlag:" + j.e(j.this) + " timeWait:" + l + " sending:" + j.g(j.this) + " recving:" + j.f(j.this));
         if (j.e(j.this))
         {
           if (l < 60000L)
@@ -171,14 +171,14 @@ public final class j
             AppMethodBeat.o(28987);
             return;
           }
-          ac.e("MicroMsg.VoiceRemindService", "ERR: Try Run service runningFlag:" + j.e(j.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + j.g(j.this) + " recving:" + j.f(j.this));
+          ad.e("MicroMsg.VoiceRemindService", "ERR: Try Run service runningFlag:" + j.e(j.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + j.g(j.this) + " recving:" + j.f(j.this));
         }
         j.k(j.this);
         j.b(j.this);
         j.a(j.this, 3);
         j.a(j.this);
-        j.this.cXf.fJW = SystemClock.elapsedRealtime();
-        j.l(j.this).au(10L, 10L);
+        j.this.diw.gdx = SystemClock.elapsedRealtime();
+        j.l(j.this).az(10L, 10L);
         AppMethodBeat.o(28987);
       }
     });

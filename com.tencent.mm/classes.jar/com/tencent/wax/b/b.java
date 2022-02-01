@@ -4,9 +4,9 @@ import java.util.Map;
 
 public abstract interface b
 {
-  public abstract String cWJ();
+  public abstract String dfV();
   
-  public abstract Map cWK();
+  public abstract Map dfW();
   
   public abstract void finish();
 }

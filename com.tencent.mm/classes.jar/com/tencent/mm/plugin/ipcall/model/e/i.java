@@ -1,66 +1,66 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.model.u;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.ipcall.a.c;
-import com.tencent.mm.protocal.protobuf.chx;
-import com.tencent.mm.protocal.protobuf.chy;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.cmx;
+import com.tencent.mm.protocal.protobuf.cmy;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class i
   extends n
   implements k
 {
-  private g callback;
+  private f callback;
   private b rr;
-  public chx tKE;
-  public chy tKF;
+  public cmx uNr;
+  public cmy uNs;
   
   public i(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(25475);
     this.rr = null;
-    this.tKE = null;
-    this.tKF = null;
+    this.uNr = null;
+    this.uNs = null;
     this.callback = null;
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new chx();
-    ((b.a)localObject).hvu = new chy();
+    ((b.a)localObject).hNM = new cmx();
+    ((b.a)localObject).hNN = new cmy();
     ((b.a)localObject).funcId = 991;
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/pstninvite";
-    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).hNO = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aAz();
+    this.rr = ((b.a)localObject).aDC();
     long l = System.currentTimeMillis();
-    int i = c.cVS();
-    localObject = (chx)this.rr.hvr.hvw;
-    ((chx)localObject).tlK = u.axw();
-    ((chx)localObject).FvS = paramString2;
-    ((chx)localObject).tlJ = paramString1;
-    ((chx)localObject).FvR = paramInt1;
-    ((chx)localObject).EqS = i;
-    ((chx)localObject).Fwa = 1;
-    ((chx)localObject).FvQ = l;
-    ((chx)localObject).FvZ = paramInt2;
-    ((chx)localObject).Fwb = paramInt3;
-    this.tKE = ((chx)localObject);
-    ac.i("MicroMsg.NetSceneIPCallInvite", "toUsername: %s, phoneNumber: %s, invitedId: %s, netType: %d, dialScene: %d, countryType: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    int i = c.dfd();
+    localObject = (cmx)this.rr.hNK.hNQ;
+    ((cmx)localObject).ukj = u.aAm();
+    ((cmx)localObject).HfY = paramString2;
+    ((cmx)localObject).uki = paramString1;
+    ((cmx)localObject).HfX = paramInt1;
+    ((cmx)localObject).FYc = i;
+    ((cmx)localObject).Hgg = 1;
+    ((cmx)localObject).HfW = l;
+    ((cmx)localObject).Hgf = paramInt2;
+    ((cmx)localObject).Hgh = paramInt3;
+    this.uNr = ((cmx)localObject);
+    ad.i("MicroMsg.NetSceneIPCallInvite", "toUsername: %s, phoneNumber: %s, invitedId: %s, netType: %d, dialScene: %d, countryType: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(25475);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(25476);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(25476);
     return i;
@@ -74,8 +74,8 @@ public final class i
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(25477);
-    ac.i("MicroMsg.NetSceneIPCallInvite", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.tKF = ((chy)((b)paramq).hvs.hvw);
+    ad.i("MicroMsg.NetSceneIPCallInvite", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.uNs = ((cmy)((b)paramq).hNL.hNQ);
     if ((paramInt2 != 0) && (paramInt3 != 0))
     {
       if (this.callback != null) {

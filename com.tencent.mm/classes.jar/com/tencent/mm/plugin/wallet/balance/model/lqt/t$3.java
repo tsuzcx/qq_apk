@@ -3,42 +3,42 @@ package com.tencent.mm.plugin.wallet.balance.model.lqt;
 import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.protocal.protobuf.agt;
-import com.tencent.mm.protocal.protobuf.bzf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.al.a.a;
+import com.tencent.mm.protocal.protobuf.ajj;
+import com.tencent.mm.protocal.protobuf.cdw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.vending.c.a;
 import com.tencent.mm.vending.g.b;
 
 final class t$3
-  implements a<Void, c.a<bzf>>
+  implements a<Void, a.a<cdw>>
 {
   t$3(t paramt, b paramb) {}
   
-  private Void a(c.a<bzf> parama)
+  private Void a(a.a<cdw> parama)
   {
     AppMethodBeat.i(182500);
-    ac.i("MicroMsg.LqtDetailInteractor", "lqtOnClickRedeem end, errType: %s, errCode: %s", new Object[] { Integer.valueOf(parama.errType), Integer.valueOf(parama.errCode) });
+    ad.i("MicroMsg.LqtDetailInteractor", "lqtOnClickRedeem end, errType: %s, errCode: %s", new Object[] { Integer.valueOf(parama.errType), Integer.valueOf(parama.errCode) });
     if ((parama.errType == 0) && (parama.errCode == 0))
     {
-      ae.ayI(((bzf)parama.hvj).AYl);
-      v.eok().a((bzf)parama.hvj);
-      s locals = s.AXi;
-      String str = ((bzf)parama.hvj).Foa;
-      agt localagt = ((bzf)parama.hvj).Fob;
-      locals.AXf = str;
-      locals.AXg = localagt;
-      s.AXi.a(((bzf)parama.hvj).FnZ, false);
+      ae.aDQ(((cdw)parama.hNC).Cyu);
+      v.eCj().a((cdw)parama.hNC);
+      s locals = s.Cxr;
+      String str = ((cdw)parama.hNC).GXM;
+      ajj localajj = ((cdw)parama.hNC).GXN;
+      locals.Cxo = str;
+      locals.Cxp = localajj;
+      s.Cxr.a(((cdw)parama.hNC).GXL, false);
     }
     for (;;)
     {
-      this.cda.resume();
-      parama = Jql;
+      this.cnr.resume();
+      parama = LhQ;
       AppMethodBeat.o(182500);
       return parama;
-      parama = ai.getContext().getString(2131765901);
-      Toast.makeText(ai.getContext(), parama, 1).show();
+      parama = aj.getContext().getString(2131765901);
+      Toast.makeText(aj.getContext(), parama, 1).show();
     }
   }
 }

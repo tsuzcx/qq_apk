@@ -18,47 +18,47 @@ import java.util.Map;
 public final class c
   implements a, ITPImageGeneratorCallback
 {
-  private Map<Long, d> CZX;
-  private long KgK;
-  private TPImageGenerator KgL;
+  private Map<Long, d> EDW;
+  private long Maa;
+  private TPImageGenerator Mab;
   
   public c(int paramInt)
   {
-    AppMethodBeat.i(187852);
-    this.KgK = 0L;
-    this.KgL = new TPImageGenerator(paramInt, this);
-    this.CZX = new HashMap();
-    this.KgL.init();
-    AppMethodBeat.o(187852);
+    AppMethodBeat.i(191873);
+    this.Maa = 0L;
+    this.Mab = new TPImageGenerator(paramInt, this);
+    this.EDW = new HashMap();
+    this.Mab.init();
+    AppMethodBeat.o(191873);
   }
   
   public c(String paramString)
   {
-    AppMethodBeat.i(187851);
-    this.KgK = 0L;
-    this.KgL = new TPImageGenerator(paramString, this);
-    this.CZX = new HashMap();
-    this.KgL.init();
-    AppMethodBeat.o(187851);
+    AppMethodBeat.i(191872);
+    this.Maa = 0L;
+    this.Mab = new TPImageGenerator(paramString, this);
+    this.EDW = new HashMap();
+    this.Mab.init();
+    AppMethodBeat.o(191872);
   }
   
   public final void a(long paramLong, TPImageGeneratorParams paramTPImageGeneratorParams, d paramd)
   {
-    AppMethodBeat.i(187853);
-    this.KgK += 1L;
-    this.CZX.put(Long.valueOf(this.KgK), paramd);
-    this.KgL.generateImageAsyncAtTime(paramLong, this.KgK, paramTPImageGeneratorParams);
-    AppMethodBeat.o(187853);
+    AppMethodBeat.i(191874);
+    this.Maa += 1L;
+    this.EDW.put(Long.valueOf(this.Maa), paramd);
+    this.Mab.generateImageAsyncAtTime(paramLong, this.Maa, paramTPImageGeneratorParams);
+    AppMethodBeat.o(191874);
   }
   
   public final void onImageGenerationCompleted(int paramInt, long paramLong1, long paramLong2, long paramLong3, TPVideoFrame paramTPVideoFrame)
   {
-    AppMethodBeat.i(187855);
-    if (((d)this.CZX.get(Long.valueOf(paramLong3)) == null) || (paramInt != 0) || (paramTPVideoFrame == null) || (paramTPVideoFrame.data.length <= 0) || (paramTPVideoFrame.height == 0) || (paramTPVideoFrame.width == 0)) {}
+    AppMethodBeat.i(191876);
+    if (((d)this.EDW.get(Long.valueOf(paramLong3)) == null) || (paramInt != 0) || (paramTPVideoFrame == null) || (paramTPVideoFrame.data.length <= 0) || (paramTPVideoFrame.height == 0) || (paramTPVideoFrame.width == 0)) {}
     for (;;)
     {
-      this.CZX.remove(Long.valueOf(paramLong3));
-      AppMethodBeat.o(187855);
+      this.EDW.remove(Long.valueOf(paramLong3));
+      AppMethodBeat.o(191876);
       return;
       Object localObject = paramTPVideoFrame.data[0];
       paramInt = paramTPVideoFrame.width;
@@ -78,17 +78,17 @@ public final class c
   
   public final void release()
   {
-    AppMethodBeat.i(187854);
-    this.KgL.cancelAllImageGenerations();
-    this.CZX.clear();
-    this.KgL.unInit();
-    this.KgL = null;
-    AppMethodBeat.o(187854);
+    AppMethodBeat.i(191875);
+    this.Mab.cancelAllImageGenerations();
+    this.EDW.clear();
+    this.Mab.unInit();
+    this.Mab = null;
+    AppMethodBeat.o(191875);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.c.c
  * JD-Core Version:    0.7.0.1
  */

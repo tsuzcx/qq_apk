@@ -3,28 +3,28 @@ package com.tencent.mm.ui.tools.b;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.i;
 
 public final class b
   extends a
 {
-  private String IVe;
-  public int IVf = 0;
-  public int IVg = 0;
-  public int IVh = 0;
-  private a IVi;
+  private String KMi;
+  public int KMj = 0;
+  public int KMk = 0;
+  public int KMl = 0;
+  private a KMm;
   private int mHeight = 2048;
   public int mSize = 104857600;
   private int mWidth = 2048;
   
   private b(String paramString)
   {
-    this.IVe = paramString;
+    this.KMi = paramString;
   }
   
-  public static b aRr(String paramString)
+  public static b aXp(String paramString)
   {
     AppMethodBeat.i(143300);
     paramString = new b(paramString);
@@ -35,34 +35,34 @@ public final class b
   public final void a(a parama)
   {
     AppMethodBeat.i(143301);
-    this.IVi = parama;
-    cNZ();
+    this.KMm = parama;
+    cWs();
     AppMethodBeat.o(143301);
   }
   
-  public final b acv(int paramInt)
+  public final b aeT(int paramInt)
   {
     this.mWidth = paramInt;
     this.mHeight = paramInt;
     return this;
   }
   
-  protected final int bcE()
+  protected final int bgi()
   {
     AppMethodBeat.i(143302);
-    if (bs.isNullOrNil(this.IVe)) {
-      ac.w("MicroMsg.ImageBoundaryCheck", "dz[check image but path is null or nil]");
+    if (bt.isNullOrNil(this.KMi)) {
+      ad.w("MicroMsg.ImageBoundaryCheck", "dz[check image but path is null or nil]");
     }
-    this.IVf = ((int)i.aSp(this.IVe));
-    String str = this.IVe;
+    this.KMj = ((int)i.aYo(this.KMi));
+    String str = this.KMi;
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
     MMBitmapFactory.decodeFile(str, localOptions);
-    this.IVg = localOptions.outWidth;
-    this.IVh = localOptions.outHeight;
-    if (this.IVf <= this.mSize)
+    this.KMk = localOptions.outWidth;
+    this.KMl = localOptions.outHeight;
+    if (this.KMj <= this.mSize)
     {
-      if (this.IVf < 0)
+      if (this.KMj < 0)
       {
         i = 1;
         if (i == 0) {
@@ -71,19 +71,19 @@ public final class b
       }
     }
     else {
-      ac.d("MicroMsg.ImageBoundaryCheck", "dz[over size] size = %d", new Object[] { Integer.valueOf(this.IVf) });
+      ad.d("MicroMsg.ImageBoundaryCheck", "dz[over size] size = %d", new Object[] { Integer.valueOf(this.KMj) });
     }
     label206:
     for (int i = 0;; i = 1)
     {
-      if ((this.IVg > this.mWidth) || (this.IVh > this.mHeight))
+      if ((this.KMk > this.mWidth) || (this.KMl > this.mHeight))
       {
-        ac.d("MicroMsg.ImageBoundaryCheck", "dz[over width or height] width = %d, height = %d", new Object[] { Integer.valueOf(this.IVg), Integer.valueOf(this.IVh) });
+        ad.d("MicroMsg.ImageBoundaryCheck", "dz[over width or height] width = %d, height = %d", new Object[] { Integer.valueOf(this.KMk), Integer.valueOf(this.KMl) });
         i = 0;
       }
       if (i != 0)
       {
-        ac.i("MicroMsg.ImageBoundaryCheck", "dz[status ok]");
+        ad.i("MicroMsg.ImageBoundaryCheck", "dz[status ok]");
         AppMethodBeat.o(143302);
         return 0;
         i = 0;
@@ -94,26 +94,26 @@ public final class b
     }
   }
   
-  protected final void cNZ()
+  protected final void cWs()
   {
     AppMethodBeat.i(143303);
-    if (this.IVi == null)
+    if (this.KMm == null)
     {
-      ac.w("MicroMsg.ImageBoundaryCheck", "dz[callback is null]");
+      ad.w("MicroMsg.ImageBoundaryCheck", "dz[callback is null]");
       AppMethodBeat.o(143303);
       return;
     }
-    switch (bcE())
+    switch (bgi())
     {
     }
     for (;;)
     {
       AppMethodBeat.o(143303);
       return;
-      this.IVi.a(this);
+      this.KMm.a(this);
       AppMethodBeat.o(143303);
       return;
-      this.IVi.cdo();
+      this.KMm.chR();
     }
   }
   
@@ -121,7 +121,7 @@ public final class b
   {
     public abstract void a(b paramb);
     
-    public abstract void cdo();
+    public abstract void chR();
   }
 }
 

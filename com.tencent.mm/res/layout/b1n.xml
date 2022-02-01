@@ -30,7 +30,7 @@
                 <TextView android:textColor="@color/rk" android:id="@id/g52" android:padding="0.0dip" android:paddingBottom="@dimen/c8" android:visibility="gone" android:layout_marginTop="@dimen/bq" android:text="@string/eb6" style="@style/o3" />
             </LinearLayout>
             <LinearLayout android:orientation="vertical" android:id="@id/e4y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5">
-                <TextView android:textColor="@color/rk" android:padding="0.0dip" android:text="@string/eak" style="@style/o3" />
+                <TextView android:textColor="@color/rk" android:id="@id/i4_" android:padding="0.0dip" android:text="@string/eak" style="@style/o3" />
                 <LinearLayout android:orientation="vertical" android:background="@drawable/oy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bq">
                     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e4w" android:background="@drawable/amv" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/jm">
                         <TextView android:gravity="center|left" android:id="@id/e50" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/jm" android:text="@string/fo3" android:maxLines="2" android:singleLine="false" android:layout_weight="1.0" style="@style/lw" />

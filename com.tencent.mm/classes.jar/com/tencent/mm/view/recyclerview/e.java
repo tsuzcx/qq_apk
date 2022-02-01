@@ -13,63 +13,71 @@ import java.util.LinkedHashSet;
 public class e
   extends RecyclerView.w
 {
-  private final SparseArray<View> JCn;
-  private final LinkedHashSet<Integer> JCo;
-  private final LinkedHashSet<Integer> JCp;
-  public Object JCq;
+  private final LinkedHashSet<Integer> Lvu;
+  private final LinkedHashSet<Integer> Lvv;
+  public Object Lvw;
   private final Context context;
-  public RecyclerView fTr;
-  private RecyclerView.a fUp;
+  public RecyclerView gmV;
+  private RecyclerView.a gnR;
+  private final SparseArray<View> sTT;
   private Object tag;
   
   public e(View paramView)
   {
     super(paramView);
     AppMethodBeat.i(164329);
-    this.fTr = null;
-    this.JCn = new SparseArray();
-    this.JCo = new LinkedHashSet();
-    this.JCp = new LinkedHashSet();
+    this.gmV = null;
+    this.sTT = new SparseArray();
+    this.Lvu = new LinkedHashSet();
+    this.Lvv = new LinkedHashSet();
     this.context = paramView.getContext();
     AppMethodBeat.o(164329);
   }
   
-  public final <T extends View> T adJ(int paramInt)
+  public final <T extends View> T Gd(int paramInt)
   {
     AppMethodBeat.i(164335);
-    View localView2 = (View)this.JCn.get(paramInt);
+    View localView2 = (View)this.sTT.get(paramInt);
     View localView1 = localView2;
     if (localView2 == null)
     {
-      localView1 = this.asD.findViewById(paramInt);
-      this.JCn.put(paramInt, localView1);
+      localView1 = this.auu.findViewById(paramInt);
+      this.sTT.put(paramInt, localView1);
     }
     AppMethodBeat.o(164335);
     return localView1;
   }
   
+  public final e agj(int paramInt)
+  {
+    AppMethodBeat.i(164332);
+    ((TextView)Gd(2131298516)).setText(paramInt);
+    AppMethodBeat.o(164332);
+    return this;
+  }
+  
   public final e b(RecyclerView.a parama)
   {
-    this.fUp = parama;
+    this.gnR = parama;
     return this;
   }
   
   public final e d(int paramInt, CharSequence paramCharSequence)
   {
     AppMethodBeat.i(164331);
-    ((TextView)adJ(paramInt)).setText(paramCharSequence);
+    ((TextView)Gd(paramInt)).setText(paramCharSequence);
     AppMethodBeat.o(164331);
     return this;
   }
   
-  public final void ej(Object paramObject)
+  public final void em(Object paramObject)
   {
-    this.JCq = paramObject;
+    this.Lvw = paramObject;
   }
   
-  public final <T> T fzs()
+  public final <T> T fQC()
   {
-    return this.JCq;
+    return this.Lvw;
   }
   
   public final Context getContext()
@@ -80,14 +88,14 @@ public class e
   public final RecyclerView getRecyclerView()
   {
     AppMethodBeat.i(164330);
-    if ((this.fTr == null) && ((this.asD.getParent() instanceof RecyclerView)))
+    if ((this.gmV == null) && ((this.auu.getParent() instanceof RecyclerView)))
     {
-      this.fTr = ((RecyclerView)this.asD.getParent());
-      localRecyclerView = this.fTr;
+      this.gmV = ((RecyclerView)this.auu.getParent());
+      localRecyclerView = this.gmV;
       AppMethodBeat.o(164330);
       return localRecyclerView;
     }
-    RecyclerView localRecyclerView = this.fTr;
+    RecyclerView localRecyclerView = this.gmV;
     AppMethodBeat.o(164330);
     return localRecyclerView;
   }
@@ -97,33 +105,25 @@ public class e
     return this.tag;
   }
   
-  public final e kj(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(197248);
-    ((TextView)adJ(paramInt1)).setText(paramInt2);
-    AppMethodBeat.o(197248);
-    return this;
-  }
-  
-  public final e kk(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(197249);
-    ((TextView)adJ(paramInt1)).setTextColor(paramInt2);
-    AppMethodBeat.o(197249);
-    return this;
-  }
-  
-  public final e kl(int paramInt1, int paramInt2)
+  public final e kA(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(164334);
-    adJ(paramInt1).setVisibility(paramInt2);
+    Gd(paramInt1).setVisibility(paramInt2);
     AppMethodBeat.o(164334);
+    return this;
+  }
+  
+  public final e kz(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(186565);
+    ((TextView)Gd(paramInt1)).setTextColor(paramInt2);
+    AppMethodBeat.o(186565);
     return this;
   }
   
   public final void setRecyclerView(RecyclerView paramRecyclerView)
   {
-    this.fTr = paramRecyclerView;
+    this.gmV = paramRecyclerView;
   }
   
   public final void setTag(Object paramObject)
@@ -133,7 +133,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.view.recyclerview.e
  * JD-Core Version:    0.7.0.1
  */

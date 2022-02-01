@@ -1,90 +1,58 @@
 package com.tencent.mm.plugin.appbrand.jsapi.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.f.a.b.h;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import org.json.JSONArray;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.widget.input.d.h;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class i
-  extends b
+public class i
+  extends a<h>
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "eraseMapLines";
+  private static final int CTRL_INDEX = 112;
+  private static final String NAME = "updateInput";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public void a(aa paramaa, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(143663);
-    super.a(paramc, paramJSONObject, paramInt);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(136292);
+    h localh = new h();
+    if (!a(localh, paramJSONObject, paramaa, paramInt))
     {
-      ac.e("MicroMsg.JsApiEraseMapLines", "data is null");
-      paramc.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(143663);
+      AppMethodBeat.o(136292);
       return;
     }
-    ac.i("MicroMsg.JsApiEraseMapLines", "data:%s", new Object[] { paramJSONObject });
-    com.tencent.mm.plugin.appbrand.jsapi.f.a.b localb = h(paramc, paramJSONObject);
-    if (localb == null)
+    try
     {
-      ac.e("MicroMsg.JsApiEraseMapLines", "mapView is null, return");
-      paramc.h(paramInt, e("fail:mapview is null", null));
-      AppMethodBeat.o(143663);
-      return;
-    }
-    if (paramJSONObject.has("lines")) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        JSONArray localJSONArray = new JSONArray(paramJSONObject.optString("lines"));
-        i = 0;
-        if (i < localJSONArray.length())
-        {
-          JSONObject localJSONObject1 = (JSONObject)localJSONArray.get(i);
-          String str = localJSONObject1.optString("id");
-          if (bs.isNullOrNil(str)) {
-            break label347;
-          }
-          paramJSONObject = null;
-          JSONObject localJSONObject2 = localJSONObject1.optJSONObject("point");
-          if (localJSONObject2 != null) {
-            paramJSONObject = new b.h(bs.getDouble(localJSONObject2.optString("latitude"), 0.0D), bs.getDouble(localJSONObject2.optString("longitude"), 0.0D));
-          }
-          if (paramJSONObject == null) {
-            break label347;
-          }
-          localb.a(str, localJSONObject1.optInt("index", 0), paramJSONObject, localJSONObject1.optBoolean("clear", true));
-          break label347;
-        }
-        a(paramc, paramInt, e("ok", null), true, localb.bhm());
-        AppMethodBeat.o(143663);
-        return;
+      int i = paramJSONObject.getInt("inputId");
+      if ((localh.niW != null) && (localh.niW.intValue() < 0)) {
+        localh.niW = Integer.valueOf(0);
       }
-      catch (JSONException paramJSONObject)
-      {
-        ac.m("MicroMsg.JsApiEraseMapLines", "", new Object[] { paramJSONObject });
-        a(paramc, paramInt, e("fail:internal error", null), false, localb.bhm());
-        AppMethodBeat.o(143663);
-        return;
+      if ((localh.niX != null) && (localh.niX.intValue() < 0)) {
+        localh.niX = Integer.valueOf(0);
       }
-      ac.e("MicroMsg.JsApiEraseMapLines", "data has not lines info");
-      a(paramc, paramInt, e("fail:invalid data", null), false, localb.bhm());
-      AppMethodBeat.o(143663);
+      paramJSONObject = paramJSONObject.optString("data", null);
+      if (paramJSONObject != null) {
+        ai(i, paramJSONObject);
+      }
+      com.tencent.mm.plugin.appbrand.z.m.runOnUiThread(new i.1(this, paramaa, i, localh, paramInt));
+      AppMethodBeat.o(136292);
       return;
-      label347:
-      i += 1;
     }
+    catch (JSONException paramJSONObject)
+    {
+      paramaa.h(paramInt, e("fail:invalid data", null));
+      AppMethodBeat.o(136292);
+    }
+  }
+  
+  protected final boolean bkt()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.f.i
  * JD-Core Version:    0.7.0.1
  */

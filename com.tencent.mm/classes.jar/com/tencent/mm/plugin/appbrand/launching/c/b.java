@@ -1,33 +1,48 @@
 package com.tencent.mm.plugin.appbrand.launching.c;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.api.WeAppOpenDeclarePromptBundle;
 
  enum b
 {
-  final String hUu;
+  final String inP;
   final int scene;
   
   static
   {
     AppMethodBeat.i(47409);
-    lpm = new b("WALLET", 0, "weapp://wallet/", 1019);
-    lpn = new b("SEARCH_NATIVE_FEATURE", 1, "weapp://search/", 1005);
-    lpo = new b[] { lpm, lpn };
+    lMF = new b("WALLET", 0, "weapp://wallet/", 1019);
+    lMG = new b("SEARCH_NATIVE_FEATURE", 1, "weapp://search/", 1005);
+    lMH = new b[] { lMF, lMG };
     AppMethodBeat.o(47409);
   }
   
   private b(String paramString, int paramInt)
   {
-    this.hUu = paramString;
+    this.inP = paramString;
     this.scene = paramInt;
   }
   
-  static String boa()
+  static WeAppOpenDeclarePromptBundle K(Bundle paramBundle)
+  {
+    AppMethodBeat.i(188646);
+    if (paramBundle == null)
+    {
+      AppMethodBeat.o(188646);
+      return null;
+    }
+    paramBundle = (WeAppOpenDeclarePromptBundle)paramBundle.getParcelable("weapp_open_declare_prompt_key");
+    AppMethodBeat.o(188646);
+    return paramBundle;
+  }
+  
+  static String brT()
   {
     return "";
   }
   
-  static String bob()
+  static String brU()
   {
     return "";
   }

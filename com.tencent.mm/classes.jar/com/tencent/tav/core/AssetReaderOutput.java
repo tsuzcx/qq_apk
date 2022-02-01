@@ -1,9 +1,9 @@
 package com.tencent.tav.core;
 
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
-import com.tencent.tav.decoder.VideoDecoder;
 import java.util.List;
 
 public abstract class AssetReaderOutput
@@ -27,7 +27,7 @@ public abstract class AssetReaderOutput
       do
       {
         return localCMSampleBuffer;
-        if (localCMSampleBuffer.getTime() != VideoDecoder.SAMPLE_TIME_FINISH) {
+        if (localCMSampleBuffer.getState().getStateCode() != -1L) {
           break;
         }
       } while (this.statusListener == null);
@@ -85,7 +85,7 @@ public abstract class AssetReaderOutput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.core.AssetReaderOutput
  * JD-Core Version:    0.7.0.1
  */

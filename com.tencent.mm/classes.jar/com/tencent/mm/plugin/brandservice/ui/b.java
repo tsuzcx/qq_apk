@@ -7,78 +7,80 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.brandservice.b.d;
 import com.tencent.mm.plugin.brandservice.b.d.a;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.protobuf.aaf;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.protocal.protobuf.cti;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.protocal.protobuf.acf;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.protocal.protobuf.cys;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.base.sortview.a.a;
 import java.io.IOException;
 
 public final class b
   extends com.tencent.mm.plugin.brandservice.ui.base.a
 {
-  private static com.tencent.mm.ui.base.sortview.a.b nvR;
-  CharSequence iCd;
+  private static com.tencent.mm.ui.base.sortview.a.b nXp;
+  CharSequence iVn;
   protected String iconUrl;
-  protected CharSequence nvG;
-  protected boolean nvJ;
-  protected boolean nvK;
-  protected String nvS;
+  protected CharSequence nXe;
+  protected boolean nXh;
+  protected boolean nXi;
+  protected String nXq;
   protected String username;
   
   public b(Object paramObject, String paramString)
   {
     super(6, paramObject);
-    this.nvS = paramString;
+    this.nXq = paramString;
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(5612);
-    if (this.HGb)
+    if (this.JtS)
     {
       AppMethodBeat.o(5612);
       return;
     }
     if ((paramContext == null) || (parama == null) || (this.data == null))
     {
-      ac.e("MicroMsg.BizRecommDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
+      ad.e("MicroMsg.BizRecommDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
       AppMethodBeat.o(5612);
       return;
     }
     if (!(parama instanceof a))
     {
-      ac.e("MicroMsg.BizRecommDataItem", "The DataItem is not a instance of BizProductViewHolder.");
+      ad.e("MicroMsg.BizRecommDataItem", "The DataItem is not a instance of BizProductViewHolder.");
       AppMethodBeat.o(5612);
       return;
     }
-    if (!(this.data instanceof cti))
+    if (!(this.data instanceof cys))
     {
-      ac.e("MicroMsg.BizRecommDataItem", "The data is not a instance of SearchOrRecommendItem.");
+      ad.e("MicroMsg.BizRecommDataItem", "The data is not a instance of SearchOrRecommendItem.");
       AppMethodBeat.o(5612);
       return;
     }
     a locala = (a)parama;
-    paramVarArgs = (cti)this.data;
-    if (paramVarArgs.Fbd != null) {
-      parama = paramVarArgs.Fbd.toString();
+    paramVarArgs = (cys)this.data;
+    if (paramVarArgs.GKC != null) {
+      parama = paramVarArgs.GKC.toString();
     }
     try
     {
       for (;;)
       {
-        this.iCd = com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, parama, locala.fuZ.getTextSize());
-        this.iconUrl = paramVarArgs.Eog;
-        this.username = paramVarArgs.EuE.toString();
+        this.iVn = k.b(paramContext, parama, locala.fOg.getTextSize());
+        this.iconUrl = paramVarArgs.FVp;
+        this.username = paramVarArgs.GbY.toString();
         AppMethodBeat.o(5612);
         return;
         parama = "";
@@ -88,16 +90,16 @@ public final class b
     {
       for (;;)
       {
-        this.iCd = "";
+        this.iVn = "";
       }
     }
   }
   
-  public final com.tencent.mm.ui.base.sortview.a.b bJw()
+  public final com.tencent.mm.ui.base.sortview.a.b bNP()
   {
     AppMethodBeat.i(5610);
-    if (nvR == null) {
-      nvR = new com.tencent.mm.ui.base.sortview.a.b()
+    if (nXp == null) {
+      nXp = new com.tencent.mm.ui.base.sortview.a.b()
       {
         public final void a(Context paramAnonymousContext, a.a paramAnonymousa, com.tencent.mm.ui.base.sortview.a paramAnonymousVarArgs)
         {
@@ -105,19 +107,19 @@ public final class b
           AppMethodBeat.i(5608);
           if ((paramAnonymousContext == null) || (paramAnonymousa == null) || (paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.getData() == null))
           {
-            ac.e("MicroMsg.BizRecommDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
+            ad.e("MicroMsg.BizRecommDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
             AppMethodBeat.o(5608);
             return;
           }
           if (!(paramAnonymousa instanceof b.a))
           {
-            ac.e("MicroMsg.BizRecommDataItem", "The ViewHolder is not a instance of BizRecommViewHolder.");
+            ad.e("MicroMsg.BizRecommDataItem", "The ViewHolder is not a instance of BizRecommViewHolder.");
             AppMethodBeat.o(5608);
             return;
           }
-          if (!(paramAnonymousVarArgs.getData() instanceof cti))
+          if (!(paramAnonymousVarArgs.getData() instanceof cys))
           {
-            ac.e("MicroMsg.BizRecommDataItem", "The ViewHolder is not a instance of SearchOrRecommendItem.");
+            ad.e("MicroMsg.BizRecommDataItem", "The ViewHolder is not a instance of SearchOrRecommendItem.");
             AppMethodBeat.o(5608);
             return;
           }
@@ -125,15 +127,15 @@ public final class b
           paramAnonymousa = (b)paramAnonymousVarArgs;
           paramAnonymousContext.username = paramAnonymousa.username;
           paramAnonymousContext.iconUrl = paramAnonymousa.iconUrl;
-          com.tencent.mm.pluginsdk.ui.a.b.d(paramAnonymousContext.fuY, paramAnonymousa.username);
-          paramAnonymousContext.fuZ.setText(paramAnonymousa.iCd, TextView.BufferType.SPANNABLE);
-          paramAnonymousVarArgs = paramAnonymousContext.nvQ;
-          if (paramAnonymousa.nvK)
+          com.tencent.mm.pluginsdk.ui.a.b.d(paramAnonymousContext.fOf, paramAnonymousa.username);
+          paramAnonymousContext.fOg.setText(paramAnonymousa.iVn, TextView.BufferType.SPANNABLE);
+          paramAnonymousVarArgs = paramAnonymousContext.nXo;
+          if (paramAnonymousa.nXi)
           {
             i = 0;
             paramAnonymousVarArgs.setVisibility(i);
-            paramAnonymousVarArgs = paramAnonymousContext.nvM;
-            if (!paramAnonymousa.nvJ) {
+            paramAnonymousVarArgs = paramAnonymousContext.nXk;
+            if (!paramAnonymousa.nXh) {
               break label221;
             }
           }
@@ -141,8 +143,8 @@ public final class b
           for (int i = j;; i = 8)
           {
             paramAnonymousVarArgs.setVisibility(i);
-            paramAnonymousContext.nvN.setText(paramAnonymousa.nvG, TextView.BufferType.SPANNABLE);
-            d.c(paramAnonymousContext.nvL, paramAnonymousa.nvS);
+            paramAnonymousContext.nXl.setText(paramAnonymousa.nXe, TextView.BufferType.SPANNABLE);
+            d.c(paramAnonymousContext.nXj, paramAnonymousa.nXq);
             AppMethodBeat.o(5608);
             return;
             i = 8;
@@ -156,12 +158,12 @@ public final class b
           if ((paramAnonymousView != null) && (paramAnonymousa != null) && ((paramAnonymousa instanceof b.a)))
           {
             paramAnonymousa = (b.a)paramAnonymousa;
-            paramAnonymousa.fuY = ((ImageView)paramAnonymousView.findViewById(2131296997));
-            paramAnonymousa.fuZ = ((TextView)paramAnonymousView.findViewById(2131302864));
-            paramAnonymousa.nvL = ((TextView)paramAnonymousView.findViewById(2131298724));
-            paramAnonymousa.nvQ = paramAnonymousView.findViewById(2131297275);
-            paramAnonymousa.nvM = paramAnonymousView.findViewById(2131306278);
-            paramAnonymousa.nvN = ((TextView)paramAnonymousView.findViewById(2131301045));
+            paramAnonymousa.fOf = ((ImageView)paramAnonymousView.findViewById(2131296997));
+            paramAnonymousa.fOg = ((TextView)paramAnonymousView.findViewById(2131302864));
+            paramAnonymousa.nXj = ((TextView)paramAnonymousView.findViewById(2131298724));
+            paramAnonymousa.nXo = paramAnonymousView.findViewById(2131297275);
+            paramAnonymousa.nXk = paramAnonymousView.findViewById(2131306278);
+            paramAnonymousa.nXl = ((TextView)paramAnonymousView.findViewById(2131301045));
           }
           AppMethodBeat.o(5609);
         }
@@ -175,38 +177,38 @@ public final class b
             return false;
           }
           b localb = (b)paramAnonymousa;
-          cti localcti = (cti)paramAnonymousa.getData();
+          cys localcys = (cys)paramAnonymousa.getData();
           String str2;
-          if (localcti.Fbd != null)
+          if (localcys.GKC != null)
           {
-            str2 = localcti.Fbd.FEm;
-            if (localcti.EuE == null) {
+            str2 = localcys.GKC.HoB;
+            if (localcys.GbY == null) {
               break label101;
             }
           }
           label101:
-          for (String str1 = localcti.EuE.FEm;; str1 = null)
+          for (String str1 = localcys.GbY.HoB;; str1 = null)
           {
-            if (!bs.isNullOrNil(str1)) {
+            if (!bt.isNullOrNil(str1)) {
               break label107;
             }
-            ac.e("MicroMsg.BizRecommDataItem", "onItemClick but username is null");
+            ad.e("MicroMsg.BizRecommDataItem", "onItemClick but username is null");
             AppMethodBeat.o(5606);
             return false;
             str2 = null;
             break;
           }
           label107:
-          ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(str1);
+          am localam = ((l)g.ab(l.class)).azp().Bf(str1);
           Intent localIntent = new Intent();
-          if (com.tencent.mm.n.b.ln(localai.field_type))
+          if (com.tencent.mm.o.b.lM(localam.field_type))
           {
             localIntent.putExtra("Contact_User", str1);
             localIntent.putExtra("Contact_Scene", 55);
           }
           for (;;)
           {
-            com.tencent.mm.plugin.brandservice.b.iyx.c(localIntent, paramAnonymousContext);
+            com.tencent.mm.plugin.brandservice.b.iRG.c(localIntent, paramAnonymousContext);
             str2 = null;
             paramAnonymousContext = str2;
             if (paramAnonymousVarArgs != null)
@@ -220,32 +222,32 @@ public final class b
                 }
               }
             }
-            paramAnonymousVarArgs = localb.bJN();
+            paramAnonymousVarArgs = localb.bOg();
             if ((paramAnonymousVarArgs != null) && (paramAnonymousContext != null)) {
-              paramAnonymousVarArgs.a(paramAnonymousContext, paramAnonymousa, 1, str1, localb.bJO(), localb.getPosition());
+              paramAnonymousVarArgs.a(paramAnonymousContext, paramAnonymousa, 1, str1, localb.bOh(), localb.getPosition());
             }
             AppMethodBeat.o(5606);
             return true;
             localIntent.putExtra("Contact_User", str1);
-            localIntent.putExtra("Contact_Alias", localcti.iJY);
+            localIntent.putExtra("Contact_Alias", localcys.jdh);
             localIntent.putExtra("Contact_Nick", str2);
-            localIntent.putExtra("Contact_Signature", localcti.iJW);
-            localIntent.putExtra("Contact_RegionCode", RegionCodeDecoder.aW(localcti.iKc, localcti.iJU, localcti.iJV));
-            localIntent.putExtra("Contact_Sex", localcti.iJT);
-            localIntent.putExtra("Contact_VUser_Info", localcti.Fer);
-            localIntent.putExtra("Contact_VUser_Info_Flag", localcti.Feq);
-            localIntent.putExtra("Contact_KWeibo_flag", localcti.Feu);
-            localIntent.putExtra("Contact_KWeibo", localcti.Fes);
-            localIntent.putExtra("Contact_KWeiboNick", localcti.Fet);
+            localIntent.putExtra("Contact_Signature", localcys.jdf);
+            localIntent.putExtra("Contact_RegionCode", RegionCodeDecoder.bf(localcys.jdl, localcys.jdd, localcys.jde));
+            localIntent.putExtra("Contact_Sex", localcys.jdc);
+            localIntent.putExtra("Contact_VUser_Info", localcys.GNV);
+            localIntent.putExtra("Contact_VUser_Info_Flag", localcys.GNU);
+            localIntent.putExtra("Contact_KWeibo_flag", localcys.GNY);
+            localIntent.putExtra("Contact_KWeibo", localcys.GNW);
+            localIntent.putExtra("Contact_KWeiboNick", localcys.GNX);
             localIntent.putExtra("Contact_Scene", 55);
-            if (localcti.Fex != null) {
+            if (localcys.GOb != null) {
               try
               {
-                localIntent.putExtra("Contact_customInfo", localcti.Fex.toByteArray());
+                localIntent.putExtra("Contact_customInfo", localcys.GOb.toByteArray());
               }
               catch (IOException localIOException)
               {
-                ac.printErrStackTrace("MicroMsg.BizRecommDataItem", localIOException, "", new Object[0]);
+                ad.printErrStackTrace("MicroMsg.BizRecommDataItem", localIOException, "", new Object[0]);
               }
             }
           }
@@ -263,12 +265,12 @@ public final class b
         }
       };
     }
-    com.tencent.mm.ui.base.sortview.a.b localb = nvR;
+    com.tencent.mm.ui.base.sortview.a.b localb = nXp;
     AppMethodBeat.o(5610);
     return localb;
   }
   
-  public final a.a bJx()
+  public final a.a bNQ()
   {
     AppMethodBeat.i(5611);
     a locala = new a();
@@ -280,16 +282,16 @@ public final class b
     extends d.a
     implements a.a
   {
-    public TextView fuZ;
-    public TextView nvL;
-    public View nvM;
-    public TextView nvN;
-    public View nvQ;
+    public TextView fOg;
+    public TextView nXj;
+    public View nXk;
+    public TextView nXl;
+    public View nXo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.b
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.game.commlib.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.IOException;
 
 public final class b
@@ -24,10 +24,10 @@ public final class b
     super(parame, a.info, "PBCache", null);
   }
   
-  public final byte[] agO(String paramString)
+  public final byte[] all(String paramString)
   {
     AppMethodBeat.i(89950);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(89950);
       return null;
@@ -44,7 +44,7 @@ public final class b
     return null;
   }
   
-  public final void agP(String paramString)
+  public final void alm(String paramString)
   {
     AppMethodBeat.i(184540);
     a locala = new a();
@@ -53,10 +53,10 @@ public final class b
     AppMethodBeat.o(184540);
   }
   
-  public final boolean b(String paramString, com.tencent.mm.bw.a parama)
+  public final boolean b(String paramString, com.tencent.mm.bx.a parama)
   {
     AppMethodBeat.i(89951);
-    if ((bs.isNullOrNil(paramString)) || (parama == null))
+    if ((bt.isNullOrNil(paramString)) || (parama == null))
     {
       AppMethodBeat.o(89951);
       return false;
@@ -64,19 +64,19 @@ public final class b
     try
     {
       parama = parama.toByteArray();
-      boolean bool = q(paramString, parama);
+      boolean bool = r(paramString, parama);
       AppMethodBeat.o(89951);
       return bool;
     }
     catch (IOException paramString)
     {
-      ac.e("MicroMsg.PBCacheStorage", "Saving Failed: %s", new Object[] { paramString.getMessage() });
+      ad.e("MicroMsg.PBCacheStorage", "Saving Failed: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(89951);
     }
     return false;
   }
   
-  public final boolean q(String paramString, byte[] paramArrayOfByte)
+  public final boolean r(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(184539);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
@@ -92,7 +92,7 @@ public final class b
     for (boolean bool = super.update(locala, new String[0]);; bool = super.insert(locala))
     {
       if (!bool) {
-        ac.e("MicroMsg.PBCacheStorage", "Saving cache failed (update or insert)");
+        ad.e("MicroMsg.PBCacheStorage", "Saving cache failed (update or insert)");
       }
       AppMethodBeat.o(184539);
       return bool;

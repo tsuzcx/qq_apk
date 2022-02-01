@@ -13,7 +13,7 @@ public final class g
     AppMethodBeat.i(76846);
     if (paramInputStream == null)
     {
-      paramList = f.a.aDl;
+      paramList = f.a.aFc;
       AppMethodBeat.o(76846);
       return paramList;
     }
@@ -32,7 +32,7 @@ public final class g
       try
       {
         paramInputStream = paramInputStream.c((InputStream)localObject);
-        paramb = f.a.aDl;
+        paramb = f.a.aFc;
         if (paramInputStream != paramb) {
           return paramInputStream;
         }

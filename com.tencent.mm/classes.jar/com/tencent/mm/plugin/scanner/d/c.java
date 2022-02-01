@@ -4,10 +4,10 @@ import com.tencent.qbar.a.a;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/result/IScanCodeResultFilter;", "", "filter", "", "Lcom/tencent/qbar/QBar$QBarResult;", "codeResultList", "scan-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/result/IScanCodeResultFilter;", "", "filter", "", "Lcom/tencent/qbar/QBar$QBarResult;", "codeResultList", "scan-sdk_release"})
 public abstract interface c
 {
-  public abstract List<a.a> fj(List<? extends a.a> paramList);
+  public abstract List<a.a> fw(List<? extends a.a> paramList);
 }
 
 

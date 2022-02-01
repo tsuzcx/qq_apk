@@ -4,34 +4,34 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 
 class FaceDetectReportInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<FaceDetectReportInfo> CREATOR;
-  protected int cVl;
-  protected int qvZ;
-  protected int qxJ;
-  protected int qxK;
-  protected int qxL;
-  protected int qxM;
-  protected int qxN;
-  protected int qxO;
-  protected int qxP;
-  protected int qxQ;
-  protected int qxR;
-  protected int qxS;
-  protected int qxT;
-  protected int qxU;
-  protected int qxV;
-  protected int qxW;
-  protected int qxX;
-  protected int qxY;
-  protected int qxZ;
-  protected HashMap<Integer, Long> qya;
-  protected HashMap<Integer, Long> qyb;
+  protected int dgB;
+  protected int rfP;
+  protected int rhA;
+  protected int rhB;
+  protected int rhC;
+  protected int rhD;
+  protected int rhE;
+  protected int rhF;
+  protected int rhG;
+  protected int rhH;
+  protected int rhI;
+  protected int rhJ;
+  protected int rhK;
+  protected int rhL;
+  protected int rhM;
+  protected int rhN;
+  protected int rhO;
+  protected int rhP;
+  protected HashMap<Integer, Long> rhQ;
+  protected HashMap<Integer, Long> rhR;
+  protected int rhz;
   protected long sessionId;
   
   static
@@ -45,27 +45,27 @@ class FaceDetectReportInfo
   {
     AppMethodBeat.i(103746);
     this.sessionId = 0L;
-    this.qxJ = 0;
-    this.qxK = 0;
-    this.qxL = 0;
-    this.qxM = 0;
-    this.qxN = 0;
-    this.qxO = 0;
-    this.qxP = 0;
-    this.qxQ = 0;
-    this.qxR = 0;
-    this.qxS = 0;
-    this.qxT = 0;
-    this.qxU = 0;
-    this.qxV = 0;
-    this.qxW = 0;
-    this.qxX = 0;
-    this.cVl = 0;
-    this.qvZ = 0;
-    this.qxY = 0;
-    this.qxZ = 0;
-    this.qya = new HashMap();
-    this.qyb = new HashMap();
+    this.rhz = 0;
+    this.rhA = 0;
+    this.rhB = 0;
+    this.rhC = 0;
+    this.rhD = 0;
+    this.rhE = 0;
+    this.rhF = 0;
+    this.rhG = 0;
+    this.rhH = 0;
+    this.rhI = 0;
+    this.rhJ = 0;
+    this.rhK = 0;
+    this.rhL = 0;
+    this.rhM = 0;
+    this.rhN = 0;
+    this.dgB = 0;
+    this.rfP = 0;
+    this.rhO = 0;
+    this.rhP = 0;
+    this.rhQ = new HashMap();
+    this.rhR = new HashMap();
     AppMethodBeat.o(103746);
   }
   
@@ -73,139 +73,139 @@ class FaceDetectReportInfo
   {
     AppMethodBeat.i(103747);
     this.sessionId = 0L;
-    this.qxJ = 0;
-    this.qxK = 0;
-    this.qxL = 0;
-    this.qxM = 0;
-    this.qxN = 0;
-    this.qxO = 0;
-    this.qxP = 0;
-    this.qxQ = 0;
-    this.qxR = 0;
-    this.qxS = 0;
-    this.qxT = 0;
-    this.qxU = 0;
-    this.qxV = 0;
-    this.qxW = 0;
-    this.qxX = 0;
-    this.cVl = 0;
-    this.qvZ = 0;
-    this.qxY = 0;
-    this.qxZ = 0;
-    this.qya = new HashMap();
-    this.qyb = new HashMap();
+    this.rhz = 0;
+    this.rhA = 0;
+    this.rhB = 0;
+    this.rhC = 0;
+    this.rhD = 0;
+    this.rhE = 0;
+    this.rhF = 0;
+    this.rhG = 0;
+    this.rhH = 0;
+    this.rhI = 0;
+    this.rhJ = 0;
+    this.rhK = 0;
+    this.rhL = 0;
+    this.rhM = 0;
+    this.rhN = 0;
+    this.dgB = 0;
+    this.rfP = 0;
+    this.rhO = 0;
+    this.rhP = 0;
+    this.rhQ = new HashMap();
+    this.rhR = new HashMap();
     this.sessionId = paramParcel.readLong();
-    this.qxJ = paramParcel.readInt();
-    this.qxK = paramParcel.readInt();
-    this.qxL = paramParcel.readInt();
-    this.qxM = paramParcel.readInt();
-    this.qxN = paramParcel.readInt();
-    this.qxO = paramParcel.readInt();
-    this.qxP = paramParcel.readInt();
-    this.qxQ = paramParcel.readInt();
-    this.qxR = paramParcel.readInt();
-    this.qxS = paramParcel.readInt();
-    this.qxT = paramParcel.readInt();
-    this.qxU = paramParcel.readInt();
-    this.qxV = paramParcel.readInt();
-    this.qxW = paramParcel.readInt();
-    this.qxX = paramParcel.readInt();
-    this.cVl = paramParcel.readInt();
-    this.qvZ = paramParcel.readInt();
-    this.qxY = paramParcel.readInt();
-    this.qxZ = paramParcel.readInt();
+    this.rhz = paramParcel.readInt();
+    this.rhA = paramParcel.readInt();
+    this.rhB = paramParcel.readInt();
+    this.rhC = paramParcel.readInt();
+    this.rhD = paramParcel.readInt();
+    this.rhE = paramParcel.readInt();
+    this.rhF = paramParcel.readInt();
+    this.rhG = paramParcel.readInt();
+    this.rhH = paramParcel.readInt();
+    this.rhI = paramParcel.readInt();
+    this.rhJ = paramParcel.readInt();
+    this.rhK = paramParcel.readInt();
+    this.rhL = paramParcel.readInt();
+    this.rhM = paramParcel.readInt();
+    this.rhN = paramParcel.readInt();
+    this.dgB = paramParcel.readInt();
+    this.rfP = paramParcel.readInt();
+    this.rhO = paramParcel.readInt();
+    this.rhP = paramParcel.readInt();
     try
     {
-      this.qya = paramParcel.readHashMap(HashMap.class.getClassLoader());
-      this.qyb = paramParcel.readHashMap(HashMap.class.getClassLoader());
+      this.rhQ = paramParcel.readHashMap(HashMap.class.getClassLoader());
+      this.rhR = paramParcel.readHashMap(HashMap.class.getClassLoader());
       AppMethodBeat.o(103747);
       return;
     }
     catch (Exception paramParcel)
     {
-      ac.printErrStackTrace("MicroMsg.FaceDetectReportInfo", paramParcel, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.FaceDetectReportInfo", paramParcel, "", new Object[0]);
       AppMethodBeat.o(103747);
     }
   }
   
-  public final void CS(int paramInt)
+  public final void DK(int paramInt)
   {
     if (paramInt > 0)
     {
       if (paramInt == 1)
       {
-        this.qxK += 1;
+        this.rhA += 1;
         return;
       }
       if (paramInt == 2)
       {
-        this.qxL += 1;
+        this.rhB += 1;
         return;
       }
-      this.qxK += 1;
+      this.rhA += 1;
       return;
     }
     if (paramInt == 0)
     {
-      this.qxM += 1;
+      this.rhC += 1;
       return;
     }
     if (paramInt == -11)
     {
-      this.qxO += 1;
+      this.rhE += 1;
       return;
     }
     if (paramInt == -12)
     {
-      this.qxP += 1;
+      this.rhF += 1;
       return;
     }
     if (paramInt == -13)
     {
-      this.qxQ += 1;
+      this.rhG += 1;
       return;
     }
     if (paramInt == -101)
     {
-      this.qxU += 1;
+      this.rhK += 1;
       return;
     }
     if (paramInt == -102)
     {
-      this.qxR += 1;
+      this.rhH += 1;
       return;
     }
     if (paramInt == -103)
     {
-      this.qxS += 1;
+      this.rhI += 1;
       return;
     }
     if (paramInt == -105)
     {
-      this.qxT += 1;
+      this.rhJ += 1;
       return;
     }
     if (paramInt == -106)
     {
-      this.qxN += 1;
+      this.rhD += 1;
       return;
     }
     if (paramInt == -107)
     {
-      this.qxV += 1;
+      this.rhL += 1;
       return;
     }
     if (paramInt == -108)
     {
-      this.qxW += 1;
+      this.rhM += 1;
       return;
     }
     if (paramInt == -109)
     {
-      this.qxX += 1;
+      this.rhN += 1;
       return;
     }
-    this.qxJ += 1;
+    this.rhz += 1;
   }
   
   public int describeContents()
@@ -217,32 +217,32 @@ class FaceDetectReportInfo
   {
     AppMethodBeat.i(103749);
     this.sessionId = 0L;
-    this.qxK = 0;
-    this.qxL = 0;
-    this.qxM = 0;
-    this.qxJ = 0;
-    this.qxN = 0;
-    this.qxO = 0;
-    this.qxP = 0;
-    this.qxQ = 0;
-    this.qxR = 0;
-    this.qxS = 0;
-    this.qxT = 0;
-    this.qxU = 0;
-    this.qxV = 0;
-    this.cVl = 0;
-    this.qvZ = 0;
-    this.qxY = 0;
-    this.qxZ = 0;
-    this.qya.clear();
-    this.qyb.clear();
+    this.rhA = 0;
+    this.rhB = 0;
+    this.rhC = 0;
+    this.rhz = 0;
+    this.rhD = 0;
+    this.rhE = 0;
+    this.rhF = 0;
+    this.rhG = 0;
+    this.rhH = 0;
+    this.rhI = 0;
+    this.rhJ = 0;
+    this.rhK = 0;
+    this.rhL = 0;
+    this.dgB = 0;
+    this.rfP = 0;
+    this.rhO = 0;
+    this.rhP = 0;
+    this.rhQ.clear();
+    this.rhR.clear();
     AppMethodBeat.o(103749);
   }
   
   public String toString()
   {
     AppMethodBeat.i(103750);
-    String str = "detectOk: " + this.qxK + ", motionOk: " + this.qxL + ", noFace: " + this.qxM + ", systemErr: " + this.qxJ + ", noLiveFace: " + this.qxN + ", tooDark: " + this.qxO + ", tooLight: " + this.qxP + ", backLight: " + this.qxQ + ", tooSmall: " + this.qxR + ", tooBig: " + this.qxS + ", tooActive: " + this.qxT + ", poseNotValid: " + this.qxU + ", timeOut: " + this.qxV + ", totalFrame: " + this.cVl + ", verifyTime: " + this.qvZ + ", processTimePerFrame: " + this.qxZ;
+    String str = "detectOk: " + this.rhA + ", motionOk: " + this.rhB + ", noFace: " + this.rhC + ", systemErr: " + this.rhz + ", noLiveFace: " + this.rhD + ", tooDark: " + this.rhE + ", tooLight: " + this.rhF + ", backLight: " + this.rhG + ", tooSmall: " + this.rhH + ", tooBig: " + this.rhI + ", tooActive: " + this.rhJ + ", poseNotValid: " + this.rhK + ", timeOut: " + this.rhL + ", totalFrame: " + this.dgB + ", verifyTime: " + this.rfP + ", processTimePerFrame: " + this.rhP;
     AppMethodBeat.o(103750);
     return str;
   }
@@ -251,27 +251,27 @@ class FaceDetectReportInfo
   {
     AppMethodBeat.i(103748);
     paramParcel.writeLong(this.sessionId);
-    paramParcel.writeInt(this.qxJ);
-    paramParcel.writeInt(this.qxK);
-    paramParcel.writeInt(this.qxL);
-    paramParcel.writeInt(this.qxM);
-    paramParcel.writeInt(this.qxN);
-    paramParcel.writeInt(this.qxO);
-    paramParcel.writeInt(this.qxP);
-    paramParcel.writeInt(this.qxQ);
-    paramParcel.writeInt(this.qxR);
-    paramParcel.writeInt(this.qxS);
-    paramParcel.writeInt(this.qxT);
-    paramParcel.writeInt(this.qxU);
-    paramParcel.writeInt(this.qxV);
-    paramParcel.writeInt(this.qxW);
-    paramParcel.writeInt(this.qxX);
-    paramParcel.writeInt(this.cVl);
-    paramParcel.writeInt(this.qvZ);
-    paramParcel.writeInt(this.qxY);
-    paramParcel.writeInt(this.qxZ);
-    paramParcel.writeMap(this.qya);
-    paramParcel.writeMap(this.qyb);
+    paramParcel.writeInt(this.rhz);
+    paramParcel.writeInt(this.rhA);
+    paramParcel.writeInt(this.rhB);
+    paramParcel.writeInt(this.rhC);
+    paramParcel.writeInt(this.rhD);
+    paramParcel.writeInt(this.rhE);
+    paramParcel.writeInt(this.rhF);
+    paramParcel.writeInt(this.rhG);
+    paramParcel.writeInt(this.rhH);
+    paramParcel.writeInt(this.rhI);
+    paramParcel.writeInt(this.rhJ);
+    paramParcel.writeInt(this.rhK);
+    paramParcel.writeInt(this.rhL);
+    paramParcel.writeInt(this.rhM);
+    paramParcel.writeInt(this.rhN);
+    paramParcel.writeInt(this.dgB);
+    paramParcel.writeInt(this.rfP);
+    paramParcel.writeInt(this.rhO);
+    paramParcel.writeInt(this.rhP);
+    paramParcel.writeMap(this.rhQ);
+    paramParcel.writeMap(this.rhR);
     AppMethodBeat.o(103748);
   }
 }

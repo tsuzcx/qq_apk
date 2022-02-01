@@ -2,7 +2,7 @@ package com.tencent.mm.live.c;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/plugin/LiveVerifyPlugin$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveVerifyPlugin$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
 public final class ba$a {}
 
 

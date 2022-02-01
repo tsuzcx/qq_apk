@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.mix.d.a;
 import com.tencent.mm.audio.mix.e.g;
 import com.tencent.mm.audio.mix.jni.SilkResampleJni;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class d
 {
-  private static d vcr = null;
+  private static d whN = null;
   
   private d()
   {
     AppMethodBeat.i(137012);
-    f.dhl();
+    f.dry();
     AppMethodBeat.o(137012);
   }
   
@@ -28,7 +28,7 @@ public final class d
     //   2: monitorenter
     //   3: ldc 31
     //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 10	com/tencent/mm/plugin/music/b/d:vcr	Lcom/tencent/mm/plugin/music/b/d;
+    //   8: getstatic 10	com/tencent/mm/plugin/music/b/d:whN	Lcom/tencent/mm/plugin/music/b/d;
     //   11: ifnull +12 -> 23
     //   14: ldc 31
     //   16: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -37,11 +37,11 @@ public final class d
     //   22: return
     //   23: ldc 33
     //   25: ldc 35
-    //   27: invokestatic 40	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   30: new 2	com/tencent/mm/plugin/music/b/d
     //   33: dup
     //   34: invokespecial 41	com/tencent/mm/plugin/music/b/d:<init>	()V
-    //   37: putstatic 10	com/tencent/mm/plugin/music/b/d:vcr	Lcom/tencent/mm/plugin/music/b/d;
+    //   37: putstatic 10	com/tencent/mm/plugin/music/b/d:whN	Lcom/tencent/mm/plugin/music/b/d;
     //   40: ldc 31
     //   42: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   45: goto -26 -> 19
@@ -64,53 +64,53 @@ public final class d
     try
     {
       AppMethodBeat.i(137014);
-      ac.i("MicroMsg.Audio.AudioPlayerCoreService", "release");
-      f localf = f.dhm();
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "release, clear all cache");
+      ad.i("MicroMsg.Audio.AudioPlayerCoreService", "release");
+      f localf = f.drz();
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "release, clear all cache");
       localf._release();
-      localf.bjF();
-      Object localObject2 = localf.vcN;
-      ((com.tencent.mm.audio.mix.f.c)localObject2).cTz.MT();
-      localObject2 = ((com.tencent.mm.audio.mix.f.c)localObject2).cTy;
+      localf.bpH();
+      Object localObject2 = localf.wij;
+      ((com.tencent.mm.audio.mix.f.c)localObject2).deP.OC();
+      localObject2 = ((com.tencent.mm.audio.mix.f.c)localObject2).deO;
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayerImpl", "stopAll");
-      ((com.tencent.mm.audio.mix.f.d)localObject2).cTM.Ns();
-      ((com.tencent.mm.audio.mix.f.d)localObject2).NO();
-      ((com.tencent.mm.audio.mix.f.d)localObject2).NK();
-      localObject2 = localf.vcN;
-      Object localObject3 = ((com.tencent.mm.audio.mix.f.c)localObject2).cTz;
-      ((a)localObject3).MT();
+      ((com.tencent.mm.audio.mix.f.d)localObject2).dfc.Pb();
+      ((com.tencent.mm.audio.mix.f.d)localObject2).Px();
+      ((com.tencent.mm.audio.mix.f.d)localObject2).Pt();
+      localObject2 = localf.wij;
+      Object localObject3 = ((com.tencent.mm.audio.mix.f.c)localObject2).deP;
+      ((a)localObject3).OC();
       ((a)localObject3).clearCache();
-      ((a)localObject3).cRM = null;
-      localObject3 = ((com.tencent.mm.audio.mix.f.c)localObject2).cTy;
+      ((a)localObject3).ddc = null;
+      localObject3 = ((com.tencent.mm.audio.mix.f.c)localObject2).deO;
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayerImpl", "release");
-      ((com.tencent.mm.audio.mix.f.d)localObject3).cTF.set(false);
-      ((com.tencent.mm.audio.mix.f.d)localObject3).NO();
-      ((com.tencent.mm.audio.mix.f.d)localObject3).NK();
-      com.tencent.mm.audio.mix.e.c localc = ((com.tencent.mm.audio.mix.f.d)localObject3).cTM;
+      ((com.tencent.mm.audio.mix.f.d)localObject3).deV.set(false);
+      ((com.tencent.mm.audio.mix.f.d)localObject3).Px();
+      ((com.tencent.mm.audio.mix.f.d)localObject3).Pt();
+      com.tencent.mm.audio.mix.e.c localc = ((com.tencent.mm.audio.mix.f.d)localObject3).dfc;
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixController", "onRelease");
-      localc.NA();
+      localc.Pj();
       localc.clearCache();
-      ((com.tencent.mm.audio.mix.f.d)localObject3).cTz = null;
+      ((com.tencent.mm.audio.mix.f.d)localObject3).deP = null;
       ((com.tencent.mm.audio.mix.f.d)localObject3).clearCache();
       SilkResampleJni.clearResampleAll();
-      g.NF();
+      g.Po();
       ((com.tencent.mm.audio.mix.f.c)localObject2).clearCache();
-      localObject2 = com.tencent.mm.audio.mix.b.b.MF();
+      localObject2 = com.tencent.mm.audio.mix.b.b.Oo();
       int i = 0;
-      while (i < ((com.tencent.mm.audio.mix.b.b)localObject2).cQW.size())
+      while (i < ((com.tencent.mm.audio.mix.b.b)localObject2).dcm.size())
       {
-        ((com.tencent.mm.audio.mix.a.c)((com.tencent.mm.audio.mix.b.b)localObject2).cQW.get(i)).cQH = null;
+        ((com.tencent.mm.audio.mix.a.c)((com.tencent.mm.audio.mix.b.b)localObject2).dcm.get(i)).dbX = null;
         i += 1;
       }
-      ((com.tencent.mm.audio.mix.b.b)localObject2).cQW.clear();
-      localObject2 = localf.vcN;
+      ((com.tencent.mm.audio.mix.b.b)localObject2).dcm.clear();
+      localObject2 = localf.wij;
       localObject3 = ((com.tencent.mm.audio.mix.f.c)localObject2).appId;
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmDataTrackTaskController", "cleanAllCache appId:%s", new Object[] { localObject3 });
       com.tencent.mm.audio.mix.b.a.d.a(new com.tencent.mm.audio.mix.b.a.b((String)localObject3), "AudioPcmDataTrackCleanTask");
-      ((com.tencent.mm.audio.mix.f.c)localObject2).cTA.clear();
-      localf.vcN.a(null);
-      localf.vcN.a(null);
-      vcr = null;
+      ((com.tencent.mm.audio.mix.f.c)localObject2).deQ.clear();
+      localf.wij.a(null);
+      localf.wij.a(null);
+      whN = null;
       AppMethodBeat.o(137014);
       return;
     }

@@ -9,6 +9,7 @@ import com.tencent.xweb.b;
 import com.tencent.xweb.internal.a.b;
 import com.tencent.xweb.util.e;
 import com.tencent.xweb.util.e.a;
+import com.tencent.xweb.util.g;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,23 +23,18 @@ import org.xwalk.core.XWalkInitializer;
 
 public abstract class c
 {
-  static g KId;
-  public static boolean KIe = false;
-  static boolean KIf = false;
-  SchedulerConfig KIg;
-  protected String TAG = fLH() + "Scheduler";
+  static h MyH;
+  public static boolean MyI = false;
+  static boolean MyJ = false;
+  SchedulerConfig MyK;
+  protected String TAG = gdd() + "Scheduler";
   
-  private boolean Co(long paramLong)
-  {
-    return r(e.fKD(), e.Ce(paramLong));
-  }
-  
-  private static boolean Cp(long paramLong)
+  private static boolean Fq(long paramLong)
   {
     return (paramLong >= 1800000L) && (paramLong < 259200000L);
   }
   
-  public static double H(double paramDouble)
+  public static double I(double paramDouble)
   {
     double d;
     if (paramDouble >= 0.0D)
@@ -68,34 +64,54 @@ public abstract class c
     }
   }
   
+  public static double a(double paramDouble1, double paramDouble2, double paramDouble3, List<b> paramList)
+  {
+    paramList = paramList.iterator();
+    double d1 = 0.0D;
+    if (paramList.hasNext())
+    {
+      double d2 = ((b)paramList.next()).u(paramDouble1, paramDouble2) * paramDouble3;
+      if (d2 <= d1) {
+        break label60;
+      }
+      d1 = d2;
+    }
+    label60:
+    for (;;)
+    {
+      break;
+      return d1;
+    }
+  }
+  
   public static long a(a.a parama, String paramString)
   {
     long l1 = 0L;
-    if (!TextUtils.isEmpty(parama.KHO))
+    if (!TextUtils.isEmpty(parama.Myo))
     {
       l1 = b(parama, paramString);
       XWalkInitializer.addXWalkInitializeLog(paramString + " schedul after " + l1 / 60L / 1000L + " minute to update");
       return l1 + System.currentTimeMillis();
     }
-    if (parama.KHR > 0)
+    if (parama.Myr > 0)
     {
-      long l2 = parama.KHR * 60 * 1000;
+      long l2 = parama.Myr * 60 * 1000;
       if (0L == l2)
       {
         XWalkInitializer.addXWalkInitializeLog(paramString + " schedul after " + l1 / 60L / 1000L + " minute to update");
         return l1 + System.currentTimeMillis();
       }
       int i;
-      if ((parama.KCh.KCt > 0) && (parama.KCh.KCt <= 10000))
+      if ((parama.MsC.MsQ > 0) && (parama.MsC.MsQ <= 10000))
       {
-        i = parama.KCh.KCt;
+        i = parama.MsC.MsQ;
         label174:
-        if ((parama.KCh.KCu <= 0) || (parama.KCh.KCu > 10000)) {
+        if ((parama.MsC.MsR <= 0) || (parama.MsC.MsR > 10000)) {
           break label280;
         }
       }
       label280:
-      for (int j = parama.KCh.KCu;; j = 10000)
+      for (int j = parama.MsC.MsR;; j = 10000)
       {
         int k = j - i + 1;
         j = k;
@@ -126,9 +142,9 @@ public abstract class c
     finally {}
   }
   
-  private boolean aA(long paramLong1, long paramLong2)
+  private boolean aF(long paramLong1, long paramLong2)
   {
-    long l = fMk();
+    long l = gdF();
     if ((paramLong1 > paramLong2 + l) || (l + paramLong1 < paramLong2)) {
       return true;
     }
@@ -136,93 +152,156 @@ public abstract class c
     return false;
   }
   
-  public static double aVA(String paramString)
+  private static long b(a.a parama, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return 1.0D;
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    for (String[] arrayOfString = null; (arrayOfString == null) || (arrayOfString.length == 0); arrayOfString = paramString.split(";"))
+    Object localObject1;
+    Object localObject3;
+    Object localObject2;
+    if (TextUtils.isEmpty(parama.Myo))
     {
-      KIf = true;
-      return 1.0D;
+      localObject1 = null;
+      localObject3 = new SimpleDateFormat("yyyyMMdd");
+      localObject2 = new Date();
     }
-    double d1 = e.fKD();
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    try
     {
-      paramString = arrayOfString[i];
-      if (!TextUtils.isEmpty(paramString))
+      if (TextUtils.isEmpty(parama.Myp)) {
+        break label463;
+      }
+      localObject3 = ((SimpleDateFormat)localObject3).parse(parama.Myp);
+      paramString = (String)localObject3;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        if (TextUtils.isEmpty(paramString)) {
-          paramString = null;
+        XWalkEnvironment.addXWalkInitializeLog(paramString, " parse version release date failed " + localException.getMessage());
+        g.t(903L, 158L, 1L);
+        paramString = (String)localObject2;
+      }
+      if ((parama.MsC.MsQ <= 0) || (parama.MsC.MsQ > 10000)) {
+        break label585;
+      }
+      int j = parama.MsC.MsQ;
+      if ((parama.MsC.MsR <= 0) || (parama.MsC.MsR > 10000)) {
+        break label591;
+      }
+      for (k = parama.MsC.MsR;; k = 10000)
+      {
+        d1 = (XWalkEnvironment.getGrayValue() - j) * 10000.0D / (k - j + 1);
+        j = 0;
+        while ((j < localObject1.length) && (d1 > localObject1[j])) {
+          j += 1;
         }
-        while ((paramString != null) && (paramString.length == 3) && (d1 >= paramString[0]) && (d1 <= paramString[1]))
+        j = 0;
+        break;
+      }
+      Calendar.getInstance();
+      d1 = e.gbY();
+      d2 = I(parama.Mym);
+      d3 = s(parama.Mym, parama.Myn);
+      j -= i;
+      int i = j;
+      if (j > 0) {
+        break label658;
+      }
+      if (d1 < d3) {
+        break label688;
+      }
+      i = 1;
+      return (a(0.0D, d2, d3) * 3600000.0D + 86400000L * (i - 1) + e.gbX());
+    }
+    double d1 = (new Date().getTime() - paramString.getTime()) / 86400000.0D;
+    j = (int)d1;
+    i = j;
+    if (d1 < 0.0D) {
+      i = j - 1;
+    }
+    if (Math.abs(d1) > 365.0D) {
+      i = 0;
+    }
+    for (;;)
+    {
+      int k;
+      if ((localObject1 == null) || (localObject1.length == 0))
+      {
+        return 0L;
+        localObject2 = new ArrayList();
+        localObject1 = parama.Myo.split(":");
+        j = localObject1.length;
+        i = 0;
+        for (;;)
         {
-          return paramString[2];
-          paramString = paramString.trim().split("-");
-          if ((paramString == null) || (paramString.length != 3))
+          if (i < j)
           {
-            KIf = true;
-            Log.e("getTimeSpeedItem", "length error");
-            paramString = null;
-          }
-          else
-          {
-            double d2 = aVD(paramString[0]);
-            if ((d2 < 0.0D) || (d2 > 24.0D))
+            localObject3 = localObject1[i];
+            if (!TextUtils.isEmpty((CharSequence)localObject3))
             {
-              KIf = true;
-              Log.e("getTimeSpeedItem", "timeStart  parse error");
-              paramString = null;
+              localObject3 = e.bbp((String)localObject3);
+              if (!((e.a)localObject3).Mux) {
+                break label269;
+              }
+              k = ((e.a)localObject3).intValue();
+              if ((k >= 0) && (k <= 10000)) {
+                ((List)localObject2).add(localObject3);
+              }
             }
             else
             {
-              double d3 = aVD(paramString[1]);
-              if ((d3 < 0.0D) || (d3 > 24.0D))
-              {
-                KIf = true;
-                Log.e("getTimeSpeedItem", "timeEnd  parse error");
-                paramString = null;
-              }
-              else
-              {
-                paramString = e.aVl(paramString[2]);
-                if (!paramString.KDX)
-                {
-                  KIf = true;
-                  Log.e("getTimeSpeedItem", "retScale.doubleValue parse error");
-                  paramString = null;
-                }
-                else
-                {
-                  double d4 = paramString.doubleValue();
-                  if (d4 < 0.0D)
-                  {
-                    KIf = true;
-                    Log.e("getTimeSpeedItem", "retScale.doubleValue parse error2");
-                    paramString = null;
-                  }
-                  else
-                  {
-                    paramString = new double[3];
-                    paramString[0] = d2;
-                    paramString[1] = d3;
-                    paramString[2] = d4;
-                  }
-                }
-              }
+              i += 1;
+              continue;
             }
+            Log.e("ConfigParser", " get invalid schedule value = " + k + ", schedule str is " + parama.Myo);
+            localObject1 = null;
+            break;
+            label269:
+            Log.e("ConfigParser", " parse schedule failed , schedule str is " + parama.Myo);
+            localObject1 = null;
+            break;
           }
         }
+        if (((List)localObject2).size() == 0)
+        {
+          localObject1 = null;
+          break;
+        }
+        localObject1 = new int[((List)localObject2).size()];
+        i = 0;
+        for (;;)
+        {
+          if (i >= ((List)localObject2).size()) {
+            break label423;
+          }
+          j = ((e.a)((List)localObject2).get(i)).intValue();
+          if ((i > 0) && (j < localObject1[(i - 1)]))
+          {
+            Log.e("ConfigParser", " get invalid schedule this value smaller than previous one , schedule str is " + parama.Myo);
+            localObject1 = null;
+            break;
+          }
+          localObject1[i] = j;
+          i += 1;
+        }
+        label423:
+        break;
       }
-      i += 1;
+      label463:
+      double d2;
+      label585:
+      label591:
+      double d3;
+      label658:
+      label688:
+      return ((a(d1, d2, d3) - d1) * 3600000.0D);
     }
-    return 1.0D;
   }
   
-  private static a aVB(String paramString)
+  public static double bbD(String paramString)
+  {
+    return e(paramString, e.gbY());
+  }
+  
+  private static a bbE(String paramString)
   {
     int i = 0;
     a locala = new a();
@@ -232,35 +311,35 @@ public abstract class c
       Log.e("getTimeRangeItem", "length error");
       return null;
     }
-    double d = aVD(paramString[0]);
+    double d = bbG(paramString[0]);
     if ((d < 0.0D) || (d > 24.0D))
     {
       Log.e("getTimeRangeItem", "bind.rangeFrom.timeStart parse error");
       return null;
     }
-    locala.KIi = d;
-    d = aVD(paramString[1]);
+    locala.MyM = d;
+    d = bbG(paramString[1]);
     if ((d < 0.0D) || (d > 24.0D))
     {
       Log.e("getTimeRangeItem", "bind.rangeFrom.timeEnd parse error");
       return null;
     }
-    locala.KIj = d;
+    locala.MyN = d;
     if (paramString.length == 3)
     {
-      paramString = e.aVl(paramString[2]);
-      if (!paramString.KDX)
+      paramString = e.bbo(paramString[2]);
+      if (!paramString.Mux)
       {
         Log.e("getTimeRangeItem", "scale parse error");
         return null;
       }
       d = paramString.doubleValue();
-      if ((d < 0.0D) || (d > 1.0001D))
+      if ((d < 0.0D) || (d > 1000000.0000999999D))
       {
         Log.e("getTimeRangeItem", "scale parse value error");
         return null;
       }
-      locala.CVW = d;
+      locala.EzS = d;
     }
     for (;;)
     {
@@ -270,14 +349,14 @@ public abstract class c
         double[] arrayOfDouble = new double[paramString.length - 2];
         while (i + 2 < paramString.length)
         {
-          e.a locala1 = e.aVl(paramString[(i + 2)]);
-          if (!locala1.KDX)
+          e.a locala1 = e.bbo(paramString[(i + 2)]);
+          if (!locala1.Mux)
           {
             Log.e("getTimeRangeItem", "scales parse error");
             return null;
           }
           d = locala1.doubleValue();
-          if ((d < 0.0D) || (d > 1.0001D))
+          if ((d < 0.0D) || (d > 1000000.0000999999D))
           {
             Log.e("getTimeRangeItem", "scales parse value error");
             return null;
@@ -285,12 +364,12 @@ public abstract class c
           arrayOfDouble[i] = d;
           i += 1;
         }
-        locala.KIk = arrayOfDouble;
+        locala.MyO = arrayOfDouble;
       }
     }
   }
   
-  private static b aVC(String paramString)
+  private static b bbF(String paramString)
   {
     b localb = new b();
     if (TextUtils.isEmpty(paramString)) {
@@ -302,14 +381,14 @@ public abstract class c
       Log.e("getTimeRangePairItem", "strRanges error");
       return null;
     }
-    localb.KIl = aVB(paramString[0]);
-    if (localb.KIl == null)
+    localb.MyP = bbE(paramString[0]);
+    if (localb.MyP == null)
     {
       Log.e("getTimeRangePairItem", "parse rangefrom failed");
       return null;
     }
-    localb.KIm = aVB(paramString[1]);
-    if (localb.KIm == null)
+    localb.MyQ = bbE(paramString[1]);
+    if (localb.MyQ == null)
     {
       Log.e("getTimeRangePairItem", "parse rangeTo failed");
       return null;
@@ -317,7 +396,7 @@ public abstract class c
     return localb;
   }
   
-  private static double aVD(String paramString)
+  private static double bbG(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     double d1;
@@ -335,221 +414,186 @@ public abstract class c
             return -1.0D;
             paramString = paramString.split(":");
           } while ((paramString == null) || (paramString.length == 0));
-          locala = e.aVl(paramString[0]);
-        } while (!locala.KDX);
+          locala = e.bbo(paramString[0]);
+        } while (!locala.Mux);
         d2 = locala.doubleValue();
         d1 = d2;
         if (paramString.length != 2) {
           break;
         }
-        i = e.aVm(paramString[1]).intValue();
+        i = e.bbp(paramString[1]).intValue();
       } while ((i < 0) || (i >= 60));
       d1 = d2 + i * 1.0D / 60.0D;
     } while ((d1 < 0.0D) || (d1 > 24.0D));
     return d1;
   }
   
-  private static long b(a.a parama, String paramString)
+  private boolean c(long paramLong, double paramDouble)
   {
-    int m = 0;
-    Object localObject1;
-    Object localObject3;
-    Object localObject2;
-    if (TextUtils.isEmpty(parama.KHO))
+    double d1 = e.gbY();
+    double d2 = e.Fg(paramLong);
+    MyJ = false;
+    Object localObject = gdJ();
+    if (MyJ)
     {
-      localObject1 = null;
-      localObject3 = new SimpleDateFormat("yyyyMMdd");
-      localObject2 = new Date();
+      XWalkEnvironment.addXWalkInitializeLog(this.TAG, "parse range schedule config failed");
+      g.t(903L, gde() + 163, 1L);
     }
-    try
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      if (TextUtils.isEmpty(parama.KHP)) {
-        break label460;
-      }
-      localObject3 = ((SimpleDateFormat)localObject3).parse(parama.KHP);
-      paramString = (String)localObject3;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      b localb = (b)((Iterator)localObject).next();
+      if (localb.b(d1, d2, paramDouble))
       {
-        XWalkEnvironment.addXWalkInitializeLog(paramString, " parse version release date failed " + localException.getMessage());
-        com.tencent.xweb.util.g.r(903L, 158L, 1L);
-        paramString = (String)localObject2;
+        XWalkInitializer.addXWalkInitializeLog(this.TAG, "matched timerange zone cur time is " + d1 + " scheduleHour is " + d2 + "time range is " + localb.v(d1, d2));
+        return true;
       }
-      if ((parama.KCh.KCt <= 0) || (parama.KCh.KCt > 10000)) {
-        break label583;
-      }
-      j = parama.KCh.KCt;
-      if ((parama.KCh.KCu <= 0) || (parama.KCh.KCu > 10000)) {
-        break label589;
-      }
-      for (k = parama.KCh.KCu;; k = 10000)
-      {
-        d1 = (XWalkEnvironment.getGrayValue() - j) * 10000.0D / (k - j + 1);
-        j = m;
-        while ((j < localObject1.length) && (d1 > localObject1[j])) {
-          j += 1;
-        }
-        j = 0;
-        break;
-      }
-      Calendar.getInstance();
-      d1 = e.fKD();
-      d2 = H(parama.KHM);
-      d3 = t(parama.KHM, parama.KHN);
-      j -= i;
-      int i = j;
-      if (j > 0) {
-        break label656;
-      }
-      if (d1 < d3) {
-        break label686;
-      }
-      i = 1;
-      return (a(0.0D, d2, d3) * 3600000.0D + 86400000L * (i - 1) + e.fKC());
     }
-    double d1 = (new Date().getTime() - paramString.getTime()) / 86400000.0D;
-    i = (int)d1;
-    if ((d1 < 1.0D) || (d1 > 365.0D)) {
-      i = 0;
-    }
+    return false;
+  }
+  
+  public static double e(String paramString, double paramDouble)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
     for (;;)
     {
-      int j;
-      int k;
-      if ((localObject1 == null) || (localObject1.length == 0))
+      return 1.0D;
+      if (TextUtils.isEmpty(paramString)) {}
+      for (paramString = null; (paramString == null) || (paramString.length == 0); paramString = paramString.split(";"))
       {
-        return 0L;
-        localObject2 = new ArrayList();
-        localObject1 = parama.KHO.split(":");
-        j = localObject1.length;
-        i = 0;
-        for (;;)
-        {
-          if (i < j)
-          {
-            localObject3 = localObject1[i];
-            if (!TextUtils.isEmpty((CharSequence)localObject3))
-            {
-              localObject3 = e.aVm((String)localObject3);
-              if (!((e.a)localObject3).KDX) {
-                break label264;
-              }
-              k = ((e.a)localObject3).intValue();
-              if ((k >= 0) && (k <= 10000)) {
-                ((List)localObject2).add(localObject3);
-              }
-            }
-            else
-            {
-              i += 1;
-              continue;
-            }
-            Log.e("ConfigParser", " get invalid schedule value = " + k + ", schedule str is " + parama.KHO);
-            localObject1 = null;
-            break;
-            label264:
-            Log.e("ConfigParser", " parse schedule failed , schedule str is " + parama.KHO);
-            localObject1 = null;
-            break;
-          }
-        }
-        if (((List)localObject2).size() == 0)
-        {
-          localObject1 = null;
-          break;
-        }
-        localObject1 = new int[((List)localObject2).size()];
-        i = 0;
-        for (;;)
-        {
-          if (i >= ((List)localObject2).size()) {
-            break label420;
-          }
-          j = ((e.a)((List)localObject2).get(i)).intValue();
-          if ((i > 0) && (j < localObject1[(i - 1)]))
-          {
-            Log.e("ConfigParser", " get invalid schedule this value smaller than previous one , schedule str is " + parama.KHO);
-            localObject1 = null;
-            break;
-          }
-          localObject1[i] = j;
-          i += 1;
-        }
-        label420:
-        break;
+        MyJ = true;
+        return 1.0D;
       }
-      label460:
-      label589:
-      double d2;
-      label583:
-      double d3;
-      label656:
-      label686:
-      return ((a(d1, d2, d3) - d1) * 3600000.0D);
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramString[i];
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = bbE((String)localObject);
+          if ((localObject != null) && (paramDouble >= ((a)localObject).MyM) && (paramDouble <= ((a)localObject).MyN)) {
+            return ((a)localObject).J(paramDouble);
+          }
+        }
+        i += 1;
+      }
     }
   }
   
-  public static g fLZ()
+  private SharedPreferences gdD()
   {
-    try
-    {
-      if (KId == null) {
-        KId = new g();
-      }
-      g localg = KId;
-      return localg;
+    return XWalkEnvironment.getMMKVSharedPreferences("xweb_scheduler_" + gdd());
+  }
+  
+  private String gdI()
+  {
+    if (!TextUtils.isEmpty(gdH().Myw)) {
+      return gdH().Myw;
     }
-    finally {}
+    return a.mV("UPDATE_SCHEDULE_TIME_RANGE_BIND", "tools");
   }
   
-  private SharedPreferences fMi()
-  {
-    return XWalkEnvironment.getMMKVSharedPreferences("xweb_scheduler_" + fLH());
-  }
-  
-  private List<b> fMn()
+  private List<b> gdJ()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = fLJ();
+    Object localObject1 = gdI();
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return localArrayList;
     }
     localObject1 = ((String)localObject1).split(";");
     if ((localObject1 == null) || (localObject1.length == 0))
     {
-      KIf = true;
+      MyJ = true;
       return localArrayList;
     }
-    e.fKD();
+    e.gbY();
     int j = localObject1.length;
     int i = 0;
-    label60:
+    label61:
     Object localObject2;
     if (i < j)
     {
       localObject2 = localObject1[i];
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localObject2 = aVC((String)localObject2);
+        localObject2 = bbF((String)localObject2);
         if (localObject2 != null) {
-          break label102;
+          break label103;
         }
-        KIf = true;
+        MyJ = true;
       }
     }
     for (;;)
     {
       i += 1;
-      break label60;
+      break label61;
       break;
-      label102:
+      label103:
       localArrayList.add(localObject2);
     }
   }
   
-  protected static boolean mN(String paramString1, String paramString2)
+  public static boolean gdO()
+  {
+    c local2 = new c()
+    {
+      public final String gdd()
+      {
+        return "UNITEST";
+      }
+      
+      protected final String zR(boolean paramAnonymousBoolean)
+      {
+        return "0:59-1:01-0.9;2:59-3:01-0.9;3:59-4:01-0.9;4:59-5:01-0.9;5:29-5:31-0.9;5:59-6:01-0.9;6:29-6:31-0.9;6:59-7:01-0.9;7:29-7:31-0.9;7:59-8:01-0.9;0:00-6:00(1.636806683-2.276643146-2.927125626-4.16300461-4.55588817-5.203755763-5.20765858-5.528990498-5.854745609-6.309553862-6.180110438-5.203755763-4.228129614);6:00-8:00(1.037712038-1.297503247-1.297140048-0.004150848);0-24-5";
+      }
+    };
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(2020, 6, 15, 0, 0, 0);
+    List localList = local2.gdJ();
+    Object localObject1 = Calendar.getInstance();
+    ((Calendar)localObject1).set(2020, 6, 15, 0, 58, 5);
+    double d1 = e.d((Calendar)localObject1);
+    a(d1, 21.0D, e(local2.zT(false), d1) / 5.0D, localList);
+    MyJ = false;
+    localObject1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    for (double d2 = 0.0D; localCalendar.get(10) <= 8.0D; d2 = d1)
+    {
+      double d3 = e.d(localCalendar);
+      double d4 = e(local2.zT(false), d3) / 5.0D;
+      Object localObject2 = Calendar.getInstance();
+      ((Calendar)localObject2).set(2020, 6, 15, 6, 30, 0);
+      double d5;
+      for (d1 = 0.0D; ((Calendar)localObject2).get(5) < 16; d1 = d5 * 10000.0D + d1)
+      {
+        d5 = a(d3, e.d((Calendar)localObject2), d4, localList);
+        ((Calendar)localObject2).add(12, 30);
+      }
+      localObject2 = ((SimpleDateFormat)localObject1).format(localCalendar.getTime());
+      if (d2 != 0.0D) {
+        Math.abs((d1 - d2) / d2);
+      }
+      Log.e("andrewu", "rate\t" + d1 + "\ttime\t" + (String)localObject2);
+      localCalendar.add(13, 1);
+    }
+    Log.e("andrewu", "sParseScheduleConfigFailed = " + MyJ);
+    return true;
+  }
+  
+  public static h gdu()
+  {
+    try
+    {
+      if (MyH == null) {
+        MyH = new h();
+      }
+      h localh = MyH;
+      return localh;
+    }
+    finally {}
+  }
+  
+  protected static boolean nl(String paramString1, String paramString2)
   {
     if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {}
     do
@@ -563,29 +607,7 @@ public abstract class c
     return paramString1.equals(paramString2);
   }
   
-  private boolean r(double paramDouble1, double paramDouble2)
-  {
-    KIf = false;
-    Object localObject = fMn();
-    if (KIf)
-    {
-      XWalkEnvironment.addXWalkInitializeLog(this.TAG, "parse range schedule config failed");
-      com.tencent.xweb.util.g.r(903L, fLI() + 163, 1L);
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      b localb = (b)((Iterator)localObject).next();
-      if (localb.v(paramDouble1, paramDouble2))
-      {
-        XWalkInitializer.addXWalkInitializeLog(this.TAG, "matched timerange zone cur time is " + paramDouble1 + " scheduleHour is " + paramDouble2 + "time range is " + localb.x(paramDouble1, paramDouble2));
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean s(double paramDouble1, double paramDouble2)
+  public static boolean r(double paramDouble1, double paramDouble2)
   {
     if ((paramDouble1 < 0.0D) || (paramDouble1 > 24.0D)) {}
     while ((paramDouble2 < 0.0D) || (paramDouble2 > 24.0D) || (paramDouble2 < paramDouble1)) {
@@ -594,7 +616,7 @@ public abstract class c
     return true;
   }
   
-  public static double t(double paramDouble1, double paramDouble2)
+  public static double s(double paramDouble1, double paramDouble2)
   {
     if (paramDouble2 < paramDouble1) {
       paramDouble1 = 24.0D;
@@ -610,15 +632,15 @@ public abstract class c
     return 24.0D;
   }
   
-  private static boolean u(double paramDouble1, double paramDouble2)
+  private static boolean t(double paramDouble1, double paramDouble2)
   {
     return Math.abs(paramDouble1 - paramDouble2) < 1.E-005D;
   }
   
   protected boolean a(SchedulerConfig paramSchedulerConfig1, SchedulerConfig paramSchedulerConfig2)
   {
-    if ((paramSchedulerConfig1.version != paramSchedulerConfig2.version) || (paramSchedulerConfig1.KHT != paramSchedulerConfig2.KHT) || (paramSchedulerConfig1.bUseCdn != paramSchedulerConfig2.bUseCdn) || (paramSchedulerConfig1.KIp != paramSchedulerConfig2.KIp) || (!mN(paramSchedulerConfig1.KHS, paramSchedulerConfig2.KHS)) || (!mN(paramSchedulerConfig1.KIq, paramSchedulerConfig2.KIq)) || (!mN(paramSchedulerConfig1.strAbi, paramSchedulerConfig2.strAbi)) || (paramSchedulerConfig1.KHK != paramSchedulerConfig2.KHK)) {}
-    while ((paramSchedulerConfig1.KIp) && (!mN(paramSchedulerConfig1.patchMd5, paramSchedulerConfig2.patchMd5))) {
+    if ((paramSchedulerConfig1.version != paramSchedulerConfig2.version) || (paramSchedulerConfig1.Myt != paramSchedulerConfig2.Myt) || (paramSchedulerConfig1.bUseCdn != paramSchedulerConfig2.bUseCdn) || (paramSchedulerConfig1.MyT != paramSchedulerConfig2.MyT) || (!nl(paramSchedulerConfig1.Mys, paramSchedulerConfig2.Mys)) || (!nl(paramSchedulerConfig1.MyV, paramSchedulerConfig2.MyV)) || (!nl(paramSchedulerConfig1.strAbi, paramSchedulerConfig2.strAbi)) || (paramSchedulerConfig1.Myk != paramSchedulerConfig2.Myk)) {}
+    while ((paramSchedulerConfig1.MyT) && (!nl(paramSchedulerConfig1.patchMd5, paramSchedulerConfig2.patchMd5))) {
       return false;
     }
     return true;
@@ -661,17 +683,17 @@ public abstract class c
     return true;
   }
   
-  public void agp(int paramInt) {}
+  public void aiQ(int paramInt) {}
   
-  public void agq(int paramInt)
+  public void aiR(int paramInt)
   {
     if (paramInt == -10)
     {
-      localObject = fMi();
+      localObject = gdD();
       paramInt = ((SharedPreferences)localObject).getInt("nTryUseSharedCoreCount", 0);
       XWalkInitializer.addXWalkInitializeLog(this.TAG, "onUpdateFailed shared mode, current nTryUseSharedCoreCount: ".concat(String.valueOf(paramInt)));
       paramInt += 1;
-      fMm().KIu = paramInt;
+      gdH().MyZ = paramInt;
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putInt("nTryUseSharedCoreCount", paramInt);
       a((SharedPreferences.Editor)localObject, paramInt);
@@ -680,22 +702,22 @@ public abstract class c
     while (!NetworkUtil.isNetworkAvailable()) {
       return;
     }
-    Object localObject = fMi();
+    Object localObject = gdD();
     int j = ((SharedPreferences)localObject).getInt("nTryCnt", 0) + 1;
     int i;
     if ((paramInt == -3) || (paramInt == -4))
     {
-      fMm().KIp = false;
-      fMm().KHL = fMm().KIq;
-      fMm().KHT = false;
-      e(fMm());
+      gdH().MyT = false;
+      gdH().Myl = gdH().MyV;
+      gdH().Myt = false;
+      e(gdH());
       XWalkInitializer.addXWalkInitializeLog(this.TAG, "switch to full package update");
       i = j;
     }
     while (i > 3L)
     {
       XWalkInitializer.addXWalkInitializeLog(this.TAG, "FailedTooManytimes at this version");
-      fMa();
+      gdv();
       return;
       i = j;
       if (paramInt <= -2)
@@ -706,7 +728,7 @@ public abstract class c
         }
       }
     }
-    fMm().KIt = i;
+    gdH().MyY = i;
     localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putInt("nTryCnt", i);
     a((SharedPreferences.Editor)localObject, i);
@@ -715,11 +737,12 @@ public abstract class c
   
   public SchedulerConfig d(SchedulerConfig paramSchedulerConfig)
   {
-    SchedulerConfig localSchedulerConfig = fMm();
+    int j = 1;
+    SchedulerConfig localSchedulerConfig = gdH();
     if (paramSchedulerConfig == null)
     {
       XWalkInitializer.addXWalkInitializeLog(this.TAG, "got no schedule need download");
-      if (fMd())
+      if (gdy())
       {
         if (localSchedulerConfig != null) {
           XWalkInitializer.addXWalkInitializeLog(this.TAG, "clear current scheduler version = " + localSchedulerConfig.version);
@@ -728,149 +751,86 @@ public abstract class c
       }
       return null;
     }
+    int i;
     if (a(paramSchedulerConfig, localSchedulerConfig))
     {
+      i = 0;
+      if (!nl(paramSchedulerConfig.Myu, localSchedulerConfig.Myu))
+      {
+        localSchedulerConfig.Myu = paramSchedulerConfig.Myu;
+        i = 1;
+      }
+      if (!nl(paramSchedulerConfig.Myv, localSchedulerConfig.Myv))
+      {
+        localSchedulerConfig.Myv = paramSchedulerConfig.Myv;
+        i = 1;
+      }
+      if (nl(paramSchedulerConfig.Myw, localSchedulerConfig.Myw)) {
+        break label233;
+      }
+      localSchedulerConfig.Myw = paramSchedulerConfig.Myw;
+      i = j;
+    }
+    label233:
+    for (;;)
+    {
+      if (i != 0) {
+        e(localSchedulerConfig);
+      }
       XWalkInitializer.addXWalkInitializeLog(this.TAG, "got same version to scheduler, use last version ");
       return localSchedulerConfig;
+      if (gdy())
+      {
+        g.t(903L, 149L, 1L);
+        XWalkInitializer.addXWalkInitializeLog(this.TAG, "got new scheduler replace current , version is " + paramSchedulerConfig.version);
+      }
+      e(paramSchedulerConfig);
+      return paramSchedulerConfig;
     }
-    if (fMd())
-    {
-      com.tencent.xweb.util.g.r(903L, 149L, 1L);
-      XWalkInitializer.addXWalkInitializeLog(this.TAG, "got new scheduler replace current , version is " + paramSchedulerConfig.version);
-    }
-    e(paramSchedulerConfig);
-    return paramSchedulerConfig;
   }
   
   public void e(SchedulerConfig paramSchedulerConfig)
   {
     try
     {
-      this.KIg = paramSchedulerConfig;
+      this.MyK = paramSchedulerConfig;
       if (paramSchedulerConfig == null) {
-        this.KIg = new SchedulerConfig();
+        this.MyK = new SchedulerConfig();
       }
-      paramSchedulerConfig = fMi().edit();
-      paramSchedulerConfig.putString("strMd5", this.KIg.KHS);
-      paramSchedulerConfig.putString("strUrl", this.KIg.KHL);
-      paramSchedulerConfig.putString("strFullPackageUrl", this.KIg.KIq);
-      paramSchedulerConfig.putString("strConfigVer", this.KIg.KHU);
-      paramSchedulerConfig.putBoolean("bIsPatchUpdate", this.KIg.KIp);
-      paramSchedulerConfig.putBoolean("bCanUseCellular", this.KIg.KHT);
-      paramSchedulerConfig.putBoolean("bUseCdn", this.KIg.bUseCdn);
-      paramSchedulerConfig.putLong("nTimeToUpdate", this.KIg.KIr);
-      paramSchedulerConfig.putInt("version", this.KIg.version);
-      paramSchedulerConfig.putInt("nTryCnt", this.KIg.KIt);
-      paramSchedulerConfig.putInt("nPatchTargetVersion", this.KIg.nPatchTargetVersion);
-      paramSchedulerConfig.putInt("nTryUseSharedCoreCount", this.KIg.KIu);
-      paramSchedulerConfig.putString("patchMd5", this.KIg.patchMd5);
-      paramSchedulerConfig.putString("strVersionDetail", this.KIg.KIs);
-      paramSchedulerConfig.putBoolean("bTryUseSharedCore", this.KIg.bTryUseSharedCore);
-      paramSchedulerConfig.putBoolean("skipSubFileMD5Check", this.KIg.KIx);
-      paramSchedulerConfig.putString("strAbi", this.KIg.strAbi);
-      paramSchedulerConfig.putString("path", this.KIg.path);
-      paramSchedulerConfig.putInt("versionId", this.KIg.KHK);
-      paramSchedulerConfig.putFloat("timeHourStart", this.KIg.KIv);
-      paramSchedulerConfig.putFloat("timeHourEnd", this.KIg.KIw);
+      paramSchedulerConfig = gdD().edit();
+      paramSchedulerConfig.putString("strMd5", this.MyK.Mys);
+      paramSchedulerConfig.putString("strUrl", this.MyK.Myl);
+      paramSchedulerConfig.putString("strFullPackageUrl", this.MyK.MyV);
+      paramSchedulerConfig.putString("strConfigVer", this.MyK.Myx);
+      paramSchedulerConfig.putBoolean("bIsPatchUpdate", this.MyK.MyT);
+      paramSchedulerConfig.putBoolean("bCanUseCellular", this.MyK.Myt);
+      paramSchedulerConfig.putBoolean("bUseCdn", this.MyK.bUseCdn);
+      paramSchedulerConfig.putLong("nTimeToUpdate", this.MyK.MyW);
+      paramSchedulerConfig.putInt("version", this.MyK.version);
+      paramSchedulerConfig.putInt("nTryCnt", this.MyK.MyY);
+      paramSchedulerConfig.putInt("nPatchTargetVersion", this.MyK.nPatchTargetVersion);
+      paramSchedulerConfig.putInt("nTryUseSharedCoreCount", this.MyK.MyZ);
+      paramSchedulerConfig.putString("patchMd5", this.MyK.patchMd5);
+      paramSchedulerConfig.putString("strVersionDetail", this.MyK.MyX);
+      paramSchedulerConfig.putBoolean("bTryUseSharedCore", this.MyK.bTryUseSharedCore);
+      paramSchedulerConfig.putBoolean("skipSubFileMD5Check", this.MyK.Mzc);
+      paramSchedulerConfig.putString("strAbi", this.MyK.strAbi);
+      paramSchedulerConfig.putString("path", this.MyK.path);
+      paramSchedulerConfig.putInt("versionId", this.MyK.Myk);
+      paramSchedulerConfig.putFloat("timeHourStart", this.MyK.Mza);
+      paramSchedulerConfig.putFloat("timeHourEnd", this.MyK.Mzb);
+      paramSchedulerConfig.putString("UPDATE_SPEED_CONFIG", this.MyK.Myu);
+      paramSchedulerConfig.putString("UPDATE_FORWARD_SPEED_CONFIG", this.MyK.Myv);
+      paramSchedulerConfig.putString("UPDATE_SCHEDULE_TIME_RANGE_BIND", this.MyK.Myw);
       paramSchedulerConfig.commit();
       return;
     }
     finally {}
   }
   
-  public abstract String fLH();
-  
-  public int fLI()
+  public boolean gdA()
   {
-    return 0;
-  }
-  
-  protected String fLJ()
-  {
-    return a.mx("UPDATE_SCHEDULE_TIME_RANGE_BIND", "tools");
-  }
-  
-  public void fMa()
-  {
-    XWalkInitializer.addXWalkInitializeLog(this.TAG, "abandon Current Scheduler");
-    e(null);
-  }
-  
-  public String fMb()
-  {
-    if (fMc())
-    {
-      Date localDate = new Date(fMm().KIr);
-      return this.TAG + ":has scheduler for ver = " + fMm().version + " version id = " + fMm().KHK + " update time in " + localDate.toString();
-    }
-    return this.TAG + ":has no scheduler";
-  }
-  
-  public boolean fMc()
-  {
-    if (!fMd()) {
-      return false;
-    }
-    XWalkInitializer.addXWalkInitializeLog(this.TAG, "has scheduler for update");
-    return true;
-  }
-  
-  /* Error */
-  public boolean fMd()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokevirtual 542	com/tencent/xweb/xwalk/updater/c:fMm	()Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   6: ifnull +38 -> 44
-    //   9: aload_0
-    //   10: invokevirtual 542	com/tencent/xweb/xwalk/updater/c:fMm	()Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   13: getfield 479	com/tencent/xweb/xwalk/updater/SchedulerConfig:version	I
-    //   16: ifle +28 -> 44
-    //   19: aload_0
-    //   20: invokevirtual 542	com/tencent/xweb/xwalk/updater/c:fMm	()Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   23: getfield 568	com/tencent/xweb/xwalk/updater/SchedulerConfig:KHL	Ljava/lang/String;
-    //   26: ifnull +18 -> 44
-    //   29: aload_0
-    //   30: invokevirtual 542	com/tencent/xweb/xwalk/updater/c:fMm	()Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   33: getfield 568	com/tencent/xweb/xwalk/updater/SchedulerConfig:KHL	Ljava/lang/String;
-    //   36: invokevirtual 704	java/lang/String:isEmpty	()Z
-    //   39: istore_1
-    //   40: iload_1
-    //   41: ifeq +9 -> 50
-    //   44: iconst_0
-    //   45: istore_1
-    //   46: aload_0
-    //   47: monitorexit
-    //   48: iload_1
-    //   49: ireturn
-    //   50: iconst_1
-    //   51: istore_1
-    //   52: goto -6 -> 46
-    //   55: astore_2
-    //   56: aload_0
-    //   57: monitorexit
-    //   58: aload_2
-    //   59: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	60	0	this	c
-    //   39	13	1	bool	boolean
-    //   55	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	40	55	finally
-  }
-  
-  protected boolean fMe()
-  {
-    return false;
-  }
-  
-  public boolean fMf()
-  {
-    Object localObject1 = a.mx("free_update_time_zone", "tools");
+    Object localObject1 = a.mV("free_update_time_zone", "tools");
     if (TextUtils.isEmpty((CharSequence)localObject1)) {}
     Object localObject2;
     double d;
@@ -888,23 +848,23 @@ public abstract class c
             } while (!((String)localObject1).contains("-"));
             localObject2 = ((String)localObject1).split("-");
           } while ((localObject2 == null) || (localObject2.length != 2));
-          localObject1 = e.aVl(localObject2[0]);
-        } while (!((e.a)localObject1).KDX);
-        localObject2 = e.aVl(localObject2[1]);
-      } while ((!((e.a)localObject2).KDX) || (!s(((e.a)localObject1).doubleValue(), ((e.a)localObject2).doubleValue())));
-      d = e.fKD();
+          localObject1 = e.bbo(localObject2[0]);
+        } while (!((e.a)localObject1).Mux);
+        localObject2 = e.bbo(localObject2[1]);
+      } while ((!((e.a)localObject2).Mux) || (!r(((e.a)localObject1).doubleValue(), ((e.a)localObject2).doubleValue())));
+      d = e.gbY();
     } while ((d < ((e.a)localObject1).doubleValue()) || (d > ((e.a)localObject2).doubleValue()));
     return true;
   }
   
-  public void fMg()
+  public void gdB()
   {
     try
     {
-      SharedPreferences.Editor localEditor = fMi().edit();
+      SharedPreferences.Editor localEditor = gdD().edit();
       localEditor.putLong("nLastFetchConfigTime", 0L);
       localEditor.commit();
-      fMm().KIn = 0L;
+      gdH().MyR = 0L;
       return;
     }
     finally
@@ -914,15 +874,15 @@ public abstract class c
     }
   }
   
-  public void fMh()
+  public void gdC()
   {
     try
     {
-      SharedPreferences.Editor localEditor = fMi().edit();
+      SharedPreferences.Editor localEditor = gdD().edit();
       localEditor.putLong("nLastFetchConfigTime", 0L);
       localEditor.commit();
-      fMm().KIn = 0L;
-      fMm().KIr = 0L;
+      gdH().MyR = 0L;
+      gdH().MyW = 0L;
       return;
     }
     finally
@@ -932,20 +892,20 @@ public abstract class c
     }
   }
   
-  public void fMj()
+  public void gdE()
   {
-    fMm().KIn = System.currentTimeMillis();
-    fMm().KIo = XWalkEnvironment.getRuntimeAbi();
-    SharedPreferences.Editor localEditor = fMi().edit();
-    localEditor.putLong("nLastFetchConfigTime", fMm().KIn);
-    localEditor.putString("strLastFetchAbi", fMm().KIo);
+    gdH().MyR = System.currentTimeMillis();
+    gdH().MyS = XWalkEnvironment.getRuntimeAbi();
+    SharedPreferences.Editor localEditor = gdD().edit();
+    localEditor.putLong("nLastFetchConfigTime", gdH().MyR);
+    localEditor.putString("strLastFetchAbi", gdH().MyS);
     localEditor.commit();
   }
   
-  public long fMk()
+  public long gdF()
   {
-    long l1 = a.my("force_cmd_period", "tools") * 60000L;
-    if (Cp(l1)) {}
+    long l1 = a.mW("force_cmd_period", "tools") * 60000L;
+    if (Fq(l1)) {}
     long l2;
     do
     {
@@ -954,24 +914,24 @@ public abstract class c
         return l1;
         l2 = XWalkEnvironment.getConfigFetchPeriod();
         l1 = l2;
-      } while (Cp(l2));
-      l2 = a.fIS();
+      } while (Fq(l2));
+      l2 = a.gao();
       l1 = l2;
-    } while (Cp(l2));
+    } while (Fq(l2));
     return 86400000L;
   }
   
-  public boolean fMl()
+  public boolean gdG()
   {
     boolean bool1 = true;
     for (;;)
     {
       try
       {
-        if ((XWalkEnvironment.getRuntimeAbi().equalsIgnoreCase(fMm().KIo)) || (TextUtils.isEmpty(fMm().KIo))) {
+        if ((XWalkEnvironment.getRuntimeAbi().equalsIgnoreCase(gdH().MyS)) || (TextUtils.isEmpty(gdH().MyS))) {
           continue;
         }
-        boolean bool2 = "true".equalsIgnoreCase(b.mx("disable_abi_switch_reset_config_time", "tools"));
+        boolean bool2 = "true".equalsIgnoreCase(b.mV("disable_abi_switch_reset_config_time", "tools"));
         if (bool2) {
           continue;
         }
@@ -980,12 +940,12 @@ public abstract class c
       {
         XWalkEnvironment.addXWalkInitializeLog(this.TAG, "isNeedFecthConfig:identyfy abi switch failed " + localException.getMessage());
         long l1 = System.currentTimeMillis();
-        if (!aA(l1, fMm().KIn)) {
+        if (!aF(l1, gdH().MyR)) {
           break label160;
         }
-        long l2 = fMi().getLong("nLastFetchConfigTime", 0L);
-        fMm().KIn = l2;
-        if (!aA(l1, l2)) {
+        long l2 = gdD().getLong("nLastFetchConfigTime", 0L);
+        gdH().MyR = l2;
+        if (!aF(l1, l2)) {
           break label160;
         }
         XWalkInitializer.addXWalkInitializeLog(this.TAG, "enough time after last time fetch config");
@@ -999,253 +959,274 @@ public abstract class c
   }
   
   /* Error */
-  public SchedulerConfig fMm()
+  public SchedulerConfig gdH()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   3: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
     //   6: ifnull +12 -> 18
     //   9: aload_0
-    //   10: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   10: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
     //   13: astore_1
     //   14: aload_0
     //   15: monitorexit
     //   16: aload_1
     //   17: areturn
     //   18: aload_0
-    //   19: new 476	com/tencent/xweb/xwalk/updater/SchedulerConfig
+    //   19: new 456	com/tencent/xweb/xwalk/updater/SchedulerConfig
     //   22: dup
-    //   23: invokespecial 603	com/tencent/xweb/xwalk/updater/SchedulerConfig:<init>	()V
-    //   26: putfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   23: invokespecial 668	com/tencent/xweb/xwalk/updater/SchedulerConfig:<init>	()V
+    //   26: putfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
     //   29: aload_0
-    //   30: invokespecial 520	com/tencent/xweb/xwalk/updater/c:fMi	()Landroid/content/SharedPreferences;
+    //   30: invokespecial 584	com/tencent/xweb/xwalk/updater/c:gdD	()Landroid/content/SharedPreferences;
     //   33: astore_1
     //   34: aload_0
-    //   35: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   35: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
     //   38: aload_1
-    //   39: ldc_w 716
+    //   39: ldc_w 751
     //   42: lconst_0
-    //   43: invokeinterface 763 4 0
-    //   48: putfield 719	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIn	J
+    //   43: invokeinterface 798 4 0
+    //   48: putfield 754	com/tencent/xweb/xwalk/updater/SchedulerConfig:MyR	J
     //   51: aload_0
-    //   52: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   52: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
     //   55: aload_1
-    //   56: ldc_w 729
-    //   59: ldc 234
-    //   61: invokeinterface 768 3 0
-    //   66: putfield 727	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIo	Ljava/lang/String;
-    //   69: aload_1
-    //   70: ldc_w 611
-    //   73: invokeinterface 770 2 0
-    //   78: ifne +11 -> 89
-    //   81: aload_0
-    //   82: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   85: astore_1
-    //   86: goto -72 -> 14
-    //   89: aload_0
-    //   90: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   93: aload_1
-    //   94: ldc_w 605
-    //   97: ldc 234
-    //   99: invokeinterface 768 3 0
-    //   104: putfield 491	com/tencent/xweb/xwalk/updater/SchedulerConfig:KHS	Ljava/lang/String;
-    //   107: aload_0
-    //   108: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   111: aload_1
-    //   112: ldc_w 658
-    //   115: iconst_0
-    //   116: invokeinterface 528 3 0
-    //   121: putfield 502	com/tencent/xweb/xwalk/updater/SchedulerConfig:KHK	I
-    //   124: aload_0
-    //   125: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   128: aload_1
-    //   129: ldc_w 660
-    //   132: ldc_w 771
-    //   135: invokeinterface 775 3 0
-    //   140: putfield 663	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIv	F
-    //   143: aload_0
-    //   144: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   147: aload_1
-    //   148: ldc_w 669
-    //   151: ldc_w 771
-    //   154: invokeinterface 775 3 0
-    //   159: putfield 672	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIw	F
-    //   162: aload_0
-    //   163: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   166: aload_1
-    //   167: ldc_w 611
-    //   170: ldc 234
-    //   172: invokeinterface 768 3 0
-    //   177: putfield 568	com/tencent/xweb/xwalk/updater/SchedulerConfig:KHL	Ljava/lang/String;
-    //   180: aload_0
-    //   181: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   184: aload_1
-    //   185: ldc_w 613
-    //   188: ldc 234
-    //   190: invokeinterface 768 3 0
-    //   195: putfield 496	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIq	Ljava/lang/String;
-    //   198: aload_0
-    //   199: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   202: aload_1
-    //   203: ldc_w 615
-    //   206: ldc 234
-    //   208: invokeinterface 768 3 0
-    //   213: putfield 618	com/tencent/xweb/xwalk/updater/SchedulerConfig:KHU	Ljava/lang/String;
-    //   216: aload_0
-    //   217: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   220: aload_1
-    //   221: ldc_w 620
-    //   224: iconst_0
-    //   225: invokeinterface 779 3 0
-    //   230: putfield 488	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIp	Z
-    //   233: aload_0
-    //   234: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   237: aload_1
-    //   238: ldc 166
-    //   240: lconst_0
-    //   241: invokeinterface 763 4 0
-    //   246: putfield 631	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIr	J
-    //   249: aload_0
-    //   250: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   253: aload_1
-    //   254: ldc_w 632
-    //   257: iconst_0
-    //   258: invokeinterface 528 3 0
-    //   263: putfield 479	com/tencent/xweb/xwalk/updater/SchedulerConfig:version	I
-    //   266: aload_0
-    //   267: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   270: aload_1
-    //   271: ldc_w 565
-    //   274: iconst_0
-    //   275: invokeinterface 528 3 0
-    //   280: putfield 583	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIt	I
-    //   283: aload_0
-    //   284: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   287: aload_1
-    //   288: ldc_w 634
-    //   291: iconst_0
-    //   292: invokeinterface 528 3 0
-    //   297: putfield 636	com/tencent/xweb/xwalk/updater/SchedulerConfig:nPatchTargetVersion	I
-    //   300: aload_0
-    //   301: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   304: aload_1
-    //   305: ldc_w 522
-    //   308: iconst_0
-    //   309: invokeinterface 528 3 0
-    //   314: putfield 545	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIu	I
-    //   317: aload_0
-    //   318: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   321: aload_1
-    //   322: ldc_w 637
-    //   325: ldc 234
-    //   327: invokeinterface 768 3 0
-    //   332: putfield 505	com/tencent/xweb/xwalk/updater/SchedulerConfig:patchMd5	Ljava/lang/String;
-    //   335: aload_0
-    //   336: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   339: aload_1
-    //   340: ldc_w 639
-    //   343: ldc 234
-    //   345: invokeinterface 768 3 0
-    //   350: putfield 642	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIs	Ljava/lang/String;
-    //   353: aload_0
-    //   354: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   357: aload_1
-    //   358: ldc_w 626
-    //   361: iconst_0
-    //   362: invokeinterface 779 3 0
-    //   367: putfield 482	com/tencent/xweb/xwalk/updater/SchedulerConfig:KHT	Z
-    //   370: aload_0
-    //   371: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   374: aload_1
-    //   375: ldc_w 627
-    //   378: iconst_0
-    //   379: invokeinterface 779 3 0
-    //   384: putfield 485	com/tencent/xweb/xwalk/updater/SchedulerConfig:bUseCdn	Z
-    //   387: aload_0
-    //   388: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   391: aload_1
-    //   392: ldc_w 644
-    //   395: iconst_1
-    //   396: invokeinterface 779 3 0
-    //   401: putfield 646	com/tencent/xweb/xwalk/updater/SchedulerConfig:bTryUseSharedCore	Z
-    //   404: aload_0
-    //   405: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   408: aload_1
-    //   409: ldc_w 648
-    //   412: iconst_1
-    //   413: invokeinterface 779 3 0
-    //   418: putfield 651	com/tencent/xweb/xwalk/updater/SchedulerConfig:KIx	Z
-    //   421: aload_0
-    //   422: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   425: aload_1
-    //   426: ldc_w 652
-    //   429: ldc 234
-    //   431: invokeinterface 768 3 0
-    //   436: putfield 499	com/tencent/xweb/xwalk/updater/SchedulerConfig:strAbi	Ljava/lang/String;
-    //   439: aload_0
-    //   440: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   443: aload_1
-    //   444: ldc_w 654
-    //   447: ldc 234
-    //   449: invokeinterface 768 3 0
-    //   454: putfield 656	com/tencent/xweb/xwalk/updater/SchedulerConfig:path	Ljava/lang/String;
-    //   457: aload_0
-    //   458: getfield 602	com/tencent/xweb/xwalk/updater/c:KIg	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
-    //   461: astore_1
-    //   462: goto -448 -> 14
-    //   465: astore_1
+    //   56: ldc_w 764
+    //   59: ldc_w 333
+    //   62: invokeinterface 803 3 0
+    //   67: putfield 762	com/tencent/xweb/xwalk/updater/SchedulerConfig:MyS	Ljava/lang/String;
+    //   70: aload_1
+    //   71: ldc_w 676
+    //   74: invokeinterface 805 2 0
+    //   79: ifne +11 -> 90
+    //   82: aload_0
+    //   83: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   86: astore_1
+    //   87: goto -73 -> 14
+    //   90: aload_0
+    //   91: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   94: aload_1
+    //   95: ldc_w 670
+    //   98: ldc_w 333
+    //   101: invokeinterface 803 3 0
+    //   106: putfield 556	com/tencent/xweb/xwalk/updater/SchedulerConfig:Mys	Ljava/lang/String;
+    //   109: aload_0
+    //   110: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   113: aload_1
+    //   114: ldc_w 722
+    //   117: iconst_0
+    //   118: invokeinterface 592 3 0
+    //   123: putfield 567	com/tencent/xweb/xwalk/updater/SchedulerConfig:Myk	I
+    //   126: aload_0
+    //   127: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   130: aload_1
+    //   131: ldc_w 724
+    //   134: ldc_w 806
+    //   137: invokeinterface 810 3 0
+    //   142: putfield 727	com/tencent/xweb/xwalk/updater/SchedulerConfig:Mza	F
+    //   145: aload_0
+    //   146: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   149: aload_1
+    //   150: ldc_w 733
+    //   153: ldc_w 806
+    //   156: invokeinterface 810 3 0
+    //   161: putfield 736	com/tencent/xweb/xwalk/updater/SchedulerConfig:Mzb	F
+    //   164: aload_0
+    //   165: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   168: aload_1
+    //   169: ldc_w 676
+    //   172: ldc_w 333
+    //   175: invokeinterface 803 3 0
+    //   180: putfield 628	com/tencent/xweb/xwalk/updater/SchedulerConfig:Myl	Ljava/lang/String;
+    //   183: aload_0
+    //   184: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   187: aload_1
+    //   188: ldc_w 678
+    //   191: ldc_w 333
+    //   194: invokeinterface 803 3 0
+    //   199: putfield 561	com/tencent/xweb/xwalk/updater/SchedulerConfig:MyV	Ljava/lang/String;
+    //   202: aload_0
+    //   203: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   206: aload_1
+    //   207: ldc_w 680
+    //   210: ldc_w 333
+    //   213: invokeinterface 803 3 0
+    //   218: putfield 683	com/tencent/xweb/xwalk/updater/SchedulerConfig:Myx	Ljava/lang/String;
+    //   221: aload_0
+    //   222: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   225: aload_1
+    //   226: ldc_w 685
+    //   229: iconst_0
+    //   230: invokeinterface 814 3 0
+    //   235: putfield 553	com/tencent/xweb/xwalk/updater/SchedulerConfig:MyT	Z
+    //   238: aload_0
+    //   239: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   242: aload_1
+    //   243: ldc 176
+    //   245: lconst_0
+    //   246: invokeinterface 798 4 0
+    //   251: putfield 695	com/tencent/xweb/xwalk/updater/SchedulerConfig:MyW	J
+    //   254: aload_0
+    //   255: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   258: aload_1
+    //   259: ldc_w 696
+    //   262: iconst_0
+    //   263: invokeinterface 592 3 0
+    //   268: putfield 544	com/tencent/xweb/xwalk/updater/SchedulerConfig:version	I
+    //   271: aload_0
+    //   272: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   275: aload_1
+    //   276: ldc_w 625
+    //   279: iconst_0
+    //   280: invokeinterface 592 3 0
+    //   285: putfield 643	com/tencent/xweb/xwalk/updater/SchedulerConfig:MyY	I
+    //   288: aload_0
+    //   289: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   292: aload_1
+    //   293: ldc_w 698
+    //   296: iconst_0
+    //   297: invokeinterface 592 3 0
+    //   302: putfield 700	com/tencent/xweb/xwalk/updater/SchedulerConfig:nPatchTargetVersion	I
+    //   305: aload_0
+    //   306: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   309: aload_1
+    //   310: ldc_w 586
+    //   313: iconst_0
+    //   314: invokeinterface 592 3 0
+    //   319: putfield 605	com/tencent/xweb/xwalk/updater/SchedulerConfig:MyZ	I
+    //   322: aload_0
+    //   323: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   326: aload_1
+    //   327: ldc_w 701
+    //   330: ldc_w 333
+    //   333: invokeinterface 803 3 0
+    //   338: putfield 570	com/tencent/xweb/xwalk/updater/SchedulerConfig:patchMd5	Ljava/lang/String;
+    //   341: aload_0
+    //   342: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   345: aload_1
+    //   346: ldc_w 703
+    //   349: ldc_w 333
+    //   352: invokeinterface 803 3 0
+    //   357: putfield 706	com/tencent/xweb/xwalk/updater/SchedulerConfig:MyX	Ljava/lang/String;
+    //   360: aload_0
+    //   361: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   364: aload_1
+    //   365: ldc_w 691
+    //   368: iconst_0
+    //   369: invokeinterface 814 3 0
+    //   374: putfield 547	com/tencent/xweb/xwalk/updater/SchedulerConfig:Myt	Z
+    //   377: aload_0
+    //   378: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   381: aload_1
+    //   382: ldc_w 692
+    //   385: iconst_0
+    //   386: invokeinterface 814 3 0
+    //   391: putfield 550	com/tencent/xweb/xwalk/updater/SchedulerConfig:bUseCdn	Z
+    //   394: aload_0
+    //   395: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   398: aload_1
+    //   399: ldc_w 708
+    //   402: iconst_1
+    //   403: invokeinterface 814 3 0
+    //   408: putfield 710	com/tencent/xweb/xwalk/updater/SchedulerConfig:bTryUseSharedCore	Z
+    //   411: aload_0
+    //   412: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   415: aload_1
+    //   416: ldc_w 712
+    //   419: iconst_1
+    //   420: invokeinterface 814 3 0
+    //   425: putfield 715	com/tencent/xweb/xwalk/updater/SchedulerConfig:Mzc	Z
+    //   428: aload_0
+    //   429: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   432: aload_1
+    //   433: ldc_w 716
+    //   436: ldc_w 333
+    //   439: invokeinterface 803 3 0
+    //   444: putfield 564	com/tencent/xweb/xwalk/updater/SchedulerConfig:strAbi	Ljava/lang/String;
+    //   447: aload_0
+    //   448: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   451: aload_1
+    //   452: ldc_w 718
+    //   455: ldc_w 333
+    //   458: invokeinterface 803 3 0
+    //   463: putfield 720	com/tencent/xweb/xwalk/updater/SchedulerConfig:path	Ljava/lang/String;
     //   466: aload_0
-    //   467: monitorexit
-    //   468: aload_1
-    //   469: athrow
+    //   467: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   470: aload_1
+    //   471: ldc_w 738
+    //   474: ldc_w 333
+    //   477: invokeinterface 803 3 0
+    //   482: putfield 656	com/tencent/xweb/xwalk/updater/SchedulerConfig:Myu	Ljava/lang/String;
+    //   485: aload_0
+    //   486: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   489: aload_1
+    //   490: ldc_w 740
+    //   493: ldc_w 333
+    //   496: invokeinterface 803 3 0
+    //   501: putfield 659	com/tencent/xweb/xwalk/updater/SchedulerConfig:Myv	Ljava/lang/String;
+    //   504: aload_0
+    //   505: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   508: aload_1
+    //   509: ldc_w 461
+    //   512: ldc_w 333
+    //   515: invokeinterface 803 3 0
+    //   520: putfield 459	com/tencent/xweb/xwalk/updater/SchedulerConfig:Myw	Ljava/lang/String;
+    //   523: aload_0
+    //   524: getfield 667	com/tencent/xweb/xwalk/updater/c:MyK	Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   527: astore_1
+    //   528: goto -514 -> 14
+    //   531: astore_1
+    //   532: aload_0
+    //   533: monitorexit
+    //   534: aload_1
+    //   535: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	470	0	this	c
-    //   13	449	1	localObject1	Object
-    //   465	4	1	localObject2	Object
+    //   0	536	0	this	c
+    //   13	515	1	localObject1	Object
+    //   531	4	1	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   2	14	465	finally
-    //   18	86	465	finally
-    //   89	462	465	finally
+    //   2	14	531	finally
+    //   18	87	531	finally
+    //   90	528	531	finally
   }
   
-  public double fMo()
+  public double gdK()
   {
-    KIf = false;
-    return aVA(ze(false)) * 3600000.0D;
+    MyJ = false;
+    return bbD(zT(false)) * 3600000.0D;
   }
   
-  public double fMp()
+  public double gdL()
   {
-    KIf = false;
-    return aVA(ze(true)) * 3600000.0D;
+    MyJ = false;
+    return bbD(zT(true)) * 3600000.0D;
   }
   
-  public void fMq()
+  public void gdM()
   {
-    double d = e.fKD();
-    if ((d < fMm().KIv) || (d < 6.0D)) {
+    double d = e.gbY();
+    if ((d < gdH().Mza) || (d < 6.0D)) {
       XWalkInitializer.addXWalkInitializeLog(this.TAG, "rescheduleToNextDay: cur hour is " + d + ", so still schedule in today");
     }
-    for (long l1 = -(d * 3600000.0D);; l1 = e.fKC())
+    for (long l1 = -(d * 3600000.0D);; l1 = e.gbX())
     {
-      l1 = (a(0.0D, H(fMm().KIv), t(fMm().KIv, fMm().KIw)) * 3600000.0D + l1);
+      l1 = (a(0.0D, I(gdH().Mza), s(gdH().Mza, gdH().Mzb)) * 3600000.0D + l1);
       long l2 = System.currentTimeMillis();
-      fMm().KIr = (l2 + l1);
-      e(fMm());
+      gdH().MyW = (l2 + l1);
+      e(gdH());
       XWalkInitializer.addXWalkInitializeLog(this.TAG, "rescheduleToNextDay: " + l1 / 60000L + " minutes later");
       return;
     }
   }
   
-  public boolean fMr()
+  public boolean gdN()
   {
     Object localObject = Calendar.getInstance();
     ((Calendar)localObject).set(2020, 6, 13, 17, 30);
-    if (!u(e.Ce(((Calendar)localObject).getTimeInMillis()), 17.5D))
+    if (!t(e.Fg(((Calendar)localObject).getTimeInMillis()), 17.5D))
     {
       Log.e(this.TAG, "unitTestRangeSchedule error 0");
       return false;
@@ -1254,7 +1235,7 @@ public abstract class c
     localObject = Calendar.getInstance();
     ((Calendar)localObject).setTimeInMillis(l);
     ((Calendar)localObject).set(13, 0);
-    if (e.fKC() != e.c((Calendar)localObject))
+    if (e.gbX() != e.c((Calendar)localObject))
     {
       Log.e(this.TAG, "unitest Time to next day error 0");
       return false;
@@ -1311,82 +1292,77 @@ public abstract class c
     }
     localObject = new c()
     {
-      public final String fLH()
+      public final String gdd()
       {
         return "UNITEST";
       }
       
-      protected final String fLJ()
-      {
-        return "18:00-20:00(0.5-0.6-0.7-1)=>0:00-3:00(0-1); 20:00 - 21:00(0.5-0.6-0.7) => 3-5(0-0.5); 15.5-17.5(0.5)=>3.5-5.5";
-      }
-      
-      public final String ze(boolean paramAnonymousBoolean)
+      protected final String zR(boolean paramAnonymousBoolean)
       {
         return "18:00-20:00=>0:00-3:00=0.5-0.6-0.7-0.8;20:00-21:00=>3-5=0.5-0.6-0.7-0.8;15.5-17.5=>3.5-5.5=0.5";
       }
-    }.fMn();
+    }.gdJ();
     if (((List)localObject).size() != 3)
     {
       Log.e(this.TAG, "unitTestRangeSchedule error 1");
       return false;
     }
-    ((b)((List)localObject).get(0)).x(1.5D, 19.0D);
-    if (!u(((b)((List)localObject).get(0)).w(1.5D, 19.0D), 0.325D))
+    ((b)((List)localObject).get(0)).v(1.5D, 19.0D);
+    if (!t(((b)((List)localObject).get(0)).u(1.5D, 19.0D), 0.325D))
     {
       Log.e(this.TAG, "unitTestRangeSchedule error 2");
       return false;
     }
     XWalkEnvironment.sNDeviceRd = 3249;
-    if (!((b)((List)localObject).get(0)).v(1.5D, 19.0D))
+    if (!((b)((List)localObject).get(0)).b(1.5D, 19.0D, 1.0D))
     {
       Log.e(this.TAG, "unitTestRangeSchedule error 3");
       return false;
     }
     XWalkEnvironment.sNDeviceRd = 3250;
-    if (((b)((List)localObject).get(0)).v(1.5D, 19.0D))
+    if (((b)((List)localObject).get(0)).b(1.5D, 19.0D, 1.0D))
     {
       Log.e(this.TAG, "unitTestRangeSchedule error 4");
       return false;
     }
     XWalkEnvironment.sNDeviceRd = 9899;
-    if (!u(((b)((List)localObject).get(0)).w(3.0D, 20.0D), 1.0D))
+    if (!t(((b)((List)localObject).get(0)).u(3.0D, 20.0D), 1.0D))
     {
       Log.e(this.TAG, "unitTestRangeSchedule error 5 ");
       return false;
     }
     XWalkEnvironment.sNDeviceRd = 5000;
-    if (((b)((List)localObject).get(2)).v(3.9D, 17.0D))
+    if (((b)((List)localObject).get(2)).b(3.9D, 17.0D, 1.0D))
     {
       Log.e(this.TAG, "unitTestRangeSchedule error 6");
       return false;
     }
     XWalkEnvironment.sNDeviceRd = 4998;
-    if (!((b)((List)localObject).get(2)).v(3.9D, 17.0D))
+    if (!((b)((List)localObject).get(2)).b(3.9D, 17.0D, 1.0D))
     {
       Log.e(this.TAG, "unitTestRangeSchedule error 7");
       return false;
     }
     XWalkEnvironment.sNDeviceRd = 1499;
-    if (!((b)((List)localObject).get(1)).v(4.0D, 20.5D))
+    if (!((b)((List)localObject).get(1)).b(4.0D, 20.5D, 1.0D))
     {
       Log.e(this.TAG, "unitTestRangeSchedule error 8");
       return false;
     }
     XWalkEnvironment.sNDeviceRd = 1500;
-    if (((b)((List)localObject).get(1)).v(4.0D, 20.5D))
+    if (((b)((List)localObject).get(1)).b(4.0D, 20.5D, 1.0D))
     {
       Log.e(this.TAG, "unitTestRangeSchedule error 9");
       return false;
     }
     XWalkEnvironment.sNDeviceRd = 1499;
-    if (r(4.0D, 20.5D))
+    if (c(4L, 20.5D))
     {
       Log.e(this.TAG, "unitTestRangeSchedule error 10");
       return false;
     }
     XWalkEnvironment.sNDeviceRd = 1500;
-    if (r(4.0D, 20.5D))
+    if (c(4L, 20.5D))
     {
       Log.e(this.TAG, "unitTestRangeSchedule error 11");
       return false;
@@ -1395,9 +1371,118 @@ public abstract class c
     return true;
   }
   
-  public abstract String ze(boolean paramBoolean);
+  public abstract String gdd();
   
-  public boolean zf(boolean paramBoolean)
+  public int gde()
+  {
+    return 0;
+  }
+  
+  public void gdv()
+  {
+    XWalkInitializer.addXWalkInitializeLog(this.TAG, "abandon Current Scheduler");
+    e(null);
+  }
+  
+  public String gdw()
+  {
+    if (gdx())
+    {
+      Object localObject = new Date(gdH().MyW);
+      StringBuilder localStringBuilder = new StringBuilder().append(this.TAG).append(":has scheduler for ver = ").append(gdH().version).append(" version id = ").append(gdH().Myk).append(" update time in ").append(((Date)localObject).toString());
+      if (!TextUtils.isEmpty(gdH().Myu))
+      {
+        localObject = " update speed config:" + gdH().Myu;
+        localStringBuilder = localStringBuilder.append((String)localObject);
+        if (TextUtils.isEmpty(gdH().Myv)) {
+          break label221;
+        }
+        localObject = " update forward speed config:" + gdH().Myv;
+        label162:
+        localStringBuilder = localStringBuilder.append((String)localObject);
+        if (TextUtils.isEmpty(gdH().Myw)) {
+          break label228;
+        }
+      }
+      label221:
+      label228:
+      for (localObject = " update time range config:" + gdH().Myw;; localObject = "")
+      {
+        return (String)localObject;
+        localObject = "";
+        break;
+        localObject = "";
+        break label162;
+      }
+    }
+    return this.TAG + ":has no scheduler";
+  }
+  
+  public boolean gdx()
+  {
+    if (!gdy()) {
+      return false;
+    }
+    XWalkInitializer.addXWalkInitializeLog(this.TAG, "has scheduler for update");
+    return true;
+  }
+  
+  /* Error */
+  public boolean gdy()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: invokevirtual 454	com/tencent/xweb/xwalk/updater/c:gdH	()Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   6: ifnull +38 -> 44
+    //   9: aload_0
+    //   10: invokevirtual 454	com/tencent/xweb/xwalk/updater/c:gdH	()Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   13: getfield 544	com/tencent/xweb/xwalk/updater/SchedulerConfig:version	I
+    //   16: ifle +28 -> 44
+    //   19: aload_0
+    //   20: invokevirtual 454	com/tencent/xweb/xwalk/updater/c:gdH	()Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   23: getfield 628	com/tencent/xweb/xwalk/updater/SchedulerConfig:Myl	Ljava/lang/String;
+    //   26: ifnull +18 -> 44
+    //   29: aload_0
+    //   30: invokevirtual 454	com/tencent/xweb/xwalk/updater/c:gdH	()Lcom/tencent/xweb/xwalk/updater/SchedulerConfig;
+    //   33: getfield 628	com/tencent/xweb/xwalk/updater/SchedulerConfig:Myl	Ljava/lang/String;
+    //   36: invokevirtual 942	java/lang/String:isEmpty	()Z
+    //   39: istore_1
+    //   40: iload_1
+    //   41: ifeq +9 -> 50
+    //   44: iconst_0
+    //   45: istore_1
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: iload_1
+    //   49: ireturn
+    //   50: iconst_1
+    //   51: istore_1
+    //   52: goto -6 -> 46
+    //   55: astore_2
+    //   56: aload_0
+    //   57: monitorexit
+    //   58: aload_2
+    //   59: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	60	0	this	c
+    //   39	13	1	bool	boolean
+    //   55	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	40	55	finally
+  }
+  
+  protected boolean gdz()
+  {
+    return false;
+  }
+  
+  protected abstract String zR(boolean paramBoolean);
+  
+  public boolean zS(boolean paramBoolean)
   {
     for (;;)
     {
@@ -1414,43 +1499,43 @@ public abstract class c
       label347:
       try
       {
-        bool = fMd();
+        bool = gdy();
         if (!bool)
         {
           paramBoolean = false;
           return paramBoolean;
         }
-        if ((fMe()) || (KIe))
+        if ((gdz()) || (MyI))
         {
-          com.tencent.xweb.util.g.r(903L, fLI() + 157, 1L);
+          g.t(903L, gde() + 157, 1L);
           paramBoolean = true;
           continue;
         }
-        Object localObject1 = a.mx("DELAY_UPDATE_TIME", "tools");
+        Object localObject1 = a.mV("DELAY_UPDATE_TIME", "tools");
         if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
-          localObject1 = e.aVl((String)localObject1);
-          if ((((e.a)localObject1).KDX) && (((e.a)localObject1).doubleValue() >= 0.0D) && (((e.a)localObject1).doubleValue() <= 24.0D)) {
+          localObject1 = e.bbo((String)localObject1);
+          if ((((e.a)localObject1).Mux) && (((e.a)localObject1).doubleValue() >= 0.0D) && (((e.a)localObject1).doubleValue() <= 24.0D)) {
             ((e.a)localObject1).doubleValue();
           }
         }
         l2 = System.currentTimeMillis();
-        d1 = fMo();
-        if (KIf)
+        d1 = gdK();
+        if (MyJ)
         {
           XWalkEnvironment.addXWalkInitializeLog(this.TAG, "parse update speed failed");
-          com.tencent.xweb.util.g.r(903L, fLI() + 163, 1L);
+          g.t(903L, gde() + 163, 1L);
         }
-        d2 = fMp();
-        if (KIf)
+        d2 = gdL();
+        if (MyJ)
         {
           XWalkEnvironment.addXWalkInitializeLog(this.TAG, "parse update forward speed failed");
-          com.tencent.xweb.util.g.r(903L, fLI() + 163, 1L);
+          g.t(903L, gde() + 163, 1L);
         }
-        l1 = fMm().KIr;
+        l1 = gdH().MyW;
         i = 0;
         if (l1 > 1000L) {
-          break label850;
+          break label847;
         }
         if (!paramBoolean)
         {
@@ -1459,14 +1544,14 @@ public abstract class c
         }
         l1 = (3600000.0D * Math.random());
         XWalkInitializer.addXWalkInitializeLog(this.TAG, "not have schedule time ,just random a time in one hour");
-        com.tencent.xweb.util.g.r(903L, fLI() + 155, 1L);
+        g.t(903L, gde() + 155, 1L);
         l1 = l2 - l1;
         XWalkInitializer.addXWalkInitializeLog(this.TAG, "scheduled time is after " + (l1 - l2) / 60000L + " minutes later");
         l3 = l2 - l1;
-        l4 = e.fKC();
+        l4 = e.gbX();
         l5 = l4 + l2;
         if (l1 - 180000L >= l5 - 86400000L) {
-          break label856;
+          break label853;
         }
         j = 1;
       }
@@ -1474,8 +1559,8 @@ public abstract class c
       if (j != 0)
       {
         XWalkInitializer.addXWalkInitializeLog(this.TAG, "isPastDaySchedule need reschedule to next day ");
-        fMq();
-        com.tencent.xweb.util.g.r(903L, 146L, 1L);
+        gdM();
+        g.t(903L, 146L, 1L);
         paramBoolean = false;
       }
       else
@@ -1484,7 +1569,7 @@ public abstract class c
         if (k != 0)
         {
           XWalkInitializer.addXWalkInitializeLog(this.TAG, "isFutureDaySchedule no need download now ");
-          com.tencent.xweb.util.g.r(903L, 147L, 1L);
+          g.t(903L, 147L, 1L);
           paramBoolean = false;
         }
         else
@@ -1493,7 +1578,7 @@ public abstract class c
           if (m != 0)
           {
             XWalkInitializer.addXWalkInitializeLog(this.TAG, "dangerous time do not update");
-            com.tencent.xweb.util.g.r(903L, 148L, 1L);
+            g.t(903L, 148L, 1L);
             paramBoolean = false;
           }
           else
@@ -1501,54 +1586,54 @@ public abstract class c
             if ((l3 >= 0L) && (l3 <= 3600000L))
             {
               bool = true;
-              com.tencent.xweb.util.g.r(903L, fLI() + 154, 1L);
-              break label874;
+              g.t(903L, gde() + 154, 1L);
+              break label871;
               if ((l3 < 0L) && (-l3 < d2))
               {
                 paramBoolean = true;
-                com.tencent.xweb.util.g.r(903L, fLI() + 161, 1L);
+                g.t(903L, gde() + 161, 1L);
                 if ((bool) && (!paramBoolean)) {
-                  com.tencent.xweb.util.g.r(903L, fLI() + 150, 1L);
+                  g.t(903L, gde() + 150, 1L);
                 }
                 if ((!bool) && (paramBoolean)) {
-                  com.tencent.xweb.util.g.r(903L, fLI() + 151, 1L);
+                  g.t(903L, gde() + 151, 1L);
                 }
                 XWalkInitializer.addXWalkInitializeLog(this.TAG, "shouldUpdateDefault = " + bool + "shouldUpdateFromConfig = " + paramBoolean);
                 if (paramBoolean)
                 {
                   XWalkInitializer.addXWalkInitializeLog(this.TAG, "time to update");
-                  com.tencent.xweb.util.g.r(903L, fLI() + 152, 1L);
+                  g.t(903L, gde() + 152, 1L);
                   paramBoolean = true;
                   continue;
                 }
-                if (fMf())
+                if (gdA())
                 {
                   XWalkInitializer.addXWalkInitializeLog(this.TAG, "time to update because of in free update time zone");
-                  com.tencent.xweb.util.g.r(903L, fLI() + 153, 1L);
+                  g.t(903L, gde() + 153, 1L);
                   paramBoolean = true;
                   continue;
                 }
-                if ((d1 >= 3600000.0D) && (Co(l1)))
+                if (c(l1, d1 / 18000000.0D))
                 {
-                  com.tencent.xweb.util.g.r(903L, fLI() + 162, 1L);
+                  g.t(903L, gde() + 162, 1L);
                   paramBoolean = true;
                   continue;
                 }
-                if ((i != 0) && ((l2 - fMm().KIr > 0L) || (Math.abs(l2 - fMm().KIr) > 7776000000L)))
+                if ((i != 0) && ((l2 - gdH().MyW > 0L) || (Math.abs(l2 - gdH().MyW) > 7776000000L)))
                 {
-                  fMq();
-                  com.tencent.xweb.util.g.r(903L, fLI() + 156, 1L);
-                  break label894;
+                  gdM();
+                  g.t(903L, gde() + 156, 1L);
+                  break label891;
                 }
                 XWalkInitializer.addXWalkInitializeLog(this.TAG, "has scheduler waiting for update, but time is not up");
-                break label894;
+                break label891;
               }
             }
-            label807:
-            label850:
-            label856:
-            label868:
-            label874:
+            label804:
+            label847:
+            label853:
+            label865:
+            label871:
             while ((l3 < 0L) || (l3 >= d1))
             {
               for (;;)
@@ -1561,21 +1646,21 @@ public abstract class c
               for (k = 1;; k = 0)
               {
                 if ((l4 >= 180000L) && (l4 + 180000L <= 86400000L)) {
-                  break label868;
+                  break label865;
                 }
                 m = 1;
                 break label347;
                 i = 1;
                 break;
                 j = 0;
-                break label807;
+                break label804;
               }
               m = 0;
               break label347;
             }
             paramBoolean = true;
             continue;
-            label894:
+            label891:
             paramBoolean = false;
           }
         }
@@ -1583,98 +1668,114 @@ public abstract class c
     }
   }
   
+  public final String zT(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(gdH().Myv))) {
+      return gdH().Myv;
+    }
+    if ((!paramBoolean) && (!TextUtils.isEmpty(gdH().Myu))) {
+      return gdH().Myu;
+    }
+    return zR(paramBoolean);
+  }
+  
   static final class a
   {
-    public double CVW;
-    public double KIi;
-    public double KIj;
-    public double[] KIk;
+    public double EzS;
+    public double MyM;
+    public double MyN;
+    public double[] MyO;
     
     a()
     {
-      AppMethodBeat.i(208955);
-      this.KIk = new double[0];
-      this.CVW = 1.0D;
-      AppMethodBeat.o(208955);
+      AppMethodBeat.i(195595);
+      this.MyO = new double[0];
+      this.EzS = 1.0D;
+      AppMethodBeat.o(195595);
     }
     
-    public final double I(double paramDouble)
+    public final double J(double paramDouble)
     {
       int i = 0;
-      if ((this.KIk == null) || (this.KIk.length == 0)) {
-        return this.CVW;
+      if ((paramDouble < this.MyM) || (paramDouble > this.MyN)) {
+        return 0.0D;
       }
-      if (this.KIk.length == 1) {
-        return this.KIk[0];
+      if ((this.MyO == null) || (this.MyO.length == 0)) {
+        return this.EzS;
       }
-      int j = this.KIk.length - 1;
-      double d1 = (this.KIj - this.KIi) / j;
-      paramDouble -= this.KIi;
+      if (this.MyO.length == 1) {
+        return this.MyO[0];
+      }
+      if (paramDouble == this.MyN) {
+        return this.MyO[(this.MyO.length - 1)];
+      }
+      int j = this.MyO.length - 1;
+      double d1 = (this.MyN - this.MyM) / j;
+      paramDouble -= this.MyM;
       while (i < j)
       {
         double d3 = i + 1;
         double d2 = i;
-        if (paramDouble < d3 * d1)
+        if (paramDouble <= d3 * d1)
         {
-          d3 = this.KIk[i];
-          return (this.KIk[(i + 1)] - this.KIk[i]) * (paramDouble - d2 * d1) / d1 + d3;
+          d3 = this.MyO[i];
+          return (this.MyO[(i + 1)] - this.MyO[i]) * (paramDouble - d2 * d1) / d1 + d3;
         }
         i += 1;
       }
-      c.KIf = true;
-      return 1.0D;
+      return this.MyO[(this.MyO.length - 1)];
     }
   }
   
   static final class b
   {
-    public c.a KIl;
-    public c.a KIm;
+    public c.a MyP;
+    public c.a MyQ;
     
     b()
     {
-      AppMethodBeat.i(208956);
-      this.KIl = new c.a();
-      this.KIm = new c.a();
-      AppMethodBeat.o(208956);
+      AppMethodBeat.i(195596);
+      this.MyP = new c.a();
+      this.MyQ = new c.a();
+      AppMethodBeat.o(195596);
     }
     
-    public final boolean v(double paramDouble1, double paramDouble2)
+    public final boolean b(double paramDouble1, double paramDouble2, double paramDouble3)
     {
-      AppMethodBeat.i(208957);
-      if ((paramDouble2 > this.KIl.KIj) || (paramDouble2 < this.KIl.KIi))
+      AppMethodBeat.i(195597);
+      if ((paramDouble2 > this.MyP.MyN) || (paramDouble2 < this.MyP.MyM))
       {
-        AppMethodBeat.o(208957);
+        AppMethodBeat.o(195597);
         return false;
       }
-      if ((paramDouble1 > this.KIm.KIj) || (paramDouble1 < this.KIm.KIi))
+      if ((paramDouble1 > this.MyQ.MyN) || (paramDouble1 < this.MyQ.MyM))
       {
-        AppMethodBeat.o(208957);
+        AppMethodBeat.o(195597);
         return false;
       }
-      if (XWalkEnvironment.getDeviceRd() <= w(paramDouble1, paramDouble2) * 10000.0D)
+      if (XWalkEnvironment.getDeviceRd() <= u(paramDouble1, paramDouble2) * 10000.0D * paramDouble3)
       {
-        AppMethodBeat.o(208957);
+        AppMethodBeat.o(195597);
         return true;
       }
-      AppMethodBeat.o(208957);
+      AppMethodBeat.o(195597);
       return false;
     }
     
-    public final double w(double paramDouble1, double paramDouble2)
+    public final double u(double paramDouble1, double paramDouble2)
     {
-      AppMethodBeat.i(208958);
-      paramDouble2 = this.KIl.I(paramDouble2);
-      paramDouble1 = this.KIm.I(paramDouble1);
-      AppMethodBeat.o(208958);
+      AppMethodBeat.i(195598);
+      paramDouble2 = this.MyP.J(paramDouble2);
+      paramDouble1 = this.MyQ.J(paramDouble1);
+      AppMethodBeat.o(195598);
       return paramDouble2 * paramDouble1;
     }
     
-    public final String x(double paramDouble1, double paramDouble2)
+    public final String v(double paramDouble1, double paramDouble2)
     {
-      AppMethodBeat.i(208959);
-      String str = "[ " + this.KIl.KIi + "," + this.KIl.KIj + "] => [" + this.KIm.KIi + "," + this.KIm.KIj + "],scale=" + w(paramDouble1, paramDouble2);
-      AppMethodBeat.o(208959);
+      AppMethodBeat.i(195599);
+      String str = "[ " + this.MyP.MyM + "," + this.MyP.MyN + "] => [" + this.MyQ.MyM + "," + this.MyQ.MyN + "],scale=" + u(paramDouble1, paramDouble2);
+      AppMethodBeat.o(195599);
       return str;
     }
   }

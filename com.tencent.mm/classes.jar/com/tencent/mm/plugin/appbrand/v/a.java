@@ -6,11 +6,11 @@ import java.util.Map;
 
 public final class a
 {
-  public static boolean btX()
+  public static boolean byc()
   {
     AppMethodBeat.i(48237);
-    c localc = com.tencent.mm.model.c.d.aAp().tJ("100159");
-    if ((localc.isValid()) && ("1".equals(localc.eYV().get("isCloseWeappSearch")))) {}
+    c localc = com.tencent.mm.model.c.d.aDs().wz("100159");
+    if ((localc.isValid()) && ("1".equals(localc.foF().get("isCloseWeappSearch")))) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(48237);

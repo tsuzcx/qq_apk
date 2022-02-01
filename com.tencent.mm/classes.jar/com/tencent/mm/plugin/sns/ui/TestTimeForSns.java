@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.report.service.f;
 
 public class TestTimeForSns
   extends FrameLayout
@@ -34,11 +34,11 @@ public class TestTimeForSns
     {
       this.hasDrawed = true;
       if (this.listener != null) {
-        this.listener.cNI();
+        this.listener.cWa();
       }
     }
-    g.MI(10);
-    g.MI(22);
+    f.Ok(10);
+    f.Ok(22);
     AppMethodBeat.o(99702);
   }
   
@@ -54,7 +54,7 @@ public class TestTimeForSns
   
   public static abstract interface a
   {
-    public abstract void cNI();
+    public abstract void cWa();
   }
 }
 

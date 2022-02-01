@@ -1,104 +1,40 @@
 package com.tencent.mm.plugin.game.luggage.c.a;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.luggage.d.c;
-import com.tencent.luggage.d.k;
-import com.tencent.luggage.d.n;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.fav.ui.e;
-import com.tencent.mm.plugin.webview.luggage.FavUrlTask;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.plugin.webview.luggage.jsapi.ax;
-import com.tencent.mm.protocal.protobuf.bug;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.widget.snackbar.a.b;
+import com.tencent.mm.plugin.downloader_app.api.a.c;
+import com.tencent.mm.plugin.downloader_app.api.c;
+import com.tencent.mm.plugin.lite.jsapi.a;
+import com.tencent.mm.plugin.lite.jsapi.a.a;
+import com.tencent.mm.sdk.platformtools.aj;
 import org.json.JSONObject;
 
-public final class g
+public class g
   extends a
 {
-  private a.b sXH;
-  
-  public g()
+  public final int cXg()
   {
-    super(4);
-    AppMethodBeat.i(83111);
-    this.sXH = new a.b()
-    {
-      public final void beL()
-      {
-        AppMethodBeat.i(83110);
-        FavUrlTask localFavUrlTask = new FavUrlTask();
-        localFavUrlTask.actionType = 2;
-        AppBrandMainProcessService.a(localFavUrlTask);
-        AppMethodBeat.o(83110);
-      }
-    };
-    AppMethodBeat.o(83111);
+    return 1;
   }
   
-  public final void a(Context paramContext, f paramf, bug parambug)
+  public final void j(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(83112);
-    parambug = new Bundle();
-    parambug.putLong("msg_id", paramf.mParams.getLong("msg_id", -9223372036854775808L));
-    parambug.putString("sns_local_id", paramf.mParams.getString("sns_local_id"));
-    parambug.putInt("news_svr_id", paramf.mParams.getInt("news_svr_id", 0));
-    parambug.putString("news_svr_tweetid", paramf.mParams.getString("news_svr_tweetid"));
-    parambug.putInt("message_index", paramf.mParams.getInt("message_index", 0));
-    Object localObject = paramf.getUrl();
-    String str = paramf.bLL();
-    parambug.putString("rawUrl", str);
-    if ((!bs.isNullOrNil(str)) && (str.endsWith("#rd")))
+    AppMethodBeat.i(211641);
+    paramString = paramJSONObject.optString("appId");
+    paramJSONObject = new Intent();
+    paramJSONObject.putExtra("appId", paramString);
+    paramJSONObject.putExtra("view_task", true);
+    paramJSONObject.addFlags(268435456);
+    ((c)com.tencent.mm.kernel.g.ab(c.class)).a(aj.getContext(), paramJSONObject, new a.c()
     {
-      str = str.substring(0, str.length() - 3);
-      if ((!bs.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
+      public final void biA()
       {
-        parambug.putString("rawUrl", (String)localObject);
-        parambug.putLong("msg_id", -9223372036854775808L);
+        AppMethodBeat.i(211640);
+        g.a(g.this).cXe();
+        AppMethodBeat.o(211640);
       }
-    }
-    for (;;)
-    {
-      parambug.putString("preChatName", paramf.mParams.getString("preChatName"));
-      parambug.putInt("preMsgIndex", paramf.mParams.getInt("preMsgIndex", 0));
-      parambug.putString("prePublishId", paramf.mParams.getString("prePublishId"));
-      parambug.putString("preUsername", paramf.mParams.getString("preUsername"));
-      localObject = new FavUrlTask();
-      ((FavUrlTask)localObject).actionType = 1;
-      ((FavUrlTask)localObject).dmf = parambug;
-      AppBrandMainProcessService.b((MainProcessTask)localObject);
-      if (!((FavUrlTask)localObject).CkX) {
-        break;
-      }
-      ax.UT(1);
-      paramf.bXF.a(new c()
-      {
-        public final JSONObject Aq()
-        {
-          return null;
-        }
-        
-        public final String name()
-        {
-          return "menu:share:appmessage";
-        }
-      });
-      AppMethodBeat.o(83112);
-      return;
-      if ((!bs.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
-      {
-        parambug.putString("rawUrl", (String)localObject);
-        parambug.putLong("msg_id", -9223372036854775808L);
-        parambug.putString("sns_local_id", "");
-      }
-    }
-    e.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.sXH);
-    AppMethodBeat.o(83112);
+    });
+    AppMethodBeat.o(211641);
   }
 }
 

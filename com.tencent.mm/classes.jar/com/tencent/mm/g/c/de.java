@@ -8,19 +8,42 @@ public abstract class de
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eNJ = "wechatUsername".hashCode();
-  private static final int eNK = "systemAddressBookUsername".hashCode();
-  private static final int eNL = "contactId".hashCode();
-  private static final int eNM = "sortKey".hashCode();
+  private static final int eEm;
+  private static final int eFp = "username".hashCode();
+  private static final int eLe = "msgSvrId".hashCode();
+  private static final int feu;
+  private static final int fev;
+  private static final int few;
+  private static final int fex = "active".hashCode();
+  private static final int fey = "lastActiveTime".hashCode();
+  private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eNF = true;
-  private boolean eNG = true;
-  private boolean eNH = true;
-  private boolean eNI = true;
-  public String field_contactId;
-  public String field_sortKey;
-  public String field_systemAddressBookUsername;
-  public String field_wechatUsername;
+  private boolean __hadSetkey = true;
+  private boolean eDP = true;
+  private boolean eFm = true;
+  private boolean eKR = true;
+  private boolean fep = true;
+  private boolean feq = true;
+  private boolean fer = true;
+  private boolean fes = true;
+  private boolean fet = true;
+  public int field_active;
+  public String field_content;
+  public String field_creator;
+  public long field_firstMsgId;
+  public String field_key;
+  public long field_lastActiveTime;
+  public long field_msgSvrId;
+  public int field_num;
+  public String field_username;
+  
+  static
+  {
+    eEm = "content".hashCode();
+    feu = "creator".hashCode();
+    fev = "num".hashCode();
+    few = "firstMsgId".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,10 +58,10 @@ public abstract class de
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eNJ != k) {
+      if (eFp != k) {
         break label60;
       }
-      this.field_wechatUsername = paramCursor.getString(i);
+      this.field_username = paramCursor.getString(i);
     }
     for (;;)
     {
@@ -46,12 +69,22 @@ public abstract class de
       break label20;
       break;
       label60:
-      if (eNK == k) {
-        this.field_systemAddressBookUsername = paramCursor.getString(i);
-      } else if (eNL == k) {
-        this.field_contactId = paramCursor.getString(i);
-      } else if (eNM == k) {
-        this.field_sortKey = paramCursor.getString(i);
+      if (key_HASHCODE == k) {
+        this.field_key = paramCursor.getString(i);
+      } else if (eEm == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (feu == k) {
+        this.field_creator = paramCursor.getString(i);
+      } else if (fev == k) {
+        this.field_num = paramCursor.getInt(i);
+      } else if (few == k) {
+        this.field_firstMsgId = paramCursor.getLong(i);
+      } else if (eLe == k) {
+        this.field_msgSvrId = paramCursor.getLong(i);
+      } else if (fex == k) {
+        this.field_active = paramCursor.getInt(i);
+      } else if (fey == k) {
+        this.field_lastActiveTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -61,17 +94,32 @@ public abstract class de
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eNF) {
-      localContentValues.put("wechatUsername", this.field_wechatUsername);
+    if (this.eFm) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.eNG) {
-      localContentValues.put("systemAddressBookUsername", this.field_systemAddressBookUsername);
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
     }
-    if (this.eNH) {
-      localContentValues.put("contactId", this.field_contactId);
+    if (this.eDP) {
+      localContentValues.put("content", this.field_content);
     }
-    if (this.eNI) {
-      localContentValues.put("sortKey", this.field_sortKey);
+    if (this.fep) {
+      localContentValues.put("creator", this.field_creator);
+    }
+    if (this.feq) {
+      localContentValues.put("num", Integer.valueOf(this.field_num));
+    }
+    if (this.fer) {
+      localContentValues.put("firstMsgId", Long.valueOf(this.field_firstMsgId));
+    }
+    if (this.eKR) {
+      localContentValues.put("msgSvrId", Long.valueOf(this.field_msgSvrId));
+    }
+    if (this.fes) {
+      localContentValues.put("active", Integer.valueOf(this.field_active));
+    }
+    if (this.fet) {
+      localContentValues.put("lastActiveTime", Long.valueOf(this.field_lastActiveTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -81,7 +129,7 @@ public abstract class de
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.de
  * JD-Core Version:    0.7.0.1
  */

@@ -5,17 +5,17 @@ import com.tencent.mm.loader.j.b;
 
 public final class c
 {
-  public static String fzD()
+  public static String fQN()
   {
     AppMethodBeat.i(72646);
-    String str = b.aph() + "wallet";
+    String str = b.arU() + "wallet";
     AppMethodBeat.o(72646);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,9 @@ public abstract interface b
   
   public abstract void d(MMActivity paramMMActivity, boolean paramBoolean);
   
-  public abstract int euU();
+  public abstract int eJa();
   
-  public abstract void n(MMActivity paramMMActivity);
+  public abstract void p(MMActivity paramMMActivity);
 }
 
 

@@ -3,111 +3,163 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.plugin.sns.ad.e.c;
+import com.tencent.mm.plugin.sns.data.j;
 import com.tencent.mm.protocal.protobuf.bm;
 import com.tencent.mm.protocal.protobuf.bn;
 import com.tencent.mm.protocal.protobuf.bo;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import org.json.JSONObject;
 
 public final class d
   extends n
   implements k
 {
-  private g callback;
-  private b rr;
+  private f callback;
+  private com.tencent.mm.al.b rr;
   
   public d(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97146);
-    Object localObject = new b.a();
-    ((b.a)localObject).hvt = new bn();
-    ((b.a)localObject).hvu = new bo();
-    ((b.a)localObject).uri = "/cgi-bin/mmoc-bin/ad/adchannelmsg";
-    ((b.a)localObject).funcId = 2538;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (bn)this.rr.hvr.hvw;
+    Object localObject1 = new b.a();
+    ((b.a)localObject1).hNM = new bn();
+    ((b.a)localObject1).hNN = new bo();
+    ((b.a)localObject1).uri = "/cgi-bin/mmoc-bin/ad/adchannelmsg";
+    ((b.a)localObject1).funcId = 2538;
+    this.rr = ((b.a)localObject1).aDC();
+    localObject1 = (bn)this.rr.hNK.hNQ;
     bm localbm = new bm();
-    localbm.DOu = 2;
-    Context localContext = ai.getContext();
-    if (ax.isWifi(localContext)) {
+    localbm.FtB = 2;
+    Object localObject2 = aj.getContext();
+    if (ay.isWifi((Context)localObject2)) {
       i = 1;
     }
+    label196:
+    label484:
     for (;;)
     {
-      localbm.DOr = i;
-      localbm.imei = com.tencent.mm.compatible.deviceinfo.q.cF(false);
-      localbm.DOw = com.tencent.mm.compatible.deviceinfo.q.getOAID();
-      ac.i("NetSceneAdLadingPageClick", "adChannelCgiReport, oaid=" + localbm.DOw + "imei=" + localbm.imei);
-      ((bn)localObject).DOy = localbm;
-      ((bn)localObject).cDo = paramString1;
-      ((bn)localObject).content = paramString2;
-      boolean bool = TextUtils.isEmpty(localbm.DOw);
-      label232:
-      int j;
-      if ((TextUtils.isEmpty(localbm.imei)) || ("1234567890ABCDEF".equals(localbm.imei)))
+      localbm.Fty = i;
+      localbm.yWM = com.tencent.mm.plugin.sns.ad.a.a.aaC();
+      localbm.imei = com.tencent.mm.plugin.sns.ad.a.a.ftk();
+      localbm.FtG = com.tencent.mm.plugin.sns.ad.a.a.dRf();
+      localbm.FtF = c.dSd();
+      localbm.FtH = jA(paramString1, paramString2);
+      ((bn)localObject1).FtJ = localbm;
+      ((bn)localObject1).cOt = paramString1;
+      ((bn)localObject1).content = paramString2;
+      try
       {
-        i = 1;
-        if ((bool) || (i != 0))
+        int j;
+        if (TextUtils.isEmpty(localbm.yWM))
         {
-          paramString1 = com.tencent.mm.plugin.sns.data.i.xNj;
-          if (!bool) {
-            break label329;
+          i = 0;
+          j = k;
+          if (!TextUtils.isEmpty(localbm.imei))
+          {
+            j = k;
+            if (!"1234567890ABCDEF".equals(localbm.imei)) {
+              j = 1;
+            }
           }
-          j = 0;
-          label253:
-          if (i == 0) {
-            break label335;
+          localObject2 = j.aar();
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            break label447;
           }
         }
+        for (paramString1 = "0";; paramString1 = "1")
+        {
+          localObject1 = "0";
+          paramString2 = (String)localObject1;
+          if (localbm.imei != null)
+          {
+            paramString2 = (String)localObject1;
+            if (localbm.imei.equals(localObject2)) {
+              paramString2 = "1";
+            }
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("##oaid:").append(localbm.yWM).append(", imei:").append(localbm.imei).append(", rawImei:").append((String)localObject2).append(", waid:").append(localbm.FtH).append(", common_device_id:").append(localbm.FtG).append(", ua:").append(localbm.FtF);
+          ad.i("NetSceneAdLadingPageClick", ((StringBuilder)localObject1).toString());
+          com.tencent.mm.plugin.sns.data.i.b(com.tencent.mm.plugin.sns.data.i.zdc, paramString1, i, j, paramString2);
+          AppMethodBeat.o(97146);
+          return;
+          if (ay.is2G((Context)localObject2)) {
+            break;
+          }
+          if (ay.is3G((Context)localObject2))
+          {
+            i = 3;
+            break;
+          }
+          if (ay.is4G((Context)localObject2))
+          {
+            i = 4;
+            break;
+          }
+          if (!ay.is5G((Context)localObject2)) {
+            break label484;
+          }
+          i = 5;
+          break;
+          i = 1;
+          break label196;
+        }
+        i = 0;
       }
-      label329:
-      label335:
-      for (i = k;; i = 1)
+      catch (Throwable paramString1)
       {
-        com.tencent.mm.plugin.sns.data.i.b(paramString1, "", j, i, "");
+        ad.e("NetSceneAdLadingPageClick", "adTecReport exp=" + paramString1.toString());
         AppMethodBeat.o(97146);
         return;
-        if (ax.is2G(localContext)) {
-          break;
-        }
-        if (ax.is3G(localContext))
-        {
-          i = 3;
-          break;
-        }
-        if (ax.is4G(localContext))
-        {
-          i = 4;
-          break;
-        }
-        if (!ax.is5G(localContext)) {
-          break label340;
-        }
-        i = 5;
-        break;
-        i = 0;
-        break label232;
-        j = 1;
-        break label253;
       }
-      label340:
-      i = 0;
     }
   }
   
-  public final int doScene(e parame, g paramg)
+  private static String jA(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(198097);
+    if (paramString2.contains("uxinfo")) {
+      try
+      {
+        paramString2 = new JSONObject(paramString2).optString("uxinfo");
+        if (TextUtils.isEmpty(paramString2))
+        {
+          ad.e("NetSceneAdLadingPageClick", "getWaid, has no uxinfo, channel=".concat(String.valueOf(paramString1)));
+          AppMethodBeat.o(198097);
+          return "";
+        }
+        paramString1 = com.tencent.mm.plugin.sns.storage.a.azI(paramString2);
+        ad.i("NetSceneAdLadingPageClick", "getWaid, waidPkg=" + paramString1 + ", uxinfo=" + paramString2);
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          paramString1 = com.tencent.mm.plugin.sns.waid.b.aBl(paramString1);
+          AppMethodBeat.o(198097);
+          return paramString1;
+        }
+      }
+      catch (Throwable paramString1)
+      {
+        ad.e("NetSceneAdLadingPageClick", "getWaid exop=" + paramString1.toString());
+      }
+    }
+    AppMethodBeat.o(198097);
+    return "";
+  }
+  
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(97149);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(97149);
     return i;
@@ -121,10 +173,10 @@ public final class d
     return i;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(97147);
-    ac.i("NetSceneAdLadingPageClick", "errType=" + paramInt2 + ", errCode=" + paramInt3 + ", errMsg=" + paramString);
+    ad.i("NetSceneAdLadingPageClick", "errType=" + paramInt2 + ", errCode=" + paramInt3 + ", errMsg=" + paramString);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
@@ -133,45 +185,45 @@ public final class d
   
   public static final class a
   {
-    com.tencent.mm.ab.i ysj;
-    com.tencent.mm.ab.i ysk;
+    public com.tencent.mm.ac.i zDp;
+    com.tencent.mm.ac.i zJt;
     
     public a(String paramString1, int paramInt1, int paramInt2, long paramLong, int paramInt3, String paramString2, String paramString3)
     {
       AppMethodBeat.i(179131);
-      this.ysj = new com.tencent.mm.ab.i();
-      this.ysk = new com.tencent.mm.ab.i();
+      this.zDp = new com.tencent.mm.ac.i();
+      this.zJt = new com.tencent.mm.ac.i();
       try
       {
-        this.ysj.i("uxinfo", paramString1);
-        this.ysj.O("scene", paramInt1);
-        this.ysj.O("originScene", paramInt2);
-        this.ysj.s("canvasId", paramLong);
-        this.ysj.O("type", 21);
-        this.ysj.O("subType", paramInt3);
-        this.ysj.O("action", 1);
-        if (!bs.T(new String[] { paramString2, paramString3 }))
+        this.zDp.h("uxinfo", paramString1);
+        this.zDp.R("scene", paramInt1);
+        this.zDp.R("originScene", paramInt2);
+        this.zDp.u("canvasId", paramLong);
+        this.zDp.R("type", 21);
+        this.zDp.R("subType", paramInt3);
+        this.zDp.R("action", 1);
+        if (!bt.V(new String[] { paramString2, paramString3 }))
         {
-          this.ysj.i("viewid", paramString2);
-          this.ysj.i("commInfo", paramString3);
+          this.zDp.h("viewid", paramString2);
+          this.zDp.h("commInfo", paramString3);
         }
         AppMethodBeat.o(179131);
         return;
       }
       catch (Exception paramString1)
       {
-        ac.e("NetSceneAdLadingPageClick", "ContentBuilder exp=" + paramString1.toString());
+        ad.e("NetSceneAdLadingPageClick", "ContentBuilder exp=" + paramString1.toString());
         AppMethodBeat.o(179131);
       }
     }
     
-    public final com.tencent.mm.ab.i bi(String paramString, long paramLong)
+    public final com.tencent.mm.ac.i bl(String paramString, long paramLong)
     {
       AppMethodBeat.i(97143);
       try
       {
-        this.ysk.s(paramString, paramLong);
-        paramString = this.ysk;
+        this.zJt.u(paramString, paramLong);
+        paramString = this.zJt;
         AppMethodBeat.o(97143);
         return paramString;
       }
@@ -179,18 +231,18 @@ public final class d
       {
         for (;;)
         {
-          ac.e("NetSceneAdLadingPageClick", "appendExtInfo exp=" + paramString.toString());
+          ad.e("NetSceneAdLadingPageClick", "appendExtInfo exp=" + paramString.toString());
         }
       }
     }
     
-    public final String cSH()
+    public final String dbO()
     {
       AppMethodBeat.i(97144);
       try
       {
-        this.ysj.i("extInfo", this.ysk);
-        String str = this.ysj.toString();
+        this.zDp.h("extInfo", this.zJt);
+        String str = this.zDp.toString();
         AppMethodBeat.o(97144);
         return str;
       }
@@ -198,18 +250,18 @@ public final class d
       {
         for (;;)
         {
-          ac.e("NetSceneAdLadingPageClick", "build exp=" + localException.toString());
+          ad.e("NetSceneAdLadingPageClick", "build exp=" + localException.toString());
         }
       }
     }
     
-    public final com.tencent.mm.ab.i jo(String paramString1, String paramString2)
+    public final com.tencent.mm.ac.i jB(String paramString1, String paramString2)
     {
       AppMethodBeat.i(97142);
       try
       {
-        this.ysk.i(paramString1, bs.nullAsNil(paramString2));
-        paramString1 = this.ysk;
+        this.zJt.h(paramString1, bt.nullAsNil(paramString2));
+        paramString1 = this.zJt;
         AppMethodBeat.o(97142);
         return paramString1;
       }
@@ -217,7 +269,7 @@ public final class d
       {
         for (;;)
         {
-          ac.e("NetSceneAdLadingPageClick", "appendExtInfo exp=" + paramString1.toString());
+          ad.e("NetSceneAdLadingPageClick", "appendExtInfo exp=" + paramString1.toString());
         }
       }
     }

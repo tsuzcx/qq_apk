@@ -3,77 +3,70 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class crm
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String FEm;
-  private boolean FEn;
+  public int HjU;
+  public String ugo;
   
-  public final crm aJV(String paramString)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    this.FEm = paramString;
-    this.FEn = true;
-    return this;
-  }
-  
-  public final int computeSize()
-  {
-    AppMethodBeat.i(2387);
-    int i = 0;
-    if (this.FEn) {
-      i = f.a.a.b.b.a.e(1, this.FEm) + 0;
-    }
-    AppMethodBeat.o(2387);
-    return i + 0;
-  }
-  
-  public final String getString()
-  {
-    return this.FEm;
-  }
-  
-  public final boolean populateBuilderWithField(f.a.a.a.a parama, com.tencent.mm.bw.a parama1, int paramInt)
-  {
-    AppMethodBeat.i(2390);
-    parama1 = (crm)parama1;
-    boolean bool = true;
-    switch (paramInt)
+    AppMethodBeat.i(91660);
+    if (paramInt == 0)
     {
-    default: 
-      bool = false;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aS(1, this.HjU);
+      if (this.ugo != null) {
+        paramVarArgs.d(2, this.ugo);
+      }
+      AppMethodBeat.o(91660);
+      return 0;
     }
-    for (;;)
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(2390);
-      return bool;
-      parama1.aJV(parama.LVo.readString());
+      int i = f.a.a.b.b.a.bz(1, this.HjU) + 0;
+      paramInt = i;
+      if (this.ugo != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.ugo);
+      }
+      AppMethodBeat.o(91660);
+      return paramInt;
     }
-  }
-  
-  public final byte[] toByteArray()
-  {
-    AppMethodBeat.i(2388);
-    byte[] arrayOfByte = super.toByteArray();
-    AppMethodBeat.o(2388);
-    return arrayOfByte;
-  }
-  
-  public final String toString()
-  {
-    return this.FEm;
-  }
-  
-  public final void writeFields(f.a.a.c.a parama)
-  {
-    AppMethodBeat.i(2389);
-    if (this.FEn) {
-      parama.d(1, this.FEm);
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gxE();
+        }
+      }
+      AppMethodBeat.o(91660);
+      return 0;
     }
-    AppMethodBeat.o(2389);
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      crm localcrm = (crm)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(91660);
+        return -1;
+      case 1: 
+        localcrm.HjU = locala.NPN.zc();
+        AppMethodBeat.o(91660);
+        return 0;
+      }
+      localcrm.ugo = locala.NPN.readString();
+      AppMethodBeat.o(91660);
+      return 0;
+    }
+    AppMethodBeat.o(91660);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.crm
  * JD-Core Version:    0.7.0.1
  */

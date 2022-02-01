@@ -1,38 +1,39 @@
 package com.tencent.mm.plugin.l;
 
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
 import java.util.List;
 
 public final class a
 {
-  private static List<a.a> ufQ;
-  private static String ufR;
+  private static List<a> viA;
+  private static String viB;
   
   /* Error */
-  public static List<a.a> akb(String paramString)
+  public static List<a> aoO(String paramString)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 14
-    //   5: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: ldc 15
+    //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: ifnull +27 -> 36
     //   12: aload_0
-    //   13: getstatic 22	com/tencent/mm/plugin/l/a:ufR	Ljava/lang/String;
-    //   16: invokevirtual 28	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   13: getstatic 23	com/tencent/mm/plugin/l/a:viB	Ljava/lang/String;
+    //   16: invokevirtual 29	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   19: ifeq +17 -> 36
-    //   22: getstatic 30	com/tencent/mm/plugin/l/a:ufQ	Ljava/util/List;
+    //   22: getstatic 31	com/tencent/mm/plugin/l/a:viA	Ljava/util/List;
     //   25: astore_0
-    //   26: ldc 14
-    //   28: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: ldc 15
+    //   28: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   31: ldc 2
     //   33: monitorexit
     //   34: aload_0
     //   35: areturn
     //   36: aconst_null
     //   37: astore_0
-    //   38: ldc 14
-    //   40: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   38: ldc 15
+    //   40: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: goto -12 -> 31
     //   46: astore_0
     //   47: ldc 2
@@ -49,12 +50,12 @@ public final class a
     //   38	43	46	finally
   }
   
-  public static void s(String paramString, List<a.a> paramList)
+  public static void u(String paramString, List<a> paramList)
   {
     try
     {
-      ufR = paramString;
-      ufQ = paramList;
+      viB = paramString;
+      viA = paramList;
       return;
     }
     finally
@@ -63,10 +64,17 @@ public final class a
       throw paramString;
     }
   }
+  
+  public static final class a
+  {
+    public String lEN;
+    public int viC;
+    public SKBuiltinBuffer_t viD;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.l.a
  * JD-Core Version:    0.7.0.1
  */

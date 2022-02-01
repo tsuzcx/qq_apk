@@ -1,162 +1,162 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.v;
 import java.lang.reflect.Field;
 import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback;", "", "()V", "hasMore_Field", "Ljava/lang/reflect/Field;", "incrementList_Field", "isNeedClear_Field", "lastBuffer_Field", "pullType_Field", "getArgsOnFetchDone", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "args", "", "([Ljava/lang/Object;)Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "startMonitor", "", "ArgsOnFetchDone", "Companion", "FinderPullType", "plugin-expt_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback;", "", "()V", "hasMore_Field", "Ljava/lang/reflect/Field;", "incrementList_Field", "isNeedClear_Field", "lastBuffer_Field", "pullType_Field", "getArgsOnFetchDone", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "args", "", "([Ljava/lang/Object;)Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "startMonitor", "", "ArgsOnFetchDone", "Companion", "FinderPullType", "plugin-expt_release"})
 public final class l
 {
-  public static final b qnR;
-  private Field qnM;
-  private Field qnN;
-  private Field qnO;
-  private Field qnP;
-  private Field qnQ;
+  public static final b qWP;
+  private Field qWK;
+  private Field qWL;
+  private Field qWM;
+  private Field qWN;
+  private Field qWO;
   
   static
   {
-    AppMethodBeat.i(195507);
-    qnR = new b((byte)0);
-    AppMethodBeat.o(195507);
+    AppMethodBeat.i(210853);
+    qWP = new b((byte)0);
+    AppMethodBeat.o(210853);
   }
   
   public l()
   {
-    AppMethodBeat.i(195506);
+    AppMethodBeat.i(210852);
     try
     {
       Object localObject = Class.forName("com.tencent.mm.plugin.finder.feed.model.internal.IResponse");
       Field localField = ((Class)localObject).getDeclaredField("incrementList");
-      k.g(localField, "clazz.getDeclaredField(\"incrementList\")");
-      this.qnM = localField;
-      localField = this.qnM;
+      p.g(localField, "clazz.getDeclaredField(\"incrementList\")");
+      this.qWK = localField;
+      localField = this.qWK;
       if (localField == null) {
-        k.aVY("incrementList_Field");
+        p.bcb("incrementList_Field");
       }
       localField.setAccessible(true);
       localField = ((Class)localObject).getDeclaredField("lastBuffer");
-      k.g(localField, "clazz.getDeclaredField(\"lastBuffer\")");
-      this.qnN = localField;
-      localField = this.qnN;
+      p.g(localField, "clazz.getDeclaredField(\"lastBuffer\")");
+      this.qWL = localField;
+      localField = this.qWL;
       if (localField == null) {
-        k.aVY("lastBuffer_Field");
+        p.bcb("lastBuffer_Field");
       }
       localField.setAccessible(true);
       localField = ((Class)localObject).getDeclaredField("pullType");
-      k.g(localField, "clazz.getDeclaredField(\"pullType\")");
-      this.qnO = localField;
-      localField = this.qnO;
+      p.g(localField, "clazz.getDeclaredField(\"pullType\")");
+      this.qWM = localField;
+      localField = this.qWM;
       if (localField == null) {
-        k.aVY("pullType_Field");
+        p.bcb("pullType_Field");
       }
       localField.setAccessible(true);
       localField = ((Class)localObject).getDeclaredField("hasMore");
-      k.g(localField, "clazz.getDeclaredField(\"hasMore\")");
-      this.qnP = localField;
-      localField = this.qnP;
+      p.g(localField, "clazz.getDeclaredField(\"hasMore\")");
+      this.qWN = localField;
+      localField = this.qWN;
       if (localField == null) {
-        k.aVY("hasMore_Field");
+        p.bcb("hasMore_Field");
       }
       localField.setAccessible(true);
       localObject = ((Class)localObject).getDeclaredField("isNeedClear");
-      k.g(localObject, "clazz.getDeclaredField(\"isNeedClear\")");
-      this.qnQ = ((Field)localObject);
-      localObject = this.qnQ;
+      p.g(localObject, "clazz.getDeclaredField(\"isNeedClear\")");
+      this.qWO = ((Field)localObject);
+      localObject = this.qWO;
       if (localObject == null) {
-        k.aVY("isNeedClear_Field");
+        p.bcb("isNeedClear_Field");
       }
       ((Field)localObject).setAccessible(true);
-      AppMethodBeat.o(195506);
+      AppMethodBeat.o(210852);
       return;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("HABBYGE-MALI.RefreshLoadMoreCallback", (Throwable)localException, "init crash: " + localException.getMessage(), new Object[0]);
-      AppMethodBeat.o(195506);
+      ad.printErrStackTrace("HABBYGE-MALI.RefreshLoadMoreCallback", (Throwable)localException, "init crash: " + localException.getMessage(), new Object[0]);
+      AppMethodBeat.o(210852);
     }
   }
   
   public final a q(Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(195505);
-    k.h(paramArrayOfObject, "args");
+    AppMethodBeat.i(210851);
+    p.h(paramArrayOfObject, "args");
     Object localObject1 = paramArrayOfObject[0];
     try
     {
-      paramArrayOfObject = this.qnM;
+      paramArrayOfObject = this.qWK;
       if (paramArrayOfObject == null) {
-        k.aVY("incrementList_Field");
+        p.bcb("incrementList_Field");
       }
       paramArrayOfObject = paramArrayOfObject.get(localObject1);
       if (paramArrayOfObject == null)
       {
         paramArrayOfObject = new v("null cannot be cast to non-null type kotlin.collections.List<*>");
-        AppMethodBeat.o(195505);
+        AppMethodBeat.o(210851);
         throw paramArrayOfObject;
       }
     }
     catch (Exception paramArrayOfObject)
     {
-      ac.printErrStackTrace("HABBYGE-MALI.RefreshLoadMoreCallback", (Throwable)paramArrayOfObject, "getArgsOnFetchDone crash: " + paramArrayOfObject.getMessage(), new Object[0]);
-      AppMethodBeat.o(195505);
+      ad.printErrStackTrace("HABBYGE-MALI.RefreshLoadMoreCallback", (Throwable)paramArrayOfObject, "getArgsOnFetchDone crash: " + paramArrayOfObject.getMessage(), new Object[0]);
+      AppMethodBeat.o(210851);
       return null;
     }
     List localList = (List)paramArrayOfObject;
-    paramArrayOfObject = this.qnN;
+    paramArrayOfObject = this.qWL;
     if (paramArrayOfObject == null) {
-      k.aVY("lastBuffer_Field");
+      p.bcb("lastBuffer_Field");
     }
     paramArrayOfObject = paramArrayOfObject.get(localObject1);
     if (paramArrayOfObject == null) {}
     for (paramArrayOfObject = null;; paramArrayOfObject = (b)paramArrayOfObject)
     {
-      localObject2 = this.qnO;
+      localObject2 = this.qWM;
       if (localObject2 == null) {
-        k.aVY("pullType_Field");
+        p.bcb("pullType_Field");
       }
       localObject2 = ((Field)localObject2).get(localObject1);
       if (localObject2 != null) {
         break;
       }
       paramArrayOfObject = new v("null cannot be cast to non-null type kotlin.Int");
-      AppMethodBeat.o(195505);
+      AppMethodBeat.o(210851);
       throw paramArrayOfObject;
     }
     int i = ((Integer)localObject2).intValue();
-    Object localObject2 = this.qnP;
+    Object localObject2 = this.qWN;
     if (localObject2 == null) {
-      k.aVY("hasMore_Field");
+      p.bcb("hasMore_Field");
     }
     localObject2 = ((Field)localObject2).get(localObject1);
     if (localObject2 == null)
     {
       paramArrayOfObject = new v("null cannot be cast to non-null type kotlin.Boolean");
-      AppMethodBeat.o(195505);
+      AppMethodBeat.o(210851);
       throw paramArrayOfObject;
     }
     boolean bool = ((Boolean)localObject2).booleanValue();
-    localObject2 = this.qnQ;
+    localObject2 = this.qWO;
     if (localObject2 == null) {
-      k.aVY("isNeedClear_Field");
+      p.bcb("isNeedClear_Field");
     }
     localObject1 = ((Field)localObject2).get(localObject1);
     if (localObject1 == null)
     {
       paramArrayOfObject = new v("null cannot be cast to non-null type kotlin.Boolean");
-      AppMethodBeat.o(195505);
+      AppMethodBeat.o(210851);
       throw paramArrayOfObject;
     }
     paramArrayOfObject = new a(localList, paramArrayOfObject, i, bool, ((Boolean)localObject1).booleanValue());
-    AppMethodBeat.o(195505);
+    AppMethodBeat.o(210851);
     return paramArrayOfObject;
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "", "incrementList", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "pullType", "", "hasMore", "", "isNeedClear", "(Ljava/util/List;Lcom/tencent/mm/protobuf/ByteString;IZZ)V", "getHasMore", "()Z", "setHasMore", "(Z)V", "getIncrementList", "()Ljava/util/List;", "setIncrementList", "(Ljava/util/List;)V", "setNeedClear", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "getPullType", "()I", "setPullType", "(I)V", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-expt_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "", "incrementList", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "pullType", "", "hasMore", "", "isNeedClear", "(Ljava/util/List;Lcom/tencent/mm/protobuf/ByteString;IZZ)V", "getHasMore", "()Z", "setHasMore", "(Z)V", "getIncrementList", "()Ljava/util/List;", "setIncrementList", "(Ljava/util/List;)V", "setNeedClear", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "getPullType", "()I", "setPullType", "(I)V", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-expt_release"})
   public static final class a
   {
     private boolean hasMore;
@@ -176,21 +176,21 @@ public final class l
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(195501);
+      AppMethodBeat.i(210847);
       if (this != paramObject)
       {
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((!k.g(this.incrementList, paramObject.incrementList)) || (!k.g(this.lastBuffer, paramObject.lastBuffer)) || (this.pullType != paramObject.pullType) || (this.hasMore != paramObject.hasMore) || (this.isNeedClear != paramObject.isNeedClear)) {}
+          if ((!p.i(this.incrementList, paramObject.incrementList)) || (!p.i(this.lastBuffer, paramObject.lastBuffer)) || (this.pullType != paramObject.pullType) || (this.hasMore != paramObject.hasMore) || (this.isNeedClear != paramObject.isNeedClear)) {}
         }
       }
       else
       {
-        AppMethodBeat.o(195501);
+        AppMethodBeat.o(210847);
         return true;
       }
-      AppMethodBeat.o(195501);
+      AppMethodBeat.o(210847);
       return false;
     }
     
@@ -201,36 +201,36 @@ public final class l
     
     public final String toString()
     {
-      AppMethodBeat.i(195499);
+      AppMethodBeat.i(210845);
       String str = "ArgsOnFetchDone(incrementList=" + this.incrementList + ", lastBuffer=" + this.lastBuffer + ", pullType=" + this.pullType + ", hasMore=" + this.hasMore + ", isNeedClear=" + this.isNeedClear + ")";
-      AppMethodBeat.o(195499);
+      AppMethodBeat.o(210845);
       return str;
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$Companion;", "", "()V", "TAG", "", "plugin-expt_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$Companion;", "", "()V", "TAG", "", "plugin-expt_release"})
   public static final class b {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$FinderPullType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "PULL_TYPE_ENTER", "PULL_TYPE_TOP", "PULL_TYPE_BOTTOM", "PULL_TYPE_PRE_FETCH", "PULL_TYPE_REFRESH", "plugin-expt_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$FinderPullType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "PULL_TYPE_ENTER", "PULL_TYPE_TOP", "PULL_TYPE_BOTTOM", "PULL_TYPE_PRE_FETCH", "PULL_TYPE_REFRESH", "plugin-expt_release"})
   public static enum c
   {
     final int value;
     
     static
     {
-      AppMethodBeat.i(195502);
+      AppMethodBeat.i(210848);
       c localc1 = new c("PULL_TYPE_ENTER", 0, 0);
-      qnS = localc1;
+      qWQ = localc1;
       c localc2 = new c("PULL_TYPE_TOP", 1, 1);
-      qnT = localc2;
+      qWR = localc2;
       c localc3 = new c("PULL_TYPE_BOTTOM", 2, 2);
-      qnU = localc3;
+      qWS = localc3;
       c localc4 = new c("PULL_TYPE_PRE_FETCH", 3, 3);
-      qnV = localc4;
+      qWT = localc4;
       c localc5 = new c("PULL_TYPE_REFRESH", 4, 4);
-      qnW = localc5;
-      qnX = new c[] { localc1, localc2, localc3, localc4, localc5 };
-      AppMethodBeat.o(195502);
+      qWU = localc5;
+      qWV = new c[] { localc1, localc2, localc3, localc4, localc5 };
+      AppMethodBeat.o(210848);
     }
     
     private c(int paramInt)

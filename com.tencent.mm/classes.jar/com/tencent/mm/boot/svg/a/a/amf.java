@@ -7,14 +7,13 @@ import android.graphics.Paint.Join;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.os.Looper;
-import com.tencent.mm.svg.WeChatSVGRenderC2Java;
 import com.tencent.mm.svg.c;
 
 public final class amf
   extends c
 {
-  private final int height = 72;
-  private final int width = 72;
+  private final int height = 16;
+  private final int width = 16;
   
   public final int a(int paramInt, Object... paramVarArgs)
   {
@@ -24,8 +23,8 @@ public final class amf
     for (;;)
     {
       return 0;
-      return 72;
-      return 72;
+      return 16;
+      return 16;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
       c.j(paramVarArgs);
@@ -42,38 +41,23 @@ public final class amf
       ((Paint)localObject).setStrokeJoin(Paint.Join.MITER);
       ((Paint)localObject).setStrokeMiter(4.0F);
       ((Paint)localObject).setPathEffect(null);
-      c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
+      localPaint = c.a((Paint)localObject, paramVarArgs);
+      localPaint.setStrokeWidth(1.0F);
+      localCanvas.saveLayerAlpha(null, 128, 31);
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-16777216);
+      localPaint.setColor(-1);
+      localPaint.setStrokeWidth(1.2F);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
       localObject = c.n(paramVarArgs);
-      ((Path)localObject).moveTo(36.0F, 66.0F);
-      ((Path)localObject).cubicTo(19.431458F, 66.0F, 6.0F, 52.568542F, 6.0F, 36.0F);
-      ((Path)localObject).cubicTo(6.0F, 19.431458F, 19.431458F, 6.0F, 36.0F, 6.0F);
-      ((Path)localObject).cubicTo(52.568542F, 6.0F, 66.0F, 19.431458F, 66.0F, 36.0F);
-      ((Path)localObject).cubicTo(66.0F, 52.568542F, 52.568542F, 66.0F, 36.0F, 66.0F);
+      ((Path)localObject).moveTo(15.4F, 8.098765F);
+      ((Path)localObject).cubicTo(15.4F, 3.913001F, 12.087F, 0.6F, 7.901235F, 0.6F);
+      ((Path)localObject).cubicTo(3.885028F, 0.6F, 0.6F, 3.941537F, 0.6F, 8.098765F);
+      ((Path)localObject).cubicTo(0.6F, 12.087F, 3.913001F, 15.4F, 7.901235F, 15.4F);
+      ((Path)localObject).cubicTo(12.058462F, 15.4F, 15.4F, 12.114972F, 15.4F, 8.098765F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(36.0F, 40.5F);
-      ((Path)localObject).cubicTo(38.485283F, 40.5F, 40.5F, 38.485283F, 40.5F, 36.0F);
-      ((Path)localObject).cubicTo(40.5F, 33.514717F, 38.485283F, 31.5F, 36.0F, 31.5F);
-      ((Path)localObject).cubicTo(33.514717F, 31.5F, 31.5F, 33.514717F, 31.5F, 36.0F);
-      ((Path)localObject).cubicTo(31.5F, 38.485283F, 33.514717F, 40.5F, 36.0F, 40.5F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(49.5F, 40.5F);
-      ((Path)localObject).cubicTo(51.985283F, 40.5F, 54.0F, 38.485283F, 54.0F, 36.0F);
-      ((Path)localObject).cubicTo(54.0F, 33.514717F, 51.985283F, 31.5F, 49.5F, 31.5F);
-      ((Path)localObject).cubicTo(47.014717F, 31.5F, 45.0F, 33.514717F, 45.0F, 36.0F);
-      ((Path)localObject).cubicTo(45.0F, 38.485283F, 47.014717F, 40.5F, 49.5F, 40.5F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(22.5F, 40.5F);
-      ((Path)localObject).cubicTo(24.985281F, 40.5F, 27.0F, 38.485283F, 27.0F, 36.0F);
-      ((Path)localObject).cubicTo(27.0F, 33.514717F, 24.985281F, 31.5F, 22.5F, 31.5F);
-      ((Path)localObject).cubicTo(20.014719F, 31.5F, 18.0F, 33.514717F, 18.0F, 36.0F);
-      ((Path)localObject).cubicTo(18.0F, 38.485283F, 20.014719F, 40.5F, 22.5F, 40.5F);
-      ((Path)localObject).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
       localCanvas.drawPath((Path)localObject, localPaint);
+      localCanvas.restore();
       localCanvas.restore();
       c.l(paramVarArgs);
     }
@@ -81,7 +65,7 @@ public final class amf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.amf
  * JD-Core Version:    0.7.0.1
  */

@@ -49,26 +49,26 @@ public class j
   
   public static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(193053);
+    AppMethodBeat.i(187281);
     paramInt1 = a(paramInt1, paramInt2, paramInt3, paramInt4, null);
-    AppMethodBeat.o(193053);
+    AppMethodBeat.o(187281);
     return paramInt1;
   }
   
   public static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, IntBuffer paramIntBuffer)
   {
-    AppMethodBeat.i(193052);
+    AppMethodBeat.i(187280);
     int m = c();
     GLES20.glBindTexture(3553, m);
     GLES20.glTexImage2D(3553, 0, paramInt3, paramInt1, paramInt2, 0, paramInt4, 5121, paramIntBuffer);
     GLES20.glBindTexture(3553, 0);
-    AppMethodBeat.o(193052);
+    AppMethodBeat.o(187280);
     return m;
   }
   
   public static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(193050);
+    AppMethodBeat.i(187278);
     GLES20.glGenTextures(1, paramArrayOfInt, 0);
     GLES20.glBindTexture(3553, paramArrayOfInt[0]);
     GLES20.glTexParameteri(3553, 10242, 33071);
@@ -77,25 +77,25 @@ public class j
     GLES20.glTexParameteri(3553, 10240, 9729);
     GLES20.glTexImage2D(3553, 0, paramInt3, paramInt1, paramInt2, 0, paramInt4, 5121, null);
     paramInt1 = paramArrayOfInt[0];
-    AppMethodBeat.o(193050);
+    AppMethodBeat.o(187278);
     return paramInt1;
   }
   
   public static int a(int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(193055);
+    AppMethodBeat.i(187283);
     GLES30.glGenBuffers(1, paramArrayOfInt, 0);
     GLES30.glBindBuffer(35051, paramArrayOfInt[0]);
     GLES30.glBufferData(35051, paramInt1 * paramInt2 * 4, null, 35049);
     GLES30.glBindBuffer(35051, 0);
     paramInt1 = paramArrayOfInt[0];
-    AppMethodBeat.o(193055);
+    AppMethodBeat.o(187283);
     return paramInt1;
   }
   
   public static int a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(193054);
+    AppMethodBeat.i(187282);
     int[] arrayOfInt = new int[1];
     if (paramInt == -1)
     {
@@ -113,7 +113,7 @@ public class j
         paramBitmap.recycle();
       }
       paramInt = arrayOfInt[0];
-      AppMethodBeat.o(193054);
+      AppMethodBeat.o(187282);
       return paramInt;
       GLES20.glBindTexture(3553, paramInt);
       GLUtils.texSubImage2D(3553, 0, 0, 0, paramBitmap);
@@ -123,7 +123,7 @@ public class j
   
   public static int a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(193058);
+    AppMethodBeat.i(187286);
     int[] arrayOfInt = new int[1];
     paramInt = GLES20.glCreateShader(paramInt);
     GLES20.glShaderSource(paramInt, paramString);
@@ -132,29 +132,29 @@ public class j
     if (arrayOfInt[0] == 0)
     {
       TXCLog.w("Load Shader Failed", "Compilation\n" + GLES20.glGetShaderInfoLog(paramInt));
-      AppMethodBeat.o(193058);
+      AppMethodBeat.o(187286);
       return 0;
     }
-    AppMethodBeat.o(193058);
+    AppMethodBeat.o(187286);
     return paramInt;
   }
   
   public static int a(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193059);
+    AppMethodBeat.i(187287);
     int[] arrayOfInt = new int[1];
     int m = a(paramString1, 35633);
     if (m == 0)
     {
       TXCLog.w("Load Program", "Vertex Shader Failed");
-      AppMethodBeat.o(193059);
+      AppMethodBeat.o(187287);
       return 0;
     }
     int n = a(paramString2, 35632);
     if (n == 0)
     {
       TXCLog.w("Load Program", "Fragment Shader Failed");
-      AppMethodBeat.o(193059);
+      AppMethodBeat.o(187287);
       return 0;
     }
     int i1 = GLES20.glCreateProgram();
@@ -165,24 +165,24 @@ public class j
     if (arrayOfInt[0] <= 0)
     {
       TXCLog.w("Load Program", "Linking Failed");
-      AppMethodBeat.o(193059);
+      AppMethodBeat.o(187287);
       return 0;
     }
     GLES20.glDeleteShader(m);
     GLES20.glDeleteShader(n);
-    AppMethodBeat.o(193059);
+    AppMethodBeat.o(187287);
     return i1;
   }
   
   public static FloatBuffer a(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(193051);
+    AppMethodBeat.i(187279);
     Object localObject = ByteBuffer.allocateDirect(paramArrayOfFloat.length * 4);
     ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
     localObject = ((ByteBuffer)localObject).asFloatBuffer();
     ((FloatBuffer)localObject).put(paramArrayOfFloat);
     ((FloatBuffer)localObject).position(0);
-    AppMethodBeat.o(193051);
+    AppMethodBeat.o(187279);
     return localObject;
   }
   
@@ -193,7 +193,7 @@ public class j
   
   public static int b()
   {
-    AppMethodBeat.i(193056);
+    AppMethodBeat.i(187284);
     int[] arrayOfInt = new int[1];
     GLES20.glGenTextures(1, arrayOfInt, 0);
     GLES20.glBindTexture(36197, arrayOfInt[0]);
@@ -202,13 +202,13 @@ public class j
     GLES20.glTexParameteri(36197, 10242, 33071);
     GLES20.glTexParameteri(36197, 10243, 33071);
     int m = arrayOfInt[0];
-    AppMethodBeat.o(193056);
+    AppMethodBeat.o(187284);
     return m;
   }
   
   public static int c()
   {
-    AppMethodBeat.i(193057);
+    AppMethodBeat.i(187285);
     int[] arrayOfInt = new int[1];
     GLES20.glGenTextures(1, arrayOfInt, 0);
     GLES20.glBindTexture(3553, arrayOfInt[0]);
@@ -218,7 +218,7 @@ public class j
     GLES20.glTexParameteri(3553, 10243, 33071);
     GLES20.glBindTexture(3553, 0);
     int m = arrayOfInt[0];
-    AppMethodBeat.o(193057);
+    AppMethodBeat.o(187285);
     return m;
   }
   

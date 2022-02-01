@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class FoldableChatTextItemView
   extends LinearLayout
 {
-  private a Ihi;
-  private c ayJ;
+  private a JXB;
+  private c aAA;
   private int maxHeight;
   
   public FoldableChatTextItemView(Context paramContext, AttributeSet paramAttributeSet)
@@ -43,8 +43,8 @@ public class FoldableChatTextItemView
   {
     AppMethodBeat.i(36699);
     setTagObject(paramMotionEvent);
-    if (this.ayJ != null) {
-      this.ayJ.onTouchEvent(paramMotionEvent);
+    if (this.aAA != null) {
+      this.aAA.onTouchEvent(paramMotionEvent);
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
     AppMethodBeat.o(36699);
@@ -53,7 +53,7 @@ public class FoldableChatTextItemView
   
   public void setFoldTextListener(a parama)
   {
-    this.Ihi = parama;
+    this.JXB = parama;
   }
   
   public void setMaxHeight(int paramInt)
@@ -64,7 +64,7 @@ public class FoldableChatTextItemView
   public void setOnGestureListener(GestureDetector.OnGestureListener paramOnGestureListener)
   {
     AppMethodBeat.i(36701);
-    this.ayJ = new c(getContext(), paramOnGestureListener);
+    this.aAA = new c(getContext(), paramOnGestureListener);
     AppMethodBeat.o(36701);
   }
   
@@ -72,7 +72,7 @@ public class FoldableChatTextItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.view.FoldableChatTextItemView
  * JD-Core Version:    0.7.0.1
  */

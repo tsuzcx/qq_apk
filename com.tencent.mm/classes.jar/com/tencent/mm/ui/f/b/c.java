@@ -5,19 +5,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static b IIB = null;
+  private static b KzI = null;
   
   public static void a(b paramb)
   {
-    IIB = paramb;
+    KzI = paramb;
   }
   
-  public static Drawable lR(String paramString1, String paramString2)
+  public static Drawable mq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(142752);
-    if (IIB != null)
+    if (KzI != null)
     {
-      paramString1 = IIB.fj(paramString1, paramString2);
+      paramString1 = KzI.ft(paramString1, paramString2);
       if ((paramString1 instanceof Drawable))
       {
         paramString1 = (Drawable)paramString1;

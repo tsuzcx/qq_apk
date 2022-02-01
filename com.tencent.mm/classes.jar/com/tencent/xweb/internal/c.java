@@ -12,16 +12,32 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class c
 {
-  static HashMap<String, Long> KCZ;
+  static HashMap<String, Long> Mtz;
   
   static
   {
-    AppMethodBeat.i(205085);
-    KCZ = new HashMap();
-    AppMethodBeat.o(205085);
+    AppMethodBeat.i(197098);
+    Mtz = new HashMap();
+    AppMethodBeat.o(197098);
   }
   
-  public static boolean aVg(String paramString)
+  public static void bbj(String paramString)
+  {
+    try
+    {
+      AppMethodBeat.i(197096);
+      XWalkEnvironment.getMMKVSharedPreferences("FREQUENT_LIMITER").edit().putLong(paramString, 0L).commit();
+      AppMethodBeat.o(197096);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public static boolean bbk(String paramString)
   {
     boolean bool = false;
     for (;;)
@@ -36,7 +52,7 @@ public final class c
           AppMethodBeat.o(175641);
           return bool;
         }
-        if ("true".equals(b.aUy("dis_".concat(String.valueOf(paramString)))))
+        if ("true".equals(b.baB("dis_".concat(String.valueOf(paramString)))))
         {
           AppMethodBeat.o(175641);
           continue;
@@ -49,23 +65,7 @@ public final class c
     }
   }
   
-  public static void aXL(String paramString)
-  {
-    try
-    {
-      AppMethodBeat.i(210393);
-      XWalkEnvironment.getMMKVSharedPreferences("FREQUENT_LIMITER").edit().putLong(paramString, 0L).commit();
-      AppMethodBeat.o(210393);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public static boolean ci(String paramString, long paramLong)
+  public static boolean co(String paramString, long paramLong)
   {
     boolean bool = false;
     for (;;)
@@ -73,7 +73,7 @@ public final class c
       try
       {
         AppMethodBeat.i(156968);
-        if ("true".equals(a.aUy("dis_".concat(String.valueOf(paramString)))))
+        if ("true".equals(a.baB("dis_".concat(String.valueOf(paramString)))))
         {
           AppMethodBeat.o(156968);
           return bool;
@@ -95,7 +95,7 @@ public final class c
   }
   
   /* Error */
-  public static boolean mG(String paramString1, String paramString2)
+  public static boolean ne(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 2
@@ -103,22 +103,22 @@ public final class c
     //   3: ldc 133
     //   5: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: ldc 135
-    //   10: invokestatic 104	org/xwalk/core/XWalkEnvironment:getMMKVSharedPreferences	(Ljava/lang/String;)Landroid/content/SharedPreferences;
+    //   10: invokestatic 38	org/xwalk/core/XWalkEnvironment:getMMKVSharedPreferences	(Ljava/lang/String;)Landroid/content/SharedPreferences;
     //   13: astore 5
     //   15: aload 5
     //   17: aload_0
-    //   18: ldc 54
-    //   20: invokeinterface 60 3 0
+    //   18: ldc 77
+    //   20: invokeinterface 81 3 0
     //   25: astore 4
     //   27: aload 4
     //   29: astore_3
     //   30: aload 4
     //   32: ifnonnull +6 -> 38
-    //   35: ldc 54
+    //   35: ldc 77
     //   37: astore_3
     //   38: aload_3
     //   39: aload_1
-    //   40: invokevirtual 66	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   40: invokevirtual 87	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   43: ifeq +15 -> 58
     //   46: iconst_0
     //   47: istore_2
@@ -129,11 +129,11 @@ public final class c
     //   56: iload_2
     //   57: ireturn
     //   58: aload 5
-    //   60: invokeinterface 87 1 0
+    //   60: invokeinterface 44 1 0
     //   65: aload_0
     //   66: aload_1
-    //   67: invokeinterface 93 3 0
-    //   72: invokeinterface 97 1 0
+    //   67: invokeinterface 108 3 0
+    //   72: invokeinterface 54 1 0
     //   77: pop
     //   78: iconst_1
     //   79: istore_2

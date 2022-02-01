@@ -3,11 +3,13 @@ package com.tencent.mm.plugin.profile.a;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.openim.a.c.a;
 import com.tencent.mm.openim.a.c.b;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.am;
 import com.tencent.mm.ui.base.preference.Preference.b;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,18 +17,18 @@ import org.json.JSONObject;
 public final class a$5
   implements Preference.b
 {
-  public a$5(c.b paramb, com.tencent.mm.storage.ai paramai, c.a parama) {}
+  public a$5(c.b paramb, am paramam, c.a parama) {}
   
-  public final boolean dpE()
+  public final boolean dAh()
   {
     AppMethodBeat.i(26870);
     Intent localIntent = new Intent();
     localIntent.setFlags(268435456);
-    localIntent.setClassName(com.tencent.mm.sdk.platformtools.ai.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
+    localIntent.setClassName(aj.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
     Object localObject1 = "";
     try
     {
-      localObject2 = new JSONObject(this.vIj.ioc).optString("url");
+      localObject2 = new JSONObject(this.wPq.iHz).optString("url");
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
@@ -34,16 +36,16 @@ public final class a$5
       for (;;)
       {
         Object localObject2;
-        ac.printErrStackTrace("MicroMsg.Profile.OpenIMProfileLogic", localJSONException, "loadProfile", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Profile.OpenIMProfileLogic", localJSONException, "loadProfile", new Object[0]);
       }
     }
-    h.wUl.f(15319, new Object[] { this.fzF.field_openImAppid, Integer.valueOf(this.vIj.action), this.vIk.title });
+    g.yhR.f(15319, new Object[] { this.fSV.field_openImAppid, Integer.valueOf(this.wPq.action), this.wPr.title });
     localIntent.putExtra("geta8key_scene", 58);
     localIntent.putExtra("rawUrl", (String)localObject1);
-    localObject1 = com.tencent.mm.sdk.platformtools.ai.getContext();
-    localObject2 = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/mm/plugin/profile/logic/OpenIMProfileLogic$5", "onPreferenceClick", "(Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0));
+    localObject1 = aj.getContext();
+    localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/profile/logic/OpenIMProfileLogic$5", "onPreferenceClick", "(Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/profile/logic/OpenIMProfileLogic$5", "onPreferenceClick", "(Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(26870);
     return true;

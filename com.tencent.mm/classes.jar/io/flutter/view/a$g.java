@@ -7,25 +7,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(9687);
-    KSi = new g("UNKNOWN", 0);
-    KSj = new g("LTR", 1);
-    KSk = new g("RTL", 2);
-    KSl = new g[] { KSi, KSj, KSk };
+    MJh = new g("UNKNOWN", 0);
+    MJi = new g("LTR", 1);
+    MJj = new g("RTL", 2);
+    MJk = new g[] { MJh, MJi, MJj };
     AppMethodBeat.o(9687);
   }
   
   private a$g() {}
   
-  public static g agG(int paramInt)
+  public static g ajh(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return KSi;
+      return MJh;
     case 1: 
-      return KSk;
+      return MJj;
     }
-    return KSj;
+    return MJi;
   }
 }
 

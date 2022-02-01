@@ -1,272 +1,89 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.bsv;
-import com.tencent.mm.protocal.protobuf.dvu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.vfs.i;
-import java.io.IOException;
+import com.tencent.mm.network.q;
+import com.tencent.mm.plugin.websearch.api.a;
+import com.tencent.mm.protocal.protobuf.del;
+import com.tencent.mm.protocal.protobuf.dem;
 
 public final class d
-  extends n
+  extends a
   implements k
 {
-  private int Chh;
-  public b.g Chj;
-  private g callback;
-  public int drc;
-  com.tencent.mm.ak.b rr;
-  private int scene;
+  dem DKp;
+  private f callback;
+  public int dCT;
+  private b hWL;
   
-  /* Error */
-  public d(java.util.Map<String, Object> paramMap, int paramInt1, int paramInt2)
+  public d(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, String paramString4, int paramInt3, String paramString5, String paramString6)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokespecial 23	com/tencent/mm/ak/n:<init>	()V
-    //   4: ldc 24
-    //   6: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: aload_0
-    //   10: iconst_m1
-    //   11: putfield 32	com/tencent/mm/plugin/webview/fts/d:drc	I
-    //   14: new 34	com/tencent/mm/ak/b$a
-    //   17: dup
-    //   18: invokespecial 35	com/tencent/mm/ak/b$a:<init>	()V
-    //   21: astore 4
-    //   23: aload 4
-    //   25: new 37	com/tencent/mm/protocal/protobuf/dvt
-    //   28: dup
-    //   29: invokespecial 38	com/tencent/mm/protocal/protobuf/dvt:<init>	()V
-    //   32: putfield 42	com/tencent/mm/ak/b$a:hvt	Lcom/tencent/mm/bw/a;
-    //   35: aload 4
-    //   37: new 44	com/tencent/mm/protocal/protobuf/dvu
-    //   40: dup
-    //   41: invokespecial 45	com/tencent/mm/protocal/protobuf/dvu:<init>	()V
-    //   44: putfield 48	com/tencent/mm/ak/b$a:hvu	Lcom/tencent/mm/bw/a;
-    //   47: aload 4
-    //   49: ldc 50
-    //   51: putfield 54	com/tencent/mm/ak/b$a:uri	Ljava/lang/String;
-    //   54: aload 4
-    //   56: sipush 1866
-    //   59: putfield 57	com/tencent/mm/ak/b$a:funcId	I
-    //   62: aload_0
-    //   63: aload 4
-    //   65: invokevirtual 61	com/tencent/mm/ak/b$a:aAz	()Lcom/tencent/mm/ak/b;
-    //   68: putfield 63	com/tencent/mm/plugin/webview/fts/d:rr	Lcom/tencent/mm/ak/b;
-    //   71: aload_0
-    //   72: iload_3
-    //   73: putfield 65	com/tencent/mm/plugin/webview/fts/d:Chh	I
-    //   76: aload_0
-    //   77: iload_2
-    //   78: putfield 67	com/tencent/mm/plugin/webview/fts/d:scene	I
-    //   81: invokestatic 73	com/tencent/mm/plugin/websearch/api/z:bJn	()Lcom/tencent/mm/protocal/protobuf/bpa;
-    //   84: astore 5
-    //   86: aload_0
-    //   87: getfield 63	com/tencent/mm/plugin/webview/fts/d:rr	Lcom/tencent/mm/ak/b;
-    //   90: getfield 79	com/tencent/mm/ak/b:hvr	Lcom/tencent/mm/ak/b$b;
-    //   93: getfield 84	com/tencent/mm/ak/b$b:hvw	Lcom/tencent/mm/bw/a;
-    //   96: checkcast 37	com/tencent/mm/protocal/protobuf/dvt
-    //   99: astore 4
-    //   101: aload 5
-    //   103: ifnull +25 -> 128
-    //   106: aload 4
-    //   108: aload 5
-    //   110: getfield 90	com/tencent/mm/protocal/protobuf/bpa:Ehu	F
-    //   113: f2d
-    //   114: putfield 94	com/tencent/mm/protocal/protobuf/dvt:Gdg	D
-    //   117: aload 4
-    //   119: aload 5
-    //   121: getfield 97	com/tencent/mm/protocal/protobuf/bpa:Eht	F
-    //   124: f2d
-    //   125: putfield 100	com/tencent/mm/protocal/protobuf/dvt:Gdh	D
-    //   128: aload 4
-    //   130: invokestatic 104	com/tencent/mm/plugin/websearch/api/z:dkv	()Ljava/lang/String;
-    //   133: putfield 107	com/tencent/mm/protocal/protobuf/dvt:Gdi	Ljava/lang/String;
-    //   136: aload 4
-    //   138: iconst_3
-    //   139: invokestatic 111	com/tencent/mm/plugin/websearch/api/z:Ul	(I)I
-    //   142: putfield 114	com/tencent/mm/protocal/protobuf/dvt:BYF	I
-    //   145: aload 4
-    //   147: aload_1
-    //   148: ldc 116
-    //   150: invokestatic 120	com/tencent/mm/plugin/websearch/api/z:x	(Ljava/util/Map;Ljava/lang/String;)Ljava/lang/String;
-    //   153: putfield 123	com/tencent/mm/protocal/protobuf/dvt:sessionId	Ljava/lang/String;
-    //   156: aload 4
-    //   158: aload_1
-    //   159: ldc 124
-    //   161: iconst_0
-    //   162: invokestatic 128	com/tencent/mm/plugin/websearch/api/z:d	(Ljava/util/Map;Ljava/lang/String;I)I
-    //   165: putfield 129	com/tencent/mm/protocal/protobuf/dvt:scene	I
-    //   168: aload_1
-    //   169: ldc 131
-    //   171: invokestatic 120	com/tencent/mm/plugin/websearch/api/z:x	(Ljava/util/Map;Ljava/lang/String;)Ljava/lang/String;
-    //   174: astore_1
-    //   175: aload_1
-    //   176: invokestatic 137	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
-    //   179: ifne +113 -> 292
-    //   182: new 139	org/json/JSONArray
-    //   185: dup
-    //   186: aload_1
-    //   187: invokespecial 142	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   190: astore 5
-    //   192: aload 4
-    //   194: new 144	java/util/LinkedList
-    //   197: dup
-    //   198: invokespecial 145	java/util/LinkedList:<init>	()V
-    //   201: putfield 149	com/tencent/mm/protocal/protobuf/dvt:Gdj	Ljava/util/LinkedList;
-    //   204: iconst_0
-    //   205: istore_2
-    //   206: iload_2
-    //   207: aload 5
-    //   209: invokevirtual 153	org/json/JSONArray:length	()I
-    //   212: if_icmpge +80 -> 292
-    //   215: aload 5
-    //   217: iload_2
-    //   218: invokevirtual 157	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   221: astore 6
-    //   223: new 159	com/tencent/mm/protocal/protobuf/dom
-    //   226: dup
-    //   227: invokespecial 160	com/tencent/mm/protocal/protobuf/dom:<init>	()V
-    //   230: astore 7
-    //   232: aload 7
-    //   234: aload 6
-    //   236: ldc 162
-    //   238: ldc 164
-    //   240: invokevirtual 170	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   243: putfield 172	com/tencent/mm/protocal/protobuf/dom:key	Ljava/lang/String;
-    //   246: aload 7
-    //   248: aload 6
-    //   250: ldc 174
-    //   252: lconst_0
-    //   253: invokevirtual 178	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
-    //   256: putfield 182	com/tencent/mm/protocal/protobuf/dom:ErV	J
-    //   259: aload 7
-    //   261: aload 6
-    //   263: ldc 184
-    //   265: ldc 164
-    //   267: invokevirtual 170	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   270: putfield 187	com/tencent/mm/protocal/protobuf/dom:ErW	Ljava/lang/String;
-    //   273: aload 4
-    //   275: getfield 149	com/tencent/mm/protocal/protobuf/dvt:Gdj	Ljava/util/LinkedList;
-    //   278: aload 7
-    //   280: invokevirtual 191	java/util/LinkedList:push	(Ljava/lang/Object;)V
-    //   283: iload_2
-    //   284: iconst_1
-    //   285: iadd
-    //   286: istore_2
-    //   287: goto -81 -> 206
-    //   290: astore 5
-    //   292: ldc 193
-    //   294: ldc 195
-    //   296: iconst_4
-    //   297: anewarray 197	java/lang/Object
-    //   300: dup
-    //   301: iconst_0
-    //   302: aload 4
-    //   304: getfield 114	com/tencent/mm/protocal/protobuf/dvt:BYF	I
-    //   307: invokestatic 203	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   310: aastore
-    //   311: dup
-    //   312: iconst_1
-    //   313: aload 4
-    //   315: getfield 123	com/tencent/mm/protocal/protobuf/dvt:sessionId	Ljava/lang/String;
-    //   318: aastore
-    //   319: dup
-    //   320: iconst_2
-    //   321: aload 4
-    //   323: getfield 129	com/tencent/mm/protocal/protobuf/dvt:scene	I
-    //   326: invokestatic 203	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   329: aastore
-    //   330: dup
-    //   331: iconst_3
-    //   332: aload_1
-    //   333: aastore
-    //   334: invokestatic 208	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   337: ldc 24
-    //   339: invokestatic 211	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   342: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	343	0	this	d
-    //   0	343	1	paramMap	java.util.Map<String, Object>
-    //   0	343	2	paramInt1	int
-    //   0	343	3	paramInt2	int
-    //   21	301	4	localObject1	Object
-    //   84	132	5	localObject2	Object
-    //   290	1	5	localException	java.lang.Exception
-    //   221	41	6	localJSONObject	org.json.JSONObject
-    //   230	49	7	localdom	com.tencent.mm.protocal.protobuf.dom
-    // Exception table:
-    //   from	to	target	type
-    //   182	204	290	java/lang/Exception
-    //   206	283	290	java/lang/Exception
+    AppMethodBeat.i(77923);
+    this.dCT = -1;
+    Object localObject = new b.a();
+    ((b.a)localObject).hNM = new del();
+    ((b.a)localObject).hNN = new dem();
+    ((b.a)localObject).uri = "/cgi-bin/mmsearch-bin/searchsimilaremoticon";
+    ((b.a)localObject).funcId = 2999;
+    this.hWL = ((b.a)localObject).aDC();
+    localObject = (del)this.hWL.hNK.hNQ;
+    ((del)localObject).Md5 = paramString1;
+    ((del)localObject).FMu = paramInt1;
+    ((del)localObject).GRx = paramString2;
+    ((del)localObject).FxN = paramString3;
+    ((del)localObject).HsO = paramInt2;
+    ((del)localObject).HbT = paramString4;
+    ((del)localObject).GDa = com.tencent.mm.plugin.websearch.api.ad.We(0);
+    ((del)localObject).Scene = paramInt3;
+    ((del)localObject).GRt = com.tencent.mm.plugin.websearch.api.ad.bNG();
+    ((del)localObject).AesKey = paramString6;
+    ((del)localObject).HsP = paramString5;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.NetSceneQuerySimilarEmotion", "Md5 %s Offset %d SearchId %s SessionId %s Tab %s RequestId %s Scene %d", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, paramString3, Integer.valueOf(paramInt2), paramString4, Integer.valueOf(paramInt3) });
+    AppMethodBeat.o(77923);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(77928);
-    this.callback = paramg;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(77928);
+    AppMethodBeat.i(77925);
+    this.callback = paramf;
+    int i = dispatch(parame, this.hWL, this);
+    AppMethodBeat.o(77925);
     return i;
+  }
+  
+  public final String eLN()
+  {
+    return null;
+  }
+  
+  public final int eLO()
+  {
+    return 0;
+  }
+  
+  public final dem eOd()
+  {
+    return this.DKp;
   }
   
   public final int getType()
   {
-    AppMethodBeat.i(77927);
-    int i = this.rr.getType();
-    AppMethodBeat.o(77927);
-    return i;
+    return 2999;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(77929);
-    ac.i("MicroMsg.WebSearch.NetSceneWeAppSearchGuide", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.Chj = new b.g(this.scene, (dvu)this.rr.hvs.hvw, this.Chh);
-    b.g localg = this.Chj;
-    paramArrayOfByte = new bsv();
-    paramArrayOfByte.Scene = localg.scene;
-    paramArrayOfByte.FhN = localg.djc;
-    paramArrayOfByte.FhQ = localg.interval;
-    paramArrayOfByte.FhP = localg.Cha;
-    paramArrayOfByte.FhR = localg.Chh;
-    paramq = null;
-    try
-    {
-      paramArrayOfByte = paramArrayOfByte.toByteArray();
-      paramq = paramArrayOfByte;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      label146:
-      break label146;
-    }
-    if (paramq != null)
-    {
-      paramArrayOfByte = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.record.b.awO(), b.g.UG(localg.scene));
-      if (!paramArrayOfByte.fxU().exists()) {
-        paramArrayOfByte.fxU().mkdirs();
-      }
-      if (paramArrayOfByte.exists()) {
-        paramArrayOfByte.delete();
-      }
-      i.f(com.tencent.mm.vfs.q.B(paramArrayOfByte.fxV()), paramq, paramq.length);
-      ac.i("MicroMsg.WebSearch.FTSWebViewLogic", "SearchGuideCacheObj saved, scene:%d", new Object[] { Integer.valueOf(localg.scene) });
-    }
-    for (;;)
-    {
-      if (this.callback != null) {
-        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      }
-      AppMethodBeat.o(77929);
-      return;
-      ac.w("MicroMsg.WebSearch.FTSWebViewLogic", "SearchGuideCacheObj toBytes fail, scene:%d!", new Object[] { Integer.valueOf(localg.scene) });
-    }
+    AppMethodBeat.i(77924);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebSearch.NetSceneQuerySimilarEmotion", "netId %d errType %d errCode %d %s errMsg", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.DKp = ((dem)this.hWL.hNL.hNQ);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(77924);
   }
 }
 

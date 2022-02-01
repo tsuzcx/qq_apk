@@ -11,16 +11,16 @@ import com.tencent.mm.compatible.util.i;
 import com.tencent.mm.plugin.appbrand.widget.input.panel.AppBrandSmileyPanelBase;
 import com.tencent.mm.plugin.appbrand.widget.input.panel.c;
 import com.tencent.mm.plugin.appbrand.widget.input.panel.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.z;
 
 public final class AppBrandSmileyPanel
   extends AppBrandSmileyPanelBase
   implements e
 {
-  private int mEM = -1;
-  private int mEN = -1;
   private boolean mInLayout = false;
+  private int nfl = -1;
+  private int nfm = -1;
   
   public AppBrandSmileyPanel(Context paramContext)
   {
@@ -35,19 +35,19 @@ public final class AppBrandSmileyPanel
   private int getPanelDefaultHeightInPort()
   {
     AppMethodBeat.i(49897);
-    if (this.mEM < 0) {
-      this.mEM = y.iy(getContext());
+    if (this.nfl < 0) {
+      this.nfl = z.iI(getContext());
     }
-    if (this.mEM > 0)
+    if (this.nfl > 0)
     {
-      i = this.mEM;
+      i = this.nfl;
       AppMethodBeat.o(49897);
       return i;
     }
     getManager();
-    int[] arrayOfInt = c.bBf();
+    int[] arrayOfInt = c.bFh();
     int i = Math.max(arrayOfInt[0], arrayOfInt[1]) / 2 - getContext().getResources().getDimensionPixelSize(2131165224);
-    this.mEM = i;
+    this.nfl = i;
     AppMethodBeat.o(49897);
     return i;
   }
@@ -56,10 +56,10 @@ public final class AppBrandSmileyPanel
   {
     AppMethodBeat.i(49896);
     getManager();
-    int[] arrayOfInt = c.bBf();
-    if ((this.mEN > 0) && (this.mEN < arrayOfInt[1]))
+    int[] arrayOfInt = c.bFh();
+    if ((this.nfm > 0) && (this.nfm < arrayOfInt[1]))
     {
-      i = this.mEN;
+      i = this.nfm;
       AppMethodBeat.o(49896);
       return i;
     }
@@ -69,31 +69,10 @@ public final class AppBrandSmileyPanel
     return i - j;
   }
   
-  public final boolean bAu()
-  {
-    AppMethodBeat.i(49904);
-    ac.d("MicroMsg.AppBrandSmileyPanel", "[scrollUp] isRealHeightSettled, mForcePanelHeight %d, height %d, measuredHeight %d", new Object[] { Integer.valueOf(this.mEN), Integer.valueOf(getHeight()), Integer.valueOf(getMeasuredHeight()) });
-    if ((this.mEN > 0) && (this.mEN == getMeasuredHeight()))
-    {
-      AppMethodBeat.o(49904);
-      return true;
-    }
-    AppMethodBeat.o(49904);
-    return false;
-  }
-  
-  public final c bAx()
-  {
-    AppMethodBeat.i(49899);
-    ak localak = new ak();
-    AppMethodBeat.o(49899);
-    return localak;
-  }
-  
-  public final boolean bAy()
+  public final boolean bEA()
   {
     AppMethodBeat.i(49903);
-    if (d.kZ(18))
+    if (d.ly(18))
     {
       bool = super.isInLayout();
       AppMethodBeat.o(49903);
@@ -104,12 +83,33 @@ public final class AppBrandSmileyPanel
     return bool;
   }
   
+  public final boolean bEw()
+  {
+    AppMethodBeat.i(49904);
+    ad.d("MicroMsg.AppBrandSmileyPanel", "[scrollUp] isRealHeightSettled, mForcePanelHeight %d, height %d, measuredHeight %d", new Object[] { Integer.valueOf(this.nfm), Integer.valueOf(getHeight()), Integer.valueOf(getMeasuredHeight()) });
+    if ((this.nfm > 0) && (this.nfm == getMeasuredHeight()))
+    {
+      AppMethodBeat.o(49904);
+      return true;
+    }
+    AppMethodBeat.o(49904);
+    return false;
+  }
+  
+  public final c bEz()
+  {
+    AppMethodBeat.i(49899);
+    ak localak = new ak();
+    AppMethodBeat.o(49899);
+    return localak;
+  }
+  
   public final int getAppropriateHeightInPort()
   {
     AppMethodBeat.i(49898);
-    if (this.mEN > 0)
+    if (this.nfm > 0)
     {
-      i = this.mEN;
+      i = this.nfm;
       AppMethodBeat.o(49898);
       return i;
     }
@@ -120,7 +120,7 @@ public final class AppBrandSmileyPanel
   
   public final int getForcedPanelHeight()
   {
-    return this.mEN;
+    return this.nfm;
   }
   
   public final View getPanelView()
@@ -142,14 +142,14 @@ public final class AppBrandSmileyPanel
     AppMethodBeat.i(49900);
     if (!isShown())
     {
-      ex(paramInt1, View.MeasureSpec.makeMeasureSpec(0, -2147483648));
+      ez(paramInt1, View.MeasureSpec.makeMeasureSpec(0, -2147483648));
       AppMethodBeat.o(49900);
       return;
     }
-    if (!i.iA(getContext())) {}
+    if (!i.iK(getContext())) {}
     for (paramInt2 = getPanelHeightInLandscape();; paramInt2 = getAppropriateHeightInPort())
     {
-      ex(paramInt1, View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
+      ez(paramInt1, View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
       AppMethodBeat.o(49900);
       return;
     }
@@ -158,18 +158,18 @@ public final class AppBrandSmileyPanel
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(49901);
-    vQ(paramInt);
+    wv(paramInt);
     if (paramInt == 0) {
       initView();
     }
     AppMethodBeat.o(49901);
   }
   
-  public final boolean vN(int paramInt)
+  public final boolean ws(int paramInt)
   {
-    if ((paramInt > 0) && (this.mEN != paramInt))
+    if ((paramInt > 0) && (this.nfm != paramInt))
     {
-      this.mEN = paramInt;
+      this.nfm = paramInt;
       return true;
     }
     return false;
@@ -177,7 +177,7 @@ public final class AppBrandSmileyPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.AppBrandSmileyPanel
  * JD-Core Version:    0.7.0.1
  */

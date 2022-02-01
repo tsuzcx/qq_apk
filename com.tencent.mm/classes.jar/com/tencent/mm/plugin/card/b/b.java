@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.card.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.card.base.d;
 import com.tencent.mm.plugin.card.model.CardInfo;
-import com.tencent.mm.plugin.card.model.ad;
 import com.tencent.mm.plugin.card.model.ak;
 import com.tencent.mm.plugin.card.model.al;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.s;
 import com.tencent.mm.plugin.card.model.w;
-import com.tencent.mm.protocal.protobuf.sa;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.storagebase.h;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -24,63 +24,63 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class b
-  implements com.tencent.mm.ak.g
+  implements f
 {
   public byte[] lock;
-  public List<ak> nSY;
-  private s nSZ;
-  public List<WeakReference<d>> nTa;
+  public List<ak> owt;
+  private s owu;
+  public List<WeakReference<d>> owv;
   public List<ak> pendingList;
   
   public b()
   {
     AppMethodBeat.i(112574);
     this.lock = new byte[0];
-    this.nTa = new ArrayList();
-    this.pendingList = am.bQj().bQg();
-    this.nSY = new ArrayList();
-    ac.i("MicroMsg.BatchGetCardMgr", "<init>, init pending list size = %d", new Object[] { Integer.valueOf(this.pendingList.size()) });
-    com.tencent.mm.kernel.g.agQ().ghe.a(1074, this);
+    this.owv = new ArrayList();
+    this.pendingList = am.bUO().bUL();
+    this.owt = new ArrayList();
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BatchGetCardMgr", "<init>, init pending list size = %d", new Object[] { Integer.valueOf(this.pendingList.size()) });
+    g.ajB().gAO.a(1074, this);
     AppMethodBeat.o(112574);
   }
   
-  public static void bPw()
-  {
-    AppMethodBeat.i(112580);
-    int i = ((Integer)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GFj, Integer.valueOf(1))).intValue();
-    ac.i("MicroMsg.BatchGetCardMgr", "need do getCardsLayoutScene scene is ".concat(String.valueOf(i)));
-    ad localad = new ad(am.bQo().fmX, am.bQo().fmY, i);
-    com.tencent.mm.kernel.g.agQ().ghe.a(localad, 0);
-    AppMethodBeat.o(112580);
-  }
-  
-  public static void zF(int paramInt)
+  public static void Ao(int paramInt)
   {
     AppMethodBeat.i(112579);
     w localw = new w(paramInt);
-    com.tencent.mm.kernel.g.agQ().ghe.a(localw, 0);
+    g.ajB().gAO.a(localw, 0);
     AppMethodBeat.o(112579);
   }
   
-  public final void a(sa arg1)
+  public static void bUb()
+  {
+    AppMethodBeat.i(112580);
+    int i = ((Integer)g.ajC().ajl().get(al.a.IrB, Integer.valueOf(1))).intValue();
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BatchGetCardMgr", "need do getCardsLayoutScene scene is ".concat(String.valueOf(i)));
+    com.tencent.mm.plugin.card.model.ad localad = new com.tencent.mm.plugin.card.model.ad(am.bUT().fFf, am.bUT().fFg, i);
+    g.ajB().gAO.a(localad, 0);
+    AppMethodBeat.o(112580);
+  }
+  
+  public final void a(tu arg1)
   {
     AppMethodBeat.i(112576);
     if (??? == null)
     {
-      ac.e("MicroMsg.BatchGetCardMgr", "push fail, CardUserItem is null");
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.BatchGetCardMgr", "push fail, CardUserItem is null");
       AppMethodBeat.o(112576);
       return;
     }
-    Object localObject1 = am.bQi().UF(???.Eld);
-    String str = ???.Eld;
+    Object localObject1 = am.bUN().Yo(???.FHU);
+    String str = ???.FHU;
     if (localObject1 == null) {}
     for (long l = 0L;; l = ((CardInfo)localObject1).field_updateSeq)
     {
-      ac.i("MicroMsg.BatchGetCardMgr", "pushCardUserItem, cardUserId = %s, localSeq = %d, svrSeq = %d", new Object[] { str, Long.valueOf(l), Long.valueOf(???.Ele) });
-      if ((localObject1 == null) || (((CardInfo)localObject1).field_updateSeq != ???.Ele)) {
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BatchGetCardMgr", "pushCardUserItem, cardUserId = %s, localSeq = %d, svrSeq = %d", new Object[] { str, Long.valueOf(l), Long.valueOf(???.FSm) });
+      if ((localObject1 == null) || (((CardInfo)localObject1).field_updateSeq != ???.FSm)) {
         break;
       }
-      ac.e("MicroMsg.BatchGetCardMgr", "push CardUserItem fail, card.field_updateSeq == item.UpdateSequence");
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.BatchGetCardMgr", "push CardUserItem fail, card.field_updateSeq == item.UpdateSequence");
       AppMethodBeat.o(112576);
       return;
     }
@@ -92,30 +92,30 @@ public final class b
         AppMethodBeat.o(112576);
         return;
       }
-      if (this.nSY.contains(localObject1))
+      if (this.owt.contains(localObject1))
       {
         AppMethodBeat.o(112576);
         return;
       }
       this.pendingList.add(localObject1);
-      ac.i("MicroMsg.BatchGetCardMgr", "pushCardUserItem, insertRet = %b", new Object[] { Boolean.valueOf(am.bQj().insert((com.tencent.mm.sdk.e.c)localObject1)) });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BatchGetCardMgr", "pushCardUserItem, insertRet = %b", new Object[] { Boolean.valueOf(am.bUO().insert((com.tencent.mm.sdk.e.c)localObject1)) });
       AppMethodBeat.o(112576);
       return;
     }
   }
   
-  public final void bPv()
+  public final void bUa()
   {
     AppMethodBeat.i(112577);
     if (this.pendingList.size() == 0)
     {
-      ac.i("MicroMsg.BatchGetCardMgr", "getNow, no pending cardinfo ,no need to get");
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BatchGetCardMgr", "getNow, no pending cardinfo ,no need to get");
       AppMethodBeat.o(112577);
       return;
     }
-    if (this.nSZ != null)
+    if (this.owu != null)
     {
-      ac.i("MicroMsg.BatchGetCardMgr", "getNow, already doing scene, not trigger now");
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BatchGetCardMgr", "getNow, already doing scene, not trigger now");
       AppMethodBeat.o(112577);
       return;
     }
@@ -125,8 +125,8 @@ public final class b
     }
     for (;;)
     {
-      this.nSZ = new s(localLinkedList);
-      com.tencent.mm.kernel.g.agQ().ghe.a(this.nSZ, 0);
+      this.owu = new s(localLinkedList);
+      g.ajB().gAO.a(this.owu, 0);
       AppMethodBeat.o(112577);
       return;
       localLinkedList.addAll(this.pendingList.subList(0, 10));
@@ -137,11 +137,11 @@ public final class b
   {
     AppMethodBeat.i(112575);
     this.pendingList.clear();
-    this.nSY.clear();
-    if (this.nSZ != null) {
-      com.tencent.mm.kernel.g.agQ().ghe.a(this.nSZ);
+    this.owt.clear();
+    if (this.owu != null) {
+      g.ajB().gAO.a(this.owu);
     }
-    com.tencent.mm.kernel.g.agQ().ghe.b(1074, this);
+    g.ajB().gAO.b(1074, this);
     AppMethodBeat.o(112575);
   }
   
@@ -149,13 +149,13 @@ public final class b
   {
     int i = 0;
     AppMethodBeat.i(112578);
-    ac.i("MicroMsg.BatchGetCardMgr", "onSceneEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.nSZ = null;
-    paramString = ((s)???).nWB;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BatchGetCardMgr", "onSceneEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.owu = null;
+    paramString = ((s)???).ozV;
     ak localak;
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ac.e("MicroMsg.BatchGetCardMgr", "onSceneEnd fail, stop batch get, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.BatchGetCardMgr", "onSceneEnd fail, stop batch get, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       ??? = this.lock;
       if (paramString != null) {}
       try
@@ -163,12 +163,12 @@ public final class b
         if (paramString.size() > 0)
         {
           this.pendingList.removeAll(paramString);
-          this.nSY.addAll(paramString);
+          this.owt.addAll(paramString);
         }
-        ??? = am.bQj();
+        ??? = am.bUO();
         if ((paramString == null) || (paramString.size() == 0))
         {
-          ac.e("MicroMsg.PendingCardIdInfoStorage", "increaseRetryCount fail, list is empty");
+          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.PendingCardIdInfoStorage", "increaseRetryCount fail, list is empty");
           AppMethodBeat.o(112578);
           return;
         }
@@ -193,7 +193,7 @@ public final class b
     if (paramString == null)
     {
       paramInt1 = 0;
-      ac.i("MicroMsg.BatchGetCardMgr", "onSceneEnd, batch get succ, remove succ id list, size = %d", new Object[] { Integer.valueOf(paramInt1) });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BatchGetCardMgr", "onSceneEnd, batch get succ, remove succ id list, size = %d", new Object[] { Integer.valueOf(paramInt1) });
       if (paramString == null) {}
     }
     for (;;)
@@ -202,27 +202,27 @@ public final class b
       {
         this.pendingList.removeAll(paramString);
         long l1 = System.currentTimeMillis();
-        long l2 = com.tencent.mm.kernel.g.agR().ghG.vE(Thread.currentThread().getId());
-        ??? = am.bQj();
+        long l2 = g.ajC().gBq.xO(Thread.currentThread().getId());
+        ??? = am.bUO();
         if ((paramString == null) || (paramString.size() == 0))
         {
-          ac.e("MicroMsg.PendingCardIdInfoStorage", "deleteList fail, list is empty");
-          com.tencent.mm.kernel.g.agR().ghG.qL(l2);
-          ac.i("MicroMsg.BatchGetCardMgr", "onSceneEnd do transaction use time %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-          bPv();
-          if (this.nTa == null) {
+          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.PendingCardIdInfoStorage", "deleteList fail, list is empty");
+          g.ajC().gBq.sJ(l2);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BatchGetCardMgr", "onSceneEnd do transaction use time %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+          bUa();
+          if (this.owv == null) {
             break;
           }
           paramInt1 = i;
-          if (paramInt1 >= this.nTa.size()) {
+          if (paramInt1 >= this.owv.size()) {
             break;
           }
-          paramString = (WeakReference)this.nTa.get(paramInt1);
+          paramString = (WeakReference)this.owv.get(paramInt1);
           if (paramString != null)
           {
             paramString = (d)paramString.get();
             if (paramString != null) {
-              paramString.bPt();
+              paramString.bTY();
             }
           }
           paramInt1 += 1;
@@ -244,7 +244,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ai.k.b;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.plugin.fav.a.ab;
 import com.tencent.mm.plugin.fav.a.g;
@@ -37,17 +37,17 @@ public final class e
   {
     AppMethodBeat.i(24608);
     o.a locala = new o.a(paramContext);
-    locala.dM(paramString);
+    locala.dP(paramString);
     d.a(locala, paramContext, paramg);
     d.b(locala, paramContext, paramg);
-    locala.i(Boolean.valueOf(paramBoolean)).WV(2131755884).a(parama).iJj.show();
+    locala.l(Boolean.valueOf(paramBoolean)).YR(2131755884).a(parama).jcs.show();
     AppMethodBeat.o(24608);
   }
   
-  public final int acJ(String paramString)
+  public final int agy(String paramString)
   {
     AppMethodBeat.i(24607);
-    int i = q.aGb(paramString);
+    int i = q.aLB(paramString);
     AppMethodBeat.o(24607);
     return i;
   }

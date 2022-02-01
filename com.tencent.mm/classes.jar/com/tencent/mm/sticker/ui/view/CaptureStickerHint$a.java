@@ -2,7 +2,7 @@ package com.tencent.mm.sticker.ui.view;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint$Companion;", "", "()V", "tipsIconIds", "Landroid/util/SparseArray;", "", "getTipsIconIds", "()Landroid/util/SparseArray;", "tipsStrIds", "getTipsStrIds", "plugin-sticker_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint$Companion;", "", "()V", "tipsIconIds", "Landroid/util/SparseArray;", "", "getTipsIconIds", "()Landroid/util/SparseArray;", "tipsStrIds", "getTipsStrIds", "plugin-sticker_release"})
 public final class CaptureStickerHint$a {}
 
 

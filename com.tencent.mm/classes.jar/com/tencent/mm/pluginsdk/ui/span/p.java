@@ -3,12 +3,12 @@ package com.tencent.mm.pluginsdk.ui.span;
 import android.text.TextPaint;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.al;
 
 public class p
   extends o
 {
-  private a DCR;
+  private a FhX;
   private Object tag;
   
   public p() {}
@@ -16,7 +16,7 @@ public class p
   public p(Object paramObject, a parama)
   {
     super(2, null);
-    this.DCR = parama;
+    this.FhX = parama;
     this.tag = paramObject;
   }
   
@@ -24,7 +24,7 @@ public class p
   {
     super(2, null);
     AppMethodBeat.i(100607);
-    this.DCR = parama;
+    this.FhX = parama;
     this.tag = paramObject;
     setColorConfig(paramInt);
     AppMethodBeat.o(100607);
@@ -33,8 +33,8 @@ public class p
   public void onClick(View paramView)
   {
     AppMethodBeat.i(100608);
-    if (this.DCR != null) {
-      this.DCR.b(paramView, this.tag);
+    if (this.FhX != null) {
+      this.FhX.b(paramView, this.tag);
     }
     AppMethodBeat.o(100608);
   }
@@ -43,7 +43,7 @@ public class p
   {
     AppMethodBeat.i(100609);
     super.updateDrawState(paramTextPaint);
-    aj.a(paramTextPaint, 0.8F);
+    al.a(paramTextPaint, 0.8F);
     AppMethodBeat.o(100609);
   }
   
@@ -54,7 +54,7 @@ public class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.p
  * JD-Core Version:    0.7.0.1
  */

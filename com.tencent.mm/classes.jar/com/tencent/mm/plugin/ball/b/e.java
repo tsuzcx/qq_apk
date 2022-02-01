@@ -8,13 +8,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
   extends AnimatorListenerAdapter
 {
-  private AnimatorListenerAdapter nfw;
+  private AnimatorListenerAdapter nFS;
   private View targetView;
   
   public e(View paramView)
   {
     this.targetView = paramView;
-    this.nfw = null;
+    this.nFS = null;
   }
   
   public final void onAnimationCancel(Animator paramAnimator)
@@ -24,8 +24,8 @@ public final class e
     if (this.targetView != null) {
       this.targetView.setVisibility(0);
     }
-    if (this.nfw != null) {
-      this.nfw.onAnimationCancel(paramAnimator);
+    if (this.nFS != null) {
+      this.nFS.onAnimationCancel(paramAnimator);
     }
     AppMethodBeat.o(106054);
   }
@@ -37,8 +37,8 @@ public final class e
     if (this.targetView != null) {
       this.targetView.setVisibility(0);
     }
-    if (this.nfw != null) {
-      this.nfw.onAnimationEnd(paramAnimator);
+    if (this.nFS != null) {
+      this.nFS.onAnimationEnd(paramAnimator);
     }
     AppMethodBeat.o(106055);
   }
@@ -47,8 +47,8 @@ public final class e
   {
     AppMethodBeat.i(106058);
     super.onAnimationPause(paramAnimator);
-    if (this.nfw != null) {
-      this.nfw.onAnimationPause(paramAnimator);
+    if (this.nFS != null) {
+      this.nFS.onAnimationPause(paramAnimator);
     }
     AppMethodBeat.o(106058);
   }
@@ -57,8 +57,8 @@ public final class e
   {
     AppMethodBeat.i(106056);
     super.onAnimationRepeat(paramAnimator);
-    if (this.nfw != null) {
-      this.nfw.onAnimationRepeat(paramAnimator);
+    if (this.nFS != null) {
+      this.nFS.onAnimationRepeat(paramAnimator);
     }
     AppMethodBeat.o(106056);
   }
@@ -67,8 +67,8 @@ public final class e
   {
     AppMethodBeat.i(106059);
     super.onAnimationResume(paramAnimator);
-    if (this.nfw != null) {
-      this.nfw.onAnimationResume(paramAnimator);
+    if (this.nFS != null) {
+      this.nFS.onAnimationResume(paramAnimator);
     }
     AppMethodBeat.o(106059);
   }
@@ -77,15 +77,15 @@ public final class e
   {
     AppMethodBeat.i(106057);
     super.onAnimationStart(paramAnimator);
-    if (this.nfw != null) {
-      this.nfw.onAnimationStart(paramAnimator);
+    if (this.nFS != null) {
+      this.nFS.onAnimationStart(paramAnimator);
     }
     AppMethodBeat.o(106057);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.b.e
  * JD-Core Version:    0.7.0.1
  */

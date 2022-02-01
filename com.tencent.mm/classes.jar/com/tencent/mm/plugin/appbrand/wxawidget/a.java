@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract interface a
 {
-  public abstract void bI(List<LogInfo> paramList);
+  public abstract void bJ(List<LogInfo> paramList);
 }
 
 

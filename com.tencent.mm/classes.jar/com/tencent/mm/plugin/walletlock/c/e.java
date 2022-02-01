@@ -3,83 +3,83 @@ package com.tencent.mm.plugin.walletlock.c;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.plugin.soter.d.m;
 import com.tencent.mm.plugin.walletlock.a.b.a;
 import com.tencent.mm.plugin.walletlock.a.b.b;
 import com.tencent.mm.plugin.walletlock.gesture.a.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class e
   extends a
 {
-  private static com.tencent.mm.plugin.walletlock.a.b BVA;
+  private static com.tencent.mm.plugin.walletlock.a.b DvU;
   
-  private static void bgo()
+  private static void bjS()
   {
     AppMethodBeat.i(129898);
-    ac.i("MicroMsg.WalletLockImpl", "alvinluo WalletLock init end, wallet lock type: %d", new Object[] { Integer.valueOf(g.BVG.evU()) });
+    ad.i("MicroMsg.WalletLockImpl", "alvinluo WalletLock init end, wallet lock type: %d", new Object[] { Integer.valueOf(g.Dwa.eKa()) });
     AppMethodBeat.o(129898);
   }
   
-  public final void TU(int paramInt)
+  public final void VM(int paramInt)
   {
     AppMethodBeat.i(129910);
     Object localObject;
     if (paramInt == 1)
     {
-      ac.i("MicroMsg.WalletLockImpl", "alvinluo wallet lock switch to gesture");
+      ad.i("MicroMsg.WalletLockImpl", "alvinluo wallet lock switch to gesture");
       localObject = new c();
-      BVA = (com.tencent.mm.plugin.walletlock.a.b)localObject;
+      DvU = (com.tencent.mm.plugin.walletlock.a.b)localObject;
       ((com.tencent.mm.plugin.walletlock.a.b)localObject).init();
-      localObject = g.BVG;
-      g.tY(true);
+      localObject = g.Dwa;
+      g.uI(true);
       AppMethodBeat.o(129910);
       return;
     }
     if (paramInt == 2)
     {
-      ac.i("MicroMsg.WalletLockImpl", "alvinluo wallet lock switch to fingerprint lock");
+      ad.i("MicroMsg.WalletLockImpl", "alvinluo wallet lock switch to fingerprint lock");
       localObject = new com.tencent.mm.plugin.walletlock.fingerprint.a.b();
-      BVA = (com.tencent.mm.plugin.walletlock.a.b)localObject;
+      DvU = (com.tencent.mm.plugin.walletlock.a.b)localObject;
       ((com.tencent.mm.plugin.walletlock.a.b)localObject).init();
-      localObject = g.BVG;
-      g.tW(false);
+      localObject = g.Dwa;
+      g.uG(false);
       AppMethodBeat.o(129910);
       return;
     }
     if (paramInt == 3)
     {
-      ac.i("MicroMsg.WalletLockImpl", "wallet lock switch to faceid lock");
+      ad.i("MicroMsg.WalletLockImpl", "wallet lock switch to faceid lock");
       localObject = new com.tencent.mm.plugin.walletlock.b.a();
-      BVA = (com.tencent.mm.plugin.walletlock.a.b)localObject;
+      DvU = (com.tencent.mm.plugin.walletlock.a.b)localObject;
       ((com.tencent.mm.plugin.walletlock.a.b)localObject).init();
       AppMethodBeat.o(129910);
       return;
     }
     if (paramInt == 0)
     {
-      ac.i("MicroMsg.WalletLockImpl", "alvinluo wallet lock switch to none");
+      ad.i("MicroMsg.WalletLockImpl", "alvinluo wallet lock switch to none");
       localObject = new a();
-      BVA = (com.tencent.mm.plugin.walletlock.a.b)localObject;
+      DvU = (com.tencent.mm.plugin.walletlock.a.b)localObject;
       ((com.tencent.mm.plugin.walletlock.a.b)localObject).init();
-      localObject = g.BVG;
-      g.tX(true);
+      localObject = g.Dwa;
+      g.uH(true);
       AppMethodBeat.o(129910);
       return;
     }
-    ac.e("MicroMsg.WalletLockImpl", "alvinluo unknown wallet lock type, ignore switch");
+    ad.e("MicroMsg.WalletLockImpl", "alvinluo unknown wallet lock type, ignore switch");
     AppMethodBeat.o(129910);
   }
   
   public final void a(Activity paramActivity, b.b paramb, b.a parama)
   {
     AppMethodBeat.i(129900);
-    if (BVA != null) {
-      BVA.a(paramActivity, paramb, parama);
+    if (DvU != null) {
+      DvU.a(paramActivity, paramb, parama);
     }
     AppMethodBeat.o(129900);
   }
@@ -87,9 +87,9 @@ public final class e
   public final boolean a(Activity paramActivity, b.b paramb)
   {
     AppMethodBeat.i(129899);
-    if (BVA != null)
+    if (DvU != null)
     {
-      boolean bool = BVA.a(paramActivity, paramb);
+      boolean bool = DvU.a(paramActivity, paramb);
       AppMethodBeat.o(129899);
       return bool;
     }
@@ -100,8 +100,8 @@ public final class e
   public final void aJ(Activity paramActivity)
   {
     AppMethodBeat.i(129903);
-    if (BVA != null) {
-      BVA.aJ(paramActivity);
+    if (DvU != null) {
+      DvU.aJ(paramActivity);
     }
     AppMethodBeat.o(129903);
   }
@@ -113,25 +113,12 @@ public final class e
     AppMethodBeat.o(129902);
   }
   
-  public final void c(Activity paramActivity, Intent paramIntent)
-  {
-    AppMethodBeat.i(129908);
-    if (BVA != null)
-    {
-      BVA.c(paramActivity, paramIntent);
-      AppMethodBeat.o(129908);
-      return;
-    }
-    super.c(paramActivity, paramIntent);
-    AppMethodBeat.o(129908);
-  }
-  
   public final void c(Activity paramActivity, Intent paramIntent, int paramInt)
   {
     AppMethodBeat.i(129909);
-    if (BVA != null)
+    if (DvU != null)
     {
-      BVA.c(paramActivity, paramIntent, paramInt);
+      DvU.c(paramActivity, paramIntent, paramInt);
       AppMethodBeat.o(129909);
       return;
     }
@@ -139,12 +126,25 @@ public final class e
     AppMethodBeat.o(129909);
   }
   
-  public final b.b evh()
+  public final void e(Activity paramActivity, Intent paramIntent)
+  {
+    AppMethodBeat.i(129908);
+    if (DvU != null)
+    {
+      DvU.e(paramActivity, paramIntent);
+      AppMethodBeat.o(129908);
+      return;
+    }
+    super.e(paramActivity, paramIntent);
+    AppMethodBeat.o(129908);
+  }
+  
+  public final b.b eJn()
   {
     AppMethodBeat.i(129905);
-    if (BVA != null)
+    if (DvU != null)
     {
-      b.b localb = BVA.evh();
+      b.b localb = DvU.eJn();
       AppMethodBeat.o(129905);
       return localb;
     }
@@ -152,14 +152,14 @@ public final class e
     return null;
   }
   
-  public final boolean evi()
+  public final boolean eJo()
   {
     AppMethodBeat.i(129906);
-    g localg = g.BVG;
-    if (!g.evy())
+    g localg = g.Dwa;
+    if (!g.eJE())
     {
-      localg = g.BVG;
-      if (!g.evm()) {}
+      localg = g.Dwa;
+      if (!g.eJs()) {}
     }
     else
     {
@@ -170,12 +170,12 @@ public final class e
     return false;
   }
   
-  public final boolean evj()
+  public final boolean eJp()
   {
     AppMethodBeat.i(129907);
-    if (BVA != null)
+    if (DvU != null)
     {
-      boolean bool = BVA.evj();
+      boolean bool = DvU.eJp();
       AppMethodBeat.o(129907);
       return bool;
     }
@@ -186,56 +186,56 @@ public final class e
   public final void init()
   {
     AppMethodBeat.i(129897);
-    ac.i("MicroMsg.WalletLockImpl", "alvinluo WalletLock init start, call stack: %s", new Object[] { bs.m(new Throwable()) });
-    int i = bs.l(com.tencent.mm.kernel.g.agR().agA().get(40, null), 0);
-    ac.i("MicroMsg.WalletLockImpl", "alvinluo pluginSwitch %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(i & 0x800000) });
+    ad.i("MicroMsg.WalletLockImpl", "alvinluo WalletLock init start, call stack: %s", new Object[] { bt.n(new Throwable()) });
+    int i = bt.m(com.tencent.mm.kernel.g.ajC().ajl().get(40, null), 0);
+    ad.i("MicroMsg.WalletLockImpl", "alvinluo pluginSwitch %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(i & 0x800000) });
     Object localObject;
     if ((i & 0x800000) != 0)
     {
-      ac.i("MicroMsg.WalletLockImpl", "alvinluo fingerprint wallet lock is opened");
+      ad.i("MicroMsg.WalletLockImpl", "alvinluo fingerprint wallet lock is opened");
       localObject = new com.tencent.mm.plugin.walletlock.fingerprint.a.b();
-      BVA = (com.tencent.mm.plugin.walletlock.a.b)localObject;
+      DvU = (com.tencent.mm.plugin.walletlock.a.b)localObject;
       ((com.tencent.mm.plugin.walletlock.a.b)localObject).init();
-      localObject = g.BVG;
-      boolean bool = g.evX();
-      ac.i("MicroMsg.WalletLockImpl", "alvinluo init isSupportSoter: %b, isSupportFingerprintLock: %b", new Object[] { Boolean.valueOf(m.dTw()), Boolean.valueOf(bool) });
-      if ((com.tencent.mm.plugin.walletlock.gesture.a.b.evy()) && (!bool))
+      localObject = g.Dwa;
+      boolean bool = g.eKd();
+      ad.i("MicroMsg.WalletLockImpl", "alvinluo init isSupportSoter: %b, isSupportFingerprintLock: %b", new Object[] { Boolean.valueOf(m.efK()), Boolean.valueOf(bool) });
+      if ((com.tencent.mm.plugin.walletlock.gesture.a.b.eJE()) && (!bool))
       {
-        bool = com.tencent.mm.kernel.g.agR().agA().getBoolean(ah.a.GOO, false);
-        ac.i("MicroMsg.WalletLockImpl", "alvinluo has opened fingerprint lock, but device not support soter, and use gesture, isAutoJumpToGesture: %b", new Object[] { Boolean.valueOf(bool) });
+        bool = com.tencent.mm.kernel.g.ajC().ajl().getBoolean(al.a.IBj, false);
+        ad.i("MicroMsg.WalletLockImpl", "alvinluo has opened fingerprint lock, but device not support soter, and use gesture, isAutoJumpToGesture: %b", new Object[] { Boolean.valueOf(bool) });
         if (bool)
         {
           localObject = new c();
-          BVA = (com.tencent.mm.plugin.walletlock.a.b)localObject;
+          DvU = (com.tencent.mm.plugin.walletlock.a.b)localObject;
           ((com.tencent.mm.plugin.walletlock.a.b)localObject).init();
-          bgo();
+          bjS();
           AppMethodBeat.o(129897);
         }
       }
     }
     else
     {
-      if (!com.tencent.mm.plugin.walletlock.gesture.a.b.evy()) {
+      if (!com.tencent.mm.plugin.walletlock.gesture.a.b.eJE()) {
         break label262;
       }
-      ac.i("MicroMsg.WalletLockImpl", "alvinluo gesture wallet lock is opened");
+      ad.i("MicroMsg.WalletLockImpl", "alvinluo gesture wallet lock is opened");
       localObject = new c();
-      BVA = (com.tencent.mm.plugin.walletlock.a.b)localObject;
+      DvU = (com.tencent.mm.plugin.walletlock.a.b)localObject;
       ((com.tencent.mm.plugin.walletlock.a.b)localObject).init();
-      localObject = g.BVG;
-      g.tY(false);
+      localObject = g.Dwa;
+      g.uI(false);
     }
     for (;;)
     {
-      bgo();
+      bjS();
       AppMethodBeat.o(129897);
       return;
       label262:
-      ac.i("MicroMsg.WalletLockImpl", "alvinluo wallet lock is not open");
-      BVA = new a();
-      localObject = g.BVG;
-      g.tX(false);
-      BVA.init();
+      ad.i("MicroMsg.WalletLockImpl", "alvinluo wallet lock is not open");
+      DvU = new a();
+      localObject = g.Dwa;
+      g.uH(false);
+      DvU.init();
     }
   }
   

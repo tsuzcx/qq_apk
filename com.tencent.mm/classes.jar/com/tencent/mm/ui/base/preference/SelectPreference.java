@@ -13,7 +13,7 @@ public class SelectPreference
   private boolean enable;
   public boolean isSelected;
   private View mView;
-  private WeImageView sje;
+  private WeImageView tfG;
   
   public SelectPreference(Context paramContext)
   {
@@ -45,9 +45,9 @@ public class SelectPreference
   {
     AppMethodBeat.i(142672);
     super.onBindView(paramView);
-    aam(8);
-    this.sje = ((WeImageView)paramView.findViewById(2131305186));
-    paramView = this.sje;
+    acw(8);
+    this.tfG = ((WeImageView)paramView.findViewById(2131305186));
+    paramView = this.tfG;
     if (this.isSelected) {}
     for (int i = 0;; i = 8)
     {

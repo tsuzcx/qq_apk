@@ -48,31 +48,39 @@ public final class akl
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
       localObject = c.n(paramVarArgs);
-      ((Path)localObject).moveTo(36.0F, 60.0F);
-      ((Path)localObject).cubicTo(49.254833F, 60.0F, 60.0F, 49.254833F, 60.0F, 36.0F);
-      ((Path)localObject).cubicTo(60.0F, 22.745167F, 49.254833F, 12.0F, 36.0F, 12.0F);
-      ((Path)localObject).cubicTo(22.745167F, 12.0F, 12.0F, 22.745167F, 12.0F, 36.0F);
-      ((Path)localObject).cubicTo(12.0F, 49.254833F, 22.745167F, 60.0F, 36.0F, 60.0F);
+      ((Path)localObject).moveTo(18.0F, 60.0F);
+      ((Path)localObject).lineTo(8.997152F, 60.0F);
+      ((Path)localObject).cubicTo(7.341871F, 60.0F, 6.0F, 58.666107F, 6.0F, 56.997383F);
+      ((Path)localObject).lineTo(6.0F, 15.002615F);
+      ((Path)localObject).cubicTo(6.0F, 13.344316F, 7.341623F, 12.0F, 8.997152F, 12.0F);
+      ((Path)localObject).lineTo(12.0F, 12.0F);
+      ((Path)localObject).lineTo(60.0F, 12.0F);
+      ((Path)localObject).lineTo(63.00285F, 12.0F);
+      ((Path)localObject).cubicTo(64.658127F, 12.0F, 66.0F, 13.333893F, 66.0F, 15.002615F);
+      ((Path)localObject).lineTo(66.0F, 56.997383F);
+      ((Path)localObject).cubicTo(66.0F, 58.655682F, 64.658379F, 60.0F, 63.00285F, 60.0F);
+      ((Path)localObject).lineTo(54.0F, 60.0F);
+      ((Path)localObject).lineTo(18.0F, 60.0F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(36.0F, 66.0F);
-      ((Path)localObject).cubicTo(19.431458F, 66.0F, 6.0F, 52.568542F, 6.0F, 36.0F);
-      ((Path)localObject).cubicTo(6.0F, 19.431458F, 19.431458F, 6.0F, 36.0F, 6.0F);
-      ((Path)localObject).cubicTo(52.568542F, 6.0F, 66.0F, 19.431458F, 66.0F, 36.0F);
-      ((Path)localObject).cubicTo(66.0F, 52.568542F, 52.568542F, 66.0F, 36.0F, 66.0F);
+      ((Path)localObject).moveTo(18.0F, 57.0F);
+      ((Path)localObject).lineTo(54.0F, 57.0F);
+      ((Path)localObject).lineTo(54.0F, 15.0F);
+      ((Path)localObject).lineTo(18.0F, 15.0F);
+      ((Path)localObject).lineTo(18.0F, 57.0F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(36.0F, 48.0F);
-      ((Path)localObject).cubicTo(42.627419F, 48.0F, 48.0F, 42.627419F, 48.0F, 36.0F);
-      ((Path)localObject).cubicTo(48.0F, 29.372583F, 42.627419F, 24.0F, 36.0F, 24.0F);
-      ((Path)localObject).cubicTo(29.372583F, 24.0F, 24.0F, 29.372583F, 24.0F, 36.0F);
-      ((Path)localObject).cubicTo(24.0F, 42.627419F, 29.372583F, 48.0F, 36.0F, 48.0F);
+      ((Path)localObject).moveTo(10.0F, 33.333332F);
+      ((Path)localObject).lineTo(10.0F, 40.444443F);
+      ((Path)localObject).lineTo(14.0F, 40.444443F);
+      ((Path)localObject).lineTo(14.0F, 33.333332F);
+      ((Path)localObject).lineTo(10.0F, 33.333332F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(36.0F, 54.0F);
-      ((Path)localObject).cubicTo(26.058874F, 54.0F, 18.0F, 45.941124F, 18.0F, 36.0F);
-      ((Path)localObject).cubicTo(18.0F, 26.058874F, 26.058874F, 18.0F, 36.0F, 18.0F);
-      ((Path)localObject).cubicTo(45.941124F, 18.0F, 54.0F, 26.058874F, 54.0F, 36.0F);
-      ((Path)localObject).cubicTo(54.0F, 45.941124F, 45.941124F, 54.0F, 36.0F, 54.0F);
+      ((Path)localObject).moveTo(58.0F, 33.333332F);
+      ((Path)localObject).lineTo(58.0F, 40.444443F);
+      ((Path)localObject).lineTo(62.0F, 40.444443F);
+      ((Path)localObject).lineTo(62.0F, 33.333332F);
+      ((Path)localObject).lineTo(58.0F, 33.333332F);
       ((Path)localObject).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
       localCanvas.drawPath((Path)localObject, localPaint);
       localCanvas.restore();
       c.l(paramVarArgs);
@@ -81,7 +89,7 @@ public final class akl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.akl
  * JD-Core Version:    0.7.0.1
  */

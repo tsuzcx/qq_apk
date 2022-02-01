@@ -4,18 +4,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.q;
 import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.g.a.ap;
 import com.tencent.mm.g.a.ap.a;
-import com.tencent.mm.g.a.wi;
-import com.tencent.mm.g.a.wi.a;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.a.xb;
+import com.tencent.mm.g.a.xb.a;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.plugin.account.ui.DisasterUI;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,117 +26,117 @@ import java.util.Set;
 
 public final class b
 {
-  public a fpC;
-  public Map<Integer, Long> fpD;
-  public Map<Long, a> fpE;
-  public c fpF;
+  public a fHJ;
+  public Map<Integer, Long> fHK;
+  public Map<Long, a> fHL;
+  public c fHM;
   
   public b()
   {
     AppMethodBeat.i(20099);
-    this.fpD = new HashMap();
-    this.fpE = new HashMap();
-    this.fpF = new c() {};
+    this.fHK = new HashMap();
+    this.fHL = new HashMap();
+    this.fHM = new c() {};
     AppMethodBeat.o(20099);
   }
   
-  final void Vl()
+  final void XC()
   {
     AppMethodBeat.i(20102);
-    if ((this.fpC == null) || (this.fpC.fpM.get(Integer.valueOf(0)) == null) || (bs.isNullOrNil(this.fpC.fpL)))
+    if ((this.fHJ == null) || (this.fHJ.fHT.get(Integer.valueOf(0)) == null) || (bt.isNullOrNil(this.fHJ.fHS)))
     {
       AppMethodBeat.o(20102);
       return;
     }
-    ac.i("MicroMsg.BroadcastController", "summerdize checkShowDisasterContent showDisasterContent[%s]", new Object[] { this.fpC.fpL });
+    ad.i("MicroMsg.BroadcastController", "summerdize checkShowDisasterContent showDisasterContent[%s]", new Object[] { this.fHJ.fHS });
     Object localObject = new Intent();
-    ((Intent)localObject).putExtra("key_disaster_content", this.fpC.fpL);
-    ((Intent)localObject).putExtra("key_disaster_url", ((wi)this.fpC.fpM.get(Integer.valueOf(0))).dzi.url);
-    ((Intent)localObject).setClass(ai.getContext(), DisasterUI.class).addFlags(268435456);
-    Context localContext = ai.getContext();
-    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/broadcast/BroadcastController", "checkShowDisasterContent", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+    ((Intent)localObject).putExtra("key_disaster_content", this.fHJ.fHS);
+    ((Intent)localObject).putExtra("key_disaster_url", ((xb)this.fHJ.fHT.get(Integer.valueOf(0))).dLu.url);
+    ((Intent)localObject).setClass(aj.getContext(), DisasterUI.class).addFlags(268435456);
+    Context localContext = aj.getContext();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/broadcast/BroadcastController", "checkShowDisasterContent", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/broadcast/BroadcastController", "checkShowDisasterContent", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    this.fpC.fpL = null;
+    this.fHJ.fHS = null;
     AppMethodBeat.o(20102);
   }
   
-  final boolean a(com.tencent.mm.g.a.ap paramap)
+  final boolean a(ap paramap)
   {
     AppMethodBeat.i(20100);
-    String str = paramap.cZT.cZV;
+    String str = paramap.dll.dln;
     if (str == null) {}
     Map localMap;
     for (int i = -1;; i = str.length())
     {
-      ac.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster xml len[%d]", new Object[] { Integer.valueOf(i) });
-      localMap = bv.L(str, "e");
+      ad.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster xml len[%d]", new Object[] { Integer.valueOf(i) });
+      localMap = bw.M(str, "e");
       if (localMap != null) {
         break;
       }
-      ac.e("MicroMsg.BroadcastController", "summerdiz handleNewDisaster this is not errmsg");
+      ad.e("MicroMsg.BroadcastController", "summerdiz handleNewDisaster this is not errmsg");
       AppMethodBeat.o(20100);
       return false;
     }
-    ac.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster values[%s]", new Object[] { localMap });
-    long l1 = bs.getLong((String)localMap.get(".e.NoticeId"), 0L);
+    ad.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster values[%s]", new Object[] { localMap });
+    long l1 = bt.getLong((String)localMap.get(".e.NoticeId"), 0L);
     if (l1 <= 0L) {
-      ac.e("MicroMsg.BroadcastController", "summerdiz handleNewDisaster noticeID null");
+      ad.e("MicroMsg.BroadcastController", "summerdiz handleNewDisaster noticeID null");
     }
-    if (!com.tencent.mm.platformtools.ab.iwQ) {
+    if (!com.tencent.mm.platformtools.ac.iPZ) {
       try
       {
-        long l2 = bs.getLong((String)localMap.get(".e.ExpiredTime"), 0L);
-        if (bs.pN(l2) > 0L)
+        long l2 = bt.getLong((String)localMap.get(".e.ExpiredTime"), 0L);
+        if (bt.rM(l2) > 0L)
         {
-          ac.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster expiredTime is too small, drop id:%d", new Object[] { Long.valueOf(l2) });
+          ad.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster expiredTime is too small, drop id:%d", new Object[] { Long.valueOf(l2) });
           AppMethodBeat.o(20100);
           return false;
         }
       }
       catch (Exception localException)
       {
-        ac.i("MicroMsg.BroadcastController", "parseLong expiredTime error:%s", new Object[] { localException });
+        ad.i("MicroMsg.BroadcastController", "parseLong expiredTime error:%s", new Object[] { localException });
       }
     }
     Object localObject1 = new a();
-    ((a)localObject1).fpJ = String.valueOf(l1);
-    Object localObject2 = ai.getContext().getSharedPreferences("disaster_pref", g.YK()).getString("disaster_noticeid_list_key", "");
-    if ((!com.tencent.mm.platformtools.ab.iwR) && (((String)localObject2).contains(((a)localObject1).fpJ)))
+    ((a)localObject1).fHQ = String.valueOf(l1);
+    Object localObject2 = aj.getContext().getSharedPreferences("disaster_pref", g.abm()).getString("disaster_noticeid_list_key", "");
+    if ((!com.tencent.mm.platformtools.ac.iQa) && (((String)localObject2).contains(((a)localObject1).fHQ)))
     {
-      ac.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster noticeIdList %s contain notifyID:%s, drop id", new Object[] { localObject2, ((a)localObject1).fpJ });
+      ad.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster noticeIdList %s contain notifyID:%s, drop id", new Object[] { localObject2, ((a)localObject1).fHQ });
       AppMethodBeat.o(20100);
       return false;
     }
     Object localObject4;
-    if (this.fpE.size() > 0)
+    if (this.fHL.size() > 0)
     {
-      localObject4 = (a)this.fpE.get(Long.valueOf(l1));
+      localObject4 = (a)this.fHL.get(Long.valueOf(l1));
       if (localObject4 != null) {
-        ac.i("MicroMsg.BroadcastController", "summerdiz  handleNewDisaster found info in map[%s]", new Object[] { localObject4 });
+        ad.i("MicroMsg.BroadcastController", "summerdiz  handleNewDisaster found info in map[%s]", new Object[] { localObject4 });
       }
     }
     for (;;)
     {
       localObject1 = (String)localMap.get(".e.Position");
-      if (!bs.isNullOrNil((String)localObject1)) {
+      if (!bt.isNullOrNil((String)localObject1)) {
         break;
       }
-      ac.e("MicroMsg.BroadcastController", "summerdiz handleNewDisaster positionStr is null!");
+      ad.e("MicroMsg.BroadcastController", "summerdiz handleNewDisaster positionStr is null!");
       AppMethodBeat.o(20100);
       return false;
-      this.fpE.put(Long.valueOf(l1), localObject1);
+      this.fHL.put(Long.valueOf(l1), localObject1);
       localObject4 = localObject1;
       continue;
-      this.fpE.put(Long.valueOf(l1), localObject1);
+      this.fHL.put(Long.valueOf(l1), localObject1);
       localObject4 = localObject1;
     }
     Object localObject8 = new ArrayList();
     localObject1 = ((String)localObject1).split(",");
     if ((localObject1 == null) || (localObject1.length <= 0))
     {
-      ac.e("MicroMsg.BroadcastController", "summerdiz handleNewDisaster positionStr id invaild!");
+      ad.e("MicroMsg.BroadcastController", "summerdiz handleNewDisaster positionStr id invaild!");
       AppMethodBeat.o(20100);
       return false;
     }
@@ -143,12 +145,12 @@ public final class b
     int j = 0;
     if (j < k)
     {
-      int m = bs.getInt(localObject1[j], 0);
+      int m = bt.getInt(localObject1[j], 0);
       if (m > 0) {
         if (m == 1)
         {
           i = 1;
-          ac.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster found tonyTips[%d]", new Object[] { Integer.valueOf(m) });
+          ad.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster found tonyTips[%d]", new Object[] { Integer.valueOf(m) });
         }
       }
       for (;;)
@@ -160,12 +162,12 @@ public final class b
     }
     if ((i == 0) && (((ArrayList)localObject8).size() == 0))
     {
-      ac.e("MicroMsg.BroadcastController", "summerdiz handleNewDisaster positions size is 0!");
+      ad.e("MicroMsg.BroadcastController", "summerdiz handleNewDisaster positions size is 0!");
       AppMethodBeat.o(20100);
       return false;
     }
-    Object localObject6 = com.tencent.mm.sdk.platformtools.ab.iC(ai.getContext());
-    ac.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster curLang[%s]", new Object[] { localObject6 });
+    Object localObject6 = com.tencent.mm.sdk.platformtools.ac.iM(aj.getContext());
+    ad.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster curLang[%s]", new Object[] { localObject6 });
     Object localObject3 = null;
     localObject2 = null;
     localObject1 = null;
@@ -188,41 +190,41 @@ public final class b
     }
     for (Object localObject5 = (String)localMap.get((String)localObject5 + ".Tips");; localObject5 = null)
     {
-      ac.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster content[%s] tips[%s]", new Object[] { localObject7, localObject5 });
-      if (bs.isNullOrNil((String)localObject7))
+      ad.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster content[%s] tips[%s]", new Object[] { localObject7, localObject5 });
+      if (bt.isNullOrNil((String)localObject7))
       {
-        ac.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster cann't hit curLang");
+        ad.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster cann't hit curLang");
         label849:
         localObject6 = localObject2;
-        if (bs.isNullOrNil((String)localObject2)) {
-          localObject6 = ai.getContext().getString(2131758086);
+        if (bt.isNullOrNil((String)localObject2)) {
+          localObject6 = aj.getContext().getString(2131758086);
         }
         localObject5 = localObject1;
         localObject2 = localObject3;
         if (i != 0)
         {
           localObject2 = localObject3;
-          if (bs.isNullOrNil((String)localObject3)) {
-            localObject2 = ai.getContext().getString(2131758080);
+          if (bt.isNullOrNil((String)localObject3)) {
+            localObject2 = aj.getContext().getString(2131758080);
           }
           localObject5 = localObject1;
-          if (bs.isNullOrNil((String)localObject1)) {
-            localObject5 = ai.getContext().getString(2131758084);
+          if (bt.isNullOrNil((String)localObject1)) {
+            localObject5 = aj.getContext().getString(2131758084);
           }
-          paramap.cZU.desc = ((String)localObject2);
-          paramap.cZU.cZW = 30;
-          paramap.cZU.cZX = 0;
-          paramap.cZU.url = ((String)localObject6);
-          paramap.cZU.visible = true;
-          paramap.cZU.cZZ = 0;
-          paramap.cZU.cZY = 6;
-          paramap.cZU.Title = "";
-          paramap.cZU.daa = String.valueOf(l1);
-          paramap.cZU.position = 1;
+          paramap.dlm.desc = ((String)localObject2);
+          paramap.dlm.dlo = 30;
+          paramap.dlm.dlp = 0;
+          paramap.dlm.url = ((String)localObject6);
+          paramap.dlm.visible = true;
+          paramap.dlm.dlr = 0;
+          paramap.dlm.dlq = 6;
+          paramap.dlm.Title = "";
+          paramap.dlm.dls = String.valueOf(l1);
+          paramap.dlm.position = 1;
         }
         if (((ArrayList)localObject8).size() == 0)
         {
-          ac.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster no other position need to tip");
+          ad.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster no other position need to tip");
           AppMethodBeat.o(20100);
           return false;
           localObject5 = Integer.valueOf(j);
@@ -242,48 +244,48 @@ public final class b
         localObject1 = localObject3;
         localObject3 = localObject5;
         break;
-        if ((((a)localObject4).fpK != 0L) && (bs.aO(((a)localObject4).fpK) < 1800000L))
+        if ((((a)localObject4).fHR != 0L) && (bt.aO(((a)localObject4).fHR) < 1800000L))
         {
-          ac.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster disasterTick within half an hour, drop it");
+          ad.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster disasterTick within half an hour, drop it");
           AppMethodBeat.o(20100);
           return false;
         }
-        ((a)localObject4).fpK = bs.Gn();
+        ((a)localObject4).fHR = bt.HI();
         localObject7 = ((ArrayList)localObject8).iterator();
         localObject1 = localObject5;
         while (((Iterator)localObject7).hasNext())
         {
           localObject8 = (Integer)((Iterator)localObject7).next();
-          localObject3 = Long.valueOf(bs.a((Long)this.fpD.get(localObject8), 0L));
+          localObject3 = Long.valueOf(bt.a((Long)this.fHK.get(localObject8), 0L));
           if ((((Long)localObject3).longValue() > 0L) && (((Long)localObject3).longValue() >= l1))
           {
-            ac.i("MicroMsg.BroadcastController", "summerdiz p[%d] has bigger oldPositionNoticeId[%d, %d]", new Object[] { localObject8, localObject3, Long.valueOf(l1) });
+            ad.i("MicroMsg.BroadcastController", "summerdiz p[%d] has bigger oldPositionNoticeId[%d, %d]", new Object[] { localObject8, localObject3, Long.valueOf(l1) });
           }
           else
           {
-            localObject5 = (wi)((a)localObject4).fpM.get(localObject8);
+            localObject5 = (xb)((a)localObject4).fHT.get(localObject8);
             if (localObject5 != null) {
               break label1720;
             }
-            localObject5 = new wi();
-            ((wi)localObject5).dzi.cZX = 0;
-            ((wi)localObject5).dzi.cZW = 30;
-            ((wi)localObject5).dzi.Title = "";
-            ((wi)localObject5).dzi.cZZ = 2131494915;
-            ((wi)localObject5).dzi.position = ((Integer)localObject8).intValue();
-            ((a)localObject4).fpM.put(localObject8, localObject5);
+            localObject5 = new xb();
+            ((xb)localObject5).dLu.dlp = 0;
+            ((xb)localObject5).dLu.dlo = 30;
+            ((xb)localObject5).dLu.Title = "";
+            ((xb)localObject5).dLu.dlr = 2131494915;
+            ((xb)localObject5).dLu.position = ((Integer)localObject8).intValue();
+            ((a)localObject4).fHT.put(localObject8, localObject5);
           }
         }
         label1720:
         for (;;)
         {
-          if (bs.isNullOrNil((String)localObject1)) {
+          if (bt.isNullOrNil((String)localObject1)) {
             localObject1 = localObject2;
           }
           for (;;)
           {
             localObject3 = localObject1;
-            if (bs.isNullOrNil((String)localObject1))
+            if (bt.isNullOrNil((String)localObject1))
             {
               j = 2131758083;
               switch (((Integer)localObject8).intValue())
@@ -292,32 +294,32 @@ public final class b
             }
             for (;;)
             {
-              localObject3 = ai.getContext().getString(j);
-              ((wi)localObject5).dzi.desc = ((String)localObject3);
-              ((wi)localObject5).dzi.url = ((String)localObject6);
-              ((wi)localObject5).dzi.visible = true;
-              ((wi)localObject5).dzi.cZY = 2;
-              ((wi)localObject5).dzi.daa = ((a)localObject4).fpJ;
-              this.fpD.put(localObject8, Long.valueOf(l1));
+              localObject3 = aj.getContext().getString(j);
+              ((xb)localObject5).dLu.desc = ((String)localObject3);
+              ((xb)localObject5).dLu.url = ((String)localObject6);
+              ((xb)localObject5).dLu.visible = true;
+              ((xb)localObject5).dLu.dlq = 2;
+              ((xb)localObject5).dLu.dls = ((a)localObject4).fHQ;
+              this.fHK.put(localObject8, Long.valueOf(l1));
               if (i == 0)
               {
-                paramap.cZU.desc = ((String)localObject3);
-                paramap.cZU.cZW = 30;
-                paramap.cZU.cZX = 0;
-                paramap.cZU.url = ((String)localObject6);
-                paramap.cZU.visible = true;
-                paramap.cZU.cZZ = 2131494915;
-                paramap.cZU.cZY = 2;
-                paramap.cZU.Title = "";
-                paramap.cZU.daa = String.valueOf(l1);
-                paramap.cZU.position = ((Integer)localObject8).intValue();
+                paramap.dlm.desc = ((String)localObject3);
+                paramap.dlm.dlo = 30;
+                paramap.dlm.dlp = 0;
+                paramap.dlm.url = ((String)localObject6);
+                paramap.dlm.visible = true;
+                paramap.dlm.dlr = 2131494915;
+                paramap.dlm.dlq = 2;
+                paramap.dlm.Title = "";
+                paramap.dlm.dls = String.valueOf(l1);
+                paramap.dlm.position = ((Integer)localObject8).intValue();
               }
-              com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
+              aq.f(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(20095);
-                  com.tencent.mm.sdk.b.a.GpY.l(this.fpH);
+                  com.tencent.mm.sdk.b.a.IbL.l(this.fHO);
                   AppMethodBeat.o(20095);
                 }
               });
@@ -345,11 +347,11 @@ public final class b
     }
   }
   
-  final boolean rN(final String paramString)
+  final boolean uA(final String paramString)
   {
     AppMethodBeat.i(20101);
-    ac.i("MicroMsg.BroadcastController", "summerdiz handleEventOOB oldNoticeInfo[%s], event[%s]", new Object[] { this.fpC, paramString });
-    if (bs.isNullOrNil(paramString))
+    ad.i("MicroMsg.BroadcastController", "summerdiz handleEventOOB oldNoticeInfo[%s], event[%s]", new Object[] { this.fHJ, paramString });
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(20101);
       return false;
@@ -359,64 +361,64 @@ public final class b
       AppMethodBeat.o(20101);
       return false;
     }
-    Map localMap = bv.L(paramString, "e");
+    Map localMap = bw.M(paramString, "e");
     if (localMap == null)
     {
-      ac.e("MicroMsg.BroadcastController", "this is not errmsg");
+      ad.e("MicroMsg.BroadcastController", "this is not errmsg");
       AppMethodBeat.o(20101);
       return false;
     }
-    if (this.fpC == null)
+    if (this.fHJ == null)
     {
-      this.fpC = new a();
-      paramString = new wi();
-      this.fpC.fpM.put(Integer.valueOf(0), paramString);
-      paramString.dzi.desc = "";
-      paramString.dzi.url = "";
-      paramString.dzi.cZX = 0;
-      paramString.dzi.cZW = 30;
-      paramString.dzi.visible = false;
-      paramString.dzi.Title = "";
-      paramString.dzi.cZY = 0;
-      paramString.dzi.cZZ = 2131494915;
-      paramString.dzi.daa = "";
-      paramString.dzi.position = 0;
+      this.fHJ = new a();
+      paramString = new xb();
+      this.fHJ.fHT.put(Integer.valueOf(0), paramString);
+      paramString.dLu.desc = "";
+      paramString.dLu.url = "";
+      paramString.dLu.dlp = 0;
+      paramString.dLu.dlo = 30;
+      paramString.dLu.visible = false;
+      paramString.dLu.Title = "";
+      paramString.dLu.dlq = 0;
+      paramString.dLu.dlr = 2131494915;
+      paramString.dLu.dls = "";
+      paramString.dLu.position = 0;
     }
-    if (!com.tencent.mm.platformtools.ab.iwP)
+    if (!com.tencent.mm.platformtools.ac.iPY)
     {
-      if ((this.fpC.fpK != 0L) && (bs.aO(this.fpC.fpK) < 1800000L))
+      if ((this.fHJ.fHR != 0L) && (bt.aO(this.fHJ.fHR) < 1800000L))
       {
-        ac.i("MicroMsg.BroadcastController", "disasterTick within half an hour, drop it");
+        ad.i("MicroMsg.BroadcastController", "disasterTick within half an hour, drop it");
         AppMethodBeat.o(20101);
         return false;
       }
-      this.fpC.fpK = bs.Gn();
+      this.fHJ.fHR = bt.HI();
     }
-    if (!com.tencent.mm.platformtools.ab.iwQ) {
+    if (!com.tencent.mm.platformtools.ac.iPZ) {
       try
       {
-        long l = bs.getLong((String)localMap.get(".e.ExpiredTime"), 0L);
-        if (bs.pN(l) > 0L)
+        long l = bt.getLong((String)localMap.get(".e.ExpiredTime"), 0L);
+        if (bt.rM(l) > 0L)
         {
-          ac.i("MicroMsg.BroadcastController", "expiredTime is too small, drop id:%d", new Object[] { Long.valueOf(l) });
+          ad.i("MicroMsg.BroadcastController", "expiredTime is too small, drop id:%d", new Object[] { Long.valueOf(l) });
           AppMethodBeat.o(20101);
           return false;
         }
       }
       catch (Exception paramString)
       {
-        ac.i("MicroMsg.BroadcastController", "parseLong expiredTime error:%s", new Object[] { paramString });
+        ad.i("MicroMsg.BroadcastController", "parseLong expiredTime error:%s", new Object[] { paramString });
       }
     }
-    this.fpC.fpJ = ((String)localMap.get(".e.NoticeId"));
-    paramString = ai.getContext().getSharedPreferences("disaster_pref", g.YK()).getString("disaster_noticeid_list_key", "");
-    if ((!com.tencent.mm.platformtools.ab.iwR) && (paramString.contains(this.fpC.fpJ)))
+    this.fHJ.fHQ = ((String)localMap.get(".e.NoticeId"));
+    paramString = aj.getContext().getSharedPreferences("disaster_pref", g.abm()).getString("disaster_noticeid_list_key", "");
+    if ((!com.tencent.mm.platformtools.ac.iQa) && (paramString.contains(this.fHJ.fHQ)))
     {
-      ac.i("MicroMsg.BroadcastController", "noticeIdList %s contain notifyID:%s, drop id", new Object[] { paramString, this.fpC.fpJ });
+      ad.i("MicroMsg.BroadcastController", "noticeIdList %s contain notifyID:%s, drop id", new Object[] { paramString, this.fHJ.fHQ });
       AppMethodBeat.o(20101);
       return false;
     }
-    String str = com.tencent.mm.sdk.platformtools.ab.iC(ai.getContext());
+    String str = com.tencent.mm.sdk.platformtools.ac.iM(aj.getContext());
     paramString = null;
     Object localObject1 = null;
     Object localObject2 = null;
@@ -439,49 +441,49 @@ public final class b
     }
     for (Object localObject3 = (String)localMap.get((String)localObject3 + ".Tips");; localObject3 = null)
     {
-      if (bs.isNullOrNil(str))
+      if (bt.isNullOrNil(str))
       {
-        ac.i("MicroMsg.BroadcastController", "handleEventOOB cann't hit curLang");
+        ad.i("MicroMsg.BroadcastController", "handleEventOOB cann't hit curLang");
         label670:
         localObject3 = localObject1;
-        if (bs.isNullOrNil((String)localObject1)) {
-          localObject3 = ai.getContext().getString(2131758086);
+        if (bt.isNullOrNil((String)localObject1)) {
+          localObject3 = aj.getContext().getString(2131758086);
         }
         localObject1 = localObject2;
-        if (bs.isNullOrNil((String)localObject2))
+        if (bt.isNullOrNil((String)localObject2))
         {
-          ac.i("MicroMsg.BroadcastController", "handleEventOOB defContent is also null use hardcode");
-          localObject1 = ai.getContext().getString(2131758079);
+          ad.i("MicroMsg.BroadcastController", "handleEventOOB defContent is also null use hardcode");
+          localObject1 = aj.getContext().getString(2131758079);
         }
         localObject2 = paramString;
-        if (bs.isNullOrNil(paramString))
+        if (bt.isNullOrNil(paramString))
         {
-          if (bs.isNullOrNil((String)localObject1)) {
-            localObject2 = ai.getContext().getString(2131758083);
+          if (bt.isNullOrNil((String)localObject1)) {
+            localObject2 = aj.getContext().getString(2131758083);
           }
         }
         else
         {
           label753:
-          paramString = (wi)this.fpC.fpM.get(Integer.valueOf(0));
-          paramString.dzi.desc = ((String)localObject2);
-          paramString.dzi.url = ((String)localObject3);
-          paramString.dzi.visible = true;
-          paramString.dzi.cZY = 2;
-          paramString.dzi.daa = this.fpC.fpJ;
-          com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
+          paramString = (xb)this.fHJ.fHT.get(Integer.valueOf(0));
+          paramString.dLu.desc = ((String)localObject2);
+          paramString.dLu.url = ((String)localObject3);
+          paramString.dLu.visible = true;
+          paramString.dLu.dlq = 2;
+          paramString.dLu.dls = this.fHJ.fHQ;
+          aq.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(20096);
-              ac.i("MicroMsg.BroadcastController", "summerdiz handleEventOOB publish uiEvent");
-              com.tencent.mm.sdk.b.a.GpY.l(paramString);
+              ad.i("MicroMsg.BroadcastController", "summerdiz handleEventOOB publish uiEvent");
+              com.tencent.mm.sdk.b.a.IbL.l(paramString);
               AppMethodBeat.o(20096);
             }
           });
-          this.fpC.fpL = ((String)localObject1);
-          if (az.agi().foreground) {
-            Vl();
+          this.fHJ.fHS = ((String)localObject1);
+          if (ba.aiU().foreground) {
+            XC();
           }
           AppMethodBeat.o(20101);
           return true;
@@ -520,25 +522,25 @@ public final class b
   
   static final class a
   {
-    String fpJ;
-    long fpK;
-    String fpL;
-    Map<Integer, wi> fpM;
+    String fHQ;
+    long fHR;
+    String fHS;
+    Map<Integer, xb> fHT;
     
     a()
     {
       AppMethodBeat.i(20097);
-      this.fpJ = null;
-      this.fpK = 0L;
-      this.fpL = null;
-      this.fpM = new HashMap();
+      this.fHQ = null;
+      this.fHR = 0L;
+      this.fHS = null;
+      this.fHT = new HashMap();
       AppMethodBeat.o(20097);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(20098);
-      Object localObject = this.fpM.keySet().iterator();
+      Object localObject = this.fHT.keySet().iterator();
       Integer localInteger;
       for (String str = ""; ((Iterator)localObject).hasNext(); str = str + localInteger + ",") {
         localInteger = (Integer)((Iterator)localObject).next();
@@ -547,7 +549,7 @@ public final class b
       if (str.length() > 0) {
         localObject = str.substring(0, str.length() - 1);
       }
-      str = String.format("NoticeInfo(%d){noticeID[%s], disasterTick[%d], content[%s], posistions[%s]}", new Object[] { Integer.valueOf(hashCode()), this.fpJ, Long.valueOf(this.fpK), this.fpL, localObject });
+      str = String.format("NoticeInfo(%d){noticeID[%s], disasterTick[%d], content[%s], posistions[%s]}", new Object[] { Integer.valueOf(hashCode()), this.fHQ, Long.valueOf(this.fHR), this.fHS, localObject });
       AppMethodBeat.o(20098);
       return str;
     }

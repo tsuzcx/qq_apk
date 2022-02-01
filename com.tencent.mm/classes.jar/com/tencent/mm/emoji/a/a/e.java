@@ -5,41 +5,41 @@ import com.tencent.mm.emoji.a.i;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.a.v;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/CustomItemGroup;", "Lcom/tencent/mm/emoji/model/panel/AbsPanelItemGroup;", "hasEntrance", "", "hasSystem", "(ZZ)V", "emojiList", "", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "kotlin.jvm.PlatformType", "reportCount", "", "getReportCount", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/CustomItemGroup;", "Lcom/tencent/mm/emoji/model/panel/AbsPanelItemGroup;", "hasEntrance", "", "hasSystem", "(ZZ)V", "emojiList", "", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "kotlin.jvm.PlatformType", "reportCount", "", "getReportCount", "plugin-emojisdk_release"})
 public final class e
   extends a
 {
-  private final List<EmojiInfo> fRk;
-  private int fRl;
+  private final List<EmojiInfo> gkK;
+  private int gkL;
   
   public e(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(z.acX());
+    super(ad.afE());
     AppMethodBeat.i(105531);
-    Object localObject = i.ach().dh(true);
+    Object localObject = i.aeL().dj(true);
     if (localObject != null) {}
-    for (localObject = (List)localObject;; localObject = (List)v.KTF)
+    for (localObject = (List)localObject;; localObject = (List)v.MKE)
     {
-      this.fRk = ((List)localObject);
-      this.fRl = this.fRk.size();
-      this.fRj.add(this.fRi);
+      this.gkK = ((List)localObject);
+      this.gkL = this.gkK.size();
+      this.gkJ.add(this.gkI);
       if (paramBoolean1) {
-        this.fRj.add(new m(0));
+        this.gkJ.add(new m(0));
       }
-      localObject = this.fRk.iterator();
+      localObject = this.gkK.iterator();
       while (((Iterator)localObject).hasNext())
       {
         EmojiInfo localEmojiInfo = (EmojiInfo)((Iterator)localObject).next();
-        if ((paramBoolean2) || (localEmojiInfo.field_catalog != EmojiGroupInfo.Jsq))
+        if ((paramBoolean2) || (localEmojiInfo.field_catalog != EmojiGroupInfo.OeL))
         {
-          LinkedList localLinkedList = this.fRj;
-          k.g(localEmojiInfo, "info");
+          LinkedList localLinkedList = this.gkJ;
+          p.g(localEmojiInfo, "info");
           localLinkedList.add(new h(localEmojiInfo, 0));
         }
       }
@@ -47,9 +47,9 @@ public final class e
     AppMethodBeat.o(105531);
   }
   
-  public final int acI()
+  public final int afm()
   {
-    return this.fRl;
+    return this.gkL;
   }
 }
 

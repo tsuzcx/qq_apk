@@ -3,29 +3,29 @@ package com.tencent.mm.emoji.loader.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/request/EmojiFileRequest;", "Lcom/tencent/mm/emoji/loader/request/Request;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Lcom/tencent/mm/emoji/loader/request/Request$Callback;)V", "onLoad", "success", "", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/request/EmojiFileRequest;", "Lcom/tencent/mm/emoji/loader/request/Request;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Lcom/tencent/mm/emoji/loader/request/Request$Callback;)V", "onLoad", "success", "", "plugin-emojisdk_release"})
 public final class e
-  extends i<y>
+  extends i<z>
 {
-  private final i.a fPR;
+  private final i.a gjr;
   
   public e(EmojiInfo paramEmojiInfo, i.a parama)
   {
     super(paramEmojiInfo);
     AppMethodBeat.i(105464);
-    this.fPR = parama;
+    this.gjr = parama;
     AppMethodBeat.o(105464);
   }
   
-  public final void df(boolean paramBoolean)
+  public final void dh(boolean paramBoolean)
   {
     AppMethodBeat.i(105463);
-    i.a locala = this.fPR;
+    i.a locala = this.gjr;
     if (locala != null)
     {
-      locala.de(paramBoolean);
+      locala.dg(paramBoolean);
       AppMethodBeat.o(105463);
       return;
     }

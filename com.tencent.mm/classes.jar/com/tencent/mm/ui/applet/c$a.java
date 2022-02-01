@@ -13,123 +13,132 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cj.b;
+import com.tencent.mm.hellhoundlib.a.a;
 
 public final class c$a
 {
-  FrameLayout HtX;
-  WindowManager HtY;
-  WindowManager.LayoutParams HtZ;
-  private ViewGroup.LayoutParams Hua;
-  private ImageView dkL;
+  FrameLayout JhN;
+  WindowManager JhO;
+  WindowManager.LayoutParams JhP;
+  private ViewGroup.LayoutParams JhQ;
+  private ImageView dwy;
   private View mView;
   
   public c$a(final Context paramContext, View paramView)
   {
     AppMethodBeat.i(33833);
-    if ((this.HtX != null) && (this.HtY != null))
+    if ((this.JhN != null) && (this.JhO != null))
     {
       AppMethodBeat.o(33833);
       return;
     }
     paramView.findViewById(2131302644).setVisibility(8);
-    this.dkL = ((ImageView)paramView.findViewById(2131297631));
+    this.dwy = ((ImageView)paramView.findViewById(2131297631));
     ((ImageView)paramView.findViewById(2131298992)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(33830);
-        c.a.this.fhX();
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/ui/applet/MemoryDumpController$HprofView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        c.a.this.fyn();
+        a.a(this, "com/tencent/mm/ui/applet/MemoryDumpController$HprofView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(33830);
       }
     });
-    this.HtZ = new WindowManager.LayoutParams();
-    this.HtZ.height = -2;
-    this.HtZ.width = -2;
-    this.HtY = ((WindowManager)paramContext.getSystemService("window"));
-    this.HtZ.x = 0;
-    this.HtZ.y = 0;
-    this.HtZ.flags = 40;
-    this.HtZ.type = 2002;
+    this.JhP = new WindowManager.LayoutParams();
+    this.JhP.height = -2;
+    this.JhP.width = -2;
+    this.JhO = ((WindowManager)paramContext.getSystemService("window"));
+    this.JhP.x = 0;
+    this.JhP.y = 0;
+    this.JhP.flags = 40;
+    this.JhP.type = 2002;
     this.mView = paramView;
-    this.HtZ.gravity = 51;
-    this.HtZ.format = 1;
-    this.HtX = new FrameLayout(paramContext);
-    this.HtX.setPadding(4, 4, 4, 4);
-    this.Hua = new ViewGroup.LayoutParams(-2, -2);
-    this.HtX.addView(this.mView, this.Hua);
+    this.JhP.gravity = 51;
+    this.JhP.format = 1;
+    this.JhN = new FrameLayout(paramContext);
+    this.JhN.setPadding(4, 4, 4, 4);
+    this.JhQ = new ViewGroup.LayoutParams(-2, -2);
+    this.JhN.addView(this.mView, this.JhQ);
     paramContext = paramContext.getResources().getDisplayMetrics();
-    this.HtX.setOnTouchListener(new View.OnTouchListener()
+    this.JhN.setOnTouchListener(new View.OnTouchListener()
     {
-      int Huc;
-      int Hud;
-      int Hue;
-      int Huf;
-      long Hug;
+      int JhS;
+      int JhT;
+      int JhU;
+      int JhV;
+      long JhW;
       
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(33832);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        a.b("com/tencent/mm/ui/applet/MemoryDumpController$HprofView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
         switch (paramAnonymousMotionEvent.getAction())
         {
         }
         for (;;)
         {
+          a.a(false, this, "com/tencent/mm/ui/applet/MemoryDumpController$HprofView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(33832);
           return false;
-          this.Huc = ((int)paramAnonymousMotionEvent.getRawX() - c.a.this.HtZ.x);
-          this.Hud = ((int)paramAnonymousMotionEvent.getRawY() - c.a.this.HtZ.y);
-          this.Hug = System.currentTimeMillis();
+          this.JhS = ((int)paramAnonymousMotionEvent.getRawX() - c.a.this.JhP.x);
+          this.JhT = ((int)paramAnonymousMotionEvent.getRawY() - c.a.this.JhP.y);
+          this.JhW = System.currentTimeMillis();
           continue;
-          this.Hue = (paramContext.widthPixels - c.a.this.HtZ.width - 1);
-          this.Huf = (paramContext.heightPixels - c.a.this.HtZ.height - 1);
-          c.a.this.HtZ.x = ((int)paramAnonymousMotionEvent.getRawX() - this.Huc);
-          c.a.this.HtZ.y = ((int)paramAnonymousMotionEvent.getRawY() - this.Hud);
-          paramAnonymousView = c.a.this.HtZ;
-          if (c.a.this.HtZ.x < 0)
+          this.JhU = (paramContext.widthPixels - c.a.this.JhP.width - 1);
+          this.JhV = (paramContext.heightPixels - c.a.this.JhP.height - 1);
+          c.a.this.JhP.x = ((int)paramAnonymousMotionEvent.getRawX() - this.JhS);
+          c.a.this.JhP.y = ((int)paramAnonymousMotionEvent.getRawY() - this.JhT);
+          paramAnonymousView = c.a.this.JhP;
+          if (c.a.this.JhP.x < 0)
           {
             i = 0;
-            label204:
+            label253:
             paramAnonymousView.x = i;
-            paramAnonymousView = c.a.this.HtZ;
-            if (c.a.this.HtZ.x <= this.Hue) {
-              break label350;
+            paramAnonymousView = c.a.this.JhP;
+            if (c.a.this.JhP.x <= this.JhU) {
+              break label399;
             }
-            i = this.Hue;
-            label239:
+            i = this.JhU;
+            label288:
             paramAnonymousView.x = i;
-            paramAnonymousView = c.a.this.HtZ;
-            if (c.a.this.HtZ.y >= 0) {
-              break label364;
+            paramAnonymousView = c.a.this.JhP;
+            if (c.a.this.JhP.y >= 0) {
+              break label413;
             }
             i = 0;
-            label267:
+            label316:
             paramAnonymousView.y = i;
-            paramAnonymousView = c.a.this.HtZ;
-            if (c.a.this.HtZ.y <= this.Huf) {
-              break label378;
+            paramAnonymousView = c.a.this.JhP;
+            if (c.a.this.JhP.y <= this.JhV) {
+              break label427;
             }
           }
-          label350:
-          label364:
-          label378:
-          for (int i = this.Huf;; i = c.a.this.HtZ.y)
+          label399:
+          label413:
+          label427:
+          for (int i = this.JhV;; i = c.a.this.JhP.y)
           {
             paramAnonymousView.y = i;
-            c.a.this.HtY.updateViewLayout(c.a.this.HtX, c.a.this.HtZ);
+            c.a.this.JhO.updateViewLayout(c.a.this.JhN, c.a.this.JhP);
             break;
-            i = c.a.this.HtZ.x;
-            break label204;
-            i = c.a.this.HtZ.x;
-            break label239;
-            i = c.a.this.HtZ.y;
-            break label267;
+            i = c.a.this.JhP.x;
+            break label253;
+            i = c.a.this.JhP.x;
+            break label288;
+            i = c.a.this.JhP.y;
+            break label316;
           }
-          if (System.currentTimeMillis() - this.Hug < 300L)
+          if (System.currentTimeMillis() - this.JhW < 300L)
           {
-            b.feo();
-            b.aL(false, true);
-            c.a.this.fhX();
+            com.tencent.mm.cj.b.fuw();
+            com.tencent.mm.cj.b.aS(false, true);
+            c.a.this.fyn();
           }
         }
       }
@@ -137,22 +146,22 @@ public final class c$a
     AppMethodBeat.o(33833);
   }
   
-  public final void fhX()
+  public final void fyn()
   {
     AppMethodBeat.i(33835);
     try
     {
-      if (this.HtY != null)
+      if (this.JhO != null)
       {
-        if (this.HtX != null) {
-          this.HtY.removeView(this.HtX);
+        if (this.JhN != null) {
+          this.JhO.removeView(this.JhN);
         }
-        this.HtY = null;
+        this.JhO = null;
       }
-      if (this.HtX != null)
+      if (this.JhN != null)
       {
-        this.HtX.removeAllViews();
-        this.HtX = null;
+        this.JhN.removeAllViews();
+        this.JhN = null;
       }
       this.mView = null;
       AppMethodBeat.o(33835);
@@ -167,13 +176,13 @@ public final class c$a
   public final void show()
   {
     AppMethodBeat.i(33834);
-    this.HtY.addView(this.HtX, this.HtZ);
+    this.JhO.addView(this.JhN, this.JhP);
     AppMethodBeat.o(33834);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.applet.c.a
  * JD-Core Version:    0.7.0.1
  */

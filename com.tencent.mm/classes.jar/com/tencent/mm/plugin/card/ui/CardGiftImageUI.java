@@ -2,79 +2,88 @@ package com.tencent.mm.plugin.card.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.BaseAdapter;
+import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.platformtools.u;
 import com.tencent.mm.plugin.card.d.a.a;
 import com.tencent.mm.plugin.card.model.CardGiftInfo;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.pluginsdk.ui.tools.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
 import com.tencent.mm.ui.tools.e;
 import com.tencent.mm.ui.tools.e.c;
-import com.tencent.mm.ui.tools.l;
 
 @com.tencent.mm.ui.base.a(3)
 public class CardGiftImageUI
   extends MMActivity
   implements a.a
 {
-  private String dmK;
-  private MMGestureGallery iBx;
+  private String dyy;
+  private MMGestureGallery iUH;
   private boolean isAnimated;
-  private l kYv;
-  private CardGiftInfo ocP;
-  private ImageView ocQ;
-  private RelativeLayout ocR;
-  private ProgressBar ocS;
-  private ao ocT;
-  private Bundle ocU;
-  private e ocV;
-  private int ocW;
-  private int ocX;
-  private int ocY;
-  private int ocZ;
-  private CardGiftImageUI.a oda;
+  private com.tencent.mm.ui.tools.l lvx;
+  private CardGiftInfo oGi;
+  private ImageView oGj;
+  private RelativeLayout oGk;
+  private ProgressBar oGl;
+  private ap oGm;
+  private Bundle oGn;
+  private e oGo;
+  private int oGp;
+  private int oGq;
+  private int oGr;
+  private int oGs;
+  private a oGt;
   
   public CardGiftImageUI()
   {
     AppMethodBeat.i(113328);
-    this.ocT = new ao(Looper.getMainLooper());
+    this.oGm = new ap(Looper.getMainLooper());
     this.isAnimated = false;
-    this.ocW = 0;
-    this.ocX = 0;
-    this.ocY = 0;
-    this.ocZ = 0;
+    this.oGp = 0;
+    this.oGq = 0;
+    this.oGr = 0;
+    this.oGs = 0;
     AppMethodBeat.o(113328);
   }
   
-  public final void Vc(String paramString) {}
+  public final void YL(String paramString) {}
   
-  public final void bSg()
+  public final void bWL()
   {
     AppMethodBeat.i(113336);
-    this.ocV.R(this.ocX, this.ocW, this.ocY, this.ocZ);
-    this.ocV.a(this.ocR, this.ocQ, new e.c()
+    this.oGo.R(this.oGq, this.oGp, this.oGr, this.oGs);
+    this.oGo.a(this.oGk, this.oGj, new e.c()
     {
       public final void onAnimationEnd()
       {
         AppMethodBeat.i(113324);
-        new ao().post(new Runnable()
+        new ap().post(new Runnable()
         {
           public final void run()
           {
@@ -92,10 +101,10 @@ public class CardGiftImageUI
     AppMethodBeat.o(113336);
   }
   
-  public final void cC(String paramString, int paramInt)
+  public final void cF(String paramString, int paramInt)
   {
     AppMethodBeat.i(113337);
-    this.ocT.post(new Runnable()
+    this.oGm.post(new Runnable()
     {
       public final void run()
       {
@@ -114,8 +123,8 @@ public class CardGiftImageUI
     AppMethodBeat.i(113335);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ac.d("MicroMsg.CardGiftImageUI", "dispatchKeyEvent");
-      bSg();
+      ad.d("MicroMsg.CardGiftImageUI", "dispatchKeyEvent");
+      bWL();
       AppMethodBeat.o(113335);
       return true;
     }
@@ -124,10 +133,10 @@ public class CardGiftImageUI
     return bool;
   }
   
-  public final void eR(String paramString1, final String paramString2)
+  public final void fb(String paramString1, final String paramString2)
   {
     AppMethodBeat.i(113338);
-    this.ocT.post(new Runnable()
+    this.oGm.post(new Runnable()
     {
       public final void run()
       {
@@ -152,34 +161,34 @@ public class CardGiftImageUI
   public void initView()
   {
     AppMethodBeat.i(113330);
-    this.ocQ = ((ImageView)findViewById(2131300336));
-    this.ocS = ((ProgressBar)findViewById(2131300950));
-    this.ocR = ((RelativeLayout)findViewById(2131300960));
-    this.iBx = ((MMGestureGallery)findViewById(2131300335));
-    this.iBx.setVerticalFadingEdgeEnabled(false);
-    this.iBx.setHorizontalFadingEdgeEnabled(false);
-    this.oda = new CardGiftImageUI.a(this, (byte)0);
-    this.iBx.setAdapter(this.oda);
-    this.iBx.setSingleClickOverListener(new MMGestureGallery.f()
+    this.oGj = ((ImageView)findViewById(2131300336));
+    this.oGl = ((ProgressBar)findViewById(2131300950));
+    this.oGk = ((RelativeLayout)findViewById(2131300960));
+    this.iUH = ((MMGestureGallery)findViewById(2131300335));
+    this.iUH.setVerticalFadingEdgeEnabled(false);
+    this.iUH.setHorizontalFadingEdgeEnabled(false);
+    this.oGt = new a((byte)0);
+    this.iUH.setAdapter(this.oGt);
+    this.iUH.setSingleClickOverListener(new MMGestureGallery.f()
     {
-      public final void aOd()
+      public final void aRp()
       {
         AppMethodBeat.i(113318);
-        CardGiftImageUI.this.bSg();
+        CardGiftImageUI.this.bWL();
         AppMethodBeat.o(113318);
       }
     });
-    this.iBx.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.iUH.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(113319);
-        h.a(CardGiftImageUI.this, CardGiftImageUI.a(CardGiftImageUI.this).ftL());
+        h.a(CardGiftImageUI.this, CardGiftImageUI.a(CardGiftImageUI.this).fKy());
         AppMethodBeat.o(113319);
         return true;
       }
     });
-    this.ocV = new e(this);
+    this.oGo = new e(this);
     AppMethodBeat.o(113330);
   }
   
@@ -191,26 +200,26 @@ public class CardGiftImageUI
     }
     super.onCreate(paramBundle);
     hideTitleView();
-    this.ocU = paramBundle;
+    this.oGn = paramBundle;
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setFlags(1024, 1024);
     }
-    this.ocP = ((CardGiftInfo)getIntent().getParcelableExtra("key_gift_into"));
-    if (this.ocP == null) {}
-    for (paramBundle = "null";; paramBundle = this.ocP.toString())
+    this.oGi = ((CardGiftInfo)getIntent().getParcelableExtra("key_gift_into"));
+    if (this.oGi == null) {}
+    for (paramBundle = "null";; paramBundle = this.oGi.toString())
     {
-      ac.d("MicroMsg.CardGiftImageUI", "cardGiftInfo:%s", new Object[] { paramBundle });
-      ac.i("MicroMsg.CardGiftImageUI", "imgPath:%s", new Object[] { this.dmK });
+      ad.d("MicroMsg.CardGiftImageUI", "cardGiftInfo:%s", new Object[] { paramBundle });
+      ad.i("MicroMsg.CardGiftImageUI", "imgPath:%s", new Object[] { this.dyy });
       initView();
       com.tencent.mm.plugin.card.d.a.a(this);
-      if ((this.ocP == null) || (bs.isNullOrNil(this.ocP.nUJ))) {
+      if ((this.oGi == null) || (bt.isNullOrNil(this.oGi.oye))) {
         break;
       }
-      com.tencent.mm.plugin.card.d.a.g(this.ocP.nUJ, this.ocP.nUM, this.ocP.nUU, 2);
+      com.tencent.mm.plugin.card.d.a.g(this.oGi.oye, this.oGi.oyh, this.oGi.oyp, 2);
       AppMethodBeat.o(113329);
       return;
     }
-    ac.e("MicroMsg.CardGiftImageUI", "fromUserContentPicUrl is null");
+    ad.e("MicroMsg.CardGiftImageUI", "fromUserContentPicUrl is null");
     AppMethodBeat.o(113329);
   }
   
@@ -233,8 +242,8 @@ public class CardGiftImageUI
   {
     AppMethodBeat.i(113332);
     super.onResume();
-    if (this.oda != null) {
-      this.oda.notifyDataSetChanged();
+    if (this.oGt != null) {
+      this.oGt.notifyDataSetChanged();
     }
     AppMethodBeat.o(113332);
   }
@@ -242,14 +251,14 @@ public class CardGiftImageUI
   public void onStart()
   {
     AppMethodBeat.i(113331);
-    Bundle localBundle = this.ocU;
+    Bundle localBundle = this.oGn;
     if (!this.isAnimated)
     {
       this.isAnimated = true;
       if (Build.VERSION.SDK_INT >= 12) {
         break label63;
       }
-      ac.e("MicroMsg.CardGiftImageUI", "version is %d, no animation", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      ad.e("MicroMsg.CardGiftImageUI", "version is %d, no animation", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
     }
     for (;;)
     {
@@ -257,13 +266,13 @@ public class CardGiftImageUI
       AppMethodBeat.o(113331);
       return;
       label63:
-      this.ocW = getIntent().getIntExtra("img_top", 0);
-      this.ocX = getIntent().getIntExtra("img_left", 0);
-      this.ocY = getIntent().getIntExtra("img_width", 0);
-      this.ocZ = getIntent().getIntExtra("img_height", 0);
-      this.ocV.R(this.ocX, this.ocW, this.ocY, this.ocZ);
+      this.oGp = getIntent().getIntExtra("img_top", 0);
+      this.oGq = getIntent().getIntExtra("img_left", 0);
+      this.oGr = getIntent().getIntExtra("img_width", 0);
+      this.oGs = getIntent().getIntExtra("img_height", 0);
+      this.oGo.R(this.oGq, this.oGp, this.oGr, this.oGs);
       if (localBundle == null) {
-        this.ocR.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+        this.oGk.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
         {
           public final boolean onPreDraw()
           {
@@ -283,10 +292,68 @@ public class CardGiftImageUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  final class a
+    extends BaseAdapter
+  {
+    private a() {}
+    
+    public final int getCount()
+    {
+      return 1;
+    }
+    
+    public final Object getItem(int paramInt)
+    {
+      return null;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(113327);
+      Object localObject = u.IT(CardGiftImageUI.b(CardGiftImageUI.this));
+      if (localObject == null)
+      {
+        ad.w("MicroMsg.CardGiftImageUI", "get image fail");
+        if (paramView != null)
+        {
+          localObject = paramView;
+          if (!(paramView instanceof MultiTouchImageView)) {}
+        }
+        else
+        {
+          localObject = View.inflate(paramViewGroup.getContext(), 2131493308, null);
+          ((ImageView)((View)localObject).findViewById(2131300943)).setImageResource(2131690066);
+          ((View)localObject).setLayoutParams(new Gallery.LayoutParams(-1, -1));
+        }
+        AppMethodBeat.o(113327);
+        return localObject;
+      }
+      paramViewGroup = paramViewGroup.getContext();
+      if ((paramView == null) || (!(paramView instanceof MultiTouchImageView))) {
+        paramView = new MultiTouchImageView(paramViewGroup, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), (byte)0);
+      }
+      for (;;)
+      {
+        paramView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
+        paramView.setImageBitmap((Bitmap)localObject);
+        paramView.setMaxZoomDoubleTab(true);
+        AppMethodBeat.o(113327);
+        return paramView;
+        paramView = (MultiTouchImageView)paramView;
+        paramView.cH(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftImageUI
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.appbrand.luggage.c;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
 import io.flutter.embedding.engine.a;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.embedding.engine.dart.DartExecutor.a;
@@ -17,30 +17,30 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class e
 {
-  private static final Queue<d> lrn;
-  private static final Queue<g> lro;
-  private static volatile String lrp;
-  private static volatile String lrq;
-  private static e.a lrr;
-  private static final ao mHandler;
+  private static volatile String lQA;
+  private static e.a lQB;
+  private static final Queue<d> lQx;
+  private static final Queue<g> lQy;
+  private static volatile String lQz;
+  private static final ap mHandler;
   
   static
   {
     AppMethodBeat.i(47567);
-    lrn = new ConcurrentLinkedQueue();
-    lro = new ConcurrentLinkedQueue();
-    lrp = null;
-    lrq = null;
-    lrr = e.a.lrs;
-    mHandler = new ao("NativeAppBrandPreloader");
+    lQx = new ConcurrentLinkedQueue();
+    lQy = new ConcurrentLinkedQueue();
+    lQz = null;
+    lQA = null;
+    lQB = e.a.lQC;
+    mHandler = new ap("NativeAppBrandPreloader");
     AppMethodBeat.o(47567);
   }
   
-  public static void OG(String paramString)
+  public static void Sj(String paramString)
   {
     try
     {
-      lrp = paramString;
+      lQz = paramString;
       return;
     }
     finally
@@ -50,76 +50,76 @@ public class e
     }
   }
   
-  public static d OH(String paramString)
+  public static d Sk(String paramString)
   {
     AppMethodBeat.i(47563);
-    if ((!bs.isNullOrNil(paramString)) && (paramString.equals(lrp)))
+    if ((!bt.isNullOrNil(paramString)) && (paramString.equals(lQz)))
     {
       AppMethodBeat.o(47563);
       return null;
     }
-    gT(false);
-    lrp = paramString;
-    paramString = (d)lrn.poll();
+    hc(false);
+    lQz = paramString;
+    paramString = (d)lQx.poll();
     AppMethodBeat.o(47563);
     return paramString;
   }
   
-  public static g OI(String paramString)
+  public static g Sl(String paramString)
   {
     AppMethodBeat.i(47564);
-    if ((!bs.isNullOrNil(paramString)) && (paramString.equals(lrq)))
+    if ((!bt.isNullOrNil(paramString)) && (paramString.equals(lQA)))
     {
       AppMethodBeat.o(47564);
       return null;
     }
-    lrq = paramString;
-    paramString = (g)lro.poll();
+    lQA = paramString;
+    paramString = (g)lQy.poll();
     AppMethodBeat.o(47564);
     return paramString;
   }
   
-  public static void boC()
+  public static void bsB()
   {
     AppMethodBeat.i(47561);
-    ac.d("NativeAppBrandPreloader", "preload %b", new Object[] { Boolean.TRUE });
+    ad.d("NativeAppBrandPreloader", "preload %b", new Object[] { Boolean.TRUE });
     try
     {
       reset();
-      if (lrr == e.a.lrs)
+      if (lQB == e.a.lQC)
       {
         Object localObject1;
-        if (bt.eWm())
+        if (bu.flW())
         {
-          localObject1 = com.tencent.mm.plugin.m.a.c.c.uAv;
-          if (!com.tencent.mm.plugin.m.a.c.c.daL()) {}
+          localObject1 = com.tencent.mm.plugin.m.a.c.c.vCY;
+          if (!com.tencent.mm.plugin.m.a.c.c.djY()) {}
         }
         else
         {
           long l = System.currentTimeMillis();
-          FlutterMain.startInitialization(ai.getContext());
-          FlutterMain.ensureInitializationComplete(ai.getContext(), new String[0]);
-          localObject1 = com.tencent.mm.plugin.m.a.a.c.uzz.fE(ai.getContext());
-          ((a)localObject1).KLp.setInitialRoute("preload");
-          if (!((a)localObject1).KLk.KLV)
+          FlutterMain.startInitialization(aj.getContext());
+          FlutterMain.ensureInitializationComplete(aj.getContext(), new String[0]);
+          localObject1 = com.tencent.mm.plugin.m.a.a.c.vCc.fJ(aj.getContext());
+          ((a)localObject1).MCm.setInitialRoute("preload");
+          if (!((a)localObject1).MCh.MCS)
           {
             System.loadLibrary("wechatlv");
-            localObject1 = ((a)localObject1).KLk;
-            ai.getContext().getAssets();
-            ((DartExecutor)localObject1).a(new DartExecutor.a(FlutterMain.findAppBundlePath(ai.getContext()), "main", (byte)0));
+            localObject1 = ((a)localObject1).MCh;
+            aj.getContext().getAssets();
+            ((DartExecutor)localObject1).a(new DartExecutor.a(FlutterMain.findAppBundlePath(aj.getContext()), "main", (byte)0));
           }
-          ac.i("MicroMsg.NativeAppBrandPreloader", "[preloadFlutter] cost:" + (System.currentTimeMillis() - l));
+          ad.i("MicroMsg.NativeAppBrandPreloader", "[preloadFlutter] cost:" + (System.currentTimeMillis() - l));
         }
-        if (bt.eWm())
+        if (bu.flW())
         {
-          localObject1 = com.tencent.mm.plugin.m.a.c.c.uAv;
-          if (!com.tencent.mm.plugin.m.a.c.c.daK()) {}
+          localObject1 = com.tencent.mm.plugin.m.a.c.c.vCY;
+          if (!com.tencent.mm.plugin.m.a.c.c.djX()) {}
         }
         else
         {
-          gT(true);
+          hc(true);
         }
-        lrr = e.a.lru;
+        lQB = e.a.lQE;
       }
       return;
     }
@@ -129,13 +129,13 @@ public class e
     }
   }
   
-  private static void gT(boolean paramBoolean)
+  private static void hc(boolean paramBoolean)
   {
     AppMethodBeat.i(47562);
-    ac.d("MicroMsg.NativeAppBrandPreloader", "preloadNextRuntimeOnUiThreadForNativePageView");
+    ad.d("MicroMsg.NativeAppBrandPreloader", "preloadNextRuntimeOnUiThreadForNativePageView");
     synchronized (mHandler)
     {
-      if (lrn.size() <= 0)
+      if (lQx.size() <= 0)
       {
         Runnable local1 = new Runnable()
         {
@@ -151,13 +151,13 @@ public class e
             }
             catch (Exception localException)
             {
-              ac.printErrStackTrace("MicroMsg.NativeAppBrandPreloader", localException, "preloadNextRuntimeOnUiThreadForNativePageView exception.", new Object[0]);
+              ad.printErrStackTrace("MicroMsg.NativeAppBrandPreloader", localException, "preloadNextRuntimeOnUiThreadForNativePageView exception.", new Object[0]);
               AppMethodBeat.o(47556);
               return;
             }
             catch (Error localError)
             {
-              ac.printErrStackTrace("MicroMsg.NativeAppBrandPreloader", localError, "preloadNextRuntimeOnUiThreadForNativePageView error.", new Object[0]);
+              ad.printErrStackTrace("MicroMsg.NativeAppBrandPreloader", localError, "preloadNextRuntimeOnUiThreadForNativePageView error.", new Object[0]);
               AppMethodBeat.o(47556);
             }
           }
@@ -165,7 +165,7 @@ public class e
         if (paramBoolean)
         {
           l = 0L;
-          ap.n(local1, l);
+          aq.o(local1, l);
         }
       }
       else
@@ -182,9 +182,9 @@ public class e
     try
     {
       AppMethodBeat.i(47560);
-      lrr = e.a.lrs;
-      lrp = null;
-      lrn.clear();
+      lQB = e.a.lQC;
+      lQz = null;
+      lQx.clear();
       AppMethodBeat.o(47560);
       return;
     }
@@ -197,7 +197,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.c.e
  * JD-Core Version:    0.7.0.1
  */

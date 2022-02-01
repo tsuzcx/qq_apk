@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.websearch.widget.b;
 
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 
 public final class a$2
-  implements n.d
+  implements n.e
 {
   public a$2(a.a parama) {}
   
@@ -14,12 +14,12 @@ public final class a$2
     AppMethodBeat.i(116655);
     if (paramInt == 0)
     {
-      this.CbD.exW();
+      this.DEB.eMN();
       AppMethodBeat.o(116655);
       return;
     }
     if (paramInt == 1) {
-      this.CbD.exe();
+      this.DEB.eLS();
     }
     AppMethodBeat.o(116655);
   }

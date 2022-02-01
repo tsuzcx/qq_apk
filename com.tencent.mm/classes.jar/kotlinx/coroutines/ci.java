@@ -1,46 +1,48 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.f;
-import d.d.f.c;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/Unconfined;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "isDispatchNeeded", "", "toString", "", "kotlinx-coroutines-core"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/ThreadLocalEventLoop;", "", "()V", "eventLoop", "Lkotlinx/coroutines/EventLoop;", "getEventLoop$kotlinx_coroutines_core", "()Lkotlinx/coroutines/EventLoop;", "ref", "Ljava/lang/ThreadLocal;", "Lkotlinx/coroutines/internal/CommonThreadLocal;", "currentOrNull", "currentOrNull$kotlinx_coroutines_core", "resetEventLoop", "", "resetEventLoop$kotlinx_coroutines_core", "setEventLoop", "setEventLoop$kotlinx_coroutines_core", "kotlinx-coroutines-core"})
 public final class ci
-  extends ab
 {
-  public static final ci LSo;
+  private static final ThreadLocal<bd> NJg;
+  public static final ci NJh;
   
   static
   {
-    AppMethodBeat.i(118172);
-    LSo = new ci();
-    AppMethodBeat.o(118172);
+    AppMethodBeat.i(190709);
+    NJh = new ci();
+    NJg = new ThreadLocal();
+    AppMethodBeat.o(190709);
   }
   
-  public final void a(f paramf, Runnable paramRunnable)
+  public static void a(bd parambd)
   {
-    AppMethodBeat.i(118171);
-    paramf = (ck)paramf.get((f.c)ck.LSq);
-    if (paramf != null)
+    AppMethodBeat.i(190708);
+    NJg.set(parambd);
+    AppMethodBeat.o(190708);
+  }
+  
+  public static bd gvQ()
+  {
+    AppMethodBeat.i(190706);
+    bd localbd2 = (bd)NJg.get();
+    bd localbd1 = localbd2;
+    if (localbd2 == null)
     {
-      paramf.LSp = true;
-      AppMethodBeat.o(118171);
-      return;
+      localbd1 = (bd)new e(Thread.currentThread());
+      NJg.set(localbd1);
     }
-    paramf = (Throwable)new UnsupportedOperationException("Dispatchers.Unconfined.dispatch function can only be used by the yield function. If you wrap Unconfined dispatcher in your code, make sure you properly delegate isDispatchNeeded and dispatch calls.");
-    AppMethodBeat.o(118171);
-    throw paramf;
+    AppMethodBeat.o(190706);
+    return localbd1;
   }
   
-  public final boolean gdB()
+  public static void gvR()
   {
-    return false;
-  }
-  
-  public final String toString()
-  {
-    return "Unconfined";
+    AppMethodBeat.i(190707);
+    NJg.set(null);
+    AppMethodBeat.o(190707);
   }
 }
 

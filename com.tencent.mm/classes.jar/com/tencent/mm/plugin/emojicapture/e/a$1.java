@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.emojicapture.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
 final class a$1
   implements Runnable
 {
-  public static final 1 ppI;
+  public static final 1 pTj;
   
   static
   {
     AppMethodBeat.i(316);
-    ppI = new 1();
+    pTj = new 1();
     AppMethodBeat.o(316);
   }
   
   public final void run()
   {
     AppMethodBeat.i(315);
-    ac.i("MicroMsg.CapturePresenter", "proxy connected");
+    ad.i("MicroMsg.CapturePresenter", "proxy connected");
     AppMethodBeat.o(315);
   }
 }

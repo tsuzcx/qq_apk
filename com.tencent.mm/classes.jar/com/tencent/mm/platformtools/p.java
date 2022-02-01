@@ -10,19 +10,182 @@ import com.tencent.mm.pluginsdk.permission.PermissionHelper;
 import com.tencent.mm.pluginsdk.permission.PermissionHelper.c;
 import com.tencent.mm.pluginsdk.permission.PermissionHelper.e;
 import com.tencent.mm.pluginsdk.permission.PermissionHelper.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import java.lang.ref.WeakReference;
 
 public final class p
 {
-  public static String FA(String paramString)
+  static void I(Runnable paramRunnable)
   {
-    AppMethodBeat.i(192633);
-    String str = new e(paramString).getName();
-    e locale1 = new e(com.tencent.mm.loader.j.b.aqd(), str);
+    AppMethodBeat.i(195311);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(195311);
+      return;
+    }
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      paramRunnable.run();
+      AppMethodBeat.o(195311);
+      return;
+    }
+    com.tencent.e.h.LTJ.aP(paramRunnable);
+    AppMethodBeat.o(195311);
+  }
+  
+  public static String IP(String paramString)
+  {
+    AppMethodBeat.i(195313);
+    String str = com.tencent.mm.vfs.i.ZF(paramString);
+    if (!bt.isNullOrNil(str))
+    {
+      paramString = str;
+      if (!str.equalsIgnoreCase("pic")) {}
+    }
+    else
+    {
+      paramString = "jpg";
+    }
+    paramString = com.tencent.mm.sdk.f.b.aqN(paramString);
+    AppMethodBeat.o(195313);
+    return paramString;
+  }
+  
+  public static void a(Context paramContext, final Runnable paramRunnable1, final Runnable paramRunnable2)
+  {
+    AppMethodBeat.i(195312);
+    ad.i("MicroMsg.ExportFileUtil", "[+] Called requestStoragePermission, ctx: %s", new Object[] { paramContext });
+    if (!(paramContext instanceof Activity))
+    {
+      ad.e("MicroMsg.ExportFileUtil", "[-] Context [%s] is not an ui context, regard as user denied since we can't ask him.");
+      I(paramRunnable2);
+      AppMethodBeat.o(195312);
+      return;
+    }
+    PermissionHelper.aQ((Activity)paramContext).a(paramContext.getString(2131761885), paramContext.getString(2131761738), "android.permission.WRITE_EXTERNAL_STORAGE", new b(paramContext)
+    {
+      protected final void aQq()
+      {
+        AppMethodBeat.i(195301);
+        p.I(paramRunnable1);
+        AppMethodBeat.o(195301);
+      }
+      
+      protected final void aQr()
+      {
+        AppMethodBeat.i(195302);
+        p.I(paramRunnable2);
+        AppMethodBeat.o(195302);
+      }
+    });
+    AppMethodBeat.o(195312);
+  }
+  
+  public static void a(Context paramContext, final String paramString, final a parama)
+  {
+    AppMethodBeat.i(195315);
+    final String str = IP(paramString);
+    ad.i("MicroMsg.ExportFileUtil", "[+] Called exportImageWithPermissionRequest, src: %s, dest: %s", new Object[] { paramString, str });
+    com.tencent.mm.vfs.i.aYg(com.tencent.mm.vfs.i.aYr(str));
+    Runnable local4 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(195303);
+        if (!bt.isNullOrNil(p.l(this.val$context, paramString, str)))
+        {
+          p.a(parama, paramString, str);
+          AppMethodBeat.o(195303);
+          return;
+        }
+        p.b(parama, paramString, str);
+        AppMethodBeat.o(195303);
+      }
+    };
+    paramString = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(195304);
+        p.b(this.iNc, paramString, str);
+        AppMethodBeat.o(195304);
+      }
+    };
+    if (new e(str).fOJ().canWrite())
+    {
+      local4.run();
+      AppMethodBeat.o(195315);
+      return;
+    }
+    if ((paramContext instanceof Activity))
+    {
+      a(paramContext, local4, paramString);
+      AppMethodBeat.o(195315);
+      return;
+    }
+    paramString.run();
+    AppMethodBeat.o(195315);
+  }
+  
+  public static void b(Context paramContext, final String paramString, final a parama)
+  {
+    AppMethodBeat.i(195316);
+    final String str = com.tencent.mm.sdk.f.b.aqN("mp4");
+    ad.i("MicroMsg.ExportFileUtil", "[+] Called exportVideoWithPermissionRequest, src: %s, dest: %s", new Object[] { paramString, str });
+    com.tencent.mm.vfs.i.aYg(com.tencent.mm.vfs.i.aYr(str));
+    Runnable local6 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(195305);
+        String str2 = paramString;
+        String str1 = str;
+        com.tencent.mm.vfs.i.aYg(com.tencent.mm.vfs.i.aYr(str1));
+        if (com.tencent.mm.vfs.i.mz(str2, str1) >= 0L) {}
+        while (!bt.isNullOrNil(str1))
+        {
+          p.a(parama, paramString, str);
+          AppMethodBeat.o(195305);
+          return;
+          str1 = null;
+        }
+        p.b(parama, paramString, str);
+        AppMethodBeat.o(195305);
+      }
+    };
+    paramString = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(195306);
+        p.b(this.iNc, paramString, str);
+        AppMethodBeat.o(195306);
+      }
+    };
+    if (new e(str).fOJ().canWrite())
+    {
+      local6.run();
+      AppMethodBeat.o(195316);
+      return;
+    }
+    if ((paramContext instanceof Activity))
+    {
+      a(paramContext, local6, paramString);
+      AppMethodBeat.o(195316);
+      return;
+    }
+    paramString.run();
+    AppMethodBeat.o(195316);
+  }
+  
+  static String bE(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(195317);
+    String str = new e(paramString1).getName();
+    e locale1 = new e(paramString2);
     Object localObject = locale1;
     int i = 2;
     for (;;)
@@ -30,434 +193,258 @@ public final class p
       if (!((e)localObject).exists())
       {
         if (i > 2) {
-          ac.w("MicroMsg.ExportFileUtil", "[!] dest file [%s] exists, rename to [%s]", new Object[] { q.B(((e)localObject).fxV()), q.B(((e)localObject).fxV()) });
+          ad.w("MicroMsg.ExportFileUtil", "[!] dest file [%s] exists, rename to [%s]", new Object[] { q.B(((e)localObject).fOK()), q.B(((e)localObject).fOK()) });
         }
-        ((e)localObject).fxU().mkdirs();
-        localObject = q.B(((e)localObject).fxV());
-        ac.i("MicroMsg.ExportFileUtil", "[+] Called exportToPublicDownloadDir, src: %s, dest: %s", new Object[] { paramString, localObject });
+        ((e)localObject).fOJ().mkdirs();
+        ad.i("MicroMsg.ExportFileUtil", "[+] Called exportToPublicDownloadDir, src: %s, dest: %s", new Object[] { paramString1, paramString2 });
       }
       try
       {
-        if (com.tencent.mm.vfs.i.lZ(paramString, (String)localObject) >= 0L) {}
-        for (bool = com.tencent.mm.vfs.i.eA((String)localObject);; bool = false)
+        if (com.tencent.mm.vfs.i.mz(paramString1, paramString2) >= 0L) {}
+        for (bool = com.tencent.mm.vfs.i.fv(paramString2);; bool = false)
         {
           if (!bool) {
-            break label297;
+            break label286;
           }
-          AppMethodBeat.o(192633);
-          return localObject;
-          e locale2 = locale1.fxU();
+          AppMethodBeat.o(195317);
+          return paramString2;
+          e locale2 = locale1.fOJ();
           StringBuilder localStringBuilder = new StringBuilder();
           int j = str.lastIndexOf('.');
           if (j < 0)
           {
             localObject = str;
-            label184:
+            label168:
             localStringBuilder = localStringBuilder.append((String)localObject).append("(").append(i).append(")");
             j = str.lastIndexOf('.');
             if (j >= 0) {
-              break label263;
+              break label249;
             }
           }
-          label263:
+          label249:
           for (localObject = "";; localObject = str.substring(j))
           {
             localObject = new e(locale2, (String)localObject);
             i += 1;
             break;
             localObject = str.substring(0, j);
-            break label184;
+            break label168;
           }
         }
       }
-      catch (Throwable paramString)
+      catch (Throwable paramString1)
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.ExportFileUtil", paramString, "[-] Exception ocurred.", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.ExportFileUtil", paramString1, "[-] Exception ocurred.", new Object[0]);
           boolean bool = false;
         }
-        label297:
-        AppMethodBeat.o(192633);
+        label286:
+        AppMethodBeat.o(195317);
       }
     }
     return null;
   }
   
-  private static String Fz(String paramString)
-  {
-    AppMethodBeat.i(192629);
-    String str = com.tencent.mm.vfs.i.VW(paramString);
-    paramString = str;
-    if (bs.isNullOrNil(str)) {
-      paramString = "jpg";
-    }
-    paramString = com.tencent.mm.sdk.f.b.alY(paramString);
-    AppMethodBeat.o(192629);
-    return paramString;
-  }
-  
-  /* Error */
-  public static String I(Context paramContext, String paramString)
-  {
-    // Byte code:
-    //   0: ldc 175
-    //   2: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_1
-    //   6: invokestatic 177	com/tencent/mm/platformtools/p:Fz	(Ljava/lang/String;)Ljava/lang/String;
-    //   9: astore 6
-    //   11: ldc 67
-    //   13: ldc 179
-    //   15: iconst_2
-    //   16: anewarray 4	java/lang/Object
-    //   19: dup
-    //   20: iconst_0
-    //   21: aload_1
-    //   22: aastore
-    //   23: dup
-    //   24: iconst_1
-    //   25: aload 6
-    //   27: aastore
-    //   28: invokestatic 96	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   31: aload 6
-    //   33: invokestatic 182	com/tencent/mm/vfs/i:aSs	(Ljava/lang/String;)Ljava/lang/String;
-    //   36: invokestatic 185	com/tencent/mm/vfs/i:aSh	(Ljava/lang/String;)Z
-    //   39: pop
-    //   40: aload_1
-    //   41: aload 6
-    //   43: invokestatic 102	com/tencent/mm/vfs/i:lZ	(Ljava/lang/String;Ljava/lang/String;)J
-    //   46: lconst_0
-    //   47: lcmp
-    //   48: iflt +147 -> 195
-    //   51: aload 6
-    //   53: invokestatic 190	com/tencent/mm/sdk/platformtools/MMNativeJpeg:isProgressive	(Ljava/lang/String;)Z
-    //   56: ifeq +168 -> 224
-    //   59: aload 6
-    //   61: invokestatic 196	com/tencent/mm/sdk/platformtools/BackwardSupportUtil$ExifHelper:ce	(Ljava/lang/String;)I
-    //   64: istore_3
-    //   65: aload 6
-    //   67: invokestatic 200	com/tencent/mm/sdk/platformtools/MMNativeJpeg:decodeAsBitmap	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   70: astore 5
-    //   72: aload 5
-    //   74: ifnull +145 -> 219
-    //   77: iload_3
-    //   78: i2f
-    //   79: fstore_2
-    //   80: aload 5
-    //   82: fload_2
-    //   83: invokestatic 205	com/tencent/mm/sdk/platformtools/f:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
-    //   86: astore_1
-    //   87: aload_1
-    //   88: astore 5
-    //   90: getstatic 211	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   93: astore 7
-    //   95: aload 6
-    //   97: iconst_0
-    //   98: invokestatic 215	com/tencent/mm/vfs/i:cS	(Ljava/lang/String;Z)Ljava/io/OutputStream;
-    //   101: astore_1
-    //   102: aload_1
-    //   103: astore 4
-    //   105: aload 5
-    //   107: aload 7
-    //   109: bipush 80
-    //   111: aload_1
-    //   112: invokevirtual 221	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   115: pop
-    //   116: aload_1
-    //   117: invokestatic 225	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
-    //   120: iconst_1
-    //   121: istore_3
-    //   122: iload_3
-    //   123: ifeq +9 -> 132
-    //   126: aload 6
-    //   128: aload_0
-    //   129: invokestatic 229	com/tencent/mm/sdk/f/b:k	(Ljava/lang/String;Landroid/content/Context;)V
-    //   132: iload_3
-    //   133: ifeq +67 -> 200
-    //   136: ldc 175
-    //   138: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   141: aload 6
-    //   143: areturn
-    //   144: astore_1
-    //   145: ldc 67
-    //   147: aload_1
-    //   148: ldc 231
-    //   150: iconst_0
-    //   151: anewarray 4	java/lang/Object
-    //   154: invokestatic 152	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   157: goto -67 -> 90
-    //   160: astore_1
-    //   161: aconst_null
-    //   162: astore_1
-    //   163: aload_1
-    //   164: astore 4
-    //   166: aload 6
-    //   168: invokestatic 234	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
-    //   171: pop
-    //   172: aload_1
-    //   173: invokestatic 225	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
-    //   176: iconst_0
-    //   177: istore_3
-    //   178: goto -56 -> 122
-    //   181: astore_0
-    //   182: aconst_null
-    //   183: astore_1
-    //   184: aload_1
-    //   185: invokestatic 225	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
-    //   188: ldc 175
-    //   190: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   193: aload_0
-    //   194: athrow
-    //   195: iconst_0
-    //   196: istore_3
-    //   197: goto -75 -> 122
-    //   200: ldc 175
-    //   202: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   205: aconst_null
-    //   206: areturn
-    //   207: astore_0
-    //   208: aload 4
-    //   210: astore_1
-    //   211: goto -27 -> 184
-    //   214: astore 4
-    //   216: goto -53 -> 163
-    //   219: aconst_null
-    //   220: astore_1
-    //   221: goto -105 -> 116
-    //   224: iconst_1
-    //   225: istore_3
-    //   226: goto -104 -> 122
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	229	0	paramContext	Context
-    //   0	229	1	paramString	String
-    //   79	4	2	f	float
-    //   64	162	3	i	int
-    //   103	106	4	str1	String
-    //   214	1	4	localException	java.lang.Exception
-    //   70	36	5	localObject	Object
-    //   9	158	6	str2	String
-    //   93	15	7	localCompressFormat	android.graphics.Bitmap.CompressFormat
-    // Exception table:
-    //   from	to	target	type
-    //   80	87	144	java/lang/Exception
-    //   59	72	160	java/lang/Exception
-    //   90	102	160	java/lang/Exception
-    //   145	157	160	java/lang/Exception
-    //   59	72	181	finally
-    //   80	87	181	finally
-    //   90	102	181	finally
-    //   145	157	181	finally
-    //   105	116	207	finally
-    //   166	172	207	finally
-    //   105	116	214	java/lang/Exception
-  }
-  
-  static void J(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(192627);
-    if (paramRunnable == null)
-    {
-      AppMethodBeat.o(192627);
-      return;
-    }
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      paramRunnable.run();
-      AppMethodBeat.o(192627);
-      return;
-    }
-    com.tencent.e.h.JZN.aQ(paramRunnable);
-    AppMethodBeat.o(192627);
-  }
-  
-  public static void a(Context paramContext, final Runnable paramRunnable1, final Runnable paramRunnable2)
-  {
-    AppMethodBeat.i(192628);
-    ac.i("MicroMsg.ExportFileUtil", "[+] Called requestStoragePermission, ctx: %s", new Object[] { paramContext });
-    if (!(paramContext instanceof Activity))
-    {
-      ac.e("MicroMsg.ExportFileUtil", "[-] Context [%s] is not an ui context, regard as user denied since we can't ask him.");
-      J(paramRunnable2);
-      AppMethodBeat.o(192628);
-      return;
-    }
-    PermissionHelper.aQ((Activity)paramContext).a(paramContext.getString(2131761885), paramContext.getString(2131761738), "android.permission.WRITE_EXTERNAL_STORAGE", new b(paramContext)
-    {
-      protected final void aNf()
-      {
-        AppMethodBeat.i(192617);
-        p.J(paramRunnable1);
-        AppMethodBeat.o(192617);
-      }
-      
-      protected final void aNg()
-      {
-        AppMethodBeat.i(192618);
-        p.J(paramRunnable2);
-        AppMethodBeat.o(192618);
-      }
-    });
-    AppMethodBeat.o(192628);
-  }
-  
-  public static void a(Context paramContext, final String paramString, final a parama)
-  {
-    AppMethodBeat.i(192631);
-    final String str = Fz(paramString);
-    ac.i("MicroMsg.ExportFileUtil", "[+] Called exportImageWithPermissionRequest, src: %s, dest: %s", new Object[] { paramString, str });
-    com.tencent.mm.vfs.i.aSh(com.tencent.mm.vfs.i.aSs(str));
-    Runnable local4 = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(192619);
-        if (!bs.isNullOrNil(p.I(this.val$context, paramString)))
-        {
-          p.a(parama, paramString, str);
-          AppMethodBeat.o(192619);
-          return;
-        }
-        p.b(parama, paramString, str);
-        AppMethodBeat.o(192619);
-      }
-    };
-    paramString = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(192620);
-        p.b(this.itZ, paramString, str);
-        AppMethodBeat.o(192620);
-      }
-    };
-    if (new e(str).fxU().canWrite())
-    {
-      local4.run();
-      AppMethodBeat.o(192631);
-      return;
-    }
-    if ((paramContext instanceof Activity))
-    {
-      a(paramContext, local4, paramString);
-      AppMethodBeat.o(192631);
-      return;
-    }
-    paramString.run();
-    AppMethodBeat.o(192631);
-  }
-  
-  public static void b(Context paramContext, final String paramString, final a parama)
-  {
-    AppMethodBeat.i(192632);
-    final String str = Fz(paramString);
-    ac.i("MicroMsg.ExportFileUtil", "[+] Called exportVideoWithPermissionRequest, src: %s, dest: %s", new Object[] { paramString, str });
-    com.tencent.mm.vfs.i.aSh(com.tencent.mm.vfs.i.aSs(str));
-    Runnable local6 = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(192621);
-        String str2 = paramString;
-        String str1 = com.tencent.mm.sdk.f.b.alY("mp4");
-        ac.i("MicroMsg.ExportFileUtil", "[+] Called exportVideo, src: %s, dest: %s", new Object[] { str2, str1 });
-        com.tencent.mm.vfs.i.aSh(com.tencent.mm.vfs.i.aSs(str1));
-        if (com.tencent.mm.vfs.i.lZ(str2, str1) >= 0L) {}
-        while (!bs.isNullOrNil(str1))
-        {
-          p.a(parama, paramString, str);
-          AppMethodBeat.o(192621);
-          return;
-          str1 = null;
-        }
-        p.b(parama, paramString, str);
-        AppMethodBeat.o(192621);
-      }
-    };
-    paramString = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(192622);
-        p.b(this.itZ, paramString, str);
-        AppMethodBeat.o(192622);
-      }
-    };
-    if (new e(str).fxU().canWrite())
-    {
-      local6.run();
-      AppMethodBeat.o(192632);
-      return;
-    }
-    if ((paramContext instanceof Activity))
-    {
-      a(paramContext, local6, paramString);
-      AppMethodBeat.o(192632);
-      return;
-    }
-    paramString.run();
-    AppMethodBeat.o(192632);
-  }
-  
   public static void c(Context paramContext, final String paramString, final a parama)
   {
-    AppMethodBeat.i(192634);
+    AppMethodBeat.i(195318);
     Object localObject = new e(paramString).getName();
-    localObject = new e(com.tencent.mm.loader.j.b.aqd(), (String)localObject);
-    ((e)localObject).fxU().mkdirs();
-    final String str = q.B(((e)localObject).fxV());
-    ac.i("MicroMsg.ExportFileUtil", "[+] Called exportToPublicDownloadDirWithPermissionRequest, src: %s, dest: %s", new Object[] { paramString, str });
+    localObject = new e(com.tencent.mm.loader.j.b.asS(), (String)localObject);
+    ((e)localObject).fOJ().mkdirs();
+    final String str = q.B(((e)localObject).fOK());
+    ad.i("MicroMsg.ExportFileUtil", "[+] Called exportToPublicDownloadDirWithPermissionRequest, src: %s, dest: %s", new Object[] { paramString, str });
     Runnable local8 = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(192623);
-        if (!bs.isNullOrNil(p.FA(paramString)))
+        AppMethodBeat.i(195307);
+        if (!bt.isNullOrNil(p.bE(paramString, str)))
         {
           p.a(parama, paramString, str);
-          AppMethodBeat.o(192623);
+          AppMethodBeat.o(195307);
           return;
         }
         p.b(parama, paramString, str);
-        AppMethodBeat.o(192623);
+        AppMethodBeat.o(195307);
       }
     };
     paramString = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(192624);
-        p.b(this.itZ, paramString, str);
-        AppMethodBeat.o(192624);
+        AppMethodBeat.i(195308);
+        p.b(this.iNc, paramString, str);
+        AppMethodBeat.o(195308);
       }
     };
-    if (((e)localObject).fxU().canWrite())
+    if (((e)localObject).fOJ().canWrite())
     {
       local8.run();
-      AppMethodBeat.o(192634);
+      AppMethodBeat.o(195318);
       return;
     }
     if ((paramContext instanceof Activity))
     {
       a(paramContext, local8, paramString);
-      AppMethodBeat.o(192634);
+      AppMethodBeat.o(195318);
       return;
     }
     paramString.run();
-    AppMethodBeat.o(192634);
+    AppMethodBeat.o(195318);
+  }
+  
+  /* Error */
+  public static String l(Context paramContext, String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: ldc_w 297
+    //   3: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_2
+    //   7: invokestatic 154	com/tencent/mm/vfs/i:aYr	(Ljava/lang/String;)Ljava/lang/String;
+    //   10: invokestatic 157	com/tencent/mm/vfs/i:aYg	(Ljava/lang/String;)Z
+    //   13: pop
+    //   14: aload_1
+    //   15: aload_2
+    //   16: invokestatic 237	com/tencent/mm/vfs/i:mz	(Ljava/lang/String;Ljava/lang/String;)J
+    //   19: lconst_0
+    //   20: lcmp
+    //   21: iflt +149 -> 170
+    //   24: aload_2
+    //   25: invokestatic 302	com/tencent/mm/sdk/platformtools/MMNativeJpeg:isProgressive	(Ljava/lang/String;)Z
+    //   28: ifeq +173 -> 201
+    //   31: aload_2
+    //   32: invokestatic 308	com/tencent/mm/sdk/platformtools/BackwardSupportUtil$ExifHelper:cY	(Ljava/lang/String;)I
+    //   35: istore 4
+    //   37: aload_2
+    //   38: invokestatic 312	com/tencent/mm/sdk/platformtools/MMNativeJpeg:decodeAsBitmap	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   41: astore 6
+    //   43: aload 6
+    //   45: ifnull +151 -> 196
+    //   48: iload 4
+    //   50: i2f
+    //   51: fstore_3
+    //   52: aload 6
+    //   54: fload_3
+    //   55: invokestatic 317	com/tencent/mm/sdk/platformtools/g:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
+    //   58: astore_1
+    //   59: aload_1
+    //   60: astore 6
+    //   62: getstatic 323	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   65: astore 7
+    //   67: aload_2
+    //   68: iconst_0
+    //   69: invokestatic 327	com/tencent/mm/vfs/i:cX	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   72: astore_1
+    //   73: aload_1
+    //   74: astore 5
+    //   76: aload 6
+    //   78: aload 7
+    //   80: bipush 80
+    //   82: aload_1
+    //   83: invokevirtual 333	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   86: pop
+    //   87: aload_1
+    //   88: invokestatic 337	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   91: iconst_1
+    //   92: istore 4
+    //   94: iload 4
+    //   96: ifeq +8 -> 104
+    //   99: aload_2
+    //   100: aload_0
+    //   101: invokestatic 341	com/tencent/mm/sdk/f/b:s	(Ljava/lang/String;Landroid/content/Context;)V
+    //   104: iload 4
+    //   106: ifeq +70 -> 176
+    //   109: ldc_w 297
+    //   112: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   115: aload_2
+    //   116: areturn
+    //   117: astore_1
+    //   118: ldc 104
+    //   120: aload_1
+    //   121: ldc_w 343
+    //   124: iconst_0
+    //   125: anewarray 4	java/lang/Object
+    //   128: invokestatic 279	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   131: goto -69 -> 62
+    //   134: astore_1
+    //   135: aconst_null
+    //   136: astore_1
+    //   137: aload_1
+    //   138: astore 5
+    //   140: aload_2
+    //   141: invokestatic 346	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
+    //   144: pop
+    //   145: aload_1
+    //   146: invokestatic 337	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   149: iconst_0
+    //   150: istore 4
+    //   152: goto -58 -> 94
+    //   155: astore_0
+    //   156: aconst_null
+    //   157: astore_1
+    //   158: aload_1
+    //   159: invokestatic 337	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   162: ldc_w 297
+    //   165: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   168: aload_0
+    //   169: athrow
+    //   170: iconst_0
+    //   171: istore 4
+    //   173: goto -79 -> 94
+    //   176: ldc_w 297
+    //   179: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   182: aconst_null
+    //   183: areturn
+    //   184: astore_0
+    //   185: aload 5
+    //   187: astore_1
+    //   188: goto -30 -> 158
+    //   191: astore 5
+    //   193: goto -56 -> 137
+    //   196: aconst_null
+    //   197: astore_1
+    //   198: goto -111 -> 87
+    //   201: iconst_1
+    //   202: istore 4
+    //   204: goto -110 -> 94
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	207	0	paramContext	Context
+    //   0	207	1	paramString1	String
+    //   0	207	2	paramString2	String
+    //   51	4	3	f	float
+    //   35	168	4	i	int
+    //   74	112	5	str	String
+    //   191	1	5	localException	java.lang.Exception
+    //   41	36	6	localObject	Object
+    //   65	14	7	localCompressFormat	android.graphics.Bitmap.CompressFormat
+    // Exception table:
+    //   from	to	target	type
+    //   52	59	117	java/lang/Exception
+    //   31	43	134	java/lang/Exception
+    //   62	73	134	java/lang/Exception
+    //   118	131	134	java/lang/Exception
+    //   31	43	155	finally
+    //   52	59	155	finally
+    //   62	73	155	finally
+    //   118	131	155	finally
+    //   76	87	184	finally
+    //   140	145	184	finally
+    //   76	87	191	java/lang/Exception
   }
   
   public static abstract interface a
   {
-    public abstract void bD(String paramString1, String paramString2);
+    public abstract void bF(String paramString1, String paramString2);
     
-    public abstract void bE(String paramString1, String paramString2);
+    public abstract void bG(String paramString1, String paramString2);
   }
   
   static abstract class b
     implements PermissionHelper.e, PermissionHelper.f
   {
-    private String iuf = null;
+    private String iNi = null;
     private final WeakReference<Context> mContextRef;
     
     b(Context paramContext)
@@ -465,19 +452,19 @@ public final class p
       this.mContextRef = new WeakReference(paramContext);
     }
     
-    public final void FB(String paramString)
+    public final void IQ(String paramString)
     {
-      this.iuf = paramString;
-      aNf();
+      this.iNi = paramString;
+      aQq();
     }
     
     public final void a(final PermissionHelper.c paramc, String paramString)
     {
-      this.iuf = paramString;
+      this.iNi = paramString;
       paramString = (Context)this.mContextRef.get();
       if (paramString == null)
       {
-        ac.e("MicroMsg.ExportFileUtil", "[-] context is recycled, skip rest steps.");
+        ad.e("MicroMsg.ExportFileUtil", "[-] context is recycled, skip rest steps.");
         return;
       }
       String str = paramString.getString(2131761885);
@@ -485,46 +472,46 @@ public final class p
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(192625);
+          AppMethodBeat.i(195309);
           paramAnonymousDialogInterface.dismiss();
           paramc.a(p.b.this);
-          AppMethodBeat.o(192625);
+          AppMethodBeat.o(195309);
         }
       }, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(192626);
+          AppMethodBeat.i(195310);
           paramAnonymousDialogInterface.dismiss();
-          p.b.this.aNg();
-          AppMethodBeat.o(192626);
+          p.b.this.aQr();
+          AppMethodBeat.o(195310);
         }
       });
     }
     
-    protected abstract void aNf();
+    protected abstract void aQq();
     
-    protected abstract void aNg();
+    protected abstract void aQr();
     
-    public final void aNh()
+    public final void aQs()
     {
-      if (PermissionHelper.aGv(this.iuf))
+      if (PermissionHelper.aLV(this.iNi))
       {
-        aNf();
+        aQq();
         return;
       }
-      aNg();
+      aQr();
     }
     
-    public final void aNi()
+    public final void aQt()
     {
-      aNg();
+      aQr();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.platformtools.p
  * JD-Core Version:    0.7.0.1
  */

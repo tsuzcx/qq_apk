@@ -4,25 +4,25 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.network.n.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.Collection;
 import java.util.Iterator;
 
 public final class g
 {
-  private static n.a jKV;
+  private static n.a kfg;
   
   static
   {
     AppMethodBeat.i(121177);
-    jKV = new n.a()
+    kfg = new n.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
         AppMethodBeat.i(121173);
         Bundle localBundle = new Bundle();
         localBundle.putInt("status", paramAnonymousInt);
-        Iterator localIterator = i.bcg().bch().iterator();
+        Iterator localIterator = i.bfK().bfL().iterator();
         while (localIterator.hasNext()) {
           h.a((String)localIterator.next(), localBundle, g.a.class, null);
         }
@@ -35,21 +35,21 @@ public final class g
   public static void initialize()
   {
     AppMethodBeat.i(121175);
-    if (!ai.ciE())
+    if (!aj.cnC())
     {
       AppMethodBeat.o(121175);
       return;
     }
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().a(jKV);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().a(kfg);
     AppMethodBeat.o(121175);
   }
   
   public static void release()
   {
     AppMethodBeat.i(121176);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().b(jKV);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().b(kfg);
     AppMethodBeat.o(121176);
   }
   

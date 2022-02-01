@@ -1,19 +1,19 @@
 package d.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.io.Reader;
 import java.io.Writer;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"buffered", "Ljava/io/BufferedReader;", "Ljava/io/Reader;", "bufferSize", "", "Ljava/io/BufferedWriter;", "Ljava/io/Writer;", "copyTo", "", "out", "forEachLine", "", "action", "Lkotlin/Function1;", "", "lineSequence", "Lkotlin/sequences/Sequence;", "readBytes", "", "Ljava/net/URL;", "readLines", "", "readText", "charset", "Ljava/nio/charset/Charset;", "reader", "Ljava/io/StringReader;", "useLines", "T", "block", "Requires newer compiler version to be inlined correctly.", "(Ljava/io/Reader;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"buffered", "Ljava/io/BufferedReader;", "Ljava/io/Reader;", "bufferSize", "", "Ljava/io/BufferedWriter;", "Ljava/io/Writer;", "copyTo", "", "out", "forEachLine", "", "action", "Lkotlin/Function1;", "", "lineSequence", "Lkotlin/sequences/Sequence;", "readBytes", "", "Ljava/net/URL;", "readLines", "", "readText", "charset", "Ljava/nio/charset/Charset;", "reader", "Ljava/io/StringReader;", "useLines", "T", "block", "Requires newer compiler version to be inlined correctly.", "(Ljava/io/Reader;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlin-stdlib"})
 public final class c
 {
   public static final long a(Reader paramReader, Writer paramWriter)
   {
     AppMethodBeat.i(129250);
-    k.h(paramReader, "$this$copyTo");
-    k.h(paramWriter, "out");
+    p.h(paramReader, "$this$copyTo");
+    p.h(paramWriter, "out");
     long l = 0L;
     char[] arrayOfChar = new char[8192];
     for (int i = paramReader.read(arrayOfChar); i >= 0; i = paramReader.read(arrayOfChar))
@@ -35,7 +35,7 @@ public final class c
     //   4: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: ldc 80
-    //   10: invokestatic 56	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   10: invokestatic 56	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   13: aload_0
     //   14: invokevirtual 86	java/net/URL:openStream	()Ljava/io/InputStream;
     //   17: checkcast 88	java/io/Closeable
@@ -45,9 +45,9 @@ public final class c
     //   25: astore_0
     //   26: aload_0
     //   27: ldc 92
-    //   29: invokestatic 95	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   29: invokestatic 95	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   32: aload_0
-    //   33: invokestatic 101	d/f/a:U	(Ljava/io/InputStream;)[B
+    //   33: invokestatic 101	d/f/a:X	(Ljava/io/InputStream;)[B
     //   36: astore_0
     //   37: aload_2
     //   38: aconst_null

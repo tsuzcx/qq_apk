@@ -19,25 +19,27 @@ import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cn.f;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView.a;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView.a;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView.b;
 import com.tencent.mm.plugin.card.model.a.c;
 import com.tencent.mm.plugin.card.model.a.i;
-import com.tencent.mm.protocal.protobuf.ccu;
-import com.tencent.mm.protocal.protobuf.ccv;
-import com.tencent.mm.protocal.protobuf.ccw;
-import com.tencent.mm.protocal.protobuf.ccx;
-import com.tencent.mm.protocal.protobuf.rm;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.byr;
+import com.tencent.mm.protocal.protobuf.cho;
+import com.tencent.mm.protocal.protobuf.chp;
+import com.tencent.mm.protocal.protobuf.chq;
+import com.tencent.mm.protocal.protobuf.chr;
+import com.tencent.mm.protocal.protobuf.chs;
+import com.tencent.mm.protocal.protobuf.tg;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.d;
-import d.g.b.k;
+import com.tencent.mm.ui.base.n.e;
+import d.g.b.p;
 import d.n.d;
 import d.v;
 import java.nio.charset.Charset;
@@ -46,191 +48,210 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListUI;", "Lcom/tencent/mm/plugin/card/ui/v2/CardNewBaseUI;", "()V", "firstLoad", "", "getMktTicketHomePage", "Lcom/tencent/mm/plugin/card/model/v2/CgiGetMktTicketHomePage;", "isAll", "isLoading", "jumpList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "licenseList", "mEmptyView", "Landroid/view/ViewGroup;", "mTicketAdapter", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketAdapter;", "mTicketRv", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "offset", "", "reqNum", "ticketList", "adjustFooterView", "", "doDeleteTicket", "cardId", "", "doGetTicketHomePage", "getLayoutId", "gotoCardDetailUI", "initView", "loadSnapshot", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinishLocationThings", "ret", "isLocationOk", "saveSnapshot", "updateModelList", "Lcom/tencent/mm/protocal/protobuf/PageTicketJumpList;", "Lcom/tencent/mm/protocal/protobuf/PageTicketList;", "updateTextMenu", "Companion", "plugin-card_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListUI;", "Lcom/tencent/mm/plugin/card/ui/v2/CardNewBaseUI;", "()V", "firstLoad", "", "getMktTicketHomePage", "Lcom/tencent/mm/plugin/card/model/v2/CgiGetMktTicketHomePage;", "isAll", "isLoading", "jumpList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketListModel;", "licenseList", "mEmptyView", "Landroid/view/ViewGroup;", "mTicketAdapter", "Lcom/tencent/mm/plugin/card/ui/v2/CardTicketAdapter;", "mTicketRv", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "medicareCard", "offset", "", "reqNum", "ticketList", "adjustFooterView", "", "doDeleteTicket", "cardId", "", "doGetTicketHomePage", "getLayoutId", "gotoCardDetailUI", "initView", "loadSnapshot", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinishLocationThings", "ret", "isLocationOk", "saveSnapshot", "updateModelList", "Lcom/tencent/mm/protocal/protobuf/PageTicketJumpList;", "Lcom/tencent/mm/protocal/protobuf/PageTicketList;", "underList", "Lcom/tencent/mm/protocal/protobuf/PageUnderList;", "updateTextMenu", "Companion", "plugin-card_release"})
 public final class CardTicketListUI
   extends CardNewBaseUI
 {
-  public static final CardTicketListUI.a oiX;
-  private boolean fPJ;
+  public static final CardTicketListUI.a oMt;
+  private boolean gjj;
   private boolean isLoading;
+  private int oKC;
+  private boolean oKD;
+  private LoadMoreRecyclerView oLP;
+  private a oLQ;
+  private final ArrayList<b> oMg;
+  private final ArrayList<b> oMh;
+  private final ArrayList<b> oMi;
+  private b oMl;
+  private ViewGroup oMr;
+  private i oMs;
   private int offset;
-  private int ohj;
-  private boolean ohk;
-  private final ArrayList<b> oiM;
-  private final ArrayList<b> oiN;
-  private final ArrayList<b> oiO;
-  private ViewGroup oiV;
-  private i oiW;
-  private LoadMoreRecyclerView oiv;
-  private a oiw;
   
   static
   {
     AppMethodBeat.i(112545);
-    oiX = new CardTicketListUI.a((byte)0);
+    oMt = new CardTicketListUI.a((byte)0);
     AppMethodBeat.o(112545);
   }
   
   public CardTicketListUI()
   {
     AppMethodBeat.i(112544);
-    this.ohj = 10;
-    this.fPJ = true;
-    this.oiM = new ArrayList();
-    this.oiN = new ArrayList();
-    this.oiO = new ArrayList();
+    this.oKC = 10;
+    this.gjj = true;
+    this.oMg = new ArrayList();
+    this.oMh = new ArrayList();
+    this.oMi = new ArrayList();
     AppMethodBeat.o(112544);
   }
   
-  private final void Vm(final String paramString)
+  private final void YV(final String paramString)
   {
     AppMethodBeat.i(112542);
-    ac.i("MicroMsg.CardTicketListUI", "do delete ticket: %s", new Object[] { paramString });
-    new c(paramString).aBB().b((com.tencent.mm.vending.c.a)new b(this, paramString));
+    ad.i("MicroMsg.CardTicketListUI", "do delete ticket: %s", new Object[] { paramString });
+    new c(paramString).aED().b((com.tencent.mm.vending.c.a)new b(this, paramString));
     AppMethodBeat.o(112542);
   }
   
-  private final void a(ccw paramccw, ccx paramccx1, ccx paramccx2)
+  private final void a(chq paramchq, chr paramchr1, chr paramchr2, chs paramchs)
   {
-    AppMethodBeat.i(112541);
+    AppMethodBeat.i(215458);
     Object localObject;
     int i;
-    if (paramccw != null)
+    if (paramchq != null)
     {
-      this.oiO.clear();
-      localObject = paramccw.Frz;
-      k.g(localObject, "page_ticket_jump_element");
+      this.oMi.clear();
+      localObject = paramchq.Hbm;
+      p.g(localObject, "page_ticket_jump_element");
       if (!((Collection)localObject).isEmpty()) {}
       for (i = 1; i != 0; i = 0)
       {
-        paramccw = paramccw.Frz.iterator();
-        while (paramccw.hasNext())
+        paramchq = paramchq.Hbm.iterator();
+        while (paramchq.hasNext())
         {
-          localObject = (ccv)paramccw.next();
+          localObject = (chp)paramchq.next();
           b localb = new b();
-          localb.oiT = ((ccv)localObject);
+          localb.oMo = ((chp)localObject);
           localb.type = 1;
-          this.oiO.add(localb);
+          this.oMi.add(localb);
         }
       }
     }
-    if (paramccx1 != null)
+    if (paramchr1 != null)
     {
-      paramccw = paramccx1.FrA;
-      k.g(paramccw, "page_ticket_element");
-      if (!((Collection)paramccw).isEmpty()) {}
+      paramchq = paramchr1.Hbn;
+      p.g(paramchq, "page_ticket_element");
+      if (!((Collection)paramchq).isEmpty()) {}
       for (i = 1; i != 0; i = 0)
       {
-        paramccw = paramccx1.FrA.iterator();
-        while (paramccw.hasNext())
+        paramchq = paramchr1.Hbn.iterator();
+        while (paramchq.hasNext())
         {
-          paramccx1 = (ccu)paramccw.next();
+          paramchr1 = (cho)paramchq.next();
           localObject = new b();
-          ((b)localObject).oiU = paramccx1;
+          ((b)localObject).oMp = paramchr1;
           ((b)localObject).type = 2;
-          this.oiM.add(localObject);
+          this.oMg.add(localObject);
         }
       }
     }
-    if (paramccx2 != null)
+    if (paramchr2 != null)
     {
-      paramccw = paramccx2.FrA;
-      k.g(paramccw, "page_ticket_element");
-      if (!((Collection)paramccw).isEmpty()) {}
+      paramchq = paramchr2.Hbn;
+      p.g(paramchq, "page_ticket_element");
+      if (!((Collection)paramchq).isEmpty()) {}
       for (i = 1; i != 0; i = 0)
       {
-        paramccw = paramccx2.FrA.iterator();
-        while (paramccw.hasNext())
+        paramchq = paramchr2.Hbn.iterator();
+        while (paramchq.hasNext())
         {
-          paramccx1 = (ccu)paramccw.next();
-          paramccx2 = new b();
-          paramccx2.oiU = paramccx1;
-          paramccx2.type = 2;
-          this.oiN.add(paramccx2);
+          paramchr1 = (cho)paramchq.next();
+          paramchr2 = new b();
+          paramchr2.oMp = paramchr1;
+          paramchr2.type = 2;
+          this.oMh.add(paramchr2);
         }
       }
     }
-    if (!((Collection)this.oiO).isEmpty())
+    if (paramchs != null)
+    {
+      paramchq = paramchs.Hbo;
+      if (paramchq != null)
+      {
+        this.oMl = new b();
+        paramchr1 = this.oMl;
+        if (paramchr1 == null) {
+          p.gfZ();
+        }
+        paramchr1.type = 3;
+        paramchr1 = this.oMl;
+        if (paramchr1 == null) {
+          p.gfZ();
+        }
+        paramchr1.oMq = paramchq;
+      }
+    }
+    if (!((Collection)this.oMi).isEmpty())
     {
       i = 1;
       if (i == 0)
       {
-        if (((Collection)this.oiM).isEmpty()) {
-          break label503;
+        if (((Collection)this.oMg).isEmpty()) {
+          break label574;
         }
         i = 1;
-        label362:
+        label422:
         if (i == 0) {
-          break label515;
+          break label586;
         }
       }
-      if (((Collection)this.oiN).isEmpty()) {
-        break label509;
+      if (((Collection)this.oMh).isEmpty()) {
+        break label580;
       }
       i = 1;
-      label385:
-      if (i == 0) {
-        break label515;
+      label445:
+      if ((i == 0) && (this.oMl == null)) {
+        break label586;
       }
-      paramccw = this.oiw;
-      if (paramccw == null) {
-        k.aVY("mTicketAdapter");
+      paramchq = this.oLQ;
+      if (paramchq == null) {
+        p.bcb("mTicketAdapter");
       }
-      paramccx1 = getString(2131757020);
-      k.g(paramccx1, "getString(R.string.card_ticket_section_title)");
-      paramccw.Vk(paramccx1);
-      paramccw = this.oiw;
-      if (paramccw == null) {
-        k.aVY("mTicketAdapter");
+      paramchr1 = getString(2131757020);
+      p.g(paramchr1, "getString(R.string.card_ticket_section_title)");
+      paramchq.YT(paramchr1);
+      paramchq = this.oLQ;
+      if (paramchq == null) {
+        p.bcb("mTicketAdapter");
       }
-      paramccx1 = getString(2131756911);
-      k.g(paramccx1, "getString(R.string.card_license_section_title)");
-      paramccw.Vl(paramccx1);
+      paramchr1 = getString(2131756911);
+      p.g(paramchr1, "getString(R.string.card_license_section_title)");
+      paramchq.YU(paramchr1);
     }
     for (;;)
     {
-      paramccw = this.oiw;
-      if (paramccw == null) {
-        k.aVY("mTicketAdapter");
+      paramchq = this.oLQ;
+      if (paramchq == null) {
+        p.bcb("mTicketAdapter");
       }
-      paramccw.a(this.oiO, this.oiM, this.oiN);
-      AppMethodBeat.o(112541);
+      paramchq.a(this.oMi, this.oMg, this.oMh, this.oMl);
+      AppMethodBeat.o(215458);
       return;
       i = 0;
       break;
-      label503:
+      label574:
       i = 0;
-      break label362;
-      label509:
+      break label422;
+      label580:
       i = 0;
-      break label385;
-      label515:
-      paramccw = this.oiw;
-      if (paramccw == null) {
-        k.aVY("mTicketAdapter");
+      break label445;
+      label586:
+      paramchq = this.oLQ;
+      if (paramchq == null) {
+        p.bcb("mTicketAdapter");
       }
-      paramccw.Vk("");
-      paramccw = this.oiw;
-      if (paramccw == null) {
-        k.aVY("mTicketAdapter");
+      paramchq.YT("");
+      paramchq = this.oLQ;
+      if (paramchq == null) {
+        p.bcb("mTicketAdapter");
       }
-      paramccw.Vl("");
+      paramchq.YU("");
     }
   }
   
-  private final void bTz()
+  private final void bYe()
   {
     AppMethodBeat.i(112543);
-    ac.i("MicroMsg.CardTicketListUI", "do get ticket: %s, %s, %s, %s", new Object[] { Integer.valueOf(this.offset), Integer.valueOf(this.ohj), Boolean.valueOf(this.ohk), Boolean.valueOf(this.isLoading) });
-    if ((!this.ohk) && (!this.isLoading))
+    ad.i("MicroMsg.CardTicketListUI", "do get ticket: %s, %s, %s, %s", new Object[] { Integer.valueOf(this.offset), Integer.valueOf(this.oKC), Boolean.valueOf(this.oKD), Boolean.valueOf(this.isLoading) });
+    if ((!this.oKD) && (!this.isLoading))
     {
       this.isLoading = true;
-      this.oiW = new i(this.offset, this.ohj, this.dmL, this.doB);
-      i locali = this.oiW;
+      this.oMs = new i(this.offset, this.oKC, this.dyz, this.dAp);
+      i locali = this.oMs;
       if (locali == null) {
-        k.fOy();
+        p.gfZ();
       }
-      locali.aBB().b((com.tencent.mm.vending.c.a)new c(this));
+      locali.aED().b((com.tencent.mm.vending.c.a)new c(this));
     }
     AppMethodBeat.o(112543);
   }
@@ -238,15 +259,15 @@ public final class CardTicketListUI
   public final void V(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(112540);
-    ac.i("MicroMsg.CardTicketListUI", "location finish: [%s, %s], ret: %s, isOk: %s", new Object[] { Float.valueOf(this.dmL), Float.valueOf(this.doB), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    if (this.fPJ)
+    ad.i("MicroMsg.CardTicketListUI", "location finish: [%s, %s], ret: %s, isOk: %s", new Object[] { Float.valueOf(this.dyz), Float.valueOf(this.dAp), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    if (this.gjj)
     {
-      bTz();
+      bYe();
       AppMethodBeat.o(112540);
       return;
     }
     if (!paramBoolean) {
-      bTy();
+      bYd();
     }
     AppMethodBeat.o(112540);
   }
@@ -260,61 +281,61 @@ public final class CardTicketListUI
   {
     AppMethodBeat.i(112537);
     Object localObject1 = findViewById(2131298893);
-    k.g(localObject1, "findViewById(R.id.ctlu_rv)");
-    this.oiv = ((LoadMoreRecyclerView)localObject1);
-    this.oiw = new a();
-    localObject1 = this.oiv;
+    p.g(localObject1, "findViewById(R.id.ctlu_rv)");
+    this.oLP = ((LoadMoreRecyclerView)localObject1);
+    this.oLQ = new a();
+    localObject1 = this.oLP;
     if (localObject1 == null) {
-      k.aVY("mTicketRv");
+      p.bcb("mTicketRv");
     }
-    Object localObject2 = this.oiw;
+    Object localObject2 = this.oLQ;
     if (localObject2 == null) {
-      k.aVY("mTicketAdapter");
+      p.bcb("mTicketAdapter");
     }
     ((LoadMoreRecyclerView)localObject1).setAdapter((RecyclerView.a)localObject2);
-    localObject1 = this.oiv;
+    localObject1 = this.oLP;
     if (localObject1 == null) {
-      k.aVY("mTicketRv");
+      p.bcb("mTicketRv");
     }
     getContext();
     ((LoadMoreRecyclerView)localObject1).setLayoutManager((RecyclerView.i)new LinearLayoutManager());
     localObject1 = new w((Context)this);
     ((w)localObject1).setDrawable(getResources().getDrawable(2131231459));
-    localObject2 = this.oiv;
+    localObject2 = this.oLP;
     if (localObject2 == null) {
-      k.aVY("mTicketRv");
+      p.bcb("mTicketRv");
     }
     ((LoadMoreRecyclerView)localObject2).b((RecyclerView.h)localObject1);
-    localObject1 = this.oiv;
+    localObject1 = this.oLP;
     if (localObject1 == null) {
-      k.aVY("mTicketRv");
+      p.bcb("mTicketRv");
     }
     ((LoadMoreRecyclerView)localObject1).setLoadingView(2131493294);
     localObject1 = findViewById(2131298280);
-    k.g(localObject1, "findViewById(R.id.chpe_root_layout)");
-    this.oiV = ((ViewGroup)localObject1);
-    localObject1 = this.oiv;
+    p.g(localObject1, "findViewById(R.id.chpe_root_layout)");
+    this.oMr = ((ViewGroup)localObject1);
+    localObject1 = this.oLP;
     if (localObject1 == null) {
-      k.aVY("mTicketRv");
+      p.bcb("mTicketRv");
     }
-    localObject2 = this.oiV;
+    localObject2 = this.oMr;
     if (localObject2 == null) {
-      k.aVY("mEmptyView");
+      p.bcb("mEmptyView");
     }
     ((LoadMoreRecyclerView)localObject1).setEmptyView((View)localObject2);
-    localObject1 = this.oiv;
+    localObject1 = this.oLP;
     if (localObject1 == null) {
-      k.aVY("mTicketRv");
+      p.bcb("mTicketRv");
     }
     ((LoadMoreRecyclerView)localObject1).setOnLoadingStateChangedListener((LoadMoreRecyclerView.a)new d(this));
-    localObject1 = this.oiv;
+    localObject1 = this.oLP;
     if (localObject1 == null) {
-      k.aVY("mTicketRv");
+      p.bcb("mTicketRv");
     }
     ((LoadMoreRecyclerView)localObject1).setOnItemClickListener((MRecyclerView.a)new e(this));
-    localObject1 = this.oiv;
+    localObject1 = this.oLP;
     if (localObject1 == null) {
-      k.aVY("mTicketRv");
+      p.bcb("mTicketRv");
     }
     ((LoadMoreRecyclerView)localObject1).setOnItemLongClickListener((MRecyclerView.b)new f(this));
     AppMethodBeat.o(112537);
@@ -354,8 +375,8 @@ public final class CardTicketListUI
       if (paramIntent != null) {
         localObject1 = paramIntent.getStringExtra("key_card_id");
       }
-      k.g(localObject1, "cardId");
-      Vm((String)localObject1);
+      p.g(localObject1, "cardId");
+      YV((String)localObject1);
       break;
       label110:
       if (((Integer)localObject1).intValue() != 2) {
@@ -371,17 +392,19 @@ public final class CardTicketListUI
     super.onCreate(paramBundle);
     hideActionbarLine();
     initView();
-    paramBundle = new ccw();
-    ccx localccx1 = new ccx();
-    ccx localccx2 = new ccx();
-    Object localObject = com.tencent.mm.plugin.card.model.a.a.nXE;
-    k.h(paramBundle, "jumpList");
-    k.h(localccx1, "ticketList");
-    k.h(localccx2, "licenseList");
-    ac.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "load ticket page snapshot");
-    localObject = g.agR();
-    k.g(localObject, "MMKernel.storage()");
-    localObject = (String)((e)localObject).agA().i(ah.a.GSh);
+    paramBundle = new chq();
+    chr localchr1 = new chr();
+    chr localchr2 = new chr();
+    chs localchs = new chs();
+    Object localObject = com.tencent.mm.plugin.card.model.a.a.oAY;
+    p.h(paramBundle, "jumpList");
+    p.h(localchr1, "ticketList");
+    p.h(localchr2, "licenseList");
+    p.h(localchs, "underList");
+    ad.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "load ticket page snapshot");
+    localObject = com.tencent.mm.kernel.g.ajC();
+    p.g(localObject, "MMKernel.storage()");
+    localObject = (String)((e)localObject).ajl().i(al.a.IEL);
     Charset localCharset;
     if (localObject != null)
     {
@@ -393,12 +416,12 @@ public final class CardTicketListUI
         throw paramBundle;
       }
       localObject = ((String)localObject).getBytes(localCharset);
-      k.g(localObject, "(this as java.lang.String).getBytes(charset)");
+      p.g(localObject, "(this as java.lang.String).getBytes(charset)");
       paramBundle.parseFrom((byte[])localObject);
     }
-    localObject = g.agR();
-    k.g(localObject, "MMKernel.storage()");
-    localObject = (String)((e)localObject).agA().i(ah.a.GSi);
+    localObject = com.tencent.mm.kernel.g.ajC();
+    p.g(localObject, "MMKernel.storage()");
+    localObject = (String)((e)localObject).ajl().i(al.a.IEM);
     if (localObject != null)
     {
       localCharset = d.ISO_8859_1;
@@ -409,12 +432,12 @@ public final class CardTicketListUI
         throw paramBundle;
       }
       localObject = ((String)localObject).getBytes(localCharset);
-      k.g(localObject, "(this as java.lang.String).getBytes(charset)");
-      localccx1.parseFrom((byte[])localObject);
+      p.g(localObject, "(this as java.lang.String).getBytes(charset)");
+      localchr1.parseFrom((byte[])localObject);
     }
-    localObject = g.agR();
-    k.g(localObject, "MMKernel.storage()");
-    localObject = (String)((e)localObject).agA().i(ah.a.GSj);
+    localObject = com.tencent.mm.kernel.g.ajC();
+    p.g(localObject, "MMKernel.storage()");
+    localObject = (String)((e)localObject).ajl().i(al.a.IEN);
     if (localObject != null)
     {
       localCharset = d.ISO_8859_1;
@@ -425,14 +448,30 @@ public final class CardTicketListUI
         throw paramBundle;
       }
       localObject = ((String)localObject).getBytes(localCharset);
-      k.g(localObject, "(this as java.lang.String).getBytes(charset)");
-      localccx2.parseFrom((byte[])localObject);
+      p.g(localObject, "(this as java.lang.String).getBytes(charset)");
+      localchr2.parseFrom((byte[])localObject);
     }
-    a(paramBundle, localccx1, localccx2);
+    localObject = com.tencent.mm.kernel.g.ajC();
+    p.g(localObject, "MMKernel.storage()");
+    localObject = (String)((e)localObject).ajl().i(al.a.IEO);
+    if (localObject != null)
+    {
+      localCharset = d.ISO_8859_1;
+      if (localObject == null)
+      {
+        paramBundle = new v("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(112536);
+        throw paramBundle;
+      }
+      localObject = ((String)localObject).getBytes(localCharset);
+      p.g(localObject, "(this as java.lang.String).getBytes(charset)");
+      localchs.parseFrom((byte[])localObject);
+    }
+    a(paramBundle, localchr1, localchr2, localchs);
     setMMTitle(2131764415);
     setBackBtn((MenuItem.OnMenuItemClickListener)new CardTicketListUI.g(this));
     addIconOptionMenu(0, 2131690603, (MenuItem.OnMenuItemClickListener)new CardTicketListUI.h(this));
-    com.tencent.mm.plugin.report.service.h.wUl.f(16322, new Object[] { Integer.valueOf(6) });
+    com.tencent.mm.plugin.report.service.g.yhR.f(16322, new Object[] { Integer.valueOf(6) });
     AppMethodBeat.o(112536);
   }
   
@@ -440,64 +479,76 @@ public final class CardTicketListUI
   {
     AppMethodBeat.i(112538);
     super.onDestroy();
-    Object localObject1 = this.oiW;
+    Object localObject1 = this.oMs;
     if (localObject1 != null) {
       ((i)localObject1).cancel();
     }
-    ac.i("MicroMsg.CardTicketListUI", "do save snapshot");
-    Object localObject3 = new ccw();
-    ((ccw)localObject3).Frz = new LinkedList();
-    localObject1 = this.oiO.iterator();
+    ad.i("MicroMsg.CardTicketListUI", "do save snapshot");
+    Object localObject4 = new chq();
+    ((chq)localObject4).Hbm = new LinkedList();
+    localObject1 = this.oMi.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = ((b)((Iterator)localObject1).next()).oiT;
+      localObject2 = ((b)((Iterator)localObject1).next()).oMo;
       if (localObject2 != null) {
-        ((ccw)localObject3).Frz.add(localObject2);
+        ((chq)localObject4).Hbm.add(localObject2);
       }
     }
-    Object localObject2 = new ccx();
-    ((ccx)localObject2).FrA = new LinkedList();
-    localObject1 = this.oiM.iterator();
+    Object localObject3 = new chr();
+    ((chr)localObject3).Hbn = new LinkedList();
+    localObject1 = this.oMg.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject4 = ((b)((Iterator)localObject1).next()).oiU;
-      if (localObject4 != null) {
-        ((ccx)localObject2).FrA.add(localObject4);
+      localObject2 = ((b)((Iterator)localObject1).next()).oMp;
+      if (localObject2 != null) {
+        ((chr)localObject3).Hbn.add(localObject2);
       }
     }
-    localObject1 = new ccx();
-    ((ccx)localObject1).FrA = new LinkedList();
-    Object localObject4 = this.oiN.iterator();
-    while (((Iterator)localObject4).hasNext())
+    Object localObject2 = new chr();
+    ((chr)localObject2).Hbn = new LinkedList();
+    localObject1 = this.oMh.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      ccu localccu = ((b)((Iterator)localObject4).next()).oiU;
-      if (localccu != null) {
-        ((ccx)localObject1).FrA.add(localccu);
+      localObject5 = ((b)((Iterator)localObject1).next()).oMp;
+      if (localObject5 != null) {
+        ((chr)localObject2).Hbn.add(localObject5);
       }
     }
-    localObject4 = com.tencent.mm.plugin.card.model.a.a.nXE;
-    k.h(localObject3, "jumpList");
-    k.h(localObject2, "ticketList");
-    k.h(localObject1, "licenseList");
-    ac.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "save ticket page snapshot");
-    localObject3 = ((ccw)localObject3).toByteArray();
-    k.g(localObject3, "jumpList.toByteArray()");
+    localObject1 = new chs();
+    Object localObject5 = this.oMl;
+    if (localObject5 != null) {
+      ((chs)localObject1).Hbo = ((b)localObject5).oMq;
+    }
+    localObject5 = com.tencent.mm.plugin.card.model.a.a.oAY;
+    p.h(localObject4, "jumpList");
+    p.h(localObject3, "ticketList");
+    p.h(localObject2, "licenseList");
+    p.h(localObject1, "underList");
+    ad.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "save ticket page snapshot");
+    localObject4 = ((chq)localObject4).toByteArray();
+    p.g(localObject4, "jumpList.toByteArray()");
+    localObject4 = new String((byte[])localObject4, d.ISO_8859_1);
+    localObject5 = com.tencent.mm.kernel.g.ajC();
+    p.g(localObject5, "MMKernel.storage()");
+    ((e)localObject5).ajl().set(al.a.IEL, localObject4);
+    localObject3 = ((chr)localObject3).toByteArray();
+    p.g(localObject3, "ticketList.toByteArray()");
     localObject3 = new String((byte[])localObject3, d.ISO_8859_1);
-    localObject4 = g.agR();
-    k.g(localObject4, "MMKernel.storage()");
-    ((e)localObject4).agA().set(ah.a.GSh, localObject3);
-    localObject2 = ((ccx)localObject2).toByteArray();
-    k.g(localObject2, "ticketList.toByteArray()");
+    localObject4 = com.tencent.mm.kernel.g.ajC();
+    p.g(localObject4, "MMKernel.storage()");
+    ((e)localObject4).ajl().set(al.a.IEM, localObject3);
+    localObject2 = ((chr)localObject2).toByteArray();
+    p.g(localObject2, "licenseList.toByteArray()");
     localObject2 = new String((byte[])localObject2, d.ISO_8859_1);
-    localObject3 = g.agR();
-    k.g(localObject3, "MMKernel.storage()");
-    ((e)localObject3).agA().set(ah.a.GSi, localObject2);
-    localObject1 = ((ccx)localObject1).toByteArray();
-    k.g(localObject1, "licenseList.toByteArray()");
+    localObject3 = com.tencent.mm.kernel.g.ajC();
+    p.g(localObject3, "MMKernel.storage()");
+    ((e)localObject3).ajl().set(al.a.IEN, localObject2);
+    localObject1 = ((chs)localObject1).toByteArray();
+    p.g(localObject1, "underList.toByteArray()");
     localObject1 = new String((byte[])localObject1, d.ISO_8859_1);
-    localObject2 = g.agR();
-    k.g(localObject2, "MMKernel.storage()");
-    ((e)localObject2).agA().set(ah.a.GSj, localObject1);
+    localObject2 = com.tencent.mm.kernel.g.ajC();
+    p.g(localObject2, "MMKernel.storage()");
+    ((e)localObject2).ajl().set(al.a.IEO, localObject1);
     AppMethodBeat.o(112538);
   }
   
@@ -507,35 +558,35 @@ public final class CardTicketListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/DeleteCardInTicketListResponse;", "call"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/DeleteCardInTicketListResponse;", "call"})
   static final class b<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     b(CardTicketListUI paramCardTicketListUI, String paramString) {}
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetMktTicketHomePageResponse;", "call"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetMktTicketHomePageResponse;", "call"})
   static final class c<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     c(CardTicketListUI paramCardTicketListUI) {}
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "parent", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "kotlin.jvm.PlatformType", "adapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "onLoadMore"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "parent", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "kotlin.jvm.PlatformType", "adapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "onLoadMore"})
   static final class d
     implements LoadMoreRecyclerView.a
   {
     d(CardTicketListUI paramCardTicketListUI) {}
     
-    public final void bwz()
+    public final void bAF()
     {
-      AppMethodBeat.i(206252);
-      CardTicketListUI.a(this.oiY);
-      AppMethodBeat.o(206252);
+      AppMethodBeat.i(215448);
+      CardTicketListUI.a(this.oMu);
+      AppMethodBeat.o(215448);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "parent", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemClick"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "parent", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemClick"})
   static final class e
     implements MRecyclerView.a
   {
@@ -543,9 +594,9 @@ public final class CardTicketListUI
     
     public final void T(View paramView, int paramInt)
     {
-      AppMethodBeat.i(206253);
-      ac.i("MicroMsg.CardTicketListUI", "click item");
-      paramView = CardTicketListUI.b(this.oiY).Ab(paramInt);
+      AppMethodBeat.i(215449);
+      ad.i("MicroMsg.CardTicketListUI", "click item");
+      paramView = CardTicketListUI.b(this.oMu).AK(paramInt);
       if (paramView != null)
       {
         switch (paramView.type)
@@ -553,48 +604,69 @@ public final class CardTicketListUI
         }
         do
         {
-          AppMethodBeat.o(206253);
+          AppMethodBeat.o(215449);
           return;
-          paramView = paramView.oiT;
+          paramView = paramView.oMo;
           if (paramView != null) {
-            switch (paramView.Frv)
+            switch (paramView.GTN)
             {
             }
           }
           for (;;)
           {
-            com.tencent.mm.plugin.report.service.h.wUl.f(16322, new Object[] { Integer.valueOf(7) });
-            AppMethodBeat.o(206253);
+            com.tencent.mm.plugin.report.service.g.yhR.f(16322, new Object[] { Integer.valueOf(7) });
+            AppMethodBeat.o(215449);
             return;
-            com.tencent.mm.plugin.card.d.b.a((MMActivity)this.oiY, paramView.Frw);
+            com.tencent.mm.plugin.card.d.b.a((MMActivity)this.oMu, paramView.Hbj);
             continue;
-            paramView = paramView.Frx;
+            paramView = paramView.Hbk;
             if (paramView != null) {
-              com.tencent.mm.plugin.card.d.b.H(paramView.AZE, paramView.AZF, paramView.BGS);
+              com.tencent.mm.plugin.card.d.b.I(paramView.CzQ, paramView.CzR, paramView.Dhk);
             }
           }
-          paramView = paramView.oiU;
+          paramView = paramView.oMp;
+          if (paramView != null)
+          {
+            Object localObject = this.oMu;
+            String str1 = paramView.FrW;
+            p.g(str1, "user_card_id");
+            CardTicketListUI.a((CardTicketListUI)localObject, str1);
+            com.tencent.mm.plugin.report.service.g.yhR.f(16322, new Object[] { Integer.valueOf(10) });
+            localObject = com.tencent.mm.plugin.report.service.g.yhR;
+            paramInt = paramView.Hbc;
+            str1 = paramView.FrW;
+            a locala = CardTicketListUI.b(this.oMu);
+            String str2 = paramView.FrW;
+            p.g(str2, "user_card_id");
+            ((com.tencent.mm.plugin.report.service.g)localObject).f(16326, new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(locala.cG(str2, paramView.Hbc)), Integer.valueOf(1) });
+            AppMethodBeat.o(215449);
+            return;
+          }
+          AppMethodBeat.o(215449);
+          return;
+          paramView = paramView.oMq;
         } while (paramView == null);
-        Object localObject = this.oiY;
-        String str1 = paramView.DMR;
-        k.g(str1, "user_card_id");
-        CardTicketListUI.a((CardTicketListUI)localObject, str1);
-        com.tencent.mm.plugin.report.service.h.wUl.f(16322, new Object[] { Integer.valueOf(10) });
-        localObject = com.tencent.mm.plugin.report.service.h.wUl;
-        paramInt = paramView.Fro;
-        str1 = paramView.DMR;
-        a locala = CardTicketListUI.b(this.oiY);
-        String str2 = paramView.DMR;
-        k.g(str2, "user_card_id");
-        ((com.tencent.mm.plugin.report.service.h)localObject).f(16326, new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(locala.cD(str2, paramView.Fro)), Integer.valueOf(1) });
-        AppMethodBeat.o(206253);
+        switch (paramView.GTN)
+        {
+        }
+        do
+        {
+          AppMethodBeat.o(215449);
+          return;
+          com.tencent.mm.plugin.card.d.b.a((MMActivity)this.oMu, paramView.GTO);
+          AppMethodBeat.o(215449);
+          return;
+          paramView = paramView.GTP;
+        } while (paramView == null);
+        com.tencent.mm.plugin.card.d.b.I(paramView.CzQ, paramView.CzR, paramView.Dhk);
+        AppMethodBeat.o(215449);
         return;
       }
-      AppMethodBeat.o(206253);
+      AppMethodBeat.o(215449);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "parent", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemLongClick"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "parent", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemLongClick"})
   static final class f
     implements MRecyclerView.b
   {
@@ -602,122 +674,122 @@ public final class CardTicketListUI
     
     public final boolean U(final View paramView, int paramInt)
     {
-      AppMethodBeat.i(206258);
-      ac.i("MicroMsg.CardTicketListUI", "long click item");
-      Object localObject = CardTicketListUI.b(this.oiY).Ab(paramInt);
+      AppMethodBeat.i(215454);
+      ad.i("MicroMsg.CardTicketListUI", "long click item");
+      Object localObject = CardTicketListUI.b(this.oMu).AK(paramInt);
       if (localObject != null)
       {
-        paramView = ((b)localObject).oiU;
+        paramView = ((b)localObject).oMp;
         switch (((b)localObject).type)
         {
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(206258);
+        AppMethodBeat.o(215454);
         return false;
-        localObject = new com.tencent.mm.ui.tools.l((Context)this.oiY.getContext());
-        ((com.tencent.mm.ui.tools.l)localObject).a((n.c)new n.c()
+        localObject = new com.tencent.mm.ui.tools.l((Context)this.oMu.getContext());
+        ((com.tencent.mm.ui.tools.l)localObject).a((n.d)new n.d()
         {
           public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
           {
-            AppMethodBeat.i(206254);
-            paramAnonymousl.c(1, (CharSequence)this.oiZ.oiY.getString(2131755707));
-            AppMethodBeat.o(206254);
+            AppMethodBeat.i(215450);
+            paramAnonymousl.c(1, (CharSequence)this.oMv.oMu.getString(2131755707));
+            AppMethodBeat.o(215450);
           }
         });
-        ((com.tencent.mm.ui.tools.l)localObject).a((n.d)new n.d()
+        ((com.tencent.mm.ui.tools.l)localObject).a((n.e)new n.e()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
           {
-            AppMethodBeat.i(206257);
-            k.g(paramAnonymousMenuItem, "menuItem");
+            AppMethodBeat.i(215453);
+            p.g(paramAnonymousMenuItem, "menuItem");
             switch (paramAnonymousMenuItem.getItemId())
             {
             }
             for (;;)
             {
-              AppMethodBeat.o(206257);
+              AppMethodBeat.o(215453);
               return;
               if (paramView != null)
               {
-                com.tencent.mm.ui.base.h.a((Context)this.oiZ.oiY.getContext(), this.oiZ.oiY.getString(2131756898), "", this.oiZ.oiY.getString(2131755835), this.oiZ.oiY.getString(2131755691), false, (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
+                h.a((Context)this.oMv.oMu.getContext(), this.oMv.oMu.getString(2131756898), "", this.oMv.oMu.getString(2131755835), this.oMv.oMu.getString(2131755691), false, (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                   {
-                    AppMethodBeat.i(206255);
-                    Object localObject1 = this.ojb.oiZ.oiY;
-                    Object localObject2 = this.ojb.oja;
+                    AppMethodBeat.i(215451);
+                    Object localObject1 = this.oMx.oMv.oMu;
+                    Object localObject2 = this.oMx.oMw;
                     if (localObject2 == null) {
-                      k.fOy();
+                      p.gfZ();
                     }
-                    localObject2 = ((ccu)localObject2).DMR;
-                    k.g(localObject2, "ticketElement!!.user_card_id");
+                    localObject2 = ((cho)localObject2).FrW;
+                    p.g(localObject2, "ticketElement!!.user_card_id");
                     CardTicketListUI.b((CardTicketListUI)localObject1, (String)localObject2);
                     paramAnonymous2DialogInterface.dismiss();
-                    paramAnonymous2DialogInterface = com.tencent.mm.plugin.report.service.h.wUl;
-                    localObject1 = this.ojb.oja;
+                    paramAnonymous2DialogInterface = com.tencent.mm.plugin.report.service.g.yhR;
+                    localObject1 = this.oMx.oMw;
                     if (localObject1 == null) {
-                      k.fOy();
+                      p.gfZ();
                     }
-                    paramAnonymous2Int = ((ccu)localObject1).Fro;
-                    localObject1 = this.ojb.oja;
+                    paramAnonymous2Int = ((cho)localObject1).Hbc;
+                    localObject1 = this.oMx.oMw;
                     if (localObject1 == null) {
-                      k.fOy();
+                      p.gfZ();
                     }
-                    localObject1 = ((ccu)localObject1).DMR;
-                    localObject2 = CardTicketListUI.b(this.ojb.oiZ.oiY);
-                    Object localObject3 = this.ojb.oja;
+                    localObject1 = ((cho)localObject1).FrW;
+                    localObject2 = CardTicketListUI.b(this.oMx.oMv.oMu);
+                    Object localObject3 = this.oMx.oMw;
                     if (localObject3 == null) {
-                      k.fOy();
+                      p.gfZ();
                     }
-                    localObject3 = ((ccu)localObject3).DMR;
-                    k.g(localObject3, "ticketElement!!.user_card_id");
-                    ccu localccu = this.ojb.oja;
-                    if (localccu == null) {
-                      k.fOy();
+                    localObject3 = ((cho)localObject3).FrW;
+                    p.g(localObject3, "ticketElement!!.user_card_id");
+                    cho localcho = this.oMx.oMw;
+                    if (localcho == null) {
+                      p.gfZ();
                     }
-                    paramAnonymous2DialogInterface.f(16326, new Object[] { Integer.valueOf(paramAnonymous2Int), localObject1, Integer.valueOf(((a)localObject2).cD((String)localObject3, localccu.Fro)), Integer.valueOf(4) });
-                    AppMethodBeat.o(206255);
+                    paramAnonymous2DialogInterface.f(16326, new Object[] { Integer.valueOf(paramAnonymous2Int), localObject1, Integer.valueOf(((a)localObject2).cG((String)localObject3, localcho.Hbc)), Integer.valueOf(4) });
+                    AppMethodBeat.o(215451);
                   }
-                }, (DialogInterface.OnClickListener)CardTicketListUI.f.2.2.ojc);
-                paramAnonymousMenuItem = com.tencent.mm.plugin.report.service.h.wUl;
+                }, (DialogInterface.OnClickListener)CardTicketListUI.f.2.2.oMy);
+                paramAnonymousMenuItem = com.tencent.mm.plugin.report.service.g.yhR;
                 Object localObject1 = paramView;
                 if (localObject1 == null) {
-                  k.fOy();
+                  p.gfZ();
                 }
-                paramAnonymousInt = ((ccu)localObject1).Fro;
+                paramAnonymousInt = ((cho)localObject1).Hbc;
                 localObject1 = paramView;
                 if (localObject1 == null) {
-                  k.fOy();
+                  p.gfZ();
                 }
-                localObject1 = ((ccu)localObject1).DMR;
-                a locala = CardTicketListUI.b(this.oiZ.oiY);
+                localObject1 = ((cho)localObject1).FrW;
+                a locala = CardTicketListUI.b(this.oMv.oMu);
                 Object localObject2 = paramView;
                 if (localObject2 == null) {
-                  k.fOy();
+                  p.gfZ();
                 }
-                localObject2 = ((ccu)localObject2).DMR;
-                k.g(localObject2, "ticketElement!!.user_card_id");
-                ccu localccu = paramView;
-                if (localccu == null) {
-                  k.fOy();
+                localObject2 = ((cho)localObject2).FrW;
+                p.g(localObject2, "ticketElement!!.user_card_id");
+                cho localcho = paramView;
+                if (localcho == null) {
+                  p.gfZ();
                 }
-                paramAnonymousMenuItem.f(16326, new Object[] { Integer.valueOf(paramAnonymousInt), localObject1, Integer.valueOf(locala.cD((String)localObject2, localccu.Fro)), Integer.valueOf(3) });
+                paramAnonymousMenuItem.f(16326, new Object[] { Integer.valueOf(paramAnonymousInt), localObject1, Integer.valueOf(locala.cG((String)localObject2, localcho.Hbc)), Integer.valueOf(3) });
               }
             }
           }
         });
-        ((com.tencent.mm.ui.tools.l)localObject).ftL();
+        ((com.tencent.mm.ui.tools.l)localObject).fKy();
         if (paramView != null)
         {
-          localObject = com.tencent.mm.plugin.report.service.h.wUl;
-          paramInt = paramView.Fro;
-          String str1 = paramView.DMR;
-          a locala = CardTicketListUI.b(this.oiY);
-          String str2 = paramView.DMR;
-          k.g(str2, "user_card_id");
-          ((com.tencent.mm.plugin.report.service.h)localObject).f(16326, new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(locala.cD(str2, paramView.Fro)), Integer.valueOf(2) });
+          localObject = com.tencent.mm.plugin.report.service.g.yhR;
+          paramInt = paramView.Hbc;
+          String str1 = paramView.FrW;
+          a locala = CardTicketListUI.b(this.oMu);
+          String str2 = paramView.FrW;
+          p.g(str2, "user_card_id");
+          ((com.tencent.mm.plugin.report.service.g)localObject).f(16326, new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(locala.cG(str2, paramView.Hbc)), Integer.valueOf(2) });
         }
       }
     }
@@ -725,7 +797,7 @@ public final class CardTicketListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.v2.CardTicketListUI
  * JD-Core Version:    0.7.0.1
  */

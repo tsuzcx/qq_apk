@@ -7,18 +7,18 @@ import com.tencent.xweb.j;
 public final class g$f
   implements j
 {
-  HttpAuthHandler KEw;
+  HttpAuthHandler MuW;
   
   public g$f(HttpAuthHandler paramHttpAuthHandler)
   {
-    this.KEw = paramHttpAuthHandler;
+    this.MuW = paramHttpAuthHandler;
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(208884);
-    this.KEw.cancel();
-    AppMethodBeat.o(208884);
+    AppMethodBeat.i(195515);
+    this.MuW.cancel();
+    AppMethodBeat.o(195515);
   }
 }
 

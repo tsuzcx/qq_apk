@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends f
 {
-  protected final byte[] G(int paramInt1, int paramInt2, int paramInt3)
+  protected final byte[] H(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136835);
     int j = 0;
@@ -16,16 +16,16 @@ public final class b
       if (k < paramInt1)
       {
         if (k == 0) {}
-        for (i = this.cTj[k][j];; i = (int)((i + this.cTj[k][j]) / Math.sqrt(2.0D)))
+        for (i = this.dez[k][j];; i = (int)((i + this.dez[k][j]) / Math.sqrt(2.0D)))
         {
           k += 1;
           break;
         }
       }
-      this.cTm[j] = hC(i);
+      this.deC[j] = hJ(i);
       j += 1;
     }
-    byte[] arrayOfByte = ce(paramInt3, paramInt2);
+    byte[] arrayOfByte = cg(paramInt3, paramInt2);
     AppMethodBeat.o(136835);
     return arrayOfByte;
   }

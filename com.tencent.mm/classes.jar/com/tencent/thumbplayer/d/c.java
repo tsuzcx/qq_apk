@@ -2,10 +2,10 @@ package com.tencent.thumbplayer.d;
 
 final class c
 {
-  public static String KgU = "base_video";
-  private static int KgV = 0;
-  private static int KgW = 0;
-  private static int KgX = 0;
+  public static String Mak = "base_video";
+  private static int Mal = 0;
+  private static int Mam = 0;
+  private static int Man = 0;
 }
 
 

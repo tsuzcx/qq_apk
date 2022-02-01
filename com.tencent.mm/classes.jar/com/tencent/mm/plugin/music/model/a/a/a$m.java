@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamRequest;
 import com.tencent.mm.plugin.music.model.e.c;
 import com.tencent.mm.plugin.music.model.e.d;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a$m
   implements k<IPCAudioParamRequest, IPCVoid>
@@ -18,17 +18,17 @@ public final class a$m
     AppMethodBeat.i(63090);
     try
     {
-      ac.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updateMusicFileCacheComplete Task, musicId:%s, complete:%d", new Object[] { paramIPCAudioParamRequest.dnX, Integer.valueOf(paramIPCAudioParamRequest.vej) });
-      String str = paramIPCAudioParamRequest.dnX;
-      int i = paramIPCAudioParamRequest.vej;
-      paramIPCAudioParamRequest = com.tencent.mm.plugin.music.model.f.diV();
+      ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updateMusicFileCacheComplete Task, musicId:%s, complete:%d", new Object[] { paramIPCAudioParamRequest.dzL, Integer.valueOf(paramIPCAudioParamRequest.wjF) });
+      String str = paramIPCAudioParamRequest.dzL;
+      int i = paramIPCAudioParamRequest.wjF;
+      paramIPCAudioParamRequest = com.tencent.mm.plugin.music.model.f.dth();
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("fileCacheComplete", Integer.valueOf(i));
       if (i == 1) {
         localContentValues.put("removeDirtyBit", Integer.valueOf(1));
       }
-      ac.i("MicroMsg.Music.PieceMusicInfoStorage", "updateMusicFileCacheComplete raw=%d musicId=%s fileCacheComplete=%d", new Object[] { Integer.valueOf(paramIPCAudioParamRequest.db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { str })), str, Integer.valueOf(i) });
-      paramIPCAudioParamRequest = (c)paramIPCAudioParamRequest.vgu.get(str);
+      ad.i("MicroMsg.Music.PieceMusicInfoStorage", "updateMusicFileCacheComplete raw=%d musicId=%s fileCacheComplete=%d", new Object[] { Integer.valueOf(paramIPCAudioParamRequest.db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { str })), str, Integer.valueOf(i) });
+      paramIPCAudioParamRequest = (c)paramIPCAudioParamRequest.wlP.get(str);
       if (paramIPCAudioParamRequest != null)
       {
         paramIPCAudioParamRequest.field_fileCacheComplete = i;
@@ -41,7 +41,7 @@ public final class a$m
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc updateMusicFileCacheComplete task", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc updateMusicFileCacheComplete task", new Object[0]);
       }
     }
     paramIPCAudioParamRequest = new IPCVoid();

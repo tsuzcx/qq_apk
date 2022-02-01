@@ -11,12 +11,12 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.tf;
-import com.tencent.mm.pluginsdk.g;
+import com.tencent.mm.g.a.tx;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h.c;
 import com.tencent.mm.ui.s.b;
@@ -32,20 +32,20 @@ public class SightUploadUI
   extends MMActivity
 {
   private String desc = "";
-  private int yBU = 0;
-  private int yCc = 0;
-  private int yCd = 0;
-  private SnsEditText yEK;
-  private ab yEL = null;
-  private LinearLayout yEM;
-  private SnsSightUploadSayFooter yEN;
-  private ArrayList<String> yEO;
-  private boolean yEP = false;
-  private boolean yEQ = false;
-  private long yER = 0L;
-  DisplayMetrics yES;
-  private String yEk = "";
-  private String yEl = "";
+  private int zTo = 0;
+  private int zTw = 0;
+  private int zTx = 0;
+  private String zVF = "";
+  private String zVG = "";
+  private SnsEditText zWf;
+  private ac zWg = null;
+  private LinearLayout zWh;
+  private SnsSightUploadSayFooter zWi;
+  private ArrayList<String> zWj;
+  private boolean zWk = false;
+  private boolean zWl = false;
+  private long zWm = 0L;
+  DisplayMetrics zWn;
   
   public int getLayoutId()
   {
@@ -55,49 +55,49 @@ public class SightUploadUI
   public void initView()
   {
     AppMethodBeat.i(98281);
-    this.yEK = ((SnsEditText)findViewById(2131304971));
-    int i = this.yEK.getPaddingLeft();
-    int j = this.yEM.getPaddingRight();
-    int k = this.yES.widthPixels;
-    this.yEK.postDelayed(new Runnable()
+    this.zWf = ((SnsEditText)findViewById(2131304971));
+    int i = this.zWf.getPaddingLeft();
+    int j = this.zWh.getPaddingRight();
+    int k = this.zWn.widthPixels;
+    this.zWf.postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(98272);
-        SightUploadUI.a(SightUploadUI.this).setWidth((int)(this.yET * 0.7D));
-        SightUploadUI.b(SightUploadUI.this).setLayoutParams(new LinearLayout.LayoutParams((int)(this.yET * 0.3D), SightUploadUI.b(SightUploadUI.this).getHeight()));
+        SightUploadUI.a(SightUploadUI.this).setWidth((int)(this.zWo * 0.7D));
+        SightUploadUI.b(SightUploadUI.this).setLayoutParams(new LinearLayout.LayoutParams((int)(this.zWo * 0.3D), SightUploadUI.b(SightUploadUI.this).getHeight()));
         AppMethodBeat.o(98272);
       }
     }, 100L);
-    if (!bs.isNullOrNil(getIntent().getStringExtra("Kdescription"))) {
-      this.yEK.setText(getIntent().getStringExtra("Kdescription"));
+    if (!bt.isNullOrNil(getIntent().getStringExtra("Kdescription"))) {
+      this.zWf.setText(getIntent().getStringExtra("Kdescription"));
     }
-    this.yEK.setBackListener(new MMEditText.a()
+    this.zWf.setBackListener(new MMEditText.a()
     {
       public final void onBack()
       {
         AppMethodBeat.i(98273);
         SightUploadUI.this.hideVKB();
-        tf localtf = new tf();
-        localtf.dwf.type = 0;
-        localtf.dwf.dwh = false;
-        com.tencent.mm.sdk.b.a.GpY.l(localtf);
+        tx localtx = new tx();
+        localtx.dIp.type = 0;
+        localtx.dIp.dIr = false;
+        com.tencent.mm.sdk.b.a.IbL.l(localtx);
         SightUploadUI.this.finish();
         AppMethodBeat.o(98273);
       }
     });
-    this.yEN = ((SnsSightUploadSayFooter)findViewById(2131304290));
-    this.yEN.setMMEditText(this.yEK);
-    this.yEN.setVisibility(0);
+    this.zWi = ((SnsSightUploadSayFooter)findViewById(2131304290));
+    this.zWi.setMMEditText(this.zWf);
+    this.zWi.setVisibility(0);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(98274);
-        paramAnonymousMenuItem = new tf();
-        paramAnonymousMenuItem.dwf.type = 0;
-        paramAnonymousMenuItem.dwf.dwh = false;
-        com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousMenuItem);
+        paramAnonymousMenuItem = new tx();
+        paramAnonymousMenuItem.dIp.type = 0;
+        paramAnonymousMenuItem.dIp.dIr = false;
+        com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousMenuItem);
         SightUploadUI.this.hideVKB();
         SightUploadUI.this.finish();
         AppMethodBeat.o(98274);
@@ -114,7 +114,7 @@ public class SightUploadUI
           String str = SightUploadUI.this.getString(2131763710);
           h.c local1 = new h.c()
           {
-            public final void kG(int paramAnonymous2Int)
+            public final void lf(int paramAnonymous2Int)
             {
               AppMethodBeat.i(98275);
               switch (paramAnonymous2Int)
@@ -124,11 +124,11 @@ public class SightUploadUI
               {
                 AppMethodBeat.o(98275);
                 return;
-                tf localtf = new tf();
-                localtf.dwf.type = 0;
-                localtf.dwf.dwj = true;
-                localtf.dwf.dwh = true;
-                com.tencent.mm.sdk.b.a.GpY.l(localtf);
+                tx localtx = new tx();
+                localtx.dIp.type = 0;
+                localtx.dIp.dIt = true;
+                localtx.dIp.dIr = true;
+                com.tencent.mm.sdk.b.a.IbL.l(localtx);
                 SightUploadUI.this.hideVKB();
                 SightUploadUI.this.finish();
               }
@@ -152,24 +152,24 @@ public class SightUploadUI
         }
         SightUploadUI.a(SightUploadUI.this, SightUploadUI.a(SightUploadUI.this).getText().toString());
         final int i = SightUploadUI.a(SightUploadUI.this).getPasterLen();
-        paramAnonymousMenuItem = c.d(SightUploadUI.a(SightUploadUI.this)).acw(com.tencent.mm.m.b.ZB());
-        paramAnonymousMenuItem.IVj = true;
+        paramAnonymousMenuItem = c.d(SightUploadUI.a(SightUploadUI.this)).aeU(com.tencent.mm.n.b.acb());
+        paramAnonymousMenuItem.KMn = true;
         paramAnonymousMenuItem.a(new c.a()
         {
-          public final void GK(String paramAnonymous2String)
+          public final void JZ(String paramAnonymous2String)
           {
             AppMethodBeat.i(98277);
             paramAnonymous2String = new PInt();
             SightUploadUI.j(SightUploadUI.this).a(SightUploadUI.c(SightUploadUI.this), 0, null, SightUploadUI.d(SightUploadUI.this), null, SightUploadUI.e(SightUploadUI.this).getLocation(), null, i, SightUploadUI.f(SightUploadUI.this), SightUploadUI.g(SightUploadUI.this), paramAnonymous2String, "", SightUploadUI.h(SightUploadUI.this), SightUploadUI.i(SightUploadUI.this));
-            com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.wUl;
+            g localg = g.yhR;
             long l1 = SightUploadUI.k(SightUploadUI.this);
-            long l2 = bs.aNx();
+            long l2 = bt.aQJ();
             if (SightUploadUI.l(SightUploadUI.this))
             {
               i = 0;
-              localh.f(13303, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(paramAnonymous2String.value), "" });
+              localg.f(13303, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(paramAnonymous2String.value), "" });
               l1 = SightUploadUI.k(SightUploadUI.this);
-              l2 = bs.aNx();
+              l2 = bt.aQJ();
               if (!SightUploadUI.l(SightUploadUI.this)) {
                 break label283;
               }
@@ -177,7 +177,7 @@ public class SightUploadUI
             label283:
             for (int i = 0;; i = 1)
             {
-              ac.d("MicroMsg.SightUploadUI", "reprot timelinePostAction(13303), %d, %d, %d, %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(paramAnonymous2String.value) });
+              ad.d("MicroMsg.SightUploadUI", "reprot timelinePostAction(13303), %d, %d, %d, %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(paramAnonymous2String.value) });
               AppMethodBeat.o(98277);
               return;
               i = 1;
@@ -185,9 +185,9 @@ public class SightUploadUI
             }
           }
           
-          public final void aRi() {}
+          public final void aUu() {}
           
-          public final void ca(String paramAnonymous2String)
+          public final void cU(String paramAnonymous2String)
           {
             AppMethodBeat.i(163078);
             com.tencent.mm.ui.base.h.l(SightUploadUI.this, 2131764058, 2131764059);
@@ -197,7 +197,7 @@ public class SightUploadUI
         AppMethodBeat.o(98279);
         return false;
       }
-    }, null, s.b.Hoo);
+    }, null, s.b.JbU);
     enableOptionMenu(true);
     AppMethodBeat.o(98281);
   }
@@ -214,13 +214,13 @@ public class SightUploadUI
     Object localObject1;
     if ((paramInt1 == 6) || (paramInt1 == 5) || (paramInt1 == 10))
     {
-      localObject1 = this.yEN;
+      localObject1 = this.zWi;
       if (paramIntent != null)
       {
         if (paramInt1 != 10) {
           break label81;
         }
-        ((SnsSightUploadSayFooter)localObject1).yRo.aI(paramIntent);
+        ((SnsSightUploadSayFooter)localObject1).AiO.aN(paramIntent);
       }
     }
     for (;;)
@@ -232,7 +232,7 @@ public class SightUploadUI
           return;
           label81:
           if (paramInt1 == 5) {
-            ((SnsSightUploadSayFooter)localObject1).yRn.a(paramInt1, paramInt2, paramIntent, null);
+            ((SnsSightUploadSayFooter)localObject1).AiN.a(paramInt1, paramInt2, paramIntent, null);
           }
         }
         else
@@ -240,10 +240,10 @@ public class SightUploadUI
           paramInt2 = paramIntent.getIntExtra("Ktag_range_index", 0);
           if (paramInt2 >= 2)
           {
-            this.yEk = paramIntent.getStringExtra("Klabel_name_list");
-            this.yEl = paramIntent.getStringExtra("Kother_user_name_list");
-            localObject1 = Arrays.asList(this.yEk.split(","));
-            if (bs.isNullOrNil(this.yEl)) {
+            this.zVF = paramIntent.getStringExtra("Klabel_name_list");
+            this.zVG = paramIntent.getStringExtra("Kother_user_name_list");
+            localObject1 = Arrays.asList(this.zVF.split(","));
+            if (bt.isNullOrNil(this.zVG)) {
               break label531;
             }
           }
@@ -252,9 +252,9 @@ public class SightUploadUI
     }
     label528:
     label531:
-    for (paramIntent = Arrays.asList(this.yEl.split(","));; paramIntent = null)
+    for (paramIntent = Arrays.asList(this.zVG.split(","));; paramIntent = null)
     {
-      this.yEO = new ArrayList();
+      this.zWj = new ArrayList();
       Object localObject2;
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
@@ -262,11 +262,11 @@ public class SightUploadUI
         if (localIterator.hasNext())
         {
           localObject2 = (String)localIterator.next();
-          localObject2 = com.tencent.mm.plugin.label.a.a.cWd().ajD(com.tencent.mm.plugin.label.a.a.cWd().ajA((String)localObject2));
+          localObject2 = com.tencent.mm.plugin.label.a.a.dfo().aop(com.tencent.mm.plugin.label.a.a.dfo().aom((String)localObject2));
           if ((localObject2 != null) && (((List)localObject2).size() != 0)) {
             break label324;
           }
-          ac.e("MicroMsg.SightUploadUI", "dz: getContactNamesFromLabels,namelist get bu label is null");
+          ad.e("MicroMsg.SightUploadUI", "dz: getContactNamesFromLabels,namelist get bu label is null");
         }
       }
       if (localObject1 != null)
@@ -276,7 +276,7 @@ public class SightUploadUI
         label291:
         if (((Iterator)localObject1).hasNext())
         {
-          if (bs.isNullOrNil((String)((Iterator)localObject1).next())) {
+          if (bt.isNullOrNil((String)((Iterator)localObject1).next())) {
             break label528;
           }
           paramInt1 += 1;
@@ -290,36 +290,36 @@ public class SightUploadUI
         while (((Iterator)localObject2).hasNext())
         {
           String str = (String)((Iterator)localObject2).next();
-          if (!this.yEO.contains(str))
+          if (!this.zWj.contains(str))
           {
-            this.yEO.add(str);
-            ac.d("MicroMsg.SightUploadUI", "dz:name : %s", new Object[] { str });
+            this.zWj.add(str);
+            ad.d("MicroMsg.SightUploadUI", "dz:name : %s", new Object[] { str });
           }
         }
         break;
-        this.yCc = paramInt1;
-        this.yCd = 0;
+        this.zTw = paramInt1;
+        this.zTx = 0;
         if ((paramIntent != null) && (paramIntent.size() > 0))
         {
           paramIntent = paramIntent.iterator();
           while (paramIntent.hasNext())
           {
             localObject1 = (String)paramIntent.next();
-            if (!this.yEO.contains(localObject1))
+            if (!this.zWj.contains(localObject1))
             {
-              this.yEO.add(localObject1);
-              this.yCd += 1;
+              this.zWj.add(localObject1);
+              this.zTx += 1;
             }
           }
         }
         if (paramInt2 == 2) {}
-        for (this.yEP = false; 1 == paramInt2; this.yEP = true)
+        for (this.zWk = false; 1 == paramInt2; this.zWk = true)
         {
-          this.yBU = 1;
+          this.zTo = 1;
           AppMethodBeat.o(98285);
           return;
         }
-        this.yBU = 0;
+        this.zTo = 0;
         AppMethodBeat.o(98285);
         return;
       }
@@ -329,19 +329,19 @@ public class SightUploadUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(98280);
-    g.o(this);
+    com.tencent.mm.pluginsdk.h.q(this);
     super.onCreate(paramBundle);
-    this.yES = getResources().getDisplayMetrics();
-    this.yEL = new ao(this);
-    this.yEL.ak(paramBundle);
-    this.yEM = ((LinearLayout)findViewById(2131306993));
-    this.yEM.addView(this.yEL.dNs());
+    this.zWn = getResources().getDisplayMetrics();
+    this.zWg = new ar(this);
+    this.zWg.ap(paramBundle);
+    this.zWh = ((LinearLayout)findViewById(2131306993));
+    this.zWh.addView(this.zWg.dZH());
     setMMTitle(2131764037);
     getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(2131100017));
-    this.yEQ = getIntent().getBooleanExtra("KSnsPostManu", false);
-    this.yER = getIntent().getLongExtra("KTouchCameraTime", 0L);
+    this.zWl = getIntent().getBooleanExtra("KSnsPostManu", false);
+    this.zWm = getIntent().getLongExtra("KTouchCameraTime", 0L);
     initView();
-    g.p(this);
+    com.tencent.mm.pluginsdk.h.r(this);
     AppMethodBeat.o(98280);
   }
   
@@ -349,13 +349,13 @@ public class SightUploadUI
   {
     AppMethodBeat.i(98283);
     super.onDestroy();
-    this.yEL.dNt();
-    this.yEN.yRo.stop();
-    SnsSightUploadSayFooter localSnsSightUploadSayFooter = this.yEN;
-    if (localSnsSightUploadSayFooter.fWT != null)
+    this.zWg.dZI();
+    this.zWi.AiO.stop();
+    SnsSightUploadSayFooter localSnsSightUploadSayFooter = this.zWi;
+    if (localSnsSightUploadSayFooter.pWJ != null)
     {
-      localSnsSightUploadSayFooter.fWT.eMG();
-      localSnsSightUploadSayFooter.fWT.destroy();
+      localSnsSightUploadSayFooter.pWJ.fbE();
+      localSnsSightUploadSayFooter.pWJ.destroy();
     }
     AppMethodBeat.o(98283);
   }
@@ -372,10 +372,10 @@ public class SightUploadUI
   {
     AppMethodBeat.i(98282);
     super.onResume();
-    ac.d("MicroMsg.SightUploadUI", "onResume");
-    SnsSightUploadSayFooter localSnsSightUploadSayFooter = this.yEN;
-    if (localSnsSightUploadSayFooter.fWT.getVisibility() == 8) {
-      localSnsSightUploadSayFooter.iMV.showVKB();
+    ad.d("MicroMsg.SightUploadUI", "onResume");
+    SnsSightUploadSayFooter localSnsSightUploadSayFooter = this.zWi;
+    if (localSnsSightUploadSayFooter.pWJ.getVisibility() == 8) {
+      localSnsSightUploadSayFooter.fLP.showVKB();
     }
     AppMethodBeat.o(98282);
   }

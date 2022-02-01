@@ -1,61 +1,53 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.h;
+import com.tencent.mm.plugin.finder.feed.model.internal.i;
 import com.tencent.mm.view.recyclerview.d.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/model/FeedHeaderEmptyData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "tipStr", "", "type", "", "tabType", "(Ljava/lang/CharSequence;II)V", "getTabType", "()I", "setTabType", "(I)V", "getTipStr", "()Ljava/lang/CharSequence;", "setTipStr", "(Ljava/lang/CharSequence;)V", "getType", "setType", "compare", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/model/FeedHeaderCommentFailedNotifyData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "feedId", "", "objectNonceId", "", "canRemove", "", "(JLjava/lang/String;I)V", "getCanRemove", "()I", "setCanRemove", "(I)V", "getFeedId", "()J", "getObjectNonceId", "()Ljava/lang/String;", "compare", "obj", "getItemId", "getItemType", "plugin-finder_release"})
 public final class e
   extends d.b
-  implements h
+  implements i
 {
-  public int diw;
-  public CharSequence ruA;
-  public int type;
+  public final long dtq;
+  public final String objectNonceId;
+  public int sjS;
   
-  private e(CharSequence paramCharSequence)
+  private e(long paramLong, String paramString)
   {
-    AppMethodBeat.i(166369);
-    this.ruA = paramCharSequence;
-    this.type = 0;
-    this.diw = 0;
-    AppMethodBeat.o(166369);
+    AppMethodBeat.i(166366);
+    this.dtq = paramLong;
+    this.objectNonceId = paramString;
+    this.sjS = 0;
+    AppMethodBeat.o(166366);
   }
   
-  public final void M(CharSequence paramCharSequence)
+  public final int a(i parami)
   {
-    AppMethodBeat.i(202550);
-    k.h(paramCharSequence, "<set-?>");
-    this.ruA = paramCharSequence;
-    AppMethodBeat.o(202550);
-  }
-  
-  public final int a(h paramh)
-  {
-    AppMethodBeat.i(166367);
-    k.h(paramh, "obj");
-    AppMethodBeat.o(166367);
+    AppMethodBeat.i(166364);
+    p.h(parami, "obj");
+    AppMethodBeat.o(166364);
     return 0;
   }
   
-  public final int bTF()
+  public final int bYk()
   {
-    return -1;
+    return -4;
   }
   
-  public final long lx()
+  public final long lP()
   {
-    AppMethodBeat.i(210187);
+    AppMethodBeat.i(221470);
     long l = hashCode();
-    AppMethodBeat.o(210187);
+    AppMethodBeat.o(221470);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.e
  * JD-Core Version:    0.7.0.1
  */

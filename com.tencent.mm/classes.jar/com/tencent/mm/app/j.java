@@ -1,25 +1,25 @@
 package com.tencent.mm.app;
 
-import android.content.Context;
+import android.app.Application;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Method;
 
 public final class j
 {
-  static boolean bo(Context paramContext)
+  static boolean e(Application paramApplication)
   {
-    AppMethodBeat.i(192563);
+    AppMethodBeat.i(199816);
     try
     {
-      Method localMethod = Class.forName("com.tencent.mm.sdcard_migrate.ExtStorageMigrateRoutine").getDeclaredMethod("triggerOnDemand", new Class[] { Context.class });
+      Method localMethod = Class.forName("com.tencent.mm.sdcard_migrate.ExtStorageMigrateRoutine").getDeclaredMethod("triggerOnDemand", new Class[] { Application.class });
       localMethod.setAccessible(true);
-      boolean bool = ((Boolean)localMethod.invoke(null, new Object[] { paramContext })).booleanValue();
-      AppMethodBeat.o(192563);
+      boolean bool = ((Boolean)localMethod.invoke(null, new Object[] { paramApplication })).booleanValue();
+      AppMethodBeat.o(199816);
       return bool;
     }
-    catch (Throwable paramContext)
+    catch (Throwable paramApplication)
     {
-      AppMethodBeat.o(192563);
+      AppMethodBeat.o(199816);
     }
     return false;
   }

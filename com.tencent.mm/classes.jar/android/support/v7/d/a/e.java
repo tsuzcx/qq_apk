@@ -8,8 +8,8 @@ import android.util.StateSet;
 class e
   extends b
 {
-  private a abc;
-  private boolean vp;
+  private a acR;
+  private boolean xi;
   
   e()
   {
@@ -28,7 +28,7 @@ class e
   {
     super.a(paramb);
     if ((paramb instanceof a)) {
-      this.abc = ((a)paramb);
+      this.acR = ((a)paramb);
     }
   }
   
@@ -38,9 +38,9 @@ class e
     onStateChange(getState());
   }
   
-  a gR()
+  a hi()
   {
-    return new a(this.abc, this, null);
+    return new a(this.acR, this, null);
   }
   
   public boolean isStateful()
@@ -50,10 +50,10 @@ class e
   
   public Drawable mutate()
   {
-    if ((!this.vp) && (super.mutate() == this))
+    if ((!this.xi) && (super.mutate() == this))
     {
-      this.abc.gT();
-      this.vp = true;
+      this.acR.hk();
+      this.xi = true;
     }
     return this;
   }
@@ -61,10 +61,10 @@ class e
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
     boolean bool = super.onStateChange(paramArrayOfInt);
-    int j = this.abc.h(paramArrayOfInt);
+    int j = this.acR.h(paramArrayOfInt);
     int i = j;
     if (j < 0) {
-      i = this.abc.h(StateSet.WILD_CARD);
+      i = this.acR.h(StateSet.WILD_CARD);
     }
     return (selectDrawable(i)) || (bool);
   }
@@ -72,48 +72,31 @@ class e
   static class a
     extends b.b
   {
-    int[][] abd;
+    int[][] acS;
     
     a(a parama, e parame, Resources paramResources)
     {
       super(parame, paramResources);
       if (parama != null)
       {
-        this.abd = parama.abd;
+        this.acS = parama.acS;
         return;
       }
-      this.abd = new int[this.aav.length][];
-    }
-    
-    void gT()
-    {
-      int[][] arrayOfInt1 = new int[this.abd.length][];
-      int i = this.abd.length - 1;
-      if (i >= 0)
-      {
-        if (this.abd[i] != null) {}
-        for (int[] arrayOfInt = (int[])this.abd[i].clone();; arrayOfInt = null)
-        {
-          arrayOfInt1[i] = arrayOfInt;
-          i -= 1;
-          break;
-        }
-      }
-      this.abd = arrayOfInt1;
+      this.acS = new int[this.acl.length][];
     }
     
     public final void growArray(int paramInt1, int paramInt2)
     {
       super.growArray(paramInt1, paramInt2);
       int[][] arrayOfInt = new int[paramInt2][];
-      System.arraycopy(this.abd, 0, arrayOfInt, 0, paramInt1);
-      this.abd = arrayOfInt;
+      System.arraycopy(this.acS, 0, arrayOfInt, 0, paramInt1);
+      this.acS = arrayOfInt;
     }
     
     final int h(int[] paramArrayOfInt)
     {
-      int[][] arrayOfInt = this.abd;
-      int j = this.aaw;
+      int[][] arrayOfInt = this.acS;
+      int j = this.acm;
       int i = 0;
       while (i < j)
       {
@@ -123,6 +106,23 @@ class e
         i += 1;
       }
       return -1;
+    }
+    
+    void hk()
+    {
+      int[][] arrayOfInt1 = new int[this.acS.length][];
+      int i = this.acS.length - 1;
+      if (i >= 0)
+      {
+        if (this.acS[i] != null) {}
+        for (int[] arrayOfInt = (int[])this.acS[i].clone();; arrayOfInt = null)
+        {
+          arrayOfInt1[i] = arrayOfInt;
+          i -= 1;
+          break;
+        }
+      }
+      this.acS = arrayOfInt1;
     }
     
     public Drawable newDrawable()

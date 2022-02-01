@@ -42,20 +42,20 @@ public final class DataSpec
   public DataSpec(Uri paramUri, int paramInt, long paramLong1, long paramLong2, String paramString)
   {
     this(paramUri, paramInt, paramLong1, paramLong1, paramLong2, paramString, 0);
-    AppMethodBeat.i(193819);
-    AppMethodBeat.o(193819);
+    AppMethodBeat.i(220601);
+    AppMethodBeat.o(220601);
   }
   
   public DataSpec(Uri paramUri, int paramInt1, long paramLong1, long paramLong2, String paramString, int paramInt2)
   {
     this(paramUri, paramInt1, paramLong1, paramLong1, paramLong2, paramString, paramInt2);
-    AppMethodBeat.i(193820);
-    AppMethodBeat.o(193820);
+    AppMethodBeat.i(220602);
+    AppMethodBeat.o(220602);
   }
   
   public DataSpec(Uri paramUri, int paramInt1, byte[] paramArrayOfByte, long paramLong1, long paramLong2, long paramLong3, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(193821);
+    AppMethodBeat.i(220603);
     boolean bool;
     if (paramLong1 >= 0L)
     {
@@ -87,7 +87,7 @@ public final class DataSpec
       this.length = paramLong3;
       this.key = paramString;
       this.flags = paramInt2;
-      AppMethodBeat.o(193821);
+      AppMethodBeat.o(220603);
       return;
       bool = false;
       break;
@@ -104,35 +104,35 @@ public final class DataSpec
   
   public static String getStringForHttpMethod(int paramInt)
   {
-    AppMethodBeat.i(193824);
+    AppMethodBeat.i(220606);
     switch (paramInt)
     {
     default: 
       AssertionError localAssertionError = new AssertionError(paramInt);
-      AppMethodBeat.o(193824);
+      AppMethodBeat.o(220606);
       throw localAssertionError;
     case 1: 
-      AppMethodBeat.o(193824);
+      AppMethodBeat.o(220606);
       return "GET";
     case 2: 
-      AppMethodBeat.o(193824);
+      AppMethodBeat.o(220606);
       return "POST";
     case 3: 
-      AppMethodBeat.o(193824);
+      AppMethodBeat.o(220606);
       return "HEAD";
     case 4: 
-      AppMethodBeat.o(193824);
+      AppMethodBeat.o(220606);
       return "PUT";
     }
-    AppMethodBeat.o(193824);
+    AppMethodBeat.o(220606);
     return "DELETE";
   }
   
   public final String getHttpMethodString()
   {
-    AppMethodBeat.i(193823);
+    AppMethodBeat.i(220605);
     String str = getStringForHttpMethod(this.httpMethod);
-    AppMethodBeat.o(193823);
+    AppMethodBeat.o(220605);
     return str;
   }
   
@@ -144,12 +144,12 @@ public final class DataSpec
   public final DataSpec subrange(long paramLong)
   {
     long l = -1L;
-    AppMethodBeat.i(193825);
+    AppMethodBeat.i(220607);
     if (this.length == -1L) {}
     for (;;)
     {
       DataSpec localDataSpec = subrange(paramLong, l);
-      AppMethodBeat.o(193825);
+      AppMethodBeat.o(220607);
       return localDataSpec;
       l = this.length - paramLong;
     }
@@ -157,30 +157,30 @@ public final class DataSpec
   
   public final DataSpec subrange(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(193826);
+    AppMethodBeat.i(220608);
     if ((paramLong1 == 0L) && (this.length == paramLong2))
     {
-      AppMethodBeat.o(193826);
+      AppMethodBeat.o(220608);
       return this;
     }
     DataSpec localDataSpec = new DataSpec(this.uri, this.httpMethod, this.httpBody, this.absoluteStreamPosition + paramLong1, this.position + paramLong1, paramLong2, this.key, this.flags);
-    AppMethodBeat.o(193826);
+    AppMethodBeat.o(220608);
     return localDataSpec;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(193822);
+    AppMethodBeat.i(220604);
     String str = "DataSpec[" + getHttpMethodString() + " " + this.uri + ", " + Arrays.toString(this.httpBody) + ", " + this.absoluteStreamPosition + ", " + this.position + ", " + this.length + ", " + this.key + ", " + this.flags + "]";
-    AppMethodBeat.o(193822);
+    AppMethodBeat.o(220604);
     return str;
   }
   
   public final DataSpec withUri(Uri paramUri)
   {
-    AppMethodBeat.i(193827);
+    AppMethodBeat.i(220609);
     paramUri = new DataSpec(paramUri, this.httpMethod, this.httpBody, this.absoluteStreamPosition, this.position, this.length, this.key, this.flags);
-    AppMethodBeat.o(193827);
+    AppMethodBeat.o(220609);
     return paramUri;
   }
 }

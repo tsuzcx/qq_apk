@@ -1,11 +1,10 @@
 package com.tencent.mm.plugin.appbrand.game.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aq;
-import com.tencent.mm.plugin.appbrand.jsapi.j.g;
+import com.tencent.mm.plugin.appbrand.ar;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.jsapi.q;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,13 +13,13 @@ import java.util.Set;
 
 public final class c
 {
-  private static final String[] jRn = { "scrollWebviewTo", "showNavigationBar", "hideNavigationBar", "showNavigationBarLoading", "hideNavigationBarLoading" };
+  private static final String[] klB = { "scrollWebviewTo", "showNavigationBar", "hideNavigationBar", "showNavigationBarLoading", "hideNavigationBarLoading" };
   
-  public static Map<String, m> bdH()
+  public static Map<String, m> bhl()
   {
     AppMethodBeat.i(45135);
-    Map localMap = q.beH();
-    localMap.putAll(q.beI());
+    Map localMap = q.bil();
+    localMap.putAll(q.bim());
     Object localObject = new HashSet();
     ((Collection)localObject).add(new com.tencent.luggage.game.d.b.e());
     ((Collection)localObject).add(new com.tencent.luggage.game.d.b.f());
@@ -34,20 +33,20 @@ public final class c
     ((Collection)localObject).add(new com.tencent.mm.plugin.appbrand.game.e.a.e());
     ((Collection)localObject).add(new com.tencent.mm.plugin.appbrand.game.e.a.d());
     ((Collection)localObject).add(new com.tencent.mm.plugin.appbrand.game.e.a.f());
-    ((Collection)localObject).add(new com.tencent.mm.plugin.appbrand.jsapi.appdownload.e(aq.aUG()));
+    ((Collection)localObject).add(new com.tencent.mm.plugin.appbrand.jsapi.appdownload.e(ar.aXS()));
     ((Collection)localObject).add(new a());
-    ((Collection)localObject).add(new g(g.kBc, aq.aUE()));
+    ((Collection)localObject).add(new com.tencent.mm.plugin.appbrand.jsapi.m.e(com.tencent.mm.plugin.appbrand.jsapi.m.e.kXj, ar.aXQ()));
     ((Collection)localObject).add(new com.tencent.mm.plugin.appbrand.game.e.b.c());
-    ((Collection)localObject).add(new com.tencent.mm.plugin.appbrand.jsapi.j.b.b(com.tencent.mm.plugin.appbrand.jsapi.j.b.a.kBb, aq.aUF()));
+    ((Collection)localObject).add(new com.tencent.mm.plugin.appbrand.jsapi.m.b.b(com.tencent.mm.plugin.appbrand.jsapi.m.b.a.kXi, ar.aXR()));
     localObject = ((Set)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       m localm = (m)((Iterator)localObject).next();
-      if ((localm != null) && (!bs.isNullOrNil(localm.getName()))) {
+      if ((localm != null) && (!bt.isNullOrNil(localm.getName()))) {
         localMap.put(localm.getName(), localm);
       }
     }
-    localObject = jRn;
+    localObject = klB;
     int j = localObject.length;
     int i = 0;
     while (i < j)
@@ -61,7 +60,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.e.c
  * JD-Core Version:    0.7.0.1
  */

@@ -84,7 +84,7 @@ public abstract interface IImageDecodeService
     
     public abstract void a(IImageDecodeService.b paramb);
     
-    public abstract void ba(int paramInt1, int paramInt2);
+    public abstract void bc(int paramInt1, int paramInt2);
     
     public abstract void destroy();
     
@@ -102,18 +102,18 @@ public abstract interface IImageDecodeService
       static
       {
         AppMethodBeat.i(127358);
-        aQA = new a("OK", 0);
-        aQB = new a("NOT_EXIST", 1);
-        aQC = new a("PRE_DECODE_ERROR", 2);
-        aQD = new a("DECODE_ERROR", 3);
-        aQE = new a("UNSUPPORTED_IMG_FORMAT", 4);
-        aQF = new a("HUGE_SIZE", 5);
-        aQG = new a("IO_ERROR", 6);
-        aQH = new a("OUT_OF_MEMORY", 7);
-        aQI = new a("LEGACY_MODE", 8);
-        aQJ = new a("TIME_COST_HUGE", 9);
-        aQK = new a("NATIVE_DECODE_ERROR", 10);
-        aQL = new a[] { aQA, aQB, aQC, aQD, aQE, aQF, aQG, aQH, aQI, aQJ, aQK };
+        baU = new a("OK", 0);
+        baV = new a("NOT_EXIST", 1);
+        baW = new a("PRE_DECODE_ERROR", 2);
+        baX = new a("DECODE_ERROR", 3);
+        baY = new a("UNSUPPORTED_IMG_FORMAT", 4);
+        baZ = new a("HUGE_SIZE", 5);
+        bba = new a("IO_ERROR", 6);
+        bbb = new a("OUT_OF_MEMORY", 7);
+        bbc = new a("LEGACY_MODE", 8);
+        bbd = new a("TIME_COST_HUGE", 9);
+        bbe = new a("NATIVE_DECODE_ERROR", 10);
+        bbf = new a[] { baU, baV, baW, baX, baY, baZ, bba, bbb, bbc, bbd, bbe };
         AppMethodBeat.o(127358);
       }
       
@@ -123,12 +123,12 @@ public abstract interface IImageDecodeService
   
   public static abstract interface c
   {
-    public abstract void ab(Object paramObject);
+    public abstract void ad(Object paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.github.henryye.nativeiv.api.IImageDecodeService
  * JD-Core Version:    0.7.0.1
  */

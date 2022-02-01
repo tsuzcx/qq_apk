@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class t
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int dBz;
+  public int dNM;
   public int status;
-  public String uhB;
-  public long ulC;
-  public long ulE;
-  public String ulF;
-  public int ulQ;
-  public String ulz;
-  public String umG;
-  public long umH;
-  public String umI;
-  public String umJ;
-  public String umK;
-  public long umL;
-  public int umM;
+  public String vkl;
+  public String vof;
+  public long voi;
+  public long vok;
+  public String vol;
+  public int vow;
+  public String vpm;
+  public long vpn;
+  public String vpo;
+  public String vpp;
+  public String vpq;
+  public long vpr;
+  public int vps;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -27,82 +27,82 @@ public final class t
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.umG != null) {
-        paramVarArgs.d(1, this.umG);
+      if (this.vpm != null) {
+        paramVarArgs.d(1, this.vpm);
       }
-      if (this.ulz != null) {
-        paramVarArgs.d(2, this.ulz);
+      if (this.vof != null) {
+        paramVarArgs.d(2, this.vof);
       }
-      paramVarArgs.aO(3, this.umH);
-      if (this.umI != null) {
-        paramVarArgs.d(4, this.umI);
+      paramVarArgs.aY(3, this.vpn);
+      if (this.vpo != null) {
+        paramVarArgs.d(4, this.vpo);
       }
-      paramVarArgs.aR(5, this.dBz);
-      if (this.umJ != null) {
-        paramVarArgs.d(6, this.umJ);
+      paramVarArgs.aS(5, this.dNM);
+      if (this.vpp != null) {
+        paramVarArgs.d(6, this.vpp);
       }
-      if (this.umK != null) {
-        paramVarArgs.d(7, this.umK);
+      if (this.vpq != null) {
+        paramVarArgs.d(7, this.vpq);
       }
-      paramVarArgs.aO(8, this.ulE);
-      paramVarArgs.aO(9, this.umL);
-      paramVarArgs.aO(10, this.ulC);
-      paramVarArgs.aR(11, this.status);
-      paramVarArgs.aR(12, this.umM);
-      if (this.ulF != null) {
-        paramVarArgs.d(13, this.ulF);
+      paramVarArgs.aY(8, this.vok);
+      paramVarArgs.aY(9, this.vpr);
+      paramVarArgs.aY(10, this.voi);
+      paramVarArgs.aS(11, this.status);
+      paramVarArgs.aS(12, this.vps);
+      if (this.vol != null) {
+        paramVarArgs.d(13, this.vol);
       }
-      if (this.uhB != null) {
-        paramVarArgs.d(14, this.uhB);
+      if (this.vkl != null) {
+        paramVarArgs.d(14, this.vkl);
       }
-      paramVarArgs.aR(15, this.ulQ);
+      paramVarArgs.aS(15, this.vow);
       AppMethodBeat.o(91257);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.umG == null) {
+      if (this.vpm == null) {
         break label938;
       }
     }
     label938:
-    for (paramInt = f.a.a.b.b.a.e(1, this.umG) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.vpm) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.ulz != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.ulz);
+      if (this.vof != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.vof);
       }
-      i += f.a.a.b.b.a.p(3, this.umH);
+      i += f.a.a.b.b.a.p(3, this.vpn);
       paramInt = i;
-      if (this.umI != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.umI);
+      if (this.vpo != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.vpo);
       }
-      i = paramInt + f.a.a.b.b.a.bx(5, this.dBz);
+      i = paramInt + f.a.a.b.b.a.bz(5, this.dNM);
       paramInt = i;
-      if (this.umJ != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.umJ);
+      if (this.vpp != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.vpp);
       }
       i = paramInt;
-      if (this.umK != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.umK);
+      if (this.vpq != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.vpq);
       }
-      i = i + f.a.a.b.b.a.p(8, this.ulE) + f.a.a.b.b.a.p(9, this.umL) + f.a.a.b.b.a.p(10, this.ulC) + f.a.a.b.b.a.bx(11, this.status) + f.a.a.b.b.a.bx(12, this.umM);
+      i = i + f.a.a.b.b.a.p(8, this.vok) + f.a.a.b.b.a.p(9, this.vpr) + f.a.a.b.b.a.p(10, this.voi) + f.a.a.b.b.a.bz(11, this.status) + f.a.a.b.b.a.bz(12, this.vps);
       paramInt = i;
-      if (this.ulF != null) {
-        paramInt = i + f.a.a.b.b.a.e(13, this.ulF);
+      if (this.vol != null) {
+        paramInt = i + f.a.a.b.b.a.e(13, this.vol);
       }
       i = paramInt;
-      if (this.uhB != null) {
-        i = paramInt + f.a.a.b.b.a.e(14, this.uhB);
+      if (this.vkl != null) {
+        i = paramInt + f.a.a.b.b.a.e(14, this.vkl);
       }
-      paramInt = f.a.a.b.b.a.bx(15, this.ulQ);
+      paramInt = f.a.a.b.b.a.bz(15, this.vow);
       AppMethodBeat.o(91257);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(91257);
@@ -118,63 +118,63 @@ public final class t
           AppMethodBeat.o(91257);
           return -1;
         case 1: 
-          localt.umG = locala.LVo.readString();
+          localt.vpm = locala.NPN.readString();
           AppMethodBeat.o(91257);
           return 0;
         case 2: 
-          localt.ulz = locala.LVo.readString();
+          localt.vof = locala.NPN.readString();
           AppMethodBeat.o(91257);
           return 0;
         case 3: 
-          localt.umH = locala.LVo.xG();
+          localt.vpn = locala.NPN.zd();
           AppMethodBeat.o(91257);
           return 0;
         case 4: 
-          localt.umI = locala.LVo.readString();
+          localt.vpo = locala.NPN.readString();
           AppMethodBeat.o(91257);
           return 0;
         case 5: 
-          localt.dBz = locala.LVo.xF();
+          localt.dNM = locala.NPN.zc();
           AppMethodBeat.o(91257);
           return 0;
         case 6: 
-          localt.umJ = locala.LVo.readString();
+          localt.vpp = locala.NPN.readString();
           AppMethodBeat.o(91257);
           return 0;
         case 7: 
-          localt.umK = locala.LVo.readString();
+          localt.vpq = locala.NPN.readString();
           AppMethodBeat.o(91257);
           return 0;
         case 8: 
-          localt.ulE = locala.LVo.xG();
+          localt.vok = locala.NPN.zd();
           AppMethodBeat.o(91257);
           return 0;
         case 9: 
-          localt.umL = locala.LVo.xG();
+          localt.vpr = locala.NPN.zd();
           AppMethodBeat.o(91257);
           return 0;
         case 10: 
-          localt.ulC = locala.LVo.xG();
+          localt.voi = locala.NPN.zd();
           AppMethodBeat.o(91257);
           return 0;
         case 11: 
-          localt.status = locala.LVo.xF();
+          localt.status = locala.NPN.zc();
           AppMethodBeat.o(91257);
           return 0;
         case 12: 
-          localt.umM = locala.LVo.xF();
+          localt.vps = locala.NPN.zc();
           AppMethodBeat.o(91257);
           return 0;
         case 13: 
-          localt.ulF = locala.LVo.readString();
+          localt.vol = locala.NPN.readString();
           AppMethodBeat.o(91257);
           return 0;
         case 14: 
-          localt.uhB = locala.LVo.readString();
+          localt.vkl = locala.NPN.readString();
           AppMethodBeat.o(91257);
           return 0;
         }
-        localt.ulQ = locala.LVo.xF();
+        localt.vow = locala.NPN.zc();
         AppMethodBeat.o(91257);
         return 0;
       }
@@ -185,7 +185,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.t
  * JD-Core Version:    0.7.0.1
  */

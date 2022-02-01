@@ -1,272 +1,140 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.os.Build.VERSION;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
+import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public final class ap
 {
-  public static int Q(Context paramContext, int paramInt)
+  private static a JgN;
+  private static a JgO;
+  
+  static
   {
-    AppMethodBeat.i(159136);
-    int i = aK(paramContext, paramInt);
-    if (i > 0)
+    AppMethodBeat.i(159124);
+    a local1 = new a()
     {
-      paramInt = aH(paramContext, i);
-      AppMethodBeat.o(159136);
-      return paramInt;
-    }
-    if (i <= 0) {
-      an.i("WeUIToolHelper", "[getStatusBarHeight] return default!!!", new Object[0]);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(159136);
-      return paramInt;
-      paramInt = i;
-    }
+      public final void d(String paramAnonymousString1, String paramAnonymousString2) {}
+      
+      public final void e(String paramAnonymousString1, String paramAnonymousString2) {}
+      
+      public final void i(String paramAnonymousString1, String paramAnonymousString2) {}
+      
+      public final void v(String paramAnonymousString1, String paramAnonymousString2) {}
+      
+      public final void w(String paramAnonymousString1, String paramAnonymousString2) {}
+    };
+    JgN = local1;
+    JgO = local1;
+    AppMethodBeat.o(159124);
   }
   
-  private static int aH(Context paramContext, int paramInt)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(159138);
-    if ((paramContext instanceof Activity))
+    JgO = parama;
+  }
+  
+  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(159119);
+    if (JgO != null)
     {
-      DisplayMetrics localDisplayMetrics = ((Activity)paramContext).getResources().getDisplayMetrics();
-      Rect localRect = new Rect();
-      ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-      if ((localDisplayMetrics != null) && (localRect.height() > 0))
-      {
-        int i = localDisplayMetrics.heightPixels - localRect.height();
-        an.i("WeUIToolHelper", "[fixStatusBarHeight] new statusBar:%s ", new Object[] { Integer.valueOf(i) });
-        if ((i > paramInt) && (i - paramInt < 100))
-        {
-          an.i("WeUIToolHelper", "[fixStatusBarHeight] return new statusBar:%s ", new Object[] { Integer.valueOf(i) });
-          AppMethodBeat.o(159138);
-          return i;
-        }
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
       }
+      JgO.d(paramString1, paramString2);
     }
-    AppMethodBeat.o(159138);
-    return paramInt;
+    AppMethodBeat.o(159119);
   }
   
-  private static int aK(Context paramContext, int paramInt)
+  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(159137);
-    try
+    AppMethodBeat.i(159122);
+    if (JgO != null)
     {
-      Class localClass = Class.forName("com.android.internal.R$dimen");
-      Object localObject = localClass.newInstance();
-      int i = aq.ee(localClass.getField("status_bar_height").get(localObject).toString());
-      i = paramContext.getResources().getDimensionPixelSize(i);
-      paramInt = i;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        an.printErrStackTrace("WeUIToolHelper", paramContext, "getStatusBarHeightFromSysR", new Object[0]);
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
       }
+      JgO.e(paramString1, paramString2);
     }
-    an.i("WeUIToolHelper", "[getStatusBarHeightFromSysR] :%s ", new Object[] { Integer.valueOf(paramInt) });
-    AppMethodBeat.o(159137);
-    return paramInt;
+    AppMethodBeat.o(159122);
   }
   
-  public static Point cl(Context paramContext)
+  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(159139);
-    Point localPoint = new Point();
-    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    if (Build.VERSION.SDK_INT >= 17) {
-      paramContext.getRealSize(localPoint);
-    }
-    for (;;)
+    AppMethodBeat.i(159120);
+    if (JgO != null)
     {
-      AppMethodBeat.o(159139);
-      return localPoint;
-      if (Build.VERSION.SDK_INT >= 14) {
-        try
-        {
-          Method localMethod = Display.class.getMethod("getRawHeight", new Class[0]);
-          localPoint.x = ((Integer)Display.class.getMethod("getRawWidth", new Class[0]).invoke(paramContext, new Object[0])).intValue();
-          localPoint.y = ((Integer)localMethod.invoke(paramContext, new Object[0])).intValue();
-        }
-        catch (NoSuchMethodException paramContext)
-        {
-          an.printErrStackTrace("WeUIToolHelper", paramContext, "getDisplayRealSize NoSuchMethodException", new Object[0]);
-        }
-        catch (IllegalAccessException paramContext)
-        {
-          an.printErrStackTrace("WeUIToolHelper", paramContext, "getDisplayRealSize IllegalAccessException", new Object[0]);
-        }
-        catch (InvocationTargetException paramContext)
-        {
-          an.printErrStackTrace("WeUIToolHelper", paramContext, "getDisplayRealSize InvocationTargetException", new Object[0]);
-        }
-      } else {
-        paramContext.getSize(localPoint);
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
       }
+      JgO.i(paramString1, paramString2);
     }
+    AppMethodBeat.o(159120);
   }
   
-  public static int dT(Context paramContext)
+  public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(159133);
-    if (paramContext == null) {
-      an.w("WeUIToolHelper", "[getActionBarHeight] context is null!", new Object[0]);
-    }
-    int k = paramContext.getResources().getDimensionPixelSize(2131165251);
-    int i;
-    if ((paramContext instanceof AppCompatActivity))
+    AppMethodBeat.i(159123);
+    if (JgO != null)
     {
-      if (((AppCompatActivity)paramContext).getSupportActionBar() == null) {
-        break label129;
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
       }
-      i = ((AppCompatActivity)paramContext).getSupportActionBar().getHeight();
+      paramThrowable = paramString2 + "  " + Log.getStackTraceString(paramThrowable);
+      JgO.e(paramString1, paramThrowable);
     }
-    for (;;)
+    AppMethodBeat.o(159123);
+  }
+  
+  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(159118);
+    if (JgO != null)
     {
-      int j = i;
-      if (i <= 0) {
-        j = k;
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
       }
-      an.i("WeUIToolHelper", "[getActionBarHeight] real:%s defaultVal:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k) });
-      AppMethodBeat.o(159133);
-      return j;
-      if (((paramContext instanceof Activity)) && (((Activity)paramContext).getActionBar() != null)) {
-        i = ((Activity)paramContext).getActionBar().getHeight();
-      } else {
-        label129:
-        i = 0;
-      }
+      JgO.v(paramString1, paramString2);
     }
+    AppMethodBeat.o(159118);
   }
   
-  public static int ej(Context paramContext)
+  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    int i = 0;
-    AppMethodBeat.i(159144);
-    if (jF(paramContext))
+    AppMethodBeat.i(159121);
+    if (JgO != null)
     {
-      int j = Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android");
-      if (j > 0) {
-        i = Resources.getSystem().getDimensionPixelSize(j);
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
       }
-      int k = jG(paramContext);
-      j = i;
-      if (k != 0)
-      {
-        j = i;
-        if (k < i) {
-          j = k;
-        }
-      }
-      AppMethodBeat.o(159144);
-      return j;
+      JgO.w(paramString1, paramString2);
     }
-    AppMethodBeat.o(159144);
-    return 0;
+    AppMethodBeat.o(159121);
   }
   
-  @TargetApi(17)
-  public static boolean jF(Context paramContext)
+  public static abstract interface a
   {
-    AppMethodBeat.i(159140);
-    if (jG(paramContext) > 0)
-    {
-      AppMethodBeat.o(159140);
-      return true;
-    }
-    AppMethodBeat.o(159140);
-    return false;
-  }
-  
-  public static int jG(Context paramContext)
-  {
-    AppMethodBeat.i(159141);
-    Object localObject2 = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    Object localObject1 = new Point();
-    ((Display)localObject2).getSize((Point)localObject1);
-    localObject2 = cl(paramContext);
-    int i = Math.max(((Point)localObject1).y, ((Point)localObject1).x);
-    if (jM(paramContext)) {
-      i = ((Point)localObject1).y;
-    }
-    int j = Math.max(((Point)localObject2).y, ((Point)localObject2).x);
-    localObject1 = new Rect();
-    if ((paramContext instanceof Activity))
-    {
-      ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject1);
-      i = Math.max(((Rect)localObject1).bottom, ((Rect)localObject1).right);
-      if (jM(paramContext)) {
-        i = ((Rect)localObject1).bottom;
-      }
-    }
-    AppMethodBeat.o(159141);
-    return j - i;
-  }
-  
-  public static int jL(Context paramContext)
-  {
-    AppMethodBeat.i(159134);
-    int i = aK(paramContext, ao.fromDPToPix(paramContext, 25));
-    AppMethodBeat.o(159134);
-    return i;
-  }
-  
-  private static boolean jM(Context paramContext)
-  {
-    AppMethodBeat.i(159142);
-    if (paramContext.getResources().getConfiguration().orientation == 1)
-    {
-      AppMethodBeat.o(159142);
-      return true;
-    }
-    AppMethodBeat.o(159142);
-    return false;
-  }
-  
-  public static boolean jN(Context paramContext)
-  {
-    AppMethodBeat.i(159143);
-    if ((paramContext instanceof Activity))
-    {
-      if ((((Activity)paramContext).getWindow().getAttributes().flags & 0x400) != 1024)
-      {
-        AppMethodBeat.o(159143);
-        return true;
-      }
-      AppMethodBeat.o(159143);
-      return false;
-    }
-    AppMethodBeat.o(159143);
-    return true;
-  }
-  
-  public static int ji(Context paramContext)
-  {
-    AppMethodBeat.i(159135);
-    int i = Q(paramContext, ao.fromDPToPix(paramContext, 25));
-    AppMethodBeat.o(159135);
-    return i;
+    public abstract void d(String paramString1, String paramString2);
+    
+    public abstract void e(String paramString1, String paramString2);
+    
+    public abstract void i(String paramString1, String paramString2);
+    
+    public abstract void v(String paramString1, String paramString2);
+    
+    public abstract void w(String paramString1, String paramString2);
   }
 }
 

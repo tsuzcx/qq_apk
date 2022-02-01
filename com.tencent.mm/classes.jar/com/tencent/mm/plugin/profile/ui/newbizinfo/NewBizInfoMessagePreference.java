@@ -15,21 +15,21 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class NewBizInfoMessagePreference
   extends Preference
 {
-  private RecyclerView fTr;
-  private View gDe;
-  private MMActivity iMV;
-  private boolean pDN;
+  private MMActivity fLP;
+  private View gWO;
+  private RecyclerView gmV;
+  private boolean qhs;
   private int state;
-  private NewBizInfoMessagePreference.a vOF;
+  private NewBizInfoMessagePreference.a wVO;
   
   public NewBizInfoMessagePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27542);
     this.state = 1;
-    this.pDN = false;
-    this.iMV = ((MMActivity)paramContext);
-    this.pDN = false;
+    this.qhs = false;
+    this.fLP = ((MMActivity)paramContext);
+    this.qhs = false;
     AppMethodBeat.o(27542);
   }
   
@@ -38,9 +38,9 @@ public class NewBizInfoMessagePreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27543);
     this.state = 1;
-    this.pDN = false;
-    this.iMV = ((MMActivity)paramContext);
-    this.pDN = false;
+    this.qhs = false;
+    this.fLP = ((MMActivity)paramContext);
+    this.qhs = false;
     AppMethodBeat.o(27543);
   }
   
@@ -48,36 +48,36 @@ public class NewBizInfoMessagePreference
   {
     AppMethodBeat.i(27544);
     DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
-    this.fTr = ((RecyclerView)paramView.findViewById(2131302734));
-    this.fTr.setLayoutParams(new FrameLayout.LayoutParams(-1, localDisplayMetrics.heightPixels));
-    this.fTr.setLayoutManager(new LinearLayoutManager());
-    this.fTr.setHasFixedSize(true);
-    this.gDe = paramView.findViewById(2131302722);
-    this.pDN = true;
-    if (this.pDN)
+    this.gmV = ((RecyclerView)paramView.findViewById(2131302734));
+    this.gmV.setLayoutParams(new FrameLayout.LayoutParams(-1, localDisplayMetrics.heightPixels));
+    this.gmV.setLayoutManager(new LinearLayoutManager());
+    this.gmV.setHasFixedSize(true);
+    this.gWO = paramView.findViewById(2131302722);
+    this.qhs = true;
+    if (this.qhs)
     {
       if (this.state != 1) {
         break label125;
       }
-      this.gDe.setVisibility(0);
+      this.gWO.setVisibility(0);
     }
     label125:
     do
     {
-      this.fTr.setVisibility(8);
+      this.gmV.setVisibility(8);
       AppMethodBeat.o(27544);
       return;
       if (this.state == 2)
       {
-        this.fTr.setVisibility(8);
-        this.gDe.setVisibility(0);
+        this.gmV.setVisibility(8);
+        this.gWO.setVisibility(0);
         AppMethodBeat.o(27544);
         return;
       }
     } while (this.state != 3);
-    this.gDe.setVisibility(8);
-    this.fTr.setVisibility(0);
-    this.fTr.setAdapter(this.vOF);
+    this.gWO.setVisibility(8);
+    this.gmV.setVisibility(0);
+    this.gmV.setAdapter(this.wVO);
     AppMethodBeat.o(27544);
   }
 }

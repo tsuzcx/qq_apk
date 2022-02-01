@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.luggage.sdk.b.a.c.c;
+import com.tencent.mm.plugin.appbrand.service.c;
 
 public final class ca
   extends a<c>
 {
-  public static final int CTRL_INDEX = 249;
-  public static final String NAME = "setEnableDebug";
+  private static final int CTRL_INDEX = -2;
+  private static final String NAME = "restart";
 }
 
 

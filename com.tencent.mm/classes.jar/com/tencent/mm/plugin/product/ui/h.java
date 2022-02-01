@@ -21,16 +21,16 @@ public final class h
   implements Filterable
 {
   private Context mContext;
-  private List<String> vET;
-  private List<String> vGF;
-  Filter vGG;
+  private List<String> wLZ;
+  private List<String> wNM;
+  Filter wNN;
   
   public h(Context paramContext)
   {
     AppMethodBeat.i(66991);
-    this.vGF = null;
-    this.vET = null;
-    this.vGG = new Filter()
+    this.wNM = null;
+    this.wLZ = null;
+    this.wNN = new Filter()
     {
       protected final Filter.FilterResults performFiltering(CharSequence paramAnonymousCharSequence)
       {
@@ -69,14 +69,14 @@ public final class h
       }
     };
     this.mContext = paramContext;
-    this.vGF = a.doQ().doS().vET;
+    this.wNM = a.dzs().dzu().wLZ;
     AppMethodBeat.o(66991);
   }
   
   private String getItem(int paramInt)
   {
     AppMethodBeat.i(66993);
-    String str = (String)this.vET.get(paramInt);
+    String str = (String)this.wLZ.get(paramInt);
     AppMethodBeat.o(66993);
     return str;
   }
@@ -84,9 +84,9 @@ public final class h
   public final int getCount()
   {
     AppMethodBeat.i(66992);
-    if (this.vET != null)
+    if (this.wLZ != null)
     {
-      int i = this.vET.size();
+      int i = this.wLZ.size();
       AppMethodBeat.o(66992);
       return i;
     }
@@ -96,7 +96,7 @@ public final class h
   
   public final Filter getFilter()
   {
-    return this.vGG;
+    return this.wNN;
   }
   
   public final long getItemId(int paramInt)
@@ -112,13 +112,13 @@ public final class h
     {
       paramView = new a();
       localView = LayoutInflater.from(this.mContext).inflate(17367043, null);
-      paramView.nyS = ((TextView)localView.findViewById(16908308));
+      paramView.wNs = ((TextView)localView.findViewById(16908308));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
-      paramViewGroup.nyS.setText(getItem(paramInt));
+      paramViewGroup.wNs.setText(getItem(paramInt));
       AppMethodBeat.o(66994);
       return localView;
       paramViewGroup = (a)paramView.getTag();
@@ -128,7 +128,7 @@ public final class h
   
   final class a
   {
-    TextView nyS;
+    TextView wNs;
     
     a() {}
   }

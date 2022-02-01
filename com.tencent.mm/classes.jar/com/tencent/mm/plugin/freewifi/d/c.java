@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.freewifi.d;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public abstract class c
   extends n
   implements k
 {
   protected Activity activity;
-  protected g callback;
+  protected f callback;
   protected b rr;
-  protected g sqT;
+  protected f tnv;
   
   public final c aq(Activity paramActivity)
   {
@@ -28,32 +28,32 @@ public abstract class c
   
   protected void b(int paramInt1, int paramInt2, int paramInt3, String paramString) {}
   
-  public final void c(g paramg)
+  public final void c(f paramf)
   {
-    this.callback = paramg;
-    m.afp("netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
-    az.agi().a(this, 0);
+    this.callback = paramf;
+    m.ajN("netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
+    ba.aiU().a(this, 0);
   }
   
-  protected abstract void cJr();
+  protected abstract void cRG();
   
-  public int doScene(e parame, g paramg)
+  public int doScene(e parame, f paramf)
   {
-    this.sqT = paramg;
+    this.tnv = paramf;
     return dispatch(parame, this.rr, this);
   }
   
   public void onGYNetEnd(final int paramInt1, final int paramInt2, final int paramInt3, final String paramString, final com.tencent.mm.network.q paramq, final byte[] paramArrayOfByte)
   {
-    m.afp("netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " returns [" + paramInt2 + "," + paramInt3 + "]");
-    if (this.sqT != null) {
-      this.sqT.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    m.ajN("netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " returns [" + paramInt2 + "," + paramInt3 + "]");
+    if (this.tnv != null) {
+      this.tnv.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     if ((this.activity != null) && (this.activity.isFinishing())) {}
     while (this.callback == null) {
       return;
     }
-    ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {

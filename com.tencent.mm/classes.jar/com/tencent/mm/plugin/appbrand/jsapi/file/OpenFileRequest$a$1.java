@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class OpenFileRequest$a$1
   implements Runnable
@@ -12,7 +12,7 @@ final class OpenFileRequest$a$1
   public final void run()
   {
     AppMethodBeat.i(174796);
-    Toast.makeText(ai.getContext(), 2131755483, 0).show();
+    Toast.makeText(aj.getContext(), 2131755483, 0).show();
     AppMethodBeat.o(174796);
   }
 }

@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.finder.event.base;
 
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ce;
+import com.tencent.mm.model.cf;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/event/base/Event;", "", "()V", "timestamp", "", "getTimestamp", "()J", "timestampMs", "getTimestampMs", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/event/base/Event;", "", "()V", "timestamp", "", "getTimestamp", "()J", "timestampMs", "getTimestampMs", "plugin-finder_release"})
 public class b
 {
-  public final long rdg;
+  public final long rQC;
   private final long timestamp;
   
   public b()
   {
     AppMethodBeat.i(165551);
     this.timestamp = SystemClock.uptimeMillis();
-    this.rdg = ce.azJ();
+    this.rQC = cf.aCM();
     AppMethodBeat.o(165551);
   }
 }

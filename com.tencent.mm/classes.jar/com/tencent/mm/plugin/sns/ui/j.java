@@ -8,33 +8,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.modelsns.SnsAdClick;
-import com.tencent.mm.modelsns.d;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.plugin.sns.j.c;
-import com.tencent.mm.plugin.sns.model.ae;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.storage.b;
-import com.tencent.mm.plugin.sns.storage.e;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.ui.span.p.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 
 public class j
   implements p.a
 {
   Activity activity;
-  public int dbL = 0;
-  private ae yyv;
+  public int dnh = 0;
+  private af zPG;
   
-  public j(Activity paramActivity, int paramInt, ae paramae)
+  public j(Activity paramActivity, int paramInt, af paramaf)
   {
     this.activity = paramActivity;
-    this.dbL = paramInt;
-    this.yyv = paramae;
+    this.dnh = paramInt;
+    this.zPG = paramaf;
   }
   
   private com.tencent.mm.plugin.sns.storage.a f(p paramp)
@@ -42,13 +38,13 @@ public class j
     AppMethodBeat.i(97834);
     if (paramp != null)
     {
-      if (this.dbL == 2)
+      if (this.dnh == 2)
       {
-        paramp = paramp.dLS();
+        paramp = paramp.dYi();
         AppMethodBeat.o(97834);
         return paramp;
       }
-      paramp = paramp.dFQ();
+      paramp = paramp.dRK();
       AppMethodBeat.o(97834);
       return paramp;
     }
@@ -79,43 +75,43 @@ public class j
       if (this.activity == null)
       {
         bool = true;
-        ac.d("Micro.ClickableCallBack", bool + ", source=" + this.dbL);
-        localp = af.dHR().auT(paramObject.dgl);
+        ad.d("Micro.ClickableCallBack", bool + ", source=" + this.dnh);
+        localp = ag.dUe().aAa(paramObject.drH);
         if (!paramObject.isAd) {
           break label563;
         }
-        localObject2 = localp.dFR();
-        str = f(localp).dyy;
-        if (paramObject.hTz <= 0) {
+        localObject2 = localp.dRL();
+        str = f(localp).aQj;
+        if (paramObject.imT <= 0) {
           break label404;
         }
-        i = paramObject.hTz;
-        int k = this.dbL;
-        if (this.dbL != 0) {
+        i = paramObject.imT;
+        int k = this.dnh;
+        if (this.dnh != 0) {
           break label409;
         }
         j = 1;
-        localSnsAdClick = new SnsAdClick(k, j, localp.dME().field_snsId, i, 0);
+        localSnsAdClick = new SnsAdClick(k, j, localp.dYU().field_snsId, i, 0);
         paramView = null;
         if (!(this.activity instanceof SnsTimeLineUI)) {
           break label415;
         }
-        paramView = ((SnsTimeLineUI)this.activity).dQE();
+        paramView = ((SnsTimeLineUI)this.activity).ecW();
         label208:
         com.tencent.mm.plugin.sns.data.j.a(localSnsAdClick, paramView, localp, i);
         com.tencent.mm.plugin.sns.data.q.a(localSnsAdClick);
-        if ((localObject2 == null) || (((b)localObject2).yfF != 1) || (bs.isNullOrNil(((b)localObject2).yfG))) {
+        if ((localObject2 == null) || (((com.tencent.mm.plugin.sns.storage.b)localObject2).zvH != 1) || (bt.isNullOrNil(((com.tencent.mm.plugin.sns.storage.b)localObject2).zvI))) {
           break label445;
         }
-        paramObject = ((b)localObject2).yfG;
+        paramObject = ((com.tencent.mm.plugin.sns.storage.b)localObject2).zvI;
         localObject1 = f(localp);
         paramView = paramObject;
         if (localObject1 != null) {
-          paramView = com.tencent.mm.plugin.sns.data.q.iV(paramObject, ((com.tencent.mm.plugin.sns.storage.a)localObject1).dtx);
+          paramView = com.tencent.mm.plugin.sns.data.q.jh(paramObject, ((com.tencent.mm.plugin.sns.storage.a)localObject1).dFy);
         }
-        ac.i("Micro.ClickableCallBack", "headClickParam url " + paramView + " " + ((b)localObject2).yfH);
+        ad.i("Micro.ClickableCallBack", "headClickParam url " + paramView + " " + ((com.tencent.mm.plugin.sns.storage.b)localObject2).zvJ);
         paramObject = new Intent();
-        if (((b)localObject2).yfH != 0) {
+        if (((com.tencent.mm.plugin.sns.storage.b)localObject2).zvJ != 0) {
           break label439;
         }
       }
@@ -130,7 +126,7 @@ public class j
         paramObject.putExtra("jsapiargs", new Bundle());
         paramObject.putExtra("rawUrl", paramView);
         paramObject.putExtra("useJs", true);
-        com.tencent.mm.plugin.sns.c.a.iyx.i(paramObject, this.activity);
+        com.tencent.mm.plugin.sns.c.a.iRG.i(paramObject, this.activity);
         AppMethodBeat.o(97835);
         return;
         bool = false;
@@ -142,11 +138,11 @@ public class j
         if (!(this.activity instanceof SnsCommentDetailUI)) {
           break label208;
         }
-        paramView = ((SnsCommentDetailUI)this.activity).yJJ;
+        paramView = ((SnsCommentDetailUI)this.activity).Abd;
         break label208;
       }
       label445:
-      this.yyv.dHw().a(localp, false);
+      this.zPG.dTI().a(localp, false);
       if (paramObject.userName.endsWith("@ad"))
       {
         AppMethodBeat.o(97835);
@@ -155,34 +151,34 @@ public class j
       ((Intent)localObject1).putExtra("Contact_User", paramObject.userName);
       ((Intent)localObject1).putExtra("KSnsAdTag", localSnsAdClick);
       ((Intent)localObject1).putExtra("Contact_Scene", 79);
-      if (this.dbL == 0) {}
+      if (this.dnh == 0) {}
       for (int i = 6;; i = 1)
       {
         ((Intent)localObject1).putExtra("CONTACT_INFO_UI_SOURCE", i);
-        com.tencent.mm.plugin.sns.c.a.iyx.c((Intent)localObject1, this.activity);
-        ac.i("Micro.ClickableCallBack", "startContactInfo, addScene=79");
+        com.tencent.mm.plugin.sns.c.a.iRG.c((Intent)localObject1, this.activity);
+        ad.i("Micro.ClickableCallBack", "startContactInfo, addScene=79");
         AppMethodBeat.o(97835);
         return;
       }
       label563:
       paramObject = paramObject.userName;
-      if (this.dbL == 0)
+      if (this.dnh == 0)
       {
-        paramView = d.ps(719);
-        paramView.Dn(com.tencent.mm.plugin.sns.data.q.l(localp)).pv(localp.field_type).eQ(localp.Pe(32)).Dn(localp.dMD()).Dn(paramObject);
-        paramView.aHZ();
-        if (this.dbL != 0) {
+        paramView = com.tencent.mm.modelsns.e.pV(719);
+        paramView.Gs(com.tencent.mm.plugin.sns.data.q.n(localp)).pY(localp.field_type).eS(localp.QM(32)).Gs(localp.dYT()).Gs(paramObject);
+        paramView.aLk();
+        if (this.dnh != 0) {
           break label748;
         }
-        paramView = d.ps(746);
+        paramView = com.tencent.mm.modelsns.e.pV(746);
         label641:
-        localObject2 = u.axw();
-        paramView.Dn(paramObject).eQ(paramObject.endsWith((String)localObject2));
+        localObject2 = u.aAm();
+        paramView.Gs(paramObject).eS(paramObject.endsWith((String)localObject2));
         paramView.b((Intent)localObject1, "intent_key_StatisticsOplog");
         paramView = paramObject;
-        if (this.dbL == 0)
+        if (this.dnh == 0)
         {
-          this.yyv.dHw().a(localp, false);
+          this.zPG.dTI().a(localp, false);
           paramView = paramObject;
         }
       }
@@ -190,33 +186,33 @@ public class j
     for (;;)
     {
       ((Intent)localObject1).putExtra("Contact_User", paramView);
-      ((Intent)localObject1).putExtra("CONTACT_INFO_UI_SOURCE", this.dbL);
-      com.tencent.mm.plugin.sns.c.a.iyx.c((Intent)localObject1, this.activity);
+      ((Intent)localObject1).putExtra("CONTACT_INFO_UI_SOURCE", this.dnh);
+      com.tencent.mm.plugin.sns.c.a.iRG.c((Intent)localObject1, this.activity);
       AppMethodBeat.o(97835);
       return;
-      paramView = d.pt(719);
+      paramView = com.tencent.mm.modelsns.e.pW(719);
       break;
       label748:
-      paramView = d.pt(746);
+      paramView = com.tencent.mm.modelsns.e.pW(746);
       break label641;
       paramObject = (String)paramObject;
-      g.agS();
-      paramView = ((k)g.ab(k.class)).awB().aNr(paramObject);
-      if ((paramView != null) && (paramView.fad()))
+      g.ajD();
+      paramView = ((l)g.ab(l.class)).azp().aTj(paramObject);
+      if ((paramView != null) && (paramView.fqg()))
       {
         ((Intent)localObject1).putExtra("Contact_User", paramObject);
         ((Intent)localObject1).putExtra("Contact_Scene", 37);
-        ((Intent)localObject1).putExtra("CONTACT_INFO_UI_SOURCE", this.dbL);
-        com.tencent.mm.plugin.sns.c.a.iyx.c((Intent)localObject1, this.activity);
+        ((Intent)localObject1).putExtra("CONTACT_INFO_UI_SOURCE", this.dnh);
+        com.tencent.mm.plugin.sns.c.a.iRG.c((Intent)localObject1, this.activity);
         AppMethodBeat.o(97835);
         return;
       }
       paramView = paramObject;
-      if (this.dbL == 0)
+      if (this.dnh == 0)
       {
         paramView = new p();
         paramView.field_userName = paramObject;
-        this.yyv.dHw().a(paramView, false);
+        this.zPG.dTI().a(paramView, false);
         paramView = paramObject;
       }
     }

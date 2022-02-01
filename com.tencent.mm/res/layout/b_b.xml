@@ -19,6 +19,5 @@
     </RelativeLayout>
     <com.tencent.mm.plugin.sns.ui.widget.SnsDrawGestureView android:layout_gravity="left" android:id="@id/fmt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.mm.plugin.sns.ui.widget.SnsAdCardVideoEndView android:id="@id/fmw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.sns.ui.widget.SnsAdTouchProgressView android:id="@id/fot" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ImageView android:layout_gravity="center" android:id="@id/c95" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

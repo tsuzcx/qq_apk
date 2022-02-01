@@ -14,8 +14,8 @@ final class i$a$2$1
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(97820);
-    g.agS();
-    g.agQ().ghe.a(this.yyt);
+    g.ajD();
+    g.ajB().gAO.a(this.zPE);
     AppMethodBeat.o(97820);
   }
 }

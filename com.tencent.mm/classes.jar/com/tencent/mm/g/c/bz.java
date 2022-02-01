@@ -3,56 +3,75 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class bz
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEN = "featureId".hashCode();
-  private static final int eEO;
-  private static final int eEP;
-  private static final int eEQ;
-  private static final int eER;
-  private static final int eES = "helpUrl".hashCode();
-  private static final int eET = "updateUrl".hashCode();
-  private static final int eEU = "androidUrl".hashCode();
-  private static final int eEV = "iconPath".hashCode();
-  private static final int eEW = "timestamp".hashCode();
-  private static final int eqK = "title".hashCode();
-  private static final int erd;
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FavSearchInfo_Content_Index ON FavSearchInfo(content)", "CREATE INDEX IF NOT EXISTS FavSearchInfo_TagContent_Index ON FavSearchInfo(tagContent)", "CREATE INDEX IF NOT EXISTS FavSearchInfo_SubType_Index ON FavSearchInfo(subtype)" };
+  private static final int eEm;
+  private static final int eMk;
+  private static final int eVZ;
+  private static final int eVj = "localId".hashCode();
+  private static final int eWa = "subtype".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eED = true;
-  private boolean eEE = true;
-  private boolean eEF = true;
-  private boolean eEG = true;
-  private boolean eEH = true;
-  private boolean eEI = true;
-  private boolean eEJ = true;
-  private boolean eEK = true;
-  private boolean eEL = true;
-  private boolean eEM = true;
-  private boolean eqH = true;
-  private boolean eqZ = true;
-  public int field_actionType;
-  public String field_androidUrl;
-  public int field_featureId;
-  public String field_helpUrl;
-  public String field_iconPath;
-  public String field_tag;
-  public long field_timestamp;
-  public String field_title;
-  public String field_titlePY;
-  public String field_titleShortPY;
-  public String field_updateUrl;
-  public String field_url;
+  private static final int type_HASHCODE;
+  private boolean __hadSettype = true;
+  private boolean eDP = true;
+  private boolean eLR = true;
+  private boolean eVX = true;
+  private boolean eVY = true;
+  private boolean eVh = true;
+  public String field_content;
+  public long field_localId;
+  public int field_subtype;
+  public String field_tagContent;
+  public long field_time;
+  public int field_type;
   
   static
   {
-    eEO = "titlePY".hashCode();
-    eEP = "titleShortPY".hashCode();
-    eEQ = "tag".hashCode();
-    eER = "actionType".hashCode();
-    erd = "url".hashCode();
+    eEm = "content".hashCode();
+    eVZ = "tagContent".hashCode();
+    eMk = "time".hashCode();
+    type_HASHCODE = "type".hashCode();
+  }
+  
+  public static c.a Vv()
+  {
+    c.a locala = new c.a();
+    locala.IhA = new Field[6];
+    locala.columns = new String[7];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "localId";
+    locala.IhC.put("localId", "LONG PRIMARY KEY ");
+    localStringBuilder.append(" localId LONG PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IhB = "localId";
+    locala.columns[1] = "content";
+    locala.IhC.put("content", "TEXT");
+    localStringBuilder.append(" content TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "tagContent";
+    locala.IhC.put("tagContent", "TEXT");
+    localStringBuilder.append(" tagContent TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "time";
+    locala.IhC.put("time", "LONG");
+    localStringBuilder.append(" time LONG");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "type";
+    locala.IhC.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "subtype";
+    locala.IhC.put("subtype", "INTEGER default '0' ");
+    localStringBuilder.append(" subtype INTEGER default '0' ");
+    locala.columns[6] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -68,11 +87,11 @@ public abstract class bz
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEN != k) {
+      if (eVj != k) {
         break label65;
       }
-      this.field_featureId = paramCursor.getInt(i);
-      this.eED = true;
+      this.field_localId = paramCursor.getLong(i);
+      this.eVh = true;
     }
     for (;;)
     {
@@ -80,28 +99,16 @@ public abstract class bz
       break label20;
       break;
       label65:
-      if (eqK == k) {
-        this.field_title = paramCursor.getString(i);
-      } else if (eEO == k) {
-        this.field_titlePY = paramCursor.getString(i);
-      } else if (eEP == k) {
-        this.field_titleShortPY = paramCursor.getString(i);
-      } else if (eEQ == k) {
-        this.field_tag = paramCursor.getString(i);
-      } else if (eER == k) {
-        this.field_actionType = paramCursor.getInt(i);
-      } else if (erd == k) {
-        this.field_url = paramCursor.getString(i);
-      } else if (eES == k) {
-        this.field_helpUrl = paramCursor.getString(i);
-      } else if (eET == k) {
-        this.field_updateUrl = paramCursor.getString(i);
-      } else if (eEU == k) {
-        this.field_androidUrl = paramCursor.getString(i);
-      } else if (eEV == k) {
-        this.field_iconPath = paramCursor.getString(i);
-      } else if (eEW == k) {
-        this.field_timestamp = paramCursor.getLong(i);
+      if (eEm == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (eVZ == k) {
+        this.field_tagContent = paramCursor.getString(i);
+      } else if (eMk == k) {
+        this.field_time = paramCursor.getLong(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (eWa == k) {
+        this.field_subtype = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -111,41 +118,23 @@ public abstract class bz
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eED) {
-      localContentValues.put("featureId", Integer.valueOf(this.field_featureId));
+    if (this.eVh) {
+      localContentValues.put("localId", Long.valueOf(this.field_localId));
     }
-    if (this.eqH) {
-      localContentValues.put("title", this.field_title);
+    if (this.eDP) {
+      localContentValues.put("content", this.field_content);
     }
-    if (this.eEE) {
-      localContentValues.put("titlePY", this.field_titlePY);
+    if (this.eVX) {
+      localContentValues.put("tagContent", this.field_tagContent);
     }
-    if (this.eEF) {
-      localContentValues.put("titleShortPY", this.field_titleShortPY);
+    if (this.eLR) {
+      localContentValues.put("time", Long.valueOf(this.field_time));
     }
-    if (this.eEG) {
-      localContentValues.put("tag", this.field_tag);
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eEH) {
-      localContentValues.put("actionType", Integer.valueOf(this.field_actionType));
-    }
-    if (this.eqZ) {
-      localContentValues.put("url", this.field_url);
-    }
-    if (this.eEI) {
-      localContentValues.put("helpUrl", this.field_helpUrl);
-    }
-    if (this.eEJ) {
-      localContentValues.put("updateUrl", this.field_updateUrl);
-    }
-    if (this.eEK) {
-      localContentValues.put("androidUrl", this.field_androidUrl);
-    }
-    if (this.eEL) {
-      localContentValues.put("iconPath", this.field_iconPath);
-    }
-    if (this.eEM) {
-      localContentValues.put("timestamp", Long.valueOf(this.field_timestamp));
+    if (this.eVY) {
+      localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

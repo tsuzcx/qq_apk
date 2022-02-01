@@ -1,162 +1,182 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class die
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int DSv;
-  public String FCu;
-  public String FRe;
-  public String FhW;
-  public String FrN;
-  public String FrP;
-  public int Scene;
-  public int fZz;
-  public String hkR;
-  public String nOK;
-  public int sVo;
+  public String HwV;
+  public String HwW;
+  public String HwX;
+  public String HwY;
+  public int ing;
+  public int inh;
+  public int ini;
+  public int inj;
+  public int opType;
+  public long timeStamp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117936);
+    AppMethodBeat.i(125841);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FrN != null) {
-        paramVarArgs.d(1, this.FrN);
+      if (this.HwV == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: StatusDesc1");
+        AppMethodBeat.o(125841);
+        throw paramVarArgs;
       }
-      if (this.FRe != null) {
-        paramVarArgs.d(2, this.FRe);
+      if (this.HwW == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: StatusDesc2");
+        AppMethodBeat.o(125841);
+        throw paramVarArgs;
       }
-      paramVarArgs.aR(3, this.fZz);
-      if (this.FrP != null) {
-        paramVarArgs.d(4, this.FrP);
+      if (this.HwX == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: DataFlowSourceInfo");
+        AppMethodBeat.o(125841);
+        throw paramVarArgs;
       }
-      if (this.hkR != null) {
-        paramVarArgs.d(5, this.hkR);
+      if (this.HwY == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: DataFlowResultInfo");
+        AppMethodBeat.o(125841);
+        throw paramVarArgs;
       }
-      paramVarArgs.aR(6, this.Scene);
-      if (this.FhW != null) {
-        paramVarArgs.d(7, this.FhW);
+      paramVarArgs.aS(1, this.opType);
+      paramVarArgs.aS(2, this.inj);
+      paramVarArgs.aS(3, this.ing);
+      paramVarArgs.aY(4, this.timeStamp);
+      paramVarArgs.aS(5, this.inh);
+      paramVarArgs.aS(6, this.ini);
+      if (this.HwV != null) {
+        paramVarArgs.d(7, this.HwV);
       }
-      paramVarArgs.aR(8, this.DSv);
-      if (this.nOK != null) {
-        paramVarArgs.d(9, this.nOK);
+      if (this.HwW != null) {
+        paramVarArgs.d(8, this.HwW);
       }
-      if (this.FCu != null) {
-        paramVarArgs.d(10, this.FCu);
+      if (this.HwX != null) {
+        paramVarArgs.d(9, this.HwX);
       }
-      paramVarArgs.aR(11, this.sVo);
-      AppMethodBeat.o(117936);
+      if (this.HwY != null) {
+        paramVarArgs.d(10, this.HwY);
+      }
+      AppMethodBeat.o(125841);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.FrN == null) {
-        break label762;
-      }
-    }
-    label762:
-    for (paramInt = f.a.a.b.b.a.e(1, this.FrN) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.FRe != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.FRe);
-      }
-      i += f.a.a.b.b.a.bx(3, this.fZz);
+      int i = f.a.a.b.b.a.bz(1, this.opType) + 0 + f.a.a.b.b.a.bz(2, this.inj) + f.a.a.b.b.a.bz(3, this.ing) + f.a.a.b.b.a.p(4, this.timeStamp) + f.a.a.b.b.a.bz(5, this.inh) + f.a.a.b.b.a.bz(6, this.ini);
       paramInt = i;
-      if (this.FrP != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.FrP);
+      if (this.HwV != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.HwV);
       }
       i = paramInt;
-      if (this.hkR != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.hkR);
+      if (this.HwW != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.HwW);
       }
-      i += f.a.a.b.b.a.bx(6, this.Scene);
       paramInt = i;
-      if (this.FhW != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.FhW);
-      }
-      i = paramInt + f.a.a.b.b.a.bx(8, this.DSv);
-      paramInt = i;
-      if (this.nOK != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.nOK);
+      if (this.HwX != null) {
+        paramInt = i + f.a.a.b.b.a.e(9, this.HwX);
       }
       i = paramInt;
-      if (this.FCu != null) {
-        i = paramInt + f.a.a.b.b.a.e(10, this.FCu);
+      if (this.HwY != null) {
+        i = paramInt + f.a.a.b.b.a.e(10, this.HwY);
       }
-      paramInt = f.a.a.b.b.a.bx(11, this.sVo);
-      AppMethodBeat.o(117936);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
-          }
-        }
-        AppMethodBeat.o(117936);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        die localdie = (die)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(117936);
-          return -1;
-        case 1: 
-          localdie.FrN = locala.LVo.readString();
-          AppMethodBeat.o(117936);
-          return 0;
-        case 2: 
-          localdie.FRe = locala.LVo.readString();
-          AppMethodBeat.o(117936);
-          return 0;
-        case 3: 
-          localdie.fZz = locala.LVo.xF();
-          AppMethodBeat.o(117936);
-          return 0;
-        case 4: 
-          localdie.FrP = locala.LVo.readString();
-          AppMethodBeat.o(117936);
-          return 0;
-        case 5: 
-          localdie.hkR = locala.LVo.readString();
-          AppMethodBeat.o(117936);
-          return 0;
-        case 6: 
-          localdie.Scene = locala.LVo.xF();
-          AppMethodBeat.o(117936);
-          return 0;
-        case 7: 
-          localdie.FhW = locala.LVo.readString();
-          AppMethodBeat.o(117936);
-          return 0;
-        case 8: 
-          localdie.DSv = locala.LVo.xF();
-          AppMethodBeat.o(117936);
-          return 0;
-        case 9: 
-          localdie.nOK = locala.LVo.readString();
-          AppMethodBeat.o(117936);
-          return 0;
-        case 10: 
-          localdie.FCu = locala.LVo.readString();
-          AppMethodBeat.o(117936);
-          return 0;
-        }
-        localdie.sVo = locala.LVo.xF();
-        AppMethodBeat.o(117936);
-        return 0;
-      }
-      AppMethodBeat.o(117936);
-      return -1;
+      AppMethodBeat.o(125841);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gxE();
+        }
+      }
+      if (this.HwV == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: StatusDesc1");
+        AppMethodBeat.o(125841);
+        throw paramVarArgs;
+      }
+      if (this.HwW == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: StatusDesc2");
+        AppMethodBeat.o(125841);
+        throw paramVarArgs;
+      }
+      if (this.HwX == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: DataFlowSourceInfo");
+        AppMethodBeat.o(125841);
+        throw paramVarArgs;
+      }
+      if (this.HwY == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: DataFlowResultInfo");
+        AppMethodBeat.o(125841);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(125841);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      die localdie = (die)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(125841);
+        return -1;
+      case 1: 
+        localdie.opType = locala.NPN.zc();
+        AppMethodBeat.o(125841);
+        return 0;
+      case 2: 
+        localdie.inj = locala.NPN.zc();
+        AppMethodBeat.o(125841);
+        return 0;
+      case 3: 
+        localdie.ing = locala.NPN.zc();
+        AppMethodBeat.o(125841);
+        return 0;
+      case 4: 
+        localdie.timeStamp = locala.NPN.zd();
+        AppMethodBeat.o(125841);
+        return 0;
+      case 5: 
+        localdie.inh = locala.NPN.zc();
+        AppMethodBeat.o(125841);
+        return 0;
+      case 6: 
+        localdie.ini = locala.NPN.zc();
+        AppMethodBeat.o(125841);
+        return 0;
+      case 7: 
+        localdie.HwV = locala.NPN.readString();
+        AppMethodBeat.o(125841);
+        return 0;
+      case 8: 
+        localdie.HwW = locala.NPN.readString();
+        AppMethodBeat.o(125841);
+        return 0;
+      case 9: 
+        localdie.HwX = locala.NPN.readString();
+        AppMethodBeat.o(125841);
+        return 0;
+      }
+      localdie.HwY = locala.NPN.readString();
+      AppMethodBeat.o(125841);
+      return 0;
+    }
+    AppMethodBeat.o(125841);
+    return -1;
   }
 }
 

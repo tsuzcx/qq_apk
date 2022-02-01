@@ -5,9 +5,9 @@ import android.content.Context;
 public final class d
 {
   Context mContext;
-  c mHC;
-  a mHX;
   int mIndex;
+  c nia;
+  a niv;
 }
 
 

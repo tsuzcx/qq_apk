@@ -16,29 +16,29 @@ import com.tencent.mm.plugin.sight.decode.a.b.4;
 import com.tencent.mm.plugin.sight.decode.a.b.e;
 import com.tencent.mm.plugin.sight.decode.a.b.f;
 import com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.n;
 import com.tencent.mm.vfs.e;
 
 public class VideoSightView
   extends SightPlayImageView
   implements h
 {
-  protected String cko;
+  protected String cuO;
   protected int duration;
-  private boolean ftN;
-  private boolean yre;
-  private boolean yrf;
+  private boolean fMP;
+  private boolean zIo;
+  private boolean zIp;
   
   public VideoSightView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(116273);
     this.duration = 0;
-    this.yrf = true;
-    this.ftN = false;
+    this.zIp = true;
+    this.fMP = false;
     init();
     AppMethodBeat.o(116273);
   }
@@ -48,8 +48,8 @@ public class VideoSightView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(116272);
     this.duration = 0;
-    this.yrf = true;
-    this.ftN = false;
+    this.zIp = true;
+    this.fMP = false;
     init();
     AppMethodBeat.o(116272);
   }
@@ -59,10 +59,60 @@ public class VideoSightView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(116271);
     this.duration = 0;
-    this.yrf = true;
-    this.ftN = false;
+    this.zIp = true;
+    this.fMP = false;
     init();
     AppMethodBeat.o(116271);
+  }
+  
+  public final boolean B(Context paramContext, boolean paramBoolean)
+  {
+    AppMethodBeat.i(116287);
+    if (this.cuO == null)
+    {
+      ad.e("MicroMsg.VideoSightView", "start::use path is null!");
+      AppMethodBeat.o(116287);
+      return false;
+    }
+    if ((bt.bI(ae.gcP.fZX, "").equals("other")) || (!b.axy(this.cuO)))
+    {
+      ad.i("MicroMsg.VideoSightView", "start::use other player, path %s, has called %B", new Object[] { this.cuO, Boolean.valueOf(this.zIo) });
+      if ((this.zIo) && (!paramBoolean))
+      {
+        AppMethodBeat.o(116287);
+        return false;
+      }
+      Object localObject = new Intent();
+      ((Intent)localObject).setAction("android.intent.action.VIEW");
+      n.a(paramContext, (Intent)localObject, new e(this.cuO), "video/*");
+      try
+      {
+        localObject = Intent.createChooser((Intent)localObject, paramContext.getString(2131755927));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/pluginsdk/ui/tools/VideoSightView", "start", "(Landroid/content/Context;Z)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/ui/tools/VideoSightView", "start", "(Landroid/content/Context;Z)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        this.zIo = true;
+        AppMethodBeat.o(116287);
+        return false;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ad.e("MicroMsg.VideoSightView", "startActivity fail, activity not found");
+          com.tencent.mm.ui.base.h.cl(paramContext, paramContext.getResources().getString(2131764680));
+        }
+      }
+    }
+    super.e(this.cuO, false, 0);
+    if (!this.fMP) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      rb(paramBoolean);
+      AppMethodBeat.o(116287);
+      return true;
+    }
   }
   
   public final void d(double paramDouble, boolean paramBoolean)
@@ -75,7 +125,7 @@ public class VideoSightView
   public final void e(String paramString, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(177106);
-    this.cko = paramString;
+    this.cuO = paramString;
     super.e(paramString, paramBoolean, paramInt);
     AppMethodBeat.o(177106);
   }
@@ -83,7 +133,7 @@ public class VideoSightView
   public int getCurrentPosition()
   {
     AppMethodBeat.i(116283);
-    ac.v("MicroMsg.VideoSightView", "get current position");
+    ad.v("MicroMsg.VideoSightView", "get current position");
     AppMethodBeat.o(116283);
     return 0;
   }
@@ -92,7 +142,7 @@ public class VideoSightView
   {
     AppMethodBeat.i(116284);
     int i = super.getDuration();
-    ac.v("MicroMsg.VideoSightView", "get duration ".concat(String.valueOf(i)));
+    ad.v("MicroMsg.VideoSightView", "get duration ".concat(String.valueOf(i)));
     AppMethodBeat.o(116284);
     return i;
   }
@@ -103,13 +153,13 @@ public class VideoSightView
     if (getController() != null)
     {
       b localb = getController();
-      if (localb.xDk != -1.0D)
+      if (localb.yRU != -1.0D)
       {
-        d = localb.xDk;
+        d = localb.yRU;
         AppMethodBeat.o(116289);
         return d;
       }
-      double d = localb.xDh;
+      double d = localb.yRR;
       AppMethodBeat.o(116289);
       return d;
     }
@@ -125,8 +175,8 @@ public class VideoSightView
   protected void init()
   {
     AppMethodBeat.i(116274);
-    if (bs.bG(ae.fJo.fGy, "").equals("other")) {
-      ac.i("MicroMsg.VideoSightView", "init::use other player");
+    if (bt.bI(ae.gcP.fZX, "").equals("other")) {
+      ad.i("MicroMsg.VideoSightView", "init::use other player");
     }
     for (;;)
     {
@@ -137,28 +187,28 @@ public class VideoSightView
           AppMethodBeat.i(116269);
           if (-1 == paramAnonymousInt)
           {
-            if (VideoSightView.this.prg != null)
+            if (VideoSightView.this.pUM != null)
             {
-              VideoSightView.this.prg.onError(0, 0);
+              VideoSightView.this.pUM.onError(0, 0);
               AppMethodBeat.o(116269);
             }
           }
-          else if ((paramAnonymousInt == 0) && (VideoSightView.this.prg != null)) {
-            VideoSightView.this.prg.onCompletion();
+          else if ((paramAnonymousInt == 0) && (VideoSightView.this.pUM != null)) {
+            VideoSightView.this.pUM.onCompletion();
           }
           AppMethodBeat.o(116269);
         }
       });
       AppMethodBeat.o(116274);
       return;
-      qz(true);
+      rb(true);
     }
   }
   
   public boolean isPlaying()
   {
     AppMethodBeat.i(116278);
-    boolean bool = this.xDG.dEz();
+    boolean bool = this.ySq.dQc();
     AppMethodBeat.o(116278);
     return bool;
   }
@@ -167,7 +217,7 @@ public class VideoSightView
   {
     AppMethodBeat.i(116277);
     super.onConfigurationChanged(paramConfiguration);
-    if (this.yrf) {
+    if (this.zIp) {
       setDrawableWidth(getResources().getDisplayMetrics().widthPixels);
     }
     AppMethodBeat.o(116277);
@@ -176,7 +226,7 @@ public class VideoSightView
   public final void onDetach()
   {
     AppMethodBeat.i(116285);
-    com.tencent.mm.sdk.b.a.GpY.d(this.xDG.dEC());
+    com.tencent.mm.sdk.b.a.IbL.d(this.ySq.dQf());
     AppMethodBeat.o(116285);
   }
   
@@ -184,8 +234,8 @@ public class VideoSightView
   {
     AppMethodBeat.i(116276);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    ac.v("MicroMsg.VideoSightView", "ashutest::on layout changed %B, %d %d %d %d %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Boolean.valueOf(this.xDM) });
-    if ((this.xDM) && (paramInt3 - paramInt1 > 0)) {
+    ad.v("MicroMsg.VideoSightView", "ashutest::on layout changed %B, %d %d %d %d %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Boolean.valueOf(this.ySw) });
+    if ((this.ySw) && (paramInt3 - paramInt1 > 0)) {
       setDrawableWidth(paramInt3 - paramInt1);
     }
     AppMethodBeat.o(116276);
@@ -201,11 +251,11 @@ public class VideoSightView
   public void p(double paramDouble)
   {
     AppMethodBeat.i(116290);
-    if (this.xDG != null)
+    if (this.ySq != null)
     {
-      b localb = this.xDG;
-      ac.v("MicroMsg.SightPlayController", "seekToFrame now %f %s", new Object[] { Double.valueOf(paramDouble), bs.eWi().toString() });
-      o.h(new b.4(localb, paramDouble), 0L);
+      b localb = this.ySq;
+      ad.v("MicroMsg.SightPlayController", "seekToFrame now %f %s", new Object[] { Double.valueOf(paramDouble), bt.flS().toString() });
+      o.i(new b.4(localb, paramDouble), 0L);
     }
     AppMethodBeat.o(116290);
   }
@@ -213,13 +263,13 @@ public class VideoSightView
   public void pause()
   {
     AppMethodBeat.i(116281);
-    super.e(this.cko, true, 0);
+    super.e(this.cuO, true, 0);
     AppMethodBeat.o(116281);
   }
   
   public void setEnableConfigChanged(boolean paramBoolean)
   {
-    this.yrf = paramBoolean;
+    this.zIp = paramBoolean;
   }
   
   public void setForceScaleFullScreen(boolean paramBoolean) {}
@@ -234,11 +284,11 @@ public class VideoSightView
   public void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(116292);
-    this.ftN = paramBoolean;
-    if (!this.ftN) {}
+    this.fMP = paramBoolean;
+    if (!this.fMP) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      qz(paramBoolean);
+      rb(paramBoolean);
       AppMethodBeat.o(116292);
       return;
     }
@@ -265,10 +315,10 @@ public class VideoSightView
           if (VideoSightView.this.duration == 0) {
             VideoSightView.this.duration = VideoSightView.this.getDuration();
           }
-          if (VideoSightView.this.prg != null)
+          if (VideoSightView.this.pUM != null)
           {
-            ac.v("MicroMsg.VideoSightView", "onPlayTime, currentTime: %s, duration: %s", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(VideoSightView.this.duration) });
-            VideoSightView.this.prg.eP((int)paramAnonymousLong, VideoSightView.this.duration);
+            ad.v("MicroMsg.VideoSightView", "onPlayTime, currentTime: %s, duration: %s", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(VideoSightView.this.duration) });
+            VideoSightView.this.pUM.eT((int)paramAnonymousLong, VideoSightView.this.duration);
           }
           AppMethodBeat.o(116270);
         }
@@ -283,26 +333,26 @@ public class VideoSightView
   public void setThumb(Bitmap paramBitmap)
   {
     AppMethodBeat.i(116288);
-    ag(paramBitmap);
+    ai(paramBitmap);
     AppMethodBeat.o(116288);
   }
   
   public void setVideoCallback(h.a parama)
   {
-    this.prg = parama;
+    this.pUM = parama;
   }
   
   public void setVideoPath(String paramString)
   {
     AppMethodBeat.i(116279);
-    if (this.prg == null) {}
+    if (this.pUM == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.i("MicroMsg.VideoSightView", "set sight path %s, callback null ? %B", new Object[] { paramString, Boolean.valueOf(bool) });
+      ad.i("MicroMsg.VideoSightView", "set sight path %s, callback null ? %B", new Object[] { paramString, Boolean.valueOf(bool) });
       this.duration = 0;
-      this.cko = paramString;
-      if (this.prg != null) {
-        this.prg.rB();
+      this.cuO = paramString;
+      if (this.pUM != null) {
+        this.pUM.ta();
       }
       AppMethodBeat.o(116279);
       return;
@@ -312,7 +362,7 @@ public class VideoSightView
   public boolean start()
   {
     AppMethodBeat.i(116286);
-    boolean bool = z(getContext(), false);
+    boolean bool = B(getContext(), false);
     AppMethodBeat.o(116286);
     return bool;
   }
@@ -320,58 +370,8 @@ public class VideoSightView
   public void stop()
   {
     AppMethodBeat.i(116280);
-    this.xDG.clear();
+    this.ySq.clear();
     AppMethodBeat.o(116280);
-  }
-  
-  public final boolean z(Context paramContext, boolean paramBoolean)
-  {
-    AppMethodBeat.i(116287);
-    if (this.cko == null)
-    {
-      ac.e("MicroMsg.VideoSightView", "start::use path is null!");
-      AppMethodBeat.o(116287);
-      return false;
-    }
-    if ((bs.bG(ae.fJo.fGy, "").equals("other")) || (!b.asy(this.cko)))
-    {
-      ac.i("MicroMsg.VideoSightView", "start::use other player, path %s, has called %B", new Object[] { this.cko, Boolean.valueOf(this.yre) });
-      if ((this.yre) && (!paramBoolean))
-      {
-        AppMethodBeat.o(116287);
-        return false;
-      }
-      Object localObject = new Intent();
-      ((Intent)localObject).setAction("android.intent.action.VIEW");
-      m.a(paramContext, (Intent)localObject, new e(this.cko), "video/*");
-      try
-      {
-        localObject = Intent.createChooser((Intent)localObject, paramContext.getString(2131755927));
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/pluginsdk/ui/tools/VideoSightView", "start", "(Landroid/content/Context;Z)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/ui/tools/VideoSightView", "start", "(Landroid/content/Context;Z)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        this.yre = true;
-        AppMethodBeat.o(116287);
-        return false;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          ac.e("MicroMsg.VideoSightView", "startActivity fail, activity not found");
-          com.tencent.mm.ui.base.h.cg(paramContext, paramContext.getResources().getString(2131764680));
-        }
-      }
-    }
-    super.e(this.cko, false, 0);
-    if (!this.ftN) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      qz(paramBoolean);
-      AppMethodBeat.o(116287);
-      return true;
-    }
   }
 }
 

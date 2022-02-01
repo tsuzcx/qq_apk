@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Map;
 
 public final class r
@@ -13,7 +13,7 @@ public final class r
   public static final int CTRL_INDEX = 218;
   public static final String NAME = "sendBizRedPacket";
   
-  public final boolean bex()
+  public final boolean bib()
   {
     return true;
   }

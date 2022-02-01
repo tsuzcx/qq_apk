@@ -7,7 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sport.PluginSport;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class SportDataProvider
   extends ContentProvider
@@ -36,7 +36,7 @@ public class SportDataProvider
   {
     int i = 0;
     AppMethodBeat.i(149326);
-    if (!bs.isNullOrNil(paramString1)) {}
+    if (!bt.isNullOrNil(paramString1)) {}
     for (;;)
     {
       try
@@ -80,8 +80,8 @@ public class SportDataProvider
                 i = 4;
                 continue;
                 paramUri = new Bundle();
-                paramUri.putLong("TodayStep", g.dTW());
-                paramUri.putLong("TodaySaveTime", g.dTX());
+                paramUri.putLong("TodayStep", g.egk());
+                paramUri.putLong("TodaySaveTime", g.egl());
                 paramUri = new i(new String[] { "Step" }, paramUri);
                 AppMethodBeat.o(149326);
                 return paramUri;
@@ -91,12 +91,12 @@ public class SportDataProvider
                   continue;
                   if (com.tencent.mm.kernel.g.ad(PluginSport.class) != null)
                   {
-                    h.awi(paramArrayOfString2[0]);
-                    ((PluginSport)com.tencent.mm.kernel.g.ad(PluginSport.class)).getPushSportStepDetector().dTT();
+                    h.aBo(paramArrayOfString2[0]);
+                    ((PluginSport)com.tencent.mm.kernel.g.ad(PluginSport.class)).getPushSportStepDetector().egh();
                     continue;
                     if (com.tencent.mm.kernel.g.ad(PluginSport.class) != null)
                     {
-                      ((PluginSport)com.tencent.mm.kernel.g.ad(PluginSport.class)).getPushSportStepDetector().dTT();
+                      ((PluginSport)com.tencent.mm.kernel.g.ad(PluginSport.class)).getPushSportStepDetector().egh();
                       continue;
                       if (com.tencent.mm.kernel.g.ad(PluginSport.class) != null)
                       {
@@ -122,7 +122,7 @@ public class SportDataProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.SportDataProvider
  * JD-Core Version:    0.7.0.1
  */

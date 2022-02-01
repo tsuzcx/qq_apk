@@ -1,28 +1,22 @@
 package com.tencent.mm.app;
 
 import android.app.Application;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.om;
-import com.tencent.mm.g.a.on;
-import com.tencent.mm.hardcoder.WXHardCoderJNI;
+import com.tencent.mm.g.a.ov;
+import com.tencent.mm.g.a.ow;
 import com.tencent.mm.kernel.b.h.6;
-import com.tencent.mm.modelmulti.m;
-import com.tencent.mm.sdcard_migrate.ExtStorageMigrateMonitor;
-import com.tencent.mm.sdcard_migrate.ExtStorageMigrateRoutine;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.splash.m.a;
 import com.tencent.mm.splash.o.a;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.vending.h.d;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class WeChatSplashStartup
-  implements com.tencent.mm.splash.m.a
+  implements m.a
 {
   private Application app;
   com.tencent.mm.kernel.b.h profile;
@@ -31,198 +25,57 @@ public class WeChatSplashStartup
   private void b(final o.a parama)
   {
     AppMethodBeat.i(160091);
-    com.tencent.mm.f.a.bx(this.app);
-    com.tencent.mm.blink.a.km(2);
-    final boolean bool;
+    com.tencent.mm.f.a.bw(this.app);
+    com.tencent.mm.blink.a.kJ(2);
+    boolean bool;
     Object localObject;
     if (parama == null)
     {
       bool = true;
       this.profile.onCreate();
-      if ((!this.profile.up(":tools")) && (!this.profile.up(":toolsmp"))) {
-        break label230;
+      if ((!this.profile.xf(":tools")) && (!this.profile.xf(":toolsmp"))) {
+        break label216;
       }
       localObject = new ah();
     }
     for (;;)
     {
-      this.profile.ghu.a((com.tencent.mm.kernel.a.b)localObject);
+      this.profile.gBe.a((com.tencent.mm.kernel.a.b)localObject);
       if (!bool)
       {
-        com.tencent.mm.splash.h.eXF();
+        com.tencent.mm.splash.h.fnp();
         new com.tencent.mm.sdk.b.c() {}.alive();
         new com.tencent.mm.sdk.b.c() {}.alive();
       }
-      com.tencent.mm.kernel.g.agS().a(ce(bool));
+      com.tencent.mm.kernel.g.ajD().a(cf(bool));
       com.tencent.mm.splash.h.a(new WeChatSplashStartup.5(this));
-      com.tencent.mm.splash.h.a(y.cJA);
-      com.tencent.mm.kernel.g.agS().a(new com.tencent.mm.kernel.api.g()
+      com.tencent.mm.splash.h.a(y.cUN);
+      com.tencent.mm.kernel.g.ajD().a(new WeChatSplashStartup.6(this, bool, parama));
+      com.tencent.mm.kernel.g.ajD().a(new WeChatSplashStartup.7(this));
+      com.tencent.mm.kernel.g.ajD().a(new WeChatSplashStartup.8(this));
+      com.tencent.mm.kernel.g.ajD().a(new com.tencent.mm.kernel.api.g()
       {
-        public final void Lh()
-        {
-          AppMethodBeat.i(160049);
-          com.tencent.mm.kernel.g.agS().b(this);
-          if (!bool)
-          {
-            parama.done();
-            AppMethodBeat.o(160049);
-            return;
-          }
-          com.tencent.mm.splash.h.b("MicroMsg.FigLeaf", "deleteRequest ", new Object[0]);
-          Object localObject = com.tencent.mm.splash.a.eXx();
-          if (!new e((String)localObject).exists())
-          {
-            com.tencent.mm.splash.h.b("MicroMsg.FigLeaf", "deleteRequest dex opt dir not exists.", new Object[0]);
-            AppMethodBeat.o(160049);
-            return;
-          }
-          localObject = new e((String)localObject + "/main-process-blocking");
-          if (((e)localObject).exists()) {
-            com.tencent.mm.splash.h.b("MicroMsg.FigLeaf", "deleteRequest result %s.", new Object[] { Boolean.valueOf(((e)localObject).delete()) });
-          }
-          AppMethodBeat.o(160049);
-        }
-        
-        public final void cf(boolean paramAnonymousBoolean) {}
-      });
-      com.tencent.mm.kernel.g.agS().a(new com.tencent.mm.kernel.api.g()
-      {
-        public final void Lh()
-        {
-          AppMethodBeat.i(160075);
-          com.tencent.mm.kernel.g.agS().b(this);
-          com.tencent.mm.blink.a.Le();
-          WeChatSplashStartup.a(WeChatSplashStartup.this);
-          com.tencent.mm.vfs.p.btF();
-          ExtStorageMigrateMonitor.eTD();
-          com.tencent.mm.sdcard_migrate.b.eUa();
-          ExtStorageMigrateRoutine.triggerMediaRescanOnDemand();
-          if (WeChatSplashStartup.this.profile.ahL()) {}
-          try
-          {
-            com.tencent.mm.sdk.platformtools.ai.getContext().getSharedPreferences("system_config_prefs", 0).edit().putInt("launch_last_status", 2).commit();
-            if (WeChatSplashStartup.this.profile.ahL())
-            {
-              com.tencent.mm.kernel.a locala = com.tencent.mm.kernel.g.agP();
-              ac.i("MMKernel.CoreAccount", "summerhardcoder hasInitialized[%b] mHardCoderStartPerformance[%d] stack[%s]", new Object[] { Boolean.valueOf(locala.afY()), Integer.valueOf(locala.ggK), bs.eWi() });
-              if ((locala.afY()) && (locala.ggK != 0))
-              {
-                WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcBootEnable, locala.ggK);
-                ac.i("MMKernel.CoreAccount", "summerhardcoder stopPerformance[%s] stack[%s]", new Object[] { Integer.valueOf(locala.ggK), bs.eWi() });
-                locala.ggK = 0;
-              }
-            }
-            AppMethodBeat.o(160075);
-            return;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              ac.printErrStackTrace("MicroMsg.WeChatSplashStartup", localException, "%s", new Object[] { localException.getMessage() });
-            }
-          }
-        }
-        
-        public final void cf(boolean paramAnonymousBoolean) {}
-      });
-      com.tencent.mm.kernel.g.agS().a(new com.tencent.mm.kernel.api.g()
-      {
-        public final void Lh()
-        {
-          AppMethodBeat.i(160071);
-          if (!com.tencent.mm.sdk.platformtools.ai.eVc()) {
-            ag.a.cJV.KV();
-          }
-          if (com.tencent.mm.sdk.platformtools.ai.cin()) {
-            x.execute();
-          }
-          AppMethodBeat.o(160071);
-        }
-        
-        public final void cf(boolean paramAnonymousBoolean) {}
-      });
-      com.tencent.mm.kernel.g.agS().a(new com.tencent.mm.kernel.api.g()
-      {
-        public final void Lh()
+        public final void MP()
         {
           AppMethodBeat.i(160117);
           b.c(WeChatSplashStartup.b(WeChatSplashStartup.this));
           AppMethodBeat.o(160117);
         }
         
-        public final void cf(boolean paramAnonymousBoolean) {}
+        public final void cg(boolean paramAnonymousBoolean) {}
       });
-      com.tencent.mm.kernel.g.agS().a(new com.tencent.mm.kernel.api.g()
+      com.tencent.mm.kernel.g.ajD().a(new com.tencent.mm.kernel.api.g()
       {
-        public final void Lh()
-        {
-          AppMethodBeat.i(160116);
-          if (!com.tencent.mm.sdk.platformtools.ai.cin())
-          {
-            AppMethodBeat.o(160116);
-            return;
-          }
-          if (!w.KF())
-          {
-            ac.i("MicroMsg.WeChatSplashStartup", "[+] Do not need to do patch lag fix.");
-            AppMethodBeat.o(160116);
-            return;
-          }
-          ac.i("MicroMsg.WeChatSplashStartup", "[+] Register app foreground listener for patch lag fixing.");
-          AppForegroundDelegate.cHM.a(new n()
-          {
-            public final void onAppBackground(String paramAnonymous2String)
-            {
-              AppMethodBeat.i(210000);
-              ac.i("MicroMsg.WeChatSplashStartup", "[+] PatchLagFixing: app goes to background now.");
-              w.br(com.tencent.mm.sdk.platformtools.ai.getContext());
-              AppMethodBeat.o(210000);
-            }
-            
-            public final void onAppForeground(String paramAnonymous2String) {}
-          });
-          ac.i("MicroMsg.WeChatSplashStartup", "[+] Register screen state for patch lag fixing.");
-          new m(com.tencent.mm.sdk.platformtools.ai.getContext(), new com.tencent.mm.modelmulti.m.a()
-          {
-            public final void cg(boolean paramAnonymous2Boolean)
-            {
-              AppMethodBeat.i(209999);
-              if (!paramAnonymous2Boolean)
-              {
-                ac.i("MicroMsg.WeChatSplashStartup", "[+] PatchLagFixing: screen is off now.");
-                if (!com.tencent.tinker.lib.e.b.c(d.cIg))
-                {
-                  ac.w("MicroMsg.WeChatSplashStartup", "[!] No patch was loaded, skip lag fixing and suicide.");
-                  AppMethodBeat.o(209999);
-                  return;
-                }
-                if (w.KG())
-                {
-                  ac.i("MicroMsg.WeChatSplashStartup", "[+] DexOpt is done, do restart WeChat now.");
-                  w.KH();
-                }
-              }
-              AppMethodBeat.o(209999);
-            }
-          });
-          AppMethodBeat.o(160116);
-        }
-        
-        public final void cf(boolean paramAnonymousBoolean) {}
-      });
-      com.tencent.mm.kernel.g.agS().a(new com.tencent.mm.kernel.api.g()
-      {
-        private final ay cJs;
-        private final int cKl;
-        private final int cKm;
-        private final int cKn;
-        private final int cKo;
-        private final int cKp;
-        private final int cKq;
-        private final int cKr;
-        private final int cKs;
-        private final int cKt;
+        private final az cUH;
+        private final int cVA;
+        private final int cVB;
+        private final int cVC;
+        private final int cVD;
+        private final int cVE;
+        private final int cVF;
+        private final int cVr;
+        private final int cVy;
+        private final int cVz;
         
         /* Error */
         private static void e(File paramAnonymousFile1, File paramAnonymousFile2)
@@ -293,7 +146,7 @@ public class WeChatSplashStartup
           //   119: aload_1
           //   120: invokevirtual 178	java/io/File:getAbsolutePath	()Ljava/lang/String;
           //   123: aastore
-          //   124: invokestatic 183	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   124: invokestatic 183	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   127: aload 4
           //   129: invokestatic 171	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
           //   132: aload_3
@@ -329,70 +182,70 @@ public class WeChatSplashStartup
           //   36	53	150	finally
         }
         
-        public final void Lh()
+        public final void MP()
         {
-          AppMethodBeat.i(209994);
-          if (!com.tencent.mm.sdk.platformtools.ai.cin())
+          AppMethodBeat.i(160116);
+          if (!aj.cmR())
           {
-            AppMethodBeat.o(209994);
+            AppMethodBeat.o(160116);
             return;
           }
-          com.tencent.e.h.JZN.f(new Runnable()
+          com.tencent.e.h.LTJ.f(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(209998);
-              File localFile1 = new File(com.tencent.mm.loader.j.b.apd(), "/MicroMsg/WeiXin/");
-              File localFile2 = new File(com.tencent.mm.loader.j.b.apd(), "/MicroMsg/WeChat/");
-              File localFile3 = new File(com.tencent.mm.loader.j.b.apr());
+              AppMethodBeat.i(221758);
+              File localFile1 = new File(com.tencent.mm.loader.j.b.arQ(), "/MicroMsg/WeiXin/");
+              File localFile2 = new File(com.tencent.mm.loader.j.b.arQ(), "/MicroMsg/WeChat/");
+              File localFile3 = new File(com.tencent.mm.loader.j.b.asf());
               if (localFile1.exists())
               {
-                WeChatSplashStartup.11.f(localFile1, localFile3);
+                WeChatSplashStartup.10.f(localFile1, localFile3);
                 if (localFile3.exists()) {
                   break label112;
                 }
-                WeChatSplashStartup.11.a(WeChatSplashStartup.11.this, 170, 174);
+                WeChatSplashStartup.10.a(WeChatSplashStartup.10.this, 170, 174);
               }
               while (localFile2.exists())
               {
-                WeChatSplashStartup.11.f(localFile2, localFile3);
+                WeChatSplashStartup.10.f(localFile2, localFile3);
                 if (!localFile3.exists())
                 {
-                  WeChatSplashStartup.11.a(WeChatSplashStartup.11.this, 171, 177);
-                  AppMethodBeat.o(209998);
+                  WeChatSplashStartup.10.a(WeChatSplashStartup.10.this, 171, 177);
+                  AppMethodBeat.o(221758);
                   return;
                   label112:
                   if (!localFile1.exists()) {
-                    WeChatSplashStartup.11.a(WeChatSplashStartup.11.this, 170, 172);
+                    WeChatSplashStartup.10.a(WeChatSplashStartup.10.this, 170, 172);
                   } else {
-                    WeChatSplashStartup.11.a(WeChatSplashStartup.11.this, 170, 173);
+                    WeChatSplashStartup.10.a(WeChatSplashStartup.10.this, 170, 173);
                   }
                 }
                 else
                 {
                   if (!localFile2.exists())
                   {
-                    WeChatSplashStartup.11.a(WeChatSplashStartup.11.this, 171, 175);
-                    AppMethodBeat.o(209998);
+                    WeChatSplashStartup.10.a(WeChatSplashStartup.10.this, 171, 175);
+                    AppMethodBeat.o(221758);
                     return;
                   }
-                  WeChatSplashStartup.11.a(WeChatSplashStartup.11.this, 171, 176);
+                  WeChatSplashStartup.10.a(WeChatSplashStartup.10.this, 171, 176);
                 }
               }
-              AppMethodBeat.o(209998);
+              AppMethodBeat.o(221758);
             }
           }, "FixMigrate");
-          AppMethodBeat.o(209994);
+          AppMethodBeat.o(160116);
         }
         
-        public final void cf(boolean paramAnonymousBoolean) {}
+        public final void cg(boolean paramAnonymousBoolean) {}
       });
       AppMethodBeat.o(160091);
       return;
       bool = false;
       break;
-      label230:
-      if ((this.profile.uq(":appbrand")) && (eA(com.tencent.mm.plugin.appbrand.a.a.jjd))) {
+      label216:
+      if ((this.profile.xg(":appbrand")) && (fv(com.tencent.mm.plugin.appbrand.api.a.jCL))) {
         localObject = new c();
       } else {
         localObject = new i();
@@ -400,27 +253,27 @@ public class WeChatSplashStartup
     }
   }
   
-  private com.tencent.mm.vending.h.d ce(boolean paramBoolean)
+  private d cf(boolean paramBoolean)
   {
     AppMethodBeat.i(160092);
     if (!paramBoolean)
     {
-      Object localObject = p.Kv();
-      ((p)localObject).Kw();
-      com.tencent.mm.kernel.g.agS().a(new com.tencent.mm.kernel.api.g()
+      Object localObject = p.LY();
+      ((p)localObject).LZ();
+      com.tencent.mm.kernel.g.ajD().a(new com.tencent.mm.kernel.api.g()
       {
-        public final void Lh()
+        public final void MP()
         {
-          AppMethodBeat.i(209992);
-          this.cKe.cIH.quit();
-          com.tencent.mm.kernel.g.agS().b(this);
-          AppMethodBeat.o(209992);
+          AppMethodBeat.i(221127);
+          this.cVG.cTP.quit();
+          com.tencent.mm.kernel.g.ajD().b(this);
+          AppMethodBeat.o(221127);
         }
         
-        public final void cf(boolean paramAnonymousBoolean) {}
+        public final void cg(boolean paramAnonymousBoolean) {}
       });
-      com.tencent.mm.kernel.a.c.ahe().f(((p)localObject).cIH.getLooper());
-      localObject = ((p)localObject).cII;
+      com.tencent.mm.kernel.a.c.ajP().f(((p)localObject).cTP.getLooper());
+      localObject = ((p)localObject).cTQ;
       AppMethodBeat.o(160092);
       return localObject;
     }
@@ -428,7 +281,7 @@ public class WeChatSplashStartup
     return null;
   }
   
-  private static boolean eA(String paramString)
+  private static boolean fv(String paramString)
   {
     AppMethodBeat.i(177509);
     if (paramString == null)
@@ -445,7 +298,7 @@ public class WeChatSplashStartup
     return false;
   }
   
-  public final void Lg()
+  public final void MO()
   {
     AppMethodBeat.i(160090);
     b(null);
@@ -464,11 +317,11 @@ public class WeChatSplashStartup
     AppMethodBeat.i(160088);
     this.app = paramApplication;
     this.thisProcess = paramString;
-    this.profile = ai.cKb;
+    this.profile = ai.cVo;
     com.tencent.mm.kernel.g.a(this.profile);
     paramApplication = this.profile;
     paramString = this.app;
-    paramApplication.gkv.a(new h.6(paramApplication, paramString));
+    paramApplication.gEf.a(new h.6(paramApplication, paramString));
     AppMethodBeat.o(160088);
   }
 }

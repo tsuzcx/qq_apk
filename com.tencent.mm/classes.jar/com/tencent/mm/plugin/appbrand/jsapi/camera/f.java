@@ -10,26 +10,26 @@ import com.tencent.mm.plugin.appbrand.jsapi.f.d;
 public abstract interface f
   extends f.b, f.c, f.d
 {
-  public static final f knb = new f()
+  public static final f kIb = new f()
   {
-    public final void ao(String paramAnonymousString, boolean paramAnonymousBoolean) {}
+    public final void ap(String paramAnonymousString, boolean paramAnonymousBoolean) {}
     
-    public final float aw(float paramAnonymousFloat)
+    public final float az(float paramAnonymousFloat)
     {
       return 0.0F;
     }
     
-    public final void bgb() {}
+    public final void bjF() {}
     
-    public final void bgd() {}
+    public final void bjH() {}
     
-    public final void bge() {}
+    public final void bjI() {}
     
-    public final void bgk() {}
+    public final void bjO() {}
     
-    public final void bgl() {}
+    public final void bjP() {}
     
-    public final boolean dM(int paramAnonymousInt1, int paramAnonymousInt2)
+    public final boolean dO(int paramAnonymousInt1, int paramAnonymousInt2)
     {
       return false;
     }
@@ -86,24 +86,24 @@ public abstract interface f
     
     public final void setScanFreq(int paramAnonymousInt) {}
     
-    public final void w(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4) {}
+    public final void x(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4) {}
   };
   
-  public abstract void ao(String paramString, boolean paramBoolean);
+  public abstract void ap(String paramString, boolean paramBoolean);
   
-  public abstract float aw(float paramFloat);
+  public abstract float az(float paramFloat);
   
-  public abstract void bgb();
+  public abstract void bjF();
   
-  public abstract void bgd();
+  public abstract void bjH();
   
-  public abstract void bge();
+  public abstract void bjI();
   
-  public abstract void bgk();
+  public abstract void bjO();
   
-  public abstract void bgl();
+  public abstract void bjP();
   
-  public abstract boolean dM(int paramInt1, int paramInt2);
+  public abstract boolean dO(int paramInt1, int paramInt2);
   
   public abstract int getCameraId();
   
@@ -145,11 +145,11 @@ public abstract interface f
   
   public abstract void setScanFreq(int paramInt);
   
-  public abstract void w(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void x(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.f
  * JD-Core Version:    0.7.0.1
  */

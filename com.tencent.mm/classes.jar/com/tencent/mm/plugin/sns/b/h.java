@@ -5,15 +5,15 @@ import java.util.ArrayList;
 
 public abstract interface h
 {
-  public abstract boolean NY(int paramInt);
+  public abstract boolean PF(int paramInt);
   
-  public abstract Cursor asH(String paramString);
+  public abstract Cursor axJ(String paramString);
   
-  public abstract ArrayList<Long> dGp();
+  public abstract ArrayList<Long> dSC();
   
-  public abstract void wS(long paramLong);
+  public abstract void zs(long paramLong);
   
-  public abstract int wT(long paramLong);
+  public abstract int zt(long paramLong);
 }
 
 

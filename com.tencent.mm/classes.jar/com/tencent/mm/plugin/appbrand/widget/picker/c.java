@@ -8,7 +8,6 @@ import android.support.v4.content.b;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import android.view.View.OnClickListener;
 import android.view.View.OnLayoutChangeListener;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -18,22 +17,22 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class c
   extends FrameLayout
 {
   private boolean isAnimating;
-  TextView lcZ;
-  private a mKA;
-  private boolean mKB;
-  private View mKC;
-  View mKD;
-  private c.b mKE;
-  private com.tencent.mm.plugin.appbrand.jsapi.m.c mKw;
-  private FrameLayout mKx;
-  View mKy;
-  View mKz;
+  TextView lzZ;
+  private com.tencent.mm.plugin.appbrand.jsapi.p.c nkS;
+  private FrameLayout nkT;
+  View nkU;
+  View nkV;
+  private a nkW;
+  private boolean nkX;
+  private View nkY;
+  View nkZ;
+  private b nla;
   
   public c(Context paramContext)
   {
@@ -43,64 +42,28 @@ public class c
     setLongClickable(true);
     paramContext = new FrameLayout.LayoutParams(-1, -2);
     paramContext.gravity = 80;
-    this.mKC = LayoutInflater.from(getContext()).inflate(2131493021, this, false);
-    this.mKx = ((FrameLayout)this.mKC.findViewById(2131296792));
-    this.mKD = this.mKC.findViewById(2131296790);
-    this.mKz = this.mKC.findViewById(2131303266);
-    q(this.mKz, getContext().getResources().getDimensionPixelSize(2131166684), getContext().getResources().getDimensionPixelSize(2131166683));
-    this.mKz.findViewById(2131297573).setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(138044);
-        c localc = c.this;
-        if (c.c(c.this) == null) {}
-        for (paramAnonymousView = null;; paramAnonymousView = c.c(c.this).currentValue())
-        {
-          c.a(localc, true, paramAnonymousView);
-          AppMethodBeat.o(138044);
-          return;
-        }
-      }
-    });
-    this.mKz.findViewById(2131297572).setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(138045);
-        c.a(c.this, false, null);
-        AppMethodBeat.o(138045);
-      }
-    });
-    this.mKz.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(138046);
-        AppMethodBeat.o(138046);
-      }
-    });
-    View localView = this.mKC.findViewById(2131296792);
-    localView.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(138047);
-        AppMethodBeat.o(138047);
-      }
-    });
+    this.nkY = LayoutInflater.from(getContext()).inflate(2131493021, this, false);
+    this.nkT = ((FrameLayout)this.nkY.findViewById(2131296792));
+    this.nkZ = this.nkY.findViewById(2131296790);
+    this.nkV = this.nkY.findViewById(2131303266);
+    q(this.nkV, getContext().getResources().getDimensionPixelSize(2131166684), getContext().getResources().getDimensionPixelSize(2131166683));
+    this.nkV.findViewById(2131297573).setOnClickListener(new c.4(this));
+    this.nkV.findViewById(2131297572).setOnClickListener(new c.5(this));
+    this.nkV.setOnClickListener(new c.6(this));
+    View localView = this.nkY.findViewById(2131296792);
+    localView.setOnClickListener(new c.7(this));
     localView.setBackgroundColor(b.n(localView.getContext(), 2131099653));
-    addView(this.mKC, paramContext);
-    this.lcZ = ((TextView)findViewById(2131296789));
-    this.lcZ.setClickable(true);
-    this.mKy = findViewById(2131296788);
+    addView(this.nkY, paramContext);
+    this.lzZ = ((TextView)findViewById(2131296789));
+    this.lzZ.setClickable(true);
+    this.nkU = findViewById(2131296788);
     addOnLayoutChangeListener(new View.OnLayoutChangeListener()
     {
       public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
       {
         AppMethodBeat.i(138043);
-        c.a(c.this, c.this.mKz, c.this.getContext().getResources().getDimensionPixelSize(2131166684), c.this.getContext().getResources().getDimensionPixelSize(2131166683));
-        c.a(c.this, c.this.mKD, c.this.getContext().getResources().getDimensionPixelSize(2131165292), c.this.getContext().getResources().getDimensionPixelSize(2131165303));
+        c.a(c.this, c.this.nkV, c.this.getContext().getResources().getDimensionPixelSize(2131166684), c.this.getContext().getResources().getDimensionPixelSize(2131166683));
+        c.a(c.this, c.this.nkZ, c.this.getContext().getResources().getDimensionPixelSize(2131165292), c.this.getContext().getResources().getDimensionPixelSize(2131165303));
         AppMethodBeat.o(138043);
       }
     });
@@ -110,19 +73,19 @@ public class c
   private void b(boolean paramBoolean, Object paramObject)
   {
     AppMethodBeat.i(138048);
-    if ((!this.mKB) && (this.mKA != null))
+    if ((!this.nkX) && (this.nkW != null))
     {
-      this.mKB = true;
-      this.mKA.a(paramBoolean, paramObject);
-      this.mKB = false;
+      this.nkX = true;
+      this.nkW.a(paramBoolean, paramObject);
+      this.nkX = false;
     }
     AppMethodBeat.o(138048);
   }
   
-  private void bBi()
+  private void bFk()
   {
-    this.mKA = null;
-    this.mKE = null;
+    this.nkW = null;
+    this.nla = null;
   }
   
   private void q(View paramView, int paramInt1, int paramInt2)
@@ -140,26 +103,26 @@ public class c
     AppMethodBeat.o(138057);
   }
   
-  protected final void cM(Object paramObject)
+  protected final void cO(Object paramObject)
   {
     AppMethodBeat.i(138059);
-    if (this.mKE != null) {
-      this.mKE.cv(paramObject);
+    if (this.nla != null) {
+      this.nla.cx(paramObject);
     }
     AppMethodBeat.o(138059);
   }
   
   @SuppressLint({"WrongCall"})
-  protected final void ex(int paramInt1, int paramInt2)
+  protected final void ez(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(138054);
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(138054);
   }
   
-  public com.tencent.mm.plugin.appbrand.jsapi.m.c getPicker()
+  public com.tencent.mm.plugin.appbrand.jsapi.p.c getPicker()
   {
-    return this.mKw;
+    return this.nkS;
   }
   
   public void hide()
@@ -171,12 +134,12 @@ public class c
       return;
     }
     b(false, null);
-    if (this.mKw != null)
+    if (this.nkS != null)
     {
-      this.mKw.onHide(this);
+      this.nkS.onHide(this);
       this.isAnimating = true;
       Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772084);
-      this.mKC.startAnimation(localAnimation);
+      this.nkY.startAnimation(localAnimation);
       startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771993));
       localAnimation.setAnimationListener(new Animation.AnimationListener()
       {
@@ -203,7 +166,7 @@ public class c
   {
     AppMethodBeat.i(138058);
     super.onDetachedFromWindow();
-    bBi();
+    bFk();
     removeAllViews();
     AppMethodBeat.o(138058);
   }
@@ -220,13 +183,13 @@ public class c
   public void setHeader(String paramString)
   {
     AppMethodBeat.i(138056);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      q(this.mKD, getContext().getResources().getDimensionPixelSize(2131165292), getContext().getResources().getDimensionPixelSize(2131165303));
-      this.mKD.setVisibility(0);
-      this.lcZ.setText("");
-      this.mKy.setVisibility(8);
-      this.lcZ.setVisibility(8);
+      q(this.nkZ, getContext().getResources().getDimensionPixelSize(2131165292), getContext().getResources().getDimensionPixelSize(2131165303));
+      this.nkZ.setVisibility(0);
+      this.lzZ.setText("");
+      this.nkU.setVisibility(8);
+      this.lzZ.setVisibility(8);
       AppMethodBeat.o(138056);
       return;
     }
@@ -236,10 +199,10 @@ public class c
     }
     for (;;)
     {
-      this.mKD.setVisibility(8);
-      this.mKy.setVisibility(0);
-      this.lcZ.setVisibility(0);
-      this.lcZ.setText(str);
+      this.nkZ.setVisibility(8);
+      this.nkU.setVisibility(0);
+      this.lzZ.setVisibility(0);
+      this.lzZ.setText(str);
       AppMethodBeat.o(138056);
       return;
       if ("设置地区".equals(paramString))
@@ -262,34 +225,34 @@ public class c
   
   public void setOnResultListener(a parama)
   {
-    this.mKA = parama;
+    this.nkW = parama;
   }
   
-  public void setOnValueUpdateListener(c.b paramb)
+  public void setOnValueUpdateListener(b paramb)
   {
-    this.mKE = paramb;
+    this.nla = paramb;
   }
   
-  protected void setPickerImpl(com.tencent.mm.plugin.appbrand.jsapi.m.c paramc)
+  protected void setPickerImpl(com.tencent.mm.plugin.appbrand.jsapi.p.c paramc)
   {
     AppMethodBeat.i(138050);
-    if (this.mKw != null) {
-      this.mKw.onDetach(this);
+    if (this.nkS != null) {
+      this.nkS.onDetach(this);
     }
-    this.mKw = paramc;
-    if (this.mKw != null) {
-      this.mKw.onAttach(this);
+    this.nkS = paramc;
+    if (this.nkS != null) {
+      this.nkS.onAttach(this);
     }
-    if ((this.mKx == null) || (this.mKw == null) || (this.mKw.getView() == null))
+    if ((this.nkT == null) || (this.nkS == null) || (this.nkS.getView() == null))
     {
       AppMethodBeat.o(138050);
       return;
     }
-    this.mKx.removeAllViews();
-    bBi();
+    this.nkT.removeAllViews();
+    bFk();
     paramc = new FrameLayout.LayoutParams(-1, -1);
     paramc.gravity = 17;
-    this.mKx.addView(this.mKw.getView(), paramc);
+    this.nkT.addView(this.nkS.getView(), paramc);
     AppMethodBeat.o(138050);
   }
   
@@ -314,18 +277,18 @@ public class c
       AppMethodBeat.o(138051);
       return;
     }
-    if (this.mKw == null)
+    if (this.nkS == null)
     {
       setVisibility(8);
       AppMethodBeat.o(138051);
       return;
     }
-    this.mKw.onShow(this);
+    this.nkS.onShow(this);
     clearAnimation();
     setVisibility(0);
     this.isAnimating = true;
     Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130771994);
-    this.mKC.startAnimation(localAnimation);
+    this.nkY.startAnimation(localAnimation);
     startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771992));
     localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
@@ -347,6 +310,11 @@ public class c
   public static abstract interface a<T>
   {
     public abstract void a(boolean paramBoolean, T paramT);
+  }
+  
+  public static abstract interface b<T>
+  {
+    public abstract void cx(T paramT);
   }
 }
 

@@ -27,36 +27,36 @@ public class TPDLIOUtil
   
   static
   {
-    AppMethodBeat.i(191656);
+    AppMethodBeat.i(190296);
     PROTOCOL_PATTERN = Pattern.compile("^(\\w+):/{2,3}");
     PATH_PATTERN = Pattern.compile("^(\\w+):/{2,3}(.*)");
-    AppMethodBeat.o(191656);
+    AppMethodBeat.o(190296);
   }
   
   public static File compare(File paramFile1, File paramFile2)
   {
-    AppMethodBeat.i(191653);
+    AppMethodBeat.i(190293);
     if (paramFile1 == null)
     {
-      AppMethodBeat.o(191653);
+      AppMethodBeat.o(190293);
       return paramFile2;
     }
     if ((paramFile2 == null) || (!paramFile2.exists()))
     {
-      AppMethodBeat.o(191653);
+      AppMethodBeat.o(190293);
       return paramFile1;
     }
     if (!paramFile1.exists())
     {
-      AppMethodBeat.o(191653);
+      AppMethodBeat.o(190293);
       return paramFile2;
     }
     if (paramFile1.lastModified() > paramFile2.lastModified())
     {
-      AppMethodBeat.o(191653);
+      AppMethodBeat.o(190293);
       return paramFile1;
     }
-    AppMethodBeat.o(191653);
+    AppMethodBeat.o(190293);
     return paramFile2;
   }
   
@@ -211,10 +211,10 @@ public class TPDLIOUtil
   public static int copy(InputStream paramInputStream, OutputStream paramOutputStream)
   {
     i = 0;
-    AppMethodBeat.i(191643);
+    AppMethodBeat.i(190283);
     if ((paramInputStream == null) || (paramOutputStream == null))
     {
-      AppMethodBeat.o(191643);
+      AppMethodBeat.o(190283);
       return 0;
     }
     byte[] arrayOfByte = new byte[1024];
@@ -233,143 +233,143 @@ public class TPDLIOUtil
     }
     catch (IOException paramInputStream)
     {
-      AppMethodBeat.o(191643);
+      AppMethodBeat.o(190283);
     }
   }
   
   public static boolean createFile(File paramFile)
   {
-    AppMethodBeat.i(191651);
+    AppMethodBeat.i(190291);
     if (paramFile == null)
     {
-      AppMethodBeat.o(191651);
+      AppMethodBeat.o(190291);
       return false;
     }
     if (!paramFile.exists())
     {
       if (!createParentDirectories(paramFile))
       {
-        AppMethodBeat.o(191651);
+        AppMethodBeat.o(190291);
         return false;
       }
       try
       {
         boolean bool = paramFile.createNewFile();
-        AppMethodBeat.o(191651);
+        AppMethodBeat.o(190291);
         return bool;
       }
       catch (IOException paramFile)
       {
-        AppMethodBeat.o(191651);
+        AppMethodBeat.o(190291);
         return false;
       }
     }
-    AppMethodBeat.o(191651);
+    AppMethodBeat.o(190291);
     return true;
   }
   
   public static boolean createFile(String paramString)
   {
-    AppMethodBeat.i(191652);
+    AppMethodBeat.i(190292);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(191652);
+      AppMethodBeat.o(190292);
       return false;
     }
     boolean bool = createFile(new File(paramString));
-    AppMethodBeat.o(191652);
+    AppMethodBeat.o(190292);
     return bool;
   }
   
   public static boolean createParentDirectories(File paramFile)
   {
-    AppMethodBeat.i(191649);
+    AppMethodBeat.i(190289);
     if (paramFile == null)
     {
-      AppMethodBeat.o(191649);
+      AppMethodBeat.o(190289);
       return false;
     }
     paramFile = paramFile.getParentFile();
     if ((paramFile != null) && (!paramFile.exists()))
     {
       boolean bool = paramFile.mkdirs();
-      AppMethodBeat.o(191649);
+      AppMethodBeat.o(190289);
       return bool;
     }
-    AppMethodBeat.o(191649);
+    AppMethodBeat.o(190289);
     return true;
   }
   
   public static boolean createParentDirectories(String paramString)
   {
-    AppMethodBeat.i(191650);
+    AppMethodBeat.i(190290);
     boolean bool = createParentDirectories(new File(paramString));
-    AppMethodBeat.o(191650);
+    AppMethodBeat.o(190290);
     return bool;
   }
   
   public static String getPath(String paramString)
   {
-    AppMethodBeat.i(191641);
+    AppMethodBeat.i(190281);
     if (paramString == null)
     {
-      AppMethodBeat.o(191641);
+      AppMethodBeat.o(190281);
       return null;
     }
     Matcher localMatcher = PATH_PATTERN.matcher(paramString);
     if ((localMatcher.find()) && (localMatcher.group(1).equals("asset")))
     {
       paramString = localMatcher.group(2);
-      AppMethodBeat.o(191641);
+      AppMethodBeat.o(190281);
       return paramString;
     }
-    AppMethodBeat.o(191641);
+    AppMethodBeat.o(190281);
     return paramString;
   }
   
   public static String getProtocol(String paramString)
   {
-    AppMethodBeat.i(191639);
+    AppMethodBeat.i(190279);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(191639);
+      AppMethodBeat.o(190279);
       return "file";
     }
     paramString = PROTOCOL_PATTERN.matcher(paramString);
     if (paramString.find())
     {
       paramString = paramString.group(1);
-      AppMethodBeat.o(191639);
+      AppMethodBeat.o(190279);
       return paramString;
     }
-    AppMethodBeat.o(191639);
+    AppMethodBeat.o(190279);
     return "file";
   }
   
   public static boolean isExternalStorageMounted()
   {
-    AppMethodBeat.i(191655);
+    AppMethodBeat.i(190295);
     boolean bool = Environment.getExternalStorageState().equals("mounted");
-    AppMethodBeat.o(191655);
+    AppMethodBeat.o(190295);
     return bool;
   }
   
   public static boolean isRemoteFile(String paramString)
   {
-    AppMethodBeat.i(191638);
+    AppMethodBeat.i(190278);
     paramString = getProtocol(paramString);
     if ((paramString.equals("https")) || (paramString.equals("http")))
     {
-      AppMethodBeat.o(191638);
+      AppMethodBeat.o(190278);
       return true;
     }
-    AppMethodBeat.o(191638);
+    AppMethodBeat.o(190278);
     return false;
   }
   
   public static InputStream open(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(191640);
+    AppMethodBeat.i(190280);
     String str = getProtocol(paramString);
     if (str.equals("asset"))
     {
@@ -377,12 +377,12 @@ public class TPDLIOUtil
       try
       {
         paramContext = paramContext.getAssets().open(paramString);
-        AppMethodBeat.o(191640);
+        AppMethodBeat.o(190280);
         return paramContext;
       }
       catch (IOException paramContext)
       {
-        AppMethodBeat.o(191640);
+        AppMethodBeat.o(190280);
         return null;
       }
     }
@@ -392,12 +392,12 @@ public class TPDLIOUtil
       try
       {
         paramContext = new FileInputStream(paramContext);
-        AppMethodBeat.o(191640);
+        AppMethodBeat.o(190280);
         return paramContext;
       }
       catch (Exception paramContext)
       {
-        AppMethodBeat.o(191640);
+        AppMethodBeat.o(190280);
         return null;
       }
     }
@@ -405,90 +405,90 @@ public class TPDLIOUtil
       try
       {
         paramContext = new URL(paramString).openStream();
-        AppMethodBeat.o(191640);
+        AppMethodBeat.o(190280);
         return paramContext;
       }
       catch (Exception paramContext)
       {
-        AppMethodBeat.o(191640);
+        AppMethodBeat.o(190280);
         return null;
       }
     }
-    AppMethodBeat.o(191640);
+    AppMethodBeat.o(190280);
     return null;
   }
   
   public static InputStream openInputStream(File paramFile)
   {
-    AppMethodBeat.i(191648);
+    AppMethodBeat.i(190288);
     if (paramFile == null)
     {
-      AppMethodBeat.o(191648);
+      AppMethodBeat.o(190288);
       return null;
     }
     try
     {
       paramFile = new FileInputStream(paramFile);
-      AppMethodBeat.o(191648);
+      AppMethodBeat.o(190288);
       return paramFile;
     }
     catch (FileNotFoundException paramFile)
     {
-      AppMethodBeat.o(191648);
+      AppMethodBeat.o(190288);
     }
     return null;
   }
   
   public static InputStream openInputStream(String paramString)
   {
-    AppMethodBeat.i(191647);
+    AppMethodBeat.i(190287);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(191647);
+      AppMethodBeat.o(190287);
       return null;
     }
     paramString = openInputStream(new File(paramString));
-    AppMethodBeat.o(191647);
+    AppMethodBeat.o(190287);
     return paramString;
   }
   
   public static OutputStream openOutputStream(File paramFile)
   {
-    AppMethodBeat.i(191646);
+    AppMethodBeat.i(190286);
     if ((paramFile == null) || (!createFile(paramFile)))
     {
-      AppMethodBeat.o(191646);
+      AppMethodBeat.o(190286);
       return null;
     }
     try
     {
       paramFile = new FileOutputStream(paramFile);
-      AppMethodBeat.o(191646);
+      AppMethodBeat.o(190286);
       return paramFile;
     }
     catch (FileNotFoundException paramFile)
     {
-      AppMethodBeat.o(191646);
+      AppMethodBeat.o(190286);
     }
     return null;
   }
   
   public static OutputStream openOutputStream(String paramString)
   {
-    AppMethodBeat.i(191645);
+    AppMethodBeat.i(190285);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(191645);
+      AppMethodBeat.o(190285);
       return null;
     }
     paramString = openOutputStream(new File(paramString));
-    AppMethodBeat.o(191645);
+    AppMethodBeat.o(190285);
     return paramString;
   }
   
   public static void recursiveDelete(File paramFile)
   {
-    AppMethodBeat.i(191654);
+    AppMethodBeat.i(190294);
     if (paramFile != null) {}
     try
     {
@@ -499,7 +499,7 @@ public class TPDLIOUtil
           File[] arrayOfFile = paramFile.listFiles();
           if (arrayOfFile == null)
           {
-            AppMethodBeat.o(191654);
+            AppMethodBeat.o(190294);
             return;
           }
           int j = arrayOfFile.length;
@@ -512,13 +512,13 @@ public class TPDLIOUtil
         }
         TPDLProxyLog.d("TPDLIOUtil", 0, "tpdlnative", "recursiveDelete: delete=".concat(String.valueOf(paramFile.delete())));
       }
-      AppMethodBeat.o(191654);
+      AppMethodBeat.o(190294);
       return;
     }
     catch (Exception paramFile)
     {
       TPDLProxyLog.d("TPDLIOUtil", 0, "tpdlnative", "recursiveDelete failed, error:" + paramFile.toString());
-      AppMethodBeat.o(191654);
+      AppMethodBeat.o(190294);
     }
   }
   
@@ -680,7 +680,7 @@ public class TPDLIOUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.utils.TPDLIOUtil
  * JD-Core Version:    0.7.0.1
  */

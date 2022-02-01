@@ -7,15 +7,15 @@ import java.util.Locale;
 
 public final class i
 {
-  public static DateFormat bu(int paramInt1, int paramInt2)
+  public static DateFormat bw(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(107934);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat(fx(paramInt1) + " " + fy(paramInt2), Locale.US);
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat(fA(paramInt1) + " " + fB(paramInt2), Locale.US);
     AppMethodBeat.o(107934);
     return localSimpleDateFormat;
   }
   
-  private static String fx(int paramInt)
+  private static String fA(int paramInt)
   {
     AppMethodBeat.i(107935);
     switch (paramInt)
@@ -38,7 +38,7 @@ public final class i
     return "EEEE, MMMM d, yyyy";
   }
   
-  private static String fy(int paramInt)
+  private static String fB(int paramInt)
   {
     AppMethodBeat.i(107936);
     switch (paramInt)
@@ -60,7 +60,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.a.b.i
  * JD-Core Version:    0.7.0.1
  */

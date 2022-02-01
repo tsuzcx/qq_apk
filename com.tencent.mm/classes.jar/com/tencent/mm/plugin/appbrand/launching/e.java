@@ -6,69 +6,69 @@ import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.config.b;
 import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.h;
+import com.tencent.mm.ac.h;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.config.x;
 import com.tencent.mm.plugin.appbrand.config.y;
+import com.tencent.mm.plugin.appbrand.config.z;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import org.json.JSONObject;
 
 public class e
   implements Runnable
 {
   protected volatile String appId;
-  final AppBrandLaunchReferrer cce;
-  protected final int hxM;
-  protected AppBrandStatObject jjR;
-  protected final String jjf;
-  private final a lhp;
-  protected final ActivityStarterIpcDelegate lhq;
+  final AppBrandLaunchReferrer cmv;
+  protected final int hQh;
+  protected final String jCN;
+  protected AppBrandStatObject jDH;
+  private final a lEp;
+  protected final ActivityStarterIpcDelegate lEq;
   protected final int pkgVersion;
-  protected final String username;
+  protected volatile String username;
   
   public e(LaunchParcel paramLaunchParcel, a parama)
   {
-    this.lhp = parama;
-    this.hxM = paramLaunchParcel.hxM;
+    this.lEp = parama;
+    this.hQh = paramLaunchParcel.hQh;
     this.appId = paramLaunchParcel.appId;
     this.username = paramLaunchParcel.username;
     this.pkgVersion = paramLaunchParcel.version;
-    this.jjR = paramLaunchParcel.lpG;
-    this.jjf = paramLaunchParcel.jjf;
-    this.lhq = paramLaunchParcel.lhq;
-    this.cce = paramLaunchParcel.cce;
+    this.jDH = paramLaunchParcel.lMZ;
+    this.jCN = paramLaunchParcel.jCN;
+    this.lEq = paramLaunchParcel.lEq;
+    this.cmv = paramLaunchParcel.cmv;
   }
   
   protected final void b(AppBrandInitConfigLU paramAppBrandInitConfigLU, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(147313);
-    if (this.lhp != null) {
-      this.lhp.a(paramAppBrandInitConfigLU, paramAppBrandStatObject);
+    if (this.lEp != null) {
+      this.lEp.a(paramAppBrandInitConfigLU, paramAppBrandStatObject);
     }
     AppMethodBeat.o(147313);
   }
   
-  protected Pair<WxaAttributes, Boolean> bna()
+  protected Pair<WxaAttributes, Boolean> bqL()
   {
     AppMethodBeat.i(147309);
-    x.baS();
-    Pair localPair = new Pair(x.e(this.appId, new String[0]), Boolean.FALSE);
+    y.bes();
+    Pair localPair = new Pair(y.e(this.appId, new String[0]), Boolean.FALSE);
     AppMethodBeat.o(147309);
     return localPair;
   }
   
-  protected boolean f(WxaAttributes paramWxaAttributes)
+  protected boolean g(WxaAttributes paramWxaAttributes)
   {
     AppMethodBeat.i(147311);
-    if ((j.a.rq(this.hxM)) && (1 == paramWxaAttributes.baN().ccg))
+    if ((j.a.rQ(this.hQh)) && (1 == paramWxaAttributes.ben().cmx))
     {
-      Toast.makeText(ai.getContext(), 2131755509, 1).show();
+      Toast.makeText(aj.getContext(), 2131755509, 1).show();
       AppMethodBeat.o(147311);
       return true;
     }
@@ -79,8 +79,8 @@ public class e
   protected final void onError()
   {
     AppMethodBeat.i(147312);
-    if (this.lhp != null) {
-      this.lhp.a(null, null);
+    if (this.lEp != null) {
+      this.lEp.a(null, null);
     }
     AppMethodBeat.o(147312);
   }
@@ -88,42 +88,50 @@ public class e
   public void run()
   {
     AppMethodBeat.i(147308);
-    Object localObject = (WxaAttributes)bna().first;
+    Object localObject = (WxaAttributes)bqL().first;
     if (localObject == null)
     {
-      ac.i("Luggage.AppBrandPreLaunchProcess", "onGetWxaAttr null return");
+      ad.i("Luggage.AppBrandPreLaunchProcess", "onGetWxaAttr null return");
       onError();
       AppMethodBeat.o(147308);
       return;
     }
-    if (f((WxaAttributes)localObject))
+    if (g((WxaAttributes)localObject))
     {
       onError();
       AppMethodBeat.o(147308);
       return;
     }
-    AppBrandInitConfigLU localAppBrandInitConfigLU = b.Cy().a((WxaAttributes)localObject);
-    localAppBrandInitConfigLU.joY = this.hxM;
+    AppBrandInitConfigLU localAppBrandInitConfigLU = b.DX().a((WxaAttributes)localObject);
+    if (localAppBrandInitConfigLU == null)
+    {
+      ad.e("Luggage.AppBrandPreLaunchProcess", "onGetWxaAttr, assembled NULL config with username(%s) appId(%s)", new Object[] { ((WxaAttributes)localObject).field_username, ((WxaAttributes)localObject).field_appId });
+      onError();
+      AppMethodBeat.o(147308);
+      return;
+    }
+    localAppBrandInitConfigLU.dPf = this.hQh;
     this.appId = localAppBrandInitConfigLU.appId;
-    if (this.hxM == 0) {
-      localAppBrandInitConfigLU.jBP = ((WxaAttributes)localObject).baN().jFO;
+    this.username = localAppBrandInitConfigLU.username;
+    if (this.hQh == 0) {
+      localAppBrandInitConfigLU.jVL = ((WxaAttributes)localObject).ben().jZX;
     }
     for (;;)
     {
-      if (this.jjR == null) {
-        this.jjR = new AppBrandStatObject();
+      if (this.jDH == null) {
+        this.jDH = new AppBrandStatObject();
       }
-      b(localAppBrandInitConfigLU, this.jjR);
+      b(localAppBrandInitConfigLU, this.jDH);
       AppMethodBeat.o(147308);
       return;
-      s.bnr();
-      localAppBrandInitConfigLU.extInfo = s.bK(this.appId, this.hxM);
+      s.brd();
+      localAppBrandInitConfigLU.extInfo = s.bN(this.appId, this.hQh);
       try
       {
-        localObject = h.tT(localAppBrandInitConfigLU.extInfo);
-        localAppBrandInitConfigLU.jBP = ((JSONObject)localObject).optString("device_orientation");
-        localAppBrandInitConfigLU.ccb = ((JSONObject)localObject).optBoolean("open_remote", false);
-        localAppBrandInitConfigLU.cch = y.KB(localAppBrandInitConfigLU.extInfo);
+        localObject = h.wJ(localAppBrandInitConfigLU.extInfo);
+        localAppBrandInitConfigLU.jVL = ((JSONObject)localObject).optString("device_orientation");
+        localAppBrandInitConfigLU.cms = ((JSONObject)localObject).optBoolean("open_remote", false);
+        localAppBrandInitConfigLU.cmy = z.NU(localAppBrandInitConfigLU.extInfo);
       }
       catch (Exception localException) {}
     }

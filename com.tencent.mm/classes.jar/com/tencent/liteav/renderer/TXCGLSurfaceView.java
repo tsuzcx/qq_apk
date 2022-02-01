@@ -924,7 +924,7 @@ public class TXCGLSurfaceView
     //   506: getfield 456	com/tencent/liteav/renderer/TXCGLSurfaceView:a	Ljava/lang/ref/WeakReference;
     //   509: sipush 2110
     //   512: aload_1
-    //   513: invokestatic 461	com/tencent/liteav/basic/util/d:a	(Ljava/lang/ref/WeakReference;ILandroid/os/Bundle;)V
+    //   513: invokestatic 461	com/tencent/liteav/basic/util/f:a	(Ljava/lang/ref/WeakReference;ILandroid/os/Bundle;)V
     //   516: sipush 16774
     //   519: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   522: return

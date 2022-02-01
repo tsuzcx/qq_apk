@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 public class MaterialCardView
   extends CardView
 {
-  private final a ge;
+  private final a hV;
   
   public MaterialCardView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,44 +21,44 @@ public class MaterialCardView
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = f.a(paramContext, paramAttributeSet, a.a.MaterialCardView, paramInt, 2131821658, new int[0]);
-    this.ge = new a(this);
-    paramAttributeSet = this.ge;
+    this.hV = new a(this);
+    paramAttributeSet = this.hV;
     paramAttributeSet.strokeColor = paramContext.getColor(0, -1);
     paramAttributeSet.strokeWidth = paramContext.getDimensionPixelSize(1, 0);
-    paramAttributeSet.aK();
-    paramAttributeSet.aM();
+    paramAttributeSet.ba();
+    paramAttributeSet.bc();
     paramContext.recycle();
   }
   
   public int getStrokeColor()
   {
-    return this.ge.strokeColor;
+    return this.hV.strokeColor;
   }
   
   public int getStrokeWidth()
   {
-    return this.ge.strokeWidth;
+    return this.hV.strokeWidth;
   }
   
   public void setRadius(float paramFloat)
   {
     super.setRadius(paramFloat);
-    this.ge.aK();
+    this.hV.ba();
   }
   
   public void setStrokeColor(int paramInt)
   {
-    a locala = this.ge;
+    a locala = this.hV;
     locala.strokeColor = paramInt;
-    locala.aK();
+    locala.ba();
   }
   
   public void setStrokeWidth(int paramInt)
   {
-    a locala = this.ge;
+    a locala = this.hV;
     locala.strokeWidth = paramInt;
-    locala.aK();
-    locala.aM();
+    locala.ba();
+    locala.bc();
   }
 }
 

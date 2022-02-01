@@ -3,22 +3,22 @@ package com.tencent.mm.plugin.emojicapture.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.f.d;
+import com.tencent.mm.media.g.d;
 import com.tencent.mm.media.widget.camerarecordview.preview.CameraPreviewGLTextureView;
 import com.tencent.mm.plugin.emojicapture.ui.b.e;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureGLTextureView;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLTextureView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "getPreviewTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "Companion", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureGLTextureView;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLTextureView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "getPreviewTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "Companion", "plugin-emojicapture_release"})
 public final class EmojiCaptureGLTextureView
   extends CameraPreviewGLTextureView
 {
-  public static final EmojiCaptureGLTextureView.a pqF;
+  public static final EmojiCaptureGLTextureView.a pUl;
   
   static
   {
     AppMethodBeat.i(435);
-    pqF = new EmojiCaptureGLTextureView.a((byte)0);
+    pUl = new EmojiCaptureGLTextureView.a((byte)0);
     AppMethodBeat.o(435);
   }
   
@@ -39,22 +39,22 @@ public final class EmojiCaptureGLTextureView
   
   public final d getPreviewTexture()
   {
-    AppMethodBeat.i(195157);
+    AppMethodBeat.i(195133);
     if ((getRenderer() instanceof e))
     {
       localObject = getRenderer();
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.emojicapture.ui.gl.EmojiCapturePreviewRenderer");
-        AppMethodBeat.o(195157);
+        AppMethodBeat.o(195133);
         throw ((Throwable)localObject);
       }
-      localObject = ((e)localObject).cgb();
-      AppMethodBeat.o(195157);
+      localObject = ((e)localObject).ckF();
+      AppMethodBeat.o(195133);
       return localObject;
     }
     Object localObject = super.getPreviewTexture();
-    AppMethodBeat.o(195157);
+    AppMethodBeat.o(195133);
     return localObject;
   }
 }

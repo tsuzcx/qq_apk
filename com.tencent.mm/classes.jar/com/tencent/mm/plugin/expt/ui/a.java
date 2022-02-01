@@ -7,91 +7,94 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uw;
+import com.tencent.mm.g.a.vp;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.pluginsdk.ui.b.b;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
 
 public final class a
-  extends b
+  extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  View mZW;
-  View qsx;
-  private c<uw> qsy;
-  TextView tr;
+  View nAt;
+  View rcc;
+  private c<vp> rcd;
+  TextView vk;
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(195323);
-    this.qsy = new c() {};
-    ac.i("MicroMsg.ExptReportBanner", "expt report banner initialize %d", new Object[] { Integer.valueOf(hashCode()) });
-    com.tencent.mm.sdk.b.a.GpY.b(this.qsy);
-    this.mZW = this.view.findViewById(2131297178);
-    this.qsx = this.view.findViewById(2131297182);
-    this.tr = ((TextView)this.view.findViewById(2131302978));
-    this.mZW.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(210558);
+    this.rcd = new c() {};
+    ad.i("MicroMsg.ExptReportBanner", "expt report banner initialize %d", new Object[] { Integer.valueOf(hashCode()) });
+    com.tencent.mm.sdk.b.a.IbL.b(this.rcd);
+    this.nAt = this.view.findViewById(2131297178);
+    this.rcc = this.view.findViewById(2131297182);
+    this.vk = ((TextView)this.view.findViewById(2131302978));
+    this.nAt.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(195318);
-        paramAnonymousView = new f.a(ai.getContext());
-        paramAnonymousView.aRQ("cancel expt debug now!").yi(true);
+        AppMethodBeat.i(210553);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/expt/ui/ExptReportBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        paramAnonymousView = new f.a(aj.getContext());
+        paramAnonymousView.aXO("cancel expt debug now!").yU(true);
         paramAnonymousView.c(new f.c()
         {
           public final void d(boolean paramAnonymous2Boolean, String paramAnonymous2String)
           {
-            AppMethodBeat.i(195317);
+            AppMethodBeat.i(210552);
             if (paramAnonymous2Boolean) {
-              ((com.tencent.mm.plugin.expt.a.a)g.ab(com.tencent.mm.plugin.expt.a.a.class)).cis();
+              ((com.tencent.mm.plugin.expt.b.a)g.ab(com.tencent.mm.plugin.expt.b.a.class)).cnb();
             }
-            AppMethodBeat.o(195317);
+            AppMethodBeat.o(210552);
           }
         }).b(new DialogInterface.OnDismissListener()
         {
           public final void onDismiss(DialogInterface paramAnonymous2DialogInterface) {}
         }).show();
-        AppMethodBeat.o(195318);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/expt/ui/ExptReportBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(210553);
       }
     });
-    if (com.tencent.mm.plugin.expt.b.a.clz().clA())
+    if (com.tencent.mm.plugin.expt.e.a.cqU().cqV())
     {
       show();
-      AppMethodBeat.o(195323);
+      AppMethodBeat.o(210558);
       return;
     }
     close();
-    AppMethodBeat.o(195323);
+    AppMethodBeat.o(210558);
   }
   
   final void close()
   {
-    AppMethodBeat.i(195325);
-    ap.f(new Runnable()
+    AppMethodBeat.i(210560);
+    aq.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(195320);
-        ac.i("MicroMsg.ExptReportBanner", "expt report banner close");
-        a.this.mZW.setVisibility(8);
-        a.this.qsx.setVisibility(8);
-        AppMethodBeat.o(195320);
+        AppMethodBeat.i(210555);
+        ad.i("MicroMsg.ExptReportBanner", "expt report banner close");
+        a.this.nAt.setVisibility(8);
+        a.this.rcc.setVisibility(8);
+        AppMethodBeat.o(210555);
       }
     });
-    AppMethodBeat.o(195325);
+    AppMethodBeat.o(210560);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(195326);
-    ac.i("MicroMsg.ExptReportBanner", "expt report banner destroy %d", new Object[] { Integer.valueOf(hashCode()) });
-    com.tencent.mm.sdk.b.a.GpY.d(this.qsy);
-    AppMethodBeat.o(195326);
+    AppMethodBeat.i(210561);
+    ad.i("MicroMsg.ExptReportBanner", "expt report banner destroy %d", new Object[] { Integer.valueOf(hashCode()) });
+    com.tencent.mm.sdk.b.a.IbL.d(this.rcd);
+    AppMethodBeat.o(210561);
   }
   
   public final int getLayoutId()
@@ -101,20 +104,20 @@ public final class a
   
   final void show()
   {
-    AppMethodBeat.i(195324);
-    ap.f(new Runnable()
+    AppMethodBeat.i(210559);
+    aq.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(195319);
-        ac.i("MicroMsg.ExptReportBanner", "expt report banner show");
-        a.this.tr.setText("expt debug now!!! key=" + com.tencent.mm.plugin.expt.b.a.clz().qqQ);
-        a.this.mZW.setVisibility(0);
-        a.this.qsx.setVisibility(0);
-        AppMethodBeat.o(195319);
+        AppMethodBeat.i(210554);
+        ad.i("MicroMsg.ExptReportBanner", "expt report banner show");
+        a.this.vk.setText("expt debug now!!! key=" + com.tencent.mm.plugin.expt.e.a.cqU().rae);
+        a.this.nAt.setVisibility(0);
+        a.this.rcc.setVisibility(0);
+        AppMethodBeat.o(210554);
       }
     });
-    AppMethodBeat.o(195324);
+    AppMethodBeat.o(210559);
   }
 }
 

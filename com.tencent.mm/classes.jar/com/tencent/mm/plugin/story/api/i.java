@@ -11,22 +11,15 @@ public abstract interface i
   
   public abstract void aZ(View paramView);
   
-  public abstract View.OnClickListener dUH();
+  public abstract View.OnClickListener egV();
   
-  public abstract void eM(String paramString, int paramInt);
+  public abstract void fe(String paramString, int paramInt);
   
   public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
-  
-  public abstract void setOnDoubleClickListener(a parama);
   
   public abstract void setShowStoryHint(boolean paramBoolean);
   
   public abstract void setWeakContext(Context paramContext);
-  
-  public static abstract interface a
-  {
-    public abstract boolean fl(View paramView);
-  }
 }
 
 

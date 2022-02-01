@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet.balance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.c.j;
 import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave;
 import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave.RetryPayInfo;
@@ -16,24 +16,24 @@ public final class e
   extends m
   implements j, ITenpaySave
 {
-  public boolean AWo;
-  public String AWp;
-  public String dAF;
-  public String dAG;
-  public String dAH;
-  public String dAI;
-  public String dAJ;
-  public String djr;
+  public boolean Cwx;
+  public String Cwy;
+  public String dMS;
+  public String dMT;
+  public String dMU;
+  public String dMV;
+  public String dMW;
+  public String dve;
   private ITenpaySave.RetryPayInfo retryPayInfo;
   
   public e(double paramDouble, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(68396);
-    this.djr = null;
-    this.AWo = false;
-    this.AWp = "";
+    this.dve = null;
+    this.Cwx = false;
+    this.Cwy = "";
     HashMap localHashMap = new HashMap();
-    localHashMap.put("total_fee", com.tencent.mm.wallet_core.ui.e.b(String.valueOf(paramDouble), "100", 0, RoundingMode.HALF_UP).toString());
+    localHashMap.put("total_fee", com.tencent.mm.wallet_core.ui.e.c(String.valueOf(paramDouble), "100", 0, RoundingMode.HALF_UP).toString());
     localHashMap.put("fee_type", paramString1);
     localHashMap.put("bind_serial", paramString2);
     localHashMap.put("bank_type", paramString3);
@@ -64,27 +64,27 @@ public final class e
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(68397);
-    ac.d("Micromsg.NetSceneTenpayBalanceSave", "errCode " + paramInt + " errMsg: " + paramString);
+    ad.d("Micromsg.NetSceneTenpayBalanceSave", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(68397);
       return;
     }
-    this.djr = paramJSONObject.optString("req_key");
-    this.AWo = "1".equals(paramJSONObject.optString("should_alert"));
-    this.AWp = paramJSONObject.optString("alert_msg");
+    this.dve = paramJSONObject.optString("req_key");
+    this.Cwx = "1".equals(paramJSONObject.optString("should_alert"));
+    this.Cwy = paramJSONObject.optString("alert_msg");
     if (paramJSONObject.has("real_name_info"))
     {
       paramString = paramJSONObject.optJSONObject("real_name_info");
-      ac.i("Micromsg.NetSceneTenpayBalanceSave", "get real_name_info %s", new Object[] { paramString.toString() });
-      this.dAF = paramString.optString("guide_flag");
-      this.dAG = paramString.optString("guide_wording");
-      this.dAH = paramString.optString("left_button_wording");
-      this.dAI = paramString.optString("right_button_wording");
-      this.dAJ = paramString.optString("upload_credit_url");
+      ad.i("Micromsg.NetSceneTenpayBalanceSave", "get real_name_info %s", new Object[] { paramString.toString() });
+      this.dMS = paramString.optString("guide_flag");
+      this.dMT = paramString.optString("guide_wording");
+      this.dMU = paramString.optString("left_button_wording");
+      this.dMV = paramString.optString("right_button_wording");
+      this.dMW = paramString.optString("upload_credit_url");
     }
     this.retryPayInfo = new ITenpaySave.RetryPayInfo();
-    this.retryPayInfo.bb(paramJSONObject);
+    this.retryPayInfo.bk(paramJSONObject);
     AppMethodBeat.o(68397);
   }
 }

@@ -1,45 +1,48 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.bx.b;
 import java.util.LinkedList;
 
 public final class bu
-  extends cpx
+  extends cvc
 {
-  public String DOA;
-  public long DOB;
-  public int DOD;
-  public String DOF;
-  public int DOG;
-  public b DOH;
-  public b DOI;
-  public String DOK;
-  public int DOM;
-  public int DON;
-  public int DOW;
-  public bt DOX;
-  public bw DOY;
-  public int DOZ;
-  public String DOw;
-  public String DOx;
-  public long DPa;
-  public long DPb;
-  public float DPc;
-  public float DPd;
-  public float DPe;
-  public int DPf;
-  public long DPg;
-  public long DPh;
-  public int DPi;
+  public String FtD;
+  public String FtE;
+  public String FtF;
+  public String FtG;
+  public String FtH;
+  public String FtI;
+  public String FtL;
+  public long FtM;
+  public int FtO;
+  public String FtQ;
+  public int FtR;
+  public b FtS;
+  public b FtT;
+  public int FtW;
+  public int FtX;
+  public int Fug;
+  public bt Fuh;
+  public bw Fui;
+  public int Fuj;
+  public long Fuk;
+  public long Ful;
+  public float Fum;
+  public float Fun;
+  public float Fuo;
+  public int Fup;
+  public long Fuq;
+  public long Fur;
+  public int Fus;
   public String bssid;
-  public int dbL;
+  public int dnh;
   public String imei;
   public int scene;
   public String ssid;
   public int type;
-  public String xJJ;
-  public String zmu;
+  public String yWM;
+  public String yYY;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -49,90 +52,99 @@ public final class bu
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
+        paramVarArgs.lC(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.xJJ != null) {
-        paramVarArgs.d(2, this.xJJ);
+      if (this.yYY != null) {
+        paramVarArgs.d(2, this.yYY);
       }
-      paramVarArgs.aR(3, this.scene);
-      paramVarArgs.aR(4, this.type);
-      paramVarArgs.aR(5, this.DOW);
+      paramVarArgs.aS(3, this.scene);
+      paramVarArgs.aS(4, this.type);
+      paramVarArgs.aS(5, this.Fug);
       if (this.ssid != null) {
         paramVarArgs.d(6, this.ssid);
       }
       if (this.bssid != null) {
         paramVarArgs.d(7, this.bssid);
       }
-      paramVarArgs.aO(8, this.DOB);
-      if (this.DOX != null)
+      paramVarArgs.aY(8, this.FtM);
+      if (this.Fuh != null)
       {
-        paramVarArgs.ln(9, this.DOX.computeSize());
-        this.DOX.writeFields(paramVarArgs);
+        paramVarArgs.lC(9, this.Fuh.computeSize());
+        this.Fuh.writeFields(paramVarArgs);
       }
-      if (this.DOY != null)
+      if (this.Fui != null)
       {
-        paramVarArgs.ln(10, this.DOY.computeSize());
-        this.DOY.writeFields(paramVarArgs);
+        paramVarArgs.lC(10, this.Fui.computeSize());
+        this.Fui.writeFields(paramVarArgs);
       }
-      paramVarArgs.aR(11, this.DOD);
-      if (this.DOA != null) {
-        paramVarArgs.d(12, this.DOA);
+      paramVarArgs.aS(11, this.FtO);
+      if (this.FtL != null) {
+        paramVarArgs.d(12, this.FtL);
       }
-      paramVarArgs.aR(13, this.dbL);
-      if (this.DOF != null) {
-        paramVarArgs.d(14, this.DOF);
+      paramVarArgs.aS(13, this.dnh);
+      if (this.FtQ != null) {
+        paramVarArgs.d(14, this.FtQ);
       }
-      paramVarArgs.aR(15, this.DOZ);
-      paramVarArgs.aO(16, this.DPa);
-      paramVarArgs.aO(17, this.DPb);
-      paramVarArgs.aR(18, this.DOG);
-      if (this.DOH != null) {
-        paramVarArgs.c(19, this.DOH);
+      paramVarArgs.aS(15, this.Fuj);
+      paramVarArgs.aY(16, this.Fuk);
+      paramVarArgs.aY(17, this.Ful);
+      paramVarArgs.aS(18, this.FtR);
+      if (this.FtS != null) {
+        paramVarArgs.c(19, this.FtS);
       }
-      if (this.DOI != null) {
-        paramVarArgs.c(20, this.DOI);
+      if (this.FtT != null) {
+        paramVarArgs.c(20, this.FtT);
       }
-      if (this.DOw != null) {
-        paramVarArgs.d(21, this.DOw);
+      if (this.yWM != null) {
+        paramVarArgs.d(21, this.yWM);
       }
-      if (this.zmu != null) {
-        paramVarArgs.d(22, this.zmu);
+      if (this.FtH != null) {
+        paramVarArgs.d(22, this.FtH);
       }
-      if (this.DOK != null) {
-        paramVarArgs.d(23, this.DOK);
+      if (this.FtI != null) {
+        paramVarArgs.d(23, this.FtI);
       }
-      paramVarArgs.x(24, this.DPc);
-      paramVarArgs.x(25, this.DPd);
-      paramVarArgs.x(26, this.DPe);
-      paramVarArgs.aR(27, this.DPf);
-      paramVarArgs.aO(28, this.DPg);
-      paramVarArgs.aO(29, this.DPh);
-      paramVarArgs.aR(30, this.DOM);
-      paramVarArgs.aR(31, this.DON);
-      paramVarArgs.aR(32, this.DPi);
+      paramVarArgs.z(24, this.Fum);
+      paramVarArgs.z(25, this.Fun);
+      paramVarArgs.z(26, this.Fuo);
+      paramVarArgs.aS(27, this.Fup);
+      paramVarArgs.aY(28, this.Fuq);
+      paramVarArgs.aY(29, this.Fur);
+      paramVarArgs.aS(30, this.FtW);
+      paramVarArgs.aS(31, this.FtX);
+      paramVarArgs.aS(32, this.Fus);
       if (this.imei != null) {
         paramVarArgs.d(33, this.imei);
       }
-      if (this.DOx != null) {
-        paramVarArgs.d(34, this.DOx);
+      if (this.FtD != null) {
+        paramVarArgs.d(34, this.FtD);
+      }
+      if (this.FtE != null) {
+        paramVarArgs.d(35, this.FtE);
+      }
+      if (this.FtF != null) {
+        paramVarArgs.d(36, this.FtF);
+      }
+      if (this.FtG != null) {
+        paramVarArgs.d(37, this.FtG);
       }
       AppMethodBeat.o(125699);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label2211;
+        break label2391;
       }
     }
-    label2211:
-    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label2391:
+    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.xJJ != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.xJJ);
+      if (this.yYY != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.yYY);
       }
-      i = i + f.a.a.b.b.a.bx(3, this.scene) + f.a.a.b.b.a.bx(4, this.type) + f.a.a.b.b.a.bx(5, this.DOW);
+      i = i + f.a.a.b.b.a.bz(3, this.scene) + f.a.a.b.b.a.bz(4, this.type) + f.a.a.b.b.a.bz(5, this.Fug);
       paramInt = i;
       if (this.ssid != null) {
         paramInt = i + f.a.a.b.b.a.e(6, this.ssid);
@@ -141,63 +153,75 @@ public final class bu
       if (this.bssid != null) {
         i = paramInt + f.a.a.b.b.a.e(7, this.bssid);
       }
-      i += f.a.a.b.b.a.p(8, this.DOB);
+      i += f.a.a.b.b.a.p(8, this.FtM);
       paramInt = i;
-      if (this.DOX != null) {
-        paramInt = i + f.a.a.a.lm(9, this.DOX.computeSize());
+      if (this.Fuh != null) {
+        paramInt = i + f.a.a.a.lB(9, this.Fuh.computeSize());
       }
       i = paramInt;
-      if (this.DOY != null) {
-        i = paramInt + f.a.a.a.lm(10, this.DOY.computeSize());
+      if (this.Fui != null) {
+        i = paramInt + f.a.a.a.lB(10, this.Fui.computeSize());
       }
-      i += f.a.a.b.b.a.bx(11, this.DOD);
+      i += f.a.a.b.b.a.bz(11, this.FtO);
       paramInt = i;
-      if (this.DOA != null) {
-        paramInt = i + f.a.a.b.b.a.e(12, this.DOA);
+      if (this.FtL != null) {
+        paramInt = i + f.a.a.b.b.a.e(12, this.FtL);
       }
-      i = paramInt + f.a.a.b.b.a.bx(13, this.dbL);
+      i = paramInt + f.a.a.b.b.a.bz(13, this.dnh);
       paramInt = i;
-      if (this.DOF != null) {
-        paramInt = i + f.a.a.b.b.a.e(14, this.DOF);
+      if (this.FtQ != null) {
+        paramInt = i + f.a.a.b.b.a.e(14, this.FtQ);
       }
-      i = paramInt + f.a.a.b.b.a.bx(15, this.DOZ) + f.a.a.b.b.a.p(16, this.DPa) + f.a.a.b.b.a.p(17, this.DPb) + f.a.a.b.b.a.bx(18, this.DOG);
+      i = paramInt + f.a.a.b.b.a.bz(15, this.Fuj) + f.a.a.b.b.a.p(16, this.Fuk) + f.a.a.b.b.a.p(17, this.Ful) + f.a.a.b.b.a.bz(18, this.FtR);
       paramInt = i;
-      if (this.DOH != null) {
-        paramInt = i + f.a.a.b.b.a.b(19, this.DOH);
+      if (this.FtS != null) {
+        paramInt = i + f.a.a.b.b.a.b(19, this.FtS);
       }
       i = paramInt;
-      if (this.DOI != null) {
-        i = paramInt + f.a.a.b.b.a.b(20, this.DOI);
+      if (this.FtT != null) {
+        i = paramInt + f.a.a.b.b.a.b(20, this.FtT);
       }
       paramInt = i;
-      if (this.DOw != null) {
-        paramInt = i + f.a.a.b.b.a.e(21, this.DOw);
+      if (this.yWM != null) {
+        paramInt = i + f.a.a.b.b.a.e(21, this.yWM);
       }
       i = paramInt;
-      if (this.zmu != null) {
-        i = paramInt + f.a.a.b.b.a.e(22, this.zmu);
+      if (this.FtH != null) {
+        i = paramInt + f.a.a.b.b.a.e(22, this.FtH);
       }
       paramInt = i;
-      if (this.DOK != null) {
-        paramInt = i + f.a.a.b.b.a.e(23, this.DOK);
+      if (this.FtI != null) {
+        paramInt = i + f.a.a.b.b.a.e(23, this.FtI);
       }
-      i = paramInt + (f.a.a.b.b.a.fK(24) + 4) + (f.a.a.b.b.a.fK(25) + 4) + (f.a.a.b.b.a.fK(26) + 4) + f.a.a.b.b.a.bx(27, this.DPf) + f.a.a.b.b.a.p(28, this.DPg) + f.a.a.b.b.a.p(29, this.DPh) + f.a.a.b.b.a.bx(30, this.DOM) + f.a.a.b.b.a.bx(31, this.DON) + f.a.a.b.b.a.bx(32, this.DPi);
+      i = paramInt + f.a.a.b.b.a.alU(24) + f.a.a.b.b.a.alU(25) + f.a.a.b.b.a.alU(26) + f.a.a.b.b.a.bz(27, this.Fup) + f.a.a.b.b.a.p(28, this.Fuq) + f.a.a.b.b.a.p(29, this.Fur) + f.a.a.b.b.a.bz(30, this.FtW) + f.a.a.b.b.a.bz(31, this.FtX) + f.a.a.b.b.a.bz(32, this.Fus);
       paramInt = i;
       if (this.imei != null) {
         paramInt = i + f.a.a.b.b.a.e(33, this.imei);
       }
       i = paramInt;
-      if (this.DOx != null) {
-        i = paramInt + f.a.a.b.b.a.e(34, this.DOx);
+      if (this.FtD != null) {
+        i = paramInt + f.a.a.b.b.a.e(34, this.FtD);
+      }
+      paramInt = i;
+      if (this.FtE != null) {
+        paramInt = i + f.a.a.b.b.a.e(35, this.FtE);
+      }
+      i = paramInt;
+      if (this.FtF != null) {
+        i = paramInt + f.a.a.b.b.a.e(36, this.FtF);
+      }
+      paramInt = i;
+      if (this.FtG != null) {
+        paramInt = i + f.a.a.b.b.a.e(37, this.FtG);
       }
       AppMethodBeat.o(125699);
-      return i;
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(125699);
@@ -216,50 +240,50 @@ public final class bu
           AppMethodBeat.o(125699);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
+            localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbu.BaseRequest = ((iv)localObject1);
+            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbu.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(125699);
           return 0;
         case 2: 
-          localbu.xJJ = ((f.a.a.a.a)localObject1).LVo.readString();
+          localbu.yYY = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(125699);
           return 0;
         case 3: 
-          localbu.scene = ((f.a.a.a.a)localObject1).LVo.xF();
+          localbu.scene = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(125699);
           return 0;
         case 4: 
-          localbu.type = ((f.a.a.a.a)localObject1).LVo.xF();
+          localbu.type = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(125699);
           return 0;
         case 5: 
-          localbu.DOW = ((f.a.a.a.a)localObject1).LVo.xF();
+          localbu.Fug = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(125699);
           return 0;
         case 6: 
-          localbu.ssid = ((f.a.a.a.a)localObject1).LVo.readString();
+          localbu.ssid = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(125699);
           return 0;
         case 7: 
-          localbu.bssid = ((f.a.a.a.a)localObject1).LVo.readString();
+          localbu.bssid = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(125699);
           return 0;
         case 8: 
-          localbu.DOB = ((f.a.a.a.a)localObject1).LVo.xG();
+          localbu.FtM = ((f.a.a.a.a)localObject1).NPN.zd();
           AppMethodBeat.o(125699);
           return 0;
         case 9: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -267,14 +291,14 @@ public final class bu
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new bt();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((bt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbu.DOX = ((bt)localObject1);
+            for (bool = true; bool; bool = ((bt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbu.Fuh = ((bt)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(125699);
           return 0;
         case 10: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -282,106 +306,118 @@ public final class bu
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new bw();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((bw)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbu.DOY = ((bw)localObject1);
+            for (bool = true; bool; bool = ((bw)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbu.Fui = ((bw)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(125699);
           return 0;
         case 11: 
-          localbu.DOD = ((f.a.a.a.a)localObject1).LVo.xF();
+          localbu.FtO = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(125699);
           return 0;
         case 12: 
-          localbu.DOA = ((f.a.a.a.a)localObject1).LVo.readString();
+          localbu.FtL = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(125699);
           return 0;
         case 13: 
-          localbu.dbL = ((f.a.a.a.a)localObject1).LVo.xF();
+          localbu.dnh = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(125699);
           return 0;
         case 14: 
-          localbu.DOF = ((f.a.a.a.a)localObject1).LVo.readString();
+          localbu.FtQ = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(125699);
           return 0;
         case 15: 
-          localbu.DOZ = ((f.a.a.a.a)localObject1).LVo.xF();
+          localbu.Fuj = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(125699);
           return 0;
         case 16: 
-          localbu.DPa = ((f.a.a.a.a)localObject1).LVo.xG();
+          localbu.Fuk = ((f.a.a.a.a)localObject1).NPN.zd();
           AppMethodBeat.o(125699);
           return 0;
         case 17: 
-          localbu.DPb = ((f.a.a.a.a)localObject1).LVo.xG();
+          localbu.Ful = ((f.a.a.a.a)localObject1).NPN.zd();
           AppMethodBeat.o(125699);
           return 0;
         case 18: 
-          localbu.DOG = ((f.a.a.a.a)localObject1).LVo.xF();
+          localbu.FtR = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(125699);
           return 0;
         case 19: 
-          localbu.DOH = ((f.a.a.a.a)localObject1).LVo.gfk();
+          localbu.FtS = ((f.a.a.a.a)localObject1).NPN.gxI();
           AppMethodBeat.o(125699);
           return 0;
         case 20: 
-          localbu.DOI = ((f.a.a.a.a)localObject1).LVo.gfk();
+          localbu.FtT = ((f.a.a.a.a)localObject1).NPN.gxI();
           AppMethodBeat.o(125699);
           return 0;
         case 21: 
-          localbu.DOw = ((f.a.a.a.a)localObject1).LVo.readString();
+          localbu.yWM = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(125699);
           return 0;
         case 22: 
-          localbu.zmu = ((f.a.a.a.a)localObject1).LVo.readString();
+          localbu.FtH = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(125699);
           return 0;
         case 23: 
-          localbu.DOK = ((f.a.a.a.a)localObject1).LVo.readString();
+          localbu.FtI = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(125699);
           return 0;
         case 24: 
-          localbu.DPc = Float.intBitsToFloat(((f.a.a.a.a)localObject1).LVo.gaa());
+          localbu.Fum = Float.intBitsToFloat(((f.a.a.a.a)localObject1).NPN.grz());
           AppMethodBeat.o(125699);
           return 0;
         case 25: 
-          localbu.DPd = Float.intBitsToFloat(((f.a.a.a.a)localObject1).LVo.gaa());
+          localbu.Fun = Float.intBitsToFloat(((f.a.a.a.a)localObject1).NPN.grz());
           AppMethodBeat.o(125699);
           return 0;
         case 26: 
-          localbu.DPe = Float.intBitsToFloat(((f.a.a.a.a)localObject1).LVo.gaa());
+          localbu.Fuo = Float.intBitsToFloat(((f.a.a.a.a)localObject1).NPN.grz());
           AppMethodBeat.o(125699);
           return 0;
         case 27: 
-          localbu.DPf = ((f.a.a.a.a)localObject1).LVo.xF();
+          localbu.Fup = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(125699);
           return 0;
         case 28: 
-          localbu.DPg = ((f.a.a.a.a)localObject1).LVo.xG();
+          localbu.Fuq = ((f.a.a.a.a)localObject1).NPN.zd();
           AppMethodBeat.o(125699);
           return 0;
         case 29: 
-          localbu.DPh = ((f.a.a.a.a)localObject1).LVo.xG();
+          localbu.Fur = ((f.a.a.a.a)localObject1).NPN.zd();
           AppMethodBeat.o(125699);
           return 0;
         case 30: 
-          localbu.DOM = ((f.a.a.a.a)localObject1).LVo.xF();
+          localbu.FtW = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(125699);
           return 0;
         case 31: 
-          localbu.DON = ((f.a.a.a.a)localObject1).LVo.xF();
+          localbu.FtX = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(125699);
           return 0;
         case 32: 
-          localbu.DPi = ((f.a.a.a.a)localObject1).LVo.xF();
+          localbu.Fus = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(125699);
           return 0;
         case 33: 
-          localbu.imei = ((f.a.a.a.a)localObject1).LVo.readString();
+          localbu.imei = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(125699);
+          return 0;
+        case 34: 
+          localbu.FtD = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(125699);
+          return 0;
+        case 35: 
+          localbu.FtE = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(125699);
+          return 0;
+        case 36: 
+          localbu.FtF = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(125699);
           return 0;
         }
-        localbu.DOx = ((f.a.a.a.a)localObject1).LVo.readString();
+        localbu.FtG = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(125699);
         return 0;
       }

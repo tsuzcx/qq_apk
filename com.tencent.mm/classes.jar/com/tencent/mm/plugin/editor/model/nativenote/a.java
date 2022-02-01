@@ -5,15 +5,15 @@ import android.support.v7.widget.RecyclerView;
 
 public abstract interface a
 {
-  public abstract RecyclerView bYZ();
+  public abstract RecyclerView cdD();
   
-  public abstract Context bZa();
+  public abstract Context cdE();
   
-  public abstract com.tencent.mm.plugin.editor.model.nativenote.b.a bZb();
+  public abstract com.tencent.mm.plugin.editor.model.nativenote.b.a cdF();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.a
  * JD-Core Version:    0.7.0.1
  */

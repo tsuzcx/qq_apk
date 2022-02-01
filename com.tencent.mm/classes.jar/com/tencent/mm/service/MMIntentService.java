@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.os.Message;
 import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public abstract class MMIntentService
   extends MMService
 {
-  private volatile a Gxb;
+  private volatile a IiV;
   private String mName;
   
   public MMIntentService(String paramString)
@@ -21,22 +21,22 @@ public abstract class MMIntentService
   public final void onCreate()
   {
     super.onCreate();
-    this.Gxb = new a(a.aTF("close-db-while-crash"));
+    this.IiV = new a(a.aZF("close-db-while-crash"));
   }
   
   public final void onDestroy()
   {
-    this.Gxb.getSerial().quit();
+    this.IiV.getSerial().quit();
   }
   
   protected abstract void onHandleIntent(Intent paramIntent);
   
   public final void onStart(Intent paramIntent, int paramInt)
   {
-    Message localMessage = this.Gxb.obtainMessage();
+    Message localMessage = this.IiV.obtainMessage();
     localMessage.arg1 = paramInt;
     localMessage.obj = paramIntent;
-    this.Gxb.sendMessage(localMessage);
+    this.IiV.sendMessage(localMessage);
   }
   
   public final int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
@@ -46,7 +46,7 @@ public abstract class MMIntentService
   }
   
   final class a
-    extends ao
+    extends ap
   {
     public a(a parama)
     {
@@ -59,8 +59,8 @@ public abstract class MMIntentService
       MMIntentService.this.onHandleIntent((Intent)paramMessage.obj);
       MMIntentService localMMIntentService = MMIntentService.this;
       int i = paramMessage.arg1;
-      ac.i(localMMIntentService.getTag(), "%s stopSelf() startId = %d mStartId = %d", new Object[] { "MicroMsg.MMService", Integer.valueOf(i), Integer.valueOf(localMMIntentService.cuE) });
-      if (i == localMMIntentService.cuE) {
+      ad.i(localMMIntentService.getTag(), "%s stopSelf() startId = %d mStartId = %d", new Object[] { "MicroMsg.MMService", Integer.valueOf(i), Integer.valueOf(localMMIntentService.cFz) });
+      if (i == localMMIntentService.cFz) {
         localMMIntentService.s(new Intent(), "stop");
       }
       AppMethodBeat.o(125309);

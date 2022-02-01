@@ -101,4 +101,7 @@
 	<componenttype val="136" ios="1" android="1" desc="新的webview">
 		<subtype val="0" ios="1" android="1" desc="新的webview" />
 	</componenttype>
+    <componenttype val="138" ios="1" android="1" desc="新的彩蛋悬浮跳转">
+        <subtype val="0" ios="1" android="1" desc="新的webview" />
+    </componenttype>
 </canvasvalidtype>

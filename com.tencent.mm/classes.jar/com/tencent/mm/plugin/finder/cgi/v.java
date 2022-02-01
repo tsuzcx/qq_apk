@@ -1,83 +1,74 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.gx;
-import com.tencent.mm.network.e;
-import com.tencent.mm.protocal.protobuf.ajn;
-import com.tencent.mm.protocal.protobuf.ajo;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.cf;
+import com.tencent.mm.plugin.finder.storage.f;
+import com.tencent.mm.protocal.protobuf.alk;
+import com.tencent.mm.protocal.protobuf.aqy;
+import com.tencent.mm.protocal.protobuf.za;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import d.g.b.p;
 import d.l;
+import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneDeleteFinderObject;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "username", "", "objectId", "", "objectNonceId", "(Ljava/lang/String;JLjava/lang/String;)V", "TAG", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getDelId", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/FinderBaseRequestFactory;", "", "()V", "create", "Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "plugin-finder_release"})
 public final class v
-  extends n
-  implements com.tencent.mm.network.k
 {
-  private String TAG;
-  private g callback;
-  public long qXP;
-  private com.tencent.mm.ak.b rr;
+  public static final v rIR;
   
-  public v(String paramString1, long paramLong, String paramString2)
+  static
   {
-    AppMethodBeat.i(165207);
-    this.TAG = "Finder.NetSceneDeleteFinderObject";
-    com.tencent.mm.ak.b.a locala = new com.tencent.mm.ak.b.a();
-    locala.Am("/cgi-bin/micromsg-bin/finderdelfeed");
-    locala.op(getType());
-    ajn localajn = new ajn();
-    localajn.id = paramLong;
-    localajn.objectNonceId = paramString2;
-    localajn.EEg = paramString1;
-    paramString1 = q.qXH;
-    localajn.EDL = q.csi();
-    locala.c((com.tencent.mm.bw.a)localajn);
-    locala.d((com.tencent.mm.bw.a)new ajo());
-    paramString1 = locala.aAz();
-    d.g.b.k.g(paramString1, "builder.buildInstance()");
-    this.rr = paramString1;
-    this.qXP = paramLong;
-    AppMethodBeat.o(165207);
+    AppMethodBeat.i(201093);
+    rIR = new v();
+    AppMethodBeat.o(201093);
   }
   
-  public final int doScene(e parame, g paramg)
+  public static alk a(aqy paramaqy)
   {
-    AppMethodBeat.i(165205);
-    this.callback = paramg;
-    int i = dispatch(parame, (com.tencent.mm.network.q)this.rr, (com.tencent.mm.network.k)this);
-    AppMethodBeat.o(165205);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 3627;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(165206);
-    ac.i(this.TAG, "errType " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    AppMethodBeat.i(201092);
+    alk localalk = new alk();
+    Object localObject = f.sxF;
+    f.a(localalk);
+    localObject = g.ajC();
+    p.g(localObject, "MMKernel.storage()");
+    localalk.Gli = ((e)localObject).ajl().getInt(al.a.IIe, 0);
+    localalk.Gll = new za();
+    if (paramaqy != null)
     {
-      paramq = com.tencent.mm.plugin.finder.storage.logic.b.rFl;
-      if (com.tencent.mm.plugin.finder.storage.logic.b.a.vf(this.qXP))
-      {
-        paramq = new gx();
-        paramq.dhS.id = this.qXP;
-        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)paramq);
-      }
+      localalk.scene = paramaqy.rTD;
+      localalk.Gll.qXu = paramaqy.qXu;
+      localalk.Gll.qXj = paramaqy.qXj;
+      localObject = new JSONObject();
     }
-    paramq = this.callback;
-    if (paramq != null)
+    try
     {
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(165206);
-      return;
+      ((JSONObject)localObject).put("sessionId", paramaqy.sessionId);
+      label110:
+      localalk.Gll.FYF = ((JSONObject)localObject).toString();
+      localalk.xcO = cf.aCL();
+      AppMethodBeat.o(201092);
+      return localalk;
     }
-    AppMethodBeat.o(165206);
+    catch (Exception paramaqy)
+    {
+      break label110;
+    }
+  }
+  
+  public static alk cxY()
+  {
+    AppMethodBeat.i(201091);
+    alk localalk = new alk();
+    Object localObject = f.sxF;
+    f.a(localalk);
+    localObject = g.ajC();
+    p.g(localObject, "MMKernel.storage()");
+    localalk.Gli = ((e)localObject).ajl().getInt(al.a.IIe, 0);
+    AppMethodBeat.o(201091);
+    return localalk;
   }
 }
 

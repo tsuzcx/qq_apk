@@ -22,31 +22,30 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.matrix.trace.f.c;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
 import com.tencent.mm.emoji.view.EmojiStatusView;
-import com.tencent.mm.g.b.a.ed;
+import com.tencent.mm.g.b.a.fc;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.i.a.t;
 import com.tencent.mm.plugin.sns.data.SnsCmdList;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.model.b.b;
 import com.tencent.mm.plugin.sns.storage.j;
 import com.tencent.mm.plugin.sns.storage.x;
@@ -55,34 +54,35 @@ import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.anw;
-import com.tencent.mm.protocal.protobuf.anx;
-import com.tencent.mm.protocal.protobuf.any;
-import com.tencent.mm.protocal.protobuf.bjl;
-import com.tencent.mm.protocal.protobuf.btz;
-import com.tencent.mm.protocal.protobuf.bub;
-import com.tencent.mm.protocal.protobuf.cob;
-import com.tencent.mm.protocal.protobuf.czu;
-import com.tencent.mm.protocal.protobuf.dag;
-import com.tencent.mm.protocal.protobuf.dao;
-import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.protocal.protobuf.abf;
+import com.tencent.mm.protocal.protobuf.ari;
+import com.tencent.mm.protocal.protobuf.arj;
+import com.tencent.mm.protocal.protobuf.ark;
+import com.tencent.mm.protocal.protobuf.bnt;
+import com.tencent.mm.protocal.protobuf.byn;
+import com.tencent.mm.protocal.protobuf.byp;
+import com.tencent.mm.protocal.protobuf.cte;
+import com.tencent.mm.protocal.protobuf.dfh;
+import com.tencent.mm.protocal.protobuf.dft;
+import com.tencent.mm.protocal.protobuf.dgb;
+import com.tencent.mm.protocal.protobuf.jb;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bf;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMImageView;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.aq;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
 import com.tencent.mm.ui.base.MMSlideDelView.d;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.r;
 import com.tencent.mm.ui.r.a;
 import java.util.ArrayList;
@@ -96,113 +96,95 @@ import java.util.Set;
 
 public class SnsMsgUI
   extends MMActivity
-  implements com.tencent.mm.ak.g, b.b
+  implements com.tencent.mm.al.f, b.b
 {
+  private bp AaP;
+  private long AfA;
+  private int AfB;
+  private int AfC;
+  private HashMap<Integer, j> AfD;
+  private HashMap<Integer, Integer> AfE;
+  private a Afq;
+  private boolean Afr;
+  private boolean Afs;
+  private boolean Aft;
+  private com.tencent.mm.ui.base.p Afu;
+  private com.tencent.mm.ui.base.p Afv;
+  private int Afw;
+  private View.OnClickListener Afx;
+  private k.a Afy;
+  Runnable Afz;
+  private int fKU;
   private int fromScene;
-  private int fsu;
-  private long gcx;
-  private long hDh;
-  private com.tencent.mm.sdk.platformtools.ao handler;
-  private String huP;
+  private long gwh;
+  private String hNh;
+  private long hVM;
+  private ap handler;
   private ListView list;
-  private n.d ntM;
-  private View nwN;
-  private View ofC;
-  private View ofD;
-  private boolean ofE;
-  private int[] qMm;
-  private long qoj;
-  private bj yJv;
-  private a yNU;
-  private boolean yNV;
-  private boolean yNW;
-  private boolean yNX;
-  private com.tencent.mm.ui.base.p yNY;
-  private com.tencent.mm.ui.base.p yNZ;
-  private int yOa;
-  private View.OnClickListener yOb;
-  private k.a yOc;
-  Runnable yOd;
-  private long yOe;
-  private int yOf;
-  private int yOg;
-  private HashMap<Integer, j> yOh;
-  private HashMap<Integer, Integer> yOi;
-  long yaI;
-  int yvt;
-  private av yxW;
-  private SnsCmdList yzV;
+  private n.e nUI;
+  private View nYl;
+  private View oIV;
+  private View oIW;
+  private boolean oIX;
+  private long qXg;
+  private int[] rwo;
+  int zMG;
+  private ay zPi;
+  private SnsCmdList zRm;
+  long zqE;
   
   public SnsMsgUI()
   {
     AppMethodBeat.i(98888);
-    this.ofD = null;
-    this.handler = af.cMM();
-    this.yNV = false;
-    this.yNW = false;
-    this.yzV = new SnsCmdList();
-    this.ofE = false;
-    this.yNX = false;
-    this.qMm = new int[2];
-    this.yOa = 86400;
-    this.yOb = new View.OnClickListener()
+    this.oIW = null;
+    this.handler = ag.cVf();
+    this.Afr = false;
+    this.Afs = false;
+    this.zRm = new SnsCmdList();
+    this.oIX = false;
+    this.Aft = false;
+    this.rwo = new int[2];
+    this.Afw = 86400;
+    this.Afx = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98853);
-        if ((paramAnonymousView.getTag() instanceof aw))
-        {
-          SnsMsgUI.a(SnsMsgUI.this).v(paramAnonymousView, -1, 1);
-          AppMethodBeat.o(98853);
-          return;
-        }
-        if ((paramAnonymousView.getTag() instanceof j))
-        {
-          SnsMsgUI.a(SnsMsgUI.this, (j)paramAnonymousView.getTag());
-          AppMethodBeat.o(98853);
-          return;
-        }
-        ac.w("MicroMsg.SnsMsgUI", "v.getTag():" + paramAnonymousView.getTag());
-        AppMethodBeat.o(98853);
-      }
-    };
-    this.gcx = 0L;
-    this.hDh = 0L;
-    this.ntM = new n.d()
-    {
-      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(200520);
-        switch (paramAnonymousMenuItem.getItemId())
-        {
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsMsgUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if ((paramAnonymousView.getTag() instanceof az)) {
+          SnsMsgUI.a(SnsMsgUI.this).w(paramAnonymousView, -1, 1);
         }
         for (;;)
         {
-          AppMethodBeat.o(200520);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsMsgUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(98853);
           return;
-          SnsMsgUI.a(SnsMsgUI.this, SnsMsgUI.this.yvt);
-          AppMethodBeat.o(200520);
-          return;
-          SnsMsgUI.m(SnsMsgUI.this);
-          AppMethodBeat.o(200520);
-          return;
-          SnsMsgUI.a(SnsMsgUI.this, false);
+          if ((paramAnonymousView.getTag() instanceof j)) {
+            SnsMsgUI.a(SnsMsgUI.this, (j)paramAnonymousView.getTag());
+          } else {
+            ad.w("MicroMsg.SnsMsgUI", "v.getTag():" + paramAnonymousView.getTag());
+          }
         }
       }
     };
-    this.yOc = new k.a()
+    this.gwh = 0L;
+    this.hVM = 0L;
+    this.nUI = new SnsMsgUI.4(this);
+    this.Afy = new k.a()
     {
-      public final void a(String paramAnonymousString, m paramAnonymousm)
+      public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
       {
         AppMethodBeat.i(98861);
-        af.cMM().post(new Runnable()
+        ag.cVf().post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(98860);
             synchronized (SnsMsgUI.d(SnsMsgUI.this))
             {
-              ac.v("MicroMsg.SnsMsgUI", "comment notify");
+              ad.v("MicroMsg.SnsMsgUI", "comment notify");
               SnsMsgUI.n(SnsMsgUI.this);
               SnsMsgUI.d(SnsMsgUI.this).a(null, null);
               AppMethodBeat.o(98860);
@@ -213,7 +195,7 @@ public class SnsMsgUI
         AppMethodBeat.o(98861);
       }
     };
-    this.yOd = new Runnable()
+    this.Afz = new Runnable()
     {
       public final void run()
       {
@@ -232,10 +214,10 @@ public class SnsMsgUI
         }
       }
     };
-    this.yOf = 0;
-    this.yOg = 0;
-    this.yOh = new HashMap();
-    this.yOi = new HashMap();
+    this.AfB = 0;
+    this.AfC = 0;
+    this.AfD = new HashMap();
+    this.AfE = new HashMap();
     AppMethodBeat.o(98888);
   }
   
@@ -247,39 +229,39 @@ public class SnsMsgUI
     {
       if (paramj.field_type == 1)
       {
-        this.yOf += 1;
-        if (!this.yOi.containsKey(Integer.valueOf(paramj.yvt))) {
-          break label153;
+        this.AfB += 1;
+        if (!this.AfE.containsKey(Integer.valueOf(paramj.zMG))) {
+          break label151;
         }
-        this.yOi.put(Integer.valueOf(paramj.yvt), Integer.valueOf(((Integer)this.yOi.get(Integer.valueOf(paramj.yvt))).intValue() + 1));
+        this.AfE.put(Integer.valueOf(paramj.zMG), Integer.valueOf(((Integer)this.AfE.get(Integer.valueOf(paramj.zMG))).intValue() + 1));
       }
     }
     else {
-      label90:
+      label89:
       if ((paramj.field_commentflag & 0x2) <= 0) {
-        break label175;
+        break label173;
       }
     }
-    label153:
-    label175:
+    label151:
+    label173:
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        break label180;
+        break label178;
       }
-      ac.i("MicroMsg.SnsMsgUI", "skip goToCommentDetail, comment.isSnsDelFlag");
+      ad.i("MicroMsg.SnsMsgUI", "skip goToCommentDetail, comment.isSnsDelFlag");
       com.tencent.mm.ui.base.h.l(this, 2131763916, 2131755906);
       AppMethodBeat.o(179213);
       return;
       if (paramj.field_type != 2) {
         break;
       }
-      this.yOg += 1;
+      this.AfC += 1;
       break;
-      this.yOi.put(Integer.valueOf(paramj.yvt), Integer.valueOf(1));
-      break label90;
+      this.AfE.put(Integer.valueOf(paramj.zMG), Integer.valueOf(1));
+      break label89;
     }
-    label180:
+    label178:
     Intent localIntent = new Intent();
     localIntent.putExtra("INTENT_COMMENT_TYPE", paramj.field_type);
     if ((paramj.field_type == 3) || (paramj.field_type == 5))
@@ -291,50 +273,50 @@ public class SnsMsgUI
     {
       try
       {
-        localIntent.putExtra("INTENT_SOURCE", ((czu)new czu().parseFrom(paramj.field_curActionBuf)).sVo);
+        localIntent.putExtra("INTENT_SOURCE", ((dfh)new dfh().parseFrom(paramj.field_curActionBuf)).tRT);
         if ((paramj.field_type != 7) && (paramj.field_type != 8) && (paramj.field_type != 16)) {
-          break label626;
+          break label621;
         }
-        localIntent.putExtra("INTENT_SNSID", x.bj("ad_table_", l));
-        com.tencent.mm.plugin.sns.storage.p localp = af.dHR().auS(x.bj("ad_table_", l));
+        localIntent.putExtra("INTENT_SNSID", x.bm("ad_table_", l));
+        com.tencent.mm.plugin.sns.storage.p localp = ag.dUe().azZ(x.bm("ad_table_", l));
         if (localp != null) {
           break;
         }
-        ac.i("MicroMsg.SnsMsgUI", "sns id " + l + "was not exist!");
+        ad.i("MicroMsg.SnsMsgUI", "sns id " + l + "was not exist!");
         if (paramj.field_type == 16) {
-          com.tencent.mm.plugin.report.service.h.wUl.dB(955, 2);
+          com.tencent.mm.plugin.report.service.g.yhR.dD(955, 2);
         }
         AppMethodBeat.o(179213);
         return;
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.SnsMsgUI", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.SnsMsgUI", localException, "", new Object[0]);
         continue;
       }
       localIntent.setClass(this, SnsCommentDetailUI.class);
     }
-    i = com.tencent.mm.kernel.g.agR().agA().getInt(14, 0);
-    ac.i("MicroMsg.SnsMsgUI", "current client version %s, [%s, %s]", new Object[] { Integer.valueOf(i), Integer.valueOf(localException.dFR().ygt), Integer.valueOf(localException.dFR().ygu) });
-    if ((i < localException.dFR().ygt) || ((localException.dFR().ygu > 0) && (i > localException.dFR().ygu)))
+    i = com.tencent.mm.kernel.g.ajC().ajl().getInt(14, 0);
+    ad.i("MicroMsg.SnsMsgUI", "current client version %s, [%s, %s]", new Object[] { Integer.valueOf(i), Integer.valueOf(localException.dRL().zwv), Integer.valueOf(localException.dRL().zww) });
+    if ((i < localException.dRL().zwv) || ((localException.dRL().zww > 0) && (i > localException.dRL().zww)))
     {
-      if (!bs.isNullOrNil(localException.dFR().ygv))
+      if (!bt.isNullOrNil(localException.dRL().zwx))
       {
         paramj = new Intent();
-        paramj.putExtra("rawUrl", localException.dFR().ygv);
+        paramj.putExtra("rawUrl", localException.dRL().zwx);
         paramj.putExtra("showShare", false);
         paramj.putExtra("show_bottom", false);
         paramj.putExtra("needRedirect", false);
-        paramj.putExtra("hardcode_jspermission", JsapiPermissionWrapper.DIw);
-        com.tencent.mm.plugin.sns.c.a.iyx.i(paramj, this);
+        paramj.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FnD);
+        com.tencent.mm.plugin.sns.c.a.iRG.i(paramj, this);
         AppMethodBeat.o(179213);
         return;
       }
-      ac.w("MicroMsg.SnsMsgUI", "compatible jump url is null!");
+      ad.w("MicroMsg.SnsMsgUI", "compatible jump url is null!");
       AppMethodBeat.o(179213);
       return;
-      label626:
-      localIntent.putExtra("INTENT_SNSID", x.bj("sns_table_", l));
+      label621:
+      localIntent.putExtra("INTENT_SNSID", x.bm("sns_table_", l));
     }
     if (paramj.field_type == 2)
     {
@@ -359,36 +341,36 @@ public class SnsMsgUI
     AppMethodBeat.i(98900);
     if (paramj.field_parentID == 0L)
     {
-      paramj = com.tencent.mm.plugin.sns.data.q.wW(paramj.field_snsID);
+      paramj = com.tencent.mm.plugin.sns.data.q.zw(paramj.field_snsID);
       AppMethodBeat.o(98900);
       return paramj;
     }
-    paramj = com.tencent.mm.plugin.sns.data.q.wW(paramj.field_parentID);
+    paramj = com.tencent.mm.plugin.sns.data.q.zw(paramj.field_parentID);
     AppMethodBeat.o(98900);
     return paramj;
   }
   
-  public final void atn(String paramString)
+  public final void ays(String paramString)
   {
     AppMethodBeat.i(98896);
-    this.yNU.notifyDataSetChanged();
+    this.Afq.notifyDataSetChanged();
     AppMethodBeat.o(98896);
   }
   
-  public final void bF(String paramString, boolean paramBoolean) {}
+  public final void bM(String paramString, boolean paramBoolean) {}
   
-  public final void bG(String paramString, boolean paramBoolean) {}
+  public final void bN(String paramString, boolean paramBoolean) {}
   
-  public final void dGO() {}
+  public final void dTb() {}
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(98897);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ac.d("MicroMsg.SnsMsgUI", "dispatchKeyEvent");
+      ad.d("MicroMsg.SnsMsgUI", "dispatchKeyEvent");
       paramKeyEvent = new Intent();
-      paramKeyEvent.putExtra("sns_cmd_list", this.yzV);
+      paramKeyEvent.putExtra("sns_cmd_list", this.zRm);
       setResult(-1, paramKeyEvent);
       finish();
       AppMethodBeat.o(98897);
@@ -412,84 +394,42 @@ public class SnsMsgUI
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(200523);
+        AppMethodBeat.i(198366);
         com.tencent.mm.ui.base.h.a(SnsMsgUI.this.getContext(), SnsMsgUI.this.getString(2131763912), "", new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
-            AppMethodBeat.i(200522);
+            AppMethodBeat.i(198365);
             SnsMsgUI.b(SnsMsgUI.this).setVisibility(8);
             SnsMsgUI.c(SnsMsgUI.this).setVisibility(0);
-            af.dHW().hpA.execSQL("SnsComment", "delete from SnsComment");
+            ag.dUj().hHS.execSQL("SnsComment", "delete from SnsComment");
             SnsMsgUI.this.enableOptionMenu(false);
-            AppMethodBeat.o(200522);
+            AppMethodBeat.o(198365);
           }
         }, null);
-        AppMethodBeat.o(200523);
+        AppMethodBeat.o(198366);
         return true;
       }
     });
-    this.yxW = new av(this);
-    this.nwN = findViewById(2131305011);
+    this.zPi = new ay(this);
+    this.nYl = findViewById(2131305011);
     this.list = ((ListView)findViewById(2131305013));
-    this.ofC = com.tencent.mm.ui.z.jD(this).inflate(2131495569, null);
-    this.ofD = com.tencent.mm.ui.z.jD(this).inflate(2131494788, null);
-    ac.d("MicroMsg.SnsMsgUI", "autoLoad " + this.ofE);
-    if (this.ofE)
+    this.oIV = com.tencent.mm.ui.z.jO(this).inflate(2131495569, null);
+    this.oIW = com.tencent.mm.ui.z.jO(this).inflate(2131494788, null);
+    ad.d("MicroMsg.SnsMsgUI", "autoLoad " + this.oIX);
+    if (this.oIX)
     {
-      this.list.addFooterView(this.ofD);
-      this.yNU = new a(this, new j());
-      this.yNU.setGetViewPositionCallback(new MMSlideDelView.c()
+      this.list.addFooterView(this.oIW);
+      this.Afq = new a(this, new j());
+      this.Afq.setGetViewPositionCallback(new SnsMsgUI.11(this));
+      this.Afq.setPerformItemClickListener(new SnsMsgUI.12(this));
+      this.Afq.b(new SnsMsgUI.13(this));
+      this.Afq.a(new r.a()
       {
-        public final int dy(View paramAnonymousView)
+        public final void aSs()
         {
-          AppMethodBeat.i(200524);
-          int i = SnsMsgUI.b(SnsMsgUI.this).getPositionForView(paramAnonymousView);
-          AppMethodBeat.o(200524);
-          return i;
-        }
-      });
-      this.yNU.setPerformItemClickListener(new MMSlideDelView.g()
-      {
-        public final void s(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
-        {
-          AppMethodBeat.i(200525);
-          SnsMsgUI.b(SnsMsgUI.this).performItemClick(paramAnonymousView, paramAnonymousInt1, paramAnonymousInt2);
-          AppMethodBeat.o(200525);
-        }
-      });
-      this.yNU.b(new MMSlideDelView.f()
-      {
-        public final void cN(Object paramAnonymousObject)
-        {
-          AppMethodBeat.i(200526);
-          if (paramAnonymousObject == null)
-          {
-            ac.e("MicroMsg.SnsMsgUI", "onItemDel object null");
-            AppMethodBeat.o(200526);
-            return;
-          }
-          try
-          {
-            int i = bs.aLy(paramAnonymousObject.toString());
-            SnsMsgUI.a(SnsMsgUI.this, i);
-            AppMethodBeat.o(200526);
-            return;
-          }
-          catch (Exception paramAnonymousObject)
-          {
-            ac.e("MicroMsg.SnsMsgUI", "onItemDel object not int");
-            ac.printErrStackTrace("MicroMsg.SnsMsgUI", paramAnonymousObject, "", new Object[0]);
-            AppMethodBeat.o(200526);
-          }
-        }
-      });
-      this.yNU.a(new r.a()
-      {
-        public final void aPg()
-        {
-          AppMethodBeat.i(200527);
-          ac.v("MicroMsg.SnsMsgUI", "total count:" + SnsMsgUI.d(SnsMsgUI.this).fAw + " unread:" + af.dHW().bQe() + "  showcount:" + SnsMsgUI.d(SnsMsgUI.this).ofG);
+          AppMethodBeat.i(198370);
+          ad.v("MicroMsg.SnsMsgUI", "total count:" + SnsMsgUI.d(SnsMsgUI.this).fTM + " unread:" + ag.dUj().bUJ() + "  showcount:" + SnsMsgUI.d(SnsMsgUI.this).oIZ);
           if (SnsMsgUI.d(SnsMsgUI.this).getCount() == 0)
           {
             SnsMsgUI.b(SnsMsgUI.this).setVisibility(8);
@@ -498,10 +438,10 @@ public class SnsMsgUI
           }
           for (;;)
           {
-            if (((SnsMsgUI.d(SnsMsgUI.this).bSw()) && (af.dHW().bQe() == 0)) || (af.dHW().bQe() == af.dHW().dMh())) {
+            if (((SnsMsgUI.d(SnsMsgUI.this).bXb()) && (ag.dUj().bUJ() == 0)) || (ag.dUj().bUJ() == ag.dUj().dYx())) {
               SnsMsgUI.e(SnsMsgUI.this).setVisibility(8);
             }
-            AppMethodBeat.o(200527);
+            AppMethodBeat.o(198370);
             return;
             SnsMsgUI.b(SnsMsgUI.this).setVisibility(0);
             SnsMsgUI.c(SnsMsgUI.this).setVisibility(8);
@@ -509,18 +449,24 @@ public class SnsMsgUI
           }
         }
       });
-      this.list.setAdapter(this.yNU);
+      this.list.setAdapter(this.Afq);
       this.list.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
-          AppMethodBeat.i(200528);
+          AppMethodBeat.i(198371);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousAdapterView);
+          localb.bd(paramAnonymousView);
+          localb.mr(paramAnonymousInt);
+          localb.qY(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsMsgUI$7", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
           if (paramAnonymousInt == SnsMsgUI.d(SnsMsgUI.this).getCount())
           {
-            if (af.dHW().bQe() > 0)
+            if (ag.dUj().bUJ() > 0)
             {
-              af.dHW().bQf();
-              if (SnsMsgUI.d(SnsMsgUI.this).bSw()) {
+              ag.dUj().bUK();
+              if (SnsMsgUI.d(SnsMsgUI.this).bXb()) {
                 paramAnonymousInt = 0;
               }
             }
@@ -531,79 +477,49 @@ public class SnsMsgUI
               {
                 if (SnsMsgUI.e(SnsMsgUI.this).getParent() != null)
                 {
-                  ac.d("MicroMsg.SnsMsgUI", "remove footer");
+                  ad.d("MicroMsg.SnsMsgUI", "remove footer");
                   SnsMsgUI.b(SnsMsgUI.this).removeFooterView(SnsMsgUI.e(SnsMsgUI.this));
                 }
                 if ((SnsMsgUI.g(SnsMsgUI.this).getParent() == null) && (paramAnonymousInt > 0))
                 {
                   SnsMsgUI.b(SnsMsgUI.this).addFooterView(SnsMsgUI.g(SnsMsgUI.this));
-                  ac.i("MicroMsg.SnsMsgUI", "add mLoadingFooterView");
+                  ad.i("MicroMsg.SnsMsgUI", "add mLoadingFooterView");
                 }
               }
               SnsMsgUI.h(SnsMsgUI.this);
               SnsMsgUI.e(SnsMsgUI.this).setVisibility(8);
-              AppMethodBeat.o(200528);
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsMsgUI$7", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+              AppMethodBeat.o(198371);
               return;
               paramAnonymousInt = 1;
               continue;
-              paramAnonymousInt = SnsMsgUI.d(SnsMsgUI.this).bSx();
+              paramAnonymousInt = SnsMsgUI.d(SnsMsgUI.this).bXc();
             }
           }
           paramAnonymousAdapterView = (j)SnsMsgUI.d(SnsMsgUI.this).getItem(paramAnonymousInt);
-          if ((paramAnonymousAdapterView != null) && (!SnsMsgUI.O(af.dHR().xK(paramAnonymousAdapterView.field_snsID)))) {
+          if ((paramAnonymousAdapterView != null) && (!SnsMsgUI.Q(ag.dUe().Ai(paramAnonymousAdapterView.field_snsID)))) {
             SnsMsgUI.a(SnsMsgUI.this, paramAnonymousAdapterView);
           }
-          AppMethodBeat.o(200528);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsMsgUI$7", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+          AppMethodBeat.o(198371);
         }
       });
       new com.tencent.mm.ui.tools.l(this);
-      this.list.setOnTouchListener(new View.OnTouchListener()
-      {
-        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-        {
-          AppMethodBeat.i(200529);
-          switch (paramAnonymousMotionEvent.getAction())
-          {
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(200529);
-            return false;
-            SnsMsgUI.this.hideVKB();
-            SnsMsgUI.i(SnsMsgUI.this)[0] = ((int)paramAnonymousMotionEvent.getRawX());
-            SnsMsgUI.i(SnsMsgUI.this)[1] = ((int)paramAnonymousMotionEvent.getRawY());
-          }
-        }
-      });
-      this.list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
-      {
-        public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-        {
-          AppMethodBeat.i(200530);
-          if (paramAnonymousInt < SnsMsgUI.b(SnsMsgUI.this).getHeaderViewsCount())
-          {
-            ac.w("MicroMsg.SnsMsgUI", "on header view long click, ignore");
-            AppMethodBeat.o(200530);
-            return true;
-          }
-          new com.tencent.mm.ui.widget.b.a(SnsMsgUI.this).a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, SnsMsgUI.this, SnsMsgUI.j(SnsMsgUI.this), SnsMsgUI.i(SnsMsgUI.this)[0], SnsMsgUI.i(SnsMsgUI.this)[1]);
-          AppMethodBeat.o(200530);
-          return true;
-        }
-      });
+      this.list.setOnTouchListener(new SnsMsgUI.16(this));
+      this.list.setOnItemLongClickListener(new SnsMsgUI.17(this));
       this.list.setOnScrollListener(new AbsListView.OnScrollListener()
       {
         public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
         
         public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
         {
-          AppMethodBeat.i(200518);
+          AppMethodBeat.i(198361);
           if (!SnsMsgUI.f(SnsMsgUI.this))
           {
-            AppMethodBeat.o(200518);
+            AppMethodBeat.o(198361);
             return;
           }
-          ac.i("MicroMsg.SnsMsgUI", "onListViewScoll %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          ad.i("MicroMsg.SnsMsgUI", "onListViewScoll %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
           if (paramAnonymousInt == 2)
           {
             WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcSNSMsgScrollEnable, SnsMsgUI.k(SnsMsgUI.this));
@@ -616,7 +532,7 @@ public class SnsMsgUI
             {
               paramAnonymousInt = Process.myTid();
               SnsMsgUI.b(localSnsMsgUI, WXHardCoderJNI.startPerformance(bool, i, j, k, paramAnonymousInt, WXHardCoderJNI.hcSNSMsgScrollTimeout, 705, WXHardCoderJNI.hcSNSMsgScrollAction, "MicroMsg.SnsMsgUI"));
-              ac.i("MicroMsg.SnsMsgUI", "summer hardcoder sns startPerformance [%s]", new Object[] { Integer.valueOf(SnsMsgUI.k(SnsMsgUI.this)) });
+              ad.i("MicroMsg.SnsMsgUI", "summer hardcoder sns startPerformance [%s]", new Object[] { Integer.valueOf(SnsMsgUI.k(SnsMsgUI.this)) });
             }
           }
           else
@@ -624,63 +540,63 @@ public class SnsMsgUI
             if (paramAnonymousAbsListView.getLastVisiblePosition() != paramAnonymousAbsListView.getCount() - 1) {
               break label211;
             }
-            if (af.dHW().bQe() <= 0) {
+            if (ag.dUj().bUJ() <= 0) {
               break label197;
             }
-            af.dHW().bQf();
+            ag.dUj().bUK();
           }
           for (;;)
           {
             SnsMsgUI.d(SnsMsgUI.this).a(null, null);
-            AppMethodBeat.o(200518);
+            AppMethodBeat.o(198361);
             return;
             paramAnonymousInt = 0;
             break;
             label197:
-            SnsMsgUI.d(SnsMsgUI.this).bSx();
+            SnsMsgUI.d(SnsMsgUI.this).bXc();
           }
           label211:
-          AppMethodBeat.o(200518);
+          AppMethodBeat.o(198361);
         }
       });
-      if (this.yNU.getCount() != 0) {
+      if (this.Afq.getCount() != 0) {
         break label470;
       }
       this.list.setVisibility(8);
-      this.nwN.setVisibility(0);
+      this.nYl.setVisibility(0);
       enableOptionMenu(false);
     }
     for (;;)
     {
-      if (((this.yNU.bSw()) && (af.dHW().bQe() == 0)) || (af.dHW().bQe() == af.dHW().dMh())) {
-        this.ofC.setVisibility(8);
+      if (((this.Afq.bXb()) && (ag.dUj().bUJ() == 0)) || (ag.dUj().bUJ() == ag.dUj().dYx())) {
+        this.oIV.setVisibility(8);
       }
-      if ((this.yNU.bSw()) && (this.ofE)) {
-        this.list.removeFooterView(this.ofD);
+      if ((this.Afq.bXb()) && (this.oIX)) {
+        this.list.removeFooterView(this.oIW);
       }
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(200519);
+          AppMethodBeat.i(198362);
           paramAnonymousMenuItem = new Intent();
           paramAnonymousMenuItem.putExtra("sns_cmd_list", SnsMsgUI.l(SnsMsgUI.this));
           SnsMsgUI.this.setResult(-1, paramAnonymousMenuItem);
           SnsMsgUI.this.finish();
-          AppMethodBeat.o(200519);
+          AppMethodBeat.o(198362);
           return true;
         }
       });
-      if ((this.yNU.bSw()) && (this.ofE)) {
-        this.list.removeFooterView(this.ofD);
+      if ((this.Afq.bXb()) && (this.oIX)) {
+        this.list.removeFooterView(this.oIW);
       }
       AppMethodBeat.o(98893);
       return;
-      this.list.addFooterView(this.ofC);
+      this.list.addFooterView(this.oIV);
       break;
       label470:
       this.list.setVisibility(0);
-      this.nwN.setVisibility(8);
+      this.nYl.setVisibility(8);
       enableOptionMenu(true);
     }
   }
@@ -688,7 +604,7 @@ public class SnsMsgUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(98895);
-    ac.i("MicroMsg.SnsMsgUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
+    ad.i("MicroMsg.SnsMsgUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
     if (paramInt2 != -1)
     {
       AppMethodBeat.o(98895);
@@ -703,7 +619,7 @@ public class SnsMsgUI
     if (paramIntent != null)
     {
       paramInt1 = paramIntent.getIntExtra("sns_gallery_op_id", 0);
-      this.yzV.Oa(paramInt1);
+      this.zRm.PH(paramInt1);
     }
     AppMethodBeat.o(98895);
   }
@@ -712,22 +628,22 @@ public class SnsMsgUI
   {
     AppMethodBeat.i(98889);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(210, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(683, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(218, this);
-    this.huP = u.axw();
-    this.yJv = af.dHF();
-    this.yNW = getIntent().getBooleanExtra("sns_msg_force_show_all", false);
-    if (this.yNW) {
-      this.ofE = true;
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.a(210, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.a(683, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.a(218, this);
+    this.hNh = u.aAm();
+    this.AaP = ag.dTS();
+    this.Afs = getIntent().getBooleanExtra("sns_msg_force_show_all", false);
+    if (this.Afs) {
+      this.oIX = true;
     }
-    af.dHW().add(this.yOc);
+    ag.dUj().add(this.Afy);
     setActionbarColor(getActionbarColor());
     initView();
-    this.yOe = bs.eWj();
+    this.AfA = bt.flT();
     this.fromScene = getIntent().getIntExtra("sns_msg_comment_list_scene", 0);
     AppMethodBeat.o(98889);
   }
@@ -736,27 +652,27 @@ public class SnsMsgUI
   {
     AppMethodBeat.i(98894);
     paramContextMenuInfo = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    j localj = (j)this.yNU.getItem(paramContextMenuInfo.position);
+    j localj = (j)this.Afq.getItem(paramContextMenuInfo.position);
     if (localj == null)
     {
       AppMethodBeat.o(98894);
       return;
     }
-    this.yvt = localj.yvt;
-    this.yaI = localj.field_snsID;
+    this.zMG = localj.zMG;
+    this.zqE = localj.field_snsID;
     for (;;)
     {
       try
       {
-        paramView = (czu)new czu().parseFrom(localj.field_curActionBuf);
+        paramView = (dfh)new dfh().parseFrom(localj.field_curActionBuf);
         if (paramView != null)
         {
-          ai localai = this.yJv.aNt(paramView.Fwn);
-          if (localai == null) {
+          am localam = this.AaP.Bf(paramView.Hgt);
+          if (localam == null) {
             continue;
           }
-          paramView = localai.aaS();
-          paramContextMenu.setHeaderTitle(bs.nullAsNil(paramView));
+          paramView = localam.adv();
+          paramContextMenu.setHeaderTitle(bt.nullAsNil(paramView));
           if (localj.field_isSilence != 0) {
             continue;
           }
@@ -765,19 +681,19 @@ public class SnsMsgUI
       }
       catch (Exception paramView)
       {
-        ac.printErrStackTrace("MicroMsg.SnsMsgUI", paramView, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.SnsMsgUI", paramView, "", new Object[0]);
         continue;
       }
       paramContextMenu.add(paramContextMenuInfo.position, 0, 0, getString(2131755707));
       AppMethodBeat.o(98894);
       return;
-      if (!bs.isNullOrNil(paramView.FIW))
+      if (!bt.isNullOrNil(paramView.HtE))
       {
-        paramView = paramView.FIW;
+        paramView = paramView.HtE;
       }
       else
       {
-        paramView = paramView.Fwn;
+        paramView = paramView.Hgt;
         continue;
         paramContextMenu.add(paramContextMenuInfo.position, 2, 1, getString(2131761721));
       }
@@ -787,30 +703,30 @@ public class SnsMsgUI
   public void onDestroy()
   {
     AppMethodBeat.i(98890);
-    ac.d("MicroMsg.SnsMsgUI", "msgui onDestroy");
-    this.qoj = super.getActivityBrowseTimeMs();
-    if (af.dHW().bQe() > 0) {
-      af.dHW().bQf();
+    ad.d("MicroMsg.SnsMsgUI", "msgui onDestroy");
+    this.qXg = super.getActivityBrowseTimeMs();
+    if (ag.dUj().bUJ() > 0) {
+      ag.dUj().bUK();
     }
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(210, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(683, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(218, this);
-    af.dHW().remove(this.yOc);
-    this.yNU.cVi();
-    af.dHO().aD(this);
-    if (this.yNY != null)
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(210, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(683, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(218, this);
+    ag.dUj().remove(this.Afy);
+    this.Afq.det();
+    ag.dUb().aD(this);
+    if (this.Afu != null)
     {
-      this.yNY.dismiss();
-      this.yNY = null;
+      this.Afu.dismiss();
+      this.Afu = null;
     }
-    long l = bs.Gn();
+    long l = bt.HI();
     int k = 0;
     int j = 0;
     StringBuffer localStringBuffer = new StringBuffer();
-    Object localObject2 = this.yOh.values().iterator();
+    Object localObject2 = this.AfD.values().iterator();
     int i = 0;
     Object localObject1;
     int m;
@@ -833,8 +749,8 @@ public class SnsMsgUI
         i += 1;
         label224:
         m = 0;
-        if (this.yOi.containsKey(Integer.valueOf(((j)localObject1).yvt))) {
-          m = ((Integer)this.yOi.get(Integer.valueOf(((j)localObject1).yvt))).intValue();
+        if (this.AfE.containsKey(Integer.valueOf(((j)localObject1).zMG))) {
+          m = ((Integer)this.AfE.get(Integer.valueOf(((j)localObject1).zMG))).intValue();
         }
         if (localObject1 != null) {
           break label329;
@@ -863,28 +779,28 @@ public class SnsMsgUI
         label329:
         if (m == 0)
         {
-          localObject1 = String.format("{\"fid\":%s;\"cid\":%d;\"usr\":\"%s\";\"type\":%d;\"ig\":%d}", new Object[] { b((j)localObject1), Integer.valueOf(((j)localObject1).yvt), ((j)localObject1).field_talker, Integer.valueOf(((j)localObject1).field_type), Integer.valueOf(((j)localObject1).field_isSilence) });
+          localObject1 = String.format("{\"fid\":%s;\"cid\":%d;\"usr\":\"%s\";\"type\":%d;\"ig\":%d}", new Object[] { b((j)localObject1), Integer.valueOf(((j)localObject1).zMG), ((j)localObject1).field_talker, Integer.valueOf(((j)localObject1).field_type), Integer.valueOf(((j)localObject1).field_isSilence) });
           break label278;
         }
-        localObject1 = String.format("{\"fid\":%s;\"cid\":%d;\"usr\":\"%s\";\"type\":%d;\"ig\":%d;\"click\":%d}", new Object[] { b((j)localObject1), Integer.valueOf(((j)localObject1).yvt), ((j)localObject1).field_talker, Integer.valueOf(((j)localObject1).field_type), Integer.valueOf(((j)localObject1).field_isSilence), Integer.valueOf(m) });
+        localObject1 = String.format("{\"fid\":%s;\"cid\":%d;\"usr\":\"%s\";\"type\":%d;\"ig\":%d;\"click\":%d}", new Object[] { b((j)localObject1), Integer.valueOf(((j)localObject1).zMG), ((j)localObject1).field_talker, Integer.valueOf(((j)localObject1).field_type), Integer.valueOf(((j)localObject1).field_isSilence), Integer.valueOf(m) });
         break label278;
         label471:
         localStringBuffer.append((String)localObject1);
         continue;
-        localObject1 = new ed();
-        localObject2 = ((ed)localObject1).is(this.yOe);
-        ((ed)localObject2).dNc = this.fromScene;
-        ((ed)localObject2).dTN = this.qoj;
-        ((ed)localObject1).dTO = this.yOf;
-        ((ed)localObject1).dTP = this.yOg;
-        ((ed)localObject1).dTM = j;
-        ((ed)localObject1).dTL = i;
-        ((ed)localObject1).dTR = ((ed)localObject1).t("BrowseJson", "[" + localStringBuffer.toString() + "]", true);
-        ((ed)localObject1).aHZ();
-        this.yOh.clear();
-        this.yOi.clear();
-        ac.i("MicroMsg.SnsMsgUI", "reportBrowseMsgListInfo debugLog [%d] cost[%d]", new Object[] { Integer.valueOf(k), Long.valueOf(bs.aO(l)) });
-        ac.d("MicroMsg.SnsMsgUI", "rpt %s", new Object[] { ((ed)localObject1).PS() });
+        localObject1 = new fc();
+        localObject2 = ((fc)localObject1).ke(this.AfA);
+        ((fc)localObject2).eca = this.fromScene;
+        ((fc)localObject2).ekf = this.qXg;
+        ((fc)localObject1).ekg = this.AfB;
+        ((fc)localObject1).ekh = this.AfC;
+        ((fc)localObject1).eke = j;
+        ((fc)localObject1).ekd = i;
+        ((fc)localObject1).ekj = ((fc)localObject1).t("BrowseJson", "[" + localStringBuffer.toString() + "]", true);
+        ((fc)localObject1).aLk();
+        this.AfD.clear();
+        this.AfE.clear();
+        ad.i("MicroMsg.SnsMsgUI", "reportBrowseMsgListInfo debugLog [%d] cost[%d]", new Object[] { Integer.valueOf(k), Long.valueOf(bt.aO(l)) });
+        ad.d("MicroMsg.SnsMsgUI", "rpt %s", new Object[] { ((fc)localObject1).RE() });
         super.onDestroy();
         AppMethodBeat.o(98890);
         return;
@@ -896,24 +812,24 @@ public class SnsMsgUI
   public void onPause()
   {
     AppMethodBeat.i(98892);
-    WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcSNSMsgScrollEnable, this.fsu);
-    this.fsu = 0;
-    af.dHM().b(this);
+    WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcSNSMsgScrollEnable, this.fKU);
+    this.fKU = 0;
+    ag.dTZ().b(this);
     super.onPause();
-    if ((com.tencent.matrix.b.Gp()) && (com.tencent.matrix.b.Gq().V(com.tencent.matrix.trace.a.class) != null))
+    if ((com.tencent.matrix.b.HK()) && (com.tencent.matrix.b.HL().V(com.tencent.matrix.trace.a.class) != null))
     {
-      c localc = ((com.tencent.matrix.trace.a)com.tencent.matrix.b.Gq().V(com.tencent.matrix.trace.a.class)).cyD;
+      c localc = ((com.tencent.matrix.trace.a)com.tencent.matrix.b.HL().V(com.tencent.matrix.trace.a.class)).cJy;
       if (localc != null) {
-        this.gcx = Math.max(0L, localc.cAr - this.gcx);
+        this.gwh = Math.max(0L, localc.cLq - this.gwh);
       }
     }
-    if (bs.aNx() > this.hDh) {}
-    for (long l = bs.aNx() - this.hDh;; l = 1L)
+    if (bt.aQJ() > this.hVM) {}
+    for (long l = bt.aQJ() - this.hVM;; l = 1L)
     {
-      this.hDh = l;
-      WXHardCoderJNI.reportFPS(705, WXHardCoderJNI.hcSNSMsgScrollAction, 1, this.gcx, this.hDh);
-      this.gcx = 0L;
-      this.hDh = 0L;
+      this.hVM = l;
+      WXHardCoderJNI.reportFPS(705, WXHardCoderJNI.hcSNSMsgScrollAction, 1, this.gwh, this.hVM);
+      this.gwh = 0L;
+      this.hVM = 0L;
       AppMethodBeat.o(98892);
       return;
     }
@@ -922,15 +838,15 @@ public class SnsMsgUI
   public void onResume()
   {
     AppMethodBeat.i(98891);
-    this.hDh = bs.aNx();
-    if ((com.tencent.matrix.b.Gp()) && (com.tencent.matrix.b.Gq().V(com.tencent.matrix.trace.a.class) != null))
+    this.hVM = bt.aQJ();
+    if ((com.tencent.matrix.b.HK()) && (com.tencent.matrix.b.HL().V(com.tencent.matrix.trace.a.class) != null))
     {
-      c localc = ((com.tencent.matrix.trace.a)com.tencent.matrix.b.Gq().V(com.tencent.matrix.trace.a.class)).cyD;
+      c localc = ((com.tencent.matrix.trace.a)com.tencent.matrix.b.HL().V(com.tencent.matrix.trace.a.class)).cJy;
       if (localc != null) {
-        this.gcx = localc.cAr;
+        this.gwh = localc.cLq;
       }
     }
-    af.dHM().a(this);
+    ag.dTZ().a(this);
     super.onResume();
     AppMethodBeat.o(98891);
   }
@@ -938,21 +854,21 @@ public class SnsMsgUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(98898);
-    ac.d("MicroMsg.SnsMsgUI", "onSceneEnd:%s errtype:%s errcode:%s", new Object[] { paramn, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.d("MicroMsg.SnsMsgUI", "onSceneEnd:%s errtype:%s errcode:%s", new Object[] { paramn, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramn instanceof com.tencent.mm.plugin.sns.model.p))
     {
-      if (this.yNZ != null)
+      if (this.Afv != null)
       {
-        this.yNZ.dismiss();
-        this.yNZ = null;
+        this.Afv.dismiss();
+        this.Afv = null;
       }
       if (paramn != null)
       {
         paramString = (com.tencent.mm.plugin.sns.model.p)paramn;
-        if (!paramString.xRz) {
+        if (!paramString.zht) {
           break label181;
         }
-        paramString = ((dao)paramString.rr.hvs.hvw).FJG;
+        paramString = ((dgb)paramString.rr.hNL.hNQ).Huo;
         if ((paramString != null) && (paramString.Id != 0L)) {
           break label155;
         }
@@ -965,15 +881,15 @@ public class SnsMsgUI
         AppMethodBeat.o(98898);
         return;
         label155:
-        if (((com.tencent.mm.plugin.sns.model.p)paramn).xRA != null)
+        if (((com.tencent.mm.plugin.sns.model.p)paramn).zhu != null)
         {
-          a(((com.tencent.mm.plugin.sns.model.p)paramn).xRA);
+          a(((com.tencent.mm.plugin.sns.model.p)paramn).zhu);
           continue;
           label181:
-          if (!this.yNV)
+          if (!this.Afr)
           {
-            this.yNV = true;
-            this.handler.postDelayed(this.yOd, 500L);
+            this.Afr = true;
+            this.handler.postDelayed(this.Afz, 500L);
           }
         }
       }
@@ -982,16 +898,16 @@ public class SnsMsgUI
         if ((paramInt1 != 0) || (paramInt2 != 0)) {
           break label269;
         }
-        this.yNU.a(null, null);
+        this.Afq.a(null, null);
         Toast.makeText(this, getString(2131761725), 0).show();
       }
     }
     for (;;)
     {
-      if (this.yNY != null)
+      if (this.Afu != null)
       {
-        this.yNY.dismiss();
-        this.yNY = null;
+        this.Afu.dismiss();
+        this.Afu = null;
       }
       AppMethodBeat.o(98898);
       return;
@@ -1009,24 +925,24 @@ public class SnsMsgUI
   final class a
     extends r<j>
   {
-    int fAw;
-    protected MMSlideDelView.g ntA;
-    protected MMSlideDelView.c ntB;
-    protected MMSlideDelView.d ntD;
-    int ofG;
-    private Set<MMSlideDelView> tPy;
-    protected MMSlideDelView.f yOo;
-    private int yxF;
+    protected MMSlideDelView.f AfK;
+    int fTM;
+    protected MMSlideDelView.g nUw;
+    protected MMSlideDelView.c nUx;
+    protected MMSlideDelView.d nUz;
+    int oIZ;
+    private Set<MMSlideDelView> uSl;
+    private int zOR;
     
     public a(Context paramContext, j paramj)
     {
       super(paramj);
       AppMethodBeat.i(98880);
-      this.tPy = new HashSet();
-      this.ntD = new SnsMsgUI.a.1(this);
-      this.yxF = com.tencent.mm.ui.ao.fromDPToPix(paramContext, 14);
-      this.ofG = 10;
-      this.fAw = this.ofG;
+      this.uSl = new HashSet();
+      this.nUz = new SnsMsgUI.a.1(this);
+      this.zOR = aq.fromDPToPix(paramContext, 14);
+      this.oIZ = 10;
+      this.fTM = this.oIZ;
       AppMethodBeat.o(98880);
     }
     
@@ -1062,31 +978,31 @@ public class SnsMsgUI
       }
     }
     
-    public final void Xb()
+    public final void Zu()
     {
       AppMethodBeat.i(98884);
-      if ((af.dHW().bQe() > 0) && (!SnsMsgUI.o(SnsMsgUI.this))) {
-        setCursor(af.dHW().dMg());
+      if ((ag.dUj().bUJ() > 0) && (!SnsMsgUI.o(SnsMsgUI.this))) {
+        setCursor(ag.dUj().dYw());
       }
       for (;;)
       {
         notifyDataSetChanged();
         AppMethodBeat.o(98884);
         return;
-        this.fAw = af.dHW().dMh();
-        setCursor(af.dHW().Pd(this.ofG));
+        this.fTM = ag.dUj().dYx();
+        setCursor(ag.dUj().QL(this.oIZ));
       }
     }
     
-    public final void Xc()
+    public final void Zv()
     {
       AppMethodBeat.i(98882);
-      cVi();
-      Xb();
+      det();
+      Zu();
       AppMethodBeat.o(98882);
     }
     
-    public final void a(String paramString, m paramm)
+    public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
     {
       try
       {
@@ -1104,18 +1020,18 @@ public class SnsMsgUI
     
     public final void b(MMSlideDelView.f paramf)
     {
-      this.yOo = paramf;
+      this.AfK = paramf;
     }
     
-    public final boolean bSw()
+    public final boolean bXb()
     {
-      return this.ofG >= this.fAw;
+      return this.oIZ >= this.fTM;
     }
     
-    public final int bSx()
+    public final int bXc()
     {
       AppMethodBeat.i(98885);
-      if (bSw())
+      if (bXb())
       {
         if (SnsMsgUI.g(SnsMsgUI.this).getParent() != null) {
           SnsMsgUI.b(SnsMsgUI.this).removeFooterView(SnsMsgUI.g(SnsMsgUI.this));
@@ -1123,14 +1039,14 @@ public class SnsMsgUI
         AppMethodBeat.o(98885);
         return 0;
       }
-      this.ofG += 10;
-      if (this.ofG <= this.fAw)
+      this.oIZ += 10;
+      if (this.oIZ <= this.fTM)
       {
         AppMethodBeat.o(98885);
         return 10;
       }
-      this.ofG = this.fAw;
-      int i = this.fAw;
+      this.oIZ = this.fTM;
+      int i = this.fTM;
       AppMethodBeat.o(98885);
       return i % 10;
     }
@@ -1151,70 +1067,70 @@ public class SnsMsgUI
       Object localObject2;
       if (localj != null)
       {
-        if (!SnsMsgUI.p(SnsMsgUI.this).containsKey(Integer.valueOf(localj.yvt))) {
-          SnsMsgUI.p(SnsMsgUI.this).put(Integer.valueOf(localj.yvt), localj.dMe());
+        if (!SnsMsgUI.p(SnsMsgUI.this).containsKey(Integer.valueOf(localj.zMG))) {
+          SnsMsgUI.p(SnsMsgUI.this).put(Integer.valueOf(localj.zMG), localj.dYu());
         }
       }
       else
       {
         if ((paramView != null) && ((paramView.getTag() instanceof a))) {
-          break label1571;
+          break label1581;
         }
-        localObject2 = (MMSlideDelView)com.tencent.mm.ui.z.jD(this.context).inflate(2131493169, null);
-        paramView = com.tencent.mm.ui.z.jD(this.context).inflate(2131495570, null);
+        localObject2 = (MMSlideDelView)com.tencent.mm.ui.z.jO(this.context).inflate(2131493169, null);
+        paramView = com.tencent.mm.ui.z.jO(this.context).inflate(2131495570, null);
         locala = new a();
-        locala.yOq = ((SnsAvatarImageView)paramView.findViewById(2131305008));
-        locala.yOq.setWeakContext(this.context);
-        locala.iNX = ((TextView)paramView.findViewById(2131305016));
-        locala.yOt = ((TextView)paramView.findViewById(2131305010));
-        locala.yOs = ((ImageView)paramView.findViewById(2131305014));
+        locala.AfM = ((SnsAvatarImageView)paramView.findViewById(2131305008));
+        locala.AfM.setWeakContext(this.context);
+        locala.jhg = ((TextView)paramView.findViewById(2131305016));
+        locala.AfP = ((TextView)paramView.findViewById(2131305010));
+        locala.AfO = ((ImageView)paramView.findViewById(2131305014));
         locala.timeTv = ((TextView)paramView.findViewById(2131305017));
-        locala.yOu = ((MMImageView)paramView.findViewById(2131305012));
-        locala.yOr = ((TextView)paramView.findViewById(2131305018));
-        locala.yOu.setOnClickListener(SnsMsgUI.q(SnsMsgUI.this));
-        locala.ntI = ((MMSlideDelView)localObject2).findViewById(2131304837);
-        locala.ntJ = ((TextView)((MMSlideDelView)localObject2).findViewById(2131304839));
-        locala.yOv = ((ImageView)paramView.findViewById(2131305049));
-        locala.yOw = ((EmojiStatusView)paramView.findViewById(2131305009));
+        locala.AfQ = ((MMImageView)paramView.findViewById(2131305012));
+        locala.AfN = ((TextView)paramView.findViewById(2131305018));
+        locala.AfQ.setOnClickListener(SnsMsgUI.q(SnsMsgUI.this));
+        locala.nUE = ((MMSlideDelView)localObject2).findViewById(2131304837);
+        locala.nUF = ((TextView)((MMSlideDelView)localObject2).findViewById(2131304839));
+        locala.AfR = ((ImageView)paramView.findViewById(2131305049));
+        locala.AfS = ((EmojiStatusView)paramView.findViewById(2131305009));
         ((MMSlideDelView)localObject2).setView(paramView);
-        ((MMSlideDelView)localObject2).setPerformItemClickListener(this.ntA);
-        ((MMSlideDelView)localObject2).setGetViewPositionCallback(this.ntB);
-        ((MMSlideDelView)localObject2).setItemStatusCallBack(this.ntD);
+        ((MMSlideDelView)localObject2).setPerformItemClickListener(this.nUw);
+        ((MMSlideDelView)localObject2).setGetViewPositionCallback(this.nUx);
+        ((MMSlideDelView)localObject2).setItemStatusCallBack(this.nUz);
         ((MMSlideDelView)localObject2).setEnable(false);
         ((View)localObject2).setTag(locala);
         label357:
-        locala.yOu.setTag(null);
-        locala.dwQ = localj.field_snsID;
-        locala.ntI.setTag(Integer.valueOf(localj.yvt));
-        locala.ntI.setOnClickListener(new SnsMsgUI.a.2(this));
+        locala.AfQ.setTag(null);
+        locala.dJc = localj.field_snsID;
+        locala.nUE.setTag(Integer.valueOf(localj.zMG));
+        locala.nUE.setOnClickListener(new SnsMsgUI.a.2(this));
       }
       for (;;)
       {
         try
         {
-          localczu = (czu)new czu().parseFrom(localj.field_curActionBuf);
+          localdfh = (dfh)new dfh().parseFrom(localj.field_curActionBuf);
         }
         catch (Exception paramView)
         {
-          czu localczu;
+          dfh localdfh;
           final com.tencent.mm.plugin.sns.storage.p localp;
           Object localObject3;
-          label1571:
-          ac.printErrStackTrace("MicroMsg.SnsMsgUI", paramView, "", new Object[0]);
+          label1581:
+          ad.printErrStackTrace("MicroMsg.SnsMsgUI", paramView, "", new Object[0]);
           continue;
-          ac.e("MicroMsg.SnsMsgUI", "action.getFromUsername() is null or Nil");
+          ad.e("MicroMsg.SnsMsgUI", "action.getFromUsername() is null or Nil");
           continue;
-          paramViewGroup = localczu.Fwn;
+          paramViewGroup = localdfh.Hgt;
           continue;
           if (i == 0) {
             continue;
           }
           Object localObject1 = com.tencent.mm.cc.a.m(this.context, 2131100914);
-          paramViewGroup.setSpan(new TextAppearanceSpan(null, 0, (int)locala.iNX.getTextSize(), (ColorStateList)localObject1, (ColorStateList)localObject1), 0, j, 33);
-          paramViewGroup.setSpan(((com.tencent.mm.openim.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.b.class)).f(this.context, ((com.tencent.mm.g.c.av)localObject3).field_openImAppid, this.yxF), j, paramViewGroup.length(), 33);
+          paramViewGroup.setSpan(new TextAppearanceSpan(null, 0, (int)locala.jhg.getTextSize(), (ColorStateList)localObject1, (ColorStateList)localObject1), 0, j, 33);
+          paramViewGroup.setSpan(((com.tencent.mm.openim.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.b.class)).f(this.context, ((aw)localObject3).field_openImAppid, this.zOR), j, paramViewGroup.length(), 33);
           continue;
           localObject1 = com.tencent.mm.cc.a.m(this.context, 2131100914);
-          paramViewGroup.setSpan(new TextAppearanceSpan(null, 0, (int)locala.iNX.getTextSize(), (ColorStateList)localObject1, (ColorStateList)localObject1), 0, paramViewGroup.length(), 33);
+          paramViewGroup.setSpan(new TextAppearanceSpan(null, 0, (int)locala.jhg.getTextSize(), (ColorStateList)localObject1, (ColorStateList)localObject1), 0, paramViewGroup.length(), 33);
           continue;
           paramViewGroup = com.tencent.mm.cc.a.l(this.context, 2131233600);
           ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(null, null, paramViewGroup, null);
@@ -1234,17 +1150,17 @@ public class SnsMsgUI
           ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
           ((TextView)localObject1).setText("");
           ((TextView)localObject1).setCompoundDrawablePadding(0);
-          switch (localczu.ndI)
+          switch (localdfh.nEf)
           {
           case 1: 
           case 5: 
-            paramViewGroup = af.dHR().xK(localj.field_snsID);
+            paramViewGroup = ag.dUe().Ai(localj.field_snsID);
             if ((paramViewGroup == null) || (paramViewGroup.field_type != 7)) {
               continue;
             }
             ((TextView)localObject1).setText(SnsMsgUI.this.getString(2131763883));
             continue;
-            paramView = am.k(this.context, 2131690247, this.context.getResources().getColor(2131099769));
+            paramView = ao.k(this.context, 2131690247, this.context.getResources().getColor(2131099769));
             if ((paramViewGroup == null) || (paramViewGroup.field_type != 21)) {
               continue;
             }
@@ -1259,25 +1175,25 @@ public class SnsMsgUI
             break;
           case 2: 
           case 3: 
-            localObject4 = bs.nullAsNil(localczu.hkR);
+            localObject4 = bt.nullAsNil(localdfh.hDa);
             localObject5 = new SpannableStringBuilder();
-            locale = af.dHU().xB(localj.field_snsID);
+            locale = ag.dUh().zZ(localj.field_snsID);
             localObject6 = com.tencent.mm.cc.a.m(this.context, 2131100914);
             localObject6 = new TextAppearanceSpan(null, 1, (int)((TextView)localObject1).getTextSize(), (ColorStateList)localObject6, (ColorStateList)localObject6);
-            if (!com.tencent.mm.plugin.sns.ui.widget.e.hJ(localczu.FJd, 1)) {
+            if (!com.tencent.mm.plugin.sns.ui.widget.e.ia(localdfh.HtL, 1)) {
               continue;
             }
             if (locale == null) {
               continue;
             }
-            com.tencent.mm.kernel.g.agS();
-            paramView = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNr(locale.field_userName);
-            ((SpannableStringBuilder)localObject5).append(this.context.getString(2131763917)).append(paramView.aaS()).append(": ");
+            com.tencent.mm.kernel.g.ajD();
+            paramView = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().aTj(locale.field_userName);
+            ((SpannableStringBuilder)localObject5).append(this.context.getString(2131763917)).append(paramView.adv()).append(": ");
             paramViewGroup[0] = this.context.getString(2131763917).length();
             i = paramViewGroup[0];
-            paramViewGroup[1] = (paramView.aaS().length() + i);
+            paramViewGroup[1] = (paramView.adv().length() + i);
             ((SpannableStringBuilder)localObject5).append((CharSequence)localObject4).append(" ");
-            SnsMsgUI.a((EmojiStatusView)localObject3, localczu, (SpannableStringBuilder)localObject5, (TextView)localObject1);
+            SnsMsgUI.a((EmojiStatusView)localObject3, localdfh, (SpannableStringBuilder)localObject5, (TextView)localObject1);
             paramView = com.tencent.mm.pluginsdk.ui.span.k.b(SnsMsgUI.this, (CharSequence)localObject5, ((TextView)localObject1).getTextSize());
             if ((paramViewGroup[0] < 0) || (paramViewGroup[1] <= paramViewGroup[0])) {
               continue;
@@ -1285,7 +1201,7 @@ public class SnsMsgUI
             paramView.setSpan(localObject6, paramViewGroup[0], paramViewGroup[1], 33);
             ((TextView)localObject1).setText(paramView);
             continue;
-            if (bs.isNullOrNil(paramView)) {
+            if (bt.isNullOrNil(paramView)) {
               continue;
             }
             ((SpannableStringBuilder)localObject5).append(this.context.getString(2131763918)).append(paramView).append(": ");
@@ -1293,29 +1209,29 @@ public class SnsMsgUI
             paramViewGroup[1] = (paramViewGroup[0] + paramView.length());
             break;
           case 7: 
-            ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(am.k(this.context, 2131690247, this.context.getResources().getColor(2131099769)), null, null, null);
+            ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(ao.k(this.context, 2131690247, this.context.getResources().getColor(2131099769)), null, null, null);
             ((TextView)localObject1).setContentDescription(SnsMsgUI.this.getContext().getString(2131763827));
             break;
           case 8: 
             localObject4 = new SpannableStringBuilder();
-            localObject5 = bs.nullAsNil(localczu.hkR);
-            locale = af.dHU().xB(localj.field_snsID);
+            localObject5 = bt.nullAsNil(localdfh.hDa);
+            locale = ag.dUh().zZ(localj.field_snsID);
             localObject6 = com.tencent.mm.cc.a.m(this.context, 2131100914);
             localObject6 = new TextAppearanceSpan(null, 1, (int)((TextView)localObject1).getTextSize(), (ColorStateList)localObject6, (ColorStateList)localObject6);
-            if (!com.tencent.mm.plugin.sns.ui.widget.e.hJ(localczu.FJd, 1)) {
+            if (!com.tencent.mm.plugin.sns.ui.widget.e.ia(localdfh.HtL, 1)) {
               continue;
             }
             if (locale == null) {
               continue;
             }
-            com.tencent.mm.kernel.g.agS();
-            paramView = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNr(locale.field_userName);
-            ((SpannableStringBuilder)localObject4).append(this.context.getString(2131763917)).append(paramView.aaS()).append(": ");
+            com.tencent.mm.kernel.g.ajD();
+            paramView = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().aTj(locale.field_userName);
+            ((SpannableStringBuilder)localObject4).append(this.context.getString(2131763917)).append(paramView.adv()).append(": ");
             paramViewGroup[0] = this.context.getString(2131763917).length();
             i = paramViewGroup[0];
-            paramViewGroup[1] = (paramView.aaS().length() + i);
+            paramViewGroup[1] = (paramView.adv().length() + i);
             ((SpannableStringBuilder)localObject4).append((CharSequence)localObject5).append(" ");
-            SnsMsgUI.a((EmojiStatusView)localObject3, localczu, (SpannableStringBuilder)localObject4, (TextView)localObject1);
+            SnsMsgUI.a((EmojiStatusView)localObject3, localdfh, (SpannableStringBuilder)localObject4, (TextView)localObject1);
             paramView = com.tencent.mm.pluginsdk.ui.span.k.b(SnsMsgUI.this, (CharSequence)localObject4, ((TextView)localObject1).getTextSize());
             if ((paramViewGroup[0] < 0) || (paramViewGroup[1] <= paramViewGroup[0])) {
               continue;
@@ -1323,7 +1239,7 @@ public class SnsMsgUI
             paramView.setSpan(localObject6, paramViewGroup[0], paramViewGroup[1], 33);
             ((TextView)localObject1).setText(paramView);
             continue;
-            if (bs.isNullOrNil(paramView)) {
+            if (bt.isNullOrNil(paramView)) {
               continue;
             }
             ((SpannableStringBuilder)localObject4).append(this.context.getString(2131763918)).append(paramView).append(": ");
@@ -1335,34 +1251,34 @@ public class SnsMsgUI
             break;
           case 16: 
             paramView = "" + "[" + SnsMsgUI.this.getString(2131763746) + "]";
-            paramView = paramView + " " + bs.nullAsNil(localczu.hkR);
+            paramView = paramView + " " + bt.nullAsNil(localdfh.hDa);
             ((TextView)localObject1).setText(com.tencent.mm.pluginsdk.ui.span.k.b(SnsMsgUI.this, paramView, ((TextView)localObject1).getTextSize()));
             break;
           case 14: 
-            paramView = new bjl();
-            ac.i("MicroMsg.SnsMsgUI", "curAction.HBBuffer " + localczu.FJc);
+            paramView = new bnt();
+            ad.i("MicroMsg.SnsMsgUI", "curAction.HBBuffer " + localdfh.HtK);
             try
             {
-              paramView.parseFrom(com.tencent.mm.platformtools.z.a(localczu.FJc));
-              ac.i("MicroMsg.SnsMsgUI", "hbbuffer  " + paramView.dBN);
-              paramViewGroup = SnsMsgUI.r(SnsMsgUI.this).aNt(localczu.Fwn);
-              ((TextView)localObject1).setText(SnsMsgUI.this.getString(2131760811, new Object[] { paramViewGroup.aaS(), bs.C(paramView.dBN / 100.0D) }));
+              paramView.parseFrom(com.tencent.mm.platformtools.z.a(localdfh.HtK));
+              ad.i("MicroMsg.SnsMsgUI", "hbbuffer  " + paramView.dOa);
+              paramViewGroup = SnsMsgUI.r(SnsMsgUI.this).Bf(localdfh.Hgt);
+              ((TextView)localObject1).setText(SnsMsgUI.this.getString(2131760811, new Object[] { paramViewGroup.adv(), bt.C(paramView.dOa / 100.0D) }));
             }
             catch (Exception paramViewGroup)
             {
-              ac.e("MicroMsg.SnsMsgUI", "parser hbbuffer " + paramViewGroup.getMessage());
+              ad.e("MicroMsg.SnsMsgUI", "parser hbbuffer " + paramViewGroup.getMessage());
               continue;
             }
           case 13: 
-            paramViewGroup = new bjl();
-            ac.i("MicroMsg.SnsMsgUI", "curAction.HBBuffer " + localczu.FJc);
+            paramViewGroup = new bnt();
+            ad.i("MicroMsg.SnsMsgUI", "curAction.HBBuffer " + localdfh.HtK);
             try
             {
-              paramViewGroup.parseFrom(com.tencent.mm.platformtools.z.a(localczu.FJc));
-              ac.i("MicroMsg.SnsMsgUI", "hbbuffer  " + paramViewGroup.dBN);
-              SnsMsgUI.r(SnsMsgUI.this).aNt(localczu.Fwn);
+              paramViewGroup.parseFrom(com.tencent.mm.platformtools.z.a(localdfh.HtK));
+              ad.i("MicroMsg.SnsMsgUI", "hbbuffer  " + paramViewGroup.dOa);
+              SnsMsgUI.r(SnsMsgUI.this).Bf(localdfh.Hgt);
               paramView = null;
-              if (paramViewGroup.dBN == 0L)
+              if (paramViewGroup.dOa == 0L)
               {
                 SnsMsgUI.b(SnsMsgUI.this, true);
                 paramViewGroup = new SpannableString(SnsMsgUI.this.getString(2131760814));
@@ -1370,7 +1286,7 @@ public class SnsMsgUI
                 {
                   paramView.setBounds(0, 0, paramView.getIntrinsicWidth(), paramView.getIntrinsicHeight());
                   localObject3 = new com.tencent.mm.ui.widget.a(paramView);
-                  ((com.tencent.mm.ui.widget.a)localObject3).IZa = ((int)((paramView.getIntrinsicHeight() - ((TextView)localObject1).getTextSize() + com.tencent.mm.cc.a.fromDPToPix(SnsMsgUI.this, 2)) / 2.0F));
+                  ((com.tencent.mm.ui.widget.a)localObject3).KQg = ((int)((paramView.getIntrinsicHeight() - ((TextView)localObject1).getTextSize() + com.tencent.mm.cc.a.fromDPToPix(SnsMsgUI.this, 2)) / 2.0F));
                   paramViewGroup.setSpan(localObject3, 0, 1, 33);
                 }
                 ((TextView)localObject1).setText(paramViewGroup);
@@ -1378,113 +1294,132 @@ public class SnsMsgUI
             }
             catch (Exception paramView)
             {
-              ac.e("MicroMsg.SnsMsgUI", "parser hbbuffer " + paramView.getMessage());
+              ad.e("MicroMsg.SnsMsgUI", "parser hbbuffer " + paramView.getMessage());
               continue;
               SnsMsgUI.b(SnsMsgUI.this, false);
-              paramViewGroup = new SpannableString(" " + SnsMsgUI.this.getString(2131760813, new Object[] { bs.C(paramViewGroup.dBN / 100.0D) }));
+              paramViewGroup = new SpannableString(" " + SnsMsgUI.this.getString(2131760813, new Object[] { bt.C(paramViewGroup.dOa / 100.0D) }));
               paramView = SnsMsgUI.this.getResources().getDrawable(2131230912);
               continue;
             }
-            paramView = af.dHR().xK(localj.field_snsID);
+            paramView = ag.dUe().Ai(localj.field_snsID);
             continue;
-            paramInt = a(paramView.field_type, locala.yOu);
-            if (paramView.dLV().FQo.EtD.mediaList.isEmpty()) {
+            paramViewGroup = new j();
+            ag.dUj().get(localj.systemRowid, paramViewGroup);
+            locala.AfQ.setTag(paramViewGroup);
+            if (bt.hj(paramView.mediaList)) {
               continue;
             }
-            paramViewGroup = new btz();
-            paramViewGroup.Url = ((anw)paramView.dLV().FQo.EtD.mediaList.get(0)).thumbUrl;
-            paramViewGroup.Fjh = ((anw)paramView.dLV().FQo.EtD.mediaList.get(0)).thumbUrl;
-            paramViewGroup.ndI = 2;
-            paramViewGroup.Fji = 1;
-            paramViewGroup.Fjk = new bub();
-            paramViewGroup.EUH = 1;
-            paramViewGroup.Fjk.FjY = ((anw)paramView.dLV().FQo.EtD.mediaList.get(0)).width;
-            paramViewGroup.Fjk.FjZ = ((anw)paramView.dLV().FQo.EtD.mediaList.get(0)).height;
-            paramViewGroup.Id = localp.getSnsId();
-            af.dHO().a(paramViewGroup, locala.yOu, paramInt, SnsMsgUI.this.hashCode(), bf.GYF);
-            locala.yOu.setVisibility(0);
+            ((t)com.tencent.mm.kernel.g.ad(t.class)).loadImage(((ari)paramView.mediaList.get(0)).thumbUrl, locala.AfQ);
+            locala.AfQ.setVisibility(0);
+            if (paramView.Gpi != 4) {
+              continue;
+            }
+            locala.AfR.setVisibility(0);
             continue;
-            if (paramView.dLV().FQo.Ety != 29) {
+            if (paramView.dYl().HAT.GaP != 29) {
               continue;
             }
-            paramInt = a(paramView.field_type, locala.yOu);
-            if (paramView.dLV().FQo.EtE == null) {
+            paramInt = a(paramView.field_type, locala.AfQ);
+            if (paramView.dYl().HAT.GaV == null) {
               continue;
             }
-            paramViewGroup = new btz();
-            paramViewGroup.Url = paramView.dLV().FQo.EtE.iconUrl;
-            paramViewGroup.Fjh = paramView.dLV().FQo.EtE.iconUrl;
-            paramViewGroup.ndI = 2;
-            paramViewGroup.Fji = 1;
-            paramViewGroup.Fjk = new bub();
-            paramViewGroup.EUH = 1;
-            paramViewGroup.Fjk.FjY = 0.0F;
-            paramViewGroup.Fjk.FjZ = 0.0F;
+            paramViewGroup = new j();
+            ag.dUj().get(localj.systemRowid, paramViewGroup);
+            locala.AfQ.setTag(paramViewGroup);
+            paramViewGroup = new byn();
+            paramViewGroup.Url = paramView.dYl().HAT.GaV.iconUrl;
+            paramViewGroup.GSI = paramView.dYl().HAT.GaV.iconUrl;
+            paramViewGroup.nEf = 2;
+            paramViewGroup.GSJ = 1;
+            paramViewGroup.GSL = new byp();
+            paramViewGroup.GEe = 1;
+            paramViewGroup.GSL.GTz = 0.0F;
+            paramViewGroup.GSL.GTA = 0.0F;
             paramViewGroup.Id = localp.getSnsId();
-            af.dHO().a(paramViewGroup, locala.yOu, paramInt, SnsMsgUI.this.hashCode(), bf.GYF);
-            locala.yOu.setVisibility(0);
+            ag.dUb().a(paramViewGroup, locala.AfQ, paramInt, SnsMsgUI.this.hashCode(), com.tencent.mm.storage.bj.ILT);
+            locala.AfQ.setVisibility(0);
+            continue;
+            if (paramView.dYl().HAT.GaP != 33) {
+              continue;
+            }
+            paramInt = a(paramView.field_type, locala.AfQ);
+            if (paramView.dYl().HAT.GaW == null) {
+              continue;
+            }
+            paramViewGroup = new byn();
+            paramViewGroup.Url = paramView.dYl().HAT.GaW.hDm;
+            paramViewGroup.GSI = paramView.dYl().HAT.GaW.hDm;
+            paramViewGroup.nEf = 2;
+            paramViewGroup.GSJ = 1;
+            paramViewGroup.GSL = new byp();
+            paramViewGroup.GEe = 1;
+            paramViewGroup.GSL.GTz = 0.0F;
+            paramViewGroup.GSL.GTA = 0.0F;
+            paramViewGroup.Id = localp.getSnsId();
+            ag.dUb().a(paramViewGroup, locala.AfQ, paramInt, SnsMsgUI.this.hashCode(), com.tencent.mm.storage.bj.ILT);
+            locala.AfQ.setVisibility(0);
             continue;
             if (paramView.field_type != 2) {
               continue;
             }
-            locala.yOu.setTag(null);
-            locala.yOr.setVisibility(0);
-            paramView = com.tencent.mm.pluginsdk.ui.span.k.b(SnsMsgUI.this, paramView.dLV().FQl, locala.yOr.getTextSize());
-            locala.yOr.setText(paramView);
+            locala.AfQ.setTag(null);
+            locala.AfN.setVisibility(0);
+            paramView = com.tencent.mm.pluginsdk.ui.span.k.b(SnsMsgUI.this, paramView.dYl().HAQ, locala.AfN.getTextSize());
+            locala.AfN.setText(paramView);
             continue;
             if (paramViewGroup.size() <= 0) {
-              break label4415;
+              break label4504;
             }
-            i = a(paramView.field_type, locala.yOu);
-            af.dHO().a((btz)paramViewGroup.get(0), locala.yOu, i, SnsMsgUI.this.hashCode(), bf.GYF);
-            if ((paramView.field_type != 15) && ((paramView.field_type != 27) || (paramViewGroup.size() <= 0) || (((btz)paramViewGroup.get(0)).ndI != 6))) {
+            i = a(paramView.field_type, locala.AfQ);
+            ag.dUb().a((byn)paramViewGroup.get(0), locala.AfQ, i, SnsMsgUI.this.hashCode(), com.tencent.mm.storage.bj.ILT);
+            if ((paramView.field_type != 15) && ((paramView.field_type != 27) || (paramViewGroup.size() <= 0) || (((byn)paramViewGroup.get(0)).nEf != 6))) {
               continue;
             }
-            locala.yOv.setVisibility(0);
+            locala.AfR.setVisibility(0);
             paramView = new j();
-            af.dHW().get(localj.systemRowid, paramView);
-            locala.yOu.setTag(paramView);
+            ag.dUj().get(localj.systemRowid, paramView);
+            locala.AfQ.setTag(paramView);
             paramInt = 1;
-            paramViewGroup = locala.yOu;
+            paramViewGroup = locala.AfQ;
             paramView = paramViewGroup;
             if (paramInt == 0) {
-              break label4438;
+              break label4527;
             }
             paramInt = 0;
             paramView = paramViewGroup;
             continue;
-            paramViewGroup = new aw();
-            paramViewGroup.dgl = paramView.dMu();
+            paramViewGroup = new az();
+            paramViewGroup.drH = paramView.dYK();
             paramViewGroup.index = 0;
             paramView = new ArrayList();
-            paramView.add(locala.yOu);
-            paramViewGroup.yMc = paramView;
+            paramView.add(locala.AfQ);
+            paramViewGroup.Ady = paramView;
             paramViewGroup.position = paramInt;
-            locala.yOu.setTag(paramViewGroup);
+            locala.AfQ.setTag(paramViewGroup);
             paramInt = 1;
             continue;
-            if ((localczu.ndI == 7) || (localczu.ndI == 8)) {
+            if ((localdfh.nEf == 7) || (localdfh.nEf == 8)) {
               continue;
             }
-            if (localczu.ndI != 16) {
+            if (localdfh.nEf != 16) {
               continue;
             }
-            if (!com.tencent.mm.plugin.sns.model.l.xe(localj.field_snsID)) {
+            if (!com.tencent.mm.plugin.sns.model.l.zD(localj.field_snsID)) {
               continue;
             }
-            if (localczu.DQr == null) {
+            if (localdfh.FvG == null) {
               continue;
             }
-            ac.i("MicroMsg.SnsMsgUI", "atFriend detail, aid64 %d, aid %d", new Object[] { Long.valueOf(localczu.DQr.FBm), Integer.valueOf(localczu.DQr.FBh) });
-            paramView = new com.tencent.mm.plugin.sns.model.l(localj.field_snsID, localczu.DQr);
-            com.tencent.mm.kernel.g.agS();
-            com.tencent.mm.kernel.g.agQ().ghe.a(paramView, 0);
+            ad.i("MicroMsg.SnsMsgUI", "atFriend detail, aid64 %d, aid %d", new Object[] { Long.valueOf(localdfh.FvG.Hlz), Integer.valueOf(localdfh.FvG.Hlu) });
+            paramView = new com.tencent.mm.plugin.sns.model.l(localj.field_snsID, localdfh.FvG);
+            com.tencent.mm.kernel.g.ajD();
+            com.tencent.mm.kernel.g.ajB().gAO.a(paramView, 0);
             continue;
-            if (!com.tencent.mm.plugin.sns.model.p.xh(localj.field_snsID)) {
+            if (!com.tencent.mm.plugin.sns.model.p.zG(localj.field_snsID)) {
               continue;
             }
-            com.tencent.mm.kernel.g.agS();
-            com.tencent.mm.kernel.g.agQ().ghe.a(new com.tencent.mm.plugin.sns.model.p(localj.field_snsID), 0);
+            com.tencent.mm.kernel.g.ajD();
+            com.tencent.mm.kernel.g.ajB().gAO.a(new com.tencent.mm.plugin.sns.model.p(localj.field_snsID), 0);
             continue;
             paramInt = 0;
             continue;
@@ -1496,30 +1431,30 @@ public class SnsMsgUI
         }
         try
         {
-          paramViewGroup = ((czu)new czu().parseFrom(localj.field_refActionBuf)).Fwn;
+          paramViewGroup = ((dfh)new dfh().parseFrom(localj.field_refActionBuf)).Hgt;
         }
         catch (Exception paramView)
         {
           paramView = "";
           continue;
-          locala.yOq.setShowStoryHint(false);
+          locala.AfM.setShowStoryHint(false);
           continue;
         }
         try
         {
-          if (!bs.isNullOrNil(paramViewGroup)) {
+          if (!bt.isNullOrNil(paramViewGroup)) {
             continue;
           }
           paramView = "";
-          localp = af.dHR().xK(localj.field_snsID);
+          localp = ag.dUe().Ai(localj.field_snsID);
           if (localp != null) {
-            break label4426;
+            break label4515;
           }
-          paramViewGroup = af.dHU().xB(localj.field_snsID);
+          paramViewGroup = ag.dUh().zZ(localj.field_snsID);
           if (paramViewGroup == null) {
-            break label4426;
+            break label4515;
           }
-          localp = paramViewGroup.dMb();
+          localp = paramViewGroup.dYr();
         }
         catch (Exception paramView)
         {
@@ -1555,133 +1490,143 @@ public class SnsMsgUI
           continue;
           continue;
         }
-        if (bs.isNullOrNil(localczu.Fwn)) {
+        if (bt.isNullOrNil(localdfh.Hgt)) {
           continue;
         }
-        if (!com.tencent.mm.plugin.sns.ui.widget.e.a(locala.yOq, localp, localczu.Fwn)) {
-          a.b.c(locala.yOq, localczu.Fwn);
+        if (!com.tencent.mm.plugin.sns.ui.widget.e.a(locala.AfM, localp, localdfh.Hgt)) {
+          a.b.c(locala.AfM, localdfh.Hgt);
         }
-        paramViewGroup = localczu.Fwn;
-        locala.yOq.eM(paramViewGroup, 6);
-        if (bs.lr(SnsMsgUI.s(SnsMsgUI.this), paramViewGroup)) {
+        paramViewGroup = localdfh.Hgt;
+        locala.AfM.fe(paramViewGroup, 6);
+        if (bt.lQ(SnsMsgUI.s(SnsMsgUI.this), paramViewGroup)) {
           continue;
         }
-        localObject1 = locala.yOq;
-        com.tencent.mm.kernel.g.agS();
+        localObject1 = locala.AfM;
+        com.tencent.mm.kernel.g.ajD();
         ((SnsAvatarImageView)localObject1).setShowStoryHint(((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).hasNewStory(paramViewGroup));
-        locala.yOq.setOnClickListener(new View.OnClickListener()
+        locala.AfM.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             int j = 0;
-            boolean bool = false;
             AppMethodBeat.i(98879);
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsMsgUI$SnsMsgAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
             int i = j;
+            SnsMsgUI localSnsMsgUI;
+            com.tencent.mm.plugin.sns.storage.a locala;
             if (localp != null)
             {
               i = j;
               if (com.tencent.mm.plugin.sns.ui.widget.e.b(localp, paramViewGroup))
               {
-                com.tencent.mm.plugin.sns.storage.b localb = localp.dFR();
+                com.tencent.mm.plugin.sns.storage.b localb = localp.dRL();
                 i = j;
                 if (localb != null)
                 {
                   i = j;
-                  if (localb.yfF == 1)
+                  if (localb.zvH == 1)
                   {
                     i = j;
-                    if (!bs.isNullOrNil(localb.yfG))
+                    if (!bt.isNullOrNil(localb.zvI))
                     {
-                      SnsMsgUI localSnsMsgUI = SnsMsgUI.this;
-                      com.tencent.mm.plugin.sns.storage.a locala = localp.dFQ();
-                      Object localObject = localb.yfG;
+                      localSnsMsgUI = SnsMsgUI.this;
+                      locala = localp.dRK();
+                      localObject = localb.zvI;
                       paramAnonymousView = (View)localObject;
                       if (locala != null) {
-                        paramAnonymousView = com.tencent.mm.plugin.sns.data.q.iV((String)localObject, locala.dtx);
+                        paramAnonymousView = com.tencent.mm.plugin.sns.data.q.jh((String)localObject, locala.dFy);
                       }
-                      ac.i("MicroMsg.SnsMsgUI", "comment msg headClickParam url " + paramAnonymousView + " " + localb.yfH);
+                      ad.i("MicroMsg.SnsMsgUI", "comment msg headClickParam url " + paramAnonymousView + " " + localb.zvJ);
                       localObject = new Intent();
-                      if (localb.yfH == 0) {
-                        bool = true;
+                      if (localb.zvJ != 0) {
+                        break label338;
                       }
-                      ((Intent)localObject).putExtra("KsnsViewId", locala.dyy);
-                      ((Intent)localObject).putExtra("KRightBtn", bool);
-                      ((Intent)localObject).putExtra("jsapiargs", new Bundle());
-                      ((Intent)localObject).putExtra("rawUrl", paramAnonymousView);
-                      ((Intent)localObject).putExtra("useJs", true);
-                      com.tencent.mm.plugin.sns.c.a.iyx.i((Intent)localObject, localSnsMsgUI);
-                      i = 1;
                     }
                   }
                 }
               }
             }
-            if (i == 0)
+            label338:
+            for (boolean bool = true;; bool = false)
             {
-              paramAnonymousView = new Intent();
-              paramAnonymousView.putExtra("Contact_User", paramViewGroup);
-              paramAnonymousView.putExtra("CONTACT_INFO_UI_SOURCE", 11);
-              com.tencent.mm.plugin.sns.c.a.iyx.c(paramAnonymousView, SnsMsgUI.this);
+              ((Intent)localObject).putExtra("KsnsViewId", locala.aQj);
+              ((Intent)localObject).putExtra("KRightBtn", bool);
+              ((Intent)localObject).putExtra("jsapiargs", new Bundle());
+              ((Intent)localObject).putExtra("rawUrl", paramAnonymousView);
+              ((Intent)localObject).putExtra("useJs", true);
+              com.tencent.mm.plugin.sns.c.a.iRG.i((Intent)localObject, localSnsMsgUI);
+              i = 1;
+              if (i == 0)
+              {
+                paramAnonymousView = new Intent();
+                paramAnonymousView.putExtra("Contact_User", paramViewGroup);
+                paramAnonymousView.putExtra("CONTACT_INFO_UI_SOURCE", 11);
+                com.tencent.mm.plugin.sns.c.a.iRG.c(paramAnonymousView, SnsMsgUI.this);
+              }
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsMsgUI$SnsMsgAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(98879);
+              return;
             }
-            AppMethodBeat.o(98879);
           }
         });
-        localObject3 = SnsMsgUI.r(SnsMsgUI.this).aNt(localczu.Fwn);
+        localObject3 = SnsMsgUI.r(SnsMsgUI.this).Bf(localdfh.Hgt);
         i = 0;
-        if (bs.isNullOrNil(localczu.FIW)) {
+        if (bt.isNullOrNil(localdfh.HtE)) {
           continue;
         }
-        paramViewGroup = localczu.FIW;
+        paramViewGroup = localdfh.HtE;
         localObject1 = paramViewGroup;
         if (localObject3 == null) {
-          break label4420;
+          break label4509;
         }
-        if (!bs.isNullOrNil(((com.tencent.mm.n.b)localObject3).aaS())) {
-          paramViewGroup = ((com.tencent.mm.n.b)localObject3).aaS();
-        }
-        localObject1 = paramViewGroup;
-        if (!ai.aNc(((com.tencent.mm.g.c.av)localObject3).field_username)) {
-          break label4420;
+        if (!bt.isNullOrNil(((com.tencent.mm.o.b)localObject3).adv())) {
+          paramViewGroup = ((com.tencent.mm.o.b)localObject3).adv();
         }
         localObject1 = paramViewGroup;
-        if (!"3552365301".equals(((com.tencent.mm.g.c.av)localObject3).field_openImAppid)) {
-          break label4420;
+        if (!am.aSQ(((aw)localObject3).field_username)) {
+          break label4509;
         }
-        j = com.tencent.mm.pluginsdk.ui.span.k.b(SnsMsgUI.this, paramViewGroup, locala.iNX.getTextSize()).length();
-        localObject1 = paramViewGroup + " @" + ((com.tencent.mm.openim.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.b.class)).bB(((com.tencent.mm.g.c.av)localObject3).field_openImAppid, ((com.tencent.mm.g.c.av)localObject3).field_descWordingId);
+        localObject1 = paramViewGroup;
+        if (!"3552365301".equals(((aw)localObject3).field_openImAppid)) {
+          break label4509;
+        }
+        j = com.tencent.mm.pluginsdk.ui.span.k.b(SnsMsgUI.this, paramViewGroup, locala.jhg.getTextSize()).length();
+        localObject1 = paramViewGroup + " @" + ((com.tencent.mm.openim.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.b.class)).bC(((aw)localObject3).field_openImAppid, ((aw)localObject3).field_descWordingId);
         i = 1;
         paramViewGroup = (ViewGroup)localObject1;
-        if (com.tencent.mm.plugin.sns.ui.widget.e.b(localp, localczu.Fwn)) {
-          paramViewGroup = com.tencent.mm.plugin.sns.ui.widget.e.b(localp.dFR(), (String)localObject1);
+        if (com.tencent.mm.plugin.sns.ui.widget.e.b(localp, localdfh.Hgt)) {
+          paramViewGroup = com.tencent.mm.plugin.sns.ui.widget.e.b(localp.dRL(), (String)localObject1);
         }
-        paramViewGroup = com.tencent.mm.pluginsdk.ui.span.k.b(SnsMsgUI.this, paramViewGroup, locala.iNX.getTextSize());
+        paramViewGroup = com.tencent.mm.pluginsdk.ui.span.k.b(SnsMsgUI.this, paramViewGroup, locala.jhg.getTextSize());
         if ((localp == null) || (localp.field_type != 21)) {
           continue;
         }
         localObject1 = com.tencent.mm.cc.a.m(this.context, 2131100922);
-        paramViewGroup.setSpan(new TextAppearanceSpan(null, 0, (int)locala.iNX.getTextSize(), (ColorStateList)localObject1, (ColorStateList)localObject1), 0, paramViewGroup.length(), 33);
-        locala.iNX.setText(paramViewGroup);
-        paramViewGroup = localczu.Fwn;
-        localObject1 = locala.iNX;
-        j = localczu.sVo;
+        paramViewGroup.setSpan(new TextAppearanceSpan(null, 0, (int)locala.jhg.getTextSize(), (ColorStateList)localObject1, (ColorStateList)localObject1), 0, paramViewGroup.length(), 33);
+        locala.jhg.setText(paramViewGroup);
+        paramViewGroup = localdfh.Hgt;
+        localObject1 = locala.jhg;
+        j = localdfh.tRT;
         switch (localj.field_type)
         {
         case 6: 
           if ((i != 0) && (!SnsMsgUI.s(SnsMsgUI.this).equals(paramViewGroup))) {
-            break label4468;
+            break label4557;
           }
           ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-          localObject3 = locala.yOw;
-          localObject1 = locala.yOt;
+          localObject3 = locala.AfS;
+          localObject1 = locala.AfP;
           ((EmojiStatusView)localObject3).setVisibility(8);
           ((TextView)localObject1).setVisibility(0);
-          if ((bs.gY(localczu.FJe)) || (localczu.FJe.get(0) == null)) {
+          if ((bt.hj(localdfh.HtM)) || (localdfh.HtM.get(0) == null)) {
             continue;
           }
-          ((TextView)localObject1).setTag(((dag)localczu.FJe.get(0)).Md5);
+          ((TextView)localObject1).setTag(((dft)localdfh.HtM.get(0)).Md5);
           paramViewGroup = new int[2];
           if ((localj.field_commentflag & 0x1) <= 0) {
-            break label4539;
+            break label4627;
           }
           i = 1;
           if (i == 0) {
@@ -1690,40 +1635,41 @@ public class SnsMsgUI
           ((TextView)localObject1).setText(2131763913);
           ((TextView)localObject1).setBackgroundColor(SnsMsgUI.this.getResources().getColor(2131100179));
           ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-          locala.timeTv.setText(bg.p(SnsMsgUI.this, localczu.CreateTime * 1000L));
+          locala.timeTv.setText(bj.p(SnsMsgUI.this, localdfh.CreateTime * 1000L));
           paramView = null;
-          if ((localczu.ndI != 7) && (localczu.ndI != 8) && (localczu.ndI != 16)) {
+          if ((localdfh.nEf != 7) && (localdfh.nEf != 8) && (localdfh.nEf != 16)) {
             continue;
           }
-          paramViewGroup = af.dHU().xB(localj.field_snsID);
+          paramViewGroup = ag.dUh().zZ(localj.field_snsID);
           if (paramViewGroup == null) {
-            break label4435;
+            break label4524;
           }
-          paramView = paramViewGroup.dMb();
-          break label4435;
-          locala.yOu.setVisibility(8);
-          locala.yOr.setVisibility(8);
-          locala.yOv.setVisibility(8);
-          locala.yOu.setImageBitmap(null);
-          af.dHO().eE(locala.yOu);
-          if (paramView == null) {
+          paramView = paramViewGroup.dYr();
+          break label4524;
+          locala.AfQ.setVisibility(8);
+          locala.AfN.setVisibility(8);
+          locala.AfR.setVisibility(8);
+          locala.AfQ.setImageBitmap(null);
+          ag.dUb().eU(locala.AfQ);
+          if ((paramView == null) || (paramView.dYl() == null) || (paramView.dYl().HAT == null)) {
             continue;
           }
-          paramViewGroup = paramView.dLV().FQo.Etz;
-          if (paramView.dLV().FQo.Ety != 28) {
+          paramViewGroup = paramView.dYl().HAT.GaQ;
+          if (paramView.dYl().HAT.GaP != 28) {
             continue;
           }
-          if (paramView.dLV().FQo.EtD.EGJ != 1) {
+          paramView = paramView.dYl().HAT.GaU;
+          if (paramView.Gpi != 1) {
             continue;
           }
-          locala.yOu.setTag(null);
-          locala.yOr.setVisibility(0);
-          paramView = com.tencent.mm.pluginsdk.ui.span.k.b(SnsMsgUI.this, paramView.dLV().FQo.EtD.desc, locala.yOr.getTextSize());
-          locala.yOr.setText(paramView);
-          paramView = locala.yOu;
-          break label4438;
+          locala.AfQ.setTag(null);
+          locala.AfN.setVisibility(0);
+          paramView = com.tencent.mm.pluginsdk.ui.span.k.b(SnsMsgUI.this, paramView.desc, locala.AfN.getTextSize());
+          locala.AfN.setText(paramView);
+          paramView = locala.AfQ;
+          break label4527;
           paramView.setVisibility(paramInt);
-          if ((locala.yOu.getVisibility() != 0) && (locala.yOv.getVisibility() != 0)) {
+          if ((locala.AfQ.getVisibility() != 0) && (locala.AfR.getVisibility() != 0)) {
             continue;
           }
           paramInt = 1;
@@ -1739,23 +1685,23 @@ public class SnsMsgUI
           }
           paramInt = 0;
           paramView.setVisibility(paramInt);
-          ((ImageView)((View)localObject2).findViewById(2131305054)).setImageDrawable(am.k(this.context, 2131691190, this.context.getResources().getColor(2131099982)));
+          ((ImageView)((View)localObject2).findViewById(2131305054)).setImageDrawable(ao.k(this.context, 2131691190, this.context.getResources().getColor(2131099982)));
           AppMethodBeat.o(98886);
           return localObject2;
-          ((j)SnsMsgUI.p(SnsMsgUI.this).get(Integer.valueOf(localj.yvt))).field_isSilence = localj.field_isSilence;
+          ((j)SnsMsgUI.p(SnsMsgUI.this).get(Integer.valueOf(localj.zMG))).field_isSilence = localj.field_isSilence;
           break label65;
           locala = (a)paramView.getTag();
           localObject2 = paramView;
           break label357;
-          localObject1 = SnsMsgUI.r(SnsMsgUI.this).aNt(paramViewGroup);
+          localObject1 = SnsMsgUI.r(SnsMsgUI.this).Bf(paramViewGroup);
           paramView = paramViewGroup;
           if (localObject1 != null) {
-            if (bs.lr(((com.tencent.mm.g.c.av)localObject1).field_username, af.dHx())) {
-              paramView = ((com.tencent.mm.g.c.av)localObject1).field_nickname;
-            } else if (!bs.isNullOrNil(((com.tencent.mm.n.b)localObject1).aaS())) {
-              paramView = ((com.tencent.mm.n.b)localObject1).aaS();
+            if (bt.lQ(((aw)localObject1).field_username, ag.dTJ())) {
+              paramView = ((aw)localObject1).field_nickname;
+            } else if (!bt.isNullOrNil(((com.tencent.mm.o.b)localObject1).adv())) {
+              paramView = ((com.tencent.mm.o.b)localObject1).adv();
             } else {
-              paramView = ((com.tencent.mm.g.c.av)localObject1).field_nickname;
+              paramView = ((aw)localObject1).field_nickname;
             }
           }
           break;
@@ -1765,28 +1711,28 @@ public class SnsMsgUI
     
     public final void setGetViewPositionCallback(MMSlideDelView.c paramc)
     {
-      this.ntB = paramc;
+      this.nUx = paramc;
     }
     
     public final void setPerformItemClickListener(MMSlideDelView.g paramg)
     {
-      this.ntA = paramg;
+      this.nUw = paramg;
     }
     
     final class a
     {
-      long dwQ;
-      TextView iNX;
-      View ntI;
-      TextView ntJ;
+      SnsAvatarImageView AfM;
+      TextView AfN;
+      ImageView AfO;
+      TextView AfP;
+      MMImageView AfQ;
+      ImageView AfR;
+      EmojiStatusView AfS;
+      long dJc;
+      TextView jhg;
+      View nUE;
+      TextView nUF;
       TextView timeTv;
-      SnsAvatarImageView yOq;
-      TextView yOr;
-      ImageView yOs;
-      TextView yOt;
-      MMImageView yOu;
-      ImageView yOv;
-      EmojiStatusView yOw;
       
       a() {}
     }

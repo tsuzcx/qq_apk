@@ -14,9 +14,9 @@ import com.tencent.mm.modelvideo.j;
 public class SightDraftContainerView
   extends ListView
 {
-  private boolean xEW;
-  private a xEX;
-  b xEY;
+  private boolean yTG;
+  private a yTH;
+  b yTI;
   
   public SightDraftContainerView(Context paramContext)
   {
@@ -51,7 +51,7 @@ public class SightDraftContainerView
     int j = getResources().getDimensionPixelSize(2131165480);
     TextView localTextView = new TextView(getContext());
     localTextView.setText(2131763702);
-    localTextView.setTextSize(0, com.tencent.mm.cc.a.au(getContext(), 2131165466));
+    localTextView.setTextSize(0, com.tencent.mm.cc.a.ax(getContext(), 2131165466));
     localTextView.setGravity(17);
     localTextView.setTextColor(getResources().getColor(2131100491));
     localTextView.setTextSize(1, 11.0F);
@@ -62,13 +62,18 @@ public class SightDraftContainerView
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(28685);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sight/draft/ui/SightDraftContainerView$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
         paramAnonymousView = SightDraftContainerView.this;
-        if (paramAnonymousView.xEY != null)
+        if (paramAnonymousView.yTI != null)
         {
-          paramAnonymousView = paramAnonymousView.xEY;
+          paramAnonymousView = paramAnonymousView.yTI;
           paramAnonymousView.a(null);
-          paramAnonymousView.xEB.dEW();
+          paramAnonymousView.yTl.dQy();
         }
+        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/sight/draft/ui/SightDraftContainerView$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(28685);
         return false;
       }
@@ -76,53 +81,53 @@ public class SightDraftContainerView
     AppMethodBeat.o(28689);
   }
   
-  public final void dEX()
+  public final void dQz()
   {
     AppMethodBeat.i(28690);
-    if (this.xEW)
+    if (this.yTG)
     {
-      this.xEY.xEI = 12;
-      this.xEY.a(b.d.xEO, false);
-      this.xEY.a(null, null);
+      this.yTI.yTs = 12;
+      this.yTI.a(b.d.yTy, false);
+      this.yTI.a(null, null);
       setSelection(0);
       AppMethodBeat.o(28690);
       return;
     }
-    this.xEW = true;
-    this.xEY = new b(getContext(), this.xEX);
-    this.xEY.xEI = 12;
-    setAdapter(this.xEY);
+    this.yTG = true;
+    this.yTI = new b(getContext(), this.yTH);
+    this.yTI.yTs = 12;
+    setAdapter(this.yTI);
     AppMethodBeat.o(28690);
   }
   
   public j getLastDrafInfo()
   {
-    b localb = this.xEY;
-    if (localb.xEM == null) {
+    b localb = this.yTI;
+    if (localb.yTw == null) {
       return null;
     }
-    return localb.xEM.xEU;
+    return localb.yTw.yTE;
   }
   
   public void setSightDraftCallback(a parama)
   {
-    this.xEX = parama;
-    if (this.xEY != null) {
-      this.xEY.xEG = parama;
+    this.yTH = parama;
+    if (this.yTI != null) {
+      this.yTI.yTq = parama;
     }
   }
   
   public void setTipsResId(int paramInt)
   {
-    if (this.xEY == null) {
+    if (this.yTI == null) {
       return;
     }
-    this.xEY.xEH = paramInt;
+    this.yTI.yTr = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.SightDraftContainerView
  * JD-Core Version:    0.7.0.1
  */

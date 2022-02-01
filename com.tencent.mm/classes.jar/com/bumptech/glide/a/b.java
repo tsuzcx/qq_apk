@@ -12,7 +12,7 @@ import java.nio.charset.Charset;
 final class b
   implements Closeable
 {
-  final Charset aCe;
+  final Charset aDV;
   private byte[] buf;
   int end;
   private final InputStream in;
@@ -39,12 +39,12 @@ final class b
       throw paramInputStream;
     }
     this.in = paramInputStream;
-    this.aCe = paramCharset;
+    this.aDV = paramCharset;
     this.buf = new byte[8192];
     AppMethodBeat.o(100640);
   }
   
-  private void nG()
+  private void nY()
   {
     AppMethodBeat.i(100643);
     int i = this.in.read(this.buf, 0, this.buf.length);
@@ -87,7 +87,7 @@ final class b
       }
     }
     if (this.pos >= this.end) {
-      nG();
+      nY();
     }
     int i = this.pos;
     while (i != this.end)
@@ -97,7 +97,7 @@ final class b
         if ((i != this.pos) && (this.buf[(i - 1)] == 13)) {}
         for (int j = i - 1;; j = i)
         {
-          localObject2 = new String(this.buf, this.pos, j - this.pos, this.aCe.name());
+          localObject2 = new String(this.buf, this.pos, j - this.pos, this.aDV.name());
           this.pos = (i + 1);
           AppMethodBeat.o(100642);
           return localObject2;
@@ -114,7 +114,7 @@ final class b
         for (int i = this.count - 1;; i = this.count) {
           try
           {
-            String str = new String(this.buf, 0, i, b.this.aCe.name());
+            String str = new String(this.buf, 0, i, b.this.aDV.name());
             AppMethodBeat.o(100637);
             return str;
           }
@@ -131,7 +131,7 @@ final class b
     {
       ((ByteArrayOutputStream)localObject2).write(this.buf, this.pos, this.end - this.pos);
       this.end = -1;
-      nG();
+      nY();
       i = this.pos;
       while (i != this.end)
       {

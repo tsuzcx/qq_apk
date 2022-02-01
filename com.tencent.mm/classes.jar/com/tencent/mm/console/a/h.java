@@ -4,11 +4,12 @@ import android.content.Context;
 import android.os.Looper;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fx;
+import com.tencent.mm.g.a.ga;
+import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.cc;
 import java.util.Calendar;
 
 public final class h
@@ -26,7 +27,7 @@ public final class h
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(20183);
-    if (ac.getLogLevel() > 1)
+    if (ad.getLogLevel() > 1)
     {
       AppMethodBeat.o(20183);
       return false;
@@ -66,23 +67,27 @@ public final class h
       i = 2;
       break;
       i = Integer.valueOf(paramArrayOfString[2]).intValue();
-      bs.eWe();
+      bt.flO();
       paramContext = Calendar.getInstance();
       paramContext.set(11, 0);
       paramContext.set(12, 0);
       paramContext.set(13, 0);
       long l1 = paramContext.getTimeInMillis();
       long l2 = System.currentTimeMillis();
-      ((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).b("", "gh_43f2581f6fd6", (int)(l1 / 1000L), (int)(l2 / 1000L), i, bw.fcC());
+      ((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).b("", "gh_43f2581f6fd6", (int)(l1 / 1000L), (int)(l2 / 1000L), i, cc.fsJ());
       continue;
-      ((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).dTL();
-      Process.killProcess(Process.myPid());
+      ((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).efZ();
+      paramContext = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
+      paramArrayOfString = new Object();
+      com.tencent.mm.hellhoundlib.a.a.a(paramArrayOfString, paramContext.ahp(), "com/tencent/mm/console/command/SportCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      Process.killProcess(((Integer)paramContext.mq(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(paramArrayOfString, "com/tencent/mm/console/command/SportCommand", "processCommand", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "android/os/Process_EXEC_", "killProcess", "(I)V");
       continue;
-      paramContext = new fx();
-      paramContext.dgc.action = 2;
-      paramContext.dgc.dgf = Integer.valueOf(paramArrayOfString[2]).intValue();
-      paramContext.dgc.bfN = 1L;
-      com.tencent.mm.sdk.b.a.GpY.a(paramContext, Looper.getMainLooper());
+      paramContext = new ga();
+      paramContext.dry.action = 2;
+      paramContext.dry.drB = Integer.valueOf(paramArrayOfString[2]).intValue();
+      paramContext.dry.bqh = 1L;
+      com.tencent.mm.sdk.b.a.IbL.a(paramContext, Looper.getMainLooper());
     }
   }
 }

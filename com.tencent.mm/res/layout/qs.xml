@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include layout="@layout/o5" />
     <LinearLayout android:paddingRight="14.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/gp">
-        <LinearLayout android:orientation="vertical" android:id="@id/al7" android:background="?dn" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/al7" android:background="@drawable/l9" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <LinearLayout android:orientation="horizontal" android:id="@id/aoz" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 <RelativeLayout android:id="@id/akk" android:background="@drawable/b44" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
                     <ImageView android:id="@id/akl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a4r" android:layout_centerInParent="true" />

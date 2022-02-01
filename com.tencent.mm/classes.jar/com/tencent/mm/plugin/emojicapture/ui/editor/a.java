@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.emojicapture.ui.editor;
 
 import android.graphics.RectF;
-import com.tencent.mm.media.editor.a.h;
+import com.tencent.mm.plugin.recordvideo.ui.editor.item.g;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/IEditorItemView;", "Lcom/tencent/mm/media/editor/item/IEditable;", "handleRemove", "", "pause", "", "resume", "setEditing", "editing", "setValidArea", "bounds", "Landroid/graphics/RectF;", "radius", "", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/IEditorItemView;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditable;", "handleRemove", "", "pause", "", "resume", "setEditing", "editing", "setValidArea", "bounds", "Landroid/graphics/RectF;", "radius", "", "plugin-emojicapture_release"})
 public abstract interface a
-  extends h
+  extends g
 {
   public abstract void a(RectF paramRectF, float paramFloat);
   
-  public abstract boolean cfT();
+  public abstract boolean ckx();
   
   public abstract void pause();
   

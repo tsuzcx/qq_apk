@@ -14,22 +14,22 @@ public final class c<T>
   extends AtomicReference<a<T>>
   implements d.a<T>
 {
-  public final rx.internal.a.c<T> McA;
-  volatile Object MgC;
-  b<b<T>> MgD;
-  b<b<T>> MgE;
-  public b<b<T>> MgF;
+  public final rx.internal.a.c<T> NXC;
+  volatile Object ObE;
+  b<b<T>> ObF;
+  b<b<T>> ObG;
+  public b<b<T>> ObH;
   boolean active;
   
   public c()
   {
-    super(a.MgL);
+    super(a.ObN);
     AppMethodBeat.i(90418);
     this.active = true;
-    this.MgD = rx.b.c.ggp();
-    this.MgE = rx.b.c.ggp();
-    this.MgF = rx.b.c.ggp();
-    this.McA = rx.internal.a.c.ggs();
+    this.ObF = rx.b.c.gyT();
+    this.ObG = rx.b.c.gyT();
+    this.ObH = rx.b.c.gyT();
+    this.NXC = rx.internal.a.c.gyW();
     AppMethodBeat.o(90418);
   }
   
@@ -42,11 +42,11 @@ public final class c<T>
       AppMethodBeat.o(90419);
       return;
     }
-    b[] arrayOfb = locala.MgI;
+    b[] arrayOfb = locala.ObK;
     int m = arrayOfb.length;
     Object localObject;
     if ((m == 1) && (arrayOfb[0] == paramb)) {
-      localObject = a.MgL;
+      localObject = a.ObN;
     }
     label59:
     int j;
@@ -92,7 +92,7 @@ public final class c<T>
       break label108;
       if (i == 0)
       {
-        localObject = a.MgL;
+        localObject = a.ObN;
         break label59;
       }
       if (i < m - 1)
@@ -110,91 +110,77 @@ public final class c<T>
     }
   }
   
-  final b<T>[] gg(Object paramObject)
+  final b<T>[] gC(Object paramObject)
   {
     AppMethodBeat.i(90420);
-    this.MgC = paramObject;
+    this.ObE = paramObject;
     this.active = false;
     if (((a)get()).terminated)
     {
-      paramObject = a.MgJ;
+      paramObject = a.ObL;
       AppMethodBeat.o(90420);
       return paramObject;
     }
-    paramObject = ((a)getAndSet(a.MgK)).MgI;
+    paramObject = ((a)getAndSet(a.ObM)).ObK;
     AppMethodBeat.o(90420);
     return paramObject;
   }
   
   protected static final class a<T>
   {
-    static final c.b[] MgJ;
-    static final a MgK;
-    static final a MgL;
-    final c.b[] MgI;
+    static final c.b[] ObL;
+    static final a ObM;
+    static final a ObN;
+    final c.b[] ObK;
     final boolean terminated;
     
     static
     {
       AppMethodBeat.i(90412);
-      MgJ = new c.b[0];
-      MgK = new a(true, MgJ);
-      MgL = new a(false, MgJ);
+      ObL = new c.b[0];
+      ObM = new a(true, ObL);
+      ObN = new a(false, ObL);
       AppMethodBeat.o(90412);
     }
     
     public a(boolean paramBoolean, c.b[] paramArrayOfb)
     {
       this.terminated = paramBoolean;
-      this.MgI = paramArrayOfb;
+      this.ObK = paramArrayOfb;
     }
   }
   
   protected static final class b<T>
     implements e<T>
   {
-    final i<? super T> McL;
-    boolean Mcy;
-    List<Object> MgM;
-    boolean MgN;
-    boolean fvt = true;
+    boolean NXA;
+    final i<? super T> NXN;
+    List<Object> ObO;
+    boolean ObP;
+    boolean fOA = true;
     
     public b(i<? super T> parami)
     {
-      this.McL = parami;
+      this.NXN = parami;
     }
     
-    public final void gd(T paramT)
-    {
-      AppMethodBeat.i(90413);
-      this.McL.gd(paramT);
-      AppMethodBeat.o(90413);
-    }
-    
-    public final void ggi()
-    {
-      AppMethodBeat.i(90415);
-      this.McL.ggi();
-      AppMethodBeat.o(90415);
-    }
-    
-    final void gh(Object paramObject)
+    final void gD(Object paramObject)
     {
       AppMethodBeat.i(90416);
-      if (!this.MgN) {}
+      if (!this.ObP) {}
       try
       {
-        this.fvt = false;
-        if (this.Mcy)
+        this.fOA = false;
+        if (this.NXA)
         {
-          if (this.MgM == null) {
-            this.MgM = new ArrayList();
+          if (this.ObO == null) {
+            this.ObO = new ArrayList();
           }
-          this.MgM.add(paramObject);
+          this.ObO.add(paramObject);
           return;
         }
-        this.MgN = true;
-        rx.internal.a.c.a(this.McL, paramObject);
+        this.ObP = true;
+        rx.internal.a.c.a(this.NXN, paramObject);
         AppMethodBeat.o(90416);
         return;
       }
@@ -204,19 +190,33 @@ public final class c<T>
       }
     }
     
-    final void gi(Object paramObject)
+    final void gE(Object paramObject)
     {
       AppMethodBeat.i(90417);
       if (paramObject != null) {
-        rx.internal.a.c.a(this.McL, paramObject);
+        rx.internal.a.c.a(this.NXN, paramObject);
       }
       AppMethodBeat.o(90417);
+    }
+    
+    public final void gyM()
+    {
+      AppMethodBeat.i(90415);
+      this.NXN.gyM();
+      AppMethodBeat.o(90415);
+    }
+    
+    public final void gz(T paramT)
+    {
+      AppMethodBeat.i(90413);
+      this.NXN.gz(paramT);
+      AppMethodBeat.o(90413);
     }
     
     public final void onError(Throwable paramThrowable)
     {
       AppMethodBeat.i(90414);
-      this.McL.onError(paramThrowable);
+      this.NXN.onError(paramThrowable);
       AppMethodBeat.o(90414);
     }
   }

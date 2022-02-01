@@ -16,67 +16,69 @@ import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.view.animation.DecelerateInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.box.webview.BoxWebView;
 import com.tencent.mm.plugin.box.webview.a;
 import com.tencent.mm.plugin.box.webview.d;
-import com.tencent.mm.protocal.protobuf.ol;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.pq;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialog;", "Landroid/support/v7/app/AppCompatDialog;", "Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel;", "context", "Landroid/content/Context;", "theme", "", "homeContext", "Lcom/tencent/mm/protocal/protobuf/BoxHomeContext;", "(Landroid/content/Context;ILcom/tencent/mm/protocal/protobuf/BoxHomeContext;)V", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/BoxHomeContext;)V", "boxWebData", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebData;", "boxWebView", "Lcom/tencent/mm/plugin/box/webview/BoxWebView;", "boxWebViewJSApi", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebViewJSApi;", "fixedWebViewHeight", "isAttachedToWindow", "", "isFixedWebViewHeight", "mContext", "mDialogView", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogView;", "mEventListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogEventListener;", "mExitType", "configFullScreen", "", "dismiss", "dismissDialog", "exitType", "enableFullScreen", "getActivityContext", "getBoxWebData", "Lcom/tencent/mm/plugin/box/webview/IBoxWebData;", "getBoxWebView", "getBoxWebViewJsApi", "Lcom/tencent/mm/plugin/box/webview/BoxWebViewJSApi;", "getHomeContext", "init", "initContentView", "initWebView", "onAttachedToWindow", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDetachedFromWindow", "onPause", "onResume", "setBackgroundViewModel", "viewModel", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "setBoxDialogEventListener", "listener", "setBoxDialogMoveListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogMoveListener;", "setDimAmount", "amount", "", "setFixWebViewHeight", "fixedHeight", "setIsFixWebViewHeight", "fixed", "setWebViewEnableScroll", "enableScroll", "showDialog", "webviewUIReady", "Companion", "plugin-scan_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialog;", "Landroid/support/v7/app/AppCompatDialog;", "Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel;", "context", "Landroid/content/Context;", "theme", "", "homeContext", "Lcom/tencent/mm/protocal/protobuf/BoxHomeContext;", "(Landroid/content/Context;ILcom/tencent/mm/protocal/protobuf/BoxHomeContext;)V", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/BoxHomeContext;)V", "boxWebData", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebData;", "boxWebView", "Lcom/tencent/mm/plugin/box/webview/BoxWebView;", "boxWebViewJSApi", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebViewJSApi;", "fixedWebViewHeight", "isAttachedToWindow", "", "isFixedWebViewHeight", "mContext", "mDialogView", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogView;", "mEventListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogEventListener;", "mExitType", "configFullScreen", "", "dismiss", "dismissDialog", "exitType", "enableFullScreen", "getActivityContext", "getBoxWebData", "Lcom/tencent/mm/plugin/box/webview/IBoxWebData;", "getBoxWebView", "getBoxWebViewJsApi", "Lcom/tencent/mm/plugin/box/webview/BoxWebViewJSApi;", "getHomeContext", "init", "initContentView", "initWebView", "onAttachedToWindow", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDetachedFromWindow", "onPause", "onResume", "setBackgroundViewModel", "viewModel", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "setBoxDialogEventListener", "listener", "setBoxDialogMoveListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogMoveListener;", "setDimAmount", "amount", "", "setFixWebViewHeight", "fixedHeight", "setIsFixWebViewHeight", "fixed", "setWebViewEnableScroll", "enableScroll", "showDialog", "webviewUIReady", "Companion", "plugin-scan_release"})
 public final class e
   extends android.support.v7.app.e
   implements com.tencent.mm.plugin.box.c.c, c
 {
-  public static final e.a wXp;
+  public static final e.a yla;
+  private boolean isAttachedToWindow;
   private Context mContext;
-  private ol ntU;
-  private BoxWebView ntX;
-  boolean wWJ;
-  int wWK;
-  private h wXj;
-  private i wXk;
-  b wXl;
-  public BoxDialogView wXm;
-  private boolean wXn;
-  private int wXo;
+  private pq nVk;
+  private BoxWebView nVn;
+  private h ykV;
+  private i ykW;
+  b ykX;
+  public BoxDialogView ykY;
+  private int ykZ;
+  boolean ykv;
+  int ykw;
   
   static
   {
     AppMethodBeat.i(52131);
-    wXp = new e.a((byte)0);
+    yla = new e.a((byte)0);
     AppMethodBeat.o(52131);
   }
   
-  public e(Context paramContext, ol paramol)
+  public e(Context paramContext, pq parampq)
   {
     super(paramContext, 2131820791);
     AppMethodBeat.i(52130);
     this.mContext = paramContext;
-    this.ntU = paramol;
+    this.nVk = parampq;
     AppMethodBeat.o(52130);
   }
   
-  public final com.tencent.mm.plugin.box.webview.e bIK()
+  public final com.tencent.mm.plugin.box.webview.e bNa()
   {
-    return (com.tencent.mm.plugin.box.webview.e)this.wXj;
+    return (com.tencent.mm.plugin.box.webview.e)this.ykV;
   }
   
-  public final d bIL()
+  public final d bNb()
   {
-    return (d)this.wXk;
+    return (d)this.ykW;
   }
   
   public final void dismiss()
   {
     AppMethodBeat.i(52125);
-    BoxDialogView localBoxDialogView = this.wXm;
+    BoxDialogView localBoxDialogView = this.ykY;
     if (localBoxDialogView != null)
     {
-      localBoxDialogView.MN(5);
+      localBoxDialogView.Op(5);
       AppMethodBeat.o(52125);
       return;
     }
@@ -86,9 +88,9 @@ public final class e
   public final void dismissDialog(int paramInt)
   {
     AppMethodBeat.i(52126);
-    ac.d("MicroMsg.ScanBoxDialog", "alvinluo dismissDialog isShowing: %b, isAttachedToWindow: %b", new Object[] { Boolean.valueOf(isShowing()), Boolean.valueOf(this.wXn) });
-    this.wXo = paramInt;
-    if ((isShowing()) && (this.wXn)) {
+    ad.d("MicroMsg.ScanBoxDialog", "alvinluo dismissDialog isShowing: %b, isAttachedToWindow: %b", new Object[] { Boolean.valueOf(isShowing()), Boolean.valueOf(this.isAttachedToWindow) });
+    this.ykZ = paramInt;
+    if ((isShowing()) && (this.isAttachedToWindow)) {
       super.dismiss();
     }
     AppMethodBeat.o(52126);
@@ -98,22 +100,22 @@ public final class e
   {
     AppMethodBeat.i(52129);
     Context localContext = getContext();
-    k.g(localContext, "context");
+    p.g(localContext, "context");
     AppMethodBeat.o(52129);
     return localContext;
   }
   
   public final BoxWebView getBoxWebView()
   {
-    return this.ntX;
+    return this.nVn;
   }
   
   public final void onAttachedToWindow()
   {
     AppMethodBeat.i(52127);
     super.onAttachedToWindow();
-    ac.v("MicroMsg.ScanBoxDialog", "alvinluo onAttachedToWindow %b", new Object[] { Boolean.valueOf(this.wXn) });
-    this.wXn = true;
+    ad.v("MicroMsg.ScanBoxDialog", "alvinluo onAttachedToWindow %b", new Object[] { Boolean.valueOf(this.isAttachedToWindow) });
+    this.isAttachedToWindow = true;
     AppMethodBeat.o(52127);
   }
   
@@ -122,11 +124,11 @@ public final class e
     AppMethodBeat.i(161054);
     if (isShowing())
     {
-      BoxDialogView localBoxDialogView = this.wXm;
+      BoxDialogView localBoxDialogView = this.ykY;
       if (localBoxDialogView != null)
       {
         if (!localBoxDialogView.isAnimating) {
-          localBoxDialogView.MN(5);
+          localBoxDialogView.Op(5);
         }
         AppMethodBeat.o(161054);
         return;
@@ -140,12 +142,12 @@ public final class e
   {
     AppMethodBeat.i(52124);
     super.onCreate(paramBundle);
-    ac.i("MicroMsg.ScanBoxDialog", "alvinluo onCreate");
+    ad.i("MicroMsg.ScanBoxDialog", "alvinluo onCreate");
     paramBundle = getWindow();
     if (paramBundle != null) {
       paramBundle.addFlags(100729856);
     }
-    gt();
+    gK();
     paramBundle = getWindow();
     if (paramBundle != null) {
       paramBundle.setLayout(-1, -1);
@@ -160,64 +162,64 @@ public final class e
     }
     paramBundle = this.mContext;
     if (paramBundle == null) {
-      k.aVY("mContext");
+      p.bcb("mContext");
     }
-    this.wXm = new BoxDialogView(paramBundle);
-    paramBundle = this.wXm;
+    this.ykY = new BoxDialogView(paramBundle);
+    paramBundle = this.ykY;
     Object localObject;
     if (paramBundle != null)
     {
       localObject = (c)this;
-      k.h(localObject, "dialogModel");
-      paramBundle.wWp = ((c)localObject);
+      p.h(localObject, "dialogModel");
+      paramBundle.yka = ((c)localObject);
     }
-    paramBundle = this.wXm;
+    paramBundle = this.ykY;
     if (paramBundle != null) {
-      paramBundle.setIsFixWebViewHeight(this.wWJ);
+      paramBundle.setIsFixWebViewHeight(this.ykv);
     }
-    paramBundle = this.wXm;
+    paramBundle = this.ykY;
     if (paramBundle != null) {
-      paramBundle.setFixWebViewHeight(this.wWK);
+      paramBundle.setFixWebViewHeight(this.ykw);
     }
-    paramBundle = this.wXm;
+    paramBundle = this.ykY;
     if (paramBundle == null) {
-      k.fOy();
+      p.gfZ();
     }
     setContentView((View)paramBundle, new ViewGroup.LayoutParams(-1, -1));
-    paramBundle = this.ntU;
+    paramBundle = this.nVk;
     if (paramBundle == null) {
-      k.aVY("homeContext");
+      p.bcb("homeContext");
     }
-    ac.i("MicroMsg.ScanBoxDialog", "alvinluo initWebView url: %s", new Object[] { paramBundle.Url });
-    paramBundle = this.wXm;
+    ad.i("MicroMsg.ScanBoxDialog", "alvinluo initWebView url: %s", new Object[] { paramBundle.Url });
+    paramBundle = this.ykY;
     if (paramBundle != null) {}
     for (paramBundle = paramBundle.getBoxWebView();; paramBundle = null)
     {
-      this.ntX = paramBundle;
-      this.wXj = new h((com.tencent.mm.plugin.box.c.c)this);
-      this.wXk = new i((com.tencent.mm.plugin.box.c.c)this);
+      this.nVn = paramBundle;
+      this.ykV = new h((com.tencent.mm.plugin.box.c.c)this);
+      this.ykW = new i((com.tencent.mm.plugin.box.c.c)this);
       paramBundle = new a();
-      localObject = this.ntU;
+      localObject = this.nVk;
       if (localObject == null) {
-        k.aVY("homeContext");
+        p.bcb("homeContext");
       }
-      localObject = new com.tencent.mm.plugin.box.webview.c((ol)localObject, (com.tencent.mm.plugin.box.webview.e)this.wXj);
-      BoxWebView localBoxWebView = this.ntX;
+      localObject = new com.tencent.mm.plugin.box.webview.c((pq)localObject, (com.tencent.mm.plugin.box.webview.e)this.ykV);
+      BoxWebView localBoxWebView = this.nVn;
       if (localBoxWebView != null) {
         localBoxWebView.a(paramBundle, (com.tencent.mm.plugin.box.webview.c)localObject);
       }
-      paramBundle = this.ntX;
+      paramBundle = this.nVn;
       if (paramBundle != null) {
-        paramBundle.addJavascriptInterface(this.wXk, "boxJSApi");
+        paramBundle.addJavascriptInterface(this.ykW, "boxJSApi");
       }
-      paramBundle = this.ntX;
+      paramBundle = this.nVn;
       if (paramBundle != null)
       {
-        localObject = this.ntU;
+        localObject = this.nVk;
         if (localObject == null) {
-          k.aVY("homeContext");
+          p.bcb("homeContext");
         }
-        paramBundle.loadUrl(((ol)localObject).Url);
+        paramBundle.loadUrl(((pq)localObject).Url);
       }
       setOnShowListener((DialogInterface.OnShowListener)new b(this));
       setOnDismissListener((DialogInterface.OnDismissListener)new c(this));
@@ -232,12 +234,12 @@ public final class e
   {
     AppMethodBeat.i(52128);
     super.onDetachedFromWindow();
-    ac.v("MicroMsg.ScanBoxDialog", "alvinluo onDetachedFromWindow %b", new Object[] { Boolean.valueOf(this.wXn) });
-    this.wXn = false;
+    ad.v("MicroMsg.ScanBoxDialog", "alvinluo onDetachedFromWindow %b", new Object[] { Boolean.valueOf(this.isAttachedToWindow) });
+    this.isAttachedToWindow = false;
     AppMethodBeat.o(52128);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onShow"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onShow"})
   static final class b
     implements DialogInterface.OnShowListener
   {
@@ -246,29 +248,29 @@ public final class e
     public final void onShow(DialogInterface paramDialogInterface)
     {
       AppMethodBeat.i(52121);
-      Object localObject1 = e.a(this.wXq);
+      Object localObject1 = e.a(this.ylb);
       if (localObject1 != null)
       {
-        ac.v("MicroMsg.BoxDialogView", "alvinluo showDialog");
-        ((BoxDialogView)localObject1).ugb = false;
+        ad.v("MicroMsg.BoxDialogView", "alvinluo showDialog");
+        ((BoxDialogView)localObject1).viL = false;
         ((BoxDialogView)localObject1).isAnimating = true;
-        ((BoxDialogView)localObject1).wWV = 0;
-        Object localObject2 = ((BoxDialogView)localObject1).wWr;
+        ((BoxDialogView)localObject1).ykH = 0;
+        Object localObject2 = ((BoxDialogView)localObject1).ykc;
         if (localObject2 == null) {
-          k.aVY("dialogContainer");
+          p.bcb("dialogContainer");
         }
         ((View)localObject2).setTranslationY(((BoxDialogView)localObject1).getMaxTranslationY());
-        localObject2 = ((BoxDialogView)localObject1).wWr;
+        localObject2 = ((BoxDialogView)localObject1).ykc;
         if (localObject2 == null) {
-          k.aVY("dialogContainer");
+          p.bcb("dialogContainer");
         }
         localObject2 = ((View)localObject2).animate();
         if (localObject2 != null)
         {
-          localObject2 = ((ViewPropertyAnimator)localObject2).translationY(((BoxDialogView)localObject1).wWB);
+          localObject2 = ((ViewPropertyAnimator)localObject2).translationY(((BoxDialogView)localObject1).ykm);
           if (localObject2 != null)
           {
-            localObject2 = ((ViewPropertyAnimator)localObject2).setInterpolator((TimeInterpolator)((BoxDialogView)localObject1).wWU);
+            localObject2 = ((ViewPropertyAnimator)localObject2).setInterpolator((TimeInterpolator)((BoxDialogView)localObject1).ykG);
             if (localObject2 != null)
             {
               localObject2 = ((ViewPropertyAnimator)localObject2).setUpdateListener((ValueAnimator.AnimatorUpdateListener)new BoxDialogView.l((BoxDialogView)localObject1));
@@ -286,16 +288,16 @@ public final class e
             }
           }
         }
-        localObject2 = ((BoxDialogView)localObject1).rT;
+        localObject2 = ((BoxDialogView)localObject1).animator;
         ((ValueAnimator)localObject2).setInterpolator((TimeInterpolator)new DecelerateInterpolator());
         ((ValueAnimator)localObject2).setDuration(300L);
-        ((ValueAnimator)localObject2).setFloatValues(new float[] { ((BoxDialogView)localObject1).wWS.wWX, ((BoxDialogView)localObject1).wWS.wWY });
+        ((ValueAnimator)localObject2).setFloatValues(new float[] { ((BoxDialogView)localObject1).ykE.ykJ, ((BoxDialogView)localObject1).ykE.ykK });
         ((ValueAnimator)localObject2).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new BoxDialogView.e((BoxDialogView)localObject1));
         ((ValueAnimator)localObject2).addListener((Animator.AnimatorListener)new BoxDialogView.f((BoxDialogView)localObject1));
         ((ValueAnimator)localObject2).setStartDelay(50L);
         ((ValueAnimator)localObject2).start();
       }
-      localObject1 = e.b(this.wXq);
+      localObject1 = e.b(this.ylb);
       if (localObject1 != null)
       {
         ((b)localObject1).onShow(paramDialogInterface);
@@ -306,7 +308,7 @@ public final class e
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
   static final class c
     implements DialogInterface.OnDismissListener
   {
@@ -315,24 +317,24 @@ public final class e
     public final void onDismiss(DialogInterface paramDialogInterface)
     {
       AppMethodBeat.i(52122);
-      ac.i("MicroMsg.ScanBoxDialog", "dismiss dialog");
-      Object localObject = e.c(this.wXq);
+      ad.i("MicroMsg.ScanBoxDialog", "dismiss dialog");
+      Object localObject = e.c(this.ylb);
       if (localObject != null)
       {
-        if (((h)localObject).wXu != null) {
-          com.tencent.mm.kernel.g.agi().a((n)((h)localObject).wXu);
+        if (((h)localObject).ylf != null) {
+          g.aiU().a((n)((h)localObject).ylf);
         }
-        com.tencent.mm.kernel.g.agi().b(1532, (com.tencent.mm.ak.g)localObject);
+        g.aiU().b(1532, (f)localObject);
       }
-      localObject = e.d(this.wXq);
+      localObject = e.d(this.ylb);
       if (localObject != null) {
         ((BoxWebView)localObject).destroy();
       }
-      e.e(this.wXq);
-      localObject = e.b(this.wXq);
+      e.e(this.ylb);
+      localObject = e.b(this.ylb);
       if (localObject != null)
       {
-        ((b)localObject).a(paramDialogInterface, e.f(this.wXq));
+        ((b)localObject).a(paramDialogInterface, e.f(this.ylb));
         AppMethodBeat.o(52122);
         return;
       }
@@ -340,7 +342,7 @@ public final class e
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
   static final class d
     implements DialogInterface.OnCancelListener
   {
@@ -349,7 +351,7 @@ public final class e
     public final void onCancel(DialogInterface paramDialogInterface)
     {
       AppMethodBeat.i(52123);
-      b localb = e.b(this.wXq);
+      b localb = e.b(this.ylb);
       if (localb != null)
       {
         localb.onCancel(paramDialogInterface);

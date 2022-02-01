@@ -14,21 +14,21 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Timer;
 
 public class FaceNumberItemView
   extends View
 {
-  static final long qEu = 29L;
-  int qEA;
-  Runnable qEB;
-  Timer qEt;
-  private boolean qEv;
-  private Paint qEw;
-  private RectF qEx;
-  private Bitmap qEy;
-  private int qEz;
+  static final long rok = 29L;
+  Timer roj;
+  private boolean rol;
+  private Paint rom;
+  private RectF ron;
+  private Bitmap roo;
+  private int rop;
+  int roq;
+  Runnable ror;
   
   public FaceNumberItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,14 +39,14 @@ public class FaceNumberItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104166);
-    this.qEt = null;
-    this.qEv = false;
-    this.qEw = null;
-    this.qEx = null;
-    this.qEy = null;
-    this.qEz = 17;
-    this.qEA = 0;
-    this.qEB = new Runnable()
+    this.roj = null;
+    this.rol = false;
+    this.rom = null;
+    this.ron = null;
+    this.roo = null;
+    this.rop = 17;
+    this.roq = 0;
+    this.ror = new Runnable()
     {
       public final void run()
       {
@@ -58,25 +58,25 @@ public class FaceNumberItemView
           AppMethodBeat.o(104163);
           return;
         }
-        FaceNumberItemView.this.coD();
+        FaceNumberItemView.this.cui();
         AppMethodBeat.o(104163);
       }
     };
     setLayerType(1, null);
-    this.qEw = new Paint();
-    this.qEw.setColor(paramContext.getResources().getColor(2131100331));
-    this.qEw.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
-    this.qEx = new RectF();
+    this.rom = new Paint();
+    this.rom.setColor(paramContext.getResources().getColor(2131100331));
+    this.rom.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+    this.ron = new RectF();
     AppMethodBeat.o(104166);
   }
   
-  public final void coD()
+  public final void cui()
   {
     AppMethodBeat.i(104169);
-    if (this.qEt != null)
+    if (this.roj != null)
     {
-      this.qEt.cancel();
-      this.qEt = null;
+      this.roj.cancel();
+      this.roj = null;
     }
     AppMethodBeat.o(104169);
   }
@@ -87,35 +87,35 @@ public class FaceNumberItemView
     super.onDraw(paramCanvas);
     float f2;
     float f1;
-    if (this.qEz == 17)
+    if (this.rop == 17)
     {
-      f2 = getWidth() - this.qEy.getWidth() >> 1;
-      f1 = getHeight() - this.qEy.getHeight() >> 1;
+      f2 = getWidth() - this.roo.getWidth() >> 1;
+      f1 = getHeight() - this.roo.getHeight() >> 1;
     }
     for (;;)
     {
-      if (!this.qEv) {
-        paramCanvas.drawBitmap(this.qEy, f2, f1, null);
+      if (!this.rol) {
+        paramCanvas.drawBitmap(this.roo, f2, f1, null);
       }
-      this.qEx.set(f2, 0.0F, this.qEy.getWidth() * this.qEA / 30.0F + f2, getHeight());
-      paramCanvas.drawRect(this.qEx, this.qEw);
+      this.ron.set(f2, 0.0F, this.roo.getWidth() * this.roq / 30.0F + f2, getHeight());
+      paramCanvas.drawRect(this.ron, this.rom);
       AppMethodBeat.o(104170);
       return;
-      if (this.qEz == 3)
+      if (this.rop == 3)
       {
-        f1 = getHeight() - this.qEy.getHeight() >> 1;
+        f1 = getHeight() - this.roo.getHeight() >> 1;
         f2 = 0.0F;
       }
-      else if (this.qEz == 5)
+      else if (this.rop == 5)
       {
-        f2 = getWidth() - this.qEy.getWidth();
-        f1 = getHeight() - this.qEy.getHeight() >> 1;
+        f2 = getWidth() - this.roo.getWidth();
+        f1 = getHeight() - this.roo.getHeight() >> 1;
       }
       else
       {
-        ac.e("MicroMsg.FaceNumberItemView", "hy: not support gravity! treat as center");
-        f2 = getWidth() - this.qEy.getWidth() >> 1;
-        f1 = getHeight() - this.qEy.getHeight() >> 1;
+        ad.e("MicroMsg.FaceNumberItemView", "hy: not support gravity! treat as center");
+        f2 = getWidth() - this.roo.getWidth() >> 1;
+        f1 = getHeight() - this.roo.getHeight() >> 1;
       }
     }
   }
@@ -123,8 +123,8 @@ public class FaceNumberItemView
   public void setGravity(int paramInt)
   {
     AppMethodBeat.i(104168);
-    ac.i("MicroMsg.FaceNumberItemView", "hy: setting gravity");
-    this.qEz = paramInt;
+    ad.i("MicroMsg.FaceNumberItemView", "hy: setting gravity");
+    this.rop = paramInt;
     AppMethodBeat.o(104168);
   }
   
@@ -139,11 +139,11 @@ public class FaceNumberItemView
       Canvas localCanvas = new Canvas(localBitmap2);
       localCanvas.drawARGB(0, 255, 255, 255);
       localCanvas.drawBitmap(localBitmap1, paramInt, 0.0F, null);
-      this.qEy = localBitmap2;
+      this.roo = localBitmap2;
       AppMethodBeat.o(104167);
       return;
     }
-    this.qEy = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
+    this.roo = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
     AppMethodBeat.o(104167);
   }
 }

@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.security.KeyStoreException;
@@ -131,7 +131,7 @@ public class CdnLogic
   
   public static void Initialize(String paramString1, CdnLogic.AppCallback paramAppCallback, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    ac.i("mars.CdnLogic", "init cdnlogic");
+    ad.i("mars.CdnLogic", "init cdnlogic");
     setAppCallback(paramAppCallback);
     onCreate(i.k(paramString1, true));
     setRSAPublicKeyParams(paramString2, paramString3, paramString4);
@@ -140,7 +140,7 @@ public class CdnLogic
   
   public static void UnInitialize()
   {
-    ac.w("mars.CdnLogic", "uninit cdnlogic");
+    ad.w("mars.CdnLogic", "uninit cdnlogic");
     setAppCallback(null);
   }
   
@@ -164,39 +164,39 @@ public class CdnLogic
   
   public static int doCertificateVerify(String paramString, byte[][] paramArrayOfByte)
   {
-    ac.i("mars.CdnLogic", "certifivate verify for %s", new Object[] { paramString });
+    ad.i("mars.CdnLogic", "certifivate verify for %s", new Object[] { paramString });
     try
     {
       paramArrayOfByte = X509Util.verifyServerCertificates(paramArrayOfByte, "RSA", paramString);
-      ac.i("mars.CdnLogic", "host %s verify result %d, isknownroots %b", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.getStatus()), Boolean.valueOf(paramArrayOfByte.isIssuedByKnownRoot()) });
+      ad.i("mars.CdnLogic", "host %s verify result %d, isknownroots %b", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.getStatus()), Boolean.valueOf(paramArrayOfByte.isIssuedByKnownRoot()) });
       int i = paramArrayOfByte.getStatus();
       return i;
     }
     catch (KeyStoreException paramString)
     {
-      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
       return -1;
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
       return -1;
     }
     catch (IllegalArgumentException paramString)
     {
-      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
       return -1;
     }
     catch (Exception paramString)
     {
-      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
     }
     return -1;
   }
   
   public static CertVerifyResult doCertificateVerifyWithDetail(String paramString, byte[][] paramArrayOfByte)
   {
-    ac.i("mars.CdnLogic", "certifivate verify for %s", new Object[] { paramString });
+    ad.i("mars.CdnLogic", "certifivate verify for %s", new Object[] { paramString });
     try
     {
       paramArrayOfByte = X509Util.verifyServerCertificates(paramArrayOfByte, "RSA", paramString);
@@ -205,33 +205,33 @@ public class CdnLogic
       localCertVerifyResult.isIssuedByKnownRoot = paramArrayOfByte.isIssuedByKnownRoot();
       localCertVerifyResult.certificateChain = paramArrayOfByte.getCertificateChainEncoded();
       paramArrayOfByte.getCertificateChainEncoded();
-      ac.i("mars.CdnLogic", "host %s verify result %d, isknownroots %b", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.getStatus()), Boolean.valueOf(paramArrayOfByte.isIssuedByKnownRoot()) });
+      ad.i("mars.CdnLogic", "host %s verify result %d, isknownroots %b", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.getStatus()), Boolean.valueOf(paramArrayOfByte.isIssuedByKnownRoot()) });
       return localCertVerifyResult;
     }
     catch (KeyStoreException paramString)
     {
-      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
       paramString = new CertVerifyResult();
       paramString.status = -1;
       return paramString;
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
       paramString = new CertVerifyResult();
       paramString.status = -1;
       return paramString;
     }
     catch (IllegalArgumentException paramString)
     {
-      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
       paramString = new CertVerifyResult();
       paramString.status = -1;
       return paramString;
     }
     catch (Exception paramString)
     {
-      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
       paramString = new CertVerifyResult();
       paramString.status = -1;
     }
@@ -252,7 +252,7 @@ public class CdnLogic
   public static int getUSBState()
   {
     Object localObject = new IntentFilter("android.intent.action.BATTERY_CHANGED");
-    localObject = ai.getContext().registerReceiver(null, (IntentFilter)localObject);
+    localObject = aj.getContext().registerReceiver(null, (IntentFilter)localObject);
     if (localObject != null) {
       try
       {
@@ -261,7 +261,7 @@ public class CdnLogic
       }
       catch (Exception localException)
       {
-        ac.e("mars.CdnLogic", "err:%s", new Object[] { localException.getMessage() });
+        ad.e("mars.CdnLogic", "err:%s", new Object[] { localException.getMessage() });
       }
     }
     return -1;
@@ -279,11 +279,11 @@ public class CdnLogic
     do
     {
       return i;
-      ac.i("mars.CdnLogic", "checkFileProperty sdcard state ".concat(String.valueOf(g.getExternalStorageState())));
+      ad.i("mars.CdnLogic", "checkFileProperty sdcard state ".concat(String.valueOf(g.getExternalStorageState())));
       j = getUSBState();
       i = j;
     } while (2 != j);
-    ac.i("mars.CdnLogic", "checkFileProperty usb is connecting PC");
+    ad.i("mars.CdnLogic", "checkFileProperty usb is connecting PC");
     return j;
   }
   
@@ -304,7 +304,7 @@ public class CdnLogic
     e locale = new e(paramString);
     paramString = locale;
     if (!locale.isDirectory()) {
-      paramString = locale.fxU();
+      paramString = locale.fOJ();
     }
     do
     {
@@ -312,7 +312,7 @@ public class CdnLogic
       if (l > 0L) {
         return l;
       }
-      locale = paramString.fxU();
+      locale = paramString.fOJ();
       paramString = locale;
     } while (locale != null);
     return 0L;
@@ -328,7 +328,7 @@ public class CdnLogic
   
   public static native void setCdnInfo(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
-  public static native void setCdnInfoParams(CdnInfoParams paramCdnInfoParams1, CdnInfoParams paramCdnInfoParams2, int paramInt);
+  public static native void setCdnInfoParams(CdnLogic.CdnInfoParams paramCdnInfoParams1, CdnLogic.CdnInfoParams paramCdnInfoParams2, int paramInt);
   
   public static native void setConfig(Config paramConfig);
   
@@ -355,6 +355,8 @@ public class CdnLogic
   public static native int startCronetFileDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
   
   public static native int startCronetSimpleRequest(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
+  
+  public static native int startFtnUpload(C2CUploadRequest paramC2CUploadRequest, UploadCallback paramUploadCallback);
   
   public static native int startHttpMultiSocketDownloadTask(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
   
@@ -861,12 +863,14 @@ public class CdnLogic
     public boolean forceNoSafeCdn = false;
     public String forwardAeskey = "";
     public String forwardFileid = "";
+    public String host = "";
     public int isLargeSVideo = 0;
     public boolean isSmallVideo = false;
     public boolean isSnsAdVideo = false;
     public boolean isStorageMode = false;
     public boolean isStreamMedia = false;
     public int lastError = 0;
+    public int marscdnBizType = -1;
     public int midfileSize = 0;
     public String midimgPath = "";
     public boolean needCompressImage = false;
@@ -886,7 +890,7 @@ public class CdnLogic
     public void setFilePath(String paramString)
     {
       this.filePath = i.k(paramString, false);
-      if (bs.isNullOrNil(this.filePath)) {
+      if (bt.isNullOrNil(this.filePath)) {
         this.filePath = "";
       }
     }
@@ -894,7 +898,7 @@ public class CdnLogic
     public void setMidimgPath(String paramString)
     {
       this.midimgPath = i.k(paramString, false);
-      if (bs.isNullOrNil(this.midimgPath)) {
+      if (bt.isNullOrNil(this.midimgPath)) {
         this.midimgPath = "";
       }
     }
@@ -902,7 +906,7 @@ public class CdnLogic
     public void setThumbfilePath(String paramString)
     {
       this.thumbfilePath = i.k(paramString, false);
-      if (bs.isNullOrNil(this.thumbfilePath)) {
+      if (bt.isNullOrNil(this.thumbfilePath)) {
         this.thumbfilePath = "";
       }
     }
@@ -963,16 +967,6 @@ public class CdnLogic
     public String zoneip1 = null;
     public String zoneip2 = null;
     public int[] zoneports = null;
-  }
-  
-  public static class CdnInfoParams
-  {
-    public int c2CretryIntervalMs = 0;
-    public int c2CrwtimeoutMs = 0;
-    public int c2CshowErrorDelayMs = 0;
-    public int snsretryIntervalMs = 0;
-    public int snsrwtimeoutMs = 0;
-    public int snsshowErrorDelayMs = 0;
   }
   
   public static class CertVerifyResult

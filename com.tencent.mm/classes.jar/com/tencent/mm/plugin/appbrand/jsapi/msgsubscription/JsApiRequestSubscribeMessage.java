@@ -17,11 +17,13 @@ import com.tencent.mm.msgsubscription.a.b.c;
 import com.tencent.mm.msgsubscription.util.CompatProcessTask;
 import com.tencent.mm.msgsubscription.util.CompatProcessTask.a;
 import com.tencent.mm.msgsubscription.util.a.a;
+import com.tencent.mm.plugin.appbrand.widget.dialog.k;
 import com.tencent.mm.plugin.appbrand.widget.dialog.m;
-import com.tencent.mm.protocal.protobuf.dfh;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.dku;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.a.j;
-import d.aa;
+import d.ac;
+import d.g.b.p;
 import d.l;
 import java.util.Collection;
 import java.util.HashMap;
@@ -30,42 +32,42 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "SubscribeMsgTask", "luggage-wechat-full-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "SubscribeMsgTask", "luggage-wechat-full-sdk_release"})
 public final class JsApiRequestSubscribeMessage
   extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.luggage.sdk.b.a.c.c>
 {
   public static final int CTRL_INDEX = 640;
   public static final String NAME = "requestSubscribeMessage";
-  public static final a kAF;
+  public static final a kWN;
   
   static
   {
     AppMethodBeat.i(50620);
-    kAF = new a((byte)0);
+    kWN = new a((byte)0);
     AppMethodBeat.o(50620);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask;", "Lcom/tencent/mm/msgsubscription/util/CompatProcessTask;", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "username", "", "appid", "appType", "", "tmplIds", "", "type", "jsapi", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage;", "service", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "callbackId", "(Ljava/lang/String;Ljava/lang/String;ILjava/util/List;ILcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage;Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;I)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "(Ljava/lang/String;I)V", "Ljava/lang/Integer;", "getSubscribeMsgListExecutor", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor;", "getGetSubscribeMsgListExecutor", "()Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor;", "setGetSubscribeMsgListExecutor", "(Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor;)V", "isCgiRequestSuccess", "", "()Z", "setCgiRequestSuccess", "(Z)V", "requestResult", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "getRequestResult", "()Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "setRequestResult", "(Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;)V", "subscribeMsgExecutor", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor;", "getSubscribeMsgExecutor", "()Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor;", "setSubscribeMsgExecutor", "(Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor;)V", "callbackJsApi", "", "status", "retMap", "", "", "errorCode", "createGetSubscribeMsgListListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;", "createSubscribeMsgListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;", "describeContents", "onNetSceneEndCallback", "errType", "errCode", "errMsg", "result", "parseFromParcel", "p", "runInClientProcess", "runInMainProcess", "writeToParcel", "flags", "Companion", "luggage-wechat-full-sdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask;", "Lcom/tencent/mm/msgsubscription/util/CompatProcessTask;", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "username", "", "appid", "appType", "", "tmplIds", "", "type", "jsapi", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage;", "service", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "callbackId", "(Ljava/lang/String;Ljava/lang/String;ILjava/util/List;ILcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage;Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;I)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "(Ljava/lang/String;I)V", "Ljava/lang/Integer;", "getSubscribeMsgListExecutor", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor;", "getGetSubscribeMsgListExecutor", "()Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor;", "setGetSubscribeMsgListExecutor", "(Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor;)V", "isCgiRequestSuccess", "", "()Z", "setCgiRequestSuccess", "(Z)V", "requestResult", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "getRequestResult", "()Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "setRequestResult", "(Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;)V", "subscribeMsgExecutor", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor;", "getSubscribeMsgExecutor", "()Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor;", "setSubscribeMsgExecutor", "(Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor;)V", "callbackJsApi", "", "status", "retMap", "", "", "errorCode", "createGetSubscribeMsgListListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;", "createSubscribeMsgListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;", "describeContents", "onNetSceneEndCallback", "errType", "errCode", "errMsg", "result", "parseFromParcel", "p", "runInClientProcess", "runInMainProcess", "writeToParcel", "flags", "Companion", "luggage-wechat-full-sdk_release"})
   static final class SubscribeMsgTask
     extends CompatProcessTask
     implements b.c
   {
     public static final Parcelable.Creator<SubscribeMsgTask> CREATOR;
-    public static final a kAN;
-    SubscribeMsgRequestResult kAG;
-    private com.tencent.luggage.sdk.b.a.c.c kAH;
-    private Integer kAI;
-    private JsApiRequestSubscribeMessage kAJ;
-    private GetSubscribeMsgListExecutor kAK;
-    SubscribeMsgExecutor kAL;
-    private boolean kAM;
+    public static final a kWV;
+    SubscribeMsgRequestResult kWO;
+    private com.tencent.luggage.sdk.b.a.c.c kWP;
+    private Integer kWQ;
+    private JsApiRequestSubscribeMessage kWR;
+    private GetSubscribeMsgListExecutor kWS;
+    SubscribeMsgExecutor kWT;
+    private boolean kWU;
     private int type;
     private String username;
     
     static
     {
       AppMethodBeat.i(50617);
-      kAN = new a((byte)0);
+      kWV = new a((byte)0);
       CREATOR = (Parcelable.Creator)new b();
       AppMethodBeat.o(50617);
     }
@@ -74,22 +76,22 @@ public final class JsApiRequestSubscribeMessage
     {
       this(str1, paramParcel.readInt());
       AppMethodBeat.i(50616);
-      this.kAG = ((SubscribeMsgRequestResult)paramParcel.readParcelable(SubscribeMsgRequestResult.class.getClassLoader()));
-      this.kAK = ((GetSubscribeMsgListExecutor)paramParcel.readParcelable(GetSubscribeMsgListExecutor.class.getClassLoader()));
-      this.kAL = ((SubscribeMsgExecutor)paramParcel.readParcelable(SubscribeMsgExecutor.class.getClassLoader()));
-      paramParcel = this.kAK;
+      this.kWO = ((SubscribeMsgRequestResult)paramParcel.readParcelable(SubscribeMsgRequestResult.class.getClassLoader()));
+      this.kWS = ((GetSubscribeMsgListExecutor)paramParcel.readParcelable(GetSubscribeMsgListExecutor.class.getClassLoader()));
+      this.kWT = ((SubscribeMsgExecutor)paramParcel.readParcelable(SubscribeMsgExecutor.class.getClassLoader()));
+      paramParcel = this.kWS;
       if (paramParcel == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
-      if (this.kAK == null) {
-        d.g.b.k.fOy();
+      if (this.kWS == null) {
+        p.gfZ();
       }
-      paramParcel.kAv = bhN();
-      paramParcel = this.kAL;
+      paramParcel.kWD = blu();
+      paramParcel = this.kWT;
       if (paramParcel == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
-      paramParcel.kAP = bhM();
+      paramParcel.kWX = blt();
       AppMethodBeat.o(50616);
     }
     
@@ -98,7 +100,7 @@ public final class JsApiRequestSubscribeMessage
       AppMethodBeat.i(50614);
       this.username = paramString;
       this.type = paramInt;
-      this.kAM = true;
+      this.kWU = true;
       AppMethodBeat.o(50614);
     }
     
@@ -106,45 +108,45 @@ public final class JsApiRequestSubscribeMessage
     {
       this(paramString1, 0);
       AppMethodBeat.i(50615);
-      this.kAJ = paramJsApiRequestSubscribeMessage;
-      this.kAH = paramc;
-      this.kAI = Integer.valueOf(paramInt2);
-      paramJsApiRequestSubscribeMessage = a.kAt;
-      a.di(paramString1, paramString2);
-      paramString2 = new GetSubscribeMsgListExecutor(paramString1, paramList, bhN(), paramString2, paramInt1);
-      paramList = (a.a)a.kAt;
-      d.g.b.k.h(paramList, "<set-?>");
-      paramString2.kAu = paramList;
-      this.kAK = paramString2;
-      paramString1 = new SubscribeMsgExecutor(paramString1, bhM());
-      paramString2 = (a.a)a.kAt;
-      d.g.b.k.h(paramString2, "<set-?>");
-      paramString1.kAu = paramString2;
-      this.kAL = paramString1;
+      this.kWR = paramJsApiRequestSubscribeMessage;
+      this.kWP = paramc;
+      this.kWQ = Integer.valueOf(paramInt2);
+      paramJsApiRequestSubscribeMessage = a.kWB;
+      a.dk(paramString1, paramString2);
+      paramString2 = new GetSubscribeMsgListExecutor(paramString1, paramList, blu(), paramString2, paramInt1);
+      paramList = (a.a)a.kWB;
+      p.h(paramList, "<set-?>");
+      paramString2.kWC = paramList;
+      this.kWS = paramString2;
+      paramString1 = new SubscribeMsgExecutor(paramString1, blt());
+      paramString2 = (a.a)a.kWB;
+      p.h(paramString2, "<set-?>");
+      paramString1.kWC = paramString2;
+      this.kWT = paramString1;
       AppMethodBeat.o(50615);
     }
     
     private final void a(String paramString, Map<String, ? extends Object> paramMap, int paramInt)
     {
       AppMethodBeat.i(50607);
-      Object localObject = JsApiRequestSubscribeMessage.kAF;
-      localObject = this.kAH;
+      Object localObject = JsApiRequestSubscribeMessage.kWN;
+      localObject = this.kWP;
       if (localObject == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
-      JsApiRequestSubscribeMessage localJsApiRequestSubscribeMessage = this.kAJ;
+      JsApiRequestSubscribeMessage localJsApiRequestSubscribeMessage = this.kWR;
       if (localJsApiRequestSubscribeMessage == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
-      Integer localInteger = this.kAI;
+      Integer localInteger = this.kWQ;
       if (localInteger == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
       JsApiRequestSubscribeMessage.a.a((com.tencent.luggage.sdk.b.a.c.c)localObject, localJsApiRequestSubscribeMessage, localInteger.intValue(), paramString, paramMap, paramInt);
       AppMethodBeat.o(50607);
     }
     
-    private final SubscribeMsgExecutor.c bhM()
+    private final SubscribeMsgExecutor.c blt()
     {
       AppMethodBeat.i(50605);
       SubscribeMsgExecutor.c localc = (SubscribeMsgExecutor.c)new d(this);
@@ -152,7 +154,7 @@ public final class JsApiRequestSubscribeMessage
       return localc;
     }
     
-    private final GetSubscribeMsgListExecutor.c bhN()
+    private final GetSubscribeMsgListExecutor.c blu()
     {
       AppMethodBeat.i(50606);
       GetSubscribeMsgListExecutor.c localc = (GetSubscribeMsgListExecutor.c)new c(this);
@@ -163,20 +165,20 @@ public final class JsApiRequestSubscribeMessage
     public final void a(int paramInt1, int paramInt2, String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
     {
       AppMethodBeat.i(50609);
-      d.g.b.k.h(paramString, "errMsg");
-      ac.i("JsApiRequestSubscribeMessage", "onNetSceneEndCallback errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " result" + paramSubscribeMsgRequestResult);
+      p.h(paramString, "errMsg");
+      ad.i("JsApiRequestSubscribeMessage", "onNetSceneEndCallback errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " result" + paramSubscribeMsgRequestResult);
       if ((paramInt1 == 0) && (paramInt2 == 0)) {}
       for (boolean bool = true;; bool = false)
       {
-        this.kAM = bool;
-        this.kAG = paramSubscribeMsgRequestResult;
-        h.JZN.f((Runnable)new CompatProcessTask.a(this), "CompatProcessTask_" + aLs());
+        this.kWU = bool;
+        this.kWO = paramSubscribeMsgRequestResult;
+        h.LTJ.f((Runnable)new CompatProcessTask.a(this), "CompatProcessTask_" + aOC());
         AppMethodBeat.o(50609);
         return;
       }
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       AppMethodBeat.i(50610);
       Object localObject1;
@@ -185,15 +187,15 @@ public final class JsApiRequestSubscribeMessage
       Object localObject5;
       if (this.type == 0)
       {
-        localObject1 = this.kAK;
+        localObject1 = this.kWS;
         if (localObject1 != null)
         {
-          localObject2 = b.a.ihC;
+          localObject2 = b.a.iAW;
           localObject2 = ((GetSubscribeMsgListExecutor)localObject1).username;
-          localObject3 = ((GetSubscribeMsgListExecutor)localObject1).kAx;
+          localObject3 = ((GetSubscribeMsgListExecutor)localObject1).kWF;
           localObject4 = (b.c)localObject1;
-          d.g.b.k.h(localObject2, "username");
-          d.g.b.k.h(localObject3, "templateIds");
+          p.h(localObject2, "username");
+          p.h(localObject3, "templateIds");
           localObject2 = new com.tencent.mm.msgsubscription.a.b((String)localObject2, 2);
           com.tencent.mm.msgsubscription.a.b.a((com.tencent.mm.msgsubscription.a.b)localObject2, (b.c)localObject4);
           localObject3 = ((List)localObject3).iterator();
@@ -201,32 +203,32 @@ public final class JsApiRequestSubscribeMessage
           {
             localObject4 = (String)((Iterator)localObject3).next();
             localObject5 = com.tencent.mm.msgsubscription.a.b.a((com.tencent.mm.msgsubscription.a.b)localObject2);
-            dfh localdfh = new dfh();
-            localdfh.Fhh = ((String)localObject4);
-            ((List)localObject5).add(localdfh);
+            dku localdku = new dku();
+            localdku.GQJ = ((String)localObject4);
+            ((List)localObject5).add(localdku);
           }
-          ((com.tencent.mm.msgsubscription.a.b)localObject2).a(((GetSubscribeMsgListExecutor)localObject1).kAu);
+          ((com.tencent.mm.msgsubscription.a.b)localObject2).a(((GetSubscribeMsgListExecutor)localObject1).kWC);
           AppMethodBeat.o(50610);
           return;
         }
         AppMethodBeat.o(50610);
         return;
       }
-      Object localObject2 = this.kAL;
+      Object localObject2 = this.kWT;
       if (localObject2 != null)
       {
-        if (((SubscribeMsgExecutor)localObject2).ihz != null) {}
-        for (int i = 1; (aa.KTq) && (i == 0); i = 0)
+        if (((SubscribeMsgExecutor)localObject2).iAT != null) {}
+        for (int i = 1; (ac.MKp) && (i == 0); i = 0)
         {
           localObject1 = (Throwable)new AssertionError("Assertion failed");
           AppMethodBeat.o(50610);
           throw ((Throwable)localObject1);
         }
-        localObject1 = b.a.ihC;
+        localObject1 = b.a.iAW;
         localObject3 = ((SubscribeMsgExecutor)localObject2).username;
-        localObject4 = ((SubscribeMsgExecutor)localObject2).kAR;
+        localObject4 = ((SubscribeMsgExecutor)localObject2).kWZ;
         localObject5 = (b.c)localObject2;
-        localObject1 = ((SubscribeMsgExecutor)localObject2).kAQ;
+        localObject1 = ((SubscribeMsgExecutor)localObject2).kWY;
         if (localObject1 != null) {
           break label288;
         }
@@ -235,7 +237,7 @@ public final class JsApiRequestSubscribeMessage
       label288:
       for (;;)
       {
-        b.a.a.a((String)localObject3, (List)localObject4, (b.c)localObject5, (byte[])localObject1, ((SubscribeMsgExecutor)localObject2).ihz).a(((SubscribeMsgExecutor)localObject2).kAu);
+        b.a.a.a((String)localObject3, (List)localObject4, (b.c)localObject5, (byte[])localObject1, ((SubscribeMsgExecutor)localObject2).iAT).a(((SubscribeMsgExecutor)localObject2).kWC);
         AppMethodBeat.o(50610);
         return;
         AppMethodBeat.o(50610);
@@ -243,14 +245,14 @@ public final class JsApiRequestSubscribeMessage
       }
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(50611);
       Object localObject4;
       Object localObject5;
       try
       {
-        if ((!this.kAM) || (this.kAG == null))
+        if ((!this.kWU) || (this.kWO == null))
         {
           if (this.type == 0)
           {
@@ -262,41 +264,41 @@ public final class JsApiRequestSubscribeMessage
         }
         if (this.type == 0)
         {
-          localObject1 = this.kAG;
+          localObject1 = this.kWO;
           if (localObject1 == null) {
-            d.g.b.k.fOy();
+            p.gfZ();
           }
-          if (((SubscribeMsgRequestResult)localObject1).igR != 0)
+          if (((SubscribeMsgRequestResult)localObject1).iAl != 0)
           {
             localObject1 = new StringBuilder("fail:");
-            localObject4 = this.kAG;
+            localObject4 = this.kWO;
             if (localObject4 == null) {
-              d.g.b.k.fOy();
+              p.gfZ();
             }
-            localObject1 = ((SubscribeMsgRequestResult)localObject4).igS;
-            localObject4 = this.kAG;
+            localObject1 = ((SubscribeMsgRequestResult)localObject4).iAm;
+            localObject4 = this.kWO;
             if (localObject4 == null) {
-              d.g.b.k.fOy();
+              p.gfZ();
             }
-            a(this, (String)localObject1, ((SubscribeMsgRequestResult)localObject4).igR, 2);
+            a(this, (String)localObject1, ((SubscribeMsgRequestResult)localObject4).iAl, 2);
             return;
           }
         }
         if (this.type != 0) {
           break label234;
         }
-        Object localObject1 = this.kAK;
+        Object localObject1 = this.kWS;
         if (localObject1 != null)
         {
-          localObject4 = this.kAH;
+          localObject4 = this.kWP;
           if (localObject4 == null) {
-            d.g.b.k.fOy();
+            p.gfZ();
           }
           localObject4 = ((com.tencent.luggage.sdk.b.a.c.c)localObject4).getContext();
-          d.g.b.k.g(localObject4, "service!!.context");
-          localObject5 = this.kAG;
+          p.g(localObject4, "service!!.context");
+          localObject5 = this.kWO;
           if (localObject5 == null) {
-            d.g.b.k.fOy();
+            p.gfZ();
           }
           ((GetSubscribeMsgListExecutor)localObject1).a((Context)localObject4, (SubscribeMsgRequestResult)localObject5);
           return;
@@ -309,22 +311,22 @@ public final class JsApiRequestSubscribeMessage
       AppMethodBeat.o(50611);
       return;
       label234:
-      Object localObject3 = this.kAL;
+      Object localObject3 = this.kWT;
       if (localObject3 != null)
       {
-        localObject4 = this.kAH;
+        localObject4 = this.kWP;
         if (localObject4 == null) {
-          d.g.b.k.fOy();
+          p.gfZ();
         }
         localObject5 = ((com.tencent.luggage.sdk.b.a.c.c)localObject4).getContext();
-        d.g.b.k.g(localObject5, "service!!.context");
-        localObject4 = this.kAG;
+        p.g(localObject5, "service!!.context");
+        localObject4 = this.kWO;
         if (localObject4 == null) {
-          d.g.b.k.fOy();
+          p.gfZ();
         }
-        d.g.b.k.h(localObject5, "context");
-        d.g.b.k.h(localObject4, "result");
-        localObject3 = ((SubscribeMsgExecutor)localObject3).kAP;
+        p.h(localObject5, "context");
+        p.h(localObject4, "result");
+        localObject3 = ((SubscribeMsgExecutor)localObject3).kWX;
         if (localObject3 != null)
         {
           ((SubscribeMsgExecutor.c)localObject3).b((SubscribeMsgRequestResult)localObject4);
@@ -345,13 +347,13 @@ public final class JsApiRequestSubscribeMessage
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(50612);
-      d.g.b.k.h(paramParcel, "parcel");
+      p.h(paramParcel, "parcel");
       paramParcel.writeString(this.username);
       paramParcel.writeInt(this.type);
-      paramParcel.writeParcelable((Parcelable)this.kAG, paramInt);
-      paramParcel.writeParcelable((Parcelable)this.kAK, paramInt);
-      paramParcel.writeParcelable((Parcelable)this.kAL, paramInt);
-      if (this.kAM) {}
+      paramParcel.writeParcelable((Parcelable)this.kWO, paramInt);
+      paramParcel.writeParcelable((Parcelable)this.kWS, paramInt);
+      paramParcel.writeParcelable((Parcelable)this.kWT, paramInt);
+      if (this.kWU) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
@@ -360,43 +362,43 @@ public final class JsApiRequestSubscribeMessage
       }
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask$Companion;", "", "()V", "ACTION_SUBSCRIBE", "", "ACTION_USER_ACTION", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask;", "luggage-wechat-full-sdk_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask$Companion;", "", "()V", "ACTION_SUBSCRIBE", "", "ACTION_USER_ACTION", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask;", "luggage-wechat-full-sdk_release"})
     public static final class a {}
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask;", "luggage-wechat-full-sdk_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask;", "luggage-wechat-full-sdk_release"})
     public static final class b
       implements Parcelable.Creator<JsApiRequestSubscribeMessage.SubscribeMsgTask>
     {}
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask$createGetSubscribeMsgListListener$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "onUserActionCompleted", "username", "items", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "uIData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "showDialog", "dialog", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "luggage-wechat-full-sdk_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask$createGetSubscribeMsgListListener$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/GetSubscribeMsgListExecutor$EventListener;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "onUserActionCompleted", "username", "items", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "uIData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "showDialog", "dialog", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "luggage-wechat-full-sdk_release"})
     public static final class c
       implements GetSubscribeMsgListExecutor.c
     {
       public final void a(int paramInt1, int paramInt2, String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
       {
         AppMethodBeat.i(50602);
-        d.g.b.k.h(paramString, "errMsg");
-        this.kAO.a(paramInt1, paramInt2, paramString, paramSubscribeMsgRequestResult);
+        p.h(paramString, "errMsg");
+        this.kWW.a(paramInt1, paramInt2, paramString, paramSubscribeMsgRequestResult);
         AppMethodBeat.o(50602);
       }
       
       public final void a(String paramString, List<SubscribeMsgTmpItem> paramList, SubscribeMsgRequestDialogUiData paramSubscribeMsgRequestDialogUiData)
       {
         AppMethodBeat.i(50601);
-        d.g.b.k.h(paramString, "username");
-        d.g.b.k.h(paramList, "items");
-        paramString = this.kAO.kAL;
+        p.h(paramString, "username");
+        p.h(paramList, "items");
+        paramString = this.kWW.kWT;
         if (paramString != null)
         {
-          paramList = j.r((Collection)paramList);
-          d.g.b.k.h(paramList, "value");
-          paramString.kAR.clear();
-          paramString.kAR.addAll((Collection)paramList);
+          paramList = j.s((Collection)paramList);
+          p.h(paramList, "value");
+          paramString.kWZ.clear();
+          paramString.kWZ.addAll((Collection)paramList);
         }
-        paramList = this.kAO.kAL;
+        paramList = this.kWW.kWT;
         if (paramList != null)
         {
-          paramString = this.kAO.kAG;
+          paramString = this.kWW.kWO;
           if (paramString == null) {
             break label137;
           }
@@ -404,27 +406,27 @@ public final class JsApiRequestSubscribeMessage
         label137:
         for (paramString = paramString.buffer;; paramString = null)
         {
-          paramList.kAQ = paramString;
-          paramString = this.kAO.kAL;
+          paramList.kWY = paramString;
+          paramString = this.kWW.kWT;
           if (paramString != null) {
-            paramString.ihz = paramSubscribeMsgRequestDialogUiData;
+            paramString.iAT = paramSubscribeMsgRequestDialogUiData;
           }
-          JsApiRequestSubscribeMessage.SubscribeMsgTask.b(this.kAO);
-          this.kAO.aLt();
+          JsApiRequestSubscribeMessage.SubscribeMsgTask.b(this.kWW);
+          this.kWW.aOD();
           AppMethodBeat.o(50601);
           return;
         }
       }
       
-      public final void b(com.tencent.mm.plugin.appbrand.widget.dialog.k paramk)
+      public final void b(k paramk)
       {
         AppMethodBeat.i(50600);
-        d.g.b.k.h(paramk, "dialog");
-        Object localObject = JsApiRequestSubscribeMessage.SubscribeMsgTask.a(this.kAO);
+        p.h(paramk, "dialog");
+        Object localObject = JsApiRequestSubscribeMessage.SubscribeMsgTask.a(this.kWW);
         if (localObject != null)
         {
           localObject = ((com.tencent.luggage.sdk.b.a.c.c)localObject).getWindowAndroid();
-          if ((localObject != null) && (((com.tencent.mm.plugin.appbrand.r.a.c)localObject).aTE() == true)) {
+          if ((localObject != null) && (((com.tencent.mm.plugin.appbrand.r.a.c)localObject).aWM() == true)) {
             if ((paramk instanceof com.tencent.mm.msgsubscription.ui.b)) {
               break label143;
             }
@@ -436,18 +438,18 @@ public final class JsApiRequestSubscribeMessage
           localObject = (com.tencent.mm.msgsubscription.ui.b)localObject;
           if (localObject != null)
           {
-            ((com.tencent.mm.msgsubscription.ui.b)localObject).ikf = 1;
-            View localView = ((com.tencent.mm.msgsubscription.ui.b)localObject).ijA.findViewById(2131299134);
-            d.g.b.k.g(localView, "mRootView.findViewById<V…alog_view_root_container)");
+            ((com.tencent.mm.msgsubscription.ui.b)localObject).iDw = 1;
+            View localView = ((com.tencent.mm.msgsubscription.ui.b)localObject).iCR.findViewById(2131299134);
+            p.g(localView, "mRootView.findViewById<V…alog_view_root_container)");
             localView.setBackground(android.support.v4.content.b.l(((com.tencent.mm.msgsubscription.ui.b)localObject).context, 2131234282));
           }
-          localObject = JsApiRequestSubscribeMessage.SubscribeMsgTask.a(this.kAO);
+          localObject = JsApiRequestSubscribeMessage.SubscribeMsgTask.a(this.kWW);
           if (localObject != null)
           {
-            localObject = ((com.tencent.luggage.sdk.b.a.c.c)localObject).CO();
+            localObject = ((com.tencent.luggage.sdk.b.a.c.c)localObject).En();
             if (localObject != null)
             {
-              localObject = ((com.tencent.luggage.sdk.d.c)localObject).aSs();
+              localObject = ((com.tencent.luggage.sdk.d.c)localObject).aVE();
               if (localObject != null)
               {
                 ((m)localObject).b(paramk);
@@ -462,50 +464,50 @@ public final class JsApiRequestSubscribeMessage
       }
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask$createSubscribeMsgListener$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "onSubscribeMsgDone", "luggage-wechat-full-sdk_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$SubscribeMsgTask$createSubscribeMsgListener$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "onSubscribeMsgDone", "luggage-wechat-full-sdk_release"})
     public static final class d
       implements SubscribeMsgExecutor.c
     {
       public final void a(int paramInt1, int paramInt2, String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
       {
         AppMethodBeat.i(50604);
-        d.g.b.k.h(paramString, "errMsg");
-        this.kAO.a(paramInt1, paramInt2, paramString, paramSubscribeMsgRequestResult);
+        p.h(paramString, "errMsg");
+        this.kWW.a(paramInt1, paramInt2, paramString, paramSubscribeMsgRequestResult);
         AppMethodBeat.o(50604);
       }
       
       public final void b(SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
       {
         AppMethodBeat.i(50603);
-        d.g.b.k.h(paramSubscribeMsgRequestResult, "result");
-        if (paramSubscribeMsgRequestResult.igT)
+        p.h(paramSubscribeMsgRequestResult, "result");
+        if (paramSubscribeMsgRequestResult.iAn)
         {
-          JsApiRequestSubscribeMessage.SubscribeMsgTask.a(this.kAO, "cancel", 0, 6);
+          JsApiRequestSubscribeMessage.SubscribeMsgTask.a(this.kWW, "cancel", 0, 6);
           AppMethodBeat.o(50603);
           return;
         }
         HashMap localHashMap = new HashMap();
-        paramSubscribeMsgRequestResult = ((Iterable)paramSubscribeMsgRequestResult.igI).iterator();
+        paramSubscribeMsgRequestResult = ((Iterable)paramSubscribeMsgRequestResult.iAc).iterator();
         while (paramSubscribeMsgRequestResult.hasNext())
         {
           SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)paramSubscribeMsgRequestResult.next();
-          ((Map)localHashMap).put(localSubscribeMsgTmpItem.hiK, localSubscribeMsgTmpItem.ihb);
+          ((Map)localHashMap).put(localSubscribeMsgTmpItem.hAT, localSubscribeMsgTmpItem.iAv);
         }
-        JsApiRequestSubscribeMessage.SubscribeMsgTask.a(this.kAO, "ok", (Map)localHashMap);
+        JsApiRequestSubscribeMessage.SubscribeMsgTask.a(this.kWW, "ok", (Map)localHashMap);
         AppMethodBeat.o(50603);
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$Companion;", "", "()V", "CTRL_INDEX", "", "ErrorCode_InvalidTemplateID", "ErrorCode_ListRequestFail", "ErrorCode_OK", "ErrorCode_SubscribeInvalidTemplateId", "ErrorCode_SubscribeRequestFail", "ErrorMsg_InvalidTemplateID", "", "ErrorMsg_ListRequestFail", "ErrorMsg_SubscribeInvalidTemplateId", "ErrorMsg_SubscribeRequestFail", "NAME", "TAG", "callbackJsApi", "", "service", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "jsapi", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage;", "callbackId", "status", "retMap", "", "errorCode", "luggage-wechat-full-sdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage$Companion;", "", "()V", "CTRL_INDEX", "", "ErrorCode_InvalidTemplateID", "ErrorCode_ListRequestFail", "ErrorCode_OK", "ErrorCode_SubscribeInvalidTemplateId", "ErrorCode_SubscribeRequestFail", "ErrorMsg_InvalidTemplateID", "", "ErrorMsg_ListRequestFail", "ErrorMsg_SubscribeInvalidTemplateId", "ErrorMsg_SubscribeRequestFail", "NAME", "TAG", "callbackJsApi", "", "service", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "jsapi", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/JsApiRequestSubscribeMessage;", "callbackId", "status", "retMap", "", "errorCode", "luggage-wechat-full-sdk_release"})
   public static final class a
   {
     public static void a(com.tencent.luggage.sdk.b.a.c.c paramc, JsApiRequestSubscribeMessage paramJsApiRequestSubscribeMessage, int paramInt1, String paramString, Map<String, ? extends Object> paramMap, int paramInt2)
     {
       AppMethodBeat.i(50598);
-      d.g.b.k.h(paramc, "service");
-      d.g.b.k.h(paramJsApiRequestSubscribeMessage, "jsapi");
-      d.g.b.k.h(paramString, "status");
+      p.h(paramc, "service");
+      p.h(paramJsApiRequestSubscribeMessage, "jsapi");
+      p.h(paramString, "status");
       Map localMap = (Map)new LinkedHashMap();
       if ((paramInt2 != -1) && (paramInt2 != 0)) {
         localMap.put("errCode", Integer.valueOf(paramInt2));
@@ -513,8 +515,8 @@ public final class JsApiRequestSubscribeMessage
       if (paramMap != null) {
         localMap.putAll(paramMap);
       }
-      paramJsApiRequestSubscribeMessage = paramJsApiRequestSubscribeMessage.k(paramString, localMap);
-      ac.i("JsApiRequestSubscribeMessage", "[callbackJsApi] return json:".concat(String.valueOf(paramJsApiRequestSubscribeMessage)));
+      paramJsApiRequestSubscribeMessage = paramJsApiRequestSubscribeMessage.m(paramString, localMap);
+      ad.i("JsApiRequestSubscribeMessage", "[callbackJsApi] return json:".concat(String.valueOf(paramJsApiRequestSubscribeMessage)));
       paramc.h(paramInt1, paramJsApiRequestSubscribeMessage);
       AppMethodBeat.o(50598);
     }

@@ -67,8 +67,8 @@ public final class AppBrandNearbyEmptyUI
       return;
     case 0: 
       paramBundle = new l();
-      paramBundle.lTr = l.b.lTE;
-      paramBundle.lTv = l.a.lTx;
+      paramBundle.mtg = l.b.mtt;
+      paramBundle.mtk = l.a.mtm;
       paramBundle.report();
     }
     for (;;)
@@ -79,8 +79,8 @@ public final class AppBrandNearbyEmptyUI
       paramBundle.setText(2131755528);
       localTextView.setText(2131755527);
       paramBundle = new l();
-      paramBundle.lTr = l.b.lTE;
-      paramBundle.lTv = l.a.lTy;
+      paramBundle.mtg = l.b.mtt;
+      paramBundle.mtk = l.a.mtn;
       paramBundle.report();
     }
   }

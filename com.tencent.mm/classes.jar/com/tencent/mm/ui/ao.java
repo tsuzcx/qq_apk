@@ -1,117 +1,100 @@
 package com.tencent.mm.ui;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.b;
-import android.util.DisplayMetrics;
-import android.util.SparseIntArray;
-import android.util.TypedValue;
+import android.support.v4.graphics.drawable.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ao
 {
-  private static SparseIntArray Gjx;
-  private static float density;
-  private static float scale;
-  
-  static
+  public static boolean abX(int paramInt)
   {
-    AppMethodBeat.i(159132);
-    density = -1.0F;
-    scale = 0.0F;
-    Gjx = new SparseIntArray();
-    AppMethodBeat.o(159132);
-  }
-  
-  public static Drawable aI(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(159129);
-    paramContext = paramContext.obtainStyledAttributes(new int[] { paramInt });
-    Drawable localDrawable = paramContext.getDrawable(0);
-    paramContext.recycle();
-    AppMethodBeat.o(159129);
-    return localDrawable;
-  }
-  
-  public static int aJ(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(159130);
-    TypedValue localTypedValue = new TypedValue();
-    paramContext.getTheme().resolveAttribute(paramInt, localTypedValue, true);
-    paramInt = localTypedValue.data;
-    AppMethodBeat.o(159130);
-    return paramInt;
-  }
-  
-  public static int av(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(159126);
-    if (paramContext == null)
+    AppMethodBeat.i(159117);
+    if (1.0D - (0.299D * Color.red(paramInt) + 0.587D * Color.green(paramInt) + 0.114D * Color.blue(paramInt)) / 255.0D >= 0.3D)
     {
-      an.e("WeUIResHelper", "get dimension pixel size, resId %d, but context is null".concat(String.valueOf(paramInt)), new Object[0]);
-      AppMethodBeat.o(159126);
+      AppMethodBeat.o(159117);
+      return true;
+    }
+    AppMethodBeat.o(159117);
+    return false;
+  }
+  
+  private static int c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    if (paramInt5 == 0) {
       return 0;
     }
-    int j = Gjx.get(paramInt, 0);
-    int i = j;
-    if (j == 0)
+    return (paramInt1 * 255 * paramInt2 + paramInt3 * paramInt4 * (255 - paramInt2)) / (paramInt5 * 255);
+  }
+  
+  public static Drawable c(Drawable paramDrawable, ColorStateList paramColorStateList)
+  {
+    AppMethodBeat.i(159116);
+    if (paramDrawable == null)
     {
-      i = paramContext.getResources().getDimensionPixelSize(paramInt);
-      Gjx.put(paramInt, i);
+      AppMethodBeat.o(159116);
+      return null;
     }
-    AppMethodBeat.o(159126);
-    return i;
+    paramDrawable = a.i(paramDrawable);
+    a.a(paramDrawable, paramColorStateList);
+    AppMethodBeat.o(159116);
+    return paramDrawable;
   }
   
-  public static float eb(Context paramContext)
+  public static Drawable e(Drawable paramDrawable, int paramInt)
   {
-    AppMethodBeat.i(159128);
-    if (scale == 0.0F) {
-      if (paramContext != null) {
-        break label32;
-      }
+    AppMethodBeat.i(159115);
+    if (paramDrawable != null) {
+      paramDrawable.setColorFilter(new PorterDuffColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP));
     }
-    label32:
-    for (scale = 1.0F;; scale = paramContext.getSharedPreferences("com.tencent.mm_preferences", 0).getFloat("text_size_scale_key", 1.0F))
+    AppMethodBeat.o(159115);
+    return paramDrawable;
+  }
+  
+  public static int eV(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(159112);
+    if ((paramInt2 < 0) || (paramInt2 > 100))
     {
-      float f = scale;
-      AppMethodBeat.o(159128);
-      return f;
+      ap.e("alphaColor", "alpha must be between 0 and 100", new Object[0]);
+      AppMethodBeat.o(159112);
+      return paramInt1;
     }
+    paramInt2 = (int)(paramInt2 * 0.01D * 255.0D);
+    AppMethodBeat.o(159112);
+    return 0xFFFFFF & paramInt1 | paramInt2 << 24;
   }
   
-  public static int fromDPToPix(Context paramContext, int paramInt)
+  private static int jD(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(159125);
-    paramInt = Math.round(getDensity(paramContext) * paramInt);
-    AppMethodBeat.o(159125);
-    return paramInt;
+    return 255 - (255 - paramInt2) * (255 - paramInt1) / 255;
   }
   
-  public static float getDensity(Context paramContext)
+  public static Drawable k(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(159127);
-    if ((paramContext != null) && (density < 0.0F)) {
-      density = paramContext.getResources().getDisplayMetrics().density;
+    AppMethodBeat.i(159114);
+    paramContext = paramContext.getResources().getDrawable(paramInt1);
+    if (paramContext != null) {
+      paramContext.setColorFilter(new PorterDuffColorFilter(paramInt2, PorterDuff.Mode.SRC_ATOP));
     }
-    float f = density;
-    AppMethodBeat.o(159127);
-    return f;
-  }
-  
-  public static ColorStateList jK(Context paramContext)
-  {
-    AppMethodBeat.i(159131);
-    TypedValue localTypedValue = new TypedValue();
-    paramContext.getTheme().resolveAttribute(2130969126, localTypedValue, true);
-    paramContext = b.m(paramContext, localTypedValue.resourceId);
-    AppMethodBeat.o(159131);
+    AppMethodBeat.o(159114);
     return paramContext;
+  }
+  
+  public static int v(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(159113);
+    int i = Color.alpha(paramInt2);
+    int j = Color.alpha(paramInt1);
+    int k = jD(j, i);
+    paramInt1 = Color.argb(k, c(Color.red(paramInt1), j, Color.red(paramInt2), i, k), c(Color.green(paramInt1), j, Color.green(paramInt2), i, k), c(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
+    AppMethodBeat.o(159113);
+    return paramInt1;
   }
 }
 

@@ -6,11 +6,11 @@ import com.tencent.mm.vending.g.b;
 public final class e
   implements a<Boolean, Boolean>
 {
-  private b izm = null;
+  private b iSv = null;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.e.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,68 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ky;
-import com.tencent.mm.protocal.protobuf.kz;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.li;
+import com.tencent.mm.protocal.protobuf.lj;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class x
   extends n
   implements k
 {
-  public static int iKR = 0;
-  public static int iKS = 1;
-  public static int iKT = -85;
-  private g callback;
-  private int iKU;
-  private String iKV;
-  private int iKW;
+  public static int jea = 0;
+  public static int jeb = 1;
+  public static int jec = -85;
+  private f callback;
+  private int jed;
+  private String jee;
+  private int jef;
   private final b rr;
   
   public x(a parama, String paramString, int paramInt)
   {
     AppMethodBeat.i(131086);
-    this.iKU = -1;
-    this.iKW = 0;
-    switch (1.iKX[parama.ordinal()])
+    this.jed = -1;
+    this.jef = 0;
+    switch (1.jeg[parama.ordinal()])
     {
     }
     for (;;)
     {
-      this.iKV = paramString;
-      this.iKW = paramInt;
+      this.jee = paramString;
+      this.jef = paramInt;
       parama = new b.a();
-      parama.hvt = new ky();
-      parama.hvu = new kz();
+      parama.hNM = new li();
+      parama.hNN = new lj();
       parama.uri = "/cgi-bin/micromsg-bin/bindgooglecontact";
       parama.funcId = 487;
-      parama.reqCmdId = 0;
+      parama.hNO = 0;
       parama.respCmdId = 0;
-      this.rr = parama.aAz();
+      this.rr = parama.aDC();
       AppMethodBeat.o(131086);
       return;
-      this.iKU = 1;
+      this.jed = 1;
       continue;
-      this.iKU = 2;
+      this.jed = 2;
     }
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(131087);
-    ac.i("MicroMsg.GoogleContact.NetSceneInviteGoogleContact", "doScene");
-    this.callback = paramg;
-    paramg = (ky)this.rr.hvr.hvw;
-    paramg.DUY = this.iKU;
-    paramg.DXY = this.iKV;
-    paramg.DXZ = this.iKW;
+    ad.i("MicroMsg.GoogleContact.NetSceneInviteGoogleContact", "doScene");
+    this.callback = paramf;
+    paramf = (li)this.rr.hNK.hNQ;
+    paramf.FAt = this.jed;
+    paramf.FDu = this.jee;
+    paramf.FDv = this.jef;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(131087);
     return i;
@@ -76,7 +76,7 @@ public final class x
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131088);
-    ac.i("MicroMsg.GoogleContact.NetSceneInviteGoogleContact", "NetId:%d, ErrType:%d, ErrCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ad.i("MicroMsg.GoogleContact.NetSceneInviteGoogleContact", "NetId:%d, ErrType:%d, ErrCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(131088);
   }
@@ -86,9 +86,9 @@ public final class x
     static
     {
       AppMethodBeat.i(131085);
-      iKY = new a("MM_BIND_GCONTACT_OPCODE_BIND", 0);
-      iKZ = new a("MM_BIND_GCONTACT_OPCODE_UNBIND", 1);
-      iLa = new a[] { iKY, iKZ };
+      jeh = new a("MM_BIND_GCONTACT_OPCODE_BIND", 0);
+      jei = new a("MM_BIND_GCONTACT_OPCODE_UNBIND", 1);
+      jej = new a[] { jeh, jei };
       AppMethodBeat.o(131085);
     }
     
@@ -97,7 +97,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.x
  * JD-Core Version:    0.7.0.1
  */

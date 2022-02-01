@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.appbrand.appcache.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.h;
-import com.tencent.mm.protocal.protobuf.bhh;
+import com.tencent.mm.protocal.protobuf.blp;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/CgiAdGetPkgCDNDownloadURL;", "Lcom/tencent/mm/plugin/appbrand/appcache/CgiGetPkgDownloadInfo;", "request", "Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlRequest;", "(Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlRequest;)V", "TAG", "", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/CgiAdGetPkgCDNDownloadURL;", "Lcom/tencent/mm/plugin/appbrand/appcache/CgiGetPkgDownloadInfo;", "request", "Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlRequest;", "(Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlRequest;)V", "TAG", "", "plugin-appbrand-integration_release"})
 public final class a
   extends h
 {
   private final String TAG;
   
-  public a(bhh parambhh)
+  public a(blp paramblp)
   {
-    super(parambhh, 1996, "/cgi-bin/mmbiz-bin/wxaapp/getadwxacdndownloadurl");
+    super(paramblp, 1996, "/cgi-bin/mmbiz-bin/wxaapp/getadwxacdndownloadurl");
     AppMethodBeat.i(50183);
     this.TAG = "MicroMsg.AppBrand.CgiAdGetPkgCDNDownloadURL";
     AppMethodBeat.o(50183);

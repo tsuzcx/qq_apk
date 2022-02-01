@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bk;
+import com.tencent.mm.g.a.bn;
 import com.tencent.mm.sdk.b.c;
 
 public final class b
-  extends c<bk>
+  extends c<bn>
 {
   public b()
   {
     AppMethodBeat.i(161066);
-    this.__eventId = bk.class.getName().hashCode();
+    this.__eventId = bn.class.getName().hashCode();
     AppMethodBeat.o(161066);
   }
   
   /* Error */
-  private static boolean a(bk parambk)
+  private static boolean a(bn parambn)
   {
     // Byte code:
     //   0: ldc 43
@@ -23,22 +23,22 @@ public final class b
     //   5: aload_0
     //   6: instanceof 18
     //   9: ifeq +415 -> 424
-    //   12: invokestatic 49	com/tencent/mm/kernel/g:agM	()Z
+    //   12: invokestatic 49	com/tencent/mm/kernel/g:ajx	()Z
     //   15: ifne +10 -> 25
     //   18: ldc 43
     //   20: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: iconst_0
     //   24: ireturn
     //   25: aload_0
-    //   26: getfield 53	com/tencent/mm/g/a/bk:dbc	Lcom/tencent/mm/g/a/bk$a;
-    //   29: getfield 58	com/tencent/mm/g/a/bk$a:dbd	I
+    //   26: getfield 53	com/tencent/mm/g/a/bn:dmw	Lcom/tencent/mm/g/a/bn$a;
+    //   29: getfield 58	com/tencent/mm/g/a/bn$a:dmx	I
     //   32: bipush 33
     //   34: if_icmpne +531 -> 565
     //   37: new 60	com/tencent/mm/vfs/e
     //   40: dup
     //   41: aload_0
-    //   42: getfield 53	com/tencent/mm/g/a/bk:dbc	Lcom/tencent/mm/g/a/bk$a;
-    //   45: getfield 64	com/tencent/mm/g/a/bk$a:filePath	Ljava/lang/String;
+    //   42: getfield 53	com/tencent/mm/g/a/bn:dmw	Lcom/tencent/mm/g/a/bn$a;
+    //   45: getfield 64	com/tencent/mm/g/a/bn$a:filePath	Ljava/lang/String;
     //   48: invokespecial 67	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   51: astore 11
     //   53: aload 11
@@ -51,12 +51,12 @@ public final class b
     //   69: dup
     //   70: iconst_0
     //   71: aload 11
-    //   73: invokevirtual 80	com/tencent/mm/vfs/e:fxW	()Lcom/tencent/mm/vfs/e;
+    //   73: invokevirtual 80	com/tencent/mm/vfs/e:fOL	()Lcom/tencent/mm/vfs/e;
     //   76: aastore
-    //   77: invokestatic 85	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   77: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   80: new 60	com/tencent/mm/vfs/e
     //   83: dup
-    //   84: invokestatic 90	com/tencent/mm/aq/a:aEf	()Ljava/lang/String;
+    //   84: invokestatic 90	com/tencent/mm/ar/a:aHk	()Ljava/lang/String;
     //   87: ldc 92
     //   89: invokespecial 95	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   92: astore 12
@@ -70,20 +70,20 @@ public final class b
     //   109: invokevirtual 103	com/tencent/mm/vfs/e:mkdirs	()Z
     //   112: pop
     //   113: aload 11
-    //   115: invokevirtual 107	com/tencent/mm/vfs/e:fxV	()Landroid/net/Uri;
+    //   115: invokevirtual 107	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
     //   118: invokestatic 113	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   121: aload 13
-    //   123: invokevirtual 107	com/tencent/mm/vfs/e:fxV	()Landroid/net/Uri;
+    //   123: invokevirtual 107	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
     //   126: invokestatic 113	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
-    //   129: invokestatic 119	com/tencent/mm/vfs/i:lZ	(Ljava/lang/String;Ljava/lang/String;)J
+    //   129: invokestatic 119	com/tencent/mm/vfs/i:mz	(Ljava/lang/String;Ljava/lang/String;)J
     //   132: pop2
     //   133: aload 13
-    //   135: invokevirtual 107	com/tencent/mm/vfs/e:fxV	()Landroid/net/Uri;
+    //   135: invokevirtual 107	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
     //   138: invokestatic 113	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   141: aload 12
-    //   143: invokevirtual 107	com/tencent/mm/vfs/e:fxV	()Landroid/net/Uri;
+    //   143: invokevirtual 107	com/tencent/mm/vfs/e:fOK	()Landroid/net/Uri;
     //   146: invokestatic 113	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
-    //   149: invokestatic 123	com/tencent/mm/vfs/i:fp	(Ljava/lang/String;Ljava/lang/String;)I
+    //   149: invokestatic 123	com/tencent/mm/vfs/i:fz	(Ljava/lang/String;Ljava/lang/String;)I
     //   152: istore 4
     //   154: iconst_1
     //   155: istore_3
@@ -102,7 +102,7 @@ public final class b
     //   175: aload 12
     //   177: ldc 125
     //   179: invokespecial 100	com/tencent/mm/vfs/e:<init>	(Lcom/tencent/mm/vfs/e;Ljava/lang/String;)V
-    //   182: invokestatic 129	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   182: invokestatic 129	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   185: astore_0
     //   186: aload_0
     //   187: astore 5
@@ -187,27 +187,27 @@ public final class b
     //   336: iload_2
     //   337: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   340: aastore
-    //   341: invokestatic 174	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   341: invokestatic 174	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   344: aload_0
-    //   345: invokestatic 179	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   345: invokestatic 179	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   348: aload 6
-    //   350: invokestatic 179	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   350: invokestatic 179	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   353: aload 5
-    //   355: invokestatic 179	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   355: invokestatic 179	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   358: iload_2
     //   359: istore_1
     //   360: aload 12
     //   362: getfield 183	com/tencent/mm/vfs/e:mUri	Landroid/net/Uri;
     //   365: invokestatic 113	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   368: iconst_1
-    //   369: invokestatic 187	com/tencent/mm/vfs/i:cU	(Ljava/lang/String;Z)Z
+    //   369: invokestatic 187	com/tencent/mm/vfs/i:cZ	(Ljava/lang/String;Z)Z
     //   372: pop
     //   373: aload 13
     //   375: getfield 183	com/tencent/mm/vfs/e:mUri	Landroid/net/Uri;
     //   378: invokestatic 113	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   381: invokestatic 191	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
     //   384: pop
-    //   385: getstatic 194	com/tencent/mm/aq/a:hDT	I
+    //   385: getstatic 194	com/tencent/mm/ar/a:hWy	I
     //   388: iload_1
     //   389: if_icmpge +136 -> 525
     //   392: ldc 72
@@ -216,7 +216,7 @@ public final class b
     //   397: anewarray 76	java/lang/Object
     //   400: dup
     //   401: iconst_0
-    //   402: getstatic 194	com/tencent/mm/aq/a:hDT	I
+    //   402: getstatic 194	com/tencent/mm/ar/a:hWy	I
     //   405: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   408: aastore
     //   409: dup
@@ -224,9 +224,9 @@ public final class b
     //   411: iload_1
     //   412: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   415: aastore
-    //   416: invokestatic 85	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   416: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   419: aload 11
-    //   421: invokestatic 200	com/tencent/mm/aq/a:l	(Lcom/tencent/mm/vfs/e;)V
+    //   421: invokestatic 200	com/tencent/mm/ar/a:l	(Lcom/tencent/mm/vfs/e;)V
     //   424: ldc 43
     //   426: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   429: iconst_0
@@ -254,13 +254,13 @@ public final class b
     //   465: invokevirtual 203	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   468: iconst_0
     //   469: anewarray 76	java/lang/Object
-    //   472: invokestatic 207	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   472: invokestatic 207	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   475: aload_0
-    //   476: invokestatic 179	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   476: invokestatic 179	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   479: aload 6
-    //   481: invokestatic 179	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   481: invokestatic 179	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   484: aload 5
-    //   486: invokestatic 179	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   486: invokestatic 179	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   489: goto -129 -> 360
     //   492: astore 5
     //   494: aconst_null
@@ -270,11 +270,11 @@ public final class b
     //   500: aload 7
     //   502: astore_0
     //   503: aload_0
-    //   504: invokestatic 179	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   504: invokestatic 179	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   507: aload 6
-    //   509: invokestatic 179	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   509: invokestatic 179	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   512: aload 9
-    //   514: invokestatic 179	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   514: invokestatic 179	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   517: ldc 43
     //   519: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   522: aload 5
@@ -285,7 +285,7 @@ public final class b
     //   530: anewarray 76	java/lang/Object
     //   533: dup
     //   534: iconst_0
-    //   535: getstatic 194	com/tencent/mm/aq/a:hDT	I
+    //   535: getstatic 194	com/tencent/mm/ar/a:hWy	I
     //   538: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   541: aastore
     //   542: dup
@@ -293,41 +293,41 @@ public final class b
     //   544: iload_1
     //   545: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   548: aastore
-    //   549: invokestatic 85	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   549: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   552: goto -128 -> 424
     //   555: ldc 72
     //   557: ldc 211
-    //   559: invokestatic 214	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   559: invokestatic 214	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   562: goto -138 -> 424
     //   565: aload_0
-    //   566: getfield 53	com/tencent/mm/g/a/bk:dbc	Lcom/tencent/mm/g/a/bk$a;
-    //   569: getfield 58	com/tencent/mm/g/a/bk$a:dbd	I
+    //   566: getfield 53	com/tencent/mm/g/a/bn:dmw	Lcom/tencent/mm/g/a/bn$a;
+    //   569: getfield 58	com/tencent/mm/g/a/bn$a:dmx	I
     //   572: bipush 37
     //   574: if_icmpne -150 -> 424
     //   577: aload_0
-    //   578: getfield 53	com/tencent/mm/g/a/bk:dbc	Lcom/tencent/mm/g/a/bk$a;
-    //   581: getfield 217	com/tencent/mm/g/a/bk$a:subType	I
+    //   578: getfield 53	com/tencent/mm/g/a/bn:dmw	Lcom/tencent/mm/g/a/bn$a;
+    //   581: getfield 217	com/tencent/mm/g/a/bn$a:subType	I
     //   584: iconst_1
     //   585: if_icmpne +207 -> 792
-    //   588: invokestatic 223	com/tencent/mm/plugin/emoji/e/h:ccb	()Lcom/tencent/mm/plugin/emoji/e/h;
+    //   588: invokestatic 223	com/tencent/mm/plugin/emoji/e/h:cgF	()Lcom/tencent/mm/plugin/emoji/e/h;
     //   591: pop
     //   592: aload_0
-    //   593: getstatic 229	com/tencent/mm/plugin/emoji/e/h$a:oZA	Lcom/tencent/mm/plugin/emoji/e/h$a;
-    //   596: invokestatic 232	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bk;Lcom/tencent/mm/plugin/emoji/e/h$a;)Z
+    //   593: getstatic 229	com/tencent/mm/plugin/emoji/e/h$a:pDk	Lcom/tencent/mm/plugin/emoji/e/h$a;
+    //   596: invokestatic 232	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bn;Lcom/tencent/mm/plugin/emoji/e/h$a;)Z
     //   599: pop
     //   600: aload_0
-    //   601: getstatic 229	com/tencent/mm/plugin/emoji/e/h$a:oZA	Lcom/tencent/mm/plugin/emoji/e/h$a;
-    //   604: getstatic 235	com/tencent/mm/plugin/emoji/e/h:oZa	Ljava/lang/String;
-    //   607: invokestatic 238	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bk;Lcom/tencent/mm/plugin/emoji/e/h$a;Ljava/lang/String;)Z
+    //   601: getstatic 229	com/tencent/mm/plugin/emoji/e/h$a:pDk	Lcom/tencent/mm/plugin/emoji/e/h$a;
+    //   604: getstatic 235	com/tencent/mm/plugin/emoji/e/h:pCK	Ljava/lang/String;
+    //   607: invokestatic 238	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bn;Lcom/tencent/mm/plugin/emoji/e/h$a;Ljava/lang/String;)Z
     //   610: ifeq +170 -> 780
     //   613: new 60	com/tencent/mm/vfs/e
     //   616: dup
     //   617: new 60	com/tencent/mm/vfs/e
     //   620: dup
     //   621: invokestatic 241	com/tencent/mm/plugin/emoji/e/h:getDataEmojiPath	()Ljava/lang/String;
-    //   624: getstatic 235	com/tencent/mm/plugin/emoji/e/h:oZa	Ljava/lang/String;
+    //   624: getstatic 235	com/tencent/mm/plugin/emoji/e/h:pCK	Ljava/lang/String;
     //   627: invokespecial 95	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   630: getstatic 244	com/tencent/mm/plugin/emoji/e/h:oZn	Ljava/lang/String;
+    //   630: getstatic 244	com/tencent/mm/plugin/emoji/e/h:pCX	Ljava/lang/String;
     //   633: invokespecial 100	com/tencent/mm/vfs/e:<init>	(Lcom/tencent/mm/vfs/e;Ljava/lang/String;)V
     //   636: astore_0
     //   637: aload_0
@@ -346,15 +346,15 @@ public final class b
     //   670: aload_0
     //   671: invokeinterface 270 2 0
     //   676: ifeq -252 -> 424
-    //   679: new 272	com/tencent/mm/g/a/da
+    //   679: new 272	com/tencent/mm/g/a/dd
     //   682: dup
-    //   683: invokespecial 273	com/tencent/mm/g/a/da:<init>	()V
+    //   683: invokespecial 273	com/tencent/mm/g/a/dd:<init>	()V
     //   686: astore_0
     //   687: aload_0
-    //   688: getfield 277	com/tencent/mm/g/a/da:dcC	Lcom/tencent/mm/g/a/da$a;
+    //   688: getfield 277	com/tencent/mm/g/a/dd:dnY	Lcom/tencent/mm/g/a/dd$a;
     //   691: iconst_1
-    //   692: putfield 280	com/tencent/mm/g/a/da$a:subType	I
-    //   695: getstatic 286	com/tencent/mm/sdk/b/a:GpY	Lcom/tencent/mm/sdk/b/a;
+    //   692: putfield 280	com/tencent/mm/g/a/dd$a:subType	I
+    //   695: getstatic 286	com/tencent/mm/sdk/b/a:IbL	Lcom/tencent/mm/sdk/b/a;
     //   698: aload_0
     //   699: invokevirtual 289	com/tencent/mm/sdk/b/a:l	(Lcom/tencent/mm/sdk/b/b;)Z
     //   702: pop
@@ -367,60 +367,60 @@ public final class b
     //   717: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   720: ldc_w 291
     //   723: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   726: getstatic 235	com/tencent/mm/plugin/emoji/e/h:oZa	Ljava/lang/String;
+    //   726: getstatic 235	com/tencent/mm/plugin/emoji/e/h:pCK	Ljava/lang/String;
     //   729: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   732: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   735: getstatic 294	com/tencent/mm/plugin/emoji/e/h:oZg	Ljava/lang/String;
+    //   735: getstatic 294	com/tencent/mm/plugin/emoji/e/h:pCQ	Ljava/lang/String;
     //   738: invokespecial 95	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   741: invokestatic 298	com/tencent/mm/plugin/emoji/e/h:J	(Lcom/tencent/mm/vfs/e;)I
-    //   744: putstatic 301	com/tencent/mm/plugin/emoji/e/h:oZs	I
-    //   747: invokestatic 305	com/tencent/mm/kernel/g:agR	()Lcom/tencent/mm/kernel/e;
-    //   750: invokevirtual 311	com/tencent/mm/kernel/e:agA	()Lcom/tencent/mm/storage/ae;
-    //   753: getstatic 317	com/tencent/mm/storage/ah$a:GEo	Lcom/tencent/mm/storage/ah$a;
-    //   756: getstatic 301	com/tencent/mm/plugin/emoji/e/h:oZs	I
+    //   744: putstatic 301	com/tencent/mm/plugin/emoji/e/h:pDc	I
+    //   747: invokestatic 305	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+    //   750: invokevirtual 311	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
+    //   753: getstatic 317	com/tencent/mm/storage/al$a:IqH	Lcom/tencent/mm/storage/al$a;
+    //   756: getstatic 301	com/tencent/mm/plugin/emoji/e/h:pDc	I
     //   759: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   762: invokevirtual 323	com/tencent/mm/storage/ae:set	(Lcom/tencent/mm/storage/ah$a;Ljava/lang/Object;)V
+    //   762: invokevirtual 323	com/tencent/mm/storage/ai:set	(Lcom/tencent/mm/storage/al$a;Ljava/lang/Object;)V
     //   765: goto -341 -> 424
     //   768: ldc_w 325
     //   771: ldc_w 327
-    //   774: invokestatic 329	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   774: invokestatic 329	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   777: goto -353 -> 424
     //   780: ldc_w 325
     //   783: ldc_w 331
-    //   786: invokestatic 329	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   786: invokestatic 329	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   789: goto -365 -> 424
     //   792: aload_0
-    //   793: getfield 53	com/tencent/mm/g/a/bk:dbc	Lcom/tencent/mm/g/a/bk$a;
-    //   796: getfield 217	com/tencent/mm/g/a/bk$a:subType	I
+    //   793: getfield 53	com/tencent/mm/g/a/bn:dmw	Lcom/tencent/mm/g/a/bn$a;
+    //   796: getfield 217	com/tencent/mm/g/a/bn$a:subType	I
     //   799: iconst_2
     //   800: if_icmpne +313 -> 1113
-    //   803: invokestatic 223	com/tencent/mm/plugin/emoji/e/h:ccb	()Lcom/tencent/mm/plugin/emoji/e/h;
+    //   803: invokestatic 223	com/tencent/mm/plugin/emoji/e/h:cgF	()Lcom/tencent/mm/plugin/emoji/e/h;
     //   806: pop
     //   807: aload_0
-    //   808: getstatic 334	com/tencent/mm/plugin/emoji/e/h$a:oZB	Lcom/tencent/mm/plugin/emoji/e/h$a;
-    //   811: invokestatic 232	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bk;Lcom/tencent/mm/plugin/emoji/e/h$a;)Z
+    //   808: getstatic 334	com/tencent/mm/plugin/emoji/e/h$a:pDl	Lcom/tencent/mm/plugin/emoji/e/h$a;
+    //   811: invokestatic 232	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bn;Lcom/tencent/mm/plugin/emoji/e/h$a;)Z
     //   814: pop
     //   815: aload_0
-    //   816: getstatic 334	com/tencent/mm/plugin/emoji/e/h$a:oZB	Lcom/tencent/mm/plugin/emoji/e/h$a;
-    //   819: getstatic 337	com/tencent/mm/plugin/emoji/e/h:oZb	Ljava/lang/String;
-    //   822: invokestatic 238	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bk;Lcom/tencent/mm/plugin/emoji/e/h$a;Ljava/lang/String;)Z
+    //   816: getstatic 334	com/tencent/mm/plugin/emoji/e/h$a:pDl	Lcom/tencent/mm/plugin/emoji/e/h$a;
+    //   819: getstatic 337	com/tencent/mm/plugin/emoji/e/h:pCL	Ljava/lang/String;
+    //   822: invokestatic 238	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bn;Lcom/tencent/mm/plugin/emoji/e/h$a;Ljava/lang/String;)Z
     //   825: ifeq +276 -> 1101
     //   828: new 60	com/tencent/mm/vfs/e
     //   831: dup
     //   832: invokestatic 241	com/tencent/mm/plugin/emoji/e/h:getDataEmojiPath	()Ljava/lang/String;
-    //   835: getstatic 337	com/tencent/mm/plugin/emoji/e/h:oZb	Ljava/lang/String;
+    //   835: getstatic 337	com/tencent/mm/plugin/emoji/e/h:pCL	Ljava/lang/String;
     //   838: invokespecial 95	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   841: astore 6
-    //   843: invokestatic 342	com/tencent/mm/emoji/a/m:acv	()Ljava/lang/String;
+    //   843: invokestatic 342	com/tencent/mm/emoji/a/m:aeZ	()Ljava/lang/String;
     //   846: astore 5
     //   848: aload 5
-    //   850: invokestatic 345	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   850: invokestatic 345	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   853: ifeq +180 -> 1033
-    //   856: getstatic 348	com/tencent/mm/plugin/emoji/e/h:oZo	Ljava/lang/String;
+    //   856: getstatic 348	com/tencent/mm/plugin/emoji/e/h:pCY	Ljava/lang/String;
     //   859: astore_0
     //   860: ldc_w 325
     //   863: ldc_w 350
-    //   866: invokestatic 329	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   866: invokestatic 329	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   869: new 60	com/tencent/mm/vfs/e
     //   872: dup
     //   873: aload 6
@@ -443,15 +443,15 @@ public final class b
     //   918: aload 5
     //   920: invokeinterface 356 2 0
     //   925: ifeq +92 -> 1017
-    //   928: new 272	com/tencent/mm/g/a/da
+    //   928: new 272	com/tencent/mm/g/a/dd
     //   931: dup
-    //   932: invokespecial 273	com/tencent/mm/g/a/da:<init>	()V
+    //   932: invokespecial 273	com/tencent/mm/g/a/dd:<init>	()V
     //   935: astore 5
     //   937: aload 5
-    //   939: getfield 277	com/tencent/mm/g/a/da:dcC	Lcom/tencent/mm/g/a/da$a;
+    //   939: getfield 277	com/tencent/mm/g/a/dd:dnY	Lcom/tencent/mm/g/a/dd$a;
     //   942: iconst_2
-    //   943: putfield 280	com/tencent/mm/g/a/da$a:subType	I
-    //   946: getstatic 286	com/tencent/mm/sdk/b/a:GpY	Lcom/tencent/mm/sdk/b/a;
+    //   943: putfield 280	com/tencent/mm/g/a/dd$a:subType	I
+    //   946: getstatic 286	com/tencent/mm/sdk/b/a:IbL	Lcom/tencent/mm/sdk/b/a;
     //   949: aload 5
     //   951: invokevirtual 289	com/tencent/mm/sdk/b/a:l	(Lcom/tencent/mm/sdk/b/b;)Z
     //   954: pop
@@ -464,24 +464,24 @@ public final class b
     //   969: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   972: ldc_w 291
     //   975: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   978: getstatic 337	com/tencent/mm/plugin/emoji/e/h:oZb	Ljava/lang/String;
+    //   978: getstatic 337	com/tencent/mm/plugin/emoji/e/h:pCL	Ljava/lang/String;
     //   981: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   984: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   987: getstatic 294	com/tencent/mm/plugin/emoji/e/h:oZg	Ljava/lang/String;
+    //   987: getstatic 294	com/tencent/mm/plugin/emoji/e/h:pCQ	Ljava/lang/String;
     //   990: invokespecial 95	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   993: invokestatic 298	com/tencent/mm/plugin/emoji/e/h:J	(Lcom/tencent/mm/vfs/e;)I
-    //   996: putstatic 359	com/tencent/mm/plugin/emoji/e/h:oZt	I
-    //   999: invokestatic 305	com/tencent/mm/kernel/g:agR	()Lcom/tencent/mm/kernel/e;
-    //   1002: invokevirtual 311	com/tencent/mm/kernel/e:agA	()Lcom/tencent/mm/storage/ae;
-    //   1005: getstatic 362	com/tencent/mm/storage/ah$a:GEp	Lcom/tencent/mm/storage/ah$a;
-    //   1008: getstatic 359	com/tencent/mm/plugin/emoji/e/h:oZt	I
+    //   996: putstatic 359	com/tencent/mm/plugin/emoji/e/h:pDd	I
+    //   999: invokestatic 305	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+    //   1002: invokevirtual 311	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
+    //   1005: getstatic 362	com/tencent/mm/storage/al$a:IqI	Lcom/tencent/mm/storage/al$a;
+    //   1008: getstatic 359	com/tencent/mm/plugin/emoji/e/h:pDd	I
     //   1011: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1014: invokevirtual 323	com/tencent/mm/storage/ae:set	(Lcom/tencent/mm/storage/ah$a;Ljava/lang/Object;)V
-    //   1017: invokestatic 305	com/tencent/mm/kernel/g:agR	()Lcom/tencent/mm/kernel/e;
-    //   1020: invokevirtual 311	com/tencent/mm/kernel/e:agA	()Lcom/tencent/mm/storage/ae;
-    //   1023: getstatic 365	com/tencent/mm/storage/ah$a:GEs	Lcom/tencent/mm/storage/ah$a;
+    //   1014: invokevirtual 323	com/tencent/mm/storage/ai:set	(Lcom/tencent/mm/storage/al$a;Ljava/lang/Object;)V
+    //   1017: invokestatic 305	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+    //   1020: invokevirtual 311	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
+    //   1023: getstatic 365	com/tencent/mm/storage/al$a:IqL	Lcom/tencent/mm/storage/al$a;
     //   1026: aload_0
-    //   1027: invokevirtual 323	com/tencent/mm/storage/ae:set	(Lcom/tencent/mm/storage/ah$a;Ljava/lang/Object;)V
+    //   1027: invokevirtual 323	com/tencent/mm/storage/ai:set	(Lcom/tencent/mm/storage/al$a;Ljava/lang/Object;)V
     //   1030: goto -606 -> 424
     //   1033: aload 5
     //   1035: astore_0
@@ -492,7 +492,7 @@ public final class b
     //   1044: invokespecial 100	com/tencent/mm/vfs/e:<init>	(Lcom/tencent/mm/vfs/e;Ljava/lang/String;)V
     //   1047: invokevirtual 70	com/tencent/mm/vfs/e:exists	()Z
     //   1050: ifne +7 -> 1057
-    //   1053: getstatic 348	com/tencent/mm/plugin/emoji/e/h:oZo	Ljava/lang/String;
+    //   1053: getstatic 348	com/tencent/mm/plugin/emoji/e/h:pCY	Ljava/lang/String;
     //   1056: astore_0
     //   1057: ldc_w 325
     //   1060: ldc_w 367
@@ -502,44 +502,44 @@ public final class b
     //   1068: iconst_0
     //   1069: aload_0
     //   1070: aastore
-    //   1071: invokestatic 85	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1071: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1074: goto -205 -> 869
     //   1077: ldc_w 325
     //   1080: ldc_w 369
-    //   1083: invokestatic 329	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1083: invokestatic 329	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1086: goto -69 -> 1017
     //   1089: ldc_w 325
     //   1092: ldc_w 371
-    //   1095: invokestatic 329	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1095: invokestatic 329	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1098: goto -674 -> 424
     //   1101: ldc_w 325
     //   1104: ldc_w 373
-    //   1107: invokestatic 329	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1107: invokestatic 329	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1110: goto -686 -> 424
     //   1113: aload_0
-    //   1114: getfield 53	com/tencent/mm/g/a/bk:dbc	Lcom/tencent/mm/g/a/bk$a;
-    //   1117: getfield 217	com/tencent/mm/g/a/bk$a:subType	I
+    //   1114: getfield 53	com/tencent/mm/g/a/bn:dmw	Lcom/tencent/mm/g/a/bn$a;
+    //   1117: getfield 217	com/tencent/mm/g/a/bn$a:subType	I
     //   1120: iconst_3
     //   1121: if_icmpne +90 -> 1211
-    //   1124: invokestatic 223	com/tencent/mm/plugin/emoji/e/h:ccb	()Lcom/tencent/mm/plugin/emoji/e/h;
+    //   1124: invokestatic 223	com/tencent/mm/plugin/emoji/e/h:cgF	()Lcom/tencent/mm/plugin/emoji/e/h;
     //   1127: pop
     //   1128: aload_0
-    //   1129: getstatic 376	com/tencent/mm/plugin/emoji/e/h$a:oZC	Lcom/tencent/mm/plugin/emoji/e/h$a;
-    //   1132: invokestatic 232	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bk;Lcom/tencent/mm/plugin/emoji/e/h$a;)Z
+    //   1129: getstatic 376	com/tencent/mm/plugin/emoji/e/h$a:pDm	Lcom/tencent/mm/plugin/emoji/e/h$a;
+    //   1132: invokestatic 232	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bn;Lcom/tencent/mm/plugin/emoji/e/h$a;)Z
     //   1135: pop
     //   1136: aload_0
-    //   1137: getstatic 376	com/tencent/mm/plugin/emoji/e/h$a:oZC	Lcom/tencent/mm/plugin/emoji/e/h$a;
-    //   1140: getstatic 379	com/tencent/mm/plugin/emoji/e/h:oZc	Ljava/lang/String;
-    //   1143: invokestatic 238	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bk;Lcom/tencent/mm/plugin/emoji/e/h$a;Ljava/lang/String;)Z
+    //   1137: getstatic 376	com/tencent/mm/plugin/emoji/e/h$a:pDm	Lcom/tencent/mm/plugin/emoji/e/h$a;
+    //   1140: getstatic 379	com/tencent/mm/plugin/emoji/e/h:pCM	Ljava/lang/String;
+    //   1143: invokestatic 238	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bn;Lcom/tencent/mm/plugin/emoji/e/h$a;Ljava/lang/String;)Z
     //   1146: ifeq +53 -> 1199
     //   1149: new 60	com/tencent/mm/vfs/e
     //   1152: dup
     //   1153: new 60	com/tencent/mm/vfs/e
     //   1156: dup
     //   1157: invokestatic 241	com/tencent/mm/plugin/emoji/e/h:getDataEmojiPath	()Ljava/lang/String;
-    //   1160: getstatic 379	com/tencent/mm/plugin/emoji/e/h:oZc	Ljava/lang/String;
+    //   1160: getstatic 379	com/tencent/mm/plugin/emoji/e/h:pCM	Ljava/lang/String;
     //   1163: invokespecial 95	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1166: getstatic 382	com/tencent/mm/plugin/emoji/e/h:oZp	Ljava/lang/String;
+    //   1166: getstatic 382	com/tencent/mm/plugin/emoji/e/h:pCZ	Ljava/lang/String;
     //   1169: invokespecial 100	com/tencent/mm/vfs/e:<init>	(Lcom/tencent/mm/vfs/e;Ljava/lang/String;)V
     //   1172: astore_0
     //   1173: aload_0
@@ -550,36 +550,36 @@ public final class b
     //   1184: goto -760 -> 424
     //   1187: ldc_w 325
     //   1190: ldc_w 387
-    //   1193: invokestatic 329	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1193: invokestatic 329	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1196: goto -772 -> 424
     //   1199: ldc_w 325
     //   1202: ldc_w 389
-    //   1205: invokestatic 329	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1205: invokestatic 329	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1208: goto -784 -> 424
     //   1211: aload_0
-    //   1212: getfield 53	com/tencent/mm/g/a/bk:dbc	Lcom/tencent/mm/g/a/bk$a;
-    //   1215: getfield 217	com/tencent/mm/g/a/bk$a:subType	I
+    //   1212: getfield 53	com/tencent/mm/g/a/bn:dmw	Lcom/tencent/mm/g/a/bn$a;
+    //   1215: getfield 217	com/tencent/mm/g/a/bn$a:subType	I
     //   1218: iconst_5
     //   1219: if_icmpne +93 -> 1312
-    //   1222: invokestatic 223	com/tencent/mm/plugin/emoji/e/h:ccb	()Lcom/tencent/mm/plugin/emoji/e/h;
+    //   1222: invokestatic 223	com/tencent/mm/plugin/emoji/e/h:cgF	()Lcom/tencent/mm/plugin/emoji/e/h;
     //   1225: astore 5
     //   1227: aload_0
-    //   1228: getstatic 392	com/tencent/mm/plugin/emoji/e/h$a:oZE	Lcom/tencent/mm/plugin/emoji/e/h$a;
-    //   1231: invokestatic 232	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bk;Lcom/tencent/mm/plugin/emoji/e/h$a;)Z
+    //   1228: getstatic 392	com/tencent/mm/plugin/emoji/e/h$a:pDo	Lcom/tencent/mm/plugin/emoji/e/h$a;
+    //   1231: invokestatic 232	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bn;Lcom/tencent/mm/plugin/emoji/e/h$a;)Z
     //   1234: pop
     //   1235: aload_0
-    //   1236: getstatic 392	com/tencent/mm/plugin/emoji/e/h$a:oZE	Lcom/tencent/mm/plugin/emoji/e/h$a;
-    //   1239: getstatic 395	com/tencent/mm/plugin/emoji/e/h:oZd	Ljava/lang/String;
-    //   1242: invokestatic 238	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bk;Lcom/tencent/mm/plugin/emoji/e/h$a;Ljava/lang/String;)Z
+    //   1236: getstatic 392	com/tencent/mm/plugin/emoji/e/h$a:pDo	Lcom/tencent/mm/plugin/emoji/e/h$a;
+    //   1239: getstatic 395	com/tencent/mm/plugin/emoji/e/h:pCN	Ljava/lang/String;
+    //   1242: invokestatic 238	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bn;Lcom/tencent/mm/plugin/emoji/e/h$a;Ljava/lang/String;)Z
     //   1245: ifeq +55 -> 1300
     //   1248: new 60	com/tencent/mm/vfs/e
     //   1251: dup
     //   1252: new 60	com/tencent/mm/vfs/e
     //   1255: dup
     //   1256: invokestatic 241	com/tencent/mm/plugin/emoji/e/h:getDataEmojiPath	()Ljava/lang/String;
-    //   1259: getstatic 395	com/tencent/mm/plugin/emoji/e/h:oZd	Ljava/lang/String;
+    //   1259: getstatic 395	com/tencent/mm/plugin/emoji/e/h:pCN	Ljava/lang/String;
     //   1262: invokespecial 95	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1265: getstatic 398	com/tencent/mm/plugin/emoji/e/h:oZq	Ljava/lang/String;
+    //   1265: getstatic 398	com/tencent/mm/plugin/emoji/e/h:pDa	Ljava/lang/String;
     //   1268: invokespecial 100	com/tencent/mm/vfs/e:<init>	(Lcom/tencent/mm/vfs/e;Ljava/lang/String;)V
     //   1271: astore_0
     //   1272: aload_0
@@ -591,60 +591,60 @@ public final class b
     //   1285: goto -861 -> 424
     //   1288: ldc_w 325
     //   1291: ldc_w 403
-    //   1294: invokestatic 329	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1294: invokestatic 329	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1297: goto -873 -> 424
     //   1300: ldc_w 325
     //   1303: ldc_w 403
-    //   1306: invokestatic 329	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1306: invokestatic 329	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1309: goto -885 -> 424
     //   1312: aload_0
-    //   1313: getfield 53	com/tencent/mm/g/a/bk:dbc	Lcom/tencent/mm/g/a/bk$a;
-    //   1316: getfield 217	com/tencent/mm/g/a/bk$a:subType	I
+    //   1313: getfield 53	com/tencent/mm/g/a/bn:dmw	Lcom/tencent/mm/g/a/bn$a;
+    //   1316: getfield 217	com/tencent/mm/g/a/bn$a:subType	I
     //   1319: iconst_4
     //   1320: if_icmpne +55 -> 1375
-    //   1323: invokestatic 223	com/tencent/mm/plugin/emoji/e/h:ccb	()Lcom/tencent/mm/plugin/emoji/e/h;
+    //   1323: invokestatic 223	com/tencent/mm/plugin/emoji/e/h:cgF	()Lcom/tencent/mm/plugin/emoji/e/h;
     //   1326: pop
     //   1327: ldc_w 325
     //   1330: ldc_w 405
-    //   1333: invokestatic 407	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1333: invokestatic 407	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   1336: aload_0
-    //   1337: invokestatic 410	com/tencent/mm/plugin/emoji/e/h:b	(Lcom/tencent/mm/g/a/bk;)Z
+    //   1337: invokestatic 410	com/tencent/mm/plugin/emoji/e/h:b	(Lcom/tencent/mm/g/a/bn;)Z
     //   1340: ifeq -916 -> 424
-    //   1343: invokestatic 416	com/tencent/mm/cf/b:eXh	()Lcom/tencent/mm/cf/b;
+    //   1343: invokestatic 416	com/tencent/mm/cf/b:fmR	()Lcom/tencent/mm/cf/b;
     //   1346: pop
     //   1347: aload_0
-    //   1348: getfield 53	com/tencent/mm/g/a/bk:dbc	Lcom/tencent/mm/g/a/bk$a;
-    //   1351: getfield 64	com/tencent/mm/g/a/bk$a:filePath	Ljava/lang/String;
+    //   1348: getfield 53	com/tencent/mm/g/a/bn:dmw	Lcom/tencent/mm/g/a/bn$a;
+    //   1351: getfield 64	com/tencent/mm/g/a/bn$a:filePath	Ljava/lang/String;
     //   1354: astore_0
-    //   1355: invokestatic 419	com/tencent/mm/cf/b:eXi	()V
+    //   1355: invokestatic 419	com/tencent/mm/cf/b:fmS	()V
     //   1358: aload_0
-    //   1359: getstatic 422	com/tencent/mm/cf/b:Gxy	Ljava/lang/String;
-    //   1362: invokestatic 119	com/tencent/mm/vfs/i:lZ	(Ljava/lang/String;Ljava/lang/String;)J
+    //   1359: getstatic 422	com/tencent/mm/cf/b:Ijs	Ljava/lang/String;
+    //   1362: invokestatic 119	com/tencent/mm/vfs/i:mz	(Ljava/lang/String;Ljava/lang/String;)J
     //   1365: pop2
-    //   1366: invokestatic 416	com/tencent/mm/cf/b:eXh	()Lcom/tencent/mm/cf/b;
+    //   1366: invokestatic 416	com/tencent/mm/cf/b:fmR	()Lcom/tencent/mm/cf/b;
     //   1369: invokevirtual 425	com/tencent/mm/cf/b:init	()V
     //   1372: goto -948 -> 424
     //   1375: aload_0
-    //   1376: getfield 53	com/tencent/mm/g/a/bk:dbc	Lcom/tencent/mm/g/a/bk$a;
-    //   1379: getfield 217	com/tencent/mm/g/a/bk$a:subType	I
+    //   1376: getfield 53	com/tencent/mm/g/a/bn:dmw	Lcom/tencent/mm/g/a/bn$a;
+    //   1379: getfield 217	com/tencent/mm/g/a/bn$a:subType	I
     //   1382: bipush 6
     //   1384: if_icmpne -960 -> 424
-    //   1387: invokestatic 223	com/tencent/mm/plugin/emoji/e/h:ccb	()Lcom/tencent/mm/plugin/emoji/e/h;
+    //   1387: invokestatic 223	com/tencent/mm/plugin/emoji/e/h:cgF	()Lcom/tencent/mm/plugin/emoji/e/h;
     //   1390: pop
     //   1391: aload_0
-    //   1392: getstatic 428	com/tencent/mm/plugin/emoji/e/h$a:oZF	Lcom/tencent/mm/plugin/emoji/e/h$a;
-    //   1395: getstatic 431	com/tencent/mm/plugin/emoji/e/h:oZf	Ljava/lang/String;
-    //   1398: invokestatic 238	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bk;Lcom/tencent/mm/plugin/emoji/e/h$a;Ljava/lang/String;)Z
+    //   1392: getstatic 428	com/tencent/mm/plugin/emoji/e/h$a:pDp	Lcom/tencent/mm/plugin/emoji/e/h$a;
+    //   1395: getstatic 431	com/tencent/mm/plugin/emoji/e/h:pCP	Ljava/lang/String;
+    //   1398: invokestatic 238	com/tencent/mm/plugin/emoji/e/h:a	(Lcom/tencent/mm/g/a/bn;Lcom/tencent/mm/plugin/emoji/e/h$a;Ljava/lang/String;)Z
     //   1401: ifeq -977 -> 424
     //   1404: new 60	com/tencent/mm/vfs/e
     //   1407: dup
     //   1408: invokestatic 241	com/tencent/mm/plugin/emoji/e/h:getDataEmojiPath	()Ljava/lang/String;
-    //   1411: getstatic 431	com/tencent/mm/plugin/emoji/e/h:oZf	Ljava/lang/String;
+    //   1411: getstatic 431	com/tencent/mm/plugin/emoji/e/h:pCP	Ljava/lang/String;
     //   1414: invokespecial 95	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   1417: pop
-    //   1418: getstatic 437	com/tencent/mm/emoji/a/b/g:fSO	Lcom/tencent/mm/emoji/a/b/g;
+    //   1418: getstatic 437	com/tencent/mm/emoji/a/b/g:gms	Lcom/tencent/mm/emoji/a/b/g;
     //   1421: astore_0
-    //   1422: invokestatic 440	com/tencent/mm/emoji/a/b/g:adc	()V
+    //   1422: invokestatic 440	com/tencent/mm/emoji/a/b/g:afJ	()V
     //   1425: goto -1001 -> 424
     //   1428: astore 5
     //   1430: aconst_null
@@ -666,7 +666,7 @@ public final class b
     //   1460: goto -1012 -> 448
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1463	0	parambk	bk
+    //   0	1463	0	parambn	bn
     //   159	1296	1	i	int
     //   157	202	2	j	int
     //   155	1299	3	k	int
@@ -678,7 +678,7 @@ public final class b
     //   1436	1	5	localObject5	java.lang.Object
     //   1451	1	5	localObject6	java.lang.Object
     //   200	1241	6	localObject7	java.lang.Object
-    //   166	1277	7	localbk	bk
+    //   166	1277	7	localbn	bn
     //   223	1216	8	localObject8	java.lang.Object
     //   219	1213	9	localObject9	java.lang.Object
     //   215	117	10	str1	String

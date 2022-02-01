@@ -4,51 +4,48 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.stack.d;
 import com.tencent.mm.plugin.expt.hellhound.core.stack.e;
 import com.tencent.mm.protocal.protobuf.bj;
-import com.tencent.mm.protocal.protobuf.bju;
-import com.tencent.mm.protocal.protobuf.ccs;
-import com.tencent.mm.protocal.protobuf.dhz;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.boc;
+import com.tencent.mm.protocal.protobuf.chk;
+import com.tencent.mm.protocal.protobuf.dno;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  public static com.tencent.mm.vending.j.c<bju, Integer> ckt()
+  public static com.tencent.mm.vending.j.c<boc, Integer> cpJ()
   {
     AppMethodBeat.i(122090);
-    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.ckx())
+    if (com.tencent.mm.plugin.expt.hellhound.a.f.b.b.cpN())
     {
-      ac.w("BaseBizCollector", "habbyge-mali, BaseBizCollector, getCurPageFlowItem, doNotNeedSessionMonitor: TRUE");
+      ad.w("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, getCurPageFlowItem, doNotNeedSessionMonitor: TRUE");
       AppMethodBeat.o(122090);
       return null;
     }
-    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.ckP();
-    if (localObject1 == null)
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cqe();
+    if (localObject == null)
     {
-      ac.e("BaseBizCollector", "HABBYGE-MALI, BaseBizCollector, curSession is NULL");
+      ad.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curSession is NULL");
       AppMethodBeat.o(122090);
       return null;
     }
-    ac.i("BaseBizCollector", "HABBYGE-MALI, BaseBizCollector, curSession: %s", new Object[] { ((ccs)localObject1).sessionId });
-    d.ciR();
-    Object localObject2 = e.ciW();
-    if (localObject2 == null)
+    ad.i("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curSession: %s", new Object[] { ((chk)localObject).sessionId });
+    d.cnR();
+    bj localbj = e.cnW();
+    if (localbj == null)
     {
-      ac.e("BaseBizCollector", "HABBYGE-MALI, BaseBizCollector, curAR is NULL");
+      ad.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, curAR is NULL");
       AppMethodBeat.o(122090);
       return null;
     }
-    ac.i("BaseBizCollector", "HABBYGE-MALI, BaseBizCollector, curAR: %s", new Object[] { ((bj)localObject2).DOc.activityName });
-    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.fO(((ccs)localObject1).sessionId, ((bj)localObject2).DOc.activityName);
-    if (localObject1 == null)
+    localObject = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.fX(((chk)localObject).sessionId, localbj.Fti.activityName);
+    if (localObject == null)
     {
-      ac.e("BaseBizCollector", "HABBYGE-MALI, BaseBizCollector, getPageFlowItemOfCurSession is NULL");
+      ad.e("HABBYGE-MALI.BaseBizCollector", "BaseBizCollector, getPageFlowItemOfCurSession is NULL");
       AppMethodBeat.o(122090);
       return null;
     }
-    localObject2 = (bju)((com.tencent.mm.vending.j.b)localObject1).get(0);
-    int i = ((Integer)((com.tencent.mm.vending.j.c)localObject1).get(1)).intValue();
-    ac.i("BaseBizCollector", "HABBYGE-MALI, BaseBizCollector, HellPageFlowItem: %s, %s, %d", new Object[] { ((bju)localObject2).dnh, ((bju)localObject2).qoi, Integer.valueOf(i) });
+    ((Integer)((com.tencent.mm.vending.j.c)localObject).get(1)).intValue();
     AppMethodBeat.o(122090);
-    return localObject1;
+    return localObject;
   }
 }
 

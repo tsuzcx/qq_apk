@@ -2,79 +2,31 @@ package com.tencent.mm.plugin.lite.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.lite.LiteAppCenter;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
 {
   private String mAppId;
-  private long tVV;
-  private long tVW;
-  private long tVX;
+  private long uYE;
+  private long uYF;
+  private long uYG;
   
   public b(String paramString, long paramLong1, long paramLong2, long paramLong3)
   {
     this.mAppId = paramString;
-    this.tVV = paramLong1;
-    this.tVW = paramLong2;
-    this.tVX = paramLong3;
+    this.uYE = paramLong1;
+    this.uYF = paramLong2;
+    this.uYG = paramLong3;
   }
   
-  private void ad(Map<String, Object> paramMap)
+  public final void aB(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(208156);
-    JSONObject localJSONObject1;
-    JSONObject localJSONObject2;
-    if (this.tVX >= 0L)
+    AppMethodBeat.i(214621);
+    if (this.uYG < 0L)
     {
-      localJSONObject1 = new JSONObject();
-      try
-      {
-        localJSONObject1.put("result", false);
-        localJSONObject2 = new JSONObject();
-        paramMap = paramMap.entrySet().iterator();
-        while (paramMap.hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)paramMap.next();
-          localJSONObject2.put((String)localEntry.getKey(), localEntry.getValue());
-          continue;
-          LiteAppCenter.jsApiCallback(this.mAppId, this.tVV, this.tVW, this.tVX, localJSONObject1.toString(), false);
-        }
-      }
-      catch (JSONException paramMap)
-      {
-        ac.printErrStackTrace("liteApp.LiteAppJsApiCallback", paramMap, "callback", new Object[0]);
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(208156);
-      return;
-      localJSONObject1.put("data", localJSONObject2);
-    }
-  }
-  
-  public final void Vc(String paramString)
-  {
-    AppMethodBeat.i(208157);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("msg", paramString);
-    ad(localHashMap);
-    AppMethodBeat.o(208157);
-  }
-  
-  public final void as(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(208155);
-    if (this.tVX < 0L)
-    {
-      AppMethodBeat.o(208155);
+      AppMethodBeat.o(214621);
       return;
     }
     JSONObject localJSONObject = new JSONObject();
@@ -83,6 +35,7 @@ public final class b
       try
       {
         localJSONObject.put("result", true);
+        localJSONObject.put("errMsg", "");
         if (paramJSONObject == null) {
           continue;
         }
@@ -90,13 +43,43 @@ public final class b
       }
       catch (JSONException paramJSONObject)
       {
-        ac.printErrStackTrace("liteApp.LiteAppJsApiCallback", paramJSONObject, "callback", new Object[0]);
+        ad.printErrStackTrace("liteApp.LiteAppJsApiCallback", paramJSONObject, "callback", new Object[0]);
         continue;
       }
-      LiteAppCenter.jsApiCallback(this.mAppId, this.tVV, this.tVW, this.tVX, localJSONObject.toString(), false);
-      AppMethodBeat.o(208155);
+      LiteAppCenter.jsApiCallback(this.mAppId, this.uYE, this.uYF, this.uYG, localJSONObject.toString(), false);
+      AppMethodBeat.o(214621);
       return;
       localJSONObject.put("data", new JSONObject());
+    }
+  }
+  
+  public final void aov(String paramString)
+  {
+    AppMethodBeat.i(214622);
+    JSONObject localJSONObject;
+    if (this.uYG >= 0L) {
+      localJSONObject = new JSONObject();
+    }
+    for (;;)
+    {
+      try
+      {
+        localJSONObject.put("result", false);
+        localJSONObject.put("data", new JSONObject());
+        if (paramString == null) {
+          continue;
+        }
+        localJSONObject.put("errMsg", paramString);
+      }
+      catch (JSONException paramString)
+      {
+        ad.printErrStackTrace("liteApp.LiteAppJsApiCallback", paramString, "callback", new Object[0]);
+        continue;
+      }
+      LiteAppCenter.jsApiCallback(this.mAppId, this.uYE, this.uYF, this.uYG, localJSONObject.toString(), false);
+      AppMethodBeat.o(214622);
+      return;
+      localJSONObject.put("errMsg", "");
     }
   }
 }

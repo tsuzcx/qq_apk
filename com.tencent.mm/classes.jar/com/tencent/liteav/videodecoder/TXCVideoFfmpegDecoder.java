@@ -2,7 +2,7 @@ package com.tencent.liteav.videodecoder;
 
 import android.view.Surface;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
@@ -24,7 +24,7 @@ public class TXCVideoFfmpegDecoder
   static
   {
     AppMethodBeat.i(16646);
-    d.f();
+    f.f();
     nativeClassInit();
     AppMethodBeat.o(16646);
   }

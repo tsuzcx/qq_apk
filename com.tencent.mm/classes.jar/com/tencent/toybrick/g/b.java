@@ -5,7 +5,7 @@ import com.tencent.toybrick.c.f;
 
 public abstract interface b<R, T extends f>
 {
-  public abstract R fHs();
+  public abstract R fYJ();
   
   public static abstract class a<T extends f>
     implements b<Boolean, T>
@@ -25,7 +25,7 @@ public abstract interface b<R, T extends f>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.toybrick.g.b
  * JD-Core Version:    0.7.0.1
  */

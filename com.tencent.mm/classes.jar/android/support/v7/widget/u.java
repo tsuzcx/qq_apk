@@ -44,15 +44,15 @@ public abstract interface u
   
   public abstract boolean hideOverflowMenu();
   
-  public abstract boolean ia();
-  
-  public abstract boolean ib();
-  
-  public abstract void ic();
+  public abstract boolean is();
   
   public abstract boolean isOverflowMenuShowing();
   
-  public abstract ViewGroup jd();
+  public abstract boolean it();
+  
+  public abstract void iu();
+  
+  public abstract ViewGroup jt();
   
   public abstract void setBackgroundDrawable(Drawable paramDrawable);
   

@@ -13,11 +13,11 @@ import com.tencent.mm.plugin.ball.c.e;
 import com.tencent.mm.plugin.ball.f.d;
 import com.tencent.mm.plugin.ball.f.d.a;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.svg.a.a;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,91 +30,91 @@ import java.util.Set;
 public final class c
   implements e
 {
-  private static final int niI;
-  private static final int niJ;
-  private static final int niK;
-  private static final int niL;
-  private static final int niM;
-  private static final int niN;
-  private static final int niO;
-  private static final int niP;
-  private static final int niQ;
-  private static final int niR;
+  private static final int nJe;
+  private static final int nJf;
+  private static final int nJg;
+  private static final int nJh;
+  private static final int nJi;
+  private static final int nJj;
+  private static final int nJk;
+  private static final int nJl;
+  private static final int nJm;
+  private static final int nJn;
   private final Context mContext;
-  public final b niS;
-  private final c niT;
-  private String niU;
-  private final Map<String, Integer> niV;
-  private final b niW;
+  public final b nJo;
+  private final c nJp;
+  private String nJq;
+  private final Map<String, Integer> nJr;
+  private final b nJs;
   
   static
   {
     AppMethodBeat.i(106429);
-    niI = ai.getContext().getResources().getDimensionPixelSize(2131166323);
-    niJ = ai.getContext().getResources().getDimensionPixelSize(2131166313);
-    niK = ai.getContext().getResources().getDimensionPixelSize(2131166335);
-    niL = ai.getContext().getResources().getDimensionPixelSize(2131166317);
-    niM = ai.getContext().getResources().getDimensionPixelSize(2131166315);
-    niN = ai.getContext().getResources().getDimensionPixelSize(2131166322);
-    niO = ai.getContext().getResources().getDimensionPixelSize(2131166312);
-    niP = ai.getContext().getResources().getDimensionPixelSize(2131166334);
-    niQ = ai.getContext().getResources().getDimensionPixelSize(2131166316);
-    niR = ai.getContext().getResources().getDimensionPixelSize(2131166314);
+    nJe = aj.getContext().getResources().getDimensionPixelSize(2131166323);
+    nJf = aj.getContext().getResources().getDimensionPixelSize(2131166313);
+    nJg = aj.getContext().getResources().getDimensionPixelSize(2131166335);
+    nJh = aj.getContext().getResources().getDimensionPixelSize(2131166317);
+    nJi = aj.getContext().getResources().getDimensionPixelSize(2131166315);
+    nJj = aj.getContext().getResources().getDimensionPixelSize(2131166322);
+    nJk = aj.getContext().getResources().getDimensionPixelSize(2131166312);
+    nJl = aj.getContext().getResources().getDimensionPixelSize(2131166334);
+    nJm = aj.getContext().getResources().getDimensionPixelSize(2131166316);
+    nJn = aj.getContext().getResources().getDimensionPixelSize(2131166314);
     AppMethodBeat.o(106429);
   }
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(106422);
-    this.niW = new b()
+    this.nJs = new b()
     {
       public final void a(Bitmap paramAnonymousBitmap, c.a paramAnonymousa)
       {
         AppMethodBeat.i(106406);
-        if (!paramAnonymousa.niZ.equals(c.a(c.this)))
+        if (!paramAnonymousa.nJv.equals(c.a(c.this)))
         {
-          ac.i("MicroMsg.FloatBallCrescentViewHelper", "OnBitmapLoad, listKey not same");
+          ad.i("MicroMsg.FloatBallCrescentViewHelper", "OnBitmapLoad, listKey not same");
           AppMethodBeat.o(106406);
           return;
         }
         int i = paramAnonymousa.index;
-        ac.i("MicroMsg.FloatBallCrescentViewHelper", "OnBitmapLoad, index:%d, bitmap:%s", new Object[] { Integer.valueOf(i), paramAnonymousBitmap });
+        ad.i("MicroMsg.FloatBallCrescentViewHelper", "OnBitmapLoad, index:%d, bitmap:%s", new Object[] { Integer.valueOf(i), paramAnonymousBitmap });
         paramAnonymousa = c.b(c.this);
-        if ((!paramAnonymousa.mInited) && (i >= 0) && (i < paramAnonymousa.nis.size()))
+        if ((!paramAnonymousa.mInited) && (i >= 0) && (i < paramAnonymousa.nIO.size()))
         {
-          ac.i("MicroMsg.FloatBallCrescentView", "updateIconInfoBitmap, before init, oldBitmap:%s, newBitmap:%s", new Object[] { ((b.d)paramAnonymousa.nis.get(i)).bitmap, paramAnonymousBitmap });
-          ((b.d)paramAnonymousa.nis.get(i)).bitmap = paramAnonymousBitmap;
+          ad.i("MicroMsg.FloatBallCrescentView", "updateIconInfoBitmap, before init, oldBitmap:%s, newBitmap:%s", new Object[] { ((b.d)paramAnonymousa.nIO.get(i)).bitmap, paramAnonymousBitmap });
+          ((b.d)paramAnonymousa.nIO.get(i)).bitmap = paramAnonymousBitmap;
         }
         for (;;)
         {
           c.a(c.this, paramAnonymousBitmap, i, c.a(c.this));
           AppMethodBeat.o(106406);
           return;
-          if ((i < 0) || (i >= paramAnonymousa.nik.size()))
+          if ((i < 0) || (i >= paramAnonymousa.nIG.size()))
           {
-            ac.i("MicroMsg.FloatBallCrescentView", "updateIconInfoBitmap, invalid range, index:%s, size:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramAnonymousa.nik.size()) });
+            ad.i("MicroMsg.FloatBallCrescentView", "updateIconInfoBitmap, invalid range, index:%s, size:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramAnonymousa.nIG.size()) });
           }
           else
           {
-            ac.i("MicroMsg.FloatBallCrescentView", "updateIconInfoBitmap, after init, oldBitmap:%s, newBitmap:%s", new Object[] { ((b.c)paramAnonymousa.nik.get(i)).bHp().bitmap, paramAnonymousBitmap });
-            ((b.c)paramAnonymousa.nik.get(i)).bHp().bitmap = paramAnonymousBitmap;
-            if (!paramAnonymousa.nip)
+            ad.i("MicroMsg.FloatBallCrescentView", "updateIconInfoBitmap, after init, oldBitmap:%s, newBitmap:%s", new Object[] { ((b.c)paramAnonymousa.nIG.get(i)).bLz().bitmap, paramAnonymousBitmap });
+            ((b.c)paramAnonymousa.nIG.get(i)).bLz().bitmap = paramAnonymousBitmap;
+            if (!paramAnonymousa.nIL)
             {
-              ac.i("MicroMsg.FloatBallCrescentView", "updateIconInfoBitmap, not animating");
+              ad.i("MicroMsg.FloatBallCrescentView", "updateIconInfoBitmap, not animating");
               paramAnonymousa.postInvalidate();
             }
             else
             {
-              ac.i("MicroMsg.FloatBallCrescentView", "updateIconInfoBitmap, is animating");
+              ad.i("MicroMsg.FloatBallCrescentView", "updateIconInfoBitmap, is animating");
             }
           }
         }
       }
     };
-    this.niS = new b(paramContext);
+    this.nJo = new b(paramContext);
     this.mContext = paramContext;
-    this.niT = new c(this.mContext);
-    this.niV = new HashMap();
+    this.nJp = new c(this.mContext);
+    this.nJr = new HashMap();
     AppMethodBeat.o(106422);
   }
   
@@ -123,24 +123,24 @@ public final class c
     AppMethodBeat.i(106426);
     d.a(paramBitmap, new d.a()
     {
-      public final void xy(int paramAnonymousInt)
+      public final void ye(int paramAnonymousInt)
       {
         AppMethodBeat.i(106407);
         if (!paramString.equals(c.a(c.this)))
         {
-          ac.i("MicroMsg.FloatBallCrescentViewHelper", "pickColor listKey not same");
+          ad.i("MicroMsg.FloatBallCrescentViewHelper", "pickColor listKey not same");
           AppMethodBeat.o(106407);
           return;
         }
         b localb = c.b(c.this);
         int i = paramInt;
-        if ((i < 0) || (i >= localb.nik.size()))
+        if ((i < 0) || (i >= localb.nIG.size()))
         {
           AppMethodBeat.o(106407);
           return;
         }
-        ((b.c)localb.nik.get(i)).bHp().niF = paramAnonymousInt;
-        if (!localb.nip) {
+        ((b.c)localb.nIG.get(i)).bLz().nJb = paramAnonymousInt;
+        if (!localb.nIL) {
           localb.postInvalidate();
         }
         AppMethodBeat.o(106407);
@@ -149,7 +149,7 @@ public final class c
     AppMethodBeat.o(106426);
   }
   
-  private int bX(List<BallInfo> paramList)
+  private int bY(List<BallInfo> paramList)
   {
     int j = 0;
     AppMethodBeat.i(106424);
@@ -161,15 +161,15 @@ public final class c
       localHashMap.put(((BallInfo)paramList.get(i)).key + "_" + ((BallInfo)paramList.get(i)).type, Integer.valueOf(i));
       i += 1;
     }
-    int m = paramList.size() - this.niV.size();
+    int m = paramList.size() - this.nJr.size();
     i = k;
     Object localObject;
-    if (this.niV.size() != 0)
+    if (this.nJr.size() != 0)
     {
       if (m != -1) {
         break label230;
       }
-      paramList = this.niV.entrySet().iterator();
+      paramList = this.nJr.entrySet().iterator();
       while (paramList.hasNext())
       {
         localObject = (Map.Entry)paramList.next();
@@ -180,8 +180,8 @@ public final class c
     }
     for (;;)
     {
-      this.niV.clear();
-      this.niV.putAll(localHashMap);
+      this.nJr.clear();
+      this.nJr.putAll(localHashMap);
       AppMethodBeat.o(106424);
       return i;
       label230:
@@ -195,7 +195,7 @@ public final class c
             break;
           }
           localObject = ((BallInfo)paramList.get(j)).key + "_" + ((BallInfo)paramList.get(j)).type;
-          if (!this.niV.containsKey(localObject)) {
+          if (!this.nJr.containsKey(localObject)) {
             k = j;
           }
           j += 1;
@@ -205,7 +205,7 @@ public final class c
     }
   }
   
-  private static String bY(List<BallInfo> paramList)
+  private static String bZ(List<BallInfo> paramList)
   {
     AppMethodBeat.i(106425);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -213,60 +213,60 @@ public final class c
     while (i < paramList.size())
     {
       BallInfo localBallInfo = (BallInfo)paramList.get(i);
-      localStringBuilder.append(localBallInfo.key).append(localBallInfo.type).append(localBallInfo.drM).append(localBallInfo.lzV).append("|");
+      localStringBuilder.append(localBallInfo.key).append(localBallInfo.type).append(localBallInfo.dDH).append(localBallInfo.lZt).append("|");
       i += 1;
     }
-    paramList = ah.dg(localStringBuilder.toString());
+    paramList = ai.ee(localStringBuilder.toString());
     AppMethodBeat.o(106425);
     return paramList;
   }
   
-  private static int xA(int paramInt)
+  private static int yf(int paramInt)
   {
     if (paramInt == 1) {
-      return niN;
+      return nJe;
     }
     if (paramInt == 2) {
-      return niO;
+      return nJf;
     }
     if (paramInt == 3) {
-      return niP;
+      return nJg;
     }
     if (paramInt == 4) {
-      return niQ;
+      return nJh;
     }
-    return niR;
+    return nJi;
   }
   
-  private static int xz(int paramInt)
+  private static int yg(int paramInt)
   {
     if (paramInt == 1) {
-      return niI;
+      return nJj;
     }
     if (paramInt == 2) {
-      return niJ;
+      return nJk;
     }
     if (paramInt == 3) {
-      return niK;
+      return nJl;
     }
     if (paramInt == 4) {
-      return niL;
+      return nJm;
     }
-    return niM;
+    return nJn;
   }
   
   public final void a(List<BallInfo> paramList, BallInfo paramBallInfo)
   {
     AppMethodBeat.i(106423);
-    paramList = d.bV(paramList);
-    paramBallInfo = bY(paramList);
-    if (paramBallInfo.equals(this.niU))
+    paramList = d.bW(paramList);
+    paramBallInfo = bZ(paramList);
+    if (paramBallInfo.equals(this.nJq))
     {
-      ac.i("MicroMsg.FloatBallCrescentViewHelper", "onFloatBallInfoChanged, list key not change");
+      ad.i("MicroMsg.FloatBallCrescentViewHelper", "onFloatBallInfoChanged, list key not change");
       AppMethodBeat.o(106423);
       return;
     }
-    this.niU = paramBallInfo;
+    this.nJq = paramBallInfo;
     int j = paramList.size();
     paramBallInfo = new ArrayList();
     int i = 0;
@@ -274,25 +274,25 @@ public final class c
     {
       BallInfo localBallInfo = (BallInfo)paramList.get(i);
       b.d locald = new b.d();
-      this.niT.a(localBallInfo, locald, i, this.niU, this.niW);
+      this.nJp.a(localBallInfo, locald, i, this.nJq, this.nJs);
       if (locald.isValid())
       {
         paramBallInfo.add(locald);
         if (locald.bitmap != null) {
-          a(locald.bitmap, i, this.niU);
+          a(locald.bitmap, i, this.nJq);
         }
       }
       i += 1;
     }
-    i = bX(paramList);
-    this.niS.a(paramBallInfo, xz(j), xA(j), i);
+    i = bY(paramList);
+    this.nJo.a(paramBallInfo, yf(j), yg(j), i);
     AppMethodBeat.o(106423);
   }
   
   static final class a
   {
     int index;
-    String niZ;
+    String nJv;
     String url;
   }
   
@@ -304,29 +304,29 @@ public final class c
   static final class c
   {
     final Context mContext;
-    final h<String, Bitmap> nja;
-    final Map<Integer, Integer> njb;
-    final a njc;
+    final h<String, Bitmap> nJw;
+    final Map<Integer, Integer> nJx;
+    final a nJy;
     
     c(Context paramContext)
     {
       AppMethodBeat.i(106414);
       this.mContext = paramContext;
-      this.njc = new a();
-      this.nja = new h(24);
-      this.njb = new HashMap();
+      this.nJy = new a();
+      this.nJw = new h(24);
+      this.nJx = new HashMap();
       AppMethodBeat.o(106414);
     }
     
-    private static int F(BallInfo paramBallInfo)
+    private static int G(BallInfo paramBallInfo)
     {
       AppMethodBeat.i(176976);
-      if (paramBallInfo.nfB) {}
-      for (int i = d.xx(paramBallInfo.state);; i = -1)
+      if (paramBallInfo.nFX) {}
+      for (int i = d.yd(paramBallInfo.state);; i = -1)
       {
         int j = i;
         if (i == -1) {
-          j = paramBallInfo.lzV;
+          j = paramBallInfo.lZt;
         }
         AppMethodBeat.o(176976);
         return j;
@@ -338,12 +338,12 @@ public final class c
       AppMethodBeat.i(106421);
       final String str = parama.url;
       final int i = parama.index;
-      com.tencent.mm.modelappbrand.a.b.aAS().a(new b.k()
+      com.tencent.mm.modelappbrand.a.b.aDV().a(new b.k()
       {
-        public final String Ap()
+        public final String BM()
         {
           AppMethodBeat.i(106411);
-          String str = ah.dg(String.format("%s#%d", new Object[] { str, Integer.valueOf(i) }));
+          String str = ai.ee(String.format("%s#%d", new Object[] { str, Integer.valueOf(i) }));
           AppMethodBeat.o(106411);
           return str;
         }
@@ -351,33 +351,33 @@ public final class c
         public final void E(final Bitmap paramAnonymousBitmap)
         {
           AppMethodBeat.i(106409);
-          ap.f(new Runnable()
+          aq.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(106408);
-              ac.i("MicroMsg.FloatBallCrescentViewHelper", "loadBitmapFromUrl, onBitmapLoaded, url:%s", new Object[] { c.c.1.this.val$url });
-              c.c.this.nja.put(ah.dg(c.c.1.this.val$url), paramAnonymousBitmap);
-              c.c.1.this.njd.a(paramAnonymousBitmap, c.c.1.this.nje);
+              ad.i("MicroMsg.FloatBallCrescentViewHelper", "loadBitmapFromUrl, onBitmapLoaded, url:%s", new Object[] { c.c.1.this.val$url });
+              c.c.this.nJw.put(ai.ee(c.c.1.this.val$url), paramAnonymousBitmap);
+              c.c.1.this.nJz.a(paramAnonymousBitmap, c.c.1.this.nJA);
               AppMethodBeat.o(106408);
             }
           });
           AppMethodBeat.o(106409);
         }
         
-        public final void aBa() {}
+        public final void aEd() {}
         
-        public final void of()
+        public final void ox()
         {
           AppMethodBeat.i(106410);
           AppMethodBeat.o(106410);
         }
       }, str, new b.h()
       {
-        public final String Ap()
+        public final String BM()
         {
           AppMethodBeat.i(106413);
-          String str = ah.dg(String.format("%s#%d", new Object[] { str, Integer.valueOf(i) }));
+          String str = ai.ee(String.format("%s#%d", new Object[] { str, Integer.valueOf(i) }));
           AppMethodBeat.o(106413);
           return str;
         }
@@ -385,10 +385,10 @@ public final class c
         public final Bitmap F(Bitmap paramAnonymousBitmap)
         {
           AppMethodBeat.i(106412);
-          int i = c.bHq();
+          int i = c.bLA();
           float f1 = i / paramAnonymousBitmap.getWidth();
           float f2 = i / paramAnonymousBitmap.getHeight();
-          ac.i("MicroMsg.FloatBallCrescentViewHelper", "loadBitmapFromUrl, transform targetSize:%d scaled:%f", new Object[] { Integer.valueOf(i), Float.valueOf(f2) });
+          ad.i("MicroMsg.FloatBallCrescentViewHelper", "loadBitmapFromUrl, transform targetSize:%d scaled:%f", new Object[] { Integer.valueOf(i), Float.valueOf(f2) });
           Object localObject = new Matrix();
           ((Matrix)localObject).postScale(f1, f2);
           localObject = Bitmap.createBitmap(paramAnonymousBitmap, 0, 0, paramAnonymousBitmap.getWidth(), paramAnonymousBitmap.getHeight(), (Matrix)localObject, true);
@@ -410,13 +410,13 @@ public final class c
       }
       try
       {
-        paramd.bitmap = xB(paramInt);
+        paramd.bitmap = yh(paramInt);
         AppMethodBeat.o(106417);
         return true;
       }
       catch (Exception paramd)
       {
-        ac.w("MicroMsg.FloatBallCrescentViewHelper", "loadResource exp:%s", new Object[] { paramd.getCause() });
+        ad.w("MicroMsg.FloatBallCrescentViewHelper", "loadResource exp:%s", new Object[] { paramd.getCause() });
         AppMethodBeat.o(106417);
       }
       return false;
@@ -425,18 +425,18 @@ public final class c
     private boolean a(BallInfo paramBallInfo, b.d paramd)
     {
       AppMethodBeat.i(106419);
-      if (paramBallInfo.nfB) {
-        ac.i("MicroMsg.FloatBallCrescentViewHelper", "loadDefault, passive icon res");
+      if (paramBallInfo.nFX) {
+        ad.i("MicroMsg.FloatBallCrescentViewHelper", "loadDefault, passive icon res");
       }
-      for (int i = d.xx(paramBallInfo.state);; i = -1)
+      for (int i = d.yd(paramBallInfo.state);; i = -1)
       {
         int j = i;
         if (i == -1)
         {
-          ac.i("MicroMsg.FloatBallCrescentViewHelper", "loadDefault, default icon res");
-          j = d.xw(paramBallInfo.type);
+          ad.i("MicroMsg.FloatBallCrescentViewHelper", "loadDefault, default icon res");
+          j = d.yc(paramBallInfo.type);
         }
-        paramd.bitmap = xB(j);
+        paramd.bitmap = yh(j);
         AppMethodBeat.o(106419);
         return true;
       }
@@ -445,45 +445,45 @@ public final class c
     private boolean b(BallInfo paramBallInfo, b.d paramd, int paramInt, String paramString, c.b paramb)
     {
       AppMethodBeat.i(106418);
-      paramBallInfo = paramBallInfo.drM;
-      if (bs.isNullOrNil(paramBallInfo))
+      paramBallInfo = paramBallInfo.dDH;
+      if (bt.isNullOrNil(paramBallInfo))
       {
         AppMethodBeat.o(106418);
         return false;
       }
-      Object localObject = ah.dg(paramBallInfo);
-      localObject = (Bitmap)this.nja.get(localObject);
+      Object localObject = ai.ee(paramBallInfo);
+      localObject = (Bitmap)this.nJw.get(localObject);
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
         paramd.bitmap = ((Bitmap)localObject);
-        ac.i("MicroMsg.FloatBallCrescentViewHelper", "loadIconUrl, from cache");
+        ad.i("MicroMsg.FloatBallCrescentViewHelper", "loadIconUrl, from cache");
         AppMethodBeat.o(106418);
         return true;
       }
       paramd = new c.a((byte)0);
       paramd.url = paramBallInfo;
       paramd.index = paramInt;
-      paramd.niZ = paramString;
+      paramd.nJv = paramString;
       a(paramd, paramb);
       AppMethodBeat.o(106418);
       return false;
     }
     
-    private Bitmap xB(int paramInt)
+    private Bitmap yh(int paramInt)
     {
       AppMethodBeat.i(106420);
-      String str = ah.dg(String.valueOf(paramInt));
-      Bitmap localBitmap2 = (Bitmap)this.nja.get(str);
+      String str = ai.ee(String.valueOf(paramInt));
+      Bitmap localBitmap2 = (Bitmap)this.nJw.get(str);
       if ((localBitmap2 != null) && (!localBitmap2.isRecycled()))
       {
-        ac.i("MicroMsg.FloatBallCrescentViewHelper", "getResourceBitmap, from cache");
+        ad.i("MicroMsg.FloatBallCrescentViewHelper", "getResourceBitmap, from cache");
         AppMethodBeat.o(106420);
         return localBitmap2;
       }
       Bitmap localBitmap1;
-      if (this.njc.i(this.mContext.getResources(), paramInt))
+      if (this.nJy.i(this.mContext.getResources(), paramInt))
       {
-        ac.i("MicroMsg.FloatBallCrescentViewHelper", "getResourceBitmap svg, resId:%s", new Object[] { Integer.valueOf(paramInt) });
+        ad.i("MicroMsg.FloatBallCrescentViewHelper", "getResourceBitmap svg, resId:%s", new Object[] { Integer.valueOf(paramInt) });
         Bitmap localBitmap3 = a.h(this.mContext.getResources(), paramInt);
         localBitmap1 = localBitmap2;
         if (localBitmap3 != null)
@@ -492,7 +492,7 @@ public final class c
           if (!localBitmap3.isRecycled())
           {
             int i = localBitmap3.getWidth();
-            float f = (float)(c.niI * 1.0D / i);
+            float f = (float)(c.nJe * 1.0D / i);
             localBitmap1 = a.b(this.mContext.getResources(), paramInt, f);
             localBitmap3.recycle();
           }
@@ -500,10 +500,10 @@ public final class c
       }
       for (;;)
       {
-        this.nja.put(str, localBitmap1);
+        this.nJw.put(str, localBitmap1);
         AppMethodBeat.o(106420);
         return localBitmap1;
-        ac.i("MicroMsg.FloatBallCrescentViewHelper", "getResourceBitmap normal, resId:%s", new Object[] { Integer.valueOf(paramInt) });
+        ad.i("MicroMsg.FloatBallCrescentViewHelper", "getResourceBitmap normal, resId:%s", new Object[] { Integer.valueOf(paramInt) });
         localBitmap1 = BitmapFactory.decodeResource(this.mContext.getResources(), paramInt);
       }
     }
@@ -511,19 +511,19 @@ public final class c
     public final void a(BallInfo paramBallInfo, b.d paramd, int paramInt, String paramString, c.b paramb)
     {
       AppMethodBeat.i(106415);
-      if (a(F(paramBallInfo), paramd))
+      if (a(G(paramBallInfo), paramd))
       {
-        ac.i("MicroMsg.FloatBallCrescentViewHelper", "load, loadResource");
+        ad.i("MicroMsg.FloatBallCrescentViewHelper", "load, loadResource");
         AppMethodBeat.o(106415);
         return;
       }
       if (b(paramBallInfo, paramd, paramInt, paramString, paramb))
       {
-        ac.i("MicroMsg.FloatBallCrescentViewHelper", "load, loadIconUrl");
+        ad.i("MicroMsg.FloatBallCrescentViewHelper", "load, loadIconUrl");
         AppMethodBeat.o(106415);
         return;
       }
-      ac.i("MicroMsg.FloatBallCrescentViewHelper", "load, loadDefault");
+      ad.i("MicroMsg.FloatBallCrescentViewHelper", "load, loadDefault");
       a(paramBallInfo, paramd);
       AppMethodBeat.o(106415);
     }
@@ -531,7 +531,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.c
  * JD-Core Version:    0.7.0.1
  */

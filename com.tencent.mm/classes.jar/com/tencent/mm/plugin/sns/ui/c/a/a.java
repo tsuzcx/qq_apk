@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.sns.ui.c.a;
 
 import android.view.View;
 import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.plugin.sns.ui.an;
-import com.tencent.mm.plugin.sns.ui.d.b;
+import com.tencent.mm.plugin.sns.ui.aq;
+import com.tencent.mm.plugin.sns.ui.d.c;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
 
 public abstract class a
 {
+  public View AaE;
+  public aq Atv;
   public View contentView;
-  public View khe;
+  public View kBS;
   protected TimeLineObject timeLineObject;
-  public p xIq;
-  protected b xLF;
-  public View yJk;
-  public an zbE;
+  public p yXF;
+  protected c zaU;
   
-  public abstract void l(View paramView1, View paramView2);
+  public abstract void m(View paramView1, View paramView2);
   
   public void onPause() {}
   

@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.wallet_core.ui.ibg;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.ui.WalletOrderInfoOldUI;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.c.t;
 import java.util.Iterator;
 import java.util.Set;
@@ -20,16 +20,16 @@ public class WalletIbgOrderInfoOldUI
   public final void done()
   {
     AppMethodBeat.i(71447);
-    ac.i("MicroMsg.WalletIbgOrderInfoOldUI", "hy: result is not set manly. set to OK");
-    Iterator localIterator = this.BGg.iterator();
+    ad.i("MicroMsg.WalletIbgOrderInfoOldUI", "hy: result is not set manly. set to OK");
+    Iterator localIterator = this.Dgy.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (!bs.isNullOrNil(str))
+      if (!bt.isNullOrNil(str))
       {
-        ac.d("MicroMsg.WalletIbgOrderInfoOldUI", "hy: doing netscene subscribe...appName: %s", new Object[] { str });
-        g.agS();
-        g.agQ().ghe.a(new t(str), 0);
+        ad.d("MicroMsg.WalletIbgOrderInfoOldUI", "hy: doing netscene subscribe...appName: %s", new Object[] { str });
+        g.ajD();
+        g.ajB().gAO.a(new t(str), 0);
       }
     }
     setResult(-1);
@@ -37,15 +37,15 @@ public class WalletIbgOrderInfoOldUI
     AppMethodBeat.o(71447);
   }
   
-  public final Orders etz()
+  public final Orders eHF()
   {
-    return this.BhZ;
+    return this.CIn;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(71446);
-    this.BhZ = WalletIbgOrderInfoUI.BhZ;
+    this.CIn = WalletIbgOrderInfoUI.CIn;
     super.onCreate(paramBundle);
     AppMethodBeat.o(71446);
   }

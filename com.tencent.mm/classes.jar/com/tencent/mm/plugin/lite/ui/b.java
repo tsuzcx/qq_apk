@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.lite.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.wax.c.a.a;
 
 public final class b
@@ -9,30 +9,30 @@ public final class b
 {
   public final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(208196);
-    ac.d(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(208196);
+    AppMethodBeat.i(214661);
+    ad.d(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(214661);
   }
   
   public final void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(208197);
-    ac.i(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(208197);
+    AppMethodBeat.i(214662);
+    ad.i(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(214662);
   }
   
   public final void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(208195);
-    ac.v(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(208195);
+    AppMethodBeat.i(214660);
+    ad.v(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(214660);
   }
   
   public final void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(208198);
-    ac.w(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(208198);
+    AppMethodBeat.i(214663);
+    ad.w(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(214663);
   }
 }
 

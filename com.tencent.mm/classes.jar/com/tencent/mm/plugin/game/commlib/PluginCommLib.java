@@ -1,32 +1,37 @@
 package com.tencent.mm.plugin.game.commlib;
 
+import android.content.Context;
+import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.n.a;
-import com.tencent.mm.g.a.li;
+import com.tencent.mm.g.a.lr;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.plugin.game.commlib.util.BatteryManager;
+import com.tencent.mm.plugin.game.commlib.util.BatteryManager.BatteryChangedReceiver;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class PluginCommLib
   extends f
   implements com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.game.commlib.a.b
 {
   private n.a appForegroundListener;
-  private com.tencent.mm.sdk.b.c qrq;
+  private com.tencent.mm.sdk.b.c raJ;
   
   public PluginCommLib()
   {
     AppMethodBeat.i(89944);
-    this.qrq = new com.tencent.mm.sdk.b.c() {};
+    this.raJ = new com.tencent.mm.sdk.b.c() {};
     this.appForegroundListener = new n.a()
     {
       public final void onAppBackground(String paramAnonymousString)
       {
         AppMethodBeat.i(89943);
-        if ((com.tencent.mm.kernel.g.agM()) && (com.tencent.mm.kernel.g.agP().ggT))
+        if ((com.tencent.mm.kernel.g.ajx()) && (com.tencent.mm.kernel.g.ajA().gAD))
         {
-          com.tencent.mm.kernel.g.agP();
-          if (!com.tencent.mm.kernel.a.afS()) {
-            com.tencent.mm.plugin.game.commlib.e.b.clean();
+          com.tencent.mm.kernel.g.ajA();
+          if (!com.tencent.mm.kernel.a.aiE()) {
+            com.tencent.mm.plugin.game.commlib.util.b.clean();
           }
         }
         AppMethodBeat.o(89943);
@@ -35,10 +40,10 @@ public class PluginCommLib
       public final void onAppForeground(String paramAnonymousString)
       {
         AppMethodBeat.i(89942);
-        if ((com.tencent.mm.kernel.g.agM()) && (com.tencent.mm.kernel.g.agP().ggT))
+        if ((com.tencent.mm.kernel.g.ajx()) && (com.tencent.mm.kernel.g.ajA().gAD))
         {
-          com.tencent.mm.kernel.g.agP();
-          com.tencent.mm.kernel.a.afS();
+          com.tencent.mm.kernel.g.ajA();
+          com.tencent.mm.kernel.a.aiE();
         }
         AppMethodBeat.o(89942);
       }
@@ -49,14 +54,14 @@ public class PluginCommLib
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(89945);
-    e.agQ(paramg.mProcessName);
+    e.aln(paramg.mProcessName);
     AppMethodBeat.o(89945);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(89946);
-    if (paramg.ahL()) {
+    if (paramg.akw()) {
       com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.game.commlib.a.a.class, new d());
     }
     AppMethodBeat.o(89946);
@@ -65,17 +70,28 @@ public class PluginCommLib
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(89947);
-    com.tencent.mm.sdk.b.a.GpY.b(this.qrq);
+    com.tencent.mm.sdk.b.a.IbL.b(this.raJ);
     this.appForegroundListener.alive();
+    if (BatteryManager.tSW == null) {
+      BatteryManager.tSW = new BatteryManager.BatteryChangedReceiver((byte)0);
+    }
+    paramc = new IntentFilter();
+    paramc.addAction("android.intent.action.BATTERY_OKAY");
+    paramc.addAction("android.intent.action.BATTERY_LOW");
+    aj.getContext().registerReceiver(BatteryManager.tSW, paramc);
     AppMethodBeat.o(89947);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(89948);
-    com.tencent.mm.sdk.b.a.GpY.d(this.qrq);
-    com.tencent.mm.plugin.game.commlib.e.a.bxi();
+    com.tencent.mm.sdk.b.a.IbL.d(this.raJ);
+    com.tencent.mm.plugin.game.commlib.util.a.bBo();
     this.appForegroundListener.dead();
+    if (BatteryManager.tSW != null) {
+      aj.getContext().unregisterReceiver(BatteryManager.tSW);
+    }
+    BatteryManager.tSW = null;
     AppMethodBeat.o(89948);
   }
 }

@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class np
   extends b
 {
-  public a dpX;
-  
   public np()
   {
     this((byte)0);
@@ -15,22 +12,8 @@ public final class np
   
   private np(byte paramByte)
   {
-    AppMethodBeat.i(126680);
-    this.dpX = new a();
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(126680);
-  }
-  
-  public static final class a
-  {
-    public int dgL;
-    public long dpY;
-    public boolean dpZ = false;
-    public int length;
-    public String mediaId;
-    public int offset;
-    public int retCode;
   }
 }
 

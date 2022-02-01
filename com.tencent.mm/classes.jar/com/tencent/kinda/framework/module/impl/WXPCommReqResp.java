@@ -2,24 +2,27 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.KNetworkMockManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.l;
+import com.tencent.mm.al.l;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.c;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.lang.ref.WeakReference;
 
 public class WXPCommReqResp
   extends l
 {
   private int funcId;
-  private KNetworkMockManager m_mockMgr;
+  public WeakReference<KNetworkMockManager> m_mockMgr;
+  private int newExtFlag;
   private int option;
   private Req req;
   private WXPRequestWrapper requestWrapper;
   private Resp resp;
   private WXPResponseWrapper responseWrapper;
+  private byte[] transferHeader;
   private String uri;
   
   public WXPCommReqResp(byte[] paramArrayOfByte, String paramString1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5, String paramString2, KNetworkMockManager paramKNetworkMockManager)
@@ -34,8 +37,25 @@ public class WXPCommReqResp
     this.resp = new Resp(this.responseWrapper, paramInt3, paramBoolean);
     this.uri = paramString1;
     this.funcId = paramInt1;
-    this.m_mockMgr = paramKNetworkMockManager;
+    this.m_mockMgr = new WeakReference(paramKNetworkMockManager);
+    this.newExtFlag = 0;
+    this.transferHeader = null;
     AppMethodBeat.o(18685);
+  }
+  
+  public void addNewExtFlag(int paramInt)
+  {
+    this.newExtFlag |= paramInt;
+  }
+  
+  public void clearNewExtFlag()
+  {
+    this.newExtFlag = 0;
+  }
+  
+  public int getNewExtFlags()
+  {
+    return this.newExtFlag;
   }
   
   public int getOptions()
@@ -85,6 +105,11 @@ public class WXPCommReqResp
     return localWXPResponseWrapper;
   }
   
+  public byte[] getTransHeader()
+  {
+    return this.transferHeader;
+  }
+  
   public final int getType()
   {
     return this.funcId;
@@ -122,12 +147,17 @@ public class WXPCommReqResp
   public String resp2Json(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(18697);
-    String str = null;
-    if (this.m_mockMgr != null) {
-      str = this.m_mockMgr.responseDataToJson(paramArrayOfByte);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.m_mockMgr != null)
+    {
+      localObject1 = localObject2;
+      if (this.m_mockMgr.get() != null) {
+        localObject1 = ((KNetworkMockManager)this.m_mockMgr.get()).responseDataToJson(paramArrayOfByte);
+      }
     }
     AppMethodBeat.o(18697);
-    return str;
+    return localObject1;
   }
   
   public void setOptions(int paramInt)
@@ -140,6 +170,11 @@ public class WXPCommReqResp
     AppMethodBeat.i(18690);
     this.req.setRsaInfo(paramac);
     AppMethodBeat.o(18690);
+  }
+  
+  public void setTransferHeader(byte[] paramArrayOfByte)
+  {
+    this.transferHeader = paramArrayOfByte;
   }
   
   public void setWXPReqData(byte[] paramArrayOfByte)
@@ -160,8 +195,8 @@ public class WXPCommReqResp
   {
     AppMethodBeat.i(18696);
     this.responseWrapper.setNewData(paramString);
-    if (this.m_mockMgr != null) {
-      setWXPRespData(this.m_mockMgr.jsonToResponseData(paramString));
+    if ((this.m_mockMgr != null) && (this.m_mockMgr.get() != null)) {
+      setWXPRespData(((KNetworkMockManager)this.m_mockMgr.get()).jsonToResponseData(paramString));
     }
     AppMethodBeat.o(18696);
   }
@@ -190,7 +225,7 @@ public class WXPCommReqResp
       this.funcId = paramInt1;
       this.cmdId = paramInt2;
       this.needHeader = paramBoolean;
-      setRouteInfo(bs.getInt(paramString, 0));
+      setRouteInfo(bt.getInt(paramString, 0));
       AppMethodBeat.o(18682);
     }
     

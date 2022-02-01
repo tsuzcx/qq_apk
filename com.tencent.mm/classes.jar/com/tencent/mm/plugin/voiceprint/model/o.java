@@ -2,49 +2,49 @@ package com.tencent.mm.plugin.voiceprint.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.xb;
+import com.tencent.mm.g.a.xv;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 public final class o
 {
-  public com.tencent.mm.modelvoice.m Awo;
-  public au Awp;
-  int Awq;
-  int Awr;
+  public com.tencent.mm.modelvoice.m BVJ;
+  public av BVK;
+  int BVL;
+  int BVM;
   
   public o()
   {
     AppMethodBeat.i(29799);
-    this.Awo = null;
-    this.Awp = null;
-    this.Awq = 0;
-    this.Awr = 0;
-    this.Awo = new com.tencent.mm.modelvoice.m();
-    this.Awp = new au(Looper.getMainLooper(), new au.a()
+    this.BVJ = null;
+    this.BVK = null;
+    this.BVL = 0;
+    this.BVM = 0;
+    this.BVJ = new com.tencent.mm.modelvoice.m();
+    this.BVK = new av(Looper.getMainLooper(), new av.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(29798);
-        o.this.Awq += 100;
-        o.this.Awr += o.this.Awo.getMaxAmplitude() * 100 / 100;
-        if (o.this.Awq >= 3000)
+        o.this.BVL += 100;
+        o.this.BVM += o.this.BVJ.getMaxAmplitude() * 100 / 100;
+        if (o.this.BVL >= 3000)
         {
           Object localObject = o.this;
-          ac.d("MicroMsg.VoicePrintNoiseDetector", "onDetectFinish");
-          ((o)localObject).Awo.NX();
-          ((o)localObject).Awp.stopTimer();
-          ((o)localObject).Awr /= 30;
-          if (((o)localObject).Awr >= 30) {}
+          ad.d("MicroMsg.VoicePrintNoiseDetector", "onDetectFinish");
+          ((o)localObject).BVJ.PG();
+          ((o)localObject).BVK.stopTimer();
+          ((o)localObject).BVM /= 30;
+          if (((o)localObject).BVM >= 30) {}
           for (boolean bool = true;; bool = false)
           {
-            ac.d("MicroMsg.VoicePrintNoiseDetector", "average amplitude: %d, hasNoise:%b", new Object[] { Integer.valueOf(((o)localObject).Awr), Boolean.valueOf(bool) });
-            localObject = new xb();
-            ((xb)localObject).dzR.dzS = bool;
-            a.GpY.l((b)localObject);
+            ad.d("MicroMsg.VoicePrintNoiseDetector", "average amplitude: %d, hasNoise:%b", new Object[] { Integer.valueOf(((o)localObject).BVM), Boolean.valueOf(bool) });
+            localObject = new xv();
+            ((xv)localObject).dMe.dMf = bool;
+            a.IbL.l((b)localObject);
             AppMethodBeat.o(29798);
             return false;
           }
@@ -59,29 +59,29 @@ public final class o
   private void stopRecord()
   {
     AppMethodBeat.i(29800);
-    this.Awo.NX();
-    ac.d("MicroMsg.VoicePrintNoiseDetector", "stop record");
+    this.BVJ.PG();
+    ad.d("MicroMsg.VoicePrintNoiseDetector", "stop record");
     AppMethodBeat.o(29800);
   }
   
-  public final void egA()
+  public final void Jw()
   {
     AppMethodBeat.i(29801);
-    ac.d("MicroMsg.VoicePrintNoiseDetector", "start detect noise");
+    ad.d("MicroMsg.VoicePrintNoiseDetector", "start detect noise");
     reset();
-    String str = m.bW("voice_pt_voice_print_noise_detect.rec", true);
-    if (!this.Awo.fE(str))
+    String str = m.cd("voice_pt_voice_print_noise_detect.rec", true);
+    if (!this.BVJ.gz(str))
     {
-      this.Awo.NX();
+      this.BVJ.PG();
       reset();
-      ac.d("MicroMsg.VoicePrintNoiseDetector", "start record fail");
+      ad.d("MicroMsg.VoicePrintNoiseDetector", "start record fail");
     }
     for (;;)
     {
-      this.Awp.au(100L, 100L);
+      this.BVK.az(100L, 100L);
       AppMethodBeat.o(29801);
       return;
-      ac.d("MicroMsg.VoicePrintNoiseDetector", "start record");
+      ad.d("MicroMsg.VoicePrintNoiseDetector", "start record");
     }
   }
   
@@ -89,9 +89,9 @@ public final class o
   {
     AppMethodBeat.i(29802);
     stopRecord();
-    this.Awp.stopTimer();
-    this.Awq = 0;
-    this.Awr = 0;
+    this.BVK.stopTimer();
+    this.BVL = 0;
+    this.BVM = 0;
     AppMethodBeat.o(29802);
   }
 }

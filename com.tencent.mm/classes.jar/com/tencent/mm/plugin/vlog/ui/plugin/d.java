@@ -1,25 +1,53 @@
 package com.tencent.mm.plugin.vlog.ui.plugin;
 
-import android.view.ViewGroup;
-import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout;
-import com.tencent.mm.plugin.vlog.player.VLogCompositionPlayView;
-import com.tencent.mm.ui.widget.cropview.CropLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewProvider;", "", "getCropLayout", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "getOperationLayout", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "getParentLayout", "Landroid/view/ViewGroup;", "getVideoView", "Lcom/tencent/mm/plugin/vlog/player/VLogCompositionPlayView;", "plugin-vlog_release"})
-public abstract interface d
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/plugin/FinderVideoCropLocalConfig;", "", "()V", "TAG", "", "isEnable43RatioVideo", "", "()Z", "plugin-vlog_release"})
+public final class d
 {
-  public abstract ViewGroup egg();
+  public static final d BNj;
   
-  public abstract CropLayout egh();
+  static
+  {
+    AppMethodBeat.i(196201);
+    BNj = new d();
+    AppMethodBeat.o(196201);
+  }
   
-  public abstract VLogCompositionPlayView egi();
-  
-  public abstract WxCropOperationLayout getOperationLayout();
+  public static boolean etr()
+  {
+    AppMethodBeat.i(196200);
+    int i = ((b)g.ab(b.class)).a(b.a.qIe, 0);
+    int j = ax.aQz("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_VIDEO_RATIO_3_4_INT_SYNC", 0);
+    ad.i("MicroMsg.FinderVideoCropLocalConfig", "init, isEnable43RatioVideo:" + i + ", localConfig:" + j);
+    if (j != 0)
+    {
+      if (j == 1)
+      {
+        AppMethodBeat.o(196200);
+        return true;
+      }
+      AppMethodBeat.o(196200);
+      return false;
+    }
+    if (i == 1)
+    {
+      AppMethodBeat.o(196200);
+      return true;
+    }
+    AppMethodBeat.o(196200);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.d
  * JD-Core Version:    0.7.0.1
  */

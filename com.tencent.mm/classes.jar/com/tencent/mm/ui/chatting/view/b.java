@@ -23,40 +23,40 @@ import com.tencent.mm.ui.widget.a.e.b;
 public final class b
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public e.b Ihj;
-  public boolean Ihk;
-  public ViewTreeObserver adE;
-  public View khe;
-  public Dialog lcA;
-  public BottomSheetBehavior lcD;
-  public boolean lcE;
-  public int lcF;
-  public boolean lcH;
+  public e.b JXC;
+  public boolean JXD;
+  public ViewTreeObserver afv;
+  public View kBS;
+  public Dialog lzA;
+  public BottomSheetBehavior lzD;
+  public boolean lzE;
+  public int lzF;
+  public boolean lzH;
   public Context mContext;
-  public View oP;
-  private boolean rVz;
+  public View qI;
+  private boolean sSi;
   
   public b(Context paramContext, View paramView)
   {
     AppMethodBeat.i(185898);
-    this.lcE = false;
-    this.rVz = false;
-    this.Ihk = false;
-    this.lcH = false;
-    this.khe = paramView;
+    this.lzE = false;
+    this.sSi = false;
+    this.JXD = false;
+    this.lzH = false;
+    this.kBS = paramView;
     this.mContext = paramContext;
     if ((this.mContext instanceof Activity)) {
-      this.oP = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
+      this.qI = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
-    this.lcA = new a(this.mContext, 2131820788);
-    this.lcE = aly();
-    if (this.lcA != null) {
-      this.lcA.setContentView(this.khe);
+    this.lzA = new a(this.mContext, 2131820788);
+    this.lzE = aol();
+    if (this.lzA != null) {
+      this.lzA.setContentView(this.kBS);
     }
-    this.lcD = BottomSheetBehavior.l((View)this.khe.getParent());
-    this.lcD.setState(3);
-    if (this.lcA != null) {
-      this.lcA.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.lzD = BottomSheetBehavior.l((View)this.kBS.getParent());
+    this.lzD.setState(3);
+    if (this.lzA != null) {
+      this.lzA.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -82,7 +82,7 @@ public final class b
   private boolean isShowing()
   {
     AppMethodBeat.i(185903);
-    if ((this.lcA != null) && (this.lcA.isShowing()))
+    if ((this.lzA != null) && (this.lzA.isShowing()))
     {
       AppMethodBeat.o(185903);
       return true;
@@ -91,7 +91,7 @@ public final class b
     return false;
   }
   
-  public final boolean aly()
+  public final boolean aol()
   {
     AppMethodBeat.i(185902);
     if (this.mContext.getResources().getConfiguration().orientation == 2)
@@ -103,16 +103,16 @@ public final class b
     return false;
   }
   
-  public final void bmi()
+  public final void bpT()
   {
     AppMethodBeat.i(185901);
-    if (this.lcA != null)
+    if (this.lzA != null)
     {
-      if (this.lcD != null) {
-        this.lcD.mg = true;
+      if (this.lzD != null) {
+        this.lzD.nZ = true;
       }
       if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.lcA.dismiss();
+        this.lzA.dismiss();
       }
     }
     AppMethodBeat.o(185901);
@@ -135,15 +135,15 @@ public final class b
     AppMethodBeat.i(185899);
     if (isShowing())
     {
-      View localView = this.oP;
+      View localView = this.qI;
       if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
       {
-        bmi();
+        bpT();
         AppMethodBeat.o(185899);
         return;
       }
-      if ((isShowing()) && ((this.lcE != aly()) || (this.lcF != getRotation()))) {
-        bmi();
+      if ((isShowing()) && ((this.lzE != aol()) || (this.lzF != getRotation()))) {
+        bpT();
       }
     }
     AppMethodBeat.o(185899);

@@ -1,134 +1,270 @@
 package com.tencent.mm.plugin.appbrand.e;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import android.text.TextUtils;
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.webview.model.aw;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.vfs.e;
-import d.g.b.k;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
+import com.tencent.mm.plugin.appbrand.appcache.j.a;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.sdk.a.c.a;
+import com.tencent.xweb.ah;
+import d.g.b.p;
 import d.l;
+import d.n.n;
+import d.o;
+import d.v;
+import d.z;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.Set;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/complaint/AppBrandComplaintHelper;", "", "()V", "TAG", "", "tryTakeScreenshot", "pageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory;", "Lcom/tencent/mm/sdk/crash/ICrashReporter$ICrashReportExtraMessageGetter;", "()V", "mRunningAppInfos", "Ljava/util/LinkedHashMap;", "Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory$ReportWeAppInfo;", "", "getCrashReportExtraMessage", "", "onRuntimeDestroyed", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "onRuntimeResumed", "ReportWeAppInfo", "plugin-appbrand-integration_release"})
 public final class a
+  implements c.a
 {
-  public static final a jBl;
+  public static final a kaA;
+  private static final LinkedHashMap<a, Boolean> kaz;
   
   static
   {
-    AppMethodBeat.i(187106);
-    jBl = new a();
-    AppMethodBeat.o(187106);
+    AppMethodBeat.i(50345);
+    kaA = new a();
+    kaz = new LinkedHashMap(5, 0.7F, true);
+    AppMethodBeat.o(50345);
   }
   
-  public static final String b(ae paramae)
+  public static final void R(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(187105);
-    k.h(paramae, "pageView");
-    ac.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, pageView:".concat(String.valueOf(paramae)));
-    Object localObject = ((c)g.ab(c.class)).getCacheDir();
-    if (localObject == null)
+    AppMethodBeat.i(50342);
+    p.h(paramAppBrandRuntime, "runtime");
+    synchronized (kaz)
     {
-      ac.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, null image cache dir");
-      AppMethodBeat.o(187105);
-      return null;
+      LinkedHashMap localLinkedHashMap2 = kaz;
+      a.a.a locala = a.kaB;
+      localLinkedHashMap2.put(a.a.a.T(paramAppBrandRuntime), Boolean.TRUE);
+      ah.l(90001, new String[] { paramAppBrandRuntime.getAppId() });
+      AppMethodBeat.o(50342);
+      return;
     }
-    localObject = new e((String)localObject + '/' + paramae.getAppId() + '_' + System.currentTimeMillis() + ".jpeg");
-    paramae.CV();
-    localObject = ((e)localObject).getAbsolutePath();
-    k.g(localObject, "tempFile.absolutePath");
-    h.JZN.aS((Runnable)new a(paramae, (String)localObject));
-    paramae = aw.aBZ((String)localObject);
-    ac.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, localId:" + paramae + ", imagePath:" + (String)localObject);
-    AppMethodBeat.o(187105);
-    return paramae;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
+  public static final void S(AppBrandRuntime paramAppBrandRuntime)
   {
-    a(ae paramae, String paramString) {}
-    
-    public final void run()
+    AppMethodBeat.i(50343);
+    p.h(paramAppBrandRuntime, "runtime");
+    synchronized (kaz)
     {
-      AppMethodBeat.i(187104);
-      Bitmap localBitmap = this.jBm.bqN();
-      Object localObject5 = null;
-      Object localObject6 = null;
-      Object localObject1 = null;
-      Object localObject4 = localObject1;
-      Object localObject2;
-      if (localBitmap != null)
+      LinkedHashMap localLinkedHashMap2 = kaz;
+      a.a.a locala = a.kaB;
+      localLinkedHashMap2.remove(a.a.a.T(paramAppBrandRuntime));
+      AppMethodBeat.o(50343);
+      return;
+    }
+  }
+  
+  public final String bev()
+  {
+    AppMethodBeat.i(50344);
+    Object localObject5 = new LinkedList();
+    ??? = WxaCommLibRuntimeReader.bai();
+    int i;
+    Object localObject2;
+    if (??? != null)
+    {
+      i = ((ICommLibReader)???).aZp();
+      ((LinkedList)localObject5).add(new o("weapp_lib_version_int", Integer.valueOf(i)));
+      if (??? != null)
       {
-        localObject4 = localObject1;
-        localObject2 = localObject5;
-        localObject1 = localObject6;
+        localObject2 = ((ICommLibReader)???).aZn();
+        ??? = localObject2;
+        if (localObject2 != null) {}
       }
-      try
+      else
       {
-        if (!localBitmap.isRecycled())
-        {
-          localObject2 = localObject5;
-          localObject1 = localObject6;
-          long l = System.currentTimeMillis();
-          localObject2 = localObject5;
-          localObject1 = localObject6;
-          localObject4 = f.a(localBitmap, 640, 640, false, true);
-          localObject2 = localObject4;
-          localObject1 = localObject4;
-          f.a((Bitmap)localObject4, 100, Bitmap.CompressFormat.JPEG, this.jBn, true);
-          localObject2 = localObject4;
-          localObject1 = localObject4;
-          ac.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, save bitmap to file:" + this.jBn + ", cost:" + (System.currentTimeMillis() - l));
-          localObject2 = localObject4;
-          localObject1 = localObject4;
-          ((c)g.ab(c.class)).JL(this.jBn);
-        }
-        if ((localBitmap != null) && (!localBitmap.isRecycled()))
-        {
-          ac.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle bitmap:".concat(String.valueOf(localBitmap)));
-          localBitmap.recycle();
-        }
-        if ((localObject4 != null) && (!((Bitmap)localObject4).isRecycled()))
-        {
-          ac.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle thumbnail:".concat(String.valueOf(localObject4)));
-          ((Bitmap)localObject4).recycle();
-        }
-        AppMethodBeat.o(187104);
-        return;
+        ??? = "unknown";
       }
-      catch (Exception localException)
+      ((LinkedList)localObject5).add(new o("weapp_lib_version_str", ???));
+    }
+    Object localObject6;
+    for (;;)
+    {
+      Object localObject7;
+      synchronized (kaz)
       {
-        localObject1 = localObject2;
-        ac.printErrStackTrace("MicroMsg.AppBrandComplaintHelper", (Throwable)localException, "tryTakeScreenshot, save bitmap to file fail", new Object[0]);
-        return;
+        if (kaz.size() <= 0) {
+          break label334;
+        }
+        localObject2 = kaz.keySet().iterator();
+        localObject6 = new StringBuilder();
+        localObject7 = ((Iterator)localObject2).next();
+        p.g(localObject7, "it.next()");
+        localObject7 = (a)localObject7;
+        if (((Iterator)localObject2).hasNext()) {
+          break label276;
+        }
+        ((LinkedList)localObject5).add(new o("weapp_id", ((a)localObject7).appId));
+        ((LinkedList)localObject5).add(new o("weapp_name", ((a)localObject7).appName));
+        ((LinkedList)localObject5).add(new o("weapp_version", Integer.valueOf(((a)localObject7).aDD)));
+        localObject2 = ((StringBuilder)localObject6).toString();
+        p.g(localObject2, "this");
+        i = Math.max(n.b((CharSequence)localObject2, ','), 0);
+        if (localObject2 != null) {
+          break label295;
+        }
+        localObject2 = new v("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(50344);
+        throw ((Throwable)localObject2);
       }
-      finally
+      i = -1;
+      break;
+      label276:
+      ((StringBuilder)localObject6).append(((a)localObject7).appId).append(',');
+    }
+    label295:
+    Object localObject4 = localObject3.substring(0, i);
+    p.g(localObject4, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    if (!TextUtils.isEmpty((CharSequence)localObject4)) {
+      ((LinkedList)localObject5).add(new o("weapp_other_ids", localObject4));
+    }
+    label334:
+    localObject4 = z.MKo;
+    ??? = new StringBuilder();
+    localObject4 = ((LinkedList)localObject5).iterator();
+    while (((Iterator)localObject4).hasNext())
+    {
+      localObject6 = (o)((Iterator)localObject4).next();
+      localObject5 = (String)((o)localObject6).first;
+      localObject6 = ((o)localObject6).second;
+      ((StringBuilder)???).append((String)localObject5).append(':').append(localObject6.toString()).append(';');
+    }
+    ??? = ((StringBuilder)???).toString();
+    AppMethodBeat.o(50344);
+    return ???;
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory$ReportWeAppInfo;", "", "appId", "", "appName", "appType", "", "appVersion", "(Ljava/lang/String;Ljava/lang/String;II)V", "getAppId", "()Ljava/lang/String;", "getAppName", "getAppType", "()I", "getAppVersion", "compareTo", "other", "equals", "", "", "hashCode", "Companion", "plugin-appbrand-integration_release"})
+  static final class a
+    implements Comparable<a>
+  {
+    public static final a kaB;
+    final int aDD;
+    final String appId;
+    final String appName;
+    private final int appType;
+    
+    static
+    {
+      AppMethodBeat.i(50341);
+      kaB = new a((byte)0);
+      AppMethodBeat.o(50341);
+    }
+    
+    public a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(50340);
+      this.appId = paramString1;
+      this.appName = paramString2;
+      this.appType = paramInt1;
+      this.aDD = paramInt2;
+      AppMethodBeat.o(50340);
+    }
+    
+    private int a(a parama)
+    {
+      AppMethodBeat.i(50336);
+      p.h(parama, "other");
+      int j = this.appId.compareTo(parama.appId);
+      int i = j;
+      if (j == 0) {
+        i = this.appType - parama.appType;
+      }
+      j = i;
+      if (i == 0)
       {
-        if ((localBitmap != null) && (!localBitmap.isRecycled()))
-        {
-          ac.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle bitmap:".concat(String.valueOf(localBitmap)));
-          localBitmap.recycle();
+        j = i;
+        if (j.a.rQ(this.appType)) {
+          j = this.aDD - parama.aDD;
         }
-        if ((localObject1 != null) && (!localObject1.isRecycled()))
+      }
+      AppMethodBeat.o(50336);
+      return j;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(50339);
+      if (((paramObject instanceof a)) && (a((a)paramObject) == 0))
+      {
+        AppMethodBeat.o(50339);
+        return true;
+      }
+      AppMethodBeat.o(50339);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(50338);
+      int i = ("[" + this.appId + "::" + this.appType + "::" + this.aDD + ']').hashCode();
+      AppMethodBeat.o(50338);
+      return i;
+    }
+    
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory$ReportWeAppInfo$Companion;", "", "()V", "from", "Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory$ReportWeAppInfo;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "plugin-appbrand-integration_release"})
+    public static final class a
+    {
+      public static a.a T(AppBrandRuntime paramAppBrandRuntime)
+      {
+        int j = -1;
+        AppMethodBeat.i(50335);
+        p.h(paramAppBrandRuntime, "runtime");
+        String str = paramAppBrandRuntime.getAppId();
+        p.g(str, "runtime.appId");
+        Object localObject1 = paramAppBrandRuntime.Fi();
+        if (localObject1 != null)
         {
-          ac.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle thumbnail:".concat(String.valueOf(localObject1)));
-          localObject1.recycle();
+          localObject1 = ((AppBrandInitConfig)localObject1).doD;
+          if (localObject1 != null) {}
         }
-        AppMethodBeat.o(187104);
+        else
+        {
+          localObject1 = "unknown";
+        }
+        for (;;)
+        {
+          AppBrandInitConfig localAppBrandInitConfig = paramAppBrandRuntime.Fi();
+          Object localObject2 = localAppBrandInitConfig;
+          if (!(localAppBrandInitConfig instanceof AppBrandInitConfigLU)) {
+            localObject2 = null;
+          }
+          localObject2 = (AppBrandInitConfigLU)localObject2;
+          if (localObject2 != null) {}
+          for (int i = ((AppBrandInitConfigLU)localObject2).dPf;; i = -1)
+          {
+            localObject2 = paramAppBrandRuntime.Fi();
+            paramAppBrandRuntime = (AppBrandRuntime)localObject2;
+            if (!(localObject2 instanceof AppBrandInitConfigLU)) {
+              paramAppBrandRuntime = null;
+            }
+            paramAppBrandRuntime = (AppBrandInitConfigLU)paramAppBrandRuntime;
+            if (paramAppBrandRuntime != null) {
+              j = paramAppBrandRuntime.aDD;
+            }
+            paramAppBrandRuntime = new a.a(str, (String)localObject1, i, j);
+            AppMethodBeat.o(50335);
+            return paramAppBrandRuntime;
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.e.a
  * JD-Core Version:    0.7.0.1
  */

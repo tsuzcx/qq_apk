@@ -13,8 +13,11 @@ import com.davemorrissey.labs.subscaleview.a.c;
 import com.davemorrissey.labs.subscaleview.a.d;
 import com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.i;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
 public final class a
@@ -32,65 +35,113 @@ public final class a
     extends AsyncTask<Void, Void, Integer>
     implements com.davemorrissey.labs.subscaleview.c.b
   {
-    private c aMA;
-    private long aMB;
-    private final WeakReference<Context> aMw;
-    private final WeakReference<com.davemorrissey.labs.subscaleview.a.b<? extends d>> aMx;
-    private final Uri aMy;
-    private final boolean aMz;
+    private final WeakReference<Context> aWN;
+    private final WeakReference<com.davemorrissey.labs.subscaleview.a.b<? extends d>> aWO;
+    private final Uri aWP;
+    private final boolean aWQ;
+    private c aWR;
+    private long aWS;
     private Bitmap bitmap;
     private Exception exception;
     private Rect mRect;
-    private final WeakReference<SubsamplingScaleImageView> mn;
+    private final WeakReference<SubsamplingScaleImageView> og;
     
     a(SubsamplingScaleImageView paramSubsamplingScaleImageView, Context paramContext, com.davemorrissey.labs.subscaleview.a.b<? extends d> paramb, Uri paramUri, boolean paramBoolean)
     {
       AppMethodBeat.i(157349);
-      this.aMB = -1L;
-      this.mn = new WeakReference(paramSubsamplingScaleImageView);
-      this.aMw = new WeakReference(paramContext);
-      this.aMx = new WeakReference(paramb);
-      this.aMy = paramUri;
-      this.aMz = paramBoolean;
-      paramSubsamplingScaleImageView = new BitmapFactory.Options();
-      paramSubsamplingScaleImageView.inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(paramUri.getPath(), paramSubsamplingScaleImageView);
-      this.mRect = new Rect(0, 0, paramSubsamplingScaleImageView.outWidth, paramSubsamplingScaleImageView.outHeight);
-      AppMethodBeat.o(157349);
+      this.aWS = -1L;
+      this.og = new WeakReference(paramSubsamplingScaleImageView);
+      this.aWN = new WeakReference(paramContext);
+      this.aWO = new WeakReference(paramb);
+      this.aWP = paramUri;
+      this.aWQ = paramBoolean;
+      paramb = new BitmapFactory.Options();
+      paramb.inJustDecodeBounds = true;
+      for (;;)
+      {
+        try
+        {
+          localInputStream = i.b(paramUri, null);
+          paramSubsamplingScaleImageView = localObject;
+        }
+        catch (IOException paramSubsamplingScaleImageView)
+        {
+          InputStream localInputStream;
+          try
+          {
+            localInputStream.close();
+            AppMethodBeat.o(157349);
+            throw paramContext;
+            paramSubsamplingScaleImageView = paramSubsamplingScaleImageView;
+            ad.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", paramSubsamplingScaleImageView, "Unable to read file: %s", new Object[] { paramUri.toString() });
+          }
+          catch (Throwable localThrowable)
+          {
+            paramSubsamplingScaleImageView.addSuppressed(localThrowable);
+            continue;
+          }
+          localInputStream.close();
+          continue;
+        }
+        try
+        {
+          BitmapFactory.decodeStream(localInputStream, null, paramb);
+          if (localInputStream != null) {
+            localInputStream.close();
+          }
+          this.mRect = new Rect(0, 0, paramb.outWidth, paramb.outHeight);
+          AppMethodBeat.o(157349);
+          return;
+        }
+        catch (Throwable paramContext)
+        {
+          paramSubsamplingScaleImageView = paramContext;
+          AppMethodBeat.o(157349);
+          paramSubsamplingScaleImageView = paramContext;
+          throw paramContext;
+        }
+        finally
+        {
+          if (localInputStream != null) {
+            if (paramSubsamplingScaleImageView == null) {
+              continue;
+            }
+          }
+        }
+      }
     }
     
     private void a(SubsamplingScaleImageView paramSubsamplingScaleImageView)
     {
       AppMethodBeat.i(157351);
-      if ((paramSubsamplingScaleImageView != null) && (this.aMz) && (this.aMB != -1L))
+      if ((paramSubsamplingScaleImageView != null) && (this.aWQ) && (this.aWS != -1L))
       {
-        ac.i("MicroMsg.LegacyBitmapLoaderFactory", "alvinluo preview decode onEnd %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-        paramSubsamplingScaleImageView.dz((int)(System.currentTimeMillis() - this.aMB));
+        ad.i("MicroMsg.LegacyBitmapLoaderFactory", "alvinluo preview decode onEnd %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+        paramSubsamplingScaleImageView.dD((int)(System.currentTimeMillis() - this.aWS));
       }
       AppMethodBeat.o(157351);
     }
     
     @SuppressLint({"LongLogTag"})
-    private Integer qh()
+    private Integer rF()
     {
       AppMethodBeat.i(157350);
-      ac.i("MicroMsg.LegacyBitmapLoaderFactory", "alvinluo preview decode start");
-      if (this.aMz) {
-        this.aMB = System.currentTimeMillis();
+      ad.i("MicroMsg.LegacyBitmapLoaderFactory", "alvinluo preview decode start");
+      if (this.aWQ) {
+        this.aWS = System.currentTimeMillis();
       }
       try
       {
-        String str = this.aMy.toString();
-        Context localContext = (Context)this.aMw.get();
-        Object localObject = (com.davemorrissey.labs.subscaleview.a.b)this.aMx.get();
-        SubsamplingScaleImageView localSubsamplingScaleImageView = (SubsamplingScaleImageView)this.mn.get();
+        Context localContext = (Context)this.aWN.get();
+        Object localObject = (com.davemorrissey.labs.subscaleview.a.b)this.aWO.get();
+        SubsamplingScaleImageView localSubsamplingScaleImageView = (SubsamplingScaleImageView)this.og.get();
         if ((localContext != null) && (localObject != null) && (localSubsamplingScaleImageView != null))
         {
-          localSubsamplingScaleImageView.f("BitmapLoadTask.doInBackground", new Object[0]);
-          localObject = (d)((com.davemorrissey.labs.subscaleview.a.b)localObject).qf();
-          ((d)localObject).c(localContext, this.aMy);
+          localSubsamplingScaleImageView.h("BitmapLoadTask.doInBackground", new Object[0]);
+          localObject = (d)((com.davemorrissey.labs.subscaleview.a.b)localObject).rD();
+          ((d)localObject).c(localContext, this.aWP);
           this.bitmap = ((d)localObject).a(this.mRect, 1);
-          int i = localSubsamplingScaleImageView.h(localContext, str);
+          int i = localSubsamplingScaleImageView.d(localContext, this.aWP);
           ((d)localObject).recycle();
           a(localSubsamplingScaleImageView);
           AppMethodBeat.o(157350);
@@ -99,10 +150,10 @@ public final class a
       }
       catch (FileNotFoundException localFileNotFoundException)
       {
-        ac.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localFileNotFoundException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localFileNotFoundException, "alvinluo Failed to initialise bitmap decoder", new Object[0]);
         this.exception = localFileNotFoundException;
-        this.aMA = new c(1, "tile init file not found");
-        a((SubsamplingScaleImageView)this.mn.get());
+        this.aWR = new c(1, "tile init file not found");
+        a((SubsamplingScaleImageView)this.og.get());
         AppMethodBeat.o(157350);
         return null;
       }
@@ -110,18 +161,18 @@ public final class a
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localException, "Failed to load bitmap", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localException, "Failed to load bitmap", new Object[0]);
           this.exception = localException;
-          this.aMA = new c(2, "bitmap decode failed");
+          this.aWR = new c(2, "bitmap decode failed");
         }
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localOutOfMemoryError, "Failed to load bitmap - OutOfMemoryError", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.LegacyBitmapLoaderFactory", localOutOfMemoryError, "Failed to load bitmap - OutOfMemoryError", new Object[0]);
           this.exception = new RuntimeException(localOutOfMemoryError);
-          this.aMA = new c(3, "bitmap decode OutOfMemoryError");
+          this.aWR = new c(3, "bitmap decode OutOfMemoryError");
           SubsamplingScaleImageView.setPreferredBitmapConfig(Bitmap.Config.RGB_565);
         }
       }
@@ -129,10 +180,10 @@ public final class a
     
     public final void cancel() {}
     
-    public final void qi()
+    public final void rG()
     {
       AppMethodBeat.i(157352);
-      executeOnExecutor(((SubsamplingScaleImageView)this.mn.get()).executor, new Void[0]);
+      executeOnExecutor(((SubsamplingScaleImageView)this.og.get()).executor, new Void[0]);
       AppMethodBeat.o(157352);
     }
   }

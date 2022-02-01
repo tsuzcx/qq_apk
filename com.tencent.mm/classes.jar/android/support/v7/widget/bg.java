@@ -7,36 +7,36 @@ import android.support.v4.e.l.b;
 
 final class bg
 {
-  final a<RecyclerView.w, a> ayf = new a();
-  final g<RecyclerView.w> ayg = new g();
+  final a<RecyclerView.w, a> azW = new a();
+  final g<RecyclerView.w> azX = new g();
   
   final boolean E(RecyclerView.w paramw)
   {
-    paramw = (a)this.ayf.get(paramw);
+    paramw = (a)this.azW.get(paramw);
     return (paramw != null) && ((paramw.flags & 0x1) != 0);
   }
   
   final boolean F(RecyclerView.w paramw)
   {
-    paramw = (a)this.ayf.get(paramw);
+    paramw = (a)this.azW.get(paramw);
     return (paramw != null) && ((paramw.flags & 0x4) != 0);
   }
   
   final void G(RecyclerView.w paramw)
   {
-    a locala2 = (a)this.ayf.get(paramw);
+    a locala2 = (a)this.azW.get(paramw);
     a locala1 = locala2;
     if (locala2 == null)
     {
-      locala1 = a.mS();
-      this.ayf.put(paramw, locala1);
+      locala1 = a.nk();
+      this.azW.put(paramw, locala1);
     }
     locala1.flags |= 0x1;
   }
   
   final void H(RecyclerView.w paramw)
   {
-    paramw = (a)this.ayf.get(paramw);
+    paramw = (a)this.azW.get(paramw);
     if (paramw == null) {
       return;
     }
@@ -45,18 +45,18 @@ final class bg
   
   final void I(RecyclerView.w paramw)
   {
-    int i = this.ayg.size() - 1;
+    int i = this.azX.size() - 1;
     for (;;)
     {
       if (i >= 0)
       {
-        if (paramw == this.ayg.valueAt(i)) {
-          this.ayg.removeAt(i);
+        if (paramw == this.azX.valueAt(i)) {
+          this.azX.removeAt(i);
         }
       }
       else
       {
-        paramw = (a)this.ayf.remove(paramw);
+        paramw = (a)this.azW.remove(paramw);
         if (paramw != null) {
           a.a(paramw);
         }
@@ -68,16 +68,16 @@ final class bg
   
   final void a(long paramLong, RecyclerView.w paramw)
   {
-    this.ayg.put(paramLong, paramw);
+    this.azX.put(paramLong, paramw);
   }
   
   final void a(b paramb)
   {
-    int i = this.ayf.size() - 1;
+    int i = this.azW.size() - 1;
     if (i >= 0)
     {
-      RecyclerView.w localw = (RecyclerView.w)this.ayf.keyAt(i);
-      a locala = (a)this.ayf.removeAt(i);
+      RecyclerView.w localw = (RecyclerView.w)this.azW.keyAt(i);
+      a locala = (a)this.azW.removeAt(i);
       if ((locala.flags & 0x3) == 3) {
         paramb.j(localw);
       }
@@ -88,20 +88,20 @@ final class bg
         break;
         if ((locala.flags & 0x1) != 0)
         {
-          if (locala.ayh == null) {
+          if (locala.azY == null) {
             paramb.j(localw);
           } else {
-            paramb.a(localw, locala.ayh, locala.ayi);
+            paramb.a(localw, locala.azY, locala.azZ);
           }
         }
         else if ((locala.flags & 0xE) == 14) {
-          paramb.b(localw, locala.ayh, locala.ayi);
+          paramb.b(localw, locala.azY, locala.azZ);
         } else if ((locala.flags & 0xC) == 12) {
-          paramb.c(localw, locala.ayh, locala.ayi);
+          paramb.c(localw, locala.azY, locala.azZ);
         } else if ((locala.flags & 0x4) != 0) {
-          paramb.a(localw, locala.ayh, null);
+          paramb.a(localw, locala.azY, null);
         } else if ((locala.flags & 0x8) != 0) {
-          paramb.b(localw, locala.ayh, locala.ayi);
+          paramb.b(localw, locala.azY, locala.azZ);
         }
       }
     }
@@ -109,40 +109,40 @@ final class bg
   
   final void b(RecyclerView.w paramw, RecyclerView.f.c paramc)
   {
-    a locala2 = (a)this.ayf.get(paramw);
+    a locala2 = (a)this.azW.get(paramw);
     a locala1 = locala2;
     if (locala2 == null)
     {
-      locala1 = a.mS();
-      this.ayf.put(paramw, locala1);
+      locala1 = a.nk();
+      this.azW.put(paramw, locala1);
     }
-    locala1.ayh = paramc;
+    locala1.azY = paramc;
     locala1.flags |= 0x4;
   }
   
   final void c(RecyclerView.w paramw, RecyclerView.f.c paramc)
   {
-    a locala2 = (a)this.ayf.get(paramw);
+    a locala2 = (a)this.azW.get(paramw);
     a locala1 = locala2;
     if (locala2 == null)
     {
-      locala1 = a.mS();
-      this.ayf.put(paramw, locala1);
+      locala1 = a.nk();
+      this.azW.put(paramw, locala1);
     }
     locala1.flags |= 0x2;
-    locala1.ayh = paramc;
+    locala1.azY = paramc;
   }
   
   final void clear()
   {
-    this.ayf.clear();
-    this.ayg.clear();
+    this.azW.clear();
+    this.azX.clear();
   }
   
   final RecyclerView.f.c d(RecyclerView.w paramw, int paramInt)
   {
     Object localObject2 = null;
-    int i = this.ayf.indexOfKey(paramw);
+    int i = this.azW.indexOfKey(paramw);
     Object localObject1;
     if (i < 0) {
       localObject1 = localObject2;
@@ -153,20 +153,20 @@ final class bg
       do
       {
         return localObject1;
-        locala = (a)this.ayf.valueAt(i);
+        locala = (a)this.azW.valueAt(i);
         localObject1 = localObject2;
       } while (locala == null);
       localObject1 = localObject2;
     } while ((locala.flags & paramInt) == 0);
     locala.flags &= (paramInt ^ 0xFFFFFFFF);
     if (paramInt == 4) {}
-    for (paramw = locala.ayh;; paramw = locala.ayi)
+    for (paramw = locala.azY;; paramw = locala.azZ)
     {
       localObject1 = paramw;
       if ((locala.flags & 0xC) != 0) {
         break;
       }
-      this.ayf.removeAt(i);
+      this.azW.removeAt(i);
       a.a(locala);
       return paramw;
       if (paramInt != 8) {
@@ -179,40 +179,40 @@ final class bg
   
   final void d(RecyclerView.w paramw, RecyclerView.f.c paramc)
   {
-    a locala2 = (a)this.ayf.get(paramw);
+    a locala2 = (a)this.azW.get(paramw);
     a locala1 = locala2;
     if (locala2 == null)
     {
-      locala1 = a.mS();
-      this.ayf.put(paramw, locala1);
+      locala1 = a.nk();
+      this.azW.put(paramw, locala1);
     }
-    locala1.ayi = paramc;
+    locala1.azZ = paramc;
     locala1.flags |= 0x8;
   }
   
   final RecyclerView.w n(long paramLong)
   {
-    return (RecyclerView.w)this.ayg.get(paramLong, null);
+    return (RecyclerView.w)this.azX.get(paramLong, null);
   }
   
   static final class a
   {
-    static l.a<a> ayj = new l.b(20);
-    RecyclerView.f.c ayh;
-    RecyclerView.f.c ayi;
+    static l.a<a> aAa = new l.b(20);
+    RecyclerView.f.c azY;
+    RecyclerView.f.c azZ;
     int flags;
     
     static void a(a parama)
     {
       parama.flags = 0;
-      parama.ayh = null;
-      parama.ayi = null;
-      ayj.release(parama);
+      parama.azY = null;
+      parama.azZ = null;
+      aAa.release(parama);
     }
     
-    static a mS()
+    static a nk()
     {
-      a locala2 = (a)ayj.acquire();
+      a locala2 = (a)aAa.acquire();
       a locala1 = locala2;
       if (locala2 == null) {
         locala1 = new a();
@@ -220,9 +220,9 @@ final class bg
       return locala1;
     }
     
-    static void mT()
+    static void nl()
     {
-      while (ayj.acquire() != null) {}
+      while (aAa.acquire() != null) {}
     }
   }
   

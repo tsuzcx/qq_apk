@@ -4,12 +4,12 @@ import com.tencent.mm.loader.e.b.g;
 import com.tencent.mm.loader.h.e;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/common/ITranscoderProducer;", "INPUT", "RESOURCE", "", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "asResourceName", "", "source", "whenDecode", "whenDownload", "whenLoad", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/common/ITranscoderProducer;", "INPUT", "RESOURCE", "", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "asResourceName", "", "source", "whenDecode", "whenDownload", "whenLoad", "libimageloader_release"})
 public abstract interface f<INPUT, RESOURCE>
 {
   public abstract e<? extends RESOURCE> a(g<?> paramg, com.tencent.mm.loader.f<?, RESOURCE> paramf, e<INPUT> parame);
   
-  public abstract String vi(String paramString);
+  public abstract String xZ(String paramString);
 }
 
 

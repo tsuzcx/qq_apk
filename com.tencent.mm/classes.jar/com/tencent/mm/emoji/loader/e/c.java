@@ -2,26 +2,26 @@ package com.tencent.mm.emoji.loader.e;
 
 import com.tencent.mm.emoji.loader.d.i;
 import com.tencent.mm.emoji.loader.e;
-import com.tencent.mm.loader.g.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.loader.g.j;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "Ljava/lang/Runnable;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "finished", "", "requests", "", "Lcom/tencent/mm/emoji/loader/request/Request;", "kotlin.jvm.PlatformType", "", "result", "running", "runningInQueue", "started", "addRequest", "", "request", "call", "getTaskKey", "", "onResult", "success", "removeRequest", "run", "start", "async", "uniqueId", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "Ljava/lang/Runnable;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "finished", "", "requests", "", "Lcom/tencent/mm/emoji/loader/request/Request;", "kotlin.jvm.PlatformType", "", "result", "running", "runningInQueue", "started", "addRequest", "", "request", "call", "getTaskKey", "", "onResult", "success", "removeRequest", "run", "start", "async", "uniqueId", "plugin-emojisdk_release"})
 public abstract class c
   extends com.tencent.mm.loader.g.c
   implements Runnable
 {
-  private boolean bMF;
-  final EmojiInfo fPB;
-  private boolean fQf;
+  private boolean bWS;
+  private boolean gjF;
+  final EmojiInfo gjb;
   private final List<i<?>> requests;
   private boolean result;
   private boolean running;
@@ -29,22 +29,22 @@ public abstract class c
   
   public c(EmojiInfo paramEmojiInfo)
   {
-    this.fPB = paramEmojiInfo;
+    this.gjb = paramEmojiInfo;
     this.requests = Collections.synchronizedList((List)new LinkedList());
   }
   
-  public abstract String acf();
+  public abstract String aeJ();
   
-  public final String acg()
+  public final String aeK()
   {
-    return acf();
+    return aeJ();
   }
   
   public final void c(i<?> parami)
   {
-    k.h(parami, "request");
-    if (this.bMF) {
-      parami.df(this.result);
+    p.h(parami, "request");
+    if (this.bWS) {
+      parami.dh(this.result);
     }
     while (this.requests.contains(parami)) {
       return;
@@ -54,50 +54,50 @@ public abstract class c
   
   public final void call()
   {
-    this.fQf = true;
+    this.gjF = true;
     run();
   }
   
   public final void d(i<?> parami)
   {
-    k.h(parami, "request");
+    p.h(parami, "request");
     this.requests.remove(parami);
     if (this.requests.size() == 0)
     {
-      ac.d(d.abZ(), "cancel " + acf() + ", " + this.running);
+      ad.d(d.aeD(), "cancel " + aeJ() + ", " + this.running);
       if (!this.running)
       {
-        parami = e.fOZ;
-        e.tc(acf());
-        de(false);
+        parami = e.giz;
+        e.vR(aeJ());
+        dg(false);
       }
     }
   }
   
-  public void de(boolean paramBoolean)
+  public void dg(boolean paramBoolean)
   {
     this.result = paramBoolean;
-    this.bMF = true;
-    if (this.fQf) {
-      a(h.gLN);
+    this.bWS = true;
+    if (this.gjF) {
+      a(j.hfK);
     }
     for (;;)
     {
       LinkedList localLinkedList = new LinkedList();
       Object localObject1 = this.requests;
-      k.g(localObject1, "requests");
+      p.g(localObject1, "requests");
       try
       {
         localLinkedList.addAll((Collection)this.requests);
         this.requests.clear();
-        y localy = y.KTp;
+        z localz = z.MKo;
         localObject1 = ((Iterable)localLinkedList).iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          ((i)((Iterator)localObject1).next()).df(paramBoolean);
+          ((i)((Iterator)localObject1).next()).dh(paramBoolean);
           continue;
-          localObject1 = e.fOZ;
-          e.tc(acf());
+          localObject1 = e.giz;
+          e.vR(aeJ());
         }
       }
       finally {}
@@ -114,8 +114,8 @@ public abstract class c
     if (!this.started)
     {
       this.started = true;
-      e locale = e.fOZ;
-      e.a(acf(), this, paramBoolean);
+      e locale = e.giz;
+      e.a(aeJ(), this, paramBoolean);
     }
   }
 }

@@ -12,14 +12,14 @@ import java.nio.charset.Charset;
 public final class f
   implements com.bumptech.glide.c.f
 {
-  static final byte[] aJe;
-  private static final int[] aJf;
+  static final byte[] aKV;
+  private static final int[] aKW;
   
   static
   {
     AppMethodBeat.i(77383);
-    aJe = "".getBytes(Charset.forName("UTF-8"));
-    aJf = new int[] { 0, 1, 1, 2, 4, 8, 1, 1, 2, 4, 8, 4, 8 };
+    aKV = "".getBytes(Charset.forName("UTF-8"));
+    aKW = new int[] { 0, 1, 1, 2, 4, 8, 1, 1, 2, 4, 8, 4, 8 };
     AppMethodBeat.o(77383);
   }
   
@@ -36,7 +36,7 @@ public final class f
     default: 
       Log.isLoggable("DfltImageHeaderParser", 3);
       localByteOrder = ByteOrder.BIG_ENDIAN;
-      paramb.aJg.order(localByteOrder);
+      paramb.aKX.order(localByteOrder);
       int j = paramb.dq(10) + 6;
       int k = paramb.dr(j);
       i = 0;
@@ -76,7 +76,7 @@ public final class f
         if (Log.isLoggable("DfltImageHeaderParser", 3)) {
           new StringBuilder("Got tagIndex=").append(i).append(" tagType=").append(m).append(" formatCode=").append(i1).append(" componentCount=").append(i2);
         }
-        i1 = aJf[i1] + i2;
+        i1 = aKW[i1] + i2;
         if (i1 > 4)
         {
           if (!Log.isLoggable("DfltImageHeaderParser", 3)) {}
@@ -84,7 +84,7 @@ public final class f
         else
         {
           n += 8;
-          if ((n < 0) || (n > paramb.aJg.remaining()))
+          if ((n < 0) || (n > paramb.aKX.remaining()))
           {
             if (Log.isLoggable("DfltImageHeaderParser", 3)) {
               new StringBuilder("Illegal tagValueOffset=").append(n).append(" tagType=").append(m);
@@ -92,7 +92,7 @@ public final class f
           }
           else
           {
-            if ((i1 >= 0) && (n + i1 <= paramb.aJg.remaining())) {
+            if ((i1 >= 0) && (n + i1 <= paramb.aKX.remaining())) {
               break label363;
             }
             if (!Log.isLoggable("DfltImageHeaderParser", 3)) {}
@@ -116,7 +116,7 @@ public final class f
     //   0: iconst_m1
     //   1: istore 4
     //   3: ldc 123
-    //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: invokeinterface 126 1 0
     //   14: istore_2
@@ -140,7 +140,7 @@ public final class f
     //   47: invokestatic 72	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
     //   50: pop
     //   51: ldc 123
-    //   53: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   53: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   56: iconst_m1
     //   57: ireturn
     //   58: iconst_0
@@ -164,7 +164,7 @@ public final class f
     //   92: invokestatic 72	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
     //   95: pop
     //   96: ldc 123
-    //   98: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   101: iconst_m1
     //   102: ireturn
     //   103: aload_0
@@ -264,14 +264,14 @@ public final class f
     //   296: aload 8
     //   298: invokeinterface 162 2 0
     //   303: ldc 123
-    //   305: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   305: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   308: iload_3
     //   309: ireturn
     //   310: aload 8
     //   312: iload_2
     //   313: invokestatic 165	com/bumptech/glide/c/d/a/f:c	([BI)Z
     //   316: ifeq +20 -> 336
-    //   319: new 10	com/bumptech/glide/c/d/a/f$b
+    //   319: new 11	com/bumptech/glide/c/d/a/f$b
     //   322: dup
     //   323: aload 8
     //   325: iload_2
@@ -291,7 +291,7 @@ public final class f
     //   351: aload 8
     //   353: invokeinterface 162 2 0
     //   358: ldc 123
-    //   360: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   360: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   363: aload_0
     //   364: athrow
     // Local variable table:
@@ -315,80 +315,80 @@ public final class f
   private static com.bumptech.glide.c.f.a a(c paramc)
   {
     AppMethodBeat.i(77380);
-    int i = paramc.pb();
+    int i = paramc.pt();
     if (i == 65496)
     {
-      paramc = com.bumptech.glide.c.f.a.aDf;
+      paramc = com.bumptech.glide.c.f.a.aEW;
       AppMethodBeat.o(77380);
       return paramc;
     }
-    i = i << 16 & 0xFFFF0000 | paramc.pb() & 0xFFFF;
+    i = i << 16 & 0xFFFF0000 | paramc.pt() & 0xFFFF;
     if (i == -1991225785)
     {
       paramc.skip(21L);
-      if (paramc.pd() >= 3)
+      if (paramc.pv() >= 3)
       {
-        paramc = com.bumptech.glide.c.f.a.aDh;
+        paramc = com.bumptech.glide.c.f.a.aEY;
         AppMethodBeat.o(77380);
         return paramc;
       }
-      paramc = com.bumptech.glide.c.f.a.aDi;
+      paramc = com.bumptech.glide.c.f.a.aEZ;
       AppMethodBeat.o(77380);
       return paramc;
     }
     if (i >> 8 == 4671814)
     {
-      paramc = com.bumptech.glide.c.f.a.aDe;
+      paramc = com.bumptech.glide.c.f.a.aEV;
       AppMethodBeat.o(77380);
       return paramc;
     }
     if (i != 1380533830)
     {
-      paramc = com.bumptech.glide.c.f.a.aDl;
+      paramc = com.bumptech.glide.c.f.a.aFc;
       AppMethodBeat.o(77380);
       return paramc;
     }
     paramc.skip(4L);
-    if ((paramc.pb() << 16 & 0xFFFF0000 | paramc.pb() & 0xFFFF) != 1464156752)
+    if ((paramc.pt() << 16 & 0xFFFF0000 | paramc.pt() & 0xFFFF) != 1464156752)
     {
-      paramc = com.bumptech.glide.c.f.a.aDl;
+      paramc = com.bumptech.glide.c.f.a.aFc;
       AppMethodBeat.o(77380);
       return paramc;
     }
-    i = paramc.pb() << 16 & 0xFFFF0000 | paramc.pb() & 0xFFFF;
+    i = paramc.pt() << 16 & 0xFFFF0000 | paramc.pt() & 0xFFFF;
     if ((i & 0xFFFFFF00) != 1448097792)
     {
-      paramc = com.bumptech.glide.c.f.a.aDl;
+      paramc = com.bumptech.glide.c.f.a.aFc;
       AppMethodBeat.o(77380);
       return paramc;
     }
     if ((i & 0xFF) == 88)
     {
       paramc.skip(4L);
-      if ((paramc.pd() & 0x10) != 0)
+      if ((paramc.pv() & 0x10) != 0)
       {
-        paramc = com.bumptech.glide.c.f.a.aDj;
+        paramc = com.bumptech.glide.c.f.a.aFa;
         AppMethodBeat.o(77380);
         return paramc;
       }
-      paramc = com.bumptech.glide.c.f.a.aDk;
+      paramc = com.bumptech.glide.c.f.a.aFb;
       AppMethodBeat.o(77380);
       return paramc;
     }
     if ((i & 0xFF) == 76)
     {
       paramc.skip(4L);
-      if ((paramc.pd() & 0x8) != 0)
+      if ((paramc.pv() & 0x8) != 0)
       {
-        paramc = com.bumptech.glide.c.f.a.aDj;
+        paramc = com.bumptech.glide.c.f.a.aFa;
         AppMethodBeat.o(77380);
         return paramc;
       }
-      paramc = com.bumptech.glide.c.f.a.aDk;
+      paramc = com.bumptech.glide.c.f.a.aFb;
       AppMethodBeat.o(77380);
       return paramc;
     }
-    paramc = com.bumptech.glide.c.f.a.aDk;
+    paramc = com.bumptech.glide.c.f.a.aFb;
     AppMethodBeat.o(77380);
     return paramc;
   }
@@ -396,7 +396,7 @@ public final class f
   private static boolean c(byte[] paramArrayOfByte, int paramInt)
   {
     boolean bool;
-    if ((paramArrayOfByte != null) && (paramInt > aJe.length))
+    if ((paramArrayOfByte != null) && (paramInt > aKV.length))
     {
       bool = true;
       if (bool) {
@@ -407,10 +407,10 @@ public final class f
     {
       for (;;)
       {
-        if (paramInt >= aJe.length) {
+        if (paramInt >= aKV.length) {
           return bool;
         }
-        if (paramArrayOfByte[paramInt] != aJe[paramInt])
+        if (paramArrayOfByte[paramInt] != aKV[paramInt])
         {
           return false;
           bool = false;
@@ -433,7 +433,7 @@ public final class f
   public final com.bumptech.glide.c.f.a a(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(77378);
-    paramByteBuffer = a(new f.a((ByteBuffer)i.checkNotNull(paramByteBuffer, "Argument must not be null")));
+    paramByteBuffer = a(new a((ByteBuffer)i.checkNotNull(paramByteBuffer, "Argument must not be null")));
     AppMethodBeat.o(77378);
     return paramByteBuffer;
   }
@@ -446,21 +446,89 @@ public final class f
     return paramInputStream;
   }
   
+  static final class a
+    implements f.c
+  {
+    private final ByteBuffer byteBuffer;
+    
+    a(ByteBuffer paramByteBuffer)
+    {
+      AppMethodBeat.i(77362);
+      this.byteBuffer = paramByteBuffer;
+      paramByteBuffer.order(ByteOrder.BIG_ENDIAN);
+      AppMethodBeat.o(77362);
+    }
+    
+    public final int pt()
+    {
+      AppMethodBeat.i(77363);
+      int i = pv();
+      int j = pv();
+      AppMethodBeat.o(77363);
+      return i << 8 & 0xFF00 | j & 0xFF;
+    }
+    
+    public final short pu()
+    {
+      AppMethodBeat.i(77364);
+      short s = (short)(pv() & 0xFF);
+      AppMethodBeat.o(77364);
+      return s;
+    }
+    
+    public final int pv()
+    {
+      AppMethodBeat.i(77367);
+      if (this.byteBuffer.remaining() <= 0)
+      {
+        AppMethodBeat.o(77367);
+        return -1;
+      }
+      int i = this.byteBuffer.get();
+      AppMethodBeat.o(77367);
+      return i;
+    }
+    
+    public final int read(byte[] paramArrayOfByte, int paramInt)
+    {
+      AppMethodBeat.i(77366);
+      paramInt = Math.min(paramInt, this.byteBuffer.remaining());
+      if (paramInt == 0)
+      {
+        AppMethodBeat.o(77366);
+        return -1;
+      }
+      this.byteBuffer.get(paramArrayOfByte, 0, paramInt);
+      AppMethodBeat.o(77366);
+      return paramInt;
+    }
+    
+    public final long skip(long paramLong)
+    {
+      AppMethodBeat.i(77365);
+      int i = (int)Math.min(this.byteBuffer.remaining(), paramLong);
+      this.byteBuffer.position(this.byteBuffer.position() + i);
+      paramLong = i;
+      AppMethodBeat.o(77365);
+      return paramLong;
+    }
+  }
+  
   static final class b
   {
-    final ByteBuffer aJg;
+    final ByteBuffer aKX;
     
     b(byte[] paramArrayOfByte, int paramInt)
     {
       AppMethodBeat.i(77368);
-      this.aJg = ((ByteBuffer)ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.BIG_ENDIAN).limit(paramInt));
+      this.aKX = ((ByteBuffer)ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.BIG_ENDIAN).limit(paramInt));
       AppMethodBeat.o(77368);
     }
     
-    private boolean aU(int paramInt1, int paramInt2)
+    private boolean aV(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(77371);
-      if (this.aJg.remaining() - paramInt1 >= paramInt2)
+      if (this.aKX.remaining() - paramInt1 >= paramInt2)
       {
         AppMethodBeat.o(77371);
         return true;
@@ -472,9 +540,9 @@ public final class f
     final int dq(int paramInt)
     {
       AppMethodBeat.i(77369);
-      if (aU(paramInt, 4))
+      if (aV(paramInt, 4))
       {
-        paramInt = this.aJg.getInt(paramInt);
+        paramInt = this.aKX.getInt(paramInt);
         AppMethodBeat.o(77369);
         return paramInt;
       }
@@ -485,9 +553,9 @@ public final class f
     final short dr(int paramInt)
     {
       AppMethodBeat.i(77370);
-      if (aU(paramInt, 2))
+      if (aV(paramInt, 2))
       {
-        short s = this.aJg.getShort(paramInt);
+        short s = this.aKX.getShort(paramInt);
         AppMethodBeat.o(77370);
         return s;
       }
@@ -498,11 +566,11 @@ public final class f
   
   static abstract interface c
   {
-    public abstract int pb();
+    public abstract int pt();
     
-    public abstract short pc();
+    public abstract short pu();
     
-    public abstract int pd();
+    public abstract int pv();
     
     public abstract int read(byte[] paramArrayOfByte, int paramInt);
     
@@ -512,34 +580,34 @@ public final class f
   static final class d
     implements f.c
   {
-    private final InputStream aJh;
+    private final InputStream aKY;
     
     d(InputStream paramInputStream)
     {
-      this.aJh = paramInputStream;
+      this.aKY = paramInputStream;
     }
     
-    public final int pb()
+    public final int pt()
     {
       AppMethodBeat.i(77372);
-      int i = this.aJh.read();
-      int j = this.aJh.read();
+      int i = this.aKY.read();
+      int j = this.aKY.read();
       AppMethodBeat.o(77372);
       return i << 8 & 0xFF00 | j & 0xFF;
     }
     
-    public final short pc()
+    public final short pu()
     {
       AppMethodBeat.i(77373);
-      short s = (short)(this.aJh.read() & 0xFF);
+      short s = (short)(this.aKY.read() & 0xFF);
       AppMethodBeat.o(77373);
       return s;
     }
     
-    public final int pd()
+    public final int pv()
     {
       AppMethodBeat.i(77376);
-      int i = this.aJh.read();
+      int i = this.aKY.read();
       AppMethodBeat.o(77376);
       return i;
     }
@@ -550,7 +618,7 @@ public final class f
       int i = paramInt;
       while (i > 0)
       {
-        int j = this.aJh.read(paramArrayOfByte, paramInt - i, i);
+        int j = this.aKY.read(paramArrayOfByte, paramInt - i, i);
         if (j == -1) {
           break;
         }
@@ -571,14 +639,14 @@ public final class f
       long l1 = paramLong;
       while (l1 > 0L)
       {
-        long l2 = this.aJh.skip(l1);
+        long l2 = this.aKY.skip(l1);
         if (l2 > 0L)
         {
           l1 -= l2;
         }
         else
         {
-          if (this.aJh.read() == -1) {
+          if (this.aKY.read() == -1) {
             break;
           }
           l1 -= 1L;

@@ -7,25 +7,25 @@ import java.util.Stack;
 
 final class DynamicGridView$a
 {
-  List<Pair<Integer, Integer>> ziK;
+  List<Pair<Integer, Integer>> AAK;
   
   DynamicGridView$a()
   {
     AppMethodBeat.i(100319);
-    this.ziK = new Stack();
+    this.AAK = new Stack();
     AppMethodBeat.o(100319);
   }
   
-  public final void hG(int paramInt1, int paramInt2)
+  public final void hX(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(100320);
-    this.ziK.add(new Pair(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2)));
+    this.AAK.add(new Pair(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2)));
     AppMethodBeat.o(100320);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.previewimageview.DynamicGridView.a
  * JD-Core Version:    0.7.0.1
  */

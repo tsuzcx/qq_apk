@@ -13,17 +13,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 @TargetApi(16)
 public final class d
 {
-  final a bya;
-  final boolean byb;
-  final long byc;
-  final long byd;
-  long bye;
-  long byf;
-  long byg;
-  boolean byh;
-  long byi;
-  long byj;
-  long byk;
+  final a bIo;
+  final boolean bIp;
+  final long bIq;
+  final long bIr;
+  long bIs;
+  long bIt;
+  long bIu;
+  boolean bIv;
+  long bIw;
+  long bIx;
+  long bIy;
   
   public d()
   {
@@ -36,19 +36,19 @@ public final class d
     if (paramDouble != -1.0D) {}
     for (boolean bool = true;; bool = false)
     {
-      this.byb = bool;
-      if (!this.byb) {
+      this.bIp = bool;
+      if (!this.bIp) {
         break;
       }
-      this.bya = a.vW();
-      this.byc = ((1000000000.0D / paramDouble));
-      this.byd = (this.byc * 80L / 100L);
+      this.bIo = a.xt();
+      this.bIq = ((1000000000.0D / paramDouble));
+      this.bIr = (this.bIq * 80L / 100L);
       AppMethodBeat.o(93307);
       return;
     }
-    this.bya = null;
-    this.byc = -1L;
-    this.byd = -1L;
+    this.bIo = null;
+    this.bIq = -1L;
+    this.bIr = -1L;
     AppMethodBeat.o(93307);
   }
   
@@ -57,8 +57,8 @@ public final class d
   final boolean m(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(93308);
-    long l = this.byj;
-    if (Math.abs(paramLong2 - this.byi - (paramLong1 - l)) > 20000000L)
+    long l = this.bIx;
+    if (Math.abs(paramLong2 - this.bIw - (paramLong1 - l)) > 20000000L)
     {
       AppMethodBeat.o(93308);
       return true;
@@ -70,39 +70,39 @@ public final class d
   static final class a
     implements Handler.Callback, Choreographer.FrameCallback
   {
-    private static final a bym;
-    public volatile long byl;
-    private final HandlerThread byn;
-    private int byo;
+    private static final a bIA;
+    private final HandlerThread bIB;
+    private int bIC;
+    public volatile long bIz;
     private Choreographer choreographer;
     final Handler handler;
     
     static
     {
       AppMethodBeat.i(93305);
-      bym = new a();
+      bIA = new a();
       AppMethodBeat.o(93305);
     }
     
     private a()
     {
       AppMethodBeat.i(93302);
-      this.byn = new HandlerThread("ChoreographerOwner:Handler");
-      this.byn.start();
-      this.handler = new Handler(this.byn.getLooper(), this);
+      this.bIB = new HandlerThread("ChoreographerOwner:Handler");
+      this.bIB.start();
+      this.handler = new Handler(this.bIB.getLooper(), this);
       this.handler.sendEmptyMessage(0);
       AppMethodBeat.o(93302);
     }
     
-    public static a vW()
+    public static a xt()
     {
-      return bym;
+      return bIA;
     }
     
     public final void doFrame(long paramLong)
     {
       AppMethodBeat.i(93303);
-      this.byl = paramLong;
+      this.bIz = paramLong;
       this.choreographer.postFrameCallbackDelayed(this, 500L);
       AppMethodBeat.o(93303);
     }
@@ -120,18 +120,18 @@ public final class d
         AppMethodBeat.o(93304);
         return true;
       case 1: 
-        this.byo += 1;
-        if (this.byo == 1) {
+        this.bIC += 1;
+        if (this.bIC == 1) {
           this.choreographer.postFrameCallback(this);
         }
         AppMethodBeat.o(93304);
         return true;
       }
-      this.byo -= 1;
-      if (this.byo == 0)
+      this.bIC -= 1;
+      if (this.bIC == 0)
       {
         this.choreographer.removeFrameCallback(this);
-        this.byl = 0L;
+        this.bIz = 0L;
       }
       AppMethodBeat.o(93304);
       return true;
@@ -140,7 +140,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.video.d
  * JD-Core Version:    0.7.0.1
  */

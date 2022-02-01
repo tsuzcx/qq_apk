@@ -2,73 +2,73 @@ package com.tencent.mm.kernel;
 
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.a;
-import com.tencent.mm.ak.z;
+import com.tencent.mm.al.q;
+import com.tencent.mm.al.q.a;
+import com.tencent.mm.al.z;
 import com.tencent.mm.b.p;
 import com.tencent.mm.booter.aa;
 import com.tencent.mm.cn.a.a;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.b;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.model.cg;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aq.b;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.tinker.entry.ApplicationLifeCycle;
 import java.util.concurrent.ConcurrentHashMap;
 import junit.framework.Assert;
 
 public final class g
 {
-  public static final String[] gia = { ":appbrand0", ":appbrand1", ":appbrand2", ":appbrand3", ":appbrand4" };
-  private static g gib;
-  public final b.a ghd;
-  public h<com.tencent.mm.kernel.b.h> gic;
-  private ap gid;
-  private cf gie;
-  public e gif;
-  public a gig;
-  public b gih;
-  public com.tencent.mm.ch.b gii;
-  public final a gij;
-  private final boolean gik;
-  private ConcurrentHashMap gil;
-  public volatile boolean gim;
+  public static final String[] gBK = { ":appbrand0", ":appbrand1", ":appbrand2", ":appbrand3", ":appbrand4" };
+  private static g gBL;
+  public final b.a gAN;
+  public h<com.tencent.mm.kernel.b.h> gBM;
+  private aq gBN;
+  private cg gBO;
+  public e gBP;
+  public a gBQ;
+  public b gBR;
+  public com.tencent.mm.ch.b gBS;
+  public final a gBT;
+  private final boolean gBU;
+  private ConcurrentHashMap gBV;
+  public volatile boolean gBW;
   
   private g(final com.tencent.mm.kernel.b.h paramh)
   {
     AppMethodBeat.i(132124);
-    this.gie = null;
-    this.gij = new a((byte)0);
-    this.ghd = new b.a();
-    this.gil = new ConcurrentHashMap();
-    this.gim = false;
-    this.gic = h.c(paramh);
-    this.gik = ((com.tencent.mm.kernel.b.h)this.gic.agO().agp()).ahL();
-    if (this.gik)
+    this.gBO = null;
+    this.gBT = new a((byte)0);
+    this.gAN = new b.a();
+    this.gBV = new ConcurrentHashMap();
+    this.gBW = false;
+    this.gBM = h.c(paramh);
+    this.gBU = ((com.tencent.mm.kernel.b.h)this.gBM.ajz().ajb()).akw();
+    if (this.gBU)
     {
-      this.gie = new cf();
-      this.gid = new ap(com.tencent.mm.sdk.g.a.aLY("worker"));
-      this.gid.az(new Runnable()
+      this.gBO = new cg();
+      this.gBN = new aq(com.tencent.mm.sdk.g.a.aRF("worker"));
+      this.gBN.ay(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(182890);
-          ax.iP(ai.getContext());
+          ay.iZ(aj.getContext());
           AppMethodBeat.o(182890);
         }
       });
     }
-    this.gic.agN().ghs = new c.a()
+    this.gBM.ajy().gBc = new c.a()
     {
       public final void a(com.tencent.mm.kernel.c.a paramAnonymousa)
       {
         AppMethodBeat.i(182892);
         g.a(g.this, paramh, paramAnonymousa);
-        com.tencent.mm.kernel.a.c.ahe().bp(paramAnonymousa);
+        com.tencent.mm.kernel.a.c.ajP().br(paramAnonymousa);
         AppMethodBeat.o(182892);
       }
       
@@ -89,9 +89,9 @@ public final class g
       public final void c(f paramAnonymousf)
       {
         AppMethodBeat.i(182894);
-        com.tencent.mm.kernel.a.c localc = com.tencent.mm.kernel.a.c.ahe();
+        com.tencent.mm.kernel.a.c localc = com.tencent.mm.kernel.a.c.ajP();
         if (paramAnonymousf != null) {
-          localc.bq(paramAnonymousf);
+          localc.bs(paramAnonymousf);
         }
         AppMethodBeat.o(182894);
       }
@@ -99,9 +99,9 @@ public final class g
       public final void c(com.tencent.mm.kernel.c.a paramAnonymousa)
       {
         AppMethodBeat.i(182895);
-        com.tencent.mm.kernel.a.c localc = com.tencent.mm.kernel.a.c.ahe();
+        com.tencent.mm.kernel.a.c localc = com.tencent.mm.kernel.a.c.ajP();
         if (paramAnonymousa != null) {
-          localc.bq(paramAnonymousa);
+          localc.bs(paramAnonymousa);
         }
         AppMethodBeat.o(182895);
       }
@@ -117,12 +117,12 @@ public final class g
     //   2: monitorenter
     //   3: ldc 165
     //   5: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 167	com/tencent/mm/kernel/g:gib	Lcom/tencent/mm/kernel/g;
+    //   8: getstatic 167	com/tencent/mm/kernel/g:gBL	Lcom/tencent/mm/kernel/g;
     //   11: ifnull +53 -> 64
-    //   14: getstatic 167	com/tencent/mm/kernel/g:gib	Lcom/tencent/mm/kernel/g;
-    //   17: getfield 102	com/tencent/mm/kernel/g:gic	Lcom/tencent/mm/kernel/h;
-    //   20: invokevirtual 106	com/tencent/mm/kernel/h:agO	()Lcom/tencent/mm/kernel/d;
-    //   23: invokevirtual 112	com/tencent/mm/kernel/d:agp	()Lcom/tencent/mm/kernel/b/g;
+    //   14: getstatic 167	com/tencent/mm/kernel/g:gBL	Lcom/tencent/mm/kernel/g;
+    //   17: getfield 102	com/tencent/mm/kernel/g:gBM	Lcom/tencent/mm/kernel/h;
+    //   20: invokevirtual 106	com/tencent/mm/kernel/h:ajz	()Lcom/tencent/mm/kernel/d;
+    //   23: invokevirtual 112	com/tencent/mm/kernel/d:ajb	()Lcom/tencent/mm/kernel/b/g;
     //   26: checkcast 114	com/tencent/mm/kernel/b/h
     //   29: astore_1
     //   30: aload_0
@@ -130,14 +130,14 @@ public final class g
     //   34: astore_2
     //   35: aload_1
     //   36: aload_0
-    //   37: getfield 177	com/tencent/mm/kernel/b/h:gku	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   40: putfield 177	com/tencent/mm/kernel/b/h:gku	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   37: getfield 177	com/tencent/mm/kernel/b/h:gEe	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   40: putfield 177	com/tencent/mm/kernel/b/h:gEe	Lcom/tencent/tinker/entry/ApplicationLike;
     //   43: aload_1
     //   44: aload_2
     //   45: putfield 173	com/tencent/mm/kernel/b/g:ca	Landroid/app/Application;
     //   48: ldc 179
     //   50: ldc 181
-    //   52: invokestatic 186	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   52: invokestatic 186	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   55: ldc 165
     //   57: invokestatic 161	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   60: ldc 2
@@ -149,12 +149,12 @@ public final class g
     //   71: invokestatic 192	com/tencent/mm/kernel/j:a	(Lcom/tencent/mm/kernel/j$a;)V
     //   74: ldc 179
     //   76: ldc 194
-    //   78: invokestatic 186	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   78: invokestatic 186	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   81: new 2	com/tencent/mm/kernel/g
     //   84: dup
     //   85: aload_0
     //   86: invokespecial 196	com/tencent/mm/kernel/g:<init>	(Lcom/tencent/mm/kernel/b/h;)V
-    //   89: putstatic 167	com/tencent/mm/kernel/g:gib	Lcom/tencent/mm/kernel/g;
+    //   89: putstatic 167	com/tencent/mm/kernel/g:gBL	Lcom/tencent/mm/kernel/g;
     //   92: ldc 165
     //   94: invokestatic 161	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   97: goto -37 -> 60
@@ -177,29 +177,29 @@ public final class g
   private void a(com.tencent.mm.kernel.b.h paramh, Object paramObject)
   {
     AppMethodBeat.i(132126);
-    if (!this.gil.containsKey(paramObject))
+    if (!this.gBV.containsKey(paramObject))
     {
-      if (this.gil.putIfAbsent(paramObject, this.gil) != null)
+      if (this.gBV.putIfAbsent(paramObject, this.gBV) != null)
       {
-        ac.i("MicroMsg.MMKernel", "Already add, skip[%s].", new Object[] { paramObject });
+        ad.i("MicroMsg.MMKernel", "Already add, skip[%s].", new Object[] { paramObject });
         AppMethodBeat.o(132126);
       }
     }
     else
     {
-      ac.i("MicroMsg.MMKernel", "Already add, skip it[%s].", new Object[] { paramObject });
+      ad.i("MicroMsg.MMKernel", "Already add, skip it[%s].", new Object[] { paramObject });
       AppMethodBeat.o(132126);
       return;
     }
-    com.tencent.mm.kernel.a.c.ahe().add(paramObject);
+    com.tencent.mm.kernel.a.c.ajP().add(paramObject);
     if ((paramObject instanceof ApplicationLifeCycle)) {
       paramh.a((ApplicationLifeCycle)paramObject);
     }
     if ((paramObject instanceof com.tencent.mm.kernel.api.d)) {
-      this.ghd.bs((com.tencent.mm.kernel.api.d)paramObject);
+      this.gAN.bu((com.tencent.mm.kernel.api.d)paramObject);
     }
     if ((paramObject instanceof com.tencent.mm.kernel.api.g)) {
-      this.gic.a((com.tencent.mm.kernel.api.g)paramObject);
+      this.gBM.a((com.tencent.mm.kernel.api.g)paramObject);
     }
     AppMethodBeat.o(132126);
   }
@@ -207,16 +207,16 @@ public final class g
   public static <T extends com.tencent.mm.kernel.c.a, N extends T> void a(Class<T> paramClass, com.tencent.mm.kernel.c.c<N> paramc)
   {
     AppMethodBeat.i(132139);
-    agS();
-    agN().a(paramClass, paramc);
+    ajD();
+    ajy().a(paramClass, paramc);
     AppMethodBeat.o(132139);
   }
   
   public static <T extends com.tencent.mm.kernel.c.a> T ab(Class<T> paramClass)
   {
     AppMethodBeat.i(132137);
-    agS();
-    paramClass = agN().ab(paramClass);
+    ajD();
+    paramClass = ajy().ab(paramClass);
     AppMethodBeat.o(132137);
     return paramClass;
   }
@@ -224,25 +224,89 @@ public final class g
   public static void ac(Class<? extends com.tencent.mm.kernel.c.a> paramClass)
   {
     AppMethodBeat.i(132140);
-    agS();
-    agN().ac(paramClass);
+    ajD();
+    ajy().ac(paramClass);
     AppMethodBeat.o(132140);
   }
   
   public static <T extends com.tencent.mm.kernel.b.a> T ad(Class<T> paramClass)
   {
     AppMethodBeat.i(132136);
-    agS();
-    paramClass = agN().ad(paramClass);
+    ajD();
+    paramClass = ajy().ad(paramClass);
     AppMethodBeat.o(132136);
     return paramClass;
   }
   
-  public static boolean agM()
+  public static q aiU()
+  {
+    AppMethodBeat.i(132141);
+    ajD();
+    q localq = ajB().gAO;
+    AppMethodBeat.o(132141);
+    return localq;
+  }
+  
+  public static a ajA()
+  {
+    AppMethodBeat.i(132132);
+    Assert.assertNotNull("mCoreAccount not initialized!", ajD().gBQ);
+    a locala = ajD().gBQ;
+    AppMethodBeat.o(132132);
+    return locala;
+  }
+  
+  public static b ajB()
+  {
+    AppMethodBeat.i(132133);
+    Assert.assertNotNull("mCoreNetwork not initialized!", ajD().gBR);
+    b localb = ajD().gBR;
+    AppMethodBeat.o(132133);
+    return localb;
+  }
+  
+  public static e ajC()
+  {
+    AppMethodBeat.i(132134);
+    Assert.assertNotNull("mCoreStorage not initialized!", ajD().gBP);
+    e locale = ajD().gBP;
+    AppMethodBeat.o(132134);
+    return locale;
+  }
+  
+  public static g ajD()
+  {
+    AppMethodBeat.i(132135);
+    Assert.assertNotNull("Kernel not initialized by MMApplication!", gBL);
+    g localg = gBL;
+    AppMethodBeat.o(132135);
+    return localg;
+  }
+  
+  public static cg ajE()
+  {
+    AppMethodBeat.i(132142);
+    Assert.assertTrue(ajD().gBU);
+    cg localcg = ajD().gBO;
+    AppMethodBeat.o(132142);
+    return localcg;
+  }
+  
+  @Deprecated
+  public static aq ajF()
+  {
+    AppMethodBeat.i(132143);
+    Assert.assertTrue(ajD().gBU);
+    aq localaq = ajD().gBN;
+    AppMethodBeat.o(132143);
+    return localaq;
+  }
+  
+  public static boolean ajx()
   {
     AppMethodBeat.i(132129);
-    a locala = agS().gig;
-    if ((locala != null) && (locala.afY()))
+    a locala = ajD().gBQ;
+    if ((locala != null) && (locala.aiK()))
     {
       AppMethodBeat.o(132129);
       return true;
@@ -251,112 +315,48 @@ public final class g
     return false;
   }
   
-  public static c agN()
+  public static c ajy()
   {
     AppMethodBeat.i(132130);
-    Assert.assertNotNull("mCorePlugins not initialized!", agS().gic.agN());
-    c localc = agS().gic.agN();
+    Assert.assertNotNull("mCorePlugins not initialized!", ajD().gBM.ajy());
+    c localc = ajD().gBM.ajy();
     AppMethodBeat.o(132130);
     return localc;
   }
   
-  public static d<com.tencent.mm.kernel.b.h> agO()
+  public static d<com.tencent.mm.kernel.b.h> ajz()
   {
     AppMethodBeat.i(132131);
-    Assert.assertNotNull("mCoreProcess not initialized!", agS().gic.agO());
-    d locald = agS().gic.agO();
+    Assert.assertNotNull("mCoreProcess not initialized!", ajD().gBM.ajz());
+    d locald = ajD().gBM.ajz();
     AppMethodBeat.o(132131);
     return locald;
-  }
-  
-  public static a agP()
-  {
-    AppMethodBeat.i(132132);
-    Assert.assertNotNull("mCoreAccount not initialized!", agS().gig);
-    a locala = agS().gig;
-    AppMethodBeat.o(132132);
-    return locala;
-  }
-  
-  public static b agQ()
-  {
-    AppMethodBeat.i(132133);
-    Assert.assertNotNull("mCoreNetwork not initialized!", agS().gih);
-    b localb = agS().gih;
-    AppMethodBeat.o(132133);
-    return localb;
-  }
-  
-  public static e agR()
-  {
-    AppMethodBeat.i(132134);
-    Assert.assertNotNull("mCoreStorage not initialized!", agS().gif);
-    e locale = agS().gif;
-    AppMethodBeat.o(132134);
-    return locale;
-  }
-  
-  public static g agS()
-  {
-    AppMethodBeat.i(132135);
-    Assert.assertNotNull("Kernel not initialized by MMApplication!", gib);
-    g localg = gib;
-    AppMethodBeat.o(132135);
-    return localg;
-  }
-  
-  public static cf agT()
-  {
-    AppMethodBeat.i(132142);
-    Assert.assertTrue(agS().gik);
-    cf localcf = agS().gie;
-    AppMethodBeat.o(132142);
-    return localcf;
-  }
-  
-  @Deprecated
-  public static ap agU()
-  {
-    AppMethodBeat.i(132143);
-    Assert.assertTrue(agS().gik);
-    ap localap = agS().gid;
-    AppMethodBeat.o(132143);
-    return localap;
-  }
-  
-  public static q agi()
-  {
-    AppMethodBeat.i(132141);
-    agS();
-    q localq = agQ().ghe;
-    AppMethodBeat.o(132141);
-    return localq;
   }
   
   public static <T extends com.tencent.mm.kernel.c.a, N extends T> void b(Class<T> paramClass, N paramN)
   {
     AppMethodBeat.i(132138);
-    agS();
-    agN().a(paramClass, new com.tencent.mm.kernel.c.e(paramN));
+    ajD();
+    ajy().a(paramClass, new com.tencent.mm.kernel.c.e(paramN));
     AppMethodBeat.o(132138);
   }
   
-  public static void mr(int paramInt)
+  public static void mQ(int paramInt)
   {
     AppMethodBeat.i(132145);
-    a locala = agP();
-    if ((a.mm(paramInt)) && (a.b.a(a.ggE) == paramInt) && (locala.afY()))
+    a locala = ajA();
+    if ((a.mL(paramInt)) && (a.b.a(a.gAo) == paramInt) && (locala.aiK()))
     {
-      ac.w("MMKernel.CoreAccount", "loginUin, uin not changed, return :%d", new Object[] { Integer.valueOf(paramInt) });
+      ad.w("MMKernel.CoreAccount", "loginUin, uin not changed, return :%d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(132145);
       return;
     }
-    synchronized (locala.ggD)
+    synchronized (locala.gAn)
     {
-      a.b.a(a.ggE, paramInt);
-      locala.afN();
-      locala.ggR = SystemClock.elapsedRealtime();
-      locala.dy(true);
+      a.b.a(a.gAo, paramInt);
+      locala.aiz();
+      locala.gAB = SystemClock.elapsedRealtime();
+      locala.dA(true);
       AppMethodBeat.o(132145);
       return;
     }
@@ -365,40 +365,40 @@ public final class g
   public final void a(com.tencent.mm.kernel.api.g paramg)
   {
     AppMethodBeat.i(132127);
-    this.gic.a(paramg);
+    this.gBM.a(paramg);
     AppMethodBeat.o(132127);
   }
   
   public final void a(com.tencent.mm.vending.h.d paramd)
   {
     AppMethodBeat.i(132148);
-    this.gic.a(paramd);
+    this.gBM.a(paramd);
     AppMethodBeat.o(132148);
   }
   
-  public final boolean agL()
+  public final boolean ajw()
   {
-    return this.gim;
+    return this.gBW;
   }
   
   public final void b(com.tencent.mm.kernel.api.g paramg)
   {
     AppMethodBeat.i(132128);
-    this.gic.b(paramg);
+    this.gBM.b(paramg);
     AppMethodBeat.o(132128);
   }
   
-  public final void bn(Object paramObject)
+  public final void bp(Object paramObject)
   {
     AppMethodBeat.i(132125);
-    a((com.tencent.mm.kernel.b.h)agO().agp(), paramObject);
+    a((com.tencent.mm.kernel.b.h)ajz().ajb(), paramObject);
     AppMethodBeat.o(132125);
   }
   
-  public final void dA(boolean paramBoolean)
+  public final void dC(boolean paramBoolean)
   {
     AppMethodBeat.i(132149);
-    this.gic.giy.cf(paramBoolean);
+    this.gBM.gCi.cg(paramBoolean);
     AppMethodBeat.o(132149);
   }
   
@@ -406,21 +406,21 @@ public final class g
   {
     AppMethodBeat.i(132147);
     long l = System.currentTimeMillis();
-    if (this.gig != null) {}
+    if (this.gBQ != null) {}
     for (String str = p.getString(a.getUin());; str = "-1")
     {
-      ac.w("MicroMsg.MMKernel", "release uin:%s ", new Object[] { str });
-      if (this.gih.ghe != null) {
-        this.gih.ghe.reset();
+      ad.w("MicroMsg.MMKernel", "release uin:%s ", new Object[] { str });
+      if (this.gBR.gAO != null) {
+        this.gBR.gAO.reset();
       }
       com.tencent.e.g.shutdown();
-      if (this.gid != null) {
-        this.gid.a(new ap.b()
+      if (this.gBN != null) {
+        this.gBN.a(new aq.b()
         {
-          public final void Am()
+          public final void BJ()
           {
             AppMethodBeat.i(182901);
-            com.tencent.e.g.a(ai.getContext(), new aa());
+            com.tencent.e.g.a(aj.getContext(), new aa());
             if (g.a(g.this) != null) {
               g.a(g.this).release();
             }
@@ -428,21 +428,21 @@ public final class g
           }
         });
       }
-      ac.i("MicroMsg.MMKernel", "release uin:%s finish!!! cost:%sms", new Object[] { str, Long.valueOf(System.currentTimeMillis() - l) });
+      ad.i("MicroMsg.MMKernel", "release uin:%s finish!!! cost:%sms", new Object[] { str, Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(132147);
       return;
     }
   }
   
-  public final void uj(String paramString)
+  public final void wZ(String paramString)
   {
     AppMethodBeat.i(132146);
-    ac.w("MicroMsg.MMKernel", "logoutAccount uin:%s info:%s stack:%s", new Object[] { p.getString(a.getUin()), paramString, bs.eWi() });
-    a.ub(bs.eWi().toString() + paramString);
-    this.gig.afQ().pS(a.getUin());
+    ad.w("MicroMsg.MMKernel", "logoutAccount uin:%s info:%s stack:%s", new Object[] { p.getString(a.getUin()), paramString, bt.flS() });
+    a.wR(bt.flS().toString() + paramString);
+    this.gBQ.aiC().rR(a.getUin());
     releaseAll();
-    a.afL();
-    a.dz(false);
+    a.aix();
+    a.dB(false);
     AppMethodBeat.o(132146);
   }
   

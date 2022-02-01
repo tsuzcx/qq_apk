@@ -2,7 +2,7 @@ package com.tencent.mm.ui.f.b;
 
 public abstract interface b
 {
-  public abstract a fj(String paramString1, String paramString2);
+  public abstract a ft(String paramString1, String paramString2);
 }
 
 

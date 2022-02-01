@@ -2,7 +2,7 @@ package com.tencent.mm.cj;
 
 public abstract interface a
 {
-  public abstract boolean api(String paramString);
+  public abstract boolean aun(String paramString);
 }
 
 

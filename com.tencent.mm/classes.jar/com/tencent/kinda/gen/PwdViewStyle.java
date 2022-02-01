@@ -6,11 +6,11 @@ public enum PwdViewStyle
 {
   static
   {
-    AppMethodBeat.i(192965);
+    AppMethodBeat.i(190328);
     CASHIERSTYLE = new PwdViewStyle("CASHIERSTYLE", 0);
     CHECKPWDSTYLE = new PwdViewStyle("CHECKPWDSTYLE", 1);
     $VALUES = new PwdViewStyle[] { CASHIERSTYLE, CHECKPWDSTYLE };
-    AppMethodBeat.o(192965);
+    AppMethodBeat.o(190328);
   }
   
   private PwdViewStyle() {}

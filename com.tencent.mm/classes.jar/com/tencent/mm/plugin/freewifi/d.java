@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public static String sok;
+  public static String tkN;
   
   static
   {
     AppMethodBeat.i(24647);
-    sok = m.afo("MicroMsg.FreeWifi.ConstantsFreeWifi");
+    tkN = m.ajM("MicroMsg.FreeWifi.ConstantsFreeWifi");
     AppMethodBeat.o(24647);
   }
 }

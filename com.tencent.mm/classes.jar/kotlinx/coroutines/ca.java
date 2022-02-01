@@ -1,13 +1,87 @@
 package kotlinx.coroutines;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.p;
 import d.l;
-import java.util.concurrent.CancellationException;
+import d.v;
+import kotlinx.coroutines.internal.h;
+import kotlinx.coroutines.internal.j;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/ParentJob;", "Lkotlinx/coroutines/Job;", "getChildJobCancellationCause", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "kotlinx-coroutines-core"})
-public abstract interface ca
-  extends bo
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/NodeList;", "Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "Lkotlinx/coroutines/Incomplete;", "()V", "isActive", "", "()Z", "list", "getList", "()Lkotlinx/coroutines/NodeList;", "getString", "", "state", "toString", "kotlinx-coroutines-core"})
+public final class ca
+  extends h
+  implements bm
 {
-  public abstract CancellationException gef();
+  public final String getString(String paramString)
+  {
+    AppMethodBeat.i(118248);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("List{");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("}[");
+    int i = 1;
+    h localh = (h)this;
+    paramString = localh.gvZ();
+    if (paramString == null)
+    {
+      paramString = new v("null cannot be cast to non-null type kotlinx.coroutines.internal.Node /* = kotlinx.coroutines.internal.LockFreeLinkedListNode */");
+      AppMethodBeat.o(118248);
+      throw paramString;
+    }
+    paramString = (j)paramString;
+    if ((p.i(paramString, localh) ^ true))
+    {
+      int j = i;
+      bu localbu;
+      if ((paramString instanceof bu))
+      {
+        localbu = (bu)paramString;
+        if (i == 0) {
+          break label129;
+        }
+        i = 0;
+      }
+      for (;;)
+      {
+        localStringBuilder.append(localbu);
+        j = i;
+        paramString = paramString.gwa();
+        i = j;
+        break;
+        label129:
+        localStringBuilder.append(", ");
+      }
+    }
+    localStringBuilder.append("]");
+    paramString = localStringBuilder.toString();
+    p.g(paramString, "StringBuilder().apply(builderAction).toString()");
+    AppMethodBeat.o(118248);
+    return paramString;
+  }
+  
+  public final ca gvq()
+  {
+    return this;
+  }
+  
+  public final boolean isActive()
+  {
+    return true;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(118249);
+    if (am.getDEBUG())
+    {
+      str = getString("Active");
+      AppMethodBeat.o(118249);
+      return str;
+    }
+    String str = super.toString();
+    AppMethodBeat.o(118249);
+    return str;
+  }
 }
 
 

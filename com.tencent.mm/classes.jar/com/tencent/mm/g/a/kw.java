@@ -1,15 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
 import com.tencent.mm.sdk.b.b;
 
 public final class kw
   extends b
 {
-  public a dmH;
-  public b dmI;
+  public a dxY;
   
   public kw()
   {
@@ -18,36 +15,22 @@ public final class kw
   
   private kw(byte paramByte)
   {
-    AppMethodBeat.i(127406);
-    this.dmH = new a();
-    this.dmI = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(197129);
+    this.dxY = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(127406);
+    AppMethodBeat.o(197129);
   }
   
   public static final class a
   {
-    public n dcV;
-    public int dmJ = 0;
-    public String dmK;
-    public float dmL = 0.0F;
-    public float dmM = 0.0F;
-    public int dmN = 0;
-    public String filename;
-    public int height = 0;
-    public View view;
-    public int width = 0;
-  }
-  
-  public static final class b
-  {
-    public String path;
+    public String content;
+    public long dxZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.kw
  * JD-Core Version:    0.7.0.1
  */

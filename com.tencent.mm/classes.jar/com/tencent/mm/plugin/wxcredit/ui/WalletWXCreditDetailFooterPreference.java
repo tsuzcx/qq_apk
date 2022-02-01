@@ -8,16 +8,18 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class WalletWXCreditDetailFooterPreference
   extends Preference
   implements View.OnClickListener
 {
-  private TextView Ddq;
-  private TextView Ddr;
+  private TextView EHq;
+  private TextView EHr;
   private LayoutInflater mInflater;
-  View.OnClickListener uWS;
+  View.OnClickListener waa;
   
   public WalletWXCreditDetailFooterPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,19 +39,23 @@ public class WalletWXCreditDetailFooterPreference
   {
     AppMethodBeat.i(72359);
     super.onBindView(paramView);
-    this.Ddq = ((TextView)paramView.findViewById(2131306854));
-    this.Ddr = ((TextView)paramView.findViewById(2131306852));
-    this.Ddq.setOnClickListener(this);
-    this.Ddr.setOnClickListener(this);
+    this.EHq = ((TextView)paramView.findViewById(2131306854));
+    this.EHr = ((TextView)paramView.findViewById(2131306852));
+    this.EHq.setOnClickListener(this);
+    this.EHr.setOnClickListener(this);
     AppMethodBeat.o(72359);
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(72360);
-    if (this.uWS != null) {
-      this.uWS.onClick(paramView);
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditDetailFooterPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    if (this.waa != null) {
+      this.waa.onClick(paramView);
     }
+    a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditDetailFooterPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(72360);
   }
   

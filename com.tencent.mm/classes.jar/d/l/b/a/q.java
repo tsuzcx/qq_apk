@@ -4,94 +4,86 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.f;
 import d.g;
 import d.g.a.a;
+import d.g.b.p;
+import d.k;
+import d.l;
 import d.l.b.a.b.b.ah;
-import d.l.m;
-import d.l.m.a;
+import d.l.n;
+import d.l.n.a;
 import java.lang.reflect.Field;
 
-@d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"Lkotlin/reflect/jvm/internal/KProperty1Impl;", "T", "R", "Lkotlin/reflect/KProperty1;", "Lkotlin/reflect/jvm/internal/KPropertyImpl;", "container", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "name", "", "signature", "boundReceiver", "", "(Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "(Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;Lorg/jetbrains/kotlin/descriptors/PropertyDescriptor;)V", "_getter", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazyVal;", "Lkotlin/reflect/jvm/internal/KProperty1Impl$Getter;", "kotlin.jvm.PlatformType", "delegateField", "Lkotlin/Lazy;", "Ljava/lang/reflect/Field;", "getter", "getGetter", "()Lkotlin/reflect/jvm/internal/KProperty1Impl$Getter;", "get", "receiver", "(Ljava/lang/Object;)Ljava/lang/Object;", "getDelegate", "invoke", "Getter", "kotlin-reflection"})
-public class q<T, R>
-  extends s<R>
-  implements m<T, R>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/reflect/jvm/internal/KProperty2Impl;", "D", "E", "R", "Lkotlin/reflect/KProperty2;", "Lkotlin/reflect/jvm/internal/KPropertyImpl;", "container", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "name", "", "signature", "(Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;Ljava/lang/String;Ljava/lang/String;)V", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "(Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;Lorg/jetbrains/kotlin/descriptors/PropertyDescriptor;)V", "_getter", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazyVal;", "Lkotlin/reflect/jvm/internal/KProperty2Impl$Getter;", "kotlin.jvm.PlatformType", "delegateField", "Lkotlin/Lazy;", "Ljava/lang/reflect/Field;", "getter", "getGetter", "()Lkotlin/reflect/jvm/internal/KProperty2Impl$Getter;", "get", "receiver1", "receiver2", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "getDelegate", "", "invoke", "Getter", "kotlin-reflection"})
+public class q<D, E, R>
+  extends r<R>
+  implements n<D, E, R>
 {
-  private final z.b<a<T, R>> KXl;
-  private final f<Field> KXp;
+  private final y.b<a<D, E, R>> MOi;
+  private final f<Field> MOm;
   
   public q(i parami, ah paramah)
   {
     super(parami, paramah);
-    AppMethodBeat.i(56463);
-    parami = z.M((a)new b(this));
-    d.g.b.k.g(parami, "ReflectProperties.lazy { Getter(this) }");
-    this.KXl = parami;
-    this.KXp = g.a(d.k.KTd, (a)new c(this));
-    AppMethodBeat.o(56463);
+    AppMethodBeat.i(56472);
+    parami = y.Q((a)new b(this));
+    p.g(parami, "ReflectProperties.lazy { Getter(this) }");
+    this.MOi = parami;
+    this.MOm = g.a(k.MKb, (a)new c(this));
+    AppMethodBeat.o(56472);
   }
   
-  public q(i parami, String paramString1, String paramString2, Object paramObject)
+  private a<D, E, R> ggG()
   {
-    super(parami, paramString1, paramString2, paramObject);
-    AppMethodBeat.i(56462);
-    parami = z.M((a)new b(this));
-    d.g.b.k.g(parami, "ReflectProperties.lazy { Getter(this) }");
-    this.KXl = parami;
-    this.KXp = g.a(d.k.KTd, (a)new c(this));
-    AppMethodBeat.o(56462);
-  }
-  
-  private a<T, R> fPh()
-  {
-    AppMethodBeat.i(56457);
-    Object localObject = this.KXl.invoke();
-    d.g.b.k.g(localObject, "_getter()");
+    AppMethodBeat.i(56468);
+    Object localObject = this.MOi.invoke();
+    p.g(localObject, "_getter()");
     localObject = (a)localObject;
-    AppMethodBeat.o(56457);
+    AppMethodBeat.o(56468);
     return localObject;
   }
   
-  public final R ay(T paramT)
+  public final R p(D paramD, E paramE)
   {
-    AppMethodBeat.i(56461);
-    paramT = get(paramT);
-    AppMethodBeat.o(56461);
-    return paramT;
+    AppMethodBeat.i(56471);
+    paramD = y(paramD, paramE);
+    AppMethodBeat.o(56471);
+    return paramD;
   }
   
-  public final R get(T paramT)
+  public final R y(D paramD, E paramE)
   {
-    AppMethodBeat.i(56460);
-    paramT = fPh().ae(new Object[] { paramT });
-    AppMethodBeat.o(56460);
-    return paramT;
+    AppMethodBeat.i(56470);
+    paramD = ggG().af(new Object[] { paramD, paramE });
+    AppMethodBeat.o(56470);
+    return paramD;
   }
   
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"Lkotlin/reflect/jvm/internal/KProperty1Impl$Getter;", "T", "R", "Lkotlin/reflect/jvm/internal/KPropertyImpl$Getter;", "Lkotlin/reflect/KProperty1$Getter;", "property", "Lkotlin/reflect/jvm/internal/KProperty1Impl;", "(Lkotlin/reflect/jvm/internal/KProperty1Impl;)V", "getProperty", "()Lkotlin/reflect/jvm/internal/KProperty1Impl;", "invoke", "receiver", "(Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-reflection"})
-  public static final class a<T, R>
-    extends s.c<R>
-    implements m.a<T, R>
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/reflect/jvm/internal/KProperty2Impl$Getter;", "D", "E", "R", "Lkotlin/reflect/jvm/internal/KPropertyImpl$Getter;", "Lkotlin/reflect/KProperty2$Getter;", "property", "Lkotlin/reflect/jvm/internal/KProperty2Impl;", "(Lkotlin/reflect/jvm/internal/KProperty2Impl;)V", "getProperty", "()Lkotlin/reflect/jvm/internal/KProperty2Impl;", "invoke", "receiver1", "receiver2", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-reflection"})
+  public static final class a<D, E, R>
+    extends r.c<R>
+    implements n.a<D, E, R>
   {
-    private final q<T, R> KXq;
+    private final q<D, E, R> MOp;
     
-    public a(q<T, ? extends R> paramq)
+    public a(q<D, E, ? extends R> paramq)
     {
-      AppMethodBeat.i(56454);
-      this.KXq = paramq;
-      AppMethodBeat.o(56454);
+      AppMethodBeat.i(56465);
+      this.MOp = paramq;
+      AppMethodBeat.o(56465);
     }
     
-    public final R ay(T paramT)
+    public final R p(D paramD, E paramE)
     {
-      AppMethodBeat.i(56453);
-      paramT = this.KXq.get(paramT);
-      AppMethodBeat.o(56453);
-      return paramT;
+      AppMethodBeat.i(56464);
+      paramD = this.MOp.y(paramD, paramE);
+      AppMethodBeat.o(56464);
+      return paramD;
     }
   }
   
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/reflect/jvm/internal/KProperty1Impl$Getter;", "T", "R", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lkotlin/reflect/jvm/internal/KProperty2Impl$Getter;", "D", "E", "R", "invoke"})
   static final class b
-    extends d.g.b.l
-    implements a<q.a<T, ? extends R>>
+    extends d.g.b.q
+    implements a<q.a<D, E, ? extends R>>
   {
     b(q paramq)
     {
@@ -99,9 +91,9 @@ public class q<T, R>
     }
   }
   
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Ljava/lang/reflect/Field;", "T", "R", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Ljava/lang/reflect/Field;", "D", "E", "R", "invoke"})
   static final class c
-    extends d.g.b.l
+    extends d.g.b.q
     implements a<Field>
   {
     c(q paramq)
@@ -112,7 +104,7 @@ public class q<T, R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.q
  * JD-Core Version:    0.7.0.1
  */

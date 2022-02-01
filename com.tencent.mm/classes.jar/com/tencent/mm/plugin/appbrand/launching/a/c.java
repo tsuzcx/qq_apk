@@ -1,79 +1,80 @@
 package com.tencent.mm.plugin.appbrand.launching.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.g.b.a.hs;
-import com.tencent.mm.g.b.a.hs.b;
+import com.tencent.mm.al.a;
+import com.tencent.mm.al.a.a;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.g.b.a.iw;
+import com.tencent.mm.g.b.a.iw.b;
 import com.tencent.mm.plugin.appbrand.permission.AppRuntimeApiPermissionBundle;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.protocal.protobuf.ebb;
-import com.tencent.mm.protocal.protobuf.ebc;
-import com.tencent.mm.protocal.protobuf.ebd;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.ehf;
+import com.tencent.mm.protocal.protobuf.ehg;
+import com.tencent.mm.protocal.protobuf.ehh;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class c
-  extends com.tencent.mm.ak.c<ebc>
+  extends a<ehg>
 {
   final String appId;
-  final String cbY;
-  final int hxM;
-  public volatile boolean lnb;
-  private final hs loM;
-  public volatile HashMap<String, AppRuntimeApiPermissionBundle> loN;
+  final String cmp;
+  final int hQh;
+  public volatile boolean lKu;
+  private final iw lMe;
+  public volatile HashMap<String, AppRuntimeApiPermissionBundle> lMf;
   final b rr;
   
   public c(String paramString1, int paramInt, List<e> paramList, boolean paramBoolean, String paramString2, QualitySession paramQualitySession)
   {
-    AppMethodBeat.i(186858);
-    this.lnb = false;
-    this.loN = new HashMap();
+    AppMethodBeat.i(188643);
+    this.lKu = false;
+    this.lMf = new HashMap();
     this.appId = paramString1;
-    this.hxM = paramInt;
-    this.cbY = paramString2;
-    this.loM = com.tencent.mm.plugin.appbrand.report.quality.f.g(paramQualitySession);
-    paramString2 = this.loM;
+    this.hQh = paramInt;
+    this.cmp = paramString2;
+    this.lMe = com.tencent.mm.plugin.appbrand.report.quality.f.g(paramQualitySession);
+    paramString2 = this.lMe;
     if (paramBoolean) {}
-    for (paramString1 = hs.b.ehB;; paramString1 = hs.b.ehC)
+    for (paramString1 = iw.b.eyB;; paramString1 = iw.b.eyC)
     {
-      paramString2.ehw = paramString1;
-      this.loM.dQE = com.tencent.mm.plugin.appbrand.report.quality.f.getNetworkType();
-      paramString1 = new ebb();
+      paramString2.eyw = paramString1;
+      this.lMe.ega = com.tencent.mm.plugin.appbrand.report.quality.f.getNetworkType();
+      paramString1 = new ehf();
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         paramString2 = (e)paramList.next();
-        paramQualitySession = new ebd();
-        paramQualitySession.djj = paramString2.appId;
-        paramQualitySession.oGP = paramString2.appType;
-        paramString1.GgN.add(paramQualitySession);
+        paramQualitySession = new ehh();
+        paramQualitySession.duW = paramString2.appId;
+        paramQualitySession.pkt = paramString2.appType;
+        paramString1.HSa.add(paramQualitySession);
       }
     }
     paramList = new b.a();
     paramList.funcId = 3827;
     paramList.uri = "/cgi-bin/mmbiz-bin/wxaattr/wxajsapiinfo";
-    paramList.hvt = paramString1;
-    paramList.hvu = new ebc();
-    paramString1 = paramList.aAz();
+    paramList.hNM = paramString1;
+    paramList.hNN = new ehg();
+    paramString1 = paramList.aDC();
     this.rr = paramString1;
-    this.rr = paramString1;
-    AppMethodBeat.o(186858);
+    c(paramString1);
+    AppMethodBeat.o(188643);
   }
   
-  public final com.tencent.mm.cn.f<c.a<ebc>> aBB()
+  public final com.tencent.mm.cn.f<a.a<ehg>> aED()
   {
     try
     {
-      AppMethodBeat.i(186859);
-      long l = bs.eWj();
-      this.loM.nd(l);
-      com.tencent.mm.cn.f localf = super.aBB();
-      AppMethodBeat.o(186859);
+      AppMethodBeat.i(188644);
+      long l = bt.flT();
+      this.lMe.pb(l);
+      com.tencent.mm.cn.f localf = super.aED();
+      AppMethodBeat.o(188644);
       return localf;
     }
     finally

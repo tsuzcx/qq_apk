@@ -6,12 +6,12 @@ public enum e$d$a
 {
   static
   {
-    AppMethodBeat.i(197180);
-    Hha = new a("SUCCESS", 0);
-    Hhb = new a("FAIL", 1);
-    Hhc = new a("CANCEL", 2);
-    Hhd = new a[] { Hha, Hhb, Hhc };
-    AppMethodBeat.o(197180);
+    AppMethodBeat.i(186439);
+    IUq = new a("SUCCESS", 0);
+    IUr = new a("FAIL", 1);
+    IUs = new a("CANCEL", 2);
+    IUt = new a[] { IUq, IUr, IUs };
+    AppMethodBeat.o(186439);
   }
   
   private e$d$a() {}

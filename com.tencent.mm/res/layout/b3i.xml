@@ -2,7 +2,7 @@
 <LinearLayout android:id="@id/cu6" android:paddingLeft="@dimen/jn" android:layout_height="wrap_content" android:minHeight="@dimen/ho" style="@style/n5"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:id="@id/a9e" android:padding="@dimen/ci" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageButton android:layout_gravity="center_vertical" android:id="@id/a9d" android:background="@null" android:focusableInTouchMode="false" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/nb" />
+        <ImageButton android:layout_gravity="center_vertical" android:id="@id/a9d" android:background="@null" android:focusableInTouchMode="false" android:layout_width="@dimen/ap" android:layout_height="@dimen/ap" android:src="@drawable/nb" />
     </LinearLayout>
     <com.tencent.mm.ui.base.MaskLayout android:id="@id/fat" android:layout_width="@dimen/jg" android:layout_height="@dimen/jg" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci">
         <ImageView android:id="@id/b3b" android:layout_width="@dimen/jf" android:layout_height="@dimen/jf" android:src="@raw/default_avatar" android:layout_centerVertical="true" />

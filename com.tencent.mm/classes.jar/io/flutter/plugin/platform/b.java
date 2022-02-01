@@ -24,23 +24,23 @@ import java.util.List;
 
 public final class b
 {
-  private final f KLq;
-  private f.h KPx;
-  int KPy;
-  private final f.f KPz;
+  private final f MCn;
+  private f.h MGw;
+  int MGx;
+  private final f.f MGy;
   final Activity activity;
   
   public b(Activity paramActivity, f paramf)
   {
     AppMethodBeat.i(9883);
-    this.KPz = new f.f()
+    this.MGy = new f.f()
     {
       public final CharSequence a(f.c paramAnonymousc)
       {
         AppMethodBeat.i(9913);
         b localb = b.this;
         ClipData localClipData = ((ClipboardManager)localb.activity.getSystemService("clipboard")).getPrimaryClip();
-        if ((localClipData != null) && ((paramAnonymousc == null) || (paramAnonymousc == f.c.KNp)))
+        if ((localClipData != null) && ((paramAnonymousc == null) || (paramAnonymousc == f.c.MEm)))
         {
           paramAnonymousc = localClipData.getItemAt(0).coerceToText(localb.activity);
           AppMethodBeat.o(9913);
@@ -72,7 +72,7 @@ public final class b
       {
         AppMethodBeat.i(9906);
         View localView = b.this.activity.getWindow().getDecorView();
-        switch (b.2.KPB[paramAnonymouse.ordinal()])
+        switch (b.2.MGA[paramAnonymouse.ordinal()])
         {
         }
         for (;;)
@@ -88,10 +88,15 @@ public final class b
           localView.performHapticFeedback(3);
           AppMethodBeat.o(9906);
           return;
-          localView.performHapticFeedback(6);
-          AppMethodBeat.o(9906);
-          return;
-          localView.performHapticFeedback(4);
+          if (Build.VERSION.SDK_INT >= 23)
+          {
+            localView.performHapticFeedback(6);
+            AppMethodBeat.o(9906);
+            return;
+            if (Build.VERSION.SDK_INT >= 21) {
+              localView.performHapticFeedback(4);
+            }
+          }
         }
       }
       
@@ -99,7 +104,7 @@ public final class b
       {
         AppMethodBeat.i(9905);
         b localb = b.this;
-        if (paramAnonymousg == f.g.KNC) {
+        if (paramAnonymousg == f.g.MEz) {
           localb.activity.getWindow().getDecorView().playSoundEffect(0);
         }
         AppMethodBeat.o(9905);
@@ -112,71 +117,76 @@ public final class b
         AppMethodBeat.o(9911);
       }
       
-      public final void aVQ(String paramAnonymousString)
-      {
-        AppMethodBeat.i(9914);
-        ((ClipboardManager)b.this.activity.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("text label?", paramAnonymousString));
-        AppMethodBeat.o(9914);
-      }
-      
-      public final void agy(int paramAnonymousInt)
+      public final void aiZ(int paramAnonymousInt)
       {
         AppMethodBeat.i(9907);
         b.this.activity.setRequestedOrientation(paramAnonymousInt);
         AppMethodBeat.o(9907);
       }
       
-      public final void be(ArrayList<Rect> paramAnonymousArrayList)
+      public final void bb(ArrayList<Rect> paramAnonymousArrayList)
       {
-        AppMethodBeat.i(192771);
+        AppMethodBeat.i(213215);
         b localb = b.this;
         if (Build.VERSION.SDK_INT >= 29) {
           localb.activity.getWindow().getDecorView().setSystemGestureExclusionRects(paramAnonymousArrayList);
         }
-        AppMethodBeat.o(192771);
+        AppMethodBeat.o(213215);
       }
       
-      public final void fND()
+      public final void bbT(String paramAnonymousString)
+      {
+        AppMethodBeat.i(9914);
+        ((ClipboardManager)b.this.activity.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("text label?", paramAnonymousString));
+        AppMethodBeat.o(9914);
+      }
+      
+      public final void gfc()
       {
         AppMethodBeat.i(9910);
-        b.this.fNK();
+        b.this.gfj();
         AppMethodBeat.o(9910);
       }
       
-      public final void fNE()
+      public final void gfd()
       {
         AppMethodBeat.i(9912);
         b.this.activity.finish();
         AppMethodBeat.o(9912);
       }
       
-      public final List<Rect> fNF()
+      public final List<Rect> gfe()
       {
-        AppMethodBeat.i(192770);
+        AppMethodBeat.i(213214);
         Object localObject = b.this;
         if (Build.VERSION.SDK_INT >= 29)
         {
           localObject = ((b)localObject).activity.getWindow().getDecorView().getSystemGestureExclusionRects();
-          AppMethodBeat.o(192770);
+          AppMethodBeat.o(213214);
           return localObject;
         }
-        AppMethodBeat.o(192770);
+        AppMethodBeat.o(213214);
         return null;
       }
       
-      public final void iK(List<f.i> paramAnonymousList)
+      public final void iY(List<f.i> paramAnonymousList)
       {
         AppMethodBeat.i(9909);
         b localb = b.this;
-        int i = 1798;
-        if (paramAnonymousList.size() == 0) {
-          i = 5894;
+        int j = 1798;
+        int i = j;
+        if (paramAnonymousList.size() == 0)
+        {
+          i = j;
+          if (Build.VERSION.SDK_INT >= 19) {
+            i = 5894;
+          }
         }
-        int j = 0;
+        j = 0;
         if (j < paramAnonymousList.size())
         {
           f.i locali = (f.i)paramAnonymousList.get(j);
-          switch (b.2.KNk[locali.ordinal()])
+          switch (b.2.MEh[locali.ordinal()])
           {
           }
           for (;;)
@@ -188,15 +198,15 @@ public final class b
             i = i & 0xFFFFFDFF & 0xFFFFFFFD;
           }
         }
-        localb.KPy = i;
-        localb.fNK();
+        localb.MGx = i;
+        localb.gfj();
         AppMethodBeat.o(9909);
       }
     };
     this.activity = paramActivity;
-    this.KLq = paramf;
-    this.KLq.KNg = this.KPz;
-    this.KPy = 1280;
+    this.MCn = paramf;
+    this.MCn.MEd = this.MGy;
+    this.MGx = 1280;
     AppMethodBeat.o(9883);
   }
   
@@ -211,24 +221,24 @@ public final class b
     if (Build.VERSION.SDK_INT >= 26)
     {
       j = k;
-      if (paramh.KNH == null) {}
+      if (paramh.MEE == null) {}
     }
-    switch (2.KPC[paramh.KNH.ordinal()])
+    switch (2.MGB[paramh.MEE.ordinal()])
     {
     default: 
       j = k;
       i = j;
-      if (paramh.KNG != null)
+      if (paramh.MED != null)
       {
-        localWindow.setNavigationBarColor(paramh.KNG.intValue());
+        localWindow.setNavigationBarColor(paramh.MED.intValue());
         i = j;
       }
       k = i;
       if (Build.VERSION.SDK_INT >= 23)
       {
         j = i;
-        if (paramh.KNF != null) {
-          switch (2.KPC[paramh.KNF.ordinal()])
+        if (paramh.MEC != null) {
+          switch (2.MGB[paramh.MEC.ordinal()])
           {
           default: 
             j = i;
@@ -240,13 +250,13 @@ public final class b
     for (;;)
     {
       k = j;
-      if (paramh.KNE != null)
+      if (paramh.MEB != null)
       {
-        localWindow.setStatusBarColor(paramh.KNE.intValue());
+        localWindow.setStatusBarColor(paramh.MEB.intValue());
         k = j;
       }
       localView.setSystemUiVisibility(k);
-      this.KPx = paramh;
+      this.MGw = paramh;
       AppMethodBeat.o(9885);
       return;
       j = k | 0x10;
@@ -261,15 +271,15 @@ public final class b
   
   public final void destroy()
   {
-    this.KLq.KNg = null;
+    this.MCn.MEd = null;
   }
   
-  public final void fNK()
+  public final void gfj()
   {
     AppMethodBeat.i(9884);
-    this.activity.getWindow().getDecorView().setSystemUiVisibility(this.KPy);
-    if (this.KPx != null) {
-      b(this.KPx);
+    this.activity.getWindow().getDecorView().setSystemUiVisibility(this.MGx);
+    if (this.MGw != null) {
+      b(this.MGw);
     }
     AppMethodBeat.o(9884);
   }

@@ -4,28 +4,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
 import com.tencent.mm.msgsubscription.storage.d;
 import com.tencent.mm.msgsubscription.storage.e.b;
-import com.tencent.mm.sdk.platformtools.ap;
-import d.y;
+import com.tencent.mm.sdk.platformtools.aq;
+import d.g.b.q;
+import d.l;
+import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/task/SaveSubscribeMsgUIStatus;", "Lcom/tencent/mm/msgsubscription/task/BaseSubscribeMsgTask;", "username", "", "toSaveList", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "switchOpened", "", "needUpdateSwitch", "needUpdateTimestamp", "storageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "callback", "Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;", "(Ljava/lang/String;Ljava/util/List;ZZZLcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;)V", "bizUsername", "(Ljava/lang/String;)V", "mCallback", "subscribeMsgList", "getType", "", "run", "", "Companion", "plugin-comm_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/task/SaveSubscribeMsgUIStatus;", "Lcom/tencent/mm/msgsubscription/task/BaseSubscribeMsgTask;", "username", "", "toSaveList", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "switchOpened", "", "needUpdateSwitch", "needUpdateTimestamp", "storageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "callback", "Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;", "(Ljava/lang/String;Ljava/util/List;ZZZLcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;)V", "bizUsername", "(Ljava/lang/String;)V", "mCallback", "subscribeMsgList", "getType", "", "run", "", "Companion", "plugin-comm_release"})
 public final class g
   extends a
 {
-  public static final a ija;
-  private e.b iiH;
-  private d iiI;
-  private boolean iiX;
-  private boolean iiY;
-  private boolean iiZ;
-  private List<SubscribeMsgTmpItem> iiq;
+  public static final a iCs;
+  private List<SubscribeMsgTmpItem> iBK;
+  private e.b iCb;
+  private d iCc;
+  private boolean iCp;
+  private boolean iCq;
+  private boolean iCr;
   
   static
   {
     AppMethodBeat.i(149692);
-    ija = new a((byte)0);
+    iCs = new a((byte)0);
     AppMethodBeat.o(149692);
   }
   
@@ -33,7 +35,7 @@ public final class g
   {
     super(paramString);
     AppMethodBeat.i(149690);
-    this.iiq = ((List)new ArrayList());
+    this.iBK = ((List)new ArrayList());
     AppMethodBeat.o(149690);
   }
   
@@ -41,12 +43,12 @@ public final class g
   {
     this(paramString);
     AppMethodBeat.i(149691);
-    this.iiI = paramd;
-    this.iiH = null;
-    this.iiq.addAll((Collection)paramList);
-    this.iiX = paramBoolean1;
-    this.iiY = paramBoolean2;
-    this.iiZ = paramBoolean3;
+    this.iCc = paramd;
+    this.iCb = null;
+    this.iBK.addAll((Collection)paramList);
+    this.iCp = paramBoolean1;
+    this.iCq = paramBoolean2;
+    this.iCr = paramBoolean3;
     AppMethodBeat.o(149691);
   }
   
@@ -54,20 +56,20 @@ public final class g
   {
     AppMethodBeat.i(149689);
     d.g.a.a locala = (d.g.a.a)new c(this);
-    if (ap.isMainThread())
+    if (aq.isMainThread())
     {
       locala.invoke();
       AppMethodBeat.o(149689);
       return;
     }
-    ap.f((Runnable)new b(locala));
+    aq.f((Runnable)new b(locala));
     AppMethodBeat.o(149689);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/task/SaveSubscribeMsgUIStatus$Companion;", "", "()V", "TAG", "", "plugin-comm_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/task/SaveSubscribeMsgUIStatus$Companion;", "", "()V", "TAG", "", "plugin-comm_release"})
   public static final class a {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -76,15 +78,15 @@ public final class g
     public final void run()
     {
       AppMethodBeat.i(149687);
-      this.ijb.invoke();
+      this.iCt.invoke();
       AppMethodBeat.o(149687);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class c
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     c(g paramg)
     {

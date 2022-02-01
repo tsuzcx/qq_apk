@@ -12,38 +12,38 @@ import java.nio.ByteBuffer;
 public final class a
   implements com.google.android.exoplayer2.metadata.a
 {
-  private u bcR;
-  private final m bhY;
-  private final l bkq;
+  private u bnm;
+  private final m bss;
+  private final l buL;
   
   public a()
   {
     AppMethodBeat.i(92485);
-    this.bhY = new m();
-    this.bkq = new l();
+    this.bss = new m();
+    this.buL = new l();
     AppMethodBeat.o(92485);
   }
   
   public final Metadata a(d paramd)
   {
     AppMethodBeat.i(92486);
-    if ((this.bcR == null) || (paramd.aTk != this.bcR.vN()))
+    if ((this.bnm == null) || (paramd.bdF != this.bnm.xk()))
     {
-      this.bcR = new u(paramd.timeUs);
-      this.bcR.ap(paramd.timeUs - paramd.aTk);
+      this.bnm = new u(paramd.timeUs);
+      this.bnm.ap(paramd.timeUs - paramd.bdF);
     }
-    paramd = paramd.aJg;
+    paramd = paramd.aKX;
     byte[] arrayOfByte = paramd.array();
     int i = paramd.limit();
-    this.bhY.n(arrayOfByte, i);
-    this.bkq.n(arrayOfByte, i);
-    this.bkq.ep(39);
-    long l = this.bkq.eo(1);
-    l = this.bkq.eo(32) | l << 32;
-    this.bkq.ep(20);
-    i = this.bkq.eo(12);
-    int j = this.bkq.eo(8);
-    this.bhY.eX(14);
+    this.bss.n(arrayOfByte, i);
+    this.buL.n(arrayOfByte, i);
+    this.buL.et(39);
+    long l = this.buL.es(1);
+    l = this.buL.es(32) | l << 32;
+    this.buL.et(20);
+    i = this.buL.es(12);
+    int j = this.buL.es(8);
+    this.bss.fa(14);
     switch (j)
     {
     default: 
@@ -56,13 +56,13 @@ public final class a
       return paramd;
       paramd = new SpliceNullCommand();
       continue;
-      paramd = SpliceScheduleCommand.y(this.bhY);
+      paramd = SpliceScheduleCommand.y(this.bss);
       continue;
-      paramd = SpliceInsertCommand.a(this.bhY, l, this.bcR);
+      paramd = SpliceInsertCommand.a(this.bss, l, this.bnm);
       continue;
-      paramd = TimeSignalCommand.b(this.bhY, l, this.bcR);
+      paramd = TimeSignalCommand.b(this.bss, l, this.bnm);
       continue;
-      paramd = PrivateCommand.a(this.bhY, i, l);
+      paramd = PrivateCommand.a(this.bss, i, l);
     }
     paramd = new Metadata(new Metadata.Entry[] { paramd });
     AppMethodBeat.o(92486);
@@ -71,7 +71,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.scte35.a
  * JD-Core Version:    0.7.0.1
  */

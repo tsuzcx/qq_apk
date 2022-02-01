@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class e
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String appId;
   public String appName;
   public int appType;
   public long createTime;
-  public boolean dqZ;
+  public boolean dCQ;
   public long duration;
-  public String sJZ;
-  public boolean sVA;
-  public String sVB;
-  public String sVC;
-  public String sVD;
-  public LinkedList<l> sVE;
-  public String sVF;
-  public String sVG;
-  public boolean sVz;
   public long size;
+  public String tGK;
+  public boolean tSe;
+  public boolean tSf;
+  public String tSg;
+  public String tSh;
+  public String tSi;
+  public LinkedList<l> tSj;
+  public String tSk;
+  public String tSl;
   public String title;
   public String videoPath;
   public String videoUrl;
@@ -29,7 +29,7 @@ public final class e
   public e()
   {
     AppMethodBeat.i(40868);
-    this.sVE = new LinkedList();
+    this.tSj = new LinkedList();
     AppMethodBeat.o(40868);
   }
   
@@ -39,14 +39,14 @@ public final class e
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bl(1, this.dqZ);
-      paramVarArgs.bl(2, this.sVz);
-      paramVarArgs.bl(3, this.sVA);
-      if (this.sVB != null) {
-        paramVarArgs.d(4, this.sVB);
+      paramVarArgs.bt(1, this.dCQ);
+      paramVarArgs.bt(2, this.tSe);
+      paramVarArgs.bt(3, this.tSf);
+      if (this.tSg != null) {
+        paramVarArgs.d(4, this.tSg);
       }
-      if (this.sVC != null) {
-        paramVarArgs.d(5, this.sVC);
+      if (this.tSh != null) {
+        paramVarArgs.d(5, this.tSh);
       }
       if (this.videoUrl != null) {
         paramVarArgs.d(6, this.videoUrl);
@@ -54,31 +54,31 @@ public final class e
       if (this.title != null) {
         paramVarArgs.d(7, this.title);
       }
-      if (this.sVD != null) {
-        paramVarArgs.d(8, this.sVD);
+      if (this.tSi != null) {
+        paramVarArgs.d(8, this.tSi);
       }
-      paramVarArgs.e(9, 8, this.sVE);
-      paramVarArgs.aO(10, this.createTime);
-      paramVarArgs.aO(11, this.duration);
-      paramVarArgs.aO(12, this.size);
+      paramVarArgs.e(9, 8, this.tSj);
+      paramVarArgs.aY(10, this.createTime);
+      paramVarArgs.aY(11, this.duration);
+      paramVarArgs.aY(12, this.size);
       if (this.appId != null) {
         paramVarArgs.d(13, this.appId);
       }
       if (this.appName != null) {
         paramVarArgs.d(14, this.appName);
       }
-      paramVarArgs.aR(15, this.appType);
+      paramVarArgs.aS(15, this.appType);
       if (this.videoPath != null) {
         paramVarArgs.d(16, this.videoPath);
       }
-      if (this.sJZ != null) {
-        paramVarArgs.d(17, this.sJZ);
+      if (this.tGK != null) {
+        paramVarArgs.d(17, this.tGK);
       }
-      if (this.sVF != null) {
-        paramVarArgs.d(18, this.sVF);
+      if (this.tSk != null) {
+        paramVarArgs.d(18, this.tSk);
       }
-      if (this.sVG != null) {
-        paramVarArgs.d(19, this.sVG);
+      if (this.tSl != null) {
+        paramVarArgs.d(19, this.tSl);
       }
       AppMethodBeat.o(40869);
       return 0;
@@ -86,14 +86,14 @@ public final class e
     int i;
     if (paramInt == 1)
     {
-      i = f.a.a.b.b.a.fK(1) + 1 + 0 + (f.a.a.b.b.a.fK(2) + 1) + (f.a.a.b.b.a.fK(3) + 1);
+      i = f.a.a.b.b.a.alV(1) + 0 + f.a.a.b.b.a.alV(2) + f.a.a.b.b.a.alV(3);
       paramInt = i;
-      if (this.sVB != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.sVB);
+      if (this.tSg != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.tSg);
       }
       i = paramInt;
-      if (this.sVC != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.sVC);
+      if (this.tSh != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.tSh);
       }
       paramInt = i;
       if (this.videoUrl != null) {
@@ -104,10 +104,10 @@ public final class e
         i = paramInt + f.a.a.b.b.a.e(7, this.title);
       }
       paramInt = i;
-      if (this.sVD != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.sVD);
+      if (this.tSi != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.tSi);
       }
-      i = paramInt + f.a.a.a.c(9, 8, this.sVE) + f.a.a.b.b.a.p(10, this.createTime) + f.a.a.b.b.a.p(11, this.duration) + f.a.a.b.b.a.p(12, this.size);
+      i = paramInt + f.a.a.a.c(9, 8, this.tSj) + f.a.a.b.b.a.p(10, this.createTime) + f.a.a.b.b.a.p(11, this.duration) + f.a.a.b.b.a.p(12, this.size);
       paramInt = i;
       if (this.appId != null) {
         paramInt = i + f.a.a.b.b.a.e(13, this.appId);
@@ -116,22 +116,22 @@ public final class e
       if (this.appName != null) {
         i = paramInt + f.a.a.b.b.a.e(14, this.appName);
       }
-      i += f.a.a.b.b.a.bx(15, this.appType);
+      i += f.a.a.b.b.a.bz(15, this.appType);
       paramInt = i;
       if (this.videoPath != null) {
         paramInt = i + f.a.a.b.b.a.e(16, this.videoPath);
       }
       i = paramInt;
-      if (this.sJZ != null) {
-        i = paramInt + f.a.a.b.b.a.e(17, this.sJZ);
+      if (this.tGK != null) {
+        i = paramInt + f.a.a.b.b.a.e(17, this.tGK);
       }
       paramInt = i;
-      if (this.sVF != null) {
-        paramInt = i + f.a.a.b.b.a.e(18, this.sVF);
+      if (this.tSk != null) {
+        paramInt = i + f.a.a.b.b.a.e(18, this.tSk);
       }
       i = paramInt;
-      if (this.sVG != null) {
-        i = paramInt + f.a.a.b.b.a.e(19, this.sVG);
+      if (this.tSl != null) {
+        i = paramInt + f.a.a.b.b.a.e(19, this.tSl);
       }
       AppMethodBeat.o(40869);
       return i;
@@ -139,11 +139,11 @@ public final class e
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.sVE.clear();
+      this.tSj.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(40869);
@@ -160,39 +160,39 @@ public final class e
         AppMethodBeat.o(40869);
         return -1;
       case 1: 
-        locale.dqZ = ((f.a.a.a.a)localObject1).LVo.fZX();
+        locale.dCQ = ((f.a.a.a.a)localObject1).NPN.grw();
         AppMethodBeat.o(40869);
         return 0;
       case 2: 
-        locale.sVz = ((f.a.a.a.a)localObject1).LVo.fZX();
+        locale.tSe = ((f.a.a.a.a)localObject1).NPN.grw();
         AppMethodBeat.o(40869);
         return 0;
       case 3: 
-        locale.sVA = ((f.a.a.a.a)localObject1).LVo.fZX();
+        locale.tSf = ((f.a.a.a.a)localObject1).NPN.grw();
         AppMethodBeat.o(40869);
         return 0;
       case 4: 
-        locale.sVB = ((f.a.a.a.a)localObject1).LVo.readString();
+        locale.tSg = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(40869);
         return 0;
       case 5: 
-        locale.sVC = ((f.a.a.a.a)localObject1).LVo.readString();
+        locale.tSh = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(40869);
         return 0;
       case 6: 
-        locale.videoUrl = ((f.a.a.a.a)localObject1).LVo.readString();
+        locale.videoUrl = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(40869);
         return 0;
       case 7: 
-        locale.title = ((f.a.a.a.a)localObject1).LVo.readString();
+        locale.title = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(40869);
         return 0;
       case 8: 
-        locale.sVD = ((f.a.a.a.a)localObject1).LVo.readString();
+        locale.tSi = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(40869);
         return 0;
       case 9: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -200,50 +200,50 @@ public final class e
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new l();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((l)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          locale.sVE.add(localObject1);
+          for (boolean bool = true; bool; bool = ((l)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          locale.tSj.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(40869);
         return 0;
       case 10: 
-        locale.createTime = ((f.a.a.a.a)localObject1).LVo.xG();
+        locale.createTime = ((f.a.a.a.a)localObject1).NPN.zd();
         AppMethodBeat.o(40869);
         return 0;
       case 11: 
-        locale.duration = ((f.a.a.a.a)localObject1).LVo.xG();
+        locale.duration = ((f.a.a.a.a)localObject1).NPN.zd();
         AppMethodBeat.o(40869);
         return 0;
       case 12: 
-        locale.size = ((f.a.a.a.a)localObject1).LVo.xG();
+        locale.size = ((f.a.a.a.a)localObject1).NPN.zd();
         AppMethodBeat.o(40869);
         return 0;
       case 13: 
-        locale.appId = ((f.a.a.a.a)localObject1).LVo.readString();
+        locale.appId = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(40869);
         return 0;
       case 14: 
-        locale.appName = ((f.a.a.a.a)localObject1).LVo.readString();
+        locale.appName = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(40869);
         return 0;
       case 15: 
-        locale.appType = ((f.a.a.a.a)localObject1).LVo.xF();
+        locale.appType = ((f.a.a.a.a)localObject1).NPN.zc();
         AppMethodBeat.o(40869);
         return 0;
       case 16: 
-        locale.videoPath = ((f.a.a.a.a)localObject1).LVo.readString();
+        locale.videoPath = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(40869);
         return 0;
       case 17: 
-        locale.sJZ = ((f.a.a.a.a)localObject1).LVo.readString();
+        locale.tGK = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(40869);
         return 0;
       case 18: 
-        locale.sVF = ((f.a.a.a.a)localObject1).LVo.readString();
+        locale.tSk = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(40869);
         return 0;
       }
-      locale.sVG = ((f.a.a.a.a)localObject1).LVo.readString();
+      locale.tSl = ((f.a.a.a.a)localObject1).NPN.readString();
       AppMethodBeat.o(40869);
       return 0;
     }

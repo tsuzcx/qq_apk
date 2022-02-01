@@ -10,11 +10,11 @@ public abstract interface a
   
   public static abstract interface a
   {
-    public abstract void eyj();
+    public abstract void eNa();
     
-    public abstract void eyk();
+    public abstract void eNb();
     
-    public abstract void eyl();
+    public abstract void eNc();
     
     public abstract int getItemCount();
     

@@ -2,29 +2,29 @@ package com.tencent.mm.plugin.sns.b;
 
 public abstract interface b
 {
-  public abstract boolean dGa();
+  public abstract boolean dSn();
   
-  public abstract boolean dGb();
+  public abstract boolean dSo();
   
-  public abstract int dGc();
+  public abstract int dSp();
   
-  public abstract boolean dGd();
+  public abstract boolean dSq();
   
-  public abstract boolean dGe();
+  public abstract boolean dSr();
   
-  public abstract boolean dGf();
+  public abstract boolean dSs();
   
-  public abstract boolean dGg();
+  public abstract boolean dSt();
   
-  public abstract long dGh();
+  public abstract long dSu();
   
-  public abstract boolean dGi();
+  public abstract boolean dSv();
   
-  public abstract long dGj();
+  public abstract long dSw();
   
-  public abstract String dGk();
+  public abstract String dSx();
   
-  public abstract boolean dGl();
+  public abstract boolean dSy();
   
   public abstract String getUserName();
 }

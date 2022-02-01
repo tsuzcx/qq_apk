@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.b;
 import com.tencent.mm.plugin.fts.a.h;
 import com.tencent.mm.plugin.fts.a.m;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.wcdb.database.SQLiteStatement;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,23 +18,16 @@ import java.util.List;
 public final class d
   extends b
 {
-  private m fXX;
-  com.tencent.mm.plugin.fts.c.d sAU;
+  private m grs;
+  com.tencent.mm.plugin.fts.c.d txv;
   
   public final a a(j paramj)
   {
     AppMethodBeat.i(52750);
     paramj = new d(paramj);
-    this.fXX.a(-65536, paramj);
+    this.grs.a(-65536, paramj);
     AppMethodBeat.o(52750);
     return paramj;
-  }
-  
-  public final boolean adU()
-  {
-    this.sAU = null;
-    this.fXX = null;
-    return true;
   }
   
   public final void addSOSHistory(String paramString1, String paramString2)
@@ -44,18 +37,25 @@ public final class d
     locala.key = paramString1;
     locala.content = paramString2;
     locala.timestamp = System.currentTimeMillis();
-    if (this.fXX != null) {
-      this.fXX.a(132072, locala);
+    if (this.grs != null) {
+      this.grs.a(132072, locala);
     }
     AppMethodBeat.o(52747);
+  }
+  
+  public final boolean agA()
+  {
+    this.txv = null;
+    this.grs = null;
+    return true;
   }
   
   public final void deleteSOSHistory()
   {
     AppMethodBeat.i(52748);
     b localb = new b();
-    if (this.fXX != null) {
-      this.fXX.a(132072, localb);
+    if (this.grs != null) {
+      this.grs.a(132072, localb);
     }
     AppMethodBeat.o(52748);
   }
@@ -65,8 +65,8 @@ public final class d
     AppMethodBeat.i(52749);
     c localc = new c();
     localc.key = paramString;
-    if (this.fXX != null) {
-      this.fXX.a(132072, localc);
+    if (this.grs != null) {
+      this.grs.a(132072, localc);
     }
     AppMethodBeat.o(52749);
   }
@@ -81,13 +81,13 @@ public final class d
     AppMethodBeat.i(52746);
     if (!((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).isFTSContextReady())
     {
-      ac.i("MicroMsg.FTS.FTS5SearchSOSHistoryLogic", "Create Fail!");
+      ad.i("MicroMsg.FTS.FTS5SearchSOSHistoryLogic", "Create Fail!");
       AppMethodBeat.o(52746);
       return false;
     }
-    ac.i("MicroMsg.FTS.FTS5SearchSOSHistoryLogic", "Create Success!");
-    this.sAU = ((com.tencent.mm.plugin.fts.c.d)((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(1024));
-    this.fXX = ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon();
+    ad.i("MicroMsg.FTS.FTS5SearchSOSHistoryLogic", "Create Success!");
+    this.txv = ((com.tencent.mm.plugin.fts.c.d)((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(1024));
+    this.grs = ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon();
     AppMethodBeat.o(52746);
     return true;
   }
@@ -104,14 +104,14 @@ public final class d
     public final boolean execute()
     {
       AppMethodBeat.i(52742);
-      com.tencent.mm.plugin.fts.c.d locald = d.this.sAU;
+      com.tencent.mm.plugin.fts.c.d locald = d.this.txv;
       String str1 = this.key;
       long l = this.timestamp;
       String str2 = this.content;
-      locald.swe.bindString(1, str1);
-      locald.swe.bindLong(2, l);
-      locald.swe.bindString(3, str2);
-      locald.swe.execute();
+      locald.tsF.bindString(1, str1);
+      locald.tsF.bindLong(2, l);
+      locald.tsF.bindString(3, str2);
+      locald.tsF.execute();
       AppMethodBeat.o(52742);
       return true;
     }
@@ -130,9 +130,9 @@ public final class d
     public final boolean execute()
     {
       AppMethodBeat.i(52743);
-      com.tencent.mm.plugin.fts.c.d locald = d.this.sAU;
-      locald.swc.execSQL(String.format("DELETE FROM %s ;", new Object[] { "FTS5MetaSOSHistory" }));
-      locald.swc.execSQL(String.format("DELETE FROM %s ;", new Object[] { "FTS5IndexSOSHistory" }));
+      com.tencent.mm.plugin.fts.c.d locald = d.this.txv;
+      locald.tsD.execSQL(String.format("DELETE FROM %s ;", new Object[] { "FTS5MetaSOSHistory" }));
+      locald.tsD.execSQL(String.format("DELETE FROM %s ;", new Object[] { "FTS5IndexSOSHistory" }));
       AppMethodBeat.o(52743);
       return true;
     }
@@ -153,10 +153,10 @@ public final class d
     public final boolean execute()
     {
       AppMethodBeat.i(52744);
-      com.tencent.mm.plugin.fts.c.d locald = d.this.sAU;
+      com.tencent.mm.plugin.fts.c.d locald = d.this.txv;
       String str1 = this.key;
       String str2 = String.format("DELETE FROM %s WHERE key = ?", new Object[] { "FTS5MetaSOSHistory" });
-      locald.swc.execSQL(str2, new String[] { str1 });
+      locald.tsD.execSQL(str2, new String[] { str1 });
       AppMethodBeat.o(52744);
       return true;
     }
@@ -179,19 +179,19 @@ public final class d
     {
       AppMethodBeat.i(52745);
       super.a(paramk);
-      paramk.syK = new ArrayList();
-      Object localObject = d.this.sAU;
-      String str = String.format("SELECT content, timestamp FROM %s ORDER BY timestamp desc LIMIT ".concat(String.valueOf(this.syx.syF)), new Object[] { "FTS5MetaSOSHistory" });
-      localObject = ((com.tencent.mm.plugin.fts.c.d)localObject).swc.rawQuery(str, null);
+      paramk.tvl = new ArrayList();
+      Object localObject = d.this.txv;
+      String str = String.format("SELECT content, timestamp FROM %s ORDER BY timestamp desc LIMIT ".concat(String.valueOf(this.tuY.tvg)), new Object[] { "FTS5MetaSOSHistory" });
+      localObject = ((com.tencent.mm.plugin.fts.c.d)localObject).tsD.rawQuery(str, null);
       while (((Cursor)localObject).moveToNext())
       {
         str = ((Cursor)localObject).getString(0);
         com.tencent.mm.plugin.fts.a.a.n localn = new com.tencent.mm.plugin.fts.a.a.n();
         localn.content = str;
-        paramk.syK.add(localn);
+        paramk.tvl.add(localn);
       }
       ((Cursor)localObject).close();
-      paramk.bPH = 0;
+      paramk.bZU = 0;
       AppMethodBeat.o(52745);
     }
     
@@ -203,7 +203,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.d
  * JD-Core Version:    0.7.0.1
  */

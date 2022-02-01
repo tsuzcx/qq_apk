@@ -3,65 +3,120 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dvj
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int GcQ;
-  public String url;
+  public String GKK;
+  public String GKj;
+  public String HHM;
+  public String cUM;
+  public String duW;
+  public String oIu;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91730);
+    AppMethodBeat.i(123678);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.GcQ);
-      if (this.url != null) {
-        paramVarArgs.d(2, this.url);
+      if (this.duW != null) {
+        paramVarArgs.d(1, this.duW);
       }
-      AppMethodBeat.o(91730);
+      if (this.cUM != null) {
+        paramVarArgs.d(2, this.cUM);
+      }
+      if (this.GKK != null) {
+        paramVarArgs.d(3, this.GKK);
+      }
+      if (this.HHM != null) {
+        paramVarArgs.d(4, this.HHM);
+      }
+      if (this.oIu != null) {
+        paramVarArgs.d(5, this.oIu);
+      }
+      if (this.GKj != null) {
+        paramVarArgs.d(6, this.GKj);
+      }
+      AppMethodBeat.o(123678);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.duW == null) {
+        break label518;
+      }
+    }
+    label518:
+    for (int i = f.a.a.b.b.a.e(1, this.duW) + 0;; i = 0)
     {
-      int i = f.a.a.b.b.a.bx(1, this.GcQ) + 0;
       paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.url);
+      if (this.cUM != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.cUM);
       }
-      AppMethodBeat.o(91730);
+      i = paramInt;
+      if (this.GKK != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.GKK);
+      }
+      paramInt = i;
+      if (this.HHM != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.HHM);
+      }
+      i = paramInt;
+      if (this.oIu != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.oIu);
+      }
+      paramInt = i;
+      if (this.GKj != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.GKj);
+      }
+      AppMethodBeat.o(123678);
       return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
-        }
-      }
-      AppMethodBeat.o(91730);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      dvj localdvj = (dvj)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(91730);
-        return -1;
-      case 1: 
-        localdvj.GcQ = locala.LVo.xF();
-        AppMethodBeat.o(91730);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gxE();
+          }
+        }
+        AppMethodBeat.o(123678);
         return 0;
       }
-      localdvj.url = locala.LVo.readString();
-      AppMethodBeat.o(91730);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        dvj localdvj = (dvj)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(123678);
+          return -1;
+        case 1: 
+          localdvj.duW = locala.NPN.readString();
+          AppMethodBeat.o(123678);
+          return 0;
+        case 2: 
+          localdvj.cUM = locala.NPN.readString();
+          AppMethodBeat.o(123678);
+          return 0;
+        case 3: 
+          localdvj.GKK = locala.NPN.readString();
+          AppMethodBeat.o(123678);
+          return 0;
+        case 4: 
+          localdvj.HHM = locala.NPN.readString();
+          AppMethodBeat.o(123678);
+          return 0;
+        case 5: 
+          localdvj.oIu = locala.NPN.readString();
+          AppMethodBeat.o(123678);
+          return 0;
+        }
+        localdvj.GKj = locala.NPN.readString();
+        AppMethodBeat.o(123678);
+        return 0;
+      }
+      AppMethodBeat.o(123678);
+      return -1;
     }
-    AppMethodBeat.o(91730);
-    return -1;
   }
 }
 

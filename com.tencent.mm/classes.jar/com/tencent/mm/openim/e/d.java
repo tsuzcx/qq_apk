@@ -3,7 +3,7 @@ package com.tencent.mm.openim.e;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storagebase.h;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,7 +12,7 @@ public final class d
   extends j<c>
 {
   public static final String[] SQL_CREATE;
-  public h hpA;
+  public h hHS;
   
   static
   {
@@ -24,19 +24,19 @@ public final class d
   public d(h paramh)
   {
     super(paramh, c.info, "OpenIMAppIdInfo", null);
-    this.hpA = paramh;
+    this.hHS = paramh;
   }
   
-  public final List<String> Fr(String paramString)
+  public final List<String> IH(String paramString)
   {
     AppMethodBeat.i(151331);
     LinkedList localLinkedList = new LinkedList();
-    paramString = this.hpA.a("select distinct appid from OpenIMAppIdInfo where appid=? ", new String[] { paramString }, 2);
+    paramString = this.hHS.a("select distinct appid from OpenIMAppIdInfo where appid=? ", new String[] { paramString }, 2);
     if (paramString.moveToFirst()) {
       do
       {
         String str = paramString.getString(0);
-        if (!bs.isNullOrNil(str)) {
+        if (!bt.isNullOrNil(str)) {
           localLinkedList.add(str);
         }
       } while (paramString.moveToNext());
@@ -49,7 +49,7 @@ public final class d
   public final boolean a(c paramc)
   {
     AppMethodBeat.i(151330);
-    paramc.field_updateTime = bs.aNx();
+    paramc.field_updateTime = bt.aQJ();
     boolean bool = super.replace(paramc);
     AppMethodBeat.o(151330);
     return bool;
@@ -57,7 +57,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.e.d
  * JD-Core Version:    0.7.0.1
  */

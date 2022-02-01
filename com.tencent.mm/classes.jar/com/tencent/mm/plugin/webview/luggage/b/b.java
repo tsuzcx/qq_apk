@@ -6,17 +6,14 @@ import android.content.DialogInterface.OnClickListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
-import com.tencent.luggage.d.c;
-import com.tencent.luggage.d.n;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.e;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.plugin.webview.luggage.t;
-import com.tencent.mm.plugin.webview.luggage.v;
-import com.tencent.mm.plugin.webview.model.as.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.game.report.f;
+import com.tencent.mm.plugin.webview.luggage.u;
+import com.tencent.mm.plugin.webview.luggage.w;
+import com.tencent.mm.plugin.webview.model.at.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.l;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -30,12 +27,12 @@ public final class b
     super(29);
   }
   
-  private static String aBF(String paramString)
+  private static String aHe(String paramString)
   {
     AppMethodBeat.i(78682);
     Uri localUri = Uri.parse(paramString);
     String str1 = localUri.getQuery();
-    if (bs.isNullOrNil(str1)) {
+    if (bt.isNullOrNil(str1)) {
       str1 = "ssid=25";
     }
     try
@@ -43,7 +40,7 @@ public final class b
       for (;;)
       {
         str1 = new URI(localUri.getScheme(), localUri.getAuthority(), localUri.getPath(), str1, localUri.getFragment()).toString();
-        ac.d("MicroMsg.MenuDelegate_AddShortcut", "rawUrl : %s, newUrl : %s", new Object[] { paramString, str1 });
+        ad.d("MicroMsg.MenuDelegate_AddShortcut", "rawUrl : %s, newUrl : %s", new Object[] { paramString, str1 });
         AppMethodBeat.o(78682);
         return str1;
         if (str1.contains("ssid=")) {
@@ -57,22 +54,22 @@ public final class b
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.MenuDelegate_AddShortcut", localURISyntaxException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.MenuDelegate_AddShortcut", localURISyntaxException, "", new Object[0]);
         String str2 = paramString;
       }
     }
   }
   
-  public final void a(final Context paramContext, final f paramf)
+  public final void a(final Context paramContext, final com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78681);
     Bundle localBundle = new Bundle();
-    v localv = paramf.ClM;
+    w localw = paramg.DOX;
     String str2;
-    if (bs.isNullOrNil(localv.iconUrl))
+    if (bt.isNullOrNil(localw.iconUrl))
     {
-      str2 = paramf.ClA.eAR();
-      if (bs.isNullOrNil(str2))
+      str2 = paramg.DOL.ePJ();
+      if (bt.isNullOrNil(str2))
       {
         AppMethodBeat.o(78681);
         return;
@@ -87,57 +84,57 @@ public final class b
     label278:
     for (String str1 = str1 + "/0";; str1 = str2)
     {
-      ac.i("MicroMsg.MenuDelegate_AddShortcut", "rawIconUrl : %s, newIconUrl : %s", new Object[] { str2, str1 });
+      ad.i("MicroMsg.MenuDelegate_AddShortcut", "rawIconUrl : %s, newIconUrl : %s", new Object[] { str2, str1 });
       localBundle.putString("icon_url", str1);
-      if (bs.isNullOrNil(localv.jumpUrl))
+      if (bt.isNullOrNil(localw.jumpUrl))
       {
-        localBundle.putString("page_url", aBF(paramf.bLL()));
+        localBundle.putString("page_url", aHe(paramg.bQm()));
         label153:
-        if (!bs.isNullOrNil(localv.title)) {
+        if (!bt.isNullOrNil(localw.title)) {
           break label263;
         }
-        localBundle.putString("title", paramf.getTitle());
+        localBundle.putString("title", paramg.getTitle());
       }
       for (;;)
       {
-        com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", localBundle, a.class, new d() {});
-        com.tencent.mm.plugin.report.service.h.wUl.dB(982, 12);
-        e.a(paramContext, 34, 3401, 1, 2, 0, e.am("url", paramf.bLL()));
+        com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", localBundle, a.class, new com.tencent.mm.ipcinvoker.d() {});
+        com.tencent.mm.plugin.report.service.g.yhR.dD(982, 12);
+        f.a(paramContext, 34, 3401, 1, 2, 0, f.an("url", paramg.bQm()));
         AppMethodBeat.o(78681);
         return;
-        localBundle.putString("icon_url", localv.iconUrl);
+        localBundle.putString("icon_url", localw.iconUrl);
         break;
-        localBundle.putString("page_url", localv.iconUrl);
+        localBundle.putString("page_url", localw.iconUrl);
         break label153;
-        localBundle.putString("title", localv.title);
+        localBundle.putString("title", localw.title);
       }
     }
   }
   
-  public final void a(Context paramContext, f paramf, l paraml)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
   {
     AppMethodBeat.i(78680);
-    boolean bool = paramf.mParams.getBoolean("from_shortcut", false);
-    Object localObject = paramf.ClM;
+    boolean bool = paramg.mParams.getBoolean("from_shortcut", false);
+    Object localObject = paramg.DOX;
     String str;
-    if (bs.isNullOrNil(((v)localObject).title))
+    if (bt.isNullOrNil(((w)localObject).title))
     {
-      str = paramf.getTitle();
-      if (!bs.isNullOrNil(((v)localObject).iconUrl)) {
+      str = paramg.getTitle();
+      if (!bt.isNullOrNil(((w)localObject).iconUrl)) {
         break label143;
       }
     }
     label143:
-    for (localObject = paramf.ClA.eAR();; localObject = ((v)localObject).iconUrl)
+    for (localObject = paramg.DOL.ePJ();; localObject = ((w)localObject).iconUrl)
     {
-      if ((!bool) && (!bs.isNullOrNil(str)) && (!bs.isNullOrNil((String)localObject)) && (paramf.Gi(255)))
+      if ((!bool) && (!bt.isNullOrNil(str)) && (!bt.isNullOrNil((String)localObject)) && (paramg.HC(255)))
       {
         paraml.a(29, paramContext.getString(2131762161), 2131691431);
-        e.a(paramContext, 34, 3401, 1, 1, 0, e.am("url", paramf.bLL()));
+        f.a(paramContext, 34, 3401, 1, 1, 0, f.an("url", paramg.bQm()));
       }
       AppMethodBeat.o(78680);
       return;
-      str = ((v)localObject).title;
+      str = ((w)localObject).title;
       break;
     }
   }

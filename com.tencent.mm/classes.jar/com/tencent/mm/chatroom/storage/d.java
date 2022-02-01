@@ -1,148 +1,167 @@
 package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.chatroom.d.aa;
-import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
-import com.tencent.mm.g.a.mu;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.model.cf;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class d
   extends j<c>
-  implements n.b
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
+  public static final Long fMe;
   private e db;
   
   static
   {
-    AppMethodBeat.i(182165);
-    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "GroupTools") };
-    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS usernameIndex ON GroupTools ( chatroomname )" };
-    AppMethodBeat.o(182165);
+    AppMethodBeat.i(182146);
+    fMe = Long.valueOf(604800000L);
+    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "GroupTodo") };
+    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS todoIdIndex ON GroupTodo ( todoid )", "CREATE INDEX IF NOT EXISTS todoIdRoomNameIndex ON GroupTodo ( todoid,roomname )", "CREATE INDEX IF NOT EXISTS roomNameIndex ON GroupTodo ( roomname )" };
+    AppMethodBeat.o(182146);
   }
   
   public d(e parame)
   {
-    super(parame, c.info, "GroupTools", INDEX_CREATE);
+    super(parame, c.info, "GroupTodo", INDEX_CREATE);
     this.db = parame;
   }
   
-  public final List<c> VZ()
+  public final boolean Yp()
   {
-    AppMethodBeat.i(185974);
-    Cursor localCursor = this.db.query("GroupTools", c.info.columns, null, null, null, null, null);
-    if (localCursor == null)
+    AppMethodBeat.i(182144);
+    try
     {
-      AppMethodBeat.o(185974);
+      i = this.db.delete("GroupTodo", "createtime<?", new String[] { cf.aCL() - fMe.longValue() });
+      if (i > 0)
+      {
+        AppMethodBeat.o(182144);
+        return true;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ad.e("MicroMsg.roomTodo.GroupTodoStorage", "deleteExpireData  Exception：[%s %s]", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        int i = 0;
+      }
+      AppMethodBeat.o(182144);
+    }
+    return false;
+  }
+  
+  public final c ag(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(182140);
+    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    {
+      AppMethodBeat.o(182140);
+      return null;
+    }
+    paramString1 = this.db.query("GroupTodo", c.info.columns, "roomname=? and todoid=?", new String[] { paramString1, paramString2 }, null, null, null);
+    if (paramString1 == null)
+    {
+      AppMethodBeat.o(182140);
       return null;
     }
     try
     {
-      ArrayList localArrayList = new ArrayList();
-      while (localCursor.moveToNext())
+      paramString2 = new ArrayList();
+      while (paramString1.moveToNext())
       {
         c localc = new c();
-        localc.convertFrom(localCursor);
-        localArrayList.add(localc);
+        localc.convertFrom(paramString1);
+        paramString2.add(localc);
       }
-      if (localCursor == null) {
-        break label108;
-      }
+      i = paramString2.size();
     }
     finally
     {
-      if (localCursor != null) {
-        localCursor.close();
-      }
-      AppMethodBeat.o(185974);
+      paramString1.close();
+      AppMethodBeat.o(182140);
     }
-    localCursor.close();
-    label108:
-    AppMethodBeat.o(185974);
-    return localList;
+    int i;
+    if (i == 0)
+    {
+      paramString1.close();
+      AppMethodBeat.o(182140);
+      return null;
+    }
+    paramString2 = (c)paramString2.get(0);
+    paramString1.close();
+    AppMethodBeat.o(182140);
+    return paramString2;
   }
   
-  public final void a(int paramInt, n paramn, Object paramObject)
+  public final boolean f(c paramc)
   {
-    AppMethodBeat.i(185975);
-    if (!aa.VQ())
-    {
-      AppMethodBeat.o(185975);
-      return;
-    }
-    if ((paramObject == null) || (!(paramObject instanceof String)))
-    {
-      AppMethodBeat.o(185975);
-      return;
-    }
-    if ((paramInt == 2) && (paramn == ((k)g.ab(k.class)).awB()))
-    {
-      paramn = (String)paramObject;
-      if (w.wp(paramn))
-      {
-        paramObject = new c();
-        paramObject.field_chatroomname = paramn;
-        paramObject.field_queryState = 1;
-        ac.i("MicroMsg.roomtools.GroupToolsStorage", "onNotifyChange username:%s result:%s", new Object[] { paramn, Boolean.valueOf(((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(paramObject)) });
-      }
-    }
-    AppMethodBeat.o(185975);
-  }
-  
-  public final boolean a(c paramc)
-  {
-    AppMethodBeat.i(182161);
+    AppMethodBeat.i(182139);
     if (paramc == null)
     {
-      AppMethodBeat.o(182161);
+      AppMethodBeat.o(182139);
       return false;
     }
     boolean bool = super.insert(paramc);
-    AppMethodBeat.o(182161);
+    AppMethodBeat.o(182139);
     return bool;
   }
   
-  public final boolean a(c paramc, String... paramVarArgs)
+  public final boolean g(c paramc)
   {
-    AppMethodBeat.i(182162);
-    boolean bool = super.updateNotify(paramc, true, paramVarArgs);
-    if (bool)
+    AppMethodBeat.i(182141);
+    if (paramc == null)
     {
-      paramVarArgs = new mu();
-      paramVarArgs.dpo.djF = paramc.field_chatroomname;
-      a.GpY.a(paramVarArgs, Looper.getMainLooper());
+      AppMethodBeat.o(182141);
+      return false;
     }
-    AppMethodBeat.o(182162);
+    boolean bool = update(paramc.systemRowid, paramc);
+    AppMethodBeat.o(182141);
     return bool;
   }
   
-  public final c sb(String paramString)
+  public final boolean h(c paramc)
   {
-    AppMethodBeat.i(182160);
-    if (bs.isNullOrNil(paramString))
+    AppMethodBeat.i(182142);
+    if (paramc == null)
     {
-      AppMethodBeat.o(182160);
+      AppMethodBeat.o(182142);
+      return true;
+    }
+    if (paramc.systemRowid == -1L)
+    {
+      c localc = ag(paramc.field_roomname, paramc.field_todoid);
+      if (localc == null)
+      {
+        AppMethodBeat.o(182142);
+        return true;
+      }
+      paramc.systemRowid = localc.systemRowid;
+    }
+    boolean bool = delete(paramc.systemRowid);
+    AppMethodBeat.o(182142);
+    return bool;
+  }
+  
+  public final c uP(String paramString)
+  {
+    AppMethodBeat.i(213428);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(213428);
       return null;
     }
-    paramString = this.db.query("GroupTools", c.info.columns, "chatroomname=?", new String[] { paramString }, null, null, null);
+    paramString = this.db.query("GroupTodo", c.info.columns, "roomname=? and username=? and state!=?", new String[] { paramString, "roomannouncement@app.origin", "2" }, null, null, null);
     if (paramString == null)
     {
-      AppMethodBeat.o(182160);
+      AppMethodBeat.o(213428);
       return null;
     }
     try
@@ -158,26 +177,53 @@ public final class d
     }
     finally
     {
-      if (paramString != null) {
-        paramString.close();
-      }
-      AppMethodBeat.o(182160);
+      paramString.close();
+      AppMethodBeat.o(213428);
     }
     int i;
     if (i == 0)
     {
-      if (paramString != null) {
-        paramString.close();
-      }
-      AppMethodBeat.o(182160);
+      paramString.close();
+      AppMethodBeat.o(213428);
       return null;
     }
     c localc1 = (c)localObject.get(0);
-    if (paramString != null) {
-      paramString.close();
-    }
-    AppMethodBeat.o(182160);
+    paramString.close();
+    AppMethodBeat.o(213428);
     return localc1;
+  }
+  
+  public final List<c> uQ(String paramString)
+  {
+    AppMethodBeat.i(182143);
+    ArrayList localArrayList = new ArrayList();
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(182143);
+      return localArrayList;
+    }
+    long l = cf.aCN();
+    paramString = this.db.query("GroupTodo", c.info.columns, "roomname=? and createtime>=? AND state IN (0,1)", new String[] { paramString, l - fMe.longValue() }, null, null, "updatetime DESC limit 20");
+    if (paramString == null)
+    {
+      AppMethodBeat.o(182143);
+      return localArrayList;
+    }
+    try
+    {
+      c localc;
+      if (paramString.moveToNext()) {
+        localc = new c();
+      }
+      return localList;
+    }
+    finally
+    {
+      if (paramString != null) {
+        paramString.close();
+      }
+      AppMethodBeat.o(182143);
+    }
   }
 }
 

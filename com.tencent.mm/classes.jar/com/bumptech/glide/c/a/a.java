@@ -12,7 +12,7 @@ public final class a
     super(paramContentResolver, paramUri);
   }
   
-  public final Class<AssetFileDescriptor> nU()
+  public final Class<AssetFileDescriptor> om()
   {
     return AssetFileDescriptor.class;
   }

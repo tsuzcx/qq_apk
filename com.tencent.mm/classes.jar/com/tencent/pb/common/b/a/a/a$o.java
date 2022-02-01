@@ -9,63 +9,63 @@ import java.util.Arrays;
 public final class a$o
   extends e
 {
-  private static volatile o[] JMM;
-  public int JMN = 0;
-  public int JMO = 0;
-  public byte[] dlB = g.bGH;
+  private static volatile o[] LGv;
+  public int LGw = 0;
+  public int LGx = 0;
+  public byte[] dxo = g.bQV;
   
   public a$o()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
-  public static o[] fBI()
+  public static o[] fSX()
   {
-    if (JMM == null) {}
-    synchronized (c.bGz)
+    if (LGv == null) {}
+    synchronized (c.bQN)
     {
-      if (JMM == null) {
-        JMM = new o[0];
+      if (LGv == null) {
+        LGv = new o[0];
       }
-      return JMM;
+      return LGv;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.JMN != 0) {
-      paramb.bv(1, this.JMN);
+    if (this.LGw != 0) {
+      paramb.bx(1, this.LGw);
     }
-    if (!Arrays.equals(this.dlB, g.bGH)) {
-      paramb.b(2, this.dlB);
+    if (!Arrays.equals(this.dxo, g.bQV)) {
+      paramb.b(2, this.dxo);
     }
-    if (this.JMO != 0) {
-      paramb.bw(3, this.JMO);
+    if (this.LGx != 0) {
+      paramb.by(3, this.LGx);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.JMN != 0) {
-      i = j + b.bx(1, this.JMN);
+    if (this.LGw != 0) {
+      i = j + b.bz(1, this.LGw);
     }
     j = i;
-    if (!Arrays.equals(this.dlB, g.bGH)) {
-      j = i + b.c(2, this.dlB);
+    if (!Arrays.equals(this.dxo, g.bQV)) {
+      j = i + b.c(2, this.dxo);
     }
     i = j;
-    if (this.JMO != 0) {
-      i = j + b.by(3, this.JMO);
+    if (this.LGx != 0) {
+      i = j + b.bA(3, this.LGx);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.o
  * JD-Core Version:    0.7.0.1
  */

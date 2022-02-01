@@ -16,15 +16,15 @@ public abstract interface a
   
   public abstract int getFrameCount();
   
-  public abstract int nH();
+  public abstract int nZ();
   
-  public abstract int nI();
+  public abstract int oa();
   
-  public abstract void nJ();
+  public abstract void ob();
   
-  public abstract int nK();
+  public abstract int oc();
   
-  public abstract Bitmap nL();
+  public abstract Bitmap od();
   
   public static abstract interface a
   {

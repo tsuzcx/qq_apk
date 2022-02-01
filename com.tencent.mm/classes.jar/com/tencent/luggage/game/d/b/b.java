@@ -18,7 +18,7 @@ public final class b
     HashMap localHashMap = new HashMap(2);
     localHashMap.put("errMsg", "ok");
     localHashMap.put("value", paramString);
-    A(localHashMap).g(paramq).beN();
+    A(localHashMap).g(paramq).bir();
     AppMethodBeat.o(130607);
   }
 }

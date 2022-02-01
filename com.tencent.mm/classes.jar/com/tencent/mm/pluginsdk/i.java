@@ -1,33 +1,19 @@
 package com.tencent.mm.pluginsdk;
 
 import android.content.Context;
-import android.view.View;
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.pluginsdk.ui.applet.y.a;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.pluginsdk.ui.applet.v;
+import com.tencent.mm.pluginsdk.ui.applet.w;
 
 public abstract interface i
-  extends a
+  extends com.tencent.mm.kernel.c.a
 {
-  public abstract o a(s params, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, y.a parama);
+  public abstract w a(Context paramContext, String paramString, int paramInt, v paramv, a parama);
   
-  public abstract d a(Context paramContext, String paramString1, View paramView, String paramString2, y.a parama);
-  
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, y.a parama);
-  
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, y.a parama);
-  
-  public abstract void a(s params, String paramString1, String paramString2, String paramString3, y.a parama);
-  
-  public abstract d b(s params, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, y.a parama);
-  
-  public abstract void b(Context paramContext, String paramString1, String paramString2, String paramString3, y.a parama);
+  public abstract w a(Context paramContext, String paramString, v paramv);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.i
  * JD-Core Version:    0.7.0.1
  */

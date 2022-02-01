@@ -19,12 +19,12 @@ public class AssetTrackSegment
   
   protected AssetTrackSegment(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2)
   {
-    AppMethodBeat.i(197387);
+    AppMethodBeat.i(217668);
     this.scaleDuration = CMTime.CMTimeZero;
     this.timeMapping = new CMTimeMapping(paramCMTimeRange1, paramCMTimeRange2);
     this.scaleDuration = paramCMTimeRange2.getDuration().clone();
     this.timeRange = paramCMTimeRange2.clone();
-    AppMethodBeat.o(197387);
+    AppMethodBeat.o(217668);
   }
   
   public CMTime getScaleDuration()
@@ -44,7 +44,7 @@ public class AssetTrackSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.asset.AssetTrackSegment
  * JD-Core Version:    0.7.0.1
  */

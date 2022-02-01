@@ -3,59 +3,63 @@ package com.tencent.mm.plugin.scanner;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.scanner.model.q;
+import com.tencent.mm.plugin.scanner.model.s;
 import com.tencent.mm.plugin.scanner.util.m;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.aj;
+import d.g.b.p;
 
 public class PluginScanner
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.bucket.c, e
 {
-  private m wVy;
+  private m yjb;
   
   public PluginScanner()
   {
     AppMethodBeat.i(51554);
-    this.wVy = new m();
+    this.yjb = new m();
     AppMethodBeat.o(51554);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(51555);
-    com.tencent.mm.br.c.aIn("scanner");
+    com.tencent.mm.bs.c.aNQ("scanner");
     pin(new t(i.class));
-    if (paramg.ahL())
+    if (paramg.akw())
     {
-      paramg = q.wZn;
-      paramg = ai.getContext();
-      k.h(paramg, "context");
-      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(q.cm(paramg));
+      paramg = s.yni;
+      paramg = aj.getContext();
+      p.h(paramg, "context");
+      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(s.cj(paramg));
       if (!locale.exists()) {
         locale.mkdirs();
       }
-      q.i(paramg, "scan_goods/center_det.bin", q.cm(paramg) + "center_det.bin");
-      q.i(paramg, "scan_goods/center_det.param", q.cm(paramg) + "center_det.param");
+      s.i(paramg, "scan_goods/center_det.bin", s.cj(paramg) + "center_det.bin");
+      s.i(paramg, "scan_goods/center_det.param", s.cj(paramg) + "center_det.param");
       com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.scanner.api.a.class, new com.tencent.mm.plugin.scanner.e.a());
-    }
-    for (;;)
-    {
-      paramg = com.tencent.mm.plugin.scanner.util.f.xlE;
+      paramg = com.tencent.mm.plugin.scanner.util.f.yzG;
       b.a((com.tencent.mm.pluginsdk.cmd.a)new com.tencent.mm.plugin.scanner.util.f(), new String[] { "//scan" });
       AppMethodBeat.o(51555);
       return;
-      if (paramg.up(":tools")) {
-        com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.scanner.api.a.class, new com.tencent.mm.plugin.scanner.e.a());
-      }
     }
+    if (paramg.xf(":tools"))
+    {
+      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.scanner.api.a.class, new com.tencent.mm.plugin.scanner.e.a());
+      AppMethodBeat.o(51555);
+      return;
+    }
+    if (paramg.xg(":appbrand")) {
+      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.scanner.api.a.class, new com.tencent.mm.plugin.scanner.e.a());
+    }
+    AppMethodBeat.o(51555);
   }
   
   public String genScanCaptureImgPath(String paramString)
   {
     AppMethodBeat.i(51558);
-    i.dza();
+    i.dKy();
     paramString = i.getScanImageSaveDir() + String.format("%s_%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), paramString });
     AppMethodBeat.o(51558);
     return paramString;
@@ -64,7 +68,7 @@ public class PluginScanner
   public String genScanTmpImgPath(String paramString)
   {
     AppMethodBeat.i(51559);
-    i.dza();
+    i.dKy();
     paramString = i.genScanTmpImgPath(paramString);
     AppMethodBeat.o(51559);
     return paramString;
@@ -73,7 +77,7 @@ public class PluginScanner
   public String getAccScannerPath()
   {
     AppMethodBeat.i(51556);
-    i.dza();
+    i.dKy();
     String str = i.getAccScannerPath();
     AppMethodBeat.o(51556);
     return str;
@@ -81,13 +85,13 @@ public class PluginScanner
   
   public m getScanCdnService()
   {
-    return this.wVy;
+    return this.yjb;
   }
   
   public String getScanImageSaveDir()
   {
     AppMethodBeat.i(51557);
-    i.dza();
+    i.dKy();
     String str = i.getScanImageSaveDir();
     AppMethodBeat.o(51557);
     return str;
@@ -99,7 +103,7 @@ public class PluginScanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.PluginScanner
  * JD-Core Version:    0.7.0.1
  */

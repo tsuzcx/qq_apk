@@ -2,19 +2,21 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.m;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "posInfo", "", "webviewId", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "posInfo", "", "webviewId", "", "invoke"})
 final class BizVideoDetailUI$f
-  extends d.g.b.l
-  implements m<String, Integer, y>
+  extends q
+  implements m<String, Integer, z>
 {
-  public static final f nMC;
+  public static final f opi;
   
   static
   {
     AppMethodBeat.i(7089);
-    nMC = new f();
+    opi = new f();
     AppMethodBeat.o(7089);
   }
   

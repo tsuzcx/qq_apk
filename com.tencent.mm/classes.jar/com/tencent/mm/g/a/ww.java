@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.List;
 
 public final class ww
   extends b
 {
-  public a dzI;
-  public b dzJ;
+  public a dLm;
   
   public ww()
   {
@@ -17,23 +16,16 @@ public final class ww
   
   private ww(byte paramByte)
   {
-    AppMethodBeat.i(116056);
-    this.dzI = new a();
-    this.dzJ = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(116053);
+    this.dLm = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116056);
+    AppMethodBeat.o(116053);
   }
   
   public static final class a
   {
-    public Context context;
-    public int type;
-  }
-  
-  public static final class b
-  {
-    public boolean dzK;
+    public List dLn;
   }
 }
 

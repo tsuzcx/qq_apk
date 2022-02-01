@@ -10,48 +10,42 @@ import org.json.JSONObject;
 
 public class i
 {
-  public static volatile long cDA = 0L;
-  static h cDB = null;
-  private static i cDy;
-  static f cDz;
+  private static i cOD = null;
+  static f cOE = null;
+  public static volatile long cOF = 0L;
+  static h cOG = null;
   public static Context mContext = null;
   public static Handler mHandler = null;
-  private g cDC;
-  
-  static
-  {
-    cDy = null;
-    cDz = null;
-  }
+  private g cOH;
   
   private i(Context paramContext)
   {
     AppMethodBeat.i(87653);
-    this.cDC = null;
+    this.cOH = null;
     HandlerThread localHandlerThread = new HandlerThread(i.class.getSimpleName());
     localHandlerThread.start();
     mHandler = new Handler(localHandlerThread.getLooper());
     paramContext = paramContext.getApplicationContext();
     mContext = paramContext;
-    cDA = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("__MID_LAST_CHECK_TIME__", 0L);
+    cOF = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("__MID_LAST_CHECK_TIME__", 0L);
     AppMethodBeat.o(87653);
   }
   
   public static void a(f paramf)
   {
-    cDz = paramf;
+    cOE = paramf;
   }
   
   public static i aV(Context paramContext)
   {
     AppMethodBeat.i(87654);
-    if (cDy == null) {}
+    if (cOD == null) {}
     try
     {
-      if (cDy == null) {
-        cDy = new i(paramContext);
+      if (cOD == null) {
+        cOD = new i(paramContext);
       }
-      paramContext = cDy;
+      paramContext = cOD;
       AppMethodBeat.o(87654);
       return paramContext;
     }
@@ -61,13 +55,13 @@ public class i
     }
   }
   
-  public final String Ie()
+  public final String JE()
   {
     AppMethodBeat.i(87655);
-    if ((this.cDC == null) || (!s.dp(this.cDC.cDw)))
+    if ((this.cOH == null) || (!s.el(this.cOH.cOB)))
     {
-      this.cDC = r.aX(mContext).Ii();
-      if (!s.dp(this.cDC.cDw)) {
+      this.cOH = r.aX(mContext).JI();
+      if (!s.el(this.cOH.cOB)) {
         break label112;
       }
     }
@@ -77,27 +71,27 @@ public class i
       if (mHandler != null) {
         mHandler.post(new n(mContext, i));
       }
-      new StringBuilder("wx get mid:").append(this.cDC.cDw);
-      String str = this.cDC.cDw;
+      new StringBuilder("wx get mid:").append(this.cOH.cOB);
+      String str = this.cOH.cOB;
       AppMethodBeat.o(87655);
       return str;
     }
   }
   
-  public final String If()
+  public final String JF()
   {
     AppMethodBeat.i(87656);
-    if ((this.cDC == null) || (!s.dp(this.cDC.cDw))) {
-      this.cDC = r.aX(mContext).Ii();
+    if ((this.cOH == null) || (!s.el(this.cOH.cOB))) {
+      this.cOH = r.aX(mContext).JI();
     }
-    String str = this.cDC.cDw;
+    String str = this.cOH.cOB;
     AppMethodBeat.o(87656);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.b.a.a.i
  * JD-Core Version:    0.7.0.1
  */

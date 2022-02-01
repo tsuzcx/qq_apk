@@ -1,90 +1,68 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
-import java.util.LinkedList;
+import com.tencent.mm.bx.b;
 
 public final class duf
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public dth GbY;
+  public int HGZ;
+  public b HHa;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(147811);
+    AppMethodBeat.i(115856);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GbY == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: base_response");
-        AppMethodBeat.o(147811);
-        throw paramVarArgs;
+      paramVarArgs.aS(1, this.HGZ);
+      if (this.HHa != null) {
+        paramVarArgs.c(2, this.HHa);
       }
-      if (this.GbY != null)
-      {
-        paramVarArgs.ln(1, this.GbY.computeSize());
-        this.GbY.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(147811);
+      AppMethodBeat.o(115856);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.GbY == null) {
-        break label358;
-      }
-    }
-    label358:
-    for (paramInt = f.a.a.a.lm(1, this.GbY.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(147811);
+      int i = f.a.a.b.b.a.bz(1, this.HGZ) + 0;
+      paramInt = i;
+      if (this.HHa != null) {
+        paramInt = i + f.a.a.b.b.a.b(2, this.HHa);
+      }
+      AppMethodBeat.o(115856);
       return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
-          }
-        }
-        if (this.GbY == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: base_response");
-          AppMethodBeat.o(147811);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(147811);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        duf localduf = (duf)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(147811);
-          return -1;
-        }
-        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dth();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((dth)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localduf.GbY = ((dth)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(147811);
-        return 0;
-      }
-      AppMethodBeat.o(147811);
-      return -1;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gxE();
+        }
+      }
+      AppMethodBeat.o(115856);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      duf localduf = (duf)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(115856);
+        return -1;
+      case 1: 
+        localduf.HGZ = locala.NPN.zc();
+        AppMethodBeat.o(115856);
+        return 0;
+      }
+      localduf.HHa = locala.NPN.gxI();
+      AppMethodBeat.o(115856);
+      return 0;
+    }
+    AppMethodBeat.o(115856);
+    return -1;
   }
 }
 

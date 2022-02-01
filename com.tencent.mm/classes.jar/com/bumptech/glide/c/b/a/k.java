@@ -12,16 +12,16 @@ import java.util.Set;
 public final class k
   implements e
 {
-  private static final Bitmap.Config aGO = Bitmap.Config.ARGB_8888;
-  private final l aGP;
-  private final Set<Bitmap.Config> aGQ;
-  private final long aGR;
-  private final a aGS;
-  private long aGT;
-  private int aGU;
-  private int aGV;
-  private int aGW;
-  private int aGX;
+  private static final Bitmap.Config aIF = Bitmap.Config.ARGB_8888;
+  private final l aIG;
+  private final Set<Bitmap.Config> aIH;
+  private final long aII;
+  private final a aIJ;
+  private long aIK;
+  private int aIL;
+  private int aIM;
+  private int aIN;
+  private int aIO;
   private long maxSize;
   
   public k(long paramLong) {}
@@ -29,11 +29,11 @@ public final class k
   private k(long paramLong, l paraml, Set<Bitmap.Config> paramSet)
   {
     AppMethodBeat.i(77113);
-    this.aGR = paramLong;
+    this.aII = paramLong;
     this.maxSize = paramLong;
-    this.aGP = paraml;
-    this.aGQ = paramSet;
-    this.aGS = new b();
+    this.aIG = paraml;
+    this.aIH = paramSet;
+    this.aIJ = new b();
     AppMethodBeat.o(77113);
   }
   
@@ -46,7 +46,7 @@ public final class k
       paramConfig = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
       AppMethodBeat.o(77118);
       return paramConfig;
-      paramConfig = aGO;
+      paramConfig = aIF;
     }
   }
   
@@ -54,7 +54,7 @@ public final class k
   {
     AppMethodBeat.i(77123);
     if (Log.isLoggable("LruBitmapPool", 2)) {
-      oH();
+      oZ();
     }
     AppMethodBeat.o(77123);
   }
@@ -72,7 +72,7 @@ public final class k
       }
     }
     finally {}
-    l locall = this.aGP;
+    l locall = this.aIG;
     Object localObject;
     if (paramConfig != null)
     {
@@ -82,23 +82,23 @@ public final class k
         break label194;
       }
       if (Log.isLoggable("LruBitmapPool", 3)) {
-        new StringBuilder("Missing bitmap=").append(this.aGP.c(paramInt1, paramInt2, paramConfig));
+        new StringBuilder("Missing bitmap=").append(this.aIG.c(paramInt1, paramInt2, paramConfig));
       }
-      this.aGV += 1;
+      this.aIM += 1;
     }
     for (;;)
     {
       if (Log.isLoggable("LruBitmapPool", 2)) {
-        new StringBuilder("Get bitmap=").append(this.aGP.c(paramInt1, paramInt2, paramConfig));
+        new StringBuilder("Get bitmap=").append(this.aIG.c(paramInt1, paramInt2, paramConfig));
       }
       dump();
       AppMethodBeat.o(77119);
       return localObject;
-      localObject = aGO;
+      localObject = aIF;
       break;
       label194:
-      this.aGU += 1;
-      this.aGT -= this.aGP.i((Bitmap)localObject);
+      this.aIL += 1;
+      this.aIK -= this.aIG.i((Bitmap)localObject);
       ((Bitmap)localObject).setHasAlpha(true);
       if (Build.VERSION.SDK_INT >= 19) {
         ((Bitmap)localObject).setPremultiplied(true);
@@ -113,22 +113,22 @@ public final class k
       try
       {
         AppMethodBeat.i(77122);
-        if (this.aGT > paramLong)
+        if (this.aIK > paramLong)
         {
-          Bitmap localBitmap = this.aGP.oD();
+          Bitmap localBitmap = this.aIG.oV();
           if (localBitmap == null)
           {
             if (Log.isLoggable("LruBitmapPool", 5)) {
-              oH();
+              oZ();
             }
-            this.aGT = 0L;
+            this.aIK = 0L;
             AppMethodBeat.o(77122);
             return;
           }
-          this.aGT -= this.aGP.i(localBitmap);
-          this.aGX += 1;
+          this.aIK -= this.aIG.i(localBitmap);
+          this.aIO += 1;
           if (Log.isLoggable("LruBitmapPool", 3)) {
-            new StringBuilder("Evicting bitmap=").append(this.aGP.h(localBitmap));
+            new StringBuilder("Evicting bitmap=").append(this.aIG.h(localBitmap));
           }
           dump();
           localBitmap.recycle();
@@ -142,10 +142,10 @@ public final class k
     }
   }
   
-  private void oH()
+  private void oZ()
   {
     AppMethodBeat.i(77124);
-    new StringBuilder("Hits=").append(this.aGU).append(", misses=").append(this.aGV).append(", puts=").append(this.aGW).append(", evictions=").append(this.aGX).append(", currentSize=").append(this.aGT).append(", maxSize=").append(this.maxSize).append("\nStrategy=").append(this.aGP);
+    new StringBuilder("Hits=").append(this.aIL).append(", misses=").append(this.aIM).append(", puts=").append(this.aIN).append(", evictions=").append(this.aIO).append(", currentSize=").append(this.aIK).append(", maxSize=").append(this.maxSize).append("\nStrategy=").append(this.aIG);
     AppMethodBeat.o(77124);
   }
   
@@ -194,10 +194,10 @@ public final class k
       AppMethodBeat.o(77115);
       throw paramBitmap;
     }
-    if ((!paramBitmap.isMutable()) || (this.aGP.i(paramBitmap) > this.maxSize) || (!this.aGQ.contains(paramBitmap.getConfig())))
+    if ((!paramBitmap.isMutable()) || (this.aIG.i(paramBitmap) > this.maxSize) || (!this.aIH.contains(paramBitmap.getConfig())))
     {
       if (Log.isLoggable("LruBitmapPool", 2)) {
-        new StringBuilder("Reject bitmap from pool, bitmap: ").append(this.aGP.h(paramBitmap)).append(", is mutable: ").append(paramBitmap.isMutable()).append(", is allowed config: ").append(this.aGQ.contains(paramBitmap.getConfig()));
+        new StringBuilder("Reject bitmap from pool, bitmap: ").append(this.aIG.h(paramBitmap)).append(", is mutable: ").append(paramBitmap.isMutable()).append(", is allowed config: ").append(this.aIH.contains(paramBitmap.getConfig()));
       }
       paramBitmap.recycle();
       AppMethodBeat.o(77115);
@@ -205,13 +205,13 @@ public final class k
     for (;;)
     {
       return;
-      int i = this.aGP.i(paramBitmap);
-      this.aGP.g(paramBitmap);
-      this.aGW += 1;
-      long l = this.aGT;
-      this.aGT = (i + l);
+      int i = this.aIG.i(paramBitmap);
+      this.aIG.g(paramBitmap);
+      this.aIN += 1;
+      long l = this.aIK;
+      this.aIK = (i + l);
       if (Log.isLoggable("LruBitmapPool", 2)) {
-        new StringBuilder("Put bitmap in pool=").append(this.aGP.h(paramBitmap));
+        new StringBuilder("Put bitmap in pool=").append(this.aIG.h(paramBitmap));
       }
       dump();
       o(this.maxSize);
@@ -219,7 +219,7 @@ public final class k
     }
   }
   
-  public final void oC()
+  public final void oU()
   {
     AppMethodBeat.i(77120);
     Log.isLoggable("LruBitmapPool", 3);
@@ -234,7 +234,7 @@ public final class k
     Log.isLoggable("LruBitmapPool", 3);
     if (paramInt >= 40)
     {
-      oC();
+      oU();
       AppMethodBeat.o(77121);
       return;
     }

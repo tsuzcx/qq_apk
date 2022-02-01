@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.c.ag;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.io.UnsupportedEncodingException;
@@ -13,24 +13,24 @@ import org.json.JSONObject;
 public final class t
   extends m
 {
-  public String dbI;
   public String desc;
-  public double oxA;
-  public int oxB;
-  public String oxz;
+  public String dne;
+  public String paU;
+  public double paV;
+  public int paW;
   
   public t(double paramDouble, String paramString1, String paramString2)
   {
     AppMethodBeat.i(63848);
-    this.oxz = null;
+    this.paU = null;
     HashMap localHashMap = new HashMap();
     try
     {
       localHashMap.put("fee", Math.round(100.0D * paramDouble));
       localHashMap.put("fee_type", paramString1);
       localHashMap.put("desc", URLEncoder.encode(paramString2, "UTF-8"));
-      this.oxA = paramDouble;
-      this.dbI = paramString1;
+      this.paV = paramDouble;
+      this.dne = paramString1;
       this.desc = paramString2;
       setRequestData(localHashMap);
       AppMethodBeat.o(63848);
@@ -40,7 +40,7 @@ public final class t
     {
       for (;;)
       {
-        ac.printErrStackTrace("Micromsg.NetSceneTenpayRemittanceQuery", localUnsupportedEncodingException, "", new Object[0]);
+        ad.printErrStackTrace("Micromsg.NetSceneTenpayRemittanceQuery", localUnsupportedEncodingException, "", new Object[0]);
       }
     }
   }
@@ -63,15 +63,15 @@ public final class t
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(63849);
-    ac.d("Micromsg.NetSceneTenpayRemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
+    ad.d("Micromsg.NetSceneTenpayRemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(63849);
       return;
     }
-    this.oxz = paramJSONObject.optString("pay_url");
-    this.oxB = ag.adO(paramJSONObject.optInt("qrcode_level"));
-    ac.i("Micromsg.NetSceneTenpayRemittanceQuery", "qrcodeLevel:%s ", new Object[] { Integer.valueOf(this.oxB) });
+    this.paU = paramJSONObject.optString("pay_url");
+    this.paW = ag.ago(paramJSONObject.optInt("qrcode_level"));
+    ad.i("Micromsg.NetSceneTenpayRemittanceQuery", "qrcodeLevel:%s ", new Object[] { Integer.valueOf(this.paW) });
     AppMethodBeat.o(63849);
   }
 }

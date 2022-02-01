@@ -10,38 +10,38 @@ import java.io.OutputStream;
 
 public final class b
 {
-  public final File bwk;
-  public final File bwl;
+  public final File bGy;
+  public final File bGz;
   
   public b(File paramFile)
   {
     AppMethodBeat.i(93119);
-    this.bwk = paramFile;
-    this.bwl = new File(paramFile.getPath() + ".bak");
+    this.bGy = paramFile;
+    this.bGz = new File(paramFile.getPath() + ".bak");
     AppMethodBeat.o(93119);
   }
   
-  public final OutputStream vt()
+  public final OutputStream wQ()
   {
     AppMethodBeat.i(93120);
-    if (this.bwk.exists())
+    if (this.bGy.exists())
     {
-      if (this.bwl.exists()) {
+      if (this.bGz.exists()) {
         break label87;
       }
-      if (!this.bwk.renameTo(this.bwl)) {
-        new StringBuilder("Couldn't rename file ").append(this.bwk).append(" to backup file ").append(this.bwl);
+      if (!this.bGy.renameTo(this.bGz)) {
+        new StringBuilder("Couldn't rename file ").append(this.bGy).append(" to backup file ").append(this.bGz);
       }
     }
     try
     {
       for (;;)
       {
-        a locala = new a(this.bwk);
+        a locala = new a(this.bGy);
         AppMethodBeat.o(93120);
         return locala;
         label87:
-        this.bwk.delete();
+        this.bGy.delete();
       }
     }
     catch (FileNotFoundException localFileNotFoundException1)
@@ -49,19 +49,19 @@ public final class b
       for (;;)
       {
         Object localObject;
-        if (!this.bwk.getParentFile().mkdirs())
+        if (!this.bGy.getParentFile().mkdirs())
         {
-          localObject = new IOException("Couldn't create directory " + this.bwk);
+          localObject = new IOException("Couldn't create directory " + this.bGy);
           AppMethodBeat.o(93120);
           throw ((Throwable)localObject);
         }
         try
         {
-          localObject = new a(this.bwk);
+          localObject = new a(this.bGy);
         }
         catch (FileNotFoundException localFileNotFoundException2)
         {
-          IOException localIOException = new IOException("Couldn't create " + this.bwk);
+          IOException localIOException = new IOException("Couldn't create " + this.bGy);
           AppMethodBeat.o(93120);
           throw localIOException;
         }
@@ -72,14 +72,14 @@ public final class b
   static final class a
     extends OutputStream
   {
-    private final FileOutputStream bwm;
+    private final FileOutputStream bGA;
     private boolean closed;
     
     public a(File paramFile)
     {
       AppMethodBeat.i(93113);
       this.closed = false;
-      this.bwm = new FileOutputStream(paramFile);
+      this.bGA = new FileOutputStream(paramFile);
       AppMethodBeat.o(93113);
     }
     
@@ -95,9 +95,9 @@ public final class b
       flush();
       try
       {
-        this.bwm.getFD().sync();
+        this.bGA.getFD().sync();
         label37:
-        this.bwm.close();
+        this.bGA.close();
         AppMethodBeat.o(93114);
         return;
       }
@@ -110,28 +110,28 @@ public final class b
     public final void flush()
     {
       AppMethodBeat.i(93115);
-      this.bwm.flush();
+      this.bGA.flush();
       AppMethodBeat.o(93115);
     }
     
     public final void write(int paramInt)
     {
       AppMethodBeat.i(93116);
-      this.bwm.write(paramInt);
+      this.bGA.write(paramInt);
       AppMethodBeat.o(93116);
     }
     
     public final void write(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(93117);
-      this.bwm.write(paramArrayOfByte);
+      this.bGA.write(paramArrayOfByte);
       AppMethodBeat.o(93117);
     }
     
     public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(93118);
-      this.bwm.write(paramArrayOfByte, paramInt1, paramInt2);
+      this.bGA.write(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(93118);
     }
   }

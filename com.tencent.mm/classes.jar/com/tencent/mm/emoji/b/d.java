@@ -1,54 +1,54 @@
 package com.tencent.mm.emoji.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.v;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.g.b.a.y;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/report/EmojiPopupReport;", "", "()V", "ActionAddInDetail", "", "ActionDelete", "ActionDeleteConfirm", "ActionLongClick", "ActionTop", "ActionViewDetail", "SceneCapture", "SceneCustom", "SceneSimilar", "SceneStore", "TAG", "", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonFastManagementStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonFastManagementStruct;", "report", "", "action", "setSceneFromType", "type", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/report/EmojiPopupReport;", "", "()V", "ActionAddInDetail", "", "ActionDelete", "ActionDeleteConfirm", "ActionLongClick", "ActionTop", "ActionViewDetail", "SceneCapture", "SceneCustom", "SceneSimilar", "SceneStore", "TAG", "", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonFastManagementStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonFastManagementStruct;", "report", "", "action", "setSceneFromType", "type", "plugin-emojisdk_release"})
 public final class d
 {
   private static final String TAG = "MicroMsg.EmojiPopupReport";
-  private static final v fVc;
-  public static final d fVd;
+  private static final y goF;
+  public static final d goG;
   
   static
   {
     AppMethodBeat.i(183966);
-    fVd = new d();
+    goG = new d();
     TAG = "MicroMsg.EmojiPopupReport";
-    fVc = new v();
+    goF = new y();
     AppMethodBeat.o(183966);
   }
   
-  public static v adu()
+  public static y aga()
   {
-    return fVc;
+    return goF;
   }
   
-  public static void lA(int paramInt)
+  public static void ma(int paramInt)
   {
     AppMethodBeat.i(183964);
-    fVc.hZ(paramInt);
-    fVc.aHZ();
+    goF.ik(paramInt);
+    goF.aLk();
     AppMethodBeat.o(183964);
   }
   
-  public static void lF(int paramInt)
+  public static void mf(int paramInt)
   {
     int j = 1;
     AppMethodBeat.i(183965);
-    v localv = fVc;
+    y localy = goF;
     int i = j;
     switch (paramInt)
     {
     default: 
-      ac.e(TAG, "type scene mismatch");
+      ad.e(TAG, "type scene mismatch");
       i = j;
     }
     for (;;)
     {
-      localv.ia(i);
+      localy.il(i);
       AppMethodBeat.o(183965);
       return;
       i = 2;

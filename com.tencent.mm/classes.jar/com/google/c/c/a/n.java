@@ -26,7 +26,7 @@ final class n
       } else if ((paramChar >= 'A') && (paramChar <= 'Z')) {
         paramStringBuilder.append((char)(paramChar - 'A' + 14));
       } else {
-        j.i(paramChar);
+        j.k(paramChar);
       }
     }
   }
@@ -35,17 +35,17 @@ final class n
   {
     AppMethodBeat.i(12287);
     StringBuilder localStringBuilder = new StringBuilder();
-    while (paramh.ya())
+    while (paramh.zx())
     {
-      char c = paramh.xZ();
+      char c = paramh.zw();
       paramh.pos += 1;
       a(c, localStringBuilder);
       if (localStringBuilder.length() % 3 == 0)
       {
         a(paramh, localStringBuilder);
-        int i = j.b(paramh.bIO, paramh.pos, 3);
+        int i = j.b(paramh.msg, paramh.pos, 3);
         if (i != 3) {
-          paramh.bIT = i;
+          paramh.bTg = i;
         }
       }
     }
@@ -56,27 +56,27 @@ final class n
   final void b(h paramh, StringBuilder paramStringBuilder)
   {
     AppMethodBeat.i(12289);
-    paramh.yd();
-    int i = paramh.bIU.bJd - paramh.bIS.length();
+    paramh.zA();
+    int i = paramh.bTh.bTq - paramh.bTf.length();
     int j = paramStringBuilder.length();
     paramh.pos -= j;
-    if ((paramh.yc() > 1) || (i > 1) || (paramh.yc() != i)) {
-      paramh.e('þ');
+    if ((paramh.zz() > 1) || (i > 1) || (paramh.zz() != i)) {
+      paramh.g('þ');
     }
-    if (paramh.bIT < 0) {
-      paramh.bIT = 0;
+    if (paramh.bTg < 0) {
+      paramh.bTg = 0;
     }
     AppMethodBeat.o(12289);
   }
   
-  public final int xW()
+  public final int zt()
   {
     return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.c.c.a.n
  * JD-Core Version:    0.7.0.1
  */

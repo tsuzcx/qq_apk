@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.emojicapture.model.a;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerListDiffCallback;", "", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "updateData", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerListDiffCallback;", "", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "updateData", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "plugin-emojicapture_release"})
 public abstract interface c
 {
-  public abstract void U(List<com.tencent.mm.sticker.c> paramList);
+  public abstract void V(List<com.tencent.mm.sticker.c> paramList);
   
-  public abstract void fm(int paramInt1, int paramInt2);
+  public abstract void fq(int paramInt1, int paramInt2);
   
-  public abstract void fn(int paramInt1, int paramInt2);
+  public abstract void fr(int paramInt1, int paramInt2);
   
-  public abstract void fo(int paramInt1, int paramInt2);
+  public abstract void fs(int paramInt1, int paramInt2);
   
-  public abstract void fp(int paramInt1, int paramInt2);
+  public abstract void ft(int paramInt1, int paramInt2);
 }
 
 

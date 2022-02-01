@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.r.a;
 
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebChromeClient.CustomViewCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract interface d
 {
@@ -12,30 +13,49 @@ public abstract interface d
   
   public abstract void a(b paramb);
   
-  public abstract boolean aUJ();
+  public abstract boolean aXV();
   
   public abstract void b(b paramb);
   
-  public abstract boolean bsE();
+  public abstract boolean bwI();
+  
+  public abstract void rK(int paramInt);
   
   public abstract void release();
   
-  public abstract void rj(int paramInt);
-  
-  public static abstract interface b
+  public static final class a
   {
-    public abstract ViewGroup cF(View paramView);
-  }
-  
-  @Deprecated
-  public static abstract interface c
-  {
-    public abstract void a(e.b paramb);
+    public static int va(int paramInt)
+    {
+      AppMethodBeat.i(197427);
+      new a();
+      int i = a.vb(paramInt);
+      ad.i("Luggage.WXA.WindowFullscreenHandler.Factory", "convertActivityOrientation2Direction [%d]->[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      AppMethodBeat.o(197427);
+      return i;
+    }
+    
+    final class a
+    {
+      static int vb(int paramInt)
+      {
+        switch (paramInt)
+        {
+        default: 
+          return 0;
+        case 0: 
+          return 90;
+        case 8: 
+          return -90;
+        }
+        return 180;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.r.a.d
  * JD-Core Version:    0.7.0.1
  */

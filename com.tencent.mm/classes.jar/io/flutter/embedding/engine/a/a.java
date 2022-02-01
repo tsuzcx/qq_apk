@@ -19,128 +19,129 @@ import java.util.List;
 
 public class a
 {
-  private static final String KMi;
-  private static final String KMj;
-  private static final String KMk;
-  private static final String KMl;
-  private static a KMq;
-  private String KMm = "libapp.so";
-  private String KMn = "vm_snapshot_data";
-  private String KMo = "isolate_snapshot_data";
-  public String KMp = "flutter_assets";
-  public boolean KMr = false;
-  private c KMs;
-  public a KMt;
+  private static final String MDf;
+  private static final String MDg;
+  private static final String MDh;
+  private static final String MDi;
+  private static a MDn;
+  private String MDj = "libapp.so";
+  private String MDk = "vm_snapshot_data";
+  private String MDl = "isolate_snapshot_data";
+  public String MDm = "flutter_assets";
+  public boolean MDo = false;
+  private c MDp;
+  public a MDq;
   
   static
   {
-    AppMethodBeat.i(192832);
-    KMi = a.class.getName() + '.' + "aot-shared-library-name";
-    KMj = a.class.getName() + '.' + "vm-snapshot-data";
-    KMk = a.class.getName() + '.' + "isolate-snapshot-data";
-    KMl = a.class.getName() + '.' + "flutter-assets-dir";
-    AppMethodBeat.o(192832);
+    AppMethodBeat.i(213281);
+    MDf = a.class.getName() + '.' + "aot-shared-library-name";
+    MDg = a.class.getName() + '.' + "vm-snapshot-data";
+    MDh = a.class.getName() + '.' + "isolate-snapshot-data";
+    MDi = a.class.getName() + '.' + "flutter-assets-dir";
+    AppMethodBeat.o(213281);
   }
   
   private static ApplicationInfo K(Context paramContext)
   {
-    AppMethodBeat.i(192828);
+    AppMethodBeat.i(213277);
     try
     {
       paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
-      AppMethodBeat.o(192828);
+      AppMethodBeat.o(213277);
       return paramContext;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
       paramContext = new RuntimeException(paramContext);
-      AppMethodBeat.o(192828);
+      AppMethodBeat.o(213277);
       throw paramContext;
     }
   }
   
-  public static a fNr()
+  public static a geQ()
   {
-    AppMethodBeat.i(192824);
-    if (KMq == null) {
-      KMq = new a();
+    AppMethodBeat.i(213273);
+    if (MDn == null) {
+      MDn = new a();
     }
-    a locala = KMq;
-    AppMethodBeat.o(192824);
+    a locala = MDn;
+    AppMethodBeat.o(213273);
     return locala;
   }
   
-  private void lw(Context paramContext)
+  private void lI(Context paramContext)
   {
-    AppMethodBeat.i(192829);
+    AppMethodBeat.i(213278);
     paramContext = K(paramContext).metaData;
     if (paramContext == null)
     {
-      AppMethodBeat.o(192829);
+      AppMethodBeat.o(213278);
       return;
     }
-    this.KMm = paramContext.getString(KMi, "libapp.so");
-    this.KMp = paramContext.getString(KMl, "flutter_assets");
-    this.KMn = paramContext.getString(KMj, "vm_snapshot_data");
-    this.KMo = paramContext.getString(KMk, "isolate_snapshot_data");
-    AppMethodBeat.o(192829);
+    this.MDj = paramContext.getString(MDf, "libapp.so");
+    this.MDm = paramContext.getString(MDi, "flutter_assets");
+    this.MDk = paramContext.getString(MDg, "vm_snapshot_data");
+    this.MDl = paramContext.getString(MDh, "isolate_snapshot_data");
+    AppMethodBeat.o(213278);
   }
   
-  private static void lx(Context paramContext)
+  private static void lJ(Context paramContext)
   {
-    AppMethodBeat.i(192830);
+    AppMethodBeat.i(213279);
     new b(paramContext).start();
-    AppMethodBeat.o(192830);
+    AppMethodBeat.o(213279);
   }
   
   public final void a(Context paramContext, a parama)
   {
-    AppMethodBeat.i(192826);
-    if (this.KMt != null)
+    AppMethodBeat.i(213275);
+    if (this.MDq != null)
     {
-      AppMethodBeat.o(192826);
+      AppMethodBeat.o(213275);
       return;
     }
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       paramContext = new IllegalStateException("startInitialization must be called on the main thread");
-      AppMethodBeat.o(192826);
+      AppMethodBeat.o(213275);
       throw paramContext;
     }
-    this.KMt = parama;
+    paramContext = paramContext.getApplicationContext();
+    this.MDq = parama;
     long l = SystemClock.uptimeMillis();
-    lw(paramContext);
-    lx(paramContext);
+    lI(paramContext);
+    lJ(paramContext);
     System.loadLibrary("flutter");
     VsyncWaiter.getInstance((WindowManager)paramContext.getSystemService("window")).init();
     FlutterJNI.nativeRecordStartTimestamp(SystemClock.uptimeMillis() - l);
-    AppMethodBeat.o(192826);
+    AppMethodBeat.o(213275);
   }
   
   public final void ensureInitializationComplete(Context paramContext, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(192827);
-    if (this.KMr)
+    AppMethodBeat.i(213276);
+    if (this.MDo)
     {
-      AppMethodBeat.o(192827);
+      AppMethodBeat.o(213276);
       return;
     }
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       paramContext = new IllegalStateException("ensureInitializationComplete must be called on the main thread");
-      AppMethodBeat.o(192827);
+      AppMethodBeat.o(213276);
       throw paramContext;
     }
-    if (this.KMt == null)
+    if (this.MDq == null)
     {
       paramContext = new IllegalStateException("ensureInitializationComplete must be called after startInitialization");
-      AppMethodBeat.o(192827);
+      AppMethodBeat.o(213276);
       throw paramContext;
     }
     try
     {
-      if (this.KMs != null) {
-        this.KMs.fNt();
+      if (this.MDp != null) {
+        this.MDp.geS();
       }
       ArrayList localArrayList = new ArrayList();
       localArrayList.add("--icu-symbol-prefix=_binary_icudtl_dat");
@@ -149,45 +150,45 @@ public class a
       if (paramArrayOfString != null) {
         Collections.addAll(localArrayList, paramArrayOfString);
       }
-      localArrayList.add("--aot-shared-library-name=" + this.KMm);
-      localArrayList.add("--aot-shared-library-name=" + ((ApplicationInfo)localObject).nativeLibraryDir + File.separator + this.KMm);
-      localArrayList.add("--cache-dir-path=" + io.flutter.b.a.ly(paramContext));
-      if (this.KMt.kSu != null) {
-        localArrayList.add("--log-tag=" + this.KMt.kSu);
+      localArrayList.add("--aot-shared-library-name=" + this.MDj);
+      localArrayList.add("--aot-shared-library-name=" + ((ApplicationInfo)localObject).nativeLibraryDir + File.separator + this.MDj);
+      localArrayList.add("--cache-dir-path=" + io.flutter.b.a.lK(paramContext));
+      if (this.MDq.loX != null) {
+        localArrayList.add("--log-tag=" + this.MDq.loX);
       }
       paramArrayOfString = paramContext.getFilesDir().getPath();
-      localObject = io.flutter.b.a.ly(paramContext);
+      localObject = io.flutter.b.a.lK(paramContext);
       FlutterJNI.nativeInit(paramContext, (String[])localArrayList.toArray(new String[0]), null, paramArrayOfString, (String)localObject);
-      this.KMr = true;
-      AppMethodBeat.o(192827);
+      this.MDo = true;
+      AppMethodBeat.o(213276);
       return;
     }
     catch (Exception paramContext)
     {
       paramContext = new RuntimeException(paramContext);
-      AppMethodBeat.o(192827);
+      AppMethodBeat.o(213276);
       throw paramContext;
     }
   }
   
   public final String getLookupKeyForAsset(String paramString)
   {
-    AppMethodBeat.i(192831);
-    paramString = this.KMp + File.separator + paramString;
-    AppMethodBeat.o(192831);
+    AppMethodBeat.i(213280);
+    paramString = this.MDm + File.separator + paramString;
+    AppMethodBeat.o(213280);
     return paramString;
   }
   
   public final void startInitialization(Context paramContext)
   {
-    AppMethodBeat.i(192825);
+    AppMethodBeat.i(213274);
     a(paramContext, new a());
-    AppMethodBeat.o(192825);
+    AppMethodBeat.o(213274);
   }
   
   public static final class a
   {
-    public String kSu;
+    public String loX;
   }
 }
 

@@ -7,10 +7,10 @@ public enum aw
   static
   {
     AppMethodBeat.i(135279);
-    lEO = new aw("MODAL", 0);
-    lEP = new aw("ACTION_SHEET", 1);
-    lEQ = new aw("TOAST", 2);
-    lER = new aw[] { lEO, lEP, lEQ };
+    mes = new aw("MODAL", 0);
+    met = new aw("ACTION_SHEET", 1);
+    meu = new aw("TOAST", 2);
+    mev = new aw[] { mes, met, meu };
     AppMethodBeat.o(135279);
   }
   

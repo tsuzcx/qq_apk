@@ -74,7 +74,7 @@ public class LogLogic
     paramString = null;
     try
     {
-      localObject1 = i.ag((e)localObject1);
+      localObject1 = i.ai((e)localObject1);
       paramString = (String)localObject1;
       String str = convertStreamToString((InputStream)localObject1);
       if (localObject1 != null) {

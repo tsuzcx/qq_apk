@@ -1,99 +1,55 @@
 package com.tencent.mm.ui.chatting.i;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.ce;
-import com.tencent.mm.modelsimple.v;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.mm.ui.chatting.d.ae;
+import java.util.HashMap;
 
 public final class a
-  extends com.tencent.mm.az.a
 {
-  public String Ifk;
-  public long Ifl = 0L;
+  public HashMap<Class<? extends com.tencent.mm.ui.chatting.d.ad>, com.tencent.mm.ui.chatting.d.ad> JVu;
+  private com.tencent.mm.ui.chatting.e.a cWM;
   
-  public a(Map<String, String> paramMap, bo parambo)
+  public a(com.tencent.mm.ui.chatting.e.a parama)
   {
-    super(paramMap, parambo);
+    AppMethodBeat.i(36433);
+    this.JVu = new HashMap();
+    this.cWM = parama;
+    AppMethodBeat.o(36433);
   }
   
-  public final boolean axn()
+  public final void a(Class<? extends com.tencent.mm.ui.chatting.d.ad> paramClass, com.tencent.mm.ui.chatting.d.ad paramad)
   {
-    AppMethodBeat.i(36444);
-    if (this.values == null)
+    AppMethodBeat.i(36435);
+    if (this.JVu.put(paramClass, paramad) != null) {
+      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ChattingComponentManager", "[register] %s has register", new Object[] { paramClass });
+    }
+    if ((paramad instanceof ae))
     {
-      ac.e("MicroMsg.InvokeMessageNewXmlMsg", "[parseXml] values == null ");
-      AppMethodBeat.o(36444);
-      return false;
+      long l1 = System.currentTimeMillis();
+      ((ae)paramad).a(this.cWM);
+      long l2 = System.currentTimeMillis();
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ChattingComponentManager", "[install] listener:%s cost:%sms", new Object[] { paramad.getClass().getName(), Long.valueOf(l2 - l1) });
     }
-    if (this.values.containsKey(".sysmsg.invokeMessage.preContent")) {
-      this.Ifk = ((String)this.values.get(".sysmsg.invokeMessage.preContent"));
-    }
-    if (this.values.containsKey(".sysmsg.invokeMessage.timestamp")) {
-      this.Ifl = bs.aLz((String)this.values.get(".sysmsg.invokeMessage.timestamp"));
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.values.keySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
+    AppMethodBeat.o(36435);
+  }
+  
+  public final <T extends com.tencent.mm.ui.chatting.d.ad, V extends Class<T>> T bh(V paramV)
+  {
+    AppMethodBeat.i(36434);
+    if (!paramV.isInterface())
     {
-      String str = (String)localIterator.next();
-      if (str.startsWith(".sysmsg.invokeMessage.text"))
-      {
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.insert(0, (String)this.values.get(str));
-        } else {
-          localStringBuilder.append((String)this.values.get(str));
-        }
-      }
-      else
-      {
-        if ((!str.startsWith(".sysmsg.invokeMessage.link.text")) || (bs.isNullOrNil((String)this.values.get(str)))) {
-          break label356;
-        }
-        str = (String)this.values.get(str);
-        localStringBuilder.append(str);
-        this.hOC.add(str);
-        i = str.length();
-      }
+      paramV = new RuntimeException("[get] " + paramV + " is not a interface!");
+      AppMethodBeat.o(36434);
+      throw paramV;
     }
-    label356:
-    for (;;)
+    if (this.JVu.containsKey(paramV))
     {
-      break;
-      this.hOD.addFirst(Integer.valueOf(localStringBuilder.length() - i));
-      this.hOE.add(Integer.valueOf(localStringBuilder.length()));
-      this.hOA = localStringBuilder.toString();
-      if ((ce.azI() - this.Ifl >= 300000L) && (!bs.isNullOrNil(this.Ifk))) {
-        b.c(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(36443);
-            a.this.dpq.setType(10002);
-            v.a(ai.getContext().getString(2131757292), "", a.this.dpq, "");
-            az.ayM();
-            c.awD().a(a.this.dpq.field_msgId, a.this.dpq);
-            ac.i("MicroMsg.InvokeMessageNewXmlMsg", "checkExpired:%s", new Object[] { Long.valueOf(a.this.dpq.field_msgId) });
-            AppMethodBeat.o(36443);
-          }
-        }, "[checkExpired]");
-      }
-      AppMethodBeat.o(36444);
-      return true;
+      paramV = (com.tencent.mm.ui.chatting.d.ad)this.JVu.get(paramV);
+      AppMethodBeat.o(36434);
+      return paramV;
     }
+    AppMethodBeat.o(36434);
+    return null;
   }
 }
 

@@ -5,12 +5,11 @@ import android.content.res.AssetManager;
 import android.text.TextUtils;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.webview.g.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.vfs.m;
 import com.tencent.mm.vfs.q;
@@ -23,24 +22,24 @@ import java.util.HashMap;
 
 public final class i
 {
-  private static int Ckj;
-  private static String Ckk;
-  private static final String Ckl;
-  private static String Ckm;
-  public f Cjc;
-  private WebView Ckf;
-  private a Ckg;
-  private boolean Ckh;
-  private boolean Cki;
+  private static int DNp;
+  private static String DNq;
+  private static final String DNr;
+  private static String DNs;
+  private WebView DNl;
+  private a DNm;
+  private boolean DNn;
+  private boolean DNo;
+  public f DzP;
   
   static
   {
-    AppMethodBeat.i(205311);
-    Ckj = -1;
-    Ckk = null;
-    Ckl = com.tencent.mm.loader.j.b.aoZ() + "/jscache/";
-    Ckm = "window.addEventListener('load', requestInjectJS, false); function requestInjectJS() { console.log('weixin://preInjectJSBridge/start');}";
-    AppMethodBeat.o(205311);
+    AppMethodBeat.i(213913);
+    DNp = -1;
+    DNq = null;
+    DNr = com.tencent.mm.loader.j.b.arM() + "/jscache/";
+    DNs = "window.addEventListener('load', requestInjectJS, false); function requestInjectJS() { console.log('weixin://preInjectJSBridge/start');}";
+    AppMethodBeat.o(213913);
   }
   
   public i(WebView paramWebView, f paramf, a parama)
@@ -50,48 +49,48 @@ public final class i
   
   public i(WebView paramWebView, f paramf, a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(205302);
-    this.Cki = false;
-    this.Ckf = paramWebView;
-    this.Cjc = paramf;
-    this.Ckg = parama;
-    this.Ckh = paramBoolean;
-    ac.d("MicroMsg.JsLoader", "JsLoader <init>, isWebViewPreload %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    ac.i("MicroMsg.JsLoader", "JsLoader <init>, jsapi: %d, this: %d", new Object[] { Integer.valueOf(paramf.hashCode()), Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(205302);
+    AppMethodBeat.i(213904);
+    this.DNo = false;
+    this.DNl = paramWebView;
+    this.DzP = paramf;
+    this.DNm = parama;
+    this.DNn = paramBoolean;
+    ad.d("MicroMsg.JsLoader", "JsLoader <init>, isWebViewPreload %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.i("MicroMsg.JsLoader", "JsLoader <init>, jsapi: %d, this: %d", new Object[] { Integer.valueOf(paramf.hashCode()), Integer.valueOf(hashCode()) });
+    AppMethodBeat.o(213904);
   }
   
-  private String aBt(String paramString)
+  private String aGQ(String paramString)
   {
-    AppMethodBeat.i(205309);
-    ac.i("MicroMsg.JsLoader", "tryCopyAsset: %s", new Object[] { paramString });
-    if (Ckk != null) {
-      localObject = Ckk;
+    AppMethodBeat.i(213911);
+    ad.i("MicroMsg.JsLoader", "tryCopyAsset: %s", new Object[] { paramString });
+    if (DNq != null) {
+      localObject = DNq;
     }
     String str;
     for (;;)
     {
-      str = Ckl + (String)localObject + "/" + paramString;
-      if (!com.tencent.mm.vfs.i.eA(str)) {
+      str = DNr + (String)localObject + "/" + paramString;
+      if (!com.tencent.mm.vfs.i.fv(str)) {
         break;
       }
-      AppMethodBeat.o(205309);
+      AppMethodBeat.o(213911);
       return str;
-      localObject = com.tencent.mm.sdk.platformtools.h.REV.substring(0, Math.min(com.tencent.mm.sdk.platformtools.h.REV.length(), 8));
-      Ckk = (String)localObject;
+      localObject = com.tencent.mm.sdk.platformtools.i.REV.substring(0, Math.min(com.tencent.mm.sdk.platformtools.i.REV.length(), 8));
+      DNq = (String)localObject;
     }
-    a.aA(86, 1L);
-    Object localObject = new com.tencent.mm.vfs.e(Ckl).b(new m()
+    a.aK(86, 1L);
+    Object localObject = new com.tencent.mm.vfs.e(DNr).b(new m()
     {
-      public final boolean ui(String paramAnonymousString)
+      public final boolean wY(String paramAnonymousString)
       {
-        AppMethodBeat.i(205301);
-        if (!paramAnonymousString.equals(this.Ckr))
+        AppMethodBeat.i(213903);
+        if (!paramAnonymousString.equals(this.DNx))
         {
-          AppMethodBeat.o(205301);
+          AppMethodBeat.o(213903);
           return true;
         }
-        AppMethodBeat.o(205301);
+        AppMethodBeat.o(213903);
         return false;
       }
     });
@@ -101,70 +100,70 @@ public final class i
       int i = 0;
       while (i < j)
       {
-        com.tencent.mm.vfs.i.cU(q.B(localObject[i].mUri), true);
+        com.tencent.mm.vfs.i.cZ(q.B(localObject[i].mUri), true);
         i += 1;
       }
     }
-    com.tencent.mm.vfs.i.aSh(com.tencent.mm.vfs.i.aSs(str));
+    com.tencent.mm.vfs.i.aYg(com.tencent.mm.vfs.i.aYr(str));
     try
     {
-      ku(paramString, str);
-      a.aA(87, 1L);
-      AppMethodBeat.o(205309);
+      kS(paramString, str);
+      a.aK(87, 1L);
+      AppMethodBeat.o(213911);
       return str;
     }
     catch (Exception paramString)
     {
-      ac.e("MicroMsg.JsLoader", "tryCopyAsset, failed, ", new Object[] { paramString });
-      AppMethodBeat.o(205309);
+      ad.e("MicroMsg.JsLoader", "tryCopyAsset, failed, ", new Object[] { paramString });
+      AppMethodBeat.o(213911);
     }
     return null;
   }
   
   public static boolean b(WebView paramWebView)
   {
-    AppMethodBeat.i(205307);
-    if (Ckj == -1) {
-      Ckj = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pPo, 0);
+    AppMethodBeat.i(213909);
+    if (DNp == -1) {
+      DNp = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qtn, 0);
     }
-    if ((((Ckj & 0x1) != 0) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.DEBUG)) && (paramWebView.supportFeature(2002)))
+    if ((((DNp & 0x1) != 0) || (com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.i.DEBUG)) && (paramWebView.supportFeature(2002)))
     {
-      AppMethodBeat.o(205307);
+      AppMethodBeat.o(213909);
       return true;
     }
-    AppMethodBeat.o(205307);
+    AppMethodBeat.o(213909);
     return false;
   }
   
-  private String eAb()
+  private String eOP()
   {
-    AppMethodBeat.i(205308);
-    ac.i("MicroMsg.JsLoader", "WXJS: %s", new Object[] { "jsapi/wxjs.js" });
+    AppMethodBeat.i(213910);
+    ad.i("MicroMsg.JsLoader", "WXJS: %s", new Object[] { "jsapi/wxjs.js" });
     try
     {
-      String str2 = new String(org.apache.commons.a.e.toByteArray(ai.getContext().getAssets().open("jsapi/wxjs.js")));
+      String str2 = new String(org.apache.commons.a.e.toByteArray(aj.getContext().getAssets().open("jsapi/wxjs.js")));
       String str1 = str2;
-      if (!TextUtils.isEmpty(this.Cjc.CjA))
+      if (!TextUtils.isEmpty(this.DzP.vJP))
       {
-        ac.i("MicroMsg.JsLoader", "getWXJS, ranDomStr = %s, jsapi: %d, jsLoader: %d", new Object[] { this.Cjc.CjA, Integer.valueOf(this.Cjc.hashCode()), Integer.valueOf(hashCode()) });
-        str1 = str2.replaceFirst("\\$\\{dgtVerifyRandomStr\\}", this.Cjc.CjA).replaceFirst("\\$\\{dgtVerifyEnabled\\}", "true");
+        ad.i("MicroMsg.JsLoader", "getWXJS, ranDomStr = %s, jsapi: %d, jsLoader: %d", new Object[] { this.DzP.vJP, Integer.valueOf(this.DzP.hashCode()), Integer.valueOf(hashCode()) });
+        str1 = str2.replaceFirst("\\$\\{dgtVerifyRandomStr\\}", this.DzP.vJP).replaceFirst("\\$\\{dgtVerifyEnabled\\}", "true");
       }
-      AppMethodBeat.o(205308);
+      AppMethodBeat.o(213910);
       return str1;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.JsLoader", "tryInterceptBridgeScriptRequest, failed, ", new Object[] { localException });
-      AppMethodBeat.o(205308);
+      ad.e("MicroMsg.JsLoader", "tryInterceptBridgeScriptRequest, failed, ", new Object[] { localException });
+      AppMethodBeat.o(213910);
     }
     return "";
   }
   
-  private static void ku(String paramString1, String paramString2)
+  private static void kS(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(205310);
-    paramString1 = ai.getContext().getAssets().open(paramString1);
-    OutputStream localOutputStream = com.tencent.mm.vfs.i.cS(paramString2, false);
+    AppMethodBeat.i(213912);
+    paramString1 = aj.getContext().getAssets().open(paramString1);
+    OutputStream localOutputStream = com.tencent.mm.vfs.i.cX(paramString2, false);
     byte[] arrayOfByte = new byte[1024];
     for (;;)
     {
@@ -176,60 +175,61 @@ public final class i
     }
     paramString1.close();
     localOutputStream.close();
-    ac.i("MicroMsg.JsLoader", "copy asset to:".concat(String.valueOf(paramString2)));
-    AppMethodBeat.o(205310);
+    ad.i("MicroMsg.JsLoader", "copy asset to:".concat(String.valueOf(paramString2)));
+    AppMethodBeat.o(213912);
   }
   
-  public final void Al()
+  public final void BI()
   {
-    AppMethodBeat.i(205304);
-    if ((this.Ckf == null) || (this.Cjc == null))
+    AppMethodBeat.i(213906);
+    if ((this.DNl == null) || (this.DzP == null))
     {
-      ac.e("MicroMsg.JsLoader", "ready, viewWV or jsapi is null");
-      AppMethodBeat.o(205304);
+      ad.e("MicroMsg.JsLoader", "ready, viewWV or jsapi is null");
+      AppMethodBeat.o(213906);
       return;
     }
-    Object localObject = this.Cjc;
-    ac.v("MicroMsg.JsApiHandler", "jsapi init");
-    if (((f)localObject).Cjr == null) {
-      ac.w("MicroMsg.JsApiHandler", "jsapi init wv is null");
+    Object localObject = this.DzP;
+    ad.v("MicroMsg.JsApiHandler", "jsapi init");
+    if (((f)localObject).DMv == null) {
+      ad.w("MicroMsg.JsApiHandler", "jsapi init wv is null");
     }
     for (;;)
     {
-      ac.i("MicroMsg.JsLoader", "jsapi init done");
-      if (j.eAd()) {}
+      ad.i("MicroMsg.JsLoader", "jsapi init done");
+      if (j.eOR()) {}
       try
       {
-        localObject = new String(org.apache.commons.a.e.toByteArray(ai.getContext().getAssets().open("jsapi/vconsole.js")));
-        if (this.Ckf != null) {
-          this.Ckf.evaluateJavascript((String)localObject, null);
+        localObject = new String(org.apache.commons.a.e.toByteArray(aj.getContext().getAssets().open("jsapi/vconsole.js")));
+        if (this.DNl != null) {
+          this.DNl.evaluateJavascript((String)localObject, null);
         }
-        ac.i("MicroMsg.JsLoader", "onTimerExpired, js loaded ret = %b", new Object[] { Boolean.valueOf(this.Cki) });
-        if ((this.Cki) && (this.Ckg != null)) {
-          this.Ckg.eAc();
+        ad.i("MicroMsg.JsLoader", "onTimerExpired, js loaded ret = %b", new Object[] { Boolean.valueOf(this.DNo) });
+        if ((this.DNo) && (this.DNm != null)) {
+          this.DNm.eOQ();
         }
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(156L, 1L, 1L, false);
-        if (!this.Cki) {
-          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(156L, 0L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(156L, 1L, 1L, false);
+        if (!this.DNo) {
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(156L, 0L, 1L, false);
         }
-        AppMethodBeat.o(205304);
+        AppMethodBeat.o(213906);
         return;
-        ((f)localObject).Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + l.a.b("sys:init", null, ((f)localObject).Cjz, ((f)localObject).CjA) + ")", new f.23((f)localObject));
-        ((f)localObject).Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + l.a.b("sys:bridged", null, ((f)localObject).Cjz, ((f)localObject).CjA) + ")", new f.33((f)localObject));
-        ((f)localObject).ui(true);
-        ((f)localObject).ezL();
-        if ((bs.isNullOrNil(((f)localObject).CjK)) || (((f)localObject).Cjr == null)) {
+        ((f)localObject).eOA();
+        ((f)localObject).DMv.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + l.a.b("sys:init", null, ((f)localObject).DMD, ((f)localObject).vJP) + ")", new f.23((f)localObject));
+        ((f)localObject).DMv.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + l.a.b("sys:bridged", null, ((f)localObject).DMD, ((f)localObject).vJP) + ")", new f.33((f)localObject));
+        ((f)localObject).uW(true);
+        ((f)localObject).eOB();
+        if ((bt.isNullOrNil(((f)localObject).DMR)) || (((f)localObject).DMv == null)) {
           continue;
         }
-        ((f)localObject).Cjr.evaluateJavascript(((f)localObject).fk(((f)localObject).CjK, ((f)localObject).CjL), null);
-        ((f)localObject).CjK = null;
-        ((f)localObject).CjL = 0;
+        ((f)localObject).DMv.evaluateJavascript(((f)localObject).fH(((f)localObject).DMR, ((f)localObject).DMS), null);
+        ((f)localObject).DMR = null;
+        ((f)localObject).DMS = 0;
       }
       catch (IOException localIOException)
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.JsLoader", localIOException, "openVConsole", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.JsLoader", localIOException, "openVConsole", new Object[0]);
         }
       }
     }
@@ -237,81 +237,83 @@ public final class i
   
   public final void detach()
   {
-    AppMethodBeat.i(205303);
-    ac.v("MicroMsg.JsLoader", "detach");
-    this.Ckf = null;
-    this.Cjc = null;
-    this.Ckg = null;
-    AppMethodBeat.o(205303);
+    AppMethodBeat.i(213905);
+    ad.v("MicroMsg.JsLoader", "detach");
+    this.DNl = null;
+    this.DzP = null;
+    this.DNm = null;
+    AppMethodBeat.o(213905);
   }
   
-  public final void eAa()
+  public final void eON()
   {
-    AppMethodBeat.i(205306);
-    ac.i("MicroMsg.JsLoader", "inject");
-    if (this.Ckh)
+    AppMethodBeat.i(213907);
+    if ((this.DNl == null) || (this.DzP == null))
     {
-      ac.i("MicroMsg.JsLoader", "loadJavaScript jsapi init done by preload");
-      if (this.Cjc != null) {
-        this.Cjc.ui(true);
+      ad.e("MicroMsg.JsLoader", "auth, viewWV or jsapi is null");
+      AppMethodBeat.o(213907);
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("state", "authorized");
+    this.DzP.uW(true);
+    this.DzP.b("sys:auth", localHashMap, null);
+    AppMethodBeat.o(213907);
+  }
+  
+  public final void eOO()
+  {
+    AppMethodBeat.i(213908);
+    ad.i("MicroMsg.JsLoader", "inject");
+    if (this.DNn)
+    {
+      ad.i("MicroMsg.JsLoader", "loadJavaScript jsapi init done by preload");
+      if (this.DzP != null) {
+        this.DzP.uW(true);
       }
     }
     for (final boolean bool1 = true;; bool1 = false)
     {
-      this.Cki = bool1;
-      AppMethodBeat.o(205306);
+      this.DNo = bool1;
+      AppMethodBeat.o(213908);
       return;
-      if ((this.Ckf != null) && (this.Cjc != null)) {
+      if ((this.DNl != null) && (this.DzP != null)) {
         break;
       }
-      ac.e("MicroMsg.JsLoader", "loadJavaScript build, viewWV is null");
+      ad.e("MicroMsg.JsLoader", "loadJavaScript build, viewWV is null");
     }
+    this.DzP.DME = true;
     final long l1 = System.currentTimeMillis();
     bool1 = WebView.isX5();
-    final boolean bool2 = this.Ckf.isXWalkKernel();
-    if (b(this.Ckf))
+    final boolean bool2 = this.DNl.isXWalkKernel();
+    if (b(this.DNl))
     {
-      String str = aBt("jsapi/wxjs.js");
+      String str = aGQ("jsapi/wxjs.js");
       if (str != null)
       {
         final long l2 = System.currentTimeMillis();
         if (l2 >= 0L)
         {
-          a.aA(84, 1L);
-          ag localag = new ag(3, 256, this.Ckf);
-          localag.mD(str, "path");
-          this.Ckf.evaluateJavascript(localag.toString(), new ValueCallback() {});
+          a.aK(84, 1L);
+          ag localag = new ag(3, 256, this.DNl);
+          localag.nb(str, "path");
+          this.DNl.evaluateJavascript(localag.toString(), new ValueCallback() {});
         }
       }
     }
     for (;;)
     {
+      this.DzP.eOA();
       bool1 = true;
       break;
-      a.aA(82, 1L);
-      this.Ckf.evaluateJavascript(eAb(), new ValueCallback() {});
+      a.aK(82, 1L);
+      this.DNl.evaluateJavascript(eOP(), new ValueCallback() {});
     }
-  }
-  
-  public final void ezZ()
-  {
-    AppMethodBeat.i(205305);
-    if ((this.Ckf == null) || (this.Cjc == null))
-    {
-      ac.e("MicroMsg.JsLoader", "auth, viewWV or jsapi is null");
-      AppMethodBeat.o(205305);
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("state", "authorized");
-    this.Cjc.ui(true);
-    this.Cjc.b("sys:auth", localHashMap, null);
-    AppMethodBeat.o(205305);
   }
   
   public static abstract interface a
   {
-    public abstract void eAc();
+    public abstract void eOQ();
   }
 }
 

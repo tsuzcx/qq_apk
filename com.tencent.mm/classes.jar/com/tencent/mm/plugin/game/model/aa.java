@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.cx;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.game.d.df;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -11,55 +11,55 @@ import java.util.List;
 public final class aa
 {
   public String mAppId;
-  public List<a> tfJ;
+  public List<a> udz;
   
   public aa(String paramString)
   {
     AppMethodBeat.i(41531);
     this.mAppId = "";
-    this.tfJ = new LinkedList();
-    if (bs.isNullOrNil(paramString))
+    this.udz = new LinkedList();
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(41531);
       return;
     }
     this.mAppId = paramString;
-    this.tfJ.addAll(cQN());
+    this.udz.addAll(cZt());
     AppMethodBeat.o(41531);
   }
   
-  public aa(String paramString, List<cx> paramList)
+  public aa(String paramString, List<df> paramList)
   {
     AppMethodBeat.i(41532);
     this.mAppId = "";
-    this.tfJ = new LinkedList();
-    if ((bs.isNullOrNil(paramString)) || (paramList == null) || (paramList.isEmpty()))
+    this.udz = new LinkedList();
+    if ((bt.isNullOrNil(paramString)) || (paramList == null) || (paramList.isEmpty()))
     {
       AppMethodBeat.o(41532);
       return;
     }
     this.mAppId = paramString;
-    this.tfJ.clear();
+    this.udz.clear();
     paramString = paramList.iterator();
     while (paramString.hasNext())
     {
-      paramList = (cx)paramString.next();
+      paramList = (df)paramString.next();
       a locala = new a();
-      locala.tfK = paramList.tlu;
-      locala.drG = paramList.ncR;
+      locala.udA = paramList.ujD;
+      locala.dDy = paramList.nDo;
       locala.tag = paramList.Label;
-      locala.syM = paramList.tlv;
-      locala.tfM = paramList.tlw;
-      locala.tfL = paramList.tlx;
-      locala.tfN = paramList.tly;
-      this.tfJ.add(locala);
+      locala.tvn = paramList.ujE;
+      locala.udC = paramList.ujF;
+      locala.udB = paramList.ujG;
+      locala.udD = paramList.ujH;
+      this.udz.add(locala);
     }
-    cQO();
+    cZu();
     AppMethodBeat.o(41532);
   }
   
   /* Error */
-  private List<a> cQN()
+  private List<a> cZt()
   {
     // Byte code:
     //   0: ldc 137
@@ -80,10 +80,10 @@ public final class aa
     //   35: astore 4
     //   37: ldc 152
     //   39: invokestatic 158	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-    //   42: checkcast 152	com/tencent/mm/plugin/game/api/e
+    //   42: checkcast 152	com/tencent/mm/plugin/game/api/f
     //   45: invokeinterface 162 1 0
     //   50: aload_1
-    //   51: invokevirtual 168	com/tencent/mm/plugin/game/model/w:agO	(Ljava/lang/String;)[B
+    //   51: invokevirtual 168	com/tencent/mm/plugin/game/model/w:all	(Ljava/lang/String;)[B
     //   54: astore_1
     //   55: aload_1
     //   56: ifnonnull +11 -> 67
@@ -127,7 +127,7 @@ public final class aa
     //   133: ldc 26
     //   135: iconst_0
     //   136: anewarray 4	java/lang/Object
-    //   139: invokestatic 195	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   139: invokestatic 195	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   142: aload 5
     //   144: invokevirtual 186	java/io/ByteArrayInputStream:close	()V
     //   147: aload_2
@@ -198,7 +198,7 @@ public final class aa
   }
   
   /* Error */
-  public final void cQO()
+  public final void cZu()
   {
     // Byte code:
     //   0: ldc 197
@@ -226,7 +226,7 @@ public final class aa
     //   48: astore_1
     //   49: aload_2
     //   50: aload_0
-    //   51: getfield 33	com/tencent/mm/plugin/game/model/aa:tfJ	Ljava/util/List;
+    //   51: getfield 33	com/tencent/mm/plugin/game/model/aa:udz	Ljava/util/List;
     //   54: invokeinterface 211 2 0
     //   59: aload_2
     //   60: astore_1
@@ -237,11 +237,11 @@ public final class aa
     //   69: astore_1
     //   70: ldc 152
     //   72: invokestatic 158	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-    //   75: checkcast 152	com/tencent/mm/plugin/game/api/e
+    //   75: checkcast 152	com/tencent/mm/plugin/game/api/f
     //   78: invokeinterface 162 1 0
     //   83: aload_3
     //   84: aload 5
-    //   86: invokevirtual 219	com/tencent/mm/plugin/game/model/w:q	(Ljava/lang/String;[B)Z
+    //   86: invokevirtual 219	com/tencent/mm/plugin/game/model/w:r	(Ljava/lang/String;[B)Z
     //   89: pop
     //   90: aload_2
     //   91: invokeinterface 220 1 0
@@ -264,7 +264,7 @@ public final class aa
     //   122: ldc 26
     //   124: iconst_0
     //   125: anewarray 4	java/lang/Object
-    //   128: invokestatic 195	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   128: invokestatic 195	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   131: aload_2
     //   132: ifnull +9 -> 141
     //   135: aload_2
@@ -345,18 +345,18 @@ public final class aa
   public static final class a
     implements Serializable
   {
-    public String drG;
-    public long syM;
+    public String dDy;
     public String tag;
-    public int tfK;
-    public int tfL;
-    public boolean tfM;
-    public String tfN;
+    public long tvn;
+    public int udA;
+    public int udB;
+    public boolean udC;
+    public String udD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.aa
  * JD-Core Version:    0.7.0.1
  */

@@ -3,17 +3,17 @@ package com.tencent.mm.model.d;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.bb.k;
-import com.tencent.mm.bb.l;
-import com.tencent.mm.bb.o;
-import com.tencent.mm.bb.t;
-import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.bc.k;
+import com.tencent.mm.bc.l;
+import com.tencent.mm.bc.o;
+import com.tencent.mm.bc.t;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
@@ -25,38 +25,38 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class c
-  implements g
+  implements f
 {
-  private static c hrT;
-  private volatile boolean fRX;
-  private final int hrQ;
-  private final String hrR;
-  private final long hrS;
+  private static c hKl;
+  private volatile boolean glB;
+  private final int hKi;
+  private final String hKj;
+  private final long hKk;
   private ArrayList<a> listeners;
   private SharedPreferences sp;
   
   private c()
   {
     AppMethodBeat.i(20464);
-    this.hrQ = 21;
-    this.hrR = "trace_config_last_update_time";
-    this.hrS = 86400000L;
-    this.fRX = false;
-    this.sp = ai.eUY();
+    this.hKi = 21;
+    this.hKj = "trace_config_last_update_time";
+    this.hKk = 86400000L;
+    this.glB = false;
+    this.sp = aj.fkD();
     this.listeners = new ArrayList();
     AppMethodBeat.o(20464);
   }
   
-  public static c aAx()
+  public static c aDA()
   {
     AppMethodBeat.i(20465);
-    if (hrT == null) {}
+    if (hKl == null) {}
     try
     {
-      if (hrT == null) {
-        hrT = new c();
+      if (hKl == null) {
+        hKl = new c();
       }
-      c localc = hrT;
+      c localc = hKl;
       AppMethodBeat.o(20465);
       return localc;
     }
@@ -66,21 +66,21 @@ public class c
     }
   }
   
-  private void ol(int paramInt)
+  private void oL(int paramInt)
   {
     AppMethodBeat.i(20467);
-    t.aGO();
-    Object localObject1 = com.tencent.mm.bb.p.aGL();
-    Object localObject2 = t.aGO().di(paramInt, 21);
+    t.aJZ();
+    Object localObject1 = com.tencent.mm.bc.p.aJW();
+    Object localObject2 = t.aJZ().dl(paramInt, 21);
     label466:
     for (;;)
     {
       try
       {
-        Object localObject3 = bv.L(i.aSr(com.tencent.mm.vfs.q.B(new e((String)localObject1, (String)localObject2).mUri)), "TraceConfig");
+        Object localObject3 = bw.M(i.aYq(com.tencent.mm.vfs.q.B(new e((String)localObject1, (String)localObject2).mUri)), "TraceConfig");
         if (localObject3 == null)
         {
-          ac.d("MicroMsg.TraceConfigUpdater", "summer kvMap is null and ret");
+          ad.d("MicroMsg.TraceConfigUpdater", "summer kvMap is null and ret");
           AppMethodBeat.o(20467);
           return;
         }
@@ -95,11 +95,11 @@ public class c
           if (localObject4 != null)
           {
             i += 1;
-            long l = bs.getLong((String)((Map)localObject3).get(localObject1), -1L);
+            long l = bt.getLong((String)((Map)localObject3).get(localObject1), -1L);
             if (l < 0L) {
               break label466;
             }
-            ac.i("MicroMsg.TraceConfigUpdater", "summer updateTraceConfig i: " + i + " key: " + (String)localObject4 + "|value: " + l);
+            ad.i("MicroMsg.TraceConfigUpdater", "summer updateTraceConfig i: " + i + " key: " + (String)localObject4 + "|value: " + l);
             ((Map)localObject2).put(localObject4, Long.valueOf(l));
           }
         }
@@ -121,19 +121,19 @@ public class c
       }
       catch (IOException localIOException)
       {
-        ac.printErrStackTrace("MicroMsg.TraceConfigUpdater", localIOException, "", new Object[0]);
-        localo = t.aGO().dg(paramInt, 21);
+        ad.printErrStackTrace("MicroMsg.TraceConfigUpdater", localIOException, "", new Object[0]);
+        localo = t.aJZ().dj(paramInt, 21);
         localo.status = 2;
-        t.aGO().b(localo);
+        t.aJZ().b(localo);
         AppMethodBeat.o(20467);
         return;
       }
-      ac.d("MicroMsg.TraceConfigUpdater", "summer updateTraceConfig configMap size: " + ((Map)localObject2).size());
+      ad.d("MicroMsg.TraceConfigUpdater", "summer updateTraceConfig configMap size: " + ((Map)localObject2).size());
       int j = this.listeners.size();
       int i = 0;
       while (i < j)
       {
-        ((a)this.listeners.get(i)).aAu();
+        ((a)this.listeners.get(i)).aDx();
         i += 1;
       }
     }
@@ -142,10 +142,10 @@ public class c
   private void release()
   {
     AppMethodBeat.i(20468);
-    ac.i("MicroMsg.TraceConfigUpdater", "summer release");
-    this.fRX = false;
-    az.agi().b(159, this);
-    az.agi().b(160, this);
+    ad.i("MicroMsg.TraceConfigUpdater", "summer release");
+    this.glB = false;
+    ba.aiU().b(159, this);
+    ba.aiU().b(160, this);
     AppMethodBeat.o(20468);
   }
   
@@ -166,10 +166,10 @@ public class c
   {
     AppMethodBeat.i(20466);
     int i = paramn.getType();
-    ac.i("MicroMsg.TraceConfigUpdater", "summer onSceneEnd: errType:[%d], errCode:[%d], type:[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
-    if ((!(paramn instanceof com.tencent.mm.ak.p)) || (((com.tencent.mm.ak.p)paramn).aBJ() != 21))
+    ad.i("MicroMsg.TraceConfigUpdater", "summer onSceneEnd: errType:[%d], errCode:[%d], type:[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
+    if ((!(paramn instanceof com.tencent.mm.al.p)) || (((com.tencent.mm.al.p)paramn).aEM() != 21))
     {
-      ac.i("MicroMsg.TraceConfigUpdater", "summer onSceneEnd another scene and ret");
+      ad.i("MicroMsg.TraceConfigUpdater", "summer onSceneEnd another scene and ret");
       AppMethodBeat.o(20466);
       return;
     }
@@ -177,24 +177,24 @@ public class c
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = t.aGO().po(21);
+        paramString = t.aJZ().pR(21);
         if ((paramString == null) || (paramString.length == 0))
         {
-          ac.i("MicroMsg.TraceConfigUpdater", "summer doDownload error no pkg found.");
+          ad.i("MicroMsg.TraceConfigUpdater", "summer doDownload error no pkg found.");
           release();
           AppMethodBeat.o(20466);
           return;
         }
         paramString = paramString[0];
-        ac.i("MicroMsg.TraceConfigUpdater", "summer doDownload pkg id:" + paramString.id + " version:" + paramString.version + " status:" + paramString.status + " type:" + paramString.dib);
+        ad.i("MicroMsg.TraceConfigUpdater", "summer doDownload pkg id:" + paramString.id + " version:" + paramString.version + " status:" + paramString.status + " type:" + paramString.dtF);
         if (5 == paramString.status)
         {
           paramString = new k(paramString.id, 21);
-          az.agi().a(paramString, 0);
+          ba.aiU().a(paramString, 0);
           AppMethodBeat.o(20466);
           return;
         }
-        ac.i("MicroMsg.TraceConfigUpdater", "summer pkgInfo has downloaded and release");
+        ad.i("MicroMsg.TraceConfigUpdater", "summer pkgInfo has downloaded and release");
         this.sp.edit().putLong("trace_config_last_update_time", System.currentTimeMillis()).commit();
         release();
         AppMethodBeat.o(20466);
@@ -207,7 +207,7 @@ public class c
     if (i == 160)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        ol(((k)paramn).hPY);
+        oL(((k)paramn).ijm);
       }
       release();
     }
@@ -216,7 +216,7 @@ public class c
   
   public static abstract interface a
   {
-    public abstract void aAu();
+    public abstract void aDx();
   }
 }
 

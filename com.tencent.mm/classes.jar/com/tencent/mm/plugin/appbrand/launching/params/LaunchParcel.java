@@ -23,23 +23,24 @@ public final class LaunchParcel
 {
   public static final Parcelable.Creator<LaunchParcel> CREATOR;
   public String appId;
-  public AppBrandLaunchReferrer cce;
-  public int hxM;
-  public PersistableBundle jDB;
-  public String jDC;
-  public String jjf;
-  public int jjl;
-  public String jjp;
-  public String jjq;
-  public AppBrandLaunchFromNotifyReferrer jjr;
+  public AppBrandLaunchReferrer cmv;
+  public int hQh;
+  public String jCN;
+  public int jCT;
+  public String jCX;
+  public AppBrandLaunchFromNotifyReferrer jCZ;
+  public PersistableBundle jXx;
+  public String jXy;
+  public ActivityStarterIpcDelegate lEq;
+  public AppBrandStatObject lMZ;
+  public LaunchParamsOptional lNa;
+  public long lNb;
+  public a<?> lNc;
+  public a<Bundle> lNd;
+  public PersistableBundle lNe;
+  public Parcelable lNf;
+  public Parcelable lNg;
   public int launchMode;
-  public ActivityStarterIpcDelegate lhq;
-  public AppBrandStatObject lpG;
-  public LaunchParamsOptional lpH;
-  public long lpI;
-  public a<?> lpJ;
-  public a<Bundle> lpK;
-  public PersistableBundle lpL;
   public String username;
   public int version;
   
@@ -52,45 +53,46 @@ public final class LaunchParcel
   
   public LaunchParcel()
   {
-    this.jjl = -1;
-    this.lpL = null;
-    this.jjp = null;
+    this.jCT = -1;
+    this.lNe = null;
+    this.jCX = null;
   }
   
   private LaunchParcel(Parcel paramParcel)
   {
     AppMethodBeat.i(147323);
-    this.jjl = -1;
-    this.lpL = null;
-    this.jjp = null;
+    this.jCT = -1;
+    this.lNe = null;
+    this.jCX = null;
     this.username = paramParcel.readString();
     this.appId = paramParcel.readString();
     this.version = paramParcel.readInt();
-    this.hxM = paramParcel.readInt();
-    this.jjf = paramParcel.readString();
-    this.lpG = ((AppBrandStatObject)paramParcel.readParcelable(AppBrandStatObject.class.getClassLoader()));
-    this.cce = ((AppBrandLaunchReferrer)paramParcel.readParcelable(AppBrandLaunchReferrer.class.getClassLoader()));
-    this.lpH = ((LaunchParamsOptional)paramParcel.readParcelable(LaunchParamsOptional.class.getClassLoader()));
-    this.lpI = paramParcel.readLong();
-    this.jDC = paramParcel.readString();
-    this.jDB = paramParcel.readPersistableBundle(LaunchParcel.class.getClassLoader());
-    this.lhq = ((ActivityStarterIpcDelegate)paramParcel.readParcelable(ActivityStarterIpcDelegate.class.getClassLoader()));
-    this.lpJ = OnWXAppResultXPCWrapper.a(paramParcel);
-    this.jjl = paramParcel.readInt();
-    this.lpK = OnWXAppResultXPCWrapper.a(paramParcel);
-    this.lpL = paramParcel.readPersistableBundle(LaunchParcel.class.getClassLoader());
-    this.jjp = paramParcel.readString();
+    this.hQh = paramParcel.readInt();
+    this.jCN = paramParcel.readString();
+    this.lMZ = ((AppBrandStatObject)paramParcel.readParcelable(AppBrandStatObject.class.getClassLoader()));
+    this.cmv = ((AppBrandLaunchReferrer)paramParcel.readParcelable(AppBrandLaunchReferrer.class.getClassLoader()));
+    this.lNa = ((LaunchParamsOptional)paramParcel.readParcelable(LaunchParamsOptional.class.getClassLoader()));
+    this.lNb = paramParcel.readLong();
+    this.jXy = paramParcel.readString();
+    this.jXx = paramParcel.readPersistableBundle(LaunchParcel.class.getClassLoader());
+    this.lEq = ((ActivityStarterIpcDelegate)paramParcel.readParcelable(ActivityStarterIpcDelegate.class.getClassLoader()));
+    this.lNc = OnWXAppResultXPCWrapper.a(paramParcel);
+    this.jCT = paramParcel.readInt();
+    this.lNd = OnWXAppResultXPCWrapper.a(paramParcel);
+    this.lNe = paramParcel.readPersistableBundle(LaunchParcel.class.getClassLoader());
+    this.jCX = paramParcel.readString();
     this.launchMode = paramParcel.readInt();
-    this.jjq = paramParcel.readString();
-    this.jjr = ((AppBrandLaunchFromNotifyReferrer)paramParcel.readParcelable(AppBrandLaunchFromNotifyReferrer.class.getClassLoader()));
+    this.jCZ = ((AppBrandLaunchFromNotifyReferrer)paramParcel.readParcelable(AppBrandLaunchFromNotifyReferrer.class.getClassLoader()));
+    this.lNf = paramParcel.readParcelable(LaunchParcel.class.getClassLoader());
+    this.lNg = paramParcel.readParcelable(LaunchParcel.class.getClassLoader());
     AppMethodBeat.o(147323);
   }
   
-  public static String IZ(String paramString)
+  public static String Mq(String paramString)
   {
-    AppMethodBeat.i(210396);
-    paramString = m.IZ(paramString);
-    AppMethodBeat.o(210396);
+    AppMethodBeat.i(221599);
+    paramString = m.Mq(paramString);
+    AppMethodBeat.o(221599);
     return paramString;
   }
   
@@ -106,28 +108,28 @@ public final class LaunchParcel
     if (TextUtils.isEmpty(paramAppBrandInitConfigLU.username)) {
       paramAppBrandInitConfigLU.username = this.username;
     }
-    if ((this.lpH != null) && (this.lpH.ccf != null)) {
-      paramAppBrandInitConfigLU.ccf.a(this.lpH.ccf);
+    if ((this.lNa != null) && (this.lNa.cmw != null)) {
+      paramAppBrandInitConfigLU.cmw.a(this.lNa.cmw);
     }
-    paramAppBrandInitConfigLU.jjf = m.IZ(this.jjf);
-    paramAppBrandInitConfigLU.cce.a(this.cce);
-    if (this.lpH == null)
+    paramAppBrandInitConfigLU.jCN = m.Mq(this.jCN);
+    paramAppBrandInitConfigLU.cmv.a(this.cmv);
+    if (this.lNa == null)
     {
       localObject1 = null;
-      paramAppBrandInitConfigLU.ccc = ((String)localObject1);
-      if (this.lpH != null) {
+      paramAppBrandInitConfigLU.cmt = ((String)localObject1);
+      if (this.lNa != null) {
         break label149;
       }
     }
     label149:
-    for (Object localObject1 = localObject2;; localObject1 = this.lpH.ccd)
+    for (Object localObject1 = localObject2;; localObject1 = this.lNa.cmu)
     {
-      paramAppBrandInitConfigLU.ccd = ((String)localObject1);
-      paramAppBrandInitConfigLU.startTime = this.lpI;
-      paramAppBrandInitConfigLU.ccj = this.lpJ;
+      paramAppBrandInitConfigLU.cmu = ((String)localObject1);
+      paramAppBrandInitConfigLU.startTime = this.lNb;
+      paramAppBrandInitConfigLU.cmA = this.lNc;
       AppMethodBeat.o(147324);
       return;
-      localObject1 = this.lpH.ccc;
+      localObject1 = this.lNa.cmt;
       break;
     }
   }
@@ -140,7 +142,7 @@ public final class LaunchParcel
   public final String toString()
   {
     AppMethodBeat.i(169496);
-    String str = "LaunchParcel{username='" + this.username + '\'' + ", appId='" + this.appId + '\'' + ", version=" + this.version + ", versionType=" + this.hxM + ", enterPath='" + this.jjf + '\'' + ", statObj=" + this.lpG + ", referrer=" + this.cce + ", startClickTimestamp=" + this.lpI + '}';
+    String str = "LaunchParcel{username='" + this.username + '\'' + ", appId='" + this.appId + '\'' + ", version=" + this.version + ", versionType=" + this.hQh + ", enterPath='" + this.jCN + '\'' + ", statObj=" + this.lMZ + ", referrer=" + this.cmv + ", startClickTimestamp=" + this.lNb + '}';
     AppMethodBeat.o(169496);
     return str;
   }
@@ -151,23 +153,24 @@ public final class LaunchParcel
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.appId);
     paramParcel.writeInt(this.version);
-    paramParcel.writeInt(this.hxM);
-    paramParcel.writeString(this.jjf);
-    paramParcel.writeParcelable(this.lpG, paramInt);
-    paramParcel.writeParcelable(this.cce, paramInt);
-    paramParcel.writeParcelable(this.lpH, paramInt);
-    paramParcel.writeLong(this.lpI);
-    paramParcel.writeString(this.jDC);
-    paramParcel.writePersistableBundle(this.jDB);
-    paramParcel.writeParcelable(this.lhq, paramInt);
-    OnWXAppResultXPCWrapper.a(this.lpJ, paramParcel);
-    paramParcel.writeInt(this.jjl);
-    OnWXAppResultXPCWrapper.a(this.lpK, paramParcel);
-    paramParcel.writePersistableBundle(this.lpL);
-    paramParcel.writeString(this.jjp);
+    paramParcel.writeInt(this.hQh);
+    paramParcel.writeString(this.jCN);
+    paramParcel.writeParcelable(this.lMZ, paramInt);
+    paramParcel.writeParcelable(this.cmv, paramInt);
+    paramParcel.writeParcelable(this.lNa, paramInt);
+    paramParcel.writeLong(this.lNb);
+    paramParcel.writeString(this.jXy);
+    paramParcel.writePersistableBundle(this.jXx);
+    paramParcel.writeParcelable(this.lEq, paramInt);
+    OnWXAppResultXPCWrapper.a(this.lNc, paramParcel);
+    paramParcel.writeInt(this.jCT);
+    OnWXAppResultXPCWrapper.a(this.lNd, paramParcel);
+    paramParcel.writePersistableBundle(this.lNe);
+    paramParcel.writeString(this.jCX);
     paramParcel.writeInt(this.launchMode);
-    paramParcel.writeString(this.jjq);
-    paramParcel.writeParcelable(this.jjr, paramInt);
+    paramParcel.writeParcelable(this.jCZ, paramInt);
+    paramParcel.writeParcelable(this.lNf, paramInt);
+    paramParcel.writeParcelable(this.lNg, paramInt);
     AppMethodBeat.o(147322);
   }
 }

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kz;
+import com.tencent.mm.g.a.li;
 import com.tencent.mm.sdk.b.c;
 
 final class FacebookLoginUI$1
-  extends c<kz>
+  extends c<li>
 {
   FacebookLoginUI$1(FacebookLoginUI paramFacebookLoginUI)
   {
     AppMethodBeat.i(161700);
-    this.__eventId = kz.class.getName().hashCode();
+    this.__eventId = li.class.getName().hashCode();
     AppMethodBeat.o(161700);
   }
 }

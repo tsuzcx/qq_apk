@@ -1,15 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import org.json.JSONArray;
 
 public final class dv
   extends b
 {
-  public a ddx;
-  public b ddy;
+  public a doL;
   
   public dv()
   {
@@ -18,29 +15,21 @@ public final class dv
   
   private dv(byte paramByte)
   {
-    AppMethodBeat.i(115986);
-    this.ddx = new a();
-    this.ddy = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(115983);
+    this.doL = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(115986);
+    AppMethodBeat.o(115983);
   }
   
   public static final class a
   {
-    public Context context;
-    public String ddh;
-  }
-  
-  public static final class b
-  {
-    public boolean ddj;
-    public JSONArray ddw;
+    public boolean doM = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.dv
  * JD-Core Version:    0.7.0.1
  */

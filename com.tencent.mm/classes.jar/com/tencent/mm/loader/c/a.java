@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import com.tencent.mm.loader.d.d;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/cfg/BitmapBuilder;", "T", "Lcom/tencent/mm/loader/cfg/Builder;", "Landroid/graphics/Bitmap;", "()V", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/cfg/BitmapBuilder;", "T", "Lcom/tencent/mm/loader/cfg/Builder;", "Landroid/graphics/Bitmap;", "()V", "libimageloader_release"})
 public final class a<T>
   extends b<T, Bitmap>
 {

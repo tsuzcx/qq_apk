@@ -1,20 +1,19 @@
 package com.tencent.mm.plugin.appbrand.q.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.plugin.appbrand.permission.d;
-import com.tencent.mm.plugin.appbrand.permission.d.c;
+import com.tencent.mm.ac.i;
+import com.tencent.mm.plugin.appbrand.permission.a.a;
+import com.tencent.mm.plugin.appbrand.permission.a.a.c;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.q.a.b;
-import com.tencent.mm.plugin.appbrand.q.a.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class g
   extends b
 {
-  static void a(c paramc, int paramInt)
+  static void a(com.tencent.mm.plugin.appbrand.q.a.c paramc, int paramInt)
   {
     AppMethodBeat.i(147402);
     HashMap localHashMap = new HashMap();
@@ -23,28 +22,28 @@ public final class g
     AppMethodBeat.o(147402);
   }
   
-  public final void a(final i parami, final c paramc)
+  public final void a(final i parami, final com.tencent.mm.plugin.appbrand.q.a.c paramc)
   {
     AppMethodBeat.i(147401);
     parami = parami.optString("apiName");
-    q localq = paramc.ceh;
-    if (d.ea(localq.getAppId(), parami))
+    q localq = paramc.cox;
+    if (a.ek(localq.getAppId(), parami))
     {
       a(paramc, 1);
       AppMethodBeat.o(147401);
       return;
     }
-    d.a(localq, parami, new d.c()
+    a.a(new com.tencent.mm.plugin.appbrand.permission.a.c(localq, parami, (byte)0), new a.c()
     {
-      public final void Pt(String paramAnonymousString)
+      public final void Sg(String paramAnonymousString)
       {
         AppMethodBeat.i(147399);
-        ac.e("Luggage.NodeJS.RequireUserAuth", "onDeny apiName[%s], reason[%s]", new Object[] { parami, paramAnonymousString });
+        ad.e("Luggage.NodeJS.RequireUserAuth", "onDeny apiName[%s], reason[%s]", new Object[] { parami, paramAnonymousString });
         g.a(paramc, 2);
         AppMethodBeat.o(147399);
       }
       
-      public final void bpF()
+      public final void bsq()
       {
         AppMethodBeat.i(147398);
         g.a(paramc, 1);
@@ -61,14 +60,14 @@ public final class g
     AppMethodBeat.o(147401);
   }
   
-  public final int bpA()
+  public final int btB()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.q.c.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dlj;
-import com.tencent.mm.protocal.protobuf.dlk;
+import com.tencent.mm.protocal.protobuf.dra;
+import com.tencent.mm.protocal.protobuf.drb;
 
 public final class y
   extends n
   implements k
 {
-  private String cIZ;
-  private g callback;
-  private String dda;
-  public String eNf;
-  private int pzw;
+  private String cUi;
+  private f callback;
+  private String dow;
+  public String ffB;
+  private int qdb;
   private b rr;
   
   public y(String paramString1, String paramString2, String paramString3)
   {
-    this.eNf = paramString3;
-    this.cIZ = paramString1;
-    this.dda = paramString2;
-    this.pzw = 0;
+    this.ffB = paramString3;
+    this.cUi = paramString1;
+    this.dow = paramString2;
+    this.qdb = 0;
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(23422);
-    this.callback = paramg;
-    paramg = new b.a();
-    paramg.hvt = new dlj();
-    paramg.hvu = new dlk();
-    paramg.uri = "/cgi-bin/mmoc-bin/hardware/updatemydeviceattr";
-    paramg.funcId = getType();
-    paramg.reqCmdId = 0;
-    paramg.respCmdId = 0;
-    this.rr = paramg.aAz();
-    paramg = (dlj)this.rr.hvr.hvw;
-    paramg.eNf = this.eNf;
-    paramg.vsV = this.cIZ;
-    paramg.devicetype = this.dda;
-    paramg.FTY = this.pzw;
+    this.callback = paramf;
+    paramf = new b.a();
+    paramf.hNM = new dra();
+    paramf.hNN = new drb();
+    paramf.uri = "/cgi-bin/mmoc-bin/hardware/updatemydeviceattr";
+    paramf.funcId = getType();
+    paramf.hNO = 0;
+    paramf.respCmdId = 0;
+    this.rr = paramf.aDC();
+    paramf = (dra)this.rr.hNK.hNQ;
+    paramf.ffB = this.ffB;
+    paramf.wyn = this.cUi;
+    paramf.devicetype = this.dow;
+    paramf.HEM = this.qdb;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(23422);
     return i;
@@ -67,7 +67,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.y
  * JD-Core Version:    0.7.0.1
  */

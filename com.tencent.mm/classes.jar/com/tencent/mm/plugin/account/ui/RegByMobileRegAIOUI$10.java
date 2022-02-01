@@ -14,11 +14,11 @@ final class RegByMobileRegAIOUI$10
   {
     AppMethodBeat.i(128523);
     paramDialogInterface = new StringBuilder();
-    g.agP();
-    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.agc()).append(",").append(this.iWa.getClass().getName()).append(",RE200_200,");
-    g.agP();
-    com.tencent.mm.plugin.b.a.h(false, com.tencent.mm.kernel.a.uc("RE200_200") + ",2");
-    com.tencent.mm.plugin.b.a.IL("RE200_100");
+    g.ajA();
+    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.aiO()).append(",").append(this.jpj.getClass().getName()).append(",RE200_200,");
+    g.ajA();
+    com.tencent.mm.plugin.b.a.i(false, com.tencent.mm.kernel.a.wS("RE200_200") + ",2");
+    com.tencent.mm.plugin.b.a.Ma("RE200_100");
     AppMethodBeat.o(128523);
   }
 }

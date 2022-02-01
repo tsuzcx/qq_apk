@@ -9,11 +9,11 @@ public class MediatorLiveData<T>
 {
   private b<LiveData<?>, Source<?>> cZ = new b();
   
-  protected final void V()
+  protected final void W()
   {
     Iterator localIterator = this.cZ.iterator();
     while (localIterator.hasNext()) {
-      ((Source)((Map.Entry)localIterator.next()).getValue()).aa();
+      ((Source)((Map.Entry)localIterator.next()).getValue()).ac();
     }
   }
   
@@ -28,14 +28,14 @@ public class MediatorLiveData<T>
     while (!hasActiveObservers()) {
       return;
     }
-    localSource.Z();
+    localSource.aa();
   }
   
   protected final void onActive()
   {
     Iterator localIterator = this.cZ.iterator();
     while (localIterator.hasNext()) {
-      ((Source)((Map.Entry)localIterator.next()).getValue()).Z();
+      ((Source)((Map.Entry)localIterator.next()).getValue()).aa();
     }
   }
   
@@ -43,7 +43,7 @@ public class MediatorLiveData<T>
   {
     paramLiveData = (Source)this.cZ.remove(paramLiveData);
     if (paramLiveData != null) {
-      paramLiveData.aa();
+      paramLiveData.ac();
     }
   }
   
@@ -60,12 +60,12 @@ public class MediatorLiveData<T>
       this.cX = paramObserver;
     }
     
-    final void Z()
+    final void aa()
     {
       this.ci.observeForever(this);
     }
     
-    final void aa()
+    final void ac()
     {
       this.ci.removeObserver(this);
     }

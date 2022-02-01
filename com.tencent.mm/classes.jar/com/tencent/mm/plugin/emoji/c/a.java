@@ -1,41 +1,42 @@
 package com.tencent.mm.plugin.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.oq;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.oz;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.emoji.f.d;
 import com.tencent.mm.plugin.emoji.f.s;
 import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.plugin.emoji.sync.BKGLoaderManager;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.emotion.f;
 import java.util.ArrayList;
 
 public final class a
-  extends com.tencent.mm.sdk.b.c<oq>
+  extends com.tencent.mm.sdk.b.c<oz>
 {
   public a()
   {
     AppMethodBeat.i(161065);
-    this.__eventId = oq.class.getName().hashCode();
+    this.__eventId = oz.class.getName().hashCode();
     AppMethodBeat.o(161065);
   }
   
-  public static void cbL()
+  public static void cgp()
   {
     AppMethodBeat.i(108385);
-    boolean bool = bs.a((Boolean)g.agR().agA().get(348162, null), false);
+    boolean bool = bt.a((Boolean)g.ajC().ajl().get(348162, null), false);
     Object localObject;
-    if ((!bs.a((Boolean)g.agR().agA().get(ah.a.GDU, null), false)) && (bool))
+    if ((!bt.a((Boolean)g.ajC().ajl().get(al.a.Iqn, null), false)) && (bool))
     {
-      localObject = g.agR().agA().get(348163, null);
+      localObject = g.ajC().ajl().get(348163, null);
       if ((localObject == null) || (!(localObject instanceof Long))) {
         break label391;
       }
@@ -49,12 +50,12 @@ public final class a
       }
       while (i != 0)
       {
-        ac.i("MicroMsg.emoji.EmojiPostTaskListener", "[cpan] start do backup emoji.");
-        localObject = (ArrayList)k.getEmojiStorageMgr().GXZ.YT(0);
+        ad.i("MicroMsg.emoji.EmojiPostTaskListener", "[cpan] start do backup emoji.");
+        localObject = (ArrayList)k.getEmojiStorageMgr().ILn.abc(0);
         if (((ArrayList)localObject).size() <= 0)
         {
-          ac.i("MicroMsg.emoji.EmojiPostTaskListener", "[cpan] no local emoji need not to backup ");
-          g.agR().agA().set(348162, Boolean.FALSE);
+          ad.i("MicroMsg.emoji.EmojiPostTaskListener", "[cpan] no local emoji need not to backup ");
+          g.ajC().ajl().set(348162, Boolean.FALSE);
           AppMethodBeat.o(108385);
           return;
           i = 0;
@@ -63,13 +64,13 @@ public final class a
         }
         else
         {
-          g.agR().agA().set(348163, Long.valueOf(System.currentTimeMillis()));
-          ac.i("MicroMsg.emoji.EmojiPostTaskListener", "[cpan] start backup local emoji ");
+          g.ajC().ajl().set(348163, Long.valueOf(System.currentTimeMillis()));
+          ad.i("MicroMsg.emoji.EmojiPostTaskListener", "[cpan] start backup local emoji ");
           if (((ArrayList)localObject).size() > 50)
           {
             int k = ((ArrayList)localObject).size();
             int m = k / 50;
-            ac.i("MicroMsg.emoji.EmojiPostTaskListener", "count:%d", new Object[] { Integer.valueOf(m) });
+            ad.i("MicroMsg.emoji.EmojiPostTaskListener", "count:%d", new Object[] { Integer.valueOf(m) });
             i = 0;
             if (i <= m)
             {
@@ -78,11 +79,11 @@ public final class a
               if ((i + 1) * 50 - 1 >= k) {}
               for (int j = k;; j = (i + 1) * 50)
               {
-                ac.i("MicroMsg.emoji.EmojiPostTaskListener", "start index:%d to index:%d", new Object[] { Integer.valueOf(n), Integer.valueOf(j) });
+                ad.i("MicroMsg.emoji.EmojiPostTaskListener", "start index:%d to index:%d", new Object[] { Integer.valueOf(n), Integer.valueOf(j) });
                 if (j > n)
                 {
                   localArrayList.addAll(((ArrayList)localObject).subList(n, j));
-                  g.agQ().ghe.a(new com.tencent.mm.plugin.emoji.f.d(localArrayList), 0);
+                  g.ajB().gAO.a(new d(localArrayList), 0);
                 }
                 i += 1;
                 break;
@@ -91,7 +92,7 @@ public final class a
             AppMethodBeat.o(108385);
             return;
           }
-          g.agQ().ghe.a(new com.tencent.mm.plugin.emoji.f.d((ArrayList)localObject), 0);
+          g.ajB().gAO.a(new d((ArrayList)localObject), 0);
         }
       }
       AppMethodBeat.o(108385);
@@ -99,10 +100,10 @@ public final class a
     }
   }
   
-  public static void ke(boolean paramBoolean)
+  public static void kp(boolean paramBoolean)
   {
     AppMethodBeat.i(108383);
-    Object localObject = g.agR().agA().get(ah.a.GDV, null);
+    Object localObject = g.ajC().ajl().get(al.a.Iqo, null);
     if ((localObject != null) && ((localObject instanceof Long))) {}
     for (long l = ((Long)localObject).longValue();; l = 0L)
     {
@@ -112,19 +113,19 @@ public final class a
       }
       while ((i != 0) || (paramBoolean))
       {
-        boolean bool = k.getEmojiStorageMgr().GYa.fcU();
-        ac.i("MicroMsg.emoji.EmojiPostTaskListener", "uploadStoreEmoji need upload:%b", new Object[] { Boolean.valueOf(bool) });
+        boolean bool = k.getEmojiStorageMgr().ILo.ftb();
+        ad.i("MicroMsg.emoji.EmojiPostTaskListener", "uploadStoreEmoji need upload:%b", new Object[] { Boolean.valueOf(bool) });
         if ((bool) || (paramBoolean))
         {
-          localObject = new s(k.getEmojiStorageMgr().GYa.fcW(), 1);
-          g.agQ().ghe.a((n)localObject, 0);
+          localObject = new s(k.getEmojiStorageMgr().ILo.ftd(), 1);
+          g.ajB().gAO.a((n)localObject, 0);
           AppMethodBeat.o(108383);
           return;
           i = 0;
         }
         else
         {
-          g.agR().agA().set(ah.a.GDY, Boolean.TRUE);
+          g.ajC().ajl().set(al.a.Iqr, Boolean.TRUE);
         }
       }
       AppMethodBeat.o(108383);
@@ -132,13 +133,13 @@ public final class a
     }
   }
   
-  public static void kf(boolean paramBoolean)
+  public static void kq(boolean paramBoolean)
   {
     AppMethodBeat.i(108384);
     Object localObject;
-    if (bs.a((Boolean)g.agR().agA().get(348165, null), false))
+    if (bt.a((Boolean)g.ajC().ajl().get(348165, null), false))
     {
-      localObject = g.agR().agA().get(348166, null);
+      localObject = g.ajC().ajl().get(348166, null);
       if ((localObject == null) || (!(localObject instanceof Long))) {
         break label275;
       }
@@ -152,11 +153,11 @@ public final class a
       }
       while ((i != 0) || (paramBoolean))
       {
-        localObject = k.getEmojiStorageMgr().GXZ.fdr();
+        localObject = k.getEmojiStorageMgr().ILn.ftz();
         if (((ArrayList)localObject).size() <= 0) {
           break label250;
         }
-        ac.i("MicroMsg.emoji.EmojiPostTaskListener", "try to sync emoji uploadEmojiList:%d", new Object[] { Integer.valueOf(((ArrayList)localObject).size()) });
+        ad.i("MicroMsg.emoji.EmojiPostTaskListener", "try to sync emoji uploadEmojiList:%d", new Object[] { Integer.valueOf(((ArrayList)localObject).size()) });
         ArrayList localArrayList = new ArrayList();
         int j = ((ArrayList)localObject).size();
         i = 0;
@@ -164,8 +165,8 @@ public final class a
         {
           if (i < j)
           {
-            localArrayList.add(new com.tencent.mm.plugin.emoji.sync.a.d((String)((ArrayList)localObject).get(i)));
-            ac.i("MicroMsg.emoji.EmojiPostTaskListener", "try to sync emoji upload Emoji:%s", new Object[] { ((ArrayList)localObject).get(i) });
+            localArrayList.add(new com.tencent.mm.plugin.emoji.sync.a.c((String)((ArrayList)localObject).get(i)));
+            ad.i("MicroMsg.emoji.EmojiPostTaskListener", "try to sync emoji upload Emoji:%s", new Object[] { ((ArrayList)localObject).get(i) });
             i += 1;
             continue;
             i = 0;
@@ -174,17 +175,17 @@ public final class a
             break;
           }
         }
-        k.ccn().pcK.cP(localArrayList);
-        k.ccn().pcK.ccK();
+        k.cgR().pGu.cP(localArrayList);
+        k.cgR().pGu.cho();
       }
       for (;;)
       {
-        g.agR().agA().set(348166, Long.valueOf(System.currentTimeMillis()));
+        g.ajC().ajl().set(348166, Long.valueOf(System.currentTimeMillis()));
         AppMethodBeat.o(108384);
         return;
         label250:
-        ac.i("MicroMsg.emoji.EmojiPostTaskListener", "no things need to upload.");
-        g.agR().agA().set(348165, Boolean.FALSE);
+        ad.i("MicroMsg.emoji.EmojiPostTaskListener", "no things need to upload.");
+        g.ajC().ajl().set(348165, Boolean.FALSE);
       }
     }
   }

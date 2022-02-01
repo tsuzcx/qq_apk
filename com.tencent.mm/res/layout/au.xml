@@ -4,6 +4,7 @@
     <LinearLayout android:orientation="horizontal" android:id="@id/rr" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/rs" android:background="@null" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/gh" />
     </LinearLayout>
+    <ImageView android:id="@id/gbj" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginEnd="@dimen/ci" />
     <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hv_" android:layout_width="wrap_content" android:layout_height="wrap_content">
             <TextView android:textSize="@dimen/q" android:textColor="@color/bs" android:ellipsize="middle" android:gravity="center_vertical" android:id="@id/gas" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/uo" android:singleLine="true" android:includeFontPadding="false" />

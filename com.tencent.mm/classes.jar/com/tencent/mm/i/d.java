@@ -3,15 +3,20 @@ package com.tencent.mm.i;
 import com.tencent.mars.cdn.CdnLogic.BatchSnsReqImageData;
 import com.tencent.mars.cdn.CdnLogic.CronetTaskResult;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class d
 {
-  protected static final char[] fqR;
+  protected static final char[] fIY;
   public String cachePath;
   public CdnLogic.CronetTaskResult cronetTaskResult = null;
-  public String dnn;
+  public String dzb;
   public String emojiMD5 = "";
+  public String fIT = "";
+  public String fIU = ",,,,,,";
+  public String fIV;
+  public boolean fIW;
+  public CdnLogic.BatchSnsReqImageData[] fIX;
   public int field_UploadHitCacheType = 0;
   public String field_aesKey;
   public String field_arg;
@@ -81,11 +86,6 @@ public final class d
   public int field_waitResponseCostTime = 0;
   public String field_xErrorNo = "";
   public String fileKey;
-  public String fqM = "";
-  public String fqN = ",,,,,,";
-  public String fqO;
-  public boolean fqP;
-  public CdnLogic.BatchSnsReqImageData[] fqQ;
   public boolean fromCronet = false;
   public int index;
   public int lastNetType = -1;
@@ -97,7 +97,7 @@ public final class d
   static
   {
     AppMethodBeat.i(120674);
-    fqR = "0123456789ABCDEF".toCharArray();
+    fIY = "0123456789ABCDEF".toCharArray();
     AppMethodBeat.o(120674);
   }
   
@@ -109,8 +109,8 @@ public final class d
     while (i < paramArrayOfByte.length)
     {
       int j = paramArrayOfByte[i] & 0xFF;
-      arrayOfChar[(i * 2)] = fqR[(j >>> 4)];
-      arrayOfChar[(i * 2 + 1)] = fqR[(j & 0xF)];
+      arrayOfChar[(i * 2)] = fIY[(j >>> 4)];
+      arrayOfChar[(i * 2 + 1)] = fIY[(j & 0xF)];
       i += 1;
     }
     paramArrayOfByte = new String(arrayOfChar);
@@ -118,12 +118,12 @@ public final class d
     return paramArrayOfByte;
   }
   
-  public final boolean Vx()
+  public final boolean XO()
   {
     return (this.field_upload_by_safecdn) && ((2 == this.field_UploadHitCacheType) || (3 == this.field_UploadHitCacheType));
   }
   
-  public final String Vy()
+  public final String XP()
   {
     AppMethodBeat.i(120673);
     Object localObject = "";
@@ -147,7 +147,7 @@ public final class d
   public final String toString()
   {
     AppMethodBeat.i(120672);
-    String str2 = String.format("id:%s file:%s filelen:%d midlen:%d thlen:%d transInfo:%s retCode:%d toUser:%s arg:%s videoFileId:%s argInfo:%s hitcache:%d needsend:%b msgid:%d convert2baseline:%b thumbUrl:%s fileUrl:%s filemd5:%s thumbfilemd5:%s,mp4identifymd5:%s, exist_whencheck[%b], aesKey[%s], crc[%s], safecdn:%b", new Object[] { this.mediaId, this.field_fileId, Long.valueOf(this.field_fileLength), Integer.valueOf(this.field_midimgLength), Integer.valueOf(this.field_thumbimgLength), this.field_transInfo, Integer.valueOf(this.field_retCode), this.field_toUser, this.field_arg, this.field_videoFileId, this.field_argInfo, Integer.valueOf(this.field_UploadHitCacheType), Boolean.valueOf(this.field_needSendMsgField), Integer.valueOf(0), Boolean.valueOf(this.field_convert2baseline), this.field_thumbUrl, this.field_fileUrl, this.field_filemd5, this.field_thumbfilemd5, this.field_mp4identifymd5, Boolean.valueOf(this.field_exist_whencheck), bs.aLJ(this.field_aesKey), Integer.valueOf(this.field_filecrc), Boolean.valueOf(this.field_upload_by_safecdn) });
+    String str2 = String.format("id:%s file:%s filelen:%d midlen:%d thlen:%d transInfo:%s retCode:%d toUser:%s arg:%s videoFileId:%s argInfo:%s hitcache:%d needsend:%b msgid:%d convert2baseline:%b thumbUrl:%s fileUrl:%s filemd5:%s thumbfilemd5:%s,mp4identifymd5:%s, exist_whencheck[%b], aesKey[%s], crc[%s], safecdn:%b", new Object[] { this.mediaId, this.field_fileId, Long.valueOf(this.field_fileLength), Integer.valueOf(this.field_midimgLength), Integer.valueOf(this.field_thumbimgLength), this.field_transInfo, Integer.valueOf(this.field_retCode), this.field_toUser, this.field_arg, this.field_videoFileId, this.field_argInfo, Integer.valueOf(this.field_UploadHitCacheType), Boolean.valueOf(this.field_needSendMsgField), Integer.valueOf(0), Boolean.valueOf(this.field_convert2baseline), this.field_thumbUrl, this.field_fileUrl, this.field_filemd5, this.field_thumbfilemd5, this.field_mp4identifymd5, Boolean.valueOf(this.field_exist_whencheck), bt.aRp(this.field_aesKey), Integer.valueOf(this.field_filecrc), Boolean.valueOf(this.field_upload_by_safecdn) });
     String str1 = str2;
     if (this.field_sKeyrespbuf != null) {
       str1 = str2 + String.format("skeyrespbuf:%s", new Object[] { bytesToHex(this.field_sKeyrespbuf) });

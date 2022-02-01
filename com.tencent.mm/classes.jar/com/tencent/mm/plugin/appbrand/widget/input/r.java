@@ -11,12 +11,12 @@ abstract class r
     super.setHorizontallyScrolling(true);
   }
   
-  public final boolean bAo()
+  public final boolean bEq()
   {
     return false;
   }
   
-  public boolean bAs()
+  public boolean bEu()
   {
     return false;
   }
@@ -69,7 +69,7 @@ abstract class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.r
  * JD-Core Version:    0.7.0.1
  */

@@ -277,7 +277,7 @@ public class e
     }
     parama.d = paramString2;
     parama.e = paramString1;
-    if ((this.a != null) && (b()))
+    if ((this.a != null) && (c()))
     {
       paramContext = this.a.getExternalFilesDir(null);
       if (paramContext != null) {
@@ -387,25 +387,6 @@ public class e
     AppMethodBeat.o(14654);
   }
   
-  private boolean b()
-  {
-    AppMethodBeat.i(14660);
-    if (!Environment.getExternalStorageState().equals("mounted"))
-    {
-      TXCLog.e("LicenceCheck", "checkSdcardLicence, sdcard not mounted yet!");
-      AppMethodBeat.o(14660);
-      return false;
-    }
-    if (this.a.getExternalFilesDir(null) == null)
-    {
-      TXCLog.e("LicenceCheck", "checkSdcardLicence, mContext.getExternalFilesDir is null!");
-      AppMethodBeat.o(14660);
-      return false;
-    }
-    AppMethodBeat.o(14660);
-    return true;
-  }
-  
   private boolean b(String paramString)
   {
     AppMethodBeat.i(14662);
@@ -500,6 +481,25 @@ public class e
         parama = null;
       }
     }
+  }
+  
+  private boolean c()
+  {
+    AppMethodBeat.i(187262);
+    if (!Environment.getExternalStorageState().equals("mounted"))
+    {
+      TXCLog.e("LicenceCheck", "checkSdcardLicence, sdcard not mounted yet!");
+      AppMethodBeat.o(187262);
+      return false;
+    }
+    if (this.a.getExternalFilesDir(null) == null)
+    {
+      TXCLog.e("LicenceCheck", "checkSdcardLicence, mContext.getExternalFilesDir is null!");
+      AppMethodBeat.o(187262);
+      return false;
+    }
+    AppMethodBeat.o(187262);
+    return true;
   }
   
   private int d(a parama)
@@ -657,11 +657,16 @@ public class e
     AppMethodBeat.o(14663);
   }
   
-  private String g(a parama)
+  private int g(a parama)
   {
-    AppMethodBeat.i(14675);
+    return parama.h;
+  }
+  
+  private String h(a parama)
+  {
+    AppMethodBeat.i(187264);
     parama = com.tencent.liteav.basic.util.c.b(new File(parama.c + File.separator + parama.b).getAbsolutePath());
-    AppMethodBeat.o(14675);
+    AppMethodBeat.o(187264);
     return parama;
   }
   
@@ -795,6 +800,14 @@ public class e
     new Thread(new c(this.a, parama.e, parama.c, parama.b, local1, false, str)).start();
     parama.f = true;
     AppMethodBeat.o(14651);
+  }
+  
+  public int b()
+  {
+    AppMethodBeat.i(187263);
+    int i = g(this.f);
+    AppMethodBeat.o(187263);
+    return i;
   }
   
   class a

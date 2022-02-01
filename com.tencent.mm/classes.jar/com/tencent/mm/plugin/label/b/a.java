@@ -1,22 +1,20 @@
 package com.tencent.mm.plugin.label.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.f;
-import com.tencent.mm.protocal.protobuf.bol;
-import com.tencent.mm.protocal.protobuf.ck;
+import com.tencent.mm.protocal.protobuf.bsy;
 import com.tencent.mm.protocal.protobuf.cl;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ak;
-import com.tencent.mm.storage.an;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,27 +23,27 @@ public final class a
   extends n
   implements k
 {
-  private g callback;
+  private com.tencent.mm.al.f callback;
   private final b rr;
-  private LinkedList<bol> tTA;
+  private LinkedList<bsy> uWc;
   
   public a(String paramString)
   {
     AppMethodBeat.i(26142);
-    this.tTA = new LinkedList();
+    this.uWc = new LinkedList();
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new ck();
-    ((b.a)localObject).hvu = new cl();
+    ((b.a)localObject).hNM = new cl();
+    ((b.a)localObject).hNN = new cm();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/addcontactlabel";
     ((b.a)localObject).funcId = 635;
-    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).hNO = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aAz();
-    if (!bs.isNullOrNil(paramString))
+    this.rr = ((b.a)localObject).aDC();
+    if (!bt.isNullOrNil(paramString))
     {
-      localObject = new bol();
-      ((bol)localObject).FdK = paramString;
-      this.tTA.add(localObject);
+      localObject = new bsy();
+      ((bsy)localObject).GNo = paramString;
+      this.uWc.add(localObject);
     }
     AppMethodBeat.o(26142);
   }
@@ -53,51 +51,51 @@ public final class a
   public a(List<String> paramList)
   {
     AppMethodBeat.i(26143);
-    this.tTA = new LinkedList();
+    this.uWc = new LinkedList();
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new ck();
-    ((b.a)localObject).hvu = new cl();
+    ((b.a)localObject).hNM = new cl();
+    ((b.a)localObject).hNN = new cm();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/addcontactlabel";
     ((b.a)localObject).funcId = 635;
-    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).hNO = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aAz();
+    this.rr = ((b.a)localObject).aDC();
     if ((paramList != null) && (paramList.size() > 0))
     {
       int j = paramList.size();
       int i = 0;
       while (i < j)
       {
-        localObject = new bol();
-        ((bol)localObject).FdK = ((String)paramList.get(i));
-        this.tTA.add(localObject);
+        localObject = new bsy();
+        ((bsy)localObject).GNo = ((String)paramList.get(i));
+        this.uWc.add(localObject);
         i += 1;
       }
     }
     AppMethodBeat.o(26143);
   }
   
-  public final cl cWe()
+  public final cm dfp()
   {
-    return (cl)this.rr.hvs.hvw;
+    return (cm)this.rr.hNL.hNQ;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.f paramf)
   {
     AppMethodBeat.i(26144);
-    ac.d("MicroMsg.Label.NetSceneAddContactLabel", "cpan[doScene].");
-    this.callback = paramg;
-    ck localck = (ck)this.rr.hvr.hvw;
-    if ((this.tTA != null) && (this.tTA.size() > 0))
+    ad.d("MicroMsg.Label.NetSceneAddContactLabel", "cpan[doScene].");
+    this.callback = paramf;
+    cl localcl = (cl)this.rr.hNK.hNQ;
+    if ((this.uWc != null) && (this.uWc.size() > 0))
     {
-      localck.DPE = this.tTA;
-      localck.DPD = this.tTA.size();
+      localcl.FuT = this.uWc;
+      localcl.FuS = this.uWc.size();
       int i = dispatch(parame, this.rr, this);
       AppMethodBeat.o(26144);
       return i;
     }
-    ac.e("MicroMsg.Label.NetSceneAddContactLabel", "cpan[doScene] label list is null.");
-    paramg.onSceneEnd(3, -1, "[doScene]empty contact list.", this);
+    ad.e("MicroMsg.Label.NetSceneAddContactLabel", "cpan[doScene] label list is null.");
+    paramf.onSceneEnd(3, -1, "[doScene]empty contact list.", this);
     AppMethodBeat.o(26144);
     return 0;
   }
@@ -110,28 +108,28 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(26145);
-    ac.d("MicroMsg.Label.NetSceneAddContactLabel", "cpan[onGYNetEnd] netId:%d errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = cWe();
+    ad.d("MicroMsg.Label.NetSceneAddContactLabel", "cpan[onGYNetEnd] netId:%d errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramq = dfp();
     if (paramq != null)
     {
-      paramq = paramq.DPE;
+      paramq = paramq.FuT;
       paramArrayOfByte = new ArrayList();
       int i = paramq.size();
       paramInt1 = 0;
       while (paramInt1 < i)
       {
-        bol localbol = (bol)paramq.get(paramInt1);
-        ak localak = new ak();
-        localak.field_labelID = localbol.FdL;
-        localak.field_labelName = localbol.FdK;
-        localak.field_labelPYFull = f.Fv(localbol.FdK);
-        localak.field_labelPYShort = f.Fw(localbol.FdK);
-        localak.field_isTemporary = false;
-        paramArrayOfByte.add(localak);
+        bsy localbsy = (bsy)paramq.get(paramInt1);
+        ao localao = new ao();
+        localao.field_labelID = localbsy.GNp;
+        localao.field_labelName = localbsy.GNo;
+        localao.field_labelPYFull = com.tencent.mm.platformtools.f.IL(localbsy.GNo);
+        localao.field_labelPYShort = com.tencent.mm.platformtools.f.IM(localbsy.GNo);
+        localao.field_isTemporary = false;
+        paramArrayOfByte.add(localao);
         paramInt1 += 1;
       }
-      com.tencent.mm.plugin.label.e.cWc().hf(paramArrayOfByte);
-      com.tencent.mm.plugin.label.e.cWc().hg(paramArrayOfByte);
+      com.tencent.mm.plugin.label.e.dfn().hr(paramArrayOfByte);
+      com.tencent.mm.plugin.label.e.dfn().hs(paramArrayOfByte);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(26145);

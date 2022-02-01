@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <Preference android:key="settings_dark" android:layout="@layout/aop" android:title="@string/f5n" />
+    <IconPreference android:key="settings_dark" android:layout="@layout/aop" android:title="@string/f5n" />
     <PreferenceSmallCategory android:key="small_divider" />
     <CheckBoxPreference android:defaultValue="false" android:key="settings_landscape_mode" android:title="@string/f6w" />
     <CheckBoxPreference android:defaultValue="false" android:key="settings_nfc_switch" android:title="@string/f91" />

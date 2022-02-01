@@ -1,57 +1,64 @@
 package d.g.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.io.Serializable;
 
 public final class y
 {
-  public final ArrayList<Object> cQJ;
-  
-  public y(int paramInt)
+  public static final class a
+    implements Serializable
   {
-    AppMethodBeat.i(128982);
-    this.cQJ = new ArrayList(paramInt);
-    AppMethodBeat.o(128982);
-  }
-  
-  public final void add(Object paramObject)
-  {
-    AppMethodBeat.i(128984);
-    this.cQJ.add(paramObject);
-    AppMethodBeat.o(128984);
-  }
-  
-  public final void eL(Object paramObject)
-  {
-    AppMethodBeat.i(128983);
-    if (paramObject == null)
+    public boolean MLQ;
+    
+    public final String toString()
     {
-      AppMethodBeat.o(128983);
-      return;
+      AppMethodBeat.i(128956);
+      boolean bool = this.MLQ;
+      AppMethodBeat.o(128956);
+      return String.valueOf(bool);
     }
-    if ((paramObject instanceof Object[]))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length > 0)
-      {
-        this.cQJ.ensureCapacity(this.cQJ.size() + paramObject.length);
-        Collections.addAll(this.cQJ, paramObject);
-      }
-      AppMethodBeat.o(128983);
-      return;
-    }
-    paramObject = new UnsupportedOperationException("Don't know how to spread " + paramObject.getClass());
-    AppMethodBeat.o(128983);
-    throw paramObject;
   }
   
-  public final Object[] toArray(Object[] paramArrayOfObject)
+  public static final class d
+    implements Serializable
   {
-    AppMethodBeat.i(128985);
-    paramArrayOfObject = this.cQJ.toArray(paramArrayOfObject);
-    AppMethodBeat.o(128985);
-    return paramArrayOfObject;
+    public int MLT;
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(128942);
+      int i = this.MLT;
+      AppMethodBeat.o(128942);
+      return String.valueOf(i);
+    }
+  }
+  
+  public static final class e
+    implements Serializable
+  {
+    public long MLU;
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(128957);
+      long l = this.MLU;
+      AppMethodBeat.o(128957);
+      return String.valueOf(l);
+    }
+  }
+  
+  public static final class f<T>
+    implements Serializable
+  {
+    public T MLV;
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(128972);
+      String str = String.valueOf(this.MLV);
+      AppMethodBeat.o(128972);
+      return str;
+    }
   }
 }
 

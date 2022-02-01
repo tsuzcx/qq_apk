@@ -4,9 +4,9 @@ import java.nio.ByteBuffer;
 
 public abstract interface i<T>
 {
-  public abstract T I(ByteBuffer paramByteBuffer);
+  public abstract T J(ByteBuffer paramByteBuffer);
   
-  public abstract ByteBuffer eD(T paramT);
+  public abstract ByteBuffer eG(T paramT);
 }
 
 

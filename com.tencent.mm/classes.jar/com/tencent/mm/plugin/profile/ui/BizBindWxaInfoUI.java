@@ -16,12 +16,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.a;
-import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.n;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -30,10 +28,10 @@ import java.util.List;
 public final class BizBindWxaInfoUI
   extends MMActivity
 {
-  private String vIA;
-  private TextView vIx;
-  private ListView vIy;
-  private String vIz;
+  private TextView wPE;
+  private ListView wPF;
+  private String wPG;
+  private String wPH;
   
   public final int getLayoutId()
   {
@@ -50,8 +48,8 @@ public final class BizBindWxaInfoUI
       AppMethodBeat.o(50057);
       return;
     }
-    this.vIz = getIntent().getStringExtra("extra_username");
-    this.vIA = getIntent().getStringExtra("extra_appid");
+    this.wPG = getIntent().getStringExtra("extra_username");
+    this.wPH = getIntent().getStringExtra("extra_appid");
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -66,30 +64,38 @@ public final class BizBindWxaInfoUI
     setActionbarColor(getActionbarColor());
     paramBundle = getIntent().getParcelableArrayListExtra("extra_wxa_entry_info_list");
     View localView = getLayoutInflater().inflate(2131493190, null);
-    this.vIx = ((TextView)localView.findViewById(2131305906));
-    TextView localTextView = this.vIx;
+    this.wPE = ((TextView)localView.findViewById(2131305906));
+    TextView localTextView = this.wPE;
     if (paramBundle != null) {}
     for (int i = paramBundle.size();; i = 0)
     {
       localTextView.setText(getString(2131756567, new Object[] { Integer.valueOf(i) }));
-      this.vIy = ((ListView)findViewById(2131298924));
-      this.vIy.addHeaderView(localView);
-      this.vIy.setAdapter(new a(getLayoutInflater(), paramBundle));
-      this.vIy.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.wPF = ((ListView)findViewById(2131298924));
+      this.wPF.addHeaderView(localView);
+      this.wPF.setAdapter(new a(getLayoutInflater(), paramBundle));
+      this.wPF.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(50051);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousAdapterView);
+          localb.bd(paramAnonymousView);
+          localb.mr(paramAnonymousInt);
+          localb.qY(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/BizBindWxaInfoUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
           paramAnonymousAdapterView = (WxaAttributes.WxaEntryInfo)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
           if (paramAnonymousAdapterView == null)
           {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/BizBindWxaInfoUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(50051);
             return;
           }
           paramAnonymousView = new AppBrandStatObject();
           paramAnonymousView.scene = 1020;
-          paramAnonymousView.cYP = BizBindWxaInfoUI.a(BizBindWxaInfoUI.this);
-          ((n)com.tencent.mm.kernel.g.ab(n.class)).a(BizBindWxaInfoUI.this, paramAnonymousAdapterView.username, null, 0, 0, null, paramAnonymousView, BizBindWxaInfoUI.b(BizBindWxaInfoUI.this));
+          paramAnonymousView.dkh = BizBindWxaInfoUI.a(BizBindWxaInfoUI.this);
+          ((o)com.tencent.mm.kernel.g.ab(o.class)).a(BizBindWxaInfoUI.this, paramAnonymousAdapterView.username, null, 0, 0, null, paramAnonymousView, BizBindWxaInfoUI.b(BizBindWxaInfoUI.this));
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/BizBindWxaInfoUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(50051);
         }
       });
@@ -109,23 +115,23 @@ public final class BizBindWxaInfoUI
     extends BaseAdapter
   {
     private LayoutInflater mInflater;
-    private List<WxaAttributes.WxaEntryInfo> myd;
+    private List<WxaAttributes.WxaEntryInfo> mYL;
     
     public a(LayoutInflater paramLayoutInflater, List<WxaAttributes.WxaEntryInfo> paramList)
     {
       AppMethodBeat.i(50052);
       this.mInflater = paramLayoutInflater;
-      this.myd = new LinkedList();
+      this.mYL = new LinkedList();
       if (paramList != null) {
-        this.myd.addAll(paramList);
+        this.mYL.addAll(paramList);
       }
       AppMethodBeat.o(50052);
     }
     
-    private WxaAttributes.WxaEntryInfo Le(int paramInt)
+    private WxaAttributes.WxaEntryInfo MG(int paramInt)
     {
       AppMethodBeat.i(50054);
-      WxaAttributes.WxaEntryInfo localWxaEntryInfo = (WxaAttributes.WxaEntryInfo)this.myd.get(paramInt);
+      WxaAttributes.WxaEntryInfo localWxaEntryInfo = (WxaAttributes.WxaEntryInfo)this.mYL.get(paramInt);
       AppMethodBeat.o(50054);
       return localWxaEntryInfo;
     }
@@ -133,7 +139,7 @@ public final class BizBindWxaInfoUI
     public final int getCount()
     {
       AppMethodBeat.i(50053);
-      int i = this.myd.size();
+      int i = this.mYL.size();
       AppMethodBeat.o(50053);
       return i;
     }
@@ -150,17 +156,17 @@ public final class BizBindWxaInfoUI
       {
         paramView = this.mInflater.inflate(2131493008, paramViewGroup, false);
         paramViewGroup = new a((byte)0);
-        paramViewGroup.fBA = ((ImageView)paramView.findViewById(2131300874));
+        paramViewGroup.fUN = ((ImageView)paramView.findViewById(2131300874));
         paramViewGroup.titleTv = ((TextView)paramView.findViewById(2131303405));
-        paramViewGroup.iCJ = paramView.findViewById(2131299154);
+        paramViewGroup.iVT = paramView.findViewById(2131299154);
         paramView.setTag(paramViewGroup);
-        WxaAttributes.WxaEntryInfo localWxaEntryInfo = Le(paramInt);
-        b.aAS().a(paramViewGroup.fBA, localWxaEntryInfo.iconUrl, a.aAR(), com.tencent.mm.modelappbrand.a.g.htk);
-        paramViewGroup.titleTv.setText(bs.nullAsNil(localWxaEntryInfo.title));
-        if (this.myd != null)
+        WxaAttributes.WxaEntryInfo localWxaEntryInfo = MG(paramInt);
+        com.tencent.mm.modelappbrand.a.b.aDV().a(paramViewGroup.fUN, localWxaEntryInfo.iconUrl, com.tencent.mm.modelappbrand.a.a.aDU(), com.tencent.mm.modelappbrand.a.g.hLC);
+        paramViewGroup.titleTv.setText(bt.nullAsNil(localWxaEntryInfo.title));
+        if (this.mYL != null)
         {
-          paramViewGroup = paramViewGroup.iCJ;
-          if (this.myd.size() - 1 != paramInt) {
+          paramViewGroup = paramViewGroup.iVT;
+          if (this.mYL.size() - 1 != paramInt) {
             break label168;
           }
         }
@@ -178,8 +184,8 @@ public final class BizBindWxaInfoUI
     
     static final class a
     {
-      ImageView fBA;
-      View iCJ;
+      ImageView fUN;
+      View iVT;
       TextView titleTv;
     }
   }

@@ -1,23 +1,13 @@
 package com.tencent.luggage.d;
 
-import android.content.Context;
-import java.util.LinkedList;
+import com.tencent.luggage.bridge.s;
 
-public abstract class g
+public abstract interface g
+  extends s
 {
-  abstract k AA();
+  public abstract void BP();
   
-  abstract Class<? extends com.tencent.luggage.webview.a> AB();
-  
-  public abstract LinkedList<e> AE();
-  
-  public abstract h AF();
-  
-  abstract LinkedList<Class<? extends a>> AG();
-  
-  public abstract com.tencent.luggage.h.e AH();
-  
-  abstract Context getContext();
+  public abstract void destroy();
 }
 
 

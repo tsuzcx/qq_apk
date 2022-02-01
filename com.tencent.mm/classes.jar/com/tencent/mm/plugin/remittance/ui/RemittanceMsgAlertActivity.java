@@ -9,7 +9,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
 
@@ -23,11 +23,11 @@ public class RemittanceMsgAlertActivity
     overridePendingTransition(0, 0);
     boolean bool = getIntent().getBooleanExtra("key_is_no_contact", false);
     paramBundle = new f.a(this);
-    Context localContext = ai.getContext();
+    Context localContext = aj.getContext();
     if (bool) {}
     for (int i = 2131762489;; i = 2131762488)
     {
-      paramBundle = paramBundle.aRQ(localContext.getString(i)).acR(ai.getContext().getResources().getColor(2131101171)).acQ(2131760315).b(new f.c()
+      paramBundle = paramBundle.aXO(localContext.getString(i)).afq(aj.getContext().getResources().getColor(2131101171)).afp(2131760315).b(new f.c()
       {
         public final void d(boolean paramAnonymousBoolean, String paramAnonymousString) {}
       });
@@ -62,7 +62,7 @@ public class RemittanceMsgAlertActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceMsgAlertActivity
  * JD-Core Version:    0.7.0.1
  */

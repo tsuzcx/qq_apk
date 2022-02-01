@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.webview.luggage.b;
 
 import android.content.Context;
-import com.tencent.mm.plugin.webview.luggage.f;
+import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.ui.base.l;
 
 public abstract class a
@@ -13,9 +13,9 @@ public abstract class a
     this.id = paramInt;
   }
   
-  public abstract void a(Context paramContext, f paramf);
+  public abstract void a(Context paramContext, g paramg);
   
-  public abstract void a(Context paramContext, f paramf, l paraml);
+  public abstract void a(Context paramContext, g paramg, l paraml);
 }
 
 

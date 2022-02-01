@@ -8,13 +8,16 @@ public abstract class gt
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eKw = "expireTime".hashCode();
-  private static final int fir = "host".hashCode();
+  private static final int fxX = "bulletin_scene".hashCode();
+  private static final int fxY = "bulletin_content".hashCode();
+  private static final int fxZ = "bulletin_url".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eKl = true;
-  public long field_expireTime;
-  public String field_host;
-  private boolean fiq = true;
+  public String field_bulletin_content;
+  public String field_bulletin_scene;
+  public String field_bulletin_url;
+  private boolean fxU = true;
+  private boolean fxV = true;
+  private boolean fxW = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,19 +32,22 @@ public abstract class gt
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fir != k) {
-        break label60;
+      if (fxX != k) {
+        break label65;
       }
-      this.field_host = paramCursor.getString(i);
+      this.field_bulletin_scene = paramCursor.getString(i);
+      this.fxU = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eKw == k) {
-        this.field_expireTime = paramCursor.getLong(i);
+      label65:
+      if (fxY == k) {
+        this.field_bulletin_content = paramCursor.getString(i);
+      } else if (fxZ == k) {
+        this.field_bulletin_url = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -51,11 +57,14 @@ public abstract class gt
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fiq) {
-      localContentValues.put("host", this.field_host);
+    if (this.fxU) {
+      localContentValues.put("bulletin_scene", this.field_bulletin_scene);
     }
-    if (this.eKl) {
-      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
+    if (this.fxV) {
+      localContentValues.put("bulletin_content", this.field_bulletin_content);
+    }
+    if (this.fxW) {
+      localContentValues.put("bulletin_url", this.field_bulletin_url);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

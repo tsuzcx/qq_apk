@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class TipsInfoLog
   extends JceStruct
@@ -222,7 +222,7 @@ public final class TipsInfoLog
     }
     catch (Exception localException2)
     {
-      ac.printErrStackTrace("TipsInfoLog", localException2, "", new Object[0]);
+      ad.printErrStackTrace("TipsInfoLog", localException2, "", new Object[0]);
       AppMethodBeat.o(102397);
     }
     return 0;

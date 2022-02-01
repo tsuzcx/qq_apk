@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.topstory.ui.video.fs;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
@@ -7,11 +9,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.plugin.topstory.ui.video.n;
 import com.tencent.mm.plugin.topstory.ui.video.o;
-import com.tencent.mm.protocal.protobuf.dio;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.dod;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.widget.a.f.a;
+import com.tencent.mm.ui.widget.a.f.c;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.Map;
@@ -19,37 +25,37 @@ import java.util.Map;
 public final class i
   extends com.tencent.mm.plugin.topstory.ui.video.e
 {
-  protected b AcC;
-  private boolean AfA;
-  private g AfB;
-  boolean Afz;
+  protected b Bun;
+  boolean Bxl;
+  private boolean Bxm;
+  private g Bxn;
   
   public i(b paramb)
   {
     super(paramb);
-    this.AcC = paramb;
+    this.Bun = paramb;
   }
   
-  public final int Rr(int paramInt)
+  public final int Tb(int paramInt)
   {
     return 0;
   }
   
-  public final void n(final List<dio> paramList, final boolean paramBoolean)
+  public final void o(final List<dod> paramList, final boolean paramBoolean)
   {
     AppMethodBeat.i(126395);
-    super.n(paramList, paramBoolean);
-    ap.f(new Runnable()
+    super.o(paramList, paramBoolean);
+    aq.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(126394);
         for (;;)
         {
-          synchronized (i.this.AcC.edt())
+          synchronized (i.this.Bun.epL())
           {
-            Object localObject1 = ???.eed();
-            ac.i("MicroMsg.TopStory.TopStoryOnlyFSVideoAdapter", "callbackToSuccess originSize: %d insertSize %d", new Object[] { Integer.valueOf(((List)localObject1).size()), Integer.valueOf(paramList.size()) });
+            Object localObject1 = ???.cNm();
+            ad.i("MicroMsg.TopStory.TopStoryOnlyFSVideoAdapter", "callbackToSuccess originSize: %d insertSize %d", new Object[] { Integer.valueOf(((List)localObject1).size()), Integer.valueOf(paramList.size()) });
             if (!paramBoolean) {
               break label374;
             }
@@ -60,27 +66,49 @@ public final class i
               ((List)localObject1).addAll(paramList);
               if (i.a(i.this))
               {
-                i.this.arg.notifyChanged();
-                i.this.AcC.edf().i((dio)paramList.get(0));
+                i.this.asY.notifyChanged();
+                i.this.Bun.epx().i((dod)paramList.get(0));
                 AppMethodBeat.o(126394);
                 return;
               }
               if ((i.b(i.this) != null) && (localObject1 != null) && (((List)localObject1).get(0) != null))
               {
-                localObject1 = (dio)((List)localObject1).get(0);
-                i.b(i.this).d((dio)localObject1);
-                i.c(i.this).put(((dio)localObject1).sVF, new WeakReference(i.b(i.this)));
+                localObject1 = (dod)((List)localObject1).get(0);
+                i.b(i.this).d((dod)localObject1);
+                i.c(i.this).put(((dod)localObject1).tSk, new WeakReference(i.b(i.this)));
                 i.d(i.this);
-                if (((((dio)localObject1).FRX & 0x80) > 0) && (com.tencent.mm.kernel.g.agR().agA().getInt(ah.a.GQH, 0) <= 0)) {
-                  i.f(i.this).getRecyclerView().postDelayed(new i.1.1(this), 1000L);
+                if (((((dod)localObject1).HCD & 0x80) > 0) && (com.tencent.mm.kernel.g.ajC().ajl().getInt(al.a.IDe, 0) <= 0)) {
+                  i.f(i.this).getRecyclerView().postDelayed(new Runnable()
+                  {
+                    public final void run()
+                    {
+                      AppMethodBeat.i(126393);
+                      f.a locala = new f.a(aj.getContext());
+                      locala.aXO(i.e(i.this).dhO().getString(2131764516)).yU(true);
+                      locala.afp(2131766205).b(new f.c()
+                      {
+                        public final void d(boolean paramAnonymous3Boolean, String paramAnonymous3String) {}
+                      }).b(new DialogInterface.OnDismissListener()
+                      {
+                        public final void onDismiss(DialogInterface paramAnonymous3DialogInterface)
+                        {
+                          AppMethodBeat.i(126392);
+                          com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IDe, Integer.valueOf(1));
+                          com.tencent.mm.kernel.g.ajC().ajl().fqc();
+                          AppMethodBeat.o(126392);
+                        }
+                      }).show();
+                      AppMethodBeat.o(126393);
+                    }
+                  }, 1000L);
                 }
               }
               localObject1 = i.this;
-              ((i)localObject1).aq(((i)localObject1).getHeadersCount() + i, paramList.size() - i);
+              ((i)localObject1).ar(((i)localObject1).getHeadersCount() + i, paramList.size() - i);
             }
           }
           localObject2.addAll(paramList);
-          i.this.aq(i.this.getHeadersCount(), paramList.size());
+          i.this.ar(i.this.getHeadersCount(), paramList.size());
           continue;
           label374:
           int i = localObject2.size();
@@ -88,7 +116,7 @@ public final class i
           i locali = i.this;
           locali.cj(locali.getHeadersCount() + i);
           locali = i.this;
-          locali.aq(i + locali.getHeadersCount(), paramList.size());
+          locali.ar(i + locali.getHeadersCount(), paramList.size());
         }
       }
     });

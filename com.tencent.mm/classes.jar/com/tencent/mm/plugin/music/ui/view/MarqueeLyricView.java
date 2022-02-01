@@ -12,35 +12,35 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.model.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/music/ui/view/MarqueeLyricView;", "Landroid/support/v7/widget/AppCompatTextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "faceOutTask", "Ljava/lang/Runnable;", "fadeIn", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "fadeOut", "hasStartedFadeIn", "", "lyricObj", "Lcom/tencent/mm/plugin/music/model/LyricObj;", "mDistance", "mDuration", "mMinDuration", "", "mScroller", "Landroid/widget/Scroller;", "mStartX", "mXPaused", "scrollTask", "calculateScrollingLen", "lyricTxt", "", "computeScroll", "", "doFaceIn", "isFocused", "setContent", "lineCnt", "content", "setLyricObj", "startScroll", "stopScroll", "Companion", "plugin-music_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/music/ui/view/MarqueeLyricView;", "Landroid/support/v7/widget/AppCompatTextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "faceOutTask", "Ljava/lang/Runnable;", "fadeIn", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "fadeOut", "hasStartedFadeIn", "", "lyricObj", "Lcom/tencent/mm/plugin/music/model/LyricObj;", "mDistance", "mDuration", "mMinDuration", "", "mScroller", "Landroid/widget/Scroller;", "mStartX", "mXPaused", "scrollTask", "calculateScrollingLen", "lyricTxt", "", "computeScroll", "", "doFaceIn", "isFocused", "setContent", "lineCnt", "content", "setLyricObj", "startScroll", "stopScroll", "Companion", "plugin-music_release"})
 public final class MarqueeLyricView
   extends AppCompatTextView
 {
   public static final String TAG = "MicroMsg.MarqueeLyricView";
-  public static final MarqueeLyricView.a viE;
-  public int Bl;
-  public int asf;
+  public static final MarqueeLyricView.a wnX;
+  public int Dd;
+  public int atW;
+  public int mDistance;
   private Scroller mScroller;
-  public Animation qzo;
-  public b vhk;
-  public long viA;
-  public Runnable viB;
-  private Animation viC;
-  public boolean viD;
-  public int vix;
-  public int viy;
-  public Runnable viz;
+  public Animation rjd;
+  public b wmF;
+  public int wnR;
+  public Runnable wnS;
+  public long wnT;
+  public Runnable wnU;
+  private Animation wnV;
+  public boolean wnW;
   
   static
   {
-    AppMethodBeat.i(195637);
-    viE = new MarqueeLyricView.a((byte)0);
+    AppMethodBeat.i(192505);
+    wnX = new MarqueeLyricView.a((byte)0);
     TAG = "MicroMsg.MarqueeLyricView";
-    AppMethodBeat.o(195637);
+    AppMethodBeat.o(192505);
   }
   
   public MarqueeLyricView(Context paramContext, AttributeSet paramAttributeSet)
@@ -51,45 +51,45 @@ public final class MarqueeLyricView
   public MarqueeLyricView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(195636);
+    AppMethodBeat.i(192504);
     this.mScroller = new Scroller(getContext(), (Interpolator)new LinearInterpolator());
-    this.vix = (-getWidth());
-    this.viz = ((Runnable)new c(this));
-    this.viA = 200L;
-    this.viB = ((Runnable)new b(this));
-    this.qzo = AnimationUtils.loadAnimation(getContext(), 2130772047);
-    this.viC = AnimationUtils.loadAnimation(getContext(), 2130772048);
+    this.wnR = (-getWidth());
+    this.wnS = ((Runnable)new c(this));
+    this.wnT = 200L;
+    this.wnU = ((Runnable)new b(this));
+    this.rjd = AnimationUtils.loadAnimation(getContext(), 2130772047);
+    this.wnV = AnimationUtils.loadAnimation(getContext(), 2130772048);
     setScroller(this.mScroller);
     setHorizontallyScrolling(true);
-    AppMethodBeat.o(195636);
+    AppMethodBeat.o(192504);
   }
   
-  public final int anP(String paramString)
+  public final int asO(String paramString)
   {
-    AppMethodBeat.i(195633);
+    AppMethodBeat.i(192501);
     TextPaint localTextPaint = getPaint();
     Rect localRect = new Rect();
     localTextPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
     if (localRect.width() > 0)
     {
       int i = localRect.width();
-      AppMethodBeat.o(195633);
+      AppMethodBeat.o(192501);
       return i;
     }
-    AppMethodBeat.o(195633);
+    AppMethodBeat.o(192501);
     return 25;
   }
   
   public final void computeScroll()
   {
-    AppMethodBeat.i(195635);
+    AppMethodBeat.i(192503);
     super.computeScroll();
     if (this.mScroller.computeScrollOffset())
     {
       scrollTo(this.mScroller.getCurrX(), 0);
       invalidate();
     }
-    AppMethodBeat.o(195635);
+    AppMethodBeat.o(192503);
   }
   
   public final boolean isFocused()
@@ -97,27 +97,27 @@ public final class MarqueeLyricView
     return true;
   }
   
-  public final void kt()
+  public final void kJ()
   {
-    AppMethodBeat.i(195634);
-    removeCallbacks(this.viz);
+    AppMethodBeat.i(192502);
+    removeCallbacks(this.wnS);
     this.mScroller.startScroll(0, 0, 0, 0, 0);
-    AppMethodBeat.o(195634);
+    AppMethodBeat.o(192502);
   }
   
   public final void setLyricObj(b paramb)
   {
-    AppMethodBeat.i(195632);
-    k.h(paramb, "lyricObj");
+    AppMethodBeat.i(192500);
+    p.h(paramb, "lyricObj");
     setText((CharSequence)"");
-    this.viD = false;
-    removeCallbacks(this.viB);
-    kt();
-    this.vhk = paramb;
-    AppMethodBeat.o(195632);
+    this.wnW = false;
+    removeCallbacks(this.wnU);
+    kJ();
+    this.wmF = paramb;
+    AppMethodBeat.o(192500);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -125,17 +125,17 @@ public final class MarqueeLyricView
     
     public final void run()
     {
-      AppMethodBeat.i(195630);
-      Animation localAnimation = MarqueeLyricView.e(this.viF);
-      k.g(localAnimation, "fadeOut");
-      localAnimation.setDuration(MarqueeLyricView.f(this.viF));
-      this.viF.startAnimation(MarqueeLyricView.e(this.viF));
-      ac.d(MarqueeLyricView.access$getTAG$cp(), "doFaceOut, duration:%s", new Object[] { Long.valueOf(MarqueeLyricView.f(this.viF)) });
-      AppMethodBeat.o(195630);
+      AppMethodBeat.i(192498);
+      Animation localAnimation = MarqueeLyricView.e(this.wnY);
+      p.g(localAnimation, "fadeOut");
+      localAnimation.setDuration(MarqueeLyricView.f(this.wnY));
+      this.wnY.startAnimation(MarqueeLyricView.e(this.wnY));
+      ad.d(MarqueeLyricView.access$getTAG$cp(), "doFaceOut, duration:%s", new Object[] { Long.valueOf(MarqueeLyricView.f(this.wnY)) });
+      AppMethodBeat.o(192498);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -143,11 +143,11 @@ public final class MarqueeLyricView
     
     public final void run()
     {
-      AppMethodBeat.i(195631);
-      ac.d(MarqueeLyricView.access$getTAG$cp(), "scrollTask, mStartX:%s, mDistance:%s, mDuration:%s", new Object[] { Integer.valueOf(MarqueeLyricView.a(this.viF)), Integer.valueOf(MarqueeLyricView.b(this.viF)), Integer.valueOf(MarqueeLyricView.c(this.viF)) });
-      MarqueeLyricView.d(this.viF).startScroll(MarqueeLyricView.a(this.viF), 0, MarqueeLyricView.b(this.viF), 0, MarqueeLyricView.c(this.viF));
-      this.viF.invalidate();
-      AppMethodBeat.o(195631);
+      AppMethodBeat.i(192499);
+      ad.d(MarqueeLyricView.access$getTAG$cp(), "scrollTask, mStartX:%s, mDistance:%s, mDuration:%s", new Object[] { Integer.valueOf(MarqueeLyricView.a(this.wnY)), Integer.valueOf(MarqueeLyricView.b(this.wnY)), Integer.valueOf(MarqueeLyricView.c(this.wnY)) });
+      MarqueeLyricView.d(this.wnY).startScroll(MarqueeLyricView.a(this.wnY), 0, MarqueeLyricView.b(this.wnY), 0, MarqueeLyricView.c(this.wnY));
+      this.wnY.invalidate();
+      AppMethodBeat.o(192499);
     }
   }
 }

@@ -7,28 +7,28 @@ import com.tencent.mm.plugin.music.model.e.a;
 
 public final class d
 {
-  boolean vga = false;
-  boolean vgb = false;
-  boolean vgc = false;
-  boolean vgd = false;
-  boolean vge = false;
-  boolean vgf = false;
-  boolean vgg = false;
-  boolean vgh = false;
-  boolean vgi = false;
-  int vgj = 0;
-  com.tencent.mm.plugin.music.c.b vgk;
+  boolean wlA = false;
+  boolean wlB = false;
+  boolean wlC = false;
+  boolean wlD = false;
+  int wlE = 0;
+  com.tencent.mm.plugin.music.c.b wlF;
+  boolean wlv = false;
+  boolean wlw = false;
+  boolean wlx = false;
+  boolean wly = false;
+  boolean wlz = false;
   
   final String getMimeType()
   {
     AppMethodBeat.i(63143);
-    if (this.vgk != null) {}
-    for (String str1 = this.vgk.mimeType;; str1 = "")
+    if (this.wlF != null) {}
+    for (String str1 = this.wlF.mimeType;; str1 = "")
     {
       String str2 = str1;
       if (TextUtils.isEmpty(str1))
       {
-        a locala = ((e)com.tencent.mm.plugin.music.f.c.b.aQ(e.class)).diD();
+        a locala = ((e)com.tencent.mm.plugin.music.f.c.b.aQ(e.class)).dsP();
         str2 = str1;
         if (locala != null) {
           str2 = locala.field_mimetype;

@@ -13,49 +13,51 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.i;
 
 final class o
   extends i
   implements DialogInterface
 {
-  Button Bqt;
-  private LinearLayout Gph;
-  TextView Gpj;
-  private TextView Gpk;
-  LinearLayout Gpr;
-  private LinearLayout Gpt;
+  Button CQI;
+  private LinearLayout IaU;
+  TextView IaW;
+  private TextView IaX;
+  LinearLayout Ibe;
+  private LinearLayout Ibg;
   private Context mContext;
-  private View msV;
-  private TextView myG;
-  private boolean mz;
+  private View mTB;
+  private TextView mZo;
+  private boolean ov;
   
   public o(Context paramContext)
   {
     super(paramContext, 2131821723);
     AppMethodBeat.i(33393);
     this.mContext = paramContext;
-    this.Gph = ((LinearLayout)z.jD(this.mContext).inflate(2131494765, null));
-    this.Bqt = ((Button)this.Gph.findViewById(2131302314));
-    this.myG = ((TextView)this.Gph.findViewById(2131302315));
-    this.Gpj = ((TextView)this.Gph.findViewById(2131302307));
-    this.Gpk = ((TextView)this.Gph.findViewById(2131302312));
-    this.msV = this.Gph.findViewById(2131302316);
-    this.Gpr = ((LinearLayout)this.Gph.findViewById(2131302308));
-    this.Gpt = ((LinearLayout)this.Gph.findViewById(2131302303));
+    this.IaU = ((LinearLayout)z.jO(this.mContext).inflate(2131494765, null));
+    this.CQI = ((Button)this.IaU.findViewById(2131302314));
+    this.mZo = ((TextView)this.IaU.findViewById(2131302315));
+    this.IaW = ((TextView)this.IaU.findViewById(2131302307));
+    this.IaX = ((TextView)this.IaU.findViewById(2131302312));
+    this.mTB = this.IaU.findViewById(2131302316);
+    this.Ibe = ((LinearLayout)this.IaU.findViewById(2131302308));
+    this.Ibg = ((LinearLayout)this.IaU.findViewById(2131302303));
     setCanceledOnTouchOutside(true);
     AppMethodBeat.o(33393);
   }
   
-  private void fgx()
+  private void fwJ()
   {
     AppMethodBeat.i(33397);
-    if (this.Gpj != null) {
-      this.Gpj.setTextColor(this.Gpj.getContext().getResources().getColor(2131100242));
+    if (this.IaW != null) {
+      this.IaW.setTextColor(this.IaW.getContext().getResources().getColor(2131100242));
     }
     AppMethodBeat.o(33397);
   }
@@ -65,7 +67,7 @@ final class o
     AppMethodBeat.i(33402);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
-      ap.f(new Runnable()
+      aq.f(new Runnable()
       {
         public final void run()
         {
@@ -74,7 +76,7 @@ final class o
           AppMethodBeat.o(33392);
         }
       });
-      ac.e("MicroMsg.LiteDependDialog", bs.eWi().toString());
+      ad.e("MicroMsg.LiteDependDialog", bt.flS().toString());
       AppMethodBeat.o(33402);
       return;
     }
@@ -86,12 +88,12 @@ final class o
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.LiteDependDialog", "dismiss exception, e = " + localException.getMessage());
+      ad.e("MicroMsg.LiteDependDialog", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(33402);
     }
   }
   
-  public final void fgy()
+  public final void fwK()
   {
     AppMethodBeat.i(33400);
     super.setCancelable(false);
@@ -102,7 +104,7 @@ final class o
   {
     AppMethodBeat.i(33394);
     super.onCreate(paramBundle);
-    setContentView(this.Gph);
+    setContentView(this.IaU);
     AppMethodBeat.o(33394);
   }
   
@@ -110,39 +112,39 @@ final class o
   {
     AppMethodBeat.i(33399);
     super.setCancelable(paramBoolean);
-    this.mz = paramBoolean;
-    setCanceledOnTouchOutside(this.mz);
+    this.ov = paramBoolean;
+    setCanceledOnTouchOutside(this.ov);
     AppMethodBeat.o(33399);
   }
   
   public final void setMessage(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(33398);
-    this.Gpr.setVisibility(0);
-    this.Gpj.setVisibility(0);
-    this.Gpj.setText(paramCharSequence);
+    this.Ibe.setVisibility(0);
+    this.IaW.setVisibility(0);
+    this.IaW.setText(paramCharSequence);
     AppMethodBeat.o(33398);
   }
   
   public final void setTitle(int paramInt)
   {
     AppMethodBeat.i(33396);
-    this.msV.setVisibility(0);
-    this.myG.setVisibility(0);
-    this.myG.setMaxLines(2);
-    this.myG.setText(paramInt);
-    fgx();
+    this.mTB.setVisibility(0);
+    this.mZo.setVisibility(0);
+    this.mZo.setMaxLines(2);
+    this.mZo.setText(paramInt);
+    fwJ();
     AppMethodBeat.o(33396);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(33395);
-    this.msV.setVisibility(0);
-    this.myG.setVisibility(0);
-    this.myG.setMaxLines(2);
-    this.myG.setText(paramCharSequence);
-    fgx();
+    this.mTB.setVisibility(0);
+    this.mZo.setVisibility(0);
+    this.mZo.setMaxLines(2);
+    this.mZo.setText(paramCharSequence);
+    fwJ();
     AppMethodBeat.o(33395);
   }
   
@@ -157,7 +159,7 @@ final class o
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.LiteDependDialog", localException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.LiteDependDialog", localException, "", new Object[0]);
       AppMethodBeat.o(33401);
     }
   }

@@ -11,7 +11,7 @@ final class x$1
   public final Thread newThread(Runnable paramRunnable)
   {
     AppMethodBeat.i(93216);
-    paramRunnable = new Thread(paramRunnable, this.bxh);
+    paramRunnable = new Thread(paramRunnable, this.bHv);
     AppMethodBeat.o(93216);
     return paramRunnable;
   }

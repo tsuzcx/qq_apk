@@ -5,15 +5,15 @@ import android.content.pm.PackageInfo;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  public static final boolean bx(Context paramContext, String paramString)
+  public static final boolean bB(Context paramContext, String paramString)
   {
     AppMethodBeat.i(79247);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(79247);
       return false;
@@ -24,7 +24,7 @@ public final class a
       if (paramContext != null) {}
       for (boolean bool = true;; bool = false)
       {
-        ac.d("MicroMsg.ConstantsWebViewStub", "isWeReadSupportShare(%s).", new Object[] { Boolean.valueOf(bool) });
+        ad.d("MicroMsg.ConstantsWebViewStub", "isWeReadSupportShare(%s).", new Object[] { Boolean.valueOf(bool) });
         if (paramContext != null) {
           break;
         }
@@ -46,13 +46,13 @@ public final class a
     }
     catch (Exception paramContext)
     {
-      ac.e("MicroMsg.ConstantsWebViewStub", "exception has occurred in isQzoneSupportShare(), e : %s.", new Object[] { paramContext.getMessage() });
+      ad.e("MicroMsg.ConstantsWebViewStub", "exception has occurred in isQzoneSupportShare(), e : %s.", new Object[] { paramContext.getMessage() });
       AppMethodBeat.o(79247);
     }
     return false;
   }
   
-  public static final boolean gP(Context paramContext)
+  public static final boolean gU(Context paramContext)
   {
     AppMethodBeat.i(79246);
     try
@@ -61,7 +61,7 @@ public final class a
       if (paramContext != null) {}
       for (boolean bool = true;; bool = false)
       {
-        ac.d("MicroMsg.ConstantsWebViewStub", "isQQSupportShare(%s).", new Object[] { Boolean.valueOf(bool) });
+        ad.d("MicroMsg.ConstantsWebViewStub", "isQQSupportShare(%s).", new Object[] { Boolean.valueOf(bool) });
         if (paramContext == null) {
           break;
         }
@@ -72,7 +72,7 @@ public final class a
     }
     catch (Exception paramContext)
     {
-      ac.e("MicroMsg.ConstantsWebViewStub", "exception has occurred in isQQSupportShare(), e : %s.", new Object[] { paramContext.getMessage() });
+      ad.e("MicroMsg.ConstantsWebViewStub", "exception has occurred in isQQSupportShare(), e : %s.", new Object[] { paramContext.getMessage() });
       AppMethodBeat.o(79246);
     }
   }

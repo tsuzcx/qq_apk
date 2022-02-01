@@ -13,13 +13,13 @@ import java.util.Stack;
 final class u
   extends d
 {
-  private static final int[] LAB;
-  private final int LAC;
-  private final d LAD;
-  private final d LAE;
-  private final int LAF;
-  private final int LAG;
-  private int vUo;
+  private static final int[] Nry;
+  private final d NrA;
+  private final d NrB;
+  private final int NrC;
+  private final int NrD;
+  private final int Nrz;
+  private int xbE;
   
   static
   {
@@ -38,11 +38,11 @@ final class u
       i = k + i;
     }
     localArrayList.add(Integer.valueOf(2147483647));
-    LAB = new int[localArrayList.size()];
+    Nry = new int[localArrayList.size()];
     i = 0;
-    while (i < LAB.length)
+    while (i < Nry.length)
     {
-      LAB[i] = ((Integer)localArrayList.get(i)).intValue();
+      Nry[i] = ((Integer)localArrayList.get(i)).intValue();
       i += 1;
     }
     AppMethodBeat.o(59569);
@@ -51,12 +51,12 @@ final class u
   private u(d paramd1, d paramd2)
   {
     AppMethodBeat.i(59555);
-    this.vUo = 0;
-    this.LAD = paramd1;
-    this.LAE = paramd2;
-    this.LAF = paramd1.size();
-    this.LAC = (this.LAF + paramd2.size());
-    this.LAG = (Math.max(paramd1.fZT(), paramd2.fZT()) + 1);
+    this.xbE = 0;
+    this.NrA = paramd1;
+    this.NrB = paramd2;
+    this.NrC = paramd1.size();
+    this.Nrz = (this.NrC + paramd2.size());
+    this.NrD = (Math.max(paramd1.grs(), paramd2.grs()) + 1);
     AppMethodBeat.o(59555);
   }
   
@@ -89,20 +89,20 @@ final class u
       localObject = null;
       break;
       label68:
-      if ((localObject != null) && (((u)localObject).LAE.size() + paramd2.size() < 128))
+      if ((localObject != null) && (((u)localObject).NrB.size() + paramd2.size() < 128))
       {
-        paramd1 = b(((u)localObject).LAE, paramd2);
-        paramd1 = new u(((u)localObject).LAD, paramd1);
+        paramd1 = b(((u)localObject).NrB, paramd2);
+        paramd1 = new u(((u)localObject).NrA, paramd1);
       }
-      else if ((localObject != null) && (((u)localObject).LAD.fZT() > ((u)localObject).LAE.fZT()) && (((u)localObject).LAG > paramd2.fZT()))
+      else if ((localObject != null) && (((u)localObject).NrA.grs() > ((u)localObject).NrB.grs()) && (((u)localObject).NrD > paramd2.grs()))
       {
-        paramd1 = new u(((u)localObject).LAE, paramd2);
-        paramd1 = new u(((u)localObject).LAD, paramd1);
+        paramd1 = new u(((u)localObject).NrB, paramd2);
+        paramd1 = new u(((u)localObject).NrA, paramd1);
       }
       else
       {
-        int j = Math.max(paramd1.fZT(), paramd2.fZT());
-        if (i >= LAB[(j + 1)])
+        int j = Math.max(paramd1.grs(), paramd2.grs());
+        if (i >= Nry[(j + 1)])
         {
           paramd1 = new u(paramd1, paramd2);
         }
@@ -111,10 +111,10 @@ final class u
           localObject = new a((byte)0);
           ((a)localObject).g(paramd1);
           ((a)localObject).g(paramd2);
-          for (paramd2 = (d)((a)localObject).LAH.pop();; paramd2 = new u((d)((a)localObject).LAH.pop(), paramd2, (byte)0))
+          for (paramd2 = (d)((a)localObject).NrE.pop();; paramd2 = new u((d)((a)localObject).NrE.pop(), paramd2, (byte)0))
           {
             paramd1 = paramd2;
-            if (((a)localObject).LAH.isEmpty()) {
+            if (((a)localObject).NrE.isEmpty()) {
               break;
             }
           }
@@ -140,64 +140,64 @@ final class u
   final void b(OutputStream paramOutputStream, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(59559);
-    if (paramInt1 + paramInt2 <= this.LAF)
+    if (paramInt1 + paramInt2 <= this.NrC)
     {
-      this.LAD.b(paramOutputStream, paramInt1, paramInt2);
+      this.NrA.b(paramOutputStream, paramInt1, paramInt2);
       AppMethodBeat.o(59559);
       return;
     }
-    if (paramInt1 >= this.LAF)
+    if (paramInt1 >= this.NrC)
     {
-      this.LAE.b(paramOutputStream, paramInt1 - this.LAF, paramInt2);
+      this.NrB.b(paramOutputStream, paramInt1 - this.NrC, paramInt2);
       AppMethodBeat.o(59559);
       return;
     }
-    int i = this.LAF - paramInt1;
-    this.LAD.b(paramOutputStream, paramInt1, i);
-    this.LAE.b(paramOutputStream, 0, paramInt2 - i);
+    int i = this.NrC - paramInt1;
+    this.NrA.b(paramOutputStream, paramInt1, i);
+    this.NrB.b(paramOutputStream, 0, paramInt2 - i);
     AppMethodBeat.o(59559);
-  }
-  
-  protected final int ba(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(59562);
-    if (paramInt2 + paramInt3 <= this.LAF)
-    {
-      paramInt1 = this.LAD.ba(paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(59562);
-      return paramInt1;
-    }
-    if (paramInt2 >= this.LAF)
-    {
-      paramInt1 = this.LAE.ba(paramInt1, paramInt2 - this.LAF, paramInt3);
-      AppMethodBeat.o(59562);
-      return paramInt1;
-    }
-    int i = this.LAF - paramInt2;
-    paramInt1 = this.LAD.ba(paramInt1, paramInt2, i);
-    paramInt1 = this.LAE.ba(paramInt1, 0, paramInt3 - i);
-    AppMethodBeat.o(59562);
-    return paramInt1;
   }
   
   protected final int bb(int paramInt1, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(59562);
+    if (paramInt2 + paramInt3 <= this.NrC)
+    {
+      paramInt1 = this.NrA.bb(paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(59562);
+      return paramInt1;
+    }
+    if (paramInt2 >= this.NrC)
+    {
+      paramInt1 = this.NrB.bb(paramInt1, paramInt2 - this.NrC, paramInt3);
+      AppMethodBeat.o(59562);
+      return paramInt1;
+    }
+    int i = this.NrC - paramInt2;
+    paramInt1 = this.NrA.bb(paramInt1, paramInt2, i);
+    paramInt1 = this.NrB.bb(paramInt1, 0, paramInt3 - i);
+    AppMethodBeat.o(59562);
+    return paramInt1;
+  }
+  
+  protected final int bc(int paramInt1, int paramInt2, int paramInt3)
+  {
     AppMethodBeat.i(59565);
-    if (paramInt2 + paramInt3 <= this.LAF)
+    if (paramInt2 + paramInt3 <= this.NrC)
     {
-      paramInt1 = this.LAD.bb(paramInt1, paramInt2, paramInt3);
+      paramInt1 = this.NrA.bc(paramInt1, paramInt2, paramInt3);
       AppMethodBeat.o(59565);
       return paramInt1;
     }
-    if (paramInt2 >= this.LAF)
+    if (paramInt2 >= this.NrC)
     {
-      paramInt1 = this.LAE.bb(paramInt1, paramInt2 - this.LAF, paramInt3);
+      paramInt1 = this.NrB.bc(paramInt1, paramInt2 - this.NrC, paramInt3);
       AppMethodBeat.o(59565);
       return paramInt1;
     }
-    int i = this.LAF - paramInt2;
-    paramInt1 = this.LAD.bb(paramInt1, paramInt2, i);
-    paramInt1 = this.LAE.bb(paramInt1, 0, paramInt3 - i);
+    int i = this.NrC - paramInt2;
+    paramInt1 = this.NrA.bc(paramInt1, paramInt2, i);
+    paramInt1 = this.NrB.bc(paramInt1, 0, paramInt3 - i);
     AppMethodBeat.o(59565);
     return paramInt1;
   }
@@ -216,20 +216,20 @@ final class u
       return false;
     }
     paramObject = (d)paramObject;
-    if (this.LAC != paramObject.size())
+    if (this.Nrz != paramObject.size())
     {
       AppMethodBeat.o(59563);
       return false;
     }
-    if (this.LAC == 0)
+    if (this.Nrz == 0)
     {
       AppMethodBeat.o(59563);
       return true;
     }
-    if (this.vUo != 0)
+    if (this.xbE != 0)
     {
-      i = paramObject.fZV();
-      if ((i != 0) && (this.vUo != i))
+      i = paramObject.gru();
+      if ((i != 0) && (this.xbE != i))
       {
         AppMethodBeat.o(59563);
         return false;
@@ -254,9 +254,9 @@ final class u
         return false;
       }
       k += m;
-      if (k >= this.LAC)
+      if (k >= this.Nrz)
       {
-        if (k == this.LAC)
+        if (k == this.Nrz)
         {
           AppMethodBeat.o(59563);
           return true;
@@ -285,7 +285,7 @@ final class u
     }
   }
   
-  public final d.a fZP()
+  public final d.a gro()
   {
     AppMethodBeat.i(59567);
     c localc = new c((byte)0);
@@ -293,11 +293,11 @@ final class u
     return localc;
   }
   
-  public final boolean fZQ()
+  public final boolean grp()
   {
     AppMethodBeat.i(59561);
-    int i = this.LAD.ba(0, 0, this.LAF);
-    if (this.LAE.ba(i, 0, this.LAE.size()) == 0)
+    int i = this.NrA.bb(0, 0, this.NrC);
+    if (this.NrB.bb(i, 0, this.NrB.size()) == 0)
     {
       AppMethodBeat.o(59561);
       return true;
@@ -306,42 +306,42 @@ final class u
     return false;
   }
   
-  public final e fZR()
+  public final e grq()
   {
     AppMethodBeat.i(59566);
-    e locale = e.V(new d());
+    e locale = e.Y(new d());
     AppMethodBeat.o(59566);
     return locale;
   }
   
-  protected final int fZT()
+  protected final int grs()
   {
-    return this.LAG;
+    return this.NrD;
   }
   
-  protected final boolean fZU()
+  protected final boolean grt()
   {
-    return this.LAC >= LAB[this.LAG];
+    return this.Nrz >= Nry[this.NrD];
   }
   
-  protected final int fZV()
+  protected final int gru()
   {
-    return this.vUo;
+    return this.xbE;
   }
   
   public final int hashCode()
   {
     AppMethodBeat.i(59564);
-    int j = this.vUo;
+    int j = this.xbE;
     int i = j;
     if (j == 0)
     {
-      j = bb(this.LAC, 0, this.LAC);
+      j = bc(this.Nrz, 0, this.Nrz);
       i = j;
       if (j == 0) {
         i = 1;
       }
-      this.vUo = i;
+      this.xbE = i;
     }
     AppMethodBeat.o(59564);
     return i;
@@ -350,27 +350,27 @@ final class u
   protected final void j(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(59558);
-    if (paramInt1 + paramInt3 <= this.LAF)
+    if (paramInt1 + paramInt3 <= this.NrC)
     {
-      this.LAD.j(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
+      this.NrA.j(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
       AppMethodBeat.o(59558);
       return;
     }
-    if (paramInt1 >= this.LAF)
+    if (paramInt1 >= this.NrC)
     {
-      this.LAE.j(paramArrayOfByte, paramInt1 - this.LAF, paramInt2, paramInt3);
+      this.NrB.j(paramArrayOfByte, paramInt1 - this.NrC, paramInt2, paramInt3);
       AppMethodBeat.o(59558);
       return;
     }
-    int i = this.LAF - paramInt1;
-    this.LAD.j(paramArrayOfByte, paramInt1, paramInt2, i);
-    this.LAE.j(paramArrayOfByte, 0, paramInt2 + i, paramInt3 - i);
+    int i = this.NrC - paramInt1;
+    this.NrA.j(paramArrayOfByte, paramInt1, paramInt2, i);
+    this.NrB.j(paramArrayOfByte, 0, paramInt2 + i, paramInt3 - i);
     AppMethodBeat.o(59558);
   }
   
   public final int size()
   {
-    return this.LAC;
+    return this.Nrz;
   }
   
   public final String toString(String paramString)
@@ -383,19 +383,19 @@ final class u
   
   static final class a
   {
-    final Stack<d> LAH;
+    final Stack<d> NrE;
     
     private a()
     {
       AppMethodBeat.i(59533);
-      this.LAH = new Stack();
+      this.NrE = new Stack();
       AppMethodBeat.o(59533);
     }
     
-    private static int aiG(int paramInt)
+    private static int alh(int paramInt)
     {
       AppMethodBeat.i(59535);
-      int i = Arrays.binarySearch(u.gaB(), paramInt);
+      int i = Arrays.binarySearch(u.gsa(), paramInt);
       paramInt = i;
       if (i < 0) {
         paramInt = -(i + 1) - 1;
@@ -409,27 +409,27 @@ final class u
       AppMethodBeat.i(59534);
       for (;;)
       {
-        if (paramd.fZU())
+        if (paramd.grt())
         {
-          int i = aiG(paramd.size());
-          int j = u.gaB()[(i + 1)];
-          if ((this.LAH.isEmpty()) || (((d)this.LAH.peek()).size() >= j))
+          int i = alh(paramd.size());
+          int j = u.gsa()[(i + 1)];
+          if ((this.NrE.isEmpty()) || (((d)this.NrE.peek()).size() >= j))
           {
-            this.LAH.push(paramd);
+            this.NrE.push(paramd);
             AppMethodBeat.o(59534);
             return;
           }
-          i = u.gaB()[i];
-          for (Object localObject = (d)this.LAH.pop(); (!this.LAH.isEmpty()) && (((d)this.LAH.peek()).size() < i); localObject = new u((d)this.LAH.pop(), (d)localObject, (byte)0)) {}
-          for (paramd = new u((d)localObject, paramd, (byte)0); !this.LAH.isEmpty(); paramd = new u((d)this.LAH.pop(), paramd, (byte)0))
+          i = u.gsa()[i];
+          for (Object localObject = (d)this.NrE.pop(); (!this.NrE.isEmpty()) && (((d)this.NrE.peek()).size() < i); localObject = new u((d)this.NrE.pop(), (d)localObject, (byte)0)) {}
+          for (paramd = new u((d)localObject, paramd, (byte)0); !this.NrE.isEmpty(); paramd = new u((d)this.NrE.pop(), paramd, (byte)0))
           {
-            i = aiG(paramd.size());
-            i = u.gaB()[(i + 1)];
-            if (((d)this.LAH.peek()).size() >= i) {
+            i = alh(paramd.size());
+            i = u.gsa()[(i + 1)];
+            if (((d)this.NrE.peek()).size() >= i) {
               break;
             }
           }
-          this.LAH.push(paramd);
+          this.NrE.push(paramd);
           AppMethodBeat.o(59534);
           return;
         }
@@ -450,28 +450,28 @@ final class u
   static final class b
     implements Iterator<p>
   {
-    private final Stack<u> LAI;
-    private p LAJ;
+    private final Stack<u> NrF;
+    private p NrG;
     
     private b(d paramd)
     {
       AppMethodBeat.i(59536);
-      this.LAI = new Stack();
-      this.LAJ = h(paramd);
+      this.NrF = new Stack();
+      this.NrG = h(paramd);
       AppMethodBeat.o(59536);
     }
     
-    private p gaC()
+    private p gsb()
     {
       AppMethodBeat.i(59538);
       for (;;)
       {
-        if (this.LAI.isEmpty())
+        if (this.NrF.isEmpty())
         {
           AppMethodBeat.o(59538);
           return null;
         }
-        p localp = h(u.b((u)this.LAI.pop()));
+        p localp = h(u.b((u)this.NrF.pop()));
         if (localp.size() == 0) {}
         for (int i = 1; i == 0; i = 0)
         {
@@ -487,7 +487,7 @@ final class u
       while ((paramd instanceof u))
       {
         paramd = (u)paramd;
-        this.LAI.push(paramd);
+        this.NrF.push(paramd);
         paramd = u.a(paramd);
       }
       paramd = (p)paramd;
@@ -495,24 +495,24 @@ final class u
       return paramd;
     }
     
-    public final p gaD()
+    public final p gsc()
     {
       AppMethodBeat.i(59539);
-      if (this.LAJ == null)
+      if (this.NrG == null)
       {
         localObject = new NoSuchElementException();
         AppMethodBeat.o(59539);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.LAJ;
-      this.LAJ = gaC();
+      Object localObject = this.NrG;
+      this.NrG = gsb();
       AppMethodBeat.o(59539);
       return localObject;
     }
     
     public final boolean hasNext()
     {
-      return this.LAJ != null;
+      return this.NrG != null;
     }
     
     public final void remove()
@@ -527,32 +527,32 @@ final class u
   final class c
     implements d.a
   {
-    private final u.b LAK;
-    private d.a LAL;
-    int LAM;
+    private final u.b NrH;
+    private d.a NrI;
+    int NrJ;
     
     private c()
     {
       AppMethodBeat.i(59542);
-      this.LAK = new u.b(u.this, (byte)0);
-      this.LAL = this.LAK.gaD().fZP();
-      this.LAM = u.this.size();
+      this.NrH = new u.b(u.this, (byte)0);
+      this.NrI = this.NrH.gsc().gro();
+      this.NrJ = u.this.size();
       AppMethodBeat.o(59542);
     }
     
     public final boolean hasNext()
     {
-      return this.LAM > 0;
+      return this.NrJ > 0;
     }
     
     public final byte nextByte()
     {
       AppMethodBeat.i(59543);
-      if (!this.LAL.hasNext()) {
-        this.LAL = this.LAK.gaD().fZP();
+      if (!this.NrI.hasNext()) {
+        this.NrI = this.NrH.gsc().gro();
       }
-      this.LAM -= 1;
-      byte b = this.LAL.nextByte();
+      this.NrJ -= 1;
+      byte b = this.NrI.nextByte();
       AppMethodBeat.o(59543);
       return b;
     }
@@ -569,11 +569,11 @@ final class u
   final class d
     extends InputStream
   {
-    private u.b LAO;
-    private p LAP;
-    private int LAQ;
-    private int LAR;
-    private int LAS;
+    private u.b NrL;
+    private p NrM;
+    private int NrN;
+    private int NrO;
+    private int NrP;
     private int mark;
     
     public d()
@@ -583,7 +583,7 @@ final class u
       AppMethodBeat.o(59546);
     }
     
-    private int J(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+    private int K(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(59549);
       int i = paramInt2;
@@ -591,8 +591,8 @@ final class u
       paramInt1 = i;
       for (i = j; paramInt1 > 0; i = j)
       {
-        gaE();
-        if (this.LAP == null)
+        gsd();
+        if (this.NrM == null)
         {
           if (paramInt1 != paramInt2) {
             break;
@@ -600,36 +600,36 @@ final class u
           AppMethodBeat.o(59549);
           return -1;
         }
-        int k = Math.min(this.LAQ - this.LAR, paramInt1);
+        int k = Math.min(this.NrN - this.NrO, paramInt1);
         j = i;
         if (paramArrayOfByte != null)
         {
-          this.LAP.i(paramArrayOfByte, this.LAR, i, k);
+          this.NrM.i(paramArrayOfByte, this.NrO, i, k);
           j = i + k;
         }
-        this.LAR += k;
+        this.NrO += k;
         paramInt1 -= k;
       }
       AppMethodBeat.o(59549);
       return paramInt2 - paramInt1;
     }
     
-    private void gaE()
+    private void gsd()
     {
       AppMethodBeat.i(59554);
-      if ((this.LAP != null) && (this.LAR == this.LAQ))
+      if ((this.NrM != null) && (this.NrO == this.NrN))
       {
-        this.LAS += this.LAQ;
-        this.LAR = 0;
-        if (this.LAO.hasNext())
+        this.NrP += this.NrN;
+        this.NrO = 0;
+        if (this.NrL.hasNext())
         {
-          this.LAP = this.LAO.gaD();
-          this.LAQ = this.LAP.size();
+          this.NrM = this.NrL.gsc();
+          this.NrN = this.NrM.size();
           AppMethodBeat.o(59554);
           return;
         }
-        this.LAP = null;
-        this.LAQ = 0;
+        this.NrM = null;
+        this.NrN = 0;
       }
       AppMethodBeat.o(59554);
     }
@@ -637,19 +637,19 @@ final class u
     private void initialize()
     {
       AppMethodBeat.i(59553);
-      this.LAO = new u.b(u.this, (byte)0);
-      this.LAP = this.LAO.gaD();
-      this.LAQ = this.LAP.size();
-      this.LAR = 0;
-      this.LAS = 0;
+      this.NrL = new u.b(u.this, (byte)0);
+      this.NrM = this.NrL.gsc();
+      this.NrN = this.NrM.size();
+      this.NrO = 0;
+      this.NrP = 0;
       AppMethodBeat.o(59553);
     }
     
     public final int available()
     {
       AppMethodBeat.i(59551);
-      int i = this.LAS;
-      int j = this.LAR;
+      int i = this.NrP;
+      int j = this.NrO;
       int k = u.this.size();
       AppMethodBeat.o(59551);
       return k - (i + j);
@@ -657,7 +657,7 @@ final class u
     
     public final void mark(int paramInt)
     {
-      this.mark = (this.LAS + this.LAR);
+      this.mark = (this.NrP + this.NrO);
     }
     
     public final boolean markSupported()
@@ -668,16 +668,16 @@ final class u
     public final int read()
     {
       AppMethodBeat.i(59550);
-      gaE();
-      if (this.LAP == null)
+      gsd();
+      if (this.NrM == null)
       {
         AppMethodBeat.o(59550);
         return -1;
       }
-      p localp = this.LAP;
-      int i = this.LAR;
-      this.LAR = (i + 1);
-      i = localp.aiv(i);
+      p localp = this.NrM;
+      int i = this.NrO;
+      this.NrO = (i + 1);
+      i = localp.akW(i);
       AppMethodBeat.o(59550);
       return i & 0xFF;
     }
@@ -697,7 +697,7 @@ final class u
         AppMethodBeat.o(59547);
         throw paramArrayOfByte;
       }
-      paramInt1 = J(paramArrayOfByte, paramInt1, paramInt2);
+      paramInt1 = K(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(59547);
       return paramInt1;
     }
@@ -708,7 +708,7 @@ final class u
       {
         AppMethodBeat.i(59552);
         initialize();
-        J(null, 0, this.mark);
+        K(null, 0, this.mark);
         AppMethodBeat.o(59552);
         return;
       }
@@ -732,7 +732,7 @@ final class u
       if (paramLong > 2147483647L) {
         l = 2147483647L;
       }
-      paramLong = J(null, 0, (int)l);
+      paramLong = K(null, 0, (int)l);
       AppMethodBeat.o(59548);
       return paramLong;
     }
@@ -740,7 +740,7 @@ final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.h.u
  * JD-Core Version:    0.7.0.1
  */

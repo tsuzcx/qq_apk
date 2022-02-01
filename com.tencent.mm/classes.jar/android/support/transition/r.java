@@ -13,21 +13,21 @@ import java.util.Iterator;
 
 public final class r
 {
-  private static Transition AN = new AutoTransition();
-  private static ThreadLocal<WeakReference<a<ViewGroup, ArrayList<Transition>>>> AO = new ThreadLocal();
-  static ArrayList<ViewGroup> AP = new ArrayList();
+  private static Transition CE = new AutoTransition();
+  private static ThreadLocal<WeakReference<a<ViewGroup, ArrayList<Transition>>>> CF = new ThreadLocal();
+  static ArrayList<ViewGroup> CG = new ArrayList();
   
   public static void a(ViewGroup paramViewGroup, Transition paramTransition)
   {
-    if ((!AP.contains(paramViewGroup)) && (t.ay(paramViewGroup)))
+    if ((!CG.contains(paramViewGroup)) && (t.ay(paramViewGroup)))
     {
-      AP.add(paramViewGroup);
+      CG.add(paramViewGroup);
       Object localObject = paramTransition;
       if (paramTransition == null) {
-        localObject = AN;
+        localObject = CE;
       }
-      paramTransition = ((Transition)localObject).dx();
-      localObject = (ArrayList)dy().get(paramViewGroup);
+      paramTransition = ((Transition)localObject).dM();
+      localObject = (ArrayList)dN().get(paramViewGroup);
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
         localObject = ((ArrayList)localObject).iterator();
@@ -39,8 +39,8 @@ public final class r
         paramTransition.b(paramViewGroup, true);
       }
       localObject = n.F(paramViewGroup);
-      if ((localObject != null) && (n.F(((n)localObject).zH) == localObject) && (((n)localObject).zI != null)) {
-        ((n)localObject).zI.run();
+      if ((localObject != null) && (n.F(((n)localObject).By) == localObject) && (((n)localObject).Bz != null)) {
+        ((n)localObject).Bz.run();
       }
       paramViewGroup.setTag(2131306066, null);
       if ((paramTransition != null) && (paramViewGroup != null))
@@ -52,9 +52,9 @@ public final class r
     }
   }
   
-  static a<ViewGroup, ArrayList<Transition>> dy()
+  static a<ViewGroup, ArrayList<Transition>> dN()
   {
-    Object localObject = (WeakReference)AO.get();
+    Object localObject = (WeakReference)CF.get();
     if (localObject != null)
     {
       localObject = (a)((WeakReference)localObject).get();
@@ -64,60 +64,60 @@ public final class r
     }
     localObject = new a();
     WeakReference localWeakReference = new WeakReference(localObject);
-    AO.set(localWeakReference);
+    CF.set(localWeakReference);
     return localObject;
   }
   
   static final class a
     implements View.OnAttachStateChangeListener, ViewTreeObserver.OnPreDrawListener
   {
-    Transition AM;
-    ViewGroup zH;
+    ViewGroup By;
+    Transition CD;
     
     a(Transition paramTransition, ViewGroup paramViewGroup)
     {
-      this.AM = paramTransition;
-      this.zH = paramViewGroup;
+      this.CD = paramTransition;
+      this.By = paramViewGroup;
     }
     
-    private void dz()
+    private void dO()
     {
-      this.zH.getViewTreeObserver().removeOnPreDrawListener(this);
-      this.zH.removeOnAttachStateChangeListener(this);
+      this.By.getViewTreeObserver().removeOnPreDrawListener(this);
+      this.By.removeOnAttachStateChangeListener(this);
     }
     
     public final boolean onPreDraw()
     {
-      dz();
-      if (!r.AP.remove(this.zH)) {
+      dO();
+      if (!r.CG.remove(this.By)) {
         return true;
       }
-      final a locala = r.dy();
-      ArrayList localArrayList2 = (ArrayList)locala.get(this.zH);
+      final a locala = r.dN();
+      ArrayList localArrayList2 = (ArrayList)locala.get(this.By);
       ArrayList localArrayList1 = null;
       Object localObject;
       if (localArrayList2 == null)
       {
         localObject = new ArrayList();
-        locala.put(this.zH, localObject);
+        locala.put(this.By, localObject);
       }
       for (;;)
       {
-        ((ArrayList)localObject).add(this.AM);
-        this.AM.a(new q()
+        ((ArrayList)localObject).add(this.CD);
+        this.CD.a(new q()
         {
           public final void a(Transition paramAnonymousTransition)
           {
-            ((ArrayList)locala.get(r.a.this.zH)).remove(paramAnonymousTransition);
+            ((ArrayList)locala.get(r.a.this.By)).remove(paramAnonymousTransition);
           }
         });
-        this.AM.b(this.zH, false);
+        this.CD.b(this.By, false);
         if (localArrayList1 == null) {
           break;
         }
         localObject = localArrayList1.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((Transition)((Iterator)localObject).next()).K(this.zH);
+          ((Transition)((Iterator)localObject).next()).K(this.By);
         }
         localObject = localArrayList2;
         if (localArrayList2.size() > 0)
@@ -126,7 +126,7 @@ public final class r
           localObject = localArrayList2;
         }
       }
-      this.AM.a(this.zH);
+      this.CD.a(this.By);
       return true;
     }
     
@@ -134,17 +134,17 @@ public final class r
     
     public final void onViewDetachedFromWindow(View paramView)
     {
-      dz();
-      r.AP.remove(this.zH);
-      paramView = (ArrayList)r.dy().get(this.zH);
+      dO();
+      r.CG.remove(this.By);
+      paramView = (ArrayList)r.dN().get(this.By);
       if ((paramView != null) && (paramView.size() > 0))
       {
         paramView = paramView.iterator();
         while (paramView.hasNext()) {
-          ((Transition)paramView.next()).K(this.zH);
+          ((Transition)paramView.next()).K(this.By);
         }
       }
-      this.AM.B(true);
+      this.CD.B(true);
     }
   }
 }

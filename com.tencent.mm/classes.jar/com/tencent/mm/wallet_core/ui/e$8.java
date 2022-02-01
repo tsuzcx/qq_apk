@@ -15,11 +15,11 @@ final class e$8
     AppMethodBeat.i(72988);
     Rect localRect = new Rect();
     this.val$view.getHitRect(localRect);
-    localRect.top -= this.fLb;
-    localRect.bottom += this.fLb;
-    localRect.left -= this.fLb;
-    localRect.right += this.fLb;
-    this.uZX.setTouchDelegate(new TouchDelegate(localRect, this.val$view));
+    localRect.top -= this.geC;
+    localRect.bottom += this.geC;
+    localRect.left -= this.geC;
+    localRect.right += this.geC;
+    this.wfe.setTouchDelegate(new TouchDelegate(localRect, this.val$view));
     AppMethodBeat.o(72988);
   }
 }

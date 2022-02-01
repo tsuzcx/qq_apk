@@ -11,89 +11,89 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.aj;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter$LiveCommentItemHolder;", "()V", "commentList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/view/adapter/CommentData;", "Lkotlin/collections/ArrayList;", "getCommentList", "()Ljava/util/ArrayList;", "sysSpan", "com/tencent/mm/live/view/adapter/LiveCommentAdapter$sysSpan$1", "Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter$sysSpan$1;", "appendComment", "", "comment", "getItemCount", "", "onBindSysMsg", "context", "Landroid/content/Context;", "holder", "commentData", "onBindTextMsg", "onBindViewHolder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "type", "removeComment", "updateComments", "", "LiveCommentItemHolder", "LiveHeightSpan", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter$LiveCommentItemHolder;", "()V", "commentList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/view/adapter/CommentData;", "Lkotlin/collections/ArrayList;", "getCommentList", "()Ljava/util/ArrayList;", "sysSpan", "com/tencent/mm/live/view/adapter/LiveCommentAdapter$sysSpan$1", "Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter$sysSpan$1;", "appendComment", "", "comment", "getItemCount", "", "onBindSysMsg", "context", "Landroid/content/Context;", "holder", "commentData", "onBindTextMsg", "onBindViewHolder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "type", "removeComment", "updateComments", "", "LiveCommentItemHolder", "LiveHeightSpan", "plugin-logic_release"})
 public final class c
   extends RecyclerView.a<a>
 {
-  public final ArrayList<a> gIn;
-  private final b gIo;
+  public final ArrayList<a> hbX;
+  private final b hbY;
   
   public c()
   {
-    AppMethodBeat.i(190774);
-    this.gIn = new ArrayList();
-    this.gIo = new b();
-    AppMethodBeat.o(190774);
+    AppMethodBeat.i(213065);
+    this.hbX = new ArrayList();
+    this.hbY = new b();
+    AppMethodBeat.o(213065);
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(190770);
-    k.h(parama, "comment");
-    int i = this.gIn.size();
-    this.gIn.add(parama);
+    AppMethodBeat.i(213061);
+    p.h(parama, "comment");
+    int i = this.hbX.size();
+    this.hbX.add(parama);
     ck(i);
-    AppMethodBeat.o(190770);
+    AppMethodBeat.o(213061);
   }
   
-  public final void aa(List<a> paramList)
+  public final void ab(List<a> paramList)
   {
-    AppMethodBeat.i(190769);
-    k.h(paramList, "commentList");
-    this.gIn.clear();
-    this.gIn.addAll((Collection)paramList);
-    AppMethodBeat.o(190769);
+    AppMethodBeat.i(213060);
+    p.h(paramList, "commentList");
+    this.hbX.clear();
+    this.hbX.addAll((Collection)paramList);
+    AppMethodBeat.o(213060);
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(190772);
-    int i = this.gIn.size();
-    AppMethodBeat.o(190772);
+    AppMethodBeat.i(213063);
+    int i = this.hbX.size();
+    AppMethodBeat.o(213063);
     return i;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter$LiveCommentItemHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarGroup", "Landroid/view/ViewGroup;", "getAvatarGroup", "()Landroid/view/ViewGroup;", "avatarIcon", "Landroid/widget/ImageView;", "getAvatarIcon", "()Landroid/widget/ImageView;", "contentTv", "Landroid/widget/TextView;", "getContentTv", "()Landroid/widget/TextView;", "plugin-logic_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter$LiveCommentItemHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarGroup", "Landroid/view/ViewGroup;", "getAvatarGroup", "()Landroid/view/ViewGroup;", "avatarIcon", "Landroid/widget/ImageView;", "getAvatarIcon", "()Landroid/widget/ImageView;", "contentTv", "Landroid/widget/TextView;", "getContentTv", "()Landroid/widget/TextView;", "plugin-logic_release"})
   public static final class a
     extends RecyclerView.w
   {
-    final ImageView gIj;
-    final ViewGroup gIp;
-    final TextView gIq;
+    final ImageView hbT;
+    final ViewGroup hbZ;
+    final TextView hca;
     
     public a(View paramView)
     {
       super();
-      AppMethodBeat.i(190767);
+      AppMethodBeat.i(213058);
       View localView = paramView.findViewById(2131307599);
-      k.g(localView, "itemView.findViewById(R.…omment_item_avatar_group)");
-      this.gIp = ((ViewGroup)localView);
+      p.g(localView, "itemView.findViewById(R.…omment_item_avatar_group)");
+      this.hbZ = ((ViewGroup)localView);
       localView = paramView.findViewById(2131307600);
-      k.g(localView, "itemView.findViewById(R.…comment_item_avatar_icon)");
-      this.gIj = ((ImageView)localView);
+      p.g(localView, "itemView.findViewById(R.…comment_item_avatar_icon)");
+      this.hbT = ((ImageView)localView);
       paramView = paramView.findViewById(2131307601);
-      k.g(paramView, "itemView.findViewById(R.…_comment_item_content_tv)");
-      this.gIq = ((TextView)paramView);
-      AppMethodBeat.o(190767);
+      p.g(paramView, "itemView.findViewById(R.…_comment_item_content_tv)");
+      this.hca = ((TextView)paramView);
+      AppMethodBeat.o(213058);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/live/view/adapter/LiveCommentAdapter$sysSpan$1", "Landroid/text/style/CharacterStyle;", "updateDrawState", "", "tp", "Landroid/text/TextPaint;", "plugin-logic_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/view/adapter/LiveCommentAdapter$sysSpan$1", "Landroid/text/style/CharacterStyle;", "updateDrawState", "", "tp", "Landroid/text/TextPaint;", "plugin-logic_release"})
   public static final class b
     extends CharacterStyle
   {
     public final void updateDrawState(TextPaint paramTextPaint)
     {
-      AppMethodBeat.i(190768);
-      Context localContext = ai.getContext();
-      k.g(localContext, "MMApplicationContext.getContext()");
+      AppMethodBeat.i(213059);
+      Context localContext = aj.getContext();
+      p.g(localContext, "MMApplicationContext.getContext()");
       int i = localContext.getResources().getColor(2131100483);
       if (paramTextPaint != null) {
         paramTextPaint.setColor(i);
@@ -101,10 +101,10 @@ public final class c
       if (paramTextPaint != null)
       {
         paramTextPaint.setUnderlineText(false);
-        AppMethodBeat.o(190768);
+        AppMethodBeat.o(213059);
         return;
       }
-      AppMethodBeat.o(190768);
+      AppMethodBeat.o(213059);
     }
   }
 }

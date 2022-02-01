@@ -6,8 +6,8 @@ import java.util.Arrays;
 public final class b
   implements Cloneable
 {
-  private final int[] bHL;
-  private final int bHM;
+  private final int[] bRZ;
+  private final int bSa;
   public final int height;
   public final int width;
   
@@ -29,8 +29,8 @@ public final class b
     }
     this.width = paramInt1;
     this.height = paramInt2;
-    this.bHM = ((paramInt1 + 31) / 32);
-    this.bHL = new int[this.bHM * paramInt2];
+    this.bSa = ((paramInt1 + 31) / 32);
+    this.bRZ = new int[this.bSa * paramInt2];
     AppMethodBeat.o(12330);
   }
   
@@ -38,24 +38,24 @@ public final class b
   {
     this.width = paramInt1;
     this.height = paramInt2;
-    this.bHM = paramInt3;
-    this.bHL = paramArrayOfInt;
+    this.bSa = paramInt3;
+    this.bRZ = paramArrayOfInt;
   }
   
-  public final boolean bG(int paramInt1, int paramInt2)
+  public final boolean bI(int paramInt1, int paramInt2)
   {
-    int i = this.bHM;
+    int i = this.bSa;
     int j = paramInt1 / 32;
-    return (this.bHL[(i * paramInt2 + j)] >>> (paramInt1 & 0x1F) & 0x1) != 0;
+    return (this.bRZ[(i * paramInt2 + j)] >>> (paramInt1 & 0x1F) & 0x1) != 0;
   }
   
   public final void clear()
   {
-    int j = this.bHL.length;
+    int j = this.bRZ.length;
     int i = 0;
     while (i < j)
     {
-      this.bHL[i] = 0;
+      this.bRZ[i] = 0;
       i += 1;
     }
   }
@@ -69,7 +69,7 @@ public final class b
       return false;
     }
     paramObject = (b)paramObject;
-    if ((this.width == paramObject.width) && (this.height == paramObject.height) && (this.bHM == paramObject.bHM) && (Arrays.equals(this.bHL, paramObject.bHL)))
+    if ((this.width == paramObject.width) && (this.height == paramObject.height) && (this.bSa == paramObject.bSa) && (Arrays.equals(this.bRZ, paramObject.bRZ)))
     {
       AppMethodBeat.o(12332);
       return true;
@@ -84,8 +84,8 @@ public final class b
     int i = this.width;
     int j = this.width;
     int k = this.height;
-    int m = this.bHM;
-    int n = Arrays.hashCode(this.bHL);
+    int m = this.bSa;
+    int n = Arrays.hashCode(this.bRZ);
     AppMethodBeat.o(12333);
     return (((i * 31 + j) * 31 + k) * 31 + m) * 31 + n;
   }
@@ -120,11 +120,11 @@ public final class b
       if (paramInt2 >= paramInt4) {
         break;
       }
-      int j = this.bHM;
+      int j = this.bSa;
       paramInt3 = paramInt1;
       while (paramInt3 < i)
       {
-        localObject = this.bHL;
+        localObject = this.bRZ;
         int k = paramInt3 / 32 + paramInt2 * j;
         localObject[k] |= 1 << (paramInt3 & 0x1F);
         paramInt3 += 1;
@@ -135,8 +135,8 @@ public final class b
   
   public final void set(int paramInt1, int paramInt2)
   {
-    paramInt2 = this.bHM * paramInt2 + paramInt1 / 32;
-    int[] arrayOfInt = this.bHL;
+    paramInt2 = this.bSa * paramInt2 + paramInt1 / 32;
+    int[] arrayOfInt = this.bRZ;
     arrayOfInt[paramInt2] |= 1 << (paramInt1 & 0x1F);
   }
   
@@ -150,7 +150,7 @@ public final class b
       int j = 0;
       if (j < this.width)
       {
-        if (bG(j, i)) {}
+        if (bI(j, i)) {}
         for (str = "X ";; str = "  ")
         {
           localStringBuilder.append(str);

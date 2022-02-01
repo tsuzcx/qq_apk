@@ -5,27 +5,27 @@ import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.config.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Map;
 import org.apache.commons.b.a;
 
 public final class g
   extends b
 {
-  private final String[] jDw;
+  private final String[] jXs;
   
   private g()
   {
     AppMethodBeat.i(44827);
-    this.jDw = new String[] { "wx308bd2aeb83d3345" };
+    this.jXs = new String[] { "wx308bd2aeb83d3345" };
     AppMethodBeat.o(44827);
   }
   
-  public static g baw()
+  public static g bdW()
   {
     try
     {
-      g localg = (g)cbU;
+      g localg = (g)cml;
       return localg;
     }
     finally {}
@@ -36,7 +36,7 @@ public final class g
     AppMethodBeat.i(44828);
     try
     {
-      cbU = new g();
+      cml = new g();
       return;
     }
     finally
@@ -45,10 +45,10 @@ public final class g
     }
   }
   
-  public final AppBrandInitConfigWC JS(String paramString)
+  public final AppBrandInitConfigWC Nl(String paramString)
   {
     AppMethodBeat.i(44829);
-    paramString = (AppBrandInitConfigWC)super.cg(paramString);
+    paramString = (AppBrandInitConfigWC)super.df(paramString);
     AppMethodBeat.o(44829);
     return paramString;
   }
@@ -61,26 +61,26 @@ public final class g
     boolean bool;
     if (localObject2 != null)
     {
-      localAppBrandInitConfigWC = new AppBrandInitConfigWC(((AppBrandInitConfigLU)localObject2).bau());
-      if ((!???.baL().baR()) || ((!h.aSv()) && (a.contains(this.jDw, localAppBrandInitConfigWC.appId)))) {
+      localAppBrandInitConfigWC = new AppBrandInitConfigWC(((AppBrandInitConfigLU)localObject2).bdU());
+      if ((!???.bel().ber()) || ((!h.aVH()) && (a.contains(this.jXs, localAppBrandInitConfigWC.appId)))) {
         break label151;
       }
       bool = true;
     }
     for (;;)
     {
-      localAppBrandInitConfigWC.jDy = bool;
+      localAppBrandInitConfigWC.jXu = bool;
       if (localAppBrandInitConfigWC != null) {
-        localAppBrandInitConfigWC.jDJ = ???.baM().jFC.jFI;
+        localAppBrandInitConfigWC.jXF = ???.bem().jZH.jZN;
       }
       if ((localAppBrandInitConfigWC != null) && (!TextUtils.isEmpty(localAppBrandInitConfigWC.appId)))
       {
         localObject2 = localAppBrandInitConfigWC.appId;
-        ac.i("Luggage.WXA.AppBrandInitConfigHelper", "clearByAppId %s", new Object[] { localObject2 });
+        ad.i("Luggage.WXA.AppBrandInitConfigHelper", "clearByAppId %s", new Object[] { localObject2 });
       }
-      synchronized (this.cbV)
+      synchronized (this.cmm)
       {
-        this.cbV.remove(localObject2);
+        this.cmm.remove(localObject2);
         AppMethodBeat.o(44830);
         return localAppBrandInitConfigWC;
         label151:

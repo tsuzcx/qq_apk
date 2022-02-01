@@ -9,25 +9,25 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.j;
+import com.tencent.mm.am.k;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.as;
 import java.util.Iterator;
 import java.util.List;
 
 public final class g$a
 {
-  private static DisplayMetrics HLD = null;
+  private static DisplayMetrics Jzu = null;
   
-  private static int a(Context paramContext, TextPaint paramTextPaint, List<j> paramList)
+  private static int a(Context paramContext, TextPaint paramTextPaint, List<k> paramList)
   {
     AppMethodBeat.i(34345);
     paramList = paramList.iterator();
     float f1 = 0.0F;
     if (paramList.hasNext())
     {
-      float f2 = paramTextPaint.measureText(((j)paramList.next()).name);
+      float f2 = paramTextPaint.measureText(((k)paramList.next()).name);
       if (f1 >= f2) {
         break label79;
       }
@@ -44,7 +44,7 @@ public final class g$a
     }
   }
   
-  public static a a(Context paramContext, TextPaint paramTextPaint, List<j> paramList, int paramInt)
+  public static a a(Context paramContext, TextPaint paramTextPaint, List<k> paramList, int paramInt)
   {
     AppMethodBeat.i(34346);
     a locala = new a();
@@ -54,10 +54,10 @@ public final class g$a
     if ((paramContext instanceof Activity))
     {
       ((Activity)paramContext).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-      Point localPoint = aq.cl(paramContext);
+      Point localPoint = as.ci(paramContext);
       k = localDisplayMetrics.widthPixels;
       if ((k != localDisplayMetrics.widthPixels) || (localPoint.y != localDisplayMetrics.heightPixels)) {
-        ac.e("MicroMsg.ChatFooterCustomSubmenu", "get screen param error!! width:%s, systermWidth:%s, height:%s, systermHeight:%s", new Object[] { Integer.valueOf(k), Integer.valueOf(localDisplayMetrics.widthPixels), Integer.valueOf(localPoint.y), Integer.valueOf(localDisplayMetrics.heightPixels) });
+        ad.e("MicroMsg.ChatFooterCustomSubmenu", "get screen param error!! width:%s, systermWidth:%s, height:%s, systermHeight:%s", new Object[] { Integer.valueOf(k), Integer.valueOf(localDisplayMetrics.widthPixels), Integer.valueOf(localPoint.y), Integer.valueOf(localDisplayMetrics.heightPixels) });
       }
       i = a(paramContext, paramTextPaint, paramList);
       int j = a.fromDPToPix(paramContext, 95);
@@ -71,27 +71,27 @@ public final class g$a
     {
       if (paramInt - i / 2 < 0)
       {
-        locala.mIf = 0;
-        locala.mIg = (k - (i + 0));
+        locala.niC = 0;
+        locala.niD = (k - (i + 0));
       }
       for (;;)
       {
         AppMethodBeat.o(34346);
         return locala;
-        if (HLD == null) {
-          HLD = paramContext.getResources().getDisplayMetrics();
+        if (Jzu == null) {
+          Jzu = paramContext.getResources().getDisplayMetrics();
         }
-        localDisplayMetrics = HLD;
+        localDisplayMetrics = Jzu;
         break;
         if (k - (i / 2 + paramInt) < 0)
         {
-          locala.mIf = (k - (i + 0));
-          locala.mIg = 0;
+          locala.niC = (k - (i + 0));
+          locala.niD = 0;
         }
         else
         {
-          locala.mIf = (paramInt - i / 2);
-          locala.mIg = (k - (i / 2 + paramInt));
+          locala.niC = (paramInt - i / 2);
+          locala.niD = (k - (i / 2 + paramInt));
         }
       }
     }
@@ -99,13 +99,13 @@ public final class g$a
   
   public static final class a
   {
-    public int mIf;
-    public int mIg;
+    public int niC;
+    public int niD;
     
     public final String toString()
     {
       AppMethodBeat.i(34344);
-      String str = " marginLeft:" + this.mIf + " marginRight:" + this.mIg;
+      String str = " marginLeft:" + this.niC + " marginRight:" + this.niD;
       AppMethodBeat.o(34344);
       return str;
     }

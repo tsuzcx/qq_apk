@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.luckymoney;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
   implements d
 {
-  public final m createApplication()
+  public final n createApplication()
   {
     AppMethodBeat.i(64854);
     a locala = new a();
@@ -17,7 +17,7 @@ public final class Plugin
     return locala;
   }
   
-  public final aw createSubCore()
+  public final ax createSubCore()
   {
     AppMethodBeat.i(64855);
     com.tencent.mm.plugin.luckymoney.b.a locala = new com.tencent.mm.plugin.luckymoney.b.a();

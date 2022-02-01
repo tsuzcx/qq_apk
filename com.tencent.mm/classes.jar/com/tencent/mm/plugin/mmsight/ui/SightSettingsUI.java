@@ -12,11 +12,12 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.h.d;
@@ -27,17 +28,17 @@ import java.util.List;
 public class SightSettingsUI
   extends MMActivity
 {
-  private d fPa;
-  private LinkedList<b> gFp;
-  private ListView gFr;
-  private CaptureMMProxy uJP;
-  private a uUc;
+  private LinkedList<b> gYZ;
+  private ListView gZb;
+  private d giA;
+  private CaptureMMProxy vMV;
+  private a vXm;
   
   public SightSettingsUI()
   {
     AppMethodBeat.i(94737);
-    this.fPa = new d(this);
-    this.gFp = new LinkedList();
+    this.giA = new d(this);
+    this.gYZ = new LinkedList();
     AppMethodBeat.o(94737);
   }
   
@@ -50,13 +51,13 @@ public class SightSettingsUI
   {
     AppMethodBeat.i(94738);
     super.onCreate(paramBundle);
-    this.uJP = new CaptureMMProxy(this.fPa);
-    this.fPa.connect(new Runnable()
+    this.vMV = new CaptureMMProxy(this.giA);
+    this.giA.connect(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(94730);
-        ac.i("MicroMsg.SightSettingsUI", "has connect");
+        ad.i("MicroMsg.SightSettingsUI", "has connect");
         SightSettingsUI.a(SightSettingsUI.this);
         AppMethodBeat.o(94730);
       }
@@ -78,7 +79,7 @@ public class SightSettingsUI
   {
     AppMethodBeat.i(94739);
     super.onDestroy();
-    this.fPa.release();
+    this.giA.release();
     AppMethodBeat.o(94739);
   }
   
@@ -133,10 +134,10 @@ public class SightSettingsUI
       AppMethodBeat.i(94735);
       paramView = new TextView(SightSettingsUI.this);
       paramViewGroup = (SightSettingsUI.b)getItem(paramInt);
-      paramView.setText(paramViewGroup.gFw + "->:" + paramViewGroup.IZ(((Integer)SightSettingsUI.b(paramViewGroup.uUd).get(paramViewGroup.gFx, Integer.valueOf(0))).intValue()));
+      paramView.setText(paramViewGroup.gZg + "->:" + paramViewGroup.Kw(((Integer)SightSettingsUI.b(paramViewGroup.vXn).get(paramViewGroup.gZh, Integer.valueOf(0))).intValue()));
       paramView.setGravity(17);
       paramView.setTextSize(1, 20.0F);
-      paramView.setHeight(com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 50));
+      paramView.setHeight(com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 50));
       if (paramInt % 2 == 1) {
         paramView.setBackgroundColor(Color.parseColor("#e2efda"));
       }
@@ -145,17 +146,21 @@ public class SightSettingsUI
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(94732);
+          Object localObject = new b();
+          ((b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mmsight/ui/SightSettingsUI$ChoiceAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
           paramAnonymousView = paramViewGroup;
-          LinkedList localLinkedList1 = new LinkedList();
-          LinkedList localLinkedList2 = new LinkedList();
+          localObject = new LinkedList();
+          LinkedList localLinkedList = new LinkedList();
           int i = 0;
-          while (i < paramAnonymousView.gFy.length)
+          while (i < paramAnonymousView.gZi.length)
           {
-            localLinkedList1.add(paramAnonymousView.gFy[i]);
-            localLinkedList2.add(Integer.valueOf(i));
+            ((List)localObject).add(paramAnonymousView.gZi[i]);
+            localLinkedList.add(Integer.valueOf(i));
             i += 1;
           }
-          h.a(paramAnonymousView.uUd, "", localLinkedList1, localLinkedList2, "", new SightSettingsUI.b.1(paramAnonymousView));
+          h.a(paramAnonymousView.vXn, "", (List)localObject, localLinkedList, "", new SightSettingsUI.b.1(paramAnonymousView));
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mmsight/ui/SightSettingsUI$ChoiceAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(94732);
         }
       });
@@ -166,36 +171,36 @@ public class SightSettingsUI
   
   final class b
   {
-    public String gFw;
-    ah.a gFx;
-    String[] gFy;
-    int[] uUg;
+    public String gZg;
+    al.a gZh;
+    String[] gZi;
+    int[] vXq;
     
-    public b(String paramString, ah.a parama, String[] paramArrayOfString, int[] paramArrayOfInt)
+    public b(String paramString, al.a parama, String[] paramArrayOfString, int[] paramArrayOfInt)
     {
-      this.gFw = paramString;
-      this.gFy = paramArrayOfString;
-      this.gFx = parama;
-      this.uUg = paramArrayOfInt;
+      this.gZg = paramString;
+      this.gZi = paramArrayOfString;
+      this.gZh = parama;
+      this.vXq = paramArrayOfInt;
     }
     
-    final String IZ(int paramInt)
+    final String Kw(int paramInt)
     {
       int i = 0;
-      while (i < this.uUg.length)
+      while (i < this.vXq.length)
       {
-        if ((paramInt == this.uUg[i]) && (i < this.gFy.length)) {
-          return this.gFy[i];
+        if ((paramInt == this.vXq[i]) && (i < this.gZi.length)) {
+          return this.gZi[i];
         }
         i += 1;
       }
-      return this.gFy[0];
+      return this.gZi[0];
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.SightSettingsUI
  * JD-Core Version:    0.7.0.1
  */

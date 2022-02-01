@@ -6,127 +6,101 @@ import com.tencent.mm.plugin.report.a;
 public final class go
   extends a
 {
-  private long eaM = 0L;
-  private String ecm;
-  private long eco = 0L;
-  private a ecv;
-  private long ecw = 0L;
+  public long dSa;
+  public String dVa;
+  private String ejz;
+  public long eoO;
+  public long eoP;
+  private String eoQ;
+  public long eoR;
+  public long eoS;
+  public String eoT;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(43476);
+    AppMethodBeat.i(197552);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ecm);
+    ((StringBuffer)localObject).append(this.dSa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaM);
+    ((StringBuffer)localObject).append(this.ejz);
     ((StringBuffer)localObject).append(",");
-    if (this.ecv != null) {}
-    for (int i = this.ecv.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eco);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.ecw);
-      localObject = ((StringBuffer)localObject).toString();
-      arz((String)localObject);
-      AppMethodBeat.o(43476);
-      return localObject;
-    }
-  }
-  
-  public final String PS()
-  {
-    AppMethodBeat.i(43477);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("AppId:").append(this.ecm);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppVersion:").append(this.eaM);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppState:").append(this.ecv);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.eco);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FileAllocSize:").append(this.ecw);
+    ((StringBuffer)localObject).append(this.eoO);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoP);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dVa);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoQ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoR);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoS);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoT);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43477);
+    awz((String)localObject);
+    AppMethodBeat.o(197552);
     return localObject;
   }
   
-  public final go a(a parama)
+  public final String RE()
   {
-    this.ecv = parama;
-    return this;
+    AppMethodBeat.i(197553);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("ActionType:").append(this.dSa);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("PublishId:").append(this.ejz);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("LikeCnt:").append(this.eoO);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("CommCnt:").append(this.eoP);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Sessionid:").append(this.dVa);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ActionTimeStamp:").append(this.eoQ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("NextAction:").append(this.eoR);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ExposeCnt:").append(this.eoS);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("NextPublishId:").append(this.eoT);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(197553);
+    return localObject;
   }
   
   public final int getId()
   {
-    return 17688;
+    return 19750;
   }
   
-  public final go lo(long paramLong)
+  public final go ph(String paramString)
   {
-    this.eaM = paramLong;
+    AppMethodBeat.i(197549);
+    this.ejz = t("PublishId", paramString, true);
+    AppMethodBeat.o(197549);
     return this;
   }
   
-  public final go lp(long paramLong)
+  public final go pi(String paramString)
   {
-    this.eco = paramLong;
+    AppMethodBeat.i(197550);
+    this.dVa = t("Sessionid", paramString, true);
+    AppMethodBeat.o(197550);
     return this;
   }
   
-  public final go lq(long paramLong)
+  public final go pj(String paramString)
   {
-    this.ecw = paramLong;
+    AppMethodBeat.i(197551);
+    this.eoQ = t("ActionTimeStamp", paramString, true);
+    AppMethodBeat.o(197551);
     return this;
-  }
-  
-  public final go nY(String paramString)
-  {
-    AppMethodBeat.i(43475);
-    this.ecm = t("AppId", paramString, true);
-    AppMethodBeat.o(43475);
-    return this;
-  }
-  
-  public static enum a
-  {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(43474);
-      ecx = new a("release", 0, 1);
-      ecy = new a("debug", 1, 2);
-      ecz = new a("demo", 2, 3);
-      ecA = new a[] { ecx, ecy, ecz };
-      AppMethodBeat.o(43474);
-    }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
-    
-    public static a iF(int paramInt)
-    {
-      switch (paramInt)
-      {
-      default: 
-        return null;
-      case 1: 
-        return ecx;
-      case 2: 
-        return ecy;
-      }
-      return ecz;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.go
  * JD-Core Version:    0.7.0.1
  */

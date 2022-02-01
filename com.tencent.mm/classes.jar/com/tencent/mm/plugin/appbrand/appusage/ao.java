@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.appbrand.appusage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.service.r;
-import com.tencent.mm.plugin.appbrand.service.r.a;
+import com.tencent.mm.plugin.appbrand.service.s;
+import com.tencent.mm.plugin.appbrand.service.s.a;
 import java.util.ArrayList;
 
 public final class ao
-  implements r
+  implements s
 {
-  public final r.a aZd()
+  public final s.a bcB()
   {
     AppMethodBeat.i(44663);
-    r.a locala = new r.a();
-    locala.hqR = new ArrayList(0);
-    locala.lWD = -1;
-    locala.dlQ = "";
-    if (!g.agP().ggT)
+    s.a locala = new s.a();
+    locala.hJj = new ArrayList(0);
+    locala.mws = -1;
+    locala.dxD = "";
+    if (!g.ajA().gAD)
     {
       AppMethodBeat.o(44663);
       return locala;
     }
-    if (!i.aYt())
+    if (!i.bbR())
     {
       AppMethodBeat.o(44663);
       return locala;

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.plugin;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordButtonPlugin$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
 public final class x$a {}
 
 

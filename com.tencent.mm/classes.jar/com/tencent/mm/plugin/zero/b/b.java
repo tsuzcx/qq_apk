@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.zero.b;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.modelmulti.p;
+import com.tencent.mm.model.cc;
+import com.tencent.mm.modelmulti.q;
 
 public abstract interface b
   extends a
 {
-  public abstract p aGm();
+  public abstract q aJx();
   
-  public abstract cb eJO();
+  public abstract cc eYC();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.b.b
  * JD-Core Version:    0.7.0.1
  */

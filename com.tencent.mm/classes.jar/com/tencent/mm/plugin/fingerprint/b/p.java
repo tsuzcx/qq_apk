@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.fingerprint.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.soter.core.c.j;
 import java.security.Signature;
 
 public enum p
 {
-  public String skD = null;
-  String skK = null;
-  public boolean skL = false;
-  private Signature skM = null;
-  public j skN = null;
+  public String thf = null;
+  String thm = null;
+  public boolean thn = false;
+  private Signature tho = null;
+  public j thp = null;
   
   static
   {
     AppMethodBeat.i(64392);
-    skJ = new p("IML");
-    skO = new p[] { skJ };
+    thl = new p("IML");
+    thq = new p[] { thl };
     AppMethodBeat.o(64392);
   }
   
@@ -26,11 +26,11 @@ public enum p
   public final void reset()
   {
     AppMethodBeat.i(64391);
-    ac.i("MicroMsg.WalletFingerprintVerifyManager", "hy: start reset");
-    this.skM = null;
-    this.skD = null;
-    this.skL = false;
-    this.skK = "";
+    ad.i("MicroMsg.WalletFingerprintVerifyManager", "hy: start reset");
+    this.tho = null;
+    this.thf = null;
+    this.thn = false;
+    this.thm = "";
     AppMethodBeat.o(64391);
   }
 }

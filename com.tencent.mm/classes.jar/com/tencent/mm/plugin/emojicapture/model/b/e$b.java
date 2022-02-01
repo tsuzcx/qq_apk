@@ -2,19 +2,21 @@ package com.tencent.mm.plugin.emojicapture.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class e$b
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
-  public static final b poR;
+  public static final b pSs;
   
   static
   {
     AppMethodBeat.i(273);
-    poR = new b();
+    pSs = new b();
     AppMethodBeat.o(273);
   }
   
@@ -25,7 +27,7 @@ final class e$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.b.e.b
  * JD-Core Version:    0.7.0.1
  */

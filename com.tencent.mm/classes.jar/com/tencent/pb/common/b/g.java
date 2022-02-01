@@ -10,11 +10,11 @@ import com.tencent.pb.common.c.c;
 
 public final class g
 {
-  private WifiInfo JMa = null;
-  private NetworkInfo fmg = null;
+  private WifiInfo LFJ = null;
+  private NetworkInfo fEn = null;
   private int lastNetType = 1;
   
-  public final boolean Up()
+  public final boolean WG()
   {
     Object localObject1 = null;
     int i;
@@ -22,14 +22,14 @@ public final class g
     {
       try
       {
-        localObject3 = (ConnectivityManager)c.AMx.getSystemService("connectivity");
+        localObject3 = (ConnectivityManager)c.ClL.getSystemService("connectivity");
         if (localObject3 != null) {
           continue;
         }
         b.w("NetworkChangeMgr", new Object[] { "can't get ConnectivityManager" });
         this.lastNetType = 1;
-        this.JMa = null;
-        this.fmg = null;
+        this.LFJ = null;
+        this.fEn = null;
         bool = true;
       }
       catch (Exception localException)
@@ -38,33 +38,33 @@ public final class g
         label122:
         b.w("NetworkChangeMgr", new Object[] { localException });
         this.lastNetType = 1;
-        this.JMa = null;
-        this.fmg = null;
+        this.LFJ = null;
+        this.fEn = null;
         bool = true;
         continue;
         if (((NetworkInfo)localObject3).getType() != 1) {
           break label456;
         }
-        localWifiInfo = ((WifiManager)c.AMx.getSystemService("wifi")).getConnectionInfo();
+        localWifiInfo = ((WifiManager)c.ClL.getSystemService("wifi")).getConnectionInfo();
         i = 2;
         continue;
         if (i != 2) {
           continue;
         }
-        if ((localWifiInfo == null) || (this.JMa == null) || (!this.JMa.getBSSID().equals(localWifiInfo.getBSSID())) || (!this.JMa.getSSID().equals(localWifiInfo.getSSID())) || (this.JMa.getNetworkId() != localWifiInfo.getNetworkId())) {
+        if ((localWifiInfo == null) || (this.LFJ == null) || (!this.LFJ.getBSSID().equals(localWifiInfo.getBSSID())) || (!this.LFJ.getSSID().equals(localWifiInfo.getSSID())) || (this.LFJ.getNetworkId() != localWifiInfo.getNetworkId())) {
           break label461;
         }
         bool = false;
         continue;
-        if ((this.fmg == null) || (this.fmg.getExtraInfo() == null) || (((NetworkInfo)localObject3).getExtraInfo() == null) || (!this.fmg.getExtraInfo().equals(((NetworkInfo)localObject3).getExtraInfo())) || (this.fmg.getSubtype() != ((NetworkInfo)localObject3).getSubtype()) || (this.fmg.getType() != ((NetworkInfo)localObject3).getType())) {
+        if ((this.fEn == null) || (this.fEn.getExtraInfo() == null) || (((NetworkInfo)localObject3).getExtraInfo() == null) || (!this.fEn.getExtraInfo().equals(((NetworkInfo)localObject3).getExtraInfo())) || (this.fEn.getSubtype() != ((NetworkInfo)localObject3).getSubtype()) || (this.fEn.getType() != ((NetworkInfo)localObject3).getType())) {
           continue;
         }
         bool = false;
         continue;
-        if ((this.fmg == null) || (this.fmg.getExtraInfo() != null) || (((NetworkInfo)localObject3).getExtraInfo() != null) || (this.fmg.getSubtype() != ((NetworkInfo)localObject3).getSubtype())) {
+        if ((this.fEn == null) || (this.fEn.getExtraInfo() != null) || (((NetworkInfo)localObject3).getExtraInfo() != null) || (this.fEn.getSubtype() != ((NetworkInfo)localObject3).getSubtype())) {
           continue;
         }
-        j = this.fmg.getType();
+        j = this.fEn.getType();
         k = ((NetworkInfo)localObject3).getType();
         if (j != k) {
           continue;
@@ -80,8 +80,8 @@ public final class g
       if (localObject3 == null)
       {
         this.lastNetType = 1;
-        this.JMa = null;
-        this.fmg = null;
+        this.LFJ = null;
+        this.fEn = null;
         bool = true;
       }
       else
@@ -104,8 +104,8 @@ public final class g
     for (boolean bool = false;; bool = true)
     {
       this.lastNetType = i;
-      this.JMa = localObject1;
-      this.fmg = ((NetworkInfo)localObject3);
+      this.LFJ = localObject1;
+      this.fEn = ((NetworkInfo)localObject3);
       break;
       WifiInfo localWifiInfo;
       int j;

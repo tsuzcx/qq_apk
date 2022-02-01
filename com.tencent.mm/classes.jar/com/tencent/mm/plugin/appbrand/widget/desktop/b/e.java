@@ -5,109 +5,109 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 import com.tencent.mm.plugin.appbrand.appusage.ai;
 import com.tencent.mm.sdk.e.k.a;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandUsageStorageWithCache;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandLocalUsageStorage;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AbsAppBrandDesktopViewStorageWithCache;", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "delegate", "(Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandLocalUsageStorage;)V", "add", "", "p0", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "kotlin.jvm.PlatformType", "p1", "Landroid/os/Looper;", "listener", "Lcom/tencent/threadpool/serial/Serial;", "", "addLoadedListener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageLoaded;", "addStorageChangedListenerToDelegate", "createQueryCacheConfig", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "doNotify", "", "p2", "", "getCount", "lock", "lockCount", "query", "count", "", "queryByDelegate", "args", "", "([Ljava/lang/Object;)Ljava/util/List;", "remove", "removeLoadedListener", "removeUsage", "", "unlock", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandUsageStorageWithCache;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandLocalUsageStorage;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AbsAppBrandDesktopViewStorageWithCache;", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "delegate", "(Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandLocalUsageStorage;)V", "add", "", "p0", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "kotlin.jvm.PlatformType", "p1", "Landroid/os/Looper;", "listener", "Lcom/tencent/threadpool/serial/Serial;", "", "addLoadedListener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageLoaded;", "addStorageChangedListenerToDelegate", "createQueryCacheConfig", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "doNotify", "", "p2", "", "getCount", "lock", "lockCount", "query", "count", "", "queryByDelegate", "args", "", "([Ljava/lang/Object;)Ljava/util/List;", "remove", "removeLoadedListener", "removeUsage", "", "unlock", "Companion", "plugin-appbrand-integration_release"})
 public final class e
   extends a<List<? extends LocalUsageInfo>, ai>
   implements ai
 {
-  public static final a mzK;
+  public static final a nas;
   
   static
   {
-    AppMethodBeat.i(187493);
-    mzK = new a((byte)0);
-    AppMethodBeat.o(187493);
+    AppMethodBeat.i(189724);
+    nas = new a((byte)0);
+    AppMethodBeat.o(189724);
   }
   
   public e(ai paramai)
   {
     super(paramai);
-    AppMethodBeat.i(187492);
-    this.mzL = paramai;
-    AppMethodBeat.o(187492);
-  }
-  
-  public final boolean aY(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(187498);
-    boolean bool = this.mzL.aY(paramString, paramInt);
-    AppMethodBeat.o(187498);
-    return bool;
+    AppMethodBeat.i(189723);
+    this.nat = paramai;
+    AppMethodBeat.o(189723);
   }
   
   public final void add(k.a parama)
   {
-    AppMethodBeat.i(187491);
+    AppMethodBeat.i(189722);
     if (parama != null) {
       e(parama);
     }
-    AppMethodBeat.o(187491);
+    AppMethodBeat.o(189722);
   }
   
   public final void add(k.a parama, Looper paramLooper)
   {
-    AppMethodBeat.i(187494);
-    this.mzL.add(parama, paramLooper);
-    AppMethodBeat.o(187494);
+    AppMethodBeat.i(189725);
+    this.nat.add(parama, paramLooper);
+    AppMethodBeat.o(189725);
   }
   
   public final void add(String paramString, k.a parama)
   {
-    AppMethodBeat.i(187495);
-    this.mzL.add(paramString, parama);
-    AppMethodBeat.o(187495);
+    AppMethodBeat.i(189726);
+    this.nat.add(paramString, parama);
+    AppMethodBeat.o(189726);
   }
   
-  public final n bzw()
+  public final n bDA()
   {
-    return (n)d.mzI;
+    return (n)d.naq;
   }
   
-  public final List<LocalUsageInfo> dC(int paramInt1, int paramInt2)
+  public final boolean ba(String paramString, int paramInt)
   {
-    AppMethodBeat.i(187497);
-    List localList = this.mzL.dC(paramInt1, paramInt2);
-    AppMethodBeat.o(187497);
+    AppMethodBeat.i(189729);
+    boolean bool = this.nat.ba(paramString, paramInt);
+    AppMethodBeat.o(189729);
+    return bool;
+  }
+  
+  public final List<LocalUsageInfo> dE(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(189728);
+    List localList = this.nat.dE(paramInt1, paramInt2);
+    AppMethodBeat.o(189728);
     return localList;
   }
   
   public final void doNotify(String paramString)
   {
-    AppMethodBeat.i(187496);
-    this.mzL.doNotify(paramString);
-    AppMethodBeat.o(187496);
+    AppMethodBeat.i(189727);
+    this.nat.doNotify(paramString);
+    AppMethodBeat.o(189727);
   }
   
   protected final void g(k.a parama)
   {
-    AppMethodBeat.i(187489);
-    k.h(parama, "listener");
-    ((ai)this.mzv).add(parama);
-    AppMethodBeat.o(187489);
+    AppMethodBeat.i(189720);
+    p.h(parama, "listener");
+    ((ai)this.nad).add(parama);
+    AppMethodBeat.o(189720);
+  }
+  
+  public final List<LocalUsageInfo> rY(int paramInt)
+  {
+    AppMethodBeat.i(189718);
+    List localList = (List)n(new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.o(189718);
+    return localList;
   }
   
   public final void remove(k.a parama)
   {
-    AppMethodBeat.i(187490);
+    AppMethodBeat.i(189721);
     if (parama != null) {
       f(parama);
     }
-    AppMethodBeat.o(187490);
+    AppMethodBeat.o(189721);
   }
   
-  public final List<LocalUsageInfo> ry(int paramInt)
-  {
-    AppMethodBeat.i(187487);
-    List localList = (List)n(new Object[] { Integer.valueOf(paramInt) });
-    AppMethodBeat.o(187487);
-    return localList;
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandUsageStorageWithCache$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandUsageStorageWithCache$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

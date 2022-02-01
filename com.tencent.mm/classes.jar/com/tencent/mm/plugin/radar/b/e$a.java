@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.radar.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "", "(Ljava/lang/String;I)V", "Selected", "UnSelected", "plugin-radar_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "", "(Ljava/lang/String;I)V", "Selected", "UnSelected", "plugin-radar_release"})
 public enum e$a
 {
   static
   {
     AppMethodBeat.i(138549);
     a locala1 = new a("Selected", 0);
-    wbr = locala1;
+    xja = locala1;
     a locala2 = new a("UnSelected", 1);
-    wbs = locala2;
-    wbt = new a[] { locala1, locala2 };
+    xjb = locala2;
+    xjc = new a[] { locala1, locala2 };
     AppMethodBeat.o(138549);
   }
   

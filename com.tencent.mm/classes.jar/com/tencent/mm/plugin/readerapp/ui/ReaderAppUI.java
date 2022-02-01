@@ -13,14 +13,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html.ImageGetter;
 import android.text.TextPaint;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView;
@@ -30,33 +27,32 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.o;
-import com.tencent.mm.av.q;
-import com.tencent.mm.g.a.cs;
-import com.tencent.mm.kernel.i;
-import com.tencent.mm.model.aq;
-import com.tencent.mm.model.bo;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.aw.t;
+import com.tencent.mm.g.a.cv;
+import com.tencent.mm.model.ar;
 import com.tencent.mm.model.bp;
 import com.tencent.mm.model.y;
 import com.tencent.mm.model.y.b;
 import com.tencent.mm.plugin.brandservice.a.d.a;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.model.r;
+import com.tencent.mm.pluginsdk.ui.applet.e;
 import com.tencent.mm.pluginsdk.ui.applet.m.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.pluginsdk.ui.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storagebase.h;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.am;
 import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.aq;
 import com.tencent.mm.ui.base.MMPullDownView;
 import com.tencent.mm.ui.base.MMPullDownView.c;
 import com.tencent.mm.ui.base.MMPullDownView.d;
 import com.tencent.mm.ui.base.MMPullDownView.g;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.r.a;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import java.util.ArrayList;
@@ -64,30 +60,30 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@i
+@com.tencent.mm.kernel.i
 public class ReaderAppUI
   extends MMActivity
 {
   private static float density;
-  private int dsp;
-  private View iMi;
-  private n.d nAc;
-  private com.tencent.mm.ui.widget.b.a nym;
-  private ListView uES;
-  private MMPullDownView uEW;
-  private String uaS;
-  private a<String> weL;
-  private com.tencent.mm.pluginsdk.ui.e weM;
-  private int weN;
+  private int dEj;
+  private View jfs;
+  private com.tencent.mm.ui.widget.b.a nZK;
+  private n.e obh;
+  private ListView vHS;
+  private MMPullDownView vHW;
+  private String vdB;
+  private a<String> xmu;
+  private f xmv;
+  private int xmw;
   
   public ReaderAppUI()
   {
     AppMethodBeat.i(102751);
-    this.dsp = 0;
-    this.uaS = "";
-    this.weM = null;
-    this.weN = 0;
-    this.nAc = new n.d()
+    this.dEj = 0;
+    this.vdB = "";
+    this.xmv = null;
+    this.xmw = 0;
+    this.obh = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -101,16 +97,16 @@ public class ReaderAppUI
           AppMethodBeat.o(161679);
           return;
           Object localObject1 = (String)ReaderAppUI.c(ReaderAppUI.this).getItem(paramAnonymousInt);
-          if (!bs.isNullOrNil((String)localObject1))
+          if (!bt.isNullOrNil((String)localObject1))
           {
-            com.tencent.mm.plugin.readerapp.c.g.ep((String)localObject1, ReaderAppUI.a(ReaderAppUI.this));
-            paramAnonymousMenuItem = com.tencent.mm.plugin.readerapp.c.g.dtg();
+            com.tencent.mm.plugin.readerapp.c.g.eI((String)localObject1, ReaderAppUI.a(ReaderAppUI.this));
+            paramAnonymousMenuItem = com.tencent.mm.plugin.readerapp.c.g.dDD();
             paramAnonymousInt = ReaderAppUI.a(ReaderAppUI.this);
-            localObject1 = "delete from " + bp.oa(paramAnonymousInt) + " where reserved3 = " + com.tencent.mm.storagebase.h.ty((String)localObject1);
-            ac.d("MicroMsg.ReaderAppInfoStorage", "deleteGroup:%s", new Object[] { localObject1 });
-            if (paramAnonymousMenuItem.hpA.execSQL(bp.oa(paramAnonymousInt), (String)localObject1))
+            localObject1 = "delete from " + com.tencent.mm.model.bq.oA(paramAnonymousInt) + " where reserved3 = " + h.wo((String)localObject1);
+            ad.d("MicroMsg.ReaderAppInfoStorage", "deleteGroup:%s", new Object[] { localObject1 });
+            if (paramAnonymousMenuItem.hHS.execSQL(com.tencent.mm.model.bq.oA(paramAnonymousInt), (String)localObject1))
             {
-              paramAnonymousMenuItem.oe(paramAnonymousInt);
+              paramAnonymousMenuItem.oE(paramAnonymousInt);
               paramAnonymousMenuItem.doNotify();
             }
           }
@@ -120,11 +116,11 @@ public class ReaderAppUI
           if (ReaderAppUI.a(ReaderAppUI.this) == 20)
           {
             paramAnonymousMenuItem = (String)ReaderAppUI.c(ReaderAppUI.this).getItem(paramAnonymousInt);
-            paramAnonymousMenuItem = com.tencent.mm.plugin.readerapp.c.g.dtg().ad(paramAnonymousMenuItem, ReaderAppUI.a(ReaderAppUI.this));
+            paramAnonymousMenuItem = com.tencent.mm.plugin.readerapp.c.g.dDD().ah(paramAnonymousMenuItem, ReaderAppUI.a(ReaderAppUI.this));
             Object localObject2;
             if (paramAnonymousMenuItem.size() > 0)
             {
-              paramAnonymousMenuItem = (bo)paramAnonymousMenuItem.get(0);
+              paramAnonymousMenuItem = (bp)paramAnonymousMenuItem.get(0);
               localObject1 = new k.b();
               ((k.b)localObject1).title = paramAnonymousMenuItem.getTitle();
               ((k.b)localObject1).description = paramAnonymousMenuItem.getDigest();
@@ -135,45 +131,45 @@ public class ReaderAppUI
               localObject1 = new Intent();
               ((Intent)localObject1).putExtra("Retr_Msg_content", (String)localObject2);
               ((Intent)localObject1).putExtra("Retr_Msg_Type", 2);
-              ((Intent)localObject1).putExtra("Retr_Msg_thumb_path", r.aGc(paramAnonymousMenuItem.azl()));
+              ((Intent)localObject1).putExtra("Retr_Msg_thumb_path", r.aLC(paramAnonymousMenuItem.aCp()));
               ((Intent)localObject1).putExtra("Retr_Msg_Id", 7377812);
-              localObject2 = y.xJ(paramAnonymousMenuItem.hpu);
+              localObject2 = y.AH(paramAnonymousMenuItem.hHM);
               ((Intent)localObject1).putExtra("reportSessionId", (String)localObject2);
-              localObject2 = y.ayq().F((String)localObject2, true);
-              ((y.b)localObject2).l("prePublishId", "msg_" + paramAnonymousMenuItem.hpu);
-              ((y.b)localObject2).l("preUsername", "newsapp");
-              ((y.b)localObject2).l("preChatName", "newsapp");
-              ((y.b)localObject2).l("preMsgIndex", Integer.valueOf(0));
-              ((y.b)localObject2).l("sendAppMsgScene", Integer.valueOf(1));
-              com.tencent.mm.plugin.readerapp.b.a.iyx.k((Intent)localObject1, ReaderAppUI.this);
+              localObject2 = y.aBq().F((String)localObject2, true);
+              ((y.b)localObject2).k("prePublishId", "msg_" + paramAnonymousMenuItem.hHM);
+              ((y.b)localObject2).k("preUsername", "newsapp");
+              ((y.b)localObject2).k("preChatName", "newsapp");
+              ((y.b)localObject2).k("preMsgIndex", Integer.valueOf(0));
+              ((y.b)localObject2).k("sendAppMsgScene", Integer.valueOf(1));
+              com.tencent.mm.plugin.readerapp.b.a.iRG.k((Intent)localObject1, ReaderAppUI.this);
             }
             AppMethodBeat.o(161679);
             return;
             if (ReaderAppUI.a(ReaderAppUI.this) == 20)
             {
               paramAnonymousMenuItem = (String)ReaderAppUI.c(ReaderAppUI.this).getItem(paramAnonymousInt);
-              localObject1 = com.tencent.mm.plugin.readerapp.c.g.dtg().ad(paramAnonymousMenuItem, ReaderAppUI.a(ReaderAppUI.this));
+              localObject1 = com.tencent.mm.plugin.readerapp.c.g.dDD().ah(paramAnonymousMenuItem, ReaderAppUI.a(ReaderAppUI.this));
               if (!((List)localObject1).isEmpty())
               {
-                ac.i("MicroMsg.ReaderAppUI", "fav functionId %s, index %d, size %d", new Object[] { paramAnonymousMenuItem, Integer.valueOf(ReaderAppUI.d(ReaderAppUI.this)), Integer.valueOf(((List)localObject1).size()) });
+                ad.i("MicroMsg.ReaderAppUI", "fav functionId %s, index %d, size %d", new Object[] { paramAnonymousMenuItem, Integer.valueOf(ReaderAppUI.d(ReaderAppUI.this)), Integer.valueOf(((List)localObject1).size()) });
                 if (ReaderAppUI.d(ReaderAppUI.this) >= ((List)localObject1).size()) {
                   ReaderAppUI.a(ReaderAppUI.this, 0);
                 }
-                paramAnonymousMenuItem = (bo)((List)localObject1).get(ReaderAppUI.d(ReaderAppUI.this));
-                localObject1 = new cs();
-                localObject2 = y.xJ(paramAnonymousMenuItem.hpu);
-                y.b localb = y.ayq().F((String)localObject2, true);
-                localb.l("prePublishId", "msg_" + paramAnonymousMenuItem.hpu);
-                localb.l("preUsername", "newsapp");
-                localb.l("preChatName", "newsapp");
-                localb.l("preMsgIndex", Integer.valueOf(0));
-                localb.l("sendAppMsgScene", Integer.valueOf(1));
-                ((cs)localObject1).dck.sessionId = ((String)localObject2);
+                paramAnonymousMenuItem = (bp)((List)localObject1).get(ReaderAppUI.d(ReaderAppUI.this));
+                localObject1 = new cv();
+                localObject2 = y.AH(paramAnonymousMenuItem.hHM);
+                y.b localb = y.aBq().F((String)localObject2, true);
+                localb.k("prePublishId", "msg_" + paramAnonymousMenuItem.hHM);
+                localb.k("preUsername", "newsapp");
+                localb.k("preChatName", "newsapp");
+                localb.k("preMsgIndex", Integer.valueOf(0));
+                localb.k("sendAppMsgScene", Integer.valueOf(1));
+                ((cv)localObject1).dnG.sessionId = ((String)localObject2);
                 ReaderAppUI.d(ReaderAppUI.this);
-                com.tencent.mm.plugin.readerapp.c.b.a((cs)localObject1, paramAnonymousMenuItem);
-                ((cs)localObject1).dck.dcq = 7;
-                ((cs)localObject1).dck.activity = ReaderAppUI.this;
-                com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
+                com.tencent.mm.plugin.readerapp.c.b.a((cv)localObject1, paramAnonymousMenuItem);
+                ((cv)localObject1).dnG.dnM = 7;
+                ((cv)localObject1).dnG.activity = ReaderAppUI.this;
+                com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
               }
             }
           }
@@ -183,7 +179,7 @@ public class ReaderAppUI
     AppMethodBeat.o(102751);
   }
   
-  private PackageInfo aqk(String paramString)
+  private PackageInfo avj(String paramString)
   {
     AppMethodBeat.i(102759);
     if (paramString.length() == 0)
@@ -199,67 +195,71 @@ public class ReaderAppUI
     }
     catch (PackageManager.NameNotFoundException paramString)
     {
-      ac.printErrStackTrace("MicroMsg.ReaderAppUI", paramString, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.ReaderAppUI", paramString, "", new Object[0]);
       AppMethodBeat.o(102759);
     }
     return null;
   }
   
-  public final View.OnClickListener a(final bo parambo, final int paramInt1, final int paramInt2, final String paramString)
+  public final View.OnClickListener a(final bp parambp, final int paramInt1, final int paramInt2, final String paramString)
   {
     AppMethodBeat.i(102758);
-    if (parambo != null)
+    if (parambp != null)
     {
-      String str1 = com.tencent.mm.pluginsdk.ui.tools.x.aId(parambo.getUrl());
-      String str2 = com.tencent.mm.pluginsdk.ui.tools.x.aId(paramString);
-      String str3 = com.tencent.mm.pluginsdk.ui.tools.x.aId(parambo.getTitle());
-      com.tencent.mm.plugin.report.service.h.wUl.f(15413, new Object[] { Integer.valueOf(9), str2, str3, parambo.azp(), parambo.azh(), str1, Integer.valueOf(parambo.azq()), Integer.valueOf(parambo.azn()) });
+      String str1 = com.tencent.mm.pluginsdk.ui.tools.x.aNF(parambp.getUrl());
+      String str2 = com.tencent.mm.pluginsdk.ui.tools.x.aNF(paramString);
+      String str3 = com.tencent.mm.pluginsdk.ui.tools.x.aNF(parambp.getTitle());
+      com.tencent.mm.plugin.report.service.g.yhR.f(15413, new Object[] { Integer.valueOf(9), str2, str3, parambp.afw(), parambp.aCl(), str1, Integer.valueOf(parambp.aCt()), Integer.valueOf(parambp.aCr()) });
     }
-    parambo = new View.OnClickListener()
+    parambp = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(161677);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/readerapp/ui/ReaderAppUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
         if (20 == paramInt1)
         {
-          com.tencent.mm.plugin.report.service.h.wUl.f(15413, new Object[] { Integer.valueOf(8), paramString, parambo.getTitle() });
+          com.tencent.mm.plugin.report.service.g.yhR.f(15413, new Object[] { Integer.valueOf(8), paramString, parambp.getTitle() });
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("mode", 1);
-          Object localObject = parambo.getUrl();
-          paramAnonymousView.putExtra("news_svr_id", parambo.hpu);
-          paramAnonymousView.putExtra("news_svr_tweetid", parambo.azh());
+          localObject = parambp.getUrl();
+          paramAnonymousView.putExtra("news_svr_id", parambp.hHM);
+          paramAnonymousView.putExtra("news_svr_tweetid", parambp.aCl());
           paramAnonymousView.putExtra("rawUrl", ReaderAppUI.a(ReaderAppUI.this, (String)localObject));
-          paramAnonymousView.putExtra("title", parambo.getName());
-          paramAnonymousView.putExtra("webpageTitle", parambo.getTitle());
+          paramAnonymousView.putExtra("title", parambp.getName());
+          paramAnonymousView.putExtra("webpageTitle", parambp.getTitle());
           paramAnonymousView.putExtra("key_show_web_page_title", true);
           paramAnonymousView.putExtra("useJs", true);
           paramAnonymousView.putExtra("vertical_scroll", true);
           localObject = new Bundle();
           ((Bundle)localObject).putInt("snsWebSource", 3);
           paramAnonymousView.putExtra("jsapiargs", (Bundle)localObject);
-          paramAnonymousView.putExtra("shortUrl", parambo.azi());
-          paramAnonymousView.putExtra("type", parambo.type);
-          paramAnonymousView.putExtra("tweetid", parambo.azh());
+          paramAnonymousView.putExtra("shortUrl", parambp.aCm());
+          paramAnonymousView.putExtra("type", parambp.type);
+          paramAnonymousView.putExtra("tweetid", parambp.aCl());
           paramAnonymousView.putExtra("geta8key_username", "newsapp");
-          paramAnonymousView.putExtra("KPublisherId", "msg_" + Long.toString(parambo.hpu));
+          paramAnonymousView.putExtra("KPublisherId", "msg_" + Long.toString(parambp.hHM));
           paramAnonymousView.putExtra("pre_username", "newsapp");
-          paramAnonymousView.putExtra("prePublishId", "msg_" + Long.toString(parambo.hpu));
+          paramAnonymousView.putExtra("prePublishId", "msg_" + Long.toString(parambp.hHM));
           paramAnonymousView.putExtra("preUsername", "newsapp");
           paramAnonymousView.putExtra("preChatName", "newsapp");
           paramAnonymousView.putExtra("preMsgIndex", paramInt2);
           paramAnonymousView.putExtra("geta8key_scene", 66);
           paramAnonymousView.putExtra("webview_scene_type", 1);
-          paramAnonymousView.putExtra("webview_scene_note", com.tencent.mm.pluginsdk.ui.tools.x.aId(String.format("%d|%d|%s|%s|%s", new Object[] { Integer.valueOf(parambo.azq()), Integer.valueOf(parambo.azn()), parambo.azp(), paramString, parambo.azh() })));
+          paramAnonymousView.putExtra("webview_scene_note", com.tencent.mm.pluginsdk.ui.tools.x.aNF(String.format("%d|%d|%s|%s|%s", new Object[] { Integer.valueOf(parambp.aCt()), Integer.valueOf(parambp.aCr()), parambp.afw(), paramString, parambp.aCl() })));
           paramAnonymousView.putExtra("bizEnterId", (int)(System.currentTimeMillis() / 1000L));
           paramAnonymousView.putExtra("KOpenArticleSceneFromScene", 0);
           paramAnonymousView.addFlags(536870912);
-          com.tencent.mm.plugin.readerapp.b.a.iyx.i(paramAnonymousView, ReaderAppUI.this);
+          com.tencent.mm.plugin.readerapp.b.a.iRG.i(paramAnonymousView, ReaderAppUI.this);
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/readerapp/ui/ReaderAppUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(161677);
       }
     };
     AppMethodBeat.o(102758);
-    return parambo;
+    return parambp;
   }
   
   public int getLayoutId()
@@ -272,26 +272,27 @@ public class ReaderAppUI
     AppMethodBeat.i(102757);
     try
     {
-      this.weM = new com.tencent.mm.pluginsdk.ui.e(bs.convertStreamToString(getAssets().open("chatting/purecolor_chat.xml")), this);
-      this.uES = ((ListView)findViewById(2131303774));
-      this.uEW = ((MMPullDownView)findViewById(2131303777));
-      this.uEW.setIsReturnSuperDispatchWhenCancel(true);
-      this.iMi = getLayoutInflater().inflate(2131495179, null);
-      this.uES.addHeaderView(this.iMi);
+      this.xmv = new f(bt.convertStreamToString(getAssets().open("chatting/purecolor_chat.xml")), this);
+      this.vHS = ((ListView)findViewById(2131303774));
+      this.vHW = ((MMPullDownView)findViewById(2131303777));
+      this.vHW.setIsReturnSuperDispatchWhenCancel(true);
+      this.jfs = getLayoutInflater().inflate(2131495179, null);
+      this.vHS.addHeaderView(this.jfs);
       ((TextView)findViewById(2131299468)).setText(2131762171);
-      this.weL = new a(this, "");
-      this.uES.setOnScrollListener(this.weL);
-      this.uES.setAdapter(this.weL);
-      this.uES.setTranscriptMode(0);
-      registerForContextMenu(this.uES);
-      this.nym = new com.tencent.mm.ui.widget.b.a(this);
-      if (this.weL.getCount() == 0)
+      this.xmu = new a(this, "");
+      this.vHS.setOnScrollListener(this.xmu);
+      this.vHS.setAdapter(this.xmu);
+      this.vHS.setTranscriptMode(0);
+      registerForContextMenu(this.vHS);
+      this.nZK = new com.tencent.mm.ui.widget.b.a(this);
+      this.nZK.Lal = true;
+      if (this.xmu.getCount() == 0)
       {
         Object localObject = new Intent(this, ReaderAppIntroUI.class);
-        ((Intent)localObject).putExtra("type", this.dsp);
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/readerapp/ui/ReaderAppUI", "initView", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+        ((Intent)localObject).putExtra("type", this.dEj);
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/readerapp/ui/ReaderAppUI", "initView", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/readerapp/ui/ReaderAppUI", "initView", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         finish();
         AppMethodBeat.o(102757);
@@ -302,38 +303,38 @@ public class ReaderAppUI
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.ReaderAppUI", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ReaderAppUI", localException, "", new Object[0]);
       }
-      this.uEW.setOnTopLoadDataListener(new MMPullDownView.g()
+      this.vHW.setOnTopLoadDataListener(new MMPullDownView.g()
       {
-        public final boolean bWA()
+        public final boolean cbd()
         {
           AppMethodBeat.i(161680);
-          if (ReaderAppUI.c(ReaderAppUI.this).bSw())
+          if (ReaderAppUI.c(ReaderAppUI.this).bXb())
           {
             ReaderAppUI.b(ReaderAppUI.this).setSelectionFromTop(0, ReaderAppUI.e(ReaderAppUI.this).getTopHeight());
             AppMethodBeat.o(161680);
             return true;
           }
           int i = ReaderAppUI.c(ReaderAppUI.this).getCount();
-          int j = ReaderAppUI.c(ReaderAppUI.this).bSx();
-          ac.v("MicroMsg.ReaderAppUI", "onLoadData add count:".concat(String.valueOf(j)));
+          int j = ReaderAppUI.c(ReaderAppUI.this).bXc();
+          ad.v("MicroMsg.ReaderAppUI", "onLoadData add count:".concat(String.valueOf(j)));
           ReaderAppUI.c(ReaderAppUI.this).a(null, null);
           int k = ReaderAppUI.c(ReaderAppUI.this).getCount();
-          ac.d("MicroMsg.ReaderAppUI", "onTopLoadData nowCount:%d, preCount:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+          ad.d("MicroMsg.ReaderAppUI", "onTopLoadData nowCount:%d, preCount:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
           if (k > i)
           {
-            ac.i("MicroMsg.ReaderAppUI", "pullDownView nowCount > preCount on set position %d, set pullDownView.getTopHeight() %d", new Object[] { Integer.valueOf(j + 1), Integer.valueOf(ReaderAppUI.e(ReaderAppUI.this).getTopHeight()) });
+            ad.i("MicroMsg.ReaderAppUI", "pullDownView nowCount > preCount on set position %d, set pullDownView.getTopHeight() %d", new Object[] { Integer.valueOf(j + 1), Integer.valueOf(ReaderAppUI.e(ReaderAppUI.this).getTopHeight()) });
             com.tencent.mm.pluginsdk.ui.tools.n.a(ReaderAppUI.b(ReaderAppUI.this), j + 1, ReaderAppUI.e(ReaderAppUI.this).getTopHeight(), false);
           }
           AppMethodBeat.o(161680);
           return true;
         }
       });
-      this.uEW.setTopViewVisible(true);
-      this.uEW.setAtBottomCallBack(new MMPullDownView.c()
+      this.vHW.setTopViewVisible(true);
+      this.vHW.setAtBottomCallBack(new MMPullDownView.c()
       {
-        public final boolean bWz()
+        public final boolean cbc()
         {
           AppMethodBeat.i(161681);
           View localView = ReaderAppUI.b(ReaderAppUI.this).getChildAt(ReaderAppUI.b(ReaderAppUI.this).getChildCount() - 1);
@@ -351,9 +352,9 @@ public class ReaderAppUI
           return false;
         }
       });
-      this.uEW.setAtTopCallBack(new MMPullDownView.d()
+      this.vHW.setAtTopCallBack(new MMPullDownView.d()
       {
-        public final boolean bWy()
+        public final boolean cbb()
         {
           AppMethodBeat.i(161682);
           View localView = ReaderAppUI.b(ReaderAppUI.this).getChildAt(ReaderAppUI.b(ReaderAppUI.this).getFirstVisiblePosition());
@@ -366,13 +367,13 @@ public class ReaderAppUI
           return false;
         }
       });
-      this.uEW.setIsBottomShowAll(true);
-      this.weL.a(new r.a()
+      this.vHW.setIsBottomShowAll(true);
+      this.xmu.a(new r.a()
       {
-        public final void aPg()
+        public final void aSs()
         {
           AppMethodBeat.i(161683);
-          ReaderAppUI.e(ReaderAppUI.this).setIsTopShowAll(ReaderAppUI.c(ReaderAppUI.this).bSw());
+          ReaderAppUI.e(ReaderAppUI.this).setIsTopShowAll(ReaderAppUI.c(ReaderAppUI.this).bXb());
           AppMethodBeat.o(161683);
         }
       });
@@ -391,12 +392,12 @@ public class ReaderAppUI
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(161684);
-          com.tencent.mm.plugin.readerapp.b.a.iyx.c(new Intent().putExtra("Contact_User", ReaderAppUI.f(ReaderAppUI.this)), ReaderAppUI.this);
+          com.tencent.mm.plugin.readerapp.b.a.iRG.c(new Intent().putExtra("Contact_User", ReaderAppUI.f(ReaderAppUI.this)), ReaderAppUI.this);
           AppMethodBeat.o(161684);
           return true;
         }
       });
-      this.uES.setSelection(this.weL.getShowCount() - 1 + this.uES.getHeaderViewsCount());
+      this.vHS.setSelection(this.xmu.getShowCount() - 1 + this.vHS.getHeaderViewsCount());
       AppMethodBeat.o(102757);
     }
   }
@@ -405,16 +406,16 @@ public class ReaderAppUI
   {
     AppMethodBeat.i(102752);
     super.onCreate(paramBundle);
-    this.dsp = getIntent().getIntExtra("type", 0);
-    ac.i("MicroMsg.ReaderAppUI", "[onCreate] readerType:%s", new Object[] { Integer.valueOf(this.dsp) });
-    this.dsp = 20;
+    this.dEj = getIntent().getIntExtra("type", 0);
+    ad.i("MicroMsg.ReaderAppUI", "[onCreate] readerType:%s", new Object[] { Integer.valueOf(this.dEj) });
+    this.dEj = 20;
     density = com.tencent.mm.cc.a.getDensity(this);
     long l = System.currentTimeMillis();
     initView();
-    ac.i("MicroMsg.ReaderAppUI", "[initView] cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    this.uaS = bo.nZ(this.dsp);
-    if ((20 == this.dsp) && (com.tencent.mm.model.x.aD("newsapp", null) > 0)) {
-      com.tencent.mm.plugin.report.service.h.wUl.f(13440, new Object[] { Integer.valueOf(2) });
+    ad.i("MicroMsg.ReaderAppUI", "[initView] cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    this.vdB = bp.oz(this.dEj);
+    if ((20 == this.dEj) && (com.tencent.mm.model.x.aF("newsapp", null) > 0)) {
+      com.tencent.mm.plugin.report.service.g.yhR.f(13440, new Object[] { Integer.valueOf(2) });
     }
     AppMethodBeat.o(102752);
   }
@@ -422,10 +423,10 @@ public class ReaderAppUI
   public void onDestroy()
   {
     AppMethodBeat.i(102753);
-    if (this.weL != null)
+    if (this.xmu != null)
     {
-      this.weL.cVi();
-      this.weL.feY();
+      this.xmu.det();
+      this.xmu.fvg();
     }
     super.onDestroy();
     AppMethodBeat.o(102753);
@@ -435,9 +436,9 @@ public class ReaderAppUI
   {
     AppMethodBeat.i(102755);
     super.onPause();
-    ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().rA("");
-    com.tencent.mm.plugin.readerapp.c.g.dtg().remove(this.weL);
-    ((k)com.tencent.mm.kernel.g.ab(k.class)).awG().aNK(this.uaS);
+    ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().un("");
+    com.tencent.mm.plugin.readerapp.c.g.dDD().remove(this.xmu);
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azv().aTB(this.vdB);
     AppMethodBeat.o(102755);
   }
   
@@ -445,16 +446,16 @@ public class ReaderAppUI
   {
     AppMethodBeat.i(102754);
     super.onResume();
-    if (this.dsp == 20) {
+    if (this.dEj == 20) {
       setMMTitle(2131760208);
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().rA(this.uaS);
-      ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancelNotification(this.uaS);
-      ((k)com.tencent.mm.kernel.g.ab(k.class)).awG().aNK(this.uaS);
-      com.tencent.mm.plugin.readerapp.c.g.dtg().add(this.weL);
-      this.weL.a(null, null);
+      ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().un(this.vdB);
+      ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancelNotification(this.vdB);
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azv().aTB(this.vdB);
+      com.tencent.mm.plugin.readerapp.c.g.dDD().add(this.xmu);
+      this.xmu.a(null, null);
       refresh();
       AppMethodBeat.o(102754);
       return;
@@ -473,24 +474,24 @@ public class ReaderAppUI
     AppMethodBeat.i(102756);
     TextView localTextView = (TextView)findViewById(2131299468);
     int i;
-    if (this.dsp == 20)
+    if (this.dEj == 20)
     {
       i = 2131762179;
       localTextView.setText(i);
-      if (this.weL.getCount() != 0) {
+      if (this.xmu.getCount() != 0) {
         break label97;
       }
       localTextView.setVisibility(0);
     }
     for (;;)
     {
-      if ((this.uES != null) && ((this.weL instanceof a))) {
-        this.uES.post(new Runnable()
+      if ((this.vHS != null) && ((this.xmu instanceof a))) {
+        this.vHS.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(161678);
-            ((ReaderAppUI.a)ReaderAppUI.c(ReaderAppUI.this)).gN(ReaderAppUI.b(ReaderAppUI.this).getFirstVisiblePosition(), ReaderAppUI.b(ReaderAppUI.this).getLastVisiblePosition());
+            ((ReaderAppUI.a)ReaderAppUI.c(ReaderAppUI.this)).he(ReaderAppUI.b(ReaderAppUI.this).getFirstVisiblePosition(), ReaderAppUI.b(ReaderAppUI.this).getLastVisiblePosition());
             AppMethodBeat.o(161678);
           }
         });
@@ -508,78 +509,78 @@ public class ReaderAppUI
     extends a<String>
   {
     private Context context;
-    private int fAw;
-    private int nza;
-    private int nzb;
-    private int nzc;
-    private int nzd;
-    private int nzf;
-    private int ofG;
-    private Html.ImageGetter weT;
-    private int weU;
-    private int weV;
-    private int weW;
-    int weX;
-    int weY;
-    int weZ;
+    private int fTM;
+    private int oIZ;
+    private int oaf;
+    private int oag;
+    private int oah;
+    private int oai;
+    private int oak;
+    private Html.ImageGetter xmC;
+    private int xmD;
+    private int xmE;
+    private int xmF;
+    int xmG;
+    int xmH;
+    int xmI;
     
     public a(Context paramContext, String paramString)
     {
       super(paramString);
       AppMethodBeat.i(102732);
-      this.weT = new Html.ImageGetter()
+      this.xmC = new Html.ImageGetter()
       {
         public final Drawable getDrawable(String paramAnonymousString)
         {
           AppMethodBeat.i(102726);
-          int i = bs.getInt(paramAnonymousString, 0);
+          int i = bt.getInt(paramAnonymousString, 0);
           paramAnonymousString = ReaderAppUI.this.getResources().getDrawable(i);
           paramAnonymousString.setBounds(0, 0, paramAnonymousString.getIntrinsicWidth(), paramAnonymousString.getIntrinsicHeight());
           AppMethodBeat.o(102726);
           return paramAnonymousString;
         }
       };
-      this.weU = 0;
-      this.nzd = 0;
-      this.nzb = 0;
-      this.nzc = 0;
-      this.weV = 0;
-      this.weW = 0;
-      this.weX = 0;
-      this.weY = 1;
-      this.weZ = 2;
+      this.xmD = 0;
+      this.oai = 0;
+      this.oag = 0;
+      this.oah = 0;
+      this.xmE = 0;
+      this.xmF = 0;
+      this.xmG = 0;
+      this.xmH = 1;
+      this.xmI = 2;
       this.context = paramContext;
-      this.ofG = 3;
-      this.fAw = com.tencent.mm.plugin.readerapp.c.g.dtg().oc(ReaderAppUI.a(ReaderAppUI.this));
-      this.nzd = paramContext.getResources().getDimensionPixelSize(2131165568);
-      this.nzb = paramContext.getResources().getDimensionPixelSize(2131165480);
-      this.weU = paramContext.getResources().getDimensionPixelSize(2131165187);
-      this.nzc = paramContext.getResources().getDimensionPixelSize(2131165500);
-      this.nza = paramContext.getResources().getDimensionPixelSize(2131166025);
-      this.nzf = paramContext.getResources().getDimensionPixelSize(2131166023);
-      int i = com.tencent.mm.cc.a.ig(paramContext);
-      int j = com.tencent.mm.cc.a.ih(paramContext);
+      this.oIZ = 3;
+      this.fTM = com.tencent.mm.plugin.readerapp.c.g.dDD().oC(ReaderAppUI.a(ReaderAppUI.this));
+      this.oai = paramContext.getResources().getDimensionPixelSize(2131165568);
+      this.oag = paramContext.getResources().getDimensionPixelSize(2131165480);
+      this.xmD = paramContext.getResources().getDimensionPixelSize(2131165187);
+      this.oah = paramContext.getResources().getDimensionPixelSize(2131165500);
+      this.oaf = paramContext.getResources().getDimensionPixelSize(2131166025);
+      this.oak = paramContext.getResources().getDimensionPixelSize(2131166023);
+      int i = com.tencent.mm.cc.a.ip(paramContext);
+      int j = com.tencent.mm.cc.a.iq(paramContext);
       if (i < j) {}
       for (;;)
       {
-        this.weV = ((int)((i - (int)(ReaderAppUI.dth() * 28.0F)) / 2.35D));
-        this.weW = ((int)((i - ReaderAppUI.dth() * 52.0F) / 2.0F) * 4 / 3);
+        this.xmE = ((int)((i - (int)(ReaderAppUI.dDE() * 28.0F)) / 2.35D));
+        this.xmF = ((int)((i - ReaderAppUI.dDE() * 52.0F) / 2.0F) * 4 / 3);
         AppMethodBeat.o(102732);
         return;
         i = j;
       }
     }
     
-    private List<bo> LU(int paramInt)
+    private List<bp> Nt(int paramInt)
     {
       AppMethodBeat.i(102739);
       Object localObject = getItem(paramInt);
-      localObject = com.tencent.mm.plugin.readerapp.c.g.dtg().ad((String)localObject, 20);
+      localObject = com.tencent.mm.plugin.readerapp.c.g.dDD().ah((String)localObject, 20);
       AppMethodBeat.o(102739);
       return localObject;
     }
     
-    private static void W(View paramView, int paramInt)
+    private static void X(View paramView, int paramInt)
     {
       AppMethodBeat.i(102741);
       ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
@@ -588,7 +589,7 @@ public class ReaderAppUI
       AppMethodBeat.o(102741);
     }
     
-    private static void X(View paramView, int paramInt)
+    private static void Y(View paramView, int paramInt)
     {
       AppMethodBeat.i(102742);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
@@ -597,67 +598,67 @@ public class ReaderAppUI
       AppMethodBeat.o(102742);
     }
     
-    private static d.a a(bo parambo)
+    private static d.a a(bp parambp)
     {
-      AppMethodBeat.i(194867);
-      if (parambo == null)
+      AppMethodBeat.i(209001);
+      if (parambp == null)
       {
-        AppMethodBeat.o(194867);
+        AppMethodBeat.o(209001);
         return null;
       }
       d.a locala = new d.a();
-      locala.url = parambo.getUrl();
-      locala.nuJ = 164;
+      locala.url = parambp.getUrl();
+      locala.nWh = 164;
       locala.appId = "wx073f4a4daff0abe8";
-      locala.title = parambo.getTitle();
-      locala.desc = parambo.getDigest();
-      locala.dsT = "message";
-      AppMethodBeat.o(194867);
+      locala.title = parambp.getTitle();
+      locala.desc = parambp.getDigest();
+      locala.dET = "message";
+      AppMethodBeat.o(209001);
       return locala;
     }
     
-    private void a(a parama, int paramInt, List<bo> paramList)
+    private void a(a parama, int paramInt, List<bp> paramList)
     {
       AppMethodBeat.i(102743);
       int i = paramList.size();
       if (paramInt == 1) {
-        if (bs.isNullOrNil(((bo)paramList.get(0)).azl()))
+        if (bt.isNullOrNil(((bp)paramList.get(0)).aCp()))
         {
-          parama.ijv.setVisibility(0);
-          X(parama.ijv, this.nzb);
+          parama.iCM.setVisibility(0);
+          Y(parama.iCM, this.oag);
         }
       }
       while (paramInt == 1) {
         if (paramInt == i - 1)
         {
-          parama.nCh.setPadding(0, this.nzb, 0, this.nzb);
+          parama.oeQ.setPadding(0, this.oag, 0, this.oag);
           AppMethodBeat.o(102743);
           return;
-          parama.ijv.setVisibility(8);
+          parama.iCM.setVisibility(8);
           continue;
-          parama.ijv.setVisibility(0);
-          bo localbo = (bo)paramList.get(paramInt - 1);
-          paramList = (bo)paramList.get(paramInt);
-          if ((bs.isNullOrNil(localbo.azl())) || (bs.isNullOrNil(paramList.azl()))) {
-            X(parama.ijv, this.nzb);
+          parama.iCM.setVisibility(0);
+          bp localbp = (bp)paramList.get(paramInt - 1);
+          paramList = (bp)paramList.get(paramInt);
+          if ((bt.isNullOrNil(localbp.aCp())) || (bt.isNullOrNil(paramList.aCp()))) {
+            Y(parama.iCM, this.oag);
           } else {
-            X(parama.ijv, this.nzf);
+            Y(parama.iCM, this.oak);
           }
         }
         else
         {
-          parama.nCh.setPadding(0, this.nzb, 0, this.nzd);
+          parama.oeQ.setPadding(0, this.oag, 0, this.oai);
           AppMethodBeat.o(102743);
           return;
         }
       }
       if (paramInt == i - 1)
       {
-        parama.nCh.setPadding(0, this.nzd, 0, this.nzb);
+        parama.oeQ.setPadding(0, this.oai, 0, this.oag);
         AppMethodBeat.o(102743);
         return;
       }
-      parama.nCh.setPadding(0, this.nzd, 0, this.nzd);
+      parama.oeQ.setPadding(0, this.oai, 0, this.oai);
       AppMethodBeat.o(102743);
     }
     
@@ -669,70 +670,70 @@ public class ReaderAppUI
         AppMethodBeat.o(102731);
         return;
       }
-      paramb.wfe.addView(parama.nBh);
-      paramb.nCU.add(parama);
+      paramb.xmN.addView(parama.odh);
+      paramb.oft.add(parama);
       AppMethodBeat.o(102731);
     }
     
-    private void a(b paramb, List<bo> paramList, int paramInt1, int paramInt2, String paramString)
+    private void a(b paramb, List<bp> paramList, int paramInt1, int paramInt2, String paramString)
     {
       AppMethodBeat.i(102740);
       a locala = new a();
-      locala.nBh = View.inflate(this.context, paramInt1, null);
+      locala.odh = View.inflate(this.context, paramInt1, null);
       if (paramInt1 == 2131495189)
       {
-        locala.nBh.setBackground(am.c(ReaderAppUI.this.getResources().getDrawable(2131231693), ao.jK(ReaderAppUI.this.getContext())));
-        locala.fUk = ((TextView)locala.nBh.findViewById(2131305902));
-        locala.nCl = ((ImageView)locala.nBh.findViewById(2131298813));
-        locala.nCk = locala.nBh.findViewById(2131298814);
-        locala.ijv = locala.nBh.findViewById(2131306012);
-        locala.nCh = locala.nBh.findViewById(2131298764);
+        locala.odh.setBackground(ao.c(ReaderAppUI.this.getResources().getDrawable(2131231693), aq.jV(ReaderAppUI.this.getContext())));
+        locala.gnM = ((TextView)locala.odh.findViewById(2131305902));
+        locala.ocn = ((ImageView)locala.odh.findViewById(2131298813));
+        locala.oeT = locala.odh.findViewById(2131298814);
+        locala.iCM = locala.odh.findViewById(2131306012);
+        locala.oeQ = locala.odh.findViewById(2131298764);
         a(paramb, locala);
-        paramb = (bo)paramList.get(paramInt2);
+        paramb = (bp)paramList.get(paramInt2);
         a(locala, paramInt2, paramList);
-        locala.fUk.setText(paramb.getTitle());
-        locala.fUk.setText(paramb.getTitle());
-        if (bs.isNullOrNil(paramb.azl())) {
+        locala.gnM.setText(paramb.getTitle());
+        locala.gnM.setText(paramb.getTitle());
+        if (bt.isNullOrNil(paramb.aCp())) {
           break label380;
         }
-        locala.nCl.setVisibility(0);
-        a(paramb.azl(), locala.nCl, this.nza, this.nza);
+        locala.ocn.setVisibility(0);
+        a(paramb.aCp(), locala.ocn, this.oaf, this.oaf);
       }
       for (;;)
       {
         paramList = ReaderAppUI.this.a(paramb, ReaderAppUI.a(ReaderAppUI.this), paramInt2, paramString);
-        locala.nBh.setOnClickListener(paramList);
+        locala.odh.setOnClickListener(paramList);
         paramList = (com.tencent.mm.plugin.brandservice.a.d)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.d.class);
         if (paramList != null)
         {
           paramList.a(paramb.getUrl(), 164, "wx073f4a4daff0abe8", paramb.getTitle(), paramb.getDigest(), "message", 16);
-          paramList.cr(paramb.getUrl(), 16);
+          paramList.cu(paramb.getUrl(), 16);
         }
         AppMethodBeat.o(102740);
         return;
         if (paramInt1 != 2131495188) {
           break;
         }
-        locala.nBh.setBackground(am.c(ReaderAppUI.this.getResources().getDrawable(2131231692), ao.jK(ReaderAppUI.this.getContext())));
+        locala.odh.setBackground(ao.c(ReaderAppUI.this.getResources().getDrawable(2131231692), aq.jV(ReaderAppUI.this.getContext())));
         break;
         label380:
-        locala.nCk.setVisibility(8);
+        locala.oeT.setVisibility(8);
       }
     }
     
     private static void a(String paramString, ImageView paramImageView, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(102744);
-      paramString = q.Cx(paramString);
-      com.tencent.mm.av.a.a locala = o.aFB();
+      paramString = t.FB(paramString);
+      com.tencent.mm.aw.a.a locala = q.aIJ();
       c.a locala1 = new c.a();
-      locala1.hKL = 2131100141;
-      locala1.hKx = true;
-      locala1 = locala1.de(paramInt1, paramInt2);
-      locala1.hKm = new com.tencent.mm.pluginsdk.ui.applet.n();
-      locala1.hKU = new com.tencent.mm.pluginsdk.ui.applet.e();
-      locala1.gKe = r.aGc(paramString);
-      locala.a(paramString, paramImageView, locala1.aFT(), null, new com.tencent.mm.pluginsdk.ui.applet.m((byte)0));
+      locala1.idG = 2131100141;
+      locala1.idr = true;
+      locala1 = locala1.dh(paramInt1, paramInt2);
+      locala1.idg = new com.tencent.mm.pluginsdk.ui.applet.n();
+      locala1.idP = new e();
+      locala1.hdP = r.aLC(paramString);
+      locala.a(paramString, paramImageView, locala1.aJc(), null, new com.tencent.mm.pluginsdk.ui.applet.m((byte)0));
       AppMethodBeat.o(102744);
     }
     
@@ -744,183 +745,128 @@ public class ReaderAppUI
       return str;
     }
     
-    public final void Xb()
+    public final void Zu()
     {
       AppMethodBeat.i(102735);
       long l = System.currentTimeMillis();
-      this.fAw = com.tencent.mm.plugin.readerapp.c.g.dtg().oc(20);
-      setCursor(com.tencent.mm.plugin.readerapp.c.g.dtg().ob(this.ofG));
-      ac.i("MicroMsg.ReaderAppUI", "[resetCursor] cost:%sms showCount:%s totalCount:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(this.ofG), Integer.valueOf(this.fAw) });
+      this.fTM = com.tencent.mm.plugin.readerapp.c.g.dDD().oC(20);
+      setCursor(com.tencent.mm.plugin.readerapp.c.g.dDD().oB(this.oIZ));
+      ad.i("MicroMsg.ReaderAppUI", "[resetCursor] cost:%sms showCount:%s totalCount:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(this.oIZ), Integer.valueOf(this.fTM) });
       super.notifyDataSetChanged();
       AppMethodBeat.o(102735);
     }
     
-    public final void Xc()
+    public final void Zv()
     {
       AppMethodBeat.i(102733);
-      Xb();
+      Zu();
       AppMethodBeat.o(102733);
     }
     
-    public final boolean bSw()
+    public final boolean bXb()
     {
-      return this.ofG >= this.fAw;
+      return this.oIZ >= this.fTM;
     }
     
-    public final int bSx()
+    public final int bXc()
     {
       AppMethodBeat.i(102734);
-      if (bSw())
+      if (bXb())
       {
         AppMethodBeat.o(102734);
         return 0;
       }
-      this.ofG += 3;
-      if (this.ofG <= this.fAw)
+      this.oIZ += 3;
+      if (this.oIZ <= this.fTM)
       {
         AppMethodBeat.o(102734);
         return 3;
       }
-      this.ofG = this.fAw;
-      int i = this.fAw;
+      this.oIZ = this.fTM;
+      int i = this.fTM;
       AppMethodBeat.o(102734);
       return i % 3;
-    }
-    
-    public final void gN(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(102746);
-      ac.v("MicroMsg.ReaderAppUI", "[TRACE_PREFETCH] checkPreauth startPos = %s, endPos = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (paramInt1 > paramInt2)
-      {
-        AppMethodBeat.o(102746);
-        return;
-      }
-      com.tencent.mm.plugin.brandservice.a.d locald = (com.tencent.mm.plugin.brandservice.a.d)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.d.class);
-      if (locald == null)
-      {
-        ac.v("MicroMsg.ReaderAppUI", "checkPreauth WebPrefetcher null");
-        AppMethodBeat.o(102746);
-        return;
-      }
-      LinkedList localLinkedList = new LinkedList();
-      while (paramInt1 <= paramInt2)
-      {
-        List localList = LU(paramInt1 - 1);
-        if ((localList != null) && (localList.size() > 0))
-        {
-          localLinkedList.clear();
-          d.a locala = a((bo)localList.get(0));
-          if (locala != null)
-          {
-            localLinkedList.add(locala);
-            locald.cr(locala.url, 8);
-          }
-          if (localLinkedList.size() > 0) {
-            locald.l(localLinkedList, 8);
-          }
-          ac.v("MicroMsg.ReaderAppUI", "[TRACE_PREFETCH] checkPreauth authTop = %s", new Object[] { Integer.valueOf(localLinkedList.size()) });
-          localLinkedList.clear();
-          int i = 1;
-          while (i < localList.size())
-          {
-            locala = a((bo)localList.get(i));
-            if (locala != null)
-            {
-              localLinkedList.add(locala);
-              locald.cr(locala.url, 16);
-            }
-            i += 1;
-          }
-          if (localLinkedList.size() > 0) {
-            locald.l(localLinkedList, 16);
-          }
-          ac.v("MicroMsg.ReaderAppUI", "[TRACE_PREFETCH] checkPreauth authCommon = %s", new Object[] { Integer.valueOf(localLinkedList.size()) });
-        }
-        paramInt1 += 1;
-      }
-      AppMethodBeat.o(102746);
     }
     
     public final int getItemViewType(int paramInt)
     {
       AppMethodBeat.i(102737);
-      List localList = LU(paramInt);
-      if (bs.gY(localList))
+      List localList = Nt(paramInt);
+      if (bt.hj(localList))
       {
-        ac.e("MicroMsg.ReaderAppUI", "getItemViewType info is null");
-        paramInt = this.weX;
+        ad.e("MicroMsg.ReaderAppUI", "getItemViewType info is null");
+        paramInt = this.xmG;
         AppMethodBeat.o(102737);
         return paramInt;
       }
-      if (((bo)localList.get(0)).azn() == 1) {}
+      if (((bp)localList.get(0)).aCr() == 1) {}
       for (paramInt = 1; (paramInt != 0) && (localList.size() >= 2); paramInt = 0)
       {
-        paramInt = this.weY;
+        paramInt = this.xmH;
         AppMethodBeat.o(102737);
         return paramInt;
       }
-      paramInt = this.weX;
+      paramInt = this.xmG;
       AppMethodBeat.o(102737);
       return paramInt;
     }
     
     public final int getShowCount()
     {
-      return this.ofG;
+      return this.oIZ;
     }
     
     public final View getView(int paramInt, View paramView, final ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(102738);
-      if (getItemViewType(paramInt) == this.weY)
+      if (getItemViewType(paramInt) == this.xmH)
       {
         if (paramView == null)
         {
           paramViewGroup = new b();
           paramView = View.inflate(this.context, 2131495186, null);
-          paramViewGroup.toC = ((TextView)paramView.findViewById(2131306963));
-          paramViewGroup.fxQ = ((ImageView)paramView.findViewById(2131297008));
-          paramViewGroup.iIU = ((TextView)paramView.findViewById(2131302860));
-          paramViewGroup.wfh = new c();
-          paramViewGroup.wfh.nCN = paramView.findViewById(2131298819);
-          paramViewGroup.wfh.dti();
-          paramViewGroup.wfi = new c();
-          paramViewGroup.wfi.nCN = paramView.findViewById(2131298820);
-          paramViewGroup.wfi.dti();
+          paramViewGroup.umZ = ((TextView)paramView.findViewById(2131306963));
+          paramViewGroup.fRd = ((ImageView)paramView.findViewById(2131297008));
+          paramViewGroup.jcd = ((TextView)paramView.findViewById(2131302860));
+          paramViewGroup.xmQ = new c();
+          paramViewGroup.xmQ.ocz = paramView.findViewById(2131298819);
+          paramViewGroup.xmQ.dDF();
+          paramViewGroup.xmR = new c();
+          paramViewGroup.xmR.ocz = paramView.findViewById(2131298820);
+          paramViewGroup.xmR.dDF();
           paramView.setTag(paramViewGroup);
-          localObject2 = LU(paramInt);
+          localObject2 = Nt(paramInt);
           if ((localObject2 == null) || (((List)localObject2).size() < 2)) {
             break label486;
           }
           paramView.setVisibility(0);
-          localObject1 = (bo)((List)localObject2).get(0);
-          paramViewGroup.toC.setText(com.tencent.mm.pluginsdk.g.h.c(this.context, ((bo)localObject1).time, false));
+          localObject1 = (bp)((List)localObject2).get(0);
+          paramViewGroup.umZ.setText(com.tencent.mm.pluginsdk.i.i.c(this.context, ((bp)localObject1).time, false));
           localObject3 = new c.a();
-          ((c.a)localObject3).hKL = 2131231342;
-          ((c.a)localObject3).hKw = true;
-          ((c.a)localObject3).gLt = true;
-          o.aFB().a(((bo)localObject1).azk(), paramViewGroup.fxQ, ((c.a)localObject3).aFT());
-          paramViewGroup.iIU.setText(((bo)localObject1).azj());
-          paramViewGroup.iIU.getPaint().setFakeBoldText(true);
+          ((c.a)localObject3).idG = 2131231342;
+          ((c.a)localObject3).idq = true;
+          ((c.a)localObject3).hfi = true;
+          q.aIJ().a(((bp)localObject1).aCo(), paramViewGroup.fRd, ((c.a)localObject3).aJc());
+          paramViewGroup.jcd.setText(((bp)localObject1).aCn());
+          paramViewGroup.jcd.getPaint().setFakeBoldText(true);
           if (ReaderAppUI.i(ReaderAppUI.this) != null)
           {
-            paramViewGroup.toC.setTextColor(ReaderAppUI.i(ReaderAppUI.this).DmY);
-            if (!ReaderAppUI.i(ReaderAppUI.this).DmZ) {
+            paramViewGroup.umZ.setTextColor(ReaderAppUI.i(ReaderAppUI.this).ESd);
+            if (!ReaderAppUI.i(ReaderAppUI.this).ESe) {
               break label461;
             }
-            paramViewGroup.toC.setShadowLayer(2.0F, 1.2F, 1.2F, ReaderAppUI.i(ReaderAppUI.this).Dna);
+            paramViewGroup.umZ.setShadowLayer(2.0F, 1.2F, 1.2F, ReaderAppUI.i(ReaderAppUI.this).ESf);
             label353:
-            if (!ReaderAppUI.i(ReaderAppUI.this).Dnb) {
+            if (!ReaderAppUI.i(ReaderAppUI.this).ESg) {
               break label475;
             }
-            paramViewGroup.toC.setBackgroundResource(2131231582);
-            paramViewGroup.toC.setPadding(this.nzd, this.weU, this.nzd, this.weU);
+            paramViewGroup.umZ.setBackgroundResource(2131231582);
+            paramViewGroup.umZ.setPadding(this.oai, this.xmD, this.oai, this.xmD);
           }
           label399:
-          localObject2 = (bo)((List)localObject2).get(1);
-          paramViewGroup.wfh.a((bo)localObject1, paramInt, ((bo)localObject1).getTitle());
-          paramViewGroup.wfi.a((bo)localObject2, paramInt, ((bo)localObject1).getTitle());
+          localObject2 = (bp)((List)localObject2).get(1);
+          paramViewGroup.xmQ.a((bp)localObject1, paramInt, ((bp)localObject1).getTitle());
+          paramViewGroup.xmR.a((bp)localObject2, paramInt, ((bp)localObject1).getTitle());
         }
         for (;;)
         {
@@ -929,10 +875,10 @@ public class ReaderAppUI
           paramViewGroup = (b)paramView.getTag();
           break;
           label461:
-          paramViewGroup.toC.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+          paramViewGroup.umZ.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
           break label353;
           label475:
-          paramViewGroup.toC.setBackgroundColor(0);
+          paramViewGroup.umZ.setBackgroundColor(0);
           break label399;
           label486:
           paramView.setVisibility(8);
@@ -942,72 +888,71 @@ public class ReaderAppUI
       {
         paramViewGroup = new b();
         paramView = View.inflate(this.context, 2131495181, null);
-        paramViewGroup.toC = ((TextView)paramView.findViewById(2131303764));
-        paramViewGroup.wfe = ((ViewGroup)paramView.findViewById(2131303759));
-        paramViewGroup.iSJ = paramView.findViewById(2131297444);
-        paramViewGroup.nDr = paramView.findViewById(2131298818);
-        paramViewGroup.nCx = ((ImageView)paramView.findViewById(2131303387));
-        paramViewGroup.wfg = ((ImageView)paramView.findViewById(2131298831));
-        paramViewGroup.fUk = ((TextView)paramView.findViewById(2131303765));
-        paramViewGroup.wfd = ((ImageView)paramView.findViewById(2131303763));
-        paramViewGroup.uEM = ((TextView)paramView.findViewById(2131303762));
-        paramViewGroup.nCN = paramView.findViewById(2131305992);
-        paramViewGroup.wff = ((MMNeat7extView)paramView.findViewById(2131305946));
-        paramViewGroup.nCU = new ArrayList();
+        paramViewGroup.umZ = ((TextView)paramView.findViewById(2131303764));
+        paramViewGroup.xmN = ((ViewGroup)paramView.findViewById(2131303759));
+        paramViewGroup.jlR = paramView.findViewById(2131297444);
+        paramViewGroup.ocL = paramView.findViewById(2131298818);
+        paramViewGroup.ocB = ((ImageView)paramView.findViewById(2131303387));
+        paramViewGroup.xmP = ((ImageView)paramView.findViewById(2131298831));
+        paramViewGroup.gnM = ((TextView)paramView.findViewById(2131303765));
+        paramViewGroup.xmM = ((ImageView)paramView.findViewById(2131303763));
+        paramViewGroup.vHM = ((TextView)paramView.findViewById(2131303762));
+        paramViewGroup.ocz = paramView.findViewById(2131305992);
+        paramViewGroup.xmO = ((MMNeat7extView)paramView.findViewById(2131305946));
+        paramViewGroup.oft = new ArrayList();
         paramView.setTag(paramViewGroup);
       }
       for (;;)
       {
-        localObject1 = paramViewGroup.nCU.iterator();
+        localObject1 = paramViewGroup.oft.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (a)((Iterator)localObject1).next();
-          paramViewGroup.wfe.removeView(((a)localObject2).nBh);
+          paramViewGroup.xmN.removeView(((a)localObject2).odh);
         }
         paramViewGroup = (b)paramView.getTag();
       }
-      paramViewGroup.nCU.clear();
-      Object localObject1 = LU(paramInt);
+      paramViewGroup.oft.clear();
+      Object localObject1 = Nt(paramInt);
       label923:
       label965:
       int i;
-      label1003:
-      Object localObject5;
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
         int k = ((List)localObject1).size();
-        localObject2 = (bo)((List)localObject1).get(0);
-        paramViewGroup.toC.setText(com.tencent.mm.pluginsdk.g.h.c(this.context, ((bo)localObject2).time, false));
+        localObject2 = (bp)((List)localObject1).get(0);
+        paramViewGroup.umZ.setText(com.tencent.mm.pluginsdk.i.i.c(this.context, ((bp)localObject2).time, false));
         if (ReaderAppUI.i(ReaderAppUI.this) != null)
         {
-          paramViewGroup.toC.setTextColor(ReaderAppUI.i(ReaderAppUI.this).DmY);
-          if (ReaderAppUI.i(ReaderAppUI.this).DmZ)
+          paramViewGroup.umZ.setTextColor(ReaderAppUI.i(ReaderAppUI.this).ESd);
+          if (ReaderAppUI.i(ReaderAppUI.this).ESe)
           {
-            paramViewGroup.toC.setShadowLayer(2.0F, 1.2F, 1.2F, ReaderAppUI.i(ReaderAppUI.this).Dna);
-            if (!ReaderAppUI.i(ReaderAppUI.this).Dnb) {
+            paramViewGroup.umZ.setShadowLayer(2.0F, 1.2F, 1.2F, ReaderAppUI.i(ReaderAppUI.this).ESf);
+            if (!ReaderAppUI.i(ReaderAppUI.this).ESg) {
               break label1444;
             }
-            paramViewGroup.toC.setBackgroundResource(2131231582);
-            paramViewGroup.toC.setPadding(this.nzd, this.weU, this.nzd, this.weU);
+            paramViewGroup.umZ.setBackgroundResource(2131231582);
+            paramViewGroup.umZ.setPadding(this.oai, this.xmD, this.oai, this.xmD);
           }
         }
         else
         {
-          localObject3 = ReaderAppUI.this.a((bo)localObject2, ReaderAppUI.a(ReaderAppUI.this), 0, ((bo)localObject2).getTitle());
-          paramViewGroup.nCN.setOnClickListener((View.OnClickListener)localObject3);
+          localObject3 = ReaderAppUI.this.a((bp)localObject2, ReaderAppUI.a(ReaderAppUI.this), 0, ((bp)localObject2).getTitle());
+          paramViewGroup.ocz.setOnClickListener((View.OnClickListener)localObject3);
           if (k != 1) {
             break label1455;
           }
           bool = true;
-          paramViewGroup.fUk.setText(((bo)localObject2).getTitle());
-          paramViewGroup.uEM.setText(((bo)localObject2).getDigest());
-          if (bs.isNullOrNil(((bo)localObject2).azl())) {
+          paramViewGroup.gnM.setText(((bp)localObject2).getTitle());
+          paramViewGroup.vHM.setText(((bp)localObject2).getDigest());
+          if (bt.isNullOrNil(((bp)localObject2).aCp())) {
             break label1461;
           }
           i = 1;
-          paramViewGroup.wff.ar(((bo)localObject2).getTitle());
-          localObject3 = paramViewGroup.uEM;
-          if ((bool) && (!bs.isNullOrNil(((bo)localObject2).getDigest()))) {
+          label1003:
+          paramViewGroup.xmO.ar(((bp)localObject2).getTitle());
+          localObject3 = paramViewGroup.vHM;
+          if ((bool) && (!bt.isNullOrNil(((bp)localObject2).getDigest()))) {
             break label1467;
           }
         }
@@ -1018,23 +963,23 @@ public class ReaderAppUI
         for (int j = 8;; j = 0)
         {
           ((TextView)localObject3).setVisibility(j);
-          paramViewGroup.wfg.setVisibility(8);
+          paramViewGroup.xmP.setVisibility(8);
           if (!bool) {
             break label1473;
           }
-          paramViewGroup.nCx.setBackgroundResource(2131231708);
-          paramViewGroup.iSJ.setVisibility(0);
-          paramViewGroup.wff.setVisibility(8);
-          paramViewGroup.fUk.setVisibility(0);
-          W(paramViewGroup.nCx, this.weV);
-          W(paramViewGroup.nDr, this.weV);
+          paramViewGroup.ocB.setBackgroundResource(2131231708);
+          paramViewGroup.jlR.setVisibility(0);
+          paramViewGroup.xmO.setVisibility(8);
+          paramViewGroup.gnM.setVisibility(0);
+          X(paramViewGroup.ocB, this.xmE);
+          X(paramViewGroup.ocL, this.xmE);
           if (i == 0) {
             break label1575;
           }
-          paramViewGroup.nDr.setVisibility(0);
-          localObject5 = ((bo)localObject2).azl();
-          localObject3 = paramViewGroup.wfd;
-          i = this.weV;
+          paramViewGroup.ocL.setVisibility(0);
+          String str = ((bp)localObject2).aCp();
+          localObject3 = paramViewGroup.xmM;
+          i = this.xmE;
           localObject4 = new m.a()
           {
             public final void onFinish()
@@ -1042,43 +987,43 @@ public class ReaderAppUI
               AppMethodBeat.i(102727);
               if (!bool)
               {
-                paramViewGroup.wff.setTextColor(ReaderAppUI.this.getContext().getResources().getColor(2131101182));
-                paramViewGroup.wff.setBackgroundResource(2131231208);
+                paramViewGroup.xmO.setTextColor(ReaderAppUI.this.getContext().getResources().getColor(2131101182));
+                paramViewGroup.xmO.setBackgroundResource(2131231208);
               }
-              paramViewGroup.wfg.setVisibility(0);
+              paramViewGroup.xmP.setVisibility(0);
               AppMethodBeat.o(102727);
             }
             
             public final void onStart() {}
           };
-          localObject5 = q.Cx((String)localObject5);
+          str = t.FB(str);
           float f = ((ImageView)localObject3).getResources().getDimensionPixelSize(2131166028);
-          j = com.tencent.mm.cc.a.ig(ReaderAppUI.this.getContext()) - (int)(ReaderAppUI.dth() * 28.0F);
-          com.tencent.mm.av.a.a locala = o.aFB();
+          j = com.tencent.mm.cc.a.ip(ReaderAppUI.this.getContext()) - (int)(ReaderAppUI.dDE() * 28.0F);
+          com.tencent.mm.aw.a.a locala = q.aIJ();
           c.a locala1 = new c.a();
-          locala1.hKL = 2131231198;
-          locala1.hKx = true;
-          locala1.hKN = "2131231189";
-          locala1 = locala1.de(j, i);
-          locala1.hKm = new com.tencent.mm.pluginsdk.ui.applet.n();
-          locala1.hKU = new com.tencent.mm.pluginsdk.ui.applet.e();
-          locala1.gKe = r.aGc((String)localObject5);
-          locala.a((String)localObject5, (ImageView)localObject3, locala1.aFT(), null, new com.tencent.mm.pluginsdk.ui.applet.m(0, j, i, true, false, f, (m.a)localObject4));
-          paramViewGroup.iSJ.setBackground(am.e(ReaderAppUI.this.getResources().getDrawable(2131231686), ao.aJ(ReaderAppUI.this.getContext(), 2130968579)));
-          paramViewGroup.iSJ.setPadding(this.nzb, this.nzc, this.nzb, this.nzb);
-          paramViewGroup.nCx.setVisibility(0);
+          locala1.idG = 2131231198;
+          locala1.idr = true;
+          locala1.idI = "2131231189";
+          locala1 = locala1.dh(j, i);
+          locala1.idg = new com.tencent.mm.pluginsdk.ui.applet.n();
+          locala1.idP = new e();
+          locala1.hdP = r.aLC(str);
+          locala.a(str, (ImageView)localObject3, locala1.aJc(), null, new com.tencent.mm.pluginsdk.ui.applet.m(0, j, i, true, false, f, (m.a)localObject4));
+          paramViewGroup.jlR.setBackground(ao.e(ReaderAppUI.this.getResources().getDrawable(2131231686), this.context.getResources().getColor(2131099650)));
+          paramViewGroup.jlR.setPadding(this.oag, this.oah, this.oag, this.oag);
+          paramViewGroup.ocB.setVisibility(0);
           if (k <= 1) {
             break label1708;
           }
           i = 1;
           while (i < k - 1)
           {
-            a(paramViewGroup, (List)localObject1, 2131495189, i, ((bo)localObject2).getTitle());
+            a(paramViewGroup, (List)localObject1, 2131495189, i, ((bp)localObject2).getTitle());
             i += 1;
           }
-          paramViewGroup.toC.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+          paramViewGroup.umZ.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
           break;
-          paramViewGroup.toC.setBackgroundColor(0);
+          paramViewGroup.umZ.setBackgroundColor(0);
           break label923;
           bool = false;
           break label965;
@@ -1086,24 +1031,24 @@ public class ReaderAppUI
           break label1003;
         }
         label1473:
-        paramViewGroup.nCx.setBackgroundResource(2131231710);
-        localObject3 = paramViewGroup.iSJ;
+        paramViewGroup.ocB.setBackgroundResource(2131231710);
+        localObject3 = paramViewGroup.jlR;
         if (i != 0) {}
         for (j = 8;; j = 0)
         {
           ((View)localObject3).setVisibility(j);
-          paramViewGroup.fUk.setVisibility(8);
-          paramViewGroup.wff.setVisibility(0);
-          paramViewGroup.wff.setTextColor(ReaderAppUI.this.getContext().getResources().getColor(2131100541));
-          paramViewGroup.wff.setBackgroundResource(2131233299);
-          paramViewGroup.wff.getPaint().setFakeBoldText(true);
+          paramViewGroup.gnM.setVisibility(8);
+          paramViewGroup.xmO.setVisibility(0);
+          paramViewGroup.xmO.setTextColor(ReaderAppUI.this.getContext().getResources().getColor(2131100541));
+          paramViewGroup.xmO.setBackgroundResource(2131233299);
+          paramViewGroup.xmO.getPaint().setFakeBoldText(true);
           break;
         }
         label1575:
-        paramViewGroup.nDr.setVisibility(8);
-        paramViewGroup.fUk.setVisibility(0);
-        localObject3 = paramViewGroup.uEM;
-        if (bs.isNullOrNil(((bo)localObject2).getDigest()))
+        paramViewGroup.ocL.setVisibility(8);
+        paramViewGroup.gnM.setVisibility(0);
+        localObject3 = paramViewGroup.vHM;
+        if (bt.isNullOrNil(((bp)localObject2).getDigest()))
         {
           i = 8;
           label1613:
@@ -1111,47 +1056,48 @@ public class ReaderAppUI
           if (!bool) {
             break label1676;
           }
-          paramViewGroup.iSJ.setBackgroundResource(2131231695);
+          paramViewGroup.jlR.setBackgroundResource(2131231695);
         }
         for (;;)
         {
-          paramViewGroup.iSJ.setPadding(this.nzb, this.nzb, this.nzb, this.nzb);
-          paramViewGroup.nCx.setVisibility(8);
+          paramViewGroup.jlR.setPadding(this.oag, this.oag, this.oag, this.oag);
+          paramViewGroup.ocB.setVisibility(8);
           break;
           i = 0;
           break label1613;
           label1676:
-          paramViewGroup.iSJ.setBackgroundResource(2131231694);
+          paramViewGroup.jlR.setBackgroundResource(2131231694);
         }
-        a(paramViewGroup, (List)localObject1, 2131495188, k - 1, ((bo)localObject2).getTitle());
+        a(paramViewGroup, (List)localObject1, 2131495188, k - 1, ((bp)localObject2).getTitle());
         label1708:
         localObject3 = (com.tencent.mm.plugin.brandservice.a.d)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.d.class);
         if (localObject3 != null)
         {
-          ((com.tencent.mm.plugin.brandservice.a.d)localObject3).a(((bo)localObject2).getUrl(), 164, "wx073f4a4daff0abe8", ((bo)localObject2).getTitle(), ((bo)localObject2).getDigest(), "message", 8);
-          ((com.tencent.mm.plugin.brandservice.a.d)localObject3).cr(((bo)localObject2).getUrl(), 8);
+          ((com.tencent.mm.plugin.brandservice.a.d)localObject3).a(((bp)localObject2).getUrl(), 164, "wx073f4a4daff0abe8", ((bp)localObject2).getTitle(), ((bp)localObject2).getDigest(), "message", 8);
+          ((com.tencent.mm.plugin.brandservice.a.d)localObject3).cu(((bp)localObject2).getUrl(), 8);
         }
       }
-      paramViewGroup.nCN.setTag(Integer.valueOf(paramInt));
-      paramViewGroup.nCN.setTag(2131303776, Integer.valueOf(0));
+      paramViewGroup.ocz.setTag(Integer.valueOf(paramInt));
+      paramViewGroup.ocz.setTag(2131303776, Integer.valueOf(0));
       Object localObject2 = ReaderAppUI.h(ReaderAppUI.this);
-      Object localObject3 = paramViewGroup.nCN;
+      Object localObject3 = paramViewGroup.ocz;
       Object localObject4 = ReaderAppUI.this;
       if (((List)localObject1).size() == 1)
       {
         bool = true;
-        ((com.tencent.mm.ui.widget.b.a)localObject2).c((View)localObject3, ReaderAppUI.a((ReaderAppUI)localObject4, bool), ReaderAppUI.g(ReaderAppUI.this));
-        paramViewGroup = paramViewGroup.nCU.iterator();
+        ((com.tencent.mm.ui.widget.b.a)localObject2).a((View)localObject3, ReaderAppUI.a((ReaderAppUI)localObject4, bool), ReaderAppUI.g(ReaderAppUI.this));
+        paramViewGroup = paramViewGroup.oft.iterator();
         i = 1;
         label1863:
         if (!paramViewGroup.hasNext()) {
           break label1989;
         }
-        localObject2 = (a)paramViewGroup.next();
-        ((a)localObject2).nBh.setTag(Integer.valueOf(paramInt));
-        localObject3 = ReaderAppUI.h(ReaderAppUI.this);
-        localObject4 = ((a)localObject2).nBh;
-        localObject5 = ReaderAppUI.this;
+        localObject3 = (a)paramViewGroup.next();
+        ((a)localObject3).odh.setTag(Integer.valueOf(paramInt));
+        ((a)localObject3).odh.setTag(2131303776, Integer.valueOf(i));
+        localObject2 = ReaderAppUI.h(ReaderAppUI.this);
+        localObject3 = ((a)localObject3).odh;
+        localObject4 = ReaderAppUI.this;
         if (((List)localObject1).size() != 1) {
           break label1983;
         }
@@ -1159,8 +1105,7 @@ public class ReaderAppUI
       label1983:
       for (final boolean bool = true;; bool = false)
       {
-        ((com.tencent.mm.ui.widget.b.a)localObject3).c((View)localObject4, ReaderAppUI.a((ReaderAppUI)localObject5, bool), ReaderAppUI.g(ReaderAppUI.this));
-        ((a)localObject2).nBh.setTag(2131303776, Integer.valueOf(i));
+        ((com.tencent.mm.ui.widget.b.a)localObject2).a((View)localObject3, ReaderAppUI.a((ReaderAppUI)localObject4, bool), ReaderAppUI.g(ReaderAppUI.this));
         i += 1;
         break label1863;
         bool = false;
@@ -1173,7 +1118,62 @@ public class ReaderAppUI
     
     public final int getViewTypeCount()
     {
-      return this.weZ;
+      return this.xmI;
+    }
+    
+    public final void he(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(102746);
+      ad.v("MicroMsg.ReaderAppUI", "[TRACE_PREFETCH] checkPreauth startPos = %s, endPos = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (paramInt1 > paramInt2)
+      {
+        AppMethodBeat.o(102746);
+        return;
+      }
+      com.tencent.mm.plugin.brandservice.a.d locald = (com.tencent.mm.plugin.brandservice.a.d)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.d.class);
+      if (locald == null)
+      {
+        ad.v("MicroMsg.ReaderAppUI", "checkPreauth WebPrefetcher null");
+        AppMethodBeat.o(102746);
+        return;
+      }
+      LinkedList localLinkedList = new LinkedList();
+      while (paramInt1 <= paramInt2)
+      {
+        List localList = Nt(paramInt1 - 1);
+        if ((localList != null) && (localList.size() > 0))
+        {
+          localLinkedList.clear();
+          d.a locala = a((bp)localList.get(0));
+          if (locala != null)
+          {
+            localLinkedList.add(locala);
+            locald.cu(locala.url, 8);
+          }
+          if (localLinkedList.size() > 0) {
+            locald.m(localLinkedList, 8);
+          }
+          ad.v("MicroMsg.ReaderAppUI", "[TRACE_PREFETCH] checkPreauth authTop = %s", new Object[] { Integer.valueOf(localLinkedList.size()) });
+          localLinkedList.clear();
+          int i = 1;
+          while (i < localList.size())
+          {
+            locala = a((bp)localList.get(i));
+            if (locala != null)
+            {
+              localLinkedList.add(locala);
+              locald.cu(locala.url, 16);
+            }
+            i += 1;
+          }
+          if (localLinkedList.size() > 0) {
+            locald.m(localLinkedList, 16);
+          }
+          ad.v("MicroMsg.ReaderAppUI", "[TRACE_PREFETCH] checkPreauth authCommon = %s", new Object[] { Integer.valueOf(localLinkedList.size()) });
+        }
+        paramInt1 += 1;
+      }
+      AppMethodBeat.o(102746);
     }
     
     public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
@@ -1181,95 +1181,95 @@ public class ReaderAppUI
       AppMethodBeat.i(102745);
       super.onScrollStateChanged(paramAbsListView, paramInt);
       if ((paramAbsListView != null) && (paramInt == 0)) {
-        gN(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition());
+        he(paramAbsListView.getFirstVisiblePosition(), paramAbsListView.getLastVisiblePosition());
       }
       AppMethodBeat.o(102745);
     }
     
     final class a
     {
-      TextView fUk;
-      View ijv;
-      View nBh;
-      View nCh;
-      View nCk;
-      ImageView nCl;
+      TextView gnM;
+      View iCM;
+      ImageView ocn;
+      View odh;
+      View oeQ;
+      View oeT;
       
       a() {}
     }
     
     final class b
     {
-      TextView fUk;
-      ImageView fxQ;
-      TextView iIU;
-      View iSJ;
-      View nCN;
-      List<ReaderAppUI.a.a> nCU;
-      ImageView nCx;
-      View nDr;
-      TextView toC;
-      TextView uEM;
-      ImageView wfd;
-      ViewGroup wfe;
-      MMNeat7extView wff;
-      ImageView wfg;
-      ReaderAppUI.a.c wfh;
-      ReaderAppUI.a.c wfi;
+      ImageView fRd;
+      TextView gnM;
+      TextView jcd;
+      View jlR;
+      ImageView ocB;
+      View ocL;
+      View ocz;
+      List<ReaderAppUI.a.a> oft;
+      TextView umZ;
+      TextView vHM;
+      ImageView xmM;
+      ViewGroup xmN;
+      MMNeat7extView xmO;
+      ImageView xmP;
+      ReaderAppUI.a.c xmQ;
+      ReaderAppUI.a.c xmR;
       
       b() {}
     }
     
     final class c
     {
-      View nCN;
-      MMNeat7extView nMV;
-      ImageView opg;
-      View wfj;
-      View wfk;
-      ImageView wfl;
-      ImageView wfm;
-      TextView wfn;
+      ImageView oSB;
+      View ocz;
+      MMNeat7extView opB;
+      View xmS;
+      View xmT;
+      ImageView xmU;
+      ImageView xmV;
+      TextView xmW;
       
       c() {}
       
-      final void a(bo parambo, int paramInt, String paramString)
+      final void a(bp parambp, int paramInt, String paramString)
       {
         AppMethodBeat.i(102730);
-        paramString = ReaderAppUI.this.a(parambo, ReaderAppUI.a(ReaderAppUI.this), 0, paramString);
-        if (this.nCN == null)
+        paramString = ReaderAppUI.this.a(parambp, ReaderAppUI.a(ReaderAppUI.this), 0, paramString);
+        if (this.ocz == null)
         {
           AppMethodBeat.o(102730);
           return;
         }
-        this.nCN.setOnClickListener(paramString);
-        ReaderAppUI.h(ReaderAppUI.this).c(this.nCN, ReaderAppUI.a(ReaderAppUI.this, false), ReaderAppUI.g(ReaderAppUI.this));
-        this.nCN.setTag(Integer.valueOf(paramInt));
-        this.nCN.setTag(2131303776, Integer.valueOf(paramInt));
-        this.nMV.ar(parambo.getTitle());
-        paramString = com.tencent.mm.ah.m.nJ(parambo.azo());
-        if (!bs.isNullOrNil(paramString))
+        this.ocz.setOnClickListener(paramString);
+        this.ocz.setTag(Integer.valueOf(paramInt));
+        this.ocz.setTag(2131303776, Integer.valueOf(paramInt));
+        ReaderAppUI.h(ReaderAppUI.this).a(this.ocz, ReaderAppUI.a(ReaderAppUI.this, false), ReaderAppUI.g(ReaderAppUI.this));
+        this.opB.ar(parambp.getTitle());
+        paramString = com.tencent.mm.ai.m.oi(parambp.aCs());
+        if (!bt.isNullOrNil(paramString))
         {
-          this.wfn.setText(paramString);
-          this.wfj.setVisibility(0);
+          this.xmW.setText(paramString);
+          this.xmS.setVisibility(0);
         }
         for (;;)
         {
-          this.nMV.setTextColor(ReaderAppUI.this.getContext().getResources().getColor(2131100541));
-          this.wfk.setBackgroundResource(2131233299);
-          paramInt = (int)(this.wfn.getTextSize() * 1.7D);
-          paramString = this.wfm.getLayoutParams();
+          this.opB.setTextColor(ReaderAppUI.this.getContext().getResources().getColor(2131100541));
+          this.xmT.setBackgroundResource(2131233299);
+          paramInt = (int)(this.xmW.getTextSize() * 1.7D);
+          paramString = this.xmV.getLayoutParams();
           paramString.height = paramInt;
           paramString.width = paramInt;
-          this.wfm.setLayoutParams(paramString);
-          ReaderAppUI.a.ao(this.opg, ReaderAppUI.a.a(ReaderAppUI.a.this));
-          ReaderAppUI.a.a(ReaderAppUI.a.this, parambo.azl(), this.opg, new m.a()
+          this.xmV.setLayoutParams(paramString);
+          ReaderAppUI.a.ap(this.oSB, ReaderAppUI.a.a(ReaderAppUI.a.this));
+          ReaderAppUI.a.a(ReaderAppUI.a.this, parambp.aCp(), this.oSB, new m.a()
           {
             public final void onFinish()
             {
               AppMethodBeat.i(102728);
-              ReaderAppUI.a.c.this.nMV.setTextColor(ReaderAppUI.this.getContext().getResources().getColor(2131101182));
-              ReaderAppUI.a.c.this.wfk.setBackgroundResource(2131234756);
+              ReaderAppUI.a.c.this.opB.setTextColor(ReaderAppUI.this.getContext().getResources().getColor(2131101182));
+              ReaderAppUI.a.c.this.xmT.setBackgroundResource(2131234756);
               AppMethodBeat.o(102728);
             }
             
@@ -1277,25 +1277,25 @@ public class ReaderAppUI
           });
           AppMethodBeat.o(102730);
           return;
-          this.wfj.setVisibility(8);
+          this.xmS.setVisibility(8);
         }
       }
       
-      final void dti()
+      final void dDF()
       {
         AppMethodBeat.i(102729);
-        if (this.nCN == null)
+        if (this.ocz == null)
         {
           AppMethodBeat.o(102729);
           return;
         }
-        this.opg = ((ImageView)this.nCN.findViewById(2131306962));
-        this.wfl = ((ImageView)this.nCN.findViewById(2131303387));
-        this.nMV = ((MMNeat7extView)this.nCN.findViewById(2131305946));
-        this.wfn = ((TextView)this.nCN.findViewById(2131306310));
-        this.wfm = ((ImageView)this.nCN.findViewById(2131303285));
-        this.wfj = this.nCN.findViewById(2131303292);
-        this.wfk = this.nCN.findViewById(2131306959);
+        this.oSB = ((ImageView)this.ocz.findViewById(2131306962));
+        this.xmU = ((ImageView)this.ocz.findViewById(2131303387));
+        this.opB = ((MMNeat7extView)this.ocz.findViewById(2131305946));
+        this.xmW = ((TextView)this.ocz.findViewById(2131306310));
+        this.xmV = ((ImageView)this.ocz.findViewById(2131303285));
+        this.xmS = this.ocz.findViewById(2131303292);
+        this.xmT = this.ocz.findViewById(2131306959);
         AppMethodBeat.o(102729);
       }
     }

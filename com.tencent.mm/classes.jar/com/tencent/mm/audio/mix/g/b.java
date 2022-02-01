@@ -2,7 +2,7 @@ package com.tencent.mm.audio.mix.g;
 
 public abstract interface b
 {
-  public abstract com.tencent.mm.ai.b NT();
+  public abstract com.tencent.mm.aj.b PC();
 }
 
 

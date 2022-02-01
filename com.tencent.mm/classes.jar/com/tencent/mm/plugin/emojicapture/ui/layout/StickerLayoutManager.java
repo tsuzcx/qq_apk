@@ -9,28 +9,28 @@ import android.support.v7.widget.RecyclerView.s;
 import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "TAG", "", "itemPadding", "itemWidth", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "scrollToPosition", "position", "smoothScrollToPosition", "recyclerView", "updateChild", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/StickerLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "TAG", "", "itemPadding", "itemWidth", "onLayoutChildren", "", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "scrollToPosition", "position", "smoothScrollToPosition", "recyclerView", "updateChild", "plugin-emojicapture_release"})
 public final class StickerLayoutManager
   extends LinearLayoutManager
 {
   private final String TAG;
   private final int itemPadding;
-  private final int onm;
+  private final int oQH;
   
   public StickerLayoutManager(Context paramContext)
   {
     super(0);
     AppMethodBeat.i(889);
     this.TAG = "MicroMsg.StickerLayoutManager";
-    this.onm = paramContext.getResources().getDimensionPixelSize(2131166206);
+    this.oQH = paramContext.getResources().getDimensionPixelSize(2131166206);
     this.itemPadding = paramContext.getResources().getDimensionPixelSize(2131165303);
     AppMethodBeat.o(889);
   }
   
-  private final void cgf()
+  private final void ckJ()
   {
     AppMethodBeat.i(888);
     int i = 0;
@@ -43,7 +43,7 @@ public final class StickerLayoutManager
       {
         i += 1;
         break;
-        k.g(localView, "getChildAt(i) ?: continue");
+        p.g(localView, "getChildAt(i) ?: continue");
         int k = bB(localView);
         int m = (localView.getLeft() + localView.getRight()) / 2;
         int n = getWidth() / 2;
@@ -62,10 +62,10 @@ public final class StickerLayoutManager
   public final int a(int paramInt, RecyclerView.o paramo, RecyclerView.t paramt)
   {
     AppMethodBeat.i(885);
-    k.h(paramo, "recycler");
-    k.h(paramt, "state");
+    p.h(paramo, "recycler");
+    p.h(paramt, "state");
     paramInt = super.a(paramInt, paramo, paramt);
-    cgf();
+    ckJ();
     AppMethodBeat.o(885);
     return paramInt;
   }
@@ -73,10 +73,10 @@ public final class StickerLayoutManager
   public final void a(RecyclerView paramRecyclerView, RecyclerView.t paramt, int paramInt)
   {
     AppMethodBeat.i(886);
-    k.h(paramRecyclerView, "recyclerView");
-    k.h(paramt, "state");
+    p.h(paramRecyclerView, "recyclerView");
+    p.h(paramt, "state");
     paramRecyclerView = paramRecyclerView.getContext();
-    k.g(paramRecyclerView, "recyclerView.context");
+    p.g(paramRecyclerView, "recyclerView.context");
     paramRecyclerView = new a(paramRecyclerView);
     paramRecyclerView.cz(paramInt);
     a((RecyclerView.s)paramRecyclerView);
@@ -86,17 +86,17 @@ public final class StickerLayoutManager
   public final void c(RecyclerView.o paramo, RecyclerView.t paramt)
   {
     AppMethodBeat.i(884);
-    k.h(paramo, "recycler");
-    k.h(paramt, "state");
+    p.h(paramo, "recycler");
+    p.h(paramt, "state");
     super.c(paramo, paramt);
-    cgf();
+    ckJ();
     AppMethodBeat.o(884);
   }
   
   public final void ca(int paramInt)
   {
     AppMethodBeat.i(887);
-    af(paramInt, (getWidth() - this.onm) / 2 - this.itemPadding);
+    ag(paramInt, (getWidth() - this.oQH) / 2 - this.itemPadding);
     AppMethodBeat.o(887);
   }
 }

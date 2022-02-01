@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PackThumbExt
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String ActivityID;
   public String AesKey;
@@ -104,9 +104,9 @@ public class PackThumbExt
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(104824);
@@ -122,43 +122,43 @@ public class PackThumbExt
           AppMethodBeat.o(104824);
           return -1;
         case 1: 
-          localPackThumbExt.PreviewUrl = locala.LVo.readString();
+          localPackThumbExt.PreviewUrl = locala.NPN.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 2: 
-          localPackThumbExt.Desc = locala.LVo.readString();
+          localPackThumbExt.Desc = locala.NPN.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 3: 
-          localPackThumbExt.Md5 = locala.LVo.readString();
+          localPackThumbExt.Md5 = locala.NPN.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 4: 
-          localPackThumbExt.AesKey = locala.LVo.readString();
+          localPackThumbExt.AesKey = locala.NPN.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 5: 
-          localPackThumbExt.CDNUrl = locala.LVo.readString();
+          localPackThumbExt.CDNUrl = locala.NPN.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 6: 
-          localPackThumbExt.ThumbUrl = locala.LVo.readString();
+          localPackThumbExt.ThumbUrl = locala.NPN.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 7: 
-          localPackThumbExt.EncryptUrl = locala.LVo.readString();
+          localPackThumbExt.EncryptUrl = locala.NPN.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 8: 
-          localPackThumbExt.ExternUrl = locala.LVo.readString();
+          localPackThumbExt.ExternUrl = locala.NPN.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 9: 
-          localPackThumbExt.ExternMd5 = locala.LVo.readString();
+          localPackThumbExt.ExternMd5 = locala.NPN.readString();
           AppMethodBeat.o(104824);
           return 0;
         }
-        localPackThumbExt.ActivityID = locala.LVo.readString();
+        localPackThumbExt.ActivityID = locala.NPN.readString();
         AppMethodBeat.o(104824);
         return 0;
       }

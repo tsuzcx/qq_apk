@@ -2,69 +2,69 @@ package com.tencent.mm.plugin.fts.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class j
 {
-  private static final AtomicInteger syA;
-  public ao handler;
+  private static final AtomicInteger tvb;
+  public ap handler;
   public final int id;
-  public int jwR;
+  public int jQN;
   public String query;
   public int scene;
-  public String syB;
-  public String syC;
-  public int[] syD;
-  public int[] syE;
-  public int syF;
-  public HashSet<String> syG;
-  public Comparator<m> syH;
-  public l syI;
   public String talker;
+  public String tvc;
+  public String tvd;
+  public int[] tve;
+  public int[] tvf;
+  public int tvg;
+  public HashSet<String> tvh;
+  public Comparator<m> tvi;
+  public l tvj;
   
   static
   {
     AppMethodBeat.i(131707);
-    syA = new AtomicInteger(0);
+    tvb = new AtomicInteger(0);
     AppMethodBeat.o(131707);
   }
   
   public j()
   {
     AppMethodBeat.i(131703);
-    this.jwR = 0;
+    this.jQN = 0;
     this.query = null;
-    this.syB = null;
-    this.syC = null;
+    this.tvc = null;
+    this.tvd = null;
     this.talker = null;
-    this.syD = null;
-    this.syE = null;
-    this.syF = 2147483647;
-    this.syG = new HashSet();
-    this.syH = null;
-    this.syI = null;
+    this.tve = null;
+    this.tvf = null;
+    this.tvg = 2147483647;
+    this.tvh = new HashSet();
+    this.tvi = null;
+    this.tvj = null;
     this.handler = null;
     this.scene = -1;
-    this.id = syA.incrementAndGet();
+    this.id = tvb.incrementAndGet();
     AppMethodBeat.o(131703);
   }
   
-  public static j a(String paramString, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt, HashSet<String> paramHashSet, Comparator<m> paramComparator, l paraml, ao paramao)
+  public static j a(String paramString, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt, HashSet<String> paramHashSet, Comparator<m> paramComparator, l paraml, ap paramap)
   {
     AppMethodBeat.i(131704);
     j localj = new j();
     localj.query = paramString;
-    localj.syB = null;
-    localj.syD = paramArrayOfInt1;
-    localj.syE = paramArrayOfInt2;
-    localj.syF = paramInt;
-    localj.syG = paramHashSet;
-    localj.syH = paramComparator;
-    localj.syI = paraml;
-    localj.handler = paramao;
+    localj.tvc = null;
+    localj.tve = paramArrayOfInt1;
+    localj.tvf = paramArrayOfInt2;
+    localj.tvg = paramInt;
+    localj.tvh = paramHashSet;
+    localj.tvi = paramComparator;
+    localj.tvj = paraml;
+    localj.handler = paramap;
     AppMethodBeat.o(131704);
     return localj;
   }
@@ -102,7 +102,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.j
  * JD-Core Version:    0.7.0.1
  */

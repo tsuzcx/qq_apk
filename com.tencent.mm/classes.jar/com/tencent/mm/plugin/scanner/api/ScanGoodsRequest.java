@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.vfs.i;
 
 public class ScanGoodsRequest
@@ -13,82 +13,89 @@ public class ScanGoodsRequest
   implements Parcelable
 {
   public static final Parcelable.Creator<ScanGoodsRequest> CREATOR;
-  public int iHV;
+  public String extInfo;
+  public int jbe;
   public int mode;
-  public String wWd;
-  public String wWe;
-  public String wWf;
-  public String wWg;
-  public boolean wWh;
-  public boolean wWi;
+  public int requestType;
+  public int yjK;
+  public String yjL;
+  public String yjM;
+  public String yjN;
+  public String yjO;
+  public boolean yjP;
+  public boolean yjQ;
   
   static
   {
-    AppMethodBeat.i(191790);
+    AppMethodBeat.i(191534);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(191790);
+    AppMethodBeat.o(191534);
   }
   
   public ScanGoodsRequest()
   {
-    this.iHV = 0;
-    this.wWh = true;
-    this.wWi = true;
-    this.wVX = true;
-    this.wVY = true;
-    this.wVZ = true;
-    this.wWa = true;
-    this.wWb = true;
-    this.wWh = true;
-    this.wWi = true;
+    this.jbe = 0;
+    this.yjP = true;
+    this.yjQ = false;
+    this.yjE = true;
+    this.yjF = true;
+    this.yjG = true;
+    this.yjH = true;
+    this.yjI = true;
+    this.yjP = true;
+    this.yjQ = false;
+    this.yjK = 0;
   }
   
   public ScanGoodsRequest(Parcel paramParcel)
   {
     super(paramParcel);
-    AppMethodBeat.i(191786);
-    this.iHV = 0;
-    this.wWh = true;
-    this.wWi = true;
+    AppMethodBeat.i(191530);
+    this.jbe = 0;
+    this.yjP = true;
+    this.yjQ = false;
     this.mode = paramParcel.readInt();
-    this.wWd = paramParcel.readString();
-    this.wWe = paramParcel.readString();
-    this.wWf = paramParcel.readString();
-    this.wWg = paramParcel.readString();
-    this.iHV = paramParcel.readInt();
+    this.requestType = paramParcel.readInt();
+    this.yjK = paramParcel.readInt();
+    this.yjL = paramParcel.readString();
+    this.yjM = paramParcel.readString();
+    this.yjN = paramParcel.readString();
+    this.yjO = paramParcel.readString();
+    this.jbe = paramParcel.readInt();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.wWh = bool1;
+      this.yjP = bool1;
       if (paramParcel.readByte() == 0) {
-        break label114;
+        break label138;
       }
     }
-    label114:
+    label138:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.wWi = bool1;
-      AppMethodBeat.o(191786);
+      this.yjQ = bool1;
+      this.extInfo = paramParcel.readString();
+      AppMethodBeat.o(191530);
       return;
       bool1 = false;
       break;
     }
   }
   
-  public static ScanGoodsRequest dzc()
+  public static ScanGoodsRequest dKA()
   {
-    AppMethodBeat.i(191789);
+    AppMethodBeat.i(191533);
     ScanGoodsRequest localScanGoodsRequest = new ScanGoodsRequest();
     localScanGoodsRequest.mode = 5;
-    localScanGoodsRequest.wVX = true;
-    localScanGoodsRequest.wVY = true;
-    localScanGoodsRequest.wVZ = true;
-    localScanGoodsRequest.wWa = true;
-    localScanGoodsRequest.wWb = true;
-    localScanGoodsRequest.wWh = false;
-    localScanGoodsRequest.wWi = true;
-    localScanGoodsRequest.iHV = a.fromDPToPix(ai.getContext(), 450);
-    AppMethodBeat.o(191789);
+    localScanGoodsRequest.yjE = true;
+    localScanGoodsRequest.yjF = true;
+    localScanGoodsRequest.yjG = true;
+    localScanGoodsRequest.yjH = true;
+    localScanGoodsRequest.yjI = true;
+    localScanGoodsRequest.yjP = false;
+    localScanGoodsRequest.yjQ = true;
+    localScanGoodsRequest.jbe = a.fromDPToPix(aj.getContext(), 450);
+    AppMethodBeat.o(191533);
     return localScanGoodsRequest;
   }
   
@@ -99,40 +106,43 @@ public class ScanGoodsRequest
   
   public final boolean isValid()
   {
-    AppMethodBeat.i(191787);
-    if ((i.eA(this.wWd)) && (i.eA(this.wWe)) && (i.eA(this.wWf)))
+    AppMethodBeat.i(191531);
+    if ((i.fv(this.yjL)) && (i.fv(this.yjM)) && (i.fv(this.yjN)))
     {
-      AppMethodBeat.o(191787);
+      AppMethodBeat.o(191531);
       return true;
     }
-    AppMethodBeat.o(191787);
+    AppMethodBeat.o(191531);
     return false;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     byte b2 = 1;
-    AppMethodBeat.i(191788);
+    AppMethodBeat.i(191532);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeInt(this.mode);
-    paramParcel.writeString(this.wWd);
-    paramParcel.writeString(this.wWe);
-    paramParcel.writeString(this.wWf);
-    paramParcel.writeString(this.wWg);
-    paramParcel.writeInt(this.iHV);
-    if (this.wWh)
+    paramParcel.writeInt(this.requestType);
+    paramParcel.writeInt(this.yjK);
+    paramParcel.writeString(this.yjL);
+    paramParcel.writeString(this.yjM);
+    paramParcel.writeString(this.yjN);
+    paramParcel.writeString(this.yjO);
+    paramParcel.writeInt(this.jbe);
+    if (this.yjP)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.wWi) {
-        break label102;
+      if (!this.yjQ) {
+        break label126;
       }
     }
-    label102:
+    label126:
     for (byte b1 = b2;; b1 = 0)
     {
       paramParcel.writeByte(b1);
-      AppMethodBeat.o(191788);
+      paramParcel.writeString(this.extInfo);
+      AppMethodBeat.o(191532);
       return;
       b1 = 0;
       break;
@@ -141,7 +151,7 @@ public class ScanGoodsRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.api.ScanGoodsRequest
  * JD-Core Version:    0.7.0.1
  */

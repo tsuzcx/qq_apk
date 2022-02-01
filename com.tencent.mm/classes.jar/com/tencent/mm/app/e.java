@@ -3,30 +3,30 @@ package com.tencent.mm.app;
 import android.content.Context;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.c;
-import com.tencent.mm.aj.e.a;
-import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.p;
 import com.tencent.mm.compatible.e.a;
-import com.tencent.mm.pluginsdk.ui.i;
-import com.tencent.mm.pluginsdk.ui.i.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.pluginsdk.ui.j;
+import com.tencent.mm.pluginsdk.ui.j.a;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class e
-  implements i.a
+  implements j.a
 {
-  private volatile Bitmap cIi = null;
-  com.tencent.mm.aj.e cIj;
+  private volatile Bitmap cTq = null;
+  com.tencent.mm.ak.e cTr;
   
-  public final Bitmap Kj()
+  public final Bitmap LL()
   {
     AppMethodBeat.i(19433);
-    if (this.cIi == null) {}
+    if (this.cTq == null) {}
     try
     {
-      if (this.cIi == null) {
-        this.cIi = a.decodeResource(ai.getContext().getResources(), 2131690013);
+      if (this.cTq == null) {
+        this.cTq = a.decodeResource(aj.getContext().getResources(), 2131690013);
       }
-      Bitmap localBitmap = this.cIi;
+      Bitmap localBitmap = this.cTq;
       AppMethodBeat.o(19433);
       return localBitmap;
     }
@@ -44,16 +44,16 @@ final class e
     return paramString;
   }
   
-  public final void a(i parami)
+  public final void a(j paramj)
   {
     AppMethodBeat.i(19431);
-    if ((parami instanceof e.a)) {
-      p.aBh().a((e.a)parami);
+    if ((paramj instanceof e.a)) {
+      p.aEk().a((e.a)paramj);
     }
     AppMethodBeat.o(19431);
   }
   
-  public final Bitmap el(String paramString)
+  public final Bitmap fg(String paramString)
   {
     AppMethodBeat.i(19432);
     paramString = c.a(paramString, false, -1, null);
@@ -61,13 +61,13 @@ final class e
     return paramString;
   }
   
-  public final Bitmap em(String paramString)
+  public final Bitmap fh(String paramString)
   {
     AppMethodBeat.i(19434);
-    if (this.cIj == null) {
-      this.cIj = p.aBh();
+    if (this.cTr == null) {
+      this.cTr = p.aEk();
     }
-    paramString = com.tencent.mm.aj.e.zZ(paramString);
+    paramString = com.tencent.mm.ak.e.CY(paramString);
     AppMethodBeat.o(19434);
     return paramString;
   }

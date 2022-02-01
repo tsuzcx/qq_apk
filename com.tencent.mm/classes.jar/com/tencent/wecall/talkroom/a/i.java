@@ -19,11 +19,11 @@ public final class i
     try
     {
       localg.groupId = paramString;
-      localg.ADE = paramInt1;
-      localg.ADF = paramLong;
+      localg.CcE = paramInt1;
+      localg.CcF = paramLong;
       localg.reason = paramInt2;
       this.mNetType = 3;
-      this.JLH = c.fIe().aUe(paramString);
+      this.LFq = c.fZv().bac(paramString);
       c(181, localg);
       AppMethodBeat.o(62526);
       return;
@@ -37,7 +37,7 @@ public final class i
     }
   }
   
-  public final Object cB(byte[] paramArrayOfByte)
+  public final Object cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62527);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -60,7 +60,7 @@ public final class i
     }
   }
   
-  public final String fBB()
+  public final String fSQ()
   {
     return "CsCmd.Cmd_V_CSRejectEnterVoiceRoomReq";
   }
@@ -72,7 +72,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.i
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.product.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public int id;
   public String name;
@@ -15,31 +15,31 @@ public final class e
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.id);
+      paramVarArgs.aS(1, this.id);
       if (this.name != null) {
         paramVarArgs.d(2, this.name);
       }
-      paramVarArgs.aR(3, this.value);
+      paramVarArgs.aS(3, this.value);
       AppMethodBeat.o(91271);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.id) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.id) + 0;
       paramInt = i;
       if (this.name != null) {
         paramInt = i + f.a.a.b.b.a.e(2, this.name);
       }
-      i = f.a.a.b.b.a.bx(3, this.value);
+      i = f.a.a.b.b.a.bz(3, this.value);
       AppMethodBeat.o(91271);
       return paramInt + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(91271);
@@ -55,15 +55,15 @@ public final class e
         AppMethodBeat.o(91271);
         return -1;
       case 1: 
-        locale.id = locala.LVo.xF();
+        locale.id = locala.NPN.zc();
         AppMethodBeat.o(91271);
         return 0;
       case 2: 
-        locale.name = locala.LVo.readString();
+        locale.name = locala.NPN.readString();
         AppMethodBeat.o(91271);
         return 0;
       }
-      locale.value = locala.LVo.xF();
+      locale.value = locala.NPN.zc();
       AppMethodBeat.o(91271);
       return 0;
     }

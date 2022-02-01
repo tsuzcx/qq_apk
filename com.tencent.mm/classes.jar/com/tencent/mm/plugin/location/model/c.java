@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.location.model;
 
-import com.tencent.mm.protocal.protobuf.ccb;
+import com.tencent.mm.protocal.protobuf.cgs;
 
 public final class c
-  extends ccb
+  extends cgs
 {}
 
 

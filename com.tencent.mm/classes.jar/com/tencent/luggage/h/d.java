@@ -14,11 +14,11 @@ public final class d
 {
   public static JSONArray D(List<?> paramList)
   {
-    AppMethodBeat.i(200924);
+    AppMethodBeat.i(187596);
     JSONArray localJSONArray = new JSONArray();
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      AppMethodBeat.o(200924);
+      AppMethodBeat.o(187596);
       return localJSONArray;
     }
     int i = 0;
@@ -27,16 +27,16 @@ public final class d
       localJSONArray.put(paramList.get(i));
       i += 1;
     }
-    AppMethodBeat.o(200924);
+    AppMethodBeat.o(187596);
     return localJSONArray;
   }
   
   public static JSONObject a(PersistableBundle paramPersistableBundle)
   {
-    AppMethodBeat.i(200927);
+    AppMethodBeat.i(187599);
     if (paramPersistableBundle == null)
     {
-      AppMethodBeat.o(200927);
+      AppMethodBeat.o(187599);
       return null;
     }
     JSONObject localJSONObject = new JSONObject();
@@ -51,17 +51,17 @@ public final class d
         localJSONObject.put(str, localObject);
       }
     }
-    AppMethodBeat.o(200927);
+    AppMethodBeat.o(187599);
     return localJSONObject;
   }
   
-  public static Boolean aB(Object paramObject)
+  public static Boolean aD(Object paramObject)
   {
-    AppMethodBeat.i(200926);
+    AppMethodBeat.i(187598);
     if ((paramObject instanceof Boolean))
     {
       paramObject = (Boolean)paramObject;
-      AppMethodBeat.o(200926);
+      AppMethodBeat.o(187598);
       return paramObject;
     }
     if ((paramObject instanceof String))
@@ -70,23 +70,23 @@ public final class d
       if ("true".equalsIgnoreCase(paramObject))
       {
         paramObject = Boolean.TRUE;
-        AppMethodBeat.o(200926);
+        AppMethodBeat.o(187598);
         return paramObject;
       }
       if ("false".equalsIgnoreCase(paramObject))
       {
         paramObject = Boolean.FALSE;
-        AppMethodBeat.o(200926);
+        AppMethodBeat.o(187598);
         return paramObject;
       }
     }
-    AppMethodBeat.o(200926);
+    AppMethodBeat.o(187598);
     return null;
   }
   
   public static void d(Map paramMap)
   {
-    AppMethodBeat.i(200925);
+    AppMethodBeat.i(187597);
     Iterator localIterator = paramMap.entrySet().iterator();
     while (localIterator.hasNext())
     {
@@ -99,7 +99,7 @@ public final class d
         paramMap.put(localObject1, new JSONObject((Map)localObject2));
       }
     }
-    AppMethodBeat.o(200925);
+    AppMethodBeat.o(187597);
   }
 }
 

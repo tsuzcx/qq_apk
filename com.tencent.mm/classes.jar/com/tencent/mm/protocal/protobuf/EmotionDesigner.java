@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EmotionDesigner
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String BigImgUrl;
   public String Desc;
@@ -64,9 +64,9 @@ public class EmotionDesigner
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(104775);
@@ -82,23 +82,23 @@ public class EmotionDesigner
           AppMethodBeat.o(104775);
           return -1;
         case 1: 
-          localEmotionDesigner.Title = locala.LVo.readString();
+          localEmotionDesigner.Title = locala.NPN.readString();
           AppMethodBeat.o(104775);
           return 0;
         case 2: 
-          localEmotionDesigner.SmallImgUrl = locala.LVo.readString();
+          localEmotionDesigner.SmallImgUrl = locala.NPN.readString();
           AppMethodBeat.o(104775);
           return 0;
         case 3: 
-          localEmotionDesigner.BigImgUrl = locala.LVo.readString();
+          localEmotionDesigner.BigImgUrl = locala.NPN.readString();
           AppMethodBeat.o(104775);
           return 0;
         case 4: 
-          localEmotionDesigner.Desc = locala.LVo.readString();
+          localEmotionDesigner.Desc = locala.NPN.readString();
           AppMethodBeat.o(104775);
           return 0;
         }
-        localEmotionDesigner.Motto = locala.LVo.readString();
+        localEmotionDesigner.Motto = locala.NPN.readString();
         AppMethodBeat.o(104775);
         return 0;
       }
@@ -109,7 +109,7 @@ public class EmotionDesigner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionDesigner
  * JD-Core Version:    0.7.0.1
  */

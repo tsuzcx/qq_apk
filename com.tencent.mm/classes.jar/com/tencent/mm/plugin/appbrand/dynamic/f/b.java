@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.b.c;
+import com.tencent.mm.ab.b.c;
 import com.tencent.mm.plugin.appbrand.z.g;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,9 +12,9 @@ public final class b
   extends c
 {
   public String cacheKey;
-  public Map<String, String> jNr;
-  public int jNs;
-  public int jNt;
+  public Map<String, String> khC;
+  public int khD;
+  public int khE;
   public String path;
   public String title;
   
@@ -38,14 +38,14 @@ public final class b
       {
         localJSONObject.put("title", this.title);
         localJSONObject.put("path", this.path);
-        if (this.jNr != null) {
+        if (this.khC != null) {
           continue;
         }
         localObject = new HashMap();
         localJSONObject.put("query", new JSONObject((Map)localObject));
         localJSONObject.put("cacheKey", this.cacheKey);
-        localJSONObject.put("width", g.vd(this.jNs));
-        localJSONObject.put("height", g.vd(this.jNt));
+        localJSONObject.put("width", g.vI(this.khD));
+        localJSONObject.put("height", g.vI(this.khE));
       }
       catch (JSONException localJSONException)
       {
@@ -54,7 +54,7 @@ public final class b
       }
       AppMethodBeat.o(121392);
       return localJSONObject;
-      localObject = this.jNr;
+      localObject = this.khC;
     }
   }
 }

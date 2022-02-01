@@ -896,7 +896,7 @@ public class XWalkLibraryLoader
       this.mDownloadInfo.mIsRuntime = paramBoolean;
       this.mDownloadInfo.mBizType = paramInt;
       this.mWXFileDownloaderBridge = new WXFileDownloaderBridge();
-      this.mWXFileDownloaderBridge.KAD = this;
+      this.mWXFileDownloaderBridge.MqY = this;
       AppMethodBeat.o(154777);
     }
     
@@ -917,8 +917,8 @@ public class XWalkLibraryLoader
       ??? = this.mWXFileDownloaderBridge;
       String str1 = this.mDownloadInfo.mUrl;
       String str2 = this.mDownloadInfo.mSavePath;
-      if (WXFileDownloaderBridge.KAC != null) {}
-      for (int i = WXFileDownloaderBridge.KAC.a(str1, str2, ???);; i = -1)
+      if (WXFileDownloaderBridge.MqX != null) {}
+      for (int i = WXFileDownloaderBridge.MqX.a(str1, str2, ???);; i = -1)
       {
         if (i != 0)
         {
@@ -932,7 +932,12 @@ public class XWalkLibraryLoader
           try
           {
             this.mWaitTimeout = true;
-            this.lockObj.wait(300000L);
+            this.lockObj.wait(600000L);
+            if (this.mWaitTimeout)
+            {
+              this.mDownloadInfo.mErrorType = 1;
+              this.mDownloadInfo.mErrorCode = -100;
+            }
             if ((this.mDownloadInfo.mErrorType == 0) && (this.mDownloadInfo.mErrorCode == 0))
             {
               AppMethodBeat.o(154779);
@@ -950,11 +955,6 @@ public class XWalkLibraryLoader
           }
         }
         Log.e("XWalkLib", "download errortype:" + this.mDownloadInfo.mErrorType + ", errorcode:" + this.mDownloadInfo.mErrorCode + ", waitTimeout:" + this.mWaitTimeout);
-        if (this.mWaitTimeout)
-        {
-          this.mDownloadInfo.mErrorType = 1;
-          this.mDownloadInfo.mErrorCode = -100;
-        }
         AppMethodBeat.o(154779);
         return Integer.valueOf(-1);
       }

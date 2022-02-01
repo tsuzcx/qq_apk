@@ -2,8 +2,8 @@ package com.tencent.mm.ui.chatting;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.chatting.e.a;
 
 public final class s$k
   extends s.e
@@ -13,10 +13,10 @@ public final class s$k
     super(parama);
   }
   
-  public final void a(View paramView, a parama, bo parambo)
+  public final void a(View paramView, a parama, bu parambu)
   {
     AppMethodBeat.i(34603);
-    r.a(paramView, parama.HZF.getContext(), parama.getTalkerUserName());
+    r.a(paramView, parama.JOR.getContext(), parama.getTalkerUserName());
     AppMethodBeat.o(34603);
   }
 }

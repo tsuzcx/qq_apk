@@ -14,13 +14,13 @@ import com.tencent.mm.plugin.wxpay.a.a;
 public class WalletItemView
   extends LinearLayout
 {
-  private TextView lfN;
+  private TextView lCL;
   private Object mData;
   private String mTitle;
   private int mType;
-  private TextView vFY;
-  private int vGE;
-  private String vzF;
+  private String wEZ;
+  private int wNL;
+  private TextView wNe;
   
   public WalletItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,7 +31,7 @@ public class WalletItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(69847);
-    this.vGE = 1;
+    this.wNL = 1;
     this.mType = 0;
     this.mData = null;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WalletItemView, paramInt, 0);
@@ -41,20 +41,20 @@ public class WalletItemView
     }
     paramInt = paramAttributeSet.getResourceId(2, 0);
     if (paramInt != 0) {
-      this.vzF = paramContext.getString(paramInt);
+      this.wEZ = paramContext.getString(paramInt);
     }
-    this.vGE = paramAttributeSet.getInt(0, 1);
+    this.wNL = paramAttributeSet.getInt(0, 1);
     paramAttributeSet.recycle();
     paramContext = LayoutInflater.from(paramContext).inflate(2131495969, this, true);
-    this.lfN = ((TextView)paramContext.findViewById(2131305948));
-    this.vFY = ((TextView)paramContext.findViewById(2131305553));
-    if (this.lfN != null) {
-      this.lfN.setText(this.mTitle);
+    this.lCL = ((TextView)paramContext.findViewById(2131305948));
+    this.wNe = ((TextView)paramContext.findViewById(2131305553));
+    if (this.lCL != null) {
+      this.lCL.setText(this.mTitle);
     }
-    if (this.vFY != null)
+    if (this.wNe != null)
     {
-      this.vFY.setText(this.vzF);
-      this.vFY.setLines(this.vGE);
+      this.wNe.setText(this.wEZ);
+      this.wNe.setLines(this.wNL);
     }
     AppMethodBeat.o(69847);
   }
@@ -72,16 +72,16 @@ public class WalletItemView
   public void setSummary(Spanned paramSpanned)
   {
     AppMethodBeat.i(69850);
-    this.vzF = paramSpanned.toString();
-    this.vFY.setText(this.vzF);
+    this.wEZ = paramSpanned.toString();
+    this.wNe.setText(this.wEZ);
     AppMethodBeat.o(69850);
   }
   
   public void setSummary(String paramString)
   {
     AppMethodBeat.i(69849);
-    this.vzF = paramString;
-    this.vFY.setText(this.vzF);
+    this.wEZ = paramString;
+    this.wNe.setText(this.wEZ);
     AppMethodBeat.o(69849);
   }
   
@@ -89,7 +89,7 @@ public class WalletItemView
   {
     AppMethodBeat.i(69848);
     this.mTitle = paramString;
-    this.lfN.setText(this.mTitle);
+    this.lCL.setText(this.mTitle);
     AppMethodBeat.o(69848);
   }
 }

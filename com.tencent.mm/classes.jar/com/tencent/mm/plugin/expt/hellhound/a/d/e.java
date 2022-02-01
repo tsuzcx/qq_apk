@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.expt.hellhound.a.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/fuzzymatch/FuzzyMatchReport;", "", "()V", "Companion", "plugin-expt_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/fuzzymatch/FuzzyMatchReport;", "", "()V", "Companion", "plugin-expt_release"})
 public final class e
 {
-  public static final e.a qpy;
+  public static final e.a qYx;
   
   static
   {
     AppMethodBeat.i(122587);
-    qpy = new e.a((byte)0);
+    qYx = new e.a((byte)0);
     AppMethodBeat.o(122587);
   }
 }

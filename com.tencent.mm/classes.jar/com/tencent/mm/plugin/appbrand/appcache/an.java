@@ -1,45 +1,80 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.y.c;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.g.c.fh;
+import com.tencent.mm.plugin.appbrand.y.b;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-public class an
-  extends c<am>
+public final class an
+  extends fh
+  implements b
 {
-  public static final String[] hlS;
+  static final c.a hEe;
+  static final String[] jFa;
   
   static
   {
-    AppMethodBeat.i(90566);
-    hlS = new String[] { j.getCreateSQLs(am.hlR, "PushWxaPkgDecryptKeyTable") };
-    AppMethodBeat.o(90566);
-  }
-  
-  public an(e parame)
-  {
-    super(parame, am.hlR, "PushWxaPkgDecryptKeyTable", am.INDEX_CREATE);
-  }
-  
-  public final am aI(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(90565);
-    am localam = new am();
-    localam.field_appId = paramString;
-    localam.field_appVersion = paramInt;
-    if (get(localam, new String[0]))
+    int i = 0;
+    AppMethodBeat.i(90564);
+    jFa = new String[] { "appId", "appVersion" };
+    Object localObject1 = new c.a();
+    ((c.a)localObject1).IhA = new Field[5];
+    ((c.a)localObject1).columns = new String[6];
+    Object localObject2 = new StringBuilder();
+    ((c.a)localObject1).columns[0] = "appId";
+    ((c.a)localObject1).IhC.put("appId", "TEXT");
+    ((StringBuilder)localObject2).append(" appId TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[1] = "appVersion";
+    ((c.a)localObject1).IhC.put("appVersion", "INTEGER");
+    ((StringBuilder)localObject2).append(" appVersion INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[2] = "decryptKey";
+    ((c.a)localObject1).IhC.put("decryptKey", "TEXT");
+    ((StringBuilder)localObject2).append(" decryptKey TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[3] = "pkgMd5";
+    ((c.a)localObject1).IhC.put("pkgMd5", "TEXT");
+    ((StringBuilder)localObject2).append(" pkgMd5 TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[4] = "reportId";
+    ((c.a)localObject1).IhC.put("reportId", "INTEGER");
+    ((StringBuilder)localObject2).append(" reportId INTEGER");
+    ((c.a)localObject1).columns[5] = "rowid";
+    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
+    hEe = (c.a)localObject1;
+    localObject1 = " PRIMARY KEY ( ";
+    localObject2 = jFa;
+    int j = localObject2.length;
+    while (i < j)
     {
-      AppMethodBeat.o(90565);
-      return localam;
+      localObject3 = localObject2[i];
+      localObject1 = (String)localObject1 + ", " + (String)localObject3;
+      i += 1;
     }
-    AppMethodBeat.o(90565);
-    return null;
+    localObject1 = ((String)localObject1).replaceFirst(",", "");
+    localObject1 = (String)localObject1 + " )";
+    localObject2 = new StringBuilder();
+    Object localObject3 = hEe;
+    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
+    AppMethodBeat.o(90564);
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return hEe;
+  }
+  
+  public final String[] getKeys()
+  {
+    return jFa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.an
  * JD-Core Version:    0.7.0.1
  */

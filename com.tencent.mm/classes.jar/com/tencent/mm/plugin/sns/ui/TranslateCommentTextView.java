@@ -10,8 +10,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class TranslateCommentTextView
   extends LinearLayout
 {
-  public SnsTranslateResultView yKP;
-  public MaskTextView yYV;
+  public SnsTranslateResultView Ack;
+  public MaskTextView AqJ;
   
   public TranslateCommentTextView(Context paramContext)
   {
@@ -33,20 +33,20 @@ public class TranslateCommentTextView
   {
     AppMethodBeat.i(99780);
     LayoutInflater.from(getContext()).inflate(2131495754, this);
-    this.yYV = ((MaskTextView)findViewById(2131298538));
-    this.yKP = ((SnsTranslateResultView)findViewById(2131305091));
-    this.yKP.setVisibility(8);
+    this.AqJ = ((MaskTextView)findViewById(2131298538));
+    this.Ack = ((SnsTranslateResultView)findViewById(2131305091));
+    this.Ack.setVisibility(8);
     AppMethodBeat.o(99780);
   }
   
   public TextView getOriginCommentTextView()
   {
-    return this.yYV;
+    return this.AqJ;
   }
   
   public SnsTranslateResultView getTranslateResultView()
   {
-    return this.yKP;
+    return this.Ack;
   }
 }
 

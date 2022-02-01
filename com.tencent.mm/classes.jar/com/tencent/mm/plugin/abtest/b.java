@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.abtest;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.d;
+import com.tencent.mm.al.e.d;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.model.a.a;
 import com.tencent.mm.model.a.d;
-import com.tencent.mm.model.cc;
+import com.tencent.mm.model.cd;
 import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.plugin.messenger.foundation.a.r;
 
 public final class b
   extends t
   implements c
 {
-  private static b iEX;
-  private d iEY;
-  private a iEZ;
+  private static b iYg;
+  private d iYh;
+  private a iYi;
   
   private b()
   {
     super(com.tencent.mm.model.a.g.class);
     AppMethodBeat.i(153136);
-    this.iEY = new d();
-    this.iEZ = new a();
+    this.iYh = new d();
+    this.iYi = new a();
     AppMethodBeat.o(153136);
   }
   
-  public static b aOB()
+  public static b aRN()
   {
     try
     {
       AppMethodBeat.i(153137);
-      if (iEX == null) {
-        iEX = new b();
+      if (iYg == null) {
+        iYg = new b();
       }
-      b localb = iEX;
+      b localb = iYg;
       AppMethodBeat.o(153137);
       return localb;
     }
@@ -46,8 +46,8 @@ public final class b
   {
     AppMethodBeat.i(153138);
     super.onAccountInitialized(paramc);
-    f.d.a(Integer.valueOf(-1879048184), this.iEY);
-    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().a("abtest", this.iEZ);
+    e.d.a(Integer.valueOf(-1879048184), this.iYh);
+    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().a("abtest", this.iYi);
     AppMethodBeat.o(153138);
   }
   
@@ -55,8 +55,8 @@ public final class b
   {
     AppMethodBeat.i(153139);
     super.onAccountRelease();
-    f.d.a(Integer.valueOf(-1879048184), this.iEY);
-    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().b("abtest", this.iEZ);
+    e.d.a(Integer.valueOf(-1879048184), this.iYh);
+    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().b("abtest", this.iYi);
     AppMethodBeat.o(153139);
   }
 }

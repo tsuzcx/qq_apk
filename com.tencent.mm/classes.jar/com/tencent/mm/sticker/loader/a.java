@@ -2,25 +2,25 @@ package com.tencent.mm.sticker.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.h.a.c;
-import com.tencent.mm.protocal.protobuf.bpl;
+import com.tencent.mm.protocal.protobuf.bty;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/loader/LensIconData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "(Lcom/tencent/mm/protocal/protobuf/LensInfo;)V", "getLensInfo", "()Lcom/tencent/mm/protocal/protobuf/LensInfo;", "isLegal", "", "uniqueValue", "", "plugin-sticker_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/loader/LensIconData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "(Lcom/tencent/mm/protocal/protobuf/LensInfo;)V", "getLensInfo", "()Lcom/tencent/mm/protocal/protobuf/LensInfo;", "isLegal", "", "uniqueValue", "", "plugin-sticker_release"})
 public final class a
   implements c
 {
-  final bpl GzM;
+  final bty IlG;
   
-  public a(bpl parambpl)
+  public a(bty parambty)
   {
     AppMethodBeat.i(105912);
-    this.GzM = parambpl;
+    this.IlG = parambty;
     AppMethodBeat.o(105912);
   }
   
-  public final String abW()
+  public final String aeA()
   {
-    String str2 = this.GzM.Ewy;
+    String str2 = this.IlG.Geb;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";

@@ -5,9 +5,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.g.b.a.do;
-import com.tencent.mm.g.b.a.ih;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.g.b.a.ej;
+import com.tencent.mm.g.b.a.jl;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.modelappbrand.v;
@@ -21,13 +21,13 @@ import com.tencent.mm.plugin.appbrand.dynamic.j.a.e;
 import com.tencent.mm.plugin.appbrand.dynamic.j.d;
 import com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetRuntimeConfig;
 import com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetSysConfig;
-import com.tencent.mm.protocal.protobuf.dzf;
-import com.tencent.mm.protocal.protobuf.dzh;
-import com.tencent.mm.protocal.protobuf.vg;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.efh;
+import com.tencent.mm.protocal.protobuf.efj;
+import com.tencent.mm.protocal.protobuf.xf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import junit.framework.Assert;
 
 public final class WxaWidgetInitializer
@@ -36,58 +36,58 @@ public final class WxaWidgetInitializer
   {
     i = 1;
     AppMethodBeat.i(121205);
-    ac.i("MicroMsg.WxaWidgetInitializer", "prepare(%s)", new Object[] { paramString1 });
+    ad.i("MicroMsg.WxaWidgetInitializer", "prepare(%s)", new Object[] { paramString1 });
     u.i("MicroMsg.WxaWidgetInitializer", "prepare(%s)", new Object[] { paramString1 });
-    WxaPkgWrappingInfo localWxaPkgWrappingInfo = WxaCommLibRuntimeReader.aWN();
+    WxaPkgWrappingInfo localWxaPkgWrappingInfo = WxaCommLibRuntimeReader.bak();
     if (localWxaPkgWrappingInfo == null)
     {
-      ac.e("MicroMsg.WxaWidgetInitializer", "getLibPkgInfo return null.");
+      ad.e("MicroMsg.WxaWidgetInitializer", "getLibPkgInfo return null.");
       AppMethodBeat.o(121205);
       return null;
     }
     paramWxaPkgWrappingInfo = new WxaWidgetContextImpl(localWxaPkgWrappingInfo, paramWxaPkgWrappingInfo);
-    paramWxaPkgWrappingInfo.fHr = paramString1;
+    paramWxaPkgWrappingInfo.gaR = paramString1;
     paramWxaPkgWrappingInfo.mAppId = paramString2;
-    paramWxaPkgWrappingInfo.jLn = paramd.jOg;
-    if (paramWxaPkgWrappingInfo.jLn == null) {
-      paramWxaPkgWrappingInfo.jLn = new DebuggerInfo();
+    paramWxaPkgWrappingInfo.kfy = paramd.kir;
+    if (paramWxaPkgWrappingInfo.kfy == null) {
+      paramWxaPkgWrappingInfo.kfy = new DebuggerInfo();
     }
-    paramWxaPkgWrappingInfo.jLo = paramd.jOh;
-    paramWxaPkgWrappingInfo.jLp = paramd.jOi;
+    paramWxaPkgWrappingInfo.kfz = paramd.kis;
+    paramWxaPkgWrappingInfo.kfA = paramd.kit;
     for (;;)
     {
       try
       {
-        if ((paramd.jOk == null) || (paramd.jOk.Epw == null)) {
+        if ((paramd.kiv == null) || (paramd.kiv.FWI == null)) {
           continue;
         }
-        paramString2 = paramd.jOk.Epw.toByteArray();
-        paramWxaPkgWrappingInfo.jLl = paramString2;
+        paramString2 = paramd.kiv.FWI.toByteArray();
+        paramWxaPkgWrappingInfo.kfw = paramString2;
       }
       catch (Exception paramString2)
       {
-        ac.e("MicroMsg.WxaWidgetInitializer", bs.m(paramString2));
+        ad.e("MicroMsg.WxaWidgetInitializer", bt.n(paramString2));
         continue;
-        if (paramd.jOj == null) {
+        if (paramd.kiu == null) {
           continue;
         }
-        i = paramd.jOj.DLI;
-        paramWxaPkgWrappingInfo.jLm = i;
+        i = paramd.kiu.FqN;
+        paramWxaPkgWrappingInfo.kfx = i;
         continue;
       }
-      if (!paramWxaPkgWrappingInfo.jLn.jLU) {
+      if (!paramWxaPkgWrappingInfo.kfy.kgf) {
         continue;
       }
-      paramWxaPkgWrappingInfo.jLm = 2;
-      f.bce().bv(paramString1, 2101);
-      j.bci().K(paramString1, 626, 5);
+      paramWxaPkgWrappingInfo.kfx = 2;
+      f.bfI().bx(paramString1, 2101);
+      j.bfM().M(paramString1, 626, 5);
       AppMethodBeat.o(121205);
       return paramWxaPkgWrappingInfo;
       paramString2 = new byte[0];
     }
   }
   
-  public static String cH(String paramString1, String paramString2)
+  public static String cJ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121206);
     paramString1 = paramString1 + "#" + paramString2 + "#" + System.currentTimeMillis();
@@ -99,14 +99,14 @@ public final class WxaWidgetInitializer
     implements WxaWidgetContext
   {
     public static final Parcelable.Creator<WxaWidgetContextImpl> CREATOR;
-    String fHr;
-    WxaPkgWrappingInfo jLj;
-    WxaPkgWrappingInfo jLk;
-    byte[] jLl;
-    int jLm;
-    DebuggerInfo jLn;
-    WidgetSysConfig jLo;
-    WidgetRuntimeConfig jLp;
+    String gaR;
+    WidgetRuntimeConfig kfA;
+    WxaPkgWrappingInfo kfu;
+    WxaPkgWrappingInfo kfv;
+    byte[] kfw;
+    int kfx;
+    DebuggerInfo kfy;
+    WidgetSysConfig kfz;
     String mAppId;
     
     static
@@ -120,15 +120,15 @@ public final class WxaWidgetInitializer
     {
       AppMethodBeat.i(121201);
       ClassLoader localClassLoader = getClass().getClassLoader();
-      this.fHr = paramParcel.readString();
+      this.gaR = paramParcel.readString();
       this.mAppId = paramParcel.readString();
-      this.jLk = ((WxaPkgWrappingInfo)paramParcel.readParcelable(localClassLoader));
-      this.jLj = ((WxaPkgWrappingInfo)paramParcel.readParcelable(localClassLoader));
-      this.jLl = paramParcel.createByteArray();
-      this.jLm = paramParcel.readInt();
-      this.jLn = ((DebuggerInfo)paramParcel.readParcelable(localClassLoader));
-      this.jLo = ((WidgetSysConfig)paramParcel.readParcelable(localClassLoader));
-      this.jLp = ((WidgetRuntimeConfig)paramParcel.readParcelable(localClassLoader));
+      this.kfv = ((WxaPkgWrappingInfo)paramParcel.readParcelable(localClassLoader));
+      this.kfu = ((WxaPkgWrappingInfo)paramParcel.readParcelable(localClassLoader));
+      this.kfw = paramParcel.createByteArray();
+      this.kfx = paramParcel.readInt();
+      this.kfy = ((DebuggerInfo)paramParcel.readParcelable(localClassLoader));
+      this.kfz = ((WidgetSysConfig)paramParcel.readParcelable(localClassLoader));
+      this.kfA = ((WidgetRuntimeConfig)paramParcel.readParcelable(localClassLoader));
       AppMethodBeat.o(121201);
     }
     
@@ -137,60 +137,60 @@ public final class WxaWidgetInitializer
       AppMethodBeat.i(121202);
       Assert.assertNotNull(paramWxaPkgWrappingInfo1);
       Assert.assertNotNull(paramWxaPkgWrappingInfo2);
-      this.jLk = paramWxaPkgWrappingInfo1;
-      this.jLj = paramWxaPkgWrappingInfo2;
+      this.kfv = paramWxaPkgWrappingInfo1;
+      this.kfu = paramWxaPkgWrappingInfo2;
       AppMethodBeat.o(121202);
     }
     
-    public final int aVY()
+    public final int aZt()
     {
-      if (this.jLj != null) {
-        return this.jLj.jpa;
+      if (this.kfu != null) {
+        return this.kfu.jIU;
       }
       return 0;
     }
     
-    public final WxaPkgWrappingInfo bcj()
+    public final WxaPkgWrappingInfo bfN()
     {
-      return this.jLj;
+      return this.kfu;
     }
     
-    public final WxaPkgWrappingInfo bck()
+    public final WxaPkgWrappingInfo bfO()
     {
-      return this.jLk;
+      return this.kfv;
     }
     
-    public final int bcl()
+    public final int bfP()
     {
-      if (this.jLj != null) {
-        return this.jLj.pkgVersion;
+      if (this.kfu != null) {
+        return this.kfu.pkgVersion;
       }
       return 0;
     }
     
-    public final byte[] bcm()
+    public final byte[] bfQ()
     {
-      return this.jLl;
+      return this.kfw;
     }
     
-    public final int bcn()
+    public final int bfR()
     {
-      return this.jLm;
+      return this.kfx;
     }
     
-    public final DebuggerInfo bco()
+    public final DebuggerInfo bfS()
     {
-      return this.jLn;
+      return this.kfy;
     }
     
-    public final WidgetSysConfig bcp()
+    public final WidgetSysConfig bfT()
     {
-      return this.jLo;
+      return this.kfz;
     }
     
-    public final WidgetRuntimeConfig bcq()
+    public final WidgetRuntimeConfig bfU()
     {
-      return this.jLp;
+      return this.kfA;
     }
     
     public int describeContents()
@@ -205,21 +205,21 @@ public final class WxaWidgetInitializer
     
     public final String getId()
     {
-      return this.fHr;
+      return this.gaR;
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(121203);
-      paramParcel.writeString(this.fHr);
+      paramParcel.writeString(this.gaR);
       paramParcel.writeString(this.mAppId);
-      paramParcel.writeParcelable(this.jLk, paramInt);
-      paramParcel.writeParcelable(this.jLj, paramInt);
-      paramParcel.writeByteArray(this.jLl);
-      paramParcel.writeInt(this.jLm);
-      paramParcel.writeParcelable(this.jLn, paramInt);
-      paramParcel.writeParcelable(this.jLo, paramInt);
-      paramParcel.writeParcelable(this.jLp, paramInt);
+      paramParcel.writeParcelable(this.kfv, paramInt);
+      paramParcel.writeParcelable(this.kfu, paramInt);
+      paramParcel.writeByteArray(this.kfw);
+      paramParcel.writeInt(this.kfx);
+      paramParcel.writeParcelable(this.kfy, paramInt);
+      paramParcel.writeParcelable(this.kfz, paramInt);
+      paramParcel.writeParcelable(this.kfA, paramInt);
       AppMethodBeat.o(121203);
     }
   }
@@ -228,7 +228,7 @@ public final class WxaWidgetInitializer
   {
     public abstract void a(String paramString1, String paramString2, boolean paramBoolean, WxaWidgetContext paramWxaWidgetContext);
     
-    public abstract void cE(String paramString1, String paramString2);
+    public abstract void cG(String paramString1, String paramString2);
   }
 }
 

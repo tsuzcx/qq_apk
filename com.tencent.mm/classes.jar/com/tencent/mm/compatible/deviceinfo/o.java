@@ -4,23 +4,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class o
 {
-  public boolean fGN;
-  public int fGO;
-  public int fGP;
+  public boolean gam;
+  public int gan;
+  public int gao;
   
   public o()
   {
     AppMethodBeat.i(155677);
-    this.fGN = false;
+    this.gam = false;
     reset();
     AppMethodBeat.o(155677);
   }
   
   public final void reset()
   {
-    this.fGN = false;
-    this.fGO = 0;
-    this.fGP = 0;
+    this.gam = false;
+    this.gan = 0;
+    this.gao = 0;
   }
 }
 

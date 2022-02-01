@@ -1,35 +1,35 @@
 package com.tencent.mm.emoji.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bj;
-import d.g.b.k;
+import com.tencent.mm.g.c.bk;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestCacheInfo;", "Lcom/tencent/mm/autogen/table/BaseEmojiSuggestCacheInfo;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "isValid", "", "needUpdate", "Companion", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestCacheInfo;", "Lcom/tencent/mm/autogen/table/BaseEmojiSuggestCacheInfo;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "isValid", "", "needUpdate", "Companion", "plugin-emojisdk_release"})
 public final class c
-  extends bj
+  extends bk
 {
   static final String TAG = "MicroMsg.EmojiSuggestCacheInfo";
-  private static final long fSF = 86400L;
-  public static final a fSG;
+  private static final long gmj = 86400L;
+  public static final a gmk;
   private static final com.tencent.mm.sdk.e.c.a info;
   
   static
   {
-    AppMethodBeat.i(209837);
-    fSG = new a((byte)0);
+    AppMethodBeat.i(218962);
+    gmk = new a((byte)0);
     TAG = "MicroMsg.EmojiSuggestCacheInfo";
-    info = bj.Th();
-    fSF = 86400L;
-    AppMethodBeat.o(209837);
+    info = bk.Vv();
+    gmj = 86400L;
+    AppMethodBeat.o(218962);
   }
   
   public final com.tencent.mm.sdk.e.c.a getDBInfo()
   {
-    AppMethodBeat.i(209836);
+    AppMethodBeat.i(218961);
     com.tencent.mm.sdk.e.c.a locala = info;
-    k.g(locala, "info");
-    AppMethodBeat.o(209836);
+    p.g(locala, "info");
+    AppMethodBeat.o(218961);
     return locala;
   }
   
@@ -47,7 +47,7 @@ public final class c
     return false;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestCacheInfo$Companion;", "", "()V", "TAG", "", "UpdateInterval", "", "getUpdateInterval", "()J", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-emojisdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestCacheInfo$Companion;", "", "()V", "TAG", "", "UpdateInterval", "", "getUpdateInterval", "()J", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-emojisdk_release"})
   public static final class a {}
 }
 

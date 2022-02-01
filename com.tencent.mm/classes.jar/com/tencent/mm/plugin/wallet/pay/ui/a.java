@@ -6,29 +6,29 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.if;
-import com.tencent.mm.g.a.if.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.g.a.in;
+import com.tencent.mm.g.a.in.b;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.ui.g;
 
 public final class a
 {
-  a Bip = null;
+  a CID = null;
   private Context mContext;
   private Dialog tipDialog = null;
   
   public a(Context paramContext, a parama)
   {
     this.mContext = paramContext;
-    this.Bip = parama;
+    this.CID = parama;
   }
   
   public final void b(boolean paramBoolean, int paramInt, String paramString)
   {
     AppMethodBeat.i(69303);
-    final if localif = new if();
-    localif.djo = null;
-    localif.djn.djp = paramBoolean;
+    final in localin = new in();
+    localin.dvb = null;
+    localin.dva.dvc = paramBoolean;
     if ((paramBoolean) && ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))))
     {
       if (this.tipDialog != null) {
@@ -44,43 +44,43 @@ public final class a
         }
       });
     }
-    localif.djn.djq = paramInt;
-    localif.djn.djr = paramString;
-    localif.callback = new Runnable()
+    localin.dva.dvd = paramInt;
+    localin.dva.dve = paramString;
+    localin.callback = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(69301);
-        ac.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback");
-        if.b localb = localif.djo;
-        if ((localb != null) && (localb.deB))
+        ad.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback");
+        in.b localb = localin.dvb;
+        if ((localb != null) && (localb.dpX))
         {
-          ac.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is true");
+          ad.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is true");
           a.this.closeTipDialog();
-          if (a.this.Bip != null)
+          if (a.this.CID != null)
           {
-            a.this.Bip.c(localb.deB, localb.djs, localb.djt);
+            a.this.CID.d(localb.dpX, localb.dvf, localb.dvg);
             AppMethodBeat.o(69301);
           }
         }
         else
         {
-          if ((localb != null) && (!localb.deB))
+          if ((localb != null) && (!localb.dpX))
           {
             a.this.closeTipDialog();
-            if (a.this.Bip != null) {
-              a.this.Bip.c(localb.deB, localb.djs, localb.djt);
+            if (a.this.CID != null) {
+              a.this.CID.d(localb.dpX, localb.dvf, localb.dvg);
             }
-            ac.e("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is false");
+            ad.e("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is false");
             AppMethodBeat.o(69301);
             return;
           }
-          ac.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result == null");
+          ad.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result == null");
         }
         AppMethodBeat.o(69301);
       }
     };
-    com.tencent.mm.sdk.b.a.GpY.a(localif, Looper.getMainLooper());
+    com.tencent.mm.sdk.b.a.IbL.a(localin, Looper.getMainLooper());
     AppMethodBeat.o(69303);
   }
   
@@ -97,13 +97,13 @@ public final class a
   
   public final void release()
   {
-    this.Bip = null;
+    this.CID = null;
     this.mContext = null;
   }
   
   public static abstract interface a
   {
-    public abstract void c(boolean paramBoolean, String paramString1, String paramString2);
+    public abstract void d(boolean paramBoolean, String paramString1, String paramString2);
   }
 }
 

@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qw;
-import com.tencent.mm.g.a.qw.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.g.a.rh;
+import com.tencent.mm.g.a.rh.b;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 
 @com.tencent.mm.ui.base.a(3)
@@ -32,7 +32,7 @@ public class FaceTransStubUI
   {
     AppMethodBeat.i(104270);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ac.i("MicroMsg.FaceTransStubUI", "carson : on activity result in FaceTransStubUI");
+    ad.i("MicroMsg.FaceTransStubUI", "carson : on activity result in FaceTransStubUI");
     setResult(paramInt2, paramIntent);
     finish();
     AppMethodBeat.o(104270);
@@ -42,25 +42,25 @@ public class FaceTransStubUI
   {
     AppMethodBeat.i(104269);
     super.onCreate(paramBundle);
-    ac.i("MicroMsg.FaceTransStubUI", "carson: start FaceTransStubUI ");
-    paramBundle = new qw();
-    paramBundle.dtR.scene = getIntent().getIntExtra("scene", 0);
-    paramBundle.dtR.packageName = getIntent().getStringExtra("package");
-    paramBundle.dtR.dtT = getIntent().getStringExtra("packageSign");
-    paramBundle.dtR.dtU = getIntent().getStringExtra("otherVerifyTitle");
-    paramBundle.dtR.requestCode = 63;
+    ad.i("MicroMsg.FaceTransStubUI", "carson: start FaceTransStubUI ");
+    paramBundle = new rh();
+    paramBundle.dFR.scene = getIntent().getIntExtra("scene", 0);
+    paramBundle.dFR.packageName = getIntent().getStringExtra("package");
+    paramBundle.dFR.dFT = getIntent().getStringExtra("packageSign");
+    paramBundle.dFR.dFU = getIntent().getStringExtra("otherVerifyTitle");
+    paramBundle.dFR.requestCode = 63;
     if ((this.context instanceof Activity)) {
-      paramBundle.dtR.dgE = ((Activity)this.context);
+      paramBundle.dFR.dsa = ((Activity)this.context);
     }
-    com.tencent.mm.sdk.b.a.GpY.l(paramBundle);
-    ac.i("MicroMsg.FaceTransStubUI", "carson: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.dtS.dtV) });
-    if (!paramBundle.dtS.dtV)
+    com.tencent.mm.sdk.b.a.IbL.l(paramBundle);
+    ad.i("MicroMsg.FaceTransStubUI", "carson: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.dFS.dFV) });
+    if (!paramBundle.dFS.dFV)
     {
-      if (paramBundle.dtS.extras == null) {
+      if (paramBundle.dFS.extras == null) {
         break label211;
       }
       Intent localIntent = new Intent();
-      localIntent.putExtras(paramBundle.dtS.extras);
+      localIntent.putExtras(paramBundle.dFS.extras);
       setResult(1, localIntent);
     }
     for (;;)

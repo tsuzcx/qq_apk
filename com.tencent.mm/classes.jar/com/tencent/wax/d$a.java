@@ -8,65 +8,65 @@ import io.flutter.embedding.engine.d;
 
 public final class d$a
 {
-  public static final String tWq;
-  public Context GX;
-  public String KuG;
-  public String KuH;
-  public FlutterView.b KuI;
-  public d KuJ;
-  public c KuK;
-  public a KuL;
-  public a.a KuM;
+  public static final String uYZ;
+  public Context IR;
+  public String MkH;
+  public String MkI;
+  public FlutterView.b MkJ;
+  public d MkK;
+  public c MkL;
+  public a MkM;
+  public a.a MkN;
   
   static
   {
-    AppMethodBeat.i(191684);
-    tWq = io.flutter.embedding.android.d.a.KKz.name();
-    AppMethodBeat.o(191684);
+    AppMethodBeat.i(217481);
+    uYZ = io.flutter.embedding.android.d.a.MBn.name();
+    AppMethodBeat.o(217481);
   }
   
   public d$a(Context paramContext)
   {
-    AppMethodBeat.i(191683);
-    this.KuG = "main";
-    this.KuH = "/";
-    this.KuI = FlutterView.b.KLe;
-    this.KuJ = new d(new String[0]);
-    this.GX = paramContext;
-    AppMethodBeat.o(191683);
+    AppMethodBeat.i(217480);
+    this.MkH = "main";
+    this.MkI = "/";
+    this.MkJ = FlutterView.b.MBV;
+    this.MkK = new d(new String[0]);
+    this.IR = paramContext;
+    AppMethodBeat.o(217480);
   }
   
   public final a a(a parama)
   {
-    this.KuL = parama;
+    this.MkM = parama;
     return this;
   }
   
   public final a a(a.a parama)
   {
-    this.KuM = parama;
+    this.MkN = parama;
     return this;
   }
   
   public final a a(c paramc)
   {
-    this.KuK = paramc;
+    this.MkL = paramc;
     return this;
   }
   
   public final a a(FlutterView.b paramb)
   {
-    this.KuI = paramb;
+    this.MkJ = paramb;
     return this;
   }
   
-  public final a aTY(String paramString)
+  public final a aZW(String paramString)
   {
-    this.KuG = paramString;
+    this.MkH = paramString;
     return this;
   }
   
-  public final a fHB()
+  public final a fYS()
   {
     return this;
   }

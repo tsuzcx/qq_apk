@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/utils/CountDownLock;", "", "countDownCallback", "Ljava/lang/Runnable;", "count", "", "(Ljava/lang/Runnable;I)V", "counter", "Ljava/util/concurrent/atomic/AtomicInteger;", "countDown", "", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/utils/CountDownLock;", "", "countDownCallback", "Ljava/lang/Runnable;", "count", "", "(Ljava/lang/Runnable;I)V", "counter", "Ljava/util/concurrent/atomic/AtomicInteger;", "countDown", "", "plugin-appbrand-integration_release"})
 public final class j
 {
   private final AtomicInteger counter;
-  private final Runnable moj;
+  private final Runnable mOL;
   
   public j(Runnable paramRunnable, int paramInt)
   {
     AppMethodBeat.i(51402);
-    this.moj = paramRunnable;
+    this.mOL = paramRunnable;
     if (paramInt > 0) {}
     for (int i = 1; i == 0; i = 0)
     {
@@ -30,7 +30,7 @@ public final class j
     AppMethodBeat.i(51401);
     if (this.counter.decrementAndGet() == 0)
     {
-      Runnable localRunnable = this.moj;
+      Runnable localRunnable = this.mOL;
       if (localRunnable != null)
       {
         localRunnable.run();

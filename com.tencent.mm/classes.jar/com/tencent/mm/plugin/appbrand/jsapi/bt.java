@@ -1,44 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.luggage.h.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.y;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.sdk.platformtools.ad;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiPredownloadMiniProgramPackage;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class bt
-  extends a<com.tencent.mm.plugin.appbrand.d>
+  extends a<h>
 {
-  public static final int CTRL_INDEX = 678;
-  public static final String NAME = "predownloadMiniProgramPackage";
-  @Deprecated
-  public static final a jZu;
-  
-  static
-  {
-    AppMethodBeat.i(50409);
-    jZu = new a((byte)0);
-    AppMethodBeat.o(50409);
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiPredownloadMiniProgramPackage$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"})
-  static final class a {}
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
-  static final class b
-    extends d.g.b.l
-    implements d.g.a.a<y>
-  {
-    b(bt parambt, com.tencent.mm.plugin.appbrand.d paramd, int paramInt)
-    {
-      super();
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class c<T>
-    implements com.tencent.mm.ipcinvoker.d<ResultType>
-  {
-    c(bt parambt, com.tencent.mm.plugin.appbrand.d paramd, int paramInt) {}
-  }
+  public static final int CTRL_INDEX = 617;
+  public static final String NAME = "openWCPayLQTSave";
 }
 
 

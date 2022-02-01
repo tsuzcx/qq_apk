@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.gallery.model;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.be.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,24 +17,24 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public final class c
 {
-  public d sIY;
-  int sIZ;
-  public h<String> sJa;
-  public HashMap<String, c> sJb;
-  int sJc;
-  private h<b> sJd;
-  h<b> sJe;
+  public d tFJ;
+  int tFK;
+  public h<String> tFL;
+  public HashMap<String, c> tFM;
+  int tFN;
+  private h<b> tFO;
+  h<b> tFP;
   
   public c()
   {
     AppMethodBeat.i(111240);
-    this.sIY = new d();
-    this.sIZ = g.DEFAULT_CORE_POOL_SIZE;
-    this.sJa = new h();
-    this.sJb = new HashMap();
-    this.sJc = (g.DEFAULT_CORE_POOL_SIZE / 2);
-    this.sJd = new h();
-    this.sJe = new h();
+    this.tFJ = new d();
+    this.tFK = g.DEFAULT_CORE_POOL_SIZE;
+    this.tFL = new h();
+    this.tFM = new HashMap();
+    this.tFN = (g.DEFAULT_CORE_POOL_SIZE / 2);
+    this.tFO = new h();
+    this.tFP = new h();
     AppMethodBeat.o(111240);
   }
   
@@ -48,34 +49,34 @@ public final class c
   public final Bitmap a(String paramString1, int paramInt1, String paramString2, long paramLong1, s.e parame, int paramInt2, long paramLong2)
   {
     AppMethodBeat.i(179445);
-    if (bs.isNullOrNil(paramString1))
+    if (bt.isNullOrNil(paramString1))
     {
-      ac.w("MicroMsg.CacheService", "file path is invalid.");
+      ad.w("MicroMsg.CacheService", "file path is invalid.");
       AppMethodBeat.o(179445);
       return null;
     }
     String str = com.tencent.mm.plugin.gallery.a.d.a(paramString1, parame, paramInt2);
     Object localObject = com.tencent.mm.plugin.gallery.a.d.a(paramString1, parame, paramLong2);
-    localObject = this.sIY.getBitmap((String)localObject);
+    localObject = this.tFJ.getBitmap((String)localObject);
     if (localObject != null)
     {
-      ac.v("MicroMsg.CacheService", "get bitmap from cache: %s.", new Object[] { paramString1 });
+      ad.v("MicroMsg.CacheService", "get bitmap from cache: %s.", new Object[] { paramString1 });
       AppMethodBeat.o(179445);
       return localObject;
     }
-    ac.d("MicroMsg.CacheService", "waitingDecodeTask size is : [%d].", new Object[] { Integer.valueOf(this.sJb.size()) });
-    if (this.sJb.containsKey(str))
+    ad.d("MicroMsg.CacheService", "waitingDecodeTask size is : [%d].", new Object[] { Integer.valueOf(this.tFM.size()) });
+    if (this.tFM.containsKey(str))
     {
-      ac.w("MicroMsg.CacheService", "%s has already getting bitmap from file, %s.", new Object[] { str, paramString1 });
+      ad.w("MicroMsg.CacheService", "%s has already getting bitmap from file, %s.", new Object[] { str, paramString1 });
       AppMethodBeat.o(179445);
       return null;
     }
-    this.sJa.add(str);
+    this.tFL.add(str);
     paramString1 = new c(paramString1, paramInt1, paramString2, paramLong1, parame, paramInt2, paramLong2);
-    this.sJb.put(str, paramString1);
-    ac.d("MicroMsg.CacheService", "add task: %s.", new Object[] { str });
-    ac.d("MicroMsg.CacheService", "filePathInService size: %s, waitingDecodeTask size: %s.", new Object[] { Integer.valueOf(this.sJa.size()), Integer.valueOf(this.sJb.size()) });
-    cMh();
+    this.tFM.put(str, paramString1);
+    ad.d("MicroMsg.CacheService", "add task: %s.", new Object[] { str });
+    ad.d("MicroMsg.CacheService", "filePathInService size: %s, waitingDecodeTask size: %s.", new Object[] { Integer.valueOf(this.tFL.size()), Integer.valueOf(this.tFM.size()) });
+    cUA();
     AppMethodBeat.o(179445);
     return null;
   }
@@ -83,18 +84,18 @@ public final class c
   public final Bitmap a(String paramString1, String paramString2, s.e parame, long paramLong)
   {
     AppMethodBeat.i(179446);
-    if (bs.isNullOrNil(paramString1)) {}
-    while (bs.isNullOrNil(paramString2))
+    if (bt.isNullOrNil(paramString1)) {}
+    while (bt.isNullOrNil(paramString2))
     {
-      ac.w("MicroMsg.CacheService", "file path is null or nil.");
+      ad.w("MicroMsg.CacheService", "file path is null or nil.");
       AppMethodBeat.o(179446);
       return null;
       paramString2 = paramString1;
     }
-    paramString1 = this.sIY.getBitmap(com.tencent.mm.plugin.gallery.a.d.a(paramString2, parame, paramLong));
+    paramString1 = this.tFJ.getBitmap(com.tencent.mm.plugin.gallery.a.d.a(paramString2, parame, paramLong));
     if (paramString1 != null)
     {
-      ac.v("MicroMsg.CacheService", "get bitmap from cache: %s.", new Object[] { paramString2 });
+      ad.v("MicroMsg.CacheService", "get bitmap from cache: %s.", new Object[] { paramString2 });
       AppMethodBeat.o(179446);
       return paramString1;
     }
@@ -105,60 +106,60 @@ public final class c
   public final void a(d.b paramb)
   {
     AppMethodBeat.i(111245);
-    d locald = this.sIY;
-    ac.d("MicroMsg.GalleryCache", "try add listener[%s].", new Object[] { paramb });
-    if (locald.sJo.size() > 256)
+    d locald = this.tFJ;
+    ad.d("MicroMsg.GalleryCache", "try add listener[%s].", new Object[] { paramb });
+    if (locald.tFZ.size() > 256)
     {
-      ac.d("MicroMsg.GalleryCache", "start clear logic: %s.", new Object[] { Integer.valueOf(locald.sJo.size()) });
+      ad.d("MicroMsg.GalleryCache", "start clear logic: %s.", new Object[] { Integer.valueOf(locald.tFZ.size()) });
       int i = 0;
       while (i < 128)
       {
-        String str = (String)locald.sJo.get(i);
-        if (!bs.isNullOrNil(str)) {
-          locald.sJp.remove(str);
+        String str = (String)locald.tFZ.get(i);
+        if (!bt.isNullOrNil(str)) {
+          locald.tGa.remove(str);
         }
         i += 1;
       }
-      locald.sJo.subList(0, 128).clear();
-      ac.d("MicroMsg.GalleryCache", "finish clear logic: %s.", new Object[] { Integer.valueOf(locald.sJo.size()) });
+      locald.tFZ.subList(0, 128).clear();
+      ad.d("MicroMsg.GalleryCache", "finish clear logic: %s.", new Object[] { Integer.valueOf(locald.tFZ.size()) });
     }
-    if (bs.isNullOrNil(paramb.cMp()))
+    if (bt.isNullOrNil(paramb.cUI()))
     {
-      ac.e("MicroMsg.GalleryCache", "error! fileKey is invalid!!!");
+      ad.e("MicroMsg.GalleryCache", "error! fileKey is invalid!!!");
       AppMethodBeat.o(111245);
       return;
     }
-    if (locald.sJp.containsKey(paramb.cMp()))
+    if (locald.tGa.containsKey(paramb.cUI()))
     {
-      ac.d("MicroMsg.GalleryCache", "listener already exist!!! %s, update!!!.", new Object[] { paramb });
-      locald.sJo.remove(paramb.cMp());
-      locald.sJo.add(paramb.cMp());
-      locald.sJp.put(paramb.cMp(), paramb);
+      ad.d("MicroMsg.GalleryCache", "listener already exist!!! %s, update!!!.", new Object[] { paramb });
+      locald.tFZ.remove(paramb.cUI());
+      locald.tFZ.add(paramb.cUI());
+      locald.tGa.put(paramb.cUI(), paramb);
       AppMethodBeat.o(111245);
       return;
     }
-    ac.d("MicroMsg.GalleryCache", "add listener[%s] ok.", new Object[] { paramb });
-    locald.sJo.add(paramb.cMp());
-    locald.sJp.put(paramb.cMp(), paramb);
+    ad.d("MicroMsg.GalleryCache", "add listener[%s] ok.", new Object[] { paramb });
+    locald.tFZ.add(paramb.cUI());
+    locald.tGa.put(paramb.cUI(), paramb);
     AppMethodBeat.o(111245);
   }
   
   public final void b(d.b paramb)
   {
     AppMethodBeat.i(111246);
-    d locald = this.sIY;
+    d locald = this.tFJ;
     if (paramb == null)
     {
-      locald.cMo();
-      locald.huf.removeAll();
+      locald.cUH();
+      locald.hMx.removeAll();
       AppMethodBeat.o(111246);
       return;
     }
-    String str = paramb.cMp();
-    if (locald.sJp.containsKey(paramb.cMp()))
+    String str = paramb.cUI();
+    if (locald.tGa.containsKey(paramb.cUI()))
     {
-      locald.sJp.remove(str);
-      locald.sJo.remove(str);
+      locald.tGa.remove(str);
+      locald.tFZ.remove(str);
     }
     AppMethodBeat.o(111246);
   }
@@ -166,70 +167,70 @@ public final class c
   public final void b(String paramString1, int paramInt, String paramString2, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(179447);
-    if (bs.isNullOrNil(paramString1))
+    if (bt.isNullOrNil(paramString1))
     {
-      ac.w("MicroMsg.CacheService", "trySubmitPreDecodeTask, file path is invalid.");
+      ad.w("MicroMsg.CacheService", "trySubmitPreDecodeTask, file path is invalid.");
       AppMethodBeat.o(179447);
       return;
     }
     String str = com.tencent.mm.plugin.gallery.a.d.a(paramString1, null, -1);
     Object localObject = com.tencent.mm.plugin.gallery.a.d.a(paramString1, null, paramLong2);
-    localObject = this.sIY.getBitmap((String)localObject);
+    localObject = this.tFJ.getBitmap((String)localObject);
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
-      ac.v("MicroMsg.CacheService", "trySubmitPreDecodeTask, no need decode.");
+      ad.v("MicroMsg.CacheService", "trySubmitPreDecodeTask, no need decode.");
       AppMethodBeat.o(179447);
       return;
     }
-    ac.d("MicroMsg.CacheService", "pre decode info: %s %s stack %s.", new Object[] { str, paramString1, bs.eWi() });
-    if (this.sJd.size() > 82) {
-      ac.d("MicroMsg.CacheService", "remove task: %s.", new Object[] { ((b)this.sJd.cMV()).mFilePath });
+    ad.d("MicroMsg.CacheService", "pre decode info: %s %s stack %s.", new Object[] { str, paramString1, bt.flS() });
+    if (this.tFO.size() > 82) {
+      ad.d("MicroMsg.CacheService", "remove task: %s.", new Object[] { ((b)this.tFO.cVn()).mFilePath });
     }
     paramString1 = new b(paramString1, paramInt, paramString2, paramLong1, paramLong2);
-    this.sJd.add(paramString1);
-    cMm();
+    this.tFO.add(paramString1);
+    cUF();
     AppMethodBeat.o(179447);
   }
   
-  final void cMh()
+  final void cUA()
   {
     AppMethodBeat.i(111244);
-    e.cMu().a(this.sJa, this.sJb);
+    e.cUN().a(this.tFL, this.tFM);
     AppMethodBeat.o(111244);
   }
   
-  final boolean cMi()
+  final boolean cUB()
   {
-    return this.sIZ > 0;
+    return this.tFK > 0;
   }
   
-  final void cMj()
+  final void cUC()
   {
-    this.sIZ -= 1;
+    this.tFK -= 1;
   }
   
-  final boolean cMk()
+  final boolean cUD()
   {
-    return this.sJc > 0;
+    return this.tFN > 0;
   }
   
-  final void cMl()
+  final void cUE()
   {
-    this.sJc -= 1;
+    this.tFN -= 1;
   }
   
-  public final void cMm()
+  public final void cUF()
   {
     AppMethodBeat.i(111249);
-    ac.d("MicroMsg.CacheService", "tryStartPreDecode: %s %s.", new Object[] { Integer.valueOf(this.sJd.size()), Integer.valueOf(this.sJe.size()) });
-    e.cMu().a(this.sJd, this.sJe);
+    ad.d("MicroMsg.CacheService", "tryStartPreDecode: %s %s.", new Object[] { Integer.valueOf(this.tFO.size()), Integer.valueOf(this.tFP.size()) });
+    e.cUN().a(this.tFO, this.tFP);
     AppMethodBeat.o(111249);
   }
   
-  public final void cMn()
+  public final void cUG()
   {
     AppMethodBeat.i(111250);
-    Iterator localIterator = this.sJe.iterator();
+    Iterator localIterator = this.tFP.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
@@ -237,18 +238,18 @@ public final class c
         localb.mCancel = true;
       }
     }
-    this.sJe.clear();
-    this.sJd.clear();
+    this.tFP.clear();
+    this.tFO.clear();
     AppMethodBeat.o(111250);
   }
   
-  public final void dN(List<String> paramList)
+  public final void dX(List<String> paramList)
   {
     AppMethodBeat.i(111247);
-    if ((this.sJb != null) && (!this.sJb.isEmpty()))
+    if ((this.tFM != null) && (!this.tFM.isEmpty()))
     {
       Object localObject = new ArrayList();
-      Iterator localIterator = this.sJb.entrySet().iterator();
+      Iterator localIterator = this.tFM.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -258,20 +259,31 @@ public final class c
           if (localc != null) {
             localc.mCancel = true;
           }
-          ac.d("MicroMsg.CacheService", "cancelTask, success : %s.", new Object[] { localEntry.getKey() });
+          ad.d("MicroMsg.CacheService", "cancelTask, success : %s.", new Object[] { localEntry.getKey() });
           ((ArrayList)localObject).add(localEntry.getKey());
         }
       }
-      ac.d("MicroMsg.CacheService", "cancelTask, counter: %s.", new Object[] { Integer.valueOf(((ArrayList)localObject).size()) });
+      ad.d("MicroMsg.CacheService", "cancelTask, counter: %s.", new Object[] { Integer.valueOf(((ArrayList)localObject).size()) });
       paramList = ((ArrayList)localObject).iterator();
       while (paramList.hasNext())
       {
         localObject = (String)paramList.next();
-        this.sJa.dg(localObject);
-        this.sJb.remove(localObject);
+        this.tFL.dj(localObject);
+        this.tFM.remove(localObject);
       }
     }
     AppMethodBeat.o(111247);
+  }
+  
+  public abstract class a
+    implements be.a
+  {
+    public a() {}
+    
+    public final boolean aEn()
+    {
+      return false;
+    }
   }
   
   public final class b
@@ -281,35 +293,35 @@ public final class c
     volatile boolean mCancel;
     String mFilePath;
     private int mediaType;
-    private String sJg;
-    private long sJh;
-    int sJi;
-    long sJj;
+    private String tFR;
+    private long tFS;
+    int tFT;
+    long tFU;
     
     public b(String paramString1, int paramInt, String paramString2, long paramLong1, long paramLong2)
     {
       super();
       this.mFilePath = paramString1;
       this.mediaType = paramInt;
-      this.sJg = paramString2;
-      this.sJh = paramLong1;
-      this.sJi = 12288;
-      this.sJj = paramLong2;
+      this.tFR = paramString2;
+      this.tFS = paramLong1;
+      this.tFT = 12288;
+      this.tFU = paramLong2;
     }
     
-    public final boolean aBj()
+    public final boolean aEm()
     {
       AppMethodBeat.i(111235);
-      ac.d("MicroMsg.PreDecodeFile", "start doInBackground.");
+      ad.d("MicroMsg.PreDecodeFile", "start doInBackground.");
       if (this.mCancel)
       {
         AppMethodBeat.o(111235);
         return false;
       }
-      this.bitmap = c.this.sIY.b(this.mFilePath, this.sJg, null, this.sJj);
+      this.bitmap = c.this.tFJ.b(this.mFilePath, this.tFR, null, this.tFU);
       if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
       {
-        ac.d("MicroMsg.PreDecodeFile", "get bmp from disk cache ok, filePath[%s].", new Object[] { this.mFilePath });
+        ad.d("MicroMsg.PreDecodeFile", "get bmp from disk cache ok, filePath[%s].", new Object[] { this.mFilePath });
         AppMethodBeat.o(111235);
         return true;
       }
@@ -318,11 +330,11 @@ public final class c
         AppMethodBeat.o(111235);
         return false;
       }
-      this.bitmap = n.a(this.sJh, this.mediaType, this.mFilePath, this.sJg);
+      this.bitmap = n.a(this.tFS, this.mediaType, this.mFilePath, this.tFR);
       if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
       {
-        ac.d("MicroMsg.PreDecodeFile", "get bmp from file ok, filePath[%s].", new Object[] { this.mFilePath });
-        c.this.sIY.a(this.mFilePath, this.sJg, this.bitmap, null, this.sJj);
+        ad.d("MicroMsg.PreDecodeFile", "get bmp from file ok, filePath[%s].", new Object[] { this.mFilePath });
+        c.this.tFJ.a(this.mFilePath, this.tFR, this.bitmap, null, this.tFU);
         AppMethodBeat.o(111235);
         return true;
       }
@@ -339,12 +351,12 @@ public final class c
     String mFilePath;
     int mPosition;
     private int mediaType;
-    private String sJg;
-    private long sJh;
-    int sJi;
-    long sJj;
-    s.e sJk;
-    String sJl;
+    private String tFR;
+    private long tFS;
+    int tFT;
+    long tFU;
+    s.e tFV;
+    String tFW;
     
     c(String paramString1, int paramInt1, String paramString2, long paramLong1, s.e parame, int paramInt2, long paramLong2)
     {
@@ -357,29 +369,29 @@ public final class c
       AppMethodBeat.i(179443);
       this.mFilePath = paramString1;
       this.mediaType = paramInt1;
-      this.sJg = paramString2;
-      this.sJh = paramLong1;
-      this.sJi = 12288;
-      this.sJk = parame;
+      this.tFR = paramString2;
+      this.tFS = paramLong1;
+      this.tFT = 12288;
+      this.tFV = parame;
       this.mPosition = paramInt2;
-      this.sJj = paramLong2;
-      this.sJl = com.tencent.mm.plugin.gallery.a.d.a(paramString1, parame, paramInt2);
+      this.tFU = paramLong2;
+      this.tFW = com.tencent.mm.plugin.gallery.a.d.a(paramString1, parame, paramInt2);
       AppMethodBeat.o(179443);
     }
     
-    public final boolean aBj()
+    public final boolean aEm()
     {
       AppMethodBeat.i(111237);
-      ac.d("MicroMsg.CacheService", "task execute, mDecodeTaskKey: %s, filePath: %s, isCancel: %s.", new Object[] { this.sJl, this.mFilePath, Boolean.valueOf(this.mCancel) });
+      ad.d("MicroMsg.CacheService", "task execute, mDecodeTaskKey: %s, filePath: %s, isCancel: %s.", new Object[] { this.tFW, this.mFilePath, Boolean.valueOf(this.mCancel) });
       if (this.mCancel)
       {
         AppMethodBeat.o(111237);
         return false;
       }
-      this.bitmap = c.this.sIY.b(this.mFilePath, this.sJg, this.sJk, this.sJj);
+      this.bitmap = c.this.tFJ.b(this.mFilePath, this.tFR, this.tFV, this.tFU);
       if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
       {
-        ac.d("MicroMsg.CacheService", "get bmp from disk cache ok, mDecodeTaskKey[%s] filePath[%s].", new Object[] { this.sJl, this.mFilePath });
+        ad.d("MicroMsg.CacheService", "get bmp from disk cache ok, mDecodeTaskKey[%s] filePath[%s].", new Object[] { this.tFW, this.mFilePath });
         AppMethodBeat.o(111237);
         return true;
       }
@@ -388,26 +400,26 @@ public final class c
         AppMethodBeat.o(111237);
         return false;
       }
-      if (this.sJk != null)
+      if (this.tFV != null)
       {
-        this.bitmap = n.a(this.mFilePath, this.sJk);
+        this.bitmap = n.a(this.mFilePath, this.tFV);
         if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
         {
-          ac.d("MicroMsg.CacheService", "getPortraitBitmap ok, mDecodeTaskKey[%s] filePath[%s].", new Object[] { this.sJl, this.mFilePath });
+          ad.d("MicroMsg.CacheService", "getPortraitBitmap ok, mDecodeTaskKey[%s] filePath[%s].", new Object[] { this.tFW, this.mFilePath });
           AppMethodBeat.o(111237);
           return true;
         }
-        ac.d("MicroMsg.CacheService", "getPortraitBitmap err, mDecodeTaskKey[%s] filePath[%s].", new Object[] { this.sJl, this.mFilePath });
+        ad.d("MicroMsg.CacheService", "getPortraitBitmap err, mDecodeTaskKey[%s] filePath[%s].", new Object[] { this.tFW, this.mFilePath });
       }
       if (this.mCancel)
       {
         AppMethodBeat.o(111237);
         return false;
       }
-      this.bitmap = n.a(this.sJh, this.mediaType, this.mFilePath, this.sJg);
+      this.bitmap = n.a(this.tFS, this.mediaType, this.mFilePath, this.tFR);
       if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
       {
-        c.this.sIY.a(this.mFilePath, this.sJg, this.bitmap, this.sJk, this.sJj);
+        c.this.tFJ.a(this.mFilePath, this.tFR, this.bitmap, this.tFV, this.tFU);
         AppMethodBeat.o(111237);
         return true;
       }
@@ -431,7 +443,7 @@ public final class c
       if ((paramObject instanceof c))
       {
         paramObject = (c)paramObject;
-        boolean bool = bs.bG(this.mFilePath, "").equals(paramObject.mFilePath);
+        boolean bool = bt.bI(this.mFilePath, "").equals(paramObject.mFilePath);
         AppMethodBeat.o(111238);
         return bool;
       }
@@ -442,7 +454,7 @@ public final class c
     public final int hashCode()
     {
       AppMethodBeat.i(111239);
-      int i = bs.bG(this.mFilePath, "").hashCode();
+      int i = bt.bI(this.mFilePath, "").hashCode();
       AppMethodBeat.o(111239);
       return i;
     }

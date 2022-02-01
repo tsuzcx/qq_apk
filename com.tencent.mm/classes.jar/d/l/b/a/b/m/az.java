@@ -1,7 +1,7 @@
 package d.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.a.g;
 import d.m;
 import java.util.List;
@@ -11,18 +11,18 @@ public final class az
   public static final ab a(ab paramab, List<? extends av> paramList, g paramg)
   {
     AppMethodBeat.i(60843);
-    k.h(paramab, "$this$replace");
-    k.h(paramList, "newArguments");
-    k.h(paramg, "newAnnotations");
-    if (((paramList.isEmpty()) || (paramList == paramab.gbw())) && (paramg == paramab.fQj()))
+    p.h(paramab, "$this$replace");
+    p.h(paramList, "newArguments");
+    p.h(paramg, "newAnnotations");
+    if (((paramList.isEmpty()) || (paramList == paramab.gsW())) && (paramg == paramab.ghH()))
     {
       AppMethodBeat.o(60843);
       return paramab;
     }
-    paramab = paramab.gcz();
+    paramab = paramab.gua();
     if ((paramab instanceof v))
     {
-      paramab = (ab)ac.a(a(((v)paramab).LLa, paramList, paramg), a(((v)paramab).LLb, paramList, paramg));
+      paramab = (ab)ac.a(a(((v)paramab).NBV, paramList, paramg), a(((v)paramab).NBW, paramList, paramg));
       AppMethodBeat.o(60843);
       return paramab;
     }
@@ -40,10 +40,10 @@ public final class az
   private static aj a(aj paramaj, List<? extends av> paramList, g paramg)
   {
     AppMethodBeat.i(60844);
-    k.h(paramaj, "$this$replace");
-    k.h(paramList, "newArguments");
-    k.h(paramg, "newAnnotations");
-    if ((paramList.isEmpty()) && (paramg == paramaj.fQj()))
+    p.h(paramaj, "$this$replace");
+    p.h(paramList, "newArguments");
+    p.h(paramg, "newAnnotations");
+    if ((paramList.isEmpty()) && (paramg == paramaj.ghH()))
     {
       AppMethodBeat.o(60844);
       return paramaj;
@@ -54,7 +54,7 @@ public final class az
       AppMethodBeat.o(60844);
       return paramaj;
     }
-    paramaj = ac.c(paramg, paramaj.gbz(), paramList, paramaj.fUx());
+    paramaj = ac.c(paramg, paramaj.gsZ(), paramList, paramaj.glW());
     AppMethodBeat.o(60844);
     return paramaj;
   }
@@ -62,8 +62,8 @@ public final class az
   public static final aj az(ab paramab)
   {
     AppMethodBeat.i(60846);
-    k.h(paramab, "$this$asSimpleType");
-    bg localbg = paramab.gcz();
+    p.h(paramab, "$this$asSimpleType");
+    bg localbg = paramab.gua();
     Object localObject = localbg;
     if (!(localbg instanceof aj)) {
       localObject = null;
@@ -81,7 +81,7 @@ public final class az
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.az
  * JD-Core Version:    0.7.0.1
  */

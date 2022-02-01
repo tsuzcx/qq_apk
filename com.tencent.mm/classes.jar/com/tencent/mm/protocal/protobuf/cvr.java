@@ -3,57 +3,73 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cvr
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String FGo;
-  public String qoi;
-  public String qon;
+  public String Desc;
+  public String HbR;
+  public String HbS;
+  public String IconUrl;
+  public String Title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122530);
+    AppMethodBeat.i(117904);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.qon != null) {
-        paramVarArgs.d(1, this.qon);
+      if (this.HbR != null) {
+        paramVarArgs.d(1, this.HbR);
       }
-      if (this.FGo != null) {
-        paramVarArgs.d(2, this.FGo);
+      if (this.Title != null) {
+        paramVarArgs.d(2, this.Title);
       }
-      if (this.qoi != null) {
-        paramVarArgs.d(3, this.qoi);
+      if (this.Desc != null) {
+        paramVarArgs.d(3, this.Desc);
       }
-      AppMethodBeat.o(122530);
+      if (this.IconUrl != null) {
+        paramVarArgs.d(4, this.IconUrl);
+      }
+      if (this.HbS != null) {
+        paramVarArgs.d(5, this.HbS);
+      }
+      AppMethodBeat.o(117904);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.qon == null) {
-        break label334;
+      if (this.HbR == null) {
+        break label454;
       }
     }
-    label334:
-    for (int i = f.a.a.b.b.a.e(1, this.qon) + 0;; i = 0)
+    label454:
+    for (int i = f.a.a.b.b.a.e(1, this.HbR) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.FGo != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.FGo);
+      if (this.Title != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Title);
       }
       i = paramInt;
-      if (this.qoi != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.qoi);
+      if (this.Desc != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Desc);
       }
-      AppMethodBeat.o(122530);
+      paramInt = i;
+      if (this.IconUrl != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.IconUrl);
+      }
+      i = paramInt;
+      if (this.HbS != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.HbS);
+      }
+      AppMethodBeat.o(117904);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(122530);
+        AppMethodBeat.o(117904);
         return 0;
       }
       if (paramInt == 3)
@@ -63,29 +79,37 @@ public final class cvr
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(122530);
+          AppMethodBeat.o(117904);
           return -1;
         case 1: 
-          localcvr.qon = locala.LVo.readString();
-          AppMethodBeat.o(122530);
+          localcvr.HbR = locala.NPN.readString();
+          AppMethodBeat.o(117904);
           return 0;
         case 2: 
-          localcvr.FGo = locala.LVo.readString();
-          AppMethodBeat.o(122530);
+          localcvr.Title = locala.NPN.readString();
+          AppMethodBeat.o(117904);
+          return 0;
+        case 3: 
+          localcvr.Desc = locala.NPN.readString();
+          AppMethodBeat.o(117904);
+          return 0;
+        case 4: 
+          localcvr.IconUrl = locala.NPN.readString();
+          AppMethodBeat.o(117904);
           return 0;
         }
-        localcvr.qoi = locala.LVo.readString();
-        AppMethodBeat.o(122530);
+        localcvr.HbS = locala.NPN.readString();
+        AppMethodBeat.o(117904);
         return 0;
       }
-      AppMethodBeat.o(122530);
+      AppMethodBeat.o(117904);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cvr
  * JD-Core Version:    0.7.0.1
  */

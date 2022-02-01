@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class LuckyMoneyEnvelopeTouchRecyclerView
   extends RecyclerView
 {
-  public a uuH;
+  public a vxk;
   
   public LuckyMoneyEnvelopeTouchRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,8 +24,8 @@ public class LuckyMoneyEnvelopeTouchRecyclerView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(65596);
-    if (this.uuH != null) {
-      this.uuH.onInterceptTouchEvent(paramMotionEvent);
+    if (this.vxk != null) {
+      this.vxk.onInterceptTouchEvent(paramMotionEvent);
     }
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
     AppMethodBeat.o(65596);
@@ -39,7 +39,7 @@ public class LuckyMoneyEnvelopeTouchRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyEnvelopeTouchRecyclerView
  * JD-Core Version:    0.7.0.1
  */

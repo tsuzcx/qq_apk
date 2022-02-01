@@ -1,6 +1,6 @@
 package com.tencent.mm.wallet_core.d;
 
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 
 public abstract interface f
 {

@@ -12,22 +12,22 @@ public class ScanFilterCompat
   implements Parcelable
 {
   public static final Parcelable.Creator<ScanFilterCompat> CREATOR;
-  private static final ScanFilterCompat klJ;
-  final String klA;
-  final ParcelUuid klB;
-  final ParcelUuid klC;
-  final ParcelUuid klD;
-  final byte[] klE;
-  final byte[] klF;
-  final int klG;
-  final byte[] klH;
-  final byte[] klI;
+  private static final ScanFilterCompat kGJ;
+  final String kGA;
+  final ParcelUuid kGB;
+  final ParcelUuid kGC;
+  final ParcelUuid kGD;
+  final byte[] kGE;
+  final byte[] kGF;
+  final int kGG;
+  final byte[] kGH;
+  final byte[] kGI;
   final String mDeviceName;
   
   static
   {
     AppMethodBeat.i(144631);
-    klJ = new a().bfO();
+    kGJ = new a().bjs();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(144631);
   }
@@ -35,15 +35,15 @@ public class ScanFilterCompat
   private ScanFilterCompat(String paramString1, String paramString2, ParcelUuid paramParcelUuid1, ParcelUuid paramParcelUuid2, ParcelUuid paramParcelUuid3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4)
   {
     this.mDeviceName = paramString1;
-    this.klB = paramParcelUuid1;
-    this.klC = paramParcelUuid2;
-    this.klA = paramString2;
-    this.klD = paramParcelUuid3;
-    this.klE = paramArrayOfByte1;
-    this.klF = paramArrayOfByte2;
-    this.klG = paramInt;
-    this.klH = paramArrayOfByte3;
-    this.klI = paramArrayOfByte4;
+    this.kGB = paramParcelUuid1;
+    this.kGC = paramParcelUuid2;
+    this.kGA = paramString2;
+    this.kGD = paramParcelUuid3;
+    this.kGE = paramArrayOfByte1;
+    this.kGF = paramArrayOfByte2;
+    this.kGG = paramInt;
+    this.kGH = paramArrayOfByte3;
+    this.kGI = paramArrayOfByte4;
   }
   
   static boolean a(UUID paramUUID1, UUID paramUUID2, UUID paramUUID3)
@@ -124,7 +124,7 @@ public class ScanFilterCompat
       return false;
     }
     paramObject = (ScanFilterCompat)paramObject;
-    if ((d.equals(this.mDeviceName, paramObject.mDeviceName)) && (d.equals(this.klA, paramObject.klA)) && (this.klG == paramObject.klG) && (d.deepEquals(this.klH, paramObject.klH)) && (d.deepEquals(this.klI, paramObject.klI)) && (d.deepEquals(this.klD, paramObject.klD)) && (d.deepEquals(this.klE, paramObject.klE)) && (d.deepEquals(this.klF, paramObject.klF)) && (d.equals(this.klB, paramObject.klB)) && (d.equals(this.klC, paramObject.klC)))
+    if ((d.equals(this.mDeviceName, paramObject.mDeviceName)) && (d.equals(this.kGA, paramObject.kGA)) && (this.kGG == paramObject.kGG) && (d.deepEquals(this.kGH, paramObject.kGH)) && (d.deepEquals(this.kGI, paramObject.kGI)) && (d.deepEquals(this.kGD, paramObject.kGD)) && (d.deepEquals(this.kGE, paramObject.kGE)) && (d.deepEquals(this.kGF, paramObject.kGF)) && (d.equals(this.kGB, paramObject.kGB)) && (d.equals(this.kGC, paramObject.kGC)))
     {
       AppMethodBeat.o(144630);
       return true;
@@ -136,7 +136,7 @@ public class ScanFilterCompat
   public int hashCode()
   {
     AppMethodBeat.i(144629);
-    int i = Arrays.hashCode(new Object[] { this.mDeviceName, this.klA, Integer.valueOf(this.klG), this.klH, this.klI, this.klD, this.klE, this.klF, this.klB, this.klC });
+    int i = Arrays.hashCode(new Object[] { this.mDeviceName, this.kGA, Integer.valueOf(this.kGG), this.kGH, this.kGI, this.kGD, this.kGE, this.kGF, this.kGB, this.kGC });
     AppMethodBeat.o(144629);
     return i;
   }
@@ -144,7 +144,7 @@ public class ScanFilterCompat
   public String toString()
   {
     AppMethodBeat.i(144628);
-    String str = "BluetoothLeScanFilter [mDeviceName=" + this.mDeviceName + ", mDeviceAddress=" + this.klA + ", mUuid=" + this.klB + ", mUuidMask=" + this.klC + ", mServiceDataUuid=" + d.toString(this.klD) + ", mServiceData=" + Arrays.toString(this.klE) + ", mServiceDataMask=" + Arrays.toString(this.klF) + ", mManufacturerId=" + this.klG + ", mManufacturerData=" + Arrays.toString(this.klH) + ", mManufacturerDataMask=" + Arrays.toString(this.klI) + "]";
+    String str = "BluetoothLeScanFilter [mDeviceName=" + this.mDeviceName + ", mDeviceAddress=" + this.kGA + ", mUuid=" + this.kGB + ", mUuidMask=" + this.kGC + ", mServiceDataUuid=" + d.toString(this.kGD) + ", mServiceData=" + Arrays.toString(this.kGE) + ", mServiceDataMask=" + Arrays.toString(this.kGF) + ", mManufacturerId=" + this.kGG + ", mManufacturerData=" + Arrays.toString(this.kGH) + ", mManufacturerDataMask=" + Arrays.toString(this.kGI) + "]";
     AppMethodBeat.o(144628);
     return str;
   }
@@ -161,78 +161,78 @@ public class ScanFilterCompat
       if (this.mDeviceName != null) {
         paramParcel.writeString(this.mDeviceName);
       }
-      if (this.klA != null) {
+      if (this.kGA != null) {
         break label328;
       }
       i = 0;
       label46:
       paramParcel.writeInt(i);
-      if (this.klA != null) {
-        paramParcel.writeString(this.klA);
+      if (this.kGA != null) {
+        paramParcel.writeString(this.kGA);
       }
-      if (this.klB != null) {
+      if (this.kGB != null) {
         break label333;
       }
       i = 0;
       label75:
       paramParcel.writeInt(i);
-      if (this.klB != null)
+      if (this.kGB != null)
       {
-        paramParcel.writeParcelable(this.klB, paramInt);
-        if (this.klC != null) {
+        paramParcel.writeParcelable(this.kGB, paramInt);
+        if (this.kGC != null) {
           break label338;
         }
         i = 0;
         label105:
         paramParcel.writeInt(i);
-        if (this.klC != null) {
-          paramParcel.writeParcelable(this.klC, paramInt);
+        if (this.kGC != null) {
+          paramParcel.writeParcelable(this.kGC, paramInt);
         }
       }
-      if (this.klD != null) {
+      if (this.kGD != null) {
         break label343;
       }
       i = 0;
       label135:
       paramParcel.writeInt(i);
-      if (this.klD != null)
+      if (this.kGD != null)
       {
-        paramParcel.writeParcelable(this.klD, paramInt);
-        if (this.klE != null) {
+        paramParcel.writeParcelable(this.kGD, paramInt);
+        if (this.kGE != null) {
           break label348;
         }
         paramInt = 0;
         label165:
         paramParcel.writeInt(paramInt);
-        if (this.klE != null)
+        if (this.kGE != null)
         {
-          paramParcel.writeInt(this.klE.length);
-          paramParcel.writeByteArray(this.klE);
-          if (this.klF != null) {
+          paramParcel.writeInt(this.kGE.length);
+          paramParcel.writeByteArray(this.kGE);
+          if (this.kGF != null) {
             break label353;
           }
           paramInt = 0;
           label203:
           paramParcel.writeInt(paramInt);
-          if (this.klF != null)
+          if (this.kGF != null)
           {
-            paramParcel.writeInt(this.klF.length);
-            paramParcel.writeByteArray(this.klF);
+            paramParcel.writeInt(this.kGF.length);
+            paramParcel.writeByteArray(this.kGF);
           }
         }
       }
-      paramParcel.writeInt(this.klG);
-      if (this.klH != null) {
+      paramParcel.writeInt(this.kGG);
+      if (this.kGH != null) {
         break label358;
       }
       paramInt = 0;
       label249:
       paramParcel.writeInt(paramInt);
-      if (this.klH != null)
+      if (this.kGH != null)
       {
-        paramParcel.writeInt(this.klH.length);
-        paramParcel.writeByteArray(this.klH);
-        if (this.klI != null) {
+        paramParcel.writeInt(this.kGH.length);
+        paramParcel.writeByteArray(this.kGH);
+        if (this.kGI != null) {
           break label363;
         }
       }
@@ -248,10 +248,10 @@ public class ScanFilterCompat
     for (paramInt = j;; paramInt = 1)
     {
       paramParcel.writeInt(paramInt);
-      if (this.klI != null)
+      if (this.kGI != null)
       {
-        paramParcel.writeInt(this.klI.length);
-        paramParcel.writeByteArray(this.klI);
+        paramParcel.writeInt(this.kGI.length);
+        paramParcel.writeByteArray(this.kGI);
       }
       AppMethodBeat.o(144626);
       return;
@@ -276,28 +276,28 @@ public class ScanFilterCompat
   
   public static final class a
   {
-    String klA;
-    ParcelUuid klB;
-    ParcelUuid klD;
-    byte[] klE;
-    byte[] klF;
-    int klG = -1;
-    byte[] klH;
-    byte[] klI;
-    ParcelUuid klK;
+    String kGA;
+    ParcelUuid kGB;
+    ParcelUuid kGD;
+    byte[] kGE;
+    byte[] kGF;
+    int kGG = -1;
+    byte[] kGH;
+    byte[] kGI;
+    ParcelUuid kGK;
     String mDeviceName;
     
     public final a a(ParcelUuid paramParcelUuid)
     {
-      this.klB = paramParcelUuid;
-      this.klK = null;
+      this.kGB = paramParcelUuid;
+      this.kGK = null;
       return this;
     }
     
-    public final ScanFilterCompat bfO()
+    public final ScanFilterCompat bjs()
     {
       AppMethodBeat.i(144625);
-      ScanFilterCompat localScanFilterCompat = new ScanFilterCompat(this.mDeviceName, this.klA, this.klB, this.klK, this.klD, this.klE, this.klF, this.klG, this.klH, this.klI, (byte)0);
+      ScanFilterCompat localScanFilterCompat = new ScanFilterCompat(this.mDeviceName, this.kGA, this.kGB, this.kGK, this.kGD, this.kGE, this.kGF, this.kGG, this.kGH, this.kGI, (byte)0);
       AppMethodBeat.o(144625);
       return localScanFilterCompat;
     }
@@ -305,7 +305,7 @@ public class ScanFilterCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.ScanFilterCompat
  * JD-Core Version:    0.7.0.1
  */

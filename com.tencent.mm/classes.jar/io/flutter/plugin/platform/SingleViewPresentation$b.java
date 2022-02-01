@@ -12,19 +12,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class SingleViewPresentation$b
   extends ViewGroup
 {
-  private final Rect KPR;
-  private final Rect bMf;
+  private final Rect MGQ;
+  private final Rect bWs;
   
   public SingleViewPresentation$b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(9894);
-    this.bMf = new Rect();
-    this.KPR = new Rect();
+    this.bWs = new Rect();
+    this.MGQ = new Rect();
     AppMethodBeat.o(9894);
   }
   
-  private static int agC(int paramInt)
+  private static int ajd(int paramInt)
   {
     AppMethodBeat.i(9897);
     paramInt = View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt), -2147483648);
@@ -40,9 +40,9 @@ final class SingleViewPresentation$b
     {
       View localView = getChildAt(i);
       WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)localView.getLayoutParams();
-      this.bMf.set(paramInt1, paramInt2, paramInt3, paramInt4);
-      Gravity.apply(localLayoutParams.gravity, localView.getMeasuredWidth(), localView.getMeasuredHeight(), this.bMf, localLayoutParams.x, localLayoutParams.y, this.KPR);
-      localView.layout(this.KPR.left, this.KPR.top, this.KPR.right, this.KPR.bottom);
+      this.bWs.set(paramInt1, paramInt2, paramInt3, paramInt4);
+      Gravity.apply(localLayoutParams.gravity, localView.getMeasuredWidth(), localView.getMeasuredHeight(), this.bWs, localLayoutParams.x, localLayoutParams.y, this.MGQ);
+      localView.layout(this.MGQ.left, this.MGQ.top, this.MGQ.right, this.MGQ.bottom);
       i += 1;
     }
     AppMethodBeat.o(9895);
@@ -54,7 +54,7 @@ final class SingleViewPresentation$b
     int i = 0;
     while (i < getChildCount())
     {
-      getChildAt(i).measure(agC(paramInt1), agC(paramInt2));
+      getChildAt(i).measure(ajd(paramInt1), ajd(paramInt2));
       i += 1;
     }
     super.onMeasure(paramInt1, paramInt2);
@@ -63,7 +63,7 @@ final class SingleViewPresentation$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation.b
  * JD-Core Version:    0.7.0.1
  */

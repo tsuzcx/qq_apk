@@ -1,15 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class td
   extends b
 {
-  public a dwb;
+  public a dHE;
   
   public td()
   {
@@ -18,24 +15,23 @@ public final class td
   
   private td(byte paramByte)
   {
-    AppMethodBeat.i(77798);
-    this.dwb = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(190902);
+    this.dHE = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(77798);
+    AppMethodBeat.o(190902);
   }
   
   public static final class a
   {
-    public Context context;
-    public String dwc;
-    public DialogInterface.OnDismissListener dwd;
-    public Bundle dwe;
+    public long dHF;
+    public String sessionId;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.td
  * JD-Core Version:    0.7.0.1
  */

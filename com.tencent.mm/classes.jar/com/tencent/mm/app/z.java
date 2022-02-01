@@ -6,25 +6,24 @@ import java.util.Set;
 
 public final class z
 {
-  private static final Set<String> cJH;
+  private static final Set<String> cUU;
   
   static
   {
     AppMethodBeat.i(160098);
     HashSet localHashSet = new HashSet();
-    cJH = localHashSet;
+    cUU = localHashSet;
     localHashSet.add(":nospace");
-    cJH.add(":cuploader");
-    cJH.add(":dexopt");
-    cJH.add(":recovery");
-    cJH.add(":fallback");
-    cJH.add(":isolated_process0");
-    cJH.add(":hotpot");
-    cJH.add(":extmig");
+    cUU.add(":cuploader");
+    cUU.add(":dexopt");
+    cUU.add(":recovery");
+    cUU.add(":fallback");
+    cUU.add(":isolated_process0");
+    cUU.add(":extmig");
     AppMethodBeat.o(160098);
   }
   
-  public static String ev(String paramString)
+  public static String fq(String paramString)
   {
     AppMethodBeat.i(160095);
     int i = paramString.indexOf(':');
@@ -38,16 +37,16 @@ public final class z
     return "";
   }
   
-  public static boolean ew(String paramString)
+  public static boolean fr(String paramString)
   {
     AppMethodBeat.i(160096);
-    paramString = ev(paramString);
-    boolean bool = cJH.contains(paramString);
+    paramString = fq(paramString);
+    boolean bool = cUU.contains(paramString);
     AppMethodBeat.o(160096);
     return bool;
   }
   
-  public static boolean ex(String paramString)
+  public static boolean fs(String paramString)
   {
     AppMethodBeat.i(160097);
     boolean bool = paramString.endsWith(":nospace");

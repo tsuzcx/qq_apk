@@ -4,19 +4,19 @@ import android.graphics.Bitmap;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/model/LoadResult;", "R", "", "()V", "status", "", "from", "value", "(IILjava/lang/Object;)V", "data", "", "contentType", "", "([BLjava/lang/String;)V", "([BILjava/lang/String;)V", "getContentType", "()Ljava/lang/String;", "setContentType", "(Ljava/lang/String;)V", "getData", "()[B", "setData", "([B)V", "getFrom", "()I", "setFrom", "(I)V", "getStatus", "setStatus", "getValue", "()Ljava/lang/Object;", "setValue", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "isValid", "", "(Ljava/lang/Object;)Lcom/tencent/mm/loader/model/LoadResult;", "Companion", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/model/LoadResult;", "R", "", "()V", "status", "", "from", "value", "(IILjava/lang/Object;)V", "data", "", "contentType", "", "([BLjava/lang/String;)V", "([BILjava/lang/String;)V", "getContentType", "()Ljava/lang/String;", "setContentType", "(Ljava/lang/String;)V", "getData", "()[B", "setData", "([B)V", "getFrom", "()I", "setFrom", "(I)V", "getStatus", "setStatus", "getValue", "()Ljava/lang/Object;", "setValue", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "isValid", "", "(Ljava/lang/Object;)Lcom/tencent/mm/loader/model/LoadResult;", "Companion", "libimageloader_release"})
 public final class c<R>
 {
   private static final int STATUS_DEFAULT = -1;
   private static final int STATUS_OK = 0;
-  private static final int gMn = 1;
-  private static final int gMo = 2;
-  private static final int gMp = 3;
-  private static final int gMq = 4;
-  private static final int gMr = 0;
-  private static final int gMs = 1;
-  private static final int gMt = 2;
-  public static final c.a gMu = new c.a((byte)0);
+  private static final int hgk = 1;
+  private static final int hgl = 2;
+  private static final int hgm = 3;
+  private static final int hgn = 4;
+  private static final int hgo = 0;
+  private static final int hgp = 1;
+  private static final int hgq = 2;
+  public static final c.a hgr = new c.a((byte)0);
   public int from;
   public int status;
   public R value;

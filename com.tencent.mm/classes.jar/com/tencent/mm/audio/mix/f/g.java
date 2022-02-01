@@ -2,7 +2,7 @@ package com.tencent.mm.audio.mix.f;
 
 public abstract interface g
 {
-  public abstract void hG(int paramInt);
+  public abstract void hN(int paramInt);
 }
 
 

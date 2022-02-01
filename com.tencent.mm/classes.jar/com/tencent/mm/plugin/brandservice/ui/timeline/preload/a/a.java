@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.preload.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.ae;
-import com.tencent.mm.protocal.protobuf.fj;
+import com.tencent.mm.protocal.protobuf.fo;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -10,48 +10,48 @@ import java.util.Map;
 public final class a
   extends ae
 {
-  public static c.a hlR;
+  public static c.a hEe;
   
   static
   {
     AppMethodBeat.i(6187);
     c.a locala = new c.a();
-    locala.GvF = new Field[4];
+    locala.IhA = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appMsgReportContextId";
-    locala.GvH.put("appMsgReportContextId", "LONG PRIMARY KEY ");
+    locala.IhC.put("appMsgReportContextId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" appMsgReportContextId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "appMsgReportContextId";
+    locala.IhB = "appMsgReportContextId";
     locala.columns[1] = "url";
-    locala.GvH.put("url", "TEXT");
+    locala.IhC.put("url", "TEXT");
     localStringBuilder.append(" url TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "reportTime";
-    locala.GvH.put("reportTime", "LONG");
+    locala.IhC.put("reportTime", "LONG");
     localStringBuilder.append(" reportTime LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "aScene";
-    locala.GvH.put("aScene", "INTEGER");
+    locala.IhC.put("aScene", "INTEGER");
     localStringBuilder.append(" aScene INTEGER");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
-    hlR = locala;
+    hEe = locala;
     AppMethodBeat.o(6187);
   }
   
   public a() {}
   
-  public a(fj paramfj)
+  public a(fo paramfo)
   {
-    this.field_url = paramfj.Url;
-    this.field_reportTime = paramfj.DSs;
+    this.field_url = paramfo.Url;
+    this.field_reportTime = paramfo.FxL;
   }
   
   public final c.a getDBInfo()
   {
-    return hlR;
+    return hEe;
   }
   
   public final String toString()

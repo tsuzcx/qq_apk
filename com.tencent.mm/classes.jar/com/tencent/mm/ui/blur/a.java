@@ -16,24 +16,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements c
 {
-  private final Rect HIA;
-  private final int[] HIB;
-  private final ViewTreeObserver.OnPreDrawListener HIC;
-  boolean HID;
-  private boolean HIE;
-  private final Runnable HIF;
-  private Drawable HIG;
-  private boolean HIH;
-  private boolean HII;
-  private final float HIs;
-  private float HIt;
-  private float HIu;
-  private float HIv;
-  private b HIw;
-  private Canvas HIx;
-  private Bitmap HIy;
-  final View HIz;
-  private final ViewGroup isN;
+  private final float Jwj;
+  private float Jwk;
+  private float Jwl;
+  private float Jwm;
+  private b Jwn;
+  private Canvas Jwo;
+  private Bitmap Jwp;
+  final View Jwq;
+  private final Rect Jwr;
+  private final int[] Jws;
+  private final ViewTreeObserver.OnPreDrawListener Jwt;
+  boolean Jwu;
+  private boolean Jwv;
+  private final Runnable Jww;
+  private Drawable Jwx;
+  private boolean Jwy;
+  private boolean Jwz;
+  private final ViewGroup iLQ;
   private int left;
   private final Paint paint;
   private int top;
@@ -41,63 +41,63 @@ public final class a
   a(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142708);
-    this.HIs = 8.0F;
-    this.HIt = 16.0F;
-    this.HIu = 1.0F;
-    this.HIv = 1.0F;
-    this.HIA = new Rect();
-    this.HIB = new int[2];
-    this.HIC = new ViewTreeObserver.OnPreDrawListener()
+    this.Jwj = 8.0F;
+    this.Jwk = 16.0F;
+    this.Jwl = 1.0F;
+    this.Jwm = 1.0F;
+    this.Jwr = new Rect();
+    this.Jws = new int[2];
+    this.Jwt = new ViewTreeObserver.OnPreDrawListener()
     {
       public final boolean onPreDraw()
       {
         AppMethodBeat.i(142705);
-        if (!a.this.HID)
+        if (!a.this.Jwu)
         {
           a locala = a.this;
-          locala.HID = true;
-          locala.HIz.invalidate();
+          locala.Jwu = true;
+          locala.Jwq.invalidate();
         }
         AppMethodBeat.o(142705);
         return true;
       }
     };
-    this.HIE = true;
-    this.HIF = new Runnable()
+    this.Jwv = true;
+    this.Jww = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(142706);
-        a.this.HID = false;
+        a.this.Jwu = false;
         AppMethodBeat.o(142706);
       }
     };
-    this.HIH = true;
+    this.Jwy = true;
     this.paint = new Paint();
-    this.isN = paramViewGroup;
-    this.HIz = paramView;
-    this.HIw = new d();
+    this.iLQ = paramViewGroup;
+    this.Jwq = paramView;
+    this.Jwn = new d();
     this.paint.setFilterBitmap(true);
     int i = paramView.getMeasuredWidth();
     int j = paramView.getMeasuredHeight();
-    if (jD(i, j))
+    if (jP(i, j))
     {
-      this.HIz.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+      this.Jwq.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
       {
         public final void onGlobalLayout()
         {
           AppMethodBeat.i(142707);
           if (Build.VERSION.SDK_INT >= 16) {
-            a.this.HIz.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            a.this.Jwq.getViewTreeObserver().removeOnGlobalLayoutListener(this);
           }
           for (;;)
           {
-            int i = a.this.HIz.getMeasuredWidth();
-            int j = a.this.HIz.getMeasuredHeight();
+            int i = a.this.Jwq.getMeasuredWidth();
+            int j = a.this.Jwq.getMeasuredHeight();
             a.this.init(i, j);
             AppMethodBeat.o(142707);
             return;
-            a.this.HIz.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+            a.this.Jwq.getViewTreeObserver().removeGlobalOnLayoutListener(this);
           }
         }
       });
@@ -108,7 +108,7 @@ public final class a
     AppMethodBeat.o(142708);
   }
   
-  private static int aas(int paramInt)
+  private static int acC(int paramInt)
   {
     if (paramInt % 16 == 0) {
       return paramInt;
@@ -116,7 +116,7 @@ public final class a
     return paramInt - paramInt % 16 + 16;
   }
   
-  private static int bO(float paramFloat)
+  private static int bT(float paramFloat)
   {
     AppMethodBeat.i(142709);
     int i = (int)Math.ceil(paramFloat / 8.0F);
@@ -124,42 +124,42 @@ public final class a
     return i;
   }
   
-  private void fjN()
+  private void fAc()
   {
     AppMethodBeat.i(142713);
-    this.HIz.getDrawingRect(this.HIA);
-    if (this.HIH) {}
+    this.Jwq.getDrawingRect(this.Jwr);
+    if (this.Jwy) {}
     for (;;)
     {
       try
       {
-        this.isN.offsetDescendantRectToMyCoords(this.HIz, this.HIA);
-        this.HIA.offset(this.left, this.top);
-        float f1 = this.HIu * 8.0F;
-        float f2 = this.HIv * 8.0F;
-        float f3 = -this.HIA.left / f1;
-        float f4 = -this.HIA.top / f2;
-        float f5 = this.HIz.getTranslationX() / f1;
-        float f6 = this.HIz.getTranslationY() / f2;
-        this.HIx.translate(f3 - f5, f4 - f6);
-        this.HIx.scale(1.0F / f1, 1.0F / f2);
+        this.iLQ.offsetDescendantRectToMyCoords(this.Jwq, this.Jwr);
+        this.Jwr.offset(this.left, this.top);
+        float f1 = this.Jwl * 8.0F;
+        float f2 = this.Jwm * 8.0F;
+        float f3 = -this.Jwr.left / f1;
+        float f4 = -this.Jwr.top / f2;
+        float f5 = this.Jwq.getTranslationX() / f1;
+        float f6 = this.Jwq.getTranslationY() / f2;
+        this.Jwo.translate(f3 - f5, f4 - f6);
+        this.Jwo.scale(1.0F / f1, 1.0F / f2);
         AppMethodBeat.o(142713);
         return;
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
-        this.HIH = false;
+        this.Jwy = false;
         continue;
       }
-      this.HIz.getLocationInWindow(this.HIB);
-      this.HIA.offset(this.HIB[0], this.HIB[1]);
+      this.Jwq.getLocationInWindow(this.Jws);
+      this.Jwr.offset(this.Jws[0], this.Jws[1]);
     }
   }
   
-  private static boolean jD(int paramInt1, int paramInt2)
+  private static boolean jP(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142711);
-    if ((bO(paramInt2) == 0) || (bO(paramInt1) == 0))
+    if ((bT(paramInt2) == 0) || (bT(paramInt1) == 0))
     {
       AppMethodBeat.o(142711);
       return true;
@@ -168,146 +168,146 @@ public final class a
     return false;
   }
   
-  private void jE(int paramInt1, int paramInt2)
+  private void jQ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142712);
-    paramInt1 = bO(paramInt1);
-    paramInt2 = bO(paramInt2);
-    int i = aas(paramInt1);
-    int j = aas(paramInt2);
-    this.HIv = (paramInt2 / j);
-    this.HIu = (paramInt1 / i);
-    this.HIy = Bitmap.createBitmap(i, j, this.HIw.fjS());
+    paramInt1 = bT(paramInt1);
+    paramInt2 = bT(paramInt2);
+    int i = acC(paramInt1);
+    int j = acC(paramInt2);
+    this.Jwm = (paramInt2 / j);
+    this.Jwl = (paramInt1 / i);
+    this.Jwp = Bitmap.createBitmap(i, j, this.Jwn.fAh());
     AppMethodBeat.o(142712);
   }
   
   public final void E(Drawable paramDrawable)
   {
-    this.HIG = paramDrawable;
+    this.Jwx = paramDrawable;
   }
   
   public final void a(b paramb)
   {
-    this.HIw = paramb;
+    this.Jwn = paramb;
   }
   
-  public final void aat(int paramInt)
+  public final void acD(int paramInt)
   {
     this.top = paramInt;
   }
   
-  public final void bP(float paramFloat)
+  public final void bU(float paramFloat)
   {
-    this.HIt = paramFloat;
+    this.Jwk = paramFloat;
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(142717);
-    xb(false);
-    this.HIw.destroy();
-    if (this.HIy != null) {
-      this.HIy.recycle();
+    xM(false);
+    this.Jwn.destroy();
+    if (this.Jwp != null) {
+      this.Jwp.recycle();
     }
     AppMethodBeat.o(142717);
   }
   
-  public final void fjO()
+  public final void fAd()
   {
     AppMethodBeat.i(142715);
-    this.HIz.post(this.HIF);
+    this.Jwq.post(this.Jww);
     AppMethodBeat.o(142715);
   }
   
-  public final void fjP()
+  public final void fAe()
   {
     AppMethodBeat.i(142716);
-    init(this.HIz.getMeasuredWidth(), this.HIz.getMeasuredHeight());
+    init(this.Jwq.getMeasuredWidth(), this.Jwq.getMeasuredHeight());
     AppMethodBeat.o(142716);
   }
   
-  public final void fjQ()
+  public final void fAf()
   {
-    this.HII = true;
+    this.Jwz = true;
   }
   
-  public final void fjR()
+  public final void fAg()
   {
-    this.HIH = false;
+    this.Jwy = false;
   }
   
   final void init(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142710);
-    if (jD(paramInt1, paramInt2))
+    if (jP(paramInt1, paramInt2))
     {
-      this.HIE = false;
-      this.HIz.setWillNotDraw(true);
-      xb(false);
+      this.Jwv = false;
+      this.Jwq.setWillNotDraw(true);
+      xM(false);
       AppMethodBeat.o(142710);
       return;
     }
-    this.HIE = true;
-    this.HIz.setWillNotDraw(false);
-    jE(paramInt1, paramInt2);
-    this.HIx = new Canvas(this.HIy);
-    xb(true);
-    if (this.HII) {
-      fjN();
+    this.Jwv = true;
+    this.Jwq.setWillNotDraw(false);
+    jQ(paramInt1, paramInt2);
+    this.Jwo = new Canvas(this.Jwp);
+    xM(true);
+    if (this.Jwz) {
+      fAc();
     }
     AppMethodBeat.o(142710);
   }
   
-  public final void q(Canvas paramCanvas)
+  public final void p(Canvas paramCanvas)
   {
     AppMethodBeat.i(142714);
-    this.HID = true;
-    if (this.HIE)
+    this.Jwu = true;
+    if (this.Jwv)
     {
-      if (this.HIG != null) {
+      if (this.Jwx != null) {
         break label120;
       }
-      this.HIy.eraseColor(0);
-      if (!this.HII) {
+      this.Jwp.eraseColor(0);
+      if (!this.Jwz) {
         break label134;
       }
-      this.isN.draw(this.HIx);
+      this.iLQ.draw(this.Jwo);
     }
     for (;;)
     {
-      this.HIy = this.HIw.d(this.HIy, this.HIt);
+      this.Jwp = this.Jwn.d(this.Jwp, this.Jwk);
       paramCanvas.save();
-      paramCanvas.scale(this.HIu * 8.0F, this.HIv * 8.0F);
-      paramCanvas.drawBitmap(this.HIy, 0.0F, 0.0F, this.paint);
+      paramCanvas.scale(this.Jwl * 8.0F, this.Jwm * 8.0F);
+      paramCanvas.drawBitmap(this.Jwp, 0.0F, 0.0F, this.paint);
       paramCanvas.restore();
       AppMethodBeat.o(142714);
       return;
       label120:
-      this.HIG.draw(this.HIx);
+      this.Jwx.draw(this.Jwo);
       break;
       label134:
-      this.HIx.save();
-      fjN();
-      this.isN.draw(this.HIx);
-      this.HIx.restore();
+      this.Jwo.save();
+      fAc();
+      this.iLQ.draw(this.Jwo);
+      this.Jwo.restore();
     }
   }
   
-  public final void xa(boolean paramBoolean)
+  public final void xL(boolean paramBoolean)
   {
     AppMethodBeat.i(142718);
-    this.HIE = paramBoolean;
-    xb(paramBoolean);
-    this.HIz.invalidate();
+    this.Jwv = paramBoolean;
+    xM(paramBoolean);
+    this.Jwq.invalidate();
     AppMethodBeat.o(142718);
   }
   
-  public final void xb(boolean paramBoolean)
+  public final void xM(boolean paramBoolean)
   {
     AppMethodBeat.i(142719);
-    this.HIz.getViewTreeObserver().removeOnPreDrawListener(this.HIC);
+    this.Jwq.getViewTreeObserver().removeOnPreDrawListener(this.Jwt);
     if (paramBoolean) {
-      this.HIz.getViewTreeObserver().addOnPreDrawListener(this.HIC);
+      this.Jwq.getViewTreeObserver().addOnPreDrawListener(this.Jwt);
     }
     AppMethodBeat.o(142719);
   }

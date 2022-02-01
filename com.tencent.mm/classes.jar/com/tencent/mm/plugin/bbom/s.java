@@ -1,11 +1,19 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.plugin.messenger.foundation.a.v;
-import com.tencent.mm.protocal.protobuf.bwa;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.oz;
+import com.tencent.mm.sdk.b.c;
 
 public final class s
-  implements v<bwa>
-{}
+  extends c<oz>
+{
+  public s()
+  {
+    AppMethodBeat.i(161308);
+    this.__eventId = oz.class.getName().hashCode();
+    AppMethodBeat.o(161308);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar

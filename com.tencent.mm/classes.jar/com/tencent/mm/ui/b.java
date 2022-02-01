@@ -11,29 +11,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private int Dyn;
-  private boolean Hfq;
-  private a Hfr;
-  private View Hfs;
-  private int Hft;
-  private ViewGroup.LayoutParams Hfu;
-  private int Hfv;
+  private int Fdw;
+  private boolean ISH;
+  private a ISI;
+  private View ISJ;
+  private int ISK;
+  private ViewGroup.LayoutParams ISL;
+  private int ISM;
   private Context mContext;
   
   private b(Activity paramActivity, boolean paramBoolean)
   {
     AppMethodBeat.i(141275);
-    this.Hfq = false;
+    this.ISH = false;
     this.mContext = paramActivity;
-    this.Hfq = paramBoolean;
+    this.ISH = paramBoolean;
     paramActivity = (FrameLayout)paramActivity.findViewById(16908290);
     if (paramActivity == null)
     {
       AppMethodBeat.o(141275);
       return;
     }
-    this.Hfs = paramActivity.getChildAt(0);
-    this.Hfs.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+    this.ISJ = paramActivity.getChildAt(0);
+    this.ISJ.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
@@ -42,19 +42,19 @@ public final class b
         AppMethodBeat.o(141271);
       }
     });
-    this.Hfu = this.Hfs.getLayoutParams();
+    this.ISL = this.ISJ.getLayoutParams();
     AppMethodBeat.o(141275);
   }
   
   private b(Activity paramActivity, boolean paramBoolean, View paramView, a parama)
   {
     AppMethodBeat.i(141276);
-    this.Hfq = false;
+    this.ISH = false;
     this.mContext = paramActivity;
-    this.Hfq = paramBoolean;
-    this.Hfs = paramView;
-    this.Hfr = parama;
-    this.Hfs.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+    this.ISH = paramBoolean;
+    this.ISJ = paramView;
+    this.ISI = parama;
+    this.ISJ.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
@@ -63,7 +63,7 @@ public final class b
         AppMethodBeat.o(141272);
       }
     });
-    this.Hfu = this.Hfs.getLayoutParams();
+    this.ISL = this.ISJ.getLayoutParams();
     AppMethodBeat.o(141276);
   }
   
@@ -83,7 +83,7 @@ public final class b
   
   public static abstract interface a
   {
-    public abstract void bt(boolean paramBoolean);
+    public abstract void bu(boolean paramBoolean);
   }
 }
 

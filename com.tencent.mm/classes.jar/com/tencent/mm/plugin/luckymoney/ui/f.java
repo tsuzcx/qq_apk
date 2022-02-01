@@ -26,25 +26,25 @@ public final class f
     {
       paramView = this.mInflater.inflate(2131494650, paramViewGroup, false);
       paramViewGroup = new a();
-      paramViewGroup.lfN = ((TextView)paramView.findViewById(2131301859));
-      paramViewGroup.lgw = ((TextView)paramView.findViewById(2131301857));
-      paramViewGroup.uhg = ((TextView)paramView.findViewById(2131301858));
-      paramViewGroup.uhh = ((TextView)paramView.findViewById(2131301856));
-      paramViewGroup.MW = paramInt;
+      paramViewGroup.lCL = ((TextView)paramView.findViewById(2131301859));
+      paramViewGroup.lDu = ((TextView)paramView.findViewById(2131301857));
+      paramViewGroup.vjQ = ((TextView)paramView.findViewById(2131301858));
+      paramViewGroup.vjR = ((TextView)paramView.findViewById(2131301856));
+      paramViewGroup.fq = paramInt;
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      t localt = HW(paramInt);
-      paramViewGroup.lfN.setText(localt.umJ);
-      paramViewGroup.uhg.setText(localt.umK);
-      paramViewGroup.uhh.setText(this.mContext.getString(2131760831, new Object[] { com.tencent.mm.wallet_core.ui.e.C(localt.ulE / 100.0D) }));
-      String str2 = this.mContext.getString(2131760961, new Object[] { Long.valueOf(localt.ulC), Long.valueOf(localt.umL) });
+      t localt = Js(paramInt);
+      paramViewGroup.lCL.setText(localt.vpp);
+      paramViewGroup.vjQ.setText(localt.vpq);
+      paramViewGroup.vjR.setText(this.mContext.getString(2131760831, new Object[] { com.tencent.mm.wallet_core.ui.e.C(localt.vok / 100.0D) }));
+      String str2 = this.mContext.getString(2131760961, new Object[] { Long.valueOf(localt.voi), Long.valueOf(localt.vpr) });
       String str1 = str2;
       if (localt.status == 5) {
         str1 = this.mContext.getString(2131760962) + " " + str2;
       }
-      paramViewGroup.lgw.setText(str1);
+      paramViewGroup.lDu.setText(str1);
       AppMethodBeat.o(65660);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
@@ -53,18 +53,18 @@ public final class f
   
   final class a
   {
-    int MW;
-    TextView lfN;
-    TextView lgw;
-    TextView uhg;
-    TextView uhh;
+    int fq;
+    TextView lCL;
+    TextView lDu;
+    TextView vjQ;
+    TextView vjR;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.f
  * JD-Core Version:    0.7.0.1
  */

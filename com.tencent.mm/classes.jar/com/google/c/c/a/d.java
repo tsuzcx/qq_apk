@@ -8,7 +8,7 @@ final class d
     super(false, 1558, 620, 22, 22, 36, -1, 62);
   }
   
-  public final int fT(int paramInt)
+  public final int fW(int paramInt)
   {
     if (paramInt <= 8) {
       return 156;
@@ -16,7 +16,7 @@ final class d
     return 155;
   }
   
-  public final int xX()
+  public final int zu()
   {
     return 10;
   }

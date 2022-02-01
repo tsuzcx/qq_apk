@@ -10,29 +10,30 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import junit.framework.Assert;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class TouchImageView
   extends ImageView
 {
+  private RectF AqG;
+  private Paint AqH;
   private int a;
   private int b;
   private boolean enable;
   private int g;
   private int r;
-  private RectF yYS;
-  private Paint yYT;
-  ao yxu;
-  Runnable yxv;
+  ap zOG;
+  Runnable zOH;
   
   public TouchImageView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(99770);
-    this.yYS = new RectF();
-    this.yYT = new Paint();
+    this.AqG = new RectF();
+    this.AqH = new Paint();
     this.a = 90;
     this.r = 0;
     this.g = 0;
@@ -46,8 +47,8 @@ public class TouchImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(99771);
-    this.yYS = new RectF();
-    this.yYT = new Paint();
+    this.AqG = new RectF();
+    this.AqH = new Paint();
     this.a = 90;
     this.r = 0;
     this.g = 0;
@@ -60,8 +61,8 @@ public class TouchImageView
   private void init()
   {
     AppMethodBeat.i(99772);
-    this.yxu = new ao();
-    this.yxv = new Runnable()
+    this.zOG = new ap();
+    this.zOH = new Runnable()
     {
       public final void run()
       {
@@ -76,27 +77,37 @@ public class TouchImageView
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(99769);
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        ((b)localObject).bd(paramAnonymousMotionEvent);
+        a.b("com/tencent/mm/plugin/sns/ui/TouchImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahq());
         if (!TouchImageView.a(TouchImageView.this))
         {
+          a.a(false, this, "com/tencent/mm/plugin/sns/ui/TouchImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(99769);
           return false;
         }
-        TouchImageView localTouchImageView = TouchImageView.this;
+        localObject = TouchImageView.this;
         switch (paramAnonymousMotionEvent.getAction())
         {
+        case 2: 
+        default: 
+          if ((((TouchImageView)localObject).isClickable()) || (((TouchImageView)localObject).isLongClickable())) {
+            break;
+          }
         }
-        while ((!localTouchImageView.isClickable()) && (!localTouchImageView.isLongClickable()))
+        for (boolean bool = true;; bool = false)
         {
+          a.a(bool, this, "com/tencent/mm/plugin/sns/ui/TouchImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(99769);
-          return true;
+          return bool;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
-          localTouchImageView.yxu.removeCallbacks(localTouchImageView.yxv);
-          continue;
-          localTouchImageView.yxu.post(localTouchImageView.yxv);
+          ((TouchImageView)localObject).zOG.removeCallbacks(((TouchImageView)localObject).zOH);
+          break;
+          ((TouchImageView)localObject).zOG.post(((TouchImageView)localObject).zOH);
+          break;
         }
-        AppMethodBeat.o(99769);
-        return false;
       }
     });
     AppMethodBeat.o(99772);
@@ -106,7 +117,7 @@ public class TouchImageView
   {
     AppMethodBeat.i(99775);
     super.onAttachedToWindow();
-    ac.d("MicroMsg.MaskImageView", "onAttachedToWindow");
+    ad.d("MicroMsg.MaskImageView", "onAttachedToWindow");
     AppMethodBeat.o(99775);
   }
   
@@ -114,7 +125,7 @@ public class TouchImageView
   {
     AppMethodBeat.i(99776);
     super.onDetachedFromWindow();
-    ac.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
+    ad.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
     AppMethodBeat.o(99776);
   }
   
@@ -124,12 +135,12 @@ public class TouchImageView
     super.onDraw(paramCanvas);
     if (isPressed())
     {
-      this.yYS.left = getPaddingLeft();
-      this.yYS.top = getPaddingTop();
-      this.yYS.right = (getWidth() - getPaddingRight());
-      this.yYS.bottom = (getHeight() - getPaddingBottom());
-      this.yYT.setARGB(this.a, this.r, this.g, this.b);
-      paramCanvas.drawRoundRect(this.yYS, getWidth() / 10, getHeight() / 10, this.yYT);
+      this.AqG.left = getPaddingLeft();
+      this.AqG.top = getPaddingTop();
+      this.AqG.right = (getWidth() - getPaddingRight());
+      this.AqG.bottom = (getHeight() - getPaddingBottom());
+      this.AqH.setARGB(this.a, this.r, this.g, this.b);
+      paramCanvas.drawRoundRect(this.AqG, getWidth() / 10, getHeight() / 10, this.AqH);
     }
     AppMethodBeat.o(99773);
   }
@@ -137,7 +148,6 @@ public class TouchImageView
   public void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
     AppMethodBeat.i(99774);
-    Assert.assertTrue(false);
     AppMethodBeat.o(99774);
   }
   

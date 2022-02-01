@@ -15,12 +15,12 @@ import java.util.concurrent.locks.Lock;
 
 final class i
 {
-  private static final e aJC;
+  private static final e aLt;
   
   static
   {
     AppMethodBeat.i(77403);
-    aJC = new f()
+    aLt = new f()
     {
       public final void g(Bitmap paramAnonymousBitmap) {}
     };
@@ -51,7 +51,7 @@ final class i
         paramDrawable = b(parame, localDrawable, paramInt1, paramInt2);
         paramInt1 = 1;
         break;
-        parame = aJC;
+        parame = aLt;
       }
       label78:
       paramInt1 = 0;
@@ -83,7 +83,7 @@ final class i
     if (paramDrawable.getIntrinsicHeight() > 0) {
       paramInt2 = paramDrawable.getIntrinsicHeight();
     }
-    Lock localLock = p.pl();
+    Lock localLock = p.pD();
     localLock.lock();
     parame = parame.b(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     try

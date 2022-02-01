@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.qbar.QbarNative.QBarPoint;
 import com.tencent.qbar.WxQbarNative.QBarReportMsg;
 import com.tencent.qbar.a.a;
@@ -27,8 +27,8 @@ import java.util.List;
 public class ScanCodeRectView
   extends ScanCodeView
 {
-  ScanRectDecorView xfv;
-  private h.c xmX;
+  private h.c yAY;
+  ScanRectDecorView ytx;
   
   public ScanCodeRectView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,17 +40,17 @@ public class ScanCodeRectView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void dAx()
+  public final void dLV()
   {
     AppMethodBeat.i(91100);
-    this.JVI = new com.tencent.mm.plugin.scanner.a.a();
+    this.LPD = new com.tencent.mm.plugin.scanner.a.a();
     AppMethodBeat.o(91100);
   }
   
   public Rect getDecorRect()
   {
     AppMethodBeat.i(91108);
-    Rect localRect = this.xfv.getDecorRect();
+    Rect localRect = this.ytx.getDecorRect();
     AppMethodBeat.o(91108);
     return localRect;
   }
@@ -59,14 +59,14 @@ public class ScanCodeRectView
   {
     AppMethodBeat.i(91099);
     super.init();
-    this.xfv = new ScanRectDecorView(getContext());
-    addView(this.xfv, new FrameLayout.LayoutParams(-1, -1));
-    this.xmX = new h.c()
+    this.ytx = new ScanRectDecorView(getContext());
+    addView(this.ytx, new FrameLayout.LayoutParams(-1, -1));
+    this.yAY = new h.c()
     {
       public final void a(final long paramAnonymousLong, List<a.a> paramAnonymousList, List<QbarNative.QBarPoint> paramAnonymousList1, final List<WxQbarNative.QBarReportMsg> paramAnonymousList2, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(204935);
-        ac.d("MicroMsg.ScanCodeRectView", String.format("after decode %d", new Object[] { Long.valueOf(paramAnonymousLong) }));
+        AppMethodBeat.i(218740);
+        ad.d("MicroMsg.ScanCodeRectView", String.format("after decode %d", new Object[] { Long.valueOf(paramAnonymousLong) }));
         if ((paramAnonymousList != null) && (!paramAnonymousList.isEmpty())) {
           ScanCodeRectView.this.post(new Runnable()
           {
@@ -75,7 +75,7 @@ public class ScanCodeRectView
               AppMethodBeat.i(91093);
               if ((ScanCodeRectView.b(ScanCodeRectView.this) == paramAnonymousLong) && (paramAnonymousLong != 0L))
               {
-                h.fCn().wz(ScanCodeRectView.c(ScanCodeRectView.this));
+                h.fTD().yV(ScanCodeRectView.c(ScanCodeRectView.this));
                 ScanCodeRectView.d(ScanCodeRectView.this);
                 if ((paramAnonymousList2 != null) && (!paramAnonymousList2.isEmpty()))
                 {
@@ -89,13 +89,13 @@ public class ScanCodeRectView
                   if (arrayOfByte != null) {
                     localBundle.putByteArray("result_raw_data", arrayOfByte);
                   }
-                  if ((this.wZl != null) && (!this.wZl.isEmpty())) {
-                    localBundle.putInt("result_code_version", ((WxQbarNative.QBarReportMsg)this.wZl.get(0)).qrcodeVersion);
+                  if ((this.yng != null) && (!this.yng.isEmpty())) {
+                    localBundle.putInt("result_code_version", ((WxQbarNative.QBarReportMsg)this.yng.get(0)).qrcodeVersion);
                   }
-                  ScanCodeRectView.this.xfv.cqU();
-                  ac.i("MicroMsg.ScanCodeRectView", "scan result format: %d, content:", new Object[] { Integer.valueOf(i), str });
+                  ScanCodeRectView.this.ytx.cwE();
+                  ad.i("MicroMsg.ScanCodeRectView", "scan result format: %d, content:", new Object[] { Integer.valueOf(i), str });
                   if (ScanCodeRectView.e(ScanCodeRectView.this) != null) {
-                    ScanCodeRectView.f(ScanCodeRectView.this).ai(localBundle);
+                    ScanCodeRectView.f(ScanCodeRectView.this).an(localBundle);
                   }
                 }
               }
@@ -103,10 +103,10 @@ public class ScanCodeRectView
             }
           });
         }
-        AppMethodBeat.o(204935);
+        AppMethodBeat.o(218740);
       }
       
-      public final void ad(final long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void ag(final long paramAnonymousLong1, long paramAnonymousLong2)
       {
         AppMethodBeat.i(91095);
         ScanCodeRectView.this.post(new Runnable()
@@ -115,7 +115,7 @@ public class ScanCodeRectView
           {
             AppMethodBeat.i(91092);
             if ((paramAnonymousLong1 == ScanCodeRectView.a(ScanCodeRectView.this)) && (paramAnonymousLong1 != 0L)) {
-              ScanCodeRectView.this.wE(this.tGh);
+              ScanCodeRectView.this.zb(this.uIT);
             }
             AppMethodBeat.o(91092);
           }
@@ -134,10 +134,10 @@ public class ScanCodeRectView
             if ((paramAnonymousLong == ScanCodeRectView.g(ScanCodeRectView.this)) && (paramAnonymousLong != 0L) && (this.val$param.containsKey("param_zoom_ratio")))
             {
               float f = this.val$param.getInt("param_zoom_ratio", 0);
-              if ((f > 0.0F) && (ScanCodeRectView.h(ScanCodeRectView.this).cDz()))
+              if ((f > 0.0F) && (ScanCodeRectView.h(ScanCodeRectView.this).cLT()))
               {
-                int i = (int)(((com.tencent.scanlib.a.a)ScanCodeRectView.i(ScanCodeRectView.this)).fCV() * f);
-                ((com.tencent.scanlib.a.a)ScanCodeRectView.j(ScanCodeRectView.this)).aei(i);
+                int i = (int)(((com.tencent.scanlib.a.a)ScanCodeRectView.i(ScanCodeRectView.this)).fUn() * f);
+                ((com.tencent.scanlib.a.a)ScanCodeRectView.j(ScanCodeRectView.this)).agI(i);
               }
             }
             AppMethodBeat.o(91094);
@@ -152,11 +152,11 @@ public class ScanCodeRectView
   public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
     AppMethodBeat.i(91105);
-    ac.i("MicroMsg.ScanCodeRectView", "onAutoFocus %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.i("MicroMsg.ScanCodeRectView", "onAutoFocus %s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {
-      wE(0L);
+      zb(0L);
     }
-    BR(JVL);
+    ET(LPG);
     AppMethodBeat.o(91105);
   }
   
@@ -164,7 +164,7 @@ public class ScanCodeRectView
   {
     AppMethodBeat.i(91102);
     super.onCreate();
-    h.fCn().init(getContext());
+    h.fTD().init(getContext());
     AppMethodBeat.o(91102);
   }
   
@@ -172,16 +172,16 @@ public class ScanCodeRectView
   {
     AppMethodBeat.i(91107);
     super.onDestroy();
-    h.fCn().release();
+    h.fTD().release();
     AppMethodBeat.o(91107);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(91104);
-    h.fCn().wz(this.wXJ);
-    this.wXJ = 0L;
-    this.xfv.cqU();
+    h.fTD().yV(this.ylu);
+    this.ylu = 0L;
+    this.ytx.cwE();
     AppMethodBeat.o(91104);
   }
   
@@ -198,11 +198,11 @@ public class ScanCodeRectView
     if (paramArrayOfByte == null)
     {
       bool = true;
-      ac.d("MicroMsg.ScanCodeRectView", bool);
-      if ((this.wXJ != 0L) && (this.JVI.cDz()))
+      ad.d("MicroMsg.ScanCodeRectView", bool);
+      if ((this.ylu != 0L) && (this.LPD.cLT()))
       {
-        paramCamera = this.JVI.fCS();
-        localObject1 = (com.tencent.scanlib.a.a)this.JVI;
+        paramCamera = this.LPD.fUk();
+        localObject1 = (com.tencent.scanlib.a.a)this.LPD;
         Rect localRect1 = getDecorRect();
         localObject2 = new Rect();
         ((Activity)getContext()).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject2);
@@ -245,13 +245,13 @@ public class ScanCodeRectView
     for (int i = ((Point)localObject2).y;; i = localRect2.bottom)
     {
       localRect2.bottom = i;
-      localObject1 = ((com.tencent.scanlib.a.a)localObject1).s(localRect2);
-      h.fCn().a(paramArrayOfByte, paramCamera, this.JVI.getCameraRotation(), (Rect)localObject1);
-      if ((!((com.tencent.scanlib.a.a)this.JVI).dAy()) && (h.fCn().wXM > 50))
+      localObject1 = ((com.tencent.scanlib.a.a)localObject1).r(localRect2);
+      h.fTD().a(paramArrayOfByte, paramCamera, this.LPD.getCameraRotation(), (Rect)localObject1);
+      if ((!((com.tencent.scanlib.a.a)this.LPD).dLW()) && (h.fTD().ylx > 50))
       {
-        ac.i("MicroMsg.ScanCodeRectView", "change to FOCUS_MODE_AUTO");
-        this.JVI.setFocusMode("auto");
-        BR(100L);
+        ad.i("MicroMsg.ScanCodeRectView", "change to FOCUS_MODE_AUTO");
+        this.LPD.setFocusMode("auto");
+        ET(100L);
       }
       AppMethodBeat.o(91101);
       return;
@@ -269,18 +269,18 @@ public class ScanCodeRectView
   public final void onResume()
   {
     AppMethodBeat.i(91103);
-    if (!this.JVI.isOpen()) {
+    if (!this.LPD.isOpen()) {
       a(new b.b.a()
       {
-        public final void dAJ()
+        public final void dMh()
         {
           AppMethodBeat.i(91098);
           ScanCodeRectView.this.a(new b.d.a()
           {
-            public final void dAI()
+            public final void dMg()
             {
               AppMethodBeat.i(176201);
-              ScanCodeRectView.this.wE(0L);
+              ScanCodeRectView.this.zb(0L);
               AppMethodBeat.o(176201);
             }
           });
@@ -290,23 +290,23 @@ public class ScanCodeRectView
     }
     for (;;)
     {
-      this.wXJ = System.currentTimeMillis();
-      h.fCn().a(this.wXJ, this.xmX);
-      this.xfv.cqT();
+      this.ylu = System.currentTimeMillis();
+      h.fTD().a(this.ylu, this.yAY);
+      this.ytx.cwD();
       AppMethodBeat.o(91103);
       return;
-      if (!this.JVI.cDz()) {
+      if (!this.LPD.cLT()) {
         a(new b.d.a()
         {
-          public final void dAI()
+          public final void dMg()
           {
             AppMethodBeat.i(176202);
-            ScanCodeRectView.this.wE(0L);
+            ScanCodeRectView.this.zb(0L);
             AppMethodBeat.o(176202);
           }
         });
       } else {
-        wE(0L);
+        zb(0L);
       }
     }
   }
@@ -321,14 +321,14 @@ public class ScanCodeRectView
   public void setDecorRect(Rect paramRect)
   {
     AppMethodBeat.i(91109);
-    this.xfv.setDecorRect(paramRect);
+    this.ytx.setDecorRect(paramRect);
     AppMethodBeat.o(91109);
   }
   
   public void setScanCodeReaders(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(91110);
-    h.fCn().K(paramArrayOfInt);
+    h.fTD().K(paramArrayOfInt);
     AppMethodBeat.o(91110);
   }
 }

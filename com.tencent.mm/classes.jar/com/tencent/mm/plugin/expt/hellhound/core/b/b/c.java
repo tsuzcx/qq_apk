@@ -1,71 +1,94 @@
 package com.tencent.mm.plugin.expt.hellhound.core.b.b;
 
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.app;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.io.IOException;
+import com.tencent.mm.protocal.protobuf.bss;
+import com.tencent.mm.protocal.protobuf.chh;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public final class c
 {
-  public static void a(app paramapp)
+  public static void aa(Bundle paramBundle)
   {
-    AppMethodBeat.i(169278);
-    if (paramapp == null)
+    AppMethodBeat.i(121992);
+    if (paramBundle == null)
     {
-      AppMethodBeat.o(169278);
+      AppMethodBeat.o(121992);
       return;
     }
-    try
+    paramBundle = paramBundle.getString("Chat_User");
+    if (!TextUtils.isEmpty(paramBundle))
     {
-      paramapp = paramapp.toByteArray();
-      b.o("hell_mmkv_fbm__", paramapp);
-      AppMethodBeat.o(169278);
-      return;
+      ad.d("HABBYGE-MALI.FragmentBundleDao", "FragmentBundleDao, putBundle: %s", new Object[] { paramBundle });
+      fQ("Chat_User", paramBundle);
     }
-    catch (IOException paramapp)
-    {
-      ac.printErrStackTrace("HABBYGE-MALI.FragmentFrontBackMonitor", paramapp, "HellMsgQDao, _write, crash: %s", new Object[] { paramapp.getMessage() });
-      AppMethodBeat.o(169278);
-    }
+    AppMethodBeat.o(121992);
   }
   
-  public static String cjg()
+  public static chh coc()
   {
-    AppMethodBeat.i(169276);
-    Object localObject = cjh();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(169276);
-      return null;
-    }
-    localObject = ((app)localObject).EIC;
-    AppMethodBeat.o(169276);
-    return localObject;
-  }
-  
-  public static app cjh()
-  {
-    AppMethodBeat.i(169277);
-    byte[] arrayOfByte = b.getBytes("hell_mmkv_fbm__");
+    AppMethodBeat.i(121994);
+    byte[] arrayOfByte = b.getBytes("hell_fgm_bun_mmkv_key");
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
-      AppMethodBeat.o(169277);
+      AppMethodBeat.o(121994);
       return null;
     }
-    app localapp = new app();
+    chh localchh = new chh();
     try
     {
-      localapp.parseFrom(arrayOfByte);
-      AppMethodBeat.o(169277);
-      return localapp;
+      localchh.parseFrom(arrayOfByte);
+      AppMethodBeat.o(121994);
+      return localchh;
     }
-    catch (IOException localIOException)
+    catch (Exception localException)
     {
-      ac.printErrStackTrace("HABBYGE-MALI.FragmentFrontBackMonitor", localIOException, "FragmentFrontBack, _read, crash: %s", new Object[] { localIOException.getMessage() });
-      AppMethodBeat.o(169277);
+      for (;;)
+      {
+        ad.printErrStackTrace("HABBYGE-MALI.FragmentBundleDao", localException, "FragmentBundleDao _doRead parse", new Object[0]);
+        Object localObject = null;
+      }
     }
-    return null;
+  }
+  
+  static void fQ(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(121993);
+    chh localchh = coc();
+    if (localchh == null) {
+      localchh = new chh();
+    }
+    for (;;)
+    {
+      Object localObject = localchh.HaJ.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        bss localbss = (bss)((Iterator)localObject).next();
+        if ((localbss != null) && (paramString1.equals(localbss.key))) {
+          localchh.HaJ.remove(localbss);
+        }
+      }
+      localObject = new bss();
+      ((bss)localObject).key = paramString1;
+      ((bss)localObject).value = paramString2;
+      localchh.HaJ.add(localObject);
+      try
+      {
+        b.p("hell_fgm_bun_mmkv_key", localchh.toByteArray());
+        AppMethodBeat.o(121993);
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        ad.printErrStackTrace("HABBYGE-MALI.FragmentBundleDao", paramString1, "FragmentBundleDao writeBack", new Object[0]);
+        AppMethodBeat.o(121993);
+        return;
+      }
+    }
   }
 }
 

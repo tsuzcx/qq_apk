@@ -6,13 +6,13 @@ import com.bumptech.glide.manager.i;
 public abstract interface e<R>
   extends i
 {
-  public abstract void Z(R paramR);
-  
   public abstract void a(d paramd);
+  
+  public abstract void aa(R paramR);
   
   public abstract void h(b paramb);
   
-  public abstract b pU();
+  public abstract b qm();
 }
 
 

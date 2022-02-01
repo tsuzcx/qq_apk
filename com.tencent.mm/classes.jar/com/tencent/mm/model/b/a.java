@@ -2,34 +2,77 @@ package com.tencent.mm.model.b;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 
 public abstract class a
   implements e
 {
-  protected e.a hqs;
-  protected String hqt = azQ();
-  protected String[] hqu = azP();
+  protected e.a hIK;
+  protected String hIL = aCT();
+  protected String[] hIM = aCS();
+  
+  public final boolean BK(String paramString)
+  {
+    boolean bool2 = false;
+    ba.aBQ();
+    SharedPreferences localSharedPreferences = c.wW("banner");
+    boolean bool1 = bool2;
+    if (localSharedPreferences != null)
+    {
+      bool1 = bool2;
+      if (localSharedPreferences.getBoolean(this.hIL + paramString, false)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public final void BL(String paramString)
+  {
+    ba.aBQ();
+    SharedPreferences localSharedPreferences = c.wW("banner");
+    if (localSharedPreferences == null) {}
+    do
+    {
+      return;
+      localSharedPreferences.edit().remove(this.hIL + paramString).commit();
+      if (this.hIM != null)
+      {
+        String[] arrayOfString = this.hIM;
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str = arrayOfString[i];
+          if (str != null) {
+            localSharedPreferences.edit().remove(this.hIL + str + paramString).commit();
+          }
+          i += 1;
+        }
+      }
+    } while (this.hIK == null);
+    this.hIK.aDg();
+  }
   
   public final void a(e.a parama)
   {
-    this.hqs = parama;
+    this.hIK = parama;
   }
   
   public final void a(String paramString, boolean paramBoolean, String[] paramArrayOfString)
   {
-    az.ayM();
-    SharedPreferences localSharedPreferences = c.ug("banner");
+    ba.aBQ();
+    SharedPreferences localSharedPreferences = c.wW("banner");
     if (localSharedPreferences == null) {}
     label188:
     do
     {
       return;
-      localSharedPreferences.edit().putBoolean(this.hqt + paramString, paramBoolean).commit();
-      if ((this.hqu != null) && (paramArrayOfString != null) && (this.hqu.length == paramArrayOfString.length))
+      localSharedPreferences.edit().putBoolean(this.hIL + paramString, paramBoolean).commit();
+      if ((this.hIM != null) && (paramArrayOfString != null) && (this.hIM.length == paramArrayOfString.length))
       {
-        String[] arrayOfString = this.hqu;
+        String[] arrayOfString = this.hIM;
         int k = arrayOfString.length;
         int i = 0;
         int j = 0;
@@ -43,75 +86,32 @@ public abstract class a
           }
           for (String str1 = paramArrayOfString[j];; str1 = "")
           {
-            localSharedPreferences.edit().putString(this.hqt + str2 + paramString, str1).commit();
+            localSharedPreferences.edit().putString(this.hIL + str2 + paramString, str1).commit();
             j += 1;
             i += 1;
             break;
           }
         }
       }
-    } while (this.hqs == null);
-    this.hqs.aAc();
+    } while (this.hIK == null);
+    this.hIK.aDf();
   }
   
-  public final String aP(String paramString1, String paramString2)
-  {
-    az.ayM();
-    SharedPreferences localSharedPreferences = c.ug("banner");
-    if (localSharedPreferences == null) {
-      return null;
-    }
-    return localSharedPreferences.getString(this.hqt + paramString2 + paramString1, null);
-  }
-  
-  protected String[] azP()
+  protected String[] aCS()
   {
     return null;
   }
   
-  public abstract String azQ();
+  public abstract String aCT();
   
-  public final boolean yL(String paramString)
+  public final String aQ(String paramString1, String paramString2)
   {
-    boolean bool2 = false;
-    az.ayM();
-    SharedPreferences localSharedPreferences = c.ug("banner");
-    boolean bool1 = bool2;
-    if (localSharedPreferences != null)
-    {
-      bool1 = bool2;
-      if (localSharedPreferences.getBoolean(this.hqt + paramString, false)) {
-        bool1 = true;
-      }
+    ba.aBQ();
+    SharedPreferences localSharedPreferences = c.wW("banner");
+    if (localSharedPreferences == null) {
+      return null;
     }
-    return bool1;
-  }
-  
-  public final void yM(String paramString)
-  {
-    az.ayM();
-    SharedPreferences localSharedPreferences = c.ug("banner");
-    if (localSharedPreferences == null) {}
-    do
-    {
-      return;
-      localSharedPreferences.edit().remove(this.hqt + paramString).commit();
-      if (this.hqu != null)
-      {
-        String[] arrayOfString = this.hqu;
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          String str = arrayOfString[i];
-          if (str != null) {
-            localSharedPreferences.edit().remove(this.hqt + str + paramString).commit();
-          }
-          i += 1;
-        }
-      }
-    } while (this.hqs == null);
-    this.hqs.aAd();
+    return localSharedPreferences.getString(this.hIL + paramString2 + paramString1, null);
   }
 }
 

@@ -7,7 +7,7 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.music.h.b;
 import com.tencent.mm.plugin.music.model.e.c;
 import com.tencent.mm.plugin.music.model.e.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a$l
   implements k<IPCString, IPCString>
@@ -21,12 +21,12 @@ public final class a$l
       d locald;
       try
       {
-        ac.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updatePieceMusicInfo Task, src:%s", new Object[] { paramIPCString });
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updatePieceMusicInfo Task, src:%s", new Object[] { paramIPCString });
         String str1 = paramIPCString.value;
-        locald = com.tencent.mm.plugin.music.model.f.diV();
+        locald = com.tencent.mm.plugin.music.model.f.dth();
         if (TextUtils.isEmpty(str1))
         {
-          ac.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceMusicByUrl url is empty!");
+          ad.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceMusicByUrl url is empty!");
           paramIPCString = null;
           if (paramIPCString == null) {
             break label231;
@@ -36,8 +36,8 @@ public final class a$l
           AppMethodBeat.o(63088);
           return paramIPCString;
         }
-        String str2 = b.anQ(str1);
-        c localc = locald.anL(str2);
+        String str2 = b.asP(str1);
+        c localc = locald.asK(str2);
         paramIPCString = localc;
         if (localc == null)
         {
@@ -46,20 +46,20 @@ public final class a$l
         }
         paramIPCString.field_musicId = str2;
         paramIPCString.field_musicUrl = str1;
-        paramIPCString.field_fileName = b.anR(str1);
-        ac.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceMusicByUrl musicId:%s, field_fileName:%s", new Object[] { str2, paramIPCString.field_fileName });
+        paramIPCString.field_fileName = b.asQ(str1);
+        ad.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceMusicByUrl musicId:%s, field_fileName:%s", new Object[] { str2, paramIPCString.field_fileName });
         if (i != 0)
         {
-          ac.i("MicroMsg.Music.PieceMusicInfoStorage", "update PieceMusicInfo");
+          ad.i("MicroMsg.Music.PieceMusicInfoStorage", "update PieceMusicInfo");
           locald.update(paramIPCString, new String[0]);
-          locald.vgu.put(str2, paramIPCString);
+          locald.wlP.put(str2, paramIPCString);
           continue;
         }
-        ac.i("MicroMsg.Music.PieceMusicInfoStorage", "insert PieceMusicInfo");
+        ad.i("MicroMsg.Music.PieceMusicInfoStorage", "insert PieceMusicInfo");
       }
       catch (Exception paramIPCString)
       {
-        ac.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc updatePieceMusicInfo task", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc updatePieceMusicInfo task", new Object[0]);
         paramIPCString = new IPCString("");
         AppMethodBeat.o(63088);
         return paramIPCString;

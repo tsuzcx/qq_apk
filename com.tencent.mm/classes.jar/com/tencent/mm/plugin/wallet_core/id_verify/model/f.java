@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.id_verify.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,9 +10,9 @@ import org.json.JSONObject;
 public final class f
   extends m
 {
-  public int Boo;
+  public int COD;
   public String desc;
-  public String hVu;
+  public String ioP;
   public String title;
   
   public f(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, RealNameBundle paramRealNameBundle)
@@ -25,9 +25,9 @@ public final class f
     localHashMap.put("face_token", paramString3);
     localHashMap.put("realname_scene", String.valueOf(paramInt));
     localHashMap.put("session_id", paramString4);
-    ac.i("MicroMsg.NetSceneRealNameReg", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.NetSceneRealNameReg", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt) });
     if (paramRealNameBundle != null) {
-      paramRealNameBundle.aQ(localHashMap);
+      paramRealNameBundle.aT(localHashMap);
     }
     setRequestData(localHashMap);
     AppMethodBeat.o(174504);
@@ -51,11 +51,11 @@ public final class f
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70144);
-    ac.i("MicroMsg.NetSceneRealNameReg", "errCode=" + paramString + ";errMsg=" + paramString);
+    ad.i("MicroMsg.NetSceneRealNameReg", "errCode=" + paramString + ";errMsg=" + paramString);
     this.title = paramJSONObject.optString("title");
     this.desc = paramJSONObject.optString("desc");
-    this.hVu = paramJSONObject.optString("page");
-    this.Boo = paramJSONObject.optInt("err_jump_page");
+    this.ioP = paramJSONObject.optString("page");
+    this.COD = paramJSONObject.optInt("err_jump_page");
     AppMethodBeat.o(70144);
   }
 }

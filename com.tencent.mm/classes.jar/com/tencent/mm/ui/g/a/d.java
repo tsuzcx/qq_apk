@@ -17,8 +17,8 @@ import com.facebook.internal.AttributionIdentifiers;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -26,24 +26,24 @@ import org.json.JSONObject;
 
 public final class d
 {
-  long IIO;
-  public AccessToken IIV;
-  private CallbackManager IIW;
-  b IIX;
-  private FacebookCallback IIY;
+  public AccessToken KAc;
+  private CallbackManager KAd;
+  b KAe;
+  private FacebookCallback KAf;
+  long KzV;
   private final String mAppId;
   
   public d(String paramString)
   {
     AppMethodBeat.i(152826);
-    this.IIY = new FacebookCallback()
+    this.KAf = new FacebookCallback()
     {
       public final void onCancel()
       {
         AppMethodBeat.i(152822);
-        ac.i("MicroMsg.FacebookAndroid", "facebook auth cancel!");
-        if (d.this.IIX != null) {
-          d.this.IIX.onCancel();
+        ad.i("MicroMsg.FacebookAndroid", "facebook auth cancel!");
+        if (d.this.KAe != null) {
+          d.this.KAe.onCancel();
         }
         AppMethodBeat.o(152822);
       }
@@ -51,9 +51,9 @@ public final class d
       public final void onError(FacebookException paramAnonymousFacebookException)
       {
         AppMethodBeat.i(152823);
-        ac.e("MicroMsg.FacebookAndroid", "facebook auth error! %s", new Object[] { paramAnonymousFacebookException.getMessage() });
-        if (d.this.IIX != null) {
-          d.this.IIX.onError(paramAnonymousFacebookException.getMessage());
+        ad.e("MicroMsg.FacebookAndroid", "facebook auth error! %s", new Object[] { paramAnonymousFacebookException.getMessage() });
+        if (d.this.KAe != null) {
+          d.this.KAe.onError(paramAnonymousFacebookException.getMessage());
         }
         AppMethodBeat.o(152823);
       }
@@ -68,7 +68,7 @@ public final class d
     AppMethodBeat.o(152826);
   }
   
-  private static void fsR()
+  private static void fJF()
   {
     AppMethodBeat.i(152828);
     try
@@ -87,7 +87,7 @@ public final class d
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.FacebookAndroid", localException.getMessage());
+      ad.e("MicroMsg.FacebookAndroid", localException.getMessage());
       RuntimeException localRuntimeException = new RuntimeException(localException);
       AppMethodBeat.o(152828);
       throw localRuntimeException;
@@ -97,8 +97,8 @@ public final class d
   public final void a(Activity paramActivity, b paramb, String[] paramArrayOfString)
   {
     AppMethodBeat.i(152829);
-    LoginManager.getInstance().registerCallback(this.IIW, this.IIY);
-    this.IIX = paramb;
+    LoginManager.getInstance().registerCallback(this.KAd, this.KAf);
+    this.KAe = paramb;
     LoginManager.getInstance().logInWithReadPermissions(paramActivity, Arrays.asList(paramArrayOfString));
     AppMethodBeat.o(152829);
   }
@@ -108,7 +108,7 @@ public final class d
     AppMethodBeat.i(152830);
     Bundle localBundle = new Bundle();
     localBundle.putString("fields", paramString);
-    new GraphRequest(this.IIV, "me", localBundle, HttpMethod.GET, new GraphRequest.Callback()
+    new GraphRequest(this.KAc, "me", localBundle, HttpMethod.GET, new GraphRequest.Callback()
     {
       public final void onCompleted(GraphResponse paramAnonymousGraphResponse)
       {
@@ -135,10 +135,10 @@ public final class d
     AppMethodBeat.o(152830);
   }
   
-  public final boolean fsP()
+  public final boolean fJD()
   {
     AppMethodBeat.i(152831);
-    if ((this.IIV != null) && ((this.IIO == 0L) || (System.currentTimeMillis() < this.IIO)))
+    if ((this.KAc != null) && ((this.KzV == 0L) || (System.currentTimeMillis() < this.KzV)))
     {
       AppMethodBeat.o(152831);
       return true;
@@ -147,22 +147,22 @@ public final class d
     return false;
   }
   
-  public final void fsQ()
+  public final void fJE()
   {
     AppMethodBeat.i(152827);
-    fsR();
+    fJF();
     FacebookSdk.setApplicationId(this.mAppId);
-    FacebookSdk.sdkInitialize(ai.getContext());
-    ac.i("MicroMsg.FacebookAndroid", "installerPkg %s", new Object[] { AttributionIdentifiers.getAttributionIdentifiers(ai.getContext()).getAndroidInstallerPackage() });
-    this.IIW = CallbackManager.Factory.create();
+    FacebookSdk.sdkInitialize(aj.getContext());
+    ad.i("MicroMsg.FacebookAndroid", "installerPkg %s", new Object[] { AttributionIdentifiers.getAttributionIdentifiers(aj.getContext()).getAndroidInstallerPackage() });
+    this.KAd = CallbackManager.Factory.create();
     AppMethodBeat.o(152827);
   }
   
   public final void i(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(152832);
-    if (this.IIW != null) {
-      this.IIW.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (this.KAd != null) {
+      this.KAd.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
     AppMethodBeat.o(152832);
   }
@@ -170,9 +170,9 @@ public final class d
   public final void logout()
   {
     AppMethodBeat.i(152833);
-    this.IIV = null;
-    this.IIO = 0L;
-    this.IIX = null;
+    this.KAc = null;
+    this.KzV = 0L;
+    this.KAe = null;
     LoginManager.getInstance().logOut();
     AppMethodBeat.o(152833);
   }

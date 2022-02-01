@@ -3,11 +3,11 @@ package com.tencent.mm.emoji.panel.a;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.ui.widget.a.f.c;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
 final class d$c
   implements f.c
 {
@@ -20,7 +20,7 @@ final class d$c
     {
       paramString = new Intent();
       paramString.putExtra("key_emoji_panel_type", 1);
-      d.b(this.cgl, "emoji", ".ui.EmojiCustomUI", paramString);
+      d.b(this.cqB, "emoji", ".ui.EmojiCustomUI", paramString);
     }
     AppMethodBeat.o(105634);
   }

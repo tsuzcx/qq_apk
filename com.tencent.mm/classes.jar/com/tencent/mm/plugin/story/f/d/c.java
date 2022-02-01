@@ -7,25 +7,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/gallery/FavStoryDataSeed;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "key", "", "dateList", "", "", "username", "isMultiSelected", "", "filterList", "", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "checkedList", "queryCondition", "", "(JLjava/util/List;Ljava/lang/String;ZLjava/util/Map;Ljava/util/ArrayList;I)V", "getCheckedList", "()Ljava/util/ArrayList;", "getDateList", "()Ljava/util/List;", "getFilterList", "()Ljava/util/Map;", "()Z", "getUsername", "()Ljava/lang/String;", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/gallery/FavStoryDataSeed;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "key", "", "dateList", "", "", "username", "isMultiSelected", "", "filterList", "", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "checkedList", "queryCondition", "", "(JLjava/util/List;Ljava/lang/String;ZLjava/util/Map;Ljava/util/ArrayList;I)V", "getCheckedList", "()Ljava/util/ArrayList;", "getDateList", "()Ljava/util/List;", "getFilterList", "()Ljava/util/Map;", "()Z", "getUsername", "()Ljava/lang/String;", "plugin-story_release"})
 public final class c
   extends p
 {
+  public final Map<String, ArrayList<Long>> AMp;
+  final List<String> AMq;
+  public final ArrayList<Long> AMr;
   public final String username;
-  public final boolean xvs;
-  public final Map<String, ArrayList<Long>> zuu;
-  final List<String> zuv;
-  public final ArrayList<Long> zuw;
+  public final boolean yKd;
   
   public c(long paramLong, List<String> paramList, String paramString, boolean paramBoolean, Map<String, ? extends ArrayList<Long>> paramMap, ArrayList<Long> paramArrayList, int paramInt)
   {
     super(paramLong, paramInt);
     AppMethodBeat.i(118907);
-    this.zuv = paramList;
+    this.AMq = paramList;
     this.username = paramString;
-    this.xvs = paramBoolean;
-    this.zuu = paramMap;
-    this.zuw = paramArrayList;
+    this.yKd = paramBoolean;
+    this.AMp = paramMap;
+    this.AMr = paramArrayList;
     AppMethodBeat.o(118907);
   }
 }

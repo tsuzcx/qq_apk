@@ -8,16 +8,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.j;
 import com.tencent.mm.g.a.j.a;
 import com.tencent.mm.ipcinvoker.k;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class NFCIPCHelper
 {
-  public static void eBT()
+  public static void eQN()
   {
     AppMethodBeat.i(79142);
-    ac.e("MicroMsg.NFCIPCHelper", "alvinluo nfcInvokeAsResult error");
-    h.wUl.dB(968, 0);
+    ad.e("MicroMsg.NFCIPCHelper", "alvinluo nfcInvokeAsResult error");
+    g.yhR.dD(968, 0);
     AppMethodBeat.o(79142);
   }
   
@@ -26,10 +26,10 @@ public final class NFCIPCHelper
   {
     public static final Parcelable.Creator<NFCEventTransfer> CREATOR;
     public int actionCode;
-    public boolean cYA;
-    public Bundle cYB;
-    public String cYy;
-    public boolean cYz;
+    public String djQ;
+    public boolean djR;
+    public boolean djS;
+    public Bundle djT;
     
     static
     {
@@ -42,11 +42,11 @@ public final class NFCIPCHelper
     {
       AppMethodBeat.i(79138);
       this.actionCode = paramParcel.readInt();
-      this.cYy = paramParcel.readString();
+      this.djQ = paramParcel.readString();
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.cYz = bool1;
+        this.djR = bool1;
         if (paramParcel.readByte() == 0) {
           break label81;
         }
@@ -54,8 +54,8 @@ public final class NFCIPCHelper
       label81:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.cYA = bool1;
-        this.cYB = paramParcel.readBundle(getClass().getClassLoader());
+        this.djS = bool1;
+        this.djT = paramParcel.readBundle(getClass().getClassLoader());
         AppMethodBeat.o(79138);
         return;
         bool1 = false;
@@ -65,10 +65,10 @@ public final class NFCIPCHelper
     
     public NFCEventTransfer(j paramj)
     {
-      this.actionCode = paramj.cYw.actionCode;
-      this.cYy = paramj.cYw.cYy;
-      this.cYz = paramj.cYw.cYz;
-      this.cYA = paramj.cYw.cYA;
+      this.actionCode = paramj.djO.actionCode;
+      this.djQ = paramj.djO.djQ;
+      this.djR = paramj.djO.djR;
+      this.djS = paramj.djO.djS;
     }
     
     public int describeContents()
@@ -81,12 +81,12 @@ public final class NFCIPCHelper
       byte b2 = 1;
       AppMethodBeat.i(79139);
       paramParcel.writeInt(this.actionCode);
-      paramParcel.writeString(this.cYy);
-      if (this.cYz)
+      paramParcel.writeString(this.djQ);
+      if (this.djR)
       {
         b1 = 1;
         paramParcel.writeByte(b1);
-        if (!this.cYA) {
+        if (!this.djS) {
           break label72;
         }
       }
@@ -94,7 +94,7 @@ public final class NFCIPCHelper
       for (byte b1 = b2;; b1 = 0)
       {
         paramParcel.writeByte(b1);
-        paramParcel.writeBundle(this.cYB);
+        paramParcel.writeBundle(this.djT);
         AppMethodBeat.o(79139);
         return;
         b1 = 0;

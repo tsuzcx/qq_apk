@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.music.model.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.i;
+import com.tencent.mm.az.i;
 import com.tencent.mm.plugin.music.cache.h;
 import com.tencent.mm.plugin.music.h.c;
 import com.tencent.mm.plugin.music.model.e.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.af;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
 
 public final class b
 {
-  private static af<String, String> vfG;
-  private static af<String, Long> vfH;
+  private static ag<String, String> wlb;
+  private static ag<String, Long> wlc;
   
   static
   {
     AppMethodBeat.i(63047);
-    vfG = new af(20);
-    vfH = new af(20);
+    wlb = new ag(20);
+    wlc = new ag(20);
     AppMethodBeat.o(63047);
   }
   
-  public static String anB(String paramString)
+  public static String asA(String paramString)
   {
     AppMethodBeat.i(63042);
-    if ((!TextUtils.isEmpty(paramString)) && (vfG.aK(paramString))) {}
-    for (String str = (String)vfG.get(paramString); str == null; str = null)
+    if ((!TextUtils.isEmpty(paramString)) && (wlb.aM(paramString))) {}
+    for (String str = (String)wlb.get(paramString); str == null; str = null)
     {
       AppMethodBeat.o(63042);
       return paramString;
@@ -37,7 +37,7 @@ public final class b
     return str;
   }
   
-  public static boolean anF(String paramString)
+  public static boolean asE(String paramString)
   {
     AppMethodBeat.i(63044);
     if (TextUtils.isEmpty(paramString))
@@ -54,10 +54,10 @@ public final class b
     return false;
   }
   
-  public static String anG(String paramString)
+  public static String asF(String paramString)
   {
     AppMethodBeat.i(63045);
-    if (anF(paramString))
+    if (asE(paramString))
     {
       int i = paramString.lastIndexOf("wxshakemusic");
       if (i > 1)
@@ -73,20 +73,20 @@ public final class b
     return paramString;
   }
   
-  public static String anh(String paramString)
+  public static String asg(String paramString)
   {
     AppMethodBeat.i(63046);
-    String str = anB(paramString);
+    String str = asA(paramString);
     if ((!TextUtils.isEmpty(str)) && (!str.equalsIgnoreCase(paramString)))
     {
-      ac.i("MicroMsg.Music.MusicUrlParser", "use temp shake music url to play:%s", new Object[] { str });
+      ad.i("MicroMsg.Music.MusicUrlParser", "use temp shake music url to play:%s", new Object[] { str });
       AppMethodBeat.o(63046);
       return str;
     }
-    if (anF(paramString))
+    if (asE(paramString))
     {
-      paramString = anG(str);
-      ac.i("MicroMsg.Music.MusicUrlParser", "play url :%s", new Object[] { paramString });
+      paramString = asF(str);
+      ad.i("MicroMsg.Music.MusicUrlParser", "play url :%s", new Object[] { paramString });
       AppMethodBeat.o(63046);
       return paramString;
     }
@@ -102,17 +102,17 @@ public final class b
       AppMethodBeat.o(63043);
       return false;
     }
-    if (!anF(parama.playUrl))
+    if (!asE(parama.playUrl))
     {
       AppMethodBeat.o(63043);
       return false;
     }
-    if (c.Kb(parama.field_musicType))
+    if (c.LD(parama.field_musicType))
     {
       if ((parama == null) || (TextUtils.isEmpty(parama.playUrl)))
       {
         i = 0;
-        if ((i == 0) || (!h.anx(parama.playUrl))) {
+        if ((i == 0) || (!h.asw(parama.playUrl))) {
           break label139;
         }
       }
@@ -122,11 +122,11 @@ public final class b
         if (i == 0) {
           break label238;
         }
-        ac.i("MicroMsg.Music.MusicUrlParser", "qq music pieceFile cache is valid");
+        ad.i("MicroMsg.Music.MusicUrlParser", "qq music pieceFile cache is valid");
         AppMethodBeat.o(63043);
         return false;
-        i locali = com.tencent.mm.plugin.music.cache.e.ani(com.tencent.mm.plugin.music.h.b.anQ(parama.playUrl));
-        if ((locali != null) && (locali.hOv == 1))
+        i locali = com.tencent.mm.plugin.music.cache.e.ash(com.tencent.mm.plugin.music.h.b.asP(parama.playUrl));
+        if ((locali != null) && (locali.ihJ == 1))
         {
           i = 1;
           break;
@@ -135,12 +135,12 @@ public final class b
         break;
       }
     }
-    boolean bool = ax.isWifi(ai.getContext());
+    boolean bool = ay.isWifi(aj.getContext());
     if (bool) {
       if (parama.field_wifiEndFlag == 1)
       {
         i = 1;
-        if ((i == 0) || (!new com.tencent.mm.vfs.e(com.tencent.mm.plugin.music.h.b.bs(parama.field_musicId, bool)).exists())) {
+        if ((i == 0) || (!new com.tencent.mm.vfs.e(com.tencent.mm.plugin.music.h.b.bz(parama.field_musicId, bool)).exists())) {
           break label233;
         }
       }
@@ -151,7 +151,7 @@ public final class b
       if (i == 0) {
         break label238;
       }
-      ac.i("MicroMsg.Music.MusicUrlParser", "music cache is valid");
+      ad.i("MicroMsg.Music.MusicUrlParser", "music cache is valid");
       AppMethodBeat.o(63043);
       return false;
       i = 0;
@@ -165,20 +165,20 @@ public final class b
       break;
     }
     label238:
-    if (!vfG.aK(parama.playUrl))
+    if (!wlb.aM(parama.playUrl))
     {
       AppMethodBeat.o(63043);
       return true;
     }
     long l = 0L;
-    if (vfH.aK(parama.playUrl)) {
-      l = ((Long)vfH.get(parama.playUrl)).longValue();
+    if (wlc.aM(parama.playUrl)) {
+      l = ((Long)wlc.get(parama.playUrl)).longValue();
     }
     if (System.currentTimeMillis() - l > 86400000L)
     {
-      vfG.remove(parama.playUrl);
-      vfH.remove(parama.playUrl);
-      ac.i("MicroMsg.Music.MusicUrlParser", "shake music url in cache is timeout");
+      wlb.remove(parama.playUrl);
+      wlc.remove(parama.playUrl);
+      ad.i("MicroMsg.Music.MusicUrlParser", "shake music url in cache is timeout");
       AppMethodBeat.o(63043);
       return true;
     }
@@ -186,7 +186,7 @@ public final class b
     return false;
   }
   
-  public static void hY(String paramString1, String paramString2)
+  public static void ij(String paramString1, String paramString2)
   {
     AppMethodBeat.i(63041);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
@@ -194,8 +194,8 @@ public final class b
       AppMethodBeat.o(63041);
       return;
     }
-    vfG.put(paramString1, paramString2);
-    vfH.put(paramString1, Long.valueOf(System.currentTimeMillis()));
+    wlb.put(paramString1, paramString2);
+    wlc.put(paramString1, Long.valueOf(System.currentTimeMillis()));
     AppMethodBeat.o(63041);
   }
 }

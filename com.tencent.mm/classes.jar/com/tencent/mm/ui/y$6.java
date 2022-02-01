@@ -6,8 +6,8 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.t;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.b;
 
 final class y$6
@@ -18,16 +18,16 @@ final class y$6
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(33442);
-    h.wUl.idkeyStat(322L, 24L, 1L, true);
-    h.wUl.f(11098, new Object[] { Integer.valueOf(4024), String.format("%b|%s", new Object[] { Boolean.valueOf(bs.isNullOrNil(this.val$url)), this.val$url }) });
+    g.yhR.idkeyStat(322L, 24L, 1L, true);
+    g.yhR.f(11098, new Object[] { Integer.valueOf(4024), String.format("%b|%s", new Object[] { Boolean.valueOf(bt.isNullOrNil(this.val$url)), this.val$url }) });
     paramDialogInterface = this.val$activity;
-    Object localObject = this.HoL;
-    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/MMErrorProcessor$7", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+    Object localObject = this.Jcr;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/MMErrorProcessor$7", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/ui/MMErrorProcessor$7", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    b.ak(this.val$activity, this.HoL);
-    t.cX(this.val$activity);
+    b.am(this.val$activity, this.Jcr);
+    t.cV(this.val$activity);
     AppMethodBeat.o(33442);
   }
 }

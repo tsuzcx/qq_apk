@@ -12,87 +12,83 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.u;
-import com.tencent.mm.plugin.sns.ui.x;
-import com.tencent.mm.plugin.sns.ui.x.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.plugin.sns.ui.y;
+import com.tencent.mm.plugin.sns.ui.y.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.g;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public final class e
-  implements x
+  implements y
 {
+  private ImageView AgE;
+  private boolean AzE;
+  c AzF;
+  DynamicGridView AzG;
+  y.a AzH;
+  float AzI;
+  View AzJ;
+  ImageView AzK;
+  private View AzL;
+  private int AzM;
+  private Rect AzN;
   private Context context;
-  private ImageView yPi;
-  TextView yzU;
-  private boolean zhC;
-  c zhD;
-  DynamicGridView zhE;
-  x.a zhF;
-  float zhG;
-  View zhH;
-  ImageView zhI;
-  private View zhJ;
-  private View zhK;
-  private int zhL;
-  private Rect zhM;
+  private View wGb;
+  TextView zRl;
   
-  public e(final View paramView1, View paramView2, View paramView3, Context paramContext, final List<String> paramList, final DynamicGridView paramDynamicGridView, x.a parama, c.a parama1, boolean paramBoolean)
+  public e(final View paramView1, View paramView2, View paramView3, Context paramContext, final List<String> paramList, final DynamicGridView paramDynamicGridView, y.a parama, c.a parama1, boolean paramBoolean)
   {
     AppMethodBeat.i(100293);
-    this.zhC = paramBoolean;
+    this.AzE = paramBoolean;
     this.context = paramContext;
-    this.zhF = parama;
-    this.zhH = paramView2;
-    this.zhJ = paramView3;
-    this.zhE = paramDynamicGridView;
-    this.zhI = ((ImageView)paramView2.findViewById(2131298957));
-    this.yzU = ((TextView)paramView2.findViewById(2131298961));
-    this.zhK = paramView1;
+    this.AzH = parama;
+    this.AzJ = paramView2;
+    this.wGb = paramView3;
+    this.AzG = paramDynamicGridView;
+    this.AzK = ((ImageView)paramView2.findViewById(2131298957));
+    this.zRl = ((TextView)paramView2.findViewById(2131298961));
+    this.AzL = paramView1;
     paramDynamicGridView.setWobbleInEditMode(false);
-    af.dHG();
-    this.zhL = ((u.getScreenWidth() - paramContext.getResources().getDimensionPixelSize(2131166845) * 4 - paramContext.getResources().getDimensionPixelSize(2131165483) * 2) / 3);
-    paramDynamicGridView.setColumnWidth(this.zhL + paramContext.getResources().getDimensionPixelSize(2131166845) * 2);
+    ag.dTT();
+    this.AzM = ((u.getScreenWidth() - paramContext.getResources().getDimensionPixelSize(2131166845) * 4 - paramContext.getResources().getDimensionPixelSize(2131165483) * 2) / 3);
+    paramDynamicGridView.setColumnWidth(this.AzM + paramContext.getResources().getDimensionPixelSize(2131166845) * 2);
     paramDynamicGridView.setNumColumns(3);
     paramDynamicGridView.setOverScrollMode(2);
     paramDynamicGridView.setStretchMode(0);
     paramDynamicGridView.setClipChildren(false);
     paramDynamicGridView.setClipToPadding(false);
     paramDynamicGridView.setSelector(new ColorDrawable(0));
-    this.zhD = new c(paramContext, paramList, paramBoolean, parama1);
-    dRU();
-    paramDynamicGridView.setAdapter(this.zhD);
+    this.AzF = new c(paramContext, paramList, paramBoolean, parama1);
+    eeo();
+    paramDynamicGridView.setAdapter(this.AzF);
     paramDynamicGridView.setOnDragListener(new DynamicGridView.e()
     {
-      public final void PW(int paramAnonymousInt)
+      public final void RF(int paramAnonymousInt)
       {
         AppMethodBeat.i(100280);
-        ac.i("DynamicGrid", "drag started at position ".concat(String.valueOf(paramAnonymousInt)));
+        ad.i("DynamicGrid", "drag started at position ".concat(String.valueOf(paramAnonymousInt)));
         if (Build.VERSION.SDK_INT >= 21)
         {
-          e.this.zhG = paramDynamicGridView.getElevation();
+          e.this.AzI = paramDynamicGridView.getElevation();
           paramDynamicGridView.setElevation(100.0F);
         }
         for (;;)
         {
           Object localObject = e.this;
-          ((e)localObject).zhH.setVisibility(0);
-          localObject = ObjectAnimator.ofFloat(((e)localObject).zhH, "translationY", new float[] { ((e)localObject).zhH.getHeight(), 0.0F });
+          ((e)localObject).AzJ.setVisibility(0);
+          localObject = ObjectAnimator.ofFloat(((e)localObject).AzJ, "translationY", new float[] { ((e)localObject).AzJ.getHeight(), 0.0F });
           ((ObjectAnimator)localObject).setDuration(200L);
           ((ObjectAnimator)localObject).start();
           e.a(e.this);
@@ -102,44 +98,44 @@ public final class e
         }
       }
       
-      public final void PX(int paramAnonymousInt)
+      public final void RG(int paramAnonymousInt)
       {
         AppMethodBeat.i(100281);
-        ac.i("DynamicGrid", "drag to del ".concat(String.valueOf(paramAnonymousInt)));
-        c localc = e.this.zhD;
+        ad.i("DynamicGrid", "drag to del ".concat(String.valueOf(paramAnonymousInt)));
+        c localc = e.this.AzF;
         Object localObject = localc.getItem(paramAnonymousInt);
         localc.mItems.remove(localObject);
-        localc.zhu.remove(localObject);
+        localc.Azw.remove(localObject);
         localc.notifyDataSetChanged();
-        if (localc.zhz != null)
+        if (localc.AzB != null)
         {
-          int i = localc.zhv;
-          localc.zhz.removeItem(paramAnonymousInt - i);
+          int i = localc.Azx;
+          localc.AzB.removeItem(paramAnonymousInt - i);
         }
         AppMethodBeat.o(100281);
       }
       
-      public final void dRV()
+      public final void eep()
       {
         AppMethodBeat.i(100283);
         e locale = e.this;
-        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(locale.zhH, "translationY", new float[] { 0.0F, locale.zhH.getHeight() });
+        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(locale.AzJ, "translationY", new float[] { 0.0F, locale.AzJ.getHeight() });
         localObjectAnimator.setDuration(200L);
         localObjectAnimator.addListener(new e.8(locale));
         localObjectAnimator.start();
-        e.this.zhD.dRS();
+        e.this.AzF.eem();
         AppMethodBeat.o(100283);
       }
       
-      public final void o(Rect paramAnonymousRect)
+      public final void l(Rect paramAnonymousRect)
       {
         AppMethodBeat.i(100282);
-        if (p(paramAnonymousRect))
+        if (m(paramAnonymousRect))
         {
           paramAnonymousRect = e.this;
-          paramAnonymousRect.zhH.setBackgroundColor(Color.parseColor("#ce3c39"));
-          paramAnonymousRect.zhI.setImageResource(2131691194);
-          paramAnonymousRect.yzU.setText("松手即可删除");
+          paramAnonymousRect.AzJ.setBackgroundColor(Color.parseColor("#ce3c39"));
+          paramAnonymousRect.AzK.setImageResource(2131691194);
+          paramAnonymousRect.zRl.setText("松手即可删除");
           AppMethodBeat.o(100282);
           return;
         }
@@ -147,7 +143,7 @@ public final class e
         AppMethodBeat.o(100282);
       }
       
-      public final boolean p(Rect paramAnonymousRect)
+      public final boolean m(Rect paramAnonymousRect)
       {
         AppMethodBeat.i(100284);
         boolean bool = e.a(e.this, paramAnonymousRect);
@@ -155,51 +151,22 @@ public final class e
         return bool;
       }
     });
-    paramDynamicGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
-    {
-      public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        return true;
-      }
-    });
-    paramDynamicGridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-    {
-      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        AppMethodBeat.i(100285);
-        if (e.this.zhF != null)
-        {
-          if (paramAnonymousView.getTag() == null)
-          {
-            AppMethodBeat.o(100285);
-            return;
-          }
-          paramAnonymousInt = ((Integer)paramAnonymousView.getTag()).intValue();
-          ac.i("DynamicGrid", "click ".concat(String.valueOf(paramAnonymousInt)));
-          if (paramAnonymousInt == 2147483647)
-          {
-            AppMethodBeat.o(100285);
-            return;
-          }
-          e.this.zhF.Ld(paramAnonymousInt);
-        }
-        AppMethodBeat.o(100285);
-      }
-    });
+    paramDynamicGridView.setOnItemLongClickListener(new e.2(this));
+    paramDynamicGridView.setOnItemClickListener(new e.3(this));
     paramDynamicGridView.setOnDropListener(new DynamicGridView.f()
     {
-      public final void dRW()
+      public final void eeq()
       {
         AppMethodBeat.i(100286);
         DynamicGridView localDynamicGridView = paramDynamicGridView;
-        localDynamicGridView.pGX = false;
+        localDynamicGridView.qkC = false;
         localDynamicGridView.requestDisallowInterceptTouchEvent(false);
-        if ((DynamicGridView.dSc()) && (localDynamicGridView.zik)) {
-          localDynamicGridView.rv(true);
+        if ((DynamicGridView.eew()) && (localDynamicGridView.AAj)) {
+          localDynamicGridView.sb(true);
         }
         if (Build.VERSION.SDK_INT >= 21)
         {
-          paramDynamicGridView.setElevation(e.this.zhG);
+          paramDynamicGridView.setElevation(e.this.AzI);
           AppMethodBeat.o(100286);
           return;
         }
@@ -213,20 +180,20 @@ public final class e
       {
         AppMethodBeat.i(100287);
         paramDynamicGridView.getViewTreeObserver().removeOnPreDrawListener(this);
-        e.this.PV(paramList.size());
+        e.this.RE(paramList.size());
         AppMethodBeat.o(100287);
         return true;
       }
     });
-    af.dHG();
+    ag.dTT();
     if (u.getScreenWidth() == 0) {
-      new ao().postDelayed(new Runnable()
+      new ap().postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(100288);
-          e.this.PV(paramList.size());
-          e.this.zhD.notifyDataSetChanged();
+          e.this.RE(paramList.size());
+          e.this.AzF.notifyDataSetChanged();
           AppMethodBeat.o(100288);
         }
       }, 50L);
@@ -234,39 +201,31 @@ public final class e
     AppMethodBeat.o(100293);
   }
   
-  private void dRU()
+  private void eeo()
   {
     AppMethodBeat.i(100295);
-    if ((ai.eUY().getBoolean("key_show_tips", true)) && (this.zhD.dRT() > 1))
+    if ((aj.fkD().getBoolean("key_show_tips", true)) && (this.AzF.een() > 1))
     {
-      this.zhJ.setVisibility(0);
-      this.yPi = ((ImageView)this.zhJ.findViewById(2131304984));
-      this.yPi.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(100289);
-          e.a(e.this);
-          AppMethodBeat.o(100289);
-        }
-      });
+      this.wGb.setVisibility(0);
+      this.AgE = ((ImageView)this.wGb.findViewById(2131304984));
+      this.AgE.setOnClickListener(new e.7(this));
       AppMethodBeat.o(100295);
       return;
     }
-    this.zhJ.setVisibility(8);
+    this.wGb.setVisibility(8);
     AppMethodBeat.o(100295);
   }
   
-  public final void PV(int paramInt)
+  public final void RE(int paramInt)
   {
     int i = 3;
     AppMethodBeat.i(100294);
-    af.dHG();
-    this.zhL = ((u.getScreenWidth() - this.context.getResources().getDimensionPixelSize(2131166845) * 4 - this.context.getResources().getDimensionPixelSize(2131165483) * 2) / 3);
-    this.zhE.setColumnWidth(this.zhL + this.context.getResources().getDimensionPixelSize(2131166845) * 2);
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.zhE.getLayoutParams();
-    af.dHG();
-    ac.i("DynamicGrid", "setGridViewMargins margin: screenWith:%d", new Object[] { Integer.valueOf(u.getScreenWidth()) });
+    ag.dTT();
+    this.AzM = ((u.getScreenWidth() - this.context.getResources().getDimensionPixelSize(2131166845) * 4 - this.context.getResources().getDimensionPixelSize(2131165483) * 2) / 3);
+    this.AzG.setColumnWidth(this.AzM + this.context.getResources().getDimensionPixelSize(2131166845) * 2);
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.AzG.getLayoutParams();
+    ag.dTT();
+    ad.i("DynamicGrid", "setGridViewMargins margin: screenWith:%d", new Object[] { Integer.valueOf(u.getScreenWidth()) });
     paramInt = (paramInt + 3) / 3;
     if (paramInt > 3) {
       paramInt = i;
@@ -274,13 +233,13 @@ public final class e
     for (;;)
     {
       i = localMarginLayoutParams.leftMargin;
-      int j = this.zhK.getHeight();
-      int k = this.zhL;
+      int j = this.AzL.getHeight();
+      int k = this.AzM;
       int m = this.context.getResources().getDimensionPixelSize(2131166845);
       int n = localMarginLayoutParams.rightMargin;
-      float f = f.aNu().density;
+      float f = g.aQF().density;
       localMarginLayoutParams.setMargins(i, j - k - m * 2, n, (int)((4 - paramInt) * (f * 32.0F)));
-      this.zhE.setLayoutParams(localMarginLayoutParams);
+      this.AzG.setLayoutParams(localMarginLayoutParams);
       AppMethodBeat.o(100294);
       return;
     }
@@ -289,34 +248,34 @@ public final class e
   public final void clean()
   {
     AppMethodBeat.i(100297);
-    if ((this.zhE != null) && (this.zhE.getAdapter() == null)) {
-      ((c)this.zhE.getAdapter()).yDL = true;
+    if ((this.AzG != null) && (this.AzG.getAdapter() == null)) {
+      ((c)this.AzG.getAdapter()).zVg = true;
     }
     AppMethodBeat.o(100297);
   }
   
   public final View getView()
   {
-    return this.zhE;
+    return this.AzG;
   }
   
-  public final void setImageClick(x.a parama)
+  public final void setImageClick(y.a parama)
   {
-    this.zhF = parama;
+    this.AzH = parama;
   }
   
   public final void setIsShowAddImage(boolean paramBoolean)
   {
-    this.zhC = paramBoolean;
+    this.AzE = paramBoolean;
   }
   
   public final void setList$22875ea3(List<String> paramList)
   {
     AppMethodBeat.i(100296);
-    if (this.zhD != null)
+    if (this.AzF != null)
     {
-      this.zhD.fU(paramList);
-      dRU();
+      this.AzF.gf(paramList);
+      eeo();
     }
     AppMethodBeat.o(100296);
   }

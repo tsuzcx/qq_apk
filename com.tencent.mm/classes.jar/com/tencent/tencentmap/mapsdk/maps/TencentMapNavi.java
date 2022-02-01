@@ -2,6 +2,8 @@ package com.tencent.tencentmap.mapsdk.maps;
 
 import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 import com.tencent.tencentmap.mapsdk.maps.model.IOverlay;
+import com.tencent.tencentmap.mapsdk.maps.model.IntersectionOverlay;
+import com.tencent.tencentmap.mapsdk.maps.model.IntersectionOverlayOptions;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLngBounds;
 import com.tencent.tencentmap.mapsdk.maps.model.MapRouteSection;
@@ -10,6 +12,8 @@ import java.util.List;
 public abstract interface TencentMapNavi
   extends TencentMap
 {
+  public abstract IntersectionOverlay addIntersectionEnlargeOverlay(IntersectionOverlayOptions paramIntersectionOverlayOptions);
+  
   public abstract void addSegmentsWithRouteName(List<MapRouteSection> paramList, List<LatLng> paramList1);
   
   public abstract void animateToNaviPosition(LatLng paramLatLng, float paramFloat1, float paramFloat2);
@@ -41,10 +45,12 @@ public abstract interface TencentMapNavi
   public abstract void setNaviFixingProportion2D(float paramFloat1, float paramFloat2);
   
   public abstract void setNaviStateEnabled(boolean paramBoolean);
+  
+  public abstract void setOptionalResourcePath(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.TencentMapNavi
  * JD-Core Version:    0.7.0.1
  */

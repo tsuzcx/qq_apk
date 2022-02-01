@@ -2181,6 +2181,11 @@
     if (isDgtVerifyEnabled) {
       var realMessage = message[_JSON_MESSAGE];
       var shaStr = message[_SHA_KEY];
+      if('sys:updateRandomStr' == realMessage[_EVENT_ID]) {
+        _xxyy = realMessage["randomStr"]
+        _log("sys:updateRandomStr " + _xxyy);
+        return "{}";
+      }
       var arr = new Array;
       arr[0] = JSON.stringify(realMessage);
       arr[1] = _xxyy;
@@ -2191,7 +2196,6 @@
       if (msgSha !== shaStr) {
         _log('_handleMessageFromWeixin , shaStr : ' + shaStr + ' , str : ' + str + ' , msgSha : ' + msgSha);
         return '{}';
-
       }
       msgWrap = realMessage;
     } else {

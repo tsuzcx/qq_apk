@@ -228,7 +228,7 @@ public abstract interface ITPDownloadProxyAidl
       
       public String getClipPlayUrl(int paramInt1, int paramInt2)
       {
-        AppMethodBeat.i(191323);
+        AppMethodBeat.i(189963);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -245,7 +245,7 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(191323);
+          AppMethodBeat.o(189963);
         }
       }
       
@@ -256,7 +256,7 @@ public abstract interface ITPDownloadProxyAidl
       
       public String getPlayErrorCodeStr(int paramInt)
       {
-        AppMethodBeat.i(191324);
+        AppMethodBeat.i(189964);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -272,13 +272,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(191324);
+          AppMethodBeat.o(189964);
         }
       }
       
       public String getPlayUrl(int paramInt)
       {
-        AppMethodBeat.i(191322);
+        AppMethodBeat.i(189962);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -294,13 +294,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(191322);
+          AppMethodBeat.o(189962);
         }
       }
       
       public int init(String paramString)
       {
-        AppMethodBeat.i(191318);
+        AppMethodBeat.i(189958);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -316,13 +316,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(191318);
+          AppMethodBeat.o(189958);
         }
       }
       
       public int pauseDownload(int paramInt)
       {
-        AppMethodBeat.i(191326);
+        AppMethodBeat.i(189966);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -338,13 +338,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(191326);
+          AppMethodBeat.o(189966);
         }
       }
       
       public void pushEvent(int paramInt)
       {
-        AppMethodBeat.i(191331);
+        AppMethodBeat.i(189971);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -359,13 +359,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(191331);
+          AppMethodBeat.o(189971);
         }
       }
       
       public int resumeDownload(int paramInt)
       {
-        AppMethodBeat.i(191327);
+        AppMethodBeat.i(189967);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -381,14 +381,14 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(191327);
+          AppMethodBeat.o(189967);
         }
       }
       
       public boolean setClipInfo(int paramInt1, int paramInt2, String paramString, TPDownloadParamAidl paramTPDownloadParamAidl)
       {
         boolean bool = true;
-        AppMethodBeat.i(191321);
+        AppMethodBeat.i(189961);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         for (;;)
@@ -421,14 +421,14 @@ public abstract interface ITPDownloadProxyAidl
           {
             localParcel2.recycle();
             localParcel1.recycle();
-            AppMethodBeat.o(191321);
+            AppMethodBeat.o(189961);
           }
         }
       }
       
       public void setMaxStorageSizeMB(long paramLong)
       {
-        AppMethodBeat.i(191333);
+        AppMethodBeat.i(189973);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -443,13 +443,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(191333);
+          AppMethodBeat.o(189973);
         }
       }
       
       public void setPlayState(int paramInt1, int paramInt2)
       {
-        AppMethodBeat.i(191332);
+        AppMethodBeat.i(189972);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -465,13 +465,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(191332);
+          AppMethodBeat.o(189972);
         }
       }
       
       public void setUserData(Map paramMap)
       {
-        AppMethodBeat.i(191330);
+        AppMethodBeat.i(189970);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -486,7 +486,7 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(191330);
+          AppMethodBeat.o(189970);
         }
       }
       
@@ -567,7 +567,7 @@ public abstract interface ITPDownloadProxyAidl
       
       public int startPlay(String paramString, TPDownloadParamAidl paramTPDownloadParamAidl, ITPPlayListenerAidl paramITPPlayListenerAidl)
       {
-        AppMethodBeat.i(191319);
+        AppMethodBeat.i(189959);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         for (;;)
@@ -601,14 +601,14 @@ public abstract interface ITPDownloadProxyAidl
           {
             localParcel2.recycle();
             localParcel1.recycle();
-            AppMethodBeat.o(191319);
+            AppMethodBeat.o(189959);
           }
         }
       }
       
       public int startPreload(String paramString, TPDownloadParamAidl paramTPDownloadParamAidl, ITPPreLoadListenerAidl paramITPPreLoadListenerAidl)
       {
-        AppMethodBeat.i(191328);
+        AppMethodBeat.i(189968);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         for (;;)
@@ -642,14 +642,14 @@ public abstract interface ITPDownloadProxyAidl
           {
             localParcel2.recycle();
             localParcel1.recycle();
-            AppMethodBeat.o(191328);
+            AppMethodBeat.o(189968);
           }
         }
       }
       
       public void stopPlay(int paramInt)
       {
-        AppMethodBeat.i(191325);
+        AppMethodBeat.i(189965);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -664,13 +664,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(191325);
+          AppMethodBeat.o(189965);
         }
       }
       
       public void stopPreload(int paramInt)
       {
-        AppMethodBeat.i(191329);
+        AppMethodBeat.i(189969);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -685,7 +685,7 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(191329);
+          AppMethodBeat.o(189969);
         }
       }
     }

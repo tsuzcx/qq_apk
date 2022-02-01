@@ -5,13 +5,13 @@ import com.tencent.mm.plugin.appbrand.jsruntime.j;
 public abstract interface e
   extends j
 {
-  public abstract void blo();
+  public abstract void boZ();
   
-  public abstract void blp();
+  public abstract void bpa();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.b.e
  * JD-Core Version:    0.7.0.1
  */

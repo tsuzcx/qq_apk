@@ -13,18 +13,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 final class a
   implements b, c
 {
-  private final FlutterJNI KLj;
-  private final Map<String, c.a> KMd;
-  private final Map<Integer, c.b> KMe;
-  private int KMf;
+  private final FlutterJNI MCg;
+  private final Map<String, c.a> MDa;
+  private final Map<Integer, c.b> MDb;
+  private int MDc;
   
   a(FlutterJNI paramFlutterJNI)
   {
     AppMethodBeat.i(10206);
-    this.KMf = 1;
-    this.KLj = paramFlutterJNI;
-    this.KMd = new HashMap();
-    this.KMe = new HashMap();
+    this.MDc = 1;
+    this.MCg = paramFlutterJNI;
+    this.MDa = new HashMap();
+    this.MDb = new HashMap();
     AppMethodBeat.o(10206);
   }
   
@@ -34,14 +34,14 @@ final class a
     if (parama == null)
     {
       new StringBuilder("Removing handler for channel '").append(paramString).append("'");
-      io.flutter.a.fMD();
-      this.KMd.remove(paramString);
+      io.flutter.a.gea();
+      this.MDa.remove(paramString);
       AppMethodBeat.o(10207);
       return;
     }
     new StringBuilder("Setting handler for channel '").append(paramString).append("'");
-    io.flutter.a.fMD();
-    this.KMd.put(paramString, parama);
+    io.flutter.a.gea();
+    this.MDa.put(paramString, parama);
     AppMethodBeat.o(10207);
   }
   
@@ -49,7 +49,7 @@ final class a
   {
     AppMethodBeat.i(10208);
     new StringBuilder("Sending message over channel '").append(paramString).append("'");
-    io.flutter.a.fMD();
+    io.flutter.a.gea();
     a(paramString, paramByteBuffer, null);
     AppMethodBeat.o(10208);
   }
@@ -58,21 +58,21 @@ final class a
   {
     AppMethodBeat.i(10209);
     new StringBuilder("Sending message with callback over channel '").append(paramString).append("'");
-    io.flutter.a.fMD();
+    io.flutter.a.gea();
     int i = 0;
     if (paramb != null)
     {
-      i = this.KMf;
-      this.KMf = (i + 1);
-      this.KMe.put(Integer.valueOf(i), paramb);
+      i = this.MDc;
+      this.MDc = (i + 1);
+      this.MDb.put(Integer.valueOf(i), paramb);
     }
     if (paramByteBuffer == null)
     {
-      this.KLj.dispatchEmptyPlatformMessage(paramString, i);
+      this.MCg.dispatchEmptyPlatformMessage(paramString, i);
       AppMethodBeat.o(10209);
       return;
     }
-    this.KLj.dispatchPlatformMessage(paramString, paramByteBuffer, paramByteBuffer.position(), i);
+    this.MCg.dispatchPlatformMessage(paramString, paramByteBuffer, paramByteBuffer.position(), i);
     AppMethodBeat.o(10209);
   }
   
@@ -80,46 +80,46 @@ final class a
   {
     AppMethodBeat.i(10210);
     new StringBuilder("Received message from Dart over channel '").append(paramString).append("'");
-    io.flutter.a.fMD();
-    c.a locala = (c.a)this.KMd.get(paramString);
+    io.flutter.a.gea();
+    c.a locala = (c.a)this.MDa.get(paramString);
     if (locala != null) {
       try
       {
-        io.flutter.a.fMD();
+        io.flutter.a.gea();
         if (paramArrayOfByte == null) {}
         for (paramString = null;; paramString = ByteBuffer.wrap(paramArrayOfByte))
         {
-          locala.a(paramString, new a(this.KLj, paramInt));
+          locala.a(paramString, new a(this.MCg, paramInt));
           AppMethodBeat.o(10210);
           return;
         }
-        io.flutter.a.fMD();
+        io.flutter.a.gea();
       }
       catch (Exception paramString)
       {
-        io.flutter.a.fMI();
-        this.KLj.invokePlatformMessageEmptyResponseCallback(paramInt);
+        io.flutter.a.gef();
+        this.MCg.invokePlatformMessageEmptyResponseCallback(paramInt);
         AppMethodBeat.o(10210);
         return;
       }
     }
-    this.KLj.invokePlatformMessageEmptyResponseCallback(paramInt);
+    this.MCg.invokePlatformMessageEmptyResponseCallback(paramInt);
     AppMethodBeat.o(10210);
   }
   
   public final void handlePlatformMessageResponse(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(10211);
-    io.flutter.a.fMD();
-    c.b localb = (c.b)this.KMe.remove(Integer.valueOf(paramInt));
+    io.flutter.a.gea();
+    c.b localb = (c.b)this.MDb.remove(Integer.valueOf(paramInt));
     if (localb != null) {
       try
       {
-        io.flutter.a.fMD();
+        io.flutter.a.gea();
         if (paramArrayOfByte == null) {}
         for (paramArrayOfByte = null;; paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte))
         {
-          localb.H(paramArrayOfByte);
+          localb.I(paramArrayOfByte);
           AppMethodBeat.o(10211);
           return;
         }
@@ -127,7 +127,7 @@ final class a
       }
       catch (Exception paramArrayOfByte)
       {
-        io.flutter.a.fMI();
+        io.flutter.a.gef();
       }
     }
   }
@@ -135,23 +135,23 @@ final class a
   static final class a
     implements c.b
   {
-    private final FlutterJNI KLj;
-    private final int KMg;
-    private final AtomicBoolean KMh;
+    private final FlutterJNI MCg;
+    private final int MDd;
+    private final AtomicBoolean MDe;
     
     a(FlutterJNI paramFlutterJNI, int paramInt)
     {
       AppMethodBeat.i(10215);
-      this.KMh = new AtomicBoolean(false);
-      this.KLj = paramFlutterJNI;
-      this.KMg = paramInt;
+      this.MDe = new AtomicBoolean(false);
+      this.MCg = paramFlutterJNI;
+      this.MDd = paramInt;
       AppMethodBeat.o(10215);
     }
     
-    public final void H(ByteBuffer paramByteBuffer)
+    public final void I(ByteBuffer paramByteBuffer)
     {
       AppMethodBeat.i(10216);
-      if (this.KMh.getAndSet(true))
+      if (this.MDe.getAndSet(true))
       {
         paramByteBuffer = new IllegalStateException("Reply already submitted");
         AppMethodBeat.o(10216);
@@ -159,11 +159,11 @@ final class a
       }
       if (paramByteBuffer == null)
       {
-        this.KLj.invokePlatformMessageEmptyResponseCallback(this.KMg);
+        this.MCg.invokePlatformMessageEmptyResponseCallback(this.MDd);
         AppMethodBeat.o(10216);
         return;
       }
-      this.KLj.invokePlatformMessageResponseCallback(this.KMg, paramByteBuffer, paramByteBuffer.position());
+      this.MCg.invokePlatformMessageResponseCallback(this.MDd, paramByteBuffer, paramByteBuffer.position());
       AppMethodBeat.o(10216);
     }
   }

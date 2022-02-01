@@ -5,7 +5,7 @@
     <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gp">
         <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
         <FrameLayout android:id="@id/al7" android:layout_width="@dimen/vq" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="vertical" android:background="?dn" android:layout_width="fill_parent" style="@style/h3">
+            <LinearLayout android:orientation="vertical" android:background="@drawable/l9" android:layout_width="fill_parent" style="@style/h3">
                 <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/vd" android:paddingTop="@dimen/hu" android:paddingRight="@dimen/hu" android:layout_width="fill_parent" android:layout_height="wrap_content">
                     <ImageView android:layout_gravity="center_horizontal" android:id="@id/akv" android:background="@drawable/aq8" android:layout_width="@dimen/a6" android:layout_height="@dimen/a6" android:layout_centerInParent="true" />
                     <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hu" android:layout_weight="1.0">

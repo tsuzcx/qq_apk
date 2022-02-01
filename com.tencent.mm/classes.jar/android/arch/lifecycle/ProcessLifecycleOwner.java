@@ -88,12 +88,12 @@ public class ProcessLifecycleOwner
       {
         paramAnonymousActivity = ProcessLifecycleOwner.this;
         paramAnonymousActivity.dc -= 1;
-        paramAnonymousActivity.ac();
+        paramAnonymousActivity.ae();
       }
     });
   }
   
-  final void ac()
+  final void ae()
   {
     if ((this.dc == 0) && (this.de))
     {

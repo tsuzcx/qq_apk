@@ -1,14 +1,16 @@
 package com.tencent.mm.plugin.sport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.plugin.sport.model.m;
 import com.tencent.mm.plugin.sport.ui.a.b;
 import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
   implements d
 {
-  public com.tencent.mm.pluginsdk.m createApplication()
+  public n createApplication()
   {
     AppMethodBeat.i(28808);
     c localc = new c();
@@ -16,10 +18,10 @@ public class Plugin
     return localc;
   }
   
-  public aw createSubCore()
+  public ax createSubCore()
   {
     AppMethodBeat.i(28810);
-    com.tencent.mm.plugin.sport.model.m localm = new com.tencent.mm.plugin.sport.model.m();
+    m localm = new m();
     AppMethodBeat.o(28810);
     return localm;
   }
@@ -34,7 +36,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.Plugin
  * JD-Core Version:    0.7.0.1
  */

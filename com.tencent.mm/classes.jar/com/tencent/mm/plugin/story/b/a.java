@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.story.b;
 
-import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/app/StoryApplication;", "Lcom/tencent/mm/pluginsdk/IPluginApplication;", "()V", "regitMMModelCallback", "", "callback", "Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "regitMMUICallback", "Lcom/tencent/mm/pluginsdk/IMMUICallback;", "plugin-story_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/app/StoryApplication;", "Lcom/tencent/mm/pluginsdk/IPluginApplication;", "()V", "regitMMModelCallback", "", "callback", "Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "regitMMUICallback", "Lcom/tencent/mm/pluginsdk/IMMUICallback;", "plugin-story_release"})
 public final class a
-  implements m
+  implements n
 {
-  public final void a(k paramk) {}
-  
   public final void a(com.tencent.mm.pluginsdk.l paraml) {}
+  
+  public final void a(m paramm) {}
 }
 
 

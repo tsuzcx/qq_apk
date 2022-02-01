@@ -2,19 +2,21 @@ package com.tencent.mm.plugin.finder.view.whatnews;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class FinderWhatsNewView$b
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
-  public static final b sbF;
+  public static final b sYV;
   
   static
   {
     AppMethodBeat.i(168555);
-    sbF = new b();
+    sYV = new b();
     AppMethodBeat.o(168555);
   }
   

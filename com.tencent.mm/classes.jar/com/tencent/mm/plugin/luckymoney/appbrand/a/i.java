@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 public final class i
 {
-  public long dBN;
+  public long dOa;
   public String nickname;
-  public String ugE;
-  public int ugF;
-  public int ugG;
-  public String ugH;
-  public String ugI;
-  public String ugJ;
-  public boolean ugK;
   public String username;
+  public String vjo;
+  public int vjp;
+  public int vjq;
+  public String vjr;
+  public String vjs;
+  public String vjt;
+  public boolean vju;
 }
 
 

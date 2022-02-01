@@ -8,55 +8,52 @@ public abstract class cs
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eBA = "reserved4".hashCode();
-  private static final int eBx;
-  private static final int eBy;
-  private static final int eBz;
-  private static final int eLn = "originSvrId".hashCode();
-  private static final int eLo = "newMsgId".hashCode();
-  private static final int eLp = "fromUserName".hashCode();
-  private static final int eLq = "toUserName".hashCode();
-  private static final int eLr;
-  private static final int eLs;
-  private static final int emY = "createTime".hashCode();
-  private static final int eng = "content".hashCode();
-  private static final int eqO;
+  private static final int eEf;
+  private static final int eZK;
+  private static final int fbW = "uploadState".hashCode();
+  private static final int fci = "taskId".hashCode();
+  private static final int fcj;
+  private static final int fck;
+  private static final int fcl;
+  private static final int fcm;
+  private static final int fcn = "publishState".hashCode();
+  private static final int fco = "compressImg".hashCode();
+  private static final int fcp = "mixState".hashCode();
+  private static final int fcq = "bgMixTaskId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eAL = true;
-  private boolean eAM = true;
-  private boolean eAN = true;
-  private boolean eAO = true;
-  private boolean eLh = true;
-  private boolean eLi = true;
-  private boolean eLj = true;
-  private boolean eLk = true;
-  private boolean eLl = true;
-  private boolean eLm = true;
-  private boolean emB = true;
-  private boolean emI = true;
-  private boolean eqM = true;
-  public String field_content;
+  private boolean eDI = true;
+  private boolean eZv = true;
+  private boolean fbO = true;
+  private boolean fbZ = true;
+  private boolean fca = true;
+  private boolean fcb = true;
+  private boolean fcc = true;
+  private boolean fcd = true;
+  private boolean fce = true;
+  private boolean fcf = true;
+  private boolean fcg = true;
+  private boolean fch = true;
+  public String field_BusinessData;
+  public String field_bgMixTaskId;
+  public boolean field_compressImg;
   public long field_createTime;
-  public int field_flag;
-  public String field_fromUserName;
-  public int field_msgSeq;
-  public String field_msgSource;
-  public long field_newMsgId;
-  public long field_originSvrId;
-  public int field_reserved1;
-  public long field_reserved2;
-  public String field_reserved3;
-  public String field_reserved4;
-  public String field_toUserName;
+  public String field_localIdList;
+  public String field_mediaList;
+  public int field_mediaType;
+  public int field_mixState;
+  public int field_publishSource;
+  public int field_publishState;
+  public String field_taskId;
+  public int field_uploadState;
   
   static
   {
-    eLr = "msgSource".hashCode();
-    eLs = "msgSeq".hashCode();
-    eqO = "flag".hashCode();
-    eBx = "reserved1".hashCode();
-    eBy = "reserved2".hashCode();
-    eBz = "reserved3".hashCode();
+    eEf = "createTime".hashCode();
+    fcj = "publishSource".hashCode();
+    eZK = "mediaType".hashCode();
+    fck = "localIdList".hashCode();
+    fcl = "mediaList".hashCode();
+    fcm = "BusinessData".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -65,18 +62,18 @@ public abstract class cs
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eLn != k) {
+      if (fci != k) {
         break label65;
       }
-      this.field_originSvrId = paramCursor.getLong(i);
-      this.eLh = true;
+      this.field_taskId = paramCursor.getString(i);
+      this.fbZ = true;
     }
     for (;;)
     {
@@ -84,32 +81,56 @@ public abstract class cs
       break label20;
       break;
       label65:
-      if (eLo == k) {
-        this.field_newMsgId = paramCursor.getLong(i);
-      } else if (eLp == k) {
-        this.field_fromUserName = paramCursor.getString(i);
-      } else if (eLq == k) {
-        this.field_toUserName = paramCursor.getString(i);
-      } else if (emY == k) {
+      if (eEf == k)
+      {
         this.field_createTime = paramCursor.getLong(i);
-      } else if (eng == k) {
-        this.field_content = paramCursor.getString(i);
-      } else if (eLr == k) {
-        this.field_msgSource = paramCursor.getString(i);
-      } else if (eLs == k) {
-        this.field_msgSeq = paramCursor.getInt(i);
-      } else if (eqO == k) {
-        this.field_flag = paramCursor.getInt(i);
-      } else if (eBx == k) {
-        this.field_reserved1 = paramCursor.getInt(i);
-      } else if (eBy == k) {
-        this.field_reserved2 = paramCursor.getLong(i);
-      } else if (eBz == k) {
-        this.field_reserved3 = paramCursor.getString(i);
-      } else if (eBA == k) {
-        this.field_reserved4 = paramCursor.getString(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      }
+      else if (fcj == k)
+      {
+        this.field_publishSource = paramCursor.getInt(i);
+      }
+      else if (eZK == k)
+      {
+        this.field_mediaType = paramCursor.getInt(i);
+      }
+      else if (fck == k)
+      {
+        this.field_localIdList = paramCursor.getString(i);
+      }
+      else if (fcl == k)
+      {
+        this.field_mediaList = paramCursor.getString(i);
+      }
+      else if (fcm == k)
+      {
+        this.field_BusinessData = paramCursor.getString(i);
+      }
+      else if (fbW == k)
+      {
+        this.field_uploadState = paramCursor.getInt(i);
+      }
+      else if (fcn == k)
+      {
+        this.field_publishState = paramCursor.getInt(i);
+      }
+      else
+      {
+        if (fco == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (boolean bool = true;; bool = false)
+          {
+            this.field_compressImg = bool;
+            break;
+          }
+        }
+        if (fcp == k) {
+          this.field_mixState = paramCursor.getInt(i);
+        } else if (fcq == k) {
+          this.field_bgMixTaskId = paramCursor.getString(i);
+        } else if (rowid_HASHCODE == k) {
+          this.systemRowid = paramCursor.getLong(i);
+        }
       }
     }
   }
@@ -117,62 +138,41 @@ public abstract class cs
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eLh) {
-      localContentValues.put("originSvrId", Long.valueOf(this.field_originSvrId));
+    if (this.fbZ) {
+      localContentValues.put("taskId", this.field_taskId);
     }
-    if (this.eLi) {
-      localContentValues.put("newMsgId", Long.valueOf(this.field_newMsgId));
-    }
-    if (this.field_fromUserName == null) {
-      this.field_fromUserName = "";
-    }
-    if (this.eLj) {
-      localContentValues.put("fromUserName", this.field_fromUserName);
-    }
-    if (this.field_toUserName == null) {
-      this.field_toUserName = "";
-    }
-    if (this.eLk) {
-      localContentValues.put("toUserName", this.field_toUserName);
-    }
-    if (this.emB) {
+    if (this.eDI) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.field_content == null) {
-      this.field_content = "";
+    if (this.fca) {
+      localContentValues.put("publishSource", Integer.valueOf(this.field_publishSource));
     }
-    if (this.emI) {
-      localContentValues.put("content", this.field_content);
+    if (this.eZv) {
+      localContentValues.put("mediaType", Integer.valueOf(this.field_mediaType));
     }
-    if (this.field_msgSource == null) {
-      this.field_msgSource = "";
+    if (this.fcb) {
+      localContentValues.put("localIdList", this.field_localIdList);
     }
-    if (this.eLl) {
-      localContentValues.put("msgSource", this.field_msgSource);
+    if (this.fcc) {
+      localContentValues.put("mediaList", this.field_mediaList);
     }
-    if (this.eLm) {
-      localContentValues.put("msgSeq", Integer.valueOf(this.field_msgSeq));
+    if (this.fcd) {
+      localContentValues.put("BusinessData", this.field_BusinessData);
     }
-    if (this.eqM) {
-      localContentValues.put("flag", Integer.valueOf(this.field_flag));
+    if (this.fbO) {
+      localContentValues.put("uploadState", Integer.valueOf(this.field_uploadState));
     }
-    if (this.eAL) {
-      localContentValues.put("reserved1", Integer.valueOf(this.field_reserved1));
+    if (this.fce) {
+      localContentValues.put("publishState", Integer.valueOf(this.field_publishState));
     }
-    if (this.eAM) {
-      localContentValues.put("reserved2", Long.valueOf(this.field_reserved2));
+    if (this.fcf) {
+      localContentValues.put("compressImg", Boolean.valueOf(this.field_compressImg));
     }
-    if (this.field_reserved3 == null) {
-      this.field_reserved3 = "";
+    if (this.fcg) {
+      localContentValues.put("mixState", Integer.valueOf(this.field_mixState));
     }
-    if (this.eAN) {
-      localContentValues.put("reserved3", this.field_reserved3);
-    }
-    if (this.field_reserved4 == null) {
-      this.field_reserved4 = "";
-    }
-    if (this.eAO) {
-      localContentValues.put("reserved4", this.field_reserved4);
+    if (this.fch) {
+      localContentValues.put("bgMixTaskId", this.field_bgMixTaskId);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -182,7 +182,7 @@ public abstract class cs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.cs
  * JD-Core Version:    0.7.0.1
  */

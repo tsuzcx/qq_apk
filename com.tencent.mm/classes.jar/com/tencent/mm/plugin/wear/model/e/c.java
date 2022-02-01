@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.wear.model.e;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.v;
-import com.tencent.mm.protocal.protobuf.dwi;
-import com.tencent.mm.protocal.protobuf.dwo;
-import com.tencent.mm.protocal.protobuf.dwp;
-import com.tencent.mm.protocal.protobuf.dxl;
-import com.tencent.mm.protocal.protobuf.dxm;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.protocal.protobuf.eci;
+import com.tencent.mm.protocal.protobuf.eco;
+import com.tencent.mm.protocal.protobuf.ecp;
+import com.tencent.mm.protocal.protobuf.edl;
+import com.tencent.mm.protocal.protobuf.edm;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.contact.u;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import java.util.List;
 public final class c
   extends a
 {
-  protected final boolean Ub(int paramInt)
+  protected final boolean VT(int paramInt)
   {
     AppMethodBeat.i(30074);
     if (paramInt == 11008)
@@ -36,12 +36,12 @@ public final class c
       AppMethodBeat.o(30074);
       return true;
     }
-    boolean bool = super.Ub(paramInt);
+    boolean bool = super.VT(paramInt);
     AppMethodBeat.o(30074);
     return bool;
   }
   
-  protected final boolean Uc(int paramInt)
+  protected final boolean VU(int paramInt)
   {
     AppMethodBeat.i(30073);
     if (paramInt == 11008)
@@ -54,12 +54,12 @@ public final class c
       AppMethodBeat.o(30073);
       return true;
     }
-    boolean bool = super.Uc(paramInt);
+    boolean bool = super.VU(paramInt);
     AppMethodBeat.o(30073);
     return bool;
   }
   
-  public final List<Integer> ewH()
+  public final List<Integer> eKN()
   {
     AppMethodBeat.i(30071);
     ArrayList localArrayList = new ArrayList();
@@ -76,45 +76,45 @@ public final class c
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    dwi localdwi;
+    eci localeci;
     if (paramInt == 11008)
     {
-      com.tencent.mm.plugin.wear.model.c.a.Ua(6);
-      localObject1 = new dxl();
+      com.tencent.mm.plugin.wear.model.c.a.VS(6);
+      localObject1 = new edl();
       for (;;)
       {
         try
         {
-          ((dxl)localObject1).parseFrom(paramArrayOfByte);
+          ((edl)localObject1).parseFrom(paramArrayOfByte);
           paramArrayOfByte = new LinkedList();
-          paramArrayOfByte.addAll(u.frC());
-          paramArrayOfByte.addAll(u.frD());
-          az.ayM();
-          paramArrayOfByte = com.tencent.mm.model.c.awG().f(paramArrayOfByte, ((dxl)localObject1).EfV, 50);
-          if (((dxl)localObject1).EfV == 0)
+          paramArrayOfByte.addAll(u.fIp());
+          paramArrayOfByte.addAll(u.fIq());
+          ba.aBQ();
+          paramArrayOfByte = com.tencent.mm.model.c.azv().f(paramArrayOfByte, ((edl)localObject1).FMu, 50);
+          if (((edl)localObject1).FMu == 0)
           {
             paramInt = i;
-            localObject2 = new dxm();
-            ((dxm)localObject2).EfV = ((dxl)localObject1).EfV;
+            localObject2 = new edm();
+            ((edm)localObject2).FMu = ((edl)localObject1).FMu;
             if ((paramArrayOfByte != null) && (paramArrayOfByte.moveToNext()))
             {
               localObject3 = paramArrayOfByte.getString(paramArrayOfByte.getColumnIndex("username"));
-              az.ayM();
-              localObject3 = com.tencent.mm.model.c.awB().aNt((String)localObject3);
-              ((dxm)localObject2).EfV += 1;
-              if ((((ai)localObject3).fad()) || (((ai)localObject3).aaH())) {
+              ba.aBQ();
+              localObject3 = com.tencent.mm.model.c.azp().Bf((String)localObject3);
+              ((edm)localObject2).FMu += 1;
+              if ((((am)localObject3).fqg()) || (((am)localObject3).adk())) {
                 continue;
               }
-              localdwi = new dwi();
-              localdwi.ndW = v.b((ai)localObject3);
-              localdwi.ncR = ((av)localObject3).field_username;
-              ((dxm)localObject2).ENR.add(localdwi);
-              if (((dxm)localObject2).ENR.size() < paramInt) {
+              localeci = new eci();
+              localeci.nEt = v.b((am)localObject3);
+              localeci.nDo = ((aw)localObject3).field_username;
+              ((edm)localObject2).GwV.add(localeci);
+              if (((edm)localObject2).GwV.size() < paramInt) {
                 continue;
               }
-              ((dxm)localObject2).ERy = paramArrayOfByte.moveToNext();
+              ((edm)localObject2).GAQ = paramArrayOfByte.moveToNext();
             }
-            ac.d("MicroMsg.Wear.HttpContactServer", "request offset: %d | return offset: %d | return size: %d", new Object[] { Integer.valueOf(((dxl)localObject1).EfV), Integer.valueOf(((dxm)localObject2).EfV), Integer.valueOf(((dxm)localObject2).ENR.size()) });
+            ad.d("MicroMsg.Wear.HttpContactServer", "request offset: %d | return offset: %d | return size: %d", new Object[] { Integer.valueOf(((edl)localObject1).FMu), Integer.valueOf(((edm)localObject2).FMu), Integer.valueOf(((edm)localObject2).GwV.size()) });
             if (paramArrayOfByte != null) {
               paramArrayOfByte.close();
             }
@@ -125,7 +125,7 @@ public final class c
         {
           try
           {
-            paramArrayOfByte = ((dxm)localObject2).toByteArray();
+            paramArrayOfByte = ((edm)localObject2).toByteArray();
             AppMethodBeat.o(30072);
             return paramArrayOfByte;
           }
@@ -135,7 +135,7 @@ public final class c
             return null;
           }
           paramArrayOfByte = paramArrayOfByte;
-          ac.printErrStackTrace("MicroMsg.Wear.HttpContactServer", paramArrayOfByte, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.Wear.HttpContactServer", paramArrayOfByte, "", new Object[0]);
           AppMethodBeat.o(30072);
           return null;
         }
@@ -143,17 +143,17 @@ public final class c
     }
     if (paramInt == 11009)
     {
-      com.tencent.mm.plugin.wear.model.c.a.Ua(7);
-      localObject1 = new dwo();
+      com.tencent.mm.plugin.wear.model.c.a.VS(7);
+      localObject1 = new eco();
       for (;;)
       {
         try
         {
-          ((dwo)localObject1).parseFrom(paramArrayOfByte);
-          paramArrayOfByte = new dwp();
-          az.ayM();
-          localObject2 = com.tencent.mm.model.c.awB().hs(null);
-          paramInt = ((dwo)localObject1).EfV;
+          ((eco)localObject1).parseFrom(paramArrayOfByte);
+          paramArrayOfByte = new ecp();
+          ba.aBQ();
+          localObject2 = com.tencent.mm.model.c.azp().hE(null);
+          paramInt = ((eco)localObject1).FMu;
           if ((localObject2 == null) || (!((Cursor)localObject2).moveToNext())) {
             break;
           }
@@ -166,24 +166,24 @@ public final class c
         }
         catch (IOException paramArrayOfByte)
         {
-          ac.printErrStackTrace("MicroMsg.Wear.HttpContactServer", paramArrayOfByte, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.Wear.HttpContactServer", paramArrayOfByte, "", new Object[0]);
           AppMethodBeat.o(30072);
           return null;
         }
-        az.ayM();
-        localObject3 = com.tencent.mm.model.c.awB().aNt((String)localObject3);
-        localdwi = new dwi();
-        localdwi.ndW = v.b((ai)localObject3);
-        localdwi.ncR = ((av)localObject3).field_username;
-        paramArrayOfByte.ENR.add(localdwi);
-        if (paramArrayOfByte.ENR.size() >= 5) {
-          paramArrayOfByte.ERy = ((Cursor)localObject2).moveToNext();
+        ba.aBQ();
+        localObject3 = com.tencent.mm.model.c.azp().Bf((String)localObject3);
+        localeci = new eci();
+        localeci.nEt = v.b((am)localObject3);
+        localeci.nDo = ((aw)localObject3).field_username;
+        paramArrayOfByte.GwV.add(localeci);
+        if (paramArrayOfByte.GwV.size() >= 5) {
+          paramArrayOfByte.GAQ = ((Cursor)localObject2).moveToNext();
         }
       }
       if (localObject2 != null) {
         ((Cursor)localObject2).close();
       }
-      paramArrayOfByte.EfV = (((dwo)localObject1).EfV + paramArrayOfByte.ENR.size());
+      paramArrayOfByte.FMu = (((eco)localObject1).FMu + paramArrayOfByte.GwV.size());
       try
       {
         paramArrayOfByte = paramArrayOfByte.toByteArray();
@@ -192,7 +192,7 @@ public final class c
       }
       catch (IOException paramArrayOfByte)
       {
-        ac.printErrStackTrace("MicroMsg.Wear.HttpContactServer", paramArrayOfByte, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Wear.HttpContactServer", paramArrayOfByte, "", new Object[0]);
         AppMethodBeat.o(30072);
         return null;
       }
@@ -203,7 +203,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.c
  * JD-Core Version:    0.7.0.1
  */

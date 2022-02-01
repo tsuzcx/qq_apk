@@ -4,13 +4,13 @@ import android.view.View;
 
 public final class c
 {
-  public final View hV;
-  public boolean hW = false;
-  public int hX = 0;
+  public final View jQ;
+  public boolean jR = false;
+  public int jS = 0;
   
   public c(b paramb)
   {
-    this.hV = ((View)paramb);
+    this.jQ = ((View)paramb);
   }
 }
 

@@ -1,46 +1,47 @@
 package org.apache.commons.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Array;
 import org.apache.commons.b.a.b;
 
 public final class a
 {
   public static final byte[] EMPTY_BYTE_ARRAY;
   public static final String[] EMPTY_STRING_ARRAY;
-  public static final short[] Knm;
-  public static final Object[] LYh = new Object[0];
-  public static final Class[] LYi = new Class[0];
-  public static final Long[] LYj;
-  public static final Integer[] LYk;
-  public static final Short[] LYl;
-  public static final Byte[] LYm;
-  public static final Double[] LYn;
-  public static final Float[] LYo;
-  public static final Boolean[] LYp = new Boolean[0];
-  public static final char[] LYq = new char[0];
-  public static final Character[] LYr = new Character[0];
-  public static final int[] bGB;
-  public static final long[] bGC;
-  public static final float[] bGD;
-  public static final double[] bGE;
-  public static final boolean[] bGF;
+  public static final short[] Mdk;
+  public static final Object[] NSG = new Object[0];
+  public static final Class[] NSH = new Class[0];
+  public static final Long[] NSI;
+  public static final Integer[] NSJ;
+  public static final Short[] NSK;
+  public static final Byte[] NSL;
+  public static final Double[] NSM;
+  public static final Float[] NSN;
+  public static final Boolean[] NSO = new Boolean[0];
+  public static final char[] NSP = new char[0];
+  public static final Character[] NSQ = new Character[0];
+  public static final int[] bQP;
+  public static final long[] bQQ;
+  public static final float[] bQR;
+  public static final double[] bQS;
+  public static final boolean[] bQT;
   
   static
   {
     EMPTY_STRING_ARRAY = new String[0];
-    bGC = new long[0];
-    LYj = new Long[0];
-    bGB = new int[0];
-    LYk = new Integer[0];
-    Knm = new short[0];
-    LYl = new Short[0];
+    bQQ = new long[0];
+    NSI = new Long[0];
+    bQP = new int[0];
+    NSJ = new Integer[0];
+    Mdk = new short[0];
+    NSK = new Short[0];
     EMPTY_BYTE_ARRAY = new byte[0];
-    LYm = new Byte[0];
-    bGE = new double[0];
-    LYn = new Double[0];
-    bGD = new float[0];
-    LYo = new Float[0];
-    bGF = new boolean[0];
+    NSL = new Byte[0];
+    bQS = new double[0];
+    NSM = new Double[0];
+    bQR = new float[0];
+    NSN = new Float[0];
+    bQT = new boolean[0];
   }
   
   public static boolean contains(int[] paramArrayOfInt, int paramInt)
@@ -112,6 +113,32 @@ public final class a
     return false;
   }
   
+  public static Object[] g(Object[] paramArrayOfObject, int paramInt)
+  {
+    AppMethodBeat.i(186985);
+    if (paramArrayOfObject == null)
+    {
+      AppMethodBeat.o(186985);
+      return null;
+    }
+    int i = paramInt;
+    if (paramInt > paramArrayOfObject.length) {
+      i = paramArrayOfObject.length;
+    }
+    paramInt = i - 1;
+    Object localObject = paramArrayOfObject.getClass().getComponentType();
+    if (paramInt <= 0)
+    {
+      paramArrayOfObject = (Object[])Array.newInstance((Class)localObject, 0);
+      AppMethodBeat.o(186985);
+      return paramArrayOfObject;
+    }
+    localObject = (Object[])Array.newInstance((Class)localObject, paramInt);
+    System.arraycopy(paramArrayOfObject, 1, localObject, 0, paramInt);
+    AppMethodBeat.o(186985);
+    return localObject;
+  }
+  
   public static String toString(Object paramObject)
   {
     AppMethodBeat.i(40692);
@@ -128,14 +155,14 @@ public final class a
       AppMethodBeat.o(40693);
       return paramString;
     }
-    paramObject = new org.apache.commons.b.a.a(paramObject, b.Mas).fX(paramObject).toString();
+    paramObject = new org.apache.commons.b.a.a(paramObject, b.NUS).gt(paramObject).toString();
     AppMethodBeat.o(40693);
     return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.b.a
  * JD-Core Version:    0.7.0.1
  */

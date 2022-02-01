@@ -5,17 +5,17 @@ import java.util.List;
 public abstract interface o
   extends t
 {
-  public abstract d aiF(int paramInt);
+  public abstract d alg(int paramInt);
   
   public abstract void f(d paramd);
   
-  public abstract o gaA();
+  public abstract List<?> grY();
   
-  public abstract List<?> gaz();
+  public abstract o grZ();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.h.o
  * JD-Core Version:    0.7.0.1
  */

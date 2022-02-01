@@ -9,8 +9,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
@@ -23,12 +23,12 @@ import java.io.File;
 public final class AppBrandMiniQBDownloadProxyUI
   extends MMActivity
 {
-  private static boolean mbV = false;
+  private static boolean mCd = false;
+  private a mCe = null;
+  private p mCf;
+  private volatile boolean mCg;
+  private Runnable mCh;
   private Handler mHandler;
-  private a mbW = null;
-  private p mbX;
-  private volatile boolean mbY;
-  private Runnable mbZ;
   
   public final int getLayoutId()
   {
@@ -37,30 +37,30 @@ public final class AppBrandMiniQBDownloadProxyUI
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(187028);
+    AppMethodBeat.i(188870);
     super.onCreate(paramBundle);
-    ac.i("MicroMsg.AppBrandMiniQBDownloadProxyUI", "onCreate");
-    r.b(getWindow());
-    ac.i("MicroMsg.AppBrandMiniQBDownloadProxyUI", "is foreground download");
+    ad.i("MicroMsg.AppBrandMiniQBDownloadProxyUI", "onCreate");
+    s.b(getWindow());
+    ad.i("MicroMsg.AppBrandMiniQBDownloadProxyUI", "is foreground download");
     paramBundle = getContext();
     getContext().getString(2131755906);
-    this.mbX = h.b(paramBundle, getContext().getString(2131755517), true, null);
-    if (this.mbX.getWindow() != null)
+    this.mCf = h.b(paramBundle, getContext().getString(2131755517), true, null);
+    if (this.mCf.getWindow() != null)
     {
-      paramBundle = this.mbX.getWindow().getAttributes();
+      paramBundle = this.mCf.getWindow().getAttributes();
       paramBundle.dimAmount = 0.0F;
-      this.mbX.getWindow().setAttributes(paramBundle);
+      this.mCf.getWindow().setAttributes(paramBundle);
     }
-    this.mbX.setOnCancelListener(new DialogInterface.OnCancelListener()
+    this.mCf.setOnCancelListener(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(187023);
-        ac.i("MicroMsg.AppBrandMiniQBDownloadProxyUI", "user cancel download");
+        AppMethodBeat.i(188865);
+        ad.i("MicroMsg.AppBrandMiniQBDownloadProxyUI", "user cancel download");
         paramAnonymousDialogInterface = new Intent();
         AppBrandMiniQBDownloadProxyUI.this.setResult(2, paramAnonymousDialogInterface);
         AppBrandMiniQBDownloadProxyUI.this.finish();
-        AppMethodBeat.o(187023);
+        AppMethodBeat.o(188865);
       }
     });
     paramBundle = TBSOneManager.getDefaultInstance(getContext());
@@ -69,65 +69,65 @@ public final class AppBrandMiniQBDownloadProxyUI
     {
       if (i == 0)
       {
-        ac.i("MicroMsg.AppBrandMiniQBDownloadProxyUI", "file component has already installed");
+        ad.i("MicroMsg.AppBrandMiniQBDownloadProxyUI", "file component has already installed");
         setResult(0, new Intent());
         finish();
       }
-      if (this.mbW == null) {
-        this.mbW = new a((byte)0);
+      if (this.mCe == null) {
+        this.mCe = new a((byte)0);
       }
       Bundle localBundle = new Bundle();
       localBundle.putBoolean("is_ignore_wifi_state", true);
       localBundle.putBoolean("is_ignore_frequency_limitation", true);
       localBundle.putBoolean("is_ignore_flow_control", true);
-      paramBundle.installComponent("file", localBundle, this.mbW);
-      this.mbY = true;
+      paramBundle.installComponent("file", localBundle, this.mCe);
+      this.mCg = true;
       this.mHandler = new Handler();
-      this.mbZ = new Runnable()
+      this.mCh = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(187022);
-          AppBrandMiniQBDownloadProxyUI.aWD();
+          AppMethodBeat.i(188864);
+          AppBrandMiniQBDownloadProxyUI.aZZ();
           Intent localIntent = new Intent();
           AppBrandMiniQBDownloadProxyUI.this.setResult(0, localIntent);
           AppBrandMiniQBDownloadProxyUI.this.finish();
-          AppMethodBeat.o(187022);
+          AppMethodBeat.o(188864);
         }
       };
-      this.mHandler.postDelayed(this.mbZ, 20000L);
-      AppMethodBeat.o(187028);
+      this.mHandler.postDelayed(this.mCh, 20000L);
+      AppMethodBeat.o(188870);
       return;
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(187030);
-    ac.i("MicroMsg.AppBrandMiniQBDownloadProxyUI", "onDestroy");
-    this.mbW = null;
-    if ((this.mHandler != null) && (this.mbZ != null)) {
-      this.mHandler.removeCallbacks(this.mbZ);
+    AppMethodBeat.i(188872);
+    ad.i("MicroMsg.AppBrandMiniQBDownloadProxyUI", "onDestroy");
+    this.mCe = null;
+    if ((this.mHandler != null) && (this.mCh != null)) {
+      this.mHandler.removeCallbacks(this.mCh);
     }
-    if (this.mbX != null)
+    if (this.mCf != null)
     {
-      this.mbX.dismiss();
-      this.mbX = null;
+      this.mCf.dismiss();
+      this.mCf = null;
     }
     super.onDestroy();
-    AppMethodBeat.o(187030);
+    AppMethodBeat.o(188872);
   }
   
   public final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(187029);
+    AppMethodBeat.i(188871);
     super.onNewIntent(paramIntent);
-    if ((mbV) || (this.mbY))
+    if ((mCd) || (this.mCg))
     {
       setResult(0, paramIntent);
       finish();
     }
-    AppMethodBeat.o(187029);
+    AppMethodBeat.o(188871);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -143,34 +143,34 @@ public final class AppBrandMiniQBDownloadProxyUI
     
     public final void onError(int paramInt, String paramString)
     {
-      AppMethodBeat.i(187026);
+      AppMethodBeat.i(188868);
       super.onError(paramInt, paramString);
-      ac.e("MicroMsg.AppBrandMiniQBDownloadProxyUI", "download miniqb fail, reason: %s", new Object[] { paramString });
+      ad.e("MicroMsg.AppBrandMiniQBDownloadProxyUI", "download miniqb fail, reason: %s", new Object[] { paramString });
       AppBrandMiniQBDownloadProxyUI.a(AppBrandMiniQBDownloadProxyUI.this, false);
       paramString = new Intent();
       AppBrandMiniQBDownloadProxyUI.this.setResult(0, paramString);
       AppBrandMiniQBDownloadProxyUI.this.finish();
-      AppMethodBeat.o(187026);
+      AppMethodBeat.o(188868);
     }
     
     public final void onProgressChanged(int paramInt1, final int paramInt2)
     {
-      AppMethodBeat.i(187025);
+      AppMethodBeat.i(188867);
       super.onProgressChanged(paramInt1, paramInt2);
-      ac.i("MicroMsg.AppBrandMiniQBDownloadProxyUI", "onDownloadProgress, percent = %d", new Object[] { Integer.valueOf(paramInt2) });
+      ad.i("MicroMsg.AppBrandMiniQBDownloadProxyUI", "onDownloadProgress, percent = %d", new Object[] { Integer.valueOf(paramInt2) });
       if (AppBrandMiniQBDownloadProxyUI.a(AppBrandMiniQBDownloadProxyUI.this) != null) {
-        ap.f(new Runnable()
+        aq.f(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(187024);
+            AppMethodBeat.i(188866);
             AppBrandMiniQBDownloadProxyUI.a(AppBrandMiniQBDownloadProxyUI.this, true);
             AppBrandMiniQBDownloadProxyUI.a(AppBrandMiniQBDownloadProxyUI.this).setMessage(AppBrandMiniQBDownloadProxyUI.this.getContext().getString(2131755518, new Object[] { String.valueOf(paramInt2) }));
-            AppMethodBeat.o(187024);
+            AppMethodBeat.o(188866);
           }
         });
       }
-      AppMethodBeat.o(187025);
+      AppMethodBeat.o(188867);
     }
   }
 }

@@ -8,10 +8,10 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.wallet_core.c.w;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
@@ -20,15 +20,15 @@ import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
 public class WalletLqtSimpleCheckPwdUI
   extends WalletBaseUI
 {
-  private w BeP;
-  private EditHintPasswdView tDZ;
+  private w CFe;
+  private EditHintPasswdView uGI;
   
   public void cleanUiData(int paramInt)
   {
     AppMethodBeat.i(69050);
     super.cleanUiData(paramInt);
-    if (this.tDZ != null) {
-      this.tDZ.dtH();
+    if (this.uGI != null) {
+      this.uGI.dEe();
     }
     AppMethodBeat.o(69050);
   }
@@ -47,7 +47,7 @@ public class WalletLqtSimpleCheckPwdUI
   {
     AppMethodBeat.i(69048);
     super.onCreate(paramBundle);
-    if (u.axL()) {}
+    if (u.aAB()) {}
     for (paramBundle = getString(2131765207);; paramBundle = getString(2131765205))
     {
       setMMTitle(paramBundle);
@@ -62,9 +62,9 @@ public class WalletLqtSimpleCheckPwdUI
         }
       });
       ((TextView)findViewById(2131301034)).setText(2131765203);
-      this.tDZ = ((EditHintPasswdView)findViewById(2131301026));
-      com.tencent.mm.wallet_core.ui.formview.a.a(this.tDZ);
-      this.tDZ.setOnInputValidListener(new EditHintPasswdView.a()
+      this.uGI = ((EditHintPasswdView)findViewById(2131301026));
+      com.tencent.mm.wallet_core.ui.formview.a.a(this.uGI);
+      this.uGI.setOnInputValidListener(new EditHintPasswdView.a()
       {
         public final void onInputValidChange(boolean paramAnonymousBoolean)
         {
@@ -77,7 +77,7 @@ public class WalletLqtSimpleCheckPwdUI
           AppMethodBeat.o(69047);
         }
       });
-      setEditFocusListener(this.tDZ, 0, false);
+      setEditFocusListener(this.uGI, 0, false);
       AppMethodBeat.o(69048);
       return;
     }
@@ -86,12 +86,12 @@ public class WalletLqtSimpleCheckPwdUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(69049);
-    ac.d("MicroMsg.WalletLqtSimpleCheckPwdUI", "scene end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ad.d("MicroMsg.WalletLqtSimpleCheckPwdUI", "scene end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramn instanceof w))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = this.tDZ.getText();
+        paramString = this.uGI.getText();
         paramn = new Intent();
         paramn.putExtra("lqt_enc_pwd", paramString);
         setResult(-1, paramn);
@@ -99,8 +99,8 @@ public class WalletLqtSimpleCheckPwdUI
         AppMethodBeat.o(69049);
         return true;
       }
-      if (this.tDZ != null) {
-        this.tDZ.dtH();
+      if (this.uGI != null) {
+        this.uGI.dEe();
       }
     }
     AppMethodBeat.o(69049);

@@ -1,16 +1,40 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Locale;
+import com.tencent.mm.plugin.appbrand.y.c;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
 
-public final class ao
-  extends Exception
+public class ao
+  extends c<an>
 {
-  public ao(String paramString)
+  public static final String[] hEf;
+  
+  static
   {
-    super(String.format(Locale.US, "%s not found", new Object[] { paramString }));
-    AppMethodBeat.i(146931);
-    AppMethodBeat.o(146931);
+    AppMethodBeat.i(90566);
+    hEf = new String[] { j.getCreateSQLs(an.hEe, "PushWxaPkgDecryptKeyTable") };
+    AppMethodBeat.o(90566);
+  }
+  
+  public ao(e parame)
+  {
+    super(parame, an.hEe, "PushWxaPkgDecryptKeyTable", an.INDEX_CREATE);
+  }
+  
+  public final an aK(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(90565);
+    an localan = new an();
+    localan.field_appId = paramString;
+    localan.field_appVersion = paramInt;
+    if (get(localan, new String[0]))
+    {
+      AppMethodBeat.o(90565);
+      return localan;
+    }
+    AppMethodBeat.o(90565);
+    return null;
   }
 }
 

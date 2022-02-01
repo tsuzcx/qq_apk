@@ -1,28 +1,29 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
-import android.graphics.Point;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsapi.y;
 import com.tencent.mm.plugin.appbrand.page.aa;
+import org.json.JSONObject;
 
-public abstract interface g
+public class g
+  extends y<aa>
 {
-  public abstract void a(aa paramaa, a parama);
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "initReady";
   
-  public abstract int biv();
-  
-  public abstract int biw();
-  
-  public abstract Point bix();
-  
-  public abstract i biy();
-  
-  public static abstract interface a
+  public String a(aa paramaa, JSONObject paramJSONObject)
   {
-    public abstract void dR(int paramInt1, int paramInt2);
+    AppMethodBeat.i(134879);
+    paramaa.Tn("initReady");
+    paramaa = e("ok", null);
+    AppMethodBeat.o(134879);
+    return paramaa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.n.g
  * JD-Core Version:    0.7.0.1
  */

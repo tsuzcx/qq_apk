@@ -9,15 +9,15 @@ import com.tencent.mm.hellhoundlib.b.b;
 public abstract class d
   extends RecyclerView.m
 {
-  public abstract void Xa();
+  public abstract void Zt();
   
   public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     b localb = new b();
-    localb.bb(paramRecyclerView);
-    localb.lS(paramInt1);
-    localb.lS(paramInt2);
-    a.b("com/tencent/mm/plugin/sns/ui/album/SnsAlbumScrollListener", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.aeE());
+    localb.bd(paramRecyclerView);
+    localb.mr(paramInt1);
+    localb.mr(paramInt2);
+    a.b("com/tencent/mm/plugin/sns/ui/album/SnsAlbumScrollListener", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahq());
     super.a(paramRecyclerView, paramInt1, paramInt2);
     a.a(this, "com/tencent/mm/plugin/sns/ui/album/SnsAlbumScrollListener", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
   }
@@ -25,20 +25,20 @@ public abstract class d
   public final void b(RecyclerView paramRecyclerView, int paramInt)
   {
     b localb = new b();
-    localb.bb(paramRecyclerView);
-    localb.lS(paramInt);
-    a.b("com/tencent/mm/plugin/sns/ui/album/SnsAlbumScrollListener", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
+    localb.bd(paramRecyclerView);
+    localb.mr(paramInt);
+    a.b("com/tencent/mm/plugin/sns/ui/album/SnsAlbumScrollListener", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahq());
     super.b(paramRecyclerView, paramInt);
     paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    if ((paramInt == 0) && (paramRecyclerView.jZ() == paramRecyclerView.getItemCount() - 1)) {
-      Xa();
+    if ((paramInt == 0) && (paramRecyclerView.kp() == paramRecyclerView.getItemCount() - 1)) {
+      Zt();
     }
     a.a(this, "com/tencent/mm/plugin/sns/ui/album/SnsAlbumScrollListener", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.album.d
  * JD-Core Version:    0.7.0.1
  */

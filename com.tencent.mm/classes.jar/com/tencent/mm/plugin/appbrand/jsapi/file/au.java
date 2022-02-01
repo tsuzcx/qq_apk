@@ -12,7 +12,7 @@ final class au
   final i.a a(c paramc, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(128907);
-    if (paramc.DH().If(paramString) == l.jsB) {}
+    if (paramc.Fg().Lx(paramString) == l.jMv) {}
     for (paramc = "ok";; paramc = String.format("fail no such file or directory \"%s\"", new Object[] { paramString }))
     {
       paramc = new i.a(paramc, new Object[0]);
@@ -23,7 +23,7 @@ final class au
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.au
  * JD-Core Version:    0.7.0.1
  */

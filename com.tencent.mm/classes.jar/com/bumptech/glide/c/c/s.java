@@ -12,13 +12,13 @@ import java.io.InputStream;
 public final class s<Data>
   implements n<Integer, Data>
 {
-  private final n<Uri, Data> aIO;
-  private final Resources aIP;
+  private final n<Uri, Data> aKF;
+  private final Resources aKG;
   
   public s(Resources paramResources, n<Uri, Data> paramn)
   {
-    this.aIP = paramResources;
-    this.aIO = paramn;
+    this.aKG = paramResources;
+    this.aKF = paramn;
   }
   
   private Uri a(Integer paramInteger)
@@ -26,7 +26,7 @@ public final class s<Data>
     AppMethodBeat.i(77299);
     try
     {
-      Uri localUri = Uri.parse("android.resource://" + this.aIP.getResourcePackageName(paramInteger.intValue()) + '/' + this.aIP.getResourceTypeName(paramInteger.intValue()) + '/' + this.aIP.getResourceEntryName(paramInteger.intValue()));
+      Uri localUri = Uri.parse("android.resource://" + this.aKG.getResourcePackageName(paramInteger.intValue()) + '/' + this.aKG.getResourceTypeName(paramInteger.intValue()) + '/' + this.aKG.getResourceEntryName(paramInteger.intValue()));
       AppMethodBeat.o(77299);
       return localUri;
     }
@@ -43,17 +43,17 @@ public final class s<Data>
   public static final class a
     implements o<Integer, AssetFileDescriptor>
   {
-    private final Resources aIP;
+    private final Resources aKG;
     
     public a(Resources paramResources)
     {
-      this.aIP = paramResources;
+      this.aKG = paramResources;
     }
     
     public final n<Integer, AssetFileDescriptor> a(r paramr)
     {
       AppMethodBeat.i(77295);
-      paramr = new s(this.aIP, paramr.b(Uri.class, AssetFileDescriptor.class));
+      paramr = new s(this.aKG, paramr.b(Uri.class, AssetFileDescriptor.class));
       AppMethodBeat.o(77295);
       return paramr;
     }
@@ -62,17 +62,17 @@ public final class s<Data>
   public static final class b
     implements o<Integer, ParcelFileDescriptor>
   {
-    private final Resources aIP;
+    private final Resources aKG;
     
     public b(Resources paramResources)
     {
-      this.aIP = paramResources;
+      this.aKG = paramResources;
     }
     
     public final n<Integer, ParcelFileDescriptor> a(r paramr)
     {
       AppMethodBeat.i(77296);
-      paramr = new s(this.aIP, paramr.b(Uri.class, ParcelFileDescriptor.class));
+      paramr = new s(this.aKG, paramr.b(Uri.class, ParcelFileDescriptor.class));
       AppMethodBeat.o(77296);
       return paramr;
     }
@@ -81,17 +81,17 @@ public final class s<Data>
   public static final class c
     implements o<Integer, InputStream>
   {
-    private final Resources aIP;
+    private final Resources aKG;
     
     public c(Resources paramResources)
     {
-      this.aIP = paramResources;
+      this.aKG = paramResources;
     }
     
     public final n<Integer, InputStream> a(r paramr)
     {
       AppMethodBeat.i(77297);
-      paramr = new s(this.aIP, paramr.b(Uri.class, InputStream.class));
+      paramr = new s(this.aKG, paramr.b(Uri.class, InputStream.class));
       AppMethodBeat.o(77297);
       return paramr;
     }
@@ -100,17 +100,17 @@ public final class s<Data>
   public static final class d
     implements o<Integer, Uri>
   {
-    private final Resources aIP;
+    private final Resources aKG;
     
     public d(Resources paramResources)
     {
-      this.aIP = paramResources;
+      this.aKG = paramResources;
     }
     
     public final n<Integer, Uri> a(r paramr)
     {
       AppMethodBeat.i(77298);
-      paramr = new s(this.aIP, v.oY());
+      paramr = new s(this.aKG, v.pq());
       AppMethodBeat.o(77298);
       return paramr;
     }

@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EmotionSummary
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String CoverUrl;
   public String ExptDesc;
@@ -50,16 +50,16 @@ public class EmotionSummary
       if (this.PackPrice != null) {
         paramVarArgs.d(6, this.PackPrice);
       }
-      paramVarArgs.aR(7, this.PackType);
-      paramVarArgs.aR(8, this.PackFlag);
+      paramVarArgs.aS(7, this.PackType);
+      paramVarArgs.aS(8, this.PackFlag);
       if (this.CoverUrl != null) {
         paramVarArgs.d(9, this.CoverUrl);
       }
-      paramVarArgs.aR(10, this.PackExpire);
+      paramVarArgs.aS(10, this.PackExpire);
       if (this.PackCopyright != null) {
         paramVarArgs.d(11, this.PackCopyright);
       }
-      paramVarArgs.aR(12, this.Timestamp);
+      paramVarArgs.aS(12, this.Timestamp);
       if (this.PanelUrl != null) {
         paramVarArgs.d(13, this.PanelUrl);
       }
@@ -115,17 +115,17 @@ public class EmotionSummary
       if (this.PackPrice != null) {
         paramInt = i + f.a.a.b.b.a.e(6, this.PackPrice);
       }
-      i = paramInt + f.a.a.b.b.a.bx(7, this.PackType) + f.a.a.b.b.a.bx(8, this.PackFlag);
+      i = paramInt + f.a.a.b.b.a.bz(7, this.PackType) + f.a.a.b.b.a.bz(8, this.PackFlag);
       paramInt = i;
       if (this.CoverUrl != null) {
         paramInt = i + f.a.a.b.b.a.e(9, this.CoverUrl);
       }
-      i = paramInt + f.a.a.b.b.a.bx(10, this.PackExpire);
+      i = paramInt + f.a.a.b.b.a.bz(10, this.PackExpire);
       paramInt = i;
       if (this.PackCopyright != null) {
         paramInt = i + f.a.a.b.b.a.e(11, this.PackCopyright);
       }
-      i = paramInt + f.a.a.b.b.a.bx(12, this.Timestamp);
+      i = paramInt + f.a.a.b.b.a.bz(12, this.Timestamp);
       paramInt = i;
       if (this.PanelUrl != null) {
         paramInt = i + f.a.a.b.b.a.e(13, this.PanelUrl);
@@ -163,9 +163,9 @@ public class EmotionSummary
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(104781);
@@ -181,83 +181,83 @@ public class EmotionSummary
           AppMethodBeat.o(104781);
           return -1;
         case 1: 
-          localEmotionSummary.ProductID = locala.LVo.readString();
+          localEmotionSummary.ProductID = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 2: 
-          localEmotionSummary.IconUrl = locala.LVo.readString();
+          localEmotionSummary.IconUrl = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 3: 
-          localEmotionSummary.PackName = locala.LVo.readString();
+          localEmotionSummary.PackName = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 4: 
-          localEmotionSummary.PackDesc = locala.LVo.readString();
+          localEmotionSummary.PackDesc = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 5: 
-          localEmotionSummary.PackAuthInfo = locala.LVo.readString();
+          localEmotionSummary.PackAuthInfo = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 6: 
-          localEmotionSummary.PackPrice = locala.LVo.readString();
+          localEmotionSummary.PackPrice = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 7: 
-          localEmotionSummary.PackType = locala.LVo.xF();
+          localEmotionSummary.PackType = locala.NPN.zc();
           AppMethodBeat.o(104781);
           return 0;
         case 8: 
-          localEmotionSummary.PackFlag = locala.LVo.xF();
+          localEmotionSummary.PackFlag = locala.NPN.zc();
           AppMethodBeat.o(104781);
           return 0;
         case 9: 
-          localEmotionSummary.CoverUrl = locala.LVo.readString();
+          localEmotionSummary.CoverUrl = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 10: 
-          localEmotionSummary.PackExpire = locala.LVo.xF();
+          localEmotionSummary.PackExpire = locala.NPN.zc();
           AppMethodBeat.o(104781);
           return 0;
         case 11: 
-          localEmotionSummary.PackCopyright = locala.LVo.readString();
+          localEmotionSummary.PackCopyright = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 12: 
-          localEmotionSummary.Timestamp = locala.LVo.xF();
+          localEmotionSummary.Timestamp = locala.NPN.zc();
           AppMethodBeat.o(104781);
           return 0;
         case 13: 
-          localEmotionSummary.PanelUrl = locala.LVo.readString();
+          localEmotionSummary.PanelUrl = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 14: 
-          localEmotionSummary.PriceNum = locala.LVo.readString();
+          localEmotionSummary.PriceNum = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 15: 
-          localEmotionSummary.PriceType = locala.LVo.readString();
+          localEmotionSummary.PriceType = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 16: 
-          localEmotionSummary.SendInfo = locala.LVo.readString();
+          localEmotionSummary.SendInfo = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 17: 
-          localEmotionSummary.TimeLimitStr = locala.LVo.readString();
+          localEmotionSummary.TimeLimitStr = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 18: 
-          localEmotionSummary.Introduce = locala.LVo.readString();
+          localEmotionSummary.Introduce = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 19: 
-          localEmotionSummary.TagUri = locala.LVo.readString();
+          localEmotionSummary.TagUri = locala.NPN.readString();
           AppMethodBeat.o(104781);
           return 0;
         }
-        localEmotionSummary.ExptDesc = locala.LVo.readString();
+        localEmotionSummary.ExptDesc = locala.NPN.readString();
         AppMethodBeat.o(104781);
         return 0;
       }

@@ -16,242 +16,262 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.live.b.f.b;
 import com.tencent.mm.live.b.i;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.ap;
-import d.g.b.k;
-import d.y;
+import com.tencent.mm.ui.aq;
+import com.tencent.mm.ui.ar;
+import d.g.b.p;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/plugin/LiveGuestRightPanelPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "fetcherListener", "Lkotlin/Function0;", "", "likeBtn", "Landroid/widget/ImageView;", "likeBtnClickArea", "Landroid/widget/RelativeLayout;", "likeCount", "", "likeCountTv", "Landroid/widget/TextView;", "likeTooMuch", "", "liveVisitorMicPlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorMicPlugin;", "needPostLike", "vibrator", "", "kotlin.jvm.PlatformType", "checkBtnLayout", "isWaitingMic", "mount", "onBackPress", "onClick", "v", "Landroid/view/View;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setVisible", "visible", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "Companion", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveGuestRightPanelPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "fetcherListener", "Lkotlin/Function0;", "", "likeBtn", "Landroid/widget/ImageView;", "likeBtnClickArea", "Landroid/widget/RelativeLayout;", "likeCount", "", "likeCountTv", "Landroid/widget/TextView;", "likeTooMuch", "", "liveVisitorMicPlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorMicPlugin;", "needPostLike", "vibrator", "", "kotlin.jvm.PlatformType", "checkBtnLayout", "isWaitingMic", "mount", "onBackPress", "onClick", "v", "Landroid/view/View;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setVisible", "visible", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "Companion", "plugin-logic_release"})
 public final class v
   extends a
-  implements View.OnClickListener, com.tencent.mm.ak.g
+  implements View.OnClickListener, f
 {
-  public static final v.a gBa;
-  public final bi gAU;
-  private final ImageView gAV;
-  private final RelativeLayout gAW;
-  private boolean gAX;
-  private final Object gAY;
-  private final d.g.a.a<y> gAZ;
-  private final TextView gyR;
-  private final b gzb;
+  public static final v.a gUK;
+  private final TextView gSC;
+  private final b gSM;
+  public final bi gUE;
+  private final ImageView gUF;
+  private final RelativeLayout gUG;
+  private boolean gUH;
+  private final Object gUI;
+  private final d.g.a.a<z> gUJ;
   private int likeCount;
   
   static
   {
-    AppMethodBeat.i(190153);
-    gBa = new v.a((byte)0);
-    AppMethodBeat.o(190153);
+    AppMethodBeat.i(212442);
+    gUK = new v.a((byte)0);
+    AppMethodBeat.o(212442);
   }
   
   public v(final ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(190152);
-    this.gzb = paramb;
+    AppMethodBeat.i(212441);
+    this.gSM = paramb;
     paramb = paramViewGroup.findViewById(2131307850);
-    k.g(paramb, "root.findViewById(R.id.live_visitor_mic_parent)");
-    this.gAU = new bi((ViewGroup)paramb, this.gzb);
+    p.g(paramb, "root.findViewById(R.id.live_visitor_mic_parent)");
+    this.gUE = new bi((ViewGroup)paramb, this.gSM);
     paramb = paramViewGroup.findViewById(2131307762);
-    k.g(paramb, "root.findViewById(R.id.live_right_panel_like)");
-    this.gAV = ((ImageView)paramb);
+    p.g(paramb, "root.findViewById(R.id.live_right_panel_like)");
+    this.gUF = ((ImageView)paramb);
     paramb = paramViewGroup.findViewById(2131307763);
-    k.g(paramb, "root.findViewById(R.id.l…ht_panel_like_click_area)");
-    this.gAW = ((RelativeLayout)paramb);
+    p.g(paramb, "root.findViewById(R.id.l…ht_panel_like_click_area)");
+    this.gUG = ((RelativeLayout)paramb);
     paramb = paramViewGroup.findViewById(2131307764);
-    k.g(paramb, "root.findViewById(R.id.l…ight_panel_like_count_tv)");
-    this.gyR = ((TextView)paramb);
-    this.gAX = true;
-    this.gAY = paramViewGroup.getContext().getSystemService("vibrator");
-    this.gAZ = ((d.g.a.a)new b(this, paramViewGroup));
-    paramb = this.gAV;
+    p.g(paramb, "root.findViewById(R.id.l…ight_panel_like_count_tv)");
+    this.gSC = ((TextView)paramb);
+    this.gUH = true;
+    this.gUI = paramViewGroup.getContext().getSystemService("vibrator");
+    this.gUJ = ((d.g.a.a)new b(this, paramViewGroup));
+    paramb = this.gUF;
     Context localContext = paramViewGroup.getContext();
-    k.g(localContext, "root.context");
-    paramb.setImageDrawable(am.e(localContext.getResources().getDrawable(2131690419), -1));
-    this.gAW.setOnTouchListener((View.OnTouchListener)new View.OnTouchListener()
+    p.g(localContext, "root.context");
+    paramb.setImageDrawable(ao.e(localContext.getResources().getDrawable(2131690419), -1));
+    this.gUG.setOnTouchListener((View.OnTouchListener)new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(190140);
-        k.g(paramAnonymousMotionEvent, "event");
+        AppMethodBeat.i(212429);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        p.g(paramAnonymousMotionEvent, "event");
         if (paramAnonymousMotionEvent.getActionMasked() == 0)
         {
           paramAnonymousView = new Bundle();
           paramAnonymousMotionEvent = new int[2];
-          MotionEvent tmp31_30 = paramAnonymousMotionEvent;
-          tmp31_30[0] = 0;
-          MotionEvent tmp35_31 = tmp31_30;
-          tmp35_31[1] = 0;
-          tmp35_31;
-          v.c(this.gBb).getLocationOnScreen(paramAnonymousMotionEvent);
+          MotionEvent tmp69_68 = paramAnonymousMotionEvent;
+          tmp69_68[0] = 0;
+          MotionEvent tmp73_69 = tmp69_68;
+          tmp73_69[1] = 0;
+          tmp73_69;
+          v.c(this.gUL).getLocationOnScreen(paramAnonymousMotionEvent);
           int i = paramAnonymousMotionEvent[0];
-          int j = v.c(this.gBb).getWidth() / 2;
-          f.b localb = f.b.gtm;
-          paramAnonymousView.putInt("PARAM_LIVE_LIKE_CONFETTI_X", i + j - f.b.akk() / 2);
-          paramAnonymousView.putInt("PARAM_LIVE_LIKE_CONFETTI_Y", paramAnonymousMotionEvent[1] - ao.fromDPToPix(paramViewGroup.getContext(), 16));
-          v.d(this.gBb).a(b.c.gyi, paramAnonymousView);
-          paramAnonymousView = this.gBb;
+          int j = v.c(this.gUL).getWidth() / 2;
+          localObject = f.b.gMX;
+          paramAnonymousView.putInt("PARAM_LIVE_LIKE_CONFETTI_X", i + j - f.b.amW() / 2);
+          paramAnonymousView.putInt("PARAM_LIVE_LIKE_CONFETTI_Y", paramAnonymousMotionEvent[1] - aq.fromDPToPix(paramViewGroup.getContext(), 16));
+          v.d(this.gUL).a(b.c.gRT, paramAnonymousView);
+          paramAnonymousView = this.gUL;
           v.a(paramAnonymousView, v.e(paramAnonymousView) + 1);
-          if (v.f(this.gBb))
+          if (v.f(this.gUL))
           {
-            paramAnonymousView = i.gvw;
-            i.nh(v.e(this.gBb));
-            v.g(this.gBb);
-            v.a(this.gBb, 0);
+            paramAnonymousView = i.gPh;
+            i.nG(v.e(this.gUL));
+            v.g(this.gUL);
+            v.a(this.gUL, 0);
           }
-          if ((v.h(this.gBb) instanceof Vibrator)) {
-            ((Vibrator)v.h(this.gBb)).vibrate(10L);
+          if ((v.h(this.gUL) instanceof Vibrator)) {
+            ((Vibrator)v.h(this.gUL)).vibrate(10L);
           }
         }
-        AppMethodBeat.o(190140);
+        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(212429);
         return true;
       }
     });
-    paramb = com.tencent.mm.live.b.c.gtd;
-    com.tencent.mm.live.b.c.d(name(), this.gAZ);
+    paramb = com.tencent.mm.live.b.c.gMO;
+    com.tencent.mm.live.b.c.d(name(), this.gUJ);
     if (paramViewGroup.findViewById(2131298772) != null)
     {
       paramb = new LinearLayout.LayoutParams(-1, -1);
-      paramb.bottomMargin = ap.ej(paramViewGroup.getContext());
+      paramb.bottomMargin = ar.ej(paramViewGroup.getContext());
       paramViewGroup = paramViewGroup.findViewById(2131298772);
-      k.g(paramViewGroup, "root.findViewById<Linear…>(R.id.content_root_view)");
+      p.g(paramViewGroup, "root.findViewById<Linear…>(R.id.content_root_view)");
       ((LinearLayout)paramViewGroup).setLayoutParams((ViewGroup.LayoutParams)paramb);
     }
-    AppMethodBeat.o(190152);
+    AppMethodBeat.o(212441);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(190148);
-    k.h(paramc, "status");
+    AppMethodBeat.i(212437);
+    p.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (w.cfA[paramc.ordinal()])
+    switch (w.cpQ[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(190148);
+      AppMethodBeat.o(212437);
       return;
-      nj(8);
-      AppMethodBeat.o(190148);
+      nI(8);
+      AppMethodBeat.o(212437);
       return;
-      nj(0);
-      this.gnb.post((Runnable)new d(this));
-      AppMethodBeat.o(190148);
+      nI(0);
+      this.gGK.post((Runnable)new d(this));
+      AppMethodBeat.o(212437);
       return;
       if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true))
       {
-        nj(8);
-        AppMethodBeat.o(190148);
+        nI(8);
+        AppMethodBeat.o(212437);
         return;
       }
-      nj(0);
+      nI(0);
     }
   }
   
-  public final void alM()
+  public final void aoA()
   {
-    AppMethodBeat.i(190149);
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.agQ();
-    k.g(localb, "MMKernel.network()");
-    localb.agi().a(3957, (com.tencent.mm.ak.g)this);
-    AppMethodBeat.o(190149);
+    AppMethodBeat.i(212439);
+    com.tencent.mm.kernel.b localb = g.ajB();
+    p.g(localb, "MMKernel.network()");
+    localb.aiU().b(3957, (f)this);
+    AppMethodBeat.o(212439);
   }
   
-  public final void alN()
-  {
-    AppMethodBeat.i(190150);
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.agQ();
-    k.g(localb, "MMKernel.network()");
-    localb.agi().b(3957, (com.tencent.mm.ak.g)this);
-    AppMethodBeat.o(190150);
-  }
-  
-  public final boolean alO()
+  public final boolean aoB()
   {
     return false;
   }
   
-  public final void nj(int paramInt)
+  public final void aoz()
   {
-    AppMethodBeat.i(190147);
-    this.gnb.setVisibility(paramInt);
-    AppMethodBeat.o(190147);
+    AppMethodBeat.i(212438);
+    com.tencent.mm.kernel.b localb = g.ajB();
+    p.g(localb, "MMKernel.network()");
+    localb.aiU().a(3957, (f)this);
+    AppMethodBeat.o(212438);
+  }
+  
+  public final void nI(int paramInt)
+  {
+    AppMethodBeat.i(212436);
+    this.gGK.setVisibility(paramInt);
+    AppMethodBeat.o(212436);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(190146);
-    if (paramView != null) {}
-    for (paramView = Integer.valueOf(paramView.getId()); paramView == null; paramView = null)
+    AppMethodBeat.i(212435);
+    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+    if (paramView != null)
     {
-      AppMethodBeat.o(190146);
-      return;
-    }
-    if (paramView.intValue() == 2131307763)
-    {
-      paramView = new Bundle();
-      Object localObject = new int[2];
-      Object tmp58_56 = localObject;
-      tmp58_56[0] = 0;
-      Object tmp62_58 = tmp58_56;
-      tmp62_58[1] = 0;
-      tmp62_58;
-      this.gAW.getLocationOnScreen((int[])localObject);
-      int i = localObject[0];
-      int j = this.gAW.getWidth() / 2;
-      f.b localb = f.b.gtm;
-      paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_X", i + j - f.b.akk() / 2);
-      i = localObject[1];
-      j = ao.fromDPToPix(this.gnb.getContext(), 16);
-      localObject = f.b.gtm;
-      paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_Y", i - j - f.b.akk());
-      this.gzb.a(b.c.gyi, paramView);
-      this.likeCount += 1;
-      if (this.gAX)
-      {
-        paramView = i.gvw;
-        i.nh(this.likeCount);
-        this.gAX = false;
-        this.likeCount = 0;
+      paramView = Integer.valueOf(paramView.getId());
+      if (paramView != null) {
+        break label86;
       }
     }
-    AppMethodBeat.o(190146);
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveGuestRightPanelPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(212435);
+      return;
+      paramView = null;
+      break;
+      label86:
+      if (paramView.intValue() == 2131307763)
+      {
+        paramView = new Bundle();
+        localObject = new int[2];
+        tmp110_108 = localObject;
+        tmp110_108[0] = 0;
+        tmp114_110 = tmp110_108;
+        tmp114_110[1] = 0;
+        tmp114_110;
+        this.gUG.getLocationOnScreen((int[])localObject);
+        int i = localObject[0];
+        int j = this.gUG.getWidth() / 2;
+        f.b localb = f.b.gMX;
+        paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_X", i + j - f.b.amW() / 2);
+        i = localObject[1];
+        j = aq.fromDPToPix(this.gGK.getContext(), 16);
+        localObject = f.b.gMX;
+        paramView.putInt("PARAM_LIVE_LIKE_CONFETTI_Y", i - j - f.b.amW());
+        this.gSM.a(b.c.gRT, paramView);
+        this.likeCount += 1;
+        if (this.gUH)
+        {
+          paramView = i.gPh;
+          i.nG(this.likeCount);
+          this.gUH = false;
+          this.likeCount = 0;
+        }
+      }
+    }
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(190151);
+    AppMethodBeat.i(212440);
     if ((paramn instanceof com.tencent.mm.live.b.a.q))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        com.tencent.mm.ac.c.g((d.g.a.a)new c(this));
+        com.tencent.mm.ad.c.g((d.g.a.a)new c(this));
       }
-      ac.i("MicroMsg.LiveGuestRightPanelPlugin", "onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " likeCount:" + this.likeCount);
+      ad.i("MicroMsg.LiveGuestRightPanelPlugin", "onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " likeCount:" + this.likeCount);
       if (this.likeCount > 0)
       {
-        paramString = i.gvw;
-        i.nh(this.likeCount);
-        this.gAX = false;
+        paramString = i.gPh;
+        i.nG(this.likeCount);
+        this.gUH = false;
         this.likeCount = 0;
-        AppMethodBeat.o(190151);
+        AppMethodBeat.o(212440);
         return;
       }
-      this.gAX = true;
+      this.gUH = true;
       this.likeCount = 0;
     }
-    AppMethodBeat.o(190151);
+    AppMethodBeat.o(212440);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class b
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends d.g.b.q
+    implements d.g.a.a<z>
   {
     b(v paramv, ViewGroup paramViewGroup)
     {
@@ -259,10 +279,10 @@ public final class v
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class c
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends d.g.b.q
+    implements d.g.a.a<z>
   {
     c(v paramv)
     {
@@ -270,7 +290,7 @@ public final class v
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -278,9 +298,9 @@ public final class v
     
     public final void run()
     {
-      AppMethodBeat.i(190145);
-      v.a(this.gBb);
-      AppMethodBeat.o(190145);
+      AppMethodBeat.i(212434);
+      v.a(this.gUL);
+      AppMethodBeat.o(212434);
     }
   }
 }

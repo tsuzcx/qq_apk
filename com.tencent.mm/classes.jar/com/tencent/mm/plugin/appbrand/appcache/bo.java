@@ -1,29 +1,17 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
+import com.tencent.mm.protocal.protobuf.blq;
 
-public class bo
-  extends a
+public final class bo
+  implements com.tencent.mm.plugin.appbrand.widget.a.a
 {
-  final bh.a jny;
-  final int pkgVersion;
-  
-  public bo(String paramString1, String paramString2, int paramInt1, int paramInt2, bh.a parama)
+  public final com.tencent.mm.al.a<blq> a(String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    super(str1, str2 + String.format("_%d_%d.wxapkg.zstd", new Object[] { Integer.valueOf(paramString2.hashCode()), Integer.valueOf(paramInt1) }), paramString1, paramString2, paramInt1, paramInt2);
-    AppMethodBeat.i(90665);
-    this.pkgVersion = paramInt1;
-    this.jny = parama;
-    AppMethodBeat.o(90665);
-  }
-  
-  public final String aXs()
-  {
-    AppMethodBeat.i(90666);
-    String str = ay.aJ(this.appId, this.pkgVersion);
-    AppMethodBeat.o(90666);
-    return str;
+    AppMethodBeat.i(188016);
+    paramString1 = new h(paramString1, paramInt1, paramString2, paramInt2, (byte)0);
+    AppMethodBeat.o(188016);
+    return paramString1;
   }
 }
 

@@ -43,12 +43,12 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public Map<String, com.tencent.mm.plugin.appbrand.canvas.action.d> jza;
+  public Map<String, com.tencent.mm.plugin.appbrand.canvas.action.d> jSX;
   
   public c()
   {
     AppMethodBeat.i(144845);
-    this.jza = new HashMap();
+    this.jSX = new HashMap();
     a(new ae());
     a(new q());
     a(new af());
@@ -91,7 +91,7 @@ public final class c
   private void a(com.tencent.mm.plugin.appbrand.canvas.action.d paramd)
   {
     AppMethodBeat.i(144847);
-    this.jza.put(paramd.getMethod(), paramd);
+    this.jSX.put(paramd.getMethod(), paramd);
     AppMethodBeat.o(144847);
   }
   
@@ -100,7 +100,7 @@ public final class c
     AppMethodBeat.i(144846);
     Object localObject = paramJSONObject.optString("method");
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    localObject = (com.tencent.mm.plugin.appbrand.canvas.action.d)this.jza.get(localObject);
+    localObject = (com.tencent.mm.plugin.appbrand.canvas.action.d)this.jSX.get(localObject);
     if (localObject == null)
     {
       AppMethodBeat.o(144846);

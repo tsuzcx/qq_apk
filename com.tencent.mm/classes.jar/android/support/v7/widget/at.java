@@ -9,29 +9,29 @@ import android.widget.Scroller;
 public abstract class at
   extends RecyclerView.k
 {
-  RecyclerView alu;
-  private final RecyclerView.m aqP = new RecyclerView.m()
+  RecyclerView anl;
+  private final RecyclerView.m asH = new RecyclerView.m()
   {
-    boolean auU = false;
+    boolean awM = false;
     
     public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
     {
       if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
-        this.auU = true;
+        this.awM = true;
       }
     }
     
     public final void b(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
     {
       super.b(paramAnonymousRecyclerView, paramAnonymousInt);
-      if ((paramAnonymousInt == 0) && (this.auU))
+      if ((paramAnonymousInt == 0) && (this.awM))
       {
-        this.auU = false;
-        at.this.md();
+        this.awM = false;
+        at.this.mv();
       }
     }
   };
-  private Scroller auT;
+  private Scroller awL;
   
   public abstract int a(RecyclerView.i parami, int paramInt1, int paramInt2);
   
@@ -39,16 +39,16 @@ public abstract class at
   
   public abstract int[] a(RecyclerView.i parami, View paramView);
   
-  public final boolean aA(int paramInt1, int paramInt2)
+  public final boolean aB(int paramInt1, int paramInt2)
   {
-    RecyclerView.i locali = this.alu.getLayoutManager();
+    RecyclerView.i locali = this.anl.getLayoutManager();
     if (locali == null) {}
     for (;;)
     {
       return false;
-      if (this.alu.getAdapter() != null)
+      if (this.anl.getAdapter() != null)
       {
-        int i = this.alu.getMinFlingVelocity();
+        int i = this.anl.getMinFlingVelocity();
         if ((Math.abs(paramInt2) > i) || (Math.abs(paramInt1) > i))
         {
           if (!(locali instanceof RecyclerView.s.b)) {
@@ -71,7 +71,7 @@ public abstract class at
               }
               else
               {
-                locals.arZ = paramInt1;
+                locals.atQ = paramInt1;
                 locali.a(locals);
                 paramInt1 = 1;
               }
@@ -82,10 +82,10 @@ public abstract class at
     }
   }
   
-  public final int[] aH(int paramInt1, int paramInt2)
+  public final int[] aI(int paramInt1, int paramInt2)
   {
-    this.auT.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
-    return new int[] { this.auT.getFinalX(), this.auT.getFinalY() };
+    this.awL.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
+    return new int[] { this.awL.getFinalX(), this.awL.getFinalY() };
   }
   
   @Deprecated
@@ -94,7 +94,7 @@ public abstract class at
     if (!(parami instanceof RecyclerView.s.b)) {
       return null;
     }
-    new ae(this.alu.getContext())
+    new ae(this.anl.getContext())
     {
       protected final float a(DisplayMetrics paramAnonymousDisplayMetrics)
       {
@@ -103,19 +103,19 @@ public abstract class at
       
       protected final void a(View paramAnonymousView, RecyclerView.t paramAnonymoust, RecyclerView.s.a paramAnonymousa)
       {
-        if (at.this.alu == null) {}
+        if (at.this.anl == null) {}
         int i;
         int j;
         int k;
         do
         {
           return;
-          paramAnonymousView = at.this.a(at.this.alu.getLayoutManager(), paramAnonymousView);
+          paramAnonymousView = at.this.a(at.this.anl.getLayoutManager(), paramAnonymousView);
           i = paramAnonymousView[0];
           j = paramAnonymousView[1];
           k = cd(Math.max(Math.abs(i), Math.abs(j)));
         } while (k <= 0);
-        paramAnonymousa.a(i, j, k, this.TN);
+        paramAnonymousa.a(i, j, k, this.VD);
       }
     };
   }
@@ -127,29 +127,29 @@ public abstract class at
   
   public void j(RecyclerView paramRecyclerView)
   {
-    if (this.alu == paramRecyclerView) {}
+    if (this.anl == paramRecyclerView) {}
     do
     {
       return;
-      if (this.alu != null)
+      if (this.anl != null)
       {
-        this.alu.b(this.aqP);
-        this.alu.setOnFlingListener(null);
+        this.anl.b(this.asH);
+        this.anl.setOnFlingListener(null);
       }
-      this.alu = paramRecyclerView;
-    } while (this.alu == null);
-    if (this.alu.getOnFlingListener() != null) {
+      this.anl = paramRecyclerView;
+    } while (this.anl == null);
+    if (this.anl.getOnFlingListener() != null) {
       throw new IllegalStateException("An instance of OnFlingListener already set.");
     }
-    this.alu.a(this.aqP);
-    this.alu.setOnFlingListener(this);
-    this.auT = new Scroller(this.alu.getContext(), new DecelerateInterpolator());
-    md();
+    this.anl.a(this.asH);
+    this.anl.setOnFlingListener(this);
+    this.awL = new Scroller(this.anl.getContext(), new DecelerateInterpolator());
+    mv();
   }
   
-  final void md()
+  final void mv()
   {
-    if (this.alu == null) {}
+    if (this.anl == null) {}
     Object localObject;
     do
     {
@@ -159,13 +159,13 @@ public abstract class at
         do
         {
           return;
-          localObject = this.alu.getLayoutManager();
+          localObject = this.anl.getLayoutManager();
         } while (localObject == null);
         localView = a((RecyclerView.i)localObject);
       } while (localView == null);
       localObject = a((RecyclerView.i)localObject, localView);
     } while ((localObject[0] == 0) && (localObject[1] == 0));
-    this.alu.a(localObject[0], localObject[1], null);
+    this.anl.a(localObject[0], localObject[1], null);
   }
 }
 

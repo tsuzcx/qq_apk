@@ -4,11 +4,11 @@ import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class f
 {
-  public static boolean dt(View paramView)
+  public static boolean dv(View paramView)
   {
     AppMethodBeat.i(121658);
     if (paramView == null)
@@ -38,7 +38,7 @@ public final class f
     {
       for (;;)
       {
-        ac.e("MicroMsg.InputMethodHelper", "hide VKB(View) exception %s", new Object[] { paramView });
+        ad.e("MicroMsg.InputMethodHelper", "hide VKB(View) exception %s", new Object[] { paramView });
         boolean bool = false;
       }
     }
@@ -46,7 +46,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.f
  * JD-Core Version:    0.7.0.1
  */

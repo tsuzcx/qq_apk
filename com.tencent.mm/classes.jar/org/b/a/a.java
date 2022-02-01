@@ -8,15 +8,15 @@ import org.b.g.d;
 
 public final class a
 {
-  public String MaX;
-  public String MaY;
-  public String MaZ = "oob";
-  public org.b.a.a.a Mba;
-  public h Mbb = h.Mbq;
-  public OutputStream Mbc = null;
+  public String NVZ;
+  public String NWa;
+  public String NWb = "oob";
+  public org.b.a.a.a NWc;
+  public h NWd = h.NWs;
+  public OutputStream NWe = null;
   public String scope;
   
-  public static org.b.a.a.a bF(Class<? extends org.b.a.a.a> paramClass)
+  public static org.b.a.a.a bH(Class<? extends org.b.a.a.a> paramClass)
   {
     AppMethodBeat.i(40502);
     d.j(paramClass, "Api class cannot be null");

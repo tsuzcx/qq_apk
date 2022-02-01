@@ -18,11 +18,11 @@ public class TVThumbPreference
   extends Preference
   implements u.a
 {
-  f lZC;
-  private ImageView xBY;
-  private ImageView xBZ;
-  private ImageView xCa;
-  List<String> xCb;
+  f mzx;
+  private ImageView yQI;
+  private ImageView yQJ;
+  private ImageView yQK;
+  List<String> yQL;
   
   public TVThumbPreference(Context paramContext)
   {
@@ -38,7 +38,7 @@ public class TVThumbPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(28608);
-    this.xCb = null;
+    this.yQL = null;
     setLayoutResource(2131495812);
     setWidgetLayoutResource(0);
     u.a(this);
@@ -53,9 +53,9 @@ public class TVThumbPreference
       AppMethodBeat.o(28611);
       return;
     }
-    if ((this.xBY != null) && (this.xBY.getTag() != null) && (paramString.equals((String)this.xBY.getTag())))
+    if ((this.yQI != null) && (this.yQI.getTag() != null) && (paramString.equals((String)this.yQI.getTag())))
     {
-      this.xBY.post(new Runnable()
+      this.yQI.post(new Runnable()
       {
         public final void run()
         {
@@ -70,9 +70,9 @@ public class TVThumbPreference
       AppMethodBeat.o(28611);
       return;
     }
-    if ((this.xBZ != null) && (this.xBZ.getTag() != null) && (paramString.equals((String)this.xBZ.getTag())))
+    if ((this.yQJ != null) && (this.yQJ.getTag() != null) && (paramString.equals((String)this.yQJ.getTag())))
     {
-      this.xBZ.post(new Runnable()
+      this.yQJ.post(new Runnable()
       {
         public final void run()
         {
@@ -87,8 +87,8 @@ public class TVThumbPreference
       AppMethodBeat.o(28611);
       return;
     }
-    if ((this.xCa != null) && (this.xCa.getTag() != null) && (paramString.equals((String)this.xCa.getTag()))) {
-      this.xCa.post(new Runnable()
+    if ((this.yQK != null) && (this.yQK.getTag() != null) && (paramString.equals((String)this.yQK.getTag()))) {
+      this.yQK.post(new Runnable()
       {
         public final void run()
         {
@@ -108,47 +108,47 @@ public class TVThumbPreference
   {
     AppMethodBeat.i(28610);
     super.onBindView(paramView);
-    this.xBY = ((ImageView)paramView.findViewById(2131305794));
-    this.xBZ = ((ImageView)paramView.findViewById(2131305795));
-    this.xCa = ((ImageView)paramView.findViewById(2131305796));
-    if (this.xCb != null)
+    this.yQI = ((ImageView)paramView.findViewById(2131305794));
+    this.yQJ = ((ImageView)paramView.findViewById(2131305795));
+    this.yQK = ((ImageView)paramView.findViewById(2131305796));
+    if (this.yQL != null)
     {
-      if (this.xCb.size() <= 0)
+      if (this.yQL.size() <= 0)
       {
         AppMethodBeat.o(28610);
         return;
       }
-      paramView = new b((String)this.xCb.get(0));
-      this.xBY.setTag(paramView.aNn());
+      paramView = new b((String)this.yQL.get(0));
+      this.yQI.setTag(paramView.aQy());
       paramView = u.a(paramView);
       if ((paramView != null) && (!paramView.isRecycled())) {
-        this.xBY.setImageBitmap(paramView);
+        this.yQI.setImageBitmap(paramView);
       }
-      this.xBY.setVisibility(0);
-      if (1 >= this.xCb.size())
+      this.yQI.setVisibility(0);
+      if (1 >= this.yQL.size())
       {
         AppMethodBeat.o(28610);
         return;
       }
-      paramView = new b((String)this.xCb.get(1));
-      this.xBZ.setTag(paramView.aNn());
+      paramView = new b((String)this.yQL.get(1));
+      this.yQJ.setTag(paramView.aQy());
       paramView = u.a(paramView);
       if ((paramView != null) && (!paramView.isRecycled())) {
-        this.xBZ.setImageBitmap(paramView);
+        this.yQJ.setImageBitmap(paramView);
       }
-      this.xBZ.setVisibility(0);
-      if (2 >= this.xCb.size())
+      this.yQJ.setVisibility(0);
+      if (2 >= this.yQL.size())
       {
         AppMethodBeat.o(28610);
         return;
       }
-      paramView = new b((String)this.xCb.get(2));
-      this.xCa.setTag(paramView.aNn());
+      paramView = new b((String)this.yQL.get(2));
+      this.yQK.setTag(paramView.aQy());
       paramView = u.a(paramView);
       if ((paramView != null) && (!paramView.isRecycled())) {
-        this.xCa.setImageBitmap(paramView);
+        this.yQK.setImageBitmap(paramView);
       }
-      this.xCa.setVisibility(0);
+      this.yQK.setVisibility(0);
     }
     AppMethodBeat.o(28610);
   }
@@ -163,7 +163,7 @@ public class TVThumbPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.TVThumbPreference
  * JD-Core Version:    0.7.0.1
  */

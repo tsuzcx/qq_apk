@@ -3,7 +3,9 @@ package io.flutter.plugin.platform;
 import android.annotation.TargetApi;
 import android.app.Presentation;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.Keep;
 import android.view.Display;
@@ -11,10 +13,14 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.accessibility.AccessibilityEvent;
+import android.view.WindowManager.LayoutParams;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.view.AccessibilityViewEmbedder;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 @TargetApi(17)
 @Keep
@@ -25,7 +31,7 @@ class SingleViewPresentation
   private FrameLayout container;
   private Object createParams;
   private final View.OnFocusChangeListener focusChangeListener;
-  private a rootView;
+  private SingleViewPresentation.a rootView;
   private boolean startFocused;
   private e state;
   private final d viewFactory;
@@ -33,7 +39,7 @@ class SingleViewPresentation
   
   public SingleViewPresentation(Context paramContext, Display paramDisplay, a parama, e parame, View.OnFocusChangeListener paramOnFocusChangeListener, boolean paramBoolean)
   {
-    super(new SingleViewPresentation.c(paramContext), paramDisplay);
+    super(new c(paramContext), paramDisplay);
     AppMethodBeat.i(9919);
     this.startFocused = false;
     this.accessibilityEventsDelegate = parama;
@@ -47,7 +53,7 @@ class SingleViewPresentation
   
   public SingleViewPresentation(Context paramContext, Display paramDisplay, d paramd, a parama, int paramInt, Object paramObject, View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    super(new SingleViewPresentation.c(paramContext), paramDisplay);
+    super(new c(paramContext), paramDisplay);
     AppMethodBeat.i(9918);
     this.startFocused = false;
     this.viewFactory = paramd;
@@ -57,6 +63,9 @@ class SingleViewPresentation
     this.focusChangeListener = paramOnFocusChangeListener;
     this.state = new e();
     getWindow().setFlags(8, 8);
+    if (Build.VERSION.SDK_INT >= 19) {
+      getWindow().setType(2030);
+    }
     AppMethodBeat.o(9918);
   }
   
@@ -72,10 +81,10 @@ class SingleViewPresentation
   
   public c getView()
   {
-    if (this.state.KPT == null) {
+    if (this.state.MGS == null) {
       return null;
     }
-    return this.state.KPT;
+    return this.state.MGS;
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -83,24 +92,24 @@ class SingleViewPresentation
     AppMethodBeat.i(9920);
     super.onCreate(paramBundle);
     getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    if (this.state.KPU == null) {
-      this.state.KPU = new SingleViewPresentation.b(getContext());
+    if (this.state.MGT == null) {
+      this.state.MGT = new SingleViewPresentation.b(getContext());
     }
-    if (this.state.KPS == null)
+    if (this.state.MGR == null)
     {
       paramBundle = (WindowManager)getContext().getSystemService("window");
-      this.state.KPS = new SingleViewPresentation.f(paramBundle, this.state.KPU);
+      this.state.MGR = new f(paramBundle, this.state.MGT);
     }
     this.container = new FrameLayout(getContext());
-    new SingleViewPresentation.d(getContext(), this.state.KPS);
-    if (this.state.KPT == null) {
-      this.state.KPT = this.viewFactory.fNL();
+    new d(getContext(), this.state.MGR);
+    if (this.state.MGS == null) {
+      this.state.MGS = this.viewFactory.gfk();
     }
-    paramBundle = this.state.KPT.getView();
+    paramBundle = this.state.MGS.getView();
     this.container.addView(paramBundle);
-    this.rootView = new a(getContext(), this.accessibilityEventsDelegate, paramBundle);
+    this.rootView = new SingleViewPresentation.a(getContext(), this.accessibilityEventsDelegate, paramBundle);
     this.rootView.addView(this.container);
-    this.rootView.addView(this.state.KPU);
+    this.rootView.addView(this.state.MGT);
     paramBundle.setOnFocusChangeListener(this.focusChangeListener);
     this.rootView.setFocusableInTouchMode(true);
     if (this.startFocused) {
@@ -115,72 +124,185 @@ class SingleViewPresentation
     }
   }
   
-  static final class a
-    extends FrameLayout
+  static final class c
+    extends ContextWrapper
   {
-    private final View KPQ;
-    private final a accessibilityEventsDelegate;
+    private final InputMethodManager EZz;
     
-    public a(Context paramContext, a parama, View paramView)
+    c(Context paramContext)
     {
-      super();
-      this.accessibilityEventsDelegate = parama;
-      this.KPQ = paramView;
+      this(paramContext, null);
     }
     
-    public final boolean requestSendAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+    private c(Context paramContext, InputMethodManager paramInputMethodManager)
     {
-      AppMethodBeat.i(9888);
-      Object localObject = this.accessibilityEventsDelegate;
-      View localView = this.KPQ;
-      if (((a)localObject).KKY == null)
-      {
-        AppMethodBeat.o(9888);
-        return false;
-      }
-      localObject = ((a)localObject).KKY;
-      if (!((io.flutter.view.a)localObject).KQg.requestSendAccessibilityEvent(localView, paramView, paramAccessibilityEvent))
-      {
-        AppMethodBeat.o(9888);
-        return false;
-      }
-      paramView = ((io.flutter.view.a)localObject).KQg.getRecordFlutterId(localView, paramAccessibilityEvent);
-      if (paramView == null)
-      {
-        AppMethodBeat.o(9888);
-        return false;
-      }
-      switch (paramAccessibilityEvent.getEventType())
-      {
-      }
+      super();
+      AppMethodBeat.i(213216);
+      if (paramInputMethodManager != null) {}
       for (;;)
       {
-        AppMethodBeat.o(9888);
-        return true;
-        ((io.flutter.view.a)localObject).KQq = null;
-        continue;
-        ((io.flutter.view.a)localObject).KQl = paramView;
-        ((io.flutter.view.a)localObject).KQk = null;
-        continue;
-        ((io.flutter.view.a)localObject).KQm = null;
-        ((io.flutter.view.a)localObject).KQl = null;
-        continue;
-        ((io.flutter.view.a)localObject).KQm = paramView;
-        ((io.flutter.view.a)localObject).KQo = null;
+        this.EZz = paramInputMethodManager;
+        AppMethodBeat.o(213216);
+        return;
+        paramInputMethodManager = (InputMethodManager)paramContext.getSystemService("input_method");
       }
+    }
+    
+    public final Context createDisplayContext(Display paramDisplay)
+    {
+      AppMethodBeat.i(213218);
+      paramDisplay = new c(super.createDisplayContext(paramDisplay), this.EZz);
+      AppMethodBeat.o(213218);
+      return paramDisplay;
+    }
+    
+    public final Object getSystemService(String paramString)
+    {
+      AppMethodBeat.i(213217);
+      if ("input_method".equals(paramString))
+      {
+        paramString = this.EZz;
+        AppMethodBeat.o(213217);
+        return paramString;
+      }
+      paramString = super.getSystemService(paramString);
+      AppMethodBeat.o(213217);
+      return paramString;
+    }
+  }
+  
+  static final class d
+    extends ContextWrapper
+  {
+    private final SingleViewPresentation.f MGR;
+    private WindowManager windowManager;
+    
+    d(Context paramContext, SingleViewPresentation.f paramf)
+    {
+      super();
+      this.MGR = paramf;
+    }
+    
+    public final Object getSystemService(String paramString)
+    {
+      AppMethodBeat.i(9933);
+      if ("window".equals(paramString))
+      {
+        if (this.windowManager == null)
+        {
+          paramString = this.MGR;
+          this.windowManager = ((WindowManager)Proxy.newProxyInstance(WindowManager.class.getClassLoader(), new Class[] { WindowManager.class }, paramString));
+        }
+        paramString = this.windowManager;
+        AppMethodBeat.o(9933);
+        return paramString;
+      }
+      paramString = super.getSystemService(paramString);
+      AppMethodBeat.o(9933);
+      return paramString;
     }
   }
   
   static final class e
   {
-    SingleViewPresentation.f KPS;
-    c KPT;
-    SingleViewPresentation.b KPU;
+    SingleViewPresentation.f MGR;
+    c MGS;
+    SingleViewPresentation.b MGT;
+  }
+  
+  static final class f
+    implements InvocationHandler
+  {
+    private final WindowManager MGU;
+    SingleViewPresentation.b MGV;
+    
+    f(WindowManager paramWindowManager, SingleViewPresentation.b paramb)
+    {
+      this.MGU = paramWindowManager;
+      this.MGV = paramb;
+    }
+    
+    public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+    {
+      AppMethodBeat.i(9922);
+      paramObject = paramMethod.getName();
+      int i = -1;
+      switch (paramObject.hashCode())
+      {
+      }
+      for (;;)
+      {
+        switch (i)
+        {
+        }
+        try
+        {
+          paramObject = paramMethod.invoke(this.MGU, paramArrayOfObject);
+          AppMethodBeat.o(9922);
+          return paramObject;
+        }
+        catch (InvocationTargetException paramObject)
+        {
+          paramObject = paramObject.getCause();
+          AppMethodBeat.o(9922);
+          throw paramObject;
+        }
+        if (paramObject.equals("addView"))
+        {
+          i = 0;
+          continue;
+          if (paramObject.equals("removeView"))
+          {
+            i = 1;
+            continue;
+            if (paramObject.equals("removeViewImmediate"))
+            {
+              i = 2;
+              continue;
+              if (paramObject.equals("updateViewLayout")) {
+                i = 3;
+              }
+            }
+          }
+        }
+      }
+      if (this.MGV != null)
+      {
+        paramObject = (View)paramArrayOfObject[0];
+        paramMethod = (WindowManager.LayoutParams)paramArrayOfObject[1];
+        this.MGV.addView(paramObject, paramMethod);
+      }
+      AppMethodBeat.o(9922);
+      return null;
+      if (this.MGV != null)
+      {
+        paramObject = (View)paramArrayOfObject[0];
+        this.MGV.removeView(paramObject);
+      }
+      AppMethodBeat.o(9922);
+      return null;
+      if (this.MGV != null)
+      {
+        paramObject = (View)paramArrayOfObject[0];
+        paramObject.clearAnimation();
+        this.MGV.removeView(paramObject);
+      }
+      AppMethodBeat.o(9922);
+      return null;
+      if (this.MGV != null)
+      {
+        paramObject = (View)paramArrayOfObject[0];
+        paramMethod = (WindowManager.LayoutParams)paramArrayOfObject[1];
+        this.MGV.updateViewLayout(paramObject, paramMethod);
+      }
+      AppMethodBeat.o(9922);
+      return null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation
  * JD-Core Version:    0.7.0.1
  */

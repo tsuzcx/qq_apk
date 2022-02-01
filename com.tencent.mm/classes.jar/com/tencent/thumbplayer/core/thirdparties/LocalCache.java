@@ -36,59 +36,59 @@ public class LocalCache
   
   static
   {
-    AppMethodBeat.i(194006);
+    AppMethodBeat.i(220788);
     mInstanceMap = new HashMap();
-    AppMethodBeat.o(194006);
+    AppMethodBeat.o(220788);
   }
   
   private LocalCache(File paramFile, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(193981);
+    AppMethodBeat.i(220763);
     if ((!paramFile.exists()) && (!paramFile.mkdirs()))
     {
       this.mCache = null;
-      AppMethodBeat.o(193981);
+      AppMethodBeat.o(220763);
       return;
     }
     this.mCache = new ACacheManager(paramFile, paramLong, paramInt, null);
-    AppMethodBeat.o(193981);
+    AppMethodBeat.o(220763);
   }
   
   public static LocalCache get(Context paramContext)
   {
-    AppMethodBeat.i(193975);
+    AppMethodBeat.i(220757);
     paramContext = get(paramContext, "LocalCache");
-    AppMethodBeat.o(193975);
+    AppMethodBeat.o(220757);
     return paramContext;
   }
   
   public static LocalCache get(Context paramContext, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(193978);
+    AppMethodBeat.i(220760);
     paramContext = get(new File(paramContext.getCacheDir(), "LocalCache"), paramLong, paramInt);
-    AppMethodBeat.o(193978);
+    AppMethodBeat.o(220760);
     return paramContext;
   }
   
   public static LocalCache get(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193976);
+    AppMethodBeat.i(220758);
     paramContext = get(new File(paramContext.getCacheDir(), paramString), 50000000L, 2147483647);
-    AppMethodBeat.o(193976);
+    AppMethodBeat.o(220758);
     return paramContext;
   }
   
   public static LocalCache get(File paramFile)
   {
-    AppMethodBeat.i(193977);
+    AppMethodBeat.i(220759);
     paramFile = get(paramFile, 50000000L, 2147483647);
-    AppMethodBeat.o(193977);
+    AppMethodBeat.o(220759);
     return paramFile;
   }
   
   public static LocalCache get(File paramFile, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(193979);
+    AppMethodBeat.i(220761);
     localObject = null;
     try
     {
@@ -128,46 +128,46 @@ public class LocalCache
         paramFile = localLocalCache;
         break label102;
       }
-      AppMethodBeat.o(193979);
+      AppMethodBeat.o(220761);
       return paramFile;
     }
   }
   
   private static String myPid()
   {
-    AppMethodBeat.i(193980);
+    AppMethodBeat.i(220762);
     String str = "_" + Process.myPid();
-    AppMethodBeat.o(193980);
+    AppMethodBeat.o(220762);
     return str;
   }
   
   public void clear()
   {
-    AppMethodBeat.i(194005);
+    AppMethodBeat.i(220787);
     if (this.mCache == null)
     {
-      AppMethodBeat.o(194005);
+      AppMethodBeat.o(220787);
       return;
     }
     ACacheManager.access$1500(this.mCache);
-    AppMethodBeat.o(194005);
+    AppMethodBeat.o(220787);
   }
   
   public File file(String paramString)
   {
-    AppMethodBeat.i(194003);
+    AppMethodBeat.i(220785);
     if (this.mCache == null)
     {
-      AppMethodBeat.o(194003);
+      AppMethodBeat.o(220785);
       return null;
     }
     paramString = ACacheManager.access$100(this.mCache, paramString);
     if (paramString.exists())
     {
-      AppMethodBeat.o(194003);
+      AppMethodBeat.o(220785);
       return paramString;
     }
-    AppMethodBeat.o(194003);
+    AppMethodBeat.o(220785);
     return null;
   }
   
@@ -304,60 +304,60 @@ public class LocalCache
   
   public Bitmap getAsBitmap(String paramString)
   {
-    AppMethodBeat.i(193999);
+    AppMethodBeat.i(220781);
     if (getAsBinary(paramString) == null)
     {
-      AppMethodBeat.o(193999);
+      AppMethodBeat.o(220781);
       return null;
     }
     paramString = Utils.access$1100(getAsBinary(paramString));
-    AppMethodBeat.o(193999);
+    AppMethodBeat.o(220781);
     return paramString;
   }
   
   public Drawable getAsDrawable(String paramString)
   {
-    AppMethodBeat.i(194002);
+    AppMethodBeat.i(220784);
     if (getAsBinary(paramString) == null)
     {
-      AppMethodBeat.o(194002);
+      AppMethodBeat.o(220784);
       return null;
     }
     paramString = Utils.access$1300(Utils.access$1100(getAsBinary(paramString)));
-    AppMethodBeat.o(194002);
+    AppMethodBeat.o(220784);
     return paramString;
   }
   
   public JSONArray getAsJSONArray(String paramString)
   {
-    AppMethodBeat.i(193990);
+    AppMethodBeat.i(220772);
     paramString = getAsString(paramString);
     try
     {
       paramString = new JSONArray(paramString);
-      AppMethodBeat.o(193990);
+      AppMethodBeat.o(220772);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(193990);
+      AppMethodBeat.o(220772);
     }
     return null;
   }
   
   public JSONObject getAsJSONObject(String paramString)
   {
-    AppMethodBeat.i(193987);
+    AppMethodBeat.i(220769);
     paramString = getAsString(paramString);
     try
     {
       paramString = new JSONObject(paramString);
-      AppMethodBeat.o(193987);
+      AppMethodBeat.o(220769);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(193987);
+      AppMethodBeat.o(220769);
     }
     return null;
   }
@@ -635,37 +635,37 @@ public class LocalCache
   
   public void put(String paramString, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(193997);
+    AppMethodBeat.i(220779);
     put(paramString, Utils.access$1000(paramBitmap));
-    AppMethodBeat.o(193997);
+    AppMethodBeat.o(220779);
   }
   
   public void put(String paramString, Bitmap paramBitmap, int paramInt)
   {
-    AppMethodBeat.i(193998);
+    AppMethodBeat.i(220780);
     put(paramString, Utils.access$1000(paramBitmap), paramInt);
-    AppMethodBeat.o(193998);
+    AppMethodBeat.o(220780);
   }
   
   public void put(String paramString, Drawable paramDrawable)
   {
-    AppMethodBeat.i(194000);
+    AppMethodBeat.i(220782);
     put(paramString, Utils.access$1200(paramDrawable));
-    AppMethodBeat.o(194000);
+    AppMethodBeat.o(220782);
   }
   
   public void put(String paramString, Drawable paramDrawable, int paramInt)
   {
-    AppMethodBeat.i(194001);
+    AppMethodBeat.i(220783);
     put(paramString, Utils.access$1200(paramDrawable), paramInt);
-    AppMethodBeat.o(194001);
+    AppMethodBeat.o(220783);
   }
   
   public void put(String paramString, Serializable paramSerializable)
   {
-    AppMethodBeat.i(193994);
+    AppMethodBeat.i(220776);
     put(paramString, paramSerializable, -1);
-    AppMethodBeat.o(193994);
+    AppMethodBeat.o(220776);
   }
   
   /* Error */
@@ -907,37 +907,37 @@ public class LocalCache
   
   public void put(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(193983);
+    AppMethodBeat.i(220765);
     put(paramString1, Utils.access$300(paramInt, paramString2));
-    AppMethodBeat.o(193983);
+    AppMethodBeat.o(220765);
   }
   
   public void put(String paramString, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(193988);
+    AppMethodBeat.i(220770);
     put(paramString, paramJSONArray.toString());
-    AppMethodBeat.o(193988);
+    AppMethodBeat.o(220770);
   }
   
   public void put(String paramString, JSONArray paramJSONArray, int paramInt)
   {
-    AppMethodBeat.i(193989);
+    AppMethodBeat.i(220771);
     put(paramString, paramJSONArray.toString(), paramInt);
-    AppMethodBeat.o(193989);
+    AppMethodBeat.o(220771);
   }
   
   public void put(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(193985);
+    AppMethodBeat.i(220767);
     put(paramString, paramJSONObject.toString());
-    AppMethodBeat.o(193985);
+    AppMethodBeat.o(220767);
   }
   
   public void put(String paramString, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(193986);
+    AppMethodBeat.i(220768);
     put(paramString, paramJSONObject.toString(), paramInt);
-    AppMethodBeat.o(193986);
+    AppMethodBeat.o(220768);
   }
   
   /* Error */
@@ -1045,21 +1045,21 @@ public class LocalCache
   
   public void put(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(193992);
+    AppMethodBeat.i(220774);
     put(paramString, Utils.access$700(paramInt, paramArrayOfByte));
-    AppMethodBeat.o(193992);
+    AppMethodBeat.o(220774);
   }
   
   public boolean remove(String paramString)
   {
-    AppMethodBeat.i(194004);
+    AppMethodBeat.i(220786);
     if (this.mCache == null)
     {
-      AppMethodBeat.o(194004);
+      AppMethodBeat.o(220786);
       return false;
     }
     boolean bool = ACacheManager.access$1400(this.mCache, paramString);
-    AppMethodBeat.o(194004);
+    AppMethodBeat.o(220786);
     return bool;
   }
   
@@ -1074,7 +1074,7 @@ public class LocalCache
     
     private ACacheManager(File paramFile, long paramLong, int paramInt)
     {
-      AppMethodBeat.i(193937);
+      AppMethodBeat.i(220719);
       this.lastUsageDates = Collections.synchronizedMap(new HashMap());
       this.cacheDir = paramFile;
       this.sizeLimit = paramLong;
@@ -1082,17 +1082,17 @@ public class LocalCache
       this.cacheSize = new AtomicLong();
       this.cacheCount = new AtomicInteger();
       calculateCacheSizeAndCacheCount();
-      AppMethodBeat.o(193937);
+      AppMethodBeat.o(220719);
     }
     
     private void calculateCacheSizeAndCacheCount()
     {
-      AppMethodBeat.i(193938);
+      AppMethodBeat.i(220720);
       TPThreadUtil.THREAD_POOL_EXECUTOR.execute(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(193936);
+          AppMethodBeat.i(220718);
           File[] arrayOfFile = LocalCache.ACacheManager.this.cacheDir.listFiles();
           if (arrayOfFile != null)
           {
@@ -1111,28 +1111,28 @@ public class LocalCache
             LocalCache.ACacheManager.this.cacheSize.set(k);
             LocalCache.ACacheManager.this.cacheCount.set(i);
           }
-          AppMethodBeat.o(193936);
+          AppMethodBeat.o(220718);
         }
       });
-      AppMethodBeat.o(193938);
+      AppMethodBeat.o(220720);
     }
     
     private long calculateSize(File paramFile)
     {
-      AppMethodBeat.i(193945);
+      AppMethodBeat.i(220727);
       if (paramFile == null)
       {
-        AppMethodBeat.o(193945);
+        AppMethodBeat.o(220727);
         return 0L;
       }
       long l = paramFile.length();
-      AppMethodBeat.o(193945);
+      AppMethodBeat.o(220727);
       return l;
     }
     
     private void clear()
     {
-      AppMethodBeat.i(193943);
+      AppMethodBeat.i(220725);
       this.lastUsageDates.clear();
       this.cacheSize.set(0L);
       File[] arrayOfFile = this.cacheDir.listFiles();
@@ -1146,31 +1146,31 @@ public class LocalCache
           i += 1;
         }
       }
-      AppMethodBeat.o(193943);
+      AppMethodBeat.o(220725);
     }
     
     private File get(String paramString)
     {
-      AppMethodBeat.i(193940);
+      AppMethodBeat.i(220722);
       paramString = newFile(paramString);
       Long localLong = Long.valueOf(System.currentTimeMillis());
       paramString.setLastModified(localLong.longValue());
       this.lastUsageDates.put(paramString, localLong);
-      AppMethodBeat.o(193940);
+      AppMethodBeat.o(220722);
       return paramString;
     }
     
     private File newFile(String paramString)
     {
-      AppMethodBeat.i(193941);
+      AppMethodBeat.i(220723);
       paramString = new File(this.cacheDir, paramString.hashCode());
-      AppMethodBeat.o(193941);
+      AppMethodBeat.o(220723);
       return paramString;
     }
     
     private void put(File paramFile)
     {
-      AppMethodBeat.i(193939);
+      AppMethodBeat.i(220721);
       for (int i = this.cacheCount.get(); i + 1 > this.countLimit; i = this.cacheCount.addAndGet(-1))
       {
         l1 = removeNext();
@@ -1185,23 +1185,23 @@ public class LocalCache
       Long localLong = Long.valueOf(System.currentTimeMillis());
       paramFile.setLastModified(localLong.longValue());
       this.lastUsageDates.put(paramFile, localLong);
-      AppMethodBeat.o(193939);
+      AppMethodBeat.o(220721);
     }
     
     private boolean remove(String paramString)
     {
-      AppMethodBeat.i(193942);
+      AppMethodBeat.i(220724);
       boolean bool = get(paramString).delete();
-      AppMethodBeat.o(193942);
+      AppMethodBeat.o(220724);
       return bool;
     }
     
     private long removeNext()
     {
-      AppMethodBeat.i(193944);
+      AppMethodBeat.i(220726);
       if (this.lastUsageDates.isEmpty())
       {
-        AppMethodBeat.o(193944);
+        AppMethodBeat.o(220726);
         return 0L;
       }
       Object localObject1 = this.lastUsageDates.entrySet();
@@ -1231,7 +1231,7 @@ public class LocalCache
           }
           if (localObject1 == null)
           {
-            AppMethodBeat.o(193944);
+            AppMethodBeat.o(220726);
             return 0L;
           }
         }
@@ -1239,7 +1239,7 @@ public class LocalCache
         if ((localFile != null) && (localFile.delete())) {
           this.lastUsageDates.remove(localFile);
         }
-        AppMethodBeat.o(193944);
+        AppMethodBeat.o(220726);
         return l;
         label212:
         Object localObject4 = localFile;
@@ -1259,16 +1259,16 @@ public class LocalCache
     
     private static byte[] Bitmap2Bytes(Bitmap paramBitmap)
     {
-      AppMethodBeat.i(193962);
+      AppMethodBeat.i(220744);
       if (paramBitmap == null)
       {
-        AppMethodBeat.o(193962);
+        AppMethodBeat.o(220744);
         return null;
       }
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
       paramBitmap = localByteArrayOutputStream.toByteArray();
-      AppMethodBeat.o(193962);
+      AppMethodBeat.o(220744);
       return paramBitmap;
     }
     
@@ -1280,20 +1280,20 @@ public class LocalCache
     
     private static Drawable bitmap2Drawable(Bitmap paramBitmap)
     {
-      AppMethodBeat.i(193964);
+      AppMethodBeat.i(220746);
       if (paramBitmap == null)
       {
-        AppMethodBeat.o(193964);
+        AppMethodBeat.o(220746);
         return null;
       }
       paramBitmap = new BitmapDrawable(paramBitmap);
-      AppMethodBeat.o(193964);
+      AppMethodBeat.o(220746);
       return paramBitmap;
     }
     
     private static String clearDateInfo(String paramString)
     {
-      AppMethodBeat.i(193956);
+      AppMethodBeat.i(220738);
       String str = paramString;
       if (paramString != null)
       {
@@ -1302,54 +1302,54 @@ public class LocalCache
           str = paramString.substring(paramString.indexOf(' ') + 1, paramString.length());
         }
       }
-      AppMethodBeat.o(193956);
+      AppMethodBeat.o(220738);
       return str;
     }
     
     private static byte[] clearDateInfo(byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(193957);
+      AppMethodBeat.i(220739);
       if (hasDateInfo(paramArrayOfByte))
       {
         paramArrayOfByte = copyOfRange(paramArrayOfByte, indexOf(paramArrayOfByte, ' ') + 1, paramArrayOfByte.length);
-        AppMethodBeat.o(193957);
+        AppMethodBeat.o(220739);
         return paramArrayOfByte;
       }
-      AppMethodBeat.o(193957);
+      AppMethodBeat.o(220739);
       return paramArrayOfByte;
     }
     
     private static byte[] copyOfRange(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(193960);
+      AppMethodBeat.i(220742);
       int i = paramInt2 - paramInt1;
       if (i < 0)
       {
         paramArrayOfByte = new IllegalArgumentException(paramInt1 + " > " + paramInt2);
-        AppMethodBeat.o(193960);
+        AppMethodBeat.o(220742);
         throw paramArrayOfByte;
       }
       byte[] arrayOfByte = new byte[i];
       System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, Math.min(paramArrayOfByte.length - paramInt1, i));
-      AppMethodBeat.o(193960);
+      AppMethodBeat.o(220742);
       return arrayOfByte;
     }
     
     private static String createDateInfo(int paramInt)
     {
-      AppMethodBeat.i(193961);
+      AppMethodBeat.i(220743);
       for (String str = System.currentTimeMillis(); str.length() < 13; str = "0".concat(String.valueOf(str))) {}
       str = str + "-" + paramInt + ' ';
-      AppMethodBeat.o(193961);
+      AppMethodBeat.o(220743);
       return str;
     }
     
     private static Bitmap drawable2Bitmap(Drawable paramDrawable)
     {
-      AppMethodBeat.i(193963);
+      AppMethodBeat.i(220745);
       if (paramDrawable == null)
       {
-        AppMethodBeat.o(193963);
+        AppMethodBeat.o(220745);
         return null;
       }
       int i = paramDrawable.getIntrinsicWidth();
@@ -1361,34 +1361,34 @@ public class LocalCache
         Canvas localCanvas = new Canvas((Bitmap)localObject);
         paramDrawable.setBounds(0, 0, i, j);
         paramDrawable.draw(localCanvas);
-        AppMethodBeat.o(193963);
+        AppMethodBeat.o(220745);
         return localObject;
       }
     }
     
     private static String[] getDateInfoFromDate(byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(193959);
+      AppMethodBeat.i(220741);
       if (hasDateInfo(paramArrayOfByte))
       {
         String str = new String(copyOfRange(paramArrayOfByte, 0, 13));
         paramArrayOfByte = new String(copyOfRange(paramArrayOfByte, 14, indexOf(paramArrayOfByte, ' ')));
-        AppMethodBeat.o(193959);
+        AppMethodBeat.o(220741);
         return new String[] { str, paramArrayOfByte };
       }
-      AppMethodBeat.o(193959);
+      AppMethodBeat.o(220741);
       return null;
     }
     
     private static boolean hasDateInfo(byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(193958);
+      AppMethodBeat.i(220740);
       if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 15) && (paramArrayOfByte[13] == 45) && (indexOf(paramArrayOfByte, ' ') > 14))
       {
-        AppMethodBeat.o(193958);
+        AppMethodBeat.o(220740);
         return true;
       }
-      AppMethodBeat.o(193958);
+      AppMethodBeat.o(220740);
       return false;
     }
     
@@ -1407,15 +1407,15 @@ public class LocalCache
     
     private static boolean isDue(String paramString)
     {
-      AppMethodBeat.i(193952);
+      AppMethodBeat.i(220734);
       boolean bool = isDue(paramString.getBytes());
-      AppMethodBeat.o(193952);
+      AppMethodBeat.o(220734);
       return bool;
     }
     
     private static boolean isDue(byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(193953);
+      AppMethodBeat.i(220735);
       String[] arrayOfString = getDateInfoFromDate(paramArrayOfByte);
       if ((arrayOfString != null) && (arrayOfString.length == 2))
       {
@@ -1427,36 +1427,36 @@ public class LocalCache
           long l3 = System.currentTimeMillis();
           if (l3 > l1 + l2 * 1000L)
           {
-            AppMethodBeat.o(193953);
+            AppMethodBeat.o(220735);
             return true;
           }
         }
         catch (Exception paramArrayOfByte)
         {
-          AppMethodBeat.o(193953);
+          AppMethodBeat.o(220735);
           return false;
         }
       }
-      AppMethodBeat.o(193953);
+      AppMethodBeat.o(220735);
       return false;
     }
     
     private static byte[] newByteArrayWithDateInfo(int paramInt, byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(193955);
+      AppMethodBeat.i(220737);
       byte[] arrayOfByte1 = createDateInfo(paramInt).getBytes();
       byte[] arrayOfByte2 = new byte[arrayOfByte1.length + paramArrayOfByte.length];
       System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte1.length);
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte2, arrayOfByte1.length, paramArrayOfByte.length);
-      AppMethodBeat.o(193955);
+      AppMethodBeat.o(220737);
       return arrayOfByte2;
     }
     
     private static String newStringWithDateInfo(int paramInt, String paramString)
     {
-      AppMethodBeat.i(193954);
+      AppMethodBeat.i(220736);
       paramString = createDateInfo(paramInt) + paramString;
-      AppMethodBeat.o(193954);
+      AppMethodBeat.o(220736);
       return paramString;
     }
   }

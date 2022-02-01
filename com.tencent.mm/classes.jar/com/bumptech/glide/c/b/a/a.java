@@ -2,13 +2,13 @@ package com.bumptech.glide.c.b.a;
 
 abstract interface a<T>
 {
-  public abstract int T(T paramT);
+  public abstract int U(T paramT);
   
   public abstract T dn(int paramInt);
   
   public abstract String getTag();
   
-  public abstract int oB();
+  public abstract int oT();
 }
 
 

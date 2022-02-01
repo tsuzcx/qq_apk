@@ -4,8 +4,8 @@ import android.content.Intent;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.service.MMService;
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ public class NotifyReceiver$NotifyReceiverService
   {
     AppMethodBeat.i(131904);
     super.onCreate();
-    ac.i("MicroMsg.NotifyReceiverService", "onCreate()");
+    ad.i("MicroMsg.NotifyReceiverService", "onCreate()");
     AppMethodBeat.o(131904);
   }
   
@@ -31,21 +31,21 @@ public class NotifyReceiver$NotifyReceiverService
   {
     AppMethodBeat.i(131905);
     ArrayList localArrayList = new ArrayList();
-    NotifyReceiver.a(ai.getContext(), paramIntent, localArrayList);
+    NotifyReceiver.a(aj.getContext(), paramIntent, localArrayList);
     paramIntent = new IDKey();
     paramIntent.SetID(1042);
     paramIntent.SetKey(63);
     paramIntent.SetValue(1L);
     localArrayList.add(paramIntent);
-    e.wTc.b(localArrayList, false);
-    ac.i("MicroMsg.NotifyReceiverService", "onStartCommand()");
+    e.ygI.b(localArrayList, false);
+    ad.i("MicroMsg.NotifyReceiverService", "onStartCommand()");
     AppMethodBeat.o(131905);
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.NotifyReceiver.NotifyReceiverService
  * JD-Core Version:    0.7.0.1
  */

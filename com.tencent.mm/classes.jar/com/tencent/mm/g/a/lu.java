@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class lu
   extends b
 {
-  public a dnM;
+  public a dzc;
   
   public lu()
   {
@@ -15,21 +15,26 @@ public final class lu
   
   private lu(byte paramByte)
   {
-    AppMethodBeat.i(116032);
-    this.dnM = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(155544);
+    this.dzc = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116032);
+    AppMethodBeat.o(155544);
   }
   
   public static final class a
   {
-    public boolean dnN;
+    public boolean dzd = false;
+    public int dze;
+    public boolean dzf = false;
+    public int dzg;
+    public boolean dzh = false;
+    public int dzi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.lu
  * JD-Core Version:    0.7.0.1
  */

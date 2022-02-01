@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.c;
 import java.util.Map;
 
@@ -23,18 +23,18 @@ final class d$3
     AppMethodBeat.i(153126);
     if ((paramString != null) && (paramString.length() > 0) && ("event_updated".equals(paramString)))
     {
-      paramString = d.aAp().tJ("100205");
+      paramString = d.aDs().wz("100205");
       if (paramString.isValid())
       {
-        paramString = paramString.eYV();
-        int i = bs.getInt((String)paramString.get("main_thread_watch_enable"), 65535);
-        int j = bs.getInt((String)paramString.get("main_thread_watch_timeout"), 5000);
-        int k = bs.getInt((String)paramString.get("main_thread_watch_log_loop"), 0);
-        int m = bs.getInt((String)paramString.get("main_thread_watch_report"), 0);
-        ai.getContext().getSharedPreferences("system_config_prefs", g.YK()).edit().putInt("main_thread_watch_enable", i).putInt("main_thread_watch_timeout", j).putInt("main_thread_watch_log_loop", k).putInt("main_thread_watch_report", m).commit();
-        ac.i("MicroMsg.SubCoreNewABTest", "summeranr MM_MAIN_THREAD_WATCH enable[%d] timeout[%d], loop[%d] report[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
+        paramString = paramString.foF();
+        int i = bt.getInt((String)paramString.get("main_thread_watch_enable"), 65535);
+        int j = bt.getInt((String)paramString.get("main_thread_watch_timeout"), 5000);
+        int k = bt.getInt((String)paramString.get("main_thread_watch_log_loop"), 0);
+        int m = bt.getInt((String)paramString.get("main_thread_watch_report"), 0);
+        aj.getContext().getSharedPreferences("system_config_prefs", g.abm()).edit().putInt("main_thread_watch_enable", i).putInt("main_thread_watch_timeout", j).putInt("main_thread_watch_log_loop", k).putInt("main_thread_watch_report", m).commit();
+        ad.i("MicroMsg.SubCoreNewABTest", "summeranr MM_MAIN_THREAD_WATCH enable[%d] timeout[%d], loop[%d] report[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
       }
-      d.aAr();
+      d.aDu();
     }
     AppMethodBeat.o(153126);
   }

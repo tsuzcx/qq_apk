@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
+import com.tencent.mm.storage.w;
+
 public abstract interface j
 {
-  public abstract void bJU();
+  public abstract void a(w paramw, int paramInt1, int paramInt2);
 }
 
 

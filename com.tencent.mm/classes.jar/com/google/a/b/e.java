@@ -4,26 +4,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private static final int bDQ;
+  private static final int bOe;
   
   static
   {
     AppMethodBeat.i(108108);
     String str = System.getProperty("java.version");
-    int j = be(str);
+    int j = bX(str);
     int i = j;
     if (j == -1) {
-      i = bf(str);
+      i = bY(str);
     }
     j = i;
     if (i == -1) {
       j = 6;
     }
-    bDQ = j;
+    bOe = j;
     AppMethodBeat.o(108108);
   }
   
-  private static int be(String paramString)
+  private static int bX(String paramString)
   {
     AppMethodBeat.i(108106);
     try
@@ -46,7 +46,7 @@ public final class e
     return -1;
   }
   
-  private static int bf(String paramString)
+  private static int bY(String paramString)
   {
     AppMethodBeat.i(108107);
     try
@@ -73,19 +73,19 @@ public final class e
     return -1;
   }
   
-  public static int xm()
+  public static int yJ()
   {
-    return bDQ;
+    return bOe;
   }
   
-  public static boolean xn()
+  public static boolean yK()
   {
-    return bDQ >= 9;
+    return bOe >= 9;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.a.b.e
  * JD-Core Version:    0.7.0.1
  */

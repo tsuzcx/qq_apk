@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import com.tencent.mm.plugin.scanner.model.ScanPoint;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "", "draw", "", "canvas", "Landroid/graphics/Canvas;", "isAnimating", "", "onViewSizeChanged", "width", "", "height", "release", "setAnimationDots", "points", "", "Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "pointCount", "([Lcom/tencent/mm/plugin/scanner/model/ScanPoint;I)V", "setDuration", "duration", "", "startAnimation", "listener", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView$AnimationListener;", "stopAnimation", "updateViewSize", "forceUpdateDotsCenter", "AnimationListener", "plugin-scan_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "", "draw", "", "canvas", "Landroid/graphics/Canvas;", "isAnimating", "", "onViewSizeChanged", "width", "", "height", "release", "setAnimationDots", "points", "", "Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "pointCount", "([Lcom/tencent/mm/plugin/scanner/model/ScanPoint;I)V", "setDuration", "duration", "", "startAnimation", "listener", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView$AnimationListener;", "stopAnimation", "updateViewSize", "forceUpdateDotsCenter", "AnimationListener", "plugin-scan_release"})
 public abstract interface c
 {
   public abstract void a(a parama);
@@ -23,7 +23,7 @@ public abstract interface c
   
   public abstract void v(int paramInt1, int paramInt2, boolean paramBoolean);
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView$AnimationListener;", "", "onAnimationEnd", "", "dotsGroupView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "onAnimationStart", "plugin-scan_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView$AnimationListener;", "", "onAnimationEnd", "", "dotsGroupView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "onAnimationStart", "plugin-scan_release"})
   public static abstract interface a
   {
     public abstract void a(c paramc);

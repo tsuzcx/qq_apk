@@ -17,16 +17,15 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.a.b;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.c.l.a;
+import com.tencent.mm.plugin.webview.j.j;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.tools.o;
 import com.tencent.mm.ui.widget.MMWebView;
@@ -35,62 +34,62 @@ import java.util.Map;
 
 public final class n
 {
-  static Map<String, Bundle> Cxp;
-  boolean CBa;
-  WebViewUI CBb;
-  View CBc;
-  private View CBd;
-  private TextView CBe;
-  private long CBf;
-  MMWebView gGd;
-  private ao handler;
-  String lUn;
-  private final long ySC;
+  static Map<String, Bundle> EaX;
+  private final long Ake;
+  boolean EeI;
+  WebViewUI EeJ;
+  View EeK;
+  private View EeL;
+  private TextView EeM;
+  private long EeN;
+  MMWebView gZN;
+  private ap handler;
+  String mue;
   
   static
   {
     AppMethodBeat.i(175837);
-    Cxp = new HashMap();
+    EaX = new HashMap();
     AppMethodBeat.o(175837);
   }
   
   public n(WebViewUI paramWebViewUI)
   {
     AppMethodBeat.i(175830);
-    this.CBa = false;
-    this.handler = new ao(Looper.getMainLooper());
-    this.CBc = null;
-    this.CBd = null;
-    this.CBe = null;
-    this.CBf = SystemClock.elapsedRealtime();
-    this.ySC = 175L;
-    this.CBb = paramWebViewUI;
+    this.EeI = false;
+    this.handler = new ap(Looper.getMainLooper());
+    this.EeK = null;
+    this.EeL = null;
+    this.EeM = null;
+    this.EeN = SystemClock.elapsedRealtime();
+    this.Ake = 175L;
+    this.EeJ = paramWebViewUI;
     AppMethodBeat.o(175830);
   }
   
-  static String Tk(String paramString)
+  static String WQ(String paramString)
   {
     AppMethodBeat.i(175834);
-    if ((paramString == null) || (g.ab(b.class) == null) || (!((b)g.ab(b.class)).Tg(paramString)))
+    if ((paramString == null) || (g.ab(com.tencent.mm.plugin.brandservice.a.b.class) == null) || (!((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).WM(paramString)))
     {
       AppMethodBeat.o(175834);
       return paramString;
     }
-    paramString = ((b)g.ab(b.class)).Tk(paramString);
+    paramString = ((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).WQ(paramString);
     AppMethodBeat.o(175834);
     return paramString;
   }
   
-  public static a aDs(String paramString)
+  public static a aIT(String paramString)
   {
     AppMethodBeat.i(175835);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(175835);
       return null;
     }
-    paramString = Tk(paramString);
-    Object localObject = (Bundle)Cxp.get(paramString);
+    paramString = WQ(paramString);
+    Object localObject = (Bundle)EaX.get(paramString);
     if (localObject == null)
     {
       AppMethodBeat.o(175835);
@@ -101,66 +100,66 @@ public final class n
     String str2 = ((Bundle)localObject).getString("key_bag_icon");
     boolean bool = ((Bundle)localObject).getBoolean("key_show_menu_onfo", false);
     localObject = new a();
-    ((a)localObject).CBj = str2;
-    ((a)localObject).CBi = paramString;
-    ((a)localObject).hyx = str1;
-    ((a)localObject).CsU = bool;
+    ((a)localObject).EeR = str2;
+    ((a)localObject).EeQ = paramString;
+    ((a)localObject).hQR = str1;
+    ((a)localObject).DWz = bool;
     AppMethodBeat.o(175835);
     return localObject;
   }
   
   @SuppressLint({"ResourceType"})
-  private void eEB()
+  private void eTt()
   {
     AppMethodBeat.i(80403);
-    View localView = this.CBb.findViewById(2131306922);
+    View localView = this.EeJ.findViewById(2131306922);
     if (localView != null) {
-      localView.setBackgroundColor(eEF());
+      localView.setBackgroundColor(eTx());
     }
-    int i = this.CBb.getResources().getColor(2131101168);
-    localView = this.CBb.findViewById(2131307119);
+    int i = this.EeJ.getResources().getColor(2131101168);
+    localView = this.EeJ.findViewById(2131307119);
     if ((localView != null) && ((localView instanceof TextView))) {
       ((TextView)localView).setTextColor(i);
     }
-    localView = this.CBb.findViewById(2131301014);
+    localView = this.EeJ.findViewById(2131301014);
     if ((localView != null) && ((localView instanceof TextView))) {
       ((TextView)localView).setTextColor(i);
     }
-    localView = this.CBb.findViewById(2131307118);
+    localView = this.EeJ.findViewById(2131307118);
     if ((localView != null) && ((localView instanceof ImageView))) {
       ((ImageView)localView).setImageResource(2131691440);
     }
     AppMethodBeat.o(80403);
   }
   
-  private void eEC()
+  private void eTu()
   {
     AppMethodBeat.i(80404);
-    int i = eEF();
-    this.CBb.setActionbarColor(i);
-    this.CBb.showActionbarLine();
+    int i = eTx();
+    this.EeJ.setActionbarColor(i);
+    this.EeJ.showActionbarLine();
     AppMethodBeat.o(80404);
   }
   
-  private boolean eEE()
+  private boolean eTw()
   {
     AppMethodBeat.i(80406);
-    if (this.CBb == null)
+    if (this.EeJ == null)
     {
       AppMethodBeat.o(80406);
       return false;
     }
-    String str2 = this.lUn;
+    String str2 = this.mue;
     String str1 = str2;
-    if (bs.isNullOrNil(str2)) {
-      str1 = this.CBb.bLL();
+    if (bt.isNullOrNil(str2)) {
+      str1 = this.EeJ.bQm();
     }
-    boolean bool = com.tencent.mm.plugin.webview.j.i.aEd(str1);
+    boolean bool = j.aJF(str1);
     AppMethodBeat.o(80406);
     return bool;
   }
   
-  public final void aL(final Bundle paramBundle)
+  public final void aQ(final Bundle paramBundle)
   {
     AppMethodBeat.i(175831);
     paramBundle = new Runnable()
@@ -174,124 +173,171 @@ public final class n
           return;
         }
         boolean bool = paramBundle.getBoolean("key_current_info_show");
-        Bundle localBundle = (Bundle)n.Yt().get(n.aDt(n.b(n.this)));
+        Bundle localBundle = (Bundle)n.aaV().get(n.aIU(n.b(n.this)));
         if (localBundle != null) {
           localBundle.putBoolean("key_current_info_show", bool);
         }
         if (bool)
         {
-          n.this.eEG();
+          n.this.eTy();
           AppMethodBeat.o(175825);
           return;
         }
-        n.this.eEH();
+        n.this.eTz();
         AppMethodBeat.o(175825);
       }
     };
-    h.JZN.aQ(paramBundle);
+    h.LTJ.aP(paramBundle);
     AppMethodBeat.o(175831);
   }
   
-  final void eEA()
+  final boolean eTr()
+  {
+    AppMethodBeat.i(80401);
+    if (this.EeJ.bzp())
+    {
+      AppMethodBeat.o(80401);
+      return true;
+    }
+    Intent localIntent = this.EeJ.getIntent();
+    if (localIntent != null)
+    {
+      if (localIntent.getBooleanExtra("disable_light_actionbar_style", false))
+      {
+        ad.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, KDisableLightActionbarStyle is true");
+        AppMethodBeat.o(80401);
+        return true;
+      }
+      String str = localIntent.getStringExtra("status_bar_style");
+      if ((!bt.isNullOrNil(str)) && (str.equals("black")))
+      {
+        ad.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, customized by KStatusBarStyle");
+        AppMethodBeat.o(80401);
+        return true;
+      }
+      if (localIntent.getIntExtra("customize_status_bar_color", 0) != 0)
+      {
+        ad.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, customized by KCustomizeStatusBarColor");
+        AppMethodBeat.o(80401);
+        return true;
+      }
+      if (localIntent.getBooleanExtra("open_custom_style_url", false))
+      {
+        ad.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, customized by KOpenCustomStyleUrl");
+        AppMethodBeat.o(80401);
+        return true;
+      }
+      if (localIntent.getBooleanExtra("show_full_screen", false))
+      {
+        ad.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, webview is fullscreen");
+        AppMethodBeat.o(80401);
+        return true;
+      }
+    }
+    AppMethodBeat.o(80401);
+    return false;
+  }
+  
+  final void eTs()
   {
     AppMethodBeat.i(80402);
-    eEC();
-    eEB();
-    eED();
+    eTu();
+    eTt();
+    eTv();
     AppMethodBeat.o(80402);
   }
   
-  final void eED()
+  final void eTv()
   {
     AppMethodBeat.i(80405);
-    if (!eEE())
+    if (!eTw())
     {
-      this.CBb.showActionbarLine();
+      this.EeJ.showActionbarLine();
       AppMethodBeat.o(80405);
       return;
     }
-    if ((this.gGd != null) && (this.gGd.getWebScrollY() > 0))
+    if ((this.gZN != null) && (this.gZN.getWebScrollY() > 0))
     {
-      this.CBb.showActionbarLine();
+      this.EeJ.showActionbarLine();
       AppMethodBeat.o(80405);
       return;
     }
-    this.CBb.hideActionbarLine();
+    this.EeJ.hideActionbarLine();
     AppMethodBeat.o(80405);
   }
   
-  public final int eEF()
+  public final int eTx()
   {
     AppMethodBeat.i(80407);
-    if (eEE())
+    if (eTw())
     {
-      i = this.CBb.getResources().getColor(2131101167);
+      i = this.EeJ.getResources().getColor(2131101167);
       AppMethodBeat.o(80407);
       return i;
     }
-    int i = this.CBb.getResources().getColor(2131101161);
+    int i = this.EeJ.getResources().getColor(2131101161);
     AppMethodBeat.o(80407);
     return i;
   }
   
-  public final void eEG()
+  public final void eTy()
   {
     AppMethodBeat.i(175832);
-    Object localObject1 = (Bundle)Cxp.get(Tk(this.lUn));
-    if ((localObject1 == null) || (this.CBb == null))
+    Object localObject1 = (Bundle)EaX.get(WQ(this.mue));
+    if ((localObject1 == null) || (this.EeJ == null))
     {
-      ac.w("MicroMsg.WebViewUIStyleHelper", "showTopBar not ready %s", new Object[] { this.lUn });
+      ad.w("MicroMsg.WebViewUIStyleHelper", "showTopBar not ready %s", new Object[] { this.mue });
       AppMethodBeat.o(175832);
       return;
     }
-    if (this.CBb.CyP)
+    if (this.EeJ.Ecy)
     {
-      ac.i("MicroMsg.WebViewUIStyleHelper", "fixedTitle not show topbar");
+      ad.i("MicroMsg.WebViewUIStyleHelper", "fixedTitle not show topbar");
       AppMethodBeat.o(175832);
       return;
     }
-    this.CBb.getController().setMMTitleVisibility(8);
-    if (this.CBc == null)
+    this.EeJ.getController().setMMTitleVisibility(8);
+    if (this.EeK == null)
     {
-      this.CBc = this.CBb.getLayoutInflater().inflate(2131496092, null);
-      this.CBd = this.CBc.findViewById(2131306927);
-      this.CBe = ((TextView)this.CBc.findViewById(2131302867));
-      this.CBe.setTextSize(1, 17.0F);
-      ((LinearLayout)this.CBb.getController().mActionBar.getCustomView()).addView(this.CBc);
-      localObject2 = (LinearLayout.LayoutParams)this.CBc.getLayoutParams();
+      this.EeK = this.EeJ.getLayoutInflater().inflate(2131496092, null);
+      this.EeL = this.EeK.findViewById(2131306927);
+      this.EeM = ((TextView)this.EeK.findViewById(2131302867));
+      this.EeM.setTextSize(1, 17.0F);
+      ((LinearLayout)this.EeJ.getController().mActionBar.getCustomView()).addView(this.EeK);
+      localObject2 = (LinearLayout.LayoutParams)this.EeK.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject2).width = -1;
       ((LinearLayout.LayoutParams)localObject2).height = -1;
       ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-      this.CBc.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      this.EeK.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     }
     Object localObject2 = ((Bundle)localObject1).getString("key_brand_name");
     localObject1 = ((Bundle)localObject1).getString("key_brand_user_name");
-    ac.i("MicroMsg.WebViewUIStyleHelper", "showTopBar userName:%s, nickName:%s", new Object[] { localObject1, localObject2 });
-    if ((bs.isNullOrNil((String)localObject2)) || (bs.isNullOrNil((String)localObject1)))
+    ad.i("MicroMsg.WebViewUIStyleHelper", "showTopBar userName:%s, nickName:%s", new Object[] { localObject1, localObject2 });
+    if ((bt.isNullOrNil((String)localObject2)) || (bt.isNullOrNil((String)localObject1)))
     {
-      ac.w("MicroMsg.WebViewUIStyleHelper", "showTopBar invalid param, userName %s, nickName %s", new Object[] { localObject1, localObject2 });
+      ad.w("MicroMsg.WebViewUIStyleHelper", "showTopBar invalid param, userName %s, nickName %s", new Object[] { localObject1, localObject2 });
       AppMethodBeat.o(175832);
       return;
     }
-    this.CBb.setMMTitle("");
-    if (this.CBc.getVisibility() == 8) {
-      this.CBc.setVisibility(4);
+    this.EeJ.setMMTitle("");
+    if (this.EeK.getVisibility() == 8) {
+      this.EeK.setVisibility(4);
     }
-    this.CBe.setText(k.b(this.CBb, (CharSequence)localObject2, this.CBe.getTextSize()));
-    aj.a(this.CBe.getPaint(), 0.8F);
-    this.CBc.post(new Runnable()
+    this.EeM.setText(k.b(this.EeJ, (CharSequence)localObject2, this.EeM.getTextSize()));
+    al.a(this.EeM.getPaint(), 0.8F);
+    this.EeK.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(175826);
         float f1 = n.c(n.this).getX();
         int i = (int)(n.c(n.this).getWidth() / 2 + f1);
-        int j = a.ig(n.a(n.this)) / 2;
+        int j = com.tencent.mm.cc.a.ip(n.a(n.this)) / 2;
         if (i != j)
         {
           float f2 = j - i + f1;
           n.c(n.this).setX(f2);
-          ac.d("MicroMsg.WebViewUIStyleHelper", "showTopBar x = %f, new x=%f", new Object[] { Float.valueOf(f1), Float.valueOf(f2) });
+          ad.d("MicroMsg.WebViewUIStyleHelper", "showTopBar x = %f, new x=%f", new Object[] { Float.valueOf(f1), Float.valueOf(f2) });
         }
         if (n.c(n.this).getVisibility() != 0) {
           n.c(n.this).setVisibility(0);
@@ -299,20 +345,25 @@ public final class n
         AppMethodBeat.o(175826);
       }
     });
-    this.CBd.setOnClickListener(new View.OnClickListener()
+    this.EeL.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(175828);
-        if ((n.a(n.this) == null) || (n.a(n.this).CAj == null))
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/WebViewUIStyleHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if ((n.a(n.this) == null) || (n.a(n.this).EdR == null))
         {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/WebViewUIStyleHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(175828);
           return;
         }
         if (SystemClock.elapsedRealtime() - n.d(n.this) < 175L)
         {
           n.e(n.this).removeCallbacksAndMessages(null);
-          n.a(n.this).eEc();
+          n.a(n.this).eSU();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/WebViewUIStyleHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(175828);
           return;
         }
@@ -322,96 +373,50 @@ public final class n
           public final void run()
           {
             AppMethodBeat.i(175827);
-            n.a(n.this).CAj.fs("Contact_Scene", 154);
-            n.a(n.this).aDq(n.3.this.hyc);
-            if (n.a(n.this).Cjc != null)
+            n.a(n.this).EdR.fP("Contact_Scene", 154);
+            n.a(n.this).aIR(n.3.this.fNT);
+            if (n.a(n.this).DzP != null)
             {
-              f localf = n.a(n.this).Cjc;
-              if (localf.Apr)
+              f localf = n.a(n.this).DzP;
+              if (localf.BHY)
               {
-                String str = l.a.b("topbar:click", null, localf.Cjz, localf.CjA);
-                localf.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", null);
+                String str = l.a.b("topbar:click", null, localf.DMD, localf.vJP);
+                localf.DMv.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", null);
               }
             }
             n.e(n.this).removeCallbacksAndMessages(null);
             AppMethodBeat.o(175827);
           }
         }, 175L);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/WebViewUIStyleHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(175828);
       }
     });
-    o.gD(this.CBd);
+    o.gU(this.EeL);
     AppMethodBeat.o(175832);
   }
   
-  public final void eEH()
+  public final void eTz()
   {
     AppMethodBeat.i(175833);
-    this.CBb.getController().setMMTitleVisibility(0);
-    if (this.CBc != null) {
-      this.CBc.setVisibility(8);
+    this.EeJ.getController().setMMTitleVisibility(0);
+    if (this.EeK != null) {
+      this.EeK.setVisibility(8);
     }
     AppMethodBeat.o(175833);
   }
   
-  final boolean eEz()
-  {
-    AppMethodBeat.i(80401);
-    if (this.CBb.bvj())
-    {
-      AppMethodBeat.o(80401);
-      return true;
-    }
-    Intent localIntent = this.CBb.getIntent();
-    if (localIntent != null)
-    {
-      if (localIntent.getBooleanExtra("disable_light_actionbar_style", false))
-      {
-        ac.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, KDisableLightActionbarStyle is true");
-        AppMethodBeat.o(80401);
-        return true;
-      }
-      String str = localIntent.getStringExtra("status_bar_style");
-      if ((!bs.isNullOrNil(str)) && (str.equals("black")))
-      {
-        ac.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, customized by KStatusBarStyle");
-        AppMethodBeat.o(80401);
-        return true;
-      }
-      if (localIntent.getIntExtra("customize_status_bar_color", 0) != 0)
-      {
-        ac.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, customized by KCustomizeStatusBarColor");
-        AppMethodBeat.o(80401);
-        return true;
-      }
-      if (localIntent.getBooleanExtra("open_custom_style_url", false))
-      {
-        ac.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, customized by KOpenCustomStyleUrl");
-        AppMethodBeat.o(80401);
-        return true;
-      }
-      if (localIntent.getBooleanExtra("show_full_screen", false))
-      {
-        ac.i("MicroMsg.WebViewUIStyleHelper", "checkDisableLightActionbarStyle, webview is fullscreen");
-        AppMethodBeat.o(80401);
-        return true;
-      }
-    }
-    AppMethodBeat.o(80401);
-    return false;
-  }
-  
   public static final class a
   {
-    public String CBi;
-    public String CBj;
-    public boolean CsU;
-    public String hyx;
+    public boolean DWz;
+    public String EeQ;
+    public String EeR;
+    public String hQR;
     
     public final boolean isDataValid()
     {
       AppMethodBeat.i(175829);
-      if ((!bs.isNullOrNil(this.CBj)) && (!bs.isNullOrNil(this.CBi)) && (!bs.isNullOrNil(this.hyx)) && (this.CsU))
+      if ((!bt.isNullOrNil(this.EeR)) && (!bt.isNullOrNil(this.EeQ)) && (!bt.isNullOrNil(this.hQR)) && (this.DWz))
       {
         AppMethodBeat.o(175829);
         return true;

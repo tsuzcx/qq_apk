@@ -8,11 +8,11 @@ import com.bumptech.glide.c.k;
 public final class h
   implements k<a, Bitmap>
 {
-  private final e aAt;
+  private final e aCk;
   
   public h(e parame)
   {
-    this.aAt = parame;
+    this.aCk = parame;
   }
 }
 

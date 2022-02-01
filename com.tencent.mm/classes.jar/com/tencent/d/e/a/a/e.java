@@ -2,7 +2,7 @@ package com.tencent.d.e.a.a;
 
 public abstract interface e
 {
-  public abstract void aSh();
+  public abstract void aVt();
 }
 
 

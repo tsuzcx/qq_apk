@@ -7,24 +7,24 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarWaveView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "audioPlayer", "Landroid/media/MediaPlayer;", "rotateAnim", "Landroid/view/animation/Animation;", "rotateWaveIV", "Landroid/view/View;", "init", "", "release", "startWaves", "stopWaves", "Companion", "plugin-radar_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/ui/RadarWaveView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "audioPlayer", "Landroid/media/MediaPlayer;", "rotateAnim", "Landroid/view/animation/Animation;", "rotateWaveIV", "Landroid/view/View;", "init", "", "release", "startWaves", "stopWaves", "Companion", "plugin-radar_release"})
 public final class RadarWaveView
   extends RelativeLayout
 {
   static final String TAG = "MicroMsg.RadarWaveView";
-  public static final RadarWaveView.a wei;
-  MediaPlayer wef;
-  View weg;
-  Animation weh;
+  public static final RadarWaveView.a xlR;
+  MediaPlayer xlO;
+  View xlP;
+  Animation xlQ;
   
   static
   {
     AppMethodBeat.i(138789);
-    wei = new RadarWaveView.a((byte)0);
+    xlR = new RadarWaveView.a((byte)0);
     TAG = "MicroMsg.RadarWaveView";
     AppMethodBeat.o(138789);
   }
@@ -36,27 +36,27 @@ public final class RadarWaveView
     AppMethodBeat.o(138788);
   }
   
-  public final void dtb()
+  public final void dDy()
   {
     AppMethodBeat.i(138786);
-    ac.d(TAG, "start wave animation");
+    ad.d(TAG, "start wave animation");
     setVisibility(0);
-    View localView = this.weg;
+    View localView = this.xlP;
     if (localView == null) {
-      k.fOy();
+      p.gfZ();
     }
-    localView.startAnimation(this.weh);
+    localView.startAnimation(this.xlQ);
     AppMethodBeat.o(138786);
   }
   
-  public final void dtc()
+  public final void dDz()
   {
     AppMethodBeat.i(138787);
-    ac.d(TAG, "stop wave animation. forces, %d, %d", new Object[] { Integer.valueOf(getMeasuredHeight()), Integer.valueOf(getMeasuredWidth()) });
+    ad.d(TAG, "stop wave animation. forces, %d, %d", new Object[] { Integer.valueOf(getMeasuredHeight()), Integer.valueOf(getMeasuredWidth()) });
     setVisibility(4);
-    View localView = this.weg;
+    View localView = this.xlP;
     if (localView == null) {
-      k.fOy();
+      p.gfZ();
     }
     localView.clearAnimation();
     AppMethodBeat.o(138787);
@@ -64,7 +64,7 @@ public final class RadarWaveView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.RadarWaveView
  * JD-Core Version:    0.7.0.1
  */

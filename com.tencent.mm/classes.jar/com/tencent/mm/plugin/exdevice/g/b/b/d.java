@@ -3,11 +3,9 @@ package com.tencent.mm.plugin.exdevice.g.b.b;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.g.b.a;
-import com.tencent.mm.plugin.exdevice.model.ad;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import junit.framework.Assert;
 
@@ -41,9 +39,9 @@ public final class d
     {
       Assert.assertTrue(bool);
       insert(paramd);
-      ac.d("MicroMsg.ExdeviceRankInfoStg", "hy: insert success");
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ExdeviceRankInfoStg", "hy: insert success");
       if (paramBoolean) {
-        ad.cgY().a("HardDeviceRankInfo", new com.tencent.mm.plugin.exdevice.g.b.d(paramd.field_rankID, paramd.field_appusername, paramd.field_username));
+        com.tencent.mm.plugin.exdevice.model.ad.clC().a("HardDeviceRankInfo", new com.tencent.mm.plugin.exdevice.g.b.d(paramd.field_rankID, paramd.field_appusername, paramd.field_username));
       }
       AppMethodBeat.o(23581);
       return true;
@@ -55,10 +53,10 @@ public final class d
     Object localObject1 = null;
     AppMethodBeat.i(23577);
     Object localObject2 = String.format("select *, rowid from %s where %s = ? and %s = ? limit 1", new Object[] { "HardDeviceRankInfo", "rankID", "username" });
-    localObject2 = this.db.a((String)localObject2, new String[] { bs.bG(paramd.pBx, ""), bs.bG(paramd.username, "") }, 2);
+    localObject2 = this.db.a((String)localObject2, new String[] { bt.bI(paramd.qfc, ""), bt.bI(paramd.username, "") }, 2);
     if (localObject2 == null)
     {
-      ac.e("MicroMsg.ExdeviceRankInfoStg", "Get no rank in DB");
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ExdeviceRankInfoStg", "Get no rank in DB");
       AppMethodBeat.o(23577);
       return null;
     }
@@ -72,7 +70,7 @@ public final class d
       ((Cursor)localObject2).close();
       AppMethodBeat.o(23577);
       return paramd;
-      ac.d("MicroMsg.ExdeviceRankInfoStg", "hy: no record");
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ExdeviceRankInfoStg", "hy: no record");
       paramd = localObject1;
     }
   }
@@ -104,9 +102,9 @@ public final class d
       locald.field_likecount = paramd.field_likecount;
       locald.field_selfLikeState = paramd.field_selfLikeState;
       update(locald, new String[] { "rankID", "username" });
-      ac.d("MicroMsg.ExdeviceRankInfoStg", "hy: update success");
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ExdeviceRankInfoStg", "hy: update success");
       if (paramBoolean) {
-        ad.cgY().a("HardDeviceRankInfo", new com.tencent.mm.plugin.exdevice.g.b.d(paramd.field_rankID, paramd.field_appusername, paramd.field_username));
+        com.tencent.mm.plugin.exdevice.model.ad.clC().a("HardDeviceRankInfo", new com.tencent.mm.plugin.exdevice.g.b.d(paramd.field_rankID, paramd.field_appusername, paramd.field_username));
       }
       AppMethodBeat.o(23580);
       return true;
@@ -118,26 +116,26 @@ public final class d
   public final void f(String paramString, ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.d> paramArrayList)
   {
     AppMethodBeat.i(23578);
-    if ((bs.isNullOrNil(paramString)) || (paramArrayList == null))
+    if ((bt.isNullOrNil(paramString)) || (paramArrayList == null))
     {
-      ac.w("MicroMsg.ExdeviceRankInfoStg", "insertOrUpdateRankInfo failed, rank id is null or nil or data is null.");
+      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ExdeviceRankInfoStg", "insertOrUpdateRankInfo failed, rank id is null or nil or data is null.");
       AppMethodBeat.o(23578);
       return;
     }
-    ac.i("MicroMsg.ExdeviceRankInfoStg", "insertOrUpdateRankInfo, rankId(%s) , size(%d).", new Object[] { paramString, Integer.valueOf(paramArrayList.size()) });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceRankInfoStg", "insertOrUpdateRankInfo, rankId(%s) , size(%d).", new Object[] { paramString, Integer.valueOf(paramArrayList.size()) });
     int i = 0;
     while (i < paramArrayList.size())
     {
       a((com.tencent.mm.plugin.exdevice.g.b.a.d)paramArrayList.get(i), false);
       i += 1;
     }
-    ad.cgY().a("HardDeviceRankInfo", new com.tencent.mm.plugin.exdevice.g.b.d(paramString, null, null));
+    com.tencent.mm.plugin.exdevice.model.ad.clC().a("HardDeviceRankInfo", new com.tencent.mm.plugin.exdevice.g.b.d(paramString, null, null));
     AppMethodBeat.o(23578);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.b.d
  * JD-Core Version:    0.7.0.1
  */

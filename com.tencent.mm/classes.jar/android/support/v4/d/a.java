@@ -5,20 +5,20 @@ import java.util.Locale;
 
 public final class a
 {
-  static final d LP = e.Mo;
-  private static final String LQ = Character.toString('‎');
-  private static final String LR = Character.toString('‏');
-  static final a LS = new a(false, 2, LP);
-  static final a LT = new a(true, 2, LP);
-  private final int DU;
-  private final boolean LU;
-  private final d LV;
+  static final d NH = e.Og;
+  private static final String NI = Character.toString('‎');
+  private static final String NJ = Character.toString('‏');
+  static final a NK = new a(false, 2, NH);
+  static final a NL = new a(true, 2, NH);
+  private final int FL;
+  private final boolean NM;
+  private final d NN;
   
   private a(boolean paramBoolean, int paramInt, d paramd)
   {
-    this.LU = paramBoolean;
-    this.DU = paramInt;
-    this.LV = paramd;
+    this.NM = paramBoolean;
+    this.FL = paramInt;
+    this.NN = paramd;
   }
   
   private CharSequence a(CharSequence paramCharSequence, d paramd)
@@ -31,7 +31,7 @@ public final class a
     int k;
     label56:
     boolean bool2;
-    if ((this.DU & 0x2) != 0)
+    if ((this.FL & 0x2) != 0)
     {
       k = 1;
       if (k != 0)
@@ -39,16 +39,16 @@ public final class a
         if (!bool1) {
           break label207;
         }
-        paramd = e.Mn;
+        paramd = e.Of;
         bool2 = paramd.a(paramCharSequence, paramCharSequence.length());
-        if ((this.LU) || ((!bool2) && (n(paramCharSequence) != 1))) {
+        if ((this.NM) || ((!bool2) && (n(paramCharSequence) != 1))) {
           break label214;
         }
-        paramd = LQ;
+        paramd = NI;
         label95:
         localSpannableStringBuilder.append(paramd);
       }
-      if (bool1 == this.LU) {
+      if (bool1 == this.NM) {
         break label254;
       }
       if (!bool1) {
@@ -63,13 +63,13 @@ public final class a
       if (!bool1) {
         break label264;
       }
-      paramd = e.Mn;
+      paramd = e.Of;
       label152:
       bool1 = paramd.a(paramCharSequence, paramCharSequence.length());
-      if ((this.LU) || ((!bool1) && (m(paramCharSequence) != 1))) {
+      if ((this.NM) || ((!bool1) && (m(paramCharSequence) != 1))) {
         break label271;
       }
-      paramCharSequence = LQ;
+      paramCharSequence = NI;
     }
     for (;;)
     {
@@ -78,12 +78,12 @@ public final class a
       k = 0;
       break;
       label207:
-      paramd = e.Mm;
+      paramd = e.Oe;
       break label56;
       label214:
-      if ((this.LU) && ((!bool2) || (n(paramCharSequence) == -1)))
+      if ((this.NM) && ((!bool2) || (n(paramCharSequence) == -1)))
       {
-        paramd = LR;
+        paramd = NJ;
         break label95;
       }
       paramd = "";
@@ -95,11 +95,11 @@ public final class a
       localSpannableStringBuilder.append(paramCharSequence);
       break label143;
       label264:
-      paramd = e.Mm;
+      paramd = e.Oe;
       break label152;
       label271:
-      if ((this.LU) && ((!bool1) || (m(paramCharSequence) == -1))) {
-        paramCharSequence = LR;
+      if ((this.NM) && ((!bool1) || (m(paramCharSequence) == -1))) {
+        paramCharSequence = NJ;
       } else {
         paramCharSequence = "";
       }
@@ -111,405 +111,44 @@ public final class a
     return f.getLayoutDirectionFromLocale(paramLocale) == 1;
   }
   
-  public static a eK()
+  public static a fb()
   {
     a locala = new a();
-    if ((locala.DU == 2) && (locala.LW == LP))
+    if ((locala.FL == 2) && (locala.NO == NH))
     {
-      if (locala.LU) {
-        return LT;
+      if (locala.NM) {
+        return NL;
       }
-      return LS;
+      return NK;
     }
-    return new a(locala.LU, locala.DU, locala.LW);
+    return new a(locala.NM, locala.FL, locala.NO);
   }
   
   private static int m(CharSequence paramCharSequence)
   {
-    return new b(paramCharSequence).eM();
+    return new a.b(paramCharSequence).fd();
   }
   
   private static int n(CharSequence paramCharSequence)
   {
-    return new b(paramCharSequence).eL();
+    return new a.b(paramCharSequence).fc();
   }
   
   public final CharSequence unicodeWrap(CharSequence paramCharSequence)
   {
-    return a(paramCharSequence, this.LV);
+    return a(paramCharSequence, this.NN);
   }
   
   public static final class a
   {
-    int DU = 2;
-    boolean LU = a.a(Locale.getDefault());
-    d LW = a.LP;
-  }
-  
-  static final class b
-  {
-    private static final byte[] LX = new byte[1792];
-    private final boolean LY;
-    private int LZ;
-    private char Ma;
-    private final int length;
-    private final CharSequence text;
-    
-    static
-    {
-      int i = 0;
-      while (i < 1792)
-      {
-        LX[i] = Character.getDirectionality(i);
-        i += 1;
-      }
-    }
-    
-    b(CharSequence paramCharSequence)
-    {
-      this.text = paramCharSequence;
-      this.LY = false;
-      this.length = paramCharSequence.length();
-    }
-    
-    private static byte a(char paramChar)
-    {
-      if (paramChar < '܀') {
-        return LX[paramChar];
-      }
-      return Character.getDirectionality(paramChar);
-    }
-    
-    private byte eN()
-    {
-      this.Ma = this.text.charAt(this.LZ);
-      byte b1;
-      if (Character.isHighSurrogate(this.Ma))
-      {
-        int i = Character.codePointAt(this.text, this.LZ);
-        this.LZ += Character.charCount(i);
-        b1 = Character.getDirectionality(i);
-      }
-      do
-      {
-        byte b2;
-        do
-        {
-          return b1;
-          this.LZ += 1;
-          b2 = a(this.Ma);
-          b1 = b2;
-        } while (!this.LY);
-        if (this.Ma == '<') {
-          return eP();
-        }
-        b1 = b2;
-      } while (this.Ma != '&');
-      return eR();
-    }
-    
-    private byte eO()
-    {
-      this.Ma = this.text.charAt(this.LZ - 1);
-      byte b1;
-      if (Character.isLowSurrogate(this.Ma))
-      {
-        int i = Character.codePointBefore(this.text, this.LZ);
-        this.LZ -= Character.charCount(i);
-        b1 = Character.getDirectionality(i);
-      }
-      do
-      {
-        byte b2;
-        do
-        {
-          return b1;
-          this.LZ -= 1;
-          b2 = a(this.Ma);
-          b1 = b2;
-        } while (!this.LY);
-        if (this.Ma == '>') {
-          return eQ();
-        }
-        b1 = b2;
-      } while (this.Ma != ';');
-      return eS();
-    }
-    
-    private byte eP()
-    {
-      int j = this.LZ;
-      for (;;)
-      {
-        if (this.LZ >= this.length) {
-          break label135;
-        }
-        CharSequence localCharSequence = this.text;
-        int k = this.LZ;
-        this.LZ = (k + 1);
-        this.Ma = localCharSequence.charAt(k);
-        if (this.Ma == '>') {
-          return 12;
-        }
-        if ((this.Ma == '"') || (this.Ma == '\''))
-        {
-          k = this.Ma;
-          if (this.LZ < this.length)
-          {
-            localCharSequence = this.text;
-            int m = this.LZ;
-            this.LZ = (m + 1);
-            int i = localCharSequence.charAt(m);
-            this.Ma = i;
-            if (i != k) {
-              break;
-            }
-          }
-        }
-      }
-      label135:
-      this.LZ = j;
-      this.Ma = '<';
-      return 13;
-    }
-    
-    private byte eQ()
-    {
-      int j = this.LZ;
-      for (;;)
-      {
-        if (this.LZ <= 0) {
-          break label136;
-        }
-        CharSequence localCharSequence = this.text;
-        int k = this.LZ - 1;
-        this.LZ = k;
-        this.Ma = localCharSequence.charAt(k);
-        if (this.Ma == '<') {
-          return 12;
-        }
-        if (this.Ma == '>') {
-          break label136;
-        }
-        if ((this.Ma == '"') || (this.Ma == '\''))
-        {
-          k = this.Ma;
-          if (this.LZ > 0)
-          {
-            localCharSequence = this.text;
-            int m = this.LZ - 1;
-            this.LZ = m;
-            int i = localCharSequence.charAt(m);
-            this.Ma = i;
-            if (i != k) {
-              break;
-            }
-          }
-        }
-      }
-      label136:
-      this.LZ = j;
-      this.Ma = '>';
-      return 13;
-    }
-    
-    private byte eR()
-    {
-      char c;
-      do
-      {
-        if (this.LZ >= this.length) {
-          break;
-        }
-        CharSequence localCharSequence = this.text;
-        int i = this.LZ;
-        this.LZ = (i + 1);
-        c = localCharSequence.charAt(i);
-        this.Ma = c;
-      } while (c != ';');
-      return 12;
-    }
-    
-    private byte eS()
-    {
-      int i = this.LZ;
-      do
-      {
-        if (this.LZ <= 0) {
-          break;
-        }
-        CharSequence localCharSequence = this.text;
-        int j = this.LZ - 1;
-        this.LZ = j;
-        this.Ma = localCharSequence.charAt(j);
-        if (this.Ma == '&') {
-          return 12;
-        }
-      } while (this.Ma != ';');
-      this.LZ = i;
-      this.Ma = ';';
-      return 13;
-    }
-    
-    final int eL()
-    {
-      this.LZ = 0;
-      int j = 0;
-      int k = 0;
-      int i = 0;
-      while ((this.LZ < this.length) && (j == 0)) {
-        switch (eN())
-        {
-        case 9: 
-        case 3: 
-        case 4: 
-        case 5: 
-        case 6: 
-        case 7: 
-        case 8: 
-        case 10: 
-        case 11: 
-        case 12: 
-        case 13: 
-        default: 
-          j = i;
-          break;
-        case 14: 
-        case 15: 
-          i += 1;
-          k = -1;
-          break;
-        case 16: 
-        case 17: 
-          i += 1;
-          k = 1;
-          break;
-        case 18: 
-          i -= 1;
-          k = 0;
-          break;
-        case 0: 
-          if (i == 0) {
-            return -1;
-          }
-          j = i;
-          break;
-        case 1: 
-        case 2: 
-          if (i == 0) {
-            return 1;
-          }
-          j = i;
-        }
-      }
-      if (j == 0) {
-        return 0;
-      }
-      if (k != 0) {
-        return k;
-      }
-      for (;;)
-      {
-        if (this.LZ <= 0) {
-          break label268;
-        }
-        switch (eO())
-        {
-        default: 
-          break;
-        case 14: 
-        case 15: 
-          if (j == i) {
-            break;
-          }
-          i -= 1;
-          break;
-        case 16: 
-        case 17: 
-          if (j == i) {
-            return 1;
-          }
-          i -= 1;
-          break;
-        case 18: 
-          i += 1;
-        }
-      }
-      label268:
-      return 0;
-    }
-    
-    final int eM()
-    {
-      int m = 0;
-      this.LZ = this.length;
-      int j = 0;
-      int i = 0;
-      for (;;)
-      {
-        int k = m;
-        if (this.LZ > 0) {}
-        switch (eO())
-        {
-        case 9: 
-        case 3: 
-        case 4: 
-        case 5: 
-        case 6: 
-        case 7: 
-        case 8: 
-        case 10: 
-        case 11: 
-        case 12: 
-        case 13: 
-        default: 
-          if (j == 0) {
-            j = i;
-          }
-          break;
-        case 0: 
-          if (i == 0)
-          {
-            k = -1;
-            return k;
-          }
-          if (j == 0) {
-            j = i;
-          }
-          break;
-        case 14: 
-        case 15: 
-          if (j == i) {
-            return -1;
-          }
-          i -= 1;
-          break;
-        case 1: 
-        case 2: 
-          if (i == 0) {
-            return 1;
-          }
-          if (j == 0) {
-            j = i;
-          }
-          break;
-        case 16: 
-        case 17: 
-          if (j == i) {
-            return 1;
-          }
-          i -= 1;
-          break;
-        case 18: 
-          i += 1;
-        }
-      }
-    }
+    int FL = 2;
+    boolean NM = a.a(Locale.getDefault());
+    d NO = a.NH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.d.a
  * JD-Core Version:    0.7.0.1
  */

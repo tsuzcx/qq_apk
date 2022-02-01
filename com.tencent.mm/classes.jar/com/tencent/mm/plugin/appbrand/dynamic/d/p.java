@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class p
 {
-  private static volatile com.tencent.mm.aa.c.d jMy;
-  private static volatile com.tencent.mm.aa.c.d jMz;
+  private static volatile com.tencent.mm.ab.c.d kgJ;
+  private static volatile com.tencent.mm.ab.c.d kgK;
   
-  private static com.tencent.mm.aa.c.d bcv()
+  private static com.tencent.mm.ab.c.d bfZ()
   {
     AppMethodBeat.i(121346);
-    if (jMy == null) {}
+    if (kgJ == null) {}
     try
     {
-      if (jMy == null)
+      if (kgJ == null)
       {
-        locald = new com.tencent.mm.aa.c.d();
+        locald = new com.tencent.mm.ab.c.d();
         locald.a(new l(312));
         locald.a(new d(306));
         locald.a(new e(306));
@@ -25,9 +25,9 @@ public class p
         locald.a(new j(310));
         locald.a(new f(311));
         locald.a(new o());
-        jMy = locald;
+        kgJ = locald;
       }
-      com.tencent.mm.aa.c.d locald = jMy;
+      com.tencent.mm.ab.c.d locald = kgJ;
       AppMethodBeat.o(121346);
       return locald;
     }
@@ -37,15 +37,15 @@ public class p
     }
   }
   
-  private static com.tencent.mm.aa.c.d bcw()
+  private static com.tencent.mm.ab.c.d bga()
   {
     AppMethodBeat.i(121347);
-    if (jMz == null) {}
+    if (kgK == null) {}
     try
     {
-      if (jMz == null)
+      if (kgK == null)
       {
-        locald = new com.tencent.mm.aa.c.d();
+        locald = new com.tencent.mm.ab.c.d();
         locald.a(new l(289));
         locald.a(new d(266));
         locald.a(new e(266));
@@ -62,9 +62,9 @@ public class p
         locald.a(new h());
         locald.a(new g());
         locald.a(new a());
-        jMz = locald;
+        kgK = locald;
       }
-      com.tencent.mm.aa.c.d locald = jMz;
+      com.tencent.mm.ab.c.d locald = kgK;
       AppMethodBeat.o(121347);
       return locald;
     }
@@ -74,16 +74,16 @@ public class p
     }
   }
   
-  public static com.tencent.mm.aa.c.d rN(int paramInt)
+  public static com.tencent.mm.ab.c.d sp(int paramInt)
   {
     AppMethodBeat.i(121345);
     if (paramInt == 1)
     {
-      locald = bcw();
+      locald = bga();
       AppMethodBeat.o(121345);
       return locald;
     }
-    com.tencent.mm.aa.c.d locald = bcv();
+    com.tencent.mm.ab.c.d locald = bfZ();
     AppMethodBeat.o(121345);
     return locald;
   }

@@ -1,69 +1,72 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ce;
-import com.tencent.mm.plugin.finder.model.w;
-import com.tencent.mm.plugin.finder.model.w.a;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
+import com.tencent.mm.plugin.finder.convert.ae;
+import com.tencent.mm.plugin.finder.convert.af;
+import com.tencent.mm.plugin.finder.convert.o;
+import com.tencent.mm.view.recyclerview.c;
+import d.g.b.p;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/FinderMediaCacheStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getAllData", "", "getByMediaId", "mediaId", "", "getByOriginMediaId", "Ljava/util/LinkedList;", "originMediaId", "insert", "", "item", "isExist", "isExistWithOriginMediaId", "update", "Companion", "plugin-finder_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderLbsConfig;", "", "contextId", "", "clickTabContextId", "(Ljava/lang/String;Ljava/lang/String;)V", "getClickTabContextId", "()Ljava/lang/String;", "getContextId", "spanCount", "", "getSpanCount", "()I", "canFullSpan", "", "type", "getIfReachBottom", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "context", "Landroid/content/Context;", "getLayoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "getViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
 public final class l
-  extends j<w>
 {
-  private static final String[] SQL_CREATE;
-  public static final l.a rDP;
-  public final e db;
+  private final int atv;
+  final String qXj;
+  final String qXu;
   
-  static
+  private l(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(167026);
-    rDP = new l.a((byte)0);
-    w.a locala = w.rvg;
-    SQL_CREATE = new String[] { j.getCreateSQLs(w.access$getInfo$cp(), "FinderMediaCacheInfo") };
-    AppMethodBeat.o(167026);
+    AppMethodBeat.i(203684);
+    this.qXu = paramString1;
+    this.qXj = paramString2;
+    this.atv = 2;
+    AppMethodBeat.o(203684);
   }
   
-  public l(e parame)
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/storage/FinderLbsConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  public static final class a
+    implements c
   {
-    super(parame, w.access$getInfo$cp(), "FinderMediaCacheInfo", ce.INDEX_CREATE);
-    AppMethodBeat.i(167025);
-    this.db = parame;
-    AppMethodBeat.o(167025);
-  }
-  
-  public final boolean b(w paramw)
-  {
-    AppMethodBeat.i(167020);
-    k.h(paramw, "item");
-    boolean bool = super.insert((c)paramw);
-    AppMethodBeat.o(167020);
-    return bool;
-  }
-  
-  public final boolean c(w paramw)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(167022);
-    k.h(paramw, "item");
-    paramw = paramw.convertTo();
-    if (this.db.update(getTableName(), paramw, "mediaId = ?", new String[] { bs.nullAsNil(paramw.getAsString("mediaId")) }) > 0) {}
-    for (;;)
+    public a(d.g.a.b paramb) {}
+    
+    public final com.tencent.mm.view.recyclerview.b<?> AL(int paramInt)
     {
-      doNotify();
-      AppMethodBeat.o(167022);
-      return bool;
-      bool = false;
+      AppMethodBeat.i(203683);
+      switch (paramInt)
+      {
+      default: 
+        localObject = this.sxW;
+        if (localObject != null)
+        {
+          com.tencent.mm.view.recyclerview.b localb = (com.tencent.mm.view.recyclerview.b)((d.g.a.b)localObject).invoke(Integer.valueOf(paramInt));
+          localObject = localb;
+          if (localb != null) {}
+        }
+        else
+        {
+          p.gfZ();
+          localObject = null;
+        }
+        AppMethodBeat.o(203683);
+        return localObject;
+      case 1001: 
+        localObject = (com.tencent.mm.view.recyclerview.b)new af(this.syt.qXu, this.syt.qXj);
+        AppMethodBeat.o(203683);
+        return localObject;
+      case 1002: 
+        localObject = (com.tencent.mm.view.recyclerview.b)new ae();
+        AppMethodBeat.o(203683);
+        return localObject;
+      }
+      Object localObject = (com.tencent.mm.view.recyclerview.b)new o();
+      AppMethodBeat.o(203683);
+      return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.l
  * JD-Core Version:    0.7.0.1
  */

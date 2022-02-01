@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$Companion;", "", "()V", "ClearActiveDelay", "", "DEFAULT", "", "JUMP_BACK", "SAFE_LINE", "TAG", "", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$Companion;", "", "()V", "ClearActiveDelay", "", "DEFAULT", "", "JUMP_BACK", "SAFE_LINE", "TAG", "", "plugin-recordvideo_release"})
 public final class EditorItemContainer$a {}
 
 

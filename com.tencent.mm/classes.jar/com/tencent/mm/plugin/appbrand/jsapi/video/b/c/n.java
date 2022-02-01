@@ -9,75 +9,75 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class n
 {
-  private static AtomicInteger kRI;
-  private long jox;
-  private c kPP;
-  String kPQ;
-  Future<?> kRG;
-  boolean kRJ;
-  private int kRK;
-  private int kRL;
-  o kRM;
-  private final Object kRN;
-  int kRO;
-  int kRP;
-  long kRQ;
-  long kRR;
-  public boolean kRS;
-  String kRT;
-  String kRU;
-  public String kRV;
-  String kRW;
-  private int kRX;
-  private int kRY;
+  private static AtomicInteger lol;
+  private long jIt;
+  private c lmp;
+  String lmq;
+  private int loA;
+  private int loB;
+  Future<?> loj;
+  boolean lom;
+  private int lon;
+  private int loo;
+  o lop;
+  private final Object loq;
+  int lor;
+  int los;
+  long lot;
+  long lou;
+  public boolean lov;
+  String low;
+  String lox;
+  public String loy;
+  String loz;
   int priority;
   long startTime;
   String uuid;
   
   static
   {
-    AppMethodBeat.i(194316);
-    kRI = new AtomicInteger(10000);
-    AppMethodBeat.o(194316);
+    AppMethodBeat.i(206128);
+    lol = new AtomicInteger(10000);
+    AppMethodBeat.o(206128);
   }
   
   public n()
   {
-    AppMethodBeat.i(194308);
-    this.kRK = 0;
-    this.kRL = 0;
-    this.kRN = new Object();
-    this.kRP = 0;
+    AppMethodBeat.i(206120);
+    this.lon = 0;
+    this.loo = 0;
+    this.loq = new Object();
+    this.los = 0;
     this.priority = -1;
-    this.jox = -1L;
-    this.kPQ = "";
-    this.kPP = c.kQO;
-    this.kRO = kRI.incrementAndGet();
+    this.jIt = -1L;
+    this.lmq = "";
+    this.lmp = c.lnp;
+    this.lor = lol.incrementAndGet();
     this.startTime = System.currentTimeMillis();
-    AppMethodBeat.o(194308);
+    AppMethodBeat.o(206120);
   }
   
   public final void a(long paramLong, c paramc)
   {
     try
     {
-      AppMethodBeat.i(194310);
-      this.jox = paramLong;
-      this.kPP = paramc;
-      if (this.kPP.equals(c.kQQ)) {
-        this.kRP |= 0x8;
+      AppMethodBeat.i(206122);
+      this.jIt = paramLong;
+      this.lmp = paramc;
+      if (this.lmp.equals(c.lnr)) {
+        this.los |= 0x8;
       }
-      AppMethodBeat.o(194310);
+      AppMethodBeat.o(206122);
       return;
     }
     finally {}
   }
   
-  public final long aXm()
+  public final long baK()
   {
     try
     {
-      long l = this.jox;
+      long l = this.jIt;
       return l;
     }
     finally
@@ -87,11 +87,11 @@ public final class n
     }
   }
   
-  public final c bjR()
+  public final c bnC()
   {
     try
     {
-      c localc = this.kPP;
+      c localc = this.lmp;
       return localc;
     }
     finally
@@ -101,69 +101,82 @@ public final class n
     }
   }
   
-  public final long bjX()
+  public final long bnI()
   {
-    AppMethodBeat.i(194312);
+    AppMethodBeat.i(206124);
     long l = System.currentTimeMillis();
-    l = ((float)(this.kRX * 1000L) / (float)((l - this.startTime) * 1024L));
-    AppMethodBeat.o(194312);
+    l = ((float)(this.loA * 1000L) / (float)((l - this.startTime) * 1024L));
+    AppMethodBeat.o(206124);
     return l;
   }
   
-  public final void bjY()
+  public final void bnJ()
   {
-    AppMethodBeat.i(194313);
-    if (dS(2, 3))
+    AppMethodBeat.i(206125);
+    if (dU(2, 3))
     {
-      if (this.kRM != null) {
-        this.kRM.bka();
+      if (this.lop != null) {
+        this.lop.bnL();
       }
-      if (a.bjM().cuo) {
-        h.log(3, getLogTag(), "cancel success, seq=" + this.kRO);
+      if (a.bnx().cFj) {
+        h.log(3, getLogTag(), "cancel success, seq=" + this.lor);
       }
     }
-    AppMethodBeat.o(194313);
+    AppMethodBeat.o(206125);
   }
   
-  public final void bjZ()
+  public final void bnK()
   {
-    AppMethodBeat.i(194314);
-    if ((dS(1, 2)) && (a.bjM().cuo)) {
-      h.log(3, getLogTag(), "cancel proceeding, seq=" + this.kRO);
+    AppMethodBeat.i(206126);
+    if ((dU(1, 2)) && (a.bnx().cFj)) {
+      h.log(3, getLogTag(), "cancel proceeding, seq=" + this.lor);
     }
-    AppMethodBeat.o(194314);
+    AppMethodBeat.o(206126);
   }
   
-  final boolean dS(int paramInt1, int paramInt2)
+  final boolean dU(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194315);
-    synchronized (this.kRN)
+    AppMethodBeat.i(206127);
+    synchronized (this.loq)
     {
-      if (this.kRL == paramInt1)
+      if (this.loo == paramInt1)
       {
-        this.kRL = paramInt2;
-        AppMethodBeat.o(194315);
+        this.loo = paramInt2;
+        AppMethodBeat.o(206127);
         return true;
       }
-      h.log(5, getLogTag(), String.format(Locale.US, "transState error, current %d, condition %d, newState %d", new Object[] { Integer.valueOf(this.kRL), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      AppMethodBeat.o(194315);
+      h.log(5, getLogTag(), String.format(Locale.US, "transState error, current %d, condition %d, newState %d", new Object[] { Integer.valueOf(this.loo), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      AppMethodBeat.o(206127);
       return false;
     }
   }
   
   public final String getLogTag()
   {
-    AppMethodBeat.i(194309);
-    String str = this.kPQ + "VideoRequest";
-    AppMethodBeat.o(194309);
+    AppMethodBeat.i(206121);
+    String str = this.lmq + "VideoRequest";
+    AppMethodBeat.o(206121);
     return str;
   }
   
-  public final void sT(int paramInt)
+  public final String toString()
+  {
+    AppMethodBeat.i(206123);
+    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append("{seq=").append(this.lor).append(",priority=").append(this.priority).append(",range=[").append(this.lot).append(",").append(this.lou).append("],uuid=").append(this.uuid).append(",contentType=").append(this.loy).append(",cancelState=").append(this.loo).append(",sourceUrl=").append(this.lox).append(",videoKey=").append(this.low).append(",task=");
+    if (this.loj == null) {}
+    for (String str = "null";; str = this.loj.toString())
+    {
+      str = str + "}";
+      AppMethodBeat.o(206123);
+      return str;
+    }
+  }
+  
+  public final void tw(int paramInt)
   {
     try
     {
-      this.kRY = paramInt;
+      this.loB = paramInt;
       return;
     }
     finally
@@ -173,11 +186,11 @@ public final class n
     }
   }
   
-  public final void sU(int paramInt)
+  public final void tx(int paramInt)
   {
     try
     {
-      this.kRX += paramInt;
+      this.loA += paramInt;
       return;
     }
     finally
@@ -187,39 +200,26 @@ public final class n
     }
   }
   
-  public final void sV(int paramInt)
+  public final void ty(int paramInt)
   {
-    if ((this.kRK & paramInt) == 0) {
-      this.kRK += paramInt;
+    if ((this.lon & paramInt) == 0) {
+      this.lon += paramInt;
     }
   }
   
-  public final boolean sW(int paramInt)
+  public final boolean tz(int paramInt)
   {
     for (;;)
     {
-      synchronized (this.kRN)
+      synchronized (this.loq)
       {
-        if (this.kRL == paramInt)
+        if (this.loo == paramInt)
         {
           bool = true;
           return bool;
         }
       }
       boolean bool = false;
-    }
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(194311);
-    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append("{seq=").append(this.kRO).append(",priority=").append(this.priority).append(",range=[").append(this.kRQ).append(",").append(this.kRR).append("],uuid=").append(this.uuid).append(",contentType=").append(this.kRV).append(",cancelState=").append(this.kRL).append(",sourceUrl=").append(this.kRU).append(",videoKey=").append(this.kRT).append(",task=");
-    if (this.kRG == null) {}
-    for (String str = "null";; str = this.kRG.toString())
-    {
-      str = str + "}";
-      AppMethodBeat.o(194311);
-      return str;
     }
   }
 }

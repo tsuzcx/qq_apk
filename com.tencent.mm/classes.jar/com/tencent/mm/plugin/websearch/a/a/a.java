@@ -5,13 +5,13 @@ import java.util.List;
 
 public abstract class a<T>
 {
-  protected int Cai;
+  protected int DDd;
   protected String query;
   
   public a(String paramString)
   {
     this.query = paramString;
-    this.Cai = 2147483647;
+    this.DDd = 2147483647;
   }
   
   public boolean equals(Object paramObject)
@@ -25,14 +25,14 @@ public abstract class a<T>
       }
       paramObject = (a)paramObject;
       if ((this.query == paramObject.query) || ((this.query != null) && (this.query.equalsIgnoreCase(paramObject.query)))) {}
-      for (int i = 1; (paramObject.Cai != this.Cai) || (i == 0); i = 0) {
+      for (int i = 1; (paramObject.DDd != this.DDd) || (i == 0); i = 0) {
         return false;
       }
     }
     return false;
   }
   
-  public abstract void gF(List<m> paramList);
+  public abstract void gR(List<m> paramList);
   
   public int hashCode()
   {

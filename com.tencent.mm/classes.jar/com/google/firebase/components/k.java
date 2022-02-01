@@ -8,7 +8,7 @@ import java.util.List;
 
 public final class k
 {
-  public final m bAn;
+  public final m bKB;
   public final Context mContext;
   
   public k(Context paramContext)
@@ -21,7 +21,7 @@ public final class k
   private k(Context paramContext, m paramm)
   {
     this.mContext = paramContext;
-    this.bAn = paramm;
+    this.bKB = paramm;
   }
   
   public static List<e> z(List<String> paramList)
@@ -60,7 +60,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.components.k
  * JD-Core Version:    0.7.0.1
  */

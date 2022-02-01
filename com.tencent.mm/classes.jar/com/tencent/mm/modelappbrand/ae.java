@@ -3,7 +3,7 @@ package com.tencent.mm.modelappbrand;
 public abstract class ae
   implements o
 {
-  public abstract void aS(String paramString1, String paramString2);
+  public abstract void aT(String paramString1, String paramString2);
   
   public final String getName()
   {

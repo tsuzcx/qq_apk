@@ -2,38 +2,40 @@ package com.tencent.mm.loader.b.a;
 
 import android.graphics.Bitmap;
 import com.tencent.mm.loader.c.e;
-import d.g.b.k;
+import com.tencent.mm.loader.f;
+import com.tencent.mm.loader.f.g;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "T", "Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "Landroid/graphics/Bitmap;", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "delete", "", "exists", "save", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "source", "Lcom/tencent/mm/loader/model/Resource;", "resource", "Companion", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "T", "Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "Landroid/graphics/Bitmap;", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "delete", "", "exists", "save", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "source", "Lcom/tencent/mm/loader/model/Resource;", "resource", "Companion", "libimageloader_release"})
 public abstract class a<T>
   extends d<T, Bitmap>
 {
   private static final String TAG = "MicroMsg.Loader.IDiskCache";
-  public static final a.a gJn = new a.a((byte)0);
-  private com.tencent.mm.loader.f.f gJm = (com.tencent.mm.loader.f.f)new com.tencent.mm.loader.e.a();
+  public static final a.a hcY = new a.a((byte)0);
+  private g hcX = (g)new com.tencent.mm.loader.e.a();
   
   /* Error */
-  public boolean a(com.tencent.mm.loader.h.a.a<T> parama, com.tencent.mm.loader.h.f<?> paramf, com.tencent.mm.loader.h.e<Bitmap> parame1, com.tencent.mm.loader.h.e<Bitmap> parame2, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf1)
+  public boolean a(com.tencent.mm.loader.h.a.a<T> parama, com.tencent.mm.loader.h.f<?> paramf, com.tencent.mm.loader.h.e<Bitmap> parame1, com.tencent.mm.loader.h.e<Bitmap> parame2, e parame, f<?, Bitmap> paramf1)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 8
     //   3: aload_1
     //   4: ldc 71
-    //   6: invokestatic 77	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   6: invokestatic 77	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   9: aload_2
     //   10: ldc 78
-    //   12: invokestatic 77	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   12: invokestatic 77	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   15: aload_3
     //   16: ldc 79
-    //   18: invokestatic 77	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   18: invokestatic 77	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   21: aload 5
     //   23: ldc 80
-    //   25: invokestatic 77	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   25: invokestatic 77	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   28: aload 6
     //   30: ldc 81
-    //   32: invokestatic 77	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   32: invokestatic 77	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   35: aload_0
     //   36: aload_1
     //   37: aload_2
@@ -59,11 +61,11 @@ public abstract class a<T>
     //   79: aload_3
     //   80: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   83: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   86: invokestatic 114	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   89: getstatic 120	com/tencent/mm/loader/b/a/c:gJp	Lcom/tencent/mm/loader/b/a/c;
+    //   86: invokestatic 114	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   89: getstatic 120	com/tencent/mm/loader/b/a/c:hda	Lcom/tencent/mm/loader/b/a/c;
     //   92: astore 9
     //   94: aload_3
-    //   95: invokestatic 124	com/tencent/mm/loader/b/a/c:vg	(Ljava/lang/String;)Ljava/io/OutputStream;
+    //   95: invokestatic 124	com/tencent/mm/loader/b/a/c:xX	(Ljava/lang/String;)Ljava/io/OutputStream;
     //   98: astore 9
     //   100: aload 9
     //   102: ifnull +80 -> 182
@@ -74,14 +76,14 @@ public abstract class a<T>
     //   112: istore 7
     //   114: aload 4
     //   116: ifnull +36 -> 152
-    //   119: getstatic 120	com/tencent/mm/loader/b/a/c:gJp	Lcom/tencent/mm/loader/b/a/c;
+    //   119: getstatic 120	com/tencent/mm/loader/b/a/c:hda	Lcom/tencent/mm/loader/b/a/c;
     //   122: astore 10
     //   124: aload 4
     //   126: invokevirtual 132	com/tencent/mm/loader/h/e:value	()Ljava/lang/Object;
     //   129: astore 4
     //   131: aload 4
     //   133: ldc 134
-    //   135: invokestatic 137	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   135: invokestatic 137	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   138: aload 4
     //   140: checkcast 139	android/graphics/Bitmap
     //   143: aload 9
@@ -100,7 +102,7 @@ public abstract class a<T>
     //   167: aload 6
     //   169: invokevirtual 151	com/tencent/mm/loader/b/a/a:a	(Lcom/tencent/mm/loader/h/a/a;Lcom/tencent/mm/loader/c/e;Lcom/tencent/mm/loader/f;)Z
     //   172: pop
-    //   173: getstatic 157	d/y:KTp	Ld/y;
+    //   173: getstatic 157	d/z:MKo	Ld/z;
     //   176: astore_1
     //   177: aload_3
     //   178: aconst_null
@@ -128,7 +130,7 @@ public abstract class a<T>
     //   0	202	3	parame1	com.tencent.mm.loader.h.e<Bitmap>
     //   0	202	4	parame2	com.tencent.mm.loader.h.e<Bitmap>
     //   0	202	5	parame	e
-    //   0	202	6	paramf1	com.tencent.mm.loader.f<?, Bitmap>
+    //   0	202	6	paramf1	f<?, Bitmap>
     //   112	41	7	i	int
     //   1	196	8	localObject1	Object
     //   92	67	9	localObject2	Object
@@ -144,11 +146,11 @@ public abstract class a<T>
     //   163	177	195	finally
   }
   
-  public String c(com.tencent.mm.loader.h.a.a<T> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  public String c(com.tencent.mm.loader.h.a.a<T> parama, e parame, f<?, Bitmap> paramf)
   {
-    k.h(parama, "url");
-    k.h(parame, "opts");
-    k.h(paramf, "reaper");
+    p.h(parama, "url");
+    p.h(parame, "opts");
+    p.h(paramf, "reaper");
     return super.c(parama, parame, paramf);
   }
 }

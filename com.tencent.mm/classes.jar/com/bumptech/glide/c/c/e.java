@@ -13,14 +13,14 @@ import java.io.InputStream;
 public final class e<Model, Data>
   implements n<Model, Data>
 {
-  private final a<Data> aIa;
+  private final a<Data> aJR;
   
   public e(a<Data> parama)
   {
-    this.aIa = parama;
+    this.aJR = parama;
   }
   
-  public final boolean W(Model paramModel)
+  public final boolean X(Model paramModel)
   {
     AppMethodBeat.i(77225);
     boolean bool = paramModel.toString().startsWith("data:image");
@@ -31,31 +31,31 @@ public final class e<Model, Data>
   public final n.a<Data> b(Model paramModel, int paramInt1, int paramInt2, j paramj)
   {
     AppMethodBeat.i(77224);
-    paramModel = new n.a(new b(paramModel), new b(paramModel.toString(), this.aIa));
+    paramModel = new n.a(new b(paramModel), new b(paramModel.toString(), this.aJR));
     AppMethodBeat.o(77224);
     return paramModel;
   }
   
   public static abstract interface a<Data>
   {
-    public abstract void Q(Data paramData);
+    public abstract Data Q(String paramString);
     
-    public abstract Data R(String paramString);
+    public abstract void R(Data paramData);
     
-    public abstract Class<Data> nU();
+    public abstract Class<Data> om();
   }
   
   static final class b<Data>
     implements d<Data>
   {
-    private final String aIb;
-    private final e.a<Data> aIc;
+    private final String aJS;
+    private final e.a<Data> aJT;
     private Data data;
     
     b(String paramString, e.a<Data> parama)
     {
-      this.aIb = paramString;
-      this.aIc = parama;
+      this.aJS = paramString;
+      this.aJT = parama;
     }
     
     public final void a(g paramg, d.a<? super Data> parama)
@@ -63,8 +63,8 @@ public final class e<Model, Data>
       AppMethodBeat.i(77217);
       try
       {
-        this.data = this.aIc.R(this.aIb);
-        parama.R(this.data);
+        this.data = this.aJT.Q(this.aJS);
+        parama.S(this.data);
         AppMethodBeat.o(77217);
         return;
       }
@@ -82,7 +82,7 @@ public final class e<Model, Data>
       AppMethodBeat.i(77218);
       try
       {
-        this.aIc.Q(this.data);
+        this.aJT.R(this.data);
         AppMethodBeat.o(77218);
         return;
       }
@@ -92,31 +92,31 @@ public final class e<Model, Data>
       }
     }
     
-    public final Class<Data> nU()
+    public final Class<Data> om()
     {
       AppMethodBeat.i(77219);
-      Class localClass = this.aIc.nU();
+      Class localClass = this.aJT.om();
       AppMethodBeat.o(77219);
       return localClass;
     }
     
-    public final a nV()
+    public final a on()
     {
-      return a.aCP;
+      return a.aEG;
     }
   }
   
   public static final class c<Model>
     implements o<Model, InputStream>
   {
-    private final e.a<InputStream> aId;
+    private final e.a<InputStream> aJU;
     
     public c()
     {
       AppMethodBeat.i(77222);
-      this.aId = new e.a()
+      this.aJU = new e.a()
       {
-        public final Class<InputStream> nU()
+        public final Class<InputStream> om()
         {
           return InputStream.class;
         }
@@ -127,7 +127,7 @@ public final class e<Model, Data>
     public final n<Model, InputStream> a(r paramr)
     {
       AppMethodBeat.i(77223);
-      paramr = new e(this.aId);
+      paramr = new e(this.aJU);
       AppMethodBeat.o(77223);
       return paramr;
     }

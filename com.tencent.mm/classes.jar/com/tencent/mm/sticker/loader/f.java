@@ -5,11 +5,11 @@ import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/loader/StickerProcessTask;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "(Lcom/tencent/mm/sticker/loader/StickerLoadInfo;)V", "TAG", "", "call", "", "onResult", "success", "", "uniqueId", "IPCStickerTask", "plugin-sticker_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/loader/StickerProcessTask;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "(Lcom/tencent/mm/sticker/loader/StickerLoadInfo;)V", "TAG", "", "call", "", "onResult", "success", "", "uniqueId", "IPCStickerTask", "plugin-sticker_release"})
 public final class f
   extends g
 {
@@ -23,11 +23,11 @@ public final class f
     AppMethodBeat.o(105949);
   }
   
-  public final String acg()
+  public final String aeK()
   {
-    AppMethodBeat.i(210470);
-    String str = this.GAW.Ap();
-    AppMethodBeat.o(210470);
+    AppMethodBeat.i(221250);
+    String str = this.ImQ.BM();
+    AppMethodBeat.o(221250);
     return str;
   }
   
@@ -35,20 +35,20 @@ public final class f
   {
     AppMethodBeat.i(105946);
     Bundle localBundle = new Bundle();
-    localBundle.putParcelable("load_info", (Parcelable)this.GAW);
-    h.a(ai.getPackageName(), (Parcelable)localBundle, f.a.class, (d)new b(this));
+    localBundle.putParcelable("load_info", (Parcelable)this.ImQ);
+    h.a(aj.getPackageName(), (Parcelable)localBundle, f.a.class, (d)new b(this));
     AppMethodBeat.o(105946);
   }
   
-  public final void de(boolean paramBoolean)
+  public final void dg(boolean paramBoolean)
   {
     AppMethodBeat.i(105947);
-    ac.i(this.TAG, "onResult: " + this.GAW.Ap() + ' ' + paramBoolean);
-    super.de(paramBoolean);
+    ad.i(this.TAG, "onResult: " + this.ImQ.BM() + ' ' + paramBoolean);
+    super.dg(paramBoolean);
     AppMethodBeat.o(105947);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "result", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class b<T>
     implements d<ResultType>
   {

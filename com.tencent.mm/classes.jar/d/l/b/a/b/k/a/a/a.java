@@ -1,7 +1,7 @@
 package d.l.b.a.b.k.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.f.b;
 import d.l.b.a.b.f.f;
 import d.l.b.a.b.h.g;
@@ -10,12 +10,12 @@ import d.l.b.a.b.h.i.f;
 public final class a
   extends d.l.b.a.b.k.a
 {
-  public static final a LIS;
+  public static final a NzQ;
   
   static
   {
     AppMethodBeat.i(60386);
-    LIS = new a();
+    NzQ = new a();
     AppMethodBeat.o(60386);
   }
   
@@ -33,15 +33,15 @@ public final class a
       AppMethodBeat.o(60384);
       return "default-package";
     }
-    paramb = paramb.fZI().rf();
-    k.g(paramb, "fqName.shortName().asString()");
+    paramb = paramb.grh().sD();
+    p.g(paramb, "fqName.shortName().asString()");
     AppMethodBeat.o(60384);
     return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.k.a.a.a
  * JD-Core Version:    0.7.0.1
  */

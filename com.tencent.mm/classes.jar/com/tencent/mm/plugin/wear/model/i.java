@@ -6,62 +6,64 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i.b;
-import com.tencent.mm.g.c.dy;
+import com.tencent.mm.al.h;
+import com.tencent.mm.al.h.a;
+import com.tencent.mm.al.h.b;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.modelvoice.s;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.bu;
 import java.util.LinkedList;
 
 public final class i
 {
-  a BWS;
-  BroadcastReceiver BWT;
+  a Dxl;
+  BroadcastReceiver Dxm;
   AudioManager audioManager;
-  private com.tencent.mm.ak.i.a dfQ;
-  private i.b dfR;
+  private h.a drm;
+  private h.b drn;
   
   public i()
   {
     AppMethodBeat.i(30031);
-    this.dfQ = new com.tencent.mm.ak.i.a()
+    this.drm = new h.a()
     {
       public final void onCompletion()
       {
         AppMethodBeat.i(30028);
-        i.this.BWS.oUG.a(null);
-        i.this.BWS.oUG.a(null);
-        i.this.b(i.this.BWS);
+        i.this.Dxl.pyq.a(null);
+        i.this.Dxl.pyq.a(null);
+        i.this.b(i.this.Dxl);
         AppMethodBeat.o(30028);
       }
     };
-    this.dfR = new i.b()
+    this.drn = new h.b()
     {
       public final void onError()
       {
         AppMethodBeat.i(30029);
-        i.this.BWS.oUG.a(null);
-        i.this.BWS.oUG.a(null);
-        i.this.b(i.this.BWS);
+        i.this.Dxl.pyq.a(null);
+        i.this.Dxl.pyq.a(null);
+        i.this.b(i.this.Dxl);
         AppMethodBeat.o(30029);
       }
     };
-    this.BWT = new BroadcastReceiver()
+    this.Dxm = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(30030);
         if ((paramAnonymousIntent.hasExtra("state")) && (paramAnonymousIntent.getIntExtra("state", 2) == 0)) {
-          i.this.ewB();
+          i.this.eKH();
         }
         AppMethodBeat.o(30030);
       }
     };
-    this.audioManager = ((AudioManager)ai.getContext().getSystemService("audio"));
+    this.audioManager = ((AudioManager)aj.getContext().getSystemService("audio"));
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.HEADSET_PLUG");
-    ai.getContext().registerReceiver(this.BWT, localIntentFilter);
+    aj.getContext().registerReceiver(this.Dxm, localIntentFilter);
     AppMethodBeat.o(30031);
   }
   
@@ -70,10 +72,10 @@ public final class i
     AppMethodBeat.i(30033);
     if (parama != null)
     {
-      parama.oUG.stop();
-      parama.oUG.a(null);
-      parama.oUG.a(null);
-      parama.BWV.clear();
+      parama.pyq.stop();
+      parama.pyq.a(null);
+      parama.pyq.a(null);
+      parama.Dxo.clear();
     }
     AppMethodBeat.o(30033);
     return null;
@@ -83,17 +85,17 @@ public final class i
   {
     AppMethodBeat.i(30034);
     while (parama != null) {
-      if (parama.BWV.size() > 0)
+      if (parama.Dxo.size() > 0)
       {
-        bo localbo = (bo)parama.BWV.getLast();
-        parama.BWV.removeLast();
-        s.Y(localbo);
-        String str = s.getFullPath(localbo.field_imgPath);
-        ac.i("MicroMsg.Wear.WearVoicePlayLogic", "play: msgid=%d, fullpath=%s", new Object[] { Long.valueOf(localbo.field_msgId), str });
-        if (parama.oUG.a(str, true, true, -1))
+        bu localbu = (bu)parama.Dxo.getLast();
+        parama.Dxo.removeLast();
+        s.ab(localbu);
+        String str = s.getFullPath(localbu.field_imgPath);
+        ad.i("MicroMsg.Wear.WearVoicePlayLogic", "play: msgid=%d, fullpath=%s", new Object[] { Long.valueOf(localbu.field_msgId), str });
+        if (parama.pyq.a(str, true, true, -1))
         {
-          parama.oUG.a(this.dfQ);
-          parama.oUG.a(this.dfR);
+          parama.pyq.a(this.drm);
+          parama.pyq.a(this.drn);
           AppMethodBeat.o(30034);
         }
       }
@@ -105,17 +107,17 @@ public final class i
     AppMethodBeat.o(30034);
   }
   
-  public final void ewB()
+  public final void eKH()
   {
     AppMethodBeat.i(30032);
-    a(this.BWS);
+    a(this.Dxl);
     AppMethodBeat.o(30032);
   }
   
   final class a
   {
-    LinkedList<bo> BWV;
-    com.tencent.mm.ak.i oUG;
+    LinkedList<bu> Dxo;
+    h pyq;
   }
 }
 

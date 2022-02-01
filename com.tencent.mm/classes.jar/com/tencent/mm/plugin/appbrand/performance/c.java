@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.performance;
 
 import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.Iterator;
@@ -12,39 +12,39 @@ import java.util.List;
 @SuppressLint({"DefaultLocale"})
 public final class c
 {
-  private static long cIh;
-  private static final List<a> lHD;
+  private static long cTp;
+  private static final List<a> mhp;
   
   static
   {
     AppMethodBeat.i(139903);
-    lHD = Collections.synchronizedList(new LinkedList());
+    mhp = Collections.synchronizedList(new LinkedList());
     AppMethodBeat.o(139903);
   }
   
-  static boolean Qj(String paramString)
+  static boolean TO(String paramString)
   {
     AppMethodBeat.i(139901);
     StringBuilder localStringBuilder = new StringBuilder();
-    synchronized (lHD)
+    synchronized (mhp)
     {
-      if (lHD.size() == 0)
+      if (mhp.size() == 0)
       {
         AppMethodBeat.o(139901);
         return true;
       }
-      ac.d("MicroMsg.AppBrandPerformanceTracer", "dumpTrace events size: %d", new Object[] { Integer.valueOf(lHD.size()) });
-      Iterator localIterator = lHD.iterator();
+      ad.d("MicroMsg.AppBrandPerformanceTracer", "dumpTrace events size: %d", new Object[] { Integer.valueOf(mhp.size()) });
+      Iterator localIterator = mhp.iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
-        if ((locala.appId.equals(paramString)) && (locala.start >= cIh)) {
+        if ((locala.appId.equals(paramString)) && (locala.start >= cTp)) {
           localStringBuilder.append(locala.toString()).append("\n");
         }
       }
     }
-    lHD.clear();
-    boolean bool = dS(paramString, localStringBuilder.toString());
+    mhp.clear();
+    boolean bool = eb(paramString, localStringBuilder.toString());
     AppMethodBeat.o(139901);
     return bool;
   }
@@ -71,15 +71,15 @@ public final class c
     locala.appId = paramString1;
     locala.name = paramString3;
     locala.category = paramString2;
-    locala.lHE = paramString4;
+    locala.mhq = paramString4;
     locala.start = paramLong1;
-    locala.beH = paramLong2;
+    locala.bpc = paramLong2;
     if (paramString5 != null) {}
     for (paramString1 = URLEncoder.encode(paramString5);; paramString1 = "")
     {
-      locala.lHF = paramString1;
-      if (lHD.size() < 10000) {
-        lHD.add(locala);
+      locala.lOY = paramString1;
+      if (mhp.size() < 10000) {
+        mhp.add(locala);
       }
       AppMethodBeat.o(139900);
       return;
@@ -94,18 +94,18 @@ public final class c
   }
   
   /* Error */
-  private static final boolean dS(String paramString1, String paramString2)
+  private static final boolean eb(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: iconst_1
     //   1: istore_2
     //   2: ldc 183
     //   4: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: invokestatic 188	com/tencent/mm/compatible/util/e:YD	()Z
+    //   7: invokestatic 188	com/tencent/mm/compatible/util/e:abf	()Z
     //   10: ifne +17 -> 27
     //   13: ldc 55
     //   15: ldc 190
-    //   17: invokestatic 194	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   17: invokestatic 194	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   20: ldc 183
     //   22: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   25: iconst_0
@@ -155,7 +155,7 @@ public final class c
     //   111: aastore
     //   112: dup
     //   113: iconst_1
-    //   114: getstatic 98	com/tencent/mm/plugin/appbrand/performance/c:cIh	J
+    //   114: getstatic 98	com/tencent/mm/plugin/appbrand/performance/c:cTp	J
     //   117: invokestatic 227	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   120: aastore
     //   121: invokestatic 137	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
@@ -182,7 +182,7 @@ public final class c
     //   158: aload_1
     //   159: invokestatic 244	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   162: invokevirtual 247	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   165: invokestatic 194	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   165: invokestatic 194	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   168: aload_0
     //   169: ifnull +54 -> 223
     //   172: aload_0
@@ -245,25 +245,25 @@ public final class c
     //   132	137	219	java/lang/Exception
   }
   
-  public static void qX(long paramLong)
+  public static void sW(long paramLong)
   {
-    cIh = paramLong;
+    cTp = paramLong;
   }
   
   public static final class a
   {
     String appId;
-    long beH;
+    long bpc;
     String category;
-    String lHE;
-    String lHF;
+    String lOY;
+    String mhq;
     String name;
     long start;
     
     public final String toString()
     {
       AppMethodBeat.i(139896);
-      String str = this.name + "," + this.category + "," + this.lHE + "," + (this.start - c.brP()) + "," + (this.beH - c.brP()) + "," + this.lHF;
+      String str = this.name + "," + this.category + "," + this.mhq + "," + (this.start - c.bvT()) + "," + (this.bpc - c.bvT()) + "," + this.lOY;
       AppMethodBeat.o(139896);
       return str;
     }
@@ -271,7 +271,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.c
  * JD-Core Version:    0.7.0.1
  */

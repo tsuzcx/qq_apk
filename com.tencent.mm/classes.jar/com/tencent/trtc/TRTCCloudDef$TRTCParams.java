@@ -23,10 +23,23 @@ public class TRTCCloudDef$TRTCParams
     this.privateMapKey = paramString3;
     this.businessInfo = paramString4;
   }
+  
+  public TRTCCloudDef$TRTCParams(TRTCParams paramTRTCParams)
+  {
+    this.sdkAppId = paramTRTCParams.sdkAppId;
+    this.userSig = paramTRTCParams.userSig;
+    this.userId = paramTRTCParams.userId;
+    this.roomId = paramTRTCParams.roomId;
+    this.role = paramTRTCParams.role;
+    this.streamId = paramTRTCParams.streamId;
+    this.userDefineRecordId = paramTRTCParams.userDefineRecordId;
+    this.privateMapKey = paramTRTCParams.privateMapKey;
+    this.businessInfo = paramTRTCParams.businessInfo;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.trtc.TRTCCloudDef.TRTCParams
  * JD-Core Version:    0.7.0.1
  */

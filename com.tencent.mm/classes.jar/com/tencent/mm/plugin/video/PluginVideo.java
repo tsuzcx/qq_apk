@@ -7,7 +7,7 @@ import com.tencent.mm.model.t;
 import com.tencent.mm.modelcontrol.d;
 import com.tencent.mm.modelvideo.n;
 import com.tencent.mm.plugin.video.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class PluginVideo
   extends f
@@ -16,8 +16,8 @@ public class PluginVideo
   public void configure(g paramg)
   {
     AppMethodBeat.i(176825);
-    if (paramg.ahL()) {
-      com.tencent.mm.vfs.o.aj("video", "video", 19);
+    if (paramg.akw()) {
+      com.tencent.mm.vfs.o.an("video", "video", 19);
     }
     AppMethodBeat.o(176825);
   }
@@ -25,8 +25,8 @@ public class PluginVideo
   public void execute(g paramg)
   {
     AppMethodBeat.i(127139);
-    ac.i("MicroMsg.PluginVideo", "plugin video execute");
-    if (paramg.ahL())
+    ad.i("MicroMsg.PluginVideo", "plugin video execute");
+    if (paramg.akw())
     {
       pin(new t(com.tencent.mm.modelvideo.o.class));
       pin(new t(d.class));

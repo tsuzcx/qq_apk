@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.appbrand.ipc;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class SampleTask1
   extends MainProcessTask
 {
   public static final Parcelable.Creator<SampleTask1> CREATOR;
-  public String jVM;
-  public String jVN;
+  public String kqa;
+  public String kqb;
   
   static
   {
@@ -26,35 +26,35 @@ public class SampleTask1
     AppMethodBeat.o(134859);
   }
   
-  public final void aLq()
+  public final void aOA()
   {
     AppMethodBeat.i(134860);
-    ac.e("SampleTask", this.jVM);
-    this.jVN = "String from Main Process";
-    bet();
+    ad.e("SampleTask", this.kqa);
+    this.kqb = "String from Main Process";
+    bhX();
     AppMethodBeat.o(134860);
   }
   
-  public final void aLr()
+  public final void aOB()
   {
     AppMethodBeat.i(134861);
-    ac.e("SampleTask", this.jVN);
+    ad.e("SampleTask", this.kqb);
     AppMethodBeat.o(134861);
   }
   
   public final void e(Parcel paramParcel)
   {
     AppMethodBeat.i(134862);
-    this.jVM = paramParcel.readString();
-    this.jVN = paramParcel.readString();
+    this.kqa = paramParcel.readString();
+    this.kqb = paramParcel.readString();
     AppMethodBeat.o(134862);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(134863);
-    paramParcel.writeString(this.jVM);
-    paramParcel.writeString(this.jVN);
+    paramParcel.writeString(this.kqa);
+    paramParcel.writeString(this.kqb);
     AppMethodBeat.o(134863);
   }
 }

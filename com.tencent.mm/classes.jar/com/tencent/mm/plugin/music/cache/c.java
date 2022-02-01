@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.music.cache;
 
-import com.tencent.mm.ay.i;
+import com.tencent.mm.az.i;
 
 public abstract interface c
   extends com.tencent.mm.plugin.music.f.c.a
 {
   public abstract void a(String paramString, com.tencent.mm.plugin.music.c.a parama);
   
-  public abstract String anh(String paramString);
+  public abstract String asg(String paramString);
   
-  public abstract i ani(String paramString);
+  public abstract i ash(String paramString);
   
-  public abstract String anj(String paramString);
+  public abstract String asi(String paramString);
   
-  public abstract void ank(String paramString);
+  public abstract void asj(String paramString);
   
-  public abstract String anl(String paramString);
+  public abstract String ask(String paramString);
   
-  public abstract com.tencent.mm.plugin.music.c.a anm(String paramString);
+  public abstract com.tencent.mm.plugin.music.c.a asl(String paramString);
   
-  public abstract boolean dii();
+  public abstract boolean dsu();
   
-  public abstract int dij();
+  public abstract int dsv();
   
-  public abstract long dik();
+  public abstract long dsw();
   
-  public abstract boolean dil();
+  public abstract boolean dsx();
   
-  public abstract boolean dim();
+  public abstract boolean dsy();
   
-  public abstract void ed(String paramString, int paramInt);
+  public abstract void ev(String paramString, int paramInt);
   
   public abstract String getAccPath();
   
-  public abstract void hU(String paramString1, String paramString2);
+  public abstract void jdMethod_if(String paramString1, String paramString2);
   
-  public abstract void hV(String paramString1, String paramString2);
+  public abstract void ig(String paramString1, String paramString2);
   
-  public abstract void s(String paramString, byte[] paramArrayOfByte);
+  public abstract void t(String paramString, byte[] paramArrayOfByte);
   
-  public abstract void wa(long paramLong);
+  public abstract void yj(long paramLong);
 }
 
 

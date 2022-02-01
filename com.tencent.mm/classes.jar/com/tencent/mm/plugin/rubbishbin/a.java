@@ -8,7 +8,7 @@ import android.os.Parcel;
 public abstract interface a
   extends IInterface
 {
-  public abstract void F(int paramInt1, int paramInt2, String paramString);
+  public abstract void G(int paramInt1, int paramInt2, String paramString);
   
   public static abstract class a
     extends Binder
@@ -35,7 +35,7 @@ public abstract interface a
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.rubbishbin.IRubbishBinInterface");
-      F(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
+      G(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
       return true;
     }
   }

@@ -1,122 +1,293 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.util.TypedValue;
+import android.graphics.Bitmap;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.vfs.i;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class aa
-  extends k
+  extends l
+  implements SensorEventListener
 {
-  TextView tr;
-  private RelativeLayout ypr;
-  ImageView yps;
+  Sensor caA;
+  Sensor cay;
+  ImageView dsD;
+  private SensorManager mSensorManager;
+  ProgressBar progressBar;
+  int zGd;
+  final float zGe = 10.0F;
+  final int zGf = 1;
+  HorizontalScrollView zGg;
+  float[] zGh;
+  float[] zGi;
+  private int zGj = 0;
+  boolean zGk = true;
   
-  public aa(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac paramac, ViewGroup paramViewGroup)
+  public aa(Context paramContext, r paramr, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramac, paramViewGroup);
-    this.ymQ = paramac;
+    super(paramContext, paramr, paramViewGroup);
   }
   
-  public final void dJW()
+  public final boolean aQ(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(96680);
-    View localView = this.contentView;
-    localView.setBackgroundColor(this.backgroundColor);
-    this.tr = ((TextView)localView.findViewById(2131304896));
-    this.ypr = ((RelativeLayout)localView.findViewById(2131304894));
-    this.yps = ((ImageView)localView.findViewById(2131304895));
-    AppMethodBeat.o(96680);
-  }
-  
-  public final void dJX()
-  {
-    AppMethodBeat.i(96678);
-    super.dJX();
-    AppMethodBeat.o(96678);
-  }
-  
-  public final void dJY()
-  {
-    AppMethodBeat.i(96681);
-    super.dJY();
-    AppMethodBeat.o(96681);
-  }
-  
-  public final void dJZ()
-  {
-    AppMethodBeat.i(96682);
-    super.dJZ();
-    AppMethodBeat.o(96682);
-  }
-  
-  protected final void dKm()
-  {
-    AppMethodBeat.i(96679);
-    this.tr.setText(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac)this.ymQ).label);
-    this.tr.setTextSize(0, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac)this.ymQ).bsJ);
-    if ((((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac)this.ymQ).jBX != null) && (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac)this.ymQ).jBX.length() > 0))
+    AppMethodBeat.i(96676);
+    if (!super.aQ(paramJSONObject))
     {
-      int i = Color.parseColor(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac)this.ymQ).jBX);
-      this.ypr.setBackgroundColor(i);
+      AppMethodBeat.o(96676);
+      return false;
     }
-    h.a(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac)this.ymQ).yjN, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac)this.ymQ).yjt, new f.a()
+    try
     {
-      public final void asD(String paramAnonymousString)
+      paramJSONObject.put("swipeCount", this.zGj);
+      if (!this.zGk)
       {
-        AppMethodBeat.i(96677);
+        String str = ai.ee(((r)this.zDK).zzL);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("urlMd5", str);
+        localJSONObject.put("needDownload", 1);
+        paramJSONObject.put("imgUrlInfo", localJSONObject);
+      }
+      AppMethodBeat.o(96676);
+      return true;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      ad.printErrStackTrace("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", paramJSONObject, "", new Object[0]);
+      AppMethodBeat.o(96676);
+    }
+    return false;
+  }
+  
+  public final void dRk()
+  {
+    AppMethodBeat.i(96668);
+    View localView = this.contentView;
+    this.mSensorManager = ((SensorManager)aj.getContext().getSystemService("sensor"));
+    this.cay = this.mSensorManager.getDefaultSensor(1);
+    this.caA = this.mSensorManager.getDefaultSensor(2);
+    this.zGg = ((HorizontalScrollView)localView.findViewById(2131296423));
+    this.dsD = ((ImageView)localView.findViewById(2131296424));
+    this.progressBar = ((ProgressBar)localView.findViewById(2131303535));
+    this.progressBar.setVisibility(8);
+    AppMethodBeat.o(96668);
+  }
+  
+  protected final void dRl()
+  {
+    AppMethodBeat.i(96669);
+    if (!i.fv(h.jF("adId", ((r)this.zDK).zzL))) {
+      this.zGk = false;
+    }
+    String str = ((r)this.zDK).zzL;
+    Bitmap localBitmap = h.jJ("adId", str);
+    if (localBitmap != null)
+    {
+      ad.i("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "loaded cached image with  ".concat(String.valueOf(str)));
+      setImage(localBitmap);
+      AppMethodBeat.o(96669);
+      return;
+    }
+    startLoading();
+    h.a(str, ((r)this.zDK).zAh, new f.a()
+    {
+      public final void axG(String paramAnonymousString)
+      {
+        AppMethodBeat.i(96666);
         try
         {
-          paramAnonymousString = f.decodeFile(paramAnonymousString);
-          aa.this.yps.setImageBitmap(paramAnonymousString);
-          paramAnonymousString = aa.this.tr;
-          Paint localPaint = new Paint();
-          String str = paramAnonymousString.getText().toString();
-          localPaint.setTextSize(paramAnonymousString.getTextSize());
-          float f = localPaint.measureText(str, 0, str.length());
-          f = aa.this.ymQ.yju - f - TypedValue.applyDimension(1, 3.0F, aa.this.context.getResources().getDisplayMetrics());
-          int i = (int)(f - aa.a(aa.this).value * f);
-          paramAnonymousString = (RelativeLayout.LayoutParams)aa.this.yps.getLayoutParams();
-          paramAnonymousString.setMargins(paramAnonymousString.leftMargin, paramAnonymousString.topMargin, i, paramAnonymousString.leftMargin);
-          aa.this.yps.setLayoutParams(paramAnonymousString);
-          AppMethodBeat.o(96677);
+          paramAnonymousString = g.decodeFile(paramAnonymousString);
+          aa.this.setImage(paramAnonymousString);
+          AppMethodBeat.o(96666);
           return;
         }
         catch (Exception paramAnonymousString)
         {
-          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.Sns.AdLandingPageProcessBarComponent", "%s" + bs.m(paramAnonymousString));
-          AppMethodBeat.o(96677);
+          ad.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "%s" + bt.n(paramAnonymousString));
+          AppMethodBeat.o(96666);
         }
       }
       
-      public final void dFC() {}
+      public final void dRW()
+      {
+        AppMethodBeat.i(96664);
+        aa.this.startLoading();
+        AppMethodBeat.o(96664);
+      }
       
-      public final void dFD() {}
+      public final void dRX()
+      {
+        AppMethodBeat.i(96665);
+        aa.this.progressBar.setVisibility(8);
+        AppMethodBeat.o(96665);
+      }
     });
-    AppMethodBeat.o(96679);
+    AppMethodBeat.o(96669);
+  }
+  
+  public final void dRm()
+  {
+    AppMethodBeat.i(96674);
+    super.dRm();
+    this.mSensorManager.registerListener(this, this.cay, 1);
+    this.mSensorManager.registerListener(this, this.caA, 1);
+    AppMethodBeat.o(96674);
+  }
+  
+  public final void dRn()
+  {
+    AppMethodBeat.i(96675);
+    super.dRn();
+    this.mSensorManager.unregisterListener(this);
+    AppMethodBeat.o(96675);
+  }
+  
+  public final boolean dWU()
+  {
+    AppMethodBeat.i(96673);
+    if (dWT() >= (int)(getView().getHeight() * 0.1F))
+    {
+      AppMethodBeat.o(96673);
+      return true;
+    }
+    AppMethodBeat.o(96673);
+    return false;
   }
   
   protected final int getLayout()
   {
-    return 2131495506;
+    return 2131495494;
+  }
+  
+  public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public final void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    float f2 = -10.0F;
+    AppMethodBeat.i(96672);
+    if (paramSensorEvent.sensor.getType() == 1) {
+      this.zGh = paramSensorEvent.values;
+    }
+    if (paramSensorEvent.sensor.getType() == 2) {
+      this.zGi = paramSensorEvent.values;
+    }
+    float f1;
+    if ((this.zGh != null) && (this.zGi != null))
+    {
+      paramSensorEvent = new float[9];
+      if (SensorManager.getRotationMatrix(paramSensorEvent, new float[9], this.zGh, this.zGi))
+      {
+        float[] arrayOfFloat = new float[3];
+        SensorManager.getOrientation(paramSensorEvent, arrayOfFloat);
+        float f3 = arrayOfFloat[2];
+        if (this.zGd != 0)
+        {
+          f1 = f3;
+          if (f3 > 10.0F) {
+            f1 = 10.0F;
+          }
+          if (f1 >= -10.0F) {
+            break label163;
+          }
+          f1 = f2;
+        }
+      }
+    }
+    label163:
+    for (;;)
+    {
+      f1 = f1 * this.zGd / 10.0F;
+      this.zGg.scrollBy((int)f1, 0);
+      AppMethodBeat.o(96672);
+      return;
+    }
+  }
+  
+  public final void setImage(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(96671);
+    if (paramBitmap == null)
+    {
+      ad.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp is null!");
+      AppMethodBeat.o(96671);
+      return;
+    }
+    if (this.dsD == null)
+    {
+      ad.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the imageView is null!");
+      AppMethodBeat.o(96671);
+      return;
+    }
+    if (paramBitmap.getHeight() == 0)
+    {
+      ad.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp.getHeight is 0!");
+      AppMethodBeat.o(96671);
+      return;
+    }
+    this.progressBar.setVisibility(8);
+    this.dsD.setImageBitmap(paramBitmap);
+    this.dsD.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(96667);
+        int i = aa.this.dsD.getMeasuredWidth();
+        if (i > aa.this.ltA)
+        {
+          aa localaa = aa.this;
+          localaa.zGd = ((i - localaa.ltA) / 2);
+          aa.this.zGg.scrollBy(aa.this.zGd, 0);
+        }
+        AppMethodBeat.o(96667);
+      }
+    });
+    int i;
+    if (paramBitmap.getHeight() != 0)
+    {
+      i = this.ltB;
+      if (((r)this.zDK).zAj == 2.147484E+009F) {
+        break label176;
+      }
+      i = (int)((r)this.zDK).zAj;
+    }
+    label176:
+    for (;;)
+    {
+      this.dsD.setLayoutParams(new RelativeLayout.LayoutParams(paramBitmap.getWidth() * i / paramBitmap.getHeight(), i));
+      AppMethodBeat.o(96671);
+      return;
+    }
+  }
+  
+  public final void startLoading()
+  {
+    AppMethodBeat.i(96670);
+    this.progressBar.setVisibility(0);
+    AppMethodBeat.o(96670);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.aa
  * JD-Core Version:    0.7.0.1
  */

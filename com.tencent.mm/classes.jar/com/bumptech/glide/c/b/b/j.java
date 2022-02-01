@@ -15,16 +15,16 @@ import java.security.NoSuchAlgorithmException;
 
 public final class j
 {
-  private final f<h, String> aHD;
-  private final l.a<a> aHE;
+  private final f<h, String> aJu;
+  private final l.a<a> aJv;
   
   public j()
   {
     AppMethodBeat.i(77168);
-    this.aHD = new f(1000L);
-    this.aHE = a.a(10, new a.a()
+    this.aJu = new f(1000L);
+    this.aJv = a.a(10, new a.a()
     {
-      private static j.a oO()
+      private static j.a pg()
       {
         AppMethodBeat.i(77165);
         try
@@ -47,16 +47,16 @@ public final class j
   private String d(h paramh)
   {
     AppMethodBeat.i(77170);
-    a locala = (a)i.checkNotNull(this.aHE.acquire(), "Argument must not be null");
+    a locala = (a)i.checkNotNull(this.aJv.acquire(), "Argument must not be null");
     try
     {
-      paramh.a(locala.aHG);
-      paramh = com.bumptech.glide.h.j.m(locala.aHG.digest());
+      paramh.a(locala.aJx);
+      paramh = com.bumptech.glide.h.j.m(locala.aJx.digest());
       return paramh;
     }
     finally
     {
-      this.aHE.release(locala);
+      this.aJv.release(locala);
       AppMethodBeat.o(77170);
     }
   }
@@ -64,17 +64,17 @@ public final class j
   public final String c(h paramh)
   {
     AppMethodBeat.i(77169);
-    synchronized (this.aHD)
+    synchronized (this.aJu)
     {
-      ??? = (String)this.aHD.get(paramh);
+      ??? = (String)this.aJu.get(paramh);
       ??? = ???;
       if (??? == null) {
         ??? = d(paramh);
       }
     }
-    synchronized (this.aHD)
+    synchronized (this.aJu)
     {
-      this.aHD.put(paramh, ???);
+      this.aJu.put(paramh, ???);
       AppMethodBeat.o(77169);
       return ???;
       paramh = finally;
@@ -86,20 +86,20 @@ public final class j
   static final class a
     implements a.c
   {
-    private final b aEz;
-    final MessageDigest aHG;
+    private final b aGq;
+    final MessageDigest aJx;
     
     a(MessageDigest paramMessageDigest)
     {
       AppMethodBeat.i(77167);
-      this.aEz = new b.a();
-      this.aHG = paramMessageDigest;
+      this.aGq = new b.a();
+      this.aJx = paramMessageDigest;
       AppMethodBeat.o(77167);
     }
     
-    public final b om()
+    public final b oE()
     {
-      return this.aEz;
+      return this.aGq;
     }
   }
 }

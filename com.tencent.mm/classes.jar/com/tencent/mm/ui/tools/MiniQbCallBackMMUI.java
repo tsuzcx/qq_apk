@@ -2,12 +2,12 @@ package com.tencent.mm.ui.tools;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ln;
+import com.tencent.mm.g.a.lw;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.miniutil.MiniReaderLogic.MiniQbFloatBallMenuActionBrandEvent;
 import com.tencent.mm.plugin.appbrand.service.f;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class MiniQbCallBackMMUI
   extends MiniQbCallBackBaseUI
@@ -21,12 +21,12 @@ public class MiniQbCallBackMMUI
   {
     AppMethodBeat.i(39076);
     super.h(paramString1, paramString2, paramInt, paramString3);
-    if (bs.isNullOrNil(paramString2))
+    if (bt.isNullOrNil(paramString2))
     {
-      paramString1 = new ln();
-      paramString1.dnv.action = paramInt;
-      paramString1.dnv.filePath = paramString3;
-      a.GpY.l(paramString1);
+      paramString1 = new lw();
+      paramString1.dzj.action = paramInt;
+      paramString1.dzj.filePath = paramString3;
+      a.IbL.l(paramString1);
       AppMethodBeat.o(39076);
       return;
     }
@@ -43,7 +43,7 @@ public class MiniQbCallBackMMUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MiniQbCallBackMMUI
  * JD-Core Version:    0.7.0.1
  */

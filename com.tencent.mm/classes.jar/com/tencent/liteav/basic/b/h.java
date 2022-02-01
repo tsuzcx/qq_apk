@@ -1,11 +1,31 @@
 package com.tencent.liteav.basic.b;
 
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class h
   implements f
 {
+  private Context a;
+  
+  public h(Context paramContext)
+  {
+    this.a = paramContext;
+  }
+  
   public boolean a()
   {
-    return true;
+    AppMethodBeat.i(187265);
+    if (this.a != null) {
+      e.a().a(null, this.a);
+    }
+    if (e.a().b() >= 2)
+    {
+      AppMethodBeat.o(187265);
+      return true;
+    }
+    AppMethodBeat.o(187265);
+    return false;
   }
 }
 

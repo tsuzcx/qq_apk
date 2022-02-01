@@ -20,14 +20,14 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.ad;
+import com.tencent.mm.al.q;
+import com.tencent.mm.platformtools.ae;
 import com.tencent.mm.platformtools.b;
 import com.tencent.mm.platformtools.y;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ba;
+import com.tencent.mm.sdk.platformtools.i;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.base.MMFormInputView;
@@ -39,55 +39,55 @@ import java.util.TimerTask;
 public class MobileVerifyUI
   extends MMActivity
 {
-  String bLs;
-  protected String dnz;
-  protected ProgressDialog fts = null;
-  protected Button fwU;
-  int hSX;
-  protected EditText iGY;
-  protected TextView iGZ;
-  String iHQ;
-  SecurityImage iJk = null;
-  private b iRU;
-  protected boolean iSL = false;
-  private int iTE;
-  String iTR;
-  int iTZ;
-  protected String iTi;
-  protected MMFormInputView iUD;
-  protected TextView iUE;
-  protected TextView iUF;
-  protected TextView iUG;
-  protected ScrollView iUH;
-  private long iUI = 0L;
-  private boolean iUJ = false;
-  private String[] iUK;
-  private boolean iUL = false;
-  Boolean iUM;
-  private int iUN = 30;
-  protected boolean iUO = false;
-  protected boolean iUP = false;
-  protected int iUQ = -1;
-  private b iUR;
-  String iUS;
-  protected String iUT;
-  protected int iUb;
+  String bVF;
+  protected String dzn;
+  protected ProgressDialog fMu = null;
+  protected Button fQh;
+  int imo;
+  String jaZ;
+  protected EditText jah;
+  protected TextView jai;
+  SecurityImage jct = null;
+  protected boolean jlT = false;
+  private b jlc;
+  private int jmM;
+  String jmZ;
+  protected String jmq;
+  protected MMFormInputView jnM;
+  protected TextView jnN;
+  protected TextView jnO;
+  protected TextView jnP;
+  protected ScrollView jnQ;
+  private long jnR = 0L;
+  private boolean jnS = false;
+  private String[] jnT;
+  private boolean jnU = false;
+  Boolean jnV;
+  private int jnW = 30;
+  protected boolean jnX = false;
+  protected boolean jnY = false;
+  protected int jnZ = -1;
+  int jnh;
+  protected int jnk;
+  private b joa;
+  String job;
+  protected String joc;
   private Timer mTimer;
   
-  private void aQW()
+  private void aUi()
   {
     AppMethodBeat.i(128458);
-    if (!this.iUJ)
+    if (!this.jnS)
     {
       this.mTimer = new Timer();
-      this.iUJ = true;
-      this.iUI = this.iUN;
+      this.jnS = true;
+      this.jnR = this.jnW;
       TimerTask local1 = new TimerTask()
       {
         public final void run()
         {
           AppMethodBeat.i(128441);
-          MobileVerifyUI.this.iUF.post(new Runnable()
+          MobileVerifyUI.this.jnO.post(new Runnable()
           {
             public final void run()
             {
@@ -95,15 +95,15 @@ public class MobileVerifyUI
               MobileVerifyUI.b(MobileVerifyUI.this);
               if (MobileVerifyUI.c(MobileVerifyUI.this) >= 0L)
               {
-                MobileVerifyUI.this.iUF.setText(MobileVerifyUI.this.getResources().getQuantityString(2131623957, (int)MobileVerifyUI.c(MobileVerifyUI.this), new Object[] { Integer.valueOf((int)MobileVerifyUI.c(MobileVerifyUI.this)) }));
+                MobileVerifyUI.this.jnO.setText(MobileVerifyUI.this.getResources().getQuantityString(2131623957, (int)MobileVerifyUI.c(MobileVerifyUI.this), new Object[] { Integer.valueOf((int)MobileVerifyUI.c(MobileVerifyUI.this)) }));
                 AppMethodBeat.o(128440);
                 return;
               }
-              MobileVerifyUI.this.iUF.setVisibility(8);
-              MobileVerifyUI.this.iUE.setVisibility(0);
+              MobileVerifyUI.this.jnO.setVisibility(8);
+              MobileVerifyUI.this.jnN.setVisibility(0);
               MobileVerifyUI.d(MobileVerifyUI.this);
-              MobileVerifyUI.this.iUE.setEnabled(true);
-              MobileVerifyUI.this.iUE.setText(MobileVerifyUI.this.getString(2131761300));
+              MobileVerifyUI.this.jnN.setEnabled(true);
+              MobileVerifyUI.this.jnN.setText(MobileVerifyUI.this.getString(2131761300));
               AppMethodBeat.o(128440);
             }
           });
@@ -115,39 +115,39 @@ public class MobileVerifyUI
     AppMethodBeat.o(128458);
   }
   
-  private void aQX()
+  private void aUj()
   {
     AppMethodBeat.i(128461);
     hideVKB();
-    if (this.iGY.getText().toString().trim().equals(""))
+    if (this.jah.getText().toString().trim().equals(""))
     {
       h.l(this, 2131756515, 2131755906);
       AppMethodBeat.o(128461);
       return;
     }
-    this.iUR.a(a.iVb);
+    this.joa.a(a.jok);
     AppMethodBeat.o(128461);
   }
   
-  private void aQY()
+  private void aUk()
   {
     AppMethodBeat.i(128462);
-    this.iUL = false;
-    this.iUE.setEnabled(false);
-    this.iUF.setVisibility(0);
-    this.iUF.setText(getResources().getQuantityString(2131623957, this.iUN, new Object[] { Integer.valueOf(this.iUN) }));
-    this.iUE.setVisibility(8);
-    aQW();
-    this.iUR.a(a.iVc);
-    h.cg(this, getString(2131761248));
+    this.jnU = false;
+    this.jnN.setEnabled(false);
+    this.jnO.setVisibility(0);
+    this.jnO.setText(getResources().getQuantityString(2131623957, this.jnW, new Object[] { Integer.valueOf(this.jnW) }));
+    this.jnN.setVisibility(8);
+    aUi();
+    this.joa.a(a.jol);
+    h.cl(this, getString(2131761248));
     AppMethodBeat.o(128462);
   }
   
   private void goBack()
   {
     AppMethodBeat.i(128464);
-    com.tencent.mm.plugin.b.a.IL(this.iHQ);
-    if (!this.iUR.a(a.iVa))
+    com.tencent.mm.plugin.b.a.Ma(this.jaZ);
+    if (!this.joa.a(a.joj))
     {
       finish();
       AppMethodBeat.o(128464);
@@ -156,7 +156,7 @@ public class MobileVerifyUI
     AppMethodBeat.o(128464);
   }
   
-  protected final void fs(boolean paramBoolean)
+  protected final void fw(boolean paramBoolean)
   {
     AppMethodBeat.i(128467);
     Intent localIntent = new Intent(this, RegByMobileSetPwdUI.class);
@@ -174,46 +174,46 @@ public class MobileVerifyUI
   public void initView()
   {
     AppMethodBeat.i(128460);
-    ac.d("MicroMsg.MobileVerifyUI", "init getintent mobile:" + this.dnz);
-    this.iUD = ((MMFormInputView)findViewById(2131297252));
-    this.iUD.setImeOption(5);
-    this.iUD.setInputType(3);
-    this.iGY = this.iUD.getContentEditText();
-    this.iUE = ((TextView)findViewById(2131302417));
-    this.iUF = ((TextView)findViewById(2131302416));
-    this.iGZ = ((TextView)findViewById(2131297250));
-    this.iGZ.setText(this.dnz);
-    this.dnz = az.aLc(this.dnz);
-    this.iUE.setText(getString(2131761301));
-    this.iUG = ((TextView)findViewById(2131297253));
-    this.fwU = ((Button)findViewById(2131302852));
-    this.iUH = ((ScrollView)findViewById(2131304367));
-    this.iUK = getResources().getStringArray(2130903092);
+    ad.d("MicroMsg.MobileVerifyUI", "init getintent mobile:" + this.dzn);
+    this.jnM = ((MMFormInputView)findViewById(2131297252));
+    this.jnM.setImeOption(5);
+    this.jnM.setInputType(3);
+    this.jah = this.jnM.getContentEditText();
+    this.jnN = ((TextView)findViewById(2131302417));
+    this.jnO = ((TextView)findViewById(2131302416));
+    this.jai = ((TextView)findViewById(2131297250));
+    this.jai.setText(this.dzn);
+    this.dzn = ba.aQI(this.dzn);
+    this.jnN.setText(getString(2131761301));
+    this.jnP = ((TextView)findViewById(2131297253));
+    this.fQh = ((Button)findViewById(2131302852));
+    this.jnQ = ((ScrollView)findViewById(2131304367));
+    this.jnT = getResources().getStringArray(2130903092);
     Object localObject = getString(2131762327);
-    this.iUG.setText(Html.fromHtml((String)localObject));
+    this.jnP.setText(Html.fromHtml((String)localObject));
     localObject = new MobileVerifyUI.5(this);
-    this.iUF.setVisibility(0);
-    this.iUF.setText(getResources().getQuantityString(2131623957, this.iUN, new Object[] { Integer.valueOf(this.iUN) }));
-    aQW();
-    this.iUL = false;
-    this.iGY.setFilters(new InputFilter[] { localObject });
-    this.iGY.addTextChangedListener(new MMEditText.c(this.iGY, null, 12));
-    this.fwU.setOnClickListener(new MobileVerifyUI.6(this));
-    this.fwU.setEnabled(false);
-    this.iGY.setTextSize(15.0F);
-    this.iGY.addTextChangedListener(new MobileVerifyUI.7(this));
-    this.iUE.setOnClickListener(new MobileVerifyUI.8(this));
-    this.iUE.setEnabled(false);
+    this.jnO.setVisibility(0);
+    this.jnO.setText(getResources().getQuantityString(2131623957, this.jnW, new Object[] { Integer.valueOf(this.jnW) }));
+    aUi();
+    this.jnU = false;
+    this.jah.setFilters(new InputFilter[] { localObject });
+    this.jah.addTextChangedListener(new MMEditText.c(this.jah, null, 12));
+    this.fQh.setOnClickListener(new MobileVerifyUI.6(this));
+    this.fQh.setEnabled(false);
+    this.jah.setTextSize(15.0F);
+    this.jah.addTextChangedListener(new MobileVerifyUI.7(this));
+    this.jnN.setOnClickListener(new MobileVerifyUI.8(this));
+    this.jnN.setEnabled(false);
     setBackBtn(new MobileVerifyUI.9(this));
-    this.iGY.setOnEditorActionListener(new MobileVerifyUI.10(this));
-    this.iGY.setOnKeyListener(new MobileVerifyUI.11(this));
+    this.jah.setOnEditorActionListener(new MobileVerifyUI.10(this));
+    this.jah.setOnKeyListener(new MobileVerifyUI.11(this));
     AppMethodBeat.o(128460);
   }
   
   protected final boolean n(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(128466);
-    Object localObject = com.tencent.mm.h.a.rM(paramString);
+    Object localObject = com.tencent.mm.h.a.uz(paramString);
     if (localObject != null)
     {
       ((com.tencent.mm.h.a)localObject).a(this, null, null);
@@ -236,13 +236,13 @@ public class MobileVerifyUI
     {
       AppMethodBeat.o(128466);
       return true;
-      if (g.agi().aBK() == 5)
+      if (com.tencent.mm.kernel.g.aiU().aEN() == 5)
       {
         h.l(this, 2131761537, 2131761536);
         AppMethodBeat.o(128466);
         return true;
       }
-      y.de(this);
+      y.dc(this);
       AppMethodBeat.o(128466);
       return true;
       Toast.makeText(this, 2131756462, 0).show();
@@ -271,9 +271,9 @@ public class MobileVerifyUI
       continue;
       com.tencent.mm.kernel.a.hold();
       AppCompatActivity localAppCompatActivity = getContext();
-      g.agP();
-      if (TextUtils.isEmpty(com.tencent.mm.kernel.a.afG())) {}
-      for (localObject = com.tencent.mm.cc.a.aw(getContext(), 2131761063);; localObject = com.tencent.mm.kernel.a.afG())
+      com.tencent.mm.kernel.g.ajA();
+      if (TextUtils.isEmpty(com.tencent.mm.kernel.a.ais())) {}
+      for (localObject = com.tencent.mm.cc.a.az(getContext(), 2131761063);; localObject = com.tencent.mm.kernel.a.ais())
       {
         h.a(localAppCompatActivity, (String)localObject, getContext().getString(2131755906), new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
         {
@@ -284,11 +284,11 @@ public class MobileVerifyUI
         });
         i = 1;
         break;
-        g.agP();
+        com.tencent.mm.kernel.g.ajA();
       }
     }
-    paramString = new ad(paramInt1, paramInt2, paramString);
-    if (this.iRU.a(this, paramString))
+    paramString = new ae(paramInt1, paramInt2, paramString);
+    if (this.jlc.a(this, paramString))
     {
       AppMethodBeat.o(128466);
       return true;
@@ -301,62 +301,62 @@ public class MobileVerifyUI
   {
     AppMethodBeat.i(128454);
     super.onCreate(paramBundle);
-    this.iTZ = getIntent().getIntExtra("key_reg_style", 1);
-    this.iTE = getIntent().getIntExtra("mobile_verify_purpose", 0);
-    this.iUS = getIntent().getStringExtra("MicroMsg.MobileVerifyUIIntent_sms_code");
-    this.iTR = getIntent().getStringExtra("kintent_password");
-    this.bLs = getIntent().getStringExtra("kintent_nickname");
-    this.iUM = Boolean.valueOf(getIntent().getBooleanExtra("kintent_hasavatar", false));
-    this.iSL = getIntent().getBooleanExtra("from_deep_link", false);
-    this.iTi = getIntent().getStringExtra("regsession_id");
-    this.iUT = getIntent().getStringExtra("reg_3d_app_ticket");
-    this.iUb = getIntent().getIntExtra("reg_3d_app_type", 0);
-    switch (this.iTE)
+    this.jnh = getIntent().getIntExtra("key_reg_style", 1);
+    this.jmM = getIntent().getIntExtra("mobile_verify_purpose", 0);
+    this.job = getIntent().getStringExtra("MicroMsg.MobileVerifyUIIntent_sms_code");
+    this.jmZ = getIntent().getStringExtra("kintent_password");
+    this.bVF = getIntent().getStringExtra("kintent_nickname");
+    this.jnV = Boolean.valueOf(getIntent().getBooleanExtra("kintent_hasavatar", false));
+    this.jlT = getIntent().getBooleanExtra("from_deep_link", false);
+    this.jmq = getIntent().getStringExtra("regsession_id");
+    this.joc = getIntent().getStringExtra("reg_3d_app_ticket");
+    this.jnk = getIntent().getIntExtra("reg_3d_app_type", 0);
+    switch (this.jmM)
     {
     default: 
-      ac.e("MicroMsg.MobileVerifyUI", "wrong purpose %s", new Object[] { Integer.valueOf(this.iTE) });
+      ad.e("MicroMsg.MobileVerifyUI", "wrong purpose %s", new Object[] { Integer.valueOf(this.jmM) });
       finish();
       AppMethodBeat.o(128454);
       return;
     case 2: 
-      this.iUR = new o();
-      if ((this.iTR != null) && (this.iTR.length() >= 8))
+      this.joa = new o();
+      if ((this.jmZ != null) && (this.jmZ.length() >= 8))
       {
-        this.hSX = 1;
+        this.imo = 1;
         paramBundle = getString(2131756490);
-        if (d.DIf) {
-          paramBundle = getString(2131755822) + getString(2131755263);
+        if ((d.Fnm) || (i.IS_FLAVOR_BLUE)) {
+          paramBundle = getString(2131755822) + com.tencent.mm.cd.g.is(this);
         }
         setMMTitle(paramBundle);
-        this.iUN = getIntent().getIntExtra("mobileverify_countdownsec", 30);
-        this.iUO = getIntent().getBooleanExtra("mobileverify_fb", false);
-        this.iUP = getIntent().getBooleanExtra("mobileverify_reg_qq", false);
-        this.dnz = getIntent().getExtras().getString("bindmcontact_mobile");
-        this.iHQ = com.tencent.mm.plugin.b.a.EL();
+        this.jnW = getIntent().getIntExtra("mobileverify_countdownsec", 30);
+        this.jnX = getIntent().getBooleanExtra("mobileverify_fb", false);
+        this.jnY = getIntent().getBooleanExtra("mobileverify_reg_qq", false);
+        this.dzn = getIntent().getExtras().getString("bindmcontact_mobile");
+        this.jaZ = com.tencent.mm.plugin.b.a.Mp();
         initView();
-        this.iUR.a(this);
-        if (this.iUS == null) {
-          break label475;
+        this.joa.a(this);
+        if (this.job == null) {
+          break label478;
         }
-        this.iGY.setText(this.iUS);
-        aQX();
+        this.jah.setText(this.job);
+        aUj();
       }
       break;
     }
     for (;;)
     {
-      this.iRU = new b();
+      this.jlc = new b();
       AppMethodBeat.o(128454);
       return;
-      this.hSX = 4;
+      this.imo = 4;
       break;
-      this.iUR = new m(this.iTE);
+      this.joa = new m(this.jmM);
       break;
-      this.iUR = new n();
+      this.joa = new n();
       break;
-      label475:
-      if (this.iTE == 5) {
-        this.iUR.a(a.iVc);
+      label478:
+      if (this.jmM == 5) {
+        this.joa.a(a.jol);
       }
     }
   }
@@ -364,8 +364,8 @@ public class MobileVerifyUI
   public void onDestroy()
   {
     AppMethodBeat.i(128455);
-    if (this.iRU != null) {
-      this.iRU.close();
+    if (this.jlc != null) {
+      this.jlc.close();
     }
     super.onDestroy();
     AppMethodBeat.o(128455);
@@ -390,11 +390,11 @@ public class MobileVerifyUI
     AppMethodBeat.i(128459);
     if (keyboardState() == 1)
     {
-      this.iUH.scrollTo(0, this.iUH.getChildAt(0).getMeasuredHeight() - this.iUH.getMeasuredHeight());
+      this.jnQ.scrollTo(0, this.jnQ.getChildAt(0).getMeasuredHeight() - this.jnQ.getMeasuredHeight());
       AppMethodBeat.o(128459);
       return;
     }
-    this.iUH.scrollTo(0, 0);
+    this.jnQ.scrollTo(0, 0);
     AppMethodBeat.o(128459);
   }
   
@@ -405,9 +405,9 @@ public class MobileVerifyUI
     if (paramIntent != null)
     {
       paramIntent = paramIntent.getStringExtra("nofification_type");
-      ac.d("MicroMsg.MobileVerifyUI", "[oneliang][notificationType]%s", new Object[] { paramIntent });
+      ad.d("MicroMsg.MobileVerifyUI", "[oneliang][notificationType]%s", new Object[] { paramIntent });
       if ((paramIntent != null) && (paramIntent.equals("no_reg_notification"))) {
-        aQY();
+        aUk();
       }
     }
     AppMethodBeat.o(128465);
@@ -417,7 +417,7 @@ public class MobileVerifyUI
   {
     AppMethodBeat.i(128457);
     super.onPause();
-    this.iUR.stop();
+    this.joa.stop();
     AppMethodBeat.o(128457);
   }
   
@@ -425,7 +425,7 @@ public class MobileVerifyUI
   {
     AppMethodBeat.i(128456);
     super.onResume();
-    this.iUR.start();
+    this.joa.start();
     AppMethodBeat.o(128456);
   }
   
@@ -440,11 +440,11 @@ public class MobileVerifyUI
     static
     {
       AppMethodBeat.i(128453);
-      iVa = new a("GoBack", 0);
-      iVb = new a("GoNext", 1);
-      iVc = new a("DoSend", 2);
-      iVd = new a("DoProcessSMS", 3);
-      iVe = new a[] { iVa, iVb, iVc, iVd };
+      joj = new a("GoBack", 0);
+      jok = new a("GoNext", 1);
+      jol = new a("DoSend", 2);
+      jom = new a("DoProcessSMS", 3);
+      jon = new a[] { joj, jok, jol, jom };
       AppMethodBeat.o(128453);
     }
     

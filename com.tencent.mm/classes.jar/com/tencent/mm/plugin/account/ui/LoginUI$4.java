@@ -12,14 +12,14 @@ final class LoginUI$4
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(128205);
-    LoginUI.d(this.iSO);
+    LoginUI.d(this.jlW);
     AppMethodBeat.o(128205);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginUI.4
  * JD-Core Version:    0.7.0.1
  */

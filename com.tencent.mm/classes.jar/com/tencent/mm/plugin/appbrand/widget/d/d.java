@@ -14,25 +14,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends FrameLayout
 {
-  public static final int mJk;
-  public static final int mJl;
-  public static final int mJv;
+  public static final int njG;
+  public static final int njH;
+  public static final int njR;
   private float anchorX;
   private float anchorY;
-  private TextView mJu;
-  private int mJw;
-  private int mJx;
-  private int mJy;
-  private int mJz;
+  private TextView njQ;
+  private int njS;
+  private int njT;
+  private int njU;
+  private int njV;
   public int x;
   public int y;
   
   static
   {
     AppMethodBeat.i(146596);
-    mJk = Color.parseColor("#000000");
-    mJv = Color.parseColor("#000000");
-    mJl = Color.parseColor("#000000");
+    njG = Color.parseColor("#000000");
+    njR = Color.parseColor("#000000");
+    njH = Color.parseColor("#000000");
     AppMethodBeat.o(146596);
   }
   
@@ -45,11 +45,38 @@ public final class d
     this.anchorX = 0.0F;
     this.anchorY = 0.0F;
     setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-    this.mJu = new TextView(paramContext);
+    this.njQ = new TextView(paramContext);
     paramContext = new LinearLayout.LayoutParams(-2, -2);
-    this.mJu.setLayoutParams(paramContext);
-    addView(this.mJu);
+    this.njQ.setLayoutParams(paramContext);
+    addView(this.njQ);
     AppMethodBeat.o(146587);
+  }
+  
+  public final void A(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(146588);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setCornerRadius(paramInt1);
+    localGradientDrawable.setStroke(paramInt2, paramInt3);
+    localGradientDrawable.setColor(paramInt4);
+    this.njQ.setBackgroundDrawable(localGradientDrawable);
+    AppMethodBeat.o(146588);
+  }
+  
+  public final void eA(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(199910);
+    if ((paramInt1 < 0) || (paramInt2 < 0))
+    {
+      AppMethodBeat.o(199910);
+      return;
+    }
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.njQ.getLayoutParams();
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = paramInt2;
+    this.njQ.setLayoutParams(localLayoutParams);
+    invalidate();
+    AppMethodBeat.o(199910);
   }
   
   public final float getAnchorX()
@@ -88,41 +115,41 @@ public final class d
   {
     AppMethodBeat.i(146594);
     super.onMeasure(paramInt1, paramInt2);
-    this.mJw = getMeasuredWidth();
-    this.mJx = getMeasuredHeight();
-    if ((-this.mJw < this.x) && (this.x < 0))
+    this.njS = getMeasuredWidth();
+    this.njT = getMeasuredHeight();
+    if ((-this.njS < this.x) && (this.x < 0))
     {
-      this.mJy = this.mJw;
-      this.anchorX = (Math.abs(this.x) / (this.mJw * 1.0F));
-      if ((-this.mJx >= this.y) || (this.y >= 0)) {
+      this.njU = this.njS;
+      this.anchorX = (Math.abs(this.x) / (this.njS * 1.0F));
+      if ((-this.njT >= this.y) || (this.y >= 0)) {
         break label189;
       }
-      this.mJz = this.mJx;
-      this.anchorY = (Math.abs(this.y) / (this.mJx * 1.0F));
+      this.njV = this.njT;
+      this.anchorY = (Math.abs(this.y) / (this.njT * 1.0F));
     }
     for (;;)
     {
-      setMeasuredDimension(this.mJy, this.mJz);
+      setMeasuredDimension(this.njU, this.njV);
       AppMethodBeat.o(146594);
       return;
       if (this.x >= 0)
       {
-        this.mJy = (this.mJw + Math.abs(this.x));
+        this.njU = (this.njS + Math.abs(this.x));
         this.anchorX = 0.0F;
         break;
       }
-      this.mJy = Math.abs(this.x);
+      this.njU = Math.abs(this.x);
       this.anchorX = 1.0F;
       break;
       label189:
       if (this.y >= 0)
       {
-        this.mJz = (this.mJx + Math.abs(this.y));
+        this.njV = (this.njT + Math.abs(this.y));
         this.anchorY = 0.0F;
       }
       else
       {
-        this.mJz = Math.abs(this.y);
+        this.njV = Math.abs(this.y);
         this.anchorY = 1.0F;
       }
     }
@@ -133,11 +160,11 @@ public final class d
     AppMethodBeat.i(182824);
     setText("");
     setTextSize(12);
-    setTextColor(mJk);
+    setTextColor(njG);
     setTextPadding(0);
     setGravity("center");
-    int i = mJl;
-    z(0, 0, i, i);
+    int i = njH;
+    A(0, 0, i, i);
     AppMethodBeat.o(182824);
   }
   
@@ -146,46 +173,46 @@ public final class d
     AppMethodBeat.i(146593);
     if (paramString.equals("left"))
     {
-      this.mJu.setGravity(3);
+      this.njQ.setGravity(3);
       AppMethodBeat.o(146593);
       return;
     }
     if (paramString.equals("right"))
     {
-      this.mJu.setGravity(5);
+      this.njQ.setGravity(5);
       AppMethodBeat.o(146593);
       return;
     }
     paramString.equals("center");
-    this.mJu.setGravity(17);
+    this.njQ.setGravity(17);
     AppMethodBeat.o(146593);
   }
   
   public final void setText(String paramString)
   {
     AppMethodBeat.i(146589);
-    this.mJu.setText(paramString);
+    this.njQ.setText(paramString);
     AppMethodBeat.o(146589);
   }
   
   public final void setTextColor(int paramInt)
   {
     AppMethodBeat.i(146591);
-    this.mJu.setTextColor(paramInt);
+    this.njQ.setTextColor(paramInt);
     AppMethodBeat.o(146591);
   }
   
   public final void setTextPadding(int paramInt)
   {
     AppMethodBeat.i(146592);
-    this.mJu.setPadding(paramInt, paramInt, paramInt, paramInt);
+    this.njQ.setPadding(paramInt, paramInt, paramInt, paramInt);
     AppMethodBeat.o(146592);
   }
   
   public final void setTextSize(int paramInt)
   {
     AppMethodBeat.i(146590);
-    this.mJu.setTextSize(paramInt);
+    this.njQ.setTextSize(paramInt);
     AppMethodBeat.o(146590);
   }
   
@@ -198,21 +225,10 @@ public final class d
   {
     this.y = paramInt;
   }
-  
-  public final void z(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(146588);
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(paramInt1);
-    localGradientDrawable.setStroke(paramInt2, paramInt3);
-    localGradientDrawable.setColor(paramInt4);
-    this.mJu.setBackgroundDrawable(localGradientDrawable);
-    AppMethodBeat.o(146588);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.d.d
  * JD-Core Version:    0.7.0.1
  */

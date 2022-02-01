@@ -1,13 +1,9 @@
 package com.tencent.mm.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,27 +12,27 @@ import org.json.JSONObject;
 public final class p
   extends m
 {
-  private int JFl;
-  private a JFm;
-  private boolean dwv;
+  private int Lyp;
+  private a Lyq;
+  private boolean dIH;
   
   public p(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(72784);
-    this.JFl = 0;
-    this.dwv = true;
-    this.JFm = null;
+    this.Lyp = 0;
+    this.dIH = true;
+    this.Lyq = null;
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
-    this.JFl = 1;
+    this.Lyp = 1;
     baseRequset(localHashMap1);
-    localHashMap1.put("type", com.tencent.mm.compatible.util.p.encode("1"));
+    localHashMap1.put("type", com.tencent.mm.compatible.util.q.encode("1"));
     if (paramString2 == null) {}
-    for (paramString2 = "";; paramString2 = com.tencent.mm.compatible.util.p.encode(paramString2))
+    for (paramString2 = "";; paramString2 = com.tencent.mm.compatible.util.q.encode(paramString2))
     {
       localHashMap1.put("true_name", paramString2);
-      localHashMap1.put("id_no", com.tencent.mm.compatible.util.p.encode(paramString1));
-      localHashMap1.put("id_type", com.tencent.mm.compatible.util.p.encode(String.valueOf(paramInt)));
+      localHashMap1.put("id_no", com.tencent.mm.compatible.util.q.encode(paramString1));
+      localHashMap1.put("id_type", com.tencent.mm.compatible.util.q.encode(String.valueOf(paramInt)));
       setRequestData(localHashMap1);
       setWXRequestData(localHashMap2);
       AppMethodBeat.o(72784);
@@ -47,18 +43,18 @@ public final class p
   public p(String paramString1, String paramString2, a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(72785);
-    this.JFl = 0;
-    this.dwv = true;
-    this.JFm = null;
+    this.Lyp = 0;
+    this.dIH = true;
+    this.Lyq = null;
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
-    this.dwv = paramBoolean;
-    this.JFl = 2;
+    this.dIH = paramBoolean;
+    this.Lyp = 2;
     baseRequset(localHashMap1);
-    localHashMap1.put("type", com.tencent.mm.compatible.util.p.encode("2"));
-    localHashMap1.put("crt_sms", com.tencent.mm.compatible.util.p.encode(paramString1));
-    localHashMap1.put("reqkey", com.tencent.mm.compatible.util.p.encode(paramString2));
-    this.JFm = parama;
+    localHashMap1.put("type", com.tencent.mm.compatible.util.q.encode("2"));
+    localHashMap1.put("crt_sms", com.tencent.mm.compatible.util.q.encode(paramString1));
+    localHashMap1.put("reqkey", com.tencent.mm.compatible.util.q.encode(paramString2));
+    this.Lyq = parama;
     setRequestData(localHashMap1);
     setWXRequestData(localHashMap2);
     AppMethodBeat.o(72785);
@@ -67,19 +63,19 @@ public final class p
   public p(String paramString1, String paramString2, String paramString3, a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(72786);
-    this.JFl = 0;
-    this.dwv = true;
-    this.JFm = null;
+    this.Lyp = 0;
+    this.dIH = true;
+    this.Lyq = null;
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
-    this.JFl = 4;
-    this.JFm = parama;
-    this.dwv = paramBoolean;
+    this.Lyp = 4;
+    this.Lyq = parama;
+    this.dIH = paramBoolean;
     baseRequset(localHashMap1);
-    localHashMap1.put("type", com.tencent.mm.compatible.util.p.encode("4"));
-    localHashMap1.put("id_type", com.tencent.mm.compatible.util.p.encode(paramString1));
-    localHashMap1.put("cre_tail", com.tencent.mm.compatible.util.p.encode(paramString2));
-    localHashMap1.put("reqkey", com.tencent.mm.compatible.util.p.encode(paramString3));
+    localHashMap1.put("type", com.tencent.mm.compatible.util.q.encode("4"));
+    localHashMap1.put("id_type", com.tencent.mm.compatible.util.q.encode(paramString1));
+    localHashMap1.put("cre_tail", com.tencent.mm.compatible.util.q.encode(paramString2));
+    localHashMap1.put("reqkey", com.tencent.mm.compatible.util.q.encode(paramString3));
     setRequestData(localHashMap1);
     setWXRequestData(localHashMap2);
     AppMethodBeat.o(72786);
@@ -89,12 +85,12 @@ public final class p
   {
     int k = 0;
     AppMethodBeat.i(72783);
-    g.agS();
-    g.agP();
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajA();
     Object localObject3 = com.tencent.mm.b.p.getString(a.getUin());
-    String str1 = q.cF(false);
+    String str1 = com.tencent.mm.compatible.deviceinfo.q.cH(false);
     byte[] arrayOfByte = new byte[16];
-    Object localObject2 = y.fAm().getBytes();
+    Object localObject2 = y.fRw().getBytes();
     if (localObject2 != null)
     {
       localObject1 = localObject2;
@@ -120,24 +116,24 @@ public final class p
       i = m;
     } while (m < 16);
     Object localObject1 = new String(arrayOfByte);
-    localObject2 = ah.dg((String)localObject3 + str1);
-    String str2 = ah.dg((String)localObject3 + (String)localObject2 + new String(arrayOfByte));
-    ac.i("MicroMsg.NetSceneGendigitalcert", "salt " + new String(arrayOfByte));
-    ac.i("MicroMsg.NetSceneGendigitalcert", "crt_csr uin: %s: devideid: %s crt: %s", new Object[] { localObject3, str1, str2 });
-    localObject3 = b.fAg();
-    com.tencent.mm.wallet_core.b.fzz();
+    localObject2 = ai.ee((String)localObject3 + str1);
+    String str2 = ai.ee((String)localObject3 + (String)localObject2 + new String(arrayOfByte));
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneGendigitalcert", "salt " + new String(arrayOfByte));
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneGendigitalcert", "crt_csr uin: %s: devideid: %s crt: %s", new Object[] { localObject3, str1, str2 });
+    localObject3 = b.fRq();
+    com.tencent.mm.wallet_core.b.fQJ();
     i = k;
-    if (com.tencent.mm.wallet_core.b.fzC()) {
+    if (com.tencent.mm.wallet_core.b.fQM()) {
       i = 1;
     }
-    localObject3 = ((b)localObject3).gq(str2, i);
+    localObject3 = ((b)localObject3).gN(str2, i);
     try
     {
-      paramMap.put("sn_salt", com.tencent.mm.compatible.util.p.encode((String)localObject1));
-      paramMap.put("crt_csr", com.tencent.mm.compatible.util.p.encode((String)localObject3));
+      paramMap.put("sn_salt", com.tencent.mm.compatible.util.q.encode((String)localObject1));
+      paramMap.put("crt_csr", com.tencent.mm.compatible.util.q.encode((String)localObject3));
       paramMap.put("crt_device_id", localObject2);
-      paramMap.put("device_os", d.gMK);
-      paramMap.put("device_name", d.DHZ);
+      paramMap.put("device_os", d.hgH);
+      paramMap.put("device_name", d.Fng);
       AppMethodBeat.o(72783);
       return;
     }
@@ -164,81 +160,81 @@ public final class p
   
   public final boolean isBlock()
   {
-    return this.dwv;
+    return this.dIH;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72787);
-    ac.i("MicroMsg.NetSceneGendigitalcert", "errCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneGendigitalcert", "errCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt), paramString });
     for (;;)
     {
       try
       {
         paramString = paramJSONObject.optString("crt_crt");
         paramJSONObject = paramJSONObject.optString("crt_no");
-        h.wUl.idkeyStat(414L, 0L, 1L, true);
-        boolean bool = b.fAg().importCert(paramJSONObject, paramString);
-        ad.aSD(paramJSONObject);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(414L, 0L, 1L, true);
+        boolean bool = b.fRq().importCert(paramJSONObject, paramString);
+        ad.aYC(paramJSONObject);
         if (bool)
         {
-          h.wUl.idkeyStat(414L, 1L, 1L, true);
-          ac.i("MicroMsg.NetSceneGendigitalcert", "importCert crt_crt success");
-          if (this.JFl == 1)
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(414L, 1L, 1L, true);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneGendigitalcert", "importCert crt_crt success");
+          if (this.Lyp == 1)
           {
-            h.wUl.f(13731, new Object[] { Integer.valueOf(3) });
-            ac.i("MicroMsg.NetSceneGendigitalcert", "_crt_crt %s _crt_no %s", new Object[] { ah.dg(paramString), paramJSONObject });
+            com.tencent.mm.plugin.report.service.g.yhR.f(13731, new Object[] { Integer.valueOf(3) });
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneGendigitalcert", "_crt_crt %s _crt_no %s", new Object[] { ai.ee(paramString), paramJSONObject });
             AppMethodBeat.o(72787);
           }
         }
         else
         {
-          h.wUl.idkeyStat(414L, 2L, 1L, true);
-          ac.e("MicroMsg.NetSceneGendigitalcert", "importCert crt_crt fail");
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(414L, 2L, 1L, true);
+          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetSceneGendigitalcert", "importCert crt_crt fail");
           continue;
         }
-        if (this.JFl != 2) {
+        if (this.Lyp != 2) {
           continue;
         }
       }
       catch (Exception paramString)
       {
-        ac.printErrStackTrace("MicroMsg.NetSceneGendigitalcert", paramString, "", new Object[0]);
+        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.NetSceneGendigitalcert", paramString, "", new Object[0]);
         AppMethodBeat.o(72787);
         return;
       }
-      h.wUl.f(13731, new Object[] { Integer.valueOf(7) });
+      com.tencent.mm.plugin.report.service.g.yhR.f(13731, new Object[] { Integer.valueOf(7) });
     }
   }
   
   public final void onGYNetEnd2(e parame, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72788);
-    b.fAg().fAh();
+    b.fRq().fRr();
     if (parame.errCode != 0)
     {
-      if (this.JFl != 1) {
+      if (this.Lyp != 1) {
         break label85;
       }
-      h.wUl.f(13731, new Object[] { Integer.valueOf(4) });
+      com.tencent.mm.plugin.report.service.g.yhR.f(13731, new Object[] { Integer.valueOf(4) });
     }
     for (;;)
     {
-      if ((this.JFm != null) && ((!this.dwv) || (parame.errCode == 0))) {
-        this.JFm.etT();
+      if ((this.Lyq != null) && ((!this.dIH) || (parame.errCode == 0))) {
+        this.Lyq.eHZ();
       }
       AppMethodBeat.o(72788);
       return;
       label85:
-      if (this.JFl == 2) {
-        h.wUl.f(13731, new Object[] { Integer.valueOf(8) });
+      if (this.Lyp == 2) {
+        com.tencent.mm.plugin.report.service.g.yhR.f(13731, new Object[] { Integer.valueOf(8) });
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void etT();
+    public abstract void eHZ();
   }
 }
 

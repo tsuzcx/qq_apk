@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.ui.a;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"TAG", "", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"TAG", "", "plugin-story_release"})
 public final class h
 {
   private static final String TAG = "MicroMsg.StoryGalleryAdapter";

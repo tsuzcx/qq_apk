@@ -2,141 +2,120 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Arrays;
 
 public final class z
   extends a
 {
-  private String dFe;
-  private String dHM;
-  private long dHN;
-  private long dHO;
-  private long dHP;
-  private String dHQ;
-  private long dHR;
-  private long dHS;
-  private long dHT;
-  private long dHU;
+  public long dUB;
+  public int dUC;
+  public int dUD;
+  private String dUE;
+  private String dUF;
+  private String dUG;
   
-  public final String PR()
+  public z() {}
+  
+  public z(String paramString)
   {
-    AppMethodBeat.i(194882);
+    AppMethodBeat.i(108282);
+    if (paramString != null)
+    {
+      paramString = paramString.split(",");
+      if (paramString != null)
+      {
+        if (paramString.length >= 6) {
+          break label120;
+        }
+        String[] arrayOfString = new String[6];
+        Arrays.fill(arrayOfString, 0, 6, "");
+        System.arraycopy(paramString, 0, arrayOfString, 0, paramString.length);
+        paramString = arrayOfString;
+      }
+    }
+    label120:
+    for (;;)
+    {
+      this.dUB = bt.getLong(paramString[0], 0L);
+      this.dUC = bt.getInt(paramString[1], 0);
+      this.dUD = bt.getInt(paramString[2], 0);
+      gU(paramString[3]);
+      gV(paramString[4]);
+      gW(paramString[5]);
+      AppMethodBeat.o(108282);
+      return;
+    }
+  }
+  
+  public final String RD()
+  {
+    AppMethodBeat.i(108286);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dFe);
+    ((StringBuffer)localObject).append(this.dUB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHM);
+    ((StringBuffer)localObject).append(this.dUC);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHN);
+    ((StringBuffer)localObject).append(this.dUD);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHO);
+    ((StringBuffer)localObject).append(this.dUE);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHP);
+    ((StringBuffer)localObject).append(this.dUF);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHQ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHS);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHT);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHU);
+    ((StringBuffer)localObject).append(this.dUG);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(194882);
+    awz((String)localObject);
+    AppMethodBeat.o(108286);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(194883);
+    AppMethodBeat.i(108287);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SessionId:").append(this.dFe);
+    ((StringBuffer)localObject).append("EnterTime:").append(this.dUB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedId:").append(this.dHM);
+    ((StringBuffer)localObject).append("scene:").append(this.dUC);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedLikeCount:").append(this.dHN);
+    ((StringBuffer)localObject).append("action:").append(this.dUD);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedCommentCount:").append(this.dHO);
+    ((StringBuffer)localObject).append("pid:").append(this.dUE);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedFriLikeCount:").append(this.dHP);
+    ((StringBuffer)localObject).append("info:").append(this.dUF);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CurrentPageName:").append(this.dHQ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("scene:").append(this.dHR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedType:").append(this.dHS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CommentScene:").append(this.dHT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("InnerVersion:").append(this.dHU);
+    ((StringBuffer)localObject).append("index:").append(this.dUG);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(194883);
+    AppMethodBeat.o(108287);
     return localObject;
   }
   
-  public final z cg(long paramLong)
+  public final z gU(String paramString)
   {
-    this.dHN = paramLong;
+    AppMethodBeat.i(108283);
+    this.dUE = t("pid", paramString, true);
+    AppMethodBeat.o(108283);
     return this;
   }
   
-  public final z ch(long paramLong)
+  public final z gV(String paramString)
   {
-    this.dHO = paramLong;
+    AppMethodBeat.i(108284);
+    this.dUF = t("info", paramString, true);
+    AppMethodBeat.o(108284);
     return this;
   }
   
-  public final z ci(long paramLong)
+  public final z gW(String paramString)
   {
-    this.dHP = paramLong;
-    return this;
-  }
-  
-  public final z cj(long paramLong)
-  {
-    this.dHR = paramLong;
-    return this;
-  }
-  
-  public final z ck(long paramLong)
-  {
-    this.dHS = paramLong;
-    return this;
-  }
-  
-  public final z cl(long paramLong)
-  {
-    this.dHT = paramLong;
-    return this;
-  }
-  
-  public final z fX(String paramString)
-  {
-    AppMethodBeat.i(194879);
-    this.dFe = t("SessionId", paramString, true);
-    AppMethodBeat.o(194879);
-    return this;
-  }
-  
-  public final z fY(String paramString)
-  {
-    AppMethodBeat.i(194880);
-    this.dHM = t("FeedId", paramString, true);
-    AppMethodBeat.o(194880);
-    return this;
-  }
-  
-  public final z fZ(String paramString)
-  {
-    AppMethodBeat.i(194881);
-    this.dHQ = t("CurrentPageName", paramString, true);
-    AppMethodBeat.o(194881);
+    AppMethodBeat.i(108285);
+    this.dUG = t("index", paramString, true);
+    AppMethodBeat.o(108285);
     return this;
   }
   
   public final int getId()
   {
-    return 19185;
+    return 18662;
   }
 }
 

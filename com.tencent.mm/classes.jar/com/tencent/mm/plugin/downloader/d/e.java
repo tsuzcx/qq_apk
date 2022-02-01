@@ -22,7 +22,7 @@ public final class e
     //   27: getfield 29	com/tencent/mm/vfs/e:mUri	Landroid/net/Uri;
     //   30: invokestatic 35	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   33: iconst_0
-    //   34: invokestatic 41	com/tencent/mm/vfs/i:cY	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   34: invokestatic 41	com/tencent/mm/vfs/i:dd	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   37: astore_0
     //   38: aload_0
     //   39: invokestatic 47	com/tencent/mm/plugin/downloader/d/a:g	(Ljava/io/RandomAccessFile;)Landroid/util/Pair;

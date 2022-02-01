@@ -6,31 +6,31 @@ import java.lang.reflect.Method;
 
 final class ac
 {
-  private static Method By;
-  private static boolean Bz;
+  private static Method Dq;
+  private static boolean Dr;
   
   static void c(ViewGroup paramViewGroup, boolean paramBoolean)
   {
     
-    if (By != null) {}
+    if (Dq != null) {}
     try
     {
-      By.invoke(paramViewGroup, new Object[] { Boolean.valueOf(paramBoolean) });
+      Dq.invoke(paramViewGroup, new Object[] { Boolean.valueOf(paramBoolean) });
       return;
     }
     catch (InvocationTargetException paramViewGroup) {}catch (IllegalAccessException paramViewGroup) {}
   }
   
-  private static void dA()
+  private static void dP()
   {
-    if (!Bz) {}
+    if (!Dr) {}
     try
     {
       Method localMethod = ViewGroup.class.getDeclaredMethod("suppressLayout", new Class[] { Boolean.TYPE });
-      By = localMethod;
+      Dq = localMethod;
       localMethod.setAccessible(true);
       label33:
-      Bz = true;
+      Dr = true;
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
@@ -41,7 +41,7 @@ final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.transition.ac
  * JD-Core Version:    0.7.0.1
  */

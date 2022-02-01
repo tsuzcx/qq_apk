@@ -1,33 +1,33 @@
 package d.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
-import d.l.b.a.b.m.c.g;
-import d.l.b.a.b.m.c.i;
-import d.l.b.a.b.m.c.l;
-import d.l.b.a.b.m.c.p;
+import d.g.b.p;
+import d.l.b.a.b.m.c.h;
+import d.l.b.a.b.m.c.j;
+import d.l.b.a.b.m.c.m;
+import d.l.b.a.b.m.c.q;
 
 public final class d
 {
-  public static final d LKk;
+  public static final d NBj;
   
   static
   {
     AppMethodBeat.i(60575);
-    LKk = new d();
+    NBj = new d();
     AppMethodBeat.o(60575);
   }
   
-  private final boolean a(p paramp, i parami1, i parami2)
+  private final boolean a(q paramq, j paramj1, j paramj2)
   {
     AppMethodBeat.i(60574);
-    if ((paramp.q((g)parami1) == paramp.q((g)parami2)) && (paramp.h(parami1) == paramp.h(parami2)))
+    if ((paramq.q((h)paramj1) == paramq.q((h)paramj2)) && (paramq.h(paramj1) == paramq.h(paramj2)))
     {
-      if (paramp.g(parami1) != null) {
+      if (paramq.g(paramj1) != null) {
         break label108;
       }
       i = 1;
-      if (paramp.g(parami2) != null) {
+      if (paramq.g(paramj2) != null) {
         break label114;
       }
     }
@@ -35,7 +35,7 @@ public final class d
     label114:
     for (int j = 1;; j = 0)
     {
-      if ((i == j) && (paramp.b(paramp.i(parami1), paramp.i(parami2)))) {
+      if ((i == j) && (paramq.b(paramq.i(paramj1), paramq.i(paramj2)))) {
         break label120;
       }
       AppMethodBeat.o(60574);
@@ -44,30 +44,30 @@ public final class d
       break;
     }
     label120:
-    if (paramp.b(parami1, parami2))
+    if (paramq.a(paramj1, paramj2))
     {
       AppMethodBeat.o(60574);
       return true;
     }
-    j = paramp.q((g)parami1);
+    j = paramq.q((h)paramj1);
     int i = 0;
     while (i < j)
     {
-      l locall1 = paramp.a((g)parami1, i);
-      l locall2 = paramp.a((g)parami2, i);
-      if (paramp.a(locall1) != paramp.a(locall2))
+      m localm1 = paramq.a((h)paramj1, i);
+      m localm2 = paramq.a((h)paramj2, i);
+      if (paramq.a(localm1) != paramq.a(localm2))
       {
         AppMethodBeat.o(60574);
         return false;
       }
-      if (!paramp.a(locall1))
+      if (!paramq.a(localm1))
       {
-        if (paramp.b(locall1) != paramp.b(locall2))
+        if (paramq.b(localm1) != paramq.b(localm2))
         {
           AppMethodBeat.o(60574);
           return false;
         }
-        if (!b(paramp, paramp.c(locall1), paramp.c(locall2)))
+        if (!b(paramq, paramq.c(localm1), paramq.c(localm2)))
         {
           AppMethodBeat.o(60574);
           return false;
@@ -79,27 +79,27 @@ public final class d
     return true;
   }
   
-  private final boolean b(p paramp, g paramg1, g paramg2)
+  private final boolean b(q paramq, h paramh1, h paramh2)
   {
     AppMethodBeat.i(60573);
-    if (paramg1 == paramg2)
+    if (paramh1 == paramh2)
     {
       AppMethodBeat.o(60573);
       return true;
     }
-    i locali1 = paramp.o(paramg1);
-    i locali2 = paramp.o(paramg2);
-    if ((locali1 != null) && (locali2 != null))
+    j localj1 = paramq.o(paramh1);
+    j localj2 = paramq.o(paramh2);
+    if ((localj1 != null) && (localj2 != null))
     {
-      boolean bool = a(paramp, locali1, locali2);
+      boolean bool = a(paramq, localj1, localj2);
       AppMethodBeat.o(60573);
       return bool;
     }
-    paramg1 = paramp.p(paramg1);
-    paramg2 = paramp.p(paramg2);
-    if ((paramg1 != null) && (paramg2 != null))
+    paramh1 = paramq.p(paramh1);
+    paramh2 = paramq.p(paramh2);
+    if ((paramh1 != null) && (paramh2 != null))
     {
-      if ((a(paramp, paramp.c(paramg1), paramp.c(paramg2))) && (a(paramp, paramp.b(paramg1), paramp.b(paramg2))))
+      if ((a(paramq, paramq.c(paramh1), paramq.c(paramh2))) && (a(paramq, paramq.b(paramh1), paramq.b(paramh2))))
       {
         AppMethodBeat.o(60573);
         return true;
@@ -111,20 +111,20 @@ public final class d
     return false;
   }
   
-  public final boolean a(p paramp, g paramg1, g paramg2)
+  public final boolean a(q paramq, h paramh1, h paramh2)
   {
     AppMethodBeat.i(60572);
-    k.h(paramp, "context");
-    k.h(paramg1, "a");
-    k.h(paramg2, "b");
-    boolean bool = b(paramp, paramg1, paramg2);
+    p.h(paramq, "context");
+    p.h(paramh1, "a");
+    p.h(paramh2, "b");
+    boolean bool = b(paramq, paramh1, paramh2);
     AppMethodBeat.o(60572);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.d
  * JD-Core Version:    0.7.0.1
  */

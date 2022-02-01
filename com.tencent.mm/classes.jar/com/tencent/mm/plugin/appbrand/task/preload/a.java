@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.task.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -14,27 +14,27 @@ import org.json.JSONObject;
 
 public class a
 {
-  private static volatile a lZb;
-  private static Map<Integer, LinkedList<Map<Integer, Map<Integer, Float>>>> lZc;
+  private static volatile a myR;
+  private static Map<Integer, LinkedList<Map<Integer, Map<Integer, Float>>>> myS;
   
   static
   {
     AppMethodBeat.i(48502);
-    lZc = new HashMap();
-    buM();
+    myS = new HashMap();
+    byQ();
     AppMethodBeat.o(48502);
   }
   
-  public static a buL()
+  public static a byP()
   {
     AppMethodBeat.i(48499);
-    if (lZb == null) {}
+    if (myR == null) {}
     try
     {
-      if (lZb == null) {
-        lZb = new a();
+      if (myR == null) {
+        myR = new a();
       }
-      a locala = lZb;
+      a locala = myR;
       AppMethodBeat.o(48499);
       return locala;
     }
@@ -44,17 +44,17 @@ public class a
     }
   }
   
-  private static void buM()
+  private static void byQ()
   {
     AppMethodBeat.i(48500);
-    Object localObject1 = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.qaB, "");
-    if (bs.isNullOrNil((String)localObject1))
+    Object localObject1 = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFX, "");
+    if (bt.isNullOrNil((String)localObject1))
     {
-      ac.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "clicfg_preload_miniprogram jsonStr error!");
+      ad.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "clicfg_preload_miniprogram jsonStr error!");
       AppMethodBeat.o(48500);
       return;
     }
-    ac.d("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "generateScenePredictMap jsonStr:%s", new Object[] { localObject1 });
+    ad.d("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "generateScenePredictMap jsonStr:%s", new Object[] { localObject1 });
     try
     {
       localObject1 = new JSONArray((String)localObject1);
@@ -75,39 +75,39 @@ public class a
           float f3 = (float)((JSONObject)localObject3).optDouble("high");
           localObject3 = new HashMap();
           HashMap localHashMap = new HashMap();
-          localHashMap.put(Integer.valueOf(b.lZd.ordinal()), Float.valueOf(f1));
-          localHashMap.put(Integer.valueOf(b.lZe.ordinal()), Float.valueOf(f2));
-          localHashMap.put(Integer.valueOf(b.lZf.ordinal()), Float.valueOf(f3));
+          localHashMap.put(Integer.valueOf(b.myT.ordinal()), Float.valueOf(f1));
+          localHashMap.put(Integer.valueOf(b.myU.ordinal()), Float.valueOf(f2));
+          localHashMap.put(Integer.valueOf(b.myV.ordinal()), Float.valueOf(f3));
           ((Map)localObject3).put(Integer.valueOf(m), localHashMap);
           localLinkedList.add(localObject3);
           j += 1;
         }
-        lZc.put(Integer.valueOf(k), localLinkedList);
+        myS.put(Integer.valueOf(k), localLinkedList);
         i += 1;
       }
-      ac.d("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "scenePredictMap :%s", new Object[] { lZc.toString() });
+      ad.d("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "scenePredictMap :%s", new Object[] { myS.toString() });
       AppMethodBeat.o(48500);
       return;
     }
     catch (JSONException localJSONException)
     {
-      ac.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "generateScenePredictMap json exception:%s", new Object[] { localJSONException });
-      lZc.clear();
-      lZc = null;
+      ad.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "generateScenePredictMap json exception:%s", new Object[] { localJSONException });
+      myS.clear();
+      myS = null;
       AppMethodBeat.o(48500);
     }
   }
   
-  public static Map<Integer, Float> eg(int paramInt1, int paramInt2)
+  public static Map<Integer, Float> ei(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(48501);
-    if ((lZc == null) || (lZc.size() <= 0))
+    if ((myS == null) || (myS.size() <= 0))
     {
-      ac.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "getScenePredictRate map null!");
+      ad.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "getScenePredictRate map null!");
       AppMethodBeat.o(48501);
       return null;
     }
-    Object localObject = (LinkedList)lZc.get(Integer.valueOf(paramInt1));
+    Object localObject = (LinkedList)myS.get(Integer.valueOf(paramInt1));
     if (((LinkedList)localObject).size() > 0)
     {
       paramInt1 = 0;
@@ -129,7 +129,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.preload.a
  * JD-Core Version:    0.7.0.1
  */

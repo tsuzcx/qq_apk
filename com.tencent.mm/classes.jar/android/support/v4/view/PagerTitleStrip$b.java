@@ -10,25 +10,25 @@ import java.util.Locale;
 final class PagerTitleStrip$b
   extends SingleLineTransformationMethod
 {
-  private Locale OB;
+  private Locale Qs;
   
   PagerTitleStrip$b(Context paramContext)
   {
-    this.OB = paramContext.getResources().getConfiguration().locale;
+    this.Qs = paramContext.getResources().getConfiguration().locale;
   }
   
   public final CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
   {
     paramCharSequence = super.getTransformation(paramCharSequence, paramView);
     if (paramCharSequence != null) {
-      return paramCharSequence.toString().toUpperCase(this.OB);
+      return paramCharSequence.toString().toUpperCase(this.Qs);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.view.PagerTitleStrip.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/hat" android:padding="@dimen/ci" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_cutie" app:iconColor="@color/aj" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="end|bottom|center" android:id="@id/hau" android:visibility="gone" android:layout_width="@dimen/c0" android:layout_height="@dimen/c0" android:layout_margin="6.0dip" android:src="@raw/icons_filled_done2" app:iconColor="@color/aj" />
+</merge>

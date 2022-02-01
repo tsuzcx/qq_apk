@@ -3,41 +3,56 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class dt
   extends c
 {
+  public static final String COL_EXPIRE_AT = "expire_at";
+  public static final String COL_KEY = "key";
+  public static final String COL_VALUE = "value";
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eBL = "width".hashCode();
-  private static final int eBM;
-  private static final int eRh = "packet_id".hashCode();
-  private static final int eRo = "media_type".hashCode();
-  private static final int eRp = "media_url".hashCode();
-  private static final int eRq = "media_md5".hashCode();
-  private static final int eRr = "media_fuzzy_thumbnail_url".hashCode();
-  private static final int eRs = "media_fuzzy_thumbnail_md5".hashCode();
+  public static final String TABLE_NAME = "KindaCacheTable";
+  private static final String TAG = "MicroMsg.SDK.BaseKindaCacheTable";
+  private static final int expire_at_HASHCODE = "expire_at".hashCode();
+  private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eAZ = true;
-  private boolean eBa = true;
-  private boolean eQZ = true;
-  private boolean eRj = true;
-  private boolean eRk = true;
-  private boolean eRl = true;
-  private boolean eRm = true;
-  private boolean eRn = true;
-  public int field_height;
-  public String field_media_fuzzy_thumbnail_md5;
-  public String field_media_fuzzy_thumbnail_url;
-  public String field_media_md5;
-  public int field_media_type;
-  public String field_media_url;
-  public String field_packet_id;
-  public int field_width;
+  private static final int value_HASHCODE = "value".hashCode();
+  private boolean __hadSetexpire_at = true;
+  private boolean __hadSetkey = true;
+  private boolean __hadSetvalue = true;
+  public long field_expire_at;
+  public String field_key;
+  public byte[] field_value;
   
-  static
+  private final void buildBuff() {}
+  
+  public static c.a initAutoDBInfo(Class<?> paramClass)
   {
-    eBM = "height".hashCode();
+    paramClass = new c.a();
+    paramClass.IhA = new Field[3];
+    paramClass.columns = new String[4];
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramClass.columns[0] = "key";
+    paramClass.IhC.put("key", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" key TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    paramClass.IhB = "key";
+    paramClass.columns[1] = "value";
+    paramClass.IhC.put("value", "BLOB");
+    localStringBuilder.append(" value BLOB");
+    localStringBuilder.append(", ");
+    paramClass.columns[2] = "expire_at";
+    paramClass.IhC.put("expire_at", "LONG");
+    localStringBuilder.append(" expire_at LONG");
+    paramClass.columns[3] = "rowid";
+    paramClass.sql = localStringBuilder.toString();
+    return paramClass;
   }
+  
+  private final void parseBuff() {}
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -52,31 +67,22 @@ public abstract class dt
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eRo != k) {
-        break label60;
+      if (key_HASHCODE != k) {
+        break label65;
       }
-      this.field_media_type = paramCursor.getInt(i);
+      this.field_key = paramCursor.getString(i);
+      this.__hadSetkey = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eRp == k) {
-        this.field_media_url = paramCursor.getString(i);
-      } else if (eRq == k) {
-        this.field_media_md5 = paramCursor.getString(i);
-      } else if (eBM == k) {
-        this.field_height = paramCursor.getInt(i);
-      } else if (eBL == k) {
-        this.field_width = paramCursor.getInt(i);
-      } else if (eRh == k) {
-        this.field_packet_id = paramCursor.getString(i);
-      } else if (eRr == k) {
-        this.field_media_fuzzy_thumbnail_url = paramCursor.getString(i);
-      } else if (eRs == k) {
-        this.field_media_fuzzy_thumbnail_md5 = paramCursor.getString(i);
+      label65:
+      if (value_HASHCODE == k) {
+        this.field_value = paramCursor.getBlob(i);
+      } else if (expire_at_HASHCODE == k) {
+        this.field_expire_at = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -85,40 +91,28 @@ public abstract class dt
   
   public ContentValues convertTo()
   {
+    buildBuff();
     ContentValues localContentValues = new ContentValues();
-    if (this.eRj) {
-      localContentValues.put("media_type", Integer.valueOf(this.field_media_type));
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
     }
-    if (this.eRk) {
-      localContentValues.put("media_url", this.field_media_url);
+    if (this.__hadSetvalue) {
+      localContentValues.put("value", this.field_value);
     }
-    if (this.eRl) {
-      localContentValues.put("media_md5", this.field_media_md5);
-    }
-    if (this.eBa) {
-      localContentValues.put("height", Integer.valueOf(this.field_height));
-    }
-    if (this.eAZ) {
-      localContentValues.put("width", Integer.valueOf(this.field_width));
-    }
-    if (this.eQZ) {
-      localContentValues.put("packet_id", this.field_packet_id);
-    }
-    if (this.eRm) {
-      localContentValues.put("media_fuzzy_thumbnail_url", this.field_media_fuzzy_thumbnail_url);
-    }
-    if (this.eRn) {
-      localContentValues.put("media_fuzzy_thumbnail_md5", this.field_media_fuzzy_thumbnail_md5);
+    if (this.__hadSetexpire_at) {
+      localContentValues.put("expire_at", Long.valueOf(this.field_expire_at));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
     }
     return localContentValues;
   }
+  
+  public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.dt
  * JD-Core Version:    0.7.0.1
  */

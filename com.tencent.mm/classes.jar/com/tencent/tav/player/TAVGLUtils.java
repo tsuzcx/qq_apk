@@ -2,11 +2,8 @@ package com.tencent.tav.player;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.opengl.EGL14;
 import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tav.coremedia.TextureInfo;
-import com.tencent.tav.decoder.logger.Logger;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -16,38 +13,17 @@ public class TAVGLUtils
 {
   private static final String TAG = "TAVGLUtils";
   
-  public static void checkEglError(String paramString)
-  {
-    AppMethodBeat.i(198307);
-    int i = 0;
-    String str = "";
-    for (;;)
-    {
-      int j = EGL14.eglGetError();
-      if (j == 12288) {
-        break;
-      }
-      Logger.e("TAVGLUtils", paramString + ": EGL error: 0x" + Integer.toHexString(j));
-      str = str + paramString + ": EGL error: 0x" + Integer.toHexString(j);
-      i = 1;
-    }
-    if (i != 0) {
-      new RuntimeException("EGL error encountered (see log): ".concat(String.valueOf(str)));
-    }
-    AppMethodBeat.o(198307);
-  }
-  
   public static String convertStreamToString(InputStream paramInputStream)
   {
-    AppMethodBeat.i(198309);
-    paramInputStream = new Scanner(paramInputStream).useDelimiter("\\A");
+    AppMethodBeat.i(218708);
+    paramInputStream = new Scanner(paramInputStream, "UTF-8").useDelimiter("\\A");
     if (paramInputStream.hasNext())
     {
       paramInputStream = paramInputStream.next();
-      AppMethodBeat.o(198309);
+      AppMethodBeat.o(218708);
       return paramInputStream;
     }
-    AppMethodBeat.o(198309);
+    AppMethodBeat.o(218708);
     return "";
   }
   
@@ -60,54 +36,54 @@ public class TAVGLUtils
   public static String loadShaderCode(android.content.Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: ldc 104
+    //   0: ldc 57
     //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aconst_null
     //   6: astore_3
     //   7: aconst_null
     //   8: astore_2
     //   9: aload_0
-    //   10: invokevirtual 110	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   10: invokevirtual 63	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   13: aload_1
-    //   14: invokevirtual 116	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   14: invokevirtual 69	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   17: astore_0
     //   18: aload_0
     //   19: astore_2
     //   20: aload_0
     //   21: astore_3
     //   22: aload_0
-    //   23: invokestatic 118	com/tencent/tav/player/TAVGLUtils:convertStreamToString	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   23: invokestatic 71	com/tencent/tav/player/TAVGLUtils:convertStreamToString	(Ljava/io/InputStream;)Ljava/lang/String;
     //   26: astore_1
     //   27: aload_0
     //   28: ifnull +7 -> 35
     //   31: aload_0
-    //   32: invokevirtual 123	java/io/InputStream:close	()V
-    //   35: ldc 104
-    //   37: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   32: invokevirtual 76	java/io/InputStream:close	()V
+    //   35: ldc 57
+    //   37: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   40: aload_1
     //   41: areturn
     //   42: astore_0
     //   43: aload_2
     //   44: astore_3
     //   45: ldc 8
-    //   47: ldc 124
+    //   47: ldc 77
     //   49: aload_0
-    //   50: invokestatic 127	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   50: invokestatic 83	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   53: aload_2
     //   54: ifnull +7 -> 61
     //   57: aload_2
-    //   58: invokevirtual 123	java/io/InputStream:close	()V
-    //   61: ldc 104
-    //   63: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   66: ldc 24
+    //   58: invokevirtual 76	java/io/InputStream:close	()V
+    //   61: ldc 57
+    //   63: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   66: ldc 48
     //   68: areturn
     //   69: astore_0
     //   70: aload_3
     //   71: ifnull +7 -> 78
     //   74: aload_3
-    //   75: invokevirtual 123	java/io/InputStream:close	()V
-    //   78: ldc 104
-    //   80: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: invokevirtual 76	java/io/InputStream:close	()V
+    //   78: ldc 57
+    //   80: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: aload_0
     //   84: athrow
     //   85: astore_0
@@ -136,7 +112,7 @@ public class TAVGLUtils
   
   public static Bitmap saveBitmap(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(198310);
+    AppMethodBeat.i(218709);
     int[] arrayOfInt = new int[1];
     GLES20.glBindTexture(3553, paramInt1);
     GLES20.glGenFramebuffers(1, arrayOfInt, 0);
@@ -152,28 +128,8 @@ public class TAVGLUtils
     GLES20.glBindFramebuffer(36160, 0);
     GLES20.glDeleteFramebuffers(1, arrayOfInt, 0);
     GLES20.glBindTexture(3553, 0);
-    AppMethodBeat.o(198310);
+    AppMethodBeat.o(218709);
     return localBitmap;
-  }
-  
-  public static Bitmap saveBitmap(TextureInfo paramTextureInfo)
-  {
-    AppMethodBeat.i(198311);
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenFramebuffers(1, arrayOfInt, 0);
-    GLES20.glBindFramebuffer(36160, arrayOfInt[0]);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramTextureInfo.textureID, 0);
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramTextureInfo.width * paramTextureInfo.height * 4);
-    localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-    localByteBuffer.rewind();
-    GLES20.glReadPixels(0, 0, paramTextureInfo.width, paramTextureInfo.height, 6408, 5121, localByteBuffer);
-    paramTextureInfo = Bitmap.createBitmap(paramTextureInfo.width, paramTextureInfo.height, Bitmap.Config.ARGB_4444);
-    localByteBuffer.rewind();
-    paramTextureInfo.copyPixelsFromBuffer(localByteBuffer);
-    GLES20.glBindFramebuffer(36160, 0);
-    GLES20.glDeleteFramebuffers(1, arrayOfInt, 0);
-    AppMethodBeat.o(198311);
-    return paramTextureInfo;
   }
 }
 

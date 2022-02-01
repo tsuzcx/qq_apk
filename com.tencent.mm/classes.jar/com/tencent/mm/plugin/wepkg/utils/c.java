@@ -3,10 +3,8 @@ package com.tencent.mm.plugin.wepkg.utils;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.n.a;
-import com.tencent.mm.g.a.si;
-import com.tencent.mm.g.a.si.a;
-import com.tencent.mm.g.a.ys;
-import com.tencent.mm.g.a.ys.a;
+import com.tencent.mm.g.a.zm;
+import com.tencent.mm.g.a.zm.a;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
@@ -17,87 +15,39 @@ import com.tencent.mm.plugin.wepkg.model.WepkgVersion;
 import com.tencent.mm.plugin.wepkg.model.i;
 import com.tencent.mm.plugin.wepkg.model.j;
 import com.tencent.mm.plugin.wepkg.version.WepkgVersionUpdater;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public final class c
 {
-  public com.tencent.mm.sdk.b.c DbT;
-  public final com.tencent.mm.sdk.b.c DbU;
+  public com.tencent.mm.sdk.b.c EFT;
+  public final com.tencent.mm.sdk.b.c EFU;
   public n.a appForegroundListener;
   
   public c()
   {
     AppMethodBeat.i(110795);
-    this.appForegroundListener = new n.a()
+    this.appForegroundListener = new c.1(this);
+    this.EFT = new c.2(this);
+    this.EFU = new com.tencent.mm.sdk.b.c()
     {
-      public final void onAppBackground(String paramAnonymousString)
-      {
-        AppMethodBeat.i(110787);
-        if ((com.tencent.mm.kernel.g.agM()) && (com.tencent.mm.kernel.g.agP().ggT))
-        {
-          com.tencent.mm.kernel.g.agP();
-          if (!com.tencent.mm.kernel.a.afS())
-          {
-            paramAnonymousString = new ys();
-            paramAnonymousString.dCz.cZu = 3;
-            com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousString);
-          }
-        }
-        AppMethodBeat.o(110787);
-      }
-      
-      public final void onAppForeground(String paramAnonymousString)
-      {
-        AppMethodBeat.i(110786);
-        if ((com.tencent.mm.kernel.g.agM()) && (com.tencent.mm.kernel.g.agP().ggT))
-        {
-          com.tencent.mm.kernel.g.agP();
-          if (!com.tencent.mm.kernel.a.afS())
-          {
-            paramAnonymousString = new ys();
-            paramAnonymousString.dCz.cZu = 5;
-            com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousString);
-          }
-        }
-        AppMethodBeat.o(110786);
-      }
-    };
-    this.DbT = new com.tencent.mm.sdk.b.c()
-    {
-      private boolean a(si paramAnonymoussi)
-      {
-        AppMethodBeat.i(110788);
-        boolean bool = paramAnonymoussi.dvt.djT;
-        ac.i("MicroMsg.Wepkg.WepkgListener", "sendEntranceStateListener isInFindEntrance:%b", new Object[] { Boolean.valueOf(bool) });
-        if ((bool) && (bs.pN(bs.g((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GNP, Long.valueOf(0L)))) > 60L))
-        {
-          com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNP, Long.valueOf(bs.aNx()));
-          c.a(c.this, 2);
-        }
-        AppMethodBeat.o(110788);
-        return false;
-      }
-    };
-    this.DbU = new com.tencent.mm.sdk.b.c()
-    {
-      private boolean a(ys paramAnonymousys)
+      private boolean a(zm paramAnonymouszm)
       {
         AppMethodBeat.i(110791);
-        if (ai.ciE())
+        if (aj.cnC())
         {
-          bool = com.tencent.mm.m.g.ZZ().ZN();
-          ac.d("MicroMsg.Wepkg.WepkgListener", "wepkg notify event operation:%d", new Object[] { Integer.valueOf(paramAnonymousys.dCz.cZu) });
+          bool = com.tencent.mm.n.g.acB().aco();
+          ad.d("MicroMsg.Wepkg.WepkgListener", "wepkg notify event operation:%d", new Object[] { Integer.valueOf(paramAnonymouszm.dOM.dkM) });
         }
         int i;
-        switch (paramAnonymousys.dCz.cZu)
+        switch (paramAnonymouszm.dOM.dkM)
         {
         default: 
         case 0: 
@@ -109,41 +59,41 @@ public final class c
           {
             AppMethodBeat.o(110791);
             return false;
-            bool = b.DbS;
+            bool = b.EFR;
             break;
             if (bool)
             {
               AppMethodBeat.o(110791);
               return false;
             }
-            com.tencent.mm.plugin.game.commlib.c.a.cOB().a("wepkg_download_retry", new a.a()
+            com.tencent.mm.plugin.game.commlib.c.a.cWX().a("wepkg_download_retry", new a.a()
             {
-              public final void bXz()
+              public final void ccc()
               {
-                AppMethodBeat.i(199885);
-                d.bUw().postToWorker(new Runnable()
+                AppMethodBeat.i(214474);
+                d.bZb().postToWorker(new Runnable()
                 {
                   public final void run()
                   {
-                    AppMethodBeat.i(199884);
+                    AppMethodBeat.i(214473);
                     Object localObject = new WepkgCrossProcessTask();
-                    ((WepkgCrossProcessTask)localObject).CW = 2003;
-                    if (ai.ciE()) {
-                      ((WepkgCrossProcessTask)localObject).aLq();
+                    ((WepkgCrossProcessTask)localObject).EN = 2003;
+                    if (aj.cnC()) {
+                      ((WepkgCrossProcessTask)localObject).aOA();
                     }
                     for (;;)
                     {
-                      localObject = ((WepkgCrossProcessTask)localObject).DaU;
-                      if ((localObject != null) && (!bs.isNullOrNil(((WepkgVersion)localObject).fYR))) {
-                        j.eJi().cs(((WepkgVersion)localObject).fYR, true);
+                      localObject = ((WepkgCrossProcessTask)localObject).EET;
+                      if ((localObject != null) && (!bt.isNullOrNil(((WepkgVersion)localObject).gsn))) {
+                        j.eYc().cx(((WepkgVersion)localObject).gsn, true);
                       }
-                      AppMethodBeat.o(199884);
+                      AppMethodBeat.o(214473);
                       return;
                       AppBrandMainProcessService.b((MainProcessTask)localObject);
                     }
                   }
                 });
-                AppMethodBeat.o(199885);
+                AppMethodBeat.o(214474);
               }
             });
             continue;
@@ -152,23 +102,23 @@ public final class c
               AppMethodBeat.o(110791);
               return false;
             }
-            Object localObject = paramAnonymousys.dCz.dCA;
-            i = paramAnonymousys.dCz.dCD;
-            int j = paramAnonymousys.dCz.dCE;
-            paramAnonymousys = new HashSet();
-            if (!bs.isNullOrNil((String)localObject))
+            Object localObject = paramAnonymouszm.dOM.dON;
+            i = paramAnonymouszm.dOM.dOQ;
+            int j = paramAnonymouszm.dOM.dOR;
+            paramAnonymouszm = new HashSet();
+            if (!bt.isNullOrNil((String)localObject))
             {
               if (j != 0) {
                 break label222;
               }
-              paramAnonymousys.add(localObject);
+              paramAnonymouszm.add(localObject);
             }
             for (;;)
             {
-              WepkgVersionUpdater.a(paramAnonymousys, 1, i, false);
+              WepkgVersionUpdater.a(paramAnonymouszm, 1, i, false);
               break;
-              if ((j == 1) && (i.aFr((String)localObject) != null)) {
-                paramAnonymousys.add(localObject);
+              if ((j == 1) && (i.aKR((String)localObject) != null)) {
+                paramAnonymouszm.add(localObject);
               }
             }
             if (bool)
@@ -176,37 +126,37 @@ public final class c
               AppMethodBeat.o(110791);
               return false;
             }
-            localObject = paramAnonymousys.dCz;
-            f localf = f.eIT();
-            paramAnonymousys = paramAnonymousys.dCz.dCA;
-            if ((!localf.jQO) || (bs.isNullOrNil(paramAnonymousys))) {
+            localObject = paramAnonymouszm.dOM;
+            f localf = f.eXN();
+            paramAnonymouszm = paramAnonymouszm.dOM.dON;
+            if ((!localf.kld) || (bt.isNullOrNil(paramAnonymouszm))) {
               bool = false;
             }
             for (;;)
             {
-              ((ys.a)localObject).dCB = bool;
+              ((zm.a)localObject).dOO = bool;
               break;
-              paramAnonymousys = localf.aEY(paramAnonymousys);
-              if ((paramAnonymousys != null) && (paramAnonymousys.field_bigPackageReady) && (paramAnonymousys.field_preloadFilesReady)) {
+              paramAnonymouszm = localf.aKy(paramAnonymouszm);
+              if ((paramAnonymouszm != null) && (paramAnonymouszm.field_bigPackageReady) && (paramAnonymouszm.field_preloadFilesReady)) {
                 bool = true;
               } else {
                 bool = false;
               }
             }
-            if (ai.ciE())
+            if (aj.cnC())
             {
-              com.tencent.mm.plugin.wepkg.model.c.eJd().eJe();
+              com.tencent.mm.plugin.wepkg.model.c.eXW().eXX();
               continue;
               if (bool)
               {
                 AppMethodBeat.o(110791);
                 return false;
               }
-              localObject = i.aFs(paramAnonymousys.dCz.dCA);
+              localObject = i.aKS(paramAnonymouszm.dOM.dON);
               if (localObject != null)
               {
-                paramAnonymousys.dCz.dCC = ((WepkgVersion)localObject).DbM;
-                ac.i("MicroMsg.Wepkg.WepkgListener", "total download count:%s", new Object[] { Integer.valueOf(paramAnonymousys.dCz.dCC) });
+                paramAnonymouszm.dOM.dOP = ((WepkgVersion)localObject).EFL;
+                ad.i("MicroMsg.Wepkg.WepkgListener", "total download count:%s", new Object[] { Integer.valueOf(paramAnonymouszm.dOM.dOP) });
               }
             }
           }
@@ -217,36 +167,36 @@ public final class c
             AppMethodBeat.o(110791);
             return false;
           }
-          if (bs.pN(bs.g((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GNO, Long.valueOf(0L)))) > 60L) {
-            com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNO, Long.valueOf(bs.aNx()));
+          if (bt.rM(bt.g((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IAf, Long.valueOf(0L)))) > 60L) {
+            com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IAf, Long.valueOf(bt.aQJ()));
           }
           break;
         }
-        for (boolean bool = c.a(c.this, 1); (!bool) && (bs.pN(bs.g((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GNN, Long.valueOf(0L)))) > 1800L); bool = false)
+        for (boolean bool = c.a(c.this, 1); (!bool) && (bt.rM(bt.g((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IAe, Long.valueOf(0L)))) > 1800L); bool = false)
         {
-          com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNN, Long.valueOf(bs.aNx()));
-          paramAnonymousys = new ys();
-          paramAnonymousys.dCz.cZu = 0;
-          com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousys);
+          com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IAe, Long.valueOf(bt.aQJ()));
+          paramAnonymouszm = new zm();
+          paramAnonymouszm.dOM.dkM = 0;
+          com.tencent.mm.sdk.b.a.IbL.l(paramAnonymouszm);
           break;
-          if (bs.isNullOrNil(paramAnonymousys.dCz.dCA))
+          if (bt.isNullOrNil(paramAnonymouszm.dOM.dON))
           {
-            paramAnonymousys = com.tencent.mm.plugin.wepkg.model.c.eJd();
+            paramAnonymouszm = com.tencent.mm.plugin.wepkg.model.c.eXW();
             if (Looper.getMainLooper() == Looper.myLooper())
             {
-              d.bUw().postToWorker(new com.tencent.mm.plugin.wepkg.model.c.2(paramAnonymousys));
+              d.bZb().postToWorker(new com.tencent.mm.plugin.wepkg.model.c.2(paramAnonymouszm));
               break;
             }
-            com.tencent.mm.plugin.wepkg.model.c.aA(null, 0, 7);
+            com.tencent.mm.plugin.wepkg.model.c.aE(null, 0, 7);
             break;
           }
-          com.tencent.mm.plugin.wepkg.model.c.eJd().az(paramAnonymousys.dCz.dCA, 2, 7);
+          com.tencent.mm.plugin.wepkg.model.c.eXW().aD(paramAnonymouszm.dOM.dON, 2, 7);
           break;
           ToolsProcessIPCService.a(null, c.a.class, null);
           break;
-          i = paramAnonymousys.dCz.scene;
-          paramAnonymousys = paramAnonymousys.dCz.dCF;
-          if (bs.gY(paramAnonymousys)) {
+          i = paramAnonymouszm.dOM.scene;
+          paramAnonymouszm = paramAnonymouszm.dOM.dOS;
+          if (bt.hj(paramAnonymouszm)) {
             break;
           }
           switch (i)
@@ -254,10 +204,10 @@ public final class c
           default: 
             break;
           case 0: 
-            WepkgVersionUpdater.w(paramAnonymousys, 4);
+            WepkgVersionUpdater.y(paramAnonymouszm, 4);
             break;
           case 1: 
-            WepkgVersionUpdater.w(paramAnonymousys, 3);
+            WepkgVersionUpdater.y(paramAnonymouszm, 3);
             break;
           }
         }
@@ -265,21 +215,10 @@ public final class c
     };
     AppMethodBeat.o(110795);
   }
-  
-  static class a
-    implements com.tencent.mm.ipcinvoker.b
-  {
-    public void invoke(Object paramObject, com.tencent.mm.ipcinvoker.d paramd)
-    {
-      AppMethodBeat.i(110794);
-      com.tencent.mm.plugin.wepkg.b.eIJ();
-      AppMethodBeat.o(110794);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.utils.c
  * JD-Core Version:    0.7.0.1
  */

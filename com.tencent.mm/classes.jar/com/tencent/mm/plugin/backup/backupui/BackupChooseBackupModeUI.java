@@ -7,13 +7,14 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.m;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bi;
+import com.tencent.mm.model.bj;
 import com.tencent.mm.plugin.backup.backupmoveui.BackupUI;
 import com.tencent.mm.plugin.messenger.foundation.a.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -45,7 +46,7 @@ public class BackupChooseBackupModeUI
         return true;
       }
     });
-    ((m)g.ab(m.class)).Ku();
+    ((m)g.ab(m.class)).LX();
     AppMethodBeat.o(21780);
   }
   
@@ -53,27 +54,36 @@ public class BackupChooseBackupModeUI
   {
     AppMethodBeat.i(21782);
     super.onDestroy();
-    ((m)g.ab(m.class)).Kt();
+    ((m)g.ab(m.class)).LW();
     AppMethodBeat.o(21782);
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(21781);
-    if (paramPreference.mKey.equals("backup_move_to_device"))
-    {
-      if (((k)g.ab(k.class)).axd().dcw()) {
-        bi.ayY();
+    if (paramPreference.mKey.equals("backup_move_to_device")) {
+      try
+      {
+        if (((l)g.ab(l.class)).azS().dlO()) {
+          bj.aCc();
+        }
+        MMWizardActivity.al(this, new Intent(getContext(), BackupUI.class));
+        AppMethodBeat.o(21781);
+        return true;
       }
-      MMWizardActivity.aj(this, new Intent(getContext(), BackupUI.class));
-      AppMethodBeat.o(21781);
-      return true;
+      catch (Exception paramf)
+      {
+        for (;;)
+        {
+          ad.printErrStackTrace("MicroMsg.BackupChooseBackupModeUI", paramf, "", new Object[0]);
+        }
+      }
     }
     if (paramPreference.mKey.equals("backup_to_pc"))
     {
       paramf = new Intent();
       paramf.putExtra("title", getString(2131756190));
-      paramf.putExtra("rawUrl", getString(2131756248, new Object[] { ab.eUO() }));
+      paramf.putExtra("rawUrl", getString(2131756248, new Object[] { ac.fks() }));
       paramf.putExtra("showShare", false);
       paramf.putExtra("neverGetA8Key", true);
       d.b(this, "webview", ".ui.tools.WebViewUI", paramf);

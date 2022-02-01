@@ -1,57 +1,57 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.arg;
-import com.tencent.mm.protocal.protobuf.arh;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.avc;
+import com.tencent.mm.protocal.protobuf.avd;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/PrefetchManifest;", "", "domain", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchDomainInfo;", "manifest", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchResInfo;", "extInfo", "", "(Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchDomainInfo;Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchResInfo;Ljava/lang/String;)V", "getDomain", "()Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchDomainInfo;", "getExtInfo", "()Ljava/lang/String;", "setExtInfo", "(Ljava/lang/String;)V", "getManifest", "()Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchResInfo;", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/PrefetchManifest;", "", "domain", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchDomainInfo;", "manifest", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchResInfo;", "extInfo", "", "(Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchDomainInfo;Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchResInfo;Ljava/lang/String;)V", "getDomain", "()Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchDomainInfo;", "getExtInfo", "()Ljava/lang/String;", "setExtInfo", "(Ljava/lang/String;)V", "getManifest", "()Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchResInfo;", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-brandservice_release"})
 public final class j
 {
   String extInfo;
-  final arg nGF;
-  final arh nGG;
+  final avc oji;
+  final avd ojj;
   
-  private j(arg paramarg, arh paramarh)
+  private j(avc paramavc, avd paramavd)
   {
-    AppMethodBeat.i(198880);
-    this.nGF = paramarg;
-    this.nGG = paramarh;
+    AppMethodBeat.i(209826);
+    this.oji = paramavc;
+    this.ojj = paramavd;
     this.extInfo = null;
-    AppMethodBeat.o(198880);
+    AppMethodBeat.o(209826);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(198883);
+    AppMethodBeat.i(209829);
     if (this != paramObject)
     {
       if ((paramObject instanceof j))
       {
         paramObject = (j)paramObject;
-        if ((!k.g(this.nGF, paramObject.nGF)) || (!k.g(this.nGG, paramObject.nGG)) || (!k.g(this.extInfo, paramObject.extInfo))) {}
+        if ((!p.i(this.oji, paramObject.oji)) || (!p.i(this.ojj, paramObject.ojj)) || (!p.i(this.extInfo, paramObject.extInfo))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(198883);
+      AppMethodBeat.o(209829);
       return true;
     }
-    AppMethodBeat.o(198883);
+    AppMethodBeat.o(209829);
     return false;
   }
   
   public final int hashCode()
   {
     int k = 0;
-    AppMethodBeat.i(198882);
-    Object localObject = this.nGF;
+    AppMethodBeat.i(209828);
+    Object localObject = this.oji;
     int i;
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.nGG;
+      localObject = this.ojj;
       if (localObject == null) {
         break label80;
       }
@@ -63,7 +63,7 @@ public final class j
       if (localObject != null) {
         k = localObject.hashCode();
       }
-      AppMethodBeat.o(198882);
+      AppMethodBeat.o(209828);
       return (j + i * 31) * 31 + k;
       i = 0;
       break;
@@ -72,9 +72,9 @@ public final class j
   
   public final String toString()
   {
-    AppMethodBeat.i(198881);
-    String str = "PrefetchManifest(domain=" + this.nGF + ", manifest=" + this.nGG + ", extInfo=" + this.extInfo + ")";
-    AppMethodBeat.o(198881);
+    AppMethodBeat.i(209827);
+    String str = "PrefetchManifest(domain=" + this.oji + ", manifest=" + this.ojj + ", extInfo=" + this.extInfo + ")";
+    AppMethodBeat.o(209827);
     return str;
   }
 }

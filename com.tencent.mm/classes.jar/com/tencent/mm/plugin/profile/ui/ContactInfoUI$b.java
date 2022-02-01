@@ -2,53 +2,67 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.model.w;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bz;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.base.preference.f;
 import java.lang.ref.WeakReference;
 
 final class ContactInfoUI$b
   implements Runnable
 {
-  private WeakReference<ContactInfoUI> cnv;
-  private bz vJl;
+  private WeakReference<ContactInfoUI> cya;
+  private bk wQt;
   
-  ContactInfoUI$b(ContactInfoUI paramContactInfoUI, bz parambz)
+  ContactInfoUI$b(ContactInfoUI paramContactInfoUI, bk parambk)
   {
-    AppMethodBeat.i(26980);
-    this.cnv = new WeakReference(paramContactInfoUI);
-    this.vJl = parambz;
-    AppMethodBeat.o(26980);
+    AppMethodBeat.i(193250);
+    this.cya = new WeakReference(paramContactInfoUI);
+    this.wQt = parambk;
+    AppMethodBeat.o(193250);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(26981);
-    ContactInfoUI localContactInfoUI = (ContactInfoUI)this.cnv.get();
-    ac.i("MicroMsg.ContactInfoUI", "onNotifyChange stranger %s", new Object[] { this.vJl });
+    AppMethodBeat.i(193251);
+    ContactInfoUI localContactInfoUI = (ContactInfoUI)this.cya.get();
+    ad.i("MicroMsg.ContactInfoUI", "onNotifyStrangerChange friendUser %s", new Object[] { this.wQt });
     if ((localContactInfoUI == null) || (localContactInfoUI.isFinishing()) || (localContactInfoUI.isDestroyed()))
     {
-      AppMethodBeat.o(26981);
+      AppMethodBeat.o(193251);
       return;
     }
-    ac.i("MicroMsg.ContactInfoUI", "onNotifyChange verify:%b, contact.user:%s, notify.user:%s", new Object[] { Boolean.valueOf(ContactInfoUI.h(localContactInfoUI)), ContactInfoUI.e(localContactInfoUI).field_username, this.vJl });
-    if ((ContactInfoUI.e(localContactInfoUI) != null) && (this.vJl != null) && (!bs.isNullOrNil(ContactInfoUI.e(localContactInfoUI).field_username)) && (ContactInfoUI.e(localContactInfoUI).field_username.equals(this.vJl.field_encryptUsername)) && (!w.xs(ContactInfoUI.e(localContactInfoUI).field_username)))
+    boolean bool = ContactInfoUI.j(localContactInfoUI);
+    String str2 = ContactInfoUI.e(localContactInfoUI).field_username;
+    if (this.wQt != null) {}
+    for (String str1 = this.wQt.field_encryptUsername;; str1 = "")
     {
-      ContactInfoUI.e(localContactInfoUI).qh(this.vJl.field_conRemark);
-      localContactInfoUI.getIntent().putExtra("Contact_User", ContactInfoUI.e(localContactInfoUI).field_username);
-      if (ContactInfoUI.i(localContactInfoUI) != null)
+      ad.i("MicroMsg.ContactInfoUI", "onNotifyChange verify:%b, contact.user:%s, notify.user:%s", new Object[] { Boolean.valueOf(bool), str2, str1 });
+      if ((ContactInfoUI.e(localContactInfoUI) != null) && (this.wQt != null) && (!bt.isNullOrNil(ContactInfoUI.e(localContactInfoUI).field_username)) && (ContactInfoUI.e(localContactInfoUI).field_username.equals(this.wQt.field_encryptUsername)) && (!w.Aq(ContactInfoUI.e(localContactInfoUI).field_username)))
       {
-        ContactInfoUI.i(localContactInfoUI).bYJ();
-        ContactInfoUI.j(localContactInfoUI).removeAll();
+        str1 = this.wQt.field_username;
+        if ((!bt.isNullOrNil(str1)) && (!str1.equals(ContactInfoUI.e(localContactInfoUI).field_username))) {
+          com.tencent.mm.plugin.report.service.g.yhR.dD(1430, 4);
+        }
+        if (!bt.isNullOrNil(str1)) {
+          ContactInfoUI.a(localContactInfoUI, ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(str1));
+        }
+        localContactInfoUI.getIntent().putExtra("Contact_User", ContactInfoUI.e(localContactInfoUI).field_username);
+        if (ContactInfoUI.k(localContactInfoUI) != null)
+        {
+          ContactInfoUI.k(localContactInfoUI).cdn();
+          ContactInfoUI.l(localContactInfoUI).removeAll();
+        }
+        localContactInfoUI.initView();
       }
-      localContactInfoUI.initView();
+      AppMethodBeat.o(193251);
+      return;
     }
-    AppMethodBeat.o(26981);
   }
 }
 

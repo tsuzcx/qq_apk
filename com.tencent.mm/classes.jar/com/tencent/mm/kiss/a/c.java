@@ -8,20 +8,20 @@ import java.util.Queue;
 
 final class c
 {
-  int Tb;
-  int cMP;
-  Queue<View> gkS;
-  Queue<View> gkT;
-  String gkU;
-  int[] gkV;
-  ViewGroup gkW;
-  boolean gkX;
+  int UR;
+  int cYf;
+  Queue<View> gEC;
+  Queue<View> gED;
+  String gEE;
+  int[] gEF;
+  ViewGroup gEG;
+  boolean gEH;
   
   c()
   {
     AppMethodBeat.i(141008);
-    this.gkS = new LinkedList();
-    this.gkT = new LinkedList();
+    this.gEC = new LinkedList();
+    this.gED = new LinkedList();
     AppMethodBeat.o(141008);
   }
 }

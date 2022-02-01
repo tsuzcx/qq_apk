@@ -12,13 +12,13 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class WalletIconImageView
   extends WeImageView
 {
-  private int Awg = -1;
-  private int DGA = 0;
-  private int DGB = 4;
-  private int DGC = -1;
-  private Drawable DGD;
-  private View.OnClickListener DGE = null;
-  private int DGz = -1;
+  private int BVB = -1;
+  private int FlG = -1;
+  private int FlH = 0;
+  private int FlI = 4;
+  private int FlJ = -1;
+  private Drawable FlK;
+  private View.OnClickListener FlL = null;
   
   public WalletIconImageView(Context paramContext)
   {
@@ -35,33 +35,33 @@ public class WalletIconImageView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void eQv()
+  public final void ffz()
   {
     AppMethodBeat.i(72413);
-    super.setVisibility(this.DGB);
-    setImageResource(this.DGz);
-    if (this.DGA != -1)
+    super.setVisibility(this.FlI);
+    setImageResource(this.FlG);
+    if (this.FlH != -1)
     {
-      super.setColorFilter(this.DGA, PorterDuff.Mode.SRC_ATOP);
-      setIconColor(this.DGA);
+      super.setColorFilter(this.FlH, PorterDuff.Mode.SRC_ATOP);
+      setIconColor(this.FlH);
     }
-    if (this.DGE != null) {
-      super.setOnClickListener(this.DGE);
+    if (this.FlL != null) {
+      super.setOnClickListener(this.FlL);
     }
     AppMethodBeat.o(72413);
   }
   
   public final void setClearBtnDrawableId$255f295(int paramInt)
   {
-    this.Awg = 2131690372;
-    this.DGC = paramInt;
+    this.BVB = 2131690372;
+    this.FlJ = paramInt;
   }
   
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(72410);
-    this.DGz = paramInt;
-    if (this.DGz != -1) {
+    this.FlG = paramInt;
+    if (this.FlG != -1) {
       super.setImageResource(paramInt);
     }
     AppMethodBeat.o(72410);
@@ -69,21 +69,21 @@ public class WalletIconImageView
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.DGE = paramOnClickListener;
+    this.FlL = paramOnClickListener;
   }
   
   public void setToClearState(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(72412);
     super.setVisibility(0);
-    if (this.DGD != null)
+    if (this.FlK != null)
     {
-      if (this.DGC != -1)
+      if (this.FlJ != -1)
       {
-        super.setColorFilter(this.DGC, PorterDuff.Mode.SRC_ATOP);
-        setIconColor(this.DGC);
+        super.setColorFilter(this.FlJ, PorterDuff.Mode.SRC_ATOP);
+        setIconColor(this.FlJ);
       }
-      setImageDrawable(this.DGD);
+      setImageDrawable(this.FlK);
     }
     for (;;)
     {
@@ -91,22 +91,22 @@ public class WalletIconImageView
       super.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(72412);
       return;
-      if (this.Awg != -1)
+      if (this.BVB != -1)
       {
-        super.setImageResource(this.Awg);
-        if (this.DGC != -1)
+        super.setImageResource(this.BVB);
+        if (this.FlJ != -1)
         {
-          super.setColorFilter(this.DGC, PorterDuff.Mode.SRC_ATOP);
-          setIconColor(this.DGC);
+          super.setColorFilter(this.FlJ, PorterDuff.Mode.SRC_ATOP);
+          setIconColor(this.FlJ);
         }
       }
       else
       {
         super.setImageResource(2131232862);
-        if (this.DGC != -1)
+        if (this.FlJ != -1)
         {
-          super.setColorFilter(this.DGC, PorterDuff.Mode.SRC_ATOP);
-          setIconColor(this.DGC);
+          super.setColorFilter(this.FlJ, PorterDuff.Mode.SRC_ATOP);
+          setIconColor(this.FlJ);
         }
         else
         {
@@ -120,7 +120,7 @@ public class WalletIconImageView
   public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(72411);
-    this.DGB = paramInt;
+    this.FlI = paramInt;
     super.setVisibility(paramInt);
     AppMethodBeat.o(72411);
   }
@@ -128,7 +128,7 @@ public class WalletIconImageView
   public void setmUserSetImageIconColor(int paramInt)
   {
     AppMethodBeat.i(174532);
-    this.DGA = paramInt;
+    this.FlH = paramInt;
     if (paramInt != -1) {
       setIconColor(paramInt);
     }

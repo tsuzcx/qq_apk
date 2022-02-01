@@ -4,14 +4,14 @@ import com.tencent.mm.plugin.emojicapture.ui.capture.CaptureDecoration;
 import com.tencent.mm.sticker.f;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract$IView;", "", "changeSticker", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "getDecoration", "Lcom/tencent/mm/plugin/emojicapture/ui/capture/CaptureDecoration;", "onDestroy", "onPause", "onResume", "startRecord", "stopRecord", "", "callback", "Lkotlin/Function1;", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "Lkotlin/ParameterName;", "name", "capture", "switchCamera", "toggleFlipCamera", "show", "toggleVoiceDetect", "useBackGroundCamera", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract$IView;", "", "changeSticker", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "getDecoration", "Lcom/tencent/mm/plugin/emojicapture/ui/capture/CaptureDecoration;", "onDestroy", "onPause", "onResume", "startRecord", "stopRecord", "", "callback", "Lkotlin/Function1;", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "Lkotlin/ParameterName;", "name", "capture", "switchCamera", "toggleFlipCamera", "show", "toggleVoiceDetect", "useBackGroundCamera", "plugin-emojicapture_release"})
 public abstract interface a$b
 {
   public abstract void a(f paramf);
   
   public abstract CaptureDecoration getDecoration();
   
-  public abstract void kr(boolean paramBoolean);
+  public abstract void kC(boolean paramBoolean);
 }
 
 

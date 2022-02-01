@@ -7,107 +7,41 @@ import com.tencent.mm.appbrand.v8.m;
 import com.tencent.mm.appbrand.v8.v;
 import com.tencent.mm.appbrand.v8.v.5;
 import com.tencent.mm.appbrand.v8.v.a;
-import com.tencent.mm.plugin.appbrand.appcache.be;
+import com.tencent.mm.plugin.appbrand.appcache.bf;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.jsruntime.k;
 import com.tencent.mm.plugin.appbrand.z.d;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONObject;
 
 public class w
 {
-  protected com.tencent.mm.appbrand.v8.w cOi;
-  protected q jdy;
-  public v jhA;
-  private ArrayList<v.a> jhB;
-  k jhz;
+  protected com.tencent.mm.appbrand.v8.w cZy;
+  k jAI;
+  public v jAJ;
+  private ArrayList<v.a> jAK;
+  protected q jwH;
   
   public w(q paramq)
   {
     AppMethodBeat.i(134612);
-    this.cOi = new com.tencent.mm.appbrand.v8.w()
-    {
-      public final int LV()
-      {
-        AppMethodBeat.i(134606);
-        if (w.this.jhz != null)
-        {
-          int i = w.this.jhz.getNativeBufferId();
-          AppMethodBeat.o(134606);
-          return i;
-        }
-        AppMethodBeat.o(134606);
-        return 0;
-      }
-      
-      public final void bufferStoreBindTo(long paramAnonymousLong1, long paramAnonymousLong2)
-      {
-        AppMethodBeat.i(134610);
-        if (w.this.jhz != null) {
-          w.this.jhz.bufferStoreBindTo(paramAnonymousLong1, paramAnonymousLong2);
-        }
-        AppMethodBeat.o(134610);
-      }
-      
-      public final ByteBuffer getBuffer(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(134607);
-        if (w.this.jhz != null)
-        {
-          ByteBuffer localByteBuffer = w.this.jhz.getNativeBuffer(paramAnonymousInt);
-          AppMethodBeat.o(134607);
-          return localByteBuffer;
-        }
-        AppMethodBeat.o(134607);
-        return null;
-      }
-      
-      public final void n(int paramAnonymousInt, String paramAnonymousString)
-      {
-        AppMethodBeat.i(134611);
-        w.this.jdy.aUV().evaluateJavascript(String.format("typeof WeixinWorker.workerMsgHandler !== 'undefined' && WeixinWorker.workerMsgHandler(%d, %s);", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString }), null);
-        AppMethodBeat.o(134611);
-      }
-      
-      public final void setBuffer(int paramAnonymousInt, ByteBuffer paramAnonymousByteBuffer)
-      {
-        AppMethodBeat.i(134608);
-        if (w.this.jhz != null) {
-          w.this.jhz.setNativeBuffer(paramAnonymousInt, paramAnonymousByteBuffer);
-        }
-        AppMethodBeat.o(134608);
-      }
-      
-      public final boolean supportBufferStoreBindTo()
-      {
-        AppMethodBeat.i(134609);
-        if (w.this.jhz != null)
-        {
-          boolean bool = w.this.jhz.supportBufferStoreBindTo();
-          AppMethodBeat.o(134609);
-          return bool;
-        }
-        AppMethodBeat.o(134609);
-        return false;
-      }
-    };
-    this.jdy = paramq;
-    this.jhz = ((k)paramq.aUV().P(k.class));
-    this.jhA = aUx();
-    this.jhB = new ArrayList();
-    String str1 = this.jdy.Dr() + "wxa_library/bootstrap_j2v8_worker.js";
-    String str2 = d.Rn("wxa_library/bootstrap_j2v8_worker.js");
-    this.jhB.add(new v.a(str1, str2));
-    paramq.aUV().addJavascriptInterface(this, "WeixinWorker");
+    this.cZy = new w.1(this);
+    this.jwH = paramq;
+    this.jAI = ((k)paramq.aYh().P(k.class));
+    this.jAJ = aXJ();
+    this.jAK = new ArrayList();
+    String str1 = this.jwH.EQ() + "wxa_library/bootstrap_j2v8_worker.js";
+    String str2 = d.UT("wxa_library/bootstrap_j2v8_worker.js");
+    this.jAK.add(new v.a(str1, str2));
+    paramq.aYh().addJavascriptInterface(this, "WeixinWorker");
     AppMethodBeat.o(134612);
   }
   
-  protected v.a Hy(String paramString)
+  protected v.a KK(String paramString)
   {
     AppMethodBeat.i(134615);
-    paramString = new v.a(this.jdy.Dq() + paramString, be.d(this.jdy.getRuntime(), paramString) + this.jdy.ck(paramString));
+    paramString = new v.a(this.jwH.EP() + paramString, bf.d(this.jwH.getRuntime(), paramString) + this.jwH.dm(paramString));
     AppMethodBeat.o(134615);
     return paramString;
   }
@@ -115,14 +49,14 @@ public class w
   protected void a(ArrayList<v.a> paramArrayList, String paramString)
   {
     AppMethodBeat.i(134616);
-    paramArrayList.add(new v.a(this.jdy.Dr() + "config", String.format("var __wxConfig = %s;", new Object[] { this.jdy.Do().toString() })));
+    paramArrayList.add(new v.a(this.jwH.EQ() + "config", String.format("var __wxConfig = %s;", new Object[] { this.jwH.EN().toString() })));
     AppMethodBeat.o(134616);
   }
   
-  protected v aUx()
+  protected v aXJ()
   {
     AppMethodBeat.i(134613);
-    v localv = new v(this.cOi);
+    v localv = new v(this.cZy);
     AppMethodBeat.o(134613);
     return localv;
   }
@@ -142,7 +76,7 @@ public class w
   {
     // Byte code:
     //   0: ldc 163
-    //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: ldc 165
     //   7: ldc 167
     //   9: iconst_2
@@ -155,11 +89,11 @@ public class w
     //   18: iconst_1
     //   19: aload_2
     //   20: aastore
-    //   21: invokestatic 172	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   21: invokestatic 172	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   24: new 60	java/util/ArrayList
     //   27: dup
     //   28: aload_0
-    //   29: getfield 63	com/tencent/mm/plugin/appbrand/w:jhB	Ljava/util/ArrayList;
+    //   29: getfield 63	com/tencent/mm/plugin/appbrand/w:jAK	Ljava/util/ArrayList;
     //   32: invokespecial 175	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
     //   35: astore 6
     //   37: aload_0
@@ -169,7 +103,7 @@ public class w
     //   44: aload 6
     //   46: aload_0
     //   47: aload_1
-    //   48: invokevirtual 179	com/tencent/mm/plugin/appbrand/w:Hy	(Ljava/lang/String;)Lcom/tencent/mm/appbrand/v8/v$a;
+    //   48: invokevirtual 179	com/tencent/mm/plugin/appbrand/w:KK	(Ljava/lang/String;)Lcom/tencent/mm/appbrand/v8/v$a;
     //   51: invokevirtual 94	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   54: pop
     //   55: aload_2
@@ -222,12 +156,12 @@ public class w
     //   148: iconst_0
     //   149: aload_2
     //   150: aastore
-    //   151: invokestatic 209	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   151: invokestatic 209	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   154: aload_0
-    //   155: getfield 58	com/tencent/mm/plugin/appbrand/w:jhA	Lcom/tencent/mm/appbrand/v8/v;
+    //   155: getfield 58	com/tencent/mm/plugin/appbrand/w:jAJ	Lcom/tencent/mm/appbrand/v8/v;
     //   158: aload 6
     //   160: aload_0
-    //   161: getfield 36	com/tencent/mm/plugin/appbrand/w:jdy	Lcom/tencent/mm/plugin/appbrand/q;
+    //   161: getfield 36	com/tencent/mm/plugin/appbrand/w:jwH	Lcom/tencent/mm/plugin/appbrand/q;
     //   164: aload_1
     //   165: invokevirtual 212	com/tencent/mm/appbrand/v8/v:a	(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/appbrand/jsapi/d;Ljava/util/List;)I
     //   168: istore_3
@@ -267,10 +201,10 @@ public class w
   public void postMsgToWorker(int paramInt, String paramString)
   {
     AppMethodBeat.i(134618);
-    v localv = this.jhA;
-    m localm = (m)localv.cOh.get(Integer.valueOf(paramInt));
+    v localv = this.jAJ;
+    m localm = (m)localv.cZx.get(Integer.valueOf(paramInt));
     if (localm != null) {
-      localm.cMX.r(new v.5(localv, localm, paramString));
+      localm.cYn.r(new v.5(localv, localm, paramString));
     }
     AppMethodBeat.o(134618);
   }
@@ -279,7 +213,7 @@ public class w
   public void terminate(int paramInt)
   {
     AppMethodBeat.i(134617);
-    m localm = (m)this.jhA.cOh.remove(Integer.valueOf(paramInt));
+    m localm = (m)this.jAJ.cZx.remove(Integer.valueOf(paramInt));
     if (localm != null) {
       localm.destroy();
     }
@@ -288,7 +222,7 @@ public class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.w
  * JD-Core Version:    0.7.0.1
  */

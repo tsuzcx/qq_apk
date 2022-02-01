@@ -9,24 +9,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class o
   implements v
 {
-  private u bcR;
-  private int bgc;
-  private final h bhJ;
-  private final l bhK;
-  private boolean bhL;
-  private boolean bhM;
-  private boolean bhN;
-  private int bhO;
-  private int bhP;
-  private boolean bhQ;
+  private u bnm;
+  private int bqw;
+  private final h bsd;
+  private final l bse;
+  private boolean bsf;
+  private boolean bsg;
+  private boolean bsh;
+  private int bsi;
+  private int bsj;
+  private boolean bsk;
   private int state;
   private long timeUs;
   
   public o(h paramh)
   {
     AppMethodBeat.i(92265);
-    this.bhJ = paramh;
-    this.bhK = new l(new byte[10]);
+    this.bsd = paramh;
+    this.bse = new l(new byte[10]);
     this.state = 0;
     AppMethodBeat.o(92265);
   }
@@ -34,24 +34,24 @@ public final class o
   private boolean a(m paramm, byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(92269);
-    int i = Math.min(paramm.vy(), paramInt - this.bgc);
+    int i = Math.min(paramm.wV(), paramInt - this.bqw);
     if (i <= 0)
     {
       AppMethodBeat.o(92269);
       return true;
     }
     if (paramArrayOfByte == null) {
-      paramm.eX(i);
+      paramm.fa(i);
     }
     for (;;)
     {
-      this.bgc = (i + this.bgc);
-      if (this.bgc != paramInt) {
+      this.bqw = (i + this.bqw);
+      if (this.bqw != paramInt) {
         break;
       }
       AppMethodBeat.o(92269);
       return true;
-      paramm.readBytes(paramArrayOfByte, this.bgc, i);
+      paramm.readBytes(paramArrayOfByte, this.bqw, i);
     }
     AppMethodBeat.o(92269);
     return false;
@@ -60,7 +60,7 @@ public final class o
   private void setState(int paramInt)
   {
     this.state = paramInt;
-    this.bgc = 0;
+    this.bqw = 0;
   }
   
   public final void a(m paramm, boolean paramBoolean)
@@ -78,7 +78,7 @@ public final class o
     }
     for (;;)
     {
-      if (paramm.vy() > 0)
+      if (paramm.wV() > 0)
       {
         int i;
         switch (this.state)
@@ -86,20 +86,20 @@ public final class o
         default: 
           break;
         case 0: 
-          paramm.eX(paramm.vy());
+          paramm.fa(paramm.wV());
           continue;
-          if (this.bhP != -1) {
-            new StringBuilder("Unexpected start indicator: expected ").append(this.bhP).append(" more bytes");
+          if (this.bsj != -1) {
+            new StringBuilder("Unexpected start indicator: expected ").append(this.bsj).append(" more bytes");
           }
-          this.bhJ.th();
+          this.bsd.uG();
           break;
         case 1: 
-          if (a(paramm, this.bhK.data, 9))
+          if (a(paramm, this.bse.data, 9))
           {
-            this.bhK.setPosition(0);
-            if (this.bhK.eo(24) != 1)
+            this.bse.setPosition(0);
+            if (this.bse.es(24) != 1)
             {
-              this.bhP = -1;
+              this.bsj = -1;
               i = 0;
               if (i == 0) {
                 break label330;
@@ -109,17 +109,17 @@ public final class o
             {
               setState(i);
               break;
-              this.bhK.ep(8);
-              i = this.bhK.eo(16);
-              this.bhK.ep(5);
-              this.bhQ = this.bhK.te();
-              this.bhK.ep(2);
-              this.bhL = this.bhK.te();
-              this.bhM = this.bhK.te();
-              this.bhK.ep(6);
-              this.bhO = this.bhK.eo(8);
+              this.bse.et(8);
+              i = this.bse.es(16);
+              this.bse.et(5);
+              this.bsk = this.bse.uD();
+              this.bse.et(2);
+              this.bsf = this.bse.uD();
+              this.bsg = this.bse.uD();
+              this.bse.et(6);
+              this.bsi = this.bse.es(8);
               if (i == 0) {}
-              for (this.bhP = -1;; this.bhP = (i + 6 - 9 - this.bhO))
+              for (this.bsj = -1;; this.bsj = (i + 6 - 9 - this.bsi))
               {
                 i = 1;
                 break;
@@ -128,59 +128,59 @@ public final class o
           }
           break;
         case 2: 
-          i = Math.min(10, this.bhO);
-          if ((a(paramm, this.bhK.data, i)) && (a(paramm, null, this.bhO)))
+          i = Math.min(10, this.bsi);
+          if ((a(paramm, this.bse.data, i)) && (a(paramm, null, this.bsi)))
           {
-            this.bhK.setPosition(0);
+            this.bse.setPosition(0);
             this.timeUs = -9223372036854775807L;
-            if (this.bhL)
+            if (this.bsf)
             {
-              this.bhK.ep(4);
-              long l1 = this.bhK.eo(3);
-              this.bhK.ep(1);
-              long l2 = this.bhK.eo(15) << 15;
-              this.bhK.ep(1);
-              long l3 = this.bhK.eo(15);
-              this.bhK.ep(1);
-              if ((!this.bhN) && (this.bhM))
+              this.bse.et(4);
+              long l1 = this.bse.es(3);
+              this.bse.et(1);
+              long l2 = this.bse.es(15) << 15;
+              this.bse.et(1);
+              long l3 = this.bse.es(15);
+              this.bse.et(1);
+              if ((!this.bsh) && (this.bsg))
               {
-                this.bhK.ep(4);
-                long l4 = this.bhK.eo(3);
-                this.bhK.ep(1);
-                long l5 = this.bhK.eo(15) << 15;
-                this.bhK.ep(1);
-                long l6 = this.bhK.eo(15);
-                this.bhK.ep(1);
-                this.bcR.ao(l4 << 30 | l5 | l6);
-                this.bhN = true;
+                this.bse.et(4);
+                long l4 = this.bse.es(3);
+                this.bse.et(1);
+                long l5 = this.bse.es(15) << 15;
+                this.bse.et(1);
+                long l6 = this.bse.es(15);
+                this.bse.et(1);
+                this.bnm.ao(l4 << 30 | l5 | l6);
+                this.bsh = true;
               }
-              this.timeUs = this.bcR.ao(l1 << 30 | l2 | l3);
+              this.timeUs = this.bnm.ao(l1 << 30 | l2 | l3);
             }
-            this.bhJ.c(this.timeUs, this.bhQ);
+            this.bsd.c(this.timeUs, this.bsk);
             setState(3);
           }
           break;
         case 3: 
           label330:
-          int k = paramm.vy();
-          if (this.bhP == -1) {}
-          for (i = 0;; i = k - this.bhP)
+          int k = paramm.wV();
+          if (this.bsj == -1) {}
+          for (i = 0;; i = k - this.bsj)
           {
             int j = k;
             if (i > 0)
             {
               j = k - i;
-              paramm.eW(paramm.position + j);
+              paramm.eZ(paramm.position + j);
             }
-            this.bhJ.t(paramm);
-            if (this.bhP == -1) {
+            this.bsd.t(paramm);
+            if (this.bsj == -1) {
               break;
             }
-            this.bhP -= j;
-            if (this.bhP != 0) {
+            this.bsj -= j;
+            if (this.bsj != 0) {
               break;
             }
-            this.bhJ.th();
+            this.bsd.uG();
             setState(1);
             break;
           }
@@ -193,24 +193,24 @@ public final class o
   public final void a(u paramu, g paramg, v.d paramd)
   {
     AppMethodBeat.i(92266);
-    this.bcR = paramu;
-    this.bhJ.a(paramg, paramd);
+    this.bnm = paramu;
+    this.bsd.a(paramg, paramd);
     AppMethodBeat.o(92266);
   }
   
-  public final void tg()
+  public final void uF()
   {
     AppMethodBeat.i(92267);
     this.state = 0;
-    this.bgc = 0;
-    this.bhN = false;
-    this.bhJ.tg();
+    this.bqw = 0;
+    this.bsh = false;
+    this.bsd.uF();
     AppMethodBeat.o(92267);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.o
  * JD-Core Version:    0.7.0.1
  */

@@ -9,39 +9,40 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.android.exoplayer2.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo.a;
 import com.tencent.mm.plugin.recordvideo.ui.editor.AudioWaveView;
 import com.tencent.mm.plugin.recordvideo.ui.editor.MusicLrcView;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.ao;
 import d.a.j;
 import d.g.a.m;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "()V", "audioList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "Lkotlin/collections/ArrayList;", "itemClickListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "position", "info", "", "getItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "musicPlayer", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "queryString", "", "getQueryString", "()Ljava/lang/String;", "setQueryString", "(Ljava/lang/String;)V", "selectedPosition", "addAudioList", "index", "audios", "", "addSearchAudioList", "getAllItem", "getItem", "getItemCount", "getItemViewType", "getSelection", "isEmptyNoLoading", "", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "setMusicPlayer", "player", "setSelection", "(Ljava/lang/Integer;)V", "updateAudioList", "BaseViewHolder", "Companion", "RecommendMusicLoadingHolder", "RecommendMusicViewHolder", "SearchEntranceViewHolder", "SearchResultLoadingHolder", "SearchResultViewHolder", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "()V", "audioList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "Lkotlin/collections/ArrayList;", "itemClickListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "position", "info", "", "getItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "musicPlayer", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "queryString", "", "getQueryString", "()Ljava/lang/String;", "setQueryString", "(Ljava/lang/String;)V", "selectedPosition", "addAudioList", "index", "audios", "", "addSearchAudioList", "getAllItem", "getItem", "getItemCount", "getItemViewType", "getSelection", "isEmptyNoLoading", "", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "setMusicPlayer", "player", "setSelection", "(Ljava/lang/Integer;)V", "updateAudioList", "BaseViewHolder", "Companion", "RecommendMusicLoadingHolder", "RecommendMusicViewHolder", "SearchEntranceViewHolder", "SearchResultLoadingHolder", "SearchResultViewHolder", "plugin-recordvideo_release"})
 public final class a
   extends RecyclerView.a<a>
 {
   private static final String TAG = "MicroMsg.RecommendMusicAdapter";
-  public static final a.b wzR;
-  public m<? super Integer, ? super AudioCacheInfo, y> prv;
-  public int ta;
-  public final ArrayList<AudioCacheInfo> wzO;
-  public String wzP;
-  private v wzQ;
+  public static final a.b xJe;
+  public m<? super Integer, ? super AudioCacheInfo, z> pVb;
+  public int uT;
+  public final ArrayList<AudioCacheInfo> xJb;
+  public String xJc;
+  private v xJd;
   
   static
   {
     AppMethodBeat.i(75893);
-    wzR = new a.b((byte)0);
+    xJe = new a.b((byte)0);
     TAG = "MicroMsg.RecommendMusicAdapter";
     AppMethodBeat.o(75893);
   }
@@ -49,36 +50,36 @@ public final class a
   public a()
   {
     AppMethodBeat.i(75892);
-    this.wzO = new ArrayList();
-    this.ta = -1;
+    this.xJb = new ArrayList();
+    this.uT = -1;
     AppMethodBeat.o(75892);
   }
   
-  public final AudioCacheInfo Mr(int paramInt)
+  public final AudioCacheInfo NQ(int paramInt)
   {
     AppMethodBeat.i(75887);
-    AudioCacheInfo localAudioCacheInfo = (AudioCacheInfo)j.C((List)this.wzO, paramInt);
+    AudioCacheInfo localAudioCacheInfo = (AudioCacheInfo)j.E((List)this.xJb, paramInt);
     AppMethodBeat.o(75887);
     return localAudioCacheInfo;
   }
   
-  public final void eQ(List<AudioCacheInfo> paramList)
+  public final void ff(List<AudioCacheInfo> paramList)
   {
     AppMethodBeat.i(75883);
-    k.h(paramList, "audios");
-    this.wzO.clear();
-    this.wzO.addAll((Collection)paramList);
-    this.ta = -1;
+    p.h(paramList, "audios");
+    this.xJb.clear();
+    this.xJb.addAll((Collection)paramList);
+    this.uT = -1;
     notifyDataSetChanged();
     AppMethodBeat.o(75883);
   }
   
-  public final void eR(List<AudioCacheInfo> paramList)
+  public final void fg(List<AudioCacheInfo> paramList)
   {
     AppMethodBeat.i(75884);
-    k.h(paramList, "audios");
-    int j = this.wzO.size();
-    Object localObject1 = (List)this.wzO;
+    p.h(paramList, "audios");
+    int j = this.xJb.size();
+    Object localObject1 = (List)this.xJb;
     ListIterator localListIterator = ((List)localObject1).listIterator(((List)localObject1).size());
     int i;
     if (localListIterator.hasPrevious())
@@ -86,16 +87,16 @@ public final class a
       localObject1 = localListIterator.previous();
       Object localObject2 = (AudioCacheInfo)localObject1;
       i = ((AudioCacheInfo)localObject2).type;
-      AudioCacheInfo.a locala = AudioCacheInfo.wry;
-      if (i != AudioCacheInfo.dvz())
+      AudioCacheInfo.a locala = AudioCacheInfo.xzp;
+      if (i != AudioCacheInfo.dFV())
       {
         i = ((AudioCacheInfo)localObject2).type;
-        locala = AudioCacheInfo.wry;
-        if (i != AudioCacheInfo.dvA())
+        locala = AudioCacheInfo.xzp;
+        if (i != AudioCacheInfo.dFW())
         {
           i = ((AudioCacheInfo)localObject2).type;
-          localObject2 = AudioCacheInfo.wry;
-          if (i != AudioCacheInfo.dvx()) {
+          localObject2 = AudioCacheInfo.xzp;
+          if (i != AudioCacheInfo.dFT()) {
             break label197;
           }
         }
@@ -108,14 +109,14 @@ public final class a
     {
       localObject1 = (AudioCacheInfo)localObject1;
       if (localObject1 != null) {
-        this.wzO.remove(localObject1);
+        this.xJb.remove(localObject1);
       }
-      i = this.wzO.size();
+      i = this.xJb.size();
       if (j != i) {
         break label208;
       }
-      this.wzO.addAll((Collection)paramList);
-      aq(j, paramList.size());
+      this.xJb.addAll((Collection)paramList);
+      ar(j, paramList.size());
       AppMethodBeat.o(75884);
       return;
       label197:
@@ -125,16 +126,16 @@ public final class a
       localObject1 = null;
     }
     label208:
-    this.wzO.addAll((Collection)paramList);
+    this.xJb.addAll((Collection)paramList);
     cj(i);
-    aq(j, paramList.size() - 1);
+    ar(j, paramList.size() - 1);
     AppMethodBeat.o(75884);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(75888);
-    int i = this.wzO.size();
+    int i = this.xJb.size();
     AppMethodBeat.o(75888);
     return i;
   }
@@ -142,15 +143,15 @@ public final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(75889);
-    Object localObject = Mr(paramInt);
+    Object localObject = NQ(paramInt);
     if (localObject != null)
     {
       paramInt = ((AudioCacheInfo)localObject).type;
       AppMethodBeat.o(75889);
       return paramInt;
     }
-    localObject = AudioCacheInfo.wry;
-    paramInt = AudioCacheInfo.dvw();
+    localObject = AudioCacheInfo.xzp;
+    paramInt = AudioCacheInfo.dFS();
     AppMethodBeat.o(75889);
     return paramInt;
   }
@@ -158,8 +159,8 @@ public final class a
   public final void setMusicPlayer(v paramv)
   {
     AppMethodBeat.i(75886);
-    k.h(paramv, "player");
-    this.wzQ = paramv;
+    p.h(paramv, "player");
+    this.xJd = paramv;
     AppMethodBeat.o(75886);
   }
   
@@ -168,19 +169,19 @@ public final class a
     AppMethodBeat.i(75885);
     if (paramInteger == null)
     {
-      cj(this.ta);
-      this.ta = -1;
-      cj(this.ta);
+      cj(this.uT);
+      this.uT = -1;
+      cj(this.uT);
       AppMethodBeat.o(75885);
       return;
     }
-    cj(this.ta);
-    this.ta = paramInteger.intValue();
-    cj(this.ta);
+    cj(this.uT);
+    this.uT = paramInteger.intValue();
+    cj(this.uT);
     AppMethodBeat.o(75885);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;Landroid/view/View;)V", "update", "", "position", "", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;Landroid/view/View;)V", "update", "", "position", "", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "plugin-recordvideo_release"})
   public class a
     extends RecyclerView.w
   {
@@ -193,16 +194,20 @@ public final class a
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(75873);
-          int i = this.wzT.lv();
-          paramAnonymousView = this.wzT.wzS.Mr(i);
+          Object localObject = new b();
+          ((b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+          int i = this.xJg.lN();
+          paramAnonymousView = this.xJg.xJf.NQ(i);
           if (paramAnonymousView != null)
           {
-            m localm = this.wzT.wzS.prv;
-            if (localm != null) {
-              localm.n(Integer.valueOf(i), paramAnonymousView);
+            localObject = this.xJg.xJf.pVb;
+            if (localObject != null) {
+              ((m)localObject).p(Integer.valueOf(i), paramAnonymousView);
             }
           }
           localObject.requestFocus();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(75873);
         }
       });
@@ -212,12 +217,12 @@ public final class a
     public void a(int paramInt, AudioCacheInfo paramAudioCacheInfo)
     {
       AppMethodBeat.i(75874);
-      k.h(paramAudioCacheInfo, "info");
+      p.h(paramAudioCacheInfo, "info");
       AppMethodBeat.o(75874);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$RecommendMusicLoadingHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;Landroid/view/View;)V", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$RecommendMusicLoadingHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;Landroid/view/View;)V", "plugin-recordvideo_release"})
   public final class c
     extends a.a
   {
@@ -229,31 +234,31 @@ public final class a
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$RecommendMusicViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;Landroid/view/View;)V", "iconView", "Landroid/widget/ImageView;", "getIconView", "()Landroid/widget/ImageView;", "loading", "getLoading", "()Landroid/view/View;", "title", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView;", "getTitle", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView;", "waveView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/AudioWaveView;", "getWaveView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/AudioWaveView;", "update", "", "position", "", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$RecommendMusicViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;Landroid/view/View;)V", "iconView", "Landroid/widget/ImageView;", "getIconView", "()Landroid/widget/ImageView;", "loading", "getLoading", "()Landroid/view/View;", "title", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView;", "getTitle", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView;", "waveView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/AudioWaveView;", "getWaveView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/AudioWaveView;", "update", "", "position", "", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "plugin-recordvideo_release"})
   public final class d
     extends a.a
   {
-    private final View psM;
-    private final ImageView ts;
-    private final MusicLrcView wzU;
-    private final AudioWaveView wzV;
+    private final View pWs;
+    private final ImageView vl;
+    private final MusicLrcView xJh;
+    private final AudioWaveView xJi;
     
     public d()
     {
       super(localObject);
       AppMethodBeat.i(75878);
       this$1 = localObject.findViewById(2131305446);
-      k.g(a.this, "itemView.findViewById(R.…story_item_audio_loading)");
-      this.psM = a.this;
+      p.g(a.this, "itemView.findViewById(R.…story_item_audio_loading)");
+      this.pWs = a.this;
       this$1 = localObject.findViewById(2131305447);
-      k.g(a.this, "itemView.findViewById(R.…story_item_audio_preview)");
-      this.ts = ((ImageView)a.this);
+      p.g(a.this, "itemView.findViewById(R.…story_item_audio_preview)");
+      this.vl = ((ImageView)a.this);
       this$1 = localObject.findViewById(2131305456);
-      k.g(a.this, "itemView.findViewById(R.id.story_item_audio_title)");
-      this.wzU = ((MusicLrcView)a.this);
+      p.g(a.this, "itemView.findViewById(R.id.story_item_audio_title)");
+      this.xJh = ((MusicLrcView)a.this);
       this$1 = localObject.findViewById(2131306869);
-      k.g(a.this, "itemView.findViewById(R.id.waveView)");
-      this.wzV = ((AudioWaveView)a.this);
+      p.g(a.this, "itemView.findViewById(R.id.waveView)");
+      this.xJi = ((AudioWaveView)a.this);
       AppMethodBeat.o(75878);
     }
     
@@ -262,32 +267,32 @@ public final class a
       boolean bool = true;
       int i = -16777216;
       AppMethodBeat.i(75877);
-      k.h(paramAudioCacheInfo, "info");
-      Object localObject1 = this.asD;
-      k.g(localObject1, "itemView");
+      p.h(paramAudioCacheInfo, "info");
+      Object localObject1 = this.auu;
+      p.g(localObject1, "itemView");
       ((View)localObject1).setEnabled(true);
       if (paramInt == a.a(a.this))
       {
-        localObject1 = this.asD;
-        k.g(localObject1, "itemView");
+        localObject1 = this.auu;
+        p.g(localObject1, "itemView");
         ((View)localObject1).setSelected(bool);
-        ac.i(a.access$getTAG$cp(), "LogStory: ".concat(String.valueOf(bool)));
-        localObject1 = this.ts;
-        Object localObject2 = this.asD;
-        k.g(localObject2, "itemView");
+        ad.i(a.access$getTAG$cp(), "LogStory: ".concat(String.valueOf(bool)));
+        localObject1 = this.vl;
+        Object localObject2 = this.auu;
+        p.g(localObject2, "itemView");
         localObject2 = ((View)localObject2).getContext();
         if (!bool) {
           break label221;
         }
         paramInt = -16777216;
         label117:
-        ((ImageView)localObject1).setImageDrawable(am.k((Context)localObject2, 2131690438, paramInt));
-        this.ts.setVisibility(0);
-        this.wzV.setVisibility(0);
-        this.wzV.setShow(bool);
-        MusicLrcView.a(this.wzU, paramAudioCacheInfo.wrj);
-        this.wzU.setShow(bool);
-        paramAudioCacheInfo = this.wzU;
+        ((ImageView)localObject1).setImageDrawable(ao.k((Context)localObject2, 2131690438, paramInt));
+        this.vl.setVisibility(0);
+        this.xJi.setVisibility(0);
+        this.xJi.setShow(bool);
+        MusicLrcView.a(this.xJh, paramAudioCacheInfo.xza);
+        this.xJh.setShow(bool);
+        paramAudioCacheInfo = this.xJh;
         if (!bool) {
           break label226;
         }
@@ -297,8 +302,8 @@ public final class a
       for (paramInt = i;; paramInt = -1)
       {
         paramAudioCacheInfo.setTextColor(paramInt);
-        this.wzU.setVisibility(0);
-        this.psM.setVisibility(8);
+        this.xJh.setVisibility(0);
+        this.pWs.setVisibility(8);
         AppMethodBeat.o(75877);
         return;
         bool = false;
@@ -309,7 +314,7 @@ public final class a
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$SearchEntranceViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;Landroid/view/View;)V", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$SearchEntranceViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;Landroid/view/View;)V", "plugin-recordvideo_release"})
   public final class e
     extends a.a
   {
@@ -321,7 +326,7 @@ public final class a
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$SearchResultLoadingHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;Landroid/view/View;)V", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$SearchResultLoadingHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;Landroid/view/View;)V", "plugin-recordvideo_release"})
   public final class f
     extends a.a
   {
@@ -333,62 +338,62 @@ public final class a
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$SearchResultViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;Landroid/view/View;)V", "searchTipView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView;", "getSearchTipView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView;", "searchTitleView", "Landroid/widget/TextView;", "getSearchTitleView", "()Landroid/widget/TextView;", "searchresultIcon", "Landroid/widget/ImageView;", "getSearchresultIcon", "()Landroid/widget/ImageView;", "update", "", "position", "", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$SearchResultViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter$BaseViewHolder;", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;Landroid/view/View;)V", "searchTipView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView;", "getSearchTipView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView;", "searchTitleView", "Landroid/widget/TextView;", "getSearchTitleView", "()Landroid/widget/TextView;", "searchresultIcon", "Landroid/widget/ImageView;", "getSearchresultIcon", "()Landroid/widget/ImageView;", "update", "", "position", "", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "plugin-recordvideo_release"})
   public final class g
     extends a.a
   {
-    private final ImageView wzW;
-    private final TextView wzX;
-    private final MusicLrcView wzY;
+    private final ImageView xJj;
+    private final TextView xJk;
+    private final MusicLrcView xJl;
     
     public g()
     {
       super(localObject);
       AppMethodBeat.i(75882);
       this$1 = localObject.findViewById(2131305451);
-      k.g(a.this, "itemView.findViewById(R.…audio_search_result_icon)");
-      this.wzW = ((ImageView)a.this);
+      p.g(a.this, "itemView.findViewById(R.…audio_search_result_icon)");
+      this.xJj = ((ImageView)a.this);
       this$1 = localObject.findViewById(2131305453);
-      k.g(a.this, "itemView.findViewById(R.…udio_search_result_title)");
-      this.wzX = ((TextView)a.this);
+      p.g(a.this, "itemView.findViewById(R.…udio_search_result_title)");
+      this.xJk = ((TextView)a.this);
       this$1 = localObject.findViewById(2131305452);
-      k.g(a.this, "itemView.findViewById(R.…_audio_search_result_tip)");
-      this.wzY = ((MusicLrcView)a.this);
+      p.g(a.this, "itemView.findViewById(R.…_audio_search_result_tip)");
+      this.xJl = ((MusicLrcView)a.this);
       AppMethodBeat.o(75882);
     }
     
     public final void a(int paramInt, AudioCacheInfo paramAudioCacheInfo)
     {
       AppMethodBeat.i(75881);
-      k.h(paramAudioCacheInfo, "info");
+      p.h(paramAudioCacheInfo, "info");
       boolean bool;
       Object localObject2;
       if (paramInt == a.a(a.this))
       {
         bool = true;
-        localObject1 = this.asD;
-        k.g(localObject1, "itemView");
+        localObject1 = this.auu;
+        p.g(localObject1, "itemView");
         ((View)localObject1).setSelected(bool);
-        localObject1 = this.wzW;
-        localObject2 = this.asD;
-        k.g(localObject2, "itemView");
+        localObject1 = this.xJj;
+        localObject2 = this.auu;
+        p.g(localObject2, "itemView");
         localObject2 = ((View)localObject2).getContext();
         if (!bool) {
           break label158;
         }
         paramInt = -16777216;
         label76:
-        ((ImageView)localObject1).setImageDrawable(am.k((Context)localObject2, 2131690438, paramInt));
-        localObject2 = this.wzX;
-        if (!paramAudioCacheInfo.wrk.isEmpty()) {
+        ((ImageView)localObject1).setImageDrawable(ao.k((Context)localObject2, 2131690438, paramInt));
+        localObject2 = this.xJk;
+        if (!paramAudioCacheInfo.xzb.isEmpty()) {
           break label163;
         }
       }
-      for (Object localObject1 = (CharSequence)paramAudioCacheInfo.wrm;; localObject1 = (CharSequence)(paramAudioCacheInfo.wrm + " - " + (String)localObject1))
+      for (Object localObject1 = (CharSequence)paramAudioCacheInfo.xzd;; localObject1 = (CharSequence)(paramAudioCacheInfo.xzd + " - " + (String)localObject1))
       {
         ((TextView)localObject2).setText((CharSequence)localObject1);
-        this.wzY.e(paramAudioCacheInfo.wrj, a.this.wzP);
-        this.wzY.setShow(bool);
+        this.xJl.e(paramAudioCacheInfo.xza, a.this.xJc);
+        this.xJl.setShow(bool);
         AppMethodBeat.o(75881);
         return;
         bool = false;
@@ -397,14 +402,14 @@ public final class a
         paramInt = -1;
         break label76;
         label163:
-        localObject1 = bs.n((List)paramAudioCacheInfo.wrk, ",");
+        localObject1 = bt.m((List)paramAudioCacheInfo.xzb, ",");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

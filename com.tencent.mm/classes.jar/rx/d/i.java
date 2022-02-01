@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class i
   extends h
 {
-  private static final i Mgq;
+  private static final i Obs;
   
   static
   {
     AppMethodBeat.i(90500);
-    Mgq = new i();
+    Obs = new i();
     AppMethodBeat.o(90500);
   }
   
-  public static h ggS()
+  public static h gzw()
   {
-    return Mgq;
+    return Obs;
   }
 }
 

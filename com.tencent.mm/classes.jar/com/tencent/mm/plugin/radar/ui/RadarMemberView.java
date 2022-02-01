@@ -25,64 +25,60 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.radar.b.c.e;
-import com.tencent.mm.protocal.protobuf.cli;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bz;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.protocal.protobuf.cqi;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.cf;
 import d.f;
-import d.g.b.u;
-import d.g.b.w;
-import d.g.b.z;
-import d.l;
-import d.n.n;
+import d.g.b.p;
 import d.v;
 import java.util.Arrays;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarMemberView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "alert", "Lcom/tencent/mm/ui/widget/dialog/MMAlertDialog;", "avatarCopy", "Landroid/widget/ImageView;", "getAvatarCopy", "()Landroid/widget/ImageView;", "avatarCopy$delegate", "Lkotlin/Lazy;", "avatarCopyContainer", "Landroid/view/View;", "getAvatarCopyContainer", "()Landroid/view/View;", "avatarCopyContainer$delegate", "avatarHolder", "getAvatarHolder", "avatarHolder$delegate", "avatarItem", "confirmBtn", "Landroid/widget/Button;", "getConfirmBtn", "()Landroid/widget/Button;", "confirmBtn$delegate", "confirmBtnDisabled", "Landroid/widget/TextView;", "getConfirmBtnDisabled", "()Landroid/widget/TextView;", "confirmBtnDisabled$delegate", "contact", "Lcom/tencent/mm/storage/Contact;", "contentET", "Landroid/widget/EditText;", "dismissing", "", "exposeTv", "getExposeTv", "exposeTv$delegate", "handler", "com/tencent/mm/plugin/radar/ui/RadarMemberView$handler$1", "Lcom/tencent/mm/plugin/radar/ui/RadarMemberView$handler$1;", "isShowing", "()Z", "listener", "Lcom/tencent/mm/plugin/radar/ui/RadarMemberView$OnConfirmBtnClickListener;", "mOnModifyNameClickListener", "Landroid/view/View$OnClickListener;", "member", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "getMember", "()Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "setMember", "(Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;)V", "memberNameTv", "getMemberNameTv", "memberNameTv$delegate", "modifyNameBtn", "getModifyNameBtn", "modifyNameBtn$delegate", "sayHiTv", "getSayHiTv", "sayHiTv$delegate", "sendDialog", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "getState", "()Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "setState", "(Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;)V", "stranger", "Lcom/tencent/mm/storage/Stranger;", "tipTV", "toPosCache", "", "wordcntTV", "dealModRemarkName", "dismiss", "", "hideAll", "initView", "popup", "view", "reset", "setListener", "showModifyDialog", "name", "", "switchState", "updateState", "username", "Companion", "OnConfirmBtnClickListener", "plugin-radar_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/ui/RadarMemberView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "alert", "Lcom/tencent/mm/ui/widget/dialog/MMAlertDialog;", "avatarCopy", "Landroid/widget/ImageView;", "getAvatarCopy", "()Landroid/widget/ImageView;", "avatarCopy$delegate", "Lkotlin/Lazy;", "avatarCopyContainer", "Landroid/view/View;", "getAvatarCopyContainer", "()Landroid/view/View;", "avatarCopyContainer$delegate", "avatarHolder", "getAvatarHolder", "avatarHolder$delegate", "avatarItem", "confirmBtn", "Landroid/widget/Button;", "getConfirmBtn", "()Landroid/widget/Button;", "confirmBtn$delegate", "confirmBtnDisabled", "Landroid/widget/TextView;", "getConfirmBtnDisabled", "()Landroid/widget/TextView;", "confirmBtnDisabled$delegate", "contact", "Lcom/tencent/mm/storage/Contact;", "contentET", "Landroid/widget/EditText;", "dismissing", "", "exposeTv", "getExposeTv", "exposeTv$delegate", "handler", "com/tencent/mm/plugin/radar/ui/RadarMemberView$handler$1", "Lcom/tencent/mm/plugin/radar/ui/RadarMemberView$handler$1;", "isShowing", "()Z", "listener", "Lcom/tencent/mm/plugin/radar/ui/RadarMemberView$OnConfirmBtnClickListener;", "mOnModifyNameClickListener", "Landroid/view/View$OnClickListener;", "member", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "getMember", "()Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "setMember", "(Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;)V", "memberNameTv", "getMemberNameTv", "memberNameTv$delegate", "modifyNameBtn", "getModifyNameBtn", "modifyNameBtn$delegate", "sayHiTv", "getSayHiTv", "sayHiTv$delegate", "sendDialog", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "getState", "()Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "setState", "(Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;)V", "stranger", "Lcom/tencent/mm/storage/Stranger;", "tipTV", "toPosCache", "", "wordcntTV", "dealModRemarkName", "dismiss", "", "hideAll", "initView", "popup", "view", "reset", "setListener", "showModifyDialog", "name", "", "switchState", "updateState", "username", "Companion", "OnConfirmBtnClickListener", "plugin-radar_release"})
 public final class RadarMemberView
   extends RelativeLayout
 {
   private static final String TAG = "MicroMsg.RadarMemberView";
-  private static final int wce = 0;
-  private static final int wcf = 1;
-  public static final RadarMemberView.a wcg;
-  private ai contact;
-  private View iJh;
-  private com.tencent.mm.ui.widget.a.d iJj;
-  private boolean isP;
-  private EditText lMg;
-  private TextView sDL;
-  private View wbO;
-  private final f wbP;
-  private final f wbQ;
-  private final f wbR;
-  private final f wbS;
-  private final f wbT;
-  private final f wbU;
-  private final f wbV;
-  private final f wbW;
-  private int[] wbX;
-  private final f wbY;
-  private bz wbZ;
-  private cli wbu;
-  private c.e wbv;
-  private b wca;
-  private final View.OnClickListener wcb;
-  private final d wcc;
-  private TextView wcd;
+  private static final int xjN = 0;
+  private static final int xjO = 1;
+  public static final RadarMemberView.a xjP;
+  private am contact;
+  private boolean iLS;
+  private View jcq;
+  private com.tencent.mm.ui.widget.a.d jcs;
+  private EditText mlU;
+  private TextView tAA;
+  private final f xjA;
+  private final f xjB;
+  private final f xjC;
+  private final f xjD;
+  private final f xjE;
+  private final f xjF;
+  private int[] xjG;
+  private final f xjH;
+  private cf xjI;
+  private b xjJ;
+  private final View.OnClickListener xjK;
+  private final d xjL;
+  private TextView xjM;
+  private cqi xjd;
+  private c.e xje;
+  private View xjx;
+  private final f xjy;
+  private final f xjz;
   
   static
   {
     AppMethodBeat.i(138609);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(RadarMemberView.class), "avatarHolder", "getAvatarHolder()Landroid/view/View;")), (d.l.k)w.a(new u(w.bn(RadarMemberView.class), "avatarCopy", "getAvatarCopy()Landroid/widget/ImageView;")), (d.l.k)w.a(new u(w.bn(RadarMemberView.class), "avatarCopyContainer", "getAvatarCopyContainer()Landroid/view/View;")), (d.l.k)w.a(new u(w.bn(RadarMemberView.class), "confirmBtn", "getConfirmBtn()Landroid/widget/Button;")), (d.l.k)w.a(new u(w.bn(RadarMemberView.class), "confirmBtnDisabled", "getConfirmBtnDisabled()Landroid/widget/TextView;")), (d.l.k)w.a(new u(w.bn(RadarMemberView.class), "memberNameTv", "getMemberNameTv()Landroid/widget/TextView;")), (d.l.k)w.a(new u(w.bn(RadarMemberView.class), "modifyNameBtn", "getModifyNameBtn()Landroid/widget/Button;")), (d.l.k)w.a(new u(w.bn(RadarMemberView.class), "sayHiTv", "getSayHiTv()Landroid/widget/TextView;")), (d.l.k)w.a(new u(w.bn(RadarMemberView.class), "exposeTv", "getExposeTv()Landroid/widget/TextView;")) };
-    wcg = new RadarMemberView.a((byte)0);
+    xjP = new RadarMemberView.a((byte)0);
     TAG = "MicroMsg.RadarMemberView";
-    wcf = 1;
+    xjO = 1;
     AppMethodBeat.o(138609);
   }
   
@@ -90,17 +86,17 @@ public final class RadarMemberView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(138626);
-    this.wbP = i.an(this, 2131303691);
-    this.wbQ = i.an(this, 2131303676);
-    this.wbR = i.an(this, 2131303675);
-    this.wbS = i.an(this, 2131303679);
-    this.wbT = i.an(this, 2131303680);
-    this.wbU = i.an(this, 2131303685);
-    this.wbV = i.an(this, 2131303684);
-    this.wbW = i.an(this, 2131303697);
-    this.wbY = i.an(this, 2131299606);
-    this.wcb = ((View.OnClickListener)new h(this));
-    this.wcc = new d(this);
+    this.xjy = i.ao(this, 2131303691);
+    this.xjz = i.ao(this, 2131303676);
+    this.xjA = i.ao(this, 2131303675);
+    this.xjB = i.ao(this, 2131303679);
+    this.xjC = i.ao(this, 2131303680);
+    this.xjD = i.ao(this, 2131303685);
+    this.xjE = i.ao(this, 2131303684);
+    this.xjF = i.ao(this, 2131303697);
+    this.xjH = i.ao(this, 2131299606);
+    this.xjK = ((View.OnClickListener)new h(this));
+    this.xjL = new d(this);
     AppMethodBeat.o(138626);
   }
   
@@ -108,17 +104,17 @@ public final class RadarMemberView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(138627);
-    this.wbP = i.an(this, 2131303691);
-    this.wbQ = i.an(this, 2131303676);
-    this.wbR = i.an(this, 2131303675);
-    this.wbS = i.an(this, 2131303679);
-    this.wbT = i.an(this, 2131303680);
-    this.wbU = i.an(this, 2131303685);
-    this.wbV = i.an(this, 2131303684);
-    this.wbW = i.an(this, 2131303697);
-    this.wbY = i.an(this, 2131299606);
-    this.wcb = ((View.OnClickListener)new h(this));
-    this.wcc = new d(this);
+    this.xjy = i.ao(this, 2131303691);
+    this.xjz = i.ao(this, 2131303676);
+    this.xjA = i.ao(this, 2131303675);
+    this.xjB = i.ao(this, 2131303679);
+    this.xjC = i.ao(this, 2131303680);
+    this.xjD = i.ao(this, 2131303685);
+    this.xjE = i.ao(this, 2131303684);
+    this.xjF = i.ao(this, 2131303697);
+    this.xjH = i.ao(this, 2131299606);
+    this.xjK = ((View.OnClickListener)new h(this));
+    this.xjL = new d(this);
     AppMethodBeat.o(138627);
   }
   
@@ -131,7 +127,7 @@ public final class RadarMemberView
       AppMethodBeat.o(138621);
       return;
     }
-    switch (c.cfA[parame.ordinal()])
+    switch (c.cpQ[parame.ordinal()])
     {
     }
     for (;;)
@@ -175,7 +171,7 @@ public final class RadarMemberView
   private final ImageView getAvatarCopy()
   {
     AppMethodBeat.i(138611);
-    ImageView localImageView = (ImageView)this.wbQ.getValue();
+    ImageView localImageView = (ImageView)this.xjz.getValue();
     AppMethodBeat.o(138611);
     return localImageView;
   }
@@ -183,7 +179,7 @@ public final class RadarMemberView
   private final View getAvatarCopyContainer()
   {
     AppMethodBeat.i(138612);
-    View localView = (View)this.wbR.getValue();
+    View localView = (View)this.xjA.getValue();
     AppMethodBeat.o(138612);
     return localView;
   }
@@ -191,7 +187,7 @@ public final class RadarMemberView
   private final View getAvatarHolder()
   {
     AppMethodBeat.i(138610);
-    View localView = (View)this.wbP.getValue();
+    View localView = (View)this.xjy.getValue();
     AppMethodBeat.o(138610);
     return localView;
   }
@@ -199,7 +195,7 @@ public final class RadarMemberView
   private final Button getConfirmBtn()
   {
     AppMethodBeat.i(138613);
-    Button localButton = (Button)this.wbS.getValue();
+    Button localButton = (Button)this.xjB.getValue();
     AppMethodBeat.o(138613);
     return localButton;
   }
@@ -207,7 +203,7 @@ public final class RadarMemberView
   private final TextView getConfirmBtnDisabled()
   {
     AppMethodBeat.i(138614);
-    TextView localTextView = (TextView)this.wbT.getValue();
+    TextView localTextView = (TextView)this.xjC.getValue();
     AppMethodBeat.o(138614);
     return localTextView;
   }
@@ -215,7 +211,7 @@ public final class RadarMemberView
   private final TextView getExposeTv()
   {
     AppMethodBeat.i(138618);
-    TextView localTextView = (TextView)this.wbY.getValue();
+    TextView localTextView = (TextView)this.xjH.getValue();
     AppMethodBeat.o(138618);
     return localTextView;
   }
@@ -223,7 +219,7 @@ public final class RadarMemberView
   private final TextView getMemberNameTv()
   {
     AppMethodBeat.i(138615);
-    TextView localTextView = (TextView)this.wbU.getValue();
+    TextView localTextView = (TextView)this.xjD.getValue();
     AppMethodBeat.o(138615);
     return localTextView;
   }
@@ -231,7 +227,7 @@ public final class RadarMemberView
   private final Button getModifyNameBtn()
   {
     AppMethodBeat.i(138616);
-    Button localButton = (Button)this.wbV.getValue();
+    Button localButton = (Button)this.xjE.getValue();
     AppMethodBeat.o(138616);
     return localButton;
   }
@@ -239,7 +235,7 @@ public final class RadarMemberView
   private final TextView getSayHiTv()
   {
     AppMethodBeat.i(138617);
-    TextView localTextView = (TextView)this.wbW.getValue();
+    TextView localTextView = (TextView)this.xjF.getValue();
     AppMethodBeat.o(138617);
     return localTextView;
   }
@@ -257,98 +253,98 @@ public final class RadarMemberView
     AppMethodBeat.o(138625);
   }
   
-  public final void a(View paramView, final cli paramcli, c.e parame)
+  public final void a(View paramView, final cqi paramcqi, c.e parame)
   {
     AppMethodBeat.i(138623);
-    d.g.b.k.h(paramView, "view");
-    d.g.b.k.h(paramcli, "member");
-    ac.d(TAG, "popup");
-    this.wbv = parame;
-    this.wbu = paramcli;
+    p.h(paramView, "view");
+    p.h(paramcqi, "member");
+    com.tencent.mm.sdk.platformtools.ad.d(TAG, "popup");
+    this.xje = parame;
+    this.xjd = paramcqi;
     parame = getConfirmBtn();
     if (parame != null) {
-      parame.setOnClickListener((View.OnClickListener)new e(this, paramcli));
+      parame.setOnClickListener((View.OnClickListener)new e(this, paramcqi));
     }
-    getModifyNameBtn().setOnClickListener(this.wcb);
+    getModifyNameBtn().setOnClickListener(this.xjK);
     setOnTouchListener((View.OnTouchListener)new f(this));
     getExposeTv().setOnClickListener((View.OnClickListener)new g(this));
-    parame = g.wdr;
-    parame = g.b(paramcli);
-    if (!n.aD((CharSequence)parame))
+    parame = g.xla;
+    parame = g.b(paramcqi);
+    if (!d.n.n.aE((CharSequence)parame))
     {
-      localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-      d.g.b.k.g(localObject, "service(IMessengerStorage::class.java)");
-      this.contact = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject).awB().aNt(parame);
+      localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+      p.g(localObject, "service(IMessengerStorage::class.java)");
+      this.contact = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azp().Bf(parame);
     }
     Object localObject = this.contact;
-    if ((localObject != null) && (((ai)localObject).aaE() == true))
+    if ((localObject != null) && (((am)localObject).adh() == true))
     {
       parame = this.contact;
       if (parame != null)
       {
-        parame = parame.Tm();
+        parame = parame.VB();
         localObject = getMemberNameTv();
-        if ((this.contact == null) || (bs.isNullOrNil(parame))) {
-          break label611;
+        if ((this.contact == null) || (bt.isNullOrNil(parame))) {
+          break label610;
         }
       }
     }
-    label611:
-    for (paramcli = (CharSequence)com.tencent.mm.pluginsdk.ui.span.k.b(getContext(), (CharSequence)parame, getMemberNameTv().getTextSize());; paramcli = (CharSequence)com.tencent.mm.pluginsdk.ui.span.k.b(getContext(), (CharSequence)paramcli.ndW, getMemberNameTv().getTextSize()))
+    label610:
+    for (paramcqi = (CharSequence)k.b(getContext(), (CharSequence)parame, getMemberNameTv().getTextSize());; paramcqi = (CharSequence)k.b(getContext(), (CharSequence)paramcqi.nEt, getMemberNameTv().getTextSize()))
     {
-      ((TextView)localObject).setText(paramcli);
+      ((TextView)localObject).setText(paramcqi);
       getMemberNameTv().setVisibility(4);
       getModifyNameBtn().setVisibility(4);
       reset();
-      this.wbO = paramView;
-      paramView = this.wbO;
+      this.xjx = paramView;
+      paramView = this.xjx;
       if (paramView == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
       paramView = paramView.findViewById(2131303693);
-      d.g.b.k.g(paramView, "avatarItem!!.findViewByI…ar_result_item_avatar_iv)");
-      paramcli = (ImageView)paramView;
-      paramView = this.wbO;
+      p.g(paramView, "avatarItem!!.findViewByI…ar_result_item_avatar_iv)");
+      paramcqi = (ImageView)paramView;
+      paramView = this.xjx;
       if (paramView == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
       paramView = paramView.findViewById(2131303675);
-      d.g.b.k.g(paramView, "avatarItem!!.findViewByI…d.radar_avatar_container)");
-      parame = this.wbO;
+      p.g(paramView, "avatarItem!!.findViewByI…d.radar_avatar_container)");
+      parame = this.xjx;
       if (parame == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
       parame.setVisibility(4);
-      getAvatarCopy().setImageDrawable(paramcli.getDrawable());
+      getAvatarCopy().setImageDrawable(paramcqi.getDrawable());
       getAvatarCopyContainer().setVisibility(0);
       parame = new int[2];
       paramView.getLocationInWindow(parame);
       localObject = new int[2];
       getAvatarHolder().getLocationInWindow((int[])localObject);
-      this.wbX = ((int[])localObject);
+      this.xjG = ((int[])localObject);
       setVisibility(0);
-      paramcli = new AnimationSet(true);
-      paramcli.setFillAfter(true);
-      paramcli.setRepeatCount(1);
-      paramcli.setDuration(500L);
+      paramcqi = new AnimationSet(true);
+      paramcqi.setFillAfter(true);
+      paramcqi.setRepeatCount(1);
+      paramcqi.setDuration(500L);
       float f1 = getAvatarHolder().getHeight() / paramView.getHeight();
       float f2 = (paramView.getWidth() - paramView.getHeight()) / 2;
       paramView = new TranslateAnimation(parame[0], localObject[0] - f2 * f1, parame[1], localObject[1]);
-      paramcli.addAnimation((Animation)new ScaleAnimation(1.0F, f1, 1.0F, f1));
-      paramcli.addAnimation((Animation)paramView);
-      paramcli.setAnimationListener((Animation.AnimationListener)new i(this));
-      getAvatarCopyContainer().startAnimation((Animation)paramcli);
+      paramcqi.addAnimation((Animation)new ScaleAnimation(1.0F, f1, 1.0F, f1));
+      paramcqi.addAnimation((Animation)paramView);
+      paramcqi.setAnimationListener((Animation.AnimationListener)new i(this));
+      getAvatarCopyContainer().startAnimation((Animation)paramcqi);
       AppMethodBeat.o(138623);
       return;
       parame = null;
       break;
-      localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-      d.g.b.k.g(localObject, "service(IMessengerStorage::class.java)");
-      this.wbZ = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject).awC().alK(parame);
-      parame = this.wbZ;
+      localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+      p.g(localObject, "service(IMessengerStorage::class.java)");
+      this.xjI = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azq().aqz(parame);
+      parame = this.xjI;
       if (parame != null)
       {
-        parame = parame.Tm();
+        parame = parame.VB();
         break;
       }
       parame = null;
@@ -360,25 +356,25 @@ public final class RadarMemberView
   {
     Object localObject2 = null;
     AppMethodBeat.i(138620);
-    d.g.b.k.h(paramString, "username");
-    d.g.b.k.h(parame, "state");
-    if ((!isShowing()) || (this.isP))
+    p.h(paramString, "username");
+    p.h(parame, "state");
+    if ((!isShowing()) || (this.iLS))
     {
       AppMethodBeat.o(138620);
       return;
     }
-    Object localObject1 = this.wbu;
+    Object localObject1 = this.xjd;
     if (localObject1 != null) {}
-    for (localObject1 = ((cli)localObject1).EyO;; localObject1 = null)
+    for (localObject1 = ((cqi)localObject1).GgA;; localObject1 = null)
     {
-      if (!d.g.b.k.g(paramString, localObject1))
+      if (!p.i(paramString, localObject1))
       {
-        cli localcli = this.wbu;
+        cqi localcqi = this.xjd;
         localObject1 = localObject2;
-        if (localcli != null) {
-          localObject1 = localcli.ncR;
+        if (localcqi != null) {
+          localObject1 = localcqi.nDo;
         }
-        if (!d.g.b.k.g(paramString, localObject1)) {}
+        if (!p.i(paramString, localObject1)) {}
       }
       else
       {
@@ -392,30 +388,30 @@ public final class RadarMemberView
   public final void dismiss()
   {
     AppMethodBeat.i(138624);
-    ac.d(TAG, "dismiss");
-    if (this.isP)
+    com.tencent.mm.sdk.platformtools.ad.d(TAG, "dismiss");
+    if (this.iLS)
     {
       AppMethodBeat.o(138624);
       return;
     }
-    this.isP = true;
-    Object localObject1 = this.wbO;
+    this.iLS = true;
+    Object localObject1 = this.xjx;
     if (localObject1 == null) {
-      d.g.b.k.fOy();
+      p.gfZ();
     }
     Object localObject2 = ((View)localObject1).findViewById(2131303675);
-    d.g.b.k.g(localObject2, "avatarItem!!.findViewByI…d.radar_avatar_container)");
+    p.g(localObject2, "avatarItem!!.findViewByI…d.radar_avatar_container)");
     localObject1 = new AnimationSet(true);
     ((AnimationSet)localObject1).setFillAfter(true);
     ((AnimationSet)localObject1).setRepeatCount(1);
     ((AnimationSet)localObject1).setDuration(500L);
-    int[] arrayOfInt1 = this.wbX;
+    int[] arrayOfInt1 = this.xjG;
     int[] arrayOfInt2 = new int[2];
     ((View)localObject2).getLocationInWindow(arrayOfInt2);
     float f1 = getAvatarHolder().getHeight() / ((View)localObject2).getHeight();
     float f2 = (((View)localObject2).getWidth() - ((View)localObject2).getHeight()) / 2;
     if (arrayOfInt1 == null) {
-      d.g.b.k.fOy();
+      p.gfZ();
     }
     localObject2 = new TranslateAnimation(arrayOfInt1[0] - f2 * f1, arrayOfInt2[0], arrayOfInt1[1], arrayOfInt2[1]);
     ((AnimationSet)localObject1).addAnimation((Animation)new ScaleAnimation(f1, 1.0F, f1, 1.0F));
@@ -431,14 +427,14 @@ public final class RadarMemberView
     AppMethodBeat.o(138624);
   }
   
-  public final cli getMember()
+  public final cqi getMember()
   {
-    return this.wbu;
+    return this.xjd;
   }
   
   public final c.e getState()
   {
-    return this.wbv;
+    return this.xje;
   }
   
   public final boolean isShowing()
@@ -456,86 +452,86 @@ public final class RadarMemberView
   public final void setListener(b paramb)
   {
     AppMethodBeat.i(138622);
-    d.g.b.k.h(paramb, "listener");
-    this.wca = paramb;
+    p.h(paramb, "listener");
+    this.xjJ = paramb;
     AppMethodBeat.o(138622);
   }
   
-  public final void setMember(cli paramcli)
+  public final void setMember(cqi paramcqi)
   {
-    this.wbu = paramcli;
+    this.xjd = paramcqi;
   }
   
   public final void setState(c.e parame)
   {
-    this.wbv = parame;
+    this.xje = parame;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarMemberView$OnConfirmBtnClickListener;", "", "onClick", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "onDismissed", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/ui/RadarMemberView$OnConfirmBtnClickListener;", "", "onClick", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "onDismissed", "plugin-radar_release"})
   public static abstract interface b
   {
-    public abstract void a(cli paramcli, c.e parame);
+    public abstract void a(cqi paramcqi, c.e parame);
     
-    public abstract void b(cli paramcli, c.e parame);
+    public abstract void b(cqi paramcqi, c.e parame);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/radar/ui/RadarMemberView$dismiss$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/radar/ui/RadarMemberView$dismiss$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
   public static final class c
     implements Animation.AnimationListener
   {
     public final void onAnimationEnd(Animation paramAnimation)
     {
       AppMethodBeat.i(138594);
-      d.g.b.k.h(paramAnimation, "animation");
-      ac.d(RadarMemberView.access$getTAG$cp(), "dismiss animation end");
-      RadarMemberView.e(this.wch);
-      RadarMemberView.d(this.wch).sendEmptyMessage(RadarMemberView.dsN());
+      p.h(paramAnimation, "animation");
+      com.tencent.mm.sdk.platformtools.ad.d(RadarMemberView.access$getTAG$cp(), "dismiss animation end");
+      RadarMemberView.e(this.xjQ);
+      RadarMemberView.d(this.xjQ).sendEmptyMessage(RadarMemberView.dDk());
       AppMethodBeat.o(138594);
     }
     
     public final void onAnimationRepeat(Animation paramAnimation)
     {
       AppMethodBeat.i(138593);
-      d.g.b.k.h(paramAnimation, "animation");
+      p.h(paramAnimation, "animation");
       AppMethodBeat.o(138593);
     }
     
     public final void onAnimationStart(Animation paramAnimation)
     {
       AppMethodBeat.i(138592);
-      d.g.b.k.h(paramAnimation, "animation");
+      p.h(paramAnimation, "animation");
       AppMethodBeat.o(138592);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/radar/ui/RadarMemberView$handler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/radar/ui/RadarMemberView$handler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-radar_release"})
   public static final class d
-    extends ao
+    extends ap
   {
     public final void handleMessage(Message paramMessage)
     {
       AppMethodBeat.i(138595);
-      d.g.b.k.h(paramMessage, "msg");
-      if (paramMessage.what == RadarMemberView.dsM())
+      p.h(paramMessage, "msg");
+      if (paramMessage.what == RadarMemberView.dDj())
       {
-        paramMessage = this.wch;
-        this.wch.getMember();
-        RadarMemberView.a(paramMessage, this.wch.getState());
+        paramMessage = this.xjQ;
+        this.xjQ.getMember();
+        RadarMemberView.a(paramMessage, this.xjQ.getState());
         AppMethodBeat.o(138595);
         return;
       }
-      if (paramMessage.what == RadarMemberView.dsN())
+      if (paramMessage.what == RadarMemberView.dDk())
       {
-        this.wch.setVisibility(4);
-        RadarMemberView.j(this.wch);
-        paramMessage = RadarMemberView.k(this.wch);
+        this.xjQ.setVisibility(4);
+        RadarMemberView.j(this.xjQ);
+        paramMessage = RadarMemberView.k(this.xjQ);
         if (paramMessage != null) {
           paramMessage.setVisibility(0);
         }
-        paramMessage = RadarMemberView.a(this.wch);
+        paramMessage = RadarMemberView.a(this.xjQ);
         if (paramMessage != null)
         {
-          paramMessage.b(this.wch.getMember(), this.wch.getState());
+          paramMessage.b(this.xjQ.getMember(), this.xjQ.getState());
           AppMethodBeat.o(138595);
           return;
         }
@@ -544,30 +540,35 @@ public final class RadarMemberView
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class e
     implements View.OnClickListener
   {
-    e(RadarMemberView paramRadarMemberView, cli paramcli) {}
+    e(RadarMemberView paramRadarMemberView, cqi paramcqi) {}
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(138596);
-      if ((this.wch.getState() == null) || (RadarMemberView.a(this.wch) == null))
+      b localb = new b();
+      localb.bd(paramView);
+      a.b("com/tencent/mm/plugin/radar/ui/RadarMemberView$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      if ((this.xjQ.getState() == null) || (RadarMemberView.a(this.xjQ) == null))
       {
+        a.a(this, "com/tencent/mm/plugin/radar/ui/RadarMemberView$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(138596);
         return;
       }
-      paramView = RadarMemberView.a(this.wch);
+      paramView = RadarMemberView.a(this.xjQ);
       if (paramView != null) {
-        paramView.a(paramcli, this.wch.getState());
+        paramView.a(paramcqi, this.xjQ.getState());
       }
-      this.wch.dismiss();
+      this.xjQ.dismiss();
+      a.a(this, "com/tencent/mm/plugin/radar/ui/RadarMemberView$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(138596);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
   static final class f
     implements View.OnTouchListener
   {
@@ -576,19 +577,24 @@ public final class RadarMemberView
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(138597);
-      if (paramView != RadarMemberView.b(this.wch))
+      b localb = new b();
+      localb.bd(paramView);
+      localb.bd(paramMotionEvent);
+      a.b("com/tencent/mm/plugin/radar/ui/RadarMemberView$initView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+      if (paramView != RadarMemberView.b(this.xjQ))
       {
-        d.g.b.k.g(paramMotionEvent, "event");
-        if ((paramMotionEvent.getAction() == 1) && (this.wch.isShowing())) {
-          this.wch.dismiss();
+        p.g(paramMotionEvent, "event");
+        if ((paramMotionEvent.getAction() == 1) && (this.xjQ.isShowing())) {
+          this.xjQ.dismiss();
         }
       }
+      a.a(true, this, "com/tencent/mm/plugin/radar/ui/RadarMemberView$initView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(138597);
       return true;
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class g
     implements View.OnClickListener
   {
@@ -597,25 +603,29 @@ public final class RadarMemberView
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(138598);
-      Intent localIntent = new Intent();
-      paramView = RadarMemberView.c(this.wch);
+      Object localObject = new b();
+      ((b)localObject).bd(paramView);
+      a.b("com/tencent/mm/plugin/radar/ui/RadarMemberView$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+      localObject = new Intent();
+      paramView = RadarMemberView.c(this.xjQ);
       if (paramView != null) {}
       for (paramView = paramView.getUsername();; paramView = null)
       {
-        localIntent.putExtra("k_username", paramView);
-        localIntent.putExtra("showShare", false);
-        paramView = z.KUT;
+        ((Intent)localObject).putExtra("k_username", paramView);
+        ((Intent)localObject).putExtra("showShare", false);
+        paramView = d.g.b.ad.MLZ;
         paramView = String.format("https://weixin110.qq.com/security/readtemplate?t=weixin_report/w_type&scene=%d#wechat_redirect", Arrays.copyOf(new Object[] { Integer.valueOf(38) }, 1));
-        d.g.b.k.g(paramView, "java.lang.String.format(format, *args)");
-        localIntent.putExtra("rawUrl", paramView);
-        com.tencent.mm.br.d.b(this.wch.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+        p.g(paramView, "java.lang.String.format(format, *args)");
+        ((Intent)localObject).putExtra("rawUrl", paramView);
+        com.tencent.mm.bs.d.b(this.xjQ.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+        a.a(this, "com/tencent/mm/plugin/radar/ui/RadarMemberView$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(138598);
         return;
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class h
     implements View.OnClickListener
   {
@@ -625,158 +635,162 @@ public final class RadarMemberView
     {
       RadarMemberView localRadarMemberView = null;
       AppMethodBeat.i(138599);
+      Object localObject = new b();
+      ((b)localObject).bd(paramView);
+      a.b("com/tencent/mm/plugin/radar/ui/RadarMemberView$mOnModifyNameClickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
       String str = "";
       paramView = str;
-      if (RadarMemberView.c(this.wch) != null)
+      if (RadarMemberView.c(this.xjQ) != null)
       {
-        paramView = RadarMemberView.c(this.wch);
-        if ((paramView == null) || (paramView.aaE() != true)) {
-          break label152;
+        paramView = RadarMemberView.c(this.xjQ);
+        if ((paramView == null) || (paramView.adh() != true)) {
+          break label193;
         }
-        paramView = RadarMemberView.c(this.wch);
+        paramView = RadarMemberView.c(this.xjQ);
         if (paramView == null) {
-          break label147;
+          break label188;
         }
       }
       int i;
-      label147:
-      for (paramView = paramView.Tm();; paramView = null)
+      label188:
+      for (paramView = paramView.VB();; paramView = null)
       {
         localObject = (CharSequence)paramView;
-        if ((localObject != null) && (!n.aD((CharSequence)localObject))) {
+        if ((localObject != null) && (!d.n.n.aE((CharSequence)localObject))) {
           break;
         }
         i = 1;
-        label80:
+        label109:
         localObject = paramView;
         if (i != 0)
         {
           localObject = paramView;
-          if (this.wch.getMember() != null)
+          if (this.xjQ.getMember() != null)
           {
-            localObject = this.wch.getMember();
+            localObject = this.xjQ.getMember();
             paramView = localRadarMemberView;
             if (localObject != null) {
-              paramView = ((cli)localObject).ndW;
+              paramView = ((cqi)localObject).nEt;
             }
             localObject = paramView;
           }
         }
-        localRadarMemberView = this.wch;
+        localRadarMemberView = this.xjQ;
         paramView = (View)localObject;
         if (localObject == null) {
           paramView = "";
         }
         RadarMemberView.a(localRadarMemberView, paramView);
+        a.a(this, "com/tencent/mm/plugin/radar/ui/RadarMemberView$mOnModifyNameClickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(138599);
         return;
       }
-      label152:
-      paramView = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-      d.g.b.k.g(paramView, "service(IMessengerStorage::class.java)");
-      Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)paramView).awC();
-      paramView = RadarMemberView.c(this.wch);
+      label193:
+      paramView = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+      p.g(paramView, "service(IMessengerStorage::class.java)");
+      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramView).azq();
+      paramView = RadarMemberView.c(this.xjQ);
       if (paramView != null)
       {
         paramView = paramView.getUsername();
-        label191:
-        localObject = ((m)localObject).alK(paramView);
+        label232:
+        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.a.n)localObject).aqz(paramView);
         if (localObject != null)
         {
-          paramView = (CharSequence)((bz)localObject).Tq();
-          if ((paramView != null) && (!n.aD(paramView))) {
-            break label334;
+          paramView = (CharSequence)((cf)localObject).VF();
+          if ((paramView != null) && (!d.n.n.aE(paramView))) {
+            break label375;
           }
           i = 1;
-          label224:
+          label265:
           if (i == 0) {
-            break label359;
+            break label400;
           }
         }
-        paramView = RadarMemberView.c(this.wch);
+        paramView = RadarMemberView.c(this.xjQ);
         if (paramView == null) {
-          break label339;
+          break label380;
         }
-        paramView = paramView.Tq();
-        label245:
+        paramView = paramView.VF();
+        label286:
         paramView = (CharSequence)paramView;
-        if ((paramView != null) && (!n.aD(paramView))) {
-          break label344;
+        if ((paramView != null) && (!d.n.n.aE(paramView))) {
+          break label385;
         }
         i = 1;
-        label263:
+        label304:
         if (i != 0) {
-          break label359;
+          break label400;
         }
-        paramView = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-        d.g.b.k.g(paramView, "service(IMessengerStorage::class.java)");
-        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)paramView).awC();
-        paramView = RadarMemberView.c(this.wch);
+        paramView = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+        p.g(paramView, "service(IMessengerStorage::class.java)");
+        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramView).azq();
+        paramView = RadarMemberView.c(this.xjQ);
         if (paramView == null) {
-          break label349;
+          break label390;
         }
-        paramView = paramView.Tq();
-        label306:
-        localObject = ((m)localObject).alK(paramView);
+        paramView = paramView.VF();
+        label347:
+        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.a.n)localObject).aqz(paramView);
       }
-      label334:
-      label339:
-      label344:
-      label349:
-      label359:
+      label385:
+      label390:
+      label400:
       for (;;)
       {
         paramView = str;
         if (localObject == null) {
           break;
         }
-        paramView = ((bz)localObject).Tm();
+        paramView = ((cf)localObject).VB();
         break;
         paramView = null;
-        break label191;
+        break label232;
+        label375:
         i = 0;
-        break label224;
+        break label265;
+        label380:
         paramView = null;
-        break label245;
+        break label286;
         i = 0;
-        break label263;
+        break label304;
         paramView = null;
-        break label306;
+        break label347;
         i = 0;
-        break label80;
+        break label109;
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/radar/ui/RadarMemberView$popup$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/radar/ui/RadarMemberView$popup$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
   public static final class i
     implements Animation.AnimationListener
   {
     public final void onAnimationEnd(Animation paramAnimation)
     {
       AppMethodBeat.i(138602);
-      d.g.b.k.h(paramAnimation, "animation");
-      ac.d(RadarMemberView.access$getTAG$cp(), "popup animation end");
-      RadarMemberView.d(this.wch).sendEmptyMessage(RadarMemberView.dsM());
+      p.h(paramAnimation, "animation");
+      com.tencent.mm.sdk.platformtools.ad.d(RadarMemberView.access$getTAG$cp(), "popup animation end");
+      RadarMemberView.d(this.xjQ).sendEmptyMessage(RadarMemberView.dDj());
       AppMethodBeat.o(138602);
     }
     
     public final void onAnimationRepeat(Animation paramAnimation)
     {
       AppMethodBeat.i(138601);
-      d.g.b.k.h(paramAnimation, "animation");
+      p.h(paramAnimation, "animation");
       AppMethodBeat.o(138601);
     }
     
     public final void onAnimationStart(Animation paramAnimation)
     {
       AppMethodBeat.i(138600);
-      d.g.b.k.h(paramAnimation, "animation");
+      p.h(paramAnimation, "animation");
       AppMethodBeat.o(138600);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/radar/ui/RadarMemberView$showModifyDialog$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/radar/ui/RadarMemberView$showModifyDialog$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-radar_release"})
   public static final class j
     implements TextWatcher
   {
@@ -784,17 +798,17 @@ public final class RadarMemberView
     {
       boolean bool = false;
       AppMethodBeat.i(138605);
-      d.g.b.k.h(paramEditable, "s");
+      p.h(paramEditable, "s");
       int j = 50 - paramEditable.length();
       int i = j;
       if (j < 0) {
         i = 0;
       }
-      Object localObject = RadarMemberView.f(this.wch);
+      Object localObject = RadarMemberView.f(this.xjQ);
       if (localObject != null) {
         ((TextView)localObject).setText((CharSequence)String.valueOf(i));
       }
-      localObject = RadarMemberView.g(this.wch);
+      localObject = RadarMemberView.g(this.xjQ);
       if (localObject != null)
       {
         localObject = ((com.tencent.mm.ui.widget.a.d)localObject).getButton(-1);
@@ -814,19 +828,19 @@ public final class RadarMemberView
     public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(138604);
-      d.g.b.k.h(paramCharSequence, "s");
+      p.h(paramCharSequence, "s");
       AppMethodBeat.o(138604);
     }
     
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(138603);
-      d.g.b.k.h(paramCharSequence, "s");
+      p.h(paramCharSequence, "s");
       AppMethodBeat.o(138603);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class k
     implements Runnable
   {
@@ -835,10 +849,10 @@ public final class RadarMemberView
     public final void run()
     {
       AppMethodBeat.i(138606);
-      if ((this.wch.getContext() instanceof Activity))
+      if ((this.xjQ.getContext() instanceof Activity))
       {
-        Object localObject1 = RadarMemberView.wcg;
-        localObject1 = this.wch.getContext();
+        Object localObject1 = RadarMemberView.xjP;
+        localObject1 = this.xjQ.getContext();
         if (localObject1 == null)
         {
           localObject1 = new v("null cannot be cast to non-null type android.app.Activity");
@@ -846,7 +860,7 @@ public final class RadarMemberView
           throw ((Throwable)localObject1);
         }
         Activity localActivity = (Activity)localObject1;
-        d.g.b.k.h(localActivity, "ac");
+        p.h(localActivity, "ac");
         Object localObject2 = localActivity.getSystemService("input_method");
         localObject1 = localObject2;
         if (!(localObject2 instanceof InputMethodManager)) {
@@ -875,7 +889,7 @@ public final class RadarMemberView
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
   static final class l
     implements DialogInterface.OnClickListener
   {
@@ -884,16 +898,16 @@ public final class RadarMemberView
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
       AppMethodBeat.i(138607);
-      paramDialogInterface = RadarMemberView.g(this.wch);
+      paramDialogInterface = RadarMemberView.g(this.xjQ);
       if (paramDialogInterface != null) {
         paramDialogInterface.dismiss();
       }
-      RadarMemberView.h(this.wch);
+      RadarMemberView.h(this.xjQ);
       AppMethodBeat.o(138607);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
   static final class m
     implements DialogInterface.OnClickListener
   {
@@ -902,22 +916,22 @@ public final class RadarMemberView
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
       AppMethodBeat.i(138608);
-      if (RadarMemberView.g(this.wch) != null)
+      if (RadarMemberView.g(this.xjQ) != null)
       {
-        paramDialogInterface = RadarMemberView.g(this.wch);
+        paramDialogInterface = RadarMemberView.g(this.xjQ);
         if (paramDialogInterface != null) {
           paramDialogInterface.dismiss();
         }
-        RadarMemberView.h(this.wch);
+        RadarMemberView.h(this.xjQ);
       }
-      RadarMemberView.i(this.wch);
+      RadarMemberView.i(this.xjQ);
       AppMethodBeat.o(138608);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.RadarMemberView
  * JD-Core Version:    0.7.0.1
  */

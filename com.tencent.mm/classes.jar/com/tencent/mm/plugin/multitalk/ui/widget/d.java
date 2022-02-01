@@ -8,38 +8,39 @@ import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver.OnDrawListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.c.h;
-import com.tencent.mm.plugin.multitalk.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.aw.a.c.h;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.multitalk.c.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.base.WxImageView;
 
 public final class d
 {
-  public View ijA;
+  public View iCR;
   public Context mContext;
-  public boolean vab;
-  public WxImageView vac;
-  public TextView vad;
-  public TextView vae;
-  public WxImageView vaf;
-  boolean vag;
-  public ViewTreeObserver.OnDrawListener vah;
+  public boolean wfi;
+  public WxImageView wfj;
+  public TextView wfk;
+  public TextView wfl;
+  public WxImageView wfm;
+  boolean wfn;
+  public ViewTreeObserver.OnDrawListener wfo;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(164062);
-    this.vab = false;
-    this.vag = false;
-    this.vah = new ViewTreeObserver.OnDrawListener()
+    this.wfi = false;
+    this.wfn = false;
+    this.wfo = new ViewTreeObserver.OnDrawListener()
     {
       public final void onDraw()
       {
         AppMethodBeat.i(164058);
-        if (!d.this.vag)
+        if (!d.this.wfn)
         {
-          d.this.vag = true;
-          com.tencent.mm.plugin.multitalk.c.b.a(a.dhd(), 0, 0, 0, 0, 0, 0, 0, 1, "", 0);
+          d.this.wfn = true;
+          c.a(com.tencent.mm.plugin.multitalk.c.b.drk(), 0, 0, 0, 0, 0, 0, 0, 1, "", 0);
         }
         AppMethodBeat.o(164058);
       }

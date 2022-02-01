@@ -49,23 +49,23 @@ public abstract interface b
   
   public abstract void b(a parama);
   
-  public abstract ParcelableVolumeInfo eA();
+  public abstract boolean eP();
   
-  public abstract MediaMetadataCompat eB();
+  public abstract PendingIntent eQ();
   
-  public abstract PlaybackStateCompat eC();
+  public abstract ParcelableVolumeInfo eR();
   
-  public abstract boolean eD();
+  public abstract MediaMetadataCompat eS();
   
-  public abstract boolean eE();
+  public abstract PlaybackStateCompat eT();
   
-  public abstract int eF();
+  public abstract boolean eU();
   
-  public abstract void eG();
+  public abstract boolean eV();
   
-  public abstract boolean ey();
+  public abstract int eW();
   
-  public abstract PendingIntent ez();
+  public abstract void eX();
   
   public abstract void fastForward();
   
@@ -195,7 +195,7 @@ public abstract interface b
         return true;
       case 5: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        bool1 = ey();
+        bool1 = eP();
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool1) {
@@ -217,7 +217,7 @@ public abstract interface b
         return true;
       case 8: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = ez();
+        paramParcel1 = eQ();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -235,7 +235,7 @@ public abstract interface b
         return true;
       case 10: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = eA();
+        paramParcel1 = eR();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -257,7 +257,7 @@ public abstract interface b
         return true;
       case 27: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = eB();
+        paramParcel1 = eS();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -269,7 +269,7 @@ public abstract interface b
         return true;
       case 28: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = eC();
+        paramParcel1 = eT();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -317,7 +317,7 @@ public abstract interface b
         return true;
       case 45: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        bool1 = eD();
+        bool1 = eU();
         paramParcel2.writeNoException();
         paramInt1 = j;
         if (bool1) {
@@ -333,7 +333,7 @@ public abstract interface b
         return true;
       case 38: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        bool1 = eE();
+        bool1 = eV();
         paramParcel2.writeNoException();
         paramInt1 = k;
         if (bool1) {
@@ -343,7 +343,7 @@ public abstract interface b
         return true;
       case 47: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramInt1 = eF();
+        paramInt1 = eW();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -485,7 +485,7 @@ public abstract interface b
         return true;
       case 21: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        eG();
+        eX();
         paramParcel2.writeNoException();
         return true;
       case 22: 
@@ -1181,8 +1181,88 @@ public abstract interface b
         //   25	48	62	finally
       }
       
+      public final boolean eP()
+      {
+        boolean bool = false;
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+          this.mRemote.transact(5, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
       /* Error */
-      public final ParcelableVolumeInfo eA()
+      public final PendingIntent eQ()
+      {
+        // Byte code:
+        //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   3: astore_2
+        //   4: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   7: astore_3
+        //   8: aload_2
+        //   9: ldc 29
+        //   11: invokevirtual 33	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   14: aload_0
+        //   15: getfield 18	android/support/v4/media/session/b$a$a:mRemote	Landroid/os/IBinder;
+        //   18: bipush 8
+        //   20: aload_2
+        //   21: aload_3
+        //   22: iconst_0
+        //   23: invokeinterface 43 5 0
+        //   28: pop
+        //   29: aload_3
+        //   30: invokevirtual 46	android/os/Parcel:readException	()V
+        //   33: aload_3
+        //   34: invokevirtual 92	android/os/Parcel:readInt	()I
+        //   37: ifeq +26 -> 63
+        //   40: getstatic 105	android/app/PendingIntent:CREATOR	Landroid/os/Parcelable$Creator;
+        //   43: aload_3
+        //   44: invokeinterface 111 2 0
+        //   49: checkcast 101	android/app/PendingIntent
+        //   52: astore_1
+        //   53: aload_3
+        //   54: invokevirtual 49	android/os/Parcel:recycle	()V
+        //   57: aload_2
+        //   58: invokevirtual 49	android/os/Parcel:recycle	()V
+        //   61: aload_1
+        //   62: areturn
+        //   63: aconst_null
+        //   64: astore_1
+        //   65: goto -12 -> 53
+        //   68: astore_1
+        //   69: aload_3
+        //   70: invokevirtual 49	android/os/Parcel:recycle	()V
+        //   73: aload_2
+        //   74: invokevirtual 49	android/os/Parcel:recycle	()V
+        //   77: aload_1
+        //   78: athrow
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	79	0	this	a
+        //   52	13	1	localPendingIntent	PendingIntent
+        //   68	10	1	localObject	Object
+        //   3	71	2	localParcel1	Parcel
+        //   7	63	3	localParcel2	Parcel
+        // Exception table:
+        //   from	to	target	type
+        //   8	53	68	finally
+      }
+      
+      /* Error */
+      public final ParcelableVolumeInfo eR()
       {
         // Byte code:
         //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -1205,10 +1285,10 @@ public abstract interface b
         //   33: aload_3
         //   34: invokevirtual 92	android/os/Parcel:readInt	()I
         //   37: ifeq +26 -> 63
-        //   40: getstatic 103	android/support/v4/media/session/ParcelableVolumeInfo:CREATOR	Landroid/os/Parcelable$Creator;
+        //   40: getstatic 116	android/support/v4/media/session/ParcelableVolumeInfo:CREATOR	Landroid/os/Parcelable$Creator;
         //   43: aload_3
-        //   44: invokeinterface 109 2 0
-        //   49: checkcast 99	android/support/v4/media/session/ParcelableVolumeInfo
+        //   44: invokeinterface 111 2 0
+        //   49: checkcast 115	android/support/v4/media/session/ParcelableVolumeInfo
         //   52: astore_1
         //   53: aload_3
         //   54: invokevirtual 49	android/os/Parcel:recycle	()V
@@ -1239,7 +1319,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final MediaMetadataCompat eB()
+      public final MediaMetadataCompat eS()
       {
         // Byte code:
         //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -1262,10 +1342,10 @@ public abstract interface b
         //   33: aload_3
         //   34: invokevirtual 92	android/os/Parcel:readInt	()I
         //   37: ifeq +26 -> 63
-        //   40: getstatic 114	android/support/v4/media/MediaMetadataCompat:CREATOR	Landroid/os/Parcelable$Creator;
+        //   40: getstatic 121	android/support/v4/media/MediaMetadataCompat:CREATOR	Landroid/os/Parcelable$Creator;
         //   43: aload_3
-        //   44: invokeinterface 109 2 0
-        //   49: checkcast 113	android/support/v4/media/MediaMetadataCompat
+        //   44: invokeinterface 111 2 0
+        //   49: checkcast 120	android/support/v4/media/MediaMetadataCompat
         //   52: astore_1
         //   53: aload_3
         //   54: invokevirtual 49	android/os/Parcel:recycle	()V
@@ -1296,7 +1376,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final PlaybackStateCompat eC()
+      public final PlaybackStateCompat eT()
       {
         // Byte code:
         //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -1319,10 +1399,10 @@ public abstract interface b
         //   33: aload_3
         //   34: invokevirtual 92	android/os/Parcel:readInt	()I
         //   37: ifeq +26 -> 63
-        //   40: getstatic 119	android/support/v4/media/session/PlaybackStateCompat:CREATOR	Landroid/os/Parcelable$Creator;
+        //   40: getstatic 126	android/support/v4/media/session/PlaybackStateCompat:CREATOR	Landroid/os/Parcelable$Creator;
         //   43: aload_3
-        //   44: invokeinterface 109 2 0
-        //   49: checkcast 118	android/support/v4/media/session/PlaybackStateCompat
+        //   44: invokeinterface 111 2 0
+        //   49: checkcast 125	android/support/v4/media/session/PlaybackStateCompat
         //   52: astore_1
         //   53: aload_3
         //   54: invokevirtual 49	android/os/Parcel:recycle	()V
@@ -1352,7 +1432,7 @@ public abstract interface b
         //   8	53	68	finally
       }
       
-      public final boolean eD()
+      public final boolean eU()
       {
         boolean bool = false;
         Parcel localParcel1 = Parcel.obtain();
@@ -1375,7 +1455,7 @@ public abstract interface b
         }
       }
       
-      public final boolean eE()
+      public final boolean eV()
       {
         boolean bool = false;
         Parcel localParcel1 = Parcel.obtain();
@@ -1398,7 +1478,7 @@ public abstract interface b
         }
       }
       
-      public final int eF()
+      public final int eW()
       {
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
@@ -1417,7 +1497,7 @@ public abstract interface b
         }
       }
       
-      public final void eG()
+      public final void eX()
       {
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
@@ -1433,86 +1513,6 @@ public abstract interface b
           localParcel2.recycle();
           localParcel1.recycle();
         }
-      }
-      
-      public final boolean ey()
-      {
-        boolean bool = false;
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-          this.mRemote.transact(5, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          if (i != 0) {
-            bool = true;
-          }
-          return bool;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-        }
-      }
-      
-      /* Error */
-      public final PendingIntent ez()
-      {
-        // Byte code:
-        //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   3: astore_2
-        //   4: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   7: astore_3
-        //   8: aload_2
-        //   9: ldc 29
-        //   11: invokevirtual 33	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   14: aload_0
-        //   15: getfield 18	android/support/v4/media/session/b$a$a:mRemote	Landroid/os/IBinder;
-        //   18: bipush 8
-        //   20: aload_2
-        //   21: aload_3
-        //   22: iconst_0
-        //   23: invokeinterface 43 5 0
-        //   28: pop
-        //   29: aload_3
-        //   30: invokevirtual 46	android/os/Parcel:readException	()V
-        //   33: aload_3
-        //   34: invokevirtual 92	android/os/Parcel:readInt	()I
-        //   37: ifeq +26 -> 63
-        //   40: getstatic 130	android/app/PendingIntent:CREATOR	Landroid/os/Parcelable$Creator;
-        //   43: aload_3
-        //   44: invokeinterface 109 2 0
-        //   49: checkcast 129	android/app/PendingIntent
-        //   52: astore_1
-        //   53: aload_3
-        //   54: invokevirtual 49	android/os/Parcel:recycle	()V
-        //   57: aload_2
-        //   58: invokevirtual 49	android/os/Parcel:recycle	()V
-        //   61: aload_1
-        //   62: areturn
-        //   63: aconst_null
-        //   64: astore_1
-        //   65: goto -12 -> 53
-        //   68: astore_1
-        //   69: aload_3
-        //   70: invokevirtual 49	android/os/Parcel:recycle	()V
-        //   73: aload_2
-        //   74: invokevirtual 49	android/os/Parcel:recycle	()V
-        //   77: aload_1
-        //   78: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	79	0	this	a
-        //   52	13	1	localPendingIntent	PendingIntent
-        //   68	10	1	localObject	Object
-        //   3	71	2	localParcel1	Parcel
-        //   7	63	3	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   8	53	68	finally
       }
       
       public final void fastForward()
@@ -1559,7 +1559,7 @@ public abstract interface b
         //   37: ifeq +26 -> 63
         //   40: getstatic 134	android/os/Bundle:CREATOR	Landroid/os/Parcelable$Creator;
         //   43: aload_3
-        //   44: invokeinterface 109 2 0
+        //   44: invokeinterface 111 2 0
         //   49: checkcast 69	android/os/Bundle
         //   52: astore_1
         //   53: aload_3
@@ -1673,7 +1673,7 @@ public abstract interface b
         //   37: ifeq +26 -> 63
         //   40: getstatic 162	android/text/TextUtils:CHAR_SEQUENCE_CREATOR	Landroid/os/Parcelable$Creator;
         //   43: aload_3
-        //   44: invokeinterface 109 2 0
+        //   44: invokeinterface 111 2 0
         //   49: checkcast 164	java/lang/CharSequence
         //   52: astore_1
         //   53: aload_3

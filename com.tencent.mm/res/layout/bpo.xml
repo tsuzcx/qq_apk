@@ -5,7 +5,7 @@
         <LinearLayout android:orientation="horizontal" android:id="@id/har" android:background="@drawable/au" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8">
             <com.tencent.mm.ui.widget.imageview.WeImageView android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ar" android:contentDescription="@string/ca" />
         </LinearLayout>
-        <com.tencent.mm.view.HardTouchableLayout android:layout_gravity="center" android:id="@id/huw" android:layout_width="0.0dip" android:layout_height="@dimen/cb" android:layout_weight="1.0" android:layout_marginStart="@dimen/cb">
+        <com.tencent.mm.view.HardTouchableLayout android:layout_gravity="center" android:id="@id/huw" android:layout_width="0.0dip" android:layout_height="@dimen/cb" android:layout_weight="1.0" android:layout_marginStart="@dimen/ca">
             <android.support.design.widget.TabLayout android:layout_gravity="center" android:id="@id/g3o" android:layout_width="wrap_content" android:layout_height="fill_parent" app:tabBackground="@color/a7c" app:tabGravity="ahg" app:tabIndicatorColor="@color/y4" app:tabIndicatorHeight="2.0dip" app:tabMode="c3p" app:tabPaddingEnd="0.0dip" app:tabPaddingStart="0.0dip" app:tabRippleColor="@color/a7c" app:tabSelectedTextColor="@color/y4" app:tabTextColor="@color/km" />
         </com.tencent.mm.view.HardTouchableLayout>
         <FrameLayout android:layout_width="@dimen/cb" android:layout_height="@dimen/cd">

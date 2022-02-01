@@ -1,73 +1,75 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.g.e;
-import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.protocal.protobuf.yo;
-import com.tencent.mm.protocal.protobuf.yp;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import java.util.Arrays;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/CompositionExporter;", "", "()V", "background", "", "getBackground", "()Z", "setBackground", "(Z)V", "calculateAba", "progressCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "progress", "", "retryCount", "", "getRetryCount", "()I", "setRetryCount", "(I)V", "videoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "export", "compositionInfo", "Lcom/tencent/mm/protocal/protobuf/CompositionInfo;", "callback", "setCalculateAdaptiveBitrate", "enable", "setProgressCallback", "Companion", "plugin-vlog_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/ABAResult;", "", "errCode", "", "width", "height", "bitrate", "abaParams", "", "(IIII[I)V", "getAbaParams", "()[I", "getBitrate", "()I", "getErrCode", "getHeight", "getWidth", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-vlog_release"})
 public final class a
 {
-  public static final a AmN;
-  private boolean AmL;
-  public d.g.a.b<? super Float, y> AmM;
-  public int retryCount = 1;
-  private VideoTransPara uKO;
-  public boolean uzZ = true;
+  final int bitrate;
+  final int errCode;
+  final int height;
+  final int[] sIH;
+  final int width;
   
-  static
+  public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(207499);
-    AmN = new a((byte)0);
-    AppMethodBeat.o(207499);
+    this.errCode = paramInt1;
+    this.width = paramInt2;
+    this.height = paramInt3;
+    this.bitrate = paramInt4;
+    this.sIH = paramArrayOfInt;
   }
   
-  public final void a(yo paramyo, d.g.a.b<? super Boolean, y> paramb)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(207498);
-    k.h(paramyo, "compositionInfo");
-    k.h(paramb, "callback");
-    yp localyp = paramyo.AmP;
-    r localr = c.a(paramyo);
-    localr.efD().AqO = true;
-    if ((this.AmL) && (this.uKO != null))
+    AppMethodBeat.i(195682);
+    if (this != paramObject)
     {
-      b localb = new b(localr);
-      Object localObject = this.uKO;
-      if (localObject == null) {
-        k.fOy();
+      if ((paramObject instanceof a))
+      {
+        paramObject = (a)paramObject;
+        if ((this.errCode != paramObject.errCode) || (this.width != paramObject.width) || (this.height != paramObject.height) || (this.bitrate != paramObject.bitrate) || (!p.i(this.sIH, paramObject.sIH))) {}
       }
-      localObject = localr.b((VideoTransPara)localObject, localyp.gNU, localyp.gNV);
-      k.g(localyp, "outputConfig");
-      localb.a((r.a)localObject, localyp);
     }
-    paramyo = c.b(paramyo);
-    localr.D((d.g.a.b)paramyo);
-    paramyo.start();
-    k.g(localyp, "outputConfig");
-    localr.a(localyp, (d.g.a.b)new a.b(this, paramyo, paramb), this.AmM);
-    AppMethodBeat.o(207498);
+    else
+    {
+      AppMethodBeat.o(195682);
+      return true;
+    }
+    AppMethodBeat.o(195682);
+    return false;
   }
   
-  public final void r(VideoTransPara paramVideoTransPara)
+  public final int hashCode()
   {
-    AppMethodBeat.i(207497);
-    k.h(paramVideoTransPara, "videoTransPara");
-    this.AmL = true;
-    this.uKO = paramVideoTransPara;
-    AppMethodBeat.o(207497);
+    AppMethodBeat.i(195681);
+    int j = this.errCode;
+    int k = this.width;
+    int m = this.height;
+    int n = this.bitrate;
+    int[] arrayOfInt = this.sIH;
+    if (arrayOfInt != null) {}
+    for (int i = Arrays.hashCode(arrayOfInt);; i = 0)
+    {
+      AppMethodBeat.o(195681);
+      return i + (((j * 31 + k) * 31 + m) * 31 + n) * 31;
+    }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/CompositionExporter$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
-  public static final class a {}
+  public final String toString()
+  {
+    AppMethodBeat.i(195680);
+    String str = "ABAResult(errCode=" + this.errCode + ", width=" + this.width + ", height=" + this.height + ", bitrate=" + this.bitrate + ", abaParams=" + Arrays.toString(this.sIH) + ")";
+    AppMethodBeat.o(195680);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.a
  * JD-Core Version:    0.7.0.1
  */

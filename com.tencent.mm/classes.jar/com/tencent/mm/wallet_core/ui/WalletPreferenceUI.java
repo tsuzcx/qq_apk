@@ -5,8 +5,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.al.n;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -26,7 +26,7 @@ public abstract class WalletPreferenceUI
   
   public abstract boolean e(int paramInt1, int paramInt2, String paramString, n paramn);
   
-  public final i fAS()
+  public final i fSc()
   {
     if (this.mNetSceneMgr == null) {
       this.mNetSceneMgr = new i(this, this);
@@ -43,7 +43,7 @@ public abstract class WalletPreferenceUI
     this.mNetSceneMgr.addSceneEndListener(385);
     this.mNetSceneMgr.addSceneEndListener(1518);
     if (getLayoutId() > 0) {
-      e.fAP();
+      e.fRZ();
     }
   }
   
@@ -60,7 +60,7 @@ public abstract class WalletPreferenceUI
     if ((!e(paramInt1, paramInt2, paramString, paramn)) && (paramInt2 != 0))
     {
       paramn = paramString;
-      if (bs.isNullOrNil(paramString)) {
+      if (bt.isNullOrNil(paramString)) {
         paramn = getString(2131765224);
       }
       h.a(this, paramn, null, false, new DialogInterface.OnClickListener()

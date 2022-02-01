@@ -6,27 +6,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d
 {
+  int bCT;
+  boolean bCU;
+  boolean bCV;
+  int bCW = -1;
+  int bCX = -1;
+  int bCY = -1;
+  int bCZ = -1;
+  int bDa = -1;
+  d bDb;
+  Layout.Alignment bDc;
   int backgroundColor;
-  int bsB;
-  boolean bsC;
-  boolean bsD;
-  int bsE = -1;
-  int bsF = -1;
-  int bsG = -1;
-  int bsH = -1;
-  int bsI = -1;
-  float bsJ;
-  d bsK;
-  Layout.Alignment bsL;
+  String fontFamily;
+  float fontSize;
   String id;
-  String jD;
   
-  public final d aU(boolean paramBoolean)
+  public final d aV(boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(92858);
     boolean bool;
-    if (this.bsK == null)
+    if (this.bDb == null)
     {
       bool = true;
       a.checkState(bool);
@@ -36,7 +36,7 @@ final class d
     }
     for (;;)
     {
-      this.bsE = i;
+      this.bCW = i;
       AppMethodBeat.o(92858);
       return this;
       bool = false;
@@ -46,12 +46,12 @@ final class d
     }
   }
   
-  public final d aV(boolean paramBoolean)
+  public final d aW(boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(92859);
     boolean bool;
-    if (this.bsK == null)
+    if (this.bDb == null)
     {
       bool = true;
       a.checkState(bool);
@@ -61,7 +61,7 @@ final class d
     }
     for (;;)
     {
-      this.bsF = i;
+      this.bCX = i;
       AppMethodBeat.o(92859);
       return this;
       bool = false;
@@ -76,71 +76,71 @@ final class d
     AppMethodBeat.i(92861);
     if (paramd != null)
     {
-      if ((!this.bsC) && (paramd.bsC)) {
-        eP(paramd.bsB);
+      if ((!this.bCU) && (paramd.bCU)) {
+        eT(paramd.bCT);
       }
-      if (this.bsG == -1) {
-        this.bsG = paramd.bsG;
+      if (this.bCY == -1) {
+        this.bCY = paramd.bCY;
       }
-      if (this.bsH == -1) {
-        this.bsH = paramd.bsH;
+      if (this.bCZ == -1) {
+        this.bCZ = paramd.bCZ;
       }
-      if (this.jD == null) {
-        this.jD = paramd.jD;
+      if (this.fontFamily == null) {
+        this.fontFamily = paramd.fontFamily;
       }
-      if (this.bsE == -1) {
-        this.bsE = paramd.bsE;
+      if (this.bCW == -1) {
+        this.bCW = paramd.bCW;
       }
-      if (this.bsF == -1) {
-        this.bsF = paramd.bsF;
+      if (this.bCX == -1) {
+        this.bCX = paramd.bCX;
       }
-      if (this.bsL == null) {
-        this.bsL = paramd.bsL;
+      if (this.bDc == null) {
+        this.bDc = paramd.bDc;
       }
-      if (this.bsI == -1)
+      if (this.bDa == -1)
       {
-        this.bsI = paramd.bsI;
-        this.bsJ = paramd.bsJ;
+        this.bDa = paramd.bDa;
+        this.fontSize = paramd.fontSize;
       }
-      if ((!this.bsD) && (paramd.bsD)) {
-        eQ(paramd.backgroundColor);
+      if ((!this.bCV) && (paramd.bCV)) {
+        eU(paramd.backgroundColor);
       }
     }
     AppMethodBeat.o(92861);
     return this;
   }
   
-  public final d eP(int paramInt)
+  public final d eT(int paramInt)
   {
     AppMethodBeat.i(92860);
-    if (this.bsK == null) {}
+    if (this.bDb == null) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.bsB = paramInt;
-      this.bsC = true;
+      this.bCT = paramInt;
+      this.bCU = true;
       AppMethodBeat.o(92860);
       return this;
     }
   }
   
-  public final d eQ(int paramInt)
+  public final d eU(int paramInt)
   {
     this.backgroundColor = paramInt;
-    this.bsD = true;
+    this.bCV = true;
     return this;
   }
   
   public final int getStyle()
   {
     int j = 0;
-    if ((this.bsG == -1) && (this.bsH == -1)) {
+    if ((this.bCY == -1) && (this.bCZ == -1)) {
       return -1;
     }
-    if (this.bsG == 1) {}
+    if (this.bCY == 1) {}
     for (int i = 1;; i = 0)
     {
-      if (this.bsH == 1) {
+      if (this.bCZ == 1) {
         j = 2;
       }
       return i | j;
@@ -149,7 +149,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.f.e.d
  * JD-Core Version:    0.7.0.1
  */

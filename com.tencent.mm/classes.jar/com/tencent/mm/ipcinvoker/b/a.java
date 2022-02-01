@@ -8,7 +8,7 @@ public abstract interface a
 {
   public abstract void a(Bundle paramBundle, String paramString, b paramb);
   
-  public abstract Bundle f(Bundle paramBundle, String paramString);
+  public abstract Bundle e(Bundle paramBundle, String paramString);
 }
 
 

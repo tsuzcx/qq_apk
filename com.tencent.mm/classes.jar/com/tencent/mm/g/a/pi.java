@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class pi
   extends b
 {
-  public a dsj;
-  
   public pi()
   {
     this((byte)0);
@@ -15,16 +12,8 @@ public final class pi
   
   private pi(byte paramByte)
   {
-    AppMethodBeat.i(104420);
-    this.dsj = new a();
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(104420);
-  }
-  
-  public static final class a
-  {
-    public String dcO;
   }
 }
 

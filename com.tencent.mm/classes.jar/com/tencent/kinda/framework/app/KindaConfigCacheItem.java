@@ -3,11 +3,11 @@ package com.tencent.kinda.framework.app;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dk;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.sdk.e.c.a;
 
 public class KindaConfigCacheItem
-  extends dk
+  extends du
 {
   private static final String TAG = "MicroMsg.KindaConfigCacheItem";
   public static final int TYPE_BOOLEAN = 4;
@@ -22,7 +22,7 @@ public class KindaConfigCacheItem
   static
   {
     AppMethodBeat.i(18392);
-    info = dk.initAutoDBInfo(dk.class);
+    info = du.initAutoDBInfo(du.class);
     AppMethodBeat.o(18392);
   }
   

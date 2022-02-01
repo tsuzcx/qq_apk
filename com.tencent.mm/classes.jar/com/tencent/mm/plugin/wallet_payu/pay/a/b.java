@@ -11,7 +11,7 @@ public final class b
   extends a
 {
   private String mReqKey;
-  public Orders wSu;
+  public Orders ygb;
   
   public b(String paramString)
   {
@@ -21,7 +21,7 @@ public final class b
   private b(String paramString, byte paramByte)
   {
     AppMethodBeat.i(163874);
-    this.wSu = null;
+    this.ygb = null;
     this.mReqKey = null;
     this.mReqKey = paramString;
     paramString = new HashMap();
@@ -31,7 +31,7 @@ public final class b
     AppMethodBeat.o(163874);
   }
   
-  public final int eqK()
+  public final int eEK()
   {
     return 8;
   }
@@ -39,9 +39,9 @@ public final class b
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72085);
-    this.wSu = Orders.aQ(paramJSONObject);
-    if (this.wSu != null) {
-      this.wSu.dac = this.mReqKey;
+    this.ygb = Orders.aY(paramJSONObject);
+    if (this.ygb != null) {
+      this.ygb.dlu = this.mReqKey;
     }
     AppMethodBeat.o(72085);
   }

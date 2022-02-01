@@ -1,27 +1,27 @@
 package com.tencent.mm.openim.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cao;
+import com.tencent.mm.protocal.protobuf.cff;
 
 public final class h
   extends i
 {
-  cao ioI;
+  cff iIf;
   
   public h(String paramString, int paramInt)
   {
     super(5);
     AppMethodBeat.i(151272);
-    this.ioI = new cao();
-    this.ioI.iod = paramString;
-    this.ioI.Fpo = paramInt;
-    this.uHj = this.ioI;
+    this.iIf = new cff();
+    this.iIf.iHA = paramString;
+    this.iIf.GYZ = paramInt;
+    this.vKm = this.iIf;
     AppMethodBeat.o(151272);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.d.h
  * JD-Core Version:    0.7.0.1
  */

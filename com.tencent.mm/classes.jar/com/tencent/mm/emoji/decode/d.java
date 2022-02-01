@@ -3,20 +3,20 @@ package com.tencent.mm.emoji.decode;
 import android.graphics.Bitmap;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "Landroid/graphics/Bitmap;", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "Landroid/graphics/Bitmap;", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"})
 public abstract interface d
 {
-  public abstract void abQ();
+  public abstract void aeu();
   
-  public abstract Bitmap abR();
+  public abstract Bitmap aev();
   
-  public abstract int abS();
+  public abstract int aew();
   
-  public abstract int abT();
+  public abstract int aex();
   
-  public abstract int abU();
+  public abstract int aey();
   
-  public abstract int abV();
+  public abstract int aez();
   
   public abstract void destroy();
   

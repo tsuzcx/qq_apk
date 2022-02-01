@@ -1,94 +1,141 @@
 package com.tencent.mm.plugin.finder.model;
 
-import android.text.SpannableString;
+import android.arch.lifecycle.ViewModelProvider;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.feed.model.internal.h;
-import com.tencent.mm.plugin.finder.storage.t;
-import com.tencent.mm.plugin.finder.utils.n;
-import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.air;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.view.recyclerview.a;
-import d.g.b.k;
+import com.tencent.mm.g.a.he;
+import com.tencent.mm.g.b.a.ak;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.finder.event.a.b;
+import com.tencent.mm.plugin.finder.report.h;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.upload.action.c;
+import com.tencent.mm.plugin.finder.utils.o;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.aqy;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.MMActivity;
+import d.g.b.p;
+import d.n.n;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "commentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;)V", "blink", "", "getBlink", "()Z", "setBlink", "(Z)V", "getCommentObj", "()Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "setCommentObj", "contentCollapse", "getContentCollapse", "setContentCollapse", "hasBlink", "getHasBlink", "setHasBlink", "isAutoExpand", "setAutoExpand", "isFriendComment", "setFriendComment", "remainLevel2Comment", "", "getRemainLevel2Comment", "()I", "setRemainLevel2Comment", "(I)V", "replyContentCollapse", "getReplyContentCollapse", "setReplyContentCollapse", "replyText", "Landroid/text/SpannableString;", "getReplyText", "()Landroid/text/SpannableString;", "setReplyText", "(Landroid/text/SpannableString;)V", "compare", "obj", "getItemId", "", "getItemType", "Companion", "plugin-finder_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/model/FinderFavLogic;", "", "()V", "TAG", "", "favFeed", "", "context", "Lcom/tencent/mm/ui/MMActivity;", "finderObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isFav", "", "scene", "", "plugin-finder_release"})
 public final class l
-  implements h, a
 {
-  private static final int ruP = 1;
-  private static final int ruQ = 2;
-  public static final l.a ruR;
-  public boolean ruG;
-  public SpannableString ruH;
-  public boolean ruI;
-  public boolean ruJ;
-  public boolean ruK;
-  public boolean ruL;
-  public int ruM;
-  public boolean ruN;
-  public t ruO;
+  private static final String TAG = "Finder.FinderFavLogic";
+  public static final l sjY;
   
   static
   {
-    AppMethodBeat.i(178313);
-    ruR = new l.a((byte)0);
-    ruP = 1;
-    ruQ = 2;
-    AppMethodBeat.o(178313);
+    AppMethodBeat.i(202951);
+    sjY = new l();
+    TAG = "Finder.FinderFavLogic";
+    AppMethodBeat.o(202951);
   }
   
-  public l(t paramt)
+  public static void a(MMActivity paramMMActivity, FinderItem paramFinderItem, boolean paramBoolean)
   {
-    AppMethodBeat.i(166383);
-    this.ruO = paramt;
-    if (!bs.isNullOrNil(this.ruO.getUsername()))
+    AppMethodBeat.i(202950);
+    p.h(paramMMActivity, "context");
+    p.h(paramFinderItem, "finderObject");
+    ad.i(TAG, "favFeed, id:" + paramFinderItem.getId() + ", pf:" + paramFinderItem.getFeedObject().permissionFlag);
+    Object localObject = com.tencent.mm.ui.component.a.KiD;
+    aqy localaqy = ((FinderReporterUIC)com.tencent.mm.ui.component.a.s(paramMMActivity).get(FinderReporterUIC.class)).cOu();
+    label137:
+    long l1;
+    if (paramBoolean)
     {
-      paramt = n.rPN;
-      if ((!n.aeE(this.ruO.getUsername())) && (!((PluginFinder)g.ad(PluginFinder.class)).isFriend(this.ruO.getUsername()))) {}
+      localObject = com.tencent.mm.ui.component.a.KiD;
+      paramMMActivity = FinderReporterUIC.b((FinderReporterUIC)com.tencent.mm.ui.component.a.s(paramMMActivity).get(FinderReporterUIC.class));
+      if (paramMMActivity != null) {
+        paramMMActivity.cze().vV(paramFinderItem.getId());
+      }
+      paramMMActivity = h.soM;
+      long l2 = paramFinderItem.getId();
+      if (!paramBoolean) {
+        break label550;
+      }
+      i = 2;
+      p.h(localaqy, "contextObj");
+      paramMMActivity = h.ws(l2);
+      if (paramMMActivity != null)
+      {
+        ak localak = new ak();
+        localak.hs(localaqy.sessionId);
+        localak.ht("");
+        localak.hu(h.wu(l2));
+        localak.hv(paramMMActivity.getUserName());
+        localak.cN(5L);
+        localak.cO(i);
+        localak.cP(0L);
+        localak.hw("");
+        localak.cQ(2L);
+        localak.cR(paramMMActivity.getLikeCount());
+        localak.cS(paramMMActivity.getCommentCount());
+        localak.cT(paramMMActivity.getFriendLikeCount());
+        localak.cU(paramMMActivity.getMediaType());
+        localObject = o.sMi;
+        localak.hx(n.h(o.p(paramMMActivity), ",", ";", false));
+        localak.hy("");
+        localak.cV(localaqy.rTD);
+        if (!p.i(paramMMActivity.getUserName(), u.aAu())) {
+          break label555;
+        }
+        l1 = 1L;
+        label347:
+        localak.cW(l1);
+        localObject = localaqy.qXu;
+        paramMMActivity = (MMActivity)localObject;
+        if (localObject == null) {
+          paramMMActivity = "";
+        }
+        localak.hz(paramMMActivity);
+        localObject = localaqy.qXj;
+        paramMMActivity = (MMActivity)localObject;
+        if (localObject == null) {
+          paramMMActivity = "";
+        }
+        localak.hA(paramMMActivity);
+        localak.hB(h.I(l2, localaqy.rTD));
+        localak.aLk();
+        h.a((com.tencent.mm.plugin.report.a)localak);
+      }
+      paramMMActivity = c.sJS;
+      c.a(c.cKT(), paramFinderItem, paramBoolean, localaqy);
+      paramMMActivity = new he();
+      paramMMActivity.dtz.id = paramFinderItem.getId();
+      paramFinderItem = paramMMActivity.dtz;
+      if (!paramBoolean) {
+        break label561;
+      }
     }
-    for (boolean bool = true;; bool = false)
+    label550:
+    label555:
+    label561:
+    for (int i = 1;; i = 2)
     {
-      this.ruG = bool;
-      this.ruI = true;
-      this.ruJ = true;
-      this.ruM = this.ruO.field_actionInfo.EDq.expandCommentCount;
-      AppMethodBeat.o(166383);
+      paramFinderItem.dtA = i;
+      paramMMActivity.dtz.type = 5;
+      com.tencent.mm.sdk.b.a.IbL.l((b)paramMMActivity);
+      AppMethodBeat.o(202950);
       return;
+      localObject = com.tencent.mm.ui.component.a.KiD;
+      paramMMActivity = FinderReporterUIC.b((FinderReporterUIC)com.tencent.mm.ui.component.a.s(paramMMActivity).get(FinderReporterUIC.class));
+      if (paramMMActivity == null) {
+        break;
+      }
+      paramMMActivity.cze().vW(paramFinderItem.getId());
+      break;
+      i = 1;
+      break label137;
+      l1 = 0L;
+      break label347;
     }
-  }
-  
-  public final int a(h paramh)
-  {
-    AppMethodBeat.i(166382);
-    k.h(paramh, "obj");
-    AppMethodBeat.o(166382);
-    return 0;
-  }
-  
-  public final int bTF()
-  {
-    AppMethodBeat.i(166381);
-    if (this.ruO.field_actionInfo.qXu == 0L)
-    {
-      i = ruP;
-      AppMethodBeat.o(166381);
-      return i;
-    }
-    int i = ruQ;
-    AppMethodBeat.o(166381);
-    return i;
-  }
-  
-  public final long lx()
-  {
-    return this.ruO.field_actionInfo.EDq.commentId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.l
  * JD-Core Version:    0.7.0.1
  */

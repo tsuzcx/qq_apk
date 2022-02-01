@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static a klY;
+  public static a kGY;
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(144653);
-    if (klY != null)
+    if (kGY != null)
     {
       String.format(paramString2, paramVarArgs);
-      klY.e(paramString1, paramString2, paramVarArgs);
+      kGY.e(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(144653);
   }
@@ -20,10 +20,10 @@ public final class a
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(144655);
-    if (klY != null)
+    if (kGY != null)
     {
       String.format(paramString2, paramVarArgs);
-      klY.i(paramString1, paramString2, paramVarArgs);
+      kGY.i(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(144655);
   }
@@ -31,10 +31,10 @@ public final class a
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(144654);
-    if (klY != null)
+    if (kGY != null)
     {
       String.format(paramString2, paramVarArgs);
-      klY.w(paramString1, paramString2, paramVarArgs);
+      kGY.w(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(144654);
   }
@@ -50,7 +50,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a
  * JD-Core Version:    0.7.0.1
  */

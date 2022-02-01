@@ -6,59 +6,59 @@ import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.ry;
-import com.tencent.mm.protocal.protobuf.yg;
+import com.tencent.mm.protocal.protobuf.aaf;
+import com.tencent.mm.protocal.protobuf.ts;
 import java.util.LinkedList;
 
 public final class c
   extends a
 {
-  protected TextView omK;
-  protected TextView omL;
+  protected TextView oQf;
+  protected TextView oQg;
   
   public c(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void H(boolean paramBoolean1, boolean paramBoolean2) {}
+  public final void I(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected final void bUd()
+  protected final void bYI()
   {
     AppMethodBeat.i(113902);
-    this.omL = ((TextView)bUc().findViewById(2131297733));
-    this.omK = ((TextView)bUc().findViewById(2131297902));
+    this.oQg = ((TextView)bYH().findViewById(2131297733));
+    this.oQf = ((TextView)bYH().findViewById(2131297902));
     AppMethodBeat.o(113902);
   }
   
-  protected final void bUe()
+  protected final void bYJ()
   {
     AppMethodBeat.i(113903);
-    if ((this.nTp.bPi().Ekq != null) && (this.nTp.bPi().Ekq.size() > 0))
+    if ((this.owK.bTN().FRz != null) && (this.owK.bTN().FRz.size() > 0))
     {
-      yg localyg = (yg)this.nTp.bPi().Ekq.get(0);
-      if (this.mmb != null) {
-        this.mmb.setText(localyg.title);
+      aaf localaaf = (aaf)this.owK.bTN().FRz.get(0);
+      if (this.mMD != null) {
+        this.mMD.setText(localaaf.title);
       }
-      if (this.omK != null)
+      if (this.oQf != null)
       {
-        if (TextUtils.isEmpty(localyg.nUs)) {
+        if (TextUtils.isEmpty(localaaf.oxN)) {
           break label138;
         }
-        this.omK.setText(localyg.nUs);
+        this.oQf.setText(localaaf.oxN);
       }
-      while (this.omL != null) {
-        if (!TextUtils.isEmpty(localyg.nUt))
+      while (this.oQg != null) {
+        if (!TextUtils.isEmpty(localaaf.oxO))
         {
-          this.omL.setText(localyg.nUt);
+          this.oQg.setText(localaaf.oxO);
           AppMethodBeat.o(113903);
           return;
           label138:
-          this.omK.setVisibility(8);
+          this.oQf.setVisibility(8);
         }
         else
         {
-          this.omL.setVisibility(8);
+          this.oQg.setVisibility(8);
         }
       }
     }
@@ -67,7 +67,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.c
  * JD-Core Version:    0.7.0.1
  */

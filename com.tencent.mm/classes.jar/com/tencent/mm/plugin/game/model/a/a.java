@@ -4,16 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class a
 {
-  public static a cRd()
+  public static a cZJ()
   {
     AppMethodBeat.i(41660);
     Object localObject = new IntentFilter("android.intent.action.BATTERY_CHANGED");
-    Intent localIntent = ai.getContext().registerReceiver(null, (IntentFilter)localObject);
+    Intent localIntent = aj.getContext().registerReceiver(null, (IntentFilter)localObject);
     localObject = new a();
     if (localIntent != null) {}
     for (;;)
@@ -32,15 +32,15 @@ public final class a
       {
         int i;
         int j;
-        ac.e("MicroMsg.BatteryHelper", "err:%s", new Object[] { localException.getMessage() });
+        ad.e("MicroMsg.BatteryHelper", "err:%s", new Object[] { localException.getMessage() });
         continue;
         boolean bool = true;
         continue;
       }
-      ((a)localObject).mpg = bool;
+      ((a)localObject).mPL = bool;
       i = localIntent.getIntExtra("level", -1);
       j = localIntent.getIntExtra("scale", -1);
-      ((a)localObject).tgT = (i / j);
+      ((a)localObject).ueK = (i / j);
       AppMethodBeat.o(41660);
       return localObject;
       bool = false;
@@ -49,8 +49,8 @@ public final class a
   
   public static final class a
   {
-    boolean mpg = false;
-    float tgT = 0.0F;
+    boolean mPL = false;
+    float ueK = 0.0F;
   }
 }
 

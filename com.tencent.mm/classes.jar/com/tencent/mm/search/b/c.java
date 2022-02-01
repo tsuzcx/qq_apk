@@ -2,27 +2,27 @@ package com.tencent.mm.search.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.a.a.ac;
 import com.tencent.mm.emoji.a.a.h;
-import com.tencent.mm.emoji.a.a.y;
 import com.tencent.mm.emoji.panel.a.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.search.c.a;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.f;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/search/logic/SosSimilarEmojiPanelClickListener;", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelClickListener;", "scene", "", "(I)V", "onClick", "", "context", "Landroid/content/Context;", "position", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Companion", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/search/logic/SosSimilarEmojiPanelClickListener;", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelClickListener;", "scene", "", "(I)V", "onClick", "", "context", "Landroid/content/Context;", "position", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Companion", "plugin-emojisdk_release"})
 public final class c
   extends d
 {
-  public static final c.a Gww;
+  public static final c.a Iiq;
   
   static
   {
     AppMethodBeat.i(105840);
-    Gww = new c.a((byte)0);
+    Iiq = new c.a((byte)0);
     AppMethodBeat.o(105840);
   }
   
@@ -31,32 +31,32 @@ public final class c
     super(paramInt);
   }
   
-  public final void a(Context paramContext, int paramInt, y paramy)
+  public final void a(Context paramContext, int paramInt, ac paramac)
   {
     AppMethodBeat.i(105839);
-    k.h(paramContext, "context");
-    if (paramy == null)
+    p.h(paramContext, "context");
+    if (paramac == null)
     {
       AppMethodBeat.o(105839);
       return;
     }
-    ac.i("MicroMsg.SimilarEmoji", "onClick: " + paramInt + ", " + ((h)paramy).fPB.field_md5);
-    switch (((h)paramy).fRp)
+    ad.i("MicroMsg.SimilarEmoji", "onClick: " + paramInt + ", " + ((h)paramac).gjb.field_md5);
+    switch (((h)paramac).gkP)
     {
     default: 
       AppMethodBeat.o(105839);
       return;
     }
-    paramContext = a.Gwx;
-    a.eWV();
-    paramContext = ((h)paramy).fPB;
-    paramy = az.faZ();
-    k.g(paramy, "EmojiStorageMgr.getInstance()");
-    if (paramy.bEN().aOT(paramContext.field_md5) == null)
+    paramContext = a.Iir;
+    a.fmF();
+    paramContext = ((h)paramac).gjb;
+    paramac = bd.frc();
+    p.g(paramac, "EmojiStorageMgr.getInstance()");
+    if (paramac.bIW().aUK(paramContext.field_md5) == null)
     {
-      paramy = az.faZ();
-      k.g(paramy, "EmojiStorageMgr.getInstance()");
-      paramy.bEN().K(paramContext);
+      paramac = bd.frc();
+      p.g(paramac, "EmojiStorageMgr.getInstance()");
+      paramac.bIW().J(paramContext);
     }
     AppMethodBeat.o(105839);
   }

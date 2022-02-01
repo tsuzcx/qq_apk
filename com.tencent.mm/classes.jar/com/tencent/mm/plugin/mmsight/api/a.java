@@ -4,13 +4,18 @@ import android.graphics.Bitmap;
 
 public abstract class a
 {
-  public static b uJL = null;
+  public static b vMR = null;
   
-  public abstract int arc();
+  public abstract int atP();
   
   public abstract int getType();
   
   public abstract void y(Bitmap paramBitmap);
+  
+  public static abstract interface a
+  {
+    public abstract Bitmap dmF();
+  }
   
   public static abstract interface b
   {
@@ -25,7 +30,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.api.a
  * JD-Core Version:    0.7.0.1
  */

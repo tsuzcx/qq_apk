@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public String DOw;
   public int errorCode;
+  public String yWM;
   
   public c(String paramString, int paramInt)
   {
-    this.DOw = paramString;
+    this.yWM = paramString;
     this.errorCode = paramInt;
   }
   
-  public static c aeg(int paramInt)
+  public static c agG(int paramInt)
   {
     AppMethodBeat.i(138432);
     c localc = new c("", paramInt);

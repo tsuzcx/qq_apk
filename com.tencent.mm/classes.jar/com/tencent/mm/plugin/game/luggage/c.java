@@ -1,53 +1,44 @@
 package com.tencent.mm.plugin.game.luggage;
 
-import android.os.Bundle;
+import android.os.Build.VERSION;
+import android.webkit.WebResourceResponse;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.plugin.game.luggage.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import org.json.JSONArray;
+import com.tencent.mm.plugin.game.luggage.f.f;
+import com.tencent.mm.plugin.wepkg.d;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
-  implements a
+  implements com.tencent.luggage.webview.a.c
 {
-  private static void agU(String paramString)
+  private f tTm;
+  
+  public c(f paramf)
   {
-    AppMethodBeat.i(82990);
-    ac.i("MicroMsg.LuggageGameService", "clearGameCache key:%s", new Object[] { paramString });
-    JSONArray localJSONArray = new JSONArray();
-    localJSONArray.put(paramString);
-    com.tencent.mm.plugin.webview.b.b.eze().b("wx62d9035fd4fd2059", localJSONArray);
-    AppMethodBeat.o(82990);
+    this.tTm = paramf;
   }
   
-  public final String agS(String paramString)
+  public final String Fw()
   {
-    AppMethodBeat.i(82988);
-    com.tencent.mm.plugin.webview.b.b.eze();
-    paramString = com.tencent.mm.plugin.webview.b.b.aBd(paramString);
-    AppMethodBeat.o(82988);
+    return "weixin://game.js";
+  }
+  
+  public final WebResourceResponse cF(String paramString)
+  {
+    boolean bool = false;
+    AppMethodBeat.i(82986);
+    ad.i("MicroMsg.LuggageGameJsResourceProvider", "onResourceRequest, url = %s", new Object[] { paramString });
+    if (Build.VERSION.SDK_INT < 21)
+    {
+      AppMethodBeat.o(82986);
+      return null;
+    }
+    if (this.tTm.getWePkgPlugin() != null) {
+      bool = this.tTm.getWePkgPlugin().EDm;
+    }
+    paramString = a.mX(bool);
+    AppMethodBeat.o(82986);
     return paramString;
   }
-  
-  public final boolean agT(String paramString)
-  {
-    AppMethodBeat.i(82989);
-    if (ai.cin()) {
-      agU(paramString);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(82989);
-      return false;
-      h.a("com.tencent.mm", new IPCString(paramString), a.class, null);
-    }
-  }
-  
-  static class a
-    implements com.tencent.mm.ipcinvoker.b<IPCString, Bundle>
-  {}
 }
 
 

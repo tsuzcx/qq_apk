@@ -3,29 +3,46 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class cw
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eMA = "queryState".hashCode();
-  private static final int eMy;
-  private static final int eMz;
-  private static final int ewj = "chatroomname".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS GameLifeSessionInfo_sessionId_index ON GameLifeSessionInfo(sessionId)", "CREATE INDEX IF NOT EXISTS GameLifeSessionInfo_talker_index ON GameLifeSessionInfo(talker)", "CREATE INDEX IF NOT EXISTS GameLifeSessionInfo_selfUsername_index ON GameLifeSessionInfo(selfUserName)" };
+  private static final int eLf = "talker".hashCode();
+  private static final int eVL = "sessionId".hashCode();
+  private static final int fcB = "selfUserName".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eMv = true;
-  private boolean eMw = true;
-  private boolean eMx = true;
-  private boolean evK = true;
-  public String field_chatroomname;
-  public int field_queryState;
-  public String field_recentUseToolList;
-  public String field_stickToollist;
+  private boolean eKS = true;
+  private boolean eVx = true;
+  private boolean fcz = true;
+  public String field_selfUserName;
+  public String field_sessionId;
+  public String field_talker;
   
-  static
+  public static c.a Vv()
   {
-    eMy = "stickToollist".hashCode();
-    eMz = "recentUseToolList".hashCode();
+    c.a locala = new c.a();
+    locala.IhA = new Field[3];
+    locala.columns = new String[4];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "sessionId";
+    locala.IhC.put("sessionId", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" sessionId TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IhB = "sessionId";
+    locala.columns[1] = "talker";
+    locala.IhC.put("talker", "TEXT default '' ");
+    localStringBuilder.append(" talker TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "selfUserName";
+    locala.IhC.put("selfUserName", "TEXT default '' ");
+    localStringBuilder.append(" selfUserName TEXT default '' ");
+    locala.columns[3] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -41,11 +58,11 @@ public abstract class cw
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ewj != k) {
+      if (eVL != k) {
         break label65;
       }
-      this.field_chatroomname = paramCursor.getString(i);
-      this.evK = true;
+      this.field_sessionId = paramCursor.getString(i);
+      this.eVx = true;
     }
     for (;;)
     {
@@ -53,12 +70,10 @@ public abstract class cw
       break label20;
       break;
       label65:
-      if (eMy == k) {
-        this.field_stickToollist = paramCursor.getString(i);
-      } else if (eMz == k) {
-        this.field_recentUseToolList = paramCursor.getString(i);
-      } else if (eMA == k) {
-        this.field_queryState = paramCursor.getInt(i);
+      if (eLf == k) {
+        this.field_talker = paramCursor.getString(i);
+      } else if (fcB == k) {
+        this.field_selfUserName = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -68,20 +83,23 @@ public abstract class cw
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.field_chatroomname == null) {
-      this.field_chatroomname = "群username";
+    if (this.field_sessionId == null) {
+      this.field_sessionId = "";
     }
-    if (this.evK) {
-      localContentValues.put("chatroomname", this.field_chatroomname);
+    if (this.eVx) {
+      localContentValues.put("sessionId", this.field_sessionId);
     }
-    if (this.eMv) {
-      localContentValues.put("stickToollist", this.field_stickToollist);
+    if (this.field_talker == null) {
+      this.field_talker = "";
     }
-    if (this.eMw) {
-      localContentValues.put("recentUseToolList", this.field_recentUseToolList);
+    if (this.eKS) {
+      localContentValues.put("talker", this.field_talker);
     }
-    if (this.eMx) {
-      localContentValues.put("queryState", Integer.valueOf(this.field_queryState));
+    if (this.field_selfUserName == null) {
+      this.field_selfUserName = "";
+    }
+    if (this.fcz) {
+      localContentValues.put("selfUserName", this.field_selfUserName);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -91,7 +109,7 @@ public abstract class cw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.cw
  * JD-Core Version:    0.7.0.1
  */

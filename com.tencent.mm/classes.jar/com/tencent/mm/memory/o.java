@@ -6,19 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class o
   extends e<Bitmap, b>
 {
-  public static o heJ;
+  public static o hwR;
   
   static
   {
     AppMethodBeat.i(156463);
-    heJ = new o();
+    hwR = new o();
     AppMethodBeat.o(156463);
   }
   
   private static Bitmap b(b paramb)
   {
     AppMethodBeat.i(156456);
-    paramb = Bitmap.createBitmap(paramb.width, paramb.height, k.hew);
+    paramb = Bitmap.createBitmap(paramb.width, paramb.height, k.hwE);
     AppMethodBeat.o(156456);
     return paramb;
   }
@@ -45,12 +45,12 @@ public final class o
     finally {}
   }
   
-  protected final long avH()
+  protected final long ayu()
   {
     return 1228800L;
   }
   
-  protected final long avI()
+  protected final long ayv()
   {
     return 307200L;
   }
@@ -61,7 +61,7 @@ public final class o
     {
       AppMethodBeat.i(156455);
       if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-        super.bJ(paramBitmap);
+        super.bL(paramBitmap);
       }
       AppMethodBeat.o(156455);
       return;
@@ -81,8 +81,8 @@ public final class o
   public static final class b
     implements Comparable
   {
-    private String heK;
     public int height;
+    private String hwS;
     public int width;
     
     public b(int paramInt1, int paramInt2)
@@ -90,7 +90,7 @@ public final class o
       AppMethodBeat.i(156453);
       this.width = paramInt1;
       this.height = paramInt2;
-      this.heK = String.format("SightBitmapSize: [%s, %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      this.hwS = String.format("SightBitmapSize: [%s, %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       AppMethodBeat.o(156453);
     }
     
@@ -115,7 +115,7 @@ public final class o
     
     public final String toString()
     {
-      return this.heK;
+      return this.hwS;
     }
   }
 }

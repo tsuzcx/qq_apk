@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.game.api;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.game.model.b;
-import com.tencent.mm.plugin.game.model.r;
+import org.json.JSONArray;
 
 public abstract interface d
   extends a
 {
-  public abstract b cOk();
+  public abstract String a(int paramInt1, int paramInt2, JSONArray paramJSONArray, String paramString, boolean paramBoolean);
   
-  public abstract r cOl();
+  public abstract String alk(String paramString);
+  
+  public abstract JSONArray b(JSONArray paramJSONArray, boolean paramBoolean);
+  
+  public abstract void c(JSONArray paramJSONArray, boolean paramBoolean);
 }
 
 

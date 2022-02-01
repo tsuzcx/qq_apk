@@ -1,61 +1,69 @@
 package com.tencent.mm.plugin.appbrand.l;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.handoff.model.HandOffMG;
-import com.tencent.mm.plugin.handoff.model.HandOffMP;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
-import d.l;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.LinkedList;
+import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/handoff/HandOffUtils;", "", "()V", "obtainHandOffModel", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "handOffType", "", "plugin-appbrand-integration_release"})
-public final class a
+final class a
 {
-  public static final a jUo;
+  static final String[] koE;
   
   static
   {
-    AppMethodBeat.i(175133);
-    jUo = new a();
-    AppMethodBeat.o(175133);
+    AppMethodBeat.i(138799);
+    LinkedList localLinkedList = new LinkedList();
+    Field[] arrayOfField = android.support.e.a.class.getDeclaredFields();
+    int j = arrayOfField.length;
+    int i = 0;
+    for (;;)
+    {
+      Field localField;
+      if (i < j) {
+        localField = arrayOfField[i];
+      }
+      try
+      {
+        if ((Modifier.isFinal(localField.getModifiers())) && (Modifier.isStatic(localField.getModifiers())) && (localField.getName().startsWith("TAG_"))) {
+          localLinkedList.add((String)localField.get(null));
+        }
+        label85:
+        i += 1;
+        continue;
+        koE = (String[])localLinkedList.toArray(new String[localLinkedList.size()]);
+        AppMethodBeat.o(138799);
+        return;
+      }
+      catch (Exception localException)
+      {
+        break label85;
+      }
+    }
   }
   
-  public static final HandOffMP C(o paramo)
+  static void a(android.support.e.a parama1, android.support.e.a parama2)
   {
-    AppMethodBeat.i(175132);
-    k.h(paramo, "$this$obtainHandOffModel");
-    paramo = paramo.aTS();
-    String str1 = bs.nullAsNil(paramo.iconUrl);
-    String str2 = bs.nullAsNil(paramo.ddh);
-    String str3 = bs.nullAsNil(paramo.appId);
-    String str4 = bs.nullAsNil(paramo.username);
-    String str5 = bs.nullAsNil(paramo.jjf);
-    k.g(paramo, "config");
-    if (paramo.CC())
+    AppMethodBeat.i(138798);
+    String[] arrayOfString = koE;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      k.g(str1, "icon");
-      k.g(str2, "title");
-      k.g(str3, "appId");
-      k.g(str5, "entryPage");
-      k.g(str4, "appUserName");
-      paramo = (HandOffMP)new HandOffMG(str1, str2, str3, str5, str4);
-      AppMethodBeat.o(175132);
-      return paramo;
+      String str1 = arrayOfString[i];
+      String str2 = parama1.getAttribute(str1);
+      if (str2 != null) {
+        parama2.setAttribute(str1, str2);
+      }
+      i += 1;
     }
-    k.g(str1, "icon");
-    k.g(str2, "title");
-    k.g(str3, "appId");
-    k.g(str5, "entryPage");
-    k.g(str4, "appUserName");
-    paramo = new HandOffMP(str1, str2, str3, str5, str4, 1);
-    AppMethodBeat.o(175132);
-    return paramo;
+    parama2.saveAttributes();
+    AppMethodBeat.o(138798);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.l.a
  * JD-Core Version:    0.7.0.1
  */

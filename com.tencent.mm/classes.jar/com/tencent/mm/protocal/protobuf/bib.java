@@ -1,90 +1,79 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bib
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int ncL;
-  public LinkedList<bia> ncM;
-  
-  public bib()
-  {
-    AppMethodBeat.i(43098);
-    this.ncM = new LinkedList();
-    AppMethodBeat.o(43098);
-  }
+  public String GCZ;
+  public int GDa;
+  public int Scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(43099);
+    AppMethodBeat.i(217652);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.ncL);
-      paramVarArgs.e(2, 8, this.ncM);
-      AppMethodBeat.o(43099);
+      paramVarArgs.aS(1, this.Scene);
+      if (this.GCZ != null) {
+        paramVarArgs.d(2, this.GCZ);
+      }
+      paramVarArgs.aS(3, this.GDa);
+      AppMethodBeat.o(217652);
       return 0;
     }
-    int i;
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bx(1, this.ncL);
-      i = f.a.a.a.c(2, 8, this.ncM);
-      AppMethodBeat.o(43099);
-      return paramInt + 0 + i;
+      int i = f.a.a.b.b.a.bz(1, this.Scene) + 0;
+      paramInt = i;
+      if (this.GCZ != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.GCZ);
+      }
+      i = f.a.a.b.b.a.bz(3, this.GDa);
+      AppMethodBeat.o(217652);
+      return paramInt + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.ncM.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(43099);
+      AppMethodBeat.o(217652);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       bib localbib = (bib)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(43099);
+        AppMethodBeat.o(217652);
         return -1;
       case 1: 
-        localbib.ncL = ((f.a.a.a.a)localObject1).LVo.xF();
-        AppMethodBeat.o(43099);
+        localbib.Scene = locala.NPN.zc();
+        AppMethodBeat.o(217652);
+        return 0;
+      case 2: 
+        localbib.GCZ = locala.NPN.readString();
+        AppMethodBeat.o(217652);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new bia();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((bia)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localbib.ncM.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(43099);
+      localbib.GDa = locala.NPN.zc();
+      AppMethodBeat.o(217652);
       return 0;
     }
-    AppMethodBeat.o(43099);
+    AppMethodBeat.o(217652);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bib
  * JD-Core Version:    0.7.0.1
  */

@@ -18,40 +18,40 @@ public final class c
     a.a(paramBundle, paramString, paramIBinder);
   }
   
-  public static IBinder c(Bundle paramBundle, String paramString)
+  public static IBinder b(Bundle paramBundle, String paramString)
   {
     if (Build.VERSION.SDK_INT >= 18) {
       return paramBundle.getBinder(paramString);
     }
-    return a.c(paramBundle, paramString);
+    return a.b(paramBundle, paramString);
   }
   
   static final class a
   {
-    private static Method Dc;
-    private static boolean Dd;
-    private static Method De;
-    private static boolean Df;
+    private static Method ET;
+    private static boolean EU;
+    private static Method EV;
+    private static boolean EW;
     
     public static void a(Bundle paramBundle, String paramString, IBinder paramIBinder)
     {
-      if (!Df) {}
+      if (!EW) {}
       try
       {
         Method localMethod = Bundle.class.getMethod("putIBinder", new Class[] { String.class, IBinder.class });
-        De = localMethod;
+        EV = localMethod;
         localMethod.setAccessible(true);
         label37:
-        Df = true;
-        if (De != null) {}
+        EW = true;
+        if (EV != null) {}
         try
         {
-          De.invoke(paramBundle, new Object[] { paramString, paramIBinder });
+          EV.invoke(paramBundle, new Object[] { paramString, paramIBinder });
           return;
         }
         catch (IllegalAccessException paramBundle)
         {
-          De = null;
+          EV = null;
           return;
         }
         catch (IllegalArgumentException paramBundle)
@@ -70,25 +70,25 @@ public final class c
       }
     }
     
-    public static IBinder c(Bundle paramBundle, String paramString)
+    public static IBinder b(Bundle paramBundle, String paramString)
     {
-      if (!Dd) {}
+      if (!EU) {}
       try
       {
         Method localMethod = Bundle.class.getMethod("getIBinder", new Class[] { String.class });
-        Dc = localMethod;
+        ET = localMethod;
         localMethod.setAccessible(true);
         label32:
-        Dd = true;
-        if (Dc != null) {}
+        EU = true;
+        if (ET != null) {}
         try
         {
-          paramBundle = (IBinder)Dc.invoke(paramBundle, new Object[] { paramString });
+          paramBundle = (IBinder)ET.invoke(paramBundle, new Object[] { paramString });
           return paramBundle;
         }
         catch (IllegalAccessException paramBundle)
         {
-          Dc = null;
+          ET = null;
           return null;
         }
         catch (IllegalArgumentException paramBundle)
@@ -110,7 +110,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.app.c
  * JD-Core Version:    0.7.0.1
  */

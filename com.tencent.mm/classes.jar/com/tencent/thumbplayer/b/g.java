@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public static a kU(Context paramContext)
+  public static a lh(Context paramContext)
   {
-    AppMethodBeat.i(187828);
+    AppMethodBeat.i(191849);
     paramContext = new com.tencent.thumbplayer.g.a(paramContext);
-    AppMethodBeat.o(187828);
+    AppMethodBeat.o(191849);
     return paramContext;
   }
 }

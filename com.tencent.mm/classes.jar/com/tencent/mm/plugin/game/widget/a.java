@@ -20,25 +20,25 @@ import java.util.Iterator;
 
 public final class a
 {
-  private TextPaint Mh;
-  TextView Up;
-  private TextWatcher auC;
+  private TextPaint NZ;
+  TextView Wf;
+  private TextWatcher awu;
   private boolean mEnabled;
   private ArrayList<b> mListeners;
-  private int nPN;
-  private float oTC;
-  float twE;
-  float twF;
-  float twG;
-  boolean twH;
+  private int osu;
+  private float pxm;
+  float uvQ;
+  float uvR;
+  float uvS;
+  boolean uvT;
   
   private a(TextView paramTextView)
   {
     AppMethodBeat.i(42581);
-    this.auC = new a((byte)0);
+    this.awu = new a((byte)0);
     float f = paramTextView.getContext().getResources().getDisplayMetrics().scaledDensity;
-    this.Up = paramTextView;
-    this.Mh = new TextPaint();
+    this.Wf = paramTextView;
+    this.NZ = new TextPaint();
     setRawTextSize(paramTextView.getTextSize());
     int i = -1;
     TransformationMethod localTransformationMethod = paramTextView.getTransformationMethod();
@@ -47,10 +47,10 @@ public final class a
     }
     for (;;)
     {
-      this.nPN = i;
-      this.twE = (8.0F * f);
-      this.twF = this.oTC;
-      this.twG = 0.5F;
+      this.osu = i;
+      this.uvQ = (8.0F * f);
+      this.uvR = this.pxm;
+      this.uvS = 0.5F;
       AppMethodBeat.o(42581);
       return;
       if (Build.VERSION.SDK_INT >= 16) {
@@ -136,11 +136,11 @@ public final class a
     paramTextView = new a(paramTextView);
     if (paramAttributeSet != null)
     {
-      int i = (int)paramTextView.twE;
-      float f = paramTextView.twG;
-      paramTextView.p(0, i).bc(f);
+      int i = (int)paramTextView.uvQ;
+      float f = paramTextView.uvS;
+      paramTextView.q(0, i).bf(f);
     }
-    paramTextView.mT(true);
+    paramTextView.nn(true);
     AppMethodBeat.o(42578);
     return paramTextView;
   }
@@ -196,18 +196,18 @@ public final class a
     }
   }
   
-  private void bd(float paramFloat)
+  private void bg(float paramFloat)
   {
     AppMethodBeat.i(42585);
-    if (paramFloat != this.twE)
+    if (paramFloat != this.uvQ)
     {
-      this.twE = paramFloat;
-      cRN();
+      this.uvQ = paramFloat;
+      dax();
     }
     AppMethodBeat.o(42585);
   }
   
-  private void cRO()
+  private void day()
   {
     AppMethodBeat.i(42589);
     if (this.mListeners == null)
@@ -222,13 +222,13 @@ public final class a
     AppMethodBeat.o(42589);
   }
   
-  public final a GK(int paramInt)
+  public final a Id(int paramInt)
   {
     AppMethodBeat.i(42586);
-    if (this.nPN != paramInt)
+    if (this.osu != paramInt)
     {
-      this.nPN = paramInt;
-      cRN();
+      this.osu = paramInt;
+      dax();
     }
     AppMethodBeat.o(42586);
     return this;
@@ -245,32 +245,32 @@ public final class a
     return this;
   }
   
-  public final a bc(float paramFloat)
+  public final a bf(float paramFloat)
   {
     AppMethodBeat.i(42583);
-    if (this.twG != paramFloat)
+    if (this.uvS != paramFloat)
     {
-      this.twG = paramFloat;
-      cRN();
+      this.uvS = paramFloat;
+      dax();
     }
     AppMethodBeat.o(42583);
     return this;
   }
   
-  public final void cRN()
+  public final void dax()
   {
     AppMethodBeat.i(42588);
-    float f = this.Up.getTextSize();
-    this.twH = true;
-    a(this.Up, this.Mh, this.twE, this.twF, this.nPN, this.twG);
-    this.twH = false;
-    if (this.Up.getTextSize() != f) {
-      cRO();
+    float f = this.Wf.getTextSize();
+    this.uvT = true;
+    a(this.Wf, this.NZ, this.uvQ, this.uvR, this.osu, this.uvS);
+    this.uvT = false;
+    if (this.Wf.getTextSize() != f) {
+      day();
     }
     AppMethodBeat.o(42588);
   }
   
-  public final a mT(boolean paramBoolean)
+  public final a nn(boolean paramBoolean)
   {
     AppMethodBeat.i(42587);
     if (this.mEnabled != paramBoolean)
@@ -279,36 +279,36 @@ public final class a
       if (!paramBoolean) {
         break label44;
       }
-      this.Up.addTextChangedListener(this.auC);
-      cRN();
+      this.Wf.addTextChangedListener(this.awu);
+      dax();
     }
     for (;;)
     {
       AppMethodBeat.o(42587);
       return this;
       label44:
-      this.Up.removeTextChangedListener(this.auC);
-      this.Up.setTextSize(0, this.oTC);
+      this.Wf.removeTextChangedListener(this.awu);
+      this.Wf.setTextSize(0, this.pxm);
     }
   }
   
-  public final a p(int paramInt, float paramFloat)
+  public final a q(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(42584);
-    Context localContext = this.Up.getContext();
+    Context localContext = this.Wf.getContext();
     Resources localResources = Resources.getSystem();
     if (localContext != null) {
       localResources = localContext.getResources();
     }
-    bd(TypedValue.applyDimension(paramInt, paramFloat, localResources.getDisplayMetrics()));
+    bg(TypedValue.applyDimension(paramInt, paramFloat, localResources.getDisplayMetrics()));
     AppMethodBeat.o(42584);
     return this;
   }
   
   final void setRawTextSize(float paramFloat)
   {
-    if (this.oTC != paramFloat) {
-      this.oTC = paramFloat;
+    if (this.pxm != paramFloat) {
+      this.pxm = paramFloat;
     }
   }
   
@@ -324,7 +324,7 @@ public final class a
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(42577);
-      a.this.cRN();
+      a.this.dax();
       AppMethodBeat.o(42577);
     }
   }

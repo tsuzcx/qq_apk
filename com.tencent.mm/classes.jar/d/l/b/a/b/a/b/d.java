@@ -2,56 +2,60 @@ package d.l.b.a.b.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.ak;
-import d.a.x;
-import d.g.b.u;
-import d.g.b.w;
+import d.g.b.p;
+import d.g.b.q;
+import d.g.b.z;
 import d.l.b.a.b.a.g;
 import d.l.b.a.b.a.g.a;
+import d.l.b.a.b.b.c.h;
 import d.l.b.a.b.b.e;
+import d.l.b.a.b.b.l;
 import d.l.b.a.b.b.y;
 import d.l.b.a.b.f.c;
 import d.l.b.a.b.l.i;
+import d.l.b.a.b.l.j;
+import d.l.k;
 import java.util.Collection;
 
 public final class d
   implements d.l.b.a.b.b.b.b
 {
-  private static final d.l.b.a.b.f.a LcA;
-  public static final a LcB;
-  private static final d.l.b.a.b.f.b Lcy;
-  private static final d.l.b.a.b.f.f Lcz;
-  private final d.l.b.a.b.l.f Lcv;
-  private final y Lcw;
-  private final d.g.a.b<y, d.l.b.a.b.b.l> Lcx;
+  private static final d.l.b.a.b.f.b MTt;
+  private static final d.l.b.a.b.f.f MTu;
+  private static final d.l.b.a.b.f.a MTv;
+  public static final a MTw;
+  private final d.l.b.a.b.l.f MTq;
+  private final y MTr;
+  private final d.g.a.b<y, l> MTs;
   
   static
   {
     AppMethodBeat.i(56771);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(d.class), "cloneable", "getCloneable()Lorg/jetbrains/kotlin/descriptors/impl/ClassDescriptorImpl;")) };
-    LcB = new a((byte)0);
-    Lcy = g.KYV;
-    Object localObject = g.KZg.KZm.fZI();
-    d.g.b.k.g(localObject, "KotlinBuiltIns.FQ_NAMES.cloneable.shortName()");
-    Lcz = (d.l.b.a.b.f.f)localObject;
-    localObject = d.l.b.a.b.f.a.p(g.KZg.KZm.fZL());
-    d.g.b.k.g(localObject, "ClassId.topLevel(KotlinB…NAMES.cloneable.toSafe())");
-    LcA = (d.l.b.a.b.f.a)localObject;
+    cwV = new k[] { (k)z.a(new d.g.b.x(z.bp(d.class), "cloneable", "getCloneable()Lorg/jetbrains/kotlin/descriptors/impl/ClassDescriptorImpl;")) };
+    MTw = new a((byte)0);
+    MTt = g.MPQ;
+    Object localObject = g.MQb.MQh.grh();
+    p.g(localObject, "KotlinBuiltIns.FQ_NAMES.cloneable.shortName()");
+    MTu = (d.l.b.a.b.f.f)localObject;
+    localObject = d.l.b.a.b.f.a.p(g.MQb.MQh.grk());
+    p.g(localObject, "ClassId.topLevel(KotlinB…NAMES.cloneable.toSafe())");
+    MTv = (d.l.b.a.b.f.a)localObject;
     AppMethodBeat.o(56771);
   }
   
-  private d(final i parami, y paramy, d.g.a.b<? super y, ? extends d.l.b.a.b.b.l> paramb)
+  private d(final j paramj, y paramy, d.g.a.b<? super y, ? extends l> paramb)
   {
     AppMethodBeat.i(56776);
-    this.Lcw = paramy;
-    this.Lcx = paramb;
-    this.Lcv = parami.O((d.g.a.a)new b(this, parami));
+    this.MTr = paramy;
+    this.MTs = paramb;
+    this.MTq = paramj.S((d.g.a.a)new b(this, paramj));
     AppMethodBeat.o(56776);
   }
   
-  private final d.l.b.a.b.b.c.h fQA()
+  private final h ghY()
   {
     AppMethodBeat.i(56772);
-    d.l.b.a.b.b.c.h localh = (d.l.b.a.b.b.c.h)d.l.b.a.b.l.h.a(this.Lcv, $$delegatedProperties[0]);
+    h localh = (h)i.a(this.MTq, cwV[0]);
     AppMethodBeat.o(56772);
     return localh;
   }
@@ -59,9 +63,9 @@ public final class d
   public final boolean a(d.l.b.a.b.f.b paramb, d.l.b.a.b.f.f paramf)
   {
     AppMethodBeat.i(56773);
-    d.g.b.k.h(paramb, "packageFqName");
-    d.g.b.k.h(paramf, "name");
-    if ((d.g.b.k.g(paramf, Lcz)) && (d.g.b.k.g(paramb, Lcy)))
+    p.h(paramb, "packageFqName");
+    p.h(paramf, "name");
+    if ((p.i(paramf, MTu)) && (p.i(paramb, MTt)))
     {
       AppMethodBeat.o(56773);
       return true;
@@ -73,10 +77,10 @@ public final class d
   public final e b(d.l.b.a.b.f.a parama)
   {
     AppMethodBeat.i(56774);
-    d.g.b.k.h(parama, "classId");
-    if (d.g.b.k.g(parama, LcA))
+    p.h(parama, "classId");
+    if (p.i(parama, MTv))
     {
-      parama = (e)fQA();
+      parama = (e)ghY();
       AppMethodBeat.o(56774);
       return parama;
     }
@@ -87,14 +91,14 @@ public final class d
   public final Collection<e> b(d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(56775);
-    d.g.b.k.h(paramb, "packageFqName");
-    if (d.g.b.k.g(paramb, Lcy))
+    p.h(paramb, "packageFqName");
+    if (p.i(paramb, MTt))
     {
-      paramb = (Collection)ak.setOf(fQA());
+      paramb = (Collection)ak.setOf(ghY());
       AppMethodBeat.o(56775);
       return paramb;
     }
-    paramb = (Collection)x.KTH;
+    paramb = (Collection)d.a.x.MKG;
     AppMethodBeat.o(56775);
     return paramb;
   }
@@ -102,10 +106,10 @@ public final class d
   public static final class a {}
   
   static final class b
-    extends d.g.b.l
-    implements d.g.a.a<d.l.b.a.b.b.c.h>
+    extends q
+    implements d.g.a.a<h>
   {
-    b(d paramd, i parami)
+    b(d paramd, j paramj)
     {
       super();
     }
@@ -113,7 +117,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.a.b.d
  * JD-Core Version:    0.7.0.1
  */

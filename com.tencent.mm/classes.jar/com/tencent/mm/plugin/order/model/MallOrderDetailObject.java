@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,27 +14,27 @@ import org.json.JSONObject;
 
 public final class MallOrderDetailObject
 {
-  public String dia;
-  public String pHO;
-  public MallTransactionObject vwI;
-  public b vwJ;
-  public ArrayList<ProductSectionItem> vwK;
-  public List<a> vwL;
-  public List<HelpCenter> vwM;
-  int vwN;
-  public String vwO;
-  public String vwP;
-  public int vwQ;
+  public String dtE;
+  public String qlt;
+  public MallTransactionObject wCc;
+  public b wCd;
+  public ArrayList<ProductSectionItem> wCe;
+  public List<a> wCf;
+  public List<HelpCenter> wCg;
+  int wCh;
+  public String wCi;
+  public String wCj;
+  public int wCk;
   
   public MallOrderDetailObject()
   {
     AppMethodBeat.i(66651);
-    this.vwM = new LinkedList();
-    this.vwN = -1;
+    this.wCg = new LinkedList();
+    this.wCh = -1;
     AppMethodBeat.o(66651);
   }
   
-  static ArrayList<ProductSectionItem> aA(JSONObject paramJSONObject)
+  static ArrayList<ProductSectionItem> aJ(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66652);
     paramJSONObject = paramJSONObject.getJSONObject("product_section");
@@ -61,11 +61,11 @@ public final class MallOrderDetailObject
         localProductSectionItem.name = localJSONObject.optString("name");
         try
         {
-          localProductSectionItem.vyx = aB(localJSONObject);
+          localProductSectionItem.wDR = aK(localJSONObject);
           localProductSectionItem.count = localJSONObject.optInt("count");
-          localProductSectionItem.vyy = localJSONObject.optString("price");
+          localProductSectionItem.wDS = localJSONObject.optString("price");
           localProductSectionItem.jumpUrl = localJSONObject.optString("jump_url");
-          localProductSectionItem.vyz = localJSONObject.optString("pid");
+          localProductSectionItem.wDT = localJSONObject.optString("pid");
           localProductSectionItem.scene = localJSONObject.optInt("scene");
           localArrayList.add(localProductSectionItem);
           i += 1;
@@ -74,14 +74,14 @@ public final class MallOrderDetailObject
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.MallOrderDetailObject", localJSONException, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.MallOrderDetailObject", localJSONException, "", new Object[0]);
           }
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.MallOrderDetailObject", localException, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.MallOrderDetailObject", localException, "", new Object[0]);
           }
         }
       }
@@ -90,7 +90,7 @@ public final class MallOrderDetailObject
     return localArrayList;
   }
   
-  private static List<ProductSectionItem.Skus> aB(JSONObject paramJSONObject)
+  private static List<ProductSectionItem.Skus> aK(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66653);
     paramJSONObject = paramJSONObject.getJSONArray("skus");
@@ -118,7 +118,7 @@ public final class MallOrderDetailObject
     implements Parcelable
   {
     public static final Parcelable.Creator<HelpCenter> CREATOR;
-    public boolean daU;
+    public boolean dmo;
     public String name;
     public String url;
     
@@ -139,7 +139,7 @@ public final class MallOrderDetailObject
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.daU = bool;
+        this.dmo = bool;
         AppMethodBeat.o(66648);
         return;
       }
@@ -155,7 +155,7 @@ public final class MallOrderDetailObject
       AppMethodBeat.i(66649);
       paramParcel.writeString(this.name);
       paramParcel.writeString(this.url);
-      if (this.daU) {}
+      if (this.dmo) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
@@ -169,19 +169,19 @@ public final class MallOrderDetailObject
   {
     public int jumpType;
     public String jumpUrl;
-    public boolean nUD;
     public String name;
+    public boolean oxY;
     public int type = 0;
     public String value;
   }
   
   public static final class b
   {
-    public int gIh;
-    public String thh;
+    public int hbR;
     public String thumbUrl;
-    public String vwR;
-    public String vwS;
+    public String ueY;
+    public String wCl;
+    public String wCm;
   }
 }
 

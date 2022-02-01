@@ -9,13 +9,13 @@ public abstract interface o
     static
     {
       AppMethodBeat.i(146954);
-      jsZ = new a("NONE", 0);
-      jta = new a("UNKNOWN", 1);
-      jtb = new a("MISSING_PARAMS", 2);
-      jtc = new a("NO_SUCH_KEY", 3);
-      jtd = new a("QUOTA_REACHED", 4);
-      jte = new a("MEMORY_ISSUE", 5);
-      jtf = new a[] { jsZ, jta, jtb, jtc, jtd, jte };
+      jMT = new a("NONE", 0);
+      jMU = new a("UNKNOWN", 1);
+      jMV = new a("MISSING_PARAMS", 2);
+      jMW = new a("NO_SUCH_KEY", 3);
+      jMX = new a("QUOTA_REACHED", 4);
+      jMY = new a("MEMORY_ISSUE", 5);
+      jMZ = new a[] { jMT, jMU, jMV, jMW, jMX, jMY };
       AppMethodBeat.o(146954);
     }
     

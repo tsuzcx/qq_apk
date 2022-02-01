@@ -14,9 +14,9 @@ import java.util.Map;
 public class Explode
   extends Visibility
 {
-  private static final TimeInterpolator yR = new DecelerateInterpolator();
-  private static final TimeInterpolator yS = new AccelerateInterpolator();
-  private int[] yT = new int[2];
+  private static final TimeInterpolator AK = new DecelerateInterpolator();
+  private static final TimeInterpolator AL = new AccelerateInterpolator();
+  private int[] AM = new int[2];
   
   public Explode()
   {
@@ -31,9 +31,9 @@ public class Explode
   
   private void a(View paramView, Rect paramRect, int[] paramArrayOfInt)
   {
-    paramView.getLocationOnScreen(this.yT);
-    int k = this.yT[0];
-    int m = this.yT[1];
+    paramView.getLocationOnScreen(this.AM);
+    int k = this.AM[0];
+    int m = this.AM[1];
     Rect localRect = getEpicenter();
     int i;
     if (localRect == null) {
@@ -71,9 +71,9 @@ public class Explode
   private void c(u paramu)
   {
     View localView = paramu.view;
-    localView.getLocationOnScreen(this.yT);
-    int i = this.yT[0];
-    int j = this.yT[1];
+    localView.getLocationOnScreen(this.AM);
+    int i = this.AM[0];
+    int j = this.AM[1];
     int k = localView.getWidth();
     int m = localView.getHeight();
     paramu.values.put("android:explode:screenBounds", new Rect(i, j, k + i, m + j));
@@ -113,8 +113,8 @@ public class Explode
     }
     for (;;)
     {
-      a(paramViewGroup, localRect, this.yT);
-      return w.a(paramView, paramu, i, j, f3, f4, f2 + this.yT[0], f1 + this.yT[1], yS);
+      a(paramViewGroup, localRect, this.AM);
+      return w.a(paramView, paramu, i, j, f3, f4, f2 + this.AM[0], f1 + this.AM[1], AL);
       f1 = f4;
       f2 = f3;
     }
@@ -128,10 +128,10 @@ public class Explode
     paramu1 = (Rect)paramu2.values.get("android:explode:screenBounds");
     float f1 = paramView.getTranslationX();
     float f2 = paramView.getTranslationY();
-    a(paramViewGroup, paramu1, this.yT);
-    float f3 = this.yT[0];
-    float f4 = this.yT[1];
-    return w.a(paramView, paramu2, paramu1.left, paramu1.top, f1 + f3, f2 + f4, f1, f2, yR);
+    a(paramViewGroup, paramu1, this.AM);
+    float f3 = this.AM[0];
+    float f4 = this.AM[1];
+    return w.a(paramView, paramu2, paramu1.left, paramu1.top, f1 + f3, f2 + f4, f1, f2, AK);
   }
   
   public final void a(u paramu)

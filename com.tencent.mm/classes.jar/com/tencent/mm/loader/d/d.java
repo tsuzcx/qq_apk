@@ -6,7 +6,7 @@ import com.tencent.mm.loader.h.b.a;
 import com.tencent.mm.loader.h.e;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/common/IImageResourceProducer;", "RESOURCE", "", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/common/IImageResourceProducer;", "RESOURCE", "", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "libimageloader_release"})
 public abstract class d<RESOURCE>
 {
   public abstract e<RESOURCE> a(g<?> paramg, f<?, RESOURCE> paramf, a parama);

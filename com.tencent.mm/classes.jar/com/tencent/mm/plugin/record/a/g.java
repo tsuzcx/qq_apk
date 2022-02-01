@@ -1,22 +1,17 @@
 package com.tencent.mm.plugin.record.a;
 
-import com.tencent.mm.sdk.e.d;
-import java.util.List;
+import com.tencent.mm.kernel.c.a;
 
 public abstract interface g
-  extends d<j>, com.tencent.mm.sdk.e.g
+  extends a
 {
-  public static final String[] SQL_CREATE = { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "RecordMessageInfo") };
+  public abstract boolean g(String paramString1, long paramLong, String paramString2);
   
-  public abstract void Ma(int paramInt);
-  
-  public abstract j Mb(int paramInt);
-  
-  public abstract List<j> dtK();
+  public abstract void yC(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.g
  * JD-Core Version:    0.7.0.1
  */

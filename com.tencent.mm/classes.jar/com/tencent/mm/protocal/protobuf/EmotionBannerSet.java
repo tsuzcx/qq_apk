@@ -5,7 +5,7 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public class EmotionBannerSet
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public EmotionBannerImg BannerImg;
   public String Desc;
@@ -32,7 +32,7 @@ public class EmotionBannerSet
       }
       if (this.BannerImg != null)
       {
-        paramVarArgs.ln(1, this.BannerImg.computeSize());
+        paramVarArgs.lC(1, this.BannerImg.computeSize());
         this.BannerImg.writeFields(paramVarArgs);
       }
       if (this.Title != null) {
@@ -41,11 +41,11 @@ public class EmotionBannerSet
       if (this.LocateUrl != null) {
         paramVarArgs.d(3, this.LocateUrl);
       }
-      paramVarArgs.aR(4, this.ID);
+      paramVarArgs.aS(4, this.ID);
       if (this.SecondUrl != null) {
         paramVarArgs.d(5, this.SecondUrl);
       }
-      paramVarArgs.aR(6, this.SetType);
+      paramVarArgs.aS(6, this.SetType);
       if (this.IconUrl != null) {
         paramVarArgs.d(7, this.IconUrl);
       }
@@ -67,7 +67,7 @@ public class EmotionBannerSet
       }
     }
     label878:
-    for (int i = f.a.a.a.lm(1, this.BannerImg.computeSize()) + 0;; i = 0)
+    for (int i = f.a.a.a.lB(1, this.BannerImg.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
       if (this.Title != null) {
@@ -77,12 +77,12 @@ public class EmotionBannerSet
       if (this.LocateUrl != null) {
         i = paramInt + f.a.a.b.b.a.e(3, this.LocateUrl);
       }
-      i += f.a.a.b.b.a.bx(4, this.ID);
+      i += f.a.a.b.b.a.bz(4, this.ID);
       paramInt = i;
       if (this.SecondUrl != null) {
         paramInt = i + f.a.a.b.b.a.e(5, this.SecondUrl);
       }
-      i = paramInt + f.a.a.b.b.a.bx(6, this.SetType);
+      i = paramInt + f.a.a.b.b.a.bz(6, this.SetType);
       paramInt = i;
       if (this.IconUrl != null) {
         paramInt = i + f.a.a.b.b.a.e(7, this.IconUrl);
@@ -104,9 +104,9 @@ public class EmotionBannerSet
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         if (this.BannerImg == null)
@@ -129,7 +129,7 @@ public class EmotionBannerSet
           AppMethodBeat.o(104770);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -137,46 +137,46 @@ public class EmotionBannerSet
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new EmotionBannerImg();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((EmotionBannerImg)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((EmotionBannerImg)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localEmotionBannerSet.BannerImg = ((EmotionBannerImg)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104770);
           return 0;
         case 2: 
-          localEmotionBannerSet.Title = ((f.a.a.a.a)localObject1).LVo.readString();
+          localEmotionBannerSet.Title = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(104770);
           return 0;
         case 3: 
-          localEmotionBannerSet.LocateUrl = ((f.a.a.a.a)localObject1).LVo.readString();
+          localEmotionBannerSet.LocateUrl = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(104770);
           return 0;
         case 4: 
-          localEmotionBannerSet.ID = ((f.a.a.a.a)localObject1).LVo.xF();
+          localEmotionBannerSet.ID = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(104770);
           return 0;
         case 5: 
-          localEmotionBannerSet.SecondUrl = ((f.a.a.a.a)localObject1).LVo.readString();
+          localEmotionBannerSet.SecondUrl = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(104770);
           return 0;
         case 6: 
-          localEmotionBannerSet.SetType = ((f.a.a.a.a)localObject1).LVo.xF();
+          localEmotionBannerSet.SetType = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(104770);
           return 0;
         case 7: 
-          localEmotionBannerSet.IconUrl = ((f.a.a.a.a)localObject1).LVo.readString();
+          localEmotionBannerSet.IconUrl = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(104770);
           return 0;
         case 8: 
-          localEmotionBannerSet.Desc = ((f.a.a.a.a)localObject1).LVo.readString();
+          localEmotionBannerSet.Desc = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(104770);
           return 0;
         case 9: 
-          localEmotionBannerSet.ProductID = ((f.a.a.a.a)localObject1).LVo.readString();
+          localEmotionBannerSet.ProductID = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(104770);
           return 0;
         }
-        localEmotionBannerSet.TagUrl = ((f.a.a.a.a)localObject1).LVo.readString();
+        localEmotionBannerSet.TagUrl = ((f.a.a.a.a)localObject1).NPN.readString();
         AppMethodBeat.o(104770);
         return 0;
       }

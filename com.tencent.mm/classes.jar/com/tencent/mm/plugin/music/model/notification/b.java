@@ -4,19 +4,19 @@ import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lw;
+import com.tencent.mm.g.a.mf;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import junit.framework.Assert;
 
 public final class b
 {
-  public c kce;
-  public MMMusicPlayerService vfO;
-  volatile boolean vfT = false;
+  public c kwD;
+  public MMMusicPlayerService wlj;
+  volatile boolean wlo = false;
   
   /* Error */
-  final void dja()
+  final void dtm()
   {
     // Byte code:
     //   0: aload_0
@@ -24,10 +24,10 @@ public final class b
     //   2: ldc 23
     //   4: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 31	com/tencent/mm/plugin/music/model/notification/b:vfO	Lcom/tencent/mm/plugin/music/model/notification/MMMusicPlayerService;
+    //   8: getfield 31	com/tencent/mm/plugin/music/model/notification/b:wlj	Lcom/tencent/mm/plugin/music/model/notification/MMMusicPlayerService;
     //   11: ifnull +18 -> 29
     //   14: aload_0
-    //   15: getfield 20	com/tencent/mm/plugin/music/model/notification/b:vfT	Z
+    //   15: getfield 20	com/tencent/mm/plugin/music/model/notification/b:wlo	Z
     //   18: ifeq +11 -> 29
     //   21: ldc 23
     //   23: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -36,13 +36,13 @@ public final class b
     //   28: return
     //   29: aload_0
     //   30: iconst_1
-    //   31: putfield 20	com/tencent/mm/plugin/music/model/notification/b:vfT	Z
+    //   31: putfield 20	com/tencent/mm/plugin/music/model/notification/b:wlo	Z
     //   34: new 36	android/content/Intent
     //   37: dup
     //   38: invokespecial 37	android/content/Intent:<init>	()V
     //   41: astore_1
     //   42: aload_1
-    //   43: invokestatic 43	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   43: invokestatic 43	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   46: ldc 45
     //   48: invokevirtual 49	android/content/Intent:setClass	(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
     //   51: pop
@@ -52,7 +52,7 @@ public final class b
     //   57: anewarray 4	java/lang/Object
     //   60: dup
     //   61: iconst_0
-    //   62: invokestatic 43	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   62: invokestatic 43	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   65: aload_1
     //   66: new 8	com/tencent/mm/plugin/music/model/notification/b$2
     //   69: dup
@@ -62,7 +62,7 @@ public final class b
     //   75: invokevirtual 62	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
     //   78: invokestatic 68	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   81: aastore
-    //   82: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   82: invokestatic 73	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   85: ldc 23
     //   87: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   90: goto -64 -> 26

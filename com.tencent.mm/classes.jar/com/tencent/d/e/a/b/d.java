@@ -8,18 +8,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends JceStruct
 {
-  static b JUg;
-  public b JUf = null;
+  static b LNW;
+  public b LNV = null;
   public int errorCode = 0;
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     AppMethodBeat.i(138422);
     this.errorCode = paramJceInputStream.read(this.errorCode, 0, true);
-    if (JUg == null) {
-      JUg = new b();
+    if (LNW == null) {
+      LNW = new b();
     }
-    this.JUf = ((b)paramJceInputStream.read(JUg, 1, false));
+    this.LNV = ((b)paramJceInputStream.read(LNW, 1, false));
     AppMethodBeat.o(138422);
   }
   
@@ -27,8 +27,8 @@ public final class d
   {
     AppMethodBeat.i(138421);
     paramJceOutputStream.write(this.errorCode, 0);
-    if (this.JUf != null) {
-      paramJceOutputStream.write(this.JUf, 1);
+    if (this.LNV != null) {
+      paramJceOutputStream.write(this.LNV, 1);
     }
     AppMethodBeat.o(138421);
   }

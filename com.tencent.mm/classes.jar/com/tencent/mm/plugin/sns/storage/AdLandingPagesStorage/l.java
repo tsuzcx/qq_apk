@@ -4,11 +4,10 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.k;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
-import com.tencent.mm.plugin.sns.ui.as;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.sns.ui.av;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -18,38 +17,38 @@ public final class l
 {
   private int bgColor;
   private Context context;
-  private ViewGroup vXQ;
-  private LinkedHashMap<String, k> yrz;
-  private List<x> yvd;
+  private ViewGroup xfE;
+  private LinkedHashMap<String, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l> zIJ;
+  private List<x> zMr;
   
   public l(List<x> paramList, Context paramContext, ViewGroup paramViewGroup)
   {
-    this.yvd = paramList;
+    this.zMr = paramList;
     this.context = paramContext;
     this.bgColor = 0;
-    this.vXQ = paramViewGroup;
+    this.xfE = paramViewGroup;
   }
   
-  public final Collection<k> dLn()
+  public final Collection<com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l> dXE()
   {
     AppMethodBeat.i(97396);
-    if (this.yrz == null)
+    if (this.zIJ == null)
     {
       localObject = Collections.EMPTY_LIST;
       AppMethodBeat.o(97396);
       return localObject;
     }
-    Object localObject = this.yrz.values();
+    Object localObject = this.zIJ.values();
     AppMethodBeat.o(97396);
     return localObject;
   }
   
-  public final void fE(List<x> paramList)
+  public final void fP(List<x> paramList)
   {
     AppMethodBeat.i(97394);
-    if ((paramList != null) && (!paramList.equals(this.yvd)))
+    if ((paramList != null) && (!paramList.equals(this.zMr)))
     {
-      this.yvd = paramList;
+      this.zMr = paramList;
       layout();
     }
     AppMethodBeat.o(97394);
@@ -58,57 +57,57 @@ public final class l
   public final void layout()
   {
     AppMethodBeat.i(97395);
-    if ((this.yvd == null) || (this.yvd.isEmpty()))
+    if ((this.zMr == null) || (this.zMr.isEmpty()))
     {
       AppMethodBeat.o(97395);
       return;
     }
-    if (this.yrz == null) {
-      this.yrz = new LinkedHashMap();
+    if (this.zIJ == null) {
+      this.zIJ = new LinkedHashMap();
     }
     int i = 0;
     for (;;)
     {
-      if (i < this.yvd.size())
+      if (i < this.zMr.size())
       {
-        x localx = (x)this.yvd.get(i);
-        Object localObject = (k)this.yrz.get(localx.yjs);
+        x localx = (x)this.zMr.get(i);
+        Object localObject = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l)this.zIJ.get(localx.zAg);
         if (localObject != null) {
-          ((k)localObject).a(localx);
+          ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l)localObject).a(localx);
         }
         try
         {
           label104:
-          if (this.vXQ != ((k)localObject).getView().getParent())
+          if (this.xfE != ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l)localObject).getView().getParent())
           {
-            if (this.vXQ.getChildCount() <= i) {
+            if (this.xfE.getChildCount() <= i) {
               break label195;
             }
-            this.vXQ.addView(((k)localObject).getView(), i);
-            ((k)localObject).dKE();
+            this.xfE.addView(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l)localObject).getView(), i);
+            ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l)localObject).dWW();
           }
           for (;;)
           {
             i += 1;
             break;
-            k localk = as.a(this.context, localx, this.vXQ, this.bgColor);
-            localObject = localk;
-            if (localk == null) {
+            com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l locall = av.a(this.context, localx, this.xfE, this.bgColor);
+            localObject = locall;
+            if (locall == null) {
               break label104;
             }
-            this.yrz.put(localx.yjs, localk);
-            localObject = localk;
+            this.zIJ.put(localx.zAg, locall);
+            localObject = locall;
             break label104;
             label195:
-            this.vXQ.addView(((k)localObject).getView());
-            ((k)localObject).dKE();
+            this.xfE.addView(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l)localObject).getView());
+            ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l)localObject).dWW();
           }
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            ac.e("CompRenderer", "component may have same id %s,%s", new Object[] { localx.yjs, bs.m(localException) });
+            ad.e("CompRenderer", "component may have same id %s,%s", new Object[] { localx.zAg, bt.n(localException) });
           }
         }
       }
@@ -118,7 +117,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l
  * JD-Core Version:    0.7.0.1
  */

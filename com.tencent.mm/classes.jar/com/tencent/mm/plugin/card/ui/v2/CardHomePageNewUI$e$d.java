@@ -7,7 +7,7 @@ import com.tencent.mm.pluginsdk.ui.applet.u;
 import com.tencent.mm.pluginsdk.ui.span.i;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/card/ui/v2/CardHomePageNewUI$HomePageVH$setModel$1$span$1", "Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickListener;", "onClick", "", "widget", "Landroid/view/View;", "hrefInfo", "Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;", "plugin-card_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/card/ui/v2/CardHomePageNewUI$HomePageVH$setModel$1$span$1", "Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickListener;", "onClick", "", "widget", "Landroid/view/View;", "hrefInfo", "Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;", "plugin-card_release"})
 public final class CardHomePageNewUI$e$d
   extends i
 {
@@ -16,7 +16,7 @@ public final class CardHomePageNewUI$e$d
   public final void a(View paramView, u paramu)
   {
     AppMethodBeat.i(112420);
-    this.oim.onClick(paramView);
+    this.oLG.onClick(paramView);
     AppMethodBeat.o(112420);
   }
 }

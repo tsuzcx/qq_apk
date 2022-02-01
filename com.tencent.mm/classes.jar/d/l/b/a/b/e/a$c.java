@@ -18,29 +18,29 @@ public final class a$c
   extends i.c<c>
   implements f
 {
-  public static s<c> Ltc;
-  private static final c Lun;
-  private final d Ltb;
-  private int Ltd;
-  private byte Ltg = -1;
-  private int Lth = -1;
-  public int Ltw;
-  public List<Integer> Lud;
-  public List<a.t> Luo;
+  public static s<c> NjZ;
+  private static final c Nlk;
+  private final d NjY;
+  private int Nka;
+  private byte Nkd = -1;
+  private int Nke = -1;
+  public int Nkt;
+  public List<Integer> Nla;
+  public List<a.t> Nll;
   
   static
   {
     AppMethodBeat.i(58462);
-    Ltc = new b() {};
+    NjZ = new b() {};
     c localc = new c();
-    Lun = localc;
-    localc.fUR();
+    Nlk = localc;
+    localc.gmq();
     AppMethodBeat.o(58462);
   }
   
   private a$c()
   {
-    this.Ltb = d.LzL;
+    this.NjY = d.NqI;
   }
   
   /* Error */
@@ -53,15 +53,15 @@ public final class a$c
     //   6: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: iconst_m1
-    //   11: putfield 60	d/l/b/a/b/e/a$c:Ltg	B
+    //   11: putfield 60	d/l/b/a/b/e/a$c:Nkd	B
     //   14: aload_0
     //   15: iconst_m1
-    //   16: putfield 62	d/l/b/a/b/e/a$c:Lth	I
+    //   16: putfield 62	d/l/b/a/b/e/a$c:Nke	I
     //   19: aload_0
-    //   20: invokespecial 53	d/l/b/a/b/e/a$c:fUR	()V
+    //   20: invokespecial 53	d/l/b/a/b/e/a$c:gmq	()V
     //   23: iconst_0
     //   24: istore_3
-    //   25: invokestatic 79	d/l/b/a/b/h/d:fZS	()Ld/l/b/a/b/h/d$b;
+    //   25: invokestatic 79	d/l/b/a/b/h/d:grr	()Ld/l/b/a/b/h/d$b;
     //   28: astore 10
     //   30: aload 10
     //   32: iconst_1
@@ -78,7 +78,7 @@ public final class a$c
     //   52: iload_3
     //   53: istore 8
     //   55: aload_1
-    //   56: invokevirtual 91	d/l/b/a/b/h/e:xE	()I
+    //   56: invokevirtual 91	d/l/b/a/b/h/e:zb	()I
     //   59: istore 4
     //   61: iload 4
     //   63: lookupswitch	default:+671->734, 0:+674->737, 8:+77->140, 18:+212->275, 248:+273->336, 250:+333->396
@@ -105,10 +105,10 @@ public final class a$c
     //   147: istore 8
     //   149: aload_0
     //   150: aload_0
-    //   151: getfield 96	d/l/b/a/b/e/a$c:Ltd	I
+    //   151: getfield 96	d/l/b/a/b/e/a$c:Nka	I
     //   154: iconst_1
     //   155: ior
-    //   156: putfield 96	d/l/b/a/b/e/a$c:Ltd	I
+    //   156: putfield 96	d/l/b/a/b/e/a$c:Nka	I
     //   159: iload_3
     //   160: istore 6
     //   162: iload_3
@@ -117,8 +117,8 @@ public final class a$c
     //   166: istore 8
     //   168: aload_0
     //   169: aload_1
-    //   170: invokevirtual 99	d/l/b/a/b/h/e:xF	()I
-    //   173: putfield 101	d/l/b/a/b/e/a$c:Ltw	I
+    //   170: invokevirtual 99	d/l/b/a/b/h/e:zc	()I
+    //   173: putfield 101	d/l/b/a/b/e/a$c:Nkt	I
     //   176: goto -135 -> 41
     //   179: astore_1
     //   180: iload 6
@@ -127,7 +127,7 @@ public final class a$c
     //   186: istore 4
     //   188: aload_1
     //   189: aload_0
-    //   190: putfield 105	d/l/b/a/b/h/k:LAt	Ld/l/b/a/b/h/q;
+    //   190: putfield 105	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
     //   193: iload 7
     //   195: istore 4
     //   197: ldc 75
@@ -144,9 +144,9 @@ public final class a$c
     //   214: if_icmpne +14 -> 228
     //   217: aload_0
     //   218: aload_0
-    //   219: getfield 107	d/l/b/a/b/e/a$c:Luo	Ljava/util/List;
+    //   219: getfield 107	d/l/b/a/b/e/a$c:Nll	Ljava/util/List;
     //   222: invokestatic 113	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   225: putfield 107	d/l/b/a/b/e/a$c:Luo	Ljava/util/List;
+    //   225: putfield 107	d/l/b/a/b/e/a$c:Nll	Ljava/util/List;
     //   228: iload 4
     //   230: iconst_4
     //   231: iand
@@ -154,18 +154,18 @@ public final class a$c
     //   233: if_icmpne +14 -> 247
     //   236: aload_0
     //   237: aload_0
-    //   238: getfield 115	d/l/b/a/b/e/a$c:Lud	Ljava/util/List;
+    //   238: getfield 115	d/l/b/a/b/e/a$c:Nla	Ljava/util/List;
     //   241: invokestatic 113	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   244: putfield 115	d/l/b/a/b/e/a$c:Lud	Ljava/util/List;
+    //   244: putfield 115	d/l/b/a/b/e/a$c:Nla	Ljava/util/List;
     //   247: aload 11
     //   249: invokevirtual 118	d/l/b/a/b/h/f:flush	()V
     //   252: aload_0
     //   253: aload 10
-    //   255: invokevirtual 124	d/l/b/a/b/h/d$b:fZW	()Ld/l/b/a/b/h/d;
-    //   258: putfield 69	d/l/b/a/b/e/a$c:Ltb	Ld/l/b/a/b/h/d;
+    //   255: invokevirtual 124	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
+    //   258: putfield 69	d/l/b/a/b/e/a$c:NjY	Ld/l/b/a/b/h/d;
     //   261: aload_0
-    //   262: getfield 128	d/l/b/a/b/h/i$c:LAd	Ld/l/b/a/b/h/h;
-    //   265: invokevirtual 133	d/l/b/a/b/h/h:gai	()V
+    //   262: getfield 128	d/l/b/a/b/h/i$c:Nra	Ld/l/b/a/b/h/h;
+    //   265: invokevirtual 133	d/l/b/a/b/h/h:grH	()V
     //   268: ldc 75
     //   270: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   273: aload_1
@@ -185,7 +185,7 @@ public final class a$c
     //   292: new 135	java/util/ArrayList
     //   295: dup
     //   296: invokespecial 136	java/util/ArrayList:<init>	()V
-    //   299: putfield 107	d/l/b/a/b/e/a$c:Luo	Ljava/util/List;
+    //   299: putfield 107	d/l/b/a/b/e/a$c:Nll	Ljava/util/List;
     //   302: iload_3
     //   303: iconst_2
     //   304: ior
@@ -197,9 +197,9 @@ public final class a$c
     //   312: iload_3
     //   313: istore 7
     //   315: aload_0
-    //   316: getfield 107	d/l/b/a/b/e/a$c:Luo	Ljava/util/List;
+    //   316: getfield 107	d/l/b/a/b/e/a$c:Nll	Ljava/util/List;
     //   319: aload_1
-    //   320: getstatic 139	d/l/b/a/b/e/a$t:Ltc	Ld/l/b/a/b/h/s;
+    //   320: getstatic 139	d/l/b/a/b/e/a$t:NjZ	Ld/l/b/a/b/h/s;
     //   323: aload_2
     //   324: invokevirtual 142	d/l/b/a/b/h/e:a	(Ld/l/b/a/b/h/s;Ld/l/b/a/b/h/g;)Ld/l/b/a/b/h/q;
     //   327: invokeinterface 148 2 0
@@ -220,7 +220,7 @@ public final class a$c
     //   353: new 135	java/util/ArrayList
     //   356: dup
     //   357: invokespecial 136	java/util/ArrayList:<init>	()V
-    //   360: putfield 115	d/l/b/a/b/e/a$c:Lud	Ljava/util/List;
+    //   360: putfield 115	d/l/b/a/b/e/a$c:Nla	Ljava/util/List;
     //   363: iload_3
     //   364: iconst_4
     //   365: ior
@@ -232,9 +232,9 @@ public final class a$c
     //   373: iload_3
     //   374: istore 7
     //   376: aload_0
-    //   377: getfield 115	d/l/b/a/b/e/a$c:Lud	Ljava/util/List;
+    //   377: getfield 115	d/l/b/a/b/e/a$c:Nla	Ljava/util/List;
     //   380: aload_1
-    //   381: invokevirtual 99	d/l/b/a/b/h/e:xF	()I
+    //   381: invokevirtual 99	d/l/b/a/b/h/e:zc	()I
     //   384: invokestatic 154	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   387: invokeinterface 148 2 0
     //   392: pop
@@ -247,8 +247,8 @@ public final class a$c
     //   403: istore 8
     //   405: aload_1
     //   406: aload_1
-    //   407: invokevirtual 99	d/l/b/a/b/h/e:xF	()I
-    //   410: invokevirtual 158	d/l/b/a/b/h/e:fD	(I)I
+    //   407: invokevirtual 99	d/l/b/a/b/h/e:zc	()I
+    //   410: invokevirtual 158	d/l/b/a/b/h/e:fG	(I)I
     //   413: istore 9
     //   415: iload_3
     //   416: istore 4
@@ -266,7 +266,7 @@ public final class a$c
     //   434: iload_3
     //   435: istore 8
     //   437: aload_1
-    //   438: invokevirtual 161	d/l/b/a/b/h/e:xI	()I
+    //   438: invokevirtual 161	d/l/b/a/b/h/e:zf	()I
     //   441: ifle +28 -> 469
     //   444: iload_3
     //   445: istore 6
@@ -278,7 +278,7 @@ public final class a$c
     //   454: new 135	java/util/ArrayList
     //   457: dup
     //   458: invokespecial 136	java/util/ArrayList:<init>	()V
-    //   461: putfield 115	d/l/b/a/b/e/a$c:Lud	Ljava/util/List;
+    //   461: putfield 115	d/l/b/a/b/e/a$c:Nla	Ljava/util/List;
     //   464: iload_3
     //   465: iconst_4
     //   466: ior
@@ -290,7 +290,7 @@ public final class a$c
     //   477: iload 4
     //   479: istore 8
     //   481: aload_1
-    //   482: invokevirtual 161	d/l/b/a/b/h/e:xI	()I
+    //   482: invokevirtual 161	d/l/b/a/b/h/e:zf	()I
     //   485: ifle +80 -> 565
     //   488: iload 4
     //   490: istore 6
@@ -299,9 +299,9 @@ public final class a$c
     //   496: iload 4
     //   498: istore 8
     //   500: aload_0
-    //   501: getfield 115	d/l/b/a/b/e/a$c:Lud	Ljava/util/List;
+    //   501: getfield 115	d/l/b/a/b/e/a$c:Nla	Ljava/util/List;
     //   504: aload_1
-    //   505: invokevirtual 99	d/l/b/a/b/h/e:xF	()I
+    //   505: invokevirtual 99	d/l/b/a/b/h/e:zc	()I
     //   508: invokestatic 154	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   511: invokeinterface 148 2 0
     //   516: pop
@@ -321,7 +321,7 @@ public final class a$c
     //   543: istore 4
     //   545: aload_1
     //   546: aload_0
-    //   547: putfield 105	d/l/b/a/b/h/k:LAt	Ld/l/b/a/b/h/q;
+    //   547: putfield 105	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
     //   550: iload 6
     //   552: istore 4
     //   554: ldc 75
@@ -338,7 +338,7 @@ public final class a$c
     //   575: istore 8
     //   577: aload_1
     //   578: iload 9
-    //   580: invokevirtual 171	d/l/b/a/b/h/e:fE	(I)V
+    //   580: invokevirtual 171	d/l/b/a/b/h/e:fH	(I)V
     //   583: iload 4
     //   585: istore_3
     //   586: goto -545 -> 41
@@ -353,9 +353,9 @@ public final class a$c
     //   601: if_icmpne +14 -> 615
     //   604: aload_0
     //   605: aload_0
-    //   606: getfield 107	d/l/b/a/b/e/a$c:Luo	Ljava/util/List;
+    //   606: getfield 107	d/l/b/a/b/e/a$c:Nll	Ljava/util/List;
     //   609: invokestatic 113	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   612: putfield 107	d/l/b/a/b/e/a$c:Luo	Ljava/util/List;
+    //   612: putfield 107	d/l/b/a/b/e/a$c:Nll	Ljava/util/List;
     //   615: iload_3
     //   616: iconst_4
     //   617: iand
@@ -363,32 +363,32 @@ public final class a$c
     //   619: if_icmpne +14 -> 633
     //   622: aload_0
     //   623: aload_0
-    //   624: getfield 115	d/l/b/a/b/e/a$c:Lud	Ljava/util/List;
+    //   624: getfield 115	d/l/b/a/b/e/a$c:Nla	Ljava/util/List;
     //   627: invokestatic 113	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   630: putfield 115	d/l/b/a/b/e/a$c:Lud	Ljava/util/List;
+    //   630: putfield 115	d/l/b/a/b/e/a$c:Nla	Ljava/util/List;
     //   633: aload 11
     //   635: invokevirtual 118	d/l/b/a/b/h/f:flush	()V
     //   638: aload_0
     //   639: aload 10
-    //   641: invokevirtual 124	d/l/b/a/b/h/d$b:fZW	()Ld/l/b/a/b/h/d;
-    //   644: putfield 69	d/l/b/a/b/e/a$c:Ltb	Ld/l/b/a/b/h/d;
+    //   641: invokevirtual 124	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
+    //   644: putfield 69	d/l/b/a/b/e/a$c:NjY	Ld/l/b/a/b/h/d;
     //   647: aload_0
-    //   648: getfield 128	d/l/b/a/b/h/i$c:LAd	Ld/l/b/a/b/h/h;
-    //   651: invokevirtual 133	d/l/b/a/b/h/h:gai	()V
+    //   648: getfield 128	d/l/b/a/b/h/i$c:Nra	Ld/l/b/a/b/h/h;
+    //   651: invokevirtual 133	d/l/b/a/b/h/h:grH	()V
     //   654: ldc 75
     //   656: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   659: return
     //   660: astore_1
     //   661: aload_0
     //   662: aload 10
-    //   664: invokevirtual 124	d/l/b/a/b/h/d$b:fZW	()Ld/l/b/a/b/h/d;
-    //   667: putfield 69	d/l/b/a/b/e/a$c:Ltb	Ld/l/b/a/b/h/d;
+    //   664: invokevirtual 124	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
+    //   667: putfield 69	d/l/b/a/b/e/a$c:NjY	Ld/l/b/a/b/h/d;
     //   670: goto -23 -> 647
     //   673: astore_1
     //   674: aload_0
     //   675: aload 10
-    //   677: invokevirtual 124	d/l/b/a/b/h/d$b:fZW	()Ld/l/b/a/b/h/d;
-    //   680: putfield 69	d/l/b/a/b/e/a$c:Ltb	Ld/l/b/a/b/h/d;
+    //   677: invokevirtual 124	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
+    //   680: putfield 69	d/l/b/a/b/e/a$c:NjY	Ld/l/b/a/b/h/d;
     //   683: ldc 75
     //   685: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   688: aload_1
@@ -396,14 +396,14 @@ public final class a$c
     //   690: astore_2
     //   691: aload_0
     //   692: aload 10
-    //   694: invokevirtual 124	d/l/b/a/b/h/d$b:fZW	()Ld/l/b/a/b/h/d;
-    //   697: putfield 69	d/l/b/a/b/e/a$c:Ltb	Ld/l/b/a/b/h/d;
+    //   694: invokevirtual 124	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
+    //   697: putfield 69	d/l/b/a/b/e/a$c:NjY	Ld/l/b/a/b/h/d;
     //   700: goto -439 -> 261
     //   703: astore_1
     //   704: aload_0
     //   705: aload 10
-    //   707: invokevirtual 124	d/l/b/a/b/h/d$b:fZW	()Ld/l/b/a/b/h/d;
-    //   710: putfield 69	d/l/b/a/b/e/a$c:Ltb	Ld/l/b/a/b/h/d;
+    //   707: invokevirtual 124	d/l/b/a/b/h/d$b:grv	()Ld/l/b/a/b/h/d;
+    //   710: putfield 69	d/l/b/a/b/e/a$c:NjY	Ld/l/b/a/b/h/d;
     //   713: ldc 75
     //   715: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   718: aload_1
@@ -492,67 +492,67 @@ public final class a$c
   private a$c(i.b<c, ?> paramb)
   {
     super(paramb);
-    this.Ltb = paramb.Ltb;
+    this.NjY = paramb.NjY;
   }
   
-  private void fUR()
+  private void gmq()
   {
     AppMethodBeat.i(58456);
-    this.Ltw = 6;
-    this.Luo = Collections.emptyList();
-    this.Lud = Collections.emptyList();
+    this.Nkt = 6;
+    this.Nll = Collections.emptyList();
+    this.Nla = Collections.emptyList();
     AppMethodBeat.o(58456);
   }
   
-  public static c fVS()
+  public static c gnr()
   {
-    return Lun;
+    return Nlk;
   }
   
   public final void a(d.l.b.a.b.h.f paramf)
   {
     int k = 0;
     AppMethodBeat.i(58458);
-    xS();
-    i.c.a locala = gap();
-    if ((this.Ltd & 0x1) == 1) {
-      paramf.bv(1, this.Ltw);
+    zp();
+    i.c.a locala = grO();
+    if ((this.Nka & 0x1) == 1) {
+      paramf.bx(1, this.Nkt);
     }
     int i = 0;
     int j;
     for (;;)
     {
       j = k;
-      if (i >= this.Luo.size()) {
+      if (i >= this.Nll.size()) {
         break;
       }
-      paramf.a(2, (q)this.Luo.get(i));
+      paramf.a(2, (q)this.Nll.get(i));
       i += 1;
     }
-    while (j < this.Lud.size())
+    while (j < this.Nla.size())
     {
-      paramf.bv(31, ((Integer)this.Lud.get(j)).intValue());
+      paramf.bx(31, ((Integer)this.Nla.get(j)).intValue());
       j += 1;
     }
     locala.b(19000, paramf);
-    paramf.e(this.Ltb);
+    paramf.e(this.NjY);
     AppMethodBeat.o(58458);
   }
   
-  public final s<c> fUP()
+  public final boolean gmO()
   {
-    return Ltc;
+    return (this.Nka & 0x1) == 1;
   }
   
-  public final boolean fVp()
+  public final s<c> gmo()
   {
-    return (this.Ltd & 0x1) == 1;
+    return NjZ;
   }
   
   public final boolean isInitialized()
   {
     AppMethodBeat.i(58457);
-    int i = this.Ltg;
+    int i = this.Nkd;
     if (i == 1)
     {
       AppMethodBeat.o(58457);
@@ -564,54 +564,54 @@ public final class a$c
       return false;
     }
     i = 0;
-    while (i < this.Luo.size())
+    while (i < this.Nll.size())
     {
-      if (!((a.t)this.Luo.get(i)).isInitialized())
+      if (!((a.t)this.Nll.get(i)).isInitialized())
       {
-        this.Ltg = 0;
+        this.Nkd = 0;
         AppMethodBeat.o(58457);
         return false;
       }
       i += 1;
     }
-    if (!this.LAd.isInitialized())
+    if (!this.Nra.isInitialized())
     {
-      this.Ltg = 0;
+      this.Nkd = 0;
       AppMethodBeat.o(58457);
       return false;
     }
-    this.Ltg = 1;
+    this.Nkd = 1;
     AppMethodBeat.o(58457);
     return true;
   }
   
-  public final int xS()
+  public final int zp()
   {
     AppMethodBeat.i(58459);
-    int i = this.Lth;
+    int i = this.Nke;
     if (i != -1)
     {
       AppMethodBeat.o(58459);
       return i;
     }
-    if ((this.Ltd & 0x1) == 1) {}
-    for (i = d.l.b.a.b.h.f.bx(1, this.Ltw) + 0;; i = 0)
+    if ((this.Nka & 0x1) == 1) {}
+    for (i = d.l.b.a.b.h.f.bz(1, this.Nkt) + 0;; i = 0)
     {
       int j = 0;
-      while (j < this.Luo.size())
+      while (j < this.Nll.size())
       {
-        i += d.l.b.a.b.h.f.c(2, (q)this.Luo.get(j));
+        i += d.l.b.a.b.h.f.c(2, (q)this.Nll.get(j));
         j += 1;
       }
       int k = 0;
       int m;
-      for (j = 0; k < this.Lud.size(); j = m + j)
+      for (j = 0; k < this.Nla.size(); j = m + j)
       {
-        m = d.l.b.a.b.h.f.fI(((Integer)this.Lud.get(k)).intValue());
+        m = d.l.b.a.b.h.f.fL(((Integer)this.Nla.get(k)).intValue());
         k += 1;
       }
-      i = i + j + this.Lud.size() * 2 + this.LAd.xS() + this.Ltb.size();
-      this.Lth = i;
+      i = i + j + this.Nla.size() * 2 + this.Nra.zp() + this.NjY.size();
+      this.Nke = i;
       AppMethodBeat.o(58459);
       return i;
     }
@@ -621,67 +621,67 @@ public final class a$c
     extends i.b<a.c, a>
     implements f
   {
-    private int Ltd;
-    private int Ltw;
-    private List<Integer> Lud;
-    private List<a.t> Luo;
+    private int Nka;
+    private int Nkt;
+    private List<Integer> Nla;
+    private List<a.t> Nll;
     
     private a()
     {
       AppMethodBeat.i(58436);
-      this.Ltw = 6;
-      this.Luo = Collections.emptyList();
-      this.Lud = Collections.emptyList();
+      this.Nkt = 6;
+      this.Nll = Collections.emptyList();
+      this.Nla = Collections.emptyList();
       AppMethodBeat.o(58436);
     }
     
-    private a ahf(int paramInt)
+    private a ajG(int paramInt)
     {
-      this.Ltd |= 0x1;
-      this.Ltw = paramInt;
+      this.Nka |= 0x1;
+      this.Nkt = paramInt;
       return this;
     }
     
-    private void fVP()
+    private void gno()
     {
       AppMethodBeat.i(58443);
-      if ((this.Ltd & 0x4) != 4)
+      if ((this.Nka & 0x4) != 4)
       {
-        this.Lud = new ArrayList(this.Lud);
-        this.Ltd |= 0x4;
+        this.Nla = new ArrayList(this.Nla);
+        this.Nka |= 0x4;
       }
       AppMethodBeat.o(58443);
     }
     
-    private a fVT()
+    private a gns()
     {
       AppMethodBeat.i(58437);
-      a locala = new a().d(fVU());
+      a locala = new a().d(gnt());
       AppMethodBeat.o(58437);
       return locala;
     }
     
-    private a.c fVU()
+    private a.c gnt()
     {
       int i = 1;
       AppMethodBeat.i(58438);
       a.c localc = new a.c(this, (byte)0);
-      if ((this.Ltd & 0x1) == 1) {}
+      if ((this.Nka & 0x1) == 1) {}
       for (;;)
       {
-        a.c.a(localc, this.Ltw);
-        if ((this.Ltd & 0x2) == 2)
+        a.c.a(localc, this.Nkt);
+        if ((this.Nka & 0x2) == 2)
         {
-          this.Luo = Collections.unmodifiableList(this.Luo);
-          this.Ltd &= 0xFFFFFFFD;
+          this.Nll = Collections.unmodifiableList(this.Nll);
+          this.Nka &= 0xFFFFFFFD;
         }
-        a.c.a(localc, this.Luo);
-        if ((this.Ltd & 0x4) == 4)
+        a.c.a(localc, this.Nll);
+        if ((this.Nka & 0x4) == 4)
         {
-          this.Lud = Collections.unmodifiableList(this.Lud);
-          this.Ltd &= 0xFFFFFFFB;
+          this.Nla = Collections.unmodifiableList(this.Nla);
+          this.Nka &= 0xFFFFFFFB;
         }
-        a.c.b(localc, this.Lud);
+        a.c.b(localc, this.Nla);
         a.c.b(localc, i);
         AppMethodBeat.o(58438);
         return localc;
@@ -689,13 +689,13 @@ public final class a$c
       }
     }
     
-    private void fVV()
+    private void gnu()
     {
       AppMethodBeat.i(58442);
-      if ((this.Ltd & 0x2) != 2)
+      if ((this.Nka & 0x2) != 2)
       {
-        this.Luo = new ArrayList(this.Luo);
-        this.Ltd |= 0x2;
+        this.Nll = new ArrayList(this.Nll);
+        this.Nka |= 0x2;
       }
       AppMethodBeat.o(58442);
     }
@@ -708,7 +708,7 @@ public final class a$c
       //   2: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aconst_null
       //   6: astore_3
-      //   7: getstatic 103	d/l/b/a/b/e/a$c:Ltc	Ld/l/b/a/b/h/s;
+      //   7: getstatic 103	d/l/b/a/b/e/a$c:NjZ	Ld/l/b/a/b/h/s;
       //   10: aload_1
       //   11: aload_2
       //   12: invokeinterface 108 3 0
@@ -724,7 +724,7 @@ public final class a$c
       //   33: areturn
       //   34: astore_1
       //   35: aload_1
-      //   36: getfield 112	d/l/b/a/b/h/k:LAt	Ld/l/b/a/b/h/q;
+      //   36: getfield 112	d/l/b/a/b/h/k:Nrq	Ld/l/b/a/b/h/q;
       //   39: checkcast 9	d/l/b/a/b/e/a$c
       //   42: astore_2
       //   43: ldc 99
@@ -763,42 +763,42 @@ public final class a$c
     public final a d(a.c paramc)
     {
       AppMethodBeat.i(58439);
-      if (paramc == a.c.fVS())
+      if (paramc == a.c.gnr())
       {
         AppMethodBeat.o(58439);
         return this;
       }
-      if (paramc.fVp()) {
-        ahf(paramc.Ltw);
+      if (paramc.gmO()) {
+        ajG(paramc.Nkt);
       }
       if (!a.c.a(paramc).isEmpty())
       {
-        if (this.Luo.isEmpty())
+        if (this.Nll.isEmpty())
         {
-          this.Luo = a.c.a(paramc);
-          this.Ltd &= 0xFFFFFFFD;
+          this.Nll = a.c.a(paramc);
+          this.Nka &= 0xFFFFFFFD;
         }
       }
       else if (!a.c.b(paramc).isEmpty())
       {
-        if (!this.Lud.isEmpty()) {
+        if (!this.Nla.isEmpty()) {
           break label169;
         }
-        this.Lud = a.c.b(paramc);
-        this.Ltd &= 0xFFFFFFFB;
+        this.Nla = a.c.b(paramc);
+        this.Nka &= 0xFFFFFFFB;
       }
       for (;;)
       {
         a(paramc);
-        this.Ltb = this.Ltb.a(a.c.c(paramc));
+        this.NjY = this.NjY.a(a.c.c(paramc));
         AppMethodBeat.o(58439);
         return this;
-        fVV();
-        this.Luo.addAll(a.c.a(paramc));
+        gnu();
+        this.Nll.addAll(a.c.a(paramc));
         break;
         label169:
-        fVP();
-        this.Lud.addAll(a.c.b(paramc));
+        gno();
+        this.Nla.addAll(a.c.b(paramc));
       }
     }
     
@@ -806,16 +806,16 @@ public final class a$c
     {
       AppMethodBeat.i(58440);
       int i = 0;
-      while (i < this.Luo.size())
+      while (i < this.Nll.size())
       {
-        if (!((a.t)this.Luo.get(i)).isInitialized())
+        if (!((a.t)this.Nll.get(i)).isInitialized())
         {
           AppMethodBeat.o(58440);
           return false;
         }
         i += 1;
       }
-      if (!this.LAd.isInitialized())
+      if (!this.Nra.isInitialized())
       {
         AppMethodBeat.o(58440);
         return false;

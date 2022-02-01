@@ -1,51 +1,67 @@
 package com.tencent.mm.plugin.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class cm
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String thk;
-  public String tlf;
+  public String iht;
+  public String ujc;
+  public int ujd;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41815);
+    AppMethodBeat.i(199583);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.tlf != null) {
-        paramVarArgs.d(1, this.tlf);
+      if (this.iht == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: AppId");
+        AppMethodBeat.o(199583);
+        throw paramVarArgs;
       }
-      if (this.thk != null) {
-        paramVarArgs.d(2, this.thk);
+      if (this.iht != null) {
+        paramVarArgs.d(1, this.iht);
       }
-      AppMethodBeat.o(41815);
+      if (this.ujc != null) {
+        paramVarArgs.d(2, this.ujc);
+      }
+      paramVarArgs.aS(3, this.ujd);
+      AppMethodBeat.o(199583);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.tlf == null) {
-        break label274;
+      if (this.iht == null) {
+        break label366;
       }
     }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.tlf) + 0;; paramInt = 0)
+    label366:
+    for (paramInt = f.a.a.b.b.a.e(1, this.iht) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.thk != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.thk);
+      if (this.ujc != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.ujc);
       }
-      AppMethodBeat.o(41815);
-      return i;
+      paramInt = f.a.a.b.b.a.bz(3, this.ujd);
+      AppMethodBeat.o(199583);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(41815);
+        if (this.iht == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: AppId");
+          AppMethodBeat.o(199583);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(199583);
         return 0;
       }
       if (paramInt == 3)
@@ -55,25 +71,29 @@ public final class cm
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41815);
+          AppMethodBeat.o(199583);
           return -1;
         case 1: 
-          localcm.tlf = locala.LVo.readString();
-          AppMethodBeat.o(41815);
+          localcm.iht = locala.NPN.readString();
+          AppMethodBeat.o(199583);
+          return 0;
+        case 2: 
+          localcm.ujc = locala.NPN.readString();
+          AppMethodBeat.o(199583);
           return 0;
         }
-        localcm.thk = locala.LVo.readString();
-        AppMethodBeat.o(41815);
+        localcm.ujd = locala.NPN.zc();
+        AppMethodBeat.o(199583);
         return 0;
       }
-      AppMethodBeat.o(41815);
+      AppMethodBeat.o(199583);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.cm
  * JD-Core Version:    0.7.0.1
  */

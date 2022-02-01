@@ -18,8 +18,8 @@ import java.util.List;
 public class FabTransformationScrimBehavior
   extends ExpandableTransformationBehavior
 {
-  private final i kV = new i(75L);
-  private final i kW = new i(0L);
+  private final i mM = new i(75L);
+  private final i mN = new i(0L);
   
   public FabTransformationScrimBehavior() {}
   
@@ -44,7 +44,7 @@ public class FabTransformationScrimBehavior
     new ArrayList();
     if (paramBoolean1)
     {
-      paramView1 = this.kV;
+      paramView1 = this.mM;
       if (!paramBoolean1) {
         break label110;
       }
@@ -76,7 +76,7 @@ public class FabTransformationScrimBehavior
         }
       });
       return paramView1;
-      paramView1 = this.kW;
+      paramView1 = this.mN;
       break;
     }
   }

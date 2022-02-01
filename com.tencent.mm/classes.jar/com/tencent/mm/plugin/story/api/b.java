@@ -7,13 +7,13 @@ public abstract interface b
 {
   public abstract void c(WeakReference<c> paramWeakReference);
   
-  public abstract int dUD();
+  public abstract int egR();
   
-  public abstract void dUE();
+  public abstract void egS();
   
-  public abstract List<String> dUF();
+  public abstract List<String> egT();
   
-  public abstract void fZ(List<String> paramList);
+  public abstract void gk(List<String> paramList);
 }
 
 

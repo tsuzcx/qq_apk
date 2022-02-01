@@ -45,7 +45,7 @@ public final class n
     return bool;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144903);
     RotateActionArg localRotateActionArg = new RotateActionArg();

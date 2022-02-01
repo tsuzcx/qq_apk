@@ -5,7 +5,6 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StrikethroughSpan;
 import android.text.style.UnderlineSpan;
-import android.view.View;
 import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
 import com.tencent.kinda.gen.DynamicColor;
@@ -15,8 +14,7 @@ import com.tencent.kinda.gen.LinkStyle;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class MMKRichText
   implements KText
@@ -48,7 +46,7 @@ public class MMKRichText
   {
     AppMethodBeat.i(19110);
     if (paramString != null) {
-      this.spanText.append(k.c(ai.getContext(), paramString));
+      this.spanText.append(k.c(aj.getContext(), paramString));
     }
     AppMethodBeat.o(19110);
   }
@@ -80,7 +78,7 @@ public class MMKRichText
       }
       localSpannableString.setSpan(new ForegroundColorSpan(this.linkColor), 0, localSpannableString.length(), 33);
       if (this.clickCallback != null) {
-        localSpannableString.setSpan(new LinkClickableSpan(this.linkColor, this.clickCallback), 0, localSpannableString.length(), 33);
+        localSpannableString.setSpan(new MMKRichText.MMKLink.LinkClickableSpan(this.linkColor, this.clickCallback), 0, localSpannableString.length(), 33);
       }
       if (this.linkStyle == LinkStyle.DELETED) {
         localSpannableString.setSpan(new StrikethroughSpan(), 0, localSpannableString.length(), 33);
@@ -119,33 +117,6 @@ public class MMKRichText
     public void setText(String paramString)
     {
       this.text = paramString;
-    }
-    
-    static class LinkClickableSpan
-      extends o
-    {
-      private VoidCallback clickCallback;
-      private int linkColor;
-      private LinkStyle linkStyle;
-      
-      public LinkClickableSpan(int paramInt, VoidCallback paramVoidCallback)
-      {
-        super(null);
-        AppMethodBeat.i(19105);
-        this.linkColor = paramInt;
-        this.clickCallback = paramVoidCallback;
-        setColor(this.linkColor, 0);
-        AppMethodBeat.o(19105);
-      }
-      
-      public void onClick(View paramView)
-      {
-        AppMethodBeat.i(19106);
-        if (this.clickCallback != null) {
-          this.clickCallback.call();
-        }
-        AppMethodBeat.o(19106);
-      }
     }
   }
 }

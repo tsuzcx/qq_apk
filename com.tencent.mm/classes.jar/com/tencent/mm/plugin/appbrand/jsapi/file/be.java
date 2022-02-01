@@ -12,8 +12,8 @@ final class be
   final i.a a(c paramc, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(128930);
-    paramc = paramc.DH().IR(paramString);
-    switch (1.krw[paramc.ordinal()])
+    paramc = paramc.Fg().Mi(paramString);
+    switch (1.kMS[paramc.ordinal()])
     {
     default: 
       paramc = new i.a("fail " + paramc.name(), new Object[0]);
@@ -39,7 +39,7 @@ final class be
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.be
  * JD-Core Version:    0.7.0.1
  */

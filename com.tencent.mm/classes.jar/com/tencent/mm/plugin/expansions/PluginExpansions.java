@@ -4,8 +4,8 @@ import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 @Keep
 public final class PluginExpansions
@@ -17,23 +17,23 @@ public final class PluginExpansions
   public final void execute(g paramg)
   {
     AppMethodBeat.i(152980);
-    c.ciq();
-    c.cir();
-    if (paramg.ahL())
+    c.cmU();
+    c.cmV();
+    if (paramg.akw())
     {
-      a.cif();
-      ac.i("MicroMsg.exp.PluginExpansions", "request Sync at MAIN process");
-      a.cii();
+      a.cmJ();
+      ad.i("MicroMsg.exp.PluginExpansions", "request Sync at MAIN process");
+      a.cmM();
       AppMethodBeat.o(152980);
       return;
     }
-    if (!paramg.up(":push"))
+    if (!paramg.xf(":push"))
     {
-      a.cif();
-      ac.i("MicroMsg.exp.PluginExpansions", "request Sync at SUB process");
-      a.cii();
+      a.cmJ();
+      ad.i("MicroMsg.exp.PluginExpansions", "request Sync at SUB process");
+      a.cmM();
     }
-    ac.i("MicroMsg.exp.PluginExpansions", "execute done");
+    ad.i("MicroMsg.exp.PluginExpansions", "execute done");
     AppMethodBeat.o(152980);
   }
   
@@ -41,15 +41,15 @@ public final class PluginExpansions
   {
     AppMethodBeat.i(152979);
     alias(com.tencent.mm.plugin.expansions.a.a.class);
-    ai.getContext();
-    a.cih();
+    aj.getContext();
+    a.cmL();
     a.prepare();
     AppMethodBeat.o(152979);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expansions.PluginExpansions
  * JD-Core Version:    0.7.0.1
  */

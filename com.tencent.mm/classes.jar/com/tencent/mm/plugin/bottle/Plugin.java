@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.bottle;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
   implements com.tencent.mm.pluginsdk.b.d
 {
-  private c ntp;
+  private c nUl;
   
   public Plugin()
   {
     AppMethodBeat.i(22640);
-    this.ntp = new c()
+    this.nUl = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a ab(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.b.a aa(Context paramAnonymousContext, String paramAnonymousString)
       {
         return null;
       }
@@ -24,7 +24,7 @@ public final class Plugin
     AppMethodBeat.o(22640);
   }
   
-  public final m createApplication()
+  public final n createApplication()
   {
     AppMethodBeat.i(22641);
     a locala = new a();
@@ -32,7 +32,7 @@ public final class Plugin
     return locala;
   }
   
-  public final aw createSubCore()
+  public final ax createSubCore()
   {
     AppMethodBeat.i(22642);
     com.tencent.mm.plugin.bottle.a.d locald = new com.tencent.mm.plugin.bottle.a.d();
@@ -42,7 +42,7 @@ public final class Plugin
   
   public final c getContactWidgetFactory()
   {
-    return this.ntp;
+    return this.nUl;
   }
 }
 

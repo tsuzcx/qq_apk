@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:background="@drawable/a_c" android:layout_width="fill_parent" android:layout_height="@dimen/ce"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/he6" android:layout_width="@dimen/as" android:layout_height="@dimen/as" android:layout_marginLeft="@dimen/c5" android:src="@raw/default_avatar" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+    <TextView android:ellipsize="end" android:gravity="left" android:id="@id/he_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:layout_marginRight="@dimen/c5" android:text="{nickname}" android:maxLines="1" android:singleLine="true" app:layout_constraintBottom_toBottomOf="@id/he6" app:layout_constraintLeft_toRightOf="@id/he6" app:layout_constraintTop_toTopOf="@id/he6" style="@style/wf" />
+    <View android:background="@drawable/x8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cf" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" />
+</android.support.constraint.ConstraintLayout>

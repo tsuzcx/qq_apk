@@ -9,7 +9,7 @@ import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.b.b;
 import com.tencent.mm.plugin.wallet_core.b.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.a;
 
@@ -22,7 +22,7 @@ public class KindaPayCardManagerImpl
     Object localObject = KindaContext.get();
     if (!(localObject instanceof MMActivity))
     {
-      ac.e("KindaPayCardManagerImpl", "Fail to start addPayCardImpl due to incompatible context(%s)", new Object[] { localObject.getClass().getName() });
+      ad.e("KindaPayCardManagerImpl", "Fail to start addPayCardImpl due to incompatible context(%s)", new Object[] { localObject.getClass().getName() });
       AppMethodBeat.o(18461);
       return;
     }
@@ -36,11 +36,11 @@ public class KindaPayCardManagerImpl
     localObject = a.br((Activity)localObject);
     if (!(localObject instanceof b))
     {
-      ac.e("KindaPayCardManagerImpl", "Fail to get correct wallet process in addPayCardImpl, expect BindCardProcess got %s", new Object[] { localObject.getClass().getName() });
+      ad.e("KindaPayCardManagerImpl", "Fail to get correct wallet process in addPayCardImpl, expect BindCardProcess got %s", new Object[] { localObject.getClass().getName() });
       AppMethodBeat.o(18461);
       return;
     }
-    ((b)localObject).Boj = new b.a()
+    ((b)localObject).COy = new b.a()
     {
       public void run(int paramAnonymousInt)
       {

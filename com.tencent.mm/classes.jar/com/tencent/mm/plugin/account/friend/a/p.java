@@ -5,26 +5,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
 {
-  public int cGa;
-  int drx;
-  private int hFO;
-  private int hpt;
-  private String hpv;
-  private String hpw;
-  public int iKK;
+  public int cRf;
+  int dDp;
+  private int hHL;
+  private String hHN;
+  private String hHO;
+  private int hYt;
+  public int jdT;
   public String username;
   
   public p()
   {
     AppMethodBeat.i(131061);
-    this.drx = -1;
+    this.dDp = -1;
     this.username = "";
-    this.iKK = 0;
-    this.cGa = 0;
-    this.hpt = 0;
-    this.hFO = 0;
-    this.hpv = "";
-    this.hpw = "";
+    this.jdT = 0;
+    this.cRf = 0;
+    this.hHL = 0;
+    this.hYt = 0;
+    this.hHN = "";
+    this.hHO = "";
     AppMethodBeat.o(131061);
   }
   
@@ -32,41 +32,41 @@ public final class p
   {
     AppMethodBeat.i(131062);
     ContentValues localContentValues = new ContentValues();
-    if ((this.drx & 0x1) != 0) {
+    if ((this.dDp & 0x1) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.drx & 0x2) != 0) {
-      localContentValues.put("friendtype", Integer.valueOf(this.iKK));
+    if ((this.dDp & 0x2) != 0) {
+      localContentValues.put("friendtype", Integer.valueOf(this.jdT));
     }
-    if ((this.drx & 0x4) != 0) {
-      localContentValues.put("updatetime", Integer.valueOf(this.cGa));
+    if ((this.dDp & 0x4) != 0) {
+      localContentValues.put("updatetime", Integer.valueOf(this.cRf));
     }
-    if ((this.drx & 0x8) != 0) {
-      localContentValues.put("reserved1", Integer.valueOf(this.hpt));
+    if ((this.dDp & 0x8) != 0) {
+      localContentValues.put("reserved1", Integer.valueOf(this.hHL));
     }
-    if ((this.drx & 0x10) != 0) {
-      localContentValues.put("reserved2", Integer.valueOf(this.hFO));
+    if ((this.dDp & 0x10) != 0) {
+      localContentValues.put("reserved2", Integer.valueOf(this.hYt));
     }
-    if ((this.drx & 0x20) != 0)
+    if ((this.dDp & 0x20) != 0)
     {
-      if (this.hpv == null)
+      if (this.hHN == null)
       {
         str = "";
         localContentValues.put("reserved3", str);
       }
     }
-    else if ((this.drx & 0x40) != 0) {
-      if (this.hpw != null) {
+    else if ((this.dDp & 0x40) != 0) {
+      if (this.hHO != null) {
         break label191;
       }
     }
     label191:
-    for (String str = "";; str = this.hpw)
+    for (String str = "";; str = this.hHO)
     {
       localContentValues.put("reserved4", str);
       AppMethodBeat.o(131062);
       return localContentValues;
-      str = this.hpv;
+      str = this.hHN;
       break;
     }
   }
@@ -81,7 +81,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.p
  * JD-Core Version:    0.7.0.1
  */

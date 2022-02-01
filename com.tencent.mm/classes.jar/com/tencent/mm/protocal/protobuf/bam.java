@@ -1,54 +1,53 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public final class bam
-  extends cqk
+  extends cvc
 {
-  public b ERt;
+  public String ProductID;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125735);
+    AppMethodBeat.i(104791);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.ln(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.ERt != null) {
-        paramVarArgs.c(2, this.ERt);
+      if (this.ProductID != null) {
+        paramVarArgs.d(2, this.ProductID);
       }
-      AppMethodBeat.o(125735);
+      AppMethodBeat.o(104791);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
+      if (this.BaseRequest == null) {
         break label370;
       }
     }
     label370:
-    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.ERt != null) {
-        i = paramInt + f.a.a.b.b.a.b(2, this.ERt);
+      if (this.ProductID != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.ProductID);
       }
-      AppMethodBeat.o(125735);
+      AppMethodBeat.o(104791);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(125735);
+        AppMethodBeat.o(104791);
         return 0;
       }
       if (paramInt == 3)
@@ -59,36 +58,36 @@ public final class bam
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(125735);
+          AppMethodBeat.o(104791);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
+            localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbam.BaseResponse = ((BaseResponse)localObject1);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbam.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(125735);
+          AppMethodBeat.o(104791);
           return 0;
         }
-        localbam.ERt = ((f.a.a.a.a)localObject1).LVo.gfk();
-        AppMethodBeat.o(125735);
+        localbam.ProductID = ((f.a.a.a.a)localObject1).NPN.readString();
+        AppMethodBeat.o(104791);
         return 0;
       }
-      AppMethodBeat.o(125735);
+      AppMethodBeat.o(104791);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bam
  * JD-Core Version:    0.7.0.1
  */

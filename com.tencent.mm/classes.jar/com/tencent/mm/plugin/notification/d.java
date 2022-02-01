@@ -1,36 +1,34 @@
 package com.tencent.mm.plugin.notification;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.g.c.dy;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.messenger.foundation.a.x;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.model.au;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.bu.a;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.ca.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class d
-  implements x
+  implements com.tencent.mm.plugin.messenger.foundation.a.z
 {
-  private static List<at> vqc;
-  private boolean vqd;
-  private boolean vqe;
-  private List<bo> vqf;
+  private static List<au> wvu;
+  private boolean wvv;
+  private boolean wvw;
+  private List<bu> wvx;
   
   static
   {
     AppMethodBeat.i(149387);
-    vqc = new ArrayList();
+    wvu = new ArrayList();
     AppMethodBeat.o(149387);
   }
   
@@ -42,105 +40,105 @@ public final class d
   public d(boolean paramBoolean)
   {
     AppMethodBeat.i(149383);
-    this.vqd = false;
-    this.vqe = false;
-    this.vqf = new LinkedList();
-    this.vqd = paramBoolean;
-    this.vqe = false;
-    this.vqf = new LinkedList();
+    this.wvv = false;
+    this.wvw = false;
+    this.wvx = new LinkedList();
+    this.wvv = paramBoolean;
+    this.wvw = false;
+    this.wvx = new LinkedList();
     AppMethodBeat.o(149383);
   }
   
-  public static void a(at paramat)
+  public static void a(au paramau)
   {
     AppMethodBeat.i(149381);
-    synchronized (vqc)
+    synchronized (wvu)
     {
-      if (!vqc.contains(paramat)) {
-        vqc.add(paramat);
+      if (!wvu.contains(paramau)) {
+        wvu.add(paramau);
       }
       AppMethodBeat.o(149381);
       return;
     }
   }
   
-  public static void b(at paramat)
+  public static void b(au paramau)
   {
     AppMethodBeat.i(149382);
-    synchronized (vqc)
+    synchronized (wvu)
     {
-      vqc.remove(paramat);
+      wvu.remove(paramau);
       AppMethodBeat.o(149382);
       return;
     }
   }
   
-  public final void a(final bo parambo, final cu paramcu)
+  public final void a(final bu parambu, final cv paramcv)
   {
     AppMethodBeat.i(149385);
-    if (this.vqd)
+    if (this.wvv)
     {
-      ac.i("MicroMsg.SyncMessageNotifier", "mDummy is true, do nothing and return.");
+      ad.i("MicroMsg.SyncMessageNotifier", "mDummy is true, do nothing and return.");
       AppMethodBeat.o(149385);
       return;
     }
-    synchronized (vqc)
+    synchronized (wvu)
     {
-      if (vqc.isEmpty())
+      if (wvu.isEmpty())
       {
-        ac.i("MicroMsg.SyncMessageNotifier", "no notifiers, ignore");
+        ad.i("MicroMsg.SyncMessageNotifier", "no notifiers, ignore");
         AppMethodBeat.o(149385);
         return;
       }
-      if ((parambo.field_isSend != 0) || (parambo.field_status == 4))
+      if ((parambu.field_isSend != 0) || (parambu.field_status == 4))
       {
-        ac.i("MicroMsg.SyncMessageNotifier", "not new msg, ignore");
+        ad.i("MicroMsg.SyncMessageNotifier", "not new msg, ignore");
         AppMethodBeat.o(149385);
         return;
       }
     }
-    ??? = z.a(paramcu.DPT);
-    ??? = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awJ().alJ(new bu.a((String)???).aOB(""));
-    if ((??? != null) && (!((bu)???).fcv()))
+    ??? = com.tencent.mm.platformtools.z.a(paramcv.Fvi);
+    ??? = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azy().aqy(new ca.a((String)???).aUs(""));
+    if ((??? != null) && (!((ca)???).fsC()))
     {
-      ac.d("MicroMsg.SyncMessageNotifier", "account no notification");
+      ad.d("MicroMsg.SyncMessageNotifier", "account no notification");
       AppMethodBeat.o(149385);
       return;
     }
-    if (!this.vqe)
+    if (!this.wvw)
     {
-      this.vqe = true;
+      this.wvw = true;
       Object localObject2 = new ArrayList();
-      synchronized (vqc)
+      synchronized (wvu)
       {
-        Iterator localIterator = vqc.iterator();
+        Iterator localIterator = wvu.iterator();
         if (localIterator.hasNext()) {
-          ((List)localObject2).add((at)localIterator.next());
+          ((List)localObject2).add((au)localIterator.next());
         }
       }
       ??? = ((List)localObject2).iterator();
       while (((Iterator)???).hasNext())
       {
-        localObject2 = (at)((Iterator)???).next();
-        new ao(((at)localObject2).getLooper()).post(new Runnable()
+        localObject2 = (au)((Iterator)???).next();
+        new ap(((au)localObject2).getLooper()).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(149380);
-            if (paramcu.tit == 49)
+            if (paramcv.ugm == 49)
             {
-              k.b localb = k.b.vA(d.c(paramcu));
-              if ((localb.hjc == 1) && (!bs.isNullOrNil(localb.hjd)) && (!bs.isNullOrNil(localb.hje)))
+              k.b localb = k.b.yr(d.c(paramcv));
+              if ((localb.hBl == 1) && (!bt.isNullOrNil(localb.hBm)) && (!bt.isNullOrNil(localb.hBn)))
               {
-                this.vqk.a(39, localb.hje, "", localb.hjd, null, null);
+                this.wvC.a(39, localb.hBn, "", localb.hBm, null, null);
                 AppMethodBeat.o(149380);
                 return;
               }
-              this.vqk.a(parambo);
+              this.wvC.a(parambu);
               AppMethodBeat.o(149380);
               return;
             }
-            this.vqk.a(parambo);
+            this.wvC.a(parambu);
             AppMethodBeat.o(149380);
           }
         });
@@ -148,39 +146,39 @@ public final class d
       AppMethodBeat.o(149385);
       return;
     }
-    this.vqf.add(parambo);
+    this.wvx.add(parambu);
     AppMethodBeat.o(149385);
   }
   
-  public final void dcs()
+  public final void cCF()
   {
     AppMethodBeat.i(149384);
     LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(this.vqf);
-    this.vqf.clear();
+    localLinkedList.addAll(this.wvx);
+    this.wvx.clear();
     if (localLinkedList.size() == 0)
     {
       AppMethodBeat.o(149384);
       return;
     }
     Object localObject2 = new ArrayList();
-    synchronized (vqc)
+    synchronized (wvu)
     {
-      Iterator localIterator = vqc.iterator();
+      Iterator localIterator = wvu.iterator();
       if (localIterator.hasNext()) {
-        ((List)localObject2).add((at)localIterator.next());
+        ((List)localObject2).add((au)localIterator.next());
       }
     }
     ??? = ((List)localObject2).iterator();
     while (((Iterator)???).hasNext())
     {
-      localObject2 = (at)((Iterator)???).next();
-      new ao(((at)localObject2).getLooper()).post(new Runnable()
+      localObject2 = (au)((Iterator)???).next();
+      new ap(((au)localObject2).getLooper()).post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(149379);
-          this.vqg.M(localList);
+          this.wvy.M(localList);
           AppMethodBeat.o(149379);
         }
       });

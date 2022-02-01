@@ -1,33 +1,33 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.d.a.b;
+import d.d.d;
+import d.d.f;
+import d.g.a.m;
 import d.l;
+import d.z;
+import kotlinx.coroutines.a.a;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/NonDisposableHandle;", "Lkotlinx/coroutines/DisposableHandle;", "Lkotlinx/coroutines/ChildHandle;", "()V", "childCancelled", "", "cause", "", "dispose", "", "toString", "", "kotlinx-coroutines-core"})
-public final class by
-  implements az, p
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/LazyStandaloneCoroutine;", "Lkotlinx/coroutines/StandaloneCoroutine;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;)V", "continuation", "onStart", "kotlinx-coroutines-core"})
+final class by
+  extends cg
 {
-  public static final by LSi;
+  private final d<z> NIm;
   
-  static
+  public by(f paramf, m<? super ah, ? super d<? super z>, ? extends Object> paramm)
   {
-    AppMethodBeat.i(118190);
-    LSi = new by();
-    AppMethodBeat.o(118190);
+    super(paramf, false);
+    AppMethodBeat.i(118153);
+    this.NIm = b.a(paramm, this, (d)this);
+    AppMethodBeat.o(118153);
   }
   
-  public final void dispose() {}
-  
-  public final String toString()
+  protected final void onStart()
   {
-    return "NonDisposableHandle";
-  }
-  
-  public final boolean y(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118189);
-    AppMethodBeat.o(118189);
-    return false;
+    AppMethodBeat.i(118152);
+    a.a(this.NIm, (d)this);
+    AppMethodBeat.o(118152);
   }
 }
 

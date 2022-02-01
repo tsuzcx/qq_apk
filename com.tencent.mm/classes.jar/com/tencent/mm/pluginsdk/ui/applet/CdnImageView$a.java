@@ -4,19 +4,19 @@ import android.os.Bundle;
 import android.os.Message;
 import com.tencent.e.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class CdnImageView$a
   implements h
 {
-  private ao handler;
+  private ap handler;
   private String url;
   
-  CdnImageView$a(String paramString, ao paramao)
+  CdnImageView$a(String paramString, ap paramap)
   {
     this.url = paramString;
-    this.handler = paramao;
+    this.handler = paramap;
   }
   
   public final String getKey()
@@ -27,7 +27,7 @@ final class CdnImageView$a
   public final void run()
   {
     AppMethodBeat.i(152165);
-    byte[] arrayOfByte = bs.aLC(this.url);
+    byte[] arrayOfByte = bt.aRi(this.url);
     Message localMessage = Message.obtain();
     Bundle localBundle = new Bundle();
     localBundle.putByteArray("k_data", arrayOfByte);
@@ -39,7 +39,7 @@ final class CdnImageView$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.CdnImageView.a
  * JD-Core Version:    0.7.0.1
  */

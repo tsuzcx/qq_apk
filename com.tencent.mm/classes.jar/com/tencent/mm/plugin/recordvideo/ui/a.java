@@ -4,32 +4,30 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.p;
-import d.g.b.k;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/MediaProgressDialog;", "", "()V", "loading", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "mCancel", "Lkotlin/Function0;", "", "dismiss", "setCancelable", "enable", "", "setOnCancel", "onCancel", "show", "context", "Landroid/content/Context;", "cancelAble", "tip", "", "cancel", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/MediaProgressDialog;", "", "()V", "loading", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "mCancel", "Lkotlin/Function0;", "", "dismiss", "setCancelable", "enable", "", "setOnCancel", "onCancel", "show", "context", "Landroid/content/Context;", "cancelAble", "tip", "", "cancel", "plugin-recordvideo_release"})
 public final class a
 {
-  private p pne;
-  public d.g.a.a<y> wyD;
+  private com.tencent.mm.ui.base.p pQE;
+  public d.g.a.a<z> xHO;
   
   public a()
   {
     AppMethodBeat.i(75872);
-    this.wyD = ((d.g.a.a)a.a.wyE);
+    this.xHO = ((d.g.a.a)a.a.xHP);
     AppMethodBeat.o(75872);
   }
   
-  public final void a(Context paramContext, d.g.a.a<y> parama)
+  public final void a(Context paramContext, d.g.a.a<z> parama)
   {
     AppMethodBeat.i(75870);
-    k.h(paramContext, "context");
-    k.h(parama, "cancel");
-    this.wyD = parama;
-    if (this.pne == null) {
-      this.pne = p.a(paramContext, (CharSequence)paramContext.getString(2131762543), false, 0, (DialogInterface.OnCancelListener)new b(this));
+    d.g.b.p.h(paramContext, "context");
+    d.g.b.p.h(parama, "cancel");
+    this.xHO = parama;
+    if (this.pQE == null) {
+      this.pQE = com.tencent.mm.ui.base.p.a(paramContext, (CharSequence)paramContext.getString(2131762543), false, 0, (DialogInterface.OnCancelListener)new b(this));
     }
     AppMethodBeat.o(75870);
   }
@@ -37,15 +35,15 @@ public final class a
   public final void dismiss()
   {
     AppMethodBeat.i(75871);
-    p localp = this.pne;
+    com.tencent.mm.ui.base.p localp = this.pQE;
     if (localp != null) {
       localp.dismiss();
     }
-    this.pne = null;
+    this.pQE = null;
     AppMethodBeat.o(75871);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
   static final class b
     implements DialogInterface.OnCancelListener
   {
@@ -54,14 +52,14 @@ public final class a
     public final void onCancel(DialogInterface paramDialogInterface)
     {
       AppMethodBeat.i(75869);
-      this.wyF.wyD.invoke();
+      this.xHQ.xHO.invoke();
       AppMethodBeat.o(75869);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.a
  * JD-Core Version:    0.7.0.1
  */

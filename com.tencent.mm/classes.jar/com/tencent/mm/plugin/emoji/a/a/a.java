@@ -9,30 +9,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.model.j.a;
 import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 
 public abstract class a
   extends BaseAdapter
 {
   private final String TAG = "MicroMsg.BaseEmojiListAdapter";
-  private final String fJR = "lock";
+  private final String gds = "lock";
   protected Context mContext;
-  private HashMap<String, com.tencent.mm.plugin.emoji.a.a> oXJ;
-  public AbsListView oXY;
-  public c oXZ;
-  public j.a oYa;
-  protected volatile boolean oYb = false;
-  private int oYc = 0;
-  private int oYd = 0;
+  public AbsListView pBI;
+  public c pBJ;
+  public j.a pBK;
+  protected volatile boolean pBL = false;
+  private int pBM = 0;
+  private int pBN = 0;
+  private HashMap<String, com.tencent.mm.plugin.emoji.a.a> pBt;
   
   public a(Context paramContext)
   {
     this.mContext = paramContext;
     if (this.mContext != null) {
-      this.oXJ = new HashMap();
+      this.pBt = new HashMap();
     }
   }
   
@@ -41,32 +41,24 @@ public abstract class a
     if (paramf == null) {
       return null;
     }
-    if (paramf.oYk == f.a.oYt) {
-      return paramf.oYm.ID + "_cell";
+    if (paramf.pBU == f.a.pCd) {
+      return paramf.pBW.ID + "_cell";
     }
-    return paramf.oYl.ProductID;
+    return paramf.pBV.ProductID;
   }
   
-  public abstract void Bh(int paramInt);
+  public abstract void BP(int paramInt);
   
-  public abstract void Bi(int paramInt);
+  public abstract void BQ(int paramInt);
   
-  public abstract void Bj(int paramInt);
+  public abstract void BR(int paramInt);
   
-  public f Bk(int paramInt)
+  public f BS(int paramInt)
   {
-    if (this.oXZ == null) {
+    if (this.pBJ == null) {
       return null;
     }
-    return this.oXZ.Bp(paramInt);
-  }
-  
-  public final com.tencent.mm.plugin.emoji.a.a XA(String paramString)
-  {
-    if (this.oXJ == null) {
-      return null;
-    }
-    return (com.tencent.mm.plugin.emoji.a.a)this.oXJ.get(paramString);
+    return this.pBJ.BX(paramInt);
   }
   
   protected c a(com.tencent.mm.plugin.emoji.model.f paramf)
@@ -76,10 +68,10 @@ public abstract class a
   
   public final void a(c paramc)
   {
-    if ((paramc == null) || (this.oXZ == paramc)) {
+    if ((paramc == null) || (this.pBJ == paramc)) {
       return;
     }
-    this.oXZ = paramc.cbJ();
+    this.pBJ = paramc.cgn();
     notifyDataSetChanged();
   }
   
@@ -89,14 +81,22 @@ public abstract class a
       return;
     }
     paramf.setStatus(paramInt);
-    this.oXZ.cR(paramString, paramInt);
+    this.pBJ.cU(paramString, paramInt);
+  }
+  
+  public final com.tencent.mm.plugin.emoji.a.a abh(String paramString)
+  {
+    if (this.pBt == null) {
+      return null;
+    }
+    return (com.tencent.mm.plugin.emoji.a.a)this.pBt.get(paramString);
   }
   
   public abstract View b(int paramInt, View paramView, ViewGroup paramViewGroup);
   
   public final void b(final com.tencent.mm.plugin.emoji.model.f paramf)
   {
-    ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {
@@ -113,103 +113,103 @@ public abstract class a
     });
   }
   
-  public void cP(String paramString, int paramInt)
+  public void cS(String paramString, int paramInt)
   {
-    if ((this.oXJ == null) || (this.oXZ == null) || (paramString == null)) {}
+    if ((this.pBt == null) || (this.pBJ == null) || (paramString == null)) {}
     for (;;)
     {
       return;
-      Object localObject = this.oXZ.XB(paramString);
+      Object localObject = this.pBJ.abi(paramString);
       if (localObject != null) {
         a((f)localObject, paramString, paramInt);
       }
-      if ((localObject != null) && (this.oXZ != null) && (((f)localObject).mStatus == -1))
+      if ((localObject != null) && (this.pBJ != null) && (((f)localObject).mStatus == -1))
       {
-        ac.i("MicroMsg.BaseEmojiListAdapter", "force refresh status");
-        ((f)localObject).a(this.oXZ.oYi, this.oXZ.XF(paramString), this.oXZ.XD(paramString));
+        ad.i("MicroMsg.BaseEmojiListAdapter", "force refresh status");
+        ((f)localObject).a(this.pBJ.pBS, this.pBJ.abm(paramString), this.pBJ.abk(paramString));
       }
-      com.tencent.mm.plugin.emoji.a.a locala = XA(paramString);
+      com.tencent.mm.plugin.emoji.a.a locala = abh(paramString);
       if (locala != null)
       {
         if (locala.getProductId() == null) {}
         for (localObject = null; (localObject != null) && (((String)localObject).equals(paramString)); localObject = locala.getProductId())
         {
-          locala.cbB();
+          locala.cgf();
           return;
         }
       }
     }
   }
   
-  public final void cQ(String paramString, int paramInt)
+  public final void cT(String paramString, int paramInt)
   {
-    if ((this.oXJ == null) || (this.oXZ == null) || (paramString == null)) {}
+    if ((this.pBt == null) || (this.pBJ == null) || (paramString == null)) {}
     for (;;)
     {
       return;
-      Object localObject = this.oXZ.XB(paramString);
+      Object localObject = this.pBJ.abi(paramString);
       if (localObject != null)
       {
         if ((paramInt >= 0) && (paramInt < 100))
         {
           a((f)localObject, paramString, 6);
-          ((f)localObject).FG = paramInt;
+          ((f)localObject).Hx = paramInt;
         }
         if (paramInt >= 100) {
           a((f)localObject, paramString, 7);
         }
       }
-      com.tencent.mm.plugin.emoji.a.a locala = XA(paramString);
+      com.tencent.mm.plugin.emoji.a.a locala = abh(paramString);
       if (locala != null)
       {
         if (locala.getProductId() == null) {}
         for (localObject = null; (localObject != null) && (((String)localObject).equals(paramString)); localObject = locala.getProductId())
         {
-          locala.cbB();
+          locala.cgf();
           return;
         }
       }
     }
   }
   
-  protected void cbD()
+  protected void cgh()
   {
-    if (this.oXJ != null) {
-      this.oXJ.clear();
+    if (this.pBt != null) {
+      this.pBt.clear();
     }
     super.notifyDataSetChanged();
-    this.oYb = true;
+    this.pBL = true;
   }
   
-  public abstract int cbE();
+  public abstract int cgi();
   
-  public abstract int cbF();
+  public abstract int cgj();
   
-  public abstract int cbG();
+  public abstract int cgk();
   
   public void clear()
   {
-    if (this.oXJ != null)
+    if (this.pBt != null)
     {
-      this.oXJ.clear();
-      this.oXJ = null;
+      this.pBt.clear();
+      this.pBt = null;
     }
-    if (this.oXZ != null)
+    if (this.pBJ != null)
     {
-      this.oXZ.clear();
-      this.oXZ = null;
+      this.pBJ.clear();
+      this.pBJ = null;
     }
-    this.oYb = false;
+    this.pBL = false;
   }
   
   protected abstract com.tencent.mm.plugin.emoji.a.a d(Context paramContext, View paramView);
   
   public int getCount()
   {
-    if (this.oXZ == null) {
+    if (this.pBJ == null) {
       return 0;
     }
-    return this.oXZ.size();
+    return this.pBJ.size();
   }
   
   public long getItemId(int paramInt)
@@ -223,30 +223,30 @@ public abstract class a
     if (paramView != null) {
       locala1 = (com.tencent.mm.plugin.emoji.a.a)paramView.getTag();
     }
-    f localf = Bk(paramInt);
+    f localf = BS(paramInt);
     com.tencent.mm.plugin.emoji.a.a locala2;
     View localView;
     if (locala1 == null)
     {
       locala2 = d(this.mContext, paramView);
       localView = locala2.getRoot();
-      this.oXJ.put(a(localf), locala2);
+      this.pBt.put(a(localf), locala2);
     }
     for (;;)
     {
       locala2.mPosition = paramInt;
-      locala2.oWK = localf;
+      locala2.pAu = localf;
       paramView = b(paramInt, localView, paramViewGroup);
-      locala2.cbB();
+      locala2.cgf();
       return paramView;
       locala2 = locala1;
       localView = paramView;
-      if (!bs.isNullOrNil(a(localf)))
+      if (!bt.isNullOrNil(a(localf)))
       {
-        if (this.oXJ.containsValue(locala1)) {
-          this.oXJ.remove(locala1.getProductId());
+        if (this.pBt.containsValue(locala1)) {
+          this.pBt.remove(locala1.getProductId());
         }
-        this.oXJ.put(a(localf), locala1);
+        this.pBt.put(a(localf), locala1);
         locala2 = locala1;
         localView = paramView;
       }
@@ -255,23 +255,23 @@ public abstract class a
   
   public void notifyDataSetChanged()
   {
-    this.oYb = false;
-    if (this.oXZ != null)
+    this.pBL = false;
+    if (this.pBJ != null)
     {
-      this.oXZ.notifyDataSetChanged();
-      i = this.oYc;
-      this.oYc = (i + 1);
-      ac.d("MicroMsg.BaseEmojiListAdapter", "xxx data Notify: %d", new Object[] { Integer.valueOf(i) });
+      this.pBJ.notifyDataSetChanged();
+      i = this.pBM;
+      this.pBM = (i + 1);
+      ad.d("MicroMsg.BaseEmojiListAdapter", "xxx data Notify: %d", new Object[] { Integer.valueOf(i) });
     }
-    int i = this.oYd;
-    this.oYd = (i + 1);
-    ac.v("MicroMsg.BaseEmojiListAdapter", "xxx ui Notify: %d", new Object[] { Integer.valueOf(i) });
-    cbD();
+    int i = this.pBN;
+    this.pBN = (i + 1);
+    ad.v("MicroMsg.BaseEmojiListAdapter", "xxx ui Notify: %d", new Object[] { Integer.valueOf(i) });
+    cgh();
   }
   
   public final void refreshView()
   {
-    if (!this.oYb) {
+    if (!this.pBL) {
       return;
     }
     super.notifyDataSetChanged();

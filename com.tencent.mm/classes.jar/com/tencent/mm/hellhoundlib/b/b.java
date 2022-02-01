@@ -6,48 +6,55 @@ import java.util.List;
 
 public final class b
 {
-  private List<Object> gcI;
+  private List<Object> gws;
   
   public b()
   {
     AppMethodBeat.i(168726);
-    this.gcI = new ArrayList();
+    this.gws = new ArrayList();
     AppMethodBeat.o(168726);
   }
   
-  public final Object[] aeE()
+  public final Object[] ahq()
   {
     AppMethodBeat.i(168730);
-    Object[] arrayOfObject = this.gcI.toArray();
-    this.gcI.clear();
+    Object[] arrayOfObject = this.gws.toArray();
+    this.gws.clear();
     AppMethodBeat.o(168730);
     return arrayOfObject;
   }
   
-  public final void bb(Object paramObject)
+  public final void bd(Object paramObject)
   {
     AppMethodBeat.i(168729);
-    this.gcI.add(paramObject);
+    this.gws.add(paramObject);
     AppMethodBeat.o(168729);
   }
   
-  public final void du(boolean paramBoolean)
+  public final void dw(boolean paramBoolean)
   {
     AppMethodBeat.i(168728);
-    bb(Boolean.valueOf(paramBoolean));
+    bd(Boolean.valueOf(paramBoolean));
     AppMethodBeat.o(168728);
   }
   
-  public final void lS(int paramInt)
+  public final void mr(int paramInt)
   {
     AppMethodBeat.i(168727);
-    bb(Integer.valueOf(paramInt));
+    bd(Integer.valueOf(paramInt));
     AppMethodBeat.o(168727);
+  }
+  
+  public final void qY(long paramLong)
+  {
+    AppMethodBeat.i(206533);
+    bd(Long.valueOf(paramLong));
+    AppMethodBeat.o(206533);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.hellhoundlib.b.b
  * JD-Core Version:    0.7.0.1
  */

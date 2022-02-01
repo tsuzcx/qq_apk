@@ -1,15 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.ArrayList;
 
 public final class kq
   extends b
 {
-  public a dmr;
-  public b dms;
+  public a dxE;
   
   public kq()
   {
@@ -18,26 +15,21 @@ public final class kq
   
   private kq(byte paramByte)
   {
-    AppMethodBeat.i(63290);
-    this.dmr = new a();
-    this.dms = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(190901);
+    this.dxE = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(63290);
+    AppMethodBeat.o(190901);
   }
   
   public static final class a
   {
-    public Context context;
-    public ArrayList dmt;
-    public String dmu;
+    public int action;
   }
-  
-  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.kq
  * JD-Core Version:    0.7.0.1
  */

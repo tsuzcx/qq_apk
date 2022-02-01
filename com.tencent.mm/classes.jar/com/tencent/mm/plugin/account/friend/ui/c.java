@@ -5,46 +5,52 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public final class c
   implements View.OnClickListener
 {
   private Context context;
-  private a iMD;
+  private a jfN;
   
   public c(Context paramContext, a parama)
   {
     this.context = paramContext;
-    this.iMD = parama;
+    this.jfN = parama;
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(131231);
+    Object localObject = new b();
+    ((b)localObject).bd(paramView);
+    a.b("com/tencent/mm/plugin/account/friend/ui/InviteContactListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
     paramView = (b)paramView.getTag();
-    String str = paramView.iMF;
+    localObject = paramView.jfP;
     final int i = paramView.position;
-    int j = p.dv(str);
+    int j = p.er((String)localObject);
     new g(this.context, new g.a()
     {
-      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString)
+      public final void h(boolean paramAnonymousBoolean, String paramAnonymousString)
       {
         AppMethodBeat.i(131230);
-        c.a(c.this).fo(paramAnonymousBoolean);
+        c.a(c.this).fs(paramAnonymousBoolean);
         AppMethodBeat.o(131230);
       }
     }).r(new int[] { j });
+    a.a(this, "com/tencent/mm/plugin/account/friend/ui/InviteContactListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(131231);
   }
   
   public static abstract interface a
   {
-    public abstract void fo(boolean paramBoolean);
+    public abstract void fs(boolean paramBoolean);
   }
   
   public static final class b
   {
-    public String iMF;
+    public String jfP;
     public int position;
   }
 }

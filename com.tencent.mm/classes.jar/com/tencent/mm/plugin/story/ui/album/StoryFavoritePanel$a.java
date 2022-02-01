@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.ui.album;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$Companion;", "", "()V", "FAV_ALBUM_UI", "", "getFAV_ALBUM_UI", "()I", "FAV_SELECT_UI", "getFAV_SELECT_UI", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$Companion;", "", "()V", "FAV_ALBUM_UI", "", "getFAV_ALBUM_UI", "()I", "FAV_SELECT_UI", "getFAV_SELECT_UI", "plugin-story_release"})
 public final class StoryFavoritePanel$a {}
 
 

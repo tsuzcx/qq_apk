@@ -6,17 +6,17 @@ import com.google.b.a.e;
 public final class a$v
   extends e
 {
-  public int CW = 0;
-  public int DKi = 0;
-  public int JMr = 0;
-  public int JNA = 0;
-  public int JNB = 0;
+  public int EN = 0;
+  public int Fpp = 0;
+  public int LGa = 0;
+  public int LHj = 0;
+  public int LHk = 0;
   public int ret = 0;
   public String userName = "";
   
   public a$v()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
@@ -24,64 +24,64 @@ public final class a$v
     if (!this.userName.equals("")) {
       paramb.d(2, this.userName);
     }
-    if (this.CW != 0) {
-      paramb.bv(3, this.CW);
+    if (this.EN != 0) {
+      paramb.bx(3, this.EN);
     }
-    if (this.JNA != 0) {
-      paramb.bw(4, this.JNA);
+    if (this.LHj != 0) {
+      paramb.by(4, this.LHj);
     }
     if (this.ret != 0) {
-      paramb.bv(5, this.ret);
+      paramb.bx(5, this.ret);
     }
-    if (this.JNB != 0) {
-      paramb.bv(6, this.JNB);
+    if (this.LHk != 0) {
+      paramb.bx(6, this.LHk);
     }
-    if (this.JMr != 0) {
-      paramb.bw(7, this.JMr);
+    if (this.LGa != 0) {
+      paramb.by(7, this.LGa);
     }
-    if (this.DKi != 0) {
-      paramb.bw(8, this.DKi);
+    if (this.Fpp != 0) {
+      paramb.by(8, this.Fpp);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
     if (!this.userName.equals("")) {
       i = j + b.e(2, this.userName);
     }
     j = i;
-    if (this.CW != 0) {
-      j = i + b.bx(3, this.CW);
+    if (this.EN != 0) {
+      j = i + b.bz(3, this.EN);
     }
     i = j;
-    if (this.JNA != 0) {
-      i = j + b.by(4, this.JNA);
+    if (this.LHj != 0) {
+      i = j + b.bA(4, this.LHj);
     }
     j = i;
     if (this.ret != 0) {
-      j = i + b.bx(5, this.ret);
+      j = i + b.bz(5, this.ret);
     }
     i = j;
-    if (this.JNB != 0) {
-      i = j + b.bx(6, this.JNB);
+    if (this.LHk != 0) {
+      i = j + b.bz(6, this.LHk);
     }
     j = i;
-    if (this.JMr != 0) {
-      j = i + b.by(7, this.JMr);
+    if (this.LGa != 0) {
+      j = i + b.bA(7, this.LGa);
     }
     i = j;
-    if (this.DKi != 0) {
-      i = j + b.by(8, this.DKi);
+    if (this.Fpp != 0) {
+      i = j + b.bA(8, this.Fpp);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.v
  * JD-Core Version:    0.7.0.1
  */

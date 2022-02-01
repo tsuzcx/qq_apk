@@ -1,32 +1,82 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import d.l;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.at;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.o.p.c;
+import java.util.HashMap;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/picker/BasePickerJsapi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentView;", "()V", "isEnableNewPicker", "", "()Z", "setEnableNewPicker", "(Z)V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-default-impl_release"})
-public class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<e>
+public final class a
+  extends at
 {
-  public static final a kHe;
-  boolean kHd = true;
+  private static final int CTRL_INDEX = 530;
+  private static final String NAME = "onLocalServiceEvent";
+  private static a kXc;
   
   static
   {
-    AppMethodBeat.i(138163);
-    kHe = new a((byte)0);
-    AppMethodBeat.o(138163);
+    AppMethodBeat.i(144183);
+    kXc = new a();
+    AppMethodBeat.o(144183);
   }
   
-  public void b(e parame, JSONObject paramJSONObject, int paramInt) {}
+  public static void a(c paramc, p.c paramc1)
+  {
+    AppMethodBeat.i(144178);
+    a(paramc, paramc1, "found");
+    AppMethodBeat.o(144178);
+  }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/picker/BasePickerJsapi$Companion;", "", "()V", "TAG", "", "luggage-commons-jsapi-default-impl_release"})
-  public static final class a {}
+  private static void a(c paramc, p.c paramc1, String paramString)
+  {
+    try
+    {
+      AppMethodBeat.i(144182);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("event", paramString);
+      if ((TextUtils.equals(paramString, "found")) || (TextUtils.equals(paramString, "lost")) || (TextUtils.equals(paramString, "resolveFail")))
+      {
+        localHashMap.put("serviceType", paramc1.hDZ);
+        localHashMap.put("serviceName", paramc1.lWT);
+        if (!TextUtils.equals(paramString, "resolveFail"))
+        {
+          localHashMap.put("ip", paramc1.ip);
+          localHashMap.put("port", Integer.valueOf(paramc1.port));
+          localHashMap.put("attributes", paramc1.lWS);
+        }
+      }
+      kXc.B(localHashMap).h(paramc).bir();
+      AppMethodBeat.o(144182);
+      return;
+    }
+    finally {}
+  }
+  
+  public static void b(c paramc, p.c paramc1)
+  {
+    AppMethodBeat.i(144179);
+    a(paramc, paramc1, "lost");
+    AppMethodBeat.o(144179);
+  }
+  
+  public static void c(c paramc, p.c paramc1)
+  {
+    AppMethodBeat.i(144180);
+    a(paramc, paramc1, "resolveFail");
+    AppMethodBeat.o(144180);
+  }
+  
+  public static void t(c paramc)
+  {
+    AppMethodBeat.i(144181);
+    a(paramc, null, "stopScan");
+    AppMethodBeat.o(144181);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.m.a
  * JD-Core Version:    0.7.0.1
  */

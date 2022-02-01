@@ -1,8 +1,8 @@
 package com.tencent.mm.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import java.util.List;
 import org.json.JSONArray;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 public final class c$b$g
 {
-  public String cGr;
+  public String cRv;
   public String description;
   public String iconUrl;
   
@@ -33,7 +33,7 @@ public final class c$b$g
         JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
         localg.iconUrl = localJSONObject.optString("icon");
         localg.description = localJSONObject.optString("description");
-        localg.cGr = localJSONObject.optString("description_key");
+        localg.cRv = localJSONObject.optString("description_key");
         localLinkedList.add(localg);
         i += 1;
       }
@@ -41,7 +41,7 @@ public final class c$b$g
     }
     catch (Exception paramJSONArray)
     {
-      ac.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bs.m(paramJSONArray) });
+      ad.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bt.n(paramJSONArray) });
       AppMethodBeat.o(116363);
     }
   }

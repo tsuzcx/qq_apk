@@ -17,85 +17,74 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.g.d;
-import com.tencent.mm.plugin.appbrand.ui.u;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.ui.v;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.z;
 
 @SuppressLint({"ViewConstructor"})
 public final class b
   extends FrameLayout
-  implements u
+  implements v
 {
-  private AppBrandRuntime jgY;
-  private com.tencent.mm.plugin.appbrand.widget.actionbar.b maM;
-  private ImageView mqQ;
-  private View mqV;
+  private AppBrandRuntime jzY;
+  private com.tencent.mm.plugin.appbrand.widget.actionbar.b mAX;
+  private View mRA;
+  private ImageView mRw;
   
   public b(Context paramContext, AppBrandRuntime paramAppBrandRuntime)
   {
     super(paramContext);
     AppMethodBeat.i(49339);
-    this.jgY = paramAppBrandRuntime;
+    this.jzY = paramAppBrandRuntime;
     setClickable(true);
     setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
     LayoutInflater.from(getContext()).inflate(2131493064, this);
-    this.mqV = findViewById(2131305152);
-    this.mqQ = ((ImageView)findViewById(2131305792));
+    this.mRA = findViewById(2131305152);
+    this.mRw = ((ImageView)findViewById(2131305792));
     paramContext = (LinearLayout)findViewById(2131296767);
-    this.maM = new com.tencent.mm.plugin.appbrand.widget.actionbar.b(getContext());
-    this.maM.setFullscreenMode(true);
-    paramContext.addView(this.maM.getActionView());
-    this.maM.setNavResetStyleListener(new b.c()
-    {
-      public final void a(ImageView paramAnonymousImageView, View paramAnonymousView1, View paramAnonymousView2)
-      {
-        AppMethodBeat.i(49334);
-        if (paramAnonymousImageView != null)
-        {
-          paramAnonymousImageView.clearColorFilter();
-          paramAnonymousImageView.setImageDrawable(com.tencent.mm.svg.a.a.g(b.this.getContext().getResources(), 2131689682));
-          paramAnonymousView2 = paramAnonymousImageView.getLayoutParams();
-          paramAnonymousView2.height = -1;
-          paramAnonymousView2.width = -2;
-          paramAnonymousImageView.setLayoutParams(paramAnonymousView2);
-        }
-        if (paramAnonymousView1 != null) {
-          paramAnonymousView1.setBackground(null);
-        }
-        AppMethodBeat.o(49334);
-      }
-      
-      public final int bqW()
-      {
-        return mts;
-      }
-    });
-    this.maM.setFullscreenMode(true);
-    this.maM.setForegroundStyle(false);
-    this.maM.hA(false);
-    this.maM.hM(true);
-    this.maM.setBackButtonClickListener(new View.OnClickListener()
+    this.mAX = new com.tencent.mm.plugin.appbrand.widget.actionbar.b(getContext());
+    this.mAX.setFullscreenMode(true);
+    paramContext.addView(this.mAX.getActionView());
+    this.mAX.setNavResetStyleListener(new b.1(this));
+    this.mAX.setFullscreenMode(true);
+    this.mAX.setForegroundStyle(false);
+    this.mAX.hK(false);
+    this.mAX.hW(true);
+    this.mAX.setBackButtonClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(49335);
-        ac.i("MicroMsg.AppBrandThumbLoadingSplash", "splash click close button");
-        g.bxO();
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/weishi/AppBrandThumbLoadingSplash$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        ad.i("MicroMsg.AppBrandThumbLoadingSplash", "splash click close button");
+        g.bBT();
         if (b.a(b.this) != null)
         {
-          com.tencent.mm.plugin.appbrand.g.a(b.a(b.this).mAppId, g.d.jdc);
+          com.tencent.mm.plugin.appbrand.g.a(b.a(b.this).mAppId, g.d.jwl);
           b.a(b.this).close();
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/weishi/AppBrandThumbLoadingSplash$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(49335);
       }
     });
-    g.a(this.jgY, this.mqQ);
+    g.a(this.jzY, this.mRw);
     AppMethodBeat.o(49339);
   }
   
-  public final void boo()
+  public final void dV(String paramString1, String paramString2) {}
+  
+  public final View getView()
   {
-    AppMethodBeat.i(49340);
+    return this;
+  }
+  
+  public final void setProgress(int paramInt) {}
+  
+  public final void u(final d.g.a.a<z> parama)
+  {
+    AppMethodBeat.i(188945);
     post(new Runnable()
     {
       public final void run()
@@ -123,7 +112,10 @@ public final class b
                 {
                   AppMethodBeat.i(49336);
                   b.this.setVisibility(8);
-                  ((ViewGroup)b.3.1.this.mbn).removeView(b.this);
+                  ((ViewGroup)b.3.1.this.mBv).removeView(b.this);
+                  if (b.3.this.mBu != null) {
+                    b.3.this.mBu.invoke();
+                  }
                   AppMethodBeat.o(49336);
                 }
               });
@@ -138,23 +130,14 @@ public final class b
         AppMethodBeat.o(49338);
       }
     });
-    AppMethodBeat.o(49340);
+    AppMethodBeat.o(188945);
   }
   
-  public final void dN(String paramString1, String paramString2) {}
-  
-  public final View getView()
-  {
-    return this;
-  }
-  
-  public final void setProgress(int paramInt) {}
-  
-  public final void tT(int paramInt) {}
+  public final void ux(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ab.b
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.recordvideo.plugin;
 import android.content.Intent;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "", "name", "", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onAttach", "onBackPress", "", "onDetach", "onPause", "onResume", "release", "reset", "setVisibility", "visibility", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "", "name", "", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onAttach", "onBackPress", "", "onDetach", "onPause", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "release", "reset", "setVisibility", "visibility", "plugin-recordvideo_release"})
 public abstract interface t
 {
-  public abstract boolean alO();
+  public abstract boolean aoB();
   
-  public abstract void awk();
+  public abstract void ayX();
   
   public abstract String name();
   
@@ -17,6 +17,8 @@ public abstract interface t
   public abstract void onDetach();
   
   public abstract void onPause();
+  
+  public abstract void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
   
   public abstract void onResume();
   

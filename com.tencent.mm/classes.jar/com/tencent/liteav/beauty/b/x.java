@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import com.tencent.liteav.basic.d.h;
-import com.tencent.liteav.beauty.c.e;
+import com.tencent.liteav.beauty.d.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -20,7 +20,7 @@ public class x
   private static final float[] z = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
   private String B;
   protected a[] r;
-  protected List<c.e> s;
+  protected List<d.f> s;
   protected boolean t;
   protected int u;
   protected ShortBuffer w;

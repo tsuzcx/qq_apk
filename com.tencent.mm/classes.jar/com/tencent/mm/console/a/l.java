@@ -2,14 +2,14 @@ package com.tencent.mm.console.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.y.c;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.z.c;
 
 public final class l
   implements com.tencent.mm.pluginsdk.cmd.a
@@ -74,27 +74,27 @@ public final class l
         break;
       }
     }
-    d.N(paramContext, "wallet", ".pwd.ui.WalletUniversalPayOrderUI");
+    d.Q(paramContext, "wallet", ".pwd.ui.WalletUniversalPayOrderUI");
     AppMethodBeat.o(20191);
     return true;
-    g.agR().agA().set(ah.a.GQa, Integer.valueOf(1));
+    g.ajC().ajl().set(al.a.ICu, Integer.valueOf(1));
     AppMethodBeat.o(20191);
     return true;
-    c.aeH().b(ah.a.GPM, true);
+    c.aht().b(al.a.ICh, true);
     AppMethodBeat.o(20191);
     return true;
     if (paramArrayOfString.length >= 3)
     {
-      i = bs.getInt(paramArrayOfString[2], 0);
-      g.agR().agA().set(ah.a.GQg, Integer.valueOf(i));
+      i = bt.getInt(paramArrayOfString[2], 0);
+      g.ajC().ajl().set(al.a.ICA, Integer.valueOf(i));
     }
     AppMethodBeat.o(20191);
     return true;
     ((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).doRedPacketPreviewLoading(paramContext, "");
     AppMethodBeat.o(20191);
     return true;
-    g.agR().agA().set(ah.a.GQp, Integer.valueOf(0));
-    g.agR().agA().set(ah.a.GQq, Integer.valueOf(0));
+    g.ajC().ajl().set(al.a.ICJ, Integer.valueOf(0));
+    g.ajC().ajl().set(al.a.ICK, Integer.valueOf(0));
     AppMethodBeat.o(20191);
     return true;
   }

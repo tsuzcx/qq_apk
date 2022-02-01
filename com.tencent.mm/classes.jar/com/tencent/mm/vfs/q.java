@@ -20,12 +20,12 @@ import java.util.regex.Pattern;
 
 public final class q
 {
-  private static final Pattern Juv;
+  private static final Pattern Lmd;
   
   static
   {
     AppMethodBeat.i(13334);
-    Juv = Pattern.compile("\\$\\{([A-Za-z0-9_]+)\\}");
+    Lmd = Pattern.compile("\\$\\{([A-Za-z0-9_]+)\\}");
     AppMethodBeat.o(13334);
   }
   
@@ -50,7 +50,7 @@ public final class q
     return paramUri;
   }
   
-  static String Q(String paramString, Map<String, String> paramMap)
+  static String S(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(13325);
     if (paramString == null)
@@ -58,7 +58,7 @@ public final class q
       AppMethodBeat.o(13325);
       return null;
     }
-    Matcher localMatcher = Juv.matcher(paramString);
+    Matcher localMatcher = Lmd.matcher(paramString);
     StringBuilder localStringBuilder;
     int i;
     if (localMatcher.find())
@@ -106,7 +106,7 @@ public final class q
     {
       try
       {
-        paramString1 = paramFileSystem2.cS(paramString2, false);
+        paramString1 = paramFileSystem2.cX(paramString2, false);
       }
       finally
       {
@@ -155,7 +155,7 @@ public final class q
     AppMethodBeat.o(13331);
   }
   
-  static String aSz(String paramString)
+  static String aYy(String paramString)
   {
     AppMethodBeat.i(13327);
     int i = paramString.lastIndexOf('/');
@@ -172,15 +172,15 @@ public final class q
   static String b(Uri paramUri, boolean paramBoolean)
   {
     AppMethodBeat.i(13328);
-    paramUri = a.ghk().a(paramUri, null);
+    paramUri = a.gzU().a(paramUri, null);
     if (!paramUri.valid())
     {
       AppMethodBeat.o(13328);
       return null;
     }
-    if ((paramUri.Jsh.fxC() & 0x2) != 0)
+    if ((paramUri.LjM.fOp() & 0x2) != 0)
     {
-      paramUri = paramUri.Jsh.cV(paramUri.path, paramBoolean);
+      paramUri = paramUri.LjM.da(paramUri.path, paramBoolean);
       AppMethodBeat.o(13328);
       return paramUri;
     }
@@ -239,7 +239,7 @@ public final class q
     }
   }
   
-  static String m(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  static String o(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = 1;
     AppMethodBeat.i(13326);
@@ -366,12 +366,12 @@ public final class q
   static abstract class a<From, To>
     implements Iterator<To>
   {
-    private To JuA;
-    private Iterator<? extends To> JuB;
-    private final Iterator<? extends From> Juw;
-    protected final boolean Jux;
-    private From Juy;
-    private To Juz;
+    private final Iterator<? extends From> Lme;
+    protected final boolean Lmf;
+    private From Lmg;
+    private To Lmh;
+    private To Lmi;
+    private Iterator<? extends To> Lmj;
     
     static
     {
@@ -385,55 +385,55 @@ public final class q
     
     a(Iterator<? extends From> paramIterator)
     {
-      this.Juw = paramIterator;
-      this.Jux = false;
+      this.Lme = paramIterator;
+      this.Lmf = false;
     }
     
     a(Iterator<? extends From> paramIterator, boolean paramBoolean)
     {
-      this.Juw = paramIterator;
-      this.Jux = paramBoolean;
+      this.Lme = paramIterator;
+      this.Lmf = paramBoolean;
     }
     
-    protected abstract Iterator<? extends To> M(From paramFrom, To paramTo);
+    protected abstract Iterator<? extends To> O(From paramFrom, To paramTo);
     
     protected abstract To convert(From paramFrom);
     
     public boolean hasNext()
     {
-      while (this.JuA == null)
+      while (this.Lmi == null)
       {
-        if (this.Juy != null)
+        if (this.Lmg != null)
         {
-          this.JuB = M(this.Juy, this.Juz);
-          this.Juy = null;
+          this.Lmj = O(this.Lmg, this.Lmh);
+          this.Lmg = null;
         }
-        if (this.JuB != null)
+        if (this.Lmj != null)
         {
-          if (this.JuB.hasNext())
+          if (this.Lmj.hasNext())
           {
-            this.JuA = this.JuB.next();
+            this.Lmi = this.Lmj.next();
             continue;
           }
-          this.JuB = null;
-          if (this.Jux)
+          this.Lmj = null;
+          if (this.Lmf)
           {
-            this.JuA = this.Juz;
+            this.Lmi = this.Lmh;
             continue;
           }
         }
-        assert ((this.Juy == null) && (this.JuB == null) && (this.JuA == null));
-        if (!this.Juw.hasNext())
+        assert ((this.Lmg == null) && (this.Lmj == null) && (this.Lmi == null));
+        if (!this.Lme.hasNext())
         {
-          this.Juz = null;
+          this.Lmh = null;
           return false;
         }
-        this.Juy = this.Juw.next();
-        if (this.Juy != null)
+        this.Lmg = this.Lme.next();
+        if (this.Lmg != null)
         {
-          this.Juz = convert(this.Juy);
-          if (!this.Jux) {
-            this.JuA = this.Juz;
+          this.Lmh = convert(this.Lmg);
+          if (!this.Lmf) {
+            this.Lmi = this.Lmh;
           }
         }
       }
@@ -442,11 +442,11 @@ public final class q
     
     public To next()
     {
-      if ((this.JuA == null) && (!hasNext())) {
+      if ((this.Lmi == null) && (!hasNext())) {
         throw new NoSuchElementException();
       }
-      Object localObject = this.JuA;
-      this.JuA = null;
+      Object localObject = this.Lmi;
+      this.Lmi = null;
       return localObject;
     }
   }

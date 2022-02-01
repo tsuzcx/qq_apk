@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.scanner;
 
-import com.tencent.mm.g.c.ff;
+import com.tencent.mm.g.c.fp;
 
 public abstract interface d
   extends com.tencent.mm.kernel.b.d
 {
-  public abstract ff getTranslationResult(String paramString);
+  public abstract fp getTranslationResult(String paramString);
 }
 
 

@@ -1,81 +1,77 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.view.MenuItem;
+import android.os.Looper;
+import com.tencent.luggage.d.p;
+import com.tencent.luggage.d.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.plugin.webview.e.c;
+import com.tencent.mm.plugin.webview.e.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import java.util.HashMap;
 
-public class n
+public final class n
 {
-  f CkZ;
-  com.tencent.mm.plugin.webview.luggage.b.n Cml;
-  com.tencent.mm.ui.widget.a.e ngY;
+  private static HashMap<String, Integer> DPT;
   
-  public n(f paramf, com.tencent.mm.plugin.webview.luggage.b.n paramn)
+  static
   {
-    AppMethodBeat.i(78411);
-    this.CkZ = paramf;
-    this.Cml = paramn;
-    this.ngY = new com.tencent.mm.ui.widget.a.e(this.CkZ.mContext, 0, false);
-    this.ngY.ISu = new n.c()
-    {
-      public final void onCreateMMMenu(l paramAnonymousl)
-      {
-        AppMethodBeat.i(78407);
-        n localn = n.this;
-        localn.Cml.b(localn.CkZ.mContext, localn.CkZ, paramAnonymousl);
-        AppMethodBeat.o(78407);
-      }
-    };
-    this.ngY.Jfj = new n.c()
-    {
-      public final void onCreateMMMenu(l paramAnonymousl)
-      {
-        AppMethodBeat.i(78408);
-        n localn = n.this;
-        localn.Cml.c(localn.CkZ.mContext, localn.CkZ, paramAnonymousl);
-        AppMethodBeat.o(78408);
-      }
-    };
-    this.ngY.ISv = new n.d()
-    {
-      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(78409);
-        n.this.d(paramAnonymousMenuItem);
-        n.this.ngY.bmi();
-        AppMethodBeat.o(78409);
-      }
-    };
-    this.ngY.Jfl = new n.d()
-    {
-      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(78410);
-        n.this.d(paramAnonymousMenuItem);
-        n.this.ngY.bmi();
-        AppMethodBeat.o(78410);
-      }
-    };
-    this.ngY.cED();
-    AppMethodBeat.o(78411);
+    AppMethodBeat.i(78406);
+    DPT = new HashMap();
+    AppMethodBeat.o(78406);
   }
   
-  protected final void d(MenuItem paramMenuItem)
+  public static int a(p paramp, c paramc)
   {
-    AppMethodBeat.i(78412);
-    this.Cml.a(this.CkZ.mContext, this.CkZ, paramMenuItem);
-    AppMethodBeat.o(78412);
+    AppMethodBeat.i(207897);
+    int i = r.a(aj.getContext(), paramp).intValue();
+    e.a(paramp.hashCode(), paramc);
+    AppMethodBeat.o(207897);
+    return i;
   }
   
-  public final void eAJ()
+  public static void remove(int paramInt)
   {
-    AppMethodBeat.i(78413);
-    if (this.ngY != null) {
-      this.ngY.bmi();
+    AppMethodBeat.i(78405);
+    p localp = r.b(Integer.valueOf(paramInt));
+    if (localp != null)
+    {
+      e.WR(localp.hashCode());
+      if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
+        try
+        {
+          localp.destroy();
+          AppMethodBeat.o(78405);
+          return;
+        }
+        catch (Exception localException)
+        {
+          ad.printErrStackTrace("MicroMsg.LuggageWebCoreStash", localException, "", new Object[0]);
+          AppMethodBeat.o(78405);
+          return;
+        }
+      }
+      aq.f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(78403);
+          try
+          {
+            this.tTv.destroy();
+            AppMethodBeat.o(78403);
+            return;
+          }
+          catch (Exception localException)
+          {
+            ad.printErrStackTrace("MicroMsg.LuggageWebCoreStash", localException, "", new Object[0]);
+            AppMethodBeat.o(78403);
+          }
+        }
+      });
     }
-    AppMethodBeat.o(78413);
+    AppMethodBeat.o(78405);
   }
 }
 

@@ -2,13 +2,13 @@ package com.tencent.mm.modelappbrand;
 
 public abstract interface f
 {
+  public abstract void Ca(String paramString);
+  
+  public abstract void Cb(String paramString);
+  
   public abstract void exit();
   
   public abstract void restart();
-  
-  public abstract void zb(String paramString);
-  
-  public abstract void zc(String paramString);
 }
 
 

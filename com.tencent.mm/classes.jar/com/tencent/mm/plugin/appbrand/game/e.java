@@ -5,7 +5,7 @@ import com.tencent.luggage.sdk.b.a.d.a;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.appbrand.v8.m.c;
-import com.tencent.mm.g.b.a.hh;
+import com.tencent.mm.g.b.a.il;
 import com.tencent.mm.plugin.appbrand.appcache.ModulePkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPluginPkgInfo;
@@ -15,17 +15,16 @@ import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaPluginCodeInfo;
 import com.tencent.mm.plugin.appbrand.jsruntime.t;
 import com.tencent.mm.plugin.appbrand.jsruntime.v;
+import com.tencent.mm.plugin.appbrand.report.h;
 import com.tencent.mm.plugin.appbrand.report.quality.a;
-import com.tencent.mm.plugin.appbrand.utils.q.b;
 import com.tencent.mm.plugin.appbrand.utils.r;
 import com.tencent.mm.plugin.appbrand.utils.r.a;
 import com.tencent.mm.plugin.appbrand.x.b.b;
 import com.tencent.mm.plugin.appbrand.z.i;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pointers.PBool;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -41,37 +40,37 @@ final class e
   
   private int a(String paramString, com.tencent.mm.plugin.appbrand.jsruntime.g paramg)
   {
-    AppMethodBeat.i(186519);
-    ac.i("MicroMsg.WAGameJsContextInterfaceWC", "injectPluginCodeNewLogic");
+    AppMethodBeat.i(188218);
+    ad.i("MicroMsg.WAGameJsContextInterfaceWC", "injectPluginCodeNewLogic");
     if (paramString.equals("game.js"))
     {
-      Object localObject = ((com.tencent.luggage.sdk.b.a.c.c)this.ceh).CO().DB().jEg.jpf;
+      Object localObject = ((com.tencent.luggage.sdk.b.a.c.c)this.cox).En().Fa().jYh.jIZ;
       paramString = null;
       if (localObject != null) {
-        paramString = ((WxaRuntimeModulePluginListMap)localObject).Iw("__APP__");
+        paramString = ((WxaRuntimeModulePluginListMap)localObject).LN("__APP__");
       }
       while ((paramString != null) && (paramString.size() > 0))
       {
-        ac.i("MicroMsg.WAGameJsContextInterfaceWC", "client inject pluginCode size:%s", new Object[] { Integer.valueOf(paramString.size()) });
+        ad.i("MicroMsg.WAGameJsContextInterfaceWC", "client inject pluginCode size:%s", new Object[] { Integer.valueOf(paramString.size()) });
         paramString = paramString.iterator();
         while (paramString.hasNext())
         {
           localObject = (WxaPluginPkgInfo)paramString.next();
           List localList = ((WxaPluginPkgInfo)localObject).contexts;
           if (localList != null) {
-            ac.d("MicroMsg.WAGameJsContextInterfaceWC", "multiPkg contexts size:%d,contexts:%s", new Object[] { Integer.valueOf(localList.size()), Arrays.toString(localList.toArray()) });
+            ad.d("MicroMsg.WAGameJsContextInterfaceWC", "multiPkg contexts size:%d,contexts:%s", new Object[] { Integer.valueOf(localList.size()), Arrays.toString(localList.toArray()) });
           }
           if ((localList != null) && (localList.contains(Integer.valueOf(0))))
           {
             localObject = ((WxaPluginPkgInfo)localObject).prefixPath + "/plugin.js";
-            ac.d("MicroMsg.WAGameJsContextInterfaceWC", "pluginCodefilePath:%s", new Object[] { localObject });
+            ad.d("MicroMsg.WAGameJsContextInterfaceWC", "pluginCodefilePath:%s", new Object[] { localObject });
             super.a(paramg, (String)localObject);
           }
         }
-        ac.e("MicroMsg.WAGameJsContextInterfaceWC", "pluginCodeList wxaRuntimeModulePluginListMap null");
+        ad.e("MicroMsg.WAGameJsContextInterfaceWC", "pluginCodeList wxaRuntimeModulePluginListMap null");
       }
     }
-    AppMethodBeat.o(186519);
+    AppMethodBeat.o(188218);
     return 1;
   }
   
@@ -79,17 +78,17 @@ final class e
   {
     AppMethodBeat.i(174725);
     String str2 = "plugin.js_".concat(String.valueOf(paramString1));
-    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
+    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(174725);
       return false;
     }
-    ac.i("MicroMsg.WAGameJsContextInterfaceWC", "provider:%s,version:%s,pluginCodePath:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString3 });
+    ad.i("MicroMsg.WAGameJsContextInterfaceWC", "provider:%s,version:%s,pluginCodePath:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString3 });
     long l = System.currentTimeMillis();
-    final PBool localPBool = new PBool();
-    final i locali = new i();
-    final PInt localPInt = new PInt();
-    Object localObject = ((com.tencent.luggage.sdk.b.a.c.c)this.ceh).CO().DB().jEg.jpd;
+    PBool localPBool = new PBool();
+    i locali = new i();
+    PInt localPInt = new PInt();
+    Object localObject = ((com.tencent.luggage.sdk.b.a.c.c)this.cox).En().Fa().jYh.jIX;
     String str1 = "";
     localObject = ((LinkedList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
@@ -99,34 +98,17 @@ final class e
         str1 = localModulePkgInfo.pkgPath;
       }
     }
-    r.a(((com.tencent.luggage.sdk.b.a.c.c)CX()).CO(), paramg, str1, "plugin.js", str2, paramString2, r.a.mov, new q.b()
-    {
-      public final void a(m.c paramAnonymousc)
-      {
-        locali.value = paramAnonymousc;
-        localPInt.value = paramAnonymousc.sourceLength;
-      }
-      
-      public final void bZ(String paramAnonymousString)
-      {
-        localPBool.value = false;
-      }
-      
-      public final void onSuccess(String paramAnonymousString)
-      {
-        localPBool.value = true;
-      }
-    });
+    r.a(((com.tencent.luggage.sdk.b.a.c.c)Ew()).En(), paramg, str1, "plugin.js", str2, paramString2, r.a.mOX, new e.1(this, localPBool, locali, localPInt));
     int i;
     if (localPBool.value) {
-      if ((((com.tencent.luggage.sdk.b.a.c.c)CX()).aUl()) || (((com.tencent.luggage.sdk.b.a.c.c)CX()).isRunning()))
+      if ((((com.tencent.luggage.sdk.b.a.c.c)Ew()).aXu()) || (((com.tencent.luggage.sdk.b.a.c.c)Ew()).isRunning()))
       {
-        paramString2 = ((com.tencent.luggage.sdk.b.a.c.c)CX()).CO();
+        paramString2 = ((com.tencent.luggage.sdk.b.a.c.c)Ew()).En();
         if (paramString2 != null)
         {
           i = paramString2.hashCode();
-          ac.i("MicroMsg.WAGameJsContextInterfaceWC", "[QualitySystem] %s runtime.hashCode = [%d], scriptLen = [%d]", new Object[] { paramString1, Integer.valueOf(i), Integer.valueOf(localPInt.value) });
-          paramg = this.ceh;
+          ad.i("MicroMsg.WAGameJsContextInterfaceWC", "[QualitySystem] %s runtime.hashCode = [%d], scriptLen = [%d]", new Object[] { paramString1, Integer.valueOf(i), Integer.valueOf(localPInt.value) });
+          paramg = this.cox;
           int j = localPInt.value;
           if (paramString2 == null) {
             break label402;
@@ -134,12 +116,12 @@ final class e
           i = paramString2.hashCode();
           label332:
           a.a(paramg, paramString3, j, paramString1, paramInt, l, i, (m.c)locali.value);
-          b(e.a.bYX, "plugin " + paramString1 + " inject success!");
+          b(e.a.cjp, "plugin " + paramString1 + " inject success!");
         }
       }
       else
       {
-        gc(true);
+        gh(true);
       }
     }
     for (;;)
@@ -151,39 +133,39 @@ final class e
       label402:
       i = -1;
       break label332;
-      b(e.a.bYZ, "plugin " + paramString1 + " inject fail!");
-      gc(false);
+      b(e.a.cjr, "plugin " + paramString1 + " inject fail!");
+      gh(false);
     }
   }
   
   private void b(e.a parama, String paramString)
   {
     AppMethodBeat.i(45086);
-    com.tencent.luggage.game.d.a.a.b localb = (com.tencent.luggage.game.d.a.a.b)((com.tencent.luggage.sdk.b.a.c.c)CX()).Q(com.tencent.luggage.game.d.a.a.b.class);
+    com.tencent.luggage.game.d.a.a.b localb = (com.tencent.luggage.game.d.a.a.b)((com.tencent.luggage.sdk.b.a.c.c)Ew()).Q(com.tencent.luggage.game.d.a.a.b.class);
     if (localb != null) {
-      localb.Bi().a(parama, paramString);
+      localb.CH().a(parama, paramString);
     }
     AppMethodBeat.o(45086);
   }
   
-  private static void gc(boolean paramBoolean)
+  private static void gh(boolean paramBoolean)
   {
     AppMethodBeat.i(45087);
-    h.wUl.idkeyStat(370L, 40L, 1L, false);
+    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(370L, 40L, 1L, false);
     if (paramBoolean)
     {
-      h.wUl.idkeyStat(370L, 49L, 1L, false);
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(370L, 49L, 1L, false);
       AppMethodBeat.o(45087);
       return;
     }
-    h.wUl.idkeyStat(370L, 50L, 1L, false);
+    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(370L, 50L, 1L, false);
     AppMethodBeat.o(45087);
   }
   
-  public final int BB()
+  public final int Da()
   {
     AppMethodBeat.i(45089);
-    int i = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(com.tencent.mm.plugin.expt.a.b.a.pYz, 0);
+    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qDK, 0);
     AppMethodBeat.o(45089);
     return i;
   }
@@ -191,26 +173,26 @@ final class e
   public final int a(com.tencent.mm.plugin.appbrand.jsruntime.g paramg, String paramString)
   {
     AppMethodBeat.i(174724);
-    ac.i("MicroMsg.WAGameJsContextInterfaceWC", "hy: injectWxaScript from js context interface: %s %d", new Object[] { paramString, Integer.valueOf(paramg.bmw()) });
-    boolean bool = Boolean.parseBoolean(((com.tencent.luggage.sdk.b.a.c.c)this.ceh).aSt().HM("injectGameContextPlugin"));
-    ac.i("MicroMsg.WAGameJsContextInterfaceWC", "injectGameContextPlugin :%b, abtest:%b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(u.aWz()) });
-    Object localObject3 = ((com.tencent.luggage.sdk.b.a.c.c)this.ceh).CO().DB().ccS;
+    ad.i("MicroMsg.WAGameJsContextInterfaceWC", "hy: injectWxaScript from js context interface: %s %d", new Object[] { paramString, Integer.valueOf(paramg.bqh()) });
+    boolean bool = Boolean.parseBoolean(((com.tencent.luggage.sdk.b.a.c.c)this.cox).aVF().Le("injectGameContextPlugin"));
+    ad.i("MicroMsg.WAGameJsContextInterfaceWC", "injectGameContextPlugin :%b, abtest:%b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(u.aZU()) });
+    Object localObject3 = ((com.tencent.luggage.sdk.b.a.c.c)this.cox).En().Fa().cni;
     Object localObject1;
     Object localObject2;
     int i;
     if ((localObject3 != null) && (((List)localObject3).size() > 0))
     {
       Object localObject4;
-      if (((!u.aWz()) || (!bool)) && (paramString.equals("game.js")))
+      if (((!u.aZU()) || (!bool)) && (paramString.equals("game.js")))
       {
-        ac.i("MicroMsg.WAGameJsContextInterfaceWC", "client inject pluginCode size:%s", new Object[] { Integer.valueOf(((List)localObject3).size()) });
+        ad.i("MicroMsg.WAGameJsContextInterfaceWC", "client inject pluginCode size:%s", new Object[] { Integer.valueOf(((List)localObject3).size()) });
         localObject1 = ((List)localObject3).iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (WxaAttributes.WxaPluginCodeInfo)((Iterator)localObject1).next();
           localObject4 = ((WxaAttributes.WxaPluginCodeInfo)localObject2).contexts;
           if (localObject4 != null) {
-            ac.d("MicroMsg.WAGameJsContextInterfaceWC", "multiPkg contexts size:%d,contexts:%s", new Object[] { Integer.valueOf(((List)localObject4).size()), Arrays.toString(((List)localObject4).toArray()) });
+            ad.d("MicroMsg.WAGameJsContextInterfaceWC", "multiPkg contexts size:%d,contexts:%s", new Object[] { Integer.valueOf(((List)localObject4).size()), Arrays.toString(((List)localObject4).toArray()) });
           }
           if ((localObject4 != null) && (((List)localObject4).contains(Integer.valueOf(0))))
           {
@@ -254,7 +236,7 @@ final class e
         return 1;
         super.a(paramg, paramString);
         continue;
-        if ((!u.aWz()) || (!bool)) {
+        if ((!u.aZU()) || (!bool)) {
           a(paramString, paramg);
         }
         super.a(paramg, paramString);
@@ -276,25 +258,25 @@ final class e
     {
       if (paramBoolean)
       {
-        if ((((com.tencent.luggage.sdk.b.a.c.c)CX()).aUl()) || (((com.tencent.luggage.sdk.b.a.c.c)CX()).isRunning()))
+        if ((((com.tencent.luggage.sdk.b.a.c.c)Ew()).aXu()) || (((com.tencent.luggage.sdk.b.a.c.c)Ew()).isRunning()))
         {
           String str2;
           int k;
           if ((paramObject instanceof m.c))
           {
             paramObject = (m.c)paramObject;
-            localObject1 = ((com.tencent.luggage.sdk.b.a.c.c)CX()).CO();
+            localObject1 = ((com.tencent.luggage.sdk.b.a.c.c)Ew()).En();
             localObject2 = parama.scriptName;
             if (localObject1 == null) {
               break label232;
             }
             i = localObject1.hashCode();
-            ac.i("MicroMsg.WAGameJsContextInterfaceWC", "[QualitySystem] %s runtime.hashCode = [%d]", new Object[] { localObject2, Integer.valueOf(i) });
-            localObject2 = this.ceh;
+            ad.i("MicroMsg.WAGameJsContextInterfaceWC", "[QualitySystem] %s runtime.hashCode = [%d]", new Object[] { localObject2, Integer.valueOf(i) });
+            localObject2 = this.cox;
             str1 = parama.scriptName;
-            j = parama.cdf;
-            str2 = parama.jlU;
-            k = parama.aBM;
+            j = parama.cnw;
+            str2 = parama.jFK;
+            k = parama.aDD;
             if (localObject1 == null) {
               break label238;
             }
@@ -304,8 +286,8 @@ final class e
           for (i = localObject1.hashCode();; i = -1)
           {
             a.a((com.tencent.mm.plugin.appbrand.d)localObject2, str1, j, str2, k, paramLong1, i, paramObject);
-            b(e.a.bYX, "plugin " + parama.jlU + " inject success!");
-            gc(true);
+            b(e.a.cjp, "plugin " + parama.jFK + " inject success!");
+            gh(true);
             AppMethodBeat.o(174726);
             return;
             paramObject = null;
@@ -317,8 +299,8 @@ final class e
       }
       else
       {
-        b(e.a.bYZ, "plugin " + parama.jlU + " inject fail!");
-        gc(false);
+        b(e.a.cjr, "plugin " + parama.jFK + " inject fail!");
+        gh(false);
         AppMethodBeat.o(174726);
       }
     }
@@ -326,28 +308,28 @@ final class e
     {
       if ("WAGameSubContext.js".equals(localObject1))
       {
-        if ((paramBoolean) && ((((com.tencent.luggage.sdk.b.a.c.c)CX()).aUl()) || (((com.tencent.luggage.sdk.b.a.c.c)CX()).isRunning())))
+        if ((paramBoolean) && ((((com.tencent.luggage.sdk.b.a.c.c)Ew()).aXu()) || (((com.tencent.luggage.sdk.b.a.c.c)Ew()).isRunning())))
         {
           if (!(paramObject instanceof m.c)) {
             break label538;
           }
           paramObject = (m.c)paramObject;
-          a.btI();
-          localObject1 = com.tencent.mm.plugin.appbrand.report.quality.b.g(CX()).ou((String)localObject1);
-          ((hh)localObject1).eeO = parama.cdf;
-          if ((paramObject == null) || (paramObject.codeCacheStatus < 0) || (paramObject.codeCacheStatus >= v.leN.length)) {
+          a.bxN();
+          localObject1 = com.tencent.mm.plugin.appbrand.report.quality.b.j(Ew()).qY((String)localObject1);
+          ((il)localObject1).evB = parama.cnw;
+          if ((paramObject == null) || (paramObject.codeCacheStatus < 0) || (paramObject.codeCacheStatus >= v.lBM.length)) {
             break label544;
           }
-          l = v.leN[paramObject.codeCacheStatus];
+          l = v.lBM[paramObject.codeCacheStatus];
           label409:
-          ((hh)localObject1).eeR = l;
-          ((hh)localObject1).eeS = 1L;
+          ((il)localObject1).evE = l;
+          ((il)localObject1).evF = 1L;
           if (paramObject == null) {
             break label552;
           }
           l = paramObject.flatJSCompileCost;
           label434:
-          ((hh)localObject1).eeT = l;
+          ((il)localObject1).evG = l;
           if (paramObject == null) {
             break label558;
           }
@@ -356,18 +338,18 @@ final class e
         label544:
         label552:
         label558:
-        for (long l = paramObject.cNu;; l = 0L)
+        for (long l = paramObject.cYK;; l = 0L)
         {
-          ((hh)localObject1).efl = l;
-          ((hh)localObject1).md(paramLong1);
-          ((hh)localObject1).me(paramLong2);
-          ((hh)localObject1).mc(((hh)localObject1).edx - ((hh)localObject1).edw);
-          ((hh)localObject1).aHZ();
-          h.wUl.idkeyStat(778L, 17L, 1L, false);
+          ((il)localObject1).evX = l;
+          ((il)localObject1).ob(paramLong1);
+          ((il)localObject1).oc(paramLong2);
+          ((il)localObject1).oa(((il)localObject1).euc - ((il)localObject1).eub);
+          ((il)localObject1).aLk();
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(778L, 17L, 1L, false);
           if (!paramBoolean) {
             break label564;
           }
-          h.wUl.idkeyStat(778L, 19L, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(778L, 19L, 1L, false);
           AppMethodBeat.o(174726);
           return;
           paramObject = null;
@@ -378,30 +360,30 @@ final class e
           break label434;
         }
         label564:
-        h.wUl.idkeyStat(778L, 18L, 1L, false);
-        com.tencent.mm.plugin.appbrand.report.g.bP(((com.tencent.luggage.sdk.b.a.c.c)CX()).getAppId(), 24);
-        com.tencent.mm.plugin.appbrand.report.g.b(((com.tencent.luggage.sdk.b.a.c.c)CX()).getAppId(), ((com.tencent.luggage.sdk.b.a.c.c)CX()).CO().DB().jEg.pkgVersion, ((com.tencent.luggage.sdk.b.a.c.c)CX()).CO().DB().jEg.jpa, 778, 18);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(778L, 18L, 1L, false);
+        h.bS(((com.tencent.luggage.sdk.b.a.c.c)Ew()).getAppId(), 24);
+        h.b(((com.tencent.luggage.sdk.b.a.c.c)Ew()).getAppId(), ((com.tencent.luggage.sdk.b.a.c.c)Ew()).En().Fa().jYh.pkgVersion, ((com.tencent.luggage.sdk.b.a.c.c)Ew()).En().Fa().jYh.jIU, 778, 18);
         AppMethodBeat.o(174726);
         return;
       }
       if (((String)localObject1).endsWith("game.js"))
       {
-        if ((((com.tencent.luggage.sdk.b.a.c.c)CX()).aUl()) || (((com.tencent.luggage.sdk.b.a.c.c)CX()).isRunning()))
+        if ((((com.tencent.luggage.sdk.b.a.c.c)Ew()).aXu()) || (((com.tencent.luggage.sdk.b.a.c.c)Ew()).isRunning()))
         {
           if (!(paramObject instanceof m.c)) {
             break label860;
           }
           paramObject = (m.c)paramObject;
-          localObject1 = ((com.tencent.luggage.sdk.b.a.c.c)CX()).CO();
+          localObject1 = ((com.tencent.luggage.sdk.b.a.c.c)Ew()).En();
           if (localObject1 == null) {
             break label866;
           }
           i = localObject1.hashCode();
           label731:
-          ac.i("MicroMsg.WAGameJsContextInterfaceWC", "[QualitySystem] app-service.js runtime.hashCode = [%d]", new Object[] { Integer.valueOf(i) });
-          localObject2 = this.ceh;
+          ad.i("MicroMsg.WAGameJsContextInterfaceWC", "[QualitySystem] app-service.js runtime.hashCode = [%d]", new Object[] { Integer.valueOf(i) });
+          localObject2 = this.cox;
           str1 = parama.scriptName;
-          j = parama.cdf;
+          j = parama.cnw;
           if (localObject1 == null) {
             break label872;
           }
@@ -409,17 +391,17 @@ final class e
           label781:
           a.a((com.tencent.mm.plugin.appbrand.d)localObject2, str1, j, "", 0, paramLong1, i, paramObject);
         }
-        h.wUl.idkeyStat(778L, 21L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(778L, 21L, 1L, false);
         if (!paramBoolean) {
           break label878;
         }
-        h.wUl.idkeyStat(778L, 23L, 1L, false);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(778L, 23L, 1L, false);
       }
     }
     for (;;)
     {
-      com.tencent.mm.plugin.appbrand.x.b.a.bug();
-      com.tencent.mm.plugin.appbrand.x.b.b("WeAppLaunch", ((com.tencent.luggage.sdk.b.a.c.c)CX()).getAppId(), b.b.lXn);
+      com.tencent.mm.plugin.appbrand.x.b.a.byl();
+      com.tencent.mm.plugin.appbrand.x.b.b("WeAppLaunch", ((com.tencent.luggage.sdk.b.a.c.c)Ew()).getAppId(), b.b.mxc);
       AppMethodBeat.o(174726);
       return;
       label860:
@@ -432,15 +414,15 @@ final class e
       i = -1;
       break label781;
       label878:
-      h.wUl.idkeyStat(778L, 22L, 1L, false);
-      com.tencent.mm.plugin.appbrand.report.g.bP(((com.tencent.luggage.sdk.b.a.c.c)CX()).getAppId(), 24);
-      com.tencent.mm.plugin.appbrand.report.g.b(((com.tencent.luggage.sdk.b.a.c.c)CX()).getAppId(), ((com.tencent.luggage.sdk.b.a.c.c)CX()).CO().DB().jEg.pkgVersion, ((com.tencent.luggage.sdk.b.a.c.c)CX()).CO().DB().jEg.jpa, 778, 22);
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(778L, 22L, 1L, false);
+      h.bS(((com.tencent.luggage.sdk.b.a.c.c)Ew()).getAppId(), 24);
+      h.b(((com.tencent.luggage.sdk.b.a.c.c)Ew()).getAppId(), ((com.tencent.luggage.sdk.b.a.c.c)Ew()).En().Fa().jYh.pkgVersion, ((com.tencent.luggage.sdk.b.a.c.c)Ew()).En().Fa().jYh.jIU, 778, 22);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.e
  * JD-Core Version:    0.7.0.1
  */

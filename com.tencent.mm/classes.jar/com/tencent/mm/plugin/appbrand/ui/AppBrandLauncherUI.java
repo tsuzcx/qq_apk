@@ -30,20 +30,19 @@ import com.tencent.mm.plugin.appbrand.ab;
 import com.tencent.mm.plugin.appbrand.appusage.t;
 import com.tencent.mm.plugin.appbrand.appusage.t.d;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.n;
+import com.tencent.mm.plugin.appbrand.service.o;
 import com.tencent.mm.plugin.appbrand.ui.recents.RecentsFolderActivityContext;
 import com.tencent.mm.plugin.appbrand.ui.recommend.c;
 import com.tencent.mm.plugin.appbrand.ui.recommend.k;
-import com.tencent.mm.plugin.websearch.api.z;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragmentActivity.a;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.h.b;
 import java.util.Locale;
 
@@ -52,24 +51,24 @@ public final class AppBrandLauncherUI
   extends MMActivity
   implements com.tencent.mm.plugin.appbrand.ui.launcher.a
 {
-  public static int mby;
-  public static final int mbz;
+  public static int mBG;
+  public static final int mBH;
   private int enterScene;
-  private int mbA = -1;
-  private boolean mbB;
-  private RecentsFolderActivityContext mbC;
-  private boolean mbD = false;
-  public t.d mbE;
+  private int mBI = -1;
+  private boolean mBJ;
+  private RecentsFolderActivityContext mBK;
+  private boolean mBL = false;
+  public t.d mBM;
   
   static
   {
     AppMethodBeat.i(48653);
-    mby = ai.getContext().getResources().getColor(2131100705);
-    mbz = ab.jhK;
+    mBG = aj.getContext().getResources().getColor(2131100705);
+    mBH = ab.jAT;
     AppMethodBeat.o(48653);
   }
   
-  private Fragment bva()
+  private Fragment bzg()
   {
     AppMethodBeat.i(48638);
     Object localObject = super.getSupportFragmentManager().findFragmentById(16908290);
@@ -83,21 +82,21 @@ public final class AppBrandLauncherUI
     return localObject;
   }
   
-  private void bvb()
+  private void bzh()
   {
     AppMethodBeat.i(180388);
     AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
     localAppBrandStatObject.scene = 1112;
     finish();
     overridePendingTransition(0, 0);
-    com.tencent.mm.plugin.appbrand.a.f localf = new com.tencent.mm.plugin.appbrand.a.f();
+    com.tencent.mm.plugin.appbrand.api.f localf = new com.tencent.mm.plugin.appbrand.api.f();
     String str;
-    if (com.tencent.mm.protocal.d.DIc >= 654314752)
+    if (com.tencent.mm.protocal.d.Fnj >= 654314752)
     {
-      localf.jjg = new k();
-      ac.i("MicroMsg.AppBrandLauncherUI", "openFakeNativeRecommendUI, wechatNativeExtraData=%s", new Object[] { localf.jjg.aUZ() });
-      localObject = e.mbO;
-      str = e.bve();
+      localf.jCO = new k();
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandLauncherUI", "openFakeNativeRecommendUI, wechatNativeExtraData=%s", new Object[] { localf.jCO.aYt() });
+      localObject = f.mBW;
+      str = f.bzk();
       if (!"wxb6d22f922f37b35a".equals(str)) {
         break label199;
       }
@@ -107,16 +106,16 @@ public final class AppBrandLauncherUI
     {
       localf.username = ((String)localObject);
       localf.appId = str;
-      localf.hxM = 0;
+      localf.hQh = 0;
       localf.version = 0;
       localf.scene = localAppBrandStatObject.scene;
-      ((n)com.tencent.mm.kernel.g.ab(n.class)).a(ai.getContext(), localf);
-      this.mbD = true;
+      ((o)com.tencent.mm.kernel.g.ab(o.class)).a(aj.getContext(), localf);
+      this.mBL = true;
       AppMethodBeat.o(180388);
       return;
       localObject = String.format("?showOrderEntrance=%d", new Object[] { Integer.valueOf(1) });
-      localf.jjf = ((String)localObject);
-      ac.i("MicroMsg.AppBrandLauncherUI", "openFakeNativeRecommendUI, enterPath:%s", new Object[] { localObject });
+      localf.jCN = ((String)localObject);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandLauncherUI", "openFakeNativeRecommendUI, enterPath:%s", new Object[] { localObject });
       break;
     }
   }
@@ -139,14 +138,14 @@ public final class AppBrandLauncherUI
     return -1;
   }
   
-  public final void hx(boolean paramBoolean)
+  public final void hE(boolean paramBoolean)
   {
     AppMethodBeat.i(48637);
-    if (this.mbC != null) {
-      this.mbC.hx(paramBoolean);
+    if (this.mBK != null) {
+      this.mBK.hE(paramBoolean);
     }
-    if ((paramBoolean) && (this.mbE != null)) {
-      this.mbE.jvr[4] = "1";
+    if ((paramBoolean) && (this.mBM != null)) {
+      this.mBM.jPk[4] = "1";
     }
     AppMethodBeat.o(48637);
   }
@@ -155,13 +154,13 @@ public final class AppBrandLauncherUI
   {
     AppMethodBeat.i(48646);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.mbA = paramInt1;
+    this.mBI = paramInt1;
     if ((paramInt2 == -1) && (paramInt1 == 1))
     {
       String str = paramIntent.getStringExtra("key_session_id");
       paramInt1 = paramIntent.getIntExtra("ftsbizscene", 0);
-      ac.i("MicroMsg.AppBrandLauncherUI", "onActivityResult oreh report weAppSearchClickStream(13929) statSessionId:%s, StatKeyWordId:%s", new Object[] { str, com.tencent.mm.modelappbrand.b.hrW });
-      com.tencent.mm.plugin.report.service.h.wUl.f(13929, new Object[] { str, com.tencent.mm.modelappbrand.b.hrW, Integer.valueOf(2), Integer.valueOf(paramInt1) });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandLauncherUI", "onActivityResult oreh report weAppSearchClickStream(13929) statSessionId:%s, StatKeyWordId:%s", new Object[] { str, com.tencent.mm.modelappbrand.b.hKo });
+      com.tencent.mm.plugin.report.service.g.yhR.f(13929, new Object[] { str, com.tencent.mm.modelappbrand.b.hKo, Integer.valueOf(2), Integer.valueOf(paramInt1) });
     }
     AppMethodBeat.o(48646);
   }
@@ -183,31 +182,31 @@ public final class AppBrandLauncherUI
       AppMethodBeat.o(48641);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.appusage.i.aYt())
+    if (!com.tencent.mm.plugin.appbrand.appusage.i.bbR())
     {
       finish();
       AppMethodBeat.o(48641);
       return;
     }
     paramBundle = getLifecycle();
-    Object localObject = com.tencent.mm.plugin.appbrand.report.d.lRj;
-    paramBundle.addObserver(com.tencent.mm.plugin.appbrand.report.d.b(this));
+    Object localObject = com.tencent.mm.plugin.appbrand.report.e.mqZ;
+    paramBundle.addObserver(com.tencent.mm.plugin.appbrand.report.e.b(this));
     this.enterScene = getIntent().getIntExtra("extra_enter_scene", -1);
-    overridePendingTransition(MMFragmentActivity.a.mnC, MMFragmentActivity.a.mnD);
+    overridePendingTransition(MMFragmentActivity.a.mOe, MMFragmentActivity.a.mOf);
     boolean bool1 = getIntent().getBooleanExtra("extra_show_recents_from_task_bar", false);
-    ac.i("MicroMsg.AppBrandLauncherUI", "onCreate showRecentsListTagOnTop:%b", new Object[] { Boolean.valueOf(bool1) });
-    paramBundle = e.mbO;
-    if ((e.JW().getBoolean("KEY_FORCE_WE_USE_FAKE_NATIVE", false)) && (!bool1))
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandLauncherUI", "onCreate showRecentsListTagOnTop:%b", new Object[] { Boolean.valueOf(bool1) });
+    paramBundle = f.mBW;
+    if ((f.Lv().getBoolean("KEY_FORCE_WE_USE_FAKE_NATIVE", false)) && (!bool1))
     {
-      ac.i("MicroMsg.AppBrandLauncherUI", "onCreate isForceOpenWeUseFakeNative=TRUE");
-      bvb();
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandLauncherUI", "onCreate isForceOpenWeUseFakeNative=TRUE");
+      bzh();
       AppMethodBeat.o(48641);
       return;
     }
-    paramBundle = e.mbO;
-    boolean bool2 = e.JW().getBoolean("KEY_FORCE_NATIVE_LAUNCHER", false);
-    this.mbB = getIntent().getBooleanExtra("extra_show_recommend", false);
-    boolean bool3 = c.bwR();
+    paramBundle = f.mBW;
+    boolean bool2 = f.Lv().getBoolean("KEY_FORCE_NATIVE_LAUNCHER", false);
+    this.mBJ = getIntent().getBooleanExtra("extra_show_recommend", false);
+    boolean bool3 = c.bAX();
     setTitleBarDoubleClickListener(new Runnable()
     {
       public final void run()
@@ -224,7 +223,7 @@ public final class AppBrandLauncherUI
           AppMethodBeat.o(48623);
           return;
         }
-        localFragment.bvc();
+        localFragment.bzi();
         AppMethodBeat.o(48623);
       }
     });
@@ -239,13 +238,13 @@ public final class AppBrandLauncherUI
         return true;
       }
     }, 2131689490);
-    if (com.tencent.mm.plugin.appbrand.v.a.btX()) {
-      addIconOptionMenu(AppBrandLauncherUI.a.mbK.ordinal(), 2131764452, 2131689494, new MenuItem.OnMenuItemClickListener()new View.OnLongClickListener
+    if (com.tencent.mm.plugin.appbrand.v.a.byc()) {
+      addIconOptionMenu(AppBrandLauncherUI.a.mBS.ordinal(), 2131764452, 2131689494, new MenuItem.OnMenuItemClickListener()new View.OnLongClickListener
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(48626);
-          ((com.tencent.mm.plugin.websearch.api.h)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.websearch.api.h.class)).a(ai.getContext(), new Runnable()
+          ((com.tencent.mm.plugin.websearch.api.i)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.websearch.api.i.class)).a(aj.getContext(), new Runnable()
           {
             public final void run()
             {
@@ -258,8 +257,8 @@ public final class AppBrandLauncherUI
               for (int i = 52;; i = 201)
               {
                 AppBrandLauncherUI localAppBrandLauncherUI = AppBrandLauncherUI.this;
-                com.tencent.mm.plugin.appbrand.d.a locala = com.tencent.mm.plugin.appbrand.d.a.jBh;
-                localAppBrandLauncherUI.startActivityForResult(com.tencent.mm.plugin.appbrand.d.a.H(AppBrandLauncherUI.this, i), 1, localBundle);
+                com.tencent.mm.plugin.appbrand.c.a locala = com.tencent.mm.plugin.appbrand.c.a.jVc;
+                localAppBrandLauncherUI.startActivityForResult(com.tencent.mm.plugin.appbrand.c.a.I(AppBrandLauncherUI.this, i), 1, localBundle);
                 AppMethodBeat.o(48625);
                 return;
               }
@@ -273,10 +272,13 @@ public final class AppBrandLauncherUI
         public final boolean onLongClick(final View paramAnonymousView)
         {
           AppMethodBeat.i(48628);
-          if (bt.eWo())
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandLauncherUI$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+          if (bu.flY())
           {
             paramAnonymousView = AppBrandLauncherUI.this;
-            com.tencent.mm.ui.base.h.a(paramAnonymousView, paramAnonymousView.getResources().getString(2131755951), "", "", 2147483647, new h.b()
+            h.a(paramAnonymousView, paramAnonymousView.getResources().getString(2131755951), "", "", 2147483647, new h.b()
             {
               public final boolean onFinish(CharSequence paramAnonymous2CharSequence)
               {
@@ -286,7 +288,7 @@ public final class AppBrandLauncherUI
                   paramAnonymous2CharSequence = paramAnonymous2CharSequence.toString();
                   AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
                   localAppBrandStatObject.scene = 1001;
-                  com.tencent.mm.plugin.appbrand.launching.e.f.lqh.a(paramAnonymousView, "", paramAnonymous2CharSequence, null, 0, 0, localAppBrandStatObject, null, null);
+                  com.tencent.mm.plugin.appbrand.launching.e.f.lNC.a(paramAnonymousView, "", paramAnonymous2CharSequence, null, 0, 0, localAppBrandStatObject, null, null);
                   AppMethodBeat.o(48627);
                   return true;
                 }
@@ -294,52 +296,54 @@ public final class AppBrandLauncherUI
                 return false;
               }
             });
+            com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/appbrand/ui/AppBrandLauncherUI$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
             AppMethodBeat.o(48628);
             return true;
           }
+          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/appbrand/ui/AppBrandLauncherUI$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
           AppMethodBeat.o(48628);
           return false;
         }
       });
     }
-    mby = getContext().getResources().getColor(2131100705);
-    setActionbarColor(mby);
-    findViewById(16908290).setBackgroundColor(mby);
-    ac.i("MicroMsg.AppBrandLauncherUI", "mShowRecommend:%b, recommendDataState:%b, isForceOpenNativeLauncherUI:%b", new Object[] { Boolean.valueOf(this.mbB), Boolean.valueOf(bool3), Boolean.valueOf(bool2) });
-    if ((this.mbB) && (bool3) && (!bool2) && (!bool1))
+    mBG = getContext().getResources().getColor(2131100705);
+    setActionbarColor(mBG);
+    findViewById(16908290).setBackgroundColor(mBG);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandLauncherUI", "mShowRecommend:%b, recommendDataState:%b, isForceOpenNativeLauncherUI:%b", new Object[] { Boolean.valueOf(this.mBJ), Boolean.valueOf(bool3), Boolean.valueOf(bool2) });
+    if ((this.mBJ) && (bool3) && (!bool2) && (!bool1))
     {
-      bvb();
+      bzh();
       AppMethodBeat.o(48641);
       return;
     }
     paramBundle = getLifecycle();
     localObject = new RecentsFolderActivityContext(this);
-    this.mbC = ((RecentsFolderActivityContext)localObject);
+    this.mBK = ((RecentsFolderActivityContext)localObject);
     paramBundle.addObserver((LifecycleObserver)localObject);
-    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(465L, 0L, 1L, false);
-    if (!com.tencent.mm.plugin.appbrand.v.a.btX())
+    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(465L, 0L, 1L, false);
+    if (!com.tencent.mm.plugin.appbrand.v.a.byc())
     {
-      ac.i("MicroMsg.AppBrandSearchLogic", "do not need to update search input hint, shouldShowSearchEntrance is false");
-      com.tencent.mm.cq.d.fBf();
-      if (t.aYL()) {
-        this.mbE = new t.d();
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandSearchLogic", "do not need to update search input hint, shouldShowSearchEntrance is false");
+      com.tencent.mm.cq.d.fSu();
+      if (t.bcj()) {
+        this.mBM = new t.d();
       }
-      t.aYN();
-      com.tencent.mm.plugin.appbrand.appusage.i.aYu();
+      t.bcl();
+      com.tencent.mm.plugin.appbrand.appusage.i.bbS();
       AppMethodBeat.o(48641);
       return;
     }
     long l2 = System.currentTimeMillis();
-    paramBundle = com.tencent.mm.kernel.g.agR().agA().get(ah.a.GLv, null);
+    paramBundle = com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IxN, null);
     if ((paramBundle != null) && ((paramBundle instanceof Long))) {}
     for (long l1 = ((Long)paramBundle).longValue();; l1 = 0L)
     {
       paramBundle = Locale.getDefault().getLanguage();
-      localObject = com.tencent.mm.kernel.g.agR().agA().get(ah.a.GLq, null);
+      localObject = com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IxI, null);
       if ((l2 - l1 >= 3600000L) || (localObject == null) || (!localObject.equals(paramBundle))) {
-        com.tencent.mm.kernel.g.agQ().ghe.a(new com.tencent.mm.plugin.appbrand.o.b(), 0);
+        com.tencent.mm.kernel.g.ajB().gAO.a(new com.tencent.mm.plugin.appbrand.n.b(), 0);
       }
-      ac.v("MicroMsg.AppBrandSearchLogic", "tryToUpdateSearchInputHint, lang(o : %s, c : %s), lastUpdateTime(o : %s, c : %s)", new Object[] { localObject, paramBundle, Long.valueOf(l1), Long.valueOf(l2) });
+      com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.AppBrandSearchLogic", "tryToUpdateSearchInputHint, lang(o : %s, c : %s), lastUpdateTime(o : %s, c : %s)", new Object[] { localObject, paramBundle, Long.valueOf(l1), Long.valueOf(l2) });
       break;
     }
   }
@@ -357,13 +361,13 @@ public final class AppBrandLauncherUI
     AppMethodBeat.i(48645);
     super.onDestroy();
     com.tencent.mm.plugin.appbrand.appusage.q.clearData();
-    if (this.mbE != null)
+    if (this.mBM != null)
     {
-      t.d locald = this.mbE;
-      com.tencent.mm.plugin.report.service.h.wUl.f(14113, (Object[])locald.jvr);
-      this.mbE = null;
+      t.d locald = this.mBM;
+      com.tencent.mm.plugin.report.service.g.yhR.f(14113, (Object[])locald.jPk);
+      this.mBM = null;
     }
-    com.tencent.mm.kiss.a.b.ahS();
+    com.tencent.mm.kiss.a.b.akD();
     AppMethodBeat.o(48645);
   }
   
@@ -371,13 +375,13 @@ public final class AppBrandLauncherUI
   {
     AppMethodBeat.i(48643);
     Object localObject;
-    if (this.mbA > 0)
+    if (this.mBI > 0)
     {
-      if (this.mbA != 1) {
+      if (this.mBI != 1) {
         break label87;
       }
       i = 7;
-      this.mbA = 0;
+      this.mBI = 0;
       localObject = (Fragment)super.getSupportFragmentManager().findFragmentById(16908290);
       if (localObject != null) {
         ((Fragment)localObject).setScene(i);
@@ -387,23 +391,23 @@ public final class AppBrandLauncherUI
     if (this.enterScene == 13) {}
     for (int i = 52;; i = 201)
     {
-      localObject = com.tencent.mm.modelappbrand.b.aAy();
-      z.uT(0L);
-      z.co(i, (String)localObject);
+      localObject = com.tencent.mm.modelappbrand.b.aDB();
+      com.tencent.mm.plugin.websearch.api.ad.Cl(0L);
+      com.tencent.mm.plugin.websearch.api.ad.cu(i, (String)localObject);
       AppMethodBeat.o(48643);
       return;
       label87:
-      if (this.mbA == 2)
+      if (this.mBI == 2)
       {
         i = 6;
         break;
       }
-      if (this.mbA == 3)
+      if (this.mBI == 3)
       {
         i = 9;
         break;
       }
-      if (this.mbA == 4)
+      if (this.mBI == 4)
       {
         i = 12;
         break;
@@ -417,7 +421,7 @@ public final class AppBrandLauncherUI
   {
     AppMethodBeat.i(48644);
     super.onStop();
-    if (this.mbD)
+    if (this.mBL)
     {
       finish();
       overridePendingTransition(0, 0);
@@ -449,7 +453,7 @@ public final class AppBrandLauncherUI
   {
     AppMethodBeat.i(48650);
     super.startActivityForResult(paramIntent, paramInt, paramBundle);
-    paramBundle = bva();
+    paramBundle = bzg();
     if (paramBundle != null) {
       paramBundle.a(paramIntent, paramInt);
     }
@@ -459,16 +463,16 @@ public final class AppBrandLauncherUI
   public static abstract class Fragment
     extends Fragment
   {
-    private final ao jdu = new ao(Looper.getMainLooper());
+    private final ap jwD = new ap(Looper.getMainLooper());
+    public String mBR;
     public View mContentView;
     public int mScene;
-    public String mbJ;
     
     protected void a(Intent paramIntent, int paramInt) {}
     
-    public void bvc() {}
+    public void bzi() {}
     
-    public final <T extends View> T bvd()
+    public final <T extends View> T bzj()
     {
       return this.mContentView.findViewById(16908298);
     }
@@ -496,12 +500,12 @@ public final class AppBrandLauncherUI
     public void onDestroy()
     {
       super.onDestroy();
-      this.jdu.removeCallbacksAndMessages(null);
+      this.jwD.removeCallbacksAndMessages(null);
     }
     
     public final void postOnUiThread(Runnable paramRunnable)
     {
-      this.jdu.post(paramRunnable);
+      this.jwD.post(paramRunnable);
     }
     
     public final void runOnUiThread(Runnable paramRunnable)

@@ -10,9 +10,9 @@ class StIDKeyDataInfo
 {
   public static final Parcelable.Creator<StIDKeyDataInfo> CREATOR;
   public long key;
-  public long pnx;
+  public long pQX;
   public long value;
-  public boolean wTB;
+  public boolean yhl;
   
   static
   {
@@ -26,13 +26,13 @@ class StIDKeyDataInfo
   protected StIDKeyDataInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(143929);
-    this.pnx = paramParcel.readLong();
+    this.pQX = paramParcel.readLong();
     this.key = paramParcel.readLong();
     this.value = paramParcel.readLong();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.wTB = bool;
+      this.yhl = bool;
       AppMethodBeat.o(143929);
       return;
       bool = false;
@@ -47,10 +47,10 @@ class StIDKeyDataInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(143928);
-    paramParcel.writeLong(this.pnx);
+    paramParcel.writeLong(this.pQX);
     paramParcel.writeLong(this.key);
     paramParcel.writeLong(this.value);
-    if (this.wTB) {}
+    if (this.yhl) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);

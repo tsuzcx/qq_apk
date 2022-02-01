@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.ui.view;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/StoryMsgListView$Companion;", "", "()V", "VIEW_MODE_BUBBLE", "", "getVIEW_MODE_BUBBLE", "()I", "VIEW_MODE_COMMENT", "getVIEW_MODE_COMMENT", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/StoryMsgListView$Companion;", "", "()V", "VIEW_MODE_BUBBLE", "", "getVIEW_MODE_BUBBLE", "()I", "VIEW_MODE_COMMENT", "getVIEW_MODE_COMMENT", "plugin-story_release"})
 public final class StoryMsgListView$a {}
 
 

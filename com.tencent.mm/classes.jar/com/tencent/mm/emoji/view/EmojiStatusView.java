@@ -6,26 +6,26 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.loader.d.i.a;
 import com.tencent.mm.emoji.loader.e;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/view/EmojiStatusView;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "emojiInfo", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "setEmojiInfo", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "gameUseCover", "", "getGameUseCover", "()Z", "setGameUseCover", "(Z)V", "status", "getStatus", "()I", "setStatus", "(I)V", "statusListener", "Lcom/tencent/mm/emoji/view/EmojiStatusView$StatusListener;", "getStatusListener", "()Lcom/tencent/mm/emoji/view/EmojiStatusView$StatusListener;", "setStatusListener", "(Lcom/tencent/mm/emoji/view/EmojiStatusView$StatusListener;)V", "destroy", "", "onDetachedFromWindow", "onResult", "success", "reload", "setStatusNotify", "Companion", "StatusListener", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/view/EmojiStatusView;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "emojiInfo", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "setEmojiInfo", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "gameUseCover", "", "getGameUseCover", "()Z", "setGameUseCover", "(Z)V", "status", "getStatus", "()I", "setStatus", "(I)V", "statusListener", "Lcom/tencent/mm/emoji/view/EmojiStatusView$StatusListener;", "getStatusListener", "()Lcom/tencent/mm/emoji/view/EmojiStatusView$StatusListener;", "setStatusListener", "(Lcom/tencent/mm/emoji/view/EmojiStatusView$StatusListener;)V", "destroy", "", "onDetachedFromWindow", "onResult", "success", "reload", "setStatusNotify", "Companion", "StatusListener", "plugin-emojisdk_release"})
 public class EmojiStatusView
   extends BaseEmojiView
   implements i.a
 {
-  public static final EmojiStatusView.a fWX;
-  private EmojiInfo fPB;
-  private boolean fWP = true;
-  private b fWW;
+  public static final EmojiStatusView.a gqy;
+  private EmojiInfo gjb;
+  private boolean gqq = true;
+  private b gqx;
   private int status;
   
   static
   {
     AppMethodBeat.i(105804);
-    fWX = new EmojiStatusView.a((byte)0);
+    gqy = new EmojiStatusView.a((byte)0);
     AppMethodBeat.o(105804);
   }
   
@@ -44,7 +44,7 @@ public class EmojiStatusView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void de(boolean paramBoolean)
+  public final void dg(boolean paramBoolean)
   {
     AppMethodBeat.i(105802);
     if (paramBoolean) {}
@@ -58,12 +58,12 @@ public class EmojiStatusView
   
   public EmojiInfo getEmojiInfo()
   {
-    return this.fPB;
+    return this.gjb;
   }
   
   public final boolean getGameUseCover()
   {
-    return this.fWP;
+    return this.gqq;
   }
   
   public final int getStatus()
@@ -73,16 +73,16 @@ public class EmojiStatusView
   
   public final b getStatusListener()
   {
-    return this.fWW;
+    return this.gqx;
   }
   
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(105803);
-    ac.i("MicroMsg.EmojiStatusView", "destroy: ".concat(String.valueOf(this)));
-    e locale = e.fOZ;
+    ad.i("MicroMsg.EmojiStatusView", "destroy: ".concat(String.valueOf(this)));
+    e locale = e.giz;
     e.cv((View)this);
-    this.fWW = null;
+    this.gqx = null;
     super.onDetachedFromWindow();
     AppMethodBeat.o(105803);
   }
@@ -93,8 +93,8 @@ public class EmojiStatusView
     Object localObject = getEmojiInfo();
     if (localObject != null)
     {
-      ac.i("MicroMsg.EmojiStatusView", "reload: " + ((EmojiInfo)localObject).JC());
-      if ((this.fWP) && ((((EmojiInfo)localObject).getGroup() == EmojiGroupInfo.Jsq) || (((EmojiInfo)localObject).getGroup() == EmojiInfo.Jsx) || (((EmojiInfo)localObject).getGroup() == EmojiInfo.Jsw)))
+      ad.i("MicroMsg.EmojiStatusView", "reload: " + ((EmojiInfo)localObject).Lb());
+      if ((this.gqq) && ((((EmojiInfo)localObject).getGroup() == EmojiGroupInfo.OeL) || (((EmojiInfo)localObject).getGroup() == EmojiInfo.OeS) || (((EmojiInfo)localObject).getGroup() == EmojiInfo.OeR)))
       {
         setStatusNotify(1);
         setImageBitmap(((EmojiInfo)localObject).z(getContext(), 300));
@@ -102,13 +102,13 @@ public class EmojiStatusView
         return;
       }
       setStatusNotify(0);
-      e locale = e.fOZ;
+      e locale = e.giz;
       e.a((EmojiInfo)localObject, (BaseEmojiView)this, (i.a)this);
       AppMethodBeat.o(105800);
       return;
     }
-    ac.i("MicroMsg.EmojiStatusView", "reload: emojiInfo is null");
-    localObject = e.fOZ;
+    ad.i("MicroMsg.EmojiStatusView", "reload: emojiInfo is null");
+    localObject = e.giz;
     e.cv((View)this);
     AppMethodBeat.o(105800);
   }
@@ -116,14 +116,14 @@ public class EmojiStatusView
   public void setEmojiInfo(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105799);
-    this.fPB = paramEmojiInfo;
+    this.gjb = paramEmojiInfo;
     reload();
     AppMethodBeat.o(105799);
   }
   
   public final void setGameUseCover(boolean paramBoolean)
   {
-    this.fWP = paramBoolean;
+    this.gqq = paramBoolean;
   }
   
   public final void setStatus(int paramInt)
@@ -133,27 +133,27 @@ public class EmojiStatusView
   
   public final void setStatusListener(b paramb)
   {
-    this.fWW = paramb;
+    this.gqx = paramb;
   }
   
   public final void setStatusNotify(int paramInt)
   {
     AppMethodBeat.i(105801);
     this.status = paramInt;
-    b localb = this.fWW;
+    b localb = this.gqx;
     if (localb != null)
     {
-      localb.lD(paramInt);
+      localb.md(paramInt);
       AppMethodBeat.o(105801);
       return;
     }
     AppMethodBeat.o(105801);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/view/EmojiStatusView$StatusListener;", "", "onStatus", "", "status", "", "plugin-emojisdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/view/EmojiStatusView$StatusListener;", "", "onStatus", "", "status", "", "plugin-emojisdk_release"})
   public static abstract interface b
   {
-    public abstract void lD(int paramInt);
+    public abstract void md(int paramInt);
   }
 }
 

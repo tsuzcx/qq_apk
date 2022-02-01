@@ -2,40 +2,39 @@ package com.tencent.mm.plugin.choosemsgfile.b.b;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.o;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
 
 public class g
   extends d
 {
-  private String ooL;
+  private String oSg;
   
-  public g(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, bo parambo)
+  public g(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, bu parambu)
   {
-    super(paramg, parambo);
+    super(paramg, parambu);
   }
   
   public final void a(View paramView, a parama)
   {
     AppMethodBeat.i(123275);
-    com.tencent.mm.plugin.choosemsgfile.b.d.c.a(this.ooI.bUS().getContext(), paramView, parama);
+    com.tencent.mm.plugin.choosemsgfile.b.d.c.a(this.oSd.bZx().getContext(), paramView, parama);
     AppMethodBeat.o(123275);
   }
   
-  protected String azl()
+  protected String aCp()
   {
     AppMethodBeat.i(123274);
-    if (this.ooL == null)
+    if (this.oSg == null)
     {
-      this.ooL = o.aFx().b(this.ooz.field_imgPath, false, false);
-      if ((!bs.isNullOrNil(this.ooL)) && (!this.ooL.endsWith("hd")) && (i.eA(this.ooL + "hd"))) {
-        this.ooL += "hd";
+      this.oSg = q.aIF().c(this.oRU.field_imgPath, false, false);
+      if ((!bt.isNullOrNil(this.oSg)) && (!this.oSg.endsWith("hd")) && (com.tencent.mm.vfs.i.fv(this.oSg + "hd"))) {
+        this.oSg += "hd";
       }
     }
-    String str = this.ooL;
+    String str = this.oSg;
     AppMethodBeat.o(123274);
     return str;
   }
@@ -47,7 +46,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.g
  * JD-Core Version:    0.7.0.1
  */

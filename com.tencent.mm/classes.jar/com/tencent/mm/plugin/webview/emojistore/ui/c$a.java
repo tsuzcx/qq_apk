@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.emojistore.ui;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/emojistore/ui/SosSimilarEmojiDataManager$Companion;", "", "()V", "TAG", "", "plugin-webview_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/emojistore/ui/SosSimilarEmojiDataManager$Companion;", "", "()V", "TAG", "", "plugin-webview_release"})
 public final class c$a {}
 
 

@@ -10,12 +10,12 @@ import java.util.Map;
 
 public final class b
 {
-  public final io.flutter.plugin.a.b<Object> KMU;
+  public final io.flutter.plugin.a.b<Object> MDR;
   
   public b(DartExecutor paramDartExecutor)
   {
     AppMethodBeat.i(10233);
-    this.KMU = new io.flutter.plugin.a.b(paramDartExecutor, "flutter/keyevent", f.KOW);
+    this.MDR = new io.flutter.plugin.a.b(paramDartExecutor, "flutter/keyevent", f.MFT);
     AppMethodBeat.o(10233);
   }
   
@@ -23,68 +23,68 @@ public final class b
   {
     AppMethodBeat.i(10234);
     paramMap.put("flags", Integer.valueOf(parama.flags));
-    paramMap.put("plainCodePoint", Integer.valueOf(parama.KMZ));
-    paramMap.put("codePoint", Integer.valueOf(parama.KNa));
-    paramMap.put("keyCode", Integer.valueOf(parama.jhT));
-    paramMap.put("scanCode", Integer.valueOf(parama.KNc));
-    paramMap.put("metaState", Integer.valueOf(parama.KNd));
-    if (parama.KNb != null) {
-      paramMap.put("character", parama.KNb.toString());
+    paramMap.put("plainCodePoint", Integer.valueOf(parama.MDW));
+    paramMap.put("codePoint", Integer.valueOf(parama.MDX));
+    paramMap.put("keyCode", Integer.valueOf(parama.jBc));
+    paramMap.put("scanCode", Integer.valueOf(parama.MDZ));
+    paramMap.put("metaState", Integer.valueOf(parama.MEa));
+    if (parama.MDY != null) {
+      paramMap.put("character", parama.MDY.toString());
     }
-    paramMap.put("source", Integer.valueOf(parama.dbL));
-    paramMap.put("vendorId", Integer.valueOf(parama.KNe));
-    paramMap.put("productId", Integer.valueOf(parama.KNf));
-    paramMap.put("deviceId", Integer.valueOf(parama.KMY));
+    paramMap.put("source", Integer.valueOf(parama.dnh));
+    paramMap.put("vendorId", Integer.valueOf(parama.MEb));
+    paramMap.put("productId", Integer.valueOf(parama.MEc));
+    paramMap.put("deviceId", Integer.valueOf(parama.MDV));
     paramMap.put("repeatCount", Integer.valueOf(parama.repeatCount));
     AppMethodBeat.o(10234);
   }
   
   public static final class a
   {
-    public final int KMY;
-    public final int KMZ;
-    public final int KNa;
-    public final Character KNb;
-    public final int KNc;
-    public final int KNd;
-    public final int KNe;
-    public final int KNf;
-    public final int dbL;
+    public final int MDV;
+    public final int MDW;
+    public final int MDX;
+    public final Character MDY;
+    public final int MDZ;
+    public final int MEa;
+    public final int MEb;
+    public final int MEc;
+    public final int dnh;
     public final int flags;
-    public final int jhT;
+    public final int jBc;
     public final int repeatCount;
     
     private a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, Character paramCharacter, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
     {
-      AppMethodBeat.i(192816);
-      this.KMY = paramInt1;
+      AppMethodBeat.i(213265);
+      this.MDV = paramInt1;
       this.flags = paramInt2;
-      this.KMZ = paramInt3;
-      this.KNa = paramInt4;
-      this.jhT = paramInt5;
-      this.KNb = paramCharacter;
-      this.KNc = paramInt6;
-      this.KNd = paramInt7;
-      this.dbL = paramInt8;
+      this.MDW = paramInt3;
+      this.MDX = paramInt4;
+      this.jBc = paramInt5;
+      this.MDY = paramCharacter;
+      this.MDZ = paramInt6;
+      this.MEa = paramInt7;
+      this.dnh = paramInt8;
       this.repeatCount = paramInt9;
       paramCharacter = InputDevice.getDevice(paramInt1);
       if (paramCharacter != null)
       {
         if (Build.VERSION.SDK_INT >= 19)
         {
-          this.KNe = paramCharacter.getVendorId();
-          this.KNf = paramCharacter.getProductId();
-          AppMethodBeat.o(192816);
+          this.MEb = paramCharacter.getVendorId();
+          this.MEc = paramCharacter.getProductId();
+          AppMethodBeat.o(213265);
           return;
         }
-        this.KNe = 0;
-        this.KNf = 0;
-        AppMethodBeat.o(192816);
+        this.MEb = 0;
+        this.MEc = 0;
+        AppMethodBeat.o(213265);
         return;
       }
-      this.KNe = 0;
-      this.KNf = 0;
-      AppMethodBeat.o(192816);
+      this.MEb = 0;
+      this.MEc = 0;
+      AppMethodBeat.o(213265);
     }
     
     public a(KeyEvent paramKeyEvent, Character paramCharacter)

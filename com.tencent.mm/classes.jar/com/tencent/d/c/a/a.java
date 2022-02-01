@@ -8,22 +8,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends JceStruct
 {
-  public int JRJ = 0;
-  public int JRK = 0;
+  public int LLB = 0;
+  public int LLC = 0;
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     AppMethodBeat.i(138321);
-    this.JRJ = paramJceInputStream.read(this.JRJ, 0, true);
-    this.JRK = paramJceInputStream.read(this.JRK, 1, false);
+    this.LLB = paramJceInputStream.read(this.LLB, 0, true);
+    this.LLC = paramJceInputStream.read(this.LLC, 1, false);
     AppMethodBeat.o(138321);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     AppMethodBeat.i(138320);
-    paramJceOutputStream.write(this.JRJ, 0);
-    paramJceOutputStream.write(this.JRK, 1);
+    paramJceOutputStream.write(this.LLB, 0);
+    paramJceOutputStream.write(this.LLC, 1);
     AppMethodBeat.o(138320);
   }
 }

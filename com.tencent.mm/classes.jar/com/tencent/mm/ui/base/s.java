@@ -13,17 +13,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class s
   extends i
   implements DialogInterface
 {
-  private ImageView HAq;
-  private View ijA;
+  private ImageView Joh;
+  private View iCR;
   private Context mContext;
-  private TextView mMg;
+  private TextView nmC;
   private int style;
   
   private s(Context paramContext)
@@ -38,9 +38,9 @@ public final class s
     }
     for (i = j;; i = 2131494909)
     {
-      this.ijA = View.inflate(this.mContext, i, null);
-      this.mMg = ((TextView)this.ijA.findViewById(2131302519));
-      this.HAq = ((ImageView)this.ijA.findViewById(2131300874));
+      this.iCR = View.inflate(this.mContext, i, null);
+      this.nmC = ((TextView)this.iCR.findViewById(2131302519));
+      this.Joh = ((ImageView)this.iCR.findViewById(2131300874));
       setCanceledOnTouchOutside(true);
       AppMethodBeat.o(142226);
       return;
@@ -51,11 +51,11 @@ public final class s
   {
     AppMethodBeat.i(142228);
     final s locals = new s(paramContext);
-    locals.mMg.setText(paramCharSequence);
+    locals.nmC.setText(paramCharSequence);
     locals.setCanceledOnTouchOutside(true);
     locals.show();
     locals.setOnDismissListener(paramOnDismissListener);
-    new ao(Looper.getMainLooper())
+    new ap(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -84,7 +84,7 @@ public final class s
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.MMTipsDialog", "dismiss exception, e = " + localException.getMessage());
+      ad.e("MicroMsg.MMTipsDialog", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(142229);
     }
   }
@@ -93,7 +93,7 @@ public final class s
   {
     AppMethodBeat.i(142227);
     super.onCreate(paramBundle);
-    setContentView(this.ijA, new LinearLayout.LayoutParams(-1, -1));
+    setContentView(this.iCR, new LinearLayout.LayoutParams(-1, -1));
     paramBundle = getWindow().getAttributes();
     paramBundle.width = -1;
     paramBundle.height = -2;

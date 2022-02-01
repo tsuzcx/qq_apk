@@ -6,40 +6,40 @@ import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.protobuf.acl;
-import com.tencent.mm.protocal.protobuf.qy;
-import com.tencent.mm.protocal.protobuf.ry;
-import com.tencent.mm.protocal.protobuf.yg;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.aaf;
+import com.tencent.mm.protocal.protobuf.ael;
+import com.tencent.mm.protocal.protobuf.sr;
+import com.tencent.mm.protocal.protobuf.ts;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import java.util.LinkedList;
 
 public class a
   implements g
 {
-  protected b nTp;
-  protected MMActivity nTt;
-  protected e.a ocl;
-  boolean ogU = false;
-  private boolean ogV = false;
-  private boolean ogW = false;
-  private boolean ogX = false;
-  private boolean ogY = false;
-  private boolean ogZ = false;
-  private boolean oha = false;
-  private boolean ohb = false;
-  private boolean ohc = false;
-  private boolean ohd = false;
+  protected e.a oFE;
+  boolean oKn = false;
+  private boolean oKo = false;
+  private boolean oKp = false;
+  private boolean oKq = false;
+  private boolean oKr = false;
+  private boolean oKs = false;
+  private boolean oKt = false;
+  private boolean oKu = false;
+  private boolean oKv = false;
+  private boolean oKw = false;
+  protected b owK;
+  protected MMActivity owO;
   
   public a(MMActivity paramMMActivity)
   {
-    this.nTt = paramMMActivity;
+    this.owO = paramMMActivity;
   }
   
-  private boolean bSI()
+  private boolean bXn()
   {
     AppMethodBeat.i(113625);
-    if (!TextUtils.isEmpty(this.nTp.bPj().code))
+    if (!TextUtils.isEmpty(this.owK.bTO().code))
     {
       AppMethodBeat.o(113625);
       return true;
@@ -51,7 +51,7 @@ public class a
   private String getString(int paramInt)
   {
     AppMethodBeat.i(113622);
-    String str = this.nTt.getString(paramInt);
+    String str = this.owO.getString(paramInt);
     AppMethodBeat.o(113622);
     return str;
   }
@@ -59,281 +59,31 @@ public class a
   public final void a(b paramb, e.a parama)
   {
     AppMethodBeat.i(113620);
-    this.nTp = paramb;
-    this.ocl = parama;
-    bSL();
+    this.owK = paramb;
+    this.oFE = parama;
+    bXq();
     AppMethodBeat.o(113620);
   }
   
-  public final String bSF()
+  public final boolean bWJ()
   {
-    AppMethodBeat.i(113621);
-    String str = "";
-    if (!TextUtils.isEmpty(this.nTp.bPi().EkN)) {
-      str = this.nTp.bPi().EkN;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(113621);
-      return str;
-      if (this.nTp.bPj().Eih == 0L) {
-        str = getString(2131756946);
-      } else if (this.nTp.bPj().Eii == 0) {
-        if (!TextUtils.isEmpty(this.nTp.bPi().kfh)) {
-          str = this.nTp.bPi().kfh;
-        } else {
-          str = getString(2131756792);
-        }
-      }
-    }
+    return this.oKn;
   }
   
-  public final boolean bSG()
-  {
-    AppMethodBeat.i(113623);
-    if ((this.nTp.bPj().status == 0) || (this.nTp.bPj().status == 1) || (this.nTp.bPj().status == 2))
-    {
-      AppMethodBeat.o(113623);
-      return true;
-    }
-    AppMethodBeat.o(113623);
-    return false;
-  }
-  
-  public final boolean bSH()
-  {
-    AppMethodBeat.i(113624);
-    if ((this.ocl.fwc == 3) || ((this.ocl.fwc == 6) && (this.nTp.bPj().Eie == 0)) || (this.ocl.fwc == 4) || (this.ocl.fwc == 5) || (this.ocl.fwc == 15))
-    {
-      AppMethodBeat.o(113624);
-      return true;
-    }
-    AppMethodBeat.o(113624);
-    return false;
-  }
-  
-  protected final boolean bSJ()
-  {
-    AppMethodBeat.i(113626);
-    if ((!this.nTp.isAcceptable()) && ((l.Ae(this.ocl.fwc)) || (l.Af(this.ocl.fwc)) || (this.ocl.fwc == 23)))
-    {
-      AppMethodBeat.o(113626);
-      return true;
-    }
-    AppMethodBeat.o(113626);
-    return false;
-  }
-  
-  protected final boolean bSK()
-  {
-    AppMethodBeat.i(113627);
-    if ((!this.nTp.bPf()) && (this.ocl.fwc == 6))
-    {
-      AppMethodBeat.o(113627);
-      return true;
-    }
-    AppMethodBeat.o(113627);
-    return false;
-  }
-  
-  protected void bSL()
-  {
-    AppMethodBeat.i(113628);
-    ac.i("MicroMsg.CardBaseShowLogic", "updateAcceptState()");
-    if ((l.Ae(this.ocl.fwc)) || (l.Af(this.ocl.fwc))) {
-      if (this.nTp.isAcceptable())
-      {
-        this.ogV = true;
-        this.ogW = true;
-        this.ohb = true;
-        this.ogZ = true;
-        this.oha = true;
-        if (!this.nTp.bPd()) {
-          break label567;
-        }
-        this.ogV = false;
-        this.ogW = false;
-        ac.i("MicroMsg.CardBaseShowLogic", "need direct jump!");
-        label104:
-        if (!this.ogU) {
-          break label577;
-        }
-        this.ogV = false;
-        this.ogW = false;
-        ac.i("MicroMsg.CardBaseShowLogic", "updateAcceptView to gone!");
-      }
-    }
-    for (;;)
-    {
-      ac.i("MicroMsg.CardBaseShowLogic", "mIsAcceptedCard:" + this.ogU);
-      AppMethodBeat.o(113628);
-      return;
-      if (!this.nTp.isAcceptable())
-      {
-        this.ogV = true;
-        this.ogW = false;
-        if (this.nTp.bPd())
-        {
-          this.ohc = true;
-          this.ogZ = true;
-          this.ogY = true;
-        }
-        for (;;)
-        {
-          this.oha = true;
-          break;
-          this.ogZ = false;
-        }
-      }
-      this.ogV = false;
-      this.ogW = false;
-      this.ogZ = false;
-      break;
-      if (this.ocl.fwc == 6)
-      {
-        if (this.nTp.bPf())
-        {
-          this.ogV = true;
-          this.ogW = true;
-          this.ogZ = false;
-          break;
-        }
-        if (this.nTp.bPe())
-        {
-          this.ohc = true;
-          this.ogZ = true;
-          this.ogX = true;
-          this.ogY = true;
-          break;
-        }
-        this.ogV = false;
-        this.ogW = false;
-        this.ogZ = false;
-        this.ogX = true;
-        break;
-      }
-      if (l.Ag(this.ocl.fwc))
-      {
-        this.ogV = false;
-        this.ogW = false;
-        this.ogX = true;
-        if (this.nTp.bPe())
-        {
-          this.ohc = true;
-          this.ogZ = true;
-          this.ogY = true;
-          break;
-        }
-        this.ohd = true;
-        break;
-      }
-      if (this.ocl.fwc != 23) {
-        break;
-      }
-      if (this.nTp.isAcceptable())
-      {
-        this.ogV = true;
-        this.ogW = true;
-        this.ogZ = false;
-      }
-      for (this.oha = true;; this.oha = true)
-      {
-        if ((TextUtils.isEmpty(this.ocl.obt)) || (this.ocl.obt.equals(u.axw())) || (this.nTp.bPh())) {
-          break label565;
-        }
-        ac.i("MicroMsg.CardBaseShowLogic", " detail page");
-        this.ogV = false;
-        this.ogW = false;
-        this.ogX = true;
-        if (!this.nTp.bPe()) {
-          break;
-        }
-        this.ohc = true;
-        this.ogZ = true;
-        this.ogY = true;
-        break;
-        this.ogV = true;
-        this.ogW = false;
-        this.ogZ = false;
-      }
-      label565:
-      break;
-      label567:
-      ac.i("MicroMsg.CardBaseShowLogic", "not need direct jump!");
-      break label104;
-      label577:
-      if (!this.ogV)
-      {
-        this.ogU = true;
-        ac.i("MicroMsg.CardBaseShowLogic", "set mIsAcceptedCard is true");
-      }
-      else
-      {
-        this.ogU = false;
-        ac.i("MicroMsg.CardBaseShowLogic", "set mIsAcceptedCard is false!");
-      }
-    }
-  }
-  
-  public boolean bSM()
-  {
-    return this.ogV;
-  }
-  
-  public final boolean bSN()
-  {
-    return this.ogW;
-  }
-  
-  public final boolean bSO()
-  {
-    return this.ogX;
-  }
-  
-  public final boolean bSP()
-  {
-    return this.ogY;
-  }
-  
-  public final boolean bSQ()
-  {
-    return this.ogZ;
-  }
-  
-  public final boolean bSR()
-  {
-    return this.ohb;
-  }
-  
-  public final boolean bSS()
-  {
-    return this.ohc;
-  }
-  
-  public final boolean bST()
-  {
-    return this.ohd;
-  }
-  
-  public boolean bSU()
-  {
-    return true;
-  }
-  
-  public boolean bSV()
+  public boolean bXA()
   {
     return false;
   }
   
-  public boolean bSW()
+  public boolean bXB()
   {
     return false;
   }
   
-  public boolean bSX()
+  public boolean bXC()
   {
     AppMethodBeat.i(113629);
-    if (((this.ocl.fwc == 6) && ((!this.nTp.bPe()) || (this.nTp.bPf()))) || (this.ocl.fwc == 5) || ((this.ocl.fwc == 23) && (this.nTp.bPh())))
+    if (((this.oFE.fPp == 6) && ((!this.owK.bTJ()) || (this.owK.bTK()))) || (this.oFE.fPp == 5) || ((this.oFE.fPp == 23) && (this.owK.bTM())))
     {
       AppMethodBeat.o(113629);
       return true;
@@ -342,25 +92,20 @@ public class a
     return false;
   }
   
-  public boolean bSY()
+  public boolean bXD()
   {
     return false;
   }
   
-  public boolean bSZ()
+  public boolean bXE()
   {
     return true;
   }
   
-  public final boolean bSe()
-  {
-    return this.ogU;
-  }
-  
-  public boolean bTa()
+  public boolean bXF()
   {
     AppMethodBeat.i(113630);
-    if (((bSI()) && (bSG()) && (bSH())) || (this.ogU))
+    if (((bXn()) && (bXl()) && (bXm())) || (this.oKn))
     {
       AppMethodBeat.o(113630);
       return true;
@@ -369,15 +114,15 @@ public class a
     return false;
   }
   
-  public boolean bTb()
+  public boolean bXG()
   {
     return false;
   }
   
-  public boolean bTc()
+  public boolean bXH()
   {
     AppMethodBeat.i(113631);
-    if (!this.nTp.bPe())
+    if (!this.owK.bTJ())
     {
       AppMethodBeat.o(113631);
       return true;
@@ -386,10 +131,10 @@ public class a
     return false;
   }
   
-  public boolean bTd()
+  public boolean bXI()
   {
     AppMethodBeat.i(113632);
-    if ((this.nTp.bPi().EkH != null) && (this.nTp.bPi().EkH.EuV != null) && (this.nTp.bPi().EkH.EuV.size() > 0) && (!TextUtils.isEmpty((CharSequence)this.nTp.bPi().EkH.EuV.get(0))))
+    if ((this.owK.bTN().FRQ != null) && (this.owK.bTN().FRQ.Gcp != null) && (this.owK.bTN().FRQ.Gcp.size() > 0) && (!TextUtils.isEmpty((CharSequence)this.owK.bTN().FRQ.Gcp.get(0))))
     {
       AppMethodBeat.o(113632);
       return true;
@@ -398,10 +143,10 @@ public class a
     return false;
   }
   
-  public boolean bTe()
+  public boolean bXJ()
   {
     AppMethodBeat.i(113633);
-    if ((this.nTp.bPj().Eig != null) && (this.nTp.bPj().Eig.size() > 0) && (((bSG()) && (bSH())) || (this.ogU)))
+    if ((this.owK.bTO().FPq != null) && (this.owK.bTO().FPq.size() > 0) && (((bXl()) && (bXm())) || (this.oKn)))
     {
       AppMethodBeat.o(113633);
       return true;
@@ -410,15 +155,15 @@ public class a
     return false;
   }
   
-  public boolean bTf()
+  public boolean bXK()
   {
     return false;
   }
   
-  public final boolean bTg()
+  public final boolean bXL()
   {
     AppMethodBeat.i(113634);
-    if ((this.nTp.bPj().Eik != null) && (!TextUtils.isEmpty(this.nTp.bPj().Eik.title)))
+    if ((this.owK.bTO().FPu != null) && (!TextUtils.isEmpty(this.owK.bTO().FPu.title)))
     {
       AppMethodBeat.o(113634);
       return true;
@@ -427,10 +172,10 @@ public class a
     return false;
   }
   
-  public boolean bTh()
+  public boolean bXM()
   {
     AppMethodBeat.i(113635);
-    if ((this.nTp.bPj().Ein != null) && (!TextUtils.isEmpty(this.nTp.bPj().Ein.title)))
+    if ((this.owK.bTO().FPx != null) && (!TextUtils.isEmpty(this.owK.bTO().FPx.title)))
     {
       AppMethodBeat.o(113635);
       return true;
@@ -439,10 +184,10 @@ public class a
     return false;
   }
   
-  public boolean bTi()
+  public boolean bXN()
   {
     AppMethodBeat.i(113636);
-    if (this.nTp.bPi().EkD != null)
+    if (this.owK.bTN().FRM != null)
     {
       AppMethodBeat.o(113636);
       return true;
@@ -451,10 +196,10 @@ public class a
     return false;
   }
   
-  public boolean bTj()
+  public boolean bXO()
   {
     AppMethodBeat.i(113637);
-    if (!TextUtils.isEmpty(this.nTp.bPi().EkA))
+    if (!TextUtils.isEmpty(this.owK.bTN().FRJ))
     {
       AppMethodBeat.o(113637);
       return true;
@@ -463,133 +208,388 @@ public class a
     return false;
   }
   
-  public boolean bTk()
+  public boolean bXP()
   {
     return false;
   }
   
-  public boolean bTl()
+  public boolean bXQ()
   {
     return false;
   }
   
-  public final void bTm()
+  public final void bXR()
   {
     int i6 = 1;
     AppMethodBeat.i(113638);
     int i;
     String str;
     int j;
-    label33:
+    label32:
     int k;
-    label42:
+    label41:
     int m;
-    label52:
+    label51:
     int n;
-    label62:
+    label61:
     int i1;
-    label72:
+    label71:
     int i2;
-    label82:
+    label81:
     int i3;
-    label92:
+    label91:
     int i4;
-    label102:
+    label101:
     int i5;
-    if (bSI())
+    if (bXn())
     {
       i = 1;
-      str = bSF();
-      if (!this.ogU) {
-        break label240;
+      str = bXk();
+      if (!this.oKn) {
+        break label237;
       }
       j = 1;
-      if (!bSM()) {
-        break label245;
+      if (!bXr()) {
+        break label242;
       }
       k = 1;
-      if (!this.ogW) {
-        break label250;
+      if (!this.oKp) {
+        break label247;
       }
       m = 1;
-      if (!this.ogX) {
-        break label256;
+      if (!this.oKq) {
+        break label253;
       }
       n = 1;
-      if (!this.ogY) {
-        break label262;
+      if (!this.oKr) {
+        break label259;
       }
       i1 = 1;
-      if (!this.ogZ) {
-        break label268;
+      if (!this.oKs) {
+        break label265;
       }
       i2 = 1;
-      if (!this.oha) {
-        break label274;
+      if (!this.oKt) {
+        break label271;
       }
       i3 = 1;
-      if (!this.ohb) {
-        break label280;
+      if (!this.oKu) {
+        break label277;
       }
       i4 = 1;
-      if (!this.ohc) {
-        break label286;
+      if (!this.oKv) {
+        break label283;
       }
       i5 = 1;
-      label112:
-      if (!this.ohd) {
-        break label292;
+      label111:
+      if (!this.oKw) {
+        break label289;
       }
     }
     for (;;)
     {
-      ac.i("MicroMsg.CardBaseShowLogic", "printStatus, isValidCode:%d, getUnacceptWording:%s, isAcceptedCard:%d, acceptViewVisible:%d, acceptViewEnabled:%d, isShowConsumedBtn:%d, isConsumedBtnEnabled:%d, enableOptionMenu:%d, isShareLogoVisible:%d, addShareMenu:%d, addMenu:%d, addInvalidCardMenu:%d ", new Object[] { Integer.valueOf(i), str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(i5), Integer.valueOf(i6) });
+      ad.i("MicroMsg.CardBaseShowLogic", "printStatus, isValidCode:%d, getUnacceptWording:%s, isAcceptedCard:%d, acceptViewVisible:%d, acceptViewEnabled:%d, isShowConsumedBtn:%d, isConsumedBtnEnabled:%d, enableOptionMenu:%d, isShareLogoVisible:%d, addShareMenu:%d, addMenu:%d, addInvalidCardMenu:%d ", new Object[] { Integer.valueOf(i), str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(i5), Integer.valueOf(i6) });
       AppMethodBeat.o(113638);
       return;
       i = 0;
       break;
-      label240:
+      label237:
       j = 0;
-      break label33;
-      label245:
+      break label32;
+      label242:
       k = 0;
-      break label42;
-      label250:
+      break label41;
+      label247:
       m = 0;
-      break label52;
-      label256:
+      break label51;
+      label253:
       n = 0;
-      break label62;
-      label262:
+      break label61;
+      label259:
       i1 = 0;
-      break label72;
-      label268:
+      break label71;
+      label265:
       i2 = 0;
-      break label82;
-      label274:
+      break label81;
+      label271:
       i3 = 0;
-      break label92;
-      label280:
+      break label91;
+      label277:
       i4 = 0;
-      break label102;
-      label286:
+      break label101;
+      label283:
       i5 = 0;
-      break label112;
-      label292:
+      break label111;
+      label289:
       i6 = 0;
     }
   }
   
+  public final String bXk()
+  {
+    AppMethodBeat.i(113621);
+    String str = "";
+    if (!TextUtils.isEmpty(this.owK.bTN().FRW)) {
+      str = this.owK.bTN().FRW;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(113621);
+      return str;
+      if (this.owK.bTO().FPr == 0L) {
+        str = getString(2131756946);
+      } else if (this.owK.bTO().FPs == 0) {
+        if (!TextUtils.isEmpty(this.owK.bTN().kzV)) {
+          str = this.owK.bTN().kzV;
+        } else {
+          str = getString(2131756792);
+        }
+      }
+    }
+  }
+  
+  public final boolean bXl()
+  {
+    AppMethodBeat.i(113623);
+    if ((this.owK.bTO().status == 0) || (this.owK.bTO().status == 1) || (this.owK.bTO().status == 2))
+    {
+      AppMethodBeat.o(113623);
+      return true;
+    }
+    AppMethodBeat.o(113623);
+    return false;
+  }
+  
+  public final boolean bXm()
+  {
+    AppMethodBeat.i(113624);
+    if ((this.oFE.fPp == 3) || ((this.oFE.fPp == 6) && (this.owK.bTO().FPo == 0)) || (this.oFE.fPp == 4) || (this.oFE.fPp == 5) || (this.oFE.fPp == 15))
+    {
+      AppMethodBeat.o(113624);
+      return true;
+    }
+    AppMethodBeat.o(113624);
+    return false;
+  }
+  
+  protected final boolean bXo()
+  {
+    AppMethodBeat.i(113626);
+    if ((!this.owK.isAcceptable()) && ((l.AN(this.oFE.fPp)) || (l.AO(this.oFE.fPp)) || (this.oFE.fPp == 23)))
+    {
+      AppMethodBeat.o(113626);
+      return true;
+    }
+    AppMethodBeat.o(113626);
+    return false;
+  }
+  
+  protected final boolean bXp()
+  {
+    AppMethodBeat.i(113627);
+    if ((!this.owK.bTK()) && (this.oFE.fPp == 6))
+    {
+      AppMethodBeat.o(113627);
+      return true;
+    }
+    AppMethodBeat.o(113627);
+    return false;
+  }
+  
+  protected void bXq()
+  {
+    AppMethodBeat.i(113628);
+    ad.i("MicroMsg.CardBaseShowLogic", "updateAcceptState()");
+    if ((l.AN(this.oFE.fPp)) || (l.AO(this.oFE.fPp))) {
+      if (this.owK.isAcceptable())
+      {
+        this.oKo = true;
+        this.oKp = true;
+        this.oKu = true;
+        this.oKs = true;
+        this.oKt = true;
+        if (!this.owK.bTI()) {
+          break label574;
+        }
+        this.oKo = false;
+        this.oKp = false;
+        ad.i("MicroMsg.CardBaseShowLogic", "need direct jump!");
+        label107:
+        if (!this.oKn) {
+          break label585;
+        }
+        this.oKo = false;
+        this.oKp = false;
+        ad.i("MicroMsg.CardBaseShowLogic", "updateAcceptView to gone!");
+      }
+    }
+    for (;;)
+    {
+      ad.i("MicroMsg.CardBaseShowLogic", "mIsAcceptedCard:" + this.oKn);
+      AppMethodBeat.o(113628);
+      return;
+      if (!this.owK.isAcceptable())
+      {
+        this.oKo = true;
+        this.oKp = false;
+        if (this.owK.bTI())
+        {
+          this.oKv = true;
+          this.oKs = true;
+          this.oKr = true;
+        }
+        for (;;)
+        {
+          this.oKt = true;
+          break;
+          this.oKs = false;
+        }
+      }
+      this.oKo = false;
+      this.oKp = false;
+      this.oKs = false;
+      break;
+      if (this.oFE.fPp == 6)
+      {
+        if (this.owK.bTK())
+        {
+          this.oKo = true;
+          this.oKp = true;
+          this.oKs = false;
+          break;
+        }
+        if (this.owK.bTJ())
+        {
+          this.oKv = true;
+          this.oKs = true;
+          this.oKq = true;
+          this.oKr = true;
+          break;
+        }
+        this.oKo = false;
+        this.oKp = false;
+        this.oKs = false;
+        this.oKq = true;
+        break;
+      }
+      if (l.AP(this.oFE.fPp))
+      {
+        this.oKo = false;
+        this.oKp = false;
+        this.oKq = true;
+        if (this.owK.bTJ())
+        {
+          this.oKv = true;
+          this.oKs = true;
+          this.oKr = true;
+          break;
+        }
+        this.oKw = true;
+        break;
+      }
+      if (this.oFE.fPp != 23) {
+        break;
+      }
+      if (this.owK.isAcceptable())
+      {
+        this.oKo = true;
+        this.oKp = true;
+        this.oKs = false;
+      }
+      for (this.oKt = true;; this.oKt = true)
+      {
+        if ((TextUtils.isEmpty(this.oFE.oEM)) || (this.oFE.oEM.equals(u.aAm())) || (this.owK.bTM())) {
+          break label572;
+        }
+        ad.i("MicroMsg.CardBaseShowLogic", " detail page");
+        this.oKo = false;
+        this.oKp = false;
+        this.oKq = true;
+        if (!this.owK.bTJ()) {
+          break;
+        }
+        this.oKv = true;
+        this.oKs = true;
+        this.oKr = true;
+        break;
+        this.oKo = true;
+        this.oKp = false;
+        this.oKs = false;
+      }
+      label572:
+      break;
+      label574:
+      ad.i("MicroMsg.CardBaseShowLogic", "not need direct jump!");
+      break label107;
+      label585:
+      if (!this.oKo)
+      {
+        this.oKn = true;
+        ad.i("MicroMsg.CardBaseShowLogic", "set mIsAcceptedCard is true");
+      }
+      else
+      {
+        this.oKn = false;
+        ad.i("MicroMsg.CardBaseShowLogic", "set mIsAcceptedCard is false!");
+      }
+    }
+  }
+  
+  public boolean bXr()
+  {
+    return this.oKo;
+  }
+  
+  public final boolean bXs()
+  {
+    return this.oKp;
+  }
+  
+  public final boolean bXt()
+  {
+    return this.oKq;
+  }
+  
+  public final boolean bXu()
+  {
+    return this.oKr;
+  }
+  
+  public final boolean bXv()
+  {
+    return this.oKs;
+  }
+  
+  public final boolean bXw()
+  {
+    return this.oKu;
+  }
+  
+  public final boolean bXx()
+  {
+    return this.oKv;
+  }
+  
+  public final boolean bXy()
+  {
+    return this.oKw;
+  }
+  
+  public boolean bXz()
+  {
+    return true;
+  }
+  
   public final void release()
   {
-    this.nTp = null;
-    this.ocl = null;
-    this.nTt = null;
+    this.owK = null;
+    this.oFE = null;
+    this.owO = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

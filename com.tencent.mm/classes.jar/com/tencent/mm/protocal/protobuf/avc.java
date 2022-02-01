@@ -1,74 +1,61 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 import java.util.LinkedList;
 
-public final class avc
-  extends com.tencent.mm.bw.a
+public class avc
+  extends com.tencent.mm.bx.a
 {
-  public int DQa;
-  public crm ENj;
-  public int ENk;
-  public int ENl;
-  public int ENm = 1;
-  public int ENn;
+  public String Gtl;
+  public LinkedList<String> Gtp;
+  public LinkedList<avd> Gtq;
+  
+  public avc()
+  {
+    AppMethodBeat.i(195471);
+    this.Gtp = new LinkedList();
+    this.Gtq = new LinkedList();
+    AppMethodBeat.o(195471);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(101809);
+    AppMethodBeat.i(195472);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ENj == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ChatroomId");
-        AppMethodBeat.o(101809);
-        throw paramVarArgs;
+      if (this.Gtl != null) {
+        paramVarArgs.d(1, this.Gtl);
       }
-      if (this.ENj != null)
-      {
-        paramVarArgs.ln(1, this.ENj.computeSize());
-        this.ENj.writeFields(paramVarArgs);
-      }
-      paramVarArgs.aR(2, this.DQa);
-      paramVarArgs.aR(3, this.ENk);
-      paramVarArgs.aR(4, this.ENl);
-      paramVarArgs.aR(5, this.ENm);
-      paramVarArgs.aR(6, this.ENn);
-      AppMethodBeat.o(101809);
+      paramVarArgs.e(2, 1, this.Gtp);
+      paramVarArgs.e(3, 8, this.Gtq);
+      AppMethodBeat.o(195472);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ENj == null) {
-        break label590;
+      if (this.Gtl == null) {
+        break label418;
       }
     }
-    label590:
-    for (paramInt = f.a.a.a.lm(1, this.ENj.computeSize()) + 0;; paramInt = 0)
+    label418:
+    for (paramInt = f.a.a.b.b.a.e(1, this.Gtl) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bx(2, this.DQa);
-      int j = f.a.a.b.b.a.bx(3, this.ENk);
-      int k = f.a.a.b.b.a.bx(4, this.ENl);
-      int m = f.a.a.b.b.a.bx(5, this.ENm);
-      int n = f.a.a.b.b.a.bx(6, this.ENn);
-      AppMethodBeat.o(101809);
-      return paramInt + i + j + k + m + n;
+      int i = f.a.a.a.c(2, 1, this.Gtp);
+      int j = f.a.a.a.c(3, 8, this.Gtq);
+      AppMethodBeat.o(195472);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.Gtp.clear();
+        this.Gtq.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.ENj == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: ChatroomId");
-          AppMethodBeat.o(101809);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(101809);
+        AppMethodBeat.o(195472);
         return 0;
       }
       if (paramInt == 3)
@@ -79,52 +66,40 @@ public final class avc
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(101809);
+          AppMethodBeat.o(195472);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new crm();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((crm)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localavc.ENj = ((crm)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(101809);
+          localavc.Gtl = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(195472);
           return 0;
         case 2: 
-          localavc.DQa = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(101809);
-          return 0;
-        case 3: 
-          localavc.ENk = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(101809);
-          return 0;
-        case 4: 
-          localavc.ENl = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(101809);
-          return 0;
-        case 5: 
-          localavc.ENm = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(101809);
+          localavc.Gtp.add(((f.a.a.a.a)localObject1).NPN.readString());
+          AppMethodBeat.o(195472);
           return 0;
         }
-        localavc.ENn = ((f.a.a.a.a)localObject1).LVo.xF();
-        AppMethodBeat.o(101809);
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new avd();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((avd)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localavc.Gtq.add(localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(195472);
         return 0;
       }
-      AppMethodBeat.o(101809);
+      AppMethodBeat.o(195472);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.avc
  * JD-Core Version:    0.7.0.1
  */

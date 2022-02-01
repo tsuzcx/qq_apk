@@ -2,28 +2,34 @@ package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.p;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.webview.k.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.util.regex.Pattern;
 
 public final class a
 {
-  private static Pattern CoT = null;
+  private static Pattern DSr = null;
   
   public static void a(final MMWebView paramMMWebView, String paramString)
   {
-    AppMethodBeat.i(188313);
+    AppMethodBeat.i(207931);
     if (paramMMWebView == null)
     {
-      ac.e("MicroMsg.AutoPlayLogic", "webView null");
-      AppMethodBeat.o(188313);
+      ad.e("MicroMsg.AutoPlayLogic", "webView null");
+      AppMethodBeat.o(207931);
       return;
     }
-    ac.i("MicroMsg.AutoPlayLogic", "currentUrl:%s", new Object[] { paramString });
-    if (bs.isNullOrNil(paramString))
+    ad.i("MicroMsg.AutoPlayLogic", "currentUrl:%s", new Object[] { paramString });
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(188313);
+      AppMethodBeat.o(207931);
+      return;
+    }
+    if (paramString.startsWith(c.getScheme()))
+    {
+      AppMethodBeat.o(207931);
       return;
     }
     p.post(new Runnable()
@@ -38,34 +44,34 @@ public final class a
             AppMethodBeat.i(78830);
             if (this.val$enable)
             {
-              a.a(a.1.this.CoU, true);
-              ac.i("MicroMsg.AutoPlayLogic", "enableAutoPlay (true)");
+              a.a(a.1.this.DSs, true);
+              ad.i("MicroMsg.AutoPlayLogic", "enableAutoPlay (true)");
               AppMethodBeat.o(78830);
               return;
             }
-            a.a(a.1.this.CoU, false);
-            ac.i("MicroMsg.AutoPlayLogic", "enableAutoPlay (false)");
+            a.a(a.1.this.DSs, false);
+            ad.i("MicroMsg.AutoPlayLogic", "enableAutoPlay (false)");
             AppMethodBeat.o(78830);
           }
         });
         AppMethodBeat.o(78831);
       }
     });
-    AppMethodBeat.o(188313);
+    AppMethodBeat.o(207931);
   }
   
-  public static void d(MMWebView paramMMWebView)
+  public static void e(MMWebView paramMMWebView)
   {
     AppMethodBeat.i(78832);
     if (paramMMWebView == null)
     {
-      ac.e("MicroMsg.AutoPlayLogic", "webView null");
+      ad.e("MicroMsg.AutoPlayLogic", "webView null");
       AppMethodBeat.o(78832);
       return;
     }
     String str = paramMMWebView.getUrl();
-    ac.i("MicroMsg.AutoPlayLogic", "currentUrl:%s", new Object[] { str });
-    if (bs.isNullOrNil(str))
+    ad.i("MicroMsg.AutoPlayLogic", "currentUrl:%s", new Object[] { str });
+    if (bt.isNullOrNil(str))
     {
       AppMethodBeat.o(78832);
       return;

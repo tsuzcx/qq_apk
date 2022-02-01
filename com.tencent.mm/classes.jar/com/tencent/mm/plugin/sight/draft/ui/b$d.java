@@ -7,9 +7,9 @@ public enum b$d
   static
   {
     AppMethodBeat.i(28673);
-    xEO = new d("NORMAL", 0);
-    xEP = new d("EDIT", 1);
-    xEQ = new d[] { xEO, xEP };
+    yTy = new d("NORMAL", 0);
+    yTz = new d("EDIT", 1);
+    yTA = new d[] { yTy, yTz };
     AppMethodBeat.o(28673);
   }
   

@@ -1,7 +1,7 @@
 package d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.Collection;
 import java.util.Iterator;
@@ -10,12 +10,12 @@ import java.util.ListIterator;
 import java.util.NoSuchElementException;
 import java.util.RandomAccess;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/AbstractList;", "E", "Lkotlin/collections/AbstractCollection;", "", "()V", "size", "", "getSize", "()I", "equals", "", "other", "", "get", "index", "(I)Ljava/lang/Object;", "hashCode", "indexOf", "element", "(Ljava/lang/Object;)I", "iterator", "", "lastIndexOf", "listIterator", "", "subList", "fromIndex", "toIndex", "Companion", "IteratorImpl", "ListIteratorImpl", "SubList", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/AbstractList;", "E", "Lkotlin/collections/AbstractCollection;", "", "()V", "size", "", "getSize", "()I", "equals", "", "other", "", "get", "index", "(I)Ljava/lang/Object;", "hashCode", "indexOf", "element", "(Ljava/lang/Object;)I", "iterator", "", "lastIndexOf", "listIterator", "", "subList", "fromIndex", "toIndex", "Companion", "IteratorImpl", "ListIteratorImpl", "SubList", "kotlin-stdlib"})
 public abstract class b<E>
   extends a<E>
   implements d.g.b.a.a, List<E>
 {
-  public static final a KTt = new a((byte)0);
+  public static final a MKs = new a((byte)0);
   
   public void add(int paramInt, E paramE)
   {
@@ -37,15 +37,15 @@ public abstract class b<E>
     }
     Object localObject = (Collection)this;
     paramObject = (Collection)paramObject;
-    k.h(localObject, "c");
-    k.h(paramObject, "other");
+    p.h(localObject, "c");
+    p.h(paramObject, "other");
     if (((Collection)localObject).size() != paramObject.size()) {
       return false;
     }
     paramObject = paramObject.iterator();
     localObject = ((Collection)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      if ((k.g(((Iterator)localObject).next(), paramObject.next()) ^ true)) {
+      if ((p.i(((Iterator)localObject).next(), paramObject.next()) ^ true)) {
         return false;
       }
     }
@@ -57,7 +57,7 @@ public abstract class b<E>
   public int hashCode()
   {
     Object localObject1 = (Collection)this;
-    k.h(localObject1, "c");
+    p.h(localObject1, "c");
     int i = 1;
     localObject1 = ((Collection)localObject1).iterator();
     if (((Iterator)localObject1).hasNext())
@@ -79,7 +79,7 @@ public abstract class b<E>
     Iterator localIterator = iterator();
     while (localIterator.hasNext())
     {
-      if (k.g(localIterator.next(), paramObject)) {
+      if (p.i(localIterator.next(), paramObject)) {
         return i;
       }
       i += 1;
@@ -96,7 +96,7 @@ public abstract class b<E>
   {
     ListIterator localListIterator = listIterator(size());
     while (localListIterator.hasPrevious()) {
-      if (k.g(localListIterator.previous(), paramObject)) {
+      if (p.i(localListIterator.previous(), paramObject)) {
         return localListIterator.nextIndex();
       }
     }
@@ -128,10 +128,10 @@ public abstract class b<E>
     return (List)new d(this, paramInt1, paramInt2);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/AbstractList$Companion;", "", "()V", "checkBoundsIndexes", "", "startIndex", "", "endIndex", "size", "checkBoundsIndexes$kotlin_stdlib", "checkElementIndex", "index", "checkElementIndex$kotlin_stdlib", "checkPositionIndex", "checkPositionIndex$kotlin_stdlib", "checkRangeIndexes", "fromIndex", "toIndex", "checkRangeIndexes$kotlin_stdlib", "orderedEquals", "", "c", "", "other", "orderedEquals$kotlin_stdlib", "orderedHashCode", "orderedHashCode$kotlin_stdlib", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/AbstractList$Companion;", "", "()V", "checkBoundsIndexes", "", "startIndex", "", "endIndex", "size", "checkBoundsIndexes$kotlin_stdlib", "checkElementIndex", "index", "checkElementIndex$kotlin_stdlib", "checkPositionIndex", "checkPositionIndex$kotlin_stdlib", "checkRangeIndexes", "fromIndex", "toIndex", "checkRangeIndexes$kotlin_stdlib", "orderedEquals", "", "c", "", "other", "orderedEquals$kotlin_stdlib", "orderedHashCode", "orderedHashCode$kotlin_stdlib", "kotlin-stdlib"})
   public static final class a {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/AbstractList$IteratorImpl;", "", "(Lkotlin/collections/AbstractList;)V", "index", "", "getIndex", "()I", "setIndex", "(I)V", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/AbstractList$IteratorImpl;", "", "(Lkotlin/collections/AbstractList;)V", "index", "", "getIndex", "()I", "setIndex", "(I)V", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
   class b
     implements d.g.b.a.a, Iterator<E>
   {
@@ -140,7 +140,7 @@ public abstract class b<E>
     public boolean hasNext()
     {
       AppMethodBeat.i(129035);
-      if (this.index < this.KTu.size())
+      if (this.index < this.MKt.size())
       {
         AppMethodBeat.o(129035);
         return true;
@@ -158,7 +158,7 @@ public abstract class b<E>
         AppMethodBeat.o(129036);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.KTu;
+      Object localObject = this.MKt;
       int i = this.index;
       this.index = (i + 1);
       localObject = ((b)localObject).get(i);
@@ -175,7 +175,7 @@ public abstract class b<E>
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/AbstractList$ListIteratorImpl;", "Lkotlin/collections/AbstractList$IteratorImpl;", "Lkotlin/collections/AbstractList;", "", "index", "", "(Lkotlin/collections/AbstractList;I)V", "hasPrevious", "", "nextIndex", "previous", "()Ljava/lang/Object;", "previousIndex", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/AbstractList$ListIteratorImpl;", "Lkotlin/collections/AbstractList$IteratorImpl;", "Lkotlin/collections/AbstractList;", "", "index", "", "(Lkotlin/collections/AbstractList;I)V", "hasPrevious", "", "nextIndex", "previous", "()Ljava/lang/Object;", "previousIndex", "kotlin-stdlib"})
   final class c
     extends b<E>.b
     implements d.g.b.a.a, ListIterator<E>
@@ -184,7 +184,7 @@ public abstract class b<E>
     {
       super();
       AppMethodBeat.i(129032);
-      b.a locala = b.KTt;
+      b.a locala = b.MKs;
       int j = b.this.size();
       int i;
       if ((i < 0) || (i > j))
@@ -245,22 +245,22 @@ public abstract class b<E>
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/AbstractList$SubList;", "E", "Lkotlin/collections/AbstractList;", "Ljava/util/RandomAccess;", "Lkotlin/collections/RandomAccess;", "list", "fromIndex", "", "toIndex", "(Lkotlin/collections/AbstractList;II)V", "_size", "size", "getSize", "()I", "get", "index", "(I)Ljava/lang/Object;", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/AbstractList$SubList;", "E", "Lkotlin/collections/AbstractList;", "Ljava/util/RandomAccess;", "Lkotlin/collections/RandomAccess;", "list", "fromIndex", "", "toIndex", "(Lkotlin/collections/AbstractList;II)V", "_size", "size", "getSize", "()I", "get", "index", "(I)Ljava/lang/Object;", "kotlin-stdlib"})
   static final class d<E>
     extends b<E>
     implements RandomAccess
   {
-    private final b<E> KTv;
-    private final int KTw;
+    private final b<E> MKu;
+    private final int MKv;
     private int _size;
     
     public d(b<? extends E> paramb, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(129224);
-      this.KTv = paramb;
-      this.KTw = paramInt1;
-      paramInt1 = this.KTw;
-      int i = this.KTv.size();
+      this.MKu = paramb;
+      this.MKv = paramInt1;
+      paramInt1 = this.MKv;
+      int i = this.MKu.size();
       if ((paramInt1 < 0) || (paramInt2 > i))
       {
         paramb = (Throwable)new IndexOutOfBoundsException("fromIndex: " + paramInt1 + ", toIndex: " + paramInt2 + ", size: " + i);
@@ -273,7 +273,7 @@ public abstract class b<E>
         AppMethodBeat.o(129224);
         throw paramb;
       }
-      this._size = (paramInt2 - this.KTw);
+      this._size = (paramInt2 - this.MKv);
       AppMethodBeat.o(129224);
     }
     
@@ -287,7 +287,7 @@ public abstract class b<E>
         AppMethodBeat.o(129223);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.KTv.get(this.KTw + paramInt);
+      Object localObject = this.MKu.get(this.MKv + paramInt);
       AppMethodBeat.o(129223);
       return localObject;
     }

@@ -5,9 +5,9 @@ public final class f
 {
   public f(i parami)
   {
-    this.LVT = 2064;
-    this.LVU = 10;
-    this.LVW = parami;
+    this.NQs = 2064;
+    this.NQt = 10;
+    this.NQv = parami;
   }
 }
 

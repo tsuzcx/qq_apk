@@ -10,8 +10,8 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kp;
-import com.tencent.mm.g.a.kp.b;
+import com.tencent.mm.g.a.ky;
+import com.tencent.mm.g.a.ky.b;
 import com.tencent.mm.opensdk.modelmsg.WXAppExtendObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUIProcessTask;
@@ -19,9 +19,9 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUIProcessTask.
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.List;
 
 class JsApiLaunchApplication$LaunchApplicationTask
@@ -29,17 +29,17 @@ class JsApiLaunchApplication$LaunchApplicationTask
 {
   public static final Parcelable.Creator<LaunchApplicationTask> CREATOR;
   public String appId;
-  public int cZX;
-  public Bundle dcb;
+  public int dlp;
+  public Bundle dnx;
   public String extInfo;
-  public Runnable jWP;
-  public String jYf;
+  public Runnable krg;
+  public String ksB;
   public boolean success;
   
   static
   {
     AppMethodBeat.i(45506);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new JsApiLaunchApplication.LaunchApplicationTask.2();
     AppMethodBeat.o(45506);
   }
   
@@ -63,44 +63,44 @@ class JsApiLaunchApplication$LaunchApplicationTask
       public final void u(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
       {
         AppMethodBeat.i(45499);
-        ac.i("MicroMsg.JsApiLaunchApplication", "onLaunchAppCallback(launchRet : %s, launchSuccess : %s)", new Object[] { Boolean.valueOf(paramAnonymousBoolean1), Boolean.valueOf(paramAnonymousBoolean2) });
+        ad.i("MicroMsg.JsApiLaunchApplication", "onLaunchAppCallback(launchRet : %s, launchSuccess : %s)", new Object[] { Boolean.valueOf(paramAnonymousBoolean1), Boolean.valueOf(paramAnonymousBoolean2) });
         if (paramAnonymousBoolean1)
         {
           JsApiLaunchApplication.LaunchApplicationTask.this.success = true;
-          parama.beh();
+          parama.bhL();
           AppMethodBeat.o(45499);
           return;
         }
         JsApiLaunchApplication.LaunchApplicationTask.this.success = false;
-        parama.beh();
+        parama.bhL();
         AppMethodBeat.o(45499);
       }
     });
     parama = new WXAppExtendObject();
     parama.extInfo = this.extInfo;
     parama = new WXMediaMessage(parama);
-    parama.sdkVer = 637927424;
+    parama.sdkVer = 637928960;
     parama.messageExt = this.extInfo;
-    Object localObject = new kp();
-    ((kp)localObject).dmn.dis = parama;
-    ((kp)localObject).dmn.appId = this.appId;
-    ((kp)localObject).dmn.cZX = this.cZX;
-    ((kp)localObject).dmn.context = paramContext;
-    ((kp)localObject).dmn.dcb = this.dcb;
-    ((kp)localObject).dmn.dmp = locala;
-    a.GpY.l((b)localObject);
-    boolean bool1 = ((kp)localObject).dmo.dmq;
+    Object localObject = new ky();
+    ((ky)localObject).dyb.dtZ = parama;
+    ((ky)localObject).dyb.appId = this.appId;
+    ((ky)localObject).dyb.dlp = this.dlp;
+    ((ky)localObject).dyb.context = paramContext;
+    ((ky)localObject).dyb.dnx = this.dnx;
+    ((ky)localObject).dyb.dyd = locala;
+    a.IbL.l((b)localObject);
+    boolean bool1 = ((ky)localObject).dyc.dye;
     boolean bool2 = bool1;
     if (!bool1)
     {
-      if ((bs.isNullOrNil(this.appId)) || (bs.isNullOrNil(this.jYf))) {
+      if ((bt.isNullOrNil(this.appId)) || (bt.isNullOrNil(this.ksB))) {
         break label379;
       }
-      parama = this.appId + "://" + this.jYf;
+      parama = this.appId + "://" + this.ksB;
       localObject = new Intent("android.intent.action.VIEW", Uri.parse(parama));
-      ac.i("MicroMsg.JsApiLaunchApplication", "launchApplication by opensdk failed, try to launch by scheme(%s).", new Object[] { parama });
+      ad.i("MicroMsg.JsApiLaunchApplication", "launchApplication by opensdk failed, try to launch by scheme(%s).", new Object[] { parama });
       ((Intent)localObject).addFlags(268435456);
-      parama = bs.aa(paramContext, (Intent)localObject);
+      parama = bt.ac(paramContext, (Intent)localObject);
       if ((parama == null) || (parama.isEmpty())) {
         break label392;
       }
@@ -108,40 +108,40 @@ class JsApiLaunchApplication$LaunchApplicationTask
         break label370;
       }
       parama = h.b((ResolveInfo)parama.get(0));
-      if (bs.nullAsNil(ai.getPackageName()).equals(parama)) {
+      if (bt.nullAsNil(aj.getPackageName()).equals(parama)) {
         break label392;
       }
-      locala.hwA = false;
-      locala.jYi = false;
-      locala.jYj = false;
-      locala.dmq = false;
-      bool1 = h.a(paramContext, (Intent)localObject, null, locala, this.dcb);
+      locala.hOP = false;
+      locala.ksE = false;
+      locala.ksF = false;
+      locala.dye = false;
+      bool1 = h.a(paramContext, (Intent)localObject, null, locala, this.dnx);
     }
     label392:
     for (;;)
     {
       for (bool2 = bool1;; bool2 = bool1)
       {
-        locala.gj(bool2);
+        locala.go(bool2);
         AppMethodBeat.o(45501);
         return;
         label370:
         parama = ((Intent)localObject).getPackage();
         break;
         label379:
-        ac.i("MicroMsg.JsApiLaunchApplication", "launchApplication nil appId or parameter.");
+        ad.i("MicroMsg.JsApiLaunchApplication", "launchApplication nil appId or parameter.");
       }
     }
   }
   
-  public final void aLr()
+  public final void aOB()
   {
     AppMethodBeat.i(45502);
-    ac.i("MicroMsg.JsApiLaunchApplication", "runInClientProcess");
-    if (this.jWP != null)
+    ad.i("MicroMsg.JsApiLaunchApplication", "runInClientProcess");
+    if (this.krg != null)
     {
-      ac.i("MicroMsg.JsApiLaunchApplication", "runInClientProcess asyncCallback != null");
-      this.jWP.run();
+      ad.i("MicroMsg.JsApiLaunchApplication", "runInClientProcess asyncCallback != null");
+      this.krg.run();
     }
     AppMethodBeat.o(45502);
   }
@@ -150,11 +150,11 @@ class JsApiLaunchApplication$LaunchApplicationTask
   {
     boolean bool = true;
     AppMethodBeat.i(45503);
-    this.cZX = paramParcel.readInt();
+    this.dlp = paramParcel.readInt();
     this.appId = paramParcel.readString();
-    this.jYf = paramParcel.readString();
+    this.ksB = paramParcel.readString();
     this.extInfo = paramParcel.readString();
-    this.dcb = paramParcel.readBundle();
+    this.dnx = paramParcel.readBundle();
     if (paramParcel.readByte() == 1) {}
     for (;;)
     {
@@ -168,11 +168,11 @@ class JsApiLaunchApplication$LaunchApplicationTask
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(45504);
-    paramParcel.writeInt(this.cZX);
+    paramParcel.writeInt(this.dlp);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.jYf);
+    paramParcel.writeString(this.ksB);
     paramParcel.writeString(this.extInfo);
-    paramParcel.writeBundle(this.dcb);
+    paramParcel.writeBundle(this.dnx);
     if (this.success) {}
     for (paramInt = 1;; paramInt = 0)
     {
@@ -184,7 +184,7 @@ class JsApiLaunchApplication$LaunchApplicationTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiLaunchApplication.LaunchApplicationTask
  * JD-Core Version:    0.7.0.1
  */

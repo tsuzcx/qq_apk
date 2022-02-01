@@ -5,62 +5,64 @@ import android.text.TextPaint;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mm.plugin.fts.a.a.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.am;
 
 public abstract class a
 {
-  public static final int sBE = com.tencent.mm.cc.a.au(com.tencent.mm.sdk.platformtools.ai.getContext(), 2131165517);
-  public static final TextPaint sBF;
-  public static final int sBG = com.tencent.mm.cc.a.au(com.tencent.mm.sdk.platformtools.ai.getContext(), 2131165466);
-  public static final TextPaint sBH;
-  public boolean Iwh;
-  public boolean Iwi;
-  public boolean IzA;
-  public boolean IzB = false;
-  public boolean IzC = false;
-  public boolean IzD;
-  public boolean Izz;
-  public com.tencent.mm.storage.ai contact;
-  public String dby;
-  public boolean gbD;
-  public boolean nww;
-  public final int oeH;
+  public static final int tyf = com.tencent.mm.cc.a.ax(aj.getContext(), 2131165517);
+  public static final TextPaint tyg;
+  public static final int tyh = com.tencent.mm.cc.a.ax(aj.getContext(), 2131165466);
+  public static final TextPaint tyi;
+  public boolean KmP;
+  public boolean KmQ;
+  public boolean KqF;
+  public boolean KqG;
+  public boolean KqH = false;
+  public boolean KqI = false;
+  public boolean KqJ;
+  public am contact;
+  public String dmU;
+  public boolean gvn;
+  public boolean nXU;
+  public final int oIb;
   public final int position;
   public String query;
   public int scene;
-  public h sxM;
-  public int szA;
-  public int szu;
-  public int szz;
+  public h tun;
+  public int tvV;
+  public int twa;
+  public int twb;
   
   static
   {
-    sBF = new TextPaint();
-    sBH = new TextPaint();
-    sBF.setTextSize(sBE);
-    sBH.setTextSize(sBG);
+    tyg = new TextPaint();
+    tyi = new TextPaint();
+    tyg.setTextSize(tyf);
+    tyi.setTextSize(tyh);
   }
   
   public a(int paramInt1, int paramInt2)
   {
-    this.oeH = paramInt1;
+    this.oIb = paramInt1;
     this.position = paramInt2;
-    ac.i("MicroMsg.BaseContactDataItem", "Create BaseContactDataItem viewType=%d | position=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.BaseContactDataItem", "Create BaseContactDataItem viewType=%d | position=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
   }
   
   public abstract void a(Context paramContext, a parama);
   
-  public abstract b aOg();
+  public abstract b aRs();
   
-  public boolean cKI()
+  public boolean cSX()
   {
     return false;
   }
   
-  public final void fP(int paramInt1, int paramInt2)
+  public final void gf(int paramInt1, int paramInt2)
   {
-    this.szz = paramInt1;
-    this.szA = paramInt2;
+    this.twa = paramInt1;
+    this.twb = paramInt2;
   }
   
   public class a
@@ -76,7 +78,7 @@ public abstract class a
     
     public abstract void a(Context paramContext, a.a parama, a parama1, boolean paramBoolean1, boolean paramBoolean2);
     
-    public abstract boolean aOh();
+    public abstract boolean aRt();
   }
 }
 

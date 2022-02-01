@@ -5,7 +5,7 @@ public final class al
 {
   public al()
   {
-    this.LVT = 361;
+    this.NQs = 361;
   }
 }
 

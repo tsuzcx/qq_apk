@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/t6" android:paddingBottom="@dimen/bq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/t6" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView android:textSize="@dimen/a3a" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/e3t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="3" android:layout_weight="1.0" android:lineSpacingExtra="@dimen/bq" />
     <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/u2" android:paddingLeft="@dimen/c0" android:paddingTop="2.0dip" android:visibility="gone" android:layout_width="@dimen/c9" android:layout_height="@dimen/c5" android:src="@raw/icon_outlined_awesome" />

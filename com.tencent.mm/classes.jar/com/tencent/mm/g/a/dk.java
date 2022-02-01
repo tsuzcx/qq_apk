@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
 import com.tencent.mm.sdk.b.b;
 
 public final class dk
   extends b
 {
-  public a dcR;
-  public b dcS;
+  public a dog;
+  public b doh;
   
   public dk()
   {
@@ -17,25 +16,22 @@ public final class dk
   
   private dk(byte paramByte)
   {
-    AppMethodBeat.i(115975);
-    this.dcR = new a();
-    this.dcS = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(104415);
+    this.dog = new a();
+    this.doh = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(115975);
+    AppMethodBeat.o(104415);
   }
   
   public static final class a
   {
-    public String dcT;
-    public int dcU = 0;
-    public n dcV;
-    public int opType = 0;
+    public int type;
   }
   
   public static final class b
   {
-    public n dcV;
+    public boolean doi;
   }
 }
 

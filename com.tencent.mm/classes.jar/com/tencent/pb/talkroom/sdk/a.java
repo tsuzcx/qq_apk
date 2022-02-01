@@ -5,7 +5,9 @@ import java.util.List;
 
 public abstract interface a
 {
-  public abstract void Je(int paramInt);
+  public abstract void KD(int paramInt);
+  
+  public abstract void Ky(int paramInt);
   
   public abstract void b(MultiTalkGroup paramMultiTalkGroup);
   
@@ -13,27 +15,27 @@ public abstract interface a
   
   public abstract void d(MultiTalkGroup paramMultiTalkGroup);
   
-  public abstract void dfZ();
+  public abstract void dpX();
   
-  public abstract void dga();
+  public abstract void dpY();
   
-  public abstract void dgb();
+  public abstract void dpZ();
   
-  public abstract void dgc();
+  public abstract void dqa();
   
   public abstract void e(MultiTalkGroup paramMultiTalkGroup);
   
-  public abstract void em(List<a.ap> paramList);
+  public abstract void ez(List<a.ap> paramList);
   
   public abstract void f(MultiTalkGroup paramMultiTalkGroup);
   
-  public abstract void n(int paramInt, Object paramObject);
+  public abstract void m(int paramInt, Object paramObject);
   
-  public abstract void om(boolean paramBoolean);
+  public abstract void oG(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.talkroom.sdk.a
  * JD-Core Version:    0.7.0.1
  */

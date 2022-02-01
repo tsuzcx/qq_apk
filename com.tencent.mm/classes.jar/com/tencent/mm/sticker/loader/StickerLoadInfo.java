@@ -4,28 +4,28 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ai;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "type", "", "(I)V", "aesKey", "", "getAesKey", "()Ljava/lang/String;", "setAesKey", "(Ljava/lang/String;)V", "errType", "getErrType", "()I", "setErrType", "fileId", "getFileId", "setFileId", "fileLength", "getFileLength", "setFileLength", "lensId", "getLensId", "setLensId", "getType", "url", "getUrl", "setUrl", "describeContents", "key", "writeToParcel", "", "dest", "flags", "Companion", "plugin-sticker_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "type", "", "(I)V", "aesKey", "", "getAesKey", "()Ljava/lang/String;", "setAesKey", "(Ljava/lang/String;)V", "errType", "getErrType", "()I", "setErrType", "fileId", "getFileId", "setFileId", "fileLength", "getFileLength", "setFileLength", "lensId", "getLensId", "setLensId", "getType", "url", "getUrl", "setUrl", "describeContents", "key", "writeToParcel", "", "dest", "flags", "Companion", "plugin-sticker_release"})
 public final class StickerLoadInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<StickerLoadInfo> CREATOR;
-  public static final StickerLoadInfo.a GAR;
+  public static final StickerLoadInfo.a ImL;
   public int errType;
-  String fQi;
   String fileId;
-  int jlZ;
-  public String pmO;
+  String gjI;
+  int jFP;
+  public String pQo;
   final int type;
   public String url;
   
   static
   {
     AppMethodBeat.i(105945);
-    GAR = new StickerLoadInfo.a((byte)0);
+    ImL = new StickerLoadInfo.a((byte)0);
     CREATOR = (Parcelable.Creator)new StickerLoadInfo.b();
     AppMethodBeat.o(105945);
   }
@@ -33,9 +33,9 @@ public final class StickerLoadInfo
   public StickerLoadInfo(int paramInt)
   {
     this.type = paramInt;
-    this.pmO = "";
+    this.pQo = "";
     this.fileId = "";
-    this.fQi = "";
+    this.gjI = "";
     this.url = "";
   }
   
@@ -48,7 +48,7 @@ public final class StickerLoadInfo
     if (str2 == null) {
       str1 = "";
     }
-    this.pmO = str1;
+    this.pQo = str1;
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
@@ -60,8 +60,8 @@ public final class StickerLoadInfo
     if (str2 == null) {
       str1 = "";
     }
-    this.fQi = str1;
-    this.jlZ = paramParcel.readInt();
+    this.gjI = str1;
+    this.jFP = paramParcel.readInt();
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
@@ -72,17 +72,17 @@ public final class StickerLoadInfo
     AppMethodBeat.o(105944);
   }
   
-  public final String Ap()
+  public final String BM()
   {
     AppMethodBeat.i(105942);
     if (this.type == 0)
     {
-      str = this.pmO;
+      str = this.pQo;
       AppMethodBeat.o(105942);
       return str;
     }
-    String str = ah.dg(this.url);
-    k.g(str, "MD5Util.getMD5String(url)");
+    String str = ai.ee(this.url);
+    p.g(str, "MD5Util.getMD5String(url)");
     AppMethodBeat.o(105942);
     return str;
   }
@@ -95,12 +95,12 @@ public final class StickerLoadInfo
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(105943);
-    k.h(paramParcel, "dest");
+    p.h(paramParcel, "dest");
     paramParcel.writeInt(this.type);
-    paramParcel.writeString(this.pmO);
+    paramParcel.writeString(this.pQo);
     paramParcel.writeString(this.fileId);
-    paramParcel.writeString(this.fQi);
-    paramParcel.writeInt(this.jlZ);
+    paramParcel.writeString(this.gjI);
+    paramParcel.writeInt(this.jFP);
     paramParcel.writeString(this.url);
     paramParcel.writeInt(this.errType);
     AppMethodBeat.o(105943);

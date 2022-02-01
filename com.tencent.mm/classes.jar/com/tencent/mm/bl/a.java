@@ -1,37 +1,26 @@
 package com.tencent.mm.bl;
 
-import android.content.Context;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.graphics.Point;
 
-public final class a
+public abstract interface a
 {
-  public static CharSequence F(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(20677);
-    if (paramInt <= 0)
-    {
-      paramContext = paramContext.getString(2131758996, new Object[] { Integer.valueOf(0), Integer.valueOf(0) });
-      AppMethodBeat.o(20677);
-      return paramContext;
-    }
-    paramContext = paramContext.getString(2131758996, new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
-    AppMethodBeat.o(20677);
-    return paramContext;
-  }
+  public abstract void H(Runnable paramRunnable);
   
-  public static float qw(long paramLong)
+  public abstract void a(a parama);
+  
+  public abstract Point aNh();
+  
+  public abstract int aNi();
+  
+  public abstract int n(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract void qm(int paramInt);
+  
+  public abstract void stop();
+  
+  public static abstract interface a
   {
-    float f1 = 1.0F;
-    AppMethodBeat.i(20676);
-    float f2 = (float)paramLong / 1000.0F;
-    if (f2 < 1.0F) {}
-    for (;;)
-    {
-      f1 = Math.round(f1);
-      AppMethodBeat.o(20676);
-      return f1;
-      f1 = f2;
-    }
+    public abstract void a(byte[] paramArrayOfByte, boolean paramBoolean, long paramLong);
   }
 }
 

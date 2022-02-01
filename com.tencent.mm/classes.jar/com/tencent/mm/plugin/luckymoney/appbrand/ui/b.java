@@ -7,9 +7,9 @@ public abstract interface b
 {
   public abstract void a(Class paramClass, Intent paramIntent, d.a parama);
   
-  public abstract MMActivity cYC();
+  public abstract MMActivity dhO();
   
-  public abstract void cYD();
+  public abstract void dhP();
   
   public abstract void error(String paramString);
   
@@ -17,7 +17,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.ui.b
  * JD-Core Version:    0.7.0.1
  */

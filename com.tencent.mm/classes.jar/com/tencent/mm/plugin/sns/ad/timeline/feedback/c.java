@@ -13,19 +13,17 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.ad.e.d;
 import com.tencent.mm.plugin.sns.data.h;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.a.c;
 import com.tencent.mm.plugin.sns.storage.a.c.a;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.t;
 import java.util.Iterator;
 import java.util.List;
@@ -34,15 +32,15 @@ public final class c
   implements PopupWindow.OnDismissListener, b.c
 {
   private Context mContext;
-  private int oXG;
-  private int sYG;
-  private com.tencent.mm.plugin.sns.ad.timeline.feedback.ui.a xLB;
-  private View xLC;
-  private b xLD;
-  private a xLE;
-  private com.tencent.mm.plugin.sns.ui.d.b xLF;
-  private int xLG;
-  private boolean xLH;
+  private int pBq;
+  private int tWx;
+  private com.tencent.mm.plugin.sns.ad.timeline.feedback.ui.a zaQ;
+  private View zaR;
+  private b zaS;
+  private a zaT;
+  private com.tencent.mm.plugin.sns.ui.d.c zaU;
+  private int zaV;
+  private boolean zaW;
   
   private c(Context paramContext)
   {
@@ -51,50 +49,50 @@ public final class c
   
   private c(Context paramContext, byte paramByte)
   {
-    AppMethodBeat.i(199982);
-    this.xLG = 0;
-    this.xLH = false;
-    this.oXG = 0;
+    AppMethodBeat.i(197628);
+    this.zaV = 0;
+    this.zaW = false;
+    this.pBq = 0;
     this.mContext = paramContext;
-    this.sYG = 2131496363;
-    this.xLE = new a();
-    this.xLD = new b(paramContext, this.xLE, this);
-    this.oXG = this.mContext.getResources().getDimensionPixelOffset(2131167051);
+    this.tWx = 2131496363;
+    this.zaT = new a();
+    this.zaS = new b(paramContext, this.zaT, this);
+    this.pBq = this.mContext.getResources().getDimensionPixelOffset(2131167051);
     if ((paramContext instanceof SnsCommentDetailUI)) {
-      this.xLH = true;
+      this.zaW = true;
     }
-    AppMethodBeat.o(199982);
+    AppMethodBeat.o(197628);
   }
   
-  private void NX(int paramInt)
+  private void PA(int paramInt)
   {
-    AppMethodBeat.i(199984);
-    if (this.xLD != null) {
-      this.xLD.NX(paramInt);
+    AppMethodBeat.i(197630);
+    if (this.zaS != null) {
+      this.zaS.PA(paramInt);
     }
-    AppMethodBeat.o(199984);
+    AppMethodBeat.o(197630);
   }
   
-  public static c a(Context paramContext, com.tencent.mm.plugin.sns.ui.d.b paramb)
+  public static c a(Context paramContext, com.tencent.mm.plugin.sns.ui.d.c paramc)
   {
-    AppMethodBeat.i(199981);
+    AppMethodBeat.i(197627);
     if (paramContext != null) {}
     for (;;)
     {
       try
       {
         paramContext = new c(paramContext);
-        ac.w("FeedbackPromptManager", "create new feedback panel failed!");
+        ad.w("FeedbackPromptManager", "create new feedback panel failed!");
       }
       catch (Throwable paramContext)
       {
         try
         {
-          paramContext.xLF = paramb;
-          AppMethodBeat.o(199981);
+          paramContext.zaU = paramc;
+          AppMethodBeat.o(197627);
           return paramContext;
         }
-        catch (Throwable paramb)
+        catch (Throwable paramc)
         {
           break label33;
         }
@@ -107,33 +105,33 @@ public final class c
     }
   }
   
-  private void dFT()
+  private void dRN()
   {
-    AppMethodBeat.i(199988);
-    if (this.xLB != null) {
-      this.xLB.dismiss();
+    AppMethodBeat.i(197634);
+    if (this.zaQ != null) {
+      this.zaQ.dismiss();
     }
-    AppMethodBeat.o(199988);
+    AppMethodBeat.o(197634);
   }
   
-  private void dFU()
+  private void dRO()
   {
-    AppMethodBeat.i(199989);
+    AppMethodBeat.i(197635);
     try
     {
-      t.ch(this.mContext, this.mContext.getString(2131766820));
-      AppMethodBeat.o(199989);
+      t.cm(this.mContext, this.mContext.getString(2131766820));
+      AppMethodBeat.o(197635);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(199989);
+      AppMethodBeat.o(197635);
     }
   }
   
-  private static Rect eA(View paramView)
+  private static Rect eN(View paramView)
   {
-    AppMethodBeat.i(199985);
+    AppMethodBeat.i(197631);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
     Rect localRect = new Rect();
@@ -141,25 +139,25 @@ public final class c
     localRect.top = arrayOfInt[1];
     localRect.right = (localRect.left + paramView.getWidth());
     localRect.bottom = (localRect.top + paramView.getHeight());
-    AppMethodBeat.o(199985);
+    AppMethodBeat.o(197631);
     return localRect;
   }
   
-  private int k(View paramView1, View paramView2)
+  private int l(View paramView1, View paramView2)
   {
-    AppMethodBeat.i(199986);
-    paramView2.measure(View.MeasureSpec.makeMeasureSpec(this.oXG, 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
+    AppMethodBeat.i(197632);
+    paramView2.measure(View.MeasureSpec.makeMeasureSpec(this.pBq, 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
     int i = paramView2.getMeasuredHeight();
-    paramView2 = eA(paramView1);
+    paramView2 = eN(paramView1);
     Rect localRect = new Rect();
     paramView1.getWindowVisibleDisplayFrame(localRect);
     if (paramView2.bottom + i > localRect.height())
     {
       i = -(paramView2.height() + i);
-      AppMethodBeat.o(199986);
+      AppMethodBeat.o(197632);
       return i;
     }
-    AppMethodBeat.o(199986);
+    AppMethodBeat.o(197632);
     return 0;
   }
   
@@ -167,20 +165,20 @@ public final class c
   {
     int i = 1;
     Object localObject1 = null;
-    AppMethodBeat.i(199987);
+    AppMethodBeat.i(197633);
     if (paramInt == 5) {}
     try
     {
       if ((paramObject instanceof b.d)) {
-        this.xLG = ((b.d)paramObject).xLz;
+        this.zaV = ((b.d)paramObject).zaO;
       }
-      AppMethodBeat.o(199987);
+      AppMethodBeat.o(197633);
       return;
     }
     catch (Throwable paramView)
     {
-      ac.e("FeedbackPromptManager", "onAction failed : actionId = ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(199987);
+      ad.e("FeedbackPromptManager", "onAction failed : actionId = ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(197633);
       return;
     }
     switch (paramInt)
@@ -189,15 +187,15 @@ public final class c
     label642:
     for (;;)
     {
-      AppMethodBeat.o(199987);
+      AppMethodBeat.o(197633);
       return;
-      dFU();
-      dFT();
-      paramView = this.xLE;
-      boolean bool = this.xLH;
-      paramObject = paramView.xHc;
-      Object localObject2 = paramView.dFR();
-      com.tencent.mm.plugin.sns.storage.a locala = paramView.dFQ();
+      dRO();
+      dRN();
+      paramView = this.zaT;
+      boolean bool = this.zaW;
+      paramObject = paramView.yVM;
+      Object localObject2 = paramView.dRL();
+      com.tencent.mm.plugin.sns.storage.a locala = paramView.dRK();
       paramView = (View)localObject1;
       if (paramObject != null)
       {
@@ -212,8 +210,8 @@ public final class c
       }
       for (;;)
       {
-        d.a(paramView);
-        AppMethodBeat.o(199987);
+        com.tencent.mm.plugin.sns.ad.e.g.a(paramView);
+        AppMethodBeat.o(197633);
         return;
         label168:
         paramView = (View)localObject1;
@@ -226,73 +224,73 @@ public final class c
             if (localObject2 != null)
             {
               paramView = new com.tencent.mm.plugin.sns.ad.timeline.feedback.a.a();
-              paramView.xLI = paramObject.field_snsId;
+              paramView.zaX = paramObject.field_snsId;
               if (bool) {
                 i = 2;
               }
               paramView.mScene = i;
-              paramView.xLJ = h.asK(locala.dtx);
-              paramView.xLK = ((com.tencent.mm.plugin.sns.storage.b)localObject2).xOm;
+              paramView.zaY = h.axM(locala.dFy);
+              paramView.zaZ = ((com.tencent.mm.plugin.sns.storage.b)localObject2).zeg;
             }
           }
         }
       }
-      dFT();
+      dRN();
       try
       {
         paramView = this.mContext;
         if (paramView != null)
         {
-          paramObject = this.xLE.dFN();
-          com.tencent.mm.plugin.sns.c.a.iyx.i(paramObject, paramView);
+          paramObject = this.zaT.dRH();
+          com.tencent.mm.plugin.sns.c.a.iRG.i(paramObject, paramView);
         }
-        AppMethodBeat.o(199987);
+        AppMethodBeat.o(197633);
         return;
       }
       catch (Throwable paramView)
       {
-        AppMethodBeat.o(199987);
+        AppMethodBeat.o(197633);
         return;
       }
-      if (this.xLE.eEw())
+      if (this.zaT.dRG())
       {
-        i = k(this.xLC, this.xLB.getContentView());
-        NX(i);
-        this.xLB.update(this.xLC, 0, i, -1, -1);
-        paramView = this.xLE.NW(0);
+        i = l(this.zaR, this.zaQ.getContentView());
+        PA(i);
+        this.zaQ.update(this.zaR, 0, i, -1, -1);
+        paramView = this.zaT.Pz(0);
         if (paramView != null)
         {
-          g.agS();
-          g.agQ().ghe.a(paramView, 0);
+          com.tencent.mm.kernel.g.ajD();
+          com.tencent.mm.kernel.g.ajB().gAO.a(paramView, 0);
         }
-        AppMethodBeat.o(199987);
+        AppMethodBeat.o(197633);
         return;
       }
-      dFU();
-      dFT();
-      if (this.xLF != null) {
-        this.xLF.eQ(paramView);
+      dRO();
+      dRN();
+      if (this.zaU != null) {
+        this.zaU.ff(paramView);
       }
-      paramView = this.xLE.NW(1);
+      paramView = this.zaT.Pz(1);
       if (paramView != null)
       {
-        g.agS();
-        g.agQ().ghe.a(paramView, 0);
+        com.tencent.mm.kernel.g.ajD();
+        com.tencent.mm.kernel.g.ajB().gAO.a(paramView, 0);
       }
-      AppMethodBeat.o(199987);
+      AppMethodBeat.o(197633);
       return;
-      dFU();
-      dFT();
-      if (this.xLF != null) {
-        this.xLF.eQ(paramView);
+      dRO();
+      dRN();
+      if (this.zaU != null) {
+        this.zaU.ff(paramView);
       }
-      localObject1 = this.xLE;
-      i = this.xLG;
-      paramView = ((a)localObject1).dFQ();
-      paramObject = ((a)localObject1).xHc;
-      localObject1 = ((a)localObject1).xLg;
+      localObject1 = this.zaT;
+      i = this.zaV;
+      paramView = ((a)localObject1).dRK();
+      paramObject = ((a)localObject1).yVM;
+      localObject1 = ((a)localObject1).zav;
       if ((localObject1 != null) && (paramObject != null) && (paramView != null)) {
-        if (paramView.yeS == null) {
+        if (paramView.zuT == null) {
           break label630;
         }
       }
@@ -301,10 +299,10 @@ public final class c
         if (paramView == null) {
           break label642;
         }
-        g.agS();
-        g.agQ().ghe.a(paramView, 0);
+        com.tencent.mm.kernel.g.ajD();
+        com.tencent.mm.kernel.g.ajB().gAO.a(paramView, 0);
         break;
-        paramView = paramView.yeS.dJD();
+        paramView = paramView.zuT.dVR();
         if (com.tencent.mm.plugin.sns.ad.e.b.m(paramView))
         {
           localObject2 = paramView.iterator();
@@ -314,13 +312,13 @@ public final class c
               break;
             }
             paramView = (a.c.a)((Iterator)localObject2).next();
-          } while ((paramView == null) || (paramView.yfn != i));
+          } while ((paramView == null) || (paramView.zvp != i));
         }
         label630:
         while (paramView != null)
         {
-          paramView.xMz = ((com.tencent.mm.plugin.sns.data.b)localObject1).xMz;
-          paramView.yfo = System.currentTimeMillis();
+          paramView.zcr = ((com.tencent.mm.plugin.sns.data.b)localObject1).zcr;
+          paramView.zvq = System.currentTimeMillis();
           paramView = new com.tencent.mm.plugin.sns.model.q(paramObject.field_snsId, 8, paramView);
           break;
           paramView = null;
@@ -335,10 +333,10 @@ public final class c
   
   public final boolean a(View paramView, p paramp)
   {
-    AppMethodBeat.i(199983);
+    AppMethodBeat.i(197629);
     if (paramView == null)
     {
-      AppMethodBeat.o(199983);
+      AppMethodBeat.o(197629);
       return false;
     }
     Object localObject;
@@ -352,66 +350,66 @@ public final class c
           localObject = (com.tencent.mm.plugin.sns.data.b)localObject;
           if (localObject == null)
           {
-            ac.e("FeedbackPromptManager", "the unlike tag is null. there is no data for showing window!");
-            AppMethodBeat.o(199983);
+            ad.e("FeedbackPromptManager", "the unlike tag is null. there is no data for showing window!");
+            AppMethodBeat.o(197629);
             return false;
           }
         }
         else
         {
-          ac.w("FeedbackPromptManager", "the tag is not AdUnlikeTag");
+          ad.w("FeedbackPromptManager", "the tag is not AdUnlikeTag");
           localObject = null;
           continue;
         }
-        locala = this.xLE;
+        locala = this.zaT;
         try
         {
-          locala.xLg = ((com.tencent.mm.plugin.sns.data.b)localObject);
+          locala.zav = ((com.tencent.mm.plugin.sns.data.b)localObject);
           if (paramp == null) {
             continue;
           }
-          locala.xHc = paramp;
-          locala.xLh = ab.iC(ai.getContext());
+          locala.yVM = paramp;
+          locala.zaw = ac.iM(aj.getContext());
         }
         catch (Throwable paramp)
         {
-          ac.w("FeedbackDisplayDataSupplier", "there is something wrong in updateData");
+          ad.w("FeedbackDisplayDataSupplier", "there is something wrong in updateData");
           continue;
         }
-        bool = this.xLE.eBz();
+        bool = this.zaT.dRF();
         if (bool) {
           break label184;
         }
-        AppMethodBeat.o(199983);
+        AppMethodBeat.o(197629);
         return false;
       }
       catch (Throwable paramView)
       {
         a locala;
-        ac.e("FeedbackPromptManager", "show feedback window has something wrong!");
-        AppMethodBeat.o(199983);
+        ad.e("FeedbackPromptManager", "show feedback window has something wrong!");
+        AppMethodBeat.o(197629);
         return false;
       }
       if (localObject != null) {
-        locala.xHc = af.dHR().auT(((com.tencent.mm.plugin.sns.data.b)localObject).ddB);
+        locala.yVM = ag.dUe().aAa(((com.tencent.mm.plugin.sns.data.b)localObject).doX);
       }
     }
     label184:
-    if (this.xLB == null)
+    if (this.zaQ == null)
     {
-      paramp = LayoutInflater.from(this.mContext).inflate(this.sYG, null);
-      this.xLB = new com.tencent.mm.plugin.sns.ad.timeline.feedback.ui.a(this.mContext);
-      this.xLB.setContentView(paramp);
-      this.xLB.setWidth(this.oXG);
-      this.xLB.setHeight(-2);
-      this.xLB.setFocusable(true);
-      this.xLB.setBackgroundDrawable(new ColorDrawable(0));
-      this.xLB.setOnDismissListener(this);
+      paramp = LayoutInflater.from(this.mContext).inflate(this.tWx, null);
+      this.zaQ = new com.tencent.mm.plugin.sns.ad.timeline.feedback.ui.a(this.mContext);
+      this.zaQ.setContentView(paramp);
+      this.zaQ.setWidth(this.pBq);
+      this.zaQ.setHeight(-2);
+      this.zaQ.setFocusable(true);
+      this.zaQ.setBackgroundDrawable(new ColorDrawable(0));
+      this.zaQ.setOnDismissListener(this);
     }
-    boolean bool = this.xLB.isShowing();
+    boolean bool = this.zaQ.isShowing();
     if (bool)
     {
-      AppMethodBeat.o(199983);
+      AppMethodBeat.o(197629);
       return true;
     }
     if (!(paramView instanceof ViewGroup))
@@ -423,11 +421,11 @@ public final class c
     }
     for (;;)
     {
-      this.xLC = paramView;
-      this.xLD.ez(this.xLB.getContentView());
-      int j = k(this.xLC, this.xLB.getContentView());
-      NX(j);
-      paramView = this.xLB;
+      this.zaR = paramView;
+      this.zaS.eM(this.zaQ.getContentView());
+      int j = l(this.zaR, this.zaQ.getContentView());
+      PA(j);
+      paramView = this.zaQ;
       int i;
       label381:
       float f;
@@ -435,9 +433,9 @@ public final class c
       {
         i = 2131821780;
         paramView.setAnimationStyle(i);
-        this.xLB.showAsDropDown(this.xLC, 0, j, 8388613);
-        paramp = this.xLB;
-        bool = aj.DT();
+        this.zaQ.showAsDropDown(this.zaR, 0, j, 8388613);
+        paramp = this.zaQ;
+        bool = al.isDarkMode();
         if (!bool) {
           break label500;
         }
@@ -453,7 +451,7 @@ public final class c
           ((WindowManager.LayoutParams)localObject).flags |= 0x2;
           ((WindowManager.LayoutParams)localObject).dimAmount = f;
           paramp.updateViewLayout(paramView, (ViewGroup.LayoutParams)localObject);
-          AppMethodBeat.o(199983);
+          AppMethodBeat.o(197629);
           return true;
           break;
           i = 2131821781;
@@ -466,7 +464,7 @@ public final class c
       {
         for (;;)
         {
-          ac.w("FeedbackPopupWindow", "the window dim account is set failed!");
+          ad.w("FeedbackPopupWindow", "the window dim account is set failed!");
         }
       }
     }
@@ -474,7 +472,7 @@ public final class c
   
   public final void onDismiss()
   {
-    this.xLB = null;
+    this.zaQ = null;
   }
 }
 

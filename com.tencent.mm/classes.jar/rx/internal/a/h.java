@@ -9,13 +9,13 @@ import rx.internal.b.a;
 public final class h<T>
   implements d.b<Boolean, T>
 {
-  final e<? super T, Boolean> McT;
-  final boolean McU;
+  final e<? super T, Boolean> NXV;
+  final boolean NXW;
   
   public h(e<? super T, Boolean> parame)
   {
-    this.McT = parame;
-    this.McU = true;
+    this.NXV = parame;
+    this.NXW = true;
   }
   
   private rx.i<? super T> b(final rx.i<? super Boolean> parami)
@@ -24,27 +24,44 @@ public final class h<T>
     final a locala = new a(parami);
     rx.i local1 = new rx.i()
     {
-      boolean McV;
+      boolean NXX;
       boolean done;
       
-      public final void gd(T paramAnonymousT)
+      public final void gyM()
+      {
+        AppMethodBeat.i(90261);
+        if (!this.done)
+        {
+          this.done = true;
+          if (this.NXX)
+          {
+            locala.setValue(Boolean.FALSE);
+            AppMethodBeat.o(90261);
+            return;
+          }
+          locala.setValue(Boolean.valueOf(h.this.NXW));
+        }
+        AppMethodBeat.o(90261);
+      }
+      
+      public final void gz(T paramAnonymousT)
       {
         AppMethodBeat.i(90259);
-        this.McV = true;
+        this.NXX = true;
         for (;;)
         {
           try
           {
-            bool = ((Boolean)h.this.McT.call(paramAnonymousT)).booleanValue();
+            bool = ((Boolean)h.this.NXV.call(paramAnonymousT)).booleanValue();
             if ((bool) && (!this.done))
             {
               this.done = true;
               paramAnonymousT = locala;
-              if (!h.this.McU)
+              if (!h.this.NXW)
               {
                 bool = true;
                 paramAnonymousT.setValue(Boolean.valueOf(bool));
-                this.Mcl.ggm();
+                this.NXn.gyQ();
               }
             }
             else
@@ -61,23 +78,6 @@ public final class h<T>
           }
           boolean bool = false;
         }
-      }
-      
-      public final void ggi()
-      {
-        AppMethodBeat.i(90261);
-        if (!this.done)
-        {
-          this.done = true;
-          if (this.McV)
-          {
-            locala.setValue(Boolean.FALSE);
-            AppMethodBeat.o(90261);
-            return;
-          }
-          locala.setValue(Boolean.valueOf(h.this.McU));
-        }
-        AppMethodBeat.o(90261);
       }
       
       public final void onError(Throwable paramAnonymousThrowable)

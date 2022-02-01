@@ -10,73 +10,73 @@ public class u
   extends h
   implements SubMenu
 {
-  public h afk;
-  private j afl;
+  public h ahb;
+  private j ahc;
   
   public u(Context paramContext, h paramh, j paramj)
   {
     super(paramContext);
-    this.afk = paramh;
-    this.afl = paramj;
+    this.ahb = paramh;
+    this.ahc = paramj;
   }
   
   public final void a(h.a parama)
   {
-    this.afk.a(parama);
+    this.ahb.a(parama);
   }
   
   final boolean d(h paramh, MenuItem paramMenuItem)
   {
-    return (super.d(paramh, paramMenuItem)) || (this.afk.d(paramh, paramMenuItem));
+    return (super.d(paramh, paramMenuItem)) || (this.ahb.d(paramh, paramMenuItem));
   }
   
   public final boolean g(j paramj)
   {
-    return this.afk.g(paramj);
+    return this.ahb.g(paramj);
   }
   
   public MenuItem getItem()
   {
-    return this.afl;
+    return this.ahc;
   }
   
   public final boolean h(j paramj)
   {
-    return this.afk.h(paramj);
+    return this.ahb.h(paramj);
   }
   
-  public final boolean hA()
+  public final String hN()
   {
-    return this.afk.hA();
-  }
-  
-  public final h hI()
-  {
-    return this.afk.hI();
-  }
-  
-  public final String hx()
-  {
-    if (this.afl != null) {}
-    for (int i = this.afl.getItemId(); i == 0; i = 0) {
+    if (this.ahc != null) {}
+    for (int i = this.ahc.getItemId(); i == 0; i = 0) {
       return null;
     }
-    return super.hx() + ":" + i;
+    return super.hN() + ":" + i;
   }
   
-  public final boolean hy()
+  public final boolean hO()
   {
-    return this.afk.hy();
+    return this.ahb.hO();
   }
   
-  public final boolean hz()
+  public final boolean hP()
   {
-    return this.afk.hz();
+    return this.ahb.hP();
+  }
+  
+  public final boolean hQ()
+  {
+    return this.ahb.hQ();
+  }
+  
+  public final h hY()
+  {
+    return this.ahb.hY();
   }
   
   public void setGroupDividerEnabled(boolean paramBoolean)
   {
-    this.afk.setGroupDividerEnabled(paramBoolean);
+    this.ahb.setGroupDividerEnabled(paramBoolean);
   }
   
   public SubMenu setHeaderIcon(int paramInt)
@@ -111,19 +111,19 @@ public class u
   
   public SubMenu setIcon(int paramInt)
   {
-    this.afl.setIcon(paramInt);
+    this.ahc.setIcon(paramInt);
     return this;
   }
   
   public SubMenu setIcon(Drawable paramDrawable)
   {
-    this.afl.setIcon(paramDrawable);
+    this.ahc.setIcon(paramDrawable);
     return this;
   }
   
   public void setQwertyMode(boolean paramBoolean)
   {
-    this.afk.setQwertyMode(paramBoolean);
+    this.ahb.setQwertyMode(paramBoolean);
   }
 }
 

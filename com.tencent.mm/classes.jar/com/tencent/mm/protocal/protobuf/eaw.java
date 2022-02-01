@@ -3,41 +3,59 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class eaw
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public boolean Ggx;
-  public boolean Ggy;
-  public int Ggz;
+  public String ozD;
+  public String pkr;
+  public int type;
+  public String wCQ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50120);
+    AppMethodBeat.i(207261);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bl(1, this.Ggx);
-      paramVarArgs.bl(2, this.Ggy);
-      paramVarArgs.aR(3, this.Ggz);
-      AppMethodBeat.o(50120);
+      paramVarArgs.aS(1, this.type);
+      if (this.wCQ != null) {
+        paramVarArgs.d(2, this.wCQ);
+      }
+      if (this.pkr != null) {
+        paramVarArgs.d(3, this.pkr);
+      }
+      if (this.ozD != null) {
+        paramVarArgs.d(4, this.ozD);
+      }
+      AppMethodBeat.o(207261);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.fK(1);
-      int i = f.a.a.b.b.a.fK(2);
-      int j = f.a.a.b.b.a.bx(3, this.Ggz);
-      AppMethodBeat.o(50120);
-      return paramInt + 1 + 0 + (i + 1) + j;
+      int i = f.a.a.b.b.a.bz(1, this.type) + 0;
+      paramInt = i;
+      if (this.wCQ != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.wCQ);
+      }
+      i = paramInt;
+      if (this.pkr != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.pkr);
+      }
+      paramInt = i;
+      if (this.ozD != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.ozD);
+      }
+      AppMethodBeat.o(207261);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(50120);
+      AppMethodBeat.o(207261);
       return 0;
     }
     if (paramInt == 3)
@@ -47,22 +65,26 @@ public final class eaw
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(50120);
+        AppMethodBeat.o(207261);
         return -1;
       case 1: 
-        localeaw.Ggx = locala.LVo.fZX();
-        AppMethodBeat.o(50120);
+        localeaw.type = locala.NPN.zc();
+        AppMethodBeat.o(207261);
         return 0;
       case 2: 
-        localeaw.Ggy = locala.LVo.fZX();
-        AppMethodBeat.o(50120);
+        localeaw.wCQ = locala.NPN.readString();
+        AppMethodBeat.o(207261);
+        return 0;
+      case 3: 
+        localeaw.pkr = locala.NPN.readString();
+        AppMethodBeat.o(207261);
         return 0;
       }
-      localeaw.Ggz = locala.LVo.xF();
-      AppMethodBeat.o(50120);
+      localeaw.ozD = locala.NPN.readString();
+      AppMethodBeat.o(207261);
       return 0;
     }
-    AppMethodBeat.o(50120);
+    AppMethodBeat.o(207261);
     return -1;
   }
 }

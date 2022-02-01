@@ -10,28 +10,28 @@ import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.plugin.scanner.i;
 import com.tencent.mm.plugin.scanner.util.k.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.g;
 import java.io.IOException;
 
 public final class ProductUI$a
   implements s
 {
-  private k.a xdu;
+  private k.a yrw;
   
   public ProductUI$a(k.a parama)
   {
-    this.xdu = parama;
+    this.yrw = parama;
   }
   
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(51872);
-    if (s.a.iuo == parama) {}
+    if (s.a.iNr == parama) {}
     try
     {
-      f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aNl(), false);
+      g.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aQw(), false);
       AppMethodBeat.o(51872);
       return paramBitmap;
     }
@@ -39,75 +39,75 @@ public final class ProductUI$a
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.scanner.ProductUI", parama, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.scanner.ProductUI", parama, "", new Object[0]);
       }
     }
   }
   
   public final void a(s.a parama, String paramString) {}
   
-  public final s.b aNk()
-  {
-    return null;
-  }
-  
-  public final String aNl()
-  {
-    AppMethodBeat.i(51871);
-    String str = i.dza().iL(this.xdu.field_thumburl, "@S");
-    AppMethodBeat.o(51871);
-    return str;
-  }
-  
-  public final String aNm()
-  {
-    if (this.xdu == null) {
-      return "";
-    }
-    return this.xdu.field_thumburl;
-  }
-  
-  public final String aNn()
-  {
-    if (this.xdu == null) {
-      return "";
-    }
-    return this.xdu.field_thumburl;
-  }
-  
-  public final boolean aNo()
+  public final boolean aQA()
   {
     return false;
   }
   
-  public final boolean aNp()
-  {
-    return false;
-  }
-  
-  public final Bitmap aNq()
+  public final Bitmap aQB()
   {
     AppMethodBeat.i(51873);
-    if (ai.getContext() == null)
+    if (aj.getContext() == null)
     {
       AppMethodBeat.o(51873);
       return null;
     }
-    Bitmap localBitmap = BitmapFactory.decodeResource(ai.getContext().getResources(), 2131233476);
+    Bitmap localBitmap = BitmapFactory.decodeResource(aj.getContext().getResources(), 2131233476);
     AppMethodBeat.o(51873);
     return localBitmap;
   }
   
-  public final void aNr() {}
+  public final void aQC() {}
+  
+  public final s.b aQv()
+  {
+    return null;
+  }
+  
+  public final String aQw()
+  {
+    AppMethodBeat.i(51871);
+    String str = i.dKy().iY(this.yrw.field_thumburl, "@S");
+    AppMethodBeat.o(51871);
+    return str;
+  }
+  
+  public final String aQx()
+  {
+    if (this.yrw == null) {
+      return "";
+    }
+    return this.yrw.field_thumburl;
+  }
+  
+  public final String aQy()
+  {
+    if (this.yrw == null) {
+      return "";
+    }
+    return this.yrw.field_thumburl;
+  }
+  
+  public final boolean aQz()
+  {
+    return false;
+  }
   
   public final void aa(String paramString, boolean paramBoolean) {}
   
   public final String getCacheKey()
   {
-    if (this.xdu == null) {
+    if (this.yrw == null) {
       return "";
     }
-    return this.xdu.field_thumburl;
+    return this.yrw.field_thumburl;
   }
 }
 

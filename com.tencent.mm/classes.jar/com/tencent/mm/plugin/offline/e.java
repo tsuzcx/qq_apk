@@ -2,16 +2,14 @@ package com.tencent.mm.plugin.offline;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.al.q;
 import com.tencent.mm.plugin.offline.a.o;
 import com.tencent.mm.plugin.offline.c.a.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,27 +17,27 @@ import java.util.List;
 public final class e
   extends a<b>
 {
-  public String vrw;
-  private i.a vrx;
+  public String wwO;
+  private i.a wwP;
   
   public e()
   {
     AppMethodBeat.i(66207);
-    this.vrw = "";
-    this.vrx = new i.a()
+    this.wwO = "";
+    this.wwP = new i.a()
     {
-      public final void dlS()
+      public final void dwj()
       {
         AppMethodBeat.i(66205);
         e.this.onChange();
         AppMethodBeat.o(66205);
       }
     };
-    k.dlZ();
-    if (k.dmc() != null)
+    k.dwq();
+    if (k.dwt() != null)
     {
-      k.dlZ();
-      k.dmc().vsa = this.vrx;
+      k.dwq();
+      k.dwt().wxs = this.wwP;
     }
     AppMethodBeat.o(66207);
   }
@@ -48,116 +46,116 @@ public final class e
   {
     AppMethodBeat.i(66210);
     paramString = new o(paramInt1, paramInt2, paramInt3, paramString);
-    g.agS();
-    g.agQ().ghe.a(paramString, 0);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.a(paramString, 0);
     AppMethodBeat.o(66210);
   }
   
-  private static void dlP()
+  private static void dwg()
   {
     AppMethodBeat.i(66208);
-    k.dlZ();
-    k.dmc().gB(1, 1);
+    k.dwq();
+    k.dwt().gT(1, 1);
     AppMethodBeat.o(66208);
   }
   
-  private static void dlQ()
+  private static void dwh()
   {
     AppMethodBeat.i(66209);
-    k.dlZ();
-    k.dmc().KE(2);
+    k.dwq();
+    k.dwt().Mg(2);
     AppMethodBeat.o(66209);
   }
   
-  public static int dlR()
+  public static int dwi()
   {
     AppMethodBeat.i(66213);
-    k.dlZ();
-    k.dmc();
-    int i = i.dlY();
+    k.dwq();
+    k.dwt();
+    int i = i.dwp();
     AppMethodBeat.o(66213);
     return i;
   }
   
-  public final String A(int paramInt1, int paramInt2, String paramString)
+  public final String B(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(66211);
-    ac.i("MicroMsg.OfflineCodesMgr", "generatetKey scene %s isSnapshot %s stack: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), bs.eWi().toString() });
-    paramString = B(paramInt1, paramInt2, paramString);
+    ad.i("MicroMsg.OfflineCodesMgr", "generatetKey scene %s isSnapshot %s stack: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), bt.flS().toString() });
+    paramString = C(paramInt1, paramInt2, paramString);
     AppMethodBeat.o(66211);
     return paramString;
   }
   
-  public final String B(int paramInt1, int paramInt2, String paramString)
+  public final String C(int paramInt1, int paramInt2, String paramString)
   {
     int i = 0;
     AppMethodBeat.i(66212);
-    int j = dlR();
+    int j = dwi();
     Object localObject;
     if (j > 0)
     {
-      if (j < k.vsp)
+      if (j < k.wxH)
       {
-        ac.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 getTokenCount < %s", new Object[] { Integer.valueOf(k.vsp) });
-        dlQ();
+        ad.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 getTokenCount < %s", new Object[] { Integer.valueOf(k.wxH) });
+        dwh();
       }
-      k.dlZ();
-      localObject = k.KG(196617);
+      k.dwq();
+      localObject = k.Mi(196617);
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        ac.e("MicroMsg.OfflineCodesMgr", "generateKey_V3 cn is null, the csr is not exist! cn:".concat(String.valueOf(localObject)));
+        ad.e("MicroMsg.OfflineCodesMgr", "generateKey_V3 cn is null, the csr is not exist! cn:".concat(String.valueOf(localObject)));
         AppMethodBeat.o(66212);
         return "";
       }
-      com.tencent.mm.wallet_core.c.b.fAg();
+      com.tencent.mm.wallet_core.c.b.fRq();
       localObject = com.tencent.mm.wallet_core.c.b.getToken((String)localObject);
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        dlP();
-        ac.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 code is null");
+        dwg();
+        ad.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 code is null");
         AppMethodBeat.o(66212);
         return "";
       }
     }
     else
     {
-      paramString = h.wUl;
-      if (com.tencent.mm.plugin.offline.c.a.cK(ai.getContext()))
+      paramString = com.tencent.mm.plugin.report.service.g.yhR;
+      if (com.tencent.mm.plugin.offline.c.a.cH(aj.getContext()))
       {
         paramInt1 = 0;
         paramInt2 = i;
-        if (ax.isNetworkConnected(ai.getContext())) {
+        if (ay.isNetworkConnected(aj.getContext())) {
           paramInt2 = 1;
         }
         paramString.f(14163, new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        h.wUl.idkeyStat(135L, 29L, 1L, true);
-        if (!ax.isNetworkConnected(ai.getContext())) {
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(135L, 29L, 1L, true);
+        if (!ay.isNetworkConnected(aj.getContext())) {
           break label249;
         }
-        h.wUl.idkeyStat(135L, 31L, 1L, true);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(135L, 31L, 1L, true);
       }
       for (;;)
       {
-        dlP();
-        ac.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 getTokenCount is 0");
+        dwg();
+        ad.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 getTokenCount is 0");
         AppMethodBeat.o(66212);
         return "";
         paramInt1 = 1;
         break;
         label249:
-        h.wUl.idkeyStat(135L, 30L, 1L, true);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(135L, 30L, 1L, true);
       }
     }
     if (localObject != null) {
-      ac.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 code length : %s ext_business_attach %s %s", new Object[] { Integer.valueOf(((String)localObject).length()), paramString, localObject });
+      ad.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 code length : %s ext_business_attach %s %s", new Object[] { Integer.valueOf(((String)localObject).length()), paramString, localObject });
     }
     c(j - 1, paramInt1, paramInt2, paramString);
-    ac.i("MicroMsg.OfflineCodesMgr", "doNetSceneShowCode count " + (j - 1));
-    paramString = com.tencent.mm.plugin.offline.c.a.aoL(com.tencent.mm.plugin.offline.c.a.dng());
+    ad.i("MicroMsg.OfflineCodesMgr", "doNetSceneShowCode count " + (j - 1));
+    paramString = com.tencent.mm.plugin.offline.c.a.atL(com.tencent.mm.plugin.offline.c.a.dxy());
     if ((paramString == null) || (paramString.size() == 0))
     {
-      ac.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 cardList is null");
-      dlP();
+      ad.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 cardList is null");
+      dwg();
       AppMethodBeat.o(66212);
       return "";
     }
@@ -172,17 +170,17 @@ public final class e
         break label480;
       }
       localObject = (a.a)paramString.get(paramInt1);
-      if ((localObject == null) || (((a.a)localObject).vwo == null) || (!((a.a)localObject).vwo.equals(this.vrw))) {
+      if ((localObject == null) || (((a.a)localObject).wBI == null) || (!((a.a)localObject).wBI.equals(this.wwO))) {
         break label644;
       }
-      l1 = ((a.a)localObject).vwn;
+      l1 = ((a.a)localObject).wBH;
     }
     label644:
     for (;;)
     {
       paramInt1 += 1;
       break;
-      ac.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 code is null or is not isNumeric");
+      ad.i("MicroMsg.OfflineCodesMgr", "generateKey_V3 code is null or is not isNumeric");
       AppMethodBeat.o(66212);
       return "";
       label480:
@@ -222,20 +220,20 @@ public final class e
   public final void onChange()
   {
     AppMethodBeat.i(66206);
-    if (this.vrt == null)
+    if (this.wwL == null)
     {
       AppMethodBeat.o(66206);
       return;
     }
     int i = 0;
-    while (i < this.vrt.size())
+    while (i < this.wwL.size())
     {
-      Object localObject = (WeakReference)this.vrt.get(i);
+      Object localObject = (WeakReference)this.wwL.get(i);
       if (localObject != null)
       {
         localObject = (b)((WeakReference)localObject).get();
         if (localObject != null) {
-          ((b)localObject).bPC();
+          ((b)localObject).bUh();
         }
       }
       i += 1;

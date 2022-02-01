@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tencent.mm.ui.base.MaskLayout android:id="@id/akx" android:focusable="false" android:clipChildren="false" style="@style/gk"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.chatting.view.AvatarImageView android:id="@id/aku" android:focusable="false" style="@style/gj" />
+    <com.tencent.mm.ui.chatting.view.ChattingAvatarImageView android:id="@id/aku" android:focusable="false" style="@style/gj" />
     <ViewStub android:id="@id/anw" android:layout="@layout/o6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
 </com.tencent.mm.ui.base.MaskLayout>

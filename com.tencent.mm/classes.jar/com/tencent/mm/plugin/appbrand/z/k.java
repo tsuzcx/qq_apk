@@ -96,7 +96,7 @@ public final class k
     //   150: ldc 60
     //   152: iconst_0
     //   153: anewarray 4	java/lang/Object
-    //   156: invokestatic 66	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   156: invokestatic 66	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   159: ldc 25
     //   161: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   164: aconst_null

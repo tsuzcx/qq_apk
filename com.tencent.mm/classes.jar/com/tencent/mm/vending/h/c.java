@@ -15,7 +15,7 @@ public final class c
   
   public final void cancel() {}
   
-  public final void f(Runnable paramRunnable, long paramLong)
+  public final void g(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(74926);
     a.w("Vending.NoLooperScheduler", "This is not a handler thread!", new Object[0]);

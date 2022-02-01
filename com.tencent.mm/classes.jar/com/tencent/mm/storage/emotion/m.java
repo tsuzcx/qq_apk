@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 
@@ -39,8 +39,8 @@ public final class m
   public final void a(String paramString1, GetEmotionDetailResponse paramGetEmotionDetailResponse, String paramString2)
   {
     AppMethodBeat.i(183930);
-    if ((bs.isNullOrNil(paramString1)) || (paramGetEmotionDetailResponse == null)) {
-      ac.w("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID failed. productId or response is null.");
+    if ((bt.isNullOrNil(paramString1)) || (paramGetEmotionDetailResponse == null)) {
+      ad.w("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID failed. productId or response is null.");
     }
     try
     {
@@ -51,28 +51,28 @@ public final class m
       paramGetEmotionDetailResponse = locall.convertTo();
       if (this.db.replace("EmotionDetailInfo", "productID", paramGetEmotionDetailResponse) > 0L)
       {
-        ac.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID success. ProductId:%s", new Object[] { paramString1 });
+        ad.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID success. ProductId:%s", new Object[] { paramString1 });
         AppMethodBeat.o(183930);
         return;
       }
-      ac.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID failed. ProductId:%s", new Object[] { paramString1 });
+      ad.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID failed. ProductId:%s", new Object[] { paramString1 });
       AppMethodBeat.o(183930);
       return;
     }
     catch (Exception paramString1)
     {
-      ac.e("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID exception:%s", new Object[] { bs.m(paramString1) });
+      ad.e("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID exception:%s", new Object[] { bt.n(paramString1) });
       AppMethodBeat.o(183930);
     }
   }
   
-  public final l aPc(String paramString)
+  public final l aUT(String paramString)
   {
     Object localObject2 = null;
     AppMethodBeat.i(105116);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      ac.w("MicroMsg.emoji.EmotionDetailInfoStorage", "getEmotionDetailRespnseByPID failed. productID is null.");
+      ad.w("MicroMsg.emoji.EmotionDetailInfoStorage", "getEmotionDetailRespnseByPID failed. productID is null.");
       AppMethodBeat.o(105116);
       return null;
     }
@@ -103,7 +103,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.m
  * JD-Core Version:    0.7.0.1
  */

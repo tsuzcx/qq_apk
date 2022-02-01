@@ -1,74 +1,49 @@
 package d.g.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l.b;
 import d.l.d;
-import d.l.h;
-import d.l.m;
+import d.l.m.a;
 
-public class x
+public final class x
+  extends w
 {
-  public d.l.e a(j paramj)
+  private final d MLP;
+  private final String name;
+  private final String signature;
+  
+  public x(d paramd, String paramString1, String paramString2)
   {
-    return paramj;
+    this.MLP = paramd;
+    this.name = paramString1;
+    this.signature = paramString2;
   }
   
-  public h a(n paramn)
+  public final String Hu()
   {
-    return paramn;
+    return this.signature;
   }
   
-  public d.l.l a(r paramr)
+  public final d Hv()
   {
-    return paramr;
+    return this.MLP;
   }
   
-  public m a(t paramt)
+  public final Object get(Object paramObject)
   {
-    return paramt;
+    AppMethodBeat.i(128971);
+    paramObject = gga().af(new Object[] { paramObject });
+    AppMethodBeat.o(128971);
+    return paramObject;
   }
   
-  public String a(i parami)
+  public final String getName()
   {
-    AppMethodBeat.i(128961);
-    parami = parami.getClass().getGenericInterfaces()[0].toString();
-    if (parami.startsWith("kotlin.jvm.functions."))
-    {
-      parami = parami.substring(21);
-      AppMethodBeat.o(128961);
-      return parami;
-    }
-    AppMethodBeat.o(128961);
-    return parami;
-  }
-  
-  public String a(l paraml)
-  {
-    AppMethodBeat.i(128960);
-    paraml = a(paraml);
-    AppMethodBeat.o(128960);
-    return paraml;
-  }
-  
-  public b bn(Class paramClass)
-  {
-    AppMethodBeat.i(128959);
-    paramClass = new e(paramClass);
-    AppMethodBeat.o(128959);
-    return paramClass;
-  }
-  
-  public d g(Class paramClass, String paramString)
-  {
-    AppMethodBeat.i(128958);
-    paramClass = new p(paramClass, paramString);
-    AppMethodBeat.o(128958);
-    return paramClass;
+    return this.name;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.g.b.x
  * JD-Core Version:    0.7.0.1
  */

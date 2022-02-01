@@ -1,32 +1,35 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.account.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class WalletBalanceFetchUI$15
   implements View.OnClickListener
 {
-  WalletBalanceFetchUI$15(WalletBalanceFetchUI paramWalletBalanceFetchUI, Context paramContext, String paramString, Dialog paramDialog) {}
+  WalletBalanceFetchUI$15(WalletBalanceFetchUI paramWalletBalanceFetchUI, Dialog paramDialog) {}
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(68594);
-    ac.i("MicroMsg.WalletBalanceFetchUI", "showIdentifyInfoCompleteDialog completeBtn click");
-    a.b(this.val$context, this.val$url, 2, true);
-    if ((this.AZd != null) && (this.AZd.isShowing())) {
-      this.AZd.dismiss();
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchUI$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    ad.i("MicroMsg.WalletBalanceFetchUI", "showIdentifyInfoCompleteDialog closeIcon click");
+    if ((this.Czp != null) && (this.Czp.isShowing())) {
+      this.Czp.dismiss();
     }
+    a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchUI$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(68594);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceFetchUI.15
  * JD-Core Version:    0.7.0.1
  */

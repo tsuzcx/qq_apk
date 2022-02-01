@@ -5,62 +5,64 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
+import com.tencent.mm.plugin.appbrand.m.f;
 import java.util.Map;
 import org.json.JSONObject;
 
 public abstract class e<Service extends c>
   extends a.a<Service>
+  implements f
 {
   public e(Service paramService)
   {
     super(paramService);
   }
   
-  protected void BD() {}
+  public abstract boolean CK();
   
-  protected abstract void BE();
-  
-  protected abstract void BF();
-  
-  public abstract boolean Bl();
-  
-  protected i Bm()
+  protected i CL()
   {
     return null;
   }
   
-  protected void Bn() {}
+  protected void CM() {}
   
-  protected void Bo() {}
+  protected void CN() {}
   
-  protected void Bp() {}
+  protected void CO() {}
   
-  public void By() {}
+  public void CX() {}
   
-  public void Bz() {}
+  public void CY() {}
   
-  public final com.tencent.luggage.sdk.d.c CO()
+  protected Map<String, m> DG()
   {
-    if (CM() == null) {
+    return null;
+  }
+  
+  protected void Dc() {}
+  
+  protected abstract void Dd();
+  
+  protected abstract void De();
+  
+  public final void EI()
+  {
+    ((c)El()).EI();
+  }
+  
+  public final com.tencent.luggage.sdk.d.c En()
+  {
+    if (El() == null) {
       return null;
     }
-    return ((c)CM()).CO();
-  }
-  
-  protected Map<String, m> Ch()
-  {
-    return null;
-  }
-  
-  public final void Dj()
-  {
-    ((c)CM()).Dj();
+    return ((c)El()).En();
   }
   
   public final <T> T Q(Class<T> paramClass)
   {
     if (ICommLibReader.class.equals(paramClass)) {
-      return paramClass.cast(((c)CM()).aSt());
+      return paramClass.cast(((c)El()).aVF());
     }
     if (paramClass.isInstance(this)) {
       return paramClass.cast(this);
@@ -68,25 +70,23 @@ public abstract class e<Service extends c>
     return super.Q(paramClass);
   }
   
-  protected abstract void bY(String paramString);
-  
   protected abstract void c(AppBrandRuntime paramAppBrandRuntime);
   
   public void c(JSONObject paramJSONObject) {}
-  
-  public String cl(String paramString)
-  {
-    return null;
-  }
   
   public boolean d(String paramString1, String paramString2, int paramInt)
   {
     return false;
   }
   
+  public String dn(String paramString)
+  {
+    return null;
+  }
+  
   public final String getAppId()
   {
-    return ((c)CM()).getAppId();
+    return ((c)El()).getAppId();
   }
   
   public boolean i(int paramInt, String paramString)
@@ -96,7 +96,7 @@ public abstract class e<Service extends c>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.c.e
  * JD-Core Version:    0.7.0.1
  */

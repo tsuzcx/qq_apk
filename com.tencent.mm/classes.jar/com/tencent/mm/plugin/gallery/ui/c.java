@@ -20,18 +20,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   extends RecyclerView.h
 {
-  private Drawable akL;
-  private boolean sQN;
-  private int sQO;
-  private int sQP;
+  private Drawable amC;
+  private boolean tNr;
+  private int tNs;
+  private int tNt;
   
   private c(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     AppMethodBeat.i(111507);
-    this.sQO = paramInt1;
-    this.sQN = paramBoolean;
-    this.sQP = paramInt2;
-    this.akL = new ColorDrawable(paramInt3);
+    this.tNs = paramInt1;
+    this.tNr = paramBoolean;
+    this.tNt = paramInt2;
+    this.amC = new ColorDrawable(paramInt3);
     AppMethodBeat.o(111507);
   }
   
@@ -84,14 +84,14 @@ public final class c
     paramRecyclerView = paramRecyclerView.getLayoutManager();
     int i;
     if ((paramRecyclerView instanceof GridLayoutManager)) {
-      i = ((GridLayoutManager)paramRecyclerView).anI;
+      i = ((GridLayoutManager)paramRecyclerView).apA;
     }
     for (;;)
     {
       AppMethodBeat.o(111510);
       return i;
       if ((paramRecyclerView instanceof StaggeredGridLayoutManager)) {
-        i = ((StaggeredGridLayoutManager)paramRecyclerView).anI;
+        i = ((StaggeredGridLayoutManager)paramRecyclerView).apA;
       } else {
         i = -1;
       }
@@ -103,18 +103,18 @@ public final class c
     AppMethodBeat.i(111509);
     int i = z(paramRecyclerView);
     int n = paramRecyclerView.getAdapter().getItemCount();
-    int i1 = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).arH.lu();
+    int i1 = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).aty.lM();
     if (i1 < 0)
     {
       AppMethodBeat.o(111509);
       return;
     }
     int m = i1 % i;
-    int j = this.sQP * m / i;
-    int k = this.sQP;
-    m = (m + 1) * this.sQP / i;
-    if ((c(paramRecyclerView, i1, i, n)) && (!this.sQN)) {}
-    for (i = 0;; i = this.sQO)
+    int j = this.tNt * m / i;
+    int k = this.tNt;
+    m = (m + 1) * this.tNt / i;
+    if ((c(paramRecyclerView, i1, i, n)) && (!this.tNr)) {}
+    for (i = 0;; i = this.tNs)
     {
       paramRect.set(j, 0, k - m, i);
       AppMethodBeat.o(111509);
@@ -137,7 +137,7 @@ public final class c
     while (i < k)
     {
       paramt = paramRecyclerView.getChildAt(i);
-      if ((!c(paramRecyclerView, i, z(paramRecyclerView), k)) || (this.sQN))
+      if ((!c(paramRecyclerView, i, z(paramRecyclerView), k)) || (this.tNr))
       {
         localLayoutParams = (RecyclerView.LayoutParams)paramt.getLayoutParams();
         m = paramt.getLeft();
@@ -146,9 +146,9 @@ public final class c
         i2 = localLayoutParams.rightMargin;
         i3 = paramt.getBottom();
         i3 = localLayoutParams.bottomMargin + i3;
-        i4 = this.sQO;
-        this.akL.setBounds(m - n, i3, i1 + i2, i4 + i3);
-        this.akL.draw(paramCanvas);
+        i4 = this.tNs;
+        this.amC.setBounds(m - n, i3, i1 + i2, i4 + i3);
+        this.amC.draw(paramCanvas);
       }
       i += 1;
     }
@@ -157,22 +157,22 @@ public final class c
     while (i < m)
     {
       paramt = paramRecyclerView.getChildAt(i);
-      if ((paramRecyclerView.bh(paramt).lv() + 1) % z(paramRecyclerView) != 0)
+      if ((paramRecyclerView.bh(paramt).lN() + 1) % z(paramRecyclerView) != 0)
       {
         localLayoutParams = (RecyclerView.LayoutParams)paramt.getLayoutParams();
         n = paramt.getTop();
         i1 = localLayoutParams.topMargin;
         i2 = paramt.getBottom();
         i3 = localLayoutParams.bottomMargin;
-        i4 = this.sQO;
+        i4 = this.tNs;
         int i5 = paramt.getRight() + localLayoutParams.rightMargin;
-        k = this.sQP + i5;
+        k = this.tNt + i5;
         j = k;
         if (i == m - 1) {
-          j = k - this.sQP;
+          j = k - this.tNt;
         }
-        this.akL.setBounds(i5, n - i1, j, i2 + i3 + i4);
-        this.akL.draw(paramCanvas);
+        this.amC.setBounds(i5, n - i1, j, i2 + i3 + i4);
+        this.amC.draw(paramCanvas);
       }
       i += 1;
     }
@@ -184,18 +184,18 @@ public final class c
     int mColor;
     Context mContext;
     Resources mResources;
-    boolean sQN;
-    int sQO;
-    int sQP;
+    boolean tNr;
+    int tNs;
+    int tNt;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(111506);
       this.mContext = paramContext;
       this.mResources = paramContext.getResources();
-      this.sQN = true;
-      this.sQO = 0;
-      this.sQP = 0;
+      this.tNr = true;
+      this.tNs = 0;
+      this.tNt = 0;
       this.mColor = -1;
       AppMethodBeat.o(111506);
     }

@@ -2,36 +2,36 @@ package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appcache.b.e.e;
-import com.tencent.mm.protocal.protobuf.bot;
-import com.tencent.mm.protocal.protobuf.ebw;
-import com.tencent.mm.protocal.protobuf.ecd;
-import com.tencent.mm.protocal.protobuf.vg;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.btg;
+import com.tencent.mm.protocal.protobuf.eic;
+import com.tencent.mm.protocal.protobuf.eij;
+import com.tencent.mm.protocal.protobuf.xf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class g
-  extends a<Boolean, ecd>
+  extends a<Boolean, eij>
 {
-  private static Boolean a(String paramString1, String paramString2, ecd paramecd)
+  private static Boolean a(String paramString1, String paramString2, eij parameij)
   {
     AppMethodBeat.i(44401);
-    Object localObject = paramecd.GhJ;
-    if (bs.isNullOrNil((String)localObject))
+    Object localObject = parameij.HSX;
+    if (bt.isNullOrNil((String)localObject))
     {
-      ac.e("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s | %s], empty base64", new Object[] { paramString1, paramString2 });
+      ad.e("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s | %s], empty base64", new Object[] { paramString1, paramString2 });
       paramString1 = Boolean.FALSE;
       AppMethodBeat.o(44401);
       return paramString1;
     }
-    if (bs.gY(paramecd.FWP))
+    if (bt.hj(parameij.HHF))
     {
-      ac.e("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s | %s], empty sceneList", new Object[] { paramString1, paramString2 });
+      ad.e("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s | %s], empty sceneList", new Object[] { paramString1, paramString2 });
       paramString1 = Boolean.FALSE;
       AppMethodBeat.o(44401);
       return paramString1;
@@ -41,29 +41,29 @@ public class g
       try
       {
         byte[] arrayOfByte = Base64.decode((String)localObject, 0);
-        localObject = new bot();
-        ((bot)localObject).parseFrom(arrayOfByte);
-        if (((bot)localObject).Feg.Epw.xy.length == 0)
+        localObject = new btg();
+        ((btg)localObject).parseFrom(arrayOfByte);
+        if (((btg)localObject).GNK.FWI.zr.length == 0)
         {
-          ac.e("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s | %s], parse pb, invalid foreground control bytes", new Object[] { paramString1, paramString2 });
-          localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jqG;
-          com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramecd.Ghr.Gho, 105L);
-          paramecd = Boolean.FALSE;
+          ad.e("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s | %s], parse pb, invalid foreground control bytes", new Object[] { paramString1, paramString2 });
+          localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jKA;
+          com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(parameij.HSF.HSC, 105L);
+          parameij = Boolean.FALSE;
           AppMethodBeat.o(44401);
-          return paramecd;
+          return parameij;
         }
-        localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jqG;
-        com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramecd.Ghr.Gho, 104L);
-        LinkedList localLinkedList = paramecd.FWP;
-        long l1 = paramecd.GhK & 0xFFFFFFFF;
-        long l2 = paramecd.GhL & 0xFFFFFFFF;
+        localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jKA;
+        com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(parameij.HSF.HSC, 104L);
+        LinkedList localLinkedList = parameij.HHF;
+        long l1 = parameij.HSY & 0xFFFFFFFF;
+        long l2 = parameij.HSZ & 0xFFFFFFFF;
         if (localLinkedList == null)
         {
           localObject = "null";
-          ac.i("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s| %s] WriteToStorage, sceneList %s, time[%d, %d]", new Object[] { paramString1, paramString2, localObject, Long.valueOf(l1), Long.valueOf(l2) });
+          ad.i("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s| %s] WriteToStorage, sceneList %s, time[%d, %d]", new Object[] { paramString1, paramString2, localObject, Long.valueOf(l1), Long.valueOf(l2) });
           boolean bool = ((e)j.T(e.class)).a(arrayOfByte, paramString2, localLinkedList, l1, l2);
-          localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jqG;
-          int j = paramecd.Ghr.Gho;
+          localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jKA;
+          int j = parameij.HSF.HSC;
           if (!bool) {
             break label456;
           }
@@ -72,7 +72,7 @@ public class g
           AppMethodBeat.o(44401);
           return Boolean.valueOf(bool);
         }
-        if (bs.gY(localLinkedList))
+        if (bt.hj(localLinkedList))
         {
           localObject = "{}";
           continue;
@@ -86,9 +86,9 @@ public class g
         }
         ((StringBuilder)localObject).append("}");
       }
-      catch (Exception paramecd)
+      catch (Exception parameij)
       {
-        ac.printErrStackTrace("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", paramecd, "call[%s | %s], decode base64", new Object[] { paramString1, paramString2 });
+        ad.printErrStackTrace("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", parameij, "call[%s | %s], decode base64", new Object[] { paramString1, paramString2 });
         paramString1 = Boolean.FALSE;
         AppMethodBeat.o(44401);
         return paramString1;
@@ -100,7 +100,7 @@ public class g
     }
   }
   
-  final String aXD()
+  final String bbb()
   {
     return "CmdIssueLaunch";
   }

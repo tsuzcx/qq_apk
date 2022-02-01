@@ -6,27 +6,27 @@ import com.tencent.tinker.a.a.b.e;
 public final class n
   extends s.a.a<n>
 {
-  public int KmP;
-  public int KnB;
-  public int KnC;
+  public int McN;
+  public int MdA;
+  public int Mdz;
   
   public n(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super(paramInt1);
-    this.KnB = paramInt2;
-    this.KmP = paramInt3;
-    this.KnC = paramInt4;
+    this.Mdz = paramInt2;
+    this.McN = paramInt3;
+    this.MdA = paramInt4;
   }
   
   private int b(n paramn)
   {
-    if (this.KnB != paramn.KnB) {
-      return c.kJ(this.KnB, paramn.KnB);
+    if (this.Mdz != paramn.Mdz) {
+      return c.kY(this.Mdz, paramn.Mdz);
     }
-    if (this.KnC != paramn.KnC) {
-      return c.kJ(this.KnC, paramn.KnC);
+    if (this.MdA != paramn.MdA) {
+      return c.kY(this.MdA, paramn.MdA);
     }
-    return c.kJ(this.KmP, paramn.KmP);
+    return c.kY(this.McN, paramn.McN);
   }
   
   public final boolean equals(Object paramObject)
@@ -40,12 +40,12 @@ public final class n
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.KnB), Integer.valueOf(this.KmP), Integer.valueOf(this.KnC) });
+    return e.hash(new Object[] { Integer.valueOf(this.Mdz), Integer.valueOf(this.McN), Integer.valueOf(this.MdA) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.a.a.n
  * JD-Core Version:    0.7.0.1
  */

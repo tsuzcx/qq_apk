@@ -1,71 +1,105 @@
 package com.tencent.mm.plugin.appbrand.config;
 
+import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cn.f;
-import com.tencent.mm.cn.g;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.service.m;
-import com.tencent.mm.plugin.appbrand.service.m.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.vending.c.a;
-import com.tencent.mm.vending.g.b;
-import com.tencent.mm.vending.g.e;
-import java.util.List;
+import com.tencent.mm.plugin.appbrand.app.a.a;
+import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.f;
+import d.l;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/config/WxaAttrAvailableBackupStorage;", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttrStorage;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;)V", "insertOrUpdate", "", "record", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "CREATOR", "Constants", "plugin-appbrand-integration_release"})
 public final class s
-  implements m
+  extends u
 {
-  public final WxaAttributes Ka(String paramString)
+  public static final String[] hEf;
+  public static final b jYR;
+  private final f jYQ;
+  
+  static
   {
-    AppMethodBeat.i(44876);
-    paramString = j.aVu().d(paramString, new String[0]);
-    AppMethodBeat.o(44876);
-    return paramString;
+    AppMethodBeat.i(189009);
+    jYR = new b((byte)0);
+    hEf = new String[] { u.getCreateSQLs(WxaAttributes.jGU, "WxaAttrAvailableBackupTable") };
+    AppMethodBeat.o(189009);
   }
   
-  public final WxaAttributes Kb(String paramString)
+  public s(f paramf)
   {
-    AppMethodBeat.i(44877);
-    paramString = j.aVu().e(paramString, new String[0]);
-    AppMethodBeat.o(44877);
-    return paramString;
+    super((e)paramf, "WxaAttrAvailableBackupTable", null);
+    AppMethodBeat.i(189008);
+    this.jYQ = paramf;
+    AppMethodBeat.o(189008);
   }
   
-  public final e<WxaAttributes> Kc(final String paramString)
+  public final boolean d(WxaAttributes paramWxaAttributes)
   {
-    AppMethodBeat.i(44879);
-    paramString = g.eo(paramString).b(new a() {});
-    AppMethodBeat.o(44879);
-    return paramString;
-  }
-  
-  public final void a(String paramString, final m.a parama)
-  {
-    AppMethodBeat.i(44878);
-    w.a(paramString, false, new w.b() {});
-    AppMethodBeat.o(44878);
-  }
-  
-  public final void b(String paramString, final m.a parama)
-  {
-    AppMethodBeat.i(44880);
-    w.a(paramString, true, new w.b() {});
-    AppMethodBeat.o(44880);
-  }
-  
-  public final void bb(List<String> paramList)
-  {
-    AppMethodBeat.i(44881);
-    if (bs.gY(paramList))
+    AppMethodBeat.i(189007);
+    if (paramWxaAttributes == null)
     {
-      AppMethodBeat.o(44881);
-      return;
+      AppMethodBeat.o(189007);
+      return false;
     }
-    ac.i("MicroMsg.AppBrand.WxaAttrExportService", "batchSync list %s", new Object[] { bs.n(paramList, ", ") });
-    w.a(paramList, n.a.jEB, null);
-    AppMethodBeat.o(44881);
+    Object localObject1 = new StringBuilder("WxaAttrAvailableBackupStorage.insertOrUpdate(").append(paramWxaAttributes.field_username).append('|').append(paramWxaAttributes.field_appId).append('|');
+    Object localObject2 = paramWxaAttributes.ben();
+    int i;
+    long l;
+    boolean bool;
+    label124:
+    Boolean localBoolean;
+    if (localObject2 != null)
+    {
+      i = ((WxaAttributes.WxaVersionInfo)localObject2).aDD;
+      localObject2 = i + ')';
+      l = SystemClock.elapsedRealtime();
+      if (!super.a(paramWxaAttributes, new String[] { "username" })) {
+        break label262;
+      }
+      bool = super.update((c)paramWxaAttributes, new String[] { "username" });
+      localBoolean = Boolean.valueOf(bool);
+      localObject1 = localBoolean.toString();
+      paramWxaAttributes = (WxaAttributes)localObject1;
+      if (localObject1 == null) {
+        paramWxaAttributes = "";
+      }
+      bool = com.tencent.mm.plugin.appbrand.utils.ad.Ch();
+      l = SystemClock.elapsedRealtime() - l;
+      if ((l <= 32L) || (!bool)) {
+        break label275;
+      }
+      com.tencent.mm.sdk.platformtools.ad.w("Luggage.Utils.Profile", "block main thread and skip " + (int)(l / 16L) + " frames! runProfiled:log:" + (String)localObject2 + " cost " + l + " ms result:" + paramWxaAttributes + " isMainThread: " + bool + ' ');
+    }
+    for (;;)
+    {
+      bool = localBoolean.booleanValue();
+      AppMethodBeat.o(189007);
+      return bool;
+      i = -1;
+      break;
+      label262:
+      bool = super.insert((c)paramWxaAttributes);
+      break label124;
+      label275:
+      com.tencent.mm.sdk.platformtools.ad.i("Luggage.Utils.Profile", "runProfiled:log:" + (String)localObject2 + " cost " + l + " ms result:" + paramWxaAttributes + " isMainThread: " + bool + ' ');
+    }
   }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/config/WxaAttrAvailableBackupStorage$CREATOR;", "Lcom/tencent/mm/plugin/appbrand/app/AppBrandDBStorageRegistry$IStorageCreator;", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttrAvailableBackupStorage;", "()V", "create", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "plugin-appbrand-integration_release"})
+  public static final class a
+    implements a.a<s>
+  {
+    public static final a jYS;
+    
+    static
+    {
+      AppMethodBeat.i(189006);
+      jYS = new a();
+      AppMethodBeat.o(189006);
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/config/WxaAttrAvailableBackupStorage$Constants;", "", "()V", "TABLE_CREATE", "", "", "kotlin.jvm.PlatformType", "[Ljava/lang/String;", "TABLE_NAME", "TAG", "plugin-appbrand-integration_release"})
+  public static final class b {}
 }
 
 

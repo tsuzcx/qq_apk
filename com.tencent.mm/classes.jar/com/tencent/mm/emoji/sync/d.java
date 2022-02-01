@@ -6,30 +6,31 @@ import com.tencent.mm.loader.g.a.g;
 import com.tencent.mm.protocal.protobuf.EmotionDetail;
 import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
 import com.tencent.mm.protocal.protobuf.PersonalDesigner;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.m;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.z;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/sync/EmojiPackSyncManager;", "", "()V", "designerCallback", "com/tencent/mm/emoji/sync/EmojiPackSyncManager$designerCallback$1", "Lcom/tencent/mm/emoji/sync/EmojiPackSyncManager$designerCallback$1;", "designerQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/emoji/sync/EmojiDesignerTask;", "finishCount", "", "taskCount", "destroy", "", "start", "Companion", "plugin-emojisdk_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/sync/EmojiPackSyncManager;", "", "()V", "designerCallback", "com/tencent/mm/emoji/sync/EmojiPackSyncManager$designerCallback$1", "Lcom/tencent/mm/emoji/sync/EmojiPackSyncManager$designerCallback$1;", "designerQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/emoji/sync/EmojiDesignerTask;", "finishCount", "", "taskCount", "destroy", "", "start", "Companion", "plugin-emojisdk_release"})
 public final class d
 {
   private static final String TAG = "MicroMsg.EmojiPackSyncManager";
-  private static d fVy;
-  public static final d.a fVz;
-  final com.tencent.mm.loader.g.d<b> fVu;
-  private int fVv;
-  private int fVw;
-  final b fVx;
+  private static d gpb;
+  public static final d.a gpc;
+  final com.tencent.mm.loader.g.d<b> goX;
+  private int goY;
+  private int goZ;
+  final b gpa;
   
   static
   {
     AppMethodBeat.i(183985);
-    fVz = new d.a((byte)0);
+    gpc = new d.a((byte)0);
     TAG = "MicroMsg.EmojiPackSyncManager";
     AppMethodBeat.o(183985);
   }
@@ -37,18 +38,18 @@ public final class d
   public d()
   {
     AppMethodBeat.i(183984);
-    this.fVu = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new com.tencent.mm.loader.g.a.f((com.tencent.mm.loader.g.a.c)new com.tencent.mm.loader.g.a.a(2147483647), new g(1, (byte)0), 1, "EmojiDesigner"));
-    this.fVx = new b(this);
-    this.fVu.a((com.tencent.mm.loader.g.f)this.fVx);
+    this.goX = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new com.tencent.mm.loader.g.a.f((com.tencent.mm.loader.g.a.c)new com.tencent.mm.loader.g.a.a(2147483647), new g(1, (byte)0), 1, "EmojiDesigner"));
+    this.gpa = new b(this);
+    this.goX.a((com.tencent.mm.loader.g.f)this.gpa);
     AppMethodBeat.o(183984);
   }
   
   public final void start()
   {
     AppMethodBeat.i(183983);
-    Object localObject = i.ach();
-    k.g(localObject, "EmojiStorageCache.getInstance()");
-    ArrayList localArrayList1 = ((i)localObject).acj();
+    Object localObject = i.aeL();
+    p.g(localObject, "EmojiStorageCache.getInstance()");
+    ArrayList localArrayList1 = ((i)localObject).aeN();
     ArrayList localArrayList2 = new ArrayList();
     Iterator localIterator = localArrayList1.iterator();
     EmojiGroupInfo localEmojiGroupInfo;
@@ -57,11 +58,11 @@ public final class d
     if (localIterator.hasNext())
     {
       localEmojiGroupInfo = (EmojiGroupInfo)localIterator.next();
-      localObject = az.faZ();
-      k.g(localObject, "EmojiStorageMgr.getInstance()");
-      localObject = ((az)localObject).fbb();
-      k.g(localEmojiGroupInfo, "groupInfo");
-      locall = ((m)localObject).aPc(localEmojiGroupInfo.fdm());
+      localObject = bd.frc();
+      p.g(localObject, "EmojiStorageMgr.getInstance()");
+      localObject = ((bd)localObject).fre();
+      p.g(localEmojiGroupInfo, "groupInfo");
+      locall = ((m)localObject).aUT(localEmojiGroupInfo.fxi());
       localGetEmotionDetailResponse = new GetEmotionDetailResponse();
       if (locall == null) {
         break label292;
@@ -83,15 +84,15 @@ public final class d
           if (localArrayList2.size() < 50) {
             break;
           }
-          ac.i(TAG, "start: too many groups " + localArrayList1.size());
-          this.fVv = localArrayList2.size();
+          ad.i(TAG, "start: too many groups " + localArrayList1.size());
+          this.goY = localArrayList2.size();
           localObject = ((Iterable)localArrayList2).iterator();
           if (!((Iterator)localObject).hasNext()) {
             break label405;
           }
           i = ((Number)((Iterator)localObject).next()).intValue();
-          ac.i(TAG, "checkStart: add task ".concat(String.valueOf(i)));
-          this.fVu.b((com.tencent.mm.loader.g.c)new b(i));
+          ad.i(TAG, "checkStart: add task ".concat(String.valueOf(i)));
+          this.goX.b((com.tencent.mm.loader.g.c)new b(i));
           continue;
           label292:
           localObject = null;
@@ -99,25 +100,25 @@ public final class d
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
+        ad.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
         continue;
-        ac.i(TAG, "start: GetEmotionDetail " + localEmojiGroupInfo.fdm());
+        ad.i(TAG, "start: GetEmotionDetail " + localEmojiGroupInfo.fxi());
       }
-      if (k.g(localEmojiGroupInfo.fdm(), String.valueOf(EmojiGroupInfo.Jsp))) {
+      if (p.i(localEmojiGroupInfo.fxi(), String.valueOf(EmojiGroupInfo.OeK))) {
         break;
       }
-      String str = localEmojiGroupInfo.fdm();
-      k.g(str, "groupInfo.productID");
-      new com.tencent.mm.emoji.a.d(str).aBB().g((com.tencent.mm.vending.c.a)new c(localEmojiGroupInfo));
+      String str = localEmojiGroupInfo.fxi();
+      p.g(str, "groupInfo.productID");
+      new com.tencent.mm.emoji.a.d(str).aED().g((com.tencent.mm.vending.c.a)new c(localEmojiGroupInfo));
     }
     label405:
     AppMethodBeat.o(183983);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   public static final class a$a
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     public a$a(String paramString, d.g.a.b paramb)
     {
@@ -125,17 +126,17 @@ public final class d
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "uin", "", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "uin", "", "invoke"})
   public static final class a$b
-    extends d.g.b.l
-    implements d.g.a.b<Integer, y>
+    extends q
+    implements d.g.a.b<Integer, z>
   {
-    public static final b fVD;
+    public static final b gpg;
     
     static
     {
       AppMethodBeat.i(183978);
-      fVD = new b();
+      gpg = new b();
       AppMethodBeat.o(183978);
     }
     
@@ -145,17 +146,17 @@ public final class d
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   public static final class a$c
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
-    public static final c fVE;
+    public static final c gph;
     
     static
     {
       AppMethodBeat.i(183980);
-      fVE = new c();
+      gph = new c();
       AppMethodBeat.o(183980);
     }
     
@@ -165,12 +166,12 @@ public final class d
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/emoji/sync/EmojiPackSyncManager$designerCallback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/emoji/sync/EmojiDesignerTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-emojisdk_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/emoji/sync/EmojiPackSyncManager$designerCallback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/emoji/sync/EmojiDesignerTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-emojisdk_release"})
   public static final class b
     implements com.tencent.mm.loader.g.f<b>
   {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "cgiBack", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetEmotionDetailResponse;", "kotlin.jvm.PlatformType", "call"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "cgiBack", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetEmotionDetailResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class c<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {

@@ -1,113 +1,151 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class rd
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String Ejo;
-  public int Ejp;
-  public String Ejq;
-  public rm Ejr;
+  public String CXN;
+  public String Dhj;
+  public String FNb;
+  public String FNc;
+  public int FtC;
+  public String dDH;
+  public String title;
+  public int type;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(113956);
+    AppMethodBeat.i(91383);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Ejo != null) {
-        paramVarArgs.d(1, this.Ejo);
+      paramVarArgs.aS(1, this.type);
+      if (this.Dhj != null) {
+        paramVarArgs.d(2, this.Dhj);
       }
-      paramVarArgs.aR(2, this.Ejp);
-      if (this.Ejq != null) {
-        paramVarArgs.d(3, this.Ejq);
+      if (this.dDH != null) {
+        paramVarArgs.d(3, this.dDH);
       }
-      if (this.Ejr != null)
-      {
-        paramVarArgs.ln(4, this.Ejr.computeSize());
-        this.Ejr.writeFields(paramVarArgs);
+      if (this.title != null) {
+        paramVarArgs.d(4, this.title);
       }
-      AppMethodBeat.o(113956);
+      if (this.CXN != null) {
+        paramVarArgs.d(5, this.CXN);
+      }
+      if (this.url != null) {
+        paramVarArgs.d(6, this.url);
+      }
+      if (this.FNb != null) {
+        paramVarArgs.d(7, this.FNb);
+      }
+      if (this.FNc != null) {
+        paramVarArgs.d(8, this.FNc);
+      }
+      paramVarArgs.aS(9, this.FtC);
+      AppMethodBeat.o(91383);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.Ejo == null) {
-        break label474;
-      }
-    }
-    label474:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Ejo) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt + f.a.a.b.b.a.bx(2, this.Ejp);
+      int i = f.a.a.b.b.a.bz(1, this.type) + 0;
       paramInt = i;
-      if (this.Ejq != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.Ejq);
+      if (this.Dhj != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Dhj);
       }
       i = paramInt;
-      if (this.Ejr != null) {
-        i = paramInt + f.a.a.a.lm(4, this.Ejr.computeSize());
+      if (this.dDH != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.dDH);
       }
-      AppMethodBeat.o(113956);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
-          }
-        }
-        AppMethodBeat.o(113956);
-        return 0;
+      paramInt = i;
+      if (this.title != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.title);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        rd localrd = (rd)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(113956);
-          return -1;
-        case 1: 
-          localrd.Ejo = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(113956);
-          return 0;
-        case 2: 
-          localrd.Ejp = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(113956);
-          return 0;
-        case 3: 
-          localrd.Ejq = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(113956);
-          return 0;
-        }
-        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new rm();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((rm)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localrd.Ejr = ((rm)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(113956);
-        return 0;
+      i = paramInt;
+      if (this.CXN != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.CXN);
       }
-      AppMethodBeat.o(113956);
-      return -1;
+      paramInt = i;
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.url);
+      }
+      i = paramInt;
+      if (this.FNb != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.FNb);
+      }
+      paramInt = i;
+      if (this.FNc != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.FNc);
+      }
+      i = f.a.a.b.b.a.bz(9, this.FtC);
+      AppMethodBeat.o(91383);
+      return paramInt + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gxE();
+        }
+      }
+      AppMethodBeat.o(91383);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      rd localrd = (rd)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(91383);
+        return -1;
+      case 1: 
+        localrd.type = locala.NPN.zc();
+        AppMethodBeat.o(91383);
+        return 0;
+      case 2: 
+        localrd.Dhj = locala.NPN.readString();
+        AppMethodBeat.o(91383);
+        return 0;
+      case 3: 
+        localrd.dDH = locala.NPN.readString();
+        AppMethodBeat.o(91383);
+        return 0;
+      case 4: 
+        localrd.title = locala.NPN.readString();
+        AppMethodBeat.o(91383);
+        return 0;
+      case 5: 
+        localrd.CXN = locala.NPN.readString();
+        AppMethodBeat.o(91383);
+        return 0;
+      case 6: 
+        localrd.url = locala.NPN.readString();
+        AppMethodBeat.o(91383);
+        return 0;
+      case 7: 
+        localrd.FNb = locala.NPN.readString();
+        AppMethodBeat.o(91383);
+        return 0;
+      case 8: 
+        localrd.FNc = locala.NPN.readString();
+        AppMethodBeat.o(91383);
+        return 0;
+      }
+      localrd.FtC = locala.NPN.zc();
+      AppMethodBeat.o(91383);
+      return 0;
+    }
+    AppMethodBeat.o(91383);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.rd
  * JD-Core Version:    0.7.0.1
  */

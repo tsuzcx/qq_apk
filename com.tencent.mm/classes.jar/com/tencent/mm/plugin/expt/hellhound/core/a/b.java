@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.expt.hellhound.core.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
 
 public final class b
 {
-  public static void aad(String paramString)
+  public static void adQ(String paramString)
   {
     AppMethodBeat.i(121859);
     if (TextUtils.isEmpty(paramString))
@@ -14,7 +15,7 @@ public final class b
       AppMethodBeat.o(121859);
       return;
     }
-    aw.aKT("_hellhound_mmkv").putLong(paramString, -1L);
+    ax.aQz("_hellhound_mmkv").putLong(paramString, -1L);
     AppMethodBeat.o(121859);
   }
   
@@ -26,7 +27,7 @@ public final class b
       AppMethodBeat.o(121858);
       return null;
     }
-    paramString = aw.aKT("_hellhound_mmkv").decodeBytes(paramString);
+    paramString = ax.aQz("_hellhound_mmkv").decodeBytes(paramString);
     AppMethodBeat.o(121858);
     return paramString;
   }
@@ -39,12 +40,12 @@ public final class b
       AppMethodBeat.o(121861);
       return null;
     }
-    paramString = aw.aKT("_hellhound_mmkv").getString(paramString, null);
+    paramString = ax.aQz("_hellhound_mmkv").getString(paramString, null);
     AppMethodBeat.o(121861);
     return paramString;
   }
   
-  public static void o(String paramString, byte[] paramArrayOfByte)
+  public static void p(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(121857);
     if ((TextUtils.isEmpty(paramString)) || (paramArrayOfByte == null))
@@ -52,7 +53,8 @@ public final class b
       AppMethodBeat.o(121857);
       return;
     }
-    aw.aKT("_hellhound_mmkv").encode(paramString, paramArrayOfByte);
+    boolean bool = ax.aQz("_hellhound_mmkv").encode(paramString, paramArrayOfByte);
+    ad.i("HABBYGE-MALI.HellhoundMMKV", "putBytes.mmkvEncode: " + bool + "/HELLHOUND_MMKV_NAME");
     AppMethodBeat.o(121857);
   }
   
@@ -68,7 +70,7 @@ public final class b
     if (paramString2 == null) {
       str = "";
     }
-    aw.aKT("_hellhound_mmkv").putString(paramString1, str);
+    ax.aQz("_hellhound_mmkv").putString(paramString1, str);
     AppMethodBeat.o(121860);
   }
 }

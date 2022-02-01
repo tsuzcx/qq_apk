@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.f.c;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
 public final class g
 {
   private static final String TAG = "MicroMsg.StoryLoader";

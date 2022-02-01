@@ -12,9 +12,11 @@ import java.util.Vector;
 public final class e
   implements b
 {
-  private static e JLL = null;
-  private final SparseArray<Set<b>> JLM = new SparseArray();
-  private d JLN = null;
+  private static e LFu = null;
+  private final SparseArray<Set<b>> LFv = new SparseArray();
+  private d LFw = null;
+  private Vector<d> hOx = new Vector();
+  private Vector<d> hOy = new Vector();
   private final Handler handler = new Handler(Looper.getMainLooper())
   {
     public final void handleMessage(Message paramAnonymousMessage)
@@ -22,23 +24,21 @@ public final class e
       e.this.a((d)paramAnonymousMessage.obj);
     }
   };
-  private Vector<d> hwi = new Vector();
-  private Vector<d> hwj = new Vector();
   
-  private void aBP()
+  private void aES()
   {
-    if (this.hwj.size() > 0)
+    if (this.hOy.size() > 0)
     {
-      d locald = (d)this.hwj.get(0);
+      d locald = (d)this.hOy.get(0);
       int i = 1;
-      while (i < this.hwj.size())
+      while (i < this.hOy.size())
       {
-        this.hwj.get(i);
+        this.hOy.get(i);
         i += 1;
       }
-      if (fBD())
+      if (fSS())
       {
-        this.hwj.remove(locald);
+        this.hOy.remove(locald);
         b(locald);
       }
     }
@@ -46,9 +46,9 @@ public final class e
   
   private void b(final d paramd)
   {
-    if (fBD())
+    if (fSS())
     {
-      this.hwi.add(paramd);
+      this.hOx.add(paramd);
       int i = paramd.a(this);
       if (i < 0)
       {
@@ -65,34 +65,34 @@ public final class e
     }
     for (;;)
     {
-      aBP();
+      aES();
       return;
-      this.hwj.add(paramd);
+      this.hOy.add(paramd);
     }
   }
   
-  public static e fBC()
+  public static e fSR()
   {
-    if (JLL == null) {}
+    if (LFu == null) {}
     try
     {
-      if (JLL == null) {
-        JLL = new e();
+      if (LFu == null) {
+        LFu = new e();
       }
-      return JLL;
+      return LFu;
     }
     finally {}
   }
   
-  private boolean fBD()
+  private boolean fSS()
   {
-    return this.hwi.size() < 20;
+    return this.hOx.size() < 20;
   }
   
   public final void a(final int paramInt1, final int paramInt2, final String paramString, final d paramd)
   {
-    this.hwi.remove(paramd);
-    aBP();
+    this.hOx.remove(paramd);
+    aES();
     this.handler.post(new Runnable()
     {
       public final void run()
@@ -117,11 +117,11 @@ public final class e
   
   public final void a(int paramInt, b paramb)
   {
-    if (this.JLM.get(paramInt) == null) {
-      this.JLM.put(paramInt, new HashSet());
+    if (this.LFv.get(paramInt) == null) {
+      this.LFv.put(paramInt, new HashSet());
     }
-    if (!((Set)this.JLM.get(paramInt)).contains(paramb)) {
-      ((Set)this.JLM.get(paramInt)).add(paramb);
+    if (!((Set)this.LFv.get(paramInt)).contains(paramb)) {
+      ((Set)this.LFv.get(paramInt)).add(paramb);
     }
   }
   
@@ -133,7 +133,7 @@ public final class e
       if ((i == 102) || (i == 104) || (i == 103))
       {
         com.tencent.pb.common.c.b.w("MicroMsg.Voip", new Object[] { "doScene do retain mReissueNetScene" });
-        this.JLN = paramd;
+        this.LFw = paramd;
       }
     }
     if (paramd == null) {
@@ -145,7 +145,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.e
  * JD-Core Version:    0.7.0.1
  */

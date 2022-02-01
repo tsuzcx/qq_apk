@@ -14,41 +14,41 @@ public class MainThreadHandler
   public static void post(long paramLong1, long paramLong2, int paramInt)
   {
     AppMethodBeat.i(140003);
-    f.Em().post(new a(paramInt, paramLong1, paramLong2, (byte)0));
+    f.FL().post(new a(paramInt, paramLong1, paramLong2, (byte)0));
     AppMethodBeat.o(140003);
   }
   
   static final class a
     implements Runnable
   {
-    private int cnx;
-    private long cny;
+    private int cyc;
+    private long cyd;
     private long data;
     
     private a(int paramInt, long paramLong1, long paramLong2)
     {
-      this.cnx = paramInt;
-      this.cny = paramLong1;
+      this.cyc = paramInt;
+      this.cyd = paramLong1;
       this.data = paramLong2;
     }
     
     public final void run()
     {
       AppMethodBeat.i(140002);
-      if (this.cnx <= 1)
+      if (this.cyc <= 1)
       {
-        MainThreadHandler.access$000(this.cny, this.data);
+        MainThreadHandler.access$000(this.cyd, this.data);
         AppMethodBeat.o(140002);
         return;
       }
-      MainThreadHandler.post(this.cny, this.data, this.cnx - 1);
+      MainThreadHandler.post(this.cyd, this.data, this.cyc - 1);
       AppMethodBeat.o(140002);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.handler.MainThreadHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,21 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.as;
-import com.tencent.mm.plugin.game.d.at;
+import com.tencent.mm.plugin.game.api.e;
 import com.tencent.mm.plugin.game.d.av;
-import com.tencent.mm.plugin.game.d.bk;
-import com.tencent.mm.plugin.game.d.cc;
-import com.tencent.mm.plugin.game.d.cd;
-import com.tencent.mm.plugin.game.d.cg;
+import com.tencent.mm.plugin.game.d.aw;
+import com.tencent.mm.plugin.game.d.ay;
+import com.tencent.mm.plugin.game.d.bn;
+import com.tencent.mm.plugin.game.d.ci;
+import com.tencent.mm.plugin.game.d.cj;
+import com.tencent.mm.plugin.game.d.cn;
 import com.tencent.mm.plugin.game.d.f;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.plugin.game.f.d;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,32 +24,32 @@ import java.util.LinkedList;
 public final class af
   extends x
 {
-  public bk tgc;
-  private boolean tgd;
-  public LinkedList<c> tge;
-  public HashMap<String, Integer> tgf;
+  public bn udS;
+  private boolean udT;
+  public LinkedList<c> udU;
+  public HashMap<String, Integer> udV;
   
-  public af(com.tencent.mm.bw.a parama)
+  public af(com.tencent.mm.bx.a parama)
   {
     AppMethodBeat.i(41549);
-    this.tgf = new HashMap();
+    this.udV = new HashMap();
     if (parama == null)
     {
-      this.tgc = new bk();
+      this.udS = new bn();
       AppMethodBeat.o(41549);
       return;
     }
-    this.tgc = ((bk)parama);
-    this.tgd = true;
-    WJ();
+    this.udS = ((bn)parama);
+    this.udT = true;
+    Zd();
     AppMethodBeat.o(41549);
   }
   
   public af(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41550);
-    this.tgf = new HashMap();
-    this.tgc = new bk();
+    this.udV = new HashMap();
+    this.udS = new bn();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(41550);
@@ -53,9 +57,9 @@ public final class af
     }
     try
     {
-      this.tgc.parseFrom(paramArrayOfByte);
-      this.tgd = false;
-      WJ();
+      this.udS.parseFrom(paramArrayOfByte);
+      this.udT = false;
+      Zd();
       AppMethodBeat.o(41550);
       return;
     }
@@ -63,106 +67,106 @@ public final class af
     {
       for (;;)
       {
-        ac.e("MicroMsg.GamePBDataOverSea", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
+        ad.e("MicroMsg.GamePBDataOverSea", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
       }
     }
   }
   
-  private void WJ()
+  private void Zd()
   {
     AppMethodBeat.i(41551);
-    this.tge = cQW();
-    if (this.tgd)
+    this.udU = cZC();
+    if (this.udT)
     {
-      com.tencent.mm.plugin.game.f.d.aC(this.tge);
-      cQX();
-      ((com.tencent.mm.plugin.game.api.d)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.d.class)).cOk().init(com.tencent.mm.sdk.platformtools.ai.getContext());
+      d.aE(this.udU);
+      cZD();
+      ((e)com.tencent.mm.kernel.g.ab(e.class)).cWF().init(aj.getContext());
     }
     AppMethodBeat.o(41551);
   }
   
-  private LinkedList<c> cQW()
+  private LinkedList<c> cZC()
   {
     AppMethodBeat.i(41552);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.tgc.tko == null) || (this.tgc.tko.thO == null))
+    if ((this.udS.uis == null) || (this.udS.uis.ufF == null))
     {
       AppMethodBeat.o(41552);
       return localLinkedList;
     }
-    Iterator localIterator = this.tgc.tko.thO.iterator();
+    Iterator localIterator = this.udS.uis.ufF.iterator();
     int i = 1;
     while (localIterator.hasNext())
     {
-      Object localObject = (as)localIterator.next();
-      if (((as)localObject).thi != null)
+      Object localObject = (av)localIterator.next();
+      if (((av)localObject).ueZ != null)
       {
-        c localc = a(((as)localObject).thi);
+        c localc = a(((av)localObject).ueZ);
         if (localc != null)
         {
-          at localat;
+          aw localaw;
           StringBuilder localStringBuilder;
           int j;
-          if (((as)localObject).thi.thB != null) {
-            if ((((as)localObject).thi.thB.Name != null) && (((as)localObject).thi.thB.tkV != null))
+          if (((av)localObject).ueZ.ufs != null) {
+            if ((((av)localObject).ueZ.ufs.Name != null) && (((av)localObject).ueZ.ufs.uje != null))
             {
-              localc.tcX = ((as)localObject).thi.thB.Name;
-              localc.tcY = ((as)localObject).thi.thB.tkV;
-              localc.tdb = com.tencent.mm.plugin.game.e.a.ae(((as)localObject).thP, "label", localc.tcX);
-              if (((as)localObject).tjn == null) {
+              localc.uaN = ((av)localObject).ueZ.ufs.Name;
+              localc.uaO = ((av)localObject).ueZ.ufs.uje;
+              localc.uaR = com.tencent.mm.plugin.game.e.a.aj(((av)localObject).ufG, "label", localc.uaN);
+              if (((av)localObject).uhn == null) {
                 break label476;
               }
-              localObject = ((as)localObject).tjn.iterator();
+              localObject = ((av)localObject).uhn.iterator();
               do
               {
                 if (!((Iterator)localObject).hasNext()) {
                   break;
                 }
-                localat = (at)((Iterator)localObject).next();
-              } while (localat == null);
-              if ((localat.tjo == null) || (localat.tjo.size() == 0)) {
+                localaw = (aw)((Iterator)localObject).next();
+              } while (localaw == null);
+              if ((localaw.uho == null) || (localaw.uho.size() == 0)) {
                 break label462;
               }
               localStringBuilder = new StringBuilder();
               j = 0;
               label271:
-              if (j >= localat.tjo.size()) {
+              if (j >= localaw.uho.size()) {
                 break label423;
               }
-              com.tencent.mm.storage.ai localai = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt((String)localat.tjo.get(j));
-              if ((localai == null) || (localai.fLJ == 0L)) {
+              am localam = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf((String)localaw.uho.get(j));
+              if ((localam == null) || (localam.gfj == 0L)) {
                 break label402;
               }
-              localStringBuilder.append(localai.aaS());
+              localStringBuilder.append(localam.adv());
             }
           }
           for (;;)
           {
-            if (j < localat.tjo.size() - 1) {
+            if (j < localaw.uho.size() - 1) {
               localStringBuilder.append("、");
             }
             j += 1;
             break label271;
-            localc.tdb = com.tencent.mm.plugin.game.e.a.tu(((as)localObject).thP);
+            localc.uaR = com.tencent.mm.plugin.game.e.a.wk(((av)localObject).ufG);
             break;
-            localc.tdb = com.tencent.mm.plugin.game.e.a.tu(((as)localObject).thP);
+            localc.uaR = com.tencent.mm.plugin.game.e.a.wk(((av)localObject).ufG);
             break;
             label402:
-            localStringBuilder.append((String)localat.tjo.get(j));
+            localStringBuilder.append((String)localaw.uho.get(j));
           }
           label423:
           localStringBuilder.append(" ");
-          localc.tcS.add(localStringBuilder.toString());
+          localc.uaI.add(localStringBuilder.toString());
           for (;;)
           {
-            localc.tcS.add(localat.tiv);
+            localc.uaI.add(localaw.ugo);
             break;
             label462:
-            localc.tcS.add("");
+            localc.uaI.add("");
           }
           label476:
           localc.scene = 10;
-          localc.dtF = 1004;
+          localc.dFG = 1004;
           localc.position = i;
           localLinkedList.add(localc);
           i += 1;
@@ -173,29 +177,29 @@ public final class af
     return localLinkedList;
   }
   
-  private void cQX()
+  private void cZD()
   {
     AppMethodBeat.i(41553);
-    this.tgf = new HashMap();
-    if ((this.tgc.tkp == null) || (this.tgc.tkp.tkS == null))
+    this.udV = new HashMap();
+    if ((this.udS.uit == null) || (this.udS.uit.uiZ == null))
     {
       AppMethodBeat.o(41553);
       return;
     }
-    Iterator localIterator = this.tgc.tkp.tkS.iterator();
+    Iterator localIterator = this.udS.uit.uiZ.iterator();
     while (localIterator.hasNext())
     {
-      cd localcd = (cd)localIterator.next();
-      Object localObject = a(localcd.thi);
+      cj localcj = (cj)localIterator.next();
+      Object localObject = a(localcj.ueZ);
       if (localObject != null)
       {
-        this.tgf.put(((c)localObject).field_appId, Integer.valueOf(((c)localObject).versionCode));
-        localObject = com.tencent.mm.plugin.s.a.dny().aGk(((c)localObject).field_appId);
+        this.udV.put(((c)localObject).field_appId, Integer.valueOf(((c)localObject).versionCode));
+        localObject = com.tencent.mm.plugin.s.a.dxQ().aLK(((c)localObject).field_appId);
         if (localObject != null)
         {
-          ((com.tencent.mm.pluginsdk.model.app.g)localObject).pR(localcd.tkU);
-          if (!com.tencent.mm.plugin.s.a.dny().a((com.tencent.mm.pluginsdk.model.app.g)localObject, new String[0])) {
-            ac.e("MicroMsg.GamePBDataOverSea", "Store rank info failed, AppID: %s", new Object[] { ((com.tencent.mm.pluginsdk.model.app.g)localObject).field_appId });
+          ((com.tencent.mm.pluginsdk.model.app.g)localObject).sB(localcj.ujb);
+          if (!com.tencent.mm.plugin.s.a.dxQ().a((com.tencent.mm.pluginsdk.model.app.g)localObject, new String[0])) {
+            ad.e("MicroMsg.GamePBDataOverSea", "Store rank info failed, AppID: %s", new Object[] { ((com.tencent.mm.pluginsdk.model.app.g)localObject).field_appId });
           }
         }
       }
@@ -203,17 +207,17 @@ public final class af
     AppMethodBeat.o(41553);
   }
   
-  public final av cQY()
+  public final ay cZE()
   {
-    if (this.tgc != null) {
-      return this.tgc.tkm;
+    if (this.udS != null) {
+      return this.udS.uiq;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.af
  * JD-Core Version:    0.7.0.1
  */

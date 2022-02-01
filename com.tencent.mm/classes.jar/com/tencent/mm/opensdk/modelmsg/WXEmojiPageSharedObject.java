@@ -3,7 +3,7 @@ package com.tencent.mm.opensdk.modelmsg;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXEmojiPageSharedObject
   implements WXMediaMessage.IMediaObject
@@ -22,6 +22,7 @@ public class WXEmojiPageSharedObject
   
   public WXEmojiPageSharedObject(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt3, String paramString5)
   {
+    AppMethodBeat.i(197002);
     this.tid = paramInt2;
     this.title = paramString1;
     this.desc = paramString2;
@@ -30,19 +31,20 @@ public class WXEmojiPageSharedObject
     this.pageType = paramInt3;
     this.url = paramString5;
     this.type = paramInt1;
+    AppMethodBeat.o(197002);
   }
   
   public boolean checkArgs()
   {
     AppMethodBeat.i(3985);
-    if ((d.b(this.title)) || (d.b(this.iconUrl)))
+    if ((!b.b(this.title)) && (!b.b(this.iconUrl)))
     {
-      Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, title or iconUrl is invalid");
       AppMethodBeat.o(3985);
-      return false;
+      return true;
     }
+    Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, title or iconUrl is invalid");
     AppMethodBeat.o(3985);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

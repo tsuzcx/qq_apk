@@ -7,24 +7,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.y;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.y.b;
 import com.tencent.mm.opensdk.channel.MMessageActV2;
 import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
 import com.tencent.mm.opensdk.modelmsg.SendAuth.Resp;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Resp;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.x;
 
 public final class ReportUtil
 {
-  public static void U(boolean paramBoolean, int paramInt)
+  public static void V(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(31088);
-    y.b localb = y.ayq().F("kWXEntryActivity_data_center_session_id", true);
+    y.b localb = com.tencent.mm.model.y.aBq().F("kWXEntryActivity_data_center_session_id", true);
     String str;
     int j;
     int k;
@@ -44,7 +41,7 @@ public final class ReportUtil
     label130:
     for (int i = 0;; i = -1)
     {
-      h.wUl.f(15632, new Object[] { str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(i) });
+      com.tencent.mm.plugin.report.service.g.yhR.f(15632, new Object[] { str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(i) });
       AppMethodBeat.o(31088);
       return;
     }
@@ -53,7 +50,7 @@ public final class ReportUtil
   public static void a(Context paramContext, ReportArgs paramReportArgs)
   {
     AppMethodBeat.i(31090);
-    if (paramReportArgs.CW == 1)
+    if (paramReportArgs.EN == 1)
     {
       b(paramContext, paramReportArgs);
       AppMethodBeat.o(31090);
@@ -65,9 +62,9 @@ public final class ReportUtil
     ((SendMessageToWX.Resp)localObject).openId = paramReportArgs.openId;
     Bundle localBundle = new Bundle();
     ((SendMessageToWX.Resp)localObject).toBundle(localBundle);
-    q.aW(localBundle);
+    q.bb(localBundle);
     localObject = new MMessageActV2.Args();
-    ((MMessageActV2.Args)localObject).targetPkgName = paramReportArgs.JG;
+    ((MMessageActV2.Args)localObject).targetPkgName = paramReportArgs.Lw;
     ((MMessageActV2.Args)localObject).bundle = localBundle;
     MMessageActV2.send(paramContext, (MMessageActV2.Args)localObject);
     AppMethodBeat.o(31090);
@@ -77,26 +74,16 @@ public final class ReportUtil
   {
     boolean bool = false;
     AppMethodBeat.i(31089);
-    y.b localb = y.ayq().F("kWXEntryActivity_data_center_session_id", true);
+    y.b localb = com.tencent.mm.model.y.aBq().F("kWXEntryActivity_data_center_session_id", true);
     if (localb != null) {
       bool = localb.getBoolean("kWXEntryActivity_data_center_can_return_cancel", false);
     }
-    U(paramBoolean, paramReportArgs.errCode);
+    V(paramBoolean, paramReportArgs.errCode);
     if ((bool) && (paramBoolean)) {
       paramReportArgs.errCode = -2;
     }
     a(paramContext, paramReportArgs);
     AppMethodBeat.o(31089);
-  }
-  
-  private static String aY(Bundle paramBundle)
-  {
-    AppMethodBeat.i(31093);
-    SendMessageToWX.Req localReq = new SendMessageToWX.Req();
-    localReq.fromBundle(paramBundle);
-    paramBundle = localReq.transaction;
-    AppMethodBeat.o(31093);
-    return paramBundle;
   }
   
   private static void b(Context paramContext, ReportArgs paramReportArgs)
@@ -108,15 +95,25 @@ public final class ReportUtil
     ((SendAuth.Resp)localObject).openId = paramReportArgs.openId;
     Bundle localBundle = new Bundle();
     ((SendAuth.Resp)localObject).toBundle(localBundle);
-    q.aW(localBundle);
+    q.bb(localBundle);
     localObject = new MMessageActV2.Args();
-    ((MMessageActV2.Args)localObject).targetPkgName = paramReportArgs.JG;
+    ((MMessageActV2.Args)localObject).targetPkgName = paramReportArgs.Lw;
     ((MMessageActV2.Args)localObject).bundle = localBundle;
     MMessageActV2.send(paramContext, (MMessageActV2.Args)localObject);
     AppMethodBeat.o(31091);
   }
   
-  public static ReportArgs c(Bundle paramBundle, int paramInt)
+  private static String bd(Bundle paramBundle)
+  {
+    AppMethodBeat.i(31093);
+    SendMessageToWX.Req localReq = new SendMessageToWX.Req();
+    localReq.fromBundle(paramBundle);
+    paramBundle = localReq.transaction;
+    AppMethodBeat.o(31093);
+    return paramBundle;
+  }
+  
+  public static ReportArgs d(Bundle paramBundle, int paramInt)
   {
     AppMethodBeat.i(31092);
     Object localObject2 = paramBundle.getString("SendAppMessageWrapper_AppId");
@@ -132,7 +129,7 @@ public final class ReportUtil
     localObject2 = localObject1;
     if (localObject1 == null)
     {
-      localObject1 = x.n(paramBundle, "_wxapi_payreq_appid");
+      localObject1 = com.tencent.mm.sdk.platformtools.y.m(paramBundle, "_wxapi_payreq_appid");
       localObject2 = localObject1;
       if (localObject1 == null)
       {
@@ -142,17 +139,17 @@ public final class ReportUtil
     }
     localObject1 = new g();
     ((g)localObject1).field_appId = ((String)localObject2);
-    if ((az.ayN()) && (az.agM())) {
-      ap.dny().get((c)localObject1, new String[0]);
+    if ((ba.aBR()) && (ba.ajx())) {
+      ao.dxQ().get((c)localObject1, new String[0]);
     }
     for (;;)
     {
       localObject2 = new ReportArgs();
-      ((ReportArgs)localObject2).JG = ((g)localObject1).field_packageName;
+      ((ReportArgs)localObject2).Lw = ((g)localObject1).field_packageName;
       ((ReportArgs)localObject2).errCode = paramInt;
-      ((ReportArgs)localObject2).transaction = aY(paramBundle);
+      ((ReportArgs)localObject2).transaction = bd(paramBundle);
       ((ReportArgs)localObject2).openId = ((g)localObject1).field_openId;
-      ((ReportArgs)localObject2).CW = paramBundle.getInt("_wxapi_command_type");
+      ((ReportArgs)localObject2).EN = paramBundle.getInt("_wxapi_command_type");
       AppMethodBeat.o(31092);
       return localObject2;
       ((g)localObject1).field_packageName = paramBundle.getString("_mmessage_appPackage");
@@ -163,8 +160,8 @@ public final class ReportUtil
     implements Parcelable
   {
     public static final Parcelable.Creator<ReportArgs> CREATOR;
-    public int CW;
-    public String JG;
+    public int EN;
+    public String Lw;
     public int errCode;
     public String openId;
     public String transaction;
@@ -181,7 +178,7 @@ public final class ReportUtil
     private ReportArgs(Parcel paramParcel)
     {
       AppMethodBeat.i(31086);
-      this.JG = paramParcel.readString();
+      this.Lw = paramParcel.readString();
       this.errCode = paramParcel.readInt();
       this.transaction = paramParcel.readString();
       this.openId = paramParcel.readString();
@@ -196,7 +193,7 @@ public final class ReportUtil
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(31085);
-      paramParcel.writeString(this.JG);
+      paramParcel.writeString(this.Lw);
       paramParcel.writeInt(this.errCode);
       paramParcel.writeString(this.transaction);
       paramParcel.writeString(this.openId);

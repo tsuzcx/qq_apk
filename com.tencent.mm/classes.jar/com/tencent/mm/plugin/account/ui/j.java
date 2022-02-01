@@ -9,121 +9,129 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.plugin.account.friend.a.z;
-import com.tencent.mm.pluginsdk.k;
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ba;
+import com.tencent.mm.sdk.platformtools.i;
 import com.tencent.mm.ui.base.MMFormInputView;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
 public final class j
-  implements com.tencent.mm.ak.g, MobileInputUI.b
+  implements f, MobileInputUI.b
 {
-  protected String fwd = null;
-  protected String iHJ = "";
-  protected int iHK = 2;
-  private MobileInputUI iSZ;
+  protected String fPq = null;
+  protected String jaS = "";
+  protected int jaT = 2;
+  private MobileInputUI jmh;
   
   public final void a(MobileInputUI.a parama)
   {
     AppMethodBeat.i(128290);
-    switch (2.iTe[parama.ordinal()])
+    switch (2.jmm[parama.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(128290);
       return;
-      this.iSZ.iTC = az.aLe(this.iSZ.countryCode);
-      this.iSZ.iTD = this.iSZ.iTp.getText().toString();
-      parama = this.iSZ.iTC + this.iSZ.iTD;
-      if (this.iSZ.iJi != null)
+      this.jmh.jmK = ba.aQK(this.jmh.countryCode);
+      this.jmh.jmL = this.jmh.jmx.getText().toString();
+      parama = this.jmh.jmK + this.jmh.jmL;
+      if (this.jmh.jcr != null)
       {
-        ac.d("MicroMsg.MobileInputRegLogic", "already checking ");
+        ad.d("MicroMsg.MobileInputRegLogic", "already checking ");
         AppMethodBeat.o(128290);
         return;
       }
-      MobileInputUI localMobileInputUI1 = this.iSZ;
-      MobileInputUI localMobileInputUI2 = this.iSZ;
-      this.iSZ.getString(2131755906);
-      localMobileInputUI1.iJi = h.b(localMobileInputUI2, this.iSZ.getString(2131762310), true, new DialogInterface.OnCancelListener()
+      MobileInputUI localMobileInputUI1 = this.jmh;
+      MobileInputUI localMobileInputUI2 = this.jmh;
+      this.jmh.getString(2131755906);
+      localMobileInputUI1.jcr = h.b(localMobileInputUI2, this.jmh.getString(2131762310), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
       });
       parama = new z(parama, 1, "", 0, "");
-      com.tencent.mm.kernel.g.agi().a(parama, 0);
+      com.tencent.mm.kernel.g.aiU().a(parama, 0);
     }
   }
   
   public final void a(MobileInputUI paramMobileInputUI)
   {
     AppMethodBeat.i(128287);
-    this.iSZ = paramMobileInputUI;
-    paramMobileInputUI.iTq.requestFocus();
+    this.jmh = paramMobileInputUI;
+    paramMobileInputUI.jmy.requestFocus();
     paramMobileInputUI.showVKB();
-    this.fwd = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_ticket");
-    this.iHJ = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_NextStep");
-    this.iHK = paramMobileInputUI.getIntent().getIntExtra("regsetinfo_NextStyle", 2);
+    this.fPq = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_ticket");
+    this.jaS = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_NextStep");
+    this.jaT = paramMobileInputUI.getIntent().getIntExtra("regsetinfo_NextStyle", 2);
     String str2 = paramMobileInputUI.getString(2131762371);
-    String str1 = str2;
-    if (d.DIf) {
-      str1 = str2 + paramMobileInputUI.getString(2131755263);
+    String str1;
+    if (!d.Fnm)
+    {
+      str1 = str2;
+      if (!i.IS_FLAVOR_BLUE) {}
+    }
+    else
+    {
+      str1 = str2 + com.tencent.mm.cd.g.is(paramMobileInputUI);
     }
     paramMobileInputUI.setMMTitle(str1);
-    paramMobileInputUI.iGS.setVisibility(0);
-    paramMobileInputUI.iTp.setVisibility(0);
-    paramMobileInputUI.iTq.requestFocus();
-    paramMobileInputUI.iTs.setVisibility(0);
-    paramMobileInputUI.iTv.setVisibility(0);
-    paramMobileInputUI.iTv.setText(2131760798);
+    paramMobileInputUI.jab.setVisibility(0);
+    paramMobileInputUI.jmx.setVisibility(0);
+    paramMobileInputUI.jmy.requestFocus();
+    paramMobileInputUI.jmA.setVisibility(0);
+    paramMobileInputUI.jmD.setVisibility(0);
+    paramMobileInputUI.jmD.setText(2131760798);
     AppMethodBeat.o(128287);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(128291);
-    ac.i("MicroMsg.MobileInputRegLogic", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.iSZ.iJi != null)
+    ad.i("MicroMsg.MobileInputRegLogic", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.jmh.jcr != null)
     {
-      this.iSZ.iJi.dismiss();
-      this.iSZ.iJi = null;
+      this.jmh.jcr.dismiss();
+      this.jmh.jcr = null;
     }
     if (paramn.getType() == 132)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (((z)paramn).Js() == 1)
+        if (((z)paramn).KR() == 1)
         {
           paramn = new Intent();
-          paramn.putExtra("bindmcontact_mobile", this.iSZ.iTC + " " + this.iSZ.iTp.getText().toString());
-          paramn.putExtra("bindmcontact_shortmobile", this.iSZ.iTp.getText().toString());
-          paramn.putExtra("country_name", this.iSZ.hLr);
-          paramn.putExtra("couttry_code", this.iSZ.countryCode);
+          paramn.putExtra("bindmcontact_mobile", this.jmh.jmK + " " + this.jmh.jmx.getText().toString());
+          paramn.putExtra("bindmcontact_shortmobile", this.jmh.jmx.getText().toString());
+          paramn.putExtra("country_name", this.jmh.iem);
+          paramn.putExtra("couttry_code", this.jmh.countryCode);
           paramn.putExtra("mobile_verify_purpose", 4);
-          paramn.putExtra("regsetinfo_ticket", this.fwd);
-          paramn.putExtra("regsetinfo_NextStep", this.iHJ);
-          paramn.putExtra("regsetinfo_NextStyle", this.iHK);
-          paramn.setClass(this.iSZ, MobileVerifyUI.class);
-          paramString = this.iSZ;
-          paramn = new com.tencent.mm.hellhoundlib.b.a().ba(paramn);
-          com.tencent.mm.hellhoundlib.a.a.a(paramString, paramn.aeD(), "com/tencent/mm/plugin/account/ui/MobileInputQQRegLogic", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramString.startActivity((Intent)paramn.lR(0));
+          paramn.putExtra("regsetinfo_ticket", this.fPq);
+          paramn.putExtra("regsetinfo_NextStep", this.jaS);
+          paramn.putExtra("regsetinfo_NextStyle", this.jaT);
+          paramn.setClass(this.jmh, MobileVerifyUI.class);
+          paramString = this.jmh;
+          paramn = new com.tencent.mm.hellhoundlib.b.a().bc(paramn);
+          com.tencent.mm.hellhoundlib.a.a.a(paramString, paramn.ahp(), "com/tencent/mm/plugin/account/ui/MobileInputQQRegLogic", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString.startActivity((Intent)paramn.mq(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/account/ui/MobileInputQQRegLogic", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          this.iSZ.finish();
+          this.jmh.finish();
         }
         AppMethodBeat.o(128291);
         return;
       }
-      if (com.tencent.mm.plugin.account.a.a.iyy.a(this.iSZ, paramInt1, paramInt2, paramString))
+      if (com.tencent.mm.plugin.account.a.a.iRH.a(this.jmh, paramInt1, paramInt2, paramString))
       {
         AppMethodBeat.o(128291);
         return;
       }
-      Toast.makeText(this.iSZ, this.iSZ.getString(2131756507, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      Toast.makeText(this.jmh, this.jmh.getString(2131756507, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
       AppMethodBeat.o(128291);
       return;
     }
@@ -133,14 +141,14 @@ public final class j
   public final void start()
   {
     AppMethodBeat.i(128288);
-    com.tencent.mm.kernel.g.agi().a(132, this);
+    com.tencent.mm.kernel.g.aiU().a(132, this);
     AppMethodBeat.o(128288);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(128289);
-    com.tencent.mm.kernel.g.agi().b(132, this);
+    com.tencent.mm.kernel.g.aiU().b(132, this);
     AppMethodBeat.o(128289);
   }
 }

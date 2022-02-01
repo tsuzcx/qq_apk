@@ -22,13 +22,13 @@ import java.util.zip.ZipFile;
 
 public final class a
 {
-  private static final String xD = "code_cache" + File.separator + "secondary-dexes";
-  private static final Set<String> xE = new HashSet();
-  private static final boolean xF = p(System.getProperty("java.vm.version"));
+  private static final String zx = "code_cache" + File.separator + "secondary-dexes";
+  private static final Set<String> zy = new HashSet();
+  private static final boolean zz = o(System.getProperty("java.vm.version"));
   
   public static void J(Context paramContext)
   {
-    if (xF) {}
+    if (zz) {}
     ApplicationInfo localApplicationInfo;
     Object localObject;
     for (;;)
@@ -42,14 +42,14 @@ public final class a
         localApplicationInfo = K(paramContext);
         if (localApplicationInfo != null)
         {
-          synchronized (xE)
+          synchronized (zy)
           {
             localObject = localApplicationInfo.sourceDir;
-            if (xE.contains(localObject)) {
+            if (zy.contains(localObject)) {
               return;
             }
           }
-          xE.add(localObject);
+          zy.add(localObject);
         }
       }
       catch (Exception paramContext)
@@ -75,7 +75,7 @@ public final class a
     {
       L(paramContext);
       label190:
-      File localFile = new File(localApplicationInfo.dataDir, xD);
+      File localFile = new File(localApplicationInfo.dataDir, zx);
       List localList = b.a(paramContext, localApplicationInfo, localFile, false);
       if (f(localList)) {
         a((ClassLoader)localObject, localFile, localList);
@@ -222,7 +222,7 @@ public final class a
     throw new NoSuchMethodException("Method " + paramString + " with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramObject.getClass());
   }
   
-  private static boolean p(String paramString)
+  private static boolean o(String paramString)
   {
     bool2 = false;
     bool1 = bool2;

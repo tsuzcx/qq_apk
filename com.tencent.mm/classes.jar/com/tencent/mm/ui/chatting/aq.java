@@ -6,11 +6,11 @@ import android.widget.TextView;
 
 final class aq
 {
-  TextView HPi;
-  SendDataToDeviceProgressBar HRd;
-  TextView iMz;
-  ImageView lzC;
-  View pHd;
+  TextView JCW;
+  SendDataToDeviceProgressBar JET;
+  TextView jfJ;
+  ImageView lZa;
+  View qkI;
 }
 
 

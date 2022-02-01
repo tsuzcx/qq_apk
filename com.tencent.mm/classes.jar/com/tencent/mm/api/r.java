@@ -1,11 +1,11 @@
 package com.tencent.mm.api;
 
-import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.protocal.protobuf.cv;
 import java.util.Map;
 
 public abstract interface r
 {
-  public abstract void a(cu paramcu, Map<String, String> paramMap);
+  public abstract void a(cv paramcv, Map<String, String> paramMap);
 }
 
 

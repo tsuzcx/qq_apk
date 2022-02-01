@@ -3,38 +3,38 @@ package com.tencent.mm.emoji.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.av;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.k;
+import d.g.b.p;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestLocal;", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest;", "()V", "TAG", "", "checkMatch", "", "desc", "getEmojiList", "", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "md5List", "searchSuggest", "", "callback", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "plugin-emojisdk_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestLocal;", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest;", "()V", "TAG", "", "checkMatch", "", "desc", "getEmojiList", "", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "md5List", "searchSuggest", "", "callback", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "plugin-emojisdk_release"})
 public final class e
   implements j
 {
   private final String TAG = "MicroMsg.EmojiSuggestLocal";
   
-  public static boolean th(String paramString)
+  public static boolean vX(String paramString)
   {
-    AppMethodBeat.i(209841);
-    k.h(paramString, "desc");
-    boolean bool = av.faV().tj(paramString);
-    AppMethodBeat.o(209841);
+    AppMethodBeat.i(218966);
+    p.h(paramString, "desc");
+    boolean bool = az.fqY().vZ(paramString);
+    AppMethodBeat.o(218966);
     return bool;
   }
   
   public final void a(String paramString, j.b paramb)
   {
-    AppMethodBeat.i(209842);
-    k.h(paramString, "desc");
+    AppMethodBeat.i(218967);
+    p.h(paramString, "desc");
     Object localObject1 = g.ad(PluginEmoji.class);
-    k.g(localObject1, "MMKernel.plugin(PluginEmoji::class.java)");
-    localObject1 = d.a.j.p((Iterable)((PluginEmoji)localObject1).getEmojiMgr().XR(paramString));
+    p.g(localObject1, "MMKernel.plugin(PluginEmoji::class.java)");
+    localObject1 = d.a.j.p((Iterable)((PluginEmoji)localObject1).getEmojiMgr().abx(paramString));
     paramString = new LinkedList();
     Object localObject2 = (Collection)localObject1;
     int i;
@@ -45,8 +45,8 @@ public final class e
     {
       if (((List)localObject1).size() > 100)
       {
-        localObject2 = d.fSH;
-        d.lA(24);
+        localObject2 = d.gml;
+        d.ma(24);
       }
       int j = ((List)localObject1).size();
       i = 0;
@@ -55,8 +55,8 @@ public final class e
         if ((i < j) && (i < 100))
         {
           localObject2 = g.ad(PluginEmoji.class);
-          k.g(localObject2, "MMKernel.plugin(PluginEmoji::class.java)");
-          localObject2 = ((PluginEmoji)localObject2).getEmojiMgr().XL((String)((List)localObject1).get(i));
+          p.g(localObject2, "MMKernel.plugin(PluginEmoji::class.java)");
+          localObject2 = ((PluginEmoji)localObject2).getEmojiMgr().abr((String)((List)localObject1).get(i));
           if (localObject2 != null) {
             paramString.add(localObject2);
           }
@@ -69,7 +69,7 @@ public final class e
       if (!paramString.isEmpty()) {
         break label302;
       }
-      ac.i(this.TAG, "sorEmojiList return. empty list.");
+      ad.i(this.TAG, "sorEmojiList return. empty list.");
     }
     for (;;)
     {
@@ -81,7 +81,7 @@ public final class e
       {
         localObject2 = ((Iterator)localObject1).next();
         if (i < 0) {
-          d.a.j.fOc();
+          d.a.j.gfB();
         }
         paramString.add(new l((EmojiInfo)localObject2, 0, i + 1));
         i += 1;
@@ -91,11 +91,11 @@ public final class e
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (EmojiInfo)((Iterator)localObject1).next();
-        ac.i(this.TAG, "getEmojiList: match " + ((EmojiInfo)localObject2).JC());
+        ad.i(this.TAG, "getEmojiList: match " + ((EmojiInfo)localObject2).Lb());
       }
     }
     paramb.a((List)paramString, new m(0L, 0, 0, null, 15));
-    AppMethodBeat.o(209842);
+    AppMethodBeat.o(218967);
   }
 }
 

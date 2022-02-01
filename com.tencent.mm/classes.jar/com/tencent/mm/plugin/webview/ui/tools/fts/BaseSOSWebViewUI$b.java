@@ -5,7 +5,7 @@ import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.core.e;
 import com.tencent.mm.plugin.webview.core.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.search.FTSEditTextView;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebResourceResponse;
@@ -16,10 +16,10 @@ final class BaseSOSWebViewUI$b
 {
   private BaseSOSWebViewUI$b(BaseSOSWebViewUI paramBaseSOSWebViewUI) {}
   
-  private static WebResourceResponse aDv(String paramString)
+  private static WebResourceResponse aIW(String paramString)
   {
-    AppMethodBeat.i(188511);
-    ac.i("MicroMsg.WebSearch.BaseSOSWebViewUI", "url=%s | thread=%d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
+    AppMethodBeat.i(208161);
+    ad.i("MicroMsg.WebSearch.BaseSOSWebViewUI", "url=%s | thread=%d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
     paramString = Uri.parse(paramString);
     try
     {
@@ -27,7 +27,7 @@ final class BaseSOSWebViewUI$b
       if (paramString != null)
       {
         paramString = new WebResourceResponse("image/*", "utf8", paramString);
-        AppMethodBeat.o(188511);
+        AppMethodBeat.o(208161);
         return paramString;
       }
     }
@@ -37,50 +37,50 @@ final class BaseSOSWebViewUI$b
       {
         paramString = null;
       }
-      AppMethodBeat.o(188511);
+      AppMethodBeat.o(208161);
     }
     return null;
   }
   
-  public final boolean aBb(String paramString)
+  public final boolean aGw(String paramString)
   {
-    AppMethodBeat.i(188507);
-    if (this.CCB.Ckh)
+    AppMethodBeat.i(208157);
+    if (this.Egk.DNn)
     {
-      AppMethodBeat.o(188507);
+      AppMethodBeat.o(208157);
       return true;
     }
-    boolean bool = super.aBb(paramString);
-    AppMethodBeat.o(188507);
+    boolean bool = super.aGw(paramString);
+    AppMethodBeat.o(208157);
     return bool;
   }
   
   public final WebResourceResponse b(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(188510);
+    AppMethodBeat.i(208160);
     if ((paramWebResourceRequest != null) && (paramWebResourceRequest.getUrl() != null) && (paramWebResourceRequest.getUrl().toString().startsWith("weixin://fts")))
     {
-      paramWebView = aDv(paramWebResourceRequest.getUrl().toString());
-      AppMethodBeat.o(188510);
+      paramWebView = aIW(paramWebResourceRequest.getUrl().toString());
+      AppMethodBeat.o(208160);
       return paramWebView;
     }
-    AppMethodBeat.o(188510);
+    AppMethodBeat.o(208160);
     return null;
   }
   
-  public final e eza()
+  public final e eNP()
   {
-    AppMethodBeat.i(188508);
+    AppMethodBeat.i(208158);
     a locala = new a((byte)0);
-    AppMethodBeat.o(188508);
+    AppMethodBeat.o(208158);
     return locala;
   }
   
-  public final com.tencent.mm.plugin.webview.core.i ezb()
+  public final com.tencent.mm.plugin.webview.core.i eNQ()
   {
-    AppMethodBeat.i(188509);
+    AppMethodBeat.i(208159);
     b localb = new b((byte)0);
-    AppMethodBeat.o(188509);
+    AppMethodBeat.o(208159);
     return localb;
   }
   
@@ -89,30 +89,30 @@ final class BaseSOSWebViewUI$b
   {
     private a() {}
     
-    public final void b(WebView paramWebView, String paramString)
+    public final void aGk(String paramString)
     {
-      AppMethodBeat.i(188504);
-      ac.i("MicroMsg.WebSearch.BaseSOSWebViewUI", "scene %d, onPageFinished %s", new Object[] { Integer.valueOf(BaseSOSWebViewUI.b.this.CCB.scene), paramString });
-      BaseSOSWebViewUI.b.this.CCB.showOptionMenu(false);
-      if ((BaseSOSWebViewUI.b.this.CCB.CCu != null) && (!BaseSOSWebViewUI.a(BaseSOSWebViewUI.b.this.CCB)))
+      AppMethodBeat.i(208155);
+      ad.i("MicroMsg.WebSearch.BaseSOSWebViewUI", "onPageStarted %s", new Object[] { paramString });
+      BaseSOSWebViewUI.b.this.Egk.showOptionMenu(false);
+      if ((BaseSOSWebViewUI.b.this.Egk.Egb != null) && (!BaseSOSWebViewUI.a(BaseSOSWebViewUI.b.this.Egk)))
       {
-        BaseSOSWebViewUI.b.this.CCB.CCu.ty.clearFocus();
-        BaseSOSWebViewUI.b.this.CCB.hideVKB();
+        BaseSOSWebViewUI.b.this.Egk.Egb.vr.clearFocus();
+        BaseSOSWebViewUI.b.this.Egk.hideVKB();
       }
-      AppMethodBeat.o(188504);
+      AppMethodBeat.o(208155);
     }
     
-    public final void m(WebView paramWebView, String paramString)
+    public final void b(WebView paramWebView, String paramString)
     {
-      AppMethodBeat.i(188505);
-      ac.i("MicroMsg.WebSearch.BaseSOSWebViewUI", "onPageStarted %s", new Object[] { paramString });
-      BaseSOSWebViewUI.b.this.CCB.showOptionMenu(false);
-      if ((BaseSOSWebViewUI.b.this.CCB.CCu != null) && (!BaseSOSWebViewUI.a(BaseSOSWebViewUI.b.this.CCB)))
+      AppMethodBeat.i(208154);
+      ad.i("MicroMsg.WebSearch.BaseSOSWebViewUI", "scene %d, onPageFinished %s", new Object[] { Integer.valueOf(BaseSOSWebViewUI.b.this.Egk.scene), paramString });
+      BaseSOSWebViewUI.b.this.Egk.showOptionMenu(false);
+      if ((BaseSOSWebViewUI.b.this.Egk.Egb != null) && (!BaseSOSWebViewUI.a(BaseSOSWebViewUI.b.this.Egk)))
       {
-        BaseSOSWebViewUI.b.this.CCB.CCu.ty.clearFocus();
-        BaseSOSWebViewUI.b.this.CCB.hideVKB();
+        BaseSOSWebViewUI.b.this.Egk.Egb.vr.clearFocus();
+        BaseSOSWebViewUI.b.this.Egk.hideVKB();
       }
-      AppMethodBeat.o(188505);
+      AppMethodBeat.o(208154);
     }
   }
   
@@ -121,12 +121,12 @@ final class BaseSOSWebViewUI$b
   {
     private b() {}
     
-    public final void bMF()
+    public final void bRf()
     {
-      AppMethodBeat.i(188506);
-      BaseSOSWebViewUI.b(BaseSOSWebViewUI.b.this.CCB);
-      BaseSOSWebViewUI.b.this.CCB.eEU();
-      AppMethodBeat.o(188506);
+      AppMethodBeat.i(208156);
+      BaseSOSWebViewUI.b(BaseSOSWebViewUI.b.this.Egk);
+      BaseSOSWebViewUI.b.this.Egk.eTN();
+      AppMethodBeat.o(208156);
     }
   }
 }

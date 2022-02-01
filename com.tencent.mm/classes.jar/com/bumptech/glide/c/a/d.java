@@ -11,13 +11,13 @@ public abstract interface d<T>
   
   public abstract void cleanup();
   
-  public abstract Class<T> nU();
+  public abstract Class<T> om();
   
-  public abstract a nV();
+  public abstract a on();
   
   public static abstract interface a<T>
   {
-    public abstract void R(T paramT);
+    public abstract void S(T paramT);
     
     public abstract void e(Exception paramException);
   }

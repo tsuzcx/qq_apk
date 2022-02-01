@@ -11,19 +11,19 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.af.a.a;
 
 public class BlurView
   extends FrameLayout
 {
   private static final String TAG;
-  c HIK;
-  private int HIL;
-  private final Path HIM;
-  private final RectF HIN;
-  private float[] HIO;
-  public boolean HIP;
-  public float Iv;
+  c JwB;
+  private int JwC;
+  private final Path JwD;
+  private final RectF JwE;
+  private float[] JwF;
+  public boolean JwG;
+  public float Kn;
   
   static
   {
@@ -36,11 +36,11 @@ public class BlurView
   {
     super(paramContext);
     AppMethodBeat.i(142721);
-    this.HIK = fjV();
-    this.Iv = 0.0F;
-    this.HIM = new Path();
-    this.HIN = new RectF();
-    this.HIP = false;
+    this.JwB = fAk();
+    this.Kn = 0.0F;
+    this.JwD = new Path();
+    this.JwE = new RectF();
+    this.JwG = false;
     init(null, 0);
     AppMethodBeat.o(142721);
   }
@@ -49,11 +49,11 @@ public class BlurView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142722);
-    this.HIK = fjV();
-    this.Iv = 0.0F;
-    this.HIM = new Path();
-    this.HIN = new RectF();
-    this.HIP = false;
+    this.JwB = fAk();
+    this.Kn = 0.0F;
+    this.JwD = new Path();
+    this.JwE = new RectF();
+    this.JwG = false;
     init(paramAttributeSet, 0);
     AppMethodBeat.o(142722);
   }
@@ -62,16 +62,16 @@ public class BlurView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142723);
-    this.HIK = fjV();
-    this.Iv = 0.0F;
-    this.HIM = new Path();
-    this.HIN = new RectF();
-    this.HIP = false;
+    this.JwB = fAk();
+    this.Kn = 0.0F;
+    this.JwD = new Path();
+    this.JwE = new RectF();
+    this.JwG = false;
     init(paramAttributeSet, paramInt);
     AppMethodBeat.o(142723);
   }
   
-  private c fjV()
+  private c fAk()
   {
     AppMethodBeat.i(142740);
     c local2 = new c()
@@ -80,25 +80,25 @@ public class BlurView
       
       public final void a(b paramAnonymousb) {}
       
-      public final void aat(int paramAnonymousInt) {}
+      public final void acD(int paramAnonymousInt) {}
       
-      public final void bP(float paramAnonymousFloat) {}
+      public final void bU(float paramAnonymousFloat) {}
       
       public final void destroy() {}
       
-      public final void fjO() {}
+      public final void fAd() {}
       
-      public final void fjP() {}
+      public final void fAe() {}
       
-      public final void fjQ() {}
+      public final void fAf() {}
       
-      public final void fjR() {}
+      public final void fAg() {}
       
-      public final void q(Canvas paramAnonymousCanvas) {}
+      public final void p(Canvas paramAnonymousCanvas) {}
       
-      public final void xa(boolean paramAnonymousBoolean) {}
+      public final void xL(boolean paramAnonymousBoolean) {}
       
-      public final void xb(boolean paramAnonymousBoolean) {}
+      public final void xM(boolean paramAnonymousBoolean) {}
     };
     AppMethodBeat.o(142740);
     return local2;
@@ -108,7 +108,7 @@ public class BlurView
   {
     AppMethodBeat.i(142724);
     paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, a.a.BlurView, paramInt, 0);
-    this.HIL = paramAttributeSet.getColor(0, 0);
+    this.JwC = paramAttributeSet.getColor(0, 0);
     paramAttributeSet.recycle();
     setWillNotDraw(false);
     AppMethodBeat.o(142724);
@@ -117,35 +117,47 @@ public class BlurView
   private void setBlurController(c paramc)
   {
     AppMethodBeat.i(142731);
-    this.HIK.destroy();
-    this.HIK = paramc;
+    this.JwB.destroy();
+    this.JwB = paramc;
     AppMethodBeat.o(142731);
+  }
+  
+  public final BlurView B(ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(142734);
+    paramViewGroup = new a(this, paramViewGroup);
+    setBlurController(paramViewGroup);
+    if (!isHardwareAccelerated()) {
+      paramViewGroup.xM(false);
+    }
+    AppMethodBeat.o(142734);
+    return this;
   }
   
   public final BlurView F(Drawable paramDrawable)
   {
     AppMethodBeat.i(142737);
-    this.HIK.E(paramDrawable);
+    this.JwB.E(paramDrawable);
     AppMethodBeat.o(142737);
     return this;
   }
   
-  public final BlurView aau(int paramInt)
+  public final BlurView acE(int paramInt)
   {
     AppMethodBeat.i(142732);
-    if (paramInt != this.HIL)
+    if (paramInt != this.JwC)
     {
-      this.HIL = paramInt;
+      this.JwC = paramInt;
       invalidate();
     }
     AppMethodBeat.o(142732);
     return this;
   }
   
-  public final BlurView aav(int paramInt)
+  public final BlurView acF(int paramInt)
   {
     AppMethodBeat.i(142738);
-    this.HIK.aat(paramInt);
+    this.JwB.acD(paramInt);
     AppMethodBeat.o(142738);
     return this;
   }
@@ -153,21 +165,21 @@ public class BlurView
   public final BlurView b(b paramb)
   {
     AppMethodBeat.i(142736);
-    this.HIK.a(paramb);
+    this.JwB.a(paramb);
     AppMethodBeat.o(142736);
     return this;
   }
   
-  public final BlurView bQ(float paramFloat)
+  public final BlurView bV(float paramFloat)
   {
-    this.Iv = paramFloat;
+    this.Kn = paramFloat;
     return this;
   }
   
-  public final BlurView bR(float paramFloat)
+  public final BlurView bW(float paramFloat)
   {
     AppMethodBeat.i(142735);
-    this.HIK.bP(paramFloat);
+    this.JwB.bU(paramFloat);
     AppMethodBeat.o(142735);
     return this;
   }
@@ -176,32 +188,32 @@ public class BlurView
   {
     AppMethodBeat.i(142728);
     super.dispatchDraw(paramCanvas);
-    this.HIK.fjO();
+    this.JwB.fAd();
     AppMethodBeat.o(142728);
   }
   
   public void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(142725);
-    if (this.Iv != 0.0F)
+    if (this.Kn != 0.0F)
     {
-      this.HIM.reset();
-      if (!this.HIP) {
+      this.JwD.reset();
+      if (!this.JwG) {
         break label183;
       }
     }
     label183:
-    for (this.HIO = new float[] { this.Iv, this.Iv, this.Iv, this.Iv, this.Iv, this.Iv, this.Iv, this.Iv };; this.HIO = new float[] { this.Iv, this.Iv, this.Iv, this.Iv, 0.0F, 0.0F, 0.0F, 0.0F })
+    for (this.JwF = new float[] { this.Kn, this.Kn, this.Kn, this.Kn, this.Kn, this.Kn, this.Kn, this.Kn };; this.JwF = new float[] { this.Kn, this.Kn, this.Kn, this.Kn, 0.0F, 0.0F, 0.0F, 0.0F })
     {
-      this.HIN.set(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight());
-      this.HIM.addRoundRect(this.HIN, this.HIO, Path.Direction.CCW);
-      paramCanvas.clipPath(this.HIM);
+      this.JwE.set(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight());
+      this.JwD.addRoundRect(this.JwE, this.JwF, Path.Direction.CCW);
+      paramCanvas.clipPath(this.JwD);
       if (!paramCanvas.isHardwareAccelerated()) {
         break;
       }
-      this.HIK.q(paramCanvas);
-      if (this.HIL != 0) {
-        paramCanvas.drawColor(this.HIL);
+      this.JwB.p(paramCanvas);
+      if (this.JwC != 0) {
+        paramCanvas.drawColor(this.JwC);
       }
       super.draw(paramCanvas);
       AppMethodBeat.o(142725);
@@ -213,25 +225,25 @@ public class BlurView
     AppMethodBeat.o(142725);
   }
   
-  public final BlurView fjT()
+  public final BlurView fAi()
   {
     AppMethodBeat.i(142733);
-    this.HIK.fjQ();
+    this.JwB.fAf();
     AppMethodBeat.o(142733);
     return this;
   }
   
-  public final BlurView fjU()
+  public final BlurView fAj()
   {
     AppMethodBeat.i(142739);
-    this.HIK.fjR();
+    this.JwB.fAg();
     AppMethodBeat.o(142739);
     return this;
   }
   
   public c getBlurController()
   {
-    return this.HIK;
+    return this.JwB;
   }
   
   protected void onAttachedToWindow()
@@ -239,7 +251,7 @@ public class BlurView
     AppMethodBeat.i(142730);
     super.onAttachedToWindow();
     if (isHardwareAccelerated()) {
-      this.HIK.xb(true);
+      this.JwB.xM(true);
     }
     AppMethodBeat.o(142730);
   }
@@ -248,7 +260,7 @@ public class BlurView
   {
     AppMethodBeat.i(142729);
     super.onDetachedFromWindow();
-    this.HIK.xb(false);
+    this.JwB.xM(false);
     AppMethodBeat.o(142729);
   }
   
@@ -256,33 +268,29 @@ public class BlurView
   {
     AppMethodBeat.i(142727);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.HIK.fjP();
+    this.JwB.fAe();
     AppMethodBeat.o(142727);
   }
   
-  public final BlurView x(ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(142734);
-    paramViewGroup = new a(this, paramViewGroup);
-    setBlurController(paramViewGroup);
-    if (!isHardwareAccelerated()) {
-      paramViewGroup.xb(false);
-    }
-    AppMethodBeat.o(142734);
-    return this;
-  }
-  
-  public final BlurView xc(boolean paramBoolean)
+  public final BlurView xN(final boolean paramBoolean)
   {
     AppMethodBeat.i(142726);
-    post(new BlurView.1(this, paramBoolean));
+    post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(142720);
+        BlurView.this.JwB.xL(paramBoolean);
+        AppMethodBeat.o(142720);
+      }
+    });
     AppMethodBeat.o(142726);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.blur.BlurView
  * JD-Core Version:    0.7.0.1
  */

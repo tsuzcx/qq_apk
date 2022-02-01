@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 
 final class LoginHistoryUI$24
-  implements n.d
+  implements n.e
 {
   LoginHistoryUI$24(LoginHistoryUI paramLoginHistoryUI) {}
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
     AppMethodBeat.i(128106);
-    LoginHistoryUI.a(this.iSi, paramMenuItem.getItemId());
+    LoginHistoryUI.a(this.jlq, paramMenuItem.getItemId());
     AppMethodBeat.o(128106);
   }
 }

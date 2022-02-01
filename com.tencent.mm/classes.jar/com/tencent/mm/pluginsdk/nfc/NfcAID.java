@@ -9,7 +9,7 @@ public class NfcAID
   implements Parcelable
 {
   public static final Parcelable.Creator<NfcAID> CREATOR;
-  public String Djt;
+  public String EOp;
   public String mURL;
   
   static
@@ -22,9 +22,9 @@ public class NfcAID
   public NfcAID(Parcel paramParcel)
   {
     AppMethodBeat.i(31136);
-    this.Djt = null;
+    this.EOp = null;
     this.mURL = null;
-    this.Djt = paramParcel.readString();
+    this.EOp = paramParcel.readString();
     this.mURL = paramParcel.readString();
     AppMethodBeat.o(31136);
   }
@@ -37,7 +37,7 @@ public class NfcAID
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(31137);
-    paramParcel.writeString(this.Djt);
+    paramParcel.writeString(this.EOp);
     paramParcel.writeString(this.mURL);
     AppMethodBeat.o(31137);
   }

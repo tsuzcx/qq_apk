@@ -1,25 +1,38 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import java.util.Locale;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.config.k;
 
 public final class bn
-  extends a
 {
-  bn(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  private static a jJu = null;
+  
+  static q a(AppBrandRuntime paramAppBrandRuntime, bf parambf)
   {
-    super(b(paramString1, paramString2, paramInt1, paramInt2), ay.Id(b(paramString1, paramString2, paramInt1, paramInt2)), paramString1, paramString2, paramInt1, paramInt2);
-    AppMethodBeat.i(90664);
-    AppMethodBeat.o(90664);
+    AppMethodBeat.i(178571);
+    if (jJu != null)
+    {
+      parambf = jJu.a(paramAppBrandRuntime, parambf);
+      if (parambf != null)
+      {
+        AppMethodBeat.o(178571);
+        return parambf;
+      }
+    }
+    paramAppBrandRuntime = new y(paramAppBrandRuntime.mAppId, paramAppBrandRuntime.Fh().jYh);
+    AppMethodBeat.o(178571);
+    return paramAppBrandRuntime;
   }
   
-  private static String b(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(90663);
-    paramString1 = String.format(Locale.US, "WxaPage_%s_%d_%d_%d", new Object[] { paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Integer.valueOf(paramString1.hashCode()) });
-    AppMethodBeat.o(90663);
-    return paramString1;
+    jJu = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract q a(AppBrandRuntime paramAppBrandRuntime, bf parambf);
   }
 }
 

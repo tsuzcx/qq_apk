@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bde;
-import com.tencent.mm.protocal.protobuf.bdf;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.bhk;
+import com.tencent.mm.protocal.protobuf.bhl;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
   extends n
   implements k
 {
-  private g callback;
+  private f callback;
   private final b rr;
-  public bdf xoj;
+  public bhl yCO;
   
   public e()
   {
-    AppMethodBeat.i(190966);
+    AppMethodBeat.i(220929);
     b.a locala = new b.a();
-    locala.hvt = new bde();
-    locala.hvu = new bdf();
+    locala.hNM = new bhk();
+    locala.hNN = new bhl();
     locala.funcId = 2745;
     locala.uri = "/cgi-bin/mmpay-bin/getreceiptassisstatus";
-    this.rr = locala.aAz();
-    AppMethodBeat.o(190966);
+    this.rr = locala.aDC();
+    AppMethodBeat.o(220929);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    AppMethodBeat.i(190967);
-    this.callback = paramg;
+    AppMethodBeat.i(220930);
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(190967);
+    AppMethodBeat.o(220930);
     return i;
   }
   
@@ -48,13 +48,13 @@ public final class e
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(190968);
-    ac.w("MicroMsg.NetSceneGetReceipAssistStatus", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(220931);
+    ad.w("MicroMsg.NetSceneGetReceipAssistStatus", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.xoj = ((bdf)((b)paramq).hvs.hvw);
+      this.yCO = ((bhl)((b)paramq).hNL.hNQ);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(190968);
+    AppMethodBeat.o(220931);
   }
 }
 

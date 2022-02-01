@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.plugin.appbrand.widget.f;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b
 {
-  public static f Lr(String paramString)
+  public static f OL(String paramString)
   {
     AppMethodBeat.i(121476);
     Bundle localBundle = new Bundle();
@@ -29,9 +29,9 @@ public final class b
       localf.field_id = paramContentValues.getAsString("id");
       localf.field_appId = paramContentValues.getAsString("appId");
       localf.field_cacheKey = paramContentValues.getAsString("cacheKey");
-      localf.field_updateTime = bs.g(paramContentValues.getAsLong("updateTime"));
-      localf.field_interval = bs.m(paramContentValues.getAsInteger("interval"));
-      localf.systemRowid = bs.g(paramContentValues.getAsLong("rowid"));
+      localf.field_updateTime = bt.g(paramContentValues.getAsLong("updateTime"));
+      localf.field_interval = bt.n(paramContentValues.getAsInteger("interval"));
+      localf.systemRowid = bt.g(paramContentValues.getAsLong("rowid"));
       AppMethodBeat.o(121477);
       return localf;
     }

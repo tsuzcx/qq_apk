@@ -2,7 +2,7 @@ package com.google.android.exoplayer2.i;
 
 public abstract interface c
 {
-  public static final c bwn = new t();
+  public static final c bGB = new t();
   
   public abstract long elapsedRealtime();
 }

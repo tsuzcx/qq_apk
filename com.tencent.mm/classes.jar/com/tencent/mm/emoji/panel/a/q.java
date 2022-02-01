@@ -6,37 +6,41 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.a.y;
-import d.g.b.k;
+import com.tencent.mm.emoji.a.a.ac;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "I", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "getOnClick", "()Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "setOnClick", "(Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "panelItem", "getPanelItem", "()Lcom/tencent/mm/emoji/model/panel/PanelItem;", "setPanelItem", "(Lcom/tencent/mm/emoji/model/panel/PanelItem;)V", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "onBind", "", "item", "plugin-emojisdk_release"})
-public class q<I extends y>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "I", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "getOnClick", "()Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "setOnClick", "(Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "panelItem", "getPanelItem", "()Lcom/tencent/mm/emoji/model/panel/PanelItem;", "setPanelItem", "(Lcom/tencent/mm/emoji/model/panel/PanelItem;)V", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "onBind", "", "item", "plugin-emojisdk_release"})
+public class q<I extends ac>
   extends RecyclerView.w
 {
-  public I fUq;
-  n fUr;
+  protected I gnS;
+  n gnT;
   
   public q(View paramView, n paramn)
   {
     super(paramView);
     AppMethodBeat.i(105679);
-    this.fUr = paramn;
+    this.gnT = paramn;
     paramView.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(105677);
-        n localn = this.fUs.fUr;
-        if (localn != null)
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        a.b("com/tencent/mm/emoji/panel/adapter/PanelViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        localObject = this.gnU.gnT;
+        if (localObject != null)
         {
-          k.g(paramAnonymousView, "it");
+          p.g(paramAnonymousView, "it");
           paramAnonymousView = paramAnonymousView.getContext();
-          k.g(paramAnonymousView, "it.context");
-          localn.a(paramAnonymousView, this.fUs.lv(), this.fUs.fUq);
-          AppMethodBeat.o(105677);
-          return;
+          p.g(paramAnonymousView, "it.context");
+          ((n)localObject).a(paramAnonymousView, this.gnU.lN(), this.gnU.gnS);
         }
+        a.a(this, "com/tencent/mm/emoji/panel/adapter/PanelViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(105677);
       }
     });
@@ -44,27 +48,31 @@ public class q<I extends y>
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(209865);
-        n localn = this.fUs.fUr;
-        if (localn != null)
+        AppMethodBeat.i(218989);
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        a.b("com/tencent/mm/emoji/panel/adapter/PanelViewHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).ahq());
+        localObject = this.gnU.gnT;
+        if (localObject != null)
         {
-          k.g(paramAnonymousView, "it");
+          p.g(paramAnonymousView, "it");
           Context localContext = paramAnonymousView.getContext();
-          k.g(localContext, "it.context");
-          localn.a(paramAnonymousView, localContext, this.fUs.lv());
+          p.g(localContext, "it.context");
+          ((n)localObject).a(paramAnonymousView, localContext, this.gnU.lN());
         }
-        AppMethodBeat.o(209865);
+        a.a(true, this, "com/tencent/mm/emoji/panel/adapter/PanelViewHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+        AppMethodBeat.o(218989);
         return true;
       }
     });
     AppMethodBeat.o(105679);
   }
   
-  public void a(y paramy)
+  public void a(ac paramac)
   {
     AppMethodBeat.i(105678);
-    k.h(paramy, "item");
-    this.fUq = paramy;
+    p.h(paramac, "item");
+    this.gnS = paramac;
     AppMethodBeat.o(105678);
   }
 }

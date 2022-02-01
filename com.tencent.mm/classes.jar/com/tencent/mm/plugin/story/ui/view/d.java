@@ -6,11 +6,11 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.particles.a.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.Random;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/CommentSmallConfetti;", "Lcom/tencent/mm/particles/confetti/Confetti;", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "TAG", "", "getBitmap", "()Landroid/graphics/Bitmap;", "centerX", "", "centerY", "startX", "drawInternal", "", "canvas", "Landroid/graphics/Canvas;", "matrix", "Landroid/graphics/Matrix;", "paint", "Landroid/graphics/Paint;", "x", "", "y", "rotation", "percentAnimated", "getHeight", "getWidth", "reset", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/CommentSmallConfetti;", "Lcom/tencent/mm/particles/confetti/Confetti;", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "TAG", "", "getBitmap", "()Landroid/graphics/Bitmap;", "centerX", "", "centerY", "startX", "drawInternal", "", "canvas", "Landroid/graphics/Canvas;", "matrix", "Landroid/graphics/Matrix;", "paint", "Landroid/graphics/Paint;", "x", "", "y", "rotation", "percentAnimated", "getHeight", "getWidth", "reset", "plugin-story_release"})
 public final class d
   extends b
 {
@@ -40,9 +40,9 @@ public final class d
   {
     paramFloat3 = 1.0F;
     AppMethodBeat.i(120041);
-    k.h(paramCanvas, "canvas");
-    k.h(paramMatrix, "matrix");
-    k.h(paramPaint, "paint");
+    p.h(paramCanvas, "canvas");
+    p.h(paramMatrix, "matrix");
+    p.h(paramPaint, "paint");
     if (paramFloat4 > 0.8D) {
       paramFloat3 = (1.0F - paramFloat4) / 0.2F;
     }

@@ -11,14 +11,14 @@ public final class StorageUtils
   
   public static boolean deleteFile(String paramString)
   {
-    AppMethodBeat.i(192544);
+    AppMethodBeat.i(215891);
     File localFile = new File(paramString);
     if (localFile.exists())
     {
       if (localFile.isFile())
       {
         bool = localFile.delete();
-        AppMethodBeat.o(192544);
+        AppMethodBeat.o(215891);
         return bool;
       }
       String[] arrayOfString = localFile.list();
@@ -34,16 +34,16 @@ public final class StorageUtils
         }
       }
       boolean bool = localFile.delete();
-      AppMethodBeat.o(192544);
+      AppMethodBeat.o(215891);
       return bool;
     }
-    AppMethodBeat.o(192544);
+    AppMethodBeat.o(215891);
     return true;
   }
   
   public static boolean deleteFiles(File paramFile)
   {
-    AppMethodBeat.i(192543);
+    AppMethodBeat.i(215890);
     paramFile = paramFile.listFiles();
     if (paramFile != null)
     {
@@ -54,19 +54,19 @@ public final class StorageUtils
         Object localObject = paramFile[i];
         if ((!localObject.isDirectory()) && (localObject.exists()) && (!localObject.delete()))
         {
-          AppMethodBeat.o(192543);
+          AppMethodBeat.o(215890);
           return false;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(192543);
+    AppMethodBeat.o(215890);
     return true;
   }
   
   private static File getCacheDirectory(Context paramContext)
   {
-    AppMethodBeat.i(192542);
+    AppMethodBeat.i(215889);
     Object localObject2 = null;
     if ("mounted".equals(Environment.getExternalStorageState())) {
       localObject2 = paramContext.getExternalCacheDir();
@@ -79,21 +79,21 @@ public final class StorageUtils
     if (localObject1 == null) {
       localObject2 = new File("/data/data/" + paramContext.getPackageName() + "/cache/");
     }
-    AppMethodBeat.o(192542);
+    AppMethodBeat.o(215889);
     return localObject2;
   }
   
   static File getIndividualCacheDirectory(Context paramContext)
   {
-    AppMethodBeat.i(192541);
+    AppMethodBeat.i(215888);
     paramContext = new File(getCacheDirectory(paramContext), "video-cache");
-    AppMethodBeat.o(192541);
+    AppMethodBeat.o(215888);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.danikula.videocache.StorageUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -6,15 +6,15 @@ import java.util.HashMap;
 
 public final class b
 {
-  private final a<?>[] GzH;
-  private final HashMap<String, a<?>> GzI;
+  private final a<?>[] IlB;
+  private final HashMap<String, a<?>> IlC;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(133216);
     paramContext = new c(paramContext);
-    this.GzH = new a[] { paramContext.GzJ, paramContext.GzK };
-    this.GzI = new HashMap();
+    this.IlB = new a[] { paramContext.IlD, paramContext.IlE };
+    this.IlC = new HashMap();
     AppMethodBeat.o(133216);
   }
   

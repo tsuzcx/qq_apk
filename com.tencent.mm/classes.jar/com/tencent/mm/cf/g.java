@@ -4,21 +4,21 @@ import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.span.e;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class g
   implements e
 {
-  private static g Gyr;
-  private int Gyq = 300;
+  private static g Ikl;
+  private int Ikk = 300;
   
-  public static g eXw()
+  public static g fng()
   {
     AppMethodBeat.i(104946);
-    if (Gyr == null) {
-      Gyr = new g();
+    if (Ikl == null) {
+      Ikl = new g();
     }
-    g localg = Gyr;
+    g localg = Ikl;
     AppMethodBeat.o(104946);
     return localg;
   }
@@ -26,7 +26,7 @@ public final class g
   private SpannableString o(CharSequence paramCharSequence, int paramInt)
   {
     AppMethodBeat.i(104949);
-    if ((paramCharSequence == null) || (bs.isNullOrNil(paramCharSequence.toString())))
+    if ((paramCharSequence == null) || (bt.isNullOrNil(paramCharSequence.toString())))
     {
       paramCharSequence = new SpannableString("");
       AppMethodBeat.o(104949);
@@ -36,9 +36,9 @@ public final class g
     for (paramCharSequence = (SpannableString)paramCharSequence;; paramCharSequence = new SpannableString(paramCharSequence))
     {
       PInt localPInt = new PInt();
-      localPInt.value = this.Gyq;
-      paramCharSequence = b.eXh().a(paramCharSequence, paramInt, localPInt);
-      paramCharSequence = f.eXr().b(paramCharSequence, paramInt, localPInt.value);
+      localPInt.value = this.Ikk;
+      paramCharSequence = b.fmR().a(paramCharSequence, paramInt, localPInt);
+      paramCharSequence = f.fnb().b(paramCharSequence, paramInt, localPInt.value);
       AppMethodBeat.o(104949);
       return paramCharSequence;
     }
@@ -47,8 +47,8 @@ public final class g
   public final boolean J(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(104951);
-    b.eXh();
-    boolean bool = b.aMc(paramCharSequence.toString());
+    b.fmR();
+    boolean bool = b.aRJ(paramCharSequence.toString());
     AppMethodBeat.o(104951);
     return bool;
   }
@@ -56,7 +56,7 @@ public final class g
   public final boolean K(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(104950);
-    boolean bool = f.eXr().aMh(paramCharSequence.toString());
+    boolean bool = f.fnb().aRO(paramCharSequence.toString());
     AppMethodBeat.o(104950);
     return bool;
   }
@@ -64,7 +64,7 @@ public final class g
   public final SpannableString b(CharSequence paramCharSequence, float paramFloat)
   {
     AppMethodBeat.i(104948);
-    if ((paramCharSequence == null) || (bs.isNullOrNil(paramCharSequence.toString())))
+    if ((paramCharSequence == null) || (bt.isNullOrNil(paramCharSequence.toString())))
     {
       paramCharSequence = new SpannableString("");
       AppMethodBeat.o(104948);
@@ -78,7 +78,7 @@ public final class g
   public final SpannableString n(CharSequence paramCharSequence, int paramInt)
   {
     AppMethodBeat.i(104947);
-    if ((paramCharSequence == null) || (bs.isNullOrNil(paramCharSequence.toString())))
+    if ((paramCharSequence == null) || (bt.isNullOrNil(paramCharSequence.toString())))
     {
       paramCharSequence = new SpannableString("");
       AppMethodBeat.o(104947);
@@ -91,7 +91,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.cf.g
  * JD-Core Version:    0.7.0.1
  */

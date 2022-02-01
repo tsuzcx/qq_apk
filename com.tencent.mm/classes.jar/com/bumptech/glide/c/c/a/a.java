@@ -12,13 +12,13 @@ import java.io.InputStream;
 public final class a
   implements n<g, InputStream>
 {
-  public static final i<Integer> aIW;
-  private final m<g, g> aIX;
+  public static final i<Integer> aKN;
+  private final m<g, g> aKO;
   
   static
   {
     AppMethodBeat.i(77330);
-    aIW = i.b("com.bumptech.glide.load.model.stream.HttpGlideUrlLoader.Timeout", Integer.valueOf(2500));
+    aKN = i.b("com.bumptech.glide.load.model.stream.HttpGlideUrlLoader.Timeout", Integer.valueOf(2500));
     AppMethodBeat.o(77330);
   }
   
@@ -29,25 +29,25 @@ public final class a
   
   public a(m<g, g> paramm)
   {
-    this.aIX = paramm;
+    this.aKO = paramm;
   }
   
   public static final class a
     implements o<g, InputStream>
   {
-    private final m<g, g> aIX;
+    private final m<g, g> aKO;
     
     public a()
     {
       AppMethodBeat.i(77327);
-      this.aIX = new m(500L);
+      this.aKO = new m(500L);
       AppMethodBeat.o(77327);
     }
     
     public final n<g, InputStream> a(r paramr)
     {
       AppMethodBeat.i(77328);
-      paramr = new a(this.aIX);
+      paramr = new a(this.aKO);
       AppMethodBeat.o(77328);
       return paramr;
     }

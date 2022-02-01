@@ -1,75 +1,75 @@
 package com.tencent.mm.chatroom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mb;
-import com.tencent.mm.g.a.mc;
-import com.tencent.mm.g.a.md;
-import com.tencent.mm.g.a.me;
-import com.tencent.mm.g.a.mi;
-import com.tencent.mm.g.a.vl;
+import com.tencent.mm.g.a.mk;
+import com.tencent.mm.g.a.ml;
+import com.tencent.mm.g.a.mm;
+import com.tencent.mm.g.a.mn;
+import com.tencent.mm.g.a.mr;
+import com.tencent.mm.g.a.we;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.cc;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.cd;
 import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.messenger.a.f;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.plugin.messenger.a.e;
+import com.tencent.mm.plugin.messenger.foundation.a.r;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class b
-  implements aw
+  implements ax
 {
-  private static com.tencent.mm.chatroom.c.a frL;
-  private com.tencent.mm.pluginsdk.c.c<mb> frF;
-  private com.tencent.mm.pluginsdk.c.c<me> frG;
-  private com.tencent.mm.pluginsdk.c.c<md> frH;
-  private com.tencent.mm.pluginsdk.c.c<mi> frI;
-  private com.tencent.mm.pluginsdk.c.c<mc> frJ;
-  private com.tencent.mm.sdk.b.c frK;
+  private static com.tencent.mm.chatroom.c.a fJU;
+  private com.tencent.mm.pluginsdk.c.c<mk> fJO;
+  private com.tencent.mm.pluginsdk.c.c<mn> fJP;
+  private com.tencent.mm.pluginsdk.c.c<mm> fJQ;
+  private com.tencent.mm.pluginsdk.c.c<mr> fJR;
+  private com.tencent.mm.pluginsdk.c.c<ml> fJS;
+  private com.tencent.mm.sdk.b.c fJT;
   
   public b()
   {
     AppMethodBeat.i(12431);
-    this.frF = new com.tencent.mm.pluginsdk.c.c()
+    this.fJO = new com.tencent.mm.pluginsdk.c.c()
     {
-      public final int VK()
+      public final int Yb()
       {
         return 181;
       }
     };
-    this.frG = new com.tencent.mm.pluginsdk.c.c()
+    this.fJP = new com.tencent.mm.pluginsdk.c.c()
     {
-      public final int VK()
+      public final int Yb()
       {
         return 551;
       }
     };
-    this.frH = new com.tencent.mm.pluginsdk.c.c()
+    this.fJQ = new com.tencent.mm.pluginsdk.c.c()
     {
-      public final int VK()
+      public final int Yb()
       {
         return 179;
       }
     };
-    this.frI = new com.tencent.mm.pluginsdk.c.c()
+    this.fJR = new com.tencent.mm.pluginsdk.c.c()
     {
-      public final int VK()
+      public final int Yb()
       {
         return 700;
       }
     };
-    this.frJ = new com.tencent.mm.pluginsdk.c.c()
+    this.fJS = new com.tencent.mm.pluginsdk.c.c()
     {
-      public final int VK()
+      public final int Yb()
       {
         return 119;
       }
     };
-    this.frK = new com.tencent.mm.sdk.b.c() {};
+    this.fJT = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(12431);
   }
   
-  private static b VI()
+  private static b XZ()
   {
     AppMethodBeat.i(12432);
     b localb = (b)t.ap(b.class);
@@ -77,18 +77,18 @@ public class b
     return localb;
   }
   
-  private static com.tencent.mm.chatroom.c.a VJ()
+  private static com.tencent.mm.chatroom.c.a Ya()
   {
     AppMethodBeat.i(12433);
-    g.agP().afT();
-    VI();
-    if (frL == null)
+    g.ajA().aiF();
+    XZ();
+    if (fJU == null)
     {
-      VI();
-      frL = new com.tencent.mm.chatroom.c.a();
+      XZ();
+      fJU = new com.tencent.mm.chatroom.c.a();
     }
-    VI();
-    com.tencent.mm.chatroom.c.a locala = frL;
+    XZ();
+    com.tencent.mm.chatroom.c.a locala = fJU;
     AppMethodBeat.o(12433);
     return locala;
   }
@@ -104,32 +104,32 @@ public class b
   {
     AppMethodBeat.i(12434);
     com.tencent.mm.roomsdk.a.b.a("@chatroom", new a());
-    com.tencent.mm.sdk.b.a.GpY.c(this.frK);
-    com.tencent.mm.sdk.b.a.GpY.c(this.frF);
-    com.tencent.mm.sdk.b.a.GpY.c(this.frJ);
-    com.tencent.mm.sdk.b.a.GpY.c(this.frG);
-    com.tencent.mm.sdk.b.a.GpY.c(this.frH);
-    com.tencent.mm.sdk.b.a.GpY.c(this.frI);
-    com.tencent.mm.chatroom.c.a locala = VJ();
-    ((q)g.ad(q.class)).getSysCmdMsgExtension().a("NewXmlChatRoomAccessVerifyApplication", locala.frW, true);
-    ((q)g.ad(q.class)).getSysCmdMsgExtension().a("NewXmlChatRoomAccessVerifyApproval", locala.frW, true);
-    ((f)g.ab(f.class)).a("link_admin_explain", locala);
+    com.tencent.mm.sdk.b.a.IbL.c(this.fJT);
+    com.tencent.mm.sdk.b.a.IbL.c(this.fJO);
+    com.tencent.mm.sdk.b.a.IbL.c(this.fJS);
+    com.tencent.mm.sdk.b.a.IbL.c(this.fJP);
+    com.tencent.mm.sdk.b.a.IbL.c(this.fJQ);
+    com.tencent.mm.sdk.b.a.IbL.c(this.fJR);
+    com.tencent.mm.chatroom.c.a locala = Ya();
+    ((r)g.ad(r.class)).getSysCmdMsgExtension().a("NewXmlChatRoomAccessVerifyApplication", locala.fKw, true);
+    ((r)g.ad(r.class)).getSysCmdMsgExtension().a("NewXmlChatRoomAccessVerifyApproval", locala.fKw, true);
+    ((e)g.ab(e.class)).a("link_admin_explain", locala);
     AppMethodBeat.o(12434);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(12435);
-    com.tencent.mm.sdk.b.a.GpY.d(this.frK);
-    com.tencent.mm.sdk.b.a.GpY.d(this.frF);
-    com.tencent.mm.sdk.b.a.GpY.d(this.frJ);
-    com.tencent.mm.sdk.b.a.GpY.d(this.frG);
-    com.tencent.mm.sdk.b.a.GpY.d(this.frH);
-    com.tencent.mm.sdk.b.a.GpY.d(this.frI);
-    com.tencent.mm.chatroom.c.a locala = VJ();
-    ((q)g.ad(q.class)).getSysCmdMsgExtension().b("NewXmlChatRoomAccessVerifyApplication", locala.frW, true);
-    ((q)g.ad(q.class)).getSysCmdMsgExtension().b("NewXmlChatRoomAccessVerifyApproval", locala.frW, true);
-    ((f)g.ab(f.class)).akI("link_admin_explain");
+    com.tencent.mm.sdk.b.a.IbL.d(this.fJT);
+    com.tencent.mm.sdk.b.a.IbL.d(this.fJO);
+    com.tencent.mm.sdk.b.a.IbL.d(this.fJS);
+    com.tencent.mm.sdk.b.a.IbL.d(this.fJP);
+    com.tencent.mm.sdk.b.a.IbL.d(this.fJQ);
+    com.tencent.mm.sdk.b.a.IbL.d(this.fJR);
+    com.tencent.mm.chatroom.c.a locala = Ya();
+    ((r)g.ad(r.class)).getSysCmdMsgExtension().b("NewXmlChatRoomAccessVerifyApplication", locala.fKw, true);
+    ((r)g.ad(r.class)).getSysCmdMsgExtension().b("NewXmlChatRoomAccessVerifyApproval", locala.fKw, true);
+    ((e)g.ab(e.class)).apu("link_admin_explain");
     AppMethodBeat.o(12435);
   }
   

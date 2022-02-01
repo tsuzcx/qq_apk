@@ -10,7 +10,7 @@ class SnsTextUtil
   static String getReceiverText(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(18718);
-    String str = e.wk(paramString1);
+    String str = e.zf(paramString1);
     paramString1 = str;
     if (str != null)
     {
@@ -23,7 +23,7 @@ class SnsTextUtil
     {
       paramContext = paramString2;
       if (!Util.isNullOrNil(paramString1)) {
-        paramContext = e.aSI(paramString2);
+        paramContext = e.aYH(paramString2);
       }
     }
     for (paramContext = paramString1 + "(" + paramContext + ")";; paramContext = paramString1)

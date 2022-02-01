@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dfh;
+import com.tencent.mm.protocal.protobuf.dku;
 import d.l;
 import d.o;
 import d.v;
@@ -13,30 +13,30 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "Landroid/os/Parcelable;", "title", "", "templateId", "templateType", "", "chooseStatus", "keyWordList", "Ljava/util/ArrayList;", "Lkotlin/Pair;", "Lkotlin/collections/ArrayList;", "settingStatus", "isOpened", "", "sceneDesc", "wxaSubscribeStatusString", "isBaned", "tid", "(Ljava/lang/String;Ljava/lang/String;IILjava/util/ArrayList;IZLjava/lang/String;Ljava/lang/String;ZI)V", "item", "Lcom/tencent/mm/protocal/protobuf/SubscribeMsgItem;", "(Lcom/tencent/mm/protocal/protobuf/SubscribeMsgItem;Ljava/util/ArrayList;)V", "(Ljava/lang/String;Ljava/lang/String;IILjava/util/ArrayList;IZLjava/lang/String;)V", "switchOpened", "(Ljava/lang/String;IIZ)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getChooseStatus", "()I", "setChooseStatus", "(I)V", "()Z", "isFromProfile", "setFromProfile", "(Z)V", "isOpen", "setOpen", "getKeyWordList", "()Ljava/util/ArrayList;", "getSceneDesc", "()Ljava/lang/String;", "getSettingStatus", "setSettingStatus", "getTemplateId", "templateType$annotations", "()V", "getTemplateType", "getTid", "getTitle", "updateTimestamp", "", "getUpdateTimestamp", "()J", "setUpdateTimestamp", "(J)V", "getWxaSubscribeStatusString", "describeContents", "toString", "writeToParcel", "", "dest", "flags", "Companion", "wxbiz-msgsubscription-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "Landroid/os/Parcelable;", "title", "", "templateId", "templateType", "", "chooseStatus", "keyWordList", "Ljava/util/ArrayList;", "Lkotlin/Pair;", "Lkotlin/collections/ArrayList;", "settingStatus", "isOpened", "", "sceneDesc", "wxaSubscribeStatusString", "isBaned", "tid", "(Ljava/lang/String;Ljava/lang/String;IILjava/util/ArrayList;IZLjava/lang/String;Ljava/lang/String;ZI)V", "item", "Lcom/tencent/mm/protocal/protobuf/SubscribeMsgItem;", "(Lcom/tencent/mm/protocal/protobuf/SubscribeMsgItem;Ljava/util/ArrayList;)V", "(Ljava/lang/String;Ljava/lang/String;IILjava/util/ArrayList;IZLjava/lang/String;)V", "switchOpened", "(Ljava/lang/String;IIZ)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getChooseStatus", "()I", "setChooseStatus", "(I)V", "()Z", "isFromProfile", "setFromProfile", "(Z)V", "isOpen", "setOpen", "getKeyWordList", "()Ljava/util/ArrayList;", "getSceneDesc", "()Ljava/lang/String;", "getSettingStatus", "setSettingStatus", "getTemplateId", "templateType$annotations", "()V", "getTemplateType", "getTid", "getTitle", "updateTimestamp", "", "getUpdateTimestamp", "()J", "setUpdateTimestamp", "(J)V", "getWxaSubscribeStatusString", "describeContents", "toString", "writeToParcel", "", "dest", "flags", "Companion", "wxbiz-msgsubscription-sdk_release"})
 public final class SubscribeMsgTmpItem
   implements Parcelable
 {
   public static final Parcelable.Creator<SubscribeMsgTmpItem> CREATOR;
-  public static final a ihd;
-  public boolean Tz;
-  public final String hiK;
-  public int igB;
-  public final String igV;
-  public final int igW;
-  public final ArrayList<o<String, String>> igX;
-  public int igY;
-  public long igZ;
-  public boolean iha;
-  public final String ihb;
-  public final boolean ihc;
+  public static final a iAx;
+  public boolean Vp;
+  public final String hAT;
+  public final String iAp;
+  public final int iAq;
+  public final ArrayList<o<String, String>> iAr;
+  public int iAs;
+  public long iAt;
+  public boolean iAu;
+  public final String iAv;
+  public final boolean iAw;
+  public int izV;
   public final int tid;
   public final String title;
   
   static
   {
     AppMethodBeat.i(149554);
-    ihd = new a((byte)0);
+    iAx = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(149554);
   }
@@ -55,18 +55,18 @@ public final class SubscribeMsgTmpItem
     if (localObject3 == null) {
       localObject1 = "";
     }
-    this.hiK = ((String)localObject1);
-    this.igW = paramParcel.readInt();
-    this.igB = paramParcel.readInt();
+    this.hAT = ((String)localObject1);
+    this.iAq = paramParcel.readInt();
+    this.izV = paramParcel.readInt();
     int i = paramParcel.readInt();
-    this.igX = new ArrayList(i);
+    this.iAr = new ArrayList(i);
     label160:
     Object localObject2;
     if (i != 0)
     {
       try
       {
-        localObject1 = this.igX;
+        localObject1 = this.iAr;
         localObject3 = paramParcel.readSerializable();
         if (localObject3 != null) {
           break label267;
@@ -79,31 +79,31 @@ public final class SubscribeMsgTmpItem
     }
     else
     {
-      this.igY = paramParcel.readInt();
+      this.iAs = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
         break label285;
       }
       bool1 = true;
-      this.Tz = bool1;
-      this.igZ = paramParcel.readLong();
+      this.Vp = bool1;
+      this.iAt = paramParcel.readLong();
       localObject3 = paramParcel.readString();
       localObject2 = localObject3;
       if (localObject3 == null) {
         localObject2 = "";
       }
-      this.igV = ((String)localObject2);
+      this.iAp = ((String)localObject2);
       if (paramParcel.readByte() == 0) {
         break label290;
       }
       bool1 = true;
       label207:
-      this.iha = bool1;
+      this.iAu = bool1;
       localObject3 = paramParcel.readString();
       localObject2 = localObject3;
       if (localObject3 == null) {
         localObject2 = "";
       }
-      this.ihb = ((String)localObject2);
+      this.iAv = ((String)localObject2);
       this.tid = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
         break label295;
@@ -115,7 +115,7 @@ public final class SubscribeMsgTmpItem
     label295:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.ihc = bool1;
+      this.iAw = bool1;
       AppMethodBeat.o(149553);
       return;
       ((ArrayList)localObject2).add((o)localObject3);
@@ -128,24 +128,24 @@ public final class SubscribeMsgTmpItem
     }
   }
   
-  public SubscribeMsgTmpItem(dfh paramdfh, ArrayList<o<String, String>> paramArrayList) {}
+  public SubscribeMsgTmpItem(dku paramdku, ArrayList<o<String, String>> paramArrayList) {}
   
   public SubscribeMsgTmpItem(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(149552);
     this.title = "";
-    this.hiK = paramString;
-    this.igW = paramInt1;
-    this.igB = -1;
-    this.igY = paramInt2;
-    this.igX = new ArrayList();
-    this.Tz = paramBoolean;
-    this.igZ = 0L;
-    this.igV = "";
-    this.iha = false;
-    this.ihb = "";
+    this.hAT = paramString;
+    this.iAq = paramInt1;
+    this.izV = -1;
+    this.iAs = paramInt2;
+    this.iAr = new ArrayList();
+    this.Vp = paramBoolean;
+    this.iAt = 0L;
+    this.iAp = "";
+    this.iAu = false;
+    this.iAv = "";
     this.tid = -1;
-    this.ihc = false;
+    this.iAw = false;
     AppMethodBeat.o(149552);
   }
   
@@ -159,18 +159,23 @@ public final class SubscribeMsgTmpItem
   private SubscribeMsgTmpItem(String paramString1, String paramString2, int paramInt1, int paramInt2, ArrayList<o<String, String>> paramArrayList, int paramInt3, boolean paramBoolean1, String paramString3, String paramString4, boolean paramBoolean2, int paramInt4)
   {
     this.title = paramString1;
-    this.hiK = paramString2;
-    this.igW = paramInt1;
-    this.igB = paramInt2;
-    this.igX = paramArrayList;
-    this.igY = paramInt3;
-    this.Tz = paramBoolean1;
-    this.igZ = 0L;
-    this.igV = paramString3;
-    this.iha = false;
-    this.ihb = paramString4;
+    this.hAT = paramString2;
+    this.iAq = paramInt1;
+    this.izV = paramInt2;
+    this.iAr = paramArrayList;
+    this.iAs = paramInt3;
+    this.Vp = paramBoolean1;
+    this.iAt = 0L;
+    this.iAp = paramString3;
+    this.iAu = false;
+    this.iAv = paramString4;
     this.tid = paramInt4;
-    this.ihc = paramBoolean2;
+    this.iAw = paramBoolean2;
+  }
+  
+  public final int aOp()
+  {
+    return this.iAs;
   }
   
   public final int describeContents()
@@ -181,7 +186,7 @@ public final class SubscribeMsgTmpItem
   public final String toString()
   {
     AppMethodBeat.i(149549);
-    String str = "SubscribeMsgTmpItem(title='" + this.title + "', templateId='" + this.hiK + "', templateType=" + this.igW + ", chooseStatus=" + this.igB + ", settingStatus=" + this.igY + ", settingStatus=" + this.igY + ", CREATOR=" + CREATOR + ')';
+    String str = "SubscribeMsgTmpItem(title='" + this.title + "', templateId='" + this.hAT + "', templateType=" + this.iAq + ", chooseStatus=" + this.izV + ", settingStatus=" + this.iAs + ", settingStatus=" + this.iAs + ", CREATOR=" + CREATOR + ')';
     AppMethodBeat.o(149549);
     return str;
   }
@@ -194,18 +199,18 @@ public final class SubscribeMsgTmpItem
       paramParcel.writeString(this.title);
     }
     if (paramParcel != null) {
-      paramParcel.writeString(this.hiK);
+      paramParcel.writeString(this.hAT);
     }
     if (paramParcel != null) {
-      paramParcel.writeInt(this.igW);
+      paramParcel.writeInt(this.iAq);
     }
     if (paramParcel != null) {
-      paramParcel.writeInt(this.igB);
+      paramParcel.writeInt(this.izV);
     }
     if (paramParcel != null) {
-      paramParcel.writeInt(this.igX.size());
+      paramParcel.writeInt(this.iAr.size());
     }
-    Iterator localIterator = ((Iterable)this.igX).iterator();
+    Iterator localIterator = ((Iterable)this.iAr).iterator();
     while (localIterator.hasNext())
     {
       o localo = (o)localIterator.next();
@@ -214,12 +219,12 @@ public final class SubscribeMsgTmpItem
       }
     }
     if (paramParcel != null) {
-      paramParcel.writeInt(this.igY);
+      paramParcel.writeInt(this.iAs);
     }
     byte b;
     if (paramParcel != null)
     {
-      if (this.Tz)
+      if (this.Vp)
       {
         b = 1;
         paramParcel.writeByte(b);
@@ -228,14 +233,14 @@ public final class SubscribeMsgTmpItem
     else
     {
       if (paramParcel != null) {
-        paramParcel.writeLong(this.igZ);
+        paramParcel.writeLong(this.iAt);
       }
       if (paramParcel != null) {
-        paramParcel.writeString(this.igV);
+        paramParcel.writeString(this.iAp);
       }
       if (paramParcel != null)
       {
-        if (!this.iha) {
+        if (!this.iAu) {
           break label247;
         }
         b = 1;
@@ -243,7 +248,7 @@ public final class SubscribeMsgTmpItem
         paramParcel.writeByte(b);
       }
       if (paramParcel != null) {
-        paramParcel.writeString(this.ihb);
+        paramParcel.writeString(this.iAv);
       }
       if (paramParcel != null) {
         paramParcel.writeInt(this.tid);
@@ -251,7 +256,7 @@ public final class SubscribeMsgTmpItem
       if (paramParcel == null) {
         break label257;
       }
-      if (!this.ihc) {
+      if (!this.iAw) {
         break label252;
       }
     }
@@ -272,10 +277,10 @@ public final class SubscribeMsgTmpItem
     AppMethodBeat.o(149548);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem$Companion;", "", "()V", "CHOOSE_STATUS_CHECKED", "", "CHOOSE_STATUS_UNCHECK", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "OP_ALWAYS_ALLOW", "OP_ALWAYS_REJECT", "OP_DEFAULT", "SHOW_STYLE_LIST", "SHOW_STYLE_SINGLE", "STATUS_SUBSCRIBED", "STATUS_UNSUBSCRIBED", "TYPE_TMPL_FOREVER", "TYPE_TMPL_ONCE", "OpType", "SubscribeStatus", "TMPL_TYPE", "wxbiz-msgsubscription-sdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem$Companion;", "", "()V", "CHOOSE_STATUS_CHECKED", "", "CHOOSE_STATUS_UNCHECK", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "OP_ALWAYS_ALLOW", "OP_ALWAYS_REJECT", "OP_DEFAULT", "SHOW_STYLE_LIST", "SHOW_STYLE_SINGLE", "STATUS_SUBSCRIBED", "STATUS_UNSUBSCRIBED", "TYPE_TMPL_FOREVER", "TYPE_TMPL_ONCE", "OpType", "SubscribeStatus", "TMPL_TYPE", "wxbiz-msgsubscription-sdk_release"})
   public static final class a {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/msgsubscription/SubscribeMsgTmpItem$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "wxbiz-msgsubscription-sdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/msgsubscription/SubscribeMsgTmpItem$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "wxbiz-msgsubscription-sdk_release"})
   public static final class b
     implements Parcelable.Creator<SubscribeMsgTmpItem>
   {}

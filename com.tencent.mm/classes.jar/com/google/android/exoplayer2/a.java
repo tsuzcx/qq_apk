@@ -7,11 +7,11 @@ import com.google.android.exoplayer2.source.l;
 public abstract class a
   implements r, s
 {
-  protected t aRm;
-  protected l aRn;
-  protected long aRo;
-  protected boolean aRp;
-  protected boolean aRq;
+  protected t bbH;
+  protected l bbI;
+  protected long bbJ;
+  protected boolean bbK;
+  protected boolean bbL;
   protected int index;
   protected int state;
   private final int trackType;
@@ -19,32 +19,32 @@ public abstract class a
   public a(int paramInt)
   {
     this.trackType = paramInt;
-    this.aRp = true;
+    this.bbK = true;
   }
   
   protected final int a(k paramk, e parame, boolean paramBoolean)
   {
-    int i = this.aRn.b(paramk, parame, paramBoolean);
+    int i = this.bbI.b(paramk, parame, paramBoolean);
     if (i == -4)
     {
-      if (parame.sz())
+      if (parame.tY())
       {
-        this.aRp = true;
-        if (this.aRq) {
+        this.bbK = true;
+        if (this.bbL) {
           return -4;
         }
         return -3;
       }
-      parame.timeUs += this.aRo;
+      parame.timeUs += this.bbJ;
     }
     for (;;)
     {
       return i;
       if (i == -5)
       {
-        parame = paramk.aTo;
-        if (parame.aTk != 9223372036854775807L) {
-          paramk.aTo = parame.D(parame.aTk + this.aRo);
+        parame = paramk.bdI;
+        if (parame.bdF != 9223372036854775807L) {
+          paramk.bdI = parame.D(parame.bdF + this.bbJ);
         }
       }
     }
@@ -58,9 +58,9 @@ public abstract class a
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
-      this.aRm = paramt;
+      this.bbH = paramt;
       this.state = 1;
-      aN(paramBoolean);
+      aO(paramBoolean);
       a(paramArrayOfFormat, paraml, paramLong2);
       a(paramLong1, paramBoolean);
       return;
@@ -71,19 +71,19 @@ public abstract class a
   
   public final void a(Format[] paramArrayOfFormat, l paraml, long paramLong)
   {
-    if (!this.aRq) {}
+    if (!this.bbL) {}
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
-      this.aRn = paraml;
-      this.aRp = false;
-      this.aRo = paramLong;
+      this.bbI = paraml;
+      this.bbK = false;
+      this.bbJ = paramLong;
       a(paramArrayOfFormat, paramLong);
       return;
     }
   }
   
-  protected void aN(boolean paramBoolean) {}
+  protected void aO(boolean paramBoolean) {}
   
   public void c(int paramInt, Object paramObject) {}
   
@@ -95,9 +95,9 @@ public abstract class a
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
       this.state = 0;
-      this.aRn = null;
-      this.aRq = false;
-      rA();
+      this.bbI = null;
+      this.bbL = false;
+      sZ();
       return;
       bool = false;
     }
@@ -117,47 +117,47 @@ public abstract class a
   
   protected void onStopped() {}
   
-  protected void rA() {}
-  
-  public final s rs()
+  public final s sR()
   {
     return this;
   }
   
-  public i rt()
+  public i sS()
   {
     return null;
   }
   
-  public final l ru()
+  public final l sT()
   {
-    return this.aRn;
+    return this.bbI;
   }
   
-  public final boolean rv()
+  public final boolean sU()
   {
-    return this.aRp;
+    return this.bbK;
   }
   
-  public final void rw()
+  public final void sV()
   {
-    this.aRq = true;
+    this.bbL = true;
   }
   
-  public final boolean rx()
+  public final boolean sW()
   {
-    return this.aRq;
+    return this.bbL;
   }
   
-  public final void ry()
+  public final void sX()
   {
-    this.aRn.tN();
+    this.bbI.vm();
   }
   
-  public int rz()
+  public int sY()
   {
     return 0;
   }
+  
+  protected void sZ() {}
   
   public final void setIndex(int paramInt)
   {
@@ -192,14 +192,14 @@ public abstract class a
   
   public final void u(long paramLong)
   {
-    this.aRq = false;
-    this.aRp = false;
+    this.bbL = false;
+    this.bbK = false;
     a(paramLong, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.a
  * JD-Core Version:    0.7.0.1
  */

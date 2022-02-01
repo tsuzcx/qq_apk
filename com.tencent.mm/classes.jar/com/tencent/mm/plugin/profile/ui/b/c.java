@@ -7,15 +7,15 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.g;
 import java.io.IOException;
 
 public final class c
@@ -34,11 +34,11 @@ public final class c
       public final Bitmap a(Bitmap paramAnonymousBitmap, s.a paramAnonymousa, String paramAnonymousString)
       {
         AppMethodBeat.i(27603);
-        if (s.a.iuo == paramAnonymousa) {}
+        if (s.a.iNr == paramAnonymousa) {}
         try
         {
-          f.a(paramAnonymousBitmap, 100, Bitmap.CompressFormat.PNG, aNl(), false);
-          ac.d("MicroMsg.UrlDrawable", "get bitmap, from %s", new Object[] { paramAnonymousa.toString() });
+          g.a(paramAnonymousBitmap, 100, Bitmap.CompressFormat.PNG, aQw(), false);
+          ad.d("MicroMsg.UrlDrawable", "get bitmap, from %s", new Object[] { paramAnonymousa.toString() });
           AppMethodBeat.o(27603);
           return paramAnonymousBitmap;
         }
@@ -46,30 +46,42 @@ public final class c
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.UrlDrawable", paramAnonymousString, "", new Object[0]);
-            ac.w("MicroMsg.UrlDrawable", "save bitmap fail");
+            ad.printErrStackTrace("MicroMsg.UrlDrawable", paramAnonymousString, "", new Object[0]);
+            ad.w("MicroMsg.UrlDrawable", "save bitmap fail");
           }
         }
       }
       
       public final void a(s.a paramAnonymousa, String paramAnonymousString) {}
       
-      public final s.b aNk()
+      public final boolean aQA()
+      {
+        return false;
+      }
+      
+      public final Bitmap aQB()
       {
         return null;
       }
       
-      public final String aNl()
+      public final void aQC() {}
+      
+      public final s.b aQv()
+      {
+        return null;
+      }
+      
+      public final String aQw()
       {
         AppMethodBeat.i(27604);
         Object localObject = new StringBuilder();
-        az.ayM();
-        localObject = com.tencent.mm.model.c.awU() + ah.dg(c.a(c.this));
+        ba.aBQ();
+        localObject = com.tencent.mm.model.c.azJ() + ai.ee(c.a(c.this));
         AppMethodBeat.o(27604);
         return localObject;
       }
       
-      public final String aNm()
+      public final String aQx()
       {
         AppMethodBeat.i(27606);
         String str = c.a(c.this);
@@ -77,7 +89,7 @@ public final class c
         return str;
       }
       
-      public final String aNn()
+      public final String aQy()
       {
         AppMethodBeat.i(27605);
         String str = c.a(c.this);
@@ -85,22 +97,10 @@ public final class c
         return str;
       }
       
-      public final boolean aNo()
+      public final boolean aQz()
       {
         return false;
       }
-      
-      public final boolean aNp()
-      {
-        return false;
-      }
-      
-      public final Bitmap aNq()
-      {
-        return null;
-      }
-      
-      public final void aNr() {}
       
       public final void aa(String paramAnonymousString, boolean paramAnonymousBoolean) {}
       

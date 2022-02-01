@@ -11,24 +11,24 @@ import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.aj;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDividerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "orientation", "", "(I)V", "bounds", "Landroid/graphics/Rect;", "divider", "Landroid/graphics/drawable/Drawable;", "dividerSize", "getOrientation", "()I", "drawHorizontal", "", "canvas", "Landroid/graphics/Canvas;", "parent", "Landroid/support/v7/widget/RecyclerView;", "drawVertical", "getItemOffsets", "outRect", "view", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onDraw", "c", "Companion", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDividerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "orientation", "", "(I)V", "bounds", "Landroid/graphics/Rect;", "divider", "Landroid/graphics/drawable/Drawable;", "dividerSize", "getOrientation", "()I", "drawHorizontal", "", "canvas", "Landroid/graphics/Canvas;", "parent", "Landroid/support/v7/widget/RecyclerView;", "drawVertical", "getItemOffsets", "outRect", "view", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onDraw", "c", "Companion", "plugin-story_release"})
 public final class b
   extends RecyclerView.h
 {
-  public static final b.a zKX;
-  private final Rect fU;
-  private final Drawable iPH;
+  public static final b.a Bcy;
+  private int Bcx;
+  private final Rect hL;
+  private final Drawable jiP;
   private final int orientation;
-  private int zKW;
   
   static
   {
     AppMethodBeat.i(120329);
-    zKX = new b.a((byte)0);
+    Bcy = new b.a((byte)0);
     AppMethodBeat.o(120329);
   }
   
@@ -36,9 +36,9 @@ public final class b
   {
     AppMethodBeat.i(120328);
     this.orientation = paramInt;
-    this.iPH = ((Drawable)new ColorDrawable(-16777216));
-    this.fU = new Rect();
-    this.zKW = a.fromDPToPix(ai.getContext(), 16);
+    this.jiP = ((Drawable)new ColorDrawable(-16777216));
+    this.hL = new Rect();
+    this.Bcx = a.fromDPToPix(aj.getContext(), 16);
     AppMethodBeat.o(120328);
   }
   
@@ -47,9 +47,9 @@ public final class b
     int m = 0;
     int k = 0;
     AppMethodBeat.i(120326);
-    k.h(paramCanvas, "c");
-    k.h(paramRecyclerView, "parent");
-    k.h(paramt, "state");
+    p.h(paramCanvas, "c");
+    p.h(paramRecyclerView, "parent");
+    p.h(paramt, "state");
     if (paramRecyclerView.getLayoutManager() == null)
     {
       AppMethodBeat.o(120326);
@@ -74,13 +74,13 @@ public final class b
         while (k < m)
         {
           paramt = paramRecyclerView.getChildAt(k);
-          RecyclerView.c(paramt, this.fU);
-          n = this.fU.bottom;
-          k.g(paramt, "child");
+          RecyclerView.c(paramt, this.hL);
+          n = this.hL.bottom;
+          p.g(paramt, "child");
           n = Math.round(paramt.getTranslationY()) + n;
-          i1 = this.zKW;
-          this.iPH.setBounds(j, n - i1, i, n);
-          this.iPH.draw(paramCanvas);
+          i1 = this.Bcx;
+          this.jiP.setBounds(j, n - i1, i, n);
+          this.jiP.draw(paramCanvas);
           k += 1;
         }
         i = paramRecyclerView.getWidth();
@@ -105,14 +105,14 @@ public final class b
       {
         paramt = paramRecyclerView.getChildAt(k);
         if (paramRecyclerView.getLayoutManager() != null) {
-          RecyclerView.i.c(paramt, this.fU);
+          RecyclerView.i.c(paramt, this.hL);
         }
-        m = this.fU.right;
-        k.g(paramt, "child");
+        m = this.hL.right;
+        p.g(paramt, "child");
         m = Math.round(paramt.getTranslationX()) + m;
-        i1 = this.zKW;
-        this.iPH.setBounds(m - i1, j, m, i);
-        this.iPH.draw(paramCanvas);
+        i1 = this.Bcx;
+        this.jiP.setBounds(m - i1, j, m, i);
+        this.jiP.draw(paramCanvas);
         k += 1;
       }
       i = paramRecyclerView.getHeight();
@@ -125,10 +125,10 @@ public final class b
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(120327);
-    k.h(paramRect, "outRect");
-    k.h(paramView, "view");
-    k.h(paramRecyclerView, "parent");
-    k.h(paramt, "state");
+    p.h(paramRect, "outRect");
+    p.h(paramView, "view");
+    p.h(paramRecyclerView, "parent");
+    p.h(paramt, "state");
     int i;
     if (paramRecyclerView.getLayoutManager() != null)
     {
@@ -154,11 +154,11 @@ public final class b
     {
       if (this.orientation == 0)
       {
-        paramRect.set(0, 0, this.zKW, 0);
+        paramRect.set(0, 0, this.Bcx, 0);
         AppMethodBeat.o(120327);
         return;
       }
-      paramRect.set(0, 0, 0, this.zKW);
+      paramRect.set(0, 0, 0, this.Bcx);
     }
     AppMethodBeat.o(120327);
   }

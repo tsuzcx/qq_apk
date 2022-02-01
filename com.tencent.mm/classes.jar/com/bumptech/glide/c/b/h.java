@@ -12,20 +12,20 @@ import java.util.List;
 
 public final class h<DataType, ResourceType, Transcode>
 {
-  private final Class<DataType> aFl;
-  private final List<? extends k<DataType, ResourceType>> aFm;
-  final com.bumptech.glide.c.d.f.e<ResourceType, Transcode> aFn;
-  private final l.a<List<Throwable>> aFo;
-  private final String aFp;
+  private final Class<DataType> aHc;
+  private final List<? extends k<DataType, ResourceType>> aHd;
+  final com.bumptech.glide.c.d.f.e<ResourceType, Transcode> aHe;
+  private final l.a<List<Throwable>> aHf;
+  private final String aHg;
   
   public h(Class<DataType> paramClass, Class<ResourceType> paramClass1, Class<Transcode> paramClass2, List<? extends k<DataType, ResourceType>> paramList, com.bumptech.glide.c.d.f.e<ResourceType, Transcode> parame, l.a<List<Throwable>> parama)
   {
     AppMethodBeat.i(76973);
-    this.aFl = paramClass;
-    this.aFm = paramList;
-    this.aFn = parame;
-    this.aFo = parama;
-    this.aFp = ("Failed DecodePath{" + paramClass.getSimpleName() + "->" + paramClass1.getSimpleName() + "->" + paramClass2.getSimpleName() + "}");
+    this.aHc = paramClass;
+    this.aHd = paramList;
+    this.aHe = parame;
+    this.aHf = parama;
+    this.aHg = ("Failed DecodePath{" + paramClass.getSimpleName() + "->" + paramClass1.getSimpleName() + "->" + paramClass2.getSimpleName() + "}");
     AppMethodBeat.o(76973);
   }
   
@@ -33,7 +33,7 @@ public final class h<DataType, ResourceType, Transcode>
   {
     AppMethodBeat.i(76975);
     Object localObject1 = null;
-    int j = this.aFm.size();
+    int j = this.aHd.size();
     int i = 0;
     for (;;)
     {
@@ -41,13 +41,13 @@ public final class h<DataType, ResourceType, Transcode>
       if (i >= j) {
         break label147;
       }
-      localk = (k)this.aFm.get(i);
+      localk = (k)this.aHd.get(i);
       try
       {
-        if (!localk.a(parame.nX(), paramj)) {
+        if (!localk.a(parame.op(), paramj)) {
           break label198;
         }
-        localObject2 = localk.a(parame.nX(), paramInt1, paramInt2, paramj);
+        localObject2 = localk.a(parame.op(), paramInt1, paramInt2, paramj);
         localObject1 = localObject2;
       }
       catch (RuntimeException localRuntimeException)
@@ -62,7 +62,7 @@ public final class h<DataType, ResourceType, Transcode>
         if (localRuntimeException != null) {
           break label180;
         }
-        parame = new p(this.aFp, new ArrayList(paramList));
+        parame = new p(this.aHg, new ArrayList(paramList));
         AppMethodBeat.o(76975);
         throw parame;
         AppMethodBeat.o(76975);
@@ -87,7 +87,7 @@ public final class h<DataType, ResourceType, Transcode>
   final u<ResourceType> a(com.bumptech.glide.c.a.e<DataType> parame, int paramInt1, int paramInt2, j paramj)
   {
     AppMethodBeat.i(76974);
-    List localList = (List)i.checkNotNull(this.aFo.acquire(), "Argument must not be null");
+    List localList = (List)i.checkNotNull(this.aHf.acquire(), "Argument must not be null");
     try
     {
       parame = a(parame, paramInt1, paramInt2, paramj, localList);
@@ -95,7 +95,7 @@ public final class h<DataType, ResourceType, Transcode>
     }
     finally
     {
-      this.aFo.release(localList);
+      this.aHf.release(localList);
       AppMethodBeat.o(76974);
     }
   }
@@ -103,7 +103,7 @@ public final class h<DataType, ResourceType, Transcode>
   public final String toString()
   {
     AppMethodBeat.i(76976);
-    String str = "DecodePath{ dataClass=" + this.aFl + ", decoders=" + this.aFm + ", transcoder=" + this.aFn + '}';
+    String str = "DecodePath{ dataClass=" + this.aHc + ", decoders=" + this.aHd + ", transcoder=" + this.aHe + '}';
     AppMethodBeat.o(76976);
     return str;
   }

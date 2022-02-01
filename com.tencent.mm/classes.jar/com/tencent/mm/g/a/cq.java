@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class cq
   extends b
 {
+  public a dnA;
+  public b dnB;
+  
   public cq()
   {
     this((byte)0);
@@ -12,8 +16,22 @@ public final class cq
   
   private cq(byte paramByte)
   {
-    this.Gqe = false;
+    AppMethodBeat.i(127401);
+    this.dnA = new a();
+    this.dnB = new b();
+    this.IbR = false;
     this.callback = null;
+    AppMethodBeat.o(127401);
+  }
+  
+  public static final class a
+  {
+    public long dnC = 0L;
+  }
+  
+  public static final class b
+  {
+    public boolean dno = false;
   }
 }
 

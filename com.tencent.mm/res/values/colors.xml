@@ -732,6 +732,7 @@
     <color name="q4">#fff8615f</color>
     <color name="q5">#fffec100</color>
     <color name="q6">#ff353535</color>
+    <item type="color" name="q7">false</item>
     <color name="q9">#ff222222</color>
     <color name="q_">#ff999999</color>
     <color name="qa">#ff626264</color>
@@ -740,7 +741,7 @@
     <color name="qd">#ffa9b1b8</color>
     <color name="qe">#ffc5a680</color>
     <color name="qf">#ffefeff4</color>
-    <color name="qg">#fff7f7f7</color>
+    <color name="qg">@color/BW_97</color>
     <color name="qh">#ff4c5154</color>
     <item type="color" name="qi">false</item>
     <color name="qj">#ff323232</color>
@@ -1473,5 +1474,22 @@
     <color name="aav">@color/Brand</color>
     <color name="aaw">#66000000</color>
     <color name="aax">#e6ffffff</color>
-    <color name="aay">#ffffffff</color>
+    <color name="BW_70_dark">#ff6b6b6b</color>
+    <color name="aay">#ffffe4c8</color>
+    <color name="aaz">@color/yh</color>
+    <color name="ab0">#fffa5151</color>
+    <color name="ab1">@color/ff</color>
+    <color name="ab2">#ff156cea</color>
+    <color name="ab3">#ff333333</color>
+    <color name="ab4">#ff191919</color>
+    <color name="ab5">#e6ffffff</color>
+    <color name="ab6">#ffffffff</color>
+    <color name="ab7">#ffffffff</color>
+    <color name="ab8">#b2000000</color>
+    <color name="ab9">#b2000000</color>
+    <color name="ab_">#ffffffff</color>
+    <color name="aba">@color/BW_100_Alpha_0_5</color>
+    <color name="abb">@color/BW_0_Alpha_0_8</color>
+    <color name="abc">#80555555</color>
+    <color name="abd">#4dffffff</color>
 </resources>

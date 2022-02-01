@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class PreviewFrameLayout
   extends RelativeLayout
 {
-  private double qHt = 1.333333333333333D;
+  private double rrs = 1.333333333333333D;
   
   public PreviewFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -17,7 +17,7 @@ public class PreviewFrameLayout
   
   public double getmAspectRatio()
   {
-    return this.qHt;
+    return this.rrs;
   }
   
   public void setAspectRatio(double paramDouble)
@@ -29,9 +29,9 @@ public class PreviewFrameLayout
       AppMethodBeat.o(104329);
       throw localIllegalArgumentException;
     }
-    if (this.qHt != paramDouble)
+    if (this.rrs != paramDouble)
     {
-      this.qHt = paramDouble;
+      this.rrs = paramDouble;
       requestLayout();
     }
     AppMethodBeat.o(104329);

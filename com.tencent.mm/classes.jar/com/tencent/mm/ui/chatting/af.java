@@ -2,34 +2,32 @@ package com.tencent.mm.ui.chatting;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.n;
+import com.tencent.mm.plugin.appbrand.service.o;
 import com.tencent.mm.pluginsdk.ui.applet.aa;
 import com.tencent.mm.pluginsdk.ui.applet.aa.a;
 import com.tencent.mm.pluginsdk.ui.applet.u;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.chatting.e.a;
 import java.util.LinkedList;
 
 public final class af
   implements com.tencent.mm.pluginsdk.ui.span.h
 {
-  private a cLy;
+  private a cWM;
   
   public af(a parama)
   {
-    this.cLy = parama;
+    this.cWM = parama;
   }
   
   public final Object a(u paramu)
   {
     AppMethodBeat.i(34836);
-    com.tencent.mm.pluginsdk.wallet.h.XB(6);
+    com.tencent.mm.pluginsdk.wallet.h.Zx(6);
     switch (paramu.type)
     {
     case 3: 
@@ -67,7 +65,7 @@ public final class af
         return null;
         LinkedList localLinkedList = new LinkedList();
         int i;
-        if (w.wo(this.cLy.getTalkerUserName()))
+        if (w.zj(this.cWM.getTalkerUserName()))
         {
           i = paramu.url.lastIndexOf("/");
           if (i >= 0) {
@@ -85,25 +83,25 @@ public final class af
               paramu.add(Integer.valueOf(6));
               i += 1;
             }
-            localLinkedList.add(this.cLy.getTalkerUserName());
+            localLinkedList.add(this.cWM.getTalkerUserName());
           }
-          new aa(this.cLy.HZF.getContext(), new aa.a()
+          new aa(this.cWM.JOR.getContext(), new aa.a()
           {
-            public final void cD(boolean paramAnonymousBoolean) {}
+            public final void cF(boolean paramAnonymousBoolean) {}
           }).a(localLinkedList, paramu, null);
           continue;
-          this.cLy.HZF.fkI();
+          this.cWM.JOR.fAX();
         }
       }
     case 25: 
     case 30: 
     case 31: 
     case 33: 
-      paramu = this.cLy.getTalkerUserName();
+      paramu = this.cWM.getTalkerUserName();
       AppMethodBeat.o(34836);
       return paramu;
     }
-    paramu = this.cLy.getTalkerUserName();
+    paramu = this.cWM.getTalkerUserName();
     AppMethodBeat.o(34836);
     return paramu;
   }
@@ -118,31 +116,31 @@ public final class af
     {
       AppMethodBeat.o(34837);
       return null;
-      if (az.agM())
+      if (ba.ajx())
       {
-        if (f.so(this.cLy.getTalkerUserName()))
+        if (com.tencent.mm.am.g.vd(this.cWM.getTalkerUserName()))
         {
           AppMethodBeat.o(34837);
           return null;
         }
-        if (f.AR(this.cLy.getTalkerUserName()))
+        if (com.tencent.mm.am.g.DQ(this.cWM.getTalkerUserName()))
         {
           AppMethodBeat.o(34837);
           return null;
         }
-        if (f.AQ(this.cLy.getTalkerUserName()))
+        if (com.tencent.mm.am.g.DP(this.cWM.getTalkerUserName()))
         {
           AppMethodBeat.o(34837);
           return null;
         }
       }
       String str = new String(Base64.decode(paramu.url, 0));
-      paramu = new String(Base64.decode(bs.bG((String)paramu.aW(String.class), ""), 0));
-      ac.i("MicroMsg.MMChattingSpanClickCallback", "appId:%s,path:%s", new Object[] { str, paramu });
+      paramu = new String(Base64.decode(bt.bI((String)paramu.aY(String.class), ""), 0));
+      ad.i("MicroMsg.MMChattingSpanClickCallback", "appId:%s,path:%s", new Object[] { str, paramu });
       AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
       localAppBrandStatObject.scene = 1082;
-      localAppBrandStatObject.cYP = (this.cLy.getTalkerUserName() + "|1");
-      ((n)g.ab(n.class)).a(this.cLy.HZF.getContext(), null, str, 0, 0, paramu, localAppBrandStatObject);
+      localAppBrandStatObject.dkh = (this.cWM.getTalkerUserName() + "|1");
+      ((o)com.tencent.mm.kernel.g.ab(o.class)).a(this.cWM.JOR.getContext(), null, str, 0, 0, paramu, localAppBrandStatObject);
     }
   }
 }

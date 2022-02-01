@@ -67,14 +67,26 @@ public final class ig
       localCanvas.drawPath(localPath, (Paint)localObject);
       localCanvas.restore();
       localCanvas.save();
+      localObject = c.a(localPaint, paramVarArgs);
+      ((Paint)localObject).setColor(-1);
+      localPath = c.n(paramVarArgs);
+      localPath.moveTo(22.0F, 18.0F);
+      localPath.lineTo(26.0F, 18.0F);
+      localPath.lineTo(26.0F, 48.0F);
+      localPath.lineTo(22.0F, 48.0F);
+      localPath.lineTo(22.0F, 18.0F);
+      localPath.close();
+      localCanvas.drawPath(localPath, (Paint)localObject);
+      localCanvas.restore();
+      localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-1);
+      localPaint.setColor(419430400);
       localObject = c.n(paramVarArgs);
-      ((Path)localObject).moveTo(22.0F, 18.0F);
-      ((Path)localObject).lineTo(26.0F, 18.0F);
-      ((Path)localObject).lineTo(26.0F, 48.0F);
-      ((Path)localObject).lineTo(22.0F, 48.0F);
-      ((Path)localObject).lineTo(22.0F, 18.0F);
+      ((Path)localObject).moveTo(33.0F, 0.0F);
+      ((Path)localObject).cubicTo(51.225395F, 0.0F, 66.0F, 14.774603F, 66.0F, 33.0F);
+      ((Path)localObject).cubicTo(66.0F, 51.225395F, 51.225395F, 66.0F, 33.0F, 66.0F);
+      ((Path)localObject).cubicTo(14.774603F, 66.0F, 0.0F, 51.225395F, 0.0F, 33.0F);
+      ((Path)localObject).cubicTo(0.0F, 14.774603F, 14.774603F, 0.0F, 33.0F, 0.0F);
       ((Path)localObject).close();
       localCanvas.drawPath((Path)localObject, localPaint);
       localCanvas.restore();
@@ -84,7 +96,7 @@ public final class ig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.ig
  * JD-Core Version:    0.7.0.1
  */

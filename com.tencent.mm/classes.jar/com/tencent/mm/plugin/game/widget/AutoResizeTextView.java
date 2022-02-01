@@ -11,7 +11,7 @@ public class AutoResizeTextView
   extends TextView
   implements a.b
 {
-  private a twA;
+  private a uvM;
   
   public AutoResizeTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,36 +32,36 @@ public class AutoResizeTextView
   private void i(AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(42560);
-    this.twA = a.a(this, paramAttributeSet).a(this);
+    this.uvM = a.a(this, paramAttributeSet).a(this);
     AppMethodBeat.o(42560);
   }
   
   public a getAutofitHelper()
   {
-    return this.twA;
+    return this.uvM;
   }
   
   public float getMaxTextSize()
   {
-    return this.twA.twF;
+    return this.uvM.uvR;
   }
   
   public float getMinTextSize()
   {
-    return this.twA.twE;
+    return this.uvM.uvQ;
   }
   
   public float getPrecision()
   {
-    return this.twA.twG;
+    return this.uvM.uvS;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(42561);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.twA != null) {
-      this.twA.cRN();
+    if (this.uvM != null) {
+      this.uvM.dax();
     }
     AppMethodBeat.o(42561);
   }
@@ -70,8 +70,8 @@ public class AutoResizeTextView
   {
     AppMethodBeat.i(42563);
     super.setLines(paramInt);
-    if (this.twA != null) {
-      this.twA.GK(paramInt);
+    if (this.uvM != null) {
+      this.uvM.Id(paramInt);
     }
     AppMethodBeat.o(42563);
   }
@@ -80,8 +80,8 @@ public class AutoResizeTextView
   {
     AppMethodBeat.i(42564);
     super.setMaxLines(paramInt);
-    if (this.twA != null) {
-      this.twA.GK(paramInt);
+    if (this.uvM != null) {
+      this.uvM.Id(paramInt);
     }
     AppMethodBeat.o(42564);
   }
@@ -89,17 +89,17 @@ public class AutoResizeTextView
   public void setMaxTextSize(float paramFloat)
   {
     AppMethodBeat.i(42566);
-    a locala = this.twA;
-    Context localContext = locala.Up.getContext();
+    a locala = this.uvM;
+    Context localContext = locala.Wf.getContext();
     Resources localResources = Resources.getSystem();
     if (localContext != null) {
       localResources = localContext.getResources();
     }
     paramFloat = TypedValue.applyDimension(2, paramFloat, localResources.getDisplayMetrics());
-    if (paramFloat != locala.twF)
+    if (paramFloat != locala.uvR)
     {
-      locala.twF = paramFloat;
-      locala.cRN();
+      locala.uvR = paramFloat;
+      locala.dax();
     }
     AppMethodBeat.o(42566);
   }
@@ -107,21 +107,21 @@ public class AutoResizeTextView
   public void setMinTextSize(int paramInt)
   {
     AppMethodBeat.i(42567);
-    this.twA.p(2, paramInt);
+    this.uvM.q(2, paramInt);
     AppMethodBeat.o(42567);
   }
   
   public void setPrecision(float paramFloat)
   {
     AppMethodBeat.i(42568);
-    this.twA.bc(paramFloat);
+    this.uvM.bf(paramFloat);
     AppMethodBeat.o(42568);
   }
   
   public void setSizeToFit(boolean paramBoolean)
   {
     AppMethodBeat.i(42565);
-    this.twA.mT(paramBoolean);
+    this.uvM.nn(paramBoolean);
     AppMethodBeat.o(42565);
   }
   
@@ -129,12 +129,12 @@ public class AutoResizeTextView
   {
     AppMethodBeat.i(42562);
     super.setTextSize(paramInt, paramFloat);
-    if (this.twA != null)
+    if (this.uvM != null)
     {
-      a locala = this.twA;
-      if (!locala.twH)
+      a locala = this.uvM;
+      if (!locala.uvT)
       {
-        Context localContext = locala.Up.getContext();
+        Context localContext = locala.Wf.getContext();
         Resources localResources = Resources.getSystem();
         if (localContext != null) {
           localResources = localContext.getResources();

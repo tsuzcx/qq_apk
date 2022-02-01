@@ -12,7 +12,7 @@ public class d
 {
   private static boolean b(Transition paramTransition)
   {
-    return (!g(paramTransition.Ah)) || (!g(paramTransition.Aj)) || (!g(paramTransition.Ak));
+    return (!g(paramTransition.BY)) || (!g(paramTransition.Ca)) || (!g(paramTransition.Cb));
   }
   
   public final Object a(Object paramObject1, Object paramObject2, Object paramObject3)
@@ -40,7 +40,7 @@ public class d
     if (paramObject != null) {
       ((Transition)paramObject).a(new Transition.b()
       {
-        public final Rect dr()
+        public final Rect dG()
         {
           if ((paramRect == null) || (paramRect.isEmpty())) {
             return null;
@@ -60,7 +60,7 @@ public class d
       a(paramView, localRect);
       paramObject.a(new Transition.b()
       {
-        public final Rect dr()
+        public final Rect dG()
         {
           return localRect;
         }
@@ -71,7 +71,7 @@ public class d
   public final void a(Object paramObject, View paramView, ArrayList<View> paramArrayList)
   {
     paramObject = (TransitionSet)paramObject;
-    ArrayList localArrayList = paramObject.Ai;
+    ArrayList localArrayList = paramObject.BZ;
     localArrayList.clear();
     int j = paramArrayList.size();
     int i = 0;
@@ -91,11 +91,11 @@ public class d
     {
       public final void a(Transition paramAnonymousTransition) {}
       
-      public final void dn() {}
+      public final void dC() {}
       
-      public final void jdMethod_do() {}
+      public final void dD() {}
       
-      public final void ds()
+      public final void dH()
       {
         if (paramObject2 != null) {
           d.this.b(paramObject2, paramArrayList1, null);
@@ -122,14 +122,14 @@ public class d
       if ((paramObject instanceof TransitionSet))
       {
         paramObject = (TransitionSet)paramObject;
-        j = paramObject.AS.size();
+        j = paramObject.CJ.size();
         while (i < j)
         {
           a(paramObject.ap(i), paramArrayList);
           i += 1;
         }
       }
-      else if ((!b(paramObject)) && (g(paramObject.Ai)))
+      else if ((!b(paramObject)) && (g(paramObject.BZ)))
       {
         j = paramArrayList.size();
         i = 0;
@@ -147,8 +147,8 @@ public class d
     paramObject = (TransitionSet)paramObject;
     if (paramObject != null)
     {
-      paramObject.Ai.clear();
-      paramObject.Ai.addAll(paramArrayList2);
+      paramObject.BZ.clear();
+      paramObject.BZ.addAll(paramArrayList2);
       b(paramObject, paramArrayList1, paramArrayList2);
     }
   }
@@ -205,11 +205,11 @@ public class d
         }
       }
       
-      public final void dn() {}
+      public final void dC() {}
       
-      public final void jdMethod_do() {}
+      public final void dD() {}
       
-      public final void ds() {}
+      public final void dH() {}
     });
   }
   
@@ -221,7 +221,7 @@ public class d
     if ((paramObject instanceof TransitionSet))
     {
       paramObject = (TransitionSet)paramObject;
-      j = paramObject.AS.size();
+      j = paramObject.CJ.size();
       while (i < j)
       {
         b(paramObject.ap(i), paramArrayList1, paramArrayList2);
@@ -230,7 +230,7 @@ public class d
     }
     if (!b(paramObject))
     {
-      ArrayList localArrayList = paramObject.Ai;
+      ArrayList localArrayList = paramObject.BZ;
       if ((localArrayList.size() == paramArrayList1.size()) && (localArrayList.containsAll(paramArrayList1)))
       {
         if (paramArrayList2 == null) {}
@@ -260,21 +260,21 @@ public class d
     }
   }
   
-  public final boolean h(Object paramObject)
+  public final boolean i(Object paramObject)
   {
     return paramObject instanceof Transition;
   }
   
-  public final Object i(Object paramObject)
+  public final Object j(Object paramObject)
   {
     Transition localTransition = null;
     if (paramObject != null) {
-      localTransition = ((Transition)paramObject).dx();
+      localTransition = ((Transition)paramObject).dM();
     }
     return localTransition;
   }
   
-  public final Object j(Object paramObject)
+  public final Object k(Object paramObject)
   {
     if (paramObject == null) {
       return null;

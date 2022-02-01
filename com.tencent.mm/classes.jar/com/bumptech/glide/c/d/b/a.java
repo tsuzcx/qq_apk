@@ -19,7 +19,7 @@ public final class a
   public static final class a
     implements e.a<ByteBuffer>
   {
-    public final Class<ByteBuffer> nU()
+    public final Class<ByteBuffer> om()
     {
       return ByteBuffer.class;
     }

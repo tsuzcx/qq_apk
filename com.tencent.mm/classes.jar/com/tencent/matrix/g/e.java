@@ -4,8 +4,8 @@ import java.lang.reflect.Field;
 
 public final class e<Type>
 {
-  private Class<?> cCX;
-  private String cCY;
+  private Class<?> cNV;
+  private String cNW;
   private Field mField;
   private boolean mInit;
   
@@ -14,11 +14,11 @@ public final class e<Type>
     if ((paramClass == null) || (paramString == null) || (paramString.length() == 0)) {
       throw new IllegalArgumentException("Both of invoker and fieldName can not be null or nil.");
     }
-    this.cCX = paramClass;
-    this.cCY = paramString;
+    this.cNV = paramClass;
+    this.cNW = paramString;
   }
   
-  private Type aF(Object paramObject)
+  private Type aH(Object paramObject)
   {
     try
     {
@@ -54,7 +54,7 @@ public final class e<Type>
       {
         label14:
         Class localClass1;
-        Field localField = localClass1.getDeclaredField(this.cCY);
+        Field localField = localClass1.getDeclaredField(this.cNW);
         localField.setAccessible(true);
         this.mField = localField;
         this.mInit = true;
@@ -66,7 +66,7 @@ public final class e<Type>
       localObject = finally;
     }
     return;
-    localClass1 = this.cCX;
+    localClass1 = this.cNV;
     for (;;)
     {
       if (localClass1 == null) {}
@@ -77,7 +77,7 @@ public final class e<Type>
   {
     try
     {
-      paramObject = aF(paramObject);
+      paramObject = aH(paramObject);
       return paramObject;
     }
     finally

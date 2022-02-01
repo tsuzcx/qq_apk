@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storagebase.h;
 import junit.framework.Assert;
 
@@ -12,11 +12,11 @@ public final class ar
   extends k
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS qqgroup ( grouopid int PRIMARY KEY,membernum int,weixinnum int,insert_time int,lastupdate_time int,needupdate int,updatekey text,groupname text,reserved1 text ,reserved2 text ,reserved3 int ,reserved4 int )" };
-  public final h hpA;
+  public final h hHS;
   
   public ar(h paramh)
   {
-    this.hpA = paramh;
+    this.hHS = paramh;
   }
   
   public final boolean a(aq paramaq)
@@ -27,15 +27,15 @@ public final class ar
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      localContentValues = paramaq.aPV();
+      localContentValues = paramaq.aTh();
       if (localContentValues.size() > 0) {
         break;
       }
-      ac.e("MicroMsg.QQGroupStorage", "update failed, no values set");
+      ad.e("MicroMsg.QQGroupStorage", "update failed, no values set");
       AppMethodBeat.o(131158);
       return false;
     }
-    if (this.hpA.update("qqgroup", localContentValues, "grouopid= ?", new String[] { paramaq.iLA }) <= 0)
+    if (this.hHS.update("qqgroup", localContentValues, "grouopid= ?", new String[] { paramaq.jeJ }) <= 0)
     {
       AppMethodBeat.o(131158);
       return false;
@@ -45,11 +45,11 @@ public final class ar
     return true;
   }
   
-  public final aq qP(int paramInt)
+  public final aq rp(int paramInt)
   {
     aq localaq = null;
     AppMethodBeat.i(131157);
-    Cursor localCursor = this.hpA.a("select qqgroup.grouopid,qqgroup.membernum,qqgroup.weixinnum,qqgroup.insert_time,qqgroup.lastupdate_time,qqgroup.needupdate,qqgroup.updatekey,qqgroup.groupname from qqgroup  where grouopid = ".concat(String.valueOf(paramInt)), null, 2);
+    Cursor localCursor = this.hHS.a("select qqgroup.grouopid,qqgroup.membernum,qqgroup.weixinnum,qqgroup.insert_time,qqgroup.lastupdate_time,qqgroup.needupdate,qqgroup.updatekey,qqgroup.groupname from qqgroup  where grouopid = ".concat(String.valueOf(paramInt)), null, 2);
     if (localCursor == null)
     {
       AppMethodBeat.o(131157);

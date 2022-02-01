@@ -8,30 +8,30 @@ import com.tencent.mm.plugin.appbrand.r.a.c;
 import com.tencent.mm.plugin.appbrand.r.a.e;
 import com.tencent.mm.plugin.appbrand.r.a.e.a;
 import com.tencent.mm.plugin.appbrand.r.a.e.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class g
   implements com.tencent.mm.plugin.appbrand.page.b.b, com.tencent.mm.plugin.appbrand.page.b.d, e.a
 {
-  private String caG;
-  private boolean caH = false;
-  private final aa caw;
+  private final aa ckN;
+  private String ckX;
+  private boolean ckY = false;
   private boolean mDestroyed = false;
   
   g(aa paramaa, String paramString)
   {
-    this.caw = paramaa;
-    this.caG = paramString;
+    this.ckN = paramaa;
+    this.ckX = paramString;
   }
   
-  public final boolean BZ()
+  public final boolean Dy()
   {
     return false;
   }
   
-  public final String Ca()
+  public final String Dz()
   {
-    return this.caG;
+    return this.ckX;
   }
   
   public final void a(final e.a parama)
@@ -39,11 +39,11 @@ public final class g
     AppMethodBeat.i(177442);
     if (this.mDestroyed)
     {
-      ac.w("Luggage.WAGamePageViewOrientationExtensionImpl", "resetPageOrientation but destroyed, appId:%s", new Object[] { this.caw.getAppId() });
+      ad.w("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation but destroyed, appId:%s", new Object[] { this.ckN.getAppId() });
       AppMethodBeat.o(177442);
       return;
     }
-    if ((this.caw.jgX == null) || (this.caw.jgX.getOrientationHandler() == null))
+    if ((this.ckN.jzX == null) || (this.ckN.jzX.getOrientationHandler() == null))
     {
       if (parama != null) {
         parama.a(null, false);
@@ -51,19 +51,19 @@ public final class g
       AppMethodBeat.o(177442);
       return;
     }
-    if (this.caw.getRuntime().aTe())
+    if (this.ckN.getRuntime().aWo())
     {
-      ac.m("Luggage.WAGamePageViewOrientationExtensionImpl", "resetPageOrientation, game is showing launch ad, ignore changing orientation", new Object[0]);
+      ad.m("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation, game is showing launch ad, ignore changing orientation", new Object[0]);
       if (parama != null) {
         parama.a(null, false);
       }
       AppMethodBeat.o(177442);
       return;
     }
-    e.b localb = e.b.Qz(this.caG);
-    ac.m("Luggage.WAGamePageViewOrientationExtensionImpl", "resetPageOrientation, appId[%s], orientation[%s]", new Object[] { this.caw.getAppId(), localb });
+    e.b localb = e.b.Uf(this.ckX);
+    ad.m("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation, appId[%s], orientation[%s]", new Object[] { this.ckN.getAppId(), localb });
     if (localb != null) {
-      this.caw.jgX.getOrientationHandler().a(localb, new e.a()
+      this.ckN.jzX.getOrientationHandler().a(localb, new e.a()
       {
         public final void a(e.b paramAnonymousb, boolean paramAnonymousBoolean)
         {
@@ -85,7 +85,7 @@ public final class g
     if (paramb == null) {}
     for (paramb = "null";; paramb = paramb.name())
     {
-      ac.i("Luggage.WAGamePageViewOrientationExtensionImpl", "onOrientationChanged requested[%s], success[%b]", new Object[] { paramb, Boolean.valueOf(paramBoolean) });
+      ad.i("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "onOrientationChanged requested[%s], success[%b]", new Object[] { paramb, Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(177443);
       return;
     }
@@ -93,41 +93,41 @@ public final class g
   
   public final void a(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb) {}
   
-  public final void cc(String paramString)
+  public final void cW(String paramString)
   {
     AppMethodBeat.i(130646);
-    ac.e("Luggage.WAGamePageViewOrientationExtensionImpl", "setRequestedOrientation not support for game, appId[%s]", new Object[] { this.caw.getAppId() });
+    ad.e("Luggage.WAGamePageViewOrientationExtensionImpl[AppBrandSplashAd]", "setRequestedOrientation not support for game, appId[%s]", new Object[] { this.ckN.getAppId() });
     AppMethodBeat.o(130646);
   }
   
   public final void onBackground()
   {
-    this.caH = false;
+    this.ckY = false;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration) {}
   
   public final void onDestroy()
   {
-    this.caH = false;
+    this.ckY = false;
     this.mDestroyed = true;
   }
   
   public final void onForeground()
   {
     AppMethodBeat.i(130649);
-    this.caH = true;
-    if ((this.caw.getFullscreenImpl() != null) && (this.caw.getFullscreenImpl().bsE())) {
-      this.caw.getFullscreenImpl().a(new com.tencent.mm.plugin.appbrand.r.a.b()
+    this.ckY = true;
+    if ((this.ckN.getFullscreenImpl() != null) && (this.ckN.getFullscreenImpl().bwI())) {
+      this.ckN.getFullscreenImpl().a(new com.tencent.mm.plugin.appbrand.r.a.b()
       {
-        public final void Cb()
+        public final void DA()
         {
-          AppMethodBeat.i(206106);
+          AppMethodBeat.i(190415);
           g.a(g.this).getFullscreenImpl().b(this);
           if ((!g.b(g.this)) && (g.c(g.this))) {
             g.this.a(null);
           }
-          AppMethodBeat.o(206106);
+          AppMethodBeat.o(190415);
         }
       });
     }
@@ -142,7 +142,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.game.page.g
  * JD-Core Version:    0.7.0.1
  */

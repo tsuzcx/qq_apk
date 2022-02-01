@@ -9,53 +9,78 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public final class a
   extends d
   implements GestureDetector.OnGestureListener, View.OnTouchListener
 {
-  private int JlW;
-  boolean JlX;
-  boolean JlY;
-  private boolean JlZ;
-  private GestureDetector Jma;
-  private int Jmb;
-  private int Jmc;
-  private int Jmd;
-  private int Jme;
-  private int Jmf;
-  private boolean Jmg;
-  private float Jmh;
-  private int Jmi;
-  private int Jmj;
-  private int Jmk;
-  private boolean Jml;
-  private DragSortListView Jmm;
-  private int Jmn;
-  private GestureDetector.OnGestureListener Jmo;
-  private GestureDetector NL;
-  private int kSG;
-  private int kSH;
+  private int[] AM;
+  private int LdA;
+  private int LdB;
+  private int LdC;
+  private boolean LdD;
+  private float LdE;
+  private int LdF;
+  private int LdG;
+  private int LdH;
+  private boolean LdI;
+  private DragSortListView LdJ;
+  private int LdK;
+  private GestureDetector.OnGestureListener LdL;
+  private int Ldt;
+  boolean Ldu;
+  boolean Ldv;
+  private boolean Ldw;
+  private GestureDetector Ldx;
+  private int Ldy;
+  private int Ldz;
+  private GestureDetector PC;
+  private int lpj;
+  private int lpk;
   private int mTouchSlop;
-  private int phU;
-  private int[] yT;
+  private int pLw;
   
   public a(DragSortListView paramDragSortListView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     super(paramDragSortListView);
     AppMethodBeat.i(159739);
-    this.JlW = 0;
-    this.JlX = true;
-    this.JlY = false;
-    this.JlZ = false;
-    this.Jmb = -1;
-    this.Jmc = -1;
-    this.Jmd = -1;
-    this.yT = new int[2];
-    this.Jmg = false;
-    this.Jmh = 500.0F;
-    this.Jmo = new GestureDetector.SimpleOnGestureListener()
+    this.Ldt = 0;
+    this.Ldu = true;
+    this.Ldv = false;
+    this.Ldw = false;
+    this.Ldy = -1;
+    this.Ldz = -1;
+    this.LdA = -1;
+    this.AM = new int[2];
+    this.LdD = false;
+    this.LdE = 500.0F;
+    this.LdL = new GestureDetector.SimpleOnGestureListener()
     {
+      public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(192810);
+        b localb = new b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/sortlist/DragSortController$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        boolean bool = super.onContextClick(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/sortlist/DragSortController$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(192810);
+        return bool;
+      }
+      
+      public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(192809);
+        b localb = new b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/sortlist/DragSortController$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        boolean bool = super.onDoubleTap(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/sortlist/DragSortController$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(192809);
+        return bool;
+      }
+      
       public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(159738);
@@ -67,7 +92,7 @@ public final class a
             break label91;
           }
           if (a.e(a.this) > -i) {
-            a.c(a.this).bV(paramAnonymousFloat1);
+            a.c(a.this).ca(paramAnonymousFloat1);
           }
         }
         for (;;)
@@ -77,54 +102,77 @@ public final class a
           return false;
           label91:
           if ((paramAnonymousFloat1 < -a.d(a.this)) && (a.e(a.this) < i)) {
-            a.c(a.this).bV(paramAnonymousFloat1);
+            a.c(a.this).ca(paramAnonymousFloat1);
           }
         }
       }
+      
+      public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(192808);
+        b localb = new b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/sortlist/DragSortController$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+        super.onLongPress(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/sortlist/DragSortController$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
+        AppMethodBeat.o(192808);
+      }
+      
+      public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(192807);
+        b localb = new b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/sortlist/DragSortController$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/sortlist/DragSortController$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(192807);
+        return bool;
+      }
     };
-    this.Jmm = paramDragSortListView;
-    this.NL = new GestureDetector(paramDragSortListView.getContext(), this);
-    this.Jma = new GestureDetector(paramDragSortListView.getContext(), this.Jmo);
-    this.Jma.setIsLongpressEnabled(false);
+    this.LdJ = paramDragSortListView;
+    this.PC = new GestureDetector(paramDragSortListView.getContext(), this);
+    this.Ldx = new GestureDetector(paramDragSortListView.getContext(), this.LdL);
+    this.Ldx.setIsLongpressEnabled(false);
     this.mTouchSlop = ViewConfiguration.get(paramDragSortListView.getContext()).getScaledTouchSlop();
-    this.Jmi = paramInt1;
-    this.Jmj = paramInt4;
-    this.Jmk = paramInt5;
-    this.phU = paramInt3;
-    this.JlW = paramInt2;
+    this.LdF = paramInt1;
+    this.LdG = paramInt4;
+    this.LdH = paramInt5;
+    this.pLw = paramInt3;
+    this.Ldt = paramInt2;
     AppMethodBeat.o(159739);
   }
   
-  private boolean aS(int paramInt1, int paramInt2, int paramInt3)
+  private boolean aT(int paramInt1, int paramInt2, int paramInt3)
   {
     boolean bool2 = false;
     AppMethodBeat.i(159740);
-    if ((this.JlX) && (!this.JlZ)) {}
+    if ((this.Ldu) && (!this.Ldw)) {}
     for (int i = 12;; i = 0)
     {
-      if ((this.JlY) && (this.JlZ)) {
+      if ((this.Ldv) && (this.Ldw)) {
         i = i | 0x1 | 0x2;
       }
       for (;;)
       {
-        DragSortListView localDragSortListView = this.Jmm;
-        paramInt1 -= this.Jmm.getHeaderViewsCount();
+        DragSortListView localDragSortListView = this.LdJ;
+        paramInt1 -= this.LdJ.getHeaderViewsCount();
         boolean bool1 = bool2;
-        if (localDragSortListView.Jna)
+        if (localDragSortListView.Lex)
         {
-          if (localDragSortListView.Jnb != null) {
+          if (localDragSortListView.Ley != null) {
             break label108;
           }
           bool1 = bool2;
         }
         for (;;)
         {
-          this.Jmg = bool1;
-          bool1 = this.Jmg;
+          this.LdD = bool1;
+          bool1 = this.LdD;
           AppMethodBeat.o(159740);
           return bool1;
           label108:
-          View localView = localDragSortListView.Jnb.adn(paramInt1);
+          View localView = localDragSortListView.Ley.afN(paramInt1);
           bool1 = bool2;
           if (localView != null) {
             bool1 = localDragSortListView.a(paramInt1, localView, i, paramInt2, paramInt3);
@@ -139,29 +187,29 @@ public final class a
     AppMethodBeat.i(159742);
     int i = (int)paramMotionEvent.getX();
     int j = (int)paramMotionEvent.getY();
-    i = this.Jmm.pointToPosition(i, j);
-    j = this.Jmm.getHeaderViewsCount();
-    int k = this.Jmm.getFooterViewsCount();
-    int m = this.Jmm.getCount();
+    i = this.LdJ.pointToPosition(i, j);
+    j = this.LdJ.getHeaderViewsCount();
+    int k = this.LdJ.getFooterViewsCount();
+    int m = this.LdJ.getCount();
     if ((i != -1) && (i >= j) && (i < m - k))
     {
-      Object localObject = this.Jmm;
+      Object localObject = this.LdJ;
       localObject = ((DragSortListView)localObject).getChildAt(i - ((DragSortListView)localObject).getFirstVisiblePosition());
       k = (int)paramMotionEvent.getRawX();
       j = (int)paramMotionEvent.getRawY();
       if (paramInt == 0) {}
       for (paramMotionEvent = (MotionEvent)localObject; paramMotionEvent != null; paramMotionEvent = ((View)localObject).findViewById(paramInt))
       {
-        paramMotionEvent.getLocationOnScreen(this.yT);
-        if ((k <= this.yT[0]) || (j <= this.yT[1]) || (k >= this.yT[0] + paramMotionEvent.getWidth())) {
+        paramMotionEvent.getLocationOnScreen(this.AM);
+        if ((k <= this.AM[0]) || (j <= this.AM[1]) || (k >= this.AM[0] + paramMotionEvent.getWidth())) {
           break;
         }
-        paramInt = this.yT[1];
+        paramInt = this.AM[1];
         if (j >= paramMotionEvent.getHeight() + paramInt) {
           break;
         }
-        this.Jme = ((View)localObject).getLeft();
-        this.Jmf = ((View)localObject).getTop();
+        this.LdB = ((View)localObject).getLeft();
+        this.LdC = ((View)localObject).getTop();
         AppMethodBeat.o(159742);
         return i;
       }
@@ -172,8 +220,8 @@ public final class a
   
   public final void j(Point paramPoint)
   {
-    if ((this.JlY) && (this.JlZ)) {
-      this.Jmn = paramPoint.x;
+    if ((this.Ldv) && (this.Ldw)) {
+      this.LdK = paramPoint.x;
     }
   }
   
@@ -181,20 +229,20 @@ public final class a
   {
     int i = -1;
     AppMethodBeat.i(159743);
-    if ((this.JlY) && (this.phU == 0)) {
-      this.Jmd = f(paramMotionEvent, this.Jmj);
+    if ((this.Ldv) && (this.pLw == 0)) {
+      this.LdA = f(paramMotionEvent, this.LdG);
     }
-    this.Jmb = f(paramMotionEvent, this.Jmi);
-    if ((this.Jmb != -1) && (this.JlW == 0)) {
-      aS(this.Jmb, (int)paramMotionEvent.getX() - this.Jme, (int)paramMotionEvent.getY() - this.Jmf);
+    this.Ldy = f(paramMotionEvent, this.LdF);
+    if ((this.Ldy != -1) && (this.Ldt == 0)) {
+      aT(this.Ldy, (int)paramMotionEvent.getX() - this.LdB, (int)paramMotionEvent.getY() - this.LdC);
     }
-    this.JlZ = false;
-    this.Jml = true;
-    this.Jmn = 0;
-    if (this.phU == 1) {
-      i = f(paramMotionEvent, this.Jmk);
+    this.Ldw = false;
+    this.LdI = true;
+    this.LdK = 0;
+    if (this.pLw == 1) {
+      i = f(paramMotionEvent, this.LdH);
     }
-    this.Jmc = i;
+    this.Ldz = i;
     AppMethodBeat.o(159743);
     return true;
   }
@@ -207,11 +255,15 @@ public final class a
   public final void onLongPress(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(159745);
-    if ((this.Jmb != -1) && (this.JlW == 2))
+    b localb = new b();
+    localb.bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/sortlist/DragSortController", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+    if ((this.Ldy != -1) && (this.Ldt == 2))
     {
-      this.Jmm.performHapticFeedback(0);
-      aS(this.Jmb, this.kSG - this.Jme, this.kSH - this.Jmf);
+      this.LdJ.performHapticFeedback(0);
+      aT(this.Ldy, this.lpj - this.LdB, this.lpk - this.LdC);
     }
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/sortlist/DragSortController", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
     AppMethodBeat.o(159745);
   }
   
@@ -222,38 +274,38 @@ public final class a
     int j = (int)paramMotionEvent1.getY();
     int k = (int)paramMotionEvent2.getX();
     int m = (int)paramMotionEvent2.getY();
-    int n = k - this.Jme;
-    int i1 = m - this.Jmf;
-    if ((this.Jml) && (!this.Jmg) && ((this.Jmb != -1) || (this.Jmc != -1)))
+    int n = k - this.LdB;
+    int i1 = m - this.LdC;
+    if ((this.LdI) && (!this.LdD) && ((this.Ldy != -1) || (this.Ldz != -1)))
     {
-      if (this.Jmb == -1) {
-        break label189;
+      if (this.Ldy == -1) {
+        break label191;
       }
-      if ((this.JlW != 1) || (Math.abs(m - j) <= this.mTouchSlop) || (!this.JlX)) {
-        break label139;
+      if ((this.Ldt != 1) || (Math.abs(m - j) <= this.mTouchSlop) || (!this.Ldu)) {
+        break label141;
       }
-      aS(this.Jmb, n, i1);
+      aT(this.Ldy, n, i1);
     }
     for (;;)
     {
       AppMethodBeat.o(159744);
       return false;
-      label139:
-      if ((this.JlW != 0) && (Math.abs(k - i) > this.mTouchSlop) && (this.JlY))
+      label141:
+      if ((this.Ldt != 0) && (Math.abs(k - i) > this.mTouchSlop) && (this.Ldv))
       {
-        this.JlZ = true;
-        aS(this.Jmc, n, i1);
+        this.Ldw = true;
+        aT(this.Ldz, n, i1);
         continue;
-        label189:
-        if (this.Jmc != -1) {
-          if ((Math.abs(k - i) > this.mTouchSlop) && (this.JlY))
+        label191:
+        if (this.Ldz != -1) {
+          if ((Math.abs(k - i) > this.mTouchSlop) && (this.Ldv))
           {
-            this.JlZ = true;
-            aS(this.Jmc, n, i1);
+            this.Ldw = true;
+            aT(this.Ldz, n, i1);
           }
           else if (Math.abs(m - j) > this.mTouchSlop)
           {
-            this.Jml = false;
+            this.LdI = false;
           }
         }
       }
@@ -265,9 +317,13 @@ public final class a
   public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(159746);
-    if ((this.JlY) && (this.phU == 0) && (this.Jmd != -1)) {
-      this.Jmm.removeItem(this.Jmd - this.Jmm.getHeaderViewsCount());
+    b localb = new b();
+    localb.bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/sortlist/DragSortController", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    if ((this.Ldv) && (this.pLw == 0) && (this.LdA != -1)) {
+      this.LdJ.removeItem(this.LdA - this.LdJ.getHeaderViewsCount());
     }
+    com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/sortlist/DragSortController", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(159746);
     return true;
   }
@@ -275,35 +331,48 @@ public final class a
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(159741);
-    if ((!this.Jmm.JmG) || (this.Jmm.Jnq))
+    Object localObject = new b();
+    ((b)localObject).bd(paramView);
+    ((b)localObject).bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/sortlist/DragSortController", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahq());
+    if ((!this.LdJ.Led) || (this.LdJ.LeN))
     {
+      com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/sortlist/DragSortController", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(159741);
       return false;
     }
-    this.NL.onTouchEvent(paramMotionEvent);
-    if ((this.JlY) && (this.Jmg) && (this.phU == 1)) {
-      this.Jma.onTouchEvent(paramMotionEvent);
+    paramView = this.PC;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/widget/sortlist/DragSortController", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, paramView.onTouchEvent((MotionEvent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0)), "com/tencent/mm/ui/widget/sortlist/DragSortController", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    if ((this.Ldv) && (this.LdD) && (this.pLw == 1))
+    {
+      paramView = this.Ldx;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/widget/sortlist/DragSortController", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      com.tencent.mm.hellhoundlib.a.a.a(paramView, paramView.onTouchEvent((MotionEvent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0)), "com/tencent/mm/ui/widget/sortlist/DragSortController", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     }
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     }
     for (;;)
     {
+      com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/sortlist/DragSortController", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(159741);
       return false;
-      this.kSG = ((int)paramMotionEvent.getX());
-      this.kSH = ((int)paramMotionEvent.getY());
+      this.lpj = ((int)paramMotionEvent.getX());
+      this.lpk = ((int)paramMotionEvent.getY());
       continue;
-      if ((this.JlY) && (this.JlZ))
+      if ((this.Ldv) && (this.Ldw))
       {
-        if (this.Jmn >= 0) {}
-        for (int i = this.Jmn; i > this.Jmm.getWidth() / 2; i = -this.Jmn)
+        if (this.LdK >= 0) {}
+        for (int i = this.LdK; i > this.LdJ.getWidth() / 2; i = -this.LdK)
         {
-          this.Jmm.bV(0.0F);
+          this.LdJ.ca(0.0F);
           break;
         }
-        this.JlZ = false;
-        this.Jmg = false;
+        this.Ldw = false;
+        this.LdD = false;
       }
     }
   }

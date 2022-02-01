@@ -3,15 +3,14 @@ package com.tencent.mm.plugin.walletlock.gesture.a;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.xr;
-import com.tencent.mm.g.a.xr.b;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.a.yl;
+import com.tencent.mm.g.a.yl.b;
 import com.tencent.mm.plugin.walletlock.a.b.a;
 import com.tencent.mm.plugin.walletlock.a.b.b;
 import com.tencent.mm.plugin.walletlock.gesture.ui.GestureGuardLogicUI;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class c
   extends com.tencent.mm.plugin.walletlock.c.a
@@ -19,17 +18,17 @@ public final class c
   public final void a(Activity paramActivity, b.b paramb, b.a parama)
   {
     AppMethodBeat.i(129757);
-    if (!com.tencent.mm.kernel.g.agN().aa(com.tencent.mm.plugin.walletlock.a.a.class))
+    if (!com.tencent.mm.kernel.g.ajy().aa(com.tencent.mm.plugin.walletlock.a.a.class))
     {
-      ac.d("MicroMsg.GestureImpl", "Plugin gesture is not installed.");
+      ad.d("MicroMsg.GestureImpl", "Plugin gesture is not installed.");
       AppMethodBeat.o(129757);
       return;
     }
-    parama = new xr();
-    parama.dBa.dBc = 1;
-    parama.dBa.activity = paramActivity;
-    com.tencent.mm.sdk.b.a.GpY.l(parama);
-    switch (((Integer)parama.dBb.data).intValue())
+    parama = new yl();
+    parama.dNn.dNp = 1;
+    parama.dNn.activity = paramActivity;
+    com.tencent.mm.sdk.b.a.IbL.l(parama);
+    switch (((Integer)parama.dNo.data).intValue())
     {
     }
     for (;;)
@@ -44,38 +43,38 @@ public final class c
         paramb.putExtra("next_action", "next_action.goto_protected_page");
         paramb.putExtra("page_intent", paramActivity.getIntent());
         paramb.putExtra("scene", aL(paramActivity));
-        paramb.setPackage(ai.getPackageName());
-        paramb = new com.tencent.mm.hellhoundlib.b.a().ba(paramb);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramb.aeD(), "com/tencent/mm/plugin/walletlock/gesture/model/GestureImpl", "protectMeOnResume", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GuardFilter;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GestureGuardCallback;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramActivity.startActivity((Intent)paramb.lR(0));
+        paramb.setPackage(aj.getPackageName());
+        paramb = new com.tencent.mm.hellhoundlib.b.a().bc(paramb);
+        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramb.ahp(), "com/tencent/mm/plugin/walletlock/gesture/model/GestureImpl", "protectMeOnResume", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GuardFilter;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GestureGuardCallback;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramActivity.startActivity((Intent)paramb.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/walletlock/gesture/model/GestureImpl", "protectMeOnResume", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GuardFilter;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GestureGuardCallback;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(129757);
         return;
       }
-      ac.d("MicroMsg.GestureImpl", "protectMeOnResume: still in filter range, do not activate protection.");
+      ad.d("MicroMsg.GestureImpl", "protectMeOnResume: still in filter range, do not activate protection.");
     }
   }
   
   public final boolean a(Activity paramActivity, b.b paramb)
   {
     AppMethodBeat.i(129756);
-    if (!com.tencent.mm.kernel.g.agN().aa(com.tencent.mm.plugin.walletlock.a.a.class))
+    if (!com.tencent.mm.kernel.g.ajy().aa(com.tencent.mm.plugin.walletlock.a.a.class))
     {
-      ac.d("MicroMsg.GestureImpl", "Plugin gesture is not installed.");
+      ad.d("MicroMsg.GestureImpl", "Plugin gesture is not installed.");
       AppMethodBeat.o(129756);
       return false;
     }
     if ((paramb != null) && (!paramb.aK(paramActivity)))
     {
-      ac.d("MicroMsg.GestureImpl", "protectMeOnCreate: still in filter range, do not activate protection.");
+      ad.d("MicroMsg.GestureImpl", "protectMeOnCreate: still in filter range, do not activate protection.");
       AppMethodBeat.o(129756);
       return false;
     }
-    paramb = new xr();
-    paramb.dBa.dBc = 0;
-    paramb.dBa.activity = paramActivity;
-    com.tencent.mm.sdk.b.a.GpY.l(paramb);
-    switch (((Integer)paramb.dBb.data).intValue())
+    paramb = new yl();
+    paramb.dNn.dNp = 0;
+    paramb.dNn.activity = paramActivity;
+    com.tencent.mm.sdk.b.a.IbL.l(paramb);
+    switch (((Integer)paramb.dNo.data).intValue())
     {
     default: 
       AppMethodBeat.o(129756);
@@ -87,13 +86,13 @@ public final class c
       paramb.putExtra("next_action", "next_action.goto_protected_page");
       paramb.putExtra("page_intent", paramActivity.getIntent());
       paramb.putExtra("scene", aL(paramActivity));
-      paramb.setPackage(ai.getPackageName());
-      paramb = new com.tencent.mm.hellhoundlib.b.a().ba(paramb);
-      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramb.aeD(), "com/tencent/mm/plugin/walletlock/gesture/model/GestureImpl", "protectMeOnCreate", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GuardFilter;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramActivity.startActivity((Intent)paramb.lR(0));
+      paramb.setPackage(aj.getPackageName());
+      paramb = new com.tencent.mm.hellhoundlib.b.a().bc(paramb);
+      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramb.ahp(), "com/tencent/mm/plugin/walletlock/gesture/model/GestureImpl", "protectMeOnCreate", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GuardFilter;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramActivity.startActivity((Intent)paramb.mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/walletlock/gesture/model/GestureImpl", "protectMeOnCreate", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GuardFilter;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       paramActivity.finish();
-      h.wUl.f(12097, new Object[] { Integer.valueOf(8), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
+      com.tencent.mm.plugin.report.service.g.yhR.f(12097, new Object[] { Integer.valueOf(8), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
       AppMethodBeat.o(129756);
       return true;
     }
@@ -104,15 +103,15 @@ public final class c
   public final void aJ(Activity paramActivity)
   {
     AppMethodBeat.i(129760);
-    if (!com.tencent.mm.kernel.g.agN().aa(com.tencent.mm.plugin.walletlock.a.a.class))
+    if (!com.tencent.mm.kernel.g.ajy().aa(com.tencent.mm.plugin.walletlock.a.a.class))
     {
-      ac.d("MicroMsg.GestureImpl", "Plugin gesture is not installed.");
+      ad.d("MicroMsg.GestureImpl", "Plugin gesture is not installed.");
       AppMethodBeat.o(129760);
       return;
     }
-    if (!b.evy())
+    if (!b.eJE())
     {
-      ac.d("MicroMsg.GestureImpl", "try to enter modify gesture password process while gesture password has been switched off.");
+      ad.d("MicroMsg.GestureImpl", "try to enter modify gesture password process while gesture password has been switched off.");
       AppMethodBeat.o(129760);
       return;
     }
@@ -120,10 +119,10 @@ public final class c
     ((Intent)localObject).addFlags(131072);
     ((Intent)localObject).putExtra("action", "action.verify_pattern");
     ((Intent)localObject).putExtra("next_action", "next_action.modify_pattern");
-    ((Intent)localObject).setPackage(ai.getPackageName());
-    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/walletlock/gesture/model/GestureImpl", "enterModifyWalletLockProcess", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+    ((Intent)localObject).setPackage(aj.getPackageName());
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/walletlock/gesture/model/GestureImpl", "enterModifyWalletLockProcess", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/walletlock/gesture/model/GestureImpl", "enterModifyWalletLockProcess", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(129760);
   }
@@ -136,9 +135,9 @@ public final class c
       AppMethodBeat.o(129759);
       return;
     }
-    if (!com.tencent.mm.kernel.g.agN().aa(com.tencent.mm.plugin.walletlock.a.a.class))
+    if (!com.tencent.mm.kernel.g.ajy().aa(com.tencent.mm.plugin.walletlock.a.a.class))
     {
-      ac.d("MicroMsg.GestureImpl", "Plugin gesture is not installed.");
+      ad.d("MicroMsg.GestureImpl", "Plugin gesture is not installed.");
       AppMethodBeat.o(129759);
       return;
     }
@@ -150,18 +149,18 @@ public final class c
     AppMethodBeat.o(129759);
   }
   
-  public final boolean evi()
+  public final boolean eJo()
   {
-    AppMethodBeat.i(210403);
-    boolean bool = b.evy();
-    AppMethodBeat.o(210403);
+    AppMethodBeat.i(221177);
+    boolean bool = b.eJE();
+    AppMethodBeat.o(221177);
     return bool;
   }
   
-  public final boolean evj()
+  public final boolean eJp()
   {
     AppMethodBeat.i(129763);
-    boolean bool = b.evz();
+    boolean bool = b.eJF();
     AppMethodBeat.o(129763);
     return bool;
   }
@@ -169,10 +168,10 @@ public final class c
   public final void init()
   {
     AppMethodBeat.i(129755);
-    ac.e("MicroMsg.GestureImpl", "alvinluo gestureimpl init");
-    com.tencent.mm.plugin.walletlock.c.g localg = com.tencent.mm.plugin.walletlock.c.g.BVG;
-    com.tencent.mm.plugin.walletlock.c.g.tW(true);
-    com.tencent.mm.plugin.walletlock.c.g.BVG.TZ(1);
+    ad.e("MicroMsg.GestureImpl", "alvinluo gestureimpl init");
+    com.tencent.mm.plugin.walletlock.c.g localg = com.tencent.mm.plugin.walletlock.c.g.Dwa;
+    com.tencent.mm.plugin.walletlock.c.g.uG(true);
+    com.tencent.mm.plugin.walletlock.c.g.Dwa.VR(1);
     AppMethodBeat.o(129755);
   }
   
@@ -184,9 +183,9 @@ public final class c
       AppMethodBeat.o(129758);
       return;
     }
-    if (!com.tencent.mm.kernel.g.agN().aa(com.tencent.mm.plugin.walletlock.a.a.class))
+    if (!com.tencent.mm.kernel.g.ajy().aa(com.tencent.mm.plugin.walletlock.a.a.class))
     {
-      ac.d("MicroMsg.GestureImpl", "Plugin gesture is not installed.");
+      ad.d("MicroMsg.GestureImpl", "Plugin gesture is not installed.");
       AppMethodBeat.o(129758);
       return;
     }
@@ -201,15 +200,15 @@ public final class c
   public final void m(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(129761);
-    if (!com.tencent.mm.kernel.g.agN().aa(com.tencent.mm.plugin.walletlock.a.a.class))
+    if (!com.tencent.mm.kernel.g.ajy().aa(com.tencent.mm.plugin.walletlock.a.a.class))
     {
-      ac.d("MicroMsg.GestureImpl", "Plugin gesture is not installed.");
+      ad.d("MicroMsg.GestureImpl", "Plugin gesture is not installed.");
       AppMethodBeat.o(129761);
       return;
     }
-    if (!b.evy())
+    if (!b.eJE())
     {
-      ac.d("MicroMsg.GestureImpl", "try to enter close gesture password process while gesture password has been switched off.");
+      ad.d("MicroMsg.GestureImpl", "try to enter close gesture password process while gesture password has been switched off.");
       AppMethodBeat.o(129761);
       return;
     }
@@ -217,10 +216,10 @@ public final class c
     ((Intent)localObject).addFlags(131072);
     ((Intent)localObject).putExtra("action", "action.verify_pattern");
     ((Intent)localObject).putExtra("next_action", "next_action.switch_off_pattern");
-    ((Intent)localObject).setPackage(ai.getPackageName());
-    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/walletlock/gesture/model/GestureImpl", "enterCloseWalletLockProcess", "(Landroid/app/Activity;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+    ((Intent)localObject).setPackage(aj.getPackageName());
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/walletlock/gesture/model/GestureImpl", "enterCloseWalletLockProcess", "(Landroid/app/Activity;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/walletlock/gesture/model/GestureImpl", "enterCloseWalletLockProcess", "(Landroid/app/Activity;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(129761);
   }

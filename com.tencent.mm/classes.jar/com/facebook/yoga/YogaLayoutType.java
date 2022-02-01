@@ -8,13 +8,13 @@ public enum YogaLayoutType
   
   static
   {
-    AppMethodBeat.i(192956);
+    AppMethodBeat.i(190315);
     LAYOUT = new YogaLayoutType("LAYOUT", 0, 0);
     MEASURE = new YogaLayoutType("MEASURE", 1, 1);
     CACHED_LAYOUT = new YogaLayoutType("CACHED_LAYOUT", 2, 2);
     CACHED_MEASURE = new YogaLayoutType("CACHED_MEASURE", 3, 3);
     $VALUES = new YogaLayoutType[] { LAYOUT, MEASURE, CACHED_LAYOUT, CACHED_MEASURE };
-    AppMethodBeat.o(192956);
+    AppMethodBeat.o(190315);
   }
   
   private YogaLayoutType(int paramInt)
@@ -24,28 +24,28 @@ public enum YogaLayoutType
   
   public static YogaLayoutType fromInt(int paramInt)
   {
-    AppMethodBeat.i(192955);
+    AppMethodBeat.i(190314);
     switch (paramInt)
     {
     default: 
       localObject = new IllegalArgumentException("Unknown enum value: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(192955);
+      AppMethodBeat.o(190314);
       throw ((Throwable)localObject);
     case 0: 
       localObject = LAYOUT;
-      AppMethodBeat.o(192955);
+      AppMethodBeat.o(190314);
       return localObject;
     case 1: 
       localObject = MEASURE;
-      AppMethodBeat.o(192955);
+      AppMethodBeat.o(190314);
       return localObject;
     case 2: 
       localObject = CACHED_LAYOUT;
-      AppMethodBeat.o(192955);
+      AppMethodBeat.o(190314);
       return localObject;
     }
     Object localObject = CACHED_MEASURE;
-    AppMethodBeat.o(192955);
+    AppMethodBeat.o(190314);
     return localObject;
   }
   

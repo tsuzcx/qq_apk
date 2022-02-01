@@ -7,7 +7,7 @@ import com.tencent.liteav.audio.TXCSoundEffectPlayer;
 import com.tencent.liteav.audio.e;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.a;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -20,7 +20,7 @@ public class TXCTraeJNI
   static
   {
     AppMethodBeat.i(16474);
-    d.f();
+    f.f();
     nativeCacheClassForNative();
     mTraeRecordListener = null;
     AppMethodBeat.o(16474);
@@ -41,7 +41,7 @@ public class TXCTraeJNI
       String str2 = paramContext.nativeLibraryDir;
       String str3 = paramContext.dataDir + "/lib";
       String str4 = "/data/data/" + paramContext.packageName + "/lib";
-      String str1 = d.g();
+      String str1 = f.g();
       paramContext = str1;
       if (str1 == null) {
         paramContext = "";
@@ -72,7 +72,7 @@ public class TXCTraeJNI
       AppMethodBeat.o(16464);
       return false;
     }
-    if (d.a("traeimp-rtmp"))
+    if (f.a("traeimp-rtmp"))
     {
       TXCLog.e("TXCAudioJNI", "link traeimp-rtmp success !");
       AppMethodBeat.o(16464);
@@ -82,7 +82,7 @@ public class TXCTraeJNI
     String str2 = paramContext.nativeLibraryDir;
     String str3 = paramContext.dataDir + "/lib";
     String str4 = "/data/data/" + paramContext.packageName + "/lib";
-    String str1 = d.g();
+    String str1 = f.g();
     paramContext = str1;
     if (str1 == null) {
       paramContext = "";

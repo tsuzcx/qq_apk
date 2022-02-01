@@ -7,15 +7,13 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.plugin.ball.c.c;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -28,42 +26,68 @@ import org.xwalk.core.XWalkEnvironment;
 public class SettingDarkMode
   extends MMPreference
 {
-  private boolean fXS;
-  private int lQK = 0;
-  private boolean qPN = false;
+  private boolean isDarkMode;
+  private int mqA = 0;
+  private boolean rzM = false;
   private com.tencent.mm.ui.base.preference.f screen;
-  private int tfy = 0;
-  private boolean xqq;
-  private SelectPreference xqr;
-  private SelectPreference xqs;
-  private int xqt = 0;
-  private boolean xqu;
-  private boolean xqv;
+  private int udo = 0;
+  private boolean yET;
+  private SelectPreference yEU;
+  private SelectPreference yEV;
+  private int yEW = 0;
+  private boolean yEX;
+  private boolean yEY;
   
-  private void dBQ()
+  private void dNt()
   {
-    AppMethodBeat.i(191000);
-    if (this.qPN)
+    AppMethodBeat.i(220963);
+    com.tencent.mm.plugin.report.service.g localg;
+    int j;
+    int k;
+    int m;
+    if (this.rzM)
     {
-      if (aj.fhJ())
+      if (al.fxZ())
       {
-        aw.aKT(ai.eUX()).putBoolean("dark_mode_follow_system_need_report", true);
-        AppMethodBeat.o(191000);
+        ax.aQz(aj.fkC()).putBoolean("dark_mode_follow_system_need_report", true);
+        AppMethodBeat.o(220963);
         return;
       }
-      h.wUl.f(18893, new Object[] { Integer.valueOf(this.lQK), Integer.valueOf(this.xqt), Integer.valueOf(1), Integer.valueOf(this.tfy) });
-      ac.i("MicroMsg.mmui.MMPreference", "dark mode kvReport logID:%s, action:%s, dark:%s, mode:%s", new Object[] { Integer.valueOf(18893), Integer.valueOf(this.lQK), Integer.valueOf(this.xqt), Integer.valueOf(this.tfy) });
+      if (this.yEY != this.yET) {
+        this.mqA = 4;
+      }
+      localg = com.tencent.mm.plugin.report.service.g.yhR;
+      j = this.mqA;
+      k = this.yEW;
+      m = this.udo;
+      if (!al.fxT()) {
+        break label186;
+      }
     }
-    AppMethodBeat.o(191000);
+    label186:
+    for (int i = 1;; i = 0)
+    {
+      localg.f(18893, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(2), Integer.valueOf(m), Integer.valueOf(i) });
+      ad.i("MicroMsg.mmui.MMPreference", "dark mode kvReport logID:%s, action:%s, dark:%s, mode:%s", new Object[] { Integer.valueOf(18893), Integer.valueOf(this.mqA), Integer.valueOf(this.yEW), Integer.valueOf(this.udo) });
+      AppMethodBeat.o(220963);
+      return;
+    }
   }
   
-  private void qm(boolean paramBoolean)
+  private void qN(boolean paramBoolean)
   {
-    AppMethodBeat.i(190997);
-    this.screen.cK("manual_title", paramBoolean);
-    this.screen.cK("dark_mode", paramBoolean);
-    this.screen.cK("normal_mode", paramBoolean);
-    AppMethodBeat.o(190997);
+    AppMethodBeat.i(220960);
+    if (!al.fxT()) {
+      this.screen.cP("manual_title", true);
+    }
+    for (;;)
+    {
+      this.screen.cP("dark_mode", paramBoolean);
+      this.screen.cP("normal_mode", paramBoolean);
+      AppMethodBeat.o(220960);
+      return;
+      this.screen.cP("manual_title", paramBoolean);
+    }
   }
   
   public int getResourceId()
@@ -73,24 +97,30 @@ public class SettingDarkMode
   
   public void initView()
   {
-    AppMethodBeat.i(190996);
+    AppMethodBeat.i(220959);
     setMMTitle(getString(2131763205));
     this.screen = getPreferenceScreen();
-    this.fXS = aj.DT();
-    this.xqu = this.fXS;
-    aw.aKT(ai.eUX()).putBoolean("dark_mode_follow_system_need_report", false);
-    this.xqq = aw.aKT(ai.eUX()).getBoolean("dark_mode_follow_system", false);
-    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.aPN("follow_system");
-    this.xqr = ((SelectPreference)this.screen.aPN("dark_mode"));
-    this.xqs = ((SelectPreference)this.screen.aPN("normal_mode"));
-    if (localCheckBoxPreference != null)
+    if (!al.fxT())
     {
-      localCheckBoxPreference.mF = this.xqq;
-      localCheckBoxPreference.wT(this.xqq);
-      localCheckBoxPreference.HFK = false;
+      ax.aQz(aj.fkC()).putBoolean("dark_mode_follow_system", false);
+      al.fya();
     }
-    if (this.xqq) {
-      qm(true);
+    this.isDarkMode = al.isDarkMode();
+    this.yEX = this.isDarkMode;
+    ax.aQz(aj.fkC()).putBoolean("dark_mode_follow_system_need_report", false);
+    this.yET = ax.aQz(aj.fkC()).getBoolean("dark_mode_follow_system", false);
+    this.yEY = this.yET;
+    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.aVD("follow_system");
+    this.yEU = ((SelectPreference)this.screen.aVD("dark_mode"));
+    this.yEV = ((SelectPreference)this.screen.aVD("normal_mode"));
+    if (!al.fxT())
+    {
+      this.screen.cP("follow_system", true);
+      this.screen.cP("manual_title", true);
+      if (!this.yET) {
+        break label270;
+      }
+      qN(true);
     }
     for (;;)
     {
@@ -99,9 +129,9 @@ public class SettingDarkMode
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(190992);
+          AppMethodBeat.i(220955);
           SettingDarkMode.this.finish();
-          AppMethodBeat.o(190992);
+          AppMethodBeat.o(220955);
           return true;
         }
       });
@@ -109,122 +139,130 @@ public class SettingDarkMode
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(190993);
+          AppMethodBeat.i(220956);
           SettingDarkMode.a(SettingDarkMode.this);
-          AppMethodBeat.o(190993);
+          AppMethodBeat.o(220956);
           return true;
         }
-      }, null, s.b.Hom);
-      AppMethodBeat.o(190996);
+      }, null, s.b.JbS);
+      AppMethodBeat.o(220959);
       return;
-      qm(false);
-      if (this.fXS)
+      if (localCheckBoxPreference == null) {
+        break;
+      }
+      localCheckBoxPreference.oB = this.yET;
+      localCheckBoxPreference.xE(this.yET);
+      localCheckBoxPreference.JtB = false;
+      break;
+      label270:
+      qN(false);
+      if (this.isDarkMode)
       {
-        this.xqr.isSelected = true;
-        this.xqs.isSelected = false;
+        this.yEU.isSelected = true;
+        this.yEV.isSelected = false;
       }
       else
       {
-        this.xqs.isSelected = true;
-        this.xqr.isSelected = false;
+        this.yEV.isSelected = true;
+        this.yEU.isSelected = false;
       }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(190995);
+    AppMethodBeat.i(220958);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(190995);
+    AppMethodBeat.o(220958);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(190999);
+    AppMethodBeat.i(220962);
     if ((paramInt == 4) && (paramKeyEvent.getAction() == 0))
     {
       finish();
-      AppMethodBeat.o(190999);
+      AppMethodBeat.o(220962);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(190999);
+    AppMethodBeat.o(220962);
     return bool;
   }
   
   public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     int i = 1;
-    AppMethodBeat.i(190998);
+    AppMethodBeat.i(220961);
     String str = paramPreference.mKey;
-    this.qPN = true;
+    this.rzM = true;
     if (str.equals("follow_system"))
     {
       if (((CheckBoxPreference)paramPreference).isChecked())
       {
-        this.lQK = 4;
-        if (aj.j(getResources()))
+        this.mqA = 4;
+        if (al.j(getResources()))
         {
           i = 1;
-          this.xqt = i;
-          this.tfy = 1;
-          this.xqv = true;
-          qm(true);
+          this.yEW = i;
+          this.udo = 1;
+          this.yEY = true;
+          qN(true);
         }
       }
       for (;;)
       {
-        this.xqu = this.fXS;
+        this.yEX = this.isDarkMode;
         paramf.notifyDataSetChanged();
-        AppMethodBeat.o(190998);
+        AppMethodBeat.o(220961);
         return false;
         i = 0;
         break;
-        this.lQK = 4;
-        if (this.fXS) {}
+        this.mqA = 4;
+        if (this.isDarkMode) {}
         for (i = 1;; i = 0)
         {
-          this.xqt = i;
-          this.tfy = 2;
-          this.xqv = false;
-          qm(false);
-          if (!this.fXS) {
+          this.yEW = i;
+          this.udo = 2;
+          this.yEY = false;
+          qN(false);
+          if (!this.isDarkMode) {
             break label168;
           }
-          this.xqr.isSelected = true;
-          this.xqs.isSelected = false;
+          this.yEU.isSelected = true;
+          this.yEV.isSelected = false;
           break;
         }
         label168:
-        this.xqs.isSelected = true;
-        this.xqr.isSelected = false;
+        this.yEV.isSelected = true;
+        this.yEU.isSelected = false;
       }
     }
-    boolean bool = this.fXS;
+    boolean bool = this.isDarkMode;
     if (str.equals("dark_mode"))
     {
-      this.xqr.isSelected = true;
-      this.xqs.isSelected = false;
+      this.yEU.isSelected = true;
+      this.yEV.isSelected = false;
       paramf.notifyDataSetChanged();
       bool = true;
       label228:
-      this.lQK = 4;
+      this.mqA = 2;
       if (!bool) {
         break label295;
       }
     }
     for (;;)
     {
-      this.xqt = i;
-      this.tfy = 2;
-      this.xqu = bool;
+      this.yEW = i;
+      this.udo = 2;
+      this.yEX = bool;
       break;
       if (!str.equals("normal_mode")) {
         break label228;
       }
-      this.xqr.isSelected = false;
-      this.xqs.isSelected = true;
+      this.yEU.isSelected = false;
+      this.yEV.isSelected = true;
       paramf.notifyDataSetChanged();
       bool = false;
       break label228;

@@ -214,9 +214,9 @@ public final class SupportFragmentWrapper
   {
     AppMethodBeat.i(5443);
     Fragment localFragment = this.zzabq;
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(localFragment, paramIntent.aeD(), "com/google/android/gms/dynamic/SupportFragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localFragment.startActivity((Intent)paramIntent.lR(0));
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(localFragment, paramIntent.ahp(), "com/google/android/gms/dynamic/SupportFragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localFragment.startActivity((Intent)paramIntent.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(localFragment, "com/google/android/gms/dynamic/SupportFragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(5443);
   }

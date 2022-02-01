@@ -1,35 +1,34 @@
 package com.tencent.magicbrush;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.n;
-import d.g.b.w;
+import d.g.b.t;
 import d.l;
 import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(fNY={1, 1, 13})
+@l(gfx={1, 1, 13})
 final class z
-  extends n
+  extends t
 {
-  public static final h cnf;
+  public static final h cxK;
   
   static
   {
     AppMethodBeat.i(140166);
-    cnf = new z();
+    cxK = new z();
     AppMethodBeat.o(140166);
   }
   
-  public final String FZ()
+  public final String Hu()
   {
     return "is_game()Z";
   }
   
-  public final d Ga()
+  public final d Hv()
   {
     AppMethodBeat.i(140167);
-    b localb = w.bn(MBRuntime.MBParams.class);
+    b localb = d.g.b.z.bp(MBRuntime.MBParams.class);
     AppMethodBeat.o(140167);
     return localb;
   }
@@ -56,7 +55,7 @@ final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.z
  * JD-Core Version:    0.7.0.1
  */

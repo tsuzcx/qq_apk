@@ -4,17 +4,15 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.q;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.xweb.ISharedPreferenceProvider;
 import com.tencent.xweb.af;
 import com.tencent.xweb.util.IXWebLogClient;
@@ -25,95 +23,95 @@ import org.xwalk.core.WebViewExtensionListener;
 
 public final class b
 {
-  public static IXWebLogClient JIj;
-  public static af JIk;
-  public static WebViewExtensionListener JIl;
-  public static ISharedPreferenceProvider JIm;
+  public static IXWebLogClient LBM;
+  public static af LBN;
+  public static WebViewExtensionListener LBO;
+  public static ISharedPreferenceProvider LBP;
   
   static
   {
     AppMethodBeat.i(152920);
-    JIj = new IXWebLogClient()
+    LBM = new IXWebLogClient()
     {
       final String TAG = "IXWebLogClient";
       
       public final void d(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(152908);
-        ac.d(paramAnonymousString1, paramAnonymousString2);
+        ad.d(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(152908);
       }
       
       public final void e(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(152906);
-        ac.e(paramAnonymousString1, paramAnonymousString2);
+        ad.e(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(152906);
       }
       
       public final void i(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(152905);
-        ac.i(paramAnonymousString1, paramAnonymousString2);
+        ad.i(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(152905);
       }
       
       public final void v(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(152909);
-        ac.v(paramAnonymousString1, paramAnonymousString2);
+        ad.v(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(152909);
       }
       
       public final void w(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(152907);
-        ac.w(paramAnonymousString1, paramAnonymousString2);
+        ad.w(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(152907);
       }
     };
-    JIk = new af()
+    LBN = new af()
     {
       final String TAG = "XWebIdkey";
       
       public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7)
       {
         AppMethodBeat.i(152913);
-        ac.v("XWebIdkey", "callback: kvStat:15003, 200601," + paramAnonymousInt1 + ",0," + paramAnonymousString + "," + paramAnonymousInt3 + ",-1," + paramAnonymousInt4 + "," + paramAnonymousInt5 + "," + paramAnonymousInt6);
-        h.wUl.f(15003, new Object[] { Integer.valueOf(200601), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(0), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Integer.valueOf(ax.getNetType(ai.getContext())), Integer.valueOf(paramAnonymousInt3), Integer.valueOf(-1), Integer.valueOf(paramAnonymousInt4), Integer.valueOf(paramAnonymousInt5), Integer.valueOf(paramAnonymousInt6), Integer.valueOf(paramAnonymousInt7) });
+        ad.v("XWebIdkey", "callback: kvStat:15003, 200801," + paramAnonymousInt1 + ",0," + paramAnonymousString + "," + paramAnonymousInt3 + ",-1," + paramAnonymousInt4 + "," + paramAnonymousInt5 + "," + paramAnonymousInt6);
+        com.tencent.mm.plugin.report.service.g.yhR.f(15003, new Object[] { Integer.valueOf(200801), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(0), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Integer.valueOf(ay.getNetType(aj.getContext())), Integer.valueOf(paramAnonymousInt3), Integer.valueOf(-1), Integer.valueOf(paramAnonymousInt4), Integer.valueOf(paramAnonymousInt5), Integer.valueOf(paramAnonymousInt6), Integer.valueOf(paramAnonymousInt7) });
         AppMethodBeat.o(152913);
       }
       
-      public final void aT(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      public final void aU(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(152911);
-        ac.v("XWebIdkey", "callback: idkeyForPair:577, " + paramAnonymousInt1 + ", 1, 577, " + paramAnonymousInt2 + ", " + paramAnonymousInt3);
-        h.wUl.a(577, 577, paramAnonymousInt1, paramAnonymousInt2, 1, paramAnonymousInt3, true);
+        ad.v("XWebIdkey", "callback: idkeyForPair:577, " + paramAnonymousInt1 + ", 1, 577, " + paramAnonymousInt2 + ", " + paramAnonymousInt3);
+        com.tencent.mm.plugin.report.service.g.yhR.a(577, 577, paramAnonymousInt1, paramAnonymousInt2, 1, paramAnonymousInt3, true);
         AppMethodBeat.o(152911);
       }
       
       public final void kvStat(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(152912);
-        ac.v("XWebIdkey", "callback: kvStat:" + paramAnonymousInt + ", " + paramAnonymousString);
-        h.wUl.kvStat(paramAnonymousInt, paramAnonymousString);
+        ad.v("XWebIdkey", "callback: kvStat:" + paramAnonymousInt + ", " + paramAnonymousString);
+        com.tencent.mm.plugin.report.service.g.yhR.kvStat(paramAnonymousInt, paramAnonymousString);
         AppMethodBeat.o(152912);
       }
       
       public final void n(long paramAnonymousLong1, long paramAnonymousLong2, long paramAnonymousLong3)
       {
         AppMethodBeat.i(152910);
-        ac.v("XWebIdkey", "callback: idkeyStat:" + paramAnonymousLong1 + ", " + paramAnonymousLong2 + ", " + paramAnonymousLong3);
-        h.wUl.idkeyStat(paramAnonymousLong1, paramAnonymousLong2, paramAnonymousLong3, true);
+        ad.v("XWebIdkey", "callback: idkeyStat:" + paramAnonymousLong1 + ", " + paramAnonymousLong2 + ", " + paramAnonymousLong3);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(paramAnonymousLong1, paramAnonymousLong2, paramAnonymousLong3, true);
         AppMethodBeat.o(152910);
       }
     };
-    JIl = new WebViewExtensionListener()
+    LBO = new WebViewExtensionListener()
     {
       public final int getHostByName(String paramAnonymousString, List<String> paramAnonymousList)
       {
         AppMethodBeat.i(152915);
-        if (!com.tencent.mm.ipcinvoker.c.aeI().tC("com.tencent.mm"))
+        if (!com.tencent.mm.ipcinvoker.c.ahu().ws("com.tencent.mm"))
         {
           AppMethodBeat.o(152915);
           return 0;
@@ -142,14 +140,14 @@ public final class b
         return null;
       }
     };
-    JIm = new ISharedPreferenceProvider()
+    LBP = new ISharedPreferenceProvider()
     {
       public final SharedPreferences z(String paramAnonymousString, int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(152916);
         if (paramAnonymousBoolean)
         {
-          paramAnonymousString = aw.aKV(paramAnonymousString);
+          paramAnonymousString = ax.aQB(paramAnonymousString);
           if (paramAnonymousString == null)
           {
             AppMethodBeat.o(152916);
@@ -161,7 +159,7 @@ public final class b
           if (paramAnonymousInt == 4) {}
           for (paramAnonymousInt = 2;; paramAnonymousInt = 1)
           {
-            paramAnonymousString = aw.fK(paramAnonymousString, paramAnonymousInt);
+            paramAnonymousString = ax.gh(paramAnonymousString, paramAnonymousInt);
             break;
           }
         }
@@ -176,7 +174,7 @@ public final class b
   public static String getModuleName()
   {
     AppMethodBeat.i(152919);
-    String str = ai.getProcessName();
+    String str = aj.getProcessName();
     if (str == null)
     {
       AppMethodBeat.o(152919);
@@ -215,9 +213,9 @@ public final class b
         try
         {
           ArrayList localArrayList = new ArrayList();
-          if (!bs.isNullOrNil(paramIPCString.value))
+          if (!bt.isNullOrNil(paramIPCString.value))
           {
-            i = g.agQ().ghe.hwg.getHostByName(paramIPCString.value, localArrayList);
+            i = com.tencent.mm.kernel.g.ajB().gAO.hOv.getHostByName(paramIPCString.value, localArrayList);
             localBundle.putStringArrayList("ipList", localArrayList);
             localBundle.putInt("result", i);
             AppMethodBeat.o(152917);
@@ -226,7 +224,7 @@ public final class b
         }
         catch (Exception paramIPCString)
         {
-          ac.printErrStackTrace("GetHostByNameTask", paramIPCString, "GetHostByNameTask", new Object[0]);
+          ad.printErrStackTrace("GetHostByNameTask", paramIPCString, "GetHostByNameTask", new Object[0]);
           AppMethodBeat.o(152917);
           return localBundle;
         }

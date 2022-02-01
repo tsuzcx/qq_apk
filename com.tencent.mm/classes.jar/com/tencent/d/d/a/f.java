@@ -9,12 +9,12 @@ import java.io.IOException;
 
 public final class f
 {
-  private static boolean V(File paramFile)
+  private static boolean Y(File paramFile)
   {
     AppMethodBeat.i(138351);
     try
     {
-      if ((c.aTk(paramFile.getAbsolutePath()) & 0x800) > 0)
+      if ((c.aZk(paramFile.getAbsolutePath()) & 0x800) > 0)
       {
         AppMethodBeat.o(138351);
         return true;
@@ -30,12 +30,12 @@ public final class f
     return false;
   }
   
-  public static boolean fCw()
+  public static boolean fTM()
   {
     AppMethodBeat.i(138352);
-    if (com.tencent.d.d.b.f.fCy())
+    if (com.tencent.d.d.b.f.fTO())
     {
-      h.fCO();
+      h.fUg();
       AppMethodBeat.o(138352);
       return false;
     }
@@ -44,9 +44,9 @@ public final class f
     File localFile;
     try
     {
-      Object localObject = new String(a.aTj("/proc/mounts"));
+      Object localObject = new String(a.aZj("/proc/mounts"));
       "SetuidBitChecker mounts : ".concat(String.valueOf(localObject));
-      h.feg();
+      h.fuo();
       localObject = ((String)localObject).split("\n");
       j = localObject.length;
       i = 0;
@@ -58,7 +58,7 @@ public final class f
           if (!localFile.contains(",nosuid")) {
             break label109;
           }
-          h.fCO();
+          h.fUg();
         }
       }
       label109:
@@ -83,7 +83,7 @@ public final class f
       return false;
     }
     label126:
-    h.fCO();
+    h.fUg();
     AppMethodBeat.o(138352);
     return false;
     label142:
@@ -95,10 +95,10 @@ public final class f
       while (i < j)
       {
         localFile = arrayOfFile[i];
-        if ((!"run-as".equals(localFile.getName())) && (V(localFile)))
+        if ((!"run-as".equals(localFile.getName())) && (Y(localFile)))
         {
           new StringBuilder("SetuidBitChecker s-bit found : ").append(localFile.getAbsolutePath());
-          h.fCO();
+          h.fUg();
           AppMethodBeat.o(138352);
           return true;
         }
@@ -113,17 +113,17 @@ public final class f
       while (i < j)
       {
         localFile = arrayOfFile[i];
-        if (V(localFile))
+        if (Y(localFile))
         {
           new StringBuilder("SetuidBitChecker s-bit found : ").append(localFile.getAbsolutePath());
-          h.fCO();
+          h.fUg();
           AppMethodBeat.o(138352);
           return true;
         }
         i += 1;
       }
     }
-    h.fCO();
+    h.fUg();
     AppMethodBeat.o(138352);
     return false;
   }

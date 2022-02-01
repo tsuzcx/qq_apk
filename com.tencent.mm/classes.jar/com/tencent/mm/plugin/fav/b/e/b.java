@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.fav.b.e;
 
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.q;
 import com.tencent.mm.compatible.util.f.a;
 import com.tencent.mm.network.n.a;
 import com.tencent.mm.plugin.fav.a.af;
-import com.tencent.mm.plugin.fav.a.aj;
+import com.tencent.mm.plugin.fav.a.h;
 import com.tencent.mm.plugin.fav.a.r;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ay;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,21 +23,21 @@ import java.util.Map;
 import java.util.Queue;
 
 public final class b
-  implements com.tencent.mm.ak.g, r
+  implements f, r
 {
-  private static Map<Long, f.a> cWY;
-  private Queue<com.tencent.mm.plugin.fav.a.g> cWW;
-  private boolean cXa;
-  private long cXc;
-  public au cXg;
-  public com.tencent.mm.network.n hBi;
-  private boolean qKm;
+  private static Map<Long, f.a> dio;
+  private Queue<com.tencent.mm.plugin.fav.a.g> dim;
+  private boolean diq;
+  private long dit;
+  public av dix;
+  public com.tencent.mm.network.n hTD;
   private boolean running;
+  private boolean ruo;
   
   static
   {
     AppMethodBeat.i(101621);
-    cWY = new HashMap();
+    dio = new HashMap();
     AppMethodBeat.o(101621);
   }
   
@@ -45,10 +45,10 @@ public final class b
   {
     AppMethodBeat.i(101616);
     this.running = false;
-    this.cXc = 0L;
-    this.cXa = false;
-    this.cWW = new LinkedList();
-    this.hBi = new n.a()
+    this.dit = 0L;
+    this.diq = false;
+    this.dim = new LinkedList();
+    this.hTD = new n.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
@@ -56,22 +56,22 @@ public final class b
         boolean bool;
         try
         {
-          bool = ax.isWifi(ai.getContext());
+          bool = ay.isWifi(com.tencent.mm.sdk.platformtools.aj.getContext());
           if ((paramAnonymousInt != 4) && (paramAnonymousInt != 6))
           {
             b.a(b.this, bool);
             AppMethodBeat.o(101611);
             return;
           }
-          ac.i("MicroMsg.Fav.FavCheckCdnService", "onNetworkChange st:%d isWifi:%B, lastIsWifi:%B", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(bool), Boolean.valueOf(b.c(b.this)) });
+          ad.i("MicroMsg.Fav.FavCheckCdnService", "onNetworkChange st:%d isWifi:%B, lastIsWifi:%B", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(bool), Boolean.valueOf(b.c(b.this)) });
           if ((!b.c(b.this)) && (bool))
           {
             b localb = b.this;
-            Object localObject = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cpH();
+            Object localObject = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cvm();
             if ((localObject == null) || (((List)localObject).size() <= 0)) {
               break label271;
             }
-            ac.i("MicroMsg.Fav.FavCheckCdnService", "startAll list.size:%d", new Object[] { Integer.valueOf(((List)localObject).size()) });
+            ad.i("MicroMsg.Fav.FavCheckCdnService", "startAll list.size:%d", new Object[] { Integer.valueOf(((List)localObject).size()) });
             localObject = ((List)localObject).iterator();
             while (((Iterator)localObject).hasNext())
             {
@@ -87,7 +87,7 @@ public final class b
         }
         catch (Exception localException)
         {
-          ac.printErrStackTrace("MicroMsg.Fav.FavCheckCdnService", localException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.Fav.FavCheckCdnService", localException, "", new Object[0]);
           AppMethodBeat.o(101611);
           return;
         }
@@ -97,11 +97,11 @@ public final class b
           AppMethodBeat.o(101611);
           return;
           label271:
-          ac.i("MicroMsg.Fav.FavCheckCdnService", "startAll list.size 0");
+          ad.i("MicroMsg.Fav.FavCheckCdnService", "startAll list.size 0");
         }
       }
     };
-    this.cXg = new au(com.tencent.mm.kernel.g.agU().GrZ.getLooper(), new au.a()
+    this.dix = new av(com.tencent.mm.kernel.g.ajF().IdO.getLooper(), new av.a()
     {
       public final boolean onTimerExpired()
       {
@@ -116,7 +116,7 @@ public final class b
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.Fav.FavCheckCdnService", localException, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.Fav.FavCheckCdnService", localException, "", new Object[0]);
           }
         }
       }
@@ -129,26 +129,26 @@ public final class b
         return str;
       }
     }, false);
-    this.qKm = ax.isWifi(ai.getContext());
-    com.tencent.mm.kernel.g.agQ().a(this.hBi);
-    com.tencent.mm.kernel.g.agi().a(404, this);
+    this.ruo = ay.isWifi(com.tencent.mm.sdk.platformtools.aj.getContext());
+    com.tencent.mm.kernel.g.ajB().a(this.hTD);
+    com.tencent.mm.kernel.g.aiU().a(404, this);
     AppMethodBeat.o(101616);
   }
   
-  public final void Ou()
+  public final void Qe()
   {
     AppMethodBeat.i(101619);
-    this.cWW.clear();
-    cWY.clear();
+    this.dim.clear();
+    dio.clear();
     this.running = false;
-    this.cXa = false;
+    this.diq = false;
     AppMethodBeat.o(101619);
   }
   
-  public final void onSceneEnd(final int paramInt1, int paramInt2, String paramString, final com.tencent.mm.ak.n paramn)
+  public final void onSceneEnd(final int paramInt1, int paramInt2, String paramString, final com.tencent.mm.al.n paramn)
   {
     AppMethodBeat.i(101617);
-    com.tencent.mm.kernel.g.agU().az(new Runnable()
+    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
     {
       public final void run()
       {
@@ -158,20 +158,20 @@ public final class b
           AppMethodBeat.o(101609);
           return;
         }
-        if (!(paramn instanceof aj))
+        if (!(paramn instanceof com.tencent.mm.plugin.fav.a.aj))
         {
           AppMethodBeat.o(101609);
           return;
         }
         b.a(b.this);
-        long l = ((aj)paramn).qJy.field_localId;
-        com.tencent.mm.plugin.fav.a.g localg = ((aj)paramn).qJy;
-        b.Yr().remove(Long.valueOf(l));
+        long l = ((com.tencent.mm.plugin.fav.a.aj)paramn).rtA.field_localId;
+        com.tencent.mm.plugin.fav.a.g localg = ((com.tencent.mm.plugin.fav.a.aj)paramn).rtA;
+        b.aaT().remove(Long.valueOf(l));
         if (paramInt1 != 0)
         {
-          ac.e("MicroMsg.Fav.FavCheckCdnService", "achieved retry limit, set error, localId:%d", new Object[] { Long.valueOf(l) });
-          com.tencent.mm.plugin.report.service.h.wUl.f(10659, new Object[] { Integer.valueOf(0), Integer.valueOf(localg.field_type), Integer.valueOf(-2), Long.valueOf(com.tencent.mm.plugin.fav.a.b.b(localg)), Long.valueOf(com.tencent.mm.plugin.fav.a.h.tA(localg.field_localId)) });
-          ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().aa(3, l);
+          ad.e("MicroMsg.Fav.FavCheckCdnService", "achieved retry limit, set error, localId:%d", new Object[] { Long.valueOf(l) });
+          com.tencent.mm.plugin.report.service.g.yhR.f(10659, new Object[] { Integer.valueOf(0), Integer.valueOf(localg.field_type), Integer.valueOf(-2), Long.valueOf(com.tencent.mm.plugin.fav.a.b.b(localg)), Long.valueOf(h.vx(localg.field_localId)) });
+          ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().ad(3, l);
         }
         b.b(b.this);
         AppMethodBeat.o(101609);
@@ -191,7 +191,7 @@ public final class b
   public final void run()
   {
     AppMethodBeat.i(101618);
-    com.tencent.mm.kernel.g.agU().az(new Runnable()
+    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
     {
       public final void run()
       {
@@ -204,11 +204,11 @@ public final class b
             AppMethodBeat.o(101612);
             return;
           }
-          ac.e("MicroMsg.Fav.FavCheckCdnService", "klem ERR: Try Run service runningFlag:" + b.e(b.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + b.e(b.this));
+          ad.e("MicroMsg.Fav.FavCheckCdnService", "klem ERR: Try Run service runningFlag:" + b.e(b.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + b.e(b.this));
         }
         b.a(b.this);
         b.f(b.this);
-        b.g(b.this).au(10L, 10L);
+        b.g(b.this).az(10L, 10L);
         AppMethodBeat.o(101612);
       }
       
@@ -225,7 +225,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.e.b
  * JD-Core Version:    0.7.0.1
  */

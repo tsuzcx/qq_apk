@@ -13,7 +13,7 @@ public final class h
 {
   public String groupId;
   public int roomId;
-  public long tIG;
+  public long uLt;
   
   public h(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
@@ -25,18 +25,18 @@ public final class h
       try
       {
         locall.groupId = paramString;
-        locall.ADE = paramInt1;
-        locall.ADF = paramLong;
-        locall.osF = paramInt2;
-        locall.JMs = 2;
-        locall.netType = k.lf(com.tencent.pb.common.c.c.AMx);
+        locall.CcE = paramInt1;
+        locall.CcF = paramLong;
+        locall.oWb = paramInt2;
+        locall.LGb = 2;
+        locall.netType = k.ls(com.tencent.pb.common.c.c.ClL);
         if (paramInt3 != 0) {
           continue;
         }
-        locall.JMD = 0;
-        b.w(this.TAG2, new Object[] { "NetSceneRedirect redirect type:", Integer.valueOf(locall.JMD) });
+        locall.LGm = 0;
+        b.w(this.TAG2, new Object[] { "NetSceneRedirect redirect type:", Integer.valueOf(locall.LGm) });
         this.mNetType = 3;
-        this.JLH = com.tencent.wecall.talkroom.model.c.fIe().aUe(paramString);
+        this.LFq = com.tencent.wecall.talkroom.model.c.fZv().bac(paramString);
       }
       catch (Exception paramString)
       {
@@ -46,11 +46,11 @@ public final class h
       c(211, locall);
       AppMethodBeat.o(175625);
       return;
-      locall.JMD = 1;
+      locall.LGm = 1;
     }
   }
   
-  public final Object cB(byte[] paramArrayOfByte)
+  public final Object cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62546);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -73,7 +73,7 @@ public final class h
     }
   }
   
-  public final String fBB()
+  public final String fSQ()
   {
     return "CsCmd.Cmd_V_CSVoiceRedirectReq";
   }
@@ -85,7 +85,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.h
  * JD-Core Version:    0.7.0.1
  */

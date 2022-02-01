@@ -4,49 +4,49 @@ import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.g.a.ci;
+import com.tencent.mm.g.a.cl;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.hardcoder.e.a;
+import com.tencent.mm.hardcoder.h;
 import com.tencent.mm.hardcoder.h.a;
 import com.tencent.mm.hardcoder.i;
 import com.tencent.mm.hardcoder.j;
 import com.tencent.mm.hardcoder.k;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.util.ArrayList;
 
 public final class a
   implements e.a, h.a
 {
-  private static String tCb = null;
-  private static Long tCc = null;
-  public static boolean tCd = false;
-  private static a tCe;
-  private c svL;
-  private ArrayList<Pair<Integer, Object[]>> tCf;
-  private ArrayList<Object[]> tCg;
+  private static String uEK = null;
+  private static Long uEL = null;
+  public static boolean uEM = false;
+  private static a uEN;
+  private c tsm;
+  private ArrayList<Pair<Integer, Object[]>> uEO;
+  private ArrayList<Object[]> uEP;
   
   public a()
   {
     AppMethodBeat.i(130756);
-    this.tCf = new ArrayList();
-    this.tCg = new ArrayList();
-    this.svL = new c() {};
+    this.uEO = new ArrayList();
+    this.uEP = new ArrayList();
+    this.tsm = new c() {};
     AppMethodBeat.o(130756);
   }
   
-  public static a cSP()
+  public static a dbW()
   {
     AppMethodBeat.i(130757);
-    if (tCe == null) {
-      tCe = new a();
+    if (uEN == null) {
+      uEN = new a();
     }
-    a locala = tCe;
+    a locala = uEN;
     AppMethodBeat.o(130757);
     return locala;
   }
@@ -54,15 +54,15 @@ public final class a
   private void f(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(130760);
-    if ((ai.ciE()) && (!g.agP().ggT))
+    if ((aj.cnC()) && (!com.tencent.mm.kernel.g.ajA().gAD))
     {
-      ac.w("MicroMsg.HardCoderReporterImpl", "kvStat accountNotInitialReady!");
-      this.svL.alive();
-      this.tCf.add(new Pair(Integer.valueOf(paramInt), paramVarArgs));
+      ad.w("MicroMsg.HardCoderReporterImpl", "kvStat accountNotInitialReady!");
+      this.tsm.alive();
+      this.uEO.add(new Pair(Integer.valueOf(paramInt), paramVarArgs));
       AppMethodBeat.o(130760);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.wUl.f(paramInt, paramVarArgs);
+    com.tencent.mm.plugin.report.service.g.yhR.f(paramInt, paramVarArgs);
     AppMethodBeat.o(130760);
   }
   
@@ -72,7 +72,7 @@ public final class a
     // Byte code:
     //   0: ldc 131
     //   2: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 135	com/tencent/mm/sdk/platformtools/ac:getLogLevel	()I
+    //   5: invokestatic 135	com/tencent/mm/sdk/platformtools/ad:getLogLevel	()I
     //   8: iconst_1
     //   9: if_icmple +15 -> 24
     //   12: getstatic 140	com/tencent/mm/hardcoder/WXHardCoderJNI:hcKVPerReport	Z
@@ -84,29 +84,29 @@ public final class a
     //   27: ifeq +145 -> 172
     //   30: iconst_1
     //   31: istore 16
-    //   33: getstatic 31	com/tencent/mm/plugin/hardcoder/a:tCc	Ljava/lang/Long;
+    //   33: getstatic 31	com/tencent/mm/plugin/hardcoder/a:uEL	Ljava/lang/Long;
     //   36: ifnonnull +35 -> 71
-    //   39: invokestatic 77	com/tencent/mm/sdk/platformtools/ai:ciE	()Z
+    //   39: invokestatic 77	com/tencent/mm/sdk/platformtools/aj:cnC	()Z
     //   42: ifeq +136 -> 178
-    //   45: invokestatic 147	com/tencent/mm/kernel/g:agS	()Lcom/tencent/mm/kernel/g;
+    //   45: invokestatic 147	com/tencent/mm/kernel/g:ajD	()Lcom/tencent/mm/kernel/g;
     //   48: pop
-    //   49: invokestatic 151	com/tencent/mm/kernel/g:agR	()Lcom/tencent/mm/kernel/e;
-    //   52: invokevirtual 157	com/tencent/mm/kernel/e:agA	()Lcom/tencent/mm/storage/ae;
-    //   55: getstatic 163	com/tencent/mm/storage/ah$a:GLE	Lcom/tencent/mm/storage/ah$a;
+    //   49: invokestatic 151	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+    //   52: invokevirtual 157	com/tencent/mm/kernel/e:ajl	()Lcom/tencent/mm/storage/ai;
+    //   55: getstatic 163	com/tencent/mm/storage/al$a:IxW	Lcom/tencent/mm/storage/al$a;
     //   58: lconst_0
     //   59: invokestatic 168	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   62: invokevirtual 174	com/tencent/mm/storage/ae:get	(Lcom/tencent/mm/storage/ah$a;Ljava/lang/Object;)Ljava/lang/Object;
+    //   62: invokevirtual 174	com/tencent/mm/storage/ai:get	(Lcom/tencent/mm/storage/al$a;Ljava/lang/Object;)Ljava/lang/Object;
     //   65: checkcast 165	java/lang/Long
-    //   68: putstatic 31	com/tencent/mm/plugin/hardcoder/a:tCc	Ljava/lang/Long;
-    //   71: getstatic 29	com/tencent/mm/plugin/hardcoder/a:tCb	Ljava/lang/String;
+    //   68: putstatic 31	com/tencent/mm/plugin/hardcoder/a:uEL	Ljava/lang/Long;
+    //   71: getstatic 29	com/tencent/mm/plugin/hardcoder/a:uEK	Ljava/lang/String;
     //   74: invokestatic 180	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   77: ifeq +10 -> 87
     //   80: iconst_0
-    //   81: invokestatic 186	com/tencent/mm/compatible/deviceinfo/q:cF	(Z)Ljava/lang/String;
-    //   84: putstatic 29	com/tencent/mm/plugin/hardcoder/a:tCb	Ljava/lang/String;
-    //   87: getstatic 29	com/tencent/mm/plugin/hardcoder/a:tCb	Ljava/lang/String;
+    //   81: invokestatic 186	com/tencent/mm/compatible/deviceinfo/q:cH	(Z)Ljava/lang/String;
+    //   84: putstatic 29	com/tencent/mm/plugin/hardcoder/a:uEK	Ljava/lang/String;
+    //   87: getstatic 29	com/tencent/mm/plugin/hardcoder/a:uEK	Ljava/lang/String;
     //   90: astore 22
-    //   92: getstatic 31	com/tencent/mm/plugin/hardcoder/a:tCc	Ljava/lang/Long;
+    //   92: getstatic 31	com/tencent/mm/plugin/hardcoder/a:uEL	Ljava/lang/Long;
     //   95: invokevirtual 190	java/lang/Long:longValue	()J
     //   98: l2i
     //   99: istore 20
@@ -149,7 +149,7 @@ public final class a
     //   175: goto -142 -> 33
     //   178: lconst_0
     //   179: invokestatic 168	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   182: putstatic 31	com/tencent/mm/plugin/hardcoder/a:tCc	Ljava/lang/Long;
+    //   182: putstatic 31	com/tencent/mm/plugin/hardcoder/a:uEL	Ljava/lang/Long;
     //   185: goto -114 -> 71
     //   188: new 192	java/lang/StringBuilder
     //   191: dup
@@ -417,7 +417,7 @@ public final class a
     //   673: ifeq +10 -> 683
     //   676: ldc 90
     //   678: aload 24
-    //   680: invokestatic 231	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   680: invokestatic 231	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   683: aload 23
     //   685: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   688: astore_1
@@ -534,17 +534,17 @@ public final class a
     //   873: invokestatic 112	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   876: aastore
     //   877: invokespecial 234	com/tencent/mm/plugin/hardcoder/a:f	(I[Ljava/lang/Object;)V
-    //   880: getstatic 33	com/tencent/mm/plugin/hardcoder/a:tCd	Z
+    //   880: getstatic 33	com/tencent/mm/plugin/hardcoder/a:uEM	Z
     //   883: ifeq +338 -> 1221
     //   886: new 192	java/lang/StringBuilder
     //   889: dup
     //   890: invokespecial 193	java/lang/StringBuilder:<init>	()V
     //   893: astore_1
-    //   894: invokestatic 147	com/tencent/mm/kernel/g:agS	()Lcom/tencent/mm/kernel/g;
+    //   894: invokestatic 147	com/tencent/mm/kernel/g:ajD	()Lcom/tencent/mm/kernel/g;
     //   897: pop
     //   898: aload_1
-    //   899: invokestatic 151	com/tencent/mm/kernel/g:agR	()Lcom/tencent/mm/kernel/e;
-    //   902: getfield 237	com/tencent/mm/kernel/e:ghB	Ljava/lang/String;
+    //   899: invokestatic 151	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+    //   902: getfield 237	com/tencent/mm/kernel/e:gBl	Ljava/lang/String;
     //   905: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   908: ldc 239
     //   910: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -616,7 +616,7 @@ public final class a
     //   1048: invokevirtual 290	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1051: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1054: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1057: invokestatic 231	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1057: invokestatic 231	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1060: goto -106 -> 954
     //   1063: astore_1
     //   1064: ldc 90
@@ -628,7 +628,7 @@ public final class a
     //   1077: invokevirtual 290	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1080: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1083: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1086: invokestatic 231	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1086: invokestatic 231	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1089: ldc 131
     //   1091: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1094: return
@@ -644,7 +644,7 @@ public final class a
     //   1114: invokevirtual 290	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1117: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1120: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1123: invokestatic 231	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1123: invokestatic 231	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1126: aload_1
     //   1127: ifnull +94 -> 1221
     //   1130: aload_1
@@ -662,7 +662,7 @@ public final class a
     //   1154: invokevirtual 290	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1157: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1160: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1163: invokestatic 231	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1163: invokestatic 231	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1166: ldc 131
     //   1168: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1171: return
@@ -685,7 +685,7 @@ public final class a
     //   1206: invokevirtual 290	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1209: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1212: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1215: invokestatic 231	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1215: invokestatic 231	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1218: goto -35 -> 1183
     //   1221: ldc 131
     //   1223: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -731,15 +731,15 @@ public final class a
     //   1178	1183	1190	java/lang/Exception
   }
   
-  public final void reportInfo(com.tencent.mm.hardcoder.h paramh)
+  public final void reportInfo(h paramh)
   {
     AppMethodBeat.i(130759);
     long l1;
     if ((paramh instanceof j))
     {
       paramh = (j)paramh;
-      ac.i("MicroMsg.HardCoderReporterImpl", "reportIDKey feature[%b] key[%d], value[%d]", new Object[] { Boolean.valueOf(paramh.gcy), Integer.valueOf(paramh.key), Integer.valueOf(paramh.value), Boolean.valueOf(paramh.dwI) });
-      if (paramh.gcy) {}
+      ad.i("MicroMsg.HardCoderReporterImpl", "reportIDKey feature[%b] key[%d], value[%d]", new Object[] { Boolean.valueOf(paramh.gwi), Integer.valueOf(paramh.key), Integer.valueOf(paramh.value), Boolean.valueOf(paramh.dIU) });
+      if (paramh.gwi) {}
       long l2;
       long l3;
       boolean bool;
@@ -747,33 +747,33 @@ public final class a
       {
         l2 = paramh.key;
         l3 = paramh.value;
-        bool = paramh.dwI;
-        if ((!ai.ciE()) || (g.agP().ggT)) {
+        bool = paramh.dIU;
+        if ((!aj.cnC()) || (com.tencent.mm.kernel.g.ajA().gAD)) {
           break;
         }
-        ac.w("MicroMsg.HardCoderReporterImpl", "idkeyStat accountNotInitialReady!");
-        this.svL.alive();
-        this.tCg.add(new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool) });
+        ad.w("MicroMsg.HardCoderReporterImpl", "idkeyStat accountNotInitialReady!");
+        this.tsm.alive();
+        this.uEP.add(new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool) });
         AppMethodBeat.o(130759);
         return;
       }
-      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(l1, l2, l3, bool);
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(l1, l2, l3, bool);
       AppMethodBeat.o(130759);
       return;
     }
     if ((paramh instanceof i))
     {
       paramh = (i)paramh;
-      if (tCc == null)
+      if (uEL == null)
       {
-        g.agS();
-        tCc = (Long)g.agR().agA().get(ah.a.GLE, Long.valueOf(0L));
+        com.tencent.mm.kernel.g.ajD();
+        uEL = (Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IxW, Long.valueOf(0L));
       }
-      if (TextUtils.isEmpty(tCb)) {
-        tCb = q.cF(false);
+      if (TextUtils.isEmpty(uEK)) {
+        uEK = q.cH(false);
       }
-      String str = tCb;
-      int k = (int)tCc.longValue();
+      String str = uEK;
+      int k = (int)uEL.longValue();
       int i;
       int m;
       if (WXHardCoderJNI.isHCEnable())
@@ -789,9 +789,9 @@ public final class a
       {
         if (paramh.type == 1)
         {
-          l1 = paramh.gcx * 100L / paramh.interval;
-          f(15187, new Object[] { str, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(paramh.scene), Long.valueOf(paramh.gcb), Integer.valueOf(paramh.type), Long.valueOf(paramh.gcx), Long.valueOf(paramh.interval), Long.valueOf(l1), Integer.valueOf(j) });
-          ac.i("MicroMsg.HardCoderReporterImpl", String.format("fpsReport imei:%s enable:%s, heavy:%s speedUp:%s, engineStatus:%s, scene:%s, action:%s, type:%s, totalDroppedFrames:%s, interval:%s, average:%s", new Object[] { str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(paramh.scene), Long.valueOf(paramh.gcb), Integer.valueOf(paramh.type), Long.valueOf(paramh.gcx), Long.valueOf(paramh.interval), Long.valueOf(l1) }));
+          l1 = paramh.gwh * 100L / paramh.interval;
+          f(15187, new Object[] { str, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(paramh.scene), Long.valueOf(paramh.gvL), Integer.valueOf(paramh.type), Long.valueOf(paramh.gwh), Long.valueOf(paramh.interval), Long.valueOf(l1), Integer.valueOf(j) });
+          ad.i("MicroMsg.HardCoderReporterImpl", String.format("fpsReport imei:%s enable:%s, heavy:%s speedUp:%s, engineStatus:%s, scene:%s, action:%s, type:%s, totalDroppedFrames:%s, interval:%s, average:%s", new Object[] { str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(paramh.scene), Long.valueOf(paramh.gvL), Integer.valueOf(paramh.type), Long.valueOf(paramh.gwh), Long.valueOf(paramh.interval), Long.valueOf(l1) }));
         }
         AppMethodBeat.o(130759);
         return;
@@ -807,7 +807,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.hardcoder.a
  * JD-Core Version:    0.7.0.1
  */

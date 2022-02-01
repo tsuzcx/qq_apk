@@ -2,12 +2,13 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.List;
 
 public final class er
   extends b
 {
-  public a dex;
-  public b dey;
+  public a dpN;
+  public b dpO;
   
   public er()
   {
@@ -16,29 +17,20 @@ public final class er
   
   private er(byte paramByte)
   {
-    AppMethodBeat.i(116008);
-    this.dex = new a();
-    this.dey = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(116005);
+    this.dpN = new a();
+    this.dpO = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116008);
+    AppMethodBeat.o(116005);
   }
   
   public static final class a
   {
-    public String cIZ;
-    public String data;
-    public String ddB;
-    public String dda;
-    public boolean deA;
-    public String dez;
-    public long msgId;
+    public List dpa;
   }
   
-  public static final class b
-  {
-    public boolean deB;
-  }
+  public static final class b {}
 }
 
 

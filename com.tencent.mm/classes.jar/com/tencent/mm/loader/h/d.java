@@ -5,68 +5,68 @@ import com.tencent.mm.memory.a.c;
 
 public final class d<K, V>
 {
-  private f<K, V> gMv;
+  private f<K, V> hgs;
   
   public d(int paramInt)
   {
-    this.gMv = new c(paramInt);
+    this.hgs = new c(paramInt);
   }
   
-  public final V aJ(K paramK)
+  public final V aL(K paramK)
   {
-    if (this.gMv == null) {
+    if (this.hgs == null) {
       throw new NullPointerException("mData == null");
     }
-    return this.gMv.aJ(paramK);
+    return this.hgs.aL(paramK);
   }
   
-  public final boolean aK(K paramK)
+  public final boolean aM(K paramK)
   {
     try
     {
-      if (this.gMv == null) {
+      if (this.hgs == null) {
         throw new NullPointerException("mData == null");
       }
     }
     finally {}
-    boolean bool = this.gMv.aK(paramK);
+    boolean bool = this.hgs.aM(paramK);
     return bool;
   }
   
   public final void clear()
   {
-    if (this.gMv == null) {
+    if (this.hgs == null) {
       throw new NullPointerException("mData == null");
     }
-    this.gMv.trimToSize(-1);
+    this.hgs.trimToSize(-1);
   }
   
   public final V get(K paramK)
   {
-    if (this.gMv == null) {
+    if (this.hgs == null) {
       throw new NullPointerException("mData == null");
     }
-    return this.gMv.get(paramK);
+    return this.hgs.get(paramK);
   }
   
   public final V put(K paramK, V paramV)
   {
-    if (this.gMv == null) {
+    if (this.hgs == null) {
       throw new NullPointerException("mData == null");
     }
-    return this.gMv.put(paramK, paramV);
+    return this.hgs.put(paramK, paramV);
   }
   
   public final String toString()
   {
     try
     {
-      if (this.gMv == null) {
+      if (this.hgs == null) {
         throw new NullPointerException("mData == null");
       }
     }
     finally {}
-    String str = this.gMv.toString();
+    String str = this.hgs.toString();
     return str;
   }
 }

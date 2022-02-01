@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.finder.video;
 
 import com.tencent.mm.plugin.gallery.picker.b.b.f;
-import com.tencent.mm.protocal.protobuf.brc;
+import com.tencent.mm.protocal.protobuf.bvp;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/FinderMediaTailorResult;", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "ret", "", "(I)V", "localCropInfo", "Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "getLocalCropInfo", "()Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "setLocalCropInfo", "(Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;)V", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/FinderMediaTailorResult;", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "ret", "", "(I)V", "localCropInfo", "Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "getLocalCropInfo", "()Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "setLocalCropInfo", "(Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;)V", "plugin-finder_release"})
 public final class d
   extends b.f
 {
-  public brc rQN;
+  public bvp sNn;
   
   public d()
   {
@@ -17,7 +17,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.d
  * JD-Core Version:    0.7.0.1
  */

@@ -6,26 +6,26 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.menu.a.b;
 import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class g
   implements b<ae>
 {
-  boolean luB = false;
+  boolean lTK = false;
   
   /* Error */
-  static boolean dS(String paramString1, String paramString2)
+  static boolean eb(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore_3
     //   2: ldc 31
     //   4: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: invokestatic 43	com/tencent/mm/compatible/util/e:YD	()Z
+    //   7: invokestatic 43	com/tencent/mm/compatible/util/e:abf	()Z
     //   10: ifne +17 -> 27
     //   13: ldc 45
     //   15: ldc 47
-    //   17: invokestatic 53	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   17: invokestatic 53	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   20: ldc 31
     //   22: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   25: iconst_0
@@ -41,7 +41,7 @@ public final class g
     //   41: new 60	java/lang/StringBuilder
     //   44: dup
     //   45: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   48: invokestatic 67	com/tencent/mm/loader/j/b:aph	()Ljava/lang/String;
+    //   48: invokestatic 67	com/tencent/mm/loader/j/b:arU	()Ljava/lang/String;
     //   51: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: ldc 73
     //   56: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -87,7 +87,7 @@ public final class g
     //   135: aload_0
     //   136: invokestatic 107	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   139: invokevirtual 111	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   142: invokestatic 53	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   142: invokestatic 53	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   145: goto -22 -> 123
     //   148: astore_1
     //   149: aload 5
@@ -99,7 +99,7 @@ public final class g
     //   159: aload_1
     //   160: invokestatic 107	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   163: invokevirtual 111	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   166: invokestatic 53	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   166: invokestatic 53	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   169: iload_3
     //   170: istore_2
     //   171: aload_0
@@ -115,7 +115,7 @@ public final class g
     //   189: aload_0
     //   190: invokestatic 107	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   193: invokevirtual 111	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   196: invokestatic 53	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   196: invokestatic 53	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   199: iload_3
     //   200: istore_2
     //   201: goto -78 -> 123
@@ -134,7 +134,7 @@ public final class g
     //   227: aload_1
     //   228: invokestatic 107	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   231: invokevirtual 111	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   234: invokestatic 53	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   234: invokestatic 53	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   237: goto -22 -> 215
     //   240: astore_1
     //   241: aload_0

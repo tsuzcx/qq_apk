@@ -2,15 +2,15 @@ package com.tencent.mm.loader.g.a;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;", "", "num", "", "(I)V", "priority", "(II)V", "getNum", "()I", "getPriority", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;", "", "num", "", "(I)V", "priority", "(II)V", "getNum", "()I", "getPriority", "libimageloader_release"})
 public final class g
 {
-  final int gMk;
+  final int hgh;
   private final int priority;
   
   public g(int paramInt)
   {
-    this.gMk = paramInt;
+    this.hgh = paramInt;
     this.priority = 5;
   }
   

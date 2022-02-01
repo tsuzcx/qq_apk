@@ -1,88 +1,68 @@
 package com.tencent.mm.plugin.finder.cgi.oplog;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.finder.cgi.am;
-import com.tencent.mm.plugin.finder.cgi.am.a;
-import com.tencent.mm.plugin.finder.cgi.av;
-import com.tencent.mm.plugin.finder.cgi.av.a;
-import com.tencent.mm.plugin.i.a.i;
-import com.tencent.mm.protocal.protobuf.aiz;
-import com.tencent.mm.protocal.protobuf.amj;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.al.f;
+import com.tencent.mm.plugin.finder.cgi.at;
+import com.tencent.mm.plugin.finder.cgi.at.a;
+import com.tencent.mm.plugin.i.a.j;
+import com.tencent.mm.plugin.i.a.s;
+import com.tencent.mm.protocal.protobuf.apl;
+import d.g.b.p;
 import d.l;
-import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModifyUserService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderModifyUserInfo;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModUserInfo;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "kotlin.jvm.PlatformType", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modifyUserAvatar", "avatarPath", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "modifyUserDistrict", "country", "province", "city", "unshowSwitch", "modifyUserNickname", "nickname", "modifyUserSex", "sex", "modifyUserSignature", "signature", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModifyBlackListService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderModifyBlackList;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "kotlin.jvm.PlatformType", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modifyCommentBlackList", "commentId", "", "feedId", "feedNonceId", "isBlack", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "modifyFansBlackList", "fansId", "Companion", "plugin-finder_release"})
 public final class d
-  extends e<amj>
-  implements com.tencent.mm.ak.g, i
+  extends h<apl>
+  implements f, j
 {
-  final String TAG = "Finder.FinderModifyUserService";
+  private static final int rLc = 1;
+  private static final int rLd = 2;
+  public static final a rLe;
+  private final String TAG = "Finder.FinderModifyBlackListService";
   
-  public final void a(int paramInt, com.tencent.mm.plugin.i.a.k<amj> paramk)
+  static
   {
-    AppMethodBeat.i(201251);
-    amj localamj = new amj();
-    localamj.exL = paramInt;
-    localamj.EEe = 0;
-    a(localamj, paramk);
-    AppMethodBeat.o(201251);
+    AppMethodBeat.i(165301);
+    rLe = new a((byte)0);
+    rLc = 1;
+    rLd = 2;
+    AppMethodBeat.o(165301);
   }
   
-  public final void a(String paramString, final com.tencent.mm.plugin.i.a.k<amj> paramk)
+  public final void a(long paramLong1, long paramLong2, String paramString, s<apl> params)
   {
-    AppMethodBeat.i(165310);
-    d.g.b.k.h(paramString, "avatarPath");
-    av.a locala = av.qYN;
-    paramString = new av(paramString, av.csT());
-    com.tencent.mm.kernel.g.agi().a(3759, (com.tencent.mm.ak.g)new a(this, paramk));
-    com.tencent.mm.kernel.g.agi().b((n)paramString);
-    AppMethodBeat.o(165310);
+    AppMethodBeat.i(165299);
+    p.h(paramString, "feedNonceId");
+    apl localapl = new apl();
+    localapl.rIH = paramLong1;
+    localapl.refObjectId = paramLong2;
+    localapl.refObjectNonceId = paramString;
+    localapl.opType = rLc;
+    a(localapl, params);
+    AppMethodBeat.o(165299);
   }
   
-  public final void a(String paramString1, String paramString2, String paramString3, int paramInt, com.tencent.mm.plugin.i.a.k<amj> paramk)
+  public final void a(String paramString, boolean paramBoolean, s<apl> params)
   {
-    AppMethodBeat.i(165313);
-    d.g.b.k.h(paramString1, "country");
-    d.g.b.k.h(paramString2, "province");
-    d.g.b.k.h(paramString3, "city");
-    amj localamj = new amj();
-    localamj.country = paramString1;
-    localamj.exV = paramString2;
-    localamj.exW = paramString3;
-    localamj.EEd = paramInt;
-    a(localamj, paramk);
-    AppMethodBeat.o(165313);
-  }
-  
-  public final void b(String paramString, com.tencent.mm.plugin.i.a.k<amj> paramk)
-  {
-    AppMethodBeat.i(165311);
-    d.g.b.k.h(paramString, "nickname");
-    amj localamj = new amj();
-    localamj.nickname = paramString;
-    a(localamj, paramk);
-    AppMethodBeat.o(165311);
-  }
-  
-  public final void c(String paramString, com.tencent.mm.plugin.i.a.k<amj> paramk)
-  {
-    AppMethodBeat.i(165314);
-    d.g.b.k.h(paramString, "signature");
-    amj localamj = new amj();
-    localamj.signature = paramString;
-    a(localamj, paramk);
-    AppMethodBeat.o(165314);
+    AppMethodBeat.i(165298);
+    p.h(paramString, "fansId");
+    apl localapl = new apl();
+    localapl.GlF = paramString;
+    if (paramBoolean) {}
+    for (localapl.opType = rLc;; localapl.opType = rLd)
+    {
+      a(localapl, params);
+      AppMethodBeat.o(165298);
+      return;
+    }
   }
   
   public final int getCmdId()
   {
-    AppMethodBeat.i(165309);
-    am.a locala = am.qYu;
-    int i = am.csI();
-    AppMethodBeat.o(165309);
+    AppMethodBeat.i(165297);
+    at.a locala = at.rJK;
+    int i = at.cyA();
+    AppMethodBeat.o(165297);
     return i;
   }
   
@@ -91,45 +71,8 @@ public final class d
     return this.TAG;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/cgi/oplog/FinderModifyUserService$modifyUserAvatar$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
-  public static final class a
-    implements com.tencent.mm.ak.g
-  {
-    a(com.tencent.mm.plugin.i.a.k paramk) {}
-    
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
-    {
-      AppMethodBeat.i(165307);
-      ac.i(this.qZB.TAG, "upload head img errType " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString);
-      com.tencent.mm.kernel.g.agi().b(3759, (com.tencent.mm.ak.g)this);
-      paramString = new amj();
-      if (paramn == null)
-      {
-        paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderUploadHeadImg");
-        AppMethodBeat.o(165307);
-        throw paramString;
-      }
-      paramString.hlG = ((av)paramn).qYH;
-      if ((paramInt1 == 0) && (paramInt2 == 0))
-      {
-        this.qZB.a(paramString, paramk);
-        AppMethodBeat.o(165307);
-        return;
-      }
-      paramn = paramk;
-      if (paramn != null)
-      {
-        aiz localaiz = new aiz();
-        am.a locala = am.qYu;
-        localaiz.cmdId = am.csI();
-        localaiz.retCode = -1;
-        paramn.a(paramString, localaiz);
-        AppMethodBeat.o(165307);
-        return;
-      }
-      AppMethodBeat.o(165307);
-    }
-  }
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModifyBlackListService$Companion;", "", "()V", "ModBlackListOpAdd", "", "getModBlackListOpAdd", "()I", "ModBlackListOpDel", "getModBlackListOpDel", "plugin-finder_release"})
+  public static final class a {}
 }
 
 

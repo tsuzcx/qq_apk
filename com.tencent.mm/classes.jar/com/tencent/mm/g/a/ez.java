@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ez
   extends b
 {
-  public a deQ;
+  public a dqi;
+  public b dqj;
   
   public ez()
   {
@@ -15,23 +16,28 @@ public final class ez
   
   private ez(byte paramByte)
   {
-    AppMethodBeat.i(19799);
-    this.deQ = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19796);
+    this.dqi = new a();
+    this.dqj = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19799);
+    AppMethodBeat.o(19796);
   }
   
   public static final class a
   {
-    public boolean bhH;
-    public String deK;
+    public boolean doE = false;
     public String mac;
+  }
+  
+  public static final class b
+  {
+    public boolean doF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.g.a.ez
  * JD-Core Version:    0.7.0.1
  */

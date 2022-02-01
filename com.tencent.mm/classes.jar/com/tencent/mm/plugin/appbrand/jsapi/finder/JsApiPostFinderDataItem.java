@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.jsapi.finder;
 
-import android.os.Parcelable.Creator;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.q;
 

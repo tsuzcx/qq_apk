@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.card.model;
 
-import com.tencent.mm.protocal.protobuf.rl;
+import com.tencent.mm.protocal.protobuf.tf;
 
 public final class e
-  extends rl
+  extends tf
 {
   public String code;
 }

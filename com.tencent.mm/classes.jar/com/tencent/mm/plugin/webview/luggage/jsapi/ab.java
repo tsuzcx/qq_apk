@@ -1,99 +1,64 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.n;
+import android.os.Bundle;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
-import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import org.json.JSONException;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.modeltools.j;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ab
-  extends bn<n>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, final bn.a parama)
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  
+  public final void b(final com.tencent.luggage.d.b<g>.a paramb)
   {
-    AppMethodBeat.i(78567);
-    ac.i("MicroMsg.JsApiInstallDownloadTask", "invokeInOwn");
-    long l;
-    try
+    AppMethodBeat.i(78565);
+    final JSONObject localJSONObject = paramb.chh.cgn;
+    if (localJSONObject == null)
     {
-      paramContext = new JSONObject(paramString);
-      l = paramContext.optLong("download_id");
-      if (l <= 0L)
-      {
-        ac.i("MicroMsg.JsApiInstallDownloadTask", "data is null");
-        parama.f("fail_invalid_data", null);
-        AppMethodBeat.o(78567);
-        return;
-      }
-    }
-    catch (JSONException paramContext)
-    {
-      ac.e("MicroMsg.JsApiInstallDownloadTask", "paras data error: " + paramContext.getMessage());
-      parama.f("fail", null);
-      AppMethodBeat.o(78567);
+      paramb.a("invalid_params", null);
+      AppMethodBeat.o(78565);
       return;
     }
-    paramString = f.bXJ().rT(l);
-    if (paramString.status == -1)
+    Object localObject = localJSONObject.optJSONArray("urls");
+    if ((localObject == null) || (((JSONArray)localObject).length() == 0))
     {
-      ac.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, apilevel not supported");
-      parama.f("fail", null);
-      AppMethodBeat.o(78567);
+      ad.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
+      paramb.a("invalid_url", null);
+      AppMethodBeat.o(78565);
       return;
     }
-    if (paramString.status != 3)
-    {
-      ac.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, invalid status = " + paramString.status);
-      parama.f("fail", null);
-      AppMethodBeat.o(78567);
-      return;
-    }
-    com.tencent.mm.plugin.downloader.g.a locala = d.sc(l);
-    if (locala != null)
-    {
-      int i = paramContext.optInt("scene");
-      int j = paramContext.optInt("uiarea");
-      int k = paramContext.optInt("notice_id");
-      int m = paramContext.optInt("ssid");
-      locala.field_scene = i;
-      locala.field_uiarea = j;
-      locala.field_noticeId = k;
-      locala.field_ssid = m;
-      d.e(locala);
-    }
-    com.tencent.mm.plugin.downloader.i.a.a(paramString.id, false, new com.tencent.mm.pluginsdk.permission.a()
-    {
-      public final void gk(boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(78566);
-        if (paramAnonymousBoolean)
-        {
-          parama.f(null, null);
-          AppMethodBeat.o(78566);
-          return;
-        }
-        parama.f("fail", null);
-        AppMethodBeat.o(78566);
-      }
-    });
-    AppMethodBeat.o(78567);
+    localObject = new HashMap();
+    ((HashMap)localObject).put("current", localJSONObject.optString("current"));
+    j.a((Map)localObject, ((g)paramb.chg).getWebView());
+    h.a("com.tencent.mm", new IPCString(localJSONObject.toString()), a.class, new d() {});
+    AppMethodBeat.o(78565);
   }
   
-  public final void b(com.tencent.luggage.d.a<n>.a parama) {}
-  
-  public final int bYk()
+  public final int ccO()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "installDownloadTask";
+    return "imagePreview";
   }
+  
+  static class a
+    implements com.tencent.mm.ipcinvoker.b<IPCString, Bundle>
+  {}
 }
 
 

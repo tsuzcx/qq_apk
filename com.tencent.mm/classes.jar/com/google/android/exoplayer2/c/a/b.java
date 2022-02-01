@@ -12,28 +12,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements com.google.android.exoplayer2.c.e, l
 {
-  public static final h aXT;
-  private static final int aXU;
-  private final m aXV;
-  private final m aXW;
-  private final m aXX;
-  private final m aXY;
-  private g aXZ;
-  private int aYa;
-  private int aYb;
-  public int aYc;
-  public int aYd;
-  public long aYe;
-  private a aYf;
-  private e aYg;
-  private c aYh;
+  public static final h bio;
+  private static final int bip;
+  private a biA;
+  private e biB;
+  private c biC;
+  private final m biq;
+  private final m bir;
+  private final m bis;
+  private final m bit;
+  private g biu;
+  private int biv;
+  private int biw;
+  public int bix;
+  public int biy;
+  public long biz;
   
   static
   {
     AppMethodBeat.i(91983);
-    aXT = new h()
+    bio = new h()
     {
-      public final com.google.android.exoplayer2.c.e[] sT()
+      public final com.google.android.exoplayer2.c.e[] us()
       {
         AppMethodBeat.i(91978);
         b localb = new b();
@@ -41,35 +41,35 @@ public final class b
         return new com.google.android.exoplayer2.c.e[] { localb };
       }
     };
-    aXU = x.aQ("FLV");
+    bip = x.bJ("FLV");
     AppMethodBeat.o(91983);
   }
   
   public b()
   {
     AppMethodBeat.i(91979);
-    this.aXV = new m(4);
-    this.aXW = new m(9);
-    this.aXX = new m(11);
-    this.aXY = new m();
-    this.aYa = 1;
+    this.biq = new m(4);
+    this.bir = new m(9);
+    this.bis = new m(11);
+    this.bit = new m();
+    this.biv = 1;
     AppMethodBeat.o(91979);
   }
   
   private m b(f paramf)
   {
     AppMethodBeat.i(91982);
-    if (this.aYd > this.aXY.capacity()) {
-      this.aXY.n(new byte[Math.max(this.aXY.capacity() * 2, this.aYd)], 0);
+    if (this.biy > this.bit.capacity()) {
+      this.bit.n(new byte[Math.max(this.bit.capacity() * 2, this.biy)], 0);
     }
     for (;;)
     {
-      this.aXY.eW(this.aYd);
-      paramf.readFully(this.aXY.data, 0, this.aYd);
-      paramf = this.aXY;
+      this.bit.eZ(this.biy);
+      paramf.readFully(this.bit.data, 0, this.biy);
+      paramf = this.bit;
       AppMethodBeat.o(91982);
       return paramf;
-      this.aXY.setPosition(0);
+      this.bit.setPosition(0);
     }
   }
   
@@ -83,12 +83,12 @@ public final class b
     AppMethodBeat.i(91981);
     for (;;)
     {
-      switch (this.aYa)
+      switch (this.biv)
       {
       default: 
         break;
       case 1: 
-        if (!paramf.a(this.aXW.data, 0, 9, true))
+        if (!paramf.a(this.bir.data, 0, 9, true))
         {
           i = 0;
           if (i == 0)
@@ -99,9 +99,9 @@ public final class b
         }
         else
         {
-          this.aXW.setPosition(0);
-          this.aXW.eX(4);
-          int j = this.aXW.readUnsignedByte();
+          this.bir.setPosition(0);
+          this.bir.fa(4);
+          int j = this.bir.readUnsignedByte();
           if ((j & 0x4) != 0)
           {
             i = 1;
@@ -111,19 +111,19 @@ public final class b
           }
           for (j = 1;; j = 0)
           {
-            if ((i != 0) && (this.aYf == null)) {
-              this.aYf = new a(this.aXZ.dW(8));
+            if ((i != 0) && (this.biA == null)) {
+              this.biA = new a(this.biu.eb(8));
             }
-            if ((j != 0) && (this.aYg == null)) {
-              this.aYg = new e(this.aXZ.dW(9));
+            if ((j != 0) && (this.biB == null)) {
+              this.biB = new e(this.biu.eb(9));
             }
-            if (this.aYh == null) {
-              this.aYh = new c();
+            if (this.biC == null) {
+              this.biC = new c();
             }
-            this.aXZ.sU();
-            this.aXZ.a(this);
-            this.aYb = (this.aXW.readInt() - 9 + 4);
-            this.aYa = 2;
+            this.biu.ut();
+            this.biu.a(this);
+            this.biw = (this.bir.readInt() - 9 + 4);
+            this.biv = 2;
             i = 1;
             break;
             i = 0;
@@ -134,51 +134,51 @@ public final class b
       case 2: 
         label110:
         label255:
-        paramf.dQ(this.aYb);
-        this.aYb = 0;
-        this.aYa = 3;
+        paramf.dU(this.biw);
+        this.biw = 0;
+        this.biv = 3;
       }
     }
-    if (!paramf.a(this.aXX.data, 0, 11, true)) {}
+    if (!paramf.a(this.bis.data, 0, 11, true)) {}
     for (int i = 0; i == 0; i = 1)
     {
       AppMethodBeat.o(91981);
       return -1;
-      this.aXX.setPosition(0);
-      this.aYc = this.aXX.readUnsignedByte();
-      this.aYd = this.aXX.vA();
-      this.aYe = this.aXX.vA();
-      this.aYe = ((this.aXX.readUnsignedByte() << 24 | this.aYe) * 1000L);
-      this.aXX.eX(3);
-      this.aYa = 4;
+      this.bis.setPosition(0);
+      this.bix = this.bis.readUnsignedByte();
+      this.biy = this.bis.wX();
+      this.biz = this.bis.wX();
+      this.biz = ((this.bis.readUnsignedByte() << 24 | this.biz) * 1000L);
+      this.bis.fa(3);
+      this.biv = 4;
     }
-    if ((this.aYc == 8) && (this.aYf != null))
+    if ((this.bix == 8) && (this.biA != null))
     {
-      this.aYf.b(b(paramf), this.aYe);
+      this.biA.b(b(paramf), this.biz);
       i = 1;
     }
     for (;;)
     {
-      this.aYb = 4;
-      this.aYa = 2;
+      this.biw = 4;
+      this.biv = 2;
       if (i == 0) {
         break;
       }
       AppMethodBeat.o(91981);
       return 0;
-      if ((this.aYc == 9) && (this.aYg != null))
+      if ((this.bix == 9) && (this.biB != null))
       {
-        this.aYg.b(b(paramf), this.aYe);
+        this.biB.b(b(paramf), this.biz);
         i = 1;
       }
-      else if ((this.aYc == 18) && (this.aYh != null))
+      else if ((this.bix == 18) && (this.biC != null))
       {
-        this.aYh.b(b(paramf), this.aYe);
+        this.biC.b(b(paramf), this.biz);
         i = 1;
       }
       else
       {
-        paramf.dQ(this.aYd);
+        paramf.dU(this.biy);
         i = 0;
       }
     }
@@ -186,34 +186,34 @@ public final class b
   
   public final void a(g paramg)
   {
-    this.aXZ = paramg;
+    this.biu = paramg;
   }
   
   public final boolean a(f paramf)
   {
     AppMethodBeat.i(91980);
-    paramf.b(this.aXV.data, 0, 3);
-    this.aXV.setPosition(0);
-    if (this.aXV.vA() != aXU)
+    paramf.b(this.biq.data, 0, 3);
+    this.biq.setPosition(0);
+    if (this.biq.wX() != bip)
     {
       AppMethodBeat.o(91980);
       return false;
     }
-    paramf.b(this.aXV.data, 0, 2);
-    this.aXV.setPosition(0);
-    if ((this.aXV.readUnsignedShort() & 0xFA) != 0)
+    paramf.b(this.biq.data, 0, 2);
+    this.biq.setPosition(0);
+    if ((this.biq.readUnsignedShort() & 0xFA) != 0)
     {
       AppMethodBeat.o(91980);
       return false;
     }
-    paramf.b(this.aXV.data, 0, 4);
-    this.aXV.setPosition(0);
-    int i = this.aXV.readInt();
-    paramf.sR();
-    paramf.dR(i);
-    paramf.b(this.aXV.data, 0, 4);
-    this.aXV.setPosition(0);
-    if (this.aXV.readInt() == 0)
+    paramf.b(this.biq.data, 0, 4);
+    this.biq.setPosition(0);
+    int i = this.biq.readInt();
+    paramf.uq();
+    paramf.dV(i);
+    paramf.b(this.biq.data, 0, 4);
+    this.biq.setPosition(0);
+    if (this.biq.readInt() == 0)
     {
       AppMethodBeat.o(91980);
       return true;
@@ -224,23 +224,23 @@ public final class b
   
   public final void f(long paramLong1, long paramLong2)
   {
-    this.aYa = 1;
-    this.aYb = 0;
+    this.biv = 1;
+    this.biw = 0;
   }
   
   public final long getDurationUs()
   {
-    return this.aYh.aTs;
+    return this.biC.bdM;
   }
   
-  public final boolean sQ()
+  public final boolean up()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.a.b
  * JD-Core Version:    0.7.0.1
  */

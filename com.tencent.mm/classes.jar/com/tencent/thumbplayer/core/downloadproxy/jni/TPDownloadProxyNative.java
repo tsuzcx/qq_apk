@@ -16,57 +16,57 @@ public class TPDownloadProxyNative
   
   public static TPDownloadProxyNative getInstance()
   {
-    AppMethodBeat.i(191530);
+    AppMethodBeat.i(190170);
     TPDownloadProxyNative localTPDownloadProxyNative = SingletonHolder.INSTANCE;
-    AppMethodBeat.o(191530);
+    AppMethodBeat.o(190170);
     return localTPDownloadProxyNative;
   }
   
   private static int nativeIntMessageCallback(int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
-    AppMethodBeat.i(191532);
+    AppMethodBeat.i(190172);
     paramInt1 = TPListenerManager.getInstance().handleIntCallbackMessage(paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
-    AppMethodBeat.o(191532);
+    AppMethodBeat.o(190172);
     return paramInt1;
   }
   
   private static void nativeLogCallback(int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    AppMethodBeat.i(191534);
+    AppMethodBeat.i(190174);
     if (paramInt1 == 10)
     {
       TPDLProxyLog.e(TPDLProxyUtils.byteArrayToString(paramArrayOfByte1), paramInt2, TPDLProxyUtils.byteArrayToString(paramArrayOfByte2), TPDLProxyUtils.byteArrayToString(paramArrayOfByte3));
-      AppMethodBeat.o(191534);
+      AppMethodBeat.o(190174);
       return;
     }
     if (paramInt1 == 20)
     {
       TPDLProxyLog.w(TPDLProxyUtils.byteArrayToString(paramArrayOfByte1), paramInt2, TPDLProxyUtils.byteArrayToString(paramArrayOfByte2), TPDLProxyUtils.byteArrayToString(paramArrayOfByte3));
-      AppMethodBeat.o(191534);
+      AppMethodBeat.o(190174);
       return;
     }
     if ((paramInt1 != 40) && (paramInt1 == 50))
     {
       TPDLProxyLog.d(TPDLProxyUtils.byteArrayToString(paramArrayOfByte1), paramInt2, TPDLProxyUtils.byteArrayToString(paramArrayOfByte2), TPDLProxyUtils.byteArrayToString(paramArrayOfByte3));
-      AppMethodBeat.o(191534);
+      AppMethodBeat.o(190174);
       return;
     }
     TPDLProxyLog.i(TPDLProxyUtils.byteArrayToString(paramArrayOfByte1), paramInt2, TPDLProxyUtils.byteArrayToString(paramArrayOfByte2), TPDLProxyUtils.byteArrayToString(paramArrayOfByte3));
-    AppMethodBeat.o(191534);
+    AppMethodBeat.o(190174);
   }
   
   private static void nativeMessageCallback(int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
-    AppMethodBeat.i(191531);
+    AppMethodBeat.i(190171);
     TPListenerManager.getInstance().handleCallbackMessage(paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
-    AppMethodBeat.o(191531);
+    AppMethodBeat.o(190171);
   }
   
   private static String nativeStringMessageCallback(int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
-    AppMethodBeat.i(191533);
+    AppMethodBeat.i(190173);
     paramObject1 = TPListenerManager.getInstance().handleStringCallbackMessage(paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
-    AppMethodBeat.o(191533);
+    AppMethodBeat.o(190173);
     return paramObject1;
   }
   
@@ -84,13 +84,13 @@ public class TPDownloadProxyNative
   
   public String getNativeVersion()
   {
-    AppMethodBeat.i(191536);
+    AppMethodBeat.i(190176);
     String str = "1.1.0.00016";
     if (isLoadDownloadProxySucceed) {
       str = TPDLProxyUtils.byteArrayToString(getVersion());
     }
     TPDLProxyLog.i("TPDownloadProxyNative", 0, "tpdlnative", "get native version:".concat(String.valueOf(str)));
-    AppMethodBeat.o(191536);
+    AppMethodBeat.o(190176);
     return str;
   }
   
@@ -100,7 +100,7 @@ public class TPDownloadProxyNative
   
   public boolean isNativeLoaded()
   {
-    AppMethodBeat.i(191535);
+    AppMethodBeat.i(190175);
     if (!isLoadDownloadProxySucceed) {}
     try
     {
@@ -128,7 +128,7 @@ public class TPDownloadProxyNative
             TPDLProxyLog.i("TPDownloadProxyNative", 0, "tpdlnative", "system so load success!");
           }
           boolean bool = isLoadDownloadProxySucceed;
-          AppMethodBeat.o(191535);
+          AppMethodBeat.o(190175);
           return bool;
           String str = "1";
           continue;
@@ -153,14 +153,14 @@ public class TPDownloadProxyNative
   
   public boolean isReadyForWork()
   {
-    AppMethodBeat.i(191538);
+    AppMethodBeat.i(190178);
     if (isLoadDownloadProxySucceed)
     {
       boolean bool = isNativeReadyForWork();
-      AppMethodBeat.o(191538);
+      AppMethodBeat.o(190178);
       return bool;
     }
-    AppMethodBeat.o(191538);
+    AppMethodBeat.o(190178);
     return false;
   }
   
@@ -179,10 +179,10 @@ public class TPDownloadProxyNative
   
   public void setLibLoader(ITPDLProxyNativeLibLoader paramITPDLProxyNativeLibLoader)
   {
-    AppMethodBeat.i(191537);
+    AppMethodBeat.i(190177);
     TPDLProxyLog.i("TPDownloadProxyNative", 0, "tpdlnative", "set third module so loader!!!");
     this.mLibLoader = paramITPDLProxyNativeLibLoader;
-    AppMethodBeat.o(191537);
+    AppMethodBeat.o(190177);
   }
   
   public native int setMaxStorageSizeMB(int paramInt, long paramLong);
@@ -209,9 +209,9 @@ public class TPDownloadProxyNative
     
     static
     {
-      AppMethodBeat.i(191529);
+      AppMethodBeat.i(190169);
       INSTANCE = new TPDownloadProxyNative(null);
-      AppMethodBeat.o(191529);
+      AppMethodBeat.o(190169);
     }
   }
 }

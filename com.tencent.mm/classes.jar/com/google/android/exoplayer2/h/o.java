@@ -29,11 +29,11 @@ public final class o
   private static final Pattern CONTENT_RANGE_HEADER;
   private static final AtomicReference<byte[]> skipBufferReference;
   private final boolean allowCrossProtocolRedirects;
-  private j bmN;
-  private final com.google.android.exoplayer2.i.o<String> buW;
-  private final s.f buX;
-  private final s.f buY;
-  private final w<? super o> bur;
+  private final w<? super o> bEG;
+  private final com.google.android.exoplayer2.i.o<String> bFl;
+  private final s.f bFm;
+  private final s.f bFn;
+  private j bxi;
   private long bytesRead;
   private long bytesSkipped;
   private long bytesToRead;
@@ -63,13 +63,13 @@ public final class o
       throw paramString;
     }
     this.userAgent = paramString;
-    this.buW = null;
-    this.bur = paramw;
-    this.buY = new s.f();
+    this.bFl = null;
+    this.bEG = paramw;
+    this.bFn = new s.f();
     this.connectTimeoutMillis = paramInt1;
     this.readTimeoutMillis = paramInt2;
     this.allowCrossProtocolRedirects = paramBoolean;
-    this.buX = paramf;
+    this.bFm = paramf;
     AppMethodBeat.o(93069);
   }
   
@@ -80,16 +80,16 @@ public final class o
     localHttpURLConnection.setConnectTimeout(this.connectTimeoutMillis);
     localHttpURLConnection.setReadTimeout(this.readTimeoutMillis);
     Object localObject;
-    if (this.buX != null)
+    if (this.bFm != null)
     {
-      paramURL = this.buX.getSnapshot().entrySet().iterator();
+      paramURL = this.bFm.getSnapshot().entrySet().iterator();
       while (paramURL.hasNext())
       {
         localObject = (Map.Entry)paramURL.next();
         localHttpURLConnection.setRequestProperty((String)((Map.Entry)localObject).getKey(), (String)((Map.Entry)localObject).getValue());
       }
     }
-    paramURL = this.buY.getSnapshot().entrySet().iterator();
+    paramURL = this.bFn.getSnapshot().entrySet().iterator();
     while (paramURL.hasNext())
     {
       localObject = (Map.Entry)paramURL.next();
@@ -219,7 +219,7 @@ public final class o
   public final long a(j paramj)
   {
     AppMethodBeat.i(93071);
-    this.bmN = paramj;
+    this.bxi = paramj;
     this.bytesRead = 0L;
     this.bytesSkipped = 0L;
     long l1;
@@ -228,7 +228,7 @@ public final class o
     try
     {
       localObject1 = new URL(paramj.uri.toString());
-      arrayOfByte = paramj.buv;
+      arrayOfByte = paramj.bEK;
       l1 = paramj.position;
       l2 = paramj.length;
       bool = paramj.isFlagSet(1);
@@ -314,7 +314,7 @@ public final class o
       AppMethodBeat.o(93071);
       throw ((Throwable)localObject2);
       String str = this.connection.getContentType();
-      if ((this.buW != null) && (!this.buW.evaluate(str)))
+      if ((this.bFl != null) && (!this.bFl.evaluate(str)))
       {
         closeConnectionQuietly();
         paramj = new s.d(str, paramj);
@@ -326,10 +326,10 @@ public final class o
         l1 = paramj.position;
         this.bytesToSkip = l1;
         if (paramj.isFlagSet(1)) {
-          break label715;
+          break label717;
         }
         if (paramj.length == -1L) {
-          break label671;
+          break label673;
         }
         this.bytesToRead = paramj.length;
       }
@@ -339,8 +339,8 @@ public final class o
         {
           this.inputStream = this.connection.getInputStream();
           this.opened = true;
-          if (this.bur != null) {
-            this.bur.ve();
+          if (this.bEG != null) {
+            this.bEG.a(this, paramj);
           }
           l1 = this.bytesToRead;
           AppMethodBeat.o(93071);
@@ -348,8 +348,8 @@ public final class o
         }
         catch (IOException localIOException3)
         {
-          label671:
-          label715:
+          label673:
+          label717:
           closeConnectionQuietly();
           paramj = new s.c(localIOException3, paramj, 1);
           AppMethodBeat.o(93071);
@@ -385,7 +385,7 @@ public final class o
       {
         localObject1 = this.connection;
         if (this.bytesToRead != -1L) {
-          break label130;
+          break label131;
         }
         l1 = this.bytesToRead;
         if (x.SDK_INT != 19)
@@ -413,7 +413,7 @@ public final class o
         {
           label79:
           long l2;
-          label130:
+          label131:
           Object localObject3;
           continue;
         }
@@ -424,7 +424,7 @@ public final class o
         }
         catch (IOException localIOException)
         {
-          s.c localc = new s.c(localIOException, this.bmN, 3);
+          s.c localc = new s.c(localIOException, this.bxi, 3);
           AppMethodBeat.o(93073);
           throw localc;
         }
@@ -452,8 +452,8 @@ public final class o
       if (this.opened)
       {
         this.opened = false;
-        if (this.bur != null) {
-          this.bur.vf();
+        if (this.bEG != null) {
+          this.bEG.ah(this);
         }
       }
       AppMethodBeat.o(93073);
@@ -482,7 +482,7 @@ public final class o
       try
       {
         if (this.bytesSkipped == this.bytesToSkip) {
-          break label199;
+          break label200;
         }
         byte[] arrayOfByte2 = (byte[])skipBufferReference.getAndSet(null);
         arrayOfByte1 = arrayOfByte2;
@@ -503,7 +503,7 @@ public final class o
       }
       catch (IOException paramArrayOfByte)
       {
-        paramArrayOfByte = new s.c(paramArrayOfByte, this.bmN, 2);
+        paramArrayOfByte = new s.c(paramArrayOfByte, this.bxi, 2);
         AppMethodBeat.o(93072);
         throw paramArrayOfByte;
       }
@@ -514,12 +514,12 @@ public final class o
         throw paramArrayOfByte;
       }
       this.bytesSkipped += i;
-      if (this.bur != null) {
-        this.bur.eV(i);
+      if (this.bEG != null) {
+        this.bEG.e(this, i);
       }
     }
     skipBufferReference.set(arrayOfByte1);
-    label199:
+    label200:
     if (paramInt2 == 0)
     {
       AppMethodBeat.o(93072);
@@ -549,8 +549,8 @@ public final class o
       return -1;
     }
     this.bytesRead += paramInt1;
-    if (this.bur != null) {
-      this.bur.eV(paramInt1);
+    if (this.bEG != null) {
+      this.bEG.e(this, paramInt1);
     }
     AppMethodBeat.o(93072);
     return paramInt1;

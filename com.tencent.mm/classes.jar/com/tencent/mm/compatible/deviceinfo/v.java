@@ -8,74 +8,74 @@ import android.hardware.Camera.PreviewCallback;
 import android.view.SurfaceHolder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class v
 {
-  private static final AtomicInteger fHA;
-  private static final AtomicInteger fHB;
-  public Camera fHC;
-  public boolean fHD;
+  private static final AtomicInteger gba;
+  private static final AtomicInteger gbb;
+  public Camera gbc;
+  public volatile boolean gbd;
   
   static
   {
     AppMethodBeat.i(155758);
-    fHA = new AtomicInteger(0);
-    fHB = new AtomicInteger(0);
+    gba = new AtomicInteger(0);
+    gbb = new AtomicInteger(0);
     AppMethodBeat.o(155758);
   }
   
   public v(Camera paramCamera)
   {
     AppMethodBeat.i(155744);
-    this.fHD = false;
-    this.fHC = paramCamera;
+    this.gbd = false;
+    this.gbc = paramCamera;
     if (paramCamera != null)
     {
-      fHA.incrementAndGet();
-      ac.m("MicroMsg.MCamera", "init MCamera, initCount:%s, releaseCount:%s, isCameraRelease:%s", new Object[] { fHA, fHB, Boolean.valueOf(this.fHD) });
-      if (fHA.get() - fHB.get() > 1)
+      gba.incrementAndGet();
+      ad.m("MicroMsg.MCamera", "init MCamera, initCount:%s, releaseCount:%s, isCameraRelease:%s", new Object[] { gba, gbb, Boolean.valueOf(this.gbd) });
+      if (gba.get() - gbb.get() > 1)
       {
-        ac.i("MicroMsg.MCamera", "MCamera leak, do report, current process:%s", new Object[] { ai.getProcessName() });
-        paramCamera = a.fCO;
-        a.oP(61L);
-        if (!ai.ciE()) {
+        ad.i("MicroMsg.MCamera", "MCamera leak, do report, current process:%s", new Object[] { aj.getProcessName() });
+        paramCamera = a.fWc;
+        a.qP(61L);
+        if (!aj.cnC()) {
           break label148;
         }
-        paramCamera = a.fCO;
-        a.oP(62L);
+        paramCamera = a.fWc;
+        a.qP(62L);
       }
       for (;;)
       {
-        fHA.set(0);
-        fHB.set(0);
-        this.fHD = false;
+        gba.set(0);
+        gbb.set(0);
+        this.gbd = false;
         AppMethodBeat.o(155744);
         return;
         label148:
-        if (ai.eVd())
+        if (aj.fkI())
         {
-          paramCamera = a.fCO;
-          a.oP(63L);
+          paramCamera = a.fWc;
+          a.qP(63L);
         }
-        else if (ai.isAppBrandProcess())
+        else if (aj.isAppBrandProcess())
         {
-          paramCamera = a.fCO;
-          a.oP(64L);
+          paramCamera = a.fWc;
+          a.qP(64L);
         }
       }
     }
-    ac.m("MicroMsg.MCamera", "init MCamera with null camera!!!", new Object[0]);
+    ad.m("MicroMsg.MCamera", "init MCamera with null camera!!!", new Object[0]);
     AppMethodBeat.o(155744);
   }
   
   public final void addCallbackBuffer(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(155757);
-    if (this.fHC != null) {
-      this.fHC.addCallbackBuffer(paramArrayOfByte);
+    if (this.gbc != null) {
+      this.gbc.addCallbackBuffer(paramArrayOfByte);
     }
     AppMethodBeat.o(155757);
   }
@@ -83,13 +83,13 @@ public final class v
   public final void autoFocus(final Camera.AutoFocusCallback paramAutoFocusCallback)
   {
     AppMethodBeat.i(155752);
-    if (this.fHC != null) {
-      this.fHC.autoFocus(new Camera.AutoFocusCallback()
+    if (this.gbc != null) {
+      this.gbc.autoFocus(new Camera.AutoFocusCallback()
       {
         public final void onAutoFocus(boolean paramAnonymousBoolean, Camera paramAnonymousCamera)
         {
           AppMethodBeat.i(160384);
-          if (!v.this.fHD) {
+          if (!v.this.gbd) {
             paramAutoFocusCallback.onAutoFocus(paramAnonymousBoolean, paramAnonymousCamera);
           }
           AppMethodBeat.o(160384);
@@ -102,8 +102,8 @@ public final class v
   public final void cancelAutoFocus()
   {
     AppMethodBeat.i(155753);
-    if (this.fHC != null) {
-      this.fHC.cancelAutoFocus();
+    if (this.gbc != null) {
+      this.gbc.cancelAutoFocus();
     }
     AppMethodBeat.o(155753);
   }
@@ -111,9 +111,9 @@ public final class v
   public final Camera.Parameters getParameters()
   {
     AppMethodBeat.i(155745);
-    if (this.fHC != null)
+    if (this.gbc != null)
     {
-      Camera.Parameters localParameters = this.fHC.getParameters();
+      Camera.Parameters localParameters = this.gbc.getParameters();
       AppMethodBeat.o(155745);
       return localParameters;
     }
@@ -124,22 +124,22 @@ public final class v
   public final void release()
   {
     AppMethodBeat.i(155754);
-    if (this.fHC != null) {
+    if (this.gbc != null) {
       try
       {
-        this.fHD = true;
-        this.fHC.release();
+        this.gbd = true;
+        this.gbc.release();
         return;
       }
       catch (Exception localException)
       {
-        ac.i("MicroMsg.MCamera", "release camera failed cause sometimes native crash while", new Object[] { localException.fillInStackTrace() });
+        ad.i("MicroMsg.MCamera", "release camera failed cause sometimes native crash while", new Object[] { localException.fillInStackTrace() });
         return;
       }
       finally
       {
-        fHB.incrementAndGet();
-        ac.m("MicroMsg.MCamera", "release MCamera, initCount: %s, releaseCount: %s,isCameraRelease %s", new Object[] { fHA, fHB, Boolean.valueOf(this.fHD) });
+        gbb.incrementAndGet();
+        ad.m("MicroMsg.MCamera", "release MCamera, initCount: %s, releaseCount: %s,isCameraRelease %s", new Object[] { gba, gbb, Boolean.valueOf(this.gbd) });
         AppMethodBeat.o(155754);
       }
     }
@@ -149,8 +149,8 @@ public final class v
   public final void setDisplayOrientation(int paramInt)
   {
     AppMethodBeat.i(155750);
-    if (this.fHC != null) {
-      this.fHC.setDisplayOrientation(paramInt);
+    if (this.gbc != null) {
+      this.gbc.setDisplayOrientation(paramInt);
     }
     AppMethodBeat.o(155750);
   }
@@ -158,8 +158,8 @@ public final class v
   public final void setParameters(Camera.Parameters paramParameters)
   {
     AppMethodBeat.i(155746);
-    if (this.fHC != null) {
-      this.fHC.setParameters(paramParameters);
+    if (this.gbc != null) {
+      this.gbc.setParameters(paramParameters);
     }
     AppMethodBeat.o(155746);
   }
@@ -167,8 +167,8 @@ public final class v
   public final void setPreviewCallback(Camera.PreviewCallback paramPreviewCallback)
   {
     AppMethodBeat.i(155755);
-    if (this.fHC != null) {
-      this.fHC.setPreviewCallback(paramPreviewCallback);
+    if (this.gbc != null) {
+      this.gbc.setPreviewCallback(paramPreviewCallback);
     }
     AppMethodBeat.o(155755);
   }
@@ -176,8 +176,8 @@ public final class v
   public final void setPreviewCallbackWithBuffer(Camera.PreviewCallback paramPreviewCallback)
   {
     AppMethodBeat.i(155756);
-    if (this.fHC != null) {
-      this.fHC.setPreviewCallbackWithBuffer(paramPreviewCallback);
+    if (this.gbc != null) {
+      this.gbc.setPreviewCallbackWithBuffer(paramPreviewCallback);
     }
     AppMethodBeat.o(155756);
   }
@@ -185,8 +185,8 @@ public final class v
   public final void setPreviewDisplay(SurfaceHolder paramSurfaceHolder)
   {
     AppMethodBeat.i(155747);
-    if (this.fHC != null) {
-      this.fHC.setPreviewDisplay(paramSurfaceHolder);
+    if (this.gbc != null) {
+      this.gbc.setPreviewDisplay(paramSurfaceHolder);
     }
     AppMethodBeat.o(155747);
   }
@@ -194,8 +194,8 @@ public final class v
   public final void setPreviewTexture(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(155748);
-    if (this.fHC != null) {
-      this.fHC.setPreviewTexture(paramSurfaceTexture);
+    if (this.gbc != null) {
+      this.gbc.setPreviewTexture(paramSurfaceTexture);
     }
     AppMethodBeat.o(155748);
   }
@@ -203,8 +203,8 @@ public final class v
   public final void startPreview()
   {
     AppMethodBeat.i(155749);
-    if (this.fHC != null) {
-      this.fHC.startPreview();
+    if (this.gbc != null) {
+      this.gbc.startPreview();
     }
     AppMethodBeat.o(155749);
   }
@@ -212,15 +212,15 @@ public final class v
   public final void stopPreview()
   {
     AppMethodBeat.i(155751);
-    if (this.fHC != null) {
-      this.fHC.stopPreview();
+    if (this.gbc != null) {
+      this.gbc.stopPreview();
     }
     AppMethodBeat.o(155751);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.v
  * JD-Core Version:    0.7.0.1
  */

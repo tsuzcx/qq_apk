@@ -1,117 +1,104 @@
 package com.tencent.mm.plugin.finder.report;
 
-import com.tencent.e.i;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
-import d.l;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.finder.event.base.b;
+import com.tencent.mm.plugin.finder.event.base.c;
+import com.tencent.mm.plugin.finder.event.base.f;
+import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/report/IDKey1371;", "", "()V", "CAPTURE_PHOTO", "", "CAPTURE_PHOTO_BACK", "CAPTURE_PHOTO_FRONT", "CAPTURE_PHOTO_WITH_BEAUTY", "ID", "SINGLE_VIDEO_BACK", "SINGLE_VIDEO_BEAUTY", "SINGLE_VIDEO_FRONT", "SINGLE_VIDEO_LENGTH_0_5", "SINGLE_VIDEO_LENGTH_10_15", "SINGLE_VIDEO_LENGTH_15_20", "SINGLE_VIDEO_LENGTH_20_30", "SINGLE_VIDEO_LENGTH_30_40", "SINGLE_VIDEO_LENGTH_40_50", "SINGLE_VIDEO_LENGTH_50_60", "SINGLE_VIDEO_LENGTH_5_10", "SINGLE_VIDEO_LENGTH_TOTAL", "SINGLE_VIDEO_NOT_ENOUGH", "SINGLE_VIDEO_SUCCESS", "SINGLE_VIDEO_TIME", "SUBVIDEO_AUTO_FINISH", "SUBVIDEO_CLICK_FINISH", "SUBVIDEO_NUM_0_3", "SUBVIDEO_NUM_10_15", "SUBVIDEO_NUM_15_20", "SUBVIDEO_NUM_3_6", "SUBVIDEO_NUM_6_10", "SUBVIDEO_PREPARE_DELETE", "SUBVIDEO_PRERARE_EXIT", "SUBVIDEO_SINGLE_LENGTH_0_5", "SUBVIDEO_SINGLE_LENGTH_10_15", "SUBVIDEO_SINGLE_LENGTH_15_20", "SUBVIDEO_SINGLE_LENGTH_20_30", "SUBVIDEO_SINGLE_LENGTH_30_40", "SUBVIDEO_SINGLE_LENGTH_40_50", "SUBVIDEO_SINGLE_LENGTH_50_60", "SUBVIDEO_SINGLE_LENGTH_5_10", "SUBVIDEO_SURE_DELETE", "SUBVIDEO_SURE_EXIT", "SUBVIDEO_TIME", "SUBVIDEO_TIME_NOT_ENOUGH", "SUBVIDEO_TIME_SUCCESS", "SUBVIDEO_TIME_TOTAL_DURATION", "SUBVIDEO_TOTAL_LENGTH_0_5", "SUBVIDEO_TOTAL_LENGTH_10_15", "SUBVIDEO_TOTAL_LENGTH_15_20", "SUBVIDEO_TOTAL_LENGTH_20_30", "SUBVIDEO_TOTAL_LENGTH_30_40", "SUBVIDEO_TOTAL_LENGTH_40_50", "SUBVIDEO_TOTAL_LENGTH_50_60", "SUBVIDEO_TOTAL_LENGTH_5_10", "SUBVIDEO_TOTAL_NUM", "capturePhoto", "", "capturePhotoBack", "capturePhotoCamera", "isBack", "", "capturePhotoFront", "capturePhotoWithBeauty", "captureSingleVideo", "captureSingleVideoBack", "captureSingleVideoBeauty", "captureSingleVideoCamera", "captureSingleVideoDuration", "durationMs", "captureSingleVideoFront", "captureSingleVideoNotEnough", "captureSingleVideoSuccess", "captureSingleVideoTotal", "report", "key", "value", "subVideoAutoFinish", "subVideoClickFinish", "subVideoDuration", "fileList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "subVideoNotEnough", "subVideoNum", "num", "subVideoPrepareDelete", "subVideoPrepareExit", "subVideoSingleTime", "subVideoSuccess", "subVideoSureDelete", "subVideoSureExit", "subVideoTime", "subVideoTotalTime", "plugin-finder_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedFlowEventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber;", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "TAG", "", "createEvent", "Lcom/tencent/mm/plugin/finder/event/base/TwoFeedFlowScrollEvent;", "newState", "", "handleEvent", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
 public final class o
+  extends f
 {
-  public static final o rAq;
+  private final String TAG = "Finder.FinderTwoFeedFlowEventSubscriber";
   
-  static
+  public o(c paramc)
   {
-    AppMethodBeat.i(202834);
-    rAq = new o();
-    AppMethodBeat.o(202834);
+    super(paramc);
   }
   
-  public static void M(long paramLong1, long paramLong2)
+  public final b h(RecyclerView paramRecyclerView, int paramInt)
   {
-    AppMethodBeat.i(202832);
-    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(1371L, paramLong1, paramLong2, false);
-    AppMethodBeat.o(202832);
-  }
-  
-  public static void W(ArrayList<String> paramArrayList)
-  {
-    AppMethodBeat.i(202831);
-    k.h(paramArrayList, "fileList");
-    com.tencent.e.h.JZN.aS((Runnable)new o.a(paramArrayList));
-    AppMethodBeat.o(202831);
-  }
-  
-  public static void lD(boolean paramBoolean)
-  {
-    AppMethodBeat.i(202828);
-    if (paramBoolean)
+    AppMethodBeat.i(203348);
+    d.g.b.p.h(paramRecyclerView, "recyclerView");
+    Object localObject1 = super.h(paramRecyclerView, paramInt);
+    if (localObject1 == null)
     {
-      M(202L, 1L);
-      AppMethodBeat.o(202828);
-      return;
+      paramRecyclerView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.event.base.TwoFeedFlowScrollEvent");
+      AppMethodBeat.o(203348);
+      throw paramRecyclerView;
     }
-    M(201L, 1L);
-    AppMethodBeat.o(202828);
-  }
-  
-  public static void lE(boolean paramBoolean)
-  {
-    AppMethodBeat.i(202829);
-    if (paramBoolean)
+    localObject1 = (com.tencent.mm.plugin.finder.event.base.l)localObject1;
+    Object localObject2 = paramRecyclerView.getLayoutManager();
+    if (localObject2 == null)
     {
-      M(214L, 1L);
-      AppMethodBeat.o(202829);
-      return;
+      paramRecyclerView = new v("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager");
+      AppMethodBeat.o(203348);
+      throw paramRecyclerView;
     }
-    M(213L, 1L);
-    AppMethodBeat.o(202829);
-  }
-  
-  public static void uF(long paramLong)
-  {
-    AppMethodBeat.i(202830);
-    M(218L, paramLong);
-    if (paramLong < 5000L)
+    Object localObject3 = (StaggeredGridLayoutManager)localObject2;
+    localObject2 = ((StaggeredGridLayoutManager)localObject3).n(null);
+    localObject3 = ((StaggeredGridLayoutManager)localObject3).mA();
+    int i;
+    if (localObject2 != null)
     {
-      M(220L, 1L);
-      AppMethodBeat.o(202830);
-      return;
+      paramInt = localObject2[0];
+      if (localObject2 == null) {
+        break label274;
+      }
+      i = localObject2[1];
+      label118:
+      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRd = Math.min(paramInt, i);
+      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRf = Math.max(localObject3[0], localObject3[1]);
+      localObject2 = com.tencent.mm.plugin.finder.utils.p.sMo;
+      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRq = com.tencent.mm.plugin.finder.utils.p.a(((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRd, ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRf, paramRecyclerView);
+      if ((this.obN != ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRd) || (this.obO != ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRf))
+      {
+        if ((this.obN != 2147483647) && (this.obO != 2147483647)) {
+          break label279;
+        }
+        i = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRd;
+        paramInt = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRf;
+      }
     }
-    if (paramLong < 10000L)
+    for (;;)
     {
-      M(221L, 1L);
-      AppMethodBeat.o(202830);
-      return;
+      localObject2 = com.tencent.mm.plugin.finder.utils.p.sMo;
+      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRp = com.tencent.mm.plugin.finder.utils.p.a(i, paramInt, paramRecyclerView);
+      this.obN = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRd;
+      this.obO = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRf;
+      paramRecyclerView = (b)localObject1;
+      AppMethodBeat.o(203348);
+      return paramRecyclerView;
+      paramInt = 0;
+      break;
+      label274:
+      i = 0;
+      break label118;
+      label279:
+      if (((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRd < this.obN) {}
+      for (paramInt = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRd;; paramInt = this.obN)
+      {
+        if (((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRf <= this.obO) {
+          break label332;
+        }
+        j = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rRf;
+        i = paramInt;
+        paramInt = j;
+        break;
+      }
+      label332:
+      int j = this.obO;
+      i = paramInt;
+      paramInt = j;
     }
-    if (paramLong < 15000L)
-    {
-      M(222L, 1L);
-      AppMethodBeat.o(202830);
-      return;
-    }
-    if (paramLong < 20000L)
-    {
-      M(223L, 1L);
-      AppMethodBeat.o(202830);
-      return;
-    }
-    if (paramLong < 30000L)
-    {
-      M(224L, 1L);
-      AppMethodBeat.o(202830);
-      return;
-    }
-    if (paramLong < 40000L)
-    {
-      M(225L, 1L);
-      AppMethodBeat.o(202830);
-      return;
-    }
-    if (paramLong < 50000L)
-    {
-      M(226L, 1L);
-      AppMethodBeat.o(202830);
-      return;
-    }
-    M(227L, 1L);
-    AppMethodBeat.o(202830);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.o
  * JD-Core Version:    0.7.0.1
  */

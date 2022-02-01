@@ -7,8 +7,8 @@ import java.io.InputStream;
 public final class i
   extends InputStream
 {
-  private final g aXs;
-  private final j bmN;
+  private final g bhN;
+  private final j bxi;
   private boolean closed;
   private boolean opened;
   private final byte[] singleByteArray;
@@ -19,8 +19,8 @@ public final class i
     AppMethodBeat.i(93037);
     this.opened = false;
     this.closed = false;
-    this.aXs = paramg;
-    this.bmN = paramj;
+    this.bhN = paramg;
+    this.bxi = paramj;
     this.singleByteArray = new byte[1];
     AppMethodBeat.o(93037);
   }
@@ -30,7 +30,7 @@ public final class i
     AppMethodBeat.i(93042);
     if (!this.opened)
     {
-      this.aXs.a(this.bmN);
+      this.bhN.a(this.bxi);
       this.opened = true;
     }
     AppMethodBeat.o(93042);
@@ -41,7 +41,7 @@ public final class i
     AppMethodBeat.i(93041);
     if (!this.closed)
     {
-      this.aXs.close();
+      this.bhN.close();
       this.closed = true;
     }
     AppMethodBeat.o(93041);
@@ -76,7 +76,7 @@ public final class i
     {
       a.checkState(bool);
       checkOpened();
-      paramInt1 = this.aXs.read(paramArrayOfByte, paramInt1, paramInt2);
+      paramInt1 = this.bhN.read(paramArrayOfByte, paramInt1, paramInt2);
       if (paramInt1 != -1) {
         break;
       }

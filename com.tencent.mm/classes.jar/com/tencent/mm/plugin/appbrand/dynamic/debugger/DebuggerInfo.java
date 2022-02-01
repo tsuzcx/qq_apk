@@ -9,9 +9,9 @@ public class DebuggerInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<DebuggerInfo> CREATOR;
-  public boolean jLS;
-  public boolean jLT;
-  public boolean jLU;
+  public boolean kgd;
+  public boolean kge;
+  public boolean kgf;
   
   static
   {
@@ -29,17 +29,17 @@ public class DebuggerInfo
   {
     int i = 1;
     AppMethodBeat.i(121283);
-    if (this.jLS)
+    if (this.kgd)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.jLT) {
+      if (!this.kge) {
         break label60;
       }
       paramInt = 1;
       label30:
       paramParcel.writeInt(paramInt);
-      if (!this.jLU) {
+      if (!this.kgf) {
         break label65;
       }
     }

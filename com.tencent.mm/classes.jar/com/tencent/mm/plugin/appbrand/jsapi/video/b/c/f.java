@@ -4,7 +4,7 @@ import com.tencent.mm.vfs.e;
 
 public abstract interface f
 {
-  public abstract e cw(String paramString);
+  public abstract e dy(String paramString);
 }
 
 

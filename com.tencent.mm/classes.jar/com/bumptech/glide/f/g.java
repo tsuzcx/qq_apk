@@ -10,6 +10,7 @@ import com.bumptech.glide.c.b.k;
 import com.bumptech.glide.c.b.l;
 import com.bumptech.glide.c.b.p;
 import com.bumptech.glide.c.b.u;
+import com.bumptech.glide.h.a.a.a;
 import com.bumptech.glide.h.a.a.c;
 import com.bumptech.glide.h.a.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -19,29 +20,29 @@ import java.util.List;
 public final class g<R>
   implements com.bumptech.glide.f.a.d, b, f, a.c
 {
-  private static final l.a<g<?>> aGl;
-  private static final boolean aLE;
-  private com.bumptech.glide.c.b.j aAs;
-  private com.bumptech.glide.e aAw;
-  private Class<R> aBm;
-  private e aBn;
-  private Object aBp;
-  private d<R> aBq;
-  private u<R> aEa;
-  private com.bumptech.glide.g aEt;
-  private final com.bumptech.glide.h.a.b aEz;
-  private boolean aLD;
-  private d<R> aLF;
-  private c aLG;
-  private com.bumptech.glide.f.a.e<R> aLH;
-  private com.bumptech.glide.f.b.c<? super R> aLI;
-  private j.d aLJ;
-  private a aLK;
-  private Drawable aLL;
-  private Drawable aLt;
-  private int aLv;
-  private int aLw;
-  private Drawable aLy;
+  private static final l.a<g<?>> aIc;
+  private static final boolean aNv;
+  private com.bumptech.glide.c.b.j aCj;
+  private com.bumptech.glide.e aCn;
+  private Class<R> aDd;
+  private e aDe;
+  private Object aDg;
+  private d<R> aDh;
+  private u<R> aFR;
+  private com.bumptech.glide.g aGk;
+  private final com.bumptech.glide.h.a.b aGq;
+  private j.d aNA;
+  private a aNB;
+  private Drawable aNC;
+  private Drawable aNk;
+  private int aNm;
+  private int aNn;
+  private Drawable aNp;
+  private boolean aNu;
+  private d<R> aNw;
+  private c aNx;
+  private com.bumptech.glide.f.a.e<R> aNy;
+  private com.bumptech.glide.f.b.c<? super R> aNz;
   private Context context;
   private int height;
   private long startTime;
@@ -51,25 +52,25 @@ public final class g<R>
   static
   {
     AppMethodBeat.i(77686);
-    aGl = com.bumptech.glide.h.a.a.a(new g.1());
-    aLE = Log.isLoggable("Request", 2);
+    aIc = com.bumptech.glide.h.a.a.a(new a.a() {});
+    aNv = Log.isLoggable("Request", 2);
     AppMethodBeat.o(77686);
   }
   
   g()
   {
     AppMethodBeat.i(77661);
-    if (aLE) {}
+    if (aNv) {}
     for (String str = String.valueOf(super.hashCode());; str = null)
     {
       this.tag = str;
-      this.aEz = new b.a();
+      this.aGq = new b.a();
       AppMethodBeat.o(77661);
       return;
     }
   }
   
-  private void V(String paramString)
+  private void U(String paramString)
   {
     AppMethodBeat.i(77685);
     new StringBuilder().append(paramString).append(" this: ").append(this.tag);
@@ -79,26 +80,26 @@ public final class g<R>
   public static <R> g<R> a(Context paramContext, com.bumptech.glide.e parame, Object paramObject, Class<R> paramClass, e parame1, int paramInt1, int paramInt2, com.bumptech.glide.g paramg, com.bumptech.glide.f.a.e<R> parame2, d<R> paramd1, d<R> paramd2, c paramc, com.bumptech.glide.c.b.j paramj, com.bumptech.glide.f.b.c<? super R> paramc1)
   {
     AppMethodBeat.i(77660);
-    g localg2 = (g)aGl.acquire();
+    g localg2 = (g)aIc.acquire();
     g localg1 = localg2;
     if (localg2 == null) {
       localg1 = new g();
     }
     localg1.context = paramContext;
-    localg1.aAw = parame;
-    localg1.aBp = paramObject;
-    localg1.aBm = paramClass;
-    localg1.aBn = parame1;
-    localg1.aLw = paramInt1;
-    localg1.aLv = paramInt2;
-    localg1.aEt = paramg;
-    localg1.aLH = parame2;
-    localg1.aLF = paramd1;
-    localg1.aBq = paramd2;
-    localg1.aLG = paramc;
-    localg1.aAs = paramj;
-    localg1.aLI = paramc1;
-    localg1.aLK = a.aLM;
+    localg1.aCn = parame;
+    localg1.aDg = paramObject;
+    localg1.aDd = paramClass;
+    localg1.aDe = parame1;
+    localg1.aNn = paramInt1;
+    localg1.aNm = paramInt2;
+    localg1.aGk = paramg;
+    localg1.aNy = parame2;
+    localg1.aNw = paramd1;
+    localg1.aDh = paramd2;
+    localg1.aNx = paramc;
+    localg1.aCj = paramj;
+    localg1.aNz = paramc1;
+    localg1.aNB = a.aND;
     AppMethodBeat.o(77660);
     return localg1;
   }
@@ -106,44 +107,44 @@ public final class g<R>
   private void a(p paramp, int paramInt)
   {
     AppMethodBeat.i(77683);
-    this.aEz.qe();
-    int i = this.aAw.aAI;
+    this.aGq.qw();
+    int i = this.aCn.aCz;
     if (i <= paramInt)
     {
-      new StringBuilder("Load failed for ").append(this.aBp).append(" with size [").append(this.width).append("x").append(this.height).append("]");
+      new StringBuilder("Load failed for ").append(this.aDg).append(" with size [").append(this.width).append("x").append(this.height).append("]");
       if (i <= 4) {
-        paramp.oA();
+        paramp.oS();
       }
     }
-    this.aLJ = null;
-    this.aLK = a.aLQ;
-    this.aLD = true;
+    this.aNA = null;
+    this.aNB = a.aNH;
+    this.aNu = true;
     try
     {
-      if (this.aBq != null)
+      if (this.aDh != null)
       {
-        paramp = this.aBq;
-        pQ();
-        if (paramp.pB()) {}
+        paramp = this.aDh;
+        qi();
+        if (paramp.pT()) {}
       }
-      else if (this.aLF != null)
+      else if (this.aNw != null)
       {
-        paramp = this.aLF;
-        pQ();
-        if (paramp.pB()) {}
+        paramp = this.aNw;
+        qi();
+        if (paramp.pT()) {}
       }
       else
       {
-        pN();
+        qf();
       }
-      this.aLD = false;
-      pS();
+      this.aNu = false;
+      qk();
       AppMethodBeat.o(77683);
       return;
     }
     finally
     {
-      this.aLD = false;
+      this.aNu = false;
       AppMethodBeat.o(77683);
     }
   }
@@ -151,28 +152,28 @@ public final class g<R>
   private void a(u<R> paramu, R paramR, com.bumptech.glide.c.a parama)
   {
     AppMethodBeat.i(77681);
-    pQ();
-    this.aLK = a.aLP;
-    this.aEa = paramu;
-    if (this.aAw.aAI <= 3) {
-      new StringBuilder("Finished loading ").append(paramR.getClass().getSimpleName()).append(" from ").append(parama).append(" for ").append(this.aBp).append(" with size [").append(this.width).append("x").append(this.height).append("] in ").append(com.bumptech.glide.h.e.p(this.startTime)).append(" ms");
+    qi();
+    this.aNB = a.aNG;
+    this.aFR = paramu;
+    if (this.aCn.aCz <= 3) {
+      new StringBuilder("Finished loading ").append(paramR.getClass().getSimpleName()).append(" from ").append(parama).append(" for ").append(this.aDg).append(" with size [").append(this.width).append("x").append(this.height).append("] in ").append(com.bumptech.glide.h.e.p(this.startTime)).append(" ms");
     }
-    this.aLD = true;
+    this.aNu = true;
     try
     {
-      if (((this.aBq == null) || (!this.aBq.pC())) && ((this.aLF == null) || (!this.aLF.pC())))
+      if (((this.aDh == null) || (!this.aDh.pU())) && ((this.aNw == null) || (!this.aNw.pU())))
       {
-        this.aLI.pW();
-        this.aLH.Z(paramR);
+        this.aNz.qo();
+        this.aNy.aa(paramR);
       }
-      this.aLD = false;
-      pR();
+      this.aNu = false;
+      qj();
       AppMethodBeat.o(77681);
       return;
     }
     finally
     {
-      this.aLD = false;
+      this.aNu = false;
       AppMethodBeat.o(77681);
     }
   }
@@ -180,10 +181,10 @@ public final class g<R>
   private Drawable du(int paramInt)
   {
     AppMethodBeat.i(77671);
-    if (this.aBn.aLA != null) {}
-    for (Object localObject = this.aBn.aLA;; localObject = this.context.getTheme())
+    if (this.aDe.aNr != null) {}
+    for (Object localObject = this.aDe.aNr;; localObject = this.context.getTheme())
     {
-      localObject = com.bumptech.glide.c.d.c.a.a(this.aAw, paramInt, (Resources.Theme)localObject);
+      localObject = com.bumptech.glide.c.d.c.a.a(this.aCn, paramInt, (Resources.Theme)localObject);
       AppMethodBeat.o(77671);
       return localObject;
     }
@@ -193,7 +194,7 @@ public final class g<R>
   {
     AppMethodBeat.i(77667);
     com.bumptech.glide.c.b.j.b(paramu);
-    this.aEa = null;
+    this.aFR = null;
     AppMethodBeat.o(77667);
   }
   
@@ -210,10 +211,10 @@ public final class g<R>
     return paramInt;
   }
   
-  private void pK()
+  private void qc()
   {
     AppMethodBeat.i(77664);
-    if (this.aLD)
+    if (this.aNu)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("You can't start or clear loads in RequestListener or Target callbacks. If you're trying to start a fallback request when a load fails, use RequestBuilder#error(RequestBuilder). Otherwise consider posting your into() or clear() calls to the main thread using a Handler instead.");
       AppMethodBeat.o(77664);
@@ -222,70 +223,70 @@ public final class g<R>
     AppMethodBeat.o(77664);
   }
   
-  private Drawable pL()
+  private Drawable qd()
   {
     AppMethodBeat.i(77669);
-    if (this.aLt == null)
+    if (this.aNk == null)
     {
-      this.aLt = this.aBn.aLt;
-      if ((this.aLt == null) && (this.aBn.aLu > 0)) {
-        this.aLt = du(this.aBn.aLu);
+      this.aNk = this.aDe.aNk;
+      if ((this.aNk == null) && (this.aDe.aNl > 0)) {
+        this.aNk = du(this.aDe.aNl);
       }
     }
-    Drawable localDrawable = this.aLt;
+    Drawable localDrawable = this.aNk;
     AppMethodBeat.o(77669);
     return localDrawable;
   }
   
-  private Drawable pM()
+  private Drawable qe()
   {
     AppMethodBeat.i(77670);
-    if (this.aLy == null)
+    if (this.aNp == null)
     {
-      this.aLy = this.aBn.aLy;
-      if ((this.aLy == null) && (this.aBn.aLz > 0)) {
-        this.aLy = du(this.aBn.aLz);
+      this.aNp = this.aDe.aNp;
+      if ((this.aNp == null) && (this.aDe.aNq > 0)) {
+        this.aNp = du(this.aDe.aNq);
       }
     }
-    Drawable localDrawable = this.aLy;
+    Drawable localDrawable = this.aNp;
     AppMethodBeat.o(77670);
     return localDrawable;
   }
   
-  private void pN()
+  private void qf()
   {
     AppMethodBeat.i(77672);
-    if (!pP())
+    if (!qh())
     {
       AppMethodBeat.o(77672);
       return;
     }
     Drawable localDrawable1 = null;
-    if (this.aBp == null) {
-      localDrawable1 = pM();
+    if (this.aDg == null) {
+      localDrawable1 = qe();
     }
     Drawable localDrawable2 = localDrawable1;
     if (localDrawable1 == null)
     {
-      if (this.aLL == null)
+      if (this.aNC == null)
       {
-        this.aLL = this.aBn.aLr;
-        if ((this.aLL == null) && (this.aBn.aLs > 0)) {
-          this.aLL = du(this.aBn.aLs);
+        this.aNC = this.aDe.aNi;
+        if ((this.aNC == null) && (this.aDe.aNj > 0)) {
+          this.aNC = du(this.aDe.aNj);
         }
       }
-      localDrawable2 = this.aLL;
+      localDrawable2 = this.aNC;
     }
     if (localDrawable2 == null) {
-      pL();
+      qd();
     }
     AppMethodBeat.o(77672);
   }
   
-  private boolean pO()
+  private boolean qg()
   {
     AppMethodBeat.i(77675);
-    if ((this.aLG == null) || (this.aLG.b(this)))
+    if ((this.aNx == null) || (this.aNx.b(this)))
     {
       AppMethodBeat.o(77675);
       return true;
@@ -294,10 +295,10 @@ public final class g<R>
     return false;
   }
   
-  private boolean pP()
+  private boolean qh()
   {
     AppMethodBeat.i(77676);
-    if ((this.aLG == null) || (this.aLG.c(this)))
+    if ((this.aNx == null) || (this.aNx.c(this)))
     {
       AppMethodBeat.o(77676);
       return true;
@@ -306,10 +307,10 @@ public final class g<R>
     return false;
   }
   
-  private boolean pQ()
+  private boolean qi()
   {
     AppMethodBeat.i(77677);
-    if ((this.aLG == null) || (!this.aLG.pA()))
+    if ((this.aNx == null) || (!this.aNx.pS()))
     {
       AppMethodBeat.o(77677);
       return true;
@@ -318,29 +319,29 @@ public final class g<R>
     return false;
   }
   
-  private void pR()
+  private void qj()
   {
     AppMethodBeat.i(77678);
-    if (this.aLG != null) {
-      this.aLG.f(this);
+    if (this.aNx != null) {
+      this.aNx.f(this);
     }
     AppMethodBeat.o(77678);
   }
   
-  private void pS()
+  private void qk()
   {
     AppMethodBeat.i(77679);
-    if (this.aLG != null) {
-      this.aLG.g(this);
+    if (this.aNx != null) {
+      this.aNx.g(this);
     }
     AppMethodBeat.o(77679);
   }
   
   public final void a(p paramp)
   {
-    AppMethodBeat.i(210280);
+    AppMethodBeat.i(221252);
     a(paramp, 5);
-    AppMethodBeat.o(210280);
+    AppMethodBeat.o(221252);
   }
   
   public final boolean a(b paramb)
@@ -349,13 +350,13 @@ public final class g<R>
     if ((paramb instanceof g))
     {
       paramb = (g)paramb;
-      if ((this.aLw == paramb.aLw) && (this.aLv == paramb.aLv) && (com.bumptech.glide.h.j.f(this.aBp, paramb.aBp)) && (this.aBm.equals(paramb.aBm)) && (this.aBn.equals(paramb.aBn)) && (this.aEt == paramb.aEt)) {
-        if (this.aBq != null)
+      if ((this.aNn == paramb.aNn) && (this.aNm == paramb.aNm) && (com.bumptech.glide.h.j.h(this.aDg, paramb.aDg)) && (this.aDd.equals(paramb.aDd)) && (this.aDe.equals(paramb.aDe)) && (this.aGk == paramb.aGk)) {
+        if (this.aDh != null)
         {
-          if (paramb.aBq == null) {}
+          if (paramb.aDh == null) {}
         }
         else {
-          while (paramb.aBq == null)
+          while (paramb.aDh == null)
           {
             AppMethodBeat.o(77684);
             return true;
@@ -369,31 +370,31 @@ public final class g<R>
     return false;
   }
   
-  public final void aX(int paramInt1, int paramInt2)
+  public final void aY(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(77673);
-    this.aEz.qe();
-    if (aLE) {
-      V("Got onSizeReady in " + com.bumptech.glide.h.e.p(this.startTime));
+    this.aGq.qw();
+    if (aNv) {
+      U("Got onSizeReady in " + com.bumptech.glide.h.e.p(this.startTime));
     }
-    if (this.aLK != a.aLO)
+    if (this.aNB != a.aNF)
     {
       AppMethodBeat.o(77673);
       return;
     }
-    this.aLK = a.aLN;
-    float f = this.aBn.aLq;
+    this.aNB = a.aNE;
+    float f = this.aDe.aNh;
     this.width = g(paramInt1, f);
     this.height = g(paramInt2, f);
-    if (aLE) {
-      V("finished setup for calling load in " + com.bumptech.glide.h.e.p(this.startTime));
+    if (aNv) {
+      U("finished setup for calling load in " + com.bumptech.glide.h.e.p(this.startTime));
     }
-    this.aLJ = this.aAs.a(this.aAw, this.aBp, this.aBn.aEk, this.width, this.height, this.aBn.aEo, this.aBm, this.aEt, this.aBn.aEu, this.aBn.aEq, this.aBn.aEv, this.aBn.aEw, this.aBn.aEm, this.aBn.aDZ, this.aBn.aLC, this.aBn.aFS, this.aBn.aEI, this);
-    if (this.aLK != a.aLN) {
-      this.aLJ = null;
+    this.aNA = this.aCj.a(this.aCn, this.aDg, this.aDe.aGb, this.width, this.height, this.aDe.aGf, this.aDd, this.aGk, this.aDe.aGl, this.aDe.aGh, this.aDe.aGm, this.aDe.aGn, this.aDe.aGd, this.aDe.aFQ, this.aDe.aNt, this.aDe.aHJ, this.aDe.aGz, this);
+    if (this.aNB != a.aNE) {
+      this.aNA = null;
     }
-    if (aLE) {
-      V("finished onSizeReady in " + com.bumptech.glide.h.e.p(this.startTime));
+    if (aNv) {
+      U("finished onSizeReady in " + com.bumptech.glide.h.e.p(this.startTime));
     }
     AppMethodBeat.o(77673);
   }
@@ -401,17 +402,17 @@ public final class g<R>
   public final void begin()
   {
     AppMethodBeat.i(77663);
-    pK();
-    this.aEz.qe();
-    this.startTime = com.bumptech.glide.h.e.pY();
-    if (this.aBp == null)
+    qc();
+    this.aGq.qw();
+    this.startTime = com.bumptech.glide.h.e.qq();
+    if (this.aDg == null)
     {
-      if (com.bumptech.glide.h.j.aY(this.aLw, this.aLv))
+      if (com.bumptech.glide.h.j.aZ(this.aNn, this.aNm))
       {
-        this.width = this.aLw;
-        this.height = this.aLv;
+        this.width = this.aNn;
+        this.height = this.aNm;
       }
-      if (pM() == null) {}
+      if (qe() == null) {}
       for (int i = 5;; i = 3)
       {
         a(new p("Received null model"), i);
@@ -419,52 +420,52 @@ public final class g<R>
         return;
       }
     }
-    if (this.aLK == a.aLN)
+    if (this.aNB == a.aNE)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Cannot restart a running request");
       AppMethodBeat.o(77663);
       throw localIllegalArgumentException;
     }
-    if (this.aLK == a.aLP)
+    if (this.aNB == a.aNG)
     {
-      c(this.aEa, com.bumptech.glide.c.a.aCT);
+      c(this.aFR, com.bumptech.glide.c.a.aEK);
       AppMethodBeat.o(77663);
       return;
     }
-    this.aLK = a.aLO;
-    if (com.bumptech.glide.h.j.aY(this.aLw, this.aLv)) {
-      aX(this.aLw, this.aLv);
+    this.aNB = a.aNF;
+    if (com.bumptech.glide.h.j.aZ(this.aNn, this.aNm)) {
+      aY(this.aNn, this.aNm);
     }
     for (;;)
     {
-      if (((this.aLK == a.aLN) || (this.aLK == a.aLO)) && (pP())) {
-        pL();
+      if (((this.aNB == a.aNE) || (this.aNB == a.aNF)) && (qh())) {
+        qd();
       }
-      if (aLE) {
-        V("finished run method in " + com.bumptech.glide.h.e.p(this.startTime));
+      if (aNv) {
+        U("finished run method in " + com.bumptech.glide.h.e.p(this.startTime));
       }
       AppMethodBeat.o(77663);
       return;
-      this.aLH.a(this);
+      this.aNy.a(this);
     }
   }
   
   public final void c(u<?> paramu, com.bumptech.glide.c.a parama)
   {
     AppMethodBeat.i(77680);
-    this.aEz.qe();
-    this.aLJ = null;
+    this.aGq.qw();
+    this.aNA = null;
     if (paramu == null)
     {
-      a(new p("Expected to receive a Resource<R> with an object of " + this.aBm + " inside, but instead got null."), 5);
+      a(new p("Expected to receive a Resource<R> with an object of " + this.aDd + " inside, but instead got null."), 5);
       AppMethodBeat.o(77680);
       return;
     }
     Object localObject = paramu.get();
-    if ((localObject == null) || (!this.aBm.isAssignableFrom(localObject.getClass())))
+    if ((localObject == null) || (!this.aDd.isAssignableFrom(localObject.getClass())))
     {
       f(paramu);
-      StringBuilder localStringBuilder = new StringBuilder("Expected to receive an object of ").append(this.aBm).append(" but instead got ");
+      StringBuilder localStringBuilder = new StringBuilder("Expected to receive an object of ").append(this.aDd).append(" but instead got ");
       if (localObject != null)
       {
         parama = localObject.getClass();
@@ -483,10 +484,10 @@ public final class g<R>
         break;
       }
     }
-    if (!pO())
+    if (!qg())
     {
       f(paramu);
-      this.aLK = a.aLP;
+      this.aNB = a.aNG;
       AppMethodBeat.o(77680);
       return;
     }
@@ -498,45 +499,45 @@ public final class g<R>
   {
     int j = 1;
     AppMethodBeat.i(77665);
-    com.bumptech.glide.h.j.qa();
-    pK();
-    this.aEz.qe();
-    if (this.aLK == a.aLS)
+    com.bumptech.glide.h.j.qs();
+    qc();
+    this.aGq.qw();
+    if (this.aNB == a.aNJ)
     {
       AppMethodBeat.o(77665);
       return;
     }
-    pK();
-    this.aEz.qe();
-    this.aLK = a.aLR;
+    qc();
+    this.aGq.qw();
+    this.aNB = a.aNI;
     Object localObject;
     k localk;
-    if (this.aLJ != null)
+    if (this.aNA != null)
     {
-      localObject = this.aLJ;
-      localk = ((j.d)localObject).aFL;
-      localObject = ((j.d)localObject).aFM;
-      com.bumptech.glide.h.j.qa();
-      localk.aEz.qe();
-      if ((localk.aFT) || (localk.aFV))
+      localObject = this.aNA;
+      localk = ((j.d)localObject).aHC;
+      localObject = ((j.d)localObject).aHD;
+      com.bumptech.glide.h.j.qs();
+      localk.aGq.qw();
+      if ((localk.aHK) || (localk.aHM))
       {
-        if (localk.aFW == null) {
-          localk.aFW = new ArrayList(2);
+        if (localk.aHN == null) {
+          localk.aHN = new ArrayList(2);
         }
-        if (!localk.aFW.contains(localObject)) {
-          localk.aFW.add(localObject);
+        if (!localk.aHN.contains(localObject)) {
+          localk.aHN.add(localObject);
         }
-        this.aLJ = null;
+        this.aNA = null;
       }
     }
     else
     {
-      if (this.aEa != null) {
-        f(this.aEa);
+      if (this.aFR != null) {
+        f(this.aFR);
       }
       i = j;
-      if (this.aLG != null) {
-        if (!this.aLG.d(this)) {
+      if (this.aNx != null) {
+        if (!this.aNx.d(this)) {
           break label317;
         }
       }
@@ -545,61 +546,53 @@ public final class g<R>
     for (int i = j;; i = 0)
     {
       if (i != 0) {
-        pL();
+        qd();
       }
-      this.aLK = a.aLS;
+      this.aNB = a.aNJ;
       AppMethodBeat.o(77665);
       return;
-      localk.aFP.remove(localObject);
-      if ((!localk.aFP.isEmpty()) || (localk.aFV) || (localk.aFT) || (localk.isCancelled)) {
+      localk.aHG.remove(localObject);
+      if ((!localk.aHG.isEmpty()) || (localk.aHM) || (localk.aHK) || (localk.isCancelled)) {
         break;
       }
       localk.isCancelled = true;
-      localObject = localk.aFY;
+      localObject = localk.aHP;
       ((com.bumptech.glide.c.b.g)localObject).isCancelled = true;
-      localObject = ((com.bumptech.glide.c.b.g)localObject).aEP;
+      localObject = ((com.bumptech.glide.c.b.g)localObject).aGG;
       if (localObject != null) {
         ((com.bumptech.glide.c.b.e)localObject).cancel();
       }
-      localk.aFH.a(localk, localk.aDY);
+      localk.aHy.a(localk, localk.aFP);
       break;
     }
   }
   
   public final boolean isCancelled()
   {
-    return (this.aLK == a.aLR) || (this.aLK == a.aLS);
+    return (this.aNB == a.aNI) || (this.aNB == a.aNJ);
   }
   
   public final boolean isComplete()
   {
-    return this.aLK == a.aLP;
+    return this.aNB == a.aNG;
   }
   
   public final boolean isFailed()
   {
-    return this.aLK == a.aLQ;
+    return this.aNB == a.aNH;
   }
   
   public final boolean isRunning()
   {
-    return (this.aLK == a.aLN) || (this.aLK == a.aLO);
+    return (this.aNB == a.aNE) || (this.aNB == a.aNF);
   }
   
-  public final com.bumptech.glide.h.a.b om()
+  public final com.bumptech.glide.h.a.b oE()
   {
-    return this.aEz;
+    return this.aGq;
   }
   
-  public final void pause()
-  {
-    AppMethodBeat.i(77666);
-    clear();
-    this.aLK = a.aLT;
-    AppMethodBeat.o(77666);
-  }
-  
-  public final boolean pz()
+  public final boolean pR()
   {
     AppMethodBeat.i(77668);
     boolean bool = isComplete();
@@ -607,29 +600,37 @@ public final class g<R>
     return bool;
   }
   
+  public final void pause()
+  {
+    AppMethodBeat.i(77666);
+    clear();
+    this.aNB = a.aNK;
+    AppMethodBeat.o(77666);
+  }
+  
   public final void recycle()
   {
     AppMethodBeat.i(77662);
-    pK();
+    qc();
     this.context = null;
-    this.aAw = null;
-    this.aBp = null;
-    this.aBm = null;
-    this.aBn = null;
-    this.aLw = -1;
-    this.aLv = -1;
-    this.aLH = null;
-    this.aBq = null;
-    this.aLF = null;
-    this.aLG = null;
-    this.aLI = null;
-    this.aLJ = null;
-    this.aLL = null;
-    this.aLt = null;
-    this.aLy = null;
+    this.aCn = null;
+    this.aDg = null;
+    this.aDd = null;
+    this.aDe = null;
+    this.aNn = -1;
+    this.aNm = -1;
+    this.aNy = null;
+    this.aDh = null;
+    this.aNw = null;
+    this.aNx = null;
+    this.aNz = null;
+    this.aNA = null;
+    this.aNC = null;
+    this.aNk = null;
+    this.aNp = null;
     this.width = -1;
     this.height = -1;
-    aGl.release(this);
+    aIc.release(this);
     AppMethodBeat.o(77662);
   }
   
@@ -638,15 +639,15 @@ public final class g<R>
     static
     {
       AppMethodBeat.i(77659);
-      aLM = new a("PENDING", 0);
-      aLN = new a("RUNNING", 1);
-      aLO = new a("WAITING_FOR_SIZE", 2);
-      aLP = new a("COMPLETE", 3);
-      aLQ = new a("FAILED", 4);
-      aLR = new a("CANCELLED", 5);
-      aLS = new a("CLEARED", 6);
-      aLT = new a("PAUSED", 7);
-      aLU = new a[] { aLM, aLN, aLO, aLP, aLQ, aLR, aLS, aLT };
+      aND = new a("PENDING", 0);
+      aNE = new a("RUNNING", 1);
+      aNF = new a("WAITING_FOR_SIZE", 2);
+      aNG = new a("COMPLETE", 3);
+      aNH = new a("FAILED", 4);
+      aNI = new a("CANCELLED", 5);
+      aNJ = new a("CLEARED", 6);
+      aNK = new a("PAUSED", 7);
+      aNL = new a[] { aND, aNE, aNF, aNG, aNH, aNI, aNJ, aNK };
       AppMethodBeat.o(77659);
     }
     

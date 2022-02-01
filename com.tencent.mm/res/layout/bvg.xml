@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ui.widget.SnsAdSphereAnimView android:id="@id/flj" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <com.tencent.mm.plugin.sns.ui.widget.SnsAdTouchProgressView android:id="@id/i03" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+</FrameLayout>

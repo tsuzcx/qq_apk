@@ -4,26 +4,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum f
 {
-  private final float aAT;
+  private final float aCK;
   
   static
   {
     AppMethodBeat.i(76786);
-    aAQ = new f("LOW", 0, 0.5F);
-    aAR = new f("NORMAL", 1, 1.0F);
-    aAS = new f("HIGH", 2, 1.5F);
-    aAU = new f[] { aAQ, aAR, aAS };
+    aCH = new f("LOW", 0, 0.5F);
+    aCI = new f("NORMAL", 1, 1.0F);
+    aCJ = new f("HIGH", 2, 1.5F);
+    aCL = new f[] { aCH, aCI, aCJ };
     AppMethodBeat.o(76786);
   }
   
   private f(float paramFloat)
   {
-    this.aAT = paramFloat;
+    this.aCK = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.bumptech.glide.f
  * JD-Core Version:    0.7.0.1
  */

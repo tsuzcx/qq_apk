@@ -15,32 +15,32 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 @SuppressLint({"ViewConstructor"})
 public final class ah
   extends ag
 {
-  private ah.b lDA;
-  private boolean lDB;
-  private LinearLayout lDC;
-  private TextView lDD;
-  private View lDE;
-  private ImageView lDF;
-  private ImageView lDG;
-  private ImageView lDH;
-  private final Runnable lDI;
-  private long lDJ;
-  private ah.a lDz;
-  private ay lyE;
+  private ay lYc;
+  private a mdc;
+  private b mdd;
+  private boolean mde;
+  private LinearLayout mdf;
+  private TextView mdg;
+  private View mdh;
+  private ImageView mdi;
+  private ImageView mdj;
+  private ImageView mdk;
+  private final Runnable mdl;
+  private long mdm;
   
   public ah(Context paramContext, ay paramay)
   {
     super(paramContext);
     AppMethodBeat.i(135223);
-    this.lDB = false;
-    this.lDI = new Runnable()
+    this.mde = false;
+    this.mdl = new Runnable()
     {
       public final void run()
       {
@@ -49,48 +49,48 @@ public final class ah
         AppMethodBeat.o(135222);
       }
     };
-    this.lDJ = 0L;
-    this.lyE = paramay;
-    this.lDC = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131493033, this, false));
-    paramContext = this.lDC;
+    this.mdm = 0L;
+    this.lYc = paramay;
+    this.mdf = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131493033, this, false));
+    paramContext = this.mdf;
     paramay = paramay.getWrapperView();
-    this.lDm = paramContext;
-    this.lDn = new FrameLayout(getContext());
-    this.lDn.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.lDn.addView(paramContext);
-    this.lDo = new FrameLayout(getContext());
-    this.lDo.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.lDo.addView(paramay);
-    addView(this.lDn);
-    addView(this.lDo);
-    this.lDD = ((TextView)findViewById(2131296805));
-    this.lDE = findViewById(2131296801);
-    this.lDF = ((ImageView)findViewById(2131296802));
-    this.lDG = ((ImageView)findViewById(2131296803));
-    this.lDH = ((ImageView)findViewById(2131296804));
+    this.mcP = paramContext;
+    this.mcQ = new FrameLayout(getContext());
+    this.mcQ.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    this.mcQ.addView(paramContext);
+    this.mcR = new FrameLayout(getContext());
+    this.mcR.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    this.mcR.addView(paramay);
+    addView(this.mcQ);
+    addView(this.mcR);
+    this.mdg = ((TextView)findViewById(2131296805));
+    this.mdh = findViewById(2131296801);
+    this.mdi = ((ImageView)findViewById(2131296802));
+    this.mdj = ((ImageView)findViewById(2131296803));
+    this.mdk = ((ImageView)findViewById(2131296804));
     AppMethodBeat.o(135223);
   }
   
-  private void brd()
+  private void bve()
   {
     AppMethodBeat.i(135234);
-    this.lDD.setTextColor(-16777216);
-    this.lDD.setAlpha(0.2F);
+    this.mdg.setTextColor(-16777216);
+    this.mdg.setAlpha(0.2F);
     AppMethodBeat.o(135234);
   }
   
-  private void bre()
+  private void bvf()
   {
     AppMethodBeat.i(135238);
-    if (this.lDF == null)
+    if (this.mdi == null)
     {
-      ac.w("MicroMsg.AppBrandPullDownWebView", "setupDarkLoading but mLoading0 is null, try protect");
+      ad.w("MicroMsg.AppBrandPullDownWebView", "setupDarkLoading but mLoading0 is null, try protect");
       AppMethodBeat.o(135238);
       return;
     }
-    this.lDF.setImageDrawable(e(-16777216, new float[] { 0.1F, 0.4F, 0.2F, 0.1F }));
-    this.lDG.setImageDrawable(e(-16777216, new float[] { 0.1F, 0.1F, 0.4F, 0.2F }));
-    this.lDH.setImageDrawable(e(-16777216, new float[] { 0.1F, 0.2F, 0.1F, 0.4F }));
+    this.mdi.setImageDrawable(e(-16777216, new float[] { 0.1F, 0.4F, 0.2F, 0.1F }));
+    this.mdj.setImageDrawable(e(-16777216, new float[] { 0.1F, 0.1F, 0.4F, 0.2F }));
+    this.mdk.setImageDrawable(e(-16777216, new float[] { 0.1F, 0.2F, 0.1F, 0.4F }));
     AppMethodBeat.o(135238);
   }
   
@@ -98,17 +98,17 @@ public final class ah
   {
     AppMethodBeat.i(135239);
     AnimationDrawable localAnimationDrawable = new AnimationDrawable();
-    ac.i("MicroMsg.AppBrandPullDownWebView", "AnimationDrawable hash:" + localAnimationDrawable.hashCode());
+    ad.i("MicroMsg.AppBrandPullDownWebView", "AnimationDrawable hash:" + localAnimationDrawable.hashCode());
     localAnimationDrawable.setOneShot(false);
-    localAnimationDrawable.addFrame(m(paramInt, paramArrayOfFloat[0]), 0);
-    localAnimationDrawable.addFrame(m(paramInt, paramArrayOfFloat[1]), 300);
-    localAnimationDrawable.addFrame(m(paramInt, paramArrayOfFloat[2]), 300);
-    localAnimationDrawable.addFrame(m(paramInt, paramArrayOfFloat[3]), 300);
+    localAnimationDrawable.addFrame(n(paramInt, paramArrayOfFloat[0]), 0);
+    localAnimationDrawable.addFrame(n(paramInt, paramArrayOfFloat[1]), 300);
+    localAnimationDrawable.addFrame(n(paramInt, paramArrayOfFloat[2]), 300);
+    localAnimationDrawable.addFrame(n(paramInt, paramArrayOfFloat[3]), 300);
     AppMethodBeat.o(135239);
     return localAnimationDrawable;
   }
   
-  private static Drawable m(int paramInt, float paramFloat)
+  private static Drawable n(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(135240);
     ShapeDrawable localShapeDrawable = new ShapeDrawable(new OvalShape());
@@ -120,15 +120,15 @@ public final class ah
     return localShapeDrawable;
   }
   
-  protected final boolean BP()
+  protected final boolean Do()
   {
     AppMethodBeat.i(135228);
-    boolean bool = this.lyE.BP();
+    boolean bool = this.lYc.Do();
     AppMethodBeat.o(135228);
     return bool;
   }
   
-  public final void bM(String paramString, int paramInt)
+  public final void bP(String paramString, int paramInt)
   {
     AppMethodBeat.i(135231);
     setBackgroundTextStyle(paramString);
@@ -136,54 +136,54 @@ public final class ah
     AppMethodBeat.o(135231);
   }
   
-  protected final void bra()
+  protected final void bvb()
   {
     AppMethodBeat.i(135224);
-    if (this.lDF == null) {
-      ac.e("MicroMsg.AppBrandPullDownWebView", "startLoadingAnimation, mLoading0 is null");
+    if (this.mdi == null) {
+      ad.e("MicroMsg.AppBrandPullDownWebView", "startLoadingAnimation, mLoading0 is null");
     }
     for (;;)
     {
-      if (this.lDz != null) {
-        this.lDz.bpN();
+      if (this.mdc != null) {
+        this.mdc.btN();
       }
-      this.lDJ = System.currentTimeMillis();
+      this.mdm = System.currentTimeMillis();
       AppMethodBeat.o(135224);
       return;
-      if (this.lDF.getDrawable() == null)
+      if (this.mdi.getDrawable() == null)
       {
-        ac.w("MicroMsg.AppBrandPullDownWebView", "startLoadingAnimation but drawable is null, try protect");
-        bre();
-        brd();
+        ad.w("MicroMsg.AppBrandPullDownWebView", "startLoadingAnimation but drawable is null, try protect");
+        bvf();
+        bve();
       }
-      ((AnimationDrawable)this.lDF.getDrawable()).start();
-      ((AnimationDrawable)this.lDG.getDrawable()).start();
-      ((AnimationDrawable)this.lDH.getDrawable()).start();
+      ((AnimationDrawable)this.mdi.getDrawable()).start();
+      ((AnimationDrawable)this.mdj.getDrawable()).start();
+      ((AnimationDrawable)this.mdk.getDrawable()).start();
     }
   }
   
-  protected final void brb()
+  protected final void bvc()
   {
     AppMethodBeat.i(135225);
-    if ((this.lDF == null) || (this.lDF.getDrawable() == null))
+    if ((this.mdi == null) || (this.mdi.getDrawable() == null))
     {
-      ac.w("MicroMsg.AppBrandPullDownWebView", "stopLoadingAnimation but drawable is null, try protect");
+      ad.w("MicroMsg.AppBrandPullDownWebView", "stopLoadingAnimation but drawable is null, try protect");
       AppMethodBeat.o(135225);
       return;
     }
-    ((AnimationDrawable)this.lDF.getDrawable()).stop();
-    ((AnimationDrawable)this.lDF.getDrawable()).selectDrawable(0);
-    ((AnimationDrawable)this.lDG.getDrawable()).stop();
-    ((AnimationDrawable)this.lDG.getDrawable()).selectDrawable(0);
-    ((AnimationDrawable)this.lDH.getDrawable()).stop();
-    ((AnimationDrawable)this.lDH.getDrawable()).selectDrawable(0);
+    ((AnimationDrawable)this.mdi.getDrawable()).stop();
+    ((AnimationDrawable)this.mdi.getDrawable()).selectDrawable(0);
+    ((AnimationDrawable)this.mdj.getDrawable()).stop();
+    ((AnimationDrawable)this.mdj.getDrawable()).selectDrawable(0);
+    ((AnimationDrawable)this.mdk.getDrawable()).stop();
+    ((AnimationDrawable)this.mdk.getDrawable()).selectDrawable(0);
     AppMethodBeat.o(135225);
   }
   
-  public final void brc()
+  public final void bvd()
   {
     AppMethodBeat.i(135227);
-    long l = System.currentTimeMillis() - this.lDJ;
+    long l = System.currentTimeMillis() - this.mdm;
     if (l < 1000L)
     {
       postDelayed(new Runnable()
@@ -191,23 +191,31 @@ public final class ah
         public final void run()
         {
           AppMethodBeat.i(185196);
-          ah.this.bqZ();
+          ah.this.bva();
           AppMethodBeat.o(185196);
         }
       }, 1000L - l);
       AppMethodBeat.o(135227);
       return;
     }
-    bqZ();
+    bva();
     AppMethodBeat.o(135227);
   }
   
-  public final void gZ(boolean paramBoolean)
+  protected final int getStayHeight()
+  {
+    AppMethodBeat.i(135229);
+    int i = this.mdf.getHeight();
+    AppMethodBeat.o(135229);
+    return i;
+  }
+  
+  public final void hh(boolean paramBoolean)
   {
     AppMethodBeat.i(135236);
-    this.lDB = paramBoolean;
+    this.mde = paramBoolean;
     setNeedStay(paramBoolean);
-    View localView = this.lDE;
+    View localView = this.mdh;
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
@@ -217,19 +225,11 @@ public final class ah
     }
   }
   
-  protected final int getStayHeight()
-  {
-    AppMethodBeat.i(135229);
-    int i = this.lDC.getHeight();
-    AppMethodBeat.o(135229);
-    return i;
-  }
-  
   protected final void onAttachedToWindow()
   {
     AppMethodBeat.i(185197);
     super.onAttachedToWindow();
-    post(this.lDI);
+    post(this.mdl);
     AppMethodBeat.o(185197);
   }
   
@@ -238,24 +238,24 @@ public final class ah
     AppMethodBeat.i(135232);
     if ("light".equals(paramString))
     {
-      if (this.lDF == null) {
-        ac.w("MicroMsg.AppBrandPullDownWebView", "setupLightLoading but mLoading0 is null, try protect");
+      if (this.mdi == null) {
+        ad.w("MicroMsg.AppBrandPullDownWebView", "setupLightLoading but mLoading0 is null, try protect");
       }
       for (;;)
       {
-        this.lDD.setTextColor(-1);
-        this.lDD.setAlpha(0.4F);
+        this.mdg.setTextColor(-1);
+        this.mdg.setAlpha(0.4F);
         AppMethodBeat.o(135232);
         return;
-        this.lDF.setImageDrawable(e(-1, new float[] { 0.2F, 0.6F, 0.4F, 0.2F }));
-        this.lDG.setImageDrawable(e(-1, new float[] { 0.2F, 0.2F, 0.6F, 0.4F }));
-        this.lDH.setImageDrawable(e(-1, new float[] { 0.2F, 0.4F, 0.2F, 0.6F }));
+        this.mdi.setImageDrawable(e(-1, new float[] { 0.2F, 0.6F, 0.4F, 0.2F }));
+        this.mdj.setImageDrawable(e(-1, new float[] { 0.2F, 0.2F, 0.6F, 0.4F }));
+        this.mdk.setImageDrawable(e(-1, new float[] { 0.2F, 0.4F, 0.2F, 0.6F }));
       }
     }
     if (("dark".equals(paramString)) || (!"ignore".equals(paramString)))
     {
-      bre();
-      brd();
+      bvf();
+      bve();
     }
     AppMethodBeat.o(135232);
   }
@@ -263,64 +263,74 @@ public final class ah
   public final void setHeadViewHeight(int paramInt)
   {
     AppMethodBeat.i(135230);
-    if (paramInt <= this.lDC.getHeight())
+    if (paramInt <= this.mdf.getHeight())
     {
       AppMethodBeat.o(135230);
       return;
     }
-    this.lDC.getLayoutParams().height = paramInt;
-    this.lDC.requestLayout();
+    this.mdf.getLayoutParams().height = paramInt;
+    this.mdf.requestLayout();
     AppMethodBeat.o(135230);
   }
   
-  public final void setOnPullDownListener(ah.a parama)
+  public final void setOnPullDownListener(a parama)
   {
-    this.lDz = parama;
+    this.mdc = parama;
   }
   
-  public final void setOnPullDownOffsetListener(ah.b paramb)
+  public final void setOnPullDownOffsetListener(b paramb)
   {
-    this.lDA = paramb;
+    this.mdd = paramb;
   }
   
   public final void setPullDownText(String paramString)
   {
     AppMethodBeat.i(135235);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      this.lDD.setVisibility(8);
+      this.mdg.setVisibility(8);
       AppMethodBeat.o(135235);
       return;
     }
-    this.lDD.setVisibility(0);
-    this.lDD.setText(paramString);
+    this.mdg.setVisibility(0);
+    this.mdg.setText(paramString);
     AppMethodBeat.o(135235);
   }
   
-  protected final void um(int paramInt)
+  protected final void uQ(int paramInt)
   {
     AppMethodBeat.i(135226);
-    if (this.lDA != null) {
-      this.lDA.gt(paramInt);
+    if (this.mdd != null) {
+      this.mdd.gw(paramInt);
     }
-    if (!this.lDB)
+    if (!this.mde)
     {
       AppMethodBeat.o(135226);
       return;
     }
-    removeCallbacks(this.lDI);
+    removeCallbacks(this.mdl);
     int i = paramInt;
-    if (paramInt > this.lDC.getHeight()) {
-      i = this.lDC.getHeight();
+    if (paramInt > this.mdf.getHeight()) {
+      i = this.mdf.getHeight();
     }
-    LinearLayout localLinearLayout = this.lDC;
+    LinearLayout localLinearLayout = this.mdf;
     localLinearLayout.setTranslationY(i - localLinearLayout.getHeight());
     AppMethodBeat.o(135226);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void btN();
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void gw(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ah
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,9 @@ package com.tencent.mm.plugin.exdevice.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.exdevice.b.b;
-import com.tencent.mm.plugin.exdevice.model.ad;
-import com.tencent.mm.protocal.protobuf.api;
-import com.tencent.mm.protocal.protobuf.cr;
+import com.tencent.mm.protocal.protobuf.atc;
 import com.tencent.mm.protocal.protobuf.cs;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.ct;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,17 +13,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class g
-  extends com.tencent.mm.plugin.exdevice.b.a<cr, cs>
+  extends com.tencent.mm.plugin.exdevice.b.a<cs, ct>
 {
-  List<String> naJ;
-  public ArrayList<api> pBi;
-  private final WeakReference<b<g>> pwK;
+  List<String> nBg;
+  private final WeakReference<b<g>> qap;
+  public ArrayList<atc> qeN;
   
   public g(List<String> paramList, b<g> paramb)
   {
     AppMethodBeat.i(23513);
-    this.naJ = paramList;
-    this.pwK = new WeakReference(paramb);
+    this.nBg = paramList;
+    this.qap = new WeakReference(paramb);
     AppMethodBeat.o(23513);
   }
   
@@ -42,26 +40,26 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23514);
-    ac.d("MicroMsg.NetSceneAddFollow", "ap: errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneAddFollow", "ap: errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      cs localcs = (cs)bEq();
-      this.pBi = new ArrayList();
-      if (localcs.DPP != null)
+      ct localct = (ct)bIz();
+      this.qeN = new ArrayList();
+      if (localct.Fve != null)
       {
-        Iterator localIterator = localcs.DPP.iterator();
+        Iterator localIterator = localct.Fve.iterator();
         while (localIterator.hasNext())
         {
-          api localapi = (api)localIterator.next();
-          ac.d("MicroMsg.NetSceneAddFollow", "follow: index:%s step: %s username: %s", new Object[] { Integer.valueOf(localapi.index), Integer.valueOf(localapi.kar), localapi.username });
-          this.pBi.add(localapi);
+          atc localatc = (atc)localIterator.next();
+          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneAddFollow", "follow: index:%s step: %s username: %s", new Object[] { Integer.valueOf(localatc.index), Integer.valueOf(localatc.kuN), localatc.username });
+          this.qeN.add(localatc);
         }
-        ac.d("MicroMsg.NetSceneAddFollow", "follows: %s, %d", new Object[] { this.pBi.toString(), Integer.valueOf(localcs.DPP.size()) });
+        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneAddFollow", "follows: %s, %d", new Object[] { this.qeN.toString(), Integer.valueOf(localct.Fve.size()) });
       }
-      ad.cgR().a(this.pBi, "hardcode_rank_id", "hardcode_app_name");
+      com.tencent.mm.plugin.exdevice.model.ad.clv().a(this.qeN, "hardcode_rank_id", "hardcode_app_name");
     }
     super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
-    paramq = (b)this.pwK.get();
+    paramq = (b)this.qap.get();
     if (paramq != null) {
       paramq.a(paramInt2, paramInt3, paramString, this);
     }
@@ -70,7 +68,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.a.g
  * JD-Core Version:    0.7.0.1
  */

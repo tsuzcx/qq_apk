@@ -2,19 +2,21 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<no name provided>", "", "t", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<no name provided>", "", "t", "", "invoke"})
 public final class j$a$a
-  extends d.g.b.l
+  extends q
   implements b<Long, String>
 {
-  public static final a nOO;
+  public static final a oru;
   
   static
   {
-    AppMethodBeat.i(199168);
-    nOO = new a();
-    AppMethodBeat.o(199168);
+    AppMethodBeat.i(210117);
+    oru = new a();
+    AppMethodBeat.o(210117);
   }
   
   j$a$a()

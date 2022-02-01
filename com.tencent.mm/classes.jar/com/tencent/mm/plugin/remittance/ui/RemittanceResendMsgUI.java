@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.qi;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.a.qt;
 import com.tencent.mm.plugin.remittance.model.z;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.s;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -45,31 +45,31 @@ public class RemittanceResendMsgUI
     String str2 = getIntent().getStringExtra("receiver_name");
     int i = getIntent().getIntExtra("resend_msg_from_flag", 1);
     int j = getIntent().getIntExtra("invalid_time", 0);
-    if (!bs.isNullOrNil(str2))
+    if (!bt.isNullOrNil(str2))
     {
       f(paramBundle, str1, str2, j, i);
       AppMethodBeat.o(68275);
       return;
     }
-    ac.i("MicroMsg.RemittanceResendMsgUI", "onCreate() receiverName == null");
+    ad.i("MicroMsg.RemittanceResendMsgUI", "onCreate() receiverName == null");
     AppMethodBeat.o(68275);
   }
   
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(68277);
-    ac.i("MicroMsg.RemittanceResendMsgUI", "onSceneEnd() errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " netsceneType:" + paramn.getType());
+    ad.i("MicroMsg.RemittanceResendMsgUI", "onSceneEnd() errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " netsceneType:" + paramn.getType());
     if ((paramn instanceof z))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         s.a(getContext().getResources().getString(2131760233), getContext(), null);
         finish();
-        com.tencent.mm.sdk.b.a.GpY.l(new qi());
+        com.tencent.mm.sdk.b.a.IbL.l(new qt());
         AppMethodBeat.o(68277);
         return true;
       }
-      h.cg(this, paramString);
+      h.cl(this, paramString);
       finish();
       AppMethodBeat.o(68277);
       return true;

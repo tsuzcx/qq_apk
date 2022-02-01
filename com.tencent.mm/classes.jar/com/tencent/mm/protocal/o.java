@@ -1,8 +1,8 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,52 +11,20 @@ public final class o
 {
   public String host = "";
   private int port = 80;
-  public String tWE = "";
   private int type = 0;
+  public String uZn = "";
   
   public o() {}
   
   public o(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
     this.type = paramInt1;
-    this.tWE = paramString1;
+    this.uZn = paramString1;
     this.port = paramInt2;
     this.host = paramString2;
   }
   
-  public static List<o> aIA(String paramString)
-  {
-    AppMethodBeat.i(133105);
-    localLinkedList = new LinkedList();
-    if (bs.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(133105);
-      return localLinkedList;
-    }
-    try
-    {
-      String[] arrayOfString = paramString.split("\\|");
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        o localo = aIz(arrayOfString[i]);
-        if (localo != null) {
-          localLinkedList.add(localo);
-        }
-        i += 1;
-      }
-      return localLinkedList;
-    }
-    catch (Exception localException)
-    {
-      ac.d("MicroMsg.MMBuiltInIP", "unserialize split failed str[%s]", new Object[] { paramString });
-      ac.e("MicroMsg.MMBuiltInIP", "exception:%s", new Object[] { bs.m(localException) });
-      AppMethodBeat.o(133105);
-    }
-  }
-  
-  private static o aIz(String paramString)
+  private static o aOc(String paramString)
   {
     AppMethodBeat.i(133103);
     paramString = paramString.split(",");
@@ -68,22 +36,54 @@ public final class o
     o localo = new o();
     try
     {
-      localo.type = bs.getInt(paramString[0], 0);
-      localo.tWE = bs.nullAsNil(paramString[1]);
-      localo.port = bs.getInt(paramString[2], 0);
-      localo.host = bs.nullAsNil(paramString[3]);
+      localo.type = bt.getInt(paramString[0], 0);
+      localo.uZn = bt.nullAsNil(paramString[1]);
+      localo.port = bt.getInt(paramString[2], 0);
+      localo.host = bt.nullAsNil(paramString[3]);
       AppMethodBeat.o(133103);
       return localo;
     }
     catch (NumberFormatException paramString)
     {
-      ac.e("MicroMsg.MMBuiltInIP", "exception:%s", new Object[] { bs.m(paramString) });
+      ad.e("MicroMsg.MMBuiltInIP", "exception:%s", new Object[] { bt.n(paramString) });
       AppMethodBeat.o(133103);
     }
     return null;
   }
   
-  public static String gW(List<o> paramList)
+  public static List<o> aOd(String paramString)
+  {
+    AppMethodBeat.i(133105);
+    localLinkedList = new LinkedList();
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(133105);
+      return localLinkedList;
+    }
+    try
+    {
+      String[] arrayOfString = paramString.split("\\|");
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        o localo = aOc(arrayOfString[i]);
+        if (localo != null) {
+          localLinkedList.add(localo);
+        }
+        i += 1;
+      }
+      return localLinkedList;
+    }
+    catch (Exception localException)
+    {
+      ad.d("MicroMsg.MMBuiltInIP", "unserialize split failed str[%s]", new Object[] { paramString });
+      ad.e("MicroMsg.MMBuiltInIP", "exception:%s", new Object[] { bt.n(localException) });
+      AppMethodBeat.o(133105);
+    }
+  }
+  
+  public static String hh(List<o> paramList)
   {
     AppMethodBeat.i(133104);
     Iterator localIterator = paramList.iterator();
@@ -95,14 +95,14 @@ public final class o
     return paramList;
   }
   
-  public static a lf(String paramString1, String paramString2)
+  public static a lE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(133106);
-    ac.d("MicroMsg.MMBuiltInIP", "parsing network control params:");
-    ac.d("MicroMsg.MMBuiltInIP", "ports = ".concat(String.valueOf(paramString1)));
-    ac.d("MicroMsg.MMBuiltInIP", "timeouts = ".concat(String.valueOf(paramString2)));
-    int[] arrayOfInt = bs.aLv(paramString1);
-    paramString2 = bs.aLv(paramString2);
+    ad.d("MicroMsg.MMBuiltInIP", "parsing network control params:");
+    ad.d("MicroMsg.MMBuiltInIP", "ports = ".concat(String.valueOf(paramString1)));
+    ad.d("MicroMsg.MMBuiltInIP", "timeouts = ".concat(String.valueOf(paramString2)));
+    int[] arrayOfInt = bt.aRb(paramString1);
+    paramString2 = bt.aRb(paramString2);
     if (paramString2 != null)
     {
       paramString1 = paramString2;
@@ -114,7 +114,7 @@ public final class o
       paramString1[0] = 0;
       paramString1[1] = 0;
       paramString1;
-      ac.e("MicroMsg.MMBuiltInIP", "invalid timeouts");
+      ad.e("MicroMsg.MMBuiltInIP", "invalid timeouts");
     }
     paramString1 = new a(arrayOfInt, (int)(paramString1[0] * 1000L), (int)(paramString1[1] * 1000L));
     AppMethodBeat.o(133106);
@@ -124,23 +124,23 @@ public final class o
   public final String toString()
   {
     AppMethodBeat.i(133102);
-    String str = this.type + "," + this.tWE + "," + this.port + "," + this.host;
+    String str = this.type + "," + this.uZn + "," + this.port + "," + this.host;
     AppMethodBeat.o(133102);
     return str;
   }
   
   public static final class a
   {
-    public final int[] DIU = null;
-    public final int[] DIV;
-    public final int DIW;
-    public final int DIX;
+    public final int[] Fob = null;
+    public final int[] Foc;
+    public final int Fod;
+    public final int Foe;
     
     public a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
     {
-      this.DIV = paramArrayOfInt;
-      this.DIW = paramInt1;
-      this.DIX = paramInt2;
+      this.Foc = paramArrayOfInt;
+      this.Fod = paramInt1;
+      this.Foe = paramInt2;
     }
   }
 }

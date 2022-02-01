@@ -7,31 +7,31 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.notification.NotificationItem;
-import com.tencent.mm.m.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.n.f;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class NotificationQueue
 {
-  public ParcelNotificationQueue foO;
+  public ParcelNotificationQueue fGW;
   
   private void save()
   {
     AppMethodBeat.i(20014);
-    if (this.foO == null)
+    if (this.fGW == null)
     {
       AppMethodBeat.o(20014);
       return;
     }
-    ac.d("MicroMsg.NotificationCustomQueue", "jacks save: %d", new Object[] { Integer.valueOf(this.foO.size()) });
-    if (this.foO.isEmpty())
+    ad.d("MicroMsg.NotificationCustomQueue", "jacks save: %d", new Object[] { Integer.valueOf(this.fGW.size()) });
+    if (this.fGW.isEmpty())
     {
-      f.Zd().edit().putString("com.tencent.preference.notification.queue", "").apply();
-      if (this.foO == null) {
+      f.abD().edit().putString("com.tencent.preference.notification.queue", "").apply();
+      if (this.fGW == null) {
         restore();
       }
-      ac.d("MicroMsg.NotificationCustomQueue", "jacks _reset: %d", new Object[] { Integer.valueOf(this.foO.size()) });
+      ad.d("MicroMsg.NotificationCustomQueue", "jacks _reset: %d", new Object[] { Integer.valueOf(this.fGW.size()) });
       AppMethodBeat.o(20014);
       return;
     }
@@ -43,10 +43,10 @@ public final class NotificationQueue
     try
     {
       AppMethodBeat.i(20016);
-      if (this.foO == null) {
+      if (this.fGW == null) {
         restore();
       }
-      boolean bool = this.foO.remove(paramNotificationItem);
+      boolean bool = this.fGW.remove(paramNotificationItem);
       if (bool) {
         save();
       }
@@ -61,10 +61,10 @@ public final class NotificationQueue
     try
     {
       AppMethodBeat.i(20018);
-      if (this.foO == null) {
+      if (this.fGW == null) {
         restore();
       }
-      boolean bool = this.foO.add(paramNotificationItem);
+      boolean bool = this.fGW.add(paramNotificationItem);
       if (bool) {
         save();
       }
@@ -74,24 +74,24 @@ public final class NotificationQueue
     finally {}
   }
   
-  public final NotificationItem kv(int paramInt)
+  public final NotificationItem kS(int paramInt)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(20017);
-        if (this.foO == null) {
+        if (this.fGW == null) {
           restore();
         }
-        Iterator localIterator = this.foO.iterator();
+        Iterator localIterator = this.fGW.iterator();
         if (localIterator.hasNext())
         {
           NotificationItem localNotificationItem = (NotificationItem)localIterator.next();
           if (localNotificationItem.id != paramInt) {
             continue;
           }
-          if ((localNotificationItem != null) && (this.foO.remove(localNotificationItem))) {
+          if ((localNotificationItem != null) && (this.fGW.remove(localNotificationItem))) {
             save();
           }
           AppMethodBeat.o(20017);
@@ -108,11 +108,11 @@ public final class NotificationQueue
     try
     {
       AppMethodBeat.i(20015);
-      ac.d("MicroMsg.NotificationCustomQueue", "jacks _restore");
-      if (this.foO == null) {
-        this.foO = new ParcelNotificationQueue();
+      ad.d("MicroMsg.NotificationCustomQueue", "jacks _restore");
+      if (this.fGW == null) {
+        this.fGW = new ParcelNotificationQueue();
       }
-      ac.d("MicroMsg.NotificationCustomQueue", "jacks _restore: %d", new Object[] { Integer.valueOf(this.foO.size()) });
+      ad.d("MicroMsg.NotificationCustomQueue", "jacks _restore: %d", new Object[] { Integer.valueOf(this.fGW.size()) });
       AppMethodBeat.o(20015);
       return;
     }
@@ -122,10 +122,10 @@ public final class NotificationQueue
   public final int size()
   {
     AppMethodBeat.i(20019);
-    if (this.foO == null) {
+    if (this.fGW == null) {
       restore();
     }
-    int i = this.foO.size();
+    int i = this.fGW.size();
     AppMethodBeat.o(20019);
     return i;
   }

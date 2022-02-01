@@ -6,25 +6,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class GameGalleryFragment
   extends Fragment
 {
   View mView;
-  private int sYG;
+  private int tWx;
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     AppMethodBeat.i(40905);
-    ac.i("MicroMsg.GameGalleryFragment", "onCreateView");
+    ad.i("MicroMsg.GameGalleryFragment", "onCreateView");
     if (this.mView != null)
     {
       paramLayoutInflater = this.mView;
       AppMethodBeat.o(40905);
       return paramLayoutInflater;
     }
-    paramLayoutInflater = paramLayoutInflater.inflate(this.sYG, paramViewGroup);
+    paramLayoutInflater = paramLayoutInflater.inflate(this.tWx, paramViewGroup);
     AppMethodBeat.o(40905);
     return paramLayoutInflater;
   }
@@ -32,13 +32,13 @@ public class GameGalleryFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     AppMethodBeat.i(40906);
-    ac.i("MicroMsg.GameGalleryFragment", "onViewCreated");
+    ad.i("MicroMsg.GameGalleryFragment", "onViewCreated");
     AppMethodBeat.o(40906);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GameGalleryFragment
  * JD-Core Version:    0.7.0.1
  */

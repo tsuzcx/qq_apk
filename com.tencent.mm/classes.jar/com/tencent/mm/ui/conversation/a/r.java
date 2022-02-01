@@ -6,80 +6,82 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kc;
-import com.tencent.mm.g.a.wh;
+import com.tencent.mm.g.a.kk;
+import com.tencent.mm.g.a.xa;
 import com.tencent.mm.modelmulti.l;
-import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class r
-  extends b
+  extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  private boolean IHQ;
-  boolean IIf;
-  private c IIg;
-  private TextView iCg;
-  private ImageView lzC;
-  private View qe;
+  private boolean KyY;
+  boolean Kzm;
+  private c Kzn;
+  private TextView iVq;
+  private ImageView lZa;
+  private View rY;
   
   public r(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(38859);
-    this.IHQ = false;
-    this.qe = null;
-    this.IIf = false;
-    if ((!this.IHQ) && (this.view != null))
+    this.KyY = false;
+    this.rY = null;
+    this.Kzm = false;
+    if ((!this.KyY) && (this.view != null))
     {
-      this.qe = this.view.findViewById(2131305954);
-      this.iCg = ((TextView)this.view.findViewById(2131305952));
-      this.lzC = ((ImageView)this.view.findViewById(2131305953));
-      this.IHQ = true;
-      this.IIg = new c() {};
-      a.GpY.c(this.IIg);
+      this.rY = this.view.findViewById(2131305954);
+      this.iVq = ((TextView)this.view.findViewById(2131305952));
+      this.lZa = ((ImageView)this.view.findViewById(2131305953));
+      this.KyY = true;
+      this.Kzn = new c() {};
+      com.tencent.mm.sdk.b.a.IbL.c(this.Kzn);
     }
     AppMethodBeat.o(38859);
   }
   
-  public final boolean bvU()
+  public final boolean bAa()
   {
     AppMethodBeat.i(38860);
-    if (!this.IIf)
+    if (!this.Kzm)
     {
-      ac.i("MicroMsg.TryNewInitBanner", "summerinit update but initFailed[%b] just ret update false", new Object[] { Boolean.valueOf(this.IIf) });
-      this.qe.setVisibility(8);
+      ad.i("MicroMsg.TryNewInitBanner", "summerinit update but initFailed[%b] just ret update false", new Object[] { Boolean.valueOf(this.Kzm) });
+      this.rY.setVisibility(8);
       AppMethodBeat.o(38860);
       return false;
     }
-    if (!l.aGj())
+    if (!l.aJs())
     {
-      ac.i("MicroMsg.TryNewInitBanner", "summerinit update but not need init just update false");
-      this.IIf = false;
-      this.qe.setVisibility(8);
+      ad.i("MicroMsg.TryNewInitBanner", "summerinit update but not need init just update false");
+      this.Kzm = false;
+      this.rY.setVisibility(8);
       AppMethodBeat.o(38860);
       return false;
     }
-    this.iCg.setText(2131756419);
-    this.lzC.setVisibility(0);
-    this.qe.setOnClickListener(new View.OnClickListener()
+    this.iVq.setText(2131756419);
+    this.lZa.setVisibility(0);
+    this.rY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(38858);
-        ac.i("MicroMsg.TryNewInitBanner", "summerinit onClick trynewinit layout start try");
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/TryNewInitBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        ad.i("MicroMsg.TryNewInitBanner", "summerinit onClick trynewinit layout start try");
         r.this.setVisibility(8);
-        a.GpY.l(new wh());
-        ac.i("MicroMsg.TryNewInitBanner", "summerinit onClick tryNeeInitAgain done callBack (now by event to notice initbanner)");
+        com.tencent.mm.sdk.b.a.IbL.l(new xa());
+        ad.i("MicroMsg.TryNewInitBanner", "summerinit onClick tryNeeInitAgain done callBack (now by event to notice initbanner)");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/TryNewInitBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(38858);
       }
     });
-    this.qe.setVisibility(0);
-    if (this.qe.getVisibility() == 0) {}
+    this.rY.setVisibility(0);
+    if (this.rY.getVisibility() == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.i("MicroMsg.TryNewInitBanner", "summerinit update set visible [%b]", new Object[] { Boolean.valueOf(bool) });
+      ad.i("MicroMsg.TryNewInitBanner", "summerinit update set visible [%b]", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(38860);
       return true;
     }
@@ -88,7 +90,7 @@ public final class r
   public final void destroy()
   {
     AppMethodBeat.i(38862);
-    a.GpY.d(this.IIg);
+    com.tencent.mm.sdk.b.a.IbL.d(this.Kzn);
     AppMethodBeat.o(38862);
   }
   
@@ -100,8 +102,8 @@ public final class r
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(38861);
-    if (this.qe != null) {
-      this.qe.setVisibility(paramInt);
+    if (this.rY != null) {
+      this.rY.setVisibility(paramInt);
     }
     AppMethodBeat.o(38861);
   }

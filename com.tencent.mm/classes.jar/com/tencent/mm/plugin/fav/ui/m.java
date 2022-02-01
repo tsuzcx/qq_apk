@@ -8,7 +8,7 @@ import java.util.GregorianCalendar;
 
 public final class m
 {
-  public static CharSequence F(Context paramContext, int paramInt)
+  public static CharSequence G(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(106935);
     if (paramInt <= 0)

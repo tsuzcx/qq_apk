@@ -13,27 +13,27 @@ import rx.j;
 public final class i
   implements j
 {
-  public List<j> MfF;
-  public volatile boolean MfG;
+  public List<j> OaH;
+  public volatile boolean OaI;
   
   public i() {}
   
   public i(j paramj)
   {
     AppMethodBeat.i(90120);
-    this.MfF = new LinkedList();
-    this.MfF.add(paramj);
+    this.OaH = new LinkedList();
+    this.OaH.add(paramj);
     AppMethodBeat.o(90120);
   }
   
   public i(j... paramVarArgs)
   {
     AppMethodBeat.i(90119);
-    this.MfF = new LinkedList(Arrays.asList(paramVarArgs));
+    this.OaH = new LinkedList(Arrays.asList(paramVarArgs));
     AppMethodBeat.o(90119);
   }
   
-  private static void y(Collection<j> paramCollection)
+  private static void z(Collection<j> paramCollection)
   {
     AppMethodBeat.i(90123);
     if (paramCollection == null)
@@ -52,7 +52,7 @@ public final class i
       localj = (j)localIterator.next();
       try
       {
-        localj.ggm();
+        localj.gyQ();
       }
       catch (Throwable localThrowable)
       {
@@ -68,7 +68,7 @@ public final class i
     {
       paramCollection.add(localThrowable);
       break;
-      b.jl(paramCollection);
+      b.jz(paramCollection);
       AppMethodBeat.o(90123);
       return;
     }
@@ -77,27 +77,27 @@ public final class i
   public final void b(j paramj)
   {
     AppMethodBeat.i(90121);
-    if (paramj.ggn())
+    if (paramj.gyR())
     {
       AppMethodBeat.o(90121);
       return;
     }
-    if (!this.MfG) {}
+    if (!this.OaI) {}
     try
     {
-      if (!this.MfG)
+      if (!this.OaI)
       {
-        List localList = this.MfF;
+        List localList = this.OaH;
         Object localObject = localList;
         if (localList == null)
         {
           localObject = new LinkedList();
-          this.MfF = ((List)localObject);
+          this.OaH = ((List)localObject);
         }
         ((List)localObject).add(paramj);
         return;
       }
-      paramj.ggm();
+      paramj.gyQ();
       AppMethodBeat.o(90121);
       return;
     }
@@ -107,19 +107,19 @@ public final class i
     }
   }
   
-  public final void ggm()
+  public final void gyQ()
   {
     AppMethodBeat.i(90122);
-    if (!this.MfG) {}
+    if (!this.OaI) {}
     try
     {
-      if (this.MfG) {
+      if (this.OaI) {
         return;
       }
-      this.MfG = true;
-      List localList = this.MfF;
-      this.MfF = null;
-      y(localList);
+      this.OaI = true;
+      List localList = this.OaH;
+      this.OaH = null;
+      z(localList);
       AppMethodBeat.o(90122);
       return;
     }
@@ -129,9 +129,9 @@ public final class i
     }
   }
   
-  public final boolean ggn()
+  public final boolean gyR()
   {
-    return this.MfG;
+    return this.OaI;
   }
 }
 

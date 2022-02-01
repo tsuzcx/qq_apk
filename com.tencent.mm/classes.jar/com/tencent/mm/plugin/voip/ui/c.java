@@ -5,9 +5,6 @@ import com.tencent.mm.plugin.voip.video.render.VoIPRenderTextureView;
 
 public abstract interface c
 {
-  @Deprecated
-  public abstract void Z(long paramLong, int paramInt);
-  
   public abstract void a(b paramb);
   
   public abstract void a(b paramb, int paramInt);
@@ -20,63 +17,68 @@ public abstract interface c
   
   public abstract void a(VoIPRenderTextureView paramVoIPRenderTextureView, int paramInt);
   
-  public abstract void ap(boolean paramBoolean1, boolean paramBoolean2);
+  @Deprecated
+  public abstract void ae(long paramLong, int paramInt);
   
-  public abstract void ehA();
+  public abstract void au(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void ehB();
+  public abstract boolean euW();
   
-  public abstract void ehC();
+  public abstract boolean euX();
   
-  public abstract void ehD();
+  public abstract boolean euY();
   
-  public abstract boolean ehE();
+  public abstract boolean euZ();
   
-  public abstract void ehR();
+  public abstract void evC();
   
-  public abstract void ehS();
+  public abstract void evD();
   
-  public abstract boolean ehm();
+  public abstract void eva();
   
-  public abstract boolean ehn();
+  public abstract boolean evb();
   
-  public abstract boolean eho();
+  public abstract boolean evc();
   
-  public abstract boolean ehp();
+  public abstract boolean evd();
   
-  public abstract void ehq();
+  public abstract boolean eve();
   
-  public abstract boolean ehr();
+  public abstract void evf();
   
-  public abstract boolean ehs();
+  public abstract void evg();
   
-  public abstract boolean eht();
+  public abstract void evi();
   
-  public abstract boolean ehu();
+  public abstract void evj();
   
-  public abstract void ehv();
+  public abstract void evk();
   
-  public abstract void ehw();
+  public abstract void evl();
   
-  public abstract void ehy();
+  public abstract void evm();
   
-  public abstract void ehz();
+  public abstract void evn();
   
-  public abstract void nm(int paramInt);
+  public abstract void evo();
   
-  public abstract void om(boolean paramBoolean);
+  public abstract boolean evp();
+  
+  public abstract void nL(int paramInt);
+  
+  public abstract void oG(boolean paramBoolean);
   
   public abstract void setVoicePlayDevice(int paramInt);
   
-  public abstract void su(boolean paramBoolean);
+  public abstract void td(boolean paramBoolean);
   
-  public abstract void sv(boolean paramBoolean);
+  public abstract void te(boolean paramBoolean);
   
-  public abstract boolean sw(boolean paramBoolean);
+  public abstract boolean tf(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,16 @@
 package com.tencent.mm.loader.k;
 
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "T", "R", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "R", "invoke"})
 final class a$e
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
-  public static final e gNh = new e();
+  public static final e hhe = new e();
   
   a$e()
   {

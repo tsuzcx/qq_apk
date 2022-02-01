@@ -2,192 +2,197 @@ package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cw;
+import com.tencent.mm.g.c.df;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.reflect.Field;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public final class c
-  extends cw
+  extends df
 {
   protected static c.a info;
-  public LinkedList<GroupToolItem> ftp;
-  public LinkedList<GroupToolItem> ftq;
+  public List<Long> fMd;
   
   static
   {
-    AppMethodBeat.i(182159);
+    AppMethodBeat.i(182138);
     c.a locala = new c.a();
-    locala.GvF = new Field[4];
-    locala.columns = new String[5];
+    locala.IhA = new Field[14];
+    locala.columns = new String[15];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "chatroomname";
-    locala.GvH.put("chatroomname", "TEXT default '群username'  PRIMARY KEY ");
-    localStringBuilder.append(" chatroomname TEXT default '群username'  PRIMARY KEY ");
+    locala.columns[0] = "todoid";
+    locala.IhC.put("todoid", "TEXT");
+    localStringBuilder.append(" todoid TEXT");
     localStringBuilder.append(", ");
-    locala.GvG = "chatroomname";
-    locala.columns[1] = "stickToollist";
-    locala.GvH.put("stickToollist", "TEXT");
-    localStringBuilder.append(" stickToollist TEXT");
+    locala.columns[1] = "roomname";
+    locala.IhC.put("roomname", "TEXT");
+    localStringBuilder.append(" roomname TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "recentUseToolList";
-    locala.GvH.put("recentUseToolList", "TEXT");
-    localStringBuilder.append(" recentUseToolList TEXT");
+    locala.columns[2] = "username";
+    locala.IhC.put("username", "TEXT");
+    localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "queryState";
-    locala.GvH.put("queryState", "INTEGER");
-    localStringBuilder.append(" queryState INTEGER");
-    locala.columns[4] = "rowid";
+    locala.columns[3] = "path";
+    locala.IhC.put("path", "TEXT default '小程序字段' ");
+    localStringBuilder.append(" path TEXT default '小程序字段' ");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "createtime";
+    locala.IhC.put("createtime", "LONG");
+    localStringBuilder.append(" createtime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "updatetime";
+    locala.IhC.put("updatetime", "LONG");
+    localStringBuilder.append(" updatetime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "custominfo";
+    locala.IhC.put("custominfo", "TEXT default '' ");
+    localStringBuilder.append(" custominfo TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "title";
+    locala.IhC.put("title", "TEXT default '' ");
+    localStringBuilder.append(" title TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "creator";
+    locala.IhC.put("creator", "TEXT default '创建者username' ");
+    localStringBuilder.append(" creator TEXT default '创建者username' ");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "related_msgids";
+    locala.IhC.put("related_msgids", "TEXT");
+    localStringBuilder.append(" related_msgids TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "manager";
+    locala.IhC.put("manager", "TEXT default '管理员username' ");
+    localStringBuilder.append(" manager TEXT default '管理员username' ");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "nreply";
+    locala.IhC.put("nreply", "INTEGER default '完成人数' ");
+    localStringBuilder.append(" nreply INTEGER default '完成人数' ");
+    localStringBuilder.append(", ");
+    locala.columns[12] = "state";
+    locala.IhC.put("state", "INTEGER");
+    localStringBuilder.append(" state INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[13] = "netSceneState";
+    locala.IhC.put("netSceneState", "INTEGER");
+    localStringBuilder.append(" netSceneState INTEGER");
+    locala.columns[14] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(182159);
+    AppMethodBeat.o(182138);
   }
   
   public c()
   {
-    AppMethodBeat.i(182154);
-    this.ftp = new LinkedList();
-    this.ftq = new LinkedList();
-    this.field_queryState = 0;
-    AppMethodBeat.o(182154);
+    AppMethodBeat.i(182132);
+    this.fMd = new ArrayList();
+    AppMethodBeat.o(182132);
   }
   
-  public static String O(List<GroupToolItem> paramList)
+  public final long Yn()
   {
-    AppMethodBeat.i(182158);
-    JSONArray localJSONArray = new JSONArray();
-    try
+    AppMethodBeat.i(182135);
+    if (this.fMd.size() > 0)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        GroupToolItem localGroupToolItem = (GroupToolItem)paramList.next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("username", localGroupToolItem.username);
-        localJSONObject.put("path", localGroupToolItem.path);
-        localJSONObject.put("updateTime", localGroupToolItem.fto);
-        localJSONArray.put(localJSONObject);
-      }
-      return paramList;
+      long l = ((Long)this.fMd.get(0)).longValue();
+      AppMethodBeat.o(182135);
+      return l;
     }
-    catch (JSONException paramList)
-    {
-      ac.e("MicroMsg.roomtools.GroupTools", "getToolsJsonStr() Exception:%s", new Object[] { paramList.getMessage() });
-      paramList = localJSONArray.toString();
-      AppMethodBeat.o(182158);
-    }
+    AppMethodBeat.o(182135);
+    return 0L;
   }
   
-  public final boolean VY()
+  public final boolean Yo()
   {
-    AppMethodBeat.i(182157);
-    if (this.ftp.size() >= 8)
-    {
-      AppMethodBeat.o(182157);
-      return true;
-    }
-    AppMethodBeat.o(182157);
-    return false;
-  }
-  
-  public final void b(GroupToolItem paramGroupToolItem)
-  {
-    AppMethodBeat.i(210020);
-    if (this.ftq.contains(paramGroupToolItem)) {
-      this.ftq.remove(paramGroupToolItem);
-    }
-    this.ftq.add(paramGroupToolItem);
-    Collections.sort(this.ftq, new Comparator() {});
-    if (this.ftq.size() > 20) {
-      this.ftq.remove(this.ftq.size() - 1);
-    }
-    this.field_recentUseToolList = O(this.ftq);
-    AppMethodBeat.o(210020);
+    AppMethodBeat.i(182136);
+    boolean bool = bt.lQ("roomannouncement@app.origin", this.field_username);
+    AppMethodBeat.o(182136);
+    return bool;
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(182155);
+    AppMethodBeat.i(182133);
     super.convertFrom(paramCursor);
-    this.ftp.clear();
-    int j;
-    int i;
-    JSONObject localJSONObject;
-    GroupToolItem localGroupToolItem;
-    if (!bs.isNullOrNil(this.field_stickToollist)) {
-      try
+    this.fMd.clear();
+    if (!bt.isNullOrNil(this.field_related_msgids))
+    {
+      paramCursor = this.field_related_msgids.split(",");
+      int j = paramCursor.length;
+      int i = 0;
+      while (i < j)
       {
-        paramCursor = new JSONArray(this.field_stickToollist);
-        j = paramCursor.length();
-        i = 0;
-        while (i < j)
-        {
-          localJSONObject = new JSONObject(paramCursor.getString(i));
-          localGroupToolItem = new GroupToolItem();
-          localGroupToolItem.username = bs.bG(localJSONObject.getString("username"), "");
-          localGroupToolItem.path = bs.bG(localJSONObject.getString("path"), "");
-          this.ftp.add(localGroupToolItem);
-          i += 1;
-        }
-        this.ftq.clear();
-      }
-      catch (Exception paramCursor)
-      {
-        ac.e("MicroMsg.roomtools.GroupTools", "parseStickTools() Exception:%s", new Object[] { paramCursor.getMessage() });
+        String str = paramCursor[i];
+        this.fMd.add(Long.valueOf(Long.parseLong(str)));
+        i += 1;
       }
     }
-    if (!bs.isNullOrNil(this.field_recentUseToolList)) {
-      try
-      {
-        paramCursor = new JSONArray(this.field_recentUseToolList);
-        j = paramCursor.length();
-        i = 0;
-        while (i < j)
-        {
-          localJSONObject = new JSONObject(paramCursor.getString(i));
-          localGroupToolItem = new GroupToolItem();
-          localGroupToolItem.username = bs.bG(localJSONObject.getString("username"), "");
-          localGroupToolItem.path = bs.bG(localJSONObject.getString("path"), "");
-          localGroupToolItem.fto = localJSONObject.getLong("updateTime");
-          this.ftq.add(localGroupToolItem);
-          i += 1;
-        }
-        AppMethodBeat.o(182155);
-        return;
-      }
-      catch (Exception paramCursor)
-      {
-        ac.e("MicroMsg.roomtools.GroupTools", "parseRecentUseTools() Exception:%s", new Object[] { paramCursor.getMessage() });
-      }
-    }
-    AppMethodBeat.o(182155);
+    AppMethodBeat.o(182133);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(182156);
-    if (bs.lr(((c)paramObject).field_chatroomname, this.field_chatroomname))
+    AppMethodBeat.i(182134);
+    paramObject = (c)paramObject;
+    if ((bt.lQ(paramObject.field_todoid, this.field_todoid)) && (bt.lQ(paramObject.field_roomname, this.field_roomname)))
     {
-      AppMethodBeat.o(182156);
+      AppMethodBeat.o(182134);
       return true;
     }
-    AppMethodBeat.o(182156);
+    AppMethodBeat.o(182134);
     return false;
   }
   
   public final c.a getDBInfo()
   {
     return info;
+  }
+  
+  public final void qM(long paramLong)
+  {
+    AppMethodBeat.i(213427);
+    if (!this.fMd.contains(Long.valueOf(paramLong)))
+    {
+      this.fMd.add(Long.valueOf(paramLong));
+      StringBuilder localStringBuilder = new StringBuilder();
+      Iterator localIterator = this.fMd.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(((Long)localIterator.next()).longValue()).append(",");
+      }
+      if (localStringBuilder.length() - 1 >= 0) {
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      }
+      this.field_related_msgids = localStringBuilder.toString();
+    }
+    AppMethodBeat.o(213427);
+  }
+  
+  public final boolean qN(long paramLong)
+  {
+    AppMethodBeat.i(182137);
+    if (this.fMd.contains(Long.valueOf(paramLong)))
+    {
+      this.fMd.remove(Long.valueOf(paramLong));
+      StringBuilder localStringBuilder = new StringBuilder();
+      Iterator localIterator = this.fMd.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(((Long)localIterator.next()).longValue()).append(",");
+      }
+      if (localStringBuilder.length() - 1 >= 0) {
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      }
+      this.field_related_msgids = localStringBuilder.toString();
+    }
+    if (this.fMd.size() == 0)
+    {
+      AppMethodBeat.o(182137);
+      return true;
+    }
+    AppMethodBeat.o(182137);
+    return false;
   }
 }
 

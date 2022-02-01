@@ -7,24 +7,24 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class b
 {
-  public static String ei(String paramString1, String paramString2)
+  public static String er(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(201062);
+    AppMethodBeat.i(187734);
     try
     {
-      paramString1 = ai.getContext().getPackageManager().getApplicationInfo(ai.getContext().getPackageName(), 128).metaData.getString(paramString1, paramString2);
-      AppMethodBeat.o(201062);
+      paramString1 = aj.getContext().getPackageManager().getApplicationInfo(aj.getContext().getPackageName(), 128).metaData.getString(paramString1, paramString2);
+      AppMethodBeat.o(187734);
       return paramString1;
     }
     catch (PackageManager.NameNotFoundException paramString1)
     {
-      ac.l("Luggage.AndroidPackageUtil", "", new Object[] { paramString1 });
-      AppMethodBeat.o(201062);
+      ad.l("Luggage.AndroidPackageUtil", "", new Object[] { paramString1 });
+      AppMethodBeat.o(187734);
     }
     return paramString2;
   }
@@ -34,7 +34,7 @@ public final class b
     AppMethodBeat.i(140800);
     if (paramString == null)
     {
-      ac.e("Luggage.AndroidPackageUtil", "getPackageInfo fail, packageName is null");
+      ad.e("Luggage.AndroidPackageUtil", "getPackageInfo fail, packageName is null");
       AppMethodBeat.o(140800);
       return null;
     }
@@ -46,7 +46,7 @@ public final class b
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      ac.w("Luggage.AndroidPackageUtil", paramContext.getMessage());
+      ad.w("Luggage.AndroidPackageUtil", paramContext.getMessage());
       AppMethodBeat.o(140800);
     }
     return null;
@@ -54,7 +54,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.z.b
  * JD-Core Version:    0.7.0.1
  */

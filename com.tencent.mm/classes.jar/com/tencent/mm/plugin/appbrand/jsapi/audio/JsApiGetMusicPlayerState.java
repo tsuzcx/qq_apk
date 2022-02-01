@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.f;
+import com.tencent.mm.az.f;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.media.music.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -20,14 +20,14 @@ public class JsApiGetMusicPlayerState
 {
   public static final int CTRL_INDEX = 46;
   public static final String NAME = "getMusicPlayerState";
-  private GetMusicPlayerState kbM;
+  private GetMusicPlayerState kwl;
   
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(145726);
-    this.kbM = new GetMusicPlayerState(this, paramc, paramInt);
-    this.kbM.mAppid = paramc.getAppId();
-    AppBrandMainProcessService.a(this.kbM);
+    this.kwl = new GetMusicPlayerState(this, paramc, paramInt);
+    this.kwl.mAppid = paramc.getAppId();
+    AppBrandMainProcessService.a(this.kwl);
     AppMethodBeat.o(145726);
   }
   
@@ -35,14 +35,14 @@ public class JsApiGetMusicPlayerState
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetMusicPlayerState> CREATOR;
-    public int asf;
+    public int atW;
     public boolean error;
-    public String imz;
-    private int jOT;
-    private m jXc;
-    private com.tencent.mm.plugin.appbrand.jsapi.c jYG;
-    public int kbN;
-    public String kbO;
+    public String iFQ;
+    private int kje;
+    private m kry;
+    private com.tencent.mm.plugin.appbrand.jsapi.c ktc;
+    public int kwm;
+    public String kwn;
     public String mAppid;
     public int mPosition;
     public int mStatus;
@@ -65,52 +65,52 @@ public class JsApiGetMusicPlayerState
     public GetMusicPlayerState(m paramm, com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt)
     {
       this.error = false;
-      this.jXc = paramm;
-      this.jYG = paramc;
-      this.jOT = paramInt;
+      this.kry = paramm;
+      this.ktc = paramc;
+      this.kje = paramInt;
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       AppMethodBeat.i(145721);
-      Object localObject = a.a.boE().lrM;
-      if ((!bs.isNullOrNil((String)localObject)) && (!((String)localObject).equals(this.mAppid)))
+      Object localObject = a.a.bsD().lQW;
+      if ((!bt.isNullOrNil((String)localObject)) && (!((String)localObject).equals(this.mAppid)))
       {
-        ac.i("MicroMsg.JsApiGetMusicPlayerState", "appid not match cannot operate");
+        ad.i("MicroMsg.JsApiGetMusicPlayerState", "appid not match cannot operate");
         this.error = true;
-        this.imz = "appid not match cannot operate";
-        bet();
+        this.iFQ = "appid not match cannot operate";
+        bhX();
         AppMethodBeat.o(145721);
         return;
       }
-      localObject = com.tencent.mm.ay.a.aGy();
+      localObject = com.tencent.mm.az.a.aJJ();
       int j;
       int i;
       if (localObject != null)
       {
-        com.tencent.mm.ay.c localc = com.tencent.mm.ay.a.aGz();
+        com.tencent.mm.az.c localc = com.tencent.mm.az.a.aJK();
         if (localc == null) {
           break label232;
         }
-        j = localc.asf;
+        j = localc.atW;
         i = localc.mPosition;
         this.mStatus = localc.mStatus;
-        this.kbN = localc.hNM;
+        this.kwm = localc.iha;
       }
       for (;;)
       {
-        this.asf = (j / 1000);
+        this.atW = (j / 1000);
         this.mPosition = (i / 1000);
-        this.kbO = ((f)localObject).hNY;
-        this.imz = "";
+        this.kwn = ((f)localObject).ihm;
+        this.iFQ = "";
         for (this.error = false;; this.error = false)
         {
-          ac.i("MicroMsg.JsApiGetMusicPlayerState", "duration %d , position %d ,status %s , downloadpercent %d , dataurl %s", new Object[] { Integer.valueOf(this.asf), Integer.valueOf(this.mPosition), Integer.valueOf(this.mStatus), Integer.valueOf(this.kbN), this.kbO });
-          bet();
+          ad.i("MicroMsg.JsApiGetMusicPlayerState", "duration %d , position %d ,status %s , downloadpercent %d , dataurl %s", new Object[] { Integer.valueOf(this.atW), Integer.valueOf(this.mPosition), Integer.valueOf(this.mStatus), Integer.valueOf(this.kwm), this.kwn });
+          bhX();
           AppMethodBeat.o(145721);
           return;
           this.mStatus = 2;
-          this.imz = "";
+          this.iFQ = "";
         }
         label232:
         i = -1;
@@ -118,32 +118,32 @@ public class JsApiGetMusicPlayerState
       }
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(145722);
       HashMap localHashMap = new HashMap();
-      localHashMap.put("duration", Integer.valueOf(this.asf));
+      localHashMap.put("duration", Integer.valueOf(this.atW));
       localHashMap.put("currentPosition", Integer.valueOf(this.mPosition));
       localHashMap.put("status", Integer.valueOf(this.mStatus));
-      localHashMap.put("downloadPercent", Integer.valueOf(this.kbN));
-      localHashMap.put("dataUrl", this.kbO);
-      com.tencent.mm.plugin.appbrand.jsapi.c localc = this.jYG;
-      int i = this.jOT;
-      m localm = this.jXc;
+      localHashMap.put("downloadPercent", Integer.valueOf(this.kwm));
+      localHashMap.put("dataUrl", this.kwn);
+      com.tencent.mm.plugin.appbrand.jsapi.c localc = this.ktc;
+      int i = this.kje;
+      m localm = this.kry;
       StringBuilder localStringBuilder;
       if (this.error)
       {
         localStringBuilder = new StringBuilder("fail");
-        if (TextUtils.isEmpty(this.imz)) {
+        if (TextUtils.isEmpty(this.iFQ)) {
           str = "";
         }
       }
       for (String str = str;; str = "ok")
       {
-        localc.h(i, localm.k(str, localHashMap));
+        localc.h(i, localm.m(str, localHashMap));
         AppMethodBeat.o(145722);
         return;
-        str = ":" + this.imz;
+        str = ":" + this.iFQ;
         break;
       }
     }
@@ -156,12 +156,12 @@ public class JsApiGetMusicPlayerState
       for (boolean bool = true;; bool = false)
       {
         this.error = bool;
-        this.asf = paramParcel.readInt();
+        this.atW = paramParcel.readInt();
         this.mPosition = paramParcel.readInt();
         this.mStatus = paramParcel.readInt();
-        this.kbN = paramParcel.readInt();
-        this.kbO = paramParcel.readString();
-        this.imz = paramParcel.readString();
+        this.kwm = paramParcel.readInt();
+        this.kwn = paramParcel.readString();
+        this.iFQ = paramParcel.readString();
         AppMethodBeat.o(145723);
         return;
       }
@@ -175,12 +175,12 @@ public class JsApiGetMusicPlayerState
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeInt(this.asf);
+        paramParcel.writeInt(this.atW);
         paramParcel.writeInt(this.mPosition);
         paramParcel.writeInt(this.mStatus);
-        paramParcel.writeInt(this.kbN);
-        paramParcel.writeString(this.kbO);
-        paramParcel.writeString(this.imz);
+        paramParcel.writeInt(this.kwm);
+        paramParcel.writeString(this.kwn);
+        paramParcel.writeString(this.iFQ);
         AppMethodBeat.o(145724);
         return;
       }

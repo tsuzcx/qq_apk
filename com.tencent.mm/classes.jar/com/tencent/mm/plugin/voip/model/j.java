@@ -6,40 +6,40 @@ import java.io.OutputStream;
 
 final class j
 {
-  protected f AAX;
-  int AAY;
-  private int AAZ;
-  private int ABa;
-  private final OutputStream ABb;
-  private int[] ABc;
-  int ABd;
-  private InputStream aJh;
+  protected f BZW;
+  int BZX;
+  private int BZY;
+  private int BZZ;
+  private final OutputStream Caa;
+  private int[] Cab;
+  int Cac;
+  private InputStream aKY;
   
   public j(InputStream paramInputStream)
   {
     AppMethodBeat.i(114864);
-    this.AAX = new f();
-    this.ABc = new int[8];
-    this.aJh = paramInputStream;
-    this.ABb = null;
-    this.AAZ = paramInputStream.read();
-    this.ABa = paramInputStream.read();
+    this.BZW = new f();
+    this.Cab = new int[8];
+    this.aKY = paramInputStream;
+    this.Caa = null;
+    this.BZY = paramInputStream.read();
+    this.BZZ = paramInputStream.read();
     AppMethodBeat.o(114864);
   }
   
   public j(InputStream paramInputStream, OutputStream paramOutputStream)
   {
     AppMethodBeat.i(114865);
-    this.AAX = new f();
-    this.ABc = new int[8];
-    this.aJh = paramInputStream;
-    this.ABb = paramOutputStream;
-    this.AAZ = paramInputStream.read();
-    this.ABa = paramInputStream.read();
+    this.BZW = new f();
+    this.Cab = new int[8];
+    this.aKY = paramInputStream;
+    this.Caa = paramOutputStream;
+    this.BZY = paramInputStream.read();
+    this.BZZ = paramInputStream.read();
     AppMethodBeat.o(114865);
   }
   
-  private long Sb(int paramInt)
+  private long TT(int paramInt)
   {
     AppMethodBeat.i(114868);
     if (paramInt > 64)
@@ -52,14 +52,14 @@ final class j
     int i = 0;
     while (i < paramInt)
     {
-      l = l << 1 | sy(true);
+      l = l << 1 | th(true);
       i += 1;
     }
     AppMethodBeat.o(114868);
     return l;
   }
   
-  private void Sg(int paramInt)
+  private void TY(int paramInt)
   {
     AppMethodBeat.i(114883);
     int i = 0;
@@ -69,9 +69,9 @@ final class j
     }
     for (;;)
     {
-      aa(0L, i);
-      Sf(1);
-      aa(paramInt - j, i);
+      af(0L, i);
+      TX(1);
+      af(paramInt - j, i);
       AppMethodBeat.o(114883);
       return;
       j += (1 << i);
@@ -84,75 +84,75 @@ final class j
   private void advance()
   {
     AppMethodBeat.i(114870);
-    this.AAZ = this.ABa;
-    this.ABa = this.aJh.read();
-    this.AAY = 0;
+    this.BZY = this.BZZ;
+    this.BZZ = this.aKY.read();
+    this.BZX = 0;
     AppMethodBeat.o(114870);
   }
   
-  private int ehZ()
+  private int evK()
   {
     int j = 0;
     AppMethodBeat.i(114873);
     int i = 0;
-    while (sy(true) == 0) {
+    while (th(true) == 0) {
       i += 1;
     }
     if (i > 0)
     {
-      long l = Sb(i);
+      long l = TT(i);
       j = (int)((1 << i) - 1 + l);
     }
     AppMethodBeat.o(114873);
     return j;
   }
   
-  private int eid()
+  private int evO()
   {
     AppMethodBeat.i(114877);
-    int i = ehZ();
+    int i = evK();
     i = ((i & 0x1) + (i >> 1)) * (((i & 0x1) << 1) - 1);
     AppMethodBeat.o(114877);
     return i;
   }
   
-  private void eie()
+  private void evP()
   {
     AppMethodBeat.i(114880);
-    int i = this.ABc[0];
-    int j = this.ABc[1];
-    int k = this.ABc[2];
-    int m = this.ABc[3];
-    int n = this.ABc[4];
-    int i1 = this.ABc[5];
-    int i2 = this.ABc[6];
-    int i3 = this.ABc[7];
-    this.ABb.write(i << 7 | j << 6 | k << 5 | m << 4 | n << 3 | i1 << 2 | i2 << 1 | i3);
+    int i = this.Cab[0];
+    int j = this.Cab[1];
+    int k = this.Cab[2];
+    int m = this.Cab[3];
+    int n = this.Cab[4];
+    int i1 = this.Cab[5];
+    int i2 = this.Cab[6];
+    int i3 = this.Cab[7];
+    this.Caa.write(i << 7 | j << 6 | k << 5 | m << 4 | n << 3 | i1 << 2 | i2 << 1 | i3);
     AppMethodBeat.o(114880);
   }
   
-  private int sy(boolean paramBoolean)
+  private int th(boolean paramBoolean)
   {
     AppMethodBeat.i(114867);
-    if (this.AAY == 8)
+    if (this.BZX == 8)
     {
       advance();
-      if (this.AAZ == -1)
+      if (this.BZY == -1)
       {
         AppMethodBeat.o(114867);
         return -1;
       }
     }
-    int i = this.AAZ >> 7 - this.AAY & 0x1;
-    this.AAY += 1;
-    if ((paramBoolean) && (this.ABb != null)) {
-      Sf(i);
+    int i = this.BZY >> 7 - this.BZX & 0x1;
+    this.BZX += 1;
+    if ((paramBoolean) && (this.Caa != null)) {
+      TX(i);
     }
     AppMethodBeat.o(114867);
     return i;
   }
   
-  public final void Sc(int paramInt)
+  public final void TU(int paramInt)
   {
     AppMethodBeat.i(114869);
     if (paramInt > 64)
@@ -164,20 +164,20 @@ final class j
     int i = 0;
     while (i < paramInt)
     {
-      sy(true);
+      th(true);
       i += 1;
     }
     AppMethodBeat.o(114869);
   }
   
-  public final void Sd(int paramInt)
+  public final void TV(int paramInt)
   {
     AppMethodBeat.i(114872);
-    Sc(paramInt);
+    TU(paramInt);
     AppMethodBeat.o(114872);
   }
   
-  public final void Se(int paramInt)
+  public final void TW(int paramInt)
   {
     AppMethodBeat.i(114878);
     int[] arrayOfInt = new int[paramInt];
@@ -188,7 +188,7 @@ final class j
     {
       int i = m;
       if (m != 0) {
-        i = (eid() + j + 256) % 256;
+        i = (evO() + j + 256) % 256;
       }
       if (i == 0) {}
       for (;;)
@@ -204,94 +204,94 @@ final class j
     AppMethodBeat.o(114878);
   }
   
-  public final void Sf(int paramInt)
+  public final void TX(int paramInt)
   {
     AppMethodBeat.i(114881);
-    if (this.ABd == 8)
+    if (this.Cac == 8)
     {
-      this.ABd = 0;
-      eie();
+      this.Cac = 0;
+      evP();
     }
-    int[] arrayOfInt = this.ABc;
-    int i = this.ABd;
-    this.ABd = (i + 1);
+    int[] arrayOfInt = this.Cab;
+    int i = this.Cac;
+    this.Cac = (i + 1);
     arrayOfInt[i] = paramInt;
     AppMethodBeat.o(114881);
   }
   
-  public final void Sh(int paramInt)
+  public final void TZ(int paramInt)
   {
     AppMethodBeat.i(114884);
-    Sg(paramInt);
+    TY(paramInt);
     AppMethodBeat.o(114884);
   }
   
-  public final void aa(long paramLong, int paramInt)
+  public final void af(long paramLong, int paramInt)
   {
     AppMethodBeat.i(114882);
     int i = 0;
     while (i < paramInt)
     {
-      Sf((int)(paramLong >> paramInt - i - 1) & 0x1);
+      TX((int)(paramLong >> paramInt - i - 1) & 0x1);
       i += 1;
     }
     AppMethodBeat.o(114882);
   }
   
-  public final long ehY()
+  public final long evJ()
   {
     AppMethodBeat.i(114871);
-    long l = Sb(8);
+    long l = TT(8);
     AppMethodBeat.o(114871);
     return l;
   }
   
-  final void eia()
+  final void evL()
   {
     AppMethodBeat.i(114874);
     int i = 0;
-    while (sy(true) == 0) {
+    while (th(true) == 0) {
       i += 1;
     }
     if (i > 0) {
-      Sc(i);
+      TU(i);
     }
     AppMethodBeat.o(114874);
   }
   
-  public final int eib()
+  public final int evM()
   {
     AppMethodBeat.i(114875);
-    int i = ehZ();
+    int i = evK();
     AppMethodBeat.o(114875);
     return i;
   }
   
-  public final void eic()
+  public final void evN()
   {
     AppMethodBeat.i(114876);
-    eia();
+    evL();
     AppMethodBeat.o(114876);
   }
   
   public final void flush()
   {
     AppMethodBeat.i(114879);
-    int i = this.ABd;
+    int i = this.Cac;
     while (i < 8)
     {
-      this.ABc[i] = 0;
+      this.Cab[i] = 0;
       i += 1;
     }
-    this.ABd = 0;
-    eie();
+    this.Cac = 0;
+    evP();
     AppMethodBeat.o(114879);
   }
   
-  public final boolean sx(boolean paramBoolean)
+  public final boolean tg(boolean paramBoolean)
   {
     AppMethodBeat.i(114866);
-    if (sy(paramBoolean) == 1)
+    if (th(paramBoolean) == 1)
     {
       AppMethodBeat.o(114866);
       return true;
@@ -300,13 +300,13 @@ final class j
     return false;
   }
   
-  public final void sz(boolean paramBoolean)
+  public final void ti(boolean paramBoolean)
   {
     AppMethodBeat.i(114885);
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      Sf(i);
+      TX(i);
       AppMethodBeat.o(114885);
       return;
     }
@@ -314,7 +314,7 @@ final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.j
  * JD-Core Version:    0.7.0.1
  */

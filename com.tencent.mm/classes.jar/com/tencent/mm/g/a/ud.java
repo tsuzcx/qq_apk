@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.HashMap;
 
 public final class ud
   extends b
 {
-  public a dwP;
+  public a dIC;
   
   public ud()
   {
@@ -16,23 +16,24 @@ public final class ud
   
   private ud(byte paramByte)
   {
-    AppMethodBeat.i(94815);
-    this.dwP = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(197543);
+    this.dIC = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(94815);
+    AppMethodBeat.o(197543);
   }
   
   public static final class a
   {
-    public long dwQ;
-    public int dwR;
-    public HashMap dwS;
+    public int EN;
+    public int bZU;
+    public Intent dxy;
+    public int requestCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ud
  * JD-Core Version:    0.7.0.1
  */

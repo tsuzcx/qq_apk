@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.brandservice.ui.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.h.e;
+import com.tencent.mm.pluginsdk.ui.i.e;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
 final class MPExoVideoWrapper$b
   implements Runnable
 {
@@ -13,18 +13,18 @@ final class MPExoVideoWrapper$b
   public final void run()
   {
     AppMethodBeat.i(7387);
-    MPExoVideoTextureView localMPExoVideoTextureView = MPExoVideoWrapper.h(this.nQK);
+    MPExoVideoTextureView localMPExoVideoTextureView = MPExoVideoWrapper.h(this.otr);
     if (localMPExoVideoTextureView != null) {
-      localMPExoVideoTextureView.setVideoSize(MPExoVideoWrapper.y(this.nQK), MPExoVideoWrapper.z(this.nQK));
+      localMPExoVideoTextureView.setVideoSize(MPExoVideoWrapper.y(this.otr), MPExoVideoWrapper.z(this.otr));
     }
-    localMPExoVideoTextureView = MPExoVideoWrapper.h(this.nQK);
+    localMPExoVideoTextureView = MPExoVideoWrapper.h(this.otr);
     if (localMPExoVideoTextureView != null) {
-      localMPExoVideoTextureView.bNN();
+      localMPExoVideoTextureView.bSn();
     }
-    localMPExoVideoTextureView = MPExoVideoWrapper.h(this.nQK);
+    localMPExoVideoTextureView = MPExoVideoWrapper.h(this.otr);
     if (localMPExoVideoTextureView != null)
     {
-      localMPExoVideoTextureView.setScaleType(h.e.DnJ);
+      localMPExoVideoTextureView.setScaleType(i.e.ESO);
       AppMethodBeat.o(7387);
       return;
     }

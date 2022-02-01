@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.recharge.ui.form;
 
 public abstract interface a
 {
-  public abstract boolean dtC();
+  public abstract boolean dDZ();
   
-  public abstract boolean dtD();
+  public abstract boolean dEa();
 }
 
 

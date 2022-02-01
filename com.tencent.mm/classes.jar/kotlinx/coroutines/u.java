@@ -2,52 +2,38 @@ package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
-import d.p;
-import d.q;
-import kotlinx.coroutines.internal.r;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"recoverResult", "Lkotlin/Result;", "T", "state", "", "uCont", "Lkotlin/coroutines/Continuation;", "(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "toState", "(Ljava/lang/Object;)Ljava/lang/Object;", "caller", "Lkotlinx/coroutines/CancellableContinuation;", "(Ljava/lang/Object;Lkotlinx/coroutines/CancellableContinuation;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
-public final class u
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/CompletedExceptionally;", "", "cause", "", "handled", "<init>", "(Ljava/lang/Throwable;Z)V", "makeHandled", "()Z", "", "toString", "()Ljava/lang/String;", "Ljava/lang/Throwable;", "getHandled", "kotlinx-coroutines-core", ""})
+public class u
 {
-  public static final <T> Object b(Object paramObject, d.d.d<? super T> paramd)
+  private static final AtomicIntegerFieldUpdater NHN;
+  private volatile int _handled;
+  public final Throwable cause;
+  
+  static
   {
-    AppMethodBeat.i(191249);
-    if ((paramObject instanceof t))
-    {
-      Object localObject = p.KTg;
-      localObject = ((t)paramObject).cause;
-      paramObject = localObject;
-      if (al.gdE()) {
-        if ((paramd instanceof d.d.b.a.d)) {
-          break label56;
-        }
-      }
-      label56:
-      for (paramObject = localObject;; paramObject = r.a((Throwable)localObject, (d.d.b.a.d)paramd))
-      {
-        paramObject = p.eI(q.n(paramObject));
-        AppMethodBeat.o(191249);
-        return paramObject;
-      }
-    }
-    paramd = p.KTg;
-    paramObject = p.eI(paramObject);
-    AppMethodBeat.o(191249);
-    return paramObject;
+    AppMethodBeat.i(190750);
+    NHN = AtomicIntegerFieldUpdater.newUpdater(u.class, "_handled");
+    AppMethodBeat.o(190750);
   }
   
-  public static final <T> Object fG(Object paramObject)
+  public u(Throwable paramThrowable, boolean paramBoolean) {}
+  
+  public final boolean guY()
   {
-    AppMethodBeat.i(118154);
-    Throwable localThrowable = p.eH(paramObject);
-    if (localThrowable == null)
-    {
-      AppMethodBeat.o(118154);
-      return paramObject;
-    }
-    paramObject = new t(localThrowable);
-    AppMethodBeat.o(118154);
-    return paramObject;
+    AppMethodBeat.i(190749);
+    boolean bool = NHN.compareAndSet(this, 0, 1);
+    AppMethodBeat.o(190749);
+    return bool;
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(118157);
+    String str = getClass().getSimpleName() + '[' + this.cause + ']';
+    AppMethodBeat.o(118157);
+    return str;
   }
 }
 

@@ -7,35 +7,35 @@ import com.google.b.a.e;
 public final class a$az
   extends e
 {
-  private static volatile az[] JPr;
-  public int DKi = 0;
-  public long JPs = 0L;
-  public String JPt = "";
-  public String JPu = "";
+  private static volatile az[] LJd;
+  public int Fpp = 0;
+  public long LJe = 0L;
+  public String LJf = "";
+  public String LJg = "";
   public String headUrl = "";
   public String username = "";
   
   public a$az()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
-  public static az[] fBR()
+  public static az[] fTg()
   {
-    if (JPr == null) {}
-    synchronized (c.bGz)
+    if (LJd == null) {}
+    synchronized (c.bQN)
     {
-      if (JPr == null) {
-        JPr = new az[0];
+      if (LJd == null) {
+        LJd = new az[0];
       }
-      return JPr;
+      return LJd;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.DKi != 0) {
-      paramb.bw(1, this.DKi);
+    if (this.Fpp != 0) {
+      paramb.by(1, this.Fpp);
     }
     if (!this.username.equals("")) {
       paramb.d(2, this.username);
@@ -43,24 +43,24 @@ public final class a$az
     if (!this.headUrl.equals("")) {
       paramb.d(3, this.headUrl);
     }
-    if (this.JPs != 0L) {
-      paramb.m(4, this.JPs);
+    if (this.LJe != 0L) {
+      paramb.m(4, this.LJe);
     }
-    if (!this.JPt.equals("")) {
-      paramb.d(5, this.JPt);
+    if (!this.LJf.equals("")) {
+      paramb.d(5, this.LJf);
     }
-    if (!this.JPu.equals("")) {
-      paramb.d(6, this.JPu);
+    if (!this.LJg.equals("")) {
+      paramb.d(6, this.LJg);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.DKi != 0) {
-      i = j + b.by(1, this.DKi);
+    if (this.Fpp != 0) {
+      i = j + b.bA(1, this.Fpp);
     }
     j = i;
     if (!this.username.equals("")) {
@@ -71,23 +71,23 @@ public final class a$az
       i = j + b.e(3, this.headUrl);
     }
     j = i;
-    if (this.JPs != 0L) {
-      j = i + b.o(4, this.JPs);
+    if (this.LJe != 0L) {
+      j = i + b.o(4, this.LJe);
     }
     i = j;
-    if (!this.JPt.equals("")) {
-      i = j + b.e(5, this.JPt);
+    if (!this.LJf.equals("")) {
+      i = j + b.e(5, this.LJf);
     }
     j = i;
-    if (!this.JPu.equals("")) {
-      j = i + b.e(6, this.JPu);
+    if (!this.LJg.equals("")) {
+      j = i + b.e(6, this.LJg);
     }
     return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.az
  * JD-Core Version:    0.7.0.1
  */

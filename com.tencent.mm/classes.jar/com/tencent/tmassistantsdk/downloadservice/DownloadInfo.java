@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.tmassistantsdk.storage.DBManager;
 import com.tencent.tmassistantsdk.storage.TMAssistantFile;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -280,7 +280,7 @@ public class DownloadInfo
       }
       catch (JSONException localJSONException)
       {
-        ac.printErrStackTrace("_DownloadInfo", localJSONException, "", new Object[0]);
+        ad.printErrStackTrace("_DownloadInfo", localJSONException, "", new Object[0]);
       }
     }
     for (;;)

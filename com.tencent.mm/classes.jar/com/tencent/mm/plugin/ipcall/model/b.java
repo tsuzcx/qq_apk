@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ka;
+import com.tencent.mm.g.a.ki;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
 
 public final class b
 {
-  private static c tHu;
+  private static c uKh;
   
   static
   {
     AppMethodBeat.i(25337);
-    tHu = new c() {};
+    uKh = new c() {};
     AppMethodBeat.o(25337);
   }
   
   public static void init()
   {
     AppMethodBeat.i(25334);
-    a.GpY.c(tHu);
+    a.IbL.c(uKh);
     AppMethodBeat.o(25334);
   }
   
   public static void release()
   {
     AppMethodBeat.i(25335);
-    a.GpY.d(tHu);
+    a.IbL.d(uKh);
     AppMethodBeat.o(25335);
   }
 }

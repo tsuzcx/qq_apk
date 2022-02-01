@@ -22,25 +22,30 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.am.o;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.c;
+import com.tencent.mm.model.ak;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.c;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
+import com.tencent.mm.plugin.messenger.foundation.a.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bz;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.cf;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.EllipsizeTextView;
 import com.tencent.mm.ui.base.MaskLayout;
 import com.tencent.mm.ui.base.MaskLayout.a;
@@ -57,58 +62,58 @@ import java.util.List;
 public class SelectMemberUI
   extends MMActivity
 {
-  private boolean fAa;
-  protected x ftP;
-  protected String fvZ;
-  protected int fwc;
-  private View fzU;
-  private View fzV;
-  private SelectMemberScrollBar fzW;
-  protected b fzX;
-  protected HashSet<String> fzY;
-  private boolean fzZ;
-  private MMEditText fzr;
+  protected ab fLO;
+  protected String fPi;
+  protected int fPp;
+  private MMEditText fSE;
+  private View fTk;
+  private View fTl;
+  private SelectMemberScrollBar fTm;
+  protected b fTn;
+  protected HashSet<String> fTo;
+  private boolean fTp;
+  private boolean fTq;
   private ListView mListView;
   protected String mTitle;
   
-  protected static String a(x paramx, String paramString)
+  protected static String a(ab paramab, String paramString)
   {
     AppMethodBeat.i(12976);
-    if (paramx == null)
+    if (paramab == null)
     {
       AppMethodBeat.o(12976);
       return null;
     }
-    paramx = paramx.wk(paramString);
+    paramab = paramab.zf(paramString);
     AppMethodBeat.o(12976);
-    return paramx;
+    return paramab;
   }
   
-  public boolean WM()
+  public boolean Zg()
   {
     return false;
   }
   
-  protected void WQ()
+  protected void Zj()
   {
     AppMethodBeat.i(12971);
-    this.fvZ = getIntent().getStringExtra("RoomInfo_Id");
-    ac.i("MicroMsg.SelectMemberUI", "[getIntentParams] roomId:%s", new Object[] { this.fvZ });
-    this.ftP = ((c)g.ab(c.class)).awK().xO(this.fvZ);
-    this.fwc = getIntent().getIntExtra("from_scene", 0);
+    this.fPi = getIntent().getStringExtra("RoomInfo_Id");
+    ad.i("MicroMsg.SelectMemberUI", "[getIntentParams] roomId:%s", new Object[] { this.fPi });
+    this.fLO = ((c)g.ab(c.class)).azz().AO(this.fPi);
+    this.fPp = getIntent().getIntExtra("from_scene", 0);
     this.mTitle = getIntent().getStringExtra("title");
-    this.fzZ = getIntent().getBooleanExtra("is_show_owner", true);
-    this.fAa = getIntent().getBooleanExtra("is_mulit_select_mode", false);
-    this.fzY = new HashSet();
+    this.fTp = getIntent().getBooleanExtra("is_show_owner", true);
+    this.fTq = getIntent().getBooleanExtra("is_mulit_select_mode", false);
+    this.fTo = new HashSet();
     AppMethodBeat.o(12971);
   }
   
-  public boolean WR()
+  public boolean Zk()
   {
-    return this.fAa;
+    return this.fTq;
   }
   
-  protected HashSet<String> WS()
+  protected HashSet<String> Zl()
   {
     AppMethodBeat.i(12974);
     HashSet localHashSet = new HashSet();
@@ -116,7 +121,7 @@ public class SelectMemberUI
     return localHashSet;
   }
   
-  protected HashSet<String> WU()
+  protected HashSet<String> Zn()
   {
     AppMethodBeat.i(12973);
     HashSet localHashSet = new HashSet();
@@ -124,27 +129,27 @@ public class SelectMemberUI
     return localHashSet;
   }
   
-  protected boolean WV()
+  protected boolean Zo()
   {
     return true;
   }
   
-  protected BaseAdapter WW()
+  protected BaseAdapter Zp()
   {
-    return this.fzX;
+    return this.fTn;
   }
   
-  protected List<String> WX()
+  protected List<String> Zq()
   {
     AppMethodBeat.i(12975);
-    List localList = this.ftP.aDl();
+    List localList = this.fLO.aGo();
     AppMethodBeat.o(12975);
     return localList;
   }
   
-  public final x WZ()
+  public final ab Zs()
   {
-    return this.ftP;
+    return this.fLO;
   }
   
   protected void a(View paramView, int paramInt, long paramLong) {}
@@ -157,16 +162,16 @@ public class SelectMemberUI
   public void initView()
   {
     AppMethodBeat.i(12972);
-    setMMTitle(bs.nullAsNil(this.mTitle));
+    setMMTitle(bt.nullAsNil(this.mTitle));
     this.mListView = ((ListView)findViewById(2131302228));
-    this.fzU = findViewById(2131304525);
-    this.fzV = findViewById(2131304526);
-    this.fzX = new b(this, this.ftP, this.fvZ, this.ftP.field_roomowner);
-    this.mListView.setAdapter(WW());
-    this.fzW = ((SelectMemberScrollBar)findViewById(2131302231));
-    this.fzW.setOnScrollBarTouchListener(new VerticalScrollBar.a()
+    this.fTk = findViewById(2131304525);
+    this.fTl = findViewById(2131304526);
+    this.fTn = new b(this, this.fLO, this.fPi, this.fLO.field_roomowner);
+    this.mListView.setAdapter(Zp());
+    this.fTm = ((SelectMemberScrollBar)findViewById(2131302231));
+    this.fTm.setOnScrollBarTouchListener(new VerticalScrollBar.a()
     {
-      public final void sn(String paramAnonymousString)
+      public final void vc(String paramAnonymousString)
       {
         AppMethodBeat.i(12948);
         if ("↑".equals(paramAnonymousString))
@@ -175,9 +180,9 @@ public class SelectMemberUI
           AppMethodBeat.o(12948);
           return;
         }
-        SelectMemberUI.b localb = SelectMemberUI.this.fzX;
-        if (localb.fAf.containsKey(paramAnonymousString)) {}
-        for (int i = ((Integer)localb.fAf.get(paramAnonymousString)).intValue();; i = -1)
+        SelectMemberUI.b localb = SelectMemberUI.this.fTn;
+        if (localb.fTv.containsKey(paramAnonymousString)) {}
+        for (int i = ((Integer)localb.fTv.get(paramAnonymousString)).intValue();; i = -1)
         {
           if (i != -1) {
             SelectMemberUI.a(SelectMemberUI.this).setSelection(i);
@@ -187,15 +192,15 @@ public class SelectMemberUI
         }
       }
     });
-    if (WV()) {
-      this.fzW.setVisibility(0);
+    if (Zo()) {
+      this.fTm.setVisibility(0);
     }
     for (;;)
     {
-      this.fzr = ((MMEditText)findViewById(2131304523));
-      this.fzr.addTextChangedListener(new TextWatcher()
+      this.fSE = ((MMEditText)findViewById(2131304523));
+      this.fSE.addTextChangedListener(new TextWatcher()
       {
-        private au fAc;
+        private av fTs;
         
         public final void afterTextChanged(Editable paramAnonymousEditable) {}
         
@@ -204,14 +209,14 @@ public class SelectMemberUI
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
           AppMethodBeat.i(12951);
-          this.fAc.stopTimer();
-          this.fAc.au(500L, 500L);
+          this.fTs.stopTimer();
+          this.fTs.az(500L, 500L);
           AppMethodBeat.o(12951);
         }
       });
-      b localb = this.fzX;
-      localb.fAb.fzV.setVisibility(0);
-      g.agU().az(new SelectMemberUI.b.1(localb));
+      b localb = this.fTn;
+      localb.fTr.fTl.setVisibility(0);
+      g.ajF().ay(new SelectMemberUI.b.1(localb));
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -226,7 +231,7 @@ public class SelectMemberUI
       });
       AppMethodBeat.o(12972);
       return;
-      this.fzW.setVisibility(8);
+      this.fTm.setVisibility(8);
     }
   }
   
@@ -234,8 +239,8 @@ public class SelectMemberUI
   {
     AppMethodBeat.i(12970);
     super.onCreate(paramBundle);
-    ac.i("MicroMsg.SelectMemberUI", "[onCreate]");
-    WQ();
+    ad.i("MicroMsg.SelectMemberUI", "[onCreate]");
+    Zj();
     initView();
     AppMethodBeat.o(12970);
   }
@@ -250,81 +255,81 @@ public class SelectMemberUI
   
   public final class a
   {
-    public ai contact;
+    public am contact;
     public int type = 1;
     
-    public a(ai paramai)
+    public a(am paramam)
     {
-      this.contact = paramai;
+      this.contact = paramam;
     }
   }
   
   public final class b
     extends BaseAdapter
   {
-    private List<SelectMemberUI.a> dom;
-    public final String fAe;
-    HashMap<String, Integer> fAf;
-    private x ftP;
-    private String fvZ;
-    private List<SelectMemberUI.a> fzA;
-    public String fzx;
-    private String fzz;
+    private List<SelectMemberUI.a> dAa;
+    private ab fLO;
+    private String fPi;
+    public String fSM;
+    private String fSO;
+    private List<SelectMemberUI.a> fSP;
+    public final String fTu;
+    HashMap<String, Integer> fTv;
     volatile boolean isLoading;
     private Context mContext;
     
-    public b(Context paramContext, x paramx, String paramString1, String paramString2)
+    public b(Context paramContext, ab paramab, String paramString1, String paramString2)
     {
       AppMethodBeat.i(12960);
-      this.fAe = new String(Character.toChars(91));
-      this.fzz = null;
-      this.fzA = new ArrayList(0);
-      this.dom = new ArrayList();
+      this.fTu = new String(Character.toChars(91));
+      this.fSO = null;
+      this.fSP = new ArrayList(0);
+      this.dAa = new ArrayList();
       this.isLoading = false;
-      this.fAf = new HashMap();
-      this.ftP = paramx;
-      this.fvZ = paramString1;
-      this.fzz = paramString2;
+      this.fTv = new HashMap();
+      this.fLO = paramab;
+      this.fPi = paramString1;
+      this.fSO = paramString2;
       this.mContext = paramContext;
       AppMethodBeat.o(12960);
     }
     
-    private String b(ai paramai)
+    private String b(am paramam)
     {
       AppMethodBeat.i(12965);
       String str1;
-      if (!bs.isNullOrNil(paramai.field_conRemark))
+      if (!bt.isNullOrNil(paramam.field_conRemark))
       {
-        str1 = paramai.field_conRemark;
-        if (!bs.isNullOrNil(str1)) {
+        str1 = paramam.field_conRemark;
+        if (!bt.isNullOrNil(str1)) {
           break label114;
         }
-        str1 = paramai.aaR();
+        str1 = paramam.adu();
       }
       label114:
       for (;;)
       {
         String str2 = str1;
-        if (!com.tencent.mm.n.b.ln(paramai.field_type))
+        if (!com.tencent.mm.o.b.lM(paramam.field_type))
         {
-          paramai = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awC().alK(paramai.field_username);
+          paramam = ((l)g.ab(l.class)).azq().aqz(paramam.field_username);
           str2 = str1;
-          if (paramai != null)
+          if (paramam != null)
           {
             str2 = str1;
-            if (!bs.isNullOrNil(paramai.field_conRemark)) {
-              str2 = paramai.field_conRemark;
+            if (!bt.isNullOrNil(paramam.field_conRemark)) {
+              str2 = paramam.field_conRemark;
             }
           }
         }
         AppMethodBeat.o(12965);
         return str2;
-        str1 = SelectMemberUI.a(this.ftP, paramai.field_username);
+        str1 = SelectMemberUI.a(this.fLO, paramam.field_username);
         break;
       }
     }
     
-    public final void R(List<String> paramList)
+    public final void S(List<String> paramList)
     {
       AppMethodBeat.i(12966);
       if (paramList == null)
@@ -332,20 +337,20 @@ public class SelectMemberUI
         AppMethodBeat.o(12966);
         return;
       }
-      this.dom.clear();
+      this.dAa.clear();
       int i = 0;
       if (i < paramList.size())
       {
-        ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt((String)paramList.get(i));
-        if ((SelectMemberUI.this.WM()) || (!u.wh(localai.field_username)))
+        am localam = ((l)g.ab(l.class)).azp().Bf((String)paramList.get(i));
+        if ((SelectMemberUI.this.Zg()) || (!u.za(localam.field_username)))
         {
-          boolean bool = localai.field_username.equals(this.fzz);
-          if (((!bool) || (SelectMemberUI.e(SelectMemberUI.this))) && (!SelectMemberUI.this.WU().contains(localai.field_username)))
+          boolean bool = localam.field_username.equals(this.fSO);
+          if (((!bool) || (SelectMemberUI.e(SelectMemberUI.this))) && (!SelectMemberUI.this.Zn().contains(localam.field_username)))
           {
             if ((!bool) || (!SelectMemberUI.e(SelectMemberUI.this))) {
               break label178;
             }
-            this.dom.add(0, new SelectMemberUI.a(SelectMemberUI.this, localai));
+            this.dAa.add(0, new SelectMemberUI.a(SelectMemberUI.this, localam));
           }
         }
         for (;;)
@@ -353,23 +358,23 @@ public class SelectMemberUI
           i += 1;
           break;
           label178:
-          this.dom.add(new SelectMemberUI.a(SelectMemberUI.this, localai));
+          this.dAa.add(new SelectMemberUI.a(SelectMemberUI.this, localam));
         }
       }
-      Collections.sort(this.dom, new Comparator() {});
-      this.fzA = this.dom;
+      Collections.sort(this.dAa, new Comparator() {});
+      this.fSP = this.dAa;
       AppMethodBeat.o(12966);
     }
     
     public final int getCount()
     {
       AppMethodBeat.i(12962);
-      if ((this.dom == null) || (this.isLoading))
+      if ((this.dAa == null) || (this.isLoading))
       {
         AppMethodBeat.o(12962);
         return 0;
       }
-      int i = this.dom.size();
+      int i = this.dAa.size();
       AppMethodBeat.o(12962);
       return i;
     }
@@ -387,55 +392,67 @@ public class SelectMemberUI
       {
         paramView = View.inflate(this.mContext, 2131495351, null);
         paramViewGroup = new SelectMemberUI.c();
-        paramViewGroup.fAk = ((MaskLayout)paramView.findViewById(2131304528));
-        paramViewGroup.fwp = ((EllipsizeTextView)paramView.findViewById(2131304530));
-        paramViewGroup.fwp = ((TextView)paramView.findViewById(2131304530));
-        paramViewGroup.fAm = ((ImageButton)paramView.findViewById(2131297595));
-        paramViewGroup.fAn = ((LinearLayout)paramView.findViewById(2131297596));
+        paramViewGroup.fTA = ((MaskLayout)paramView.findViewById(2131304528));
+        paramViewGroup.fPC = ((EllipsizeTextView)paramView.findViewById(2131304530));
+        paramViewGroup.fPC = ((TextView)paramView.findViewById(2131304530));
+        paramViewGroup.fTC = ((ImageButton)paramView.findViewById(2131297595));
+        paramViewGroup.fTD = ((LinearLayout)paramView.findViewById(2131297596));
         localObject = (WindowManager)this.mContext.getSystemService("window");
-        paramViewGroup.fwp.setMaxWidth(((WindowManager)localObject).getDefaultDisplay().getWidth() * 2 / 3);
-        paramViewGroup.fAl = ((TextView)paramView.findViewById(2131304529));
-        paramViewGroup.fAl.setMaxWidth(((WindowManager)localObject).getDefaultDisplay().getWidth() * 2 / 3);
+        paramViewGroup.fPC.setMaxWidth(((WindowManager)localObject).getDefaultDisplay().getWidth() * 2 / 3);
+        paramViewGroup.fTB = ((TextView)paramView.findViewById(2131304529));
+        paramViewGroup.fTB.setMaxWidth(((WindowManager)localObject).getDefaultDisplay().getWidth() * 2 / 3);
         paramView.setTag(paramViewGroup);
-        paramViewGroup.fAm.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.fTC.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(12956);
-            paramViewGroup.fAn.performClick();
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            a.b("com/tencent/mm/chatroom/ui/SelectMemberUI$SelectMemberAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            paramViewGroup.fTD.performClick();
+            a.a(this, "com/tencent/mm/chatroom/ui/SelectMemberUI$SelectMemberAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(12956);
           }
         });
-        paramViewGroup.fAn.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.fTD.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(12957);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            a.b("com/tencent/mm/chatroom/ui/SelectMemberUI$SelectMemberAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
             int i = ((Integer)paramAnonymousView.getTag()).intValue();
-            paramAnonymousView = SelectMemberUI.b.this.kK(i);
+            paramAnonymousView = SelectMemberUI.b.this.lj(i);
             if (paramAnonymousView == null)
             {
-              ac.e("MicroMsg.SelectMemberAdapter", "item is null");
+              ad.e("MicroMsg.SelectMemberAdapter", "item is null");
+              a.a(this, "com/tencent/mm/chatroom/ui/SelectMemberUI$SelectMemberAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(12957);
               return;
             }
-            if (SelectMemberUI.this.WS().contains(paramAnonymousView.contact.field_username))
+            if (SelectMemberUI.this.Zl().contains(paramAnonymousView.contact.field_username))
             {
+              a.a(this, "com/tencent/mm/chatroom/ui/SelectMemberUI$SelectMemberAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(12957);
               return;
             }
-            if (SelectMemberUI.this.fzY.contains(paramAnonymousView.contact.field_username))
+            if (SelectMemberUI.this.fTo.contains(paramAnonymousView.contact.field_username))
             {
-              SelectMemberUI.this.fzY.remove(paramAnonymousView.contact.field_username);
-              paramViewGroup.fAm.setImageResource(2131231750);
+              SelectMemberUI.this.fTo.remove(paramAnonymousView.contact.field_username);
+              paramViewGroup.fTC.setImageResource(2131231750);
               SelectMemberUI.this.v(i, false);
+            }
+            for (;;)
+            {
+              a.a(this, "com/tencent/mm/chatroom/ui/SelectMemberUI$SelectMemberAdapter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(12957);
               return;
+              SelectMemberUI.this.fTo.add(paramAnonymousView.contact.field_username);
+              paramViewGroup.fTC.setImageResource(2131689936);
+              SelectMemberUI.this.v(i, true);
             }
-            SelectMemberUI.this.fzY.add(paramAnonymousView.contact.field_username);
-            paramViewGroup.fAm.setImageResource(2131689936);
-            SelectMemberUI.this.v(i, true);
-            AppMethodBeat.o(12957);
           }
         });
         paramView.setOnClickListener(new View.OnClickListener()
@@ -443,8 +460,12 @@ public class SelectMemberUI
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(12958);
-            SelectMemberUI.c localc = (SelectMemberUI.c)paramAnonymousView.getTag();
-            SelectMemberUI.this.a(paramAnonymousView, localc.position, paramAnonymousView.getId());
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+            a.b("com/tencent/mm/chatroom/ui/SelectMemberUI$SelectMemberAdapter$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+            localObject = (SelectMemberUI.c)paramAnonymousView.getTag();
+            SelectMemberUI.this.a(paramAnonymousView, ((SelectMemberUI.c)localObject).position, paramAnonymousView.getId());
+            a.a(this, "com/tencent/mm/chatroom/ui/SelectMemberUI$SelectMemberAdapter$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(12958);
           }
         });
@@ -452,56 +473,56 @@ public class SelectMemberUI
       SelectMemberUI.a locala;
       for (;;)
       {
-        locala = kK(paramInt);
-        paramViewGroup.fAn.setTag(Integer.valueOf(paramInt));
+        locala = lj(paramInt);
+        paramViewGroup.fTD.setTag(Integer.valueOf(paramInt));
         if (locala != null) {
           break;
         }
-        ac.e("MicroMsg.SelectMemberAdapter", "null == item! position:%s, count:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(getCount()) });
+        ad.e("MicroMsg.SelectMemberAdapter", "null == item! position:%s, count:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(getCount()) });
         AppMethodBeat.o(12964);
         return paramView;
         paramViewGroup = (SelectMemberUI.c)paramView.getTag();
       }
-      ai localai = locala.contact;
-      a.b.c((ImageView)paramViewGroup.fAk.getContentView(), localai.field_username);
+      am localam = locala.contact;
+      a.b.c((ImageView)paramViewGroup.fTA.getContentView(), localam.field_username);
       String str;
       label439:
       label492:
       int i;
-      if (localai.field_verifyFlag != 0) {
-        if (ar.a.hny != null)
+      if (localam.field_verifyFlag != 0) {
+        if (as.a.hFQ != null)
         {
-          localObject = ar.a.hny.nS(localai.field_verifyFlag);
+          localObject = as.a.hFQ.os(localam.field_verifyFlag);
           if (localObject != null)
           {
-            localObject = n.Bh((String)localObject);
-            paramViewGroup.fAk.a((Bitmap)localObject, MaskLayout.a.HBk);
-            str = b(localai);
+            localObject = o.Eg((String)localObject);
+            paramViewGroup.fTA.a((Bitmap)localObject, MaskLayout.a.Jpb);
+            str = b(localam);
             localObject = "";
-            if (com.tencent.mm.n.b.ln(localai.field_type)) {
-              localObject = localai.eyf;
+            if (com.tencent.mm.o.b.lM(localam.field_type)) {
+              localObject = localam.ePD;
             }
-            if (bs.isNullOrNil((String)localObject)) {
+            if (bt.isNullOrNil((String)localObject)) {
               break label628;
             }
-            paramViewGroup.fAl.setVisibility(0);
-            paramViewGroup.fAl.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, (CharSequence)localObject, paramViewGroup.fAl.getTextSize()));
-            if (!ai.aNc(localai.field_username)) {
+            paramViewGroup.fTB.setVisibility(0);
+            paramViewGroup.fTB.setText(k.b(this.mContext, (CharSequence)localObject, paramViewGroup.fTB.getTextSize()));
+            if (!am.aSQ(localam.field_username)) {
               break label649;
             }
-            ((com.tencent.mm.openim.a.b)g.ab(com.tencent.mm.openim.a.b.class)).a(this.mContext, paramViewGroup.fwp, str, localai.field_openImAppid, localai.field_descWordingId, (int)paramViewGroup.fwp.getTextSize());
-            if (!SelectMemberUI.this.WR()) {
+            ((com.tencent.mm.openim.a.b)g.ab(com.tencent.mm.openim.a.b.class)).a(this.mContext, paramViewGroup.fPC, str, localam.field_openImAppid, localam.field_descWordingId, (int)paramViewGroup.fPC.getTextSize());
+            if (!SelectMemberUI.this.Zk()) {
               break label746;
             }
-            paramViewGroup.fAm.setVisibility(0);
-            paramViewGroup.fAn.setVisibility(0);
-            if (!SelectMemberUI.this.WS().contains(localai.field_username)) {
+            paramViewGroup.fTC.setVisibility(0);
+            paramViewGroup.fTD.setVisibility(0);
+            if (!SelectMemberUI.this.Zl().contains(localam.field_username)) {
               break label683;
             }
-            paramViewGroup.fAn.setEnabled(false);
-            paramViewGroup.fAm.setEnabled(false);
-            localObject = paramViewGroup.fAm;
-            if (!com.tencent.mm.ui.aj.DT()) {
+            paramViewGroup.fTD.setEnabled(false);
+            paramViewGroup.fTC.setEnabled(false);
+            localObject = paramViewGroup.fTC;
+            if (!al.isDarkMode()) {
               break label675;
             }
             i = 2131689939;
@@ -512,50 +533,50 @@ public class SelectMemberUI
       }
       for (;;)
       {
-        paramViewGroup.fAj = locala;
+        paramViewGroup.fTz = locala;
         paramViewGroup.position = paramInt;
         AppMethodBeat.o(12964);
         return paramView;
-        paramViewGroup.fAk.setMaskDrawable(null);
+        paramViewGroup.fTA.setMaskDrawable(null);
         break;
-        paramViewGroup.fAk.setMaskDrawable(null);
+        paramViewGroup.fTA.setMaskDrawable(null);
         break;
-        paramViewGroup.fAk.setMaskDrawable(null);
+        paramViewGroup.fTA.setMaskDrawable(null);
         break;
         label628:
-        paramViewGroup.fAl.setVisibility(8);
-        paramViewGroup.fAl.setText("");
+        paramViewGroup.fTB.setVisibility(8);
+        paramViewGroup.fTB.setText("");
         break label439;
         label649:
-        paramViewGroup.fwp.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, str, paramViewGroup.fwp.getTextSize()));
+        paramViewGroup.fPC.setText(k.b(this.mContext, str, paramViewGroup.fPC.getTextSize()));
         break label492;
         label675:
         i = 2131689938;
         break label569;
         label683:
-        paramViewGroup.fAn.setEnabled(true);
-        paramViewGroup.fAm.setEnabled(true);
-        if (SelectMemberUI.this.fzY.contains(locala.contact.field_username))
+        paramViewGroup.fTD.setEnabled(true);
+        paramViewGroup.fTC.setEnabled(true);
+        if (SelectMemberUI.this.fTo.contains(locala.contact.field_username))
         {
-          paramViewGroup.fAm.setImageResource(2131689936);
+          paramViewGroup.fTC.setImageResource(2131689936);
         }
         else
         {
-          paramViewGroup.fAm.setImageResource(2131231750);
+          paramViewGroup.fTC.setImageResource(2131231750);
           continue;
           label746:
-          paramViewGroup.fAm.setVisibility(8);
-          paramViewGroup.fAn.setVisibility(8);
+          paramViewGroup.fTC.setVisibility(8);
+          paramViewGroup.fTD.setVisibility(8);
         }
       }
     }
     
-    public final SelectMemberUI.a kK(int paramInt)
+    public final SelectMemberUI.a lj(int paramInt)
     {
       AppMethodBeat.i(12963);
-      if (this.dom.size() > paramInt)
+      if (this.dAa.size() > paramInt)
       {
-        SelectMemberUI.a locala = (SelectMemberUI.a)this.dom.get(paramInt);
+        SelectMemberUI.a locala = (SelectMemberUI.a)this.dAa.get(paramInt);
         AppMethodBeat.o(12963);
         return locala;
       }
@@ -563,70 +584,70 @@ public class SelectMemberUI
       return null;
     }
     
-    public final void sl(String paramString)
+    public final void va(String paramString)
     {
       AppMethodBeat.i(12961);
-      ac.i("MicroMsg.SelectMemberAdapter", "[setMemberListBySearch]");
+      ad.i("MicroMsg.SelectMemberAdapter", "[setMemberListBySearch]");
       ArrayList localArrayList = new ArrayList();
-      if (!bs.isNullOrNil(paramString))
+      if (!bt.isNullOrNil(paramString))
       {
-        Iterator localIterator = this.fzA.iterator();
+        Iterator localIterator = this.fSP.iterator();
         while (localIterator.hasNext())
         {
           SelectMemberUI.a locala = (SelectMemberUI.a)localIterator.next();
           if ((locala != null) && (locala.contact != null) && (locala.type == 1))
           {
             Object localObject = locala.contact;
-            if ((((av)localObject).field_conRemark != null) && (((av)localObject).field_conRemark.contains(paramString)))
+            if ((((aw)localObject).field_conRemark != null) && (((aw)localObject).field_conRemark.contains(paramString)))
             {
               localArrayList.add(locala);
             }
-            else if ((!bs.isNullOrNil(SeeRoomMemberUI.a(this.ftP, ((av)localObject).field_username))) && (SeeRoomMemberUI.a(this.ftP, ((av)localObject).field_username).contains(paramString)))
+            else if ((!bt.isNullOrNil(SeeRoomMemberUI.a(this.fLO, ((aw)localObject).field_username))) && (SeeRoomMemberUI.a(this.fLO, ((aw)localObject).field_username).contains(paramString)))
             {
               localArrayList.add(locala);
             }
-            else if ((((ai)localObject).aaR() != null) && (((ai)localObject).aaR().contains(paramString)))
+            else if ((((am)localObject).adu() != null) && (((am)localObject).adu().contains(paramString)))
             {
               localArrayList.add(locala);
             }
-            else if ((((ai)localObject).To() != null) && (((ai)localObject).To().contains(paramString)))
+            else if ((((am)localObject).VD() != null) && (((am)localObject).VD().contains(paramString)))
             {
               localArrayList.add(locala);
             }
-            else if ((((ai)localObject).Tl() != null) && (((ai)localObject).Tl().contains(paramString)))
+            else if ((((am)localObject).VA() != null) && (((am)localObject).VA().contains(paramString)))
             {
               localArrayList.add(locala);
             }
-            else if ((((av)localObject).field_username != null) && (((av)localObject).field_username.contains(paramString)))
+            else if ((((aw)localObject).field_username != null) && (((aw)localObject).field_username.contains(paramString)))
             {
               localArrayList.add(locala);
             }
-            else if (!com.tencent.mm.n.b.ln(((av)localObject).field_type))
+            else if (!com.tencent.mm.o.b.lM(((aw)localObject).field_type))
             {
-              localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awC().alK(((av)localObject).field_username);
-              if ((localObject != null) && (((bz)localObject).field_conRemark != null) && (((bz)localObject).field_conRemark.contains(paramString))) {
+              localObject = ((l)g.ab(l.class)).azq().aqz(((aw)localObject).field_username);
+              if ((localObject != null) && (((cf)localObject).field_conRemark != null) && (((cf)localObject).field_conRemark.contains(paramString))) {
                 localArrayList.add(locala);
               }
             }
           }
         }
-        this.dom = localArrayList;
+        this.dAa = localArrayList;
         AppMethodBeat.o(12961);
         return;
       }
-      this.dom = this.fzA;
+      this.dAa = this.fSP;
       AppMethodBeat.o(12961);
     }
   }
   
   protected static final class c
   {
-    public SelectMemberUI.a fAj;
-    public MaskLayout fAk;
-    public TextView fAl;
-    public ImageButton fAm;
-    public LinearLayout fAn;
-    public TextView fwp;
+    public TextView fPC;
+    public MaskLayout fTA;
+    public TextView fTB;
+    public ImageButton fTC;
+    public LinearLayout fTD;
+    public SelectMemberUI.a fTz;
     public int position;
   }
 }

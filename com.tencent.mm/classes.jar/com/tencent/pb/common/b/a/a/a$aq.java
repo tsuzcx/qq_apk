@@ -6,50 +6,50 @@ import com.google.b.a.e;
 public final class a$aq
   extends e
 {
-  public int JOg = 0;
-  public long hQT = 0L;
-  public int hTM = 0;
+  public int LHS = 0;
+  public long ikh = 0L;
+  public int inh = 0;
   
   public a$aq()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.hQT != 0L) {
-      paramb.m(1, this.hQT);
+    if (this.ikh != 0L) {
+      paramb.m(1, this.ikh);
     }
-    if (this.hTM != 0) {
-      paramb.bw(2, this.hTM);
+    if (this.inh != 0) {
+      paramb.by(2, this.inh);
     }
-    if (this.JOg != 0) {
-      paramb.bw(3, this.JOg);
+    if (this.LHS != 0) {
+      paramb.by(3, this.LHS);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.hQT != 0L) {
-      i = j + b.o(1, this.hQT);
+    if (this.ikh != 0L) {
+      i = j + b.o(1, this.ikh);
     }
     j = i;
-    if (this.hTM != 0) {
-      j = i + b.by(2, this.hTM);
+    if (this.inh != 0) {
+      j = i + b.bA(2, this.inh);
     }
     i = j;
-    if (this.JOg != 0) {
-      i = j + b.by(3, this.JOg);
+    if (this.LHS != 0) {
+      i = j + b.bA(3, this.LHS);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.aq
  * JD-Core Version:    0.7.0.1
  */

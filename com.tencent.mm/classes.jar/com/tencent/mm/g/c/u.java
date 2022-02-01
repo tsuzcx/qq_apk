@@ -8,25 +8,19 @@ public abstract class u
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandStarAppUpdateTimeIndex ON AppBrandStarApp(updateTime)", "CREATE INDEX IF NOT EXISTS AppBrandStarAppOrderSequenceIndex ON AppBrandStarApp(orderSequence)" };
-  private static final int eoA;
-  private static final int eoT = "orderSequence".hashCode();
-  private static final int eok = "username".hashCode();
-  private static final int eol;
+  private static final int eFF = "versionType".hashCode();
+  private static final int eFp = "username".hashCode();
+  private static final int eFq = "updateTime".hashCode();
+  private static final int eGc = "orderSequence".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eoS = true;
-  private boolean eoh = true;
-  private boolean eoi = true;
-  private boolean eow = true;
+  private boolean eFB = true;
+  private boolean eFm = true;
+  private boolean eFn = true;
+  private boolean eGb = true;
   public long field_orderSequence;
   public long field_updateTime;
   public String field_username;
   public int field_versionType;
-  
-  static
-  {
-    eoA = "versionType".hashCode();
-    eol = "updateTime".hashCode();
-  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,7 +35,7 @@ public abstract class u
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eok != k) {
+      if (eFp != k) {
         break label60;
       }
       this.field_username = paramCursor.getString(i);
@@ -52,11 +46,11 @@ public abstract class u
       break label20;
       break;
       label60:
-      if (eoA == k) {
+      if (eFF == k) {
         this.field_versionType = paramCursor.getInt(i);
-      } else if (eol == k) {
+      } else if (eFq == k) {
         this.field_updateTime = paramCursor.getLong(i);
-      } else if (eoT == k) {
+      } else if (eGc == k) {
         this.field_orderSequence = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -67,16 +61,16 @@ public abstract class u
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eoh) {
+    if (this.eFm) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eow) {
+    if (this.eFB) {
       localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
     }
-    if (this.eoi) {
+    if (this.eFn) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.eoS) {
+    if (this.eGb) {
       localContentValues.put("orderSequence", Long.valueOf(this.field_orderSequence));
     }
     if (this.systemRowid > 0L) {

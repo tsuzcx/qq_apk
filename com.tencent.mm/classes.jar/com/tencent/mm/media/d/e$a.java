@@ -2,7 +2,7 @@ package com.tencent.mm.media.d;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/encoder/MediaCodecTransEncoder$Companion;", "", "()V", "TIMEOUT", "", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/decoder/IAudioDecoder$Companion;", "", "()V", "MONO_CHANNEL_BUF_SIZE", "", "STEREO_CHANNLE_BUF_SIZE", "TAG", "", "plugin-mediaeditor_release"})
 public final class e$a {}
 
 

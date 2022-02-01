@@ -6,17 +6,17 @@ import java.util.List;
 
 public final class k
 {
-  public int bPH;
-  public j suU;
-  public h sxM;
-  public a syJ;
-  public List<m> syK;
+  public int bZU;
+  public j trv;
+  public h tun;
+  public a tvk;
+  public List<m> tvl;
   
   public k(j paramj)
   {
     AppMethodBeat.i(131708);
-    this.syK = new ArrayList();
-    this.suU = paramj;
+    this.tvl = new ArrayList();
+    this.trv = paramj;
     AppMethodBeat.o(131708);
   }
   
@@ -24,14 +24,14 @@ public final class k
   {
     int i = 0;
     AppMethodBeat.i(131709);
-    int j = this.bPH;
-    if (this.syK == null) {}
+    int j = this.bZU;
+    if (this.tvl == null) {}
     for (;;)
     {
       String str = String.format("{resultCode: %d, resultSize: %d}", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
       AppMethodBeat.o(131709);
       return str;
-      i = this.syK.size();
+      i = this.tvl.size();
     }
   }
 }

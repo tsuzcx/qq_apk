@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.wallet.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String BgE;
-  public String hlj;
+  public String CGS;
+  public String hDs;
   public int id;
   public String name;
   public String url;
@@ -17,25 +17,25 @@ public final class p
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.id);
+      paramVarArgs.aS(1, this.id);
       if (this.name != null) {
         paramVarArgs.d(2, this.name);
       }
       if (this.url != null) {
         paramVarArgs.d(3, this.url);
       }
-      if (this.BgE != null) {
-        paramVarArgs.d(4, this.BgE);
+      if (this.CGS != null) {
+        paramVarArgs.d(4, this.CGS);
       }
-      if (this.hlj != null) {
-        paramVarArgs.d(5, this.hlj);
+      if (this.hDs != null) {
+        paramVarArgs.d(5, this.hDs);
       }
       AppMethodBeat.o(91302);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.id) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.id) + 0;
       paramInt = i;
       if (this.name != null) {
         paramInt = i + f.a.a.b.b.a.e(2, this.name);
@@ -45,12 +45,12 @@ public final class p
         i = paramInt + f.a.a.b.b.a.e(3, this.url);
       }
       paramInt = i;
-      if (this.BgE != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.BgE);
+      if (this.CGS != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.CGS);
       }
       i = paramInt;
-      if (this.hlj != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.hlj);
+      if (this.hDs != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.hDs);
       }
       AppMethodBeat.o(91302);
       return i;
@@ -58,9 +58,9 @@ public final class p
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(91302);
@@ -76,23 +76,23 @@ public final class p
         AppMethodBeat.o(91302);
         return -1;
       case 1: 
-        localp.id = locala.LVo.xF();
+        localp.id = locala.NPN.zc();
         AppMethodBeat.o(91302);
         return 0;
       case 2: 
-        localp.name = locala.LVo.readString();
+        localp.name = locala.NPN.readString();
         AppMethodBeat.o(91302);
         return 0;
       case 3: 
-        localp.url = locala.LVo.readString();
+        localp.url = locala.NPN.readString();
         AppMethodBeat.o(91302);
         return 0;
       case 4: 
-        localp.BgE = locala.LVo.readString();
+        localp.CGS = locala.NPN.readString();
         AppMethodBeat.o(91302);
         return 0;
       }
-      localp.hlj = locala.LVo.readString();
+      localp.hDs = locala.NPN.readString();
       AppMethodBeat.o(91302);
       return 0;
     }

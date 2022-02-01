@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.messenger.foundation.a.a;
 public final class b$a
 {
   public int id;
-  public boolean uGW;
   public String username;
+  public boolean vJZ;
 }
 
 

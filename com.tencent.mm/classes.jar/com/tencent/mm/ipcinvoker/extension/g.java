@@ -16,7 +16,7 @@ public final class g
     AppMethodBeat.o(158812);
   }
   
-  public final boolean be(Object paramObject)
+  public final boolean bg(Object paramObject)
   {
     return paramObject instanceof f;
   }

@@ -2,7 +2,9 @@ package com.tencent.mm.plugin.rubbishbin;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.a;
+import com.tencent.mm.hellhoundlib.b.c;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.i;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
@@ -14,6 +16,7 @@ public class JNIExceptionHandlerImpl
 {
   private static final String REPORT_TAG = "RubbishBinProgramException";
   public static final String TAG = "JNIException";
+  private byte _hellAccFlag_;
   private Context context;
   private String reportExecutionTag = "";
   
@@ -74,19 +77,19 @@ public class JNIExceptionHandlerImpl
       if ((paramInt + 1) * 512 < ((String)localObject1).length()) {}
       for (paramString = ((String)localObject1).substring(paramInt * 512, (paramInt + 1) * 512);; paramString = ((String)localObject1).substring(paramInt * 512))
       {
-        com.tencent.mm.plugin.report.service.h.wUl.a(17910, true, true, new Object[] { a.gMJ, com.tencent.mm.sdk.platformtools.h.gMJ, this.reportExecutionTag, Integer.valueOf(0), paramString, Integer.valueOf(1), Integer.valueOf(paramInt + 1), Integer.valueOf(i), Long.valueOf(l) });
+        g.yhR.a(17910, true, true, new Object[] { com.tencent.mm.loader.j.a.hgG, i.hgG, this.reportExecutionTag, Integer.valueOf(0), paramString, Integer.valueOf(1), Integer.valueOf(paramInt + 1), Integer.valueOf(i), Long.valueOf(l) });
         paramInt += 1;
         break;
       }
     }
     if ((this.context instanceof RubbishBinService))
     {
-      ((RubbishBinService)this.context).gaE.interrupt();
+      ((RubbishBinService)this.context).gud.interrupt();
       ((RubbishBinService)this.context).stopSelf();
     }
     try
     {
-      paramInt = ((RubbishBinService)this.context).gaC;
+      paramInt = ((RubbishBinService)this.context).gub;
       if (paramInt > 0) {
         Thread.sleep(paramInt);
       }
@@ -96,8 +99,13 @@ public class JNIExceptionHandlerImpl
       label490:
       break label490;
     }
-    if (((String)localObject1).contains("pthread_exit")) {
-      System.exit(0);
+    if (((String)localObject1).contains("pthread_exit"))
+    {
+      paramString = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
+      localObject1 = new Object();
+      com.tencent.mm.hellhoundlib.a.a.a(localObject1, paramString.ahp(), "com/tencent/mm/plugin/rubbishbin/JNIExceptionHandlerImpl", "onException", "(ILjava/lang/String;)V", "java/lang/System_EXEC_", "exit", "(I)V");
+      System.exit(((Integer)paramString.mq(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/rubbishbin/JNIExceptionHandlerImpl", "onException", "(ILjava/lang/String;)V", "java/lang/System_EXEC_", "exit", "(I)V");
     }
     AppMethodBeat.o(146667);
   }

@@ -2,163 +2,162 @@ package com.tencent.mm.plugin.expt.hellhound.a.b.c;
 
 import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.bm;
-import com.tencent.mm.g.b.a.gl;
-import com.tencent.mm.g.b.a.gm;
+import com.tencent.mm.g.b.a.cb;
+import com.tencent.mm.g.b.a.ho;
+import com.tencent.mm.g.b.a.hp;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
-import d.g.b.z;
+import d.g.b.p;
 import d.l;
 import java.util.Arrays;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/HellFinderReport;", "", "()V", "Companion", "plugin-expt_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/HellFinderReport;", "", "()V", "Companion", "plugin-expt_release"})
 public final class a
 {
-  public static final a qoc;
+  public static final a qXa;
   
   static
   {
-    AppMethodBeat.i(195516);
-    qoc = new a((byte)0);
-    AppMethodBeat.o(195516);
+    AppMethodBeat.i(210862);
+    qXa = new a((byte)0);
+    AppMethodBeat.o(210862);
   }
   
   public static final void a(b paramb)
   {
-    AppMethodBeat.i(195517);
+    AppMethodBeat.i(210863);
     a.a(paramb);
-    AppMethodBeat.o(195517);
+    AppMethodBeat.o(210863);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/HellFinderReport$Companion;", "", "()V", "TAG", "", "report19943", "", "statistics", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/StayTimeStatistics;", "report19944", "feed", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterFeed;", "report19945", "clickFeed", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/ClickFeed;", "plugin-expt_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/HellFinderReport$Companion;", "", "()V", "TAG", "", "report19943", "", "statistics", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/StayTimeStatistics;", "report19944", "feed", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterFeed;", "report19945", "clickFeed", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/ClickFeed;", "plugin-expt_release"})
   public static final class a
   {
     public static void a(b paramb)
     {
-      AppMethodBeat.i(195514);
-      k.h(paramb, "statistics");
-      bm localbm = new bm();
-      localbm.ju(paramb.sessionId);
-      localbm.jv(com.tencent.mm.plugin.expt.hellhound.core.b.aab(paramb.qoi));
-      localbm.fM(paramb.qok);
-      localbm.fN(paramb.qol);
-      localbm.fL(paramb.qoj);
-      localbm.jw(paramb.qom);
+      AppMethodBeat.i(210860);
+      p.h(paramb, "statistics");
+      cb localcb = new cb();
+      localcb.lh(paramb.sessionId);
+      localcb.li(com.tencent.mm.plugin.expt.hellhound.core.b.adO(paramb.dtL));
+      localcb.hf(paramb.qXh);
+      localcb.hg(paramb.qXi);
+      localcb.he(paramb.qXg);
+      localcb.lj(paramb.qXj);
+      localcb.ll(com.tencent.mm.plugin.expt.hellhound.core.b.cnI());
       StringBuilder localStringBuilder;
-      if (k.g(localbm.Qw(), "FinderTopicFeedUI"))
+      if (p.i(localcb.Sz(), "FinderTopicFeedUI"))
       {
-        str = localbm.Qw();
+        str = localcb.Sz();
         localStringBuilder = new StringBuilder().append(str);
-        if (!paramb.qoo) {
-          break label173;
+        if (!paramb.qXl) {
+          break label181;
         }
       }
-      label173:
+      label181:
       for (String str = "_POI";; str = "")
       {
-        localbm.jv(str);
-        localbm.jx(paramb.qon);
-        localbm.fO(paramb.dtw);
-        h.JZN.aV((Runnable)new a(localbm));
-        AppMethodBeat.o(195514);
+        localcb.li(str);
+        localcb.lk(paramb.qXk);
+        localcb.hh(paramb.dFx);
+        h.LTJ.aU((Runnable)new a(localcb));
+        AppMethodBeat.o(210860);
         return;
       }
     }
     
     public static void a(final com.tencent.mm.plugin.expt.hellhound.a.b.d.i parami)
     {
-      AppMethodBeat.i(195515);
-      k.h(parami, "feed");
-      gm localgm = new gm();
-      localgm.nQ(parami.sessionId);
-      localgm.nR(parami.feedId);
-      localgm.lh(parami.qoS);
-      localgm.li(parami.qoT);
-      localgm.iA(parami.qoU);
+      AppMethodBeat.i(210861);
+      p.h(parami, "feed");
+      hp localhp = new hp();
+      localhp.qp(parami.sessionId);
+      localhp.qq(parami.feedId);
+      localhp.nb(parami.qXR);
+      localhp.nc(parami.qXS);
+      localhp.iT(parami.qXT);
       Object localObject;
       float f2;
-      if (parami.qos <= 0.0F)
+      if (parami.qXp <= 0.0F)
       {
         f1 = 100.0F;
-        localObject = z.KUT;
+        localObject = d.g.b.ad.MLZ;
         localObject = String.format("%.2f", Arrays.copyOf(new Object[] { Float.valueOf(f1 / 100.0F) }, 1));
-        k.g(localObject, "java.lang.String.format(format, *args)");
-        localgm.nS((String)localObject);
-        if (localgm.SD() == -1) {
-          localgm.iA(0);
+        p.g(localObject, "java.lang.String.format(format, *args)");
+        localhp.qr((String)localObject);
+        if (localhp.UR() == -1) {
+          localhp.iT(0);
         }
-        if (parami.qot > 0.0F) {
+        if (parami.qXq > 0.0F) {
           break label311;
         }
         f1 = parami.width;
         f2 = parami.height;
-        localObject = c.qna;
+        localObject = c.qVY;
       }
       label311:
-      for (float f1 = f1 * f2 * 100.0F / c.cjG();; f1 = parami.qot)
+      for (float f1 = f1 * f2 * 100.0F / c.coR();; f1 = parami.qXq)
       {
-        localObject = z.KUT;
+        localObject = d.g.b.ad.MLZ;
         localObject = String.format("%.2f", Arrays.copyOf(new Object[] { Float.valueOf(f1 / 100.0F) }, 1));
-        k.g(localObject, "java.lang.String.format(format, *args)");
-        localgm.nT((String)localObject);
-        localgm.nU(parami.qox);
-        localgm.iB(parami.scene);
-        localgm.lj(parami.qoq);
-        localgm.lk(parami.qoV);
-        localgm.iC(parami.qoW);
-        localgm.iD(parami.ij);
-        localgm.nV(parami.qoy);
-        h.JZN.aV((Runnable)new b(localgm, parami));
-        AppMethodBeat.o(195515);
+        p.g(localObject, "java.lang.String.format(format, *args)");
+        localhp.qs((String)localObject);
+        localhp.qt(parami.qXu);
+        localhp.iU(parami.scene);
+        localhp.nd(parami.qXn);
+        localhp.ne(parami.qXU);
+        localhp.iV(parami.qXV);
+        localhp.iW(parami.kd);
+        localhp.qu(parami.qXv);
+        h.LTJ.aU((Runnable)new b(localhp, parami));
+        AppMethodBeat.o(210861);
         return;
-        f1 = parami.qos;
+        f1 = parami.qXp;
         break;
       }
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
-      a(bm parambm) {}
+      a(cb paramcb) {}
       
       public final void run()
       {
-        AppMethodBeat.i(195511);
-        this.qod.aHZ();
-        ac.i("HABBYGE-MALI.HellFinderReport", "report[19943]: sessionId=" + this.qod.getSessionId() + ", page=" + this.qod.Qw() + ", enterTimeMs=" + this.qod.Qy() + ", exitTimeMs=" + this.qod.Qz() + ", stayTimeMs=" + this.qod.Qx() + ", sid=" + this.qod.QB() + ", reportType=" + this.qod.QC() + ", contextId=" + this.qod.QA());
-        AppMethodBeat.o(195511);
+        AppMethodBeat.i(210857);
+        this.qXb.aLk();
+        com.tencent.mm.sdk.platformtools.ad.i("HABBYGE-MALI.HellFinderReport", "report[19943]: sessionId=" + this.qXb.getSessionId() + ", page=" + this.qXb.Sz() + ", enterTimeMs=" + this.qXb.SB() + ", exitTimeMs=" + this.qXb.SC() + ", stayTimeMs=" + this.qXb.SA() + ", sid=" + this.qXb.SE() + ", reportType=" + this.qXb.SF() + ", contextId=" + this.qXb.SD() + ", finderContextId=" + this.qXb.SG());
+        AppMethodBeat.o(210857);
       }
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
     static final class b
       implements Runnable
     {
-      b(gm paramgm, com.tencent.mm.plugin.expt.hellhound.a.b.d.i parami) {}
+      b(hp paramhp, com.tencent.mm.plugin.expt.hellhound.a.b.d.i parami) {}
       
       public final void run()
       {
-        AppMethodBeat.i(195512);
-        this.qoe.dyF();
-        ac.i("HABBYGE-MALI.HellFinderReport", "report[19944]:\nsessionId=" + this.qoe.getSessionId() + '\n' + "feedId=" + this.qoe.SA() + '\n' + "name=" + parami.bLs + '\n' + "startExposureMs=" + this.qoe.SB() + '\n' + "endExposureMs=" + this.qoe.SC() + '\n' + "itemExposureTimeMs=" + this.qoe.SE() + '\n' + "screenExposureAreaWeigth=" + this.qoe.St() + '\n' + "disAppearType=" + this.qoe.SD() + '\n' + "contextId=" + this.qoe.Sx() + '\n' + "scene=" + this.qoe.getScene() + '\n' + "updataTimeMs=" + this.qoe.Sq() + '\n' + "itemPos=" + this.qoe.SF() + '\n' + "itemArrayIndex=" + this.qoe.Sz() + '\n' + "itemBufffer=" + this.qoe.Sy() + '\n' + "itemExposureAreaWeigth=" + this.qoe.Ss());
-        AppMethodBeat.o(195512);
+        AppMethodBeat.i(210858);
+        this.qXc.dJX();
+        com.tencent.mm.sdk.platformtools.ad.i("HABBYGE-MALI.HellFinderReport", "report[19944]:\nsessionId=" + this.qXc.getSessionId() + '\n' + "feedId=" + this.qXc.UO() + '\n' + "name=" + parami.bVF + '\n' + "startExposureMs=" + this.qXc.UP() + '\n' + "endExposureMs=" + this.qXc.UQ() + '\n' + "itemExposureTimeMs=" + this.qXc.US() + '\n' + "screenExposureAreaWeigth=" + this.qXc.UH() + '\n' + "disAppearType=" + this.qXc.UR() + '\n' + "contextId=" + this.qXc.UL() + '\n' + "scene=" + this.qXc.getScene() + '\n' + "updataTimeMs=" + this.qXc.UE() + '\n' + "itemPos=" + this.qXc.UT() + '\n' + "itemArrayIndex=" + this.qXc.UN() + '\n' + "itemBufffer=" + this.qXc.UM() + '\n' + "itemExposureAreaWeigth=" + this.qXc.UG());
+        AppMethodBeat.o(210858);
       }
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
     public static final class c
       implements Runnable
     {
-      public c(gl paramgl, com.tencent.mm.plugin.expt.hellhound.a.b.d.a parama) {}
+      public c(ho paramho, com.tencent.mm.plugin.expt.hellhound.a.b.d.a parama) {}
       
       public final void run()
       {
-        AppMethodBeat.i(195513);
-        this.qog.dyF();
-        ac.i("HABBYGE-MALI.HellFinderReport", "report[19945]:\nsessionId=" + this.qog.getSessionId() + '\n' + "clickFeedId=" + this.qog.Sp() + '\n' + "position=" + this.qoh.position + '\n' + "nickName=" + this.qoh.bLs + '\n' + "scene=" + this.qog.getScene() + '\n' + "updateTimeMs=" + this.qog.Sq() + '\n' + "clickTimeMs=" + this.qog.Sr() + '\n' + "itemExposureAreaWeigth=" + this.qog.Ss() + '\n' + "screenExposureAreaWeigth=" + this.qog.St() + '\n' + "itemDirection=" + this.qog.Su() + '\n' + "itemIndex=" + this.qog.Sv() + '\n' + "shotScreenJson=" + this.qog.Sw() + '\n' + "contextId=" + this.qog.Sx() + '\n' + "itemBufffer=" + this.qog.Sy() + '\n' + "itemArrayIndex=" + this.qog.Sz());
-        AppMethodBeat.o(195513);
+        AppMethodBeat.i(210859);
+        this.qXe.dJX();
+        com.tencent.mm.sdk.platformtools.ad.i("HABBYGE-MALI.HellFinderReport", "report[19945]:\nsessionId=" + this.qXe.getSessionId() + '\n' + "clickFeedId=" + this.qXe.UD() + '\n' + "position=" + this.qXf.position + '\n' + "nickName=" + this.qXf.bVF + '\n' + "scene=" + this.qXe.getScene() + '\n' + "updateTimeMs=" + this.qXe.UE() + '\n' + "clickTimeMs=" + this.qXe.UF() + '\n' + "itemExposureAreaWeigth=" + this.qXe.UG() + '\n' + "screenExposureAreaWeigth=" + this.qXe.UH() + '\n' + "itemDirection=" + this.qXe.UI() + '\n' + "itemIndex=" + this.qXe.UJ() + '\n' + "shotScreenJson=" + this.qXe.UK() + '\n' + "contextId=" + this.qXe.UL() + '\n' + "itemBufffer=" + this.qXe.UM() + '\n' + "itemArrayIndex=" + this.qXe.UN());
+        AppMethodBeat.o(210859);
       }
     }
   }

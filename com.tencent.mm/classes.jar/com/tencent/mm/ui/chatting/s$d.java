@@ -3,53 +3,64 @@ package com.tencent.mm.ui.chatting;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aj;
-import com.tencent.mm.model.az;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.ak;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.x;
-import com.tencent.mm.ui.chatting.c.b.d;
-import com.tencent.mm.ui.chatting.c.b.f;
-import com.tencent.mm.ui.chatting.c.b.q;
-import com.tencent.mm.ui.chatting.d.a;
-import com.tencent.mm.ui.chatting.viewitems.bj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.ui.chatting.d.b.d;
+import com.tencent.mm.ui.chatting.d.b.f;
+import com.tencent.mm.ui.chatting.d.b.h;
+import com.tencent.mm.ui.chatting.d.b.s;
+import com.tencent.mm.ui.chatting.viewitems.bk;
 
 public final class s$d
   implements View.OnLongClickListener
 {
-  private a HNS;
+  private com.tencent.mm.ui.chatting.e.a JBI;
   
-  public s$d(a parama)
+  public s$d(com.tencent.mm.ui.chatting.e.a parama)
   {
-    this.HNS = parama;
+    this.JBI = parama;
   }
   
   public final boolean onLongClick(View paramView)
   {
     AppMethodBeat.i(34594);
-    if (((q)this.HNS.bf(q.class)).fne().eOJ())
+    Object localObject1 = new b();
+    ((b)localObject1).bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarLongClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject1).ahq());
+    if (((s)this.JBI.bh(s.class)).fDC().fdJ())
     {
-      ac.w("changelcai", "ChattingUI isScrolling!!!");
+      com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarLongClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
       AppMethodBeat.o(34594);
       return true;
     }
-    Object localObject3 = (bj)paramView.getTag();
-    q localq = (q)this.HNS.bf(q.class);
-    String str = localq.fne().getLastText();
-    int i = localq.fne().getSelectionStart();
+    if (((h)this.JBI.bh(h.class)).fDl())
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarLongClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      AppMethodBeat.o(34594);
+      return false;
+    }
+    Object localObject3 = (bk)paramView.getTag();
+    s locals = (s)this.JBI.bh(s.class);
+    String str = locals.fDC().getLastText();
+    int i = locals.fDC().getSelectionStart();
     if (i < 0) {
       i = 0;
     }
     for (;;)
     {
-      if (((localObject3 != null) && (u.axw().equals(((bj)localObject3).userName))) || (((bj)localObject3).userName.equals("notifymessage")) || (((bj)localObject3).userName.equals("appbrand_notify_message")))
+      if (((localObject3 != null) && (u.aAm().equals(((bk)localObject3).userName))) || (((bk)localObject3).userName.equals("notifymessage")) || (((bk)localObject3).userName.equals("appbrand_notify_message")))
       {
+        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarLongClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(34594);
         return true;
         if (i > str.length()) {
@@ -58,34 +69,35 @@ public final class s$d
       }
       else
       {
-        if (((q)this.HNS.bf(q.class)).fne().getIsVoiceInputPanleShow())
+        if (((s)this.JBI.bh(s.class)).fDC().getIsVoiceInputPanleShow())
         {
-          ac.i("MicroMsg.ChattingListAvatarListener", "ChatFooter VoiceInputPanel Show NOW!!!");
+          ad.i("MicroMsg.ChattingListAvatarListener", "ChatFooter VoiceInputPanel Show NOW!!!");
+          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarLongClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
           AppMethodBeat.o(34594);
           return true;
         }
-        Object localObject1 = (d)this.HNS.bf(d.class);
+        localObject1 = (d)this.JBI.bh(d.class);
         Object localObject2;
-        if ((w.sQ(this.HNS.getTalkerUserName())) || (((d)localObject1).fmp()))
+        if ((w.vF(this.JBI.getTalkerUserName())) || (((d)localObject1).fCI()))
         {
-          h.wUl.f(10976, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
-          az.ayM();
-          localObject2 = c.awK().xN(((bj)localObject3).chatroomName);
-          if (((d)localObject1).fmp())
+          g.yhR.f(10976, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
+          ba.aBQ();
+          localObject2 = c.azz().AN(((bk)localObject3).chatroomName);
+          if (((d)localObject1).fCI())
           {
-            localObject1 = ((f)this.HNS.bf(f.class)).aQj(((bj)localObject3).userName);
+            localObject1 = ((f)this.JBI.bh(f.class)).aWa(((bk)localObject3).userName);
             localObject2 = new StringBuffer(str);
             ((StringBuffer)localObject2).insert(i, "@" + localObject1 + ' ');
-            localq.fne().w(((StringBuffer)localObject2).toString(), i + ((CharSequence)localObject1).length() + 2, true);
-            localObject2 = localq.fne();
-            str = ((bj)localObject3).chatroomName;
-            localObject3 = ((bj)localObject3).userName;
+            locals.fDC().w(((StringBuffer)localObject2).toString(), i + ((CharSequence)localObject1).length() + 2, true);
+            localObject2 = locals.fDC();
+            str = ((bk)localObject3).chatroomName;
+            localObject3 = ((bk)localObject3).userName;
             if (localObject1 != null) {
-              break label495;
+              break label609;
             }
             localObject1 = null;
-            ((ChatFooter)localObject2).aQ(str, (String)localObject3, (String)localObject1);
-            localq.fne().setMode(1);
+            ((ChatFooter)localObject2).aY(str, (String)localObject3, (String)localObject1);
+            locals.fDC().setMode(1);
             paramView.postDelayed(new Runnable()
             {
               public final void run()
@@ -96,30 +108,31 @@ public final class s$d
             }, 2000L);
           }
         }
-        label495:
-        while ((!w.wG(this.HNS.getTalkerUserName())) || (this.HNS.getTalkerUserName().contains("@"))) {
+        label609:
+        while ((!w.zD(this.JBI.getTalkerUserName())) || (this.JBI.getTalkerUserName().contains("@"))) {
           for (;;)
           {
+            com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarLongClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
             AppMethodBeat.o(34594);
             return true;
-            localObject2 = AtSomeoneUI.a((x)localObject2, ((bj)localObject3).userName);
+            localObject2 = AtSomeoneUI.a((ab)localObject2, ((bk)localObject3).userName);
             localObject1 = localObject2;
-            if (bs.aj((CharSequence)localObject2))
+            if (bt.ai((CharSequence)localObject2))
             {
-              localObject1 = v.wi(((bj)localObject3).userName);
+              localObject1 = v.zd(((bk)localObject3).userName);
               continue;
               localObject1 = ((CharSequence)localObject1).toString();
             }
           }
         }
-        h.wUl.f(10976, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(1) });
-        if ((((d)localObject1).fmo()) && (!((d)localObject1).fmp())) {}
-        for (localObject1 = ((f)this.HNS.bf(f.class)).aQj(((bj)localObject3).userName);; localObject1 = v.wi(((bj)localObject3).userName))
+        g.yhR.f(10976, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(1) });
+        if ((((d)localObject1).fCH()) && (!((d)localObject1).fCI())) {}
+        for (localObject1 = ((f)this.JBI.bh(f.class)).aWa(((bk)localObject3).userName);; localObject1 = v.zd(((bk)localObject3).userName))
         {
           localObject2 = new StringBuffer(str);
           ((StringBuffer)localObject2).insert(i, (CharSequence)localObject1);
-          localq.fne().w(((StringBuffer)localObject2).toString(), ((CharSequence)localObject1).length() + i, true);
-          localq.fne().setMode(1);
+          locals.fDC().w(((StringBuffer)localObject2).toString(), ((CharSequence)localObject1).length() + i, true);
+          locals.fDC().setMode(1);
           paramView.postDelayed(new Runnable()
           {
             public final void run()

@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.hp.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.model.cc.a;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.c;
+import com.tencent.mm.model.cd.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.Map;
 
 public final class h
-  implements cc.a
+  implements cd.a
 {
-  public final void a(f.a parama)
+  public final void a(e.a parama)
   {
     AppMethodBeat.i(117441);
-    parama = parama.fXi;
+    parama = parama.gqE;
     Object localObject;
-    if (parama.tit == 10002)
+    if (parama.ugm == 10002)
     {
-      parama = z.a(parama.DPV);
-      if (bs.isNullOrNil(parama))
+      parama = z.a(parama.Fvk);
+      if (bt.isNullOrNil(parama))
       {
-        ac.w("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "msg content is null");
+        ad.w("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "msg content is null");
         AppMethodBeat.o(117441);
         return;
       }
-      ac.i("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "onReciveMsg :%s", new Object[] { parama });
-      parama = bv.L(parama, "sysmsg");
+      ad.i("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "onReciveMsg :%s", new Object[] { parama });
+      parama = bw.M(parama, "sysmsg");
       if ((parama != null) && (parama.size() > 0))
       {
         localObject = (String)parama.get(".sysmsg.$type");
-        if ((!bs.isNullOrNil((String)localObject)) && (((String)localObject).equalsIgnoreCase("prconfignotify")))
+        if ((!bt.isNullOrNil((String)localObject)) && (((String)localObject).equalsIgnoreCase("prconfignotify")))
         {
-          i = bs.aLy((String)parama.get(".sysmsg.boots.ignorenetwork"));
-          parama = bs.bG((String)parama.get(".sysmsg.boots.xmlkey"), "");
-          ac.i("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "ignore:%s md5 %s start checkout tinker update. try to do update.", new Object[] { Integer.valueOf(i), parama });
-          long l = com.tencent.mm.kernel.a.agb();
-          localObject = com.tinkerboots.sdk.a.fMx().mO("uin", String.valueOf(l & 0xFFFFFFFF));
-          if ((!ax.isWifi(ai.getContext())) && (i != 1)) {
+          i = bt.aRe((String)parama.get(".sysmsg.boots.ignorenetwork"));
+          parama = bt.bI((String)parama.get(".sysmsg.boots.xmlkey"), "");
+          ad.i("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "ignore:%s md5 %s start checkout tinker update. try to do update.", new Object[] { Integer.valueOf(i), parama });
+          long l = com.tencent.mm.kernel.a.aiN();
+          localObject = com.tinkerboots.sdk.a.gdU().nm("uin", String.valueOf(l & 0xFFFFFFFF));
+          if ((!ay.isWifi(aj.getContext())) && (i != 1)) {
             break label250;
           }
         }
@@ -51,21 +51,21 @@ public final class h
     label250:
     for (int i = 3;; i = 2)
     {
-      ((com.tinkerboots.sdk.a)localObject).mO("network", String.valueOf(i));
-      if (!bs.isNullOrNil(parama)) {
-        com.tinkerboots.sdk.a.fMx().mO("xmlkey", parama);
+      ((com.tinkerboots.sdk.a)localObject).nm("network", String.valueOf(i));
+      if (!bt.isNullOrNil(parama)) {
+        com.tinkerboots.sdk.a.gdU().nm("xmlkey", parama);
       }
-      com.tinkerboots.sdk.a.fMx().zh(true);
+      com.tinkerboots.sdk.a.gdU().zV(true);
       AppMethodBeat.o(117441);
       return;
     }
   }
   
-  public final void a(f.c paramc) {}
+  public final void a(e.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.h
  * JD-Core Version:    0.7.0.1
  */

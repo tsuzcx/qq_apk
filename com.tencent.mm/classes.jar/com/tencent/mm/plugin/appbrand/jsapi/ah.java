@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.content.Intent;
-import com.tencent.luggage.h.e.b;
+import com.tencent.luggage.h.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -15,13 +15,13 @@ public final class ah
 {
   public static final int CTRL_INDEX = 58;
   public static final String NAME = "addCard";
-  int bWl;
-  final int jWJ;
+  int cgA;
+  final int kra;
   
   public ah()
   {
     AppMethodBeat.i(174749);
-    this.jWJ = com.tencent.luggage.sdk.g.a.aA(this);
+    this.kra = com.tencent.luggage.sdk.g.a.aC(this);
     AppMethodBeat.o(174749);
   }
 }

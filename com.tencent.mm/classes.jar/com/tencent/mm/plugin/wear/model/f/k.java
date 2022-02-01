@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.wear.model.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.protocal.protobuf.dxi;
+import com.tencent.mm.protocal.protobuf.edi;
 import java.io.IOException;
 
 public final class k
   extends c
 {
-  private String bIO;
   private int code;
+  private String msg;
   
   public k(int paramInt, String paramString)
   {
     this.code = paramInt;
-    this.bIO = paramString;
+    this.msg = paramString;
   }
   
   public final String getName()
@@ -26,17 +26,17 @@ public final class k
   protected final void send()
   {
     AppMethodBeat.i(30133);
-    dxi localdxi = new dxi();
+    edi localedi = new edi();
     switch (this.code)
     {
     }
     for (;;)
     {
-      localdxi.FFr = this.bIO;
+      localedi.HpQ = this.msg;
       try
       {
-        a.ewt();
-        r.a(20016, localdxi.toByteArray(), true);
+        a.eKz();
+        r.a(20016, localedi.toByteArray(), true);
         AppMethodBeat.o(30133);
         return;
       }
@@ -44,15 +44,15 @@ public final class k
       {
         AppMethodBeat.o(30133);
       }
-      localdxi.FMB = 0;
+      localedi.Hxm = 0;
       continue;
-      localdxi.FMB = 196610;
+      localedi.Hxm = 196610;
       continue;
-      localdxi.FMB = 196613;
+      localedi.Hxm = 196613;
       continue;
-      localdxi.FMB = 196614;
+      localedi.Hxm = 196614;
       continue;
-      localdxi.FMB = 196615;
+      localedi.Hxm = 196615;
     }
   }
 }

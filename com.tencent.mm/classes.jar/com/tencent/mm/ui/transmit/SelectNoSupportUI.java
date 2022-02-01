@@ -7,15 +7,15 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 
 public class SelectNoSupportUI
   extends MMActivity
 {
-  private String IXl = "friend";
-  private TextView IXm;
-  private TextView IXn;
+  private String KOq = "friend";
+  private TextView KOr;
+  private TextView KOs;
   
   public int getLayoutId()
   {
@@ -26,10 +26,10 @@ public class SelectNoSupportUI
   {
     AppMethodBeat.i(39412);
     setMMTitle(getString(2131763005));
-    this.IXm = ((TextView)findViewById(2131302887));
-    this.IXn = ((TextView)findViewById(2131302886));
-    this.IXm.setText(getString(2131763015));
-    String str = this.IXl;
+    this.KOr = ((TextView)findViewById(2131302887));
+    this.KOs = ((TextView)findViewById(2131302886));
+    this.KOr.setText(getString(2131763015));
+    String str = this.KOq;
     int i = -1;
     switch (str.hashCode())
     {
@@ -65,9 +65,9 @@ public class SelectNoSupportUI
       }
       i = 1;
       break;
-      this.IXn.setText(getString(2131763016));
+      this.KOs.setText(getString(2131763016));
       continue;
-      this.IXn.setText(getString(2131763017));
+      this.KOs.setText(getString(2131763017));
     }
   }
   
@@ -75,11 +75,11 @@ public class SelectNoSupportUI
   {
     AppMethodBeat.i(39411);
     super.onCreate(paramBundle);
-    ac.i("MicroMsg.SelectNoSupportUI", "onCreate!");
-    this.IXl = getIntent().getStringExtra("sharePictureTo");
-    ac.i("MicroMsg.SelectNoSupportUI", "initData done!");
+    ad.i("MicroMsg.SelectNoSupportUI", "onCreate!");
+    this.KOq = getIntent().getStringExtra("sharePictureTo");
+    ad.i("MicroMsg.SelectNoSupportUI", "initData done!");
     initView();
-    ac.i("MicroMsg.SelectNoSupportUI", "initView done!");
+    ad.i("MicroMsg.SelectNoSupportUI", "initView done!");
     AppMethodBeat.o(39411);
   }
   

@@ -12,12 +12,12 @@ import com.tencent.mm.compatible.b.k;
 public final class d
   implements a
 {
-  private MediaPlayer iec;
+  private MediaPlayer ixx;
   
   public d()
   {
     AppMethodBeat.i(107751);
-    this.iec = new k();
+    this.ixx = new k();
     AppMethodBeat.o(107751);
   }
   
@@ -26,16 +26,16 @@ public final class d
     AppMethodBeat.i(107768);
     if (parama == null)
     {
-      this.iec.setOnErrorListener(null);
+      this.ixx.setOnErrorListener(null);
       AppMethodBeat.o(107768);
       return;
     }
-    this.iec.setOnErrorListener(new MediaPlayer.OnErrorListener()
+    this.ixx.setOnErrorListener(new MediaPlayer.OnErrorListener()
     {
       public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(107750);
-        boolean bool = parama.gk(paramAnonymousInt1, paramAnonymousInt2);
+        boolean bool = parama.gB(paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(107750);
         return bool;
       }
@@ -48,16 +48,16 @@ public final class d
     AppMethodBeat.i(107765);
     if (paramb == null)
     {
-      this.iec.setOnPreparedListener(null);
+      this.ixx.setOnPreparedListener(null);
       AppMethodBeat.o(107765);
       return;
     }
-    this.iec.setOnPreparedListener(new MediaPlayer.OnPreparedListener()
+    this.ixx.setOnPreparedListener(new MediaPlayer.OnPreparedListener()
     {
       public final void onPrepared(MediaPlayer paramAnonymousMediaPlayer)
       {
         AppMethodBeat.i(107747);
-        paramb.ds(paramAnonymousMediaPlayer);
+        paramb.dv(paramAnonymousMediaPlayer);
         AppMethodBeat.o(107747);
       }
     });
@@ -69,16 +69,16 @@ public final class d
     AppMethodBeat.i(107766);
     if (paramc == null)
     {
-      this.iec.setOnSeekCompleteListener(null);
+      this.ixx.setOnSeekCompleteListener(null);
       AppMethodBeat.o(107766);
       return;
     }
-    this.iec.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener()
+    this.ixx.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener()
     {
       public final void onSeekComplete(MediaPlayer paramAnonymousMediaPlayer)
       {
         AppMethodBeat.i(107748);
-        paramc.dt(paramAnonymousMediaPlayer);
+        paramc.dw(paramAnonymousMediaPlayer);
         AppMethodBeat.o(107748);
       }
     });
@@ -90,11 +90,11 @@ public final class d
     AppMethodBeat.i(107767);
     if (paramd == null)
     {
-      this.iec.setOnVideoSizeChangedListener(null);
+      this.ixx.setOnVideoSizeChangedListener(null);
       AppMethodBeat.o(107767);
       return;
     }
-    this.iec.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener()
+    this.ixx.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener()
     {
       public final void onVideoSizeChanged(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
@@ -109,7 +109,7 @@ public final class d
   public final int getCurrentPosition()
   {
     AppMethodBeat.i(107760);
-    int i = this.iec.getCurrentPosition();
+    int i = this.ixx.getCurrentPosition();
     AppMethodBeat.o(107760);
     return i;
   }
@@ -117,7 +117,7 @@ public final class d
   public final int getDuration()
   {
     AppMethodBeat.i(107761);
-    int i = this.iec.getDuration();
+    int i = this.ixx.getDuration();
     AppMethodBeat.o(107761);
     return i;
   }
@@ -125,7 +125,7 @@ public final class d
   public final boolean isPlaying()
   {
     AppMethodBeat.i(107758);
-    boolean bool = this.iec.isPlaying();
+    boolean bool = this.ixx.isPlaying();
     AppMethodBeat.o(107758);
     return bool;
   }
@@ -133,42 +133,42 @@ public final class d
   public final void pause()
   {
     AppMethodBeat.i(107757);
-    this.iec.pause();
+    this.ixx.pause();
     AppMethodBeat.o(107757);
   }
   
   public final void prepareAsync()
   {
     AppMethodBeat.i(107754);
-    this.iec.prepareAsync();
+    this.ixx.prepareAsync();
     AppMethodBeat.o(107754);
   }
   
   public final void release()
   {
     AppMethodBeat.i(107762);
-    this.iec.release();
+    this.ixx.release();
     AppMethodBeat.o(107762);
   }
   
   public final void seekTo(int paramInt)
   {
     AppMethodBeat.i(107759);
-    this.iec.seekTo(paramInt);
+    this.ixx.seekTo(paramInt);
     AppMethodBeat.o(107759);
   }
   
   public final void setAudioStreamType(int paramInt)
   {
     AppMethodBeat.i(107763);
-    this.iec.setAudioStreamType(paramInt);
+    this.ixx.setAudioStreamType(paramInt);
     AppMethodBeat.o(107763);
   }
   
   public final void setDataSource(String paramString)
   {
     AppMethodBeat.i(107753);
-    this.iec.setDataSource(paramString);
+    this.ixx.setDataSource(paramString);
     AppMethodBeat.o(107753);
   }
   
@@ -177,34 +177,34 @@ public final class d
   public final void setLooping(boolean paramBoolean)
   {
     AppMethodBeat.i(107764);
-    this.iec.setLooping(paramBoolean);
+    this.ixx.setLooping(paramBoolean);
     AppMethodBeat.o(107764);
   }
   
   public final void setSurface(Surface paramSurface)
   {
     AppMethodBeat.i(107752);
-    this.iec.setSurface(paramSurface);
+    this.ixx.setSurface(paramSurface);
     AppMethodBeat.o(107752);
   }
   
   public final void start()
   {
     AppMethodBeat.i(107755);
-    this.iec.start();
+    this.ixx.start();
     AppMethodBeat.o(107755);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(107756);
-    this.iec.stop();
+    this.ixx.stop();
     AppMethodBeat.o(107756);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.a.d
  * JD-Core Version:    0.7.0.1
  */

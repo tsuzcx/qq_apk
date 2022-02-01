@@ -2,7 +2,7 @@ package com.tencent.mm.vending.c;
 
 public abstract interface b<T>
 {
-  public abstract T aNN();
+  public abstract T aQZ();
 }
 
 

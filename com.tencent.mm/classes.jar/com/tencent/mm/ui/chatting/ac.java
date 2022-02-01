@@ -1,47 +1,46 @@
 package com.tencent.mm.ui.chatting;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.av.e;
-import com.tencent.mm.av.g;
-import com.tencent.mm.av.o;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.aw.g;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.c;
 import com.tencent.mm.pluginsdk.model.app.d;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
 
 public final class ac
 {
-  public static String AZ(long paramLong)
+  public static String cj(String paramString, long paramLong)
   {
-    AppMethodBeat.i(34821);
-    String str = j(o.aFx().qg(paramLong));
-    if (str != null)
+    AppMethodBeat.i(193866);
+    paramString = f(q.aIF().G(paramString, paramLong));
+    if (paramString != null)
     {
-      AppMethodBeat.o(34821);
-      return str;
+      AppMethodBeat.o(193866);
+      return paramString;
     }
-    AppMethodBeat.o(34821);
+    AppMethodBeat.o(193866);
     return null;
   }
   
-  public static String Ba(long paramLong)
+  public static String ck(String paramString, long paramLong)
   {
-    AppMethodBeat.i(34822);
-    String str = j(o.aFx().qf(paramLong));
-    if (str != null)
+    AppMethodBeat.i(193867);
+    paramString = f(q.aIF().F(paramString, paramLong));
+    if (paramString != null)
     {
-      AppMethodBeat.o(34822);
-      return str;
+      AppMethodBeat.o(193867);
+      return paramString;
     }
-    AppMethodBeat.o(34822);
+    AppMethodBeat.o(193867);
     return null;
   }
   
-  public static String b(bo parambo, k.b paramb)
+  public static String d(bu parambu, k.b paramb)
   {
     AppMethodBeat.i(34824);
     String str2 = "";
@@ -49,64 +48,64 @@ public final class ac
     if (paramb != null)
     {
       str1 = str2;
-      if (!bs.isNullOrNil(paramb.cZa))
+      if (!bt.isNullOrNil(paramb.dks))
       {
-        paramb = ap.bEO().aGd(paramb.cZa);
+        paramb = ao.bIX().aLD(paramb.dks);
         str1 = str2;
         if (paramb != null)
         {
           str1 = str2;
-          if (paramb.cOg())
+          if (paramb.cWz())
           {
             str1 = str2;
-            if (i.eA(paramb.field_fileFullPath)) {
+            if (com.tencent.mm.vfs.i.fv(paramb.field_fileFullPath)) {
               str1 = paramb.field_fileFullPath;
             }
           }
         }
       }
     }
-    if (!bs.isNullOrNil(str1))
+    if (!bt.isNullOrNil(str1))
     {
-      com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.HistoryExportUtil", "get hd appmsg image path ok, %s", new Object[] { str1 });
+      ad.d("MicroMsg.HistoryExportUtil", "get hd appmsg image path ok, %s", new Object[] { str1 });
       AppMethodBeat.o(34824);
       return str1;
     }
-    if (parambo != null) {
-      str1 = o.aFx().R(parambo.field_imgPath, true);
+    if (parambu != null) {
+      str1 = q.aIF().R(parambu.field_imgPath, true);
     }
-    com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.HistoryExportUtil", "try get thumb appmsg image path finish, %s", new Object[] { str1 });
+    ad.d("MicroMsg.HistoryExportUtil", "try get thumb appmsg image path finish, %s", new Object[] { str1 });
     AppMethodBeat.o(34824);
     return str1;
   }
   
-  private static String j(e parame)
+  private static String f(g paramg)
   {
     AppMethodBeat.i(34823);
-    if (parame != null)
+    if (paramg != null)
     {
-      if (parame.aFa())
+      if (paramg.aIj())
       {
-        str = parame.hGM;
-        if ((str != null) && (i.eA(str)))
+        str = paramg.hZw;
+        if ((str != null) && (com.tencent.mm.vfs.i.fv(str)))
         {
           AppMethodBeat.o(34823);
           return str;
         }
       }
-      String str = parame.hGM;
-      str = o.aFx().p(str, null, null);
-      if ((str != null) && (i.eA(str)))
+      String str = paramg.hZw;
+      str = q.aIF().o(str, null, null);
+      if ((str != null) && (com.tencent.mm.vfs.i.fv(str)))
       {
         AppMethodBeat.o(34823);
         return str;
       }
-      parame = parame.hGO;
-      parame = o.aFx().p(parame, null, null);
-      if ((parame != null) && (i.eA(parame)))
+      paramg = paramg.hZy;
+      paramg = q.aIF().o(paramg, null, null);
+      if ((paramg != null) && (com.tencent.mm.vfs.i.fv(paramg)))
       {
         AppMethodBeat.o(34823);
-        return parame;
+        return paramg;
       }
     }
     AppMethodBeat.o(34823);

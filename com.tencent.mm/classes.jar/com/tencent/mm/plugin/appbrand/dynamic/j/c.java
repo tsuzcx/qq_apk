@@ -5,24 +5,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.loader.a;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.aw;
+import com.tencent.mm.plugin.appbrand.appcache.ax;
 import com.tencent.mm.plugin.appbrand.appstorage.m;
 import com.tencent.mm.plugin.appbrand.dynamic.WxaWidgetContext;
 import com.tencent.mm.plugin.appbrand.dynamic.f.a;
 import com.tencent.mm.plugin.appbrand.dynamic.i;
 import com.tencent.mm.plugin.appbrand.dynamic.k;
 import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.xweb.WebResourceResponse;
 import java.io.InputStream;
 
 public final class c
 {
-  private static final String[] jnA = aw.jnA;
+  private static final String[] jHx = ax.jHx;
   
   /* Error */
-  private static WebResourceResponse cK(String paramString1, String paramString2)
+  private static WebResourceResponse cM(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 19
@@ -33,17 +33,17 @@ public final class c
     //   10: invokespecial 31	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:<init>	(Ljava/lang/String;)V
     //   13: astore_3
     //   14: aload_3
-    //   15: invokevirtual 35	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:aVW	()Z
+    //   15: invokevirtual 35	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:aZr	()Z
     //   18: pop
     //   19: aload_3
     //   20: aload_1
-    //   21: invokevirtual 39	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:HP	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   21: invokevirtual 39	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:Lh	(Ljava/lang/String;)Ljava/io/InputStream;
     //   24: astore_2
     //   25: aload_1
-    //   26: invokestatic 45	com/tencent/mm/sdk/f/d:aIh	(Ljava/lang/String;)Ljava/lang/String;
+    //   26: invokestatic 45	com/tencent/mm/sdk/f/d:aNJ	(Ljava/lang/String;)Ljava/lang/String;
     //   29: astore_1
     //   30: aload_3
-    //   31: invokestatic 51	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   31: invokestatic 51	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   34: new 53	com/tencent/xweb/WebResourceResponse
     //   37: dup
     //   38: aload_1
@@ -71,13 +71,13 @@ public final class c
     //   70: dup
     //   71: iconst_1
     //   72: aload_1
-    //   73: invokestatic 69	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   73: invokestatic 69	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   76: aastore
-    //   77: invokestatic 75	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   77: invokestatic 75	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   80: aload_3
-    //   81: invokestatic 51	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   81: invokestatic 51	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   84: aload_2
-    //   85: invokestatic 51	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   85: invokestatic 51	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   88: ldc 19
     //   90: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: aconst_null
@@ -101,83 +101,83 @@ public final class c
     //   25	46	101	java/lang/Exception
   }
   
-  private static WebResourceResponse cL(String paramString1, String paramString2)
+  private static WebResourceResponse cN(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121479);
-    Object localObject = k.Lf(paramString1);
+    Object localObject = k.Oz(paramString1);
     if (localObject != null) {}
-    for (localObject = ((WxaWidgetContext)localObject).bcj(); localObject == null; localObject = null)
+    for (localObject = ((WxaWidgetContext)localObject).bfN(); localObject == null; localObject = null)
     {
-      ac.e("MicroMsg.ResPkgReader", "tryHitWxaPkgFile, get null appInfo by id %s", new Object[] { paramString1 });
+      ad.e("MicroMsg.ResPkgReader", "tryHitWxaPkgFile, get null appInfo by id %s", new Object[] { paramString1 });
       AppMethodBeat.o(121479);
       return null;
     }
-    if (bs.isNullOrNil(((WxaPkgWrappingInfo)localObject).pkgPath))
+    if (bt.isNullOrNil(((WxaPkgWrappingInfo)localObject).pkgPath))
     {
-      ac.e("MicroMsg.ResPkgReader", "tryHitWxaPkgFile, get Null Or Nil pkgPath[%s] by appId %s", new Object[] { ((WxaPkgWrappingInfo)localObject).pkgPath, paramString1 });
+      ad.e("MicroMsg.ResPkgReader", "tryHitWxaPkgFile, get Null Or Nil pkgPath[%s] by appId %s", new Object[] { ((WxaPkgWrappingInfo)localObject).pkgPath, paramString1 });
       AppMethodBeat.o(121479);
       return null;
     }
     localObject = ((WxaPkgWrappingInfo)localObject).pkgPath;
-    if (bs.isNullOrNil((String)localObject))
+    if (bt.isNullOrNil((String)localObject))
     {
-      ac.e("MicroMsg.ResPkgReader", "tryHitWxaPkgFile, get null or nil pkgLocalPath");
+      ad.e("MicroMsg.ResPkgReader", "tryHitWxaPkgFile, get null or nil pkgLocalPath");
       AppMethodBeat.o(121479);
       return null;
     }
-    ac.d("MicroMsg.ResPkgReader", "tryHitWxaPkgFile, id(%s), fileName(%s)", new Object[] { paramString1, paramString2 });
-    paramString1 = cK((String)localObject, paramString2);
+    ad.d("MicroMsg.ResPkgReader", "tryHitWxaPkgFile, id(%s), fileName(%s)", new Object[] { paramString1, paramString2 });
+    paramString1 = cM((String)localObject, paramString2);
     AppMethodBeat.o(121479);
     return paramString1;
   }
   
-  private static WebResourceResponse cM(String paramString1, String paramString2)
+  private static WebResourceResponse cO(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121480);
-    Object localObject = k.Lf(paramString1);
+    Object localObject = k.Oz(paramString1);
     if (localObject != null) {}
-    for (localObject = ((WxaWidgetContext)localObject).bck(); localObject == null; localObject = null)
+    for (localObject = ((WxaWidgetContext)localObject).bfO(); localObject == null; localObject = null)
     {
       AppMethodBeat.o(121480);
       return null;
     }
-    if (((WxaPkgWrappingInfo)localObject).jpc)
+    if (((WxaPkgWrappingInfo)localObject).jIW)
     {
-      paramString1 = aw.openRead(paramString2);
+      paramString1 = ax.openRead(paramString2);
       if (paramString1 != null)
       {
-        paramString1 = new WebResourceResponse(com.tencent.mm.sdk.f.d.aIh(paramString2), "UTF-8", paramString1);
+        paramString1 = new WebResourceResponse(com.tencent.mm.sdk.f.d.aNJ(paramString2), "UTF-8", paramString1);
         AppMethodBeat.o(121480);
         return paramString1;
       }
       AppMethodBeat.o(121480);
       return null;
     }
-    if (bs.isNullOrNil(((WxaPkgWrappingInfo)localObject).pkgPath))
+    if (bt.isNullOrNil(((WxaPkgWrappingInfo)localObject).pkgPath))
     {
-      ac.e("MicroMsg.ResPkgReader", "tryHitLibWxaPkgFile, pkgPath[%s] is Null Or Nil", new Object[] { ((WxaPkgWrappingInfo)localObject).pkgPath });
+      ad.e("MicroMsg.ResPkgReader", "tryHitLibWxaPkgFile, pkgPath[%s] is Null Or Nil", new Object[] { ((WxaPkgWrappingInfo)localObject).pkgPath });
       AppMethodBeat.o(121480);
       return null;
     }
-    ac.d("MicroMsg.ResPkgReader", "tryHitLibWxaPkgFile, id(%s), fileName(%s)", new Object[] { paramString1, paramString2 });
-    paramString1 = cK(((WxaPkgWrappingInfo)localObject).pkgPath, paramString2);
+    ad.d("MicroMsg.ResPkgReader", "tryHitLibWxaPkgFile, id(%s), fileName(%s)", new Object[] { paramString1, paramString2 });
+    paramString1 = cM(((WxaPkgWrappingInfo)localObject).pkgPath, paramString2);
     AppMethodBeat.o(121480);
     return paramString1;
   }
   
-  public static String cN(String paramString1, String paramString2)
+  public static String cP(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121481);
-    if (bs.isNullOrNil(paramString2))
+    if (bt.isNullOrNil(paramString2))
     {
       AppMethodBeat.o(121481);
       return "";
     }
-    WebResourceResponse localWebResourceResponse = cO(paramString1, paramString2);
+    WebResourceResponse localWebResourceResponse = cQ(paramString1, paramString2);
     if ((localWebResourceResponse != null) && (localWebResourceResponse.mInputStream != null)) {
       try
       {
-        ac.d("MicroMsg.ResPkgReader", "getCacheContent, dataStream available = %d, url = %s", new Object[] { Integer.valueOf(localWebResourceResponse.mInputStream.available()), paramString2 });
+        ad.d("MicroMsg.ResPkgReader", "getCacheContent, dataStream available = %d, url = %s", new Object[] { Integer.valueOf(localWebResourceResponse.mInputStream.available()), paramString2 });
         paramString1 = com.tencent.mm.plugin.appbrand.z.d.convertStreamToString(localWebResourceResponse.mInputStream);
         AppMethodBeat.o(121481);
         return paramString1;
@@ -186,45 +186,45 @@ public final class c
       {
         for (;;)
         {
-          ac.e("MicroMsg.ResPkgReader", "getCacheContent exp = %s, id = %s, url = %s", new Object[] { localException, paramString1, paramString2 });
+          ad.e("MicroMsg.ResPkgReader", "getCacheContent exp = %s, id = %s, url = %s", new Object[] { localException, paramString1, paramString2 });
         }
       }
     }
-    ac.e("MicroMsg.ResPkgReader", "get cache content for id : %s from url : %s, failed", new Object[] { paramString1, paramString2 });
+    ad.e("MicroMsg.ResPkgReader", "get cache content for id : %s from url : %s, failed", new Object[] { paramString1, paramString2 });
     AppMethodBeat.o(121481);
     return "";
   }
   
-  public static WebResourceResponse cO(String paramString1, String paramString2)
+  public static WebResourceResponse cQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121482);
-    ac.i("MicroMsg.ResPkgReader", "getCacheResource called, id = %s, reqURL = %s", new Object[] { paramString1, paramString2 });
-    if (bs.isNullOrNil(paramString2))
+    ad.i("MicroMsg.ResPkgReader", "getCacheResource called, id = %s, reqURL = %s", new Object[] { paramString1, paramString2 });
+    if (bt.isNullOrNil(paramString2))
     {
       AppMethodBeat.o(121482);
       return null;
     }
-    if (x.B(paramString2, "about:blank"))
+    if (x.C(paramString2, "about:blank"))
     {
       AppMethodBeat.o(121482);
       return null;
     }
-    if (!com.tencent.mm.plugin.appbrand.z.d.Rp(paramString2))
+    if (!com.tencent.mm.plugin.appbrand.z.d.UV(paramString2))
     {
-      paramString2 = m.IY(paramString2);
-      if (a.contains(jnA, paramString2))
+      paramString2 = m.Mp(paramString2);
+      if (a.contains(jHx, paramString2))
       {
-        paramString1 = cM(paramString1, paramString2);
+        paramString1 = cO(paramString1, paramString2);
         AppMethodBeat.o(121482);
         return paramString1;
       }
-      paramString2 = cL(paramString1, paramString2);
+      paramString2 = cN(paramString1, paramString2);
       if (paramString2 == null)
       {
         Bundle localBundle = new Bundle();
         localBundle.putString("id", paramString1);
         localBundle.putInt("widgetState", 2102);
-        h.a(i.bcg().La(paramString1), localBundle, f.a.class, null);
+        h.a(i.bfK().Ou(paramString1), localBundle, f.a.class, null);
       }
       AppMethodBeat.o(121482);
       return paramString2;

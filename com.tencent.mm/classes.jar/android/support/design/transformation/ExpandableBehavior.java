@@ -61,8 +61,8 @@ public abstract class ExpandableBehavior
       }
       paramCoordinatorLayout = (b)localView;
       label57:
-      if ((paramCoordinatorLayout != null) && (s(paramCoordinatorLayout.bk()))) {
-        if (!paramCoordinatorLayout.bk()) {
+      if ((paramCoordinatorLayout != null) && (s(paramCoordinatorLayout.bz()))) {
+        if (!paramCoordinatorLayout.bz()) {
           break label127;
         }
       }
@@ -80,7 +80,7 @@ public abstract class ExpandableBehavior
         {
           paramView.getViewTreeObserver().removeOnPreDrawListener(this);
           if (ExpandableBehavior.a(ExpandableBehavior.this) == paramInt) {
-            ExpandableBehavior.this.a((View)paramCoordinatorLayout, paramView, paramCoordinatorLayout.bk(), false);
+            ExpandableBehavior.this.a((View)paramCoordinatorLayout, paramView, paramCoordinatorLayout.bz(), false);
           }
           return false;
         }
@@ -96,13 +96,13 @@ public abstract class ExpandableBehavior
   public final boolean a(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2)
   {
     paramCoordinatorLayout = (b)paramView2;
-    if (s(paramCoordinatorLayout.bk()))
+    if (s(paramCoordinatorLayout.bz()))
     {
-      if (paramCoordinatorLayout.bk()) {}
+      if (paramCoordinatorLayout.bz()) {}
       for (int i = 1;; i = 2)
       {
         this.currentState = i;
-        return a((View)paramCoordinatorLayout, paramView1, paramCoordinatorLayout.bk(), true);
+        return a((View)paramCoordinatorLayout, paramView1, paramCoordinatorLayout.bz(), true);
       }
     }
     return false;

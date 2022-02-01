@@ -2,7 +2,7 @@
 <LinearLayout style="@style/go"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include layout="@layout/o5" />
-    <FrameLayout android:id="@id/al7" android:background="?dn" android:layout_width="@dimen/vq" android:layout_height="wrap_content" style="@style/gp">
+    <FrameLayout android:id="@id/al7" android:background="@drawable/l9" android:layout_width="@dimen/vq" android:layout_height="wrap_content" style="@style/gp">
         <LinearLayout android:orientation="vertical" android:id="@id/rc" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <LinearLayout android:orientation="horizontal" android:paddingLeft="20.0dip" android:paddingTop="@dimen/hu" android:paddingRight="@dimen/hu" android:paddingBottom="@dimen/hu" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <com.tencent.mm.ui.MMImageView android:layout_gravity="center_vertical" android:id="@id/re" android:layout_width="34.0dip" android:layout_height="34.0dip" android:scaleType="centerCrop" />

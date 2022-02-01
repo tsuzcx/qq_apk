@@ -4,58 +4,58 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.clf;
-import com.tencent.mm.protocal.protobuf.cli;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.cqf;
+import com.tencent.mm.protocal.protobuf.cqi;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarUtils;", "", "()V", "getEncodeUsername", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "getUsername", "lowerThanXHDPI", "", "context", "Landroid/content/Context;", "plugin-radar_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/ui/RadarUtils;", "", "()V", "getEncodeUsername", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "getUsername", "lowerThanXHDPI", "", "context", "Landroid/content/Context;", "plugin-radar_release"})
 public final class g
 {
-  public static final g wdr;
+  public static final g xla;
   
   static
   {
     AppMethodBeat.i(138730);
-    wdr = new g();
+    xla = new g();
     AppMethodBeat.o(138730);
   }
   
-  public static String a(clf paramclf)
+  public static String a(cqf paramcqf)
   {
-    if (paramclf != null)
+    if (paramcqf != null)
     {
-      String str = paramclf.EyO;
+      String str = paramcqf.GgA;
       Object localObject = str;
       if (str == null)
       {
-        paramclf = paramclf.ncR;
-        localObject = paramclf;
-        if (paramclf == null) {
+        paramcqf = paramcqf.nDo;
+        localObject = paramcqf;
+        if (paramcqf == null) {
           localObject = "";
         }
       }
-      paramclf = (clf)localObject;
+      paramcqf = (cqf)localObject;
       if (localObject != null) {}
     }
     else
     {
-      paramclf = "";
+      paramcqf = "";
     }
-    return paramclf;
+    return paramcqf;
   }
   
-  public static String b(cli paramcli)
+  public static String b(cqi paramcqi)
   {
     AppMethodBeat.i(138728);
-    k.h(paramcli, "member");
-    String str = paramcli.ncR;
+    p.h(paramcqi, "member");
+    String str = paramcqi.nDo;
     Object localObject = str;
     if (str == null)
     {
-      paramcli = paramcli.EyO;
-      localObject = paramcli;
-      if (paramcli == null) {
+      paramcqi = paramcqi.GgA;
+      localObject = paramcqi;
+      if (paramcqi == null) {
         localObject = "";
       }
     }
@@ -63,36 +63,36 @@ public final class g
     return localObject;
   }
   
-  public static String c(cli paramcli)
+  public static String c(cqi paramcqi)
   {
-    if (paramcli != null)
+    if (paramcqi != null)
     {
-      String str = paramcli.EyO;
+      String str = paramcqi.GgA;
       Object localObject = str;
       if (str == null)
       {
-        paramcli = paramcli.ncR;
-        localObject = paramcli;
-        if (paramcli == null) {
+        paramcqi = paramcqi.nDo;
+        localObject = paramcqi;
+        if (paramcqi == null) {
           localObject = "";
         }
       }
-      paramcli = (cli)localObject;
+      paramcqi = (cqi)localObject;
       if (localObject != null) {}
     }
     else
     {
-      paramcli = "";
+      paramcqi = "";
     }
-    return paramcli;
+    return paramcqi;
   }
   
-  public static boolean fS(Context paramContext)
+  public static boolean fX(Context paramContext)
   {
     AppMethodBeat.i(138729);
-    k.h(paramContext, "context");
+    p.h(paramContext, "context");
     paramContext = paramContext.getResources();
-    k.g(paramContext, "context.resources");
+    p.g(paramContext, "context.resources");
     if (paramContext.getDisplayMetrics().densityDpi <= 240)
     {
       AppMethodBeat.o(138729);

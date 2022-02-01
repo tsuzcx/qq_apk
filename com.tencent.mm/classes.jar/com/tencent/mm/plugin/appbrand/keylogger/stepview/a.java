@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.keylogger.stepview;
 
 public final class a
 {
-  public static int tw(int paramInt)
+  public static int tZ(int paramInt)
   {
     switch (paramInt)
     {
@@ -20,7 +20,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.stepview.a
  * JD-Core Version:    0.7.0.1
  */

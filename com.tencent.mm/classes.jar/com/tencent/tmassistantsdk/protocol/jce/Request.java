@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class Request
   extends JceStruct
@@ -125,7 +125,7 @@ public final class Request
     }
     catch (Exception localException2)
     {
-      ac.printErrStackTrace("Request", localException2, "", new Object[0]);
+      ad.printErrStackTrace("Request", localException2, "", new Object[0]);
       AppMethodBeat.o(102345);
     }
     return 0;

@@ -12,7 +12,7 @@ public abstract class e
 {
   protected Context mContext;
   protected LayoutInflater mInflater;
-  protected List<t> uhb = new LinkedList();
+  protected List<t> vjL = new LinkedList();
   
   public e(Context paramContext)
   {
@@ -20,20 +20,20 @@ public abstract class e
     this.mInflater = LayoutInflater.from(paramContext);
   }
   
-  public final t HW(int paramInt)
+  public final t Js(int paramInt)
   {
-    return (t)this.uhb.get(paramInt);
+    return (t)this.vjL.get(paramInt);
   }
   
   public final void a(t paramt)
   {
-    this.uhb.remove(paramt);
+    this.vjL.remove(paramt);
   }
   
-  public final void ef(List<t> paramList)
+  public final void es(List<t> paramList)
   {
     if (paramList == null) {}
-    for (this.uhb = new LinkedList();; this.uhb = paramList)
+    for (this.vjL = new LinkedList();; this.vjL = paramList)
     {
       notifyDataSetChanged();
       return;
@@ -42,7 +42,7 @@ public abstract class e
   
   public int getCount()
   {
-    return this.uhb.size();
+    return this.vjL.size();
   }
   
   public long getItemId(int paramInt)
@@ -52,7 +52,7 @@ public abstract class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.e
  * JD-Core Version:    0.7.0.1
  */

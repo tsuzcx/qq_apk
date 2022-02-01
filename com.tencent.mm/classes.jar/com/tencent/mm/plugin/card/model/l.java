@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +27,24 @@ public final class l
     this.db = parame;
   }
   
-  public final List<k> UH(String paramString)
+  public final boolean CA(String paramString)
+  {
+    AppMethodBeat.i(112789);
+    k localk = new k();
+    localk.field_card_id = paramString;
+    boolean bool = delete(localk, new String[] { "card_id" });
+    if (!bool) {
+      ad.e("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData by cardId  failure! card_id = %s", new Object[] { paramString });
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(112789);
+      return bool;
+      ad.i("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData by cardId  success! card_id = %s", new Object[] { paramString });
+    }
+  }
+  
+  public final List<k> Yq(String paramString)
   {
     AppMethodBeat.i(112785);
     ArrayList localArrayList = new ArrayList();
@@ -47,7 +64,7 @@ public final class l
       }
       catch (Exception localException)
       {
-        ac.e("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeByCardId error!", new Object[] { localException.getMessage() });
+        ad.e("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeByCardId error!", new Object[] { localException.getMessage() });
         for (;;)
         {
           return localArrayList;
@@ -66,7 +83,7 @@ public final class l
     }
   }
   
-  public final k UI(String paramString)
+  public final k Yr(String paramString)
   {
     AppMethodBeat.i(112786);
     localCursor = this.db.rawQuery("select * from CardQrCodeDataInfo where card_id =? AND status=0  limit 1", new String[] { paramString });
@@ -85,7 +102,7 @@ public final class l
       {
         Object localObject1;
         paramString = null;
-        ac.e("MicroMsg.CardQrCodeDataInfoStorage", "getOneCardQrcodeByCardId error!", new Object[] { localException1.getMessage() });
+        ad.e("MicroMsg.CardQrCodeDataInfoStorage", "getOneCardQrcodeByCardId error!", new Object[] { localException1.getMessage() });
         localObject2 = paramString;
         if (localCursor == null) {
           continue;
@@ -104,7 +121,7 @@ public final class l
       try
       {
         ((k)localObject1).convertFrom(localCursor);
-        ac.i("MicroMsg.CardQrCodeDataInfoStorage", "getOneCardQrcodeByCardId  success! card_id = %s, code_id = %s ", new Object[] { paramString, ((k)localObject1).field_code_id });
+        ad.i("MicroMsg.CardQrCodeDataInfoStorage", "getOneCardQrcodeByCardId  success! card_id = %s, code_id = %s ", new Object[] { paramString, ((k)localObject1).field_code_id });
         paramString = (String)localObject1;
         localObject1 = paramString;
         if (localCursor != null)
@@ -121,12 +138,12 @@ public final class l
         localObject2 = localException2;
         continue;
       }
-      ac.e("MicroMsg.CardQrCodeDataInfoStorage", "getOneCardQrcodeByCardId  is empty! card_id = %s", new Object[] { paramString });
+      ad.e("MicroMsg.CardQrCodeDataInfoStorage", "getOneCardQrcodeByCardId  is empty! card_id = %s", new Object[] { paramString });
       paramString = null;
     }
   }
   
-  public final k UJ(String paramString)
+  public final k Ys(String paramString)
   {
     AppMethodBeat.i(112787);
     localCursor = this.db.rawQuery("select * from CardQrCodeDataInfo where card_id =? AND status=1  limit 1", new String[] { paramString });
@@ -145,7 +162,7 @@ public final class l
       {
         Object localObject1;
         paramString = null;
-        ac.e("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeShowingByCardId error!", new Object[] { localException1.getMessage() });
+        ad.e("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeShowingByCardId error!", new Object[] { localException1.getMessage() });
         localObject2 = paramString;
         if (localCursor == null) {
           continue;
@@ -164,7 +181,7 @@ public final class l
       try
       {
         ((k)localObject1).convertFrom(localCursor);
-        ac.i("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeShowingByCardId  success! card_id = %s, code_id = %s ", new Object[] { paramString, ((k)localObject1).field_code_id });
+        ad.i("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeShowingByCardId  success! card_id = %s, code_id = %s ", new Object[] { paramString, ((k)localObject1).field_code_id });
         paramString = (String)localObject1;
         localObject1 = paramString;
         if (localCursor != null)
@@ -181,12 +198,12 @@ public final class l
         localObject2 = localException2;
         continue;
       }
-      ac.e("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeShowingByCardId  is empty! card_id = %s", new Object[] { paramString });
+      ad.e("MicroMsg.CardQrCodeDataInfoStorage", "getCardQrcodeShowingByCardId  is empty! card_id = %s", new Object[] { paramString });
       paramString = null;
     }
   }
   
-  public final boolean eM(String paramString1, String paramString2)
+  public final boolean eW(String paramString1, String paramString2)
   {
     AppMethodBeat.i(112788);
     k localk = new k();
@@ -194,36 +211,19 @@ public final class l
     localk.field_code_id = paramString2;
     boolean bool = delete(localk, new String[] { "card_id", "code_id" });
     if (!bool) {
-      ac.e("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData  failure! card_id = %s, code_id = %s", new Object[] { localk.field_card_id, localk.field_code_id });
+      ad.e("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData  failure! card_id = %s, code_id = %s", new Object[] { localk.field_card_id, localk.field_code_id });
     }
     for (;;)
     {
       AppMethodBeat.o(112788);
       return bool;
-      ac.i("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData  success! card_id = %s, code_id = %s", new Object[] { localk.field_card_id, localk.field_code_id });
-    }
-  }
-  
-  public final boolean zB(String paramString)
-  {
-    AppMethodBeat.i(112789);
-    k localk = new k();
-    localk.field_card_id = paramString;
-    boolean bool = delete(localk, new String[] { "card_id" });
-    if (!bool) {
-      ac.e("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData by cardId  failure! card_id = %s", new Object[] { paramString });
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(112789);
-      return bool;
-      ac.i("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData by cardId  success! card_id = %s", new Object[] { paramString });
+      ad.i("MicroMsg.CardQrCodeDataInfoStorage", "delete qrCodeData  success! card_id = %s, code_id = %s", new Object[] { localk.field_card_id, localk.field_code_id });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,94 @@
 package com.tencent.mm.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gg;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.plugin.messenger.foundation.a.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.a.n.a;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.e.l;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class cg
-  extends gg
+  extends j<cf>
+  implements n
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE;
+  private final l<n.a, cf> Iou;
+  private e db;
   
   static
   {
-    AppMethodBeat.i(148673);
-    c.a locala = new c.a();
-    locala.GvF = new Field[3];
-    locala.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "msgId";
-    locala.GvH.put("msgId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" msgId LONG PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.GvG = "msgId";
-    locala.columns[1] = "cmsgId";
-    locala.GvH.put("cmsgId", "TEXT");
-    localStringBuilder.append(" cmsgId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "content";
-    locala.GvH.put("content", "TEXT default '' ");
-    localStringBuilder.append(" content TEXT default '' ");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(148673);
+    AppMethodBeat.i(117352);
+    SQL_CREATE = new String[] { j.getCreateSQLs(cf.info, "Stranger") };
+    AppMethodBeat.o(117352);
   }
   
-  public final void aOI(String paramString)
+  public cg(e parame)
   {
-    AppMethodBeat.i(148672);
-    if (bs.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(148672);
-      return;
+    super(parame, cf.info, "Stranger", null);
+    AppMethodBeat.i(117347);
+    this.Iou = new l() {};
+    this.db = parame;
+    AppMethodBeat.o(117347);
+  }
+  
+  private void b(cf paramcf)
+  {
+    AppMethodBeat.i(117344);
+    if (this.Iou.dV(paramcf)) {
+      this.Iou.doNotify();
     }
-    this.field_cmsgId = paramString;
-    AppMethodBeat.o(148672);
+    AppMethodBeat.o(117344);
   }
   
-  public final c.a getDBInfo()
+  public final void a(n.a parama)
   {
-    return null;
+    AppMethodBeat.i(117345);
+    this.Iou.a(parama, null);
+    AppMethodBeat.o(117345);
+  }
+  
+  public final int aqA(String paramString)
+  {
+    AppMethodBeat.i(117349);
+    int i = this.db.delete("Stranger", "(encryptUsername=?)", new String[] { String.valueOf(paramString) });
+    if (i > 0) {
+      doNotify();
+    }
+    ad.i("MicroMsg.StrangerStorage", "delByEncryptUsername:" + paramString + " result:" + i);
+    AppMethodBeat.o(117349);
+    return i;
+  }
+  
+  public final cf aqz(String paramString)
+  {
+    AppMethodBeat.i(117348);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(117348);
+      return null;
+    }
+    cf localcf = new cf();
+    paramString = this.db.a("Stranger", null, "encryptUsername = ?", new String[] { paramString }, null, null, null, 2);
+    if (paramString.moveToFirst()) {
+      localcf.convertFrom(paramString);
+    }
+    paramString.close();
+    AppMethodBeat.o(117348);
+    return localcf;
+  }
+  
+  public final void b(n.a parama)
+  {
+    AppMethodBeat.i(117346);
+    this.Iou.remove(parama);
+    AppMethodBeat.o(117346);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.cg
  * JD-Core Version:    0.7.0.1
  */

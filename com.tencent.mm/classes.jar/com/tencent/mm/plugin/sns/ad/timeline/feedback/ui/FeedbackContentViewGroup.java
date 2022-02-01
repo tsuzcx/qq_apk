@@ -13,8 +13,8 @@ import java.util.List;
 public class FeedbackContentViewGroup
   extends ViewGroup
 {
-  private List<a> xLQ;
-  private int xLR;
+  private List<a> zbf;
+  private int zbg;
   
   public FeedbackContentViewGroup(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,35 +29,35 @@ public class FeedbackContentViewGroup
   private FeedbackContentViewGroup(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(199999);
-    this.xLQ = new LinkedList();
+    AppMethodBeat.i(197645);
+    this.zbf = new LinkedList();
     try
     {
-      this.xLR = a.fromDPToPix(getContext(), 12);
-      AppMethodBeat.o(199999);
+      this.zbg = a.fromDPToPix(getContext(), 12);
+      AppMethodBeat.o(197645);
       return;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(199999);
+      AppMethodBeat.o(197645);
     }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(200001);
+    AppMethodBeat.i(197647);
     try
     {
-      Object localObject = this.xLQ;
+      Object localObject = this.zbf;
       int j = getChildCount();
       paramInt3 = 0;
-      int k = this.xLR;
+      int k = this.zbg;
       paramInt2 = 0;
       localObject = ((List)localObject).iterator();
       paramInt1 = 0;
       while (((Iterator)localObject).hasNext())
       {
-        int m = ((a)((Iterator)localObject).next()).oXP;
+        int m = ((a)((Iterator)localObject).next()).pBz;
         int i = 0;
         paramInt4 = 0;
         while ((paramInt4 < m) && (paramInt3 < j))
@@ -72,18 +72,18 @@ public class FeedbackContentViewGroup
         }
         paramInt2 += paramInt1 + k;
       }
-      AppMethodBeat.o(200001);
+      AppMethodBeat.o(197647);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(200001);
+      AppMethodBeat.o(197647);
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200000);
+    AppMethodBeat.i(197646);
     super.onMeasure(paramInt1, paramInt2);
     for (;;)
     {
@@ -93,19 +93,19 @@ public class FeedbackContentViewGroup
       try
       {
         measureChildren(paramInt1, paramInt2);
-        j = this.xLR;
+        j = this.zbg;
         k = getChildCount();
         i = getMeasuredWidth();
-        this.xLQ.clear();
+        this.zbf.clear();
         paramInt1 = 0;
         if (paramInt1 >= k) {
           break label355;
         }
-        Object localObject1 = this.xLQ;
+        Object localObject1 = this.zbf;
         localObject2 = new a();
-        ((a)localObject2).oXP = 0;
-        ((a)localObject2).xLS = i;
-        ((a)localObject2).xLT = false;
+        ((a)localObject2).pBz = 0;
+        ((a)localObject2).zbh = i;
+        ((a)localObject2).zbi = false;
         ((List)localObject1).add(localObject2);
         paramInt1 += 1;
         continue;
@@ -114,19 +114,19 @@ public class FeedbackContentViewGroup
         }
         localObject2 = getChildAt(paramInt2);
         int m = Math.min(((View)localObject2).getMeasuredWidth(), i);
-        Iterator localIterator2 = this.xLQ.iterator();
+        Iterator localIterator2 = this.zbf.iterator();
         if (localIterator2.hasNext())
         {
           localObject1 = (a)localIterator2.next();
-          if ((localObject1 == null) || (((a)localObject1).xLT)) {
+          if ((localObject1 == null) || (((a)localObject1).zbi)) {
             continue;
           }
-          if (((a)localObject1).xLS >= m)
+          if (((a)localObject1).zbh >= m)
           {
             if (localObject1 != null)
             {
-              ((a)localObject1).oXP += 1;
-              ((a)localObject1).xLS -= m + j;
+              ((a)localObject1).pBz += 1;
+              ((a)localObject1).zbh -= m + j;
             }
             if (paramInt1 != 0) {
               break label352;
@@ -134,34 +134,34 @@ public class FeedbackContentViewGroup
             paramInt1 = ((View)localObject2).getMeasuredHeight();
             break label362;
           }
-          ((a)localObject1).xLT = true;
+          ((a)localObject1).zbi = true;
           continue;
         }
         localIterator1 = null;
       }
       catch (Throwable localThrowable)
       {
-        AppMethodBeat.o(200000);
+        AppMethodBeat.o(197646);
         return;
       }
       continue;
       label250:
-      Iterator localIterator1 = this.xLQ.iterator();
+      Iterator localIterator1 = this.zbf.iterator();
       while (localIterator1.hasNext())
       {
         localObject2 = (a)localIterator1.next();
-        if ((localObject2 == null) || (((a)localObject2).oXP == 0)) {
+        if ((localObject2 == null) || (((a)localObject2).pBz == 0)) {
           localIterator1.remove();
         }
       }
-      int k = this.xLQ.size();
+      int k = this.zbf.size();
       paramInt2 = k * paramInt1;
       paramInt1 = paramInt2;
       if (k > 1) {
         paramInt1 = paramInt2 + (k - 1) * j;
       }
       setMeasuredDimension(i, paramInt1);
-      AppMethodBeat.o(200000);
+      AppMethodBeat.o(197646);
       return;
       label352:
       break label362;
@@ -176,9 +176,9 @@ public class FeedbackContentViewGroup
   
   static final class a
   {
-    int oXP;
-    int xLS;
-    boolean xLT;
+    int pBz;
+    int zbh;
+    boolean zbi;
   }
 }
 

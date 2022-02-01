@@ -3,65 +3,66 @@ package com.tencent.mm.plugin.appbrand.ui.collection;
 import android.support.v7.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "Lkotlin/collections/ArrayList;", "listener", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder$IEnterWxaListener;", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder$IEnterWxaListener;)V", "getDataList", "()Ljava/util/ArrayList;", "mListener", "cloneList", "getItemCount", "", "getItemId", "", "position", "getItemViewType", "onBindViewHolder", "", "holder", "payloads", "", "", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "replaceList", "list", "", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "Lkotlin/collections/ArrayList;", "listener", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder$IEnterWxaListener;", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder$IEnterWxaListener;)V", "getDataList", "()Ljava/util/ArrayList;", "mListener", "cloneList", "getItemCount", "", "getItemId", "", "position", "getItemViewType", "onBindViewHolder", "", "holder", "payloads", "", "", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "replaceList", "list", "", "plugin-appbrand-integration_release"})
 final class k
   extends RecyclerView.a<m>
 {
-  final ArrayList<LocalUsageInfo> dataList;
-  private final m.a miA;
+  final ArrayList<LocalUsageInfo> jfg;
+  private final m.a mJb;
   
   public k(ArrayList<LocalUsageInfo> paramArrayList, m.a parama)
   {
     AppMethodBeat.i(51278);
-    this.dataList = paramArrayList;
-    this.miA = parama;
+    this.jfg = paramArrayList;
+    this.mJb = parama;
     AppMethodBeat.o(51278);
   }
   
   private void a(m paramm, int paramInt)
   {
     AppMethodBeat.i(51274);
-    d.g.b.k.h(paramm, "holder");
-    Object localObject = this.dataList.get(paramInt);
-    d.g.b.k.g(localObject, "dataList[position]");
+    p.h(paramm, "holder");
+    Object localObject = this.jfg.get(paramInt);
+    p.g(localObject, "dataList[position]");
     paramm.g((LocalUsageInfo)localObject);
     AppMethodBeat.o(51274);
   }
   
-  public final void bC(List<? extends LocalUsageInfo> paramList)
+  public final ArrayList<LocalUsageInfo> bAr()
   {
-    AppMethodBeat.i(51271);
-    d.g.b.k.h(paramList, "list");
-    synchronized (this.dataList)
+    AppMethodBeat.i(51270);
+    synchronized (this.jfg)
     {
-      this.dataList.clear();
-      this.dataList.addAll((Collection)paramList);
-      AppMethodBeat.o(51271);
-      return;
+      ArrayList localArrayList2 = new ArrayList(this.jfg.size());
+      localArrayList2.addAll((Collection)this.jfg);
+      AppMethodBeat.o(51270);
+      return localArrayList2;
     }
   }
   
-  public final ArrayList<LocalUsageInfo> bwl()
+  public final void bE(List<? extends LocalUsageInfo> paramList)
   {
-    AppMethodBeat.i(51270);
-    synchronized (this.dataList)
+    AppMethodBeat.i(51271);
+    p.h(paramList, "list");
+    synchronized (this.jfg)
     {
-      ArrayList localArrayList2 = new ArrayList(this.dataList.size());
-      localArrayList2.addAll((Collection)this.dataList);
-      AppMethodBeat.o(51270);
-      return localArrayList2;
+      this.jfg.clear();
+      this.jfg.addAll((Collection)paramList);
+      AppMethodBeat.o(51271);
+      return;
     }
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(51272);
-    int i = this.dataList.size();
+    int i = this.jfg.size();
     AppMethodBeat.o(51272);
     return i;
   }
@@ -69,8 +70,8 @@ final class k
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(51277);
-    LocalUsageInfo localLocalUsageInfo = (LocalUsageInfo)this.dataList.get(paramInt);
-    long l = (localLocalUsageInfo.username + localLocalUsageInfo.hxM).hashCode();
+    LocalUsageInfo localLocalUsageInfo = (LocalUsageInfo)this.jfg.get(paramInt);
+    long l = (localLocalUsageInfo.username + localLocalUsageInfo.hQh).hashCode();
     AppMethodBeat.o(51277);
     return l;
   }

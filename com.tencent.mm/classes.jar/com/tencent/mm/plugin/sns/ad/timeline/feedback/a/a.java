@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.sns.ad.timeline.feedback.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.e.d.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.sns.ad.e.g.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public final class a
-  implements d.a
+  implements g.a
 {
   public int mScene;
-  public long xLI;
-  public String xLJ;
-  public String xLK;
+  public long zaX;
+  public String zaY;
+  public String zaZ;
   
-  private JSONObject dFV()
+  private JSONObject dRP()
   {
-    AppMethodBeat.i(199990);
+    AppMethodBeat.i(197636);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("snsid", String.valueOf(this.xLI));
-      localJSONObject.put("uxinfo", bs.bG(this.xLJ, ""));
+      localJSONObject.put("snsid", String.valueOf(this.zaX));
+      localJSONObject.put("uxinfo", bt.bI(this.zaY, ""));
       localJSONObject.put("scene", this.mScene);
-      localJSONObject.put("adExtInfo", bs.bG(this.xLK, ""));
+      localJSONObject.put("adExtInfo", bt.bI(this.zaZ, ""));
       label70:
-      AppMethodBeat.o(199990);
+      AppMethodBeat.o(197636);
       return localJSONObject;
     }
     catch (Throwable localThrowable)
@@ -33,16 +33,16 @@ public final class a
     }
   }
   
-  public final String dFW()
+  public final String dRQ()
   {
     return "timeline_ad_feedback_click_positive_btn";
   }
   
   public final String getContent()
   {
-    AppMethodBeat.i(199991);
-    String str = dFV().toString();
-    AppMethodBeat.o(199991);
+    AppMethodBeat.i(197637);
+    String str = dRP().toString();
+    AppMethodBeat.o(197637);
     return str;
   }
 }

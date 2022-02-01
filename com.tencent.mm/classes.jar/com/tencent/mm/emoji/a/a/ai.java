@@ -1,30 +1,38 @@
 package com.tencent.mm.emoji.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.emoji.a.o;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/StorePanelGroupModel;", "Lcom/tencent/mm/emoji/model/panel/PanelGroupModel;", "Lcom/tencent/mm/emoji/model/panel/StoreItemGroup;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "data", "getData", "()Lcom/tencent/mm/emoji/model/panel/StoreItemGroup;", "setData", "(Lcom/tencent/mm/emoji/model/panel/StoreItemGroup;)V", "createData", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/SmileyItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "smileyInfo", "Lcom/tencent/mm/emoji/model/SmileyInfo;", "isRecent", "", "reportPos", "", "(Lcom/tencent/mm/emoji/model/SmileyInfo;ZI)V", "()Z", "getReportPos", "()I", "getSmileyInfo", "()Lcom/tencent/mm/emoji/model/SmileyInfo;", "equals", "other", "", "plugin-emojisdk_release"})
 public final class ai
-  extends x<ah>
+  extends ac
 {
-  private final EmojiGroupInfo fON;
-  private ah fSs;
+  public final o glQ;
+  public final boolean glR;
+  public final int glS;
   
-  public ai(EmojiGroupInfo paramEmojiGroupInfo)
+  public ai(o paramo, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(105591);
-    this.fON = paramEmojiGroupInfo;
-    this.fSs = acZ();
-    AppMethodBeat.o(105591);
+    super(1);
+    AppMethodBeat.i(105582);
+    this.glQ = paramo;
+    this.glR = paramBoolean;
+    this.glS = paramInt;
+    AppMethodBeat.o(105582);
   }
   
-  private ah acZ()
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(105589);
-    ah localah = new ah(this.fON);
-    AppMethodBeat.o(105589);
-    return localah;
+    AppMethodBeat.i(105581);
+    if ((super.equals(paramObject)) && ((paramObject instanceof ai)) && (((ai)paramObject).glR == this.glR) && (p.i(((ai)paramObject).glQ.key, this.glQ.key)))
+    {
+      AppMethodBeat.o(105581);
+      return true;
+    }
+    AppMethodBeat.o(105581);
+    return false;
   }
 }
 

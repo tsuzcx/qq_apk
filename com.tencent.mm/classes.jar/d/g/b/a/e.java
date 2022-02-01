@@ -2,7 +2,7 @@ package d.g.b.a;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/jvm/internal/markers/KMutableList;", "Lkotlin/jvm/internal/markers/KMutableCollection;", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/jvm/internal/markers/KMutableList;", "Lkotlin/jvm/internal/markers/KMutableCollection;", "kotlin-stdlib"})
 public abstract interface e
   extends b
 {}

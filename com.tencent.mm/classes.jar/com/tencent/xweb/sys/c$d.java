@@ -7,18 +7,18 @@ import com.tencent.xweb.o;
 public final class c$d
   extends o
 {
-  public JsPromptResult KDr;
+  public JsPromptResult MtR;
   
   public c$d(JsPromptResult paramJsPromptResult)
   {
-    this.KDr = paramJsPromptResult;
+    this.MtR = paramJsPromptResult;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(153663);
-    if (this.KDr != null) {
-      this.KDr.cancel();
+    if (this.MtR != null) {
+      this.MtR.cancel();
     }
     AppMethodBeat.o(153663);
   }
@@ -26,8 +26,8 @@ public final class c$d
   public final void confirm()
   {
     AppMethodBeat.i(153662);
-    if (this.KDr != null) {
-      this.KDr.confirm();
+    if (this.MtR != null) {
+      this.MtR.confirm();
     }
     AppMethodBeat.o(153662);
   }

@@ -13,25 +13,25 @@ public abstract class x
   public int subType;
   public int type;
   public float width;
-  public boolean yjA;
-  public boolean yjB;
-  public String yjs;
-  public int yjt;
-  public float yju = -2.0F;
-  public float yjv = -2.0F;
-  public boolean yjw;
-  public String yjx = "";
-  public int yjy;
-  public int yjz;
+  public String zAg;
+  public int zAh;
+  public float zAi = -2.0F;
+  public float zAj = -2.0F;
+  public boolean zAk;
+  public String zAl = "";
+  public int zAm;
+  public int zAn;
+  public boolean zAo;
+  public boolean zAp;
   
-  protected List<x> dKd()
+  protected List<x> dWq()
   {
     return Collections.emptyList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x
  * JD-Core Version:    0.7.0.1
  */

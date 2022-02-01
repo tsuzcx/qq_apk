@@ -85,7 +85,7 @@ public class DefaultClusterRenderer<T extends ClusterItem>
   private final float f;
   private int[] h;
   private ShapeDrawable i;
-  private Set<DefaultClusterRenderer.MarkerWithPosition> j;
+  private Set<MarkerWithPosition> j;
   private SparseArray<BitmapDescriptor> k;
   private MarkerCache<T> l;
   private int m;
@@ -104,21 +104,21 @@ public class DefaultClusterRenderer<T extends ClusterItem>
   
   static
   {
-    AppMethodBeat.i(192322);
+    AppMethodBeat.i(193007);
     if (Build.VERSION.SDK_INT >= 11) {}
     for (boolean bool = true;; bool = false)
     {
       b = bool;
       g = false;
       z = new DecelerateInterpolator();
-      AppMethodBeat.o(192322);
+      AppMethodBeat.o(193007);
       return;
     }
   }
   
   public DefaultClusterRenderer(Context paramContext, TencentMap paramTencentMap, ClusterManager<T> paramClusterManager)
   {
-    AppMethodBeat.i(192303);
+    AppMethodBeat.i(192988);
     this.h = new int[] { 10, 20, 50, 100, 200, 500, 1000 };
     this.j = Collections.newSetFromMap(new ConcurrentHashMap());
     this.k = new SparseArray();
@@ -139,11 +139,11 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     for (paramContext = ((PreCachingAlgorithmDecorator)paramClusterManager.getAlgorithm()).getAlgorithm(); (paramContext instanceof NonHierarchicalDistanceBasedAlgorithm); paramContext = paramClusterManager.getAlgorithm())
     {
       this.a = ((((NonHierarchicalDistanceBasedAlgorithm)paramContext).getMaxDistanceAtZoom() + 0.5D) * this.f);
-      AppMethodBeat.o(192303);
+      AppMethodBeat.o(192988);
       return;
     }
     this.a = (35.0F * this.f);
-    AppMethodBeat.o(192303);
+    AppMethodBeat.o(192988);
   }
   
   private static double a(b paramb1, b paramb2)
@@ -153,23 +153,23 @@ public class DefaultClusterRenderer<T extends ClusterItem>
   
   private e a(Context paramContext)
   {
-    AppMethodBeat.i(192308);
+    AppMethodBeat.i(192993);
     paramContext = new e(paramContext);
     paramContext.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
     paramContext.setId(IconGenerator.SQUARE_TEXT_VIEW_ID);
     int i1 = (int)(12.0F * this.f);
     paramContext.setPadding(i1, i1, i1, i1);
-    AppMethodBeat.o(192308);
+    AppMethodBeat.o(192993);
     return paramContext;
   }
   
   private static b b(List<b> paramList, b paramb, double paramDouble)
   {
     b localb = null;
-    AppMethodBeat.i(192315);
+    AppMethodBeat.i(193000);
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      AppMethodBeat.o(192315);
+      AppMethodBeat.o(193000);
       return null;
     }
     paramDouble *= paramDouble;
@@ -189,39 +189,39 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     for (;;)
     {
       break;
-      AppMethodBeat.o(192315);
+      AppMethodBeat.o(193000);
       return paramList;
     }
   }
   
   private LayerDrawable d()
   {
-    AppMethodBeat.i(192307);
+    AppMethodBeat.i(192992);
     this.i = new ShapeDrawable(new OvalShape());
     Object localObject = new ShapeDrawable(new OvalShape());
     ((ShapeDrawable)localObject).getPaint().setColor(-2130706433);
     localObject = new LayerDrawable(new Drawable[] { localObject, this.i });
     int i1 = (int)(this.f * 3.0F);
     ((LayerDrawable)localObject).setLayerInset(1, i1, i1, i1, i1);
-    AppMethodBeat.o(192307);
+    AppMethodBeat.o(192992);
     return localObject;
   }
   
   protected String a(int paramInt)
   {
-    AppMethodBeat.i(192310);
+    AppMethodBeat.i(192995);
     if (this.h == null)
     {
-      AppMethodBeat.o(192310);
+      AppMethodBeat.o(192995);
       return String.valueOf(paramInt);
     }
     if (paramInt < this.h[0])
     {
-      AppMethodBeat.o(192310);
+      AppMethodBeat.o(192995);
       return String.valueOf(paramInt);
     }
     String str = String.valueOf(paramInt) + "+";
-    AppMethodBeat.o(192310);
+    AppMethodBeat.o(192995);
     return str;
   }
   
@@ -231,37 +231,37 @@ public class DefaultClusterRenderer<T extends ClusterItem>
   
   protected boolean a(Cluster<T> paramCluster)
   {
-    AppMethodBeat.i(192313);
+    AppMethodBeat.i(192998);
     if (paramCluster.getSize() > this.m)
     {
-      AppMethodBeat.o(192313);
+      AppMethodBeat.o(192998);
       return true;
     }
-    AppMethodBeat.o(192313);
+    AppMethodBeat.o(192998);
     return false;
   }
   
   public void cancel()
   {
-    AppMethodBeat.i(192306);
+    AppMethodBeat.i(192991);
     g = true;
     onRemove();
-    AppMethodBeat.o(192306);
+    AppMethodBeat.o(192991);
   }
   
   public int getBucket(Cluster<T> paramCluster)
   {
     int i1 = 0;
-    AppMethodBeat.i(192311);
+    AppMethodBeat.i(192996);
     int i2 = paramCluster.getSize();
     if (this.h == null)
     {
-      AppMethodBeat.o(192311);
+      AppMethodBeat.o(192996);
       return i2;
     }
     if (i2 <= this.h[0])
     {
-      AppMethodBeat.o(192311);
+      AppMethodBeat.o(192996);
       return i2;
     }
     do
@@ -272,10 +272,10 @@ public class DefaultClusterRenderer<T extends ClusterItem>
       }
     } while (i2 >= this.h[(i1 + 1)]);
     i1 = this.h[i1];
-    AppMethodBeat.o(192311);
+    AppMethodBeat.o(192996);
     return i1;
     i1 = this.h[(this.h.length - 1)];
-    AppMethodBeat.o(192311);
+    AppMethodBeat.o(192996);
     return i1;
   }
   
@@ -286,42 +286,42 @@ public class DefaultClusterRenderer<T extends ClusterItem>
   
   public Cluster<T> getCluster(Marker paramMarker)
   {
-    AppMethodBeat.i(192320);
+    AppMethodBeat.i(193005);
     paramMarker = (Cluster)this.p.get(paramMarker);
-    AppMethodBeat.o(192320);
+    AppMethodBeat.o(193005);
     return paramMarker;
   }
   
   public T getClusterItem(Marker paramMarker)
   {
-    AppMethodBeat.i(192318);
+    AppMethodBeat.i(193003);
     paramMarker = (ClusterItem)this.l.get(paramMarker);
-    AppMethodBeat.o(192318);
+    AppMethodBeat.o(193003);
     return paramMarker;
   }
   
   public int getColor(int paramInt)
   {
-    AppMethodBeat.i(192309);
+    AppMethodBeat.i(192994);
     float f1 = Math.min(paramInt, 300.0F);
     paramInt = Color.HSVToColor(new float[] { (300.0F - f1) * (300.0F - f1) / 90000.0F * 220.0F, 1.0F, 0.6F });
-    AppMethodBeat.o(192309);
+    AppMethodBeat.o(192994);
     return paramInt;
   }
   
   public Marker getMarker(Cluster<T> paramCluster)
   {
-    AppMethodBeat.i(192319);
+    AppMethodBeat.i(193004);
     paramCluster = (Marker)this.q.get(paramCluster);
-    AppMethodBeat.o(192319);
+    AppMethodBeat.o(193004);
     return paramCluster;
   }
   
   public Marker getMarker(T paramT)
   {
-    AppMethodBeat.i(192317);
+    AppMethodBeat.i(193002);
     paramT = this.l.get(paramT);
-    AppMethodBeat.o(192317);
+    AppMethodBeat.o(193002);
     return paramT;
   }
   
@@ -332,18 +332,19 @@ public class DefaultClusterRenderer<T extends ClusterItem>
   
   public void onAdd()
   {
-    AppMethodBeat.i(192304);
+    AppMethodBeat.i(192989);
     this.e.getMarkerCollection().a(new TencentMap.OnMarkerClickListener()
     {
       public boolean onMarkerClick(Marker paramAnonymousMarker)
       {
-        AppMethodBeat.i(192266);
-        if ((DefaultClusterRenderer.a(DefaultClusterRenderer.this) != null) && (DefaultClusterRenderer.a(DefaultClusterRenderer.this).onClusterItemClick((ClusterItem)DefaultClusterRenderer.b(DefaultClusterRenderer.this).get(paramAnonymousMarker))))
+        AppMethodBeat.i(193010);
+        paramAnonymousMarker = (ClusterItem)DefaultClusterRenderer.a(DefaultClusterRenderer.this).get(paramAnonymousMarker);
+        if ((DefaultClusterRenderer.b(DefaultClusterRenderer.this) != null) && (paramAnonymousMarker != null) && (DefaultClusterRenderer.b(DefaultClusterRenderer.this).onClusterItemClick(paramAnonymousMarker)))
         {
-          AppMethodBeat.o(192266);
+          AppMethodBeat.o(193010);
           return true;
         }
-        AppMethodBeat.o(192266);
+        AppMethodBeat.o(193010);
         return false;
       }
     });
@@ -351,26 +352,27 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     {
       public void onInfoWindowClick(Marker paramAnonymousMarker)
       {
-        AppMethodBeat.i(192267);
+        AppMethodBeat.i(193021);
         if (DefaultClusterRenderer.c(DefaultClusterRenderer.this) != null) {
-          DefaultClusterRenderer.c(DefaultClusterRenderer.this).onClusterItemInfoWindowClick((ClusterItem)DefaultClusterRenderer.b(DefaultClusterRenderer.this).get(paramAnonymousMarker));
+          DefaultClusterRenderer.c(DefaultClusterRenderer.this).onClusterItemInfoWindowClick((ClusterItem)DefaultClusterRenderer.a(DefaultClusterRenderer.this).get(paramAnonymousMarker));
         }
-        AppMethodBeat.o(192267);
+        AppMethodBeat.o(193021);
       }
     });
     this.e.getMarkerCollection().a(new TencentMap.InfoWindowAdapter()
     {
       public View getInfoWindow(Marker paramAnonymousMarker)
       {
-        AppMethodBeat.i(192268);
-        if (DefaultClusterRenderer.d(DefaultClusterRenderer.this) != null)
+        AppMethodBeat.i(193013);
+        paramAnonymousMarker = (ClusterItem)DefaultClusterRenderer.a(DefaultClusterRenderer.this).get(paramAnonymousMarker);
+        if ((DefaultClusterRenderer.d(DefaultClusterRenderer.this) == null) || (paramAnonymousMarker == null))
         {
-          paramAnonymousMarker = DefaultClusterRenderer.d(DefaultClusterRenderer.this).getInfoWindow((ClusterItem)DefaultClusterRenderer.b(DefaultClusterRenderer.this).get(paramAnonymousMarker));
-          AppMethodBeat.o(192268);
-          return paramAnonymousMarker;
+          AppMethodBeat.o(193013);
+          return null;
         }
-        AppMethodBeat.o(192268);
-        return null;
+        paramAnonymousMarker = DefaultClusterRenderer.d(DefaultClusterRenderer.this).getInfoWindow(paramAnonymousMarker);
+        AppMethodBeat.o(193013);
+        return paramAnonymousMarker;
       }
       
       public void onInfoWindowDettached(Marker paramAnonymousMarker, View paramAnonymousView) {}
@@ -379,13 +381,14 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     {
       public boolean onMarkerClick(Marker paramAnonymousMarker)
       {
-        AppMethodBeat.i(192269);
-        if ((DefaultClusterRenderer.e(DefaultClusterRenderer.this) != null) && (DefaultClusterRenderer.e(DefaultClusterRenderer.this).onClusterClick((Cluster)DefaultClusterRenderer.f(DefaultClusterRenderer.this).get(paramAnonymousMarker))))
+        AppMethodBeat.i(193019);
+        paramAnonymousMarker = (Cluster)DefaultClusterRenderer.e(DefaultClusterRenderer.this).get(paramAnonymousMarker);
+        if ((DefaultClusterRenderer.f(DefaultClusterRenderer.this) != null) && (paramAnonymousMarker != null) && (DefaultClusterRenderer.f(DefaultClusterRenderer.this).onClusterClick(paramAnonymousMarker)))
         {
-          AppMethodBeat.o(192269);
+          AppMethodBeat.o(193019);
           return true;
         }
-        AppMethodBeat.o(192269);
+        AppMethodBeat.o(193019);
         return false;
       }
     });
@@ -393,38 +396,39 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     {
       public void onInfoWindowClick(Marker paramAnonymousMarker)
       {
-        AppMethodBeat.i(192270);
+        AppMethodBeat.i(193009);
         if (DefaultClusterRenderer.g(DefaultClusterRenderer.this) != null) {
-          DefaultClusterRenderer.g(DefaultClusterRenderer.this).onClusterInfoWindowClick((Cluster)DefaultClusterRenderer.f(DefaultClusterRenderer.this).get(paramAnonymousMarker));
+          DefaultClusterRenderer.g(DefaultClusterRenderer.this).onClusterInfoWindowClick((Cluster)DefaultClusterRenderer.e(DefaultClusterRenderer.this).get(paramAnonymousMarker));
         }
-        AppMethodBeat.o(192270);
+        AppMethodBeat.o(193009);
       }
     });
     this.e.getClusterMarkerCollection().a(new TencentMap.InfoWindowAdapter()
     {
       public View getInfoWindow(Marker paramAnonymousMarker)
       {
-        AppMethodBeat.i(192271);
-        if (DefaultClusterRenderer.h(DefaultClusterRenderer.this) != null)
+        AppMethodBeat.i(193020);
+        paramAnonymousMarker = (Cluster)DefaultClusterRenderer.e(DefaultClusterRenderer.this).get(paramAnonymousMarker);
+        if ((DefaultClusterRenderer.h(DefaultClusterRenderer.this) == null) || (paramAnonymousMarker == null))
         {
-          paramAnonymousMarker = DefaultClusterRenderer.h(DefaultClusterRenderer.this).getInfoWindow((Cluster)DefaultClusterRenderer.f(DefaultClusterRenderer.this).get(paramAnonymousMarker));
-          AppMethodBeat.o(192271);
-          return paramAnonymousMarker;
+          AppMethodBeat.o(193020);
+          return null;
         }
-        AppMethodBeat.o(192271);
-        return null;
+        paramAnonymousMarker = DefaultClusterRenderer.h(DefaultClusterRenderer.this).getInfoWindow(paramAnonymousMarker);
+        AppMethodBeat.o(193020);
+        return paramAnonymousMarker;
       }
       
       public void onInfoWindowDettached(Marker paramAnonymousMarker, View paramAnonymousView) {}
     });
-    AppMethodBeat.o(192304);
+    AppMethodBeat.o(192989);
   }
   
   public void onBeforeClusterItemRendered(T paramT, MarkerOptions paramMarkerOptions) {}
   
   public void onBeforeClusterRendered(Cluster<T> paramCluster, MarkerOptions paramMarkerOptions)
   {
-    AppMethodBeat.i(192316);
+    AppMethodBeat.i(193001);
     int i1 = getBucket(paramCluster);
     BitmapDescriptor localBitmapDescriptor = (BitmapDescriptor)this.k.get(i1);
     paramCluster = localBitmapDescriptor;
@@ -435,22 +439,22 @@ public class DefaultClusterRenderer<T extends ClusterItem>
       this.k.put(i1, paramCluster);
     }
     paramMarkerOptions.icon(paramCluster);
-    AppMethodBeat.o(192316);
+    AppMethodBeat.o(193001);
   }
   
   public void onClustersChanged(Set<? extends Cluster<T>> paramSet)
   {
-    AppMethodBeat.i(192314);
+    AppMethodBeat.i(192999);
     this.s.queue(paramSet);
-    AppMethodBeat.o(192314);
+    AppMethodBeat.o(192999);
   }
   
   public void onRemove()
   {
-    AppMethodBeat.i(192305);
+    AppMethodBeat.i(192990);
     this.e.getMarkerCollection().a(null);
     this.e.getClusterMarkerCollection().a(null);
-    AppMethodBeat.o(192305);
+    AppMethodBeat.o(192990);
   }
   
   public void setBuckets(int[] paramArrayOfInt)
@@ -470,14 +474,14 @@ public class DefaultClusterRenderer<T extends ClusterItem>
   
   public void setMinClusterSize(int paramInt)
   {
-    AppMethodBeat.i(192312);
+    AppMethodBeat.i(192997);
     this.m = paramInt;
     if (this.e != null)
     {
       this.o = true;
       this.e.cluster();
     }
-    AppMethodBeat.o(192312);
+    AppMethodBeat.o(192997);
   }
   
   public void setOnClusterClickListener(ClusterManager.OnClusterClickListener<T> paramOnClusterClickListener)
@@ -514,32 +518,32 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     
     private AnimationTask(DefaultClusterRenderer.MarkerWithPosition paramMarkerWithPosition, LatLng paramLatLng1, LatLng paramLatLng2)
     {
-      AppMethodBeat.i(192272);
+      AppMethodBeat.i(192982);
       this.b = paramMarkerWithPosition;
       this.c = DefaultClusterRenderer.MarkerWithPosition.b(paramMarkerWithPosition);
       this.d = paramLatLng1;
       this.e = paramLatLng2;
-      AppMethodBeat.o(192272);
+      AppMethodBeat.o(192982);
     }
     
     public void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(192274);
+      AppMethodBeat.i(192984);
       if (this.f)
       {
-        paramAnimator = (Cluster)DefaultClusterRenderer.f(DefaultClusterRenderer.this).get(this.c);
+        paramAnimator = (Cluster)DefaultClusterRenderer.e(DefaultClusterRenderer.this).get(this.c);
         DefaultClusterRenderer.n(DefaultClusterRenderer.this).remove(paramAnimator);
-        DefaultClusterRenderer.b(DefaultClusterRenderer.this).remove(this.c);
-        DefaultClusterRenderer.f(DefaultClusterRenderer.this).remove(this.c);
+        DefaultClusterRenderer.a(DefaultClusterRenderer.this).remove(this.c);
+        DefaultClusterRenderer.e(DefaultClusterRenderer.this).remove(this.c);
         this.g.a(this.c);
       }
       DefaultClusterRenderer.MarkerWithPosition.a(this.b, this.e);
-      AppMethodBeat.o(192274);
+      AppMethodBeat.o(192984);
     }
     
     public void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(192275);
+      AppMethodBeat.i(192985);
       float f1 = paramValueAnimator.getAnimatedFraction();
       double d3 = this.e.getLatitude();
       double d4 = this.d.getLatitude();
@@ -552,18 +556,18 @@ public class DefaultClusterRenderer<T extends ClusterItem>
       }
       paramValueAnimator = new LatLng(d6 + (d3 - d4) * d5, d1 * f1 + this.d.getLongitude());
       this.c.setPosition(paramValueAnimator);
-      AppMethodBeat.o(192275);
+      AppMethodBeat.o(192985);
     }
     
     public void perform()
     {
-      AppMethodBeat.i(192273);
+      AppMethodBeat.i(192983);
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       localValueAnimator.setInterpolator(DefaultClusterRenderer.c());
       localValueAnimator.addUpdateListener(this);
       localValueAnimator.addListener(this);
       localValueAnimator.start();
-      AppMethodBeat.o(192273);
+      AppMethodBeat.o(192983);
     }
     
     public void removeOnAnimationComplete(MarkerManager paramMarkerManager)
@@ -589,14 +593,14 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     
     private void a(DefaultClusterRenderer<T>.MarkerModifier paramDefaultClusterRenderer)
     {
-      AppMethodBeat.i(192276);
+      AppMethodBeat.i(193025);
       if (!DefaultClusterRenderer.this.a(this.b))
       {
         Iterator localIterator = this.b.getItems().iterator();
         if (localIterator.hasNext())
         {
           ClusterItem localClusterItem = (ClusterItem)localIterator.next();
-          localObject2 = DefaultClusterRenderer.b(DefaultClusterRenderer.this).get(localClusterItem);
+          localObject2 = DefaultClusterRenderer.a(DefaultClusterRenderer.this).get(localClusterItem);
           DefaultClusterRenderer.MarkerWithPosition localMarkerWithPosition;
           if (localObject2 == null)
           {
@@ -607,7 +611,7 @@ public class DefaultClusterRenderer<T extends ClusterItem>
             DefaultClusterRenderer.this.onBeforeClusterItemRendered(localClusterItem, (MarkerOptions)localObject1);
             Marker localMarker = DefaultClusterRenderer.o(DefaultClusterRenderer.this).getMarkerCollection().a((MarkerOptions)localObject1);
             localMarkerWithPosition = new DefaultClusterRenderer.MarkerWithPosition(localMarker, null);
-            DefaultClusterRenderer.b(DefaultClusterRenderer.this).put(localClusterItem, localMarker);
+            DefaultClusterRenderer.a(DefaultClusterRenderer.this).put(localClusterItem, localMarker);
             localObject1 = localMarkerWithPosition;
             localObject2 = localMarker;
             if (this.d != null)
@@ -623,7 +627,7 @@ public class DefaultClusterRenderer<T extends ClusterItem>
             break;
           }
         }
-        AppMethodBeat.o(192276);
+        AppMethodBeat.o(193025);
         return;
       }
       Object localObject2 = new MarkerOptions();
@@ -633,7 +637,7 @@ public class DefaultClusterRenderer<T extends ClusterItem>
         localObject1 = ((MarkerOptions)localObject2).position((LatLng)localObject1).anchor(0.5F, 0.5F);
         DefaultClusterRenderer.this.onBeforeClusterRendered(this.b, (MarkerOptions)localObject1);
         localObject1 = DefaultClusterRenderer.o(DefaultClusterRenderer.this).getClusterMarkerCollection().a((MarkerOptions)localObject1);
-        DefaultClusterRenderer.f(DefaultClusterRenderer.this).put(localObject1, this.b);
+        DefaultClusterRenderer.e(DefaultClusterRenderer.this).put(localObject1, this.b);
         DefaultClusterRenderer.n(DefaultClusterRenderer.this).put(this.b, localObject1);
         localObject2 = new DefaultClusterRenderer.MarkerWithPosition((Marker)localObject1, null);
         if (this.d != null) {
@@ -641,7 +645,7 @@ public class DefaultClusterRenderer<T extends ClusterItem>
         }
         DefaultClusterRenderer.this.a(this.b, (Marker)localObject1);
         this.c.add(localObject2);
-        AppMethodBeat.o(192276);
+        AppMethodBeat.o(193025);
         return;
       }
     }
@@ -654,43 +658,43 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     
     private MarkerCache()
     {
-      AppMethodBeat.i(192278);
+      AppMethodBeat.i(193014);
       this.a = new HashMap();
       this.b = new HashMap();
-      AppMethodBeat.o(192278);
+      AppMethodBeat.o(193014);
     }
     
     public Marker get(T paramT)
     {
-      AppMethodBeat.i(192279);
+      AppMethodBeat.i(193015);
       paramT = (Marker)this.a.get(paramT);
-      AppMethodBeat.o(192279);
+      AppMethodBeat.o(193015);
       return paramT;
     }
     
     public T get(Marker paramMarker)
     {
-      AppMethodBeat.i(192280);
+      AppMethodBeat.i(193016);
       paramMarker = this.b.get(paramMarker);
-      AppMethodBeat.o(192280);
+      AppMethodBeat.o(193016);
       return paramMarker;
     }
     
     public void put(T paramT, Marker paramMarker)
     {
-      AppMethodBeat.i(192281);
+      AppMethodBeat.i(193017);
       this.a.put(paramT, paramMarker);
       this.b.put(paramMarker, paramT);
-      AppMethodBeat.o(192281);
+      AppMethodBeat.o(193017);
     }
     
     public void remove(Marker paramMarker)
     {
-      AppMethodBeat.i(192282);
+      AppMethodBeat.i(193018);
       Object localObject = this.b.get(paramMarker);
       this.b.remove(paramMarker);
       this.a.remove(localObject);
-      AppMethodBeat.o(192282);
+      AppMethodBeat.o(193018);
     }
   }
   
@@ -711,7 +715,7 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     private MarkerModifier()
     {
       super();
-      AppMethodBeat.i(192283);
+      AppMethodBeat.i(192970);
       this.b = new ReentrantLock();
       this.c = this.b.newCondition();
       this.d = new LinkedList();
@@ -719,25 +723,25 @@ public class DefaultClusterRenderer<T extends ClusterItem>
       this.f = new LinkedList();
       this.g = new LinkedList();
       this.h = new LinkedList();
-      AppMethodBeat.o(192283);
+      AppMethodBeat.o(192970);
     }
     
     @TargetApi(11)
     private void a()
     {
-      AppMethodBeat.i(192289);
+      AppMethodBeat.i(192976);
       try
       {
         if (!this.g.isEmpty())
         {
           a((Marker)this.g.poll());
-          AppMethodBeat.o(192289);
+          AppMethodBeat.o(192976);
           return;
         }
         if (!this.h.isEmpty())
         {
           ((DefaultClusterRenderer.AnimationTask)this.h.poll()).perform();
-          AppMethodBeat.o(192289);
+          AppMethodBeat.o(192976);
           return;
         }
       }
@@ -746,41 +750,41 @@ public class DefaultClusterRenderer<T extends ClusterItem>
         if (DefaultClusterRenderer.a()) {
           cancel();
         }
-        AppMethodBeat.o(192289);
+        AppMethodBeat.o(192976);
         return;
       }
       if (!this.e.isEmpty())
       {
         DefaultClusterRenderer.CreateMarkerTask.a((DefaultClusterRenderer.CreateMarkerTask)this.e.poll(), this);
-        AppMethodBeat.o(192289);
+        AppMethodBeat.o(192976);
         return;
       }
       if (!this.d.isEmpty())
       {
         DefaultClusterRenderer.CreateMarkerTask.a((DefaultClusterRenderer.CreateMarkerTask)this.d.poll(), this);
-        AppMethodBeat.o(192289);
+        AppMethodBeat.o(192976);
         return;
       }
       if (!this.f.isEmpty()) {
         a((Marker)this.f.poll());
       }
-      AppMethodBeat.o(192289);
+      AppMethodBeat.o(192976);
     }
     
     private void a(Marker paramMarker)
     {
-      AppMethodBeat.i(192290);
-      Cluster localCluster = (Cluster)DefaultClusterRenderer.f(DefaultClusterRenderer.this).get(paramMarker);
+      AppMethodBeat.i(192977);
+      Cluster localCluster = (Cluster)DefaultClusterRenderer.e(DefaultClusterRenderer.this).get(paramMarker);
       DefaultClusterRenderer.n(DefaultClusterRenderer.this).remove(localCluster);
-      DefaultClusterRenderer.b(DefaultClusterRenderer.this).remove(paramMarker);
-      DefaultClusterRenderer.f(DefaultClusterRenderer.this).remove(paramMarker);
+      DefaultClusterRenderer.a(DefaultClusterRenderer.this).remove(paramMarker);
+      DefaultClusterRenderer.e(DefaultClusterRenderer.this).remove(paramMarker);
       DefaultClusterRenderer.o(DefaultClusterRenderer.this).getMarkerManager().a(paramMarker);
-      AppMethodBeat.o(192290);
+      AppMethodBeat.o(192977);
     }
     
     public void add(boolean paramBoolean, DefaultClusterRenderer<T>.CreateMarkerTask paramDefaultClusterRenderer)
     {
-      AppMethodBeat.i(192284);
+      AppMethodBeat.i(192971);
       this.b.lock();
       sendEmptyMessage(0);
       if (paramBoolean) {
@@ -789,7 +793,7 @@ public class DefaultClusterRenderer<T extends ClusterItem>
       for (;;)
       {
         this.b.unlock();
-        AppMethodBeat.o(192284);
+        AppMethodBeat.o(192971);
         return;
         this.d.add(paramDefaultClusterRenderer);
       }
@@ -797,40 +801,40 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     
     public void animate(DefaultClusterRenderer.MarkerWithPosition paramMarkerWithPosition, LatLng paramLatLng1, LatLng paramLatLng2)
     {
-      AppMethodBeat.i(192286);
+      AppMethodBeat.i(192973);
       this.b.lock();
       this.h.add(new DefaultClusterRenderer.AnimationTask(DefaultClusterRenderer.this, paramMarkerWithPosition, paramLatLng1, paramLatLng2, null));
       this.b.unlock();
-      AppMethodBeat.o(192286);
+      AppMethodBeat.o(192973);
     }
     
     @TargetApi(11)
     public void animateThenRemove(DefaultClusterRenderer.MarkerWithPosition paramMarkerWithPosition, LatLng paramLatLng1, LatLng paramLatLng2)
     {
-      AppMethodBeat.i(192287);
+      AppMethodBeat.i(192974);
       this.b.lock();
       paramMarkerWithPosition = new DefaultClusterRenderer.AnimationTask(DefaultClusterRenderer.this, paramMarkerWithPosition, paramLatLng1, paramLatLng2, null);
       paramMarkerWithPosition.removeOnAnimationComplete(DefaultClusterRenderer.o(DefaultClusterRenderer.this).getMarkerManager());
       this.h.add(paramMarkerWithPosition);
       this.b.unlock();
-      AppMethodBeat.o(192287);
+      AppMethodBeat.o(192974);
     }
     
     public void cancel()
     {
-      AppMethodBeat.i(192294);
+      AppMethodBeat.i(192981);
       this.e.clear();
       this.h.clear();
       this.d.clear();
       this.g.clear();
       this.f.clear();
-      AppMethodBeat.o(192294);
+      AppMethodBeat.o(192981);
     }
     
     public void handleMessage(Message paramMessage)
     {
       int j = 0;
-      AppMethodBeat.i(192288);
+      AppMethodBeat.i(192975);
       if (!this.i)
       {
         Looper.myQueue().addIdleHandler(this);
@@ -849,7 +853,7 @@ public class DefaultClusterRenderer<T extends ClusterItem>
         finally
         {
           this.b.unlock();
-          AppMethodBeat.o(192288);
+          AppMethodBeat.o(192975);
         }
       }
       if (!isBusy())
@@ -861,7 +865,7 @@ public class DefaultClusterRenderer<T extends ClusterItem>
       for (;;)
       {
         this.b.unlock();
-        AppMethodBeat.o(192288);
+        AppMethodBeat.o(192975);
         return;
         sendEmptyMessageDelayed(0, 10L);
       }
@@ -930,15 +934,15 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     
     public boolean queueIdle()
     {
-      AppMethodBeat.i(192293);
+      AppMethodBeat.i(192980);
       sendEmptyMessage(0);
-      AppMethodBeat.o(192293);
+      AppMethodBeat.o(192980);
       return true;
     }
     
     public void remove(boolean paramBoolean, Marker paramMarker)
     {
-      AppMethodBeat.i(192285);
+      AppMethodBeat.i(192972);
       this.b.lock();
       sendEmptyMessage(0);
       if (paramBoolean) {
@@ -947,7 +951,7 @@ public class DefaultClusterRenderer<T extends ClusterItem>
       for (;;)
       {
         this.b.unlock();
-        AppMethodBeat.o(192285);
+        AppMethodBeat.o(192972);
         return;
         this.f.add(paramMarker);
       }
@@ -955,7 +959,7 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     
     public void waitUntilFree()
     {
-      AppMethodBeat.i(192292);
+      AppMethodBeat.i(192979);
       while (isBusy())
       {
         sendEmptyMessage(0);
@@ -970,16 +974,51 @@ public class DefaultClusterRenderer<T extends ClusterItem>
         catch (InterruptedException localInterruptedException)
         {
           RuntimeException localRuntimeException = new RuntimeException(localInterruptedException);
-          AppMethodBeat.o(192292);
+          AppMethodBeat.o(192979);
           throw localRuntimeException;
         }
         finally
         {
           this.b.unlock();
-          AppMethodBeat.o(192292);
+          AppMethodBeat.o(192979);
         }
       }
-      AppMethodBeat.o(192292);
+      AppMethodBeat.o(192979);
+    }
+  }
+  
+  static class MarkerWithPosition
+  {
+    private final Marker a;
+    private LatLng b;
+    
+    private MarkerWithPosition(Marker paramMarker)
+    {
+      AppMethodBeat.i(193022);
+      this.a = paramMarker;
+      this.b = paramMarker.getPosition();
+      AppMethodBeat.o(193022);
+    }
+    
+    public boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(193023);
+      if ((paramObject instanceof MarkerWithPosition))
+      {
+        boolean bool = this.a.equals(((MarkerWithPosition)paramObject).a);
+        AppMethodBeat.o(193023);
+        return bool;
+      }
+      AppMethodBeat.o(193023);
+      return false;
+    }
+    
+    public int hashCode()
+    {
+      AppMethodBeat.i(193024);
+      int i = this.a.hashCode();
+      AppMethodBeat.o(193024);
+      return i;
     }
   }
   
@@ -1003,11 +1042,11 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     @SuppressLint({"NewApi"})
     public void run()
     {
-      AppMethodBeat.i(192299);
+      AppMethodBeat.i(193012);
       if ((this.a.equals(DefaultClusterRenderer.k(DefaultClusterRenderer.this))) && (!DefaultClusterRenderer.l(DefaultClusterRenderer.this)))
       {
         this.c.run();
-        AppMethodBeat.o(192299);
+        AppMethodBeat.o(193012);
         return;
       }
       if (DefaultClusterRenderer.l(DefaultClusterRenderer.this)) {
@@ -1125,7 +1164,7 @@ public class DefaultClusterRenderer<T extends ClusterItem>
         DefaultClusterRenderer.b(DefaultClusterRenderer.this, this.a);
         DefaultClusterRenderer.a(DefaultClusterRenderer.this, f1);
         this.c.run();
-        AppMethodBeat.o(192299);
+        AppMethodBeat.o(193012);
         return;
         label851:
         localObject1 = null;
@@ -1139,10 +1178,10 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     
     public void setMapZoom(float paramFloat)
     {
-      AppMethodBeat.i(192298);
+      AppMethodBeat.i(193011);
       this.f = paramFloat;
       this.e = new c(256.0D * Math.pow(2.0D, Math.min(paramFloat, DefaultClusterRenderer.j(DefaultClusterRenderer.this)) - 1.0F));
-      AppMethodBeat.o(192298);
+      AppMethodBeat.o(193011);
     }
     
     public void setProjection(Projection paramProjection)
@@ -1162,31 +1201,31 @@ public class DefaultClusterRenderer<T extends ClusterItem>
     
     public void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(192301);
+      AppMethodBeat.i(192986);
       if (paramMessage.what == 1)
       {
         this.b = false;
         if (this.c != null) {
           sendEmptyMessage(0);
         }
-        AppMethodBeat.o(192301);
+        AppMethodBeat.o(192986);
         return;
       }
       removeMessages(0);
       if (this.b)
       {
-        AppMethodBeat.o(192301);
+        AppMethodBeat.o(192986);
         return;
       }
       if (this.c == null)
       {
-        AppMethodBeat.o(192301);
+        AppMethodBeat.o(192986);
         return;
       }
       paramMessage = DefaultClusterRenderer.i(DefaultClusterRenderer.this).getProjection();
       if (paramMessage == null)
       {
-        AppMethodBeat.o(192301);
+        AppMethodBeat.o(192986);
         return;
       }
       try
@@ -1198,9 +1237,9 @@ public class DefaultClusterRenderer<T extends ClusterItem>
         {
           public void run()
           {
-            AppMethodBeat.i(192300);
+            AppMethodBeat.i(193008);
             DefaultClusterRenderer.ViewModifier.this.sendEmptyMessage(1);
-            AppMethodBeat.o(192300);
+            AppMethodBeat.o(193008);
           }
         });
         localRenderTask.setProjection(paramMessage);
@@ -1212,32 +1251,32 @@ public class DefaultClusterRenderer<T extends ClusterItem>
         {
           localRenderTask.setMapZoom(DefaultClusterRenderer.i(DefaultClusterRenderer.this).getCameraPosition().getZoom());
           new Thread(localRenderTask).start();
-          AppMethodBeat.o(192301);
+          AppMethodBeat.o(192986);
           return;
         }
         catch (NullPointerException paramMessage)
         {
           DefaultClusterRenderer.a();
-          AppMethodBeat.o(192301);
+          AppMethodBeat.o(192986);
         }
         paramMessage = finally;
-        AppMethodBeat.o(192301);
+        AppMethodBeat.o(192986);
       }
     }
     
     public void queue(Set<? extends Cluster<T>> paramSet)
     {
-      AppMethodBeat.i(192302);
+      AppMethodBeat.i(192987);
       try
       {
         this.c = new DefaultClusterRenderer.RenderTask(DefaultClusterRenderer.this, paramSet, DefaultClusterRenderer.this.a, null);
         sendEmptyMessage(0);
-        AppMethodBeat.o(192302);
+        AppMethodBeat.o(192987);
         return;
       }
       finally
       {
-        AppMethodBeat.o(192302);
+        AppMethodBeat.o(192987);
       }
     }
   }

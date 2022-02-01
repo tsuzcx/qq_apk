@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"toActivity", "Lcom/tencent/mm/ui/MMActivity;", "Landroid/content/Context;", "plugin-webview_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"toActivity", "Lcom/tencent/mm/ui/MMActivity;", "Landroid/content/Context;", "plugin-webview_release"})
 public final class q
 {
-  static final MMActivity gW(Context paramContext)
+  static final MMActivity hb(Context paramContext)
   {
     AppMethodBeat.i(82757);
     if (!(paramContext instanceof MMActivity))
@@ -27,7 +27,7 @@ public final class q
           break;
         }
         localContext = ((ContextWrapper)localContext).getBaseContext();
-        k.g(localContext, "baseContext.baseContext");
+        p.g(localContext, "baseContext.baseContext");
       }
     }
     Context localContext = paramContext;

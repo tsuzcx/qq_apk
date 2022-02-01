@@ -3,9 +3,9 @@ package com.google.firebase.iid;
 final class aa
   implements l
 {
-  private final FirebaseInstanceId bBQ;
-  private final String bBR;
-  private final String bBS;
+  private final FirebaseInstanceId bMe;
+  private final String bMf;
+  private final String bMg;
   
   aa(FirebaseInstanceId arg1, String arg2, String arg3) {}
   

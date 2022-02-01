@@ -10,32 +10,32 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.q;
 import com.tencent.mm.chatroom.d.v;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bz;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.cf;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.t;
 
 public class TransferRoomOwnerUI
   extends SelectMemberUI
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  private boolean fBv;
-  private com.tencent.mm.ui.base.p fxw;
+  private com.tencent.mm.ui.base.p fQJ;
+  private boolean fUI;
   
-  protected final void WQ()
+  protected final void Zj()
   {
     AppMethodBeat.i(13006);
-    super.WQ();
-    this.fBv = getIntent().getBooleanExtra("quit_room", false);
+    super.Zj();
+    this.fUI = getIntent().getBooleanExtra("quit_room", false);
     AppMethodBeat.o(13006);
   }
   
@@ -43,70 +43,53 @@ public class TransferRoomOwnerUI
   {
     AppMethodBeat.i(13009);
     super.a(paramView, paramInt, paramLong);
-    paramView = this.fzX.kK(paramInt);
+    paramView = this.fTn.lj(paramInt);
     if ((paramView == null) || (paramView.contact == null))
     {
-      ac.e("MicroMsg.TransferRoomOwnerUI", "null == item || null == item.contact");
+      ad.e("MicroMsg.TransferRoomOwnerUI", "null == item || null == item.contact");
       AppMethodBeat.o(13009);
       return;
     }
     Object localObject2 = paramView.contact;
-    final String str = ((av)localObject2).field_username;
-    if (!bs.isNullOrNil(((av)localObject2).field_conRemark))
+    String str = ((aw)localObject2).field_username;
+    if (!bt.isNullOrNil(((aw)localObject2).field_conRemark))
     {
-      paramView = ((av)localObject2).field_conRemark;
-      if (!bs.isNullOrNil(paramView)) {
+      paramView = ((aw)localObject2).field_conRemark;
+      if (!bt.isNullOrNil(paramView)) {
         break label288;
       }
     }
     label288:
-    for (Object localObject1 = ((ai)localObject2).aaR();; localObject1 = paramView)
+    for (Object localObject1 = ((am)localObject2).adu();; localObject1 = paramView)
     {
       paramView = (View)localObject1;
-      if (!com.tencent.mm.n.b.ln(((av)localObject2).field_type))
+      if (!com.tencent.mm.o.b.lM(((aw)localObject2).field_type))
       {
-        bz localbz = ((k)com.tencent.mm.kernel.g.ab(k.class)).awC().alK(((av)localObject2).field_username);
+        cf localcf = ((l)g.ab(l.class)).azq().aqz(((aw)localObject2).field_username);
         paramView = (View)localObject1;
-        if (localbz != null)
+        if (localcf != null)
         {
           paramView = (View)localObject1;
-          if (!bs.isNullOrNil(localbz.field_conRemark)) {
-            paramView = localbz.field_conRemark;
+          if (!bt.isNullOrNil(localcf.field_conRemark)) {
+            paramView = localcf.field_conRemark;
           }
         }
       }
-      localObject2 = com.tencent.mm.openim.room.a.a.H((ai)localObject2);
+      localObject2 = com.tencent.mm.openim.room.a.a.H((am)localObject2);
       localObject1 = paramView;
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         localObject1 = paramView + localObject2;
       }
-      if (!this.fBv) {}
+      if (!this.fUI) {}
       for (paramView = getString(2131762711, new Object[] { localObject1 });; paramView = getString(2131762675, new Object[] { localObject1 }))
       {
-        h.a(this, paramView, "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(13004);
-            if (w.wq(TransferRoomOwnerUI.this.fvZ)) {}
-            for (paramAnonymousDialogInterface = new com.tencent.mm.openim.b.p(TransferRoomOwnerUI.this.fvZ, str);; paramAnonymousDialogInterface = new v(TransferRoomOwnerUI.this.fvZ, str))
-            {
-              com.tencent.mm.kernel.g.agQ().ghe.a(paramAnonymousDialogInterface, 0);
-              paramAnonymousDialogInterface = TransferRoomOwnerUI.this;
-              TransferRoomOwnerUI localTransferRoomOwnerUI = TransferRoomOwnerUI.this;
-              TransferRoomOwnerUI.this.getString(2131755906);
-              TransferRoomOwnerUI.a(paramAnonymousDialogInterface, h.b(localTransferRoomOwnerUI, TransferRoomOwnerUI.this.getString(2131762712), false, null));
-              AppMethodBeat.o(13004);
-              return;
-            }
-          }
-        }, new DialogInterface.OnClickListener()
+        h.a(this, paramView, "", new TransferRoomOwnerUI.1(this, str), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
         });
         AppMethodBeat.o(13009);
         return;
-        paramView = a(this.ftP, ((av)localObject2).field_username);
+        paramView = a(this.fLO, ((aw)localObject2).field_username);
         break;
       }
     }
@@ -116,13 +99,13 @@ public class TransferRoomOwnerUI
   {
     AppMethodBeat.i(13005);
     super.onCreate(paramBundle);
-    if (w.wq(this.fvZ))
+    if (w.zl(this.fPi))
     {
-      com.tencent.mm.kernel.g.agQ().ghe.a(811, this);
+      g.ajB().gAO.a(811, this);
       AppMethodBeat.o(13005);
       return;
     }
-    com.tencent.mm.kernel.g.agQ().ghe.a(990, this);
+    g.ajB().gAO.a(990, this);
     AppMethodBeat.o(13005);
   }
   
@@ -130,53 +113,53 @@ public class TransferRoomOwnerUI
   {
     AppMethodBeat.i(13007);
     super.onDestroy();
-    if ((this.fxw != null) && (this.fxw.isShowing())) {
-      this.fxw.dismiss();
+    if ((this.fQJ != null) && (this.fQJ.isShowing())) {
+      this.fQJ.dismiss();
     }
-    if (w.wq(this.fvZ))
+    if (w.zl(this.fPi))
     {
-      com.tencent.mm.kernel.g.agQ().ghe.b(811, this);
+      g.ajB().gAO.b(811, this);
       AppMethodBeat.o(13007);
       return;
     }
-    com.tencent.mm.kernel.g.agQ().ghe.b(990, this);
+    g.ajB().gAO.b(990, this);
     AppMethodBeat.o(13007);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
   {
     AppMethodBeat.i(13008);
-    if ((this.fxw != null) && (this.fxw.isShowing())) {
-      this.fxw.dismiss();
+    if ((this.fQJ != null) && (this.fQJ.isShowing())) {
+      this.fQJ.dismiss();
     }
     if ((paramn.getType() == 990) || (paramn.getType() == 811))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (w.wq(this.fvZ)) {
-          ac.i("MicroMsg.TransferRoomOwnerUI", "dz[onSceneEnd transfer successfully],owner_username:%s", new Object[] { ((com.tencent.mm.openim.b.p)paramn).username });
+        if (w.zl(this.fPi)) {
+          ad.i("MicroMsg.TransferRoomOwnerUI", "dz[onSceneEnd transfer successfully],owner_username:%s", new Object[] { ((com.tencent.mm.openim.b.p)paramn).username });
         }
         for (;;)
         {
           t.makeText(this, 2131762709, 1).show();
           paramn = new Intent(getContext(), ChatroomInfoUI.class);
-          paramn.putExtra("RoomInfo_Id", this.fvZ);
-          paramn.putExtra("Chat_User", this.fvZ);
+          paramn.putExtra("RoomInfo_Id", this.fPi);
+          paramn.putExtra("Chat_User", this.fPi);
           paramn.putExtra("Is_Chatroom", true);
           paramn.setFlags(67108864);
           paramString = getContext();
-          paramn = new com.tencent.mm.hellhoundlib.b.a().ba(paramn);
-          com.tencent.mm.hellhoundlib.a.a.a(paramString, paramn.aeD(), "com/tencent/mm/chatroom/ui/TransferRoomOwnerUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramString.startActivity((Intent)paramn.lR(0));
+          paramn = new com.tencent.mm.hellhoundlib.b.a().bc(paramn);
+          com.tencent.mm.hellhoundlib.a.a.a(paramString, paramn.ahp(), "com/tencent/mm/chatroom/ui/TransferRoomOwnerUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString.startActivity((Intent)paramn.mq(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/chatroom/ui/TransferRoomOwnerUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           finish();
           AppMethodBeat.o(13008);
           return;
-          ac.i("MicroMsg.TransferRoomOwnerUI", "dz[onSceneEnd transfer successfully],owner_username:%s", new Object[] { ((v)paramn).username });
+          ad.i("MicroMsg.TransferRoomOwnerUI", "dz[onSceneEnd transfer successfully],owner_username:%s", new Object[] { ((v)paramn).username });
         }
       }
       t.makeText(this, 2131762708, 1).show();
-      ac.w("MicroMsg.TransferRoomOwnerUI", "dz[onSceneEnd transfer failed: %d %d %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      ad.w("MicroMsg.TransferRoomOwnerUI", "dz[onSceneEnd transfer failed: %d %d %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     }
     AppMethodBeat.o(13008);
   }

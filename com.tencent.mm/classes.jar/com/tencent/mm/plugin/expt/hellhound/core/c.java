@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.expt.hellhound.core;
 
 import android.app.Application;
-import com.tencent.mm.plugin.expt.a.d.a;
+import com.tencent.mm.plugin.expt.b.d.a;
 
 public abstract interface c
 {
   public abstract void a(d.a parama);
   
-  public abstract void j(Application paramApplication);
+  public abstract void l(Application paramApplication);
 }
 
 

@@ -6,14 +6,14 @@ import org.json.JSONObject;
 
 public final class al
 {
-  public boolean Bpr;
-  public ak Bps;
-  public String Bpt;
-  public String Bpu;
-  public String mBH;
+  public boolean CPG;
+  public ak CPH;
+  public String CPI;
+  public String CPJ;
+  public String nch;
   public String title;
   
-  public static al aP(JSONObject paramJSONObject)
+  public static al aX(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69966);
     if (paramJSONObject == null)
@@ -23,19 +23,19 @@ public final class al
     }
     al localal = new al();
     localal.title = paramJSONObject.optString("title");
-    localal.mBH = paramJSONObject.optString("sub_title");
-    localal.Bpr = paramJSONObject.optBoolean("is_lqt_user");
-    localal.Bpt = paramJSONObject.optString("lqt_operate_id");
-    localal.Bpu = paramJSONObject.optString("lqt_trace_info");
-    ae.ayI(localal.Bpu);
+    localal.nch = paramJSONObject.optString("sub_title");
+    localal.CPG = paramJSONObject.optBoolean("is_lqt_user");
+    localal.CPI = paramJSONObject.optString("lqt_operate_id");
+    localal.CPJ = paramJSONObject.optString("lqt_trace_info");
+    ae.aDQ(localal.CPJ);
     paramJSONObject = paramJSONObject.optJSONObject("open_lqt_info");
     if (paramJSONObject != null)
     {
-      localal.Bps = new ak();
-      localal.Bps.Bpo = paramJSONObject.optString("open_info");
-      localal.Bps.Bpp = paramJSONObject.optString("open_url");
-      localal.Bps.Bpq = paramJSONObject.optInt("route_type");
-      localal.Bps.hiX = paramJSONObject.optString("appname");
+      localal.CPH = new ak();
+      localal.CPH.CPE = paramJSONObject.optString("open_info");
+      localal.CPH.CPF = paramJSONObject.optString("open_url");
+      localal.CPH.kzJ = paramJSONObject.optInt("route_type");
+      localal.CPH.hBg = paramJSONObject.optString("appname");
     }
     AppMethodBeat.o(69966);
     return localal;

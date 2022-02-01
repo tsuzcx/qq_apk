@@ -2,59 +2,59 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import d.a.e;
 import d.a.j;
 import d.g.a.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import org.json.JSONArray;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appstorage/KVStorageUtil;", "", "()V", "INTERNAL_KEY_SEPARATOR", "", "MAX_STORAGE_ID", "", "NORMAL_KEY_SEPARATOR", "RET_GET_NO_SUCH_KEY", "", "[Ljava/lang/Object;", "TOTAL_DATA_SIZE_KEY", "TOTAL_STORAGE_ID_KEY", "addStorageId", "", "appId", "storageId", "getter", "Lkotlin/Function1;", "setter", "Lkotlin/Function2;", "calculateDataSize", "key", "data", "checkStorageIdInvalid", "", "generateInternalRecordKey", "generateRecordKey", "separator", "getAllStorageId", "", "getQuota", "removeStorageId", "removeStorageIdAll", "luggage-wechat-full-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appstorage/KVStorageUtil;", "", "()V", "INTERNAL_KEY_SEPARATOR", "", "MAX_STORAGE_ID", "", "NORMAL_KEY_SEPARATOR", "RET_GET_NO_SUCH_KEY", "", "[Ljava/lang/Object;", "TOTAL_DATA_SIZE_KEY", "TOTAL_STORAGE_ID_KEY", "addStorageId", "", "appId", "storageId", "getter", "Lkotlin/Function1;", "setter", "Lkotlin/Function2;", "calculateDataSize", "key", "data", "checkStorageIdInvalid", "", "generateInternalRecordKey", "generateRecordKey", "separator", "getAllStorageId", "", "getQuota", "removeStorageId", "removeStorageIdAll", "luggage-wechat-full-sdk_release"})
 public final class s
 {
-  public static final Object[] jtg;
-  public static final s jth;
+  public static final Object[] jNa;
+  public static final s jNb;
   
   static
   {
     AppMethodBeat.i(147897);
-    jth = new s();
-    jtg = new Object[] { o.a.jtc };
+    jNb = new s();
+    jNa = new Object[] { o.a.jMW };
     AppMethodBeat.o(147897);
   }
   
-  public static final int V(int paramInt, String paramString)
+  public static final int X(int paramInt, String paramString)
   {
     AppMethodBeat.i(147896);
-    k.h(paramString, "appId");
-    if (k.g("wxGlobal", paramString))
+    p.h(paramString, "appId");
+    if (p.i("wxGlobal", paramString))
     {
-      paramInt = AppBrandGlobalSystemConfig.bat().jCB;
+      paramInt = AppBrandGlobalSystemConfig.bdT().jWx;
       AppMethodBeat.o(147896);
       return paramInt;
     }
     if ((paramInt == 0) || (paramInt == 2))
     {
-      paramInt = com.tencent.mm.plugin.appbrand.config.m.JW(paramString);
+      paramInt = com.tencent.mm.plugin.appbrand.config.m.Np(paramString);
       AppMethodBeat.o(147896);
       return paramInt;
     }
-    paramInt = com.tencent.mm.plugin.appbrand.config.m.JX(paramString);
+    paramInt = com.tencent.mm.plugin.appbrand.config.m.Nq(paramString);
     AppMethodBeat.o(147896);
     return paramInt;
   }
   
-  public static final void a(String paramString, int paramInt, b<? super String, String> paramb, d.g.a.m<? super String, ? super String, y> paramm)
+  public static final void a(String paramString, int paramInt, b<? super String, String> paramb, d.g.a.m<? super String, ? super String, z> paramm)
   {
     AppMethodBeat.i(147893);
-    k.h(paramString, "appId");
-    k.h(paramb, "getter");
-    k.h(paramm, "setter");
+    p.h(paramString, "appId");
+    p.h(paramb, "getter");
+    p.h(paramm, "setter");
     paramb = a(paramString, paramb, paramm);
     if (e.contains(paramb, paramInt))
     {
@@ -63,27 +63,27 @@ public final class s
     }
     paramb = new JSONArray((Collection)e.N(paramb));
     paramb.put(paramInt);
-    paramString = cp(paramString, "@@@TOTAL@STORAGE@ID@@@");
+    paramString = cr(paramString, "@@@TOTAL@STORAGE@ID@@@");
     paramb = paramb.toString();
-    k.g(paramb, "json.toString()");
-    paramm.n(paramString, paramb);
+    p.g(paramb, "json.toString()");
+    paramm.p(paramString, paramb);
     AppMethodBeat.o(147893);
   }
   
-  public static final int[] a(String paramString, b<? super String, String> paramb, d.g.a.m<? super String, ? super String, y> paramm)
+  public static final int[] a(String paramString, b<? super String, String> paramb, d.g.a.m<? super String, ? super String, z> paramm)
   {
     AppMethodBeat.i(147892);
-    k.h(paramString, "appId");
-    k.h(paramb, "getter");
-    k.h(paramm, "setter");
-    paramString = cp(paramString, "@@@TOTAL@STORAGE@ID@@@");
-    if (bs.isNullOrNil(paramString))
+    p.h(paramString, "appId");
+    p.h(paramb, "getter");
+    p.h(paramm, "setter");
+    paramString = cr(paramString, "@@@TOTAL@STORAGE@ID@@@");
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(147892);
       return new int[] { 0 };
     }
-    paramString = (String)paramb.ay(paramString);
-    if (bs.isNullOrNil(paramString))
+    paramString = (String)paramb.invoke(paramString);
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(147892);
       return new int[] { 0 };
@@ -106,42 +106,42 @@ public final class s
     if (!paramString.contains(Integer.valueOf(0))) {
       paramString.add(Integer.valueOf(0));
     }
-    paramString = j.q((Collection)paramString);
+    paramString = j.r((Collection)paramString);
     AppMethodBeat.o(147892);
     return paramString;
   }
   
-  public static final void b(String paramString, int paramInt, b<? super String, String> paramb, d.g.a.m<? super String, ? super String, y> paramm)
+  public static final void b(String paramString, int paramInt, b<? super String, String> paramb, d.g.a.m<? super String, ? super String, z> paramm)
   {
     AppMethodBeat.i(147894);
-    k.h(paramString, "appId");
-    k.h(paramb, "getter");
-    k.h(paramm, "setter");
+    p.h(paramString, "appId");
+    p.h(paramb, "getter");
+    p.h(paramm, "setter");
     paramb = e.Q(a(paramString, paramb, paramm));
     paramb.remove(Integer.valueOf(paramInt));
-    paramString = cp(paramString, "@@@TOTAL@STORAGE@ID@@@");
+    paramString = cr(paramString, "@@@TOTAL@STORAGE@ID@@@");
     paramb = new JSONArray((Collection)paramb).toString();
-    k.g(paramb, "JSONArray(list).toString()");
-    paramm.n(paramString, paramb);
+    p.g(paramb, "JSONArray(list).toString()");
+    paramm.p(paramString, paramb);
     AppMethodBeat.o(147894);
   }
   
-  public static final void b(String paramString, b<? super String, String> paramb, d.g.a.m<? super String, ? super String, y> paramm)
+  public static final void b(String paramString, b<? super String, String> paramb, d.g.a.m<? super String, ? super String, z> paramm)
   {
     AppMethodBeat.i(147895);
-    k.h(paramString, "appId");
-    k.h(paramb, "getter");
-    k.h(paramm, "setter");
-    paramm.n(cp(paramString, "@@@TOTAL@STORAGE@ID@@@"), "");
+    p.h(paramString, "appId");
+    p.h(paramb, "getter");
+    p.h(paramm, "setter");
+    paramm.p(cr(paramString, "@@@TOTAL@STORAGE@ID@@@"), "");
     AppMethodBeat.o(147895);
   }
   
   public static final String c(int paramInt, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(147888);
-    k.h(paramString1, "appId");
-    k.h(paramString2, "key");
-    k.h(paramString3, "separator");
+    p.h(paramString1, "appId");
+    p.h(paramString2, "key");
+    p.h(paramString3, "separator");
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt > 0) {
       localStringBuilder.append(paramInt).append(paramString3);
@@ -150,12 +150,12 @@ public final class s
     localStringBuilder.append(paramString3);
     localStringBuilder.append(paramString2);
     paramString1 = localStringBuilder.toString();
-    k.g(paramString1, "sb.toString()");
+    p.g(paramString1, "sb.toString()");
     AppMethodBeat.o(147888);
     return paramString1;
   }
   
-  public static final int co(String paramString1, String paramString2)
+  public static final int cq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(147889);
     String str = paramString1;
@@ -172,11 +172,11 @@ public final class s
     return i + j;
   }
   
-  private static String cp(String paramString1, String paramString2)
+  private static String cr(String paramString1, String paramString2)
   {
     AppMethodBeat.i(147891);
-    k.h(paramString1, "appId");
-    k.h(paramString2, "key");
+    p.h(paramString1, "appId");
+    p.h(paramString2, "key");
     paramString1 = c(0, paramString1, paramString2, "++");
     AppMethodBeat.o(147891);
     return paramString1;
@@ -185,14 +185,14 @@ public final class s
   public static final String m(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(147890);
-    k.h(paramString1, "appId");
-    k.h(paramString2, "key");
+    p.h(paramString1, "appId");
+    p.h(paramString2, "key");
     paramString1 = c(paramInt, paramString1, paramString2, "++");
     AppMethodBeat.o(147890);
     return paramString1;
   }
   
-  public static final boolean rv(int paramInt)
+  public static final boolean rV(int paramInt)
   {
     if (paramInt < 0) {}
     while (paramInt > 2) {

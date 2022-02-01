@@ -15,12 +15,12 @@ import java.util.Set;
 public final class k
   extends Fragment
 {
-  j aBl;
-  final a aKK;
-  final m aKL;
-  private final Set<k> aKM;
-  private k aKN;
-  Fragment aKO;
+  j aDc;
+  final a aMB;
+  final m aMC;
+  private final Set<k> aMD;
+  private k aME;
+  Fragment aMF;
   
   public k()
   {
@@ -33,19 +33,19 @@ public final class k
   private k(a parama)
   {
     AppMethodBeat.i(77555);
-    this.aKL = new k.a(this);
-    this.aKM = new HashSet();
-    this.aKK = parama;
+    this.aMC = new k.a(this);
+    this.aMD = new HashSet();
+    this.aMB = parama;
     AppMethodBeat.o(77555);
   }
   
-  private void pw()
+  private void pO()
   {
     AppMethodBeat.i(77556);
-    if (this.aKN != null)
+    if (this.aME != null)
     {
-      this.aKN.aKM.remove(this);
-      this.aKN = null;
+      this.aME.aMD.remove(this);
+      this.aME = null;
     }
     AppMethodBeat.o(77556);
   }
@@ -56,10 +56,10 @@ public final class k
     super.onAttach(paramActivity);
     try
     {
-      pw();
-      this.aKN = c.ad(paramActivity).aAz.a(paramActivity.getFragmentManager(), l.l(paramActivity));
-      if (!equals(this.aKN)) {
-        this.aKN.aKM.add(this);
+      pO();
+      this.aME = c.ad(paramActivity).aCq.a(paramActivity.getFragmentManager(), l.l(paramActivity));
+      if (!equals(this.aME)) {
+        this.aME.aMD.add(this);
       }
       AppMethodBeat.o(77557);
       return;
@@ -75,8 +75,8 @@ public final class k
   {
     AppMethodBeat.i(77561);
     super.onDestroy();
-    this.aKK.onDestroy();
-    pw();
+    this.aMB.onDestroy();
+    pO();
     AppMethodBeat.o(77561);
   }
   
@@ -84,7 +84,7 @@ public final class k
   {
     AppMethodBeat.i(77558);
     super.onDetach();
-    pw();
+    pO();
     AppMethodBeat.o(77558);
   }
   
@@ -92,7 +92,7 @@ public final class k
   {
     AppMethodBeat.i(77559);
     super.onStart();
-    this.aKK.onStart();
+    this.aMB.onStart();
     AppMethodBeat.o(77559);
   }
   
@@ -100,7 +100,7 @@ public final class k
   {
     AppMethodBeat.i(77560);
     super.onStop();
-    this.aKK.onStop();
+    this.aMB.onStop();
     AppMethodBeat.o(77560);
   }
   
@@ -124,7 +124,7 @@ public final class k
       localObject = null;
       break;
       label68:
-      localObject = this.aKO;
+      localObject = this.aMF;
     }
   }
 }

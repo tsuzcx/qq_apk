@@ -7,103 +7,103 @@ import java.lang.reflect.Array;
 public class c
   implements g
 {
-  protected static long cRs;
-  protected static long cRt;
-  protected static Object cRu;
-  protected h cRg;
-  protected int cRh;
-  protected int cRi;
-  protected int cRj;
-  protected int cRk;
-  protected int cRl;
-  protected int cRm;
-  protected boolean cRn;
-  protected boolean cRo;
-  protected boolean cRp;
-  protected String cRq;
-  protected String cRr;
-  protected byte[][] cRv;
-  protected h cRw;
+  protected static long dcI;
+  protected static long dcJ;
+  protected static Object dcK;
+  protected int dcA;
+  protected int dcB;
+  protected int dcC;
+  protected boolean dcD;
+  protected boolean dcE;
+  protected boolean dcF;
+  protected String dcG;
+  protected String dcH;
+  protected byte[][] dcL;
+  protected h dcM;
+  protected h dcw;
+  protected int dcx;
+  protected int dcy;
+  protected int dcz;
   
   static
   {
     AppMethodBeat.i(136766);
-    cRs = 0L;
-    cRt = 0L;
-    cRu = new Object();
+    dcI = 0L;
+    dcJ = 0L;
+    dcK = new Object();
     AppMethodBeat.o(136766);
   }
   
   public c()
   {
     AppMethodBeat.i(136761);
-    this.cRh = 0;
-    this.cRi = 0;
-    this.cRj = 0;
-    this.cRk = 44100;
-    this.cRl = 2;
-    this.cRm = 2;
-    this.cRn = false;
-    this.cRo = false;
-    this.cRp = false;
-    this.cRv = new byte[2][];
+    this.dcx = 0;
+    this.dcy = 0;
+    this.dcz = 0;
+    this.dcA = 44100;
+    this.dcB = 2;
+    this.dcC = 2;
+    this.dcD = false;
+    this.dcE = false;
+    this.dcF = false;
+    this.dcL = new byte[2][];
     AppMethodBeat.o(136761);
   }
   
-  public final void F(int paramInt1, int paramInt2, int paramInt3)
+  public final void G(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136763);
-    int i = this.cRh;
-    this.cRh = paramInt1;
-    this.cRi = paramInt2;
-    this.cRj = paramInt3;
-    if (this.cRk != this.cRh) {
-      if (this.cRg == null)
+    int i = this.dcx;
+    this.dcx = paramInt1;
+    this.dcy = paramInt2;
+    this.dcz = paramInt3;
+    if (this.dcA != this.dcx) {
+      if (this.dcw == null)
       {
-        this.cRg = MQ();
-        this.cRg.j(this.cRr, this.cRh, this.cRk);
-        if ((this.cRi == 2) && (this.cRl == 2))
+        this.dcw = Oz();
+        this.dcw.l(this.dcH, this.dcx, this.dcA);
+        if ((this.dcy == 2) && (this.dcB == 2))
         {
-          if (this.cRw != null) {
+          if (this.dcM != null) {
             break label247;
           }
-          this.cRw = MQ();
-          this.cRw.j(this.cRr + "RResample", this.cRh, this.cRk);
+          this.dcM = Oz();
+          this.dcM.l(this.dcH + "RResample", this.dcx, this.dcA);
         }
         label145:
-        this.cRp = true;
+        this.dcF = true;
       }
     }
     for (;;)
     {
-      if (this.cRm != this.cRj) {
-        this.cRo = true;
+      if (this.dcC != this.dcz) {
+        this.dcE = true;
       }
-      if (this.cRl != this.cRi) {
-        this.cRn = true;
+      if (this.dcB != this.dcy) {
+        this.dcD = true;
       }
       AppMethodBeat.o(136763);
       return;
-      if ((this.cRg == null) || (i == this.cRh)) {
+      if ((this.dcw == null) || (i == this.dcx)) {
         break;
       }
-      this.cRg.release();
-      this.cRg = MQ();
-      this.cRg.j(this.cRr, this.cRh, this.cRk);
+      this.dcw.release();
+      this.dcw = Oz();
+      this.dcw.l(this.dcH, this.dcx, this.dcA);
       break;
       label247:
-      if ((this.cRw == null) || (i == this.cRh)) {
+      if ((this.dcM == null) || (i == this.dcx)) {
         break label145;
       }
-      this.cRw.release();
-      this.cRw = MQ();
-      this.cRw.j(this.cRr + "RResample", this.cRh, this.cRk);
+      this.dcM.release();
+      this.dcM = Oz();
+      this.dcM.l(this.dcH + "RResample", this.dcx, this.dcA);
       break label145;
-      this.cRp = false;
-      if (this.cRg != null)
+      this.dcF = false;
+      if (this.dcw != null)
       {
-        this.cRg.release();
-        this.cRg = null;
+        this.dcw.release();
+        this.dcw = null;
       }
     }
   }
@@ -116,9 +116,9 @@ public class c
       AppMethodBeat.o(136764);
       return paramArrayOfByte;
     }
-    if (this.cRo)
+    if (this.dcE)
     {
-      ??? = b.a(this.cRj, this.cRm, paramArrayOfByte);
+      ??? = b.a(this.dcz, this.dcC, paramArrayOfByte);
       if (??? == null) {}
     }
     for (;;)
@@ -128,13 +128,13 @@ public class c
       }
       for (;;)
       {
-        if ((this.cRi == 1) && (this.cRl == 2) && (this.cRp))
+        if ((this.dcy == 1) && (this.dcB == 2) && (this.dcF))
         {
-          paramArrayOfByte = this.cRg.J((byte[])???);
+          paramArrayOfByte = this.dcw.J((byte[])???);
           if (paramArrayOfByte != null) {
             ??? = paramArrayOfByte;
           }
-          paramArrayOfByte = b.b(this.cRi, this.cRl, this.cRm, (byte[])???);
+          paramArrayOfByte = b.b(this.dcy, this.dcB, this.dcC, (byte[])???);
           if (paramArrayOfByte != null) {
             ??? = paramArrayOfByte;
           }
@@ -142,18 +142,18 @@ public class c
           return ???;
         }
         byte[] arrayOfByte;
-        if ((this.cRi == 2) && (this.cRl == 2) && (this.cRp))
+        if ((this.dcy == 2) && (this.dcB == 2) && (this.dcF))
         {
-          if ((this.cRg instanceof i)) {
-            if (this.cRl == 2)
+          if ((this.dcw instanceof i)) {
+            if (this.dcB == 2)
             {
               int i = ???.length / 2;
-              if ((this.cRv == null) || (i != this.cRv.length)) {
-                this.cRv = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
+              if ((this.dcL == null) || (i != this.dcL.length)) {
+                this.dcL = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
               }
-              b.a(this.cRm, (byte[])???, this.cRv);
-              paramArrayOfByte = this.cRg.J(this.cRv[0]);
-              arrayOfByte = this.cRw.J(this.cRv[1]);
+              b.a(this.dcC, (byte[])???, this.dcL);
+              paramArrayOfByte = this.dcw.J(this.dcL[0]);
+              arrayOfByte = this.dcM.J(this.dcL[1]);
               if ((paramArrayOfByte == null) || (arrayOfByte == null)) {
                 paramArrayOfByte = (byte[])???;
               }
@@ -166,16 +166,16 @@ public class c
             }
             AppMethodBeat.o(136764);
             return ???;
-            paramArrayOfByte = b.a(this.cRm, paramArrayOfByte, arrayOfByte);
+            paramArrayOfByte = b.a(this.dcC, paramArrayOfByte, arrayOfByte);
             continue;
-            paramArrayOfByte = this.cRg.J((byte[])???);
+            paramArrayOfByte = this.dcw.J((byte[])???);
             continue;
-            paramArrayOfByte = this.cRg.J((byte[])???);
+            paramArrayOfByte = this.dcw.J((byte[])???);
           }
         }
-        if (this.cRn)
+        if (this.dcD)
         {
-          arrayOfByte = b.b(this.cRi, this.cRl, this.cRm, (byte[])???);
+          arrayOfByte = b.b(this.dcy, this.dcB, this.dcC, (byte[])???);
           if (arrayOfByte != null) {
             ??? = arrayOfByte;
           }
@@ -186,16 +186,16 @@ public class c
           for (;;)
           {
             ??? = paramArrayOfByte;
-            if (this.cRp) {}
-            synchronized (cRu)
+            if (this.dcF) {}
+            synchronized (dcK)
             {
-              cRs += 1L;
+              dcI += 1L;
               System.nanoTime();
-              ??? = this.cRg.J(paramArrayOfByte);
+              ??? = this.dcw.J(paramArrayOfByte);
               if (??? != null) {
                 paramArrayOfByte = (byte[])???;
               }
-              synchronized (cRu)
+              synchronized (dcK)
               {
                 ??? = paramArrayOfByte;
               }
@@ -211,7 +211,14 @@ public class c
     }
   }
   
-  public h MQ()
+  public void OA() {}
+  
+  public e OB()
+  {
+    return null;
+  }
+  
+  public h Oz()
   {
     AppMethodBeat.i(136762);
     i locali = new i();
@@ -219,27 +226,20 @@ public class c
     return locali;
   }
   
-  public void MR() {}
-  
-  public e MS()
-  {
-    return null;
-  }
-  
   public void flushCache() {}
   
   public void release()
   {
     AppMethodBeat.i(136765);
-    if (this.cRg != null)
+    if (this.dcw != null)
     {
-      this.cRg.release();
-      this.cRg = null;
+      this.dcw.release();
+      this.dcw = null;
     }
-    if (this.cRw != null)
+    if (this.dcM != null)
     {
-      this.cRw.release();
-      this.cRw = null;
+      this.dcM.release();
+      this.dcM = null;
     }
     AppMethodBeat.o(136765);
   }

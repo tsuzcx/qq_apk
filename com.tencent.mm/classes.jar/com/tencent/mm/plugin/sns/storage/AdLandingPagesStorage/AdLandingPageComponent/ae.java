@@ -1,50 +1,77 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class ae
 {
+  public String aQj;
   public int bizId;
-  public int dbL;
-  public String dnn;
-  public String dtx;
-  public String dyy;
-  public String jYR;
-  public String jyU;
+  public String dFy;
+  public int dnh;
+  public String dzb;
+  public String jSR;
+  public String ktn;
   public String uin;
-  public String xOm;
-  public String yeO;
-  public int yjY;
-  public boolean yjZ;
-  public String yka;
-  public boolean ykb;
-  public String ykc;
-  public Map<String, String> ykd;
+  public int zAN;
+  public boolean zAO;
+  public String zAP;
+  public boolean zAQ;
+  public String zAR;
+  public Map<String, String> zAS;
+  public String zeg;
+  public String zuP;
   
   public ae()
   {
     AppMethodBeat.i(96323);
-    this.ykb = false;
-    this.ykd = new HashMap();
+    this.zAQ = false;
+    this.zAS = new HashMap();
     AppMethodBeat.o(96323);
   }
   
-  public final String auD(String paramString)
+  public final String azK(String paramString)
   {
     AppMethodBeat.i(96324);
-    paramString = (String)this.ykd.get(paramString);
+    paramString = (String)this.zAS.get(paramString);
     AppMethodBeat.o(96324);
     return paramString;
   }
   
-  public final String getSnsId()
+  public final String dWr()
   {
-    if (this.dnn == null) {
+    AppMethodBeat.i(197886);
+    if (bt.isNullOrNil(this.zAR))
+    {
+      AppMethodBeat.o(197886);
       return "";
     }
-    return this.dnn;
+    String str = this.zAR;
+    AppMethodBeat.o(197886);
+    return str;
+  }
+  
+  public final String getSnsId()
+  {
+    if (this.dzb == null) {
+      return "";
+    }
+    return this.dzb;
+  }
+  
+  public final String getViewId()
+  {
+    AppMethodBeat.i(197885);
+    if (bt.isNullOrNil(this.aQj))
+    {
+      AppMethodBeat.o(197885);
+      return "";
+    }
+    String str = this.aQj;
+    AppMethodBeat.o(197885);
+    return str;
   }
 }
 

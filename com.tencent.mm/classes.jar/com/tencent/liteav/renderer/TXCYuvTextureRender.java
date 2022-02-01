@@ -4,7 +4,7 @@ import android.opengl.GLES20;
 import android.opengl.Matrix;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSVideoFrame;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -38,7 +38,6 @@ public class TXCYuvTextureRender
   private int mProgram;
   private int mRawDataFrameType;
   private FloatBuffer mTextureBuffer;
-  private float[] mTextureCoordinates;
   private int mTextureCoordinatesHandle;
   private int[] mTextureIds;
   private float[] mTextureMatrix;
@@ -60,7 +59,7 @@ public class TXCYuvTextureRender
   {
     AppMethodBeat.i(16749);
     TAG = TXCYuvTextureRender.class.getSimpleName();
-    d.f();
+    f.f();
     AppMethodBeat.o(16749);
   }
   
@@ -86,11 +85,10 @@ public class TXCYuvTextureRender
     this.bt601_videorage_ffmpeg_matrix = new float[] { 1.1644F, 1.1644F, 1.1644F, 0.0F, -0.3918F, 2.0172F, 1.596F, -0.813F, 0.0F };
     this.bt601_fullrange_ffmpeg_offset = new float[] { 0.0F, -0.5019608F, -0.5019608F };
     this.bt601_fullrage_ffmpeg_matrix = new float[] { 1.0F, 1.0F, 1.0F, 0.0F, -0.3441F, 1.772F, 1.402F, -0.7141F, 0.0F };
-    this.mTextureCoordinates = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
     this.mIndices = new short[] { 0, 1, 2, 1, 3, 2 };
     this.mVerticesCoordinates = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-    this.mTextureBuffer = ByteBuffer.allocateDirect(this.mTextureCoordinates.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.mTextureBuffer.put(this.mTextureCoordinates);
+    this.mTextureBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.mTextureBuffer.put(new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F });
     this.mTextureBuffer.position(0);
     this.mVertexBuffer = ByteBuffer.allocateDirect(this.mVerticesCoordinates.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.mVertexBuffer.put(this.mVerticesCoordinates);
@@ -285,6 +283,59 @@ public class TXCYuvTextureRender
     int i = this.mFrameBufferTextureID;
     AppMethodBeat.o(16746);
     return i;
+  }
+  
+  public void flipVertical(boolean paramBoolean)
+  {
+    AppMethodBeat.i(187391);
+    float[] arrayOfFloat;
+    if (paramBoolean)
+    {
+      arrayOfFloat = new float[8];
+      float[] tmp16_15 = arrayOfFloat;
+      tmp16_15[0] = 0.0F;
+      float[] tmp20_16 = tmp16_15;
+      tmp20_16[1] = 1.0F;
+      float[] tmp24_20 = tmp20_16;
+      tmp24_20[2] = 1.0F;
+      float[] tmp28_24 = tmp24_20;
+      tmp28_24[3] = 1.0F;
+      float[] tmp32_28 = tmp28_24;
+      tmp32_28[4] = 0.0F;
+      float[] tmp36_32 = tmp32_28;
+      tmp36_32[5] = 0.0F;
+      float[] tmp40_36 = tmp36_32;
+      tmp40_36[6] = 1.0F;
+      float[] tmp45_40 = tmp40_36;
+      tmp45_40[7] = 0.0F;
+      tmp45_40;
+    }
+    for (;;)
+    {
+      this.mTextureBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.mTextureBuffer.put(arrayOfFloat);
+      this.mTextureBuffer.position(0);
+      AppMethodBeat.o(187391);
+      return;
+      arrayOfFloat = new float[8];
+      float[] tmp100_99 = arrayOfFloat;
+      tmp100_99[0] = 0.0F;
+      float[] tmp104_100 = tmp100_99;
+      tmp104_100[1] = 0.0F;
+      float[] tmp108_104 = tmp104_100;
+      tmp108_104[2] = 1.0F;
+      float[] tmp112_108 = tmp108_104;
+      tmp112_108[3] = 0.0F;
+      float[] tmp116_112 = tmp112_108;
+      tmp116_112[4] = 0.0F;
+      float[] tmp120_116 = tmp116_112;
+      tmp120_116[5] = 1.0F;
+      float[] tmp124_120 = tmp120_116;
+      tmp124_120[6] = 1.0F;
+      float[] tmp129_124 = tmp124_120;
+      tmp129_124[7] = 1.0F;
+      tmp129_124;
+    }
   }
   
   public void onSurfaceDestroy()

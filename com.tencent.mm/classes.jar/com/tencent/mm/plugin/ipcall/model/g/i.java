@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.plugin.ipcall.model.b.b;
 import com.tencent.mm.plugin.ipcall.model.b.c;
 import com.tencent.mm.plugin.ipcall.model.e.o;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class i
   extends b
 {
-  private int gaC = 0;
-  private o tLB = null;
+  private int gub = 0;
+  private o uOo = null;
   
-  public final void BE() {}
+  public final void Dd() {}
   
   public final void b(c paramc)
   {
@@ -23,12 +23,12 @@ public final class i
     if (paramc == null) {}
     for (;;)
     {
-      ac.d("MicroMsg.IPCallSyncService", "serviceImpl, info==null: %b", new Object[] { Boolean.valueOf(bool) });
-      if (this.tHV != null)
+      ad.d("MicroMsg.IPCallSyncService", "serviceImpl, info==null: %b", new Object[] { Boolean.valueOf(bool) });
+      if (this.uKI != null)
       {
-        this.gaC = this.tHV.tIP;
-        this.tLB = new o(this.tHV.roomId, this.tHV.tIG, this.tHV.cUL(), this.tHV.tIH, false);
-        az.agi().a(this.tLB, 0);
+        this.gub = this.uKI.uLC;
+        this.uOo = new o(this.uKI.roomId, this.uKI.uLt, this.uKI.ddW(), this.uKI.uLu, false);
+        ba.aiU().a(this.uOo, 0);
       }
       AppMethodBeat.o(25527);
       return;
@@ -36,22 +36,22 @@ public final class i
     }
   }
   
-  public final int[] cUI()
+  public final int[] ddT()
   {
     return new int[] { 819 };
   }
   
-  public final void cUJ()
+  public final void ddU()
   {
     AppMethodBeat.i(25528);
-    ac.d("MicroMsg.IPCallSyncService", "onLoopSuccess");
+    ad.d("MicroMsg.IPCallSyncService", "onLoopSuccess");
     AppMethodBeat.o(25528);
   }
   
-  public final void cUK()
+  public final void ddV()
   {
     AppMethodBeat.i(25529);
-    ac.d("MicroMsg.IPCallSyncService", "onLoopFailed");
+    ad.d("MicroMsg.IPCallSyncService", "onLoopFailed");
     AppMethodBeat.o(25529);
   }
   
@@ -62,7 +62,7 @@ public final class i
   
   public final int getTimerInterval()
   {
-    return this.gaC;
+    return this.gub;
   }
   
   public final void onDestroy() {}
@@ -70,15 +70,15 @@ public final class i
   public final void onStop()
   {
     AppMethodBeat.i(25526);
-    if (this.tLB != null) {
-      az.agi().a(this.tLB);
+    if (this.uOo != null) {
+      ba.aiU().a(this.uOo);
     }
     AppMethodBeat.o(25526);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.g.i
  * JD-Core Version:    0.7.0.1
  */

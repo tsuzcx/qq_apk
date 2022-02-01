@@ -33,7 +33,7 @@ public final class i
   public final String getTag()
   {
     AppMethodBeat.i(183316);
-    String str = a.fEB().tag;
+    String str = a.fVT().tag;
     AppMethodBeat.o(183316);
     return str;
   }

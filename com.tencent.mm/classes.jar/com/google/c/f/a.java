@@ -11,7 +11,7 @@ public final class a
   private static com.google.c.b.b a(f paramf, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(12324);
-    paramf = paramf.bLb;
+    paramf = paramf.bVo;
     if (paramf == null)
     {
       paramf = new IllegalStateException();
@@ -35,7 +35,7 @@ public final class a
       paramInt3 = j;
       while (i < k)
       {
-        if (paramf.bM(i, paramInt1) == 1) {
+        if (paramf.bO(i, paramInt1) == 1) {
           localb.p(paramInt3, paramInt2, n, n);
         }
         i += 1;
@@ -57,7 +57,7 @@ public final class a
       AppMethodBeat.o(12323);
       throw paramString;
     }
-    if (parama != com.google.c.a.bGT)
+    if (parama != com.google.c.a.bRh)
     {
       paramString = new IllegalArgumentException("Can only encode QR_CODE, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12323);
@@ -69,20 +69,20 @@ public final class a
       AppMethodBeat.o(12323);
       throw paramString;
     }
-    parama = com.google.c.f.a.a.bKm;
+    parama = com.google.c.f.a.a.bUz;
     int j = 4;
     com.google.c.a locala = parama;
     int i = j;
     if (paramMap != null)
     {
-      if (paramMap.containsKey(com.google.c.c.bHa)) {
-        parama = com.google.c.f.a.a.valueOf(paramMap.get(com.google.c.c.bHa).toString());
+      if (paramMap.containsKey(com.google.c.c.bRo)) {
+        parama = com.google.c.f.a.a.valueOf(paramMap.get(com.google.c.c.bRo).toString());
       }
       locala = parama;
       i = j;
-      if (paramMap.containsKey(com.google.c.c.bHf))
+      if (paramMap.containsKey(com.google.c.c.bRt))
       {
-        i = Integer.parseInt(paramMap.get(com.google.c.c.bHf).toString());
+        i = Integer.parseInt(paramMap.get(com.google.c.c.bRt).toString());
         locala = parama;
       }
     }

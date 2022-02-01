@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.emoji.b;
 
 import com.tencent.mm.kernel.b.a;
 import com.tencent.mm.pluginsdk.a.e;
-import com.tencent.mm.storage.av;
 import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bd;
 
 public abstract interface d
   extends a
 {
-  public abstract av getEmojiDescMgr();
+  public abstract az getEmojiDescMgr();
   
   public abstract com.tencent.mm.pluginsdk.a.d getEmojiMgr();
   
-  public abstract az getEmojiStorageMgr();
+  public abstract bd getEmojiStorageMgr();
   
   public abstract e getProvider();
   

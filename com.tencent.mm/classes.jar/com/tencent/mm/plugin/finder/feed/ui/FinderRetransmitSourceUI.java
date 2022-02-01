@@ -7,33 +7,35 @@ import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.c;
-import com.tencent.mm.plugin.finder.feed.w.a;
-import com.tencent.mm.plugin.finder.feed.w.b;
-import com.tencent.mm.plugin.finder.feed.w.g;
+import com.tencent.mm.plugin.finder.feed.FinderRetransmitSourceContract.Loader;
+import com.tencent.mm.plugin.finder.feed.FinderRetransmitSourceContract.a;
+import com.tencent.mm.plugin.finder.feed.FinderRetransmitSourceContract.c;
+import com.tencent.mm.plugin.finder.feed.model.internal.e;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.a;
+import d.g.b.p;
 import d.l;
 import java.util.HashMap;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderRetransmitSourceUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderRetransmitSourceContract$Loader;", "Lcom/tencent/mm/plugin/finder/feed/FinderRetransmitSourceContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderRetransmitSourceContract$Presenter;", "()V", "feedLoader", "presenter", "refObjectId", "", "refObjectNonceId", "", "targetNickname", "targetUsername", "viewCallback", "getLayoutId", "", "getModel", "getPresenter", "getViewCallback", "initOnCreate", "", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderRetransmitSourceUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderRetransmitSourceContract$Loader;", "Lcom/tencent/mm/plugin/finder/feed/FinderRetransmitSourceContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderRetransmitSourceContract$Presenter;", "()V", "feedLoader", "presenter", "refObjectId", "", "refObjectNonceId", "", "targetNickname", "targetUsername", "viewCallback", "getLayoutId", "", "getModel", "getPresenter", "getViewCallback", "initOnCreate", "", "plugin-finder_release"})
 public final class FinderRetransmitSourceUI
-  extends FinderLoaderFeedUI<w.a, w.g, w.b>
+  extends FinderLoaderFeedUI<FinderRetransmitSourceContract.Loader, FinderRetransmitSourceContract.c, FinderRetransmitSourceContract.a>
 {
   private HashMap _$_findViewCache;
-  private String qYd;
+  private String rJp;
   private long refObjectId;
   private String refObjectNonceId = "";
-  private String rpN;
-  private w.b rsg;
-  private w.g rsh;
-  private w.a rsi;
+  private String seC;
+  private FinderRetransmitSourceContract.a sho;
+  private FinderRetransmitSourceContract.c shp;
+  private FinderRetransmitSourceContract.Loader shq;
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(202477);
+    AppMethodBeat.i(202858);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -44,7 +46,7 @@ public final class FinderRetransmitSourceUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(202477);
+    AppMethodBeat.o(202858);
     return localView1;
   }
   
@@ -57,44 +59,44 @@ public final class FinderRetransmitSourceUI
   {
     AppMethodBeat.i(166232);
     Object localObject1 = getIntent().getStringExtra("KEY_TARGET_USERNAME");
-    d.g.b.k.g(localObject1, "intent.getStringExtra(Co…ceUI.KEY_TARGET_USERNAME)");
-    this.qYd = ((String)localObject1);
+    p.g(localObject1, "intent.getStringExtra(Co…ceUI.KEY_TARGET_USERNAME)");
+    this.rJp = ((String)localObject1);
     localObject1 = getIntent().getStringExtra("KEY_TARGET_NICKNAME");
-    d.g.b.k.g(localObject1, "intent.getStringExtra(Co…ceUI.KEY_TARGET_NICKNAME)");
-    this.rpN = ((String)localObject1);
+    p.g(localObject1, "intent.getStringExtra(Co…ceUI.KEY_TARGET_NICKNAME)");
+    this.seC = ((String)localObject1);
     this.refObjectId = getIntent().getLongExtra("KEY_REF_OBJ_ID", 0L);
     localObject1 = getIntent().getStringExtra("KEY_REF_OBJ_NONCE_ID");
-    d.g.b.k.g(localObject1, "intent.getStringExtra(Co…eUI.KEY_REF_OBJ_NONCE_ID)");
+    p.g(localObject1, "intent.getStringExtra(Co…eUI.KEY_REF_OBJ_NONCE_ID)");
     this.refObjectNonceId = ((String)localObject1);
-    localObject1 = this.qYd;
+    localObject1 = this.rJp;
     if (localObject1 == null) {
-      d.g.b.k.aVY("targetUsername");
+      p.bcb("targetUsername");
     }
-    if ((bs.isNullOrNil((String)localObject1)) || (this.refObjectId == 0L)) {
+    if ((bt.isNullOrNil((String)localObject1)) || (this.refObjectId == 0L)) {
       finish();
     }
-    this.rsg = new w.b((MMActivity)this);
+    this.sho = new FinderRetransmitSourceContract.a((MMActivity)this);
     localObject1 = (MMActivity)this;
-    Object localObject2 = this.rsg;
+    Object localObject2 = this.sho;
     if (localObject2 == null) {
-      d.g.b.k.aVY("presenter");
+      p.bcb("presenter");
     }
-    this.rsh = new w.g((MMActivity)localObject1, (w.b)localObject2);
-    localObject1 = this.qYd;
+    this.shp = new FinderRetransmitSourceContract.c((MMActivity)localObject1, (FinderRetransmitSourceContract.a)localObject2);
+    localObject1 = this.rJp;
     if (localObject1 == null) {
-      d.g.b.k.aVY("targetUsername");
+      p.bcb("targetUsername");
     }
     long l = this.refObjectId;
     localObject2 = this.refObjectNonceId;
-    c localc = c.rog;
-    a locala = a.IrY;
-    this.rsi = new w.a((String)localObject1, l, (String)localObject2, localc, ((FinderReporterUIC)a.q((MMActivity)this).get(FinderReporterUIC.class)).cGb());
+    e locale = e.scO;
+    a locala = a.KiD;
+    this.shq = new FinderRetransmitSourceContract.Loader((String)localObject1, l, (String)localObject2, locale, ((FinderReporterUIC)a.s((MMActivity)this).get(FinderReporterUIC.class)).cOu());
     localObject1 = (Context)getContext();
-    localObject2 = this.rpN;
+    localObject2 = this.seC;
     if (localObject2 == null) {
-      d.g.b.k.aVY("targetNickname");
+      p.bcb("targetNickname");
     }
-    setMMTitle((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.c((Context)localObject1, (CharSequence)localObject2));
+    setMMTitle((CharSequence)k.c((Context)localObject1, (CharSequence)localObject2));
     AppMethodBeat.o(166232);
   }
   
@@ -106,7 +108,7 @@ public final class FinderRetransmitSourceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderRetransmitSourceUI
  * JD-Core Version:    0.7.0.1
  */

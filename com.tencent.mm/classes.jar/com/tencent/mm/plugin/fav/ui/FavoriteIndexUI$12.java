@@ -4,6 +4,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class FavoriteIndexUI$12
   implements View.OnTouchListener
@@ -13,15 +15,20 @@ final class FavoriteIndexUI$12
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(107010);
+    b localb = new b();
+    localb.bd(paramView);
+    localb.bd(paramMotionEvent);
+    a.b("com/tencent/mm/plugin/fav/ui/FavoriteIndexUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
+      a.a(false, this, "com/tencent/mm/plugin/fav/ui/FavoriteIndexUI$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(107010);
       return false;
-      FavoriteIndexUI.c(this.qOE)[0] = ((int)paramMotionEvent.getRawX());
-      FavoriteIndexUI.c(this.qOE)[1] = ((int)paramMotionEvent.getRawY());
+      FavoriteIndexUI.c(this.ryD)[0] = ((int)paramMotionEvent.getRawX());
+      FavoriteIndexUI.c(this.ryD)[1] = ((int)paramMotionEvent.getRawY());
     }
   }
 }

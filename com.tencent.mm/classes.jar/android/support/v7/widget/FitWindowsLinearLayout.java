@@ -9,7 +9,7 @@ public class FitWindowsLinearLayout
   extends LinearLayout
   implements aa
 {
-  private aa.a alD;
+  private aa.a anu;
   
   public FitWindowsLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -18,15 +18,15 @@ public class FitWindowsLinearLayout
   
   protected boolean fitSystemWindows(Rect paramRect)
   {
-    if (this.alD != null) {
-      this.alD.f(paramRect);
+    if (this.anu != null) {
+      this.anu.f(paramRect);
     }
     return super.fitSystemWindows(paramRect);
   }
   
   public void setOnFitSystemWindowsListener(aa.a parama)
   {
-    this.alD = parama;
+    this.anu = parama;
   }
 }
 

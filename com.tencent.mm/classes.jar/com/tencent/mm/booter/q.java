@@ -2,36 +2,36 @@ package com.tencent.mm.booter;
 
 public abstract class q
 {
-  public d fnq;
+  public d fFy;
   
   public q(d paramd)
   {
-    this.fnq = paramd;
+    this.fFy = paramd;
   }
   
-  public final d UL()
+  public final d Xc()
   {
-    return this.fnq;
+    return this.fFy;
   }
   
   public final Integer getInteger(String paramString)
   {
-    return this.fnq.getInteger(paramString);
+    return this.fFy.getInteger(paramString);
   }
   
   public final String getString(String paramString)
   {
-    return this.fnq.getString(paramString);
+    return this.fFy.getString(paramString);
   }
   
-  public final void rq(String paramString)
+  public final void uc(String paramString)
   {
-    this.fnq.rq(paramString);
+    this.fFy.uc(paramString);
   }
   
-  public final Boolean rr(String paramString)
+  public final Boolean ud(String paramString)
   {
-    return this.fnq.rr(paramString);
+    return this.fFy.ud(paramString);
   }
 }
 

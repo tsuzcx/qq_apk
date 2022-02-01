@@ -9,23 +9,23 @@ public abstract interface ah
 {
   public abstract ah d(ba paramba);
   
-  public abstract Collection<? extends ah> fQW();
+  public abstract Collection<? extends ah> giu();
   
-  public abstract ai fRK();
+  public abstract ai gjj();
   
-  public abstract aj fRL();
+  public abstract aj gjk();
   
-  public abstract List<ag> fRM();
+  public abstract List<ag> gjl();
   
-  public abstract ah fRN();
+  public abstract ah gjm();
   
-  public abstract r fRO();
+  public abstract r gjn();
   
-  public abstract r fRP();
+  public abstract r gjo();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.ah
  * JD-Core Version:    0.7.0.1
  */

@@ -11,28 +11,28 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.e.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.Arrays;
 
 public class CardHighLightEdgeView
   extends View
 {
-  private int tZE;
-  private Paint vZ;
-  private boolean[] xmG;
-  private boolean[] xmH;
-  private Rect xmI;
-  private long xmJ;
-  private ao xmK;
+  private int vcn;
+  private Paint xS;
+  private boolean[] yAH;
+  private boolean[] yAI;
+  private Rect yAJ;
+  private long yAK;
+  private ap yAL;
   
   public CardHighLightEdgeView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(118369);
-    this.xmG = new boolean[4];
-    this.xmH = new boolean[4];
-    this.xmK = new ao()
+    this.yAH = new boolean[4];
+    this.yAI = new boolean[4];
+    this.yAL = new ap()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -51,9 +51,9 @@ public class CardHighLightEdgeView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(118370);
-    this.xmG = new boolean[4];
-    this.xmH = new boolean[4];
-    this.xmK = new ao()
+    this.yAH = new boolean[4];
+    this.yAI = new boolean[4];
+    this.yAL = new ap()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -72,9 +72,9 @@ public class CardHighLightEdgeView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(118371);
-    this.xmG = new boolean[4];
-    this.xmH = new boolean[4];
-    this.xmK = new ao()
+    this.yAH = new boolean[4];
+    this.yAI = new boolean[4];
+    this.yAL = new ap()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -92,12 +92,12 @@ public class CardHighLightEdgeView
   private void init()
   {
     AppMethodBeat.i(118372);
-    this.tZE = (a.decodeResource(getResources(), 2131233910).getWidth() / 4);
-    this.vZ = new Paint();
-    this.vZ.setColor(6676738);
-    this.vZ.setAlpha(255);
-    this.vZ.setStrokeWidth(this.tZE);
-    this.vZ.setStyle(Paint.Style.STROKE);
+    this.vcn = (a.decodeResource(getResources(), 2131233910).getWidth() / 4);
+    this.xS = new Paint();
+    this.xS.setColor(6676738);
+    this.xS.setAlpha(255);
+    this.xS.setStrokeWidth(this.vcn);
+    this.xS.setStyle(Paint.Style.STROKE);
     AppMethodBeat.o(118372);
   }
   
@@ -105,19 +105,19 @@ public class CardHighLightEdgeView
   {
     AppMethodBeat.i(118375);
     super.onDraw(paramCanvas);
-    if (this.xmI != null)
+    if (this.yAJ != null)
     {
-      if (this.xmG[0] != 0) {
-        paramCanvas.drawLine(this.xmI.left + this.tZE / 2, this.xmI.top, this.xmI.left + this.tZE / 2, this.xmI.bottom, this.vZ);
+      if (this.yAH[0] != 0) {
+        paramCanvas.drawLine(this.yAJ.left + this.vcn / 2, this.yAJ.top, this.yAJ.left + this.vcn / 2, this.yAJ.bottom, this.xS);
       }
-      if (this.xmG[1] != 0) {
-        paramCanvas.drawLine(this.xmI.right - this.tZE / 2, this.xmI.top, this.xmI.right - this.tZE / 2, this.xmI.bottom, this.vZ);
+      if (this.yAH[1] != 0) {
+        paramCanvas.drawLine(this.yAJ.right - this.vcn / 2, this.yAJ.top, this.yAJ.right - this.vcn / 2, this.yAJ.bottom, this.xS);
       }
-      if (this.xmG[2] != 0) {
-        paramCanvas.drawLine(this.xmI.left, this.xmI.top + this.tZE / 2, this.xmI.right, this.xmI.top + this.tZE / 2, this.vZ);
+      if (this.yAH[2] != 0) {
+        paramCanvas.drawLine(this.yAJ.left, this.yAJ.top + this.vcn / 2, this.yAJ.right, this.yAJ.top + this.vcn / 2, this.xS);
       }
-      if (this.xmG[3] != 0) {
-        paramCanvas.drawLine(this.xmI.left, this.xmI.bottom - this.tZE / 2, this.xmI.right, this.xmI.bottom - this.tZE / 2, this.vZ);
+      if (this.yAH[3] != 0) {
+        paramCanvas.drawLine(this.yAJ.left, this.yAJ.bottom - this.vcn / 2, this.yAJ.right, this.yAJ.bottom - this.vcn / 2, this.xS);
       }
     }
     AppMethodBeat.o(118375);
@@ -126,7 +126,7 @@ public class CardHighLightEdgeView
   public void setCardRect(Rect paramRect)
   {
     AppMethodBeat.i(118373);
-    this.xmI = new Rect(paramRect);
+    this.yAJ = new Rect(paramRect);
     AppMethodBeat.o(118373);
   }
   
@@ -137,12 +137,12 @@ public class CardHighLightEdgeView
     int i;
     if (paramArrayOfBoolean.length == 4)
     {
-      ac.d("MicroMsg.CardHighLightEdgeView", "%s,%s,%s,%s", new Object[] { Boolean.valueOf(paramArrayOfBoolean[0]), Boolean.valueOf(paramArrayOfBoolean[1]), Boolean.valueOf(paramArrayOfBoolean[2]), Boolean.valueOf(paramArrayOfBoolean[3]) });
+      ad.d("MicroMsg.CardHighLightEdgeView", "%s,%s,%s,%s", new Object[] { Boolean.valueOf(paramArrayOfBoolean[0]), Boolean.valueOf(paramArrayOfBoolean[1]), Boolean.valueOf(paramArrayOfBoolean[2]), Boolean.valueOf(paramArrayOfBoolean[3]) });
       i = 0;
       if (i >= 4) {
         break label146;
       }
-      if (this.xmG[i] == 0) {
+      if (this.yAH[i] == 0) {
         break label139;
       }
       i = j;
@@ -154,11 +154,11 @@ public class CardHighLightEdgeView
     label139:
     label146:
     label157:
-    for (long l = 600L - (System.currentTimeMillis() - this.xmJ);; l = 0L)
+    for (long l = 600L - (System.currentTimeMillis() - this.yAK);; l = 0L)
     {
-      this.xmH = Arrays.copyOf(paramArrayOfBoolean, 4);
-      this.xmK.removeMessages(1);
-      paramArrayOfBoolean = this.xmK;
+      this.yAI = Arrays.copyOf(paramArrayOfBoolean, 4);
+      this.yAL.removeMessages(1);
+      paramArrayOfBoolean = this.yAL;
       if (l > 0L) {}
       for (;;)
       {
@@ -176,7 +176,7 @@ public class CardHighLightEdgeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.view.CardHighLightEdgeView
  * JD-Core Version:    0.7.0.1
  */

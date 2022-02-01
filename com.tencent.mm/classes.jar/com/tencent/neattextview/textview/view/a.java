@@ -2,7 +2,7 @@ package com.tencent.neattextview.textview.view;
 
 public abstract interface a
 {
-  public abstract boolean fBy();
+  public abstract boolean fSN();
   
   public abstract float getHorizontalOffset();
   

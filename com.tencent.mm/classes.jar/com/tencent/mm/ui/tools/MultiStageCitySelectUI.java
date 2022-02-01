@@ -9,25 +9,25 @@ import android.os.Looper;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelgeo.d;
+import com.tencent.mm.plugin.location.model.g;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.RegionCodeDecoder;
 import com.tencent.mm.storage.RegionCodeDecoder.Region;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceCategory;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
-import com.tencent.mm.ui.base.preference.f;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -35,36 +35,36 @@ import java.util.List;
 
 public class MultiStageCitySelectUI
   extends MMPreference
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
-  private static List<RegionCodeDecoder.Region> ITe;
-  private String ISU;
-  private boolean ISV;
-  private int ISW;
-  private RegionCodeDecoder.Region[] ISX;
-  private boolean ISY;
-  private boolean ISZ;
-  private boolean ITa;
-  private boolean ITb;
-  private boolean ITc;
-  private ZoneRecommandPreference ITd;
-  private String ITf;
-  private ArrayList<String> ITg;
-  private Runnable ITh;
+  private static List<RegionCodeDecoder.Region> KKi;
+  private String KJY;
+  private boolean KJZ;
+  private int KKa;
+  private RegionCodeDecoder.Region[] KKb;
+  private boolean KKc;
+  private boolean KKd;
+  private boolean KKe;
+  private boolean KKf;
+  private boolean KKg;
+  private ZoneRecommandPreference KKh;
+  private String KKj;
+  private ArrayList<String> KKk;
+  private Runnable KKl;
   private String cityCode;
   private String countryCode;
-  private int doR;
-  private b.a fnd;
-  private r fzp;
-  private String gPx;
-  private String hLr;
-  private ao handler;
-  private d hxT;
-  private boolean iMq;
+  private int dAF;
+  private b.a fFl;
+  private r fSC;
+  private d hQo;
+  private ap handler;
+  private String iem;
+  private boolean jfA;
   private boolean mShowSelectedLocation;
   private String provinceCode;
-  private f screen;
-  private boolean udt;
+  private com.tencent.mm.ui.base.preference.f screen;
+  private boolean vgd;
+  private String xOD;
   
   public MultiStageCitySelectUI()
   {
@@ -72,22 +72,22 @@ public class MultiStageCitySelectUI
     this.countryCode = null;
     this.provinceCode = null;
     this.cityCode = null;
-    this.hLr = null;
-    this.ISU = null;
-    this.gPx = null;
-    this.ISV = false;
-    this.doR = 0;
-    this.ISW = -1;
-    this.ISY = false;
-    this.ISZ = true;
+    this.iem = null;
+    this.KJY = null;
+    this.xOD = null;
+    this.KJZ = false;
+    this.dAF = 0;
+    this.KKa = -1;
+    this.KKc = false;
+    this.KKd = true;
     this.mShowSelectedLocation = true;
-    this.ITa = false;
-    this.ITb = false;
-    this.ITc = false;
-    this.iMq = true;
-    this.fzp = new r((byte)0);
-    this.handler = new ao(Looper.getMainLooper());
-    this.fnd = new b.a()
+    this.KKe = false;
+    this.KKf = false;
+    this.KKg = false;
+    this.jfA = true;
+    this.fSC = new r((byte)0);
+    this.handler = new ap(Looper.getMainLooper());
+    this.fFl = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -99,9 +99,9 @@ public class MultiStageCitySelectUI
         }
         if (paramAnonymousBoolean)
         {
-          ac.i("MicroMsg.MultiStageCitySelectUI", "lat:%f lng:%f accuracy:%f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1), Double.valueOf(paramAnonymousDouble2) });
-          com.tencent.mm.plugin.location.model.g localg = new com.tencent.mm.plugin.location.model.g(paramAnonymousFloat2, paramAnonymousFloat1);
-          az.agi().a(localg, 0);
+          ad.i("MicroMsg.MultiStageCitySelectUI", "lat:%f lng:%f accuracy:%f", new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1), Double.valueOf(paramAnonymousDouble2) });
+          g localg = new g(paramAnonymousFloat2, paramAnonymousFloat1);
+          ba.aiU().a(localg, 0);
         }
         for (;;)
         {
@@ -113,7 +113,7 @@ public class MultiStageCitySelectUI
           AppMethodBeat.o(39085);
           return false;
           MultiStageCitySelectUI.b(MultiStageCitySelectUI.this);
-          if ((!MultiStageCitySelectUI.c(MultiStageCitySelectUI.this)) && (!d.aEM()))
+          if ((!MultiStageCitySelectUI.c(MultiStageCitySelectUI.this)) && (!d.aHR()))
           {
             MultiStageCitySelectUI.d(MultiStageCitySelectUI.this);
             h.a(MultiStageCitySelectUI.this, MultiStageCitySelectUI.this.getString(2131760082), MultiStageCitySelectUI.this.getString(2131755906), MultiStageCitySelectUI.this.getString(2131760598), MultiStageCitySelectUI.this.getString(2131755691), false, new DialogInterface.OnClickListener()
@@ -121,7 +121,7 @@ public class MultiStageCitySelectUI
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
                 AppMethodBeat.i(39084);
-                d.cE(MultiStageCitySelectUI.this);
+                d.cB(MultiStageCitySelectUI.this);
                 AppMethodBeat.o(39084);
               }
             }, null);
@@ -129,7 +129,7 @@ public class MultiStageCitySelectUI
         }
       }
     };
-    this.ITh = new Runnable()
+    this.KKl = new Runnable()
     {
       public final void run()
       {
@@ -141,9 +141,9 @@ public class MultiStageCitySelectUI
     AppMethodBeat.o(39093);
   }
   
-  private void ftN()
+  private void fKA()
   {
-    switch (this.doR)
+    switch (this.dAF)
     {
     default: 
       return;
@@ -158,21 +158,21 @@ public class MultiStageCitySelectUI
   }
   
   /* Error */
-  private static List<RegionCodeDecoder.Region> ftO()
+  private static List<RegionCodeDecoder.Region> fKB()
   {
     // Byte code:
     //   0: ldc 164
     //   2: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 170	com/tencent/mm/storage/RegionCodeDecoder:fcs	()Lcom/tencent/mm/storage/RegionCodeDecoder;
+    //   5: invokestatic 170	com/tencent/mm/storage/RegionCodeDecoder:fsz	()Lcom/tencent/mm/storage/RegionCodeDecoder;
     //   8: astore_0
     //   9: aload_0
-    //   10: invokestatic 176	com/tencent/mm/sdk/platformtools/ab:eUO	()Ljava/lang/String;
-    //   13: putfield 179	com/tencent/mm/storage/RegionCodeDecoder:GZK	Ljava/lang/String;
+    //   10: invokestatic 176	com/tencent/mm/sdk/platformtools/ac:fks	()Ljava/lang/String;
+    //   13: putfield 179	com/tencent/mm/storage/RegionCodeDecoder:IMZ	Ljava/lang/String;
     //   16: aload_0
-    //   17: invokevirtual 182	com/tencent/mm/storage/RegionCodeDecoder:fct	()Ljava/lang/String;
+    //   17: invokevirtual 182	com/tencent/mm/storage/RegionCodeDecoder:fsA	()Ljava/lang/String;
     //   20: astore_1
     //   21: aload_1
-    //   22: invokestatic 188	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   22: invokestatic 188	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   25: ifeq +43 -> 68
     //   28: ldc 190
     //   30: new 192	java/lang/StringBuilder
@@ -180,14 +180,14 @@ public class MultiStageCitySelectUI
     //   34: ldc 194
     //   36: invokespecial 197	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   39: aload_0
-    //   40: getfield 179	com/tencent/mm/storage/RegionCodeDecoder:GZK	Ljava/lang/String;
+    //   40: getfield 179	com/tencent/mm/storage/RegionCodeDecoder:IMZ	Ljava/lang/String;
     //   43: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   46: invokevirtual 204	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 209	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: invokestatic 209	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   52: aconst_null
     //   53: astore_0
     //   54: aload_0
-    //   55: invokestatic 188	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   55: invokestatic 188	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   58: ifeq +34 -> 92
     //   61: ldc 164
     //   63: invokestatic 135	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -196,7 +196,7 @@ public class MultiStageCitySelectUI
     //   68: new 192	java/lang/StringBuilder
     //   71: dup
     //   72: invokespecial 210	java/lang/StringBuilder:<init>	()V
-    //   75: getstatic 213	com/tencent/mm/storage/RegionCodeDecoder:GZJ	Ljava/lang/String;
+    //   75: getstatic 213	com/tencent/mm/storage/RegionCodeDecoder:IMY	Ljava/lang/String;
     //   78: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   81: aload_1
     //   82: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -260,7 +260,7 @@ public class MultiStageCitySelectUI
     //   194: aload 8
     //   196: invokevirtual 254	com/tencent/mm/storage/RegionCodeDecoder$Region:setCountryCode	(Ljava/lang/String;)V
     //   199: aload 8
-    //   201: invokestatic 188	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   201: invokestatic 188	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   204: ifne -75 -> 129
     //   207: aload 7
     //   209: arraylength
@@ -384,7 +384,7 @@ public class MultiStageCitySelectUI
     //   439: aload_1
     //   440: invokevirtual 305	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   443: aastore
-    //   444: invokestatic 309	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   444: invokestatic 309	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   447: aload_3
     //   448: ifnull +7 -> 455
     //   451: aload_3
@@ -546,26 +546,26 @@ public class MultiStageCitySelectUI
     //   366	391	593	java/lang/Exception
   }
   
-  private void ftP()
+  private void fKC()
   {
     AppMethodBeat.i(39104);
-    if (this.ITd != null) {
-      this.ITd.fub();
+    if (this.KKh != null) {
+      this.KKh.fKO();
     }
     AppMethodBeat.o(39104);
   }
   
-  public final void ftM()
+  public final void fKz()
   {
     AppMethodBeat.i(39094);
     Object localObject2;
     int j;
     int i;
     Object localObject3;
-    if (this.doR == 3)
+    if (this.dAF == 3)
     {
       localObject1 = new ArrayList();
-      localObject2 = RegionCodeDecoder.fcs().fcu();
+      localObject2 = RegionCodeDecoder.fsz().fsB();
       if (localObject2 != null)
       {
         j = localObject2.length;
@@ -579,7 +579,7 @@ public class MultiStageCitySelectUI
           i += 1;
         }
       }
-      localObject2 = RegionCodeDecoder.fcs().aOA("CN");
+      localObject2 = RegionCodeDecoder.fsz().aUr("CN");
       j = localObject2.length;
       localObject2 = (RegionCodeDecoder.Region[])Arrays.copyOf((Object[])localObject2, ((List)localObject1).size() + j);
       localObject3 = ((List)localObject1).iterator();
@@ -594,10 +594,10 @@ public class MultiStageCitySelectUI
         i += 1;
       }
     }
-    if (bs.isNullOrNil(this.countryCode))
+    if (bt.isNullOrNil(this.countryCode))
     {
-      localObject2 = RegionCodeDecoder.fcs().fcu();
-      if (this.ITb)
+      localObject2 = RegionCodeDecoder.fsz().fsB();
+      if (this.KKf)
       {
         localObject3 = new ArrayList();
         if (localObject2 != null)
@@ -607,7 +607,7 @@ public class MultiStageCitySelectUI
           while (i < j)
           {
             localObject1 = localObject2[i];
-            if ((!this.ITg.contains(((RegionCodeDecoder.Region)localObject1).getCode())) && (!"CN".equalsIgnoreCase(((RegionCodeDecoder.Region)localObject1).getCode())) && (!"HK".equalsIgnoreCase(((RegionCodeDecoder.Region)localObject1).getCode())) && (!"TW".equalsIgnoreCase(((RegionCodeDecoder.Region)localObject1).getCode())) && (!"MO".equalsIgnoreCase(((RegionCodeDecoder.Region)localObject1).getCode()))) {
+            if ((!this.KKk.contains(((RegionCodeDecoder.Region)localObject1).getCode())) && (!"CN".equalsIgnoreCase(((RegionCodeDecoder.Region)localObject1).getCode())) && (!"HK".equalsIgnoreCase(((RegionCodeDecoder.Region)localObject1).getCode())) && (!"TW".equalsIgnoreCase(((RegionCodeDecoder.Region)localObject1).getCode())) && (!"MO".equalsIgnoreCase(((RegionCodeDecoder.Region)localObject1).getCode()))) {
               ((List)localObject3).add(localObject1);
             }
             i += 1;
@@ -619,11 +619,11 @@ public class MultiStageCitySelectUI
     }
     for (;;)
     {
-      this.ISX = ((RegionCodeDecoder.Region[])localObject1);
-      if ((this.ISX != null) && (this.ISX.length > 0)) {
+      this.KKb = ((RegionCodeDecoder.Region[])localObject1);
+      if ((this.KKb != null) && (this.KKb.length > 0)) {
         break;
       }
-      ac.e("MicroMsg.MultiStageCitySelectUI", "initZoneItems error ,check zone lists!");
+      ad.e("MicroMsg.MultiStageCitySelectUI", "initZoneItems error ,check zone lists!");
       AppMethodBeat.o(39094);
       return;
       localObject1 = localObject2;
@@ -635,7 +635,7 @@ public class MultiStageCitySelectUI
         while (i < j)
         {
           localObject1 = localObject2[i];
-          if (!this.ITg.contains(((RegionCodeDecoder.Region)localObject1).getCode())) {
+          if (!this.KKk.contains(((RegionCodeDecoder.Region)localObject1).getCode())) {
             ((List)localObject3).add(localObject1);
           }
           i += 1;
@@ -643,10 +643,10 @@ public class MultiStageCitySelectUI
         localObject1 = new RegionCodeDecoder.Region[((List)localObject3).size()];
         ((List)localObject3).toArray((Object[])localObject1);
         continue;
-        if (bs.isNullOrNil(this.provinceCode)) {
-          localObject1 = RegionCodeDecoder.fcs().aOA(this.countryCode);
+        if (bt.isNullOrNil(this.provinceCode)) {
+          localObject1 = RegionCodeDecoder.fsz().aUr(this.countryCode);
         } else {
-          localObject1 = RegionCodeDecoder.fcs().lE(this.countryCode, this.provinceCode);
+          localObject1 = RegionCodeDecoder.fsz().mc(this.countryCode, this.provinceCode);
         }
       }
     }
@@ -658,8 +658,8 @@ public class MultiStageCitySelectUI
       localObject2 = getIntent().getStringExtra("SelectedProvinceCode");
       localObject3 = getIntent().getStringExtra("SelectedCityCode");
       this.mShowSelectedLocation = getIntent().getBooleanExtra("ShowSelectedLocation", true);
-      this.ITa = getIntent().getBooleanExtra("NeedUnshowItem", false);
-      if (this.ITa)
+      this.KKe = getIntent().getBooleanExtra("NeedUnshowItem", false);
+      if (this.KKe)
       {
         localZonePreference = new ZonePreference(this);
         RegionCodeDecoder.Region localRegion = new RegionCodeDecoder.Region();
@@ -675,17 +675,17 @@ public class MultiStageCitySelectUI
       }
       i = 0;
       label694:
-      if (i >= this.ISX.length) {
+      if (i >= this.KKb.length) {
         break label1003;
       }
-      if ((this.ISX[i] != null) && (!bs.isNullOrNil(this.ISX[i].getCode())) && (!bs.isNullOrNil(this.ISX[i].getName())))
+      if ((this.KKb[i] != null) && (!bt.isNullOrNil(this.KKb[i].getCode())) && (!bt.isNullOrNil(this.KKb[i].getName())))
       {
         localZonePreference = new ZonePreference(this);
-        localZonePreference.a(this.ISX[i]);
+        localZonePreference.a(this.KKb[i]);
         if (!this.mShowSelectedLocation) {
           break label989;
         }
-        if ((this.doR != 0) || (!this.ISX[i].getCode().equalsIgnoreCase((String)localObject1))) {
+        if ((this.dAF != 0) || (!this.KKb[i].getCode().equalsIgnoreCase((String)localObject1))) {
           break label879;
         }
         this.screen.a(localZonePreference, 0);
@@ -697,20 +697,20 @@ public class MultiStageCitySelectUI
     {
       i += 1;
       break label694;
-      az.ayM();
-      localObject1 = (String)c.agA().get(12324, null);
-      az.ayM();
-      localObject2 = (String)c.agA().get(12325, null);
-      az.ayM();
-      localObject3 = (String)c.agA().get(12326, null);
+      ba.aBQ();
+      localObject1 = (String)c.ajl().get(12324, null);
+      ba.aBQ();
+      localObject2 = (String)c.ajl().get(12325, null);
+      ba.aBQ();
+      localObject3 = (String)c.ajl().get(12326, null);
       break;
       label879:
-      if ((this.doR == 1) && (this.ISX[i].getCode().equalsIgnoreCase((String)localObject2)))
+      if ((this.dAF == 1) && (this.KKb[i].getCode().equalsIgnoreCase((String)localObject2)))
       {
         this.screen.a(localZonePreference, 0);
         localZonePreference.setSummary(2131763153);
       }
-      else if ((this.doR == 2) && (this.ISX[i].getCode().equalsIgnoreCase((String)localObject3)))
+      else if ((this.dAF == 2) && (this.KKb[i].getCode().equalsIgnoreCase((String)localObject3)))
       {
         this.screen.a(localZonePreference, 0);
         localZonePreference.setSummary(2131763153);
@@ -723,11 +723,11 @@ public class MultiStageCitySelectUI
       }
     }
     label1003:
-    if (this.doR == 3)
+    if (this.dAF == 3)
     {
       localObject1 = new ZoneSelectOtherCountryPreference(this);
       ((ZoneSelectOtherCountryPreference)localObject1).text = getString(2131763148);
-      ((ZoneSelectOtherCountryPreference)localObject1).IVa = new ZoneSelectOtherCountryPreference.a()
+      ((ZoneSelectOtherCountryPreference)localObject1).KMe = new ZoneSelectOtherCountryPreference.a()
       {
         public final void onClick()
         {
@@ -751,20 +751,20 @@ public class MultiStageCitySelectUI
     }
     Object localObject1 = new PreferenceCategory(getContext());
     this.screen.b((Preference)localObject1);
-    if ((this.doR == 0) || (this.doR == 3))
+    if ((this.dAF == 0) || (this.dAF == 3))
     {
-      if (this.ISZ)
+      if (this.KKd)
       {
         localObject1 = new PreferenceTitleCategory(this);
         ((PreferenceTitleCategory)localObject1).setTitle(2131763146);
         this.screen.a((Preference)localObject1, 0);
-        this.ITd = new ZoneRecommandPreference(this);
-        this.ITd.setKey("current_location");
-        this.screen.a(this.ITd, 1);
+        this.KKh = new ZoneRecommandPreference(this);
+        this.KKh.setKey("current_location");
+        this.screen.a(this.KKh, 1);
       }
       localObject1 = new PreferenceTitleCategory(this);
       ((PreferenceTitleCategory)localObject1).setTitle(2131763145);
-      if (this.ISZ)
+      if (this.KKd)
       {
         this.screen.a((Preference)localObject1, 2);
         AppMethodBeat.o(39094);
@@ -795,33 +795,33 @@ public class MultiStageCitySelectUI
         return true;
       }
     });
-    this.ISY = getIntent().getBooleanExtra("GetAddress", false);
+    this.KKc = getIntent().getBooleanExtra("GetAddress", false);
     this.countryCode = getIntent().getStringExtra("Country");
     this.provinceCode = getIntent().getStringExtra("Provice");
-    this.hLr = getIntent().getStringExtra("CountryName");
-    this.ISU = getIntent().getStringExtra("ProviceName");
+    this.iem = getIntent().getStringExtra("CountryName");
+    this.KJY = getIntent().getStringExtra("ProviceName");
     Intent localIntent = getIntent();
     boolean bool;
-    if (!bs.ja(this))
+    if (!bt.jk(this))
     {
       bool = true;
-      this.ISZ = localIntent.getBooleanExtra("IsAutoPosition", bool);
-      this.ISV = getIntent().getBooleanExtra("IsRealNameVerifyScene", false);
-      this.ITb = getIntent().getBooleanExtra("IsSelectNonChinaCountry", false);
-      this.ITg = getIntent().getStringArrayListExtra("BlockedCountries");
-      if (this.ITg == null) {
-        this.ITg = new ArrayList();
+      this.KKd = localIntent.getBooleanExtra("IsAutoPosition", bool);
+      this.KJZ = getIntent().getBooleanExtra("IsRealNameVerifyScene", false);
+      this.KKf = getIntent().getBooleanExtra("IsSelectNonChinaCountry", false);
+      this.KKk = getIntent().getStringArrayListExtra("BlockedCountries");
+      if (this.KKk == null) {
+        this.KKk = new ArrayList();
       }
-      this.ITc = getIntent().getBooleanExtra("IsNeedShowSearchBar", false);
-      ac.i("MicroMsg.MultiStageCitySelectUI", " country = " + this.countryCode + " province =" + this.provinceCode + " city = " + this.cityCode + " " + this.hLr + " " + this.ISU + " " + this.ISV + " " + this.ITb);
-      if (!this.ISV) {
+      this.KKg = getIntent().getBooleanExtra("IsNeedShowSearchBar", false);
+      ad.i("MicroMsg.MultiStageCitySelectUI", " country = " + this.countryCode + " province =" + this.provinceCode + " city = " + this.cityCode + " " + this.iem + " " + this.KJY + " " + this.KJZ + " " + this.KKf);
+      if (!this.KJZ) {
         break label331;
       }
-      this.doR = 3;
+      this.dAF = 3;
     }
     for (;;)
     {
-      ftM();
+      fKz();
       AppMethodBeat.o(39099);
       return;
       bool = false;
@@ -829,18 +829,18 @@ public class MultiStageCitySelectUI
       label331:
       if (this.countryCode == null)
       {
-        this.doR = 0;
+        this.dAF = 0;
         this.provinceCode = null;
         this.cityCode = null;
       }
       else if (this.provinceCode == null)
       {
-        this.doR = 1;
+        this.dAF = 1;
         this.cityCode = null;
       }
       else
       {
-        this.doR = 2;
+        this.dAF = 2;
       }
     }
   }
@@ -866,7 +866,7 @@ public class MultiStageCitySelectUI
   public void onBackPressed()
   {
     AppMethodBeat.i(39101);
-    ftN();
+    fKA();
     super.onBackPressed();
     AppMethodBeat.o(39101);
   }
@@ -875,15 +875,15 @@ public class MultiStageCitySelectUI
   {
     AppMethodBeat.i(39096);
     super.onCreate(paramBundle);
-    az.agi().a(665, this);
+    ba.aiU().a(665, this);
     this.screen = getPreferenceScreen();
     initView();
     long l;
-    if (this.ITc) {
-      if ((ITe == null) || (ITe.size() <= 0))
+    if (this.KKg) {
+      if ((KKi == null) || (KKi.size() <= 0))
       {
-        l = bs.Gn();
-        paramBundle = RegionCodeDecoder.fcs().fcu();
+        l = bt.HI();
+        paramBundle = RegionCodeDecoder.fsz().fsB();
         if ((paramBundle != null) && (paramBundle.length > 0)) {
           break label108;
         }
@@ -891,13 +891,13 @@ public class MultiStageCitySelectUI
     }
     for (;;)
     {
-      addSearchMenu(true, this.fzp);
-      this.fzp.ITM = new r.b()
+      addSearchMenu(true, this.fSC);
+      this.fSC.KKQ = new r.b()
       {
-        public final boolean Ga(String paramAnonymousString)
+        public final boolean Jp(String paramAnonymousString)
         {
           AppMethodBeat.i(39089);
-          if (!bs.isNullOrNil(paramAnonymousString))
+          if (!bt.isNullOrNil(paramAnonymousString))
           {
             MultiStageCitySelectUI.a(MultiStageCitySelectUI.this, paramAnonymousString);
             MultiStageCitySelectUI.k(MultiStageCitySelectUI.this).removeAll();
@@ -910,10 +910,10 @@ public class MultiStageCitySelectUI
           return false;
         }
         
-        public final void Gb(String paramAnonymousString)
+        public final void Jq(String paramAnonymousString)
         {
           AppMethodBeat.i(39088);
-          if (!bs.isNullOrNil(paramAnonymousString))
+          if (!bt.isNullOrNil(paramAnonymousString))
           {
             MultiStageCitySelectUI.a(MultiStageCitySelectUI.this, paramAnonymousString);
             MultiStageCitySelectUI.k(MultiStageCitySelectUI.this).removeAll();
@@ -923,36 +923,36 @@ public class MultiStageCitySelectUI
           AppMethodBeat.o(39088);
         }
         
-        public final void aPa()
+        public final void aSm()
         {
           AppMethodBeat.i(39087);
           MultiStageCitySelectUI.this.hideVKB();
           MultiStageCitySelectUI.j(MultiStageCitySelectUI.this);
-          MultiStageCitySelectUI.this.ftM();
+          MultiStageCitySelectUI.this.fKz();
           AppMethodBeat.o(39087);
         }
         
-        public final void aPb() {}
+        public final void aSn() {}
         
-        public final void aPc()
+        public final void aSo()
         {
           AppMethodBeat.i(39090);
           MultiStageCitySelectUI.j(MultiStageCitySelectUI.this);
-          MultiStageCitySelectUI.this.ftM();
+          MultiStageCitySelectUI.this.fKz();
           AppMethodBeat.o(39090);
         }
         
-        public final void aPd() {}
+        public final void aSp() {}
       };
       AppMethodBeat.o(39096);
       return;
       label108:
-      if ((ITe == null) || (ITe.size() <= 0))
+      if ((KKi == null) || (KKi.size() <= 0))
       {
-        paramBundle = ftO();
-        ITe = paramBundle;
+        paramBundle = fKB();
+        KKi = paramBundle;
         if (paramBundle != null) {
-          ac.i("MicroMsg.MultiStageCitySelectUI", "buildAllSearchRegion used %sms, size: %s", new Object[] { Long.valueOf(bs.aO(l)), Integer.valueOf(ITe.size()) });
+          ad.i("MicroMsg.MultiStageCitySelectUI", "buildAllSearchRegion used %sms, size: %s", new Object[] { Long.valueOf(bt.aO(l)), Integer.valueOf(KKi.size()) });
         }
       }
     }
@@ -961,15 +961,15 @@ public class MultiStageCitySelectUI
   public void onDestroy()
   {
     AppMethodBeat.i(39098);
-    az.agi().b(665, this);
-    if (this.hxT != null) {
-      this.hxT.c(this.fnd);
+    ba.aiU().b(665, this);
+    if (this.hQo != null) {
+      this.hQo.c(this.fFl);
     }
     super.onDestroy();
     AppMethodBeat.o(39098);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     Bundle localBundle = null;
     AppMethodBeat.i(39100);
@@ -978,8 +978,8 @@ public class MultiStageCitySelectUI
     Object localObject2;
     if ((paramPreference instanceof ZonePreference))
     {
-      localObject1 = ((ZonePreference)paramPreference).IUS;
-      if ((localObject1 == null) || (bs.isNullOrNil(((RegionCodeDecoder.Region)localObject1).getCode())))
+      localObject1 = ((ZonePreference)paramPreference).KLW;
+      if ((localObject1 == null) || (bt.isNullOrNil(((RegionCodeDecoder.Region)localObject1).getCode())))
       {
         paramPreference = new StringBuilder("onPreferenceTreeClick error item, code:");
         if (localObject1 == null)
@@ -992,39 +992,39 @@ public class MultiStageCitySelectUI
         }
         for (paramf = "null";; paramf = ((RegionCodeDecoder.Region)localObject1).getName())
         {
-          ac.e("MicroMsg.MultiStageCitySelectUI", paramf);
+          ad.e("MicroMsg.MultiStageCitySelectUI", paramf);
           AppMethodBeat.o(39100);
           return false;
           paramf = ((RegionCodeDecoder.Region)localObject1).getCode();
           break;
         }
       }
-      if (this.doR == 3)
+      if (this.dAF == 3)
       {
         this.countryCode = "CN";
         this.provinceCode = ((RegionCodeDecoder.Region)localObject1).getCode();
-        this.ISU = ((RegionCodeDecoder.Region)localObject1).getName();
+        this.KJY = ((RegionCodeDecoder.Region)localObject1).getName();
       }
-      if (this.doR == 0)
+      if (this.dAF == 0)
       {
         this.countryCode = ((RegionCodeDecoder.Region)localObject1).getCode();
-        this.hLr = ((RegionCodeDecoder.Region)localObject1).getName();
+        this.iem = ((RegionCodeDecoder.Region)localObject1).getName();
         if (((RegionCodeDecoder.Region)localObject1).hasChildren()) {
           break label647;
         }
-        if (!this.ISY)
+        if (!this.KKc)
         {
-          az.ayM();
-          c.agA().set(12324, this.countryCode);
-          az.ayM();
-          c.agA().set(12325, this.provinceCode);
-          az.ayM();
-          c.agA().set(12326, this.cityCode);
+          ba.aBQ();
+          c.ajl().set(12324, this.countryCode);
+          ba.aBQ();
+          c.ajl().set(12325, this.provinceCode);
+          ba.aBQ();
+          c.ajl().set(12326, this.cityCode);
         }
         paramf = new Intent();
-        paramf.putExtra("CountryName", this.hLr);
-        paramf.putExtra("ProviceName", this.ISU);
-        paramf.putExtra("CityName", this.gPx);
+        paramf.putExtra("CountryName", this.iem);
+        paramf.putExtra("ProviceName", this.KJY);
+        paramf.putExtra("CityName", this.xOD);
         paramf.putExtra("Country", this.countryCode);
         paramf.putExtra("Contact_Province", this.provinceCode);
         paramf.putExtra("Contact_City", this.cityCode);
@@ -1036,69 +1036,69 @@ public class MultiStageCitySelectUI
       {
         AppMethodBeat.o(39100);
         return true;
-        if (this.doR == 1)
+        if (this.dAF == 1)
         {
           this.provinceCode = ((RegionCodeDecoder.Region)localObject1).getCode();
-          this.ISU = ((RegionCodeDecoder.Region)localObject1).getName();
+          this.KJY = ((RegionCodeDecoder.Region)localObject1).getName();
           break;
         }
-        if (this.doR == 2)
+        if (this.dAF == 2)
         {
           this.cityCode = ((RegionCodeDecoder.Region)localObject1).getCode();
-          this.gPx = ((RegionCodeDecoder.Region)localObject1).getName();
+          this.xOD = ((RegionCodeDecoder.Region)localObject1).getName();
           if (("CN".equalsIgnoreCase(this.countryCode)) || ("HK".equalsIgnoreCase(this.countryCode)) || ("MO".equalsIgnoreCase(this.countryCode)) || ("TW".equalsIgnoreCase(this.countryCode)))
           {
-            this.hLr = null;
+            this.iem = null;
             break;
           }
-          this.ISU = null;
+          this.KJY = null;
           break;
         }
-        if (this.doR != 4) {
+        if (this.dAF != 4) {
           break;
         }
         if ((((RegionCodeDecoder.Region)localObject1).getParent() != null) && (!((RegionCodeDecoder.Region)localObject1).hasChildren()))
         {
           this.cityCode = ((RegionCodeDecoder.Region)localObject1).getCode();
-          this.gPx = ((RegionCodeDecoder.Region)localObject1).getName();
+          this.xOD = ((RegionCodeDecoder.Region)localObject1).getName();
           this.provinceCode = ((RegionCodeDecoder.Region)localObject1).getParent().getCode();
-          this.ISU = ((RegionCodeDecoder.Region)localObject1).getParent().getName();
+          this.KJY = ((RegionCodeDecoder.Region)localObject1).getParent().getName();
           this.countryCode = ((RegionCodeDecoder.Region)localObject1).getCountryCode();
-          this.hLr = null;
+          this.iem = null;
           break;
         }
         if ((((RegionCodeDecoder.Region)localObject1).hasChildren()) && (((RegionCodeDecoder.Region)localObject1).getParent() != null))
         {
           this.provinceCode = ((RegionCodeDecoder.Region)localObject1).getCode();
-          this.ISU = ((RegionCodeDecoder.Region)localObject1).getName();
+          this.KJY = ((RegionCodeDecoder.Region)localObject1).getName();
           this.countryCode = ((RegionCodeDecoder.Region)localObject1).getCountryCode();
-          this.hLr = null;
+          this.iem = null;
           break;
         }
         this.countryCode = ((RegionCodeDecoder.Region)localObject1).getCode();
-        this.hLr = ((RegionCodeDecoder.Region)localObject1).getName();
+        this.iem = ((RegionCodeDecoder.Region)localObject1).getName();
         this.provinceCode = null;
-        this.ISU = null;
+        this.KJY = null;
         this.cityCode = null;
-        this.gPx = null;
+        this.xOD = null;
         break;
         label647:
         localObject2 = new Intent(this, MultiStageCitySelectUI.class);
         localBundle = new Bundle();
         localBundle.putString("Country", this.countryCode);
         localBundle.putString("Provice", this.provinceCode);
-        localBundle.putString("CountryName", this.hLr);
-        localBundle.putString("ProviceName", this.ISU);
-        localBundle.putBoolean("GetAddress", this.ISY);
+        localBundle.putString("CountryName", this.iem);
+        localBundle.putString("ProviceName", this.KJY);
+        localBundle.putBoolean("GetAddress", this.KKc);
         localBundle.putBoolean("ShowSelectedLocation", this.mShowSelectedLocation);
         localBundle.putString("SelectedCountryCode", getIntent().getStringExtra("SelectedCountryCode"));
         localBundle.putString("SelectedProvinceCode", getIntent().getStringExtra("SelectedProvinceCode"));
         localBundle.putString("SelectedCityCode", getIntent().getStringExtra("SelectedCityCode"));
-        if (this.ISV)
+        if (this.KJZ)
         {
           paramPreference = ((RegionCodeDecoder.Region)localObject1).getCountryCode();
           paramf = paramPreference;
-          if (bs.isNullOrNil(paramPreference)) {
+          if (bt.isNullOrNil(paramPreference)) {
             paramf = this.countryCode;
           }
           if (("CN".equalsIgnoreCase(paramf)) || ("HK".equalsIgnoreCase(paramf)) || ("MO".equalsIgnoreCase(paramf)) || ("TW".equalsIgnoreCase(paramf))) {
@@ -1129,35 +1129,35 @@ public class MultiStageCitySelectUI
     Intent localIntent;
     if (paramPreference.mKey.equals("current_location"))
     {
-      if (this.ITd.status != 1) {
+      if (this.KKh.status != 1) {
         break label1302;
       }
       i = 1;
       if (i != 0)
       {
-        paramf = this.ITd;
+        paramf = this.KKh;
         arrayOfRegion = new RegionCodeDecoder.Region[3];
-        arrayOfRegion[0] = paramf.IUV;
-        arrayOfRegion[1] = paramf.IUW;
-        arrayOfRegion[2] = paramf.IUX;
-        if (!this.ISY)
+        arrayOfRegion[0] = paramf.KLZ;
+        arrayOfRegion[1] = paramf.KMa;
+        arrayOfRegion[2] = paramf.KMb;
+        if (!this.KKc)
         {
-          az.ayM();
-          paramPreference = c.agA();
+          ba.aBQ();
+          paramPreference = c.ajl();
           if (arrayOfRegion[0] != null) {
             break label1307;
           }
           paramf = null;
           paramPreference.set(12324, paramf);
-          az.ayM();
-          paramPreference = c.agA();
+          ba.aBQ();
+          paramPreference = c.ajl();
           if (arrayOfRegion[1] != null) {
             break label1318;
           }
           paramf = null;
           paramPreference.set(12325, paramf);
-          az.ayM();
-          paramPreference = c.agA();
+          ba.aBQ();
+          paramPreference = c.ajl();
           if (arrayOfRegion[2] != null) {
             break label1329;
           }
@@ -1248,11 +1248,11 @@ public class MultiStageCitySelectUI
     AppMethodBeat.i(39105);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ac.i("MicroMsg.MultiStageCitySelectUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      ad.i("MicroMsg.MultiStageCitySelectUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(39105);
       return;
     }
-    ac.i("MicroMsg.MultiStageCitySelectUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ad.i("MicroMsg.MultiStageCitySelectUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     if (paramArrayOfInt.length == 0)
     {
       AppMethodBeat.o(39105);
@@ -1267,10 +1267,10 @@ public class MultiStageCitySelectUI
       return;
       if (paramArrayOfInt[0] != 0)
       {
-        if (this.ITd != null) {
-          this.ITd.fub();
+        if (this.KKh != null) {
+          this.KKh.fKO();
         }
-        this.iMq = false;
+        this.jfA = false;
       }
     }
   }
@@ -1279,16 +1279,16 @@ public class MultiStageCitySelectUI
   {
     AppMethodBeat.i(39097);
     super.onResume();
-    if (this.iMq)
+    if (this.jfA)
     {
       boolean bool = b.a(this, "android.permission.ACCESS_COARSE_LOCATION", 64, null, null);
-      ac.i("MicroMsg.MultiStageCitySelectUI", "settings district,checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
+      ad.i("MicroMsg.MultiStageCitySelectUI", "settings district,checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
       if (bool)
       {
-        if (this.hxT == null) {
-          this.hxT = d.aEL();
+        if (this.hQo == null) {
+          this.hQo = d.aHQ();
         }
-        this.hxT.a(this.fnd, true);
+        this.hQo.a(this.fFl, true);
       }
     }
     AppMethodBeat.o(39097);
@@ -1297,19 +1297,19 @@ public class MultiStageCitySelectUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(39103);
-    com.tencent.mm.plugin.location.model.g localg;
+    g localg;
     Object localObject;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if (paramn.getType() != 665) {
         break label329;
       }
-      localg = (com.tencent.mm.plugin.location.model.g)paramn;
+      localg = (g)paramn;
       paramn = localg.country;
-      paramString = localg.exV;
-      localObject = localg.exW;
-      ac.i("MicroMsg.MultiStageCitySelectUI", "current location country %s, province %s, city %s", new Object[] { paramn, paramString, localObject });
-      RegionCodeDecoder.Region[] arrayOfRegion = RegionCodeDecoder.fcs().fcu();
+      paramString = localg.ePu;
+      localObject = localg.ePv;
+      ad.i("MicroMsg.MultiStageCitySelectUI", "current location country %s, province %s, city %s", new Object[] { paramn, paramString, localObject });
+      RegionCodeDecoder.Region[] arrayOfRegion = RegionCodeDecoder.fsz().fsB();
       paramInt2 = arrayOfRegion.length;
       paramInt1 = 0;
       if (paramInt1 >= paramInt2) {
@@ -1318,7 +1318,7 @@ public class MultiStageCitySelectUI
       localg = arrayOfRegion[paramInt1];
       if (localg.getCode().equalsIgnoreCase(paramn))
       {
-        arrayOfRegion = RegionCodeDecoder.fcs().aOA(localg.getCode());
+        arrayOfRegion = RegionCodeDecoder.fsz().aUr(localg.getCode());
         paramInt2 = arrayOfRegion.length;
         paramInt1 = 0;
         label136:
@@ -1327,7 +1327,7 @@ public class MultiStageCitySelectUI
           paramn = arrayOfRegion[paramInt1];
           if (paramn.getCode().equalsIgnoreCase(paramString))
           {
-            arrayOfRegion = RegionCodeDecoder.fcs().lE(localg.getCode(), paramn.getCode());
+            arrayOfRegion = RegionCodeDecoder.fsz().mc(localg.getCode(), paramn.getCode());
             paramInt2 = arrayOfRegion.length;
             paramInt1 = 0;
             label183:
@@ -1344,10 +1344,10 @@ public class MultiStageCitySelectUI
     {
       if ((localg == null) && (paramn == null) && (paramString == null))
       {
-        if (this.ITd == null) {
+        if (this.KKh == null) {
           break label318;
         }
-        this.ITd.fub();
+        this.KKh.fKO();
         AppMethodBeat.o(39103);
         return;
         paramInt1 += 1;
@@ -1362,19 +1362,19 @@ public class MultiStageCitySelectUI
         paramInt1 += 1;
         break;
       }
-      if (this.ITd != null)
+      if (this.KKh != null)
       {
-        localObject = this.ITd;
+        localObject = this.KKh;
         ((ZoneRecommandPreference)localObject).status = 1;
-        ((ZoneRecommandPreference)localObject).IUV = localg;
-        ((ZoneRecommandPreference)localObject).IUW = paramn;
-        ((ZoneRecommandPreference)localObject).IUX = paramString;
-        ((ZoneRecommandPreference)localObject).fua();
+        ((ZoneRecommandPreference)localObject).KLZ = localg;
+        ((ZoneRecommandPreference)localObject).KMa = paramn;
+        ((ZoneRecommandPreference)localObject).KMb = paramString;
+        ((ZoneRecommandPreference)localObject).fKN();
       }
       label318:
       AppMethodBeat.o(39103);
       return;
-      ftP();
+      fKC();
       label329:
       AppMethodBeat.o(39103);
       return;

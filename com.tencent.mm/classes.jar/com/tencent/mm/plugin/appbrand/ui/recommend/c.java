@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.appbrand.ui.recommend;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class c
 {
-  public static boolean bwQ()
+  public static boolean bAW()
   {
     AppMethodBeat.i(49292);
-    if (((b)g.ab(b.class)).a(b.a.pMi, 0) > 0)
+    if (((b)g.ab(b.class)).a(b.a.qpW, 0) > 0)
     {
       AppMethodBeat.o(49292);
       return true;
@@ -22,10 +22,10 @@ public final class c
     return false;
   }
   
-  public static boolean bwR()
+  public static boolean bAX()
   {
     AppMethodBeat.i(49293);
-    if (((Integer)g.agR().agA().get(ah.a.GJx, Integer.valueOf(0))).intValue() == 1)
+    if (((Integer)g.ajC().ajl().get(al.a.IvP, Integer.valueOf(0))).intValue() == 1)
     {
       AppMethodBeat.o(49293);
       return true;
@@ -34,10 +34,10 @@ public final class c
     return false;
   }
   
-  public static boolean bwS()
+  public static boolean bAY()
   {
     AppMethodBeat.i(49294);
-    if (((b)g.ab(b.class)).a(b.a.pTb, -1) == 1)
+    if (((b)g.ab(b.class)).a(b.a.qxG, -1) == 1)
     {
       AppMethodBeat.o(49294);
       return true;

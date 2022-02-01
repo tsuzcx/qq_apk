@@ -17,58 +17,68 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.m;
 import com.tencent.mm.plugin.account.friend.a.x;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
 public class BindGoogleContactIntroUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  private boolean iFA;
-  private String iFB;
-  private ProgressDialog iFC;
-  private x iFD;
-  private int iFE;
-  private View.OnClickListener iFF;
-  private View.OnClickListener iFG;
-  private ImageView iFv;
-  private TextView iFw;
-  private Button iFx;
-  private Button iFy;
-  private boolean iFz;
+  private ImageView iYE;
+  private TextView iYF;
+  private Button iYG;
+  private Button iYH;
+  private boolean iYI;
+  private boolean iYJ;
+  private String iYK;
+  private ProgressDialog iYL;
+  private x iYM;
+  private int iYN;
+  private View.OnClickListener iYO;
+  private View.OnClickListener iYP;
   
   public BindGoogleContactIntroUI()
   {
     AppMethodBeat.i(109763);
-    this.iFz = false;
-    this.iFA = false;
-    this.iFF = new View.OnClickListener()
+    this.iYI = false;
+    this.iYJ = false;
+    this.iYO = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(109758);
-        Object localObject = new Intent(BindGoogleContactIntroUI.this, BindGoogleContactUI.class);
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/BindGoogleContactIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        localObject = new Intent(BindGoogleContactIntroUI.this, BindGoogleContactUI.class);
         ((Intent)localObject).putExtra("enter_scene", BindGoogleContactIntroUI.a(BindGoogleContactIntroUI.this));
         paramAnonymousView = BindGoogleContactIntroUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/account/bind/ui/BindGoogleContactIntroUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/account/bind/ui/BindGoogleContactIntroUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/account/bind/ui/BindGoogleContactIntroUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindGoogleContactIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(109758);
       }
     };
-    this.iFG = new View.OnClickListener()
+    this.iYP = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(109760);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/BindGoogleContactIntroUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         h.a(BindGoogleContactIntroUI.this.getContext(), true, BindGoogleContactIntroUI.this.getString(2131764548), "", BindGoogleContactIntroUI.this.getString(2131764547), BindGoogleContactIntroUI.this.getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
@@ -81,22 +91,23 @@ public class BindGoogleContactIntroUI
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
         });
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindGoogleContactIntroUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(109760);
       }
     };
     AppMethodBeat.o(109763);
   }
   
-  private void aOE()
+  private void aRQ()
   {
     AppMethodBeat.i(109769);
-    this.iFy.setVisibility(8);
-    this.iFx.setVisibility(0);
-    this.iFv.setVisibility(0);
-    this.iFw.setVisibility(0);
-    this.iFw.setText(2131756441);
-    this.iFx.setText(2131756439);
-    this.iFx.setOnClickListener(this.iFF);
+    this.iYH.setVisibility(8);
+    this.iYG.setVisibility(0);
+    this.iYE.setVisibility(0);
+    this.iYF.setVisibility(0);
+    this.iYF.setText(2131756441);
+    this.iYG.setText(2131756439);
+    this.iYG.setOnClickListener(this.iYO);
     AppMethodBeat.o(109769);
   }
   
@@ -118,27 +129,27 @@ public class BindGoogleContactIntroUI
         return true;
       }
     });
-    this.iFv = ((ImageView)findViewById(2131304617));
-    this.iFw = ((TextView)findViewById(2131304618));
-    this.iFx = ((Button)findViewById(2131304616));
-    this.iFy = ((Button)findViewById(2131304633));
+    this.iYE = ((ImageView)findViewById(2131304617));
+    this.iYF = ((TextView)findViewById(2131304618));
+    this.iYG = ((Button)findViewById(2131304616));
+    this.iYH = ((Button)findViewById(2131304633));
     AppMethodBeat.o(109768);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(109770);
-    ac.i("MicroMsg.GoogleContact.BindGoogleContactIntroUI", "requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.GoogleContact.BindGoogleContactIntroUI", "requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt2 == -1)
     {
       if (paramInt1 == 2005)
       {
-        this.iFz = paramIntent.getBooleanExtra("gpservices", false);
+        this.iYI = paramIntent.getBooleanExtra("gpservices", false);
         AppMethodBeat.o(109770);
       }
     }
     else if (paramInt1 == 2005) {
-      this.iFz = paramIntent.getBooleanExtra("gpservices", false);
+      this.iYI = paramIntent.getBooleanExtra("gpservices", false);
     }
     AppMethodBeat.o(109770);
   }
@@ -148,9 +159,9 @@ public class BindGoogleContactIntroUI
     AppMethodBeat.i(109764);
     super.onCreate(paramBundle);
     setMMTitle(2131756442);
-    this.iFE = getIntent().getIntExtra("enter_scene", 0);
-    this.iFz = m.dg(this);
-    if (this.iFz) {
+    this.iYN = getIntent().getIntExtra("enter_scene", 0);
+    this.iYI = m.de(this);
+    if (this.iYI) {
       startActivityForResult(new Intent("com.tencent.mm.gms.CHECK_GP_SERVICES"), 2005);
     }
     AppMethodBeat.o(109764);
@@ -167,29 +178,29 @@ public class BindGoogleContactIntroUI
   {
     AppMethodBeat.i(109765);
     super.onResume();
-    this.iFB = ((String)com.tencent.mm.kernel.g.agR().agA().get(208903, null));
-    if (TextUtils.isEmpty(this.iFB))
+    this.iYK = ((String)g.ajC().ajl().get(208903, null));
+    if (TextUtils.isEmpty(this.iYK))
     {
-      this.iFA = false;
+      this.iYJ = false;
       initView();
-      if (!this.iFA) {
+      if (!this.iYJ) {
         break label139;
       }
-      this.iFy.setVisibility(0);
-      this.iFx.setVisibility(8);
-      this.iFw.setVisibility(0);
-      this.iFw.setText(getString(2131756440, new Object[] { this.iFB }));
-      this.iFy.setOnClickListener(this.iFG);
+      this.iYH.setVisibility(0);
+      this.iYG.setVisibility(8);
+      this.iYF.setVisibility(0);
+      this.iYF.setText(getString(2131756440, new Object[] { this.iYK }));
+      this.iYH.setOnClickListener(this.iYP);
     }
     for (;;)
     {
-      com.tencent.mm.kernel.g.agi().a(487, this);
+      g.aiU().a(487, this);
       AppMethodBeat.o(109765);
       return;
-      this.iFA = true;
+      this.iYJ = true;
       break;
       label139:
-      aOE();
+      aRQ();
     }
   }
   
@@ -200,23 +211,23 @@ public class BindGoogleContactIntroUI
     if (TextUtils.isEmpty(paramString)) {
       paramn = "";
     }
-    ac.i("MicroMsg.GoogleContact.BindGoogleContactIntroUI", "[onSceneEnd] errType:%d,errCode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramn });
-    if ((this.iFC != null) && (this.iFC.isShowing())) {
-      this.iFC.dismiss();
+    ad.i("MicroMsg.GoogleContact.BindGoogleContactIntroUI", "[onSceneEnd] errType:%d,errCode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramn });
+    if ((this.iYL != null) && (this.iYL.isShowing())) {
+      this.iYL.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      com.tencent.mm.kernel.g.agR().agA().set(208903, "");
-      com.tencent.mm.kernel.g.agR().agA().set(208901, "");
-      com.tencent.mm.kernel.g.agR().agA().set(208902, "");
-      com.tencent.mm.kernel.g.agR().agA().set(208905, Boolean.TRUE);
-      com.tencent.mm.kernel.g.agR().agA().faa();
-      aOE();
-      h.cg(this, getString(2131764549));
+      g.ajC().ajl().set(208903, "");
+      g.ajC().ajl().set(208901, "");
+      g.ajC().ajl().set(208902, "");
+      g.ajC().ajl().set(208905, Boolean.TRUE);
+      g.ajC().ajl().fqc();
+      aRQ();
+      h.cl(this, getString(2131764549));
       AppMethodBeat.o(109771);
       return;
     }
-    ac.i("MicroMsg.GoogleContact.BindGoogleContactIntroUI", "unbind failed");
+    ad.i("MicroMsg.GoogleContact.BindGoogleContactIntroUI", "unbind failed");
     Toast.makeText(this, 2131760030, 0).show();
     AppMethodBeat.o(109771);
   }
@@ -225,7 +236,7 @@ public class BindGoogleContactIntroUI
   {
     AppMethodBeat.i(109766);
     super.onStop();
-    com.tencent.mm.kernel.g.agi().b(487, this);
+    g.aiU().b(487, this);
     AppMethodBeat.o(109766);
   }
   
@@ -237,7 +248,7 @@ public class BindGoogleContactIntroUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindGoogleContactIntroUI
  * JD-Core Version:    0.7.0.1
  */

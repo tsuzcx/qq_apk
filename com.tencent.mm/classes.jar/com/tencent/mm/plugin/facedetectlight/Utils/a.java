@@ -6,15 +6,15 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class a
 {
   private boolean mHasStarted = false;
   private SensorManager mSensorManager;
-  private a qGF;
+  private a rqE;
   
-  public final void coL()
+  public final void cuq()
   {
     AppMethodBeat.i(104273);
     if (this.mHasStarted)
@@ -24,12 +24,12 @@ public final class a
     }
     this.mHasStarted = true;
     new StringBuilder("lightSensor has started:").append(this.mHasStarted);
-    this.mSensorManager = ((SensorManager)ai.getContext().getSystemService("sensor"));
+    this.mSensorManager = ((SensorManager)aj.getContext().getSystemService("sensor"));
     Sensor localSensor = this.mSensorManager.getDefaultSensor(5);
     if (localSensor != null)
     {
-      this.qGF = new a((byte)0);
-      this.mSensorManager.registerListener(this.qGF, localSensor, 3);
+      this.rqE = new a((byte)0);
+      this.mSensorManager.registerListener(this.rqE, localSensor, 3);
     }
     AppMethodBeat.o(104273);
   }
@@ -37,10 +37,10 @@ public final class a
   public final float getLux()
   {
     AppMethodBeat.i(104274);
-    if (this.qGF != null)
+    if (this.rqE != null)
     {
-      new StringBuilder("Light lux: ").append(a.a(this.qGF));
-      float f = a.a(this.qGF);
+      new StringBuilder("Light lux: ").append(a.a(this.rqE));
+      float f = a.a(this.rqE);
       AppMethodBeat.o(104274);
       return f;
     }
@@ -57,7 +57,7 @@ public final class a
       return;
     }
     this.mHasStarted = false;
-    this.mSensorManager.unregisterListener(this.qGF);
+    this.mSensorManager.unregisterListener(this.rqE);
     AppMethodBeat.o(104275);
   }
   
@@ -82,19 +82,19 @@ public final class a
   
   public static final class b
   {
-    private static a qGH;
+    private static a rqG;
     
     static
     {
       AppMethodBeat.i(104272);
-      qGH = new a((byte)0);
+      rqG = new a((byte)0);
       AppMethodBeat.o(104272);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectlight.Utils.a
  * JD-Core Version:    0.7.0.1
  */

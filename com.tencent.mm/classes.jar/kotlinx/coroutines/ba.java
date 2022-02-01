@@ -1,35 +1,11 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/DisposeOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "handle", "Lkotlinx/coroutines/DisposableHandle;", "(Lkotlinx/coroutines/DisposableHandle;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
-final class ba
-  extends h
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/DisposableHandle;", "", "dispose", "", "kotlinx-coroutines-core"})
+public abstract interface ba
 {
-  private final az LQD;
-  
-  public ba(az paramaz)
-  {
-    AppMethodBeat.i(118047);
-    this.LQD = paramaz;
-    AppMethodBeat.o(118047);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118046);
-    String str = "DisposeOnCancel[" + this.LQD + ']';
-    AppMethodBeat.o(118046);
-    return str;
-  }
-  
-  public final void u(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118044);
-    this.LQD.dispose();
-    AppMethodBeat.o(118044);
-  }
+  public abstract void dispose();
 }
 
 

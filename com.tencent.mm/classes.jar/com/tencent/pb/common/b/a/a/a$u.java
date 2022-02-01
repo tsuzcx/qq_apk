@@ -8,186 +8,186 @@ import java.util.Arrays;
 public final class a$u
   extends e
 {
-  public int JNl = 0;
-  public byte[] JNm = g.bGH;
-  public byte[] JNn = g.bGH;
-  public byte[] JNo = g.bGH;
-  public int JNp = 0;
-  public byte[] JNq = g.bGH;
-  public byte[] JNr = g.bGH;
-  public byte[] JNs = g.bGH;
-  public byte[] JNt = g.bGH;
-  public byte[] JNu = g.bGH;
-  public byte[] JNv = g.bGH;
-  public byte[] JNw = g.bGH;
-  public byte[] JNx = g.bGH;
-  public byte[] JNy = g.bGH;
-  public byte[] JNz = g.bGH;
-  public byte[] data = g.bGH;
+  public int LGU = 0;
+  public byte[] LGV = g.bQV;
+  public byte[] LGW = g.bQV;
+  public byte[] LGX = g.bQV;
+  public int LGY = 0;
+  public byte[] LGZ = g.bQV;
+  public byte[] LHa = g.bQV;
+  public byte[] LHb = g.bQV;
+  public byte[] LHc = g.bQV;
+  public byte[] LHd = g.bQV;
+  public byte[] LHe = g.bQV;
+  public byte[] LHf = g.bQV;
+  public byte[] LHg = g.bQV;
+  public byte[] LHh = g.bQV;
+  public byte[] LHi = g.bQV;
+  public byte[] data = g.bQV;
   public String iconUrl = "";
-  public String pBl = "";
+  public String qeQ = "";
   public int status = 0;
-  public int urh = 0;
+  public int vtM = 0;
   
   public a$u()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.JNl != 0) {
-      paramb.bw(1, this.JNl);
+    if (this.LGU != 0) {
+      paramb.by(1, this.LGU);
     }
-    if (!Arrays.equals(this.JNm, g.bGH)) {
-      paramb.b(2, this.JNm);
+    if (!Arrays.equals(this.LGV, g.bQV)) {
+      paramb.b(2, this.LGV);
     }
     if (!this.iconUrl.equals("")) {
       paramb.d(3, this.iconUrl);
     }
-    if (!Arrays.equals(this.JNn, g.bGH)) {
-      paramb.b(4, this.JNn);
+    if (!Arrays.equals(this.LGW, g.bQV)) {
+      paramb.b(4, this.LGW);
     }
-    if (!Arrays.equals(this.JNo, g.bGH)) {
-      paramb.b(5, this.JNo);
+    if (!Arrays.equals(this.LGX, g.bQV)) {
+      paramb.b(5, this.LGX);
     }
-    if (this.urh != 0) {
-      paramb.bw(6, this.urh);
+    if (this.vtM != 0) {
+      paramb.by(6, this.vtM);
     }
-    if (!Arrays.equals(this.data, g.bGH)) {
+    if (!Arrays.equals(this.data, g.bQV)) {
       paramb.b(7, this.data);
     }
-    if (this.JNp != 0) {
-      paramb.bw(8, this.JNp);
+    if (this.LGY != 0) {
+      paramb.by(8, this.LGY);
     }
-    if (!Arrays.equals(this.JNq, g.bGH)) {
-      paramb.b(9, this.JNq);
+    if (!Arrays.equals(this.LGZ, g.bQV)) {
+      paramb.b(9, this.LGZ);
     }
-    if (!this.pBl.equals("")) {
-      paramb.d(10, this.pBl);
+    if (!this.qeQ.equals("")) {
+      paramb.d(10, this.qeQ);
     }
-    if (!Arrays.equals(this.JNr, g.bGH)) {
-      paramb.b(11, this.JNr);
+    if (!Arrays.equals(this.LHa, g.bQV)) {
+      paramb.b(11, this.LHa);
     }
-    if (!Arrays.equals(this.JNs, g.bGH)) {
-      paramb.b(12, this.JNs);
+    if (!Arrays.equals(this.LHb, g.bQV)) {
+      paramb.b(12, this.LHb);
     }
-    if (!Arrays.equals(this.JNt, g.bGH)) {
-      paramb.b(13, this.JNt);
+    if (!Arrays.equals(this.LHc, g.bQV)) {
+      paramb.b(13, this.LHc);
     }
-    if (!Arrays.equals(this.JNu, g.bGH)) {
-      paramb.b(14, this.JNu);
+    if (!Arrays.equals(this.LHd, g.bQV)) {
+      paramb.b(14, this.LHd);
     }
-    if (!Arrays.equals(this.JNv, g.bGH)) {
-      paramb.b(15, this.JNv);
+    if (!Arrays.equals(this.LHe, g.bQV)) {
+      paramb.b(15, this.LHe);
     }
-    if (!Arrays.equals(this.JNw, g.bGH)) {
-      paramb.b(16, this.JNw);
+    if (!Arrays.equals(this.LHf, g.bQV)) {
+      paramb.b(16, this.LHf);
     }
-    if (!Arrays.equals(this.JNx, g.bGH)) {
-      paramb.b(17, this.JNx);
+    if (!Arrays.equals(this.LHg, g.bQV)) {
+      paramb.b(17, this.LHg);
     }
-    if (!Arrays.equals(this.JNy, g.bGH)) {
-      paramb.b(18, this.JNy);
+    if (!Arrays.equals(this.LHh, g.bQV)) {
+      paramb.b(18, this.LHh);
     }
-    if (!Arrays.equals(this.JNz, g.bGH)) {
-      paramb.b(19, this.JNz);
+    if (!Arrays.equals(this.LHi, g.bQV)) {
+      paramb.b(19, this.LHi);
     }
     if (this.status != 0) {
-      paramb.bw(20, this.status);
+      paramb.by(20, this.status);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.JNl != 0) {
-      i = j + b.by(1, this.JNl);
+    if (this.LGU != 0) {
+      i = j + b.bA(1, this.LGU);
     }
     j = i;
-    if (!Arrays.equals(this.JNm, g.bGH)) {
-      j = i + b.c(2, this.JNm);
+    if (!Arrays.equals(this.LGV, g.bQV)) {
+      j = i + b.c(2, this.LGV);
     }
     i = j;
     if (!this.iconUrl.equals("")) {
       i = j + b.e(3, this.iconUrl);
     }
     j = i;
-    if (!Arrays.equals(this.JNn, g.bGH)) {
-      j = i + b.c(4, this.JNn);
+    if (!Arrays.equals(this.LGW, g.bQV)) {
+      j = i + b.c(4, this.LGW);
     }
     i = j;
-    if (!Arrays.equals(this.JNo, g.bGH)) {
-      i = j + b.c(5, this.JNo);
+    if (!Arrays.equals(this.LGX, g.bQV)) {
+      i = j + b.c(5, this.LGX);
     }
     j = i;
-    if (this.urh != 0) {
-      j = i + b.by(6, this.urh);
+    if (this.vtM != 0) {
+      j = i + b.bA(6, this.vtM);
     }
     i = j;
-    if (!Arrays.equals(this.data, g.bGH)) {
+    if (!Arrays.equals(this.data, g.bQV)) {
       i = j + b.c(7, this.data);
     }
     j = i;
-    if (this.JNp != 0) {
-      j = i + b.by(8, this.JNp);
+    if (this.LGY != 0) {
+      j = i + b.bA(8, this.LGY);
     }
     i = j;
-    if (!Arrays.equals(this.JNq, g.bGH)) {
-      i = j + b.c(9, this.JNq);
+    if (!Arrays.equals(this.LGZ, g.bQV)) {
+      i = j + b.c(9, this.LGZ);
     }
     j = i;
-    if (!this.pBl.equals("")) {
-      j = i + b.e(10, this.pBl);
+    if (!this.qeQ.equals("")) {
+      j = i + b.e(10, this.qeQ);
     }
     i = j;
-    if (!Arrays.equals(this.JNr, g.bGH)) {
-      i = j + b.c(11, this.JNr);
+    if (!Arrays.equals(this.LHa, g.bQV)) {
+      i = j + b.c(11, this.LHa);
     }
     j = i;
-    if (!Arrays.equals(this.JNs, g.bGH)) {
-      j = i + b.c(12, this.JNs);
+    if (!Arrays.equals(this.LHb, g.bQV)) {
+      j = i + b.c(12, this.LHb);
     }
     i = j;
-    if (!Arrays.equals(this.JNt, g.bGH)) {
-      i = j + b.c(13, this.JNt);
+    if (!Arrays.equals(this.LHc, g.bQV)) {
+      i = j + b.c(13, this.LHc);
     }
     j = i;
-    if (!Arrays.equals(this.JNu, g.bGH)) {
-      j = i + b.c(14, this.JNu);
+    if (!Arrays.equals(this.LHd, g.bQV)) {
+      j = i + b.c(14, this.LHd);
     }
     i = j;
-    if (!Arrays.equals(this.JNv, g.bGH)) {
-      i = j + b.c(15, this.JNv);
+    if (!Arrays.equals(this.LHe, g.bQV)) {
+      i = j + b.c(15, this.LHe);
     }
     j = i;
-    if (!Arrays.equals(this.JNw, g.bGH)) {
-      j = i + b.c(16, this.JNw);
+    if (!Arrays.equals(this.LHf, g.bQV)) {
+      j = i + b.c(16, this.LHf);
     }
     i = j;
-    if (!Arrays.equals(this.JNx, g.bGH)) {
-      i = j + b.c(17, this.JNx);
+    if (!Arrays.equals(this.LHg, g.bQV)) {
+      i = j + b.c(17, this.LHg);
     }
     j = i;
-    if (!Arrays.equals(this.JNy, g.bGH)) {
-      j = i + b.c(18, this.JNy);
+    if (!Arrays.equals(this.LHh, g.bQV)) {
+      j = i + b.c(18, this.LHh);
     }
     i = j;
-    if (!Arrays.equals(this.JNz, g.bGH)) {
-      i = j + b.c(19, this.JNz);
+    if (!Arrays.equals(this.LHi, g.bQV)) {
+      i = j + b.c(19, this.LHi);
     }
     j = i;
     if (this.status != 0) {
-      j = i + b.by(20, this.status);
+      j = i + b.bA(20, this.status);
     }
     return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.u
  * JD-Core Version:    0.7.0.1
  */

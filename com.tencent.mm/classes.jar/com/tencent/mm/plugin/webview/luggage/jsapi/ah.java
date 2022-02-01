@@ -1,44 +1,87 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.e.h;
-import com.tencent.e.i;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a.a;
-import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public class ah
-  extends bn<n>
+  extends br<com.tencent.mm.plugin.webview.luggage.g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
-  
-  public final void b(final a.a parama)
+  public final void a(Context paramContext, String paramString, bq.a parama)
   {
-    AppMethodBeat.i(78579);
-    parama = parama.bWS.bVY;
-    h.JZN.aS(new Runnable()
+    int j = 1;
+    AppMethodBeat.i(78578);
+    ad.i("MicroMsg.JsApiLaunchMiniProgram", "invoke");
+    JSONObject localJSONObject = com.tencent.mm.plugin.webview.luggage.c.b.Pe(paramString);
+    if (localJSONObject == null)
     {
-      public final void run()
+      ad.e("MicroMsg.JsApiLaunchMiniProgram", "data is null");
+      parama.f("fail_null_data", null);
+      AppMethodBeat.o(78578);
+      return;
+    }
+    String str2 = localJSONObject.optString("targetAppId");
+    String str3 = localJSONObject.optString("currentUrl");
+    String str1 = localJSONObject.optString("preVerifyAppId");
+    paramString = str1;
+    if (bt.isNullOrNil(str1)) {
+      paramString = localJSONObject.optString("referrerAppId");
+    }
+    if (bt.isNullOrNil(str2))
+    {
+      parama.f("invalid_targetAppId", null);
+      AppMethodBeat.o(78578);
+      return;
+    }
+    if (bt.isNullOrNil(paramString))
+    {
+      parama.f("invalid_referrerAppId", null);
+      AppMethodBeat.o(78578);
+      return;
+    }
+    str1 = bt.nullAsNil(localJSONObject.optString("envVersion"));
+    int i = -1;
+    switch (str1.hashCode())
+    {
+    default: 
+      switch (i)
       {
-        AppMethodBeat.i(188301);
-        ac.i("MicroMsg.JsApiLog", "jslog : " + parama.optString("msg"));
-        AppMethodBeat.o(188301);
       }
-    });
-    AppMethodBeat.o(78579);
+      break;
+    }
+    for (j = 0;; j = 2)
+    {
+      str1 = localJSONObject.optString("path");
+      ((o)com.tencent.mm.kernel.g.ab(o.class)).b(paramContext, str3, paramString, str2, j, str1, 0);
+      parama.f(null, null);
+      AppMethodBeat.o(78578);
+      return;
+      if (!str1.equals("develop")) {
+        break;
+      }
+      i = 0;
+      break;
+      if (!str1.equals("trial")) {
+        break;
+      }
+      i = 1;
+      break;
+    }
   }
   
-  public final int bYk()
+  public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.webview.luggage.g>.a paramb) {}
+  
+  public final int ccO()
   {
-    return 0;
+    return 2;
   }
   
   public final String name()
   {
-    return "log";
+    return "launchMiniProgram";
   }
 }
 

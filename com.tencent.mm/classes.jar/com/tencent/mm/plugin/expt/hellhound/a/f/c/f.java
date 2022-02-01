@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class f
 {
-  public static String ckW()
+  public static String cqk()
   {
     AppMethodBeat.i(122156);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -15,7 +15,7 @@ public final class f
     }
     for (;;)
     {
-      localObject = d.abp((String)localObject);
+      localObject = d.afc((String)localObject);
       AppMethodBeat.o(122156);
       return localObject;
       String str = com.tencent.mm.plugin.expt.hellhound.core.a.b.getString("mmkv_key_hellSenPageFlRptChe_".concat(String.valueOf(i)));
@@ -31,7 +31,7 @@ public final class f
     }
   }
   
-  public static void te(long paramLong)
+  public static void va(long paramLong)
   {
     AppMethodBeat.i(184375);
     String str2 = String.valueOf(paramLong);
@@ -50,7 +50,7 @@ public final class f
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("HellSessionPageDao", localException, "habbyge-mali, HellSessionReportCache.writeBackOfFlow", new Object[0]);
+        ad.printErrStackTrace("HABBYGE-MALI.HellSessionPageDao", localException, "HellSessionReportCache.writeBackOfFlow", new Object[0]);
       }
     }
     AppMethodBeat.o(184375);

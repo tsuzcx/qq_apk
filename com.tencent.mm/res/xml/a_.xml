@@ -2,6 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/awl" />
     <PreferenceSmallCategory />
+    <Preference android:key="contact_info_qqmailhelper_account" android:layout="@layout/aop" android:title="@string/hxw" />
     <Preference android:key="contact_info_qqmailhelper_view" android:layout="@layout/aop" android:title="@string/b8z" />
     <Preference android:key="contact_info_qqmailhelper_compose" android:layout="@layout/aop" android:title="@string/b8s" />
     <CheckBoxPreference android:key="contact_info_qqmailhelper_recv_remind" android:layout="@layout/aop" android:persistent="false" android:title="@string/b8v" />

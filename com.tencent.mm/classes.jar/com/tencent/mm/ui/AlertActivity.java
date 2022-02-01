@@ -19,14 +19,14 @@ import com.tencent.mm.ui.widget.a.d.a;
 public class AlertActivity
   extends AppCompatActivity
 {
-  private static d.a DqR;
-  private boolean Hfc = false;
-  private DialogInterface.OnDismissListener dwd;
-  private DialogInterface.OnCancelListener xbq;
+  private static d.a EVU;
+  private boolean ISt = false;
+  private DialogInterface.OnDismissListener dIn;
+  private DialogInterface.OnCancelListener yps;
   
   public static void a(d.a parama)
   {
-    DqR = parama;
+    EVU = parama;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -38,14 +38,14 @@ public class AlertActivity
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setStatusBarColor(getResources().getColor(17170445));
     }
-    this.Hfc = getIntent().getBooleanExtra("dialog_show_top", false);
+    this.ISt = getIntent().getBooleanExtra("dialog_show_top", false);
     Window localWindow;
-    if (DqR != null)
+    if (EVU != null)
     {
-      DqR.mContext = this;
-      this.dwd = DqR.Jfi.VX;
-      this.xbq = DqR.Jfi.VW;
-      DqR.a(new DialogInterface.OnDismissListener()
+      EVU.mContext = this;
+      this.dIn = EVU.KWr.XM;
+      this.yps = EVU.KWr.XL;
+      EVU.a(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -57,7 +57,7 @@ public class AlertActivity
           AppMethodBeat.o(159081);
         }
       });
-      DqR.e(new DialogInterface.OnCancelListener()
+      EVU.e(new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
@@ -69,8 +69,8 @@ public class AlertActivity
           AppMethodBeat.o(159082);
         }
       });
-      paramBundle = DqR.fvp();
-      if (this.Hfc)
+      paramBundle = EVU.fMb();
+      if (this.ISt)
       {
         localWindow = paramBundle.getWindow();
         if (localWindow != null)
@@ -84,11 +84,11 @@ public class AlertActivity
     }
     for (;;)
     {
-      an.d("MicroMsg.AlertActivity", "show top window not null!!", new Object[0]);
+      ap.d("MicroMsg.AlertActivity", "show top window not null!!", new Object[0]);
       paramBundle.show();
       if (!paramBundle.isShowing())
       {
-        an.e("MicroMsg.AlertActivity", "show dialog FAILED, finish AlertActivity!", new Object[0]);
+        ap.e("MicroMsg.AlertActivity", "show dialog FAILED, finish AlertActivity!", new Object[0]);
         finish();
       }
       AppMethodBeat.o(159083);
@@ -102,7 +102,7 @@ public class AlertActivity
   {
     AppMethodBeat.i(159085);
     super.onDestroy();
-    DqR = null;
+    EVU = null;
     AppMethodBeat.o(159085);
   }
   

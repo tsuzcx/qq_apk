@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public ArrayList<PayUSecurityQuestion> BTv;
+  public ArrayList<PayUSecurityQuestion> DtP;
   
   public d()
   {
@@ -19,7 +19,7 @@ public final class d
     AppMethodBeat.o(72213);
   }
   
-  public final int eqK()
+  public final int eEK()
   {
     return 11;
   }
@@ -29,7 +29,7 @@ public final class d
     AppMethodBeat.i(72214);
     if (paramJSONObject != null)
     {
-      this.BTv = new ArrayList();
+      this.DtP = new ArrayList();
       paramString = paramJSONObject.optJSONArray("security_question_list");
       if (paramString != null)
       {
@@ -40,7 +40,7 @@ public final class d
           if (paramJSONObject != null)
           {
             paramJSONObject = new PayUSecurityQuestion(paramJSONObject.optString("id"), paramJSONObject.optString("description"));
-            this.BTv.add(paramJSONObject);
+            this.DtP.add(paramJSONObject);
           }
           paramInt += 1;
         }

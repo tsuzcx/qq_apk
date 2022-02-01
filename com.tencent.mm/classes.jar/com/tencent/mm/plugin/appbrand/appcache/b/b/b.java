@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
-import com.tencent.mm.protocal.protobuf.ebx;
+import com.tencent.mm.protocal.protobuf.eid;
 
 public class b
-  extends a<Boolean, ebx>
+  extends a<Boolean, eid>
 {
-  final String aXD()
+  final String bbb()
   {
     return "CmdBlockCgiRequest";
   }

@@ -2,6 +2,7 @@ package android.support.transition;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
+import android.animation.TypeEvaluator;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -18,9 +19,9 @@ import android.widget.ImageView.ScaleType;
 
 final class t
 {
-  private static final boolean AZ;
-  private static final boolean Ba;
-  private static final boolean Bb;
+  private static final boolean CR;
+  private static final boolean CS;
+  private static final boolean CT;
   
   static
   {
@@ -28,13 +29,13 @@ final class t
     if (Build.VERSION.SDK_INT >= 19)
     {
       bool1 = true;
-      AZ = bool1;
+      CR = bool1;
       if (Build.VERSION.SDK_INT < 18) {
         break label50;
       }
       bool1 = true;
       label26:
-      Ba = bool1;
+      CS = bool1;
       if (Build.VERSION.SDK_INT < 28) {
         break label55;
       }
@@ -43,7 +44,7 @@ final class t
     label55:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      Bb = bool1;
+      CT = bool1;
       return;
       bool1 = false;
       break;
@@ -81,7 +82,7 @@ final class t
     localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     int i;
     boolean bool;
-    if (AZ) {
+    if (CR) {
       if (!paramView1.isAttachedToWindow())
       {
         i = 1;
@@ -95,7 +96,7 @@ final class t
     for (;;)
     {
       j = 0;
-      if ((!Ba) || (i == 0)) {
+      if ((!CS) || (i == 0)) {
         break label496;
       }
       if (bool) {
@@ -136,7 +137,7 @@ final class t
           i2 = Math.round(i2 * f);
           localMatrix.postTranslate(-localRectF.left, -localRectF.top);
           localMatrix.postScale(f, f);
-          if (!Bb) {
+          if (!CT) {
             break label459;
           }
           paramView2 = new Picture();
@@ -150,7 +151,7 @@ final class t
       for (;;)
       {
         localObject = paramView2;
-        if (!Ba) {
+        if (!CS) {
           break;
         }
         localObject = paramView2;
@@ -171,10 +172,18 @@ final class t
       localViewGroup = null;
     }
   }
+  
+  static final class a
+    implements TypeEvaluator<Matrix>
+  {
+    final Matrix Av = new Matrix();
+    final float[] CU = new float[9];
+    final float[] CV = new float[9];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.t
  * JD-Core Version:    0.7.0.1
  */

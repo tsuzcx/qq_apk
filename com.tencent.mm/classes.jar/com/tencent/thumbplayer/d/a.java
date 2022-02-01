@@ -6,13 +6,13 @@ import java.io.Serializable;
 public final class a
   implements e, Serializable
 {
-  private int KgM;
-  private int KgN;
+  private int Mac;
+  private int Mad;
   private long mEndTime;
   private long mStartPosition;
   private long mStartTime;
   
-  public final void BX(long paramLong)
+  public final void EZ(long paramLong)
   {
     this.mStartPosition = paramLong;
   }
@@ -25,30 +25,30 @@ public final class a
     if (!(paramObject instanceof a)) {
       return false;
     }
-    return (this.KgN == ((a)paramObject).KgN) && (this.KgM == ((a)paramObject).KgM);
+    return (this.Mad == ((a)paramObject).Mad) && (this.Mac == ((a)paramObject).Mac);
   }
   
-  public final int fFp()
-  {
-    return this.KgN;
-  }
-  
-  public final long fFq()
+  public final long esj()
   {
     return this.mStartTime;
   }
   
-  public final long fFr()
+  public final long esk()
   {
     return this.mEndTime;
   }
   
-  public final long fFs()
+  public final int fWG()
+  {
+    return this.Mad;
+  }
+  
+  public final long fWH()
   {
     return this.mEndTime - this.mStartTime;
   }
   
-  public final long fFt()
+  public final long fWI()
   {
     return this.mStartPosition;
   }
@@ -60,7 +60,7 @@ public final class a
   
   public final int getMediaType()
   {
-    return this.KgM;
+    return this.Mac;
   }
   
   public final String getUrl()

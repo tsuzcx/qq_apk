@@ -11,25 +11,25 @@ import com.tencent.mm.ui.widget.MMTextView;
 final class i$a
   extends c.a
 {
-  ImageView Ijf;
-  MMTextView IkO;
-  View ifK;
+  ImageView JZD;
+  MMTextView Kbm;
+  View ize;
   
   public final c.a z(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(36886);
-    super.fX(paramView);
-    this.fAz = ((TextView)paramView.findViewById(2131298178));
-    this.xpH = ((TextView)paramView.findViewById(2131298185));
-    this.IkO = ((MMTextView)paramView.findViewById(2131298073));
-    this.ijt = ((CheckBox)paramView.findViewById(2131298068));
-    this.gGk = paramView.findViewById(2131298147);
-    this.ifK = paramView.findViewById(2131298071);
+    super.gn(paramView);
+    this.fTP = ((TextView)paramView.findViewById(2131298178));
+    this.yEk = ((TextView)paramView.findViewById(2131298185));
+    this.Kbm = ((MMTextView)paramView.findViewById(2131298073));
+    this.iCK = ((CheckBox)paramView.findViewById(2131298068));
+    this.gZU = paramView.findViewById(2131298147);
+    this.ize = paramView.findViewById(2131298071);
     if (!paramBoolean)
     {
-      this.Ijf = ((ImageView)paramView.findViewById(2131298176));
-      this.IhW = ((ImageView)paramView.findViewById(2131298174));
-      this.vYf = ((ProgressBar)paramView.findViewById(2131306220));
+      this.JZD = ((ImageView)paramView.findViewById(2131298176));
+      this.JYs = ((ImageView)paramView.findViewById(2131298174));
+      this.xfR = ((ProgressBar)paramView.findViewById(2131306220));
     }
     AppMethodBeat.o(36886);
     return this;

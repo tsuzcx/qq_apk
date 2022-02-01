@@ -1,15 +1,17 @@
 package com.tencent.mm.wallet_core.d;
 
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class c<T extends d>
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  public com.tencent.mm.ak.g JFO;
-  T JFP;
+  public f LyS;
+  T LyT;
   public int rtType;
   
   protected abstract void a(d paramd);
@@ -18,24 +20,24 @@ public abstract class c<T extends d>
   
   public final void b(d paramd)
   {
-    ac.i("MicroMsg.IDelayQueryOrder", "doScene rtType %s", new Object[] { Integer.valueOf(this.rtType) });
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(this.rtType, this);
+    ad.i("MicroMsg.IDelayQueryOrder", "doScene rtType %s", new Object[] { Integer.valueOf(this.rtType) });
+    g.ajD();
+    g.ajB().gAO.a(this.rtType, this);
     a(paramd);
   }
   
-  public final void dPE()
+  public final void ebV()
   {
-    ac.i("MicroMsg.IDelayQueryOrder", "onDestory rtType %s", new Object[] { Integer.valueOf(this.rtType) });
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(this.rtType, this);
+    ad.i("MicroMsg.IDelayQueryOrder", "onDestory rtType %s", new Object[] { Integer.valueOf(this.rtType) });
+    g.ajD();
+    g.ajB().gAO.b(this.rtType, this);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    ac.d("MicroMsg.IDelayQueryOrder", "errType: %d, errCode: %d, errMsg: %s scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
-    if (((paramn instanceof d)) && (!a(paramInt1, paramInt2, (d)paramn)) && (this.JFO != null) && (this.JFP != null) && ((this.JFP instanceof n))) {
-      this.JFO.onSceneEnd(paramInt1, paramInt2, paramString, (n)this.JFP);
+    ad.d("MicroMsg.IDelayQueryOrder", "errType: %d, errCode: %d, errMsg: %s scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
+    if (((paramn instanceof d)) && (!a(paramInt1, paramInt2, (d)paramn)) && (this.LyS != null) && (this.LyT != null) && ((this.LyT instanceof n))) {
+      this.LyS.onSceneEnd(paramInt1, paramInt2, paramString, (n)this.LyT);
     }
   }
 }

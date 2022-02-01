@@ -3,204 +3,417 @@ package com.tencent.mm.plugin.sns.waid;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.UriMatcher;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.database.MatrixCursor.RowBuilder;
 import android.net.Uri;
+import android.os.Binder;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.text.TextUtils;
+import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ce;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import org.json.JSONArray;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.ArrayList;
+import java.util.Iterator;
 import org.json.JSONObject;
 
 public class WaidProvider
   extends ContentProvider
 {
-  private static final Uri AUTHORITY_URI;
-  private static String[] zmA;
-  public static final Uri zmx;
-  public static final Uri zmy;
-  private static String[] zmz;
-  private d zmB;
-  private d zmC;
-  private UriMatcher zmD;
-  private f zmE;
-  private boolean zmF;
+  private static String[] AEp;
+  private UriMatcher AEq;
+  private long AEr;
+  private int AEs;
+  private a AEt;
+  private volatile boolean AEu;
+  private final Object mLock;
   
   static
   {
     AppMethodBeat.i(100606);
-    Uri localUri = Uri.parse("content://com.tencent.mm.waidProvider");
-    AUTHORITY_URI = localUri;
-    zmx = Uri.withAppendedPath(localUri, "waid");
-    zmy = Uri.withAppendedPath(AUTHORITY_URI, "cfg");
-    zmz = new String[] { "waid" };
-    zmA = new String[] { "pkg", "waid", "expire", "timeStamp", "type" };
+    AEp = new String[] { "pkg", "appWaid", "errCode" };
     AppMethodBeat.o(100606);
   }
   
   public WaidProvider()
   {
     AppMethodBeat.i(100598);
-    this.zmD = new UriMatcher(-1);
-    this.zmF = false;
+    this.AEq = new UriMatcher(-1);
+    this.AEs = 0;
+    this.mLock = new Object();
+    this.AEu = false;
     AppMethodBeat.o(100598);
   }
   
-  private void Qg(int paramInt)
+  /* Error */
+  private boolean a(PInt arg1)
   {
-    AppMethodBeat.i(100605);
-    JSONObject localJSONObject = new JSONObject();
-    try
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_2
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: ldc 71
+    //   6: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: ldc 73
+    //   11: new 75	java/lang/StringBuilder
+    //   14: dup
+    //   15: ldc 77
+    //   17: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   20: invokestatic 86	com/tencent/mm/plugin/sns/waid/b:efn	()Z
+    //   23: invokevirtual 90	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   26: ldc 92
+    //   28: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: aload_0
+    //   32: getfield 66	com/tencent/mm/plugin/sns/waid/WaidProvider:AEu	Z
+    //   35: invokevirtual 90	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokestatic 104	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   44: invokestatic 86	com/tencent/mm/plugin/sns/waid/b:efn	()Z
+    //   47: ifeq +17 -> 64
+    //   50: aload_0
+    //   51: iconst_1
+    //   52: putfield 66	com/tencent/mm/plugin/sns/waid/WaidProvider:AEu	Z
+    //   55: ldc 71
+    //   57: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   60: aload_0
+    //   61: monitorexit
+    //   62: iload_2
+    //   63: ireturn
+    //   64: aload_0
+    //   65: iconst_0
+    //   66: putfield 66	com/tencent/mm/plugin/sns/waid/WaidProvider:AEu	Z
+    //   69: aload_1
+    //   70: iconst_1
+    //   71: putfield 109	com/tencent/mm/pointers/PInt:value	I
+    //   74: new 9	com/tencent/mm/plugin/sns/waid/WaidProvider$b
+    //   77: dup
+    //   78: aload_0
+    //   79: invokespecial 112	com/tencent/mm/plugin/sns/waid/WaidProvider$b:<init>	(Lcom/tencent/mm/plugin/sns/waid/WaidProvider;)V
+    //   82: invokevirtual 115	com/tencent/mm/plugin/sns/waid/WaidProvider$b:start	()V
+    //   85: ldc 73
+    //   87: ldc 117
+    //   89: invokestatic 104	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   92: invokestatic 123	java/lang/System:currentTimeMillis	()J
+    //   95: lstore_3
+    //   96: aload_0
+    //   97: getfield 66	com/tencent/mm/plugin/sns/waid/WaidProvider:AEu	Z
+    //   100: ifne +69 -> 169
+    //   103: aload_0
+    //   104: getfield 64	com/tencent/mm/plugin/sns/waid/WaidProvider:mLock	Ljava/lang/Object;
+    //   107: astore_1
+    //   108: aload_1
+    //   109: monitorenter
+    //   110: aload_0
+    //   111: getfield 64	com/tencent/mm/plugin/sns/waid/WaidProvider:mLock	Ljava/lang/Object;
+    //   114: invokevirtual 126	java/lang/Object:wait	()V
+    //   117: aload_1
+    //   118: monitorexit
+    //   119: goto -23 -> 96
+    //   122: astore 5
+    //   124: aload_1
+    //   125: monitorexit
+    //   126: ldc 71
+    //   128: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   131: aload 5
+    //   133: athrow
+    //   134: astore_1
+    //   135: aload_0
+    //   136: monitorexit
+    //   137: aload_1
+    //   138: athrow
+    //   139: astore 5
+    //   141: ldc 73
+    //   143: new 75	java/lang/StringBuilder
+    //   146: dup
+    //   147: ldc 128
+    //   149: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   152: aload 5
+    //   154: invokevirtual 129	java/lang/Exception:toString	()Ljava/lang/String;
+    //   157: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   166: goto -49 -> 117
+    //   169: ldc 73
+    //   171: new 75	java/lang/StringBuilder
+    //   174: dup
+    //   175: ldc 134
+    //   177: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   180: invokestatic 123	java/lang/System:currentTimeMillis	()J
+    //   183: lload_3
+    //   184: lsub
+    //   185: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   188: ldc 139
+    //   190: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   193: invokestatic 123	java/lang/System:currentTimeMillis	()J
+    //   196: aload_0
+    //   197: getfield 141	com/tencent/mm/plugin/sns/waid/WaidProvider:AEr	J
+    //   200: lsub
+    //   201: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   204: ldc 143
+    //   206: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: aload_0
+    //   210: getfield 59	com/tencent/mm/plugin/sns/waid/WaidProvider:AEs	I
+    //   213: invokevirtual 146	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   216: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   219: invokestatic 104	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   222: aload_0
+    //   223: aload_0
+    //   224: getfield 59	com/tencent/mm/plugin/sns/waid/WaidProvider:AEs	I
+    //   227: iconst_1
+    //   228: iadd
+    //   229: putfield 59	com/tencent/mm/plugin/sns/waid/WaidProvider:AEs	I
+    //   232: invokestatic 86	com/tencent/mm/plugin/sns/waid/b:efn	()Z
+    //   235: ifne +25 -> 260
+    //   238: aload_0
+    //   239: iconst_0
+    //   240: putfield 66	com/tencent/mm/plugin/sns/waid/WaidProvider:AEu	Z
+    //   243: ldc 73
+    //   245: ldc 148
+    //   247: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   250: ldc 71
+    //   252: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   255: iconst_0
+    //   256: istore_2
+    //   257: goto -197 -> 60
+    //   260: ldc 73
+    //   262: ldc 150
+    //   264: invokestatic 104	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   267: ldc 71
+    //   269: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   272: goto -212 -> 60
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	275	0	this	WaidProvider
+    //   1	256	2	bool	boolean
+    //   95	89	3	l	long
+    //   122	10	5	localObject	Object
+    //   139	14	5	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   110	117	122	finally
+    //   117	119	122	finally
+    //   124	126	122	finally
+    //   141	166	122	finally
+    //   4	60	134	finally
+    //   64	96	134	finally
+    //   96	110	134	finally
+    //   126	134	134	finally
+    //   169	255	134	finally
+    //   260	272	134	finally
+    //   110	117	139	java/lang/Exception
+  }
+  
+  private static MatrixCursor ae(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(198643);
+    MatrixCursor localMatrixCursor = new MatrixCursor(AEp, 1);
+    MatrixCursor.RowBuilder localRowBuilder = localMatrixCursor.newRow();
+    localRowBuilder.add("pkg", paramString1);
+    localRowBuilder.add("appWaid", paramString2);
+    localRowBuilder.add("errCode", Integer.valueOf(paramInt));
+    AppMethodBeat.o(198643);
+    return localMatrixCursor;
+  }
+  
+  private Cursor b(Uri paramUri, String[] paramArrayOfString)
+  {
+    int i = 1;
+    AppMethodBeat.i(198642);
+    for (;;)
     {
-      str1 = bs.nullAsNil(getCallingPackage());
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      Object localObject1;
+      try
       {
+        long l = System.currentTimeMillis();
+        String str = "";
+        Object localObject2 = "";
+        a locala = efo();
+        localObject1 = localObject2;
+        if (paramArrayOfString != null)
+        {
+          localObject1 = localObject2;
+          if (paramArrayOfString.length > 0) {
+            localObject1 = bt.nullAsNil(paramArrayOfString[0]).trim();
+          }
+        }
+        ad.i("ad.waid.WaidProvider", "handleQuery queryPkg=" + (String)localObject1 + ", callingPkg=" + locala.AEy + ", thread.hash=" + Thread.currentThread().hashCode());
+        localObject2 = new PInt();
+        if (!a((PInt)localObject2))
+        {
+          ad.e("ad.waid.WaidProvider", "checkWXEnv failed");
+          paramUri = ae("", "", -1);
+          AppMethodBeat.o(198642);
+          return paramUri;
+        }
+        int j;
+        int k;
+        int m;
+        if (TextUtils.isEmpty(locala.AEy))
+        {
+          ad.e("ad.waid.WaidProvider", "handleQuery callingPkg empty");
+          paramUri = "";
+          paramArrayOfString = str;
+          j = (int)(System.currentTimeMillis() - l);
+          str = locala.AEy;
+          k = locala.AEx;
+          m = ((PInt)localObject2).value;
+          if (!b.efn())
+          {
+            ad.e("ad.waid.WaidReporter", "reportQuery isWxEnvInitDone==false");
+            c.a(locala, (String)localObject1);
+            paramUri = ae(paramUri, bt.nullAsNil(paramArrayOfString), i);
+            AppMethodBeat.o(198642);
+            return paramUri;
+          }
+        }
+        else
+        {
+          if (!b.efl())
+          {
+            ad.e("ad.waid.WaidProvider", "handleQuery isExptWaidEnable==false");
+            paramUri = "";
+            i = 2;
+            paramArrayOfString = str;
+            continue;
+          }
+          if (this.AEq.match(paramUri) != 1)
+          {
+            ad.e("ad.waid.WaidProvider", "handleQuery uriMatch failed");
+            i = 3;
+            paramUri = "";
+            paramArrayOfString = str;
+            continue;
+          }
+          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+            break label589;
+          }
+          paramUri = locala.AEy;
+          if (!locala.AEy.equals(paramUri))
+          {
+            ad.e("ad.waid.WaidProvider", "handleQuery queryPkg!=callingPkg, queryPkg=" + paramUri + ", callingPkg=" + locala.AEy);
+            i = 4;
+            paramArrayOfString = str;
+            continue;
+          }
+          paramArrayOfString = b.aHq(paramUri);
+          ad.i("ad.waid.WaidProvider", "handleQuery, appWaid=".concat(String.valueOf(paramArrayOfString)));
+          boolean bool = TextUtils.isEmpty(paramArrayOfString);
+          if (!bool) {
+            break label584;
+          }
+          i = 5;
+          continue;
+        }
         try
         {
-          String str1;
-          localJSONObject.put("srcPkg", str1);
-          localJSONObject.put("appWaidNum", this.zmB.getCount());
-          localJSONObject.put("pubWaidNum", this.zmC.getCount());
-          ac.i("ad.waid.WaidProvider", "reportModify, action=" + paramInt + ", data=" + localJSONObject.toString() + ", isKernelInted=" + this.zmF);
-          if (this.zmF) {
-            com.tencent.mm.plugin.report.service.h.wUl.f(18666, new Object[] { Integer.valueOf(paramInt), localJSONObject.toString() });
-          }
-          AppMethodBeat.o(100605);
-          return;
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("callingPkg", str);
+          ((JSONObject)localObject2).put("callingPkgType", k);
+          ((JSONObject)localObject2).put("queryPkg", localObject1);
+          ((JSONObject)localObject2).put("errCode", i);
+          ((JSONObject)localObject2).put("waitInit", m);
+          ((JSONObject)localObject2).put("timeCost", j);
+          str = ((JSONObject)localObject2).toString();
+          ad.i("ad.waid.WaidReporter", "reportQuery data=".concat(String.valueOf(str)));
+          g.yhR.f(18666, new Object[] { Integer.valueOf(1000), str });
         }
         catch (Throwable localThrowable)
         {
-          String str2;
-          ac.e("ad.waid.WaidProvider", "reportQuery exp=" + localThrowable.toString());
-          AppMethodBeat.o(100605);
+          ad.e("ad.waid.WaidReporter", "reportQuery exp=" + Log.getStackTraceString(localThrowable));
         }
-        localException = localException;
-        ac.e("ad.waid.WaidProvider", "reportQuery getCallingPackage exp=" + localException.toString());
-        str2 = "";
+        continue;
+        i = 0;
       }
+      catch (Throwable paramUri)
+      {
+        ad.e("ad.waid.WaidProvider", "handleQuery exp=" + paramUri.toString());
+        AppMethodBeat.o(198642);
+        return null;
+      }
+      label584:
+      continue;
+      label589:
+      paramUri = (Uri)localObject1;
     }
   }
   
-  private boolean dTb()
+  private a efo()
   {
-    boolean bool4 = false;
-    boolean bool3 = false;
-    AppMethodBeat.i(100603);
-    bool2 = bool4;
+    AppMethodBeat.i(198644);
+    a locala = new a();
     try
     {
-      String str1 = getCallingPackage();
-      bool2 = bool4;
-      String str2 = getContext().getPackageName();
-      bool1 = bool3;
-      if (str1 != null)
+      locala.AEv = getCallingPackage();
+    }
+    catch (Throwable localThrowable1)
+    {
+      try
       {
-        bool1 = bool3;
-        bool2 = bool4;
-        if (str1.equals(str2)) {
-          bool1 = true;
+        for (;;)
+        {
+          i = Binder.getCallingUid();
+          locala.AEw = getContext().getPackageManager().getPackagesForUid(i);
+          if ((locala.AEw == null) || (locala.AEw.length <= 0)) {
+            break label252;
+          }
+          if (!TextUtils.isEmpty(locala.AEv)) {
+            break;
+          }
+          locala.AEx = 1;
+          locala.AEy = locala.AEw[0];
+          AppMethodBeat.o(198644);
+          return locala;
+          localThrowable1 = localThrowable1;
+          ad.e("ad.waid.WaidProvider", "getCallingPkg exp=" + localThrowable1.toString());
         }
       }
-      bool2 = bool1;
-      ac.i("ad.waid.WaidProvider", "isReqFromMM, ret=" + bool1 + ", srcPkg=" + str1);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Throwable localThrowable2)
       {
-        ac.e("ad.waid.WaidProvider", "isReqFromMM, exp=" + localException.toString());
-        boolean bool1 = bool2;
+        for (;;)
+        {
+          ad.e("ad.waid.WaidProvider", "getCallingUid exp=" + localThrowable2.toString());
+        }
+        String[] arrayOfString = locala.AEw;
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str = arrayOfString[i];
+          if (locala.AEv.equals(str))
+          {
+            if (locala.AEw.length > 1) {}
+            for (locala.AEx = 2;; locala.AEx = 3)
+            {
+              locala.AEy = str;
+              AppMethodBeat.o(198644);
+              return locala;
+            }
+          }
+          i += 1;
+        }
+        locala.AEx = 4;
+        locala.AEy = locala.AEw[0];
+        AppMethodBeat.o(198644);
+        return locala;
       }
     }
-    AppMethodBeat.o(100603);
-    return bool1;
-  }
-  
-  private void r(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(100604);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("srcPkg", paramString1);
-      localJSONObject.put("reqPkg", paramString2);
-      localJSONObject.put("appWaidNum", this.zmB.getCount());
-      localJSONObject.put("pubWaidNum", this.zmC.getCount());
-      localJSONObject.put("idType", paramInt2);
-      localJSONObject.put("ret", paramInt1);
-      ac.i("ad.waid.WaidProvider", "reportQuery data=" + localJSONObject.toString() + ", isKernelInted=" + this.zmF);
-      if (this.zmF) {
-        com.tencent.mm.plugin.report.service.h.wUl.f(18666, new Object[] { Integer.valueOf(1), localJSONObject.toString() });
-      }
-      AppMethodBeat.o(100604);
-      return;
-    }
-    catch (Throwable paramString1)
-    {
-      ac.e("ad.waid.WaidProvider", "reportQuery exp=" + paramString1.toString());
-      AppMethodBeat.o(100604);
-    }
+    label252:
+    locala.AEx = 5;
+    locala.AEy = locala.AEv;
+    AppMethodBeat.o(198644);
+    return locala;
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
     AppMethodBeat.i(100601);
-    try
-    {
-      long l1 = System.currentTimeMillis();
-      if (this.zmD.match(paramUri) == 1)
-      {
-        if (!dTb())
-        {
-          ac.w("ad.waid.WaidProvider", "delete ret=false, !isReqFromMM");
-          Qg(2);
-          AppMethodBeat.o(100601);
-          return 0;
-        }
-        paramString = "";
-        paramUri = paramString;
-        if (paramArrayOfString != null)
-        {
-          paramUri = paramString;
-          if (paramArrayOfString.length > 0) {
-            paramUri = paramArrayOfString[0];
-          }
-        }
-        if (!TextUtils.isEmpty(paramUri))
-        {
-          paramString = new h();
-          paramString.dtC = paramUri;
-          paramString.type = 1;
-          boolean bool = this.zmB.b(paramString);
-          long l2 = System.currentTimeMillis();
-          ac.i("ad.waid.WaidProvider", "delete, timeCost=" + (l2 - l1) + ", ret=" + bool + ", pkg=" + paramUri + ", thread=" + Thread.currentThread());
-          if (bool)
-          {
-            AppMethodBeat.o(100601);
-            return 1;
-          }
-          AppMethodBeat.o(100601);
-          return 0;
-        }
-        ac.w("ad.waid.WaidProvider", "delete, pkg=null");
-      }
-    }
-    catch (Throwable paramUri)
-    {
-      for (;;)
-      {
-        ac.e("ad.waid.WaidProvider", "delete exp=" + paramUri.toString());
-      }
-    }
     AppMethodBeat.o(100601);
     return 0;
   }
@@ -213,432 +426,136 @@ public class WaidProvider
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
     AppMethodBeat.i(100600);
-    int i;
-    Object localObject;
-    int j;
-    label384:
-    label479:
-    do
-    {
-      long l1;
-      try
-      {
-        l1 = System.currentTimeMillis();
-        if ((!dTb()) || (paramContentValues == null))
-        {
-          ac.w("ad.waid.WaidProvider", "insert ret=false, !isReqFromMM");
-          Qg(3);
-          AppMethodBeat.o(100600);
-          return null;
-        }
-        i = this.zmD.match(paramUri);
-        if (i != 1) {
-          continue;
-        }
-        paramContentValues = bs.nullAsNil(paramContentValues.getAsString("waid_array"));
-        ac.i("ad.waid.WaidProvider", "insert, jsonStr=" + paramContentValues + ", thread=" + Thread.currentThread());
-        this.zmB.dTa();
-        this.zmC.dTa();
-        bool1 = TextUtils.isEmpty(paramContentValues);
-        if (bool1)
-        {
-          AppMethodBeat.o(100600);
-          return null;
-        }
-        paramContentValues = new JSONArray(paramContentValues);
-        i = 0;
-        if (i >= paramContentValues.length()) {
-          break label479;
-        }
-        localObject = paramContentValues.optJSONObject(i);
-        if (localObject == null) {
-          break;
-        }
-        localObject = h.aI((JSONObject)localObject);
-        if (localObject == null) {
-          break;
-        }
-        try
-        {
-          ((h)localObject).zmv = ce.azK();
-          if (!((h)localObject).isValid()) {
-            ac.e("ad.waid.WaidProvider", "invalid item, pass");
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            ((h)localObject).zmv = ((int)(System.currentTimeMillis() / 1000L));
-            ac.e("ad.waid.WaidProvider", "insert timeStamp exp=" + localThrowable.toString());
-          }
-        }
-        if (((h)localObject).type != 1) {
-          break label384;
-        }
-      }
-      catch (Throwable paramUri)
-      {
-        ac.e("ad.waid.WaidProvider", "insert exp=" + paramUri.toString());
-        AppMethodBeat.o(100600);
-        return null;
-      }
-      j = this.zmB.getCount();
-      int k = this.zmE.zmr;
-      if (j >= k)
-      {
-        ac.w("ad.waid.WaidProvider", "appWaid > max, curCount=" + j + ", max=" + k);
-        this.zmB.dSZ();
-      }
-      this.zmB.a((h)localObject);
-      break;
-      if (((h)localObject).type != 2) {
-        break;
-      }
-      j = this.zmC.getCount();
-      k = this.zmE.zms;
-      if (j >= k)
-      {
-        ac.w("ad.waid.WaidProvider", "pubWaid >= max, curCnt=" + j + ", max=" + k);
-        this.zmC.dSZ();
-      }
-      this.zmC.a((h)localObject);
-      break;
-      long l2 = System.currentTimeMillis();
-      ac.i("ad.waid.WaidProvider", "insert, totalTime=" + (l2 - l1));
-      AppMethodBeat.o(100600);
-      return paramUri;
-    } while (i != 2);
-    boolean bool2 = false;
-    ac.i("ad.waid.WaidProvider", "insert, cfg old=" + this.zmE);
-    boolean bool1 = bool2;
-    if (paramContentValues.containsKey("maxAppWaidCount"))
-    {
-      j = bs.m(paramContentValues.getAsInteger("maxAppWaidCount"));
-      if (j <= 0) {
-        break label858;
-      }
-      i = j;
-      if (j > 100) {
-        break label858;
-      }
-      label595:
-      bool1 = bool2;
-      if (i != this.zmE.zmr)
-      {
-        this.zmE.zmr = i;
-        bool1 = true;
-      }
-    }
-    bool2 = bool1;
-    if (paramContentValues.containsKey("maxPubWaidCount"))
-    {
-      j = bs.m(paramContentValues.getAsInteger("maxPubWaidCount"));
-      if (j <= 0) {
-        break label864;
-      }
-      i = j;
-      if (j > 10) {
-        break label864;
-      }
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (i != this.zmE.zms)
-      {
-        this.zmE.zms = i;
-        bool2 = true;
-      }
-      bool1 = bool2;
-      if (paramContentValues.containsKey("pubWaidSwitch"))
-      {
-        i = bs.m(paramContentValues.getAsInteger("pubWaidSwitch"));
-        bool1 = bool2;
-        if (i != this.zmE.zmt)
-        {
-          this.zmE.zmt = i;
-          bool1 = true;
-        }
-      }
-      ac.i("ad.waid.WaidProvider", "insert, cfg changed=".concat(String.valueOf(bool1)));
-      if (bool1)
-      {
-        paramContentValues = getContext();
-        localObject = this.zmE;
-        if (localObject == null) {
-          break label839;
-        }
-        localObject = ((f)localObject).toString();
-        paramContentValues.getSharedPreferences("waid_cfg_sp", 0).edit().putString("cfg_data", (String)localObject).apply();
-        ac.i("ad.waid.WaidCfg", "saveWaidCfg cfgStr=".concat(String.valueOf(localObject)));
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(100600);
-        return paramUri;
-        label839:
-        ac.e("ad.waid.WaidCfg", "saveWaidCfg cfg==null");
-      }
-      i += 1;
-      break;
-      label858:
-      i = 100;
-      break label595;
-      label864:
-      i = 10;
-    }
+    AppMethodBeat.o(100600);
+    return null;
   }
   
   public boolean onCreate()
   {
     AppMethodBeat.i(100599);
-    long l = System.currentTimeMillis();
+    this.AEq.addURI("com.tencent.mm.ad.waid", "appWaid", 1);
+    this.AEr = System.currentTimeMillis();
+    this.AEt = new a();
+    a locala = this.AEt;
     try
     {
-      this.zmD.addURI("com.tencent.mm.waidProvider", "waid", 1);
-      this.zmD.addURI("com.tencent.mm.waidProvider", "cfg", 2);
-      this.zmB = new a();
-      this.zmB.init(getContext());
-      this.zmC = new e();
-      this.zmC.init(getContext());
-      this.zmE = f.gk(getContext());
-      com.tencent.mm.kernel.g.agS().a(new com.tencent.mm.kernel.api.g()
+      ad.i("InitTaskMgr", "start");
+      Iterator localIterator = locala.AEk.iterator();
+      while (localIterator.hasNext())
       {
-        public final void Lh()
-        {
-          AppMethodBeat.i(162067);
-          WaidProvider.a(WaidProvider.this);
-          ac.i("ad.waid.WaidProvider", "kernel, onStartupDone");
-          try
-          {
-            com.tencent.mm.kernel.g.agS().b(this);
-            AppMethodBeat.o(162067);
-            return;
-          }
-          catch (Exception localException)
-          {
-            ac.e("ad.waid.WaidProvider", "removeKernelCallback, exp=" + localException.toString());
-            AppMethodBeat.o(162067);
-          }
-        }
-        
-        public final void cf(boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(162068);
-          ac.i("ad.waid.WaidProvider", "kernel, onExit");
-          AppMethodBeat.o(162068);
-        }
-      });
-      ac.i("ad.waid.WaidProvider", "onCreate, timeCost=" + (System.currentTimeMillis() - l));
+        Runnable localRunnable = (Runnable)localIterator.next();
+        locala.AEm.post(localRunnable);
+        continue;
+        ad.i("ad.waid.WaidProvider", "onCreate, this.hash=" + hashCode());
+      }
+    }
+    catch (Exception localException)
+    {
+      ad.e("InitTaskMgr", "startInit exp=" + localException.toString());
+    }
+    for (;;)
+    {
       AppMethodBeat.o(100599);
       return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        ac.i("ad.waid.WaidProvider", "onCreate, exp=" + localThrowable.toString());
-      }
+      localException.AEk.clear();
+      localException.AEl.quitSafely();
     }
   }
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
     AppMethodBeat.i(100602);
-    String str1;
-    boolean bool;
-    long l1;
-    label277:
-    int i;
-    if (this.zmD.match(paramUri) == 1)
-    {
-      String str2 = "";
-      paramString2 = "";
-      str1 = getCallingPackage();
-      bool = dTb();
-      paramArrayOfString1 = paramString2;
-      try
-      {
-        l1 = System.currentTimeMillis();
-        paramString1 = str2;
-        paramUri = paramString2;
-        if (paramArrayOfString2 != null)
-        {
-          paramString1 = str2;
-          paramUri = paramString2;
-          paramArrayOfString1 = paramString2;
-          if (paramArrayOfString2.length > 0)
-          {
-            paramString1 = paramArrayOfString2[0];
-            paramUri = paramArrayOfString2[0];
-          }
-        }
-        paramArrayOfString1 = paramUri;
-        paramArrayOfString2 = paramString1;
-        if (!TextUtils.isEmpty(paramString1)) {
-          break label746;
-        }
-        paramArrayOfString2 = str1;
-      }
-      catch (Throwable paramUri)
-      {
-        ac.e("ad.waid.WaidProvider", "query exp=" + paramUri.toString());
-        paramUri = paramArrayOfString1;
-      }
-      paramArrayOfString1 = paramUri;
-      ac.i("ad.waid.WaidProvider", "query, paramPkg=" + paramUri + ", appIdCount=" + this.zmB.getCount() + ", pubIdCount=" + this.zmC.getCount() + ", thread=" + Thread.currentThread());
-      if ((!bool) && (paramString1 != null))
-      {
-        paramArrayOfString1 = paramUri;
-        if (!paramString1.equals(str1))
-        {
-          paramArrayOfString1 = paramUri;
-          ac.w("ad.waid.WaidProvider", "query ret=null, !isReqFromMM && pkg!=self");
-          paramArrayOfString1 = paramUri;
-          r(str1, paramUri, 0, 0);
-          AppMethodBeat.o(100602);
-          return null;
-        }
-      }
-      paramArrayOfString1 = paramUri;
-      paramArrayOfString2 = this.zmB.awd(paramString1);
-      if (paramArrayOfString2 != null)
-      {
-        paramArrayOfString1 = paramUri;
-        if (paramArrayOfString2.isExpired())
-        {
-          paramArrayOfString1 = paramUri;
-          ac.w("ad.waid.WaidProvider", "appWaid is expire, delete");
-          paramArrayOfString1 = paramUri;
-          this.zmB.b(paramArrayOfString2);
-          paramString1 = null;
-          paramArrayOfString1 = paramString1;
-          if (paramString1 != null) {
-            break label760;
-          }
-          paramArrayOfString1 = paramUri;
-          if (this.zmE.zmt != 1) {
-            break label596;
-          }
-          i = 1;
-          if (i == 0) {
-            break label621;
-          }
-          paramArrayOfString1 = paramUri;
-          paramString1 = this.zmC.dSY();
-          if (paramString1 == null) {
-            break label602;
-          }
-          paramArrayOfString1 = paramUri;
-          if (!paramString1.isExpired()) {
-            break label602;
-          }
-          paramArrayOfString1 = paramUri;
-          ac.w("ad.waid.WaidProvider", "pubWaid is expire, delete");
-          paramArrayOfString1 = paramUri;
-          this.zmC.b(paramString1);
-          paramString1 = null;
-        }
-      }
-    }
-    for (;;)
-    {
-      label354:
-      long l2;
-      if (paramString1 != null) {
-        if (bool)
-        {
-          paramArrayOfString1 = paramUri;
-          paramArrayOfString2 = new MatrixCursor(zmA, 1);
-          paramArrayOfString1 = paramUri;
-          paramString2 = paramArrayOfString2.newRow();
-          paramArrayOfString1 = paramUri;
-          paramString2.add("pkg", paramString1.dtC);
-          paramArrayOfString1 = paramUri;
-          paramString2.add("waid", paramString1.zmu);
-          paramArrayOfString1 = paramUri;
-          paramString2.add("expire", Integer.valueOf(paramString1.zmw));
-          paramArrayOfString1 = paramUri;
-          paramString2.add("timeStamp", Integer.valueOf(paramString1.zmv));
-          paramArrayOfString1 = paramUri;
-          paramString2.add("type", Integer.valueOf(paramString1.type));
-          paramArrayOfString1 = paramUri;
-          l2 = System.currentTimeMillis();
-          paramArrayOfString1 = paramUri;
-          ac.i("ad.waid.WaidProvider", "query from self, timeCost=" + (l2 - l1) + ", ret=" + paramString1);
-          paramUri = paramArrayOfString2;
-          label514:
-          AppMethodBeat.o(100602);
-          return paramUri;
-          paramString1 = paramArrayOfString2;
-          if (paramArrayOfString2 != null) {
-            break label277;
-          }
-          paramArrayOfString1 = paramUri;
-          ac.w("ad.waid.WaidProvider", "appWaid is null");
-          paramString1 = paramArrayOfString2;
-          break label277;
-        }
-      }
-      for (;;)
-      {
-        if (!bool) {
-          r(str1, paramUri, 0, 0);
-        }
-        AppMethodBeat.o(100602);
-        return null;
-        label596:
-        i = 0;
-        break;
-        label602:
-        paramArrayOfString1 = paramString1;
-        if (paramString1 != null) {
-          break label760;
-        }
-        paramArrayOfString1 = paramUri;
-        ac.w("ad.waid.WaidProvider", "pubWaid is null");
-        break label354;
-        label621:
-        paramArrayOfString1 = paramUri;
-        ac.w("ad.waid.WaidProvider", "pubWaid is disabled");
-        paramArrayOfString1 = paramString1;
-        break label760;
-        paramArrayOfString1 = paramUri;
-        paramArrayOfString2 = new MatrixCursor(zmz, 1);
-        paramArrayOfString1 = paramUri;
-        paramArrayOfString2.newRow().add("waid", paramString1.zmu);
-        paramArrayOfString1 = paramUri;
-        l2 = System.currentTimeMillis();
-        paramArrayOfString1 = paramUri;
-        ac.i("ad.waid.WaidProvider", "query from other, timeCost=" + (l2 - l1) + ", ret=" + paramString1);
-        paramArrayOfString1 = paramUri;
-        r(str1, paramUri, 1, paramString1.type);
-        paramUri = paramArrayOfString2;
-        break label514;
-        paramArrayOfString1 = paramUri;
-        ac.w("ad.waid.WaidProvider", "query ret=null");
-      }
-      label746:
-      paramString1 = paramArrayOfString2;
-      if (paramArrayOfString2 != null) {
-        break;
-      }
-      paramString1 = "";
-      break;
-      label760:
-      paramString1 = paramArrayOfString1;
-    }
+    paramUri = b(paramUri, paramArrayOfString2);
+    AppMethodBeat.o(100602);
+    return paramUri;
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
     return 0;
   }
+  
+  protected static final class a
+  {
+    String AEv;
+    String[] AEw;
+    int AEx;
+    String AEy;
+  }
+  
+  final class b
+    extends Thread
+  {
+    private int AEz;
+    private int drS;
+    
+    public b()
+    {
+      AppMethodBeat.i(198639);
+      this.drS = 0;
+      this.AEz = 12000;
+      int j = 12000 - WaidProvider.a(WaidProvider.this) * 4000;
+      if (j < 2000) {}
+      for (;;)
+      {
+        this.AEz = i;
+        AppMethodBeat.o(198639);
+        return;
+        i = j;
+      }
+    }
+    
+    private void efp()
+    {
+      AppMethodBeat.i(198641);
+      synchronized (WaidProvider.b(WaidProvider.this))
+      {
+        ad.i("ad.waid.WaidProvider", "break Wait, waitTime=" + this.drS);
+        WaidProvider.c(WaidProvider.this);
+        WaidProvider.b(WaidProvider.this).notifyAll();
+        AppMethodBeat.o(198641);
+        return;
+      }
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(198640);
+      ad.i("ad.waid.WaidProvider", "CheckThread run, thread.hash=" + hashCode());
+      for (;;)
+      {
+        if (b.efn())
+        {
+          ad.i("ad.waid.WaidProvider", "init done");
+          efp();
+          AppMethodBeat.o(198640);
+          return;
+        }
+        ad.d("ad.waid.WaidProvider", "wait, delay=200");
+        try
+        {
+          Thread.sleep(200L);
+          this.drS += 200;
+          label77:
+          if (this.drS < this.AEz) {
+            continue;
+          }
+          ad.e("ad.waid.WaidProvider", "wait expired, expiredDuration=" + this.AEz);
+          efp();
+          AppMethodBeat.o(198640);
+          return;
+        }
+        catch (Exception localException)
+        {
+          break label77;
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.waid.WaidProvider
  * JD-Core Version:    0.7.0.1
  */

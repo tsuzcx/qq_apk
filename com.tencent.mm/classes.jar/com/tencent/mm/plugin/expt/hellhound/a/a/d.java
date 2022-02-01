@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.expt.hellhound.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dah;
-import com.tencent.mm.protocal.protobuf.dbp;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.dfu;
+import com.tencent.mm.protocal.protobuf.dhc;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vending.j.a;
 import com.tencent.mm.vending.j.c;
 import java.math.BigDecimal;
@@ -14,10 +14,10 @@ import org.json.JSONObject;
 
 final class d
 {
-  static c<String, Integer> a(dbp paramdbp)
+  static c<String, Integer> a(dhc paramdhc)
   {
     AppMethodBeat.i(177365);
-    Object localObject = paramdbp.FKU;
+    Object localObject = paramdhc.HvC;
     JSONArray localJSONArray;
     try
     {
@@ -25,51 +25,51 @@ final class d
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        dah localdah = (dah)((Iterator)localObject).next();
-        if (localdah != null)
+        dfu localdfu = (dfu)((Iterator)localObject).next();
+        if (localdfu != null)
         {
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("feedId", localdah.feedId);
-          localJSONObject.put("viewLikeCount", localdah.likeCount);
-          localJSONObject.put("viewCommentCount", localdah.commentCount);
-          localJSONObject.put("userName", localdah.userName);
-          localJSONObject.put("nickName", localdah.bLs);
-          localJSONObject.put("isAd", localdah.isAd);
-          localJSONObject.put("feedheight", localdah.height);
-          localdah.FJC = new BigDecimal(localdah.FJC).setScale(2, 4).doubleValue();
-          localJSONObject.put("realShowTime", localdah.FJC);
-          localdah.FJB = new BigDecimal(localdah.FJB).setScale(2, 4).doubleValue();
-          localJSONObject.put("stayTimeRelative", localdah.FJB);
-          localJSONObject.put("realScreenHeight", localdah.kWC - localdah.xJx - localdah.rKm - localdah.FJy);
+          localJSONObject.put("feedId", localdfu.feedId);
+          localJSONObject.put("viewLikeCount", localdfu.likeCount);
+          localJSONObject.put("viewCommentCount", localdfu.commentCount);
+          localJSONObject.put("userName", localdfu.userName);
+          localJSONObject.put("nickName", localdfu.bVF);
+          localJSONObject.put("isAd", localdfu.isAd);
+          localJSONObject.put("feedheight", localdfu.height);
+          localdfu.Huk = new BigDecimal(localdfu.Huk).setScale(2, 4).doubleValue();
+          localJSONObject.put("realShowTime", localdfu.Huk);
+          localdfu.Huj = new BigDecimal(localdfu.Huj).setScale(2, 4).doubleValue();
+          localJSONObject.put("stayTimeRelative", localdfu.Huj);
+          localJSONObject.put("realScreenHeight", localdfu.ltB - localdfu.yYM - localdfu.sFm - localdfu.Hug);
           localJSONArray.put(localJSONObject);
         }
       }
       i = localJSONArray.length();
     }
-    catch (Exception paramdbp)
+    catch (Exception paramdhc)
     {
-      ac.printErrStackTrace("HABBYGE-MALI.HellTimelineReport", paramdbp, "_feedList2JsonV2-crash, %s", new Object[] { paramdbp.getMessage() });
+      ad.printErrStackTrace("HABBYGE-MALI.HellTimelineReport", paramdhc, "_feedList2JsonV2-crash, %s", new Object[] { paramdhc.getMessage() });
       AppMethodBeat.o(177365);
       return null;
     }
     int i;
     if (i > 0)
     {
-      paramdbp = a.L(localJSONArray.toString(), Integer.valueOf(i));
+      paramdhc = a.N(localJSONArray.toString(), Integer.valueOf(i));
       AppMethodBeat.o(177365);
-      return paramdbp;
+      return paramdhc;
     }
-    ac.e("HABBYGE-MALI.HellTimelineReport", "_feedList2JsonV2 jsonArray Empty !!!!");
-    localJSONArray.put(b(paramdbp));
-    paramdbp = a.L(localJSONArray.toString(), Integer.valueOf(1));
+    ad.e("HABBYGE-MALI.HellTimelineReport", "_feedList2JsonV2 jsonArray Empty !!!!");
+    localJSONArray.put(b(paramdhc));
+    paramdhc = a.N(localJSONArray.toString(), Integer.valueOf(1));
     AppMethodBeat.o(177365);
-    return paramdbp;
+    return paramdhc;
   }
   
-  private static JSONObject b(dbp paramdbp)
+  private static JSONObject b(dhc paramdhc)
   {
     AppMethodBeat.i(177366);
-    ac.w("HABBYGE-MALI.HellTimelineReport", "createInvalidateFeed, timeline: %s, %s, %s", new Object[] { Long.valueOf(paramdbp.FKR), Long.valueOf(paramdbp.FKS), Long.valueOf(paramdbp.FKT) });
+    ad.w("HABBYGE-MALI.HellTimelineReport", "createInvalidateFeed, timeline: %s, %s, %s", new Object[] { Long.valueOf(paramdhc.Hvz), Long.valueOf(paramdhc.HvA), Long.valueOf(paramdhc.HvB) });
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -78,17 +78,17 @@ final class d
       localJSONObject.put("viewCommentCount", 0);
       localJSONObject.put("userName", "");
       localJSONObject.put("feedheight", 0);
-      localJSONObject.put("realShowTime", new BigDecimal(paramdbp.FKR).setScale(2, 4).doubleValue());
-      localJSONObject.put("stayTimeRelative", new BigDecimal(paramdbp.FKR).setScale(2, 4).doubleValue());
+      localJSONObject.put("realShowTime", new BigDecimal(paramdhc.Hvz).setScale(2, 4).doubleValue());
+      localJSONObject.put("stayTimeRelative", new BigDecimal(paramdhc.Hvz).setScale(2, 4).doubleValue());
       localJSONObject.put("realScreenHeight", 0);
       AppMethodBeat.o(177366);
       return localJSONObject;
     }
-    catch (Exception paramdbp)
+    catch (Exception paramdhc)
     {
       for (;;)
       {
-        ac.printErrStackTrace("HABBYGE-MALI.HellTimelineReport", paramdbp, "createInvalidateFeed-crash, %s", new Object[] { paramdbp.getMessage() });
+        ad.printErrStackTrace("HABBYGE-MALI.HellTimelineReport", paramdhc, "createInvalidateFeed-crash, %s", new Object[] { paramdhc.getMessage() });
       }
     }
   }

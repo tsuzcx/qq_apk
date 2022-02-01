@@ -15,7 +15,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   extends RecyclerView.h
 {
-  private final Drawable akL;
+  private final Drawable amC;
   private final Resources mRes;
   private int mSize;
   
@@ -23,7 +23,7 @@ public final class c
   {
     AppMethodBeat.i(8958);
     this.mRes = paramResources;
-    this.akL = new ColorDrawable(paramResources.getColor(2131100251));
+    this.amC = new ColorDrawable(paramResources.getColor(2131100251));
     this.mSize = paramResources.getDimensionPixelSize(2131166455);
     AppMethodBeat.o(8958);
   }
@@ -54,18 +54,18 @@ public final class c
         int i1 = this.mSize + n;
         if (localView2.getVisibility() == 0)
         {
-          this.akL.setBounds(j, n, k, i1);
-          this.akL.draw(paramCanvas);
+          this.amC.setBounds(j, n, k, i1);
+          this.amC.draw(paramCanvas);
         }
         else if (localView3.getVisibility() == 0)
         {
-          this.akL.setBounds(this.mRes.getDimensionPixelSize(2131166778) + j, n, k, i1);
-          this.akL.draw(paramCanvas);
+          this.amC.setBounds(this.mRes.getDimensionPixelSize(2131166778) + j, n, k, i1);
+          this.amC.draw(paramCanvas);
         }
         else if (localView4.getVisibility() == 0)
         {
-          this.akL.setBounds(this.mRes.getDimensionPixelSize(2131166777) + j, n, k, i1);
-          this.akL.draw(paramCanvas);
+          this.amC.setBounds(this.mRes.getDimensionPixelSize(2131166777) + j, n, k, i1);
+          this.amC.draw(paramCanvas);
         }
       }
     }
@@ -81,7 +81,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.search.c
  * JD-Core Version:    0.7.0.1
  */

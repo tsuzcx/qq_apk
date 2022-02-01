@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class g
 {
   Handler b;
-  c bLz;
+  c bVM;
   
   public g()
   {
@@ -30,7 +30,7 @@ final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.qq.wx.voice.embed.recognizer.g
  * JD-Core Version:    0.7.0.1
  */

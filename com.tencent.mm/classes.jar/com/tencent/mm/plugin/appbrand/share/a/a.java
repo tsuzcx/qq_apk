@@ -14,10 +14,11 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.o;
-import com.tencent.mm.av.p;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.aw.r;
 import com.tencent.mm.modelappbrand.a.b.f;
 import com.tencent.mm.modelappbrand.a.b.h;
+import com.tencent.mm.modelappbrand.ac;
 import com.tencent.mm.modelappbrand.h;
 import com.tencent.mm.modelappbrand.k;
 import com.tencent.mm.modelappbrand.k.b;
@@ -25,10 +26,10 @@ import com.tencent.mm.modelappbrand.k.c;
 import com.tencent.mm.plugin.appbrand.dynamic.widget.IPCDynamicPageView;
 import com.tencent.mm.plugin.appbrand.share.widget.WxaShareMessagePage;
 import com.tencent.mm.plugin.appbrand.share.widget.WxaShareMessagePage.3;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 import java.lang.ref.SoftReference;
 import java.util.Map;
@@ -38,21 +39,21 @@ import junit.framework.Assert;
 public final class a
   implements k
 {
-  private final Map<String, SoftReference<b.f>> lWJ;
-  private final Map<String, SoftReference<b.h>> lWK;
-  private final Map<Integer, a> lWL;
-  private final Map<Integer, Bundle> lWM;
+  private final Map<Integer, a> mwA;
+  private final Map<Integer, Bundle> mwB;
+  private final Map<String, SoftReference<b.f>> mwy;
+  private final Map<String, SoftReference<b.h>> mwz;
   
   public a()
   {
     AppMethodBeat.i(48325);
-    this.lWJ = new ConcurrentHashMap();
-    this.lWK = new ConcurrentHashMap();
-    this.lWL = new ConcurrentHashMap();
-    this.lWM = new ConcurrentHashMap();
+    this.mwy = new ConcurrentHashMap();
+    this.mwz = new ConcurrentHashMap();
+    this.mwA = new ConcurrentHashMap();
+    this.mwB = new ConcurrentHashMap();
     a(1, new a()
     {
-      public final void J(Bundle paramAnonymousBundle)
+      public final void L(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(48320);
         a.a(a.this).remove(Integer.valueOf(2));
@@ -65,9 +66,9 @@ public final class a
   private void a(int paramInt, a parama)
   {
     AppMethodBeat.i(48335);
-    this.lWL.put(Integer.valueOf(paramInt), parama);
-    if (this.lWM.containsKey(Integer.valueOf(paramInt))) {
-      parama.J((Bundle)this.lWM.get(Integer.valueOf(paramInt)));
+    this.mwA.put(Integer.valueOf(paramInt), parama);
+    if (this.mwB.containsKey(Integer.valueOf(paramInt))) {
+      parama.L((Bundle)this.mwB.get(Integer.valueOf(paramInt)));
     }
     AppMethodBeat.o(48335);
   }
@@ -76,7 +77,7 @@ public final class a
   {
     AppMethodBeat.i(48329);
     if (paramb != null) {
-      paramb.om(paramInt);
+      paramb.oM(paramInt);
     }
     AppMethodBeat.o(48329);
   }
@@ -91,64 +92,64 @@ public final class a
     Object localObject;
     if (paramBundle != null)
     {
-      i = paramBundle.getInt("key_biz", com.tencent.mm.ah.k.a.hhA.ordinal());
+      i = paramBundle.getInt("key_biz", com.tencent.mm.ai.k.a.hzJ.ordinal());
       bool = paramBundle.getBoolean("is_video", false);
-      if ((com.tencent.mm.ah.k.a.isValid(i)) || (bool))
+      if ((com.tencent.mm.ai.k.a.isValid(i)) || (bool))
       {
-        localWxaShareMessagePage.lXc = true;
-        localObject = localWxaShareMessagePage.kOn.getLayoutParams();
+        localWxaShareMessagePage.mwR = true;
+        localObject = localWxaShareMessagePage.lkQ.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.cc.a.fromDPToPix(localWxaShareMessagePage.getContext(), 112);
         ((ViewGroup.LayoutParams)localObject).height = com.tencent.mm.cc.a.fromDPToPix(localWxaShareMessagePage.getContext(), 63);
-        localWxaShareMessagePage.kOn.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localWxaShareMessagePage.kOn.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        localObject = localWxaShareMessagePage.lWR.getLayoutParams();
+        localWxaShareMessagePage.lkQ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localWxaShareMessagePage.lkQ.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        localObject = localWxaShareMessagePage.mwG.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.cc.a.fromDPToPix(localWxaShareMessagePage.getContext(), 112);
         ((ViewGroup.LayoutParams)localObject).height = com.tencent.mm.cc.a.fromDPToPix(localWxaShareMessagePage.getContext(), 63);
-        localWxaShareMessagePage.lWR.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localObject = localWxaShareMessagePage.lXb.getLayoutParams();
+        localWxaShareMessagePage.mwG.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = localWxaShareMessagePage.mwQ.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.cc.a.fromDPToPix(localWxaShareMessagePage.getContext(), 112);
         ((ViewGroup.LayoutParams)localObject).height = com.tencent.mm.cc.a.fromDPToPix(localWxaShareMessagePage.getContext(), 63);
-        localWxaShareMessagePage.lXb.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        if (com.tencent.mm.ah.k.a.hhy.ordinal() != i) {
+        localWxaShareMessagePage.mwQ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        if (com.tencent.mm.ai.k.a.hzH.ordinal() != i) {
           break label336;
         }
-        localWxaShareMessagePage.lWX.setImageResource(2131690913);
-        localWxaShareMessagePage.lWR.setImageResource(2131689684);
+        localWxaShareMessagePage.mwM.setImageResource(2131690913);
+        localWxaShareMessagePage.mwG.setImageResource(2131689684);
         localObject = paramBundle.getString("key_footer_text", "");
         paramBundle = paramBundle.getString("key_footer_text_default", "");
         if (((String)localObject).isEmpty()) {
           break label393;
         }
-        localWxaShareMessagePage.lWY.setText((CharSequence)localObject);
+        localWxaShareMessagePage.mwN.setText((CharSequence)localObject);
       }
     }
     label294:
     if (paramBoolean) {
-      localWxaShareMessagePage.lWU.setVisibility(0);
+      localWxaShareMessagePage.mwJ.setVisibility(0);
     }
     for (;;)
     {
-      localWxaShareMessagePage.lXa = paramc;
+      localWxaShareMessagePage.mwP = paramc;
       ((LifecycleOwner)paramContext).getLifecycle().addObserver(localWxaShareMessagePage);
       AppMethodBeat.o(180363);
       return localWxaShareMessagePage;
       label336:
-      if ((com.tencent.mm.ah.k.a.hhz.ordinal() != i) && (!bool)) {
+      if ((com.tencent.mm.ai.k.a.hzI.ordinal() != i) && (!bool)) {
         break;
       }
       localObject = paramBundle.getString("key_footer_icon", "");
-      if (bs.isNullOrNil((String)localObject)) {
+      if (bt.isNullOrNil((String)localObject)) {
         break;
       }
-      o.aFA().a((String)localObject, new WxaShareMessagePage.3(localWxaShareMessagePage, bool));
+      q.aII().a((String)localObject, new WxaShareMessagePage.3(localWxaShareMessagePage, bool));
       break;
       label393:
       if (paramBundle.isEmpty()) {
         break label294;
       }
-      localWxaShareMessagePage.lWY.setText(paramBundle);
+      localWxaShareMessagePage.mwN.setText(paramBundle);
       break label294;
-      localWxaShareMessagePage.lWU.setVisibility(8);
+      localWxaShareMessagePage.mwJ.setVisibility(8);
     }
   }
   
@@ -156,7 +157,7 @@ public final class a
   {
     AppMethodBeat.i(48333);
     String str = String.format("%d-%d-dp", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    Object localObject = (SoftReference)this.lWJ.get(str);
+    Object localObject = (SoftReference)this.mwy.get(str);
     b.f localf;
     if (localObject != null)
     {
@@ -168,7 +169,7 @@ public final class a
     }
     try
     {
-      localObject = (SoftReference)this.lWJ.get(str);
+      localObject = (SoftReference)this.mwy.get(str);
       if (localObject != null)
       {
         localf = (b.f)((SoftReference)localObject).get();
@@ -177,9 +178,9 @@ public final class a
       }
       else
       {
-        localObject = new com.tencent.mm.plugin.appbrand.share.a(com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), paramInt1), com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), paramInt2));
-        ((com.tencent.mm.plugin.appbrand.share.a)localObject).lWH = parama;
-        this.lWJ.put(str, new SoftReference(localObject));
+        localObject = new com.tencent.mm.plugin.appbrand.share.a(com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), paramInt1), com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), paramInt2));
+        ((com.tencent.mm.plugin.appbrand.share.a)localObject).mww = parama;
+        this.mwy.put(str, new SoftReference(localObject));
       }
       label169:
       return localObject;
@@ -199,10 +200,10 @@ public final class a
       AppMethodBeat.o(48330);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WxaShareMessageService", "onUnbindView(%s, %s)", new Object[] { paramString, Integer.valueOf(paramView.hashCode()) });
+    ad.i("MicroMsg.WxaShareMessageService", "onUnbindView(%s, %s)", new Object[] { paramString, Integer.valueOf(paramView.hashCode()) });
     paramView = (WxaShareMessagePage)paramView;
     ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).a(paramString, paramView.getWidgetPageView());
-    this.lWL.remove(Integer.valueOf(2));
+    this.mwA.remove(Integer.valueOf(2));
     AppMethodBeat.o(48330);
   }
   
@@ -225,7 +226,7 @@ public final class a
       AppMethodBeat.o(48328);
       return false;
     }
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WxaShareMessageService", "onBindView(%s, %s)", new Object[] { paramString, Integer.valueOf(paramView.hashCode()) });
+    ad.i("MicroMsg.WxaShareMessageService", "onBindView(%s, %s)", new Object[] { paramString, Integer.valueOf(paramView.hashCode()) });
     paramView = (WxaShareMessagePage)paramView;
     boolean bool1 = paramBundle.getBoolean("is_dynamic_page");
     paramView.setTitle(paramBundle.getString("title", ""));
@@ -242,7 +243,7 @@ public final class a
       localIPCDynamicPageView.setVisibility(0);
       paramBundle.putInt("view_init_width", paramView.getWidgetWidth());
       paramBundle.putInt("view_init_height", paramView.getWidgetHeight());
-      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).a(paramString, localIPCDynamicPageView, paramBundle, new com.tencent.mm.modelappbrand.ac(new h()
+      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).a(paramString, localIPCDynamicPageView, paramBundle, new ac(new h()
       {
         public final void N(View paramAnonymousView, int paramAnonymousInt)
         {
@@ -252,7 +253,7 @@ public final class a
           case 2: 
           case 3: 
           default: 
-            paramView.getLoadingView().fuX();
+            paramView.getLoadingView().fLK();
             paramView.getLoadingView().setVisibility(4);
             paramView.getErrorImageView().setVisibility(0);
             paramView.getWidgetPageView().setVisibility(4);
@@ -263,11 +264,11 @@ public final class a
             paramView.getLoadingView().setVisibility(0);
             paramView.getErrorImageView().setVisibility(4);
             paramView.getWidgetPageView().setVisibility(4);
-            paramView.getLoadingView().fuW();
+            paramView.getLoadingView().fLJ();
             AppMethodBeat.o(48321);
             return;
           case 1: 
-            paramView.getLoadingView().fuX();
+            paramView.getLoadingView().fLK();
             paramView.getLoadingView().setVisibility(4);
             paramView.getErrorImageView().setVisibility(0);
             paramView.getWidgetPageView().setVisibility(4);
@@ -309,9 +310,9 @@ public final class a
       {
         paramString = paramBundle.getString("video_path");
         paramBundle = paramBundle.getString("video_thumb_path");
-        if (!bs.isNullOrNil(paramBundle))
+        if (!bt.isNullOrNil(paramBundle))
         {
-          paramBundle = com.tencent.mm.modelappbrand.a.b.aAS().a(paramBundle, null);
+          paramBundle = com.tencent.mm.modelappbrand.a.b.aDV().a(paramBundle, null);
           if ((paramBundle != null) && (!paramBundle.isRecycled()))
           {
             paramView.setImageData(paramBundle);
@@ -319,29 +320,33 @@ public final class a
             AppMethodBeat.o(48328);
             return true;
           }
-          paramView.of();
+          paramView.ox();
           a(paramb, 1);
         }
-        if (!bs.isNullOrNil(paramString)) {
+        if (!bt.isNullOrNil(paramString)) {
           paramView.getCoverImageView().setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(48322);
+              com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+              localb.bd(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/share/api/WxaShareMessageService$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/share/api/WxaShareMessageService$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(48322);
             }
           });
         }
       }
-      else if (!bs.isNullOrNil(str))
+      else if (!bt.isNullOrNil(str))
       {
         if (str.startsWith("delayLoadFile://"))
         {
           paramString = localIPCDynamicPageView;
-          if (this.lWM.containsKey(Integer.valueOf(2)))
+          if (this.mwB.containsKey(Integer.valueOf(2)))
           {
-            paramString = f.aKz(str.replace("delayLoadFile://", ""));
-            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WxaShareMessageService", "getBitmapNative(%s)", new Object[] { str });
+            paramString = com.tencent.mm.sdk.platformtools.g.aQf(str.replace("delayLoadFile://", ""));
+            ad.i("MicroMsg.WxaShareMessageService", "getBitmapNative(%s)", new Object[] { str });
           }
           if (paramString == null) {
             break label560;
@@ -356,33 +361,33 @@ public final class a
         {
           AppMethodBeat.o(48328);
           return true;
-          paramString = com.tencent.mm.modelappbrand.a.b.aAS().a(str, null);
-          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WxaShareMessageService", "findCachedLocal(%s)", new Object[] { str });
+          paramString = com.tencent.mm.modelappbrand.a.b.aDV().a(str, null);
+          ad.i("MicroMsg.WxaShareMessageService", "findCachedLocal(%s)", new Object[] { str });
           break;
           label545:
           paramView.setOnLoadImageResult(paramb);
           paramView.setImageUrl(str);
         }
         label560:
-        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WxaShareMessageService", "delay loadImage(%s)", new Object[] { str });
+        ad.i("MicroMsg.WxaShareMessageService", "delay loadImage(%s)", new Object[] { str });
         paramView.getLoadingView().setVisibility(0);
         paramView.getErrorImageView().setVisibility(4);
         paramView.getCoverImageView().setVisibility(4);
-        paramView.getLoadingView().fuW();
+        paramView.getLoadingView().fLJ();
         a(2, new a()
         {
-          public final void J(final Bundle paramAnonymousBundle)
+          public final void L(final Bundle paramAnonymousBundle)
           {
             AppMethodBeat.i(48324);
-            ap.f(new Runnable()
+            aq.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(48323);
                 String str = paramAnonymousBundle.getString("delay_load_img_path");
-                a.4.this.lWO.setImageUrl(str);
-                com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WxaShareMessageService", "onLoadImageFinishedAction(%s)", new Object[] { str });
-                a.a(a.4.this.lWP);
+                a.4.this.mwD.setImageUrl(str);
+                ad.i("MicroMsg.WxaShareMessageService", "onLoadImageFinishedAction(%s)", new Object[] { str });
+                a.a(a.4.this.mwE);
                 AppMethodBeat.o(48323);
               }
             });
@@ -402,7 +407,7 @@ public final class a
         {
           if ((paramString != null) && (paramString.startsWith("file://")))
           {
-            paramString = com.tencent.mm.modelappbrand.a.b.aAS().a(paramString, null);
+            paramString = com.tencent.mm.modelappbrand.a.b.aDV().a(paramString, null);
             if ((paramString != null) && (!paramString.isRecycled()))
             {
               paramView.setImageData(paramString);
@@ -411,18 +416,18 @@ public final class a
               return true;
             }
           }
-          paramView.of();
+          paramView.ox();
           a(paramb, 1);
         }
       }
     }
   }
   
-  public final b.h aAE()
+  public final b.h aDH()
   {
     AppMethodBeat.i(48334);
     String str = String.format("%d-%d-dp", new Object[] { Integer.valueOf(112), Integer.valueOf(90) });
-    Object localObject1 = (SoftReference)this.lWK.get(str);
+    Object localObject1 = (SoftReference)this.mwz.get(str);
     b.h localh;
     if (localObject1 != null)
     {
@@ -434,7 +439,7 @@ public final class a
     }
     try
     {
-      localObject1 = (SoftReference)this.lWK.get(str);
+      localObject1 = (SoftReference)this.mwz.get(str);
       if (localObject1 != null)
       {
         localh = (b.h)((SoftReference)localObject1).get();
@@ -443,8 +448,8 @@ public final class a
       }
       else
       {
-        localObject1 = new com.tencent.mm.plugin.appbrand.share.b(com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 112), com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 90));
-        this.lWK.put(str, new SoftReference(localObject1));
+        localObject1 = new com.tencent.mm.plugin.appbrand.share.b(com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 112), com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 90));
+        this.mwz.put(str, new SoftReference(localObject1));
       }
       label144:
       return localObject1;
@@ -455,10 +460,10 @@ public final class a
     }
   }
   
-  public final b.f dc(int paramInt1, int paramInt2)
+  public final b.f de(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(48332);
-    b.f localf = a(paramInt1, paramInt2, com.tencent.mm.modelappbrand.k.a.hrZ);
+    b.f localf = a(paramInt1, paramInt2, com.tencent.mm.modelappbrand.k.a.hKr);
     AppMethodBeat.o(48332);
     return localf;
   }
@@ -468,12 +473,12 @@ public final class a
     try
     {
       AppMethodBeat.i(48331);
-      a locala = (a)this.lWL.get(Integer.valueOf(paramInt));
+      a locala = (a)this.mwA.get(Integer.valueOf(paramInt));
       if (locala != null) {
-        locala.J(paramBundle);
+        locala.L(paramBundle);
       }
-      this.lWM.put(Integer.valueOf(paramInt), paramBundle);
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WxaShareMessageService", "onAction(%d, %s)", new Object[] { Integer.valueOf(paramInt), paramBundle });
+      this.mwB.put(Integer.valueOf(paramInt), paramBundle);
+      ad.i("MicroMsg.WxaShareMessageService", "onAction(%d, %s)", new Object[] { Integer.valueOf(paramInt), paramBundle });
       AppMethodBeat.o(48331);
       return;
     }
@@ -482,12 +487,12 @@ public final class a
   
   static abstract interface a
   {
-    public abstract void J(Bundle paramBundle);
+    public abstract void L(Bundle paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.share.a.a
  * JD-Core Version:    0.7.0.1
  */

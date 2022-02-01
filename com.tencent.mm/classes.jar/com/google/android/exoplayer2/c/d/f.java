@@ -11,70 +11,70 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f
 {
-  private static final int bdA;
-  private static final int bdB;
-  private static final int bdC;
-  private static final int bdD;
-  private static final int bdE;
-  private static final int bdF;
-  private static final int bdG;
-  private static final int bdH;
-  private static final int bdI;
-  private static final int bdJ;
-  private static final int bdK;
-  private static final int bdL;
-  private static final int bdM;
-  private static final int bdN;
-  private static final int bdO;
-  private static final int bdP;
-  private static final int bdQ;
-  private static final int bdR;
-  private static final String[] bdS;
-  private static final int bdp;
-  private static final int bdq;
-  private static final int bdr;
-  private static final int bds;
-  private static final int bdt;
-  private static final int bdu;
-  private static final int bdv;
-  private static final int bdw;
-  private static final int bdx;
-  private static final int bdy;
-  private static final int bdz;
+  private static final int bnK;
+  private static final int bnL;
+  private static final int bnM;
+  private static final int bnN;
+  private static final int bnO;
+  private static final int bnP;
+  private static final int bnQ;
+  private static final int bnR;
+  private static final int bnS;
+  private static final int bnT;
+  private static final int bnU;
+  private static final int bnV;
+  private static final int bnW;
+  private static final int bnX;
+  private static final int bnY;
+  private static final int bnZ;
+  private static final int boa;
+  private static final int bob;
+  private static final int boc;
+  private static final int bod;
+  private static final int boe;
+  private static final int bof;
+  private static final int bog;
+  private static final int boh;
+  private static final int boi;
+  private static final int boj;
+  private static final int bok;
+  private static final int bol;
+  private static final int bom;
+  private static final String[] bon;
   
   static
   {
     AppMethodBeat.i(92111);
-    bdp = x.aQ("nam");
-    bdq = x.aQ("trk");
-    bdr = x.aQ("cmt");
-    bds = x.aQ("day");
-    bdt = x.aQ("ART");
-    bdu = x.aQ("too");
-    bdv = x.aQ("alb");
-    bdw = x.aQ("com");
-    bdx = x.aQ("wrt");
-    bdy = x.aQ("lyr");
-    bdz = x.aQ("gen");
-    bdA = x.aQ("covr");
-    bdB = x.aQ("gnre");
-    bdC = x.aQ("grp");
-    bdD = x.aQ("disk");
-    bdE = x.aQ("trkn");
-    bdF = x.aQ("tmpo");
-    bdG = x.aQ("cpil");
-    bdH = x.aQ("aART");
-    bdI = x.aQ("sonm");
-    bdJ = x.aQ("soal");
-    bdK = x.aQ("soar");
-    bdL = x.aQ("soaa");
-    bdM = x.aQ("soco");
-    bdN = x.aQ("rtng");
-    bdO = x.aQ("pgap");
-    bdP = x.aQ("sosn");
-    bdQ = x.aQ("tvsh");
-    bdR = x.aQ("----");
-    bdS = new String[] { "Blues", "Classic Rock", "Country", "Dance", "Disco", "Funk", "Grunge", "Hip-Hop", "Jazz", "Metal", "New Age", "Oldies", "Other", "Pop", "R&B", "Rap", "Reggae", "Rock", "Techno", "Industrial", "Alternative", "Ska", "Death Metal", "Pranks", "Soundtrack", "Euro-Techno", "Ambient", "Trip-Hop", "Vocal", "Jazz+Funk", "Fusion", "Trance", "Classical", "Instrumental", "Acid", "House", "Game", "Sound Clip", "Gospel", "Noise", "AlternRock", "Bass", "Soul", "Punk", "Space", "Meditative", "Instrumental Pop", "Instrumental Rock", "Ethnic", "Gothic", "Darkwave", "Techno-Industrial", "Electronic", "Pop-Folk", "Eurodance", "Dream", "Southern Rock", "Comedy", "Cult", "Gangsta", "Top 40", "Christian Rap", "Pop/Funk", "Jungle", "Native American", "Cabaret", "New Wave", "Psychadelic", "Rave", "Showtunes", "Trailer", "Lo-Fi", "Tribal", "Acid Punk", "Acid Jazz", "Polka", "Retro", "Musical", "Rock & Roll", "Hard Rock", "Folk", "Folk-Rock", "National Folk", "Swing", "Fast Fusion", "Bebob", "Latin", "Revival", "Celtic", "Bluegrass", "Avantgarde", "Gothic Rock", "Progressive Rock", "Psychedelic Rock", "Symphonic Rock", "Slow Rock", "Big Band", "Chorus", "Easy Listening", "Acoustic", "Humour", "Speech", "Chanson", "Opera", "Chamber Music", "Sonata", "Symphony", "Booty Bass", "Primus", "Porn Groove", "Satire", "Slow Jam", "Club", "Tango", "Samba", "Folklore", "Ballad", "Power Ballad", "Rhythmic Soul", "Freestyle", "Duet", "Punk Rock", "Drum Solo", "A capella", "Euro-House", "Dance Hall", "Goa", "Drum & Bass", "Club-House", "Hardcore", "Terror", "Indie", "BritPop", "Negerpunk", "Polsk Punk", "Beat", "Christian Gangsta Rap", "Heavy Metal", "Black Metal", "Crossover", "Contemporary Christian", "Christian Rock", "Merengue", "Salsa", "Thrash Metal", "Anime", "Jpop", "Synthpop" };
+    bnK = x.bJ("nam");
+    bnL = x.bJ("trk");
+    bnM = x.bJ("cmt");
+    bnN = x.bJ("day");
+    bnO = x.bJ("ART");
+    bnP = x.bJ("too");
+    bnQ = x.bJ("alb");
+    bnR = x.bJ("com");
+    bnS = x.bJ("wrt");
+    bnT = x.bJ("lyr");
+    bnU = x.bJ("gen");
+    bnV = x.bJ("covr");
+    bnW = x.bJ("gnre");
+    bnX = x.bJ("grp");
+    bnY = x.bJ("disk");
+    bnZ = x.bJ("trkn");
+    boa = x.bJ("tmpo");
+    bob = x.bJ("cpil");
+    boc = x.bJ("aART");
+    bod = x.bJ("sonm");
+    boe = x.bJ("soal");
+    bof = x.bJ("soar");
+    bog = x.bJ("soaa");
+    boh = x.bJ("soco");
+    boi = x.bJ("rtng");
+    boj = x.bJ("pgap");
+    bok = x.bJ("sosn");
+    bol = x.bJ("tvsh");
+    bom = x.bJ("----");
+    bon = new String[] { "Blues", "Classic Rock", "Country", "Dance", "Disco", "Funk", "Grunge", "Hip-Hop", "Jazz", "Metal", "New Age", "Oldies", "Other", "Pop", "R&B", "Rap", "Reggae", "Rock", "Techno", "Industrial", "Alternative", "Ska", "Death Metal", "Pranks", "Soundtrack", "Euro-Techno", "Ambient", "Trip-Hop", "Vocal", "Jazz+Funk", "Fusion", "Trance", "Classical", "Instrumental", "Acid", "House", "Game", "Sound Clip", "Gospel", "Noise", "AlternRock", "Bass", "Soul", "Punk", "Space", "Meditative", "Instrumental Pop", "Instrumental Rock", "Ethnic", "Gothic", "Darkwave", "Techno-Industrial", "Electronic", "Pop-Folk", "Eurodance", "Dream", "Southern Rock", "Comedy", "Cult", "Gangsta", "Top 40", "Christian Rap", "Pop/Funk", "Jungle", "Native American", "Cabaret", "New Wave", "Psychadelic", "Rave", "Showtunes", "Trailer", "Lo-Fi", "Tribal", "Acid Punk", "Acid Jazz", "Polka", "Retro", "Musical", "Rock & Roll", "Hard Rock", "Folk", "Folk-Rock", "National Folk", "Swing", "Fast Fusion", "Bebob", "Latin", "Revival", "Celtic", "Bluegrass", "Avantgarde", "Gothic Rock", "Progressive Rock", "Psychedelic Rock", "Symphonic Rock", "Slow Rock", "Big Band", "Chorus", "Easy Listening", "Acoustic", "Humour", "Speech", "Chanson", "Opera", "Chamber Music", "Sonata", "Symphony", "Booty Bass", "Primus", "Porn Groove", "Satire", "Slow Jam", "Club", "Tango", "Samba", "Folklore", "Ballad", "Power Ballad", "Rhythmic Soul", "Freestyle", "Duet", "Punk Rock", "Drum Solo", "A capella", "Euro-House", "Dance Hall", "Goa", "Drum & Bass", "Club-House", "Hardcore", "Terror", "Indie", "BritPop", "Negerpunk", "Polsk Punk", "Beat", "Christian Gangsta Rap", "Heavy Metal", "Black Metal", "Crossover", "Contemporary Christian", "Christian Rock", "Merengue", "Salsa", "Thrash Metal", "Anime", "Jpop", "Synthpop" };
     AppMethodBeat.o(92111);
   }
   
@@ -99,7 +99,7 @@ final class f
         AppMethodBeat.o(92107);
         return paramString;
       }
-      new StringBuilder("Failed to parse uint8 attribute: ").append(a.eg(paramInt));
+      new StringBuilder("Failed to parse uint8 attribute: ").append(a.ek(paramInt));
       AppMethodBeat.o(92107);
       return null;
     }
@@ -109,14 +109,14 @@ final class f
   {
     AppMethodBeat.i(92106);
     int i = paramm.readInt();
-    if (paramm.readInt() == a.bbY)
+    if (paramm.readInt() == a.bmt)
     {
-      paramm.eX(8);
-      paramString = new TextInformationFrame(paramString, null, paramm.eY(i - 16));
+      paramm.fa(8);
+      paramString = new TextInformationFrame(paramString, null, paramm.fb(i - 16));
       AppMethodBeat.o(92106);
       return paramString;
     }
-    new StringBuilder("Failed to parse text attribute: ").append(a.eg(paramInt));
+    new StringBuilder("Failed to parse text attribute: ").append(a.ek(paramInt));
     AppMethodBeat.o(92106);
     return null;
   }
@@ -125,9 +125,9 @@ final class f
   {
     AppMethodBeat.i(92108);
     int i = paramm.readInt();
-    if ((paramm.readInt() == a.bbY) && (i >= 22))
+    if ((paramm.readInt() == a.bmt) && (i >= 22))
     {
-      paramm.eX(10);
+      paramm.fa(10);
       i = paramm.readUnsignedShort();
       if (i > 0)
       {
@@ -142,7 +142,7 @@ final class f
         return paramString;
       }
     }
-    new StringBuilder("Failed to parse index/count attribute: ").append(a.eg(paramInt));
+    new StringBuilder("Failed to parse index/count attribute: ").append(a.ek(paramInt));
     AppMethodBeat.o(92108);
     return null;
   }
@@ -159,23 +159,23 @@ final class f
       int m = paramm.position;
       int k = paramm.readInt();
       int n = paramm.readInt();
-      paramm.eX(4);
-      if (n == a.bbW)
+      paramm.fa(4);
+      if (n == a.bmr)
       {
-        str1 = paramm.eY(k - 12);
+        str1 = paramm.fb(k - 12);
       }
-      else if (n == a.bbX)
+      else if (n == a.bms)
       {
-        str2 = paramm.eY(k - 12);
+        str2 = paramm.fb(k - 12);
       }
       else
       {
-        if (n == a.bbY)
+        if (n == a.bmt)
         {
           j = k;
           i = m;
         }
-        paramm.eX(k - 12);
+        paramm.fa(k - 12);
       }
     }
     if ((!"com.apple.iTunes".equals(str1)) || (!"iTunSMPB".equals(str2)) || (i == -1))
@@ -184,8 +184,8 @@ final class f
       return null;
     }
     paramm.setPosition(i);
-    paramm.eX(16);
-    paramm = new CommentFrame("und", str2, paramm.eY(j - 16));
+    paramm.fa(16);
+    paramm = new CommentFrame("und", str2, paramm.fb(j - 16));
     AppMethodBeat.o(92109);
     return paramm;
   }
@@ -207,22 +207,22 @@ final class f
       k = 0xFFFFFF & j;
       try
       {
-        if (k == bdr)
+        if (k == bnM)
         {
           k = paramm.readInt();
-          if (paramm.readInt() == a.bbY)
+          if (paramm.readInt() == a.bmt)
           {
-            paramm.eX(8);
-            localObject1 = paramm.eY(k - 16);
+            paramm.fa(8);
+            localObject1 = paramm.fb(k - 16);
             localObject1 = new CommentFrame("und", (String)localObject1, (String)localObject1);
           }
           for (;;)
           {
             return localObject1;
-            new StringBuilder("Failed to parse comment attribute: ").append(a.eg(j));
+            new StringBuilder("Failed to parse comment attribute: ").append(a.ek(j));
           }
         }
-        if (k == bdp) {
+        if (k == bnK) {
           break label180;
         }
       }
@@ -231,63 +231,63 @@ final class f
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
       }
-      if (k == bdq)
+      if (k == bnL)
       {
         localObject3 = a(j, "TIT2", paramm);
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return localObject3;
       }
-      if ((k == bdw) || (k == bdx))
+      if ((k == bnR) || (k == bnS))
       {
         localObject3 = a(j, "TCOM", paramm);
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return localObject3;
       }
-      if (k == bds)
+      if (k == bnN)
       {
         localObject3 = a(j, "TDRC", paramm);
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return localObject3;
       }
-      if (k == bdt)
+      if (k == bnO)
       {
         localObject3 = a(j, "TPE1", paramm);
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return localObject3;
       }
-      if (k == bdu)
+      if (k == bnP)
       {
         localObject3 = a(j, "TSSE", paramm);
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return localObject3;
       }
-      if (k == bdv)
+      if (k == bnQ)
       {
         localObject3 = a(j, "TALB", paramm);
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return localObject3;
       }
-      if (k == bdy)
+      if (k == bnT)
       {
         localObject3 = a(j, "USLT", paramm);
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return localObject3;
       }
-      if (k == bdz)
+      if (k == bnU)
       {
         localObject3 = a(j, "TCON", paramm);
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return localObject3;
       }
-      if (k == bdC)
+      if (k == bnX)
       {
         localObject3 = a(j, "TIT1", paramm);
         paramm.setPosition(i);
@@ -297,11 +297,11 @@ final class f
     }
     else
     {
-      if (j == bdB)
+      if (j == bnW)
       {
         j = p(paramm);
-        if ((j > 0) && (j <= bdS.length)) {}
-        for (localObject3 = bdS[(j - 1)];; localObject3 = null)
+        if ((j > 0) && (j <= bon.length)) {}
+        for (localObject3 = bon[(j - 1)];; localObject3 = null)
         {
           if (localObject3 != null) {
             localObject4 = new TextInformationFrame("TCON", null, (String)localObject3);
@@ -311,41 +311,41 @@ final class f
           return localObject4;
         }
       }
-      if (j == bdD)
+      if (j == bnY)
       {
         localObject3 = b(j, "TPOS", paramm);
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return localObject3;
       }
-      if (j == bdE)
+      if (j == bnZ)
       {
         localObject3 = b(j, "TRCK", paramm);
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return localObject3;
       }
-      if (j == bdF)
+      if (j == boa)
       {
         localObject3 = a(j, "TBPM", paramm, true, false);
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return localObject3;
       }
-      if (j == bdG)
+      if (j == bob)
       {
         localObject3 = a(j, "TCMP", paramm, true, true);
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return localObject3;
       }
-      if (j == bdA)
+      if (j == bnV)
       {
         j = paramm.readInt();
         localObject4 = localObject5;
-        if (paramm.readInt() == a.bbY)
+        if (paramm.readInt() == a.bmt)
         {
-          k = a.ef(paramm.readInt());
+          k = a.ej(paramm.readInt());
           if (k != 13) {
             break label766;
           }
@@ -358,7 +358,7 @@ final class f
       localObject4 = localObject5;
       if (localObject3 != null)
       {
-        paramm.eX(4);
+        paramm.fa(4);
         localObject4 = new byte[j - 16];
         paramm.readBytes((byte[])localObject4, 0, localObject4.length);
         localObject4 = new ApicFrame((String)localObject3, null, 3, (byte[])localObject4);
@@ -371,84 +371,84 @@ final class f
       {
         localObject3 = "image/png";
         continue;
-        if (j == bdH)
+        if (j == boc)
         {
           localObject3 = a(j, "TPE2", paramm);
           paramm.setPosition(i);
           AppMethodBeat.o(92105);
           return localObject3;
         }
-        if (j == bdI)
+        if (j == bod)
         {
           localObject3 = a(j, "TSOT", paramm);
           paramm.setPosition(i);
           AppMethodBeat.o(92105);
           return localObject3;
         }
-        if (j == bdJ)
+        if (j == boe)
         {
           localObject3 = a(j, "TSO2", paramm);
           paramm.setPosition(i);
           AppMethodBeat.o(92105);
           return localObject3;
         }
-        if (j == bdK)
+        if (j == bof)
         {
           localObject3 = a(j, "TSOA", paramm);
           paramm.setPosition(i);
           AppMethodBeat.o(92105);
           return localObject3;
         }
-        if (j == bdL)
+        if (j == bog)
         {
           localObject3 = a(j, "TSOP", paramm);
           paramm.setPosition(i);
           AppMethodBeat.o(92105);
           return localObject3;
         }
-        if (j == bdM)
+        if (j == boh)
         {
           localObject3 = a(j, "TSOC", paramm);
           paramm.setPosition(i);
           AppMethodBeat.o(92105);
           return localObject3;
         }
-        if (j == bdN)
+        if (j == boi)
         {
           localObject3 = a(j, "ITUNESADVISORY", paramm, false, false);
           paramm.setPosition(i);
           AppMethodBeat.o(92105);
           return localObject3;
         }
-        if (j == bdO)
+        if (j == boj)
         {
           localObject3 = a(j, "ITUNESGAPLESS", paramm, false, true);
           paramm.setPosition(i);
           AppMethodBeat.o(92105);
           return localObject3;
         }
-        if (j == bdP)
+        if (j == bok)
         {
           localObject3 = a(j, "TVSHOWSORT", paramm);
           paramm.setPosition(i);
           AppMethodBeat.o(92105);
           return localObject3;
         }
-        if (j == bdQ)
+        if (j == bol)
         {
           localObject3 = a(j, "TVSHOW", paramm);
           paramm.setPosition(i);
           AppMethodBeat.o(92105);
           return localObject3;
         }
-        if (j == bdR)
+        if (j == bom)
         {
           localObject3 = d(paramm, i);
           paramm.setPosition(i);
           AppMethodBeat.o(92105);
           return localObject3;
         }
-        new StringBuilder("Skipped unknown metadata entry: ").append(a.eg(j));
+        new StringBuilder("Skipped unknown metadata entry: ").append(a.ek(j));
         paramm.setPosition(i);
         AppMethodBeat.o(92105);
         return null;
@@ -463,10 +463,10 @@ final class f
   private static int p(m paramm)
   {
     AppMethodBeat.i(92110);
-    paramm.eX(4);
-    if (paramm.readInt() == a.bbY)
+    paramm.fa(4);
+    if (paramm.readInt() == a.bmt)
     {
-      paramm.eX(8);
+      paramm.fa(8);
       int i = paramm.readUnsignedByte();
       AppMethodBeat.o(92110);
       return i;
@@ -477,7 +477,7 @@ final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.f
  * JD-Core Version:    0.7.0.1
  */

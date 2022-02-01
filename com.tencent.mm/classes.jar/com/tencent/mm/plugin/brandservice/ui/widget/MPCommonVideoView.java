@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.CommonVideoView;
 import com.tencent.mm.pluginsdk.ui.tools.h;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class MPCommonVideoView
   extends CommonVideoView
@@ -20,11 +20,11 @@ public class MPCommonVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void ry(long paramLong)
+  public final void tx(long paramLong)
   {
     AppMethodBeat.i(6259);
-    super.ry(paramLong);
-    this.gox.postDelayed(new Runnable()
+    super.tx(paramLong);
+    this.gIf.postDelayed(new Runnable()
     {
       public final void run()
       {

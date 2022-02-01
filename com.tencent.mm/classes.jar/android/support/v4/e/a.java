@@ -10,7 +10,7 @@ public class a<K, V>
   extends n<K, V>
   implements Map<K, V>
 {
-  i<K, V> Mz;
+  i<K, V> Or;
   
   public a() {}
   
@@ -24,17 +24,17 @@ public class a<K, V>
     super(paramn);
   }
   
-  private i<K, V> eU()
+  private i<K, V> fl()
   {
-    if (this.Mz == null) {
-      this.Mz = new i()
+    if (this.Or == null) {
+      this.Or = new i()
       {
-        protected final int D(Object paramAnonymousObject)
+        protected final int E(Object paramAnonymousObject)
         {
           return a.this.indexOfKey(paramAnonymousObject);
         }
         
-        protected final int E(Object paramAnonymousObject)
+        protected final int F(Object paramAnonymousObject)
         {
           return a.this.indexOfValue(paramAnonymousObject);
         }
@@ -54,42 +54,42 @@ public class a<K, V>
           a.this.put(paramAnonymousK, paramAnonymousV);
         }
         
-        protected final int eV()
+        protected final int fm()
         {
           return a.this.mSize;
         }
         
-        protected final Map<K, V> eW()
+        protected final Map<K, V> fn()
         {
           return a.this;
         }
         
-        protected final void eX()
+        protected final void fo()
         {
           a.this.clear();
         }
         
-        protected final Object s(int paramAnonymousInt1, int paramAnonymousInt2)
+        protected final Object z(int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          return a.this.MK[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
+          return a.this.OA[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
         }
       };
     }
-    return this.Mz;
+    return this.Or;
   }
   
   public Set<Map.Entry<K, V>> entrySet()
   {
-    i locali = eU();
-    if (locali.MT == null) {
-      locali.MT = new i.b(locali);
+    i locali = fl();
+    if (locali.OJ == null) {
+      locali.OJ = new i.b(locali);
     }
-    return locali.MT;
+    return locali.OJ;
   }
   
   public Set<K> keySet()
   {
-    return eU().getKeySet();
+    return fl().getKeySet();
   }
   
   public void putAll(Map<? extends K, ? extends V> paramMap)
@@ -105,11 +105,11 @@ public class a<K, V>
   
   public Collection<V> values()
   {
-    i locali = eU();
-    if (locali.MV == null) {
-      locali.MV = new i.e(locali);
+    i locali = fl();
+    if (locali.OM == null) {
+      locali.OM = new i.e(locali);
     }
-    return locali.MV;
+    return locali.OM;
   }
 }
 

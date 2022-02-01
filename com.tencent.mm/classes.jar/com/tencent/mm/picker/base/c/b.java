@@ -10,11 +10,11 @@ import com.tencent.mm.picker.base.view.WheelView.a;
 public final class b
   extends Handler
 {
-  private final WheelView irq;
+  private final WheelView iKu;
   
   public b(WheelView paramWheelView)
   {
-    this.irq = paramWheelView;
+    this.iKu = paramWheelView;
   }
   
   public final void handleMessage(Message paramMessage)
@@ -27,14 +27,14 @@ public final class b
     {
       AppMethodBeat.o(175297);
       return;
-      this.irq.invalidate();
+      this.iKu.invalidate();
       AppMethodBeat.o(175297);
       return;
-      this.irq.a(WheelView.a.irZ);
+      this.iKu.a(WheelView.a.iLc);
       AppMethodBeat.o(175297);
       return;
-      paramMessage = this.irq;
-      if (paramMessage.irB != null) {
+      paramMessage = this.iKu;
+      if (paramMessage.iKE != null) {
         paramMessage.postDelayed(new WheelView.1(paramMessage), 200L);
       }
     }

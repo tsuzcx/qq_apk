@@ -9,28 +9,28 @@ public final class c
 {
   public Runnable callback;
   public Context context;
-  public String fXH;
-  public String fXI;
-  public Object fXJ;
+  public String grd;
+  public String gre;
+  public Object grf;
   public Object result;
   
-  public final <T> T tn(String paramString)
+  public final <T> T wd(String paramString)
   {
     AppMethodBeat.i(159065);
-    if (this.fXJ == null)
+    if (this.grf == null)
     {
       AppMethodBeat.o(159065);
       return null;
     }
-    if ((this.fXJ instanceof Map))
+    if ((this.grf instanceof Map))
     {
-      paramString = ((Map)this.fXJ).get(paramString);
+      paramString = ((Map)this.grf).get(paramString);
       AppMethodBeat.o(159065);
       return paramString;
     }
-    if ((this.fXJ instanceof JSONObject))
+    if ((this.grf instanceof JSONObject))
     {
-      paramString = ((JSONObject)this.fXJ).opt(paramString);
+      paramString = ((JSONObject)this.grf).opt(paramString);
       AppMethodBeat.o(159065);
       return paramString;
     }
@@ -39,24 +39,24 @@ public final class c
     throw paramString;
   }
   
-  public final boolean to(String paramString)
+  public final boolean we(String paramString)
   {
     AppMethodBeat.i(159066);
-    if (this.fXJ == null)
+    if (this.grf == null)
     {
       AppMethodBeat.o(159066);
       return false;
     }
     boolean bool;
-    if ((this.fXJ instanceof Map))
+    if ((this.grf instanceof Map))
     {
-      bool = ((Map)this.fXJ).containsKey(paramString);
+      bool = ((Map)this.grf).containsKey(paramString);
       AppMethodBeat.o(159066);
       return bool;
     }
-    if ((this.fXJ instanceof JSONObject))
+    if ((this.grf instanceof JSONObject))
     {
-      bool = ((JSONObject)this.fXJ).has(paramString);
+      bool = ((JSONObject)this.grf).has(paramString);
       AppMethodBeat.o(159066);
       return bool;
     }
@@ -67,7 +67,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.flutter.c
  * JD-Core Version:    0.7.0.1
  */

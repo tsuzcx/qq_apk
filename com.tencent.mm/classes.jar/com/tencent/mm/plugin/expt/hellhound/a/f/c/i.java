@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionKEntry;", "", "sessionId", "", "fromPageName", "entryPageNames", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V", "getEntryPageNames", "()Ljava/util/List;", "setEntryPageNames", "(Ljava/util/List;)V", "getFromPageName", "()Ljava/lang/String;", "setFromPageName", "(Ljava/lang/String;)V", "getSessionId", "setSessionId", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-expt_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionKEntry;", "", "sessionId", "", "fromPageName", "entryPageNames", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V", "getEntryPageNames", "()Ljava/util/List;", "setEntryPageNames", "(Ljava/util/List;)V", "getFromPageName", "()Ljava/lang/String;", "setFromPageName", "(Ljava/lang/String;)V", "getSessionId", "setSessionId", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-expt_release"})
 public final class i
 {
-  public String qqh;
-  public List<String> qqi;
+  public String qZg;
+  public List<String> qZh;
   public String sessionId;
   
   public i(String paramString1, String paramString2, List<String> paramList)
   {
     AppMethodBeat.i(122622);
     this.sessionId = paramString1;
-    this.qqh = paramString2;
-    this.qqi = paramList;
+    this.qZg = paramString2;
+    this.qZh = paramList;
     AppMethodBeat.o(122622);
   }
   
@@ -29,7 +29,7 @@ public final class i
       if ((paramObject instanceof i))
       {
         paramObject = (i)paramObject;
-        if ((!k.g(this.sessionId, paramObject.sessionId)) || (!k.g(this.qqh, paramObject.qqh)) || (!k.g(this.qqi, paramObject.qqi))) {}
+        if ((!p.i(this.sessionId, paramObject.sessionId)) || (!p.i(this.qZg, paramObject.qZg)) || (!p.i(this.qZh, paramObject.qZh))) {}
       }
     }
     else
@@ -50,7 +50,7 @@ public final class i
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.qqh;
+      localObject = this.qZg;
       if (localObject == null) {
         break label80;
       }
@@ -58,7 +58,7 @@ public final class i
     label80:
     for (int j = localObject.hashCode();; j = 0)
     {
-      localObject = this.qqi;
+      localObject = this.qZh;
       if (localObject != null) {
         k = localObject.hashCode();
       }
@@ -72,7 +72,7 @@ public final class i
   public final String toString()
   {
     AppMethodBeat.i(122623);
-    String str = "SessionKEntry(sessionId=" + this.sessionId + ", fromPageName=" + this.qqh + ", entryPageNames=" + this.qqi + ")";
+    String str = "SessionKEntry(sessionId=" + this.sessionId + ", fromPageName=" + this.qZg + ", entryPageNames=" + this.qZh + ")";
     AppMethodBeat.o(122623);
     return str;
   }

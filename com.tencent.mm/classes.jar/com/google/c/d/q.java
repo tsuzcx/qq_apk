@@ -5,22 +5,22 @@ import com.google.c.d;
 public abstract class q
   extends n
 {
-  static final int[] bJH;
-  static final int[] bJJ = { 1, 1, 1 };
-  static final int[] bJK = { 1, 1, 1, 1, 1 };
-  static final int[][] bJL;
-  static final int[][] bJM;
+  static final int[] bTU;
+  static final int[] bTW = { 1, 1, 1 };
+  static final int[] bTX = { 1, 1, 1, 1, 1 };
+  static final int[][] bTY;
+  static final int[][] bTZ;
   
   static
   {
-    bJH = new int[] { 1, 1, 1, 1, 1, 1 };
-    bJL = new int[][] { { 3, 2, 1, 1 }, { 2, 2, 2, 1 }, { 2, 1, 2, 2 }, { 1, 4, 1, 1 }, { 1, 1, 3, 2 }, { 1, 2, 3, 1 }, { 1, 1, 1, 4 }, { 1, 3, 1, 2 }, { 1, 2, 1, 3 }, { 3, 1, 1, 2 } };
-    bJM = new int[20][];
-    System.arraycopy(bJL, 0, bJM, 0, 10);
+    bTU = new int[] { 1, 1, 1, 1, 1, 1 };
+    bTY = new int[][] { { 3, 2, 1, 1 }, { 2, 2, 2, 1 }, { 2, 1, 2, 2 }, { 1, 4, 1, 1 }, { 1, 1, 3, 2 }, { 1, 2, 3, 1 }, { 1, 1, 1, 4 }, { 1, 3, 1, 2 }, { 1, 2, 1, 3 }, { 3, 1, 1, 2 } };
+    bTZ = new int[20][];
+    System.arraycopy(bTY, 0, bTZ, 0, 10);
     int i = 10;
     while (i < 20)
     {
-      int[] arrayOfInt1 = bJL[(i - 10)];
+      int[] arrayOfInt1 = bTY[(i - 10)];
       int[] arrayOfInt2 = new int[arrayOfInt1.length];
       int j = 0;
       while (j < arrayOfInt1.length)
@@ -28,7 +28,7 @@ public abstract class q
         arrayOfInt2[j] = arrayOfInt1[(arrayOfInt1.length - j - 1)];
         j += 1;
       }
-      bJM[i] = arrayOfInt2;
+      bTZ[i] = arrayOfInt2;
       i += 1;
     }
   }
@@ -47,7 +47,7 @@ public abstract class q
       {
         int m = paramCharSequence.charAt(i) - '0';
         if ((m < 0) || (m > 9)) {
-          throw d.xU();
+          throw d.zr();
         }
         j += m;
         i -= 2;
@@ -58,7 +58,7 @@ public abstract class q
       {
         k = paramCharSequence.charAt(i) - '0';
         if ((k < 0) || (k > 9)) {
-          throw d.xU();
+          throw d.zr();
         }
         j += k;
         i -= 2;

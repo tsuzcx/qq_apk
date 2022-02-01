@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.game.media;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.commlib.e.b;
-import com.tencent.mm.plugin.game.commlib.e.b.a;
+import com.tencent.mm.plugin.game.commlib.util.b;
+import com.tencent.mm.plugin.game.commlib.util.b.a;
 
 public final class p
 {
-  public static final String tbv;
+  public static final String tZl;
   
   static
   {
     AppMethodBeat.i(41173);
-    tbv = b.b(b.a.sWv) + "haowan/";
+    tZl = b.c(b.a.tTd) + "haowan/";
     AppMethodBeat.o(41173);
   }
 }

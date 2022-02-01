@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.exdevice.g.b;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.ref.WeakReference;
 import junit.framework.Assert;
 
 public final class a
 {
-  SparseArray<WeakReference<e>> pBQ;
+  SparseArray<WeakReference<e>> qfv;
   
   public final void a(e parame)
   {
     AppMethodBeat.i(23543);
     Assert.assertTrue(true);
-    if (this.pBQ == null) {
-      this.pBQ = new SparseArray();
+    if (this.qfv == null) {
+      this.qfv = new SparseArray();
     }
-    this.pBQ.put(parame.hashCode(), new WeakReference(parame));
+    this.qfv.put(parame.hashCode(), new WeakReference(parame));
     AppMethodBeat.o(23543);
   }
   
@@ -25,23 +25,23 @@ public final class a
   {
     AppMethodBeat.i(23545);
     Assert.assertTrue(true);
-    if (this.pBQ == null)
+    if (this.qfv == null)
     {
-      ac.d("MicroMsg.ExdeviceRankCallbackManager", "hy: callback pool is null. abort");
+      ad.d("MicroMsg.ExdeviceRankCallbackManager", "hy: callback pool is null. abort");
       AppMethodBeat.o(23545);
       return;
     }
     int i = 0;
-    while (i < this.pBQ.size())
+    while (i < this.qfv.size())
     {
-      int j = this.pBQ.keyAt(i);
-      e locale = (e)((WeakReference)this.pBQ.get(j)).get();
+      int j = this.qfv.keyAt(i);
+      e locale = (e)((WeakReference)this.qfv.get(j)).get();
       if (locale != null) {
         locale.b(paramString, paramd);
       }
       i += 1;
     }
-    ac.d("MicroMsg.ExdeviceRankCallbackManager", "hy: publish end");
+    ad.d("MicroMsg.ExdeviceRankCallbackManager", "hy: publish end");
     AppMethodBeat.o(23545);
   }
   
@@ -49,19 +49,19 @@ public final class a
   {
     AppMethodBeat.i(23544);
     Assert.assertTrue(true);
-    if (this.pBQ == null)
+    if (this.qfv == null)
     {
-      ac.d("MicroMsg.ExdeviceRankCallbackManager", "hy: callback pool is null. abort ");
+      ad.d("MicroMsg.ExdeviceRankCallbackManager", "hy: callback pool is null. abort ");
       AppMethodBeat.o(23544);
       return;
     }
-    this.pBQ.remove(parame.hashCode());
+    this.qfv.remove(parame.hashCode());
     AppMethodBeat.o(23544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,4 +13,7 @@
     //是否低电量
     window.__lowPower__=#__lowPower__#;
 
+    //jscore状态
+    window.__jscore_state__=#__jscore_state__#;
+
 })()

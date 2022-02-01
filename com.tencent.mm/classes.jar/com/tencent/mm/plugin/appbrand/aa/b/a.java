@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.appbrand.aa.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.aa.d.d.a;
 import com.tencent.mm.plugin.appbrand.aa.e.c;
 import com.tencent.mm.plugin.appbrand.aa.e.e;
 import com.tencent.mm.plugin.appbrand.aa.e.f;
 import com.tencent.mm.plugin.appbrand.aa.e.h;
 import com.tencent.mm.plugin.appbrand.aa.e.i;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.nio.ByteBuffer;
 import java.util.Collections;
 import java.util.Iterator;
@@ -15,11 +14,11 @@ import java.util.List;
 
 public abstract class a
 {
-  public static int mqb = 1000;
-  public static int mqc = 64;
-  public static final byte[] mqd = com.tencent.mm.plugin.appbrand.aa.f.b.RG("");
-  protected com.tencent.mm.plugin.appbrand.aa.a.b mpJ = null;
-  protected d.a mqe = null;
+  public static int mQG = 1000;
+  public static int mQH = 64;
+  public static final byte[] mQI = com.tencent.mm.plugin.appbrand.aa.f.b.Vl("");
+  protected d.a mQJ = null;
+  protected com.tencent.mm.plugin.appbrand.aa.a.b mQo = null;
   
   public static List<ByteBuffer> e(f paramf)
   {
@@ -32,18 +31,18 @@ public abstract class a
     if ((paramf instanceof com.tencent.mm.plugin.appbrand.aa.e.a))
     {
       ((StringBuilder)localObject1).append("GET ");
-      ((StringBuilder)localObject1).append(((com.tencent.mm.plugin.appbrand.aa.e.a)paramf).bxI());
+      ((StringBuilder)localObject1).append(((com.tencent.mm.plugin.appbrand.aa.e.a)paramf).bBN());
       ((StringBuilder)localObject1).append(" HTTP/1.1");
     }
     Object localObject2;
     for (;;)
     {
       ((StringBuilder)localObject1).append("\r\n");
-      localObject2 = paramf.bxL();
+      localObject2 = paramf.bBQ();
       while (((Iterator)localObject2).hasNext())
       {
         String str1 = (String)((Iterator)localObject2).next();
-        String str2 = paramf.RE(str1);
+        String str2 = paramf.Vj(str1);
         ((StringBuilder)localObject1).append(str1);
         ((StringBuilder)localObject1).append(": ");
         ((StringBuilder)localObject1).append(str2);
@@ -51,19 +50,19 @@ public abstract class a
       }
       if ((paramf instanceof h))
       {
-        ((StringBuilder)localObject1).append("HTTP/1.1 101 " + ((h)paramf).bxJ());
+        ((StringBuilder)localObject1).append("HTTP/1.1 101 " + ((h)paramf).bBO());
       }
       else
       {
         ((StringBuilder)localObject1).append("GET ");
-        ((StringBuilder)localObject1).append(((com.tencent.mm.plugin.appbrand.aa.e.a)paramf).bxI());
+        ((StringBuilder)localObject1).append(((com.tencent.mm.plugin.appbrand.aa.e.a)paramf).bBN());
         ((StringBuilder)localObject1).append(" HTTP/1.1");
-        ac.e("MicroMsg.AppBrandNetWork.Draft", "unknow role");
+        ad.e("MicroMsg.AppBrandNetWork.Draft", "unknow role");
       }
     }
     ((StringBuilder)localObject1).append("\r\n");
-    localObject1 = com.tencent.mm.plugin.appbrand.aa.f.b.RH(((StringBuilder)localObject1).toString());
-    paramf = paramf.bxM();
+    localObject1 = com.tencent.mm.plugin.appbrand.aa.f.b.Vm(((StringBuilder)localObject1).toString());
+    paramf = paramf.bBR();
     if (paramf == null) {}
     for (int i = 0;; i = paramf.length)
     {
@@ -77,7 +76,7 @@ public abstract class a
     }
   }
   
-  public static int vh(int paramInt)
+  public static int vN(int paramInt)
   {
     if (paramInt < 0) {
       throw new com.tencent.mm.plugin.appbrand.aa.c.b("Negative count");
@@ -112,7 +111,7 @@ public abstract class a
     }
   }
   
-  public abstract b a(com.tencent.mm.plugin.appbrand.aa.e.a parama, h paramh);
+  public abstract a.b a(com.tencent.mm.plugin.appbrand.aa.e.a parama, h paramh);
   
   public abstract com.tencent.mm.plugin.appbrand.aa.e.b a(com.tencent.mm.plugin.appbrand.aa.e.b paramb);
   
@@ -122,16 +121,16 @@ public abstract class a
   
   public final void a(com.tencent.mm.plugin.appbrand.aa.a.b paramb)
   {
-    this.mpJ = paramb;
+    this.mQo = paramb;
   }
   
-  public abstract List<com.tencent.mm.plugin.appbrand.aa.d.d> az(String paramString, boolean paramBoolean);
+  public abstract List<com.tencent.mm.plugin.appbrand.aa.d.d> aB(String paramString, boolean paramBoolean);
   
-  public abstract a bxA();
+  public abstract a.a bBE();
   
-  public abstract a bxz();
+  public abstract a bBF();
   
-  public abstract b c(com.tencent.mm.plugin.appbrand.aa.e.a parama);
+  public abstract a.b c(com.tencent.mm.plugin.appbrand.aa.e.a parama);
   
   public abstract ByteBuffer d(com.tencent.mm.plugin.appbrand.aa.d.d paramd);
   
@@ -141,7 +140,7 @@ public abstract class a
   
   public final f y(ByteBuffer paramByteBuffer)
   {
-    Object localObject1 = this.mpJ;
+    Object localObject1 = this.mQo;
     Object localObject2 = w(paramByteBuffer);
     if (localObject2 == null) {
       throw new com.tencent.mm.plugin.appbrand.aa.c.a(paramByteBuffer.capacity() + 128);
@@ -150,12 +149,12 @@ public abstract class a
     if (localObject2.length != 3) {
       throw new com.tencent.mm.plugin.appbrand.aa.c.d();
     }
-    if (localObject1 == com.tencent.mm.plugin.appbrand.aa.a.b.mpu)
+    if (localObject1 == com.tencent.mm.plugin.appbrand.aa.a.b.mPZ)
     {
       localObject1 = new e();
       i locali = (i)localObject1;
       locali.a(Short.parseShort(localObject2[1]));
-      locali.RD(localObject2[2]);
+      locali.Vi(localObject2[2]);
     }
     for (;;)
     {
@@ -168,7 +167,7 @@ public abstract class a
       {
         throw new com.tencent.mm.plugin.appbrand.aa.c.d("not an http header");
         localObject1 = new com.tencent.mm.plugin.appbrand.aa.e.d();
-        ((com.tencent.mm.plugin.appbrand.aa.e.b)localObject1).RC(localObject2[1]);
+        ((com.tencent.mm.plugin.appbrand.aa.e.b)localObject1).Vh(localObject2[1]);
       }
       else
       {
@@ -180,39 +179,10 @@ public abstract class a
     }
     return localObject1;
   }
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(156627);
-      mqf = new a("NONE", 0);
-      mqg = new a("ONEWAY", 1);
-      mqh = new a("TWOWAY", 2);
-      mqi = new a[] { mqf, mqg, mqh };
-      AppMethodBeat.o(156627);
-    }
-    
-    private a() {}
-  }
-  
-  public static enum b
-  {
-    static
-    {
-      AppMethodBeat.i(156630);
-      mqj = new b("MATCHED", 0);
-      mqk = new b("NOT_MATCHED", 1);
-      mql = new b[] { mqj, mqk };
-      AppMethodBeat.o(156630);
-    }
-    
-    private b() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa.b.a
  * JD-Core Version:    0.7.0.1
  */

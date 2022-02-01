@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ry
   extends b
 {
-  public a duU;
+  public a dGx;
   
   public ry()
   {
@@ -15,21 +15,21 @@ public final class ry
   
   private ry(byte paramByte)
   {
-    AppMethodBeat.i(91038);
-    this.duU = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(207377);
+    this.dGx = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91038);
+    AppMethodBeat.o(207377);
   }
   
   public static final class a
   {
-    public boolean duV;
+    public long msgId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ry
  * JD-Core Version:    0.7.0.1
  */

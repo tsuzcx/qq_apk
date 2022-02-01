@@ -1,10 +1,7 @@
 package com.tencent.luggage.game.page;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -17,7 +14,7 @@ public final class b
   extends FrameLayout
   implements bc
 {
-  private b cav = null;
+  private b ckM = null;
   
   public b(Context paramContext)
   {
@@ -28,14 +25,14 @@ public final class b
   
   public final void a(ay paramay) {}
   
-  public final void d(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public final void c(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public final ViewGroup getContainer()
   {
     return this;
   }
   
-  public final void gt(int paramInt) {}
+  public final void gw(int paramInt) {}
   
   public final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
   
@@ -44,30 +41,20 @@ public final class b
     AppMethodBeat.i(130626);
     super.onViewAdded(paramView);
     if (((paramView instanceof CoverViewContainer)) && (!paramView.hasOnClickListeners())) {
-      paramView.setOnTouchListener(new a((byte)0));
+      paramView.setOnTouchListener(new b.a((byte)0));
     }
-    if (this.cav != null) {
-      this.cav.cl(paramView);
+    if (this.ckM != null) {
+      this.ckM.cl(paramView);
     }
     AppMethodBeat.o(130626);
   }
   
   public final void setNativeWidgetAddedCallback(b paramb)
   {
-    this.cav = paramb;
+    this.ckM = paramb;
   }
   
   public final void setupWebViewTouchInterceptor(ay paramay) {}
-  
-  static final class a
-    implements View.OnTouchListener
-  {
-    @SuppressLint({"ClickableViewAccessibility"})
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      return true;
-    }
-  }
   
   public static abstract interface b
   {
@@ -76,7 +63,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.game.page.b
  * JD-Core Version:    0.7.0.1
  */

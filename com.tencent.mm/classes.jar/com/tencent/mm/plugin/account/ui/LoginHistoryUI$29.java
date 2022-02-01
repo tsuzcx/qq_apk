@@ -12,14 +12,14 @@ final class LoginHistoryUI$29
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(128110);
-    LoginHistoryUI.b(this.iSi);
+    LoginHistoryUI.b(this.jlq);
     AppMethodBeat.o(128110);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginHistoryUI.29
  * JD-Core Version:    0.7.0.1
  */

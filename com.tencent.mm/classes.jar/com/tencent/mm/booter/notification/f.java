@@ -1,62 +1,152 @@
 package com.tencent.mm.booter.notification;
 
+import android.annotation.TargetApi;
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.v4.app.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.booter.notification.queue.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public final class f
+  extends a
 {
-  public e foK;
+  private NotificationManager Im;
+  public d fGK;
+  private Context mContext;
   
-  private f()
+  public f()
   {
-    AppMethodBeat.i(19997);
-    this.foK = new e();
-    AppMethodBeat.o(19997);
+    AppMethodBeat.i(19983);
+    this.mContext = aj.getContext();
+    this.Im = ((NotificationManager)this.mContext.getSystemService("notification"));
+    this.fGK = new d();
+    AppMethodBeat.o(19983);
   }
   
-  public static boolean a(String paramString, bo parambo, int paramInt, boolean paramBoolean)
+  public static void cancel()
   {
-    AppMethodBeat.i(19998);
-    if (bs.isNullOrNil(paramString))
+    AppMethodBeat.i(19984);
+    v localv = v.N(aj.getContext());
+    LinkedList localLinkedList = new LinkedList();
+    Object localObject = b.Xo().Xq();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localObject = ((Queue)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      AppMethodBeat.o(19998);
-      return false;
+      Integer localInteger = (Integer)((Iterator)localObject).next();
+      localStringBuilder.append(localInteger + ";");
+      if (!localLinkedList.contains(localInteger))
+      {
+        b.Xo().a(localv, localInteger.intValue());
+        localLinkedList.add(localInteger);
+      }
     }
-    paramBoolean = c.a(paramString, parambo, paramInt, paramBoolean);
-    AppMethodBeat.o(19998);
-    return paramBoolean;
+    ad.i("MicroMsg.Notification.Handle", "needRemoveNotificationId:%s", new Object[] { localStringBuilder });
+    AppMethodBeat.o(19984);
   }
   
-  public final Notification a(Notification paramNotification, int paramInt1, int paramInt2, PendingIntent paramPendingIntent, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, String paramString4)
+  public static void p(int paramInt, String paramString)
   {
-    AppMethodBeat.i(20000);
-    paramNotification = this.foK.a(paramNotification, paramInt1, paramInt2, paramPendingIntent, paramString1, paramString2, paramString3, paramBitmap, paramString4);
-    AppMethodBeat.o(20000);
-    return paramNotification;
+    AppMethodBeat.i(19987);
+    ad.i("MicroMsg.Notification.AppMsg.Handle", "refreshTotalUnread, %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    int i = paramInt;
+    if (paramInt == -1) {
+      i = com.tencent.mm.n.f.acx();
+    }
+    d.kP(i);
+    ArrayList localArrayList;
+    if ((paramString != null) && (paramString.length() > 0))
+    {
+      localArrayList = d.Xk();
+      if (localArrayList != null) {
+        break label290;
+      }
+      localArrayList = new ArrayList();
+    }
+    label290:
+    for (;;)
+    {
+      Object localObject2 = localArrayList.iterator();
+      Object localObject1;
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject1 = (d.a)((Iterator)localObject2).next();
+        if (((d.a)localObject1).userName.equals(paramString)) {
+          localArrayList.remove(localObject1);
+        }
+      }
+      for (;;)
+      {
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = new d.a((byte)0);
+        }
+        ((d.a)localObject2).userName = paramString;
+        ((d.a)localObject2).dwg = com.tencent.mm.n.f.vD(paramString);
+        if ((((d.a)localObject2).dwg == 0) && (localArrayList.isEmpty()))
+        {
+          d.f(null);
+          AppMethodBeat.o(19987);
+          return;
+        }
+        paramString = localArrayList;
+        if (((d.a)localObject2).dwg > 0)
+        {
+          localArrayList.add(localObject2);
+          paramString = localArrayList;
+        }
+        d.f(paramString);
+        AppMethodBeat.o(19987);
+        return;
+        localArrayList = new ArrayList();
+        localObject1 = com.tencent.mm.n.f.lF(-1).iterator();
+        for (;;)
+        {
+          paramString = localArrayList;
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          paramString = (String)((Iterator)localObject1).next();
+          localObject2 = new d.a((byte)0);
+          ((d.a)localObject2).userName = paramString;
+          ((d.a)localObject2).dwg = com.tencent.mm.n.f.vD(paramString);
+          localArrayList.add(localObject2);
+        }
+        localObject1 = null;
+      }
+    }
   }
   
-  public final int b(NotificationItem paramNotificationItem)
+  public final int a(NotificationItem paramNotificationItem)
   {
-    AppMethodBeat.i(19999);
-    int i = this.foK.a(paramNotificationItem);
-    AppMethodBeat.o(19999);
+    AppMethodBeat.i(19985);
+    if (paramNotificationItem == null)
+    {
+      AppMethodBeat.o(19985);
+      return -1;
+    }
+    int i = a(paramNotificationItem, null);
+    AppMethodBeat.o(19985);
     return i;
   }
   
-  public static final class a
+  @TargetApi(11)
+  public final Notification a(Notification paramNotification, int paramInt1, int paramInt2, PendingIntent paramPendingIntent, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, String paramString4)
   {
-    private static final f foL;
-    
-    static
-    {
-      AppMethodBeat.i(19996);
-      foL = new f((byte)0);
-      AppMethodBeat.o(19996);
-    }
+    AppMethodBeat.i(19986);
+    paramNotification = this.fGK.a(paramNotification, paramInt1, paramInt2, paramPendingIntent, paramString1, paramString2, paramString3, paramBitmap, paramString4);
+    AppMethodBeat.o(19986);
+    return paramNotification;
   }
 }
 

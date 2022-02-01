@@ -11,8 +11,9 @@ import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.z;
 import com.tencent.mm.compatible.h.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.mmsight.model.a.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.nio.ByteBuffer;
 
 @TargetApi(21)
@@ -25,7 +26,7 @@ public final class j
   {
     super(paramc, paramMediaFormat, paramInt);
     AppMethodBeat.i(107676);
-    ac.i(TAG, "init ");
+    ad.i(TAG, "init ");
     AppMethodBeat.o(107676);
   }
   
@@ -38,8 +39,8 @@ public final class j
     int i = 0;
     paramImage = paramImage.getPlanes();
     int k = i3 * i4 * ImageFormat.getBitsPerPixel(j) / 8;
-    ac.i(TAG, "planes len %d, datalen: %s width %d height %d format %d", new Object[] { Integer.valueOf(paramImage.length), Integer.valueOf(k), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(j) });
-    byte[] arrayOfByte1 = com.tencent.mm.plugin.mmsight.model.a.j.uMV.g(Integer.valueOf(k));
+    ad.i(TAG, "planes len %d, datalen: %s width %d height %d format %d", new Object[] { Integer.valueOf(paramImage.length), Integer.valueOf(k), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(j) });
+    byte[] arrayOfByte1 = k.vQc.g(Integer.valueOf(k));
     k = 0;
     while (k < paramImage.length)
     {
@@ -59,8 +60,8 @@ public final class j
       label297:
       for (int n = i4;; n = i4 / 2)
       {
-        ac.v(TAG, "row planes rowStride %d w %d h %d pixelStride %d", new Object[] { Integer.valueOf(i5), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i6) });
-        arrayOfByte2 = com.tencent.mm.plugin.mmsight.model.a.j.uMV.g(Integer.valueOf(i5));
+        ad.v(TAG, "row planes rowStride %d w %d h %d pixelStride %d", new Object[] { Integer.valueOf(i5), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i6) });
+        arrayOfByte2 = k.vQc.g(Integer.valueOf(i5));
         i1 = 0;
         for (;;)
         {
@@ -102,7 +103,7 @@ public final class j
         localByteBuffer.get(arrayOfByte2, 0, i5);
       }
       label384:
-      com.tencent.mm.plugin.mmsight.model.a.j.uMV.k(arrayOfByte2);
+      k.vQc.k(arrayOfByte2);
       k += 1;
     }
     AppMethodBeat.o(107679);
@@ -112,19 +113,19 @@ public final class j
   protected final int a(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
     AppMethodBeat.i(107677);
-    ac.i(TAG, "selectColorFormat, mimeType: %s, codecInfo: %s", new Object[] { paramString, paramMediaCodecInfo });
-    long l = bs.Gn();
+    ad.i(TAG, "selectColorFormat, mimeType: %s, codecInfo: %s", new Object[] { paramString, paramMediaCodecInfo });
+    long l = bt.HI();
     paramString = paramMediaCodecInfo.getCapabilitiesForType(paramString);
-    ac.i(TAG, "getCapabilitiesForType used %sms", new Object[] { Long.valueOf(bs.aO(l)) });
-    ac.i(TAG, "color format length: %s", new Object[] { Integer.valueOf(paramString.colorFormats.length) });
+    ad.i(TAG, "getCapabilitiesForType used %sms", new Object[] { Long.valueOf(bt.aO(l)) });
+    ad.i(TAG, "color format length: %s", new Object[] { Integer.valueOf(paramString.colorFormats.length) });
     int i = 0;
     int k;
     for (int j = 0; i < paramString.colorFormats.length; j = k)
     {
       int m = paramString.colorFormats[i];
-      ac.i(TAG, "capabilities colorFormat: %s", new Object[] { Integer.valueOf(m) });
+      ad.i(TAG, "capabilities colorFormat: %s", new Object[] { Integer.valueOf(m) });
       k = j;
-      if (pM(m)) {
+      if (qo(m)) {
         if (m <= j)
         {
           k = j;
@@ -137,40 +138,40 @@ public final class j
       }
       i += 1;
     }
-    ac.i(TAG, "codec: %s, colorFormat: %s", new Object[] { paramMediaCodecInfo.getName(), Integer.valueOf(j) });
+    ad.i(TAG, "codec: %s, colorFormat: %s", new Object[] { paramMediaCodecInfo.getName(), Integer.valueOf(j) });
     AppMethodBeat.o(107677);
     return j;
   }
   
-  public final int aJZ()
+  public final int aNi()
   {
     return 2;
   }
   
-  protected final boolean aqv()
+  protected final boolean atq()
   {
     AppMethodBeat.i(107678);
-    if (this.gOr == null)
+    if (this.hir == null)
     {
-      ac.e(TAG, "drainDecoder, decoder is null");
+      ad.e(TAG, "drainDecoder, decoder is null");
       AppMethodBeat.o(107678);
       return true;
     }
-    int i = this.gOr.dequeueOutputBuffer(this.bufferInfo, 60000L);
-    ac.i(TAG, "outputBufferIndex-->".concat(String.valueOf(i)));
+    int i = this.hir.dequeueOutputBuffer(this.bufferInfo, 60000L);
+    ad.i(TAG, "outputBufferIndex-->".concat(String.valueOf(i)));
     if (i == -1)
     {
-      ac.i(TAG, "no output from decoder available, break");
+      ad.i(TAG, "no output from decoder available, break");
       label70:
       AppMethodBeat.o(107678);
       return false;
     }
     if (i == -3) {
-      ac.i(TAG, "decoder output buffers changed");
+      ad.i(TAG, "decoder output buffers changed");
     }
     for (;;)
     {
-      int j = this.gOr.dequeueOutputBuffer(this.bufferInfo, 60000L);
+      int j = this.hir.dequeueOutputBuffer(this.bufferInfo, 60000L);
       i = j;
       if (j >= 0) {
         break;
@@ -178,19 +179,19 @@ public final class j
       break label70;
       if (i == -2)
       {
-        this.ibK = this.gOr.getOutputFormat();
-        ac.i(TAG, "decoder output format changed: " + this.ibK);
+        this.ivg = this.hir.getOutputFormat();
+        ad.i(TAG, "decoder output format changed: " + this.ivg);
       }
       else if (i < 0)
       {
-        ac.w(TAG, "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
+        ad.w(TAG, "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
       }
       else
       {
-        ac.v(TAG, "perform decoding");
-        long l = bs.Gn();
-        byte[] arrayOfByte = b(this.gOr.getOutputImage(i));
-        ac.v(TAG, "perform decoding costImage %s", new Object[] { Long.valueOf(bs.aO(l)) });
+        ad.v(TAG, "perform decoding");
+        long l = bt.HI();
+        byte[] arrayOfByte = b(this.hir.getOutputImage(i));
+        ad.v(TAG, "perform decoding costImage %s", new Object[] { Long.valueOf(bt.aO(l)) });
         if (arrayOfByte == null) {
           break label70;
         }
@@ -198,32 +199,32 @@ public final class j
         {
           MediaCodec.BufferInfo localBufferInfo = this.bufferInfo;
           if (arrayOfByte == null) {
-            ac.e(TAG, "processDecodeOutputBuffer error! byteBuffer is null");
+            ad.e(TAG, "processDecodeOutputBuffer error! byteBuffer is null");
           }
           for (;;)
           {
-            this.gOr.releaseOutputBuffer(i, false);
+            this.hir.releaseOutputBuffer(i, false);
             l = this.bufferInfo.presentationTimeUs;
-            if ((this.gOz == 1L) || (l < this.gOz * 1000L)) {
+            if ((this.hiy == 1L) || (l < this.hiy * 1000L)) {
               break;
             }
-            ac.e(TAG, "exceed endTimeMs");
+            ad.e(TAG, "exceed endTimeMs");
             AppMethodBeat.o(107678);
             return true;
-            ac.i(TAG, "processDecodeOutputBuffer, byteBuffer: %s, bufferInfo: %s, size: %d", new Object[] { arrayOfByte, localBufferInfo, Integer.valueOf(localBufferInfo.size) });
-            this.ibK = this.gOr.getOutputFormat();
-            if (this.uOc != null) {
-              this.uOc.bq(arrayOfByte);
+            ad.i(TAG, "processDecodeOutputBuffer, byteBuffer: %s, bufferInfo: %s, size: %d", new Object[] { arrayOfByte, localBufferInfo, Integer.valueOf(localBufferInfo.size) });
+            this.ivg = this.hir.getOutputFormat();
+            if (this.vRl != null) {
+              this.vRl.bt(arrayOfByte);
             }
           }
           if ((this.bufferInfo.flags & 0x4) != 0)
           {
-            ac.i(TAG, "receive end of stream");
+            ad.i(TAG, "receive end of stream");
             try
             {
-              this.gOr.stop();
-              this.gOr.release();
-              this.gOr = null;
+              this.hir.stop();
+              this.hir.release();
+              this.hir = null;
               AppMethodBeat.o(107678);
               return true;
             }
@@ -231,19 +232,19 @@ public final class j
             {
               for (;;)
               {
-                ac.e(TAG, "stop and release decoder error: %s", new Object[] { localException.getMessage() });
+                ad.e(TAG, "stop and release decoder error: %s", new Object[] { localException.getMessage() });
               }
             }
           }
           AppMethodBeat.o(107678);
           return false;
         }
-        this.gOr.releaseOutputBuffer(i, false);
+        this.hir.releaseOutputBuffer(i, false);
       }
     }
   }
   
-  protected final boolean pM(int paramInt)
+  protected final boolean qo(int paramInt)
   {
     switch (paramInt)
     {
@@ -255,7 +256,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.j
  * JD-Core Version:    0.7.0.1
  */

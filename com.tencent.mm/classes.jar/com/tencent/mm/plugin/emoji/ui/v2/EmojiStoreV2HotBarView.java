@@ -12,41 +12,46 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.model.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.ui.z;
 
 public class EmojiStoreV2HotBarView
   extends LinearLayout
 {
-  private View ijA;
-  private View pjA;
-  private TextView pjB;
-  private View pjC;
-  private TextView pjD;
-  private View.OnClickListener pjE;
-  private TextView pjz;
+  private View iCR;
+  private TextView pMZ;
+  private View pNa;
+  private TextView pNb;
+  private View pNc;
+  private TextView pNd;
+  private View.OnClickListener pNe;
   
   public EmojiStoreV2HotBarView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(109193);
-    this.pjE = new View.OnClickListener()
+    this.pNe = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(109191);
-        Object localObject = new Intent();
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        localObject = new Intent();
         ((Intent)localObject).setClass(EmojiStoreV2HotBarView.this.getContext(), EmojiStoreV2RankUI.class);
         paramAnonymousView = EmojiStoreV2HotBarView.this.getContext();
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(109191);
       }
     };
@@ -58,18 +63,22 @@ public class EmojiStoreV2HotBarView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(109194);
-    this.pjE = new View.OnClickListener()
+    this.pNe = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(109191);
-        Object localObject = new Intent();
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        localObject = new Intent();
         ((Intent)localObject).setClass(EmojiStoreV2HotBarView.this.getContext(), EmojiStoreV2RankUI.class);
         paramAnonymousView = EmojiStoreV2HotBarView.this.getContext();
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(109191);
       }
     };
@@ -82,18 +91,22 @@ public class EmojiStoreV2HotBarView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(109197);
-    this.pjE = new View.OnClickListener()
+    this.pNe = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(109191);
-        Object localObject = new Intent();
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        localObject = new Intent();
         ((Intent)localObject).setClass(EmojiStoreV2HotBarView.this.getContext(), EmojiStoreV2RankUI.class);
         paramAnonymousView = EmojiStoreV2HotBarView.this.getContext();
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(109191);
       }
     };
@@ -104,42 +117,46 @@ public class EmojiStoreV2HotBarView
   private void init()
   {
     AppMethodBeat.i(109198);
-    this.ijA = ((ViewGroup)z.jD(getContext()).inflate(2131493810, this)).findViewById(2131304239);
-    this.pjz = ((TextView)this.ijA.findViewById(2131299376));
-    this.pjA = this.ijA.findViewById(2131299364);
-    this.pjB = ((TextView)this.ijA.findViewById(2131299391));
-    this.pjB.setText(getResources().getText(2131758339) + " ");
-    this.pjC = this.ijA.findViewById(2131299024);
-    this.pjC.setOnClickListener(new View.OnClickListener()
+    this.iCR = ((ViewGroup)z.jO(getContext()).inflate(2131493810, this)).findViewById(2131304239);
+    this.pMZ = ((TextView)this.iCR.findViewById(2131299376));
+    this.pNa = this.iCR.findViewById(2131299364);
+    this.pNb = ((TextView)this.iCR.findViewById(2131299391));
+    this.pNb.setText(getResources().getText(2131758339) + " ");
+    this.pNc = this.iCR.findViewById(2131299024);
+    this.pNc.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(109192);
-        Object localObject = new Intent();
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        localObject = new Intent();
         ((Intent)localObject).setClass(EmojiStoreV2HotBarView.this.getContext(), EmojiStoreV2SingleProductUI.class);
         paramAnonymousView = EmojiStoreV2HotBarView.this.getContext();
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2HotBarView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(109192);
       }
     });
-    this.pjD = ((TextView)this.ijA.findViewById(2131302799));
-    cei();
-    setMoreOnClickListener(this.pjE);
+    this.pNd = ((TextView)this.iCR.findViewById(2131302799));
+    ciL();
+    setMoreOnClickListener(this.pNe);
     updateTitle();
     AppMethodBeat.o(109198);
   }
   
-  public final void cei()
+  public final void ciL()
   {
     AppMethodBeat.i(109199);
-    boolean bool = ((Boolean)g.agR().agA().get(ah.a.GEf, Boolean.FALSE)).booleanValue();
+    boolean bool = ((Boolean)g.ajC().ajl().get(al.a.Iqy, Boolean.FALSE)).booleanValue();
     TextView localTextView;
-    if (this.pjD != null)
+    if (this.pNd != null)
     {
-      localTextView = this.pjD;
+      localTextView = this.pNd;
       if (!bool) {
         break label56;
       }
@@ -155,14 +172,14 @@ public class EmojiStoreV2HotBarView
   
   public View getRootView()
   {
-    return this.ijA;
+    return this.iCR;
   }
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(109195);
     super.onAttachedToWindow();
-    ac.d("MicroMsg.emoji.EmojiStoreV2HotBarView", "onAttachedToWindow");
+    ad.d("MicroMsg.emoji.EmojiStoreV2HotBarView", "onAttachedToWindow");
     AppMethodBeat.o(109195);
   }
   
@@ -170,19 +187,19 @@ public class EmojiStoreV2HotBarView
   {
     AppMethodBeat.i(109196);
     super.onDetachedFromWindow();
-    ac.d("MicroMsg.emoji.EmojiStoreV2HotBarView", "onAttachedToWindow");
+    ad.d("MicroMsg.emoji.EmojiStoreV2HotBarView", "onAttachedToWindow");
     AppMethodBeat.o(109196);
   }
   
   public void setDesignerCatalogViewPadding(boolean paramBoolean)
   {
     AppMethodBeat.i(109203);
-    if ((this.pjA != null) && (!paramBoolean))
+    if ((this.pNa != null) && (!paramBoolean))
     {
-      int i = com.tencent.mm.cc.a.au(getContext(), 2131165489);
-      int j = com.tencent.mm.cc.a.au(getContext(), 2131165500);
-      int k = com.tencent.mm.cc.a.au(getContext(), 2131165516);
-      this.pjA.setPadding(k, i, k, j);
+      int i = com.tencent.mm.cc.a.ax(getContext(), 2131165489);
+      int j = com.tencent.mm.cc.a.ax(getContext(), 2131165500);
+      int k = com.tencent.mm.cc.a.ax(getContext(), 2131165516);
+      this.pNa.setPadding(k, i, k, j);
     }
     AppMethodBeat.o(109203);
   }
@@ -190,8 +207,8 @@ public class EmojiStoreV2HotBarView
   public void setDesignerEmojiViewVisibility(int paramInt)
   {
     AppMethodBeat.i(109202);
-    if (this.pjC != null) {
-      this.pjC.setVisibility(paramInt);
+    if (this.pNc != null) {
+      this.pNc.setVisibility(paramInt);
     }
     AppMethodBeat.o(109202);
   }
@@ -199,8 +216,8 @@ public class EmojiStoreV2HotBarView
   public void setMoreOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(109201);
-    if (this.pjB != null) {
-      this.pjB.setOnClickListener(paramOnClickListener);
+    if (this.pNb != null) {
+      this.pNb.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(109201);
   }
@@ -208,9 +225,9 @@ public class EmojiStoreV2HotBarView
   public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(109204);
-    if (this.ijA != null)
+    if (this.iCR != null)
     {
-      this.ijA.setVisibility(paramInt);
+      this.iCR.setVisibility(paramInt);
       AppMethodBeat.o(109204);
       return;
     }
@@ -221,13 +238,13 @@ public class EmojiStoreV2HotBarView
   public final void updateTitle()
   {
     AppMethodBeat.i(109200);
-    if (d.cce().pas)
+    if (d.cgI().pEc)
     {
-      this.pjz.setText(2131758264);
+      this.pMZ.setText(2131758264);
       AppMethodBeat.o(109200);
       return;
     }
-    this.pjz.setText(2131758263);
+    this.pMZ.setText(2131758263);
     AppMethodBeat.o(109200);
   }
 }

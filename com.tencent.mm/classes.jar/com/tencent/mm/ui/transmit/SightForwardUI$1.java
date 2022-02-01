@@ -11,38 +11,38 @@ final class SightForwardUI$1
 {
   SightForwardUI$1(SightForwardUI paramSightForwardUI) {}
   
-  public final void dFg()
+  public final void dQI()
   {
     AppMethodBeat.i(39482);
     Object localObject = new Intent();
-    ((Intent)localObject).setClass(this.IXO.getContext(), LauncherUI.class).addFlags(67108864);
-    SightForwardUI localSightForwardUI = this.IXO;
-    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(localSightForwardUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/transmit/SightForwardUI$1", "onDismiss", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localSightForwardUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+    ((Intent)localObject).setClass(this.KOT.getContext(), LauncherUI.class).addFlags(67108864);
+    SightForwardUI localSightForwardUI = this.KOT;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(localSightForwardUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/transmit/SightForwardUI$1", "onDismiss", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localSightForwardUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(localSightForwardUI, "com/tencent/mm/ui/transmit/SightForwardUI$1", "onDismiss", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    this.IXO.finish();
+    this.KOT.finish();
     AppMethodBeat.o(39482);
   }
   
   public final void startChattingUI(String paramString)
   {
     AppMethodBeat.i(39481);
-    Object localObject = new Intent(this.IXO.getContext(), ChattingUI.class);
+    Object localObject = new Intent(this.KOT.getContext(), ChattingUI.class);
     ((Intent)localObject).addFlags(67108864);
     ((Intent)localObject).putExtra("Chat_User", paramString);
-    paramString = this.IXO;
-    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/transmit/SightForwardUI$1", "startChattingUI", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+    paramString = this.KOT;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/transmit/SightForwardUI$1", "startChattingUI", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/ui/transmit/SightForwardUI$1", "startChattingUI", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    this.IXO.finish();
+    this.KOT.finish();
     AppMethodBeat.o(39481);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.SightForwardUI.1
  * JD-Core Version:    0.7.0.1
  */

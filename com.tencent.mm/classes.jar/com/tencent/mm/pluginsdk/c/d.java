@@ -1,6 +1,6 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.g.a.le;
+import com.tencent.mm.g.a.ln;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
 import com.tencent.mm.sdk.e.k;
@@ -10,43 +10,43 @@ import com.tencent.mm.sdk.e.m;
 public abstract class d
   implements k.a
 {
-  public int DfU = 0;
+  public int EJQ = 0;
   
-  public final void AY()
+  public final void Cx()
   {
-    if (this.DfU == 0)
+    if (this.EJQ == 0)
     {
-      k localk = cOj();
+      k localk = cWC();
       if (localk != null) {
         localk.add(this);
       }
     }
-    this.DfU += 1;
+    this.EJQ += 1;
   }
   
   public final void a(String paramString, m paramm)
   {
-    paramm = new le();
-    paramm.dmY.dmZ = agM(paramString);
-    a.GpY.l(paramm);
+    paramm = new ln();
+    paramm.dyM.dyN = alj(paramString);
+    a.IbL.l(paramm);
   }
   
-  public abstract b agM(String paramString);
+  public abstract b alj(String paramString);
   
-  public abstract k cOj();
+  public abstract k cWC();
   
   public final void unregister()
   {
-    if (this.DfU == 0) {}
+    if (this.EJQ == 0) {}
     k localk;
     do
     {
       do
       {
         return;
-        this.DfU -= 1;
-      } while (this.DfU != 0);
-      localk = cOj();
+        this.EJQ -= 1;
+      } while (this.EJQ != 0);
+      localk = cWC();
     } while (localk == null);
     localk.remove(this);
   }

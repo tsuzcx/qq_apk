@@ -18,9 +18,9 @@ public class AddFriendItemPreference
   private Context context;
   private Drawable drawable;
   private int height;
-  private String vLt;
-  private int xpM;
-  int xpN;
+  private String wSC;
+  private int yEp;
+  int yEq;
   
   public AddFriendItemPreference(Context paramContext)
   {
@@ -36,9 +36,9 @@ public class AddFriendItemPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29182);
-    this.vLt = "";
-    this.xpM = -1;
-    this.xpN = 8;
+    this.wSC = "";
+    this.yEp = -1;
+    this.yEq = 8;
     this.height = -1;
     this.context = paramContext;
     setLayoutResource(2131494804);
@@ -68,23 +68,23 @@ public class AddFriendItemPreference
       paramView = (TextView)paramView.findViewById(2131305745);
       if (paramView != null)
       {
-        paramView.setVisibility(this.xpN);
-        paramView.setText(this.vLt);
-        if (this.xpM != -1) {
-          paramView.setBackgroundDrawable(a.l(this.context, this.xpM));
+        paramView.setVisibility(this.yEq);
+        paramView.setText(this.wSC);
+        if (this.yEp != -1) {
+          paramView.setBackgroundDrawable(a.l(this.context, this.yEp));
         }
       }
       AppMethodBeat.o(29184);
       return;
       label137:
-      if (this.Vu != null)
+      if (this.Xj != null)
       {
-        ((ImageView)localObject).setImageDrawable(this.Vu);
+        ((ImageView)localObject).setImageDrawable(this.Xj);
         ((ImageView)localObject).setVisibility(0);
       }
-      else if (this.acJ != 0)
+      else if (this.aeA != 0)
       {
-        ((ImageView)localObject).setImageResource(this.acJ);
+        ((ImageView)localObject).setImageResource(this.aeA);
         ((ImageView)localObject).setVisibility(0);
       }
     }
@@ -104,7 +104,7 @@ public class AddFriendItemPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference
  * JD-Core Version:    0.7.0.1
  */

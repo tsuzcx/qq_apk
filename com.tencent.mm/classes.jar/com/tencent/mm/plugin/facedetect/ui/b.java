@@ -3,38 +3,34 @@ package com.tencent.mm.plugin.facedetect.ui;
 import android.graphics.Bitmap;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.al;
 import java.lang.ref.WeakReference;
 
 public final class b
   extends a
 {
-  private ViewGroup gnb;
-  private Button qAh;
-  private Button qAl;
-  private TextView qAn;
-  private ImageView qBJ;
-  private RelativeLayout qBK;
-  private RelativeLayout qBL;
-  private RelativeLayout qBM;
-  private ImageView qBN;
-  private ImageView qBO;
-  private ImageView qBP;
-  private TextView qBQ;
-  private TextView qBR;
-  private TextView qBS;
+  private ViewGroup gGK;
+  private Button rjW;
+  private Button rka;
+  private TextView rkc;
+  private RelativeLayout rlA;
+  private RelativeLayout rlB;
+  private RelativeLayout rlC;
+  private ImageView rlD;
+  private ImageView rlE;
+  private ImageView rlF;
+  private TextView rlG;
+  private TextView rlH;
+  private TextView rlI;
+  private ImageView rlz;
   
   b(FaceDetectPrepareUI paramFaceDetectPrepareUI)
   {
@@ -44,50 +40,50 @@ public final class b
   public final void V(Bitmap paramBitmap)
   {
     AppMethodBeat.i(104030);
-    this.qBJ.setImageBitmap(paramBitmap);
+    this.rlz.setImageBitmap(paramBitmap);
     AppMethodBeat.o(104030);
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(104028);
-    ac.i("MicroMsg.FaceReflectJumper", "show config: %s", new Object[] { paramc });
-    this.gnb.setVisibility(0);
-    if (paramc.qCd)
+    ad.i("MicroMsg.FaceReflectJumper", "show config: %s", new Object[] { paramc });
+    this.gGK.setVisibility(0);
+    if (paramc.rlT)
     {
-      if (paramc.qCs != null) {
-        this.qAl.setOnClickListener(paramc.qCs);
+      if (paramc.rmi != null) {
+        this.rka.setOnClickListener(paramc.rmi);
       }
-      this.qAl.setVisibility(0);
-      if (!bs.isNullOrNil(paramc.ikb)) {
-        this.qAl.setText(paramc.ikb);
+      this.rka.setVisibility(0);
+      if (!bt.isNullOrNil(paramc.iDs)) {
+        this.rka.setText(paramc.iDs);
       }
-      if (!paramc.qCa) {
+      if (!paramc.rlQ) {
         break label266;
       }
-      if (paramc.qCp != null) {
-        this.qAh.setOnClickListener(paramc.qCp);
+      if (paramc.rmf != null) {
+        this.rjW.setOnClickListener(paramc.rmf);
       }
-      this.qAh.setVisibility(0);
-      if (!bs.isNullOrNil(paramc.qCk)) {
-        this.qAh.setText(paramc.qCk);
+      this.rjW.setVisibility(0);
+      if (!bt.isNullOrNil(paramc.rma)) {
+        this.rjW.setText(paramc.rma);
       }
       label136:
-      if (!paramc.qCg) {
+      if (!paramc.rlW) {
         break label278;
       }
-      if (paramc.qCr != null)
+      if (paramc.rmh != null)
       {
-        this.qAn.setClickable(true);
-        this.qAn.setOnClickListener(paramc.qCr);
+        this.rkc.setClickable(true);
+        this.rkc.setOnClickListener(paramc.rmh);
       }
-      this.qAn.setVisibility(0);
-      if (!bs.isNullOrNil(paramc.qCn)) {
-        this.qAn.setText(paramc.qCn);
+      this.rkc.setVisibility(0);
+      if (!bt.isNullOrNil(paramc.rmd)) {
+        this.rkc.setText(paramc.rmd);
       }
       label198:
-      if (paramc.qCi != null) {
-        this.qBJ.setImageBitmap(paramc.qCi);
+      if (paramc.rlY != null) {
+        this.rlz.setImageBitmap(paramc.rlY);
       }
       switch (paramc.status)
       {
@@ -97,74 +93,54 @@ public final class b
     {
       AppMethodBeat.o(104028);
       return;
-      this.qAl.setVisibility(8);
+      this.rka.setVisibility(8);
       break;
       label266:
-      this.qAh.setVisibility(8);
+      this.rjW.setVisibility(8);
       break label136;
       label278:
-      this.qAn.setVisibility(8);
+      this.rkc.setVisibility(8);
       break label198;
-      if (!bs.isNullOrNil(paramc.qCj)) {
-        this.qBQ.setText(paramc.qCj);
+      if (!bt.isNullOrNil(paramc.rlZ)) {
+        this.rlG.setText(paramc.rlZ);
       }
-      ac.i("MicroMsg.FaceReflectJumper", "checking animation");
-      this.qBK.setVisibility(0);
-      this.qBL.setVisibility(8);
-      this.qBM.setVisibility(8);
-      this.qBN.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(104025);
-          TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, b.a(b.this).getHeight());
-          localTranslateAnimation.setDuration(2000L);
-          localTranslateAnimation.setRepeatMode(2);
-          localTranslateAnimation.setRepeatCount(-1);
-          ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 1.0F, 1.0F, 1, 0.5F, 1, 0.5F);
-          localScaleAnimation.setDuration(1000L);
-          localScaleAnimation.setRepeatMode(2);
-          localScaleAnimation.setRepeatCount(-1);
-          AnimationSet localAnimationSet = new AnimationSet(true);
-          localAnimationSet.addAnimation(localTranslateAnimation);
-          localAnimationSet.addAnimation(localScaleAnimation);
-          localAnimationSet.setRepeatCount(-1);
-          b.b(b.this).startAnimation(localAnimationSet);
-          AppMethodBeat.o(104025);
-        }
-      });
+      ad.i("MicroMsg.FaceReflectJumper", "checking animation");
+      this.rlA.setVisibility(0);
+      this.rlB.setVisibility(8);
+      this.rlC.setVisibility(8);
+      this.rlD.post(new b.1(this));
       AppMethodBeat.o(104028);
       return;
-      if (!bs.isNullOrNil(paramc.qCj)) {
-        this.qBR.setText(paramc.qCj);
+      if (!bt.isNullOrNil(paramc.rlZ)) {
+        this.rlH.setText(paramc.rlZ);
       }
-      ac.i("MicroMsg.FaceReflectJumper", "check success animation");
-      this.qBO.clearAnimation();
-      this.qBK.setVisibility(8);
-      this.qBL.setVisibility(0);
-      this.qBK.setVisibility(8);
-      this.qBM.setVisibility(8);
-      this.qBP.setScaleX(0.0F);
-      this.qBP.setScaleY(0.0F);
-      this.qBP.animate().scaleX(1.0F).scaleY(1.0F).setDuration(800L);
+      ad.i("MicroMsg.FaceReflectJumper", "check success animation");
+      this.rlE.clearAnimation();
+      this.rlA.setVisibility(8);
+      this.rlB.setVisibility(0);
+      this.rlA.setVisibility(8);
+      this.rlC.setVisibility(8);
+      this.rlF.setScaleX(0.0F);
+      this.rlF.setScaleY(0.0F);
+      this.rlF.animate().scaleX(1.0F).scaleY(1.0F).setDuration(800L);
       AppMethodBeat.o(104028);
       return;
-      if (!bs.isNullOrNil(paramc.qCj)) {
-        this.qBS.setText(paramc.qCj);
+      if (!bt.isNullOrNil(paramc.rlZ)) {
+        this.rlI.setText(paramc.rlZ);
       }
-      ac.i("MicroMsg.FaceReflectJumper", "check failed animation");
-      this.qBL.setVisibility(8);
-      this.qBK.setVisibility(8);
-      this.qBM.setVisibility(0);
-      this.qBO.clearAnimation();
-      this.qBK.setVisibility(8);
+      ad.i("MicroMsg.FaceReflectJumper", "check failed animation");
+      this.rlB.setVisibility(8);
+      this.rlA.setVisibility(8);
+      this.rlC.setVisibility(0);
+      this.rlE.clearAnimation();
+      this.rlA.setVisibility(8);
     }
   }
   
-  public final boolean bjw()
+  public final boolean bni()
   {
     AppMethodBeat.i(104032);
-    if (this.gnb.getVisibility() == 0)
+    if (this.gGK.getVisibility() == 0)
     {
       AppMethodBeat.o(104032);
       return true;
@@ -173,60 +149,36 @@ public final class b
     return false;
   }
   
-  public final void cob()
-  {
-    AppMethodBeat.i(104031);
-    if (this.qBK != null) {
-      this.qBK.setVisibility(8);
-    }
-    if (this.qBL != null) {
-      this.qBL.setVisibility(8);
-    }
-    if (this.qBM != null) {
-      this.qBM.setVisibility(8);
-    }
-    if (this.qAl != null) {
-      this.qAl.setVisibility(8);
-    }
-    if (this.qAn != null) {
-      this.qAn.setVisibility(8);
-    }
-    if (this.qAh != null) {
-      this.qAh.setVisibility(8);
-    }
-    AppMethodBeat.o(104031);
-  }
-  
   public final void create()
   {
     try
     {
       AppMethodBeat.i(104027);
-      FaceDetectPrepareUI localFaceDetectPrepareUI = (FaceDetectPrepareUI)this.qAq.get();
+      FaceDetectPrepareUI localFaceDetectPrepareUI = (FaceDetectPrepareUI)this.rkf.get();
       if (localFaceDetectPrepareUI != null)
       {
-        this.gnb = ((ViewGroup)localFaceDetectPrepareUI.findViewById(2131303923));
-        this.qBJ = ((ImageView)localFaceDetectPrepareUI.findViewById(2131301243));
-        this.qBK = ((RelativeLayout)localFaceDetectPrepareUI.findViewById(2131299731));
-        this.qBL = ((RelativeLayout)localFaceDetectPrepareUI.findViewById(2131299732));
-        this.qBM = ((RelativeLayout)localFaceDetectPrepareUI.findViewById(2131299730));
-        this.qBN = ((ImageView)localFaceDetectPrepareUI.findViewById(2131299673));
-        this.qBO = ((ImageView)localFaceDetectPrepareUI.findViewById(2131299670));
-        this.qBP = ((ImageView)localFaceDetectPrepareUI.findViewById(2131299680));
-        this.qAl = ((Button)localFaceDetectPrepareUI.findViewById(2131301245));
-        if (aj.aG(localFaceDetectPrepareUI))
+        this.gGK = ((ViewGroup)localFaceDetectPrepareUI.findViewById(2131303923));
+        this.rlz = ((ImageView)localFaceDetectPrepareUI.findViewById(2131301243));
+        this.rlA = ((RelativeLayout)localFaceDetectPrepareUI.findViewById(2131299731));
+        this.rlB = ((RelativeLayout)localFaceDetectPrepareUI.findViewById(2131299732));
+        this.rlC = ((RelativeLayout)localFaceDetectPrepareUI.findViewById(2131299730));
+        this.rlD = ((ImageView)localFaceDetectPrepareUI.findViewById(2131299673));
+        this.rlE = ((ImageView)localFaceDetectPrepareUI.findViewById(2131299670));
+        this.rlF = ((ImageView)localFaceDetectPrepareUI.findViewById(2131299680));
+        this.rka = ((Button)localFaceDetectPrepareUI.findViewById(2131301245));
+        if (al.aG(localFaceDetectPrepareUI))
         {
-          RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.qAl.getLayoutParams();
-          localLayoutParams.topMargin = aj.aF(localFaceDetectPrepareUI);
-          this.qAl.setLayoutParams(localLayoutParams);
+          RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.rka.getLayoutParams();
+          localLayoutParams.topMargin = al.aF(localFaceDetectPrepareUI);
+          this.rka.setLayoutParams(localLayoutParams);
         }
-        this.qAh = ((Button)localFaceDetectPrepareUI.findViewById(2131299668));
-        this.qAn = ((TextView)localFaceDetectPrepareUI.findViewById(2131303922));
-        this.qBQ = ((TextView)localFaceDetectPrepareUI.findViewById(2131299672));
-        this.qBR = ((TextView)localFaceDetectPrepareUI.findViewById(2131299681));
-        this.qBS = ((TextView)localFaceDetectPrepareUI.findViewById(2131299678));
-        if (this.gnb != null) {
-          this.gnb.setVisibility(8);
+        this.rjW = ((Button)localFaceDetectPrepareUI.findViewById(2131299668));
+        this.rkc = ((TextView)localFaceDetectPrepareUI.findViewById(2131303922));
+        this.rlG = ((TextView)localFaceDetectPrepareUI.findViewById(2131299672));
+        this.rlH = ((TextView)localFaceDetectPrepareUI.findViewById(2131299681));
+        this.rlI = ((TextView)localFaceDetectPrepareUI.findViewById(2131299678));
+        if (this.gGK != null) {
+          this.gGK.setVisibility(8);
         }
       }
       AppMethodBeat.o(104027);
@@ -235,12 +187,36 @@ public final class b
     finally {}
   }
   
+  public final void ctG()
+  {
+    AppMethodBeat.i(104031);
+    if (this.rlA != null) {
+      this.rlA.setVisibility(8);
+    }
+    if (this.rlB != null) {
+      this.rlB.setVisibility(8);
+    }
+    if (this.rlC != null) {
+      this.rlC.setVisibility(8);
+    }
+    if (this.rka != null) {
+      this.rka.setVisibility(8);
+    }
+    if (this.rkc != null) {
+      this.rkc.setVisibility(8);
+    }
+    if (this.rjW != null) {
+      this.rjW.setVisibility(8);
+    }
+    AppMethodBeat.o(104031);
+  }
+  
   public final void dismiss()
   {
     AppMethodBeat.i(104029);
-    ac.m("MicroMsg.FaceReflectJumper", "dismiss jumper", new Object[0]);
-    if (this.qAq.get() != null) {
-      ((FaceDetectPrepareUI)this.qAq.get()).runOnUiThread(new Runnable()
+    ad.m("MicroMsg.FaceReflectJumper", "dismiss jumper", new Object[0]);
+    if (this.rkf.get() != null) {
+      ((FaceDetectPrepareUI)this.rkf.get()).runOnUiThread(new Runnable()
       {
         public final void run()
         {

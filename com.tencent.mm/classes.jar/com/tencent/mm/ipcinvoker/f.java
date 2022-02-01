@@ -7,14 +7,14 @@ import junit.framework.Assert;
 
 public final class f
 {
-  public String gdR;
+  public String gxB;
   
   public f(String paramString)
   {
-    this.gdR = paramString;
+    this.gxB = paramString;
   }
   
-  public static String bd(Object paramObject)
+  public static String bf(Object paramObject)
   {
     AppMethodBeat.i(158730);
     paramObject = "Token#IPCObserver#" + paramObject.hashCode();

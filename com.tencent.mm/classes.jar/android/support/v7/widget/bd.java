@@ -17,11 +17,11 @@ import android.widget.TextView;
 
 final class bd
 {
-  private final TextView Vx;
-  private final WindowManager.LayoutParams axT = new WindowManager.LayoutParams();
-  private final Rect axU = new Rect();
-  private final int[] axV = new int[2];
-  private final int[] axW = new int[2];
+  private final TextView Xm;
+  private final WindowManager.LayoutParams azK = new WindowManager.LayoutParams();
+  private final Rect azL = new Rect();
+  private final int[] azM = new int[2];
+  private final int[] azN = new int[2];
   private final View mContentView;
   private final Context mContext;
   
@@ -29,15 +29,15 @@ final class bd
   {
     this.mContext = paramContext;
     this.mContentView = LayoutInflater.from(this.mContext).inflate(2131492918, null);
-    this.Vx = ((TextView)this.mContentView.findViewById(2131302253));
-    this.axT.setTitle(getClass().getSimpleName());
-    this.axT.packageName = this.mContext.getPackageName();
-    this.axT.type = 1002;
-    this.axT.width = -2;
-    this.axT.height = -2;
-    this.axT.format = -3;
-    this.axT.windowAnimations = 2131820554;
-    this.axT.flags = 24;
+    this.Xm = ((TextView)this.mContentView.findViewById(2131302253));
+    this.azK.setTitle(getClass().getSimpleName());
+    this.azK.packageName = this.mContext.getPackageName();
+    this.azK.type = 1002;
+    this.azK.width = -2;
+    this.azK.height = -2;
+    this.azK.format = -3;
+    this.azK.windowAnimations = 2131820554;
+    this.azK.flags = 24;
   }
   
   private void a(View paramView, int paramInt1, int paramInt2, boolean paramBoolean, WindowManager.LayoutParams paramLayoutParams)
@@ -75,9 +75,9 @@ final class bd
       break;
     }
     label141:
-    ((View)localObject1).getWindowVisibleDisplayFrame(this.axU);
+    ((View)localObject1).getWindowVisibleDisplayFrame(this.azL);
     Object localObject2;
-    if ((this.axU.left < 0) && (this.axU.top < 0))
+    if ((this.azL.left < 0) && (this.azL.top < 0))
     {
       localObject2 = this.mContext.getResources();
       j = ((Resources)localObject2).getIdentifier("status_bar_height", "dimen", "android");
@@ -89,19 +89,19 @@ final class bd
     for (j = ((Resources)localObject2).getDimensionPixelSize(j);; j = 0)
     {
       localObject2 = ((Resources)localObject2).getDisplayMetrics();
-      this.axU.set(0, j, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
-      ((View)localObject1).getLocationOnScreen(this.axW);
-      paramView.getLocationOnScreen(this.axV);
-      paramView = this.axV;
-      paramView[0] -= this.axW[0];
-      paramView = this.axV;
-      paramView[1] -= this.axW[1];
-      paramLayoutParams.x = (this.axV[0] + paramInt1 - ((View)localObject1).getWidth() / 2);
+      this.azL.set(0, j, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
+      ((View)localObject1).getLocationOnScreen(this.azN);
+      paramView.getLocationOnScreen(this.azM);
+      paramView = this.azM;
+      paramView[0] -= this.azN[0];
+      paramView = this.azM;
+      paramView[1] -= this.azN[1];
+      paramLayoutParams.x = (this.azM[0] + paramInt1 - ((View)localObject1).getWidth() / 2);
       paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
       this.mContentView.measure(paramInt1, paramInt1);
       paramInt1 = this.mContentView.getMeasuredHeight();
-      i = i + this.axV[1] - k - paramInt1;
-      paramInt2 = paramInt2 + this.axV[1] + k;
+      i = i + this.azM[1] - k - paramInt1;
+      paramInt2 = paramInt2 + this.azM[1] + k;
       if (!paramBoolean) {
         break;
       }
@@ -111,7 +111,7 @@ final class bd
       paramLayoutParams.y = paramInt2;
       return;
     }
-    if (paramInt1 + paramInt2 <= this.axU.height())
+    if (paramInt1 + paramInt2 <= this.azL.height())
     {
       paramLayoutParams.y = paramInt2;
       return;
@@ -145,9 +145,9 @@ final class bd
     if (isShowing()) {
       hide();
     }
-    this.Vx.setText(paramCharSequence);
-    a(paramView, paramInt1, paramInt2, paramBoolean, this.axT);
-    ((WindowManager)this.mContext.getSystemService("window")).addView(this.mContentView, this.axT);
+    this.Xm.setText(paramCharSequence);
+    a(paramView, paramInt1, paramInt2, paramBoolean, this.azK);
+    ((WindowManager)this.mContext.getSystemService("window")).addView(this.mContentView, this.azK);
   }
   
   final void hide()

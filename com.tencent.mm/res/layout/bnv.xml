@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <include android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ip" />
-    <ViewStub android:id="@id/ha_" android:layout="@layout/bnw" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/ha8" android:layout="@layout/bnq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/ha9" android:layout="@layout/bns" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ip" />
+    <ViewStub android:id="@id/ha_" android:layout="@layout/bnw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn" />
+    <ViewStub android:id="@id/ha8" android:layout="@layout/bnq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn" />
+    <ViewStub android:id="@id/ha9" android:layout="@layout/bns" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn" />
+    <ViewStub android:id="@id/i0f" android:layout="@layout/bub" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn" />
+    <ViewStub android:id="@id/i6t" android:layout="@layout/bvm" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/i6u" android:layout="@layout/bvn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn" />
     <LinearLayout android:orientation="vertical" android:id="@id/h8g" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

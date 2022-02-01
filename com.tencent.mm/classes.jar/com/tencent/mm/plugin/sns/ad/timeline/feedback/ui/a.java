@@ -10,57 +10,57 @@ public final class a
   implements PopupWindow.OnDismissListener
 {
   public Context mContext;
-  private PopupWindow.OnDismissListener xLU;
-  private boolean xLV;
+  private PopupWindow.OnDismissListener zbj;
+  private boolean zbk;
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(200002);
+    AppMethodBeat.i(197648);
     super.setOnDismissListener(this);
     this.mContext = paramContext;
-    AppMethodBeat.o(200002);
+    AppMethodBeat.o(197648);
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(200003);
+    AppMethodBeat.i(197649);
     try
     {
       super.dismiss();
-      AppMethodBeat.o(200003);
+      AppMethodBeat.o(197649);
       return;
     }
     catch (Throwable localThrowable)
     {
-      if ((!this.xLV) && (this.xLU != null)) {
-        this.xLU.onDismiss();
+      if ((!this.zbk) && (this.zbj != null)) {
+        this.zbj.onDismiss();
       }
-      AppMethodBeat.o(200003);
+      AppMethodBeat.o(197649);
     }
   }
   
   public final void onDismiss()
   {
-    AppMethodBeat.i(200004);
+    AppMethodBeat.i(197650);
     try
     {
-      this.xLV = true;
-      if (this.xLU != null) {
-        this.xLU.onDismiss();
+      this.zbk = true;
+      if (this.zbj != null) {
+        this.zbj.onDismiss();
       }
-      AppMethodBeat.o(200004);
+      AppMethodBeat.o(197650);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(200004);
+      AppMethodBeat.o(197650);
     }
   }
   
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.xLU = paramOnDismissListener;
+    this.zbj = paramOnDismissListener;
   }
 }
 

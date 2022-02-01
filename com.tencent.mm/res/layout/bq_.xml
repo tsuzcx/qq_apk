@@ -13,7 +13,7 @@
             <android.support.constraint.ConstraintLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
                 <TableLayout android:id="@id/dyb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:shrinkColumns="0" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8">
                     <TableRow>
-                        <TextView android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="end" android:id="@id/e3x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:singleLine="true" style="@style/hn" />
+                        <TextView android:textColor="@color/fd" android:ellipsize="end" android:id="@id/e3x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:singleLine="true" style="@style/hn" />
                         <TextView android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/hut" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/hn" />
                     </TableRow>
                 </TableLayout>
@@ -24,7 +24,7 @@
                 <TextView android:textSize="12.0dip" android:id="@id/g9g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ci" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toBottomOf="@id/d1r" style="@style/hn" />
             </android.support.constraint.ConstraintLayout>
             <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <ImageView android:id="@id/g8w" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:scaleType="centerCrop" />
+                <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/g8w" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:scaleType="centerCrop" app:roundHeight="1.0dip" app:roundWidth="1.0dip" />
                 <TextView android:textSize="@dimen/jv" android:gravity="center" android:id="@id/g6v" android:visibility="gone" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" />
             </FrameLayout>
         </LinearLayout>

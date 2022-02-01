@@ -1,30 +1,73 @@
 package com.tencent.mm.emoji.a.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/PlaceHolderItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "emojiType", "", "(I)V", "getEmojiType", "()I", "equals", "", "other", "", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"TAG", "", "captureGroupId", "getCaptureGroupId", "()Ljava/lang/String;", "customGroupId", "getCustomGroupId", "smileyGroupId", "getSmileyGroupId", "smileyRecentGroupId", "getSmileyRecentGroupId", "createCaptureGroupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "createCustomGroupInfo", "createSmileyGroupInfo", "createSmileyRecentGroupInfo", "plugin-emojisdk_release"})
 public final class ad
-  extends y
 {
-  public final int fRp;
+  private static final String TAG = "MicroMsg.PanelItemGroup";
+  private static final String glK = "smiley";
+  private static final String glL = "smiley_recent";
+  private static final String glM = "custom";
+  private static final String glN = "capture";
   
-  public ad(int paramInt)
+  public static final String afA()
   {
-    super(paramInt);
-    this.fRp = paramInt;
+    return glM;
   }
   
-  public final boolean equals(Object paramObject)
+  public static final String afB()
   {
-    AppMethodBeat.i(161813);
-    if ((super.equals(paramObject)) && ((paramObject instanceof ad)) && (((ad)paramObject).fRp == this.fRp))
-    {
-      AppMethodBeat.o(161813);
-      return true;
-    }
-    AppMethodBeat.o(161813);
-    return false;
+    return glN;
+  }
+  
+  public static final EmojiGroupInfo afC()
+  {
+    AppMethodBeat.i(105574);
+    EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
+    localEmojiGroupInfo.setProductID(glL);
+    localEmojiGroupInfo.bec(aj.getContext().getString(2131758283));
+    AppMethodBeat.o(105574);
+    return localEmojiGroupInfo;
+  }
+  
+  public static final EmojiGroupInfo afD()
+  {
+    AppMethodBeat.i(105575);
+    EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
+    localEmojiGroupInfo.setProductID(glK);
+    localEmojiGroupInfo.bec(aj.getContext().getString(2131758284));
+    AppMethodBeat.o(105575);
+    return localEmojiGroupInfo;
+  }
+  
+  public static final EmojiGroupInfo afE()
+  {
+    AppMethodBeat.i(105576);
+    EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
+    localEmojiGroupInfo.setProductID(glM);
+    localEmojiGroupInfo.bec(aj.getContext().getString(2131758280));
+    AppMethodBeat.o(105576);
+    return localEmojiGroupInfo;
+  }
+  
+  public static final EmojiGroupInfo afF()
+  {
+    AppMethodBeat.i(105577);
+    EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
+    localEmojiGroupInfo.setProductID(glN);
+    localEmojiGroupInfo.bec(aj.getContext().getString(2131758279));
+    AppMethodBeat.o(105577);
+    return localEmojiGroupInfo;
+  }
+  
+  public static final String afz()
+  {
+    return glK;
   }
 }
 

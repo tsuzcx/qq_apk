@@ -4,54 +4,67 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b
   extends j<a>
 {
-  private static b CZG;
+  private static b EDF;
   public static final String[] SQL_CREATE;
   private static final Object lock;
-  private com.tencent.mm.sdk.e.e jnc;
+  private com.tencent.mm.sdk.e.e jHa;
   
   static
   {
     AppMethodBeat.i(110561);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.hlR, "WePkgDiffPackage") };
+    SQL_CREATE = new String[] { j.getCreateSQLs(a.hEe, "WePkgDiffPackage") };
     lock = new Object();
     AppMethodBeat.o(110561);
   }
   
   private b(com.tencent.mm.sdk.e.e parame)
   {
-    super(parame, a.hlR, "WePkgDiffPackage", a.INDEX_CREATE);
-    this.jnc = parame;
+    super(parame, a.hEe, "WePkgDiffPackage", a.INDEX_CREATE);
+    this.jHa = parame;
   }
   
-  private boolean baH()
+  private boolean beh()
   {
-    return this.jnc != null;
+    return this.jHa != null;
   }
   
-  public static b eIR()
+  public static b eXL()
   {
     AppMethodBeat.i(110558);
-    if (CZG == null) {}
+    if (EDF == null) {}
     synchronized (lock)
     {
-      if ((CZG == null) || (!CZG.baH())) {
-        CZG = new b(g.agR().ghG);
+      if ((EDF == null) || (!EDF.beh())) {
+        EDF = new b(g.ajC().gBq);
       }
-      ??? = CZG;
+      ??? = EDF;
       AppMethodBeat.o(110558);
       return ???;
     }
   }
   
-  public final a aEV(String paramString)
+  public final boolean CA(String paramString)
+  {
+    AppMethodBeat.i(110560);
+    if ((!beh()) || (bt.isNullOrNil(paramString)))
+    {
+      AppMethodBeat.o(110560);
+      return false;
+    }
+    boolean bool = execSQL("WePkgDiffPackage", String.format("delete from %s where %s=%s", new Object[] { "WePkgDiffPackage", "pkgId", "'" + paramString + "'" }));
+    AppMethodBeat.o(110560);
+    return bool;
+  }
+  
+  public final a aKv(String paramString)
   {
     AppMethodBeat.i(110559);
-    if ((!baH()) || (bs.isNullOrNil(paramString)))
+    if ((!beh()) || (bt.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110559);
       return null;
@@ -73,19 +86,6 @@ public final class b
     }
     AppMethodBeat.o(110559);
     return null;
-  }
-  
-  public final boolean zB(String paramString)
-  {
-    AppMethodBeat.i(110560);
-    if ((!baH()) || (bs.isNullOrNil(paramString)))
-    {
-      AppMethodBeat.o(110560);
-      return false;
-    }
-    boolean bool = execSQL("WePkgDiffPackage", String.format("delete from %s where %s=%s", new Object[] { "WePkgDiffPackage", "pkgId", "'" + paramString + "'" }));
-    AppMethodBeat.o(110560);
-    return bool;
   }
 }
 

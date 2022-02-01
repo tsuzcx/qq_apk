@@ -8,15 +8,15 @@ import java.util.List;
 
 public final class a
 {
-  private Object GzG;
-  private HashMap<String, Object> Kuf;
-  c Kug;
+  private Object IlA;
+  private HashMap<String, Object> Mkg;
+  c Mkh;
   
   public a()
   {
     AppMethodBeat.i(62812);
-    this.Kuf = new HashMap();
-    this.GzG = new Object();
+    this.Mkg = new HashMap();
+    this.IlA = new Object();
     AppMethodBeat.o(62812);
   }
   
@@ -24,16 +24,16 @@ public final class a
   {
     AppMethodBeat.i(62815);
     String str;
-    if ((parame != null) && (parame.dol != null))
+    if ((parame != null) && (parame.dzZ != null))
     {
       System.currentTimeMillis();
-      str = parame.dol;
+      str = parame.dzZ;
     }
     for (;;)
     {
-      synchronized (this.GzG)
+      synchronized (this.IlA)
       {
-        localObject1 = this.Kuf.get(str);
+        localObject1 = this.Mkg.get(str);
         if (localObject1 == null) {
           break label171;
         }
@@ -42,14 +42,14 @@ public final class a
           locald = (d)localObject1;
           localObject1 = null;
           if (locald != null) {
-            locald.gF(str, parame.Kui);
+            locald.hd(str, parame.Mkj);
           }
           if (localObject1 != null)
           {
             localObject1 = ((LinkedList)localObject1).iterator();
             if (((Iterator)localObject1).hasNext())
             {
-              ((d)((Iterator)localObject1).next()).gF(str, parame.Kui);
+              ((d)((Iterator)localObject1).next()).hd(str, parame.Mkj);
               continue;
             }
           }
@@ -63,7 +63,7 @@ public final class a
           locald = null;
         }
       }
-      this.Kug.a(parame);
+      this.Mkh.a(parame);
       AppMethodBeat.o(62815);
       return;
       label171:
@@ -85,7 +85,7 @@ public final class a
       int i;
       Object localObject2;
       Object localObject3;
-      synchronized (this.GzG)
+      synchronized (this.IlA)
       {
         int j = paramArrayOfString.length;
         i = 0;
@@ -96,10 +96,10 @@ public final class a
         if (localObject2 == null) {
           break label208;
         }
-        localObject3 = this.Kuf.get(localObject2);
+        localObject3 = this.Mkg.get(localObject2);
         if (localObject3 == null)
         {
-          this.Kuf.put(localObject2, paramd);
+          this.Mkg.put(localObject2, paramd);
         }
         else if ((localObject3 instanceof d))
         {
@@ -112,7 +112,7 @@ public final class a
           LinkedList localLinkedList = new LinkedList();
           localLinkedList.add(localObject3);
           localLinkedList.add(paramd);
-          this.Kuf.put(localObject2, localLinkedList);
+          this.Mkg.put(localObject2, localLinkedList);
         }
       }
       if ((localObject3 instanceof List))
@@ -137,9 +137,9 @@ public final class a
   public final void b(String paramString, int paramInt, Object paramObject)
   {
     AppMethodBeat.i(62814);
-    e locale = (e)this.Kug.fHw();
-    locale.dol = paramString;
-    locale.Kui = paramInt;
+    e locale = (e)this.Mkh.fYN();
+    locale.dzZ = paramString;
+    locale.Mkj = paramInt;
     locale.arg1 = 0;
     locale.arg2 = 0;
     locale.obj = paramObject;
@@ -149,7 +149,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.f.a.a
  * JD-Core Version:    0.7.0.1
  */

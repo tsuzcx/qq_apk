@@ -13,36 +13,36 @@ public abstract interface x
   public static final class a
     extends Error
   {
-    final String lkA;
+    final String lHI;
     
     a(String paramString1, String paramString2)
     {
       super();
-      this.lkA = paramString2;
+      this.lHI = paramString2;
     }
     
     static final class a
     {
       String errorMessage;
-      String lkA;
+      String lHI;
       
-      final x.a bnu()
+      final x.a brg()
       {
         AppMethodBeat.i(47167);
-        x.a locala = new x.a(this.errorMessage, this.lkA);
+        x.a locala = new x.a(this.errorMessage, this.lHI);
         AppMethodBeat.o(47167);
         return locala;
       }
       
-      final a n(String paramString, Object... paramVarArgs)
+      final a p(String paramString, Object... paramVarArgs)
       {
         AppMethodBeat.i(47165);
-        this.lkA = String.format(Locale.US, paramString, paramVarArgs);
+        this.lHI = String.format(Locale.US, paramString, paramVarArgs);
         AppMethodBeat.o(47165);
         return this;
       }
       
-      final a o(String paramString, Object... paramVarArgs)
+      final a q(String paramString, Object... paramVarArgs)
       {
         AppMethodBeat.i(47166);
         this.errorMessage = String.format(Locale.US, paramString, paramVarArgs);
@@ -54,7 +54,7 @@ public abstract interface x
   
   public static abstract interface b
   {
-    public abstract void gS(boolean paramBoolean);
+    public abstract void gZ(boolean paramBoolean);
   }
 }
 

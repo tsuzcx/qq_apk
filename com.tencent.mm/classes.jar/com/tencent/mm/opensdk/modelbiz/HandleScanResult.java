@@ -17,18 +17,19 @@ public class HandleScanResult
     public boolean checkArgs()
     {
       AppMethodBeat.i(3934);
-      if ((this.scanResult == null) || (this.scanResult.length() < 0))
+      String str = this.scanResult;
+      if ((str != null) && (str.length() >= 0))
       {
+        if (this.scanResult.length() > 10240)
+        {
+          AppMethodBeat.o(3934);
+          return false;
+        }
         AppMethodBeat.o(3934);
-        return false;
-      }
-      if (this.scanResult.length() > 10240)
-      {
-        AppMethodBeat.o(3934);
-        return false;
+        return true;
       }
       AppMethodBeat.o(3934);
-      return true;
+      return false;
     }
     
     public int getType()

@@ -12,7 +12,7 @@ public abstract interface c
   
   public abstract void g(b paramb);
   
-  public abstract boolean pA();
+  public abstract boolean pS();
 }
 
 

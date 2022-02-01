@@ -12,7 +12,7 @@ import com.tencent.liteav.basic.module.TXCStatus;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.structs.TXSVideoFrame;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
@@ -51,7 +51,7 @@ public class TXCVideoDecoder
   static
   {
     AppMethodBeat.i(16641);
-    d.f();
+    f.f();
     AppMethodBeat.o(16641);
   }
   
@@ -139,7 +139,7 @@ public class TXCVideoDecoder
       if ((!this.mRestarting) && (paramTXSNALPacket.codecId == 1) && (!this.mHWDec))
       {
         TXCLog.w("TXCVideoDecoder", "play:decode: hevc decode error  ");
-        d.a(this.mNotifyListener, -2304, "h265解码失败");
+        f.a(this.mNotifyListener, -2304, "h265解码失败");
         this.mRestarting = true;
       }
       if (this.mDecoderHandler == null) {
@@ -258,7 +258,7 @@ public class TXCVideoDecoder
     for (int i = 1;; i = 2)
     {
       localBundle.putInt("EVT_PARAM1", i);
-      d.a(this.mNotifyListener, this.mUserId, 2008, localBundle);
+      f.a(this.mNotifyListener, this.mUserId, 2008, localBundle);
       AppMethodBeat.o(16636);
       return;
       l = 0L;
@@ -498,7 +498,7 @@ public class TXCVideoDecoder
   
   public boolean isHardwareDecode()
   {
-    return this.mHWDec;
+    return this.mVideoDecoder != null;
   }
   
   public boolean isHevc()
@@ -564,7 +564,7 @@ public class TXCVideoDecoder
   public void onNotifyEvent(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(16615);
-    d.a(this.mNotifyListener, this.mUserId, paramInt, paramBundle);
+    f.a(this.mNotifyListener, this.mUserId, paramInt, paramBundle);
     AppMethodBeat.o(16615);
   }
   

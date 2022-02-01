@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.exdevice.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ey;
+import com.tencent.mm.g.a.fb;
 import com.tencent.mm.plugin.exdevice.service.f;
 import com.tencent.mm.plugin.exdevice.service.f.a;
 import com.tencent.mm.plugin.exdevice.service.j.a;
@@ -12,8 +12,7 @@ import com.tencent.mm.plugin.exdevice.service.s.a;
 import com.tencent.mm.plugin.exdevice.service.t;
 import com.tencent.mm.plugin.exdevice.service.u;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -24,9 +23,9 @@ public class h
   extends s.a
 {
   protected static final String TAG;
-  private boolean pyN;
-  f pyO;
-  private j.a pyP;
+  private boolean qcs;
+  f qct;
+  private j.a qcu;
   
   static
   {
@@ -38,28 +37,28 @@ public class h
   public h()
   {
     AppMethodBeat.i(23345);
-    this.pyN = false;
-    this.pyO = new f();
-    this.pyP = new j.a()
+    this.qcs = false;
+    this.qct = new f();
+    this.qcu = new j.a()
     {
       public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt3, byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(23343);
-        ac.d(h.TAG, "onScanCallback. messageType=%d, errCode=%d, errMsg=%s, deviceMac=%s, deviceName=%s, rssi=%d, advertisment=%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, Integer.valueOf(paramAnonymousInt3), com.tencent.mm.plugin.exdevice.k.b.bd(paramAnonymousArrayOfByte) });
+        com.tencent.mm.sdk.platformtools.ad.d(h.TAG, "onScanCallback. messageType=%d, errCode=%d, errMsg=%s, deviceMac=%s, deviceName=%s, rssi=%d, advertisment=%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, Integer.valueOf(paramAnonymousInt3), com.tencent.mm.plugin.exdevice.k.b.bg(paramAnonymousArrayOfByte) });
         if (1 == paramAnonymousInt1) {
-          ad.cha().n(paramAnonymousString3, paramAnonymousString2, false);
+          ad.clE().n(paramAnonymousString3, paramAnonymousString2, false);
         }
         for (;;)
         {
-          if (ad.cgP().sP(com.tencent.mm.plugin.exdevice.k.b.Zs(paramAnonymousString2)) != null) {
-            ac.d(h.TAG, "the founded device hasn't been binded");
+          if (ad.clt().uN(com.tencent.mm.plugin.exdevice.k.b.acY(paramAnonymousString2)) != null) {
+            com.tencent.mm.sdk.platformtools.ad.d(h.TAG, "the founded device hasn't been binded");
           }
           AppMethodBeat.o(23343);
           return;
           if (2 == paramAnonymousInt1) {
-            ad.cha().n(paramAnonymousString3, paramAnonymousString2, true);
+            ad.clE().n(paramAnonymousString3, paramAnonymousString2, true);
           } else {
-            ac.e(h.TAG, "unknown message type %d", new Object[] { Integer.valueOf(paramAnonymousInt1) });
+            com.tencent.mm.sdk.platformtools.ad.e(h.TAG, "unknown message type %d", new Object[] { Integer.valueOf(paramAnonymousInt1) });
           }
         }
       }
@@ -72,43 +71,43 @@ public class h
     AppMethodBeat.i(23350);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
     {
-      ac.e(TAG, "no data for transmit");
+      com.tencent.mm.sdk.platformtools.ad.e(TAG, "no data for transmit");
       AppMethodBeat.o(23350);
       return false;
     }
-    if (u.chr().pwN == null)
+    if (u.clV().qas == null)
     {
-      ac.e(TAG, "can not send data");
+      com.tencent.mm.sdk.platformtools.ad.e(TAG, "can not send data");
       AppMethodBeat.o(23350);
       return false;
     }
-    boolean bool = u.chr().pwN.b(paramLong, paramArrayOfByte, paramt);
+    boolean bool = u.clV().qas.b(paramLong, paramArrayOfByte, paramt);
     if (!bool) {
-      ac.e(TAG, "simpleBluetoothSendData error");
+      com.tencent.mm.sdk.platformtools.ad.e(TAG, "simpleBluetoothSendData error");
     }
     AppMethodBeat.o(23350);
     return bool;
   }
   
-  public static void st(long paramLong)
+  public static void ur(long paramLong)
   {
     AppMethodBeat.i(23349);
-    d locald = ad.cgW();
-    ac.d("MicroMsg.exdevice.ExdeviceConnectManager", "simpleBTDisconnect");
-    if (locald.pwS == null)
+    d locald = ad.clA();
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.exdevice.ExdeviceConnectManager", "simpleBTDisconnect");
+    if (locald.qax == null)
     {
-      ac.i("MicroMsg.exdevice.ExdeviceConnectManager", "exdevice process is dead, just leave");
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "exdevice process is dead, just leave");
       AppMethodBeat.o(23349);
       return;
     }
-    if (u.chr().pwN == null)
+    if (u.clV().qas == null)
     {
-      ac.e("MicroMsg.exdevice.ExdeviceConnectManager", "dispatcher is null.");
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "dispatcher is null.");
       AppMethodBeat.o(23349);
       return;
     }
-    if (!u.chr().pwN.sO(paramLong)) {
-      ac.e("MicroMsg.exdevice.ExdeviceConnectManager", "simpleBluetoothDisconnect failed!!!");
+    if (!u.clV().qas.uM(paramLong)) {
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "simpleBluetoothDisconnect failed!!!");
     }
     AppMethodBeat.o(23349);
   }
@@ -116,49 +115,49 @@ public class h
   public final void a(long paramLong, final a parama)
   {
     AppMethodBeat.i(23348);
-    Object localObject = this.pyO.sG(paramLong);
-    if ((localObject != null) && (2 == ((f.a)localObject).dea))
+    Object localObject = this.qct.uE(paramLong);
+    if ((localObject != null) && (2 == ((f.a)localObject).dpw))
     {
-      ac.d(TAG, "device(" + paramLong + ") has been connected");
-      parama.b(paramLong, 2, 2, 0, ((f.a)localObject).npZ);
+      com.tencent.mm.sdk.platformtools.ad.d(TAG, "device(" + paramLong + ") has been connected");
+      parama.a(paramLong, 2, 2, 0, ((f.a)localObject).nQV);
       AppMethodBeat.o(23348);
       return;
     }
-    localObject = ad.cgW();
+    localObject = ad.clA();
     parama = new k.a()
     {
-      public final void b(long paramAnonymousLong1, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, long paramAnonymousLong2)
+      public final void a(long paramAnonymousLong1, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, long paramAnonymousLong2)
       {
         AppMethodBeat.i(23344);
-        ac.d(h.TAG, "mac=%d, oldState=%d, newState=%d, errCode=%d, profileType=%d", new Object[] { Long.valueOf(paramAnonymousLong1), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), Long.valueOf(paramAnonymousLong2) });
-        f.a locala = h.a(h.this).sG(paramAnonymousLong1);
+        com.tencent.mm.sdk.platformtools.ad.d(h.TAG, "mac=%d, oldState=%d, newState=%d, errCode=%d, profileType=%d", new Object[] { Long.valueOf(paramAnonymousLong1), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), Long.valueOf(paramAnonymousLong2) });
+        f.a locala = h.a(h.this).uE(paramAnonymousLong1);
         if (locala != null)
         {
-          locala.dea = paramAnonymousInt2;
-          locala.npZ = paramAnonymousLong2;
+          locala.dpw = paramAnonymousInt2;
+          locala.nQV = paramAnonymousLong2;
         }
         for (;;)
         {
-          parama.b(paramAnonymousLong1, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousLong2);
+          parama.a(paramAnonymousLong1, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousLong2);
           AppMethodBeat.o(23344);
           return;
-          ac.i(h.TAG, "get connect state faild : %d", new Object[] { Long.valueOf(paramAnonymousLong1) });
+          com.tencent.mm.sdk.platformtools.ad.i(h.TAG, "get connect state faild : %d", new Object[] { Long.valueOf(paramAnonymousLong1) });
         }
       }
     };
-    ac.d("MicroMsg.exdevice.ExdeviceConnectManager", "simpleBTConnect");
-    if (((d)localObject).pwS == null)
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.exdevice.ExdeviceConnectManager", "simpleBTConnect");
+    if (((d)localObject).qax == null)
     {
-      ((d)localObject).pwS = new com.tencent.mm.plugin.exdevice.service.c();
-      ((d)localObject).pwS.pCr = new d.3((d)localObject, paramLong, parama);
-      ((d)localObject).pwS.eE(ai.getContext());
+      ((d)localObject).qax = new com.tencent.mm.plugin.exdevice.service.c();
+      ((d)localObject).qax.qfW = new d.3((d)localObject, paramLong, parama);
+      ((d)localObject).qax.eE(aj.getContext());
       AppMethodBeat.o(23348);
       return;
     }
-    ac.i("MicroMsg.exdevice.ExdeviceConnectManager", "try start connect");
-    localObject = u.chr().pwN;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "try start connect");
+    localObject = u.clV().qas;
     if ((localObject == null) || (!((m)localObject).a(paramLong, parama))) {
-      ac.e("MicroMsg.exdevice.ExdeviceConnectManager", "connect failed!!!");
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "connect failed!!!");
     }
     AppMethodBeat.o(23348);
   }
@@ -168,66 +167,66 @@ public class h
     AppMethodBeat.i(23351);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
     {
-      ac.e(TAG, "data is null or nil");
+      com.tencent.mm.sdk.platformtools.ad.e(TAG, "data is null or nil");
       AppMethodBeat.o(23351);
       return;
     }
-    ac.d(TAG, "onDataRecv. mac=%d, data=%s", new Object[] { Long.valueOf(paramLong), com.tencent.mm.plugin.exdevice.k.b.bd(paramArrayOfByte) });
-    Object localObject1 = ad.cha();
-    String str = com.tencent.mm.plugin.exdevice.k.b.sQ(paramLong);
+    com.tencent.mm.sdk.platformtools.ad.d(TAG, "onDataRecv. mac=%d, data=%s", new Object[] { Long.valueOf(paramLong), com.tencent.mm.plugin.exdevice.k.b.bg(paramArrayOfByte) });
+    Object localObject1 = ad.clE();
+    String str = com.tencent.mm.plugin.exdevice.k.b.uO(paramLong);
     LinkedList localLinkedList;
-    synchronized (((e)localObject1).pxl)
+    synchronized (((e)localObject1).qaQ)
     {
-      localLinkedList = new LinkedList(((e)localObject1).pxl);
+      localLinkedList = new LinkedList(((e)localObject1).qaQ);
       ??? = localLinkedList.iterator();
       if (((Iterator)???).hasNext()) {
         ((e.b)((Iterator)???).next()).b(str, paramArrayOfByte, true);
       }
     }
     localLinkedList.clear();
-    localObject1 = ((e)localObject1).pxm.values().iterator();
+    localObject1 = ((e)localObject1).qaR.values().iterator();
     while (((Iterator)localObject1).hasNext()) {
       ((e.b)((Iterator)localObject1).next()).b(str, paramArrayOfByte, true);
     }
-    localObject1 = new ey();
-    ((ey)localObject1).deP.mac = str;
-    ((ey)localObject1).deP.data = paramArrayOfByte;
-    a.GpY.a((com.tencent.mm.sdk.b.b)localObject1, Looper.getMainLooper());
+    localObject1 = new fb();
+    ((fb)localObject1).dql.mac = str;
+    ((fb)localObject1).dql.data = paramArrayOfByte;
+    a.IbL.a((com.tencent.mm.sdk.b.b)localObject1, Looper.getMainLooper());
     AppMethodBeat.o(23351);
   }
   
-  public final void cgF()
+  public final void clj()
   {
     AppMethodBeat.i(23346);
-    if (this.pyN)
+    if (this.qcs)
     {
-      ac.d(TAG, "still scanning. return");
+      com.tencent.mm.sdk.platformtools.ad.d(TAG, "still scanning. return");
       AppMethodBeat.o(23346);
       return;
     }
-    d locald = ad.cgW();
-    j.a locala = this.pyP;
-    ac.d("MicroMsg.exdevice.ExdeviceConnectManager", "simpleBTScan");
-    if (locald.pwS == null)
+    d locald = ad.clA();
+    j.a locala = this.qcu;
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.exdevice.ExdeviceConnectManager", "simpleBTScan");
+    if (locald.qax == null)
     {
-      locald.pwS = new com.tencent.mm.plugin.exdevice.service.c();
-      locald.pwS.pCr = new d.2(locald, locala);
-      locald.pwS.eE(ai.getContext());
+      locald.qax = new com.tencent.mm.plugin.exdevice.service.c();
+      locald.qax.qfW = new d.2(locald, locala);
+      locald.qax.eE(aj.getContext());
     }
     for (;;)
     {
-      this.pyN = true;
+      this.qcs = true;
       AppMethodBeat.o(23346);
       return;
-      if (u.chr().pwN == null)
+      if (u.clV().qas == null)
       {
-        ac.e("MicroMsg.exdevice.ExdeviceConnectManager", "dispatcher is null.");
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "dispatcher is null.");
       }
       else
       {
-        ac.i("MicroMsg.exdevice.ExdeviceConnectManager", "try start scan");
-        if (!u.chr().pwN.a(locala)) {
-          ac.e("MicroMsg.exdevice.ExdeviceConnectManager", "scan failed!!!");
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "try start scan");
+        if (!u.clV().qas.a(locala)) {
+          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "scan failed!!!");
         }
       }
     }
@@ -236,39 +235,39 @@ public class h
   public final void stopScan()
   {
     AppMethodBeat.i(23347);
-    if (!this.pyN)
+    if (!this.qcs)
     {
-      ac.d(TAG, "not yet scan. return");
+      com.tencent.mm.sdk.platformtools.ad.d(TAG, "not yet scan. return");
       AppMethodBeat.o(23347);
       return;
     }
-    d locald = ad.cgW();
-    j.a locala = this.pyP;
-    ac.d("MicroMsg.exdevice.ExdeviceConnectManager", "simpleBTStopScan");
-    if (locald.pwS == null) {
-      ac.i("MicroMsg.exdevice.ExdeviceConnectManager", "exdevice process is dead, just leave");
+    d locald = ad.clA();
+    j.a locala = this.qcu;
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.exdevice.ExdeviceConnectManager", "simpleBTStopScan");
+    if (locald.qax == null) {
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "exdevice process is dead, just leave");
     }
     for (;;)
     {
-      this.pyN = false;
+      this.qcs = false;
       AppMethodBeat.o(23347);
       return;
-      if (u.chr().pwN == null) {
-        ac.e("MicroMsg.exdevice.ExdeviceConnectManager", "dispatcher is null.");
-      } else if (!u.chr().pwN.b(locala)) {
-        ac.e("MicroMsg.exdevice.ExdeviceConnectManager", "stopScan failed!!!");
+      if (u.clV().qas == null) {
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "dispatcher is null.");
+      } else if (!u.clV().qas.b(locala)) {
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "stopScan failed!!!");
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void b(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2);
+    public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.h
  * JD-Core Version:    0.7.0.1
  */

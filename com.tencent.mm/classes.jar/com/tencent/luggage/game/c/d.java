@@ -6,8 +6,8 @@ import android.os.Looper;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,19 +16,19 @@ import java.util.List;
 public final class d
   extends AppCompatTextView
 {
-  private final List<f> bYM;
-  public e.c bYN;
-  public au bYO;
-  StringBuilder btc;
+  StringBuilder bDt;
+  private final List<f> cje;
+  public e.c cjf;
+  public av cjg;
   
   public d(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(130513);
-    this.bYM = new ArrayList(4);
-    this.btc = new StringBuilder(100);
-    this.bYN = null;
-    this.bYO = new au(Looper.getMainLooper(), new au.a()
+    this.cje = new ArrayList(4);
+    this.bDt = new StringBuilder(100);
+    this.cjf = null;
+    this.cjg = new av(Looper.getMainLooper(), new av.a()
     {
       public final boolean onTimerExpired()
       {
@@ -39,14 +39,14 @@ public final class d
         }
         d locald = d.this;
         Object localObject = d.a(d.this);
-        locald.btc.setLength(0);
+        locald.bDt.setLength(0);
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           f localf = (f)((Iterator)localObject).next();
-          locald.btc.append(localf.key).append("[").append(localf.bZg).append("] ");
+          locald.bDt.append(localf.key).append("[").append(localf.cjy).append("] ");
         }
-        locald.setText(locald.btc);
+        locald.setText(locald.bDt);
         AppMethodBeat.o(130512);
         return true;
       }
@@ -56,7 +56,7 @@ public final class d
     setFocusable(false);
     setClickable(false);
     setOnClickListener(null);
-    this.bYO.au(2000L, 2000L);
+    this.cjg.az(2000L, 2000L);
     AppMethodBeat.o(130513);
   }
   
@@ -69,25 +69,25 @@ public final class d
   public final void setInfo(List<f> paramList)
   {
     AppMethodBeat.i(130514);
-    this.btc.setLength(0);
+    this.bDt.setLength(0);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       f localf = (f)paramList.next();
-      this.btc.append(localf.key).append("[").append(localf.bZg).append("] ");
+      this.bDt.append(localf.key).append("[").append(localf.cjy).append("] ");
     }
-    setText(this.btc);
+    setText(this.bDt);
     AppMethodBeat.o(130514);
   }
   
   public final void setOnRequestUpdateShowItemsCallback(e.c paramc)
   {
-    this.bYN = paramc;
+    this.cjf = paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.game.c.d
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,11 @@ public enum g
   static
   {
     AppMethodBeat.i(76789);
-    aAV = new g("IMMEDIATE", 0);
-    aAW = new g("HIGH", 1);
-    aAX = new g("NORMAL", 2);
-    aAY = new g("LOW", 3);
-    aAZ = new g[] { aAV, aAW, aAX, aAY };
+    aCM = new g("IMMEDIATE", 0);
+    aCN = new g("HIGH", 1);
+    aCO = new g("NORMAL", 2);
+    aCP = new g("LOW", 3);
+    aCQ = new g[] { aCM, aCN, aCO, aCP };
     AppMethodBeat.o(76789);
   }
   

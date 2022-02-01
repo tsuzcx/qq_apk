@@ -16,27 +16,20 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class a
 {
-  public static AppMethodBeat.a czA;
-  public static int czB;
-  private static boolean czC = false;
-  private static long czx = 0L;
-  private static long czy = 0L;
-  public static AppMethodBeat.a czz = new AppMethodBeat.a();
-  private static final HashSet<b> listeners;
+  private static long cKt = 0L;
+  private static long cKu = 0L;
+  public static AppMethodBeat.a cKv = new AppMethodBeat.a();
+  public static AppMethodBeat.a cKw = new AppMethodBeat.a();
+  public static int cKx = -2147483648;
+  private static boolean cKy = false;
+  private static final HashSet<b> listeners = new HashSet();
   
-  static
-  {
-    czA = new AppMethodBeat.a();
-    czB = -2147483648;
-    listeners = new HashSet();
-  }
-  
-  public static void HG()
+  public static void Jb()
   {
     try
     {
-      czx = SystemClock.uptimeMillis();
-      czA = AppMethodBeat.getInstance().maskIndex("ApplicationCreateBeginMethodIndex");
+      cKt = SystemClock.uptimeMillis();
+      cKw = AppMethodBeat.getInstance().maskIndex("ApplicationCreateBeginMethodIndex");
       Object localObject1 = Class.forName("android.app.ActivityThread");
       Object localObject2 = ((Class)localObject1).getDeclaredField("sCurrentActivityThread");
       ((Field)localObject2).setAccessible(true);
@@ -51,7 +44,7 @@ public final class a
         ((Field)localObject2).setAccessible(true);
         ((Field)localObject2).set(localObject1, new a((Handler.Callback)((Field)localObject2).get(localObject1)));
       }
-      c.i("Matrix.ActivityThreadHacker", "hook system handler completed. start:%s SDK_INT:%s", new Object[] { Long.valueOf(czx), Integer.valueOf(Build.VERSION.SDK_INT) });
+      c.i("Matrix.ActivityThreadHacker", "hook system handler completed. start:%s SDK_INT:%s", new Object[] { Long.valueOf(cKt), Integer.valueOf(Build.VERSION.SDK_INT) });
       return;
     }
     catch (Exception localException)
@@ -60,19 +53,19 @@ public final class a
     }
   }
   
-  public static long HH()
+  public static long Jc()
   {
-    return czy - czx;
+    return cKu - cKt;
   }
   
-  public static long HI()
+  public static long Jd()
   {
-    return czx;
+    return cKt;
   }
   
-  public static boolean HJ()
+  public static boolean Je()
   {
-    return czC;
+    return cKy;
   }
   
   public static void a(b paramb)
@@ -87,14 +80,14 @@ public final class a
   static final class a
     implements Handler.Callback
   {
-    private static boolean czD = false;
-    private static int czE = 2147483647;
-    private final Handler.Callback czF;
+    private static int cKA = 2147483647;
+    private static boolean cKz = false;
+    private final Handler.Callback cKB;
     private Method method = null;
     
     a(Handler.Callback paramCallback)
     {
-      this.czF = paramCallback;
+      this.cKB = paramCallback;
     }
     
     private boolean g(Message paramMessage)
@@ -169,36 +162,36 @@ public final class a
         }
       }
       if (!AppMethodBeat.isRealTrace()) {
-        return (this.czF != null) && (this.czF.handleMessage(paramMessage));
+        return (this.cKB != null) && (this.cKB.handleMessage(paramMessage));
       }
       boolean bool = g(paramMessage);
-      if (czE > 0)
+      if (cKA > 0)
       {
         c.i("Matrix.ActivityThreadHacker", "[handleMessage] msg.what:%s begin:%s isLaunchActivity:%s SDK_INT=%s", new Object[] { Integer.valueOf(paramMessage.what), Long.valueOf(SystemClock.uptimeMillis()), Boolean.valueOf(bool), Integer.valueOf(Build.VERSION.SDK_INT) });
-        czE -= 1;
+        cKA -= 1;
       }
-      if ((!czD) && ((bool) || (paramMessage.what == 114) || (paramMessage.what == 113)))
+      if ((!cKz) && ((bool) || (paramMessage.what == 114) || (paramMessage.what == 113)))
       {
         a.aP(SystemClock.uptimeMillis());
-        a.czB = paramMessage.what;
-        czD = true;
+        a.cKx = paramMessage.what;
+        cKz = true;
         a.access$102(bool);
         c.i("Matrix.ActivityThreadHacker", "application create end, sApplicationCreateScene:%d, isLaunchActivity:%s", new Object[] { Integer.valueOf(paramMessage.what), Boolean.valueOf(bool) });
-        synchronized (a.HK())
+        synchronized (a.Jf())
         {
-          Iterator localIterator = a.HK().iterator();
+          Iterator localIterator = a.Jf().iterator();
           if (localIterator.hasNext()) {
-            ((a.b)localIterator.next()).HL();
+            ((a.b)localIterator.next()).Jg();
           }
         }
       }
-      return (this.czF != null) && (this.czF.handleMessage(paramMessage));
+      return (this.cKB != null) && (this.cKB.handleMessage(paramMessage));
     }
   }
   
   public static abstract interface b
   {
-    public abstract void HL();
+    public abstract void Jg();
   }
 }
 

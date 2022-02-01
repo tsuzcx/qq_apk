@@ -9,8 +9,8 @@ import java.io.RandomAccessFile;
 public final class q
   implements g
 {
-  private final w<? super q> bur;
-  private long bus;
+  private final w<? super q> bEG;
+  private long bEH;
   private RandomAccessFile file;
   private boolean opened;
   private Uri uri;
@@ -22,7 +22,7 @@ public final class q
   
   public q(w<? super q> paramw)
   {
-    this.bur = paramw;
+    this.bEG = paramw;
   }
   
   public final long a(j paramj)
@@ -38,8 +38,8 @@ public final class q
         if (paramj.length == -1L)
         {
           l = this.file.length() - paramj.position;
-          this.bus = l;
-          if (this.bus >= 0L) {
+          this.bEH = l;
+          if (this.bEH >= 0L) {
             break;
           }
           paramj = new EOFException();
@@ -56,10 +56,10 @@ public final class q
       l = paramj.length;
     }
     this.opened = true;
-    if (this.bur != null) {
-      this.bur.ve();
+    if (this.bEG != null) {
+      this.bEG.a(this, paramj);
     }
-    long l = this.bus;
+    long l = this.bEH;
     AppMethodBeat.o(93079);
     return l;
   }
@@ -87,8 +87,8 @@ public final class q
       if (this.opened)
       {
         this.opened = false;
-        if (this.bur != null) {
-          this.bur.vf();
+        if (this.bEG != null) {
+          this.bEG.ah(this);
         }
       }
       AppMethodBeat.o(93081);
@@ -109,19 +109,19 @@ public final class q
       AppMethodBeat.o(93080);
       return 0;
     }
-    if (this.bus == 0L)
+    if (this.bEH == 0L)
     {
       AppMethodBeat.o(93080);
       return -1;
     }
     try
     {
-      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bus, paramInt2));
+      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bEH, paramInt2));
       if (paramInt1 > 0)
       {
-        this.bus -= paramInt1;
-        if (this.bur != null) {
-          this.bur.eV(paramInt1);
+        this.bEH -= paramInt1;
+        if (this.bEG != null) {
+          this.bEG.e(this, paramInt1);
         }
       }
       AppMethodBeat.o(93080);

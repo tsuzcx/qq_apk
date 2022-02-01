@@ -5,12 +5,12 @@ import d.l.b.a.b.b.l;
 
 public final class g
 {
-  private final l Lln;
+  private final l Nck;
   
   public g(l paraml)
   {
     AppMethodBeat.i(57574);
-    this.Lln = paraml;
+    this.Nck = paraml;
     AppMethodBeat.o(57574);
   }
 }

@@ -12,13 +12,13 @@ public final class c
 {
   public final int a(SchedulerConfig paramSchedulerConfig)
   {
-    AppMethodBeat.i(205104);
+    AppMethodBeat.i(197118);
     Log.i("FullScreenVideo", "performInstall version " + paramSchedulerConfig.version);
-    if (d.mJ(paramSchedulerConfig.path, paramSchedulerConfig.KHS))
+    if (d.nh(paramSchedulerConfig.path, paramSchedulerConfig.Mys))
     {
-      agi(paramSchedulerConfig.version);
-      Log.i("FullScreenVideo", "performInstall " + this.KHj + " success");
-      AppMethodBeat.o(205104);
+      aiJ(paramSchedulerConfig.version);
+      Log.i("FullScreenVideo", "performInstall " + this.MxJ + " success");
+      AppMethodBeat.o(197118);
       return 0;
     }
     Log.e("FullScreenVideo", "performInstall failed, md5 not match");
@@ -26,15 +26,15 @@ public final class c
     if (paramSchedulerConfig.exists()) {
       paramSchedulerConfig.delete();
     }
-    g.dj("FullScreenVideo", false);
-    AppMethodBeat.o(205104);
+    g.jdMethod_do("FullScreenVideo", false);
+    AppMethodBeat.o(197118);
     return -1;
   }
   
-  public final String bi(int paramInt, boolean paramBoolean)
+  public final String bq(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(157176);
-    String str = agj(paramInt);
+    String str = aiK(paramInt);
     if ((str == null) || (str.isEmpty()))
     {
       AppMethodBeat.o(157176);
@@ -51,12 +51,12 @@ public final class c
     return str;
   }
   
-  public final boolean fLN()
+  public final boolean gdi()
   {
     return true;
   }
   
-  public final void fLO()
+  public final void gdj()
   {
     AppMethodBeat.i(157178);
     Log.i("FullScreenVideo", "checkVersionFiles, skip");

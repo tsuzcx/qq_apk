@@ -8,55 +8,55 @@ import java.util.LinkedList;
 
 final class f
 {
-  static final f bHF;
-  private final g bHG;
-  final int bHH;
-  final int bHI;
+  static final f bRT;
+  private final g bRU;
+  final int bRV;
+  final int bRW;
   final int mode;
   
   static
   {
     AppMethodBeat.i(12368);
-    bHF = new f(g.bHJ, 0, 0, 0);
+    bRT = new f(g.bRX, 0, 0, 0);
     AppMethodBeat.o(12368);
   }
   
   private f(g paramg, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.bHG = paramg;
+    this.bRU = paramg;
     this.mode = paramInt1;
-    this.bHH = paramInt2;
-    this.bHI = paramInt3;
+    this.bRV = paramInt2;
+    this.bRW = paramInt3;
   }
   
   final boolean a(f paramf)
   {
-    int j = this.bHI + (d.bHz[this.mode][paramf.mode] >> 16);
+    int j = this.bRW + (d.bRN[this.mode][paramf.mode] >> 16);
     int i = j;
-    if (paramf.bHH > 0) {
-      if (this.bHH != 0)
+    if (paramf.bRV > 0) {
+      if (this.bRV != 0)
       {
         i = j;
-        if (this.bHH <= paramf.bHH) {}
+        if (this.bRV <= paramf.bRV) {}
       }
       else
       {
         i = j + 10;
       }
     }
-    return i <= paramf.bHI;
+    return i <= paramf.bRW;
   }
   
-  final f bB(int paramInt1, int paramInt2)
+  final f bD(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(12362);
-    int i = this.bHI;
-    Object localObject = this.bHG;
+    int i = this.bRW;
+    Object localObject = this.bRU;
     int j;
     if (paramInt1 != this.mode)
     {
-      j = d.bHz[this.mode][paramInt1];
-      localObject = ((g)localObject).bD(0xFFFF & j, j >> 16);
+      j = d.bRN[this.mode][paramInt1];
+      localObject = ((g)localObject).bF(0xFFFF & j, j >> 16);
       i += (j >> 16);
     }
     for (;;)
@@ -64,32 +64,32 @@ final class f
       if (paramInt1 == 2) {}
       for (j = 4;; j = 5)
       {
-        localObject = new f(((g)localObject).bD(paramInt2, j), paramInt1, 0, j + i);
+        localObject = new f(((g)localObject).bF(paramInt2, j), paramInt1, 0, j + i);
         AppMethodBeat.o(12362);
         return localObject;
       }
     }
   }
   
-  final f bC(int paramInt1, int paramInt2)
+  final f bE(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(12363);
-    Object localObject = this.bHG;
+    Object localObject = this.bRU;
     if (this.mode == 2) {}
     for (int i = 4;; i = 5)
     {
-      localObject = new f(((g)localObject).bD(d.bHB[this.mode][paramInt1], i).bD(paramInt2, 5), this.mode, 0, i + this.bHI + 5);
+      localObject = new f(((g)localObject).bF(d.bRP[this.mode][paramInt1], i).bF(paramInt2, 5), this.mode, 0, i + this.bRW + 5);
       AppMethodBeat.o(12363);
       return localObject;
     }
   }
   
-  final f fP(int paramInt)
+  final f fS(int paramInt)
   {
     AppMethodBeat.i(12364);
-    g localg = this.bHG;
+    g localg = this.bRU;
     int m = this.mode;
-    int i = this.bHI;
+    int i = this.bRW;
     int k;
     int j;
     Object localObject;
@@ -102,26 +102,26 @@ final class f
     }
     else
     {
-      j = d.bHz[m][0];
-      localObject = localg.bD(0xFFFF & j, j >> 16);
+      j = d.bRN[m][0];
+      localObject = localg.bF(0xFFFF & j, j >> 16);
       k = i + (j >> 16);
       j = 0;
     }
-    if ((this.bHH == 0) || (this.bHH == 31))
+    if ((this.bRV == 0) || (this.bRV == 31))
     {
       i = 18;
-      localObject = new f((g)localObject, j, this.bHH + 1, k + i);
-      if (((f)localObject).bHH != 2078) {
+      localObject = new f((g)localObject, j, this.bRV + 1, k + i);
+      if (((f)localObject).bRV != 2078) {
         break label175;
       }
-      localObject = ((f)localObject).fQ(paramInt + 1);
+      localObject = ((f)localObject).fT(paramInt + 1);
     }
     label175:
     for (;;)
     {
       AppMethodBeat.o(12364);
       return localObject;
-      if (this.bHH == 62)
+      if (this.bRV == 62)
       {
         i = 9;
         break;
@@ -131,15 +131,15 @@ final class f
     }
   }
   
-  final f fQ(int paramInt)
+  final f fT(int paramInt)
   {
     AppMethodBeat.i(12365);
-    if (this.bHH == 0)
+    if (this.bRV == 0)
     {
       AppMethodBeat.o(12365);
       return this;
     }
-    f localf = new f(this.bHG.bE(paramInt - this.bHH, this.bHH), this.mode, 0, this.bHI);
+    f localf = new f(this.bRU.bG(paramInt - this.bRV, this.bRV), this.mode, 0, this.bRW);
     AppMethodBeat.o(12365);
     return localf;
   }
@@ -147,7 +147,7 @@ final class f
   public final String toString()
   {
     AppMethodBeat.i(12367);
-    String str = String.format("%s bits=%d bytes=%d", new Object[] { d.bHy[this.mode], Integer.valueOf(this.bHI), Integer.valueOf(this.bHH) });
+    String str = String.format("%s bits=%d bytes=%d", new Object[] { d.bRM[this.mode], Integer.valueOf(this.bRW), Integer.valueOf(this.bRV) });
     AppMethodBeat.o(12367);
     return str;
   }
@@ -156,7 +156,7 @@ final class f
   {
     AppMethodBeat.i(12366);
     Object localObject2 = new LinkedList();
-    for (Object localObject1 = fQ(paramArrayOfByte.length).bHG; localObject1 != null; localObject1 = ((g)localObject1).bHK) {
+    for (Object localObject1 = fT(paramArrayOfByte.length).bRU; localObject1 != null; localObject1 = ((g)localObject1).bRY) {
       ((Deque)localObject2).addFirst(localObject1);
     }
     localObject1 = new a();

@@ -12,8 +12,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.base.h;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -21,25 +21,25 @@ import java.util.Map;
 
 public final class PermissionHelper
 {
-  private static final byte[] DjB;
-  private static final Map<Integer, d> DjC;
-  private static volatile int DjD;
-  private static final byte[] DjE;
-  private static final Map<Integer, g> DjF;
-  private static volatile int DjG;
+  private static final byte[] EOA;
+  private static final Map<Integer, g> EOB;
+  private static volatile int EOC;
+  private static final byte[] EOx;
+  private static final Map<Integer, d> EOy;
+  private static volatile int EOz;
   private static final Handler mHandler;
   
   static
   {
-    AppMethodBeat.i(192682);
-    DjB = new byte[0];
-    DjC = new HashMap();
-    DjD = 28673;
-    DjE = new byte[0];
-    DjF = new HashMap();
-    DjG = 24577;
+    AppMethodBeat.i(195417);
+    EOx = new byte[0];
+    EOy = new HashMap();
+    EOz = 28673;
+    EOA = new byte[0];
+    EOB = new HashMap();
+    EOC = 24577;
     mHandler = new Handler(Looper.getMainLooper());
-    AppMethodBeat.o(192682);
+    AppMethodBeat.o(195417);
   }
   
   /* Error */
@@ -56,7 +56,7 @@ public final class PermissionHelper
     //   18: ifnonnull +16 -> 34
     //   21: ldc 123
     //   23: ldc 125
-    //   25: invokestatic 130	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   25: invokestatic 130	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   28: ldc 117
     //   30: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   33: return
@@ -74,11 +74,11 @@ public final class PermissionHelper
     //   60: invokestatic 160	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   63: invokespecial 163	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
     //   66: astore 5
-    //   68: getstatic 71	com/tencent/mm/pluginsdk/permission/PermissionHelper:DjE	[B
+    //   68: getstatic 71	com/tencent/mm/pluginsdk/permission/PermissionHelper:EOA	[B
     //   71: astore 4
     //   73: aload 4
     //   75: monitorenter
-    //   76: invokestatic 167	com/tencent/mm/pluginsdk/permission/PermissionHelper:eLr	()I
+    //   76: invokestatic 167	com/tencent/mm/pluginsdk/permission/PermissionHelper:fam	()I
     //   79: istore_3
     //   80: new 35	com/tencent/mm/pluginsdk/permission/PermissionHelper$g
     //   83: dup
@@ -87,7 +87,7 @@ public final class PermissionHelper
     //   86: iconst_0
     //   87: invokespecial 170	com/tencent/mm/pluginsdk/permission/PermissionHelper$g:<init>	(ILcom/tencent/mm/pluginsdk/permission/PermissionHelper$f;B)V
     //   90: astore 6
-    //   92: getstatic 73	com/tencent/mm/pluginsdk/permission/PermissionHelper:DjF	Ljava/util/Map;
+    //   92: getstatic 73	com/tencent/mm/pluginsdk/permission/PermissionHelper:EOB	Ljava/util/Map;
     //   95: iload_3
     //   96: invokestatic 100	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   99: aload 6
@@ -137,56 +137,56 @@ public final class PermissionHelper
   
   private static void a(c paramc, int paramInt, String paramString, e parame)
   {
-    AppMethodBeat.i(192674);
+    AppMethodBeat.i(195409);
     ??? = ((b)paramc).getContext();
     if (??? == null)
     {
-      ac.e("MicroMsg.PermissionHelper", "[-] context is null, skip rest steps.");
-      AppMethodBeat.o(192674);
+      ad.e("MicroMsg.PermissionHelper", "[-] context is null, skip rest steps.");
+      AppMethodBeat.o(195409);
       return;
     }
     if (a.checkSelfPermission((Context)???, paramString) == 0)
     {
-      parame.FB(paramString);
-      AppMethodBeat.o(192674);
+      parame.IQ(paramString);
+      AppMethodBeat.o(195409);
       return;
     }
-    synchronized (DjB)
+    synchronized (EOx)
     {
-      int i = eLq();
+      int i = fal();
       parame = new d(paramInt, paramString, parame, (byte)0);
-      DjC.put(Integer.valueOf(i), parame);
+      EOy.put(Integer.valueOf(i), parame);
       ((b)paramc).requestPermissions(new String[] { paramString }, i);
-      AppMethodBeat.o(192674);
+      AppMethodBeat.o(195409);
       return;
     }
   }
   
-  public static boolean aGv(String paramString)
+  public static boolean aLV(String paramString)
   {
-    AppMethodBeat.i(192671);
-    if (a.checkSelfPermission(ai.getContext(), paramString) == 0)
+    AppMethodBeat.i(195406);
+    if (a.checkSelfPermission(aj.getContext(), paramString) == 0)
     {
-      AppMethodBeat.o(192671);
+      AppMethodBeat.o(195406);
       return true;
     }
-    AppMethodBeat.o(192671);
+    AppMethodBeat.o(195406);
     return false;
   }
   
   @SuppressLint({"NewApi"})
   public static c aQ(Activity paramActivity)
   {
-    AppMethodBeat.i(192672);
-    ac.i("MicroMsg.PermissionHelper", "[+] withActivity called, is_on_mainthread: %s", new Object[] { Boolean.valueOf(eLs()) });
+    AppMethodBeat.i(195407);
+    ad.i("MicroMsg.PermissionHelper", "[+] withActivity called, is_on_mainthread: %s", new Object[] { Boolean.valueOf(fan()) });
     c[] arrayOfc = new c[1];
     arrayOfc[0] = null;
     paramActivity = new PermissionHelper.1(paramActivity, arrayOfc);
-    if (eLs())
+    if (fan())
     {
       paramActivity.run();
       paramActivity = arrayOfc[0];
-      AppMethodBeat.o(192672);
+      AppMethodBeat.o(195407);
       return paramActivity;
     }
     mHandler.postAtFrontOfQueue(paramActivity);
@@ -201,51 +201,51 @@ public final class PermissionHelper
       {
         continue;
         paramActivity = arrayOfc[0];
-        AppMethodBeat.o(192672);
+        AppMethodBeat.o(195407);
         return paramActivity;
       }
       finally
       {
-        AppMethodBeat.o(192672);
+        AppMethodBeat.o(195407);
       }
     }
   }
   
-  private static int eLq()
+  private static int fal()
   {
-    synchronized (DjB)
+    synchronized (EOx)
     {
-      if (DjD == 32768) {
-        DjD = 28673;
+      if (EOz == 32768) {
+        EOz = 28673;
       }
-      int i = DjD;
-      DjD = i + 1;
+      int i = EOz;
+      EOz = i + 1;
       return i;
     }
   }
   
-  private static int eLr()
+  private static int fam()
   {
-    synchronized (DjE)
+    synchronized (EOA)
     {
-      if (DjG == 28672) {
-        DjG = 24577;
+      if (EOC == 28672) {
+        EOC = 24577;
       }
-      int i = DjG;
-      DjG = i + 1;
+      int i = EOC;
+      EOC = i + 1;
       return i;
     }
   }
   
-  private static boolean eLs()
+  private static boolean fan()
   {
-    AppMethodBeat.i(192673);
+    AppMethodBeat.i(195408);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      AppMethodBeat.o(192673);
+      AppMethodBeat.o(195408);
       return true;
     }
-    AppMethodBeat.o(192673);
+    AppMethodBeat.o(195408);
     return false;
   }
   
@@ -255,76 +255,76 @@ public final class PermissionHelper
   {
     public final void a(int paramInt, String paramString, PermissionHelper.e parame)
     {
-      AppMethodBeat.i(192666);
+      AppMethodBeat.i(195401);
       if (!isDetached()) {
         PermissionHelper.c(this, paramInt, paramString, parame);
       }
-      AppMethodBeat.o(192666);
+      AppMethodBeat.o(195401);
     }
     
     public final void a(PermissionHelper.f paramf)
     {
-      AppMethodBeat.i(192669);
+      AppMethodBeat.i(195404);
       if (!isDetached()) {
         PermissionHelper.a(this, paramf);
       }
-      AppMethodBeat.o(192669);
+      AppMethodBeat.o(195404);
     }
     
     public final void a(String paramString1, String paramString2, final String paramString3, final PermissionHelper.e parame)
     {
-      AppMethodBeat.i(192667);
+      AppMethodBeat.i(195402);
       if (!isDetached())
       {
         Context localContext = getContext();
         if (localContext != null)
         {
-          if (PermissionHelper.aGv(paramString3))
+          if (PermissionHelper.aLV(paramString3))
           {
             a(241, paramString3, parame);
-            AppMethodBeat.o(192667);
+            AppMethodBeat.o(195402);
             return;
           }
           h.a(localContext, paramString2, paramString1, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              AppMethodBeat.i(192664);
+              AppMethodBeat.i(195399);
               PermissionHelper.AuxSupportFragment.this.a(this.val$requestCode, paramString3, parame);
-              AppMethodBeat.o(192664);
+              AppMethodBeat.o(195399);
             }
           });
         }
       }
-      AppMethodBeat.o(192667);
+      AppMethodBeat.o(195402);
     }
     
     public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
     {
-      AppMethodBeat.i(192670);
+      AppMethodBeat.i(195405);
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
       if (!isDetached()) {
-        PermissionHelper.WA(paramInt1);
+        PermissionHelper.Yw(paramInt1);
       }
-      AppMethodBeat.o(192670);
+      AppMethodBeat.o(195405);
     }
     
     public final void onCreate(Bundle paramBundle)
     {
-      AppMethodBeat.i(192665);
+      AppMethodBeat.i(195400);
       super.onCreate(paramBundle);
       setRetainInstance(true);
-      AppMethodBeat.o(192665);
+      AppMethodBeat.o(195400);
     }
     
     public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
     {
-      AppMethodBeat.i(192668);
+      AppMethodBeat.i(195403);
       super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
       if (!isDetached()) {
         PermissionHelper.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
       }
-      AppMethodBeat.o(192668);
+      AppMethodBeat.o(195403);
     }
   }
   
@@ -336,60 +336,60 @@ public final class PermissionHelper
     
     public final void a(int paramInt, String paramString, PermissionHelper.e parame)
     {
-      AppMethodBeat.i(192658);
+      AppMethodBeat.i(195393);
       if (!isDetached()) {
         PermissionHelper.c(this, paramInt, paramString, parame);
       }
-      AppMethodBeat.o(192658);
+      AppMethodBeat.o(195393);
     }
     
     public final void a(PermissionHelper.f paramf)
     {
-      AppMethodBeat.i(192662);
+      AppMethodBeat.i(195397);
       if (!isDetached()) {
         PermissionHelper.a(this, paramf);
       }
-      AppMethodBeat.o(192662);
+      AppMethodBeat.o(195397);
     }
     
     public final void a(String paramString1, String paramString2, final String paramString3, final PermissionHelper.e parame)
     {
-      AppMethodBeat.i(192660);
+      AppMethodBeat.i(195395);
       if (!isDetached())
       {
         Context localContext = getContext();
         if (localContext != null)
         {
-          if (PermissionHelper.aGv(paramString3))
+          if (PermissionHelper.aLV(paramString3))
           {
             a(241, paramString3, parame);
-            AppMethodBeat.o(192660);
+            AppMethodBeat.o(195395);
             return;
           }
           h.a(localContext, paramString2, paramString1, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              AppMethodBeat.i(192656);
+              AppMethodBeat.i(195391);
               PermissionHelper.a.this.a(this.val$requestCode, paramString3, parame);
-              AppMethodBeat.o(192656);
+              AppMethodBeat.o(195391);
             }
           });
         }
       }
-      AppMethodBeat.o(192660);
+      AppMethodBeat.o(195395);
     }
     
     public final Context getContext()
     {
-      AppMethodBeat.i(192659);
+      AppMethodBeat.i(195394);
       Context localContext = null;
       if (Build.VERSION.SDK_INT >= 23) {
         localContext = super.getContext();
       }
       for (;;)
       {
-        AppMethodBeat.o(192659);
+        AppMethodBeat.o(195394);
         return localContext;
         if (this.mContextRef != null) {
           localContext = (Context)this.mContextRef.get();
@@ -399,30 +399,30 @@ public final class PermissionHelper
     
     public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
     {
-      AppMethodBeat.i(192663);
+      AppMethodBeat.i(195398);
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
       if (!isDetached()) {
-        PermissionHelper.WA(paramInt1);
+        PermissionHelper.Yw(paramInt1);
       }
-      AppMethodBeat.o(192663);
+      AppMethodBeat.o(195398);
     }
     
     public final void onCreate(Bundle paramBundle)
     {
-      AppMethodBeat.i(192657);
+      AppMethodBeat.i(195392);
       super.onCreate(paramBundle);
       setRetainInstance(true);
-      AppMethodBeat.o(192657);
+      AppMethodBeat.o(195392);
     }
     
     public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
     {
-      AppMethodBeat.i(192661);
+      AppMethodBeat.i(195396);
       super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
       if (!isDetached()) {
         PermissionHelper.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
       }
-      AppMethodBeat.o(192661);
+      AppMethodBeat.o(195396);
     }
   }
   
@@ -446,47 +446,47 @@ public final class PermissionHelper
   
   static final class d
   {
-    int DjM;
-    PermissionHelper.e DjN;
+    int EOJ;
+    PermissionHelper.e EOK;
     String permission;
     
     private d(int paramInt, String paramString, PermissionHelper.e parame)
     {
-      this.DjM = paramInt;
+      this.EOJ = paramInt;
       this.permission = paramString;
-      this.DjN = parame;
+      this.EOK = parame;
     }
   }
   
   public static abstract interface e
   {
-    public abstract void FB(String paramString);
+    public abstract void IQ(String paramString);
     
     public abstract void a(PermissionHelper.c paramc, String paramString);
   }
   
   public static abstract interface f
   {
-    public abstract void aNh();
+    public abstract void aQs();
     
-    public abstract void aNi();
+    public abstract void aQt();
   }
   
   static final class g
   {
-    int DjM;
-    PermissionHelper.f DjO;
+    int EOJ;
+    PermissionHelper.f EOL;
     
     private g(int paramInt, PermissionHelper.f paramf)
     {
-      this.DjM = paramInt;
-      this.DjO = paramf;
+      this.EOJ = paramInt;
+      this.EOL = paramf;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.permission.PermissionHelper
  * JD-Core Version:    0.7.0.1
  */

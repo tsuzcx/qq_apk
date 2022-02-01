@@ -7,15 +7,15 @@ import java.util.List;
 
 final class s
 {
-  final b ajT;
-  final a ajU;
-  final List<View> ajV;
+  final b alK;
+  final a alL;
+  final List<View> alM;
   
   s(b paramb)
   {
-    this.ajT = paramb;
-    this.ajU = new a();
-    this.ajV = new ArrayList();
+    this.alK = paramb;
+    this.alL = new a();
+    this.alM = new ArrayList();
   }
   
   private int bK(int paramInt)
@@ -25,19 +25,19 @@ final class s
       paramInt = -1;
       return paramInt;
     }
-    int j = this.ajT.getChildCount();
+    int j = this.alK.getChildCount();
     int i = paramInt;
     for (;;)
     {
       if (i >= j) {
         break label72;
       }
-      int k = paramInt - (i - this.ajU.bM(i));
+      int k = paramInt - (i - this.alL.bM(i));
       if (k == 0) {
         for (;;)
         {
           paramInt = i;
-          if (!this.ajU.get(i)) {
+          if (!this.alL.get(i)) {
             break;
           }
           i += 1;
@@ -52,13 +52,13 @@ final class s
   final void a(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams, boolean paramBoolean)
   {
     if (paramInt < 0) {}
-    for (paramInt = this.ajT.getChildCount();; paramInt = bK(paramInt))
+    for (paramInt = this.alK.getChildCount();; paramInt = bK(paramInt))
     {
-      this.ajU.h(paramInt, paramBoolean);
+      this.alL.h(paramInt, paramBoolean);
       if (paramBoolean) {
         be(paramView);
       }
-      this.ajT.attachViewToParent(paramView, paramInt, paramLayoutParams);
+      this.alK.attachViewToParent(paramView, paramInt, paramLayoutParams);
       return;
     }
   }
@@ -66,33 +66,33 @@ final class s
   final void a(View paramView, int paramInt, boolean paramBoolean)
   {
     if (paramInt < 0) {}
-    for (paramInt = this.ajT.getChildCount();; paramInt = bK(paramInt))
+    for (paramInt = this.alK.getChildCount();; paramInt = bK(paramInt))
     {
-      this.ajU.h(paramInt, paramBoolean);
+      this.alL.h(paramInt, paramBoolean);
       if (paramBoolean) {
         be(paramView);
       }
-      this.ajT.addView(paramView, paramInt);
+      this.alK.addView(paramView, paramInt);
       return;
     }
   }
   
   final View bL(int paramInt)
   {
-    return this.ajT.getChildAt(paramInt);
+    return this.alK.getChildAt(paramInt);
   }
   
   final void be(View paramView)
   {
-    this.ajV.add(paramView);
-    this.ajT.bi(paramView);
+    this.alM.add(paramView);
+    this.alK.bi(paramView);
   }
   
   final boolean bf(View paramView)
   {
-    if (this.ajV.remove(paramView))
+    if (this.alM.remove(paramView))
     {
-      this.ajT.bj(paramView);
+      this.alK.bj(paramView);
       return true;
     }
     return false;
@@ -100,85 +100,85 @@ final class s
   
   final boolean bg(View paramView)
   {
-    return this.ajV.contains(paramView);
+    return this.alM.contains(paramView);
   }
   
   final void detachViewFromParent(int paramInt)
   {
     paramInt = bK(paramInt);
-    this.ajU.remove(paramInt);
-    this.ajT.detachViewFromParent(paramInt);
+    this.alL.remove(paramInt);
+    this.alK.detachViewFromParent(paramInt);
   }
   
   final View getChildAt(int paramInt)
   {
     paramInt = bK(paramInt);
-    return this.ajT.getChildAt(paramInt);
+    return this.alK.getChildAt(paramInt);
   }
   
   final int getChildCount()
   {
-    return this.ajT.getChildCount() - this.ajV.size();
+    return this.alK.getChildCount() - this.alM.size();
   }
   
   final int indexOfChild(View paramView)
   {
-    int i = this.ajT.indexOfChild(paramView);
+    int i = this.alK.indexOfChild(paramView);
     if (i == -1) {}
-    while (this.ajU.get(i)) {
+    while (this.alL.get(i)) {
       return -1;
     }
-    return i - this.ajU.bM(i);
+    return i - this.alL.bM(i);
   }
   
-  final int jb()
+  final int jr()
   {
-    return this.ajT.getChildCount();
+    return this.alK.getChildCount();
   }
   
   final void removeViewAt(int paramInt)
   {
     paramInt = bK(paramInt);
-    View localView = this.ajT.getChildAt(paramInt);
+    View localView = this.alK.getChildAt(paramInt);
     if (localView == null) {
       return;
     }
-    if (this.ajU.remove(paramInt)) {
+    if (this.alL.remove(paramInt)) {
       bf(localView);
     }
-    this.ajT.removeViewAt(paramInt);
+    this.alK.removeViewAt(paramInt);
   }
   
   public final String toString()
   {
-    return this.ajU.toString() + ", hidden list:" + this.ajV.size();
+    return this.alL.toString() + ", hidden list:" + this.alM.size();
   }
   
   static final class a
   {
-    long ajW = 0L;
-    a ajX;
+    long alN = 0L;
+    a alO;
     
-    private void jc()
+    private void js()
     {
-      if (this.ajX == null) {
-        this.ajX = new a();
+      if (this.alO == null) {
+        this.alO = new a();
       }
     }
     
     final int bM(int paramInt)
     {
-      if (this.ajX == null)
+      if (this.alO == null)
       {
         if (paramInt >= 64) {
-          return Long.bitCount(this.ajW);
+          return Long.bitCount(this.alN);
         }
-        return Long.bitCount(this.ajW & (1L << paramInt) - 1L);
+        return Long.bitCount(this.alN & (1L << paramInt) - 1L);
       }
       if (paramInt < 64) {
-        return Long.bitCount(this.ajW & (1L << paramInt) - 1L);
+        return Long.bitCount(this.alN & (1L << paramInt) - 1L);
       }
-      return this.ajX.bM(paramInt - 64) + Long.bitCount(this.ajW);
+      return this.alO.bM(paramInt - 64) + Long.bitCount(this.alN);
     }
     
     final void clear(int paramInt)
@@ -186,13 +186,13 @@ final class s
       a locala = this;
       while (paramInt >= 64)
       {
-        if (locala.ajX == null) {
+        if (locala.alO == null) {
           return;
         }
-        locala = locala.ajX;
+        locala = locala.alO;
         paramInt -= 64;
       }
-      locala.ajW &= (1L << paramInt ^ 0xFFFFFFFF);
+      locala.alN &= (1L << paramInt ^ 0xFFFFFFFF);
     }
     
     final boolean get(int paramInt)
@@ -200,11 +200,11 @@ final class s
       a locala = this;
       while (paramInt >= 64)
       {
-        locala.jc();
-        locala = locala.ajX;
+        locala.js();
+        locala = locala.alO;
         paramInt -= 64;
       }
-      return (locala.ajW & 1L << paramInt) != 0L;
+      return (locala.alN & 1L << paramInt) != 0L;
     }
     
     final void h(int paramInt, boolean paramBoolean)
@@ -213,17 +213,17 @@ final class s
       a locala = this;
       while (paramInt >= 64)
       {
-        locala.jc();
-        locala = locala.ajX;
+        locala.js();
+        locala = locala.alO;
         paramInt -= 64;
       }
-      if ((locala.ajW & 0x0) != 0L)
+      if ((locala.alN & 0x0) != 0L)
       {
         paramBoolean = true;
         label47:
         long l1 = (1L << paramInt) - 1L;
-        long l2 = locala.ajW;
-        locala.ajW = (((l1 ^ 0xFFFFFFFF) & locala.ajW) << 1 | l2 & l1);
+        long l2 = locala.alN;
+        locala.alN = (((l1 ^ 0xFFFFFFFF) & locala.alN) << 1 | l2 & l1);
         if (!bool) {
           break label132;
         }
@@ -231,11 +231,11 @@ final class s
       }
       for (;;)
       {
-        if ((!paramBoolean) && (locala.ajX == null)) {
+        if ((!paramBoolean) && (locala.alO == null)) {
           return;
         }
-        locala.jc();
-        locala = locala.ajX;
+        locala.js();
+        locala = locala.alO;
         paramInt = 0;
         bool = paramBoolean;
         break;
@@ -251,24 +251,24 @@ final class s
       a locala = this;
       while (paramInt >= 64)
       {
-        locala.jc();
-        locala = locala.ajX;
+        locala.js();
+        locala = locala.alO;
         paramInt -= 64;
       }
       long l1 = 1L << paramInt;
-      if ((locala.ajW & l1) != 0L) {}
+      if ((locala.alN & l1) != 0L) {}
       for (boolean bool = true;; bool = false)
       {
-        locala.ajW &= (l1 ^ 0xFFFFFFFF);
+        locala.alN &= (l1 ^ 0xFFFFFFFF);
         l1 -= 1L;
-        long l2 = locala.ajW;
-        locala.ajW = (Long.rotateRight((l1 ^ 0xFFFFFFFF) & locala.ajW, 1) | l2 & l1);
-        if (locala.ajX != null)
+        long l2 = locala.alN;
+        locala.alN = (Long.rotateRight((l1 ^ 0xFFFFFFFF) & locala.alN, 1) | l2 & l1);
+        if (locala.alO != null)
         {
-          if (locala.ajX.get(0)) {
+          if (locala.alO.get(0)) {
             locala.set(63);
           }
-          locala.ajX.remove(0);
+          locala.alO.remove(0);
         }
         return bool;
       }
@@ -279,19 +279,19 @@ final class s
       a locala = this;
       while (paramInt >= 64)
       {
-        locala.jc();
-        locala = locala.ajX;
+        locala.js();
+        locala = locala.alO;
         paramInt -= 64;
       }
-      locala.ajW |= 1L << paramInt;
+      locala.alN |= 1L << paramInt;
     }
     
     public final String toString()
     {
-      if (this.ajX == null) {
-        return Long.toBinaryString(this.ajW);
+      if (this.alO == null) {
+        return Long.toBinaryString(this.alN);
       }
-      return this.ajX.toString() + "xx" + Long.toBinaryString(this.ajW);
+      return this.alO.toString() + "xx" + Long.toBinaryString(this.alN);
     }
   }
   

@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dr;
+import com.tencent.mm.g.c.eb;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class n
-  extends dr
+  extends eb
 {
   public static c.a info;
   
@@ -15,36 +15,36 @@ public final class n
   {
     AppMethodBeat.i(70302);
     c.a locala = new c.a();
-    locala.GvF = new Field[7];
+    locala.IhA = new Field[7];
     locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "title";
-    locala.GvH.put("title", "TEXT PRIMARY KEY ");
+    locala.IhC.put("title", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" title TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "title";
+    locala.IhB = "title";
     locala.columns[1] = "loan_jump_url";
-    locala.GvH.put("loan_jump_url", "TEXT");
+    locala.IhC.put("loan_jump_url", "TEXT");
     localStringBuilder.append(" loan_jump_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "red_dot_index";
-    locala.GvH.put("red_dot_index", "INTEGER");
+    locala.IhC.put("red_dot_index", "INTEGER");
     localStringBuilder.append(" red_dot_index INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "is_show_entry";
-    locala.GvH.put("is_show_entry", "INTEGER");
+    locala.IhC.put("is_show_entry", "INTEGER");
     localStringBuilder.append(" is_show_entry INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "tips";
-    locala.GvH.put("tips", "TEXT");
+    locala.IhC.put("tips", "TEXT");
     localStringBuilder.append(" tips TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "is_overdue";
-    locala.GvH.put("is_overdue", "INTEGER");
+    locala.IhC.put("is_overdue", "INTEGER");
     localStringBuilder.append(" is_overdue INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "available_otb";
-    locala.GvH.put("available_otb", "TEXT");
+    locala.IhC.put("available_otb", "TEXT");
     localStringBuilder.append(" available_otb TEXT");
     locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -59,7 +59,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.n
  * JD-Core Version:    0.7.0.1
  */

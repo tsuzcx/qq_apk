@@ -9,15 +9,15 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public String BTb;
-  public String BTc;
-  public String dnh;
+  public String Dtu;
+  public String Dtv;
+  public String dyV;
   
   public d(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72147);
-    this.BTb = paramString1;
-    this.BTc = paramString2;
+    this.Dtu = paramString1;
+    this.Dtv = paramString2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("payu_reference", paramString1);
     localHashMap.put("new_pin", paramString2);
@@ -25,7 +25,7 @@ public final class d
     AppMethodBeat.o(72147);
   }
   
-  public final int eqK()
+  public final int eEK()
   {
     return 19;
   }
@@ -33,7 +33,7 @@ public final class d
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72148);
-    this.dnh = paramJSONObject.optString("payu_reference");
+    this.dyV = paramJSONObject.optString("payu_reference");
     AppMethodBeat.o(72148);
   }
 }

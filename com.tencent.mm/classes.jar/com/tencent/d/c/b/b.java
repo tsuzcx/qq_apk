@@ -9,45 +9,45 @@ import java.util.ArrayList;
 public final class b
   extends JceStruct
 {
-  static byte[] JSE;
-  static byte[] JSF;
-  static ArrayList<Integer> JSG;
-  static ArrayList<byte[]> JSH;
-  public boolean JSA = false;
-  public int JSB = 0;
-  public int JSC = 0;
-  public ArrayList<byte[]> JSD = null;
-  public int JSl = 0;
-  public byte[] JSm = null;
-  public String JSn = "";
-  public byte[] JSo = null;
-  public long JSp = 0L;
-  public String JSq = "";
-  public int JSr = 0;
-  public String JSs = "";
-  public int JSt = 0;
-  public String JSu = "";
-  public int JSv = 0;
-  public int JSw = 0;
-  public int JSx = 0;
-  public ArrayList<Integer> JSy = null;
-  public int JSz = 0;
+  static byte[] LMv;
+  static byte[] LMw;
+  static ArrayList<Integer> LMx;
+  static ArrayList<byte[]> LMy;
+  public int LMc = 0;
+  public byte[] LMd = null;
+  public String LMe = "";
+  public byte[] LMf = null;
+  public long LMg = 0L;
+  public String LMh = "";
+  public int LMi = 0;
+  public String LMj = "";
+  public int LMk = 0;
+  public String LMl = "";
+  public int LMm = 0;
+  public int LMn = 0;
+  public int LMo = 0;
+  public ArrayList<Integer> LMp = null;
+  public int LMq = 0;
+  public boolean LMr = false;
+  public int LMs = 0;
+  public int LMt = 0;
+  public ArrayList<byte[]> LMu = null;
   
   static
   {
     AppMethodBeat.i(138335);
     byte[] arrayOfByte = (byte[])new byte[1];
-    JSE = arrayOfByte;
+    LMv = arrayOfByte;
     ((byte[])arrayOfByte)[0] = 0;
     arrayOfByte = (byte[])new byte[1];
-    JSF = arrayOfByte;
+    LMw = arrayOfByte;
     ((byte[])arrayOfByte)[0] = 0;
-    JSG = new ArrayList();
-    JSG.add(Integer.valueOf(0));
-    JSH = new ArrayList();
+    LMx = new ArrayList();
+    LMx.add(Integer.valueOf(0));
+    LMy = new ArrayList();
     arrayOfByte = (byte[])new byte[1];
     ((byte[])arrayOfByte)[0] = 0;
-    JSH.add(arrayOfByte);
+    LMy.add(arrayOfByte);
     AppMethodBeat.o(138335);
   }
   
@@ -62,79 +62,79 @@ public final class b
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     AppMethodBeat.i(138334);
-    this.JSl = paramJceInputStream.read(this.JSl, 0, true);
-    this.JSm = ((byte[])paramJceInputStream.read(JSE, 1, false));
-    this.JSn = paramJceInputStream.readString(2, false);
-    this.JSo = ((byte[])paramJceInputStream.read(JSF, 3, false));
-    this.JSp = paramJceInputStream.read(this.JSp, 4, false);
-    this.JSq = paramJceInputStream.readString(5, false);
-    this.JSr = paramJceInputStream.read(this.JSr, 6, false);
-    this.JSs = paramJceInputStream.readString(7, false);
-    this.JSt = paramJceInputStream.read(this.JSt, 8, false);
-    this.JSu = paramJceInputStream.readString(9, false);
-    this.JSv = paramJceInputStream.read(this.JSv, 10, false);
-    this.JSw = paramJceInputStream.read(this.JSw, 11, false);
-    this.JSx = paramJceInputStream.read(this.JSx, 12, false);
-    this.JSy = ((ArrayList)paramJceInputStream.read(JSG, 13, false));
-    this.JSz = paramJceInputStream.read(this.JSz, 14, false);
-    this.JSA = paramJceInputStream.read(this.JSA, 15, false);
-    this.JSB = paramJceInputStream.read(this.JSB, 16, false);
-    this.JSC = paramJceInputStream.read(this.JSC, 17, false);
-    this.JSD = ((ArrayList)paramJceInputStream.read(JSH, 18, false));
+    this.LMc = paramJceInputStream.read(this.LMc, 0, true);
+    this.LMd = ((byte[])paramJceInputStream.read(LMv, 1, false));
+    this.LMe = paramJceInputStream.readString(2, false);
+    this.LMf = ((byte[])paramJceInputStream.read(LMw, 3, false));
+    this.LMg = paramJceInputStream.read(this.LMg, 4, false);
+    this.LMh = paramJceInputStream.readString(5, false);
+    this.LMi = paramJceInputStream.read(this.LMi, 6, false);
+    this.LMj = paramJceInputStream.readString(7, false);
+    this.LMk = paramJceInputStream.read(this.LMk, 8, false);
+    this.LMl = paramJceInputStream.readString(9, false);
+    this.LMm = paramJceInputStream.read(this.LMm, 10, false);
+    this.LMn = paramJceInputStream.read(this.LMn, 11, false);
+    this.LMo = paramJceInputStream.read(this.LMo, 12, false);
+    this.LMp = ((ArrayList)paramJceInputStream.read(LMx, 13, false));
+    this.LMq = paramJceInputStream.read(this.LMq, 14, false);
+    this.LMr = paramJceInputStream.read(this.LMr, 15, false);
+    this.LMs = paramJceInputStream.read(this.LMs, 16, false);
+    this.LMt = paramJceInputStream.read(this.LMt, 17, false);
+    this.LMu = ((ArrayList)paramJceInputStream.read(LMy, 18, false));
     AppMethodBeat.o(138334);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     AppMethodBeat.i(138333);
-    paramJceOutputStream.write(this.JSl, 0);
-    if (this.JSm != null) {
-      paramJceOutputStream.write(this.JSm, 1);
+    paramJceOutputStream.write(this.LMc, 0);
+    if (this.LMd != null) {
+      paramJceOutputStream.write(this.LMd, 1);
     }
-    if (this.JSn != null) {
-      paramJceOutputStream.write(this.JSn, 2);
+    if (this.LMe != null) {
+      paramJceOutputStream.write(this.LMe, 2);
     }
-    if (this.JSo != null) {
-      paramJceOutputStream.write(this.JSo, 3);
+    if (this.LMf != null) {
+      paramJceOutputStream.write(this.LMf, 3);
     }
-    if (this.JSp != 0L) {
-      paramJceOutputStream.write(this.JSp, 4);
+    if (this.LMg != 0L) {
+      paramJceOutputStream.write(this.LMg, 4);
     }
-    if (this.JSq != null) {
-      paramJceOutputStream.write(this.JSq, 5);
+    if (this.LMh != null) {
+      paramJceOutputStream.write(this.LMh, 5);
     }
-    if (this.JSr != 0) {
-      paramJceOutputStream.write(this.JSr, 6);
+    if (this.LMi != 0) {
+      paramJceOutputStream.write(this.LMi, 6);
     }
-    if (this.JSs != null) {
-      paramJceOutputStream.write(this.JSs, 7);
+    if (this.LMj != null) {
+      paramJceOutputStream.write(this.LMj, 7);
     }
-    if (this.JSt != 0) {
-      paramJceOutputStream.write(this.JSt, 8);
+    if (this.LMk != 0) {
+      paramJceOutputStream.write(this.LMk, 8);
     }
-    if (this.JSu != null) {
-      paramJceOutputStream.write(this.JSu, 9);
+    if (this.LMl != null) {
+      paramJceOutputStream.write(this.LMl, 9);
     }
-    paramJceOutputStream.write(this.JSv, 10);
-    if (this.JSw != 0) {
-      paramJceOutputStream.write(this.JSw, 11);
+    paramJceOutputStream.write(this.LMm, 10);
+    if (this.LMn != 0) {
+      paramJceOutputStream.write(this.LMn, 11);
     }
-    if (this.JSx != 0) {
-      paramJceOutputStream.write(this.JSx, 12);
+    if (this.LMo != 0) {
+      paramJceOutputStream.write(this.LMo, 12);
     }
-    if (this.JSy != null) {
-      paramJceOutputStream.write(this.JSy, 13);
+    if (this.LMp != null) {
+      paramJceOutputStream.write(this.LMp, 13);
     }
-    if (this.JSz != 0) {
-      paramJceOutputStream.write(this.JSz, 14);
+    if (this.LMq != 0) {
+      paramJceOutputStream.write(this.LMq, 14);
     }
-    paramJceOutputStream.write(this.JSA, 15);
-    if (this.JSB != 0) {
-      paramJceOutputStream.write(this.JSB, 16);
+    paramJceOutputStream.write(this.LMr, 15);
+    if (this.LMs != 0) {
+      paramJceOutputStream.write(this.LMs, 16);
     }
-    paramJceOutputStream.write(this.JSC, 17);
-    if (this.JSD != null) {
-      paramJceOutputStream.write(this.JSD, 18);
+    paramJceOutputStream.write(this.LMt, 17);
+    if (this.LMu != null) {
+      paramJceOutputStream.write(this.LMu, 18);
     }
     AppMethodBeat.o(138333);
   }

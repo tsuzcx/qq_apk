@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.qqmail.a;
 
-import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public final class a
-  implements m
+  implements n
 {
-  public static l iyx = null;
-  public static k iyy = null;
-  
-  public final void a(k paramk)
-  {
-    iyy = paramk;
-  }
+  public static m iRG = null;
+  public static l iRH = null;
   
   public final void a(l paraml)
   {
-    iyx = paraml;
+    iRH = paraml;
+  }
+  
+  public final void a(m paramm)
+  {
+    iRG = paramm;
   }
 }
 

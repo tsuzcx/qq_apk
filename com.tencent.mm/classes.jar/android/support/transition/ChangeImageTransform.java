@@ -19,9 +19,9 @@ import java.util.Map;
 public class ChangeImageTransform
   extends Transition
 {
-  private static final String[] xP = { "android:changeImageTransform:matrix", "android:changeImageTransform:bounds" };
-  private static final TypeEvaluator<Matrix> yu = new TypeEvaluator() {};
-  private static final Property<ImageView, Matrix> yv = new Property(Matrix.class, "animatedTransform") {};
+  private static final TypeEvaluator<Matrix> An = new TypeEvaluator() {};
+  private static final Property<ImageView, Matrix> Ao = new Property(Matrix.class, "animatedTransform") {};
+  private static final String[] zJ = { "android:changeImageTransform:matrix", "android:changeImageTransform:bounds" };
   
   public ChangeImageTransform() {}
   
@@ -42,7 +42,7 @@ public class ChangeImageTransform
     } while (localImageView.getDrawable() == null);
     Map localMap = paramu.values;
     localMap.put("android:changeImageTransform:bounds", new Rect(((View)localObject).getLeft(), ((View)localObject).getTop(), ((View)localObject).getRight(), ((View)localObject).getBottom()));
-    switch (ChangeImageTransform.3.yw[localImageView.getScaleType().ordinal()])
+    switch (ChangeImageTransform.3.Ap[localImageView.getScaleType().ordinal()])
     {
     default: 
       paramu = new Matrix(localImageView.getImageMatrix());
@@ -102,7 +102,7 @@ public class ChangeImageTransform
       {
         paramu2.setTag(2131304283, paramu2.getImageMatrix());
         label194:
-        paramu2.setImageMatrix(i.vW);
+        paramu2.setImageMatrix(i.xP);
       }
     }
     else
@@ -111,7 +111,7 @@ public class ChangeImageTransform
         break label268;
       }
     }
-    for (paramViewGroup = ObjectAnimator.ofObject(paramu2, yv, yu, new Matrix[] { null, null });; paramViewGroup = ObjectAnimator.ofObject(paramu2, yv, new t.a(), new Matrix[] { paramViewGroup, paramu1 }))
+    for (paramViewGroup = ObjectAnimator.ofObject(paramu2, Ao, An, new Matrix[] { null, null });; paramViewGroup = ObjectAnimator.ofObject(paramu2, Ao, new t.a(), new Matrix[] { paramViewGroup, paramu1 }))
     {
       paramu1 = paramViewGroup;
       if (Build.VERSION.SDK_INT >= 21) {
@@ -124,13 +124,13 @@ public class ChangeImageTransform
       label268:
       paramViewGroup = paramu1;
       if (paramu1 == null) {
-        paramViewGroup = i.vW;
+        paramViewGroup = i.xP;
       }
       paramu1 = localMatrix;
       if (localMatrix == null) {
-        paramu1 = i.vW;
+        paramu1 = i.xP;
       }
-      yv.set(paramu2, paramViewGroup);
+      Ao.set(paramu2, paramViewGroup);
     }
   }
   
@@ -146,7 +146,7 @@ public class ChangeImageTransform
   
   public final String[] getTransitionProperties()
   {
-    return xP;
+    return zJ;
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.z;
 
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ai.k.b;
 
 public final class e
 {
-  public String bLt;
+  public String bVG;
+  public long dAY;
+  public k.b dEu;
   public String desc;
-  public long dpl;
-  public k.b dsB;
-  public String hkf;
+  public String hCo;
   public String imagePath;
-  public String mnK;
-  public String mnL;
+  public String mOm;
+  public String mOn;
   public long msgId;
   public String nickname;
   public long timestamp;
@@ -27,11 +27,11 @@ public final class e
     this.msgId = paramLong2;
     this.username = paramString2;
     this.nickname = paramString3;
-    this.bLt = paramString4;
-    this.mnK = paramString5;
-    this.hkf = paramString6;
-    this.dsB = paramb;
-    this.dpl = paramLong3;
+    this.bVG = paramString4;
+    this.mOm = paramString5;
+    this.hCo = paramString6;
+    this.dEu = paramb;
+    this.dAY = paramLong3;
   }
 }
 

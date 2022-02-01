@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class NeatLayout
   extends c
 {
-  private int JKC = 0;
+  private int LEl = 0;
   
   static
   {
@@ -39,12 +39,12 @@ public class NeatLayout
     if (paramBoolean)
     {
       f2 = paramTextPaint.getTextSize() / 6.0F;
-      i = this.JJK.length();
+      i = this.LDt.length();
       paramTextPaint = new int[i];
       arrayOfFloat1 = new float[i];
       arrayOfBoolean = new boolean[i];
-      i3 = nComputeBreak(this.JJK, this.JJM, 0.0F, paramFloat + f6, paramTextPaint, arrayOfFloat1, f2, arrayOfBoolean, a.JJF, this.JJP, a.JJE, this.JJO, this.JKk);
-      this.JKC = i3;
+      i3 = nComputeBreak(this.LDt, this.LDv, 0.0F, paramFloat + f6, paramTextPaint, arrayOfFloat1, f2, arrayOfBoolean, a.LDo, this.LDy, a.LDn, this.LDx, this.LDT);
+      this.LEl = i3;
       f1 = 0.0F;
       i = 0;
       if ((i >= i3) || (i >= paramInt)) {
@@ -86,7 +86,7 @@ public class NeatLayout
           if (i2 - 1 >= 0)
           {
             j = n;
-            if (this.JJL[(i2 - 1)] == '\n') {
+            if (this.LDu[(i2 - 1)] == '\n') {
               j = n - 1;
             }
           }
@@ -96,10 +96,10 @@ public class NeatLayout
             if (n < i2)
             {
               int i1 = j;
-              if (this.JJL[n] != '\n')
+              if (this.LDu[n] != '\n')
               {
                 i1 = j;
-                if (this.JJM[n] == 0.0F) {
+                if (this.LDv[n] == 0.0F) {
                   i1 = j - 1;
                 }
               }
@@ -118,9 +118,9 @@ public class NeatLayout
         if (m != 0)
         {
           f3 = paramFloat;
-          arrayOfChar = this.JJL;
-          arrayOfFloat2 = this.JJM;
-          j = this.JJR.size();
+          arrayOfChar = this.LDu;
+          arrayOfFloat2 = this.LDv;
+          j = this.LDA.size();
           if (m == 0) {
             break label441;
           }
@@ -140,9 +140,9 @@ public class NeatLayout
     }
   }
   
-  public final int fBm()
+  public final int fSB()
   {
-    return this.JKC;
+    return this.LEl;
   }
 }
 

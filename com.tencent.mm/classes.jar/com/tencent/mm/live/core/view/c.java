@@ -5,42 +5,28 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.ui.ar;
 import java.util.ArrayList;
 
 public final class c
 {
-  public static RelativeLayout.LayoutParams C(Context paramContext, int paramInt)
+  public static RelativeLayout.LayoutParams D(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(209119);
+    AppMethodBeat.i(216776);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 15.0F);
     int k = dip2px(paramContext, 50.0F);
     int m = dip2px(paramContext, 192.0F);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(m, dip2px(paramContext, 108.0F));
-    localLayoutParams.leftMargin = (paramInt - j - m - ap.ej(paramContext));
+    localLayoutParams.leftMargin = (paramInt - j - m - ar.ej(paramContext));
     localLayoutParams.topMargin = (i + k);
-    AppMethodBeat.o(209119);
+    AppMethodBeat.o(216776);
     return localLayoutParams;
-  }
-  
-  public static RelativeLayout.LayoutParams D(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(209120);
-    int i = dip2px(paramContext, 10.0F);
-    int j = dip2px(paramContext, 15.0F);
-    int k = dip2px(paramContext, 50.0F);
-    int m = dip2px(paramContext, 108.0F);
-    paramContext = new RelativeLayout.LayoutParams(m, dip2px(paramContext, 192.0F));
-    paramContext.leftMargin = (paramInt - j - m);
-    paramContext.topMargin = (i + k);
-    AppMethodBeat.o(209120);
-    return paramContext;
   }
   
   public static RelativeLayout.LayoutParams E(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(209123);
+    AppMethodBeat.i(216777);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 15.0F);
     int k = dip2px(paramContext, 50.0F);
@@ -48,13 +34,27 @@ public final class c
     paramContext = new RelativeLayout.LayoutParams(m, dip2px(paramContext, 192.0F));
     paramContext.leftMargin = (paramInt - j - m);
     paramContext.topMargin = (i + k);
-    AppMethodBeat.o(209123);
+    AppMethodBeat.o(216777);
+    return paramContext;
+  }
+  
+  public static RelativeLayout.LayoutParams F(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(216780);
+    int i = dip2px(paramContext, 10.0F);
+    int j = dip2px(paramContext, 15.0F);
+    int k = dip2px(paramContext, 50.0F);
+    int m = dip2px(paramContext, 108.0F);
+    paramContext = new RelativeLayout.LayoutParams(m, dip2px(paramContext, 192.0F));
+    paramContext.leftMargin = (paramInt - j - m);
+    paramContext.topMargin = (i + k);
+    AppMethodBeat.o(216780);
     return paramContext;
   }
   
   public static ArrayList<RelativeLayout.LayoutParams> b(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(209121);
+    AppMethodBeat.i(216778);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 50.0F);
     paramContext = new ArrayList();
@@ -84,13 +84,13 @@ public final class c
     paramContext.add(localLayoutParams2);
     paramContext.add(localLayoutParams3);
     paramContext.add(localLayoutParams4);
-    AppMethodBeat.o(209121);
+    AppMethodBeat.o(216778);
     return paramContext;
   }
   
   public static ArrayList<RelativeLayout.LayoutParams> c(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(209122);
+    AppMethodBeat.i(216779);
     int i = dip2px(paramContext, 10.0F);
     int j = dip2px(paramContext, 50.0F);
     paramContext = new ArrayList();
@@ -146,15 +146,15 @@ public final class c
     paramContext.add(localLayoutParams7);
     paramContext.add(localLayoutParams8);
     paramContext.add(localLayoutParams9);
-    AppMethodBeat.o(209122);
+    AppMethodBeat.o(216779);
     return paramContext;
   }
   
   public static int dip2px(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(209118);
+    AppMethodBeat.i(216775);
     int i = (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
-    AppMethodBeat.o(209118);
+    AppMethodBeat.o(216775);
     return i;
   }
 }

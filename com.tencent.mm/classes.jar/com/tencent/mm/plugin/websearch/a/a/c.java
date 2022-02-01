@@ -4,11 +4,11 @@ public abstract interface c
 {
   public abstract void a(a parama, a parama1);
   
-  public abstract a aAD(String paramString);
+  public abstract a aFX(String paramString);
   
   public static abstract interface a<T>
   {
-    public abstract void exM();
+    public abstract void eMD();
   }
 }
 

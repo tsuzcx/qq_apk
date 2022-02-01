@@ -11,7 +11,7 @@ public class SetFontFamilyActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetFontFamilyActionArg> CREATOR;
-  public String jD;
+  public String fontFamily;
   
   static
   {
@@ -51,7 +51,7 @@ public class SetFontFamilyActionArg
       return false;
     }
     paramObject = (SetFontFamilyActionArg)paramObject;
-    boolean bool = Objects.equals(this.jD, paramObject.jD);
+    boolean bool = Objects.equals(this.fontFamily, paramObject.fontFamily);
     AppMethodBeat.o(145151);
     return bool;
   }
@@ -60,14 +60,14 @@ public class SetFontFamilyActionArg
   {
     AppMethodBeat.i(145148);
     super.h(paramParcel);
-    this.jD = paramParcel.readString();
+    this.fontFamily = paramParcel.readString();
     AppMethodBeat.o(145148);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145152);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jD });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.fontFamily });
     AppMethodBeat.o(145152);
     return i;
   }
@@ -76,7 +76,7 @@ public class SetFontFamilyActionArg
   {
     AppMethodBeat.i(145149);
     super.parse(paramJSONObject);
-    this.jD = paramJSONObject.optJSONArray("data").optString(0);
+    this.fontFamily = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145149);
   }
   
@@ -84,7 +84,7 @@ public class SetFontFamilyActionArg
   {
     AppMethodBeat.i(145150);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jD);
+    paramParcel.writeString(this.fontFamily);
     AppMethodBeat.o(145150);
   }
 }

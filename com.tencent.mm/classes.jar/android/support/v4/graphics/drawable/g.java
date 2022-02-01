@@ -15,49 +15,49 @@ class g
   extends Drawable
   implements Drawable.Callback, e, f
 {
-  static final PorterDuff.Mode vl = PorterDuff.Mode.SRC_IN;
-  private int IA;
-  private PorterDuff.Mode IB;
-  private boolean IC;
-  a IE;
+  static final PorterDuff.Mode xe = PorterDuff.Mode.SRC_IN;
+  private int Ks;
+  private PorterDuff.Mode Kt;
+  private boolean Ku;
+  a Kv;
   Drawable mDrawable;
-  private boolean vp;
+  private boolean xi;
   
   g(Drawable paramDrawable)
   {
-    this.IE = el();
+    this.Kv = eC();
     l(paramDrawable);
   }
   
   g(a parama, Resources paramResources)
   {
-    this.IE = parama;
-    if ((this.IE != null) && (this.IE.IF != null)) {
-      l(this.IE.IF.newDrawable(paramResources));
+    this.Kv = parama;
+    if ((this.Kv != null) && (this.Kv.Kw != null)) {
+      l(this.Kv.Kw.newDrawable(paramResources));
     }
   }
   
   private boolean f(int[] paramArrayOfInt)
   {
-    if (!em()) {}
+    if (!eD()) {}
     PorterDuff.Mode localMode;
     int i;
     do
     {
       return false;
-      ColorStateList localColorStateList = this.IE.wm;
-      localMode = this.IE.wn;
+      ColorStateList localColorStateList = this.Kv.ye;
+      localMode = this.Kv.yf;
       if ((localColorStateList == null) || (localMode == null)) {
         break;
       }
       i = localColorStateList.getColorForState(paramArrayOfInt, localColorStateList.getDefaultColor());
-    } while ((this.IC) && (i == this.IA) && (localMode == this.IB));
+    } while ((this.Ku) && (i == this.Ks) && (localMode == this.Kt));
     setColorFilter(i, localMode);
-    this.IA = i;
-    this.IB = localMode;
-    this.IC = true;
+    this.Ks = i;
+    this.Kt = localMode;
+    this.Ku = true;
     return true;
-    this.IC = false;
+    this.Ku = false;
     clearColorFilter();
     return false;
   }
@@ -67,17 +67,17 @@ class g
     this.mDrawable.draw(paramCanvas);
   }
   
-  public final Drawable ek()
+  public final Drawable eB()
   {
     return this.mDrawable;
   }
   
-  a el()
+  a eC()
   {
-    return new b(this.IE);
+    return new b(this.Kv);
   }
   
-  protected boolean em()
+  protected boolean eD()
   {
     return true;
   }
@@ -85,21 +85,21 @@ class g
   public int getChangingConfigurations()
   {
     int j = super.getChangingConfigurations();
-    if (this.IE != null) {}
-    for (int i = this.IE.getChangingConfigurations();; i = 0) {
+    if (this.Kv != null) {}
+    for (int i = this.Kv.getChangingConfigurations();; i = 0) {
       return i | j | this.mDrawable.getChangingConfigurations();
     }
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    if (this.IE != null)
+    if (this.Kv != null)
     {
-      if (this.IE.IF != null) {}
+      if (this.Kv.Kw != null) {}
       for (int i = 1; i != 0; i = 0)
       {
-        this.IE.mChangingConfigurations = getChangingConfigurations();
-        return this.IE;
+        this.Kv.mChangingConfigurations = getChangingConfigurations();
+        return this.Kv;
       }
     }
     return null;
@@ -162,8 +162,8 @@ class g
   
   public boolean isStateful()
   {
-    if ((em()) && (this.IE != null)) {}
-    for (ColorStateList localColorStateList = this.IE.wm; ((localColorStateList != null) && (localColorStateList.isStateful())) || (this.mDrawable.isStateful()); localColorStateList = null) {
+    if ((eD()) && (this.Kv != null)) {}
+    for (ColorStateList localColorStateList = this.Kv.ye; ((localColorStateList != null) && (localColorStateList.isStateful())) || (this.mDrawable.isStateful()); localColorStateList = null) {
       return true;
     }
     return false;
@@ -187,8 +187,8 @@ class g
       setState(paramDrawable.getState());
       setLevel(paramDrawable.getLevel());
       setBounds(paramDrawable.getBounds());
-      if (this.IE != null) {
-        this.IE.IF = paramDrawable.getConstantState();
+      if (this.Kv != null) {
+        this.Kv.Kw = paramDrawable.getConstantState();
       }
     }
     invalidateSelf();
@@ -197,15 +197,15 @@ class g
   public Drawable mutate()
   {
     a locala;
-    if ((!this.vp) && (super.mutate() == this))
+    if ((!this.xi) && (super.mutate() == this))
     {
-      this.IE = el();
+      this.Kv = eC();
       if (this.mDrawable != null) {
         this.mDrawable.mutate();
       }
-      if (this.IE != null)
+      if (this.Kv != null)
       {
-        locala = this.IE;
+        locala = this.Kv;
         if (this.mDrawable == null) {
           break label77;
         }
@@ -214,8 +214,8 @@ class g
     label77:
     for (Drawable.ConstantState localConstantState = this.mDrawable.getConstantState();; localConstantState = null)
     {
-      locala.IF = localConstantState;
-      this.vp = true;
+      locala.Kw = localConstantState;
+      this.xi = true;
       return this;
     }
   }
@@ -280,13 +280,13 @@ class g
   
   public void setTintList(ColorStateList paramColorStateList)
   {
-    this.IE.wm = paramColorStateList;
+    this.Kv.ye = paramColorStateList;
     f(getState());
   }
   
   public void setTintMode(PorterDuff.Mode paramMode)
   {
-    this.IE.wn = paramMode;
+    this.Kv.yf = paramMode;
     f(getState());
   }
   
@@ -303,27 +303,27 @@ class g
   protected static abstract class a
     extends Drawable.ConstantState
   {
-    Drawable.ConstantState IF;
+    Drawable.ConstantState Kw;
     int mChangingConfigurations;
-    ColorStateList wm = null;
-    PorterDuff.Mode wn = g.vl;
+    ColorStateList ye = null;
+    PorterDuff.Mode yf = g.xe;
     
     a(a parama)
     {
       if (parama != null)
       {
         this.mChangingConfigurations = parama.mChangingConfigurations;
-        this.IF = parama.IF;
-        this.wm = parama.wm;
-        this.wn = parama.wn;
+        this.Kw = parama.Kw;
+        this.ye = parama.ye;
+        this.yf = parama.yf;
       }
     }
     
     public int getChangingConfigurations()
     {
       int j = this.mChangingConfigurations;
-      if (this.IF != null) {}
-      for (int i = this.IF.getChangingConfigurations();; i = 0) {
+      if (this.Kw != null) {}
+      for (int i = this.Kw.getChangingConfigurations();; i = 0) {
         return i | j;
       }
     }

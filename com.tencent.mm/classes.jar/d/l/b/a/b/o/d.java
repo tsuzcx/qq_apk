@@ -3,39 +3,37 @@ package d.l.b.a.b.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
 import d.g.a.m;
-import d.g.a.q;
-import d.g.b.l;
-import d.y;
+import d.z;
 
 public final class d
 {
-  private static final b<Object, Object> LOA = (b)f.LOM;
-  private static final b<Object, Boolean> LOB = (b)b.LOI;
-  private static final b<Object, Object> LOC = (b)a.LOH;
-  private static final b<Object, y> LOD = (b)c.LOJ;
-  private static final m<Object, Object, y> LOE = (m)d.LOK;
-  private static final q<Object, Object, Object, y> LOF = (q)e.LOL;
+  private static final b<Object, z> NFA = (b)c.NFF;
+  private static final m<Object, Object, z> NFB = (m)d.NFG;
+  private static final d.g.a.q<Object, Object, Object, z> NFC = (d.g.a.q)e.NFH;
+  private static final b<Object, Object> NFx = (b)f.NFI;
+  private static final b<Object, Boolean> NFy = (b)b.NFE;
+  private static final b<Object, Object> NFz = (b)a.NFD;
   
-  public static final <T> b<T, Boolean> gcL()
+  public static final <T> b<T, Boolean> gum()
   {
-    return LOB;
+    return NFy;
   }
   
-  public static final q<Object, Object, Object, y> gcM()
+  public static final d.g.a.q<Object, Object, Object, z> gun()
   {
-    return LOF;
+    return NFC;
   }
   
   static final class a
-    extends l
+    extends d.g.b.q
     implements b
   {
-    public static final a LOH;
+    public static final a NFD;
     
     static
     {
       AppMethodBeat.i(61357);
-      LOH = new a();
+      NFD = new a();
       AppMethodBeat.o(61357);
     }
     
@@ -46,15 +44,15 @@ public final class d
   }
   
   static final class b
-    extends l
+    extends d.g.b.q
     implements b<Object, Boolean>
   {
-    public static final b LOI;
+    public static final b NFE;
     
     static
     {
       AppMethodBeat.i(61358);
-      LOI = new b();
+      NFE = new b();
       AppMethodBeat.o(61358);
     }
     
@@ -65,15 +63,15 @@ public final class d
   }
   
   static final class c
-    extends l
-    implements b<Object, y>
+    extends d.g.b.q
+    implements b<Object, z>
   {
-    public static final c LOJ;
+    public static final c NFF;
     
     static
     {
       AppMethodBeat.i(61359);
-      LOJ = new c();
+      NFF = new c();
       AppMethodBeat.o(61359);
     }
     
@@ -84,15 +82,15 @@ public final class d
   }
   
   static final class d
-    extends l
-    implements m<Object, Object, y>
+    extends d.g.b.q
+    implements m<Object, Object, z>
   {
-    public static final d LOK;
+    public static final d NFG;
     
     static
     {
       AppMethodBeat.i(61360);
-      LOK = new d();
+      NFG = new d();
       AppMethodBeat.o(61360);
     }
     
@@ -103,15 +101,15 @@ public final class d
   }
   
   static final class e
-    extends l
-    implements q<Object, Object, Object, y>
+    extends d.g.b.q
+    implements d.g.a.q<Object, Object, Object, z>
   {
-    public static final e LOL;
+    public static final e NFH;
     
     static
     {
       AppMethodBeat.i(61361);
-      LOL = new e();
+      NFH = new e();
       AppMethodBeat.o(61361);
     }
     
@@ -122,15 +120,15 @@ public final class d
   }
   
   static final class f
-    extends l
+    extends d.g.b.q
     implements b<Object, Object>
   {
-    public static final f LOM;
+    public static final f NFI;
     
     static
     {
       AppMethodBeat.i(61362);
-      LOM = new f();
+      NFI = new f();
       AppMethodBeat.o(61362);
     }
     
@@ -139,7 +137,7 @@ public final class d
       super();
     }
     
-    public final Object ay(Object paramObject)
+    public final Object invoke(Object paramObject)
     {
       return paramObject;
     }

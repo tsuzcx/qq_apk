@@ -12,16 +12,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.wallet_core.c.ad;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.plugin.wallet_core.model.s;
+import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wxcredit.a.j;
 import com.tencent.mm.plugin.wxcredit.a.k;
-import com.tencent.mm.plugin.wxcredit.b;
 import com.tencent.mm.plugin.wxcredit.c;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.h.c;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -34,112 +33,60 @@ import java.util.List;
 public class WalletWXCreditDetailUI
   extends WalletPreferenceUI
 {
-  private Bankcard Bgn;
-  private com.tencent.mm.wallet_core.d Ddt;
-  private k Ddu;
+  private Bankcard CGB;
+  private com.tencent.mm.wallet_core.d EHt;
+  private k EHu;
   private boolean hasInit;
   private f screen;
-  private View.OnClickListener uWS;
+  private View.OnClickListener waa;
   
   public WalletWXCreditDetailUI()
   {
     AppMethodBeat.i(72369);
     this.hasInit = false;
-    this.uWS = new View.OnClickListener()
+    this.waa = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72366);
-        if (paramAnonymousView.getId() == 2131306854)
-        {
-          if (WalletWXCreditDetailUI.b(WalletWXCreditDetailUI.this) != null)
-          {
-            com.tencent.mm.wallet_core.ui.e.ae(WalletWXCreditDetailUI.this, WalletWXCreditDetailUI.b(WalletWXCreditDetailUI.this).DcM.username);
-            AppMethodBeat.o(72366);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditDetailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (paramAnonymousView.getId() == 2131306854) {
+          if (WalletWXCreditDetailUI.b(WalletWXCreditDetailUI.this) != null) {
+            com.tencent.mm.wallet_core.ui.e.ad(WalletWXCreditDetailUI.this, WalletWXCreditDetailUI.b(WalletWXCreditDetailUI.this).EGM.username);
           }
         }
-        else if ((paramAnonymousView.getId() == 2131306852) && (WalletWXCreditDetailUI.b(WalletWXCreditDetailUI.this) != null)) {
-          com.tencent.mm.wallet_core.ui.e.o(WalletWXCreditDetailUI.this, WalletWXCreditDetailUI.b(WalletWXCreditDetailUI.this).DcL, false);
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditDetailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(72366);
+          return;
+          if ((paramAnonymousView.getId() == 2131306852) && (WalletWXCreditDetailUI.b(WalletWXCreditDetailUI.this) != null)) {
+            com.tencent.mm.wallet_core.ui.e.o(WalletWXCreditDetailUI.this, WalletWXCreditDetailUI.b(WalletWXCreditDetailUI.this).EGL, false);
+          }
         }
-        AppMethodBeat.o(72366);
       }
     };
     AppMethodBeat.o(72369);
   }
   
-  private void cL()
-  {
-    AppMethodBeat.i(72374);
-    if (!this.hasInit) {
-      initView();
-    }
-    Object localObject1;
-    Object localObject2;
-    if (this.Ddu != null)
-    {
-      localObject1 = (WalletWXCreditDetailHeaderPreference)this.screen.aPN("wallet_wxcredit_header");
-      double d = this.Ddu.Dcz;
-      ((WalletWXCreditDetailHeaderPreference)localObject1).iBN.setText(com.tencent.mm.wallet_core.ui.e.D(d));
-      localObject2 = this.Bgn.field_bankName;
-      String str = this.Ddu.DcK;
-      ((WalletWXCreditDetailHeaderPreference)localObject1).Dds.setText(((Preference)localObject1).mContext.getString(2131766032, new Object[] { str, localObject2 }));
-    }
-    boolean bool;
-    if (this.Ddu != null)
-    {
-      this.screen.aPN("wallet_wxcredit_total_amount").setTitle(getString(2131766006, new Object[] { com.tencent.mm.wallet_core.ui.e.D(this.Ddu.Dct) }));
-      localObject1 = this.screen;
-      if (this.Ddu.DcE) {
-        break label377;
-      }
-      bool = true;
-      ((f)localObject1).cK("wallet_wxcredit_change_amount", bool);
-      localObject1 = this.screen.aPN("wallet_wxcredit_bill");
-      if (this.Ddu.DcA != 0.0D) {
-        ((Preference)localObject1).setSummary(com.tencent.mm.wallet_core.ui.e.D(this.Ddu.DcA));
-      }
-      localObject1 = this.screen.aPN("wallet_wxcredit_repayment");
-      localObject2 = this.screen.aPN("wallet_wxcredit_repayment_tips");
-      if (this.Ddu.DcC <= 0.0D) {
-        break label382;
-      }
-      ((Preference)localObject1).setSummary(com.tencent.mm.wallet_core.ui.e.D(this.Ddu.DcC));
-      ((Preference)localObject2).setTitle(getString(2131766030, new Object[] { this.Ddu.DcH }));
-      this.screen.cK("wallet_wxcredit_repayment_tips", false);
-    }
-    for (;;)
-    {
-      if (this.Bgn != null) {
-        this.screen.aPN("wallet_wxcredit_bank_name").setTitle(this.Bgn.field_bankName);
-      }
-      ((WalletWXCreditDetailFooterPreference)this.screen.aPN("wallet_wxcredit_footer")).uWS = this.uWS;
-      this.screen.notifyDataSetChanged();
-      AppMethodBeat.o(72374);
-      return;
-      label377:
-      bool = false;
-      break;
-      label382:
-      this.screen.cK("wallet_wxcredit_repayment_tips", true);
-    }
-  }
-  
-  private boolean eJn()
+  private boolean eYh()
   {
     AppMethodBeat.i(72371);
-    if (this.Bgn == null)
+    if (this.CGB == null)
     {
       AppMethodBeat.o(72371);
       return false;
     }
-    if (this.Bgn.field_bankcardState == 0)
+    if (this.CGB.field_bankcardState == 0)
     {
       AppMethodBeat.o(72371);
       return true;
     }
-    int i = this.Bgn.field_wxcreditState;
-    if (this.Ddu != null) {
-      i = this.Ddu.Dcy;
+    int i = this.CGB.field_wxcreditState;
+    if (this.EHu != null) {
+      i = this.EHu.EGy;
     }
     switch (i)
     {
@@ -148,7 +95,7 @@ public class WalletWXCreditDetailUI
       AppMethodBeat.o(72371);
       return true;
     case 1: 
-      if (s.ery().esG())
+      if (t.eFy().eGG())
       {
         AppMethodBeat.o(72371);
         return true;
@@ -161,24 +108,81 @@ public class WalletWXCreditDetailUI
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(72364);
-          WalletWXCreditDetailUI.this.fAS().a(new com.tencent.mm.plugin.wxcredit.a.i(WalletWXCreditDetailUI.a(WalletWXCreditDetailUI.this).field_bankcardType, WalletWXCreditDetailUI.a(WalletWXCreditDetailUI.this).Buk), true, 1);
+          WalletWXCreditDetailUI.this.fSc().a(new com.tencent.mm.plugin.wxcredit.a.i(WalletWXCreditDetailUI.a(WalletWXCreditDetailUI.this).field_bankcardType, WalletWXCreditDetailUI.a(WalletWXCreditDetailUI.this).CUz), true, 1);
           AppMethodBeat.o(72364);
         }
       });
       AppMethodBeat.o(72371);
       return false;
     case 5: 
-      this.Ddt.dmf.putBoolean("key_can_unbind", false);
+      this.EHt.dxT.putBoolean("key_can_unbind", false);
     }
-    if (this.Ddu != null)
+    if (this.EHu != null)
     {
-      this.Ddt.dmf.putString("key_repayment_url", this.Ddu.DcG);
-      this.Ddt.a(this, 1, this.Ddt.dmf);
+      this.EHt.dxT.putString("key_repayment_url", this.EHu.EGG);
+      this.EHt.a(this, 1, this.EHt.dxT);
       AppMethodBeat.o(72371);
       return false;
     }
     AppMethodBeat.o(72371);
     return true;
+  }
+  
+  private void updateView()
+  {
+    AppMethodBeat.i(72374);
+    if (!this.hasInit) {
+      initView();
+    }
+    Object localObject1;
+    Object localObject2;
+    if (this.EHu != null)
+    {
+      localObject1 = (WalletWXCreditDetailHeaderPreference)this.screen.aVD("wallet_wxcredit_header");
+      double d = this.EHu.EGz;
+      ((WalletWXCreditDetailHeaderPreference)localObject1).iUX.setText(com.tencent.mm.wallet_core.ui.e.D(d));
+      localObject2 = this.CGB.field_bankName;
+      String str = this.EHu.EGK;
+      ((WalletWXCreditDetailHeaderPreference)localObject1).EHs.setText(((Preference)localObject1).mContext.getString(2131766032, new Object[] { str, localObject2 }));
+    }
+    boolean bool;
+    if (this.EHu != null)
+    {
+      this.screen.aVD("wallet_wxcredit_total_amount").setTitle(getString(2131766006, new Object[] { com.tencent.mm.wallet_core.ui.e.D(this.EHu.EGt) }));
+      localObject1 = this.screen;
+      if (this.EHu.EGE) {
+        break label377;
+      }
+      bool = true;
+      ((f)localObject1).cP("wallet_wxcredit_change_amount", bool);
+      localObject1 = this.screen.aVD("wallet_wxcredit_bill");
+      if (this.EHu.EGA != 0.0D) {
+        ((Preference)localObject1).setSummary(com.tencent.mm.wallet_core.ui.e.D(this.EHu.EGA));
+      }
+      localObject1 = this.screen.aVD("wallet_wxcredit_repayment");
+      localObject2 = this.screen.aVD("wallet_wxcredit_repayment_tips");
+      if (this.EHu.EGC <= 0.0D) {
+        break label382;
+      }
+      ((Preference)localObject1).setSummary(com.tencent.mm.wallet_core.ui.e.D(this.EHu.EGC));
+      ((Preference)localObject2).setTitle(getString(2131766030, new Object[] { this.EHu.EGH }));
+      this.screen.cP("wallet_wxcredit_repayment_tips", false);
+    }
+    for (;;)
+    {
+      if (this.CGB != null) {
+        this.screen.aVD("wallet_wxcredit_bank_name").setTitle(this.CGB.field_bankName);
+      }
+      ((WalletWXCreditDetailFooterPreference)this.screen.aVD("wallet_wxcredit_footer")).waa = this.waa;
+      this.screen.notifyDataSetChanged();
+      AppMethodBeat.o(72374);
+      return;
+      label377:
+      bool = false;
+      break;
+      label382:
+      this.screen.cP("wallet_wxcredit_repayment_tips", true);
+    }
   }
   
   public final boolean e(int paramInt1, int paramInt2, String paramString, n paramn)
@@ -188,17 +192,17 @@ public class WalletWXCreditDetailUI
     {
       if ((paramn instanceof com.tencent.mm.plugin.wxcredit.a.d))
       {
-        s.ery().BAM = (System.currentTimeMillis() / 1000L);
-        this.Ddu = ((com.tencent.mm.plugin.wxcredit.a.d)paramn).Dcu;
-        if ((this.Ddu != null) && (this.Ddu.Dcy == 2))
+        t.eFy().Dbe = (System.currentTimeMillis() / 1000L);
+        this.EHu = ((com.tencent.mm.plugin.wxcredit.a.d)paramn).EGu;
+        if ((this.EHu != null) && (this.EHu.EGy == 2))
         {
-          com.tencent.mm.kernel.g.agS();
-          if (((Boolean)com.tencent.mm.kernel.g.agR().agA().get(196658, Boolean.FALSE)).booleanValue())
+          com.tencent.mm.kernel.g.ajD();
+          if (((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(196658, Boolean.FALSE)).booleanValue())
           {
             paramString = com.tencent.mm.wallet_core.a.br(this);
-            paramn = paramString.dmf;
-            paramn.putDouble("key_total_amount", this.Ddu.Dct);
-            paramn.putBoolean("key_can_upgrade_amount", this.Ddu.DcE);
+            paramn = paramString.dxT;
+            paramn.putDouble("key_total_amount", this.EHu.EGt);
+            paramn.putBoolean("key_can_upgrade_amount", this.EHu.EGE);
             paramString.a(this, WalletWXCreditOpenNotifyUI.class, paramn, 1);
           }
         }
@@ -206,17 +210,17 @@ public class WalletWXCreditDetailUI
         {
           AppMethodBeat.o(72376);
           return true;
-          if (eJn())
+          if (eYh())
           {
             setContentViewVisibility(0);
-            cL();
+            updateView();
           }
         }
       }
       if (!(paramn instanceof com.tencent.mm.plugin.wxcredit.a.i)) {
         break label201;
       }
-      fAS().a(new ad(), true, 1);
+      fSc().a(new ad(), true, 1);
     }
     for (;;)
     {
@@ -257,11 +261,11 @@ public class WalletWXCreditDetailUI
       {
         AppMethodBeat.i(72368);
         paramAnonymousMenuItem = new ArrayList();
-        s.ery();
+        t.eFy();
         WalletWXCreditDetailUI.a(WalletWXCreditDetailUI.this);
         h.b(WalletWXCreditDetailUI.this, null, (String[])paramAnonymousMenuItem.toArray(new String[paramAnonymousMenuItem.size()]), WalletWXCreditDetailUI.this.getString(2131765319), new h.c()
         {
-          public final void kG(int paramAnonymous2Int)
+          public final void lf(int paramAnonymous2Int)
           {
             AppMethodBeat.i(72367);
             switch (paramAnonymous2Int)
@@ -271,9 +275,9 @@ public class WalletWXCreditDetailUI
             {
               AppMethodBeat.o(72367);
               return;
-              s.ery();
+              t.eFy();
               WalletWXCreditDetailUI.a(WalletWXCreditDetailUI.this);
-              WalletWXCreditDetailUI.eJo();
+              WalletWXCreditDetailUI.eYi();
               AppMethodBeat.o(72367);
               return;
               WalletWXCreditDetailUI.c(WalletWXCreditDetailUI.this);
@@ -291,7 +295,7 @@ public class WalletWXCreditDetailUI
   {
     AppMethodBeat.i(72377);
     setContentViewVisibility(0);
-    cL();
+    updateView();
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(72377);
   }
@@ -300,14 +304,14 @@ public class WalletWXCreditDetailUI
   {
     AppMethodBeat.i(72370);
     super.onCreate(paramBundle);
-    fAS().addSceneEndListener(621);
-    fAS().addSceneEndListener(600);
+    fSc().addSceneEndListener(621);
+    fSc().addSceneEndListener(600);
     setContentViewVisibility(4);
-    this.Ddt = com.tencent.mm.wallet_core.a.br(this);
-    if (this.Bgn == null) {
-      this.Bgn = ((Bankcard)this.Ddt.dmf.getParcelable("key_bankcard"));
+    this.EHt = com.tencent.mm.wallet_core.a.br(this);
+    if (this.CGB == null) {
+      this.CGB = ((Bankcard)this.EHt.dxT.getParcelable("key_bankcard"));
     }
-    if (eJn())
+    if (eYh())
     {
       if (this.mNetController == null)
       {
@@ -316,7 +320,7 @@ public class WalletWXCreditDetailUI
         }
         this.mNetController = this.mProcess.a(this, this.mNetSceneMgr);
       }
-      if (!this.mNetController.z(new Object[] { this.Bgn }))
+      if (!this.mNetController.z(new Object[] { this.CGB }))
       {
         setContentViewVisibility(0);
         initView();
@@ -328,8 +332,8 @@ public class WalletWXCreditDetailUI
   public void onDestroy()
   {
     AppMethodBeat.i(72372);
-    fAS().removeSceneEndListener(621);
-    fAS().removeSceneEndListener(600);
+    fSc().removeSceneEndListener(621);
+    fSc().removeSceneEndListener(600);
     super.onDestroy();
     AppMethodBeat.o(72372);
   }
@@ -341,16 +345,16 @@ public class WalletWXCreditDetailUI
     if ("wallet_wxcredit_change_amount".equals(paramf))
     {
       paramf = new Bundle();
-      paramf.putParcelable("key_bankcard", this.Bgn);
-      com.tencent.mm.wallet_core.a.a(this, b.class, paramf);
+      paramf.putParcelable("key_bankcard", this.CGB);
+      com.tencent.mm.wallet_core.a.a(this, com.tencent.mm.plugin.wxcredit.b.class, paramf);
       AppMethodBeat.o(72375);
       return true;
     }
     if ("wallet_wxcredit_bill".equals(paramf)) {
-      if (this.Ddu != null)
+      if (this.EHu != null)
       {
         paramf = new Bundle();
-        paramf.putString("key_url", this.Ddu.wLj);
+        paramf.putString("key_url", this.EHu.xYQ);
         com.tencent.mm.wallet_core.a.a(this, c.class, paramf);
       }
     }
@@ -360,27 +364,27 @@ public class WalletWXCreditDetailUI
       return false;
       if ("wallet_wxcredit_card_info".equals(paramf))
       {
-        if (this.Ddu != null)
+        if (this.EHu != null)
         {
           paramf = new Bundle();
-          paramf.putString("key_url", this.Ddu.DcI);
+          paramf.putString("key_url", this.EHu.EGI);
           com.tencent.mm.wallet_core.a.a(this, c.class, paramf);
         }
       }
       else if ("wallet_wxcredit_right".equals(paramf))
       {
-        if (this.Ddu != null) {
-          com.tencent.mm.wallet_core.ui.e.o(this, this.Ddu.DcJ, false);
+        if (this.EHu != null) {
+          com.tencent.mm.wallet_core.ui.e.o(this, this.EHu.EGJ, false);
         }
       }
       else if ("wallet_wxcredit_repayment".equals(paramf))
       {
-        if (this.Ddu != null) {
-          com.tencent.mm.wallet_core.ui.e.o(this, this.Ddu.DcG, false);
+        if (this.EHu != null) {
+          com.tencent.mm.wallet_core.ui.e.o(this, this.EHu.EGG, false);
         }
       }
-      else if (("wallet_wxcredit_bank_name".equals(paramf)) && (this.Ddu != null)) {
-        com.tencent.mm.wallet_core.ui.e.ad(this, this.Ddu.DcM.username);
+      else if (("wallet_wxcredit_bank_name".equals(paramf)) && (this.EHu != null)) {
+        com.tencent.mm.wallet_core.ui.e.ac(this, this.EHu.EGM.username);
       }
     }
   }

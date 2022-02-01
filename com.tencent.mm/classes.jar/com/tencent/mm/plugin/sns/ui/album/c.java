@@ -8,7 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.widget.QDisFadeImageView;
 import com.tencent.mm.ui.widget.QImageView.a;
 import java.util.ArrayList;
@@ -17,54 +18,58 @@ import java.util.List;
 public final class c
   extends RecyclerView.a<b>
 {
-  List<a.d> zay;
-  a zaz;
+  List<a.d> Asp;
+  a Asq;
   
   public c()
   {
     AppMethodBeat.i(99872);
-    this.zay = new ArrayList();
-    this.zaz = null;
+    this.Asp = new ArrayList();
+    this.Asq = null;
     AppMethodBeat.o(99872);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(99873);
-    int i = this.zay.size();
+    int i = this.Asp.size();
     AppMethodBeat.o(99873);
     return i;
   }
   
   public static abstract interface a
   {
-    public abstract void bY(int paramInt, String paramString);
+    public abstract void cf(int paramInt, String paramString);
   }
   
   final class b
     extends RecyclerView.w
   {
-    public ImageView ig;
-    public QDisFadeImageView zaA;
+    public QDisFadeImageView Asr;
+    public ImageView ka;
     
     public b(View paramView)
     {
       super();
       AppMethodBeat.i(99871);
-      this.zaA = null;
-      this.ig = null;
-      this.zaA = ((QDisFadeImageView)paramView.findViewById(2131304931));
-      this.ig = ((ImageView)paramView.findViewById(2131304932));
-      this.ig.setImageDrawable(am.e(this.ig.getContext().getResources().getDrawable(2131690460), -1));
-      this.zaA.setScaleType(QImageView.a.JbU);
-      this.zaA.setOnClickListener(new View.OnClickListener()
+      this.Asr = null;
+      this.ka = null;
+      this.Asr = ((QDisFadeImageView)paramView.findViewById(2131304931));
+      this.ka = ((ImageView)paramView.findViewById(2131304932));
+      this.ka.setImageDrawable(this.ka.getContext().getResources().getDrawable(2131691166));
+      this.Asr.setScaleType(QImageView.a.KTb);
+      this.Asr.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(99870);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/sns/ui/album/SnsAlbumItemAdapter$SnsAlbumItemViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           if ((paramAnonymousView.getTag() != null) && ((paramAnonymousView.getTag() instanceof c.c)) && (c.a(c.this) != null)) {
-            c.a(c.this).bY(((c.c)paramAnonymousView.getTag()).dwR, ((c.c)paramAnonymousView.getTag()).mediaId);
+            c.a(c.this).cf(((c.c)paramAnonymousView.getTag()).dJd, ((c.c)paramAnonymousView.getTag()).mediaId);
           }
+          a.a(this, "com/tencent/mm/plugin/sns/ui/album/SnsAlbumItemAdapter$SnsAlbumItemViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(99870);
         }
       });
@@ -74,7 +79,7 @@ public final class c
   
   final class c
   {
-    public int dwR;
+    public int dJd;
     public String mediaId;
     
     c() {}

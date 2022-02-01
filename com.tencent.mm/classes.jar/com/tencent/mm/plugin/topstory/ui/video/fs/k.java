@@ -7,139 +7,85 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.o;
+import com.tencent.mm.aw.q;
 import com.tencent.mm.plugin.topstory.ui.d;
 import com.tencent.mm.plugin.topstory.ui.video.b;
-import com.tencent.mm.pluginsdk.ui.h.e;
-import com.tencent.mm.protocal.protobuf.dio;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.pluginsdk.ui.i.e;
+import com.tencent.mm.protocal.protobuf.dod;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class k
   extends e
 {
-  public ImageView AcL;
-  public View AeN;
-  public View AeO;
-  public ImageView AeP;
-  public TextView AeQ;
-  public View AfF;
-  public View AfG;
-  public View AfH;
-  public View Afc;
-  public TextView tvx;
+  public ImageView Buw;
+  public View BwA;
+  public ImageView BwB;
+  public TextView BwC;
+  public View BwO;
+  public View Bwz;
+  public View Bxr;
+  public View Bxs;
+  public View Bxt;
+  public TextView uuM;
   
   public k(Context paramContext, b paramb, com.tencent.mm.plugin.topstory.ui.video.a parama)
   {
     super(paramContext, paramb, parama);
   }
   
-  protected final void biY()
+  protected final void bmK()
   {
     AppMethodBeat.i(126404);
-    this.Aex = new com.tencent.mm.plugin.topstory.ui.video.k(getContext(), this, new a());
+    this.Bwj = new com.tencent.mm.plugin.topstory.ui.video.k(getContext(), this, new a());
     AppMethodBeat.o(126404);
   }
   
-  public final h.e c(dio paramdio)
+  public final i.e c(dod paramdod)
   {
     AppMethodBeat.i(126401);
-    float f1 = com.tencent.mm.cc.a.ig(ai.getContext());
-    float f2 = com.tencent.mm.cc.a.ih(ai.getContext()) - com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 64);
+    float f1 = com.tencent.mm.cc.a.ip(aj.getContext());
+    float f2 = com.tencent.mm.cc.a.iq(aj.getContext()) - com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 64);
     float f3 = f1 / f2;
-    float f4 = paramdio.thumbWidth / paramdio.thumbHeight;
-    ac.i("MicroMsg.TopStory.TopStoryVerticalFSVideoContainer", "getScaleType playAreaRatio %.2f videoRatio %.2f playAreaWidth %.2f playAreaHeight %.2f", new Object[] { Float.valueOf(f3), Float.valueOf(f4), Float.valueOf(f1), Float.valueOf(f2) });
+    float f4 = paramdod.thumbWidth / paramdod.thumbHeight;
+    ad.i("MicroMsg.TopStory.TopStoryVerticalFSVideoContainer", "getScaleType playAreaRatio %.2f videoRatio %.2f playAreaWidth %.2f playAreaHeight %.2f", new Object[] { Float.valueOf(f3), Float.valueOf(f4), Float.valueOf(f1), Float.valueOf(f2) });
     if (f3 <= f4)
     {
-      paramdio = h.e.DnJ;
+      paramdod = i.e.ESO;
       AppMethodBeat.o(126401);
-      return paramdio;
+      return paramdod;
     }
-    paramdio = h.e.DnK;
+    paramdod = i.e.ESP;
     AppMethodBeat.o(126401);
-    return paramdio;
+    return paramdod;
   }
   
-  public final void cL()
-  {
-    AppMethodBeat.i(126402);
-    super.cL();
-    h.e locale = c(this.zZN);
-    ViewGroup.LayoutParams localLayoutParams = this.opg.getLayoutParams();
-    if (locale == h.e.DnJ)
-    {
-      localLayoutParams.width = com.tencent.mm.cc.a.ig(ai.getContext());
-      localLayoutParams.height = ((int)(localLayoutParams.width / (this.zZN.thumbWidth / this.zZN.thumbHeight)));
-      this.opg.setLayoutParams(localLayoutParams);
-      if ((this.Afc != null) && (this.tvx != null) && (this.AcL != null))
-      {
-        this.Afc.setVisibility(8);
-        this.tvx.setVisibility(8);
-        this.AcL.setVisibility(8);
-        if (!bs.isNullOrNil(this.zZN.source))
-        {
-          this.tvx.setText(this.zZN.source);
-          this.tvx.setVisibility(0);
-          if (!bs.isNullOrNil(this.zZN.kRU)) {
-            this.Afc.setVisibility(0);
-          }
-          if (bs.isNullOrNil(this.zZN.FRT)) {
-            break label275;
-          }
-          o.aFB().a(this.zZN.FRT, this.AcL, d.Aae);
-          label216:
-          this.AcL.setVisibility(0);
-        }
-      }
-      if (!this.Acd.edo()) {
-        break label287;
-      }
-      this.AfG.setVisibility(0);
-      this.AfF.setVisibility(0);
-    }
-    for (;;)
-    {
-      eep();
-      AppMethodBeat.o(126402);
-      return;
-      localLayoutParams.width = -1;
-      localLayoutParams.height = -1;
-      break;
-      label275:
-      this.AcL.setImageResource(2131231875);
-      break label216;
-      label287:
-      this.AfG.setVisibility(8);
-      this.AfF.setVisibility(8);
-    }
-  }
-  
-  protected final void eep()
+  protected final void eqG()
   {
     AppMethodBeat.i(126403);
-    if ((this.zZN.FRX & 0x80) > 0)
+    if ((this.Brz.HCD & 0x80) > 0)
     {
-      this.AeO.setVisibility(0);
-      if (this.zZN.FSc)
+      this.BwA.setVisibility(0);
+      if (this.Brz.HCI)
       {
-        this.AeP.setImageResource(2131691329);
-        this.AeQ.setTextColor(getResources().getColor(2131101051));
+        this.BwB.setImageResource(2131691329);
+        this.BwC.setTextColor(getResources().getColor(2131101051));
       }
       for (;;)
       {
-        this.AeQ.setText(d.Rk(this.zZN.FSh));
+        this.BwC.setText(d.SU(this.Brz.HCN));
         AppMethodBeat.o(126403);
         return;
-        this.AeP.setImageResource(2131691330);
-        this.AeQ.setTextColor(getResources().getColor(2131101182));
+        this.BwB.setImageResource(2131691330);
+        this.BwC.setTextColor(getResources().getColor(2131101182));
       }
     }
-    this.AeO.setVisibility(8);
+    this.BwA.setVisibility(8);
     AppMethodBeat.o(126403);
   }
   
-  public final boolean eeq()
+  public final boolean eqH()
   {
     return true;
   }
@@ -153,21 +99,75 @@ public final class k
   {
     AppMethodBeat.i(126400);
     super.init();
-    this.AeN = findViewById(2131304744);
-    this.AfF = findViewById(2131302474);
-    this.AfG = findViewById(2131302464);
-    this.AeO = findViewById(2131307019);
-    this.AeP = ((ImageView)findViewById(2131307018));
-    this.AeQ = ((TextView)findViewById(2131307017));
-    this.AfH = findViewById(2131305131);
-    this.AcL = ((ImageView)findViewById(2131305130));
-    this.tvx = ((TextView)findViewById(2131305134));
-    this.Afc = findViewById(2131305129);
-    this.AfF.setOnClickListener(this.Aez);
-    this.AeO.setOnClickListener(this.AeB);
-    this.AfH.setOnClickListener(this.AeD);
-    this.AeN.setOnClickListener(this.AeA);
+    this.Bwz = findViewById(2131304744);
+    this.Bxr = findViewById(2131302474);
+    this.Bxs = findViewById(2131302464);
+    this.BwA = findViewById(2131307019);
+    this.BwB = ((ImageView)findViewById(2131307018));
+    this.BwC = ((TextView)findViewById(2131307017));
+    this.Bxt = findViewById(2131305131);
+    this.Buw = ((ImageView)findViewById(2131305130));
+    this.uuM = ((TextView)findViewById(2131305134));
+    this.BwO = findViewById(2131305129);
+    this.Bxr.setOnClickListener(this.Bwl);
+    this.BwA.setOnClickListener(this.Bwn);
+    this.Bxt.setOnClickListener(this.Bwp);
+    this.Bwz.setOnClickListener(this.Bwm);
     AppMethodBeat.o(126400);
+  }
+  
+  public final void updateView()
+  {
+    AppMethodBeat.i(126402);
+    super.updateView();
+    i.e locale = c(this.Brz);
+    ViewGroup.LayoutParams localLayoutParams = this.oSB.getLayoutParams();
+    if (locale == i.e.ESO)
+    {
+      localLayoutParams.width = com.tencent.mm.cc.a.ip(aj.getContext());
+      localLayoutParams.height = ((int)(localLayoutParams.width / (this.Brz.thumbWidth / this.Brz.thumbHeight)));
+      this.oSB.setLayoutParams(localLayoutParams);
+      if ((this.BwO != null) && (this.uuM != null) && (this.Buw != null))
+      {
+        this.BwO.setVisibility(8);
+        this.uuM.setVisibility(8);
+        this.Buw.setVisibility(8);
+        if (!bt.isNullOrNil(this.Brz.source))
+        {
+          this.uuM.setText(this.Brz.source);
+          this.uuM.setVisibility(0);
+          if (!bt.isNullOrNil(this.Brz.lox)) {
+            this.BwO.setVisibility(0);
+          }
+          if (bt.isNullOrNil(this.Brz.HCz)) {
+            break label275;
+          }
+          q.aIJ().a(this.Brz.HCz, this.Buw, d.BrQ);
+          label216:
+          this.Buw.setVisibility(0);
+        }
+      }
+      if (!this.BtO.epG()) {
+        break label288;
+      }
+      this.Bxs.setVisibility(0);
+      this.Bxr.setVisibility(0);
+    }
+    for (;;)
+    {
+      eqG();
+      AppMethodBeat.o(126402);
+      return;
+      localLayoutParams.width = -1;
+      localLayoutParams.height = -1;
+      break;
+      label275:
+      this.Buw.setImageResource(2131231875);
+      break label216;
+      label288:
+      this.Bxs.setVisibility(8);
+      this.Bxr.setVisibility(8);
+    }
   }
   
   public final class a
@@ -178,9 +178,9 @@ public final class k
       super();
     }
     
-    public final void Rq(int paramInt) {}
+    public final void Ta(int paramInt) {}
     
-    public final int bG(float paramFloat)
+    public final int bJ(float paramFloat)
     {
       AppMethodBeat.i(126399);
       int i = getCurrentPosition();
@@ -188,7 +188,7 @@ public final class k
       return i;
     }
     
-    public final void bjl() {}
+    public final void bmX() {}
   }
 }
 

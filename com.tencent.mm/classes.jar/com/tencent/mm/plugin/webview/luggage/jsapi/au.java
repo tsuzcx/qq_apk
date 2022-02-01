@@ -1,32 +1,119 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Iterator;
+import java.util.LinkedList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class au
-  extends bo<f>
+  extends bq<s>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
-  
-  public final void b(a<f>.a parama)
+  private static void a(JSONObject paramJSONObject, LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(78610);
-    ac.i("MicroMsg.JsApiRecordVideo", "invoke");
-    k.a(parama, 1);
-    AppMethodBeat.o(78610);
+    AppMethodBeat.i(78607);
+    if (bt.hj(paramLinkedList))
+    {
+      AppMethodBeat.o(78607);
+      return;
+    }
+    paramLinkedList = paramLinkedList.iterator();
+    while (paramLinkedList.hasNext())
+    {
+      String str = (String)paramLinkedList.next();
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("download_id", -1);
+        localJSONObject.put("state", "default");
+        paramJSONObject.put(str, localJSONObject);
+      }
+      catch (Exception localException)
+      {
+        ad.e("MicroMsg.JsApiQueryDownloadTask", localException.getMessage());
+      }
+    }
+    AppMethodBeat.o(78607);
   }
   
-  public final int bYk()
+  public final void a(final Context paramContext, String paramString, final bq.a parama)
   {
-    return 0;
+    AppMethodBeat.i(78606);
+    ad.i("MicroMsg.JsApiQueryDownloadTask", "invokeInMM");
+    try
+    {
+      paramContext = new JSONObject(paramString);
+      a.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(78605);
+          Object localObject = paramContext.optJSONArray("appIdArray");
+          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+          {
+            au.b((JSONArray)localObject, parama);
+            AppMethodBeat.o(78605);
+            return;
+          }
+          long l = paramContext.optLong("download_id", -1L);
+          localObject = paramContext.optString("appid");
+          FileDownloadTaskInfo localFileDownloadTaskInfo;
+          if (l > 0L)
+          {
+            localFileDownloadTaskInfo = f.ccl().tS(l);
+            localObject = localFileDownloadTaskInfo;
+            if (localFileDownloadTaskInfo == null) {
+              localObject = new FileDownloadTaskInfo();
+            }
+            au.b((FileDownloadTaskInfo)localObject, parama);
+            AppMethodBeat.o(78605);
+            return;
+          }
+          if (!bt.isNullOrNil((String)localObject))
+          {
+            localFileDownloadTaskInfo = f.ccl().aai((String)localObject);
+            localObject = localFileDownloadTaskInfo;
+            if (localFileDownloadTaskInfo == null) {
+              localObject = new FileDownloadTaskInfo();
+            }
+            au.b((FileDownloadTaskInfo)localObject, parama);
+            AppMethodBeat.o(78605);
+            return;
+          }
+          parama.f("fail", null);
+          AppMethodBeat.o(78605);
+        }
+      });
+      AppMethodBeat.o(78606);
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      ad.e("MicroMsg.JsApiQueryDownloadTask", "paras data error: " + paramContext.getMessage());
+      parama.f("fail", null);
+      AppMethodBeat.o(78606);
+    }
+  }
+  
+  public final void b(b<s>.a paramb) {}
+  
+  public final int ccO()
+  {
+    return 1;
   }
   
   public final String name()
   {
-    return "recordVideo";
+    return "queryDownloadTask";
   }
 }
 

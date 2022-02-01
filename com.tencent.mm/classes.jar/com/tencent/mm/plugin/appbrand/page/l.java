@@ -13,19 +13,19 @@ public class l
   private static final int CTRL_INDEX = 49;
   private static final String NAME = "onAppEnterBackground";
   
-  public final void ak(AppBrandRuntime paramAppBrandRuntime)
+  public final void ae(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(134999);
     HashMap localHashMap = new HashMap(1);
-    g.d locald = g.Hg(paramAppBrandRuntime.mAppId);
+    g.d locald = g.Kv(paramAppBrandRuntime.mAppId);
     String str = "hide";
-    switch (1.jrQ[locald.ordinal()])
+    switch (1.jLK[locald.ordinal()])
     {
     }
     for (;;)
     {
       localHashMap.put("mode", str);
-      A(localHashMap).g(paramAppBrandRuntime.CX()).beN();
+      A(localHashMap).g(paramAppBrandRuntime.Ew()).bir();
       AppMethodBeat.o(134999);
       return;
       str = "close";
@@ -42,7 +42,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.l
  * JD-Core Version:    0.7.0.1
  */

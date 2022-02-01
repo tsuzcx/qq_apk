@@ -10,15 +10,15 @@ public final class f
   {
     AppMethodBeat.i(136780);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioVariableConvertProcess", "AudioVariableConvertProcess src:%s, srcSampleRate:%d, srcChannels:%d, srcBitDepth:%d, desSampleRate:%d, desChannels:%d, desBitDepth:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6) });
-    this.cRq = paramString;
-    this.cRr = a.fA(paramString);
-    b.MP();
+    this.dcG = paramString;
+    this.dcH = a.gv(paramString);
+    b.Oy();
     int i;
     if (paramInt4 <= 0)
     {
       i = 0;
       if (i != 0) {
-        this.cRk = paramInt4;
+        this.dcA = paramInt4;
       }
       if (paramInt5 > 0) {
         break label169;
@@ -26,7 +26,7 @@ public final class f
       i = 0;
       label118:
       if (i != 0) {
-        this.cRl = paramInt5;
+        this.dcB = paramInt5;
       }
       if (paramInt4 > 0) {
         break label175;
@@ -37,9 +37,9 @@ public final class f
     for (paramInt4 = j;; paramInt4 = 1)
     {
       if (paramInt4 != 0) {
-        this.cRm = paramInt6;
+        this.dcC = paramInt6;
       }
-      F(paramInt1, paramInt2, paramInt3);
+      G(paramInt1, paramInt2, paramInt3);
       AppMethodBeat.o(136780);
       return;
       i = 1;

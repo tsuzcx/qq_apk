@@ -2,9 +2,9 @@ package com.tencent.mm.hellhoundlib.a;
 
 public abstract interface c
 {
-  public abstract void b(String paramString1, String paramString2, String paramString3, Object paramObject, Object[] paramArrayOfObject);
+  public abstract void a(String paramString1, String paramString2, String paramString3, Object paramObject1, Object paramObject2);
   
-  public abstract void f(String paramString, Object paramObject);
+  public abstract void a(String paramString1, String paramString2, String paramString3, Object paramObject, Object[] paramArrayOfObject);
 }
 
 

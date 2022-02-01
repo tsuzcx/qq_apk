@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.expt.hellhound.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dah;
+import com.tencent.mm.protocal.protobuf.dfu;
 
 public final class c
 {
   public int position;
-  public dah qkB;
+  public dfu qTx;
   
-  final boolean Cm(int paramInt)
+  final boolean CZ(int paramInt)
   {
-    AppMethodBeat.i(195217);
-    int j = this.qkB.xJx + this.qkB.rKm;
+    AppMethodBeat.i(210364);
+    int j = this.qTx.yYM + this.qTx.sFm;
     int i = j;
     if (paramInt != 0)
     {
       i = j;
-      if (this.qkB.y == 0)
+      if (this.qTx.y == 0)
       {
         i = j;
         if (this.position == 0) {
@@ -24,46 +24,46 @@ public final class c
         }
       }
     }
-    paramInt = this.qkB.kWC - this.qkB.FJy;
-    j = Math.max(this.qkB.y, i);
-    int k = this.qkB.y + this.qkB.height;
+    paramInt = this.qTx.ltB - this.qTx.Hug;
+    j = Math.max(this.qTx.y, i);
+    int k = this.qTx.y + this.qTx.height;
     int m = Math.min(k, paramInt);
-    if (this.qkB.y >= paramInt)
+    if (this.qTx.y >= paramInt)
     {
-      AppMethodBeat.o(195217);
+      AppMethodBeat.o(210364);
       return false;
     }
     if (k <= i)
     {
-      AppMethodBeat.o(195217);
+      AppMethodBeat.o(210364);
       return false;
     }
-    if ((this.qkB.y >= i) && (k <= paramInt))
+    if ((this.qTx.y >= i) && (k <= paramInt))
     {
-      AppMethodBeat.o(195217);
+      AppMethodBeat.o(210364);
       return true;
     }
     j = m - j;
-    if (j / this.qkB.height >= 0.9F)
+    if (j / this.qTx.height >= 0.9F)
     {
-      AppMethodBeat.o(195217);
+      AppMethodBeat.o(210364);
       return true;
     }
     if (j / (paramInt - i) >= 0.5F)
     {
-      AppMethodBeat.o(195217);
+      AppMethodBeat.o(210364);
       return true;
     }
-    AppMethodBeat.o(195217);
+    AppMethodBeat.o(210364);
     return false;
   }
   
   public final String toString()
   {
-    if (this.qkB.feedId == null) {
+    if (this.qTx.feedId == null) {
       return "NULL";
     }
-    return this.qkB.feedId;
+    return this.qTx.feedId;
   }
 }
 

@@ -16,7 +16,7 @@ public final class HeaderGridView$b
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141651);
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.HuS.getMeasuredWidth() - this.HuS.getPaddingLeft() - this.HuS.getPaddingRight(), 1073741824), paramInt2);
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.JiI.getMeasuredWidth() - this.JiI.getPaddingLeft() - this.JiI.getPaddingRight(), 1073741824), paramInt2);
     AppMethodBeat.o(141651);
   }
 }

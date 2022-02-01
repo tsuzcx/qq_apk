@@ -13,7 +13,7 @@ import android.view.ViewGroup.LayoutParams;
 
 public abstract class d
 {
-  static int Wt = -1;
+  static int Yi = -1;
   
   public static d a(Activity paramActivity, c paramc)
   {
@@ -29,17 +29,17 @@ public abstract class d
   
   public abstract <T extends View> T findViewById(int paramInt);
   
-  public abstract void gb();
-  
-  public abstract void gd();
-  
-  public abstract boolean ge();
-  
   public abstract a.a getDrawerToggleDelegate();
   
   public abstract MenuInflater getMenuInflater();
   
   public abstract ActionBar getSupportActionBar();
+  
+  public abstract void gt();
+  
+  public abstract void gu();
+  
+  public abstract boolean gv();
   
   public abstract void invalidateOptionsMenu();
   

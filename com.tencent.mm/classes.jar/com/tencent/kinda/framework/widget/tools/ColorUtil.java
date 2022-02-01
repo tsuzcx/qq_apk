@@ -4,12 +4,12 @@ import android.util.Pair;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.ui.al;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -92,7 +92,7 @@ public class ColorUtil
       AppMethodBeat.o(19326);
       return paramDynamicColor;
     }
-    int i = ((b)g.ab(b.class)).a(b.a.pTw, 1);
+    int i = ((b)g.ab(b.class)).a(b.a.qyc, 1);
     if (i == 1) {
       switch (1.$SwitchMap$com$tencent$kinda$framework$widget$tools$ColorUtil$MMViewType[paramMMViewType.ordinal()])
       {
@@ -106,8 +106,8 @@ public class ColorUtil
     }
     for (;;)
     {
-      if (h.DEBUG) {
-        ac.i("base_MMKView", "compatKindaDarkMode() swt:%s. (mNormalColor:%s mDarkmodeColor:%s)", new Object[] { Integer.valueOf(i), Long.toHexString(absColor(paramDynamicColor.mNormalColor)), Long.toHexString(absColor(paramDynamicColor.mDarkmodeColor)) });
+      if (i.DEBUG) {
+        ad.i("base_MMKView", "compatKindaDarkMode() swt:%s. (mNormalColor:%s mDarkmodeColor:%s)", new Object[] { Integer.valueOf(i), Long.toHexString(absColor(paramDynamicColor.mNormalColor)), Long.toHexString(absColor(paramDynamicColor.mDarkmodeColor)) });
       }
       AppMethodBeat.o(19326);
       return paramDynamicColor;
@@ -128,7 +128,7 @@ public class ColorUtil
   private static boolean compatKindaDarkModeDefaultColorSw()
   {
     AppMethodBeat.i(19327);
-    if (((b)g.ab(b.class)).a(b.a.pTy, 1) == 1)
+    if (((b)g.ab(b.class)).a(b.a.qye, 1) == 1)
     {
       AppMethodBeat.o(19327);
       return true;
@@ -160,16 +160,16 @@ public class ColorUtil
     AppMethodBeat.i(19325);
     if (paramDynamicColor == null)
     {
-      if (h.DEBUG) {
-        ac.d("base_MMKView", "getColorByMode() dynamicColor == null");
+      if (i.DEBUG) {
+        ad.d("base_MMKView", "getColorByMode() dynamicColor == null");
       }
       AppMethodBeat.o(19325);
       return 0L;
     }
-    if (h.DEBUG) {
-      ac.d("base_MMKView", "getColorByMode(mNormalColor:%s mDarkmodeColor:%s) %s", new Object[] { Long.toHexString(absColor(paramDynamicColor.mNormalColor)), Long.toHexString(absColor(paramDynamicColor.mDarkmodeColor)), bs.eWi() });
+    if (i.DEBUG) {
+      ad.d("base_MMKView", "getColorByMode(mNormalColor:%s mDarkmodeColor:%s) %s", new Object[] { Long.toHexString(absColor(paramDynamicColor.mNormalColor)), Long.toHexString(absColor(paramDynamicColor.mDarkmodeColor)), bt.flS() });
     }
-    if (aj.DT())
+    if (al.isDarkMode())
     {
       l = compatKindaDarkMode(paramDynamicColor, paramMMViewType).getDarkmodeColor();
       AppMethodBeat.o(19325);
@@ -184,9 +184,9 @@ public class ColorUtil
   {
     AppMethodBeat.i(162116);
     long l = getColorByMode(paramDynamicColor, MMViewType.NONE);
-    if ((paramBoolean) && (l == -1L) && (aj.DT()))
+    if ((paramBoolean) && (l == -1L) && (al.isDarkMode()))
     {
-      l = aj.gy((int)paramDynamicColor.mNormalColor);
+      l = al.gD((int)paramDynamicColor.mNormalColor);
       AppMethodBeat.o(162116);
       return l;
     }
@@ -210,13 +210,13 @@ public class ColorUtil
     AppMethodBeat.i(19322);
     if (paramDynamicColor == null)
     {
-      if (h.DEBUG) {
-        ac.d("base_MMKView", "getColorByModeNoCompat() dynamicColor == null");
+      if (i.DEBUG) {
+        ad.d("base_MMKView", "getColorByModeNoCompat() dynamicColor == null");
       }
       AppMethodBeat.o(19322);
       return 0L;
     }
-    if (aj.DT())
+    if (al.isDarkMode())
     {
       l = paramDynamicColor.getDarkmodeColor();
       AppMethodBeat.o(19322);
@@ -240,7 +240,7 @@ public class ColorUtil
   public static boolean ifCompatKindaDarkModeDefaultColor()
   {
     AppMethodBeat.i(19328);
-    if ((aj.DT()) && (compatKindaDarkModeDefaultColorSw()))
+    if ((al.isDarkMode()) && (compatKindaDarkModeDefaultColorSw()))
     {
       AppMethodBeat.o(19328);
       return true;

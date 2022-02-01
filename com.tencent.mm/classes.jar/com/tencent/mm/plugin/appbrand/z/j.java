@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.z;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class j
 {
@@ -27,7 +27,7 @@ public final class j
     }
     try
     {
-      boolean bool = bs.isEqual(paramT1.toByteArray(), paramT2.toByteArray());
+      boolean bool = bt.isEqual(paramT1.toByteArray(), paramT2.toByteArray());
       AppMethodBeat.o(146131);
       return bool;
     }

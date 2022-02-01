@@ -7,12 +7,12 @@ import com.tencent.mm.ipcinvoker.extension.f;
 public final class a
   extends com.tencent.mm.ipcinvoker.extension.event.a<a>
 {
-  private static final a jOM;
+  private static final a kiX;
   
   static
   {
     AppMethodBeat.i(121570);
-    jOM = new a();
+    kiX = new a();
     AppMethodBeat.o(121570);
   }
   

@@ -4,8 +4,8 @@ import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.MMProtocalJni;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tenpay.android.wechat.PayuSecureEncrypt;
 
 public final class a
@@ -16,7 +16,7 @@ public final class a
     this.mEncrptType = paramInt;
   }
   
-  private String g(boolean paramBoolean, String paramString1, String paramString2)
+  private String h(boolean paramBoolean, String paramString1, String paramString2)
   {
     AppMethodBeat.i(72651);
     int i = this.mEncrptType;
@@ -38,7 +38,7 @@ public final class a
       if (!paramBoolean) {
         break label233;
       }
-      localStringBuilder.append(ah.dg(paramString1));
+      localStringBuilder.append(ai.ee(paramString1));
     }
     for (;;)
     {
@@ -48,7 +48,7 @@ public final class a
         paramString2 = localStringBuilder.toString().getBytes();
         localObject = new PByteArray();
         if (!MMProtocalJni.rsaPublicEncrypt(paramString2, (PByteArray)localObject, getRsaEKey().getBytes("UTF-8"), getRsaNKey().getBytes("UTF-8"))) {
-          ac.e("MicroMsg.WxPayuSecureEncrypt", "MMProtocalJni encrypt failed!");
+          ad.e("MicroMsg.WxPayuSecureEncrypt", "MMProtocalJni encrypt failed!");
         }
         paramString2 = "01" + Base64.encodeToString(((PByteArray)localObject).value, 2);
         paramString1 = paramString2;
@@ -57,7 +57,7 @@ public final class a
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.WxPayuSecureEncrypt", paramString2, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.WxPayuSecureEncrypt", paramString2, "", new Object[0]);
         }
       }
       AppMethodBeat.o(72651);
@@ -72,7 +72,7 @@ public final class a
     }
   }
   
-  private String mg(String paramString1, String paramString2)
+  private String mE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72650);
     String str = paramString1;
@@ -91,11 +91,11 @@ public final class a
     case -20: 
     case -10: 
     case 60: 
-      paramString1 = g(true, str, paramString2);
+      paramString1 = h(true, str, paramString2);
       AppMethodBeat.o(72650);
       return paramString1;
     }
-    paramString1 = g(false, str, paramString2);
+    paramString1 = h(false, str, paramString2);
     AppMethodBeat.o(72650);
     return paramString1;
   }
@@ -103,7 +103,7 @@ public final class a
   public final String desedeEncode(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72647);
-    paramString1 = mg(paramString1, paramString2);
+    paramString1 = mE(paramString1, paramString2);
     AppMethodBeat.o(72647);
     return paramString1;
   }
@@ -111,7 +111,7 @@ public final class a
   public final String desedeVerifyCode(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72648);
-    paramString1 = mg(paramString1, paramString2);
+    paramString1 = mE(paramString1, paramString2);
     AppMethodBeat.o(72648);
     return paramString1;
   }
@@ -119,7 +119,7 @@ public final class a
   public final String encryptPasswd(boolean paramBoolean, String paramString1, String paramString2)
   {
     AppMethodBeat.i(72649);
-    paramString1 = mg(paramString1, paramString2);
+    paramString1 = mE(paramString1, paramString2);
     AppMethodBeat.o(72649);
     return paramString1;
   }

@@ -1,10 +1,10 @@
 package com.tencent.mm.modelvoice;
 
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bu;
 
 public abstract interface c
 {
-  public abstract void V(bo parambo);
+  public abstract void Y(bu parambu);
 }
 
 

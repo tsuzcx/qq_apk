@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.appbrand.game.c;
 import com.tencent.magicbrush.a.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class b
 {
-  private static final ClassLoader jQQ;
-  private static boolean jQR;
+  private static final ClassLoader klf;
+  private static boolean klg;
   
   static
   {
     AppMethodBeat.i(45112);
-    jQQ = b.class.getClassLoader();
-    jQR = false;
+    klf = b.class.getClassLoader();
+    klg = false;
     AppMethodBeat.o(45112);
   }
   
-  public static void AY()
+  public static void Cx()
   {
     AppMethodBeat.i(45109);
     com.tencent.magicbrush.a.b.a(new b.a()
@@ -27,7 +27,7 @@ public class b
       public final void loadLibrary(String paramAnonymousString)
       {
         AppMethodBeat.i(45105);
-        b.Lx(paramAnonymousString);
+        b.OR(paramAnonymousString);
         AppMethodBeat.o(45105);
       }
     });
@@ -38,16 +38,16 @@ public class b
         AppMethodBeat.i(45106);
         try
         {
-          ac.i("MicroMsg.WAGame.MBLoadDelegateRegistryWC", "loadLibrary libName:%s", new Object[] { paramAnonymousString });
-          b.bdF();
-          j.sC(paramAnonymousString);
+          ad.i("MicroMsg.WAGame.MBLoadDelegateRegistryWC", "loadLibrary libName:%s", new Object[] { paramAnonymousString });
+          b.bhj();
+          j.vr(paramAnonymousString);
           AppMethodBeat.o(45106);
           return;
         }
         catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
         {
-          ac.printErrStackTrace("MicroMsg.WAGame.MBLoadDelegateRegistryWC", localUnsatisfiedLinkError, "hy: link %s error!!", new Object[] { paramAnonymousString });
-          com.tencent.mm.plugin.appbrand.game.h.b.dp(ai.getContext());
+          ad.printErrStackTrace("MicroMsg.WAGame.MBLoadDelegateRegistryWC", localUnsatisfiedLinkError, "hy: link %s error!!", new Object[] { paramAnonymousString });
+          com.tencent.mm.plugin.appbrand.game.h.b.dn(aj.getContext());
           AppMethodBeat.o(45106);
         }
       }
@@ -59,16 +59,16 @@ public class b
         AppMethodBeat.i(45107);
         try
         {
-          ac.i("MicroMsg.WAGame.MBLoadDelegateRegistryWC", "loadLibrary libName:%s", new Object[] { paramAnonymousString });
-          b.bdF();
-          j.sC(paramAnonymousString);
+          ad.i("MicroMsg.WAGame.MBLoadDelegateRegistryWC", "loadLibrary libName:%s", new Object[] { paramAnonymousString });
+          b.bhj();
+          j.vr(paramAnonymousString);
           AppMethodBeat.o(45107);
           return;
         }
         catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
         {
-          ac.printErrStackTrace("MicroMsg.WAGame.MBLoadDelegateRegistryWC", localUnsatisfiedLinkError, "hy: link %s error!!", new Object[] { paramAnonymousString });
-          com.tencent.mm.plugin.appbrand.game.h.b.dp(ai.getContext());
+          ad.printErrStackTrace("MicroMsg.WAGame.MBLoadDelegateRegistryWC", localUnsatisfiedLinkError, "hy: link %s error!!", new Object[] { paramAnonymousString });
+          com.tencent.mm.plugin.appbrand.game.h.b.dn(aj.getContext());
           AppMethodBeat.o(45107);
         }
       }
@@ -80,16 +80,16 @@ public class b
         AppMethodBeat.i(45108);
         try
         {
-          ac.i("MicroMsg.WAGame.MBLoadDelegateRegistryWC", "loadLibrary libName:%s", new Object[] { paramAnonymousString });
-          b.bdF();
-          j.sC(paramAnonymousString);
+          ad.i("MicroMsg.WAGame.MBLoadDelegateRegistryWC", "loadLibrary libName:%s", new Object[] { paramAnonymousString });
+          b.bhj();
+          j.vr(paramAnonymousString);
           AppMethodBeat.o(45108);
           return;
         }
         catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
         {
-          ac.printErrStackTrace("MicroMsg.WAGame.MBLoadDelegateRegistryWC", localUnsatisfiedLinkError, "hy: link %s error!!", new Object[] { paramAnonymousString });
-          com.tencent.mm.plugin.appbrand.game.h.b.dp(ai.getContext());
+          ad.printErrStackTrace("MicroMsg.WAGame.MBLoadDelegateRegistryWC", localUnsatisfiedLinkError, "hy: link %s error!!", new Object[] { paramAnonymousString });
+          com.tencent.mm.plugin.appbrand.game.h.b.dn(aj.getContext());
           AppMethodBeat.o(45108);
         }
       }
@@ -98,16 +98,16 @@ public class b
   }
   
   /* Error */
-  private static com.tencent.mm.vfs.e cP(String paramString1, String paramString2)
+  private static com.tencent.mm.vfs.e cR(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 215
     //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 181	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   5: invokestatic 181	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   8: ldc 92
     //   10: iconst_0
     //   11: invokevirtual 221	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   14: invokestatic 225	com/tencent/mm/vfs/e:U	(Ljava/io/File;)Lcom/tencent/mm/vfs/e;
+    //   14: invokestatic 225	com/tencent/mm/vfs/e:X	(Ljava/io/File;)Lcom/tencent/mm/vfs/e;
     //   17: astore_2
     //   18: aload_2
     //   19: invokevirtual 228	com/tencent/mm/vfs/e:exists	()Z
@@ -138,7 +138,7 @@ public class b
     //   69: new 250	java/io/BufferedOutputStream
     //   72: dup
     //   73: aload_0
-    //   74: invokestatic 254	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   74: invokestatic 254	com/tencent/mm/vfs/i:aj	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
     //   77: invokespecial 257	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   80: astore_1
     //   81: aload_2
@@ -146,9 +146,9 @@ public class b
     //   83: invokestatic 263	org/apache/commons/a/e:copy	(Ljava/io/InputStream;Ljava/io/OutputStream;)I
     //   86: pop
     //   87: aload_2
-    //   88: invokestatic 266	org/apache/commons/a/e:W	(Ljava/io/InputStream;)V
+    //   88: invokestatic 265	org/apache/commons/a/e:Z	(Ljava/io/InputStream;)V
     //   91: aload_1
-    //   92: invokestatic 269	org/apache/commons/a/e:e	(Ljava/io/OutputStream;)V
+    //   92: invokestatic 268	org/apache/commons/a/e:e	(Ljava/io/OutputStream;)V
     //   95: ldc 215
     //   97: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   100: aload_0
@@ -159,9 +159,9 @@ public class b
     //   105: aconst_null
     //   106: astore_2
     //   107: aload_2
-    //   108: invokestatic 266	org/apache/commons/a/e:W	(Ljava/io/InputStream;)V
+    //   108: invokestatic 265	org/apache/commons/a/e:Z	(Ljava/io/InputStream;)V
     //   111: aload_1
-    //   112: invokestatic 269	org/apache/commons/a/e:e	(Ljava/io/OutputStream;)V
+    //   112: invokestatic 268	org/apache/commons/a/e:e	(Ljava/io/OutputStream;)V
     //   115: ldc 215
     //   117: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   120: aload_0
@@ -186,7 +186,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.c.b
  * JD-Core Version:    0.7.0.1
  */

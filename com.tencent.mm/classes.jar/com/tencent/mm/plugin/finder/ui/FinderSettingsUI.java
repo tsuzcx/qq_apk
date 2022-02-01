@@ -1,62 +1,92 @@
 package com.tencent.mm.plugin.finder.ui;
 
 import android.app.Activity;
-import android.arch.lifecycle.ViewModelProvider;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.cgi.ag;
 import com.tencent.mm.plugin.finder.preload.MediaPreloadCore;
-import com.tencent.mm.plugin.finder.preload.MediaPreloadCore.a;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.FinderItem.a;
-import com.tencent.mm.plugin.finder.storage.data.i.a;
-import com.tencent.mm.plugin.finder.upload.action.a.a;
-import com.tencent.mm.plugin.finder.utils.p;
-import com.tencent.mm.plugin.finder.viewmodel.FinderHomeTabStateVM;
-import com.tencent.mm.plugin.finder.viewmodel.FinderStreamRefreshPreload;
-import com.tencent.mm.plugin.finder.viewmodel.FinderStreamRefreshPreload.b;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderHotRelatedUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderHotRelatedUIC.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.ui.base.h.d;
+import com.tencent.mm.plugin.finder.storage.config.c;
+import com.tencent.mm.plugin.finder.storage.config.d;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.base.t;
-import com.tencent.mm.ui.widget.TouchMediaPreviewLayout;
-import com.tencent.mm.ui.widget.TouchMediaPreviewLayout.a;
-import d.g.b.v.a;
+import com.tencent.mm.ui.base.preference.h;
+import com.tencent.mm.ui.tools.r;
+import com.tencent.mm.ui.tools.r.b;
+import d.a.j;
+import d.g.b.p;
 import d.l;
 import d.v;
-import d.y;
-import java.util.LinkedList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/FinderSettingsUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "screen", "Lcom/tencent/mm/ui/base/preference/MMPreferenceAdapter;", "getResourceId", "", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPreferenceTreeClick", "", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderSettingsUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "screen", "Lcom/tencent/mm/ui/base/preference/MMPreferenceAdapter;", "getResourceId", "", "handleAddPreference", "", "list", "", "Lcom/tencent/mm/plugin/finder/storage/config/IFinderFakeConfig;", "importConfig", "initView", "intiViewByConfigArray", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPreferenceTreeClick", "", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "Companion", "plugin-finder_release"})
 public final class FinderSettingsUI
   extends MMPreference
 {
-  final String TAG;
-  private com.tencent.mm.ui.base.preference.h rLF;
+  private static List<? extends d> sHg;
+  public static final a sHh;
+  private final String TAG;
+  private h sHf;
+  
+  static
+  {
+    AppMethodBeat.i(167667);
+    sHh = new a((byte)0);
+    AppMethodBeat.o(167667);
+  }
   
   public FinderSettingsUI()
   {
     AppMethodBeat.i(167666);
     this.TAG = "MicroMsg.FinderDebugSettingsUI";
     AppMethodBeat.o(167666);
+  }
+  
+  private final void jA(List<? extends d> paramList)
+  {
+    AppMethodBeat.i(221550);
+    if (paramList != null)
+    {
+      paramList = ((Iterable)paramList).iterator();
+      while (paramList.hasNext())
+      {
+        d locald = (d)paramList.next();
+        if ((locald instanceof com.tencent.mm.plugin.finder.storage.config.a))
+        {
+          h localh = this.sHf;
+          if (localh != null)
+          {
+            PreferenceTitleCategory localPreferenceTitleCategory = new PreferenceTitleCategory((Context)this);
+            localPreferenceTitleCategory.setTitle((CharSequence)locald.title);
+            localh.b((Preference)localPreferenceTitleCategory);
+          }
+        }
+        else if ((locald instanceof c))
+        {
+          new f.e((MMPreference)this, locald);
+        }
+        else if ((locald instanceof com.tencent.mm.plugin.finder.storage.config.item.integer.a))
+        {
+          new f.d((MMPreference)this, locald);
+        }
+        else if ((locald instanceof com.tencent.mm.plugin.finder.storage.config.item.longtype.a))
+        {
+          new f.d((MMPreference)this, locald);
+        }
+        else if ((locald instanceof com.tencent.mm.plugin.finder.storage.config.item.booleantype.a))
+        {
+          new f.c((MMPreference)this, locald);
+        }
+      }
+      AppMethodBeat.o(221550);
+      return;
+    }
+    AppMethodBeat.o(221550);
   }
   
   public final int getResourceId()
@@ -66,119 +96,27 @@ public final class FinderSettingsUI
   
   public final void initView()
   {
-    AppMethodBeat.i(203416);
-    Object localObject1 = getPreferenceScreen();
-    if (localObject1 == null)
+    AppMethodBeat.i(204185);
+    Object localObject = getPreferenceScreen();
+    if (localObject == null)
     {
-      localObject1 = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.MMPreferenceAdapter");
-      AppMethodBeat.o(203416);
-      throw ((Throwable)localObject1);
+      localObject = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.MMPreferenceAdapter");
+      AppMethodBeat.o(204185);
+      throw ((Throwable)localObject);
     }
-    this.rLF = ((com.tencent.mm.ui.base.preference.h)localObject1);
-    localObject1 = this.rLF;
-    if (localObject1 != null)
-    {
-      localObject2 = new PreferenceTitleCategory((Context)this);
-      ((PreferenceTitleCategory)localObject2).setTitle((CharSequence)"新版本");
-      localObject3 = y.KTp;
-      ((com.tencent.mm.ui.base.preference.h)localObject1).b((Preference)localObject2);
-      localObject1 = y.KTp;
+    this.sHf = ((h)localObject);
+    if (this.sHf == null) {
+      p.gfZ();
     }
-    new c((MMPreference)this, "二级评论是否展开", (i)new FinderSettingsUI.k());
-    localObject1 = (MMPreference)this;
-    Object localObject2 = ah.a.GVe;
-    Object localObject3 = (d.g.a.a)FinderSettingsUI.v.rLJ;
-    new d((MMPreference)localObject1, "实名点赞", (ah.a)localObject2, new String[] { "默认", "实名点赞", "非实名点赞" }, new int[] { -1, 1, 2 }, (d.g.a.a)localObject3);
-    new c((MMPreference)this, "评论全屏方案", (i)new FinderSettingsUI.af());
-    new d((MMPreference)this, "圈外分享模式(仅预览)", ah.a.GVD, new String[] { "默认", "允许nickname", "过滤nickname" }, new int[] { -1, 1, 2 });
-    new d((MMPreference)this, "附近tab使用瀑布流/卡片流开关", ah.a.GVW, new String[] { "瀑布流", "卡片流", "系统默认" }, new int[] { 1, 2, -1 });
-    localObject1 = this.rLF;
-    if (localObject1 != null)
+    jA(sHg);
+    localObject = this.sHf;
+    if (localObject != null)
     {
-      localObject2 = new PreferenceTitleCategory((Context)this);
-      ((PreferenceTitleCategory)localObject2).setTitle((CharSequence)"体验相关");
-      localObject3 = y.KTp;
-      ((com.tencent.mm.ui.base.preference.h)localObject1).b((Preference)localObject2);
-      localObject1 = y.KTp;
-    }
-    new c((MMPreference)this, "关注/点赞折叠改为3条就出查看更多", (i)new FinderSettingsUI.aj());
-    new c((MMPreference)this, "开启视频预加载预览View", (i)new ak());
-    new d((MMPreference)this, "是否开启手势切Tab", ah.a.GVc, new String[] { "关闭(-1)", "默认(0)", "打开(1)" }, new int[] { -1, 0, 1 });
-    new d((MMPreference)this, "切换单Tab", ah.a.GVd, new String[] { "默认", "切换单Tab", "切换多Tab" }, new int[] { 0, 2, 1 });
-    new c((MMPreference)this, "显示视频播放基线", (i)new al());
-    localObject1 = this.rLF;
-    if (localObject1 != null)
-    {
-      localObject2 = new PreferenceTitleCategory((Context)this);
-      ((PreferenceTitleCategory)localObject2).setTitle((CharSequence)"测试");
-      localObject3 = y.KTp;
-      ((com.tencent.mm.ui.base.preference.h)localObject1).b((Preference)localObject2);
-      localObject1 = y.KTp;
-    }
-    new d((MMPreference)this, "VideoView组件播放模式", ah.a.GVp, new String[] { "SINGLE(1)", "MULTI_INSTANCE_WITHOUT_REUSE(2)", "MULTI_INSTANCE_AND_REUSE(0)", "LAZY(3)", "DEFAULT(2)" }, new int[] { 1, 2, 0, 3, 2 });
-    new e((MMPreference)this, "重置最后退出TL时间为0", (j)new FinderSettingsUI.a());
-    new e((MMPreference)this, "评论字数限制10,Media字数15,纯文本字数20", (j)new FinderSettingsUI.b());
-    new e((MMPreference)this, "最大话题数改为3个", (j)new FinderSettingsUI.c());
-    localObject1 = new v.a();
-    localObject2 = g.agR();
-    d.g.b.k.g(localObject2, "MMKernel.storage()");
-    ((v.a)localObject1).KUL = ((com.tencent.mm.kernel.e)localObject2).agA().getBoolean(ah.a.GUC, false);
-    new e((MMPreference)this, "假菊花Toast" + ((v.a)localObject1).KUL, (j)new d((v.a)localObject1));
-    new e((MMPreference)this, "话题最大长度改为10", (j)new FinderSettingsUI.e());
-    new e((MMPreference)this, "清理New红点配置", (j)new FinderSettingsUI.f());
-    new e((MMPreference)this, "本地配置是否展示NEW", (j)new FinderSettingsUI.g());
-    new c((MMPreference)this, "话题推荐打开", (i)new FinderSettingsUI.h());
-    new c((MMPreference)this, "自动触发正例反馈", (i)new i());
-    new c((MMPreference)this, "打开切换身份评论", (i)new FinderSettingsUI.j());
-    new e((MMPreference)this, "重置切换身份评论flag", (j)new FinderSettingsUI.l());
-    new c((MMPreference)this, "切换身份评论总是提示", (i)new FinderSettingsUI.m());
-    new c((MMPreference)this, "切换身份评论打开", (i)new FinderSettingsUI.n());
-    new e((MMPreference)this, "最大at数改为3个", (j)new FinderSettingsUI.o());
-    new e((MMPreference)this, "朋友推荐tab-话题推荐调试", (j)new p(this));
-    new c((MMPreference)this, "发表feed/评论点赞固定失败", (i)new FinderSettingsUI.q());
-    new e((MMPreference)this, "评论点赞重试间隔改为1s", (j)new r());
-    new e((MMPreference)this, "清除keybuf/账号数据", (j)new s());
-    new e((MMPreference)this, "清除图片视频所有缓存", (j)new t(this));
-    new e((MMPreference)this, "清空keybuf", (j)new u());
-    new d((MMPreference)this, "RecyclerView滑动速度", ah.a.GUx, new String[] { "默认(0.8)", "0.5倍", "0.6倍", "0.7倍", "0.8倍", "0.9倍", "1倍", "1.3倍" }, new int[] { 80, 50, 60, 70, 80, 90, 100, 130 });
-    new d((MMPreference)this, "loadmore假菊花时长", ah.a.GUy, new String[] { "默认(300)", "100", "200", "400", "500", "600", "700", "800", "1000", "3000" }, new int[] { 0, 100, 200, 400, 500, 600, 700, 800, 1000, 3000 });
-    new d((MMPreference)this, "refresh假菊花时长", ah.a.GUz, new String[] { "默认(500)", "100", "200", "400", "500", "600", "700", "800", "1000", "3000" }, new int[] { 0, 100, 200, 400, 500, 600, 700, 800, 1000, 3000 });
-    new d((MMPreference)this, "自动刷新缓存时间", ah.a.GUA, new String[] { "默认(5min)", "10s", "30s", "1min" }, new int[] { 0, 10000, 30000, 60000 });
-    new d((MMPreference)this, "预加载debug轮询时长", ah.a.GUB, new String[] { "默认(20min)", "5s", "10s", "1min" }, new int[] { 0, 5000, 10000, 60000 });
-    new e((MMPreference)this, "预加载debug config(1s)", (j)new w());
-    new e((MMPreference)this, "把自己改成非白名单用户", (j)new FinderSettingsUI.x());
-    new e((MMPreference)this, "把所有feed改为仅自己可见", (j)new y());
-    new e((MMPreference)this, "双击与展开教育/收藏红点重置", (j)new z());
-    new d((MMPreference)this, "红点不受配置时间限制", ah.a.GUw, new String[] { "默认", "无限制" }, new int[] { 1, 1000000000 });
-    new d((MMPreference)this, "后台合成", ah.a.GVU, new String[] { "X实验配置", "否", "是" }, new int[] { -1, 0, 1 });
-    new e((MMPreference)this, "发表相机红点重置", (j)new aa());
-    new d((MMPreference)this, "只看某个feed", ah.a.GVq, new String[] { "FINDER_FEED_PHOTO", "FINDER_FEED_VIDEO", "FINDER_FEED_MIX_MEDIA", "DEFAULT" }, new int[] { 2, 4, 8, -1 });
-    new e((MMPreference)this, "进入视频号Crash", (j)new FinderSettingsUI.ab());
-    new e((MMPreference)this, "清空通知lastBuffer", (j)new ac());
-    localObject1 = this.rLF;
-    if (localObject1 != null)
-    {
-      localObject2 = new PreferenceTitleCategory((Context)this);
-      ((PreferenceTitleCategory)localObject2).setTitle((CharSequence)"其他");
-      localObject3 = y.KTp;
-      ((com.tencent.mm.ui.base.preference.h)localObject1).b((Preference)localObject2);
-      localObject1 = y.KTp;
-    }
-    new c((MMPreference)this, "输出视频号DEBUG日志", (i)new FinderSettingsUI.ad());
-    new e((MMPreference)this, "清理首页文件缓存", (j)new ae());
-    new e((MMPreference)this, "查看Finder缓存大小", (j)new ag(this));
-    new e((MMPreference)this, "复制finder配置到剪贴板", (j)new ah());
-    new d((MMPreference)this, "个人中心用户状态", ah.a.GVV, new String[] { "无发表资格", "有发表资格但未创建账号", "账号处于正常状态", "账号被封禁", "账号审核中", "账号被禁言", "reset" }, new int[] { 1, 2, 3, 4, 5, 6, -1 });
-    new e((MMPreference)this, "重置首次获得发表权限标志", (j)new FinderSettingsUI.ai());
-    localObject1 = this.rLF;
-    if (localObject1 != null)
-    {
-      ((com.tencent.mm.ui.base.preference.h)localObject1).notifyDataSetChanged();
-      localObject1 = y.KTp;
-      AppMethodBeat.o(203416);
+      ((h)localObject).notifyDataSetChanged();
+      AppMethodBeat.o(204185);
       return;
     }
-    AppMethodBeat.o(203416);
+    AppMethodBeat.o(204185);
   }
   
   public final void onCreate(Bundle paramBundle)
@@ -186,22 +124,221 @@ public final class FinderSettingsUI
     AppMethodBeat.i(167662);
     super.onCreate(paramBundle);
     setMMTitle("视频号维修厂");
-    setBackBtn((MenuItem.OnMenuItemClickListener)new am(this));
-    initView();
-    AppMethodBeat.o(167662);
+    setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
+    paramBundle = (Collection)sHg;
+    if ((paramBundle == null) || (paramBundle.isEmpty())) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        paramBundle = (com.tencent.mm.plugin.finder.storage.config.b)new com.tencent.mm.plugin.finder.storage.config.a("新版本");
+        Object localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject1 = com.tencent.mm.plugin.finder.storage.b.eQo();
+        Object localObject2 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject2 = com.tencent.mm.plugin.finder.storage.b.cId();
+        Object localObject3 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject3 = com.tencent.mm.plugin.finder.storage.b.cIa();
+        Object localObject4 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject4 = com.tencent.mm.plugin.finder.storage.b.cIm();
+        Object localObject5 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject5 = com.tencent.mm.plugin.finder.storage.b.eQp();
+        Object localObject6 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject6 = com.tencent.mm.plugin.finder.storage.b.eQq();
+        Object localObject7 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject7 = com.tencent.mm.plugin.finder.storage.b.cIi();
+        Object localObject8 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject8 = com.tencent.mm.plugin.finder.storage.b.cIj();
+        Object localObject9 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject9 = com.tencent.mm.plugin.finder.storage.b.cGK();
+        Object localObject10 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject10 = com.tencent.mm.plugin.finder.storage.b.cGL();
+        Object localObject11 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject11 = com.tencent.mm.plugin.finder.storage.b.cGM();
+        Object localObject12 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject12 = com.tencent.mm.plugin.finder.storage.b.cHN();
+        Object localObject13 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject13 = com.tencent.mm.plugin.finder.storage.b.cIf();
+        Object localObject14 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject14 = com.tencent.mm.plugin.finder.storage.b.cGN();
+        Object localObject15 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject15 = com.tencent.mm.plugin.finder.storage.b.cHq();
+        Object localObject16 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject16 = com.tencent.mm.plugin.finder.storage.b.cGO();
+        Object localObject17 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject17 = com.tencent.mm.plugin.finder.storage.b.cHO();
+        Object localObject18 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject18 = com.tencent.mm.plugin.finder.storage.b.cHV();
+        Object localObject19 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject19 = com.tencent.mm.plugin.finder.storage.b.cIg();
+        Object localObject20 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject20 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cIe();
+        Object localObject21 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject21 = com.tencent.mm.plugin.finder.storage.b.cIl();
+        com.tencent.mm.plugin.finder.storage.config.b localb1 = (com.tencent.mm.plugin.finder.storage.config.b)new com.tencent.mm.plugin.finder.storage.config.a("体验相关");
+        Object localObject22 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject22 = com.tencent.mm.plugin.finder.storage.b.cHX();
+        Object localObject23 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject23 = com.tencent.mm.plugin.finder.storage.b.cHY();
+        Object localObject24 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject24 = com.tencent.mm.plugin.finder.storage.b.cGP();
+        Object localObject25 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject25 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cGQ();
+        Object localObject26 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject26 = com.tencent.mm.plugin.finder.storage.b.cGR();
+        Object localObject27 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject27 = com.tencent.mm.plugin.finder.storage.b.cGS();
+        com.tencent.mm.plugin.finder.storage.config.b localb2 = (com.tencent.mm.plugin.finder.storage.config.b)new com.tencent.mm.plugin.finder.storage.config.a("测试");
+        Object localObject28 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject28 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cIk();
+        Object localObject29 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject29 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cGT();
+        Object localObject30 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject30 = com.tencent.mm.plugin.finder.storage.b.cGU();
+        Object localObject31 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject31 = com.tencent.mm.plugin.finder.storage.b.cGV();
+        Object localObject32 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject32 = com.tencent.mm.plugin.finder.storage.b.cGW();
+        Object localObject33 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject33 = com.tencent.mm.plugin.finder.storage.b.cGX();
+        Object localObject34 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject34 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cGY();
+        Object localObject35 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject35 = com.tencent.mm.plugin.finder.storage.b.cGZ();
+        Object localObject36 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject36 = com.tencent.mm.plugin.finder.storage.b.cHa();
+        Object localObject37 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject37 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHc();
+        Object localObject38 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject38 = com.tencent.mm.plugin.finder.storage.b.cHf();
+        Object localObject39 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject39 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHg();
+        Object localObject40 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject40 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHh();
+        Object localObject41 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject41 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHi();
+        Object localObject42 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject42 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHj();
+        Object localObject43 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject43 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHk();
+        Object localObject44 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject44 = com.tencent.mm.plugin.finder.storage.b.cHl();
+        Object localObject45 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject45 = com.tencent.mm.plugin.finder.storage.b.cHm();
+        Object localObject46 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject46 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHn();
+        Object localObject47 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject47 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHo();
+        Object localObject48 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject48 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHp();
+        Object localObject49 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject49 = com.tencent.mm.plugin.finder.storage.b.cHr();
+        Object localObject50 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject50 = com.tencent.mm.plugin.finder.storage.b.cHs();
+        Object localObject51 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject51 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHu();
+        Object localObject52 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject52 = com.tencent.mm.plugin.finder.storage.b.cHv();
+        Object localObject53 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject53 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHw();
+        com.tencent.mm.plugin.finder.storage.config.b localb3 = (com.tencent.mm.plugin.finder.storage.config.b)new com.tencent.mm.plugin.finder.storage.config.a("其他");
+        Object localObject54 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject54 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHx();
+        Object localObject55 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject55 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHy();
+        Object localObject56 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject56 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHz();
+        Object localObject57 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject57 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHA();
+        Object localObject58 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject58 = com.tencent.mm.plugin.finder.storage.b.cHB();
+        Object localObject59 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject59 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHC();
+        Object localObject60 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject60 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHD();
+        Object localObject61 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject61 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHE();
+        Object localObject62 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject62 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHF();
+        Object localObject63 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject63 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHG();
+        Object localObject64 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject64 = com.tencent.mm.plugin.finder.storage.b.cHH();
+        Object localObject65 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject65 = com.tencent.mm.plugin.finder.storage.b.cHI();
+        Object localObject66 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject66 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHL();
+        Object localObject67 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject67 = com.tencent.mm.plugin.finder.storage.b.cHM();
+        Object localObject68 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject68 = com.tencent.mm.plugin.finder.storage.b.cHt();
+        Object localObject69 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject69 = (com.tencent.mm.plugin.finder.storage.config.b)com.tencent.mm.plugin.finder.storage.b.cHZ();
+        com.tencent.mm.plugin.finder.storage.config.b localb4 = (com.tencent.mm.plugin.finder.storage.config.b)new com.tencent.mm.plugin.finder.storage.config.a("私信");
+        Object localObject70 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject70 = com.tencent.mm.plugin.finder.storage.b.cHS();
+        Object localObject71 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject71 = com.tencent.mm.plugin.finder.storage.b.cFs();
+        com.tencent.mm.plugin.finder.storage.config.b localb5 = (com.tencent.mm.plugin.finder.storage.config.b)new com.tencent.mm.plugin.finder.storage.config.a("tab流预加载");
+        Object localObject72 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject72 = com.tencent.mm.plugin.finder.storage.b.cGt();
+        Object localObject73 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject73 = com.tencent.mm.plugin.finder.storage.b.cHT();
+        Object localObject74 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject74 = com.tencent.mm.plugin.finder.storage.b.cNk();
+        Object localObject75 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject75 = com.tencent.mm.plugin.finder.storage.b.cOe();
+        Object localObject76 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject76 = com.tencent.mm.plugin.finder.storage.b.cOg();
+        Object localObject77 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject77 = com.tencent.mm.plugin.finder.storage.b.cOh();
+        Object localObject78 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject78 = com.tencent.mm.plugin.finder.storage.b.cOi();
+        Object localObject79 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject79 = com.tencent.mm.plugin.finder.storage.b.cOj();
+        Object localObject80 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject80 = com.tencent.mm.plugin.finder.storage.b.cOk();
+        Object localObject81 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject81 = com.tencent.mm.plugin.finder.storage.b.cVi();
+        Object localObject82 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject82 = com.tencent.mm.plugin.finder.storage.b.cVm();
+        Object localObject83 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject83 = com.tencent.mm.plugin.finder.storage.b.dbP();
+        Object localObject84 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject84 = com.tencent.mm.plugin.finder.storage.b.dbQ();
+        Object localObject85 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject85 = com.tencent.mm.plugin.finder.storage.b.dRe();
+        Object localObject86 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject86 = com.tencent.mm.plugin.finder.storage.b.dSc();
+        Object localObject87 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject87 = com.tencent.mm.plugin.finder.storage.b.dSf();
+        Object localObject88 = com.tencent.mm.plugin.finder.storage.b.sxa;
+        localObject88 = com.tencent.mm.plugin.finder.storage.b.dSg();
+        com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
+        sHg = j.listOf(new com.tencent.mm.plugin.finder.storage.config.b[] { paramBundle, localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localObject7, localObject8, localObject9, localObject10, localObject11, localObject12, localObject13, localObject14, localObject15, localObject16, localObject17, localObject18, localObject19, localObject20, localObject21, localb1, localObject22, localObject23, localObject24, localObject25, localObject26, localObject27, localb2, localObject28, localObject29, localObject30, localObject31, localObject32, localObject33, localObject34, localObject35, localObject36, localObject37, localObject38, localObject39, localObject40, localObject41, localObject42, localObject43, localObject44, localObject45, localObject46, localObject47, localObject48, localObject49, localObject50, localObject51, localObject52, localObject53, localb3, localObject54, localObject55, localObject56, localObject57, localObject58, localObject59, localObject60, localObject61, localObject62, localObject63, localObject64, localObject65, localObject66, localObject67, localObject68, localObject69, localb4, localObject70, localObject71, localb5, localObject72, localObject73, localObject74, localObject75, localObject76, localObject77, localObject78, localObject79, localObject80, localObject81, localObject82, localObject83, localObject84, localObject85, localObject86, localObject87, localObject88, com.tencent.mm.plugin.finder.storage.b.dSh() });
+      }
+      initView();
+      paramBundle = new r((byte)0);
+      paramBundle.a((r.b)new FinderSettingsUI.c(this));
+      addSearchMenu(true, paramBundle);
+      AppMethodBeat.o(167662);
+      return;
+    }
   }
   
   public final boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(203417);
-    if (!(paramPreference instanceof k)) {}
+    AppMethodBeat.i(204186);
+    if (!(paramPreference instanceof f.f)) {}
     for (paramf = null;; paramf = paramPreference)
     {
-      paramf = (k)paramf;
+      paramf = (f.f)paramf;
       if (paramf != null) {
-        paramf.cBs();
+        paramf.cKx();
       }
-      AppMethodBeat.o(203417);
+      paramf = MediaPreloadCore.skO;
+      paramf = com.tencent.mm.plugin.finder.storage.b.sxa;
+      MediaPreloadCore.lW(((Boolean)com.tencent.mm.plugin.finder.storage.b.cGQ().value()).booleanValue());
+      AppMethodBeat.o(204186);
       return true;
     }
   }
@@ -212,449 +349,27 @@ public final class FinderSettingsUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$34", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class aa
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203399);
-      Object localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(ah.a.GVt, Integer.valueOf(0));
-      localObject = g.ad(PluginFinder.class);
-      d.g.b.k.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-      ((PluginFinder)localObject).getRedDotManager().Dy(-1);
-      AppMethodBeat.o(203399);
-    }
-  }
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderSettingsUI$Companion;", "", "()V", "CONFIG_ARRAY", "", "Lcom/tencent/mm/plugin/finder/storage/config/IFinderFakeConfig;", "getCONFIG_ARRAY", "()Ljava/util/List;", "setCONFIG_ARRAY", "(Ljava/util/List;)V", "plugin-finder_release"})
+  public static final class a {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$36", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class ac
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203401);
-      Object localObject = ag.qYh;
-      ac.i(ag.access$getTAG$cp(), "clearLastBuf");
-      localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(ah.a.GVG, "");
-      localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(ah.a.GVH, "");
-      localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(ah.a.GVF, "");
-      localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(ah.a.GVI, Integer.valueOf(0));
-      localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(ah.a.GVJ, Integer.valueOf(0));
-      localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(ah.a.GVK, Integer.valueOf(0));
-      AppMethodBeat.o(203401);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$39", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class ae
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203404);
-      Object localObject = com.tencent.mm.ui.component.a.IrY;
-      ((FinderHomeTabStateVM)com.tencent.mm.ui.component.a.bg(PluginFinder.class).get(FinderHomeTabStateVM.class)).cFK();
-      localObject = com.tencent.mm.plugin.finder.storage.data.i.rEV;
-      i.a.clearAll();
-      AppMethodBeat.o(203404);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$40", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class ag
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203407);
-      Object localObject = p.rQw;
-      localObject = p.cDx();
-      com.tencent.mm.ui.base.h.Q((Context)this.rLH.getContext(), (String)localObject, "嗯");
-      AppMethodBeat.o(203407);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$41", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class ah
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203408);
-      Object localObject1 = new StringBuilder("clicfg_ultron_finder_search_only_contact_android: ");
-      Object localObject2 = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.plugin.finder.storage.b.cyO()).append('\n').append("clicfg_ultron_timeline_publish_entrance_switch_android:");
-      localObject2 = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.plugin.finder.storage.b.cyP()).append('\n').append("clicfg_ultron_finder_show_reddot_number_attab_android:");
-      localObject2 = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.plugin.finder.storage.b.cyQ()).append('\n').append("clicfg_ultron_record_video_max_duration_android:");
-      localObject2 = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.plugin.finder.storage.b.cxY().duration).append('\n').append("clicfg_ultron_record_video_min_duration_android:");
-      localObject2 = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.plugin.finder.storage.b.cxY().minDuration).append('\n').append("clicfg_ultron_album_video_max_duration_android:");
-      localObject2 = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.plugin.finder.storage.b.cxZ().duration).append('\n').append("clicfg_ultron_album_video_min_duration_android:");
-      localObject2 = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject1 = com.tencent.mm.plugin.finder.storage.b.cxZ().minDuration + '\n' + "clicfg_ultron_album_video_max_select_duration_android:" + ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pVh, 300);
-      localObject2 = new StringBuilder("MXM_DynaCfg_AV_Item_Key_FinderCommentTextLimit:");
-      com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject2 = ((StringBuilder)localObject2).append(com.tencent.mm.plugin.finder.storage.b.cyJ()).append('\n').append("MXM_DynaCfg_AV_Item_Key_FinderCommentTextLimit:");
-      localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject2 = ((StringBuilder)localObject2).append(com.tencent.mm.plugin.finder.storage.b.cyK()).append('\n').append("clicfg_ultron_finder_folder_size_dump_interval:");
-      localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject2 = ((StringBuilder)localObject2).append(com.tencent.mm.plugin.finder.storage.b.cyz()).append('\n').append("clicfg_ultron_finder_folder_size_image:");
-      localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject2 = ((StringBuilder)localObject2).append(com.tencent.mm.plugin.finder.storage.b.cyC()).append('\n').append("clicfg_ultron_finder_folder_size_avatar:");
-      localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject2 = ((StringBuilder)localObject2).append(com.tencent.mm.plugin.finder.storage.b.cyD()).append('\n').append("clicfg_ultron_finder_folder_size_cropimg:");
-      localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject2 = ((StringBuilder)localObject2).append(com.tencent.mm.plugin.finder.storage.b.cyE()).append('\n').append("clicfg_ultron_finder_folder_size_video:");
-      localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject2 = ((StringBuilder)localObject2).append(com.tencent.mm.plugin.finder.storage.b.cyF()).append('\n').append("clicfg_ultron_finder_folder_size_tmp:");
-      localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject2 = ((StringBuilder)localObject2).append(com.tencent.mm.plugin.finder.storage.b.cyG()).append('\n').append("clicfg_ultron_finder_folder_size_capture:");
-      localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-      localObject2 = ((StringBuilder)localObject2).append(com.tencent.mm.plugin.finder.storage.b.cyH()).append('\n').append("clicfg_ultron_finder_folder_size_posttmp:");
-      localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-      ((StringBuilder)localObject2).append(com.tencent.mm.plugin.finder.storage.b.cyI()).append('\n');
-      localObject2 = ai.getContext().getSystemService("clipboard");
-      if (localObject2 == null)
-      {
-        localObject1 = new v("null cannot be cast to non-null type android.content.ClipboardManager");
-        AppMethodBeat.o(203408);
-        throw ((Throwable)localObject1);
-      }
-      ((ClipboardManager)localObject2).setText((CharSequence)localObject1);
-      t.makeText(ai.getContext(), (CharSequence)localObject1, 1).show();
-      AppMethodBeat.o(203408);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$7", "Lcom/tencent/mm/plugin/finder/ui/IAutoValue;", "setValue", "", "value", "", "plugin-finder_release"})
-  public static final class ak
-    implements i
-  {
-    public final boolean cCl()
-    {
-      AppMethodBeat.i(203412);
-      MediaPreloadCore.a locala = MediaPreloadCore.rvo;
-      boolean bool = MediaPreloadCore.cwJ();
-      AppMethodBeat.o(203412);
-      return bool;
-    }
-    
-    public final void lM(boolean paramBoolean)
-    {
-      AppMethodBeat.i(203413);
-      Object localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(ah.a.GVx, Boolean.valueOf(paramBoolean));
-      localObject = MediaPreloadCore.rvo;
-      MediaPreloadCore.lB(paramBoolean);
-      AppMethodBeat.o(203413);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$8", "Lcom/tencent/mm/plugin/finder/ui/IAutoValue;", "setValue", "", "value", "", "plugin-finder_release"})
-  public static final class al
-    implements i
-  {
-    public final boolean cCl()
-    {
-      AppMethodBeat.i(203414);
-      TouchMediaPreviewLayout.a locala = TouchMediaPreviewLayout.Jdj;
-      boolean bool = TouchMediaPreviewLayout.fvb();
-      AppMethodBeat.o(203414);
-      return bool;
-    }
-    
-    public final void lM(boolean paramBoolean)
-    {
-      AppMethodBeat.i(203415);
-      TouchMediaPreviewLayout.a locala = TouchMediaPreviewLayout.Jdj;
-      TouchMediaPreviewLayout.xY(paramBoolean);
-      AppMethodBeat.o(203415);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class am
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  static final class b
     implements MenuItem.OnMenuItemClickListener
   {
-    am(FinderSettingsUI paramFinderSettingsUI) {}
+    b(FinderSettingsUI paramFinderSettingsUI) {}
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167660);
-      this.rLH.finish();
+      this.sHi.finish();
       AppMethodBeat.o(167660);
       return false;
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$13", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class d
-    implements j
-  {
-    d(v.a parama) {}
-    
-    public final void onClick()
-    {
-      boolean bool = false;
-      AppMethodBeat.i(203367);
-      Object localObject1 = this.rLG;
-      Object localObject2 = g.agR();
-      d.g.b.k.g(localObject2, "MMKernel.storage()");
-      ((v.a)localObject1).KUL = ((com.tencent.mm.kernel.e)localObject2).agA().getBoolean(ah.a.GUC, false);
-      localObject1 = g.agR();
-      d.g.b.k.g(localObject1, "MMKernel.storage()");
-      localObject1 = ((com.tencent.mm.kernel.e)localObject1).agA();
-      localObject2 = ah.a.GUC;
-      if (!this.rLG.KUL) {
-        bool = true;
-      }
-      ((ae)localObject1).set((ah.a)localObject2, Boolean.valueOf(bool));
-      AppMethodBeat.o(203367);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$18", "Lcom/tencent/mm/plugin/finder/ui/IAutoValue;", "setValue", "", "value", "", "plugin-finder_release"})
-  public static final class i
-    implements i
-  {
-    public final boolean cCl()
-    {
-      AppMethodBeat.i(203373);
-      FinderHotRelatedUIC.a locala = FinderHotRelatedUIC.sea;
-      boolean bool = FinderHotRelatedUIC.cFX();
-      AppMethodBeat.o(203373);
-      return bool;
-    }
-    
-    public final void lM(boolean paramBoolean)
-    {
-      AppMethodBeat.i(203374);
-      FinderHotRelatedUIC.a locala = FinderHotRelatedUIC.sea;
-      FinderHotRelatedUIC.mf(paramBoolean);
-      AppMethodBeat.o(203374);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$24", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class p
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203386);
-      LinkedList localLinkedList = new LinkedList();
-      List localList = d.a.j.listOf(new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2) });
-      localLinkedList.add("默认方案");
-      localLinkedList.add("拿到就显示");
-      localLinkedList.add("显示话题推荐空白页");
-      com.tencent.mm.ui.base.h.a((Context)this.rLH, "", (List)localLinkedList, localList, "", (h.d)new a(this));
-      AppMethodBeat.o(203386);
-    }
-    
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "whichButton", "", "<anonymous parameter 1>", "onClick"})
-    static final class a
-      implements h.d
-    {
-      a(FinderSettingsUI.p paramp) {}
-      
-      public final void ct(int paramInt1, int paramInt2)
-      {
-        AppMethodBeat.i(203385);
-        try
-        {
-          com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-          com.tencent.mm.plugin.finder.storage.b.Ec(paramInt1);
-          AppMethodBeat.o(203385);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ac.printErrStackTrace(this.rLI.rLH.TAG, (Throwable)localException, "", new Object[0]);
-          AppMethodBeat.o(203385);
-        }
-      }
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$26", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class r
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203389);
-      a.a locala = com.tencent.mm.plugin.finder.upload.action.a.rNF;
-      com.tencent.mm.plugin.finder.upload.action.a.cCF();
-      AppMethodBeat.o(203389);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$27", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class s
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203390);
-      com.tencent.mm.kernel.e locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GUs, "");
-      locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GUt, "");
-      locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GTQ, "");
-      locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GTR, "");
-      locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GTS, "");
-      locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GTT, "");
-      locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GTU, "");
-      locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GTV, "");
-      locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GTW, "");
-      locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GTY, Integer.valueOf(0));
-      locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GVa, Boolean.FALSE);
-      AppMethodBeat.o(203390);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$28", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class t
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203391);
-      Object localObject = p.rQw;
-      p.cDq();
-      localObject = com.tencent.mm.plugin.finder.storage.logic.c.rFo;
-      boolean bool = com.tencent.mm.plugin.finder.storage.logic.c.aPx();
-      localObject = this.rLH.TAG;
-      StringBuilder localStringBuilder = new StringBuilder("ret=[").append(bool).append("] finderVideoPath=");
-      p localp = p.rQw;
-      localStringBuilder = localStringBuilder.append(p.cDn()).append(" finderImgPath=");
-      localp = p.rQw;
-      ac.i((String)localObject, p.cDm());
-      t.makeText(ai.getContext(), (CharSequence)"db: ".concat(String.valueOf(bool)), 1).show();
-      AppMethodBeat.o(203391);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$29", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class u
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203392);
-      com.tencent.mm.kernel.e locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GUs, "");
-      locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GUt, "");
-      locale = g.agR();
-      d.g.b.k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GVa, Boolean.FALSE);
-      AppMethodBeat.o(203392);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$30", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class w
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203395);
-      FinderStreamRefreshPreload.b localb = FinderStreamRefreshPreload.scx;
-      FinderStreamRefreshPreload.cFQ();
-      AppMethodBeat.o(203395);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$32", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class y
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203397);
-      FinderItem.a locala = FinderItem.rDA;
-      FinderItem.access$setDebugOnlySelfSee$cp(true);
-      AppMethodBeat.o(203397);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderSettingsUI$initView$33", "Lcom/tencent/mm/plugin/finder/ui/IClickEvent;", "onClick", "", "plugin-finder_release"})
-  public static final class z
-    implements j
-  {
-    public final void onClick()
-    {
-      AppMethodBeat.i(203398);
-      Object localObject = com.tencent.mm.ui.component.a.IrY;
-      com.tencent.mm.ui.component.a.bg(PluginFinder.class).get(FinderHomeTabStateVM.class);
-      localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(FinderHomeTabStateVM.EX(3), Integer.valueOf(0));
-      localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(FinderHomeTabStateVM.EX(1), Integer.valueOf(0));
-      localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(FinderHomeTabStateVM.EX(4), Integer.valueOf(0));
-      localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(FinderHomeTabStateVM.EX(2), Integer.valueOf(0));
-      localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(ah.a.GUp, Integer.valueOf(0));
-      localObject = g.agR();
-      d.g.b.k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).agA().set(ah.a.GWf, Boolean.FALSE);
-      AppMethodBeat.o(203398);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderSettingsUI
  * JD-Core Version:    0.7.0.1
  */

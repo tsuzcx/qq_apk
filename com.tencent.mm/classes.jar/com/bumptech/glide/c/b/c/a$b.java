@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface a$b
 {
-  public static final b aHO = new b()
+  public static final b aJF = new b()
   {
     public final void c(Throwable paramAnonymousThrowable) {}
   };
-  public static final b aHP = new b()
+  public static final b aJG = new b()
   {
     public final void c(Throwable paramAnonymousThrowable)
     {
@@ -18,7 +18,7 @@ public abstract interface a$b
       AppMethodBeat.o(77173);
     }
   };
-  public static final b aHQ = new b()
+  public static final b aJH = new b()
   {
     public final void c(Throwable paramAnonymousThrowable)
     {
@@ -28,7 +28,7 @@ public abstract interface a$b
       throw paramAnonymousThrowable;
     }
   };
-  public static final b aHR = aHP;
+  public static final b aJI = aJG;
   
   public abstract void c(Throwable paramThrowable);
 }

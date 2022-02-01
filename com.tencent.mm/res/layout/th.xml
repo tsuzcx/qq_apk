@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:background="@drawable/fw" android:paddingLeft="@dimen/ha" android:paddingTop="@dimen/i_" android:paddingRight="@dimen/ha" android:paddingBottom="@dimen/hj" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/q" android:textColor="?i" android:ellipsize="end" android:id="@id/a1y" android:paddingBottom="@dimen/hk" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="3" android:lineSpacingExtra="2.0dip" />
-    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/jo" android:textColor="?j" android:ellipsize="end" android:id="@id/a1x" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="5" android:lineSpacingExtra="2.0dip" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/q" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/a1y" android:paddingBottom="@dimen/hk" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="3" android:lineSpacingExtra="2.0dip" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/jo" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/a1x" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="5" android:lineSpacingExtra="2.0dip" />
 </LinearLayout>

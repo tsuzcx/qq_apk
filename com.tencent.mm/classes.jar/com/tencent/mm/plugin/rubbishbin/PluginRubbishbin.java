@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.rubbishbin;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fi;
+import com.tencent.mm.g.a.fl;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.e.c;
@@ -12,13 +12,13 @@ public class PluginRubbishbin
   extends f
   implements com.tencent.mm.kernel.api.c
 {
-  private static boolean wUU = false;
-  private com.tencent.mm.sdk.b.c<fi> wUV;
+  private static boolean yiy = false;
+  private com.tencent.mm.sdk.b.c<fl> ssq;
   
   public PluginRubbishbin()
   {
     AppMethodBeat.i(146670);
-    this.wUV = new com.tencent.mm.sdk.b.c() {};
+    this.ssq = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(146670);
   }
   

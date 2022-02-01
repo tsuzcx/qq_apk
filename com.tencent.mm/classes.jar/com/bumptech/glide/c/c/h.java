@@ -7,7 +7,7 @@ import java.util.Map;
 public abstract interface h
 {
   @Deprecated
-  public static final h aIm = new h()
+  public static final h aKd = new h()
   {
     public final Map<String, String> getHeaders()
     {
@@ -17,13 +17,13 @@ public abstract interface h
       return localMap;
     }
   };
-  public static final h aIn;
+  public static final h aKe;
   
   static
   {
     j.a locala = new j.a();
-    locala.aIr = true;
-    aIn = new j(locala.headers);
+    locala.aKi = true;
+    aKe = new j(locala.headers);
   }
   
   public abstract Map<String, String> getHeaders();

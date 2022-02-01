@@ -1,17 +1,15 @@
 package com.tencent.mm.plugin.scanner.model;
 
-public final class ad
+import d.l;
+
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/ScanSuccessMarkClickListener;", "", "onClick", "", "index", "", "view", "Landroid/view/View;", "plugin-scan_release"})
+public abstract interface ad
 {
-  public String dvg = "";
-  public String dvh = "";
-  public String dvi = "";
-  public String hym = "";
-  public String iag = "";
-  public String xax = "";
+  public abstract void OG(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.ad
  * JD-Core Version:    0.7.0.1
  */

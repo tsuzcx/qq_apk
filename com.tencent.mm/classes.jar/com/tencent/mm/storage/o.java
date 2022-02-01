@@ -2,10 +2,10 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.hs;
+import com.tencent.mm.protocal.protobuf.hz;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storagebase.h;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -69,16 +69,16 @@ public final class o
             }
             paramLinkedList1 = new LinkedList();
             localObject = "SELECT * FROM BackupTempMoveTime WHERE sessionName = \"" + str + "\" ";
-            ac.d("MicroMsg.BackupTempMoveTimeStorage", "getTempMoveTimeBySession:".concat(String.valueOf(localObject)));
+            ad.d("MicroMsg.BackupTempMoveTimeStorage", "getTempMoveTimeBySession:".concat(String.valueOf(localObject)));
             localObject = this.db.rawQuery((String)localObject, null);
             if (localObject == null)
             {
-              ac.e("MicroMsg.BackupTempMoveTimeStorage", "getTempMoveTimeBySession failed, sessionName:%s ", new Object[] { str });
+              ad.e("MicroMsg.BackupTempMoveTimeStorage", "getTempMoveTimeBySession failed, sessionName:%s ", new Object[] { str });
               paramLinkedList1 = null;
             }
             for (;;)
             {
-              if ((paramLinkedList1 != null) && (paramLinkedList1.size() > 0) && (l2 >= ((hs)paramLinkedList1.getFirst()).startTime) && (l1 <= ((hs)paramLinkedList1.getLast()).endTime)) {
+              if ((paramLinkedList1 != null) && (paramLinkedList1.size() > 0) && (l2 >= ((hz)paramLinkedList1.getFirst()).startTime) && (l1 <= ((hz)paramLinkedList1.getLast()).endTime)) {
                 break label363;
               }
               paramLinkedList3.add(str);
@@ -89,10 +89,10 @@ public final class o
               {
                 n localn = new n();
                 localn.convertFrom((Cursor)localObject);
-                hs localhs = new hs();
-                localhs.startTime = localn.field_startTime;
-                localhs.endTime = localn.field_endTime;
-                paramLinkedList1.add(localhs);
+                hz localhz = new hz();
+                localhz.startTime = localn.field_startTime;
+                localhz.endTime = localn.field_endTime;
+                paramLinkedList1.add(localhz);
               }
               ((Cursor)localObject).close();
             }
@@ -100,19 +100,19 @@ public final class o
             if ((j >= paramLinkedList1.size()) || (l1 > l2)) {
               break label602;
             }
-            localObject = (hs)paramLinkedList1.get(j);
+            localObject = (hz)paramLinkedList1.get(j);
             k = i;
             l3 = l1;
-            if (l1 <= ((hs)localObject).endTime) {
-              if (l1 < ((hs)localObject).startTime)
+            if (l1 <= ((hz)localObject).endTime) {
+              if (l1 < ((hz)localObject).startTime)
               {
                 i = 1;
                 paramLinkedList3.add(str);
                 paramLinkedList4.add(Long.valueOf(l1));
-                if (l2 < ((hs)localObject).startTime)
+                if (l2 < ((hz)localObject).startTime)
                 {
                   paramLinkedList4.add(Long.valueOf(l2));
-                  l1 = ((hs)localObject).startTime;
+                  l1 = ((hz)localObject).startTime;
                   i = 1;
                 }
               }
@@ -138,8 +138,8 @@ public final class o
       paramLinkedList4.add(Long.valueOf(l1));
       paramLinkedList4.add(Long.valueOf(l2));
       break;
-      paramLinkedList4.add(Long.valueOf(((hs)localObject).startTime));
-      l3 = ((hs)localObject).endTime;
+      paramLinkedList4.add(Long.valueOf(((hz)localObject).startTime));
+      l3 = ((hz)localObject).endTime;
       k = i;
       j += 1;
       i = k;
@@ -150,23 +150,23 @@ public final class o
     }
   }
   
-  public final boolean alL()
+  public final boolean aoy()
   {
     AppMethodBeat.i(32836);
     boolean bool = this.db.execSQL("BackupTempMoveTime", "delete from BackupTempMoveTime");
-    ac.i("MicroMsg.BackupTempMoveTimeStorage", "deleteAllData, result:%b", new Object[] { Boolean.valueOf(bool) });
+    ad.i("MicroMsg.BackupTempMoveTimeStorage", "deleteAllData, result:%b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(32836);
     return bool;
   }
   
-  public final LinkedList<n> eZb()
+  public final LinkedList<n> foL()
   {
     AppMethodBeat.i(32834);
     LinkedList localLinkedList = new LinkedList();
     Cursor localCursor = getAll();
     if (localCursor == null)
     {
-      ac.e("MicroMsg.BackupTempMoveTimeStorage", "getAllData failed.");
+      ad.e("MicroMsg.BackupTempMoveTimeStorage", "getAllData failed.");
       AppMethodBeat.o(32834);
       return localLinkedList;
     }
@@ -183,7 +183,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.o
  * JD-Core Version:    0.7.0.1
  */

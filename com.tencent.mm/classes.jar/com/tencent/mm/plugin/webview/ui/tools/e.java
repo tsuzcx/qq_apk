@@ -11,11 +11,13 @@ import android.os.RemoteException;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
+import com.tencent.mm.plugin.webview.stub.f;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.vfs.i;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -24,19 +26,19 @@ import java.util.List;
 
 public final class e
 {
-  private static final HashMap<String, WeakReference<Bitmap>> CvQ;
+  private static final HashMap<String, WeakReference<Bitmap>> DZy;
   
   static
   {
     AppMethodBeat.i(79687);
-    CvQ = new HashMap();
+    DZy = new HashMap();
     AppMethodBeat.o(79687);
   }
   
-  public static int VA(int paramInt)
+  public static int Xp(int paramInt)
   {
     AppMethodBeat.i(79685);
-    paramInt = aj.VA(paramInt);
+    paramInt = al.Xp(paramInt);
     AppMethodBeat.o(79685);
     return paramInt;
   }
@@ -59,18 +61,18 @@ public final class e
         localArrayList.add(String.valueOf(paramVarArgs[i]));
         i += 1;
       }
-      parame.o(paramInt, localArrayList);
+      parame.p(paramInt, localArrayList);
       AppMethodBeat.o(79678);
       return;
     }
     catch (Exception parame)
     {
-      ac.w("MicroMsg.WebView.RemoteUtil", "kvReport, ex = " + parame.getMessage());
+      ad.w("MicroMsg.WebView.RemoteUtil", "kvReport, ex = " + parame.getMessage());
       AppMethodBeat.o(79678);
     }
   }
   
-  public static boolean a(Bundle paramBundle, String paramString1, String paramString2, com.tencent.mm.plugin.webview.stub.f paramf, Runnable paramRunnable)
+  public static boolean a(Bundle paramBundle, String paramString1, String paramString2, f paramf, Runnable paramRunnable)
   {
     AppMethodBeat.i(79686);
     if (paramf == null)
@@ -93,7 +95,7 @@ public final class e
     }
     catch (RemoteException paramBundle)
     {
-      ac.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
+      ad.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
       AppMethodBeat.o(79686);
       return false;
     }
@@ -102,27 +104,27 @@ public final class e
       if (paramRunnable != null) {
         paramRunnable.run();
       }
-      ac.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
+      ad.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
       AppMethodBeat.o(79686);
     }
     return false;
   }
   
-  public static Bitmap aDe(String paramString)
+  public static Bitmap aIF(String paramString)
   {
     AppMethodBeat.i(79680);
-    Object localObject = (WeakReference)CvQ.get(paramString);
+    Object localObject = (WeakReference)DZy.get(paramString);
     if ((localObject != null) && (((WeakReference)localObject).get() != null) && (!((Bitmap)((WeakReference)localObject).get()).isRecycled()))
     {
       paramString = (Bitmap)((WeakReference)localObject).get();
       AppMethodBeat.o(79680);
       return paramString;
     }
-    if (i.eA(paramString)) {}
-    for (localObject = com.tencent.mm.sdk.platformtools.f.decodeFile(paramString, null);; localObject = null)
+    if (i.fv(paramString)) {}
+    for (localObject = g.decodeFile(paramString, null);; localObject = null)
     {
       if (localObject != null) {
-        CvQ.put(paramString, new WeakReference(localObject));
+        DZy.put(paramString, new WeakReference(localObject));
       }
       for (;;)
       {
@@ -130,36 +132,36 @@ public final class e
         return localObject;
         try
         {
-          Bitmap localBitmap = BackwardSupportUtil.b.b(ai.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
+          Bitmap localBitmap = BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
           localObject = localBitmap;
-          CvQ.put(paramString, new WeakReference(localBitmap));
+          DZy.put(paramString, new WeakReference(localBitmap));
           localObject = localBitmap;
         }
         catch (Exception paramString)
         {
-          ac.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramString, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramString, "", new Object[0]);
         }
       }
     }
   }
   
-  public static long aDf(String paramString)
+  public static long aIG(String paramString)
   {
     AppMethodBeat.i(79681);
-    long l = bv(paramString, -1L);
+    long l = by(paramString, -1L);
     AppMethodBeat.o(79681);
     return l;
   }
   
-  public static Bitmap aDg(String paramString)
+  public static Bitmap aIH(String paramString)
   {
     AppMethodBeat.i(79684);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(79684);
       return null;
     }
-    Object localObject1 = (WeakReference)CvQ.get(paramString);
+    Object localObject1 = (WeakReference)DZy.get(paramString);
     if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (!((Bitmap)((WeakReference)localObject1).get()).isRecycled()))
     {
       paramString = (Bitmap)((WeakReference)localObject1).get();
@@ -201,11 +203,11 @@ public final class e
       localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, 96, 96, false);
       if (localObject2 != localObject1)
       {
-        ac.i("MicroMsg.WebView.RemoteUtil", "bitmap recycle %s", new Object[] { localObject2.toString() });
+        ad.i("MicroMsg.WebView.RemoteUtil", "bitmap recycle %s", new Object[] { localObject2.toString() });
         ((Bitmap)localObject2).recycle();
       }
       if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
-        CvQ.put(paramString, new WeakReference(localObject1));
+        DZy.put(paramString, new WeakReference(localObject1));
       }
       AppMethodBeat.o(79684);
       return localObject1;
@@ -216,10 +218,10 @@ public final class e
     return null;
   }
   
-  private static long bv(String paramString, long paramLong)
+  private static long by(String paramString, long paramLong)
   {
     AppMethodBeat.i(79683);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(79683);
       return paramLong;
@@ -246,16 +248,16 @@ public final class e
     }
     catch (Exception paramString)
     {
-      ac.e("MicroMsg.WebView.RemoteUtil", "Failed to parse color: %s", new Object[] { localObject });
+      ad.e("MicroMsg.WebView.RemoteUtil", "Failed to parse color: %s", new Object[] { localObject });
       AppMethodBeat.o(79683);
     }
     return paramLong;
   }
   
-  public static int fr(String paramString, int paramInt)
+  public static int fO(String paramString, int paramInt)
   {
     AppMethodBeat.i(79682);
-    paramInt = (int)bv(paramString, paramInt);
+    paramInt = (int)by(paramString, paramInt);
     AppMethodBeat.o(79682);
     return paramInt;
   }

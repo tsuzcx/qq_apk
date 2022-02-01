@@ -13,48 +13,50 @@ import android.net.Uri;
 import android.os.Parcelable;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.c;
-import com.tencent.mm.aj.i;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.ak.p;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.b;
-import com.tencent.mm.model.ar.b.a;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.b;
+import com.tencent.mm.model.as.b.a;
 import com.tencent.mm.plugin.base.model.b;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class e
 {
-  private static List<com.tencent.mm.aj.e.a> Cpb;
+  private static List<com.tencent.mm.ak.e.a> DSz;
   
   static
   {
     AppMethodBeat.i(78854);
-    Cpb = new LinkedList();
+    DSz = new LinkedList();
     AppMethodBeat.o(78854);
   }
   
   public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, boolean paramBoolean)
   {
     AppMethodBeat.i(78849);
-    ac.i("MicroMsg.WebviewShrotcutManager", "buildIntent, install = %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.i("MicroMsg.WebviewShrotcutManager", "buildIntent, install = %b", new Object[] { Boolean.valueOf(paramBoolean) });
     if ((paramBitmap == null) && (paramBoolean))
     {
-      ac.e("MicroMsg.WebviewShrotcutManager", "no bmp");
+      ad.e("MicroMsg.WebviewShrotcutManager", "no bmp");
       AppMethodBeat.o(78849);
       return null;
     }
-    String str = aBJ(paramString1);
-    if (bs.isNullOrNil(str))
+    String str = aHi(paramString1);
+    if (bt.isNullOrNil(str))
     {
       AppMethodBeat.o(78849);
       return null;
@@ -66,19 +68,19 @@ public final class e
       localIntent.putExtra("android.intent.extra.shortcut.NAME", paramString3);
       localIntent.putExtra("duplicate", false);
       localObject = "";
-      i locali = p.aBw().Ak(paramString1);
+      i locali = p.aEx().Dj(paramString1);
       paramString1 = (String)localObject;
       if (locali != null) {
-        paramString1 = com.tencent.mm.b.g.getMessageDigest((paramString3 + locali.aBp()).getBytes());
+        paramString1 = com.tencent.mm.b.g.getMessageDigest((paramString3 + locali.aEr()).getBytes());
       }
       localObject = new Intent("com.tencent.mm.action.WX_SHORTCUT");
       ((Intent)localObject).putExtra("type", 2);
       ((Intent)localObject).putExtra("id", str);
-      ((Intent)localObject).putExtra("ext_info", aBJ(paramString2));
-      ((Intent)localObject).putExtra("ext_info_1", aBJ(paramString3));
+      ((Intent)localObject).putExtra("ext_info", aHi(paramString2));
+      ((Intent)localObject).putExtra("ext_info_1", aHi(paramString3));
       paramString3 = new StringBuilder();
-      com.tencent.mm.kernel.g.agP();
-      ((Intent)localObject).putExtra("token", ev(paramString2, a.getUin()));
+      com.tencent.mm.kernel.g.ajA();
+      ((Intent)localObject).putExtra("token", eE(paramString2, a.getUin()));
       ((Intent)localObject).putExtra("digest", paramString1);
       ((Intent)localObject).setPackage(paramContext.getPackageName());
       ((Intent)localObject).addFlags(67108864);
@@ -92,60 +94,60 @@ public final class e
   public static void a(final Context paramContext, final String paramString1, final String paramString2, a parama)
   {
     AppMethodBeat.i(78845);
-    if ((paramContext == null) || (bs.isNullOrNil(paramString1)))
+    if ((paramContext == null) || (bt.isNullOrNil(paramString1)))
     {
-      ac.e("MicroMsg.WebviewShrotcutManager", "context or username is null");
+      ad.e("MicroMsg.WebviewShrotcutManager", "context or username is null");
       if (parama != null) {
-        parama.mF(false);
+        parama.mY(false);
       }
       AppMethodBeat.o(78845);
       return;
     }
-    ac.d("MicroMsg.WebviewShrotcutManager", "addShortcut, username = %s", new Object[] { paramString1 });
-    if (!com.tencent.mm.kernel.g.agM())
+    ad.d("MicroMsg.WebviewShrotcutManager", "addShortcut, username = %s", new Object[] { paramString1 });
+    if (!com.tencent.mm.kernel.g.ajx())
     {
-      ac.e("MicroMsg.WebviewShrotcutManager", "acc not ready");
+      ad.e("MicroMsg.WebviewShrotcutManager", "acc not ready");
       if (parama != null) {
-        parama.mF(false);
+        parama.mY(false);
       }
       AppMethodBeat.o(78845);
       return;
     }
-    com.tencent.mm.storage.ai localai = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt(paramString1);
+    am localam = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramString1);
     String str = "";
-    if (localai != null) {
-      str = localai.aaR();
+    if (localam != null) {
+      str = localam.adu();
     }
-    if (bs.isNullOrNil(str))
+    if (bt.isNullOrNil(str))
     {
-      ac.e("MicroMsg.WebviewShrotcutManager", "displayname is nil, should pull from service");
-      ar.a.hnw.a(paramString1, "", new ar.b.a()
+      ad.e("MicroMsg.WebviewShrotcutManager", "displayname is nil, should pull from service");
+      as.a.hFO.a(paramString1, "", new as.b.a()
       {
         public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(78841);
-          ac.i("MicroMsg.WebviewShrotcutManager", "getContactCallBack, suc = %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          ad.i("MicroMsg.WebviewShrotcutManager", "getContactCallBack, suc = %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
           if (!paramAnonymousBoolean)
           {
-            if (this.Cpc != null)
+            if (this.DSA != null)
             {
-              this.Cpc.mF(false);
+              this.DSA.mY(false);
               AppMethodBeat.o(78841);
             }
           }
           else
           {
-            paramAnonymousString = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt(paramString1);
-            if ((paramAnonymousString == null) || (bs.isNullOrNil(paramAnonymousString.aaR())))
+            paramAnonymousString = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramString1);
+            if ((paramAnonymousString == null) || (bt.isNullOrNil(paramAnonymousString.adu())))
             {
-              if (this.Cpc != null)
+              if (this.DSA != null)
               {
-                this.Cpc.mF(false);
+                this.DSA.mY(false);
                 AppMethodBeat.o(78841);
               }
             }
             else {
-              e.a(paramContext, paramString1, paramString2, paramAnonymousString.aaR(), this.Cpc);
+              e.a(paramContext, paramString1, paramString2, paramAnonymousString.adu(), this.DSA);
             }
           }
           AppMethodBeat.o(78841);
@@ -161,46 +163,46 @@ public final class e
   public static void a(final Context paramContext, final String paramString1, final String paramString2, final String paramString3, final a parama)
   {
     AppMethodBeat.i(78846);
-    if (bv(paramContext, paramString3))
+    if (bz(paramContext, paramString3))
     {
-      ac.i("MicroMsg.WebviewShrotcutManager", "shortcut has exist");
+      ad.i("MicroMsg.WebviewShrotcutManager", "shortcut has exist");
       if (parama != null) {
-        parama.mF(true);
+        parama.mY(true);
       }
       AppMethodBeat.o(78846);
       return;
     }
-    com.tencent.mm.aj.e.a local2 = new com.tencent.mm.aj.e.a()
+    com.tencent.mm.ak.e.a local2 = new com.tencent.mm.ak.e.a()
     {
-      public final void Af(String paramAnonymousString)
+      public final void De(String paramAnonymousString)
       {
         AppMethodBeat.i(78842);
-        if (!this.fur.equals(paramAnonymousString))
+        if (!this.fNr.equals(paramAnonymousString))
         {
           AppMethodBeat.o(78842);
           return;
         }
-        ac.i("MicroMsg.WebviewShrotcutManager", "notifyChanged avatar(%s).", new Object[] { paramAnonymousString });
-        e.Cpb.remove(this);
-        p.aBh().b(this);
-        paramAnonymousString = e.bw(paramContext, this.fur);
+        ad.i("MicroMsg.WebviewShrotcutManager", "notifyChanged avatar(%s).", new Object[] { paramAnonymousString });
+        e.DSz.remove(this);
+        p.aEk().b(this);
+        paramAnonymousString = e.bA(paramContext, this.fNr);
         if ((paramAnonymousString == null) || (paramAnonymousString.isRecycled()))
         {
           if (parama != null)
           {
-            parama.mF(false);
+            parama.mY(false);
             AppMethodBeat.o(78842);
           }
         }
         else
         {
-          paramAnonymousString = e.a(paramContext, this.fur, paramString2, paramString3, paramAnonymousString, true);
+          paramAnonymousString = e.a(paramContext, this.fNr, paramString2, paramString3, paramAnonymousString, true);
           if (paramAnonymousString == null)
           {
-            ac.e("MicroMsg.WebviewShrotcutManager", "intent is null");
+            ad.e("MicroMsg.WebviewShrotcutManager", "intent is null");
             if (parama != null)
             {
-              parama.mF(false);
+              parama.mY(false);
               AppMethodBeat.o(78842);
             }
           }
@@ -208,59 +210,59 @@ public final class e
           {
             b.p(paramContext, paramAnonymousString);
             if (parama != null) {
-              parama.mF(true);
+              parama.mY(true);
             }
           }
         }
         AppMethodBeat.o(78842);
       }
     };
-    Cpb.add(local2);
-    p.aBh().a(local2);
-    Bitmap localBitmap = bu(paramContext, paramString1);
+    DSz.add(local2);
+    p.aEk().a(local2);
+    Bitmap localBitmap = by(paramContext, paramString1);
     if ((localBitmap == null) || (localBitmap.isRecycled()))
     {
-      ac.e("MicroMsg.WebviewShrotcutManager", "getAvatarBitmap fail, bmp is null, start timer.");
-      new au(new b(new Runnable()
+      ad.e("MicroMsg.WebviewShrotcutManager", "getAvatarBitmap fail, bmp is null, start timer.");
+      new av(new b(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(78843);
-          ac.i("MicroMsg.WebviewShrotcutManager", "expired");
-          if (e.Cpb.contains(this.Cpe))
+          ad.i("MicroMsg.WebviewShrotcutManager", "expired");
+          if (e.DSz.contains(this.DSC))
           {
-            e.Cpb.remove(this.Cpe);
-            p.aBh().b(this.Cpe);
+            e.DSz.remove(this.DSC);
+            p.aEk().b(this.DSC);
             if (parama != null) {
-              parama.mF(false);
+              parama.mY(false);
             }
           }
           AppMethodBeat.o(78843);
         }
-      }), false).au(5000L, 5000L);
+      }), false).az(5000L, 5000L);
       AppMethodBeat.o(78846);
       return;
     }
-    Cpb.remove(local2);
-    p.aBh().b(local2);
+    DSz.remove(local2);
+    p.aEk().b(local2);
     paramString1 = a(paramContext, paramString1, paramString2, paramString3, localBitmap, true);
     if (paramString1 == null)
     {
-      ac.e("MicroMsg.WebviewShrotcutManager", "intent is null");
+      ad.e("MicroMsg.WebviewShrotcutManager", "intent is null");
       if (parama != null) {
-        parama.mF(false);
+        parama.mY(false);
       }
       AppMethodBeat.o(78846);
       return;
     }
     b.p(paramContext, paramString1);
     if (parama != null) {
-      parama.mF(true);
+      parama.mY(true);
     }
     AppMethodBeat.o(78846);
   }
   
-  private static String aBJ(String paramString)
+  private static String aHi(String paramString)
   {
     AppMethodBeat.i(78850);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -269,9 +271,9 @@ public final class e
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    com.tencent.mm.kernel.g.agP();
-    paramString = b.et(paramString, a.getUin() + "_" + System.currentTimeMillis());
-    if (bs.isNullOrNil(paramString))
+    com.tencent.mm.kernel.g.ajA();
+    paramString = b.eC(paramString, a.getUin() + "_" + System.currentTimeMillis());
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(78850);
       return null;
@@ -281,7 +283,7 @@ public final class e
     return paramString;
   }
   
-  private static Bitmap bu(Context paramContext, String paramString)
+  private static Bitmap by(Context paramContext, String paramString)
   {
     AppMethodBeat.i(78847);
     paramString = c.a(paramString, false, -1, null);
@@ -296,7 +298,7 @@ public final class e
     return paramString;
   }
   
-  private static boolean bv(Context paramContext, String paramString)
+  private static boolean bz(Context paramContext, String paramString)
   {
     AppMethodBeat.i(78852);
     label241:
@@ -305,7 +307,7 @@ public final class e
       try
       {
         ContentResolver localContentResolver = paramContext.getContentResolver();
-        paramContext = com.tencent.mm.sdk.platformtools.ai.getContext().getPackageManager().getInstalledPackages(8);
+        paramContext = aj.getContext().getPackageManager().getInstalledPackages(8);
         if (paramContext != null)
         {
           paramContext = paramContext.iterator();
@@ -363,13 +365,13 @@ public final class e
   public static void d(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(78848);
-    if ((paramContext == null) || (bs.isNullOrNil(paramString3))) {
-      ac.e("MicroMsg.WebviewShrotcutManager", "remove failed, invalid params");
+    if ((paramContext == null) || (bt.isNullOrNil(paramString3))) {
+      ad.e("MicroMsg.WebviewShrotcutManager", "remove failed, invalid params");
     }
     paramString1 = a(paramContext, paramString1, paramString2, paramString3, null, false);
     if (paramString1 == null)
     {
-      ac.e("MicroMsg.WebviewShrotcutManager", "remove failed, intent is null");
+      ad.e("MicroMsg.WebviewShrotcutManager", "remove failed, intent is null");
       AppMethodBeat.o(78848);
       return;
     }
@@ -377,34 +379,34 @@ public final class e
     AppMethodBeat.o(78848);
   }
   
-  public static String ev(String paramString1, String paramString2)
+  public static String eE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(78851);
-    paramString1 = com.tencent.mm.b.g.getMessageDigest((com.tencent.mm.b.g.getMessageDigest(paramString1.getBytes()) + b.et(paramString2, paramString1)).getBytes());
+    paramString1 = com.tencent.mm.b.g.getMessageDigest((com.tencent.mm.b.g.getMessageDigest(paramString1.getBytes()) + b.eC(paramString2, paramString1)).getBytes());
     AppMethodBeat.o(78851);
     return paramString1;
   }
   
   public static abstract interface a
   {
-    public abstract void mF(boolean paramBoolean);
+    public abstract void mY(boolean paramBoolean);
   }
   
   static final class b
-    implements au.a
+    implements av.a
   {
-    private Runnable csS;
+    private Runnable cDO;
     
     b(Runnable paramRunnable)
     {
-      this.csS = paramRunnable;
+      this.cDO = paramRunnable;
     }
     
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(78844);
-      if (this.csS != null) {
-        this.csS.run();
+      if (this.cDO != null) {
+        this.cDO.run();
       }
       AppMethodBeat.o(78844);
       return false;

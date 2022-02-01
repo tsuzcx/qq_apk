@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.bei;
-import com.tencent.mm.protocal.protobuf.bej;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.biq;
+import com.tencent.mm.protocal.protobuf.bir;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class q
   extends n
   implements k
 {
-  private g callback = null;
+  private f callback = null;
   public b rr = null;
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(23397);
-    this.callback = paramg;
-    paramg = new b.a();
-    paramg.hvt = new bei();
-    paramg.hvu = new bej();
-    paramg.uri = "/cgi-bin/mmbiz-bin/rank/getsportdevicelist";
-    paramg.funcId = getType();
-    paramg.reqCmdId = 0;
-    paramg.respCmdId = 0;
-    this.rr = paramg.aAz();
+    this.callback = paramf;
+    paramf = new b.a();
+    paramf.hNM = new biq();
+    paramf.hNN = new bir();
+    paramf.uri = "/cgi-bin/mmbiz-bin/rank/getsportdevicelist";
+    paramf.funcId = getType();
+    paramf.hNO = 0;
+    paramf.respCmdId = 0;
+    this.rr = paramf.aDC();
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(23397);
     return i;
@@ -43,7 +43,7 @@ public final class q
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23396);
-    ac.i("MicroMsg.exdevice.NetSceneGetSportDeviceList", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    ad.i("MicroMsg.exdevice.NetSceneGetSportDeviceList", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(23396);
   }

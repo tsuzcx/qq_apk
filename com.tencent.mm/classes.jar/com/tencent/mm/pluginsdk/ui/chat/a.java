@@ -6,186 +6,189 @@ import java.util.ArrayList;
 
 public final class a
 {
-  c DsY;
-  c DsZ;
-  public c Dta;
-  c Dtb;
-  c Dtc;
-  c Dtd;
-  c Dte;
-  c Dtf;
-  c Dtg;
-  c Dth;
-  c Dti;
-  c Dtj;
-  c Dtk;
-  c Dtl;
-  c Dtm;
-  c Dtn;
-  c Dto;
-  c Dtp;
-  public c Dtq;
-  c Dtr;
-  c Dts;
-  public c Dtt;
-  private c Dtu;
-  c Dtv;
-  c Dtw;
-  c Dtx;
-  c Dty;
-  ArrayList<a> Dtz;
+  c EYA;
+  c EYB;
+  c EYC;
+  public c EYD;
+  ArrayList<a> EYE;
+  c EYc;
+  c EYd;
+  c EYe;
+  c EYf;
+  c EYg;
+  c EYh;
+  c EYi;
+  c EYj;
+  c EYk;
+  c EYl;
+  c EYm;
+  c EYn;
+  c EYo;
+  c EYp;
+  c EYq;
+  c EYr;
+  c EYs;
+  c EYt;
+  public c EYu;
+  c EYv;
+  c EYw;
+  public c EYx;
+  private c EYy;
+  c EYz;
   public final String TAG;
   
   public a()
   {
     AppMethodBeat.i(31493);
     this.TAG = "MircoMsg.AppPanelControl";
-    this.DsY = new c();
-    this.DsZ = new c();
-    this.Dta = new c();
-    this.Dtb = new c();
-    this.Dtc = new c();
-    this.Dtd = new c();
-    this.Dte = new c();
-    this.Dtn = new c();
-    this.Dtl = new c();
-    this.Dtf = new c();
-    this.Dtg = new c();
-    this.Dth = new c();
-    this.Dti = new c();
-    this.Dtj = new c();
-    this.Dtk = new c();
-    this.Dtm = new c();
-    this.Dto = new c();
-    this.Dtp = new c();
-    this.Dtq = new c();
-    this.Dtr = new c();
-    this.Dts = new c();
-    this.Dtt = new c();
-    this.Dtu = new c();
-    this.Dtv = new c();
-    this.Dty = new c();
-    this.Dtw = new c();
-    this.Dtx = new c();
+    this.EYc = new c();
+    this.EYd = new c();
+    this.EYe = new c();
+    this.EYf = new c();
+    this.EYg = new c();
+    this.EYh = new c();
+    this.EYi = new c();
+    this.EYr = new c();
+    this.EYp = new c();
+    this.EYj = new c();
+    this.EYk = new c();
+    this.EYl = new c();
+    this.EYm = new c();
+    this.EYn = new c();
+    this.EYo = new c();
+    this.EYq = new c();
+    this.EYs = new c();
+    this.EYt = new c();
+    this.EYu = new c();
+    this.EYv = new c();
+    this.EYw = new c();
+    this.EYx = new c();
+    this.EYy = new c();
+    this.EYz = new c();
+    this.EYC = new c();
+    this.EYD = new c();
+    this.EYA = new c();
+    this.EYB = new c();
     AppMethodBeat.o(31493);
   }
   
-  public final void eOi()
+  public final void fdh()
   {
-    this.DsY.value = true;
-    this.DsZ.value = true;
-    this.Dta.value = true;
-    this.Dtb.value = true;
-    this.Dtc.value = true;
-    this.Dtd.value = true;
-    this.Dte.value = true;
-    this.Dtn.value = true;
-    this.Dtl.value = true;
-    this.Dtf.value = true;
-    this.Dtg.value = true;
-    this.Dth.value = true;
-    this.Dti.value = true;
-    this.Dtj.value = true;
-    this.Dtk.value = true;
-    this.Dtm.value = true;
-    this.Dto.value = true;
-    this.Dtp.value = false;
-    this.Dtq.value = true;
-    this.Dtr.value = true;
-    this.Dtt.value = true;
-    this.Dtu.value = true;
-    this.Dtt.value = false;
-    this.Dtv.value = true;
-    this.Dtw.value = true;
-    this.Dtx.value = true;
+    this.EYc.value = true;
+    this.EYd.value = true;
+    this.EYe.value = true;
+    this.EYf.value = true;
+    this.EYg.value = true;
+    this.EYh.value = true;
+    this.EYi.value = true;
+    this.EYr.value = true;
+    this.EYp.value = true;
+    this.EYj.value = true;
+    this.EYk.value = true;
+    this.EYl.value = true;
+    this.EYm.value = true;
+    this.EYn.value = true;
+    this.EYo.value = true;
+    this.EYq.value = true;
+    this.EYs.value = true;
+    this.EYt.value = false;
+    this.EYu.value = true;
+    this.EYv.value = true;
+    this.EYx.value = true;
+    this.EYy.value = true;
+    this.EYx.value = false;
+    this.EYD.value = false;
+    this.EYz.value = true;
+    this.EYA.value = true;
+    this.EYB.value = true;
   }
   
-  public final void eOj()
+  public final void fdi()
   {
-    this.Dte.value = true;
+    this.EYi.value = true;
   }
   
-  public final void eOk()
+  public final void fdj()
   {
-    this.Dtm.value = true;
+    this.EYq.value = true;
   }
   
   public final ArrayList<a> getAppPanelUnCertainEnterArrayList()
   {
     AppMethodBeat.i(163211);
-    if (this.Dtz == null)
+    if (this.EYE == null)
     {
       localArrayList = new ArrayList();
       AppMethodBeat.o(163211);
       return localArrayList;
     }
-    ArrayList localArrayList = this.Dtz;
+    ArrayList localArrayList = this.EYE;
     AppMethodBeat.o(163211);
     return localArrayList;
   }
   
-  public final void vi(boolean paramBoolean)
+  public final void vU(boolean paramBoolean)
   {
-    this.Dtf.value = paramBoolean;
+    this.EYj.value = paramBoolean;
   }
   
-  public final void vj(boolean paramBoolean)
+  public final void vV(boolean paramBoolean)
   {
-    this.Dtg.value = paramBoolean;
+    this.EYk.value = paramBoolean;
   }
   
-  public final void vk(boolean paramBoolean)
+  public final void vW(boolean paramBoolean)
   {
-    this.Dtk.value = paramBoolean;
+    this.EYo.value = paramBoolean;
   }
   
-  public final void vl(boolean paramBoolean)
+  public final void vX(boolean paramBoolean)
   {
-    this.Dto.value = paramBoolean;
+    this.EYs.value = paramBoolean;
   }
   
-  public final void vm(boolean paramBoolean)
+  public final void vY(boolean paramBoolean)
   {
-    this.Dtr.value = paramBoolean;
+    this.EYv.value = paramBoolean;
   }
   
-  public final void vn(boolean paramBoolean)
+  public final void vZ(boolean paramBoolean)
   {
-    this.Dtu.value = paramBoolean;
+    this.EYy.value = paramBoolean;
   }
   
-  public final void vo(boolean paramBoolean)
+  public final void wa(boolean paramBoolean)
   {
-    this.Dty.value = paramBoolean;
+    this.EYC.value = paramBoolean;
   }
   
   public static final class a
     extends g
   {
-    public String DtA;
-    public int DtB;
-    public String DtC;
-    public int DtD;
-    public String DtE;
-    public String DtF;
-    public a.b DtG;
-    public a.b DtH;
-    public a.b DtI;
-    public a.b DtJ;
-    public String DtK;
-    public long DtL;
+    public String EYF;
+    public int EYG;
+    public String EYH;
+    public int EYI;
+    public String EYJ;
+    public String EYK;
+    public a.b EYL;
+    public a.b EYM;
+    public a.b EYN;
+    public a.b EYO;
+    public String EYP;
+    public long EYQ;
     public String iconUrl;
-    public String jjp;
-    public String lze;
-    public int vjP;
+    public String jCX;
+    public String lYC;
+    public int uxt;
     
     public a()
     {
       AppMethodBeat.i(163209);
-      this.DtG = new a.b();
-      this.DtH = new a.b();
-      this.DtI = new a.b();
-      this.DtJ = new a.b();
+      this.EYL = new a.b();
+      this.EYM = new a.b();
+      this.EYN = new a.b();
+      this.EYO = new a.b();
       AppMethodBeat.o(163209);
     }
   }
@@ -198,13 +201,13 @@ public final class a
   
   public final class c
   {
-    private boolean DtM;
+    private boolean EYR;
     public boolean value;
     
     public c()
     {
       AppMethodBeat.i(31492);
-      this.DtM = true;
+      this.EYR = true;
       this.value = true;
       AppMethodBeat.o(31492);
     }

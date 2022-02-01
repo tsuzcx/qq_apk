@@ -7,18 +7,18 @@ import java.util.List;
 public final class b
   extends c
 {
-  public final long aTs;
-  public final long bmR;
-  public final boolean boA;
-  public final boolean boB;
-  public final a boC;
-  public final int bot;
-  public final long bou;
-  public final boolean bov;
-  public final int bow;
-  public final int box;
-  public final long boy;
-  public final boolean boz;
+  public final long bdM;
+  public final long bxm;
+  public final int byO;
+  public final long byP;
+  public final boolean byQ;
+  public final int byR;
+  public final int byS;
+  public final long byT;
+  public final boolean byU;
+  public final boolean byV;
+  public final boolean byW;
+  public final a byX;
   public final List<a> segments;
   public final int version;
   
@@ -26,23 +26,23 @@ public final class b
   {
     super(paramString, paramList);
     AppMethodBeat.i(62888);
-    this.bot = paramInt1;
-    this.bmR = paramLong2;
-    this.bov = paramBoolean1;
-    this.bow = paramInt2;
-    this.box = paramInt3;
+    this.byO = paramInt1;
+    this.bxm = paramLong2;
+    this.byQ = paramBoolean1;
+    this.byR = paramInt2;
+    this.byS = paramInt3;
     this.version = paramInt4;
-    this.boy = paramLong3;
-    this.boz = paramBoolean2;
-    this.boA = paramBoolean3;
-    this.boB = paramBoolean4;
-    this.boC = parama;
+    this.byT = paramLong3;
+    this.byU = paramBoolean2;
+    this.byV = paramBoolean3;
+    this.byW = paramBoolean4;
+    this.byX = parama;
     this.segments = Collections.unmodifiableList(paramList1);
     if (!paramList1.isEmpty())
     {
       paramString = (a)paramList1.get(paramList1.size() - 1);
-      paramLong2 = paramString.boE;
-      this.aTs = (paramString.aTs + paramLong2);
+      paramLong2 = paramString.byZ;
+      this.bdM = (paramString.bdM + paramLong2);
       if (paramLong1 != -9223372036854775807L) {
         break label166;
       }
@@ -50,48 +50,48 @@ public final class b
     }
     for (;;)
     {
-      this.bou = paramLong2;
+      this.byP = paramLong2;
       AppMethodBeat.o(62888);
       return;
-      this.aTs = 0L;
+      this.bdM = 0L;
       break;
       label166:
       paramLong2 = paramLong1;
       if (paramLong1 < 0L) {
-        paramLong2 = paramLong1 + this.aTs;
+        paramLong2 = paramLong1 + this.bdM;
       }
     }
   }
   
-  public final long us()
+  public final long vR()
   {
-    return this.bmR + this.aTs;
+    return this.bxm + this.bdM;
   }
   
   public static final class a
     implements Comparable<Long>
   {
-    public final long aTs;
-    public final boolean bee;
-    public final int boD;
-    public final long boE;
-    public final String boF;
-    public final String boG;
-    public final long boH;
-    public final long boI;
+    public final long bdM;
+    public final boolean boz;
+    public final int byY;
+    public final long byZ;
+    public final String bza;
+    public final String bzb;
+    public final long bzc;
+    public final long bzd;
     public final String url;
     
     public a(String paramString1, long paramLong1, int paramInt, long paramLong2, boolean paramBoolean, String paramString2, String paramString3, long paramLong3, long paramLong4)
     {
       this.url = paramString1;
-      this.aTs = paramLong1;
-      this.boD = paramInt;
-      this.boE = paramLong2;
-      this.bee = paramBoolean;
-      this.boF = paramString2;
-      this.boG = paramString3;
-      this.boH = paramLong3;
-      this.boI = paramLong4;
+      this.bdM = paramLong1;
+      this.byY = paramInt;
+      this.byZ = paramLong2;
+      this.boz = paramBoolean;
+      this.bza = paramString2;
+      this.bzb = paramString3;
+      this.bzc = paramLong3;
+      this.bzd = paramLong4;
     }
     
     public a(String paramString, long paramLong1, long paramLong2)
@@ -102,7 +102,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.a.b
  * JD-Core Version:    0.7.0.1
  */

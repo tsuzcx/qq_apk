@@ -3,52 +3,56 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.app.Activity;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.ma;
-import com.tencent.mm.g.a.ma.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.mj;
+import com.tencent.mm.g.a.mj.b;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bo.a;
+import com.tencent.mm.network.e;
+import com.tencent.mm.pluginsdk.l;
 
 public final class c
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  private static long vZj = 0L;
-  private Activity dgE;
-  private c.a vZk;
+  private static long xgW = 0L;
+  private Activity dsa;
+  private a xgX;
   
   public c(Activity paramActivity)
   {
     AppMethodBeat.i(123141);
-    com.tencent.mm.kernel.g.agQ().ghe.a(138, this);
-    this.dgE = paramActivity;
+    g.ajB().gAO.a(138, this);
+    this.dsa = paramActivity;
     AppMethodBeat.o(123141);
   }
   
-  public final void a(final c.a parama)
+  public final void a(final a parama)
   {
     AppMethodBeat.i(123142);
-    this.vZk = parama;
-    parama = new ma();
-    parama.dod.dgE = this.dgE;
-    parama.dod.dof = new Runnable()
+    this.xgX = parama;
+    parama = new mj();
+    parama.dzR.dsa = this.dsa;
+    parama.dzR.dzT = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(123139);
-        if (parama.doe.dbS)
+        if (parama.dzS.dno)
         {
           c.a(c.this);
           AppMethodBeat.o(123139);
           return;
         }
         if (c.b(c.this) != null) {
-          c.b(c.this).drQ();
+          c.b(c.this).dCo();
         }
         AppMethodBeat.o(123139);
       }
     };
-    a.GpY.a(parama, Looper.myLooper());
+    com.tencent.mm.sdk.b.a.IbL.a(parama, Looper.myLooper());
     AppMethodBeat.o(123142);
   }
   
@@ -64,21 +68,21 @@ public final class c
   {
     AppMethodBeat.i(123145);
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if (this.vZk != null)
+      if (this.xgX != null)
       {
-        this.vZk.drP();
-        this.vZk = null;
+        this.xgX.dCn();
+        this.xgX = null;
       }
     }
     for (;;)
     {
-      vZj = System.currentTimeMillis();
+      xgW = System.currentTimeMillis();
       AppMethodBeat.o(123145);
       return;
-      if (this.vZk != null)
+      if (this.xgX != null)
       {
-        this.vZk.drQ();
-        this.vZk = null;
+        this.xgX.dCo();
+        this.xgX = null;
       }
     }
   }
@@ -86,13 +90,20 @@ public final class c
   public final void release()
   {
     AppMethodBeat.i(123143);
-    com.tencent.mm.kernel.g.agQ().ghe.b(138, this);
+    g.ajB().gAO.b(138, this);
     AppMethodBeat.o(123143);
+  }
+  
+  public static abstract class a
+  {
+    public abstract void dCn();
+    
+    public abstract void dCo();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.c
  * JD-Core Version:    0.7.0.1
  */

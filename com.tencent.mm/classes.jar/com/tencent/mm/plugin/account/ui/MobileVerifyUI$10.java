@@ -15,7 +15,7 @@ final class MobileVerifyUI$10
     AppMethodBeat.i(128449);
     if ((paramInt == 6) || (paramInt == 5))
     {
-      MobileVerifyUI.e(this.iUU);
+      MobileVerifyUI.e(this.jod);
       AppMethodBeat.o(128449);
       return true;
     }
@@ -25,7 +25,7 @@ final class MobileVerifyUI$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.MobileVerifyUI.10
  * JD-Core Version:    0.7.0.1
  */

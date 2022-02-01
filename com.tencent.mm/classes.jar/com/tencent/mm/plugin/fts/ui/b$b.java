@@ -4,20 +4,20 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class b$b
 {
-  public static final int sBA;
-  public static final int sBB;
-  public static final int sBz;
+  public static final int tya;
+  public static final int tyb;
+  public static final int tyc;
   
   static
   {
     AppMethodBeat.i(111811);
-    sBz = ai.getContext().getResources().getColor(2131099703);
-    sBA = Color.parseColor("#661AAD19");
-    sBB = Color.parseColor("#801AAD19");
+    tya = aj.getContext().getResources().getColor(2131099703);
+    tyb = Color.parseColor("#661AAD19");
+    tyc = Color.parseColor("#801AAD19");
     AppMethodBeat.o(111811);
   }
 }

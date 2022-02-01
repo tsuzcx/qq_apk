@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.secinforeport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.secinforeport.a.b;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.xf;
-import com.tencent.mm.protocal.protobuf.xg;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.ze;
+import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.nio.charset.Charset;
 import java.util.LinkedList;
 
@@ -20,8 +20,8 @@ public enum a
   static
   {
     AppMethodBeat.i(89142);
-    xnC = new a("INSTANCE");
-    xnD = new a[] { xnC };
+    yBD = new a("INSTANCE");
+    yBE = new a[] { yBD };
     AppMethodBeat.o(89142);
   }
   
@@ -32,33 +32,33 @@ public enum a
     AppMethodBeat.i(89141);
     if (paramString == null)
     {
-      ac.w("MicroMsg.ClipBordReportImpl", "operationInfo isNullOrNil");
+      ad.w("MicroMsg.ClipBordReportImpl", "operationInfo isNullOrNil");
       AppMethodBeat.o(89141);
       return;
     }
-    if (!g.agM())
+    if (!g.ajx())
     {
       AppMethodBeat.o(89141);
       return;
     }
-    xf localxf = new xf();
-    localxf.Ery = paramInt1;
-    localxf.ErA = paramInt2;
+    ze localze = new ze();
+    localze.FYI = paramInt1;
+    localze.FYK = paramInt2;
     paramString = paramString.getBytes(Charset.forName("UTF-8"));
-    localxf.Erz = new SKBuiltinBuffer_t().setBuffer(paramString);
-    if (!bs.cv(paramArrayOfByte)) {
-      localxf.ErB = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
+    localze.FYJ = new SKBuiltinBuffer_t().setBuffer(paramString);
+    if (!bt.cC(paramArrayOfByte)) {
+      localze.FYL = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
     }
-    paramString = new xg();
-    paramString.ErD.add(localxf);
-    paramString.ErC = paramString.ErD.size();
-    ((k)g.ab(k.class)).awA().c(new j.a(211, paramString));
+    paramString = new zf();
+    paramString.FYN.add(localze);
+    paramString.FYM = paramString.FYN.size();
+    ((l)g.ab(l.class)).azo().c(new k.a(211, paramString));
     AppMethodBeat.o(89141);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.secinforeport.a
  * JD-Core Version:    0.7.0.1
  */

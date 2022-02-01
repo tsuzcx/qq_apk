@@ -2,99 +2,99 @@ package com.tencent.mm.plugin.finder.video.sticker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sticker.c;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/sticker/DiffCallbackHolder;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "()V", "callback", "dataList", "", "Lcom/tencent/mm/sticker/LensItem;", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "setCallback", "updateData", "lensList", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/sticker/DiffCallbackHolder;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "()V", "callback", "dataList", "", "Lcom/tencent/mm/sticker/LensItem;", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "setCallback", "updateData", "lensList", "plugin-finder_release"})
 public final class a
   implements d
 {
   private List<c> dataList;
-  private d rUu;
+  private d sRf;
   
   public a()
   {
-    AppMethodBeat.i(204015);
+    AppMethodBeat.i(204976);
     this.dataList = ((List)new ArrayList());
-    AppMethodBeat.o(204015);
+    AppMethodBeat.o(204976);
   }
   
-  public final void U(List<c> paramList)
+  public final void V(List<c> paramList)
   {
-    AppMethodBeat.i(204010);
-    k.h(paramList, "lensList");
+    AppMethodBeat.i(204971);
+    p.h(paramList, "lensList");
     this.dataList = paramList;
-    d locald = this.rUu;
+    d locald = this.sRf;
     if (locald != null)
     {
-      locald.U(paramList);
-      AppMethodBeat.o(204010);
+      locald.V(paramList);
+      AppMethodBeat.o(204971);
       return;
     }
-    AppMethodBeat.o(204010);
+    AppMethodBeat.o(204971);
   }
   
   public final void a(d paramd)
   {
-    AppMethodBeat.i(204009);
-    this.rUu = paramd;
-    paramd.U(this.dataList);
-    paramd.fm(0, this.dataList.size());
-    AppMethodBeat.o(204009);
+    AppMethodBeat.i(204970);
+    this.sRf = paramd;
+    paramd.V(this.dataList);
+    paramd.fq(0, this.dataList.size());
+    AppMethodBeat.o(204970);
   }
   
-  public final void fm(int paramInt1, int paramInt2)
+  public final void fq(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(204011);
-    d locald = this.rUu;
+    AppMethodBeat.i(204972);
+    d locald = this.sRf;
     if (locald != null)
     {
-      locald.fm(paramInt1, paramInt2);
-      AppMethodBeat.o(204011);
+      locald.fq(paramInt1, paramInt2);
+      AppMethodBeat.o(204972);
       return;
     }
-    AppMethodBeat.o(204011);
+    AppMethodBeat.o(204972);
   }
   
-  public final void fn(int paramInt1, int paramInt2)
+  public final void fr(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(204012);
-    d locald = this.rUu;
+    AppMethodBeat.i(204973);
+    d locald = this.sRf;
     if (locald != null)
     {
-      locald.fn(paramInt1, paramInt2);
-      AppMethodBeat.o(204012);
+      locald.fr(paramInt1, paramInt2);
+      AppMethodBeat.o(204973);
       return;
     }
-    AppMethodBeat.o(204012);
+    AppMethodBeat.o(204973);
   }
   
-  public final void fo(int paramInt1, int paramInt2)
+  public final void fs(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(204013);
-    d locald = this.rUu;
+    AppMethodBeat.i(204974);
+    d locald = this.sRf;
     if (locald != null)
     {
-      locald.fo(paramInt1, paramInt2);
-      AppMethodBeat.o(204013);
+      locald.fs(paramInt1, paramInt2);
+      AppMethodBeat.o(204974);
       return;
     }
-    AppMethodBeat.o(204013);
+    AppMethodBeat.o(204974);
   }
   
-  public final void fp(int paramInt1, int paramInt2)
+  public final void ft(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(204014);
-    d locald = this.rUu;
+    AppMethodBeat.i(204975);
+    d locald = this.sRf;
     if (locald != null)
     {
-      locald.fp(paramInt1, paramInt2);
-      AppMethodBeat.o(204014);
+      locald.ft(paramInt1, paramInt2);
+      AppMethodBeat.o(204975);
       return;
     }
-    AppMethodBeat.o(204014);
+    AppMethodBeat.o(204975);
   }
 }
 

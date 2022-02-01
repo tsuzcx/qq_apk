@@ -4,14 +4,14 @@ import com.tencent.mm.plugin.story.i.j;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavSelectView;", "", "onIsAll", "", "isAll", "", "onLoadFpFinish", "datas", "", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "checkedDatas", "onLoadNpFinish", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavSelectView;", "", "onIsAll", "", "isAll", "", "onLoadFpFinish", "datas", "", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "checkedDatas", "onLoadNpFinish", "plugin-story_release"})
 public abstract interface a$d
 {
-  public abstract void gb(List<j> paramList);
+  public abstract void gm(List<j> paramList);
   
-  public abstract void rC(boolean paramBoolean);
+  public abstract void si(boolean paramBoolean);
   
-  public abstract void y(List<j> paramList1, List<j> paramList2);
+  public abstract void z(List<j> paramList1, List<j> paramList2);
 }
 
 

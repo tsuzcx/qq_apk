@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.share;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.a;
+import com.tencent.mm.ai.k.a;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.plugin.appbrand.u;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -20,25 +20,25 @@ public class f
   {
     AppMethodBeat.i(174910);
     a locala = (a)super.a(paramc, paramJSONObject);
-    locala.kLD = paramJSONObject.optInt("bizType", k.a.hhA.ordinal());
-    if (!k.a.isValid(locala.kLD))
+    locala.lif = paramJSONObject.optInt("bizType", k.a.hzJ.ordinal());
+    if (!k.a.isValid(locala.lif))
     {
-      ac.e("MicroMsg.JsApiShareAppMessageForFakeNative", "share app message fail, biz is invalid.");
+      ad.e("MicroMsg.JsApiShareAppMessageForFakeNative", "share app message fail, biz is invalid.");
       paramc = new JsApiShareAppMessageBase.c("biz is invalid");
       AppMethodBeat.o(174910);
       throw paramc;
     }
     String str2 = paramJSONObject.optString("defaultHintUrl");
     String str1 = str2;
-    if (bs.isNullOrNil(str2)) {
-      str1 = u.Hx(paramc.getAppId());
+    if (bt.isNullOrNil(str2)) {
+      str1 = u.KJ(paramc.getAppId());
     }
-    locala.jGj = str1;
-    locala.kLE = paramJSONObject.optString("tailLang", "");
-    locala.kLu.put("biz", Integer.valueOf(locala.kLD));
-    locala.kLu.put("tail_lang", locala.kLE);
-    locala.kLu.put("icon_url", locala.kLk.igG);
-    locala.kLu.put("nickname", locala.kLk.ddh);
+    locala.kas = str1;
+    locala.lig = paramJSONObject.optString("tailLang", "");
+    locala.lhW.put("biz", Integer.valueOf(locala.lif));
+    locala.lhW.put("tail_lang", locala.lig);
+    locala.lhW.put("icon_url", locala.lhK.iAa);
+    locala.lhW.put("nickname", locala.lhK.doD);
     AppMethodBeat.o(174910);
     return locala;
   }
@@ -46,13 +46,13 @@ public class f
   static final class a
     extends JsApiShareAppMessageBase.d
   {
-    public int kLD;
-    public String kLE;
+    public int lif;
+    public String lig;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.f
  * JD-Core Version:    0.7.0.1
  */

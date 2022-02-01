@@ -8,9 +8,9 @@ import org.json.JSONObject;
 public abstract class PathActionArg
   extends BasePathActionArg
 {
-  public float jzM;
-  public boolean jzN;
-  public float kr;
+  public float jTH;
+  public boolean jTI;
+  public float mh;
   public float radius;
   public float x;
   public float y;
@@ -37,7 +37,7 @@ public abstract class PathActionArg
         return false;
       } while (!(paramObject instanceof PathActionArg));
       paramObject = (PathActionArg)paramObject;
-    } while ((paramObject.x != this.x) || (paramObject.y != this.y) || (paramObject.radius != this.radius) || (paramObject.kr != this.kr) || (paramObject.jzN != this.jzN));
+    } while ((paramObject.x != this.x) || (paramObject.y != this.y) || (paramObject.radius != this.radius) || (paramObject.mh != this.mh) || (paramObject.jTI != this.jTI));
     return true;
   }
   
@@ -48,12 +48,12 @@ public abstract class PathActionArg
     this.x = paramParcel.readFloat();
     this.y = paramParcel.readFloat();
     this.radius = paramParcel.readFloat();
-    this.kr = paramParcel.readFloat();
-    this.jzM = paramParcel.readFloat();
+    this.mh = paramParcel.readFloat();
+    this.jTH = paramParcel.readFloat();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.jzN = bool;
+      this.jTI = bool;
       return;
       bool = false;
     }
@@ -66,9 +66,9 @@ public abstract class PathActionArg
     this.x = g.f(paramJSONObject, 0);
     this.y = g.f(paramJSONObject, 1);
     this.radius = g.f(paramJSONObject, 2);
-    this.kr = ((float)paramJSONObject.optDouble(3));
-    this.jzM = ((float)paramJSONObject.optDouble(4));
-    this.jzN = paramJSONObject.optBoolean(5);
+    this.mh = ((float)paramJSONObject.optDouble(3));
+    this.jTH = ((float)paramJSONObject.optDouble(4));
+    this.jTI = paramJSONObject.optBoolean(5);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -77,9 +77,9 @@ public abstract class PathActionArg
     paramParcel.writeFloat(this.x);
     paramParcel.writeFloat(this.y);
     paramParcel.writeFloat(this.radius);
-    paramParcel.writeFloat(this.kr);
-    paramParcel.writeFloat(this.jzM);
-    if (this.jzN) {}
+    paramParcel.writeFloat(this.mh);
+    paramParcel.writeFloat(this.jTH);
+    if (this.jTI) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);

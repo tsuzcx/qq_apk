@@ -12,14 +12,14 @@ import java.util.regex.Pattern;
 public final class g
   implements b
 {
-  private final Pattern HSd;
-  private final List<d.a> JSY;
+  private final Pattern JFV;
+  private final List<d.a> LMP;
   
   public g()
   {
     AppMethodBeat.i(138353);
-    this.JSY = new ArrayList();
-    this.HSd = Pattern.compile("^/system/xbin/ku\\.sud$|^daemonsu:|^k_worker/[1-9]\\d*:[1-9]\\d*$|^kr_worker/[1-9]\\d*:[1-9]\\d*$|^km_worker/[1-9]\\d*:[1-9]\\d*$|^tworker/[1-9]\\d*:[1-9]\\d*$|^tu_worker/[1-9]\\d*:[1-9]\\d*$|^tq_worker/[1-9]\\d*:[1-9]\\d*$|^kworker/[1-9]\\d{2}$|^permmgrd$|^360sguard$|^/data/data/[\\w\\-\\.]+/");
+    this.LMP = new ArrayList();
+    this.JFV = Pattern.compile("^/system/xbin/ku\\.sud$|^daemonsu:|^k_worker/[1-9]\\d*:[1-9]\\d*$|^kr_worker/[1-9]\\d*:[1-9]\\d*$|^km_worker/[1-9]\\d*:[1-9]\\d*$|^tworker/[1-9]\\d*:[1-9]\\d*$|^tu_worker/[1-9]\\d*:[1-9]\\d*$|^tq_worker/[1-9]\\d*:[1-9]\\d*$|^kworker/[1-9]\\d{2}$|^permmgrd$|^360sguard$|^/data/data/[\\w\\-\\.]+/");
     AppMethodBeat.o(138353);
   }
   
@@ -31,28 +31,28 @@ public final class g
       AppMethodBeat.o(138354);
       return;
     }
-    if (parama.JTf != 1)
+    if (parama.LMW != 1)
     {
       AppMethodBeat.o(138354);
       return;
     }
-    this.JSY.add(parama);
+    this.LMP.add(parama);
     AppMethodBeat.o(138354);
   }
   
-  public final boolean fCu()
+  public final boolean fTK()
   {
     AppMethodBeat.i(138355);
-    Iterator localIterator = this.JSY.iterator();
+    Iterator localIterator = this.LMP.iterator();
     while (localIterator.hasNext())
     {
       d.a locala = (d.a)localIterator.next();
       new StringBuilder("SingleProcessAnalyzer : ").append(locala.toString());
-      h.feg();
-      if ((locala.name != null) && (this.HSd.matcher(locala.name).find()))
+      h.fuo();
+      if ((locala.name != null) && (this.JFV.matcher(locala.name).find()))
       {
         new StringBuilder("SingleProcessAnalyzer match : ").append(locala.toString());
-        h.fCO();
+        h.fUg();
         AppMethodBeat.o(138355);
         return true;
       }

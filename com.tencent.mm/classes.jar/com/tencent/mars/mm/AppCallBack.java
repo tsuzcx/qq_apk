@@ -5,12 +5,10 @@ import com.tencent.mars.app.AppLogic.AccountInfo;
 import com.tencent.mars.app.AppLogic.DeviceInfo;
 import com.tencent.mars.app.AppLogic.ICallBack;
 import com.tencent.mm.network.a;
-import com.tencent.mm.network.ad;
 import com.tencent.mm.network.t;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -20,7 +18,7 @@ public class AppCallBack
 {
   private static final String TAG = "AppCallBack";
   private Context context = null;
-  AppLogic.DeviceInfo info = new AppLogic.DeviceInfo(d.DEVICE_NAME, d.gMK);
+  AppLogic.DeviceInfo info = new AppLogic.DeviceInfo(d.DEVICE_NAME, d.hgH);
   
   public AppCallBack(Context paramContext)
   {
@@ -37,17 +35,17 @@ public class AppCallBack
   public AppLogic.AccountInfo getAccountInfo()
   {
     AppLogic.AccountInfo localAccountInfo = new AppLogic.AccountInfo();
-    if ((ad.aMf() == null) || (ad.aMf().ilv == null)) {}
+    if ((com.tencent.mm.network.ad.aPm() == null) || (com.tencent.mm.network.ad.aPm().iEM == null)) {}
     for (;;)
     {
       return localAccountInfo;
       try
       {
-        localAccountInfo.uin = ad.aMf().ilv.getUin();
-        localAccountInfo.userName = ad.aMf().ilv.aBV();
-        if (bs.isNullOrNil(localAccountInfo.userName))
+        localAccountInfo.uin = com.tencent.mm.network.ad.aPm().iEM.getUin();
+        localAccountInfo.userName = com.tencent.mm.network.ad.aPm().iEM.aEY();
+        if (bt.isNullOrNil(localAccountInfo.userName))
         {
-          localAccountInfo.userName = ad.aMf().ilv.getUsername();
+          localAccountInfo.userName = com.tencent.mm.network.ad.aPm().iEM.getUsername();
           return localAccountInfo;
         }
       }
@@ -65,7 +63,7 @@ public class AppCallBack
     }
     try
     {
-      Object localObject = e.U(this.context.getFilesDir());
+      Object localObject = e.X(this.context.getFilesDir());
       if (!((e)localObject).exists()) {
         ((e)localObject).createNewFile();
       }
@@ -74,7 +72,7 @@ public class AppCallBack
     }
     catch (Exception localException)
     {
-      ac.e("AppCallBack", exception2String(localException));
+      com.tencent.mm.sdk.platformtools.ad.e("AppCallBack", exception2String(localException));
       Assert.assertTrue(localException.getClass().getSimpleName() + ":" + localException.getStackTrace()[0] + ", " + localException.getStackTrace()[1], false);
     }
     return "";
@@ -82,12 +80,12 @@ public class AppCallBack
   
   public int getClientVersion()
   {
-    return d.DIc;
+    return d.Fnj;
   }
   
   public String getCurLanguage()
   {
-    return ab.eUO();
+    return ac.fks();
   }
   
   public AppLogic.DeviceInfo getDeviceType()

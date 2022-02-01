@@ -2,19 +2,19 @@ package com.tencent.mm.modelsfs;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.imgenc.MMIMAGEENCJNI;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class c
   extends SFSInputStream
 {
-  private a hRF;
+  private a ikT;
   
   public c(long paramLong1, long paramLong2)
   {
     super(paramLong1);
     AppMethodBeat.i(155985);
-    this.hRF = new a(paramLong2);
+    this.ikT = new a(paramLong2);
     AppMethodBeat.o(155985);
   }
   
@@ -22,8 +22,8 @@ public final class c
   {
     AppMethodBeat.i(155991);
     super.close();
-    if (this.hRF != null) {
-      this.hRF.free();
+    if (this.ikT != null) {
+      this.ikT.free();
     }
     AppMethodBeat.o(155991);
   }
@@ -32,8 +32,8 @@ public final class c
   {
     AppMethodBeat.i(155986);
     super.mark(paramInt);
-    a locala = this.hRF;
-    locala.hRE = locala.hRC;
+    a locala = this.ikT;
+    locala.ikS = locala.ikQ;
     AppMethodBeat.o(155986);
   }
   
@@ -54,7 +54,7 @@ public final class c
       AppMethodBeat.o(155989);
       return paramInt1;
     }
-    this.hRF.z(paramArrayOfByte, paramInt2);
+    this.ikT.z(paramArrayOfByte, paramInt2);
     AppMethodBeat.o(155989);
     return paramInt1;
   }
@@ -63,19 +63,19 @@ public final class c
   {
     AppMethodBeat.i(155987);
     super.reset();
-    a locala = this.hRF;
-    ac.i("MicroMsg.EncEngine", "reset " + bs.eWi());
+    a locala = this.ikT;
+    ad.i("MicroMsg.EncEngine", "reset " + bt.flS());
     locala.free();
-    if (locala.hRE == 0L)
+    if (locala.ikS == 0L)
     {
       locala.init();
-      locala.hRC = 0L;
+      locala.ikQ = 0L;
       AppMethodBeat.o(155987);
       return;
     }
     locala.init();
-    MMIMAGEENCJNI.seek(locala.mNativePtr, locala.hRE, 1);
-    locala.hRC = locala.hRE;
+    MMIMAGEENCJNI.seek(locala.mNativePtr, locala.ikS, 1);
+    locala.ikQ = locala.ikS;
     AppMethodBeat.o(155987);
   }
   
@@ -83,8 +83,8 @@ public final class c
   {
     AppMethodBeat.i(155990);
     long l = super.skip(paramLong);
-    a locala = this.hRF;
-    locala.hRC = paramLong;
+    a locala = this.ikT;
+    locala.ikQ = paramLong;
     MMIMAGEENCJNI.seek(locala.mNativePtr, paramLong, 1);
     AppMethodBeat.o(155990);
     return l;

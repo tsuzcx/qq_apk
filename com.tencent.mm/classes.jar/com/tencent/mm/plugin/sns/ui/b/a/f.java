@@ -8,22 +8,22 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView;
-import com.tencent.mm.plugin.sns.ui.an;
+import com.tencent.mm.plugin.sns.ui.aq;
 import com.tencent.mm.plugin.sns.ui.b.b.b.a;
 import com.tencent.mm.plugin.sns.ui.c.a.a;
 import com.tencent.mm.plugin.sns.ui.c.a.c;
 import com.tencent.mm.plugin.sns.ui.widget.SnsAdTimelineVideoView;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 
 public final class f
   extends b
 {
-  private AnimatorSet xhG;
-  private ValueAnimator zaW;
-  private ValueAnimator zaX;
-  c zbi;
+  private ValueAnimator AsN;
+  private ValueAnimator AsO;
+  c AsZ;
+  private AnimatorSet yvH;
   
   public f(MMActivity paramMMActivity, a parama)
   {
@@ -31,9 +31,9 @@ public final class f
     try
     {
       this.activity = paramMMActivity;
-      this.zbi = ((c)parama);
-      this.zaW = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.zaW.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.AsZ = ((c)parama);
+      this.AsN = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      this.AsN.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -41,60 +41,60 @@ public final class f
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
           if (f != 1.0F)
           {
-            f.this.zbi.yGK.setScaleX(f);
-            f.this.zbi.yGK.setScaleY(f);
-            f.this.zbi.yGK.setAlpha(f);
+            f.this.AsZ.zYc.setScaleX(f);
+            f.this.AsZ.zYc.setScaleY(f);
+            f.this.AsZ.zYc.setAlpha(f);
           }
           AppMethodBeat.o(99918);
         }
       });
-      this.zaW.setDuration(400L);
-      this.zaW.addListener(new AnimatorListenerAdapter()
+      this.AsN.setDuration(400L);
+      this.AsN.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationStart(Animator paramAnonymousAnimator) {}
       });
-      this.zaX = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.zaX.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.AsO = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      this.AsO.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(179331);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          f.this.zbi.rXY.setAlpha(f);
-          f.this.zbi.zbW.setAlpha(f);
+          f.this.AsZ.sUS.setAlpha(f);
+          f.this.AsZ.AtN.setAlpha(f);
           AppMethodBeat.o(179331);
         }
       });
-      this.zaX.setDuration(100L);
-      this.xhG = new AnimatorSet();
-      this.xhG.playTogether(new Animator[] { this.zaW, this.zaX });
-      this.xhG.addListener(new AnimatorListenerAdapter()
+      this.AsO.setDuration(100L);
+      this.yvH = new AnimatorSet();
+      this.yvH.playTogether(new Animator[] { this.AsN, this.AsO });
+      this.yvH.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(179333);
-          ac.i("MicroMsg.FullCardAdDetailClickAnimation", "onAnimation end");
-          f.this.zbi.yGK.setScaleX(1.0F);
-          f.this.zbi.yGK.setScaleY(1.0F);
-          f.this.zbi.yGK.setAlpha(1.0F);
-          f.this.zbi.rXY.setAlpha(1.0F);
-          f.this.zbi.zbW.setAlpha(1.0F);
-          if (f.this.zaU != null) {
-            f.this.zaU.onAnimationEnd();
+          ad.i("MicroMsg.FullCardAdDetailClickAnimation", "onAnimation end");
+          f.this.AsZ.zYc.setScaleX(1.0F);
+          f.this.AsZ.zYc.setScaleY(1.0F);
+          f.this.AsZ.zYc.setAlpha(1.0F);
+          f.this.AsZ.sUS.setAlpha(1.0F);
+          f.this.AsZ.AtN.setAlpha(1.0F);
+          if (f.this.AsL != null) {
+            f.this.AsL.onAnimationEnd();
           }
-          if (f.this.zbi.zbE.yFl)
+          if (f.this.AsZ.Atv.zWG)
           {
-            if (f.this.zbi.zbE.yFe.getVisibility() == 0)
+            if (f.this.AsZ.Atv.zWz.getVisibility() == 0)
             {
-              f.this.zbi.zbE.yFe.aw(0, false);
-              ac.i("MicroMsg.FullCardAdDetailClickAnimation", "seek newVideoView to 0");
+              f.this.AsZ.Atv.zWz.aB(0, false);
+              ad.i("MicroMsg.FullCardAdDetailClickAnimation", "seek newVideoView to 0");
               AppMethodBeat.o(179333);
             }
           }
-          else if (f.this.zbi.zbE.yFd.getVisibility() == 0)
+          else if (f.this.AsZ.Atv.zWy.getVisibility() == 0)
           {
-            f.this.zbi.zbE.yFd.xDG.clear();
-            ac.i("MicroMsg.FullCardAdDetailClickAnimation", "seek sightView to 0");
+            f.this.AsZ.Atv.zWy.ySq.clear();
+            ad.i("MicroMsg.FullCardAdDetailClickAnimation", "seek sightView to 0");
           }
           AppMethodBeat.o(179333);
         }
@@ -102,7 +102,7 @@ public final class f
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(179332);
-          ac.i("MicroMsg.FullCardAdDetailClickAnimation", "onAnimation start");
+          ad.i("MicroMsg.FullCardAdDetailClickAnimation", "onAnimation start");
           AppMethodBeat.o(179332);
         }
       });
@@ -111,18 +111,18 @@ public final class f
     }
     catch (Throwable paramMMActivity)
     {
-      ac.e("MicroMsg.FullCardAdDetailClickAnimation", "init exp=" + paramMMActivity.toString());
+      ad.e("MicroMsg.FullCardAdDetailClickAnimation", "init exp=" + paramMMActivity.toString());
       AppMethodBeat.o(99922);
     }
   }
   
-  public final void xV(long paramLong)
+  public final void At(long paramLong)
   {
     AppMethodBeat.i(99923);
-    if ((this.xhG != null) && (!this.xhG.isStarted()))
+    if ((this.yvH != null) && (!this.yvH.isStarted()))
     {
-      this.xhG.setStartDelay(paramLong);
-      this.xhG.start();
+      this.yvH.setStartDelay(paramLong);
+      this.yvH.start();
     }
     AppMethodBeat.o(99923);
   }

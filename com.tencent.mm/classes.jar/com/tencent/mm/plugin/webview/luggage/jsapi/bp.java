@@ -1,103 +1,119 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
+import android.content.Context;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.network.ae;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.vfs.i;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-public final class bp
+public class bp
+  extends br<g>
 {
-  private static LinkedList<Class<? extends com.tencent.luggage.d.a>> oKO;
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  private static void aM(Class<? extends com.tencent.luggage.d.a> paramClass)
+  public final void b(final com.tencent.luggage.d.b<g>.a paramb)
   {
-    AppMethodBeat.i(78643);
-    oKO.add(paramClass);
-    AppMethodBeat.o(78643);
+    AppMethodBeat.i(78640);
+    ad.i("MicroMsg.JsApiUploadMediaFile", "invokeInOwn");
+    String str1 = paramb.chh.cgn.optString("appId");
+    String str2 = paramb.chh.cgn.optString("localId");
+    if (paramb.chh.cgn.optInt("isShowProgressTips", 0) == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ad.i("MicroMsg.JsApiUploadMediaFile", "uploadMediaFile, appid = %s, localid = %s, isShowProgressTips = %b", new Object[] { str1, str2, Boolean.valueOf(bool) });
+      if ((!bt.isNullOrNil(str1)) && (!bt.isNullOrNil(str2))) {
+        break;
+      }
+      ad.e("MicroMsg.JsApiUploadMediaFile", "appId or localid is null or nil.");
+      paramb.a("missing arguments", null);
+      AppMethodBeat.o(78640);
+      return;
+    }
+    final LuggageUploadMediaFileManager localLuggageUploadMediaFileManager = new LuggageUploadMediaFileManager();
+    MMActivity localMMActivity = (MMActivity)((g)paramb.chg).mContext;
+    g localg = (g)paramb.chg;
+    paramb = new LuggageUploadMediaFileManager.b()
+    {
+      public final void a(boolean paramAnonymousBoolean, HashMap<String, Object> paramAnonymousHashMap)
+      {
+        AppMethodBeat.i(78639);
+        ad.i("MicroMsg.JsApiUploadMediaFile", "sucess = %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        if (paramAnonymousBoolean) {
+          paramb.d("", paramAnonymousHashMap);
+        }
+        for (;;)
+        {
+          paramAnonymousHashMap = localLuggageUploadMediaFileManager;
+          paramAnonymousHashMap.oJq = null;
+          paramAnonymousHashMap.DOl = null;
+          paramAnonymousHashMap.mAppId = null;
+          paramAnonymousHashMap.DRH = null;
+          paramAnonymousHashMap.DRJ = null;
+          AppMethodBeat.o(78639);
+          return;
+          paramb.a("fail", null);
+        }
+      }
+    };
+    localLuggageUploadMediaFileManager.oJq = localMMActivity;
+    localLuggageUploadMediaFileManager.DOl = localg;
+    localLuggageUploadMediaFileManager.mAppId = str1;
+    localLuggageUploadMediaFileManager.DRH = str2;
+    localLuggageUploadMediaFileManager.DRI = bool;
+    localLuggageUploadMediaFileManager.DRJ = paramb;
+    paramb = com.tencent.mm.plugin.webview.luggage.c.b.aHh(localLuggageUploadMediaFileManager.DRH);
+    if (paramb == null)
+    {
+      ad.e("MicroMsg.UploadMediaFileHelp", "item is null");
+      localLuggageUploadMediaFileManager.DRJ.a(false, null);
+      AppMethodBeat.o(78640);
+      return;
+    }
+    if (paramb.mediaType != 1)
+    {
+      if ((bt.isNullOrNil(paramb.jUC)) || (!i.fv(paramb.jUC)))
+      {
+        ad.e("MicroMsg.UploadMediaFileHelp", "origFilePath is not exist");
+        localLuggageUploadMediaFileManager.DRJ.a(false, null);
+        AppMethodBeat.o(78640);
+        return;
+      }
+      if (!ae.cP(localLuggageUploadMediaFileManager.oJq))
+      {
+        paramb = bt.Dd((int)i.aYo(paramb.jUC));
+        com.tencent.mm.ui.base.h.a(localLuggageUploadMediaFileManager.oJq, localLuggageUploadMediaFileManager.oJq.getString(2131766113, new Object[] { paramb }), localLuggageUploadMediaFileManager.oJq.getString(2131755906), false, new LuggageUploadMediaFileManager.1(localLuggageUploadMediaFileManager), new LuggageUploadMediaFileManager.2(localLuggageUploadMediaFileManager));
+        AppMethodBeat.o(78640);
+        return;
+      }
+      localLuggageUploadMediaFileManager.ePQ();
+      AppMethodBeat.o(78640);
+      return;
+    }
+    localLuggageUploadMediaFileManager.ePR();
+    AppMethodBeat.o(78640);
   }
   
-  public static LinkedList<Class<? extends com.tencent.luggage.d.a>> bYl()
+  public final int ccO()
   {
-    try
-    {
-      AppMethodBeat.i(78642);
-      oKO = new LinkedList();
-      aM(al.class);
-      aM(ax.class);
-      aM(bi.class);
-      aM(ap.class);
-      aM(ag.class);
-      aM(a.class);
-      aM(ao.class);
-      aM(aw.class);
-      aM(t.class);
-      aM(at.class);
-      aM(y.class);
-      aM(ak.class);
-      aM(v.class);
-      aM(u.class);
-      aM(m.class);
-      aM(b.class);
-      aM(c.class);
-      aM(g.class);
-      aM(h.class);
-      aM(i.class);
-      aM(j.class);
-      aM(k.class);
-      aM(l.class);
-      aM(o.class);
-      aM(s.class);
-      aM(w.class);
-      aM(z.class);
-      aM(aa.class);
-      aM(ab.class);
-      aM(ae.class);
-      aM(af.class);
-      aM(ai.class);
-      aM(aq.class);
-      aM(au.class);
-      aM(ay.class);
-      aM(az.class);
-      aM(bd.class);
-      aM(be.class);
-      aM(bf.class);
-      aM(bh.class);
-      aM(bj.class);
-      aM(bk.class);
-      aM(bm.class);
-      aM(bl.class);
-      aM(x.class);
-      aM(f.class);
-      aM(n.class);
-      aM(ah.class);
-      aM(aj.class);
-      aM(ac.class);
-      aM(as.class);
-      aM(bc.class);
-      aM(ad.class);
-      aM(av.class);
-      aM(p.class);
-      aM(am.class);
-      aM(an.class);
-      aM(ar.class);
-      aM(q.class);
-      aM(e.class);
-      aM(r.class);
-      aM(d.class);
-      aM(bg.class);
-      aM(bb.class);
-      LinkedList localLinkedList = oKO;
-      AppMethodBeat.o(78642);
-      return localLinkedList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return 0;
+  }
+  
+  public final String name()
+  {
+    return "uploadMediaFile";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.bp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,13 @@
 package com.tencent.mm.plugin.sns.ad.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsns.f;
 import com.tencent.mm.plugin.sns.b.d;
 import com.tencent.mm.plugin.sns.storage.a;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.deu;
-import com.tencent.mm.protocal.protobuf.zf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.abf;
+import com.tencent.mm.protocal.protobuf.dkh;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.List;
 
 public final class m
@@ -17,27 +15,27 @@ public final class m
   public static void a(a parama, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(95060);
-    f localf = new f();
-    localf.n("20source_publishid", paramString1 + ",");
-    localf.n("21uxinfo", paramString2 + ",");
-    localf.n("22clienttime", bs.eWj() + ",");
-    localf.n("23video_statu", ",");
-    localf.n("24source_type", paramInt1 + ",");
-    localf.n("25scene", paramInt2 + ",");
-    localf.n("26action_type", a.a(parama) + ",");
-    localf.n("27scene_chatname", paramString4 + ",");
-    localf.n("28scene_username", paramString3 + ",");
-    localf.n("29curr_publishid", paramString5 + ",");
-    localf.n("30curr_msgid", paramLong + ",");
-    localf.n("31curr_favid", paramInt3 + ",");
-    localf.n("32elapsed_time", "0,");
-    localf.n("33load_time", "0,");
-    localf.n("34is_load_complete", "0,");
-    localf.n("35destination", "0,");
-    localf.n("36chatroom_membercount", paramInt4 + ",");
-    h.a(paramString5, localf);
-    ac.i("MicroMsg.SnsVideoStatistic", "report snsad_video_action: " + localf.PS());
-    com.tencent.mm.plugin.report.service.h.wUl.f(12990, new Object[] { localf });
+    com.tencent.mm.modelsns.g localg = new com.tencent.mm.modelsns.g();
+    localg.m("20source_publishid", paramString1 + ",");
+    localg.m("21uxinfo", paramString2 + ",");
+    localg.m("22clienttime", bt.flT() + ",");
+    localg.m("23video_statu", ",");
+    localg.m("24source_type", paramInt1 + ",");
+    localg.m("25scene", paramInt2 + ",");
+    localg.m("26action_type", a.a(parama) + ",");
+    localg.m("27scene_chatname", paramString4 + ",");
+    localg.m("28scene_username", paramString3 + ",");
+    localg.m("29curr_publishid", paramString5 + ",");
+    localg.m("30curr_msgid", paramLong + ",");
+    localg.m("31curr_favid", paramInt3 + ",");
+    localg.m("32elapsed_time", "0,");
+    localg.m("33load_time", "0,");
+    localg.m("34is_load_complete", "0,");
+    localg.m("35destination", "0,");
+    localg.m("36chatroom_membercount", paramInt4 + ",");
+    h.a(paramString5, localg);
+    ad.i("MicroMsg.SnsVideoStatistic", "report snsad_video_action: " + localg.RE());
+    com.tencent.mm.plugin.report.service.g.yhR.f(12990, new Object[] { localg });
     AppMethodBeat.o(95060);
   }
   
@@ -50,50 +48,50 @@ public final class m
       AppMethodBeat.o(95059);
       return;
     }
-    TimeLineObject localTimeLineObject = paramp.dLV();
-    Object localObject = localTimeLineObject.FQo.Etz;
-    if ((localObject != null) && (!((List)localObject).isEmpty()) && (((localTimeLineObject.FQo.Ety == 15) && (paramp.Pe(32))) || (localTimeLineObject.FQo.Ety == 18)))
+    TimeLineObject localTimeLineObject = paramp.dYl();
+    Object localObject = localTimeLineObject.HAT.GaQ;
+    if ((localObject != null) && (!((List)localObject).isEmpty()) && (((localTimeLineObject.HAT.GaP == 15) && (paramp.QM(32))) || (localTimeLineObject.HAT.GaP == 18)))
     {
       ((List)localObject).get(0);
-      if ((paramp.Pe(32)) && (localTimeLineObject.FQo.Ety == 15)) {
+      if ((paramp.QM(32)) && (localTimeLineObject.HAT.GaP == 15)) {
         if (paramInt != 2) {
           break label549;
         }
       }
     }
     label549:
-    for (paramp = paramp.dLS();; paramp = paramp.dFQ())
+    for (paramp = paramp.dYi();; paramp = paramp.dRK())
     {
       if (paramp != null) {
-        localTimeLineObject.FQt.hkb = paramp.dtx;
+        localTimeLineObject.HAY.hCk = paramp.dFy;
       }
-      localTimeLineObject.FQt.hkc = localTimeLineObject.Id;
-      paramp = new f();
-      paramp.n("20source_publishid", localTimeLineObject.FQt.hkc + ",");
-      paramp.n("21uxinfo", localTimeLineObject.FQt.hkb + ",");
-      paramp.n("22clienttime", bs.eWj() + ",");
-      paramp.n("23video_statu", ",");
+      localTimeLineObject.HAY.hCl = localTimeLineObject.Id;
+      paramp = new com.tencent.mm.modelsns.g();
+      paramp.m("20source_publishid", localTimeLineObject.HAY.hCl + ",");
+      paramp.m("21uxinfo", localTimeLineObject.HAY.hCk + ",");
+      paramp.m("22clienttime", bt.flT() + ",");
+      paramp.m("23video_statu", ",");
       localObject = new StringBuilder();
       paramInt = i;
-      if (localTimeLineObject.FQo.Ety == 15) {
+      if (localTimeLineObject.HAT.GaP == 15) {
         paramInt = 1;
       }
-      paramp.n("24source_type", paramInt + ",");
-      paramp.n("25scene", paramb.value + ",");
-      paramp.n("26action_type", a.a(parama) + ",");
-      paramp.n("27scene_chatname", ",");
-      paramp.n("28scene_username", localTimeLineObject.ncR + ",");
-      paramp.n("29curr_publishid", localTimeLineObject.Id + ",");
-      paramp.n("30curr_msgid", "0,");
-      paramp.n("31curr_favid", "0,");
-      paramp.n("32elapsed_time", "0,");
-      paramp.n("33load_time", "0,");
-      paramp.n("34is_load_complete", "0,");
-      paramp.n("35destination", "0,");
-      paramp.n("36chatroom_membercount", "0,");
-      com.tencent.mm.modelstat.p.a(localTimeLineObject.yAj, paramp);
-      ac.i("MicroMsg.SnsVideoStatistic", "report snsad_video_action: " + paramp.PS());
-      ((d)g.ab(d.class)).f(12990, new Object[] { paramp });
+      paramp.m("24source_type", paramInt + ",");
+      paramp.m("25scene", paramb.value + ",");
+      paramp.m("26action_type", a.a(parama) + ",");
+      paramp.m("27scene_chatname", ",");
+      paramp.m("28scene_username", localTimeLineObject.nDo + ",");
+      paramp.m("29curr_publishid", localTimeLineObject.Id + ",");
+      paramp.m("30curr_msgid", "0,");
+      paramp.m("31curr_favid", "0,");
+      paramp.m("32elapsed_time", "0,");
+      paramp.m("33load_time", "0,");
+      paramp.m("34is_load_complete", "0,");
+      paramp.m("35destination", "0,");
+      paramp.m("36chatroom_membercount", "0,");
+      com.tencent.mm.modelstat.p.a(localTimeLineObject.zRz, paramp);
+      ad.i("MicroMsg.SnsVideoStatistic", "report snsad_video_action: " + paramp.RE());
+      ((d)com.tencent.mm.kernel.g.ab(d.class)).f(12990, new Object[] { paramp });
       AppMethodBeat.o(95059);
       return;
     }
@@ -102,28 +100,28 @@ public final class m
   public static void a(c paramc, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(95062);
-    f localf = new f();
-    localf.n("20source_publishid", paramString1 + ",");
-    localf.n("21uxinfo", paramString2 + ",");
-    localf.n("22clienttime", bs.eWj() + ",");
-    localf.n("23video_statu", "3,");
-    localf.n("24source_type", paramInt1 + ",");
-    localf.n("25scene", paramInt2 + ",");
-    localf.n("26action_type", paramc.value + ",");
-    localf.n("27scene_chatname", paramString4 + ",");
-    localf.n("28scene_username", paramString3 + ",");
-    localf.n("29curr_publishid", paramString5 + ",");
-    localf.n("30curr_msgid", paramLong + ",");
-    localf.n("31curr_favid", paramInt3 + ",");
-    localf.n("32chatroom_membercount", paramInt4 + ",");
-    localf.n("33chatroom_toMemberCount", paramInt5 + ",");
-    ac.i("MicroMsg.SnsVideoStatistic", "report snsad_video_spread: " + localf.PS());
-    h.a(paramString5, localf);
-    com.tencent.mm.plugin.report.service.h.wUl.f(12991, new Object[] { localf });
+    com.tencent.mm.modelsns.g localg = new com.tencent.mm.modelsns.g();
+    localg.m("20source_publishid", paramString1 + ",");
+    localg.m("21uxinfo", paramString2 + ",");
+    localg.m("22clienttime", bt.flT() + ",");
+    localg.m("23video_statu", "3,");
+    localg.m("24source_type", paramInt1 + ",");
+    localg.m("25scene", paramInt2 + ",");
+    localg.m("26action_type", paramc.value + ",");
+    localg.m("27scene_chatname", paramString4 + ",");
+    localg.m("28scene_username", paramString3 + ",");
+    localg.m("29curr_publishid", paramString5 + ",");
+    localg.m("30curr_msgid", paramLong + ",");
+    localg.m("31curr_favid", paramInt3 + ",");
+    localg.m("32chatroom_membercount", paramInt4 + ",");
+    localg.m("33chatroom_toMemberCount", paramInt5 + ",");
+    ad.i("MicroMsg.SnsVideoStatistic", "report snsad_video_spread: " + localg.RE());
+    h.a(paramString5, localg);
+    com.tencent.mm.plugin.report.service.g.yhR.f(12991, new Object[] { localg });
     AppMethodBeat.o(95062);
   }
   
-  public static void a(d paramd, c paramc, e parame, int paramInt1, com.tencent.mm.plugin.sns.storage.p paramp, int paramInt2)
+  public static void a(d paramd, c paramc, m.e parame, int paramInt1, com.tencent.mm.plugin.sns.storage.p paramp, int paramInt2)
   {
     AppMethodBeat.i(95061);
     if (paramp == null)
@@ -131,29 +129,29 @@ public final class m
       AppMethodBeat.o(95061);
       return;
     }
-    TimeLineObject localTimeLineObject = paramp.dLV();
-    Object localObject = localTimeLineObject.FQo.Etz;
-    if ((localObject != null) && (!((List)localObject).isEmpty()) && (((localTimeLineObject.FQo.Ety == 15) && (paramp.Pe(32))) || (localTimeLineObject.FQo.Ety == 18)))
+    TimeLineObject localTimeLineObject = paramp.dYl();
+    Object localObject = localTimeLineObject.HAT.GaQ;
+    if ((localObject != null) && (!((List)localObject).isEmpty()) && (((localTimeLineObject.HAT.GaP == 15) && (paramp.QM(32))) || (localTimeLineObject.HAT.GaP == 18)))
     {
       ((List)localObject).get(0);
-      if ((paramp.Pe(32)) && (localTimeLineObject.FQo.Ety == 15))
+      if ((paramp.QM(32)) && (localTimeLineObject.HAT.GaP == 15))
       {
         if (paramInt2 != 2) {
           break label579;
         }
-        localObject = paramp.dLS();
+        localObject = paramp.dYi();
         if (localObject != null) {
-          localTimeLineObject.FQt.hkb = paramp.dFQ().dtx;
+          localTimeLineObject.HAY.hCk = paramp.dRK().dFy;
         }
-        localTimeLineObject.FQt.hkc = localTimeLineObject.Id;
+        localTimeLineObject.HAY.hCl = localTimeLineObject.Id;
       }
-      paramp = new f();
-      paramp.n("20source_publishid", localTimeLineObject.FQt.hkc + ",");
-      paramp.n("21uxinfo", localTimeLineObject.FQt.hkb + ",");
-      paramp.n("22clienttime", bs.eWj() + ",");
-      paramp.n("23video_statu", e.a(parame) + ",");
+      paramp = new com.tencent.mm.modelsns.g();
+      paramp.m("20source_publishid", localTimeLineObject.HAY.hCl + ",");
+      paramp.m("21uxinfo", localTimeLineObject.HAY.hCk + ",");
+      paramp.m("22clienttime", bt.flT() + ",");
+      paramp.m("23video_statu", m.e.a(parame) + ",");
       parame = new StringBuilder();
-      if (localTimeLineObject.FQo.Ety != 15) {
+      if (localTimeLineObject.HAT.GaP != 15) {
         break label589;
       }
     }
@@ -161,22 +159,22 @@ public final class m
     label589:
     for (paramInt2 = 1;; paramInt2 = 2)
     {
-      paramp.n("24source_type", paramInt2 + ",");
-      paramp.n("25scene", paramd.value + ",");
-      paramp.n("26action_type", paramc.value + ",");
-      paramp.n("27scene_chatname", ",");
-      paramp.n("28scene_username", localTimeLineObject.ncR + ",");
-      paramp.n("29curr_publishid", localTimeLineObject.Id + ",");
-      paramp.n("30curr_msgid", "0,");
-      paramp.n("31curr_favid", "0,");
-      paramp.n("32chatroom_membercount", "0,");
-      paramp.n("33chatroom_toMemberCount", paramInt1 + ",");
-      com.tencent.mm.modelstat.p.a(localTimeLineObject.yAj, paramp);
-      ac.i("MicroMsg.SnsVideoStatistic", "report snsad_video_spread: " + paramp.PS());
-      com.tencent.mm.plugin.report.service.h.wUl.f(12991, new Object[] { paramp });
+      paramp.m("24source_type", paramInt2 + ",");
+      paramp.m("25scene", paramd.value + ",");
+      paramp.m("26action_type", paramc.value + ",");
+      paramp.m("27scene_chatname", ",");
+      paramp.m("28scene_username", localTimeLineObject.nDo + ",");
+      paramp.m("29curr_publishid", localTimeLineObject.Id + ",");
+      paramp.m("30curr_msgid", "0,");
+      paramp.m("31curr_favid", "0,");
+      paramp.m("32chatroom_membercount", "0,");
+      paramp.m("33chatroom_toMemberCount", paramInt1 + ",");
+      com.tencent.mm.modelstat.p.a(localTimeLineObject.zRz, paramp);
+      ad.i("MicroMsg.SnsVideoStatistic", "report snsad_video_spread: " + paramp.RE());
+      com.tencent.mm.plugin.report.service.g.yhR.f(12991, new Object[] { paramp });
       AppMethodBeat.o(95061);
       return;
-      localObject = paramp.dFQ();
+      localObject = paramp.dRK();
       break;
     }
   }
@@ -190,43 +188,43 @@ public final class m
       AppMethodBeat.o(95058);
       return;
     }
-    TimeLineObject localTimeLineObject = paramp.dLV();
-    Object localObject = localTimeLineObject.FQo.Etz;
-    if ((localObject != null) && (!((List)localObject).isEmpty()) && (((localTimeLineObject.FQo.Ety == 15) && (paramp.Pe(32))) || (localTimeLineObject.FQo.Ety == 18)))
+    TimeLineObject localTimeLineObject = paramp.dYl();
+    Object localObject = localTimeLineObject.HAT.GaQ;
+    if ((localObject != null) && (!((List)localObject).isEmpty()) && (((localTimeLineObject.HAT.GaP == 15) && (paramp.QM(32))) || (localTimeLineObject.HAT.GaP == 18)))
     {
       ((List)localObject).get(0);
-      if ((paramp.Pe(32)) && (localTimeLineObject.FQo.Ety == 15))
+      if ((paramp.QM(32)) && (localTimeLineObject.HAT.GaP == 15))
       {
         if (paramInt != 2) {
           break label513;
         }
-        paramp = paramp.dLS();
-        localTimeLineObject.FQt.hkb = paramp.dtx;
-        localTimeLineObject.FQt.hkc = localTimeLineObject.Id;
+        paramp = paramp.dYi();
+        localTimeLineObject.HAY.hCk = paramp.dFy;
+        localTimeLineObject.HAY.hCl = localTimeLineObject.Id;
       }
-      paramp = new f();
-      paramp.n("20source_publishid", localTimeLineObject.FQt.hkc + ",");
-      paramp.n("21uxinfo", localTimeLineObject.FQt.hkb + ",");
-      paramp.n("22clienttime", bs.eWj() + ",");
+      paramp = new com.tencent.mm.modelsns.g();
+      paramp.m("20source_publishid", localTimeLineObject.HAY.hCl + ",");
+      paramp.m("21uxinfo", localTimeLineObject.HAY.hCk + ",");
+      paramp.m("22clienttime", bt.flT() + ",");
       localObject = new StringBuilder();
-      if (localTimeLineObject.FQo.Ety != 15) {
+      if (localTimeLineObject.HAT.GaP != 15) {
         break label521;
       }
       paramInt = 1;
       label273:
-      paramp.n("23souce_type", paramInt + ",");
+      paramp.m("23souce_type", paramInt + ",");
       localObject = new StringBuilder();
       if (!paramBoolean1) {
         break label526;
       }
       paramInt = 6;
       label309:
-      paramp.n("24scene", paramInt + ",");
-      paramp.n("25scene_chatname", ",");
-      paramp.n("26scene_username", localTimeLineObject.ncR + ",");
-      paramp.n("27curr_publishid", localTimeLineObject.Id + ",");
-      paramp.n("28curr_msgid", ",");
-      paramp.n("29curr_favid", "0,");
+      paramp.m("24scene", paramInt + ",");
+      paramp.m("25scene_chatname", ",");
+      paramp.m("26scene_username", localTimeLineObject.nDo + ",");
+      paramp.m("27curr_publishid", localTimeLineObject.Id + ",");
+      paramp.m("28curr_msgid", ",");
+      paramp.m("29curr_favid", "0,");
       localObject = new StringBuilder();
       if (!paramBoolean2) {
         break label547;
@@ -238,19 +236,19 @@ public final class m
     label547:
     for (paramInt = 1;; paramInt = 0)
     {
-      paramp.n("30isdownload", paramInt + ",");
-      paramp.n("31chatroom_membercount", "0,");
-      com.tencent.mm.modelstat.p.a(localTimeLineObject.yAj, paramp);
-      ac.i("MicroMsg.SnsVideoStatistic", "report snsad_video_exposure: " + paramp.PS());
-      com.tencent.mm.plugin.report.service.h.wUl.f(12989, new Object[] { paramp });
+      paramp.m("30isdownload", paramInt + ",");
+      paramp.m("31chatroom_membercount", "0,");
+      com.tencent.mm.modelstat.p.a(localTimeLineObject.zRz, paramp);
+      ad.i("MicroMsg.SnsVideoStatistic", "report snsad_video_exposure: " + paramp.RE());
+      com.tencent.mm.plugin.report.service.g.yhR.f(12989, new Object[] { paramp });
       AppMethodBeat.o(95058);
       return;
-      paramp = paramp.dFQ();
+      paramp = paramp.dRK();
       break;
       paramInt = 2;
       break label273;
       paramInt = i;
-      if (localTimeLineObject.FQo.Ety != 15) {
+      if (localTimeLineObject.HAT.GaP != 15) {
         break label309;
       }
       paramInt = 1;
@@ -265,15 +263,15 @@ public final class m
     static
     {
       AppMethodBeat.i(95045);
-      xKt = new a("PlayIcon", 0, 1);
-      xKu = new a("EnterFullScreen", 1, 2);
-      xKv = new a("EnterCompleteVideo", 2, 3);
-      xKw = new a("DetailInVideo", 3, 4);
-      xKx = new a("LeavelFullScreen", 4, 5);
-      xKy = new a("LeaveCompleteVideo", 5, 6);
-      xKz = new a("SightLoaded", 6, 7);
-      xKA = new a("DetailTimeline", 7, 8);
-      xKB = new a[] { xKt, xKu, xKv, xKw, xKx, xKy, xKz, xKA };
+      yZI = new a("PlayIcon", 0, 1);
+      yZJ = new a("EnterFullScreen", 1, 2);
+      yZK = new a("EnterCompleteVideo", 2, 3);
+      yZL = new a("DetailInVideo", 3, 4);
+      yZM = new a("LeavelFullScreen", 4, 5);
+      yZN = new a("LeaveCompleteVideo", 5, 6);
+      yZO = new a("SightLoaded", 6, 7);
+      yZP = new a("DetailTimeline", 7, 8);
+      yZQ = new a[] { yZI, yZJ, yZK, yZL, yZM, yZN, yZO, yZP };
       AppMethodBeat.o(95045);
     }
     
@@ -290,12 +288,12 @@ public final class m
     static
     {
       AppMethodBeat.i(95048);
-      xKC = new b("Sight", 0, 1);
-      xKD = new b("AdUrl", 1, 2);
-      xKE = new b("Chat", 2, 3);
-      xKF = new b("TalkChat", 3, 4);
-      xKG = new b("Fav", 4, 5);
-      xKH = new b[] { xKC, xKD, xKE, xKF, xKG };
+      yZR = new b("Sight", 0, 1);
+      yZS = new b("AdUrl", 1, 2);
+      yZT = new b("Chat", 2, 3);
+      yZU = new b("TalkChat", 3, 4);
+      yZV = new b("Fav", 4, 5);
+      yZW = new b[] { yZR, yZS, yZT, yZU, yZV };
       AppMethodBeat.o(95048);
     }
     
@@ -312,11 +310,11 @@ public final class m
     static
     {
       AppMethodBeat.i(95051);
-      xKI = new c("Fav", 0, 1);
-      xKJ = new c("Chat", 1, 2);
-      xKK = new c("Chatroom", 2, 3);
-      xKL = new c("Sns", 3, 4);
-      xKM = new c[] { xKI, xKJ, xKK, xKL };
+      yZX = new c("Fav", 0, 1);
+      yZY = new c("Chat", 1, 2);
+      yZZ = new c("Chatroom", 2, 3);
+      zaa = new c("Sns", 3, 4);
+      zab = new c[] { yZX, yZY, yZZ, zaa };
       AppMethodBeat.o(95051);
     }
     
@@ -333,36 +331,16 @@ public final class m
     static
     {
       AppMethodBeat.i(95054);
-      xKN = new d("Sight", 0, 1);
-      xKO = new d("AdUrl", 1, 2);
-      xKP = new d("Chat", 2, 3);
-      xKQ = new d("TalkChat", 3, 4);
-      xKR = new d("Fav", 4, 5);
-      xKS = new d[] { xKN, xKO, xKP, xKQ, xKR };
+      zac = new d("Sight", 0, 1);
+      zad = new d("AdUrl", 1, 2);
+      zae = new d("Chat", 2, 3);
+      zaf = new d("TalkChat", 3, 4);
+      zag = new d("Fav", 4, 5);
+      zah = new d[] { zac, zad, zae, zaf, zag };
       AppMethodBeat.o(95054);
     }
     
     private d(int paramInt)
-    {
-      this.value = paramInt;
-    }
-  }
-  
-  public static enum e
-  {
-    private int value = 0;
-    
-    static
-    {
-      AppMethodBeat.i(95057);
-      xKT = new e("Samll", 0, 1);
-      xKU = new e("Full", 1, 2);
-      xKV = new e("Complete", 2, 3);
-      xKW = new e[] { xKT, xKU, xKV };
-      AppMethodBeat.o(95057);
-    }
-    
-    private e(int paramInt)
     {
       this.value = paramInt;
     }

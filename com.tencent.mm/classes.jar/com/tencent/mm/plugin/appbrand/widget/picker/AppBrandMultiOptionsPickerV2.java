@@ -14,12 +14,12 @@ import java.util.List;
 
 public final class AppBrandMultiOptionsPickerV2
   extends LinearLayout
-  implements com.tencent.mm.plugin.appbrand.jsapi.m.c<int[]>
+  implements com.tencent.mm.plugin.appbrand.jsapi.p.c<int[]>
 {
-  private boolean aqk;
-  private boolean mKh;
-  private c mKi;
-  public List<AppBrandOptionsPickerV3> mKm;
+  private boolean asc;
+  private boolean nkD;
+  private c nkE;
+  public List<AppBrandOptionsPickerV3> nkI;
   
   @Keep
   public AppBrandMultiOptionsPickerV2(Context paramContext)
@@ -27,31 +27,31 @@ public final class AppBrandMultiOptionsPickerV2
     super(paramContext);
     AppMethodBeat.i(138007);
     setOrientation(0);
-    this.mKm = new ArrayList();
+    this.nkI = new ArrayList();
     AppMethodBeat.o(138007);
   }
   
-  public final void bBh()
+  public final void bFj()
   {
     AppMethodBeat.i(138014);
-    if (this.mKm.size() == 1)
+    if (this.nkI.size() == 1)
     {
-      ((AppBrandOptionsPickerV3)this.mKm.get(0)).mKs.aMS().setPadding(0, getContext().getResources().getDimensionPixelSize(2131165289), 0, getContext().getResources().getDimensionPixelSize(2131165289));
+      ((AppBrandOptionsPickerV3)this.nkI.get(0)).nkO.aQd().setPadding(0, getContext().getResources().getDimensionPixelSize(2131165289), 0, getContext().getResources().getDimensionPixelSize(2131165289));
       AppMethodBeat.o(138014);
       return;
     }
-    if (this.mKm.size() == 2)
+    if (this.nkI.size() == 2)
     {
-      ((AppBrandOptionsPickerV3)this.mKm.get(0)).mKs.aMS().setPadding(0, getContext().getResources().getDimensionPixelSize(2131165289), getContext().getResources().getDimensionPixelSize(2131165289), getContext().getResources().getDimensionPixelSize(2131165289));
-      ((AppBrandOptionsPickerV3)this.mKm.get(1)).mKs.aMS().setPadding(getContext().getResources().getDimensionPixelSize(2131165289), getContext().getResources().getDimensionPixelSize(2131165289), 0, getContext().getResources().getDimensionPixelSize(2131165289));
+      ((AppBrandOptionsPickerV3)this.nkI.get(0)).nkO.aQd().setPadding(0, getContext().getResources().getDimensionPixelSize(2131165289), getContext().getResources().getDimensionPixelSize(2131165289), getContext().getResources().getDimensionPixelSize(2131165289));
+      ((AppBrandOptionsPickerV3)this.nkI.get(1)).nkO.aQd().setPadding(getContext().getResources().getDimensionPixelSize(2131165289), getContext().getResources().getDimensionPixelSize(2131165289), 0, getContext().getResources().getDimensionPixelSize(2131165289));
       AppMethodBeat.o(138014);
       return;
     }
-    if (this.mKm.size() == 3)
+    if (this.nkI.size() == 3)
     {
-      ((AppBrandOptionsPickerV3)this.mKm.get(0)).mKs.aMS().setPadding(0, getContext().getResources().getDimensionPixelSize(2131165289), getContext().getResources().getDimensionPixelSize(2131165274), getContext().getResources().getDimensionPixelSize(2131165289));
-      ((AppBrandOptionsPickerV3)this.mKm.get(1)).mKs.aMS().setPadding(getContext().getResources().getDimensionPixelSize(2131165274), getContext().getResources().getDimensionPixelSize(2131165289), getContext().getResources().getDimensionPixelSize(2131165274), getContext().getResources().getDimensionPixelSize(2131165289));
-      ((AppBrandOptionsPickerV3)this.mKm.get(2)).mKs.aMS().setPadding(getContext().getResources().getDimensionPixelSize(2131165274), getContext().getResources().getDimensionPixelSize(2131165289), 0, getContext().getResources().getDimensionPixelSize(2131165289));
+      ((AppBrandOptionsPickerV3)this.nkI.get(0)).nkO.aQd().setPadding(0, getContext().getResources().getDimensionPixelSize(2131165289), getContext().getResources().getDimensionPixelSize(2131165274), getContext().getResources().getDimensionPixelSize(2131165289));
+      ((AppBrandOptionsPickerV3)this.nkI.get(1)).nkO.aQd().setPadding(getContext().getResources().getDimensionPixelSize(2131165274), getContext().getResources().getDimensionPixelSize(2131165289), getContext().getResources().getDimensionPixelSize(2131165274), getContext().getResources().getDimensionPixelSize(2131165289));
+      ((AppBrandOptionsPickerV3)this.nkI.get(2)).nkO.aQd().setPadding(getContext().getResources().getDimensionPixelSize(2131165274), getContext().getResources().getDimensionPixelSize(2131165289), 0, getContext().getResources().getDimensionPixelSize(2131165289));
     }
     AppMethodBeat.o(138014);
   }
@@ -71,12 +71,12 @@ public final class AppBrandMultiOptionsPickerV2
   
   public final void onAttach(c paramc)
   {
-    this.mKi = paramc;
+    this.nkE = paramc;
   }
   
   public final void onDetach(c paramc)
   {
-    this.mKi = null;
+    this.nkE = null;
   }
   
   public final void onHide(c paramc) {}
@@ -84,7 +84,7 @@ public final class AppBrandMultiOptionsPickerV2
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(138010);
-    if (this.aqk)
+    if (this.asc)
     {
       AppMethodBeat.o(138010);
       return false;
@@ -96,13 +96,13 @@ public final class AppBrandMultiOptionsPickerV2
   
   public final void onShow(c paramc)
   {
-    this.mKi = paramc;
+    this.nkE = paramc;
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(138011);
-    if (this.aqk)
+    if (this.asc)
     {
       AppMethodBeat.o(138011);
       return false;
@@ -115,9 +115,9 @@ public final class AppBrandMultiOptionsPickerV2
   public final void requestLayout()
   {
     AppMethodBeat.i(138009);
-    if (this.aqk)
+    if (this.asc)
     {
-      this.mKh = true;
+      this.nkD = true;
       AppMethodBeat.o(138009);
       return;
     }
@@ -128,9 +128,9 @@ public final class AppBrandMultiOptionsPickerV2
   public final void setLayoutFrozen(boolean paramBoolean)
   {
     AppMethodBeat.i(138008);
-    if (this.aqk != paramBoolean)
+    if (this.asc != paramBoolean)
     {
-      this.aqk = paramBoolean;
+      this.asc = paramBoolean;
       if (paramBoolean)
       {
         long l = SystemClock.uptimeMillis();
@@ -138,14 +138,14 @@ public final class AppBrandMultiOptionsPickerV2
         AppMethodBeat.o(138008);
         return;
       }
-      if (this.mKh) {
+      if (this.nkD) {
         requestLayout();
       }
     }
     AppMethodBeat.o(138008);
   }
   
-  public final void wc(int paramInt)
+  public final void wH(int paramInt)
   {
     AppMethodBeat.i(138015);
     if (paramInt <= 0)
@@ -160,11 +160,11 @@ public final class AppBrandMultiOptionsPickerV2
       i -= 1;
       paramInt -= 1;
     }
-    bBh();
+    bFj();
     AppMethodBeat.o(138015);
   }
   
-  public final AppBrandOptionsPickerV3 wd(int paramInt)
+  public final AppBrandOptionsPickerV3 wI(int paramInt)
   {
     AppMethodBeat.i(138012);
     if (paramInt < 0)
@@ -172,20 +172,20 @@ public final class AppBrandMultiOptionsPickerV2
       AppMethodBeat.o(138012);
       return null;
     }
-    AppBrandOptionsPickerV3 localAppBrandOptionsPickerV3 = (AppBrandOptionsPickerV3)this.mKm.get(paramInt);
+    AppBrandOptionsPickerV3 localAppBrandOptionsPickerV3 = (AppBrandOptionsPickerV3)this.nkI.get(paramInt);
     AppMethodBeat.o(138012);
     return localAppBrandOptionsPickerV3;
   }
   
   public static final class a
   {
-    public final String[] mKl;
+    public final String[] nkH;
     public final int selected;
     
     public a(String[] paramArrayOfString, int paramInt)
     {
       AppMethodBeat.i(138006);
-      this.mKl = paramArrayOfString;
+      this.nkH = paramArrayOfString;
       this.selected = Math.max(0, Math.min(paramInt, paramArrayOfString.length - 1));
       AppMethodBeat.o(138006);
     }
@@ -193,7 +193,7 @@ public final class AppBrandMultiOptionsPickerV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandMultiOptionsPickerV2
  * JD-Core Version:    0.7.0.1
  */

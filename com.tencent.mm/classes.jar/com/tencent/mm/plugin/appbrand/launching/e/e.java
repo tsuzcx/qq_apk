@@ -4,34 +4,34 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
-import com.tencent.mm.plugin.appbrand.ui.r;
+import com.tencent.mm.plugin.appbrand.ui.s;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
   extends ContextWrapper
   implements g
 {
-  private int jUI;
-  private final c<com.tencent.mm.plugin.appbrand.service.d> lqe;
-  private d lqf;
+  private int koW;
+  private d lNA;
+  private final c<com.tencent.mm.plugin.appbrand.service.d> lNz;
   private String mToken;
   
   public e(AppBrandLaunchProxyUI paramAppBrandLaunchProxyUI)
   {
     super(paramAppBrandLaunchProxyUI);
     AppMethodBeat.i(47454);
-    this.lqe = new c() {};
-    this.jUI = 0;
+    this.lNz = new c() {};
+    this.koW = 0;
     AppMethodBeat.o(47454);
   }
   
-  private void OA(String paramString)
+  private void RZ(String paramString)
   {
     AppMethodBeat.i(47458);
-    if ((this.lqf == null) || (this.lqf.lpN))
+    if ((this.lNA == null) || (this.lNA.lNi))
     {
-      ac.i("MicroMsg.FromMMProxyUI", "reason[%s] process[%s] isFinished, just finish activity", new Object[] { paramString, this.mToken });
+      ad.i("MicroMsg.FromMMProxyUI", "reason[%s] process[%s] isFinished, just finish activity", new Object[] { paramString, this.mToken });
       finish();
     }
     AppMethodBeat.o(47458);
@@ -44,13 +44,13 @@ public final class e
     AppMethodBeat.o(47455);
   }
   
-  public final void G(Intent paramIntent)
+  public final void H(Intent paramIntent)
   {
     AppMethodBeat.i(47456);
-    r.b(((AppBrandLaunchProxyUI)super.getBaseContext()).getWindow());
-    r.c(((AppBrandLaunchProxyUI)super.getBaseContext()).getWindow(), true);
+    s.b(((AppBrandLaunchProxyUI)super.getBaseContext()).getWindow());
+    s.c(((AppBrandLaunchProxyUI)super.getBaseContext()).getWindow(), true);
     paramIntent = paramIntent.getStringExtra("extra_entry_token");
-    d locald = d.Oz(paramIntent);
+    d locald = d.RY(paramIntent);
     if (locald == null)
     {
       finish();
@@ -59,12 +59,12 @@ public final class e
     }
     locald.setBaseContext((AppBrandLaunchProxyUI)super.getBaseContext());
     this.mToken = paramIntent;
-    this.lqf = locald;
-    this.lqe.alive();
+    this.lNA = locald;
+    this.lNz.alive();
     AppMethodBeat.o(47456);
   }
   
-  public final boolean boh()
+  public final boolean bsa()
   {
     return true;
   }
@@ -72,9 +72,9 @@ public final class e
   public final void onDestroy()
   {
     AppMethodBeat.i(47459);
-    this.lqe.dead();
-    if (this.lqf != null) {
-      this.lqf.boc();
+    this.lNz.dead();
+    if (this.lNA != null) {
+      this.lNA.brV();
     }
     AppMethodBeat.o(47459);
   }
@@ -84,10 +84,10 @@ public final class e
   public final void onResume()
   {
     AppMethodBeat.i(47457);
-    this.jUI += 1;
-    ac.i("MicroMsg.FromMMProxyUI", "onResume, resume count:%d", new Object[] { Integer.valueOf(this.jUI) });
-    if (this.jUI > 1) {
-      OA("NotFirstResume");
+    this.koW += 1;
+    ad.i("MicroMsg.FromMMProxyUI", "onResume, resume count:%d", new Object[] { Integer.valueOf(this.koW) });
+    if (this.koW > 1) {
+      RZ("NotFirstResume");
     }
     AppMethodBeat.o(47457);
   }

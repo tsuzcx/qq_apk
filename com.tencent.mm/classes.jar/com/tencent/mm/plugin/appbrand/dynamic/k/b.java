@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.k;
 
 public final class b
 {
-  public static int dI(int paramInt1, int paramInt2)
+  public static int dK(int paramInt1, int paramInt2)
   {
     int i = -2147483648;
     if (paramInt1 == 0) {
@@ -28,7 +28,7 @@ public final class b
     return 10100;
   }
   
-  public static int rP(int paramInt)
+  public static int sr(int paramInt)
   {
     switch (paramInt)
     {

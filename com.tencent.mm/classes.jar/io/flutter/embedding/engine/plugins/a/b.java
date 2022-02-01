@@ -10,13 +10,13 @@ public abstract interface b
   
   public abstract boolean a(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
   
-  public abstract void fMQ();
+  public abstract void geG();
   
-  public abstract void fNg();
+  public abstract void geH();
   
-  public abstract void fNh();
+  public abstract void geI();
   
-  public abstract void fNi();
+  public abstract void gep();
   
   public abstract boolean onActivityResult(int paramInt1, int paramInt2, Intent paramIntent);
   

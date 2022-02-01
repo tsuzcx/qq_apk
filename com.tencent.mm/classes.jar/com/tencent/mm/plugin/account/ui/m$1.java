@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.account.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.g;
 
 final class m$1
@@ -15,9 +15,9 @@ final class m$1
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(128406);
-    g.agi().a(this.iUn);
-    g.agi().b(145, this.iUo);
-    g.agi().b(132, this.iUo);
+    g.aiU().a(this.jnw);
+    g.aiU().b(145, this.jnx);
+    g.aiU().b(132, this.jnx);
     AppMethodBeat.o(128406);
   }
 }

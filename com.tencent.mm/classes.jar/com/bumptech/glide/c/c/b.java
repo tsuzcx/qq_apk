@@ -11,11 +11,11 @@ import java.nio.ByteBuffer;
 public final class b<Data>
   implements n<byte[], Data>
 {
-  private final b<Data> aHW;
+  private final b<Data> aJN;
   
   public b(b<Data> paramb)
   {
-    this.aHW = paramb;
+    this.aJN = paramb;
   }
   
   public static final class a
@@ -26,7 +26,7 @@ public final class b<Data>
       AppMethodBeat.i(77206);
       paramr = new b(new b.b()
       {
-        public final Class<ByteBuffer> nU()
+        public final Class<ByteBuffer> om()
         {
           return ByteBuffer.class;
         }
@@ -40,25 +40,25 @@ public final class b<Data>
   {
     public abstract Data l(byte[] paramArrayOfByte);
     
-    public abstract Class<Data> nU();
+    public abstract Class<Data> om();
   }
   
   static final class c<Data>
     implements d<Data>
   {
-    private final b.b<Data> aHW;
-    private final byte[] aHY;
+    private final b.b<Data> aJN;
+    private final byte[] aJP;
     
     c(byte[] paramArrayOfByte, b.b<Data> paramb)
     {
-      this.aHY = paramArrayOfByte;
-      this.aHW = paramb;
+      this.aJP = paramArrayOfByte;
+      this.aJN = paramb;
     }
     
     public final void a(g paramg, d.a<? super Data> parama)
     {
       AppMethodBeat.i(77207);
-      parama.R(this.aHW.l(this.aHY));
+      parama.S(this.aJN.l(this.aJP));
       AppMethodBeat.o(77207);
     }
     
@@ -66,17 +66,17 @@ public final class b<Data>
     
     public final void cleanup() {}
     
-    public final Class<Data> nU()
+    public final Class<Data> om()
     {
       AppMethodBeat.i(77208);
-      Class localClass = this.aHW.nU();
+      Class localClass = this.aJN.om();
       AppMethodBeat.o(77208);
       return localClass;
     }
     
-    public final a nV()
+    public final a on()
     {
-      return a.aCP;
+      return a.aEG;
     }
   }
   
@@ -88,7 +88,7 @@ public final class b<Data>
       AppMethodBeat.i(77210);
       paramr = new b(new b.b()
       {
-        public final Class<InputStream> nU()
+        public final Class<InputStream> om()
         {
           return InputStream.class;
         }

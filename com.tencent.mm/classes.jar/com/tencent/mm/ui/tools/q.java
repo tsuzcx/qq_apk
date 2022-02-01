@@ -4,40 +4,40 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class q
   implements Runnable
 {
-  public ListView EO;
-  public long ITA;
-  public int ITB;
-  public int ITC;
-  public int ITD;
-  private final int ITE;
-  public int ITF;
+  public ListView GF;
+  public long KKE;
+  public int KKF;
+  public int KKG;
+  public int KKH;
+  private final int KKI;
+  public int KKJ;
   public int mMode;
   
   public q(ListView paramListView)
   {
     AppMethodBeat.i(143221);
-    this.ITA = System.currentTimeMillis();
-    this.EO = paramListView;
-    this.ITE = ViewConfiguration.get(this.EO.getContext()).getScaledFadingEdgeLength();
-    ac.d("ScrollerRunnable", "mExtraScroll: %d", new Object[] { Integer.valueOf(this.ITE) });
+    this.KKE = System.currentTimeMillis();
+    this.GF = paramListView;
+    this.KKI = ViewConfiguration.get(this.GF.getContext()).getScaledFadingEdgeLength();
+    ad.d("ScrollerRunnable", "mExtraScroll: %d", new Object[] { Integer.valueOf(this.KKI) });
     AppMethodBeat.o(143221);
   }
   
   public final void run()
   {
     AppMethodBeat.i(143222);
-    if (System.currentTimeMillis() - this.ITA > 10000L)
+    if (System.currentTimeMillis() - this.KKE > 10000L)
     {
       AppMethodBeat.o(143222);
       return;
     }
-    int j = this.EO.getHeight();
-    int k = this.EO.getFirstVisiblePosition();
+    int j = this.GF.getHeight();
+    int k = this.GF.getFirstVisiblePosition();
     View localView;
     switch (this.mMode)
     {
@@ -45,7 +45,7 @@ public final class q
       AppMethodBeat.o(143222);
       return;
     case 1: 
-      i = this.EO.getChildCount() - 1;
+      i = this.GF.getChildCount() - 1;
       k += i;
       if (i < 0)
       {
@@ -54,76 +54,76 @@ public final class q
       }
       int m;
       int n;
-      if (k == this.ITC)
+      if (k == this.KKG)
       {
-        if (this.ITF > 20)
+        if (this.KKJ > 20)
         {
-          this.EO.setSelection(this.ITB);
-          ac.d("ScrollerRunnable", "dz:try scroll at same item more than 10, direct seletion");
+          this.GF.setSelection(this.KKF);
+          ad.d("ScrollerRunnable", "dz:try scroll at same item more than 10, direct seletion");
         }
       }
       else
       {
-        this.ITF = 0;
-        localView = this.EO.getChildAt(i);
+        this.KKJ = 0;
+        localView = this.GF.getChildAt(i);
         m = localView.getHeight();
         n = localView.getTop();
-        if (k >= this.EO.getCount() - 1) {
+        if (k >= this.GF.getCount() - 1) {
           break label271;
         }
       }
       label271:
-      for (i = this.ITE;; i = this.EO.getPaddingBottom())
+      for (i = this.KKI;; i = this.GF.getPaddingBottom())
       {
-        this.EO.smoothScrollBy(i + (m - (j - n)), this.ITD);
-        this.ITC = k;
-        if (k >= this.ITB) {
+        this.GF.smoothScrollBy(i + (m - (j - n)), this.KKH);
+        this.KKG = k;
+        if (k >= this.KKF) {
           break;
         }
-        this.EO.post(this);
+        this.GF.post(this);
         AppMethodBeat.o(143222);
         return;
-        this.EO.post(this);
-        this.ITF += 1;
-        ac.d("ScrollerRunnable", "dz:try scroll lastpos = %d", new Object[] { Integer.valueOf(k) });
+        this.GF.post(this);
+        this.KKJ += 1;
+        ad.d("ScrollerRunnable", "dz:try scroll lastpos = %d", new Object[] { Integer.valueOf(k) });
         AppMethodBeat.o(143222);
         return;
       }
     }
-    if (k == this.ITC)
+    if (k == this.KKG)
     {
-      if (this.ITF > 20)
+      if (this.KKJ > 20)
       {
-        this.EO.setSelection(this.ITB);
-        ac.d("ScrollerRunnable", "dz:try scroll at same item more than 10, direct seletion");
+        this.GF.setSelection(this.KKF);
+        ad.d("ScrollerRunnable", "dz:try scroll at same item more than 10, direct seletion");
       }
     }
     else
     {
-      this.ITF = 0;
-      localView = this.EO.getChildAt(0);
+      this.KKJ = 0;
+      localView = this.GF.getChildAt(0);
       if (localView != null) {
         break label386;
       }
       AppMethodBeat.o(143222);
       return;
     }
-    this.EO.post(this);
-    this.ITF += 1;
-    ac.d("ScrollerRunnable", "dz:try scroll firstPos = %d", new Object[] { Integer.valueOf(k) });
+    this.GF.post(this);
+    this.KKJ += 1;
+    ad.d("ScrollerRunnable", "dz:try scroll firstPos = %d", new Object[] { Integer.valueOf(k) });
     AppMethodBeat.o(143222);
     return;
     label386:
     j = localView.getTop();
     if (k > 0) {}
-    for (int i = this.ITE;; i = this.EO.getPaddingTop())
+    for (int i = this.KKI;; i = this.GF.getPaddingTop())
     {
-      this.EO.smoothScrollBy(j - i, this.ITD);
-      this.ITC = k;
-      if (k <= this.ITB) {
+      this.GF.smoothScrollBy(j - i, this.KKH);
+      this.KKG = k;
+      if (k <= this.KKF) {
         break;
       }
-      this.EO.post(this);
+      this.GF.post(this);
       break;
     }
   }

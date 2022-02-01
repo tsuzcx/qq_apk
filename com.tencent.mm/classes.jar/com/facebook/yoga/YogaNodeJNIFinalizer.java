@@ -14,7 +14,7 @@ public class YogaNodeJNIFinalizer
   
   protected void finalize()
   {
-    AppMethodBeat.i(192958);
+    AppMethodBeat.i(190317);
     try
     {
       freeNatives();
@@ -23,20 +23,20 @@ public class YogaNodeJNIFinalizer
     finally
     {
       super.finalize();
-      AppMethodBeat.o(192958);
+      AppMethodBeat.o(190317);
     }
   }
   
   public void freeNatives()
   {
-    AppMethodBeat.i(192959);
+    AppMethodBeat.i(190318);
     if (this.mNativePointer != 0L)
     {
       long l = this.mNativePointer;
       this.mNativePointer = 0L;
       YogaNative.jni_YGNodeFreeJNI(l);
     }
-    AppMethodBeat.o(192959);
+    AppMethodBeat.o(190318);
   }
 }
 

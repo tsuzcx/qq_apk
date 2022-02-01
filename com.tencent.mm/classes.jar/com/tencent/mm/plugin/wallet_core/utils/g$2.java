@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public final class g$2
   implements View.OnClickListener
@@ -13,9 +15,13 @@ public final class g$2
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(71652);
-    if (this.twe.isShowing()) {
-      this.twe.dismiss();
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/wallet_core/utils/WcPayViewEngineRender$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    if (this.uvq.isShowing()) {
+      this.uvq.dismiss();
     }
+    a.a(this, "com/tencent/mm/plugin/wallet_core/utils/WcPayViewEngineRender$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(71652);
   }
 }

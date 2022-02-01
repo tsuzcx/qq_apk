@@ -11,13 +11,13 @@ public class ResultReceiver
   implements Parcelable
 {
   public static final Parcelable.Creator<ResultReceiver> CREATOR = new Parcelable.Creator() {};
-  final boolean Ln = false;
-  a Lo;
+  final boolean Nf = false;
+  a Ng;
   final Handler mHandler = null;
   
   ResultReceiver(Parcel paramParcel)
   {
-    this.Lo = a.a.e(paramParcel.readStrongBinder());
+    this.Ng = a.a.e(paramParcel.readStrongBinder());
   }
   
   public int describeContents()
@@ -29,12 +29,12 @@ public class ResultReceiver
   
   public final void send(int paramInt, Bundle paramBundle)
   {
-    if (this.Ln) {
+    if (this.Nf) {
       if (this.mHandler != null) {
         this.mHandler.post(new b(paramInt, paramBundle));
       }
     }
-    while (this.Lo == null)
+    while (this.Ng == null)
     {
       return;
       onReceiveResult(paramInt, paramBundle);
@@ -42,7 +42,7 @@ public class ResultReceiver
     }
     try
     {
-      this.Lo.send(paramInt, paramBundle);
+      this.Ng.send(paramInt, paramBundle);
       return;
     }
     catch (RemoteException paramBundle) {}
@@ -52,10 +52,10 @@ public class ResultReceiver
   {
     try
     {
-      if (this.Lo == null) {
-        this.Lo = new a();
+      if (this.Ng == null) {
+        this.Ng = new a();
       }
-      paramParcel.writeStrongBinder(this.Lo.asBinder());
+      paramParcel.writeStrongBinder(this.Ng.asBinder());
       return;
     }
     finally {}
@@ -80,18 +80,18 @@ public class ResultReceiver
   final class b
     implements Runnable
   {
-    final Bundle Lq;
+    final Bundle Ni;
     final int mResultCode;
     
     b(int paramInt, Bundle paramBundle)
     {
       this.mResultCode = paramInt;
-      this.Lq = paramBundle;
+      this.Ni = paramBundle;
     }
     
     public final void run()
     {
-      ResultReceiver.this.onReceiveResult(this.mResultCode, this.Lq);
+      ResultReceiver.this.onReceiveResult(this.mResultCode, this.Ni);
     }
   }
 }

@@ -1,71 +1,47 @@
 package com.tencent.mm.plugin.appbrand.jsapi.d;
 
+import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ar;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.utils.b.a.a;
-import com.tencent.mm.plugin.appbrand.utils.b.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.appbrand.jsruntime.i;
+import com.tencent.mm.plugin.appbrand.jsruntime.k;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.utils.v;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.xeffect.FaceTracker;
+import com.tencent.mm.xeffect.XEffectLog;
+import d.g.b.p;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import org.json.JSONObject;
 
-final class b
-  extends ar
-  implements a.b
+public final class b
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
 {
-  private static final int CTRL_INDEX = 341;
-  private static final String NAME = "onLocationChange";
-  private final c ksU;
+  public static final int CTRL_INDEX = 861;
+  public static final String NAME = "faceDetect";
+  private static String mSR = "Thread.AppBrand.JsApiFaceDetect";
   
-  b(c paramc)
+  public final ByteBuffer a(String paramString, k paramk, int paramInt)
   {
-    this.ksU = paramc;
-  }
-  
-  public final void a(int paramInt, String paramString, a.a parama)
-  {
-    AppMethodBeat.i(143626);
-    if (paramInt == -1)
+    AppMethodBeat.i(221282);
+    if ("frameBuffer".equalsIgnoreCase(paramString))
     {
-      ac.e("MicroMsg.AppBrand.EventOnLocationChange", "errCode:%d, errStr:%s", new Object[] { Integer.valueOf(paramInt), paramString });
-      AppMethodBeat.o(143626);
-      return;
+      paramString = paramk.ak(paramInt, true);
+      AppMethodBeat.o(221282);
+      return paramString;
     }
-    paramString = new HashMap(7);
-    paramString.put("longitude", Double.valueOf(parama.longitude));
-    paramString.put("latitude", Double.valueOf(parama.latitude));
-    paramString.put("speed", Double.valueOf(parama.cUo));
-    paramString.put("accuracy", Double.valueOf(parama.mpk));
-    paramString.put("altitude", Double.valueOf(parama.altitude));
-    paramString.put("verticalAccuracy", Float.valueOf(0.0F));
-    paramString.put("horizontalAccuracy", Double.valueOf(parama.mpk));
-    if (!bs.isNullOrNil(parama.buildingId))
-    {
-      paramString.put("buildingId", parama.buildingId);
-      paramString.put("floorName", parama.floorName);
-    }
-    paramString.put("provider", parama.provider);
-    paramString.put("indoorLocationType", Integer.valueOf(parama.mpl));
-    paramString.put("direction", Float.valueOf(parama.mpm));
-    paramString.put("steps", Double.valueOf(parama.mpn));
-    paramString = new JSONObject(paramString).toString();
-    ac.v("MicroMsg.AppBrand.EventOnLocationChange", "onLocationChanged %s, %s, %s", new Object[] { this.ksU.getAppId(), parama.provider, paramString });
-    try
-    {
-      h(this.ksU).LO(paramString).beN();
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(143626);
-    }
+    paramString = super.a(paramString, paramk, paramInt);
+    AppMethodBeat.o(221282);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.d.b
  * JD-Core Version:    0.7.0.1
  */

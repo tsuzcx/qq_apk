@@ -1,88 +1,86 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dln
-  extends cpx
+  extends com.tencent.mm.bx.a
 {
-  public int drx;
-  public int dtJ;
+  public String FVn;
+  public int GaO;
+  public int HgN;
+  public String nDo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32481);
+    AppMethodBeat.i(32460);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.nDo != null) {
+        paramVarArgs.d(1, this.nDo);
       }
-      paramVarArgs.aR(2, this.dtJ);
-      paramVarArgs.aR(3, this.drx);
-      AppMethodBeat.o(32481);
+      if (this.FVn != null) {
+        paramVarArgs.d(2, this.FVn);
+      }
+      paramVarArgs.aS(3, this.HgN);
+      paramVarArgs.aS(4, this.GaO);
+      AppMethodBeat.o(32460);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label411;
+      if (this.nDo == null) {
+        break label376;
       }
     }
-    label411:
-    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label376:
+    for (paramInt = f.a.a.b.b.a.e(1, this.nDo) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bx(2, this.dtJ);
-      int j = f.a.a.b.b.a.bx(3, this.drx);
-      AppMethodBeat.o(32481);
-      return paramInt + i + j;
+      int i = paramInt;
+      if (this.FVn != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FVn);
+      }
+      paramInt = f.a.a.b.b.a.bz(3, this.HgN);
+      int j = f.a.a.b.b.a.bz(4, this.GaO);
+      AppMethodBeat.o(32460);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(32481);
+        AppMethodBeat.o(32460);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         dln localdln = (dln)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32481);
+          AppMethodBeat.o(32460);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdln.BaseRequest = ((iv)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(32481);
+          localdln.nDo = locala.NPN.readString();
+          AppMethodBeat.o(32460);
           return 0;
         case 2: 
-          localdln.dtJ = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(32481);
+          localdln.FVn = locala.NPN.readString();
+          AppMethodBeat.o(32460);
+          return 0;
+        case 3: 
+          localdln.HgN = locala.NPN.zc();
+          AppMethodBeat.o(32460);
           return 0;
         }
-        localdln.drx = ((f.a.a.a.a)localObject1).LVo.xF();
-        AppMethodBeat.o(32481);
+        localdln.GaO = locala.NPN.zc();
+        AppMethodBeat.o(32460);
         return 0;
       }
-      AppMethodBeat.o(32481);
+      AppMethodBeat.o(32460);
       return -1;
     }
   }

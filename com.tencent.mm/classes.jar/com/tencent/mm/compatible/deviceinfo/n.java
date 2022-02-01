@@ -2,8 +2,8 @@ package com.tencent.mm.compatible.deviceinfo;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.g;
 import java.util.Map;
@@ -11,50 +11,58 @@ import java.util.regex.Pattern;
 
 public final class n
 {
-  private static Map<String, String> fGM = null;
+  private static Map<String, String> gal = null;
   
-  public static Map<String, String> XH()
+  private static String a(Map<String, String> paramMap, String paramString)
+  {
+    AppMethodBeat.i(155675);
+    paramMap = (String)paramMap.get(paramString);
+    AppMethodBeat.o(155675);
+    return paramMap;
+  }
+  
+  public static Map<String, String> aai()
   {
     AppMethodBeat.i(155667);
-    if (fGM == null) {
-      fGM = XM();
+    if (gal == null) {
+      gal = aan();
     }
-    Map localMap = fGM;
+    Map localMap = gal;
     AppMethodBeat.o(155667);
     return localMap;
   }
   
-  public static String XI()
+  public static String aaj()
   {
     AppMethodBeat.i(155668);
-    if (fGM == null) {
-      fGM = XM();
+    if (gal == null) {
+      gal = aan();
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(": ");
-    ((StringBuilder)localObject).append(a(fGM, "Features"));
+    ((StringBuilder)localObject).append(a(gal, "Features"));
     ((StringBuilder)localObject).append(": ");
-    ((StringBuilder)localObject).append(a(fGM, "Processor"));
+    ((StringBuilder)localObject).append(a(gal, "Processor"));
     ((StringBuilder)localObject).append(": ");
-    ((StringBuilder)localObject).append(a(fGM, "CPU architecture"));
+    ((StringBuilder)localObject).append(a(gal, "CPU architecture"));
     ((StringBuilder)localObject).append(": ");
-    ((StringBuilder)localObject).append(a(fGM, "Hardware"));
+    ((StringBuilder)localObject).append(a(gal, "Hardware"));
     ((StringBuilder)localObject).append(": ");
-    ((StringBuilder)localObject).append(a(fGM, "Serial"));
+    ((StringBuilder)localObject).append(a(gal, "Serial"));
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(155668);
     return localObject;
   }
   
-  public static boolean XJ()
+  public static boolean aak()
   {
     AppMethodBeat.i(155669);
-    if (fGM == null) {
-      fGM = XM();
+    if (gal == null) {
+      gal = aan();
     }
-    if (fGM != null)
+    if (gal != null)
     {
-      String str = a(fGM, "Features");
+      String str = a(gal, "Features");
       if ((str != null) && (str.contains("neon")))
       {
         AppMethodBeat.o(155669);
@@ -70,13 +78,13 @@ public final class n
     return false;
   }
   
-  public static boolean XK()
+  public static boolean aal()
   {
     AppMethodBeat.i(155670);
     try
     {
       if (Build.VERSION.SDK_INT >= 4) {}
-      for (int i = 1; (i != 0) && (XJ()); i = 0)
+      for (int i = 1; (i != 0) && (aak()); i = 0)
       {
         AppMethodBeat.o(155670);
         return true;
@@ -86,7 +94,7 @@ public final class n
     }
     catch (IncompatibleClassChangeError localIncompatibleClassChangeError1)
     {
-      ac.printErrStackTrace("MicroMsg.Crash", localIncompatibleClassChangeError1, "May cause dvmFindCatchBlock crash!", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.Crash", localIncompatibleClassChangeError1, "May cause dvmFindCatchBlock crash!", new Object[0]);
       IncompatibleClassChangeError localIncompatibleClassChangeError2 = (IncompatibleClassChangeError)new IncompatibleClassChangeError("May cause dvmFindCatchBlock crash!").initCause(localIncompatibleClassChangeError1);
       AppMethodBeat.o(155670);
       throw localIncompatibleClassChangeError2;
@@ -98,23 +106,23 @@ public final class n
     return false;
   }
   
-  public static boolean XL()
+  public static boolean aam()
   {
     AppMethodBeat.i(155671);
-    if (fGM == null) {
-      fGM = XM();
+    if (gal == null) {
+      gal = aan();
     }
-    if (fGM != null)
+    if (gal != null)
     {
-      String str = a(fGM, "CPU architecture");
-      ac.d("CpuFeatures", "arch ".concat(String.valueOf(str)));
+      String str = a(gal, "CPU architecture");
+      ad.d("CpuFeatures", "arch ".concat(String.valueOf(str)));
       if (str != null) {
         try
         {
           if (str.length() > 0)
           {
-            int i = bs.getInt(sr(sq(str)), 0);
-            ac.d("CpuFeatures", "armarch ".concat(String.valueOf(i)));
+            int i = bt.getInt(vg(vf(str)), 0);
+            ad.d("CpuFeatures", "armarch ".concat(String.valueOf(i)));
             if (i >= 6)
             {
               AppMethodBeat.o(155671);
@@ -124,7 +132,7 @@ public final class n
         }
         catch (Exception localException)
         {
-          ac.printErrStackTrace("CpuFeatures", localException, "", new Object[0]);
+          ad.printErrStackTrace("CpuFeatures", localException, "", new Object[0]);
         }
       }
     }
@@ -133,38 +141,38 @@ public final class n
   }
   
   /* Error */
-  public static java.util.HashMap<String, String> XM()
+  public static java.util.HashMap<String, String> aan()
   {
     // Byte code:
-    //   0: ldc 153
-    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 155	java/util/HashMap
+    //   0: ldc 161
+    //   2: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 163	java/util/HashMap
     //   8: dup
-    //   9: invokespecial 156	java/util/HashMap:<init>	()V
+    //   9: invokespecial 164	java/util/HashMap:<init>	()V
     //   12: astore_3
-    //   13: new 158	java/io/BufferedReader
+    //   13: new 166	java/io/BufferedReader
     //   16: dup
-    //   17: new 160	java/io/InputStreamReader
+    //   17: new 168	java/io/InputStreamReader
     //   20: dup
-    //   21: ldc 162
-    //   23: invokestatic 168	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   26: ldc 170
-    //   28: invokespecial 173	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   31: invokespecial 176	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   21: ldc 170
+    //   23: invokestatic 176	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   26: ldc 178
+    //   28: invokespecial 181	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   31: invokespecial 184	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   34: astore_1
     //   35: aload_1
     //   36: astore_0
     //   37: aload_1
-    //   38: invokevirtual 179	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   38: invokevirtual 187	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   41: astore_2
     //   42: aload_2
     //   43: ifnull +98 -> 141
     //   46: aload_1
     //   47: astore_0
     //   48: aload_2
-    //   49: ldc 181
+    //   49: ldc 189
     //   51: iconst_2
-    //   52: invokevirtual 185	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   52: invokevirtual 193	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
     //   55: astore 4
     //   57: aload 4
     //   59: ifnull -24 -> 35
@@ -179,54 +187,54 @@ public final class n
     //   73: aload 4
     //   75: iconst_0
     //   76: aaload
-    //   77: invokevirtual 188	java/lang/String:trim	()Ljava/lang/String;
+    //   77: invokevirtual 196	java/lang/String:trim	()Ljava/lang/String;
     //   80: astore_2
     //   81: aload_1
     //   82: astore_0
     //   83: aload 4
     //   85: iconst_1
     //   86: aaload
-    //   87: invokevirtual 188	java/lang/String:trim	()Ljava/lang/String;
+    //   87: invokevirtual 196	java/lang/String:trim	()Ljava/lang/String;
     //   90: astore 4
     //   92: aload_1
     //   93: astore_0
     //   94: aload_3
     //   95: aload_2
-    //   96: invokevirtual 192	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   96: invokevirtual 197	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   99: ifnonnull -64 -> 35
     //   102: aload_1
     //   103: astore_0
     //   104: aload_3
     //   105: aload_2
     //   106: aload 4
-    //   108: invokevirtual 196	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   108: invokevirtual 201	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   111: pop
     //   112: goto -77 -> 35
     //   115: astore_2
     //   116: aload_1
     //   117: astore_0
-    //   118: ldc 113
+    //   118: ldc 121
     //   120: aload_2
-    //   121: ldc 198
+    //   121: ldc 203
     //   123: iconst_0
     //   124: anewarray 4	java/lang/Object
-    //   127: invokestatic 100	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   127: invokestatic 108	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   130: aload_1
-    //   131: invokestatic 201	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
-    //   134: ldc 153
-    //   136: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   131: invokestatic 206	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   134: ldc 161
+    //   136: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   139: aload_3
     //   140: areturn
     //   141: aload_1
-    //   142: invokestatic 201	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   142: invokestatic 206	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   145: goto -11 -> 134
     //   148: astore_1
     //   149: aconst_null
     //   150: astore_0
     //   151: aload_0
-    //   152: invokestatic 201	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
-    //   155: ldc 153
-    //   157: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   152: invokestatic 206	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   155: ldc 161
+    //   157: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   160: aload_1
     //   161: athrow
     //   162: astore_1
@@ -268,14 +276,6 @@ public final class n
     //   13	35	166	java/io/IOException
   }
   
-  private static String a(Map<String, String> paramMap, String paramString)
-  {
-    AppMethodBeat.i(155675);
-    paramMap = (String)paramMap.get(paramString);
-    AppMethodBeat.o(155675);
-    return paramMap;
-  }
-  
   public static int getNumCores()
   {
     AppMethodBeat.i(155672);
@@ -292,7 +292,7 @@ public final class n
     return 1;
   }
   
-  private static String sq(String paramString)
+  private static String vf(String paramString)
   {
     AppMethodBeat.i(155673);
     Object localObject = paramString;
@@ -307,7 +307,7 @@ public final class n
           {
             str = paramString;
             localObject = paramString;
-            if (u(paramString.charAt(0))) {
+            if (w(paramString.charAt(0))) {
               break;
             }
             str = paramString;
@@ -325,14 +325,14 @@ public final class n
       }
       catch (Exception paramString)
       {
-        ac.printErrStackTrace("CpuFeatures", paramString, "", new Object[0]);
+        ad.printErrStackTrace("CpuFeatures", paramString, "", new Object[0]);
         localObject = str;
       }
     }
     return localObject;
   }
   
-  private static String sr(String paramString)
+  private static String vg(String paramString)
   {
     AppMethodBeat.i(155674);
     int j;
@@ -341,7 +341,7 @@ public final class n
       j = i + 1;
       try
       {
-        if ((!u(paramString.charAt(i))) || (paramString.length() <= j))
+        if ((!w(paramString.charAt(i))) || (paramString.length() <= j))
         {
           i = j - 1;
           String str = paramString;
@@ -358,14 +358,14 @@ public final class n
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("CpuFeatures", localException, "", new Object[0]);
+        ad.printErrStackTrace("CpuFeatures", localException, "", new Object[0]);
         AppMethodBeat.o(155674);
         return paramString;
       }
     }
   }
   
-  private static boolean u(char paramChar)
+  private static boolean w(char paramChar)
   {
     return (paramChar >= '0') && (paramChar <= '9');
   }

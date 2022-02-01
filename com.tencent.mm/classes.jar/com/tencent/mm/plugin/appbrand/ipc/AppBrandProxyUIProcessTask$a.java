@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.reflect.Constructor;
 
 final class AppBrandProxyUIProcessTask$a
 {
-  static <_Model extends AppBrandProxyUIProcessTask> _Model LG(String paramString)
+  static <_Model extends AppBrandProxyUIProcessTask> _Model Pa(String paramString)
   {
     AppMethodBeat.i(45413);
     try
@@ -20,7 +20,7 @@ final class AppBrandProxyUIProcessTask$a
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.AppBrand.IpcProxyUIModelFactory", "create mode object using className(%s), exp = %s", new Object[] { paramString, bs.m(localException) });
+      ad.e("MicroMsg.AppBrand.IpcProxyUIModelFactory", "create mode object using className(%s), exp = %s", new Object[] { paramString, bt.n(localException) });
       AppMethodBeat.o(45413);
     }
     return null;
@@ -28,7 +28,7 @@ final class AppBrandProxyUIProcessTask$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.a
  * JD-Core Version:    0.7.0.1
  */

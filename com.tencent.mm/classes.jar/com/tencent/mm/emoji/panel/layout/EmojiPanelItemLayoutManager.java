@@ -7,20 +7,20 @@ import android.support.v7.widget.RecyclerView.s;
 import android.support.v7.widget.RecyclerView.t;
 import android.support.v7.widget.ae;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/layout/EmojiPanelItemLayoutManager;", "Landroid/support/v7/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "scrollToPosition", "", "position", "smoothScrollToPosition", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "Scroller", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/layout/EmojiPanelItemLayoutManager;", "Landroid/support/v7/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "scrollToPosition", "", "position", "smoothScrollToPosition", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "Scroller", "plugin-emojisdk_release"})
 public final class EmojiPanelItemLayoutManager
   extends GridLayoutManager
 {
   public final void a(RecyclerView paramRecyclerView, RecyclerView.t paramt, int paramInt)
   {
     AppMethodBeat.i(105713);
-    k.h(paramRecyclerView, "recyclerView");
-    k.h(paramt, "state");
+    p.h(paramRecyclerView, "recyclerView");
+    p.h(paramt, "state");
     paramRecyclerView = paramRecyclerView.getContext();
-    k.g(paramRecyclerView, "recyclerView.context");
+    p.g(paramRecyclerView, "recyclerView.context");
     paramRecyclerView = new a(paramRecyclerView);
     paramRecyclerView.cz(paramInt);
     a((RecyclerView.s)paramRecyclerView);
@@ -30,11 +30,11 @@ public final class EmojiPanelItemLayoutManager
   public final void ca(int paramInt)
   {
     AppMethodBeat.i(105714);
-    super.af(paramInt, 0);
+    super.ag(paramInt, 0);
     AppMethodBeat.o(105714);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/layout/EmojiPanelItemLayoutManager$Scroller;", "Landroid/support/v7/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getVerticalSnapPreference", "", "plugin-emojisdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/layout/EmojiPanelItemLayoutManager$Scroller;", "Landroid/support/v7/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getVerticalSnapPreference", "", "plugin-emojisdk_release"})
   static final class a
     extends ae
   {
@@ -45,7 +45,7 @@ public final class EmojiPanelItemLayoutManager
       AppMethodBeat.o(105712);
     }
     
-    public final int ke()
+    public final int ku()
     {
       return -1;
     }

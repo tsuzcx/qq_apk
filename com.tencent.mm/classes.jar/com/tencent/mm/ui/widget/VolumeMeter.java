@@ -8,52 +8,52 @@ import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class VolumeMeter
   extends ImageView
   implements Runnable
 {
-  private boolean hDs;
+  private boolean hVX;
   private Context mContext;
   private Paint paint;
   private float radius;
-  private boolean ubH;
-  private View ubI;
-  private int ubJ;
-  private int ubK;
-  private ao ubL;
-  private float ubM;
-  private float ubN;
-  private float ubO;
-  private float ubP;
-  private int ubQ;
-  private int ubR;
-  private float ubS;
-  private float ubT;
-  private int ubU;
-  private float ubV;
-  private float ubW;
-  private float ubX;
-  private float ubY;
+  private int veA;
+  private int veB;
+  private float veC;
+  private float veD;
+  private int veE;
+  private float veF;
+  private float veG;
+  private float veH;
+  private float veI;
+  private boolean veq;
+  private View ves;
+  private int vet;
+  private int veu;
+  private ap vev;
+  private float vew;
+  private float vex;
+  private float vey;
+  private float vez;
   
   public VolumeMeter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143500);
-    this.hDs = false;
-    this.ubH = false;
-    this.ubJ = -1;
-    this.ubK = -1;
-    this.ubL = null;
-    this.ubQ = -6751336;
-    this.ubR = 70;
-    this.ubS = 0.5F;
-    this.ubT = 0.001F;
-    this.ubU = 20;
+    this.hVX = false;
+    this.veq = false;
+    this.vet = -1;
+    this.veu = -1;
+    this.vev = null;
+    this.veA = -6751336;
+    this.veB = 70;
+    this.veC = 0.5F;
+    this.veD = 0.001F;
+    this.veE = 20;
     this.radius = 0.0F;
-    this.ubX = 40.0F;
-    this.ubY = 30.0F;
+    this.veH = 40.0F;
+    this.veI = 30.0F;
     this.mContext = paramContext;
     init();
     AppMethodBeat.o(143500);
@@ -63,19 +63,19 @@ public class VolumeMeter
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143499);
-    this.hDs = false;
-    this.ubH = false;
-    this.ubJ = -1;
-    this.ubK = -1;
-    this.ubL = null;
-    this.ubQ = -6751336;
-    this.ubR = 70;
-    this.ubS = 0.5F;
-    this.ubT = 0.001F;
-    this.ubU = 20;
+    this.hVX = false;
+    this.veq = false;
+    this.vet = -1;
+    this.veu = -1;
+    this.vev = null;
+    this.veA = -6751336;
+    this.veB = 70;
+    this.veC = 0.5F;
+    this.veD = 0.001F;
+    this.veE = 20;
     this.radius = 0.0F;
-    this.ubX = 40.0F;
-    this.ubY = 30.0F;
+    this.veH = 40.0F;
+    this.veI = 30.0F;
     this.mContext = paramContext;
     init();
     AppMethodBeat.o(143499);
@@ -94,39 +94,39 @@ public class VolumeMeter
     super.onDraw(paramCanvas);
     getWidth();
     getHeight();
-    if ((this.ubI == null) || (this.ubI.getVisibility() == 4)) {}
-    while ((this.ubJ < 0) || (this.ubK < 0))
+    if ((this.ves == null) || (this.ves.getVisibility() == 4)) {}
+    while ((this.vet < 0) || (this.veu < 0))
     {
       AppMethodBeat.o(143502);
       return;
       int[] arrayOfInt = new int[2];
-      this.ubI.getLocationInWindow(arrayOfInt);
+      this.ves.getLocationInWindow(arrayOfInt);
       if ((arrayOfInt[0] != 0) && (arrayOfInt[1] != 0))
       {
-        int i = this.ubI.getWidth();
-        int j = this.ubI.getHeight();
+        int i = this.ves.getWidth();
+        int j = this.ves.getHeight();
         if ((i != 0) && (j != 0))
         {
           int k = BackwardSupportUtil.b.g(this.mContext, 50.0F);
-          this.ubJ = (arrayOfInt[0] + i / 2);
-          this.ubK = (arrayOfInt[1] + j / 2 - k / 2);
-          this.ubW = (i / 2);
-          this.ubV = (i / 2 * 2.0F);
+          this.vet = (arrayOfInt[0] + i / 2);
+          this.veu = (arrayOfInt[1] + j / 2 - k / 2);
+          this.veG = (i / 2);
+          this.veF = (i / 2 * 2.0F);
         }
       }
     }
-    this.paint.setColor(this.ubQ);
-    this.paint.setAlpha(this.ubR);
+    this.paint.setColor(this.veA);
+    this.paint.setAlpha(this.veB);
     float f2 = BackwardSupportUtil.b.g(this.mContext, this.radius);
     float f1 = f2;
-    if (f2 > this.ubV) {
-      f1 = this.ubV;
+    if (f2 > this.veF) {
+      f1 = this.veF;
     }
     f2 = f1;
-    if (f1 < this.ubW) {
-      f2 = this.ubW;
+    if (f1 < this.veG) {
+      f2 = this.veG;
     }
-    paramCanvas.drawCircle(this.ubJ, this.ubK, f2, this.paint);
+    paramCanvas.drawCircle(this.vet, this.veu, f2, this.paint);
     AppMethodBeat.o(143502);
   }
   
@@ -136,49 +136,49 @@ public class VolumeMeter
     float f2;
     float f3;
     float f1;
-    if (this.hDs)
+    if (this.hVX)
     {
-      f2 = this.ubO;
-      if (this.ubN <= this.ubM) {
+      f2 = this.vey;
+      if (this.vex <= this.vew) {
         break label147;
       }
-      f3 = (this.ubN - this.ubM) / this.ubY;
-      if (f3 <= this.ubS) {
+      f3 = (this.vex - this.vew) / this.veI;
+      if (f3 <= this.veC) {
         break label128;
       }
-      f1 = this.ubS;
+      f1 = this.veC;
       f1 += f2;
     }
     for (;;)
     {
-      this.ubO = f1;
-      this.ubP = this.ubO;
-      this.radius = ((float)(260.0D * Math.sqrt(this.ubO) - 130.0F * this.ubO) / 1.5F);
+      this.vey = f1;
+      this.vez = this.vey;
+      this.radius = ((float)(260.0D * Math.sqrt(this.vey) - 130.0F * this.vey) / 1.5F);
       postInvalidate();
-      this.ubL.postDelayed(this, this.ubU);
+      this.vev.postDelayed(this, this.veE);
       AppMethodBeat.o(143498);
       return;
       label128:
       f1 = f3;
-      if (f3 >= this.ubT) {
+      if (f3 >= this.veD) {
         break;
       }
-      f1 = this.ubT;
+      f1 = this.veD;
       break;
       label147:
-      if (this.ubN <= this.ubM)
+      if (this.vex <= this.vew)
       {
-        f3 = (this.ubM - this.ubN) / this.ubX;
-        if (f3 > this.ubS) {
-          f1 = this.ubS;
+        f3 = (this.vew - this.vex) / this.veH;
+        if (f3 > this.veC) {
+          f1 = this.veC;
         }
         for (;;)
         {
           f1 = f2 - f1;
           break;
           f1 = f3;
-          if (f3 < this.ubT) {
-            f1 = this.ubT;
+          if (f3 < this.veD) {
+            f1 = this.veD;
           }
         }
       }
@@ -188,18 +188,18 @@ public class VolumeMeter
   
   public void setArchView(View paramView)
   {
-    this.ubI = paramView;
+    this.ves = paramView;
   }
   
   public void setVolume(float paramFloat)
   {
-    this.ubM = this.ubN;
-    this.ubN = paramFloat;
+    this.vew = this.vex;
+    this.vex = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.VolumeMeter
  * JD-Core Version:    0.7.0.1
  */

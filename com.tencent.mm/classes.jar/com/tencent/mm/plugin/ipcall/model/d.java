@@ -1,55 +1,57 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bb.k;
-import com.tencent.mm.bb.l;
-import com.tencent.mm.bb.o;
-import com.tencent.mm.bb.p;
-import com.tencent.mm.bb.t;
-import com.tencent.mm.g.a.cy;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bc.k;
+import com.tencent.mm.bc.l;
+import com.tencent.mm.bc.o;
+import com.tencent.mm.bc.p;
+import com.tencent.mm.bc.t;
+import com.tencent.mm.g.a.db;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.n.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.util.ArrayList;
 
 public final class d
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  private static d tHz = null;
-  private boolean fRX;
+  private static d uKm = null;
+  private boolean glB;
   private int retryCount;
-  com.tencent.mm.sdk.b.c tHA;
+  com.tencent.mm.sdk.b.c uKn;
   
   private d()
   {
     AppMethodBeat.i(25349);
     this.retryCount = 0;
-    this.fRX = false;
-    this.tHA = new com.tencent.mm.sdk.b.c()
+    this.glB = false;
+    this.uKn = new com.tencent.mm.sdk.b.c()
     {
-      private boolean a(cy paramAnonymouscy)
+      private boolean a(db paramAnonymousdb)
       {
         AppMethodBeat.i(25347);
         Object localObject;
-        if ((paramAnonymouscy instanceof cy))
+        if ((paramAnonymousdb instanceof db))
         {
-          ac.d("MicroMsg.IPCallCoutryConfigUpdater", "detect DynamicConfigUpdatedEvent");
-          az.ayM();
-          int i = ((Integer)com.tencent.mm.model.c.agA().get(ah.a.GGk, Integer.valueOf(0))).intValue();
-          int j = com.tencent.mm.m.g.ZY().getInt("WeChatOutCountryCodeRestrictionPackageID", 0);
-          ac.d("MicroMsg.IPCallCoutryConfigUpdater", "oldConfig: %d, newConfig: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          ad.d("MicroMsg.IPCallCoutryConfigUpdater", "detect DynamicConfigUpdatedEvent");
+          ba.aBQ();
+          int i = ((Integer)com.tencent.mm.model.c.ajl().get(al.a.IsC, Integer.valueOf(0))).intValue();
+          int j = g.acA().getInt("WeChatOutCountryCodeRestrictionPackageID", 0);
+          ad.d("MicroMsg.IPCallCoutryConfigUpdater", "oldConfig: %d, newConfig: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
           if (i != j)
           {
-            az.ayM();
-            com.tencent.mm.model.c.agA().set(ah.a.GGk, Integer.valueOf(j));
-            t.aGO().pn(26);
-            paramAnonymouscy = c.cUg();
-            localObject = b.aoZ() + "ipcallCountryCodeConfig.cfg";
-            ac.d("MicroMsg.IPCallCountryCodeConfig", "deleteRestrictionCountryConfigIfExist, path: %s", new Object[] { localObject });
+            ba.aBQ();
+            com.tencent.mm.model.c.ajl().set(al.a.IsC, Integer.valueOf(j));
+            t.aJZ().pQ(26);
+            paramAnonymousdb = c.ddr();
+            localObject = b.arM() + "ipcallCountryCodeConfig.cfg";
+            ad.d("MicroMsg.IPCallCountryCodeConfig", "deleteRestrictionCountryConfigIfExist, path: %s", new Object[] { localObject });
           }
         }
         try
@@ -58,17 +60,17 @@ public final class d
           if (((com.tencent.mm.vfs.e)localObject).exists()) {
             ((com.tencent.mm.vfs.e)localObject).delete();
           }
-          paramAnonymouscy.cqf = false;
-          paramAnonymouscy.tHy.clear();
+          paramAnonymousdb.cAX = false;
+          paramAnonymousdb.uKl.clear();
         }
-        catch (Exception paramAnonymouscy)
+        catch (Exception paramAnonymousdb)
         {
           for (;;)
           {
-            ac.e("MicroMsg.IPCallCountryCodeConfig", "deleteRestrictionCountryConfigIfExist, error: %s", new Object[] { paramAnonymouscy.getMessage() });
+            ad.e("MicroMsg.IPCallCountryCodeConfig", "deleteRestrictionCountryConfigIfExist, error: %s", new Object[] { paramAnonymousdb.getMessage() });
           }
         }
-        d.this.nh(true);
+        d.this.nB(true);
         AppMethodBeat.o(25347);
         return false;
       }
@@ -76,83 +78,83 @@ public final class d
     AppMethodBeat.o(25349);
   }
   
-  public static d cUk()
+  public static d ddv()
   {
     AppMethodBeat.i(25350);
-    if (tHz == null) {
-      tHz = new d();
+    if (uKm == null) {
+      uKm = new d();
     }
-    d locald = tHz;
+    d locald = uKm;
     AppMethodBeat.o(25350);
     return locald;
   }
   
-  private static void cUl()
+  private static void ddw()
   {
     AppMethodBeat.i(25352);
-    Object localObject = t.aGO().po(26);
+    Object localObject = t.aJZ().pR(26);
     if ((localObject != null) && (localObject.length > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       localObject = new l(bool);
-      az.agi().a((n)localObject, 0);
+      ba.aiU().a((n)localObject, 0);
       AppMethodBeat.o(25352);
       return;
     }
   }
   
-  private void cUm()
+  private void ddx()
   {
     AppMethodBeat.i(25354);
-    this.fRX = false;
+    this.glB = false;
     this.retryCount = 0;
     long l = System.currentTimeMillis();
-    az.ayM();
-    com.tencent.mm.model.c.agA().set(ah.a.GGl, Long.valueOf(l));
+    ba.aBQ();
+    com.tencent.mm.model.c.ajl().set(al.a.IsD, Long.valueOf(l));
     AppMethodBeat.o(25354);
   }
   
-  public final void nh(boolean paramBoolean)
+  public final void nB(boolean paramBoolean)
   {
     AppMethodBeat.i(25351);
-    if (!az.agM())
+    if (!ba.ajx())
     {
-      ac.i("MicroMsg.IPCallCoutryConfigUpdater", "tryUpdate, acc not ready");
+      ad.i("MicroMsg.IPCallCoutryConfigUpdater", "tryUpdate, acc not ready");
       AppMethodBeat.o(25351);
       return;
     }
-    if (this.fRX)
+    if (this.glB)
     {
-      ac.i("MicroMsg.IPCallCoutryConfigUpdater", "tryUpdate updating");
+      ad.i("MicroMsg.IPCallCoutryConfigUpdater", "tryUpdate updating");
       AppMethodBeat.o(25351);
       return;
     }
-    ac.d("MicroMsg.IPCallCoutryConfigUpdater", "tryupdate, isForce: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.d("MicroMsg.IPCallCoutryConfigUpdater", "tryupdate, isForce: %b", new Object[] { Boolean.valueOf(paramBoolean) });
     if (!paramBoolean)
     {
-      az.ayM();
-      long l1 = ((Long)com.tencent.mm.model.c.agA().get(ah.a.GGl, Long.valueOf(0L))).longValue();
+      ba.aBQ();
+      long l1 = ((Long)com.tencent.mm.model.c.ajl().get(al.a.IsD, Long.valueOf(0L))).longValue();
       long l2 = System.currentTimeMillis();
       if ((l1 != 0L) && (Math.abs(l2 - l1) < 86400000L))
       {
-        ac.i("MicroMsg.IPCallCoutryConfigUpdater", "tryUpdate, not reach the update time limit");
+        ad.i("MicroMsg.IPCallCoutryConfigUpdater", "tryUpdate, not reach the update time limit");
         AppMethodBeat.o(25351);
         return;
       }
     }
-    ac.i("MicroMsg.IPCallCoutryConfigUpdater", "try update now");
-    this.fRX = true;
-    az.agi().a(159, this);
-    az.agi().a(160, this);
-    cUl();
+    ad.i("MicroMsg.IPCallCoutryConfigUpdater", "try update now");
+    this.glB = true;
+    ba.aiU().a(159, this);
+    ba.aiU().a(160, this);
+    ddw();
     AppMethodBeat.o(25351);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(25353);
-    ac.d("MicroMsg.IPCallCoutryConfigUpdater", "onSceneEnd, errType: %d, errCode: %d, isUpdating: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.fRX) });
-    if (!this.fRX)
+    ad.d("MicroMsg.IPCallCoutryConfigUpdater", "onSceneEnd, errType: %d, errCode: %d, isUpdating: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.glB) });
+    if (!this.glB)
     {
       AppMethodBeat.o(25353);
       return;
@@ -160,59 +162,59 @@ public final class d
     if ((paramInt1 != 0) && (paramInt2 != 0)) {}
     for (boolean bool = false;; bool = true)
     {
-      ac.d("MicroMsg.IPCallCoutryConfigUpdater", "onSceneEnd, isSuccess: %b", new Object[] { Boolean.valueOf(bool) });
+      ad.d("MicroMsg.IPCallCoutryConfigUpdater", "onSceneEnd, isSuccess: %b", new Object[] { Boolean.valueOf(bool) });
       if (paramn.getType() == 159)
       {
         if (bool)
         {
-          ac.d("MicroMsg.IPCallCoutryConfigUpdater", "get package list success, start download");
-          paramString = t.aGO().po(26);
+          ad.d("MicroMsg.IPCallCoutryConfigUpdater", "get package list success, start download");
+          paramString = t.aJZ().pR(26);
           if ((paramString == null) || (paramString.length == 0))
           {
-            ac.d("MicroMsg.IPCallCoutryConfigUpdater", "do not exist package info");
-            cUm();
+            ad.d("MicroMsg.IPCallCoutryConfigUpdater", "do not exist package info");
+            ddx();
             AppMethodBeat.o(25353);
             return;
           }
-          ac.d("MicroMsg.IPCallCoutryConfigUpdater", "infos.length: %d", new Object[] { Integer.valueOf(paramString.length) });
+          ad.d("MicroMsg.IPCallCoutryConfigUpdater", "infos.length: %d", new Object[] { Integer.valueOf(paramString.length) });
           paramString = paramString[0];
-          ac.d("MicroMsg.IPCallCoutryConfigUpdater", "stored info type: %d, id: %d, version: %d, status: %d, name: %s", new Object[] { Integer.valueOf(paramString.dib), Integer.valueOf(paramString.id), Integer.valueOf(paramString.version), Integer.valueOf(paramString.status), paramString.aGJ() });
+          ad.d("MicroMsg.IPCallCoutryConfigUpdater", "stored info type: %d, id: %d, version: %d, status: %d, name: %s", new Object[] { Integer.valueOf(paramString.dtF), Integer.valueOf(paramString.id), Integer.valueOf(paramString.version), Integer.valueOf(paramString.status), paramString.aJU() });
           if (paramString.status == 3)
           {
-            ac.d("MicroMsg.IPCallCoutryConfigUpdater", "downloading this package, ignore");
+            ad.d("MicroMsg.IPCallCoutryConfigUpdater", "downloading this package, ignore");
             AppMethodBeat.o(25353);
             return;
           }
           if (paramString.status != 5)
           {
-            ac.d("MicroMsg.IPCallCoutryConfigUpdater", "already download this package");
-            c.cUg().ng(true);
-            cUm();
+            ad.d("MicroMsg.IPCallCoutryConfigUpdater", "already download this package");
+            c.ddr().nA(true);
+            ddx();
             AppMethodBeat.o(25353);
             return;
           }
           paramString = new k(paramString.id, 26);
-          az.agi().a(paramString, 0);
+          ba.aiU().a(paramString, 0);
           AppMethodBeat.o(25353);
           return;
         }
         if (this.retryCount < 3)
         {
           this.retryCount += 1;
-          cUl();
-          ac.d("MicroMsg.IPCallCoutryConfigUpdater", "retry get package list, retryCount: %d", new Object[] { Integer.valueOf(this.retryCount) });
+          ddw();
+          ad.d("MicroMsg.IPCallCoutryConfigUpdater", "retry get package list, retryCount: %d", new Object[] { Integer.valueOf(this.retryCount) });
           AppMethodBeat.o(25353);
           return;
         }
-        ac.e("MicroMsg.IPCallCoutryConfigUpdater", "reach retry limit");
+        ad.e("MicroMsg.IPCallCoutryConfigUpdater", "reach retry limit");
         AppMethodBeat.o(25353);
         return;
       }
       if ((paramn.getType() == 160) && (bool))
       {
-        ac.d("MicroMsg.IPCallCoutryConfigUpdater", "download package success");
-        c.cUg().ng(true);
-        cUm();
+        ad.d("MicroMsg.IPCallCoutryConfigUpdater", "download package success");
+        c.ddr().nA(true);
+        ddx();
       }
       AppMethodBeat.o(25353);
       return;

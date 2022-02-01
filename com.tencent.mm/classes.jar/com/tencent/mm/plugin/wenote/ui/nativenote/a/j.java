@@ -10,119 +10,134 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nb;
+import com.tencent.mm.g.a.nj;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wenote.model.a.o;
 import com.tencent.mm.plugin.wenote.model.d;
 import com.tencent.mm.plugin.wenote.model.nativenote.c.e;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class j
   extends a
 {
-  public static float CYN = Resources.getSystem().getDisplayMetrics().density;
-  public static int oPa = Resources.getSystem().getDisplayMetrics().widthPixels;
-  public static int oPb = (int)(40.0F * CYN + 0.5F);
-  public WXRTEditText CYL;
-  public WXRTEditText CYM;
-  public ImageView dhf;
-  public LinearLayout iRV;
-  public LinearLayout oON;
-  public TextView oOO;
-  public TextView oOP;
-  public ImageView oOQ;
-  public View oOR;
-  public LinearLayout oOS;
-  public LinearLayout oOT;
-  public LinearLayout oOU;
-  public LinearLayout oOV;
-  public LinearLayout oOW;
-  public LinearLayout oOX;
-  public LinearLayout oOY;
-  public View.OnClickListener oPc = new View.OnClickListener()
+  public static float ECJ = Resources.getSystem().getDisplayMetrics().density;
+  public static int psI = Resources.getSystem().getDisplayMetrics().widthPixels;
+  public static int psJ = (int)(40.0F * ECJ + 0.5F);
+  public WXRTEditText ECH;
+  public WXRTEditText ECI;
+  public ImageView dsD;
+  public LinearLayout jld;
+  public LinearLayout psA;
+  public LinearLayout psB;
+  public LinearLayout psC;
+  public LinearLayout psD;
+  public LinearLayout psE;
+  public LinearLayout psF;
+  public LinearLayout psG;
+  public View.OnClickListener psK = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
       AppMethodBeat.i(30869);
-      if (j.this.CXj.CWB == 2)
+      Object localObject = new b();
+      ((b)localObject).bd(paramAnonymousView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteOtherItemHolder$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+      if (j.this.EBf.EAx == 2)
       {
-        j.this.CXj.CWs.eIv().bYR();
-        j.this.CXj.eIj();
+        j.this.EBf.EAo.eXo().cdv();
+        j.this.EBf.eXc();
       }
-      int i = ((RecyclerView.w)paramAnonymousView.getTag()).lv();
-      nb localnb = new nb();
-      if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().Wh(i) == null)
+      int i = ((RecyclerView.w)paramAnonymousView.getTag()).lN();
+      localObject = new nj();
+      if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().XY(i) == null)
       {
-        ac.e("Micromsg.NoteOtherItemHolder", "click not response, null == NoteDataManager.getMgr().get(position),position is %d,datalist size = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().size()) });
+        ad.e("Micromsg.NoteOtherItemHolder", "click not response, null == NoteDataManager.getMgr().get(position),position is %d,datalist size = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().size()) });
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteOtherItemHolder$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30869);
         return;
       }
-      if (com.tencent.mm.plugin.wenote.model.c.eHP().CUG == null)
+      if (com.tencent.mm.plugin.wenote.model.c.eWI().EyD == null)
       {
-        ac.e("Micromsg.NoteOtherItemHolder", "getWnNoteBase is null");
+        ad.e("Micromsg.NoteOtherItemHolder", "getWnNoteBase is null");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteOtherItemHolder$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30869);
         return;
       }
-      ac.i("Micromsg.NoteOtherItemHolder", "click item, type is %d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().Wh(i).getType()) });
-      localnb.dpw.dpy = ((o)com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().Wh(i)).oQi;
-      localnb.dpw.context = paramAnonymousView.getContext();
-      localnb.dpw.type = 1;
-      com.tencent.mm.plugin.wenote.model.c.eHP().CUG.b(localnb);
+      ad.i("Micromsg.NoteOtherItemHolder", "click item, type is %d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().XY(i).getType()) });
+      ((nj)localObject).dBj.dBl = ((o)com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eWU().XY(i)).ptS;
+      ((nj)localObject).dBj.context = paramAnonymousView.getContext();
+      ((nj)localObject).dBj.type = 1;
+      com.tencent.mm.plugin.wenote.model.c.eWI().EyD.b((nj)localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteOtherItemHolder$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(30869);
     }
   };
+  public LinearLayout psv;
+  public TextView psw;
+  public TextView psx;
+  public ImageView psy;
+  public View psz;
   
   public j(View paramView, k paramk)
   {
     super(paramView, paramk);
-    this.dhf = ((ImageView)paramView.findViewById(2131299257));
-    this.oOR = paramView.findViewById(2131306315);
-    this.oON = ((LinearLayout)paramView.findViewById(2131302917));
-    this.iRV = ((LinearLayout)paramView.findViewById(2131302943));
-    this.oOO = ((TextView)paramView.findViewById(2131302918));
-    this.oOP = ((TextView)paramView.findViewById(2131302915));
-    this.oOQ = ((ImageView)paramView.findViewById(2131302916));
-    this.oOO.setTextSize(16.0F);
-    this.oOP.setTextSize(12.0F);
-    this.oOS = ((LinearLayout)paramView.findViewById(2131302941));
-    this.oOS.setVisibility(8);
-    this.oOU = ((LinearLayout)paramView.findViewById(2131302936));
-    this.oOU.setVisibility(8);
-    this.oOV = ((LinearLayout)paramView.findViewById(2131302914));
-    this.oOV.setVisibility(8);
-    this.oOW = ((LinearLayout)paramView.findViewById(2131303103));
-    this.oOW.setBackgroundColor(1347529272);
-    this.oOW.setVisibility(8);
-    this.oOW.setOnClickListener(new View.OnClickListener()
+    this.dsD = ((ImageView)paramView.findViewById(2131299257));
+    this.psz = paramView.findViewById(2131306315);
+    this.psv = ((LinearLayout)paramView.findViewById(2131302917));
+    this.jld = ((LinearLayout)paramView.findViewById(2131302943));
+    this.psw = ((TextView)paramView.findViewById(2131302918));
+    this.psx = ((TextView)paramView.findViewById(2131302915));
+    this.psy = ((ImageView)paramView.findViewById(2131302916));
+    this.psw.setTextSize(16.0F);
+    this.psx.setTextSize(12.0F);
+    this.psA = ((LinearLayout)paramView.findViewById(2131302941));
+    this.psA.setVisibility(8);
+    this.psC = ((LinearLayout)paramView.findViewById(2131302936));
+    this.psC.setVisibility(8);
+    this.psD = ((LinearLayout)paramView.findViewById(2131302914));
+    this.psD.setVisibility(8);
+    this.psE = ((LinearLayout)paramView.findViewById(2131303103));
+    this.psE.setBackgroundColor(1347529272);
+    this.psE.setVisibility(8);
+    this.psE.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30866);
-        e.eIm().caq();
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteOtherItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        e.eXf().ceU();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteOtherItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30866);
       }
     });
-    this.oOX = ((LinearLayout)paramView.findViewById(2131303110));
-    this.oOX.setBackgroundColor(1347529272);
-    this.oOX.setVisibility(4);
-    this.oOY = ((LinearLayout)paramView.findViewById(2131303105));
-    this.oOY.setBackgroundColor(1347529272);
-    this.oOY.setVisibility(4);
-    this.oOT = ((LinearLayout)paramView.findViewById(2131299269));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.oOT.getLayoutParams();
-    localLayoutParams.width = (oPa - oPb);
+    this.psF = ((LinearLayout)paramView.findViewById(2131303110));
+    this.psF.setBackgroundColor(1347529272);
+    this.psF.setVisibility(4);
+    this.psG = ((LinearLayout)paramView.findViewById(2131303105));
+    this.psG.setBackgroundColor(1347529272);
+    this.psG.setVisibility(4);
+    this.psB = ((LinearLayout)paramView.findViewById(2131299269));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.psB.getLayoutParams();
+    localLayoutParams.width = (psI - psJ);
     localLayoutParams.height = -2;
-    this.oOT.setLayoutParams(localLayoutParams);
-    this.CYM = ((WXRTEditText)paramView.findViewById(2131297578));
-    this.CYL = ((WXRTEditText)paramView.findViewById(2131297580));
+    this.psB.setLayoutParams(localLayoutParams);
+    this.ECI = ((WXRTEditText)paramView.findViewById(2131297578));
+    this.ECH = ((WXRTEditText)paramView.findViewById(2131297580));
     ((LinearLayout)paramView.findViewById(2131297579)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30867);
-        j.this.CYM.bZW();
-        j.this.CYM.requestFocus();
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteOtherItemHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        j.this.ECI.ceA();
+        j.this.ECI.requestFocus();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteOtherItemHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30867);
       }
     });
@@ -131,69 +146,73 @@ public abstract class j
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30868);
-        j.this.CYL.bZW();
-        j.this.CYL.requestFocus();
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteOtherItemHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        j.this.ECH.ceA();
+        j.this.ECH.requestFocus();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteOtherItemHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30868);
       }
     });
-    this.CYM.setEditTextType(2);
-    this.CYL.setEditTextType(1);
-    this.CYL.oRB = this;
-    this.CYM.oRB = this;
-    if ((paramk.CWB != 2) || (!this.CXj.CWC))
+    this.ECI.setEditTextType(2);
+    this.ECH.setEditTextType(1);
+    this.ECH.pvl = this;
+    this.ECI.pvl = this;
+    if ((paramk.EAx != 2) || (!this.EBf.EAy))
     {
-      this.CYM.setKeyListener(null);
-      this.CYM.setEnabled(false);
-      this.CYM.setFocusable(false);
-      this.CYL.setKeyListener(null);
-      this.CYL.setEnabled(false);
-      this.CYL.setFocusable(false);
+      this.ECI.setKeyListener(null);
+      this.ECI.setEnabled(false);
+      this.ECI.setFocusable(false);
+      this.ECH.setKeyListener(null);
+      this.ECH.setEnabled(false);
+      this.ECH.setFocusable(false);
     }
-    this.CXj.q(this.CYL);
-    this.CXj.q(this.CYM);
+    this.EBf.q(this.ECH);
+    this.EBf.q(this.ECI);
   }
   
   public void a(com.tencent.mm.plugin.wenote.model.a.c paramc, int paramInt1, int paramInt2)
   {
-    ac.i("Micromsg.NoteOtherItemHolder", "ImageItemHolder position is " + lu());
-    this.CYL.setPosInDataList(paramInt1);
-    this.CYM.setPosInDataList(paramInt1);
+    ad.i("Micromsg.NoteOtherItemHolder", "ImageItemHolder position is " + lM());
+    this.ECH.setPosInDataList(paramInt1);
+    this.ECI.setPosInDataList(paramInt1);
     if (e.isEnabled()) {
-      e.eIm().a(this.oOW, this.oOX, this.oOY, paramInt1);
+      e.eXf().a(this.psE, this.psF, this.psG, paramInt1);
     }
-    paramc.CVD = this.CYL;
-    paramc.CVE = this.CYM;
-    paramc.CVF = null;
-    if (paramc.oPV) {
-      if (paramc.oQb) {
-        this.CYL.requestFocus();
+    paramc.EzA = this.ECH;
+    paramc.EzB = this.ECI;
+    paramc.EzC = null;
+    if (paramc.ptF) {
+      if (paramc.ptL) {
+        this.ECH.requestFocus();
       }
     }
     for (;;)
     {
-      if (this.oON.getVisibility() == 0)
+      if (this.psv.getVisibility() == 0)
       {
-        if (!paramc.oQc) {
+        if (!paramc.ptM) {
           break;
         }
-        this.oON.setBackgroundResource(2131234765);
+        this.psv.setBackgroundResource(2131234765);
       }
       return;
-      this.CYM.requestFocus();
+      this.ECI.requestFocus();
       continue;
-      if (this.CYL.hasFocus()) {
-        this.CYL.clearFocus();
+      if (this.ECH.hasFocus()) {
+        this.ECH.clearFocus();
       }
-      if (this.CYM.hasFocus()) {
-        this.CYM.clearFocus();
+      if (this.ECI.hasFocus()) {
+        this.ECI.clearFocus();
       }
     }
-    this.oON.setBackgroundResource(2131234764);
+    this.psv.setBackgroundResource(2131234764);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.j
  * JD-Core Version:    0.7.0.1
  */

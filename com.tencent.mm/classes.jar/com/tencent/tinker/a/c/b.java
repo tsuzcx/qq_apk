@@ -3,9 +3,9 @@ package com.tencent.tinker.a.c;
 public final class b
   implements Cloneable
 {
-  private static final int[] bGB = new int[0];
-  public int[] Koy;
-  public int[] Nf;
+  private static final int[] bQP = new int[0];
+  public int[] Mew;
+  public int[] OW;
   public int mSize;
   
   public b()
@@ -16,13 +16,13 @@ public final class b
   public b(int paramInt)
   {
     if (paramInt == 0) {
-      this.Nf = bGB;
+      this.OW = bQP;
     }
-    for (this.Koy = bGB;; this.Koy = new int[this.Nf.length])
+    for (this.Mew = bQP;; this.Mew = new int[this.OW.length])
     {
       this.mSize = 0;
       return;
-      this.Nf = new int[paramInt];
+      this.OW = new int[paramInt];
     }
   }
   
@@ -59,7 +59,7 @@ public final class b
     return i;
   }
   
-  private static int[] c(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
+  private static int[] b(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt1 > paramArrayOfInt.length) {
       throw new IllegalArgumentException("Bad currentSize, originalSize: " + paramArrayOfInt.length + " currentSize: " + paramInt1);
@@ -77,7 +77,7 @@ public final class b
     return arrayOfInt;
   }
   
-  private b fHh()
+  private b fYt()
   {
     try
     {
@@ -88,8 +88,8 @@ public final class b
     {
       try
       {
-        localb.Nf = ((int[])this.Nf.clone());
-        localb.Koy = ((int[])this.Koy.clone());
+        localb.OW = ((int[])this.OW.clone());
+        localb.Mew = ((int[])this.Mew.clone());
         return localb;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
@@ -113,53 +113,53 @@ public final class b
     return arrayOfInt;
   }
   
-  public final int afv(int paramInt)
+  public final int ahV(int paramInt)
   {
-    paramInt = b(this.Nf, this.mSize, paramInt);
+    paramInt = b(this.OW, this.mSize, paramInt);
     if (paramInt < 0) {
       return 0;
     }
-    return this.Koy[paramInt];
+    return this.Mew[paramInt];
   }
   
   public final void append(int paramInt1, int paramInt2)
   {
-    if ((this.mSize != 0) && (paramInt1 <= this.Nf[(this.mSize - 1)]))
+    if ((this.mSize != 0) && (paramInt1 <= this.OW[(this.mSize - 1)]))
     {
       put(paramInt1, paramInt2);
       return;
     }
-    this.Nf = h(this.Nf, this.mSize, paramInt1);
-    this.Koy = h(this.Koy, this.mSize, paramInt2);
+    this.OW = h(this.OW, this.mSize, paramInt1);
+    this.Mew = h(this.Mew, this.mSize, paramInt2);
     this.mSize += 1;
   }
   
   public final int get(int paramInt)
   {
-    return afv(paramInt);
+    return ahV(paramInt);
   }
   
   public final int indexOfKey(int paramInt)
   {
-    return b(this.Nf, this.mSize, paramInt);
+    return b(this.OW, this.mSize, paramInt);
   }
   
   public final int keyAt(int paramInt)
   {
-    return this.Nf[paramInt];
+    return this.OW[paramInt];
   }
   
   public final void put(int paramInt1, int paramInt2)
   {
-    int i = b(this.Nf, this.mSize, paramInt1);
+    int i = b(this.OW, this.mSize, paramInt1);
     if (i >= 0)
     {
-      this.Koy[i] = paramInt2;
+      this.Mew[i] = paramInt2;
       return;
     }
     i ^= 0xFFFFFFFF;
-    this.Nf = c(this.Nf, this.mSize, i, paramInt1);
-    this.Koy = c(this.Koy, this.mSize, i, paramInt2);
+    this.OW = b(this.OW, this.mSize, i, paramInt1);
+    this.Mew = b(this.Mew, this.mSize, i, paramInt2);
     this.mSize += 1;
   }
   
@@ -181,9 +181,9 @@ public final class b
       if (i > 0) {
         localStringBuilder.append(", ");
       }
-      localStringBuilder.append(this.Nf[i]);
+      localStringBuilder.append(this.OW[i]);
       localStringBuilder.append('=');
-      localStringBuilder.append(this.Koy[i]);
+      localStringBuilder.append(this.Mew[i]);
       i += 1;
     }
     localStringBuilder.append('}');
@@ -192,7 +192,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.a.c.b
  * JD-Core Version:    0.7.0.1
  */

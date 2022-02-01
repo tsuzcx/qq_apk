@@ -10,11 +10,11 @@ public abstract interface c
   public static final class a
   {
     public String businessType;
-    public String cYP;
-    public int dxE;
-    public String dxF;
-    public String jDS;
-    public String kzK;
+    public int dJQ;
+    public String dJR;
+    public String dkh;
+    public String jXT;
+    public String kVU;
     public int scene;
     public int sourceType;
   }
@@ -28,7 +28,7 @@ public abstract interface c
   
   public static abstract interface c
   {
-    public abstract void l(boolean paramBoolean, String paramString);
+    public abstract void o(boolean paramBoolean, String paramString);
   }
 }
 

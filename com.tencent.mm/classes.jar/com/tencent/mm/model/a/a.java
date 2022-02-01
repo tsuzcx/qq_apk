@@ -1,17 +1,17 @@
 package com.tencent.mm.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.b;
-import com.tencent.mm.ak.f.d;
-import com.tencent.mm.plugin.messenger.foundation.a.o;
+import com.tencent.mm.al.e;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.b;
+import com.tencent.mm.al.e.d;
+import com.tencent.mm.plugin.messenger.foundation.a.p;
 import java.util.Map;
 
 public final class a
-  implements o
+  implements p
 {
-  public final f.b a(String paramString, Map<String, String> paramMap, f.a parama)
+  public final e.b a(String paramString, Map<String, String> paramMap, e.a parama)
   {
     Object localObject = null;
     AppMethodBeat.i(153088);
@@ -21,7 +21,7 @@ public final class a
       paramMap = localObject;
       if (paramString.equals("abtest"))
       {
-        paramString = f.d.bY(Integer.valueOf(-1879048184));
+        paramString = e.d.ca(Integer.valueOf(-1879048184));
         if (paramString != null) {
           break label50;
         }

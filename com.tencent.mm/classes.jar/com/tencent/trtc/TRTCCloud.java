@@ -48,13 +48,13 @@ public abstract class TRTCCloud
   public static void setLogListener(TRTCCloudListener.TRTCLogListener paramTRTCLogListener)
   {
     if (mTXLogListener != null) {
-      mTXLogListener.Kun = null;
+      mTXLogListener.Mko = null;
     }
     if (paramTRTCLogListener != null)
     {
       a locala = new a();
       mTXLogListener = locala;
-      locala.Kun = paramTRTCLogListener;
+      locala.Mko = paramTRTCLogListener;
     }
     for (;;)
     {
@@ -125,13 +125,17 @@ public abstract class TRTCCloud
   
   public abstract void pauseBGM();
   
+  public abstract void pauseScreenCapture();
+  
   public abstract void playAudioEffect(TRTCCloudDef.TRTCAudioEffectParam paramTRTCAudioEffectParam);
   
-  public abstract void playBGM(String paramString, BGMNotify paramBGMNotify);
+  public abstract void playBGM(String paramString, TRTCCloud.BGMNotify paramBGMNotify);
   
   public abstract void resumeAudioEffect(int paramInt);
   
   public abstract void resumeBGM();
+  
+  public abstract void resumeScreenCapture();
   
   @Deprecated
   public abstract void selectMotionTmpl(String paramString);
@@ -170,7 +174,7 @@ public abstract class TRTCCloud
   @Deprecated
   public abstract void setChinLevel(int paramInt);
   
-  public abstract void setDebugViewMargin(String paramString, TRTCViewMargin paramTRTCViewMargin);
+  public abstract void setDebugViewMargin(String paramString, TRTCCloud.TRTCViewMargin paramTRTCViewMargin);
   
   public abstract void setDefaultStreamRecvMode(boolean paramBoolean1, boolean paramBoolean2);
   
@@ -186,14 +190,17 @@ public abstract class TRTCCloud
   @Deprecated
   public abstract void setFaceVLevel(int paramInt);
   
+  @Deprecated
   public abstract void setFilter(Bitmap paramBitmap);
   
+  @Deprecated
   public abstract void setFilterConcentration(float paramFloat);
   
   public abstract void setFocusPosition(int paramInt1, int paramInt2);
   
   public abstract void setGSensorMode(int paramInt);
   
+  @Deprecated
   @TargetApi(18)
   public abstract boolean setGreenScreenFile(String paramString);
   
@@ -272,6 +279,8 @@ public abstract class TRTCCloud
   
   public abstract void startRemoteView(String paramString, TXCloudVideoView paramTXCloudVideoView);
   
+  public abstract void startScreenCapture(TRTCCloudDef.TRTCVideoEncParam paramTRTCVideoEncParam, TRTCCloudDef.TRTCScreenShareParams paramTRTCScreenShareParams);
+  
   public abstract void startSpeedTest(int paramInt, String paramString1, String paramString2);
   
   public abstract void stopAllAudioEffects();
@@ -296,56 +305,33 @@ public abstract class TRTCCloud
   
   public abstract void stopRemoteView(String paramString);
   
+  public abstract void stopScreenCapture();
+  
   public abstract void stopSpeedTest();
   
   public abstract void switchCamera();
   
   public abstract void switchRole(int paramInt);
   
-  public static abstract interface BGMNotify
-  {
-    public abstract void onBGMComplete(int paramInt);
-    
-    public abstract void onBGMProgress(long paramLong1, long paramLong2);
-    
-    public abstract void onBGMStart(int paramInt);
-  }
-  
-  public static class TRTCViewMargin
-  {
-    public float bottomMargin = 0.0F;
-    public float leftMargin = 0.0F;
-    public float rightMargin = 0.0F;
-    public float topMargin = 0.0F;
-    
-    public TRTCViewMargin(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-    {
-      this.leftMargin = paramFloat1;
-      this.topMargin = paramFloat3;
-      this.rightMargin = paramFloat2;
-      this.bottomMargin = paramFloat4;
-    }
-  }
-  
   static final class a
     implements TXCLog.a
   {
-    TRTCCloudListener.TRTCLogListener Kun = null;
+    TRTCCloudListener.TRTCLogListener Mko = null;
     
     public final void a(int paramInt, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(193205);
-      TRTCCloudListener.TRTCLogListener localTRTCLogListener = this.Kun;
+      AppMethodBeat.i(187559);
+      TRTCCloudListener.TRTCLogListener localTRTCLogListener = this.Mko;
       if (localTRTCLogListener != null) {
         localTRTCLogListener.onLog(paramString2, paramInt, paramString1);
       }
-      AppMethodBeat.o(193205);
+      AppMethodBeat.o(187559);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.trtc.TRTCCloud
  * JD-Core Version:    0.7.0.1
  */

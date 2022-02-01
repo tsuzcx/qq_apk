@@ -14,8 +14,8 @@ import android.widget.FrameLayout;
 public abstract class AbstractPopView
   extends FrameLayout
 {
-  protected a JBv;
-  protected int JBw = 0;
+  protected a LuC;
+  protected int LuD = 0;
   
   public AbstractPopView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,8 +29,8 @@ public abstract class AbstractPopView
   
   public void dismiss()
   {
-    if (this.JBv != null) {
-      this.JBv.onDismiss();
+    if (this.LuC != null) {
+      this.LuC.onDismiss();
     }
   }
   
@@ -67,16 +67,16 @@ public abstract class AbstractPopView
     return super.dispatchKeyEvent(paramKeyEvent);
   }
   
-  public abstract void gU(View paramView);
-  
   public abstract WindowManager.LayoutParams getWindowLayoutParams();
   
-  protected final void kz(Context paramContext)
+  public abstract void hl(View paramView);
+  
+  protected final void kL(Context paramContext)
   {
     if ((paramContext instanceof Activity)) {}
     for (paramContext = (Activity)paramContext;; paramContext = null)
     {
-      this.JBw = 0;
+      this.LuD = 0;
       if (paramContext != null)
       {
         paramContext = paramContext.findViewById(16908290);
@@ -84,7 +84,7 @@ public abstract class AbstractPopView
         int[] arrayOfInt2 = new int[2];
         paramContext.getLocationOnScreen(arrayOfInt1);
         paramContext.getLocationInWindow(arrayOfInt2);
-        this.JBw = (arrayOfInt1[1] - arrayOfInt2[1]);
+        this.LuD = (arrayOfInt1[1] - arrayOfInt2[1]);
       }
       return;
       if ((paramContext instanceof ContextThemeWrapper))
@@ -114,7 +114,7 @@ public abstract class AbstractPopView
   
   public void setOnDismissCallback(a parama)
   {
-    this.JBv = parama;
+    this.LuC = parama;
   }
   
   public static abstract interface a
@@ -124,7 +124,7 @@ public abstract class AbstractPopView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.view.popview.AbstractPopView
  * JD-Core Version:    0.7.0.1
  */

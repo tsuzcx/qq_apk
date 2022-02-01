@@ -7,32 +7,33 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 
 public final class b
   implements View.OnTouchListener
 {
-  private float cCi = 1.4E-45F;
-  private DummyViewPager yrw;
-  private float yrx = 1.4E-45F;
+  private float cNh = 1.4E-45F;
+  private DummyViewPager zIG;
+  private float zIH = 1.4E-45F;
   
   public b(DummyViewPager paramDummyViewPager)
   {
-    this.yrw = paramDummyViewPager;
+    this.zIG = paramDummyViewPager;
   }
   
   private boolean a(View paramView, MotionEvent paramMotionEvent, float paramFloat)
   {
     AppMethodBeat.i(97059);
-    if (this.yrw.mFakeDragging) {
-      if (!aa((int)(this.yrw.getScrollX() - paramFloat) - this.yrw.getBaseScrollX(), this.yrw.getScrollX() - this.yrw.getBaseScrollX())) {
+    if (this.zIG.mFakeDragging) {
+      if (!af((int)(this.zIG.getScrollX() - paramFloat) - this.zIG.getBaseScrollX(), this.zIG.getScrollX() - this.zIG.getBaseScrollX())) {
         break label142;
       }
     }
     label142:
-    for (float f = this.yrw.getScrollX() - this.yrw.getBaseScrollX();; f = paramFloat)
+    for (float f = this.zIG.getScrollX() - this.zIG.getBaseScrollX();; f = paramFloat)
     {
-      this.yrw.fakeDragBy(f);
-      new StringBuilder("fake drag, diff ").append(paramFloat).append(",step ").append(f).append(",scrollX ").append(this.yrw.getScrollX());
+      this.zIG.fakeDragBy(f);
+      new StringBuilder("fake drag, diff ").append(paramFloat).append(",step ").append(f).append(",scrollX ").append(this.zIG.getScrollX());
       d(paramView, paramMotionEvent);
       AppMethodBeat.o(97059);
       return true;
@@ -41,7 +42,7 @@ public final class b
     }
   }
   
-  private static boolean aa(float paramFloat1, float paramFloat2)
+  private static boolean af(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(97061);
     if (Math.abs(paramFloat1 + paramFloat2) < Math.abs(paramFloat1 - paramFloat2))
@@ -65,11 +66,14 @@ public final class b
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(97058);
-    new StringBuilder("onTouchEvent , action ").append(paramMotionEvent.getAction()).append(", e.rawY ").append(paramMotionEvent.getRawY()).append(",lastMotionY ").append(this.yrx).append(",downY ").append(this.cCi);
-    label262:
+    Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramMotionEvent);
+    a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/VerticalVPOnTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
+    new StringBuilder("onTouchEvent , action ").append(paramMotionEvent.getAction()).append(", e.rawY ").append(paramMotionEvent.getRawY()).append(",lastMotionY ").append(this.zIH).append(",downY ").append(this.cNh);
+    label329:
     int i;
-    label316:
-    Object localObject1;
+    label383:
     Object localObject2;
     switch (paramMotionEvent.getAction())
     {
@@ -79,28 +83,30 @@ public final class b
       for (;;)
       {
         boolean bool = paramView.onTouchEvent(paramMotionEvent);
+        a.a(bool, this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/VerticalVPOnTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(97058);
         return bool;
-        this.cCi = paramMotionEvent.getRawY();
+        this.cNh = paramMotionEvent.getRawY();
         continue;
-        if ((this.cCi != 1.4E-45F) || (this.yrx != 1.4E-45F)) {
+        if ((this.cNh != 1.4E-45F) || (this.zIH != 1.4E-45F)) {
           break;
         }
-        this.cCi = paramMotionEvent.getRawY();
+        this.cNh = paramMotionEvent.getRawY();
       }
       float f2 = paramMotionEvent.getRawY();
-      if (this.yrx == 1.4E-45F) {}
-      for (float f1 = this.cCi;; f1 = this.yrx)
+      if (this.zIH == 1.4E-45F) {}
+      for (float f1 = this.cNh;; f1 = this.zIH)
       {
-        this.yrx = paramMotionEvent.getRawY();
+        this.zIH = paramMotionEvent.getRawY();
         f1 = (f2 - f1) / 2.0F;
-        new StringBuilder("scrollX ").append(this.yrw.getScrollX()).append(",basescrollX ").append(this.yrw.getBaseScrollX());
-        if (this.yrw.getScrollX() == this.yrw.getBaseScrollX()) {
-          break label262;
+        new StringBuilder("scrollX ").append(this.zIG.getScrollX()).append(",basescrollX ").append(this.zIG.getBaseScrollX());
+        if (this.zIG.getScrollX() == this.zIG.getBaseScrollX()) {
+          break label329;
         }
         if (!a(paramView, paramMotionEvent, f1)) {
           break;
         }
+        a.a(false, this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/VerticalVPOnTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(97058);
         return false;
       }
@@ -108,12 +114,12 @@ public final class b
       for (i = 1;; i = -1)
       {
         if (!t.o(paramView, i)) {
-          break label316;
+          break label383;
         }
         new StringBuilder("scroll vertically  ").append(f1).append(", move.lastMotionY ").append(paramMotionEvent.getY());
         break;
       }
-      localObject1 = this.yrw;
+      localObject1 = this.zIG;
       if (!((AdLandingViewPager)localObject1).mIsBeingDragged)
       {
         ((AdLandingViewPager)localObject1).mFakeDragging = true;
@@ -121,7 +127,7 @@ public final class b
         ((AdLandingViewPager)localObject1).mLastMotionX = 0.0F;
         ((AdLandingViewPager)localObject1).mInitialMotionX = 0.0F;
         if (((AdLandingViewPager)localObject1).mVelocityTracker != null) {
-          break label430;
+          break label510;
         }
         ((AdLandingViewPager)localObject1).mVelocityTracker = VelocityTracker.obtain();
       }
@@ -134,16 +140,17 @@ public final class b
         ((AdLandingViewPager)localObject1).mFakeDragBeginTime = l;
         a(paramView, paramMotionEvent, f1);
         d(paramView, paramMotionEvent);
+        a.a(false, this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/widget/verticalviewpager/VerticalVPOnTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(97058);
         return false;
-        label430:
+        label510:
         ((AdLandingViewPager)localObject1).mVelocityTracker.clear();
       }
     }
-    if (this.yrw.mFakeDragging) {
+    if (this.zIG.mFakeDragging) {
       try
       {
-        localObject1 = this.yrw;
+        localObject1 = this.zIG;
         if (!((AdLandingViewPager)localObject1).mFakeDragging)
         {
           localObject1 = new IllegalStateException("No fake drag in progress. Call beginFakeDrag first.");
@@ -155,8 +162,8 @@ public final class b
     }
     for (;;)
     {
-      this.cCi = 1.4E-45F;
-      this.yrx = 1.4E-45F;
+      this.cNh = 1.4E-45F;
+      this.zIH = 1.4E-45F;
       break;
       localObject2 = localException.mVelocityTracker;
       ((VelocityTracker)localObject2).computeCurrentVelocity(1000, localException.mMaximumVelocity);
@@ -164,7 +171,7 @@ public final class b
       localException.mPopulatePending = true;
       int j = localException.getClientWidth();
       int k = localException.getScrollX();
-      localObject2 = localException.dLk();
+      localObject2 = localException.dXB();
       localException.setCurrentItemInternal(localException.determineTargetPage(((AdLandingViewPager.b)localObject2).position, (k / j - ((AdLandingViewPager.b)localObject2).offset) / ((AdLandingViewPager.b)localObject2).widthFactor, i, (int)(localException.mLastMotionX - localException.mInitialMotionX)), true, true, i);
       localException.endDrag();
       localException.mFakeDragging = false;

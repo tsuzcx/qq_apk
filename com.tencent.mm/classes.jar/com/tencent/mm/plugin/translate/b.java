@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.translate;
 
-import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public final class b
-  implements m
+  implements n
 {
-  public static l iyx;
-  public static k iyy;
-  
-  public final void a(k paramk)
-  {
-    iyy = paramk;
-  }
+  public static m iRG;
+  public static l iRH;
   
   public final void a(l paraml)
   {
-    iyx = paraml;
+    iRH = paraml;
+  }
+  
+  public final void a(m paramm)
+  {
+    iRG = paramm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.translate.b
  * JD-Core Version:    0.7.0.1
  */

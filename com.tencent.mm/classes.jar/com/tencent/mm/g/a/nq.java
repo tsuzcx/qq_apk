@@ -2,11 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.ArrayList;
 
 public final class nq
   extends b
 {
-  public a dqa;
+  public a dBB;
   
   public nq()
   {
@@ -15,26 +16,21 @@ public final class nq
   
   private nq(byte paramByte)
   {
-    AppMethodBeat.i(116038);
-    this.dqa = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(116037);
+    this.dBB = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116038);
+    AppMethodBeat.o(116037);
   }
   
   public static final class a
   {
-    public String cIZ;
-    public int dea;
-    public String dmX;
-    public int op = 0;
-    public int reason;
-    public String url;
+    public ArrayList dvl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.nq
  * JD-Core Version:    0.7.0.1
  */

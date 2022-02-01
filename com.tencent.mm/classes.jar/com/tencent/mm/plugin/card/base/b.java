@@ -1,91 +1,91 @@
 package com.tencent.mm.plugin.card.base;
 
-import com.tencent.mm.protocal.protobuf.cyg;
-import com.tencent.mm.protocal.protobuf.qy;
-import com.tencent.mm.protocal.protobuf.rr;
-import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.protocal.protobuf.ddt;
+import com.tencent.mm.protocal.protobuf.sr;
+import com.tencent.mm.protocal.protobuf.tl;
+import com.tencent.mm.protocal.protobuf.ts;
 
 public abstract interface b
 {
-  public abstract void Ut(String paramString);
+  public abstract String An(int paramInt);
   
-  public abstract void a(qy paramqy);
+  public abstract void Yc(String paramString);
   
-  public abstract void a(rr paramrr);
+  public abstract void a(sr paramsr);
   
-  public abstract boolean bON();
+  public abstract void a(tl paramtl);
   
-  public abstract boolean bOO();
+  public abstract boolean bTA();
   
-  public abstract boolean bOP();
+  public abstract boolean bTB();
   
-  public abstract boolean bOQ();
+  public abstract boolean bTC();
   
-  public abstract boolean bOR();
+  public abstract boolean bTD();
   
-  public abstract boolean bOS();
+  public abstract boolean bTE();
   
-  public abstract boolean bOT();
+  public abstract boolean bTF();
   
-  public abstract boolean bOU();
+  public abstract boolean bTG();
   
-  public abstract boolean bOV();
+  public abstract boolean bTH();
   
-  public abstract boolean bOW();
+  public abstract boolean bTI();
   
-  public abstract boolean bOX();
+  public abstract boolean bTJ();
   
-  public abstract boolean bOY();
+  public abstract boolean bTK();
   
-  public abstract boolean bOZ();
+  public abstract boolean bTL();
   
-  public abstract boolean bPa();
+  public abstract boolean bTM();
   
-  public abstract boolean bPb();
+  public abstract ts bTN();
   
-  public abstract boolean bPc();
+  public abstract sr bTO();
   
-  public abstract boolean bPd();
+  public abstract ddt bTP();
   
-  public abstract boolean bPe();
+  public abstract tl bTQ();
   
-  public abstract boolean bPf();
+  public abstract String bTR();
   
-  public abstract boolean bPg();
+  public abstract String bTS();
   
-  public abstract boolean bPh();
+  public abstract String bTT();
   
-  public abstract ry bPi();
+  public abstract long bTU();
   
-  public abstract qy bPj();
+  public abstract String bTV();
   
-  public abstract cyg bPk();
+  public abstract int bTW();
   
-  public abstract rr bPl();
+  public abstract String bTX();
   
-  public abstract String bPm();
+  public abstract boolean bTs();
   
-  public abstract String bPn();
+  public abstract boolean bTt();
   
-  public abstract String bPo();
+  public abstract boolean bTu();
   
-  public abstract long bPp();
+  public abstract boolean bTv();
   
-  public abstract String bPq();
+  public abstract boolean bTw();
   
-  public abstract int bPr();
+  public abstract boolean bTx();
   
-  public abstract String bPs();
+  public abstract boolean bTy();
+  
+  public abstract boolean bTz();
   
   public abstract long getEndTime();
   
   public abstract boolean isAcceptable();
-  
-  public abstract String zE(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.base.b
  * JD-Core Version:    0.7.0.1
  */

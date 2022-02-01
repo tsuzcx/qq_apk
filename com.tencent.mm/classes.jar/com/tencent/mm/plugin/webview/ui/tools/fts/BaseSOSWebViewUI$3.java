@@ -12,8 +12,8 @@ final class BaseSOSWebViewUI$3
   public final void run()
   {
     AppMethodBeat.i(80526);
-    if (this.CCB.getJsapi() != null) {
-      this.CCB.getJsapi().bx(this.BAd);
+    if (this.Egk.getJsapi() != null) {
+      this.Egk.getJsapi().bA(this.Daw);
     }
     AppMethodBeat.o(80526);
   }

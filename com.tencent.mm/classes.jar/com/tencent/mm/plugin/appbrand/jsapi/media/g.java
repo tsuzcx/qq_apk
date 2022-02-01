@@ -1,340 +1,173 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.be;
-import com.tencent.mm.plugin.appbrand.appstorage.l;
-import com.tencent.mm.plugin.appbrand.appstorage.p;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.cn.f;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.vending.g.d.a;
 import com.tencent.mm.vfs.e;
-import java.io.InputStream;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.n.n;
+import d.v;
+import d.z;
 import org.json.JSONObject;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/JsApiChooseVideoNew;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "oldImpl", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/JsApiChooseVideo;", "invoke", "", "component", "data", "Lorg/json/JSONObject;", "callbackId", "", "shouldDeleteSourceFileBySourceScene", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$OK;", "Companion", "plugin-appbrand-integration_release"})
 public final class g
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.jsapi.c>
 {
-  private static final int CTRL_INDEX = 528;
-  private static final String NAME = "compressImage";
+  public static final int CTRL_INDEX = 36;
+  public static final String NAME = "chooseVideo";
+  @Deprecated
+  public static final a kUF;
+  private JsApiChooseVideo kUE;
   
-  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
+  static
   {
-    AppMethodBeat.i(139870);
-    if (paramc == null)
-    {
-      ac.e("MicroMsg.JsApiCompressImage.javayhu", "fail:component is null");
-      AppMethodBeat.o(139870);
-      return;
-    }
-    if (paramJSONObject == null)
-    {
-      ac.w("MicroMsg.JsApiCompressImage.javayhu", "fail:data is null");
-      paramc.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(139870);
-      return;
-    }
-    final String str = paramJSONObject.optString("src");
-    if (bs.isNullOrNil(str))
-    {
-      ac.w("MicroMsg.JsApiCompressImage.javayhu", "fail:data src is null");
-      paramc.h(paramInt, e("fail:data src is null", null));
-      AppMethodBeat.o(139870);
-      return;
-    }
-    if (paramc.DH() == null)
-    {
-      ac.w("MicroMsg.JsApiCompressImage.javayhu", "fail:runtime fileSystem is null");
-      paramc.h(paramInt, e("fail:runtime fileSystem is null", null));
-      AppMethodBeat.o(139870);
-      return;
-    }
-    int j = paramJSONObject.optInt("quality", 80);
-    final int i;
-    if (j > 0)
-    {
-      i = j;
-      if (j <= 100) {}
-    }
-    else
-    {
-      ac.w("MicroMsg.JsApiCompressImage.javayhu", "invalid quality, set to default");
-      i = 80;
-    }
-    ac.i("MicroMsg.JsApiCompressImage.javayhu", "compressImage, quality:%d, src:%s", new Object[] { Integer.valueOf(i), str });
-    com.tencent.mm.sdk.g.b.d(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(139867);
-        if ((!bs.isNullOrNil(str)) && (str.startsWith("wxfile://"))) {}
-        c localc;
-        for (Object localObject = new g.b((byte)0);; localObject = new g.d((byte)0))
-        {
-          localObject = ((g.c)localObject).a(paramc, str, i);
-          if ((this.cOm.get() == null) || (!((c)this.cOm.get()).isRunning())) {
-            break label256;
-          }
-          localc = (c)this.cOm.get();
-          if ((((g.a)localObject).success) || (!bs.isNullOrNil(((g.a)localObject).result))) {
-            break;
-          }
-          ac.w("MicroMsg.JsApiCompressImage.javayhu", "worker:compress image fail");
-          localc.h(paramInt, g.this.e("fail:compress image fail", null));
-          AppMethodBeat.o(139867);
-          return;
-        }
-        if (!((g.a)localObject).success)
-        {
-          ac.w("MicroMsg.JsApiCompressImage.javayhu", "worker:compress image fail, message:%s", new Object[] { ((g.a)localObject).result });
-          localc.h(paramInt, g.this.e(((g.a)localObject).result, null));
-          AppMethodBeat.o(139867);
-          return;
-        }
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("tempFilePath", ((g.a)localObject).result);
-        localc.h(paramInt, g.this.k("ok", localHashMap));
-        AppMethodBeat.o(139867);
-        return;
-        label256:
-        ac.w("MicroMsg.JsApiCompressImage.javayhu", "worker:component is null");
-        AppMethodBeat.o(139867);
-      }
-    }, String.format(Locale.US, "AppBrandJsApiCompressImage[%s#%d]", new Object[] { str, Integer.valueOf(i) }));
-    AppMethodBeat.o(139870);
+    AppMethodBeat.i(50564);
+    kUF = new a((byte)0);
+    AppMethodBeat.o(50564);
   }
   
-  static final class a
+  public g()
   {
-    String result;
-    boolean success;
+    AppMethodBeat.i(50563);
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxm, 1) > 0) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        this.kUE = new JsApiChooseVideo();
+      }
+      AppMethodBeat.o(50563);
+      return;
+    }
+  }
+  
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt)
+  {
+    boolean bool1 = true;
+    AppMethodBeat.i(50562);
+    if (paramc == null) {
+      p.gfZ();
+    }
+    if (paramJSONObject == null) {
+      p.gfZ();
+    }
+    if (this.kUE != null)
+    {
+      localObject = this.kUE;
+      if (localObject == null) {
+        p.gfZ();
+      }
+      ((JsApiChooseVideo)localObject).a(paramc, paramJSONObject, paramInt);
+      AppMethodBeat.o(50562);
+      return;
+    }
+    final boolean bool2 = paramJSONObject.optBoolean("compressed", true);
+    Object localObject = q.d.kVJ;
+    p.h(paramJSONObject, "json");
+    localObject = q.b.kVA;
+    localObject = new StringBuilder();
+    String str = q.d.kVG.name();
+    if (str == null)
+    {
+      paramc = new v("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(50562);
+      throw paramc;
+    }
+    str = str.toLowerCase();
+    p.g(str, "(this as java.lang.String).toLowerCase()");
+    localObject = ((StringBuilder)localObject).append(str).append(", ");
+    str = q.d.kVH.name();
+    if (str == null)
+    {
+      paramc = new v("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(50562);
+      throw paramc;
+    }
+    str = str.toLowerCase();
+    p.g(str, "(this as java.lang.String).toLowerCase()");
+    int i = q.b.b.a(paramJSONObject, "sourceType", str, (q.b[])q.d.values());
+    localObject = q.a.kVz;
+    p.h(paramJSONObject, "json");
+    localObject = q.b.kVA;
+    localObject = q.a.kVx.name();
+    if (localObject == null)
+    {
+      paramc = new v("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(50562);
+      throw paramc;
+    }
+    localObject = ((String)localObject).toLowerCase();
+    p.g(localObject, "(this as java.lang.String).toLowerCase()");
+    int j = q.b.b.a(paramJSONObject, "camera", (String)localObject, (q.b[])q.a.values());
+    int k = q.c.kVD.dDp;
+    int m = paramJSONObject.optInt("maxDuration", 60);
+    if (m <= 0)
+    {
+      paramc.h(paramInt, Pg("fail invalid maxDuration"));
+      AppMethodBeat.o(50562);
+      return;
+    }
+    if (!bool2) {}
+    for (;;)
+    {
+      paramJSONObject = new c(paramc, i, j, k, bool1, m);
+      paramJSONObject = com.tencent.mm.cn.g.fSm().b((com.tencent.mm.vending.c.a)new c.e(paramJSONObject)).b((com.tencent.mm.vending.c.a)new c.f(paramJSONObject));
+      p.g(paramJSONObject, "pipelineExt()\n          …ANCELED\n                }");
+      paramJSONObject.g((com.tencent.mm.vending.c.a)new b(this, paramc, paramInt, bool2)).a((d.a)new c(this, paramc, paramInt));
+      AppMethodBeat.o(50562);
+      return;
+      bool1 = false;
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/JsApiChooseVideoNew$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  static final class a {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "kotlin.jvm.PlatformType", "call"})
+  static final class b<_Ret, _Var>
+    implements com.tencent.mm.vending.c.a<_Ret, _Var>
+  {
+    b(g paramg, com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt, boolean paramBoolean) {}
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onInterrupt"})
+  static final class c<T>
+    implements d.a<Object>
+  {
+    c(g paramg, com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt) {}
     
-    public a(boolean paramBoolean, String paramString)
+    public final void ce(Object paramObject)
     {
-      this.success = paramBoolean;
-      this.result = paramString;
-    }
-  }
-  
-  static final class b
-    implements g.c
-  {
-    public final g.a a(c paramc, String paramString, int paramInt)
-    {
-      AppMethodBeat.i(139868);
-      p localp = paramc.DH();
-      if (localp == null)
+      AppMethodBeat.i(50561);
+      if ((paramObject instanceof Exception))
       {
-        ac.w("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:fileSystem is null");
-        paramc = new g.a(false, "fail:runtime fileSystem is null");
-        AppMethodBeat.o(139868);
-        return paramc;
-      }
-      e locale = paramc.DH().IS(paramString);
-      if (locale == null)
-      {
-        ac.w("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:file doesn't exist");
-        paramc = new g.a(false, "fail:file doesn't exist");
-        AppMethodBeat.o(139868);
-        return paramc;
-      }
-      paramString = null;
-      try
-      {
-        localOptions = new BitmapFactory.Options();
-        localBitmap = d.a.a((d)paramc.K(d.class)).decodeFile(com.tencent.mm.vfs.q.B(locale.fxV()), localOptions);
-        if (localBitmap == null)
+        Object localObject = ((Exception)paramObject).getMessage();
+        paramObject = localObject;
+        if (localObject == null) {
+          paramObject = "";
+        }
+        localObject = paramc;
+        int i = paramInt;
+        g localg = this.kUG;
+        if (n.nz(paramObject, "fail")) {}
+        for (;;)
         {
-          ac.e("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:decode image fail");
-          paramc = new g.a(false, "fail:decode image fail");
-          AppMethodBeat.o(139868);
-          return paramc;
+          ((com.tencent.mm.plugin.appbrand.jsapi.c)localObject).h(i, localg.Pg(paramObject));
+          AppMethodBeat.o(50561);
+          return;
+          paramObject = "fail ".concat(String.valueOf(paramObject));
         }
-        if (!com.tencent.luggage.e.a.a.d(localOptions)) {
-          break label310;
-        }
-        paramc = "jpg";
       }
-      catch (OutOfMemoryError paramc)
-      {
-        try
-        {
-          BitmapFactory.Options localOptions;
-          Bitmap localBitmap;
-          if (com.tencent.luggage.e.a.a.d(localOptions)) {}
-          for (paramString = Bitmap.CompressFormat.JPEG;; paramString = Bitmap.CompressFormat.PNG)
-          {
-            f.a(localBitmap, paramInt, paramString, str, true);
-            if (com.tencent.luggage.e.a.a.d(localOptions)) {
-              com.tencent.mm.plugin.appbrand.m.b.cR(com.tencent.mm.vfs.q.B(locale.fxV()), str);
-            }
-            paramString = new com.tencent.mm.plugin.appbrand.z.i();
-            if (localp.a(new e(str), paramc, false, paramString) == l.jsB) {
-              break label323;
-            }
-            ac.w("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:create tmp file fail");
-            paramc = new g.a(false, "fail:create tmp file fail");
-            AppMethodBeat.o(139868);
-            return paramc;
-            paramc = "png";
-            break;
-          }
-          ac.i("MicroMsg.JsApiCompressImage.javayhu", "compressImage ok, dstPath:%s, tmpPath:%s", new Object[] { str, paramString.value });
-          paramc = new g.a(true, (String)paramString.value);
-          AppMethodBeat.o(139868);
-          return paramc;
-        }
-        catch (Exception paramc)
-        {
-          for (;;)
-          {
-            String str;
-            paramString = str;
-          }
-        }
-        paramc = paramc;
-        ac.e("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:compress image OOM", new Object[] { paramc });
-        paramc = new g.a(false, "fail:compress image OOM");
-        AppMethodBeat.o(139868);
-        return paramc;
-      }
-      catch (NullPointerException paramc)
-      {
-        label310:
-        label323:
-        ac.e("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:compress image NPE", new Object[] { paramc });
-        paramc = new g.a(false, "fail:compress image NPE");
-        AppMethodBeat.o(139868);
-        return paramc;
-      }
-      catch (Exception paramc) {}
-      str = com.tencent.mm.loader.j.b.aps() + "microMsg.tmp." + System.currentTimeMillis() + "." + paramc;
-      ac.e("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:compress image exception", new Object[] { paramc });
-      com.tencent.mm.vfs.i.deleteFile(paramString);
-      paramc = new g.a(false, "fail:compress image exception");
-      AppMethodBeat.o(139868);
-      return paramc;
-    }
-  }
-  
-  static abstract interface c
-  {
-    public abstract g.a a(c paramc, String paramString, int paramInt);
-  }
-  
-  static final class d
-    implements g.c
-  {
-    public final g.a a(c paramc, String paramString, int paramInt)
-    {
-      AppMethodBeat.i(139869);
-      if ((paramc == null) || (!(paramc instanceof com.tencent.mm.plugin.appbrand.q)))
-      {
-        ac.w("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:not in service context");
-        paramc = new g.a(false, "fail:internal error invalid js component");
-        AppMethodBeat.o(139869);
-        return paramc;
-      }
-      p localp = paramc.DH();
-      if (localp == null)
-      {
-        ac.w("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:runtime fileSystem is null");
-        paramc = new g.a(false, "fail:runtime fileSystem is null");
-        AppMethodBeat.o(139869);
-        return paramc;
-      }
-      InputStream localInputStream = be.f(((com.tencent.mm.plugin.appbrand.q)paramc).getRuntime(), paramString);
-      if (localInputStream == null)
-      {
-        ac.w("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:file doesn't exist");
-        paramc = new g.a(false, "fail:file doesn't exist");
-        AppMethodBeat.o(139869);
-        return paramc;
-      }
-      paramString = null;
-      try
-      {
-        localOptions = new BitmapFactory.Options();
-        localBitmap = d.a.a((d)paramc.K(d.class)).b(localInputStream, localOptions);
-        if (localBitmap == null)
-        {
-          ac.e("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:decode image fail");
-          paramc = new g.a(false, "fail:decode image fail");
-          AppMethodBeat.o(139869);
-          return paramc;
-        }
-        if (!com.tencent.luggage.e.a.a.d(localOptions)) {
-          break label333;
-        }
-        paramc = "jpg";
-      }
-      catch (OutOfMemoryError paramc)
-      {
-        try
-        {
-          BitmapFactory.Options localOptions;
-          Bitmap localBitmap;
-          if (com.tencent.luggage.e.a.a.d(localOptions)) {}
-          for (paramString = Bitmap.CompressFormat.JPEG;; paramString = Bitmap.CompressFormat.PNG)
-          {
-            f.a(localBitmap, paramInt, paramString, str, true);
-            if (com.tencent.luggage.e.a.a.d(localOptions)) {
-              com.tencent.mm.plugin.appbrand.m.b.b(localInputStream, str);
-            }
-            paramString = new com.tencent.mm.plugin.appbrand.z.i();
-            if (localp.a(new e(str), paramc, false, paramString) == l.jsB) {
-              break label346;
-            }
-            ac.w("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:create tmp file fail");
-            paramc = new g.a(false, "fail:create tmp file fail");
-            AppMethodBeat.o(139869);
-            return paramc;
-            paramc = "png";
-            break;
-          }
-          ac.i("MicroMsg.JsApiCompressImage.javayhu", "compressImage ok, dstPath:%s, tmpPath:%s", new Object[] { str, paramString.value });
-          paramc = new g.a(true, (String)paramString.value);
-          AppMethodBeat.o(139869);
-          return paramc;
-        }
-        catch (Exception paramc)
-        {
-          for (;;)
-          {
-            String str;
-            paramString = str;
-          }
-        }
-        paramc = paramc;
-        ac.e("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:compress image OOM", new Object[] { paramc });
-        paramc = new g.a(false, "fail:compress image OOM");
-        AppMethodBeat.o(139869);
-        return paramc;
-      }
-      catch (NullPointerException paramc)
-      {
-        ac.e("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:compress image NPE", new Object[] { paramc });
-        paramc = new g.a(false, "fail:compress image NPE");
-        AppMethodBeat.o(139869);
-        return paramc;
-      }
-      catch (Exception paramc) {}
-      str = com.tencent.mm.loader.j.b.aps() + "microMsg.tmp." + System.currentTimeMillis() + "." + paramc;
-      label333:
-      label346:
-      ac.e("MicroMsg.JsApiCompressImage.javayhu", "compressImage fail:compress image exception", new Object[] { paramc });
-      com.tencent.mm.vfs.i.deleteFile(paramString);
-      paramc = new g.a(false, "fail:compress image exception");
-      AppMethodBeat.o(139869);
-      return paramc;
+      g.blq();
+      ad.e("MicroMsg.AppBrand.JsApiChooseVideoNew", "choose pipeline onInterrupt(" + paramObject + ')');
+      paramc.h(paramInt, this.kUG.Pg("fail:internal error"));
+      AppMethodBeat.o(50561);
     }
   }
 }

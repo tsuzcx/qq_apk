@@ -3,29 +3,29 @@ package com.tencent.mm.plugin.bottle.a;
 import android.content.Context;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.v;
 import com.tencent.mm.modelvoice.p;
 import com.tencent.mm.modelvoice.s;
-import com.tencent.mm.pluginsdk.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.storagebase.h;
 
 public final class c
 {
-  private static int ntw = 1;
-  private static int ntx = 1;
+  private static int nUs = 1;
+  private static int nUt = 1;
   
-  public static String Td(String paramString)
+  public static String WD(String paramString)
   {
     AppMethodBeat.i(22644);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(22644);
       return null;
@@ -41,44 +41,44 @@ public final class c
     return paramString;
   }
   
-  public static void Te(String paramString)
+  public static void WE(String paramString)
   {
     a locala = null;
     AppMethodBeat.i(22645);
-    com.tencent.mm.plugin.bottle.a.iyy.Lj();
-    az.ayM();
-    if (com.tencent.mm.model.c.awD().aly(paramString) != 1)
+    com.tencent.mm.plugin.bottle.a.iRH.MR();
+    ba.aBQ();
+    if (com.tencent.mm.model.c.azs().aqm(paramString) != 1)
     {
       AppMethodBeat.o(22645);
       return;
     }
-    az.ayM();
-    bo localbo = com.tencent.mm.model.c.awD().alk(paramString);
-    if ((localbo == null) || (!localbo.field_talker.equals(paramString)))
+    ba.aBQ();
+    bu localbu = com.tencent.mm.model.c.azs().apX(paramString);
+    if ((localbu == null) || (!localbu.field_talker.equals(paramString)))
     {
       AppMethodBeat.o(22645);
       return;
     }
-    String str1 = Td(paramString);
-    if (bs.isNullOrNil(str1))
+    String str1 = WD(paramString);
+    if (bt.isNullOrNil(str1))
     {
       AppMethodBeat.o(22645);
       return;
     }
-    Object localObject = d.bIJ();
-    String str2 = "select bottleinfo1.parentclientid,bottleinfo1.childcount,bottleinfo1.bottleid,bottleinfo1.bottletype,bottleinfo1.msgtype,bottleinfo1.voicelen,bottleinfo1.content,bottleinfo1.createtime,bottleinfo1.reserved1,bottleinfo1.reserved2,bottleinfo1.reserved3,bottleinfo1.reserved4 from bottleinfo1   where bottleinfo1.bottleid = \"" + bs.aLh(String.valueOf(str1)) + "\"";
-    localObject = ((b)localObject).hpA.a(str2, null, 0);
+    Object localObject = d.bMW();
+    String str2 = "select bottleinfo1.parentclientid,bottleinfo1.childcount,bottleinfo1.bottleid,bottleinfo1.bottletype,bottleinfo1.msgtype,bottleinfo1.voicelen,bottleinfo1.content,bottleinfo1.createtime,bottleinfo1.reserved1,bottleinfo1.reserved2,bottleinfo1.reserved3,bottleinfo1.reserved4 from bottleinfo1   where bottleinfo1.bottleid = \"" + bt.aQN(String.valueOf(str1)) + "\"";
+    localObject = ((b)localObject).hHS.a(str2, null, 0);
     if (localObject == null)
     {
       locala = null;
       if (locala != null) {
-        if (locala.ntt != null) {
+        if (locala.nUp != null) {
           break label383;
         }
       }
     }
     label383:
-    for (localObject = "";; localObject = locala.ntt)
+    for (localObject = "";; localObject = locala.nUp)
     {
       if (((String)localObject).equals(str1)) {
         break label393;
@@ -88,36 +88,36 @@ public final class c
       if (((Cursor)localObject).moveToFirst())
       {
         locala = new a();
-        locala.ntr = ((Cursor)localObject).getString(0);
-        locala.nts = ((Cursor)localObject).getInt(1);
-        locala.ntt = ((Cursor)localObject).getString(2);
-        locala.ntu = ((Cursor)localObject).getInt(3);
+        locala.nUn = ((Cursor)localObject).getString(0);
+        locala.nUo = ((Cursor)localObject).getInt(1);
+        locala.nUp = ((Cursor)localObject).getString(2);
+        locala.nUq = ((Cursor)localObject).getInt(3);
         locala.msgType = ((Cursor)localObject).getInt(4);
-        locala.ntv = ((Cursor)localObject).getInt(5);
+        locala.nUr = ((Cursor)localObject).getInt(5);
         locala.content = ((Cursor)localObject).getString(6);
         locala.createtime = ((Cursor)localObject).getLong(7);
-        locala.hpt = ((Cursor)localObject).getInt(8);
-        locala.hFO = ((Cursor)localObject).getInt(9);
-        locala.hpv = ((Cursor)localObject).getString(10);
-        locala.hpw = ((Cursor)localObject).getString(11);
+        locala.hHL = ((Cursor)localObject).getInt(8);
+        locala.hYt = ((Cursor)localObject).getInt(9);
+        locala.hHN = ((Cursor)localObject).getString(10);
+        locala.hHO = ((Cursor)localObject).getString(11);
       }
       ((Cursor)localObject).close();
       break;
     }
     label393:
-    if (locala.ntu != 1)
+    if (locala.nUq != 1)
     {
       AppMethodBeat.o(22645);
       return;
     }
-    localObject = new bo();
-    ((bo)localObject).re(paramString);
+    localObject = new bu();
+    ((bu)localObject).tN(paramString);
     long l;
     int i;
-    if (localbo.field_createTime <= locala.createtime)
+    if (localbu.field_createTime <= locala.createtime)
     {
-      l = localbo.field_createTime - 1L;
-      ((bo)localObject).oA(l);
+      l = localbu.field_createTime - 1L;
+      ((bu)localObject).qA(l);
       switch (locala.msgType)
       {
       default: 
@@ -126,18 +126,18 @@ public final class c
     }
     for (;;)
     {
-      ((bo)localObject).setType(i);
-      ((bo)localObject).setStatus(2);
-      ((bo)localObject).jT(1);
-      if (((bo)localObject).getType() != 34) {
+      ((bu)localObject).setType(i);
+      ((bu)localObject).setStatus(2);
+      ((bu)localObject).kr(1);
+      if (((bu)localObject).getType() != 34) {
         break label674;
       }
-      ((bo)localObject).setContent(p.b(u.axw(), locala.ntv, false));
-      paramString = locala.getContent() + bs.eWj();
-      if (i.lZ(s.getFullPath(locala.getContent()), s.getFullPath(paramString)) >= 0L) {
+      ((bu)localObject).setContent(p.b(u.aAm(), locala.nUr, false));
+      paramString = locala.getContent() + bt.flT();
+      if (com.tencent.mm.vfs.i.mz(s.getFullPath(locala.getContent()), s.getFullPath(paramString)) >= 0L) {
         break label646;
       }
-      ac.e("MicroMsg.BottleLogic", "Copy Bottle Voice File Failed :" + locala.getContent());
+      ad.e("MicroMsg.BottleLogic", "Copy Bottle Voice File Failed :" + locala.getContent());
       AppMethodBeat.o(22645);
       return;
       l = locala.createtime;
@@ -151,43 +151,43 @@ public final class c
       i = 43;
     }
     label646:
-    ((bo)localObject).rf(paramString);
+    ((bu)localObject).tO(paramString);
     for (;;)
     {
-      az.ayM();
-      com.tencent.mm.model.c.awD().ap((bo)localObject);
+      ba.aBQ();
+      com.tencent.mm.model.c.azs().as((bu)localObject);
       AppMethodBeat.o(22645);
       return;
       label674:
-      ((bo)localObject).setContent(locala.getContent());
+      ((bu)localObject).setContent(locala.getContent());
     }
   }
   
-  public static String a(Context paramContext, ai paramai)
+  public static String a(Context paramContext, am paramam)
   {
     AppMethodBeat.i(22647);
-    if (paramai == null)
+    if (paramam == null)
     {
       paramContext = paramContext.getString(2131756727);
       AppMethodBeat.o(22647);
       return paramContext;
     }
-    if (RegionCodeDecoder.aOy(paramai.getCountryCode()))
+    if (RegionCodeDecoder.aUp(paramam.getCountryCode()))
     {
-      paramContext = paramai.getCity();
-      if (!bs.isNullOrNil(paramContext))
+      paramContext = paramam.getCity();
+      if (!bt.isNullOrNil(paramContext))
       {
         AppMethodBeat.o(22647);
         return paramContext;
       }
-      paramContext = v.wm(paramai.getProvince());
-      if (!bs.isNullOrNil(paramContext))
+      paramContext = v.zh(paramam.getProvince());
+      if (!bt.isNullOrNil(paramContext))
       {
         AppMethodBeat.o(22647);
         return paramContext;
       }
-      RegionCodeDecoder.fcs();
-      paramContext = RegionCodeDecoder.getLocName(paramai.getCountryCode());
+      RegionCodeDecoder.fsz();
+      paramContext = RegionCodeDecoder.getLocName(paramam.getCountryCode());
       AppMethodBeat.o(22647);
       return paramContext;
     }
@@ -196,13 +196,13 @@ public final class c
     return paramContext;
   }
   
-  public static void bIH()
+  public static void bMU()
   {
     AppMethodBeat.i(22646);
-    b localb = d.bIJ();
-    long l = bs.eWj() - 7776000000L;
+    b localb = d.bMW();
+    long l = bt.flT() - 7776000000L;
     Object localObject = "select distinct content , msgtype from bottleinfo1 where bottleinfo1.createtime < ".concat(String.valueOf(l));
-    Cursor localCursor = localb.hpA.a((String)localObject, null, 0);
+    Cursor localCursor = localb.hHS.a((String)localObject, null, 0);
     int j = localCursor.getCount();
     if (j > 0)
     {
@@ -229,7 +229,7 @@ public final class c
     }
     localCursor.close();
     if (j > 0) {
-      localb.hpA.delete("bottleinfo1", "createtime< ?", new String[] { String.valueOf(l) });
+      localb.hHS.delete("bottleinfo1", "createtime< ?", new String[] { String.valueOf(l) });
     }
     if (localObject == null)
     {
@@ -239,9 +239,9 @@ public final class c
     int i = 0;
     while (i < localObject.length)
     {
-      ac.d("MicroMsg.BottleLogic", "delete path:" + s.getFullPath(localObject[i]));
-      if (!bs.isNullOrNil(s.getFullPath(localObject[i]))) {
-        i.deleteFile(s.getFullPath(localObject[i]));
+      ad.d("MicroMsg.BottleLogic", "delete path:" + s.getFullPath(localObject[i]));
+      if (!bt.isNullOrNil(s.getFullPath(localObject[i]))) {
+        com.tencent.mm.vfs.i.deleteFile(s.getFullPath(localObject[i]));
       }
       i += 1;
     }

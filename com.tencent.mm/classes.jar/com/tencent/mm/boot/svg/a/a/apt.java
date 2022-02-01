@@ -43,30 +43,42 @@ public final class apt
       ((Paint)localObject).setStrokeMiter(4.0F);
       ((Paint)localObject).setPathEffect(null);
       c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
-      localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
       localPaint.setColor(-16777216);
+      localCanvas.save();
+      localPaint = c.a(localPaint, paramVarArgs);
       localObject = c.n(paramVarArgs);
+      ((Path)localObject).moveTo(39.045101F, 43.661018F);
+      ((Path)localObject).lineTo(35.702599F, 50.790489F);
+      ((Path)localObject).cubicTo(35.517517F, 51.185265F, 35.561123F, 51.649364F, 35.816505F, 52.002754F);
+      ((Path)localObject).cubicTo(36.204689F, 52.539909F, 36.95483F, 52.660675F, 37.491989F, 52.272491F);
+      ((Path)localObject).lineTo(51.892452F, 41.865765F);
+      ((Path)localObject).cubicTo(52.282711F, 41.583736F, 52.513863F, 41.131504F, 52.513863F, 40.650002F);
+      ((Path)localObject).cubicTo(52.513863F, 39.821575F, 51.842289F, 39.150002F, 51.013863F, 39.150002F);
+      ((Path)localObject).lineTo(41.16F, 39.150002F);
+      ((Path)localObject).lineTo(41.154835F, 39.161018F);
+      ((Path)localObject).lineTo(21.0F, 39.161018F);
+      ((Path)localObject).lineTo(21.0F, 43.661018F);
+      ((Path)localObject).lineTo(39.045101F, 43.661018F);
+      ((Path)localObject).close();
+      ((Path)localObject).moveTo(33.628757F, 28.338949F);
+      ((Path)localObject).lineTo(36.971264F, 21.209478F);
+      ((Path)localObject).cubicTo(37.156345F, 20.814705F, 37.112736F, 20.350603F, 36.857357F, 19.997215F);
+      ((Path)localObject).cubicTo(36.46917F, 19.460058F, 35.719032F, 19.339293F, 35.181873F, 19.727478F);
+      ((Path)localObject).lineTo(20.781408F, 30.134205F);
+      ((Path)localObject).cubicTo(20.391148F, 30.416233F, 20.16F, 30.868465F, 20.16F, 31.349968F);
+      ((Path)localObject).cubicTo(20.16F, 32.178394F, 20.831572F, 32.849968F, 21.66F, 32.849968F);
+      ((Path)localObject).lineTo(31.513861F, 32.849968F);
+      ((Path)localObject).lineTo(31.519028F, 32.838947F);
+      ((Path)localObject).lineTo(51.659996F, 32.838947F);
+      ((Path)localObject).lineTo(51.659996F, 28.338949F);
+      ((Path)localObject).lineTo(33.628757F, 28.338949F);
+      ((Path)localObject).close();
       ((Path)localObject).moveTo(36.0F, 66.0F);
       ((Path)localObject).cubicTo(19.431458F, 66.0F, 6.0F, 52.568542F, 6.0F, 36.0F);
       ((Path)localObject).cubicTo(6.0F, 19.431458F, 19.431458F, 6.0F, 36.0F, 6.0F);
       ((Path)localObject).cubicTo(52.568542F, 6.0F, 66.0F, 19.431458F, 66.0F, 36.0F);
       ((Path)localObject).cubicTo(66.0F, 52.568542F, 52.568542F, 66.0F, 36.0F, 66.0F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(36.0F, 62.400002F);
-      ((Path)localObject).cubicTo(50.580318F, 62.400002F, 62.400002F, 50.580318F, 62.400002F, 36.0F);
-      ((Path)localObject).cubicTo(62.400002F, 21.419683F, 50.580318F, 9.6F, 36.0F, 9.6F);
-      ((Path)localObject).cubicTo(21.419683F, 9.6F, 9.6F, 21.419683F, 9.6F, 36.0F);
-      ((Path)localObject).cubicTo(9.6F, 50.580318F, 21.419683F, 62.400002F, 36.0F, 62.400002F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(41.995602F, 46.3125F);
-      ((Path)localObject).lineTo(38.8592F, 49.5F);
-      ((Path)localObject).lineTo(27.856792F, 38.154041F);
-      ((Path)localObject).cubicTo(26.703171F, 36.964397F, 26.709463F, 35.029114F, 27.856792F, 33.845959F);
-      ((Path)localObject).lineTo(38.8592F, 22.5F);
-      ((Path)localObject).lineTo(41.995602F, 25.6875F);
-      ((Path)localObject).lineTo(32.040779F, 36.0F);
-      ((Path)localObject).lineTo(41.995602F, 46.3125F);
       ((Path)localObject).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
       localCanvas.drawPath((Path)localObject, localPaint);
@@ -77,7 +89,7 @@ public final class apt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.apt
  * JD-Core Version:    0.7.0.1
  */

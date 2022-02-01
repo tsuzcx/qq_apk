@@ -1,114 +1,183 @@
 package com.tencent.mm.plugin.finder.feed;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.plugin.finder.convert.ah;
+import com.tencent.mm.plugin.finder.convert.k;
+import com.tencent.mm.plugin.finder.convert.n;
+import com.tencent.mm.plugin.finder.convert.q;
+import com.tencent.mm.plugin.finder.convert.u;
+import com.tencent.mm.plugin.finder.convert.w;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
-import com.tencent.mm.plugin.finder.feed.model.internal.a;
-import com.tencent.mm.plugin.finder.feed.model.internal.f;
-import com.tencent.mm.plugin.finder.feed.model.internal.g;
-import com.tencent.mm.plugin.finder.feed.model.l.a;
-import com.tencent.mm.plugin.finder.feed.model.l.b;
+import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.storage.r;
+import com.tencent.mm.plugin.finder.model.al;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.view.d;
+import com.tencent.mm.view.recyclerview.b;
 import com.tencent.mm.view.recyclerview.c;
-import d.g.b.k;
+import d.g.b.p;
+import d.l;
 import d.v;
 import java.util.ArrayList;
-import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "initLastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "initDataList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "(Lcom/tencent/mm/ui/MMActivity;IILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;Lcom/tencent/mm/protobuf/ByteString;Ljava/util/List;)V", "getInitDataList", "()Ljava/util/List;", "getInitLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "onDetach", "requestRefresh", "plugin-finder_release"})
-public final class u$a
-  extends c.a
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "setFeedLoader", "(Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getDataAt", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "index", "", "getDataIndex", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getFeedList", "Ljava/util/ArrayList;", "getVideoData", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "initViewCallback", "", "loadInitData", "onAttach", "model", "callback", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "onDetach", "removeDataAt", "", "plugin-finder_release"})
+public abstract class u$a
+  extends a.a
 {
-  final b rju;
-  private final List<BaseFinderFeed> rjv;
+  private final String TAG = "Finder.FinderLoaderFeedUIContract.Presenter";
+  protected BaseFinderFeedLoader rTS;
   
-  public u$a(MMActivity paramMMActivity, BaseFinderFeedLoader paramBaseFinderFeedLoader, b paramb, List<? extends BaseFinderFeed> paramList)
+  public u$a(MMActivity paramMMActivity)
   {
-    super(paramMMActivity, paramBaseFinderFeedLoader);
-    AppMethodBeat.i(201782);
-    this.rju = paramb;
-    this.rjv = paramList;
-    AppMethodBeat.o(201782);
+    super(paramMMActivity);
   }
   
-  public final void aQh()
+  public final al Ew(int paramInt)
   {
-    AppMethodBeat.i(201778);
-    this.rgh.requestLoadMore();
-    AppMethodBeat.o(201778);
-  }
-  
-  public final void cuB()
-  {
-    AppMethodBeat.i(201779);
-    a.initData$default(this.rgh, (g)new l.b(this.rjv, 0L, (f)new a(this)), false, 2, null);
-    AppMethodBeat.o(201779);
-  }
-  
-  public final void cur()
-  {
-    AppMethodBeat.i(201777);
-    c.b localb = this.rgf;
-    if (localb != null)
-    {
-      localb.U((ArrayList)this.rgh.getDataListJustForAdapter());
-      AppMethodBeat.o(201777);
-      return;
+    BaseFinderFeedLoader localBaseFinderFeedLoader = this.rTS;
+    if (localBaseFinderFeedLoader != null) {
+      return (al)localBaseFinderFeedLoader.safeGet(paramInt);
     }
-    AppMethodBeat.o(201777);
+    return null;
   }
   
-  public final c cut()
+  public void a(BaseFinderFeedLoader paramBaseFinderFeedLoader, u.b paramb)
   {
-    AppMethodBeat.i(201780);
-    Object localObject = this.rgf;
+    p.h(paramBaseFinderFeedLoader, "model");
+    p.h(paramb, "callback");
+    this.rTS = paramBaseFinderFeedLoader;
+    super.a((a.b)paramb);
+  }
+  
+  public final void cAA()
+  {
+    Object localObject = this.rTz;
+    if (localObject == null) {
+      throw new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.feed.FinderLoaderFeedUIContract.ViewCallback");
+    }
+    localObject = ((u.b)localObject).cBh();
+    if (localObject != null)
+    {
+      localBaseFinderFeedLoader = this.rTS;
+      if (localBaseFinderFeedLoader != null) {
+        localBaseFinderFeedLoader.register((d)localObject);
+      }
+    }
+    localObject = this.rTz;
+    if (localObject == null) {
+      p.gfZ();
+    }
+    BaseFinderFeedLoader localBaseFinderFeedLoader = this.rTS;
+    if (localBaseFinderFeedLoader == null) {
+      p.gfZ();
+    }
+    ((a.b)localObject).U((ArrayList)localBaseFinderFeedLoader.getDataListJustForAdapter());
+  }
+  
+  public final DataBuffer<al> cAB()
+  {
+    BaseFinderFeedLoader localBaseFinderFeedLoader = this.rTS;
+    if (localBaseFinderFeedLoader == null) {
+      p.gfZ();
+    }
+    return localBaseFinderFeedLoader.getDataListJustForAdapter();
+  }
+  
+  public c cAE()
+  {
+    return (c)new a(this);
+  }
+  
+  public ArrayList<al> cBg()
+  {
+    Object localObject = this.rTS;
     if (localObject != null) {}
-    for (localObject = ((c.b)localObject).cuF();; localObject = null)
-    {
-      if (localObject == null) {
-        k.fOy();
-      }
-      localObject = ((r)localObject).cuS();
-      AppMethodBeat.o(201780);
-      return localObject;
+    for (localObject = ((BaseFinderFeedLoader)localObject).getDataListJustForAdapter();; localObject = null) {
+      return (ArrayList)localObject;
     }
   }
   
-  public final void onDetach()
+  public String getTAG()
   {
-    AppMethodBeat.i(201781);
-    super.onDetach();
-    l.a locala = com.tencent.mm.plugin.finder.feed.model.l.rng;
-    l.a.clearCache();
-    AppMethodBeat.o(201781);
+    return this.TAG;
   }
   
-  public final void requestRefresh() {}
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$Presenter$loadInitData$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "call", "", "incrementCount", "", "plugin-finder_release"})
-  public static final class a
-    implements f
+  public final int h(BaseFinderFeed paramBaseFinderFeed)
   {
-    public final void call(int paramInt)
+    p.h(paramBaseFinderFeed, "feed");
+    Object localObject = this.rTS;
+    if (localObject != null)
     {
-      AppMethodBeat.i(201776);
-      Object localObject = this.rjw.rgh;
-      if (localObject == null)
-      {
-        localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.feed.model.FinderRelatedLoader");
-        AppMethodBeat.o(201776);
-        throw ((Throwable)localObject);
+      localObject = ((BaseFinderFeedLoader)localObject).getDataListJustForAdapter();
+      if (localObject != null) {
+        return ((DataBuffer)localObject).indexOf(paramBaseFinderFeed);
       }
-      ((com.tencent.mm.plugin.finder.feed.model.l)localObject).lastBuffer = this.rjw.rju;
-      AppMethodBeat.o(201776);
+    }
+    return -1;
+  }
+  
+  public void onDetach()
+  {
+    Object localObject = this.rTz;
+    if (localObject == null) {
+      throw new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.feed.FinderLoaderFeedUIContract.ViewCallback");
+    }
+    localObject = ((u.b)localObject).cBh();
+    if (localObject != null)
+    {
+      BaseFinderFeedLoader localBaseFinderFeedLoader = this.rTS;
+      if (localBaseFinderFeedLoader != null) {
+        localBaseFinderFeedLoader.unregister((d)localObject);
+      }
+    }
+    super.onDetach();
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  public static final class a
+    implements c
+  {
+    public final b<?> AL(int paramInt)
+    {
+      AppMethodBeat.i(165721);
+      switch (paramInt)
+      {
+      default: 
+        localb = (b)new k((h)this.rWr, false, 0, 6);
+        AppMethodBeat.o(165721);
+        return localb;
+      case 4: 
+      case 3002: 
+        localb = (b)new w(this.rWr.rOe, (h)this.rWr, false, 0, 12);
+        AppMethodBeat.o(165721);
+        return localb;
+      case 2: 
+      case 3001: 
+        localb = (b)new k((h)this.rWr, false, 0, 6);
+        AppMethodBeat.o(165721);
+        return localb;
+      case 7: 
+        localb = (b)new u((h)this.rWr, false, 0, 6);
+        AppMethodBeat.o(165721);
+        return localb;
+      case 8: 
+        localb = (b)new n(this.rWr.rOe, (h)this.rWr, false, 0, 12);
+        AppMethodBeat.o(165721);
+        return localb;
+      case 1: 
+        localb = (b)new q((h)this.rWr, false, 0, 6);
+        AppMethodBeat.o(165721);
+        return localb;
+      }
+      b localb = (b)new ah();
+      AppMethodBeat.o(165721);
+      return localb;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.u.a
  * JD-Core Version:    0.7.0.1
  */

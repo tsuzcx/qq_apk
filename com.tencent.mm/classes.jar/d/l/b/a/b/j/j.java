@@ -2,11 +2,11 @@ package d.l.b.a.b.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
-import d.g.b.k;
-import d.g.b.l;
+import d.g.b.p;
+import d.g.b.q;
 import d.l.b.a.b.b.a;
 import d.l.b.a.b.o.i.b;
-import d.y;
+import d.z;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -17,16 +17,16 @@ public final class j
   public static final <H> Collection<H> b(Collection<? extends H> paramCollection, b<? super H, ? extends a> paramb)
   {
     AppMethodBeat.i(60009);
-    k.h(paramCollection, "$this$selectMostSpecificInEachOverridableGroup");
-    k.h(paramb, "descriptorByHandle");
+    p.h(paramCollection, "$this$selectMostSpecificInEachOverridableGroup");
+    p.h(paramb, "descriptorByHandle");
     if (paramCollection.size() <= 1)
     {
       AppMethodBeat.o(60009);
       return paramCollection;
     }
     paramCollection = new LinkedList(paramCollection);
-    Object localObject1 = d.l.b.a.b.o.i.LPk;
-    localObject1 = i.b.gcT();
+    Object localObject1 = d.l.b.a.b.o.i.NGf;
+    localObject1 = i.b.guu();
     int i;
     if (!((Collection)paramCollection).isEmpty()) {
       i = 1;
@@ -35,29 +35,29 @@ public final class j
     {
       if (i != 0)
       {
-        Object localObject3 = d.a.j.iO((List)paramCollection);
-        Object localObject2 = d.l.b.a.b.o.i.LPk;
-        localObject2 = i.b.gcT();
+        Object localObject3 = d.a.j.jc((List)paramCollection);
+        Object localObject2 = d.l.b.a.b.o.i.NGf;
+        localObject2 = i.b.guu();
         Object localObject4 = i.a(localObject3, (Collection)paramCollection, paramb, (b)new b((d.l.b.a.b.o.i)localObject2));
-        k.g(localObject4, "OverridingUtil.extractMe…nflictedHandles.add(it) }");
+        p.g(localObject4, "OverridingUtil.extractMe…nflictedHandles.add(it) }");
         if ((((Collection)localObject4).size() == 1) && (((d.l.b.a.b.o.i)localObject2).isEmpty()))
         {
           localObject2 = d.a.j.f((Iterable)localObject4);
-          k.g(localObject2, "overridableGroup.single()");
+          p.g(localObject2, "overridableGroup.single()");
           ((d.l.b.a.b.o.i)localObject1).add(localObject2);
           break;
           i = 0;
           continue;
         }
         localObject3 = i.a((Collection)localObject4, paramb);
-        k.g(localObject3, "OverridingUtil.selectMos…roup, descriptorByHandle)");
-        a locala = (a)paramb.ay(localObject3);
+        p.g(localObject3, "OverridingUtil.selectMos…roup, descriptorByHandle)");
+        a locala = (a)paramb.invoke(localObject3);
         localObject4 = ((Iterable)localObject4).iterator();
         while (((Iterator)localObject4).hasNext())
         {
           Object localObject5 = ((Iterator)localObject4).next();
-          k.g(localObject5, "it");
-          if (!i.e(locala, (a)paramb.ay(localObject5))) {
+          p.g(localObject5, "it");
+          if (!i.e(locala, (a)paramb.invoke(localObject5))) {
             ((Collection)localObject2).add(localObject5);
           }
         }
@@ -78,15 +78,15 @@ public final class j
   }
   
   public static final class a
-    extends l
+    extends q
     implements b<D, D>
   {
-    public static final a LFi;
+    public static final a Nwg;
     
     static
     {
       AppMethodBeat.i(60007);
-      LFi = new a();
+      Nwg = new a();
       AppMethodBeat.o(60007);
     }
     
@@ -97,8 +97,8 @@ public final class j
   }
   
   static final class b
-    extends l
-    implements b<H, y>
+    extends q
+    implements b<H, z>
   {
     b(d.l.b.a.b.o.i parami)
     {

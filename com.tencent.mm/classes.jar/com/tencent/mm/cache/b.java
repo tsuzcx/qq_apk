@@ -3,31 +3,31 @@ package com.tencent.mm.cache;
 import android.graphics.Canvas;
 import android.graphics.PorterDuff.Mode;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.Stack;
 
 public final class b
-  implements f<com.tencent.mm.z.b>
+  implements f<com.tencent.mm.aa.b>
 {
-  public Stack<com.tencent.mm.z.b> fpX;
-  public Stack<com.tencent.mm.z.b> fpY;
-  public int fqa;
+  public Stack<com.tencent.mm.aa.b> fIe;
+  public Stack<com.tencent.mm.aa.b> fIf;
+  public int fIh;
   
-  public final void Mh()
+  public final void NQ()
   {
-    this.fqa += 1;
+    this.fIh += 1;
   }
   
-  public final void Vo()
+  public final void XF()
   {
     AppMethodBeat.i(9201);
-    ac.i("MicroMsg.DoodleCache", "[onRestore] size:%s", new Object[] { Integer.valueOf(this.fpX.size()) });
-    this.fpX.clear();
-    if (this.fpY != null)
+    ad.i("MicroMsg.DoodleCache", "[onRestore] size:%s", new Object[] { Integer.valueOf(this.fIe.size()) });
+    this.fIe.clear();
+    if (this.fIf != null)
     {
-      ac.i("MicroMsg.DoodleCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.fpY.size()) });
-      this.fpX.addAll(this.fpY);
+      ad.i("MicroMsg.DoodleCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.fIf.size()) });
+      this.fIe.addAll(this.fIf);
     }
     AppMethodBeat.o(9201);
   }
@@ -38,18 +38,18 @@ public final class b
     if (paramBoolean)
     {
       paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-      localObject = this.fpX.iterator();
+      localObject = this.fIe.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((com.tencent.mm.z.b)((Iterator)localObject).next()).draw(paramCanvas);
+        ((com.tencent.mm.aa.b)((Iterator)localObject).next()).draw(paramCanvas);
       }
       AppMethodBeat.o(9202);
       return;
     }
-    if ((this.fpX != null) && (this.fpX.size() > 0)) {}
-    for (Object localObject = (com.tencent.mm.z.b)this.fpX.peek();; localObject = null)
+    if ((this.fIe != null) && (this.fIe.size() > 0)) {}
+    for (Object localObject = (com.tencent.mm.aa.b)this.fIe.peek();; localObject = null)
     {
       if (localObject != null) {
-        ((com.tencent.mm.z.b)localObject).draw(paramCanvas);
+        ((com.tencent.mm.aa.b)localObject).draw(paramCanvas);
       }
       AppMethodBeat.o(9202);
       return;
@@ -62,18 +62,18 @@ public final class b
     int i;
     if (paramBoolean)
     {
-      if (this.fpX != null)
+      if (this.fIe != null)
       {
-        i = this.fpX.size();
+        i = this.fIe.size();
         AppMethodBeat.o(9204);
         return i;
       }
       AppMethodBeat.o(9204);
       return 0;
     }
-    if (this.fpY != null)
+    if (this.fIf != null)
     {
-      i = this.fpY.size();
+      i = this.fIf.size();
       AppMethodBeat.o(9204);
       return i;
     }
@@ -81,16 +81,16 @@ public final class b
     return 0;
   }
   
-  public final void cA(boolean paramBoolean)
+  public final void cC(boolean paramBoolean)
   {
     AppMethodBeat.i(9200);
-    ac.i("MicroMsg.DoodleCache", "[onSave] size:%s", new Object[] { Integer.valueOf(this.fpX.size()) });
-    if (this.fpY != null) {
-      this.fpY.clear();
+    ad.i("MicroMsg.DoodleCache", "[onSave] size:%s", new Object[] { Integer.valueOf(this.fIe.size()) });
+    if (this.fIf != null) {
+      this.fIf.clear();
     }
-    this.fpY = ((Stack)this.fpX.clone());
+    this.fIf = ((Stack)this.fIe.clone());
     if (paramBoolean) {
-      this.fpX.clear();
+      this.fIe.clear();
     }
     AppMethodBeat.o(9200);
   }
@@ -98,9 +98,9 @@ public final class b
   public final void e(Canvas paramCanvas)
   {
     AppMethodBeat.i(9203);
-    Iterator localIterator = this.fpX.iterator();
+    Iterator localIterator = this.fIe.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.mm.z.b)localIterator.next()).draw(paramCanvas);
+      ((com.tencent.mm.aa.b)localIterator.next()).draw(paramCanvas);
     }
     AppMethodBeat.o(9203);
   }
@@ -108,26 +108,26 @@ public final class b
   public final void onCreate()
   {
     AppMethodBeat.i(9198);
-    this.fpX = new Stack();
+    this.fIe = new Stack();
     AppMethodBeat.o(9198);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(9199);
-    ac.i("MicroMsg.DoodleCache", "[onDestroy]");
-    if (this.fpX != null) {
-      this.fpX.clear();
+    ad.i("MicroMsg.DoodleCache", "[onDestroy]");
+    if (this.fIe != null) {
+      this.fIe.clear();
     }
-    if (this.fpY != null) {
-      this.fpY.clear();
+    if (this.fIf != null) {
+      this.fIf.clear();
     }
     AppMethodBeat.o(9199);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.cache.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dy;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.modelvoice.s;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bu;
 import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,25 +12,25 @@ import java.util.List;
 public final class f
   extends a
 {
-  protected final List<com.tencent.mm.plugin.f.b.a> ac(bo parambo)
+  protected final List<com.tencent.mm.plugin.f.b.a> af(bu parambu)
   {
     AppMethodBeat.i(22734);
-    if (parambo == null)
+    if (parambu == null)
     {
       AppMethodBeat.o(22734);
       return null;
     }
-    com.tencent.mm.plugin.f.b.a locala = ad(parambo);
-    parambo = s.getFullPath(parambo.field_imgPath);
-    long l = i.aSp(parambo);
+    com.tencent.mm.plugin.f.b.a locala = ag(parambu);
+    parambu = s.getFullPath(parambu.field_imgPath);
+    long l = i.aYo(parambu);
     locala.field_msgSubType = 10;
-    locala.field_path = aBR(parambo);
+    locala.field_path = ahL(parambu);
     locala.field_size = l;
-    ac.i("MicroMsg.VoiceMsgHandler", "%s create voice wx file index voice[%s]", new Object[] { info(), locala });
-    parambo = new ArrayList();
-    parambo.add(locala);
+    ad.i("MicroMsg.VoiceMsgHandler", "%s create voice wx file index voice[%s]", new Object[] { info(), locala });
+    parambu = new ArrayList();
+    parambu.add(locala);
     AppMethodBeat.o(22734);
-    return parambo;
+    return parambu;
   }
   
   protected final String info()
@@ -43,7 +43,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.f.a.f
  * JD-Core Version:    0.7.0.1
  */

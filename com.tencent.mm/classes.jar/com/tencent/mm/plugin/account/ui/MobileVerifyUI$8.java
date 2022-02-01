@@ -6,39 +6,41 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.b;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 
 final class MobileVerifyUI$8
   implements View.OnClickListener
 {
-  private final int iUW = 0;
-  private final int iUX = 1;
-  private final int iUY = 2;
+  private final int jof = 0;
+  private final int jog = 1;
+  private final int joh = 2;
   
   MobileVerifyUI$8(MobileVerifyUI paramMobileVerifyUI) {}
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(128447);
-    paramView = new com.tencent.mm.ui.tools.l(this.iUU);
-    paramView.ISu = new n.c()
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/MobileVerifyUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    paramView = new com.tencent.mm.ui.tools.l(this.jod);
+    paramView.KJy = new n.d()
     {
       public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
       {
         AppMethodBeat.i(128445);
-        paramAnonymousl.c(0, MobileVerifyUI.8.this.iUU.getString(2131761301));
-        if (b.CO(MobileVerifyUI.8.this.iUU.dnz)) {
-          paramAnonymousl.c(1, MobileVerifyUI.8.this.iUU.getString(2131756518));
+        paramAnonymousl.c(0, MobileVerifyUI.8.this.jod.getString(2131761301));
+        if (com.tencent.mm.ax.b.FS(MobileVerifyUI.8.this.jod.dzn)) {
+          paramAnonymousl.c(1, MobileVerifyUI.8.this.jod.getString(2131756518));
         }
-        if ((MobileVerifyUI.f(MobileVerifyUI.8.this.iUU) == 2) && (MobileVerifyUI.8.this.iUU.iUP)) {
-          paramAnonymousl.c(2, MobileVerifyUI.8.this.iUU.getString(2131762331));
+        if ((MobileVerifyUI.f(MobileVerifyUI.8.this.jod) == 2) && (MobileVerifyUI.8.this.jod.jnY)) {
+          paramAnonymousl.c(2, MobileVerifyUI.8.this.jod.getString(2131762331));
         }
         AppMethodBeat.o(128445);
       }
     };
-    paramView.ISv = new n.d()
+    paramView.KJz = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -49,34 +51,35 @@ final class MobileVerifyUI$8
           AppMethodBeat.o(128446);
           return;
         case 0: 
-          MobileVerifyUI.g(MobileVerifyUI.8.this.iUU);
+          MobileVerifyUI.g(MobileVerifyUI.8.this.jod);
           AppMethodBeat.o(128446);
           return;
         }
-        MobileVerifyUI.8.this.iUU.hideVKB();
-        if (MobileVerifyUI.f(MobileVerifyUI.8.this.iUU) == 2) {
-          com.tencent.mm.plugin.b.a.IL("R200_500");
+        MobileVerifyUI.8.this.jod.hideVKB();
+        if (MobileVerifyUI.f(MobileVerifyUI.8.this.jod) == 2) {
+          com.tencent.mm.plugin.b.a.Ma("R200_500");
         }
         for (;;)
         {
-          paramAnonymousMenuItem = new Intent(MobileVerifyUI.8.this.iUU, RegByMobileVoiceVerifyUI.class);
+          paramAnonymousMenuItem = new Intent(MobileVerifyUI.8.this.jod, RegByMobileVoiceVerifyUI.class);
           Object localObject = new Bundle();
-          ((Bundle)localObject).putString("bindmcontact_mobile", MobileVerifyUI.8.this.iUU.dnz);
-          ((Bundle)localObject).putInt("voice_verify_type", MobileVerifyUI.h(MobileVerifyUI.8.this.iUU));
+          ((Bundle)localObject).putString("bindmcontact_mobile", MobileVerifyUI.8.this.jod.dzn);
+          ((Bundle)localObject).putInt("voice_verify_type", MobileVerifyUI.h(MobileVerifyUI.8.this.jod));
           paramAnonymousMenuItem.putExtras((Bundle)localObject);
-          localObject = MobileVerifyUI.8.this.iUU;
-          paramAnonymousMenuItem = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousMenuItem);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousMenuItem.aeD(), "com/tencent/mm/plugin/account/ui/MobileVerifyUI$5$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((MobileVerifyUI)localObject).startActivity((Intent)paramAnonymousMenuItem.lR(0));
+          localObject = MobileVerifyUI.8.this.jod;
+          paramAnonymousMenuItem = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousMenuItem);
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousMenuItem.ahp(), "com/tencent/mm/plugin/account/ui/MobileVerifyUI$5$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((MobileVerifyUI)localObject).startActivity((Intent)paramAnonymousMenuItem.mq(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/account/ui/MobileVerifyUI$5$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           break;
-          if (MobileVerifyUI.f(MobileVerifyUI.8.this.iUU) == 3) {
-            com.tencent.mm.plugin.b.a.IL("F200_300");
+          if (MobileVerifyUI.f(MobileVerifyUI.8.this.jod) == 3) {
+            com.tencent.mm.plugin.b.a.Ma("F200_300");
           }
         }
       }
     };
-    paramView.ftL();
+    paramView.fKy();
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/MobileVerifyUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128447);
   }
 }

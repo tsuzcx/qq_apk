@@ -1806,4 +1806,11 @@
         <item>icudtl.dat</item>
         <item>xweb_fullscreen_video.js</item>
     </string-array>
+    <string-array name="b3">
+        <item>@string/i2w</item>
+        <item></item>
+        <item>@string/i2v</item>
+        <item></item>
+        <item>@string/i2u</item>
+    </string-array>
 </resources>

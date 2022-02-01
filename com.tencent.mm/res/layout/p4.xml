@@ -11,7 +11,7 @@
         <LinearLayout android:orientation="horizontal" android:id="@id/pp" android:layout_width="wrap_content" android:layout_height="wrap_content">
             <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 <FrameLayout android:id="@id/al7" android:layout_width="@dimen/w9" android:layout_height="wrap_content">
-                    <LinearLayout android:orientation="vertical" android:background="?dn" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:orientation="vertical" android:background="@drawable/l9" android:layout_width="fill_parent" android:layout_height="wrap_content">
                         <LinearLayout android:orientation="vertical" android:id="@id/ajg" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/h3">
                             <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="@dimen/hu" android:paddingRight="@dimen/hu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/hu" android:layout_marginRight="0.0dip">
                                 <ImageView android:id="@id/ajt" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="5.0dip" android:scaleType="centerCrop" />

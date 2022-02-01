@@ -15,8 +15,8 @@ public class CheckableImageButton
   extends AppCompatImageButton
   implements Checkable
 {
-  private static final int[] mE = { 16842912 };
-  private boolean mF;
+  private static final int[] oA = { 16842912 };
+  private boolean oB;
   
   public CheckableImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,29 +39,29 @@ public class CheckableImageButton
         super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousc);
         paramAnonymousc.setCheckable(true);
         boolean bool = CheckableImageButton.this.isChecked();
-        paramAnonymousc.Pm.setChecked(bool);
+        paramAnonymousc.Rb.setChecked(bool);
       }
     });
   }
   
   public boolean isChecked()
   {
-    return this.mF;
+    return this.oB;
   }
   
   public int[] onCreateDrawableState(int paramInt)
   {
-    if (this.mF) {
-      return mergeDrawableStates(super.onCreateDrawableState(mE.length + paramInt), mE);
+    if (this.oB) {
+      return mergeDrawableStates(super.onCreateDrawableState(oA.length + paramInt), oA);
     }
     return super.onCreateDrawableState(paramInt);
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    if (this.mF != paramBoolean)
+    if (this.oB != paramBoolean)
     {
-      this.mF = paramBoolean;
+      this.oB = paramBoolean;
       refreshDrawableState();
       sendAccessibilityEvent(2048);
     }
@@ -69,7 +69,7 @@ public class CheckableImageButton
   
   public void toggle()
   {
-    if (!this.mF) {}
+    if (!this.oB) {}
     for (boolean bool = true;; bool = false)
     {
       setChecked(bool);

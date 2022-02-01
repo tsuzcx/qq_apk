@@ -28,5 +28,6 @@
         <ViewStub android:id="@id/gpb" android:layout="@layout/bd4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <ViewStub android:id="@id/gp_" android:layout="@layout/ath" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <ViewStub android:id="@id/hw0" android:layout="@layout/bta" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/i6v" android:layout="@layout/bx6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </FrameLayout>
 </com.tencent.mm.pluginsdk.ui.chat.ChattingUILayout>

@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public static long abo(String paramString)
+  public static long afb(String paramString)
   {
     AppMethodBeat.i(122150);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -22,7 +22,7 @@ public final class d
     return l;
   }
   
-  public static String abp(String paramString)
+  public static String afc(String paramString)
   {
     AppMethodBeat.i(122151);
     if ((paramString == null) || (paramString.isEmpty()))

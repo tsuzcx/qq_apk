@@ -35,17 +35,17 @@ public final class a
   
   public static com.tencent.tbs.one.impl.a.a<com.tencent.tbs.one.impl.e.e<d>> a(i parami, int paramInt, File paramFile, Bundle paramBundle)
   {
-    AppMethodBeat.i(192445);
+    AppMethodBeat.i(190684);
     parami = new b(parami.a, parami.b, parami.f(), parami.e(), paramInt, paramFile, paramBundle);
-    AppMethodBeat.o(192445);
+    AppMethodBeat.o(190684);
     return parami;
   }
   
   public static com.tencent.tbs.one.impl.a.a<com.tencent.tbs.one.impl.e.e<File>> a(i parami, d.a parama, File paramFile, Bundle paramBundle)
   {
-    AppMethodBeat.i(192446);
+    AppMethodBeat.i(190685);
     parami = new com.tencent.tbs.one.impl.e.a.a(parami.a, parami.b, parami.f(), parami.e(), parama, paramFile, paramBundle);
-    AppMethodBeat.o(192446);
+    AppMethodBeat.o(190685);
     return parami;
   }
   
@@ -68,7 +68,7 @@ public final class a
       }
       try
       {
-        localObject1 = com.tencent.tbs.b.a.JZa.keySet();
+        localObject1 = com.tencent.tbs.b.a.LSV.keySet();
         localObject2 = ((SharedPreferences)localObject2).edit();
         ((SharedPreferences.Editor)localObject2).putStringSet("in_use_component_names", (Set)localObject1);
         ((SharedPreferences.Editor)localObject2).apply();
@@ -93,7 +93,7 @@ public final class a
     {
       if (!c)
       {
-        com.tencent.tbs.a.e.cv(paramContext.getApplicationContext(), "onelog");
+        com.tencent.tbs.a.e.cA(paramContext.getApplicationContext(), "onelog");
         f.a(new f.b()
         {
           public final void a(int paramAnonymousInt, String paramAnonymousString)

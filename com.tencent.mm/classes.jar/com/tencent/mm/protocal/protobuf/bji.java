@@ -1,87 +1,80 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import java.util.LinkedList;
 
 public final class bji
-  extends com.tencent.mm.bw.a
+  extends cvc
 {
-  public b DWI;
-  public b DWK;
-  public int fZz;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124514);
+    AppMethodBeat.i(74656);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.DWK != null) {
-        paramVarArgs.c(1, this.DWK);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.DWI != null) {
-        paramVarArgs.c(2, this.DWI);
-      }
-      paramVarArgs.aR(3, this.fZz);
-      AppMethodBeat.o(124514);
+      AppMethodBeat.o(74656);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.DWK == null) {
-        break label318;
+      if (this.BaseRequest == null) {
+        break label310;
       }
     }
-    label318:
-    for (paramInt = f.a.a.b.b.a.b(1, this.DWK) + 0;; paramInt = 0)
+    label310:
+    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.DWI != null) {
-        i = paramInt + f.a.a.b.b.a.b(2, this.DWI);
-      }
-      paramInt = f.a.a.b.b.a.bx(3, this.fZz);
-      AppMethodBeat.o(124514);
-      return i + paramInt;
+      AppMethodBeat.o(74656);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(124514);
+        AppMethodBeat.o(74656);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         bji localbji = (bji)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(124514);
+          AppMethodBeat.o(74656);
           return -1;
-        case 1: 
-          localbji.DWK = locala.LVo.gfk();
-          AppMethodBeat.o(124514);
-          return 0;
-        case 2: 
-          localbji.DWI = locala.LVo.gfk();
-          AppMethodBeat.o(124514);
-          return 0;
         }
-        localbji.fZz = locala.LVo.xF();
-        AppMethodBeat.o(124514);
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new jc();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localbji.BaseRequest = ((jc)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(74656);
         return 0;
       }
-      AppMethodBeat.o(124514);
+      AppMethodBeat.o(74656);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bji
  * JD-Core Version:    0.7.0.1
  */

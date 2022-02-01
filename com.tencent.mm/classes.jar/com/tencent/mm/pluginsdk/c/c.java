@@ -1,8 +1,10 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.mh;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.mq;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
 import java.util.HashMap;
@@ -12,15 +14,15 @@ import java.util.Set;
 
 public abstract class c<T extends b>
   extends com.tencent.mm.sdk.b.c<T>
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  private static HashMap<n, b> DfV = new HashMap();
-  private static HashMap<b, c<? extends b>> bwc = new HashMap();
-  private int DfU = 0;
+  private static HashMap<n, b> EJR = new HashMap();
+  private static HashMap<b, c<? extends b>> bGq = new HashMap();
+  private int EJQ = 0;
   
   public static void j(b paramb)
   {
-    Iterator localIterator = DfV.entrySet().iterator();
+    Iterator localIterator = EJR.entrySet().iterator();
     Map.Entry localEntry;
     do
     {
@@ -33,63 +35,63 @@ public abstract class c<T extends b>
     {
       if (paramb != null)
       {
-        com.tencent.mm.kernel.g.agi().a(paramb);
-        DfV.remove(paramb);
+        g.aiU().a(paramb);
+        EJR.remove(paramb);
       }
       return;
     }
   }
   
-  public abstract int VK();
+  public abstract int Yb();
   
   public abstract n a(T paramT);
   
   public abstract b a(int paramInt, n paramn, T paramT);
   
-  public final void cVZ()
+  public final void dfk()
   {
-    if (this.DfU == 0) {}
+    if (this.EJQ == 0) {}
     do
     {
       return;
-      this.DfU -= 1;
-    } while (this.DfU != 0);
-    com.tencent.mm.kernel.g.agi().b(VK(), this);
+      this.EJQ -= 1;
+    } while (this.EJQ != 0);
+    g.aiU().b(Yb(), this);
   }
   
-  public final void eKo()
+  public final void eZc()
   {
-    if (this.DfU == 0) {
-      com.tencent.mm.kernel.g.agi().a(VK(), this);
+    if (this.EJQ == 0) {
+      g.aiU().a(Yb(), this);
     }
-    this.DfU += 1;
+    this.EJQ += 1;
   }
   
   public final void k(T paramT)
   {
     n localn = a(paramT);
-    com.tencent.mm.kernel.g.agi().a(localn, 0);
-    DfV.put(localn, paramT);
+    g.aiU().a(localn, 0);
+    EJR.put(localn, paramT);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     b localb;
-    if (VK() == paramn.getType())
+    if (Yb() == paramn.getType())
     {
-      localb = (b)DfV.remove(paramn);
+      localb = (b)EJR.remove(paramn);
       if (localb != null) {}
     }
     else
     {
       return;
     }
-    mh localmh = new mh();
-    localmh.doL.doM = a(paramInt2, paramn, localb);
-    localmh.doL.errType = paramInt1;
-    localmh.doL.errCode = paramInt2;
-    localmh.doL.errMsg = paramString;
-    a.GpY.l(localmh);
+    mq localmq = new mq();
+    localmq.dAz.dAA = a(paramInt2, paramn, localb);
+    localmq.dAz.errType = paramInt1;
+    localmq.dAz.errCode = paramInt2;
+    localmq.dAz.errMsg = paramString;
+    a.IbL.l(localmq);
   }
 }
 

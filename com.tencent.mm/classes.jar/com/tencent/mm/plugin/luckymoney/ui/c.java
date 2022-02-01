@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 public abstract interface c
 {
-  public abstract String HD(int paramInt);
+  public abstract String IZ(int paramInt);
   
-  public abstract int cYE();
+  public abstract int dhQ();
   
   public abstract void onError();
   

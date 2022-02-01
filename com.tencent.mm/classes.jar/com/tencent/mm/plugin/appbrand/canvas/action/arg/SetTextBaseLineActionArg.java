@@ -11,7 +11,7 @@ public class SetTextBaseLineActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetTextBaseLineActionArg> CREATOR;
-  public String jzJ;
+  public String jTE;
   
   static
   {
@@ -51,7 +51,7 @@ public class SetTextBaseLineActionArg
       return false;
     }
     paramObject = (SetTextBaseLineActionArg)paramObject;
-    boolean bool = Objects.equals(this.jzJ, paramObject.jzJ);
+    boolean bool = Objects.equals(this.jTE, paramObject.jTE);
     AppMethodBeat.o(145251);
     return bool;
   }
@@ -60,14 +60,14 @@ public class SetTextBaseLineActionArg
   {
     AppMethodBeat.i(145248);
     super.h(paramParcel);
-    this.jzJ = paramParcel.readString();
+    this.jTE = paramParcel.readString();
     AppMethodBeat.o(145248);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145252);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jzJ });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jTE });
     AppMethodBeat.o(145252);
     return i;
   }
@@ -76,7 +76,7 @@ public class SetTextBaseLineActionArg
   {
     AppMethodBeat.i(145249);
     super.parse(paramJSONObject);
-    this.jzJ = paramJSONObject.optJSONArray("data").optString(0);
+    this.jTE = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145249);
   }
   
@@ -84,7 +84,7 @@ public class SetTextBaseLineActionArg
   {
     AppMethodBeat.i(145250);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jzJ);
+    paramParcel.writeString(this.jTE);
     AppMethodBeat.o(145250);
   }
 }

@@ -2,46 +2,48 @@ package d.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
-import d.g.b.l;
+import d.g.b.q;
 import d.l.b.a.b.l.f;
+import d.l.b.a.b.l.j;
+import d.l.b.a.b.m.a.i;
 
 public final class ae
   extends bi
 {
-  private final d.l.b.a.b.l.i KZf;
-  final a<ab> LJX;
-  private final f<ab> LLu;
+  private final j MQa;
+  final a<ab> NAV;
+  private final f<ab> NCp;
   
-  public ae(d.l.b.a.b.l.i parami, a<? extends ab> parama)
+  public ae(j paramj, a<? extends ab> parama)
   {
     AppMethodBeat.i(60778);
-    this.KZf = parami;
-    this.LJX = parama;
-    this.LLu = this.KZf.O(this.LJX);
+    this.MQa = paramj;
+    this.NAV = parama;
+    this.NCp = this.MQa.S(this.NAV);
     AppMethodBeat.o(60778);
   }
   
-  protected final ab gcA()
-  {
-    AppMethodBeat.i(60775);
-    ab localab = (ab)this.LLu.invoke();
-    AppMethodBeat.o(60775);
-    return localab;
-  }
-  
-  public final boolean gcp()
+  public final boolean gtO()
   {
     AppMethodBeat.i(60776);
-    boolean bool = this.LLu.gcp();
+    boolean bool = this.NCp.gtO();
     AppMethodBeat.o(60776);
     return bool;
   }
   
+  protected final ab gub()
+  {
+    AppMethodBeat.i(60775);
+    ab localab = (ab)this.NCp.invoke();
+    AppMethodBeat.o(60775);
+    return localab;
+  }
+  
   static final class a
-    extends l
+    extends q
     implements a<ab>
   {
-    a(ae paramae, d.l.b.a.b.m.a.i parami)
+    a(ae paramae, i parami)
     {
       super();
     }
@@ -49,7 +51,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.ae
  * JD-Core Version:    0.7.0.1
  */

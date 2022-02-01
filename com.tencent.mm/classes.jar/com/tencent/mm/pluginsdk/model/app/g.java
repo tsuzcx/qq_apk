@@ -4,133 +4,133 @@ import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.y;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class g
   extends y
 {
-  public static String DhS;
-  public static String DhT;
-  public static String DhU;
-  public static String DhV;
+  public static String EMD;
+  public static String EME;
+  public static String EMF;
+  public static String EMG;
   protected static c.a info;
   
   static
   {
     AppMethodBeat.i(151678);
-    DhS = "wxce6f23b478a3a2a2";
-    DhT = "wx7302cee7c7d6d7d6";
-    DhU = "wx6fa7e3bab7e15415";
-    DhV = "wx3cc22b542de028d4";
+    EMD = "wxce6f23b478a3a2a2";
+    EME = "wx7302cee7c7d6d7d6";
+    EMF = "wx6fa7e3bab7e15415";
+    EMG = "wx3cc22b542de028d4";
     c.a locala = new c.a();
-    locala.GvF = new Field[26];
+    locala.IhA = new Field[26];
     locala.columns = new String[27];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appId";
-    locala.GvH.put("appId", "TEXT default ''  PRIMARY KEY ");
+    locala.IhC.put("appId", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" appId TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "appId";
+    locala.IhB = "appId";
     locala.columns[1] = "appName";
-    locala.GvH.put("appName", "TEXT");
+    locala.IhC.put("appName", "TEXT");
     localStringBuilder.append(" appName TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "appDiscription";
-    locala.GvH.put("appDiscription", "TEXT");
+    locala.IhC.put("appDiscription", "TEXT");
     localStringBuilder.append(" appDiscription TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "appIconUrl";
-    locala.GvH.put("appIconUrl", "TEXT");
+    locala.IhC.put("appIconUrl", "TEXT");
     localStringBuilder.append(" appIconUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "appStoreUrl";
-    locala.GvH.put("appStoreUrl", "TEXT");
+    locala.IhC.put("appStoreUrl", "TEXT");
     localStringBuilder.append(" appStoreUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "appVersion";
-    locala.GvH.put("appVersion", "INTEGER");
+    locala.IhC.put("appVersion", "INTEGER");
     localStringBuilder.append(" appVersion INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "appWatermarkUrl";
-    locala.GvH.put("appWatermarkUrl", "TEXT");
+    locala.IhC.put("appWatermarkUrl", "TEXT");
     localStringBuilder.append(" appWatermarkUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "packageName";
-    locala.GvH.put("packageName", "TEXT");
+    locala.IhC.put("packageName", "TEXT");
     localStringBuilder.append(" packageName TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "status";
-    locala.GvH.put("status", "INTEGER");
+    locala.IhC.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[9] = "signature";
-    locala.GvH.put("signature", "TEXT");
+    locala.IhC.put("signature", "TEXT");
     localStringBuilder.append(" signature TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "modifyTime";
-    locala.GvH.put("modifyTime", "LONG");
+    locala.IhC.put("modifyTime", "LONG");
     localStringBuilder.append(" modifyTime LONG");
     localStringBuilder.append(", ");
     locala.columns[11] = "appName_en";
-    locala.GvH.put("appName_en", "TEXT");
+    locala.IhC.put("appName_en", "TEXT");
     localStringBuilder.append(" appName_en TEXT");
     localStringBuilder.append(", ");
     locala.columns[12] = "appName_tw";
-    locala.GvH.put("appName_tw", "TEXT");
+    locala.IhC.put("appName_tw", "TEXT");
     localStringBuilder.append(" appName_tw TEXT");
     localStringBuilder.append(", ");
     locala.columns[13] = "appName_hk";
-    locala.GvH.put("appName_hk", "TEXT");
+    locala.IhC.put("appName_hk", "TEXT");
     localStringBuilder.append(" appName_hk TEXT");
     localStringBuilder.append(", ");
     locala.columns[14] = "appDiscription_en";
-    locala.GvH.put("appDiscription_en", "TEXT");
+    locala.IhC.put("appDiscription_en", "TEXT");
     localStringBuilder.append(" appDiscription_en TEXT");
     localStringBuilder.append(", ");
     locala.columns[15] = "appDiscription_tw";
-    locala.GvH.put("appDiscription_tw", "TEXT");
+    locala.IhC.put("appDiscription_tw", "TEXT");
     localStringBuilder.append(" appDiscription_tw TEXT");
     localStringBuilder.append(", ");
     locala.columns[16] = "appType";
-    locala.GvH.put("appType", "TEXT");
+    locala.IhC.put("appType", "TEXT");
     localStringBuilder.append(" appType TEXT");
     localStringBuilder.append(", ");
     locala.columns[17] = "openId";
-    locala.GvH.put("openId", "TEXT");
+    locala.IhC.put("openId", "TEXT");
     localStringBuilder.append(" openId TEXT");
     localStringBuilder.append(", ");
     locala.columns[18] = "authFlag";
-    locala.GvH.put("authFlag", "INTEGER");
+    locala.IhC.put("authFlag", "INTEGER");
     localStringBuilder.append(" authFlag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[19] = "appInfoFlag";
-    locala.GvH.put("appInfoFlag", "INTEGER default '-1' ");
+    locala.IhC.put("appInfoFlag", "INTEGER default '-1' ");
     localStringBuilder.append(" appInfoFlag INTEGER default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[20] = "lvbuff";
-    locala.GvH.put("lvbuff", "BLOB");
+    locala.IhC.put("lvbuff", "BLOB");
     localStringBuilder.append(" lvbuff BLOB");
     localStringBuilder.append(", ");
     locala.columns[21] = "serviceAppType";
-    locala.GvH.put("serviceAppType", "INTEGER default '0' ");
+    locala.IhC.put("serviceAppType", "INTEGER default '0' ");
     localStringBuilder.append(" serviceAppType INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[22] = "serviceAppInfoFlag";
-    locala.GvH.put("serviceAppInfoFlag", "INTEGER default '0' ");
+    locala.IhC.put("serviceAppInfoFlag", "INTEGER default '0' ");
     localStringBuilder.append(" serviceAppInfoFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[23] = "serviceShowFlag";
-    locala.GvH.put("serviceShowFlag", "INTEGER default '0' ");
+    locala.IhC.put("serviceShowFlag", "INTEGER default '0' ");
     localStringBuilder.append(" serviceShowFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[24] = "appSupportContentType";
-    locala.GvH.put("appSupportContentType", "LONG default '0' ");
+    locala.IhC.put("appSupportContentType", "LONG default '0' ");
     localStringBuilder.append(" appSupportContentType LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[25] = "svrAppSupportContentType";
-    locala.GvH.put("svrAppSupportContentType", "LONG default '0' ");
+    locala.IhC.put("svrAppSupportContentType", "LONG default '0' ");
     localStringBuilder.append(" svrAppSupportContentType LONG default '0' ");
     locala.columns[26] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -162,20 +162,20 @@ public class g
     this.field_openId = "";
     this.field_authFlag = 0;
     this.field_appInfoFlag = 0;
-    pO("");
-    this.eqi = "";
-    this.epG = true;
-    pP("");
-    pT("");
-    pU("");
-    pV("");
+    sy("");
+    this.eHr = "";
+    this.eGP = true;
+    sz("");
+    sD("");
+    sE("");
+    sF("");
     AppMethodBeat.o(151672);
   }
   
-  public final boolean CC()
+  public final boolean Eb()
   {
     AppMethodBeat.i(151673);
-    if (bs.isNullOrNil(this.field_appType))
+    if (bt.isNullOrNil(this.field_appType))
     {
       AppMethodBeat.o(151673);
       return false;
@@ -204,7 +204,7 @@ public class g
   public ContentValues convertTo()
   {
     AppMethodBeat.i(151675);
-    if ((!bs.isNullOrNil(this.field_appType)) && ((this.field_appType.startsWith("1")) || (this.field_appType.startsWith("6")))) {
+    if ((!bt.isNullOrNil(this.field_appType)) && ((this.field_appType.startsWith("1")) || (this.field_appType.startsWith("6")))) {
       this.field_appType = ("," + this.field_appType);
     }
     ContentValues localContentValues = super.convertTo();
@@ -212,25 +212,25 @@ public class g
     return localContentValues;
   }
   
-  public final boolean eKX()
+  public final boolean eZR()
   {
     return this.field_serviceAppType != 0;
   }
   
-  public final boolean eKY()
+  public final boolean eZS()
   {
     return (this.field_serviceAppInfoFlag & 0x2) != 0;
   }
   
-  public final boolean eKZ()
+  public final boolean eZT()
   {
     return (this.field_serviceAppInfoFlag & 0x1) != 0;
   }
   
-  public final boolean eLa()
+  public final boolean eZU()
   {
     AppMethodBeat.i(151674);
-    if (DhT.equals(this.field_appId))
+    if (EME.equals(this.field_appId))
     {
       AppMethodBeat.o(151674);
       return true;
@@ -270,7 +270,7 @@ public class g
   public int hashCode()
   {
     AppMethodBeat.i(151677);
-    if (!bs.isNullOrNil(this.field_appId))
+    if (!bt.isNullOrNil(this.field_appId))
     {
       i = this.field_appId.hashCode();
       AppMethodBeat.o(151677);

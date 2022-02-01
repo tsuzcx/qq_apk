@@ -1,106 +1,106 @@
 package com.tencent.mm.chatroom.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.b;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.b;
 import com.tencent.mm.chatroom.d.y;
 import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aj;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.b;
-import com.tencent.mm.model.ar.b.a;
+import com.tencent.mm.model.ak;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.b;
+import com.tencent.mm.model.as.b.a;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.o;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import java.util.Map;
 
 public final class b
-  implements o
+  implements p
 {
-  static void a(x paramx, String paramString1, String paramString2)
+  static void a(ab paramab, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(197044);
-    if (paramx != null) {}
+    AppMethodBeat.i(213416);
+    if (paramab != null) {}
     for (;;)
     {
-      x localx;
+      ab localab;
       Object localObject2;
       try
       {
-        if (bs.isNullOrNil(paramx.field_associateOpenIMRoomName))
+        if (bt.isNullOrNil(paramab.field_associateOpenIMRoomName))
         {
-          localx = ((c)g.ab(c.class)).awK().xN(paramString2);
+          localab = ((c)g.ab(c.class)).azz().AN(paramString2);
           Object localObject1;
-          if (paramx == null)
+          if (paramab == null)
           {
             localObject1 = "null";
             break label302;
-            ac.i("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "associateRoomName %s finish %s, imunionRoomName %s finish %s", new Object[] { paramString1, localObject1, paramString2, localObject2 });
-            if ((localx == null) || (localx.eZU())) {
+            ad.i("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "associateRoomName %s finish %s, imunionRoomName %s finish %s", new Object[] { paramString1, localObject1, paramString2, localObject2 });
+            if ((localab == null) || (localab.fpW())) {
               break label297;
             }
-            localx.field_openIMRoomMigrateStatus = 2;
-            localx.field_associateOpenIMRoomName = paramString1;
-            ((c)g.ab(c.class)).awK().replace(localx);
+            localab.field_openIMRoomMigrateStatus = 2;
+            localab.field_associateOpenIMRoomName = paramString1;
+            ((c)g.ab(c.class)).azz().replace(localab);
             i = 1;
             if (i != 0)
             {
-              paramx.field_openIMRoomMigrateStatus = 1;
-              paramx.field_associateOpenIMRoomName = paramString2;
-              ((c)g.ab(c.class)).awK().replace(paramx);
+              paramab.field_openIMRoomMigrateStatus = 1;
+              paramab.field_associateOpenIMRoomName = paramString2;
+              ((c)g.ab(c.class)).azz().replace(paramab);
               if (i != 0) {
-                ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getOpenImMigrateService().ab(paramString1, paramString2);
+                ((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getOpenImMigrateService().ac(paramString1, paramString2);
               }
-              AppMethodBeat.o(197044);
+              AppMethodBeat.o(213416);
             }
           }
           else
           {
-            localObject1 = Boolean.valueOf(paramx.eZU());
+            localObject1 = Boolean.valueOf(paramab.fpW());
             break label302;
-            localObject2 = Boolean.valueOf(localx.eZU());
+            localObject2 = Boolean.valueOf(localab.fpW());
             continue;
           }
-          paramx.field_openIMRoomMigrateStatus = 3;
+          paramab.field_openIMRoomMigrateStatus = 3;
           continue;
         }
-        if (paramx != null) {}
+        if (paramab != null) {}
       }
-      catch (Exception paramx)
+      catch (Exception paramab)
       {
-        ac.e("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "handleInfo Exception:%s %s", new Object[] { paramx.getClass().getSimpleName(), paramx.getMessage() });
-        AppMethodBeat.o(197044);
+        ad.e("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "handleInfo Exception:%s %s", new Object[] { paramab.getClass().getSimpleName(), paramab.getMessage() });
+        AppMethodBeat.o(213416);
         return;
       }
-      for (paramx = "null";; paramx = bs.bG(paramx.field_associateOpenIMRoomName, ""))
+      for (paramab = "null";; paramab = bt.bI(paramab.field_associateOpenIMRoomName, ""))
       {
-        ac.e("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "handleInfo member:%s", new Object[] { paramx });
-        AppMethodBeat.o(197044);
+        ad.e("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "handleInfo member:%s", new Object[] { paramab });
+        AppMethodBeat.o(213416);
         return;
       }
       label297:
       int i = 0;
       continue;
       label302:
-      if (localx == null) {
+      if (localab == null) {
         localObject2 = "null";
       }
     }
   }
   
-  public final f.b a(final String paramString, final Map<String, String> paramMap, f.a parama)
+  public final e.b a(final String paramString, final Map<String, String> paramMap, e.a parama)
   {
-    AppMethodBeat.i(197043);
-    if (bs.nullAsNil(paramString).equals("IMUnionRoom2AssociateRoom"))
+    AppMethodBeat.i(213415);
+    if (bt.nullAsNil(paramString).equals("IMUnionRoom2AssociateRoom"))
     {
-      ac.i("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "consumeNewXml subType:%s", new Object[] { bs.bG(paramString, "") });
-      if (!y.VM())
+      ad.i("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "consumeNewXml subType:%s", new Object[] { bt.bI(paramString, "") });
+      if (!y.Yd())
       {
-        AppMethodBeat.o(197043);
+        AppMethodBeat.o(213415);
         return null;
       }
       if (paramMap == null) {}
@@ -109,35 +109,35 @@ public final class b
     {
       try
       {
-        paramString = bs.nullAsNil((String)paramMap.get(".sysmsg.associateroomname")).trim();
-        paramMap = bs.nullAsNil((String)paramMap.get(".sysmsg.imunionroomname")).trim();
-        ac.i("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "consumeNewXml %s %s", new Object[] { bs.bG(paramMap, ""), bs.bG(paramString, "") });
-        if ((w.wp(paramString)) && (!bs.isNullOrNil(paramMap)))
+        paramString = bt.nullAsNil((String)paramMap.get(".sysmsg.associateroomname")).trim();
+        paramMap = bt.nullAsNil((String)paramMap.get(".sysmsg.imunionroomname")).trim();
+        ad.i("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "consumeNewXml %s %s", new Object[] { bt.bI(paramMap, ""), bt.bI(paramString, "") });
+        if ((w.zk(paramString)) && (!bt.isNullOrNil(paramMap)))
         {
-          parama = ((c)g.ab(c.class)).awK().xN(paramString);
+          parama = ((c)g.ab(c.class)).azz().AN(paramString);
           if (parama != null) {
             continue;
           }
-          ar.a.hnw.a(paramString, null, new ar.b.a()
+          as.a.hFO.a(paramString, null, new as.b.a()
           {
             public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
             {
-              AppMethodBeat.i(197042);
-              ac.i("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "getContactCallBack username:%s succ:%s", new Object[] { bs.bG(paramAnonymousString, ""), Boolean.valueOf(paramAnonymousBoolean) });
+              AppMethodBeat.i(213414);
+              ad.i("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "getContactCallBack username:%s succ:%s", new Object[] { bt.bI(paramAnonymousString, ""), Boolean.valueOf(paramAnonymousBoolean) });
               if (paramAnonymousBoolean) {
-                b.a(((c)g.ab(c.class)).awK().xN(paramString), paramString, paramMap);
+                b.a(((c)g.ab(c.class)).azz().AN(paramString), paramString, paramMap);
               }
-              AppMethodBeat.o(197042);
+              AppMethodBeat.o(213414);
             }
           });
         }
       }
       catch (Exception paramString)
       {
-        ac.e("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "consumeNewXml Exception:%s %s", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
+        ad.e("MicroMsg.IMUnionRoom2AssociateRoomNewXmlConsumer", "consumeNewXml Exception:%s %s", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
         continue;
       }
-      AppMethodBeat.o(197043);
+      AppMethodBeat.o(213415);
       return null;
       a(parama, paramString, paramMap);
     }

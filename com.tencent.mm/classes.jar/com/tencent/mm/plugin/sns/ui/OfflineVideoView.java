@@ -11,42 +11,43 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.sns.data.i;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.VideoTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.h;
 import com.tencent.mm.pluginsdk.ui.tools.h.a;
+import com.tencent.mm.pluginsdk.ui.tools.h.c;
 import com.tencent.mm.pluginsdk.ui.tools.h.e;
 import com.tencent.mm.pointers.PString;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class OfflineVideoView
   extends RelativeLayout
   implements h.a
 {
-  private int bvh;
+  private int bFv;
   private int duration;
-  private boolean ftN;
-  private ProgressBar kWd;
+  private boolean fMP;
+  private ProgressBar ltc;
   private Context mContext;
-  private ao ocT;
-  private h odZ;
-  private au oef;
-  protected ImageView qQT;
-  private RelativeLayout qRo;
-  protected boolean qUP;
-  private boolean qUQ;
-  private a yCl;
-  private boolean yCm;
-  protected boolean yCn;
-  private int yCo;
-  private int yCp;
-  private h.e yCq;
+  private ap oGm;
+  private h oHt;
+  private av oHz;
+  protected ImageView rAT;
+  private RelativeLayout rBo;
+  protected boolean rFd;
+  private boolean rFe;
+  private a zTF;
+  private boolean zTG;
+  protected boolean zTH;
+  private int zTI;
+  private int zTJ;
+  private boolean zTK;
+  private h.e zTL;
   
   public OfflineVideoView(Context paramContext)
   {
@@ -63,23 +64,24 @@ public class OfflineVideoView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98021);
     this.mContext = null;
-    this.ftN = false;
-    this.qUP = false;
-    this.yCm = false;
-    this.yCn = true;
-    this.yCo = -1;
-    this.bvh = 0;
+    this.fMP = false;
+    this.rFd = false;
+    this.zTG = false;
+    this.zTH = true;
+    this.zTI = -1;
+    this.bFv = 0;
     this.duration = 0;
-    this.ocT = new ao(Looper.getMainLooper());
-    this.yCp = 1000;
-    this.oef = new au(new au.a()
+    this.oGm = new ap(Looper.getMainLooper());
+    this.zTJ = 1000;
+    this.zTK = false;
+    this.oHz = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(98019);
+        AppMethodBeat.i(198184);
         if (OfflineVideoView.a(OfflineVideoView.this) == null)
         {
-          AppMethodBeat.o(98019);
+          AppMethodBeat.o(198184);
           return false;
         }
         if (((View)OfflineVideoView.a(OfflineVideoView.this)).getAlpha() < 1.0F) {
@@ -88,75 +90,75 @@ public class OfflineVideoView
         if (OfflineVideoView.a(OfflineVideoView.this).isPlaying())
         {
           OfflineVideoView.d(OfflineVideoView.this);
-          OfflineVideoView.this.Po(OfflineVideoView.a(OfflineVideoView.this).getCurrentPosition());
+          OfflineVideoView.this.QW(OfflineVideoView.a(OfflineVideoView.this).getCurrentPosition());
         }
-        AppMethodBeat.o(98019);
+        AppMethodBeat.o(198184);
         return true;
       }
     }, true);
-    this.yCq = new h.e()
+    this.zTL = new h.e()
     {
-      public final void bli()
+      public final void boT()
       {
-        AppMethodBeat.i(98020);
-        ac.i("MicroMsg.OfflineVideoView", "%d on texture update.", new Object[] { Integer.valueOf(OfflineVideoView.this.hashCode()) });
+        AppMethodBeat.i(198185);
+        ad.i("MicroMsg.OfflineVideoView", "%d on texture update.", new Object[] { Integer.valueOf(OfflineVideoView.this.hashCode()) });
         try
         {
           OfflineVideoView.this.c(true, 1.0F);
-          AppMethodBeat.o(98020);
+          AppMethodBeat.o(198185);
           return;
         }
         catch (Exception localException)
         {
-          ac.e("MicroMsg.OfflineVideoView", "texture view update. error " + localException.toString());
-          AppMethodBeat.o(98020);
+          ad.e("MicroMsg.OfflineVideoView", "texture view update. error " + localException.toString());
+          AppMethodBeat.o(198185);
         }
       }
     };
     this.mContext = paramContext;
-    ac.i("MicroMsg.OfflineVideoView", "%d ui init view.", new Object[] { Integer.valueOf(hashCode()) });
+    ad.i("MicroMsg.OfflineVideoView", "%d ui init view.", new Object[] { Integer.valueOf(hashCode()) });
     LayoutInflater.from(this.mContext).inflate(2131495624, this);
-    this.qQT = ((ImageView)findViewById(2131306398));
-    this.qRo = ((RelativeLayout)findViewById(2131306392));
-    this.kWd = ((ProgressBar)findViewById(2131306352));
-    if (d.la(18))
+    this.rAT = ((ImageView)findViewById(2131306398));
+    this.rBo = ((RelativeLayout)findViewById(2131306392));
+    this.ltc = ((ProgressBar)findViewById(2131306352));
+    if (d.lz(18))
     {
       paramInt = 0;
       if (paramInt == 0) {
-        break label277;
+        break label282;
       }
-      this.qUQ = true;
+      this.rFe = true;
     }
-    for (this.odZ = new VideoPlayerTextureView(this.mContext);; this.odZ = new VideoTextureView(this.mContext))
+    for (this.oHt = new VideoPlayerTextureView(this.mContext);; this.oHt = new VideoTextureView(this.mContext))
     {
-      this.odZ.setVideoCallback(this);
+      this.oHt.setVideoCallback(this);
       paramContext = new RelativeLayout.LayoutParams(-1, -2);
       paramContext.addRule(13);
-      this.qRo.addView((View)this.odZ, paramContext);
+      this.rBo.addView((View)this.oHt, paramContext);
       c(false, 0.0F);
       AppMethodBeat.o(98021);
       return;
       paramInt = 1;
       break;
-      label277:
-      this.qUQ = false;
+      label282:
+      this.rFe = false;
     }
   }
   
   private void hideLoading()
   {
     AppMethodBeat.i(98030);
-    this.ocT.post(new Runnable()
+    this.oGm.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(98018);
+        AppMethodBeat.i(98017);
         if ((OfflineVideoView.c(OfflineVideoView.this) != null) && (OfflineVideoView.c(OfflineVideoView.this).getVisibility() != 8))
         {
-          ac.i("MicroMsg.OfflineVideoView", "%d hide loading.", new Object[] { Integer.valueOf(OfflineVideoView.this.hashCode()) });
+          ad.i("MicroMsg.OfflineVideoView", "%d hide loading.", new Object[] { Integer.valueOf(OfflineVideoView.this.hashCode()) });
           OfflineVideoView.c(OfflineVideoView.this).setVisibility(8);
         }
-        AppMethodBeat.o(98018);
+        AppMethodBeat.o(98017);
       }
     });
     AppMethodBeat.o(98030);
@@ -165,58 +167,40 @@ public class OfflineVideoView
   private void onResume()
   {
     AppMethodBeat.i(98023);
-    ac.d("MicroMsg.OfflineVideoView", "%d on resume %s", new Object[] { Integer.valueOf(hashCode()), bs.eWi() });
-    if (!this.qUP) {
-      crJ();
+    ad.d("MicroMsg.OfflineVideoView", "%d on resume %s", new Object[] { Integer.valueOf(hashCode()), bt.flS() });
+    if (!this.rFd) {
+      cxv();
     }
-    this.yCm = true;
+    this.zTG = true;
     AppMethodBeat.o(98023);
   }
   
-  public void Po(int paramInt)
+  public void QW(int paramInt)
   {
     AppMethodBeat.i(179150);
-    if (this.yCl != null) {
-      this.yCl.sQ(paramInt);
+    if (this.zTF != null) {
+      this.zTF.tt(paramInt);
     }
     AppMethodBeat.o(179150);
   }
   
-  public final void ade(String paramString)
-  {
-    AppMethodBeat.i(98033);
-    ac.i("MicroMsg.OfflineVideoView", "%d prepare video  filePath %s", new Object[] { Integer.valueOf(hashCode()), paramString });
-    if (bs.isNullOrNil(paramString))
-    {
-      ac.w("MicroMsg.OfflineVideoView", "%d prepare video but filepath is null.", new Object[] { Integer.valueOf(hashCode()) });
-      AppMethodBeat.o(98033);
-      return;
-    }
-    if (this.odZ != null)
-    {
-      this.odZ.setOneTimeVideoTextureUpdateCallback(this.yCq);
-      this.odZ.setVideoPath(paramString);
-    }
-    AppMethodBeat.o(98033);
-  }
-  
-  public final void avC(final String paramString)
+  public final void aAJ(final String paramString)
   {
     AppMethodBeat.i(98025);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(98025);
       return;
     }
-    this.ocT.post(new Runnable()
+    this.oGm.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(98013);
-        if (OfflineVideoView.this.qQT != null)
+        if (OfflineVideoView.this.rAT != null)
         {
-          ac.i("MicroMsg.OfflineVideoView", "%d fresh thumb image", new Object[] { Integer.valueOf(hashCode()) });
-          OfflineVideoView.this.qQT.setImageBitmap(BackwardSupportUtil.b.n(paramString, 1.0F));
+          ad.i("MicroMsg.OfflineVideoView", "%d fresh thumb image", new Object[] { Integer.valueOf(hashCode()) });
+          OfflineVideoView.this.rAT.setImageBitmap(BackwardSupportUtil.b.o(paramString, 1.0F));
         }
         AppMethodBeat.o(98013);
       }
@@ -224,34 +208,52 @@ public class OfflineVideoView
     AppMethodBeat.o(98025);
   }
   
-  public void aw(int paramInt, boolean paramBoolean)
+  public void aB(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(98034);
-    ac.i("MicroMsg.OfflineVideoView", "%d seek second %d afterSeekPlay %b", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    ad.i("MicroMsg.OfflineVideoView", "%d seek second %d afterSeekPlay %b", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
     hideLoading();
-    this.odZ.d(paramInt, paramBoolean);
+    this.oHt.d(paramInt, paramBoolean);
     startTimer();
     AppMethodBeat.o(98034);
   }
   
-  public final void ax(int paramInt, boolean paramBoolean)
+  public final void aC(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(200373);
-    ac.i("MicroMsg.OfflineVideoView", "%d ui touch seek second %d afterSeekPlay %b", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    aw(paramInt, paramBoolean);
+    AppMethodBeat.i(198186);
+    ad.i("MicroMsg.OfflineVideoView", "%d ui touch seek second %d afterSeekPlay %b", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    aB(paramInt, paramBoolean);
     startTimer();
-    AppMethodBeat.o(200373);
+    AppMethodBeat.o(198186);
+  }
+  
+  public final void agT(String paramString)
+  {
+    AppMethodBeat.i(98033);
+    ad.i("MicroMsg.OfflineVideoView", "%d prepare video  filePath %s", new Object[] { Integer.valueOf(hashCode()), paramString });
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.w("MicroMsg.OfflineVideoView", "%d prepare video but filepath is null.", new Object[] { Integer.valueOf(hashCode()) });
+      AppMethodBeat.o(98033);
+      return;
+    }
+    if (this.oHt != null)
+    {
+      this.oHt.setOneTimeVideoTextureUpdateCallback(this.zTL);
+      this.oHt.setVideoPath(paramString);
+    }
+    AppMethodBeat.o(98033);
   }
   
   public void c(final boolean paramBoolean, final float paramFloat)
   {
     AppMethodBeat.i(98027);
-    this.ocT.post(new Runnable()
+    this.oGm.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(98016);
-        ac.i("MicroMsg.OfflineVideoView", "%d switch video model isVideoPlay %b %f", new Object[] { Integer.valueOf(OfflineVideoView.this.hashCode()), Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat) });
+        AppMethodBeat.i(98015);
+        ad.i("MicroMsg.OfflineVideoView", "%d switch video model isVideoPlay %b %f", new Object[] { Integer.valueOf(OfflineVideoView.this.hashCode()), Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat) });
         View localView = (View)OfflineVideoView.a(OfflineVideoView.this);
         if (paramBoolean)
         {
@@ -261,8 +263,8 @@ public class OfflineVideoView
           OfflineVideoView.b(OfflineVideoView.this).setAlpha(paramFloat);
           if (paramFloat >= 1.0D)
           {
-            OfflineVideoView.this.qQT.setVisibility(8);
-            AppMethodBeat.o(98016);
+            OfflineVideoView.this.rAT.setVisibility(8);
+            AppMethodBeat.o(98015);
           }
         }
         else
@@ -270,29 +272,29 @@ public class OfflineVideoView
           localView.setVisibility(0);
           OfflineVideoView.b(OfflineVideoView.this).setVisibility(0);
           OfflineVideoView.b(OfflineVideoView.this).setAlpha(0.0F);
-          OfflineVideoView.this.qQT.setVisibility(0);
+          OfflineVideoView.this.rAT.setVisibility(0);
         }
-        AppMethodBeat.o(98016);
+        AppMethodBeat.o(98015);
       }
     });
     AppMethodBeat.o(98027);
   }
   
-  public final void crJ()
+  public final void cxv()
   {
     AppMethodBeat.i(98024);
-    if (this.yCl != null)
+    if (this.zTF != null)
     {
       PString localPString1 = new PString();
       PString localPString2 = new PString();
-      if (this.yCl.a(localPString1))
+      if (this.zTF.a(localPString1))
       {
-        if (!bs.isNullOrNil(localPString2.value)) {
-          avC(localPString2.value);
+        if (!bt.isNullOrNil(localPString2.value)) {
+          aAJ(localPString2.value);
         }
-        if (!bs.isNullOrNil(localPString1.value))
+        if (!bt.isNullOrNil(localPString1.value))
         {
-          ade(localPString1.value);
+          agT(localPString1.value);
           AppMethodBeat.o(98024);
         }
       }
@@ -304,46 +306,51 @@ public class OfflineVideoView
       AppMethodBeat.o(98024);
       return;
     }
-    ac.w("MicroMsg.OfflineVideoView", "%d toggle video but video callback is null", new Object[] { Integer.valueOf(hashCode()) });
+    ad.w("MicroMsg.OfflineVideoView", "%d toggle video but video callback is null", new Object[] { Integer.valueOf(hashCode()) });
     AppMethodBeat.o(98024);
   }
   
-  protected void dNR()
+  public final int eT(int paramInt1, int paramInt2)
+  {
+    return 0;
+  }
+  
+  protected void eae()
   {
     AppMethodBeat.i(179149);
-    this.oef.stopTimer();
+    this.oHz.stopTimer();
     AppMethodBeat.o(179149);
   }
   
-  public final void dNS()
+  public final void eaf()
   {
     AppMethodBeat.i(179151);
-    ac.i("MicroMsg.OfflineVideoView", "%d pause", new Object[] { Integer.valueOf(hashCode()) });
-    ac.i("MicroMsg.OfflineVideoView", "%d on pause %s ", new Object[] { Integer.valueOf(hashCode()), bs.eWi() });
-    this.yCn = false;
-    if (this.odZ.isPlaying())
+    ad.i("MicroMsg.OfflineVideoView", "%d pause", new Object[] { Integer.valueOf(hashCode()) });
+    ad.i("MicroMsg.OfflineVideoView", "%d on pause %s ", new Object[] { Integer.valueOf(hashCode()), bt.flS() });
+    this.zTH = false;
+    if (this.oHt.isPlaying())
     {
-      this.yCo = this.odZ.getCurrentPosition();
-      ac.i("MicroMsg.OfflineVideoView", "%d pause play", new Object[] { Integer.valueOf(hashCode()) });
-      this.odZ.pause();
+      this.zTI = this.oHt.getCurrentPosition();
+      ad.i("MicroMsg.OfflineVideoView", "%d pause play", new Object[] { Integer.valueOf(hashCode()) });
+      this.oHt.pause();
     }
     hideLoading();
-    dNR();
+    eae();
     AppMethodBeat.o(179151);
   }
   
-  public final void dNT()
+  public final void eag()
   {
     AppMethodBeat.i(179152);
-    ac.i("MicroMsg.OfflineVideoView", "%d start hasResumed[%b], curPos [%d], duration [%d], shouldSeek [%d]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.yCm), Integer.valueOf(this.odZ.getCurrentPosition()), Integer.valueOf(this.odZ.getDuration()), Integer.valueOf(this.yCo) });
-    this.yCn = true;
-    if (this.yCm) {
-      if (!bs.isNullOrNil(this.odZ.getVideoPath())) {
-        if (this.odZ.getCurrentPosition() >= this.odZ.getDuration())
+    ad.i("MicroMsg.OfflineVideoView", "%d start hasResumed[%b], curPos [%d], duration [%d], shouldSeek [%d]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.zTG), Integer.valueOf(this.oHt.getCurrentPosition()), Integer.valueOf(this.oHt.getDuration()), Integer.valueOf(this.zTI) });
+    this.zTH = true;
+    if (this.zTG) {
+      if (!bt.isNullOrNil(this.oHt.getVideoPath())) {
+        if (this.oHt.getCurrentPosition() >= this.oHt.getDuration())
         {
-          this.odZ.d(0.0D, true);
-          if (this.yCl != null) {
-            this.yCl.onStart(this.duration);
+          this.oHt.d(0.0D, true);
+          if (this.zTF != null) {
+            this.zTF.onStart(this.duration);
           }
         }
       }
@@ -353,7 +360,7 @@ public class OfflineVideoView
       startTimer();
       AppMethodBeat.o(179152);
       return;
-      this.odZ.start();
+      this.oHt.start();
       continue;
       onResume();
       continue;
@@ -361,12 +368,12 @@ public class OfflineVideoView
     }
   }
   
-  public final boolean dNU()
+  public final boolean eah()
   {
     AppMethodBeat.i(179154);
-    if ((this.odZ instanceof VideoPlayerTextureView))
+    if ((this.oHt instanceof VideoPlayerTextureView))
     {
-      if ((((VideoPlayerTextureView)this.odZ).eQo()) && (isPlaying()))
+      if ((((VideoPlayerTextureView)this.oHt).ffq()) && (isPlaying()))
       {
         AppMethodBeat.o(179154);
         return true;
@@ -379,19 +386,14 @@ public class OfflineVideoView
     return bool;
   }
   
-  public final void dZ(int paramInt1, int paramInt2) {}
-  
-  public final int eP(int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
+  public final void eb(int paramInt1, int paramInt2) {}
   
   public int getCurrentPosition()
   {
     AppMethodBeat.i(98035);
-    if (this.odZ != null)
+    if (this.oHt != null)
     {
-      int i = this.odZ.getCurrentPosition() / 1000;
+      int i = this.oHt.getCurrentPosition() / 1000;
       AppMethodBeat.o(98035);
       return i;
     }
@@ -402,9 +404,9 @@ public class OfflineVideoView
   public int getCurrentPositionMs()
   {
     AppMethodBeat.i(98036);
-    if (this.odZ != null)
+    if (this.oHt != null)
     {
-      int i = this.odZ.getCurrentPosition();
+      int i = this.oHt.getCurrentPosition();
       AppMethodBeat.o(98036);
       return i;
     }
@@ -415,9 +417,9 @@ public class OfflineVideoView
   public int getDurationMs()
   {
     AppMethodBeat.i(98037);
-    if (this.odZ != null)
+    if (this.oHt != null)
     {
-      int i = this.odZ.getDuration();
+      int i = this.oHt.getDuration();
       AppMethodBeat.o(98037);
       return i;
     }
@@ -427,23 +429,23 @@ public class OfflineVideoView
   
   public View getInnerVideoView()
   {
-    if ((this.odZ instanceof View)) {
-      return (View)this.odZ;
+    if ((this.oHt instanceof View)) {
+      return (View)this.oHt;
     }
     return null;
   }
   
   public int getTimerInterval()
   {
-    return this.yCp;
+    return this.zTJ;
   }
   
   public String getVideoPath()
   {
     AppMethodBeat.i(179155);
-    if (this.odZ != null)
+    if (this.oHt != null)
     {
-      String str = this.odZ.getVideoPath();
+      String str = this.oHt.getVideoPath();
       AppMethodBeat.o(179155);
       return str;
     }
@@ -454,9 +456,9 @@ public class OfflineVideoView
   public final boolean isPlaying()
   {
     AppMethodBeat.i(179153);
-    if (this.odZ != null)
+    if (this.oHt != null)
     {
-      boolean bool = this.odZ.isPlaying();
+      boolean bool = this.oHt.isPlaying();
       AppMethodBeat.o(179153);
       return bool;
     }
@@ -467,26 +469,26 @@ public class OfflineVideoView
   public final void onCompletion()
   {
     AppMethodBeat.i(98032);
-    ac.i("MicroMsg.OfflineVideoView", "%d on completion", new Object[] { Integer.valueOf(hashCode()) });
-    if (this.yCl == null)
+    ad.i("MicroMsg.OfflineVideoView", "%d on completion", new Object[] { Integer.valueOf(hashCode()) });
+    if (this.zTF == null)
     {
-      if ((d.lb(18)) || (!this.qUQ))
+      if ((d.lA(18)) || (!this.rFe))
       {
-        aw(0, true);
+        aB(0, true);
         AppMethodBeat.o(98032);
         return;
       }
-      if (this.odZ != null)
+      if (this.oHt != null)
       {
-        String str = this.odZ.getVideoPath();
-        this.odZ.stop();
-        ade(str);
+        String str = this.oHt.getVideoPath();
+        this.oHt.stop();
+        agT(str);
         AppMethodBeat.o(98032);
       }
     }
     else
     {
-      this.yCl.onCompletion();
+      this.zTF.onCompletion();
     }
     AppMethodBeat.o(98032);
   }
@@ -494,109 +496,110 @@ public class OfflineVideoView
   public final void onDestroy()
   {
     AppMethodBeat.i(179148);
-    ac.d("MicroMsg.OfflineVideoView", "%d on destroy %s", new Object[] { Integer.valueOf(hashCode()), bs.eWi() });
-    ac.i("MicroMsg.OfflineVideoView", "%d logic unInit", new Object[] { Integer.valueOf(hashCode()) });
-    this.ocT.removeCallbacksAndMessages(null);
-    dNR();
-    if (this.odZ != null) {
-      this.odZ.stop();
+    ad.d("MicroMsg.OfflineVideoView", "%d on destroy %s", new Object[] { Integer.valueOf(hashCode()), bt.flS() });
+    ad.i("MicroMsg.OfflineVideoView", "%d logic unInit", new Object[] { Integer.valueOf(hashCode()) });
+    this.oGm.removeCallbacksAndMessages(null);
+    eae();
+    if (this.oHt != null) {
+      this.oHt.stop();
     }
     AppMethodBeat.o(179148);
   }
   
   public final void onError(int paramInt1, int paramInt2)
   {
+    int i = 1;
     AppMethodBeat.i(98026);
-    ac.e("MicroMsg.OfflineVideoView", "%d on play video error what %d extra %d isMMVideoPlayer %b errorCount %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.qUQ), Integer.valueOf(this.bvh) });
-    this.bvh += 1;
-    final String str1 = this.odZ.getVideoPath();
-    this.odZ.stop();
-    this.qUP = true;
+    ad.e("MicroMsg.OfflineVideoView", "%d on play video error what %d extra %d isMMVideoPlayer %b errorCount %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.rFe), Integer.valueOf(this.bFv) });
+    this.bFv += 1;
+    final String str1 = this.oHt.getVideoPath();
+    this.oHt.stop();
+    this.rFd = true;
     c(false, 0.0F);
-    if (this.bvh <= 3)
+    if (this.bFv <= 3)
     {
-      this.ocT.postDelayed(new Runnable()
+      this.oGm.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(98014);
-          OfflineVideoView.this.ade(str1);
+          OfflineVideoView.this.agT(str1);
           AppMethodBeat.o(98014);
         }
       }, 200L);
       AppMethodBeat.o(98026);
       return;
     }
-    if (!bs.isNullOrNil(str1))
+    try
     {
-      ac.w("MicroMsg.OfflineVideoView", "%d start third player to play", new Object[] { Integer.valueOf(hashCode()) });
-      this.ocT.post(new OfflineVideoView.3(this, str1));
-      if (!this.qUQ) {
-        break label221;
+      long l;
+      if (!bt.isNullOrNil(str1)) {
+        if (com.tencent.mm.vfs.i.fv(str1))
+        {
+          l = com.tencent.mm.vfs.i.aYo(str1);
+          ad.i("MicroMsg.OfflineVideoView", "onError, fileLen=".concat(String.valueOf(l)));
+          paramInt1 = i;
+          if (!this.zTK) {
+            if (!this.rFe) {
+              break label272;
+            }
+          }
+        }
       }
-    }
-    label221:
-    for (str1 = "1";; str1 = "0")
-    {
-      String str2 = getClass().getName();
-      i.b(i.xNd, str1, paramInt1, paramInt2, str2);
-      AppMethodBeat.o(98026);
+      label272:
+      for (str1 = "1";; str1 = "0")
+      {
+        String str2 = getClass().getSimpleName();
+        com.tencent.mm.plugin.sns.data.i.b(com.tencent.mm.plugin.sns.data.i.zcW, str1, paramInt1, (int)l, str2);
+        this.zTK = true;
+        AppMethodBeat.o(98026);
+        return;
+        ad.e("MicroMsg.OfflineVideoView", "onError, file not exists");
+        l = -1L;
+        paramInt1 = 2;
+        break;
+        ad.e("MicroMsg.OfflineVideoView", "onError, filepath==null");
+        l = -1L;
+        paramInt1 = 3;
+        break;
+      }
       return;
+    }
+    catch (Throwable localThrowable)
+    {
+      ad.e("MicroMsg.OfflineVideoView", "onError, exp=" + localThrowable.toString());
+      AppMethodBeat.o(98026);
     }
   }
   
   public void pause()
   {
     AppMethodBeat.i(179146);
-    ac.i("MicroMsg.OfflineVideoView", "%d on pause %s ", new Object[] { Integer.valueOf(hashCode()), bs.eWi() });
-    if (this.odZ.isPlaying())
+    ad.i("MicroMsg.OfflineVideoView", "%d on pause %s ", new Object[] { Integer.valueOf(hashCode()), bt.flS() });
+    if (this.oHt.isPlaying())
     {
-      this.yCo = this.odZ.getCurrentPosition();
-      ac.i("MicroMsg.OfflineVideoView", "%d pause play", new Object[] { Integer.valueOf(hashCode()) });
-      this.odZ.pause();
+      this.zTI = this.oHt.getCurrentPosition();
+      ad.i("MicroMsg.OfflineVideoView", "%d pause play", new Object[] { Integer.valueOf(hashCode()) });
+      this.oHt.pause();
     }
     AppMethodBeat.o(179146);
-  }
-  
-  public void rB()
-  {
-    AppMethodBeat.i(98028);
-    c(true, 0.0F);
-    this.qUP = false;
-    hideLoading();
-    this.duration = (this.odZ.getDuration() / 1000);
-    ac.i("MicroMsg.OfflineVideoView", "%d on prepared. shouldPlayWhenPrepared [%b] shouldSeekTimeWhenPrepared[%d]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.yCn), Integer.valueOf(this.yCo) });
-    if (this.yCn)
-    {
-      if (this.yCo <= 0) {
-        this.odZ.start();
-      }
-      for (;;)
-      {
-        startTimer();
-        if (this.yCl != null) {
-          this.yCl.onStart(this.duration);
-        }
-        this.yCo = -1;
-        AppMethodBeat.o(98028);
-        return;
-        aw(this.yCo, true);
-      }
-    }
-    if (this.yCo > 0) {}
-    for (int i = this.yCo;; i = 0)
-    {
-      aw(i, false);
-      break;
-    }
   }
   
   public void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(98022);
-    this.ftN = paramBoolean;
-    this.odZ.setMute(this.ftN);
+    this.fMP = paramBoolean;
+    this.oHt.setMute(this.fMP);
     AppMethodBeat.o(98022);
+  }
+  
+  public void setOnSeekCompleteCallback(h.c paramc)
+  {
+    AppMethodBeat.i(198187);
+    if (this.oHt != null) {
+      this.oHt.setOnSeekCompleteCallback(paramc);
+    }
+    AppMethodBeat.o(198187);
   }
   
   public void setTimerInterval(int paramInt)
@@ -605,27 +608,27 @@ public class OfflineVideoView
     if (paramInt < 200) {
       i = 200;
     }
-    this.yCp = i;
+    this.zTJ = i;
   }
   
   public void setVideoCallback(a parama)
   {
-    this.yCl = parama;
+    this.zTF = parama;
   }
   
   protected void showLoading()
   {
     AppMethodBeat.i(98029);
-    this.ocT.post(new Runnable()
+    this.oGm.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(98017);
-        ac.i("MicroMsg.OfflineVideoView", "%d show loading. downloadMode %d", new Object[] { Integer.valueOf(OfflineVideoView.this.hashCode()), Integer.valueOf(OfflineVideoView.this.hashCode()) });
+        AppMethodBeat.i(98016);
+        ad.i("MicroMsg.OfflineVideoView", "%d show loading. downloadMode %d", new Object[] { Integer.valueOf(OfflineVideoView.this.hashCode()), Integer.valueOf(OfflineVideoView.this.hashCode()) });
         if ((OfflineVideoView.c(OfflineVideoView.this) != null) && (OfflineVideoView.c(OfflineVideoView.this).getVisibility() != 0)) {
           OfflineVideoView.c(OfflineVideoView.this).setVisibility(0);
         }
-        AppMethodBeat.o(98017);
+        AppMethodBeat.o(98016);
       }
     });
     AppMethodBeat.o(98029);
@@ -634,15 +637,15 @@ public class OfflineVideoView
   public void start()
   {
     AppMethodBeat.i(179147);
-    ac.i("MicroMsg.OfflineVideoView", "%d start curPos [%d], duration [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.odZ.getCurrentPosition()), Integer.valueOf(this.odZ.getDuration()) });
-    if (!bs.isNullOrNil(this.odZ.getVideoPath()))
+    ad.i("MicroMsg.OfflineVideoView", "%d start curPos [%d], duration [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.oHt.getCurrentPosition()), Integer.valueOf(this.oHt.getDuration()) });
+    if (!bt.isNullOrNil(this.oHt.getVideoPath()))
     {
-      if (this.odZ.getCurrentPosition() < this.odZ.getDuration()) {
+      if (this.oHt.getCurrentPosition() < this.oHt.getDuration()) {
         break label136;
       }
-      this.odZ.d(0.0D, true);
-      if (this.yCl != null) {
-        this.yCl.onStart(this.duration);
+      this.oHt.d(0.0D, true);
+      if (this.zTF != null) {
+        this.zTF.onStart(this.duration);
       }
     }
     for (;;)
@@ -651,17 +654,50 @@ public class OfflineVideoView
       AppMethodBeat.o(179147);
       return;
       label136:
-      this.odZ.start();
+      this.oHt.start();
     }
   }
   
   public void startTimer()
   {
     AppMethodBeat.i(98031);
-    au localau = this.oef;
-    long l = this.yCp;
-    localau.au(l, l);
+    av localav = this.oHz;
+    long l = this.zTJ;
+    localav.az(l, l);
     AppMethodBeat.o(98031);
+  }
+  
+  public void ta()
+  {
+    AppMethodBeat.i(98028);
+    c(true, 0.0F);
+    this.rFd = false;
+    hideLoading();
+    this.duration = (this.oHt.getDuration() / 1000);
+    ad.i("MicroMsg.OfflineVideoView", "%d on prepared. shouldPlayWhenPrepared [%b] shouldSeekTimeWhenPrepared[%d]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.zTH), Integer.valueOf(this.zTI) });
+    if (this.zTH)
+    {
+      if (this.zTI <= 0) {
+        this.oHt.start();
+      }
+      for (;;)
+      {
+        startTimer();
+        if (this.zTF != null) {
+          this.zTF.onStart(this.duration);
+        }
+        this.zTI = -1;
+        AppMethodBeat.o(98028);
+        return;
+        aB(this.zTI, true);
+      }
+    }
+    if (this.zTI > 0) {}
+    for (int i = this.zTI;; i = 0)
+    {
+      aB(i, false);
+      break;
+    }
   }
   
   public static abstract interface a
@@ -672,7 +708,7 @@ public class OfflineVideoView
     
     public abstract void onStart(int paramInt);
     
-    public abstract void sQ(int paramInt);
+    public abstract void tt(int paramInt);
   }
 }
 

@@ -30,14 +30,14 @@ import com.tencent.mm.plugin.wallet.balance.model.lqt.x;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.x.c;
 import com.tencent.mm.plugin.wallet_core.model.m;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.bup;
-import com.tencent.mm.protocal.protobuf.cfq;
-import com.tencent.mm.protocal.protobuf.cfr;
-import com.tencent.mm.protocal.protobuf.cje;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.bze;
+import com.tencent.mm.protocal.protobuf.ckp;
+import com.tencent.mm.protocal.protobuf.ckq;
+import com.tencent.mm.protocal.protobuf.coe;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.vending.g.d.a;
 import com.tencent.mm.wallet_core.c.ah;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
@@ -53,38 +53,38 @@ import java.util.List;
 public class WalletLqtPlanDetailUI
   extends WalletLqtBasePresenterUI
 {
-  private x BbJ;
-  private cfq BbQ;
-  private LinearLayout BcA;
-  private LinearLayout BcB;
-  private View BcC;
-  private View BcD;
-  private int BcE;
-  private int BcF;
-  private boolean BcG;
-  private String Bcq;
-  private List<cfr> Bcr;
-  private a Bcs;
-  private TextView Bct;
-  private CdnImageView Bcu;
-  private TextView Bcv;
-  private TextView Bcw;
-  private TextView Bcx;
-  private ListView Bcy;
-  private LinearLayout Bcz;
-  private boolean iBV;
-  private LinearLayout nSN;
-  private WalletTextView oAh;
+  private x CBX;
+  private String CCE;
+  private List<ckq> CCF;
+  private a CCG;
+  private TextView CCH;
+  private CdnImageView CCI;
+  private TextView CCJ;
+  private TextView CCK;
+  private TextView CCL;
+  private ListView CCM;
+  private LinearLayout CCN;
+  private LinearLayout CCO;
+  private LinearLayout CCP;
+  private View CCQ;
+  private View CCR;
+  private int CCS;
+  private int CCT;
+  private boolean CCU;
+  private ckp CCe;
+  private boolean iVf;
+  private LinearLayout owi;
+  private WalletTextView pdC;
   
   public WalletLqtPlanDetailUI()
   {
     AppMethodBeat.i(68915);
-    this.BbJ = ((x)am(x.class));
-    this.Bcr = new ArrayList();
+    this.CBX = ((x)am(x.class));
+    this.CCF = new ArrayList();
     AppMethodBeat.o(68915);
   }
   
-  private static String ayO(String paramString)
+  private static String aDW(String paramString)
   {
     AppMethodBeat.i(68919);
     if (!paramString.contains("."))
@@ -97,18 +97,18 @@ public class WalletLqtPlanDetailUI
     return paramString;
   }
   
-  private void iu(int paramInt1, int paramInt2)
+  private void iH(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(68918);
     final Dialog localDialog = g.c(getContext(), false, null);
-    this.BbJ.AXB.it(paramInt1, paramInt2).f(new com.tencent.mm.vending.c.a() {}).a(new d.a()
+    this.CBX.CxK.iG(paramInt1, paramInt2).f(new com.tencent.mm.vending.c.a() {}).a(new d.a()
     {
-      public final void cc(Object paramAnonymousObject)
+      public final void ce(Object paramAnonymousObject)
       {
         AppMethodBeat.i(68904);
         localDialog.dismiss();
         if ((paramAnonymousObject instanceof m)) {
-          ((m)paramAnonymousObject).B(WalletLqtPlanDetailUI.this.getContext(), false);
+          ((m)paramAnonymousObject).D(WalletLqtPlanDetailUI.this.getContext(), false);
         }
         AppMethodBeat.o(68904);
       }
@@ -124,14 +124,14 @@ public class WalletLqtPlanDetailUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(68917);
-    ac.i("MicroMsg.WalletLqtPlanDetailUI", "activity result: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.WalletLqtPlanDetailUI", "activity result: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt2 == -1)
     {
       if (paramIntent == null) {
         break label86;
       }
       paramIntent.putExtra("oper_type", paramInt1);
-      paramIntent.putExtra("plan_id", this.BcE);
+      paramIntent.putExtra("plan_id", this.CCS);
       setResult(-1, paramIntent);
     }
     for (;;)
@@ -160,24 +160,24 @@ public class WalletLqtPlanDetailUI
       if (localObject == null)
       {
         paramBundle = null;
-        this.BbQ = paramBundle;
+        this.CCe = paramBundle;
         label50:
         setMMTitle("");
         setActionbarColor(getResources().getColor(2131101179));
         hideActionbarLine();
-        paramBundle = this.BbQ;
-        if (this.BbQ != null) {
+        paramBundle = this.CCe;
+        if (this.CCe != null) {
           addIconOptionMenu(0, 2131689493, new MenuItem.OnMenuItemClickListener()
           {
             public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
             {
               AppMethodBeat.i(68906);
-              if (paramBundle.FtZ != null)
+              if (paramBundle.Hee != null)
               {
-                if ((!paramBundle.FtZ.AWz) || (bs.isNullOrNil(paramBundle.FtZ.AWA))) {
+                if ((!paramBundle.Hee.CwI) || (bt.isNullOrNil(paramBundle.Hee.CwJ))) {
                   break label91;
                 }
-                h.a(WalletLqtPlanDetailUI.this.getContext(), paramBundle.FtZ.AWA, "", WalletLqtPlanDetailUI.this.getString(2131755793), new DialogInterface.OnClickListener()
+                h.a(WalletLqtPlanDetailUI.this.getContext(), paramBundle.Hee.CwJ, "", WalletLqtPlanDetailUI.this.getString(2131755793), new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
                 });
@@ -187,60 +187,60 @@ public class WalletLqtPlanDetailUI
                 AppMethodBeat.o(68906);
                 return false;
                 label91:
-                WalletLqtPlanDetailUI.a(WalletLqtPlanDetailUI.this, paramBundle.FtZ.Fky, paramBundle);
+                WalletLqtPlanDetailUI.a(WalletLqtPlanDetailUI.this, paramBundle.Hee.GUg, paramBundle);
               }
             }
           });
         }
-        paramBundle = this.BbQ;
+        paramBundle = this.CCe;
         if (paramBundle != null)
         {
-          this.nSN = ((LinearLayout)View.inflate(getBaseContext(), 2131494616, null));
-          this.oAh = ((WalletTextView)this.nSN.findViewById(2131302448));
-          this.BcA = ((LinearLayout)this.nSN.findViewById(2131305190));
-          this.BcB = ((LinearLayout)this.nSN.findViewById(2131305820));
-          this.Bct = ((TextView)this.nSN.findViewById(2131305818));
-          this.Bcu = ((CdnImageView)this.nSN.findViewById(2131297120));
-          this.Bcv = ((TextView)this.nSN.findViewById(2131297909));
-          this.Bcw = ((TextView)this.nSN.findViewById(2131305814));
-          this.Bcz = ((LinearLayout)this.nSN.findViewById(2131305815));
-          this.BcD = this.nSN.findViewById(2131304660);
-          this.Bcx = ((TextView)this.nSN.findViewById(2131305639));
-          this.Bcy = ((ListView)findViewById(2131299049));
-          this.BcC = findViewById(2131301662);
-          this.Bcs = new a((byte)0);
-          this.Bcy.setAdapter(this.Bcs);
-          this.Bcy.addHeaderView(this.nSN);
-          this.oAh.setPrefix(ah.fAw());
-          localObject = e.a(paramBundle.dBN, "100", 2, RoundingMode.HALF_UP);
+          this.owi = ((LinearLayout)View.inflate(getBaseContext(), 2131494616, null));
+          this.pdC = ((WalletTextView)this.owi.findViewById(2131302448));
+          this.CCO = ((LinearLayout)this.owi.findViewById(2131305190));
+          this.CCP = ((LinearLayout)this.owi.findViewById(2131305820));
+          this.CCH = ((TextView)this.owi.findViewById(2131305818));
+          this.CCI = ((CdnImageView)this.owi.findViewById(2131297120));
+          this.CCJ = ((TextView)this.owi.findViewById(2131297909));
+          this.CCK = ((TextView)this.owi.findViewById(2131305814));
+          this.CCN = ((LinearLayout)this.owi.findViewById(2131305815));
+          this.CCR = this.owi.findViewById(2131304660);
+          this.CCL = ((TextView)this.owi.findViewById(2131305639));
+          this.CCM = ((ListView)findViewById(2131299049));
+          this.CCQ = findViewById(2131301662);
+          this.CCG = new a((byte)0);
+          this.CCM.setAdapter(this.CCG);
+          this.CCM.addHeaderView(this.owi);
+          this.pdC.setPrefix(ah.fRG());
+          localObject = e.b(paramBundle.dOa, "100", 2, RoundingMode.HALF_UP);
           if (((BigDecimal)localObject).intValue() != ((BigDecimal)localObject).doubleValue()) {
             break label862;
           }
-          this.oAh.setText(ayO(((BigDecimal)localObject).intValue()));
+          this.pdC.setText(aDW(((BigDecimal)localObject).intValue()));
           label435:
-          this.Bct.setText(getString(2131765429, new Object[] { paramBundle.fsg }));
-          localObject = u.a(new com.tencent.mm.plugin.wallet_core.ui.view.c(paramBundle.wEw));
+          this.CCH.setText(getString(2131765429, new Object[] { paramBundle.fKG }));
+          localObject = u.a(new com.tencent.mm.plugin.wallet_core.ui.view.c(paramBundle.xSd));
           if (localObject != null) {
-            this.Bcu.setImageBitmap((Bitmap)localObject);
+            this.CCI.setImageBitmap((Bitmap)localObject);
           }
-          this.Bcv.setText(String.format("%s %s（%s）", new Object[] { paramBundle.tGS, paramBundle.AWO, paramBundle.vxk }));
-          localObject = (LinearLayout.LayoutParams)this.BcB.getLayoutParams();
+          this.CCJ.setText(String.format("%s %s（%s）", new Object[] { paramBundle.uJF, paramBundle.CwX, paramBundle.wCE }));
+          localObject = (LinearLayout.LayoutParams)this.CCP.getLayoutParams();
           if (paramBundle.state == 1) {
             break label879;
           }
-          this.BcA.setVisibility(0);
+          this.CCO.setVisibility(0);
           ((LinearLayout.LayoutParams)localObject).setMargins(0, com.tencent.mm.cc.a.fromDPToPix(getContext(), 8), 0, 0);
-          ac.i("MicroMsg.WalletLqtPlanDetailUI", "params.topMargin:%s", new Object[] { Integer.valueOf(((LinearLayout.LayoutParams)localObject).topMargin) });
+          ad.i("MicroMsg.WalletLqtPlanDetailUI", "params.topMargin:%s", new Object[] { Integer.valueOf(((LinearLayout.LayoutParams)localObject).topMargin) });
         }
       }
     }
     for (;;)
     {
-      this.BcB.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.BcF = 0;
-      this.BcG = true;
-      iu(paramBundle.AWN, 0);
-      this.Bcy.setOnScrollListener(new AbsListView.OnScrollListener()
+      this.CCP.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.CCT = 0;
+      this.CCU = true;
+      iH(paramBundle.CwW, 0);
+      this.CCM.setOnScrollListener(new AbsListView.OnScrollListener()
       {
         public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
         
@@ -249,50 +249,50 @@ public class WalletLqtPlanDetailUI
           AppMethodBeat.i(68903);
           if ((paramAnonymousInt == 0) && (paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1))
           {
-            ac.i("MicroMsg.WalletLqtPlanDetailUI", "doPlanOrderList more");
+            ad.i("MicroMsg.WalletLqtPlanDetailUI", "doPlanOrderList more");
             if (!WalletLqtPlanDetailUI.a(WalletLqtPlanDetailUI.this)) {
-              WalletLqtPlanDetailUI.a(WalletLqtPlanDetailUI.this, paramBundle.AWN, WalletLqtPlanDetailUI.b(WalletLqtPlanDetailUI.this));
+              WalletLqtPlanDetailUI.a(WalletLqtPlanDetailUI.this, paramBundle.CwW, WalletLqtPlanDetailUI.b(WalletLqtPlanDetailUI.this));
             }
           }
           AppMethodBeat.o(68903);
         }
       });
-      this.BcD.setBackgroundColor(getContext().getResources().getColor(2131099648));
+      this.CCR.setBackgroundColor(getContext().getResources().getColor(2131099648));
       AppMethodBeat.o(68916);
       return;
-      paramBundle = new cfq();
-      paramBundle.AWN = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).AWN;
-      paramBundle.dBN = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).dBN;
-      paramBundle.fsg = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).fsg;
-      paramBundle.wEw = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).wEw;
-      paramBundle.tGS = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).tGS;
-      paramBundle.cZz = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).cZz;
-      paramBundle.vxk = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).vxk;
+      paramBundle = new ckp();
+      paramBundle.CwW = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).CwW;
+      paramBundle.dOa = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).dOa;
+      paramBundle.fKG = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).fKG;
+      paramBundle.xSd = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).xSd;
+      paramBundle.uJF = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).uJF;
+      paramBundle.dkR = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).dkR;
+      paramBundle.wCE = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).wCE;
       paramBundle.state = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).state;
-      paramBundle.AWO = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).AWO;
-      if (((CgiLqtPlanOrderList.PlanItemParcel)localObject).AWQ != null)
+      paramBundle.CwX = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).CwX;
+      if (((CgiLqtPlanOrderList.PlanItemParcel)localObject).CwZ != null)
       {
-        paramBundle.FtZ = new bup();
-        paramBundle.FtZ.AWz = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).AWQ.AWz;
-        paramBundle.FtZ.AWA = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).AWQ.AWA;
-        localObject = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).AWQ.AWB.iterator();
+        paramBundle.Hee = new bze();
+        paramBundle.Hee.CwI = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).CwZ.CwI;
+        paramBundle.Hee.CwJ = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).CwZ.CwJ;
+        localObject = ((CgiLqtPlanOrderList.PlanItemParcel)localObject).CwZ.CwK.iterator();
         while (((Iterator)localObject).hasNext())
         {
           Integer localInteger = (Integer)((Iterator)localObject).next();
-          paramBundle.FtZ.Fky.add(localInteger);
+          paramBundle.Hee.GUg.add(localInteger);
         }
       }
       break;
-      ac.i("MicroMsg.WalletLqtPlanDetailUI", "parcelable no instanceof CgiLqtPlanOrderList.PlanItemParcel");
+      ad.i("MicroMsg.WalletLqtPlanDetailUI", "parcelable no instanceof CgiLqtPlanOrderList.PlanItemParcel");
       finish();
       break label50;
       label862:
-      this.oAh.setText(ayO(((BigDecimal)localObject).toString()));
+      this.pdC.setText(aDW(((BigDecimal)localObject).toString()));
       break label435;
       label879:
-      this.BcA.setVisibility(8);
+      this.CCO.setVisibility(8);
       ((LinearLayout.LayoutParams)localObject).setMargins(0, com.tencent.mm.cc.a.fromDPToPix(getContext(), 16), 0, 0);
-      ac.i("MicroMsg.WalletLqtPlanDetailUI", "params.topMargin:%s", new Object[] { Integer.valueOf(((LinearLayout.LayoutParams)localObject).topMargin) });
+      ad.i("MicroMsg.WalletLqtPlanDetailUI", "params.topMargin:%s", new Object[] { Integer.valueOf(((LinearLayout.LayoutParams)localObject).topMargin) });
     }
   }
   
@@ -307,12 +307,12 @@ public class WalletLqtPlanDetailUI
   {
     private a() {}
     
-    private cfr Tq(int paramInt)
+    private ckq Vi(int paramInt)
     {
       AppMethodBeat.i(68911);
-      cfr localcfr = (cfr)WalletLqtPlanDetailUI.c(WalletLqtPlanDetailUI.this).get(paramInt);
+      ckq localckq = (ckq)WalletLqtPlanDetailUI.c(WalletLqtPlanDetailUI.this).get(paramInt);
       AppMethodBeat.o(68911);
-      return localcfr;
+      return localckq;
     }
     
     public final int getCount()
@@ -337,36 +337,36 @@ public class WalletLqtPlanDetailUI
         localView = LayoutInflater.from(WalletLqtPlanDetailUI.this.getContext()).inflate(2131494617, paramViewGroup, false);
         localView.setTag(new WalletLqtPlanDetailUI.b(WalletLqtPlanDetailUI.this, localView));
       }
-      paramView = Tq(paramInt);
+      paramView = Vi(paramInt);
       paramViewGroup = (WalletLqtPlanDetailUI.b)localView.getTag();
-      paramViewGroup.BcP.setText(paramView.xpb);
+      paramViewGroup.CDd.setText(paramView.xbO);
       if (paramView.state == 2)
       {
-        paramViewGroup.BcQ.setText(paramViewGroup.BcI.getString(2131765485, new Object[] { WalletLqtPlanDetailUI.ayP(new StringBuilder().append(paramView.dBN).toString()) }));
-        paramViewGroup.BcQ.setTextColor(paramViewGroup.BcI.getResources().getColor(2131100711));
+        paramViewGroup.CDe.setText(paramViewGroup.CCW.getString(2131765485, new Object[] { WalletLqtPlanDetailUI.aDX(new StringBuilder().append(paramView.dOa).toString()) }));
+        paramViewGroup.CDe.setTextColor(paramViewGroup.CCW.getResources().getColor(2131100711));
       }
       for (;;)
       {
         AppMethodBeat.o(68912);
         return localView;
-        paramViewGroup.BcQ.setText(paramView.dlQ);
-        paramViewGroup.BcQ.setTextColor(paramViewGroup.BcI.getResources().getColor(2131101089));
+        paramViewGroup.CDe.setText(paramView.dxD);
+        paramViewGroup.CDe.setTextColor(paramViewGroup.CCW.getResources().getColor(2131101089));
       }
     }
   }
   
   public final class b
   {
-    public TextView BcP;
-    public TextView BcQ;
-    public View khe;
+    public TextView CDd;
+    public TextView CDe;
+    public View kBS;
     
     public b(View paramView)
     {
       AppMethodBeat.i(68914);
-      this.khe = paramView;
-      this.BcP = ((TextView)paramView.findViewById(2131298932));
-      this.BcQ = ((TextView)paramView.findViewById(2131302447));
+      this.kBS = paramView;
+      this.CDd = ((TextView)paramView.findViewById(2131298932));
+      this.CDe = ((TextView)paramView.findViewById(2131302447));
       AppMethodBeat.o(68914);
     }
   }

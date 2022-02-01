@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.af.a.a;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.ListViewInScrollView;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.d.a;
@@ -17,10 +19,10 @@ import java.util.HashMap;
 public final class DialogPreference
   extends Preference
 {
-  private Preference.a HDT;
-  private final d HDV;
-  a HDW;
-  private com.tencent.mm.ui.widget.a.d iJj;
+  private Preference.a JrJ;
+  private final d JrL;
+  a JrM;
+  private com.tencent.mm.ui.widget.a.d jcs;
   
   public DialogPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,32 +33,32 @@ public final class DialogPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142532);
-    this.HDV = new d(paramContext);
+    this.JrL = new d(paramContext);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ChoicePreference, paramInt, 0);
     paramInt = paramAttributeSet.getResourceId(0, -1);
     if (paramInt != -1) {
-      this.HDV.HDR = paramContext.getResources().getStringArray(paramInt);
+      this.JrL.JrH = paramContext.getResources().getStringArray(paramInt);
     }
-    this.HDV.HDS = paramAttributeSet.getTextArray(1);
+    this.JrL.JrI = paramAttributeSet.getTextArray(1);
     paramAttributeSet.recycle();
-    this.HDV.fji();
+    this.JrL.fzx();
     AppMethodBeat.o(142532);
   }
   
   public final void a(Preference.a parama)
   {
-    this.HDT = parama;
+    this.JrJ = parama;
   }
   
   public final String getValue()
   {
-    return this.HDV.value;
+    return this.JrL.value;
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(142534);
-    c localc = (c)this.HDV.values.get(this.HDV.value);
+    c localc = (c)this.JrL.values.get(this.JrL.value);
     if (localc != null) {
       setSummary(localc.text);
     }
@@ -67,15 +69,15 @@ public final class DialogPreference
   public final void setValue(String paramString)
   {
     AppMethodBeat.i(142533);
-    this.HDV.value = paramString;
-    paramString = (c)this.HDV.values.get(paramString);
+    this.JrL.value = paramString;
+    paramString = (c)this.JrL.values.get(paramString);
     if (paramString == null)
     {
-      this.HDV.vGl = -1;
+      this.JrL.wNr = -1;
       AppMethodBeat.o(142533);
       return;
     }
-    this.HDV.vGl = paramString.id;
+    this.JrL.wNr = paramString.id;
     AppMethodBeat.o(142533);
   }
   
@@ -88,32 +90,39 @@ public final class DialogPreference
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(142531);
+        b localb = new b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        a.b("com/tencent/mm/ui/base/preference/DialogPreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
         if (DialogPreference.a(DialogPreference.this) != null) {
           DialogPreference.a(DialogPreference.this).dismiss();
         }
-        DialogPreference.this.setValue((String)DialogPreference.b(DialogPreference.this).HDS[paramAnonymousInt]);
+        DialogPreference.this.setValue((String)DialogPreference.b(DialogPreference.this).JrI[paramAnonymousInt]);
         if (DialogPreference.c(DialogPreference.this) != null) {
-          DialogPreference.c(DialogPreference.this).fjj();
+          DialogPreference.c(DialogPreference.this).fzy();
         }
         if (DialogPreference.d(DialogPreference.this) != null) {
           DialogPreference.d(DialogPreference.this).a(DialogPreference.this, DialogPreference.this.getValue());
         }
+        a.a(this, "com/tencent/mm/ui/base/preference/DialogPreference$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(142531);
       }
     });
-    localListViewInScrollView.setAdapter(this.HDV);
+    localListViewInScrollView.setAdapter(this.JrL);
     d.a locala = new d.a(this.mContext);
-    locala.aRH(getTitle().toString());
-    locala.gH(localListViewInScrollView);
-    this.iJj = locala.fvp();
-    this.iJj.show();
-    h.a(this.mContext, this.iJj);
+    locala.aXF(getTitle().toString());
+    locala.gY(localListViewInScrollView);
+    this.jcs = locala.fMb();
+    this.jcs.show();
+    h.a(this.mContext, this.jcs);
     AppMethodBeat.o(142535);
   }
   
   public static abstract interface a
   {
-    public abstract void fjj();
+    public abstract void fzy();
   }
 }
 

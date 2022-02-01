@@ -1,139 +1,129 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ce;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import com.tencent.mm.plugin.finder.report.h;
+import com.tencent.mm.plugin.finder.spam.a;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.ab;
+import com.tencent.mm.plugin.finder.upload.action.g;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.protocal.protobuf.aqy;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;", "Lcom/tencent/mm/autogen/table/BaseFinderMediaCacheInfo;", "()V", "value", "", "cacheSize", "getCacheSize", "()J", "setCacheSize", "(J)V", "", "filePath", "getFilePath", "()Ljava/lang/String;", "setFilePath", "(Ljava/lang/String;)V", "", "firstPlay", "getFirstPlay", "()I", "setFirstPlay", "(I)V", "", "isMoovReady", "()Z", "setMoovReady", "(Z)V", "state", "getState", "setState", "totalSize", "getTotalSize", "setTotalSize", "url", "getUrl", "setUrl", "equals", "other", "", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getPercent", "hashCode", "isAllCompleted", "isDownloadFinish", "isDownloadFinishAndCheckFile", "path", "isPreLoadCompleted", "reset", "", "toString", "Companion", "State", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/model/FinderLikeLogic;", "", "()V", "TAG", "", "likeComment", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "feedId", "", "objectNonceId", "comment", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "like", "", "scene1", "", "isPoster", "likeFeed", "likeAction", "finderObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isPrivate", "scene", "isShowRecWording", "preIsPrivate", "fromPrivateAccount", "plugin-finder_release"})
 public final class w
-  extends ce
 {
-  private static final c.a info;
-  public static final w.a rvg;
+  private static final String TAG = "Finder.FinderLikeLogic";
+  public static final w skq;
   
   static
   {
-    AppMethodBeat.i(166400);
-    rvg = new w.a((byte)0);
-    info = ce.Th();
-    AppMethodBeat.o(166400);
+    AppMethodBeat.i(166395);
+    skq = new w();
+    TAG = "Finder.FinderLikeLogic";
+    AppMethodBeat.o(166395);
   }
   
-  public final int adF(String paramString)
+  public static void a(aqy paramaqy, int paramInt1, FinderItem paramFinderItem, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
-    AppMethodBeat.i(202569);
-    k.h(paramString, "path");
-    if ((this.field_totalSize > 0L) && (this.field_cacheSize == this.field_totalSize)) {}
-    for (int i = 1; i == 0; i = 0)
+    AppMethodBeat.i(202963);
+    p.h(paramaqy, "contextObj");
+    p.h(paramFinderItem, "finderObject");
+    Object localObject = a.suA;
+    if (a.aip("like"))
     {
-      AppMethodBeat.o(202569);
-      return 1;
+      AppMethodBeat.o(202963);
+      return;
     }
-    if (!i.eA(paramString))
+    localObject = e.ygI;
+    long l;
+    int i;
+    if (paramBoolean1)
     {
-      AppMethodBeat.o(202569);
-      return 2;
+      l = 0L;
+      ((e)localObject).idkeyStat(1278L, l, 1L, false);
+      if (!paramBoolean1) {
+        break label137;
+      }
+      i = 2;
+      label67:
+      if ((!paramBoolean2) && (!paramBoolean4)) {
+        break label143;
+      }
     }
-    AppMethodBeat.o(202569);
-    return 0;
-  }
-  
-  public final boolean cwG()
-  {
-    return (this.field_totalSize > 0L) && (this.field_cacheSize > 0L) && (this.field_state == 3);
-  }
-  
-  public final boolean cwH()
-  {
-    return (this.field_totalSize > 0L) && (this.field_cacheSize > 0L) && (this.field_state >= 2);
-  }
-  
-  public final int cwI()
-  {
-    if (this.field_totalSize <= 0L) {
-      return 0;
-    }
-    return (int)((float)this.field_cacheSize / (float)this.field_totalSize * 100.0F);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(202571);
-    if ((paramObject instanceof w))
+    label137:
+    label143:
+    for (int j = 6;; j = 1)
     {
-      boolean bool = k.g(this.field_mediaId, ((w)paramObject).field_mediaId);
-      AppMethodBeat.o(202571);
-      return bool;
+      localObject = h.soM;
+      h.a(paramaqy, paramFinderItem.getId(), j, i, paramInt1, "", paramInt2, paramBoolean3, paramBoolean5);
+      localObject = g.sKi;
+      g.a(g.cKV(), paramFinderItem, paramBoolean1, paramBoolean2, paramInt2, paramaqy);
+      AppMethodBeat.o(202963);
+      return;
+      l = 1L;
+      break;
+      i = 1;
+      break label67;
     }
-    AppMethodBeat.o(202571);
-    return false;
   }
   
-  public final c.a getDBInfo()
+  public static void a(aqy paramaqy, long paramLong, String paramString, ab paramab, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    AppMethodBeat.i(166398);
-    c.a locala = info;
-    k.g(locala, "info");
-    AppMethodBeat.o(166398);
-    return locala;
-  }
-  
-  public final String getFilePath()
-  {
-    String str2 = this.field_filePath;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
+    AppMethodBeat.i(202964);
+    p.h(paramaqy, "contextObj");
+    p.h(paramString, "objectNonceId");
+    p.h(paramab, "comment");
+    Object localObject = a.suA;
+    if (a.aip("like"))
+    {
+      AppMethodBeat.o(202964);
+      return;
     }
-    return str1;
-  }
-  
-  public final String getUrl()
-  {
-    String str2 = this.field_url;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
+    localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
+    int i;
+    long l;
+    if (((Number)com.tencent.mm.plugin.finder.storage.b.cHb().value()).intValue() != 1)
+    {
+      localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
+      if (com.tencent.mm.plugin.finder.storage.b.cGm() == 1)
+      {
+        i = 1;
+        ad.i(TAG, "likeComment scene: " + i + ", scene1:" + paramInt);
+        localObject = e.ygI;
+        if (!paramBoolean1) {
+          break label203;
+        }
+        l = 2L;
+        label127:
+        ((e)localObject).idkeyStat(1278L, l, 1L, false);
+        if (!paramBoolean1) {
+          break label211;
+        }
+      }
     }
-    return str1;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(202570);
-    int i = this.field_mediaId.hashCode();
-    AppMethodBeat.o(202570);
-    return i;
-  }
-  
-  public final void reset()
-  {
-    this.field_cacheSize = 0L;
-    this.field_totalSize = 0L;
-    this.field_hasPlayed = false;
-    this.field_reqFormat = 0;
-    this.field_fileFormat = "";
-    this.field_state = 0;
-    this.field_moovReady = false;
-    this.field_audioBitrate = 0;
-    this.field_videoBitrate = 0;
-    this.field_frameRate = 0;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(166399);
-    String str = this.field_mediaId + ", " + this.field_fileFormat + ", codingFormat=" + this.field_reqFormat + " cacheSize=" + this.field_cacheSize + " totalSize=" + this.field_totalSize + " percent=" + cwI() + ", " + this.field_filePath + ", " + this.field_url;
-    AppMethodBeat.o(166399);
-    return str;
+    label203:
+    label211:
+    for (paramInt = 2;; paramInt = 1)
+    {
+      localObject = h.soM;
+      h.a(paramaqy, paramLong, 4, paramInt, 1, paramab.getUsername(), i);
+      localObject = g.sKi;
+      g.a(g.cKV(), paramLong, paramString, paramab, paramBoolean1, i, paramaqy, paramBoolean2);
+      AppMethodBeat.o(202964);
+      return;
+      i = paramInt;
+      break;
+      l = 3L;
+      break label127;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.w
  * JD-Core Version:    0.7.0.1
  */

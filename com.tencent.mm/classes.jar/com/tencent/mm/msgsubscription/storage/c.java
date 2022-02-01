@@ -2,18 +2,18 @@ package com.tencent.mm.msgsubscription.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgStrategy;", "", "()V", "TAG", "", "checkSubscribeStatusNeedUpdate", "", "subscribeMsgTmpItem", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "plugin-comm_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/storage/BrandSubscribeMsgStrategy;", "", "()V", "TAG", "", "checkSubscribeStatusNeedUpdate", "", "subscribeMsgTmpItem", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "plugin-comm_release"})
 public final class c
 {
-  public static final c iin;
+  public static final c iBH;
   
   static
   {
     AppMethodBeat.i(149635);
-    iin = new c();
+    iBH = new c();
     AppMethodBeat.o(149635);
   }
   
@@ -23,11 +23,11 @@ public final class c
     AppMethodBeat.i(149634);
     Object localObject1;
     boolean bool;
-    if ((paramSubscribeMsgTmpItem == null) || (paramSubscribeMsgTmpItem.igZ == 0L)) {
+    if ((paramSubscribeMsgTmpItem == null) || (paramSubscribeMsgTmpItem.iAt == 0L)) {
       if (paramSubscribeMsgTmpItem != null)
       {
-        localObject1 = paramSubscribeMsgTmpItem.hiK;
-        ac.i("MicroMsg.BrandSubscribeMsgStrategy", "alvinluo checkSubscribeStatusNeedUpdate first time and do update templateId: %s", new Object[] { localObject1 });
+        localObject1 = paramSubscribeMsgTmpItem.hAT;
+        ad.i("MicroMsg.BrandSubscribeMsgStrategy", "alvinluo checkSubscribeStatusNeedUpdate first time and do update templateId: %s", new Object[] { localObject1 });
         bool = true;
       }
     }
@@ -35,16 +35,16 @@ public final class c
     {
       localObject1 = localObject2;
       if (paramSubscribeMsgTmpItem != null) {
-        localObject1 = Long.valueOf(paramSubscribeMsgTmpItem.igZ);
+        localObject1 = Long.valueOf(paramSubscribeMsgTmpItem.iAt);
       }
-      ac.v("MicroMsg.BrandSubscribeMsgStrategy", "alvinluo checkSubscribeStatusNeedUpdate updateTimestamp: %s, now: %s", new Object[] { localObject1, Long.valueOf(System.currentTimeMillis()) });
+      ad.v("MicroMsg.BrandSubscribeMsgStrategy", "alvinluo checkSubscribeStatusNeedUpdate updateTimestamp: %s, now: %s", new Object[] { localObject1, Long.valueOf(System.currentTimeMillis()) });
       AppMethodBeat.o(149634);
       return bool;
       localObject1 = null;
       break;
-      if (paramSubscribeMsgTmpItem.igZ < System.currentTimeMillis())
+      if (paramSubscribeMsgTmpItem.iAt < System.currentTimeMillis())
       {
-        ac.i("MicroMsg.BrandSubscribeMsgStrategy", "alvinluo checkSubscribeStatusNeedUpdate updateTimestamp expired and do update, templateId: %s", new Object[] { paramSubscribeMsgTmpItem.hiK });
+        ad.i("MicroMsg.BrandSubscribeMsgStrategy", "alvinluo checkSubscribeStatusNeedUpdate updateTimestamp expired and do update, templateId: %s", new Object[] { paramSubscribeMsgTmpItem.hAT });
         bool = true;
       }
       else

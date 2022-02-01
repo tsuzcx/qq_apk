@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.cropview.CropLayout android:id="@id/hr0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/hs1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+        <com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout android:id="@id/hbj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.vlog.ui.plugin.timeedit.TimeEditorItemContainer android:id="@id/hvv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <FrameLayout android:id="@id/hrx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorInputView android:id="@id/ai1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.vlog.ui.widget.PagInputView android:id="@id/i23" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/i28" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

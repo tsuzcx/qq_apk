@@ -14,7 +14,7 @@ public class c
     return paramb;
   }
   
-  public a bxA()
+  public a bBF()
   {
     AppMethodBeat.i(156646);
     c localc = new c();
@@ -27,18 +27,18 @@ public class c
     AppMethodBeat.i(156644);
     if (g(parama) == 13)
     {
-      parama = a.b.mqj;
+      parama = a.b.mQO;
       AppMethodBeat.o(156644);
       return parama;
     }
-    parama = a.b.mqk;
+    parama = a.b.mQP;
     AppMethodBeat.o(156644);
     return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa.b.c
  * JD-Core Version:    0.7.0.1
  */

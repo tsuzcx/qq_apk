@@ -7,8 +7,8 @@ import java.util.List;
 public final class d
   implements Closeable
 {
-  private e azS;
-  private Runnable azT;
+  private e aBJ;
+  private Runnable aBK;
   private boolean closed;
   private final Object lock;
   
@@ -23,13 +23,13 @@ public final class d
         return;
       }
       this.closed = true;
-      e locale = this.azS;
+      e locale = this.aBJ;
       synchronized (locale.lock)
       {
-        locale.nl();
-        locale.azU.remove(this);
-        this.azS = null;
-        this.azT = null;
+        locale.nD();
+        locale.aBL.remove(this);
+        this.aBJ = null;
+        this.aBK = null;
         AppMethodBeat.o(52983);
         return;
       }

@@ -2,366 +2,345 @@ package d.l.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
-import d.g.b.c;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.l.b.a.a.e.f;
+import d.l.b.a.a.e.f.a;
+import d.l.b.a.a.e.f.b;
+import d.l.b.a.a.e.f.c;
+import d.l.b.a.a.e.f.d;
+import d.l.b.a.a.e.f.e;
+import d.l.b.a.a.e.g;
+import d.l.b.a.a.e.g.a;
+import d.l.b.a.a.e.g.b;
+import d.l.b.a.a.e.g.c;
+import d.l.b.a.a.e.g.d;
+import d.l.b.a.a.e.g.e;
+import d.l.b.a.a.e.h;
+import d.l.b.a.a.e.h.a;
+import d.l.b.a.a.e.h.b;
+import d.l.b.a.a.e.h.c;
+import d.l.b.a.a.e.h.d;
+import d.l.b.a.a.e.h.e;
+import d.l.b.a.a.e.h.f;
 import d.l.b.a.a.h;
-import d.l.b.a.b.b.ag;
+import d.l.b.a.a.i.a;
+import d.l.b.a.a.i.b;
+import d.l.b.a.a.j;
+import d.l.b.a.b.b.a.g;
 import d.l.b.a.b.b.ah;
-import d.l.b.a.b.b.ai;
-import d.l.b.a.b.b.aj;
-import d.l.b.a.b.d.a.o;
-import d.l.b.a.b.e.c.a.e.a;
-import d.l.f.a;
-import d.l.k.a;
+import d.l.b.a.b.b.ax;
+import d.l.b.a.b.b.az;
+import d.l.b.a.b.e.b.c;
+import d.l.b.a.b.e.c.a.b;
+import d.l.b.a.b.e.c.a.c;
+import d.l.b.a.b.e.c.a.e.b;
+import d.l.b.a.b.m.bc;
 import d.m;
-import d.y;
+import d.n.k;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
-@d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"Lkotlin/reflect/jvm/internal/KPropertyImpl;", "R", "Lkotlin/reflect/jvm/internal/KCallableImpl;", "Lkotlin/reflect/KProperty;", "container", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "name", "", "signature", "boundReceiver", "", "(Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "(Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;Lorg/jetbrains/kotlin/descriptors/PropertyDescriptor;)V", "descriptorInitialValue", "rawBoundReceiver", "(Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;Ljava/lang/String;Ljava/lang/String;Lorg/jetbrains/kotlin/descriptors/PropertyDescriptor;Ljava/lang/Object;)V", "_descriptor", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazySoftVal;", "kotlin.jvm.PlatformType", "_javaField", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazyVal;", "Ljava/lang/reflect/Field;", "getBoundReceiver", "()Ljava/lang/Object;", "caller", "Lkotlin/reflect/jvm/internal/calls/Caller;", "getCaller", "()Lkotlin/reflect/jvm/internal/calls/Caller;", "getContainer", "()Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "defaultCaller", "getDefaultCaller", "getDescriptor", "()Lorg/jetbrains/kotlin/descriptors/PropertyDescriptor;", "getter", "Lkotlin/reflect/jvm/internal/KPropertyImpl$Getter;", "getGetter", "()Lkotlin/reflect/jvm/internal/KPropertyImpl$Getter;", "isBound", "", "()Z", "isConst", "isLateinit", "isSuspend", "javaField", "getJavaField", "()Ljava/lang/reflect/Field;", "getName", "()Ljava/lang/String;", "getSignature", "computeDelegateField", "equals", "other", "getDelegate", "field", "receiver", "hashCode", "", "toString", "Accessor", "Companion", "Getter", "Setter", "kotlin-reflection"})
-public abstract class s<R>
-  extends e<R>
-  implements d.l.k<R>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"boundReceiver", "", "Lkotlin/reflect/jvm/internal/KPropertyImpl$Accessor;", "getBoundReceiver", "(Lkotlin/reflect/jvm/internal/KPropertyImpl$Accessor;)Ljava/lang/Object;", "computeCallerForAccessor", "Lkotlin/reflect/jvm/internal/calls/Caller;", "isGetter", "", "isJvmFieldPropertyInCompanionObject", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "kotlin-reflection"})
+public final class s
 {
-  private static final Object KXw = new Object();
-  public static final b KXx = new b((byte)0);
-  final i KWP;
-  private final Object KWQ;
-  private final z.b<Field> KXu;
-  private final z.a<ah> KXv;
-  final String name;
-  final String signature;
-  
-  public s(i parami, ah paramah)
+  static final d.l.b.a.a.d<?> a(r.a<?, ?> parama, final boolean paramBoolean)
   {
-    this(parami, str, ad.c(paramah).rf(), paramah, c.KUA);
-  }
-  
-  private s(i parami, String paramString1, String paramString2, ah paramah, Object paramObject)
-  {
-    this.KWP = parami;
-    this.name = paramString1;
-    this.signature = paramString2;
-    this.KWQ = paramObject;
-    parami = z.M((a)new f(this));
-    d.g.b.k.g(parami, "ReflectProperties.lazy {…y -> null\n        }\n    }");
-    this.KXu = parami;
-    parami = z.a(paramah, (a)new e(this));
-    d.g.b.k.g(parami, "ReflectProperties.lazySo…or(name, signature)\n    }");
-    this.KXv = parami;
-  }
-  
-  public s(i parami, String paramString1, String paramString2, Object paramObject)
-  {
-    this(parami, paramString1, paramString2, null, paramObject);
-  }
-  
-  protected final Object a(Field paramField, Object paramObject)
-  {
-    try
+    AppMethodBeat.i(56487);
+    Object localObject1 = i.MNJ;
+    if (i.ggy().aC((CharSequence)parama.ggA().signature))
     {
-      if ((paramObject == KXw) && (fPl().fQP() == null)) {
-        throw ((Throwable)new RuntimeException("'" + this + "' is not an extension property and thus getExtensionDelegate() is not going to work, use getDelegate() instead"));
-      }
+      parama = (d.l.b.a.a.d)j.MPG;
+      AppMethodBeat.o(56487);
+      return parama;
     }
-    catch (IllegalAccessException paramField)
+    final a locala = new a(parama);
+    Object localObject2 = new c(parama, paramBoolean, new b(parama), locala);
+    localObject1 = ac.MOW;
+    d locald = ac.c(parama.ggA().ggJ());
+    if ((locald instanceof d.c))
     {
-      throw ((Throwable)new d.l.a.b(paramField));
-    }
-    if (paramField != null)
-    {
-      paramField = paramField.get(paramObject);
-      return paramField;
-    }
-    return null;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    paramObject = af.eY(paramObject);
-    if (paramObject == null) {}
-    while ((!d.g.b.k.g(this.KWP, paramObject.KWP)) || (!d.g.b.k.g(this.name, paramObject.name)) || (!d.g.b.k.g(this.signature, paramObject.signature)) || (!d.g.b.k.g(this.KWQ, paramObject.KWQ))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public final d.l.b.a.a.d<?> fOO()
-  {
-    return fPg().fOO();
-  }
-  
-  public final d.l.b.a.a.d<?> fOP()
-  {
-    fPg();
-    return null;
-  }
-  
-  public final i fOQ()
-  {
-    return this.KWP;
-  }
-  
-  public final Object fOp()
-  {
-    return h.a(this.KWQ, (d.l.b.a.b.b.b)fPl());
-  }
-  
-  public abstract c<R> fPg();
-  
-  public final Field fPj()
-  {
-    return (Field)this.KXu.invoke();
-  }
-  
-  protected final Field fPk()
-  {
-    if (fPl().fSg()) {
-      return fPj();
-    }
-    return null;
-  }
-  
-  public final ah fPl()
-  {
-    Object localObject = this.KXv.invoke();
-    d.g.b.k.g(localObject, "_descriptor()");
-    return (ah)localObject;
-  }
-  
-  public final String getName()
-  {
-    return this.name;
-  }
-  
-  public int hashCode()
-  {
-    return (this.KWP.hashCode() * 31 + this.name.hashCode()) * 31 + this.signature.hashCode();
-  }
-  
-  public final boolean isBound()
-  {
-    return d.g.b.k.g(this.KWQ, c.KUA) ^ true;
-  }
-  
-  public String toString()
-  {
-    ab localab = ab.KXV;
-    return ab.b(fPl());
-  }
-  
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"Lkotlin/reflect/jvm/internal/KPropertyImpl$Accessor;", "PropertyType", "ReturnType", "Lkotlin/reflect/jvm/internal/KCallableImpl;", "Lkotlin/reflect/KProperty$Accessor;", "Lkotlin/reflect/KFunction;", "()V", "container", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "getContainer", "()Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "defaultCaller", "Lkotlin/reflect/jvm/internal/calls/Caller;", "getDefaultCaller", "()Lkotlin/reflect/jvm/internal/calls/Caller;", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyAccessorDescriptor;", "getDescriptor", "()Lorg/jetbrains/kotlin/descriptors/PropertyAccessorDescriptor;", "isBound", "", "()Z", "isExternal", "isInfix", "isInline", "isOperator", "isSuspend", "property", "Lkotlin/reflect/jvm/internal/KPropertyImpl;", "getProperty", "()Lkotlin/reflect/jvm/internal/KPropertyImpl;", "kotlin-reflection"})
-  public static abstract class a<PropertyType, ReturnType>
-    extends e<ReturnType>
-    implements d.l.e<ReturnType>
-  {
-    public final d.l.b.a.a.d<?> fOP()
-    {
-      return null;
-    }
-    
-    public final i fOQ()
-    {
-      return fPb().KWP;
-    }
-    
-    public abstract s<PropertyType> fPb();
-    
-    public abstract ag fPm();
-    
-    public final boolean isBound()
-    {
-      return fPb().isBound();
-    }
-  }
-  
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"Lkotlin/reflect/jvm/internal/KPropertyImpl$Companion;", "", "()V", "EXTENSION_PROPERTY_DELEGATE", "getEXTENSION_PROPERTY_DELEGATE", "()Ljava/lang/Object;", "kotlin-reflection"})
-  public static final class b {}
-  
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"Lkotlin/reflect/jvm/internal/KPropertyImpl$Getter;", "R", "Lkotlin/reflect/jvm/internal/KPropertyImpl$Accessor;", "Lkotlin/reflect/KProperty$Getter;", "()V", "caller", "Lkotlin/reflect/jvm/internal/calls/Caller;", "getCaller", "()Lkotlin/reflect/jvm/internal/calls/Caller;", "caller$delegate", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazyVal;", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyGetterDescriptor;", "getDescriptor", "()Lorg/jetbrains/kotlin/descriptors/PropertyGetterDescriptor;", "descriptor$delegate", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazySoftVal;", "name", "", "getName", "()Ljava/lang/String;", "kotlin-reflection"})
-  public static abstract class c<R>
-    extends s.a<R, R>
-    implements k.a<R>
-  {
-    private final z.b KWN = z.M((a)new a(this));
-    private final z.a KWd = z.N((a)new b(this));
-    
-    private ai fPn()
-    {
-      return (ai)this.KWd.invoke();
-    }
-    
-    public final d.l.b.a.a.d<?> fOO()
-    {
-      return (d.l.b.a.a.d)this.KWN.invoke();
-    }
-    
-    public final String getName()
-    {
-      return "<get-" + fPb().name + '>';
-    }
-    
-    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/reflect/jvm/internal/calls/Caller;", "R", "invoke"})
-    static final class a
-      extends d.g.b.l
-      implements a<d.l.b.a.a.d<?>>
-    {
-      a(s.c paramc)
-      {
-        super();
-      }
-    }
-    
-    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyGetterDescriptor;", "R", "invoke"})
-    static final class b
-      extends d.g.b.l
-      implements a<ai>
-    {
-      b(s.c paramc)
-      {
-        super();
-      }
-    }
-  }
-  
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"Lkotlin/reflect/jvm/internal/KPropertyImpl$Setter;", "R", "Lkotlin/reflect/jvm/internal/KPropertyImpl$Accessor;", "", "Lkotlin/reflect/KMutableProperty$Setter;", "()V", "caller", "Lkotlin/reflect/jvm/internal/calls/Caller;", "getCaller", "()Lkotlin/reflect/jvm/internal/calls/Caller;", "caller$delegate", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazyVal;", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertySetterDescriptor;", "getDescriptor", "()Lorg/jetbrains/kotlin/descriptors/PropertySetterDescriptor;", "descriptor$delegate", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazySoftVal;", "name", "", "getName", "()Ljava/lang/String;", "kotlin-reflection"})
-  public static abstract class d<R>
-    extends s.a<R, y>
-    implements f.a<R>
-  {
-    private final z.b KWN = z.M((a)new a(this));
-    private final z.a KWd = z.N((a)new b(this));
-    
-    private aj fPo()
-    {
-      return (aj)this.KWd.invoke();
-    }
-    
-    public final d.l.b.a.a.d<?> fOO()
-    {
-      return (d.l.b.a.a.d)this.KWN.invoke();
-    }
-    
-    public final String getName()
-    {
-      return "<set-" + fPb().name + '>';
-    }
-    
-    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/reflect/jvm/internal/calls/Caller;", "R", "invoke"})
-    static final class a
-      extends d.g.b.l
-      implements a<d.l.b.a.a.d<?>>
-    {
-      a(s.d paramd)
-      {
-        super();
-      }
-    }
-    
-    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertySetterDescriptor;", "R", "invoke"})
-    static final class b
-      extends d.g.b.l
-      implements a<aj>
-    {
-      b(s.d paramd)
-      {
-        super();
-      }
-    }
-  }
-  
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "R", "invoke"})
-  static final class e
-    extends d.g.b.l
-    implements a<ah>
-  {
-    e(s params)
-    {
-      super();
-    }
-  }
-  
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Ljava/lang/reflect/Field;", "R", "invoke"})
-  static final class f
-    extends d.g.b.l
-    implements a<Field>
-  {
-    f(s params)
-    {
-      super();
-    }
-    
-    private Field fPp()
-    {
-      Object localObject3 = null;
-      AppMethodBeat.i(56479);
-      Object localObject1 = ad.KXZ;
-      localObject1 = ad.c(this.KXA.fPl());
-      ah localah;
-      Object localObject4;
-      if ((localObject1 instanceof d.c))
-      {
-        localah = ((d.c)localObject1).KVL;
-        localObject4 = d.l.b.a.b.e.c.a.i.Lzg;
-        localObject4 = d.l.b.a.b.e.c.a.i.a(((d.c)localObject1).KVM, ((d.c)localObject1).KVO, ((d.c)localObject1).KVP);
-        if (localObject4 != null) {
-          if ((o.d(localah)) || (d.l.b.a.b.e.c.a.i.f(((d.c)localObject1).KVM))) {
-            localObject1 = this.KXA.KWP.fOt().getEnclosingClass();
+      localObject1 = ((d.c)locald).MMT;
+      if (paramBoolean) {
+        if (((a.c)localObject1).gqB())
+        {
+          localObject1 = ((a.c)localObject1).Nps;
+          if (localObject1 == null) {
+            break label318;
           }
+          localObject1 = parama.ggA().MNV.nq(((d.c)locald).MMU.getString(((a.b)localObject1).NlC), ((d.c)locald).MMU.getString(((a.b)localObject1).Npn));
         }
       }
       for (;;)
       {
-        if (localObject1 != null) {}
-        try
-        {
-          for (localObject1 = ((Class)localObject1).getDeclaredField(((e.a)localObject4).name);; localObject1 = null)
+        if (localObject1 == null) {
+          if ((d.l.b.a.b.j.e.a((ax)parama.ggA().ggJ())) && (p.i(parama.ggA().ggJ().ghz(), az.MVg)))
           {
-            AppMethodBeat.o(56479);
-            return localObject1;
-            localObject1 = localah.fPU();
-            if ((localObject1 instanceof d.l.b.a.b.b.e))
+            localObject1 = h.a(parama.ggA().ggJ().ghs());
+            if (localObject1 != null)
             {
-              localObject1 = af.a((d.l.b.a.b.b.e)localObject1);
-              break;
+              localObject1 = h.a((Class)localObject1, (d.l.b.a.b.b.b)parama.ggA().ggJ());
+              if (localObject1 != null) {}
             }
-            localObject1 = this.KXA.KWP.fOt();
-            break;
-          }
-          AppMethodBeat.o(56479);
-          return null;
-          if ((localObject1 instanceof d.a))
-          {
-            localObject1 = ((d.a)localObject1).bCy;
-            AppMethodBeat.o(56479);
-            return localObject1;
-          }
-          if ((localObject1 instanceof d.b))
-          {
-            AppMethodBeat.o(56479);
-            return null;
-          }
-          if ((localObject1 instanceof d.d))
-          {
-            AppMethodBeat.o(56479);
-            return null;
-          }
-          localObject1 = new m();
-          AppMethodBeat.o(56479);
-          throw ((Throwable)localObject1);
-        }
-        catch (NoSuchFieldException localNoSuchFieldException)
-        {
-          for (;;)
-          {
-            Object localObject2 = localObject3;
+            else
+            {
+              parama = (Throwable)new w("Underlying property of inline class " + parama.ggA() + " should have a field");
+              AppMethodBeat.o(56487);
+              throw parama;
+              localObject1 = null;
+              break;
+              if (((a.c)localObject1).gqC())
+              {
+                localObject1 = ((a.c)localObject1).Npt;
+                break;
+              }
+              localObject1 = null;
+              break;
+              label318:
+              localObject1 = null;
+              continue;
+            }
+            if (parama.ggA().isBound())
+            {
+              localObject1 = (d.l.b.a.a.i)new i.a((Method)localObject1, a(parama));
+              localObject1 = (d.l.b.a.a.d)localObject1;
+            }
           }
         }
       }
+    }
+    for (;;)
+    {
+      parama = h.a((d.l.b.a.a.d)localObject1, (d.l.b.a.b.b.b)parama.ggK());
+      AppMethodBeat.o(56487);
+      return parama;
+      localObject1 = (d.l.b.a.a.i)new i.b((Method)localObject1);
+      break;
+      localObject1 = parama.ggA().ggH();
+      if (localObject1 == null)
+      {
+        parama = (Throwable)new w("No accessors or field is found for property " + parama.ggA());
+        AppMethodBeat.o(56487);
+        throw parama;
+      }
+      localObject1 = (d.l.b.a.a.d)((c)localObject2).e((Field)localObject1);
+      continue;
+      if (!Modifier.isStatic(((Method)localObject1).getModifiers()))
+      {
+        if (parama.ggA().isBound()) {}
+        for (localObject1 = (e.h)new e.h.a((Method)localObject1, a(parama));; localObject1 = (e.h)new e.h.d((Method)localObject1))
+        {
+          localObject1 = (d.l.b.a.a.d)localObject1;
+          break;
+        }
+      }
+      if (locala.hZ())
+      {
+        if (parama.ggA().isBound()) {}
+        for (localObject1 = (e.h)new e.h.b((Method)localObject1);; localObject1 = (e.h)new e.h.e((Method)localObject1))
+        {
+          localObject1 = (d.l.b.a.a.d)localObject1;
+          break;
+        }
+      }
+      if (parama.ggA().isBound()) {}
+      for (localObject1 = (e.h)new e.h.c((Method)localObject1, a(parama));; localObject1 = (e.h)new e.h.f((Method)localObject1))
+      {
+        localObject1 = (d.l.b.a.a.d)localObject1;
+        break;
+      }
+      if (!(locald instanceof d.a)) {
+        break label639;
+      }
+      localObject1 = (d.l.b.a.a.d)((c)localObject2).e(((d.a)locald).bMM);
+    }
+    label639:
+    if ((locald instanceof d.b)) {
+      if (paramBoolean) {
+        localObject1 = ((d.b)locald).MMP;
+      }
+    }
+    label1040:
+    for (;;)
+    {
+      if (parama.ggA().isBound()) {}
+      for (localObject1 = (e.h)new e.h.a((Method)localObject1, a(parama));; localObject1 = (e.h)new e.h.d((Method)localObject1))
+      {
+        localObject1 = (d.l.b.a.a.d)localObject1;
+        break;
+        localObject1 = ((d.b)locald).MMQ;
+        if (localObject1 != null) {
+          break label1040;
+        }
+        parama = (Throwable)new w("No source found for setter of Java method property: " + ((d.b)locald).MMP);
+        AppMethodBeat.o(56487);
+        throw parama;
+      }
+      if ((locald instanceof d.d))
+      {
+        if (paramBoolean) {
+          localObject1 = ((d.d)locald).MMW;
+        }
+        do
+        {
+          localObject1 = parama.ggA().MNV.nq(((c.e)localObject1).MMO.name, ((c.e)localObject1).MMO.desc);
+          if (localObject1 != null) {
+            break;
+          }
+          parama = (Throwable)new w("No accessor found for property " + parama.ggA());
+          AppMethodBeat.o(56487);
+          throw parama;
+          localObject2 = ((d.d)locald).MMX;
+          localObject1 = localObject2;
+        } while (localObject2 != null);
+        parama = (Throwable)new w("No setter found for property " + parama.ggA());
+        AppMethodBeat.o(56487);
+        throw parama;
+        if (!Modifier.isStatic(((Method)localObject1).getModifiers())) {}
+        for (int i = 1; (d.ac.MKp) && (i == 0); i = 0)
+        {
+          parama = (Throwable)new AssertionError("Mapped property cannot have a static accessor: " + parama.ggA());
+          AppMethodBeat.o(56487);
+          throw parama;
+        }
+        if (parama.ggA().isBound())
+        {
+          parama = (d.l.b.a.a.d)new e.h.a((Method)localObject1, a(parama));
+          AppMethodBeat.o(56487);
+          return parama;
+        }
+        parama = (d.l.b.a.a.d)new e.h.d((Method)localObject1);
+        AppMethodBeat.o(56487);
+        return parama;
+      }
+      parama = new m();
+      AppMethodBeat.o(56487);
+      throw parama;
+    }
+  }
+  
+  public static final Object a(r.a<?, ?> parama)
+  {
+    AppMethodBeat.i(56486);
+    p.h(parama, "$this$boundReceiver");
+    parama = parama.ggA().gfP();
+    AppMethodBeat.o(56486);
+    return parama;
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"isJvmStaticProperty", "", "invoke"})
+  static final class a
+    extends q
+    implements a<Boolean>
+  {
+    a(r.a parama)
+    {
+      super();
+    }
+    
+    public final boolean hZ()
+    {
+      AppMethodBeat.i(56481);
+      boolean bool = this.MOy.ggA().ggJ().ghH().h(ae.ggP());
+      AppMethodBeat.o(56481);
+      return bool;
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"isNotNullProperty", "", "invoke"})
+  static final class b
+    extends q
+    implements a<Boolean>
+  {
+    b(r.a parama)
+    {
+      super();
+    }
+    
+    public final boolean hZ()
+    {
+      AppMethodBeat.i(56483);
+      if (!bc.aF(this.MOy.ggA().ggJ().gju()))
+      {
+        AppMethodBeat.o(56483);
+        return true;
+      }
+      AppMethodBeat.o(56483);
+      return false;
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"computeFieldCaller", "Lkotlin/reflect/jvm/internal/calls/CallerImpl;", "Ljava/lang/reflect/Field;", "field", "invoke"})
+  static final class c
+    extends q
+    implements d.g.a.b<Field, d.l.b.a.a.e<? extends Field>>
+  {
+    c(r.a parama, boolean paramBoolean, s.b paramb, s.a parama1)
+    {
+      super();
+    }
+    
+    public final d.l.b.a.a.e<Field> e(Field paramField)
+    {
+      AppMethodBeat.i(56485);
+      p.h(paramField, "field");
+      if ((s.a(this.MOy.ggA().ggJ())) || (!Modifier.isStatic(paramField.getModifiers())))
+      {
+        if (paramBoolean)
+        {
+          if (this.MOy.ggA().isBound()) {}
+          for (paramField = (e.f)new e.f.a(paramField, s.a(this.MOy));; paramField = (e.f)new e.f.c(paramField))
+          {
+            paramField = (d.l.b.a.a.e)paramField;
+            AppMethodBeat.o(56485);
+            return paramField;
+          }
+        }
+        if (this.MOy.ggA().isBound()) {}
+        for (paramField = (e.g)new e.g.a(paramField, this.MOA.hZ(), s.a(this.MOy));; paramField = (e.g)new e.g.c(paramField, this.MOA.hZ()))
+        {
+          paramField = (d.l.b.a.a.e)paramField;
+          AppMethodBeat.o(56485);
+          return paramField;
+        }
+      }
+      if (locala.hZ())
+      {
+        if (paramBoolean)
+        {
+          if (this.MOy.ggA().isBound()) {}
+          for (paramField = (e.f)new e.f.b(paramField);; paramField = (e.f)new e.f.d(paramField))
+          {
+            paramField = (d.l.b.a.a.e)paramField;
+            AppMethodBeat.o(56485);
+            return paramField;
+          }
+        }
+        if (this.MOy.ggA().isBound()) {}
+        for (paramField = (e.g)new e.g.b(paramField, this.MOA.hZ());; paramField = (e.g)new e.g.d(paramField, this.MOA.hZ()))
+        {
+          paramField = (d.l.b.a.a.e)paramField;
+          AppMethodBeat.o(56485);
+          return paramField;
+        }
+      }
+      if (paramBoolean)
+      {
+        paramField = (d.l.b.a.a.e)new e.f.e(paramField);
+        AppMethodBeat.o(56485);
+        return paramField;
+      }
+      paramField = (d.l.b.a.a.e)new e.g.e(paramField, this.MOA.hZ());
+      AppMethodBeat.o(56485);
+      return paramField;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.s
  * JD-Core Version:    0.7.0.1
  */

@@ -1,185 +1,106 @@
 package com.tencent.liteav.renderer;
 
 import android.graphics.SurfaceTexture;
-import android.opengl.GLUtils;
+import android.view.Surface;
+import com.tencent.liteav.basic.d.c;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
 
 class b
   extends Thread
 {
-  private int a;
-  private int b;
-  private WeakReference<a> c;
-  private EGL10 d;
-  private EGLContext e;
-  private EGLDisplay f;
-  private EGLSurface g;
-  private EGLConfig h;
-  private WeakReference<SurfaceTexture> i;
-  private boolean j;
-  private int k;
-  private int l;
-  private Object m;
+  private WeakReference<a> a;
+  private boolean b;
+  private int c;
+  private int d;
+  private Object e;
+  private c f;
+  private com.tencent.liteav.basic.d.b g;
+  private Object h;
   
   b(WeakReference<a> paramWeakReference)
   {
     AppMethodBeat.i(16890);
-    this.a = 12440;
-    this.b = 4;
-    this.j = false;
-    this.k = 1280;
-    this.l = 720;
-    this.m = new Object();
-    this.c = paramWeakReference;
+    this.b = false;
+    this.c = 1280;
+    this.d = 720;
+    this.e = new Object();
+    this.f = null;
+    this.g = null;
+    this.h = null;
+    this.a = paramWeakReference;
     AppMethodBeat.o(16890);
   }
   
-  private EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, EGLContext paramEGLContext)
+  private void f()
   {
-    AppMethodBeat.i(16901);
-    paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, paramEGLContext, new int[] { this.a, 2, 12344 });
-    AppMethodBeat.o(16901);
-    return paramEGL10;
-  }
-  
-  private void d()
-  {
-    AppMethodBeat.i(16894);
+    AppMethodBeat.i(187387);
     try
     {
-      a locala = (a)this.c.get();
+      a locala = (a)this.a.get();
       if (locala != null) {
         locala.a(this);
       }
-      AppMethodBeat.o(16894);
+      AppMethodBeat.o(187387);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(16894);
+      AppMethodBeat.o(187387);
     }
   }
   
-  private void e()
+  private void g()
   {
-    AppMethodBeat.i(16895);
+    AppMethodBeat.i(16897);
     try
     {
-      a locala = (a)this.c.get();
+      a locala = (a)this.a.get();
       if (locala != null) {
         locala.b(this);
       }
-      AppMethodBeat.o(16895);
+      AppMethodBeat.o(16897);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(16895);
+      AppMethodBeat.o(16897);
     }
   }
   
-  private boolean f()
+  private boolean h()
   {
-    AppMethodBeat.i(16896);
+    AppMethodBeat.i(187388);
     try
     {
-      if (this.c != null)
+      if (this.a != null)
       {
-        a locala = (a)this.c.get();
+        a locala = (a)this.a.get();
         if (locala != null)
         {
           boolean bool = locala.c();
-          AppMethodBeat.o(16896);
+          AppMethodBeat.o(187388);
           return bool;
         }
       }
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(16896);
+      AppMethodBeat.o(187388);
     }
     return false;
-  }
-  
-  private void g()
-  {
-    AppMethodBeat.i(16897);
-    if (this.c != null)
-    {
-      a locala = (a)this.c.get();
-      if (locala != null) {
-        locala.l();
-      }
-    }
-    AppMethodBeat.o(16897);
-  }
-  
-  private void h()
-  {
-    AppMethodBeat.i(16898);
-    if (this.c != null)
-    {
-      a locala = (a)this.c.get();
-      if (locala != null) {
-        locala.m();
-      }
-    }
-    AppMethodBeat.o(16898);
   }
   
   private void i()
   {
     AppMethodBeat.i(16899);
-    Object localObject = (a)this.c.get();
-    if (localObject == null)
+    if (this.a != null)
     {
-      AppMethodBeat.o(16899);
-      return;
-    }
-    this.d = ((EGL10)EGLContext.getEGL());
-    this.f = this.d.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    int[] arrayOfInt = new int[2];
-    this.d.eglInitialize(this.f, arrayOfInt);
-    this.h = k();
-    localObject = ((a)localObject).d();
-    if (localObject != null) {
-      this.i = new WeakReference(localObject);
-    }
-    int n;
-    int i1;
-    for (this.g = this.d.eglCreateWindowSurface(this.f, this.h, localObject, null);; this.g = this.d.eglCreatePbufferSurface(this.f, this.h, new int[] { 12375, n, 12374, i1, 12344 }))
-    {
-      this.e = a(this.d, this.f, this.h, EGL10.EGL_NO_CONTEXT);
-      TXCLog.w("TXCVideoRenderThread", "vrender: init egl @context=" + this.e + ",surface=" + this.g);
-      try
-      {
-        if ((this.g != null) && (this.g != EGL10.EGL_NO_SURFACE)) {
-          break;
-        }
-        localObject = new RuntimeException("GL error:" + GLUtils.getEGLErrorString(this.d.eglGetError()));
-        AppMethodBeat.o(16899);
-        throw ((Throwable)localObject);
+      a locala = (a)this.a.get();
+      if (locala != null) {
+        locala.k();
       }
-      catch (Exception localException)
-      {
-        AppMethodBeat.o(16899);
-        return;
-      }
-      n = this.k;
-      i1 = this.l;
-    }
-    if (!this.d.eglMakeCurrent(this.f, this.g, this.g, this.e))
-    {
-      RuntimeException localRuntimeException = new RuntimeException("GL Make current Error" + GLUtils.getEGLErrorString(this.d.eglGetError()));
-      AppMethodBeat.o(16899);
-      throw localRuntimeException;
     }
     AppMethodBeat.o(16899);
   }
@@ -187,54 +108,89 @@ class b
   private void j()
   {
     AppMethodBeat.i(16900);
-    EGL10 localEGL10 = this.d;
-    EGLDisplay localEGLDisplay = this.f;
-    EGLSurface localEGLSurface = EGL10.EGL_NO_SURFACE;
-    localEGL10.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, EGL10.EGL_NO_CONTEXT);
-    this.d.eglDestroyContext(this.f, this.e);
-    this.d.eglDestroySurface(this.f, this.g);
-    this.d.eglTerminate(this.f);
-    this.i = null;
-    TXCLog.w("TXCVideoRenderThread", "vrender: uninit egl @context=" + this.e + ",surface=" + this.g);
+    if (this.a != null)
+    {
+      a locala = (a)this.a.get();
+      if (locala != null) {
+        locala.l();
+      }
+    }
     AppMethodBeat.o(16900);
   }
   
-  private EGLConfig k()
+  private void k()
   {
-    AppMethodBeat.i(16902);
-    Object localObject = new int[1];
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    int[] arrayOfInt = l();
-    if (!this.d.eglChooseConfig(this.f, arrayOfInt, arrayOfEGLConfig, 1, (int[])localObject))
+    AppMethodBeat.i(187389);
+    Object localObject = (a)this.a.get();
+    if (localObject == null)
     {
-      localObject = new IllegalArgumentException("Failed to choose config:" + GLUtils.getEGLErrorString(this.d.eglGetError()));
-      AppMethodBeat.o(16902);
-      throw ((Throwable)localObject);
+      AppMethodBeat.o(187389);
+      return;
     }
-    if (localObject[0] > 0)
+    localObject = ((a)localObject).d();
+    if (localObject != null) {}
+    for (localObject = new Surface((SurfaceTexture)localObject);; localObject = null)
     {
-      localObject = arrayOfEGLConfig[0];
-      AppMethodBeat.o(16902);
+      if ((this.h == null) || ((this.h instanceof javax.microedition.khronos.egl.EGLContext))) {
+        this.g = com.tencent.liteav.basic.d.b.a(null, (javax.microedition.khronos.egl.EGLContext)this.h, (Surface)localObject, this.c, this.d);
+      }
+      for (;;)
+      {
+        TXCLog.w("TXCVideoRenderThread", "vrender: init egl share context " + this.h + ", create context" + a());
+        e();
+        AppMethodBeat.o(187389);
+        return;
+        this.f = c.a(null, (android.opengl.EGLContext)this.h, (Surface)localObject, this.c, this.d);
+      }
+    }
+  }
+  
+  private void l()
+  {
+    AppMethodBeat.i(187390);
+    TXCLog.w("TXCVideoRenderThread", "vrender: uninit egl " + a());
+    if (this.g != null)
+    {
+      this.g.c();
+      this.g = null;
+    }
+    if (this.f != null)
+    {
+      this.f.c();
+      this.f = null;
+    }
+    AppMethodBeat.o(187390);
+  }
+  
+  public Object a()
+  {
+    AppMethodBeat.i(187386);
+    Object localObject;
+    if (this.g != null)
+    {
+      localObject = this.g.d();
+      AppMethodBeat.o(187386);
       return localObject;
     }
-    AppMethodBeat.o(16902);
+    if (this.f != null)
+    {
+      localObject = this.f.e();
+      AppMethodBeat.o(187386);
+      return localObject;
+    }
+    AppMethodBeat.o(187386);
     return null;
   }
   
-  private int[] l()
+  public void a(Object paramObject)
   {
-    return new int[] { 12352, this.b, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 0, 12326, 0, 12344 };
-  }
-  
-  public EGLContext a()
-  {
-    return this.e;
+    this.h = paramObject;
   }
   
   public void b()
   {
     AppMethodBeat.i(16892);
-    this.j = false;
+    this.b = false;
     c();
     AppMethodBeat.o(16892);
   }
@@ -242,12 +198,36 @@ class b
   public void c()
   {
     AppMethodBeat.i(16893);
-    synchronized (this.m)
+    synchronized (this.e)
     {
-      this.m.notifyAll();
+      this.e.notifyAll();
       AppMethodBeat.o(16893);
       return;
     }
+  }
+  
+  public void d()
+  {
+    AppMethodBeat.i(16894);
+    if (this.g != null) {
+      this.g.a();
+    }
+    if (this.f != null) {
+      this.f.d();
+    }
+    AppMethodBeat.o(16894);
+  }
+  
+  public void e()
+  {
+    AppMethodBeat.i(16895);
+    if (this.g != null) {
+      this.g.b();
+    }
+    if (this.f != null) {
+      this.f.b();
+    }
+    AppMethodBeat.o(16895);
   }
   
   /* Error */
@@ -255,131 +235,116 @@ class b
   {
     // Byte code:
     //   0: sipush 16891
-    //   3: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: new 140	java/lang/StringBuilder
+    //   7: new 102	java/lang/StringBuilder
     //   10: dup
-    //   11: ldc 231
-    //   13: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   11: ldc 166
+    //   13: invokespecial 107	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   16: aload_0
-    //   17: invokevirtual 235	com/tencent/liteav/renderer/b:getId	()J
-    //   20: invokevirtual 238	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   23: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   26: invokevirtual 241	com/tencent/liteav/renderer/b:setName	(Ljava/lang/String;)V
+    //   17: invokevirtual 170	com/tencent/liteav/renderer/b:getId	()J
+    //   20: invokevirtual 173	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   26: invokevirtual 176	com/tencent/liteav/renderer/b:setName	(Ljava/lang/String;)V
     //   29: aload_0
     //   30: iconst_1
-    //   31: putfield 44	com/tencent/liteav/renderer/b:j	Z
+    //   31: putfield 32	com/tencent/liteav/renderer/b:b	Z
     //   34: aload_0
-    //   35: invokespecial 243	com/tencent/liteav/renderer/b:i	()V
+    //   35: invokespecial 177	com/tencent/liteav/renderer/b:k	()V
     //   38: aload_0
-    //   39: invokespecial 245	com/tencent/liteav/renderer/b:d	()V
+    //   39: invokespecial 179	com/tencent/liteav/renderer/b:f	()V
     //   42: aload_0
-    //   43: invokespecial 247	com/tencent/liteav/renderer/b:g	()V
+    //   43: invokespecial 181	com/tencent/liteav/renderer/b:i	()V
     //   46: aload_0
-    //   47: getfield 44	com/tencent/liteav/renderer/b:j	Z
-    //   50: ifeq +121 -> 171
+    //   47: getfield 32	com/tencent/liteav/renderer/b:b	Z
+    //   50: ifeq +86 -> 136
     //   53: aload_0
-    //   54: invokespecial 249	com/tencent/liteav/renderer/b:f	()Z
-    //   57: ifeq +62 -> 119
+    //   54: invokespecial 183	com/tencent/liteav/renderer/b:h	()Z
+    //   57: ifeq +27 -> 84
     //   60: aload_0
-    //   61: getfield 98	com/tencent/liteav/renderer/b:d	Ljavax/microedition/khronos/egl/EGL10;
-    //   64: ifnull +55 -> 119
-    //   67: aload_0
-    //   68: getfield 107	com/tencent/liteav/renderer/b:f	Ljavax/microedition/khronos/egl/EGLDisplay;
-    //   71: ifnull +48 -> 119
-    //   74: aload_0
-    //   75: getfield 129	com/tencent/liteav/renderer/b:g	Ljavax/microedition/khronos/egl/EGLSurface;
-    //   78: ifnull +41 -> 119
-    //   81: aload_0
-    //   82: getfield 55	com/tencent/liteav/renderer/b:c	Ljava/lang/ref/WeakReference;
-    //   85: ifnonnull +72 -> 157
-    //   88: aconst_null
-    //   89: astore_1
-    //   90: aload_1
-    //   91: ifnull +28 -> 119
-    //   94: aload_1
-    //   95: invokevirtual 119	com/tencent/liteav/renderer/a:d	()Landroid/graphics/SurfaceTexture;
-    //   98: ifnull +21 -> 119
-    //   101: aload_0
-    //   102: getfield 98	com/tencent/liteav/renderer/b:d	Ljavax/microedition/khronos/egl/EGL10;
-    //   105: aload_0
-    //   106: getfield 107	com/tencent/liteav/renderer/b:f	Ljavax/microedition/khronos/egl/EGLDisplay;
-    //   109: aload_0
-    //   110: getfield 129	com/tencent/liteav/renderer/b:g	Ljavax/microedition/khronos/egl/EGLSurface;
-    //   113: invokeinterface 252 3 0
-    //   118: pop
-    //   119: aload_0
-    //   120: getfield 53	com/tencent/liteav/renderer/b:m	Ljava/lang/Object;
-    //   123: astore_1
-    //   124: aload_1
-    //   125: monitorenter
-    //   126: aload_0
-    //   127: getfield 53	com/tencent/liteav/renderer/b:m	Ljava/lang/Object;
-    //   130: invokevirtual 255	java/lang/Object:wait	()V
-    //   133: aload_1
-    //   134: monitorexit
-    //   135: goto -89 -> 46
-    //   138: astore_2
-    //   139: aload_1
-    //   140: monitorexit
-    //   141: sipush 16891
-    //   144: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   147: aload_2
-    //   148: athrow
-    //   149: astore_1
-    //   150: sipush 16891
-    //   153: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   156: return
-    //   157: aload_0
-    //   158: getfield 55	com/tencent/liteav/renderer/b:c	Ljava/lang/ref/WeakReference;
-    //   161: invokevirtual 76	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   164: checkcast 78	com/tencent/liteav/renderer/a
-    //   167: astore_1
-    //   168: goto -78 -> 90
-    //   171: aload_0
-    //   172: invokespecial 257	com/tencent/liteav/renderer/b:h	()V
-    //   175: aload_0
-    //   176: invokespecial 259	com/tencent/liteav/renderer/b:e	()V
-    //   179: aload_0
-    //   180: invokespecial 261	com/tencent/liteav/renderer/b:j	()V
-    //   183: sipush 16891
-    //   186: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   189: return
-    //   190: astore_1
-    //   191: sipush 16891
-    //   194: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   197: aload_1
-    //   198: athrow
-    //   199: astore_2
-    //   200: goto -67 -> 133
+    //   61: getfield 49	com/tencent/liteav/renderer/b:a	Ljava/lang/ref/WeakReference;
+    //   64: ifnonnull +58 -> 122
+    //   67: aconst_null
+    //   68: astore_1
+    //   69: aload_1
+    //   70: ifnull +14 -> 84
+    //   73: aload_1
+    //   74: invokevirtual 86	com/tencent/liteav/renderer/a:d	()Landroid/graphics/SurfaceTexture;
+    //   77: ifnull +7 -> 84
+    //   80: aload_0
+    //   81: invokevirtual 185	com/tencent/liteav/renderer/b:d	()V
+    //   84: aload_0
+    //   85: getfield 41	com/tencent/liteav/renderer/b:e	Ljava/lang/Object;
+    //   88: astore_1
+    //   89: aload_1
+    //   90: monitorenter
+    //   91: aload_0
+    //   92: getfield 41	com/tencent/liteav/renderer/b:e	Ljava/lang/Object;
+    //   95: invokevirtual 188	java/lang/Object:wait	()V
+    //   98: aload_1
+    //   99: monitorexit
+    //   100: goto -54 -> 46
+    //   103: astore_2
+    //   104: aload_1
+    //   105: monitorexit
+    //   106: sipush 16891
+    //   109: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   112: aload_2
+    //   113: athrow
+    //   114: astore_1
+    //   115: sipush 16891
+    //   118: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   121: return
+    //   122: aload_0
+    //   123: getfield 49	com/tencent/liteav/renderer/b:a	Ljava/lang/ref/WeakReference;
+    //   126: invokevirtual 64	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   129: checkcast 66	com/tencent/liteav/renderer/a
+    //   132: astore_1
+    //   133: goto -64 -> 69
+    //   136: aload_0
+    //   137: invokespecial 190	com/tencent/liteav/renderer/b:j	()V
+    //   140: aload_0
+    //   141: invokespecial 192	com/tencent/liteav/renderer/b:g	()V
+    //   144: aload_0
+    //   145: invokespecial 193	com/tencent/liteav/renderer/b:l	()V
+    //   148: sipush 16891
+    //   151: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   154: return
+    //   155: astore_1
+    //   156: sipush 16891
+    //   159: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   162: aload_1
+    //   163: athrow
+    //   164: astore_2
+    //   165: goto -67 -> 98
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	203	0	this	b
-    //   149	1	1	localException	Exception
-    //   167	1	1	locala	a
-    //   190	8	1	localObject2	Object
-    //   138	10	2	localObject3	Object
-    //   199	1	2	localInterruptedException	java.lang.InterruptedException
+    //   0	168	0	this	b
+    //   114	1	1	localException	Exception
+    //   132	1	1	locala	a
+    //   155	8	1	localObject2	Object
+    //   103	10	2	localObject3	Object
+    //   164	1	2	localInterruptedException	java.lang.InterruptedException
     // Exception table:
     //   from	to	target	type
-    //   126	133	138	finally
-    //   133	135	138	finally
-    //   139	141	138	finally
-    //   29	46	149	java/lang/Exception
-    //   46	88	149	java/lang/Exception
-    //   94	119	149	java/lang/Exception
-    //   119	126	149	java/lang/Exception
-    //   141	149	149	java/lang/Exception
-    //   157	168	149	java/lang/Exception
-    //   171	183	149	java/lang/Exception
-    //   29	46	190	finally
-    //   46	88	190	finally
-    //   94	119	190	finally
-    //   119	126	190	finally
-    //   141	149	190	finally
-    //   157	168	190	finally
-    //   171	183	190	finally
-    //   126	133	199	java/lang/InterruptedException
+    //   91	98	103	finally
+    //   98	100	103	finally
+    //   104	106	103	finally
+    //   29	46	114	java/lang/Exception
+    //   46	67	114	java/lang/Exception
+    //   73	84	114	java/lang/Exception
+    //   84	91	114	java/lang/Exception
+    //   106	114	114	java/lang/Exception
+    //   122	133	114	java/lang/Exception
+    //   136	148	114	java/lang/Exception
+    //   29	46	155	finally
+    //   46	67	155	finally
+    //   73	84	155	finally
+    //   84	91	155	finally
+    //   106	114	155	finally
+    //   122	133	155	finally
+    //   136	148	155	finally
+    //   91	98	164	java/lang/InterruptedException
   }
 }
 

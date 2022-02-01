@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public final class r
 {
-  public String nUr = "";
-  public String nYC = "";
-  public int nYD = 0;
-  public ArrayList<String> nYE;
-  public boolean nYF = false;
-  public boolean nYG = false;
+  public String oBW = "";
+  public int oBX = 0;
+  public ArrayList<String> oBY;
+  public boolean oBZ = false;
+  public boolean oCa = false;
+  public String oxM = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.r
  * JD-Core Version:    0.7.0.1
  */

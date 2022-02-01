@@ -1,148 +1,150 @@
 package com.tencent.mm.plugin.i.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.anv;
-import com.tencent.mm.protocal.protobuf.anw;
-import com.tencent.mm.protocal.protobuf.anx;
-import com.tencent.mm.protocal.protobuf.any;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.protocal.protobuf.arh;
+import com.tencent.mm.protocal.protobuf.ari;
+import com.tencent.mm.protocal.protobuf.arj;
+import com.tencent.mm.protocal.protobuf.ark;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class e
 {
-  public static String a(any paramany)
+  public static String a(ark paramark)
   {
     AppMethodBeat.i(164042);
     StringBuilder localStringBuilder = new StringBuilder();
-    if (paramany != null)
+    if (paramark != null)
     {
-      localStringBuilder.append("<finderTopic><topic>").append(bs.aLw(paramany.dol)).append("</topic><topicType>").append(paramany.rPI).append("</topicType><iconUrl>").append(bv.aLR(paramany.iconUrl)).append("</iconUrl><desc>").append(bs.aLw(paramany.desc)).append("</desc>");
-      if (paramany.EGK != null) {
-        localStringBuilder.append("<location><poiClassifyId>").append(bs.aLw(paramany.EGK.EFm)).append("</poiClassifyId><longitude>").append(paramany.EGK.doB).append("</longitude><latitude>").append(paramany.EGK.dmL).append("</latitude></location>");
+      localStringBuilder.append("<finderTopic><topic>").append(bt.aRc(paramark.dzZ)).append("</topic><topicType>").append(paramark.sMj).append("</topicType><iconUrl>").append(bw.aRy(paramark.iconUrl)).append("</iconUrl><desc>").append(bt.aRc(paramark.desc)).append("</desc>");
+      if (paramark.Gpj != null) {
+        localStringBuilder.append("<location><poiClassifyId>").append(bt.aRc(paramark.Gpj.Gnu)).append("</poiClassifyId><longitude>").append(paramark.Gpj.dAp).append("</longitude><latitude>").append(paramark.Gpj.dyz).append("</latitude></location>");
       }
       localStringBuilder.append("</finderTopic>");
     }
-    paramany = localStringBuilder.toString();
+    paramark = localStringBuilder.toString();
     AppMethodBeat.o(164042);
-    return paramany;
+    return paramark;
   }
   
-  public static String b(anx paramanx)
+  public static String b(arj paramarj)
   {
     AppMethodBeat.i(164040);
     StringBuilder localStringBuilder = new StringBuilder();
-    if (paramanx != null) {
+    if (paramarj != null) {
       try
       {
-        localStringBuilder.append("<finderFeed><objectId>").append(paramanx.objectId).append("</objectId><objectNonceId>").append(paramanx.objectNonceId).append("</objectNonceId><feedType>").append(paramanx.EGJ).append("</feedType><nickname>").append(bs.aLw(paramanx.nickname)).append("</nickname><avatar>").append(bv.aLR(paramanx.ruB)).append("</avatar><desc>").append(bs.aLw(paramanx.desc)).append("</desc><mediaCount>").append(paramanx.dfy).append("</mediaCount>");
+        localStringBuilder.append("<finderFeed><objectId>").append(paramarj.objectId).append("</objectId><objectNonceId>").append(paramarj.objectNonceId).append("</objectNonceId><feedType>").append(paramarj.Gpi).append("</feedType><nickname>").append(bt.aRc(paramarj.nickname)).append("</nickname><username>").append(bt.aRc(paramarj.username)).append("</username><avatar>").append(bw.aRy(paramarj.sjU)).append("</avatar><desc>").append(bt.aRc(paramarj.desc)).append("</desc><mediaCount>").append(paramarj.dqU).append("</mediaCount>");
         localStringBuilder.append("<mediaList>");
-        paramanx = paramanx.mediaList.iterator();
-        while (paramanx.hasNext())
+        paramarj = paramarj.mediaList.iterator();
+        while (paramarj.hasNext())
         {
-          anw localanw = (anw)paramanx.next();
-          localStringBuilder.append("<media><mediaType>").append(localanw.mediaType).append("</mediaType><url>").append(bv.aLR(localanw.url)).append("</url><thumbUrl>").append(bv.aLR(localanw.thumbUrl)).append("</thumbUrl><width>").append(localanw.width).append("</width><height>").append(localanw.height).append("</height></media>");
+          ari localari = (ari)paramarj.next();
+          localStringBuilder.append("<media><mediaType>").append(localari.mediaType).append("</mediaType><url>").append(bw.aRy(localari.url)).append("</url><thumbUrl>").append(bw.aRy(localari.thumbUrl)).append("</thumbUrl><width>").append(localari.width).append("</width><height>").append(localari.height).append("</height><videoPlayDuration>").append(localari.Gph).append("</videoPlayDuration></media>");
           continue;
-          paramanx = localStringBuilder.toString();
+          paramarj = localStringBuilder.toString();
         }
       }
-      catch (Exception paramanx)
+      catch (Exception paramarj)
       {
-        ac.e("MicroMsg.FinderShareParser", "make content error! %s", new Object[] { paramanx.getMessage() });
+        ad.e("MicroMsg.FinderShareParser", "make content error! %s", new Object[] { paramarj.getMessage() });
       }
     }
     for (;;)
     {
       AppMethodBeat.o(164040);
-      return paramanx;
+      return paramarj;
       localStringBuilder.append("</mediaList>");
       localStringBuilder.append("</finderFeed>");
     }
   }
   
-  public static anx t(String paramString, Map<String, String> paramMap)
+  public static arj v(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(164041);
-    anx localanx = new anx();
+    arj localarj = new arj();
     try
     {
       String str = paramString + ".finderFeed";
       int i;
-      anw localanw;
+      ari localari;
       if ((!paramMap.isEmpty()) && (paramMap.containsKey(str + ".objectId")))
       {
-        localanx.objectId = bs.nullAsNil((String)paramMap.get(str + ".objectId"));
-        localanx.objectNonceId = bs.nullAsNil((String)paramMap.get(str + ".objectNonceId"));
-        localanx.EGJ = bs.aLy((String)paramMap.get(str + ".feedType"));
-        localanx.nickname = bs.nullAsNil((String)paramMap.get(str + ".nickname"));
-        localanx.ruB = bs.nullAsNil((String)paramMap.get(str + ".avatar"));
-        localanx.desc = bs.nullAsNil((String)paramMap.get(str + ".desc"));
-        localanx.dfy = bs.aLy((String)paramMap.get(str + ".mediaCount"));
+        localarj.objectId = bt.nullAsNil((String)paramMap.get(str + ".objectId"));
+        localarj.objectNonceId = bt.nullAsNil((String)paramMap.get(str + ".objectNonceId"));
+        localarj.Gpi = bt.aRe((String)paramMap.get(str + ".feedType"));
+        localarj.nickname = bt.nullAsNil((String)paramMap.get(str + ".nickname"));
+        localarj.username = bt.nullAsNil((String)paramMap.get(str + ".username"));
+        localarj.sjU = bt.nullAsNil((String)paramMap.get(str + ".avatar"));
+        localarj.desc = bt.nullAsNil((String)paramMap.get(str + ".desc"));
+        localarj.dqU = bt.aRe((String)paramMap.get(str + ".mediaCount"));
         i = 0;
-        if (i < localanx.dfy)
+        if (i < localarj.dqU)
         {
-          localanw = new anw();
+          localari = new ari();
           paramString = str + ".mediaList.media";
           if (i <= 0) {
-            break label616;
+            break label695;
           }
           paramString = paramString + i;
         }
       }
       for (;;)
       {
-        localanw.mediaType = bs.aLy((String)paramMap.get(paramString + ".mediaType"));
-        localanw.url = bs.nullAsNil((String)paramMap.get(paramString + ".url"));
-        localanw.thumbUrl = bs.nullAsNil((String)paramMap.get(paramString + ".thumbUrl"));
-        localanw.width = bs.aLB((String)paramMap.get(paramString + ".width"));
-        localanw.height = bs.aLB((String)paramMap.get(paramString + ".height"));
-        localanx.mediaList.add(localanw);
+        localari.mediaType = bt.aRe((String)paramMap.get(paramString + ".mediaType"));
+        localari.url = bt.nullAsNil((String)paramMap.get(paramString + ".url"));
+        localari.thumbUrl = bt.nullAsNil((String)paramMap.get(paramString + ".thumbUrl"));
+        localari.width = bt.aRh((String)paramMap.get(paramString + ".width"));
+        localari.height = bt.aRh((String)paramMap.get(paramString + ".height"));
+        localari.Gph = bt.aRe((String)paramMap.get(paramString + ".videoPlayDuration"));
+        localarj.mediaList.add(localari);
         i += 1;
         break;
       }
     }
     catch (Exception paramString)
     {
-      ac.e("MicroMsg.FinderShareParser", "parse error! %s", new Object[] { paramString.getMessage() });
+      ad.e("MicroMsg.FinderShareParser", "parse error! %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(164041);
-      return localanx;
+      return localarj;
     }
   }
   
-  public static any u(String paramString, Map<String, String> paramMap)
+  public static ark w(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(164043);
-    any localany = new any();
+    ark localark = new ark();
     paramString = paramString + ".finderTopic";
-    anv localanv;
+    arh localarh;
     if (!paramMap.isEmpty())
     {
-      localany.dol = bs.nullAsNil((String)paramMap.get(paramString + ".topic"));
-      localany.rPI = bs.getInt((String)paramMap.get(paramString + ".topicType"), -1);
-      localany.iconUrl = bs.nullAsNil((String)paramMap.get(paramString + ".iconUrl"));
-      localany.desc = bs.nullAsNil((String)paramMap.get(paramString + ".desc"));
-      localanv = new anv();
-      localanv.EFm = ((String)paramMap.get(paramString + ".location.poiClassifyId"));
-      localanv.doB = bs.getFloat((String)paramMap.get(paramString + ".location.longitude"), 0.0F);
-      localanv.dmL = bs.getFloat((String)paramMap.get(paramString + ".location.latitude"), 0.0F);
+      localark.dzZ = bt.nullAsNil((String)paramMap.get(paramString + ".topic"));
+      localark.sMj = bt.getInt((String)paramMap.get(paramString + ".topicType"), -1);
+      localark.iconUrl = bt.nullAsNil((String)paramMap.get(paramString + ".iconUrl"));
+      localark.desc = bt.nullAsNil((String)paramMap.get(paramString + ".desc"));
+      localarh = new arh();
+      localarh.Gnu = ((String)paramMap.get(paramString + ".location.poiClassifyId"));
+      localarh.dAp = bt.getFloat((String)paramMap.get(paramString + ".location.longitude"), 0.0F);
+      localarh.dyz = bt.getFloat((String)paramMap.get(paramString + ".location.latitude"), 0.0F);
     }
-    for (localany.EGK = localanv;; localany.EGK = new anv())
+    for (localark.Gpj = localarh;; localark.Gpj = new arh())
     {
       AppMethodBeat.o(164043);
-      return localany;
-      localany.dol = "";
-      localany.rPI = -1;
-      localany.iconUrl = "";
-      localany.desc = "";
+      return localark;
+      localark.dzZ = "";
+      localark.sMj = -1;
+      localark.iconUrl = "";
+      localark.desc = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.i.a.e
  * JD-Core Version:    0.7.0.1
  */

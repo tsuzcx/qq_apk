@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.wear.model.f;
 
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class d
   implements Runnable
 {
   public d()
   {
-    ac.i("MicroMsg.WearBaseWorkerTask", "Create %s", new Object[] { getName() });
+    ad.i("MicroMsg.WearBaseWorkerTask", "Create %s", new Object[] { getName() });
   }
   
   protected abstract void execute();
@@ -21,14 +21,14 @@ public abstract class d
     {
       execute();
       long l2 = System.currentTimeMillis();
-      ac.i("MicroMsg.WearBaseWorkerTask", "execute %s | use time %d", new Object[] { getName(), Long.valueOf(l2 - l1) });
+      ad.i("MicroMsg.WearBaseWorkerTask", "execute %s | use time %d", new Object[] { getName(), Long.valueOf(l2 - l1) });
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.WearBaseWorkerTask", localException, "run task %s occur exception: %s", new Object[] { getName(), localException.getMessage() });
+        ad.printErrStackTrace("MicroMsg.WearBaseWorkerTask", localException, "run task %s occur exception: %s", new Object[] { getName(), localException.getMessage() });
       }
     }
   }

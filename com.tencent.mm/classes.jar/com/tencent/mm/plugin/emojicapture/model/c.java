@@ -2,14 +2,15 @@ package com.tencent.mm.plugin.emojicapture.model;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.xlabeffect.d;
 import com.tencent.mm.pluginsdk.cmd.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sticker.a.b;
 import d.a.e;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/EmojiCaptureCommand;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "TAG", "", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "stickerCommand", "([Ljava/lang/String;)Z", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/EmojiCaptureCommand;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "TAG", "", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "stickerCommand", "([Ljava/lang/String;)Z", "plugin-emojicapture_release"})
 public final class c
   implements a
 {
@@ -18,9 +19,9 @@ public final class c
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(154);
-    k.h(paramArrayOfString, "args");
-    k.h(paramString, "username");
-    ac.i(this.TAG, "processCommand: " + e.a(paramArrayOfString, (CharSequence)" ", null, null, 0, null, null, 62));
+    p.h(paramArrayOfString, "args");
+    p.h(paramString, "username");
+    ad.i(this.TAG, "processCommand: " + e.a(paramArrayOfString, (CharSequence)" ", null, null, 0, null, null, 62));
     if (paramArrayOfString.length <= 1)
     {
       AppMethodBeat.o(154);
@@ -45,13 +46,13 @@ public final class c
       return true;
       if (paramContext.equals("assets"))
       {
-        paramContext = com.tencent.mm.plugin.xlabeffect.c.Deu;
-        com.tencent.mm.plugin.xlabeffect.c.eJM();
+        paramContext = d.EIn;
+        d.eYy();
         continue;
         if (paramContext.equals("clean"))
         {
-          paramContext = b.GBj;
-          b.eYE();
+          paramContext = b.Ind;
+          b.foo();
         }
       }
     }
@@ -59,7 +60,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.c
  * JD-Core Version:    0.7.0.1
  */

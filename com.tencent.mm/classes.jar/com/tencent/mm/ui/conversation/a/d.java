@@ -5,8 +5,8 @@ import android.widget.Button;
 
 public final class d
 {
-  View IGN;
-  Button IGO;
+  View KxT;
+  Button KxU;
 }
 
 

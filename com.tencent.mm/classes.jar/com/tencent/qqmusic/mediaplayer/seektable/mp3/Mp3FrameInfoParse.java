@@ -10,7 +10,7 @@ class Mp3FrameInfoParse
   private static final int DECODE_ERROR_MEMORY_ALLOC = -2;
   private static final int DECODE_ERROR_SUCCESS = 0;
   private static final int DECODE_FAIL = -1;
-  private static final int[][] SAMPLE_PER_FRAME = { { 384, 1152, 1152 }, { 384, 1152, 576 }, { 384, 1152, 576 } };
+  private static final int[][] SAMPLE_PER_FRAME;
   private static final int[][] SAMPLE_RATE_TABLE;
   private static final String TAG = "Mp3FrameInfoParse";
   public static final int VBR_TYPE_CBR = 0;
@@ -19,13 +19,17 @@ class Mp3FrameInfoParse
   
   static
   {
-    Object localObject = { { 0, 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 }, { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 }, { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 } };
-    int[] arrayOfInt1 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
-    int[] arrayOfInt2 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
-    BitrateTable = new int[][][] { localObject, { { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 }, arrayOfInt1, arrayOfInt2 } };
-    localObject = new int[] { 0, 0, 0 };
-    arrayOfInt1 = new int[] { 22050, 24000, 16000 };
-    SAMPLE_RATE_TABLE = new int[][] { { 11025, 12000, 8000 }, localObject, arrayOfInt1, { 44100, 48000, 32000 } };
+    int[] arrayOfInt1 = { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 };
+    int[] arrayOfInt2 = { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
+    int[] arrayOfInt3 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
+    int[] arrayOfInt4 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
+    BitrateTable = new int[][][] { { { 0, 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 }, arrayOfInt1, arrayOfInt2 }, { { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 }, arrayOfInt3, arrayOfInt4 } };
+    arrayOfInt1 = new int[] { 11025, 12000, 8000 };
+    arrayOfInt2 = new int[] { 0, 0, 0 };
+    arrayOfInt3 = new int[] { 44100, 48000, 32000 };
+    SAMPLE_RATE_TABLE = new int[][] { arrayOfInt1, arrayOfInt2, { 22050, 24000, 16000 }, arrayOfInt3 };
+    arrayOfInt1 = new int[] { 384, 1152, 576 };
+    SAMPLE_PER_FRAME = new int[][] { { 384, 1152, 1152 }, arrayOfInt1, { 384, 1152, 576 } };
   }
   
   private static boolean IsMp3Header(TrackPositionDataSource paramTrackPositionDataSource, byte[] paramArrayOfByte, int paramInt1, int paramInt2, Mp3Info paramMp3Info)
@@ -532,7 +536,7 @@ class Mp3FrameInfoParse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mp3.Mp3FrameInfoParse
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.qy;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.sr;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 
 public final class f
@@ -14,15 +14,15 @@ public final class f
     super(paramMMActivity);
   }
   
-  public final boolean bSZ()
+  public final boolean bXE()
   {
-    return this.ogU;
+    return this.oKn;
   }
   
-  public final boolean bTa()
+  public final boolean bXF()
   {
     AppMethodBeat.i(113648);
-    if ((this.nTp.bPe()) && (super.bTa()) && ((this.nTp.bPc()) || (!bs.isNullOrNil(this.nTp.bPj().code))))
+    if ((this.owK.bTJ()) && (super.bXF()) && ((this.owK.bTH()) || (!bt.isNullOrNil(this.owK.bTO().code))))
     {
       AppMethodBeat.o(113648);
       return true;
@@ -31,15 +31,15 @@ public final class f
     return false;
   }
   
-  public final boolean bTb()
+  public final boolean bXG()
   {
     return true;
   }
   
-  public final boolean bTe()
+  public final boolean bXJ()
   {
     AppMethodBeat.i(113649);
-    if ((this.nTp.bPe()) && (super.bTe()))
+    if ((this.owK.bTJ()) && (super.bXJ()))
     {
       AppMethodBeat.o(113649);
       return true;
@@ -50,7 +50,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.f
  * JD-Core Version:    0.7.0.1
  */

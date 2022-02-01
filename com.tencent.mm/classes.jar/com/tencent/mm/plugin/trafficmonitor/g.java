@@ -9,13 +9,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class g
 {
-  private static Map<Integer, e> Ajh;
-  private static g Aji;
+  private static Map<Integer, e> BAT;
+  private static g BAU;
   
   static
   {
     AppMethodBeat.i(123929);
-    Ajh = new ConcurrentHashMap();
+    BAT = new ConcurrentHashMap();
     AppMethodBeat.o(123929);
   }
   
@@ -29,16 +29,16 @@ public class g
     AppMethodBeat.o(123923);
   }
   
-  public static g eeT()
+  public static g erk()
   {
     AppMethodBeat.i(123924);
-    if (Aji == null) {}
+    if (BAU == null) {}
     try
     {
-      if (Aji == null) {
-        Aji = new g();
+      if (BAU == null) {
+        BAU = new g();
       }
-      g localg = Aji;
+      g localg = BAU;
       AppMethodBeat.o(123924);
       return localg;
     }
@@ -48,31 +48,31 @@ public class g
     }
   }
   
-  public static void eeU()
+  public static void erl()
   {
     AppMethodBeat.i(123926);
-    Iterator localIterator = Ajh.values().iterator();
+    Iterator localIterator = BAT.values().iterator();
     while (localIterator.hasNext()) {
-      ((e)localIterator.next()).eeQ();
+      ((e)localIterator.next()).erh();
     }
     AppMethodBeat.o(123926);
   }
   
-  public static void eeV()
+  public static void erm()
   {
     AppMethodBeat.i(123927);
-    Iterator localIterator = Ajh.values().iterator();
+    Iterator localIterator = BAT.values().iterator();
     while (localIterator.hasNext()) {
       ((e)localIterator.next()).currentIndex = 0;
     }
     AppMethodBeat.o(123927);
   }
   
-  public static int eeW()
+  public static int ern()
   {
     AppMethodBeat.i(123928);
     int i = -1;
-    Iterator localIterator = Ajh.values().iterator();
+    Iterator localIterator = BAT.values().iterator();
     long l = 0L;
     if (localIterator.hasNext())
     {
@@ -102,9 +102,9 @@ public class g
       ((e)localObject).id = paramInt;
       ((e)localObject).interval = paramLong2;
       ((e)localObject).type = 0;
-      ((e)localObject).AiY = localf;
-      ((e)localObject).AiZ = new e.a() {};
-      Ajh.put(Integer.valueOf(paramInt), localObject);
+      ((e)localObject).BAK = localf;
+      ((e)localObject).BAL = new e.a() {};
+      BAT.put(Integer.valueOf(paramInt), localObject);
       AppMethodBeat.o(123925);
       return;
     }

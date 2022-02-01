@@ -9,19 +9,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements a.a
 {
-  private final e aAt;
-  private final com.bumptech.glide.c.b.a.b aAy;
+  private final e aCk;
+  private final com.bumptech.glide.c.b.a.b aCp;
   
   public b(e parame, com.bumptech.glide.c.b.a.b paramb)
   {
-    this.aAt = parame;
-    this.aAy = paramb;
+    this.aCk = parame;
+    this.aCp = paramb;
   }
   
   public final Bitmap a(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
     AppMethodBeat.i(77476);
-    paramConfig = this.aAt.g(paramInt1, paramInt2, paramConfig);
+    paramConfig = this.aCk.g(paramInt1, paramInt2, paramConfig);
     AppMethodBeat.o(77476);
     return paramConfig;
   }
@@ -29,13 +29,13 @@ public final class b
   public final byte[] dk(int paramInt)
   {
     AppMethodBeat.i(77478);
-    if (this.aAy == null)
+    if (this.aCp == null)
     {
       arrayOfByte = new byte[paramInt];
       AppMethodBeat.o(77478);
       return arrayOfByte;
     }
-    byte[] arrayOfByte = (byte[])this.aAy.a(paramInt, [B.class);
+    byte[] arrayOfByte = (byte[])this.aCp.a(paramInt, [B.class);
     AppMethodBeat.o(77478);
     return arrayOfByte;
   }
@@ -43,13 +43,13 @@ public final class b
   public final int[] dl(int paramInt)
   {
     AppMethodBeat.i(77480);
-    if (this.aAy == null)
+    if (this.aCp == null)
     {
       arrayOfInt = new int[paramInt];
       AppMethodBeat.o(77480);
       return arrayOfInt;
     }
-    int[] arrayOfInt = (int[])this.aAy.a(paramInt, [I.class);
+    int[] arrayOfInt = (int[])this.aCp.a(paramInt, [I.class);
     AppMethodBeat.o(77480);
     return arrayOfInt;
   }
@@ -57,31 +57,31 @@ public final class b
   public final void f(Bitmap paramBitmap)
   {
     AppMethodBeat.i(77477);
-    this.aAt.g(paramBitmap);
+    this.aCk.g(paramBitmap);
     AppMethodBeat.o(77477);
   }
   
   public final void k(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(77479);
-    if (this.aAy == null)
+    if (this.aCp == null)
     {
       AppMethodBeat.o(77479);
       return;
     }
-    this.aAy.put(paramArrayOfByte);
+    this.aCp.put(paramArrayOfByte);
     AppMethodBeat.o(77479);
   }
   
   public final void o(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(77481);
-    if (this.aAy == null)
+    if (this.aCp == null)
     {
       AppMethodBeat.o(77481);
       return;
     }
-    this.aAy.put(paramArrayOfInt);
+    this.aCp.put(paramArrayOfInt);
     AppMethodBeat.o(77481);
   }
 }

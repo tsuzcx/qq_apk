@@ -12,39 +12,41 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class MaskImageButton
   extends ImageView
 {
-  private RectF ISO;
-  private int ISP;
-  private int ISQ;
+  private RectF KJS;
+  private int KJT;
+  private int KJU;
   private int a;
   private int b;
   private int g;
-  public Object gMG;
+  public Object hgD;
   private Paint paint;
   private int r;
-  private ao yxu;
-  private Runnable yxv;
+  private ap zOG;
+  private Runnable zOH;
   
   public MaskImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143201);
-    this.ISO = new RectF();
+    this.KJS = new RectF();
     this.paint = null;
     this.a = 90;
     this.r = 0;
     this.g = 0;
     this.b = 0;
-    this.ISP = 0;
-    this.ISQ = 0;
+    this.KJT = 0;
+    this.KJU = 0;
     this.paint = new Paint();
     this.paint.setColor(Color.argb(this.a, this.r, this.g, this.b));
-    this.yxu = new ao(Looper.getMainLooper());
-    this.yxv = new Runnable()
+    this.zOG = new ap(Looper.getMainLooper());
+    this.zOH = new Runnable()
     {
       public final void run()
       {
@@ -59,21 +61,30 @@ public class MaskImageButton
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(143200);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        a.b("com/tencent/mm/ui/tools/MaskImageButton$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
         switch (paramAnonymousMotionEvent.getAction())
         {
+        case 2: 
+        default: 
+          if ((MaskImageButton.this.isClickable()) || (MaskImageButton.this.isLongClickable())) {
+            break;
+          }
         }
-        while ((!MaskImageButton.this.isClickable()) && (!MaskImageButton.this.isLongClickable()))
+        for (boolean bool = true;; bool = false)
         {
+          a.a(bool, this, "com/tencent/mm/ui/tools/MaskImageButton$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(143200);
-          return true;
+          return bool;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
           MaskImageButton.b(MaskImageButton.this).removeCallbacks(MaskImageButton.a(MaskImageButton.this));
-          continue;
+          break;
           MaskImageButton.b(MaskImageButton.this).post(MaskImageButton.a(MaskImageButton.this));
+          break;
         }
-        AppMethodBeat.o(143200);
-        return false;
       }
     });
     AppMethodBeat.o(143201);
@@ -85,8 +96,8 @@ public class MaskImageButton
     super.onDraw(paramCanvas);
     if (isPressed())
     {
-      this.ISO.set(getPaddingLeft() + 0, getPaddingTop() + 0, this.ISP - getPaddingRight(), this.ISQ - getPaddingBottom());
-      paramCanvas.drawRoundRect(this.ISO, getMeasuredHeight() / 10, getMeasuredHeight() / 10, this.paint);
+      this.KJS.set(getPaddingLeft() + 0, getPaddingTop() + 0, this.KJT - getPaddingRight(), this.KJU - getPaddingBottom());
+      paramCanvas.drawRoundRect(this.KJS, getMeasuredHeight() / 10, getMeasuredHeight() / 10, this.paint);
     }
     AppMethodBeat.o(143202);
   }
@@ -95,14 +106,14 @@ public class MaskImageButton
   {
     AppMethodBeat.i(143203);
     super.onMeasure(paramInt1, paramInt2);
-    this.ISP = getMeasuredWidth();
-    this.ISQ = getMeasuredHeight();
+    this.KJT = getMeasuredWidth();
+    this.KJU = getMeasuredHeight();
     AppMethodBeat.o(143203);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MaskImageButton
  * JD-Core Version:    0.7.0.1
  */

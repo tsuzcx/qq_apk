@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.b;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.plugin.sns.storage.t;
 import com.tencent.mm.plugin.sns.storage.u;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.btz;
-import com.tencent.mm.protocal.protobuf.dae;
-import com.tencent.mm.protocal.protobuf.daf;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.byn;
+import com.tencent.mm.protocal.protobuf.dfr;
+import com.tencent.mm.protocal.protobuf.dfs;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -24,71 +24,71 @@ public final class o
   extends n
   implements k
 {
-  public g callback;
+  public f callback;
   private String filename;
   String mediaId;
   private OutputStream output;
-  private com.tencent.mm.ak.b rr;
-  private String xRt;
-  private int xRu;
-  int xRv;
-  private boolean xRw;
-  private String xRx;
-  private btz xRy;
+  private com.tencent.mm.al.b rr;
+  private String zhn;
+  private int zho;
+  int zhp;
+  private boolean zhq;
+  private String zhr;
+  private byn zhs;
   
-  public o(btz parambtz, String paramString1, String paramString2, int paramInt1, boolean paramBoolean, int paramInt2, String paramString3)
+  public o(byn parambyn, String paramString1, String paramString2, int paramInt1, boolean paramBoolean, int paramInt2, String paramString3)
   {
     AppMethodBeat.i(95589);
     this.mediaId = "";
     this.output = null;
-    this.xRu = -1;
-    this.xRv = -1;
-    this.xRw = true;
-    this.xRx = null;
+    this.zho = -1;
+    this.zhp = -1;
+    this.zhq = true;
+    this.zhr = null;
     this.mediaId = paramString1;
-    this.xRy = parambtz;
-    this.xRw = paramBoolean;
-    this.xRu = paramInt1;
-    this.xRv = paramInt2;
-    this.xRx = paramString3;
-    this.xRt = an.jc(af.getAccSnsPath(), paramString1);
+    this.zhs = parambyn;
+    this.zhq = paramBoolean;
+    this.zho = paramInt1;
+    this.zhp = paramInt2;
+    this.zhr = paramString3;
+    this.zhn = ao.jo(ag.getAccSnsPath(), paramString1);
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new dae();
-    ((b.a)localObject).hvu = new daf();
+    ((b.a)localObject).hNM = new dfr();
+    ((b.a)localObject).hNN = new dfs();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnsdownload";
     ((b.a)localObject).funcId = 208;
-    ((b.a)localObject).reqCmdId = 96;
+    ((b.a)localObject).hNO = 96;
     ((b.a)localObject).respCmdId = 1000000096;
-    this.rr = ((b.a)localObject).aAz();
-    dae localdae = (dae)this.rr.hvr.hvw;
-    t localt = af.dHG().avl(paramString1);
+    this.rr = ((b.a)localObject).aDC();
+    dfr localdfr = (dfr)this.rr.hNK.hNQ;
+    t localt = ag.dTT().aAs(paramString1);
     localObject = localt;
     if (localt == null) {
       localObject = new t();
     }
-    ((t)localObject).ywd = paramString1;
+    ((t)localObject).zNq = paramString1;
     ((t)localObject).offset = 0;
-    af.dHG().a(paramString1, (t)localObject);
+    ag.dTT().a(paramString1, (t)localObject);
     if (paramBoolean) {}
-    for (this.filename = com.tencent.mm.plugin.sns.data.q.m(parambtz);; this.filename = com.tencent.mm.plugin.sns.data.q.l(parambtz))
+    for (this.filename = com.tencent.mm.plugin.sns.data.q.m(parambyn);; this.filename = com.tencent.mm.plugin.sns.data.q.l(parambyn))
     {
-      i.aSh(this.xRt);
-      i.deleteFile(an.jc(af.getAccSnsPath(), paramString1) + this.filename);
-      localdae.FJv = paramString2;
-      localdae.FJw = 0;
-      localdae.vTI = 0;
-      localdae.vTH = 0;
-      localdae.ndI = this.xRu;
-      ac.d("MicroMsg.NetSceneSnsDownload", "requestKey ".concat(String.valueOf(paramString3)));
+      i.aYg(this.zhn);
+      i.deleteFile(ao.jo(ag.getAccSnsPath(), paramString1) + this.filename);
+      localdfr.Hud = paramString2;
+      localdfr.Hue = 0;
+      localdfr.xcL = 0;
+      localdfr.xcK = 0;
+      localdfr.nEf = this.zho;
+      ad.d("MicroMsg.NetSceneSnsDownload", "requestKey ".concat(String.valueOf(paramString3)));
       AppMethodBeat.o(95589);
       return;
     }
   }
   
-  private int X(byte[] paramArrayOfByte)
+  private int W(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(95593);
-    if (!com.tencent.mm.plugin.sns.data.q.ata(af.getAccPath()))
+    if (!com.tencent.mm.plugin.sns.data.q.ayf(ag.getAccPath()))
     {
       AppMethodBeat.o(95593);
       return 0;
@@ -97,29 +97,29 @@ public final class o
     {
       if (this.output == null)
       {
-        i.aSh(this.xRt);
-        this.output = i.cS(this.xRt + this.filename, false);
+        i.aYg(this.zhn);
+        this.output = i.cX(this.zhn + this.filename, false);
       }
-      ac.d("MicroMsg.NetSceneSnsDownload", "appendBuf " + paramArrayOfByte.length);
+      ad.d("MicroMsg.NetSceneSnsDownload", "appendBuf " + paramArrayOfByte.length);
       this.output.write(paramArrayOfByte);
-      aBr();
+      aEt();
       int i = paramArrayOfByte.length;
       AppMethodBeat.o(95593);
       return i;
     }
     catch (IOException paramArrayOfByte)
     {
-      ac.printErrStackTrace("MicroMsg.NetSceneSnsDownload", paramArrayOfByte, "appendBuf failed: " + this.filename, new Object[0]);
+      ad.printErrStackTrace("MicroMsg.NetSceneSnsDownload", paramArrayOfByte, "appendBuf failed: " + this.filename, new Object[0]);
       return -1;
     }
     finally
     {
-      aBr();
+      aEt();
       AppMethodBeat.o(95593);
     }
   }
   
-  private void aBr()
+  private void aEt()
   {
     AppMethodBeat.i(95594);
     try
@@ -135,7 +135,7 @@ public final class o
     }
     catch (IOException localIOException)
     {
-      ac.printErrStackTrace("MicroMsg.NetSceneSnsDownload", localIOException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.NetSceneSnsDownload", localIOException, "", new Object[0]);
       AppMethodBeat.o(95594);
     }
   }
@@ -143,14 +143,14 @@ public final class o
   private void onError()
   {
     AppMethodBeat.i(95592);
-    af.dHM().atz(this.xRx);
+    ag.dTZ().ayE(this.zhr);
     AppMethodBeat.o(95592);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(95590);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(95590);
     return i;
@@ -164,96 +164,96 @@ public final class o
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(95591);
-    ac.d("MicroMsg.NetSceneSnsDownload", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    ad.d("MicroMsg.NetSceneSnsDownload", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     paramArrayOfByte = (b.c)paramq.getRespObj();
-    paramq = (daf)((com.tencent.mm.ak.b)paramq).hvs.hvw;
+    paramq = (dfs)((com.tencent.mm.al.b)paramq).hNL.hNQ;
     if (paramArrayOfByte.getRetCode() != 0)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      af.dHM().atz(this.xRx);
+      ag.dTZ().ayE(this.zhr);
       AppMethodBeat.o(95591);
       return;
     }
-    paramArrayOfByte = af.dHG().avl(this.mediaId);
-    if (paramq.vTH <= 0)
+    paramArrayOfByte = ag.dTT().aAs(this.mediaId);
+    if (paramq.xcK <= 0)
     {
-      ac.e("MicroMsg.NetSceneSnsDownload", "error 1");
+      ad.e("MicroMsg.NetSceneSnsDownload", "error 1");
       onError();
       AppMethodBeat.o(95591);
       return;
     }
-    if (paramq.DVs == null)
+    if (paramq.FAN == null)
     {
-      ac.e("MicroMsg.NetSceneSnsDownload", "error 2");
+      ad.e("MicroMsg.NetSceneSnsDownload", "error 2");
       onError();
       AppMethodBeat.o(95591);
       return;
     }
-    if ((paramq.vTI < 0) || (paramq.vTI + paramq.DVs.getBuffer().xy.length > paramq.vTH))
+    if ((paramq.xcL < 0) || (paramq.xcL + paramq.FAN.getBuffer().zr.length > paramq.xcK))
     {
-      ac.e("MicroMsg.NetSceneSnsDownload", "error 3");
+      ad.e("MicroMsg.NetSceneSnsDownload", "error 3");
       onError();
       AppMethodBeat.o(95591);
       return;
     }
-    if (paramq.vTI != paramArrayOfByte.offset)
+    if (paramq.xcL != paramArrayOfByte.offset)
     {
-      ac.e("MicroMsg.NetSceneSnsDownload", "error 4");
+      ad.e("MicroMsg.NetSceneSnsDownload", "error 4");
       onError();
       AppMethodBeat.o(95591);
       return;
     }
-    paramInt1 = X(paramq.DVs.getBuffer().toByteArray());
+    paramInt1 = W(paramq.FAN.getBuffer().toByteArray());
     if (paramInt1 < 0)
     {
-      ac.e("MicroMsg.NetSceneSnsDownload", "error 5");
+      ad.e("MicroMsg.NetSceneSnsDownload", "error 5");
       onError();
       AppMethodBeat.o(95591);
       return;
     }
     paramArrayOfByte.offset += paramInt1;
-    paramArrayOfByte.yvZ = paramq.vTH;
-    ac.d("MicroMsg.NetSceneSnsDownload", "byteLen " + paramInt1 + "  totalLen " + paramq.vTH);
-    af.dHG().a(this.mediaId, paramArrayOfByte);
-    if ((paramArrayOfByte.offset == paramArrayOfByte.yvZ) && (paramArrayOfByte.yvZ != 0))
+    paramArrayOfByte.zNm = paramq.xcK;
+    ad.d("MicroMsg.NetSceneSnsDownload", "byteLen " + paramInt1 + "  totalLen " + paramq.xcK);
+    ag.dTT().a(this.mediaId, paramArrayOfByte);
+    if ((paramArrayOfByte.offset == paramArrayOfByte.zNm) && (paramArrayOfByte.zNm != 0))
     {
       paramInt1 = 1;
       if (paramInt1 == 0) {
         break label665;
       }
-      ac.d("MicroMsg.NetSceneSnsDownload", "downLoad ok");
-      if (this.xRv != 1) {
+      ad.d("MicroMsg.NetSceneSnsDownload", "downLoad ok");
+      if (this.zhp != 1) {
         break label552;
       }
-      paramq = com.tencent.mm.plugin.sns.data.q.d(this.xRy);
+      paramq = com.tencent.mm.plugin.sns.data.q.d(this.zhs);
       label442:
-      paramArrayOfByte = an.jc(af.getAccSnsPath(), this.mediaId);
+      paramArrayOfByte = ao.jo(ag.getAccSnsPath(), this.mediaId);
       i.deleteFile(paramArrayOfByte + paramq);
-      i.aT(paramArrayOfByte, this.filename, paramq);
-      if (!this.xRw) {
+      i.bb(paramArrayOfByte, this.filename, paramq);
+      if (!this.zhq) {
         break label564;
       }
-      u.b(paramArrayOfByte, paramq, com.tencent.mm.plugin.sns.data.q.e(this.xRy), af.dIc());
+      u.b(paramArrayOfByte, paramq, com.tencent.mm.plugin.sns.data.q.e(this.zhs), ag.dUp());
     }
     for (;;)
     {
-      af.dHM().atz(this.xRx);
+      ag.dTZ().ayE(this.zhr);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(95591);
       return;
       paramInt1 = 0;
       break;
       label552:
-      paramq = com.tencent.mm.plugin.sns.data.q.k(this.xRy);
+      paramq = com.tencent.mm.plugin.sns.data.q.k(this.zhs);
       break label442;
       label564:
-      String str = com.tencent.mm.plugin.sns.data.q.d(this.xRy);
-      if (!i.eA(paramArrayOfByte + str)) {
-        u.a(paramArrayOfByte, paramq, str, af.dId());
+      String str = com.tencent.mm.plugin.sns.data.q.d(this.zhs);
+      if (!i.fv(paramArrayOfByte + str)) {
+        u.a(paramArrayOfByte, paramq, str, ag.dUq());
       }
-      str = com.tencent.mm.plugin.sns.data.q.e(this.xRy);
-      if (!i.eA(paramArrayOfByte + str)) {
-        u.b(paramArrayOfByte, paramq, str, af.dIc());
+      str = com.tencent.mm.plugin.sns.data.q.e(this.zhs);
+      if (!i.fv(paramArrayOfByte + str)) {
+        u.b(paramArrayOfByte, paramq, str, ag.dUp());
       }
     }
     label665:
@@ -268,7 +268,7 @@ public final class o
   
   public final n.b securityVerificationChecked(com.tencent.mm.network.q paramq)
   {
-    return n.b.hwa;
+    return n.b.hOp;
   }
 }
 

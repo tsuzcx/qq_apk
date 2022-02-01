@@ -61,8 +61,8 @@ class i
         break label137;
       }
       ? = paramArrayOfT[paramInt];
-      m = Math.abs(parama.t(?) - i);
-      if (parama.s(?) != i1) {
+      m = Math.abs(parama.u(?) - i);
+      if (parama.t(?) != i1) {
         break label131;
       }
     }
@@ -120,11 +120,11 @@ class i
   
   public Typeface a(Context paramContext, c.b paramb, Resources paramResources, int paramInt)
   {
-    paramb = (c.c)a(paramb.HB, paramInt, new a() {});
+    paramb = (c.c)a(paramb.Jv, paramInt, new a() {});
     if (paramb == null) {
       return null;
     }
-    return d.a(paramContext, paramResources, paramb.HG, paramb.mFileName, paramInt);
+    return d.a(paramContext, paramResources, paramb.JA, paramb.mFileName, paramInt);
   }
   
   /* Error */
@@ -194,9 +194,9 @@ class i
   
   static abstract interface a<T>
   {
-    public abstract boolean s(T paramT);
+    public abstract boolean t(T paramT);
     
-    public abstract int t(T paramT);
+    public abstract int u(T paramT);
   }
 }
 

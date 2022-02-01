@@ -3,29 +3,29 @@ package com.tencent.mm.plugin.pwdgroup;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.e.a;
-import com.tencent.mm.pluginsdk.ui.i;
-import com.tencent.mm.pluginsdk.ui.i.a;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.pluginsdk.ui.j;
+import com.tencent.mm.pluginsdk.ui.j.a;
 
 public final class b
-  extends i
+  extends j
   implements e.a
 {
   private b(String paramString)
   {
-    super(a.vQR, paramString);
+    super(a.wYb, paramString);
   }
   
-  public final void Af(String paramString)
+  public final void De(String paramString)
   {
     AppMethodBeat.i(27614);
-    super.Af(paramString);
+    super.De(paramString);
     AppMethodBeat.o(27614);
   }
   
   public static final class a
   {
-    static i.a vQR;
+    static j.a wYb;
     
     public static void c(ImageView paramImageView, String paramString)
     {
@@ -44,7 +44,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.b
  * JD-Core Version:    0.7.0.1
  */

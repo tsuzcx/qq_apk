@@ -5,19 +5,19 @@ import java.util.List;
 public abstract interface j
   extends d, v
 {
-  public abstract i fTq();
+  public abstract i gkP();
   
-  public abstract String fTr();
+  public abstract String gkQ();
   
-  public abstract String fTs();
+  public abstract String gkR();
   
-  public abstract boolean fTt();
+  public abstract boolean gkS();
   
-  public abstract List<v> fTu();
+  public abstract List<v> gkT();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.e.j
  * JD-Core Version:    0.7.0.1
  */

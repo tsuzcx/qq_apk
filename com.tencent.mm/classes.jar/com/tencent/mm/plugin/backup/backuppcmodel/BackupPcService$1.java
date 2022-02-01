@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.backup.backuppcmodel;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.plugin.backup.b.d;
 import com.tencent.mm.plugin.backup.g.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 final class BackupPcService$1
   implements Runnable
@@ -20,24 +20,24 @@ final class BackupPcService$1
   public final void run()
   {
     AppMethodBeat.i(21622);
-    Object localObject = b.bEa().bEb();
+    Object localObject = b.bIj().bIk();
     String str = this.val$url;
-    ac.w("MicroMsg.BackupPcProcessMgr", "~~~~~~~~~~~~  start by url:%s", new Object[] { str });
-    d.wK(1);
-    com.tencent.mm.plugin.backup.g.b.bEx();
-    az.ayM();
-    ((c)localObject).mXB = ((Integer)com.tencent.mm.model.c.agA().get(ah.a.GKJ, Integer.valueOf(0))).intValue();
-    b.bEa();
-    SharedPreferences.Editor localEditor = b.bCU().edit();
+    ad.w("MicroMsg.BackupPcProcessMgr", "~~~~~~~~~~~~  start by url:%s", new Object[] { str });
+    d.xq(1);
+    com.tencent.mm.plugin.backup.g.b.bIG();
+    ba.aBQ();
+    ((c)localObject).nxY = ((Integer)com.tencent.mm.model.c.ajl().get(al.a.Ixb, Integer.valueOf(0))).intValue();
+    b.bIj();
+    SharedPreferences.Editor localEditor = b.bHc().edit();
     localEditor.putInt("BACKUP_PC_CHOOSE_SELECT_TIME_MODE", 0);
     localEditor.putInt("BACKUP_PC_CHOOSE_SELECT_CONTENT_TYPE", 0);
     localEditor.putLong("BACKUP_PC_CHOOSE_SELECT_START_TIME", 0L);
     localEditor.putLong("BACKUP_PC_CHOOSE_SELECT_END_TIME", 0L);
     localEditor.commit();
-    ((c)localObject).mXC = true;
-    az.agi().a(595, ((c)localObject).mVb);
+    ((c)localObject).nxZ = true;
+    ba.aiU().a(595, ((c)localObject).nvy);
     localObject = new e(str);
-    az.agi().a((n)localObject, 0);
+    ba.aiU().a((n)localObject, 0);
     AppMethodBeat.o(21622);
   }
 }

@@ -7,9 +7,9 @@ public enum i$b
   static
   {
     AppMethodBeat.i(131320);
-    iNQ = new b("BINDMOBILE", 0);
-    iNR = new b("CHANGEMOBILE", 1);
-    iNS = new b[] { iNQ, iNR };
+    jgZ = new b("BINDMOBILE", 0);
+    jha = new b("CHANGEMOBILE", 1);
+    jhb = new b[] { jgZ, jha };
     AppMethodBeat.o(131320);
   }
   

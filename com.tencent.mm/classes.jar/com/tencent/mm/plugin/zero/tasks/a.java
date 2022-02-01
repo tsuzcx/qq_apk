@@ -4,8 +4,8 @@ import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ac.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ad.a;
 import com.tencent.wcdb.support.Log;
 import com.tencent.wcdb.support.Log.LogCallback;
 import java.util.HashSet;
@@ -16,19 +16,19 @@ public final class a
   public final void execute(g paramg)
   {
     AppMethodBeat.i(133029);
-    if (!j.sD("wcdb"))
+    if (!j.vs("wcdb"))
     {
       getClass().getClassLoader();
-      j.sC("wcdb");
+      j.vr("wcdb");
     }
     Log.setLogger(new Log.LogCallback()
     {
-      private final HashSet<String> DeV;
+      private final HashSet<String> EIO;
       
       public final void println(int paramAnonymousInt, String arg2, String paramAnonymousString2)
       {
         AppMethodBeat.i(133028);
-        ac.a locala = ac.eUP();
+        ad.a locala = ad.fkt();
         int i = Process.myPid();
         int j = Process.myTid();
         switch (paramAnonymousInt)
@@ -37,36 +37,36 @@ public final class a
           AppMethodBeat.o(133028);
           return;
         case 2: 
-          locala.logV(???, "", "", 0, i, j, i, paramAnonymousString2);
+          locala.logV(0L, ???, "", "", 0, i, j, i, paramAnonymousString2);
           AppMethodBeat.o(133028);
           return;
         case 3: 
-          locala.logD(???, "", "", 0, i, j, i, paramAnonymousString2);
+          locala.logD(0L, ???, "", "", 0, i, j, i, paramAnonymousString2);
           AppMethodBeat.o(133028);
           return;
         case 4: 
-          locala.logI(???, "", "", 0, i, j, i, paramAnonymousString2);
+          locala.logI(0L, ???, "", "", 0, i, j, i, paramAnonymousString2);
           AppMethodBeat.o(133028);
           return;
         case 5: 
-          locala.logW(???, "", "", 0, i, j, i, paramAnonymousString2);
+          locala.logW(0L, ???, "", "", 0, i, j, i, paramAnonymousString2);
           if ((???.equals("WCDB.SQLite")) && (paramAnonymousString2.startsWith("[SQLite ErrCode: 284] automatic index on ")))
           {
             paramAnonymousString2 = paramAnonymousString2.substring(41);
-            synchronized (this.DeV)
+            synchronized (this.EIO)
             {
-              boolean bool = this.DeV.add(paramAnonymousString2);
+              boolean bool = this.EIO.add(paramAnonymousString2);
               if (bool) {}
             }
           }
           AppMethodBeat.o(133028);
           return;
         case 6: 
-          locala.logE(???, "", "", 0, i, j, i, paramAnonymousString2);
+          locala.logE(0L, ???, "", "", 0, i, j, i, paramAnonymousString2);
           AppMethodBeat.o(133028);
           return;
         }
-        locala.logF(???, "", "", 0, i, j, i, paramAnonymousString2);
+        locala.logF(0L, ???, "", "", 0, i, j, i, paramAnonymousString2);
         AppMethodBeat.o(133028);
       }
     });

@@ -1,113 +1,147 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
-import java.util.LinkedList;
+import com.tencent.mm.bx.b;
 
 public final class cwn
-  extends cpx
+  extends com.tencent.mm.bx.a
 {
-  public String Ebs;
-  public int FGO;
-  public int FGP;
+  public String Hom;
+  public String Hon;
+  public b Hoo;
+  public long Hop;
+  public String Hoq;
+  public String Title;
+  public String Username;
+  public int qex;
+  public String ujc;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124553);
+    AppMethodBeat.i(181512);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Ebs == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: brand_user_name");
-        AppMethodBeat.o(124553);
-        throw paramVarArgs;
+      if (this.Hon != null) {
+        paramVarArgs.d(1, this.Hon);
       }
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.Username != null) {
+        paramVarArgs.d(2, this.Username);
       }
-      if (this.Ebs != null) {
-        paramVarArgs.d(2, this.Ebs);
+      if (this.ujc != null) {
+        paramVarArgs.d(3, this.ujc);
       }
-      paramVarArgs.aR(3, this.FGO);
-      paramVarArgs.aR(4, this.FGP);
-      AppMethodBeat.o(124553);
+      paramVarArgs.aS(4, this.qex);
+      if (this.Hoo != null) {
+        paramVarArgs.c(5, this.Hoo);
+      }
+      if (this.Title != null) {
+        paramVarArgs.d(6, this.Title);
+      }
+      if (this.Hom != null) {
+        paramVarArgs.d(7, this.Hom);
+      }
+      paramVarArgs.aY(8, this.Hop);
+      if (this.Hoq != null) {
+        paramVarArgs.d(9, this.Hoq);
+      }
+      AppMethodBeat.o(181512);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label510;
+      if (this.Hon == null) {
+        break label670;
       }
     }
-    label510:
-    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label670:
+    for (int i = f.a.a.b.b.a.e(1, this.Hon) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.Ebs != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Ebs);
+      paramInt = i;
+      if (this.Username != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Username);
       }
-      paramInt = f.a.a.b.b.a.bx(3, this.FGO);
-      int j = f.a.a.b.b.a.bx(4, this.FGP);
-      AppMethodBeat.o(124553);
-      return i + paramInt + j;
+      i = paramInt;
+      if (this.ujc != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.ujc);
+      }
+      i += f.a.a.b.b.a.bz(4, this.qex);
+      paramInt = i;
+      if (this.Hoo != null) {
+        paramInt = i + f.a.a.b.b.a.b(5, this.Hoo);
+      }
+      i = paramInt;
+      if (this.Title != null) {
+        i = paramInt + f.a.a.b.b.a.e(6, this.Title);
+      }
+      paramInt = i;
+      if (this.Hom != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.Hom);
+      }
+      i = paramInt + f.a.a.b.b.a.p(8, this.Hop);
+      paramInt = i;
+      if (this.Hoq != null) {
+        paramInt = i + f.a.a.b.b.a.e(9, this.Hoq);
+      }
+      AppMethodBeat.o(181512);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.Ebs == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: brand_user_name");
-          AppMethodBeat.o(124553);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(124553);
+        AppMethodBeat.o(181512);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         cwn localcwn = (cwn)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(124553);
+          AppMethodBeat.o(181512);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcwn.BaseRequest = ((iv)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(124553);
+          localcwn.Hon = locala.NPN.readString();
+          AppMethodBeat.o(181512);
           return 0;
         case 2: 
-          localcwn.Ebs = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(124553);
+          localcwn.Username = locala.NPN.readString();
+          AppMethodBeat.o(181512);
           return 0;
         case 3: 
-          localcwn.FGO = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(124553);
+          localcwn.ujc = locala.NPN.readString();
+          AppMethodBeat.o(181512);
+          return 0;
+        case 4: 
+          localcwn.qex = locala.NPN.zc();
+          AppMethodBeat.o(181512);
+          return 0;
+        case 5: 
+          localcwn.Hoo = locala.NPN.gxI();
+          AppMethodBeat.o(181512);
+          return 0;
+        case 6: 
+          localcwn.Title = locala.NPN.readString();
+          AppMethodBeat.o(181512);
+          return 0;
+        case 7: 
+          localcwn.Hom = locala.NPN.readString();
+          AppMethodBeat.o(181512);
+          return 0;
+        case 8: 
+          localcwn.Hop = locala.NPN.zd();
+          AppMethodBeat.o(181512);
           return 0;
         }
-        localcwn.FGP = ((f.a.a.a.a)localObject1).LVo.xF();
-        AppMethodBeat.o(124553);
+        localcwn.Hoq = locala.NPN.readString();
+        AppMethodBeat.o(181512);
         return 0;
       }
-      AppMethodBeat.o(124553);
+      AppMethodBeat.o(181512);
       return -1;
     }
   }

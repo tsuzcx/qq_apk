@@ -17,8 +17,8 @@ public final class ag
     AppMethodBeat.i(144975);
     if ("left".equalsIgnoreCase(paramString))
     {
-      paramd.jzb.setTextAlign(Paint.Align.LEFT);
-      paramd.jzc.setTextAlign(Paint.Align.LEFT);
+      paramd.jSY.setTextAlign(Paint.Align.LEFT);
+      paramd.jSZ.setTextAlign(Paint.Align.LEFT);
     }
     for (;;)
     {
@@ -26,13 +26,13 @@ public final class ag
       return true;
       if ("right".equalsIgnoreCase(paramString))
       {
-        paramd.jzb.setTextAlign(Paint.Align.RIGHT);
-        paramd.jzc.setTextAlign(Paint.Align.RIGHT);
+        paramd.jSY.setTextAlign(Paint.Align.RIGHT);
+        paramd.jSZ.setTextAlign(Paint.Align.RIGHT);
       }
       else if ("center".equalsIgnoreCase(paramString))
       {
-        paramd.jzb.setTextAlign(Paint.Align.CENTER);
-        paramd.jzc.setTextAlign(Paint.Align.CENTER);
+        paramd.jSY.setTextAlign(Paint.Align.CENTER);
+        paramd.jSZ.setTextAlign(Paint.Align.CENTER);
       }
     }
   }
@@ -46,7 +46,7 @@ public final class ag
       AppMethodBeat.o(144976);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.jzJ);
+    boolean bool = b(paramd, paramCanvas.jTE);
     AppMethodBeat.o(144976);
     return bool;
   }
@@ -64,7 +64,7 @@ public final class ag
     return bool;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144973);
     SetTextAlignActionArg localSetTextAlignActionArg = new SetTextAlignActionArg();

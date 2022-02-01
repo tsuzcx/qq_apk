@@ -3,81 +3,55 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cnq
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String FAL;
-  public String FAM;
-  public String FAN;
-  public String FkJ;
-  public String ndW;
-  public String pAC;
+  public String FVn;
+  public int GaO;
+  public int HgN;
+  public String nDo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(134253);
+    AppMethodBeat.i(32393);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ndW != null) {
-        paramVarArgs.d(1, this.ndW);
+      if (this.nDo != null) {
+        paramVarArgs.d(1, this.nDo);
       }
-      if (this.FAL != null) {
-        paramVarArgs.d(2, this.FAL);
+      if (this.FVn != null) {
+        paramVarArgs.d(2, this.FVn);
       }
-      if (this.FkJ != null) {
-        paramVarArgs.d(3, this.FkJ);
-      }
-      if (this.FAM != null) {
-        paramVarArgs.d(4, this.FAM);
-      }
-      if (this.pAC != null) {
-        paramVarArgs.d(5, this.pAC);
-      }
-      if (this.FAN != null) {
-        paramVarArgs.d(6, this.FAN);
-      }
-      AppMethodBeat.o(134253);
+      paramVarArgs.aS(3, this.HgN);
+      paramVarArgs.aS(4, this.GaO);
+      AppMethodBeat.o(32393);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ndW == null) {
-        break label518;
+      if (this.nDo == null) {
+        break label376;
       }
     }
-    label518:
-    for (int i = f.a.a.b.b.a.e(1, this.ndW) + 0;; i = 0)
+    label376:
+    for (paramInt = f.a.a.b.b.a.e(1, this.nDo) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.FAL != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.FAL);
+      int i = paramInt;
+      if (this.FVn != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FVn);
       }
-      i = paramInt;
-      if (this.FkJ != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.FkJ);
-      }
-      paramInt = i;
-      if (this.FAM != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.FAM);
-      }
-      i = paramInt;
-      if (this.pAC != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.pAC);
-      }
-      paramInt = i;
-      if (this.FAN != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.FAN);
-      }
-      AppMethodBeat.o(134253);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bz(3, this.HgN);
+      int j = f.a.a.b.b.a.bz(4, this.GaO);
+      AppMethodBeat.o(32393);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(134253);
+        AppMethodBeat.o(32393);
         return 0;
       }
       if (paramInt == 3)
@@ -87,41 +61,33 @@ public final class cnq
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(134253);
+          AppMethodBeat.o(32393);
           return -1;
         case 1: 
-          localcnq.ndW = locala.LVo.readString();
-          AppMethodBeat.o(134253);
+          localcnq.nDo = locala.NPN.readString();
+          AppMethodBeat.o(32393);
           return 0;
         case 2: 
-          localcnq.FAL = locala.LVo.readString();
-          AppMethodBeat.o(134253);
+          localcnq.FVn = locala.NPN.readString();
+          AppMethodBeat.o(32393);
           return 0;
         case 3: 
-          localcnq.FkJ = locala.LVo.readString();
-          AppMethodBeat.o(134253);
-          return 0;
-        case 4: 
-          localcnq.FAM = locala.LVo.readString();
-          AppMethodBeat.o(134253);
-          return 0;
-        case 5: 
-          localcnq.pAC = locala.LVo.readString();
-          AppMethodBeat.o(134253);
+          localcnq.HgN = locala.NPN.zc();
+          AppMethodBeat.o(32393);
           return 0;
         }
-        localcnq.FAN = locala.LVo.readString();
-        AppMethodBeat.o(134253);
+        localcnq.GaO = locala.NPN.zc();
+        AppMethodBeat.o(32393);
         return 0;
       }
-      AppMethodBeat.o(134253);
+      AppMethodBeat.o(32393);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cnq
  * JD-Core Version:    0.7.0.1
  */

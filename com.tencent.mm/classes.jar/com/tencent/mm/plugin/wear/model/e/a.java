@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wear.model.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.d;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -12,17 +12,17 @@ import java.util.List;
 
 public abstract class a
 {
-  protected boolean Ub(int paramInt)
+  protected boolean VT(int paramInt)
   {
     return false;
   }
   
-  protected boolean Uc(int paramInt)
+  protected boolean VU(int paramInt)
   {
     return false;
   }
   
-  public boolean Ud(int paramInt)
+  public boolean VV(int paramInt)
   {
     return false;
   }
@@ -30,15 +30,15 @@ public abstract class a
   public final void c(int paramInt1, int paramInt2, int paramInt3, final byte[] paramArrayOfByte)
   {
     Object localObject = paramArrayOfByte;
-    if (Uc(paramInt3))
+    if (VU(paramInt3))
     {
       localObject = paramArrayOfByte;
       if (paramArrayOfByte != null)
       {
-        paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.ewp().bV(paramArrayOfByte);
+        paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.eKv().cc(paramArrayOfByte);
         localObject = paramArrayOfByte;
         if (paramArrayOfByte == null) {
-          ac.e("MicroMsg.Wear.BaseHttpServer", "request data decrypt error");
+          ad.e("MicroMsg.Wear.BaseHttpServer", "request data decrypt error");
         }
       }
     }
@@ -46,10 +46,10 @@ public abstract class a
     {
       return;
       localObject = s(paramInt3, (byte[])localObject);
-    } while (!ewI());
+    } while (!eKO());
     paramArrayOfByte = (byte[])localObject;
-    if (Ub(paramInt3)) {
-      paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.ewp().bW((byte[])localObject);
+    if (VT(paramInt3)) {
+      paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.eKv().cd((byte[])localObject);
     }
     localObject = new ByteArrayOutputStream();
     DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
@@ -65,17 +65,17 @@ public abstract class a
           localDataOutputStream.writeInt(paramArrayOfByte.length);
           localDataOutputStream.write(paramArrayOfByte);
           paramArrayOfByte = ((ByteArrayOutputStream)localObject).toByteArray();
-          ac.i("MicroMsg.Wear.BaseHttpServer", "send data funId=%d length=%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramArrayOfByte.length) });
-          if (Ud(paramInt3)) {
+          ad.i("MicroMsg.Wear.BaseHttpServer", "send data funId=%d length=%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramArrayOfByte.length) });
+          if (VV(paramInt3)) {
             break;
           }
-          com.tencent.mm.plugin.wear.model.a.ewp().bU(paramArrayOfByte);
+          com.tencent.mm.plugin.wear.model.a.eKv().cb(paramArrayOfByte);
           return;
         }
       }
       catch (IOException paramArrayOfByte)
       {
-        ac.printErrStackTrace("MicroMsg.Wear.BaseHttpServer", paramArrayOfByte, "gen response data error connectType=%d, sessionId=%d, funId=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+        ad.printErrStackTrace("MicroMsg.Wear.BaseHttpServer", paramArrayOfByte, "gen response data error connectType=%d, sessionId=%d, funId=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
         return;
       }
       localDataOutputStream.writeInt(0);
@@ -85,15 +85,15 @@ public abstract class a
       public final void run()
       {
         AppMethodBeat.i(30066);
-        com.tencent.mm.plugin.wear.model.a.ewp().bU(paramArrayOfByte);
+        com.tencent.mm.plugin.wear.model.a.eKv().cb(paramArrayOfByte);
         AppMethodBeat.o(30066);
       }
     }, "WearSendResponseTask");
   }
   
-  public abstract List<Integer> ewH();
+  public abstract List<Integer> eKN();
   
-  public boolean ewI()
+  public boolean eKO()
   {
     return true;
   }

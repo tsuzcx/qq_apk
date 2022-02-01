@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class yi
   extends b
 {
-  public a dBW;
+  public a dMB;
+  public b dMC;
   
   public yi()
   {
@@ -15,25 +16,29 @@ public final class yi
   
   private yi(byte paramByte)
   {
-    AppMethodBeat.i(19849);
-    this.dBW = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(91223);
+    this.dMB = new a();
+    this.dMC = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19849);
+    AppMethodBeat.o(91223);
   }
   
   public static final class a
   {
-    public String cIZ;
-    public int cZu;
-    public byte[] data;
-    public String dda;
-    public boolean deB;
+    public String scene;
+  }
+  
+  public static final class b
+  {
+    public String content;
+    public String dMD;
+    public String url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.yi
  * JD-Core Version:    0.7.0.1
  */

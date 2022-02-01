@@ -34,7 +34,7 @@ public class Request
   
   public Request(int paramInt1, String paramString, Map<String, String> paramMap, byte[] paramArrayOfByte, int paramInt2, NetworkRequestCompleteListener paramNetworkRequestCompleteListener)
   {
-    AppMethodBeat.i(193864);
+    AppMethodBeat.i(220646);
     this.mLock = new Object();
     this.mCanceled = false;
     this.mHttpMethod = paramInt1;
@@ -47,7 +47,7 @@ public class Request
       this.mHttpHeaders = paramMap;
       this.mRequestCompleteListener = paramNetworkRequestCompleteListener;
       this.mDefaultTrafficStatsTag = findDefaultTrafficStatsTag(paramString);
-      AppMethodBeat.o(193864);
+      AppMethodBeat.o(220646);
       return;
       paramInt2 = 8000;
     }
@@ -55,7 +55,7 @@ public class Request
   
   private static int findDefaultTrafficStatsTag(String paramString)
   {
-    AppMethodBeat.i(193865);
+    AppMethodBeat.i(220647);
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = Uri.parse(paramString);
@@ -65,12 +65,12 @@ public class Request
         if (paramString != null)
         {
           int i = paramString.hashCode();
-          AppMethodBeat.o(193865);
+          AppMethodBeat.o(220647);
           return i;
         }
       }
     }
-    AppMethodBeat.o(193865);
+    AppMethodBeat.o(220647);
     return 0;
   }
   
@@ -86,46 +86,46 @@ public class Request
   
   public int compareTo(Request paramRequest)
   {
-    AppMethodBeat.i(193869);
+    AppMethodBeat.i(220651);
     Request.Priority localPriority1 = getPriority();
     Request.Priority localPriority2 = paramRequest.getPriority();
     if (localPriority1 == localPriority2)
     {
       i = this.mSequence.intValue();
       j = paramRequest.mSequence.intValue();
-      AppMethodBeat.o(193869);
+      AppMethodBeat.o(220651);
       return i - j;
     }
     int i = localPriority2.ordinal();
     int j = localPriority1.ordinal();
-    AppMethodBeat.o(193869);
+    AppMethodBeat.o(220651);
     return i - j;
   }
   
   public void deliverError(IOException paramIOException)
   {
-    AppMethodBeat.i(193868);
+    AppMethodBeat.i(220650);
     synchronized (this.mLock)
     {
       NetworkRequestCompleteListener localNetworkRequestCompleteListener = this.mRequestCompleteListener;
       if (localNetworkRequestCompleteListener != null) {
         localNetworkRequestCompleteListener.onErrorResponse(this, paramIOException);
       }
-      AppMethodBeat.o(193868);
+      AppMethodBeat.o(220650);
       return;
     }
   }
   
   public void deliverResponse(Response paramResponse)
   {
-    AppMethodBeat.i(193867);
+    AppMethodBeat.i(220649);
     synchronized (this.mLock)
     {
       NetworkRequestCompleteListener localNetworkRequestCompleteListener = this.mRequestCompleteListener;
       if (localNetworkRequestCompleteListener != null) {
         localNetworkRequestCompleteListener.onResponseReceived(this, paramResponse);
       }
-      AppMethodBeat.o(193867);
+      AppMethodBeat.o(220649);
       return;
     }
   }
@@ -152,15 +152,15 @@ public class Request
   
   public final int getSequence()
   {
-    AppMethodBeat.i(193866);
+    AppMethodBeat.i(220648);
     if (this.mSequence == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("getSequence called before setSequence");
-      AppMethodBeat.o(193866);
+      AppMethodBeat.o(220648);
       throw localIllegalStateException;
     }
     int i = this.mSequence.intValue();
-    AppMethodBeat.o(193866);
+    AppMethodBeat.o(220648);
     return i;
   }
   
@@ -201,14 +201,14 @@ public class Request
   
   public String toString()
   {
-    AppMethodBeat.i(193870);
+    AppMethodBeat.i(220652);
     String str2 = "0x" + Integer.toHexString(getTrafficStatsTag());
     StringBuilder localStringBuilder = new StringBuilder();
     if (isCanceled()) {}
     for (String str1 = "[X] ";; str1 = "[ ] ")
     {
       str1 = str1 + getUrl() + " " + str2 + " " + getPriority() + " " + this.mSequence;
-      AppMethodBeat.o(193870);
+      AppMethodBeat.o(220652);
       return str1;
     }
   }

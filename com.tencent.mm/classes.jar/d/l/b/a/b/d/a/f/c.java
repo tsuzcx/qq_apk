@@ -1,18 +1,18 @@
 package d.l.b.a.b.d.a.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.a.g;
 
 final class c<T>
 {
-  final g LpZ;
+  final g NgW;
   final T result;
   
   public c(T paramT, g paramg)
   {
     this.result = paramT;
-    this.LpZ = paramg;
+    this.NgW = paramg;
   }
   
   public final boolean equals(Object paramObject)
@@ -23,7 +23,7 @@ final class c<T>
       if ((paramObject instanceof c))
       {
         paramObject = (c)paramObject;
-        if ((!k.g(this.result, paramObject.result)) || (!k.g(this.LpZ, paramObject.LpZ))) {}
+        if ((!p.i(this.result, paramObject.result)) || (!p.i(this.NgW, paramObject.NgW))) {}
       }
     }
     else
@@ -43,7 +43,7 @@ final class c<T>
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.LpZ;
+      localObject = this.NgW;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -55,7 +55,7 @@ final class c<T>
   public final String toString()
   {
     AppMethodBeat.i(58021);
-    String str = "EnhancementResult(result=" + this.result + ", enhancementAnnotations=" + this.LpZ + ")";
+    String str = "EnhancementResult(result=" + this.result + ", enhancementAnnotations=" + this.NgW + ")";
     AppMethodBeat.o(58021);
     return str;
   }

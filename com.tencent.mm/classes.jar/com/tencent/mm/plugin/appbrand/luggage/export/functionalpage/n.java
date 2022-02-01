@@ -1,61 +1,47 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import com.tencent.mm.plugin.appbrand.config.v;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/InvokeCallbackContext;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CallbackContext;", "transitiveData", "", "(Ljava/lang/String;)V", "getTransitiveData", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/GetSycConfigTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
 final class n
-  extends a
+  implements k<IPCString, AppBrandSysConfigWC>
 {
-  final String jDU;
-  
-  public n(String paramString)
+  private static AppBrandSysConfigWC b(IPCString paramIPCString)
   {
-    super((byte)0);
-    this.jDU = paramString;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(50882);
-    if (this != paramObject)
+    AppMethodBeat.i(50878);
+    ad.i("MicroMsg.AppBrand.FunctionalConfigAssembler", "invoke GetSycConfigTask with ".concat(String.valueOf(paramIPCString)));
+    if (paramIPCString == null) {}
+    try
     {
-      if ((paramObject instanceof n))
+      p.gfZ();
+      if (g.ajA().aiK())
       {
-        paramObject = (n)paramObject;
-        if (!k.g(this.jDU, paramObject.jDU)) {}
+        paramIPCString = v.NB(paramIPCString.value);
+        if (paramIPCString != null)
+        {
+          paramIPCString.cnf = AppBrandGlobalSystemConfig.bdT();
+          AppMethodBeat.o(50878);
+          return paramIPCString;
+        }
       }
     }
-    else
+    catch (Exception paramIPCString)
     {
-      AppMethodBeat.o(50882);
-      return true;
+      AppMethodBeat.o(50878);
+      return null;
     }
-    AppMethodBeat.o(50882);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(50881);
-    String str = this.jDU;
-    if (str != null)
-    {
-      int i = str.hashCode();
-      AppMethodBeat.o(50881);
-      return i;
-    }
-    AppMethodBeat.o(50881);
-    return 0;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(50880);
-    String str = "InvokeCallbackContext(transitiveData=" + this.jDU + ")";
-    AppMethodBeat.o(50880);
-    return str;
+    AppMethodBeat.o(50878);
+    return null;
   }
 }
 

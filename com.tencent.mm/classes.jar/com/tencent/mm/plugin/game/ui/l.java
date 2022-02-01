@@ -12,13 +12,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.o;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.aw.q;
 import com.tencent.mm.plugin.game.model.c;
 import com.tencent.mm.plugin.game.model.e;
 import com.tencent.mm.plugin.game.widget.TextProgressBar;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -28,23 +28,23 @@ public final class l
   public l(Context paramContext)
   {
     super(paramContext);
-    this.tse = 2131494338;
+    this.uqB = 2131494338;
   }
   
   protected final void a(c paramc, m.b paramb)
   {
     AppMethodBeat.i(42203);
-    paramb.tsy.removeAllViews();
-    if (!bs.isNullOrNil(paramc.tcO))
+    paramb.uqV.removeAllViews();
+    if (!bt.isNullOrNil(paramc.uaE))
     {
       View localView = View.inflate(this.mContext, 2131494318, null);
       ImageView localImageView = (ImageView)localView.findViewById(2131300461);
-      com.tencent.mm.av.a.a locala = o.aFB();
-      paramc = paramc.tcO;
+      com.tencent.mm.aw.a.a locala = q.aIJ();
+      paramc = paramc.uaE;
       c.a locala1 = new c.a();
-      locala1.hKw = true;
-      locala.a(paramc, localImageView, locala1.aFT());
-      paramb.tsy.addView(localView, new ViewGroup.LayoutParams(-1, com.tencent.mm.cc.a.fromDPToPix(this.mContext, 100)));
+      locala1.idq = true;
+      locala.a(paramc, localImageView, locala1.aJc());
+      paramb.uqV.addView(localView, new ViewGroup.LayoutParams(-1, com.tencent.mm.cc.a.fromDPToPix(this.mContext, 100)));
     }
     AppMethodBeat.o(42203);
   }
@@ -52,89 +52,89 @@ public final class l
   protected final void a(c paramc, m.b paramb, int paramInt)
   {
     AppMethodBeat.i(42202);
-    paramb.tsp.setText(paramc.position);
-    Object localObject = paramb.tsp;
+    paramb.uqM.setText(paramc.position);
+    Object localObject = paramb.uqM;
     int i;
-    if (this.tsg)
+    if (this.uqD)
     {
       i = 0;
       ((TextView)localObject).setVisibility(i);
-      localObject = ahG(paramc.field_appId);
+      localObject = ami(paramc.field_appId);
       if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
         break label323;
       }
-      paramb.tsq.setImageBitmap((Bitmap)localObject);
+      paramb.uqN.setImageBitmap((Bitmap)localObject);
       label84:
-      paramb.tru.setText(paramc.field_appName);
-      if (!bs.isNullOrNil(paramc.tcK)) {
+      paramb.upR.setText(paramc.field_appName);
+      if (!bt.isNullOrNil(paramc.uaA)) {
         break label336;
       }
-      paramb.tss.setVisibility(8);
+      paramb.uqP.setVisibility(8);
       label114:
-      if (!bs.isNullOrNil(paramc.tcL)) {
+      if (!bt.isNullOrNil(paramc.uaB)) {
         break label358;
       }
-      paramb.tst.setVisibility(8);
+      paramb.uqQ.setVisibility(8);
       label133:
-      if (bs.gY(paramc.tcU)) {
+      if (bt.hj(paramc.uaK)) {
         break label380;
       }
-      paramb.tsr.setVisibility(0);
-      paramb.tsr.setText((CharSequence)paramc.tcU.get(0));
+      paramb.uqO.setVisibility(0);
+      paramb.uqO.setText((CharSequence)paramc.uaK.get(0));
     }
     for (;;)
     {
-      paramb.tsv.setTextSize(this.toL);
-      paramb.tsu.setOnClickListener(this.tpB);
-      paramb.tsv.setOnClickListener(this.tpB);
-      paramb.tsu.setTag(paramc);
-      paramb.tsv.setTag(paramc);
-      this.toQ.a(paramb.tsv, paramb.tsu, paramc, (com.tencent.mm.plugin.game.model.l)this.tsj.get(paramc.field_appId));
-      paramb.tsw.setData(paramc.tcS);
-      paramb.tsx.removeAllViews();
-      paramc = (View)this.tsk.get(paramInt);
+      paramb.uqS.setTextSize(this.uni);
+      paramb.uqR.setOnClickListener(this.unY);
+      paramb.uqS.setOnClickListener(this.unY);
+      paramb.uqR.setTag(paramc);
+      paramb.uqS.setTag(paramc);
+      this.unn.a(paramb.uqS, paramb.uqR, paramc, (com.tencent.mm.plugin.game.model.l)this.uqG.get(paramc.field_appId));
+      paramb.uqT.setData(paramc.uaI);
+      paramb.uqU.removeAllViews();
+      paramc = (View)this.uqH.get(paramInt);
       if (paramc != null)
       {
         if ((paramc.getParent() instanceof ViewGroup)) {
           ((ViewGroup)paramc.getParent()).removeAllViews();
         }
-        paramb.tsx.addView(paramc);
+        paramb.uqU.addView(paramc);
       }
       AppMethodBeat.o(42202);
       return;
       i = 8;
       break;
       label323:
-      paramb.tsq.setImageResource(2131232498);
+      paramb.uqN.setImageResource(2131232498);
       break label84;
       label336:
-      paramb.tss.setVisibility(0);
-      paramb.tss.setText(paramc.tcK);
+      paramb.uqP.setVisibility(0);
+      paramb.uqP.setText(paramc.uaA);
       break label114;
       label358:
-      paramb.tst.setVisibility(0);
-      paramb.tst.setText(paramc.tcL);
+      paramb.uqQ.setVisibility(0);
+      paramb.uqQ.setText(paramc.uaB);
       break label133;
       label380:
-      if (!bs.isNullOrNil(paramc.tcX))
+      if (!bt.isNullOrNil(paramc.uaN))
       {
-        paramb.tsr.setVisibility(0);
-        paramb.tsr.setText(paramc.tcX);
+        paramb.uqO.setVisibility(0);
+        paramb.uqO.setText(paramc.uaN);
       }
       try
       {
-        paramb.tsr.setBackgroundDrawable(e.eQ(Color.parseColor(paramc.tcY), com.tencent.mm.cc.a.fromDPToPix(this.mContext, 10)));
+        paramb.uqO.setBackgroundDrawable(e.eU(Color.parseColor(paramc.uaO), com.tencent.mm.cc.a.fromDPToPix(this.mContext, 10)));
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
-        ac.e("MicroMsg.GameLibraryListAdapter", localIllegalArgumentException.getMessage());
-        paramb.tsr.setVisibility(8);
+        ad.e("MicroMsg.GameLibraryListAdapter", localIllegalArgumentException.getMessage());
+        paramb.uqO.setVisibility(8);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ac.e("MicroMsg.GameLibraryListAdapter", localException.getMessage());
+          ad.e("MicroMsg.GameLibraryListAdapter", localException.getMessage());
         }
       }
     }
@@ -142,7 +142,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.l
  * JD-Core Version:    0.7.0.1
  */

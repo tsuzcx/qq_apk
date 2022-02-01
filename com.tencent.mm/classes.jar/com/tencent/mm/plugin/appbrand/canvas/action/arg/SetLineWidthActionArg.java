@@ -11,7 +11,7 @@ public class SetLineWidthActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetLineWidthActionArg> CREATOR;
-  public float jzG;
+  public float jTB;
   
   static
   {
@@ -50,7 +50,7 @@ public class SetLineWidthActionArg
       AppMethodBeat.o(145214);
       return false;
     }
-    if (Float.compare(((SetLineWidthActionArg)paramObject).jzG, this.jzG) == 0)
+    if (Float.compare(((SetLineWidthActionArg)paramObject).jTB, this.jTB) == 0)
     {
       AppMethodBeat.o(145214);
       return true;
@@ -63,14 +63,14 @@ public class SetLineWidthActionArg
   {
     AppMethodBeat.i(145211);
     super.h(paramParcel);
-    this.jzG = paramParcel.readFloat();
+    this.jTB = paramParcel.readFloat();
     AppMethodBeat.o(145211);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145215);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jzG) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jTB) });
     AppMethodBeat.o(145215);
     return i;
   }
@@ -79,7 +79,7 @@ public class SetLineWidthActionArg
   {
     AppMethodBeat.i(145212);
     super.parse(paramJSONObject);
-    this.jzG = g.f(paramJSONObject.optJSONArray("data"), 0);
+    this.jTB = g.f(paramJSONObject.optJSONArray("data"), 0);
     AppMethodBeat.o(145212);
   }
   
@@ -87,7 +87,7 @@ public class SetLineWidthActionArg
   {
     AppMethodBeat.i(145213);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.jzG);
+    paramParcel.writeFloat(this.jTB);
     AppMethodBeat.o(145213);
   }
 }

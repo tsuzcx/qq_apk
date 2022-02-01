@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.k;
@@ -19,8 +20,8 @@ import com.tencent.mm.plugin.fts.a.e;
 import com.tencent.mm.plugin.fts.a.e.a;
 import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.plugin.websearch.api.z;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.websearch.api.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
@@ -32,65 +33,69 @@ public class FTSInfoUI
   extends MMActivity
   implements l
 {
-  private p mcf;
-  private TextView sEo;
-  private Button xnv;
-  private Button xnw;
-  private Button xnx;
-  private Button xny;
-  private View.OnClickListener xnz;
+  private p mCn;
+  private TextView tBf;
+  private View.OnClickListener yBA;
+  private Button yBw;
+  private Button yBx;
+  private Button yBy;
+  private Button yBz;
   
   public FTSInfoUI()
   {
     AppMethodBeat.i(28076);
-    this.xnz = new View.OnClickListener()
+    this.yBA = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(28075);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/search/ui/FTSInfoUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
         int i = ((Integer)paramAnonymousView.getTag()).intValue();
         if (i == 1)
         {
           paramAnonymousView = (com.tencent.mm.plugin.comm.a.b)g.ab(com.tencent.mm.plugin.comm.a.b.class);
-          FTSInfoUI.doF();
-          paramAnonymousView = paramAnonymousView.bWY();
+          FTSInfoUI.dzh();
+          paramAnonymousView = paramAnonymousView.cbB();
         }
-        StringBuffer localStringBuffer;
         for (;;)
         {
-          localStringBuffer = new StringBuffer();
+          localObject = new StringBuffer();
           paramAnonymousView = paramAnonymousView.iterator();
           while (paramAnonymousView.hasNext())
           {
             Pair localPair = (Pair)paramAnonymousView.next();
-            localStringBuffer.append("[");
-            localStringBuffer.append(((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).wk((String)localPair.first));
-            localStringBuffer.append("]\n");
-            localStringBuffer.append((String)localPair.second);
-            localStringBuffer.append("\n");
+            ((StringBuffer)localObject).append("[");
+            ((StringBuffer)localObject).append(((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).zf((String)localPair.first));
+            ((StringBuffer)localObject).append("]\n");
+            ((StringBuffer)localObject).append((String)localPair.second);
+            ((StringBuffer)localObject).append("\n");
           }
           if (i == 2)
           {
-            paramAnonymousView = ((com.tencent.mm.plugin.comm.a.b)g.ab(com.tencent.mm.plugin.comm.a.b.class)).rO(FTSInfoUI.doF());
+            paramAnonymousView = ((com.tencent.mm.plugin.comm.a.b)g.ab(com.tencent.mm.plugin.comm.a.b.class)).tN(FTSInfoUI.dzh());
           }
           else
           {
             if (i != 3) {
               break;
             }
-            paramAnonymousView = ((com.tencent.mm.plugin.comm.a.b)g.ab(com.tencent.mm.plugin.comm.a.b.class)).rN(FTSInfoUI.doF());
+            paramAnonymousView = ((com.tencent.mm.plugin.comm.a.b)g.ab(com.tencent.mm.plugin.comm.a.b.class)).tM(FTSInfoUI.dzh());
           }
         }
+        a.a(this, "com/tencent/mm/plugin/search/ui/FTSInfoUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(28075);
         return;
-        FTSInfoUI.b(FTSInfoUI.this).setText(localStringBuffer.toString());
+        FTSInfoUI.b(FTSInfoUI.this).setText(((StringBuffer)localObject).toString());
+        a.a(this, "com/tencent/mm/plugin/search/ui/FTSInfoUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(28075);
       }
     };
     AppMethodBeat.o(28076);
   }
   
-  public static long doF()
+  public static long dzh()
   {
     AppMethodBeat.i(28078);
     Calendar localCalendar = Calendar.getInstance();
@@ -106,33 +111,33 @@ public class FTSInfoUI
   public final void b(k paramk)
   {
     AppMethodBeat.i(28079);
-    if (this.mcf != null) {
-      this.mcf.dismiss();
+    if (this.mCn != null) {
+      this.mCn.dismiss();
     }
     paramk = new StringBuffer();
-    paramk.append("[DBSize]=" + bs.An(e.swU.swX * 1048576L));
+    paramk.append("[DBSize]=" + bt.Dd(e.ttv.tty * 1048576L));
     paramk.append("\n");
-    paramk.append("[WXContact]=" + e.swU.swY);
+    paramk.append("[WXContact]=" + e.ttv.ttz);
     paramk.append("\n");
-    paramk.append("[WXChatroom]=" + e.swU.swZ);
+    paramk.append("[WXChatroom]=" + e.ttv.ttA);
     paramk.append("\n");
-    paramk.append("[Favorite]=" + e.swU.sxb);
+    paramk.append("[Favorite]=" + e.ttv.ttC);
     paramk.append("\n");
-    paramk.append("[Message]=" + e.swU.sxa);
+    paramk.append("[Message]=" + e.ttv.ttB);
     paramk.append("\n");
-    paramk.append("[WebSearchH5Version]=" + z.Ul(0));
+    paramk.append("[WebSearchH5Version]=" + ad.We(0));
     paramk.append("\n");
-    paramk.append("[TopStoryH5Version]=" + z.Ul(1));
+    paramk.append("[TopStoryH5Version]=" + ad.We(1));
     paramk.append("\n");
-    paramk.append("[WxAppH5Version]=" + z.Ul(3));
+    paramk.append("[WxAppH5Version]=" + ad.We(3));
     paramk.append("\n");
-    paramk.append("[BoxH5Version]=" + z.Ul(2));
+    paramk.append("[BoxH5Version]=" + ad.We(2));
     paramk.append("\n");
     paramk.append("[TopStoryWebViewCore]=" + ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getWebViewType());
     paramk.append("\n");
-    paramk.append("[PardusH5Version]=" + z.Ul(5));
+    paramk.append("[PardusH5Version]=" + ad.We(5));
     paramk.append("\n");
-    this.sEo.setText(paramk.toString());
+    this.tBf.setText(paramk.toString());
     AppMethodBeat.o(28079);
   }
   
@@ -156,13 +161,16 @@ public class FTSInfoUI
         return false;
       }
     });
-    this.xnv = ((Button)findViewById(2131300999));
-    this.sEo = ((TextView)findViewById(2131301013));
-    this.xnv.setOnClickListener(new View.OnClickListener()
+    this.yBw = ((Button)findViewById(2131300999));
+    this.tBf = ((TextView)findViewById(2131301013));
+    this.yBw.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(28074);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/search/ui/FTSInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (FTSInfoUI.a(FTSInfoUI.this) == null) {
           FTSInfoUI.a(FTSInfoUI.this, h.b(FTSInfoUI.this, FTSInfoUI.this.getString(2131760709), true, new DialogInterface.OnCancelListener()
           {
@@ -176,21 +184,22 @@ public class FTSInfoUI
         }
         FTSInfoUI.a(FTSInfoUI.this).show();
         paramAnonymousView = new j();
-        paramAnonymousView.jwR = 65526;
-        paramAnonymousView.syI = FTSInfoUI.this;
+        paramAnonymousView.jQN = 65526;
+        paramAnonymousView.tvj = FTSInfoUI.this;
         ((n)g.ad(n.class)).search(10000, paramAnonymousView);
+        a.a(this, "com/tencent/mm/plugin/search/ui/FTSInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(28074);
       }
     });
-    this.xnw = ((Button)findViewById(2131303407));
-    this.xnx = ((Button)findViewById(2131303409));
-    this.xny = ((Button)findViewById(2131303408));
-    this.xnw.setTag(Integer.valueOf(1));
-    this.xnx.setTag(Integer.valueOf(2));
-    this.xny.setTag(Integer.valueOf(3));
-    this.xnw.setOnClickListener(this.xnz);
-    this.xnx.setOnClickListener(this.xnz);
-    this.xny.setOnClickListener(this.xnz);
+    this.yBx = ((Button)findViewById(2131303407));
+    this.yBy = ((Button)findViewById(2131303409));
+    this.yBz = ((Button)findViewById(2131303408));
+    this.yBx.setTag(Integer.valueOf(1));
+    this.yBy.setTag(Integer.valueOf(2));
+    this.yBz.setTag(Integer.valueOf(3));
+    this.yBx.setOnClickListener(this.yBA);
+    this.yBy.setOnClickListener(this.yBA);
+    this.yBz.setOnClickListener(this.yBA);
     AppMethodBeat.o(28077);
   }
   

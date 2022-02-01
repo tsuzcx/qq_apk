@@ -1,5 +1,6 @@
 package com.tencent.mm.console;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,40 +10,43 @@ import android.os.Debug;
 import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jw;
-import com.tencent.mm.g.a.jw.a;
+import com.tencent.mm.g.a.ke;
+import com.tencent.mm.g.a.ke.a;
+import com.tencent.mm.g.a.tr;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelmulti.o;
 import com.tencent.mm.modelmulti.p;
-import com.tencent.mm.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.plugin.performance.c.c;
+import com.tencent.mm.plugin.performance.c.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bv;
-import com.tencent.mm.storagebase.h;
-import com.tencent.mm.vfs.q;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.database.SQLiteDirectCursor;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.vfs.e;
+import com.tencent.recovery.wx.service.WXRecoveryUploadService;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 public final class Shell
 {
-  private static HashMap<String, a> fLq;
-  private static IntentFilter fLr;
-  private static Runnable fLs;
-  private Receiver fLp = null;
+  private static HashMap<String, a> geQ;
+  private static IntentFilter geR;
+  private static Runnable geS;
+  private Receiver geP = null;
   
   static
   {
     AppMethodBeat.i(20168);
-    fLq = new HashMap();
-    fLr = new IntentFilter();
+    geQ = new HashMap();
+    geR = new IntentFilter();
     a("wechat.shell.SET_NEXTRET", new a()
     {
       public final void s(Intent paramAnonymousIntent)
@@ -55,8 +59,8 @@ public final class Shell
           AppMethodBeat.o(20140);
           return;
         }
-        ac.w("MicroMsg.Shell", "kiro set Test.pushNextErrorRet(type=%d, err=%d)", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-        ab.dt(i, j);
+        ad.w("MicroMsg.Shell", "kiro set Test.pushNextErrorRet(type=%d, err=%d)", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+        ac.dv(i, j);
         AppMethodBeat.o(20140);
       }
     });
@@ -66,8 +70,8 @@ public final class Shell
       {
         AppMethodBeat.i(20153);
         int i = paramAnonymousIntent.getIntExtra("level", 0);
-        ac.w("MicroMsg.Shell", "kiro set Log.level=%d", new Object[] { Integer.valueOf(ac.getLogLevel()) });
-        ac.Ys(i);
+        ad.w("MicroMsg.Shell", "kiro set Log.level=%d", new Object[] { Integer.valueOf(ad.getLogLevel()) });
+        ad.aax(i);
         AppMethodBeat.o(20153);
       }
     });
@@ -76,8 +80,8 @@ public final class Shell
       public final void s(Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20157);
-        ab.ivA = paramAnonymousIntent.getBooleanExtra("value", false);
-        ac.w("MicroMsg.Shell", "kiro set Test.forceCDNTrans=%b", new Object[] { Boolean.valueOf(ab.ivA) });
+        ac.iOH = paramAnonymousIntent.getBooleanExtra("value", false);
+        ad.w("MicroMsg.Shell", "kiro set Test.forceCDNTrans=%b", new Object[] { Boolean.valueOf(ac.iOH) });
         AppMethodBeat.o(20157);
       }
     });
@@ -86,25 +90,25 @@ public final class Shell
       public final void s(Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20158);
-        ab.ivG = paramAnonymousIntent.getIntExtra("key", 0);
-        ab.ivH = paramAnonymousIntent.getIntExtra("val", 0);
-        ab.ivI = paramAnonymousIntent.getStringExtra("str");
-        ac.w("MicroMsg.Shell", "dkshell set [%d %d] [%s]", new Object[] { Integer.valueOf(ab.ivG), Integer.valueOf(ab.ivH), ab.ivI });
-        if (10009 == ab.ivG)
+        ac.iON = paramAnonymousIntent.getIntExtra("key", 0);
+        ac.iOO = paramAnonymousIntent.getIntExtra("val", 0);
+        ac.iOP = paramAnonymousIntent.getStringExtra("str");
+        ad.w("MicroMsg.Shell", "dkshell set [%d %d] [%s]", new Object[] { Integer.valueOf(ac.iON), Integer.valueOf(ac.iOO), ac.iOP });
+        if (10009 == ac.iON)
         {
-          int i = ab.ivH;
-          Shell.aaa();
+          int i = ac.iOO;
+          Shell.acC();
           AppMethodBeat.o(20158);
           return;
         }
-        if ((10014 == ab.ivG) && (ai.ciE()))
+        if ((10014 == ac.iON) && (aj.cnC()))
         {
-          o.aGm().a(7L, 1, "");
+          p.aJx().a(7L, 1, "");
           AppMethodBeat.o(20158);
           return;
         }
-        if (10015 == ab.ivG) {
-          ai.eVb();
+        if (10015 == ac.iON) {
+          aj.fkG();
         }
         AppMethodBeat.o(20158);
       }
@@ -114,8 +118,8 @@ public final class Shell
       public final void s(Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20159);
-        ab.ivF = paramAnonymousIntent.getIntExtra("value", 0);
-        ac.w("MicroMsg.Shell", "dkdnstd set Test.netDnsSimulateFault=%s", new Object[] { Integer.toBinaryString(ab.ivF) });
+        ac.iOM = paramAnonymousIntent.getIntExtra("value", 0);
+        ad.w("MicroMsg.Shell", "dkdnstd set Test.netDnsSimulateFault=%s", new Object[] { Integer.toBinaryString(ac.iOM) });
         AppMethodBeat.o(20159);
       }
     });
@@ -124,8 +128,8 @@ public final class Shell
       public final void s(Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20160);
-        ab.ivJ = paramAnonymousIntent.getStringExtra("errmsg");
-        ac.w("MicroMsg.Shell", "tiger set tigerIDCErrMsg =%s", new Object[] { ab.ivJ });
+        ac.iOQ = paramAnonymousIntent.getStringExtra("errmsg");
+        ad.w("MicroMsg.Shell", "tiger set tigerIDCErrMsg =%s", new Object[] { ac.iOQ });
         AppMethodBeat.o(20160);
       }
     });
@@ -134,9 +138,9 @@ public final class Shell
       public final void s(Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20161);
-        ab.ivK = paramAnonymousIntent.getStringExtra("acc");
-        ab.ivL = paramAnonymousIntent.getStringExtra("pass");
-        ac.w("MicroMsg.Shell", "dkwt shell [%s %s]", new Object[] { ab.ivK, ab.ivL });
+        ac.iOR = paramAnonymousIntent.getStringExtra("acc");
+        ac.iOS = paramAnonymousIntent.getStringExtra("pass");
+        ad.w("MicroMsg.Shell", "dkwt shell [%s %s]", new Object[] { ac.iOR, ac.iOS });
         AppMethodBeat.o(20161);
       }
     });
@@ -145,8 +149,8 @@ public final class Shell
       public final void s(Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20162);
-        ab.iwo = paramAnonymousIntent.getIntExtra("flag", 0);
-        ac.w("MicroMsg.Shell", "dkwt shell [%d]", new Object[] { Integer.valueOf(ab.iwo) });
+        ac.iPw = paramAnonymousIntent.getIntExtra("flag", 0);
+        ad.w("MicroMsg.Shell", "dkwt shell [%d]", new Object[] { Integer.valueOf(ac.iPw) });
         AppMethodBeat.o(20162);
       }
     });
@@ -155,10 +159,10 @@ public final class Shell
       public final void s(Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20163);
-        jw localjw = new jw();
-        localjw.dlq.dlv = paramAnonymousIntent.getExtras().getString("path", "/data/local/tmp/test.apk");
-        ac.w("MicroMsg.Shell", "hotpatch test [%s]", new Object[] { localjw.dlq.dlv });
-        com.tencent.mm.sdk.b.a.GpY.l(localjw);
+        ke localke = new ke();
+        localke.dxd.dxi = paramAnonymousIntent.getExtras().getString("path", "/data/local/tmp/test.apk");
+        ad.w("MicroMsg.Shell", "hotpatch test [%s]", new Object[] { localke.dxd.dxi });
+        com.tencent.mm.sdk.b.a.IbL.l(localke);
         AppMethodBeat.o(20163);
       }
     });
@@ -167,136 +171,21 @@ public final class Shell
       public final void s(final Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20143);
-        if (!ai.ciE())
+        if (!aj.cnC())
         {
           AppMethodBeat.o(20143);
           return;
         }
-        final String str = paramAnonymousIntent.getStringExtra("sql");
+        String str = paramAnonymousIntent.getStringExtra("sql");
         paramAnonymousIntent = paramAnonymousIntent.getStringExtra("file");
         if ((str != null) && (str.length() > 0))
         {
-          g.agU().az(new Runnable()
-          {
-            public final void run()
-            {
-              Object localObject4 = null;
-              com.tencent.wcdb.Cursor localCursor = null;
-              AppMethodBeat.i(20141);
-              SQLiteDatabase localSQLiteDatabase = g.agR().ghG.fdL();
-              Object localObject2 = localCursor;
-              Object localObject1 = localObject4;
-              for (;;)
-              {
-                long l;
-                try
-                {
-                  l = System.currentTimeMillis();
-                  localObject2 = localCursor;
-                  localObject1 = localObject4;
-                  localCursor = localSQLiteDatabase.rawQueryWithFactory(SQLiteDirectCursor.FACTORY, str, null, null);
-                  localObject2 = localCursor;
-                  localObject1 = localCursor;
-                  localObject4 = localCursor.getColumnNames();
-                  if (localObject4 != null) {
-                    continue;
-                  }
-                  i = 0;
-                  localObject2 = localCursor;
-                  localObject1 = localCursor;
-                  ac.i("MicroMsg.Shell", "Executing SQL from shell: " + str);
-                  if (i > 0)
-                  {
-                    localObject2 = localCursor;
-                    localObject1 = localCursor;
-                    ac.i("MicroMsg.Shell", " > " + TextUtils.join(" | ", (Object[])localObject4));
-                  }
-                  localObject2 = localCursor;
-                  localObject1 = localCursor;
-                  localObject4 = new StringBuilder(1024);
-                  localObject2 = localCursor;
-                  localObject1 = localCursor;
-                  if (!localCursor.moveToNext()) {
-                    break label465;
-                  }
-                  localObject2 = localCursor;
-                  localObject1 = localCursor;
-                  ((StringBuilder)localObject4).setLength(0);
-                  localObject2 = localCursor;
-                  localObject1 = localCursor;
-                  ((StringBuilder)localObject4).append(" > ");
-                  j = 0;
-                  if (j >= i) {
-                    break label444;
-                  }
-                  localObject2 = localCursor;
-                  localObject1 = localCursor;
-                  switch (localCursor.getType(j))
-                  {
-                  case 0: 
-                    localObject2 = localCursor;
-                    localObject1 = localCursor;
-                    ((StringBuilder)localObject4).append(localCursor.getString(j));
-                  }
-                }
-                catch (RuntimeException localRuntimeException2)
-                {
-                  int i;
-                  int j;
-                  localObject1 = localObject2;
-                  ac.e("MicroMsg.Shell", "Failed to execute SQL '%s': %s", new Object[] { str, localRuntimeException2.getMessage() });
-                  return;
-                  localObject2 = localRuntimeException2;
-                  localObject1 = localRuntimeException2;
-                  ((StringBuilder)localObject4).append("(blob)");
-                  continue;
-                }
-                finally
-                {
-                  if (localObject1 == null) {
-                    continue;
-                  }
-                  ((android.database.Cursor)localObject1).close();
-                  AppMethodBeat.o(20141);
-                }
-                localObject2 = localCursor;
-                localObject1 = localCursor;
-                ((StringBuilder)localObject4).append(" | ");
-                j += 1;
-                continue;
-                localObject2 = localCursor;
-                localObject1 = localCursor;
-                i = localObject4.length;
-                continue;
-                localObject2 = localCursor;
-                localObject1 = localCursor;
-                ((StringBuilder)localObject4).append("(null)");
-                continue;
-                label444:
-                RuntimeException localRuntimeException1 = localRuntimeException2;
-                localObject1 = localRuntimeException2;
-                ac.i("MicroMsg.Shell", ((StringBuilder)localObject4).toString());
-                continue;
-                label465:
-                localRuntimeException1 = localRuntimeException2;
-                localObject1 = localRuntimeException2;
-                ac.i("MicroMsg.Shell", "Finish executing SQL in %d ms: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), str });
-                if (localRuntimeException2 != null)
-                {
-                  localRuntimeException2.close();
-                  AppMethodBeat.o(20141);
-                  return;
-                }
-                AppMethodBeat.o(20141);
-                return;
-              }
-            }
-          });
+          g.ajF().ay(new Shell.2.1(this, str));
           AppMethodBeat.o(20143);
           return;
         }
         if ((paramAnonymousIntent != null) && (paramAnonymousIntent.length() > 0)) {
-          g.agU().az(new Runnable()
+          g.ajF().ay(new Runnable()
           {
             /* Error */
             public final void run()
@@ -304,9 +193,9 @@ public final class Shell
               // Byte code:
               //   0: sipush 20142
               //   3: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-              //   6: invokestatic 44	com/tencent/mm/kernel/g:agR	()Lcom/tencent/mm/kernel/e;
-              //   9: getfield 50	com/tencent/mm/kernel/e:ghG	Lcom/tencent/mm/storagebase/h;
-              //   12: invokevirtual 56	com/tencent/mm/storagebase/h:fdL	()Lcom/tencent/wcdb/database/SQLiteDatabase;
+              //   6: invokestatic 44	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+              //   9: getfield 50	com/tencent/mm/kernel/e:gBq	Lcom/tencent/mm/storagebase/h;
+              //   12: invokevirtual 56	com/tencent/mm/storagebase/h:ftT	()Lcom/tencent/wcdb/database/SQLiteDatabase;
               //   15: astore 6
               //   17: invokestatic 62	java/lang/System:currentTimeMillis	()J
               //   20: lstore_1
@@ -330,7 +219,7 @@ public final class Shell
               //   55: getfield 21	com/tencent/mm/console/Shell$2$2:val$file	Ljava/lang/String;
               //   58: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
               //   61: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
-              //   64: invokestatic 92	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+              //   64: invokestatic 92	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
               //   67: aload_3
               //   68: astore 4
               //   70: aload_3
@@ -356,7 +245,7 @@ public final class Shell
               //   111: getfield 21	com/tencent/mm/console/Shell$2$2:val$file	Ljava/lang/String;
               //   114: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
               //   117: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
-              //   120: invokestatic 105	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+              //   120: invokestatic 105	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
               //   123: aload_3
               //   124: ifnull +7 -> 131
               //   127: aload_3
@@ -382,7 +271,7 @@ public final class Shell
               //   168: lsub
               //   169: invokestatic 126	java/lang/Long:valueOf	(J)Ljava/lang/Long;
               //   172: aastore
-              //   173: invokestatic 129	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+              //   173: invokestatic 129	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
               //   176: aload_3
               //   177: invokevirtual 108	java/io/BufferedReader:close	()V
               //   180: aload 6
@@ -408,7 +297,7 @@ public final class Shell
               //   224: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
               //   227: iconst_0
               //   228: anewarray 4	java/lang/Object
-              //   231: invokestatic 135	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+              //   231: invokestatic 135	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
               //   234: aload_3
               //   235: ifnull +7 -> 242
               //   238: aload_3
@@ -486,7 +375,7 @@ public final class Shell
               //   333	1	4	localObject6	Object
               //   338	1	4	localException2	java.lang.Exception
               //   74	254	5	localObject7	Object
-              //   15	268	6	localSQLiteDatabase	SQLiteDatabase
+              //   15	268	6	localSQLiteDatabase	com.tencent.wcdb.database.SQLiteDatabase
               // Exception table:
               //   from	to	target	type
               //   43	67	94	java/io/FileNotFoundException
@@ -516,55 +405,66 @@ public final class Shell
         AppMethodBeat.o(20143);
       }
     });
-    a("wechat.shell.DUMP_HPROF", new b()
+    a("wechat.shell.GC", new a()
     {
       public final void s(Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20144);
-        if ((!bt.eWo()) && (!bt.eUi()))
+        Runtime.getRuntime().gc();
+        Toast.makeText(aj.getContext(), "trigger gc...", 0).show();
+        AppMethodBeat.o(20144);
+      }
+    });
+    a("wechat.shell.DUMP_HPROF", new b()
+    {
+      public final void s(Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(20145);
+        if ((!bu.flY()) && (!bu.fjL()))
         {
-          ac.e("MicroMsg.Shell", "not coolassist or monkey env, disable hprof dump cmd.");
-          AppMethodBeat.o(20144);
+          ad.e("MicroMsg.Shell", "not coolassist or monkey env, disable hprof dump cmd.");
+          AppMethodBeat.o(20145);
           return;
         }
+        Runtime.getRuntime().gc();
         paramAnonymousIntent = paramAnonymousIntent.getStringExtra("process_suffix");
-        if (bs.isNullOrNil(paramAnonymousIntent))
+        if (bt.isNullOrNil(paramAnonymousIntent))
         {
-          if (!ai.ciE()) {
-            AppMethodBeat.o(20144);
+          if (!aj.cnC()) {
+            AppMethodBeat.o(20145);
           }
         }
         else
         {
           if (!paramAnonymousIntent.startsWith(":"))
           {
-            ac.e("MicroMsg.Shell", "bad process suffix: %s", new Object[] { paramAnonymousIntent });
-            AppMethodBeat.o(20144);
+            ad.e("MicroMsg.Shell", "bad process suffix: %s", new Object[] { paramAnonymousIntent });
+            AppMethodBeat.o(20145);
             return;
           }
-          if (!ai.getProcessName().endsWith(paramAnonymousIntent))
+          if (!aj.getProcessName().endsWith(paramAnonymousIntent))
           {
-            AppMethodBeat.o(20144);
+            AppMethodBeat.o(20145);
             return;
           }
         }
-        paramAnonymousIntent = new com.tencent.mm.vfs.e(com.tencent.mm.loader.j.b.aph() + "hprofs");
+        paramAnonymousIntent = new e(com.tencent.mm.loader.j.b.arU() + "hprofs");
         if (!paramAnonymousIntent.exists()) {
           paramAnonymousIntent.mkdirs();
         }
-        paramAnonymousIntent = new com.tencent.mm.vfs.e(paramAnonymousIntent, ai.getProcessName().replace(".", "_").replace(":", "_") + "_" + new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault()).format(new Date()) + ".hprof");
+        paramAnonymousIntent = new e(paramAnonymousIntent, aj.getProcessName().replace(".", "_").replace(":", "_") + "_" + new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault()).format(new Date()) + ".hprof");
         try
         {
-          Debug.dumpHprofData(q.B(paramAnonymousIntent.fxV()));
-          Toast.makeText(ai.getContext(), "Done.", 1).show();
-          AppMethodBeat.o(20144);
+          Debug.dumpHprofData(com.tencent.mm.vfs.q.B(paramAnonymousIntent.fOK()));
+          Toast.makeText(aj.getContext(), "Done.", 1).show();
+          AppMethodBeat.o(20145);
           return;
         }
         catch (IOException paramAnonymousIntent)
         {
-          ac.printErrStackTrace("MicroMsg.Shell", paramAnonymousIntent, "dump hprof failed.", new Object[0]);
-          Toast.makeText(ai.getContext(), "Failure.", 1).show();
-          AppMethodBeat.o(20144);
+          ad.printErrStackTrace("MicroMsg.Shell", paramAnonymousIntent, "dump hprof failed.", new Object[0]);
+          Toast.makeText(aj.getContext(), "Failure.", 1).show();
+          AppMethodBeat.o(20145);
         }
       }
     });
@@ -572,147 +472,228 @@ public final class Shell
     {
       public final void s(Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(20145);
-        if ((!bt.eWo()) && (!bt.eUi()))
+        AppMethodBeat.i(20146);
+        if ((!bu.flY()) && (!bu.fjL()))
         {
-          ac.e("MicroMsg.Shell", "Environment denied: not coolassist or monkey env");
-          AppMethodBeat.o(20145);
+          ad.e("MicroMsg.Shell", "Environment denied: not coolassist or monkey env");
+          AppMethodBeat.o(20146);
           return;
         }
-        com.tencent.mm.plugin.performance.a.a.vAc.ap(bv.L("<cmd>\n\t<diagnostic>\n\t\t<MemoryHook\n\t\t\tenable='1'\n\t\t\tmultiprocess='0'\n\t\t\tduration='24'\n\t\t\thook='.*\\.so$'\n\t\t\tstack='0'\n\t\t\tmin='0'\n\t\t\tmax='0'\n\t\t\tforce='1'\n\t\t\tenableExpt='0'\n\t\t\tsampling='1'/>\n\t</diagnostic>\n</cmd>", "cmd"));
-        Toast.makeText(ai.getContext(), "Hook ALL .*\\.so", 0).show();
-        AppMethodBeat.o(20145);
+        com.tencent.mm.plugin.performance.a.a.wGn.au(bw.M("<cmd>\n\t<diagnostic>\n\t\t<MemoryHook\n\t\t\tenable='1'\n\t\t\tmultiprocess='0'\n\t\t\tduration='24'\n\t\t\thook='.*\\.so$'\n\t\t\tstack='0'\n\t\t\tmin='0'\n\t\t\tmax='0'\n\t\t\tforce='1'\n\t\t\tenableExpt='0'\n\t\t\tsampling='1'/>\n\t</diagnostic>\n</cmd>", "cmd"));
+        Toast.makeText(aj.getContext(), "Hook ALL .*\\.so", 0).show();
+        AppMethodBeat.o(20146);
       }
     });
     a("wechat.shell.HOOK_MM", new a()
     {
       public final void s(Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(20146);
-        if ((!bt.eWo()) && (!bt.eUi()))
+        AppMethodBeat.i(20147);
+        if ((!bu.flY()) && (!bu.fjL()))
         {
-          ac.e("MicroMsg.Shell", "Environment denied: not coolassist or monkey env");
-          AppMethodBeat.o(20146);
+          ad.e("MicroMsg.Shell", "Environment denied: not coolassist or monkey env");
+          AppMethodBeat.o(20147);
           return;
         }
-        com.tencent.mm.plugin.performance.a.a.vAc.ap(bv.L("<cmd>\n\t<diagnostic>\n\t\t<MemoryHook\n\t\t\tenable='1'\n\t\t\tmultiprocess='0'\n\t\t\tduration='24'\n\t\t\thook='.*com\\.tencent\\.mm.*\\.so$'\n\t\t\tstack='0'\n\t\t\tmin='0'\n\t\t\tmax='0'\n\t\t\tforce='1'\n\t\t\tenableExpt='0'\n\t\t\tsampling='1'/>\n\t</diagnostic>\n</cmd>", "cmd"));
-        Toast.makeText(ai.getContext(), "Hook MM so", 0).show();
-        AppMethodBeat.o(20146);
+        if (i.IS_FLAVOR_RED) {}
+        for (paramAnonymousIntent = ".*com\\.tencent\\.mm.*\\.so$;.*libhwui\\.so$;.*libEGL\\.so$;.*libGLES.*\\.so$";; paramAnonymousIntent = ".*com\\.tencent\\.mm.*\\.so$")
+        {
+          paramAnonymousIntent = "<cmd>\n\t<diagnostic>\n\t\t<MemoryHook\n\t\t\tenable='1'\n\t\t\tmultiprocess='0'\n\t\t\tduration='24'\n\t\t\thook='" + paramAnonymousIntent + "'\n\t\t\tstack='0'\n\t\t\tmin='0'\n\t\t\tmax='0'\n\t\t\tforce='1'\n\t\t\tenableExpt='0'\n\t\t\tsampling='1'\n\t\t\tmmap='1'/>\n\t</diagnostic>\n</cmd>";
+          com.tencent.mm.plugin.performance.a.a.wGn.au(bw.M(paramAnonymousIntent, "cmd"));
+          Toast.makeText(aj.getContext(), "Hook MM so", 0).show();
+          AppMethodBeat.o(20147);
+          return;
+        }
       }
     });
     a("wechat.shell.HOOK_DISABLE", new a()
     {
       public final void s(Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(20147);
-        if ((!bt.eWo()) && (!bt.eUi()))
+        AppMethodBeat.i(20148);
+        if ((!bu.flY()) && (!bu.fjL()))
         {
-          ac.e("MicroMsg.Shell", "Environment denied: not coolassist or monkey env");
-          AppMethodBeat.o(20147);
+          ad.e("MicroMsg.Shell", "Environment denied: not coolassist or monkey env");
+          AppMethodBeat.o(20148);
           return;
         }
-        com.tencent.mm.plugin.performance.a.a.vAc.ap(bv.L("<cmd>\n\t<diagnostic>\n\t\t<MemoryHook\n\t\t\tenable='0'\n\t\t\tenableExpt='0'\n\t\t\tforce='1'/>\n\t</diagnostic>\n</cmd>", "cmd"));
-        Toast.makeText(ai.getContext(), "Hook Disable", 0).show();
-        AppMethodBeat.o(20147);
+        com.tencent.mm.plugin.performance.a.a.wGn.au(bw.M("<cmd>\n\t<diagnostic>\n\t\t<MemoryHook\n\t\t\tenable='0'\n\t\t\tenableExpt='0'\n\t\t\tforce='1'/>\n\t</diagnostic>\n</cmd>", "cmd"));
+        Toast.makeText(aj.getContext(), "Hook Disable", 0).show();
+        AppMethodBeat.o(20148);
       }
     });
     a("wechat.shell.HOOK_REPORT", new a()
     {
       public final void s(Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(20148);
-        if ((!bt.eWo()) && (!bt.eUi()))
+        AppMethodBeat.i(20149);
+        if ((!bu.flY()) && (!bu.fjL()))
         {
-          ac.e("MicroMsg.Shell", "Environment denied: not coolassist or monkey env");
-          AppMethodBeat.o(20148);
+          ad.e("MicroMsg.Shell", "Environment denied: not coolassist or monkey env");
+          AppMethodBeat.o(20149);
           return;
         }
-        com.tencent.mm.plugin.performance.a.a.vAc.ap(bv.L("<cmd>\n\t<diagnostic>\n\t\t<report>\n\t\t\t<memory/>\n\t\t</report>\n\t</diagnostic>\n</cmd>", "cmd"));
-        Toast.makeText(ai.getContext(), "Hook report", 0).show();
-        AppMethodBeat.o(20148);
+        com.tencent.mm.plugin.performance.a.a.wGn.au(bw.M("<cmd>\n\t<diagnostic>\n\t\t<report>\n\t\t\t<memory/>\n\t\t</report>\n\t</diagnostic>\n</cmd>", "cmd"));
+        Toast.makeText(aj.getContext(), "Hook report", 0).show();
+        AppMethodBeat.o(20149);
       }
     });
     a("wechat.shell.MEMORY_HOOK", new a()
     {
       public final void s(Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(20149);
-        if ((!bt.eWo()) && (!bt.eUi()))
+        AppMethodBeat.i(20150);
+        if ((!bu.flY()) && (!bu.fjL()))
         {
-          ac.e("MicroMsg.Shell", "Environment denied: not coolassist or monkey env");
-          AppMethodBeat.o(20149);
+          ad.e("MicroMsg.Shell", "Environment denied: not coolassist or monkey env");
+          AppMethodBeat.o(20150);
           return;
         }
-        paramAnonymousIntent = "<cmd><diagnostic><MemoryHook enable='" + Shell.ah(paramAnonymousIntent.getStringExtra("enable"), "0") + "' multiprocess='" + Shell.ah(paramAnonymousIntent.getStringExtra("multiprocess"), "0") + "' duration='" + Shell.ah(paramAnonymousIntent.getStringExtra("duration"), "1") + "' hook='" + Shell.ah(paramAnonymousIntent.getStringExtra("hook"), ".*com\\.tencent\\.mm.*\\.so$") + "' ignore='" + Shell.ah(paramAnonymousIntent.getStringExtra("ignore"), "") + "' stack='" + Shell.ah(paramAnonymousIntent.getStringExtra("stack"), "0") + "' min='" + Shell.ah(paramAnonymousIntent.getStringExtra("min"), "0") + "' max='" + Shell.ah(paramAnonymousIntent.getStringExtra("max"), "0") + "' force='" + Shell.ah(paramAnonymousIntent.getStringExtra("force"), "0") + "' sampling='" + Shell.ah(paramAnonymousIntent.getStringExtra("sampling"), "1") + "' extreme='" + Shell.ah(paramAnonymousIntent.getStringExtra("extreme"), "0") + "' mmap='" + Shell.ah(paramAnonymousIntent.getStringExtra("mmap"), "0") + "'/></diagnostic></cmd>";
-        com.tencent.mm.plugin.performance.a.a.vAc.ap(bv.L(paramAnonymousIntent, "cmd"));
-        Toast.makeText(ai.getContext(), paramAnonymousIntent, 0).show();
-        AppMethodBeat.o(20149);
-      }
-    });
-    a("wechat.shell." + com.tencent.mm.plugin.performance.a.b.apj(""), new a()
-    {
-      public final void s(Intent paramAnonymousIntent)
-      {
-        AppMethodBeat.i(20150);
-        paramAnonymousIntent = "<cmd><diagnostic>" + String.format("<fetch target='%s' network='any' />", new Object[] { com.tencent.mm.plugin.performance.a.b.apj("©¥¶£ê¯¥§»") }) + "</diagnostic></cmd>";
-        com.tencent.mm.plugin.performance.a.a.vAc.ap(bv.L(paramAnonymousIntent, "cmd"));
-        Toast.makeText(ai.getContext(), "Diag op1 triggered.", 1).show();
+        paramAnonymousIntent = "<cmd><diagnostic><MemoryHook enable='" + Shell.ai(paramAnonymousIntent.getStringExtra("enable"), "0") + "' multiprocess='" + Shell.ai(paramAnonymousIntent.getStringExtra("multiprocess"), "0") + "' duration='" + Shell.ai(paramAnonymousIntent.getStringExtra("duration"), "1") + "' hook='" + Shell.ai(paramAnonymousIntent.getStringExtra("hook"), ".*com\\.tencent\\.mm.*\\.so$") + "' ignore='" + Shell.ai(paramAnonymousIntent.getStringExtra("ignore"), "") + "' stack='" + Shell.ai(paramAnonymousIntent.getStringExtra("stack"), "0") + "' min='" + Shell.ai(paramAnonymousIntent.getStringExtra("min"), "0") + "' max='" + Shell.ai(paramAnonymousIntent.getStringExtra("max"), "0") + "' force='" + Shell.ai(paramAnonymousIntent.getStringExtra("force"), "0") + "' sampling='" + Shell.ai(paramAnonymousIntent.getStringExtra("sampling"), "1") + "' extreme='" + Shell.ai(paramAnonymousIntent.getStringExtra("extreme"), "0") + "' mmap='" + Shell.ai(paramAnonymousIntent.getStringExtra("mmap"), "0") + "'/></diagnostic></cmd>";
+        com.tencent.mm.plugin.performance.a.a.wGn.au(bw.M(paramAnonymousIntent, "cmd"));
+        Toast.makeText(aj.getContext(), paramAnonymousIntent, 0).show();
         AppMethodBeat.o(20150);
       }
     });
-    a("wechat.shell." + com.tencent.mm.plugin.performance.a.b.apj(""), new a()
+    a("wechat.shell." + com.tencent.mm.plugin.performance.a.b.auo(""), new a()
     {
       public final void s(Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20151);
-        paramAnonymousIntent = "<cmd><diagnostic>" + String.format("<fetch target='%s' network='any' />", new Object[] { com.tencent.mm.plugin.performance.a.b.apj("©¥¶£ê¶¥§»") }) + "</diagnostic></cmd>";
-        com.tencent.mm.plugin.performance.a.a.vAc.ap(bv.L(paramAnonymousIntent, "cmd"));
-        Toast.makeText(ai.getContext(), "Diag op2 triggered.", 1).show();
+        paramAnonymousIntent = "<cmd><diagnostic>" + String.format("<fetch target='%s' network='any' />", new Object[] { com.tencent.mm.plugin.performance.a.b.auo("©¥¶£ê¯¥§»") }) + "</diagnostic></cmd>";
+        com.tencent.mm.plugin.performance.a.a.wGn.au(bw.M(paramAnonymousIntent, "cmd"));
+        Toast.makeText(aj.getContext(), "Diag op1 triggered.", 1).show();
         AppMethodBeat.o(20151);
       }
     });
-    a("wechat.shell." + com.tencent.mm.plugin.performance.a.b.apj(""), new a()
+    a("wechat.shell." + com.tencent.mm.plugin.performance.a.b.auo(""), new a()
     {
       public final void s(Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20152);
-        paramAnonymousIntent = bs.nullAsNil(paramAnonymousIntent.getStringExtra("name_regex"));
-        paramAnonymousIntent = "<cmd><diagnostic>" + String.format("<fetch target='%s' name_regex='%s' network='any' />", new Object[] { com.tencent.mm.plugin.performance.a.b.apj("§§´¥ì±¬"), paramAnonymousIntent }) + "</diagnostic></cmd>";
-        com.tencent.mm.plugin.performance.a.a.vAc.ap(bv.L(paramAnonymousIntent, "cmd"));
-        Toast.makeText(ai.getContext(), "Diag op3 triggered.", 1).show();
+        paramAnonymousIntent = "<cmd><diagnostic>" + String.format("<fetch target='%s' network='any' />", new Object[] { com.tencent.mm.plugin.performance.a.b.auo("©¥¶£ê¶¥§»") }) + "</diagnostic></cmd>";
+        com.tencent.mm.plugin.performance.a.a.wGn.au(bw.M(paramAnonymousIntent, "cmd"));
+        Toast.makeText(aj.getContext(), "Diag op2 triggered.", 1).show();
         AppMethodBeat.o(20152);
       }
     });
-    a("wechat.shell." + com.tencent.mm.plugin.performance.a.b.apj(""), new a()
+    a("wechat.shell." + com.tencent.mm.plugin.performance.a.b.auo(""), new a()
     {
       public final void s(Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20154);
-        paramAnonymousIntent = bs.nullAsNil(paramAnonymousIntent.getStringExtra("process"));
-        paramAnonymousIntent = "<cmd><diagnostic>" + String.format("<fetch target='%s' process='%s' network='any' />", new Object[] { com.tencent.mm.plugin.performance.a.b.apj("­ ²°"), paramAnonymousIntent }) + "</diagnostic></cmd>";
-        com.tencent.mm.plugin.performance.a.a.vAc.ap(bv.L(paramAnonymousIntent, "cmd"));
-        Toast.makeText(ai.getContext(), "Diag op4 triggered.", 1).show();
+        paramAnonymousIntent = bt.nullAsNil(paramAnonymousIntent.getStringExtra("name_regex"));
+        paramAnonymousIntent = "<cmd><diagnostic>" + String.format("<fetch target='%s' name_regex='%s' network='any' />", new Object[] { com.tencent.mm.plugin.performance.a.b.auo("§§´¥ì±¬"), paramAnonymousIntent }) + "</diagnostic></cmd>";
+        com.tencent.mm.plugin.performance.a.a.wGn.au(bw.M(paramAnonymousIntent, "cmd"));
+        Toast.makeText(aj.getContext(), "Diag op3 triggered.", 1).show();
         AppMethodBeat.o(20154);
       }
     });
-    a("wechat.shell." + com.tencent.mm.plugin.performance.a.b.apj(""), new a()
+    a("wechat.shell." + com.tencent.mm.plugin.performance.a.b.auo(""), new a()
     {
       public final void s(Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(20155);
-        paramAnonymousIntent = bs.nullAsNil(paramAnonymousIntent.getStringExtra("process"));
-        paramAnonymousIntent = "<cmd><diagnostic>" + String.format("<fetch target='%s' process='%s' network='any' />", new Object[] { com.tencent.mm.plugin.performance.a.b.apj("´­ ²°"), paramAnonymousIntent }) + "</diagnostic></cmd>";
-        com.tencent.mm.plugin.performance.a.a.vAc.ap(bv.L(paramAnonymousIntent, "cmd"));
-        Toast.makeText(ai.getContext(), "Diag op5 triggered.", 1).show();
+        paramAnonymousIntent = bt.nullAsNil(paramAnonymousIntent.getStringExtra("process"));
+        paramAnonymousIntent = "<cmd><diagnostic>" + String.format("<fetch target='%s' process='%s' network='any' />", new Object[] { com.tencent.mm.plugin.performance.a.b.auo("­ ²°"), paramAnonymousIntent }) + "</diagnostic></cmd>";
+        com.tencent.mm.plugin.performance.a.a.wGn.au(bw.M(paramAnonymousIntent, "cmd"));
+        Toast.makeText(aj.getContext(), "Diag op4 triggered.", 1).show();
         AppMethodBeat.o(20155);
       }
     });
-    fLs = new Runnable()
+    a("wechat.shell." + com.tencent.mm.plugin.performance.a.b.auo(""), new a()
+    {
+      public final void s(Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(193105);
+        paramAnonymousIntent = bt.nullAsNil(paramAnonymousIntent.getStringExtra("process"));
+        paramAnonymousIntent = "<cmd><diagnostic>" + String.format("<fetch target='%s' process='%s' network='any' />", new Object[] { com.tencent.mm.plugin.performance.a.b.auo("´­ ²°"), paramAnonymousIntent }) + "</diagnostic></cmd>";
+        com.tencent.mm.plugin.performance.a.a.wGn.au(bw.M(paramAnonymousIntent, "cmd"));
+        Toast.makeText(aj.getContext(), "Diag op5 triggered.", 1).show();
+        AppMethodBeat.o(193105);
+      }
+    });
+    a("wechat.shell.RECOVERY_FETCH_PATCH", new a()
+    {
+      @SuppressLint({"VisibleForTests"})
+      public final void s(Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(193106);
+        if ((!bu.flY()) && (!bu.fjL()))
+        {
+          ad.e("MicroMsg.Shell", "Environment denied: not coolassist or monkey env");
+          AppMethodBeat.o(193106);
+          return;
+        }
+        paramAnonymousIntent = paramAnonymousIntent.getStringExtra("fetch_base_id");
+        if (TextUtils.isEmpty(paramAnonymousIntent))
+        {
+          ad.e("MicroMsg.Shell", "base id is empty, abort");
+          Toast.makeText(aj.getContext(), "base id is empty, abort", 1).show();
+          AppMethodBeat.o(193106);
+          return;
+        }
+        ad.i("MicroMsg.Shell", "#RECOVERY_FETCH_PATCH, baseId = ".concat(String.valueOf(paramAnonymousIntent)));
+        WXRecoveryUploadService.fetchTinkerPatch(aj.getContext(), paramAnonymousIntent);
+        AppMethodBeat.o(193106);
+      }
+    });
+    a("wechat.shell.THREAD_HOOK", new a()
+    {
+      public final void s(Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(193107);
+        com.tencent.mm.plugin.performance.a.a.wGn.au(bw.M("<cmd>\n\t<diagnostic>\n\t\t<PthreadHook\n\t\t\tenable='1'\n\t\t\tmultiprocess='0'\n\t\t\tduration='24'\n\t\t\thook='.*\\.so$'\n\t\t\tforce='1'\n\t\t\tthread='.*'/>\n\t</diagnostic>\n</cmd>", "cmd"));
+        Toast.makeText(aj.getContext(), "PthreadHook enable", 1).show();
+        AppMethodBeat.o(193107);
+      }
+    });
+    a("wechat.shell.THREAD_DUMP", new a()
+    {
+      public final void s(Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(193108);
+        com.tencent.mm.plugin.performance.a.a.wGn.au(bw.M("<cmd>\n\t<diagnostic>\n\t\t<report>\n\t\t\t<pthread/>\n\t\t</report>\n\t</diagnostic>\n</cmd>", "cmd"));
+        Toast.makeText(aj.getContext(), "PthreadHook report", 1).show();
+        AppMethodBeat.o(193108);
+      }
+    });
+    a("wechat.shell.FINDER_SHELL", new a()
+    {
+      public final void s(Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(193109);
+        tr localtr = new tr();
+        localtr.dIc.action = "wechat.shell.FINDER_SHELL";
+        localtr.dIc.intent = paramAnonymousIntent;
+        com.tencent.mm.sdk.b.a.IbL.l(localtr);
+        AppMethodBeat.o(193109);
+      }
+    });
+    a("wechat.shell.WATCH_MEM", new a()
+    {
+      public final void s(Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(193110);
+        c.dyZ().dzc();
+        AppMethodBeat.o(193110);
+      }
+    });
+    a("wechat.shell.WATCH_PROC", new a()
+    {
+      public final void s(Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(193111);
+        ad.d("MicroMsg.ProcessWatchDog", "DumpProcesses: %s", new Object[] { Arrays.toString(d.dzd().dze().toArray()) });
+        AppMethodBeat.o(193111);
+      }
+    });
+    geS = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(20156);
-        ac.d("MicroMsg.Shell", "dkcrash begin tid:%d [%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Thread.currentThread().getName() });
+        AppMethodBeat.i(193112);
+        ad.d("MicroMsg.Shell", "dkcrash begin tid:%d [%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Thread.currentThread().getName() });
         Object[] arrayOfObject = new Object[1];
         throw new NullPointerException();
       }
@@ -723,18 +704,18 @@ public final class Shell
   private static void a(String paramString, a parama)
   {
     AppMethodBeat.i(20165);
-    fLr.addAction(paramString);
-    fLq.put(paramString, parama);
+    geR.addAction(paramString);
+    geQ.put(paramString, parama);
     AppMethodBeat.o(20165);
   }
   
   public final void init(Context paramContext)
   {
     AppMethodBeat.i(20166);
-    if (this.fLp == null)
+    if (this.geP == null)
     {
-      this.fLp = new Receiver();
-      paramContext.registerReceiver(this.fLp, fLr);
+      this.geP = new Receiver();
+      paramContext.registerReceiver(this.geP, geR);
     }
     AppMethodBeat.o(20166);
   }
@@ -746,20 +727,20 @@ public final class Shell
     {
       AppMethodBeat.i(20164);
       paramContext = paramIntent.getAction();
-      Shell.a locala = (Shell.a)Shell.aab().get(paramContext);
+      Shell.a locala = (Shell.a)Shell.acD().get(paramContext);
       if (locala == null)
       {
-        ac.e("MicroMsg.Shell", "no action found for %s", new Object[] { paramContext });
+        ad.e("MicroMsg.Shell", "no action found for %s", new Object[] { paramContext });
         AppMethodBeat.o(20164);
         return;
       }
-      if ((!ai.cin()) && (!(locala instanceof Shell.b)))
+      if ((!aj.cmR()) && (!(locala instanceof Shell.b)))
       {
-        ac.e("MicroMsg.Shell", "action[%s] can only run in mm process", new Object[] { paramContext });
+        ad.e("MicroMsg.Shell", "action[%s] can only run in mm process", new Object[] { paramContext });
         AppMethodBeat.o(20164);
         return;
       }
-      ac.e("MicroMsg.Shell", "shell action %s", new Object[] { paramContext });
+      ad.e("MicroMsg.Shell", "shell action %s", new Object[] { paramContext });
       locala.s(paramIntent);
       AppMethodBeat.o(20164);
     }

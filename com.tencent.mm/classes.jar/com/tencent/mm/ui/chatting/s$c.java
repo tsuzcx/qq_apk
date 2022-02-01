@@ -1,62 +1,41 @@
 package com.tencent.mm.ui.chatting;
 
-import android.content.Context;
-import android.os.Vibrator;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.messenger.a.c;
-import com.tencent.mm.plugin.story.api.i.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.chatting.d.a;
-import com.tencent.mm.ui.chatting.viewitems.bj;
+import com.tencent.mm.plugin.patmsg.PluginPatMsg;
+import com.tencent.mm.plugin.patmsg.a.b;
+import com.tencent.mm.plugin.patmsg.a.c.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.chatting.e.a;
+import com.tencent.mm.ui.chatting.viewitems.bk;
 
 public final class s$c
-  implements i.a
+  implements c.a
 {
-  private a HNS;
-  private Animation HNT;
-  private Vibrator njY;
+  private a JBI;
   
   public s$c(a parama)
   {
-    AppMethodBeat.i(196429);
-    this.njY = ((Vibrator)ai.getContext().getSystemService("vibrator"));
-    this.HNS = parama;
-    this.HNT = AnimationUtils.loadAnimation(parama.HZF.getContext(), 2130772172);
-    AppMethodBeat.o(196429);
+    this.JBI = parama;
   }
   
-  public final boolean fl(View paramView)
+  public final boolean ex(View paramView)
   {
     AppMethodBeat.i(34591);
-    Object localObject = (bj)paramView.getTag();
-    if (localObject == null)
+    paramView = (bk)paramView.getTag();
+    if (paramView == null)
     {
-      ac.w("MicroMsg.AvatarDoubleClickListener", "onDoubleClick tag null");
+      ad.w("MicroMsg.AvatarDoubleClickListener", "onDoubleClick tag null");
+      AppMethodBeat.o(34591);
+      return true;
+    }
+    paramView = paramView.userName;
+    ad.i("MicroMsg.AvatarDoubleClickListener", "onDoubleClick: %s", new Object[] { paramView });
+    if ((((PluginPatMsg)g.ad(PluginPatMsg.class)).isPatEnable()) && (((b)g.ab(b.class)).G(1, this.JBI.getTalkerUserName(), paramView)))
+    {
       AppMethodBeat.o(34591);
       return false;
-    }
-    localObject = ((bj)localObject).userName;
-    ac.i("MicroMsg.AvatarDoubleClickListener", "onDoubleClick: %s", new Object[] { localObject });
-    if ((!bs.isNullOrNil((String)localObject)) && ((w.wp((String)localObject)) || (w.wn((String)localObject))) && (!w.xn((String)localObject)))
-    {
-      if (this.HNT != null)
-      {
-        this.HNT.cancel();
-        paramView.startAnimation(this.HNT);
-      }
-      this.njY.vibrate(10L);
-      if (((c)g.ab(c.class)).dci())
-      {
-        this.HNS.flA();
-        ((c)g.ab(c.class)).hD(this.HNS.getTalkerUserName(), (String)localObject);
-      }
     }
     AppMethodBeat.o(34591);
     return true;

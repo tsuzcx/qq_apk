@@ -7,18 +7,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class d
   extends a<b.a, e, c>
 {
-  private static d ceE = null;
+  private static d coV = null;
   
-  public static d Dv()
+  public static d EU()
   {
     AppMethodBeat.i(146850);
-    if (ceE == null) {}
+    if (coV == null) {}
     try
     {
-      if (ceE == null) {
-        ceE = new d();
+      if (coV == null) {
+        coV = new d();
       }
-      d locald = ceE;
+      d locald = coV;
       AppMethodBeat.o(146850);
       return locald;
     }
@@ -30,7 +30,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.c.d
  * JD-Core Version:    0.7.0.1
  */

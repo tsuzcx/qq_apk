@@ -6,59 +6,61 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.HandlerThread;
 import android.os.PowerManager;
-import com.tencent.e.i;
+import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bi;
+import com.tencent.mm.al.f;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.bj;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.storagebase.h.b;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 public class b
-  implements aw
+  implements ax
 {
   private static final long startTime;
-  private k.a hrd;
-  private boolean nSp;
-  private boolean nSq;
-  private BroadcastReceiver nSr;
-  private com.tencent.mm.sdk.b.c tCi;
-  private long uVg;
-  private long uVh;
-  private long uVi;
-  private long uVj;
-  private long uVk;
-  private long uVl;
-  private long uVm;
-  private long uVn;
-  private long uVo;
-  private long uVp;
-  private long uVq;
-  private long uVr;
-  private com.tencent.e.i.b uVs;
-  private a.a uVt;
-  private long uVu;
-  private com.tencent.mm.ak.g uVv;
-  private com.tencent.e.i.b uVw;
-  private com.tencent.e.i.b uVx;
-  private au uVy;
-  private au uVz;
+  private k.a hJv;
+  private boolean ovK;
+  private boolean ovL;
+  private BroadcastReceiver ovM;
+  private com.tencent.mm.sdk.b.c uER;
+  private com.tencent.e.i.b vYA;
+  private a.a vYB;
+  private long vYC;
+  private f vYD;
+  private com.tencent.e.i.b vYE;
+  private com.tencent.e.i.b vYF;
+  private av vYG;
+  private av vYH;
+  private long vYo;
+  private long vYp;
+  private long vYq;
+  private long vYr;
+  private long vYs;
+  private long vYt;
+  private long vYu;
+  private long vYv;
+  private long vYw;
+  private long vYx;
+  private long vYy;
+  private long vYz;
   
   static
   {
@@ -70,24 +72,43 @@ public class b
   public b()
   {
     AppMethodBeat.i(51518);
-    this.uVg = 1024L;
-    this.uVh = 10L;
-    this.uVi = 1800L;
-    this.uVj = 3000000L;
-    this.uVk = 15000L;
-    this.uVl = 100000L;
-    this.uVm = 10000L;
-    this.uVn = 1024L;
-    this.uVo = 1440L;
-    this.uVp = 15L;
-    this.uVq = 1440L;
-    this.nSp = false;
-    this.nSq = true;
-    this.uVr = 0L;
-    this.uVu = 0L;
-    this.uVv = new b.1(this);
-    this.hrd = new b.9(this);
-    this.uVw = new com.tencent.e.i.b()
+    this.vYo = 1024L;
+    this.vYp = 10L;
+    this.vYq = 1800L;
+    this.vYr = 3000000L;
+    this.vYs = 15000L;
+    this.vYt = 100000L;
+    this.vYu = 10000L;
+    this.vYv = 1024L;
+    this.vYw = 1440L;
+    this.vYx = 15L;
+    this.vYy = 1440L;
+    this.ovK = false;
+    this.ovL = true;
+    this.vYz = 0L;
+    this.vYC = 0L;
+    this.vYD = new b.1(this);
+    this.hJv = new k.a()
+    {
+      public final void a(String paramAnonymousString, m paramAnonymousm)
+      {
+        AppMethodBeat.i(51508);
+        ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv abTestListener onNotifyChange stack[%s]", new Object[] { bt.flS() });
+        if ((paramAnonymousString != null) && (paramAnonymousString.length() > 0) && ("event_updated".equals(paramAnonymousString))) {
+          h.LTJ.r(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(51507);
+              b.a(b.this);
+              AppMethodBeat.o(51507);
+            }
+          }, 100L);
+        }
+        AppMethodBeat.o(51508);
+      }
+    };
+    this.vYE = new com.tencent.e.i.b()
     {
       public final String getKey()
       {
@@ -97,10 +118,10 @@ public class b
       public final void run()
       {
         AppMethodBeat.i(51509);
-        ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv reportAllRunnable run");
-        if (!com.tencent.mm.kernel.g.agM())
+        ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv reportAllRunnable run");
+        if (!com.tencent.mm.kernel.g.ajx())
         {
-          ac.w("MicroMsg.SubCoreBaseMonitor", "account has not initalized!");
+          ad.w("MicroMsg.SubCoreBaseMonitor", "account has not initalized!");
           AppMethodBeat.o(51509);
           return;
         }
@@ -110,58 +131,33 @@ public class b
         b.e(b.this);
         b.f(b.this);
         b.g(b.this).cancel();
-        com.tencent.e.h.JZN.q(b.g(b.this), 10000L);
+        h.LTJ.r(b.g(b.this), 10000L);
         AppMethodBeat.o(51509);
       }
     };
-    this.uVx = new com.tencent.e.i.b()
-    {
-      public final String getKey()
-      {
-        return "reportHeavyUser";
-      }
-      
-      public final void run()
-      {
-        AppMethodBeat.i(51510);
-        ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv reportHeavyUserRunnable run");
-        if (com.tencent.mm.kernel.g.agM()) {
-          b.h(b.this);
-        }
-        AppMethodBeat.o(51510);
-      }
-    };
-    this.tCi = new b.12(this);
-    this.uVy = new au(com.tencent.mm.kernel.g.agU().GrZ.getLooper(), new au.a()
-    {
-      public final boolean onTimerExpired()
-      {
-        AppMethodBeat.i(51512);
-        b.e(b.this);
-        AppMethodBeat.o(51512);
-        return true;
-      }
-    }, true);
-    this.uVz = new au(com.tencent.mm.kernel.g.agU().GrZ.getLooper(), new b.14(this), true);
+    this.vYF = new b.11(this);
+    this.uER = new b.12(this);
+    this.vYG = new av(com.tencent.mm.kernel.g.ajF().IdO.getLooper(), new b.13(this), true);
+    this.vYH = new av(com.tencent.mm.kernel.g.ajF().IdO.getLooper(), new b.14(this), true);
     AppMethodBeat.o(51518);
   }
   
   private a.a a(com.tencent.mm.vfs.e parame, a.a parama, a.b paramb, a.c paramc, Map<String, Integer> paramMap, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(51523);
-    if (parama.hLV)
+    if (parama.ieP)
     {
-      ac.i("MicroMsg.SubCoreBaseMonitor", "summclean scanFile been canceled fileResult[%s], subDirResult[%s]", new Object[] { parama, paramb });
+      ad.i("MicroMsg.SubCoreBaseMonitor", "summclean scanFile been canceled fileResult[%s], subDirResult[%s]", new Object[] { parama, paramb });
       AppMethodBeat.o(51523);
       return parama;
     }
-    if (parama.brJ < paramInt) {
-      parama.brJ += 1;
+    if (parama.bCc < paramInt) {
+      parama.bCc += 1;
     }
     Object localObject2;
     if (parame.isDirectory())
     {
-      localObject2 = com.tencent.mm.vfs.q.B(parame.fxV());
+      localObject2 = com.tencent.mm.vfs.q.B(parame.fOK());
       if (paramb != null) {
         break label943;
       }
@@ -172,8 +168,8 @@ public class b
         localObject1 = paramb;
         if (paramb != null)
         {
-          parama.uVd.add(paramb);
-          ac.d("MicroMsg.SubCoreBaseMonitor", "summerhv scanFile start scan subDir[%s], fileResult[%s], newSubDirResult[%s]", new Object[] { localObject2, parama, paramb });
+          parama.vYl.add(paramb);
+          ad.d("MicroMsg.SubCoreBaseMonitor", "summerhv scanFile start scan subDir[%s], fileResult[%s], newSubDirResult[%s]", new Object[] { localObject2, parama, paramb });
         }
       }
     }
@@ -181,26 +177,26 @@ public class b
     label943:
     for (Object localObject1 = paramb;; localObject1 = paramb)
     {
-      parama.uVb += 1L;
+      parama.vYj += 1L;
       if (localObject1 != null) {
-        ((a.b)localObject1).uVb += 1L;
+        ((a.b)localObject1).vYj += 1L;
       }
       if (paramc != null) {
-        paramc.uVb += 1L;
+        paramc.vYj += 1L;
       }
       int i;
       if (paramInt > 15)
       {
-        ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv scanFile been stopped as depth[%d] over limit path[%s], fileResult[%s]", new Object[] { Integer.valueOf(paramInt), com.tencent.mm.vfs.q.B(parame.fxV()), parama });
+        ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv scanFile been stopped as depth[%d] over limit path[%s], fileResult[%s]", new Object[] { Integer.valueOf(paramInt), com.tencent.mm.vfs.q.B(parame.fOK()), parama });
         AppMethodBeat.o(51523);
         return parama;
         localObject1 = parame.getParent();
-        if (com.tencent.mm.loader.j.b.aph().equals((String)localObject1 + "/")) {
+        if (com.tencent.mm.loader.j.b.arU().equals((String)localObject1 + "/")) {
           i = 1;
         }
         for (;;)
         {
-          if ((i != 0) && (!ame((String)localObject2)))
+          if ((i != 0) && (!aqT((String)localObject2)))
           {
             if (Pattern.matches("[a-fA-F0-9]{32}temp[0-9]{13}", parame.getName()))
             {
@@ -218,7 +214,7 @@ public class b
             break;
           }
         }
-        if (!ame(parame.getParent())) {
+        if (!aqT(parame.getParent())) {
           break label940;
         }
         paramb = new a.b((String)localObject2, 203);
@@ -235,13 +231,13 @@ public class b
           {
             String str = localObject2[i];
             paramc = paramb;
-            if (!bs.isNullOrNil(str))
+            if (!bt.isNullOrNil(str))
             {
               paramc = paramb;
               if (Pattern.matches("[a-fA-F0-9]{32}temp[0-9]{13}", str))
               {
-                paramc = new a.c(com.tencent.mm.vfs.q.B(parame.fxV()) + "/" + str);
-                parama.uVe.add(paramc);
+                paramc = new a.c(com.tencent.mm.vfs.q.B(parame.fOK()) + "/" + str);
+                parama.vYm.add(paramc);
               }
             }
             a(new com.tencent.mm.vfs.e(com.tencent.mm.vfs.q.B(parame.mUri) + "/" + str), parama, (a.b)localObject1, paramc, paramMap, false, paramInt + 1);
@@ -253,35 +249,35 @@ public class b
         while (i < j)
         {
           paramb = localObject2[i];
-          a(new com.tencent.mm.vfs.e(com.tencent.mm.vfs.q.B(parame.fxV()) + "/" + paramb), parama, (a.b)localObject1, paramc, paramMap, false, paramInt + 1);
+          a(new com.tencent.mm.vfs.e(com.tencent.mm.vfs.q.B(parame.fOK()) + "/" + paramb), parama, (a.b)localObject1, paramc, paramMap, false, paramInt + 1);
           i += 1;
         }
       }
-      ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv scanFile dir is empty[%s] ret", new Object[] { com.tencent.mm.vfs.q.B(parame.fxV()) });
+      ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv scanFile dir is empty[%s] ret", new Object[] { com.tencent.mm.vfs.q.B(parame.fOK()) });
       AppMethodBeat.o(51523);
       return parama;
-      parama.uVc += 1L;
+      parama.vYk += 1L;
       if (paramb != null) {
-        paramb.uVc += 1L;
+        paramb.vYk += 1L;
       }
       if (paramc != null) {
-        paramc.uVc += 1L;
+        paramc.vYk += 1L;
       }
       if (!parame.exists())
       {
-        ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv scanFile file not exist[%s][%d] ret", new Object[] { com.tencent.mm.vfs.q.B(parame.fxV()), Long.valueOf(parama.uVc) });
+        ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv scanFile file not exist[%s][%d] ret", new Object[] { com.tencent.mm.vfs.q.B(parame.fOK()), Long.valueOf(parama.vYk) });
         AppMethodBeat.o(51523);
         return parama;
       }
       long l = parame.length();
       if ((l > 0L) && (l < 2147483648L))
       {
-        parama.mSs += l;
+        parama.nsQ += l;
         if (paramb != null) {
-          paramb.mSs += l;
+          paramb.nsQ += l;
         }
         if (paramc != null) {
-          paramc.mSs = (l + paramc.mSs);
+          paramc.nsQ = (l + paramc.nsQ);
         }
       }
       for (;;)
@@ -293,18 +289,35 @@ public class b
           paramb.fileLenInvalidCount += 1L;
         }
         if (paramc != null) {
-          paramc.uVf += 1L;
+          paramc.vYn += 1L;
         }
       }
       break;
     }
   }
   
-  private static boolean ame(String paramString)
+  private static boolean a(HashMap<String, LinkedList<String>> paramHashMap, Map<String, Integer> paramMap, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(192883);
+    paramHashMap = (LinkedList)paramHashMap.get(paramString);
+    if (paramHashMap != null)
+    {
+      paramHashMap = paramHashMap.iterator();
+      while (paramHashMap.hasNext()) {
+        paramMap.put((String)paramHashMap.next(), Integer.valueOf(paramInt));
+      }
+      AppMethodBeat.o(192883);
+      return true;
+    }
+    AppMethodBeat.o(192883);
+    return false;
+  }
+  
+  private static boolean aqT(String paramString)
   {
     AppMethodBeat.i(51522);
-    com.tencent.mm.kernel.g.agS();
-    if (com.tencent.mm.kernel.g.agR().ghC.equals(paramString + "/"))
+    com.tencent.mm.kernel.g.ajD();
+    if (com.tencent.mm.kernel.g.ajC().gBm.equals(paramString + "/"))
     {
       AppMethodBeat.o(51522);
       return true;
@@ -325,26 +338,26 @@ public class b
           bool = true;
           if (bool)
           {
-            l = this.uVu | paramInt;
-            ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv resetHeavyUser type[%d] value[%d] limit[%d] heavy[%b] mHeavyUser[%d] newHeavyUser[%d] tid[%s]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(bool), Long.valueOf(this.uVu), Long.valueOf(l), Long.valueOf(Thread.currentThread().getId()) });
-            if (l == this.uVu) {
+            l = this.vYC | paramInt;
+            ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv resetHeavyUser type[%d] value[%d] limit[%d] heavy[%b] mHeavyUser[%d] newHeavyUser[%d] tid[%s]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(bool), Long.valueOf(this.vYC), Long.valueOf(l), Long.valueOf(Thread.currentThread().getId()) });
+            if (l == this.vYC) {
               break label534;
             }
-            if (this.uVu == 0L) {
-              com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 1L, 1L, true);
+            if (this.vYC == 0L) {
+              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 1L, 1L, true);
             }
             if (l != 0L) {
               break label534;
             }
-            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 2L, 1L, true);
+            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 2L, 1L, true);
             break label534;
-            this.uVu = l;
+            this.vYC = l;
             if (l == 0L) {
               continue;
             }
             bool = true;
-            com.tencent.mm.plugin.report.service.e.pP(bool);
-            com.tencent.e.h.JZN.aS(new b.7(this, l, locala, paramLong1));
+            com.tencent.mm.plugin.report.service.d.qo(bool);
+            h.LTJ.aR(new b.7(this, l, locala, paramLong1));
             AppMethodBeat.o(51524);
           }
         }
@@ -353,70 +366,70 @@ public class b
           bool = false;
           continue;
         }
-        long l = this.uVu & (paramInt ^ 0xFFFFFFFF);
+        long l = this.vYC & (paramInt ^ 0xFFFFFFFF);
         continue;
-        ah.a locala = ah.a.GLG;
-        com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.wUl;
+        al.a locala = al.a.IxY;
+        com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yhR;
         if (!bool) {
           break label615;
         }
         paramLong2 = 3L;
-        localh.idkeyStat(509L, paramLong2, 1L, true);
+        localg.idkeyStat(509L, paramLong2, 1L, true);
         continue;
-        locala = ah.a.GLH;
-        localh = com.tencent.mm.plugin.report.service.h.wUl;
+        locala = al.a.IxZ;
+        localg = com.tencent.mm.plugin.report.service.g.yhR;
         if (!bool) {
           break label623;
         }
         paramLong2 = 5L;
-        localh.idkeyStat(509L, paramLong2, 1L, true);
+        localg.idkeyStat(509L, paramLong2, 1L, true);
         continue;
-        locala = ah.a.GLI;
-        localh = com.tencent.mm.plugin.report.service.h.wUl;
+        locala = al.a.Iya;
+        localg = com.tencent.mm.plugin.report.service.g.yhR;
         if (!bool) {
           break label631;
         }
         paramLong2 = 7L;
-        localh.idkeyStat(509L, paramLong2, 1L, true);
+        localg.idkeyStat(509L, paramLong2, 1L, true);
         continue;
-        locala = ah.a.GLJ;
-        localh = com.tencent.mm.plugin.report.service.h.wUl;
+        locala = al.a.Iyb;
+        localg = com.tencent.mm.plugin.report.service.g.yhR;
         if (!bool) {
           break label639;
         }
         paramLong2 = 9L;
-        localh.idkeyStat(509L, paramLong2, 1L, true);
+        localg.idkeyStat(509L, paramLong2, 1L, true);
         continue;
-        locala = ah.a.GLK;
-        localh = com.tencent.mm.plugin.report.service.h.wUl;
+        locala = al.a.Iyc;
+        localg = com.tencent.mm.plugin.report.service.g.yhR;
         if (!bool) {
           break label647;
         }
         paramLong2 = 11L;
-        localh.idkeyStat(509L, paramLong2, 1L, true);
+        localg.idkeyStat(509L, paramLong2, 1L, true);
         continue;
-        locala = ah.a.GLL;
-        localh = com.tencent.mm.plugin.report.service.h.wUl;
+        locala = al.a.Iyd;
+        localg = com.tencent.mm.plugin.report.service.g.yhR;
         if (!bool) {
           break label655;
         }
         paramLong2 = 13L;
-        localh.idkeyStat(509L, paramLong2, 1L, true);
+        localg.idkeyStat(509L, paramLong2, 1L, true);
         continue;
-        locala = ah.a.GLM;
-        localh = com.tencent.mm.plugin.report.service.h.wUl;
+        locala = al.a.Iye;
+        localg = com.tencent.mm.plugin.report.service.g.yhR;
         if (!bool) {
           break label663;
         }
         paramLong2 = 15L;
-        localh.idkeyStat(509L, paramLong2, 1L, true);
+        localg.idkeyStat(509L, paramLong2, 1L, true);
         continue;
-        locala = ah.a.GLN;
-        localh = com.tencent.mm.plugin.report.service.h.wUl;
+        locala = al.a.Iyf;
+        localg = com.tencent.mm.plugin.report.service.g.yhR;
         if (bool)
         {
           paramLong2 = 19L;
-          localh.idkeyStat(509L, paramLong2, 1L, true);
+          localg.idkeyStat(509L, paramLong2, 1L, true);
           continue;
         }
         paramLong2 = 20L;
@@ -454,78 +467,78 @@ public class b
     }
   }
   
-  private boolean oj(boolean paramBoolean)
+  private boolean oD(boolean paramBoolean)
   {
     AppMethodBeat.i(51519);
-    Object localObject = com.tencent.mm.model.c.d.aAp().tJ("100212");
-    ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv reloadHeavyUserCfg update[%b] abTest[%s][%b][%s] default[%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d]", new Object[] { Boolean.valueOf(paramBoolean), localObject, Boolean.valueOf(((com.tencent.mm.storage.c)localObject).isValid()), ((com.tencent.mm.storage.c)localObject).eYV(), Long.valueOf(1024L), Long.valueOf(10L), Long.valueOf(1800L), Long.valueOf(3000000L), Long.valueOf(15000L), Long.valueOf(15000L), Long.valueOf(100000L), Long.valueOf(10000L), Long.valueOf(1440L), Long.valueOf(15L), Long.valueOf(1440L) });
+    Object localObject = com.tencent.mm.model.c.d.aDs().wz("100212");
+    ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv reloadHeavyUserCfg update[%b] abTest[%s][%b][%s] default[%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d]", new Object[] { Boolean.valueOf(paramBoolean), localObject, Boolean.valueOf(((com.tencent.mm.storage.c)localObject).isValid()), ((com.tencent.mm.storage.c)localObject).foF(), Long.valueOf(1024L), Long.valueOf(10L), Long.valueOf(1800L), Long.valueOf(3000000L), Long.valueOf(15000L), Long.valueOf(15000L), Long.valueOf(100000L), Long.valueOf(10000L), Long.valueOf(1440L), Long.valueOf(15L), Long.valueOf(1440L) });
     if (((com.tencent.mm.storage.c)localObject).isValid())
     {
-      ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv reloadHeavyUserCfg abTest valid!");
-      localObject = ((com.tencent.mm.storage.c)localObject).eYV();
-      long l1 = bs.getLong((String)((Map)localObject).get("sdsize"), 1024L);
-      long l2 = bs.getLong((String)((Map)localObject).get("sdratio"), 10L);
-      long l3 = bs.getLong((String)((Map)localObject).get("dbsize"), 1800L);
-      long l4 = bs.getLong((String)((Map)localObject).get("fdbsize"), 1024L);
-      long l5 = bs.getLong((String)((Map)localObject).get("msg"), 3000000L);
-      long l6 = bs.getLong((String)((Map)localObject).get("conv"), 15000L);
-      long l7 = bs.getLong((String)((Map)localObject).get("contact"), 100000L);
-      long l8 = bs.getLong((String)((Map)localObject).get("chatroom"), 10000L);
-      long l9 = bs.getLong((String)((Map)localObject).get("sditv"), 1440L);
-      long l10 = bs.getLong((String)((Map)localObject).get("sdwait"), 15L);
-      long l11 = bs.getLong((String)((Map)localObject).get("dbitv"), 1440L);
-      ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv reloadHeavyUserCfg sd[%d, %d] sdr[%d, %d] db[%d, %d] fdbsize[%d, %d] msg[%d, %d] conv[%d, %d] contact[%d, %d] chatroom[%d, %d] sditv[%d, %d] sdwait[%d, %d] dbitv[%d, %d]", new Object[] { Long.valueOf(this.uVg), Long.valueOf(l1), Long.valueOf(this.uVh), Long.valueOf(l2), Long.valueOf(this.uVi), Long.valueOf(l3), Long.valueOf(this.uVn), Long.valueOf(l4), Long.valueOf(this.uVj), Long.valueOf(l5), Long.valueOf(this.uVk), Long.valueOf(l6), Long.valueOf(this.uVl), Long.valueOf(l7), Long.valueOf(this.uVm), Long.valueOf(l8), Long.valueOf(this.uVo), Long.valueOf(l9), Long.valueOf(this.uVp), Long.valueOf(l10), Long.valueOf(this.uVq), Long.valueOf(l11) });
-      if (this.uVg != l1)
+      ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv reloadHeavyUserCfg abTest valid!");
+      localObject = ((com.tencent.mm.storage.c)localObject).foF();
+      long l1 = bt.getLong((String)((Map)localObject).get("sdsize"), 1024L);
+      long l2 = bt.getLong((String)((Map)localObject).get("sdratio"), 10L);
+      long l3 = bt.getLong((String)((Map)localObject).get("dbsize"), 1800L);
+      long l4 = bt.getLong((String)((Map)localObject).get("fdbsize"), 1024L);
+      long l5 = bt.getLong((String)((Map)localObject).get("msg"), 3000000L);
+      long l6 = bt.getLong((String)((Map)localObject).get("conv"), 15000L);
+      long l7 = bt.getLong((String)((Map)localObject).get("contact"), 100000L);
+      long l8 = bt.getLong((String)((Map)localObject).get("chatroom"), 10000L);
+      long l9 = bt.getLong((String)((Map)localObject).get("sditv"), 1440L);
+      long l10 = bt.getLong((String)((Map)localObject).get("sdwait"), 15L);
+      long l11 = bt.getLong((String)((Map)localObject).get("dbitv"), 1440L);
+      ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv reloadHeavyUserCfg sd[%d, %d] sdr[%d, %d] db[%d, %d] fdbsize[%d, %d] msg[%d, %d] conv[%d, %d] contact[%d, %d] chatroom[%d, %d] sditv[%d, %d] sdwait[%d, %d] dbitv[%d, %d]", new Object[] { Long.valueOf(this.vYo), Long.valueOf(l1), Long.valueOf(this.vYp), Long.valueOf(l2), Long.valueOf(this.vYq), Long.valueOf(l3), Long.valueOf(this.vYv), Long.valueOf(l4), Long.valueOf(this.vYr), Long.valueOf(l5), Long.valueOf(this.vYs), Long.valueOf(l6), Long.valueOf(this.vYt), Long.valueOf(l7), Long.valueOf(this.vYu), Long.valueOf(l8), Long.valueOf(this.vYw), Long.valueOf(l9), Long.valueOf(this.vYx), Long.valueOf(l10), Long.valueOf(this.vYy), Long.valueOf(l11) });
+      if (this.vYo != l1)
       {
-        this.uVg = l1;
+        this.vYo = l1;
         bool = true;
-        if (this.uVh != l2)
+        if (this.vYp != l2)
         {
-          this.uVh = l2;
+          this.vYp = l2;
           bool = true;
         }
-        if (this.uVi != l3)
+        if (this.vYq != l3)
         {
-          this.uVi = l3;
+          this.vYq = l3;
           bool = true;
         }
-        if (this.uVn != l4)
+        if (this.vYv != l4)
         {
-          this.uVn = l4;
+          this.vYv = l4;
           bool = true;
         }
-        if (this.uVj != l5)
+        if (this.vYr != l5)
         {
-          this.uVj = l5;
+          this.vYr = l5;
           bool = true;
         }
-        if (this.uVk != l6)
+        if (this.vYs != l6)
         {
-          this.uVk = l6;
+          this.vYs = l6;
           bool = true;
         }
-        if (this.uVl != l7)
+        if (this.vYt != l7)
         {
-          this.uVl = l7;
+          this.vYt = l7;
           bool = true;
         }
-        if (this.uVm != l8)
+        if (this.vYu != l8)
         {
-          this.uVm = l8;
+          this.vYu = l8;
           bool = true;
         }
-        if (this.uVo != l9)
+        if (this.vYw != l9)
         {
-          this.uVo = l9;
+          this.vYw = l9;
           bool = true;
         }
-        if (this.uVp != l10)
+        if (this.vYx != l10)
         {
-          this.uVp = l10;
+          this.vYx = l10;
           bool = true;
         }
-        if (this.uVq != l11) {
-          this.uVq = l11;
+        if (this.vYy != l11) {
+          this.vYy = l11;
         }
       }
     }
@@ -533,65 +546,65 @@ public class b
     {
       if (bool)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 0L, 1L, true);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 0L, 1L, true);
         if (paramBoolean) {
-          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 18L, 1L, true);
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 18L, 1L, true);
         }
       }
-      if (this.uVg <= 0L)
+      if (this.vYo <= 0L)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 30L, 1L, true);
-        this.uVg = 1024L;
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 30L, 1L, true);
+        this.vYo = 1024L;
       }
-      if (this.uVh <= 0L)
+      if (this.vYp <= 0L)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 31L, 1L, true);
-        this.uVh = 10L;
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 31L, 1L, true);
+        this.vYp = 10L;
       }
-      if (this.uVi <= 0L)
+      if (this.vYq <= 0L)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 32L, 1L, true);
-        this.uVi = 1800L;
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 32L, 1L, true);
+        this.vYq = 1800L;
       }
-      if (this.uVj <= 0L)
+      if (this.vYr <= 0L)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 33L, 1L, true);
-        this.uVj = 3000000L;
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 33L, 1L, true);
+        this.vYr = 3000000L;
       }
-      if (this.uVk <= 0L)
+      if (this.vYs <= 0L)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 34L, 1L, true);
-        this.uVk = 15000L;
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 34L, 1L, true);
+        this.vYs = 15000L;
       }
-      if (this.uVl <= 0L)
+      if (this.vYt <= 0L)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 35L, 1L, true);
-        this.uVl = 100000L;
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 35L, 1L, true);
+        this.vYt = 100000L;
       }
-      if (this.uVm <= 0L)
+      if (this.vYu <= 0L)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 36L, 1L, true);
-        this.uVm = 10000L;
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 36L, 1L, true);
+        this.vYu = 10000L;
       }
-      if (this.uVo <= 0L)
+      if (this.vYw <= 0L)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 37L, 1L, true);
-        this.uVo = 1440L;
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 37L, 1L, true);
+        this.vYw = 1440L;
       }
-      if (this.uVp <= 0L)
+      if (this.vYx <= 0L)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 38L, 1L, true);
-        this.uVp = 15L;
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 38L, 1L, true);
+        this.vYx = 15L;
       }
-      if (this.uVq <= 0L)
+      if (this.vYy <= 0L)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 39L, 1L, true);
-        this.uVq = 1440L;
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 39L, 1L, true);
+        this.vYy = 1440L;
       }
-      if (this.uVn <= 0L)
+      if (this.vYv <= 0L)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(509L, 40L, 1L, true);
-        this.uVn = 1024L;
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(509L, 40L, 1L, true);
+        this.vYv = 1024L;
       }
       AppMethodBeat.o(51519);
       return bool;
@@ -610,29 +623,29 @@ public class b
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(51520);
-    com.tencent.mm.sdk.b.a.GpY.b(this.tCi);
-    com.tencent.mm.model.c.d.aAp().add(this.hrd);
-    boolean bool = oj(false);
-    com.tencent.mm.kernel.g.agS();
-    this.uVu = ((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GLE, Long.valueOf(0L))).longValue();
+    com.tencent.mm.sdk.b.a.IbL.b(this.uER);
+    com.tencent.mm.model.c.d.aDs().add(this.hJv);
+    boolean bool = oD(false);
+    com.tencent.mm.kernel.g.ajD();
+    this.vYC = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IxW, Long.valueOf(0L))).longValue();
     Object localObject1;
     Object localObject2;
-    if (this.uVu != 0L)
+    if (this.vYC != 0L)
     {
       paramBoolean = true;
-      com.tencent.mm.plugin.report.service.e.pP(paramBoolean);
-      ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv onAccountPostReset heavyuser[%d], reloadHeavyUser[%b] abTestListener[%s]", new Object[] { Long.valueOf(this.uVu), Boolean.valueOf(bool), this.hrd });
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.a(989, this.uVv);
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.a(988, this.uVv);
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.a(987, this.uVv);
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.a(986, this.uVv);
-      com.tencent.mm.kernel.g.agS();
-      this.uVr = ((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GKC, Long.valueOf(0L))).longValue();
-      localObject1 = ai.getContext();
+      com.tencent.mm.plugin.report.service.d.qo(paramBoolean);
+      ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv onAccountPostReset heavyuser[%d], reloadHeavyUser[%b] abTestListener[%s]", new Object[] { Long.valueOf(this.vYC), Boolean.valueOf(bool), this.hJv });
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajB().gAO.a(989, this.vYD);
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajB().gAO.a(988, this.vYD);
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajB().gAO.a(987, this.vYD);
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajB().gAO.a(986, this.vYD);
+      com.tencent.mm.kernel.g.ajD();
+      this.vYz = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IwU, Long.valueOf(0L))).longValue();
+      localObject1 = aj.getContext();
       localObject2 = ((Context)localObject1).registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
       if (localObject2 == null) {
         break label529;
@@ -643,10 +656,10 @@ public class b
       }
       paramBoolean = true;
       label274:
-      this.nSp = paramBoolean;
+      this.ovK = paramBoolean;
       label279:
-      this.nSq = ((PowerManager)((Context)localObject1).getSystemService("power")).isScreenOn();
-      this.nSr = new BroadcastReceiver()
+      this.ovL = ((PowerManager)((Context)localObject1).getSystemService("power")).isScreenOn();
+      this.ovM = new BroadcastReceiver()
       {
         public final void onReceive(final Context paramAnonymousContext, Intent paramAnonymousIntent)
         {
@@ -654,35 +667,89 @@ public class b
           paramAnonymousContext = paramAnonymousIntent.getAction();
           int i = -1;
           label92:
-          boolean bool2;
-          boolean bool3;
-          long l;
+          boolean bool1;
           switch (paramAnonymousContext.hashCode())
           {
           default: 
             switch (i)
             {
             default: 
-              bool2 = b.j(b.this);
-              bool3 = b.k(b.this);
-              l = b.l(b.this);
-              if (b.m(b.this) != null) {}
+              boolean bool2 = b.j(b.this);
+              boolean bool3 = b.k(b.this);
+              long l = b.l(b.this);
+              if (b.m(b.this) == null)
+              {
+                bool1 = true;
+                label132:
+                ad.v("MicroMsg.SubCoreBaseMonitor", "summerhv Action received: %s, interactive: %s, charging: %s, lastScanTime:%d, delayTimerRunnable null[%b]", new Object[] { paramAnonymousContext, Boolean.valueOf(bool2), Boolean.valueOf(bool3), Long.valueOf(l), Boolean.valueOf(bool1) });
+                bool1 = com.tencent.mm.sdk.a.b.fjN();
+                if ((b.m(b.this) != null) || (((!b.k(b.this)) || (b.j(b.this))) && (!(bool1 & false)))) {
+                  break label486;
+                }
+                if (!com.tencent.mm.sdk.a.b.fjN()) {
+                  break label430;
+                }
+                b.n(b.this);
+              }
               break;
             }
             break;
           }
-          for (boolean bool1 = true;; bool1 = false)
+          label430:
+          while (System.currentTimeMillis() - b.l(b.this) >= b.o(b.this) * 60000L)
           {
-            ac.v("MicroMsg.SubCoreBaseMonitor", "summerhv Action received: %s, interactive: %s, charging: %s, lastScanTime:%d, delayTimerRunnable null[%b]", new Object[] { paramAnonymousContext, Boolean.valueOf(bool2), Boolean.valueOf(bool3), Long.valueOf(l), Boolean.valueOf(bool1) });
-            if ((b.m(b.this) == null) && (b.k(b.this)) && (!b.j(b.this))) {
-              break label376;
-            }
-            if (b.m(b.this) == null) {
-              break label531;
-            }
-            b.m(b.this).cancel();
-            b.a(b.this, null);
-            ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv auto scan remove[%s]", new Object[] { b.p(b.this) });
+            paramAnonymousContext = new a()
+            {
+              public final void a(int paramAnonymous2Int, a.a paramAnonymous2a)
+              {
+                AppMethodBeat.i(163490);
+                b.a(b.this, System.currentTimeMillis());
+                ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv callback errType[%d] lastScanTime[%d], result[%s][%s]", new Object[] { Integer.valueOf(paramAnonymous2Int), Long.valueOf(b.l(b.this)), b.p(b.this), paramAnonymous2a });
+                b.a(b.this, null);
+                if ((paramAnonymous2Int == 0) && (!paramAnonymous2a.ieP))
+                {
+                  com.tencent.mm.kernel.g.ajD();
+                  com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IwU, Long.valueOf(b.l(b.this)));
+                  com.tencent.mm.kernel.g.ajD();
+                  com.tencent.mm.kernel.g.ajC().ajl().fqc();
+                  try
+                  {
+                    b.b(b.this, paramAnonymous2a);
+                    AppMethodBeat.o(163490);
+                    return;
+                  }
+                  catch (Exception paramAnonymous2a)
+                  {
+                    ad.printErrStackTrace("MicroMsg.SubCoreBaseMonitor", paramAnonymous2a, "doReportSDInfo err!", new Object[0]);
+                    com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(418L, 6L, 1L, true);
+                  }
+                }
+                AppMethodBeat.o(163490);
+              }
+            };
+            b.a(b.this, new com.tencent.e.i.b()
+            {
+              public final String getKey()
+              {
+                return "autoScanRemove";
+              }
+              
+              public final void run()
+              {
+                AppMethodBeat.i(163491);
+                b.a(b.this, null);
+                int i = bj.aCc();
+                ad.i("MicroMsg.SubCoreBaseMonitor", "summerdel checkUnfinishedDeleteMsgTask ret[%s]", new Object[] { Integer.valueOf(i) });
+                if (i > 0) {
+                  com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(418L, 8L, 1L, true);
+                }
+                b.a(b.this, b.a(b.this, paramAnonymousContext));
+                ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv auto scan started[%s]", new Object[] { b.p(b.this) });
+                AppMethodBeat.o(163491);
+              }
+            });
+            h.LTJ.a(b.m(b.this), b.q(b.this) * 60000L, "MicroMsg.SubCoreBaseMonitor");
+            ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv auto scan post delay[%d]min", new Object[] { Long.valueOf(b.q(b.this)) });
             AppMethodBeat.o(163492);
             return;
             if (!paramAnonymousContext.equals("android.intent.action.SCREEN_ON")) {
@@ -713,76 +780,25 @@ public class b
             break label92;
             b.b(b.this, false);
             break label92;
+            bool1 = false;
+            break label132;
           }
-          label376:
-          if (com.tencent.mm.sdk.a.b.eUk()) {
-            b.n(b.this);
-          }
-          while (System.currentTimeMillis() - b.l(b.this) >= b.o(b.this) * 60000L)
+          ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv last scan time not matched in [%d]min", new Object[] { Long.valueOf(b.o(b.this)) });
+          AppMethodBeat.o(163492);
+          return;
+          label486:
+          if (b.m(b.this) != null)
           {
-            paramAnonymousContext = new a()
-            {
-              public final void a(int paramAnonymous2Int, a.a paramAnonymous2a)
-              {
-                AppMethodBeat.i(163490);
-                b.a(b.this, System.currentTimeMillis());
-                ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv callback errType[%d] lastScanTime[%d], result[%s][%s]", new Object[] { Integer.valueOf(paramAnonymous2Int), Long.valueOf(b.l(b.this)), b.p(b.this), paramAnonymous2a });
-                b.a(b.this, null);
-                if ((paramAnonymous2Int == 0) && (!paramAnonymous2a.hLV))
-                {
-                  com.tencent.mm.kernel.g.agS();
-                  com.tencent.mm.kernel.g.agR().agA().set(ah.a.GKC, Long.valueOf(b.l(b.this)));
-                  com.tencent.mm.kernel.g.agS();
-                  com.tencent.mm.kernel.g.agR().agA().faa();
-                  try
-                  {
-                    b.b(b.this, paramAnonymous2a);
-                    AppMethodBeat.o(163490);
-                    return;
-                  }
-                  catch (Exception paramAnonymous2a)
-                  {
-                    ac.printErrStackTrace("MicroMsg.SubCoreBaseMonitor", paramAnonymous2a, "doReportSDInfo err!", new Object[0]);
-                    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(418L, 6L, 1L, true);
-                  }
-                }
-                AppMethodBeat.o(163490);
-              }
-            };
-            b.a(b.this, new com.tencent.e.i.b()
-            {
-              public final String getKey()
-              {
-                return "autoScanRemove";
-              }
-              
-              public final void run()
-              {
-                AppMethodBeat.i(163491);
-                b.a(b.this, null);
-                int i = bi.ayY();
-                ac.i("MicroMsg.SubCoreBaseMonitor", "summerdel checkUnfinishedDeleteMsgTask ret[%s]", new Object[] { Integer.valueOf(i) });
-                if (i > 0) {
-                  com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(418L, 8L, 1L, true);
-                }
-                b.a(b.this, b.a(b.this, paramAnonymousContext));
-                ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv auto scan started[%s]", new Object[] { b.p(b.this) });
-                AppMethodBeat.o(163491);
-              }
-            });
-            com.tencent.e.h.JZN.a(b.m(b.this), b.q(b.this) * 60000L, "MicroMsg.SubCoreBaseMonitor");
-            ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv auto scan post delay[%d]min", new Object[] { Long.valueOf(b.q(b.this)) });
+            b.m(b.this).cancel();
+            b.a(b.this, null);
+            ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv auto scan remove[%s]", new Object[] { b.p(b.this) });
             AppMethodBeat.o(163492);
             return;
           }
-          ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv last scan time not matched in [%d]min", new Object[] { Long.valueOf(b.o(b.this)) });
-          AppMethodBeat.o(163492);
-          return;
-          label531:
           if (b.p(b.this) != null)
           {
-            b.p(b.this).hLV = true;
-            ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv auto scan canceled[%s]", new Object[] { b.p(b.this) });
+            b.p(b.this).ieP = true;
+            ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv auto scan canceled[%s]", new Object[] { b.p(b.this) });
             b.a(b.this, null);
           }
           AppMethodBeat.o(163492);
@@ -795,18 +811,18 @@ public class b
       ((IntentFilter)localObject2).addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
       ((IntentFilter)localObject2).addAction("android.intent.action.TIME_SET");
       ((IntentFilter)localObject2).addAction("android.intent.action.DATE_CHANGED");
-      ((Context)localObject1).registerReceiver(this.nSr, (IntentFilter)localObject2);
-      if (this.uVt == null) {
+      ((Context)localObject1).registerReceiver(this.ovM, (IntentFilter)localObject2);
+      if (this.vYB == null) {
         break label537;
       }
       localObject1 = "enabled";
       label390:
-      if (!this.nSq) {
+      if (!this.ovL) {
         break label545;
       }
       localObject2 = "";
       label402:
-      if (!this.nSp) {
+      if (!this.ovK) {
         break label553;
       }
     }
@@ -817,10 +833,10 @@ public class b
     label553:
     for (String str = "";; str = " not")
     {
-      ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv registerReceiver auto scan %s. Device status:%s interactive,%s charging mLastAutoScanTime[%d], mAutoScanInterval[%d], mAutoScanWaitTime[%d].", new Object[] { localObject1, localObject2, str, Long.valueOf(this.uVr), Long.valueOf(this.uVo * 60000L), Long.valueOf(this.uVp * 60000L) });
-      this.uVy.stopTimer();
-      if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_PURPLE)) {
-        this.uVz.au(3000L, 10800000L);
+      ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv registerReceiver auto scan %s. Device status:%s interactive,%s charging mLastAutoScanTime[%d], mAutoScanInterval[%d], mAutoScanWaitTime[%d].", new Object[] { localObject1, localObject2, str, Long.valueOf(this.vYz), Long.valueOf(this.vYw * 60000L), Long.valueOf(this.vYx * 60000L) });
+      this.vYG.stopTimer();
+      if ((com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_PURPLE)) {
+        this.vYH.az(3000L, 10800000L);
       }
       AppMethodBeat.o(51520);
       return;
@@ -828,7 +844,7 @@ public class b
       break;
       paramBoolean = false;
       break label274;
-      this.nSp = false;
+      this.ovK = false;
       break label279;
       localObject1 = "disabled";
       break label390;
@@ -840,35 +856,35 @@ public class b
   public void onAccountRelease()
   {
     AppMethodBeat.i(51521);
-    ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv onAccountRelease [%d]", new Object[] { Long.valueOf(startTime), Long.valueOf(System.currentTimeMillis()) });
-    if (this.nSr != null)
+    ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv onAccountRelease [%d]", new Object[] { Long.valueOf(startTime), Long.valueOf(System.currentTimeMillis()) });
+    if (this.ovM != null)
     {
-      ai.getContext().unregisterReceiver(this.nSr);
-      ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv unregisterReceiver mChargeAndInteractiveReceiver[%s]", new Object[] { this.nSr });
-      this.nSr = null;
+      aj.getContext().unregisterReceiver(this.ovM);
+      ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv unregisterReceiver mChargeAndInteractiveReceiver[%s]", new Object[] { this.ovM });
+      this.ovM = null;
     }
-    if (this.uVs != null)
+    if (this.vYA != null)
     {
-      this.uVs.cancel();
-      this.uVs = null;
-      ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv unregisterReceiver remove[%s]", new Object[] { this.uVt });
+      this.vYA.cancel();
+      this.vYA = null;
+      ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv unregisterReceiver remove[%s]", new Object[] { this.vYB });
     }
-    if (this.uVt != null)
+    if (this.vYB != null)
     {
-      this.uVt.hLV = true;
-      ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv unregisterReceiver canceled[%s]", new Object[] { this.uVt });
-      this.uVt = null;
+      this.vYB.ieP = true;
+      ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv unregisterReceiver canceled[%s]", new Object[] { this.vYB });
+      this.vYB = null;
     }
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(989, this.uVv);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(988, this.uVv);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(987, this.uVv);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(986, this.uVv);
-    com.tencent.mm.model.c.d.aAp().remove(this.hrd);
-    com.tencent.mm.sdk.b.a.GpY.d(this.tCi);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(989, this.vYD);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(988, this.vYD);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(987, this.vYD);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(986, this.vYD);
+    com.tencent.mm.model.c.d.aDs().remove(this.hJv);
+    com.tencent.mm.sdk.b.a.IbL.d(this.uER);
     AppMethodBeat.o(51521);
   }
   

@@ -11,9 +11,9 @@ final class b$2
   
   public final void run()
   {
-    AppMethodBeat.i(196537);
+    AppMethodBeat.i(194130);
     Toast.makeText(this.val$context, this.val$context.getString(2131762780), 1).show();
-    AppMethodBeat.o(196537);
+    AppMethodBeat.o(194130);
   }
 }
 

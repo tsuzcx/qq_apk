@@ -21,12 +21,12 @@ public class c
   extends Drawable
   implements Animatable, g.b
 {
-  boolean aGc;
-  final a aKc;
-  private boolean aKd;
-  private int aKe;
-  private boolean aKf;
-  private Rect aKg;
+  boolean aHT;
+  final a aLT;
+  private boolean aLU;
+  private int aLV;
+  private boolean aLW;
+  private Rect aLX;
   private boolean isRunning;
   private boolean isVisible;
   private int loopCount;
@@ -43,8 +43,8 @@ public class c
   {
     AppMethodBeat.i(77485);
     this.isVisible = true;
-    this.aKe = -1;
-    this.aKc = ((a)i.checkNotNull(parama, "Argument must not be null"));
+    this.aLV = -1;
+    this.aLT = ((a)i.checkNotNull(parama, "Argument must not be null"));
     AppMethodBeat.o(77485);
   }
   
@@ -59,14 +59,14 @@ public class c
     return localPaint;
   }
   
-  private void pn()
+  private void pF()
   {
     AppMethodBeat.i(77489);
-    if (!this.aGc) {}
+    if (!this.aHT) {}
     for (boolean bool = true;; bool = false)
     {
       i.checkArgument(bool, "You cannot start a recycled Drawable. Ensure thatyou clear any references to the Drawable when clearing the corresponding request.");
-      if (this.aKc.aKh.getFrameCount() != 1) {
+      if (this.aLT.aLY.getFrameCount() != 1) {
         break;
       }
       invalidateSelf();
@@ -76,27 +76,27 @@ public class c
     if (!this.isRunning)
     {
       this.isRunning = true;
-      this.aKc.aKh.a(this);
+      this.aLT.aLY.a(this);
       invalidateSelf();
     }
     AppMethodBeat.o(77489);
   }
   
-  private void po()
+  private void pG()
   {
     AppMethodBeat.i(77490);
     this.isRunning = false;
-    this.aKc.aKh.b(this);
+    this.aLT.aLY.b(this);
     AppMethodBeat.o(77490);
   }
   
-  private Rect pp()
+  private Rect pH()
   {
     AppMethodBeat.i(77498);
-    if (this.aKg == null) {
-      this.aKg = new Rect();
+    if (this.aLX == null) {
+      this.aLX = new Rect();
     }
-    Rect localRect = this.aKg;
+    Rect localRect = this.aLX;
     AppMethodBeat.o(77498);
     return localRect;
   }
@@ -104,37 +104,37 @@ public class c
   public void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(77495);
-    if (this.aGc)
+    if (this.aHT)
     {
       AppMethodBeat.o(77495);
       return;
     }
-    if (this.aKf)
+    if (this.aLW)
     {
-      Gravity.apply(119, getIntrinsicWidth(), getIntrinsicHeight(), getBounds(), pp());
-      this.aKf = false;
+      Gravity.apply(119, getIntrinsicWidth(), getIntrinsicHeight(), getBounds(), pH());
+      this.aLW = false;
     }
-    paramCanvas.drawBitmap(this.aKc.aKh.pr(), null, pp(), getPaint());
+    paramCanvas.drawBitmap(this.aLT.aLY.pJ(), null, pH(), getPaint());
     AppMethodBeat.o(77495);
   }
   
   public final ByteBuffer getBuffer()
   {
     AppMethodBeat.i(77486);
-    ByteBuffer localByteBuffer = this.aKc.aKh.aKi.getData().asReadOnlyBuffer();
+    ByteBuffer localByteBuffer = this.aLT.aLY.aLZ.getData().asReadOnlyBuffer();
     AppMethodBeat.o(77486);
     return localByteBuffer;
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    return this.aKc;
+    return this.aLT;
   }
   
   public int getIntrinsicHeight()
   {
     AppMethodBeat.i(77493);
-    int i = this.aKc.aKh.pr().getHeight();
+    int i = this.aLT.aLY.pJ().getHeight();
     AppMethodBeat.o(77493);
     return i;
   }
@@ -142,7 +142,7 @@ public class c
   public int getIntrinsicWidth()
   {
     AppMethodBeat.i(77492);
-    int i = this.aKc.aKh.pr().getWidth();
+    int i = this.aLT.aLY.pJ().getWidth();
     AppMethodBeat.o(77492);
     return i;
   }
@@ -161,16 +161,16 @@ public class c
   {
     AppMethodBeat.i(77494);
     super.onBoundsChange(paramRect);
-    this.aKf = true;
+    this.aLW = true;
     AppMethodBeat.o(77494);
   }
   
-  public final Bitmap pm()
+  public final Bitmap pE()
   {
-    return this.aKc.aKh.aKp;
+    return this.aLT.aLY.aMg;
   }
   
-  public final void pq()
+  public final void pI()
   {
     AppMethodBeat.i(77500);
     for (Object localObject = getCallback(); (localObject instanceof Drawable); localObject = ((Drawable)localObject).getCallback()) {}
@@ -182,14 +182,14 @@ public class c
       return;
     }
     invalidateSelf();
-    localObject = this.aKc.aKh;
-    if (((g)localObject).aKm != null) {}
-    for (int i = ((g)localObject).aKm.index;; i = -1)
+    localObject = this.aLT.aLY;
+    if (((g)localObject).aMd != null) {}
+    for (int i = ((g)localObject).aMd.index;; i = -1)
     {
-      if (i == this.aKc.aKh.getFrameCount() - 1) {
+      if (i == this.aLT.aLY.getFrameCount() - 1) {
         this.loopCount += 1;
       }
-      if ((this.aKe != -1) && (this.loopCount >= this.aKe)) {
+      if ((this.aLV != -1) && (this.loopCount >= this.aLV)) {
         stop();
       }
       AppMethodBeat.o(77500);
@@ -215,7 +215,7 @@ public class c
   {
     AppMethodBeat.i(77491);
     boolean bool;
-    if (!this.aGc)
+    if (!this.aHT)
     {
       bool = true;
       i.checkArgument(bool, "Cannot change the visibility of a recycled resource. Ensure that you unset the Drawable from your View before changing the View's visibility.");
@@ -223,7 +223,7 @@ public class c
       if (paramBoolean1) {
         break label52;
       }
-      po();
+      pG();
     }
     for (;;)
     {
@@ -233,8 +233,8 @@ public class c
       bool = false;
       break;
       label52:
-      if (this.aKd) {
-        pn();
+      if (this.aLU) {
+        pF();
       }
     }
   }
@@ -242,10 +242,10 @@ public class c
   public void start()
   {
     AppMethodBeat.i(77487);
-    this.aKd = true;
+    this.aLU = true;
     this.loopCount = 0;
     if (this.isVisible) {
-      pn();
+      pF();
     }
     AppMethodBeat.o(77487);
   }
@@ -253,19 +253,19 @@ public class c
   public void stop()
   {
     AppMethodBeat.i(77488);
-    this.aKd = false;
-    po();
+    this.aLU = false;
+    pG();
     AppMethodBeat.o(77488);
   }
   
   static final class a
     extends Drawable.ConstantState
   {
-    final g aKh;
+    final g aLY;
     
     a(g paramg)
     {
-      this.aKh = paramg;
+      this.aLY = paramg;
     }
     
     public final int getChangingConfigurations()

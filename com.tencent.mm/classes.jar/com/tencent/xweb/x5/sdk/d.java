@@ -10,23 +10,23 @@ import org.xwalk.core.Log;
 
 public final class d
 {
-  static a KEW;
-  static boolean KEX;
+  static a Mvw;
+  static boolean Mvx;
   
   static
   {
     AppMethodBeat.i(157148);
     aj.initInterface();
-    KEX = false;
+    Mvx = false;
     AppMethodBeat.o(157148);
   }
   
   public static void a(Context paramContext, String paramString, ValueCallback<Boolean> paramValueCallback)
   {
     AppMethodBeat.i(157141);
-    if (KEW != null)
+    if (Mvw != null)
     {
-      KEW.a(paramContext, paramString, paramValueCallback);
+      Mvw.a(paramContext, paramString, paramValueCallback);
       AppMethodBeat.o(157141);
       return;
     }
@@ -36,15 +36,15 @@ public final class d
   
   public static void a(a parama)
   {
-    KEW = parama;
+    Mvw = parama;
   }
   
   public static void a(h paramh)
   {
     AppMethodBeat.i(157138);
-    if (KEW != null)
+    if (Mvw != null)
     {
-      KEW.a(paramh);
+      Mvw.a(paramh);
       AppMethodBeat.o(157138);
       return;
     }
@@ -55,9 +55,9 @@ public final class d
   public static boolean a(Context paramContext, String paramString, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(157140);
-    if (KEW != null)
+    if (Mvw != null)
     {
-      boolean bool = KEW.a(paramContext, paramString, paramHashMap, paramValueCallback);
+      boolean bool = Mvw.a(paramContext, paramString, paramHashMap, paramValueCallback);
       AppMethodBeat.o(157140);
       return bool;
     }
@@ -69,9 +69,9 @@ public final class d
   public static boolean canOpenWebPlus(Context paramContext)
   {
     AppMethodBeat.i(157144);
-    if (KEW != null)
+    if (Mvw != null)
     {
-      boolean bool = KEW.canOpenWebPlus(paramContext);
+      boolean bool = Mvw.canOpenWebPlus(paramContext);
       AppMethodBeat.o(157144);
       return bool;
     }
@@ -83,9 +83,9 @@ public final class d
   public static void closeFileReader(Context paramContext)
   {
     AppMethodBeat.i(157145);
-    if (KEW != null)
+    if (Mvw != null)
     {
-      KEW.closeFileReader(paramContext);
+      Mvw.closeFileReader(paramContext);
       AppMethodBeat.o(157145);
       return;
     }
@@ -95,24 +95,24 @@ public final class d
   
   public static void disableAutoCreateX5Webview()
   {
-    AppMethodBeat.i(205103);
-    if (KEW != null)
+    AppMethodBeat.i(197116);
+    if (Mvw != null)
     {
-      KEW.disableAutoCreateX5Webview();
-      AppMethodBeat.o(205103);
+      Mvw.disableAutoCreateX5Webview();
+      AppMethodBeat.o(197116);
       return;
     }
     Log.e("TbsDownloader", "disableAutoCreateX5Webview: sImp is null");
-    AppMethodBeat.o(205103);
+    AppMethodBeat.o(197116);
   }
   
   public static void forceSysWebView()
   {
     AppMethodBeat.i(157146);
-    KEX = true;
-    if (KEW != null)
+    Mvx = true;
+    if (Mvw != null)
     {
-      KEW.forceSysWebView();
+      Mvw.forceSysWebView();
       AppMethodBeat.o(157146);
       return;
     }
@@ -120,12 +120,17 @@ public final class d
     AppMethodBeat.o(157146);
   }
   
+  public static boolean gcN()
+  {
+    return true;
+  }
+  
   public static boolean getTBSInstalling()
   {
     AppMethodBeat.i(157136);
-    if (KEW != null)
+    if (Mvw != null)
     {
-      boolean bool = KEW.getTBSInstalling();
+      boolean bool = Mvw.getTBSInstalling();
       AppMethodBeat.o(157136);
       return bool;
     }
@@ -137,9 +142,9 @@ public final class d
   public static int getTbsVersion(Context paramContext)
   {
     AppMethodBeat.i(157137);
-    if (KEW != null)
+    if (Mvw != null)
     {
-      int i = KEW.getTbsVersion(paramContext);
+      int i = Mvw.getTbsVersion(paramContext);
       AppMethodBeat.o(157137);
       return i;
     }
@@ -151,9 +156,9 @@ public final class d
   public static void initTbsSettings(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(157143);
-    if (KEW != null)
+    if (Mvw != null)
     {
-      KEW.initTbsSettings(paramMap);
+      Mvw.initTbsSettings(paramMap);
       AppMethodBeat.o(157143);
       return;
     }
@@ -164,9 +169,9 @@ public final class d
   public static void reset(Context paramContext)
   {
     AppMethodBeat.i(157135);
-    if (KEW != null)
+    if (Mvw != null)
     {
-      KEW.reset(paramContext);
+      Mvw.reset(paramContext);
       AppMethodBeat.o(157135);
       return;
     }
@@ -177,9 +182,9 @@ public final class d
   public static void setUploadCode(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(157147);
-    if (KEW != null)
+    if (Mvw != null)
     {
-      KEW.setUploadCode(paramContext, paramInt);
+      Mvw.setUploadCode(paramContext, paramInt);
       AppMethodBeat.o(157147);
       return;
     }
@@ -187,12 +192,25 @@ public final class d
     AppMethodBeat.o(157147);
   }
   
+  public static void setWebContentsDebuggingEnabled(boolean paramBoolean)
+  {
+    AppMethodBeat.i(197117);
+    if (Mvw != null)
+    {
+      Mvw.setWebContentsDebuggingEnabled(paramBoolean);
+      AppMethodBeat.o(197117);
+      return;
+    }
+    Log.e("TbsDownloader", "setWebContentsDebuggingEnabled: sImp is null");
+    AppMethodBeat.o(197117);
+  }
+  
   public static int startMiniQBToLoadUrl(Context paramContext, String paramString, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(157139);
-    if (KEW != null)
+    if (Mvw != null)
     {
-      int i = KEW.startMiniQBToLoadUrl(paramContext, paramString, paramHashMap, paramValueCallback);
+      int i = Mvw.startMiniQBToLoadUrl(paramContext, paramString, paramHashMap, paramValueCallback);
       AppMethodBeat.o(157139);
       return i;
     }

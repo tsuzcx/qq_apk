@@ -1,21 +1,34 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class p
 {
-  private static String[][] moo = { { "\\", "\\\\" }, { "'", "\\'" }, { "\"", "\\\"" }, { "\n", "\\n" }, { "\t", "\\t" }, { "\b", "\\b" }, { "\f", "\\f" }, { "\r", "\\r" } };
+  private static String[][] mOQ;
   
-  public static String Rw(String paramString)
+  static
+  {
+    String[] arrayOfString1 = { "\\", "\\\\" };
+    String[] arrayOfString2 = { "'", "\\'" };
+    String[] arrayOfString3 = { "\"", "\\\"" };
+    String[] arrayOfString4 = { "\n", "\\n" };
+    String[] arrayOfString5 = { "\b", "\\b" };
+    String[] arrayOfString6 = { "\r", "\\r" };
+    String[] arrayOfString7 = { " ", "\\u2028" };
+    String[] arrayOfString8 = { " ", "\\u2029" };
+    mOQ = new String[][] { arrayOfString1, arrayOfString2, arrayOfString3, arrayOfString4, { "\t", "\\t" }, arrayOfString5, { "\f", "\\f" }, arrayOfString6, arrayOfString7, arrayOfString8 };
+  }
+  
+  public static String Vc(String paramString)
   {
     AppMethodBeat.i(135365);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(135365);
       return paramString;
     }
-    String[][] arrayOfString = moo;
+    String[][] arrayOfString = mOQ;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)

@@ -156,9 +156,9 @@ public class c
           paramString.putExtra("AnchorPoint", new Point(paramWebView.getScrollX(), paramWebView.getScrollY()));
           paramString.putExtra("ContentSize", new Point(paramWebView.getContentWidth(), paramWebView.getContentHeight()));
         }
-        paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/smtt/sdk/b/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;Lcom/tencent/smtt/sdk/WebView;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramString.lR(0));
+        paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahp(), "com/tencent/smtt/sdk/b/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;Lcom/tencent/smtt/sdk/WebView;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramString.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/smtt/sdk/b/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;Lcom/tencent/smtt/sdk/WebView;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(54585);
         return 0;
@@ -501,9 +501,9 @@ public class c
     if (paramBundle != null) {
       localIntent.putExtra("key_reader_sdk_extrals", paramBundle);
     }
-    paramString1 = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.aeD(), "com/tencent/smtt/sdk/b/c", "a", "(Landroid/content/Context;Ljava/lang/String;ILjava/lang/String;Ljava/util/HashMap;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString1.lR(0));
+    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.ahp(), "com/tencent/smtt/sdk/b/c", "a", "(Landroid/content/Context;Ljava/lang/String;ILjava/lang/String;Ljava/util/HashMap;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString1.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/smtt/sdk/b/c", "a", "(Landroid/content/Context;Ljava/lang/String;ILjava/lang/String;Ljava/util/HashMap;Landroid/os/Bundle;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(54581);
     return true;
@@ -536,9 +536,9 @@ public class c
     {
       paramString.putExtra("loginType", d(paramContext));
       paramString.setComponent(new ComponentName("com.tencent.mtt", "com.tencent.mtt.browser.video.H5VideoThrdcallActivity"));
-      paramHashMap = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramHashMap.aeD(), "com/tencent/smtt/sdk/b/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramHashMap.lR(0));
+      paramHashMap = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramHashMap.ahp(), "com/tencent/smtt/sdk/b/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramHashMap.mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/smtt/sdk/b/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       i = 1;
     }
@@ -549,9 +549,9 @@ public class c
         try
         {
           paramString.setComponent(null);
-          paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/smtt/sdk/b/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)paramString.lR(0));
+          paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahp(), "com/tencent/smtt/sdk/b/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)paramString.mq(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/smtt/sdk/b/c", "a", "(Landroid/content/Context;Ljava/lang/String;Ljava/util/HashMap;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(54583);
           return true;

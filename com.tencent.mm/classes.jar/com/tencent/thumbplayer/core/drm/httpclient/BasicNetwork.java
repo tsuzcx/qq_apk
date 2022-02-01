@@ -23,7 +23,7 @@ public class BasicNetwork
   
   private static String getRedirectUrl(HttpDataSource.InvalidResponseCodeException paramInvalidResponseCodeException)
   {
-    AppMethodBeat.i(193811);
+    AppMethodBeat.i(220593);
     paramInvalidResponseCodeException = paramInvalidResponseCodeException.headerFields;
     if (paramInvalidResponseCodeException != null)
     {
@@ -31,17 +31,17 @@ public class BasicNetwork
       if ((paramInvalidResponseCodeException != null) && (!paramInvalidResponseCodeException.isEmpty()))
       {
         paramInvalidResponseCodeException = (String)paramInvalidResponseCodeException.get(0);
-        AppMethodBeat.o(193811);
+        AppMethodBeat.o(220593);
         return paramInvalidResponseCodeException;
       }
     }
-    AppMethodBeat.o(193811);
+    AppMethodBeat.o(220593);
     return null;
   }
   
   public Response performRequest(Request paramRequest)
   {
-    AppMethodBeat.i(193810);
+    AppMethodBeat.i(220592);
     HttpDataSource localHttpDataSource = this.mHttpDataSrcFactory.createDataSource(paramRequest.getTimeoutMs());
     if (paramRequest.getHeaders() != null)
     {
@@ -79,7 +79,7 @@ public class BasicNetwork
             if (localObject1 != null) {
               break label254;
             }
-            AppMethodBeat.o(193810);
+            AppMethodBeat.o(220592);
             throw localInvalidResponseCodeException;
           }
         }
@@ -87,7 +87,7 @@ public class BasicNetwork
       finally
       {
         Util.closeQuietly((Closeable)localObject2);
-        AppMethodBeat.o(193810);
+        AppMethodBeat.o(220592);
       }
       label248:
       label254:

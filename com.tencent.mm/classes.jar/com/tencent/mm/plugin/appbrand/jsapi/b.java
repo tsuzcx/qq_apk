@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import junit.framework.Assert;
 import org.a.a;
 
 public abstract class b
 {
-  private String jVR;
+  private String kqf;
   
   public b()
   {
@@ -16,17 +16,17 @@ public abstract class b
   
   public final String getName()
   {
-    if (bs.isNullOrNil(this.jVR)) {}
+    if (bt.isNullOrNil(this.kqf)) {}
     try
     {
-      this.jVR = ((String)a.bD(getClass()).aXB("NAME").object);
-      return this.jVR;
+      this.kqf = ((String)a.bF(getClass()).bdX("NAME").object);
+      return this.kqf;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ac.e("MicroMsg.AppBrand.BaseJsApi", "getName exp = %s", new Object[] { bs.m(localException) });
+        ad.e("MicroMsg.AppBrand.BaseJsApi", "getName exp = %s", new Object[] { bt.n(localException) });
       }
     }
   }

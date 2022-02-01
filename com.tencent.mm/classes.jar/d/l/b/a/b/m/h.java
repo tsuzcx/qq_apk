@@ -1,69 +1,67 @@
 package d.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a.j;
 import d.a.v;
 import d.g.a.a;
 import d.g.a.b;
-import d.g.b.k;
-import d.g.b.l;
+import d.g.b.p;
+import d.g.b.q;
 import d.l.b.a.b.b.aq;
 import d.l.b.a.b.l.f;
-import d.l.b.a.b.l.i;
-import d.y;
+import d.z;
 import java.util.Collection;
 import java.util.List;
 
 public abstract class h
   implements at
 {
-  private final f<a> LKE;
+  private final f<a> NBy;
   
-  public h(i parami)
+  public h(d.l.b.a.b.l.j paramj)
   {
-    this.LKE = parami.a((a)new b(this), (b)c.LKI, (b)new d(this));
+    this.NBy = paramj.a((a)new b(this), (b)c.NBC, (b)new d(this));
+  }
+  
+  protected Collection<ab> Ar(boolean paramBoolean)
+  {
+    return (Collection)v.MKE;
   }
   
   protected void I(ab paramab)
   {
-    k.h(paramab, "type");
+    p.h(paramab, "type");
   }
   
-  protected abstract Collection<ab> fQp();
+  protected abstract Collection<ab> ghN();
   
-  protected abstract aq fQt();
+  protected abstract aq ghR();
   
-  protected ab fSv()
+  protected ab gjT()
   {
     return null;
   }
   
-  public final List<ab> gcs()
+  public final List<ab> gtS()
   {
-    return ((a)this.LKE.invoke()).LKF;
-  }
-  
-  protected Collection<ab> zD(boolean paramBoolean)
-  {
-    return (Collection)v.KTF;
+    return ((a)this.NBy.invoke()).NBz;
   }
   
   static final class a
   {
-    List<? extends ab> LKF;
-    final Collection<ab> LKG;
+    final Collection<ab> NBA;
+    List<? extends ab> NBz;
     
     public a(Collection<? extends ab> paramCollection)
     {
       AppMethodBeat.i(60602);
-      this.LKG = paramCollection;
-      this.LKF = j.listOf(u.LKS);
+      this.NBA = paramCollection;
+      this.NBz = d.a.j.listOf(u.NBN);
       AppMethodBeat.o(60602);
     }
   }
   
   static final class b
-    extends l
+    extends q
     implements a<h.a>
   {
     b(h paramh)
@@ -73,15 +71,15 @@ public abstract class h
   }
   
   static final class c
-    extends l
+    extends q
     implements b<Boolean, h.a>
   {
-    public static final c LKI;
+    public static final c NBC;
     
     static
     {
       AppMethodBeat.i(60605);
-      LKI = new c();
+      NBC = new c();
       AppMethodBeat.o(60605);
     }
     
@@ -92,8 +90,8 @@ public abstract class h
   }
   
   static final class d
-    extends l
-    implements b<h.a, y>
+    extends q
+    implements b<h.a, z>
   {
     d(h paramh)
     {
@@ -101,7 +99,7 @@ public abstract class h
     }
     
     static final class a
-      extends l
+      extends q
       implements b<at, Collection<? extends ab>>
     {
       a(h.d paramd)
@@ -111,8 +109,8 @@ public abstract class h
     }
     
     static final class b
-      extends l
-      implements b<ab, y>
+      extends q
+      implements b<ab, z>
     {
       b(h.d paramd)
       {

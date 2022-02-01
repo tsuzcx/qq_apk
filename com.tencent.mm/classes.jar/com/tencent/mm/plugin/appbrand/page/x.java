@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b.d;
 import com.tencent.mm.modelappbrand.a.b.l;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appcache.be;
+import com.tencent.mm.plugin.appbrand.appcache.bf;
 import com.tencent.mm.plugin.appbrand.appstorage.m;
 import com.tencent.mm.plugin.appbrand.z.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.g;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
@@ -18,31 +18,31 @@ import java.util.Set;
 
 public final class x
 {
-  private static final b.l lCf;
-  private static final h<AppBrandRuntime, String> lCg;
+  private static final b.l mbG;
+  private static final h<AppBrandRuntime, String> mbH;
   
   static
   {
     AppMethodBeat.i(135112);
-    lCf = new b.d();
-    lCg = new h();
+    mbG = new b.d();
+    mbH = new h();
     AppMethodBeat.o(135112);
   }
   
-  public static void al(AppBrandRuntime paramAppBrandRuntime)
+  public static void af(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(193414);
-    paramAppBrandRuntime = lCg.cD(paramAppBrandRuntime);
+    AppMethodBeat.i(197330);
+    paramAppBrandRuntime = mbH.cF(paramAppBrandRuntime);
     if (paramAppBrandRuntime != null)
     {
       paramAppBrandRuntime = paramAppBrandRuntime.iterator();
       while (paramAppBrandRuntime.hasNext())
       {
         String str = (String)paramAppBrandRuntime.next();
-        lCf.remove(str);
+        mbG.remove(str);
       }
     }
-    AppMethodBeat.o(193414);
+    AppMethodBeat.o(197330);
   }
   
   public static Bitmap k(AppBrandRuntime paramAppBrandRuntime, String paramString)
@@ -53,21 +53,21 @@ public final class x
       AppMethodBeat.o(135111);
       return null;
     }
-    Object localObject = m.IX(paramString);
-    if (bs.isNullOrNil((String)localObject))
+    Object localObject = m.Mo(paramString);
+    if (bt.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(135111);
       return null;
     }
     paramString = paramAppBrandRuntime.hashCode() + 35 + (String)localObject;
-    lCg.h(paramAppBrandRuntime, paramString);
-    Bitmap localBitmap = lCf.te(paramString);
+    mbH.j(paramAppBrandRuntime, paramString);
+    Bitmap localBitmap = mbG.vT(paramString);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       AppMethodBeat.o(135111);
       return localBitmap;
     }
-    paramAppBrandRuntime = be.f(paramAppBrandRuntime, (String)localObject);
+    paramAppBrandRuntime = bf.f(paramAppBrandRuntime, (String)localObject);
     if (paramAppBrandRuntime != null) {}
     try
     {
@@ -75,23 +75,23 @@ public final class x
       if (i <= 0) {
         return null;
       }
-      localObject = f.decodeStream(paramAppBrandRuntime);
+      localObject = g.decodeStream(paramAppBrandRuntime);
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        lCf.put(paramString, (Bitmap)localObject);
+        mbG.put(paramString, (Bitmap)localObject);
         return localObject;
       }
       if (paramAppBrandRuntime != null) {
-        bs.d(paramAppBrandRuntime);
+        bt.d(paramAppBrandRuntime);
       }
     }
     catch (IOException paramString)
     {
       for (;;)
       {
-        ac.e("MicroMsg.AppBrandPageIconCache", "try decode icon e = %s", new Object[] { paramString });
+        ad.e("MicroMsg.AppBrandPageIconCache", "try decode icon e = %s", new Object[] { paramString });
         if (paramAppBrandRuntime != null) {
-          bs.d(paramAppBrandRuntime);
+          bt.d(paramAppBrandRuntime);
         }
       }
     }
@@ -100,7 +100,7 @@ public final class x
       if (paramAppBrandRuntime == null) {
         break label227;
       }
-      bs.d(paramAppBrandRuntime);
+      bt.d(paramAppBrandRuntime);
       AppMethodBeat.o(135111);
     }
     AppMethodBeat.o(135111);
@@ -109,7 +109,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.x
  * JD-Core Version:    0.7.0.1
  */

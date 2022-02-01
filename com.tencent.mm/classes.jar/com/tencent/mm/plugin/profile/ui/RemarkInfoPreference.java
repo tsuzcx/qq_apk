@@ -14,20 +14,20 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RemarkInfoPreference
   extends Preference
 {
-  private ImageView fBA;
-  private MMActivity iMV;
+  private MMActivity fLP;
+  private ImageView fUN;
   private String summary;
   private String title;
   private TextView titleTv;
-  private TextView vLf;
-  private boolean vNk;
+  private TextView wSo;
+  private boolean wUt;
   
   public RemarkInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27387);
-    this.vNk = false;
-    this.iMV = ((MMActivity)paramContext);
+    this.wUt = false;
+    this.fLP = ((MMActivity)paramContext);
     AppMethodBeat.o(27387);
   }
   
@@ -35,7 +35,7 @@ public class RemarkInfoPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27388);
-    this.vNk = false;
+    this.wUt = false;
     setLayoutResource(2131494804);
     setWidgetLayoutResource(2131494884);
     AppMethodBeat.o(27388);
@@ -45,23 +45,23 @@ public class RemarkInfoPreference
   {
     AppMethodBeat.i(27390);
     this.titleTv = ((TextView)paramView.findViewById(2131305902));
-    this.vLf = ((TextView)paramView.findViewById(2131305546));
-    this.fBA = ((ImageView)paramView.findViewById(2131300943));
-    if (!this.vNk) {
-      this.fBA.setVisibility(8);
+    this.wSo = ((TextView)paramView.findViewById(2131305546));
+    this.fUN = ((ImageView)paramView.findViewById(2131300943));
+    if (!this.wUt) {
+      this.fUN.setVisibility(8);
     }
     for (;;)
     {
       if (this.titleTv != null) {
         this.titleTv.setText(this.title);
       }
-      if (this.vLf != null) {
-        this.vLf.setText(this.summary);
+      if (this.wSo != null) {
+        this.wSo.setText(this.summary);
       }
       super.onBindView(paramView);
       AppMethodBeat.o(27390);
       return;
-      this.fBA.setVisibility(0);
+      this.fUN.setVisibility(0);
     }
   }
   

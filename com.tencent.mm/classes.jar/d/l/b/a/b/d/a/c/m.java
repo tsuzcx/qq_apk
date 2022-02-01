@@ -1,7 +1,7 @@
 package d.l.b.a.b.d.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.as;
 import d.l.b.a.b.d.a.e.w;
 
@@ -12,19 +12,19 @@ public abstract interface m
   public static final class a
     implements m
   {
-    public static final a LnV;
+    public static final a NeS;
     
     static
     {
       AppMethodBeat.i(57771);
-      LnV = new a();
+      NeS = new a();
       AppMethodBeat.o(57771);
     }
     
     public final as a(w paramw)
     {
       AppMethodBeat.i(57770);
-      k.h(paramw, "javaTypeParameter");
+      p.h(paramw, "javaTypeParameter");
       AppMethodBeat.o(57770);
       return null;
     }
@@ -32,7 +32,7 @@ public abstract interface m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.m
  * JD-Core Version:    0.7.0.1
  */

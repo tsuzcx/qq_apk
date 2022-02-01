@@ -9,13 +9,13 @@ import java.util.Map;
 public final class m
   extends o
 {
-  private static final int[] bJE = { 1, 1, 1, 1 };
-  private static final int[] bJH = { 3, 1, 1 };
+  private static final int[] bTR = { 1, 1, 1, 1 };
+  private static final int[] bTU = { 3, 1, 1 };
   
   public final b a(String paramString, a parama, int paramInt1, int paramInt2, Map<c, ?> paramMap)
   {
     AppMethodBeat.i(12382);
-    if (parama != a.bGQ)
+    if (parama != a.bRe)
     {
       paramString = new IllegalArgumentException("Can only encode ITF, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12382);
@@ -26,7 +26,7 @@ public final class m
     return paramString;
   }
   
-  public final boolean[] bn(String paramString)
+  public final boolean[] cg(String paramString)
   {
     AppMethodBeat.i(12383);
     int m = paramString.length();
@@ -43,7 +43,7 @@ public final class m
       throw paramString;
     }
     boolean[] arrayOfBoolean = new boolean[m * 9 + 9];
-    int j = a(arrayOfBoolean, 0, bJE, true);
+    int j = a(arrayOfBoolean, 0, bTR, true);
     int i = 0;
     while (i < m)
     {
@@ -53,14 +53,14 @@ public final class m
       int k = 0;
       while (k < 5)
       {
-        arrayOfInt[(k * 2)] = l.bJG[n][k];
-        arrayOfInt[(k * 2 + 1)] = l.bJG[i1][k];
+        arrayOfInt[(k * 2)] = l.bTT[n][k];
+        arrayOfInt[(k * 2 + 1)] = l.bTT[i1][k];
         k += 1;
       }
       j += a(arrayOfBoolean, j, arrayOfInt, true);
       i += 2;
     }
-    a(arrayOfBoolean, j, bJH, true);
+    a(arrayOfBoolean, j, bTU, true);
     AppMethodBeat.o(12383);
     return arrayOfBoolean;
   }

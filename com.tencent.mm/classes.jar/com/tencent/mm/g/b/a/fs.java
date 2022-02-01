@@ -6,111 +6,80 @@ import com.tencent.mm.plugin.report.a;
 public final class fs
   extends a
 {
-  private long dZL = 0L;
-  private long dZM = 0L;
-  private String dZN = "";
-  private long dZO = 0L;
-  private String dZP = "";
-  private long dZQ = 0L;
-  private long dZR = 0L;
-  private long dZS = 0L;
+  private long eiJ = 0L;
+  private long elP = 0L;
+  private long elQ = 0L;
+  private long elR = 0L;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(74990);
+    AppMethodBeat.i(118488);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dZL);
+    ((StringBuffer)localObject).append(this.elP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZM);
+    ((StringBuffer)localObject).append(this.eiJ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZN);
+    ((StringBuffer)localObject).append(this.elQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZO);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZP);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZQ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZS);
+    ((StringBuffer)localObject).append(this.elR);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(74990);
+    awz((String)localObject);
+    AppMethodBeat.o(118488);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(74991);
+    AppMethodBeat.i(118489);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SearchID:").append(this.dZL);
+    ((StringBuffer)localObject).append("ExposeViewId:").append(this.elP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RecommentID:").append(this.dZM);
+    ((StringBuffer)localObject).append("ClickClearCount:").append(this.eiJ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("QueryContent:").append(this.dZN);
+    ((StringBuffer)localObject).append("ClickRenewCount:").append(this.elQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FinishType:").append(this.dZO);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Behavior:").append(this.dZP);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MaxIndex:").append(this.dZQ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NewSearchID:").append(this.dZR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NewRecommentID:").append(this.dZS);
+    ((StringBuffer)localObject).append("IfDeleteVideo:").append(this.elR);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(74991);
+    AppMethodBeat.o(118489);
     return localObject;
   }
   
-  public final String Sl()
+  public final long Tu()
   {
-    return this.dZP;
+    return this.eiJ;
+  }
+  
+  public final long Tv()
+  {
+    return this.elQ;
   }
   
   public final int getId()
   {
-    return 17121;
+    return 16913;
   }
   
-  public final fs ki(long paramLong)
+  public final fs kM(long paramLong)
   {
-    this.dZO = paramLong;
+    this.elP = paramLong;
     return this;
   }
   
-  public final fs kj(long paramLong)
+  public final fs kN(long paramLong)
   {
-    this.dZQ = paramLong;
+    this.eiJ = paramLong;
     return this;
   }
   
-  public final fs kk(long paramLong)
+  public final fs kO(long paramLong)
   {
-    this.dZR = paramLong;
+    this.elQ = paramLong;
     return this;
   }
   
-  public final fs kl(long paramLong)
+  public final fs kP(long paramLong)
   {
-    this.dZS = paramLong;
-    return this;
-  }
-  
-  public final fs nk(String paramString)
-  {
-    AppMethodBeat.i(74988);
-    this.dZN = t("QueryContent", paramString, true);
-    AppMethodBeat.o(74988);
-    return this;
-  }
-  
-  public final fs nl(String paramString)
-  {
-    AppMethodBeat.i(74989);
-    this.dZP = t("Behavior", paramString, true);
-    AppMethodBeat.o(74989);
+    this.elR = paramLong;
     return this;
   }
 }

@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class if
   extends b
 {
-  public a djn;
-  public b djo;
+  public a duL;
   
   public if()
   {
@@ -16,31 +15,25 @@ public final class if
   
   private if(byte paramByte)
   {
-    AppMethodBeat.i(91206);
-    this.djn = new a();
-    this.djo = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(89642);
+    this.duL = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91206);
+    AppMethodBeat.o(89642);
   }
   
   public static final class a
   {
-    public boolean djp = false;
-    public int djq = 0;
-    public String djr;
-  }
-  
-  public static final class b
-  {
-    public boolean deB = false;
-    public String djs;
-    public String djt;
+    public String appId;
+    public String extInfo;
+    public String md5;
+    public int scene;
+    public String url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.if
  * JD-Core Version:    0.7.0.1
  */

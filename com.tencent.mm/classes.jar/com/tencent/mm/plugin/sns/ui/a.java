@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
 public abstract class a
-  implements ab
+  implements ac
 {
   public abstract int getContentType();
 }

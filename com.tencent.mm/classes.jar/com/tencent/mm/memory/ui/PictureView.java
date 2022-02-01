@@ -8,26 +8,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.b.a;
 import com.tencent.mm.memory.i;
 import com.tencent.mm.memory.n;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class PictureView
   extends ImageView
 {
   private boolean DEBUG;
-  private i hfI;
-  private boolean hfJ;
-  private Runnable hfK;
+  private i hxQ;
+  private boolean hxR;
+  private Runnable hxS;
   
   public PictureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(156531);
     this.DEBUG = false;
-    this.hfI = null;
-    this.hfJ = false;
-    this.hfK = new PictureView.1(this);
+    this.hxQ = null;
+    this.hxR = false;
+    this.hxS = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(156530);
+        PictureView.a(PictureView.this);
+        AppMethodBeat.o(156530);
+      }
+    };
     AppMethodBeat.o(156531);
   }
   
@@ -36,29 +44,37 @@ public class PictureView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(156532);
     this.DEBUG = false;
-    this.hfI = null;
-    this.hfJ = false;
-    this.hfK = new PictureView.1(this);
+    this.hxQ = null;
+    this.hxR = false;
+    this.hxS = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(156530);
+        PictureView.a(PictureView.this);
+        AppMethodBeat.o(156530);
+      }
+    };
     AppMethodBeat.o(156532);
   }
   
-  private void awk()
+  private void ayX()
   {
     AppMethodBeat.i(156538);
-    removeCallbacks(this.hfK);
+    removeCallbacks(this.hxS);
     if (this.DEBUG) {
-      ac.i("MicroMsg.PictureView", "onAttach" + hashCode() + " " + bs.eWi().toString());
+      ad.i("MicroMsg.PictureView", "onAttach" + hashCode() + " " + bt.flS().toString());
     }
-    if (this.hfJ)
+    if (this.hxR)
     {
       AppMethodBeat.o(156538);
       return;
     }
-    this.hfJ = true;
+    this.hxR = true;
     AppMethodBeat.o(156538);
   }
   
-  private static String bR(Object paramObject)
+  private static String bT(Object paramObject)
   {
     AppMethodBeat.i(156533);
     if (paramObject == null)
@@ -68,7 +84,7 @@ public class PictureView
     }
     if ((paramObject instanceof a))
     {
-      paramObject = paramObject + " hashcode " + paramObject.hashCode() + " " + ((a)paramObject).awj() + " " + ((a)paramObject).awj().hashCode();
+      paramObject = paramObject + " hashcode " + paramObject.hashCode() + " " + ((a)paramObject).ayW() + " " + ((a)paramObject).ayW().hashCode();
       AppMethodBeat.o(156533);
       return paramObject;
     }
@@ -77,20 +93,20 @@ public class PictureView
     return paramObject;
   }
   
-  private static void bS(Object paramObject)
+  private static void bU(Object paramObject)
   {
     AppMethodBeat.i(156536);
     if ((paramObject != null) && ((paramObject instanceof i))) {
-      ((i)paramObject).avO();
+      ((i)paramObject).ayB();
     }
     AppMethodBeat.o(156536);
   }
   
-  private static void bT(Object paramObject)
+  private static void bV(Object paramObject)
   {
     AppMethodBeat.i(156537);
     if ((paramObject != null) && ((paramObject instanceof i))) {
-      ((i)paramObject).avP();
+      ((i)paramObject).ayC();
     }
     AppMethodBeat.o(156537);
   }
@@ -99,16 +115,16 @@ public class PictureView
   {
     AppMethodBeat.i(156539);
     if (this.DEBUG) {
-      ac.i("MicroMsg.PictureView", "onDetach " + hashCode() + " " + bs.eWi().toString());
+      ad.i("MicroMsg.PictureView", "onDetach " + hashCode() + " " + bt.flS().toString());
     }
-    if (!this.hfJ)
+    if (!this.hxR)
     {
       AppMethodBeat.o(156539);
       return;
     }
-    this.hfJ = false;
-    removeCallbacks(this.hfK);
-    postDelayed(this.hfK, 500L);
+    this.hxR = false;
+    removeCallbacks(this.hxS);
+    postDelayed(this.hxS, 500L);
     AppMethodBeat.o(156539);
   }
   
@@ -116,7 +132,7 @@ public class PictureView
   {
     AppMethodBeat.i(156540);
     super.onAttachedToWindow();
-    awk();
+    ayX();
     AppMethodBeat.o(156540);
   }
   
@@ -132,7 +148,7 @@ public class PictureView
   {
     AppMethodBeat.i(156543);
     super.onFinishTemporaryDetach();
-    awk();
+    ayX();
     AppMethodBeat.o(156543);
   }
   
@@ -147,20 +163,20 @@ public class PictureView
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(156535);
-    removeCallbacks(this.hfK);
-    if ((paramDrawable == null) || (paramDrawable.equals(this.hfI)))
+    removeCallbacks(this.hxS);
+    if ((paramDrawable == null) || (paramDrawable.equals(this.hxQ)))
     {
       AppMethodBeat.o(156535);
       return;
     }
     if (this.DEBUG) {
-      ac.i("MicroMsg.PictureView", "setImageDrawable " + hashCode() + " old: " + bR(this.hfI) + " new:" + bR(paramDrawable) + " " + bs.eWi().toString());
+      ad.i("MicroMsg.PictureView", "setImageDrawable " + hashCode() + " old: " + bT(this.hxQ) + " new:" + bT(paramDrawable) + " " + bt.flS().toString());
     }
-    bT(this.hfI);
+    bV(this.hxQ);
     if ((paramDrawable instanceof i)) {}
-    for (this.hfI = ((i)paramDrawable);; this.hfI = null)
+    for (this.hxQ = ((i)paramDrawable);; this.hxQ = null)
     {
-      bS(paramDrawable);
+      bU(paramDrawable);
       super.setImageDrawable(paramDrawable);
       AppMethodBeat.o(156535);
       return;
@@ -170,14 +186,14 @@ public class PictureView
   public void setReleasableBitmap(n paramn)
   {
     AppMethodBeat.i(156534);
-    if ((paramn == null) || (paramn.equals(this.hfI)))
+    if ((paramn == null) || (paramn.equals(this.hxQ)))
     {
       AppMethodBeat.o(156534);
       return;
     }
-    setImageBitmap(paramn.avT());
-    this.hfI = paramn;
-    bS(this.hfI);
+    setImageBitmap(paramn.ayG());
+    this.hxQ = paramn;
+    bU(this.hxQ);
     AppMethodBeat.o(156534);
   }
 }

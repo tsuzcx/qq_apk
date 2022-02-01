@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.sns.ad.d.a;
 
 public final class a
 {
-  public int xJS = 0;
-  public int xKX = 0;
-  public int xKY = 0;
-  public int xKZ = 0;
-  public int xLa = 0;
-  public int xLb = 0;
-  public int xLc = 0;
-  public long xLd = 0L;
-  public long xLe = 0L;
-  public long xLf = 0L;
+  public int yZh = 0;
+  public int zam = 0;
+  public int zan = 0;
+  public int zao = 0;
+  public int zap = 0;
+  public int zaq = 0;
+  public int zar = 0;
+  public long zas = 0L;
+  public long zat = 0L;
+  public long zau = 0L;
 }
 
 

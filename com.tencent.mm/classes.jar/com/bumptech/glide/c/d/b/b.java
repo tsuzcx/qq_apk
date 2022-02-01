@@ -7,21 +7,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements u<byte[]>
 {
-  private final byte[] xy;
+  private final byte[] zr;
   
   public b(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(77452);
-    this.xy = ((byte[])i.checkNotNull(paramArrayOfByte, "Argument must not be null"));
+    this.zr = ((byte[])i.checkNotNull(paramArrayOfByte, "Argument must not be null"));
     AppMethodBeat.o(77452);
   }
   
   public final int getSize()
   {
-    return this.xy.length;
+    return this.zr.length;
   }
   
-  public final Class<byte[]> oy()
+  public final Class<byte[]> oQ()
   {
     return [B.class;
   }

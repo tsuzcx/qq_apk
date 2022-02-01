@@ -4,44 +4,57 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.kernel.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.qqmail.b.ad;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.qqmail.PluginQQMail;
+import com.tencent.mm.plugin.qqmail.d.ac;
+import com.tencent.mm.plugin.qqmail.d.p;
+import com.tencent.mm.plugin.qqmail.d.r;
+import com.tencent.mm.plugin.qqmail.d.s;
+import com.tencent.mm.plugin.qqmail.d.t;
+import com.tencent.mm.plugin.qqmail.d.v;
+import com.tencent.mm.plugin.qqmail.d.x;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.protocal.GeneralControlWrapper;
+import com.tencent.mm.protocal.JsapiPermissionWrapper;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.am;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
-import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.base.preference.Preference;
 import junit.framework.Assert;
 
 public final class a
-  implements com.tencent.mm.ak.g, com.tencent.mm.pluginsdk.b.a, n.b
+  implements com.tencent.mm.al.f, com.tencent.mm.pluginsdk.b.a
 {
-  private static boolean vXC = false;
-  private boolean cYM;
-  private ai contact;
-  private Context context;
+  private am contact;
+  Context context;
+  private boolean dke;
   private boolean enable;
-  private ProgressDialog fts;
-  private ProgressDialog huQ;
-  private f screen;
-  private boolean vIS;
+  ProgressDialog fMu;
+  private com.tencent.mm.ui.base.preference.f screen;
+  private boolean wPZ;
+  private p xfq;
   
   public a(Context paramContext)
   {
@@ -56,178 +69,101 @@ public final class a
     }
   }
   
-  private void bYK()
+  static String dCG()
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(122995);
-    label46:
-    Object localObject;
-    int i;
-    if ((com.tencent.mm.model.u.axI() & 0x1) == 0)
-    {
-      bool1 = true;
-      this.enable = bool1;
-      if (bs.m((Integer)com.tencent.mm.kernel.g.agR().agA().get(17, null)) != 1) {
-        break label344;
-      }
-      bool1 = true;
-      this.cYM = bool1;
-      localObject = (HelperHeaderPreference)this.screen.aPN("contact_info_header_helper");
-      ((HelperHeaderPreference)localObject).aR(this.contact.field_username, this.contact.aaS(), this.context.getString(2131757772));
-      if (!this.enable) {
-        break label349;
-      }
-      i = 1;
-      label107:
-      ((HelperHeaderPreference)localObject).updateStatus(i);
-      this.screen.cK("contact_info_qqmailhelper_install", this.enable);
-      localObject = this.screen;
-      if (this.enable) {
-        break label354;
-      }
-      bool1 = true;
-      label144:
-      ((f)localObject).cK("contact_info_qqmailhelper_view", bool1);
-      localObject = this.screen;
-      if (this.enable) {
-        break label359;
-      }
-      bool1 = true;
-      label170:
-      ((f)localObject).cK("contact_info_qqmailhelper_compose", bool1);
-      localObject = (CheckBoxPreference)this.screen.aPN("contact_info_qqmailhelper_recv_remind");
-      if (localObject != null) {
-        ((CheckBoxPreference)localObject).mF = this.cYM;
-      }
-      localObject = this.screen;
-      if (this.enable) {
-        break label364;
-      }
-      bool1 = true;
-      label226:
-      ((f)localObject).cK("contact_info_qqmailhelper_recv_remind", bool1);
-      localObject = this.screen;
-      if ((this.enable & this.cYM)) {
-        break label369;
-      }
-      bool1 = true;
-      label257:
-      ((f)localObject).cK("contact_info_qqmailhelper_set_files_view", bool1);
-      this.screen.cK("contact_info_qqmailhelper_download_mgr_view", true);
-      localObject = this.screen;
-      if (this.enable) {
-        break label374;
-      }
-      bool1 = true;
-      label296:
-      ((f)localObject).cK("contact_info_qqmailhelper_clear_data", bool1);
-      localObject = this.screen;
-      if (this.enable) {
-        break label379;
-      }
-    }
-    label344:
-    label349:
-    label354:
-    label359:
-    label364:
-    label369:
-    label374:
-    label379:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ((f)localObject).cK("contact_info_qqmailhelper_uninstall", bool1);
-      AppMethodBeat.o(122995);
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label46;
-      i = 0;
-      break label107;
-      bool1 = false;
-      break label144;
-      bool1 = false;
-      break label170;
-      bool1 = false;
-      break label226;
-      bool1 = false;
-      break label257;
-      bool1 = false;
-      break label296;
-    }
+    AppMethodBeat.i(215296);
+    String str = (String)g.ajC().ajl().get(al.a.IJH, null);
+    ad.i("MicroMsg.ContactWidgetQQMail", "last bind xmail %s", new Object[] { str });
+    AppMethodBeat.o(215296);
+    return str;
   }
   
-  private void pb(boolean paramBoolean)
+  private void dCH()
   {
-    AppMethodBeat.i(122996);
-    if (paramBoolean) {}
-    for (String str = this.context.getString(2131763362);; str = this.context.getString(2131763370))
-    {
-      Context localContext = this.context;
-      this.context.getString(2131755906);
-      this.huQ = h.b(localContext, str, true, null);
-      vXC = true;
-      pd(paramBoolean);
-      AppMethodBeat.o(122996);
-      return;
-    }
+    AppMethodBeat.i(215297);
+    this.fMu = h.b(this.context, this.context.getString(2131755936), false, null);
+    r localr = new r(dCG());
+    g.aiU().a(localr, 0);
+    AppMethodBeat.o(215297);
   }
   
-  private void pc(boolean paramBoolean)
+  private static boolean pA(boolean paramBoolean)
   {
-    AppMethodBeat.i(122997);
-    if (!bs.iX(this.context))
-    {
-      AppMethodBeat.o(122997);
-      return;
-    }
-    if (paramBoolean) {
-      com.tencent.mm.kernel.g.agR().agA().set(17, Integer.valueOf(1));
-    }
-    int i = com.tencent.mm.model.u.axI();
-    if (paramBoolean) {
-      i &= 0xFFFFFFFE;
-    }
-    for (;;)
-    {
-      com.tencent.mm.kernel.g.agR().agA().set(34, Integer.valueOf(i));
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awA().c(new com.tencent.mm.ba.l("", "", "", "", "", "", "", "", i, "", ""));
-      com.tencent.mm.plugin.qqmail.a.a.iyy.Lj();
-      if (!paramBoolean) {
-        ad.drO();
-      }
-      AppMethodBeat.o(122997);
-      return;
-      i |= 0x1;
-    }
-  }
-  
-  private boolean pd(boolean paramBoolean)
-  {
-    AppMethodBeat.i(123000);
-    final com.tencent.mm.plugin.qqmail.b.u localu = new com.tencent.mm.plugin.qqmail.b.u(paramBoolean, "");
-    if (!vXC) {
-      this.fts = h.b(this.context, this.context.getString(2131755936), true, new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(122989);
-          com.tencent.mm.kernel.g.agQ().ghe.a(localu);
-          AppMethodBeat.o(122989);
-        }
-      });
-    }
-    com.tencent.mm.kernel.g.agQ().ghe.a(localu, 0);
-    AppMethodBeat.o(123000);
+    AppMethodBeat.i(215301);
+    s locals = new s(paramBoolean, "");
+    g.ajB().gAO.a(locals, 0);
+    AppMethodBeat.o(215301);
     return false;
   }
   
-  public final boolean WZ(String paramString)
+  static void y(boolean paramBoolean, String paramString)
+  {
+    AppMethodBeat.i(215300);
+    int i = u.aAy();
+    int j;
+    if (paramBoolean)
+    {
+      i &= 0xFFFFFFFE;
+      g.ajC().ajl().set(al.a.IJH, paramString);
+      j = g.ajC().ajl().getInt(al.a.IJG, 0);
+      g.ajC().ajl().set(al.a.IJG, Integer.valueOf(j | 0x2));
+      pA(true);
+    }
+    for (;;)
+    {
+      g.ajC().ajl().set(34, Integer.valueOf(i));
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new com.tencent.mm.bb.l("", "", "", "", "", "", "", "", i, "", ""));
+      com.tencent.mm.plugin.qqmail.a.a.iRH.MR();
+      AppMethodBeat.o(215300);
+      return;
+      i |= 0x1;
+      g.ajC().ajl().set(al.a.IJH, "");
+      j = g.ajC().ajl().getInt(al.a.IJG, 0);
+      g.ajC().ajl().set(al.a.IJG, Integer.valueOf(j & 0xFFFFFFFD));
+      ac.dCm();
+    }
+  }
+  
+  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, am paramam, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(122994);
+    if (paramf != null)
+    {
+      bool = true;
+      Assert.assertTrue(bool);
+      if (paramam == null) {
+        break label152;
+      }
+    }
+    label152:
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      Assert.assertTrue(w.zH(paramam.field_username));
+      g.ajB().gAO.a(3848, this);
+      g.ajB().gAO.a(3889, this);
+      g.aiU().a(586, this);
+      g.ajB().gAO.a(129, this);
+      this.wPZ = paramBoolean;
+      this.contact = paramam;
+      this.screen = paramf;
+      paramf.addPreferencesFromResource(2131951652);
+      cdo();
+      if (((Activity)this.context).getIntent().getBooleanExtra("key_need_rebind_xmail", false)) {
+        dCH();
+      }
+      AppMethodBeat.o(122994);
+      return true;
+      bool = false;
+      break;
+    }
+  }
+  
+  public final boolean aaG(String paramString)
   {
     AppMethodBeat.i(122993);
-    ac.d("MicroMsg.ContactWidgetQQMail", "handleEvent : key = ".concat(String.valueOf(paramString)));
-    if (bs.nullAsNil(paramString).length() <= 0)
+    ad.d("MicroMsg.ContactWidgetQQMail", "handleEvent : key = ".concat(String.valueOf(paramString)));
+    if (bt.nullAsNil(paramString).length() <= 0)
     {
       AppMethodBeat.o(122993);
       return false;
@@ -235,7 +171,7 @@ public final class a
     if (paramString.equals("contact_info_qqmailhelper_view"))
     {
       paramString = new Intent();
-      if (this.vIS)
+      if (this.wPZ)
       {
         paramString.putExtra("Chat_User", this.contact.field_username);
         paramString.putExtra("Chat_Mode", 1);
@@ -250,13 +186,13 @@ public final class a
         paramString.putExtra("Chat_User", this.contact.field_username);
         paramString.putExtra("Chat_Mode", 1);
         paramString.addFlags(67108864);
-        com.tencent.mm.plugin.qqmail.a.a.iyx.d(paramString, this.context);
+        com.tencent.mm.plugin.qqmail.a.a.iRG.d(paramString, this.context);
       }
     }
     if (paramString.equals("contact_info_qqmailhelper_compose"))
     {
       Object localObject = new Intent(this.context, ComposeUI.class);
-      if (this.vIS)
+      if (this.wPZ)
       {
         ((Intent)localObject).putExtra("Chat_User", this.contact.field_username);
         ((Intent)localObject).addFlags(67108864);
@@ -270,36 +206,29 @@ public final class a
         ((Intent)localObject).putExtra("Chat_User", this.contact.field_username);
         ((Intent)localObject).addFlags(67108864);
         paramString = this.context;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/qqmail/ui/ContactWidgetQQMail", "composeMail", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/qqmail/ui/ContactWidgetQQMail", "composeMail", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/qqmail/ui/ContactWidgetQQMail", "composeMail", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
     if (paramString.equals("contact_info_qqmailhelper_set_files_view"))
     {
-      paramString = new Intent("android.intent.action.VIEW", Uri.parse(bs.nullAsNil((String)com.tencent.mm.kernel.g.agR().agA().get(29, null))));
+      paramString = new Intent("android.intent.action.VIEW", Uri.parse(bt.nullAsNil((String)g.ajC().ajl().get(29, null))));
       paramString.putExtra("title", this.context.getString(2131757771));
       paramString.putExtra("zoom", false);
       paramString.putExtra("show_bottom", false);
       paramString.putExtra("showShare", false);
       paramString.putExtra("vertical_scroll", false);
-      com.tencent.mm.plugin.qqmail.a.a.iyx.i(paramString, this.context);
+      com.tencent.mm.plugin.qqmail.a.a.iRG.i(paramString, this.context);
       AppMethodBeat.o(122993);
       return true;
     }
     if (paramString.equals("contact_info_qqmailhelper_recv_remind"))
     {
-      paramString = (CheckBoxPreference)this.screen.aPN(paramString);
-      boolean bool = paramString.isChecked();
-      pd(bool);
-      if (!bool) {}
-      for (bool = true;; bool = false)
-      {
-        paramString.mF = bool;
-        AppMethodBeat.o(122993);
-        return true;
-      }
+      pA(((CheckBoxPreference)this.screen.aVD(paramString)).isChecked());
+      AppMethodBeat.o(122993);
+      return true;
     }
     if (paramString.equals("contact_info_qqmailhelper_clear_data"))
     {
@@ -308,7 +237,7 @@ public final class a
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(122986);
-          ad.drO();
+          ac.dCm();
           AppMethodBeat.o(122986);
         }
       }, null);
@@ -317,201 +246,402 @@ public final class a
     }
     if (paramString.equals("contact_info_qqmailhelper_install"))
     {
-      if (bs.m((Integer)com.tencent.mm.kernel.g.agR().agA().get(9, null)) == 0)
-      {
-        h.b(this.context, 2131763508, new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(122987);
-            com.tencent.mm.plugin.qqmail.a.a.iyx.g(null, a.a(a.this));
-            AppMethodBeat.o(122987);
-          }
-        }, null);
-        AppMethodBeat.o(122993);
-        return true;
-      }
-      pb(true);
+      dCH();
       AppMethodBeat.o(122993);
       return true;
     }
     if (paramString.equals("contact_info_qqmailhelper_uninstall"))
     {
-      h.d(this.context, this.context.getString(2131763366), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
+      h.e(this.context, this.context.getString(2131763366), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(122988);
-          a.b(a.this);
-          AppMethodBeat.o(122988);
+          AppMethodBeat.i(122987);
+          if (!bt.isNullOrNil(a.dCG()))
+          {
+            paramAnonymousDialogInterface = a.this;
+            paramAnonymousDialogInterface.fMu = h.b(paramAnonymousDialogInterface.context, paramAnonymousDialogInterface.context.getString(2131755936), false, null);
+            paramAnonymousDialogInterface = new t();
+            g.aiU().a(paramAnonymousDialogInterface, 0);
+            AppMethodBeat.o(122987);
+            return;
+          }
+          a.y(false, null);
+          a.this.cdo();
+          AppMethodBeat.o(122987);
         }
       }, null);
       AppMethodBeat.o(122993);
       return true;
     }
-    ac.e("MicroMsg.ContactWidgetQQMail", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
+    if (paramString.equals("contact_info_qqmailhelper_account"))
+    {
+      dCH();
+      AppMethodBeat.o(122993);
+      return true;
+    }
+    ad.e("MicroMsg.ContactWidgetQQMail", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(122993);
     return false;
   }
   
-  public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
+  final void ar(final String paramString1, final String paramString2, final String paramString3)
   {
-    AppMethodBeat.i(122999);
-    int i = bs.l(paramObject, 0);
-    ac.d("MicroMsg.ContactWidgetQQMail", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
-    if ((paramn != com.tencent.mm.kernel.g.agR().agA()) || (i <= 0))
+    AppMethodBeat.i(215299);
+    View localView = View.inflate(this.context, 2131495329, null);
+    final EditText localEditText = (EditText)localView.findViewById(2131304470);
+    h.a(this.context, this.context.getString(2131757770), localView, new DialogInterface.OnClickListener()
     {
-      ac.e("MicroMsg.ContactWidgetQQMail", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
-      AppMethodBeat.o(122999);
-      return;
-    }
-    if ((i != 17) && (i != 34) && (i != 7))
-    {
-      AppMethodBeat.o(122999);
-      return;
-    }
-    bYK();
-    AppMethodBeat.o(122999);
-  }
-  
-  public final boolean a(f paramf, ai paramai, boolean paramBoolean, int paramInt)
-  {
-    boolean bool2 = false;
-    AppMethodBeat.i(122994);
-    if (paramf != null) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      Assert.assertTrue(bool1);
-      bool1 = bool2;
-      if (paramai != null) {
-        bool1 = true;
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(122991);
+        if ((localEditText.getText() != null) && (!bt.ai(localEditText.getText()))) {
+          a.a(a.this, paramString1, paramString2, paramString3, localEditText.getText().toString());
+        }
+        AppMethodBeat.o(122991);
       }
-      Assert.assertTrue(bool1);
-      Assert.assertTrue(w.wK(paramai.field_username));
-      com.tencent.mm.kernel.g.agR().agA().a(this);
-      com.tencent.mm.kernel.g.agQ().ghe.a(24, this);
-      this.vIS = paramBoolean;
-      this.contact = paramai;
-      this.screen = paramf;
-      paramf.addPreferencesFromResource(2131951652);
-      bYK();
-      AppMethodBeat.o(122994);
-      return true;
-    }
+    });
+    AppMethodBeat.o(215299);
   }
   
-  public final boolean bYJ()
+  public final boolean cdn()
   {
     AppMethodBeat.i(122998);
-    com.tencent.mm.kernel.g.agR().agA().b(this);
-    com.tencent.mm.kernel.g.agQ().ghe.b(24, this);
-    if (this.huQ != null)
+    g.ajB().gAO.b(3848, this);
+    g.ajB().gAO.b(3889, this);
+    g.aiU().b(586, this);
+    g.ajB().gAO.b(129, this);
+    if (this.fMu != null)
     {
-      this.huQ.dismiss();
-      this.huQ = null;
-    }
-    if (this.fts != null)
-    {
-      this.fts.dismiss();
-      this.fts = null;
+      this.fMu.dismiss();
+      this.fMu = null;
     }
     AppMethodBeat.o(122998);
     return true;
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.ak.n paramn)
+  final void cdo()
   {
-    int i = 1;
-    AppMethodBeat.i(123001);
-    if (paramn.getType() != 24)
+    AppMethodBeat.i(122995);
+    boolean bool;
+    label45:
+    Object localObject;
+    int i;
+    if ((u.aAy() & 0x1) == 0)
     {
-      ac.w("MicroMsg.ContactWidgetQQMail", "onSceneEnd : unExpected type = " + paramn.getType());
-      AppMethodBeat.o(123001);
-      return;
-    }
-    if (this.fts != null)
-    {
-      this.fts.dismiss();
-      this.fts = null;
-    }
-    if (this.huQ != null)
-    {
-      this.huQ.dismiss();
-      this.huQ = null;
-    }
-    if ((paramInt1 == 0) && (paramInt2 == 0))
-    {
-      bool = ((com.tencent.mm.plugin.qqmail.b.u)paramn).dzv;
-      paramString = com.tencent.mm.kernel.g.agR().agA();
-      if (bool) {}
-      for (paramInt1 = i;; paramInt1 = 2)
+      bool = true;
+      this.enable = bool;
+      if (bt.n((Integer)g.ajC().ajl().get(17, null)) != 1) {
+        break label509;
+      }
+      bool = true;
+      this.dke = bool;
+      localObject = (HelperHeaderPreference)this.screen.aVD("contact_info_header_helper");
+      ((HelperHeaderPreference)localObject).aZ(this.contact.field_username, this.contact.adv(), this.context.getString(2131757772));
+      if (!this.enable) {
+        break label514;
+      }
+      i = 1;
+      label108:
+      ((HelperHeaderPreference)localObject).updateStatus(i);
+      this.screen.cP("contact_info_qqmailhelper_install", this.enable);
+      localObject = this.screen;
+      if (this.enable) {
+        break label519;
+      }
+      bool = true;
+      label146:
+      ((com.tencent.mm.ui.base.preference.f)localObject).cP("contact_info_qqmailhelper_view", bool);
+      localObject = this.screen;
+      if (this.enable) {
+        break label524;
+      }
+      bool = true;
+      label173:
+      ((com.tencent.mm.ui.base.preference.f)localObject).cP("contact_info_qqmailhelper_compose", bool);
+      localObject = (CheckBoxPreference)this.screen.aVD("contact_info_qqmailhelper_recv_remind");
+      if (localObject != null) {
+        ((CheckBoxPreference)localObject).oB = this.dke;
+      }
+      localObject = this.screen;
+      if (this.enable) {
+        break label529;
+      }
+      bool = true;
+      label231:
+      ((com.tencent.mm.ui.base.preference.f)localObject).cP("contact_info_qqmailhelper_recv_remind", bool);
+      localObject = this.screen;
+      if ((this.enable & this.dke)) {
+        break label534;
+      }
+      bool = true;
+      label263:
+      ((com.tencent.mm.ui.base.preference.f)localObject).cP("contact_info_qqmailhelper_set_files_view", bool);
+      this.screen.cP("contact_info_qqmailhelper_download_mgr_view", true);
+      localObject = this.screen;
+      if (this.enable) {
+        break label539;
+      }
+      bool = true;
+      label304:
+      ((com.tencent.mm.ui.base.preference.f)localObject).cP("contact_info_qqmailhelper_clear_data", bool);
+      localObject = this.screen;
+      if (this.enable) {
+        break label544;
+      }
+      bool = true;
+      label331:
+      ((com.tencent.mm.ui.base.preference.f)localObject).cP("contact_info_qqmailhelper_uninstall", bool);
+      localObject = this.screen;
+      if (this.enable) {
+        break label549;
+      }
+      bool = true;
+      label358:
+      ((com.tencent.mm.ui.base.preference.f)localObject).cP("contact_info_qqmailhelper_account", bool);
+      localObject = this.screen.aVD("contact_info_qqmailhelper_account");
+      if (this.enable)
       {
-        paramString.set(17, Integer.valueOf(paramInt1));
-        if (vXC) {
-          pc(bool);
+        ((Preference)localObject).acw(8);
+        ((Preference)localObject).setEnabled(false);
+        String str = dCG();
+        i = g.ajC().ajl().getInt(9, 0);
+        int j = g.ajC().ajl().getInt(al.a.IJG, 0);
+        ad.i("MicroMsg.ContactWidgetQQMail", "bindXMail %s, bindQQ %d, extUserStatus %d", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j) });
+        if (bt.isNullOrNil(str)) {
+          break label584;
         }
-        vXC = false;
-        AppMethodBeat.o(123001);
-        return;
+        if ((j & 0x2) == 0) {
+          break label554;
+        }
+        ((Preference)localObject).setSummary(str);
       }
     }
-    final boolean bool = ((com.tencent.mm.plugin.qqmail.b.u)paramn).dzv;
-    ac.e("MicroMsg.ContactWidgetQQMail", "NetSceneSwitchPushMail fail : errType = " + paramInt1 + ", errCode = " + paramInt2);
-    if (paramInt1 == 4)
+    for (;;)
     {
-      switch (paramInt2)
+      this.screen.notifyDataSetChanged();
+      AppMethodBeat.o(122995);
+      return;
+      bool = false;
+      break;
+      label509:
+      bool = false;
+      break label45;
+      label514:
+      i = 0;
+      break label108;
+      label519:
+      bool = false;
+      break label146;
+      label524:
+      bool = false;
+      break label173;
+      label529:
+      bool = false;
+      break label231;
+      label534:
+      bool = false;
+      break label263;
+      label539:
+      bool = false;
+      break label304;
+      label544:
+      bool = false;
+      break label331;
+      label549:
+      bool = false;
+      break label358;
+      label554:
+      ((Preference)localObject).setSummary(this.context.getString(2131766919));
+      ((Preference)localObject).acw(0);
+      ((Preference)localObject).setEnabled(true);
+      continue;
+      label584:
+      if (i != 0)
       {
-      default: 
-        AppMethodBeat.o(123001);
-        return;
-      case -31: 
-        ac.i("MicroMsg.ContactWidgetQQMail", "need second pass");
-        paramString = View.inflate(this.context, 2131495329, null);
-        paramn = (EditText)paramString.findViewById(2131304470);
-        h.a(this.context, this.context.getString(2131757770), paramString, new DialogInterface.OnClickListener()
+        ((Preference)localObject).setSummary(i + "@qq.com");
+      }
+      else
+      {
+        ((Preference)localObject).setSummary(this.context.getString(2131766919));
+        ((Preference)localObject).acw(0);
+        ((Preference)localObject).setEnabled(true);
+      }
+    }
+  }
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, final Intent paramIntent)
+  {
+    AppMethodBeat.i(215298);
+    if (paramInt1 == 291)
+    {
+      if ((paramInt2 == -1) && (paramIntent != null))
+      {
+        y(true, paramIntent.getStringExtra("Key_Bind_XMail"));
+        cdo();
+        AppMethodBeat.o(215298);
+      }
+    }
+    else if (paramInt1 == 292)
+    {
+      Object localObject = null;
+      if (paramIntent != null) {
+        localObject = paramIntent.getBundleExtra("result_data");
+      }
+      if (localObject != null)
+      {
+        paramIntent = ((Bundle)localObject).getString("key_qq_mail");
+        final String str = ((Bundle)localObject).getString("key_bind_ticket");
+        boolean bool = ((Bundle)localObject).getBoolean("key_need_second_pwd", false);
+        localObject = ((Bundle)localObject).getString("key_second_pwd_key");
+        ad.i("MicroMsg.ContactWidgetQQMail", "mail %s, ticket %s, needSecondPwd %s, secPwdKey %s", new Object[] { paramIntent, str, Boolean.valueOf(bool), localObject });
+        if (!bt.V(new String[] { paramIntent, str }))
         {
-          public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          if (bool)
           {
-            AppMethodBeat.i(122991);
-            paramAnonymousDialogInterface = new com.tencent.mm.plugin.qqmail.b.u(bool, com.tencent.mm.b.g.getMessageDigest(paramn.getText().toString().trim().getBytes()));
-            com.tencent.mm.kernel.g.agQ().ghe.a(paramAnonymousDialogInterface, 0);
-            a locala = a.this;
-            Context localContext = a.a(a.this);
-            a.a(a.this).getString(2131757768);
-            a.a(locala, h.b(localContext, a.a(a.this).getString(2131755936), true, new DialogInterface.OnCancelListener()
+            if (!bt.isNullOrNil((String)localObject))
             {
-              public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
+              h.d(this.context, this.context.getString(2131766920), "", new DialogInterface.OnClickListener()
               {
-                AppMethodBeat.i(122990);
-                com.tencent.mm.kernel.g.agQ().ghe.a(paramAnonymousDialogInterface);
-                AppMethodBeat.o(122990);
-              }
-            }));
-            AppMethodBeat.o(122991);
+                public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+                {
+                  AppMethodBeat.i(122988);
+                  a.this.ar(paramIntent, str, this.xft);
+                  AppMethodBeat.o(122988);
+                }
+              });
+              AppMethodBeat.o(215298);
+              return;
+            }
+            Toast.makeText(this.context, this.context.getString(2131767175), 1).show();
+            AppMethodBeat.o(215298);
+            return;
           }
-        });
+          h.d(this.context, this.context.getString(2131766920), "", new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(215295);
+              a.a(a.this, paramIntent, str, "", "");
+              AppMethodBeat.o(215295);
+            }
+          });
+        }
+      }
+    }
+    AppMethodBeat.o(215298);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  {
+    AppMethodBeat.i(123001);
+    ad.i("MicroMsg.ContactWidgetQQMail", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (this.fMu != null)
+    {
+      this.fMu.dismiss();
+      this.fMu = null;
+    }
+    Object localObject;
+    if (paramn.getType() == 3848)
+    {
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        paramString = ((x)((r)paramn).gPp.hNL.hNQ).xcm;
+        localObject = ((x)((r)paramn).gPp.hNL.hNQ).xcn;
+        paramn = ((x)((r)paramn).gPp.hNL.hNQ).xcl;
+        ad.i("MicroMsg.ContactWidgetQQMail", "wxMail %s, wxLoginUrl %s, qqLoginUrl %s", new Object[] { paramString, localObject, paramn });
+        if (bt.isNullOrNil(paramString))
+        {
+          paramString = new Intent();
+          paramString.putExtra("rawUrl", (String)localObject);
+          paramString.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FnD);
+          paramString.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Fnz);
+          d.b(this.context, "webview", ".ui.tools.WebViewUI", paramString, 292);
+          AppMethodBeat.o(123001);
+          return;
+        }
+        localObject = new Intent();
+        ((Intent)localObject).setClass(this.context, PrepareBindXMailUI.class);
+        ((Intent)localObject).putExtra("Key_WeXin_Mail", paramString);
+        ((Intent)localObject).putExtra("Key_QQMail_Login_Url", paramn);
+        ((Intent)localObject).putExtra("Key_Last_Bind_Mail", dCG());
+        ((Activity)this.context).startActivityForResult((Intent)localObject, 291);
         AppMethodBeat.o(123001);
         return;
       }
-      ac.w("MicroMsg.ContactWidgetQQMail", "onSceneEnd, sys err");
-    }
-    if (vXC)
-    {
-      paramString = this.context;
-      if (bool) {
-        paramInt1 = 2131763359;
+      paramn = paramString;
+      if (bt.isNullOrNil(paramString)) {
+        paramn = this.context.getString(2131767175);
       }
-    }
-    for (paramString = paramString.getString(paramInt1);; paramString = this.context.getString(2131755732))
-    {
-      Toast.makeText(this.context, paramString, 1).show();
-      vXC = false;
+      Toast.makeText(this.context, paramn, 0).show();
       AppMethodBeat.o(123001);
       return;
-      paramInt1 = 2131763365;
-      break;
+    }
+    if (paramn.getType() == 3889) {
+      if ((paramInt1 == 0) && (paramInt2 == 0)) {
+        y(false, null);
+      }
+    }
+    for (;;)
+    {
+      cdo();
+      do
+      {
+        AppMethodBeat.o(123001);
+        return;
+        paramn = paramString;
+        if (bt.isNullOrNil(paramString)) {
+          paramn = this.context.getString(2131767177);
+        }
+        Toast.makeText(this.context, paramn, 0).show();
+        AppMethodBeat.o(123001);
+        return;
+        if (paramn.getType() == 586)
+        {
+          if (paramn != this.xfq)
+          {
+            ad.i("MicroMsg.ContactWidgetQQMail", "not my scene, ignore");
+            AppMethodBeat.o(123001);
+            return;
+          }
+          int i = ((p)paramn).dCi();
+          if ((paramInt1 == 0) && (paramInt2 == 0) && (i == 0))
+          {
+            Toast.makeText(this.context, this.context.getString(2131767176), 0).show();
+            y(true, ((p)paramn).xbV);
+            cdo();
+            ((PluginQQMail)g.ad(PluginQQMail.class)).getNormalMailAppService().reset();
+            AppMethodBeat.o(123001);
+            return;
+          }
+          if (i == -39006)
+          {
+            localObject = paramString;
+            if (bt.isNullOrNil(paramString)) {
+              localObject = this.context.getString(2131767115);
+            }
+            Toast.makeText(this.context, (CharSequence)localObject, 0).show();
+            ar(((p)paramn).xbV, ((p)paramn).dpf, ((p)paramn).xbW);
+            AppMethodBeat.o(123001);
+            return;
+          }
+          paramn = paramString;
+          if (bt.isNullOrNil(paramString)) {
+            paramn = this.context.getString(2131767175);
+          }
+          Toast.makeText(this.context, paramn, 1).show();
+          AppMethodBeat.o(123001);
+          return;
+        }
+      } while (paramn.getType() != 129);
+      if ((paramInt1 != 0) || (paramInt2 != 0))
+      {
+        paramn = paramString;
+        if (bt.isNullOrNil(paramString)) {
+          paramn = this.context.getString(2131757998);
+        }
+        Toast.makeText(this.context, paramn, 0).show();
+      }
     }
   }
 }

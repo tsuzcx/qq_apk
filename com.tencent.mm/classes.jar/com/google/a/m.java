@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class m
   extends k
 {
-  public static final m bDi;
+  public static final m bNw;
   
   static
   {
     AppMethodBeat.i(107839);
-    bDi = new m();
+    bNw = new m();
     AppMethodBeat.o(107839);
   }
   
@@ -29,7 +29,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.a.m
  * JD-Core Version:    0.7.0.1
  */

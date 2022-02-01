@@ -9,87 +9,87 @@ import java.util.Map;
 public final class a
   implements c
 {
-  b KuW;
+  b MkX;
   
   public a(b paramb)
   {
-    this.KuW = paramb;
+    this.MkX = paramb;
   }
   
-  private Map fHE()
+  private Map fYV()
   {
-    AppMethodBeat.i(191700);
+    AppMethodBeat.i(217497);
     HashMap localHashMap = new HashMap();
-    String str = this.KuW.cWJ();
-    Map localMap = this.KuW.cWK();
+    String str = this.MkX.dfV();
+    Map localMap = this.MkX.dfW();
     localHashMap.put("name", str);
     localHashMap.put("params", localMap);
-    AppMethodBeat.o(191700);
+    AppMethodBeat.o(217497);
     return localHashMap;
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(191705);
+    AppMethodBeat.i(217502);
     com.tencent.wax.c.a.d("WxaRouter.DefaultFlutterViewLifecycle", "onBackPressed", new Object[0]);
-    e locale = e.fHC();
+    e locale = e.fYT();
     k.d local1 = new k.d()
     {
-      public final void daE()
+      public final void de(Object paramAnonymousObject)
       {
-        AppMethodBeat.i(191699);
-        com.tencent.wax.c.a.d("WxaRouter.DefaultFlutterViewLifecycle", "notImplemented finish", new Object[0]);
-        a.this.KuW.finish();
-        AppMethodBeat.o(191699);
-      }
-      
-      public final void db(Object paramAnonymousObject)
-      {
-        AppMethodBeat.i(191697);
+        AppMethodBeat.i(217494);
         if ((paramAnonymousObject == null) || (!((Boolean)paramAnonymousObject).booleanValue())) {
-          a.this.KuW.finish();
+          a.this.MkX.finish();
         }
-        AppMethodBeat.o(191697);
+        AppMethodBeat.o(217494);
       }
       
-      public final void e(String paramAnonymousString1, String paramAnonymousString2, Object paramAnonymousObject)
+      public final void djR()
       {
-        AppMethodBeat.i(191698);
+        AppMethodBeat.i(217496);
+        com.tencent.wax.c.a.d("WxaRouter.DefaultFlutterViewLifecycle", "notImplemented finish", new Object[0]);
+        a.this.MkX.finish();
+        AppMethodBeat.o(217496);
+      }
+      
+      public final void f(String paramAnonymousString1, String paramAnonymousString2, Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(217495);
         com.tencent.wax.c.a.d("WxaRouter.DefaultFlutterViewLifecycle", "error finish", new Object[0]);
-        a.this.KuW.finish();
-        AppMethodBeat.o(191698);
+        a.this.MkX.finish();
+        AppMethodBeat.o(217495);
       }
     };
-    locale.KuO.a("backPressed", null, local1);
-    AppMethodBeat.o(191705);
+    locale.MkP.a("backPressed", null, local1);
+    AppMethodBeat.o(217502);
   }
   
   public final void onCreateView()
   {
-    AppMethodBeat.i(191701);
-    e.fHC().C("onCreateView", fHE());
-    AppMethodBeat.o(191701);
+    AppMethodBeat.i(217498);
+    e.fYT().A("onCreateView", fYV());
+    AppMethodBeat.o(217498);
   }
   
   public final void onDestroyView()
   {
-    AppMethodBeat.i(191704);
-    e.fHC().C("onDestroyView", fHE());
-    AppMethodBeat.o(191704);
+    AppMethodBeat.i(217501);
+    e.fYT().A("onDestroyView", fYV());
+    AppMethodBeat.o(217501);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(191703);
-    e.fHC().C("onPause", fHE());
-    AppMethodBeat.o(191703);
+    AppMethodBeat.i(217500);
+    e.fYT().A("onPause", fYV());
+    AppMethodBeat.o(217500);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(191702);
-    e.fHC().C("onResume", fHE());
-    AppMethodBeat.o(191702);
+    AppMethodBeat.i(217499);
+    e.fYT().A("onResume", fYV());
+    AppMethodBeat.o(217499);
   }
 }
 

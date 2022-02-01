@@ -6,34 +6,34 @@ public final class a
 {
   String content;
   long createtime;
-  private int drx;
-  int hFO;
-  int hpt;
-  String hpv;
-  String hpw;
+  private int dDp;
+  int hHL;
+  String hHN;
+  String hHO;
+  int hYt;
   int msgType;
-  String ntr;
-  int nts;
-  String ntt;
-  int ntu;
-  int ntv;
+  String nUn;
+  int nUo;
+  String nUp;
+  int nUq;
+  int nUr;
   
   public a()
   {
     AppMethodBeat.i(22643);
-    this.drx = -1;
-    this.ntr = "";
-    this.nts = 0;
-    this.ntt = "";
-    this.ntu = 0;
+    this.dDp = -1;
+    this.nUn = "";
+    this.nUo = 0;
+    this.nUp = "";
+    this.nUq = 0;
     this.msgType = 0;
-    this.ntv = 0;
+    this.nUr = 0;
     this.content = "";
     this.createtime = 0L;
-    this.hpt = 0;
-    this.hFO = 0;
-    this.hpv = "";
-    this.hpw = "";
+    this.hHL = 0;
+    this.hYt = 0;
+    this.hHN = "";
+    this.hHO = "";
     AppMethodBeat.o(22643);
   }
   

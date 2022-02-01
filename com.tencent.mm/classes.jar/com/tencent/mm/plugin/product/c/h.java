@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.product.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public boolean gM;
+  public boolean iH;
   public String id;
   public String name;
   
@@ -21,31 +21,31 @@ public final class h
       if (this.name != null) {
         paramVarArgs.d(2, this.name);
       }
-      paramVarArgs.bl(3, this.gM);
+      paramVarArgs.bt(3, this.iH);
       AppMethodBeat.o(91274);
       return 0;
     }
     if (paramInt == 1) {
       if (this.id == null) {
-        break label318;
+        break label314;
       }
     }
-    label318:
+    label314:
     for (paramInt = f.a.a.b.b.a.e(1, this.id) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.name != null) {
         i = paramInt + f.a.a.b.b.a.e(2, this.name);
       }
-      paramInt = f.a.a.b.b.a.fK(3);
+      paramInt = f.a.a.b.b.a.alV(3);
       AppMethodBeat.o(91274);
-      return i + (paramInt + 1);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(91274);
@@ -61,15 +61,15 @@ public final class h
           AppMethodBeat.o(91274);
           return -1;
         case 1: 
-          localh.id = locala.LVo.readString();
+          localh.id = locala.NPN.readString();
           AppMethodBeat.o(91274);
           return 0;
         case 2: 
-          localh.name = locala.LVo.readString();
+          localh.name = locala.NPN.readString();
           AppMethodBeat.o(91274);
           return 0;
         }
-        localh.gM = locala.LVo.fZX();
+        localh.iH = locala.NPN.grw();
         AppMethodBeat.o(91274);
         return 0;
       }
@@ -80,7 +80,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.c.h
  * JD-Core Version:    0.7.0.1
  */

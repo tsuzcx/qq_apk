@@ -15,8 +15,8 @@ import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.io.File;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
 
 public final class f
 {
-  private static long bb(Context paramContext, String paramString)
+  private static long be(Context paramContext, String paramString)
   {
     AppMethodBeat.i(95074);
     try
@@ -40,7 +40,7 @@ public final class f
     return -1L;
   }
   
-  private static long bc(Context paramContext, String paramString)
+  private static long bf(Context paramContext, String paramString)
   {
     AppMethodBeat.i(95075);
     try
@@ -56,23 +56,23 @@ public final class f
     return -1L;
   }
   
-  public static String dGv()
+  public static String dSI()
   {
     AppMethodBeat.i(95068);
     try
     {
       long l1 = System.currentTimeMillis();
-      Object localObject = ai.getContext();
+      Object localObject = aj.getContext();
       String str1 = Build.VERSION.RELEASE;
-      Pair localPair = ge((Context)localObject);
-      String str2 = dGx();
-      String str3 = gf((Context)localObject);
-      String str4 = dGw();
+      Pair localPair = gi((Context)localObject);
+      String str2 = dSK();
+      String str3 = gj((Context)localObject);
+      String str4 = dSJ();
       String str5 = Locale.getDefault().getLanguage();
       String str6 = ((Context)localObject).getApplicationContext().getResources().getConfiguration().locale.getCountry();
       String str7 = getTimeZone();
-      String str8 = bb((Context)localObject, "com.tencent.mm");
-      localObject = bc((Context)localObject, "com.tencent.mm");
+      String str8 = be((Context)localObject, "com.tencent.mm");
+      localObject = bf((Context)localObject, "com.tencent.mm");
       String str9 = System.currentTimeMillis() - SystemClock.elapsedRealtime();
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("sys_version", str1);
@@ -86,22 +86,22 @@ public final class f
       localJSONObject.put("mm_install_time", str8);
       localJSONObject.put("mm_update_time", localObject);
       localJSONObject.put("sys_boot_time", str9);
-      localJSONObject.put("imei", q.XQ());
+      localJSONObject.put("imei", q.aar());
       long l2 = System.currentTimeMillis();
-      ac.i("QADIDInfoHelper", "timeCost=" + (l2 - l1) + ", ret=" + localJSONObject.toString());
+      ad.i("QADIDInfoHelper", "timeCost=" + (l2 - l1) + ", ret=" + localJSONObject.toString());
       str1 = localJSONObject.toString();
       AppMethodBeat.o(95068);
       return str1;
     }
     catch (Throwable localThrowable)
     {
-      ac.e("QADIDInfoHelper", "getDeviceInfoJson exp=" + localThrowable.toString());
+      ad.e("QADIDInfoHelper", "getDeviceInfoJson exp=" + localThrowable.toString());
       AppMethodBeat.o(95068);
     }
     return "";
   }
   
-  private static long dGw()
+  private static long dSJ()
   {
     AppMethodBeat.i(95072);
     for (long l1 = 0L;; l1 = i * l2)
@@ -133,7 +133,7 @@ public final class f
   }
   
   /* Error */
-  private static String dGx()
+  private static String dSK()
   {
     // Byte code:
     //   0: ldc 252
@@ -313,7 +313,29 @@ public final class f
     //   34	39	210	java/io/FileNotFoundException
   }
   
-  private static Pair<Integer, Integer> ge(Context paramContext)
+  private static String getTimeZone()
+  {
+    AppMethodBeat.i(95069);
+    Object localObject = "";
+    try
+    {
+      String str = TimeZone.getDefault().getDisplayName(false, 0);
+      localObject = str;
+    }
+    catch (Exception localException)
+    {
+      break label20;
+    }
+    catch (AssertionError localAssertionError)
+    {
+      label20:
+      break label20;
+    }
+    AppMethodBeat.o(95069);
+    return localObject;
+  }
+  
+  private static Pair<Integer, Integer> gi(Context paramContext)
   {
     AppMethodBeat.i(95070);
     try
@@ -344,30 +366,8 @@ public final class f
     }
   }
   
-  private static String getTimeZone()
-  {
-    AppMethodBeat.i(95069);
-    Object localObject = "";
-    try
-    {
-      String str = TimeZone.getDefault().getDisplayName(false, 0);
-      localObject = str;
-    }
-    catch (Exception localException)
-    {
-      break label20;
-    }
-    catch (AssertionError localAssertionError)
-    {
-      label20:
-      break label20;
-    }
-    AppMethodBeat.o(95069);
-    return localObject;
-  }
-  
   /* Error */
-  private static long gf(Context paramContext)
+  private static long gj(Context paramContext)
   {
     // Byte code:
     //   0: ldc_w 339
@@ -379,7 +379,7 @@ public final class f
     //   13: if_icmplt +47 -> 60
     //   16: aload_0
     //   17: ldc_w 341
-    //   20: invokevirtual 285	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   20: invokevirtual 297	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   23: checkcast 343	android/app/ActivityManager
     //   26: astore_0
     //   27: new 345	android/app/ActivityManager$MemoryInfo
@@ -592,7 +592,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.f
  * JD-Core Version:    0.7.0.1
  */

@@ -3,88 +3,72 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dze
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int Een;
-  public int Gfw;
-  public String md5;
-  public String url;
+  public int HMy;
+  public String duy;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123680);
+    AppMethodBeat.i(147786);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.Gfw);
-      paramVarArgs.aR(2, this.Een);
-      if (this.url != null) {
-        paramVarArgs.d(3, this.url);
+      if (this.duy != null) {
+        paramVarArgs.d(1, this.duy);
       }
-      if (this.md5 != null) {
-        paramVarArgs.d(4, this.md5);
-      }
-      AppMethodBeat.o(123680);
+      paramVarArgs.aS(2, this.HMy);
+      AppMethodBeat.o(147786);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bx(1, this.Gfw) + 0 + f.a.a.b.b.a.bx(2, this.Een);
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.url);
+    if (paramInt == 1) {
+      if (this.duy == null) {
+        break label258;
       }
-      i = paramInt;
-      if (this.md5 != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.md5);
-      }
-      AppMethodBeat.o(123680);
-      return i;
     }
-    if (paramInt == 2)
+    label258:
+    for (paramInt = f.a.a.b.b.a.e(1, this.duy) + 0;; paramInt = 0)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
-        }
-      }
-      AppMethodBeat.o(123680);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      dze localdze = (dze)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      int i = f.a.a.b.b.a.bz(2, this.HMy);
+      AppMethodBeat.o(147786);
+      return paramInt + i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(123680);
-        return -1;
-      case 1: 
-        localdze.Gfw = locala.LVo.xF();
-        AppMethodBeat.o(123680);
-        return 0;
-      case 2: 
-        localdze.Een = locala.LVo.xF();
-        AppMethodBeat.o(123680);
-        return 0;
-      case 3: 
-        localdze.url = locala.LVo.readString();
-        AppMethodBeat.o(123680);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gxE();
+          }
+        }
+        AppMethodBeat.o(147786);
         return 0;
       }
-      localdze.md5 = locala.LVo.readString();
-      AppMethodBeat.o(123680);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        dze localdze = (dze)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(147786);
+          return -1;
+        case 1: 
+          localdze.duy = locala.NPN.readString();
+          AppMethodBeat.o(147786);
+          return 0;
+        }
+        localdze.HMy = locala.NPN.zc();
+        AppMethodBeat.o(147786);
+        return 0;
+      }
+      AppMethodBeat.o(147786);
+      return -1;
     }
-    AppMethodBeat.o(123680);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dze
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,15 @@ public class WXEnterpriseCardObject
   public boolean checkArgs()
   {
     AppMethodBeat.i(3999);
-    if ((this.cardInfo == null) || (this.cardInfo.length() == 0))
+    String str = this.cardInfo;
+    if ((str != null) && (str.length() != 0))
     {
-      Log.e("MicroMsg.SDK.WXEnterpriseCardObject", "checkArgs fail, cardInfo is invalid");
       AppMethodBeat.o(3999);
-      return false;
+      return true;
     }
+    Log.e("MicroMsg.SDK.WXEnterpriseCardObject", "checkArgs fail, cardInfo is invalid");
     AppMethodBeat.o(3999);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

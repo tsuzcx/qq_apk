@@ -27,7 +27,7 @@ public class d
     }
     else if (paramb.getLayoutManager().getClipToPadding())
     {
-      j = paramb.edl().kl() + paramb.edl().kn() / 2;
+      j = paramb.epD().kB() + paramb.epD().kD() / 2;
       int i = 2147483647;
       k = 0;
       localObject = null;
@@ -36,7 +36,7 @@ public class d
         break label164;
       }
       View localView = paramb.getLayoutManager().getChildAt(k);
-      int m = Math.abs(paramb.edl().bn(localView) + paramb.edl().br(localView) / 2 - j);
+      int m = Math.abs(paramb.epD().bn(localView) + paramb.epD().br(localView) / 2 - j);
       if (m >= i) {
         break label191;
       }
@@ -49,7 +49,7 @@ public class d
     {
       k += 1;
       break label79;
-      j = paramb.edl().getEnd() / 2;
+      j = paramb.epD().getEnd() / 2;
       break label71;
       paramb = paramb.getRecyclerView().bh(localObject);
       break;

@@ -10,16 +10,16 @@ import java.util.Map;
 public final class p
   implements g
 {
-  private final j bJI;
+  private final j bTV;
   
   public p()
   {
     AppMethodBeat.i(12393);
-    this.bJI = new j();
+    this.bTV = new j();
     AppMethodBeat.o(12393);
   }
   
-  private static String bo(String paramString)
+  private static String ch(String paramString)
   {
     AppMethodBeat.i(12395);
     int i = paramString.length();
@@ -56,13 +56,13 @@ public final class p
   public final b a(String paramString, a parama, int paramInt1, int paramInt2, Map<c, ?> paramMap)
   {
     AppMethodBeat.i(12394);
-    if (parama != a.bGW)
+    if (parama != a.bRk)
     {
       paramString = new IllegalArgumentException("Can only encode UPC-A, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12394);
       throw paramString;
     }
-    paramString = this.bJI.a(bo(paramString), a.bGP, paramInt1, paramInt2, paramMap);
+    paramString = this.bTV.a(ch(paramString), a.bRd, paramInt1, paramInt2, paramMap);
     AppMethodBeat.o(12394);
     return paramString;
   }

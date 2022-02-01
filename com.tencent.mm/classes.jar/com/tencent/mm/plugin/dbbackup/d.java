@@ -7,25 +7,24 @@ import android.content.IntentFilter;
 import android.os.PowerManager;
 import com.tencent.mars.comm.WakerLock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.o;
-import com.tencent.mm.g.a.oq;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.a.oz;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.storagebase.f;
+import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import com.tencent.mm.ui.MMAppMgr;
-import com.tencent.mm.vfs.i;
 import com.tencent.wcdb.database.SQLiteCipherSpec;
 import com.tencent.wcdb.database.SQLiteDatabase;
 import com.tencent.wcdb.database.SQLiteDirectCursor;
@@ -42,54 +41,54 @@ import java.util.List;
 import java.util.Map;
 
 public final class d
-  implements aw
+  implements ax
 {
-  private static final SQLiteCipherSpec oEd;
-  private boolean nSp;
-  private boolean nSq;
-  private BroadcastReceiver nSr;
-  private Runnable nSs;
-  private volatile BackupKit oDP;
-  private volatile RecoverKit oDQ;
-  private volatile RepairKit oDR;
-  private volatile boolean oDS;
-  private boolean oDT;
-  private boolean oDU;
-  private long oDV;
-  private long oDW;
-  private long oDX;
-  private int oDY;
-  private boolean oDZ;
-  final SimpleDateFormat oEa;
-  private k.a oEb;
-  private com.tencent.mm.sdk.b.c oEc;
+  private static final SQLiteCipherSpec phD;
+  private boolean ovK;
+  private boolean ovL;
+  private BroadcastReceiver ovM;
+  private Runnable ovN;
+  final SimpleDateFormat phA;
+  private k.a phB;
+  private com.tencent.mm.sdk.b.c phC;
+  private volatile BackupKit php;
+  private volatile RecoverKit phq;
+  private volatile RepairKit phr;
+  private volatile boolean phs;
+  private boolean pht;
+  private boolean phu;
+  private long phv;
+  private long phw;
+  private long phx;
+  private int phy;
+  private boolean phz;
   
   static
   {
     AppMethodBeat.i(23109);
-    oEd = new SQLiteCipherSpec().setPageSize(1024).setSQLCipherVersion(1);
+    phD = new SQLiteCipherSpec().setPageSize(1024).setSQLCipherVersion(1);
     AppMethodBeat.o(23109);
   }
   
   public d()
   {
     AppMethodBeat.i(23090);
-    this.oDS = false;
-    this.oDT = false;
-    this.oDU = false;
-    this.oDV = 0L;
-    this.oDW = 600000L;
-    this.nSp = false;
-    this.nSq = true;
-    this.oDX = 0L;
-    this.oDY = 10;
-    this.oDZ = false;
-    this.oEa = new SimpleDateFormat("HH:mm:ss.SSS");
+    this.phs = false;
+    this.pht = false;
+    this.phu = false;
+    this.phv = 0L;
+    this.phw = 600000L;
+    this.ovK = false;
+    this.ovL = true;
+    this.phx = 0L;
+    this.phy = 10;
+    this.phz = false;
+    this.phA = new SimpleDateFormat("HH:mm:ss.SSS");
     AppMethodBeat.o(23090);
   }
   
   /* Error */
-  private static long[] Wn(String paramString)
+  private static long[] ZU(String paramString)
   {
     // Byte code:
     //   0: lconst_0
@@ -196,7 +195,7 @@ public final class d
     //   203: iconst_0
     //   204: aload_0
     //   205: aastore
-    //   206: invokestatic 166	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   206: invokestatic 166	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   209: aload 10
     //   211: ifnull +8 -> 219
     //   214: aload 10
@@ -344,7 +343,7 @@ public final class d
     //   123: iconst_0
     //   124: aload_0
     //   125: aastore
-    //   126: invokestatic 166	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   126: invokestatic 166	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   129: aload_1
     //   130: ifnull +7 -> 137
     //   133: aload_1
@@ -458,8 +457,8 @@ public final class d
     Object localObject1 = paramSQLiteDatabase.getPath();
     Object localObject2 = (String)localObject1 + ".sm";
     String str = (String)localObject2 + ".tmp";
-    localObject1 = com.tencent.mm.kernel.g.agR().agA();
-    long l2 = ((ae)localObject1).YH(237569);
+    localObject1 = com.tencent.mm.kernel.g.ajC().ajl();
+    long l2 = ((ai)localObject1).aaQ(237569);
     long l1 = System.currentTimeMillis();
     localObject2 = new com.tencent.mm.vfs.e((String)localObject2);
     if ((((com.tencent.mm.vfs.e)localObject2).exists()) && (l1 - l2 < 86400000L))
@@ -468,8 +467,8 @@ public final class d
       return true;
     }
     l2 = System.nanoTime();
-    Object localObject3 = new StringBuilder().append(com.tencent.mm.compatible.deviceinfo.q.cF(true));
-    az.ayM();
+    Object localObject3 = new StringBuilder().append(com.tencent.mm.compatible.deviceinfo.q.cH(true));
+    ba.aBQ();
     byte[] arrayOfByte = com.tencent.mm.b.g.C(com.tencent.mm.model.c.getUin().getBytes());
     localObject3 = new com.tencent.mm.vfs.e(str);
     try
@@ -478,16 +477,16 @@ public final class d
       if (bool)
       {
         ((com.tencent.mm.vfs.e)localObject2).delete();
-        bool = ((com.tencent.mm.vfs.e)localObject3).ae((com.tencent.mm.vfs.e)localObject2);
-        ((ae)localObject1).setLong(237569, l1);
-        ((ae)localObject1).faa();
+        bool = ((com.tencent.mm.vfs.e)localObject3).ag((com.tencent.mm.vfs.e)localObject2);
+        ((ai)localObject1).setLong(237569, l1);
+        ((ai)localObject1).fqc();
         l1 = System.nanoTime();
         if (!bool) {
           break label322;
         }
         paramSQLiteDatabase = "SUCCEEDED";
-        ac.i("MicroMsg.SubCoreDBBackup", "Master table backup %s, elapsed %.3f", new Object[] { paramSQLiteDatabase, Float.valueOf((float)(l1 - l2) / 1.0E+009F) });
-        paramSQLiteDatabase = com.tencent.mm.plugin.report.service.h.wUl;
+        ad.i("MicroMsg.SubCoreDBBackup", "Master table backup %s, elapsed %.3f", new Object[] { paramSQLiteDatabase, Float.valueOf((float)(l1 - l2) / 1.0E+009F) });
+        paramSQLiteDatabase = com.tencent.mm.plugin.report.service.g.yhR;
         if (!bool) {
           break label329;
         }
@@ -501,7 +500,7 @@ public final class d
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.SubCoreDBBackup", paramSQLiteDatabase, "Failed to backup database master.", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.SubCoreDBBackup", paramSQLiteDatabase, "Failed to backup database master.", new Object[0]);
         boolean bool = false;
         continue;
         ((com.tencent.mm.vfs.e)localObject3).delete();
@@ -515,41 +514,41 @@ public final class d
     }
   }
   
-  private static void bXk()
+  private static void cbN()
   {
     AppMethodBeat.i(23103);
-    Object localObject = com.tencent.mm.model.c.d.aAp().tJ("100274");
+    Object localObject = com.tencent.mm.model.c.d.aDs().wz("100274");
     if (((com.tencent.mm.storage.c)localObject).isValid())
     {
-      localObject = ((com.tencent.mm.storage.c)localObject).eYV();
+      localObject = ((com.tencent.mm.storage.c)localObject).foF();
       HashMap localHashMap = new HashMap();
-      localHashMap.put("flags", Integer.valueOf(bs.getInt((String)((Map)localObject).get("flags"), 0)));
-      localHashMap.put("acp", Integer.valueOf(bs.getInt((String)((Map)localObject).get("acp"), 100)));
-      f.bP(localHashMap);
+      localHashMap.put("flags", Integer.valueOf(bt.getInt((String)((Map)localObject).get("flags"), 0)));
+      localHashMap.put("acp", Integer.valueOf(bt.getInt((String)((Map)localObject).get("acp"), 100)));
+      f.bT(localHashMap);
     }
     AppMethodBeat.o(23103);
   }
   
-  static void bXl()
+  static void cbO()
   {
     AppMethodBeat.i(23104);
-    Object localObject = com.tencent.mm.model.c.awD();
-    ((com.tencent.mm.plugin.messenger.foundation.a.a.h)localObject).dcz();
-    ((com.tencent.mm.plugin.messenger.foundation.a.a.h)localObject).dcB();
-    ((com.tencent.mm.plugin.messenger.foundation.a.a.h)localObject).dcA();
-    com.tencent.mm.model.c.awG().faK();
-    o.aFx().aFd();
-    localObject = com.tencent.mm.model.c.agA();
-    ((ae)localObject).set(ah.a.GEo, Integer.valueOf(0));
-    ((ae)localObject).set(ah.a.GEp, Integer.valueOf(0));
-    ((ae)localObject).set(ah.a.GEq, Integer.valueOf(0));
+    Object localObject = com.tencent.mm.model.c.azs();
+    ((com.tencent.mm.plugin.messenger.foundation.a.a.i)localObject).dlT();
+    ((com.tencent.mm.plugin.messenger.foundation.a.a.i)localObject).dlV();
+    ((com.tencent.mm.plugin.messenger.foundation.a.a.i)localObject).dlU();
+    com.tencent.mm.model.c.azv().fqN();
+    com.tencent.mm.aw.q.aIF().aIm();
+    localObject = com.tencent.mm.model.c.ajl();
+    ((ai)localObject).set(al.a.IqH, Integer.valueOf(0));
+    ((ai)localObject).set(al.a.IqI, Integer.valueOf(0));
+    ((ai)localObject).set(al.a.IqJ, Integer.valueOf(0));
     AppMethodBeat.o(23104);
   }
   
-  public static void bXm()
+  public static void cbP()
   {
     AppMethodBeat.i(23106);
-    MMAppMgr.wA(true);
+    MMAppMgr.xm(true);
     AppMethodBeat.o(23106);
   }
   
@@ -564,8 +563,8 @@ public final class d
   public final int a(final b paramb)
   {
     AppMethodBeat.i(23100);
-    az.ayM();
-    Object localObject1 = com.tencent.mm.model.c.agu();
+    ba.aBQ();
+    Object localObject1 = com.tencent.mm.model.c.ajg();
     if ((localObject1 == null) || (((String)localObject1).isEmpty()))
     {
       AppMethodBeat.o(23100);
@@ -577,19 +576,19 @@ public final class d
       AppMethodBeat.o(23100);
       return -3;
     }
-    Object localObject2 = new StringBuilder().append(com.tencent.mm.compatible.deviceinfo.q.cF(true));
-    az.ayM();
+    Object localObject2 = new StringBuilder().append(com.tencent.mm.compatible.deviceinfo.q.cH(true));
+    ba.aBQ();
     localObject2 = com.tencent.mm.b.g.getMessageDigest(com.tencent.mm.model.c.getUin().getBytes()).substring(0, 7);
     long l1 = ((com.tencent.mm.vfs.e)localObject1).length() * 2L;
-    long l2 = bs.eWf();
-    ac.i("MicroMsg.SubCoreDBBackup", "db recover needSize : %d blockSize:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
+    long l2 = bt.flP();
+    ad.i("MicroMsg.SubCoreDBBackup", "db recover needSize : %d blockSize:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
     if (l2 < l1)
     {
       AppMethodBeat.o(23100);
       return -2;
     }
-    az.agU().Kw();
-    az.agU().aA(new Runnable()
+    ba.ajF().LZ();
+    ba.ajF().az(new Runnable()
     {
       public final void run()
       {
@@ -598,47 +597,47 @@ public final class d
         {
           Thread.sleep(200L);
           label12:
-          az.ayM();
-          Object localObject2 = com.tencent.mm.model.c.agv();
-          Object localObject1 = (String)localObject2 + this.oEv.getName().replace(".db", "temp.db");
-          ac.i("MicroMsg.SubCoreDBBackup", "temp db path is %s", new Object[] { localObject1 });
-          this.oEv.ae(new com.tencent.mm.vfs.e((String)localObject1));
+          ba.aBQ();
+          Object localObject2 = com.tencent.mm.model.c.ajh();
+          Object localObject1 = (String)localObject2 + this.phV.getName().replace(".db", "temp.db");
+          ad.i("MicroMsg.SubCoreDBBackup", "temp db path is %s", new Object[] { localObject1 });
+          this.phV.ag(new com.tencent.mm.vfs.e((String)localObject1));
           String str = (String)localObject2 + "sqlTemp.sql";
           List localList = Arrays.asList(new String[] { "getcontactinfo", "contact", "contact_ext", "ContactCmdBuf", "rcontact", "img_flag", "userinfo" });
           localObject2 = new int[1];
           long l = System.currentTimeMillis();
-          az.ayM();
-          boolean bool = com.tencent.mm.model.c.agw().a((String)localObject1, this.val$key, str, localList, new DBDumpUtil.ExecuteSqlCallback()
+          ba.aBQ();
+          boolean bool = com.tencent.mm.model.c.getDataDB().a((String)localObject1, this.val$key, str, localList, new DBDumpUtil.ExecuteSqlCallback()
           {
             public final String preExecute(String paramAnonymous2String)
             {
-              paramAnonymous2String = this.oEw;
+              paramAnonymous2String = this.phW;
               paramAnonymous2String[0] += 1;
               return null;
             }
           });
           if (bool)
           {
-            az.ayM();
-            com.tencent.mm.model.c.awD().dcz();
-            az.ayM();
-            com.tencent.mm.model.c.awG().faK();
-            az.ayM();
-            com.tencent.mm.model.c.awD().dcB();
-            az.ayM();
-            com.tencent.mm.model.c.awD().dcA();
+            ba.aBQ();
+            com.tencent.mm.model.c.azs().dlT();
+            ba.aBQ();
+            com.tencent.mm.model.c.azv().fqN();
+            ba.aBQ();
+            com.tencent.mm.model.c.azs().dlV();
+            ba.aBQ();
+            com.tencent.mm.model.c.azs().dlU();
             i = 12;
-            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(181L, i, 1L, true);
+            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(181L, i, 1L, true);
             l = System.currentTimeMillis() - l;
-            ac.i("MicroMsg.SubCoreDBBackup", "execute %d sql and last %d", new Object[] { Integer.valueOf(localObject2[0]), Long.valueOf(l) });
-            localObject1 = com.tencent.mm.plugin.report.service.h.wUl;
+            ad.i("MicroMsg.SubCoreDBBackup", "execute %d sql and last %d", new Object[] { Integer.valueOf(localObject2[0]), Long.valueOf(l) });
+            localObject1 = com.tencent.mm.plugin.report.service.g.yhR;
             if (!bool) {
               break label390;
             }
             i = 1;
             label312:
-            ((com.tencent.mm.plugin.report.service.h)localObject1).f(11224, new Object[] { Integer.valueOf(i), localObject2, Long.valueOf(l) });
-            az.agU().eVm();
+            ((com.tencent.mm.plugin.report.service.g)localObject1).f(11224, new Object[] { Integer.valueOf(i), localObject2, Long.valueOf(l) });
+            ba.ajF().fkT();
             if (paramb != null)
             {
               localObject1 = paramb;
@@ -651,7 +650,7 @@ public final class d
           label395:
           for (int i = 0;; i = -1)
           {
-            ((b)localObject1).AF(i);
+            ((b)localObject1).Bo(i);
             AppMethodBeat.o(23082);
             return;
             i = 15;
@@ -685,17 +684,17 @@ public final class d
           //   0: sipush 23079
           //   3: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
           //   6: aload_0
-          //   7: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   7: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
           //   10: aconst_null
           //   11: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
           //   14: pop
-          //   15: invokestatic 55	com/tencent/mm/model/c:awD	()Lcom/tencent/mm/plugin/messenger/foundation/a/a/h;
+          //   15: invokestatic 55	com/tencent/mm/model/c:azs	()Lcom/tencent/mm/plugin/messenger/foundation/a/a/i;
           //   18: pop
-          //   19: invokestatic 59	com/tencent/mm/model/c:awG	()Lcom/tencent/mm/storage/bk;
+          //   19: invokestatic 59	com/tencent/mm/model/c:azv	()Lcom/tencent/mm/storage/bq;
           //   22: pop
-          //   23: invokestatic 65	com/tencent/mm/av/o:aFx	()Lcom/tencent/mm/av/g;
+          //   23: invokestatic 65	com/tencent/mm/aw/q:aIF	()Lcom/tencent/mm/aw/i;
           //   26: pop
-          //   27: invokestatic 71	com/tencent/mm/modelvideo/o:aJy	()Lcom/tencent/mm/modelvideo/t;
+          //   27: invokestatic 71	com/tencent/mm/modelvideo/o:aMJ	()Lcom/tencent/mm/modelvideo/t;
           //   30: pop
           //   31: invokestatic 77	java/lang/System:nanoTime	()J
           //   34: lstore 11
@@ -703,7 +702,7 @@ public final class d
           //   39: dup
           //   40: invokespecial 80	java/lang/StringBuilder:<init>	()V
           //   43: iconst_1
-          //   44: invokestatic 86	com/tencent/mm/compatible/deviceinfo/q:cF	(Z)Ljava/lang/String;
+          //   44: invokestatic 86	com/tencent/mm/compatible/deviceinfo/q:cH	(Z)Ljava/lang/String;
           //   47: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   50: invokestatic 94	com/tencent/mm/model/c:getUin	()I
           //   53: invokevirtual 97	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -720,818 +719,810 @@ public final class d
           //   79: invokevirtual 121	java/lang/String:substring	(II)Ljava/lang/String;
           //   82: invokevirtual 107	java/lang/String:getBytes	()[B
           //   85: astore 14
-          //   87: ldc 122
-          //   89: istore_1
-          //   90: invokestatic 128	com/tencent/mm/storagebase/f:fdF	()Z
-          //   93: ifeq +6 -> 99
-          //   96: ldc 129
-          //   98: istore_1
-          //   99: invokestatic 133	com/tencent/mm/model/c:agw	()Lcom/tencent/mm/storagebase/h;
-          //   102: invokevirtual 139	com/tencent/mm/storagebase/h:fdL	()Lcom/tencent/wcdb/database/SQLiteDatabase;
-          //   105: invokevirtual 144	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
-          //   108: aload 14
-          //   110: invokestatic 148	com/tencent/mm/plugin/dbbackup/d:bXn	()Lcom/tencent/wcdb/database/SQLiteCipherSpec;
-          //   113: aconst_null
-          //   114: iload_1
-          //   115: aconst_null
-          //   116: iconst_0
-          //   117: invokestatic 152	com/tencent/wcdb/database/SQLiteDatabase:openDatabase	(Ljava/lang/String;[BLcom/tencent/wcdb/database/SQLiteCipherSpec;Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;ILcom/tencent/wcdb/DatabaseErrorHandler;I)Lcom/tencent/wcdb/database/SQLiteDatabase;
-          //   120: astore 15
-          //   122: aload 15
-          //   124: astore 16
-          //   126: aload_0
-          //   127: getfield 29	com/tencent/mm/plugin/dbbackup/d$2:oEr	Ljava/lang/String;
-          //   130: ifnull +101 -> 231
-          //   133: aload 15
-          //   135: astore 16
-          //   137: aload_0
-          //   138: getfield 29	com/tencent/mm/plugin/dbbackup/d$2:oEr	Ljava/lang/String;
-          //   141: astore 14
-          //   143: iconst_1
-          //   144: anewarray 103	java/lang/String
-          //   147: dup
-          //   148: iconst_0
-          //   149: aload 14
-          //   151: aastore
-          //   152: astore 14
-          //   154: aload 15
-          //   156: astore 16
-          //   158: aload 14
-          //   160: arraylength
-          //   161: istore_3
-          //   162: iconst_0
-          //   163: istore_2
-          //   164: bipush 253
-          //   166: istore_1
-          //   167: lconst_0
-          //   168: lstore 7
-          //   170: lload 7
-          //   172: lstore 9
+          //   87: invokestatic 127	com/tencent/mm/storagebase/f:ftN	()Z
+          //   90: pop
+          //   91: invokestatic 131	com/tencent/mm/model/c:getDataDB	()Lcom/tencent/mm/storagebase/h;
+          //   94: invokevirtual 137	com/tencent/mm/storagebase/h:ftT	()Lcom/tencent/wcdb/database/SQLiteDatabase;
+          //   97: invokevirtual 142	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
+          //   100: aload 14
+          //   102: invokestatic 146	com/tencent/mm/plugin/dbbackup/d:cbQ	()Lcom/tencent/wcdb/database/SQLiteCipherSpec;
+          //   105: aconst_null
+          //   106: ldc 147
+          //   108: aconst_null
+          //   109: iconst_0
+          //   110: invokestatic 151	com/tencent/wcdb/database/SQLiteDatabase:openDatabase	(Ljava/lang/String;[BLcom/tencent/wcdb/database/SQLiteCipherSpec;Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;ILcom/tencent/wcdb/DatabaseErrorHandler;I)Lcom/tencent/wcdb/database/SQLiteDatabase;
+          //   113: astore 15
+          //   115: aload 15
+          //   117: astore 16
+          //   119: aload_0
+          //   120: getfield 29	com/tencent/mm/plugin/dbbackup/d$2:phR	Ljava/lang/String;
+          //   123: ifnull +101 -> 224
+          //   126: aload 15
+          //   128: astore 16
+          //   130: aload_0
+          //   131: getfield 29	com/tencent/mm/plugin/dbbackup/d$2:phR	Ljava/lang/String;
+          //   134: astore 14
+          //   136: iconst_1
+          //   137: anewarray 103	java/lang/String
+          //   140: dup
+          //   141: iconst_0
+          //   142: aload 14
+          //   144: aastore
+          //   145: astore 14
+          //   147: aload 15
+          //   149: astore 16
+          //   151: aload 14
+          //   153: arraylength
+          //   154: istore_3
+          //   155: iconst_0
+          //   156: istore_2
+          //   157: bipush 253
+          //   159: istore_1
+          //   160: lconst_0
+          //   161: lstore 7
+          //   163: lload 7
+          //   165: lstore 9
+          //   167: iload_2
+          //   168: iload_3
+          //   169: if_icmpge +412 -> 581
+          //   172: aload 14
           //   174: iload_2
-          //   175: iload_3
-          //   176: if_icmpge +412 -> 588
-          //   179: aload 14
-          //   181: iload_2
-          //   182: aaload
-          //   183: astore 18
-          //   185: lload 7
-          //   187: lstore 9
-          //   189: aload 15
-          //   191: astore 16
-          //   193: new 154	com/tencent/mm/vfs/e
-          //   196: dup
-          //   197: aload 18
-          //   199: invokespecial 157	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
-          //   202: astore 19
-          //   204: lload 7
-          //   206: lstore 9
-          //   208: aload 15
-          //   210: astore 16
-          //   212: aload 19
-          //   214: invokevirtual 160	com/tencent/mm/vfs/e:canRead	()Z
-          //   217: istore 13
-          //   219: iload 13
-          //   221: ifne +102 -> 323
-          //   224: iload_2
-          //   225: iconst_1
-          //   226: iadd
-          //   227: istore_2
-          //   228: goto -58 -> 170
-          //   231: aload 15
-          //   233: astore 16
-          //   235: new 79	java/lang/StringBuilder
-          //   238: dup
-          //   239: invokespecial 80	java/lang/StringBuilder:<init>	()V
-          //   242: invokestatic 163	com/tencent/mm/model/c:agu	()Ljava/lang/String;
-          //   245: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   248: ldc 165
-          //   250: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   253: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   256: astore 14
-          //   258: aload 15
-          //   260: astore 16
-          //   262: new 79	java/lang/StringBuilder
-          //   265: dup
-          //   266: invokespecial 80	java/lang/StringBuilder:<init>	()V
-          //   269: astore 18
-          //   271: aload 15
-          //   273: astore 16
-          //   275: invokestatic 171	com/tencent/mm/kernel/g:agS	()Lcom/tencent/mm/kernel/g;
-          //   278: pop
-          //   279: aload 15
-          //   281: astore 16
-          //   283: aload 18
-          //   285: invokestatic 175	com/tencent/mm/kernel/g:agR	()Lcom/tencent/mm/kernel/e;
-          //   288: getfield 180	com/tencent/mm/kernel/e:ghC	Ljava/lang/String;
-          //   291: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   294: ldc 182
-          //   296: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   299: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   302: astore 18
-          //   304: iconst_2
-          //   305: anewarray 103	java/lang/String
-          //   308: dup
-          //   309: iconst_0
-          //   310: aload 14
-          //   312: aastore
-          //   313: dup
-          //   314: iconst_1
-          //   315: aload 18
-          //   317: aastore
-          //   318: astore 14
-          //   320: goto -166 -> 154
-          //   323: lload 7
-          //   325: lstore 9
-          //   327: aload 15
-          //   329: astore 16
-          //   331: aload 19
-          //   333: invokevirtual 185	com/tencent/mm/vfs/e:length	()J
-          //   336: lstore 7
-          //   338: lload 7
-          //   340: lstore 9
-          //   342: aload 15
-          //   344: astore 16
-          //   346: ldc 187
-          //   348: ldc 189
-          //   350: iconst_2
-          //   351: anewarray 4	java/lang/Object
-          //   354: dup
-          //   355: iconst_0
-          //   356: lload 7
-          //   358: invokestatic 195	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   361: aastore
-          //   362: dup
-          //   363: iconst_1
-          //   364: aload_0
-          //   365: getfield 31	com/tencent/mm/plugin/dbbackup/d$2:oEs	J
-          //   368: invokestatic 195	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   371: aastore
-          //   372: invokestatic 200	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   375: lload 7
-          //   377: lstore 9
-          //   379: aload 15
-          //   381: astore 16
-          //   383: aload_0
-          //   384: getfield 31	com/tencent/mm/plugin/dbbackup/d$2:oEs	J
-          //   387: ldc2_w 201
+          //   175: aaload
+          //   176: astore 18
+          //   178: lload 7
+          //   180: lstore 9
+          //   182: aload 15
+          //   184: astore 16
+          //   186: new 153	com/tencent/mm/vfs/e
+          //   189: dup
+          //   190: aload 18
+          //   192: invokespecial 156	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+          //   195: astore 19
+          //   197: lload 7
+          //   199: lstore 9
+          //   201: aload 15
+          //   203: astore 16
+          //   205: aload 19
+          //   207: invokevirtual 159	com/tencent/mm/vfs/e:canRead	()Z
+          //   210: istore 13
+          //   212: iload 13
+          //   214: ifne +102 -> 316
+          //   217: iload_2
+          //   218: iconst_1
+          //   219: iadd
+          //   220: istore_2
+          //   221: goto -58 -> 163
+          //   224: aload 15
+          //   226: astore 16
+          //   228: new 79	java/lang/StringBuilder
+          //   231: dup
+          //   232: invokespecial 80	java/lang/StringBuilder:<init>	()V
+          //   235: invokestatic 162	com/tencent/mm/model/c:ajg	()Ljava/lang/String;
+          //   238: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   241: ldc 164
+          //   243: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   246: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   249: astore 14
+          //   251: aload 15
+          //   253: astore 16
+          //   255: new 79	java/lang/StringBuilder
+          //   258: dup
+          //   259: invokespecial 80	java/lang/StringBuilder:<init>	()V
+          //   262: astore 18
+          //   264: aload 15
+          //   266: astore 16
+          //   268: invokestatic 170	com/tencent/mm/kernel/g:ajD	()Lcom/tencent/mm/kernel/g;
+          //   271: pop
+          //   272: aload 15
+          //   274: astore 16
+          //   276: aload 18
+          //   278: invokestatic 174	com/tencent/mm/kernel/g:ajC	()Lcom/tencent/mm/kernel/e;
+          //   281: getfield 179	com/tencent/mm/kernel/e:gBm	Ljava/lang/String;
+          //   284: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   287: ldc 181
+          //   289: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   292: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   295: astore 18
+          //   297: iconst_2
+          //   298: anewarray 103	java/lang/String
+          //   301: dup
+          //   302: iconst_0
+          //   303: aload 14
+          //   305: aastore
+          //   306: dup
+          //   307: iconst_1
+          //   308: aload 18
+          //   310: aastore
+          //   311: astore 14
+          //   313: goto -166 -> 147
+          //   316: lload 7
+          //   318: lstore 9
+          //   320: aload 15
+          //   322: astore 16
+          //   324: aload 19
+          //   326: invokevirtual 184	com/tencent/mm/vfs/e:length	()J
+          //   329: lstore 7
+          //   331: lload 7
+          //   333: lstore 9
+          //   335: aload 15
+          //   337: astore 16
+          //   339: ldc 186
+          //   341: ldc 188
+          //   343: iconst_2
+          //   344: anewarray 4	java/lang/Object
+          //   347: dup
+          //   348: iconst_0
+          //   349: lload 7
+          //   351: invokestatic 194	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+          //   354: aastore
+          //   355: dup
+          //   356: iconst_1
+          //   357: aload_0
+          //   358: getfield 31	com/tencent/mm/plugin/dbbackup/d$2:phS	J
+          //   361: invokestatic 194	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+          //   364: aastore
+          //   365: invokestatic 199	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   368: lload 7
+          //   370: lstore 9
+          //   372: aload 15
+          //   374: astore 16
+          //   376: aload_0
+          //   377: getfield 31	com/tencent/mm/plugin/dbbackup/d$2:phS	J
+          //   380: ldc2_w 200
+          //   383: lload 7
+          //   385: lmul
+          //   386: lcmp
+          //   387: ifge +97 -> 484
           //   390: lload 7
-          //   392: lmul
-          //   393: lcmp
-          //   394: ifge +97 -> 491
-          //   397: lload 7
-          //   399: lstore 9
-          //   401: aload 15
-          //   403: astore 16
-          //   405: aload_0
-          //   406: getfield 33	com/tencent/mm/plugin/dbbackup/d$2:oEe	Lcom/tencent/mm/plugin/dbbackup/b;
-          //   409: ifnull +22 -> 431
-          //   412: lload 7
-          //   414: lstore 9
-          //   416: aload 15
-          //   418: astore 16
-          //   420: aload_0
-          //   421: getfield 33	com/tencent/mm/plugin/dbbackup/d$2:oEe	Lcom/tencent/mm/plugin/dbbackup/b;
-          //   424: bipush 254
-          //   426: invokeinterface 207 2 0
-          //   431: aload_0
-          //   432: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   435: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   438: ifnull +22 -> 460
-          //   441: aload_0
-          //   442: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   445: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   448: invokevirtual 216	com/tencent/wcdb/repair/RecoverKit:release	()V
-          //   451: aload_0
-          //   452: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   455: aconst_null
-          //   456: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   459: pop
-          //   460: aload 15
-          //   462: ifnull +8 -> 470
-          //   465: aload 15
-          //   467: invokevirtual 219	com/tencent/wcdb/database/SQLiteDatabase:close	()V
-          //   470: aload_0
-          //   471: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   474: invokestatic 223	com/tencent/mm/plugin/dbbackup/d:c	(Lcom/tencent/mm/plugin/dbbackup/d;)Z
-          //   477: pop
-          //   478: invokestatic 229	com/tencent/mm/model/az:agU	()Lcom/tencent/mm/sdk/platformtools/ap;
-          //   481: invokevirtual 234	com/tencent/mm/sdk/platformtools/ap:eVm	()V
-          //   484: sipush 23079
-          //   487: invokestatic 237	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   490: return
-          //   491: lload 7
-          //   493: lstore 9
-          //   495: aload 15
-          //   497: astore 16
-          //   499: getstatic 243	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
-          //   502: sipush 11098
-          //   505: iconst_2
-          //   506: anewarray 4	java/lang/Object
-          //   509: dup
-          //   510: iconst_0
-          //   511: sipush 10004
-          //   514: invokestatic 248	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   517: aastore
-          //   518: dup
-          //   519: iconst_1
-          //   520: ldc 250
-          //   522: iconst_2
-          //   523: anewarray 4	java/lang/Object
-          //   526: dup
-          //   527: iconst_0
-          //   528: lload 7
-          //   530: invokestatic 195	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   533: aastore
-          //   534: dup
-          //   535: iconst_1
-          //   536: aload_0
-          //   537: getfield 31	com/tencent/mm/plugin/dbbackup/d$2:oEs	J
-          //   540: invokestatic 195	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   543: aastore
-          //   544: invokestatic 254	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-          //   547: aastore
-          //   548: invokevirtual 258	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
-          //   551: lload 7
-          //   553: lstore 9
-          //   555: aload 15
-          //   557: astore 16
-          //   559: aload_0
-          //   560: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   563: new 213	com/tencent/wcdb/repair/RecoverKit
-          //   566: dup
-          //   567: aload 15
-          //   569: aload 18
-          //   571: iconst_0
-          //   572: invokestatic 264	com/tencent/mm/b/q:k	(Ljava/lang/String;Z)Ljava/lang/String;
-          //   575: aload 17
-          //   577: invokespecial 267	com/tencent/wcdb/repair/RecoverKit:<init>	(Lcom/tencent/wcdb/database/SQLiteDatabase;Ljava/lang/String;[B)V
-          //   580: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   583: pop
-          //   584: lload 7
-          //   586: lstore 9
-          //   588: aload 15
-          //   590: astore 16
-          //   592: aload_0
-          //   593: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   596: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   599: astore 14
-          //   601: aload 14
-          //   603: ifnonnull +250 -> 853
-          //   606: bipush 253
-          //   608: istore_2
-          //   609: aload 15
-          //   611: astore 14
-          //   613: iload_2
-          //   614: istore_1
-          //   615: aload 15
-          //   617: astore 16
-          //   619: getstatic 243	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
-          //   622: ldc2_w 268
-          //   625: ldc2_w 270
-          //   628: lconst_1
-          //   629: iconst_1
-          //   630: invokevirtual 275	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
-          //   633: aload 15
-          //   635: astore 14
-          //   637: iload_2
-          //   638: istore_1
-          //   639: aload 15
-          //   641: astore 16
-          //   643: new 277	java/lang/RuntimeException
-          //   646: dup
-          //   647: invokespecial 278	java/lang/RuntimeException:<init>	()V
-          //   650: astore 17
-          //   652: aload 15
-          //   654: astore 14
-          //   656: iload_2
-          //   657: istore_1
-          //   658: aload 15
-          //   660: astore 16
-          //   662: sipush 23079
-          //   665: invokestatic 237	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   668: aload 15
-          //   670: astore 14
-          //   672: iload_2
-          //   673: istore_1
-          //   674: aload 15
-          //   676: astore 16
-          //   678: aload 17
-          //   680: athrow
-          //   681: astore 16
-          //   683: aload 14
-          //   685: astore 15
-          //   687: aload 16
-          //   689: astore 14
-          //   691: aload 15
-          //   693: astore 16
-          //   695: ldc 187
-          //   697: aload 14
-          //   699: ldc_w 280
-          //   702: iconst_0
-          //   703: anewarray 4	java/lang/Object
-          //   706: invokestatic 284	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   709: aload 15
-          //   711: astore 16
-          //   713: aload_0
-          //   714: getfield 33	com/tencent/mm/plugin/dbbackup/d$2:oEe	Lcom/tencent/mm/plugin/dbbackup/b;
-          //   717: ifnull +17 -> 734
-          //   720: aload 15
-          //   722: astore 16
-          //   724: aload_0
-          //   725: getfield 33	com/tencent/mm/plugin/dbbackup/d$2:oEe	Lcom/tencent/mm/plugin/dbbackup/b;
-          //   728: iload_1
-          //   729: invokeinterface 207 2 0
-          //   734: aload 15
-          //   736: astore 16
-          //   738: getstatic 243	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
-          //   741: ldc2_w 268
-          //   744: ldc2_w 285
-          //   747: lconst_1
-          //   748: iconst_1
-          //   749: invokevirtual 275	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
-          //   752: aload_0
-          //   753: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   756: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   759: ifnull +22 -> 781
-          //   762: aload_0
-          //   763: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   766: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   769: invokevirtual 216	com/tencent/wcdb/repair/RecoverKit:release	()V
-          //   772: aload_0
-          //   773: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   776: aconst_null
-          //   777: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   780: pop
-          //   781: aload 15
-          //   783: ifnull +8 -> 791
-          //   786: aload 15
-          //   788: invokevirtual 219	com/tencent/wcdb/database/SQLiteDatabase:close	()V
-          //   791: aload_0
-          //   792: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   795: invokestatic 223	com/tencent/mm/plugin/dbbackup/d:c	(Lcom/tencent/mm/plugin/dbbackup/d;)Z
-          //   798: pop
-          //   799: invokestatic 229	com/tencent/mm/model/az:agU	()Lcom/tencent/mm/sdk/platformtools/ap;
-          //   802: invokevirtual 234	com/tencent/mm/sdk/platformtools/ap:eVm	()V
-          //   805: sipush 23079
-          //   808: invokestatic 237	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   811: return
-          //   812: astore 18
-          //   814: aload 15
-          //   816: astore 16
-          //   818: ldc 187
-          //   820: new 79	java/lang/StringBuilder
-          //   823: dup
-          //   824: ldc_w 288
-          //   827: invokespecial 289	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   830: aload 18
-          //   832: invokevirtual 292	java/lang/Exception:getMessage	()Ljava/lang/String;
-          //   835: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   838: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   841: invokestatic 296	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   844: iconst_m1
-          //   845: istore_1
-          //   846: lload 9
-          //   848: lstore 7
-          //   850: goto -626 -> 224
-          //   853: aload 15
-          //   855: astore 16
-          //   857: aload_0
-          //   858: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   861: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   864: iconst_0
-          //   865: invokevirtual 299	com/tencent/wcdb/repair/RecoverKit:run	(Z)I
-          //   868: istore 4
+          //   392: lstore 9
+          //   394: aload 15
+          //   396: astore 16
+          //   398: aload_0
+          //   399: getfield 33	com/tencent/mm/plugin/dbbackup/d$2:phE	Lcom/tencent/mm/plugin/dbbackup/b;
+          //   402: ifnull +22 -> 424
+          //   405: lload 7
+          //   407: lstore 9
+          //   409: aload 15
+          //   411: astore 16
+          //   413: aload_0
+          //   414: getfield 33	com/tencent/mm/plugin/dbbackup/d$2:phE	Lcom/tencent/mm/plugin/dbbackup/b;
+          //   417: bipush 254
+          //   419: invokeinterface 206 2 0
+          //   424: aload_0
+          //   425: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   428: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   431: ifnull +22 -> 453
+          //   434: aload_0
+          //   435: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   438: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   441: invokevirtual 215	com/tencent/wcdb/repair/RecoverKit:release	()V
+          //   444: aload_0
+          //   445: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   448: aconst_null
+          //   449: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   452: pop
+          //   453: aload 15
+          //   455: ifnull +8 -> 463
+          //   458: aload 15
+          //   460: invokevirtual 218	com/tencent/wcdb/database/SQLiteDatabase:close	()V
+          //   463: aload_0
+          //   464: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   467: invokestatic 222	com/tencent/mm/plugin/dbbackup/d:c	(Lcom/tencent/mm/plugin/dbbackup/d;)Z
+          //   470: pop
+          //   471: invokestatic 228	com/tencent/mm/model/ba:ajF	()Lcom/tencent/mm/sdk/platformtools/aq;
+          //   474: invokevirtual 233	com/tencent/mm/sdk/platformtools/aq:fkT	()V
+          //   477: sipush 23079
+          //   480: invokestatic 236	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   483: return
+          //   484: lload 7
+          //   486: lstore 9
+          //   488: aload 15
+          //   490: astore 16
+          //   492: getstatic 242	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+          //   495: sipush 11098
+          //   498: iconst_2
+          //   499: anewarray 4	java/lang/Object
+          //   502: dup
+          //   503: iconst_0
+          //   504: sipush 10004
+          //   507: invokestatic 247	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   510: aastore
+          //   511: dup
+          //   512: iconst_1
+          //   513: ldc 249
+          //   515: iconst_2
+          //   516: anewarray 4	java/lang/Object
+          //   519: dup
+          //   520: iconst_0
+          //   521: lload 7
+          //   523: invokestatic 194	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+          //   526: aastore
+          //   527: dup
+          //   528: iconst_1
+          //   529: aload_0
+          //   530: getfield 31	com/tencent/mm/plugin/dbbackup/d$2:phS	J
+          //   533: invokestatic 194	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+          //   536: aastore
+          //   537: invokestatic 253	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+          //   540: aastore
+          //   541: invokevirtual 257	com/tencent/mm/plugin/report/service/g:f	(I[Ljava/lang/Object;)V
+          //   544: lload 7
+          //   546: lstore 9
+          //   548: aload 15
+          //   550: astore 16
+          //   552: aload_0
+          //   553: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   556: new 212	com/tencent/wcdb/repair/RecoverKit
+          //   559: dup
+          //   560: aload 15
+          //   562: aload 18
+          //   564: iconst_0
+          //   565: invokestatic 263	com/tencent/mm/b/q:k	(Ljava/lang/String;Z)Ljava/lang/String;
+          //   568: aload 17
+          //   570: invokespecial 266	com/tencent/wcdb/repair/RecoverKit:<init>	(Lcom/tencent/wcdb/database/SQLiteDatabase;Ljava/lang/String;[B)V
+          //   573: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   576: pop
+          //   577: lload 7
+          //   579: lstore 9
+          //   581: aload 15
+          //   583: astore 16
+          //   585: aload_0
+          //   586: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   589: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   592: astore 14
+          //   594: aload 14
+          //   596: ifnonnull +250 -> 846
+          //   599: bipush 253
+          //   601: istore_2
+          //   602: aload 15
+          //   604: astore 14
+          //   606: iload_2
+          //   607: istore_1
+          //   608: aload 15
+          //   610: astore 16
+          //   612: getstatic 242	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+          //   615: ldc2_w 267
+          //   618: ldc2_w 269
+          //   621: lconst_1
+          //   622: iconst_1
+          //   623: invokevirtual 274	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
+          //   626: aload 15
+          //   628: astore 14
+          //   630: iload_2
+          //   631: istore_1
+          //   632: aload 15
+          //   634: astore 16
+          //   636: new 276	java/lang/RuntimeException
+          //   639: dup
+          //   640: invokespecial 277	java/lang/RuntimeException:<init>	()V
+          //   643: astore 17
+          //   645: aload 15
+          //   647: astore 14
+          //   649: iload_2
+          //   650: istore_1
+          //   651: aload 15
+          //   653: astore 16
+          //   655: sipush 23079
+          //   658: invokestatic 236	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   661: aload 15
+          //   663: astore 14
+          //   665: iload_2
+          //   666: istore_1
+          //   667: aload 15
+          //   669: astore 16
+          //   671: aload 17
+          //   673: athrow
+          //   674: astore 16
+          //   676: aload 14
+          //   678: astore 15
+          //   680: aload 16
+          //   682: astore 14
+          //   684: aload 15
+          //   686: astore 16
+          //   688: ldc 186
+          //   690: aload 14
+          //   692: ldc_w 279
+          //   695: iconst_0
+          //   696: anewarray 4	java/lang/Object
+          //   699: invokestatic 283	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   702: aload 15
+          //   704: astore 16
+          //   706: aload_0
+          //   707: getfield 33	com/tencent/mm/plugin/dbbackup/d$2:phE	Lcom/tencent/mm/plugin/dbbackup/b;
+          //   710: ifnull +17 -> 727
+          //   713: aload 15
+          //   715: astore 16
+          //   717: aload_0
+          //   718: getfield 33	com/tencent/mm/plugin/dbbackup/d$2:phE	Lcom/tencent/mm/plugin/dbbackup/b;
+          //   721: iload_1
+          //   722: invokeinterface 206 2 0
+          //   727: aload 15
+          //   729: astore 16
+          //   731: getstatic 242	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+          //   734: ldc2_w 267
+          //   737: ldc2_w 284
+          //   740: lconst_1
+          //   741: iconst_1
+          //   742: invokevirtual 274	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
+          //   745: aload_0
+          //   746: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   749: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   752: ifnull +22 -> 774
+          //   755: aload_0
+          //   756: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   759: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   762: invokevirtual 215	com/tencent/wcdb/repair/RecoverKit:release	()V
+          //   765: aload_0
+          //   766: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   769: aconst_null
+          //   770: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   773: pop
+          //   774: aload 15
+          //   776: ifnull +8 -> 784
+          //   779: aload 15
+          //   781: invokevirtual 218	com/tencent/wcdb/database/SQLiteDatabase:close	()V
+          //   784: aload_0
+          //   785: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   788: invokestatic 222	com/tencent/mm/plugin/dbbackup/d:c	(Lcom/tencent/mm/plugin/dbbackup/d;)Z
+          //   791: pop
+          //   792: invokestatic 228	com/tencent/mm/model/ba:ajF	()Lcom/tencent/mm/sdk/platformtools/aq;
+          //   795: invokevirtual 233	com/tencent/mm/sdk/platformtools/aq:fkT	()V
+          //   798: sipush 23079
+          //   801: invokestatic 236	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   804: return
+          //   805: astore 18
+          //   807: aload 15
+          //   809: astore 16
+          //   811: ldc 186
+          //   813: new 79	java/lang/StringBuilder
+          //   816: dup
+          //   817: ldc_w 287
+          //   820: invokespecial 288	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   823: aload 18
+          //   825: invokevirtual 291	java/lang/Exception:getMessage	()Ljava/lang/String;
+          //   828: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   831: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   834: invokestatic 295	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   837: iconst_m1
+          //   838: istore_1
+          //   839: lload 9
+          //   841: lstore 7
+          //   843: goto -626 -> 217
+          //   846: aload 15
+          //   848: astore 16
+          //   850: aload_0
+          //   851: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   854: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   857: iconst_0
+          //   858: invokevirtual 298	com/tencent/wcdb/repair/RecoverKit:run	(Z)I
+          //   861: istore 4
+          //   863: aload 15
+          //   865: astore 14
+          //   867: iload 4
+          //   869: istore_1
           //   870: aload 15
-          //   872: astore 14
-          //   874: iload 4
-          //   876: istore_1
+          //   872: astore 16
+          //   874: invokestatic 301	com/tencent/mm/plugin/dbbackup/d:cbO	()V
           //   877: aload 15
-          //   879: astore 16
-          //   881: invokestatic 302	com/tencent/mm/plugin/dbbackup/d:bXl	()V
+          //   879: astore 14
+          //   881: iload 4
+          //   883: istore_1
           //   884: aload 15
-          //   886: astore 14
-          //   888: iload 4
-          //   890: istore_1
-          //   891: aload 15
-          //   893: astore 16
-          //   895: invokestatic 77	java/lang/System:nanoTime	()J
-          //   898: lload 11
-          //   900: lsub
-          //   901: lstore 7
+          //   886: astore 16
+          //   888: invokestatic 77	java/lang/System:nanoTime	()J
+          //   891: lload 11
+          //   893: lsub
+          //   894: lstore 7
+          //   896: aload 15
+          //   898: astore 14
+          //   900: iload 4
+          //   902: istore_1
           //   903: aload 15
-          //   905: astore 14
-          //   907: iload 4
-          //   909: istore_1
-          //   910: aload 15
-          //   912: astore 16
-          //   914: aload_0
-          //   915: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   918: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   921: invokevirtual 305	com/tencent/wcdb/repair/RecoverKit:successCount	()I
-          //   924: istore 5
+          //   905: astore 16
+          //   907: aload_0
+          //   908: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   911: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   914: invokevirtual 304	com/tencent/wcdb/repair/RecoverKit:successCount	()I
+          //   917: istore 5
+          //   919: aload 15
+          //   921: astore 14
+          //   923: iload 4
+          //   925: istore_1
           //   926: aload 15
-          //   928: astore 14
-          //   930: iload 4
-          //   932: istore_1
-          //   933: aload 15
-          //   935: astore 16
-          //   937: aload_0
-          //   938: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   941: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   944: invokevirtual 308	com/tencent/wcdb/repair/RecoverKit:failureCount	()I
-          //   947: istore 6
+          //   928: astore 16
+          //   930: aload_0
+          //   931: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   934: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   937: invokevirtual 307	com/tencent/wcdb/repair/RecoverKit:failureCount	()I
+          //   940: istore 6
+          //   942: aload 15
+          //   944: astore 14
+          //   946: iload 4
+          //   948: istore_1
           //   949: aload 15
-          //   951: astore 14
-          //   953: iload 4
-          //   955: istore_1
-          //   956: aload 15
-          //   958: astore 16
-          //   960: aload_0
-          //   961: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   964: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   967: invokevirtual 311	com/tencent/wcdb/repair/RecoverKit:lastError	()Ljava/lang/String;
-          //   970: astore 19
+          //   951: astore 16
+          //   953: aload_0
+          //   954: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   957: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   960: invokevirtual 310	com/tencent/wcdb/repair/RecoverKit:lastError	()Ljava/lang/String;
+          //   963: astore 19
+          //   965: aload 15
+          //   967: astore 14
+          //   969: iload 4
+          //   971: istore_1
           //   972: aload 15
-          //   974: astore 14
-          //   976: iload 4
-          //   978: istore_1
-          //   979: aload 15
-          //   981: astore 16
-          //   983: aload_0
-          //   984: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   987: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   990: invokevirtual 216	com/tencent/wcdb/repair/RecoverKit:release	()V
+          //   974: astore 16
+          //   976: aload_0
+          //   977: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   980: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   983: invokevirtual 215	com/tencent/wcdb/repair/RecoverKit:release	()V
+          //   986: aload 15
+          //   988: astore 14
+          //   990: iload 4
+          //   992: istore_1
           //   993: aload 15
-          //   995: astore 14
-          //   997: iload 4
-          //   999: istore_1
-          //   1000: aload 15
-          //   1002: astore 16
-          //   1004: aload_0
-          //   1005: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   1008: aconst_null
-          //   1009: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   1012: pop
+          //   995: astore 16
+          //   997: aload_0
+          //   998: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   1001: aconst_null
+          //   1002: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   1005: pop
+          //   1006: aload 15
+          //   1008: astore 14
+          //   1010: iload 4
+          //   1012: istore_1
           //   1013: aload 15
-          //   1015: astore 14
-          //   1017: iload 4
-          //   1019: istore_1
-          //   1020: aload 15
-          //   1022: astore 16
-          //   1024: aload 15
-          //   1026: invokevirtual 219	com/tencent/wcdb/database/SQLiteDatabase:close	()V
-          //   1029: aconst_null
-          //   1030: astore 18
-          //   1032: aconst_null
-          //   1033: astore 17
-          //   1035: iload 4
-          //   1037: ifne +275 -> 1312
-          //   1040: ldc_w 313
-          //   1043: astore 15
-          //   1045: aload 17
-          //   1047: astore 14
-          //   1049: iload 4
-          //   1051: istore_1
-          //   1052: aload 18
-          //   1054: astore 16
-          //   1056: ldc 187
-          //   1058: ldc_w 315
-          //   1061: iconst_4
-          //   1062: anewarray 4	java/lang/Object
-          //   1065: dup
-          //   1066: iconst_0
-          //   1067: aload 15
-          //   1069: aastore
-          //   1070: dup
-          //   1071: iconst_1
-          //   1072: lload 7
-          //   1074: l2f
-          //   1075: ldc_w 316
-          //   1078: fdiv
-          //   1079: invokestatic 321	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-          //   1082: aastore
-          //   1083: dup
-          //   1084: iconst_2
-          //   1085: iload 5
-          //   1087: invokestatic 248	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1090: aastore
-          //   1091: dup
-          //   1092: iconst_3
-          //   1093: iload 6
-          //   1095: invokestatic 248	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1098: aastore
-          //   1099: invokestatic 200	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   1102: iload 4
-          //   1104: ifne +374 -> 1478
-          //   1107: sipush 10005
-          //   1110: istore_3
-          //   1111: bipush 22
-          //   1113: istore_2
-          //   1114: aload 17
-          //   1116: astore 14
-          //   1118: iload 4
-          //   1120: istore_1
-          //   1121: aload 18
-          //   1123: astore 16
-          //   1125: getstatic 243	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
-          //   1128: sipush 11098
-          //   1131: iconst_2
-          //   1132: anewarray 4	java/lang/Object
+          //   1015: astore 16
+          //   1017: aload 15
+          //   1019: invokevirtual 218	com/tencent/wcdb/database/SQLiteDatabase:close	()V
+          //   1022: aconst_null
+          //   1023: astore 18
+          //   1025: aconst_null
+          //   1026: astore 17
+          //   1028: iload 4
+          //   1030: ifne +275 -> 1305
+          //   1033: ldc_w 312
+          //   1036: astore 15
+          //   1038: aload 17
+          //   1040: astore 14
+          //   1042: iload 4
+          //   1044: istore_1
+          //   1045: aload 18
+          //   1047: astore 16
+          //   1049: ldc 186
+          //   1051: ldc_w 314
+          //   1054: iconst_4
+          //   1055: anewarray 4	java/lang/Object
+          //   1058: dup
+          //   1059: iconst_0
+          //   1060: aload 15
+          //   1062: aastore
+          //   1063: dup
+          //   1064: iconst_1
+          //   1065: lload 7
+          //   1067: l2f
+          //   1068: ldc_w 315
+          //   1071: fdiv
+          //   1072: invokestatic 320	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+          //   1075: aastore
+          //   1076: dup
+          //   1077: iconst_2
+          //   1078: iload 5
+          //   1080: invokestatic 247	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1083: aastore
+          //   1084: dup
+          //   1085: iconst_3
+          //   1086: iload 6
+          //   1088: invokestatic 247	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1091: aastore
+          //   1092: invokestatic 199	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   1095: iload 4
+          //   1097: ifne +374 -> 1471
+          //   1100: sipush 10005
+          //   1103: istore_3
+          //   1104: bipush 22
+          //   1106: istore_2
+          //   1107: aload 17
+          //   1109: astore 14
+          //   1111: iload 4
+          //   1113: istore_1
+          //   1114: aload 18
+          //   1116: astore 16
+          //   1118: getstatic 242	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+          //   1121: sipush 11098
+          //   1124: iconst_2
+          //   1125: anewarray 4	java/lang/Object
+          //   1128: dup
+          //   1129: iconst_0
+          //   1130: iload_3
+          //   1131: invokestatic 247	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1134: aastore
           //   1135: dup
-          //   1136: iconst_0
-          //   1137: iload_3
-          //   1138: invokestatic 248	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1141: aastore
-          //   1142: dup
-          //   1143: iconst_1
-          //   1144: ldc_w 323
-          //   1147: iconst_4
-          //   1148: anewarray 4	java/lang/Object
-          //   1151: dup
-          //   1152: iconst_0
-          //   1153: lload 9
-          //   1155: invokestatic 195	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   1158: aastore
-          //   1159: dup
-          //   1160: iconst_1
-          //   1161: lload 7
-          //   1163: ldc2_w 324
-          //   1166: ldiv
-          //   1167: invokestatic 195	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   1170: aastore
-          //   1171: dup
-          //   1172: iconst_2
-          //   1173: iload 5
-          //   1175: invokestatic 248	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1178: aastore
-          //   1179: dup
-          //   1180: iconst_3
-          //   1181: iload 6
-          //   1183: invokestatic 248	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1186: aastore
-          //   1187: invokestatic 254	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-          //   1190: aastore
-          //   1191: invokevirtual 258	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
-          //   1194: iload_2
-          //   1195: iflt +27 -> 1222
-          //   1198: aload 17
-          //   1200: astore 14
-          //   1202: iload 4
-          //   1204: istore_1
-          //   1205: aload 18
-          //   1207: astore 16
-          //   1209: getstatic 243	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
-          //   1212: ldc2_w 268
-          //   1215: iload_2
-          //   1216: i2l
-          //   1217: lconst_1
-          //   1218: iconst_1
-          //   1219: invokevirtual 275	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
-          //   1222: aload 17
-          //   1224: astore 14
-          //   1226: iload 4
-          //   1228: istore_1
-          //   1229: aload 18
-          //   1231: astore 16
-          //   1233: aload_0
-          //   1234: getfield 33	com/tencent/mm/plugin/dbbackup/d$2:oEe	Lcom/tencent/mm/plugin/dbbackup/b;
-          //   1237: ifnull +25 -> 1262
-          //   1240: aload 17
-          //   1242: astore 14
-          //   1244: iload 4
-          //   1246: istore_1
-          //   1247: aload 18
-          //   1249: astore 16
-          //   1251: aload_0
-          //   1252: getfield 33	com/tencent/mm/plugin/dbbackup/d$2:oEe	Lcom/tencent/mm/plugin/dbbackup/b;
-          //   1255: iload 4
-          //   1257: invokeinterface 207 2 0
-          //   1262: aload_0
-          //   1263: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   1266: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   1269: ifnull +22 -> 1291
-          //   1272: aload_0
-          //   1273: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   1276: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   1279: invokevirtual 216	com/tencent/wcdb/repair/RecoverKit:release	()V
-          //   1282: aload_0
-          //   1283: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   1286: aconst_null
-          //   1287: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   1290: pop
-          //   1291: aload_0
-          //   1292: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   1295: invokestatic 223	com/tencent/mm/plugin/dbbackup/d:c	(Lcom/tencent/mm/plugin/dbbackup/d;)Z
-          //   1298: pop
-          //   1299: invokestatic 229	com/tencent/mm/model/az:agU	()Lcom/tencent/mm/sdk/platformtools/ap;
-          //   1302: invokevirtual 234	com/tencent/mm/sdk/platformtools/ap:eVm	()V
-          //   1305: sipush 23079
-          //   1308: invokestatic 237	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   1311: return
-          //   1312: iload 4
-          //   1314: iconst_1
-          //   1315: if_icmpne +155 -> 1470
-          //   1318: ldc_w 327
-          //   1321: astore 15
-          //   1323: goto -278 -> 1045
-          //   1326: sipush 10007
-          //   1329: istore_3
-          //   1330: bipush 23
-          //   1332: istore_2
-          //   1333: aload 17
-          //   1335: astore 14
-          //   1337: iload 4
-          //   1339: istore_1
-          //   1340: aload 18
-          //   1342: astore 16
-          //   1344: getstatic 243	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
-          //   1347: ldc_w 329
-          //   1350: ldc_w 331
-          //   1353: aload 19
-          //   1355: invokestatic 334	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-          //   1358: invokevirtual 338	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-          //   1361: aconst_null
-          //   1362: invokevirtual 342	com/tencent/mm/plugin/report/service/h:g	(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)V
-          //   1365: goto -251 -> 1114
-          //   1368: astore 14
-          //   1370: aload_0
-          //   1371: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   1374: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   1377: ifnull +22 -> 1399
-          //   1380: aload_0
-          //   1381: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   1384: invokestatic 211	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   1387: invokevirtual 216	com/tencent/wcdb/repair/RecoverKit:release	()V
-          //   1390: aload_0
-          //   1391: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   1394: aconst_null
-          //   1395: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
-          //   1398: pop
-          //   1399: aload 16
-          //   1401: ifnull +8 -> 1409
-          //   1404: aload 16
-          //   1406: invokevirtual 219	com/tencent/wcdb/database/SQLiteDatabase:close	()V
-          //   1409: aload_0
-          //   1410: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:oEq	Lcom/tencent/mm/plugin/dbbackup/d;
-          //   1413: invokestatic 223	com/tencent/mm/plugin/dbbackup/d:c	(Lcom/tencent/mm/plugin/dbbackup/d;)Z
-          //   1416: pop
-          //   1417: invokestatic 229	com/tencent/mm/model/az:agU	()Lcom/tencent/mm/sdk/platformtools/ap;
-          //   1420: invokevirtual 234	com/tencent/mm/sdk/platformtools/ap:eVm	()V
-          //   1423: sipush 23079
-          //   1426: invokestatic 237	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   1429: aload 14
-          //   1431: athrow
-          //   1432: astore 14
-          //   1434: aconst_null
-          //   1435: astore 16
-          //   1437: goto -67 -> 1370
-          //   1440: astore 14
-          //   1442: aconst_null
-          //   1443: astore 15
+          //   1136: iconst_1
+          //   1137: ldc_w 322
+          //   1140: iconst_4
+          //   1141: anewarray 4	java/lang/Object
+          //   1144: dup
+          //   1145: iconst_0
+          //   1146: lload 9
+          //   1148: invokestatic 194	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+          //   1151: aastore
+          //   1152: dup
+          //   1153: iconst_1
+          //   1154: lload 7
+          //   1156: ldc2_w 323
+          //   1159: ldiv
+          //   1160: invokestatic 194	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+          //   1163: aastore
+          //   1164: dup
+          //   1165: iconst_2
+          //   1166: iload 5
+          //   1168: invokestatic 247	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1171: aastore
+          //   1172: dup
+          //   1173: iconst_3
+          //   1174: iload 6
+          //   1176: invokestatic 247	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1179: aastore
+          //   1180: invokestatic 253	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+          //   1183: aastore
+          //   1184: invokevirtual 257	com/tencent/mm/plugin/report/service/g:f	(I[Ljava/lang/Object;)V
+          //   1187: iload_2
+          //   1188: iflt +27 -> 1215
+          //   1191: aload 17
+          //   1193: astore 14
+          //   1195: iload 4
+          //   1197: istore_1
+          //   1198: aload 18
+          //   1200: astore 16
+          //   1202: getstatic 242	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+          //   1205: ldc2_w 267
+          //   1208: iload_2
+          //   1209: i2l
+          //   1210: lconst_1
+          //   1211: iconst_1
+          //   1212: invokevirtual 274	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
+          //   1215: aload 17
+          //   1217: astore 14
+          //   1219: iload 4
+          //   1221: istore_1
+          //   1222: aload 18
+          //   1224: astore 16
+          //   1226: aload_0
+          //   1227: getfield 33	com/tencent/mm/plugin/dbbackup/d$2:phE	Lcom/tencent/mm/plugin/dbbackup/b;
+          //   1230: ifnull +25 -> 1255
+          //   1233: aload 17
+          //   1235: astore 14
+          //   1237: iload 4
+          //   1239: istore_1
+          //   1240: aload 18
+          //   1242: astore 16
+          //   1244: aload_0
+          //   1245: getfield 33	com/tencent/mm/plugin/dbbackup/d$2:phE	Lcom/tencent/mm/plugin/dbbackup/b;
+          //   1248: iload 4
+          //   1250: invokeinterface 206 2 0
+          //   1255: aload_0
+          //   1256: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   1259: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   1262: ifnull +22 -> 1284
+          //   1265: aload_0
+          //   1266: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   1269: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   1272: invokevirtual 215	com/tencent/wcdb/repair/RecoverKit:release	()V
+          //   1275: aload_0
+          //   1276: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   1279: aconst_null
+          //   1280: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   1283: pop
+          //   1284: aload_0
+          //   1285: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   1288: invokestatic 222	com/tencent/mm/plugin/dbbackup/d:c	(Lcom/tencent/mm/plugin/dbbackup/d;)Z
+          //   1291: pop
+          //   1292: invokestatic 228	com/tencent/mm/model/ba:ajF	()Lcom/tencent/mm/sdk/platformtools/aq;
+          //   1295: invokevirtual 233	com/tencent/mm/sdk/platformtools/aq:fkT	()V
+          //   1298: sipush 23079
+          //   1301: invokestatic 236	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   1304: return
+          //   1305: iload 4
+          //   1307: iconst_1
+          //   1308: if_icmpne +155 -> 1463
+          //   1311: ldc_w 326
+          //   1314: astore 15
+          //   1316: goto -278 -> 1038
+          //   1319: sipush 10007
+          //   1322: istore_3
+          //   1323: bipush 23
+          //   1325: istore_2
+          //   1326: aload 17
+          //   1328: astore 14
+          //   1330: iload 4
+          //   1332: istore_1
+          //   1333: aload 18
+          //   1335: astore 16
+          //   1337: getstatic 242	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+          //   1340: ldc_w 328
+          //   1343: ldc_w 330
+          //   1346: aload 19
+          //   1348: invokestatic 333	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+          //   1351: invokevirtual 337	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+          //   1354: aconst_null
+          //   1355: invokevirtual 341	com/tencent/mm/plugin/report/service/g:g	(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)V
+          //   1358: goto -251 -> 1107
+          //   1361: astore 14
+          //   1363: aload_0
+          //   1364: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   1367: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   1370: ifnull +22 -> 1392
+          //   1373: aload_0
+          //   1374: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   1377: invokestatic 210	com/tencent/mm/plugin/dbbackup/d:d	(Lcom/tencent/mm/plugin/dbbackup/d;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   1380: invokevirtual 215	com/tencent/wcdb/repair/RecoverKit:release	()V
+          //   1383: aload_0
+          //   1384: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   1387: aconst_null
+          //   1388: invokestatic 49	com/tencent/mm/plugin/dbbackup/d:a	(Lcom/tencent/mm/plugin/dbbackup/d;Lcom/tencent/wcdb/repair/RecoverKit;)Lcom/tencent/wcdb/repair/RecoverKit;
+          //   1391: pop
+          //   1392: aload 16
+          //   1394: ifnull +8 -> 1402
+          //   1397: aload 16
+          //   1399: invokevirtual 218	com/tencent/wcdb/database/SQLiteDatabase:close	()V
+          //   1402: aload_0
+          //   1403: getfield 25	com/tencent/mm/plugin/dbbackup/d$2:phQ	Lcom/tencent/mm/plugin/dbbackup/d;
+          //   1406: invokestatic 222	com/tencent/mm/plugin/dbbackup/d:c	(Lcom/tencent/mm/plugin/dbbackup/d;)Z
+          //   1409: pop
+          //   1410: invokestatic 228	com/tencent/mm/model/ba:ajF	()Lcom/tencent/mm/sdk/platformtools/aq;
+          //   1413: invokevirtual 233	com/tencent/mm/sdk/platformtools/aq:fkT	()V
+          //   1416: sipush 23079
+          //   1419: invokestatic 236	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   1422: aload 14
+          //   1424: athrow
+          //   1425: astore 14
+          //   1427: aconst_null
+          //   1428: astore 16
+          //   1430: goto -67 -> 1363
+          //   1433: astore 14
+          //   1435: aconst_null
+          //   1436: astore 15
+          //   1438: iconst_m1
+          //   1439: istore_1
+          //   1440: goto -756 -> 684
+          //   1443: astore 14
           //   1445: iconst_m1
           //   1446: istore_1
-          //   1447: goto -756 -> 691
+          //   1447: goto -763 -> 684
           //   1450: astore 14
-          //   1452: iconst_m1
-          //   1453: istore_1
-          //   1454: goto -763 -> 691
-          //   1457: astore 14
-          //   1459: bipush 253
-          //   1461: istore_1
-          //   1462: goto -771 -> 691
-          //   1465: astore 14
-          //   1467: goto -776 -> 691
-          //   1470: ldc_w 344
-          //   1473: astore 15
-          //   1475: goto -430 -> 1045
-          //   1478: iload 4
-          //   1480: iconst_1
-          //   1481: if_icmpne -155 -> 1326
-          //   1484: sipush 10006
-          //   1487: istore_3
-          //   1488: iconst_m1
-          //   1489: istore_2
-          //   1490: goto -376 -> 1114
+          //   1452: bipush 253
+          //   1454: istore_1
+          //   1455: goto -771 -> 684
+          //   1458: astore 14
+          //   1460: goto -776 -> 684
+          //   1463: ldc_w 343
+          //   1466: astore 15
+          //   1468: goto -430 -> 1038
+          //   1471: iload 4
+          //   1473: iconst_1
+          //   1474: if_icmpne -155 -> 1319
+          //   1477: sipush 10006
+          //   1480: istore_3
+          //   1481: iconst_m1
+          //   1482: istore_2
+          //   1483: goto -376 -> 1107
           // Local variable table:
           //   start	length	slot	name	signature
-          //   0	1493	0	this	2
-          //   89	1373	1	i	int
-          //   163	1327	2	j	int
-          //   161	1327	3	k	int
-          //   868	614	4	m	int
-          //   924	250	5	n	int
-          //   947	235	6	i1	int
-          //   168	994	7	l1	long
-          //   172	982	9	l2	long
-          //   34	865	11	l3	long
-          //   217	3	13	bool	boolean
-          //   62	1274	14	localObject1	Object
-          //   1368	62	14	localObject2	Object
-          //   1432	1	14	localObject3	Object
-          //   1440	1	14	localException1	Exception
-          //   1450	1	14	localException2	Exception
-          //   1457	1	14	localException3	Exception
-          //   1465	1	14	localException4	Exception
-          //   120	1354	15	localObject4	Object
-          //   124	553	16	localObject5	Object
-          //   681	7	16	localException5	Exception
-          //   693	743	16	localObject6	Object
-          //   69	1265	17	localObject7	Object
-          //   183	387	18	localObject8	Object
-          //   812	19	18	localException6	Exception
-          //   1030	311	18	localObject9	Object
-          //   202	1152	19	localObject10	Object
+          //   0	1486	0	this	2
+          //   159	1296	1	i	int
+          //   156	1327	2	j	int
+          //   154	1327	3	k	int
+          //   861	614	4	m	int
+          //   917	250	5	n	int
+          //   940	235	6	i1	int
+          //   161	994	7	l1	long
+          //   165	982	9	l2	long
+          //   34	858	11	l3	long
+          //   210	3	13	bool	boolean
+          //   62	1267	14	localObject1	Object
+          //   1361	62	14	localObject2	Object
+          //   1425	1	14	localObject3	Object
+          //   1433	1	14	localException1	Exception
+          //   1443	1	14	localException2	Exception
+          //   1450	1	14	localException3	Exception
+          //   1458	1	14	localException4	Exception
+          //   113	1354	15	localObject4	Object
+          //   117	553	16	localObject5	Object
+          //   674	7	16	localException5	Exception
+          //   686	743	16	localObject6	Object
+          //   69	1258	17	localObject7	Object
+          //   176	387	18	localObject8	Object
+          //   805	19	18	localException6	Exception
+          //   1023	311	18	localObject9	Object
+          //   195	1152	19	localObject10	Object
           // Exception table:
           //   from	to	target	type
-          //   619	633	681	java/lang/Exception
-          //   643	652	681	java/lang/Exception
-          //   662	668	681	java/lang/Exception
-          //   678	681	681	java/lang/Exception
-          //   881	884	681	java/lang/Exception
-          //   895	903	681	java/lang/Exception
-          //   914	926	681	java/lang/Exception
-          //   937	949	681	java/lang/Exception
-          //   960	972	681	java/lang/Exception
-          //   983	993	681	java/lang/Exception
-          //   1004	1013	681	java/lang/Exception
-          //   1024	1029	681	java/lang/Exception
-          //   1056	1102	681	java/lang/Exception
-          //   1125	1194	681	java/lang/Exception
-          //   1209	1222	681	java/lang/Exception
-          //   1233	1240	681	java/lang/Exception
-          //   1251	1262	681	java/lang/Exception
-          //   1344	1365	681	java/lang/Exception
-          //   193	204	812	java/lang/Exception
-          //   212	219	812	java/lang/Exception
-          //   331	338	812	java/lang/Exception
-          //   346	375	812	java/lang/Exception
-          //   383	397	812	java/lang/Exception
-          //   405	412	812	java/lang/Exception
-          //   420	431	812	java/lang/Exception
-          //   499	551	812	java/lang/Exception
-          //   559	584	812	java/lang/Exception
-          //   126	133	1368	finally
-          //   137	143	1368	finally
-          //   158	162	1368	finally
-          //   193	204	1368	finally
-          //   212	219	1368	finally
-          //   235	258	1368	finally
-          //   262	271	1368	finally
-          //   275	279	1368	finally
-          //   283	304	1368	finally
-          //   331	338	1368	finally
-          //   346	375	1368	finally
-          //   383	397	1368	finally
-          //   405	412	1368	finally
-          //   420	431	1368	finally
-          //   499	551	1368	finally
-          //   559	584	1368	finally
-          //   592	601	1368	finally
-          //   619	633	1368	finally
-          //   643	652	1368	finally
-          //   662	668	1368	finally
-          //   678	681	1368	finally
-          //   695	709	1368	finally
-          //   713	720	1368	finally
-          //   724	734	1368	finally
-          //   738	752	1368	finally
-          //   818	844	1368	finally
-          //   857	870	1368	finally
-          //   881	884	1368	finally
-          //   895	903	1368	finally
-          //   914	926	1368	finally
-          //   937	949	1368	finally
-          //   960	972	1368	finally
-          //   983	993	1368	finally
-          //   1004	1013	1368	finally
-          //   1024	1029	1368	finally
-          //   1056	1102	1368	finally
-          //   1125	1194	1368	finally
-          //   1209	1222	1368	finally
-          //   1233	1240	1368	finally
-          //   1251	1262	1368	finally
-          //   1344	1365	1368	finally
-          //   15	87	1432	finally
-          //   90	96	1432	finally
-          //   99	122	1432	finally
-          //   15	87	1440	java/lang/Exception
-          //   90	96	1440	java/lang/Exception
-          //   99	122	1440	java/lang/Exception
-          //   126	133	1450	java/lang/Exception
-          //   137	143	1450	java/lang/Exception
-          //   235	258	1450	java/lang/Exception
-          //   262	271	1450	java/lang/Exception
-          //   275	279	1450	java/lang/Exception
-          //   283	304	1450	java/lang/Exception
-          //   158	162	1457	java/lang/Exception
-          //   592	601	1465	java/lang/Exception
-          //   818	844	1465	java/lang/Exception
-          //   857	870	1465	java/lang/Exception
+          //   612	626	674	java/lang/Exception
+          //   636	645	674	java/lang/Exception
+          //   655	661	674	java/lang/Exception
+          //   671	674	674	java/lang/Exception
+          //   874	877	674	java/lang/Exception
+          //   888	896	674	java/lang/Exception
+          //   907	919	674	java/lang/Exception
+          //   930	942	674	java/lang/Exception
+          //   953	965	674	java/lang/Exception
+          //   976	986	674	java/lang/Exception
+          //   997	1006	674	java/lang/Exception
+          //   1017	1022	674	java/lang/Exception
+          //   1049	1095	674	java/lang/Exception
+          //   1118	1187	674	java/lang/Exception
+          //   1202	1215	674	java/lang/Exception
+          //   1226	1233	674	java/lang/Exception
+          //   1244	1255	674	java/lang/Exception
+          //   1337	1358	674	java/lang/Exception
+          //   186	197	805	java/lang/Exception
+          //   205	212	805	java/lang/Exception
+          //   324	331	805	java/lang/Exception
+          //   339	368	805	java/lang/Exception
+          //   376	390	805	java/lang/Exception
+          //   398	405	805	java/lang/Exception
+          //   413	424	805	java/lang/Exception
+          //   492	544	805	java/lang/Exception
+          //   552	577	805	java/lang/Exception
+          //   119	126	1361	finally
+          //   130	136	1361	finally
+          //   151	155	1361	finally
+          //   186	197	1361	finally
+          //   205	212	1361	finally
+          //   228	251	1361	finally
+          //   255	264	1361	finally
+          //   268	272	1361	finally
+          //   276	297	1361	finally
+          //   324	331	1361	finally
+          //   339	368	1361	finally
+          //   376	390	1361	finally
+          //   398	405	1361	finally
+          //   413	424	1361	finally
+          //   492	544	1361	finally
+          //   552	577	1361	finally
+          //   585	594	1361	finally
+          //   612	626	1361	finally
+          //   636	645	1361	finally
+          //   655	661	1361	finally
+          //   671	674	1361	finally
+          //   688	702	1361	finally
+          //   706	713	1361	finally
+          //   717	727	1361	finally
+          //   731	745	1361	finally
+          //   811	837	1361	finally
+          //   850	863	1361	finally
+          //   874	877	1361	finally
+          //   888	896	1361	finally
+          //   907	919	1361	finally
+          //   930	942	1361	finally
+          //   953	965	1361	finally
+          //   976	986	1361	finally
+          //   997	1006	1361	finally
+          //   1017	1022	1361	finally
+          //   1049	1095	1361	finally
+          //   1118	1187	1361	finally
+          //   1202	1215	1361	finally
+          //   1226	1233	1361	finally
+          //   1244	1255	1361	finally
+          //   1337	1358	1361	finally
+          //   15	115	1425	finally
+          //   15	115	1433	java/lang/Exception
+          //   119	126	1443	java/lang/Exception
+          //   130	136	1443	java/lang/Exception
+          //   228	251	1443	java/lang/Exception
+          //   255	264	1443	java/lang/Exception
+          //   268	272	1443	java/lang/Exception
+          //   276	297	1443	java/lang/Exception
+          //   151	155	1450	java/lang/Exception
+          //   585	594	1458	java/lang/Exception
+          //   811	837	1458	java/lang/Exception
+          //   850	863	1458	java/lang/Exception
         }
       };
-      this.oDS = true;
-      az.agU().Kw();
-      az.agU().aA(paramString);
+      this.phs = true;
+      ba.ajF().LZ();
+      ba.ajF().az(paramString);
       AppMethodBeat.o(23098);
       return 0;
     }
@@ -1545,15 +1536,15 @@ public final class d
   public final boolean a(final boolean paramBoolean, final b paramb)
   {
     AppMethodBeat.i(23096);
-    if (this.oDS)
+    if (this.phs)
     {
-      ac.i("MicroMsg.SubCoreDBBackup", "Backup or recover task is in progress, %s canceled", new Object[] { "backup" });
+      ad.i("MicroMsg.SubCoreDBBackup", "Backup or recover task is in progress, %s canceled", new Object[] { "backup" });
       AppMethodBeat.o(23096);
       return false;
     }
-    final com.tencent.mm.model.c localc = az.ayM();
-    final String str1 = com.tencent.mm.model.c.agy();
-    final SQLiteDatabase localSQLiteDatabase = com.tencent.mm.model.c.agw().fdL();
+    final com.tencent.mm.model.c localc = ba.aBQ();
+    final String str1 = com.tencent.mm.model.c.ajj();
+    final SQLiteDatabase localSQLiteDatabase = com.tencent.mm.model.c.getDataDB().ftT();
     final String str2 = str1 + ".bak";
     final String str3 = str2 + ".tmp";
     final String str4 = str1 + ".sm";
@@ -1567,10 +1558,10 @@ public final class d
     final String[] arrayOfString;
     if (paramBoolean)
     {
-      if (i.eA(str2))
+      if (com.tencent.mm.vfs.i.fv(str2))
       {
         i = 24;
-        i.lZ(str2, str3);
+        com.tencent.mm.vfs.i.mz(str2, str3);
         bool = paramBoolean;
       }
     }
@@ -1580,7 +1571,7 @@ public final class d
       if (!bool) {
         break label292;
       }
-      arrayOfLong1 = Wn(str1);
+      arrayOfLong1 = ZU(str1);
       arrayOfString = a(arrayOfLong2, arrayOfLong1);
       if (arrayOfLong1 != null) {
         break label301;
@@ -1590,7 +1581,7 @@ public final class d
     label301:
     for (paramBoolean = false;; paramBoolean = bool)
     {
-      if (this.oDZ) {
+      if (this.phz) {
         i |= 0x3;
       }
       for (;;)
@@ -1603,7 +1594,7 @@ public final class d
             if (!d.a(d.this))
             {
               if (paramb != null) {
-                paramb.AF(1);
+                paramb.Bo(1);
               }
               AppMethodBeat.o(23078);
               return;
@@ -1623,7 +1614,7 @@ public final class d
               try
               {
                 long l2 = System.nanoTime();
-                localObject3 = com.tencent.mm.b.g.C((com.tencent.mm.compatible.deviceinfo.q.cF(true) + com.tencent.mm.model.c.getUin()).getBytes());
+                localObject3 = com.tencent.mm.b.g.C((com.tencent.mm.compatible.deviceinfo.q.cH(true) + com.tencent.mm.model.c.getUin()).getBytes());
                 Object localObject1 = new com.tencent.mm.vfs.e(str4);
                 com.tencent.mm.vfs.e locale;
                 if ((!paramBoolean) || (!((com.tencent.mm.vfs.e)localObject1).exists()))
@@ -1633,19 +1624,19 @@ public final class d
                   if (bool)
                   {
                     ((com.tencent.mm.vfs.e)localObject1).delete();
-                    bool = locale.ae((com.tencent.mm.vfs.e)localObject1);
+                    bool = locale.ag((com.tencent.mm.vfs.e)localObject1);
                     l1 = System.nanoTime();
                     if (!bool) {
                       break label1109;
                     }
                     localObject1 = "SUCCEEDED";
-                    ac.i("MicroMsg.SubCoreDBBackup", "Master table backup %s, elapsed %.3f", new Object[] { localObject1, Float.valueOf((float)(l1 - l2) / 1.0E+009F) });
-                    localObject1 = com.tencent.mm.plugin.report.service.h.wUl;
+                    ad.i("MicroMsg.SubCoreDBBackup", "Master table backup %s, elapsed %.3f", new Object[] { localObject1, Float.valueOf((float)(l1 - l2) / 1.0E+009F) });
+                    localObject1 = com.tencent.mm.plugin.report.service.g.yhR;
                     if (!bool) {
                       break label1117;
                     }
                     l1 = 24L;
-                    ((com.tencent.mm.plugin.report.service.h)localObject1).idkeyStat(181L, l1, 1L, false);
+                    ((com.tencent.mm.plugin.report.service.g)localObject1).idkeyStat(181L, l1, 1L, false);
                   }
                 }
                 else
@@ -1660,12 +1651,12 @@ public final class d
                     break label1133;
                   }
                   l1 = arrayOfLong1[0];
-                  ac.i("MicroMsg.SubCoreDBBackup", "Backup started [%s, cursor: %d ~ %d]", new Object[] { localObject1, Long.valueOf(l1), Long.valueOf(arrayOfLong2[0]) });
+                  ad.i("MicroMsg.SubCoreDBBackup", "Backup started [%s, cursor: %d ~ %d]", new Object[] { localObject1, Long.valueOf(l1), Long.valueOf(arrayOfLong2[0]) });
                   if (!paramBoolean) {
                     break label1139;
                   }
                   i = 10011;
-                  com.tencent.mm.plugin.report.service.h.wUl.f(11098, new Object[] { Integer.valueOf(i), String.format("%d|%d|%s", new Object[] { Long.valueOf(l3), Long.valueOf(l4), d.this.oEa.format(new Date()) }) });
+                  com.tencent.mm.plugin.report.service.g.yhR.f(11098, new Object[] { Integer.valueOf(i), String.format("%d|%d|%s", new Object[] { Long.valueOf(l3), Long.valueOf(l4), d.this.phA.format(new Date()) }) });
                   d.a(d.this, new BackupKit(localSQLiteDatabase, str3, (byte[])localObject3, i, arrayOfString));
                   k = d.b(d.this).run();
                   l1 = System.nanoTime() - l2;
@@ -1677,7 +1668,7 @@ public final class d
                   d.b(str1, arrayOfLong2);
                   localObject3 = new com.tencent.mm.vfs.e(str2);
                   ((com.tencent.mm.vfs.e)localObject3).delete();
-                  ((com.tencent.mm.vfs.e)localObject1).ae((com.tencent.mm.vfs.e)localObject3);
+                  ((com.tencent.mm.vfs.e)localObject1).ag((com.tencent.mm.vfs.e)localObject3);
                   if (!paramBoolean) {
                     break label1146;
                   }
@@ -1690,21 +1681,21 @@ public final class d
                   localObject3 = "incremental";
                   break label1097;
                   label553:
-                  ac.i("MicroMsg.SubCoreDBBackup", "Database %s backup %s, elapsed %.2f seconds.", new Object[] { localObject3, localObject1, Float.valueOf((float)l1 / 1.0E+009F) });
-                  com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(181L, i, 1L, false);
-                  com.tencent.mm.plugin.report.service.h.wUl.f(11098, new Object[] { Integer.valueOf(j), String.format("%d|%d|%d|%d|%d|%s", new Object[] { Long.valueOf(l3), Long.valueOf(l4), Long.valueOf(l2), Integer.valueOf(d.b(d.this).statementCount()), Long.valueOf(l1 / 1000000L), d.this.oEa.format(new Date()) }) });
+                  ad.i("MicroMsg.SubCoreDBBackup", "Database %s backup %s, elapsed %.2f seconds.", new Object[] { localObject3, localObject1, Float.valueOf((float)l1 / 1.0E+009F) });
+                  com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(181L, i, 1L, false);
+                  com.tencent.mm.plugin.report.service.g.yhR.f(11098, new Object[] { Integer.valueOf(j), String.format("%d|%d|%d|%d|%d|%s", new Object[] { Long.valueOf(l3), Long.valueOf(l4), Long.valueOf(l2), Integer.valueOf(d.b(d.this).statementCount()), Long.valueOf(l1 / 1000000L), d.this.phA.format(new Date()) }) });
                   if (paramb != null) {
-                    paramb.AF(k);
+                    paramb.Bo(k);
                   }
                   d.b(d.this).release();
                   d.a(d.this, null);
                   localObject1 = new StringBuilder();
-                  com.tencent.mm.kernel.g.agS();
-                  i.aSh(com.tencent.mm.kernel.g.agR().ghC + "dbback");
+                  com.tencent.mm.kernel.g.ajD();
+                  com.tencent.mm.vfs.i.aYg(com.tencent.mm.kernel.g.ajC().gBm + "dbback");
                   localObject1 = str4;
                   localObject3 = new StringBuilder();
-                  com.tencent.mm.kernel.g.agS();
-                  i.lZ((String)localObject1, com.tencent.mm.kernel.g.agR().ghC + "dbback/EnMicroMsg.db.sm");
+                  com.tencent.mm.kernel.g.ajD();
+                  com.tencent.mm.vfs.i.mz((String)localObject1, com.tencent.mm.kernel.g.ajC().gBm + "dbback/EnMicroMsg.db.sm");
                   return;
                 }
                 locale.delete();
@@ -1728,7 +1719,7 @@ public final class d
                   continue;
                   localObject1 = "failed";
                   continue;
-                  com.tencent.mm.plugin.report.service.h localh;
+                  com.tencent.mm.plugin.report.service.g localg;
                   if (k != 0) {
                     break label1184;
                   }
@@ -1736,15 +1727,15 @@ public final class d
               }
               catch (Exception localException)
               {
-                ac.printErrStackTrace("MicroMsg.SubCoreDBBackup", localException, "Failed to start database backup, path: %s", new Object[] { str1 });
+                ad.printErrStackTrace("MicroMsg.SubCoreDBBackup", localException, "Failed to start database backup, path: %s", new Object[] { str1 });
                 if (paramb != null) {
-                  paramb.AF(-1);
+                  paramb.Bo(-1);
                 }
-                localh = com.tencent.mm.plugin.report.service.h.wUl;
+                localg = com.tencent.mm.plugin.report.service.g.yhR;
                 if (paramBoolean)
                 {
                   l1 = 18L;
-                  localh.idkeyStat(181L, l1, 1L, false);
+                  localg.idkeyStat(181L, l1, 1L, false);
                   return;
                 }
                 l1 = 21L;
@@ -1802,7 +1793,7 @@ public final class d
             }
           }
         };
-        this.oDS = true;
+        this.phs = true;
         com.tencent.mm.sdk.g.b.c(paramb, "DB Backup");
         AppMethodBeat.o(23096);
         return true;
@@ -1826,15 +1817,15 @@ public final class d
     //   3: monitorenter
     //   4: sipush 23099
     //   7: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: invokestatic 330	com/tencent/mm/model/az:ayM	()Lcom/tencent/mm/model/c;
+    //   10: invokestatic 330	com/tencent/mm/model/ba:aBQ	()Lcom/tencent/mm/model/c;
     //   13: astore 7
     //   15: aload_1
     //   16: astore 6
     //   18: aload_1
     //   19: ifnonnull +8 -> 27
-    //   22: invokestatic 558	com/tencent/mm/model/c:agu	()Ljava/lang/String;
+    //   22: invokestatic 558	com/tencent/mm/model/c:ajg	()Ljava/lang/String;
     //   25: astore 6
-    //   27: invokestatic 580	com/tencent/mm/sdk/platformtools/bs:eWf	()J
+    //   27: invokestatic 580	com/tencent/mm/sdk/platformtools/bt:flP	()J
     //   30: lstore 4
     //   32: aload 6
     //   34: ifnonnull +29 -> 63
@@ -1879,7 +1870,7 @@ public final class d
     //   102: lload 4
     //   104: invokestatic 239	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   107: aastore
-    //   108: invokestatic 388	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   108: invokestatic 388	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   111: lload 4
     //   113: l2f
     //   114: aload_1
@@ -1904,12 +1895,12 @@ public final class d
     //   152: astore_1
     //   153: aload_0
     //   154: iconst_1
-    //   155: putfield 88	com/tencent/mm/plugin/dbbackup/d:oDS	Z
-    //   158: invokestatic 586	com/tencent/mm/model/az:agU	()Lcom/tencent/mm/sdk/platformtools/ap;
-    //   161: invokevirtual 591	com/tencent/mm/sdk/platformtools/ap:Kw	()V
-    //   164: invokestatic 586	com/tencent/mm/model/az:agU	()Lcom/tencent/mm/sdk/platformtools/ap;
+    //   155: putfield 88	com/tencent/mm/plugin/dbbackup/d:phs	Z
+    //   158: invokestatic 586	com/tencent/mm/model/ba:ajF	()Lcom/tencent/mm/sdk/platformtools/aq;
+    //   161: invokevirtual 591	com/tencent/mm/sdk/platformtools/aq:LZ	()V
+    //   164: invokestatic 586	com/tencent/mm/model/ba:ajF	()Lcom/tencent/mm/sdk/platformtools/aq;
     //   167: aload_1
-    //   168: invokevirtual 598	com/tencent/mm/sdk/platformtools/ap:aA	(Ljava/lang/Runnable;)I
+    //   168: invokevirtual 598	com/tencent/mm/sdk/platformtools/aq:az	(Ljava/lang/Runnable;)I
     //   171: pop
     //   172: sipush 23099
     //   175: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -1937,7 +1928,7 @@ public final class d
   }
   
   /* Error */
-  public final boolean bXj()
+  public final boolean cbM()
   {
     // Byte code:
     //   0: iconst_0
@@ -1948,9 +1939,9 @@ public final class d
     //   7: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
     //   11: iconst_0
-    //   12: putfield 88	com/tencent/mm/plugin/dbbackup/d:oDS	Z
+    //   12: putfield 88	com/tencent/mm/plugin/dbbackup/d:phs	Z
     //   15: aload_0
-    //   16: getfield 172	com/tencent/mm/plugin/dbbackup/d:oDP	Lcom/tencent/wcdb/repair/BackupKit;
+    //   16: getfield 172	com/tencent/mm/plugin/dbbackup/d:php	Lcom/tencent/wcdb/repair/BackupKit;
     //   19: ifnonnull +13 -> 32
     //   22: sipush 23097
     //   25: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -1959,7 +1950,7 @@ public final class d
     //   30: iload_1
     //   31: ireturn
     //   32: aload_0
-    //   33: getfield 172	com/tencent/mm/plugin/dbbackup/d:oDP	Lcom/tencent/wcdb/repair/BackupKit;
+    //   33: getfield 172	com/tencent/mm/plugin/dbbackup/d:php	Lcom/tencent/wcdb/repair/BackupKit;
     //   36: invokevirtual 661	com/tencent/wcdb/repair/BackupKit:onCancel	()V
     //   39: iconst_1
     //   40: istore_1
@@ -1993,17 +1984,17 @@ public final class d
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(23101);
-    az.ayM();
-    Object localObject1 = com.tencent.mm.model.c.agA();
-    SQLiteDatabase localSQLiteDatabase = com.tencent.mm.model.c.agw().fdL();
-    this.oDX = ((ae)localObject1).YH(237569);
-    this.oDY = ((ae)localObject1).getInt(237570, 10);
+    ba.aBQ();
+    Object localObject1 = com.tencent.mm.model.c.ajl();
+    SQLiteDatabase localSQLiteDatabase = com.tencent.mm.model.c.getDataDB().ftT();
+    this.phx = ((ai)localObject1).aaQ(237569);
+    this.phy = ((ai)localObject1).getInt(237570, 10);
     Object localObject2;
-    if (((ae)localObject1).getInt(237571, 0) != 0)
+    if (((ai)localObject1).getInt(237571, 0) != 0)
     {
       paramBoolean = true;
-      this.oDZ = paramBoolean;
-      localObject1 = ai.getContext();
+      this.phz = paramBoolean;
+      localObject1 = aj.getContext();
       localObject2 = ((Context)localObject1).registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
       if (localObject2 == null) {
         break label564;
@@ -2014,25 +2005,25 @@ public final class d
       }
       paramBoolean = true;
       label112:
-      this.nSp = paramBoolean;
+      this.ovK = paramBoolean;
       label117:
-      this.nSq = ((PowerManager)((Context)localObject1).getSystemService("power")).isScreenOn();
-      this.oEb = new k.a()
+      this.ovL = ((PowerManager)((Context)localObject1).getSystemService("power")).isScreenOn();
+      this.phB = new k.a()
       {
         public final void a(String paramAnonymousString, m paramAnonymousm)
         {
           AppMethodBeat.i(23085);
           if ((paramAnonymousString != null) && (paramAnonymousString.length() > 0) && ("event_updated".equals(paramAnonymousString))) {
-            d.bXo();
+            d.cbR();
           }
           AppMethodBeat.o(23085);
         }
       };
-      com.tencent.mm.model.c.d.aAp().add(this.oEb);
-      bXk();
-      this.oEc = new com.tencent.mm.sdk.b.c() {};
-      a.GpY.c(this.oEc);
-      this.nSr = new BroadcastReceiver()
+      com.tencent.mm.model.c.d.aDs().add(this.phB);
+      cbN();
+      this.phC = new com.tencent.mm.sdk.b.c() {};
+      a.IbL.c(this.phC);
+      this.ovM = new BroadcastReceiver()
       {
         public final void onReceive(final Context paramAnonymousContext, Intent paramAnonymousIntent)
         {
@@ -2049,14 +2040,14 @@ public final class d
           }
           for (;;)
           {
-            ac.v("MicroMsg.SubCoreDBBackup", "Action received: %s, interactive: %s, charging: %s", new Object[] { paramAnonymousContext, Boolean.valueOf(d.i(d.this)), Boolean.valueOf(d.j(d.this)) });
+            ad.v("MicroMsg.SubCoreDBBackup", "Action received: %s, interactive: %s, charging: %s", new Object[] { paramAnonymousContext, Boolean.valueOf(d.i(d.this)), Boolean.valueOf(d.j(d.this)) });
             if ((!d.h(d.this)) || (d.k(d.this) != null) || (!d.j(d.this)) || (d.i(d.this))) {
               break label437;
             }
             if (System.currentTimeMillis() - d.l(d.this) >= 86400000L) {
               break label309;
             }
-            ac.d("MicroMsg.SubCoreDBBackup", "Last backup time not matched.");
+            ad.d("MicroMsg.SubCoreDBBackup", "Last backup time not matched.");
             AppMethodBeat.o(23089);
             return;
             if (!paramAnonymousContext.equals("android.intent.action.SCREEN_ON")) {
@@ -2093,25 +2084,25 @@ public final class d
           {
             paramAnonymousContext = new b()
             {
-              public final void AF(int paramAnonymous2Int)
+              public final void Bo(int paramAnonymous2Int)
               {
                 AppMethodBeat.i(23087);
                 d.d(d.this, false);
-                az.ayM();
-                ae localae = com.tencent.mm.model.c.agA();
+                ba.aBQ();
+                ai localai = com.tencent.mm.model.c.ajl();
                 d.c(d.this, System.currentTimeMillis());
                 if (paramAnonymous2Int == 0)
                 {
-                  localae.setLong(237569, d.l(d.this));
+                  localai.setLong(237569, d.l(d.this));
                   if (bool)
                   {
                     d.n(d.this);
-                    localae.setInt(237570, d.m(d.this));
+                    localai.setInt(237570, d.m(d.this));
                   }
                 }
                 for (;;)
                 {
-                  localae.faa();
+                  localai.fqc();
                   do
                   {
                     AppMethodBeat.o(23087);
@@ -2119,11 +2110,11 @@ public final class d
                     d.a(d.this, 0);
                     break;
                   } while (paramAnonymous2Int == 1);
-                  localae.setLong(237569, d.l(d.this));
+                  localai.setLong(237569, d.l(d.this));
                   if (bool)
                   {
                     d.a(d.this, 10);
-                    localae.setInt(237570, d.m(d.this));
+                    localai.setInt(237570, d.m(d.this));
                   }
                 }
               }
@@ -2134,48 +2125,48 @@ public final class d
               {
                 AppMethodBeat.i(23088);
                 d.a(d.this, null);
-                az.ayM();
-                long l1 = new com.tencent.mm.vfs.e(com.tencent.mm.model.c.agy()).length();
-                long l2 = bs.eWf();
+                ba.aBQ();
+                long l1 = new com.tencent.mm.vfs.e(com.tencent.mm.model.c.ajj()).length();
+                long l2 = bt.flP();
                 if (l1 == 0L)
                 {
-                  ac.i("MicroMsg.SubCoreDBBackup", "Invalid database size, backup canceled.");
+                  ad.i("MicroMsg.SubCoreDBBackup", "Invalid database size, backup canceled.");
                   AppMethodBeat.o(23088);
                   return;
                 }
                 if ((l1 > d.f(d.this)) || (l1 > l2))
                 {
-                  ac.i("MicroMsg.SubCoreDBBackup", "Not enough disk space, backup canceled.");
-                  com.tencent.mm.plugin.report.service.h.wUl.f(11098, new Object[] { Integer.valueOf(10008), String.format("%d|%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) }) });
+                  ad.i("MicroMsg.SubCoreDBBackup", "Not enough disk space, backup canceled.");
+                  com.tencent.mm.plugin.report.service.g.yhR.f(11098, new Object[] { Integer.valueOf(10008), String.format("%d|%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) }) });
                   AppMethodBeat.o(23088);
                   return;
                 }
                 d.d(d.this, d.this.a(bool, paramAnonymousContext));
                 if (d.o(d.this)) {
-                  ac.i("MicroMsg.SubCoreDBBackup", "Auto database backup started.");
+                  ad.i("MicroMsg.SubCoreDBBackup", "Auto database backup started.");
                 }
                 AppMethodBeat.o(23088);
               }
             });
-            az.agU().m(d.k(d.this), d.g(d.this));
-            ac.i("MicroMsg.SubCoreDBBackup", "Auto database backup scheduled.");
-            com.tencent.mm.plugin.report.service.h.wUl.f(11098, new Object[] { Integer.valueOf(10009), d.this.oEa.format(new Date()) });
+            ba.ajF().n(d.k(d.this), d.g(d.this));
+            ad.i("MicroMsg.SubCoreDBBackup", "Auto database backup scheduled.");
+            com.tencent.mm.plugin.report.service.g.yhR.f(11098, new Object[] { Integer.valueOf(10009), d.this.phA.format(new Date()) });
             AppMethodBeat.o(23089);
             return;
           }
           label437:
           if (d.k(d.this) != null)
           {
-            az.agU().cOC().removeCallbacks(d.k(d.this));
+            ba.ajF().cWY().removeCallbacks(d.k(d.this));
             d.a(d.this, null);
-            ac.i("MicroMsg.SubCoreDBBackup", "Auto database backup canceled.");
-            com.tencent.mm.plugin.report.service.h.wUl.f(11098, new Object[] { Integer.valueOf(10010), d.this.oEa.format(new Date()) });
+            ad.i("MicroMsg.SubCoreDBBackup", "Auto database backup canceled.");
+            com.tencent.mm.plugin.report.service.g.yhR.f(11098, new Object[] { Integer.valueOf(10010), d.this.phA.format(new Date()) });
             AppMethodBeat.o(23089);
             return;
           }
           if (d.o(d.this))
           {
-            d.this.bXj();
+            d.this.cbM();
             d.d(d.this, false);
           }
           AppMethodBeat.o(23089);
@@ -2186,19 +2177,19 @@ public final class d
       ((IntentFilter)localObject2).addAction("android.intent.action.SCREEN_OFF");
       ((IntentFilter)localObject2).addAction("android.intent.action.ACTION_POWER_CONNECTED");
       ((IntentFilter)localObject2).addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
-      ((Context)localObject1).registerReceiver(this.nSr, (IntentFilter)localObject2);
+      ((Context)localObject1).registerReceiver(this.ovM, (IntentFilter)localObject2);
       com.tencent.mm.pluginsdk.cmd.b.a(new c(this), new String[] { "//recover-old", "//recover", "//post-recover", "//backupdb", "//recoverdb", "//repairdb", "//corruptdb", "//iotracedb", "//recover-status", "//dbbusy", "//fixdb" });
-      if (!this.oDU) {
+      if (!this.phu) {
         break label572;
       }
       localObject1 = "enabled";
       label344:
-      if (!this.nSq) {
+      if (!this.ovL) {
         break label579;
       }
       localObject2 = "";
       label356:
-      if (!this.nSp) {
+      if (!this.ovK) {
         break label587;
       }
     }
@@ -2209,22 +2200,22 @@ public final class d
     label587:
     for (String str = "";; str = " not")
     {
-      ac.i("MicroMsg.SubCoreDBBackup", "Auto database backup %s. Device status:%s interactive,%s charging.", new Object[] { localObject1, localObject2, str });
+      ad.i("MicroMsg.SubCoreDBBackup", "Auto database backup %s. Device status:%s interactive,%s charging.", new Object[] { localObject1, localObject2, str });
       b(localSQLiteDatabase);
-      com.tencent.mm.plugin.dbbackup.a.b.Wr(com.tencent.mm.compatible.deviceinfo.q.cF(true));
-      i.deleteFile(com.tencent.mm.kernel.g.agR().ghC + "dbback/EnMicroMsg.db.bak");
-      i.deleteFile(com.tencent.mm.kernel.g.agR().ghC + "dbback/corrupted/EnMicroMsg.db.bak");
-      i.deleteFile(com.tencent.mm.kernel.g.agR().cachePath + "EnMicroMsg.db.bak");
-      i.deleteFile(com.tencent.mm.kernel.g.agR().cachePath + "corrupted/EnMicroMsg.db.bak");
-      localObject1 = com.tencent.mm.model.c.agv();
-      az.agU().m(new d.6(this, (String)localObject1), 60000L);
+      com.tencent.mm.plugin.dbbackup.a.b.ZY(com.tencent.mm.compatible.deviceinfo.q.cH(true));
+      com.tencent.mm.vfs.i.deleteFile(com.tencent.mm.kernel.g.ajC().gBm + "dbback/EnMicroMsg.db.bak");
+      com.tencent.mm.vfs.i.deleteFile(com.tencent.mm.kernel.g.ajC().gBm + "dbback/corrupted/EnMicroMsg.db.bak");
+      com.tencent.mm.vfs.i.deleteFile(com.tencent.mm.kernel.g.ajC().cachePath + "EnMicroMsg.db.bak");
+      com.tencent.mm.vfs.i.deleteFile(com.tencent.mm.kernel.g.ajC().cachePath + "corrupted/EnMicroMsg.db.bak");
+      localObject1 = com.tencent.mm.model.c.ajh();
+      ba.ajF().n(new d.6(this, (String)localObject1), 60000L);
       AppMethodBeat.o(23101);
       return;
       paramBoolean = false;
       break;
       paramBoolean = false;
       break label112;
-      this.nSp = false;
+      this.ovK = false;
       break label117;
       localObject1 = "disabled";
       break label344;
@@ -2236,24 +2227,24 @@ public final class d
   public final void onAccountRelease()
   {
     AppMethodBeat.i(23102);
-    bXj();
-    this.oDT = false;
-    if (this.nSs != null)
+    cbM();
+    this.pht = false;
+    if (this.ovN != null)
     {
-      az.agU().cOC().removeCallbacks(this.nSs);
-      this.nSs = null;
+      ba.ajF().cWY().removeCallbacks(this.ovN);
+      this.ovN = null;
     }
-    if (this.oEc != null)
+    if (this.phC != null)
     {
-      a.GpY.d(this.oEc);
-      this.oEc = null;
+      a.IbL.d(this.phC);
+      this.phC = null;
     }
-    if (this.nSr != null)
+    if (this.ovM != null)
     {
-      ai.getContext().unregisterReceiver(this.nSr);
-      this.nSr = null;
+      aj.getContext().unregisterReceiver(this.ovM);
+      this.ovM = null;
     }
-    com.tencent.mm.pluginsdk.cmd.b.Q(new String[] { "//recover-old", "//recover", "//post-recover", "//backupdb", "//recoverdb", "//repairdb", "//corruptdb", "//iotracedb", "//recover-status", "//dbbusy", "//fixdb" });
+    com.tencent.mm.pluginsdk.cmd.b.S(new String[] { "//recover-old", "//recover", "//post-recover", "//backupdb", "//recoverdb", "//repairdb", "//corruptdb", "//iotracedb", "//recover-status", "//dbbusy", "//fixdb" });
     AppMethodBeat.o(23102);
   }
   
@@ -2261,7 +2252,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.dbbackup.d
  * JD-Core Version:    0.7.0.1
  */

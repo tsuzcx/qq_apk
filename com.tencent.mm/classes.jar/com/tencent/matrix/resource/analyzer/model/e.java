@@ -5,22 +5,22 @@ import java.io.Serializable;
 public final class e
   implements Serializable
 {
-  public final String cvQ;
-  public final boolean cvR;
-  public final String cvS;
+  public final String cGL;
+  public final boolean cGM;
+  public final String cGN;
   public final String name;
   
   e(d.c paramc)
   {
     this.name = paramc.name;
-    this.cvQ = paramc.cvQ;
-    this.cvR = paramc.cvR;
-    this.cvS = paramc.cvS;
+    this.cGL = paramc.cGL;
+    this.cGM = paramc.cGM;
+    this.cGN = paramc.cGN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.e
  * JD-Core Version:    0.7.0.1
  */

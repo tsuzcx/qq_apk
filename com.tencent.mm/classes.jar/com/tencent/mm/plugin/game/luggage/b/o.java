@@ -1,69 +1,60 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.luggage.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.downloader_app.api.a.c;
-import com.tencent.mm.plugin.downloader_app.api.c;
-import com.tencent.mm.plugin.game.luggage.d.f;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.gamelife.a.a;
+import com.tencent.mm.plugin.gamelife.a.b.c;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Map;
 import org.json.JSONObject;
 
 public class o
-  extends bn<f>
+  extends br<com.tencent.mm.plugin.game.luggage.f.g>
 {
-  public final void a(Context paramContext, String paramString, final bn.a parama)
+  public final void a(Context paramContext, String paramString, final bq.a parama)
   {
-    AppMethodBeat.i(83076);
-    try
+    AppMethodBeat.i(211608);
+    ad.i("MicroMsg.GameLife.JsApiInitGameLifeContact", "invokeInMM");
+    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.Pe(paramString);
+    if (paramContext == null)
     {
-      paramString = new JSONObject(paramString);
-      if (paramString != null)
-      {
-        paramString = paramString.optString("appId");
-        Intent localIntent = new Intent();
-        localIntent.putExtra("appId", paramString);
-        localIntent.putExtra("view_task", true);
-        localIntent.addFlags(268435456);
-        ((c)g.ab(c.class)).a(paramContext, localIntent, new a.c()
-        {
-          public final void beX()
-          {
-            AppMethodBeat.i(83075);
-            parama.f(null, null);
-            AppMethodBeat.o(83075);
-          }
-        });
-        AppMethodBeat.o(83076);
-        return;
-      }
+      parama.f("invalid_params", null);
+      AppMethodBeat.o(211608);
+      return;
     }
-    catch (Exception paramString)
+    paramContext = paramContext.optString("userName");
+    ad.i("MicroMsg.GameLife.JsApiInitGameLifeContact", "userName:[%s]", new Object[] { paramContext });
+    if (bt.isNullOrNil(paramContext))
     {
-      for (;;)
-      {
-        ac.printErrStackTrace("MicroMsg.JsApiJumpDownloaderWidget", paramString, "", new Object[0]);
-        paramString = null;
-        continue;
-        paramString = "";
-      }
+      parama.f("null_data", null);
+      AppMethodBeat.o(211608);
+      return;
     }
+    ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.gamelife.a.b.class)).a(paramContext, new b.c()
+    {
+      public final void ab(Map<String, a> paramAnonymousMap)
+      {
+        AppMethodBeat.i(211607);
+        parama.f(null, null);
+        AppMethodBeat.o(211607);
+      }
+    });
+    AppMethodBeat.o(211608);
   }
   
-  public final void b(a<f>.a parama) {}
+  public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.game.luggage.f.g>.a paramb) {}
   
-  public final int bYk()
+  public final int ccO()
   {
-    return 2;
+    return 1;
   }
   
   public final String name()
   {
-    return "jumpDownloaderWidget";
+    return "initGameLifeContact";
   }
 }
 

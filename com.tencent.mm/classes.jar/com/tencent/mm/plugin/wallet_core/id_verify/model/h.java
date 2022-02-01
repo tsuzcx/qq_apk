@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.wallet_core.id_verify.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import org.json.JSONObject;
 
 public final class h
   extends m
 {
-  public int BsA;
-  public long BsB;
-  public String Bsw;
-  public String Bsx;
-  public String Bsy;
-  public String Bsz;
+  public String CSL;
+  public String CSM;
+  public String CSN;
+  public String CSO;
+  public int CSP;
+  public long CSQ;
   public String title;
   
   public final int getFuncId()
@@ -38,19 +38,19 @@ public final class h
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70153);
-    ac.i("MicroMsg.NetSceneRealnameGetDuty", "errCode=" + paramInt + ";errMsg=" + paramString);
+    ad.i("MicroMsg.NetSceneRealnameGetDuty", "errCode=" + paramInt + ";errMsg=" + paramString);
     if ((paramInt == 0) && (paramJSONObject != null))
     {
-      this.Bsw = paramJSONObject.optString("agreed_flag", "0");
+      this.CSL = paramJSONObject.optString("agreed_flag", "0");
       this.title = paramJSONObject.optString("title", "");
-      this.Bsx = paramJSONObject.optString("service_protocol_wording", "");
-      this.Bsy = paramJSONObject.optString("service_protocol_url", "");
-      this.Bsz = paramJSONObject.optString("button_wording", "");
-      this.BsB = paramJSONObject.optLong("delay_expired_time", 0L);
-      if (this.BsB > 0L)
+      this.CSM = paramJSONObject.optString("service_protocol_wording", "");
+      this.CSN = paramJSONObject.optString("service_protocol_url", "");
+      this.CSO = paramJSONObject.optString("button_wording", "");
+      this.CSQ = paramJSONObject.optLong("delay_expired_time", 0L);
+      if (this.CSQ > 0L)
       {
-        g.agS();
-        g.agR().agA().set(ah.a.GIA, Long.valueOf(System.currentTimeMillis() + this.BsB * 1000L));
+        g.ajD();
+        g.ajC().ajl().set(al.a.IuS, Long.valueOf(System.currentTimeMillis() + this.CSQ * 1000L));
       }
     }
     AppMethodBeat.o(70153);
@@ -58,7 +58,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,87 +1,107 @@
 package com.tencent.mm.plugin.appbrand.i;
 
+import android.graphics.SurfaceTexture;
+import com.tencent.luggage.xweb_ext.extendplugin.component.video.c;
+import com.tencent.luggage.xweb_ext.extendplugin.component.video.c.12;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.xweb.skia_canvas.external_texture.ISkiaCanvasExternalTextureHandler;
+import com.tencent.xweb.skia_canvas.external_texture.SkiaCanvasExternalTexturePlugin.PluginLoadResult;
+import com.tencent.xweb.skia_canvas.external_texture.SkiaCanvasExternalTexturePluginWithSurfaceTextureDelegate;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public final class a
+public class a
+  extends SkiaCanvasExternalTexturePluginWithSurfaceTextureDelegate
 {
-  public static void a(boolean paramBoolean, JSONObject paramJSONObject)
+  private static a kjm;
+  private Map<Integer, c> kjn;
+  
+  private a()
   {
-    AppMethodBeat.i(139373);
-    c(paramJSONObject, "useXWebVideo", Boolean.valueOf(paramBoolean));
-    c(paramJSONObject, "XWebVideoMinVersion", Integer.valueOf(300));
-    AppMethodBeat.o(139373);
+    AppMethodBeat.i(139394);
+    this.kjn = new ConcurrentHashMap();
+    AppMethodBeat.o(139394);
   }
   
-  public static void b(boolean paramBoolean, JSONObject paramJSONObject)
+  public static a bgy()
   {
-    AppMethodBeat.i(139374);
-    c(paramJSONObject, "useXWebMap", Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(139374);
-  }
-  
-  private static void c(JSONObject paramJSONObject, String paramString, Object paramObject)
-  {
-    AppMethodBeat.i(139381);
+    AppMethodBeat.i(139395);
+    if (kjm == null) {}
     try
     {
-      paramJSONObject.put(paramString, paramObject);
-      AppMethodBeat.o(139381);
+      if (kjm == null) {
+        kjm = new a();
+      }
+      a locala = kjm;
+      AppMethodBeat.o(139395);
+      return locala;
+    }
+    finally
+    {
+      AppMethodBeat.o(139395);
+    }
+  }
+  
+  public final void a(int paramInt1, c paramc, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3, String paramString)
+  {
+    AppMethodBeat.i(177195);
+    if ((paramSurfaceTexture != null) && ((paramInt2 != 0) || (paramInt3 != 0)))
+    {
+      ad.i("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "registerMediaPlayer, id:%s, width:%s, height:%s, surface:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramSurfaceTexture.hashCode()) });
+      this.kjn.put(Integer.valueOf(paramInt1), paramc);
+      registerInstance(paramInt1, paramString, paramInt2, paramInt3, paramSurfaceTexture);
+    }
+    AppMethodBeat.o(177195);
+  }
+  
+  public void onPluginInstanceDestroy(ISkiaCanvasExternalTextureHandler paramISkiaCanvasExternalTextureHandler, int paramInt, String paramString)
+  {
+    AppMethodBeat.i(177198);
+    ad.i("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "onPluginInstanceDestroy, id:%s appTag:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    super.onPluginInstanceDestroy(paramISkiaCanvasExternalTextureHandler, paramInt, paramString);
+    AppMethodBeat.o(177198);
+  }
+  
+  public SkiaCanvasExternalTexturePlugin.PluginLoadResult onPluginInstanceLoad(ISkiaCanvasExternalTextureHandler paramISkiaCanvasExternalTextureHandler, String paramString1, int paramInt, String paramString2)
+  {
+    AppMethodBeat.i(177197);
+    ad.i("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "onPluginInstanceLoad, type:%s, id:%s appTag:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+    paramISkiaCanvasExternalTextureHandler = super.onPluginInstanceLoad(paramISkiaCanvasExternalTextureHandler, paramString1, paramInt, paramString2);
+    AppMethodBeat.o(177197);
+    return paramISkiaCanvasExternalTextureHandler;
+  }
+  
+  public void replaceDisplaySurface(int paramInt, String paramString, SurfaceTexture paramSurfaceTexture)
+  {
+    AppMethodBeat.i(177196);
+    paramString = (c)this.kjn.get(Integer.valueOf(paramInt));
+    if ((paramString != null) && (paramSurfaceTexture != null))
+    {
+      ad.w("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "replaceDisplaySurface, surface:%s", new Object[] { Integer.valueOf(paramSurfaceTexture.hashCode()) });
+      paramString.k(new c.12(paramString, paramSurfaceTexture));
+      AppMethodBeat.o(177196);
       return;
     }
-    catch (Exception paramJSONObject)
+    ad.w("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "replaceDisplaySurface, video plugin handler or surface texture is null");
+    AppMethodBeat.o(177196);
+  }
+  
+  public boolean supportType(String paramString)
+  {
+    AppMethodBeat.i(139398);
+    if (paramString.equals("video"))
     {
-      ac.e("MicroMsg.SameLayer.AppBrandExtendPluginUtil", "build json object fail", new Object[] { paramJSONObject });
-      AppMethodBeat.o(139381);
+      AppMethodBeat.o(139398);
+      return true;
     }
-  }
-  
-  public static void c(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(139376);
-    c(paramJSONObject, "useXWebTextarea", Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(139376);
-  }
-  
-  public static void d(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(139377);
-    c(paramJSONObject, "supportXWebTextarea", Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(139377);
-  }
-  
-  public static void e(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(139378);
-    c(paramJSONObject, "supportXWebTouch", Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(139378);
-  }
-  
-  public static void f(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(139379);
-    c(paramJSONObject, "useXWebLive", Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(139379);
-  }
-  
-  public static void g(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(139380);
-    c(paramJSONObject, "useXWebCamera", Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(139380);
-  }
-  
-  public static void h(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(206667);
-    c(paramJSONObject, "abtestXWebCameraEnable", Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(206667);
+    AppMethodBeat.o(139398);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.i.a
  * JD-Core Version:    0.7.0.1
  */

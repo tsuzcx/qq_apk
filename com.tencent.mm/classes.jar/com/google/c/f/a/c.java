@@ -4,29 +4,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static final int[] bKF;
-  private static final c[] bKG;
-  public final int bKH;
-  private final int[] bKI;
-  private final b[] bKJ;
-  public final int bKK;
+  private static final int[] bUS;
+  private static final c[] bUT;
+  public final int bUU;
+  private final int[] bUV;
+  private final b[] bUW;
+  public final int bUX;
   
   static
   {
     AppMethodBeat.i(12313);
-    bKF = new int[] { 31892, 34236, 39577, 42195, 48118, 51042, 55367, 58893, 63784, 68472, 70749, 76311, 79154, 84390, 87683, 92361, 96236, 102084, 102881, 110507, 110734, 117786, 119615, 126325, 127568, 133589, 136944, 141498, 145311, 150283, 152622, 158308, 161089, 167017 };
-    bKG = ym();
+    bUS = new int[] { 31892, 34236, 39577, 42195, 48118, 51042, 55367, 58893, 63784, 68472, 70749, 76311, 79154, 84390, 87683, 92361, 96236, 102084, 102881, 110507, 110734, 117786, 119615, 126325, 127568, 133589, 136944, 141498, 145311, 150283, 152622, 158308, 161089, 167017 };
+    bUT = zJ();
     AppMethodBeat.o(12313);
   }
   
   private c(int paramInt, int[] paramArrayOfInt, b... paramVarArgs)
   {
     AppMethodBeat.i(12308);
-    this.bKH = paramInt;
-    this.bKI = paramArrayOfInt;
-    this.bKJ = paramVarArgs;
-    int j = paramVarArgs[0].bKM;
-    paramArrayOfInt = paramVarArgs[0].bKN;
+    this.bUU = paramInt;
+    this.bUV = paramArrayOfInt;
+    this.bUW = paramVarArgs;
+    int j = paramVarArgs[0].bUZ;
+    paramArrayOfInt = paramVarArgs[0].bVa;
     int k = paramArrayOfInt.length;
     int i = 0;
     int m;
@@ -35,14 +35,14 @@ public final class c
     {
       paramVarArgs = paramArrayOfInt[i];
       m = paramVarArgs.count;
-      n = paramVarArgs.bKL;
+      n = paramVarArgs.bUY;
       i += 1;
     }
-    this.bKK = paramInt;
+    this.bUX = paramInt;
     AppMethodBeat.o(12308);
   }
   
-  public static c fW(int paramInt)
+  public static c fZ(int paramInt)
   {
     AppMethodBeat.i(12310);
     if ((paramInt <= 0) || (paramInt > 40))
@@ -51,12 +51,12 @@ public final class c
       AppMethodBeat.o(12310);
       throw ((Throwable)localObject);
     }
-    Object localObject = bKG[(paramInt - 1)];
+    Object localObject = bUT[(paramInt - 1)];
     AppMethodBeat.o(12310);
     return localObject;
   }
   
-  private static c[] ym()
+  private static c[] zJ()
   {
     AppMethodBeat.i(12312);
     Object localObject1 = new b(7, new a[] { new a(1, 19) });
@@ -266,7 +266,7 @@ public final class c
   public final b a(a parama)
   {
     AppMethodBeat.i(12309);
-    parama = this.bKJ[parama.ordinal()];
+    parama = this.bUW[parama.ordinal()];
     AppMethodBeat.o(12309);
     return parama;
   }
@@ -274,37 +274,37 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(12311);
-    int i = this.bKH;
+    int i = this.bUU;
     AppMethodBeat.o(12311);
     return String.valueOf(i);
   }
   
   public static final class a
   {
-    final int bKL;
+    final int bUY;
     final int count;
     
     a(int paramInt1, int paramInt2)
     {
       this.count = paramInt1;
-      this.bKL = paramInt2;
+      this.bUY = paramInt2;
     }
   }
   
   public static final class b
   {
-    final int bKM;
-    final c.a[] bKN;
+    final int bUZ;
+    final c.a[] bVa;
     
     b(int paramInt, c.a... paramVarArgs)
     {
-      this.bKM = paramInt;
-      this.bKN = paramVarArgs;
+      this.bUZ = paramInt;
+      this.bVa = paramVarArgs;
     }
     
-    public final int yn()
+    public final int zK()
     {
-      c.a[] arrayOfa = this.bKN;
+      c.a[] arrayOfa = this.bVa;
       int k = arrayOfa.length;
       int j = 0;
       int m;
@@ -316,11 +316,11 @@ public final class c
       return i;
     }
     
-    public final int yo()
+    public final int zL()
     {
       AppMethodBeat.i(12241);
-      int i = this.bKM;
-      int j = yn();
+      int i = this.bUZ;
+      int j = zK();
       AppMethodBeat.o(12241);
       return i * j;
     }

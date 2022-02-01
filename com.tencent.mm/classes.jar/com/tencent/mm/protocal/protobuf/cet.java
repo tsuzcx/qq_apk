@@ -1,95 +1,86 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class cet
-  extends cpx
+  extends com.tencent.mm.bx.a
 {
-  public int EfV;
-  public int tks;
+  public String bVF;
+  public int status;
+  public String userName;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91600);
+    AppMethodBeat.i(152636);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.userName != null) {
+        paramVarArgs.d(1, this.userName);
       }
-      paramVarArgs.aR(2, this.tks);
-      paramVarArgs.aR(3, this.EfV);
-      AppMethodBeat.o(91600);
+      paramVarArgs.aS(2, this.status);
+      if (this.bVF != null) {
+        paramVarArgs.d(3, this.bVF);
+      }
+      AppMethodBeat.o(152636);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label402;
+      if (this.userName == null) {
+        break label318;
       }
     }
-    label402:
-    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label318:
+    for (paramInt = f.a.a.b.b.a.e(1, this.userName) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bx(2, this.tks);
-      int j = f.a.a.b.b.a.bx(3, this.EfV);
-      AppMethodBeat.o(91600);
-      return paramInt + i + j;
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.status);
+      paramInt = i;
+      if (this.bVF != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.bVF);
+      }
+      AppMethodBeat.o(152636);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(91600);
+        AppMethodBeat.o(152636);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         cet localcet = (cet)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91600);
+          AppMethodBeat.o(152636);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcet.BaseRequest = ((iv)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(91600);
+          localcet.userName = locala.NPN.readString();
+          AppMethodBeat.o(152636);
           return 0;
         case 2: 
-          localcet.tks = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(91600);
+          localcet.status = locala.NPN.zc();
+          AppMethodBeat.o(152636);
           return 0;
         }
-        localcet.EfV = ((f.a.a.a.a)localObject1).LVo.xF();
-        AppMethodBeat.o(91600);
+        localcet.bVF = locala.NPN.readString();
+        AppMethodBeat.o(152636);
         return 0;
       }
-      AppMethodBeat.o(91600);
+      AppMethodBeat.o(152636);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cet
  * JD-Core Version:    0.7.0.1
  */

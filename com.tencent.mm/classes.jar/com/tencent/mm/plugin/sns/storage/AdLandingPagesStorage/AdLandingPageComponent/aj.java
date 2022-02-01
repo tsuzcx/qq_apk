@@ -3,8 +3,12 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 public final class aj
   extends x
 {
-  public String url;
-  public String yjf;
+  public String zAV;
+  public int zAW;
+  public ag zAb;
+  public String zzS;
+  public af zzX;
+  public boolean zzY;
 }
 
 

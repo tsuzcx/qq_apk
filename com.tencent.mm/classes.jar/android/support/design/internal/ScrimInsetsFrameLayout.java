@@ -18,9 +18,9 @@ import android.widget.FrameLayout;
 public class ScrimInsetsFrameLayout
   extends FrameLayout
 {
-  Drawable jt;
-  Rect ju;
-  private Rect jv = new Rect();
+  Drawable lk;
+  Rect ll;
+  private Rect lm = new Rect();
   
   public ScrimInsetsFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,23 +31,23 @@ public class ScrimInsetsFrameLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = f.a(paramContext, paramAttributeSet, a.a.ScrimInsetsFrameLayout, paramInt, 2131821639, new int[0]);
-    this.jt = paramContext.getDrawable(0);
+    this.lk = paramContext.getDrawable(0);
     paramContext.recycle();
     setWillNotDraw(true);
     t.a(this, new p()
     {
       public final ab a(View paramAnonymousView, ab paramAnonymousab)
       {
-        if (ScrimInsetsFrameLayout.this.ju == null) {
-          ScrimInsetsFrameLayout.this.ju = new Rect();
+        if (ScrimInsetsFrameLayout.this.ll == null) {
+          ScrimInsetsFrameLayout.this.ll = new Rect();
         }
-        ScrimInsetsFrameLayout.this.ju.set(paramAnonymousab.getSystemWindowInsetLeft(), paramAnonymousab.getSystemWindowInsetTop(), paramAnonymousab.getSystemWindowInsetRight(), paramAnonymousab.getSystemWindowInsetBottom());
+        ScrimInsetsFrameLayout.this.ll.set(paramAnonymousab.getSystemWindowInsetLeft(), paramAnonymousab.getSystemWindowInsetTop(), paramAnonymousab.getSystemWindowInsetRight(), paramAnonymousab.getSystemWindowInsetBottom());
         ScrimInsetsFrameLayout.this.a(paramAnonymousab);
         paramAnonymousView = ScrimInsetsFrameLayout.this;
         if (Build.VERSION.SDK_INT >= 20)
         {
-          bool = ((WindowInsets)paramAnonymousab.Pk).hasSystemWindowInsets();
-          if ((bool) && (ScrimInsetsFrameLayout.this.jt != null)) {
+          bool = ((WindowInsets)paramAnonymousab.QZ).hasSystemWindowInsets();
+          if ((bool) && (ScrimInsetsFrameLayout.this.lk != null)) {
             break label120;
           }
         }
@@ -56,7 +56,7 @@ public class ScrimInsetsFrameLayout
         {
           paramAnonymousView.setWillNotDraw(bool);
           t.W(ScrimInsetsFrameLayout.this);
-          return paramAnonymousab.fk();
+          return paramAnonymousab.fB();
           bool = false;
           break;
         }
@@ -71,22 +71,22 @@ public class ScrimInsetsFrameLayout
     super.draw(paramCanvas);
     int i = getWidth();
     int j = getHeight();
-    if ((this.ju != null) && (this.jt != null))
+    if ((this.ll != null) && (this.lk != null))
     {
       int k = paramCanvas.save();
       paramCanvas.translate(getScrollX(), getScrollY());
-      this.jv.set(0, 0, i, this.ju.top);
-      this.jt.setBounds(this.jv);
-      this.jt.draw(paramCanvas);
-      this.jv.set(0, j - this.ju.bottom, i, j);
-      this.jt.setBounds(this.jv);
-      this.jt.draw(paramCanvas);
-      this.jv.set(0, this.ju.top, this.ju.left, j - this.ju.bottom);
-      this.jt.setBounds(this.jv);
-      this.jt.draw(paramCanvas);
-      this.jv.set(i - this.ju.right, this.ju.top, i, j - this.ju.bottom);
-      this.jt.setBounds(this.jv);
-      this.jt.draw(paramCanvas);
+      this.lm.set(0, 0, i, this.ll.top);
+      this.lk.setBounds(this.lm);
+      this.lk.draw(paramCanvas);
+      this.lm.set(0, j - this.ll.bottom, i, j);
+      this.lk.setBounds(this.lm);
+      this.lk.draw(paramCanvas);
+      this.lm.set(0, this.ll.top, this.ll.left, j - this.ll.bottom);
+      this.lk.setBounds(this.lm);
+      this.lk.draw(paramCanvas);
+      this.lm.set(i - this.ll.right, this.ll.top, i, j - this.ll.bottom);
+      this.lk.setBounds(this.lm);
+      this.lk.draw(paramCanvas);
       paramCanvas.restoreToCount(k);
     }
   }
@@ -94,16 +94,16 @@ public class ScrimInsetsFrameLayout
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.jt != null) {
-      this.jt.setCallback(this);
+    if (this.lk != null) {
+      this.lk.setCallback(this);
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jt != null) {
-      this.jt.setCallback(null);
+    if (this.lk != null) {
+      this.lk.setCallback(null);
     }
   }
 }

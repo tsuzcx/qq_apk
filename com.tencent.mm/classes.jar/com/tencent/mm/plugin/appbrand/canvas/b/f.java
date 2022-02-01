@@ -25,7 +25,7 @@ public final class f
     return true;
   }
   
-  public final BasePathActionArg baa()
+  public final BasePathActionArg bdz()
   {
     AppMethodBeat.i(145368);
     PathClosePathActionArg localPathClosePathActionArg = new PathClosePathActionArg();

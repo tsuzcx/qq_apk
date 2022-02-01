@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.webview.luggage.a;
 
-import com.tencent.luggage.d.c;
 import org.json.JSONObject;
 
 public final class d {}

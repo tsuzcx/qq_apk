@@ -13,7 +13,7 @@ public class ReaderMixerMode
   
   public ReaderMixerMode(Context paramContext, ITbsReader paramITbsReader)
   {
-    AppMethodBeat.i(192375);
+    AppMethodBeat.i(190614);
     this.a = null;
     this.b = paramContext;
     if (paramITbsReader != null) {
@@ -22,53 +22,53 @@ public class ReaderMixerMode
     if (this.a != null) {
       this.a.init(paramContext);
     }
-    AppMethodBeat.o(192375);
+    AppMethodBeat.o(190614);
   }
   
   public void closeFile()
   {
-    AppMethodBeat.i(192378);
+    AppMethodBeat.i(190617);
     if (this.a != null) {
       this.a.closeFile();
     }
-    AppMethodBeat.o(192378);
+    AppMethodBeat.o(190617);
   }
   
   public void destroy()
   {
-    AppMethodBeat.i(192379);
+    AppMethodBeat.i(190618);
     if (this.a != null) {
       this.a.destroy();
     }
     this.a = null;
     this.b = null;
-    AppMethodBeat.o(192379);
+    AppMethodBeat.o(190618);
   }
   
   public void onSizeChanged(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192377);
+    AppMethodBeat.i(190616);
     if (this.a != null) {
       this.a.onSizeChanged(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
     }
-    AppMethodBeat.o(192377);
+    AppMethodBeat.o(190616);
   }
   
   public void onSizeChanged(Integer paramInteger1, Integer paramInteger2)
   {
-    AppMethodBeat.i(192380);
+    AppMethodBeat.i(190619);
     if (this.a != null) {
       this.a.onSizeChanged(paramInteger1, paramInteger2);
     }
-    AppMethodBeat.o(192380);
+    AppMethodBeat.o(190619);
   }
   
   public int openFile(Bundle paramBundle, FrameLayout paramFrameLayout)
   {
-    AppMethodBeat.i(192376);
+    AppMethodBeat.i(190615);
     if ((this.a == null) || (paramBundle == null))
     {
-      AppMethodBeat.o(192376);
+      AppMethodBeat.o(190615);
       return -1;
     }
     int j = this.a.openFile(this.b, paramBundle, paramFrameLayout, null);
@@ -77,7 +77,7 @@ public class ReaderMixerMode
       i = 1101;
     }
     ReaderEngine.getInstance().report(i, "openFile:".concat(String.valueOf(j)), null);
-    AppMethodBeat.o(192376);
+    AppMethodBeat.o(190615);
     return j;
   }
 }

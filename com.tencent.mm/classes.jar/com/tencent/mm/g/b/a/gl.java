@@ -6,260 +6,170 @@ import com.tencent.mm.plugin.report.a;
 public final class gl
   extends a
 {
-  private String dFY;
-  private String dFe;
-  private int dHw;
-  private String dJm;
-  private long ebY;
-  private long ebZ;
-  private String eca;
-  private String ecb;
-  private int ecc;
-  private int ecd;
-  private String ece;
-  private String ecf;
-  private int ecg;
+  private String eak = "";
+  public int enT = -1;
+  public int enU = -1;
+  public int enV = -1;
+  public int enW = -1;
+  public String enX = "";
+  public int enY = -1;
+  public String enZ = "";
+  public int eoa = -1;
+  public String eob = "";
+  public int eoc = -1;
+  public int eod = -1;
+  public String eoe = "";
+  private int eog = -1;
+  public int eoh = -1;
+  public String eoi = "";
+  public int eoj = -1;
+  public int eok = -1;
+  public String eol = "";
+  public int eom = -1;
+  public int eon = -1;
+  public String eoo = "";
+  public String eop = "";
+  public String eoq = "";
+  private long eor;
+  public String eos;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(195185);
+    AppMethodBeat.i(94856);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dFe);
+    ((StringBuffer)localObject).append(this.eak);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dJm);
+    ((StringBuffer)localObject).append(this.enT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHw);
+    ((StringBuffer)localObject).append(this.enU);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ebY);
+    ((StringBuffer)localObject).append(this.enV);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ebZ);
+    ((StringBuffer)localObject).append(this.enW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eca);
+    ((StringBuffer)localObject).append(this.enX);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecb);
+    ((StringBuffer)localObject).append(this.enY);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecc);
+    ((StringBuffer)localObject).append(this.enZ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecd);
+    ((StringBuffer)localObject).append(this.eoa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ece);
+    ((StringBuffer)localObject).append(this.eob);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFY);
+    ((StringBuffer)localObject).append(this.eoc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecf);
+    ((StringBuffer)localObject).append(this.eod);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecg);
+    ((StringBuffer)localObject).append(this.eoe);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eog);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoh);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoi);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoj);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eok);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eol);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eom);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eon);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoo);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eop);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoq);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eor);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eos);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(195185);
+    awz((String)localObject);
+    AppMethodBeat.o(94856);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(195186);
+    AppMethodBeat.i(94857);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SessionId:").append(this.dFe);
+    ((StringBuffer)localObject).append("SessionID:").append(this.eak);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickFeedId:").append(this.dJm);
+    ((StringBuffer)localObject).append("VisibleButtonClickNum:").append(this.enT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.dHw);
+    ((StringBuffer)localObject).append("LatestTimelinePsotSettingisShow:").append(this.enU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UpdataTimeMs:").append(this.ebY);
+    ((StringBuffer)localObject).append("LatestTimelinePsotSettingisClick:").append(this.enV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickTimeMs:").append(this.ebZ);
+    ((StringBuffer)localObject).append("LatestTimelinePsotSettingGroupCount:").append(this.enW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ItemExposureAreaWeigth:").append(this.eca);
+    ((StringBuffer)localObject).append("LatestTimelinePsotSettingGroupList:").append(this.enX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ScreenExposureAreaWeigth:").append(this.ecb);
+    ((StringBuffer)localObject).append("LatestTimelinePsotSettingUinCount:").append(this.enY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ItemDirection:").append(this.ecc);
+    ((StringBuffer)localObject).append("LatestTimelinePsotSettingUinList:").append(this.enZ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ItemIndex:").append(this.ecd);
+    ((StringBuffer)localObject).append("LatestTimelinePsotSettingLabelCount:").append(this.eoa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ShotScreenJson:").append(this.ece);
+    ((StringBuffer)localObject).append("LatestTimelinePsotSettingLabelList:").append(this.eob);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ContextId:").append(this.dFY);
+    ((StringBuffer)localObject).append("TimelinePsotPrivaceSetting:").append(this.eoc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ItemBufffer:").append(this.ecf);
+    ((StringBuffer)localObject).append("SelectFromChatroomClickNum:").append(this.eod);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ItemArrayIndex:").append(this.ecg);
+    ((StringBuffer)localObject).append("ChatroomMemClickList:").append(this.eoe);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ChatroomMemClickNum:").append(this.eog);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SelectedChatroomNum:").append(this.eoh);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SelectedChatroomList:").append(this.eoi);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SelectFromContactClickNum:").append(this.eoj);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SelectedUINNum:").append(this.eok);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SelectedUINList:").append(this.eol);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("PostStatus:").append(this.eom);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SelectedLabelNum:").append(this.eon);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SelectedLabelList:").append(this.eoo);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Published:").append(this.eop);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ChatroomMemClickNumList:").append(this.eoq);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ImageOrVideoPublishId:").append(this.eor);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("MediaEditedPublishIds:").append(this.eos);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(195186);
+    AppMethodBeat.o(94857);
     return localObject;
-  }
-  
-  public final String Sp()
-  {
-    return this.dJm;
-  }
-  
-  public final long Sq()
-  {
-    return this.ebY;
-  }
-  
-  public final long Sr()
-  {
-    return this.ebZ;
-  }
-  
-  public final String Ss()
-  {
-    return this.eca;
-  }
-  
-  public final String St()
-  {
-    return this.ecb;
-  }
-  
-  public final int Su()
-  {
-    return this.ecc;
-  }
-  
-  public final int Sv()
-  {
-    return this.ecd;
-  }
-  
-  public final String Sw()
-  {
-    return this.ece;
-  }
-  
-  public final String Sx()
-  {
-    return this.dFY;
-  }
-  
-  public final String Sy()
-  {
-    return this.ecf;
-  }
-  
-  public final int Sz()
-  {
-    return this.ecg;
   }
   
   public final int getId()
   {
-    return 19945;
+    return 17367;
   }
   
-  public final int getScene()
+  public final gl pg(String paramString)
   {
-    return this.dHw;
-  }
-  
-  public final String getSessionId()
-  {
-    return this.dFe;
-  }
-  
-  public final gl iw(int paramInt)
-  {
-    this.dHw = paramInt;
-    return this;
-  }
-  
-  public final gl ix(int paramInt)
-  {
-    this.ecc = paramInt;
-    return this;
-  }
-  
-  public final gl iy(int paramInt)
-  {
-    this.ecd = paramInt;
-    return this;
-  }
-  
-  public final gl iz(int paramInt)
-  {
-    this.ecg = paramInt;
-    return this;
-  }
-  
-  public final gl lf(long paramLong)
-  {
-    AppMethodBeat.i(195178);
-    this.ebY = paramLong;
-    super.bc("UpdataTimeMs", this.ebY);
-    AppMethodBeat.o(195178);
-    return this;
-  }
-  
-  public final gl lg(long paramLong)
-  {
-    AppMethodBeat.i(195179);
-    this.ebZ = paramLong;
-    super.bc("ClickTimeMs", this.ebZ);
-    AppMethodBeat.o(195179);
-    return this;
-  }
-  
-  public final gl nJ(String paramString)
-  {
-    AppMethodBeat.i(195176);
-    this.dFe = t("SessionId", paramString, true);
-    AppMethodBeat.o(195176);
-    return this;
-  }
-  
-  public final gl nK(String paramString)
-  {
-    AppMethodBeat.i(195177);
-    this.dJm = t("ClickFeedId", paramString, true);
-    AppMethodBeat.o(195177);
-    return this;
-  }
-  
-  public final gl nL(String paramString)
-  {
-    AppMethodBeat.i(195180);
-    this.eca = t("ItemExposureAreaWeigth", paramString, true);
-    AppMethodBeat.o(195180);
-    return this;
-  }
-  
-  public final gl nM(String paramString)
-  {
-    AppMethodBeat.i(195181);
-    this.ecb = t("ScreenExposureAreaWeigth", paramString, true);
-    AppMethodBeat.o(195181);
-    return this;
-  }
-  
-  public final gl nN(String paramString)
-  {
-    AppMethodBeat.i(195182);
-    this.ece = t("ShotScreenJson", paramString, true);
-    AppMethodBeat.o(195182);
-    return this;
-  }
-  
-  public final gl nO(String paramString)
-  {
-    AppMethodBeat.i(195183);
-    this.dFY = t("ContextId", paramString, true);
-    AppMethodBeat.o(195183);
-    return this;
-  }
-  
-  public final gl nP(String paramString)
-  {
-    AppMethodBeat.i(195184);
-    this.ecf = t("ItemBufffer", paramString, true);
-    AppMethodBeat.o(195184);
+    AppMethodBeat.i(176225);
+    this.eak = t("SessionID", paramString, true);
+    AppMethodBeat.o(176225);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.gl
  * JD-Core Version:    0.7.0.1
  */

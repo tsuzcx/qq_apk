@@ -6,18 +6,16 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.cb.a.b;
-import com.tencent.mm.emoji.a.a.z;
 import com.tencent.mm.emoji.sync.EmojiUpdateReceiver;
+import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.d;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.protocal.protobuf.EmotionDetail;
 import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
 import com.tencent.mm.protocal.protobuf.PersonalDesigner;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo.a;
@@ -35,70 +33,70 @@ import java.util.Map;
 
 public final class i
 {
-  private static i fQu;
-  public ArrayList<EmojiGroupInfo> fQA;
-  public final Map<String, ArrayList<EmojiInfo>> fQB;
-  private HashMap<String, PersonalDesigner> fQC;
-  public String fQD;
-  private boolean fQv;
-  private boolean fQw;
-  public boolean fQx;
-  private boolean fQy;
-  private boolean fQz;
+  private static i gjU;
+  private boolean gjV;
+  private boolean gjW;
+  public boolean gjX;
+  private boolean gjY;
+  private boolean gjZ;
+  public ArrayList<EmojiGroupInfo> gka;
+  public final Map<String, ArrayList<EmojiInfo>> gkb;
+  private HashMap<String, PersonalDesigner> gkc;
+  public String gkd;
   
   private i()
   {
     AppMethodBeat.i(104442);
-    this.fQv = true;
-    this.fQw = true;
-    this.fQx = true;
-    this.fQy = true;
-    this.fQz = true;
-    this.fQA = new ArrayList();
-    this.fQB = Collections.synchronizedMap(new HashMap());
-    this.fQC = new HashMap();
-    if (ai.cin())
+    this.gjV = true;
+    this.gjW = true;
+    this.gjX = true;
+    this.gjY = true;
+    this.gjZ = true;
+    this.gka = new ArrayList();
+    this.gkb = Collections.synchronizedMap(new HashMap());
+    this.gkc = new HashMap();
+    if (aj.cmR())
     {
-      this.fQD = ((String)g.agR().agA().get(-29414086, z.acS()));
+      this.gkd = ((String)com.tencent.mm.kernel.g.ajC().ajl().get(-29414086, com.tencent.mm.emoji.a.a.ad.afz()));
       AppMethodBeat.o(104442);
       return;
     }
-    a.eSf();
-    a.b localb = a.Gju;
-    this.fQD = a.b.cF(-29414086, z.acS());
+    a.fhy();
+    a.b localb = a.HVh;
+    this.gkd = a.b.cM(-29414086, com.tencent.mm.emoji.a.a.ad.afz());
     AppMethodBeat.o(104442);
   }
   
-  public static i ach()
+  public static i aeL()
   {
     try
     {
       AppMethodBeat.i(104441);
-      if (fQu == null) {
-        fQu = new i();
+      if (gjU == null) {
+        gjU = new i();
       }
-      i locali = fQu;
+      i locali = gjU;
       AppMethodBeat.o(104441);
       return locali;
     }
     finally {}
   }
   
-  public final ArrayList<EmojiInfo> aci()
+  public final ArrayList<EmojiInfo> aeM()
   {
     AppMethodBeat.i(104444);
-    if ((!this.fQB.containsKey("download_custom")) || (this.fQv))
+    if ((!this.gkb.containsKey("download_custom")) || (this.gjV))
     {
-      if (((com.tencent.mm.kernel.b.h)g.agO().agp()).ahL())
+      if (((h)com.tencent.mm.kernel.g.ajz().ajb()).akw())
       {
-        localObject = (ArrayList)az.faZ().GXZ.we(true);
-        this.fQB.put("download_custom", localObject);
+        localObject = (ArrayList)bd.frc().ILn.wQ(true);
+        this.gkb.put("download_custom", localObject);
       }
     }
     else
     {
-      this.fQv = false;
-      localObject = (ArrayList)this.fQB.get("download_custom");
+      this.gjV = false;
+      localObject = (ArrayList)this.gkb.get("download_custom");
       AppMethodBeat.o(104444);
       return localObject;
     }
@@ -107,19 +105,19 @@ public final class i
     throw ((Throwable)localObject);
   }
   
-  public final ArrayList<EmojiGroupInfo> acj()
+  public final ArrayList<EmojiGroupInfo> aeN()
   {
     AppMethodBeat.i(104446);
-    if (this.fQy) {
-      if (!((com.tencent.mm.kernel.b.h)g.agO().agp()).ahL()) {
+    if (this.gjY) {
+      if (!((h)com.tencent.mm.kernel.g.ajz().ajb()).akw()) {
         break label57;
       }
     }
     ArrayList localArrayList;
-    for (this.fQA = az.faZ().GYa.fcR();; this.fQA = localArrayList)
+    for (this.gka = bd.frc().ILo.fsY();; this.gka = localArrayList)
     {
-      this.fQy = false;
-      localArrayList = this.fQA;
+      this.gjY = false;
+      localArrayList = this.gka;
       AppMethodBeat.o(104446);
       return localArrayList;
       label57:
@@ -134,46 +132,46 @@ public final class i
           if (localObject != null)
           {
             localArrayList.addAll((Collection)localObject);
-            ac.i("MicroMsg.EmojiStorageCache", "[getEmojiGroupInfoListExport] size: %s", new Object[] { Integer.valueOf(((List)localObject).size()) });
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.EmojiStorageCache", "[getEmojiGroupInfoListExport] size: %s", new Object[] { Integer.valueOf(((List)localObject).size()) });
           }
         }
       }
     }
   }
   
-  public final ArrayList<EmojiInfo> dh(boolean paramBoolean)
+  public final ArrayList<EmojiInfo> dj(boolean paramBoolean)
   {
     AppMethodBeat.i(104443);
-    ac.d("MicroMsg.EmojiStorageCache", "onlySuccessEmoji: %s.", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.EmojiStorageCache", "onlySuccessEmoji: %s.", new Object[] { Boolean.valueOf(paramBoolean) });
     Object localObject3;
     Object localObject4;
     Object localObject2;
     Object localObject1;
-    if ((!this.fQB.containsKey("custom")) || (this.fQw))
+    if ((!this.gkb.containsKey("custom")) || (this.gjW))
     {
-      ac.i("MicroMsg.EmojiStorageCache", "getAllCustomEmoji: %s", new Object[] { Boolean.valueOf(this.fQw) });
-      if (!((com.tencent.mm.kernel.b.h)g.agO().agp()).ahL()) {
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.EmojiStorageCache", "getAllCustomEmoji: %s", new Object[] { Boolean.valueOf(this.gjW) });
+      if (!((h)com.tencent.mm.kernel.g.ajz().ajb()).akw()) {
         break label283;
       }
-      localObject3 = az.faZ().GXZ;
+      localObject3 = bd.frc().ILn;
       localObject4 = new ArrayList();
-      localObject2 = ((f)localObject3).aW(EmojiGroupInfo.Jsq, false);
+      localObject2 = ((f)localObject3).bd(EmojiGroupInfo.OeL, false);
       localObject1 = localObject2;
       if (((List)localObject2).size() < 2)
       {
-        ((f)localObject3).init(ai.getContext());
-        localObject1 = ((f)localObject3).aW(EmojiGroupInfo.Jsq, false);
-        com.tencent.mm.plugin.report.service.h.wUl.dB(1062, 0);
+        ((f)localObject3).init(aj.getContext());
+        localObject1 = ((f)localObject3).bd(EmojiGroupInfo.OeL, false);
+        com.tencent.mm.plugin.report.service.g.yhR.dD(1062, 0);
       }
-      ((List)localObject4).addAll(((f)localObject3).aW(EmojiGroupInfo.Jsr, false));
+      ((List)localObject4).addAll(((f)localObject3).bd(EmojiGroupInfo.OeM, false));
       ((List)localObject4).addAll((Collection)localObject1);
       localObject1 = (ArrayList)localObject4;
     }
     for (;;)
     {
-      this.fQB.put("custom", localObject1);
-      this.fQw = false;
-      localObject1 = (ArrayList)this.fQB.get("custom");
+      this.gkb.put("custom", localObject1);
+      this.gjW = false;
+      localObject1 = (ArrayList)this.gkb.get("custom");
       if ((localObject1 == null) || (!paramBoolean)) {
         break label393;
       }
@@ -182,7 +180,7 @@ public final class i
       while (((Iterator)localObject3).hasNext())
       {
         localObject4 = (EmojiInfo)((Iterator)localObject3).next();
-        if (EmojiInfo.a.Hav != ((EmojiInfo)localObject4).fFY()) {
+        if (EmojiInfo.a.INK != ((EmojiInfo)localObject4).gzL()) {
           ((ArrayList)localObject2).add(localObject4);
         }
       }
@@ -201,7 +199,7 @@ public final class i
           if (localObject3 != null)
           {
             ((ArrayList)localObject2).addAll((Collection)localObject3);
-            ac.i("MicroMsg.EmojiStorageCache", "[getAllCustomEmojiExport] size:%s", new Object[] { Integer.valueOf(((List)localObject3).size()) });
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.EmojiStorageCache", "[getAllCustomEmojiExport] size:%s", new Object[] { Integer.valueOf(((List)localObject3).size()) });
             localObject1 = localObject2;
           }
         }
@@ -213,24 +211,24 @@ public final class i
     return localObject1;
   }
   
-  public final ArrayList<EmojiInfo> di(boolean paramBoolean)
+  public final ArrayList<EmojiInfo> dk(boolean paramBoolean)
   {
     AppMethodBeat.i(104447);
-    ac.i("MicroMsg.EmojiStorageCache", "getCaptureEmoji: needUpdateCaptureEmoji %s withFailed %s.", new Object[] { Boolean.valueOf(this.fQz), Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.EmojiStorageCache", "getCaptureEmoji: needUpdateCaptureEmoji %s withFailed %s.", new Object[] { Boolean.valueOf(this.gjZ), Boolean.valueOf(paramBoolean) });
     Object localObject2;
-    if ((!this.fQB.containsKey("capture")) || (this.fQz))
+    if ((!this.gkb.containsKey("capture")) || (this.gjZ))
     {
-      if (((com.tencent.mm.kernel.b.h)g.agO().agp()).ahL())
+      if (((h)com.tencent.mm.kernel.g.ajz().ajb()).akw())
       {
-        localObject1 = (ArrayList)az.faZ().GXZ.wf(false);
-        ac.i("MicroMsg.EmojiStorageCache", "getCaptureEmoji: %s size %s", new Object[] { Boolean.valueOf(this.fQz), Integer.valueOf(((ArrayList)localObject1).size()) });
-        this.fQB.put("capture", localObject1);
+        localObject1 = (ArrayList)bd.frc().ILn.wR(false);
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.EmojiStorageCache", "getCaptureEmoji: %s size %s", new Object[] { Boolean.valueOf(this.gjZ), Integer.valueOf(((ArrayList)localObject1).size()) });
+        this.gkb.put("capture", localObject1);
       }
     }
     else
     {
-      this.fQz = false;
-      localObject2 = (ArrayList)this.fQB.get("capture");
+      this.gjZ = false;
+      localObject2 = (ArrayList)this.gkb.get("capture");
       if (!paramBoolean) {
         break label314;
       }
@@ -242,7 +240,7 @@ public final class i
     label305:
     for (int i = 0;; i = ((ArrayList)localObject2).size())
     {
-      ac.d("MicroMsg.EmojiStorageCache", "getCaptureEmoji list size: %s.", new Object[] { Integer.valueOf(i) });
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.EmojiStorageCache", "getCaptureEmoji list size: %s.", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(104447);
       return localObject2;
       localObject2 = new ArrayList();
@@ -262,7 +260,7 @@ public final class i
         break;
       }
       ((ArrayList)localObject2).addAll((Collection)localObject3);
-      ac.i("MicroMsg.EmojiStorageCache", "[getCaptureEmojiExport] size:%s", new Object[] { Integer.valueOf(((List)localObject3).size()) });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.EmojiStorageCache", "[getCaptureEmojiExport] size:%s", new Object[] { Integer.valueOf(((List)localObject3).size()) });
       localObject1 = localObject2;
       break;
     }
@@ -274,72 +272,72 @@ public final class i
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (EmojiInfo)((Iterator)localObject2).next();
-        if (((EmojiInfo)localObject3).fFY() == EmojiInfo.a.Hav) {
+        if (((EmojiInfo)localObject3).gzL() == EmojiInfo.a.INK) {
           ((ArrayList)localObject1).add(localObject3);
         }
       }
     }
-    ac.d("MicroMsg.EmojiStorageCache", "getCaptureEmoji result size: %s.", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.EmojiStorageCache", "getCaptureEmoji result size: %s.", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
     AppMethodBeat.o(104447);
     return localObject1;
   }
   
-  public final void dj(boolean paramBoolean)
+  public final void dl(boolean paramBoolean)
   {
     AppMethodBeat.i(104448);
-    this.fQw = true;
-    ac.i("MicroMsg.EmojiStorageCache", "setNeedUpdateAllCustomEmoji %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.gjW = true;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.EmojiStorageCache", "setNeedUpdateAllCustomEmoji %s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
       Intent localIntent = new Intent();
       localIntent.setAction(EmojiUpdateReceiver.ACTION);
-      localIntent.putExtra(EmojiUpdateReceiver.fWe, EmojiUpdateReceiver.fWf);
-      ai.getContext().sendBroadcast(localIntent);
+      localIntent.putExtra(EmojiUpdateReceiver.gpH, EmojiUpdateReceiver.gpI);
+      aj.getContext().sendBroadcast(localIntent);
     }
     AppMethodBeat.o(104448);
   }
   
-  public final void dk(boolean paramBoolean)
+  public final void dm(boolean paramBoolean)
   {
     AppMethodBeat.i(104449);
-    this.fQv = true;
-    ac.i("MicroMsg.EmojiStorageCache", "setNeedUpdateAllCustomEmoji %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.gjV = true;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.EmojiStorageCache", "setNeedUpdateAllCustomEmoji %s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
       Intent localIntent = new Intent();
       localIntent.setAction(EmojiUpdateReceiver.ACTION);
-      localIntent.putExtra(EmojiUpdateReceiver.fWe, EmojiUpdateReceiver.fWg);
-      ai.getContext().sendBroadcast(localIntent);
+      localIntent.putExtra(EmojiUpdateReceiver.gpH, EmojiUpdateReceiver.gpJ);
+      aj.getContext().sendBroadcast(localIntent);
     }
     AppMethodBeat.o(104449);
   }
   
-  public final void dl(boolean paramBoolean)
+  public final void dn(boolean paramBoolean)
   {
     AppMethodBeat.i(104450);
-    this.fQy = true;
-    ac.i("MicroMsg.EmojiStorageCache", "setNeedUpdateGroupInfo: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.gjY = true;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.EmojiStorageCache", "setNeedUpdateGroupInfo: %s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
       Intent localIntent = new Intent();
       localIntent.setAction(EmojiUpdateReceiver.ACTION);
-      localIntent.putExtra(EmojiUpdateReceiver.fWe, EmojiUpdateReceiver.fWi);
-      ai.getContext().sendBroadcast(localIntent);
+      localIntent.putExtra(EmojiUpdateReceiver.gpH, EmojiUpdateReceiver.gpL);
+      aj.getContext().sendBroadcast(localIntent);
     }
     AppMethodBeat.o(104450);
   }
   
-  public final void dm(boolean paramBoolean)
+  public final void jdMethod_do(boolean paramBoolean)
   {
     AppMethodBeat.i(104451);
-    this.fQz = true;
+    this.gjZ = true;
     if (paramBoolean)
     {
-      String str = EmojiUpdateReceiver.fWj;
+      String str = EmojiUpdateReceiver.gpM;
       Intent localIntent = new Intent();
       localIntent.setAction(EmojiUpdateReceiver.ACTION);
-      localIntent.putExtra(EmojiUpdateReceiver.fWe, str);
-      ai.getContext().sendBroadcast(localIntent);
+      localIntent.putExtra(EmojiUpdateReceiver.gpH, str);
+      aj.getContext().sendBroadcast(localIntent);
     }
     AppMethodBeat.o(104451);
   }
@@ -347,44 +345,47 @@ public final class i
   public final boolean l(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(104452);
-    Iterator localIterator2;
-    do
+    synchronized (this.gkb)
     {
-      Iterator localIterator1 = this.fQB.values().iterator();
-      while (!localIterator2.hasNext())
+      Iterator localIterator2;
+      do
       {
-        if (!localIterator1.hasNext()) {
-          break;
+        Iterator localIterator1 = this.gkb.values().iterator();
+        while (!localIterator2.hasNext())
+        {
+          if (!localIterator1.hasNext()) {
+            break;
+          }
+          localIterator2 = ((ArrayList)localIterator1.next()).iterator();
         }
-        localIterator2 = ((ArrayList)localIterator1.next()).iterator();
-      }
-    } while (!((EmojiInfo)localIterator2.next()).JC().equals(paramEmojiInfo.JC()));
-    AppMethodBeat.o(104452);
-    return true;
-    AppMethodBeat.o(104452);
-    return false;
+      } while (!((EmojiInfo)localIterator2.next()).Lb().equals(paramEmojiInfo.Lb()));
+      AppMethodBeat.o(104452);
+      return true;
+      AppMethodBeat.o(104452);
+      return false;
+    }
   }
   
-  public final ArrayList<EmojiInfo> tf(String paramString)
+  public final ArrayList<EmojiInfo> vU(String paramString)
   {
     AppMethodBeat.i(104445);
-    if (this.fQx)
+    if (this.gjX)
     {
-      this.fQB.clear();
-      this.fQx = false;
+      this.gkb.clear();
+      this.gjX = false;
     }
     Object localObject1;
-    if (!this.fQB.containsKey(paramString))
+    if (!this.gkb.containsKey(paramString))
     {
-      if (!((com.tencent.mm.kernel.b.h)g.agO().agp()).ahL()) {
+      if (!((h)com.tencent.mm.kernel.g.ajz().ajb()).akw()) {
         break label103;
       }
-      localObject1 = (ArrayList)az.faZ().GXZ.XO(paramString);
+      localObject1 = (ArrayList)bd.frc().ILn.abu(paramString);
     }
     for (;;)
     {
-      this.fQB.put(paramString, localObject1);
-      paramString = (ArrayList)this.fQB.get(paramString);
+      this.gkb.put(paramString, localObject1);
+      paramString = (ArrayList)this.gkb.get(paramString);
       AppMethodBeat.o(104445);
       return paramString;
       label103:
@@ -402,7 +403,7 @@ public final class i
           if (localObject2 != null)
           {
             localArrayList.addAll((Collection)localObject2);
-            ac.i("MicroMsg.EmojiStorageCache", "[getEmojiListByGroupIdExport] size%s", new Object[] { Integer.valueOf(((List)localObject2).size()) });
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.EmojiStorageCache", "[getEmojiListByGroupIdExport] size%s", new Object[] { Integer.valueOf(((List)localObject2).size()) });
             localObject1 = localArrayList;
           }
         }
@@ -410,16 +411,16 @@ public final class i
     }
   }
   
-  public final PersonalDesigner tg(String paramString)
+  public final PersonalDesigner vV(String paramString)
   {
     Object localObject1 = null;
     AppMethodBeat.i(183920);
-    if (!this.fQC.containsKey(paramString))
+    if (!this.gkc.containsKey(paramString))
     {
-      if (!((com.tencent.mm.kernel.b.h)g.agO().agp()).ahL()) {
+      if (!((h)com.tencent.mm.kernel.g.ajz().ajb()).akw()) {
         break label125;
       }
-      localObject1 = az.faZ().GYd.aPc(paramString);
+      localObject1 = bd.frc().ILr.aUT(paramString);
       if (localObject1 == null) {
         break label175;
       }
@@ -438,9 +439,9 @@ public final class i
         {
           ((GetEmotionDetailResponse)localObject3).parseFrom((byte[])localObject1);
           if ((((GetEmotionDetailResponse)localObject3).EmotionDetail != null) && (((GetEmotionDetailResponse)localObject3).EmotionDetail.PersonalDesigner != null)) {
-            this.fQC.put(paramString, ((GetEmotionDetailResponse)localObject3).EmotionDetail.PersonalDesigner);
+            this.gkc.put(paramString, ((GetEmotionDetailResponse)localObject3).EmotionDetail.PersonalDesigner);
           }
-          paramString = (PersonalDesigner)this.fQC.get(paramString);
+          paramString = (PersonalDesigner)this.gkc.get(paramString);
           AppMethodBeat.o(183920);
           return paramString;
           localObject3 = a.call(a.getUri(), "getDesignerInfo", paramString, null);
@@ -452,7 +453,7 @@ public final class i
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.EmojiStorageCache", localException, "", new Object[0]);
+            com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.EmojiStorageCache", localException, "", new Object[0]);
           }
         }
       }

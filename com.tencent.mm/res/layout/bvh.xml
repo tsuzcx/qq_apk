@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.sns.ad.landingpage.component.view.RelativeLayoutWithInterceptor android:id="@id/i01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/ab7" android:id="@id/i02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:shadowColor="@color/ab8" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="9.0" android:layout_centerHorizontal="true" android:paddingStart="5.0dip" android:paddingEnd="5.0dip" />
+    <FrameLayout android:id="@id/i00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/i02" android:layout_centerHorizontal="true" />
+</com.tencent.mm.plugin.sns.ad.landingpage.component.view.RelativeLayoutWithInterceptor>

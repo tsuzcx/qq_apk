@@ -24,8 +24,8 @@ public abstract class g
   public void setCurrentPlaySecond(int paramInt)
   {
     this.mPosition = paramInt;
-    this.kUx.setText(sO(paramInt / 60) + ":" + sO(paramInt % 60));
-    Uw(Uv(paramInt));
+    this.lrv.setText(tr(paramInt / 60) + ":" + tr(paramInt % 60));
+    Wo(Wn(paramInt));
   }
   
   public abstract void show();

@@ -1,104 +1,133 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class ve
-  extends cpx
+  extends cvc
 {
-  public String Epm;
-  public String Epn;
-  public String Epo;
-  public String Epp;
-  public String Epq;
-  public long Epr;
-  public String Eps;
-  public String Ept;
+  public String FUC;
+  public String FUD;
+  public int FUE;
+  public String FUF;
+  public String FUG;
+  public String FUH;
+  public String FUI;
+  public int FUJ;
+  public String FUw;
+  public int channel;
+  public int vls;
+  public String xYV;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32161);
+    AppMethodBeat.i(72437);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.FUC == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: receiver_name");
+        AppMethodBeat.o(72437);
+        throw paramVarArgs;
+      }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
+        paramVarArgs.lC(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.Epm != null) {
-        paramVarArgs.d(2, this.Epm);
+      if (this.FUC != null) {
+        paramVarArgs.d(2, this.FUC);
       }
-      if (this.Epn != null) {
-        paramVarArgs.d(3, this.Epn);
+      paramVarArgs.aS(3, this.vls);
+      if (this.FUD != null) {
+        paramVarArgs.d(4, this.FUD);
       }
-      if (this.Epo != null) {
-        paramVarArgs.d(4, this.Epo);
+      if (this.xYV != null) {
+        paramVarArgs.d(5, this.xYV);
       }
-      if (this.Epp != null) {
-        paramVarArgs.d(5, this.Epp);
+      paramVarArgs.aS(6, this.FUE);
+      paramVarArgs.aS(7, this.channel);
+      if (this.FUF != null) {
+        paramVarArgs.d(8, this.FUF);
       }
-      if (this.Epq != null) {
-        paramVarArgs.d(6, this.Epq);
+      if (this.FUw != null) {
+        paramVarArgs.d(9, this.FUw);
       }
-      paramVarArgs.aO(7, this.Epr);
-      if (this.Eps != null) {
-        paramVarArgs.d(8, this.Eps);
+      if (this.FUG != null) {
+        paramVarArgs.d(10, this.FUG);
       }
-      if (this.Ept != null) {
-        paramVarArgs.d(9, this.Ept);
+      if (this.FUH != null) {
+        paramVarArgs.d(11, this.FUH);
       }
-      AppMethodBeat.o(32161);
+      if (this.FUI != null) {
+        paramVarArgs.d(12, this.FUI);
+      }
+      paramVarArgs.aS(13, this.FUJ);
+      AppMethodBeat.o(72437);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label797;
+        break label1030;
       }
     }
-    label797:
-    for (int i = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label1030:
+    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.FUC != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.FUC);
+      }
+      i += f.a.a.b.b.a.bz(3, this.vls);
       paramInt = i;
-      if (this.Epm != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Epm);
+      if (this.FUD != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.FUD);
       }
       i = paramInt;
-      if (this.Epn != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.Epn);
+      if (this.xYV != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.xYV);
       }
+      i = i + f.a.a.b.b.a.bz(6, this.FUE) + f.a.a.b.b.a.bz(7, this.channel);
       paramInt = i;
-      if (this.Epo != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.Epo);
+      if (this.FUF != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.FUF);
       }
       i = paramInt;
-      if (this.Epp != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.Epp);
+      if (this.FUw != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.FUw);
       }
       paramInt = i;
-      if (this.Epq != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.Epq);
-      }
-      i = paramInt + f.a.a.b.b.a.p(7, this.Epr);
-      paramInt = i;
-      if (this.Eps != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.Eps);
+      if (this.FUG != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.FUG);
       }
       i = paramInt;
-      if (this.Ept != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.Ept);
+      if (this.FUH != null) {
+        i = paramInt + f.a.a.b.b.a.e(11, this.FUH);
       }
-      AppMethodBeat.o(32161);
-      return i;
+      paramInt = i;
+      if (this.FUI != null) {
+        paramInt = i + f.a.a.b.b.a.e(12, this.FUI);
+      }
+      i = f.a.a.b.b.a.bz(13, this.FUJ);
+      AppMethodBeat.o(72437);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(32161);
+        if (this.FUC == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: receiver_name");
+          AppMethodBeat.o(72437);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(72437);
         return 0;
       }
       if (paramInt == 3)
@@ -109,57 +138,73 @@ public final class ve
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32161);
+          AppMethodBeat.o(72437);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
+            localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localve.BaseRequest = ((iv)localObject1);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localve.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(32161);
+          AppMethodBeat.o(72437);
           return 0;
         case 2: 
-          localve.Epm = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(32161);
+          localve.FUC = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(72437);
           return 0;
         case 3: 
-          localve.Epn = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(32161);
+          localve.vls = ((f.a.a.a.a)localObject1).NPN.zc();
+          AppMethodBeat.o(72437);
           return 0;
         case 4: 
-          localve.Epo = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(32161);
+          localve.FUD = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(72437);
           return 0;
         case 5: 
-          localve.Epp = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(32161);
+          localve.xYV = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(72437);
           return 0;
         case 6: 
-          localve.Epq = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(32161);
+          localve.FUE = ((f.a.a.a.a)localObject1).NPN.zc();
+          AppMethodBeat.o(72437);
           return 0;
         case 7: 
-          localve.Epr = ((f.a.a.a.a)localObject1).LVo.xG();
-          AppMethodBeat.o(32161);
+          localve.channel = ((f.a.a.a.a)localObject1).NPN.zc();
+          AppMethodBeat.o(72437);
           return 0;
         case 8: 
-          localve.Eps = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(32161);
+          localve.FUF = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(72437);
+          return 0;
+        case 9: 
+          localve.FUw = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(72437);
+          return 0;
+        case 10: 
+          localve.FUG = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(72437);
+          return 0;
+        case 11: 
+          localve.FUH = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(72437);
+          return 0;
+        case 12: 
+          localve.FUI = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(72437);
           return 0;
         }
-        localve.Ept = ((f.a.a.a.a)localObject1).LVo.readString();
-        AppMethodBeat.o(32161);
+        localve.FUJ = ((f.a.a.a.a)localObject1).NPN.zc();
+        AppMethodBeat.o(72437);
         return 0;
       }
-      AppMethodBeat.o(32161);
+      AppMethodBeat.o(72437);
       return -1;
     }
   }

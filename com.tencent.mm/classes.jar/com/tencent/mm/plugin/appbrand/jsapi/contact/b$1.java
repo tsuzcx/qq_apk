@@ -14,23 +14,23 @@ final class b$1
   public final void run()
   {
     AppMethodBeat.i(186004);
-    b localb = this.koM;
-    Activity localActivity = (Activity)this.koK;
-    a locala = this.koL;
-    c localc = this.cds;
-    int i = this.bZy;
+    b localb = this.kJM;
+    Activity localActivity = (Activity)this.kJK;
+    a locala = this.kJL;
+    c localc = this.cnJ;
+    int i = this.cjQ;
     String str1 = localActivity.getString(2131761019);
     String str2 = localActivity.getString(2131761018);
     e locale = new e(localActivity, 1, false);
-    locale.ISu = new b.2(localb, new String[] { str1, str2 });
-    locale.ISv = new b.3(localb, locala, localActivity, localc, i);
-    locale.cED();
+    locale.KJy = new b.2(localb, new String[] { str1, str2 });
+    locale.KJz = new b.3(localb, locala, localActivity, localc, i);
+    locale.cMW();
     AppMethodBeat.o(186004);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.contact.b.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bk;
+import com.tencent.mm.g.a.bn;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 
 public final class h
 {
-  private static String ulj;
-  private static c<bk> ulk;
+  private static String vnP;
+  private static c<bn> vnQ;
   
   static
   {
     AppMethodBeat.i(65175);
-    ulj = null;
-    ulk = new c() {};
+    vnP = null;
+    vnQ = new c() {};
     AppMethodBeat.o(65175);
   }
   
-  public static void cYX()
+  public static void dij()
   {
     AppMethodBeat.i(65172);
-    e locale = new e(b.aph() + "wallet/luckyMoneyEffect/");
-    ac.d("MicroMsg.LuckMoneyEffectResourceMgr", "no media");
+    e locale = new e(b.arU() + "wallet/luckyMoneyEffect/");
+    ad.d("MicroMsg.LuckMoneyEffectResourceMgr", "no media");
     if ((locale.isDirectory()) && (locale.exists())) {
-      ac.i("MicroMsg.LuckMoneyEffectResourceMgr", "delete unused files: %s", new Object[] { Boolean.valueOf(i.cU(q.B(locale.mUri), true)) });
+      ad.i("MicroMsg.LuckMoneyEffectResourceMgr", "delete unused files: %s", new Object[] { Boolean.valueOf(i.cZ(q.B(locale.mUri), true)) });
     }
     AppMethodBeat.o(65172);
   }
@@ -37,8 +37,8 @@ public final class h
   public static void unInit()
   {
     AppMethodBeat.i(65171);
-    ac.i("MicroMsg.LuckMoneyEffectResourceMgr", "unInit");
-    a.GpY.d(ulk);
+    ad.i("MicroMsg.LuckMoneyEffectResourceMgr", "unInit");
+    a.IbL.d(vnQ);
     AppMethodBeat.o(65171);
   }
 }

@@ -7,7 +7,7 @@ public abstract interface c
   
   public static final class b
   {
-    public String skD;
+    public String thf;
   }
 }
 

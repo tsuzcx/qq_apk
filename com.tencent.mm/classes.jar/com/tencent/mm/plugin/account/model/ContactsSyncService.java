@@ -14,38 +14,37 @@ import com.jg.JgClassChecked;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.account.friend.a.ad;
 import com.tencent.mm.plugin.account.friend.a.ao;
 import com.tencent.mm.plugin.account.friend.a.l;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20140422", reviewer=20, vComment={com.jg.EType.SERVICESCHECK})
 public class ContactsSyncService
   extends Service
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  private static Account itT;
-  private a iOh;
-  private Looper iOi;
+  private static Account iMW;
+  private a jhq;
+  private Looper jhr;
   
   public ContactsSyncService()
   {
     AppMethodBeat.i(127817);
-    this.iOh = null;
-    ac.i("MicroMsg.ContactsSyncService", "ContactsSyncService construction");
+    this.jhq = null;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "ContactsSyncService construction");
     AppMethodBeat.o(127817);
   }
   
-  private void aQp()
+  private void aTB()
   {
     AppMethodBeat.i(127820);
-    if (this.iOi != null) {
-      this.iOi.quit();
+    if (this.jhr != null) {
+      this.jhr.quit();
     }
     AppMethodBeat.o(127820);
   }
@@ -54,26 +53,26 @@ public class ContactsSyncService
   {
     AppMethodBeat.i(127818);
     paramIntent = null;
-    if (com.tencent.mm.pluginsdk.permission.b.o(this, "android.permission.READ_CONTACTS"))
+    if (com.tencent.mm.pluginsdk.permission.b.n(this, "android.permission.READ_CONTACTS"))
     {
-      if (this.iOh == null) {
-        this.iOh = new a(getApplicationContext());
+      if (this.jhq == null) {
+        this.jhq = new a(getApplicationContext());
       }
-      paramIntent = this.iOh.getSyncAdapterBinder();
+      paramIntent = this.jhq.getSyncAdapterBinder();
     }
     for (;;)
     {
-      ac.i("MicroMsg.ContactsSyncService", "ContactsSyncService onBind ret[%s]", new Object[] { paramIntent });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "ContactsSyncService onBind ret[%s]", new Object[] { paramIntent });
       AppMethodBeat.o(127818);
       return paramIntent;
-      ac.i("MicroMsg.ContactsSyncService", "ContactsSyncService onBind no permission");
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "ContactsSyncService onBind no permission");
     }
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(127821);
-    ac.i("MicroMsg.ContactsSyncService", "contacts sync service destroy");
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "contacts sync service destroy");
     super.onDestroy();
     AppMethodBeat.o(127821);
   }
@@ -81,37 +80,37 @@ public class ContactsSyncService
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(127819);
-    ac.i("MicroMsg.ContactsSyncService", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramn.getType());
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramn.getType());
     if (paramn.getType() == 133)
     {
-      com.tencent.mm.kernel.g.agi().b(133, this);
-      ac.i("MicroMsg.ContactsSyncService", "uploadcontact onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
-      long l1 = ((Long)com.tencent.mm.kernel.g.agR().agA().get(327728, Long.valueOf(0L))).longValue();
+      com.tencent.mm.kernel.g.aiU().b(133, this);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "uploadcontact onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
+      long l1 = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(327728, Long.valueOf(0L))).longValue();
       long l2 = System.currentTimeMillis();
-      ac.d("MicroMsg.ContactsSyncService", "getMFriend : curTime=" + l2 + ", lastTime=" + l1);
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ContactsSyncService", "getMFriend : curTime=" + l2 + ", lastTime=" + l1);
       if ((paramInt2 != 0) && (l2 - l1 < 86400000L))
       {
-        aQp();
-        ac.e("MicroMsg.ContactsSyncService", "uploadmcontact list null, do not do getmfriend.");
+        aTB();
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ContactsSyncService", "uploadmcontact list null, do not do getmfriend.");
         AppMethodBeat.o(127819);
         return;
       }
-      com.tencent.mm.kernel.g.agR().agA().set(327728, Long.valueOf(l2));
-      com.tencent.mm.kernel.g.agi().a(32, this);
+      com.tencent.mm.kernel.g.ajC().ajl().set(327728, Long.valueOf(l2));
+      com.tencent.mm.kernel.g.aiU().a(32, this);
       paramString = (ao)paramn;
-      paramString = new ad(paramString.iLv, paramString.iLw);
-      com.tencent.mm.kernel.g.agi().a(paramString, 0);
+      paramString = new com.tencent.mm.plugin.account.friend.a.ad(paramString.jeE, paramString.jeF);
+      com.tencent.mm.kernel.g.aiU().a(paramString, 0);
     }
     if (paramn.getType() == 32)
     {
-      com.tencent.mm.kernel.g.agi().b(32, this);
-      ac.i("MicroMsg.ContactsSyncService", "getmfriend onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
-      if ((paramInt1 == 0) && (paramInt2 == 0) && (!com.tencent.mm.kernel.g.agR().agA().getBoolean(ah.a.GTw, false)))
+      com.tencent.mm.kernel.g.aiU().b(32, this);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "getmfriend onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
+      if ((paramInt1 == 0) && (paramInt2 == 0) && (!com.tencent.mm.kernel.g.ajC().ajl().getBoolean(al.a.IGb, false)))
       {
-        paramString = new com.tencent.mm.platformtools.g(this, itT);
-        h.JZN.aS(paramString);
+        paramString = new com.tencent.mm.platformtools.g(this, iMW);
+        h.LTJ.aR(paramString);
       }
-      aQp();
+      aTB();
     }
     AppMethodBeat.o(127819);
   }
@@ -126,17 +125,17 @@ public class ContactsSyncService
       super(true);
       AppMethodBeat.i(127815);
       this.mContext = paramContext;
-      ac.i("MicroMsg.ContactsSyncService", "ContactsSyncService SyncAdapterImpl construction");
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "ContactsSyncService SyncAdapterImpl construction");
       AppMethodBeat.o(127815);
     }
     
     public final void onPerformSync(Account paramAccount, Bundle paramBundle, String paramString, ContentProviderClient paramContentProviderClient, SyncResult paramSyncResult)
     {
       AppMethodBeat.i(127816);
-      ac.i("MicroMsg.ContactsSyncService", "ContactsSyncService SyncAdapterImpl onPerformSync");
-      if (!com.tencent.mm.kernel.g.agM())
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "ContactsSyncService SyncAdapterImpl onPerformSync");
+      if (!com.tencent.mm.kernel.g.ajx())
       {
-        ac.e("MicroMsg.ContactsSyncService", "ContactsSyncService account not ready, ignore this sync");
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ContactsSyncService", "ContactsSyncService account not ready, ignore this sync");
         AppMethodBeat.o(127816);
         return;
       }
@@ -152,7 +151,7 @@ public class ContactsSyncService
       catch (Exception paramAccount)
       {
         ContactsSyncService.a(ContactsSyncService.this);
-        ac.e("MicroMsg.ContactsSyncService", "ContactsSyncService.onPerformSync error: " + paramAccount.getMessage());
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ContactsSyncService", "ContactsSyncService.onPerformSync error: " + paramAccount.getMessage());
         AppMethodBeat.o(127816);
       }
     }

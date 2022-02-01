@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.topstory.ui.video;
 import android.content.Context;
 import android.view.OrientationEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class i
   extends OrientationEventListener
 {
-  a Adu;
-  private int gud = -1;
+  a Bvf;
+  private int gNO = -1;
   private int orientation = -1;
-  private int uKt = -1;
-  private long uKu = 0L;
-  private long uKv = 0L;
+  private long vNA = 0L;
+  private long vNB = 0L;
+  private int vNz = -1;
   
   public i(Context paramContext)
   {
@@ -25,24 +25,24 @@ public final class i
   {
     AppMethodBeat.i(126096);
     super.enable();
-    this.uKv = bs.Gn();
+    this.vNB = bt.HI();
     AppMethodBeat.o(126096);
   }
   
   public final void onOrientationChanged(int paramInt)
   {
     AppMethodBeat.i(126095);
-    if (bs.aO(this.uKv) < 2000L)
+    if (bt.aO(this.vNB) < 2000L)
     {
-      ac.v("MicroMsg.TopStory.TopStoryDeviceOrientationListener", "onOrientationChanged, not reach DETECT_THRESHOLD");
+      ad.v("MicroMsg.TopStory.TopStoryDeviceOrientationListener", "onOrientationChanged, not reach DETECT_THRESHOLD");
       AppMethodBeat.o(126095);
       return;
     }
-    ac.d("MicroMsg.TopStory.TopStoryDeviceOrientationListener", "onOrientationChanged: %s", new Object[] { Integer.valueOf(paramInt) });
-    if ((Math.abs(this.uKt - paramInt) >= 60) && (bs.aO(this.uKu) >= 1000L))
+    ad.d("MicroMsg.TopStory.TopStoryDeviceOrientationListener", "onOrientationChanged: %s", new Object[] { Integer.valueOf(paramInt) });
+    if ((Math.abs(this.vNz - paramInt) >= 60) && (bt.aO(this.vNA) >= 1000L))
     {
-      this.uKt = paramInt;
-      this.uKu = bs.Gn();
+      this.vNz = paramInt;
+      this.vNA = bt.HI();
       if ((paramInt > 60) && (paramInt < 300)) {
         break label147;
       }
@@ -52,8 +52,8 @@ public final class i
     }
     for (;;)
     {
-      if (this.Adu != null) {
-        this.Adu.nm(this.orientation);
+      if (this.Bvf != null) {
+        this.Bvf.nL(this.orientation);
       }
       AppMethodBeat.o(126095);
       return;
@@ -78,7 +78,7 @@ public final class i
   
   public static abstract interface a
   {
-    public abstract void nm(int paramInt);
+    public abstract void nL(int paramInt);
   }
 }
 

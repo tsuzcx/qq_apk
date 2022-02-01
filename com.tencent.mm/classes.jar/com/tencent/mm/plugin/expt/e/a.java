@@ -1,514 +1,201 @@
 package com.tencent.mm.plugin.expt.e;
 
-import android.util.Base64;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bp;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.lang.reflect.Field;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.ai;
+import com.tencent.mm.g.a.kw;
+import com.tencent.mm.g.a.vp;
+import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.expt.ui.KvInfoUI;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.i;
 import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import java.util.List;
 
 public final class a
-  extends bp
+  implements Application.ActivityLifecycleCallbacks, com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.expt.b.a
 {
-  public static c.a info;
-  private HashMap<String, String> cache = null;
+  private static a rad;
+  private com.tencent.mm.sdk.b.c nEU;
+  public String rae;
+  private com.tencent.mm.sdk.b.c<kw> raf;
+  public boolean rag;
+  public HashMap<String, List<b>> rah;
   
-  static
+  public a()
   {
-    AppMethodBeat.i(156047);
-    c.a locala = new c.a();
-    locala.GvF = new Field[9];
-    locala.columns = new String[10];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "exptId";
-    locala.GvH.put("exptId", "INTEGER PRIMARY KEY ");
-    localStringBuilder.append(" exptId INTEGER PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.GvG = "exptId";
-    locala.columns[1] = "groupId";
-    locala.GvH.put("groupId", "INTEGER");
-    localStringBuilder.append(" groupId INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "exptSeq";
-    locala.GvH.put("exptSeq", "INTEGER");
-    localStringBuilder.append(" exptSeq INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "exptContent";
-    locala.GvH.put("exptContent", "TEXT");
-    localStringBuilder.append(" exptContent TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "startTime";
-    locala.GvH.put("startTime", "LONG");
-    localStringBuilder.append(" startTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "endTime";
-    locala.GvH.put("endTime", "LONG");
-    localStringBuilder.append(" endTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "exptType";
-    locala.GvH.put("exptType", "INTEGER");
-    localStringBuilder.append(" exptType INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "subType";
-    locala.GvH.put("subType", "INTEGER");
-    localStringBuilder.append(" subType INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "exptCheckSum";
-    locala.GvH.put("exptCheckSum", "TEXT");
-    localStringBuilder.append(" exptCheckSum TEXT");
-    locala.columns[9] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(156047);
+    AppMethodBeat.i(210505);
+    this.nEU = new com.tencent.mm.sdk.b.c() {};
+    this.raf = new a.2(this);
+    this.rag = false;
+    this.rah = new HashMap();
+    AppMethodBeat.o(210505);
   }
   
-  private static void a(HashMap<String, String> paramHashMap, JSONObject paramJSONObject)
+  public static a cqU()
   {
-    AppMethodBeat.i(156044);
-    if (paramJSONObject == null)
-    {
-      AppMethodBeat.o(156044);
-      return;
+    AppMethodBeat.i(210506);
+    if (rad == null) {
+      rad = new a();
     }
-    String str = paramJSONObject.optString("Key");
-    paramJSONObject = paramJSONObject.optString("Val");
-    Object localObject;
-    if ((!bs.isNullOrNil(str)) && (!bs.isNullOrNil(paramJSONObject)))
+    a locala = rad;
+    AppMethodBeat.o(210506);
+    return locala;
+  }
+  
+  private void cqW()
+  {
+    AppMethodBeat.i(210512);
+    ad.i("MicroMsg.ExptReportService", "%d sendStopMonitor [%s]", new Object[] { Integer.valueOf(hashCode()), this.rae });
+    if ((aj.cnC()) && (!bt.isNullOrNil(this.rae)))
     {
-      localObject = Base64.decode(paramJSONObject, 0);
-      if ((localObject == null) || (localObject.length <= 0)) {
-        break label134;
-      }
-      if (localObject.length > 1048576) {
-        break label99;
-      }
+      c localc = new c();
+      localc.content = this.rae;
+      localc.type = 10000;
+      localc.key = 2;
+      g.aiU().a(localc, 0);
     }
-    label134:
-    for (;;)
+    this.rae = null;
+    AppMethodBeat.o(210512);
+  }
+  
+  public final void add(String paramString)
+  {
+    AppMethodBeat.i(210513);
+    long l = bt.HI();
+    if (((i.DEBUG) || (i.IS_FLAVOR_RED) || (i.IS_FLAVOR_PURPLE) || (bu.flY())) && (!bt.isNullOrNil(paramString)) && (paramString.startsWith(":exptdebug/")))
     {
-      try
+      paramString = paramString.substring(11);
+      ad.i("MicroMsg.ExptReportService", "%d sendStartMonitor [%s]", new Object[] { Integer.valueOf(hashCode()), paramString });
+      this.rae = paramString;
+      if (aj.cnC())
       {
-        localObject = new String((byte[])localObject, "UTF-8");
-        paramJSONObject = (JSONObject)localObject;
+        localObject = new c();
+        ((c)localObject).content = paramString;
+        ((c)localObject).type = 10000;
+        ((c)localObject).key = 1;
+        g.aiU().a((n)localObject, 0);
       }
-      catch (Exception localException)
-      {
-        continue;
-      }
-      catch (Error localError)
-      {
-        continue;
-      }
-      paramHashMap.put(str, paramJSONObject);
-      AppMethodBeat.o(156044);
-      return;
-      label99:
-      ac.e("MicroMsg.ExptItem", "data length more 1M don't parse, reset value. key[%s]", new Object[] { str });
-      paramJSONObject = "";
-      e.wTc.idkeyStat(863L, 16L, 1L, false);
+      Object localObject = new vp();
+      ((vp)localObject).dKd.dKe = paramString;
+      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+      this.rag = true;
     }
+    ad.i("MicroMsg.ExptReportService", "start expt Debug tools cost time [%d]", new Object[] { Long.valueOf(bt.aO(l)) });
+    AppMethodBeat.o(210513);
   }
   
-  private static String abO(String paramString)
+  public final void cnb()
   {
-    AppMethodBeat.i(156045);
-    String str1 = "";
-    if (bs.isNullOrNil(paramString))
+    AppMethodBeat.i(210514);
+    cqW();
+    vp localvp = new vp();
+    localvp.dKd.dKe = "";
+    com.tencent.mm.sdk.b.a.IbL.l(localvp);
+    AppMethodBeat.o(210514);
+  }
+  
+  public final boolean cqV()
+  {
+    AppMethodBeat.i(210507);
+    if (!bt.isNullOrNil(this.rae))
     {
-      AppMethodBeat.o(156045);
-      return "";
-    }
-    int i = 0;
-    while (i < paramString.length())
-    {
-      char c = paramString.charAt(i);
-      if (c != '^')
-      {
-        str1 = str1 + c;
-        i += 1;
-      }
-      else if (paramString.charAt(i + 1) != '^')
-      {
-        int k = cW(paramString.substring(i + 1, i + 3), 2);
-        int j = cW(paramString.charAt(i + 3), 1) + 5;
-        k = str1.length() - k - j;
-        String str2 = str1.substring(k, j + k);
-        str1 = str1 + str2;
-        i += 4;
-      }
-      else
-      {
-        str1 = str1 + "^";
-        i += 2;
-      }
-    }
-    AppMethodBeat.o(156045);
-    return str1;
-  }
-  
-  private static int cW(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(156046);
-    int j = 0;
-    int i = 0;
-    int k;
-    for (;;)
-    {
-      k = i;
-      if (j >= paramInt) {
-        break;
-      }
-      i *= 64;
-      int m = paramString.charAt(j);
-      k = i;
-      if (m < 32) {
-        break;
-      }
-      k = i;
-      if (m > 95) {
-        break;
-      }
-      i += m - 32;
-      j += 1;
-    }
-    AppMethodBeat.o(156046);
-    return k;
-  }
-  
-  public final boolean abN(String paramString)
-  {
-    AppMethodBeat.i(156037);
-    if (bs.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(156037);
-      return false;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      String str = toString();
-      this.field_exptContent = paramString;
-      this.field_exptId = localJSONObject.optInt("ExptId");
-      this.field_groupId = localJSONObject.optInt("GroupId");
-      this.field_exptSeq = localJSONObject.optInt("ExptSequence");
-      this.field_startTime = localJSONObject.optLong("StartTime");
-      this.field_endTime = localJSONObject.optLong("EndTime");
-      this.field_exptType = localJSONObject.optInt("ExptType");
-      this.field_exptCheckSum = localJSONObject.optString("ExptCheckSum");
-      cmj();
-      if ((this.cache != null) && (this.cache.containsKey("jsoncfg_param_" + this.field_exptId + "_subtype"))) {}
-      for (this.field_subType = bs.getInt((String)this.cache.get("jsoncfg_param_" + this.field_exptId + "_subtype"), 0);; this.field_subType = 0)
-      {
-        ac.v("MicroMsg.ExptItem", "convertFrom new [%s] old[%s] args[%s]", new Object[] { toString(), str, paramString });
-        AppMethodBeat.o(156037);
-        return true;
-      }
-      return false;
-    }
-    catch (Exception localException)
-    {
-      e.wTc.idkeyStat(863L, 5L, 1L, false);
-      ac.e("MicroMsg.ExptItem", "%d convertFrom [%s] error [%s]", new Object[] { Integer.valueOf(hashCode()), paramString, localException.toString() });
-      AppMethodBeat.o(156037);
-    }
-  }
-  
-  public final boolean cmb()
-  {
-    return this.field_exptType == 10;
-  }
-  
-  public final boolean cmc()
-  {
-    return this.field_subType == 1;
-  }
-  
-  public final boolean cmd()
-  {
-    return this.field_subType == 2;
-  }
-  
-  public final boolean cme()
-  {
-    return this.field_subType == 3;
-  }
-  
-  public final boolean cmf()
-  {
-    return this.field_exptType == 2;
-  }
-  
-  public final boolean cmg()
-  {
-    AppMethodBeat.i(156040);
-    if ((this.cache == null) || (this.cache.size() <= 0))
-    {
-      AppMethodBeat.o(156040);
-      return false;
-    }
-    if (bs.getInt((String)this.cache.get("jsoncfg_param_" + this.field_exptId + "_report"), 0) > 0)
-    {
-      AppMethodBeat.o(156040);
+      AppMethodBeat.o(210507);
       return true;
     }
-    AppMethodBeat.o(156040);
+    AppMethodBeat.o(210507);
     return false;
   }
   
-  public final long cmh()
+  public final void onAccountInitialized(e.c paramc)
   {
-    AppMethodBeat.i(156041);
-    if ((this.cache == null) || (this.cache.size() <= 0))
+    AppMethodBeat.i(210508);
+    if (aj.cmR())
     {
-      AppMethodBeat.o(156041);
-      return 0L;
+      com.tencent.mm.sdk.b.a.IbL.b(this.raf);
+      com.tencent.mm.sdk.b.a.IbL.b(this.nEU);
     }
-    long l = bs.getLong((String)this.cache.get("jsoncfg_param_" + this.field_exptId + "_sessionpageid"), 0L);
-    AppMethodBeat.o(156041);
-    return l;
+    AppMethodBeat.o(210508);
   }
   
-  public final String cmi()
+  public final void onAccountRelease()
   {
-    AppMethodBeat.i(156042);
-    if ((cmc()) || (cmd()) || (cme())) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      AppMethodBeat.o(156042);
-      return "";
+    AppMethodBeat.i(210509);
+    cnb();
+    com.tencent.mm.sdk.b.a.IbL.d(this.raf);
+    com.tencent.mm.sdk.b.a.IbL.d(this.nEU);
+    if (this.rah != null) {
+      this.rah.clear();
     }
-    if ((this.cache == null) || (this.cache.size() <= 0)) {
-      cmj();
-    }
-    Object localObject2 = this.cache;
-    if ((localObject2 == null) || (((HashMap)localObject2).size() <= 0))
-    {
-      AppMethodBeat.o(156042);
-      return "";
-    }
-    String str3 = "jsoncfg_param_" + this.field_exptId + "_";
-    int j = bs.getInt((String)((HashMap)localObject2).get(str3 + "size"), 0);
-    if (j <= 0)
-    {
-      AppMethodBeat.o(156042);
-      return "";
-    }
-    Object localObject1 = new StringBuilder();
-    i = 0;
-    while (i < j)
-    {
-      ((StringBuilder)localObject1).append((String)((HashMap)localObject2).get(str3 + i));
-      i += 1;
-    }
-    String str2 = ((StringBuilder)localObject1).toString();
-    for (;;)
-    {
-      try
-      {
-        if (bs.getInt((String)((HashMap)localObject2).get(str3 + "decompress"), 0) <= 0) {
-          continue;
-        }
-        localObject1 = abO(str2);
-        String str4 = ah.dg((String)localObject1);
-        localObject2 = (String)((HashMap)localObject2).get(str3 + "md5");
-        if (str4 == null) {
-          continue;
-        }
-        boolean bool = str4.equalsIgnoreCase((String)localObject2);
-        if (!bool) {
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        ac.printErrStackTrace("MicroMsg.ExptItem", localException, "tosession config e[%s]", new Object[] { localException.toString() });
-        String str1 = "";
-        continue;
-      }
-      AppMethodBeat.o(156042);
-      return localObject1;
-      e.wTc.idkeyStat(863L, 12L, 1L, false);
-      ac.e("MicroMsg.ExptItem", "to session config but md5 not right deJson[%s] json[%s]", new Object[] { localObject1, str2 });
-      localObject1 = "";
-      continue;
-      localObject1 = ((StringBuilder)localObject1).toString();
-    }
+    this.rag = false;
+    AppMethodBeat.o(210509);
   }
   
-  /* Error */
-  public final HashMap<String, String> cmj()
-  {
-    // Byte code:
-    //   0: ldc_w 369
-    //   3: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aload_0
-    //   7: getfield 120	com/tencent/mm/plugin/expt/e/a:cache	Ljava/util/HashMap;
-    //   10: ifnull +16 -> 26
-    //   13: aload_0
-    //   14: getfield 120	com/tencent/mm/plugin/expt/e/a:cache	Ljava/util/HashMap;
-    //   17: astore_2
-    //   18: ldc_w 369
-    //   21: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   24: aload_2
-    //   25: areturn
-    //   26: aload_0
-    //   27: getfield 221	com/tencent/mm/plugin/expt/e/a:field_exptContent	Ljava/lang/String;
-    //   30: invokestatic 143	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
-    //   33: ifne +160 -> 193
-    //   36: aload_0
-    //   37: getfield 221	com/tencent/mm/plugin/expt/e/a:field_exptContent	Ljava/lang/String;
-    //   40: astore_2
-    //   41: new 131	org/json/JSONObject
-    //   44: dup
-    //   45: aload_2
-    //   46: invokespecial 217	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   49: ldc_w 371
-    //   52: invokevirtual 374	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
-    //   55: astore_3
-    //   56: aload_3
-    //   57: ifnonnull +11 -> 68
-    //   60: ldc_w 369
-    //   63: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   66: aconst_null
-    //   67: areturn
-    //   68: new 157	java/util/HashMap
-    //   71: dup
-    //   72: invokespecial 375	java/util/HashMap:<init>	()V
-    //   75: astore_2
-    //   76: aload_3
-    //   77: instanceof 377
-    //   80: ifeq +56 -> 136
-    //   83: aload_3
-    //   84: checkcast 377	org/json/JSONArray
-    //   87: astore_3
-    //   88: aload_3
-    //   89: ifnull +29 -> 118
-    //   92: iconst_0
-    //   93: istore_1
-    //   94: iload_1
-    //   95: aload_3
-    //   96: invokevirtual 378	org/json/JSONArray:length	()I
-    //   99: if_icmpge +19 -> 118
-    //   102: aload_2
-    //   103: aload_3
-    //   104: iload_1
-    //   105: invokevirtual 382	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   108: invokestatic 384	com/tencent/mm/plugin/expt/e/a:a	(Ljava/util/HashMap;Lorg/json/JSONObject;)V
-    //   111: iload_1
-    //   112: iconst_1
-    //   113: iadd
-    //   114: istore_1
-    //   115: goto -21 -> 94
-    //   118: aload_0
-    //   119: aload_2
-    //   120: putfield 120	com/tencent/mm/plugin/expt/e/a:cache	Ljava/util/HashMap;
-    //   123: aload_0
-    //   124: getfield 120	com/tencent/mm/plugin/expt/e/a:cache	Ljava/util/HashMap;
-    //   127: astore_2
-    //   128: ldc_w 369
-    //   131: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   134: aload_2
-    //   135: areturn
-    //   136: aload_3
-    //   137: instanceof 131
-    //   140: ifeq +11 -> 151
-    //   143: aload_2
-    //   144: aload_3
-    //   145: checkcast 131	org/json/JSONObject
-    //   148: invokestatic 384	com/tencent/mm/plugin/expt/e/a:a	(Ljava/util/HashMap;Lorg/json/JSONObject;)V
-    //   151: goto -33 -> 118
-    //   154: astore_3
-    //   155: aconst_null
-    //   156: astore_2
-    //   157: ldc 160
-    //   159: ldc_w 386
-    //   162: iconst_2
-    //   163: anewarray 164	java/lang/Object
-    //   166: dup
-    //   167: iconst_0
-    //   168: aload_3
-    //   169: invokevirtual 311	java/lang/Exception:toString	()Ljava/lang/String;
-    //   172: aastore
-    //   173: dup
-    //   174: iconst_1
-    //   175: aload_0
-    //   176: getfield 231	com/tencent/mm/plugin/expt/e/a:field_exptId	I
-    //   179: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   182: aastore
-    //   183: invokestatic 170	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   186: goto -68 -> 118
-    //   189: astore_3
-    //   190: goto -33 -> 157
-    //   193: aconst_null
-    //   194: astore_2
-    //   195: goto -77 -> 118
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	198	0	this	a
-    //   93	22	1	i	int
-    //   17	178	2	localObject1	Object
-    //   55	90	3	localObject2	Object
-    //   154	15	3	localException1	Exception
-    //   189	1	3	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   41	56	154	java/lang/Exception
-    //   68	76	154	java/lang/Exception
-    //   76	88	189	java/lang/Exception
-    //   94	111	189	java/lang/Exception
-    //   136	151	189	java/lang/Exception
-  }
+  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
   
-  public final c.a getDBInfo()
-  {
-    return info;
-  }
+  public final void onActivityDestroyed(Activity paramActivity) {}
   
-  public final boolean isReady()
+  public final void onActivityPaused(Activity paramActivity)
   {
-    boolean bool2 = false;
-    AppMethodBeat.i(156039);
-    boolean bool1;
-    if (this.field_exptSeq < 0) {
-      bool1 = bool2;
-    }
-    for (;;)
+    AppMethodBeat.i(210511);
+    paramActivity = paramActivity.getComponentName().getClassName();
+    if ((aj.cnC()) && (cqV()))
     {
-      AppMethodBeat.o(156039);
-      return bool1;
-      long l = bs.aNx();
-      bool1 = bool2;
-      if (l >= this.field_startTime) {
-        if (this.field_endTime > 0L)
-        {
-          bool1 = bool2;
-          if (l > this.field_endTime) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
+      c localc = new c();
+      localc.content = paramActivity;
+      localc.type = 10002;
+      localc.key = 2;
+      g.aiU().a(localc, 0);
     }
+    AppMethodBeat.o(210511);
   }
   
-  public final String toString()
+  public final void onActivityResumed(Activity paramActivity)
   {
-    AppMethodBeat.i(156038);
-    String str = "{ Id: " + this.field_exptId + " group: " + this.field_groupId + " seq: " + this.field_exptSeq + " checksum: " + this.field_exptCheckSum + " startTime: " + this.field_startTime + " endTime: " + this.field_endTime + " content: " + this.field_exptContent + " type: " + this.field_exptType + " subtype: " + this.field_subType + " }";
-    AppMethodBeat.o(156038);
-    return str;
+    AppMethodBeat.i(210510);
+    paramActivity = paramActivity.getComponentName().getClassName();
+    if ((aj.cnC()) && (cqV()))
+    {
+      c localc = new c();
+      localc.content = paramActivity;
+      localc.type = 10002;
+      localc.key = 1;
+      g.aiU().a(localc, 0);
+    }
+    AppMethodBeat.o(210510);
+  }
+  
+  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public final void onActivityStarted(Activity paramActivity) {}
+  
+  public final void onActivityStopped(Activity paramActivity) {}
+  
+  public final void r(Context paramContext, Intent paramIntent)
+  {
+    AppMethodBeat.i(210515);
+    paramIntent.setClass(paramContext, KvInfoUI.class);
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "com/tencent/mm/plugin/expt/kvdebug/ExptReportService", "showKvDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mq(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/expt/kvdebug/ExptReportService", "showKvDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(210515);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.ui.base.preference.HeadImgNewPreference mm:key="settings_change_avatar" mm:layout="@layout/aop" mm:title="@string/f51" />
     <Preference mm:key="settings_name" mm:layout="@layout/aop" mm:title="@string/f8i" />
+    <Preference mm:key="settings_pat" mm:layout="@layout/aop" mm:title="@string/hw2" />
     <Preference mm:key="settings_username" mm:layout="@layout/aop" mm:title="@string/fc_" />
     <Preference mm:key="settings_qrcode" mm:layout="@layout/aop" mm:title="@string/f_7" mm:widgetLayout="@layout/aq7" />
     <Preference mm:key="settings_more_info" mm:layout="@layout/aop" mm:title="@string/uh" />

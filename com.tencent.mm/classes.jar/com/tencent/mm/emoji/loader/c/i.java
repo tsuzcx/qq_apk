@@ -2,19 +2,19 @@ package com.tencent.mm.emoji.loader.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.a.m;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"checkUseCdn", "", "fetcherType", "", "checkUseEncrypt", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "checkUseTpUrl", "checkUseWxam", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"checkUseCdn", "", "fetcherType", "", "checkUseEncrypt", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "checkUseTpUrl", "checkUseWxam", "plugin-emojisdk_release"})
 public final class i
 {
   public static final boolean h(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105444);
-    k.h(paramEmojiInfo, "emojiInfo");
-    if (!bs.isNullOrNil(paramEmojiInfo.field_tpurl))
+    p.h(paramEmojiInfo, "emojiInfo");
+    if (!bt.isNullOrNil(paramEmojiInfo.field_tpurl))
     {
       AppMethodBeat.o(105444);
       return true;
@@ -26,8 +26,8 @@ public final class i
   public static final boolean i(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105445);
-    k.h(paramEmojiInfo, "emojiInfo");
-    if ((m.acw()) && (!bs.isNullOrNil(paramEmojiInfo.field_externUrl)) && (!bs.isNullOrNil(paramEmojiInfo.field_aeskey)))
+    p.h(paramEmojiInfo, "emojiInfo");
+    if ((m.afa()) && (!bt.isNullOrNil(paramEmojiInfo.field_externUrl)) && (!bt.isNullOrNil(paramEmojiInfo.field_aeskey)))
     {
       AppMethodBeat.o(105445);
       return true;
@@ -39,8 +39,8 @@ public final class i
   public static final boolean j(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105446);
-    k.h(paramEmojiInfo, "emojiInfo");
-    if ((!bs.isNullOrNil(paramEmojiInfo.field_encrypturl)) && (!bs.isNullOrNil(paramEmojiInfo.field_aeskey)))
+    p.h(paramEmojiInfo, "emojiInfo");
+    if ((!bt.isNullOrNil(paramEmojiInfo.field_encrypturl)) && (!bt.isNullOrNil(paramEmojiInfo.field_aeskey)))
     {
       AppMethodBeat.o(105446);
       return true;

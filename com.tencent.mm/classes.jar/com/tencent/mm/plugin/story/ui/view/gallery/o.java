@@ -4,125 +4,127 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.f.d.h;
 import com.tencent.mm.plugin.story.f.d.h.a;
+import com.tencent.mm.plugin.story.f.k;
 import com.tencent.mm.plugin.story.h.b;
 import com.tencent.mm.plugin.story.h.b.a;
 import com.tencent.mm.plugin.story.h.b.b;
 import com.tencent.mm.plugin.story.h.c;
 import com.tencent.mm.plugin.story.i.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import d.a.j;
+import d.g.b.p;
 import d.l;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewMgrPreLoad;", "", "()V", "TAG", "", "pool", "", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewMgr;", "kotlin.jvm.PlatformType", "", "clean", "", "get", "preload", "", "username", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewMgrPreLoad;", "", "()V", "TAG", "", "pool", "", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewMgr;", "kotlin.jvm.PlatformType", "", "clean", "", "get", "preload", "", "username", "plugin-story_release"})
 public final class o
 {
-  private static List<n> zOG;
-  public static final o zOH;
+  private static List<n> Bgh;
+  public static final o Bgi;
   
   static
   {
     AppMethodBeat.i(120668);
-    zOH = new o();
-    zOG = Collections.synchronizedList((List)new LinkedList());
+    Bgi = new o();
+    Bgh = Collections.synchronizedList((List)new LinkedList());
     AppMethodBeat.o(120668);
   }
   
-  public static boolean axp(String paramString)
+  public static boolean aCt(String paramString)
   {
     AppMethodBeat.i(120665);
-    d.g.b.k.h(paramString, "username");
-    ac.i("MicroMsg.StoryVideoViewMgrPreLoad", "preLoad " + paramString + " pool " + zOG.size());
-    if (zOG.size() > 0)
+    p.h(paramString, "username");
+    ad.i("MicroMsg.StoryVideoViewMgrPreLoad", "preLoad " + paramString + " pool " + Bgh.size());
+    if (Bgh.size() > 0)
     {
-      localObject1 = com.tencent.mm.plugin.story.f.k.zsq;
-      paramString = com.tencent.mm.plugin.story.f.k.awy(paramString);
+      localObject1 = k.AKk;
+      paramString = k.aBD(paramString);
       if (paramString.isValid())
       {
-        localObject1 = h.zuK;
+        localObject1 = h.AMF;
         paramString = h.a.a(paramString);
-        localObject1 = zOG;
-        d.g.b.k.g(localObject1, "pool");
-        localObject1 = (n)j.iP((List)localObject1);
+        localObject1 = Bgh;
+        p.g(localObject1, "pool");
+        localObject1 = (n)j.jd((List)localObject1);
         if (localObject1 != null) {
-          ((n)localObject1).a(paramString.zuF, false);
+          ((n)localObject1).a(paramString.AMA, false);
         }
       }
       AppMethodBeat.o(120665);
       return false;
     }
-    Object localObject1 = com.tencent.mm.plugin.story.f.k.zsq;
-    paramString = com.tencent.mm.plugin.story.f.k.awy(paramString);
-    localObject1 = c.zAs;
-    c.ym(paramString.field_syncId);
-    localObject1 = b.zzY;
-    b.ym(paramString.field_syncId);
-    if (paramString.dZa() > 0L)
+    Object localObject1 = k.AKk;
+    paramString = k.aBD(paramString);
+    localObject1 = c.ARR;
+    c.AK(paramString.field_syncId);
+    localObject1 = b.ARx;
+    b.AK(paramString.field_syncId);
+    if (paramString.elp() > 0L)
     {
-      localObject1 = b.zzY;
-      b.dXo();
+      localObject1 = b.ARx;
+      b.ejD();
     }
     if (paramString.isValid())
     {
-      localObject1 = h.zuK;
+      localObject1 = h.AMF;
       localObject1 = h.a.a(paramString);
-      Object localObject2 = b.zzY;
-      d.g.b.k.h(localObject1, "galleryItem");
-      d.g.b.k.h(paramString, "extinfo");
-      b.zzP = (h)localObject1;
-      b.zzL = new b.a(paramString.getUserName(), b.b.zAg);
-      if (paramString.dZa() > 0L)
+      Object localObject2 = b.ARx;
+      p.h(localObject1, "galleryItem");
+      p.h(paramString, "extinfo");
+      b.ARo = (h)localObject1;
+      b.ARk = new b.a(paramString.getUserName(), b.b.ARF);
+      if (paramString.elp() > 0L)
       {
-        b.e(b.pnx, 4L, 1L);
-        localObject2 = b.zzL;
+        b.e(b.pQX, 4L, 1L);
+        localObject2 = b.ARk;
         if (localObject2 != null)
         {
-          ((b.a)localObject2).ohk = false;
-          ((b.a)localObject2).zAd = bs.eWj();
+          ((b.a)localObject2).oKD = false;
+          ((b.a)localObject2).ARC = bt.flT();
         }
       }
       for (;;)
       {
-        if (((h)localObject1).zuF != null)
+        if (((h)localObject1).AMA != null)
         {
-          if (paramString.dZc())
+          if (paramString.elr())
           {
-            b.e(b.pnx, 140L, 1L);
-            if (paramString.dZa() > 0L) {
-              b.e(b.pnx, 142L, 1L);
+            b.e(b.pQX, 140L, 1L);
+            if (paramString.elp() > 0L) {
+              b.e(b.pQX, 142L, 1L);
             }
           }
-          if (b.d(((h)localObject1).zuF) == 1)
+          if (b.d(((h)localObject1).AMA) == 1)
           {
-            b.e(b.pnx, 5L, 1L);
-            if (paramString.dZc()) {
-              b.e(b.pnx, 141L, 1L);
+            b.e(b.pQX, 5L, 1L);
+            if (paramString.elr()) {
+              b.e(b.pQX, 141L, 1L);
             }
           }
         }
         paramString = new n();
-        if (paramString.zOs == null)
+        if (paramString.BfT == null)
         {
-          localObject2 = ai.getContext();
-          d.g.b.k.g(localObject2, "MMApplicationContext.getContext()");
-          paramString.gt((Context)localObject2);
+          localObject2 = aj.getContext();
+          p.g(localObject2, "MMApplicationContext.getContext()");
+          paramString.gw((Context)localObject2);
         }
         paramString.setMute(true);
-        paramString.a(((h)localObject1).zuF, false);
-        paramString.Er();
-        zOG.add(paramString);
+        paramString.a(((h)localObject1).AMA, false);
+        paramString.FQ();
+        Bgh.add(paramString);
         AppMethodBeat.o(120665);
         return true;
-        localObject2 = b.zzL;
+        localObject2 = b.ARk;
         if (localObject2 != null)
         {
-          ((b.a)localObject2).ohk = true;
-          ((b.a)localObject2).zAd = bs.eWj();
+          ((b.a)localObject2).oKD = true;
+          ((b.a)localObject2).ARC = bt.flT();
         }
       }
     }
@@ -133,30 +135,30 @@ public final class o
   public static void clean()
   {
     AppMethodBeat.i(120667);
-    ac.i("MicroMsg.StoryVideoViewMgrPreLoad", "StoryVideoViewMgrPreLoad clean " + zOG.size());
-    Object localObject = zOG;
-    d.g.b.k.g(localObject, "pool");
+    ad.i("MicroMsg.StoryVideoViewMgrPreLoad", "StoryVideoViewMgrPreLoad clean " + Bgh.size());
+    Object localObject = Bgh;
+    p.g(localObject, "pool");
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      StoryVideoView localStoryVideoView = ((n)((Iterator)localObject).next()).zOs;
+      StoryVideoView localStoryVideoView = ((n)((Iterator)localObject).next()).BfT;
       if (localStoryVideoView != null) {
         localStoryVideoView.stop();
       }
     }
-    zOG.clear();
+    Bgh.clear();
     AppMethodBeat.o(120667);
   }
   
-  public static n ean()
+  public static n emC()
   {
     AppMethodBeat.i(120666);
-    ac.i("MicroMsg.StoryVideoViewMgrPreLoad", "StoryVideoViewMgrPreLoad get " + zOG.size());
-    Object localObject = zOG;
-    d.g.b.k.g(localObject, "pool");
-    localObject = (n)j.iP((List)localObject);
+    ad.i("MicroMsg.StoryVideoViewMgrPreLoad", "StoryVideoViewMgrPreLoad get " + Bgh.size());
+    Object localObject = Bgh;
+    p.g(localObject, "pool");
+    localObject = (n)j.jd((List)localObject);
     if (localObject != null) {
-      zOG.remove(localObject);
+      Bgh.remove(localObject);
     }
     AppMethodBeat.o(120666);
     return localObject;

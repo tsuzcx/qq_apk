@@ -1,66 +1,44 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.plugin.webview.modeltools.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.luggage.m;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class aa
-  extends bo<f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  public final void b(final a<f>.a parama)
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78565);
-    final JSONObject localJSONObject = parama.bWS.bVY;
-    if (localJSONObject == null)
+    AppMethodBeat.i(78562);
+    ad.i("MicroMsg.JsApiHideOptionMenu", "invoke");
+    m localm = ((g)paramb.chg).ePe();
+    if (localm == null)
     {
-      parama.a("invalid_params", null);
-      AppMethodBeat.o(78565);
+      ad.e("MicroMsg.JsApiHideOptionMenu", "actionBar is null");
+      paramb.a("fail", null);
+      AppMethodBeat.o(78562);
       return;
     }
-    Object localObject = localJSONObject.optJSONArray("urls");
-    if ((localObject == null) || (((JSONArray)localObject).length() == 0))
-    {
-      ac.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
-      parama.a("invalid_url", null);
-      AppMethodBeat.o(78565);
-      return;
-    }
-    localObject = new HashMap();
-    ((HashMap)localObject).put("current", localJSONObject.optString("current"));
-    j.a((Map)localObject, ((f)parama.bWR).getWebView());
-    h.a("com.tencent.mm", new IPCString(localJSONObject.toString()), a.class, new d() {});
-    AppMethodBeat.o(78565);
+    localm.ePy();
+    paramb.a("", null);
+    AppMethodBeat.o(78562);
   }
   
-  public final int bYk()
+  public final int ccO()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "imagePreview";
+    return "hideOptionMenu";
   }
-  
-  static class a
-    implements b<IPCString, Bundle>
-  {}
 }
 
 

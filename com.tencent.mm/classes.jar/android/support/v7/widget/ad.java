@@ -4,31 +4,31 @@ import android.view.View;
 
 final class ad
 {
-  boolean anT = true;
-  int anU;
-  int anV;
-  int anW;
-  int anX = 0;
-  int anY = 0;
-  boolean anZ;
-  boolean aoa;
+  boolean apL = true;
+  int apM;
+  int apN;
+  int apO;
+  int apP = 0;
+  int apQ = 0;
+  boolean apR;
+  boolean apS;
   int mLayoutDirection;
   
   final View a(RecyclerView.o paramo)
   {
-    paramo = paramo.cv(this.anV);
-    this.anV += this.anW;
+    paramo = paramo.cv(this.apN);
+    this.apN += this.apO;
     return paramo;
   }
   
   final boolean b(RecyclerView.t paramt)
   {
-    return (this.anV >= 0) && (this.anV < paramt.getItemCount());
+    return (this.apN >= 0) && (this.apN < paramt.getItemCount());
   }
   
   public final String toString()
   {
-    return "LayoutState{mAvailable=" + this.anU + ", mCurrentPosition=" + this.anV + ", mItemDirection=" + this.anW + ", mLayoutDirection=" + this.mLayoutDirection + ", mStartLine=" + this.anX + ", mEndLine=" + this.anY + '}';
+    return "LayoutState{mAvailable=" + this.apM + ", mCurrentPosition=" + this.apN + ", mItemDirection=" + this.apO + ", mLayoutDirection=" + this.mLayoutDirection + ", mStartLine=" + this.apP + ", mEndLine=" + this.apQ + '}';
   }
 }
 

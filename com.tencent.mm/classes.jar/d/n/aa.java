@@ -1,24 +1,24 @@
 package d.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/text/SystemProperties;", "", "()V", "LINE_SEPARATOR", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/text/SystemProperties;", "", "()V", "LINE_SEPARATOR", "", "kotlin-stdlib"})
 final class aa
 {
-  public static final String LQw;
-  public static final aa LQx;
+  public static final String NHr;
+  public static final aa NHs;
   
   static
   {
     AppMethodBeat.i(129359);
-    LQx = new aa();
+    NHs = new aa();
     String str = System.getProperty("line.separator");
     if (str == null) {
-      k.fOy();
+      p.gfZ();
     }
-    LQw = str;
+    NHr = str;
     AppMethodBeat.o(129359);
   }
 }

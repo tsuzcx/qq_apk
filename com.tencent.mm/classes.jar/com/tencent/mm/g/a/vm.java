@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class vm
   extends b
 {
+  public vm.a dJF;
+  public b dJG;
+  
   public vm()
   {
     this((byte)0);
@@ -12,8 +16,18 @@ public final class vm
   
   private vm(byte paramByte)
   {
-    this.Gqe = false;
+    AppMethodBeat.i(153187);
+    this.dJF = new vm.a();
+    this.dJG = new b();
+    this.IbR = false;
     this.callback = null;
+    AppMethodBeat.o(153187);
+  }
+  
+  public static final class b
+  {
+    public boolean dJY;
+    public String dJZ;
   }
 }
 

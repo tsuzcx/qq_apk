@@ -4,81 +4,79 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.b.d;
 import com.tencent.mm.pluginsdk.a.e;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.Iterator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/util/EmojiFileUtil;", "", "()V", "MaxThumbSize", "", "TAG", "", "emojiGifRoot", "getEmojiGifRoot", "()Ljava/lang/String;", "emojiSystemRoot", "kotlin.jvm.PlatformType", "getEmojiSystemRoot", "emojiTempRoot", "getEmojiTempRoot", "emojiThumbRoot", "getEmojiThumbRoot", "emojiThumbSuffix", "getEmojiThumbSuffix", "emojiVFSRoot", "getEmojiVFSRoot", "getThumbPath", "md5", "removeAllGenerateThumb", "", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/util/EmojiFileUtil;", "", "()V", "MaxThumbSize", "", "TAG", "", "emojiGifRoot", "getEmojiGifRoot", "()Ljava/lang/String;", "emojiSystemRoot", "kotlin.jvm.PlatformType", "getEmojiSystemRoot", "emojiTempRoot", "getEmojiTempRoot", "emojiThumbRoot", "getEmojiThumbRoot", "emojiThumbSuffix", "getEmojiThumbSuffix", "emojiVFSRoot", "getEmojiVFSRoot", "getThumbPath", "md5", "removeAllGenerateThumb", "", "plugin-emojisdk_release"})
 public final class a
 {
   private static final String TAG = "MicroMsg.EmojiFileUtil";
-  private static final long fWG = 62914560L;
-  private static final String fWH;
-  private static final String fWI;
-  private static final String fWJ;
-  private static final String fWK;
-  private static final String fWL = "_cover";
-  public static final a fWM;
+  private static final long gqj = 62914560L;
+  private static final String gqk;
+  private static final String gql;
+  private static final String gqm = "_cover";
+  public static final a gqn;
   
   static
   {
     AppMethodBeat.i(177058);
-    fWM = new a();
+    gqn = new a();
     TAG = "MicroMsg.EmojiFileUtil";
-    fWG = 62914560L;
-    Object localObject1 = new StringBuilder();
-    Object localObject2 = g.ad(d.class);
-    k.g(localObject2, "MMKernel.plugin(IPluginEmoji::class.java)");
-    localObject2 = ((d)localObject2).getProvider();
-    k.g(localObject2, "MMKernel.plugin(IPluginEmoji::class.java).provider");
-    localObject1 = ((e)localObject2).getAccPath() + "emoji/";
-    fWH = (String)localObject1;
-    fWI = (String)localObject1;
-    fWJ = fWH;
-    fWK = fWH + "/temp/";
-    fWL = "_cover";
+    gqj = 62914560L;
+    gqk = agp();
+    gql = agp() + "/temp/";
+    gqm = "_cover";
     AppMethodBeat.o(177058);
   }
   
-  public static String adJ()
+  public static String agp()
   {
-    return fWI;
+    AppMethodBeat.i(218992);
+    Object localObject1 = new StringBuilder();
+    Object localObject2 = g.ad(d.class);
+    p.g(localObject2, "MMKernel.plugin(IPluginEmoji::class.java)");
+    localObject2 = ((d)localObject2).getProvider();
+    p.g(localObject2, "MMKernel.plugin(IPluginEmoji::class.java).provider");
+    localObject1 = ((e)localObject2).getAccPath() + "emoji/";
+    AppMethodBeat.o(218992);
+    return localObject1;
   }
   
-  public static String adK()
+  public static String agq()
   {
-    return fWK;
+    return gql;
   }
   
-  public static void adL()
+  public static void agr()
   {
     AppMethodBeat.i(177057);
-    Object localObject = com.tencent.mm.emoji.a.i.ach().dh(true);
-    k.g(localObject, "emojiList");
+    Object localObject = com.tencent.mm.emoji.a.i.aeL().dj(true);
+    p.g(localObject, "emojiList");
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       EmojiInfo localEmojiInfo = (EmojiInfo)((Iterator)localObject).next();
-      if (bs.isNullOrNil(localEmojiInfo.field_thumbUrl))
+      if (bt.isNullOrNil(localEmojiInfo.field_thumbUrl))
       {
-        k.g(localEmojiInfo, "it");
-        com.tencent.mm.vfs.i.deleteFile(localEmojiInfo.ghe());
+        p.g(localEmojiInfo, "it");
+        com.tencent.mm.vfs.i.deleteFile(localEmojiInfo.gzR());
       }
     }
     AppMethodBeat.o(177057);
   }
   
-  public static String tl(String paramString)
+  public static String wb(String paramString)
   {
     AppMethodBeat.i(177056);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(177056);
       return null;
     }
-    paramString = fWJ + paramString + fWL;
+    paramString = gqk + paramString + gqm;
     AppMethodBeat.o(177056);
     return paramString;
   }

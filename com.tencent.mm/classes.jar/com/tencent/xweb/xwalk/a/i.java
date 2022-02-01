@@ -2,11 +2,11 @@ package com.tencent.xweb.xwalk.a;
 
 public abstract interface i
 {
-  public abstract void afY(int paramInt);
+  public abstract void aiy(int paramInt);
   
-  public abstract void afZ(int paramInt);
+  public abstract void aiz(int paramInt);
   
-  public abstract void fJe();
+  public abstract void gaA();
 }
 
 

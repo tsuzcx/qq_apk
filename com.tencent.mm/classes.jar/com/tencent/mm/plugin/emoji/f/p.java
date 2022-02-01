@@ -1,22 +1,21 @@
 package com.tencent.mm.plugin.emoji.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.b;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bby;
-import com.tencent.mm.protocal.protobuf.bbz;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.bgc;
+import com.tencent.mm.protocal.protobuf.bgd;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -26,10 +25,10 @@ public final class p
   extends n
   implements k
 {
-  private g callback;
+  private com.tencent.mm.al.f callback;
   private int mScene;
-  private int pcC;
-  public byte[] pcq;
+  public byte[] pGa;
+  private int pGm;
   private final b rr;
   
   public p(int paramInt, byte[] paramArrayOfByte)
@@ -40,79 +39,79 @@ public final class p
   private p(int paramInt, byte[] paramArrayOfByte, byte paramByte)
   {
     AppMethodBeat.i(108715);
-    this.pcq = null;
+    this.pGa = null;
     b.a locala = new b.a();
-    locala.hvt = new bby();
-    locala.hvu = new bbz();
+    locala.hNM = new bgc();
+    locala.hNN = new bgd();
     locala.uri = "/cgi-bin/micromsg-bin/mmgetpersonaldesigner";
     locala.funcId = 720;
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aAz();
-    this.pcC = paramInt;
-    this.pcq = paramArrayOfByte;
+    this.rr = locala.aDC();
+    this.pGm = paramInt;
+    this.pGa = paramArrayOfByte;
     this.mScene = 0;
     AppMethodBeat.o(108715);
   }
   
-  public static com.tencent.mm.plugin.emoji.model.f a(bbz parambbz)
+  public static com.tencent.mm.plugin.emoji.model.f a(bgd parambgd)
   {
     AppMethodBeat.i(108718);
-    ac.d("MicroMsg.emoji.NetSceneGetPersonalDesigner", "getEmotionListModel");
-    if (parambbz == null)
+    ad.d("MicroMsg.emoji.NetSceneGetPersonalDesigner", "getEmotionListModel");
+    if (parambgd == null)
     {
       AppMethodBeat.o(108718);
       return null;
     }
     com.tencent.mm.plugin.emoji.model.f localf = new com.tencent.mm.plugin.emoji.model.f();
-    if ((parambbz != null) && (parambbz.EmotionList != null))
+    if ((parambgd != null) && (parambgd.EmotionList != null))
     {
-      localf.pay = parambbz.EmotionList.size();
+      localf.pEi = parambgd.EmotionList.size();
       ArrayList localArrayList = new ArrayList();
-      parambbz = parambbz.EmotionList.iterator();
-      while (parambbz.hasNext())
+      parambgd = parambgd.EmotionList.iterator();
+      while (parambgd.hasNext())
       {
-        EmotionSummary localEmotionSummary = (EmotionSummary)parambbz.next();
+        EmotionSummary localEmotionSummary = (EmotionSummary)parambgd.next();
         if (localEmotionSummary.ProductID != null) {
           localArrayList.add(new com.tencent.mm.plugin.emoji.a.a.f(localEmotionSummary));
         }
       }
-      localf.paz = localArrayList;
+      localf.pEj = localArrayList;
     }
     AppMethodBeat.o(108718);
     return localf;
   }
   
-  public final bbz ccI()
+  public final bgd chm()
   {
     if (this.rr == null) {
       return null;
     }
-    return (bbz)this.rr.hvs.hvw;
+    return (bgd)this.rr.hNL.hNQ;
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, com.tencent.mm.al.f paramf)
   {
     AppMethodBeat.i(108717);
-    this.callback = paramg;
-    paramg = (bby)this.rr.hvr.hvw;
-    paramg.DesignerUin = this.pcC;
-    if (this.pcq != null)
+    this.callback = paramf;
+    paramf = (bgc)this.rr.hNK.hNQ;
+    paramf.DesignerUin = this.pGm;
+    if (this.pGa != null)
     {
-      paramg.ReqBuf = z.al(this.pcq);
-      paramg.Scene = this.mScene;
-      if (paramg.ReqBuf != null) {
+      paramf.ReqBuf = z.al(this.pGa);
+      paramf.Scene = this.mScene;
+      if (paramf.ReqBuf != null) {
         break label106;
       }
     }
     label106:
-    for (paramg = "Buf is NULL";; paramg = paramg.ReqBuf.toString())
+    for (paramf = "Buf is NULL";; paramf = paramf.ReqBuf.toString())
     {
-      ac.d("MicroMsg.emoji.NetSceneGetPersonalDesigner", paramg);
+      ad.d("MicroMsg.emoji.NetSceneGetPersonalDesigner", paramf);
       int i = dispatch(parame, this.rr, this);
       AppMethodBeat.o(108717);
       return i;
-      paramg.ReqBuf = new SKBuiltinBuffer_t();
+      paramf.ReqBuf = new SKBuiltinBuffer_t();
       break;
     }
   }
@@ -125,10 +124,10 @@ public final class p
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(108716);
-    ac.i("MicroMsg.emoji.NetSceneGetPersonalDesigner", "NetSceneGetPersonalDesigner errType:%d,errcode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (bbz)((b)paramq).hvs.hvw;
+    ad.i("MicroMsg.emoji.NetSceneGetPersonalDesigner", "NetSceneGetPersonalDesigner errType:%d,errcode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramq = (bgd)((b)paramq).hNL.hNQ;
     if (paramq.ReqBuf != null) {
-      this.pcq = z.a(paramq.ReqBuf);
+      this.pGa = z.a(paramq.ReqBuf);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(108716);
@@ -141,12 +140,12 @@ public final class p
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    return n.b.hwa;
+    return n.b.hOp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.p
  * JD-Core Version:    0.7.0.1
  */

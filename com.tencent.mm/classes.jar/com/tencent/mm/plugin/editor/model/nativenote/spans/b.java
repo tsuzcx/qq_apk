@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends e<Boolean, BoldSpan>
 {
-  public final boolean cS(Object paramObject)
+  public final boolean cV(Object paramObject)
   {
     AppMethodBeat.i(181926);
     if (((paramObject instanceof BoldSpan)) || (((paramObject instanceof StyleSpan)) && (((StyleSpan)paramObject).getStyle() == 1)))
@@ -18,14 +18,14 @@ public final class b
     return false;
   }
   
-  public final int caI()
+  public final int cfm()
   {
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.b
  * JD-Core Version:    0.7.0.1
  */

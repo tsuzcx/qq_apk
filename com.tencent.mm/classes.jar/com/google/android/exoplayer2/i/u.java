@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class u
 {
-  public long bfV;
-  private long bxa;
-  public volatile long bxb;
+  private long bHo;
+  public volatile long bHp;
+  public long bqp;
   
   public u(long paramLong)
   {
     AppMethodBeat.i(93205);
-    this.bxb = -9223372036854775807L;
+    this.bHp = -9223372036854775807L;
     an(paramLong);
     AppMethodBeat.o(93205);
   }
@@ -35,7 +35,7 @@ public final class u
     //   2: ldc 39
     //   4: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 24	com/google/android/exoplayer2/i/u:bxb	J
+    //   8: getfield 24	com/google/android/exoplayer2/i/u:bHp	J
     //   11: ldc2_w 21
     //   14: lcmp
     //   15: ifne +22 -> 37
@@ -45,7 +45,7 @@ public final class u
     //   21: invokestatic 45	com/google/android/exoplayer2/i/a:checkState	(Z)V
     //   24: aload_0
     //   25: lload_1
-    //   26: putfield 47	com/google/android/exoplayer2/i/u:bfV	J
+    //   26: putfield 47	com/google/android/exoplayer2/i/u:bqp	J
     //   29: ldc 39
     //   31: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   34: aload_0
@@ -79,9 +79,9 @@ public final class u
       AppMethodBeat.o(93207);
       return -9223372036854775807L;
     }
-    if (this.bxb != -9223372036854775807L)
+    if (this.bHp != -9223372036854775807L)
     {
-      long l2 = ar(this.bxb);
+      long l2 = ar(this.bHp);
       long l3 = (4294967296L + l2) / 8589934592L;
       long l1 = (l3 - 1L) * 8589934592L + paramLong;
       paramLong = l3 * 8589934592L + paramLong;
@@ -105,20 +105,20 @@ public final class u
       AppMethodBeat.o(93208);
       return -9223372036854775807L;
     }
-    if (this.bxb != -9223372036854775807L) {
-      this.bxb = paramLong;
+    if (this.bHp != -9223372036854775807L) {
+      this.bHp = paramLong;
     }
     for (;;)
     {
-      long l = this.bxa;
+      long l = this.bHo;
       AppMethodBeat.o(93208);
       return l + paramLong;
-      if (this.bfV != 9223372036854775807L) {
-        this.bxa = (this.bfV - paramLong);
+      if (this.bqp != 9223372036854775807L) {
+        this.bHo = (this.bqp - paramLong);
       }
       try
       {
-        this.bxb = paramLong;
+        this.bHp = paramLong;
         notifyAll();
       }
       finally
@@ -128,24 +128,24 @@ public final class u
     }
   }
   
-  public final long vN()
+  public final long xk()
   {
     long l = -9223372036854775807L;
-    if (this.bfV == 9223372036854775807L) {
+    if (this.bqp == 9223372036854775807L) {
       l = 0L;
     }
-    while (this.bxb == -9223372036854775807L) {
+    while (this.bHp == -9223372036854775807L) {
       return l;
     }
-    return this.bxa;
+    return this.bHo;
   }
   
-  public final void vO()
+  public final void xl()
   {
     try
     {
       AppMethodBeat.i(93209);
-      while (this.bxb == -9223372036854775807L) {
+      while (this.bHp == -9223372036854775807L) {
         wait();
       }
       AppMethodBeat.o(93209);
@@ -155,7 +155,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.i.u
  * JD-Core Version:    0.7.0.1
  */

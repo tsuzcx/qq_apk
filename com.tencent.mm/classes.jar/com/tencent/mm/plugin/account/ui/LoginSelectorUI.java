@@ -10,23 +10,22 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.j;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.b;
 
 @Deprecated
 public class LoginSelectorUI
   extends MMActivity
   implements View.OnClickListener
 {
-  private View iSA;
-  private TextView iSz;
+  private TextView jlH;
+  private View jlI;
   
   public int getLayoutId()
   {
@@ -38,70 +37,81 @@ public class LoginSelectorUI
     AppMethodBeat.i(128188);
     Button localButton1 = (Button)findViewById(2131304521);
     Button localButton2 = (Button)findViewById(2131304531);
-    this.iSz = ((TextView)findViewById(2131304512));
-    this.iSA = findViewById(2131304513);
+    this.jlH = ((TextView)findViewById(2131304512));
+    this.jlI = findViewById(2131304513);
     localButton1.setOnClickListener(this);
     localButton2.setOnClickListener(this);
-    this.iSz.setText(ab.iD(getContext()));
-    this.iSA.setOnClickListener(new View.OnClickListener()
+    this.jlH.setText(ac.iN(getContext()));
+    this.jlI.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(128185);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/LoginSelectorUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("not_auth_setting", true);
-        com.tencent.mm.plugin.account.a.a.iyx.o(paramAnonymousView, LoginSelectorUI.this.getContext());
+        com.tencent.mm.plugin.account.a.a.iRG.o(paramAnonymousView, LoginSelectorUI.this.getContext());
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginSelectorUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(128185);
       }
     });
-    if (i.GqL)
+    if (j.Icz)
     {
-      com.tencent.mm.plugin.account.a.a.iyy.t(this);
+      com.tencent.mm.plugin.account.a.a.iRH.t(this);
       AppMethodBeat.o(128188);
       return;
     }
-    com.tencent.mm.plugin.account.a.a.iyy.by(this);
+    com.tencent.mm.plugin.account.a.a.iRH.bx(this);
     AppMethodBeat.o(128188);
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(128190);
+    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/LoginSelectorUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
     if (2131304521 == paramView.getId())
     {
       paramView = new Intent(this, MobileInputUI.class);
       paramView.putExtra("mobile_input_purpose", 1);
-      paramView = new com.tencent.mm.hellhoundlib.b.a().ba(paramView);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramView.aeD(), "com/tencent/mm/plugin/account/ui/LoginSelectorUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramView.lR(0));
+      paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramView.ahp(), "com/tencent/mm/plugin/account/ui/LoginSelectorUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramView.mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginSelectorUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginSelectorUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(128190);
       return;
-    }
-    if (2131304531 == paramView.getId())
-    {
-      if (d.DIf)
+      if (2131304531 == paramView.getId())
       {
-        paramView = getString(2131757964, new Object[] { "0x" + Integer.toHexString(d.DIc), ab.eUO() });
-        Intent localIntent = new Intent();
-        localIntent.putExtra("rawUrl", paramView);
-        localIntent.putExtra("showShare", false);
-        localIntent.putExtra("show_bottom", false);
-        localIntent.putExtra("needRedirect", false);
-        localIntent.putExtra("neverGetA8Key", true);
-        localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.DIw);
-        localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.DIs);
-        com.tencent.mm.plugin.account.a.a.iyx.i(localIntent, this);
-        AppMethodBeat.o(128190);
-        return;
+        if (d.Fnm)
+        {
+          paramView = getString(2131757964, new Object[] { "0x" + Integer.toHexString(d.Fnj), ac.fks() });
+          localObject = new Intent();
+          ((Intent)localObject).putExtra("rawUrl", paramView);
+          ((Intent)localObject).putExtra("showShare", false);
+          ((Intent)localObject).putExtra("show_bottom", false);
+          ((Intent)localObject).putExtra("needRedirect", false);
+          ((Intent)localObject).putExtra("neverGetA8Key", true);
+          ((Intent)localObject).putExtra("hardcode_jspermission", JsapiPermissionWrapper.FnD);
+          ((Intent)localObject).putExtra("hardcode_general_ctrl", GeneralControlWrapper.Fnz);
+          com.tencent.mm.plugin.account.a.a.iRG.i((Intent)localObject, this);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginSelectorUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(128190);
+          return;
+        }
+        paramView = new Intent(this, RegByMobileRegAIOUI.class);
+        paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramView.ahp(), "com/tencent/mm/plugin/account/ui/LoginSelectorUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramView.mq(0));
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginSelectorUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
-      paramView = new Intent(this, RegByMobileRegAIOUI.class);
-      paramView = new com.tencent.mm.hellhoundlib.b.a().ba(paramView);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramView.aeD(), "com/tencent/mm/plugin/account/ui/LoginSelectorUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramView.lR(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginSelectorUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
-    AppMethodBeat.o(128190);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -109,9 +119,9 @@ public class LoginSelectorUI
     AppMethodBeat.i(128186);
     super.onCreate(paramBundle);
     setTitleVisibility(8);
-    com.tencent.mm.plugin.account.a.a.iyy.Lm();
-    g.agP();
-    com.tencent.mm.kernel.a.agd();
+    com.tencent.mm.plugin.account.a.a.iRH.MU();
+    g.ajA();
+    com.tencent.mm.kernel.a.aiP();
     initView();
     AppMethodBeat.o(128186);
   }
@@ -121,15 +131,15 @@ public class LoginSelectorUI
     AppMethodBeat.i(128189);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      Object localObject = com.tencent.mm.plugin.account.a.a.iyx.bD(this);
+      Object localObject = com.tencent.mm.plugin.account.a.a.iRG.bC(this);
       ((Intent)localObject).addFlags(67108864);
       ((Intent)localObject).putExtra("can_finish", true);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/account/ui/LoginSelectorUI", "onKeyDown", "(ILandroid/view/KeyEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/account/ui/LoginSelectorUI", "onKeyDown", "(ILandroid/view/KeyEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginSelectorUI", "onKeyDown", "(ILandroid/view/KeyEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       finish();
-      b.jT(this);
+      com.tencent.mm.ui.base.b.ke(this);
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
     AppMethodBeat.o(128189);
@@ -140,8 +150,8 @@ public class LoginSelectorUI
   {
     AppMethodBeat.i(128187);
     super.onResume();
-    g.agP();
-    com.tencent.mm.kernel.a.agd();
+    g.ajA();
+    com.tencent.mm.kernel.a.aiP();
     AppMethodBeat.o(128187);
   }
   

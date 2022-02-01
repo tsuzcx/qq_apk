@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.gif;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class f
 {
-  public final int[] txk;
+  public final int[] uzU;
   
   public f(String paramString)
   {
     AppMethodBeat.i(104654);
-    this.txk = new int[6];
+    this.uzU = new int[6];
     try
     {
-      MMGIFJNI.recycle(MMGIFJNI.openByFilePath(q.k(paramString, false), this.txk));
-      ac.i("MMGIFInfo", "width:%d height:%d", new Object[] { Integer.valueOf(this.txk[0]), Integer.valueOf(this.txk[1]) });
+      MMGIFJNI.recycle(MMGIFJNI.openByFilePath(q.k(paramString, false), this.uzU));
+      ad.i("MMGIFInfo", "width:%d height:%d", new Object[] { Integer.valueOf(this.uzU[0]), Integer.valueOf(this.uzU[1]) });
       AppMethodBeat.o(104654);
       return;
     }
     catch (MMGIFException paramString)
     {
-      ac.e("MMGIFInfo", bs.m(paramString));
+      ad.e("MMGIFInfo", bt.n(paramString));
       AppMethodBeat.o(104654);
     }
   }

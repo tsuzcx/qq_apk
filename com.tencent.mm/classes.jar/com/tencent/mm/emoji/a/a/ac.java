@@ -1,39 +1,34 @@
 package com.tencent.mm.emoji.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/PanelTab;", "", "type", "", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "groupIndex", "(ILcom/tencent/mm/storage/emotion/EmojiGroupInfo;I)V", "getGroupIndex", "()I", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "getType", "Companion", "plugin-emojisdk_release"})
-public final class ac
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/PanelItem;", "", "type", "", "(I)V", "getType", "()I", "contentEquals", "", "other", "equals", "plugin-emojisdk_release"})
+public class ac
 {
-  public static final a fSl;
-  public final int bul;
-  public final EmojiGroupInfo fON;
   public final int type;
   
-  static
+  public ac(int paramInt)
   {
-    AppMethodBeat.i(105580);
-    fSl = new a((byte)0);
-    AppMethodBeat.o(105580);
+    this.type = paramInt;
   }
   
-  public ac(int paramInt1, EmojiGroupInfo paramEmojiGroupInfo, int paramInt2)
+  public boolean aS(Object paramObject)
   {
-    AppMethodBeat.i(105579);
-    this.type = paramInt1;
-    this.fON = paramEmojiGroupInfo;
-    this.bul = paramInt2;
-    AppMethodBeat.o(105579);
+    AppMethodBeat.i(105573);
+    boolean bool = equals(paramObject);
+    AppMethodBeat.o(105573);
+    return bool;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/PanelTab$Companion;", "", "()V", "TypeGroup", "", "TypeSetting", "TypeStore", "plugin-emojisdk_release"})
-  public static final class a {}
+  public boolean equals(Object paramObject)
+  {
+    return (paramObject != null) && ((paramObject instanceof ac)) && (((ac)paramObject).type == this.type);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.a.a.ac
  * JD-Core Version:    0.7.0.1
  */

@@ -6,10 +6,10 @@ import android.support.v7.widget.ae;
 import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/CenterSmoothScroller;", "Landroid/support/v7/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "calculateDxToMakeVisible", "", "view", "Landroid/view/View;", "snapPreference", "calculateDyToMakeVisible", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/CenterSmoothScroller;", "Landroid/support/v7/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "calculateDxToMakeVisible", "", "view", "Landroid/view/View;", "snapPreference", "calculateDyToMakeVisible", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-emojicapture_release"})
 public final class a
   extends ae
 {
@@ -23,9 +23,9 @@ public final class a
   public final int E(View paramView, int paramInt)
   {
     AppMethodBeat.i(879);
-    k.h(paramView, "view");
+    p.h(paramView, "view");
     RecyclerView.i locali = getLayoutManager();
-    if ((locali == null) || (!locali.jN()))
+    if ((locali == null) || (!locali.kd()))
     {
       AppMethodBeat.o(879);
       return 0;
@@ -39,9 +39,9 @@ public final class a
   public final int F(View paramView, int paramInt)
   {
     AppMethodBeat.i(878);
-    k.h(paramView, "view");
+    p.h(paramView, "view");
     RecyclerView.i locali = getLayoutManager();
-    if ((locali == null) || (!locali.jM()))
+    if ((locali == null) || (!locali.kc()))
     {
       AppMethodBeat.o(878);
       return 0;
@@ -55,7 +55,7 @@ public final class a
   public final float a(DisplayMetrics paramDisplayMetrics)
   {
     AppMethodBeat.i(880);
-    k.h(paramDisplayMetrics, "displayMetrics");
+    p.h(paramDisplayMetrics, "displayMetrics");
     float f = 50.0F / paramDisplayMetrics.densityDpi;
     AppMethodBeat.o(880);
     return f;

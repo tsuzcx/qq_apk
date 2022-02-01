@@ -2,27 +2,26 @@ package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.b.b;
-import com.tencent.mm.plugin.appbrand.b.c.a;
-import com.tencent.mm.plugin.appbrand.utils.i;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.a.b;
+import com.tencent.mm.plugin.appbrand.a.c.a;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Map;
 import org.json.JSONObject;
 
 class d
-  extends i<a>
+  extends com.tencent.mm.plugin.appbrand.utils.i<a>
   implements c, e
 {
-  private static final Map<String, d> kdl;
-  private static final d kdm;
+  private static final Map<String, d> kxL;
+  private static final d kxM;
   
   static
   {
     AppMethodBeat.i(46017);
-    kdl = new android.support.v4.e.a();
-    kdm = new d()
+    kxL = new android.support.v4.e.a();
+    kxM = new d()
     {
-      protected final boolean bfi()
+      protected final boolean biL()
       {
         return true;
       }
@@ -32,23 +31,23 @@ class d
   
   private d(AppBrandRuntime paramAppBrandRuntime) {}
   
-  public static d ab(AppBrandRuntime paramAppBrandRuntime)
+  public static d V(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(46009);
     if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.isDestroyed()))
     {
-      paramAppBrandRuntime = kdm;
+      paramAppBrandRuntime = kxM;
       AppMethodBeat.o(46009);
       return paramAppBrandRuntime;
     }
-    synchronized (kdl)
+    synchronized (kxL)
     {
-      d locald2 = (d)kdl.get(paramAppBrandRuntime.mAppId);
+      d locald2 = (d)kxL.get(paramAppBrandRuntime.mAppId);
       d locald1 = locald2;
       if (locald2 == null)
       {
         locald1 = new d(paramAppBrandRuntime);
-        kdl.put(paramAppBrandRuntime.mAppId, locald1);
+        kxL.put(paramAppBrandRuntime.mAppId, locald1);
       }
       AppMethodBeat.o(46009);
       return locald1;
@@ -58,63 +57,63 @@ class d
   protected final void a(a parama)
   {
     AppMethodBeat.i(46012);
-    ac.d(this.mName, "about to executeTask %s", new Object[] { parama.toString() });
-    parama.aQH();
+    ad.d(this.mName, "about to executeTask %s", new Object[] { parama.toString() });
+    parama.aTT();
     AppMethodBeat.o(46012);
   }
   
-  public final void a(final h paramh, final com.tencent.mm.plugin.appbrand.jsapi.h paramh1, final JSONObject paramJSONObject, final int paramInt)
+  public final void a(final i parami, final com.tencent.mm.plugin.appbrand.d paramd, final JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(46013);
-    ac.i("MicroMsg.AppBrandAuthJsApiQueue", "execute name[%s], callbackId[%d], appId[%s]", new Object[] { paramh.getName(), Integer.valueOf(paramInt), paramh1.getAppId() });
-    super.cG(new a()
+    AppMethodBeat.i(192211);
+    ad.i("MicroMsg.AppBrandAuthJsApiQueue", "execute name[%s], callbackId[%d], appId[%s]", new Object[] { parami.getName(), Integer.valueOf(paramInt), paramd.getAppId() });
+    super.cI(new a()
     {
-      public final void aQH()
+      public final void aTT()
       {
         AppMethodBeat.i(46007);
-        ac.i("MicroMsg.AppBrandAuthJsApiQueue", "about to call AuthInvoke, api[%s]", new Object[] { d.this.mName });
-        if (!paramh1.isRunning())
+        ad.i("MicroMsg.AppBrandAuthJsApiQueue", "about to call AuthInvoke, api[%s]", new Object[] { d.this.mName });
+        if (!paramd.isRunning())
         {
-          ac.e("MicroMsg.AppBrandAuthJsApiQueue", "doAuth but component not running, api = %s", new Object[] { paramh.getName() });
-          jdField_this.Yv(2);
+          ad.e("MicroMsg.AppBrandAuthJsApiQueue", "doAuth but component not running, api = %s", new Object[] { parami.getName() });
+          jdField_this.aaA(2);
           AppMethodBeat.o(46007);
           return;
         }
-        paramh.a(paramh1, paramJSONObject, paramInt, new a(jdField_this));
+        parami.a(paramd, paramJSONObject, paramInt, new a(jdField_this));
         AppMethodBeat.o(46007);
       }
       
       public final String toString()
       {
         AppMethodBeat.i(46008);
-        String str = hashCode() + "|" + paramh.getName();
+        String str = hashCode() + "|" + parami.getName();
         AppMethodBeat.o(46008);
         return str;
       }
     });
-    AppMethodBeat.o(46013);
+    AppMethodBeat.o(192211);
   }
   
-  public final void bfe()
+  public final void biH()
   {
     AppMethodBeat.i(46011);
-    Yv(2);
+    aaA(2);
     AppMethodBeat.o(46011);
   }
   
-  protected boolean bfi()
+  protected boolean biL()
   {
     return false;
   }
   
   static abstract interface a
   {
-    public abstract void aQH();
+    public abstract void aTT();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.d
  * JD-Core Version:    0.7.0.1
  */

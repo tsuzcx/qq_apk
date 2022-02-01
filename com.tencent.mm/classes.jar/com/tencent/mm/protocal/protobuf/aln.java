@@ -4,186 +4,184 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class aln
-  extends cqk
+  extends com.tencent.mm.bx.a
 {
-  public int EDy;
-  public LinkedList<FinderContact> EFf;
-  public LinkedList<aoi> EFg;
-  public SKBuiltinBuffer_t Eki;
-  public int continueFlag;
-  public LinkedList<aiy> qrS;
+  public String Gln;
+  public int Glo;
+  public LinkedList<amk> Glp;
+  public LinkedList<String> Glq;
+  public LinkedList<ejc> Oes;
+  public String deviceBrand;
+  public String deviceModel;
+  public int netType;
+  public String osName;
+  public String osVersion;
   
   public aln()
   {
-    AppMethodBeat.i(168998);
-    this.EFf = new LinkedList();
-    this.qrS = new LinkedList();
-    this.EFg = new LinkedList();
-    AppMethodBeat.o(168998);
+    AppMethodBeat.i(184195);
+    this.Glp = new LinkedList();
+    this.Glq = new LinkedList();
+    this.Oes = new LinkedList();
+    AppMethodBeat.o(184195);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(168999);
+    AppMethodBeat.i(184196);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.ln(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      paramVarArgs.aS(1, this.netType);
+      if (this.Gln != null) {
+        paramVarArgs.d(2, this.Gln);
       }
-      paramVarArgs.e(2, 8, this.EFf);
-      if (this.Eki != null)
-      {
-        paramVarArgs.ln(3, this.Eki.computeSize());
-        this.Eki.writeFields(paramVarArgs);
+      paramVarArgs.aS(3, this.Glo);
+      paramVarArgs.e(4, 8, this.Glp);
+      if (this.deviceModel != null) {
+        paramVarArgs.d(5, this.deviceModel);
       }
-      paramVarArgs.e(4, 8, this.qrS);
-      paramVarArgs.aR(5, this.continueFlag);
-      paramVarArgs.aR(6, this.EDy);
-      paramVarArgs.e(7, 8, this.EFg);
-      AppMethodBeat.o(168999);
+      if (this.deviceBrand != null) {
+        paramVarArgs.d(6, this.deviceBrand);
+      }
+      if (this.osName != null) {
+        paramVarArgs.d(7, this.osName);
+      }
+      if (this.osVersion != null) {
+        paramVarArgs.d(8, this.osVersion);
+      }
+      paramVarArgs.e(9, 1, this.Glq);
+      paramVarArgs.e(10, 8, this.Oes);
+      AppMethodBeat.o(184196);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label982;
-      }
-    }
-    label982:
-    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      int i = paramInt + f.a.a.a.c(2, 8, this.EFf);
+      i = f.a.a.b.b.a.bz(1, this.netType) + 0;
       paramInt = i;
-      if (this.Eki != null) {
-        paramInt = i + f.a.a.a.lm(3, this.Eki.computeSize());
+      if (this.Gln != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Gln);
       }
-      i = f.a.a.a.c(4, 8, this.qrS);
-      int j = f.a.a.b.b.a.bx(5, this.continueFlag);
-      int k = f.a.a.b.b.a.bx(6, this.EDy);
-      int m = f.a.a.a.c(7, 8, this.EFg);
-      AppMethodBeat.o(168999);
-      return paramInt + i + j + k + m;
-      if (paramInt == 2)
-      {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.EFf.clear();
-        this.qrS.clear();
-        this.EFg.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
-          }
+      i = paramInt + f.a.a.b.b.a.bz(3, this.Glo) + f.a.a.a.c(4, 8, this.Glp);
+      paramInt = i;
+      if (this.deviceModel != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.deviceModel);
+      }
+      i = paramInt;
+      if (this.deviceBrand != null) {
+        i = paramInt + f.a.a.b.b.a.e(6, this.deviceBrand);
+      }
+      paramInt = i;
+      if (this.osName != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.osName);
+      }
+      i = paramInt;
+      if (this.osVersion != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.osVersion);
+      }
+      paramInt = f.a.a.a.c(9, 1, this.Glq);
+      int j = f.a.a.a.c(10, 8, this.Oes);
+      AppMethodBeat.o(184196);
+      return i + paramInt + j;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.Glp.clear();
+      this.Glq.clear();
+      this.Oes.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gxE();
         }
-        AppMethodBeat.o(168999);
+      }
+      AppMethodBeat.o(184196);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      aln localaln = (aln)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
+      boolean bool;
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(184196);
+        return -1;
+      case 1: 
+        localaln.netType = ((f.a.a.a.a)localObject1).NPN.zc();
+        AppMethodBeat.o(184196);
         return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        aln localaln = (aln)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(168999);
-          return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localaln.BaseResponse = ((BaseResponse)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(168999);
-          return 0;
-        case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new FinderContact();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localaln.EFf.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(168999);
-          return 0;
-        case 3: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new SKBuiltinBuffer_t();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localaln.Eki = ((SKBuiltinBuffer_t)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(168999);
-          return 0;
-        case 4: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new aiy();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((aiy)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localaln.qrS.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(168999);
-          return 0;
-        case 5: 
-          localaln.continueFlag = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(168999);
-          return 0;
-        case 6: 
-          localaln.EDy = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(168999);
-          return 0;
-        }
-        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+      case 2: 
+        localaln.Gln = ((f.a.a.a.a)localObject1).NPN.readString();
+        AppMethodBeat.o(184196);
+        return 0;
+      case 3: 
+        localaln.Glo = ((f.a.a.a.a)localObject1).NPN.zc();
+        AppMethodBeat.o(184196);
+        return 0;
+      case 4: 
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new aoi();
+          localObject1 = new amk();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((aoi)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localaln.EFg.add(localObject1);
+          for (bool = true; bool; bool = ((amk)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localaln.Glp.add(localObject1);
           paramInt += 1;
         }
-        AppMethodBeat.o(168999);
+        AppMethodBeat.o(184196);
+        return 0;
+      case 5: 
+        localaln.deviceModel = ((f.a.a.a.a)localObject1).NPN.readString();
+        AppMethodBeat.o(184196);
+        return 0;
+      case 6: 
+        localaln.deviceBrand = ((f.a.a.a.a)localObject1).NPN.readString();
+        AppMethodBeat.o(184196);
+        return 0;
+      case 7: 
+        localaln.osName = ((f.a.a.a.a)localObject1).NPN.readString();
+        AppMethodBeat.o(184196);
+        return 0;
+      case 8: 
+        localaln.osVersion = ((f.a.a.a.a)localObject1).NPN.readString();
+        AppMethodBeat.o(184196);
+        return 0;
+      case 9: 
+        localaln.Glq.add(((f.a.a.a.a)localObject1).NPN.readString());
+        AppMethodBeat.o(184196);
         return 0;
       }
-      AppMethodBeat.o(168999);
-      return -1;
+      paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new ejc();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (bool = true; bool; bool = ((ejc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localaln.Oes.add(localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(184196);
+      return 0;
     }
+    AppMethodBeat.o(184196);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aln
  * JD-Core Version:    0.7.0.1
  */

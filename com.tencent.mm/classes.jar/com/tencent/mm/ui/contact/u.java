@@ -2,40 +2,40 @@ package com.tencent.mm.ui.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.m.e;
 import com.tencent.mm.model.w;
+import com.tencent.mm.n.e;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashSet;
 
 public final class u
 {
-  public static final int IwO;
-  public static final int IwP;
-  public static int IwQ;
-  public static int IwR;
-  public static final int IwS;
-  public static final int IwT;
-  public static final int IwU;
-  public static final int IwV;
-  public static final int IwW;
-  public static final int IwX;
-  public static final int IwY;
+  public static final int KnA;
+  public static final int KnB;
+  public static final int KnC;
+  public static final int KnD;
+  public static final int KnE;
+  public static final int KnF;
+  public static final int KnG;
+  public static final int Knw;
+  public static final int Knx;
+  public static int Kny;
+  public static int Knz;
   
   static
   {
     AppMethodBeat.i(133757);
-    IwO = I(new int[] { 256, 16, 1, 2, 4 });
-    IwP = I(new int[] { 16, 1, 2, 4, 64, 16384 });
-    IwQ = I(new int[] { 16, 1, 2, 4, 64, 16384, 16777216 });
-    IwR = I(new int[] { 16, 1, 2, 4, 64, 4096, 16777216 });
-    IwS = I(new int[] { IwO, 64, 16384, 4096, 16777216 });
-    IwT = I(new int[] { 16, 2, 16384, 4 });
-    IwU = I(new int[] { IwO, 16384, 64, 4096, 16777216 });
-    IwV = I(new int[] { IwO, 16384, 64, 131072, 8192, 16777216 });
-    IwW = I(new int[] { 16, 32, 1, 4, 2, 64 });
-    IwX = I(new int[] { 1, 2, 4, 64, 256, 16384 });
-    IwY = I(new int[] { IwQ, 131072 });
+    Knw = I(new int[] { 256, 16, 1, 2, 4 });
+    Knx = I(new int[] { 16, 1, 2, 4, 64, 16384 });
+    Kny = I(new int[] { 16, 1, 2, 4, 64, 16384, 16777216 });
+    Knz = I(new int[] { 16, 1, 2, 4, 64, 4096, 16777216 });
+    KnA = I(new int[] { Knw, 64, 16384, 4096, 16777216 });
+    KnB = I(new int[] { 16, 2, 16384, 4 });
+    KnC = I(new int[] { Knw, 16384, 64, 4096, 16777216 });
+    KnD = I(new int[] { Knw, 16384, 64, 131072, 8192, 16777216 });
+    KnE = I(new int[] { 16, 32, 1, 4, 2, 64 });
+    KnF = I(new int[] { 1, 2, 4, 64, 256, 16384 });
+    KnG = I(new int[] { Kny, 131072 });
     AppMethodBeat.o(133757);
   }
   
@@ -52,7 +52,7 @@ public final class u
     return i;
   }
   
-  public static HashSet<String> frC()
+  public static HashSet<String> fIp()
   {
     AppMethodBeat.i(133752);
     HashSet localHashSet = new HashSet();
@@ -61,13 +61,13 @@ public final class u
     return localHashSet;
   }
   
-  public static HashSet<String> frD()
+  public static HashSet<String> fIq()
   {
     AppMethodBeat.i(133754);
     HashSet localHashSet = new HashSet();
     localHashSet.add("officialaccounts");
     localHashSet.add("newsapp");
-    String[] arrayOfString = w.hmW;
+    String[] arrayOfString = w.hFm;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -105,11 +105,11 @@ public final class u
     return localHashSet;
   }
   
-  public static boolean frE()
+  public static boolean fIr()
   {
     AppMethodBeat.i(133756);
-    int i = ((a)g.ab(a.class)).ZY().getInt("ShowOpenImInGroup", 0);
-    ac.i("MMSelectContactLogic", "config_val %s ", new Object[] { Integer.valueOf(i) });
+    int i = ((a)g.ab(a.class)).acA().getInt("ShowOpenImInGroup", 0);
+    ad.i("MMSelectContactLogic", "config_val %s ", new Object[] { Integer.valueOf(i) });
     if (i == 0)
     {
       AppMethodBeat.o(133756);
@@ -134,30 +134,30 @@ public final class u
   public static void init()
   {
     AppMethodBeat.i(133755);
-    if (!frE())
+    if (!fIr())
     {
-      if (hasAttr(IwQ, 16777216)) {
-        IwQ &= 0xFEFFFFFF;
+      if (hasAttr(Kny, 16777216)) {
+        Kny &= 0xFEFFFFFF;
       }
-      if (hasAttr(IwR, 16777216))
+      if (hasAttr(Knz, 16777216))
       {
-        IwR &= 0xFEFFFFFF;
+        Knz &= 0xFEFFFFFF;
         AppMethodBeat.o(133755);
       }
     }
     else
     {
-      if (!hasAttr(IwQ, 16777216)) {
-        IwQ = I(new int[] { IwQ, 16777216 });
+      if (!hasAttr(Kny, 16777216)) {
+        Kny = I(new int[] { Kny, 16777216 });
       }
-      if (!hasAttr(IwR, 16777216)) {
-        IwR = I(new int[] { IwR, 16777216 });
+      if (!hasAttr(Knz, 16777216)) {
+        Knz = I(new int[] { Knz, 16777216 });
       }
     }
     AppMethodBeat.o(133755);
   }
   
-  public static int jI(int paramInt1, int paramInt2)
+  public static int jU(int paramInt1, int paramInt2)
   {
     return (paramInt2 ^ 0xFFFFFFFF) & paramInt1;
   }

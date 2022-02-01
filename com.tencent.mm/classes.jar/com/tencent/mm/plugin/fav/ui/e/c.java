@@ -9,16 +9,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.o;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.ahp;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bo.a;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.akf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bu.a;
 
 public final class c
   extends b
@@ -28,25 +28,25 @@ public final class c
     super(paramo);
   }
   
-  private static String a(bo.a parama)
+  private static String a(bu.a parama)
   {
     int j = 1;
     int i = 0;
     AppMethodBeat.i(107451);
-    String str = parama.eNf;
-    if (bs.isNullOrNil(str))
+    String str = parama.ffB;
+    if (bt.isNullOrNil(str))
     {
-      str = parama.zTO;
-      if ((!ai.aNf(str)) && (!w.wF(str))) {}
+      str = parama.dHm;
+      if ((!am.aSX(str)) && (!w.zC(str))) {}
     }
     for (i = 1;; i = 0)
     {
-      if ((i == 0) && (!((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNo(str))) {
+      if ((i == 0) && (!((l)com.tencent.mm.kernel.g.ab(l.class)).azp().aTg(str))) {
         i = j;
       }
       for (;;)
       {
-        boolean bool = w.nN(parama.Chb);
+        boolean bool = w.on(parama.DKi);
         if ((i != 0) || (bool))
         {
           AppMethodBeat.o(107451);
@@ -66,28 +66,28 @@ public final class c
     {
       paramViewGroup = new a();
       paramView = a(View.inflate(localContext, 2131493955, null), paramViewGroup, paramg);
-      paramViewGroup.lzC = ((ImageView)paramView.findViewById(2131299794));
-      paramViewGroup.iCg = ((TextView)paramView.findViewById(2131299848));
-      paramViewGroup.iCg.setSingleLine(false);
-      paramViewGroup.iCg.setMaxLines(2);
-      paramViewGroup.ijE = ((TextView)paramView.findViewById(2131299778));
-      paramViewGroup.qTn = ((TextView)paramView.findViewById(2131299825));
+      paramViewGroup.lZa = ((ImageView)paramView.findViewById(2131299794));
+      paramViewGroup.iVq = ((TextView)paramView.findViewById(2131299848));
+      paramViewGroup.iVq.setSingleLine(false);
+      paramViewGroup.iVq.setMaxLines(2);
+      paramViewGroup.iCV = ((TextView)paramView.findViewById(2131299778));
+      paramViewGroup.rDq = ((TextView)paramView.findViewById(2131299825));
       a(paramViewGroup, paramg);
       paramg = com.tencent.mm.plugin.fav.a.b.c(paramg);
-      paramg = ((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().alw(paramg.desc);
-      if ((paramg.zTO == null) || (paramg.zTO.length() <= 0)) {
-        ac.e("MicroMsg.FavCardListItem", "parse possible friend msg failed");
+      paramg = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().aqk(paramg.desc);
+      if ((paramg.dHm == null) || (paramg.dHm.length() <= 0)) {
+        ad.e("MicroMsg.FavCardListItem", "parse possible friend msg failed");
       }
-      if (!bs.isNullOrNil(a(paramg))) {
+      if (!bt.isNullOrNil(a(paramg))) {
         break label241;
       }
-      paramViewGroup.ijE.setVisibility(8);
+      paramViewGroup.iCV.setVisibility(8);
       label183:
-      paramViewGroup.qTn.setText(2131758907);
-      paramViewGroup.qTn.setVisibility(0);
-      paramViewGroup = paramViewGroup.lzC;
-      paramg = paramg.zTO;
-      if (!bs.isNullOrNil(paramg)) {
+      paramViewGroup.rDq.setText(2131758907);
+      paramViewGroup.rDq.setVisibility(0);
+      paramViewGroup = paramViewGroup.lZa;
+      paramg = paramg.dHm;
+      if (!bt.isNullOrNil(paramg)) {
         break label255;
       }
       paramViewGroup.setImageResource(2131231875);
@@ -99,34 +99,34 @@ public final class c
       paramViewGroup = (a)paramView.getTag();
       break;
       label241:
-      paramViewGroup.ijE.setText(a(paramg));
+      paramViewGroup.iCV.setText(a(paramg));
       break label183;
       label255:
       a.b.c(paramViewGroup, paramg);
     }
   }
   
-  public final void a(View paramView, ahp paramahp)
+  public final void a(View paramView, akf paramakf)
   {
     AppMethodBeat.i(107450);
     a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.qJy, paramahp);
+    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.rtA, paramakf);
     AppMethodBeat.o(107450);
   }
   
   public static final class a
     extends b.b
   {
-    TextView iCg;
-    TextView ijE;
-    ImageView lzC;
-    TextView qTn;
+    TextView iCV;
+    TextView iVq;
+    ImageView lZa;
+    TextView rDq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.e.c
  * JD-Core Version:    0.7.0.1
  */

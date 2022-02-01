@@ -6,24 +6,24 @@ import d.l.b.a.b.b.a.g;
 final class i
   extends o
 {
-  private final g Lez;
+  private final g MVu;
   
   public i(aj paramaj, g paramg)
   {
     super(paramaj);
     AppMethodBeat.i(60612);
-    this.Lez = paramg;
+    this.MVu = paramg;
     AppMethodBeat.o(60612);
   }
   
-  public final g fQj()
+  public final g ghH()
   {
-    return this.Lez;
+    return this.MVu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.i
  * JD-Core Version:    0.7.0.1
  */

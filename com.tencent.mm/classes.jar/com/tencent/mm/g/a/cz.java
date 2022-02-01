@@ -1,15 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.lang.ref.WeakReference;
 
 public final class cz
   extends b
 {
-  public a dcw;
-  public b dcx;
-  
   public cz()
   {
     this((byte)0);
@@ -17,34 +12,8 @@ public final class cz
   
   private cz(byte paramByte)
   {
-    AppMethodBeat.i(130926);
-    this.dcw = new a();
-    this.dcx = new b();
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(130926);
-  }
-  
-  public static final class a
-  {
-    public WeakReference aMw;
-    public String appId;
-    public String cJz;
-    public Runnable callback;
-    public String dcA;
-    public int dcB = 0;
-    public String dcy;
-    public String dcz;
-    public String nonceStr;
-    public String packageExt;
-    public String signType;
-    public String signature;
-    public String token;
-  }
-  
-  public static final class b
-  {
-    public int retCode = 0;
   }
 }
 

@@ -5,13 +5,13 @@ import android.widget.TextView;
 
 public final class b
 {
-  public TextView lfN;
+  public TextView lCL;
   public String title;
   public int type;
-  public TextView vFY;
-  public ImageView vFZ;
-  public HtmlTextView vGa;
-  public Object vGb;
+  public TextView wNe;
+  public ImageView wNf;
+  public HtmlTextView wNg;
+  public Object wNh;
 }
 
 

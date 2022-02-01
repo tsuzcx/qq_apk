@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/i6b" android:layout_width="fill_parent" android:layout_height="@dimen/b5">
+            <TextView android:textColor="@color/y4" android:id="@id/aay" android:background="@drawable/aed" android:paddingLeft="0.0dip" android:layout_height="fill_parent" android:text="@string/r5" android:layout_alignParentLeft="true" style="@style/ta" />
+        </RelativeLayout>
+        <ImageView android:id="@id/tm" android:layout_width="@dimen/g" android:layout_height="@dimen/g" android:layout_marginTop="@dimen/ce" />
+        <TextView android:ellipsize="end" android:id="@id/i70" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:maxLines="1" style="@style/ya" />
+        <TextView android:textColor="@color/km" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:text="@string/i0h" style="@style/ya" />
+        <Button android:textColor="@color/j9" android:id="@id/i0k" android:background="@drawable/ih" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c_" android:layout_marginRight="@dimen/c5" android:text="@string/v1" style="@style/my" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textColor="@color/tq" android:id="@id/i0j" android:layout_marginBottom="@dimen/c_" android:text="@string/i0g" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/hn" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

@@ -6,7 +6,7 @@ public abstract interface a
 {
   public abstract void a(b paramb);
   
-  public abstract void cOG();
+  public abstract void cXf();
 }
 
 

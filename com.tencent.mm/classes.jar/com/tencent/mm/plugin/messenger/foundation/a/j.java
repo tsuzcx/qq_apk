@@ -1,17 +1,21 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.b;
 import com.tencent.mm.kernel.c.a;
 
 public abstract interface j
   extends a
 {
-  public abstract void addSyncDoCmdCallback(w paramw);
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
   
-  public abstract f.b processAddMsg(f.a parama, x paramx);
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2);
   
-  public abstract void removeSyncDoCmdCallback(w paramw);
+  public abstract void a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2);
+  
+  public abstract boolean amL(String paramString);
+  
+  public abstract boolean amM(String paramString);
+  
+  public abstract void b(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2);
 }
 
 

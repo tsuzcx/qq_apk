@@ -1,46 +1,46 @@
 package com.tencent.mm.modelvideo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.f;
-import com.tencent.mm.g.a.lk;
-import com.tencent.mm.g.a.lk.a;
-import com.tencent.mm.g.b.a.fr;
-import com.tencent.mm.g.b.a.s;
+import com.tencent.mm.ao.f;
+import com.tencent.mm.g.a.lt;
+import com.tencent.mm.g.a.lt.a;
+import com.tencent.mm.g.b.a.gs;
+import com.tencent.mm.g.b.a.v;
 import com.tencent.mm.i.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.sight.base.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storagebase.h.b;
 import com.tencent.mm.vfs.i;
 import java.util.HashMap;
 
 public class n
-  implements aw
+  implements ax
 {
-  public HashMap<String, a> hZT;
-  private com.tencent.mm.sdk.b.c<lk> hZU;
+  public HashMap<String, a> ito;
+  private com.tencent.mm.sdk.b.c<lt> itp;
   
   public n()
   {
     AppMethodBeat.i(126918);
-    this.hZU = new com.tencent.mm.sdk.b.c()
+    this.itp = new com.tencent.mm.sdk.b.c()
     {
-      private boolean a(lk paramAnonymouslk)
+      private boolean a(lt paramAnonymouslt)
       {
         AppMethodBeat.i(126916);
-        ac.d("MicroMsg.SubCoreMediaRpt", "get media info report event.");
-        if (paramAnonymouslk == null)
+        ad.d("MicroMsg.SubCoreMediaRpt", "get media info report event.");
+        if (paramAnonymouslt == null)
         {
           AppMethodBeat.o(126916);
           return false;
         }
-        String str1 = paramAnonymouslk.dnf.path;
+        String str1 = paramAnonymouslt.dyT.path;
         Object localObject2 = str1;
         Object localObject1 = str1;
         try
@@ -50,7 +50,7 @@ public class n
             localObject1 = str1;
             localObject2 = str1.substring(0, str1.lastIndexOf(".tmp"));
             localObject1 = localObject2;
-            ac.i("MicroMsg.SubCoreMediaRpt", "media info event path[%s, %s]", new Object[] { localObject2, paramAnonymouslk.dnf.path });
+            ad.i("MicroMsg.SubCoreMediaRpt", "media info event path[%s, %s]", new Object[] { localObject2, paramAnonymouslt.dyT.path });
           }
           localObject1 = localObject2;
         }
@@ -69,28 +69,28 @@ public class n
           break label103;
         }
         localObject2 = n.this;
-        str1 = paramAnonymouslk.dnf.dng;
-        str2 = paramAnonymouslk.dnf.dnh;
-        i = paramAnonymouslk.dnf.dni;
-        str3 = paramAnonymouslk.dnf.fileId;
-        str4 = paramAnonymouslk.dnf.dnk;
-        l1 = paramAnonymouslk.dnf.startTime;
-        l2 = paramAnonymouslk.dnf.endTime;
-        arrayOfString = paramAnonymouslk.dnf.dnj;
-        j = paramAnonymouslk.dnf.dnl;
-        k = paramAnonymouslk.dnf.dnm;
-        paramAnonymouslk = paramAnonymouslk.dnf.dnn;
-        g.agU().az(new n.2((n)localObject2, (String)localObject1, arrayOfString, str1, str2, i, str3, str4, l1, l2, j, k, paramAnonymouslk));
+        str1 = paramAnonymouslt.dyT.dyU;
+        str2 = paramAnonymouslt.dyT.dyV;
+        i = paramAnonymouslt.dyT.dyW;
+        str3 = paramAnonymouslt.dyT.fileId;
+        str4 = paramAnonymouslt.dyT.dyY;
+        l1 = paramAnonymouslt.dyT.startTime;
+        l2 = paramAnonymouslt.dyT.endTime;
+        arrayOfString = paramAnonymouslt.dyT.dyX;
+        j = paramAnonymouslt.dyT.dyZ;
+        k = paramAnonymouslt.dyT.dza;
+        paramAnonymouslt = paramAnonymouslt.dyT.dzb;
+        g.ajF().ay(new n.2((n)localObject2, (String)localObject1, arrayOfString, str1, str2, i, str3, str4, l1, l2, j, k, paramAnonymouslt));
         AppMethodBeat.o(126916);
         return false;
       }
     };
-    this.hZT = new HashMap();
-    com.tencent.mm.sdk.b.a.GpY.c(this.hZU);
+    this.ito = new HashMap();
+    com.tencent.mm.sdk.b.a.IbL.c(this.itp);
     AppMethodBeat.o(126918);
   }
   
-  public static n aJw()
+  public static n aMH()
   {
     AppMethodBeat.i(126919);
     n localn = (n)t.ap(n.class);
@@ -98,15 +98,34 @@ public class n
     return localn;
   }
   
+  public final int GU(String paramString)
+  {
+    AppMethodBeat.i(218863);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(218863);
+      return 0;
+    }
+    paramString = (a)this.ito.get(paramString);
+    if (paramString != null)
+    {
+      int i = paramString.itF;
+      AppMethodBeat.o(218863);
+      return i;
+    }
+    AppMethodBeat.o(218863);
+    return 0;
+  }
+  
   public final void a(final d paramd, final String paramString)
   {
     AppMethodBeat.i(126921);
-    if ((paramd == null) || (bs.isNullOrNil(paramString)))
+    if ((paramd == null) || (bt.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(126921);
       return;
     }
-    g.agU().az(new Runnable()
+    g.ajF().ay(new Runnable()
     {
       public final void run()
       {
@@ -117,24 +136,24 @@ public class n
           AppMethodBeat.o(126914);
           return;
         }
-        int j = (int)i.aSp(locala.iah);
-        com.tencent.mm.plugin.sight.base.a locala2 = e.asx(locala.iah);
+        int j = (int)i.aYo(locala.itC);
+        com.tencent.mm.plugin.sight.base.a locala2 = e.axx(locala.itC);
         com.tencent.mm.plugin.sight.base.a locala1;
         long l1;
-        if (!bs.isNullOrNil(locala.iag))
+        if (!bt.isNullOrNil(locala.itB))
         {
-          locala1 = e.asx(locala.iag);
-          l1 = (int)i.aSp(locala.iag);
+          locala1 = e.axx(locala.itB);
+          l1 = (int)i.aYo(locala.itB);
         }
         while ((locala1 == null) || (locala2 == null))
         {
-          ac.w("MicroMsg.SubCoreMediaRpt", "upload video but media info is null. %s", new Object[] { locala.iah });
+          ad.w("MicroMsg.SubCoreMediaRpt", "upload video but media info is null. %s", new Object[] { locala.itC });
           AppMethodBeat.o(126914);
           return;
           l1 = j;
           locala1 = locala2;
         }
-        int k = ax.iJ(ai.getContext());
+        int k = ay.iT(aj.getContext());
         long l2;
         if (paramd.field_startTime != 0L)
         {
@@ -144,7 +163,7 @@ public class n
           }
         }
         label259:
-        for (long l3 = paramd.field_endTime;; l3 = bs.eWj())
+        for (long l3 = paramd.field_endTime;; l3 = bt.flT())
         {
           localObject1 = null;
           if (paramd.field_usedSvrIps == null) {
@@ -165,26 +184,26 @@ public class n
         Object localObject1 = ((StringBuffer)localObject1).toString();
         label274:
         Object localObject2 = new StringBuffer();
-        ((StringBuffer)localObject2).append(locala.toUser).append(",").append(locala.eul).append(",");
+        ((StringBuffer)localObject2).append(locala.toUser).append(",").append(locala.eLs).append(",");
         ((StringBuffer)localObject2).append(k).append(",").append(paramd.field_fileId).append(",");
-        ((StringBuffer)localObject2).append(paramd.field_mp4identifymd5).append(",").append(com.tencent.mm.plugin.video.c.ayd(locala.iai)).append(",");
+        ((StringBuffer)localObject2).append(paramd.field_mp4identifymd5).append(",").append(com.tencent.mm.plugin.video.c.aDi(locala.itD)).append(",");
         ((StringBuffer)localObject2).append(l2).append(",").append(l3).append(",");
         ((StringBuffer)localObject2).append(l1).append(",").append(locala1.videoDuration).append(",");
         ((StringBuffer)localObject2).append(locala1.videoBitrate / 1000).append(",").append(locala1.audioBitrate / 1000).append(",");
         ((StringBuffer)localObject2).append(locala1.frameRate).append(",").append(locala1.width).append(",");
-        ((StringBuffer)localObject2).append(locala1.height).append(",").append(locala.iaj).append(",");
+        ((StringBuffer)localObject2).append(locala1.height).append(",").append(locala.itE).append(",");
         ((StringBuffer)localObject2).append(j).append(",").append(locala2.videoDuration).append(",");
         ((StringBuffer)localObject2).append(locala2.videoBitrate / 1000).append(",").append(locala2.audioBitrate / 1000).append(",");
         ((StringBuffer)localObject2).append(locala2.frameRate).append(",").append(locala2.width).append(",");
-        ((StringBuffer)localObject2).append(locala2.height).append(",").append(locala.iak).append(",");
+        ((StringBuffer)localObject2).append(locala2.height).append(",").append(locala.itF).append(",");
         ((StringBuffer)localObject2).append((String)localObject1).append(",").append(locala1.audioChannel).append(",").append(paramd.field_fileUrl);
-        ac.i("MicroMsg.SubCoreMediaRpt", "upload video rpt %s", new Object[] { ((StringBuffer)localObject2).toString() });
-        new fr(((StringBuffer)localObject2).toString()).aHZ();
-        n.dn(locala2.videoBitrate, locala.iak);
-        if (locala2.wDS == 1)
+        ad.i("MicroMsg.SubCoreMediaRpt", "upload video rpt %s", new Object[] { ((StringBuffer)localObject2).toString() });
+        new gs(((StringBuffer)localObject2).toString()).aLk();
+        n.dp(locala2.videoBitrate, locala.itF);
+        if (locala2.xRz == 1)
         {
-          ac.i("MicroMsg.SubCoreMediaRpt", "ABA: New Path %s ", new Object[] { locala.iah });
-          n.a(locala2, locala.iak);
+          ad.i("MicroMsg.SubCoreMediaRpt", "ABA: New Path %s ", new Object[] { locala.itC });
+          n.a(locala2, locala.itF);
         }
         AppMethodBeat.o(126914);
       }
@@ -195,21 +214,21 @@ public class n
   public final void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(126920);
-    a locala2 = (a)this.hZT.get(paramString2);
+    a locala2 = (a)this.ito.get(paramString2);
     a locala1 = locala2;
     if (locala2 == null) {
       locala1 = new a();
     }
-    locala1.iag = paramString1;
-    locala1.iah = paramString2;
+    locala1.itB = paramString1;
+    locala1.itC = paramString2;
     locala1.toUser = paramString3;
-    locala1.eul = paramString4;
-    locala1.iai = paramString5;
-    locala1.iak = paramInt1;
-    locala1.iaj = paramInt2;
-    locala1.startTime = bs.eWj();
-    this.hZT.put(paramString2, locala1);
-    ac.i("MicroMsg.SubCoreMediaRpt", "note video upload path[%s, %s] toUser %s msgSource %s snsInfoId %s sendScene %d cpStatus %d", new Object[] { paramString1, paramString2, paramString3, paramString4, paramString5, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    locala1.eLs = paramString4;
+    locala1.itD = paramString5;
+    locala1.itF = paramInt1;
+    locala1.itE = paramInt2;
+    locala1.startTime = bt.flT();
+    this.ito.put(paramString2, locala1);
+    ad.i("MicroMsg.SubCoreMediaRpt", "note video upload path[%s, %s] toUser %s msgSource %s snsInfoId %s sendScene %d cpStatus %d", new Object[] { paramString1, paramString2, paramString3, paramString4, paramString5, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(126920);
   }
   
@@ -228,14 +247,14 @@ public class n
   
   public final class a
   {
-    public String dnk;
-    public String eul;
-    public d hZx;
-    public String iag;
-    public String iah;
-    public String iai;
-    public int iaj;
-    public int iak;
+    public String dyY;
+    public String eLs;
+    public d icO;
+    public String itB;
+    public String itC;
+    public String itD;
+    public int itE;
+    public int itF;
     public long startTime;
     public String toUser;
     

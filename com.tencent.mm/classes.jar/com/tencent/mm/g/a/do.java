@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class do
   extends b
 {
-  public a ddc;
-  public b ddd;
+  public a dos;
   
   public do()
   {
@@ -16,28 +15,21 @@ public final class do
   
   private do(byte paramByte)
   {
-    AppMethodBeat.i(115979);
-    this.ddc = new a();
-    this.ddd = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(115976);
+    this.dos = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(115979);
+    AppMethodBeat.o(115976);
   }
   
   public static final class a
   {
-    public String cIZ;
-    public String dda;
-  }
-  
-  public static final class b
-  {
-    public boolean dde;
+    public String cUi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.do
  * JD-Core Version:    0.7.0.1
  */

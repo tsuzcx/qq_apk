@@ -4,11 +4,11 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
-import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wallet_core.model.v;
 import com.tencent.mm.plugin.wallet_core.utils.e;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.d;
@@ -22,59 +22,59 @@ import org.json.JSONObject;
 public class g
   extends n
 {
-  public Orders BhZ;
-  protected u Bio;
+  protected v CIC;
+  public Orders CIn;
   private int mPayScene;
   
-  public g(u paramu, Orders paramOrders)
+  public g(v paramv, Orders paramOrders)
   {
     AppMethodBeat.i(69294);
-    this.BhZ = null;
+    this.CIn = null;
     this.mPayScene = -1;
-    this.BhZ = paramOrders;
-    this.Bio = paramu;
-    List localList = paramOrders.BxR;
+    this.CIn = paramOrders;
+    this.CIC = paramv;
+    List localList = paramOrders.CYk;
     if (localList.size() > 0) {
-      localObject = ((Orders.Commodity)localList.get(0)).dad;
+      localObject = ((Orders.Commodity)localList.get(0)).dlv;
     }
-    if (paramu.wfX == null)
+    if (paramv.xnF == null)
     {
-      ac.e("MicroMsg.NetSceneTenpayPayVertify", "empty payInfo");
+      ad.e("MicroMsg.NetSceneTenpayPayVertify", "empty payInfo");
       AppMethodBeat.o(69294);
       return;
     }
-    this.mPayScene = paramu.wfX.dqL;
-    int i = paramu.wfX.channel;
-    c(paramOrders.dac, (String)localObject, paramu.wfX.dqL, i, paramu.cZz, paramu.vwo);
+    this.mPayScene = paramv.xnF.dCC;
+    int i = paramv.xnF.channel;
+    b(paramOrders.dlu, (String)localObject, paramv.xnF.dCC, i, paramv.dkR, paramv.wBI);
     paramOrders = new HashMap();
     localObject = new HashMap();
-    paramOrders.put("flag", paramu.flag);
-    paramOrders.put("passwd", paramu.iJA);
+    paramOrders.put("flag", paramv.flag);
+    paramOrders.put("passwd", paramv.jcJ);
     boolean bool;
-    if (!bs.isNullOrNil(paramu.iJA))
+    if (!bt.isNullOrNil(paramv.jcJ))
     {
       bool = true;
-      ac.i("MicroMsg.NetSceneTenpayPayVertify", "hy: has pwd: %b", new Object[] { Boolean.valueOf(bool) });
-      setPayInfo(paramu.wfX, paramOrders, (Map)localObject, bool);
-      paramOrders.put("verify_type", paramu.dqm);
-      if (paramu.dqm != 0) {
+      ad.i("MicroMsg.NetSceneTenpayPayVertify", "hy: has pwd: %b", new Object[] { Boolean.valueOf(bool) });
+      setPayInfo(paramv.xnF, paramOrders, (Map)localObject, bool);
+      paramOrders.put("verify_type", paramv.dBZ);
+      if (paramv.dBZ != 0) {
         break label414;
       }
-      paramOrders.put("verify_code", paramu.BzM);
+      paramOrders.put("verify_code", paramv.Daf);
     }
     for (;;)
     {
-      paramOrders.put("token", paramu.token);
-      paramOrders.put("bank_type", paramu.cZz);
-      paramOrders.put("bind_serial", paramu.vwo);
-      paramOrders.put("arrive_type", paramu.BtG);
-      paramOrders.put("default_favorcomposedid", paramu.BtJ);
-      paramOrders.put("favorcomposedid", paramu.BtK);
-      aP(paramOrders);
-      if (z.fAn())
+      paramOrders.put("token", paramv.token);
+      paramOrders.put("bank_type", paramv.dkR);
+      paramOrders.put("bind_serial", paramv.wBI);
+      paramOrders.put("arrive_type", paramv.CTV);
+      paramOrders.put("default_favorcomposedid", paramv.CTY);
+      paramOrders.put("favorcomposedid", paramv.CTZ);
+      aS(paramOrders);
+      if (z.fRx())
       {
         ((Map)localObject).put("uuid_for_bindcard", z.getBindCardUuid());
-        ((Map)localObject).put("bindcard_scene", z.fAo());
+        ((Map)localObject).put("bindcard_scene", z.fRy());
       }
       setRequestData(paramOrders);
       setWXRequestData((Map)localObject);
@@ -83,14 +83,14 @@ public class g
       bool = false;
       break;
       label414:
-      paramOrders.put("cre_tail", paramu.BzO);
-      paramOrders.put("cre_type", paramu.BzP);
+      paramOrders.put("cre_tail", paramv.Dah);
+      paramOrders.put("cre_type", paramv.Dai);
     }
   }
   
-  protected void aP(Map<String, String> paramMap) {}
+  protected void aS(Map<String, String> paramMap) {}
   
-  public final boolean epw()
+  public final boolean eDw()
   {
     return (this.mPayScene == 11) || (this.mPayScene == 21);
   }
@@ -131,28 +131,28 @@ public class g
       AppMethodBeat.o(69295);
       return;
     }
-    ac.d("MicroMsg.NetSceneTenpayPayVertify", "Pay Success! saving bind_serial:".concat(String.valueOf(paramJSONObject.optString("bind_serial"))));
+    ad.d("MicroMsg.NetSceneTenpayPayVertify", "Pay Success! saving bind_serial:".concat(String.valueOf(paramJSONObject.optString("bind_serial"))));
     if ("1".equals(paramJSONObject.optString("pay_flag")))
     {
       setPaySuccess(true);
-      this.BhZ = Orders.a(paramJSONObject, this.BhZ);
-      ac.i("MicroMsg.NetSceneTenpayPayVertify", "mPayScene:" + this.mPayScene);
+      this.CIn = Orders.a(paramJSONObject, this.CIn);
+      ad.i("MicroMsg.NetSceneTenpayPayVertify", "mPayScene:" + this.mPayScene);
       if (this.mPayScene != 39) {
         break label172;
       }
-      ac.i("MicroMsg.NetSceneTenpayPayVertify", "it's the sns scene, parse the sns pay data");
-      e.bo(paramJSONObject);
+      ad.i("MicroMsg.NetSceneTenpayPayVertify", "it's the sns scene, parse the sns pay data");
+      e.bx(paramJSONObject);
     }
     for (;;)
     {
-      paramString = a.aSA("PayProcess").iterator();
+      paramString = a.aYz("PayProcess").iterator();
       while (paramString.hasNext()) {
-        ((d)paramString.next()).dmf.putInt("key_is_clear_failure", this.JGn);
+        ((d)paramString.next()).dxT.putInt("key_is_clear_failure", this.Lzr);
       }
       setPaySuccess(false);
       break;
       label172:
-      ac.i("MicroMsg.NetSceneTenpayPayVertify", "it's not the sns scene");
+      ad.i("MicroMsg.NetSceneTenpayPayVertify", "it's not the sns scene");
     }
     AppMethodBeat.o(69295);
   }

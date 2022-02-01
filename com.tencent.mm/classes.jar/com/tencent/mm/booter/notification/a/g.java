@@ -5,35 +5,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public b fph;
-  public c fpi;
-  public d fpj;
-  public h fpk;
-  private f fpl;
-  public a fpm;
-  public int fpn;
-  public int fpo;
-  public int fpp;
-  public int fpq;
-  public boolean fpr;
-  private int fpt;
-  private int fpu;
-  public boolean fpv;
-  public boolean fpw;
+  private int fHA;
+  private int fHB;
+  public boolean fHC;
+  public boolean fHD;
+  public b fHp;
+  public c fHq;
+  public d fHr;
+  public h fHs;
+  private f fHt;
+  public a fHu;
+  public int fHv;
+  public int fHw;
+  public int fHx;
+  public int fHy;
+  public boolean fHz;
   public Context mContext;
   
   public g(Context paramContext)
   {
     AppMethodBeat.i(20067);
-    this.fpt = -1;
-    this.fpu = -1;
+    this.fHA = -1;
+    this.fHB = -1;
     this.mContext = paramContext;
-    this.fph = new b();
-    this.fpi = new c();
-    this.fpj = new d();
-    this.fpk = new h();
-    this.fpm = new a();
-    this.fpl = f.a.Vi();
+    this.fHp = new b();
+    this.fHq = new c();
+    this.fHr = new d();
+    this.fHs = new h();
+    this.fHu = new a();
+    this.fHt = f.a.Xz();
     AppMethodBeat.o(20067);
   }
   
@@ -64,10 +64,32 @@ public final class g
     return paramArrayOfLong;
   }
   
-  public final void rH(String paramString)
+  public final int Mn()
+  {
+    AppMethodBeat.i(221373);
+    if (this.fHw == -1) {
+      this.fHw = com.tencent.mm.n.f.acw();
+    }
+    int i = this.fHw;
+    AppMethodBeat.o(221373);
+    return i;
+  }
+  
+  public final int Mo()
+  {
+    AppMethodBeat.i(221374);
+    if (this.fHx == -1) {
+      this.fHx = com.tencent.mm.n.f.acx();
+    }
+    int i = this.fHx;
+    AppMethodBeat.o(221374);
+    return i;
+  }
+  
+  public final void uu(String paramString)
   {
     AppMethodBeat.i(20068);
-    this.fpl.rG(paramString);
+    this.fHt.ut(paramString);
     AppMethodBeat.o(20068);
   }
 }

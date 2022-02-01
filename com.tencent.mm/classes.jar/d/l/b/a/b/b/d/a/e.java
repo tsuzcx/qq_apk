@@ -1,15 +1,15 @@
 package d.l.b.a.b.b.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 
 public final class e
 {
   public static final Class<?> a(ClassLoader paramClassLoader, String paramString)
   {
     AppMethodBeat.i(57363);
-    k.h(paramClassLoader, "$this$tryLoadClass");
-    k.h(paramString, "fqName");
+    p.h(paramClassLoader, "$this$tryLoadClass");
+    p.h(paramString, "fqName");
     try
     {
       paramClassLoader = Class.forName(paramString, false, paramClassLoader);
@@ -27,7 +27,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.e
  * JD-Core Version:    0.7.0.1
  */

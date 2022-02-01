@@ -7,27 +7,26 @@ import com.tencent.mm.plugin.appbrand.appcache.b.b.c;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.d;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.e;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.f;
-import com.tencent.mm.plugin.appbrand.appcache.b.b.g;
+import com.tencent.mm.plugin.appbrand.appcache.b.b.h;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.i;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public enum a
 {
-  public static final a jqH;
-  public static final a jqI;
-  public static final a jqJ;
-  public static final a jqK;
+  public static final a jKB;
+  public static final a jKC;
+  public static final a jKD;
+  public static final a jKE;
   
   static
   {
     AppMethodBeat.i(44429);
-    jqG = new a("INSTANCE");
-    jqL = new a[] { jqG };
-    jqH = new a() {};
-    jqI = new a() {};
-    jqJ = new a() {};
-    jqK = new a() {};
+    jKA = new a("INSTANCE");
+    jKF = new a[] { jKA };
+    jKB = new a() {};
+    jKC = new a() {};
+    jKD = new a() {};
+    jKE = new a() {};
     AppMethodBeat.o(44429);
   }
   
@@ -38,34 +37,34 @@ public enum a
     AppMethodBeat.i(44428);
     if (paramLong2 < 0L)
     {
-      ac.e("MicroMsg.AppBrand.PredownloadReporter", "idkeyStat with invalid ID(%d), key (%d)", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      ad.e("MicroMsg.AppBrand.PredownloadReporter", "idkeyStat with invalid ID(%d), key (%d)", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
       AppMethodBeat.o(44428);
       return;
     }
     if (paramLong1 > 0L)
     {
-      h.wUl.n(paramLong1, paramLong2, 1L);
-      h.wUl.f(15272, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      com.tencent.mm.plugin.report.service.g.yhR.n(paramLong1, paramLong2, 1L);
+      com.tencent.mm.plugin.report.service.g.yhR.f(15272, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
     }
     if (843L != paramLong1)
     {
-      h.wUl.n(843L, paramLong2, 1L);
-      h.wUl.f(15272, new Object[] { Integer.valueOf(843), Long.valueOf(paramLong2) });
+      com.tencent.mm.plugin.report.service.g.yhR.n(843L, paramLong2, 1L);
+      com.tencent.mm.plugin.report.service.g.yhR.f(15272, new Object[] { Integer.valueOf(843), Long.valueOf(paramLong2) });
     }
     AppMethodBeat.o(44428);
   }
   
-  public static void dB(int paramInt1, int paramInt2)
+  public static void dD(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(210154);
+    AppMethodBeat.i(221275);
     A(paramInt1, paramInt2);
-    AppMethodBeat.o(210154);
+    AppMethodBeat.o(221275);
   }
   
   public static class a<_Key>
     extends SparseIntArray
   {
-    private int ci(_Key param_Key)
+    private int ck(_Key param_Key)
     {
       AppMethodBeat.i(44423);
       if (param_Key == null)
@@ -78,7 +77,7 @@ public enum a
       return i;
     }
     
-    public final void f(_Key param_Key, int paramInt)
+    public final void g(_Key param_Key, int paramInt)
     {
       AppMethodBeat.i(44422);
       super.put(param_Key.hashCode(), paramInt);
@@ -88,7 +87,7 @@ public enum a
     public final int get(_Key param_Key)
     {
       AppMethodBeat.i(44424);
-      int i = ci(param_Key);
+      int i = ck(param_Key);
       AppMethodBeat.o(44424);
       return i;
     }

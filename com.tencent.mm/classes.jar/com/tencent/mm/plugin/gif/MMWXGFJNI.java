@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.gif;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.b.q;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class MMWXGFJNI
 {
@@ -18,22 +18,21 @@ public class MMWXGFJNI
     AppMethodBeat.i(104681);
     mIsInit = false;
     mECode = -1;
-    ac.i("MicroMsg.JNI.MMWXGF", "static MMWXGFJNI");
+    ad.i("MicroMsg.JNI.MMWXGF", "static MMWXGFJNI");
     if (!mIsInit)
     {
-      String str = b.aoY() + "lib/libvoipCodec.so";
-      int i = nativeInit(str);
+      int i = nativeInit("libvoipCodec.so");
       mECode = i;
       if (i >= 0) {}
       for (boolean bool = true;; bool = false)
       {
         mIsInit = bool;
-        ac.i("MicroMsg.JNI.MMWXGF", "native init MMWXGF mECode:%d result:%b :%s", new Object[] { Integer.valueOf(mECode), Boolean.valueOf(mIsInit), str });
+        ad.i("MicroMsg.JNI.MMWXGF", "native init MMWXGF mECode:%d result:%b :%s", new Object[] { Integer.valueOf(mECode), Boolean.valueOf(mIsInit), "libvoipCodec.so" });
         AppMethodBeat.o(104681);
         return;
       }
     }
-    ac.d("MicroMsg.JNI.MMWXGF", "MMWXGF has init.");
+    ad.d("MicroMsg.JNI.MMWXGF", "MMWXGF has init.");
     AppMethodBeat.o(104681);
   }
   
@@ -42,9 +41,9 @@ public class MMWXGFJNI
     return mECode;
   }
   
-  public static native int nativeAV2Gif(String paramString1, String paramString2);
+  private static native int nativeAV2Gif(String paramString1, String paramString2);
   
-  public static native int nativeAV2Gif(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
+  private static native int nativeAV2Gif(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
   public static native int nativeAddGifEncodeRgbaFrame(long paramLong1, int paramInt1, int paramInt2, byte[] paramArrayOfByte, long paramLong2);
   
@@ -70,25 +69,57 @@ public class MMWXGFJNI
   
   public static native boolean nativeIsWXGF(byte[] paramArrayOfByte, int paramInt);
   
-  public static native int nativePic2Wxam(String paramString1, String paramString2, int paramInt1, int paramInt2);
+  private static native int nativePic2Wxam(String paramString1, String paramString2, int paramInt1, int paramInt2);
   
-  public static native int nativePic2WxamWithWH(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  private static native int nativePic2WxamWithWH(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public static native int nativePic2WxamWithWH(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7);
+  private static native int nativePic2WxamWithWH(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7);
   
   public static native int nativeRewindBuffer(long paramLong);
   
   public static native int nativeUninit(long paramLong);
   
-  public static native int nativeWxam2Pic(String paramString1, String paramString2);
+  private static native int nativeWxam2Pic(String paramString1, String paramString2);
   
   public static native byte[] nativeWxam2PicBuf(byte[] paramArrayOfByte);
   
   public static native byte[] nativeWxamToGif(byte[] paramArrayOfByte);
+  
+  public static int pic2Wxam(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(219022);
+    paramInt1 = nativePic2Wxam(q.k(paramString1, false), q.k(paramString2, true), paramInt1, paramInt2);
+    AppMethodBeat.o(219022);
+    return paramInt1;
+  }
+  
+  public static int pic2WxamWithWH(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(219024);
+    paramInt1 = nativePic2WxamWithWH(q.k(paramString1, false), q.k(paramString2, true), paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(219024);
+    return paramInt1;
+  }
+  
+  public static int pic2WxamWithWH(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
+  {
+    AppMethodBeat.i(219025);
+    paramInt1 = nativePic2WxamWithWH(q.k(paramString, true), paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
+    AppMethodBeat.o(219025);
+    return paramInt1;
+  }
+  
+  public static int wxam2Pic(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(219023);
+    int i = nativeWxam2Pic(q.k(paramString1, false), q.k(paramString2, true));
+    AppMethodBeat.o(219023);
+    return i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.MMWXGFJNI
  * JD-Core Version:    0.7.0.1
  */

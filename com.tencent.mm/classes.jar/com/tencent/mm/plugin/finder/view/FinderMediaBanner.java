@@ -20,32 +20,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.video.FinderVideoSeekBar;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
+import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.amq;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.aqb;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.z;
 import com.tencent.mm.view.MediaBanner;
 import com.tencent.mm.view.RecyclerHorizontalViewPager;
+import d.g.b.p;
 import d.l;
 import java.util.Timer;
 import java.util.TimerTask;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "Lcom/tencent/mm/view/MediaBanner;", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "Lcom/tencent/mm/plugin/finder/view/FinderViewPager$CheckScrollHorizontally;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "hideTextTimer", "Ljava/util/Timer;", "value", "", "isFrozenRecyclerView", "()Z", "setFrozenRecyclerView", "(Z)V", "refDeleteTip", "Landroid/widget/TextView;", "refDeleteTipLayout", "Landroid/view/View;", "Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "refFeedInfo", "getRefFeedInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "setRefFeedInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;)V", "refFromTv", "refLayout", "topLayer", "typeIconIv", "Landroid/widget/ImageView;", "getTypeIconIv", "()Landroid/widget/ImageView;", "warnContainer", "canScrollHorizontally", "direction", "parent", "Landroid/view/ViewGroup;", "x", "", "y", "refreshRefUI", "", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "Lcom/tencent/mm/view/MediaBanner;", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "Lcom/tencent/mm/plugin/finder/view/FinderViewPager$CheckScrollHorizontally;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "hideTextTimer", "Ljava/util/Timer;", "value", "", "isFrozenRecyclerView", "()Z", "setFrozenRecyclerView", "(Z)V", "refDeleteTip", "Landroid/widget/TextView;", "refDeleteTipLayout", "Landroid/view/View;", "Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "refFeedInfo", "getRefFeedInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "setRefFeedInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;)V", "refFromTv", "refLayout", "spaceView", "getSpaceView", "()Landroid/view/View;", "topLayer", "typeIconIv", "Landroid/widget/ImageView;", "getTypeIconIv", "()Landroid/widget/ImageView;", "warnContainer", "canScrollHorizontally", "direction", "parent", "Landroid/view/ViewGroup;", "x", "", "y", "refreshRefUI", "", "plugin-finder_release"})
 public final class FinderMediaBanner
   extends MediaBanner<com.tencent.mm.ui.base.a.b>
   implements FinderViewPager.a
 {
   private final String TAG;
-  private amq rJa;
-  private final View rXY;
-  private final View rXZ;
-  private final View rYa;
-  private final TextView rYb;
-  private final View rYc;
-  private final TextView rYd;
-  private Timer rYe;
-  private final ImageView rYf;
-  private boolean rYg;
+  private aqb sDY;
+  private final View sUS;
+  private final View sUT;
+  private final View sUU;
+  private final TextView sUV;
+  private final View sUW;
+  private final TextView sUX;
+  private Timer sUY;
+  private final ImageView sUZ;
+  private final View sVa;
+  private boolean sVb;
   
   public FinderMediaBanner(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,65 +56,65 @@ public final class FinderMediaBanner
     AppMethodBeat.i(168377);
     this.TAG = "Finder.FinderMediaBanner";
     paramContext = LayoutInflater.from(getContext()).inflate(2131494034, null);
-    d.g.b.k.g(paramContext, "LayoutInflater.from(cont…d_banner_top_layer, null)");
-    this.rXY = paramContext;
+    p.g(paramContext, "LayoutInflater.from(cont…d_banner_top_layer, null)");
+    this.sUS = paramContext;
     paramContext = LayoutInflater.from(getContext()).inflate(2131496194, null);
-    d.g.b.k.g(paramContext, "LayoutInflater.from(cont…eed_warn_container, null)");
-    this.rXZ = paramContext;
-    this.rYf = new ImageView(getContext());
-    addView(this.rXY, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    paramContext = this.rXY.findViewById(2131304093);
-    d.g.b.k.g(paramContext, "topLayer.findViewById(R.id.reprint_layout)");
-    this.rYa = paramContext;
+    p.g(paramContext, "LayoutInflater.from(cont…eed_warn_container, null)");
+    this.sUT = paramContext;
+    this.sUZ = new ImageView(getContext());
+    this.sVa = new View(getContext());
+    addView(this.sUS, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+    paramContext = this.sUS.findViewById(2131304093);
+    p.g(paramContext, "topLayer.findViewById(R.id.reprint_layout)");
+    this.sUU = paramContext;
     setId(2131302203);
-    paramContext = this.rXY.findViewById(2131304091);
-    d.g.b.k.g(paramContext, "topLayer.findViewById(R.id.reprint_from_tv)");
-    this.rYb = ((TextView)paramContext);
-    paramContext = this.rXY.findViewById(2131298993);
-    d.g.b.k.g(paramContext, "topLayer.findViewById(R.id.deleted_tips_layout)");
-    this.rYc = paramContext;
-    paramContext = this.rXY.findViewById(2131298994);
-    d.g.b.k.g(paramContext, "topLayer.findViewById(R.id.deleted_tips_tv)");
-    this.rYd = ((TextView)paramContext);
-    cFb();
+    paramContext = this.sUS.findViewById(2131304091);
+    p.g(paramContext, "topLayer.findViewById(R.id.reprint_from_tv)");
+    this.sUV = ((TextView)paramContext);
+    paramContext = this.sUS.findViewById(2131298993);
+    p.g(paramContext, "topLayer.findViewById(R.id.deleted_tips_layout)");
+    this.sUW = paramContext;
+    paramContext = this.sUS.findViewById(2131298994);
+    p.g(paramContext, "topLayer.findViewById(R.id.deleted_tips_tv)");
+    this.sUX = ((TextView)paramContext);
+    cNv();
     getPagerView().setOverScrollMode(0);
     getPagerView().setNestedScrollingEnabled(false);
     paramContext = getContext();
-    d.g.b.k.g(paramContext, "context");
+    p.g(paramContext, "context");
     int i = (int)paramContext.getResources().getDimension(2131165292);
     paramContext = getContext();
-    d.g.b.k.g(paramContext, "context");
+    p.g(paramContext, "context");
     paramContext = new FrameLayout.LayoutParams(i, (int)paramContext.getResources().getDimension(2131165292));
     paramAttributeSet = getContext();
-    d.g.b.k.g(paramAttributeSet, "context");
+    p.g(paramAttributeSet, "context");
     float f = paramAttributeSet.getResources().getDimension(2131165289);
     paramAttributeSet = getContext();
-    d.g.b.k.g(paramAttributeSet, "context");
+    p.g(paramAttributeSet, "context");
     i = (int)(f + paramAttributeSet.getResources().getDimension(2131165274));
     paramContext.rightMargin = i;
     paramContext.topMargin = i;
     paramContext.gravity = 53;
-    this.rYf.setVisibility(8);
-    addView((View)this.rYf, (ViewGroup.LayoutParams)paramContext);
+    this.sUZ.setVisibility(8);
+    addView((View)this.sUZ, (ViewGroup.LayoutParams)paramContext);
     paramContext = getContext();
-    d.g.b.k.g(paramContext, "context");
+    p.g(paramContext, "context");
     paramContext = new FinderVideoSeekBar(paramContext);
     paramContext.setVisibility(8);
     addView((View)paramContext);
-    paramContext = z.jD(getContext()).inflate(2131496186, null);
+    paramContext = z.jO(getContext()).inflate(2131496186, null);
     paramAttributeSet = new FrameLayout.LayoutParams(-1, -2);
     paramAttributeSet.gravity = 80;
     getPagerViewContainer().addView(paramContext, (ViewGroup.LayoutParams)paramAttributeSet);
-    paramContext = new View(getContext());
-    paramContext.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(0, com.tencent.mm.cc.a.fromDPToPix(getContext(), 10)));
-    paramAttributeSet = getContainer();
-    if (paramAttributeSet != null) {
-      paramAttributeSet.addView(paramContext);
+    this.sVa.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(0, com.tencent.mm.cc.a.fromDPToPix(getContext(), 10)));
+    paramContext = getContainer();
+    if (paramContext != null) {
+      paramContext.addView(this.sVa);
     }
     paramContext = getContainer();
     if (paramContext != null)
     {
-      paramContext.addView(this.rXZ, 1);
+      paramContext.addView(this.sUT, 1);
       AppMethodBeat.o(168377);
       return;
     }
@@ -124,102 +127,102 @@ public final class FinderMediaBanner
     AppMethodBeat.i(168378);
     this.TAG = "Finder.FinderMediaBanner";
     paramContext = LayoutInflater.from(getContext()).inflate(2131494034, null);
-    d.g.b.k.g(paramContext, "LayoutInflater.from(cont…d_banner_top_layer, null)");
-    this.rXY = paramContext;
+    p.g(paramContext, "LayoutInflater.from(cont…d_banner_top_layer, null)");
+    this.sUS = paramContext;
     paramContext = LayoutInflater.from(getContext()).inflate(2131496194, null);
-    d.g.b.k.g(paramContext, "LayoutInflater.from(cont…eed_warn_container, null)");
-    this.rXZ = paramContext;
-    this.rYf = new ImageView(getContext());
-    addView(this.rXY, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    paramContext = this.rXY.findViewById(2131304093);
-    d.g.b.k.g(paramContext, "topLayer.findViewById(R.id.reprint_layout)");
-    this.rYa = paramContext;
+    p.g(paramContext, "LayoutInflater.from(cont…eed_warn_container, null)");
+    this.sUT = paramContext;
+    this.sUZ = new ImageView(getContext());
+    this.sVa = new View(getContext());
+    addView(this.sUS, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+    paramContext = this.sUS.findViewById(2131304093);
+    p.g(paramContext, "topLayer.findViewById(R.id.reprint_layout)");
+    this.sUU = paramContext;
     setId(2131302203);
-    paramContext = this.rXY.findViewById(2131304091);
-    d.g.b.k.g(paramContext, "topLayer.findViewById(R.id.reprint_from_tv)");
-    this.rYb = ((TextView)paramContext);
-    paramContext = this.rXY.findViewById(2131298993);
-    d.g.b.k.g(paramContext, "topLayer.findViewById(R.id.deleted_tips_layout)");
-    this.rYc = paramContext;
-    paramContext = this.rXY.findViewById(2131298994);
-    d.g.b.k.g(paramContext, "topLayer.findViewById(R.id.deleted_tips_tv)");
-    this.rYd = ((TextView)paramContext);
-    cFb();
+    paramContext = this.sUS.findViewById(2131304091);
+    p.g(paramContext, "topLayer.findViewById(R.id.reprint_from_tv)");
+    this.sUV = ((TextView)paramContext);
+    paramContext = this.sUS.findViewById(2131298993);
+    p.g(paramContext, "topLayer.findViewById(R.id.deleted_tips_layout)");
+    this.sUW = paramContext;
+    paramContext = this.sUS.findViewById(2131298994);
+    p.g(paramContext, "topLayer.findViewById(R.id.deleted_tips_tv)");
+    this.sUX = ((TextView)paramContext);
+    cNv();
     getPagerView().setOverScrollMode(0);
     getPagerView().setNestedScrollingEnabled(false);
     paramContext = getContext();
-    d.g.b.k.g(paramContext, "context");
+    p.g(paramContext, "context");
     paramInt = (int)paramContext.getResources().getDimension(2131165292);
     paramContext = getContext();
-    d.g.b.k.g(paramContext, "context");
+    p.g(paramContext, "context");
     paramContext = new FrameLayout.LayoutParams(paramInt, (int)paramContext.getResources().getDimension(2131165292));
     paramAttributeSet = getContext();
-    d.g.b.k.g(paramAttributeSet, "context");
+    p.g(paramAttributeSet, "context");
     float f = paramAttributeSet.getResources().getDimension(2131165289);
     paramAttributeSet = getContext();
-    d.g.b.k.g(paramAttributeSet, "context");
+    p.g(paramAttributeSet, "context");
     paramInt = (int)(f + paramAttributeSet.getResources().getDimension(2131165274));
     paramContext.rightMargin = paramInt;
     paramContext.topMargin = paramInt;
     paramContext.gravity = 53;
-    this.rYf.setVisibility(8);
-    addView((View)this.rYf, (ViewGroup.LayoutParams)paramContext);
+    this.sUZ.setVisibility(8);
+    addView((View)this.sUZ, (ViewGroup.LayoutParams)paramContext);
     paramContext = getContext();
-    d.g.b.k.g(paramContext, "context");
+    p.g(paramContext, "context");
     paramContext = new FinderVideoSeekBar(paramContext);
     paramContext.setVisibility(8);
     addView((View)paramContext);
-    paramContext = z.jD(getContext()).inflate(2131496186, null);
+    paramContext = z.jO(getContext()).inflate(2131496186, null);
     paramAttributeSet = new FrameLayout.LayoutParams(-1, -2);
     paramAttributeSet.gravity = 80;
     getPagerViewContainer().addView(paramContext, (ViewGroup.LayoutParams)paramAttributeSet);
-    paramContext = new View(getContext());
-    paramContext.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(0, com.tencent.mm.cc.a.fromDPToPix(getContext(), 10)));
-    paramAttributeSet = getContainer();
-    if (paramAttributeSet != null) {
-      paramAttributeSet.addView(paramContext);
+    this.sVa.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(0, com.tencent.mm.cc.a.fromDPToPix(getContext(), 10)));
+    paramContext = getContainer();
+    if (paramContext != null) {
+      paramContext.addView(this.sVa);
     }
     paramContext = getContainer();
     if (paramContext != null)
     {
-      paramContext.addView(this.rXZ, 1);
+      paramContext.addView(this.sUT, 1);
       AppMethodBeat.o(168378);
       return;
     }
     AppMethodBeat.o(168378);
   }
   
-  private void cFb()
+  private void cNv()
   {
     AppMethodBeat.i(168374);
-    Object localObject1 = this.rYe;
+    Object localObject1 = this.sUY;
     if (localObject1 != null) {
       ((Timer)localObject1).cancel();
     }
     Object localObject2 = this.TAG;
     localObject1 = new StringBuilder("refreshRefUI ");
     boolean bool;
-    if (this.rJa == null)
+    if (this.sDY == null)
     {
       bool = true;
       Object localObject3 = ((StringBuilder)localObject1).append(bool).append(' ');
-      localObject1 = this.rJa;
+      localObject1 = this.sDY;
       if (localObject1 == null) {
         break label190;
       }
-      localObject1 = ((amq)localObject1).refObjectContact;
+      localObject1 = ((aqb)localObject1).refObjectContact;
       label70:
       localObject1 = ((StringBuilder)localObject3).append(localObject1).append(' ');
-      localObject3 = this.rJa;
-      if ((localObject3 == null) || (((amq)localObject3).refObjectFlag != 0L)) {
+      localObject3 = this.sDY;
+      if ((localObject3 == null) || (((aqb)localObject3).refObjectFlag != 0L)) {
         break label195;
       }
       bool = true;
       label105:
-      ac.i((String)localObject2, bool);
-      if (this.rJa != null)
+      ad.i((String)localObject2, bool);
+      if (this.sDY != null)
       {
-        localObject1 = this.rJa;
+        localObject1 = this.sDY;
         if (localObject1 == null) {
           break label200;
         }
@@ -228,17 +231,17 @@ public final class FinderMediaBanner
     label190:
     label195:
     label200:
-    for (localObject1 = ((amq)localObject1).refObjectContact;; localObject1 = null)
+    for (localObject1 = ((aqb)localObject1).refObjectContact;; localObject1 = null)
     {
       if (localObject1 != null)
       {
-        localObject1 = this.rJa;
-        if ((localObject1 == null) || (((amq)localObject1).refObjectFlag != 0L)) {
+        localObject1 = this.sDY;
+        if ((localObject1 == null) || (((aqb)localObject1).refObjectFlag != 0L)) {
           break label205;
         }
       }
-      this.rYa.setVisibility(8);
-      this.rYc.setVisibility(8);
+      this.sUU.setVisibility(8);
+      this.sUW.setVisibility(8);
       AppMethodBeat.o(168374);
       return;
       bool = false;
@@ -249,117 +252,122 @@ public final class FinderMediaBanner
       break label105;
     }
     label205:
-    this.rYa.setVisibility(0);
+    this.sUU.setVisibility(0);
     localObject1 = getContext();
-    localObject2 = this.rJa;
+    localObject2 = this.sDY;
     if (localObject2 == null) {
-      d.g.b.k.fOy();
+      p.gfZ();
     }
-    localObject1 = com.tencent.mm.pluginsdk.ui.span.k.c((Context)localObject1, (CharSequence)((amq)localObject2).refObjectContact.nickname);
+    localObject1 = k.c((Context)localObject1, (CharSequence)((aqb)localObject2).refObjectContact.nickname);
     localObject2 = getContext().getString(2131759329, new Object[] { localObject1 });
-    this.rYb.setText((CharSequence)localObject2);
-    this.rYb.setVisibility(0);
+    this.sUV.setText((CharSequence)localObject2);
+    this.sUV.setVisibility(0);
     localObject2 = new Timer();
     ((Timer)localObject2).schedule((TimerTask)new a(this), 3000L);
-    this.rYe = ((Timer)localObject2);
-    localObject2 = this.rJa;
+    this.sUY = ((Timer)localObject2);
+    localObject2 = this.sDY;
     if (localObject2 == null) {
-      d.g.b.k.fOy();
+      p.gfZ();
     }
-    if (((amq)localObject2).refObjectFlag == 2L)
+    if (((aqb)localObject2).refObjectFlag == 2L)
     {
-      this.rYc.setVisibility(0);
-      this.rYa.setVisibility(8);
-      this.rYd.setText((CharSequence)localObject1);
-      this.rYc.setOnClickListener((View.OnClickListener)new b(this));
+      this.sUW.setVisibility(0);
+      this.sUU.setVisibility(8);
+      this.sUX.setText((CharSequence)localObject1);
+      this.sUW.setOnClickListener((View.OnClickListener)new b(this));
       AppMethodBeat.o(168374);
       return;
     }
-    this.rYc.setVisibility(8);
-    this.rYa.setOnClickListener((View.OnClickListener)new c(this));
+    this.sUW.setVisibility(8);
+    this.sUU.setOnClickListener((View.OnClickListener)new c(this));
     AppMethodBeat.o(168374);
   }
   
   public final boolean a(int paramInt, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(204186);
-    d.g.b.k.h(paramViewGroup, "parent");
-    if (!getManager().jM())
+    AppMethodBeat.i(205164);
+    p.h(paramViewGroup, "parent");
+    if (!getManager().kc())
     {
-      AppMethodBeat.o(204186);
+      AppMethodBeat.o(205164);
       return false;
     }
     if (getManager().getItemCount() <= 1)
     {
-      paramViewGroup = com.tencent.mm.plugin.finder.storage.b.rCU;
-      if (!com.tencent.mm.plugin.finder.storage.b.czR())
+      paramViewGroup = com.tencent.mm.plugin.finder.storage.b.sxa;
+      if (((Number)com.tencent.mm.plugin.finder.storage.b.cGR().value()).intValue() != 1)
       {
-        AppMethodBeat.o(204186);
+        AppMethodBeat.o(205164);
         return true;
       }
-      AppMethodBeat.o(204186);
+      AppMethodBeat.o(205164);
       return false;
     }
-    if ((paramInt > 0) && (getManager().jZ() == getManager().getItemCount() - 1))
+    if ((paramInt > 0) && (getManager().kp() == getManager().getItemCount() - 1))
     {
-      paramViewGroup = com.tencent.mm.plugin.finder.storage.b.rCU;
-      if (!com.tencent.mm.plugin.finder.storage.b.czR())
+      paramViewGroup = com.tencent.mm.plugin.finder.storage.b.sxa;
+      if (((Number)com.tencent.mm.plugin.finder.storage.b.cGR().value()).intValue() != 1)
       {
-        AppMethodBeat.o(204186);
+        AppMethodBeat.o(205164);
         return true;
       }
-      AppMethodBeat.o(204186);
+      AppMethodBeat.o(205164);
       return false;
     }
-    if ((paramInt < 0) && (getManager().jW() == 0) && (getManager().jX() == 0))
+    if ((paramInt < 0) && (getManager().km() == 0) && (getManager().kn() == 0))
     {
-      paramViewGroup = com.tencent.mm.plugin.finder.storage.b.rCU;
-      if (!com.tencent.mm.plugin.finder.storage.b.czR())
+      paramViewGroup = com.tencent.mm.plugin.finder.storage.b.sxa;
+      if (((Number)com.tencent.mm.plugin.finder.storage.b.cGR().value()).intValue() != 1)
       {
-        AppMethodBeat.o(204186);
+        AppMethodBeat.o(205164);
         return true;
       }
-      AppMethodBeat.o(204186);
+      AppMethodBeat.o(205164);
       return false;
     }
-    AppMethodBeat.o(204186);
+    AppMethodBeat.o(205164);
     return true;
   }
   
-  public final amq getRefFeedInfo()
+  public final aqb getRefFeedInfo()
   {
-    return this.rJa;
+    return this.sDY;
+  }
+  
+  public final View getSpaceView()
+  {
+    return this.sVa;
   }
   
   public final ImageView getTypeIconIv()
   {
-    return this.rYf;
+    return this.sUZ;
   }
   
   public final void setFrozenRecyclerView(boolean paramBoolean)
   {
-    AppMethodBeat.i(204185);
-    this.rYg = paramBoolean;
-    ac.i(this.TAG, "[SET] isPassTouchEvent=".concat(String.valueOf(paramBoolean)));
+    AppMethodBeat.i(205163);
+    this.sVb = paramBoolean;
+    ad.i(this.TAG, "[SET] isPassTouchEvent=".concat(String.valueOf(paramBoolean)));
     RecyclerView localRecyclerView = getParentRecyclerView();
     if (localRecyclerView != null)
     {
       localRecyclerView.setLayoutFrozen(paramBoolean);
-      AppMethodBeat.o(204185);
+      AppMethodBeat.o(205163);
       return;
     }
-    AppMethodBeat.o(204185);
+    AppMethodBeat.o(205163);
   }
   
-  public final void setRefFeedInfo(amq paramamq)
+  public final void setRefFeedInfo(aqb paramaqb)
   {
     AppMethodBeat.i(168373);
-    this.rJa = paramamq;
-    cFb();
+    this.sDY = paramaqb;
+    cNv();
     AppMethodBeat.o(168373);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/view/FinderMediaBanner$refreshRefUI$1$1", "Ljava/util/TimerTask;", "run", "", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/view/FinderMediaBanner$refreshRefUI$1$1", "Ljava/util/TimerTask;", "run", "", "plugin-finder_release"})
   public static final class a
     extends TimerTask
   {
@@ -368,12 +376,12 @@ public final class FinderMediaBanner
     public final void run()
     {
       AppMethodBeat.i(168370);
-      this.rYh.post((Runnable)new Runnable()
+      this.sVc.post((Runnable)new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(168369);
-          FinderMediaBanner.a(this.rYi.rYh).setVisibility(8);
+          FinderMediaBanner.a(this.sVd.sVc).setVisibility(8);
           AppMethodBeat.o(168369);
         }
       });
@@ -381,7 +389,7 @@ public final class FinderMediaBanner
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -390,30 +398,34 @@ public final class FinderMediaBanner
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(168371);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderMediaBanner$refreshRefUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
       Intent localIntent = new Intent();
-      paramView = this.rYh.getRefFeedInfo();
+      paramView = this.sVc.getRefFeedInfo();
       if (paramView == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
-      String str = paramView.refObjectContact.username;
-      paramView = str;
-      if (str == null) {
+      localObject = paramView.refObjectContact.username;
+      paramView = (View)localObject;
+      if (localObject == null) {
         paramView = "";
       }
       localIntent.putExtra("finder_username", paramView);
-      paramView = FinderReporterUIC.seQ;
-      paramView = this.rYh.getContext();
-      d.g.b.k.g(paramView, "context");
+      paramView = FinderReporterUIC.tcM;
+      paramView = this.sVc.getContext();
+      p.g(paramView, "context");
       FinderReporterUIC.a.a(paramView, localIntent, 0L, 0, false, 124);
-      paramView = com.tencent.mm.plugin.finder.utils.a.rOv;
-      paramView = this.rYh.getContext();
-      d.g.b.k.g(paramView, "context");
+      paramView = com.tencent.mm.plugin.finder.utils.a.sKD;
+      paramView = this.sVc.getContext();
+      p.g(paramView, "context");
       com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI(paramView, localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderMediaBanner$refreshRefUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(168371);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -422,48 +434,52 @@ public final class FinderMediaBanner
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(168372);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderMediaBanner$refreshRefUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
       Intent localIntent = new Intent();
-      paramView = this.rYh.getRefFeedInfo();
+      paramView = this.sVc.getRefFeedInfo();
       if (paramView == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
       localIntent.putExtra("KEY_REF_OBJ_ID", paramView.refObjectId);
-      paramView = this.rYh.getRefFeedInfo();
+      paramView = this.sVc.getRefFeedInfo();
       if (paramView == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
       localIntent.putExtra("KEY_REF_OBJ_NONCE_ID", paramView.refObjectNonceId);
-      paramView = this.rYh.getRefFeedInfo();
+      paramView = this.sVc.getRefFeedInfo();
       if (paramView == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
-      String str = paramView.refObjectContact.username;
-      paramView = str;
-      if (str == null) {
+      localObject = paramView.refObjectContact.username;
+      paramView = (View)localObject;
+      if (localObject == null) {
         paramView = "";
       }
       localIntent.putExtra("KEY_TARGET_USERNAME", paramView);
-      paramView = this.rYh.getRefFeedInfo();
+      paramView = this.sVc.getRefFeedInfo();
       if (paramView == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
-      str = paramView.refObjectContact.nickname;
-      paramView = str;
-      if (str == null) {
+      localObject = paramView.refObjectContact.nickname;
+      paramView = (View)localObject;
+      if (localObject == null) {
         paramView = "";
       }
       localIntent.putExtra("KEY_TARGET_NICKNAME", paramView);
-      paramView = com.tencent.mm.plugin.finder.utils.a.rOv;
-      paramView = this.rYh.getContext();
-      d.g.b.k.g(paramView, "context");
-      com.tencent.mm.plugin.finder.utils.a.D(paramView, localIntent);
+      paramView = com.tencent.mm.plugin.finder.utils.a.sKD;
+      paramView = this.sVc.getContext();
+      p.g(paramView, "context");
+      com.tencent.mm.plugin.finder.utils.a.E(paramView, localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderMediaBanner$refreshRefUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(168372);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderMediaBanner
  * JD-Core Version:    0.7.0.1
  */

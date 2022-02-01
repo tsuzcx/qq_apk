@@ -1,24 +1,38 @@
 package com.tencent.mm.plugin.appbrand.jsapi.x;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import java.util.HashMap;
 
 public final class a
-  implements b
+  extends p
 {
-  private Set<Object> kWZ;
+  private static final int CTRL_INDEX = 153;
+  private static final String NAME = "onNetworkStatusChange";
   
-  public a()
+  public static void m(c paramc)
   {
-    AppMethodBeat.i(137892);
-    this.kWZ = new HashSet();
-    AppMethodBeat.o(137892);
+    AppMethodBeat.i(134890);
+    HashMap localHashMap = new HashMap();
+    f.c localc = f.dt(aj.getContext());
+    if (localc != f.c.lju) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localHashMap.put("isConnected", Boolean.valueOf(bool));
+      localHashMap.put("networkType", localc.value);
+      ad.i("MicroMsg.AppBrandOnNetworkStatusChangeEvent", "networkType = %s", new Object[] { localc.value });
+      new a().g(paramc).A(localHashMap).bir();
+      AppMethodBeat.o(134890);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.x.a
  * JD-Core Version:    0.7.0.1
  */

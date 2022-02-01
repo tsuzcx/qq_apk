@@ -3,54 +3,54 @@ package com.tencent.mm.plugin.backup.g;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.i.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.IOException;
 import junit.framework.Assert;
 
 public final class f
 {
-  public static int mYU = 10000;
-  public static int mYV = 5000;
-  private int mYW = 0;
-  private long mYX = 0L;
-  private long mYY = 0L;
-  private boolean mYZ = false;
-  private Boolean mZa = null;
+  public static int nzr = 10000;
+  public static int nzs = 5000;
+  private int nzt = 0;
+  private long nzu = 0L;
+  private long nzv = 0L;
+  private boolean nzw = false;
+  private Boolean nzx = null;
   
-  public final void bEJ()
+  public final void bIS()
   {
     AppMethodBeat.i(21721);
-    this.mYX = bs.eWj();
-    ac.d("MicroMsg.BackupHeartBeatHandler", "updateHeartBeatTimeStamp[%d]", new Object[] { Long.valueOf(this.mYX) });
-    this.mYZ = false;
-    if (this.mYW != 0)
+    this.nzu = bt.flT();
+    ad.d("MicroMsg.BackupHeartBeatHandler", "updateHeartBeatTimeStamp[%d]", new Object[] { Long.valueOf(this.nzu) });
+    this.nzw = false;
+    if (this.nzt != 0)
     {
-      this.mYW = 0;
+      this.nzt = 0;
       start(false);
     }
     AppMethodBeat.o(21721);
   }
   
-  public final void bEK()
+  public final void bIT()
   {
     AppMethodBeat.i(21722);
-    if (this.mYY == 9223372036854775807L) {}
-    for (long l = 0L;; l = this.mYY + 1L)
+    if (this.nzv == 9223372036854775807L) {}
+    for (long l = 0L;; l = this.nzv + 1L)
     {
-      this.mYY = l;
+      this.nzv = l;
       e locale = new e();
-      locale.mYY = this.mYY;
+      locale.nzv = this.nzv;
       try
       {
-        ac.i("MicroMsg.BackupHeartBeatHandler", "sendBackupHeartBeatRequest send heartbeat req, ack:%d", new Object[] { Long.valueOf(locale.mYY) });
+        ad.i("MicroMsg.BackupHeartBeatHandler", "sendBackupHeartBeatRequest send heartbeat req, ack:%d", new Object[] { Long.valueOf(locale.nzv) });
         b.L(locale.toByteArray(), 9);
         AppMethodBeat.o(21722);
         return;
       }
       catch (IOException localIOException)
       {
-        ac.printErrStackTrace("MicroMsg.BackupHeartBeatHandler", localIOException, "buf to BackupHeartBeatRequest err.", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.BackupHeartBeatHandler", localIOException, "buf to BackupHeartBeatRequest err.", new Object[0]);
         AppMethodBeat.o(21722);
       }
     }
@@ -60,7 +60,7 @@ public final class f
   {
     AppMethodBeat.i(21724);
     if (paramBoolean) {
-      if (this.mZa != null) {
+      if (this.nzx != null) {
         break label71;
       }
     }
@@ -68,10 +68,10 @@ public final class f
     for (paramBoolean = true;; paramBoolean = false)
     {
       Assert.assertTrue("New BackupHeartBeatHandler EveryTime !", paramBoolean);
-      ac.i("MicroMsg.BackupHeartBeatHandler", "start backup heart beat handler.");
-      bEJ();
-      this.mZa = Boolean.FALSE;
-      com.tencent.e.h.JZN.aV(new com.tencent.e.i.h()
+      ad.i("MicroMsg.BackupHeartBeatHandler", "start backup heart beat handler.");
+      bIS();
+      this.nzx = Boolean.FALSE;
+      com.tencent.e.h.LTJ.aU(new com.tencent.e.i.h()
       {
         public final String getKey()
         {
@@ -90,31 +90,31 @@ public final class f
               label25:
               if (f.a(f.this).booleanValue() == true)
               {
-                ac.e("MicroMsg.BackupHeartBeatHandler", "start BackupSendBackupHeartBeat thread stopped.");
+                ad.e("MicroMsg.BackupHeartBeatHandler", "start BackupSendBackupHeartBeat thread stopped.");
                 AppMethodBeat.o(21720);
                 return;
               }
-              long l = bs.Ap(f.b(f.this));
-              ac.d("MicroMsg.BackupHeartBeatHandler", "start heartBeatState[%d], heartBeatTimeStamp[%d], timeDiff[%d], hasSendHeartBeat[%b]", new Object[] { Integer.valueOf(f.c(f.this)), Long.valueOf(f.b(f.this)), Long.valueOf(l), Boolean.valueOf(f.d(f.this)) });
+              long l = bt.Df(f.b(f.this));
+              ad.d("MicroMsg.BackupHeartBeatHandler", "start heartBeatState[%d], heartBeatTimeStamp[%d], timeDiff[%d], hasSendHeartBeat[%b]", new Object[] { Integer.valueOf(f.c(f.this)), Long.valueOf(f.b(f.this)), Long.valueOf(l), Boolean.valueOf(f.d(f.this)) });
               if (!f.d(f.this))
               {
-                if (l < f.mYU)
+                if (l < f.nzr)
                 {
                   f.a(f.this, 0);
                   continue;
                 }
-                ac.e("MicroMsg.BackupHeartBeatHandler", "start send heartbeat req, heartBeatTimeStamp[%d], timeDiff[%d]", new Object[] { Long.valueOf(f.b(f.this)), Long.valueOf(l) });
-                f.this.bEK();
-                f.this.bEJ();
+                ad.e("MicroMsg.BackupHeartBeatHandler", "start send heartbeat req, heartBeatTimeStamp[%d], timeDiff[%d]", new Object[] { Long.valueOf(f.b(f.this)), Long.valueOf(l) });
+                f.this.bIT();
+                f.this.bIS();
                 f.e(f.this);
                 continue;
               }
-              if (l < f.mYV) {
+              if (l < f.nzs) {
                 continue;
               }
               if (f.c(f.this) != 1)
               {
-                ac.e("MicroMsg.BackupHeartBeatHandler", "start weak connect Timeout Now! heartBeatTimeStamp[%d], timeDiff[%d]", new Object[] { Long.valueOf(f.b(f.this)), Long.valueOf(l) });
+                ad.e("MicroMsg.BackupHeartBeatHandler", "start weak connect Timeout Now! heartBeatTimeStamp[%d], timeDiff[%d]", new Object[] { Long.valueOf(f.b(f.this)), Long.valueOf(l) });
                 f.a(f.this, 1);
               }
               f.this.stop();
@@ -130,7 +130,7 @@ public final class f
           }
         }
       });
-      bEK();
+      bIT();
       AppMethodBeat.o(21724);
       return;
     }
@@ -139,10 +139,10 @@ public final class f
   public final void stop()
   {
     AppMethodBeat.i(21723);
-    if (this.mZa != null)
+    if (this.nzx != null)
     {
-      ac.i("MicroMsg.BackupHeartBeatHandler", "stop");
-      this.mZa = Boolean.TRUE;
+      ad.i("MicroMsg.BackupHeartBeatHandler", "stop");
+      this.nzx = Boolean.TRUE;
     }
     AppMethodBeat.o(21723);
   }

@@ -7,23 +7,23 @@ import android.provider.ContactsContract.Data;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.f;
 import com.tencent.mm.plugin.ipcall.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public final class b
 {
-  public static final String fAe;
-  private static HashMap<String, c> tLD;
+  public static final String fTu;
+  private static HashMap<String, c> uOq;
   
   static
   {
     AppMethodBeat.i(25535);
-    fAe = new String(Character.toChars(91));
-    tLD = new HashMap();
+    fTu = new String(Character.toChars(91));
+    uOq = new HashMap();
     AppMethodBeat.o(25535);
   }
   
@@ -31,31 +31,31 @@ public final class b
   {
     Object localObject2 = null;
     AppMethodBeat.i(25534);
-    if (!com.tencent.mm.pluginsdk.permission.b.o(ai.getContext(), "android.permission.READ_CONTACTS"))
+    if (!com.tencent.mm.pluginsdk.permission.b.n(aj.getContext(), "android.permission.READ_CONTACTS"))
     {
-      ac.e("MicroMsg.IPCallAddressBookInfoExtracter", "no contact permission");
+      ad.e("MicroMsg.IPCallAddressBookInfoExtracter", "no contact permission");
       AppMethodBeat.o(25534);
       return null;
     }
     c localc = new c();
-    localc.tLE = new ArrayList();
+    localc.uOr = new ArrayList();
     Object localObject1 = paramCursor.getString(paramInt1);
     Object localObject3 = paramCursor.getString(paramInt2);
     paramCursor = paramCursor.getString(paramInt3);
     localc.field_contactId = ((String)localObject1);
     localc.field_systemAddressBookUsername = ((String)localObject3);
-    if ((!bs.isNullOrNil(paramCursor)) && (!localc.tLE.contains(paramCursor))) {
-      localc.tLE.add(paramCursor);
+    if ((!bt.isNullOrNil(paramCursor)) && (!localc.uOr.contains(paramCursor))) {
+      localc.uOr.add(paramCursor);
     }
-    if ((bs.isNullOrNil(localc.field_systemAddressBookUsername)) && (localc.tLE.size() > 0)) {
-      localc.field_systemAddressBookUsername = ((String)localc.tLE.get(0));
+    if ((bt.isNullOrNil(localc.field_systemAddressBookUsername)) && (localc.uOr.size() > 0)) {
+      localc.field_systemAddressBookUsername = ((String)localc.uOr.get(0));
     }
-    localObject3 = localc.tLE.iterator();
+    localObject3 = localc.uOr.iterator();
     paramCursor = null;
     if (((Iterator)localObject3).hasNext())
     {
-      localObject1 = a.ajj((String)((Iterator)localObject3).next());
-      if (!bs.isNullOrNil((String)localObject1))
+      localObject1 = a.anW((String)((Iterator)localObject3).next());
+      if (!bt.isNullOrNil((String)localObject1))
       {
         paramCursor = (Cursor)localObject1;
         if (((String)localObject1).endsWith("@stranger")) {}
@@ -63,19 +63,19 @@ public final class b
     }
     for (;;)
     {
-      if (!bs.isNullOrNil((String)localObject1)) {
+      if (!bt.isNullOrNil((String)localObject1)) {
         localc.field_wechatUsername = ((String)localObject1);
       }
-      if (!bs.isNullOrNil(localc.field_systemAddressBookUsername)) {}
+      if (!bt.isNullOrNil(localc.field_systemAddressBookUsername)) {}
       for (;;)
       {
         try
         {
-          paramCursor = f.Fv(localc.field_systemAddressBookUsername);
-          if (!bs.isNullOrNil(paramCursor)) {
+          paramCursor = f.IL(localc.field_systemAddressBookUsername);
+          if (!bt.isNullOrNil(paramCursor)) {
             if (!Character.isLetter(paramCursor.charAt(0)))
             {
-              localc.field_sortKey = (fAe + paramCursor.toUpperCase());
+              localc.field_sortKey = (fTu + paramCursor.toUpperCase());
               AppMethodBeat.o(25534);
               return localc;
             }
@@ -83,7 +83,7 @@ public final class b
         }
         catch (Exception paramCursor)
         {
-          ac.d("MicroMsg.IPCallAddressBookInfoExtracter", "getFullSpell error: %s, class: %s", new Object[] { paramCursor.getMessage(), paramCursor.getClass().getSimpleName() });
+          ad.d("MicroMsg.IPCallAddressBookInfoExtracter", "getFullSpell error: %s, class: %s", new Object[] { paramCursor.getMessage(), paramCursor.getClass().getSimpleName() });
           paramCursor = localObject2;
           continue;
           localc.field_sortKey = paramCursor.toUpperCase();
@@ -98,31 +98,31 @@ public final class b
   }
   
   /* Error */
-  public static ArrayList<String> aiL(String paramString)
+  public static ArrayList<String> any(String paramString)
   {
     // Byte code:
     //   0: sipush 25533
     //   3: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 74	java/util/ArrayList
+    //   6: new 75	java/util/ArrayList
     //   9: dup
-    //   10: invokespecial 75	java/util/ArrayList:<init>	()V
+    //   10: invokespecial 76	java/util/ArrayList:<init>	()V
     //   13: astore_1
-    //   14: invokestatic 52	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   14: invokestatic 52	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   17: ldc 54
-    //   19: invokestatic 59	com/tencent/mm/pluginsdk/permission/b:o	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   19: invokestatic 60	com/tencent/mm/pluginsdk/permission/b:n	(Landroid/content/Context;Ljava/lang/String;)Z
     //   22: ifne +18 -> 40
-    //   25: ldc 61
-    //   27: ldc 63
-    //   29: invokestatic 69	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   25: ldc 62
+    //   27: ldc 64
+    //   29: invokestatic 70	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   32: sipush 25533
     //   35: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: aload_1
     //   39: areturn
-    //   40: invokestatic 52	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
-    //   43: invokevirtual 198	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   46: getstatic 204	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
+    //   40: invokestatic 52	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   43: invokevirtual 199	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   46: getstatic 205	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
     //   49: aconst_null
-    //   50: ldc 206
+    //   50: ldc 207
     //   52: iconst_1
     //   53: anewarray 19	java/lang/String
     //   56: dup
@@ -130,7 +130,7 @@ public final class b
     //   58: aload_0
     //   59: aastore
     //   60: aconst_null
-    //   61: invokevirtual 212	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   61: invokevirtual 213	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   64: astore_0
     //   65: aload_0
     //   66: ifnonnull +11 -> 77
@@ -139,52 +139,52 @@ public final class b
     //   75: aload_1
     //   76: areturn
     //   77: aload_0
-    //   78: invokeinterface 215 1 0
+    //   78: invokeinterface 216 1 0
     //   83: ifeq +84 -> 167
     //   86: aload_0
-    //   87: invokeinterface 218 1 0
+    //   87: invokeinterface 219 1 0
     //   92: ifne +75 -> 167
     //   95: aload_1
     //   96: aload_0
     //   97: aload_0
-    //   98: ldc 220
-    //   100: invokeinterface 224 2 0
-    //   105: invokeinterface 85 2 0
-    //   110: invokevirtual 104	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   98: ldc 221
+    //   100: invokeinterface 225 2 0
+    //   105: invokeinterface 86 2 0
+    //   110: invokevirtual 105	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   113: pop
     //   114: aload_0
-    //   115: invokeinterface 227 1 0
+    //   115: invokeinterface 228 1 0
     //   120: pop
     //   121: goto -35 -> 86
     //   124: astore_2
-    //   125: ldc 61
-    //   127: ldc 229
+    //   125: ldc 62
+    //   127: ldc 230
     //   129: iconst_2
     //   130: anewarray 4	java/lang/Object
     //   133: dup
     //   134: iconst_0
     //   135: aload_2
-    //   136: invokevirtual 175	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   136: invokevirtual 176	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   139: aastore
     //   140: dup
     //   141: iconst_1
     //   142: aload_2
-    //   143: invokevirtual 179	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   146: invokevirtual 184	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   143: invokevirtual 180	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   146: invokevirtual 185	java/lang/Class:getSimpleName	()Ljava/lang/String;
     //   149: aastore
-    //   150: invokestatic 231	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   150: invokestatic 232	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   153: aload_0
-    //   154: invokeinterface 234 1 0
+    //   154: invokeinterface 235 1 0
     //   159: sipush 25533
     //   162: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   165: aload_1
     //   166: areturn
     //   167: aload_0
-    //   168: invokeinterface 234 1 0
+    //   168: invokeinterface 235 1 0
     //   173: goto -14 -> 159
     //   176: astore_1
     //   177: aload_0
-    //   178: invokeinterface 234 1 0
+    //   178: invokeinterface 235 1 0
     //   183: sipush 25533
     //   186: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   189: aload_1
@@ -204,20 +204,20 @@ public final class b
     //   125	153	176	finally
   }
   
-  public static ArrayList<c> cUY()
+  public static ArrayList<c> dej()
   {
     AppMethodBeat.i(25531);
     long l1 = System.currentTimeMillis();
     ArrayList localArrayList = new ArrayList();
-    if (!com.tencent.mm.pluginsdk.permission.b.o(ai.getContext(), "android.permission.READ_CONTACTS"))
+    if (!com.tencent.mm.pluginsdk.permission.b.n(aj.getContext(), "android.permission.READ_CONTACTS"))
     {
-      ac.e("MicroMsg.IPCallAddressBookInfoExtracter", "no contact permission");
+      ad.e("MicroMsg.IPCallAddressBookInfoExtracter", "no contact permission");
       AppMethodBeat.o(25531);
       return localArrayList;
     }
-    Cursor localCursor = ai.getContext().getContentResolver().query(ContactsContract.Data.CONTENT_URI, new String[] { "contact_id", "display_name", "data1" }, "mimetype='vnd.android.cursor.item/phone_v2'", null, null);
+    Cursor localCursor = aj.getContext().getContentResolver().query(ContactsContract.Data.CONTENT_URI, new String[] { "contact_id", "display_name", "data1" }, "mimetype='vnd.android.cursor.item/phone_v2'", null, null);
     HashMap localHashMap = new HashMap();
-    ac.d("MicroMsg.IPCallAddressBookInfoExtracter", "query FromSystemPhoneBook, time: " + (System.currentTimeMillis() - l1));
+    ad.d("MicroMsg.IPCallAddressBookInfoExtracter", "query FromSystemPhoneBook, time: " + (System.currentTimeMillis() - l1));
     if (localCursor == null)
     {
       AppMethodBeat.o(25531);
@@ -227,36 +227,36 @@ public final class b
     {
       try
       {
-        ac.d("MicroMsg.IPCallAddressBookInfoExtracter", "getAllAddressItemFromSystemPhoneBook, count: %d", new Object[] { Integer.valueOf(localCursor.getCount()) });
+        ad.d("MicroMsg.IPCallAddressBookInfoExtracter", "getAllAddressItemFromSystemPhoneBook, count: %d", new Object[] { Integer.valueOf(localCursor.getCount()) });
         if (!localCursor.moveToFirst()) {
-          break label476;
+          break label477;
         }
         int i = localCursor.getColumnIndex("contact_id");
         int j = localCursor.getColumnIndex("display_name");
         int k = localCursor.getColumnIndex("data1");
         if (localCursor.isAfterLast()) {
-          break label476;
+          break label477;
         }
         c localc1 = a(localCursor, i, j, k);
-        if ((localc1 != null) && (localc1.tLE != null) && (localc1.tLE.size() > 0) && (!bs.isNullOrNil(localc1.field_contactId)))
+        if ((localc1 != null) && (localc1.uOr != null) && (localc1.uOr.size() > 0) && (!bt.isNullOrNil(localc1.field_contactId)))
         {
           if (!localHashMap.containsKey(localc1.field_contactId)) {
             continue;
           }
           c localc2 = (c)localHashMap.get(localc1.field_contactId);
-          if ((localc1.tLE.size() > 0) && (!localc2.tLE.contains(localc1.tLE.get(0)))) {
-            localc2.tLE.add(localc1.tLE.get(0));
+          if ((localc1.uOr.size() > 0) && (!localc2.uOr.contains(localc1.uOr.get(0)))) {
+            localc2.uOr.add(localc1.uOr.get(0));
           }
         }
       }
       catch (Exception localException)
       {
-        ac.e("MicroMsg.IPCallAddressBookInfoExtracter", "getAllAddressItemFromSystemPhoneBook error: %s, class: %s", new Object[] { localException.getMessage(), localException.getClass().getSimpleName() });
+        ad.e("MicroMsg.IPCallAddressBookInfoExtracter", "getAllAddressItemFromSystemPhoneBook error: %s, class: %s", new Object[] { localException.getMessage(), localException.getClass().getSimpleName() });
         localCursor.close();
         localArrayList.addAll(localHashMap.values());
-        tLD = localHashMap;
+        uOq = localHashMap;
         l2 = System.currentTimeMillis();
-        ac.d("MicroMsg.IPCallAddressBookInfoExtracter", "getAllAddressItemFromSystemPhoneBook, result size: %d, used %dms", new Object[] { Integer.valueOf(localArrayList.size()), Long.valueOf(l2 - l1) });
+        ad.d("MicroMsg.IPCallAddressBookInfoExtracter", "getAllAddressItemFromSystemPhoneBook, result size: %d, used %dms", new Object[] { Integer.valueOf(localArrayList.size()), Long.valueOf(l2 - l1) });
         AppMethodBeat.o(25531);
         return localArrayList;
         localHashMap.put(localException.field_contactId, localException);
@@ -272,21 +272,21 @@ public final class b
     for (;;)
     {
       long l2;
-      label476:
+      label477:
       localCursor.close();
     }
   }
   
-  public static HashMap<String, c> cUZ()
+  public static HashMap<String, c> dek()
   {
-    return tLD;
+    return uOq;
   }
   
-  public static HashMap<String, c> cVa()
+  public static HashMap<String, c> del()
   {
     AppMethodBeat.i(25532);
-    cUY();
-    HashMap localHashMap = tLD;
+    dej();
+    HashMap localHashMap = uOq;
     AppMethodBeat.o(25532);
     return localHashMap;
   }

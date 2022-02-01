@@ -3,42 +3,35 @@ package com.tencent.mm.plugin.sns.storage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.zf;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.abf;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public final class i
 {
-  public static void f(Long paramLong)
-  {
-    AppMethodBeat.i(97449);
-    g.agR().agA().set(ah.a.GRs, paramLong);
-    AppMethodBeat.o(97449);
-  }
-  
-  public static boolean xD(long paramLong)
+  public static boolean Ab(long paramLong)
   {
     int i = 2;
     int j = 0;
     AppMethodBeat.i(97447);
-    Object localObject = af.dHR().xK(paramLong);
+    Object localObject = ag.dUe().Ai(paramLong);
     if (localObject == null)
     {
       AppMethodBeat.o(97447);
       return false;
     }
-    String[] arrayOfString = ((String)g.agR().agA().get(ah.a.GRr, "")).split("&");
+    String[] arrayOfString = ((String)g.ajC().ajl().get(al.a.IDV, "")).split("&");
     boolean bool1;
-    if ((arrayOfString.length > 0) && (bs.getBoolean(arrayOfString[0], false)))
+    if ((arrayOfString.length > 0) && (bt.getBoolean(arrayOfString[0], false)))
     {
       bool1 = true;
-      if ((arrayOfString.length < 2) || (!bs.getBoolean(arrayOfString[1], false))) {
+      if ((arrayOfString.length < 2) || (!bt.getBoolean(arrayOfString[1], false))) {
         break label154;
       }
     }
@@ -49,7 +42,7 @@ public final class i
       localArrayList = new ArrayList();
       while (i < arrayOfString.length)
       {
-        long l = bs.getLong(arrayOfString[i], 0L);
+        long l = bt.getLong(arrayOfString[i], 0L);
         if (l != 0L) {
           localArrayList.add(Long.valueOf(l));
         }
@@ -58,7 +51,7 @@ public final class i
       bool1 = false;
       break;
     }
-    if (((p)localObject).dLV().FQo.Ety == 15) {
+    if (((p)localObject).dYl().HAT.GaP == 15) {
       if (!bool1) {
         bool1 = true;
       }
@@ -77,7 +70,7 @@ public final class i
       }
       AppMethodBeat.o(97447);
       return false;
-      if (((p)localObject).dLV().FQo.Ety != 1) {
+      if (((p)localObject).dYl().HAT.GaP != 1) {
         break label313;
       }
       if (bool2) {
@@ -90,23 +83,23 @@ public final class i
     label313:
     AppMethodBeat.o(97447);
     return false;
-    g.agR().agA().set(ah.a.GRr, ((StringBuilder)localObject).toString());
+    g.ajC().ajl().set(al.a.IDV, ((StringBuilder)localObject).toString());
     f(Long.valueOf(paramLong));
     AppMethodBeat.o(97447);
     return true;
   }
   
-  public static void xE(long paramLong)
+  public static void Ac(long paramLong)
   {
     boolean bool2 = true;
     int j = 0;
     AppMethodBeat.i(97448);
-    Object localObject = ((String)g.agR().agA().get(ah.a.GRr, "")).split("&");
+    Object localObject = ((String)g.ajC().ajl().get(al.a.IDV, "")).split("&");
     boolean bool1;
-    if ((localObject.length > 0) && (bs.getBoolean(localObject[0], false)))
+    if ((localObject.length > 0) && (bt.getBoolean(localObject[0], false)))
     {
       bool1 = true;
-      if ((localObject.length < 2) || (!bs.getBoolean(localObject[1], false))) {
+      if ((localObject.length < 2) || (!bt.getBoolean(localObject[1], false))) {
         break label133;
       }
     }
@@ -118,7 +111,7 @@ public final class i
       i = 2;
       while (i < localObject.length)
       {
-        long l = bs.getLong(localObject[i], 0L);
+        long l = bt.getLong(localObject[i], 0L);
         if (l != 0L) {
           localArrayList.add(Long.valueOf(l));
         }
@@ -143,8 +136,15 @@ public final class i
         i += 1;
       }
     }
-    g.agR().agA().set(ah.a.GRr, ((StringBuilder)localObject).toString());
+    g.ajC().ajl().set(al.a.IDV, ((StringBuilder)localObject).toString());
     AppMethodBeat.o(97448);
+  }
+  
+  public static void f(Long paramLong)
+  {
+    AppMethodBeat.i(97449);
+    g.ajC().ajl().set(al.a.IDW, paramLong);
+    AppMethodBeat.o(97449);
   }
 }
 

@@ -8,7 +8,7 @@ import com.tencent.matrix.iocanary.core.IOCanaryCore;
 public final class a
   extends b
 {
-  private IOCanaryCore ctb;
+  private IOCanaryCore cDX;
   public final com.tencent.matrix.iocanary.a.a mIOConfig;
   
   public a(com.tencent.matrix.iocanary.a.a parama)
@@ -30,19 +30,19 @@ public final class a
   {
     super.init(paramApplication, paramc);
     com.tencent.matrix.iocanary.c.a.setPackageName(paramApplication);
-    this.ctb = new IOCanaryCore(this);
+    this.cDX = new IOCanaryCore(this);
   }
   
   public final void start()
   {
     super.start();
-    this.ctb.start();
+    this.cDX.start();
   }
   
   public final void stop()
   {
     super.stop();
-    this.ctb.stop();
+    this.cDX.stop();
   }
 }
 

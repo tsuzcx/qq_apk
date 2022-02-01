@@ -2,93 +2,93 @@ package com.tencent.mm.ui;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class AbstractTabChildActivity$AbStractTabFragment
   extends MMFragment
   implements m
 {
-  private boolean HeD;
-  private boolean HeE;
-  private boolean HeF;
-  protected boolean HeG;
-  protected boolean HeH = false;
-  protected boolean HeI = false;
-  protected boolean HeJ;
-  protected boolean HeK = false;
-  private Bundle yGj;
+  private boolean IRT;
+  private boolean IRU;
+  private boolean IRV;
+  protected boolean IRW;
+  protected boolean IRX = false;
+  protected boolean IRY = false;
+  protected boolean IRZ;
+  protected boolean ISa = false;
+  private Bundle zXB;
   
-  private void feK()
+  private void fuR()
   {
-    if (this.HeE)
+    if (this.IRU)
     {
-      fey();
-      this.HeE = false;
+      fuF();
+      this.IRU = false;
     }
     for (;;)
     {
-      this.HeK = true;
+      this.ISa = true;
       return;
-      if (this.HeD)
+      if (this.IRT)
       {
-        if (this.HeK) {
-          feD();
+        if (this.ISa) {
+          fuK();
         }
-        fey();
-        ac.v("MicroMsg.INIT", "KEVIN tab onRecreate " + toString());
-        this.HeD = false;
+        fuF();
+        ad.v("MicroMsg.INIT", "KEVIN tab onRecreate " + toString());
+        this.IRT = false;
       }
     }
   }
   
-  protected abstract void feA();
+  protected abstract void fuF();
   
-  protected abstract void feB();
+  protected abstract void fuG();
   
-  protected abstract void feC();
+  protected abstract void fuH();
   
-  protected abstract void feD();
+  protected abstract void fuI();
   
-  public abstract void feE();
+  protected abstract void fuJ();
   
-  public abstract void feF();
+  protected abstract void fuK();
   
-  public abstract void feG();
+  public abstract void fuL();
   
-  public final void feH()
+  public abstract void fuM();
+  
+  public abstract void fuN();
+  
+  public final void fuO()
   {
-    feF();
-    this.HeF = true;
+    fuM();
+    this.IRV = true;
   }
   
-  public final void feI() {}
+  public final void fuP() {}
   
-  public final void feJ()
+  public final void fuQ()
   {
-    this.HeI = true;
+    this.IRY = true;
   }
   
-  public final void feL()
+  public final void fuS()
   {
-    if (!this.HeH) {
+    if (!this.IRX) {
       return;
     }
-    feK();
+    fuR();
     long l = System.currentTimeMillis();
-    if (this.HeF)
+    if (this.IRV)
     {
-      this.HeF = false;
-      feG();
+      this.IRV = false;
+      fuN();
     }
-    fez();
-    ac.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
-    this.HeG = true;
-    this.HeH = false;
+    fuG();
+    ad.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
+    this.IRW = true;
+    this.IRX = false;
   }
-  
-  protected abstract void fey();
-  
-  protected abstract void fez();
   
   protected int getLayoutId()
   {
@@ -98,14 +98,14 @@ public abstract class AbstractTabChildActivity$AbStractTabFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.HeE = true;
-    this.yGj = paramBundle;
+    this.IRU = true;
+    this.zXB = paramBundle;
   }
   
   public void onDestroy()
   {
-    if (this.HeK) {
-      feD();
+    if (this.ISa) {
+      fuK();
     }
     super.onDestroy();
   }
@@ -121,51 +121,51 @@ public abstract class AbstractTabChildActivity$AbStractTabFragment
   public void onPause()
   {
     super.onPause();
-    this.HeJ = true;
-    if (this.HeJ)
+    this.IRZ = true;
+    if (this.IRZ)
     {
-      if (!this.HeG) {
-        this.HeJ = false;
+      if (!this.IRW) {
+        this.IRZ = false;
       }
     }
     else {
       return;
     }
     long l = System.currentTimeMillis();
-    feB();
-    ac.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
-    this.HeG = false;
-    this.HeJ = false;
+    fuI();
+    ad.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
+    this.IRW = false;
+    this.IRZ = false;
   }
   
   public void onResume()
   {
     super.onResume();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.Hlm)) {}
+    if ((localLauncherUI == null) || (!localLauncherUI.IYT)) {}
     do
     {
       return;
-      this.HeH = true;
-    } while (!this.HeI);
-    feL();
-    this.HeI = false;
+      this.IRX = true;
+    } while (!this.IRY);
+    fuS();
+    this.IRY = false;
   }
   
   public void onStart()
   {
     super.onStart();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.Hlm)) {
+    if ((localLauncherUI == null) || (!localLauncherUI.IYT)) {
       return;
     }
-    feA();
+    fuH();
   }
   
   public void onStop()
   {
     super.onStop();
-    feC();
+    fuJ();
   }
   
   public boolean supportNavigationSwipeBack()

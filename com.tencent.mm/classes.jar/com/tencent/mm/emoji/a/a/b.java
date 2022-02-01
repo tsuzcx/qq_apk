@@ -2,9 +2,9 @@ package com.tencent.mm.emoji.a.a;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/CaptureEmptyItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "()V", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/CaptureEmptyItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "()V", "plugin-emojisdk_release"})
 public final class b
-  extends y
+  extends ac
 {
   public b()
   {

@@ -2,16 +2,16 @@ package com.bumptech.glide.b;
 
 final class b
 {
-  int aCg;
-  int aCh;
-  int aCi;
-  int aCj;
-  boolean aCk;
-  boolean aCl;
-  int aCm;
-  int aCn;
-  int aCo;
-  int[] aCp;
+  int aDX;
+  int aDY;
+  int aDZ;
+  int aEa;
+  boolean aEb;
+  boolean aEc;
+  int aEd;
+  int aEe;
+  int aEf;
+  int[] aEg;
   int delay;
 }
 

@@ -22,7 +22,7 @@ public final class d
     {
       View localView = paramb.getRecyclerView().getChildAt(i);
       RecyclerView.w localw = paramb.getRecyclerView().bh(localView);
-      if ((localView.getTag() != null) && (localView.getTag().equals("video")) && (localView.getTop() > 0) && (localw.lv() >= 0))
+      if ((localView.getTag() != null) && (localView.getTag().equals("video")) && (localView.getTop() > 0) && (localw.lN() >= 0))
       {
         AppMethodBeat.o(126420);
         return localView;
@@ -60,11 +60,11 @@ public final class d
       if (localObject == null) {
         break label177;
       }
-      i = ((h)localObject).edd();
-      if ((i != paramb.edm()) && (paramb.edj().Aei)) {
-        paramb.edj().stopPlay();
+      i = ((h)localObject).epv();
+      if ((i != paramb.epE()) && (paramb.epB().BvU)) {
+        paramb.epB().stopPlay();
       }
-      paramb.edc();
+      paramb.epu();
       j = 0;
       label84:
       if (j >= localRecyclerView.getChildCount()) {
@@ -74,13 +74,13 @@ public final class d
       if (((View)localObject).getTag() != null)
       {
         localObject = (h)paramb.getRecyclerView().bh((View)localObject);
-        if (((h)localObject).edd() != i) {
+        if (((h)localObject).epv() != i) {
           break label182;
         }
-        ((h)localObject).eez();
-        ((h)localObject).edb();
-        if (!paramb.edj().Aei) {
-          ((h)localObject).AfY.edA();
+        ((h)localObject).eqQ();
+        ((h)localObject).ept();
+        if (!paramb.epB().BvU) {
+          ((h)localObject).BxK.epS();
         }
       }
     }
@@ -94,8 +94,8 @@ public final class d
       i = -1;
       break;
       label182:
-      ((h)localObject).eey();
-      ((h)localObject).AfY.edB();
+      ((h)localObject).eqP();
+      ((h)localObject).BxK.epT();
     }
     label198:
     AppMethodBeat.o(126417);
@@ -122,8 +122,8 @@ public final class d
     }
     if (localView2 != null)
     {
-      paramInt = paramb.edl().bn(localView2);
-      i = paramb.eds();
+      paramInt = paramb.epD().bn(localView2);
+      i = paramb.epK();
       paramb.getRecyclerView().a(0, paramInt - i, null);
     }
     AppMethodBeat.o(126419);
@@ -136,26 +136,26 @@ public final class d
     if ((localObject instanceof h))
     {
       localObject = (h)localObject;
-      if (!paramb.edj().Aei)
+      if (!paramb.epB().BvU)
       {
-        if (!paramb.ede().isConnected()) {
+        if (!paramb.epw().isConnected()) {
           break label86;
         }
-        ((h)localObject).sd(true);
+        ((h)localObject).sJ(true);
       }
     }
     for (;;)
     {
-      ((h)localObject).edb();
-      paramb.Ro(((h)localObject).edd());
-      paramb.edf().eeh();
+      ((h)localObject).ept();
+      paramb.SY(((h)localObject).epv());
+      paramb.epx().eqy();
       AppMethodBeat.o(126418);
       return;
       AppMethodBeat.o(126418);
       return;
       label86:
-      ((h)localObject).AfY.edE();
-      paramb.edj().stopPlay();
+      ((h)localObject).BxK.epW();
+      paramb.epB().stopPlay();
     }
   }
 }

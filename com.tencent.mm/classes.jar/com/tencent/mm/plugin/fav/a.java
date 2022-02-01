@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.fav;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.b;
-import com.tencent.mm.g.a.gt;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.b;
+import com.tencent.mm.g.a.gw;
 import com.tencent.mm.plugin.fav.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.o;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Map;
 
 public final class a
-  implements o
+  implements p
 {
-  public final f.b a(String paramString, Map<String, String> paramMap, f.a parama)
+  public final e.b a(String paramString, Map<String, String> paramMap, e.a parama)
   {
     AppMethodBeat.i(101532);
-    ac.i("MicroMsg.Fav.FavNewXmlConsumer", "consumeNewXml subtype: %s values: %s", new Object[] { paramString, paramMap.toString() });
+    ad.i("MicroMsg.Fav.FavNewXmlConsumer", "consumeNewXml subtype: %s values: %s", new Object[] { paramString, paramMap.toString() });
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -40,18 +40,18 @@ public final class a
       }
       i = 1;
       break;
-      paramString = new gt();
-      paramString.dhx.type = 38;
-      paramString.dhx.dhG = ((String)paramMap.get(".sysmsg.favids"));
-      com.tencent.mm.sdk.b.a.GpY.a(paramString, Looper.getMainLooper());
-      h.Dd(1);
+      paramString = new gw();
+      paramString.dsV.type = 38;
+      paramString.dsV.dte = ((String)paramMap.get(".sysmsg.favids"));
+      com.tencent.mm.sdk.b.a.IbL.a(paramString, Looper.getMainLooper());
+      h.DV(1);
       continue;
-      paramString = new gt();
-      paramString.dhx.type = 39;
-      paramString.dhx.dhG = ((String)paramMap.get(".sysmsg.favitem.favid"));
-      paramString.dhx.dhH = ((String)paramMap.get(".sysmsg.favitem.dataidlist"));
-      com.tencent.mm.sdk.b.a.GpY.a(paramString, Looper.getMainLooper());
-      h.Dd(0);
+      paramString = new gw();
+      paramString.dsV.type = 39;
+      paramString.dsV.dte = ((String)paramMap.get(".sysmsg.favitem.favid"));
+      paramString.dsV.dtf = ((String)paramMap.get(".sysmsg.favitem.dataidlist"));
+      com.tencent.mm.sdk.b.a.IbL.a(paramString, Looper.getMainLooper());
+      h.DV(0);
     }
   }
 }

@@ -5,41 +5,43 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.oy;
-import com.tencent.mm.g.a.oy.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.ph;
+import com.tencent.mm.g.a.ph.b;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.ae;
 import com.tencent.mm.plugin.scanner.util.c;
 import com.tencent.mm.plugin.scanner.view.b;
-import com.tencent.mm.pluginsdk.d.d;
+import com.tencent.mm.pluginsdk.e.d;
 import com.tencent.mm.pluginsdk.ui.tools.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.h;
 import com.tencent.scanlib.ui.ScanView;
 
 public final class d
   extends e
-  implements com.tencent.mm.ak.g, e.a
+  implements f, e.a
 {
-  private int xbb;
-  private boolean xbc;
-  private c xbd;
-  private a xbe;
-  private b xbf;
+  private int ypa;
+  private boolean ypb;
+  private c ypc;
+  private a ypd;
+  private b ype;
   
   public d(int paramInt1, int paramInt2, ScanView paramScanView, a parama, b paramb)
   {
     AppMethodBeat.i(51660);
     this.mode = paramInt1;
-    this.xbb = paramInt2;
-    this.xbg = paramScanView;
-    this.xbe = parama;
+    this.ypa = paramInt2;
+    this.ypf = paramScanView;
+    this.ypd = parama;
     this.context = paramScanView.getContext();
-    this.xbf = paramb;
-    this.xbc = true;
-    com.tencent.mm.kernel.g.agi().a(971, this);
+    this.ype = paramb;
+    this.ypb = true;
+    g.aiU().a(971, this);
     AppMethodBeat.o(51660);
   }
   
@@ -53,42 +55,42 @@ public final class d
     }
     String str1 = paramBundle.getString("result_content", "");
     String str2 = paramBundle.getString("result_code_name", "");
-    int i = d.d.aFG(str2);
+    int i = e.d.aLg(str2);
     int j = paramBundle.getInt("result_code_version", 0);
     int k = paramBundle.getInt("qbar_string_scan_source", 0);
-    ac.i("MicroMsg.QRCodeHandler", "alvinluo handleResult content %s, codeType %d, codeName %s, codeVersion %d", new Object[] { str1, Integer.valueOf(i), str2, Integer.valueOf(j) });
+    ad.i("MicroMsg.QRCodeHandler", "alvinluo handleResult content %s, codeType %d, codeName %s, codeVersion %d", new Object[] { str1, Integer.valueOf(i), str2, Integer.valueOf(j) });
     Activity localActivity;
     b localb;
-    if (!bs.isNullOrNil(str1))
+    if (!bt.isNullOrNil(str1))
     {
-      paramBundle = new oy();
-      paramBundle.drz.drB = str2;
-      paramBundle.drz.scanResult = str1;
-      paramBundle.drz.drx = 1;
-      com.tencent.mm.sdk.b.a.GpY.l(paramBundle);
-      if (paramBundle.drA.ret == 1)
+      paramBundle = new ph();
+      paramBundle.dDr.dDt = str2;
+      paramBundle.dDr.scanResult = str1;
+      paramBundle.dDr.dDp = 1;
+      com.tencent.mm.sdk.b.a.IbL.l(paramBundle);
+      if (paramBundle.dDs.ret == 1)
       {
-        if (this.xbe != null)
+        if (this.ypd != null)
         {
-          this.xbe.bRD();
+          this.ypd.bWi();
           AppMethodBeat.o(51661);
         }
       }
       else
       {
-        if (this.xbd != null) {
-          this.xbd.dBn();
+        if (this.ypc != null) {
+          this.ypc.dML();
         }
-        if (d.d.Wn(i))
+        if (e.d.Ye(i))
         {
-          this.xbd = new c();
-          this.xbd.a((Activity)this.xbg.getContext(), str1, k, str2, i, j, this, this.xbf, null, this.xbb, false, -1, this.xbc);
+          this.ypc = new c();
+          this.ypc.a((Activity)this.ypf.getContext(), str1, k, str2, i, j, this, this.ype, null, this.ypa, false, -1, this.ypb);
           AppMethodBeat.o(51661);
           return;
         }
         paramBundle = new com.tencent.mm.plugin.scanner.util.a();
-        localActivity = (Activity)this.xbg.getContext();
-        localb = this.xbf;
+        localActivity = (Activity)this.ypf.getContext();
+        localb = this.ype;
         if (k != 1) {
           break label331;
         }
@@ -97,7 +99,7 @@ public final class d
     label331:
     for (boolean bool = true;; bool = false)
     {
-      paramBundle.a(localActivity, this, localb, str1, bool, j, str2, null, this.xbb, false, -1, this.xbc);
+      paramBundle.a(localActivity, this, localb, str1, bool, j, str2, null, this.ypa, false, -1, this.ypb);
       AppMethodBeat.o(51661);
       return;
     }
@@ -106,9 +108,9 @@ public final class d
   public final void destroy()
   {
     AppMethodBeat.i(51664);
-    com.tencent.mm.kernel.g.agi().b(971, this);
-    if (this.xbd != null) {
-      this.xbd.dBn();
+    g.aiU().b(971, this);
+    if (this.ypc != null) {
+      this.ypc.dML();
     }
     AppMethodBeat.o(51664);
   }
@@ -116,7 +118,7 @@ public final class d
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(51662);
-    ac.i("MicroMsg.QRCodeHandler", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ad.i("MicroMsg.QRCodeHandler", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     int i;
     switch (paramInt1)
     {
@@ -125,20 +127,20 @@ public final class d
     }
     while (i != 0)
     {
-      s(0, null);
+      t(0, null);
       AppMethodBeat.o(51662);
       return;
-      if (com.tencent.mm.kernel.g.agi().aBL())
+      if (g.aiU().aEO())
       {
-        com.tencent.mm.kernel.g.agi().getNetworkServerIp();
+        g.aiU().getNetworkServerIp();
         new StringBuilder().append(paramInt2);
       }
       for (;;)
       {
         i = 1;
         break;
-        if (ae.cS(this.context)) {
-          k.hx(this.context);
+        if (ae.cP(this.context)) {
+          k.hC(this.context);
         } else {
           Toast.makeText(this.context, this.context.getString(2131759510, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt2) }), 1).show();
         }
@@ -159,15 +161,15 @@ public final class d
       return;
     }
     if (paramn.getType() == 971) {
-      s(3, null);
+      t(3, null);
     }
     AppMethodBeat.o(51662);
   }
   
-  public final void s(int paramInt, Bundle paramBundle)
+  public final void t(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(51663);
-    ac.i("MicroMsg.QRCodeHandler", "notify Event: %d", new Object[] { Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.QRCodeHandler", "notify Event: %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     }
@@ -177,27 +179,27 @@ public final class d
       return;
       AppMethodBeat.o(51663);
       return;
-      this.xbg.onResume();
+      this.ypf.onResume();
       AppMethodBeat.o(51663);
       return;
-      this.xbg.onResume();
+      this.ypf.onResume();
       AppMethodBeat.o(51663);
       return;
-      if (this.xbe != null)
+      if (this.ypd != null)
       {
-        this.xbe.bRD();
+        this.ypd.bWi();
         AppMethodBeat.o(51663);
         return;
-        this.xbg.onPause();
+        this.ypf.onPause();
         AppMethodBeat.o(51663);
         return;
-        if (this.xbe != null)
+        if (this.ypd != null)
         {
-          this.xbe.dzQ();
+          this.ypd.al(paramBundle);
           AppMethodBeat.o(51663);
           return;
-          if (this.xbe != null) {
-            this.xbe.dzR();
+          if (this.ypd != null) {
+            this.ypd.am(paramBundle);
           }
         }
       }
@@ -207,14 +209,14 @@ public final class d
   public static abstract interface a
     extends e.b
   {
-    public abstract void dzQ();
+    public abstract void al(Bundle paramBundle);
     
-    public abstract void dzR();
+    public abstract void am(Bundle paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.d.d
  * JD-Core Version:    0.7.0.1
  */

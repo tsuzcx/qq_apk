@@ -6,13 +6,13 @@ import com.tencent.mm.plugin.choosemsgfile.ui.c;
 
 public abstract interface g
 {
-  public abstract a Aj(int paramInt);
+  public abstract a AS(int paramInt);
   
   public abstract void a(boolean paramBoolean, a parama, RecyclerView.w paramw);
   
-  public abstract c bUS();
+  public abstract c bZx();
   
-  public abstract boolean bUT();
+  public abstract boolean bZy();
   
   public abstract int getItemCount();
   
@@ -25,7 +25,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.c.g
  * JD-Core Version:    0.7.0.1
  */

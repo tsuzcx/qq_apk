@@ -13,17 +13,17 @@ final class g$3
   {
     int i = 0;
     AppMethodBeat.i(102669);
-    Object localObject = new e(d.awL());
+    Object localObject = new e(d.azA());
     if ((!((e)localObject).exists()) || (!((e)localObject).isDirectory()))
     {
-      g.d(this.wex);
+      g.d(this.xmg);
       AppMethodBeat.o(102669);
       return;
     }
-    localObject = ((e)localObject).fxX();
+    localObject = ((e)localObject).fOM();
     if ((localObject == null) || (localObject.length <= 0))
     {
-      g.d(this.wex);
+      g.d(this.xmg);
       AppMethodBeat.o(102669);
       return;
     }
@@ -39,7 +39,7 @@ final class g$3
       }
       i += 1;
     }
-    g.d(this.wex);
+    g.d(this.xmg);
     AppMethodBeat.o(102669);
   }
   

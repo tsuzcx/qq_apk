@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui.widget;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPCollapseTextLayout$CollapseTextCallback;", "", "onCollapse", "", "showLines", "", "onExpand", "onMeasured", "layout", "Lcom/tencent/neattextview/textview/layout/ILayout;", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPCollapseTextLayout$CollapseTextCallback;", "", "onCollapse", "", "showLines", "", "onExpand", "onMeasured", "layout", "Lcom/tencent/neattextview/textview/layout/ILayout;", "plugin-brandservice_release"})
 public abstract interface MPCollapseTextLayout$a {}
 
 

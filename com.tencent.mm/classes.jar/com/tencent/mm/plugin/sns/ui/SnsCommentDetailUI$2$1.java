@@ -14,8 +14,8 @@ final class SnsCommentDetailUI$2$1
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(163079);
-    g.agS();
-    g.agQ().ghe.a(this.yKt);
+    g.ajD();
+    g.ajB().gAO.a(this.AbO);
     AppMethodBeat.o(163079);
   }
 }

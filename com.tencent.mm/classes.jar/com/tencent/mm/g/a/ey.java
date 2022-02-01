@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ey
   extends b
 {
-  public a deP;
+  public a dqe;
+  public b dqf;
   
   public ey()
   {
@@ -15,22 +16,29 @@ public final class ey
   
   private ey(byte paramByte)
   {
-    AppMethodBeat.i(19798);
-    this.deP = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19795);
+    this.dqe = new a();
+    this.dqf = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19798);
+    AppMethodBeat.o(19795);
   }
   
   public static final class a
   {
-    public byte[] data;
+    public String dqg;
+    public long dqh;
     public String mac;
+  }
+  
+  public static final class b
+  {
+    public boolean doF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.g.a.ey
  * JD-Core Version:    0.7.0.1
  */

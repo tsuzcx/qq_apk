@@ -10,22 +10,22 @@ import java.util.Map;
 
 public final class j
 {
-  public final b<Object> KMU;
+  public final b<Object> MDR;
   
   public j(DartExecutor paramDartExecutor)
   {
     AppMethodBeat.i(10235);
-    this.KMU = new b(paramDartExecutor, "flutter/system", f.KOW);
+    this.MDR = new b(paramDartExecutor, "flutter/system", f.MFT);
     AppMethodBeat.o(10235);
   }
   
-  public final void fNH()
+  public final void gfg()
   {
     AppMethodBeat.i(10236);
-    a.fMD();
+    a.gea();
     HashMap localHashMap = new HashMap(1);
     localHashMap.put("type", "memoryPressure");
-    this.KMU.eC(localHashMap);
+    this.MDR.eF(localHashMap);
     AppMethodBeat.o(10236);
   }
 }

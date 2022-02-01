@@ -4,102 +4,102 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bj.d;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.storage.bm;
-import com.tencent.mm.storage.bx;
-import com.tencent.mm.storage.by;
+import com.tencent.mm.bk.d;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.bj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bi;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bs;
+import com.tencent.mm.storage.cd;
+import com.tencent.mm.storage.ce;
 
 public final class p
 {
-  public static com.tencent.mm.pluginsdk.ui.preference.b[] a(Context paramContext, ai paramai, int paramInt)
+  public static com.tencent.mm.pluginsdk.ui.preference.b[] a(Context paramContext, am paramam, int paramInt)
   {
     AppMethodBeat.i(27228);
-    String str = bs.nullAsNil(((Activity)paramContext).getIntent().getStringExtra("Verify_ticket"));
-    if (com.tencent.mm.n.b.ln(paramai.field_type))
+    String str = bt.nullAsNil(((Activity)paramContext).getIntent().getStringExtra("Verify_ticket"));
+    if (com.tencent.mm.o.b.lM(paramam.field_type))
     {
       AppMethodBeat.o(27228);
       return null;
     }
-    if (bs.isNullOrNil(str))
+    if (bt.isNullOrNil(str))
     {
       AppMethodBeat.o(27228);
       return null;
     }
-    ac.d("MicroMsg.FMessageUtil", "initAddContent, scene = ".concat(String.valueOf(paramInt)));
+    ad.d("MicroMsg.FMessageUtil", "initAddContent, scene = ".concat(String.valueOf(paramInt)));
     if (paramInt == 18)
     {
-      ac.d("MicroMsg.FMessageUtil", "initAddContent, scene is lbs");
-      paramContext = com.tencent.mm.pluginsdk.ui.preference.b.a(paramContext, d.aJf().aOh(paramai.field_username));
+      ad.d("MicroMsg.FMessageUtil", "initAddContent, scene is lbs");
+      paramContext = com.tencent.mm.pluginsdk.ui.preference.b.a(paramContext, d.aMp().aTY(paramam.field_username));
     }
     while ((paramContext == null) || (paramContext.length == 0))
     {
       AppMethodBeat.o(27228);
       return null;
-      if (bi.nX(paramInt))
+      if (bj.ox(paramInt))
       {
-        ac.d("MicroMsg.FMessageUtil", "initAddContent, scene is shake");
-        paramContext = com.tencent.mm.pluginsdk.ui.preference.b.a(paramContext, d.aJg().aOG(paramai.field_username));
+        ad.d("MicroMsg.FMessageUtil", "initAddContent, scene is shake");
+        paramContext = com.tencent.mm.pluginsdk.ui.preference.b.a(paramContext, d.aMq().aUx(paramam.field_username));
       }
       else
       {
-        ac.d("MicroMsg.FMessageUtil", "initAddContent, scene is other");
-        paramContext = com.tencent.mm.pluginsdk.ui.preference.b.a(paramContext, d.aJd().aOe(paramai.field_username));
+        ad.d("MicroMsg.FMessageUtil", "initAddContent, scene is other");
+        paramContext = com.tencent.mm.pluginsdk.ui.preference.b.a(paramContext, d.aMn().aTV(paramam.field_username));
       }
     }
     AppMethodBeat.o(27228);
     return paramContext;
   }
   
-  public static String b(Context paramContext, ai paramai, int paramInt)
+  public static String b(Context paramContext, am paramam, int paramInt)
   {
     AppMethodBeat.i(27229);
-    paramContext = bs.nullAsNil(((Activity)paramContext).getIntent().getStringExtra("Verify_ticket"));
-    if (com.tencent.mm.n.b.ln(paramai.field_type))
+    paramContext = bt.nullAsNil(((Activity)paramContext).getIntent().getStringExtra("Verify_ticket"));
+    if (com.tencent.mm.o.b.lM(paramam.field_type))
     {
       AppMethodBeat.o(27229);
       return null;
     }
-    if (bs.isNullOrNil(paramContext))
+    if (bt.isNullOrNil(paramContext))
     {
       AppMethodBeat.o(27229);
       return null;
     }
     paramContext = "";
-    ac.d("MicroMsg.FMessageUtil", "initAddContent, scene = ".concat(String.valueOf(paramInt)));
+    ad.d("MicroMsg.FMessageUtil", "initAddContent, scene = ".concat(String.valueOf(paramInt)));
     if (paramInt == 18)
     {
-      ac.d("MicroMsg.FMessageUtil", "initAddContent, scene is lbs");
-      paramai = d.aJf().aOh(paramai.field_username);
-      if (paramai.length > 0) {
-        paramContext = paramai[0].field_svrid;
+      ad.d("MicroMsg.FMessageUtil", "initAddContent, scene is lbs");
+      paramam = d.aMp().aTY(paramam.field_username);
+      if (paramam.length > 0) {
+        paramContext = paramam[0].field_svrid;
       }
     }
     for (;;)
     {
       AppMethodBeat.o(27229);
       return paramContext;
-      if (bi.nX(paramInt))
+      if (bj.ox(paramInt))
       {
-        ac.d("MicroMsg.FMessageUtil", "initAddContent, scene is shake");
-        paramai = d.aJg().aOG(paramai.field_username);
-        if (paramai.length > 0) {
-          paramContext = paramai[0].field_svrid;
+        ad.d("MicroMsg.FMessageUtil", "initAddContent, scene is shake");
+        paramam = d.aMq().aUx(paramam.field_username);
+        if (paramam.length > 0) {
+          paramContext = paramam[0].field_svrid;
         }
       }
       else
       {
-        ac.d("MicroMsg.FMessageUtil", "initAddContent, scene is other");
-        paramai = d.aJd().aOe(paramai.field_username);
-        if (paramai.length > 0) {
-          paramContext = paramai[0].field_svrId;
+        ad.d("MicroMsg.FMessageUtil", "initAddContent, scene is other");
+        paramam = d.aMn().aTV(paramam.field_username);
+        if (paramam.length > 0) {
+          paramContext = paramam[0].field_svrId;
         }
       }
     }

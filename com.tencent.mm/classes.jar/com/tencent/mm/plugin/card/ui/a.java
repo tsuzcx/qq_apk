@@ -14,8 +14,8 @@ import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.d.n;
 import com.tencent.mm.plugin.card.model.CardInfo;
-import com.tencent.mm.protocal.protobuf.ry;
-import com.tencent.mm.protocal.protobuf.yg;
+import com.tencent.mm.protocal.protobuf.aaf;
+import com.tencent.mm.protocal.protobuf.ts;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -25,22 +25,30 @@ public final class a
   extends BaseAdapter
 {
   Context mContext;
-  List<CardInfo> nZP;
-  HashMap<String, Integer> oaK;
+  List<CardInfo> oDj;
+  HashMap<String, Integer> oEe;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(113145);
-    this.nZP = new ArrayList();
-    this.oaK = new HashMap();
+    this.oDj = new ArrayList();
+    this.oEe = new HashMap();
     this.mContext = paramContext;
     AppMethodBeat.o(113145);
+  }
+  
+  public final CardInfo Ay(int paramInt)
+  {
+    AppMethodBeat.i(113147);
+    CardInfo localCardInfo = (CardInfo)this.oDj.get(paramInt);
+    AppMethodBeat.o(113147);
+    return localCardInfo;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(113146);
-    int i = this.nZP.size();
+    int i = this.oDj.size();
     AppMethodBeat.o(113146);
     return i;
   }
@@ -53,68 +61,68 @@ public final class a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(113148);
-    CardInfo localCardInfo = zP(paramInt);
+    CardInfo localCardInfo = Ay(paramInt);
     if (paramView == null)
     {
       paramView = View.inflate(this.mContext, 2131493247, null);
       paramViewGroup = new a();
-      paramViewGroup.oaA = ((RelativeLayout)paramView.findViewById(2131297771));
-      paramViewGroup.oaL = ((LinearLayout)paramView.findViewById(2131297915));
-      paramViewGroup.oaB = ((ImageView)paramView.findViewById(2131297828));
-      paramViewGroup.oaC = ((TextView)paramView.findViewById(2131297743));
-      paramViewGroup.oaD = ((TextView)paramView.findViewById(2131297863));
-      paramViewGroup.oaE = ((TextView)paramView.findViewById(2131305529));
-      paramViewGroup.oaG = ((TextView)paramView.findViewById(2131297864));
-      paramViewGroup.oaM = ((ImageView)paramView.findViewById(2131297856));
-      paramViewGroup.oaN = ((TextView)paramView.findViewById(2131297773));
-      paramViewGroup.oaO = ((TextView)paramView.findViewById(2131297899));
+      paramViewGroup.oDU = ((RelativeLayout)paramView.findViewById(2131297771));
+      paramViewGroup.oEf = ((LinearLayout)paramView.findViewById(2131297915));
+      paramViewGroup.oDV = ((ImageView)paramView.findViewById(2131297828));
+      paramViewGroup.oDW = ((TextView)paramView.findViewById(2131297743));
+      paramViewGroup.oDX = ((TextView)paramView.findViewById(2131297863));
+      paramViewGroup.oDY = ((TextView)paramView.findViewById(2131305529));
+      paramViewGroup.oEa = ((TextView)paramView.findViewById(2131297864));
+      paramViewGroup.oEg = ((ImageView)paramView.findViewById(2131297856));
+      paramViewGroup.oEh = ((TextView)paramView.findViewById(2131297773));
+      paramViewGroup.oEi = ((TextView)paramView.findViewById(2131297899));
       paramView.setTag(paramViewGroup);
-      if (!localCardInfo.bOU()) {
+      if (!localCardInfo.bTz()) {
         break label959;
       }
-      paramViewGroup.oaB.setVisibility(0);
-      paramViewGroup.oaD.setVisibility(0);
-      paramViewGroup.oaE.setVisibility(0);
-      paramViewGroup.oaG.setVisibility(8);
-      paramViewGroup.oaC.setVisibility(0);
-      paramViewGroup.oaC.setText(localCardInfo.bPi().nVK);
-      if (!localCardInfo.bOR()) {
+      paramViewGroup.oDV.setVisibility(0);
+      paramViewGroup.oDX.setVisibility(0);
+      paramViewGroup.oDY.setVisibility(0);
+      paramViewGroup.oEa.setVisibility(8);
+      paramViewGroup.oDW.setVisibility(0);
+      paramViewGroup.oDW.setText(localCardInfo.bTN().oze);
+      if (!localCardInfo.bTw()) {
         break label726;
       }
-      if ((localCardInfo.bPi().Ekq == null) || (localCardInfo.bPi().Ekq.size() != 1)) {
+      if ((localCardInfo.bTN().FRz == null) || (localCardInfo.bTN().FRz.size() != 1)) {
         break label611;
       }
-      paramViewGroup.oaD.setText(((yg)localCardInfo.bPi().Ekq.get(0)).title);
+      paramViewGroup.oDX.setText(((aaf)localCardInfo.bTN().FRz.get(0)).title);
       label306:
-      if (localCardInfo.bPi().EkO != 1) {
+      if (localCardInfo.bTN().FRX != 1) {
         break label746;
       }
-      paramViewGroup.oaM.setVisibility(0);
+      paramViewGroup.oEg.setVisibility(0);
       label328:
       long l = ((CardInfo)localCardInfo).field_begin_time;
       if ((localCardInfo.getEndTime() <= 0L) || (l <= 0L)) {
         break label758;
       }
-      paramViewGroup.oaE.setText(this.mContext.getString(2131757025, new Object[] { l.qn(l) + "  -  " + l.qn(localCardInfo.getEndTime()) }));
-      paramViewGroup.oaE.setVisibility(0);
+      paramViewGroup.oDY.setText(this.mContext.getString(2131757025, new Object[] { l.sm(l) + "  -  " + l.sm(localCardInfo.getEndTime()) }));
+      paramViewGroup.oDY.setVisibility(0);
       label424:
       paramInt = this.mContext.getResources().getDimensionPixelSize(2131165979);
-      n.a(paramViewGroup.oaB, localCardInfo.bPi().hhs, paramInt, 2131233400, true);
-      if (localCardInfo.bPi().EkM != 1) {
+      n.a(paramViewGroup.oDV, localCardInfo.bTN().hzB, paramInt, 2131233400, true);
+      if (localCardInfo.bTN().FRV != 1) {
         break label837;
       }
-      paramViewGroup.oaB.setAlpha(255);
-      paramViewGroup.oaO.setVisibility(8);
-      paramViewGroup.oaD.setTextColor(this.mContext.getResources().getColor(2131100085));
-      paramViewGroup.oaC.setTextColor(this.mContext.getResources().getColor(2131100085));
-      paramViewGroup.oaE.setTextColor(this.mContext.getResources().getColor(2131100469));
+      paramViewGroup.oDV.setAlpha(255);
+      paramViewGroup.oEi.setVisibility(8);
+      paramViewGroup.oDX.setTextColor(this.mContext.getResources().getColor(2131100085));
+      paramViewGroup.oDW.setTextColor(this.mContext.getResources().getColor(2131100085));
+      paramViewGroup.oDY.setTextColor(this.mContext.getResources().getColor(2131100469));
       label548:
-      paramInt = ((Integer)this.oaK.get(localCardInfo.bPn())).intValue();
+      paramInt = ((Integer)this.oEe.get(localCardInfo.bTS())).intValue();
       if (paramInt != 1) {
         break label931;
       }
-      paramViewGroup.oaN.setText("");
-      paramViewGroup.oaN.setVisibility(8);
+      paramViewGroup.oEh.setText("");
+      paramViewGroup.oEh.setVisibility(8);
     }
     for (;;)
     {
@@ -123,83 +131,75 @@ public final class a
       paramViewGroup = (a)paramView.getTag();
       break;
       label611:
-      if ((localCardInfo.bPi().Ekq == null) || (localCardInfo.bPi().Ekq.size() != 2)) {
+      if ((localCardInfo.bTN().FRz == null) || (localCardInfo.bTN().FRz.size() != 2)) {
         break label306;
       }
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((yg)localCardInfo.bPi().Ekq.get(0)).title);
+      localStringBuilder.append(((aaf)localCardInfo.bTN().FRz.get(0)).title);
       localStringBuilder.append("-");
-      localStringBuilder.append(((yg)localCardInfo.bPi().Ekq.get(1)).title);
-      paramViewGroup.oaD.setText(localStringBuilder.toString());
+      localStringBuilder.append(((aaf)localCardInfo.bTN().FRz.get(1)).title);
+      paramViewGroup.oDX.setText(localStringBuilder.toString());
       break label306;
       label726:
-      paramViewGroup.oaD.setText(localCardInfo.bPi().title);
+      paramViewGroup.oDX.setText(localCardInfo.bTN().title);
       break label306;
       label746:
-      paramViewGroup.oaM.setVisibility(8);
+      paramViewGroup.oEg.setVisibility(8);
       break label328;
       label758:
       if (localCardInfo.getEndTime() > 0L)
       {
-        paramViewGroup.oaE.setText(this.mContext.getString(2131757024, new Object[] { l.qn(localCardInfo.getEndTime()) }));
-        paramViewGroup.oaE.setVisibility(0);
+        paramViewGroup.oDY.setText(this.mContext.getString(2131757024, new Object[] { l.sm(localCardInfo.getEndTime()) }));
+        paramViewGroup.oDY.setVisibility(0);
         break label424;
       }
-      paramViewGroup.oaE.setText("");
-      paramViewGroup.oaE.setVisibility(8);
+      paramViewGroup.oDY.setText("");
+      paramViewGroup.oDY.setVisibility(8);
       break label424;
       label837:
-      paramViewGroup.oaO.setText(localCardInfo.bPi().EkN);
-      paramViewGroup.oaB.setAlpha(90);
-      paramViewGroup.oaO.setVisibility(0);
-      paramViewGroup.oaD.setTextColor(this.mContext.getResources().getColor(2131100469));
-      paramViewGroup.oaC.setTextColor(this.mContext.getResources().getColor(2131100469));
-      paramViewGroup.oaE.setTextColor(this.mContext.getResources().getColor(2131100469));
+      paramViewGroup.oEi.setText(localCardInfo.bTN().FRW);
+      paramViewGroup.oDV.setAlpha(90);
+      paramViewGroup.oEi.setVisibility(0);
+      paramViewGroup.oDX.setTextColor(this.mContext.getResources().getColor(2131100469));
+      paramViewGroup.oDW.setTextColor(this.mContext.getResources().getColor(2131100469));
+      paramViewGroup.oDY.setTextColor(this.mContext.getResources().getColor(2131100469));
       break label548;
       label931:
-      paramViewGroup.oaN.setText("x".concat(String.valueOf(paramInt)));
-      paramViewGroup.oaN.setVisibility(0);
+      paramViewGroup.oEh.setText("x".concat(String.valueOf(paramInt)));
+      paramViewGroup.oEh.setVisibility(0);
       continue;
       label959:
-      paramViewGroup.oaB.setVisibility(8);
-      paramViewGroup.oaD.setVisibility(8);
-      paramViewGroup.oaC.setVisibility(8);
-      paramViewGroup.oaE.setVisibility(8);
-      paramViewGroup.oaO.setVisibility(8);
-      paramViewGroup.oaN.setVisibility(8);
-      paramViewGroup.oaG.setVisibility(0);
-      paramViewGroup.oaA.setBackgroundColor(this.mContext.getResources().getColor(2131100106));
-      paramViewGroup.oaG.setText(this.mContext.getResources().getString(2131756947));
+      paramViewGroup.oDV.setVisibility(8);
+      paramViewGroup.oDX.setVisibility(8);
+      paramViewGroup.oDW.setVisibility(8);
+      paramViewGroup.oDY.setVisibility(8);
+      paramViewGroup.oEi.setVisibility(8);
+      paramViewGroup.oEh.setVisibility(8);
+      paramViewGroup.oEa.setVisibility(0);
+      paramViewGroup.oDU.setBackgroundColor(this.mContext.getResources().getColor(2131100106));
+      paramViewGroup.oEa.setText(this.mContext.getResources().getString(2131756947));
     }
-  }
-  
-  public final CardInfo zP(int paramInt)
-  {
-    AppMethodBeat.i(113147);
-    CardInfo localCardInfo = (CardInfo)this.nZP.get(paramInt);
-    AppMethodBeat.o(113147);
-    return localCardInfo;
   }
   
   public final class a
   {
-    public RelativeLayout oaA;
-    public ImageView oaB;
-    public TextView oaC;
-    public TextView oaD;
-    public TextView oaE;
-    public TextView oaG;
-    public LinearLayout oaL;
-    public ImageView oaM;
-    public TextView oaN;
-    public TextView oaO;
+    public RelativeLayout oDU;
+    public ImageView oDV;
+    public TextView oDW;
+    public TextView oDX;
+    public TextView oDY;
+    public TextView oEa;
+    public LinearLayout oEf;
+    public ImageView oEg;
+    public TextView oEh;
+    public TextView oEi;
     
     public a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 public class DrawStatusBarPreference
   extends MMPreference
 {
-  private b ILH = null;
+  private b KCO = null;
   
   public int getResourceId()
   {
@@ -27,10 +27,10 @@ public class DrawStatusBarPreference
     {
       View localView = getSwipeBackLayout().getChildAt(0);
       getSwipeBackLayout().removeView(localView);
-      this.ILH = new b(this);
-      this.ILH.addView(localView, new FrameLayout.LayoutParams(-1, -1));
-      getSwipeBackLayout().addView(this.ILH);
-      getSwipeBackLayout().setContentView(this.ILH);
+      this.KCO = new b(this);
+      this.KCO.addView(localView, new FrameLayout.LayoutParams(-1, -1));
+      getSwipeBackLayout().addView(this.KCO);
+      getSwipeBackLayout().setContentView(this.KCO);
     }
     AppMethodBeat.o(142985);
   }

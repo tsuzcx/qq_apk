@@ -7,39 +7,39 @@ import com.tencent.mm.plugin.exdevice.model.ae;
 import com.tencent.mm.plugin.exdevice.service.f;
 import com.tencent.mm.plugin.exdevice.service.m;
 import com.tencent.mm.plugin.exdevice.service.u;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class i
   extends ae
 {
-  private a pDq;
-  private g pDs;
+  private a qgV;
+  private g qgX;
   
   public i(int paramInt)
   {
     AppMethodBeat.i(23807);
-    this.pDs = new g(paramInt);
+    this.qgX = new g(paramInt);
     AppMethodBeat.o(23807);
   }
   
   public final boolean a(m paramm, d paramd)
   {
     AppMethodBeat.i(23808);
-    if (!u.chq().sJ(this.pDs.nsB))
+    if (!u.clU().uH(this.qgX.nTx))
     {
-      ac.w("MicroMsg.exdevice.MMSwitchBackGroudTaskExcuter", "push switch backgroud event to device before it do auth, device id = %d", new Object[] { Long.valueOf(this.pDs.nsB) });
+      ad.w("MicroMsg.exdevice.MMSwitchBackGroudTaskExcuter", "push switch backgroud event to device before it do auth, device id = %d", new Object[] { Long.valueOf(this.qgX.nTx) });
       AppMethodBeat.o(23808);
       return true;
     }
-    this.pDq = new a(this.pDs, paramd);
-    boolean bool = this.pDq.b(paramm);
+    this.qgV = new a(this.qgX, paramd);
+    boolean bool = this.qgV.b(paramm);
     AppMethodBeat.o(23808);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.j.i
  * JD-Core Version:    0.7.0.1
  */

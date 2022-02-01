@@ -12,30 +12,30 @@ final class s
   extends BroadcastReceiver
 {
   @Nullable
-  r bBv;
+  r bLJ;
   
   public s(r paramr)
   {
-    this.bBv = paramr;
+    this.bLJ = paramr;
   }
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(4208);
-    if (this.bBv == null)
+    if (this.bLJ == null)
     {
       AppMethodBeat.o(4208);
       return;
     }
-    if (!this.bBv.zzaj())
+    if (!this.bLJ.zzaj())
     {
       AppMethodBeat.o(4208);
       return;
     }
-    FirebaseInstanceId.wB();
-    FirebaseInstanceId.b(this.bBv, 0L);
-    this.bBv.getContext().unregisterReceiver(this);
-    this.bBv = null;
+    FirebaseInstanceId.xY();
+    FirebaseInstanceId.b(this.bLJ, 0L);
+    this.bLJ.getContext().unregisterReceiver(this);
+    this.bLJ = null;
     AppMethodBeat.o(4208);
   }
 }

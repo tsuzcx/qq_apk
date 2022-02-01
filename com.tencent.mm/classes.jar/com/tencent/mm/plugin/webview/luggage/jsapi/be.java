@@ -1,48 +1,37 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.res.Resources;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public class be
-  extends bo<f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  public final void b(a<f>.a parama)
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78627);
-    ac.i("MicroMsg.JsApiSetPageTitle", "invokeInOwn");
-    String str = parama.bWS.bVY.optString("title");
-    if (!bs.isNullOrNil(parama.bWS.bVY.optString("color")))
-    {
-      int i = com.tencent.mm.plugin.webview.ui.tools.e.fr(parama.bWS.bVY.optString("color"), ((f)parama.bWR).mContext.getResources().getColor(2131099874));
-      ((f)parama.bWR).dt(str, i);
-    }
-    for (;;)
-    {
-      parama.a("", null);
-      AppMethodBeat.o(78627);
-      return;
-      ((f)parama.bWR).dt(str, 0);
-    }
+    AppMethodBeat.i(207919);
+    int i = paramb.chh.cgn.optInt("fontSize");
+    ((g)paramb.chg).WI(i);
+    ad.i("MicroMsg.JsApiSetFrontSizeCallback", "doSetFontSizeCb, fontSize = ".concat(String.valueOf(i)));
+    paramb.a("", null);
+    AppMethodBeat.o(207919);
   }
   
-  public final int bYk()
+  public final int ccO()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setPageTitle";
+    return "setFontSizeCallback";
   }
 }
 

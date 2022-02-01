@@ -4,36 +4,36 @@ import java.util.HashSet;
 
 public class d
 {
-  private final a cug;
-  private final HashSet<String> cuh = new HashSet();
+  private final a cFb;
+  private final HashSet<String> cFc = new HashSet();
   
   public d(a parama)
   {
-    this.cug = parama;
+    this.cFb = parama;
   }
   
   protected final void b(c paramc)
   {
-    if (this.cug == null) {
+    if (this.cFb == null) {
       throw new RuntimeException("publish issue, but issue listener is null");
     }
-    this.cug.onDetectIssue(paramc);
+    this.cFb.onDetectIssue(paramc);
   }
   
-  protected void cL(String paramString)
+  protected void dO(String paramString)
   {
     if (paramString == null) {
       return;
     }
-    this.cuh.add(paramString);
+    this.cFc.add(paramString);
   }
   
-  protected boolean cM(String paramString)
+  protected boolean dP(String paramString)
   {
     if (paramString == null) {
       return false;
     }
-    return this.cuh.contains(paramString);
+    return this.cFc.contains(paramString);
   }
   
   public static abstract interface a

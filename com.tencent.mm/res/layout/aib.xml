@@ -3,8 +3,8 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/f6b" android:background="#b3000000" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <ImageView android:id="@id/f6a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bxf" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/aj" android:id="@id/f6c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/ew9" />
-        <TextView android:textSize="@dimen/jo" android:textColor="@color/BW_100_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:text="@string/ew_" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/aj" android:id="@id/hzi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/ew9" />
+        <TextView android:textSize="@dimen/jo" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/hzh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:text="@string/ew_" />
     </LinearLayout>
     <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/f63" android:background="#b3000000" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <ImageView android:id="@id/f62" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bxe" />

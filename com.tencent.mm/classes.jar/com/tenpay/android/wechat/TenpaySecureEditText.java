@@ -25,12 +25,12 @@ import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.ui.aj;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.ui.al;
+import com.tencent.mm.ui.aq;
 import com.tenpay.ndk.Encrypt;
 import java.lang.reflect.Field;
 import java.util.regex.Matcher;
@@ -69,6 +69,7 @@ public final class TenpaySecureEditText
   private OnPasswdInputListener mPasswdListener;
   private Paint mPasswdSeparedPaint;
   private Paint mTitlePaint;
+  private String regExFilterInput;
   
   static
   {
@@ -203,16 +204,16 @@ public final class TenpaySecureEditText
         AppMethodBeat.o(73225);
         return;
       }
-      j = a.fromDPToPix(getContext(), 8);
+      j = com.tencent.mm.cc.a.fromDPToPix(getContext(), 8);
       while (i < PASSWD_LENGTH)
       {
         float f1 = (k + j) * i;
         float f2 = k + f1;
         RectF localRectF = new RectF(f1, 0.0F, f2, k);
-        float f3 = a.fromDPToPix(getContext(), 4);
+        float f3 = com.tencent.mm.cc.a.fromDPToPix(getContext(), 4);
         paramCanvas.drawRoundRect(localRectF, f3, f3, this.mPasswdBgPaint);
         if (i < n) {
-          paramCanvas.drawCircle((f1 + f2) / 2.0F, k / 2.0F, PASSWD_BLACK_DOT_SIZE * this.mDensity, this.mPaintBackground);
+          paramCanvas.drawCircle((f1 + f2) / 2.0F, k / 2.0F, com.tencent.mm.cc.a.fromDPToPix(getContext(), 4), this.mPaintBackground);
         }
         i += 1;
       }
@@ -224,42 +225,48 @@ public final class TenpaySecureEditText
   {
     AppMethodBeat.i(73232);
     if (this.mEditState == EditState.SECURITY_ANSWER) {}
-    for (String str2 = getText().toString(); (str2 == null) || (str2.length() == 0); str2 = getText().toString().trim())
+    for (Object localObject2 = getText().toString(); (localObject2 == null) || (((String)localObject2).length() == 0); localObject2 = getText().toString().trim())
     {
       AppMethodBeat.o(73232);
       return null;
     }
-    String str1 = str2;
+    Object localObject1 = localObject2;
     switch (6.$SwitchMap$com$tenpay$android$wechat$TenpaySecureEditText$EditState[this.mEditState.ordinal()])
     {
     default: 
-      str1 = str2.replaceAll(" ", "").replaceAll("x", "X");
+      localObject1 = ((String)localObject2).replaceAll(" ", "").replaceAll("x", "X");
     }
     for (;;)
     {
+      localObject2 = localObject1;
+      if (!bt.isNullOrNil(this.regExFilterInput))
+      {
+        localObject2 = Pattern.compile(this.regExFilterInput).matcher((CharSequence)localObject1).replaceAll("").trim();
+        ad.i("TenpaySecureEditText", "use filter");
+      }
       AppMethodBeat.o(73232);
-      return str1;
-      str1 = str2.replaceAll(" ", "");
+      return localObject2;
+      localObject1 = ((String)localObject2).replaceAll(" ", "");
       continue;
-      str2 = str2.replaceAll(" ", "");
-      str1 = str2;
+      localObject2 = ((String)localObject2).replaceAll(" ", "");
+      localObject1 = localObject2;
       if (this.mCardTailNum != null)
       {
-        str1 = str2;
+        localObject1 = localObject2;
         if (this.mCardTailNum.length() > 0)
         {
-          str1 = str2 + this.mCardTailNum;
+          localObject1 = (String)localObject2 + this.mCardTailNum;
           continue;
-          str2 = str2.replaceAll("/", "");
-          str1 = str2;
-          if (str2 != null)
+          localObject2 = ((String)localObject2).replaceAll("/", "");
+          localObject1 = localObject2;
+          if (localObject2 != null)
           {
-            str1 = str2;
-            if (str2.length() == VALID_THRU_LEN)
+            localObject1 = localObject2;
+            if (((String)localObject2).length() == VALID_THRU_LEN)
             {
-              str1 = str2.substring(0, 2);
-              str2 = str2.substring(2);
-              str1 = str2 + str1;
+              localObject1 = ((String)localObject2).substring(0, 2);
+              localObject2 = ((String)localObject2).substring(2);
+              localObject1 = (String)localObject2 + (String)localObject1;
             }
           }
         }
@@ -325,9 +332,9 @@ public final class TenpaySecureEditText
   public static void setSalt(String paramString)
   {
     AppMethodBeat.i(73231);
-    ac.i("TenpaySecureEditText", "check salt: %s", new Object[] { paramString });
-    if ((Integer.decode(h.gMJ).intValue() & 0xFF) < 48) {
-      ac.i("TenpaySecureEditText", "check salt stack: %s", new Object[] { bs.eWi() });
+    ad.i("TenpaySecureEditText", "check salt: %s", new Object[] { paramString });
+    if ((Integer.decode(i.hgG).intValue() & 0xFF) < 48) {
+      ad.i("TenpaySecureEditText", "check salt stack: %s", new Object[] { bt.flS() });
     }
     mTimeStamp = paramString;
     AppMethodBeat.o(73231);
@@ -426,7 +433,7 @@ public final class TenpaySecureEditText
       AppMethodBeat.o(73234);
       return null;
     }
-    ac.i("TenpaySecureEditText", "timestamp: %s, 2048: %s", new Object[] { mTimeStamp, Boolean.valueOf(paramBoolean2) });
+    ad.i("TenpaySecureEditText", "timestamp: %s, 2048: %s", new Object[] { mTimeStamp, Boolean.valueOf(paramBoolean2) });
     if (this.mIEncrypt != null)
     {
       if (paramBoolean2)
@@ -889,23 +896,14 @@ public final class TenpaySecureEditText
         continue;
         this.mClearBtnImg.setBounds(0, 0, this.mClearBtnImg.getIntrinsicWidth(), this.mClearBtnImg.getIntrinsicHeight());
       }
-      setOnFocusChangeListener(new View.OnFocusChangeListener()
-      {
-        public void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean) {}
-      });
-      setOnTouchListener(new View.OnTouchListener()
-      {
-        public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-        {
-          return false;
-        }
-      });
+      setOnFocusChangeListener(new TenpaySecureEditText.4(this));
+      setOnTouchListener(new TenpaySecureEditText.5(this));
       AppMethodBeat.o(174540);
     }
     if (this.mClearBtnImg != null) {
       if ((paramInt3 != 0) && (paramInt4 != 0))
       {
-        this.mClearBtnImg.setBounds(0, 0, ao.fromDPToPix(getContext(), paramInt3), ao.fromDPToPix(getContext(), paramInt4));
+        this.mClearBtnImg.setBounds(0, 0, aq.fromDPToPix(getContext(), paramInt3), aq.fromDPToPix(getContext(), paramInt4));
         setOnFocusChangeListener(new View.OnFocusChangeListener()
         {
           public void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
@@ -925,9 +923,15 @@ public final class TenpaySecureEditText
         });
         setOnTouchListener(new View.OnTouchListener()
         {
+          private byte _hellAccFlag_;
+          
           public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
             AppMethodBeat.i(73205);
+            b localb = new b();
+            localb.bd(paramAnonymousView);
+            localb.bd(paramAnonymousMotionEvent);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tenpay/android/wechat/TenpaySecureEditText$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
             if ((TenpaySecureEditText.EditState.PASSWORD != TenpaySecureEditText.this.mEditState) && (TenpaySecureEditText.EditState.CVV_PAYMENT != TenpaySecureEditText.this.mEditState) && (TenpaySecureEditText.EditState.CVV_4_PAYMENT != TenpaySecureEditText.this.mEditState))
             {
               paramAnonymousView = TenpaySecureEditText.this;
@@ -936,11 +940,13 @@ public final class TenpaySecureEditText
               }
               if (paramAnonymousView.getCompoundDrawables()[2] == null)
               {
+                com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tenpay/android/wechat/TenpaySecureEditText$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
                 AppMethodBeat.o(73205);
                 return false;
               }
               if (paramAnonymousMotionEvent.getAction() != 1)
               {
+                com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tenpay/android/wechat/TenpaySecureEditText$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
                 AppMethodBeat.o(73205);
                 return false;
               }
@@ -948,6 +954,7 @@ public final class TenpaySecureEditText
                 paramAnonymousView.setText("");
               }
             }
+            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tenpay/android/wechat/TenpaySecureEditText$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(73205);
             return false;
           }
@@ -1078,21 +1085,21 @@ public final class TenpaySecureEditText
   
   public final void setIsPasswordFormat(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(207330);
+    AppMethodBeat.i(199374);
     if (paramBoolean1)
     {
       this.mNewPwdStyle = paramBoolean2;
       setPadding(PASSWD_LEFT_PADDING, getPaddingTop(), getPaddingRight(), getPaddingBottom());
       this.mPaintBackground = new Paint(1);
       this.mPaintBackground.setStyle(Paint.Style.FILL);
-      if (aj.DT())
+      if (al.isDarkMode())
       {
         this.mPaintBackground.setColor(getResources().getColor(2131099673));
         this.mEditState = EditState.PASSWORD;
         this.mPasswdSeparedPaint = new Paint(1);
         this.mPasswdSeparedPaint.setStyle(Paint.Style.STROKE);
         this.mPasswdSeparedPaint.setStrokeWidth(1.5F);
-        if (!aj.DT()) {
+        if (!al.isDarkMode()) {
           break label213;
         }
         this.mPasswdSeparedPaint.setColor(getResources().getColor(2131099737));
@@ -1101,11 +1108,11 @@ public final class TenpaySecureEditText
       {
         this.mPasswdBgPaint = new Paint(1);
         this.mPasswdBgPaint.setStyle(Paint.Style.FILL);
-        if (!aj.DT()) {
+        if (!al.isDarkMode()) {
           break label233;
         }
         this.mPasswdBgPaint.setColor(getResources().getColor(2131099648));
-        AppMethodBeat.o(207330);
+        AppMethodBeat.o(199374);
         return;
         this.mPaintBackground.setColor(getResources().getColor(2131099654));
         break;
@@ -1114,14 +1121,14 @@ public final class TenpaySecureEditText
       }
       label233:
       this.mPasswdBgPaint.setColor(getResources().getColor(2131099648));
-      AppMethodBeat.o(207330);
+      AppMethodBeat.o(199374);
       return;
     }
     this.mPaintBackground = null;
     if (EditState.PASSWORD == this.mEditState) {
       this.mEditState = EditState.DEFAULT;
     }
-    AppMethodBeat.o(207330);
+    AppMethodBeat.o(199374);
   }
   
   public final void setIsSecurityAnswerFormat(boolean paramBoolean)
@@ -1174,6 +1181,11 @@ public final class TenpaySecureEditText
       this.mEditState = EditState.VALID_THRU;
     }
     AppMethodBeat.o(73220);
+  }
+  
+  public final void setregExFilterInput(String paramString)
+  {
+    this.regExFilterInput = paramString;
   }
   
   public static enum EditState

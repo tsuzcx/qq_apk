@@ -127,7 +127,13 @@ public class a
   public void f(int paramInt)
   {
     AppMethodBeat.i(15009);
-    this.x = (paramInt / 20.0F);
+    float f = paramInt / 20.0F;
+    if (Math.abs(this.x - f) < 0.001D)
+    {
+      AppMethodBeat.o(15009);
+      return;
+    }
+    this.x = f;
     if (this.s != null) {
       this.s.a(this.x);
     }

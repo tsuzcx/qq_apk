@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoOrientationHelper$Companion;", "", "()V", "TAG", "", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoOrientationHelper$Companion;", "", "()V", "TAG", "", "plugin-brandservice_release"})
 public final class h$a {}
 
 

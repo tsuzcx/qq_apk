@@ -3,51 +3,53 @@ package com.tencent.mm.plugin.expt.hellhound.a.b.b;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.c;
-import d.g.b.k;
+import d.g.b.p;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RLEndCallback;", "", "mRLCallback", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback;", "(Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback;)V", "mMethodMap", "Ljava/util/HashMap;", "", "", "Landroid/util/Pair;", "getMRLCallback", "()Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback;", "mRefeshLoadMoreListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RLEndCallback$mRefeshLoadMoreListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RLEndCallback$mRefeshLoadMoreListener$1;", "startMonitor", "", "Companion", "plugin-expt_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RLEndCallback;", "", "mRLCallback", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback;", "(Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback;)V", "mMethodMap", "Ljava/util/HashMap;", "", "", "Landroid/util/Pair;", "getMRLCallback", "()Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback;", "mRefeshLoadMoreListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RLEndCallback$mRefeshLoadMoreListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RLEndCallback$mRefeshLoadMoreListener$1;", "startMonitor", "", "Companion", "plugin-expt_release"})
 public final class i
 {
-  public static final a qny;
-  final HashMap<String, List<Pair<String, String>>> qmF;
-  final b qnw;
-  final l qnx;
+  public static final a qWw;
+  final HashMap<String, List<Pair<String, String>>> qVC;
+  final b qWu;
+  final l qWv;
   
   static
   {
-    AppMethodBeat.i(195460);
-    qny = new a((byte)0);
-    AppMethodBeat.o(195460);
+    AppMethodBeat.i(210807);
+    qWw = new a((byte)0);
+    AppMethodBeat.o(210807);
   }
   
   public i(l paraml)
   {
-    AppMethodBeat.i(195459);
-    this.qnx = paraml;
-    this.qmF = new HashMap();
+    AppMethodBeat.i(210806);
+    this.qWv = paraml;
+    this.qVC = new HashMap();
     paraml = new ArrayList();
     paraml.add(Pair.create("onFetchDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V"));
-    ((Map)this.qmF).put("com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader", paraml);
-    this.qnw = new b(this);
-    AppMethodBeat.o(195459);
+    ((Map)this.qVC).put("com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader", paraml);
+    this.qWu = new b(this);
+    AppMethodBeat.o(210806);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RLEndCallback$Companion;", "", "()V", "DESC_onFetchDone", "", "NAME_onFetchDone", "SUPER_NAME", "TAG", "plugin-expt_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RLEndCallback$Companion;", "", "()V", "DESC_onFetchDone", "", "NAME_onFetchDone", "SUPER_NAME", "TAG", "plugin-expt_release"})
   public static final class a {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RLEndCallback$mRefeshLoadMoreListener$1", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RLEndCallback$mRefeshLoadMoreListener$1", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
   public static final class b
     implements c
   {
-    public final void b(String paramString1, String paramString2, String paramString3, Object paramObject, Object[] paramArrayOfObject)
+    public final void a(String paramString1, String paramString2, String paramString3, Object paramObject1, Object paramObject2) {}
+    
+    public final void a(String paramString1, String paramString2, String paramString3, Object paramObject, Object[] paramArrayOfObject)
     {
       int j = 1;
-      AppMethodBeat.i(195458);
-      if ((k.g(paramString2, "onFetchDone")) && (k.g(paramString3, "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V")) && (paramArrayOfObject != null))
+      AppMethodBeat.i(210805);
+      if ((p.i(paramString2, "onFetchDone")) && (p.i(paramString3, "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V")) && (paramArrayOfObject != null))
       {
         int i;
         if (paramArrayOfObject.length == 0)
@@ -62,11 +64,11 @@ public final class i
         {
           if (i != 0)
           {
-            paramString1 = this.qnz.qnx.q(paramArrayOfObject);
-            if ((paramString1 == null) || (paramString1.pullType != l.c.qnU.value))
+            paramString1 = this.qWx.qWv.q(paramArrayOfObject);
+            if ((paramString1 == null) || (paramString1.pullType != l.c.qWS.value))
             {
-              j.qnH.a(paramString1);
-              AppMethodBeat.o(195458);
+              j.qWF.a(paramString1);
+              AppMethodBeat.o(210805);
               return;
               i = 0;
               break;
@@ -74,14 +76,12 @@ public final class i
               i = 0;
               continue;
             }
-            j.qnH.cjy();
+            j.qWF.coK();
           }
         }
       }
-      AppMethodBeat.o(195458);
+      AppMethodBeat.o(210805);
     }
-    
-    public final void f(String paramString, Object paramObject) {}
   }
 }
 

@@ -4,20 +4,20 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.WXRTEditText;
 
 public abstract class a
 {
-  public String dhw = "";
-  public boolean oPV = false;
-  public int oPW = 0;
-  public int oPX = -1;
-  public WXRTEditText oPY;
-  public WXRTEditText oPZ;
-  public WXRTEditText oQa;
-  public boolean oQb = false;
-  public boolean oQc = false;
-  public boolean oQd = false;
-  public int oQe = 0;
-  public int oQf = 0;
+  public String dsU = "";
+  public boolean ptF = false;
+  public int ptG = 0;
+  public int ptH = -1;
+  public WXRTEditText ptI;
+  public WXRTEditText ptJ;
+  public WXRTEditText ptK;
+  public boolean ptL = false;
+  public boolean ptM = false;
+  public boolean ptN = false;
+  public int ptO = 0;
+  public int ptP = 0;
   
-  public String bZx()
+  public String ceb()
   {
     return "";
   }
@@ -29,7 +29,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.a.a
  * JD-Core Version:    0.7.0.1
  */

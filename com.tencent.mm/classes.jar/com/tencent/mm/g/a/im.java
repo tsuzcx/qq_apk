@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class im
   extends b
 {
-  public a djG;
+  public a duY;
   
   public im()
   {
@@ -15,25 +15,25 @@ public final class im
   
   private im(byte paramByte)
   {
-    AppMethodBeat.i(19812);
-    this.djG = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(149861);
+    this.duY = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19812);
+    AppMethodBeat.o(149861);
   }
   
   public static final class a
   {
-    public long djH;
-    public long djI;
-    public long djJ;
-    public long djK;
-    public String username;
+    public String appId;
+    public String dnv;
+    public int duZ;
+    public int opType;
+    public String openId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.im
  * JD-Core Version:    0.7.0.1
  */

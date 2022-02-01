@@ -2,7 +2,7 @@ package com.tencent.mm.wallet_core.c;
 
 public abstract interface h
 {
-  public abstract void br(int paramInt, String paramString);
+  public abstract void bv(int paramInt, String paramString);
   
   public abstract void onCancel();
 }

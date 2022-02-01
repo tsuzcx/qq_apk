@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.loading;
 import android.support.annotation.Keep;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService3;", "Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService0;", "()V", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService3;", "Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService0;", "()V", "plugin-appbrand-integration_release"})
 @Keep
 public final class AppBrandProcessTriggerService3
   extends AppBrandProcessTriggerService0

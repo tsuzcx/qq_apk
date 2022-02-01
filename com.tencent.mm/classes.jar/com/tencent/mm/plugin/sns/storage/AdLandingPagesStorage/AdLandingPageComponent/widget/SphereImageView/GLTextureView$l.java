@@ -6,20 +6,20 @@ import java.io.Writer;
 final class GLTextureView$l
   extends Writer
 {
-  private StringBuilder ytj;
+  private StringBuilder zKr;
   
   GLTextureView$l()
   {
     AppMethodBeat.i(97204);
-    this.ytj = new StringBuilder();
+    this.zKr = new StringBuilder();
     AppMethodBeat.o(97204);
   }
   
-  private void eZ()
+  private void fq()
   {
     AppMethodBeat.i(97208);
-    if (this.ytj.length() > 0) {
-      this.ytj.delete(0, this.ytj.length());
+    if (this.zKr.length() > 0) {
+      this.zKr.delete(0, this.zKr.length());
     }
     AppMethodBeat.o(97208);
   }
@@ -27,14 +27,14 @@ final class GLTextureView$l
   public final void close()
   {
     AppMethodBeat.i(97205);
-    eZ();
+    fq();
     AppMethodBeat.o(97205);
   }
   
   public final void flush()
   {
     AppMethodBeat.i(97206);
-    eZ();
+    fq();
     AppMethodBeat.o(97206);
   }
   
@@ -46,13 +46,13 @@ final class GLTextureView$l
     {
       char c = paramArrayOfChar[(paramInt1 + i)];
       if (c == '\n') {
-        eZ();
+        fq();
       }
       for (;;)
       {
         i += 1;
         break;
-        this.ytj.append(c);
+        this.zKr.append(c);
       }
     }
     AppMethodBeat.o(97207);
@@ -60,7 +60,7 @@ final class GLTextureView$l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.GLTextureView.l
  * JD-Core Version:    0.7.0.1
  */

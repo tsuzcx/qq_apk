@@ -8,7 +8,7 @@ public abstract interface e
 {
   public abstract void cancel();
   
-  public abstract boolean nY();
+  public abstract boolean oq();
   
   public static abstract interface a
   {
@@ -16,7 +16,7 @@ public abstract interface e
     
     public abstract void a(h paramh1, Object paramObject, d<?> paramd, a parama, h paramh2);
     
-    public abstract void oa();
+    public abstract void os();
   }
 }
 

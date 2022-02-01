@@ -6,29 +6,27 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.b;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.newtips.a;
 import com.tencent.mm.plugin.newtips.a.i;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.bdf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.bhl;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.PluginTextPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceSmallCategory;
-import com.tencent.mm.ui.base.preference.f;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -36,35 +34,34 @@ import java.util.List;
 
 public class SettingsPluginsUI
   extends MMPreference
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
-  private static int xtH;
-  private static HashMap<String, Integer> xtI;
-  private f screen;
-  private boolean xtJ;
-  private boolean xtK;
-  private boolean xtL = false;
+  private static int yIt;
+  private static HashMap<String, Integer> yIu;
+  private com.tencent.mm.ui.base.preference.f screen;
+  private boolean yIv;
+  private boolean yIw;
   
   static
   {
     AppMethodBeat.i(74342);
-    xtH = 1;
-    xtI = new HashMap() {};
+    yIt = 1;
+    yIu = new HashMap() {};
     AppMethodBeat.o(74342);
   }
   
-  private void aQA()
+  private void aTM()
   {
-    AppMethodBeat.i(191056);
+    AppMethodBeat.i(221039);
     this.screen.removeAll();
     Object localObject1 = new PreferenceSmallCategory(this);
     this.screen.b((Preference)localObject1);
     Object localObject2 = new ArrayList();
     Object localObject3 = new ArrayList();
-    boolean bool2 = u.ayd();
+    boolean bool2 = u.aAZ();
     boolean bool1 = bool2;
     if (!bool2) {
-      if (bs.getInt(com.tencent.mm.m.g.ZY().getValue("BindQQSwitch"), 1) != 1) {
+      if (bt.getInt(com.tencent.mm.n.g.acA().getValue("BindQQSwitch"), 1) != 1) {
         break label355;
       }
     }
@@ -74,43 +71,43 @@ public class SettingsPluginsUI
     for (bool1 = true;; bool1 = false)
     {
       if (!bool1) {
-        ac.i("MicroMsg.SettingsPluginsUI", "summerqq BindQQSwitch off");
+        ad.i("MicroMsg.SettingsPluginsUI", "summerqq BindQQSwitch off");
       }
-      if ((bool1) && (com.tencent.mm.br.d.aCT("qqmail"))) {
-        s((List)localObject2, (List)localObject3);
-      }
-      if (com.tencent.mm.br.d.aCT("readerapp")) {
+      if ((bool1) && (com.tencent.mm.bs.d.aIu("qqmail"))) {
         t((List)localObject2, (List)localObject3);
       }
-      u((List)localObject2, (List)localObject3);
-      if (com.tencent.mm.br.d.aCT("masssend")) {
-        v((List)localObject2, (List)localObject3);
+      if (com.tencent.mm.bs.d.aIu("readerapp")) {
+        u((List)localObject2, (List)localObject3);
       }
-      p((List)localObject2, (List)localObject3);
+      v((List)localObject2, (List)localObject3);
+      if (com.tencent.mm.bs.d.aIu("masssend")) {
+        w((List)localObject2, (List)localObject3);
+      }
       q((List)localObject2, (List)localObject3);
       r((List)localObject2, (List)localObject3);
-      localObject1 = com.tencent.mm.m.g.ZY().getValue("LinkedinPluginClose");
-      if ((bs.isNullOrNil((String)localObject1)) || (bs.getInt((String)localObject1, 0) == 0)) {
-        fn((List)localObject2);
+      s((List)localObject2, (List)localObject3);
+      localObject1 = com.tencent.mm.n.g.acA().getValue("LinkedinPluginClose");
+      if ((bt.isNullOrNil((String)localObject1)) || (bt.getInt((String)localObject1, 0) == 0)) {
+        fA((List)localObject2);
       }
       if (!((List)localObject2).isEmpty())
       {
         localObject1 = new PluginTextPreference(this);
-        ((PluginTextPreference)localObject1).HFB = 2131691158;
-        ((PluginTextPreference)localObject1).aal(2131763361);
+        ((PluginTextPreference)localObject1).Jts = 2131691158;
+        ((PluginTextPreference)localObject1).acv(2131763361);
         this.screen.b((Preference)localObject1);
       }
-      str = (String)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GMX, "");
+      str = (String)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Izo, "");
       localObject1 = null;
       Iterator localIterator = ((List)localObject2).iterator();
       while (localIterator.hasNext())
       {
         localPluginPreference = (PluginPreference)localIterator.next();
-        localPluginPreference.qBD = 255;
+        localPluginPreference.rlt = 255;
         localObject2 = localObject1;
-        if (str.contains(localPluginPreference.xpK))
+        if (str.contains(localPluginPreference.yEn))
         {
-          localPluginPreference.xpO = true;
+          localPluginPreference.yEr = true;
           localObject2 = localObject1;
           if (localObject1 == null) {
             localObject2 = localPluginPreference;
@@ -123,8 +120,8 @@ public class SettingsPluginsUI
     localObject2 = new PreferenceSmallCategory(this);
     this.screen.b((Preference)localObject2);
     localObject2 = new PluginTextPreference(this);
-    ((PluginTextPreference)localObject2).HFB = 2131691159;
-    ((PluginTextPreference)localObject2).aal(2131763369);
+    ((PluginTextPreference)localObject2).Jts = 2131691159;
+    ((PluginTextPreference)localObject2).acv(2131763369);
     this.screen.b((Preference)localObject2);
     if (((List)localObject3).isEmpty())
     {
@@ -135,11 +132,11 @@ public class SettingsPluginsUI
     while (((Iterator)localObject3).hasNext())
     {
       localPluginPreference = (PluginPreference)((Iterator)localObject3).next();
-      localPluginPreference.qBD = 136;
+      localPluginPreference.rlt = 136;
       localObject2 = localObject1;
-      if (str.contains(localPluginPreference.xpK))
+      if (str.contains(localPluginPreference.yEn))
       {
-        localPluginPreference.xpO = true;
+        localPluginPreference.yEr = true;
         localObject2 = localObject1;
         if (localObject1 == null) {
           localObject2 = localPluginPreference;
@@ -151,35 +148,26 @@ public class SettingsPluginsUI
     localObject2 = new PreferenceSmallCategory(this);
     this.screen.b((Preference)localObject2);
     if (localObject1 != null) {
-      setSelection(this.screen.aPP(((Preference)localObject1).mKey));
+      setSelection(this.screen.aVF(((Preference)localObject1).mKey));
     }
-    AppMethodBeat.o(191056);
+    AppMethodBeat.o(221039);
   }
   
-  private void dCs()
-  {
-    AppMethodBeat.i(191060);
-    com.tencent.mm.kernel.g.agi().a(2745, this);
-    com.tencent.mm.plugin.setting.model.e locale = new com.tencent.mm.plugin.setting.model.e();
-    com.tencent.mm.kernel.g.agi().a(locale, 0);
-    AppMethodBeat.o(191060);
-  }
-  
-  private void fn(List<PluginPreference> paramList)
+  private void fA(List<PluginPreference> paramList)
   {
     int j = 1;
-    AppMethodBeat.i(191066);
+    AppMethodBeat.i(221048);
     PluginPreference localPluginPreference = new PluginPreference(this);
     int i;
-    if (localPluginPreference.asc("linkedinplugin"))
+    if (localPluginPreference.axc("linkedinplugin"))
     {
-      localPluginPreference.setTitle(localPluginPreference.xpL);
-      if ((u.axI() & 0x1000000) != 0) {
-        break label94;
+      localPluginPreference.setTitle(localPluginPreference.yEo);
+      if ((u.aAy() & 0x1000000) != 0) {
+        break label92;
       }
       i = 1;
-      if (bs.isNullOrNil((String)com.tencent.mm.kernel.g.agR().agA().get(286721, null))) {
-        break label99;
+      if (bt.isNullOrNil((String)com.tencent.mm.kernel.g.ajC().ajl().get(286721, null))) {
+        break label97;
       }
     }
     for (;;)
@@ -187,164 +175,164 @@ public class SettingsPluginsUI
       if ((i != 0) && (j != 0)) {
         paramList.add(localPluginPreference);
       }
-      AppMethodBeat.o(191066);
+      AppMethodBeat.o(221048);
       return;
-      label94:
+      label92:
       i = 0;
       break;
-      label99:
+      label97:
       j = 0;
-    }
-  }
-  
-  private void p(List<PluginPreference> paramList1, List<PluginPreference> paramList2)
-  {
-    AppMethodBeat.i(191057);
-    PluginPreference localPluginPreference = new PluginPreference(this);
-    localPluginPreference.iQ("gh_43f2581f6fd6", getString(2131758621));
-    localPluginPreference.setTitle(localPluginPreference.xpL);
-    if (((com.tencent.mm.plugin.sport.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.sport.a.b.class)).dTK()) {
-      paramList1.add(localPluginPreference);
-    }
-    for (;;)
-    {
-      a.dke();
-      this.xtK = com.tencent.mm.plugin.newtips.a.e.Kk(com.tencent.mm.plugin.newtips.a.d.vmQ);
-      localPluginPreference.xpO = this.xtK;
-      AppMethodBeat.o(191057);
-      return;
-      paramList2.add(localPluginPreference);
     }
   }
   
   private void q(List<PluginPreference> paramList1, List<PluginPreference> paramList2)
   {
-    AppMethodBeat.i(191058);
+    AppMethodBeat.i(221040);
     PluginPreference localPluginPreference = new PluginPreference(this);
-    localPluginPreference.iQ("gh_3dfda90e39d6", getString(2131761999));
-    localPluginPreference.setTitle(localPluginPreference.xpL);
-    ai localai = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt("gh_3dfda90e39d6");
-    boolean bool = false;
-    if (localai != null) {
-      bool = com.tencent.mm.n.b.ln(localai.field_type);
-    }
-    if (bool)
-    {
+    localPluginPreference.jb("gh_43f2581f6fd6", getString(2131758621));
+    localPluginPreference.setTitle(localPluginPreference.yEo);
+    if (((com.tencent.mm.plugin.sport.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.sport.a.b.class)).efY()) {
       paramList1.add(localPluginPreference);
-      AppMethodBeat.o(191058);
-      return;
     }
-    paramList2.add(localPluginPreference);
-    AppMethodBeat.o(191058);
+    for (;;)
+    {
+      a.duq();
+      this.yIw = com.tencent.mm.plugin.newtips.a.e.LM(com.tencent.mm.plugin.newtips.a.d.wsi);
+      localPluginPreference.yEr = this.yIw;
+      AppMethodBeat.o(221040);
+      return;
+      paramList2.add(localPluginPreference);
+    }
   }
   
   private void r(List<PluginPreference> paramList1, List<PluginPreference> paramList2)
   {
-    AppMethodBeat.i(191059);
+    AppMethodBeat.i(221041);
     PluginPreference localPluginPreference = new PluginPreference(this);
-    localPluginPreference.iQ("gh_f0a92aa7146c", getString(2131761998));
-    localPluginPreference.setTitle(localPluginPreference.xpL);
-    ai localai = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt("gh_f0a92aa7146c");
+    localPluginPreference.jb("gh_3dfda90e39d6", getString(2131761999));
+    localPluginPreference.setTitle(localPluginPreference.yEo);
+    am localam = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf("gh_3dfda90e39d6");
     boolean bool = false;
-    if (localai != null) {
-      bool = com.tencent.mm.n.b.ln(localai.field_type);
+    if (localam != null) {
+      bool = com.tencent.mm.o.b.lM(localam.field_type);
     }
     if (bool)
     {
       paramList1.add(localPluginPreference);
-      AppMethodBeat.o(191059);
+      AppMethodBeat.o(221041);
       return;
     }
-    if (this.xtL)
-    {
-      paramList2.add(localPluginPreference);
-      AppMethodBeat.o(191059);
-      return;
-    }
-    dCs();
-    AppMethodBeat.o(191059);
+    paramList2.add(localPluginPreference);
+    AppMethodBeat.o(221041);
   }
   
   private void s(List<PluginPreference> paramList1, List<PluginPreference> paramList2)
   {
-    AppMethodBeat.i(191062);
+    AppMethodBeat.i(221042);
     PluginPreference localPluginPreference = new PluginPreference(this);
-    if (localPluginPreference.asc("qqmail"))
+    localPluginPreference.jb("gh_f0a92aa7146c", getString(2131761998));
+    localPluginPreference.setTitle(localPluginPreference.yEo);
+    am localam = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf("gh_f0a92aa7146c");
+    if (localam != null) {}
+    for (boolean bool = com.tencent.mm.o.b.lM(localam.field_type);; bool = false)
     {
-      localPluginPreference.setTitle(localPluginPreference.xpL);
-      if ((u.axI() & 0x1) == 0) {}
-      for (int i = 1; i != 0; i = 0)
+      if (bool)
       {
         paramList1.add(localPluginPreference);
-        AppMethodBeat.o(191062);
+        AppMethodBeat.o(221042);
         return;
       }
-      if (com.tencent.mm.aw.b.aGc()) {
+      com.tencent.mm.kernel.g.ajD();
+      int i = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IGl, Integer.valueOf(0))).intValue();
+      ad.i("MicroMsg.SettingsPluginsUI", "SETTING_PLUGIN_SHOW_PAY_COLLECTION Flag :%s", new Object[] { Integer.valueOf(i) });
+      if (i == 1) {
         paramList2.add(localPluginPreference);
       }
+      AppMethodBeat.o(221042);
+      return;
     }
-    AppMethodBeat.o(191062);
   }
   
   private void t(List<PluginPreference> paramList1, List<PluginPreference> paramList2)
   {
-    AppMethodBeat.i(191063);
+    AppMethodBeat.i(221044);
     PluginPreference localPluginPreference = new PluginPreference(this);
-    if (localPluginPreference.asc("newsapp"))
+    if (localPluginPreference.axc("qqmail"))
     {
-      localPluginPreference.setTitle(localPluginPreference.xpL);
-      if ((u.axI() & 0x80000) == 0) {}
+      localPluginPreference.setTitle(localPluginPreference.yEo);
+      if ((u.aAy() & 0x1) == 0) {}
       for (int i = 1; i != 0; i = 0)
       {
         paramList1.add(localPluginPreference);
-        AppMethodBeat.o(191063);
+        AppMethodBeat.o(221044);
         return;
       }
-      if (com.tencent.mm.aw.b.aGc()) {
+      if (com.tencent.mm.ax.b.aJl()) {
         paramList2.add(localPluginPreference);
       }
     }
-    AppMethodBeat.o(191063);
+    AppMethodBeat.o(221044);
   }
   
   private void u(List<PluginPreference> paramList1, List<PluginPreference> paramList2)
   {
-    AppMethodBeat.i(191064);
+    AppMethodBeat.i(221045);
     PluginPreference localPluginPreference = new PluginPreference(this);
-    if (localPluginPreference.asc("facebookapp"))
+    if (localPluginPreference.axc("newsapp"))
     {
-      localPluginPreference.setTitle(localPluginPreference.xpL);
-      if ((u.axI() & 0x2000) == 0) {}
+      localPluginPreference.setTitle(localPluginPreference.yEo);
+      if ((u.aAy() & 0x80000) == 0) {}
       for (int i = 1; i != 0; i = 0)
       {
         paramList1.add(localPluginPreference);
-        AppMethodBeat.o(191064);
+        AppMethodBeat.o(221045);
         return;
       }
-      if (com.tencent.mm.aw.b.aGb()) {
+      if (com.tencent.mm.ax.b.aJl()) {
         paramList2.add(localPluginPreference);
       }
     }
-    AppMethodBeat.o(191064);
+    AppMethodBeat.o(221045);
   }
   
   private void v(List<PluginPreference> paramList1, List<PluginPreference> paramList2)
   {
-    AppMethodBeat.i(191065);
+    AppMethodBeat.i(221046);
     PluginPreference localPluginPreference = new PluginPreference(this);
-    if (localPluginPreference.asc("masssendapp"))
+    if (localPluginPreference.axc("facebookapp"))
     {
-      localPluginPreference.setTitle(localPluginPreference.xpL);
-      if ((u.axI() & 0x10000) == 0) {}
+      localPluginPreference.setTitle(localPluginPreference.yEo);
+      if ((u.aAy() & 0x2000) == 0) {}
       for (int i = 1; i != 0; i = 0)
       {
         paramList1.add(localPluginPreference);
-        AppMethodBeat.o(191065);
+        AppMethodBeat.o(221046);
+        return;
+      }
+      if (com.tencent.mm.ax.b.aJk()) {
+        paramList2.add(localPluginPreference);
+      }
+    }
+    AppMethodBeat.o(221046);
+  }
+  
+  private void w(List<PluginPreference> paramList1, List<PluginPreference> paramList2)
+  {
+    AppMethodBeat.i(221047);
+    PluginPreference localPluginPreference = new PluginPreference(this);
+    if (localPluginPreference.axc("masssendapp"))
+    {
+      localPluginPreference.setTitle(localPluginPreference.yEo);
+      if ((u.aAy() & 0x10000) == 0) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        paramList1.add(localPluginPreference);
+        AppMethodBeat.o(221047);
         return;
       }
       paramList2.add(localPluginPreference);
     }
-    AppMethodBeat.o(191065);
+    AppMethodBeat.o(221047);
   }
   
   public int getResourceId()
@@ -376,9 +364,9 @@ public class SettingsPluginsUI
     super.onCreate(paramBundle);
     this.screen = getPreferenceScreen();
     initView();
-    h.wUl.f(14098, new Object[] { Integer.valueOf(5) });
-    h.wUl.f(12846, new Object[] { Integer.valueOf(xtH) });
-    ar.a.hnw.aJ("gh_43f2581f6fd6", "");
+    com.tencent.mm.plugin.report.service.g.yhR.f(14098, new Object[] { Integer.valueOf(5) });
+    com.tencent.mm.plugin.report.service.g.yhR.f(12846, new Object[] { Integer.valueOf(yIt) });
+    as.a.hFO.aI("gh_43f2581f6fd6", "");
     AppMethodBeat.o(74336);
   }
   
@@ -396,37 +384,37 @@ public class SettingsPluginsUI
     AppMethodBeat.o(74340);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(74341);
     String str = paramPreference.mKey;
     if ((str != null) && (str.equals("display_in_addr_book")))
     {
-      boolean bool = ((CheckBoxPreference)paramf.aPN(str)).isChecked();
-      com.tencent.mm.kernel.g.agR().agA().set(35, Boolean.valueOf(bool));
+      boolean bool = ((CheckBoxPreference)paramf.aVD(str)).isChecked();
+      com.tencent.mm.kernel.g.ajC().ajl().set(35, Boolean.valueOf(bool));
       AppMethodBeat.o(74341);
       return true;
     }
     if ((paramPreference instanceof PluginPreference))
     {
-      paramf = ((PluginPreference)paramPreference).xpK;
-      if (("feedsapp".equals(paramf)) && (this.xtJ)) {
-        com.tencent.mm.kernel.g.agR().agA().set(-2046825369, Boolean.FALSE);
+      paramf = ((PluginPreference)paramPreference).yEn;
+      if (("feedsapp".equals(paramf)) && (this.yIv)) {
+        com.tencent.mm.kernel.g.ajC().ajl().set(-2046825369, Boolean.FALSE);
       }
       if ("gh_f0a92aa7146c".equals(paramf)) {
-        h.wUl.f(19540, new Object[] { Integer.valueOf(2) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(19540, new Object[] { Integer.valueOf(2) });
       }
       paramPreference = new Intent();
-      if (("gh_43f2581f6fd6".equals(paramf)) && (this.xtK))
+      if (("gh_43f2581f6fd6".equals(paramf)) && (this.yIw))
       {
-        a.dkb();
-        i.Km(com.tencent.mm.plugin.newtips.a.d.vmQ);
+        a.dun();
+        i.LO(com.tencent.mm.plugin.newtips.a.d.wsi);
         paramPreference.putExtra("key_from_wesport_plugin_newtips", true);
       }
       paramPreference.putExtra("Contact_User", paramf);
-      com.tencent.mm.br.d.b(this, "profile", ".ui.ContactInfoUI", paramPreference);
-      h.wUl.f(12846, new Object[] { xtI.get(paramf) });
-      ac.i("MicroMsg.SettingsPluginsUI", "click id:%s, kvID:%d", new Object[] { paramf, xtI.get(paramf) });
+      com.tencent.mm.bs.d.b(this, "profile", ".ui.ContactInfoUI", paramPreference);
+      com.tencent.mm.plugin.report.service.g.yhR.f(12846, new Object[] { yIu.get(paramf) });
+      ad.i("MicroMsg.SettingsPluginsUI", "click id:%s, kvID:%d", new Object[] { paramf, yIu.get(paramf) });
       AppMethodBeat.o(74341);
       return true;
     }
@@ -438,36 +426,56 @@ public class SettingsPluginsUI
   {
     AppMethodBeat.i(74339);
     super.onResume();
-    aQA();
-    AppMethodBeat.o(74339);
+    Object localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf("gh_f0a92aa7146c");
+    if (localObject != null) {}
+    for (boolean bool = com.tencent.mm.o.b.lM(((aw)localObject).field_type);; bool = false)
+    {
+      ad.i("MicroMsg.SettingsPluginsUI", "needGetReceipAssistPlugin result：%s", new Object[] { Boolean.valueOf(bool) });
+      if (!bool)
+      {
+        com.tencent.mm.kernel.g.aiU().a(2745, this);
+        localObject = new com.tencent.mm.plugin.setting.model.e();
+        com.tencent.mm.kernel.g.aiU().a((n)localObject, 0);
+      }
+      aTM();
+      AppMethodBeat.o(74339);
+      return;
+    }
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(191061);
-    ac.i("MicroMsg.SettingsPluginsUI", "errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " scenetype:" + paramn.getType());
+    AppMethodBeat.i(221043);
+    ad.i("MicroMsg.SettingsPluginsUI", "errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " scenetype:" + paramn.getType());
     if ((paramn instanceof com.tencent.mm.plugin.setting.model.e))
     {
-      this.xtL = true;
-      com.tencent.mm.kernel.g.agi().b(2745, this);
+      com.tencent.mm.kernel.g.aiU().b(2745, this);
       if ((paramInt1 == 0) || (paramInt2 == 0))
       {
         paramString = (com.tencent.mm.plugin.setting.model.e)paramn;
-        if (paramString.xoj == null) {}
-        for (paramString = new bdf();; paramString = paramString.xoj)
+        if (paramString.yCO == null)
         {
-          if (paramString.ETr == 1)
-          {
-            ac.i("MicroMsg.SettingsPluginsUI", "need to show unstall tReceipAssistPlugin");
-            aQA();
+          paramString = new bhl();
+          if (paramString.GCK != 1) {
+            break label160;
           }
-          AppMethodBeat.o(191061);
+          ad.i("MicroMsg.SettingsPluginsUI", "need to show unstall ReceipAssistPlugin");
+          com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IGl, Integer.valueOf(1));
+        }
+        for (;;)
+        {
+          aTM();
+          AppMethodBeat.o(221043);
           return;
+          paramString = paramString.yCO;
+          break;
+          label160:
+          com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IGl, Integer.valueOf(0));
         }
       }
-      ac.e("MicroMsg.SettingsPluginsUI", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      ad.e("MicroMsg.SettingsPluginsUI", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     }
-    AppMethodBeat.o(191061);
+    AppMethodBeat.o(221043);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

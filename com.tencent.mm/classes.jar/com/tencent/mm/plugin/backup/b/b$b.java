@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.backup.b;
 
 public abstract interface b$b
 {
-  public abstract void bCL();
+  public abstract void bGT();
   
-  public abstract void bCM();
+  public abstract void bGU();
   
-  public abstract void wJ(int paramInt);
+  public abstract void xp(int paramInt);
 }
 
 

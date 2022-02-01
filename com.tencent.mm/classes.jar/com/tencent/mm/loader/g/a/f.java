@@ -1,19 +1,19 @@
 package com.tencent.mm.loader.g.a;
 
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.l;
 import java.util.concurrent.BlockingQueue;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/loader/cfg/TaskLoaderConfiguration;", "Lcom/tencent/mm/loader/loader/cfg/ITaskLoaderConfiguration;", "lightWork", "Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;", "parallelTask", "", "name", "", "(Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;ILjava/lang/String;)V", "retrySg", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "(Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;ILjava/lang/String;)V", "heavyWork", "ioWork", "(Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;ILjava/lang/String;)V", "(Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;ILjava/lang/String;)V", "TAG", "createHeavyExecutor", "Lcom/tencent/mm/loader/loader/ILoaderExecutor;", "createIoExecutor", "createLightExecutor", "retryStrategy", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/loader/cfg/TaskLoaderConfiguration;", "Lcom/tencent/mm/loader/loader/cfg/ITaskLoaderConfiguration;", "lightWork", "Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;", "parallelTask", "", "name", "", "(Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;ILjava/lang/String;)V", "retrySg", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "(Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;ILjava/lang/String;)V", "heavyWork", "ioWork", "(Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;ILjava/lang/String;)V", "(Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;ILjava/lang/String;)V", "TAG", "createHeavyExecutor", "Lcom/tencent/mm/loader/loader/ILoaderExecutor;", "createIoExecutor", "createLightExecutor", "retryStrategy", "libimageloader_release"})
 public final class f
   implements d
 {
   private final String TAG;
-  private final c gMf;
-  private final g gMg;
-  private final g gMh;
-  private final g gMi;
-  private final int gMj;
+  private final c hgc;
+  private final g hgd;
+  private final g hge;
+  private final g hgf;
+  private final int hgg;
   private final String name;
   
   public f(c paramc, g paramg, int paramInt, String paramString)
@@ -23,35 +23,35 @@ public final class f
   
   public f(c paramc, g paramg1, g paramg2, g paramg3, int paramInt, String paramString)
   {
-    this.gMf = paramc;
-    this.gMg = paramg1;
-    this.gMh = paramg2;
-    this.gMi = paramg3;
-    this.gMj = paramInt;
+    this.hgc = paramc;
+    this.hgd = paramg1;
+    this.hge = paramg2;
+    this.hgf = paramg3;
+    this.hgg = paramInt;
     this.name = paramString;
     this.TAG = "MicroMsg.Loader.TaskLoaderConfiguration";
   }
   
-  public final com.tencent.mm.loader.g.a aoC()
+  public final com.tencent.mm.loader.g.a arp()
   {
-    ac.i(this.TAG, "pool light poolSize " + this.gMg.gMk + " priority " + this.gMg.gMk + " name: " + this.name);
-    return (com.tencent.mm.loader.g.a)new b(this.name, this.gMg.gMk, this.gMg.gMk, (BlockingQueue)new com.tencent.mm.loader.i.a());
+    ad.i(this.TAG, "pool light poolSize " + this.hgd.hgh + " priority " + this.hgd.hgh + " name: " + this.name);
+    return (com.tencent.mm.loader.g.a)new b(this.name, this.hgd.hgh, this.hgd.hgh, (BlockingQueue)new com.tencent.mm.loader.i.a());
   }
   
-  public final com.tencent.mm.loader.g.a aoD()
+  public final com.tencent.mm.loader.g.a arq()
   {
-    ac.i(this.TAG, "pool heavy poolSize " + this.gMh.gMk + " priority " + this.gMh.gMk + " name: " + this.name);
-    return (com.tencent.mm.loader.g.a)new b(this.name, this.gMh.gMk, this.gMh.gMk, (BlockingQueue)new com.tencent.mm.loader.i.a());
+    ad.i(this.TAG, "pool heavy poolSize " + this.hge.hgh + " priority " + this.hge.hgh + " name: " + this.name);
+    return (com.tencent.mm.loader.g.a)new b(this.name, this.hge.hgh, this.hge.hgh, (BlockingQueue)new com.tencent.mm.loader.i.a());
   }
   
-  public final int aoE()
+  public final int arr()
   {
-    return this.gMj;
+    return this.hgg;
   }
   
-  public final c aoF()
+  public final c ars()
   {
-    return this.gMf;
+    return this.hgc;
   }
   
   public final String name()

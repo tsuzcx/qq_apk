@@ -2,18 +2,20 @@ package com.tencent.mm.plugin.appbrand.dynamic.i;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ac.h;
+import com.tencent.mm.plugin.report.service.g;
 import java.util.ArrayList;
 
 public final class b
 {
-  private static a jNZ;
-  private static a jOa;
+  private static a kik;
+  private static a kil;
   
   static
   {
     AppMethodBeat.i(121457);
-    jNZ = new a((byte)0);
-    jOa = new a((byte)0);
+    kik = new a((byte)0);
+    kil = new a((byte)0);
     AppMethodBeat.o(121457);
   }
   
@@ -21,9 +23,9 @@ public final class b
   {
     AppMethodBeat.i(121456);
     int i = parama.count;
-    long l1 = parama.cbz;
-    long l2 = parama.jOb;
-    long l3 = parama.jOc;
+    long l1 = parama.clQ;
+    long l2 = parama.kim;
+    long l3 = parama.kin;
     if ((l1 <= 0L) || (l2 <= 0L) || (i <= 0) || (l3 <= 0L))
     {
       AppMethodBeat.o(121456);
@@ -50,7 +52,7 @@ public final class b
     localIDKey.SetKey(paramInt4);
     localIDKey.SetValue(l3);
     parama.add(localIDKey);
-    com.tencent.mm.plugin.report.service.h.wUl.b(parama, false);
+    g.yhR.b(parama, false);
     AppMethodBeat.o(121456);
   }
   
@@ -58,22 +60,22 @@ public final class b
   {
     try
     {
-      parama.cbz += paramLong / 1000L;
-      parama.jOb += paramInt;
-      parama.jOc += paramLong / paramInt;
+      parama.clQ += paramLong / 1000L;
+      parama.kim += paramInt;
+      parama.kin += paramLong / paramInt;
       parama.count += 1;
       return;
     }
     finally {}
   }
   
-  public static void bcN()
+  public static void bgr()
   {
     AppMethodBeat.i(121455);
-    a(5, 6, 7, 8, jOa);
-    a(0, 1, 2, 3, jNZ);
-    jOa.reset();
-    jNZ.reset();
+    a(5, 6, 7, 8, kil);
+    a(0, 1, 2, 3, kik);
+    kil.reset();
+    kik.reset();
     AppMethodBeat.o(121455);
   }
   
@@ -85,30 +87,30 @@ public final class b
       AppMethodBeat.o(121454);
       return;
     }
-    switch (com.tencent.mm.ab.h.afD())
+    switch (h.aip())
     {
     default: 
-      a(jNZ, paramLong, paramInt);
+      a(kik, paramLong, paramInt);
       AppMethodBeat.o(121454);
       return;
     }
-    a(jOa, paramLong, paramInt);
+    a(kil, paramLong, paramInt);
     AppMethodBeat.o(121454);
   }
   
   static final class a
   {
-    volatile long cbz;
+    volatile long clQ;
     volatile int count;
-    volatile long jOb;
-    volatile long jOc;
+    volatile long kim;
+    volatile long kin;
     
     final void reset()
     {
       try
       {
-        this.cbz = 0L;
-        this.jOb = 0L;
+        this.clQ = 0L;
+        this.kim = 0L;
         this.count = 0;
         return;
       }

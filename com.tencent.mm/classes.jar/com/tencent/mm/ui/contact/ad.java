@@ -2,20 +2,19 @@ package com.tencent.mm.ui.contact;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.al.f;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.modelmulti.o;
+import com.tencent.mm.modelmulti.o.b;
+import com.tencent.mm.modelmulti.o.e;
 import com.tencent.mm.openim.a.b.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,56 +26,61 @@ public final class ad
     Iterator localIterator = paramList.iterator();
     if (localIterator.hasNext())
     {
-      Object localObject = (String)localIterator.next();
-      String str = aRb((String)localObject);
-      if (ai.aNc((String)localObject)) {}
+      String str1 = (String)localIterator.next();
+      String str2 = aWZ(str1);
+      o.e locale = o.FX(paramString);
+      locale.toUser = paramString;
+      locale.content = str2;
+      if (am.aSQ(str1)) {}
       for (int i = 66;; i = 42)
       {
-        localObject = new com.tencent.mm.modelmulti.i(paramString, str, i, 0);
-        az.agi().a((n)localObject, 0);
+        locale.type = i;
+        locale.dDp = 0;
+        locale.igc = 4;
+        locale.aJv().execute();
         break;
       }
     }
     com.tencent.mm.ui.widget.snackbar.b.n(paramActivity, paramActivity.getString(2131760233));
-    h.wUl.f(11003, new Object[] { paramString, Integer.valueOf(3), Integer.valueOf(paramList.size()) });
+    com.tencent.mm.plugin.report.service.g.yhR.f(11003, new Object[] { paramString, Integer.valueOf(3), Integer.valueOf(paramList.size()) });
     paramActivity.setResult(-1);
-    ap.n(new Runnable()
+    aq.o(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(38043);
-        this.Izi.finish();
+        this.Kqo.finish();
         AppMethodBeat.o(38043);
       }
     }, 1800L);
     AppMethodBeat.o(38045);
   }
   
-  public static String aRb(String paramString)
+  public static String aWZ(String paramString)
   {
     AppMethodBeat.i(38044);
-    Object localObject = p.aBw().Ak(paramString);
-    az.ayM();
-    ai localai = com.tencent.mm.model.c.awB().aNt(paramString);
-    if (localai == null)
+    Object localObject = p.aEx().Dj(paramString);
+    ba.aBQ();
+    am localam = com.tencent.mm.model.c.azp().Bf(paramString);
+    if (localam == null)
     {
       AppMethodBeat.o(38044);
       return null;
     }
     String str1;
     String str2;
-    if (ai.aNc(paramString))
+    if (am.aSQ(paramString))
     {
-      paramString = localai.field_openImAppid;
-      str1 = ((com.tencent.mm.openim.a.b)g.ab(com.tencent.mm.openim.a.b.class)).c(localai.field_openImAppid, "openim_desc_icon", b.a.inX);
-      str2 = ((com.tencent.mm.openim.a.b)g.ab(com.tencent.mm.openim.a.b.class)).bB(localai.field_openImAppid, localai.field_descWordingId);
-      paramString = String.format(" <msg bigheadimgurl=\"%s\" smallheadimgurl=\"%s\" username=\"%s\" nickname=\"%s\" sex=\"%d\"  openimappid=\"%s\" openimdesc=\"%s\" openimdescicon=\"%s\"/>", new Object[] { bs.aLw(((com.tencent.mm.aj.i)localObject).aBo()), bs.aLw(((com.tencent.mm.aj.i)localObject).aBp()), bs.aLw(localai.field_username), bs.aLw(localai.aaR()), Integer.valueOf(localai.exL), paramString, bs.aLw(str2), bs.aLw(str1) });
+      paramString = localam.field_openImAppid;
+      str1 = ((com.tencent.mm.openim.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.b.class)).c(localam.field_openImAppid, "openim_desc_icon", b.a.iHu);
+      str2 = ((com.tencent.mm.openim.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.b.class)).bC(localam.field_openImAppid, localam.field_descWordingId);
+      paramString = String.format(" <msg bigheadimgurl=\"%s\" smallheadimgurl=\"%s\" username=\"%s\" nickname=\"%s\" sex=\"%d\"  openimappid=\"%s\" openimdesc=\"%s\" openimdescicon=\"%s\"/>", new Object[] { bt.aRc(((i)localObject).aEq()), bt.aRc(((i)localObject).aEr()), bt.aRc(localam.field_username), bt.aRc(localam.adu()), Integer.valueOf(localam.ePk), paramString, bt.aRc(str2), bt.aRc(str1) });
       AppMethodBeat.o(38044);
       return paramString;
     }
-    int i = localai.exK;
+    int i = localam.ePj;
     if (localObject != null) {
-      i = ((com.tencent.mm.aj.i)localObject).exK;
+      i = ((i)localObject).ePj;
     }
     String str3;
     String str4;
@@ -87,29 +91,29 @@ public final class ad
     int k;
     int m;
     String str8;
-    if (localai.fad())
+    if (localam.fqg())
     {
-      paramString = f.dX(localai.field_username);
-      localObject = bs.aLw(localai.field_username);
-      str1 = bs.aLw(localai.aaR());
-      str2 = bs.aLw(localai.Tl());
-      str3 = bs.aLw(localai.aaR());
-      str4 = bs.aLw(localai.To());
-      str5 = bs.aLw(localai.getProvince());
-      str6 = bs.aLw(localai.getCity());
-      str7 = bs.aLw(localai.signature);
-      j = localai.exU;
-      k = localai.exL;
-      m = localai.field_verifyFlag;
-      str8 = bs.aLw(localai.eya);
+      paramString = com.tencent.mm.am.g.eS(localam.field_username);
+      localObject = bt.aRc(localam.field_username);
+      str1 = bt.aRc(localam.adu());
+      str2 = bt.aRc(localam.VA());
+      str3 = bt.aRc(localam.adu());
+      str4 = bt.aRc(localam.VD());
+      str5 = bt.aRc(localam.getProvince());
+      str6 = bt.aRc(localam.getCity());
+      str7 = bt.aRc(localam.signature);
+      j = localam.ePt;
+      k = localam.ePk;
+      m = localam.field_verifyFlag;
+      str8 = bt.aRc(localam.ePz);
       if (paramString != null) {
-        break label470;
+        break label472;
       }
     }
-    label470:
-    for (paramString = "";; paramString = bs.aLw(paramString.field_brandIconURL))
+    label472:
+    for (paramString = "";; paramString = bt.aRc(paramString.field_brandIconURL))
     {
-      paramString = String.format("<msg username=\"%s\" nickname=\"%s\" alias=\"%s\" fullpy=\"%s\" shortpy=\"%s\" imagestatus=\"%d\" scene=\"17\" province=\"%s\" city=\"%s\" sign=\"%s\" percard=\"%d\" sex=\"%d\" certflag=\"%d\" certinfo=\"%s\" certinfoext=\"\" brandIconUrl=\"%s\" brandHomeUrl=\"\" brandSubscriptConfigUrl=\"\" brandFlags=\"\" regionCode=\"%s\"/>", new Object[] { localObject, str1, str2, str3, str4, Integer.valueOf(i), str5, str6, str7, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), str8, paramString, bs.aLw(localai.eyb) });
+      paramString = String.format("<msg username=\"%s\" nickname=\"%s\" alias=\"%s\" fullpy=\"%s\" shortpy=\"%s\" imagestatus=\"%d\" scene=\"17\" province=\"%s\" city=\"%s\" sign=\"%s\" percard=\"%d\" sex=\"%d\" certflag=\"%d\" certinfo=\"%s\" certinfoext=\"\" brandIconUrl=\"%s\" brandHomeUrl=\"\" brandSubscriptConfigUrl=\"\" brandFlags=\"\" regionCode=\"%s\"/>", new Object[] { localObject, str1, str2, str3, str4, Integer.valueOf(i), str5, str6, str7, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), str8, paramString, bt.aRc(localam.ePA) });
       AppMethodBeat.o(38044);
       return paramString;
       paramString = null;

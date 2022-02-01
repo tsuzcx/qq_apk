@@ -1,34 +1,34 @@
 package d.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.Random;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/random/FallbackThreadLocalRandom;", "Lkotlin/random/AbstractPlatformRandom;", "()V", "impl", "Ljava/util/Random;", "getImpl", "()Ljava/util/Random;", "implStorage", "kotlin/random/FallbackThreadLocalRandom$implStorage$1", "Lkotlin/random/FallbackThreadLocalRandom$implStorage$1;", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/random/FallbackThreadLocalRandom;", "Lkotlin/random/AbstractPlatformRandom;", "()V", "impl", "Ljava/util/Random;", "getImpl", "()Ljava/util/Random;", "implStorage", "kotlin/random/FallbackThreadLocalRandom$implStorage$1", "Lkotlin/random/FallbackThreadLocalRandom$implStorage$1;", "kotlin-stdlib"})
 public final class b
   extends a
 {
-  private final a KUV;
+  private final a MMb;
   
   public b()
   {
     AppMethodBeat.i(129559);
-    this.KUV = new a();
+    this.MMb = new a();
     AppMethodBeat.o(129559);
   }
   
-  public final Random fOD()
+  public final Random ggd()
   {
     AppMethodBeat.i(129558);
-    Object localObject = this.KUV.get();
-    k.g(localObject, "implStorage.get()");
+    Object localObject = this.MMb.get();
+    p.g(localObject, "implStorage.get()");
     localObject = (Random)localObject;
     AppMethodBeat.o(129558);
     return localObject;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"kotlin/random/FallbackThreadLocalRandom$implStorage$1", "Ljava/lang/ThreadLocal;", "Ljava/util/Random;", "initialValue", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"kotlin/random/FallbackThreadLocalRandom$implStorage$1", "Ljava/lang/ThreadLocal;", "Ljava/util/Random;", "initialValue", "kotlin-stdlib"})
   public static final class a
     extends ThreadLocal<Random>
   {}

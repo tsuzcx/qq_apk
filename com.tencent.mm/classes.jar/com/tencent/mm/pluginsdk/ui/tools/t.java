@@ -5,29 +5,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.compatible.util.l;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class t
 {
-  public static h hz(Context paramContext)
+  public static h hE(Context paramContext)
   {
     AppMethodBeat.i(116317);
-    if (bs.bG(ae.fJo.fGy, "").equals("surface"))
+    if (bt.bI(ae.gcP.fZX, "").equals("surface"))
     {
-      ac.i("MicroMsg.VideoViewFactory", "match full type surface");
+      ad.i("MicroMsg.VideoViewFactory", "match full type surface");
       paramContext = new VideoSurfaceView(paramContext);
       AppMethodBeat.o(116317);
       return paramContext;
     }
-    if (l.YR())
+    if (l.abs())
     {
-      ac.i("MicroMsg.VideoViewFactory", "IS MTK platform");
+      ad.i("MicroMsg.VideoViewFactory", "IS MTK platform");
       paramContext = new VideoSightView(paramContext);
       AppMethodBeat.o(116317);
       return paramContext;
     }
-    ac.i("MicroMsg.VideoViewFactory", "default settings, use sightview");
+    ad.i("MicroMsg.VideoViewFactory", "default settings, use sightview");
     paramContext = new VideoSightView(paramContext);
     AppMethodBeat.o(116317);
     return paramContext;

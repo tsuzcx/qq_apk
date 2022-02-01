@@ -5,9 +5,9 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface m
   extends a
 {
-  public abstract void Kt();
+  public abstract void LW();
   
-  public abstract void Ku();
+  public abstract void LX();
 }
 
 

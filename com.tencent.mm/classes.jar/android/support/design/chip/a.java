@@ -37,89 +37,89 @@ public final class a
   extends Drawable
   implements Drawable.Callback, e
 {
-  private static final int[] gu = { 16842910 };
+  private static final int[] im = { 16842910 };
   private int alpha = 255;
   final Context context;
-  ColorStateList fS;
-  private final RectF fV = new RectF();
-  CharSequence gA;
-  private CharSequence gB;
-  android.support.design.d.b gC;
-  boolean gD;
-  private Drawable gE;
-  ColorStateList gF;
-  float gG;
-  boolean gH;
-  Drawable gI;
-  ColorStateList gJ;
-  float gK;
-  CharSequence gL;
-  boolean gM;
-  boolean gN;
-  Drawable gO;
-  h gP;
-  h gQ;
-  float gR;
-  float gS;
-  float gT;
-  float gU;
-  float gV;
-  float gW;
-  float gX;
-  float gY;
-  private final TextPaint gZ = new TextPaint(1);
-  private final f.a gs = new f.a()
+  ColorStateList hJ;
+  private final RectF hM = new RectF();
+  ColorStateList iA;
+  float iB;
+  boolean iC;
+  Drawable iD;
+  ColorStateList iE;
+  float iF;
+  CharSequence iG;
+  boolean iH;
+  boolean iI;
+  Drawable iJ;
+  h iK;
+  h iL;
+  float iM;
+  float iN;
+  float iO;
+  float iP;
+  float iQ;
+  float iR;
+  float iS;
+  float iT;
+  private final TextPaint iU = new TextPaint(1);
+  private final Paint iV = new Paint(1);
+  private final Paint iW;
+  private final Paint.FontMetrics iX = new Paint.FontMetrics();
+  private final PointF iY = new PointF();
+  private int iZ;
+  private final f.a ik = new f.a()
   {
     public final void D(int paramAnonymousInt) {}
     
     public final void a(Typeface paramAnonymousTypeface)
     {
       a.a(a.this);
-      a.this.aT();
+      a.this.bj();
       a.this.invalidateSelf();
     }
   };
-  ColorStateList gv;
-  float gw;
-  float gx;
-  ColorStateList gy;
-  float gz;
-  private final Paint ha = new Paint(1);
-  private final Paint hb;
-  private final Paint.FontMetrics hc = new Paint.FontMetrics();
-  private final PointF hd = new PointF();
-  private int he;
-  private int hf;
-  private int hg;
-  private int hh;
-  private boolean hi;
-  private int hj;
-  private ColorFilter hk;
-  private PorterDuffColorFilter hl;
-  private ColorStateList hm;
-  private PorterDuff.Mode hn = PorterDuff.Mode.SRC_IN;
-  private int[] ho;
-  private boolean hp;
-  private ColorStateList hq;
-  private WeakReference<a> hr = new WeakReference(null);
-  private boolean hs = true;
-  private float ht;
-  TextUtils.TruncateAt hu;
-  boolean hv;
+  ColorStateList io;
+  float iq;
+  float ir;
+  ColorStateList is;
+  float it;
+  CharSequence iu;
+  private CharSequence iw;
+  android.support.design.d.b ix;
+  boolean iy;
+  private Drawable iz;
+  private int ja;
+  private int jb;
+  private int jc;
+  private boolean jd;
+  private int je;
+  private ColorFilter jf;
+  private PorterDuffColorFilter jg;
+  private ColorStateList jh;
+  private PorterDuff.Mode ji = PorterDuff.Mode.SRC_IN;
+  private int[] jj;
+  private boolean jk;
+  private ColorStateList jl;
+  private WeakReference<a> jm = new WeakReference(null);
+  private boolean jn = true;
+  private float jo;
+  TextUtils.TruncateAt jp;
+  boolean jq;
   int maxWidth;
   
   private a(Context paramContext)
   {
     this.context = paramContext;
-    this.gA = "";
-    this.gZ.density = paramContext.getResources().getDisplayMetrics().density;
-    this.hb = null;
-    if (this.hb != null) {
-      this.hb.setStyle(Paint.Style.STROKE);
+    this.iu = "";
+    this.iU.density = paramContext.getResources().getDisplayMetrics().density;
+    this.iW = null;
+    if (this.iW != null) {
+      this.iW.setStyle(Paint.Style.STROKE);
     }
-    setState(gu);
-    b(gu);
-    this.hv = true;
+    setState(im);
+    b(im);
+    this.jq = true;
   }
   
   public static a a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -168,8 +168,8 @@ public final class a
         locala.setCheckedIconVisible(localTypedArray.getBoolean(6, false));
       }
       locala.setCheckedIcon(android.support.design.d.a.c(locala.context, localTypedArray, 5));
-      locala.gP = h.a(locala.context, localTypedArray, 31);
-      locala.gQ = h.a(locala.context, localTypedArray, 27);
+      locala.iK = h.a(locala.context, localTypedArray, 31);
+      locala.iL = h.a(locala.context, localTypedArray, 27);
       locala.setChipStartPadding(localTypedArray.getDimension(17, 0.0F));
       locala.setIconStartPadding(localTypedArray.getDimension(29, 0.0F));
       locala.setIconEndPadding(localTypedArray.getDimension(28, 0.0F));
@@ -183,11 +183,11 @@ public final class a
       return locala;
       paramContext = null;
       break;
-      locala.hu = TextUtils.TruncateAt.START;
+      locala.jp = TextUtils.TruncateAt.START;
       continue;
-      locala.hu = TextUtils.TruncateAt.MIDDLE;
+      locala.jp = TextUtils.TruncateAt.MIDDLE;
       continue;
-      locala.hu = TextUtils.TruncateAt.END;
+      locala.jp = TextUtils.TruncateAt.END;
     }
   }
   
@@ -195,23 +195,23 @@ public final class a
   {
     paramRectF.setEmpty();
     float f;
-    if ((aU()) || (aV()))
+    if ((bk()) || (bl()))
     {
-      f = this.gR + this.gS;
+      f = this.iM + this.iN;
       if (android.support.v4.graphics.drawable.a.k(this) != 0) {
         break label88;
       }
       paramRectF.left = (f + paramRect.left);
-      paramRectF.right = (paramRectF.left + this.gG);
+      paramRectF.right = (paramRectF.left + this.iB);
     }
     for (;;)
     {
-      paramRectF.top = (paramRect.exactCenterY() - this.gG / 2.0F);
-      paramRectF.bottom = (paramRectF.top + this.gG);
+      paramRectF.top = (paramRect.exactCenterY() - this.iB / 2.0F);
+      paramRectF.bottom = (paramRectF.top + this.iB);
       return;
       label88:
       paramRectF.right = (paramRect.right - f);
-      paramRectF.left = (paramRectF.right - this.gG);
+      paramRectF.left = (paramRectF.right - this.iB);
     }
   }
   
@@ -220,68 +220,35 @@ public final class a
     return (paramColorStateList != null) && (paramColorStateList.isStateful());
   }
   
-  private boolean aU()
-  {
-    return (this.gD) && (this.gE != null);
-  }
-  
-  private boolean aV()
-  {
-    return (this.gN) && (this.gO != null) && (this.hi);
-  }
-  
-  private boolean aW()
-  {
-    return (this.gH) && (this.gI != null);
-  }
-  
-  private float aY()
-  {
-    if (!this.hs) {
-      return this.ht;
-    }
-    this.ht = b(this.gB);
-    this.hs = false;
-    return this.ht;
-  }
-  
-  private float aZ()
-  {
-    if (aW()) {
-      return this.gW + this.gK + this.gX;
-    }
-    return 0.0F;
-  }
-  
   private float b(CharSequence paramCharSequence)
   {
     if (paramCharSequence == null) {
       return 0.0F;
     }
-    return this.gZ.measureText(paramCharSequence, 0, paramCharSequence.length());
+    return this.iU.measureText(paramCharSequence, 0, paramCharSequence.length());
   }
   
   private void b(Rect paramRect, RectF paramRectF)
   {
     paramRectF.setEmpty();
     float f;
-    if (aW())
+    if (bm())
     {
-      f = this.gY + this.gX;
+      f = this.iT + this.iS;
       if (android.support.v4.graphics.drawable.a.k(this) != 0) {
         break label81;
       }
       paramRectF.right = (paramRect.right - f);
-      paramRectF.left = (paramRectF.right - this.gK);
+      paramRectF.left = (paramRectF.right - this.iF);
     }
     for (;;)
     {
-      paramRectF.top = (paramRect.exactCenterY() - this.gK / 2.0F);
-      paramRectF.bottom = (paramRectF.top + this.gK);
+      paramRectF.top = (paramRect.exactCenterY() - this.iF / 2.0F);
+      paramRectF.bottom = (paramRectF.top + this.iF);
       return;
       label81:
       paramRectF.left = (f + paramRect.left);
-      paramRectF.right = (paramRectF.left + this.gK);
+      paramRectF.right = (paramRectF.left + this.iF);
     }
   }
   
@@ -296,13 +263,13 @@ public final class a
     boolean bool3 = true;
     boolean bool1 = super.onStateChange(paramArrayOfInt1);
     int i;
-    if (this.gv != null)
+    if (this.io != null)
     {
-      i = this.gv.getColorForState(paramArrayOfInt1, this.he);
-      if (this.he == i) {
+      i = this.io.getColorForState(paramArrayOfInt1, this.iZ);
+      if (this.iZ == i) {
         break label473;
       }
-      this.he = i;
+      this.iZ = i;
       bool1 = true;
     }
     label73:
@@ -313,48 +280,48 @@ public final class a
     {
       label112:
       boolean bool2;
-      if (this.gy != null)
+      if (this.is != null)
       {
-        i = this.gy.getColorForState(paramArrayOfInt1, this.hf);
-        if (this.hf != i)
+        i = this.is.getColorForState(paramArrayOfInt1, this.ja);
+        if (this.ja != i)
         {
-          this.hf = i;
+          this.ja = i;
           bool1 = true;
         }
-        if (this.hq == null) {
+        if (this.jl == null) {
           break label433;
         }
-        i = this.hq.getColorForState(paramArrayOfInt1, this.hg);
+        i = this.jl.getColorForState(paramArrayOfInt1, this.jb);
         bool2 = bool1;
-        if (this.hg != i)
+        if (this.jb != i)
         {
-          this.hg = i;
+          this.jb = i;
           bool2 = bool1;
-          if (this.hp) {
+          if (this.jk) {
             bool2 = true;
           }
         }
-        if ((this.gC == null) || (this.gC.jk == null)) {
+        if ((this.ix == null) || (this.ix.lb == null)) {
           break label439;
         }
-        i = this.gC.jk.getColorForState(paramArrayOfInt1, this.hh);
+        i = this.ix.lb.getColorForState(paramArrayOfInt1, this.jc);
         bool1 = bool2;
-        if (this.hh != i)
+        if (this.jc != i)
         {
-          this.hh = i;
+          this.jc = i;
           bool1 = true;
         }
-        if ((!c(getState())) || (!this.gM)) {
+        if ((!c(getState())) || (!this.iH)) {
           break label445;
         }
         bool2 = true;
         label221:
-        if ((this.hi == bool2) || (this.gO == null)) {
+        if ((this.jd == bool2) || (this.iJ == null)) {
           break label467;
         }
-        float f = aX();
-        this.hi = bool2;
-        if (f == aX()) {
+        float f = bn();
+        this.jd = bool2;
+        if (f == bn()) {
           break label458;
         }
         i = 1;
@@ -362,33 +329,33 @@ public final class a
       }
       for (;;)
       {
-        if (this.hm != null) {
-          j = this.hm.getColorForState(paramArrayOfInt1, this.hj);
+        if (this.jh != null) {
+          j = this.jh.getColorForState(paramArrayOfInt1, this.je);
         }
-        if (this.hj != j)
+        if (this.je != j)
         {
-          this.hj = j;
-          this.hl = android.support.design.b.a.a(this, this.hm, this.hn);
+          this.je = j;
+          this.jg = android.support.design.b.a.a(this, this.jh, this.ji);
         }
         for (bool2 = bool3;; bool2 = bool1)
         {
           bool1 = bool2;
-          if (b(this.gE)) {
-            bool1 = bool2 | this.gE.setState(paramArrayOfInt1);
+          if (b(this.iz)) {
+            bool1 = bool2 | this.iz.setState(paramArrayOfInt1);
           }
           bool2 = bool1;
-          if (b(this.gO)) {
-            bool2 = bool1 | this.gO.setState(paramArrayOfInt1);
+          if (b(this.iJ)) {
+            bool2 = bool1 | this.iJ.setState(paramArrayOfInt1);
           }
           bool1 = bool2;
-          if (b(this.gI)) {
-            bool1 = bool2 | this.gI.setState(paramArrayOfInt2);
+          if (b(this.iD)) {
+            bool1 = bool2 | this.iD.setState(paramArrayOfInt2);
           }
           if (bool1) {
             invalidateSelf();
           }
           if (i != 0) {
-            aT();
+            bj();
           }
           return bool1;
           i = 0;
@@ -410,20 +377,53 @@ public final class a
     }
   }
   
-  private ColorFilter ba()
+  private boolean bk()
   {
-    if (this.hk != null) {
-      return this.hk;
-    }
-    return this.hl;
+    return (this.iy) && (this.iz != null);
   }
   
-  private void bb()
+  private boolean bl()
   {
-    if (this.hp) {}
-    for (ColorStateList localColorStateList = android.support.design.e.a.b(this.fS);; localColorStateList = null)
+    return (this.iI) && (this.iJ != null) && (this.jd);
+  }
+  
+  private boolean bm()
+  {
+    return (this.iC) && (this.iD != null);
+  }
+  
+  private float bo()
+  {
+    if (!this.jn) {
+      return this.jo;
+    }
+    this.jo = b(this.iw);
+    this.jn = false;
+    return this.jo;
+  }
+  
+  private float bp()
+  {
+    if (bm()) {
+      return this.iR + this.iF + this.iS;
+    }
+    return 0.0F;
+  }
+  
+  private ColorFilter bq()
+  {
+    if (this.jf != null) {
+      return this.jf;
+    }
+    return this.jg;
+  }
+  
+  private void br()
+  {
+    if (this.jk) {}
+    for (ColorStateList localColorStateList = android.support.design.e.a.b(this.hJ);; localColorStateList = null)
     {
-      this.hq = localColorStateList;
+      this.jl = localColorStateList;
       return;
     }
   }
@@ -461,13 +461,13 @@ public final class a
       android.support.v4.graphics.drawable.a.b(paramDrawable, android.support.v4.graphics.drawable.a.k(this));
       paramDrawable.setLevel(getLevel());
       paramDrawable.setVisible(isVisible(), false);
-      if (paramDrawable != this.gI) {
+      if (paramDrawable != this.iD) {
         break label70;
       }
       if (paramDrawable.isStateful()) {
-        paramDrawable.setState(this.ho);
+        paramDrawable.setState(this.jj);
       }
-      android.support.v4.graphics.drawable.a.a(paramDrawable, this.gJ);
+      android.support.v4.graphics.drawable.a.a(paramDrawable, this.iE);
     }
     label70:
     while (!paramDrawable.isStateful()) {
@@ -478,44 +478,44 @@ public final class a
   
   public final void a(a parama)
   {
-    this.hr = new WeakReference(parama);
-  }
-  
-  protected final void aT()
-  {
-    a locala = (a)this.hr.get();
-    if (locala != null) {
-      locala.aO();
-    }
-  }
-  
-  final float aX()
-  {
-    if ((aU()) || (aV())) {
-      return this.gS + this.gG + this.gT;
-    }
-    return 0.0F;
+    this.jm = new WeakReference(parama);
   }
   
   public final boolean b(int[] paramArrayOfInt)
   {
-    if (!Arrays.equals(this.ho, paramArrayOfInt))
+    if (!Arrays.equals(this.jj, paramArrayOfInt))
     {
-      this.ho = paramArrayOfInt;
-      if (aW()) {
+      this.jj = paramArrayOfInt;
+      if (bm()) {
         return b(getState(), paramArrayOfInt);
       }
     }
     return false;
   }
   
+  protected final void bj()
+  {
+    a locala = (a)this.jm.get();
+    if (locala != null) {
+      locala.be();
+    }
+  }
+  
+  final float bn()
+  {
+    if ((bk()) || (bl())) {
+      return this.iN + this.iB + this.iO;
+    }
+    return 0.0F;
+  }
+  
   final void c(Rect paramRect, RectF paramRectF)
   {
     paramRectF.setEmpty();
     float f;
-    if (aW())
+    if (bm())
     {
-      f = this.gY + this.gX + this.gK + this.gW + this.gV;
+      f = this.iT + this.iS + this.iF + this.iR + this.iQ;
       if (android.support.v4.graphics.drawable.a.k(this) != 0) {
         break label81;
       }
@@ -558,42 +558,42 @@ public final class a
     for (;;)
     {
       label90:
-      this.ha.setColor(this.he);
-      this.ha.setStyle(Paint.Style.FILL);
-      this.ha.setColorFilter(ba());
-      this.fV.set(localRect);
-      paramCanvas.drawRoundRect(this.fV, this.gx, this.gx, this.ha);
-      if (this.gz > 0.0F)
+      this.iV.setColor(this.iZ);
+      this.iV.setStyle(Paint.Style.FILL);
+      this.iV.setColorFilter(bq());
+      this.hM.set(localRect);
+      paramCanvas.drawRoundRect(this.hM, this.ir, this.ir, this.iV);
+      if (this.it > 0.0F)
       {
-        this.ha.setColor(this.hf);
-        this.ha.setStyle(Paint.Style.STROKE);
-        this.ha.setColorFilter(ba());
-        this.fV.set(localRect.left + this.gz / 2.0F, localRect.top + this.gz / 2.0F, localRect.right - this.gz / 2.0F, localRect.bottom - this.gz / 2.0F);
-        f1 = this.gx - this.gz / 2.0F;
-        paramCanvas.drawRoundRect(this.fV, f1, f1, this.ha);
+        this.iV.setColor(this.ja);
+        this.iV.setStyle(Paint.Style.STROKE);
+        this.iV.setColorFilter(bq());
+        this.hM.set(localRect.left + this.it / 2.0F, localRect.top + this.it / 2.0F, localRect.right - this.it / 2.0F, localRect.bottom - this.it / 2.0F);
+        f1 = this.ir - this.it / 2.0F;
+        paramCanvas.drawRoundRect(this.hM, f1, f1, this.iV);
       }
-      this.ha.setColor(this.hg);
-      this.ha.setStyle(Paint.Style.FILL);
-      this.fV.set(localRect);
-      paramCanvas.drawRoundRect(this.fV, this.gx, this.gx, this.ha);
-      if (aU())
+      this.iV.setColor(this.jb);
+      this.iV.setStyle(Paint.Style.FILL);
+      this.hM.set(localRect);
+      paramCanvas.drawRoundRect(this.hM, this.ir, this.ir, this.iV);
+      if (bk())
       {
-        a(localRect, this.fV);
-        f1 = this.fV.left;
-        f2 = this.fV.top;
+        a(localRect, this.hM);
+        f1 = this.hM.left;
+        f2 = this.hM.top;
         paramCanvas.translate(f1, f2);
-        this.gE.setBounds(0, 0, (int)this.fV.width(), (int)this.fV.height());
-        this.gE.draw(paramCanvas);
+        this.iz.setBounds(0, 0, (int)this.hM.width(), (int)this.hM.height());
+        this.iz.draw(paramCanvas);
         paramCanvas.translate(-f1, -f2);
       }
-      if (aV())
+      if (bl())
       {
-        a(localRect, this.fV);
-        f1 = this.fV.left;
-        f2 = this.fV.top;
+        a(localRect, this.hM);
+        f1 = this.hM.left;
+        f2 = this.hM.top;
         paramCanvas.translate(f1, f2);
-        this.gO.setBounds(0, 0, (int)this.fV.width(), (int)this.fV.height());
-        this.gO.draw(paramCanvas);
+        this.iJ.setBounds(0, 0, (int)this.hM.width(), (int)this.hM.height());
+        this.iJ.draw(paramCanvas);
         paramCanvas.translate(-f1, -f2);
       }
       Object localObject2;
@@ -602,29 +602,29 @@ public final class a
       int j;
       label692:
       int k;
-      if ((this.hv) && (this.gB != null))
+      if ((this.jq) && (this.iw != null))
       {
-        localObject2 = this.hd;
+        localObject2 = this.iY;
         ((PointF)localObject2).set(0.0F, 0.0F);
         localObject1 = Paint.Align.LEFT;
-        if (this.gB != null)
+        if (this.iw != null)
         {
-          f1 = this.gR + aX() + this.gU;
+          f1 = this.iM + bn() + this.iP;
           if (android.support.v4.graphics.drawable.a.k(this) != 0) {
             break label1275;
           }
           ((PointF)localObject2).x = (f1 + localRect.left);
           localObject1 = Paint.Align.LEFT;
           f1 = localRect.centerY();
-          this.gZ.getFontMetrics(this.hc);
-          ((PointF)localObject2).y = (f1 - (this.hc.descent + this.hc.ascent) / 2.0F);
+          this.iU.getFontMetrics(this.iX);
+          ((PointF)localObject2).y = (f1 - (this.iX.descent + this.iX.ascent) / 2.0F);
         }
-        localObject2 = this.fV;
+        localObject2 = this.hM;
         ((RectF)localObject2).setEmpty();
-        if (this.gB != null)
+        if (this.iw != null)
         {
-          f1 = this.gR + aX() + this.gU;
-          f2 = this.gY + aZ() + this.gV;
+          f1 = this.iM + bn() + this.iP;
+          f2 = this.iT + bp() + this.iQ;
           if (android.support.v4.graphics.drawable.a.k(this) != 0) {
             break label1296;
           }
@@ -633,13 +633,13 @@ public final class a
           ((RectF)localObject2).top = localRect.top;
           ((RectF)localObject2).bottom = localRect.bottom;
         }
-        if (this.gC != null)
+        if (this.ix != null)
         {
-          this.gZ.drawableState = getState();
-          this.gC.b(this.context, this.gZ, this.gs);
+          this.iU.drawableState = getState();
+          this.ix.b(this.context, this.iU, this.ik);
         }
-        this.gZ.setTextAlign((Paint.Align)localObject1);
-        if (Math.round(aY()) <= Math.round(this.fV.width())) {
+        this.iU.setTextAlign((Paint.Align)localObject1);
+        if (Math.round(bo()) <= Math.round(this.hM.width())) {
           break label1325;
         }
         j = 1;
@@ -648,56 +648,56 @@ public final class a
           break label1347;
         }
         k = paramCanvas.save();
-        paramCanvas.clipRect(this.fV);
+        paramCanvas.clipRect(this.hM);
       }
       for (;;)
       {
-        localObject2 = this.gB;
+        localObject2 = this.iw;
         localObject1 = localObject2;
         if (j != 0)
         {
           localObject1 = localObject2;
-          if (this.hu != null) {
-            localObject1 = TextUtils.ellipsize(this.gB, this.gZ, this.fV.width(), this.hu);
+          if (this.jp != null) {
+            localObject1 = TextUtils.ellipsize(this.iw, this.iU, this.hM.width(), this.jp);
           }
         }
-        paramCanvas.drawText((CharSequence)localObject1, 0, ((CharSequence)localObject1).length(), this.hd.x, this.hd.y, this.gZ);
+        paramCanvas.drawText((CharSequence)localObject1, 0, ((CharSequence)localObject1).length(), this.iY.x, this.iY.y, this.iU);
         if (j != 0) {
           paramCanvas.restoreToCount(k);
         }
-        if (aW())
+        if (bm())
         {
-          b(localRect, this.fV);
-          f1 = this.fV.left;
-          f2 = this.fV.top;
+          b(localRect, this.hM);
+          f1 = this.hM.left;
+          f2 = this.hM.top;
           paramCanvas.translate(f1, f2);
-          this.gI.setBounds(0, 0, (int)this.fV.width(), (int)this.fV.height());
-          this.gI.draw(paramCanvas);
+          this.iD.setBounds(0, 0, (int)this.hM.width(), (int)this.hM.height());
+          this.iD.draw(paramCanvas);
           paramCanvas.translate(-f1, -f2);
         }
-        if (this.hb != null)
+        if (this.iW != null)
         {
-          this.hb.setColor(android.support.v4.graphics.b.q(-16777216, 127));
-          paramCanvas.drawRect(localRect, this.hb);
-          if ((aU()) || (aV()))
+          this.iW.setColor(android.support.v4.graphics.b.x(-16777216, 127));
+          paramCanvas.drawRect(localRect, this.iW);
+          if ((bk()) || (bl()))
           {
-            a(localRect, this.fV);
-            paramCanvas.drawRect(this.fV, this.hb);
+            a(localRect, this.hM);
+            paramCanvas.drawRect(this.hM, this.iW);
           }
-          if (this.gB != null) {
-            paramCanvas.drawLine(localRect.left, localRect.exactCenterY(), localRect.right, localRect.exactCenterY(), this.hb);
+          if (this.iw != null) {
+            paramCanvas.drawLine(localRect.left, localRect.exactCenterY(), localRect.right, localRect.exactCenterY(), this.iW);
           }
-          if (aW())
+          if (bm())
           {
-            b(localRect, this.fV);
-            paramCanvas.drawRect(this.fV, this.hb);
+            b(localRect, this.hM);
+            paramCanvas.drawRect(this.hM, this.iW);
           }
-          this.hb.setColor(android.support.v4.graphics.b.q(-65536, 127));
-          localObject1 = this.fV;
+          this.iW.setColor(android.support.v4.graphics.b.x(-65536, 127));
+          localObject1 = this.hM;
           ((RectF)localObject1).set(localRect);
-          if (aW())
+          if (bm())
           {
-            f1 = this.gY + this.gX + this.gK + this.gW + this.gV;
+            f1 = this.iT + this.iS + this.iF + this.iR + this.iQ;
             if (android.support.v4.graphics.drawable.a.k(this) != 0) {
               break label1331;
             }
@@ -706,10 +706,10 @@ public final class a
         }
         for (;;)
         {
-          paramCanvas.drawRect(this.fV, this.hb);
-          this.hb.setColor(android.support.v4.graphics.b.q(-16711936, 127));
-          c(localRect, this.fV);
-          paramCanvas.drawRect(this.fV, this.hb);
+          paramCanvas.drawRect(this.hM, this.iW);
+          this.iW.setColor(android.support.v4.graphics.b.x(-16711936, 127));
+          c(localRect, this.hM);
+          paramCanvas.drawRect(this.hM, this.iW);
           if (this.alpha >= 255) {
             break;
           }
@@ -745,33 +745,33 @@ public final class a
   
   public final Drawable getChipIcon()
   {
-    if (this.gE != null) {
-      return android.support.v4.graphics.drawable.a.j(this.gE);
+    if (this.iz != null) {
+      return android.support.v4.graphics.drawable.a.j(this.iz);
     }
     return null;
   }
   
   public final Drawable getCloseIcon()
   {
-    if (this.gI != null) {
-      return android.support.v4.graphics.drawable.a.j(this.gI);
+    if (this.iD != null) {
+      return android.support.v4.graphics.drawable.a.j(this.iD);
     }
     return null;
   }
   
   public final ColorFilter getColorFilter()
   {
-    return this.hk;
+    return this.jf;
   }
   
   public final int getIntrinsicHeight()
   {
-    return (int)this.gw;
+    return (int)this.iq;
   }
   
   public final int getIntrinsicWidth()
   {
-    return Math.min(Math.round(this.gR + aX() + this.gU + aY() + this.gV + aZ() + this.gY), this.maxWidth);
+    return Math.min(Math.round(this.iM + bn() + this.iP + bo() + this.iQ + bp() + this.iT), this.maxWidth);
   }
   
   public final int getOpacity()
@@ -784,13 +784,13 @@ public final class a
   {
     Rect localRect = getBounds();
     if (!localRect.isEmpty()) {
-      paramOutline.setRoundRect(localRect, this.gx);
+      paramOutline.setRoundRect(localRect, this.ir);
     }
     for (;;)
     {
       paramOutline.setAlpha(getAlpha() / 255.0F);
       return;
-      paramOutline.setRoundRect(0, 0, getIntrinsicWidth(), getIntrinsicHeight(), this.gx);
+      paramOutline.setRoundRect(0, 0, getIntrinsicWidth(), getIntrinsicHeight(), this.ir);
     }
   }
   
@@ -805,15 +805,15 @@ public final class a
   public final boolean isStateful()
   {
     boolean bool = false;
-    if ((!a(this.gv)) && (!a(this.gy)) && ((!this.hp) || (!a(this.hq))))
+    if ((!a(this.io)) && (!a(this.is)) && ((!this.jk) || (!a(this.jl))))
     {
-      android.support.design.d.b localb = this.gC;
-      if ((localb == null) || (localb.jk == null) || (!localb.jk.isStateful())) {
+      android.support.design.d.b localb = this.ix;
+      if ((localb == null) || (localb.lb == null) || (!localb.lb.isStateful())) {
         break label132;
       }
       i = 1;
       if (i == 0) {
-        if ((!this.gN) || (this.gO == null) || (!this.gM)) {
+        if ((!this.iI) || (this.iJ == null) || (!this.iH)) {
           break label137;
         }
       }
@@ -822,7 +822,7 @@ public final class a
     label137:
     for (int i = 1;; i = 0)
     {
-      if ((i != 0) || (b(this.gE)) || (b(this.gO)) || (a(this.hm))) {
+      if ((i != 0) || (b(this.iz)) || (b(this.iJ)) || (a(this.jh))) {
         bool = true;
       }
       return bool;
@@ -833,10 +833,10 @@ public final class a
   
   public final void o(boolean paramBoolean)
   {
-    if (this.hp != paramBoolean)
+    if (this.jk != paramBoolean)
     {
-      this.hp = paramBoolean;
-      bb();
+      this.jk = paramBoolean;
+      br();
       onStateChange(getState());
     }
   }
@@ -846,16 +846,16 @@ public final class a
   {
     boolean bool2 = super.onLayoutDirectionChanged(paramInt);
     boolean bool1 = bool2;
-    if (aU()) {
-      bool1 = bool2 | this.gE.setLayoutDirection(paramInt);
+    if (bk()) {
+      bool1 = bool2 | this.iz.setLayoutDirection(paramInt);
     }
     bool2 = bool1;
-    if (aV()) {
-      bool2 = bool1 | this.gO.setLayoutDirection(paramInt);
+    if (bl()) {
+      bool2 = bool1 | this.iJ.setLayoutDirection(paramInt);
     }
     bool1 = bool2;
-    if (aW()) {
-      bool1 = bool2 | this.gI.setLayoutDirection(paramInt);
+    if (bm()) {
+      bool1 = bool2 | this.iD.setLayoutDirection(paramInt);
     }
     if (bool1) {
       invalidateSelf();
@@ -867,16 +867,16 @@ public final class a
   {
     boolean bool2 = super.onLevelChange(paramInt);
     boolean bool1 = bool2;
-    if (aU()) {
-      bool1 = bool2 | this.gE.setLevel(paramInt);
+    if (bk()) {
+      bool1 = bool2 | this.iz.setLevel(paramInt);
     }
     bool2 = bool1;
-    if (aV()) {
-      bool2 = bool1 | this.gO.setLevel(paramInt);
+    if (bl()) {
+      bool2 = bool1 | this.iJ.setLevel(paramInt);
     }
     bool1 = bool2;
-    if (aW()) {
-      bool1 = bool2 | this.gI.setLevel(paramInt);
+    if (bm()) {
+      bool1 = bool2 | this.iD.setLevel(paramInt);
     }
     if (bool1) {
       invalidateSelf();
@@ -886,7 +886,7 @@ public final class a
   
   protected final boolean onStateChange(int[] paramArrayOfInt)
   {
-    return b(paramArrayOfInt, this.ho);
+    return b(paramArrayOfInt, this.jj);
   }
   
   public final void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
@@ -908,33 +908,33 @@ public final class a
   
   public final void setCheckable(boolean paramBoolean)
   {
-    if (this.gM != paramBoolean)
+    if (this.iH != paramBoolean)
     {
-      this.gM = paramBoolean;
-      float f1 = aX();
-      if ((!paramBoolean) && (this.hi)) {
-        this.hi = false;
+      this.iH = paramBoolean;
+      float f1 = bn();
+      if ((!paramBoolean) && (this.jd)) {
+        this.jd = false;
       }
-      float f2 = aX();
+      float f2 = bn();
       invalidateSelf();
       if (f1 != f2) {
-        aT();
+        bj();
       }
     }
   }
   
   public final void setCheckedIcon(Drawable paramDrawable)
   {
-    if (this.gO != paramDrawable)
+    if (this.iJ != paramDrawable)
     {
-      float f1 = aX();
-      this.gO = paramDrawable;
-      float f2 = aX();
-      c(this.gO);
-      d(this.gO);
+      float f1 = bn();
+      this.iJ = paramDrawable;
+      float f2 = bn();
+      c(this.iJ);
+      d(this.iJ);
       invalidateSelf();
       if (f1 != f2) {
-        aT();
+        bj();
       }
     }
   }
@@ -942,11 +942,11 @@ public final class a
   public final void setCheckedIconVisible(boolean paramBoolean)
   {
     int i;
-    if (this.gN != paramBoolean)
+    if (this.iI != paramBoolean)
     {
-      boolean bool = aV();
-      this.gN = paramBoolean;
-      paramBoolean = aV();
+      boolean bool = bl();
+      this.iI = paramBoolean;
+      paramBoolean = bl();
       if (bool == paramBoolean) {
         break label55;
       }
@@ -956,47 +956,47 @@ public final class a
         if (!paramBoolean) {
           break label60;
         }
-        d(this.gO);
+        d(this.iJ);
       }
     }
     for (;;)
     {
       invalidateSelf();
-      aT();
+      bj();
       return;
       label55:
       i = 0;
       break;
       label60:
-      c(this.gO);
+      c(this.iJ);
     }
   }
   
   public final void setChipBackgroundColor(ColorStateList paramColorStateList)
   {
-    if (this.gv != paramColorStateList)
+    if (this.io != paramColorStateList)
     {
-      this.gv = paramColorStateList;
+      this.io = paramColorStateList;
       onStateChange(getState());
     }
   }
   
   public final void setChipCornerRadius(float paramFloat)
   {
-    if (this.gx != paramFloat)
+    if (this.ir != paramFloat)
     {
-      this.gx = paramFloat;
+      this.ir = paramFloat;
       invalidateSelf();
     }
   }
   
   public final void setChipEndPadding(float paramFloat)
   {
-    if (this.gY != paramFloat)
+    if (this.iT != paramFloat)
     {
-      this.gY = paramFloat;
+      this.iT = paramFloat;
       invalidateSelf();
-      aT();
+      bj();
     }
   }
   
@@ -1006,7 +1006,7 @@ public final class a
     float f1;
     if (localDrawable != paramDrawable)
     {
-      f1 = aX();
+      f1 = bn();
       if (paramDrawable == null) {
         break label74;
       }
@@ -1014,15 +1014,15 @@ public final class a
     label74:
     for (paramDrawable = android.support.v4.graphics.drawable.a.i(paramDrawable).mutate();; paramDrawable = null)
     {
-      this.gE = paramDrawable;
-      float f2 = aX();
+      this.iz = paramDrawable;
+      float f2 = bn();
       c(localDrawable);
-      if (aU()) {
-        d(this.gE);
+      if (bk()) {
+        d(this.iz);
       }
       invalidateSelf();
       if (f1 != f2) {
-        aT();
+        bj();
       }
       return;
     }
@@ -1030,25 +1030,25 @@ public final class a
   
   public final void setChipIconSize(float paramFloat)
   {
-    if (this.gG != paramFloat)
+    if (this.iB != paramFloat)
     {
-      float f = aX();
-      this.gG = paramFloat;
-      paramFloat = aX();
+      float f = bn();
+      this.iB = paramFloat;
+      paramFloat = bn();
       invalidateSelf();
       if (f != paramFloat) {
-        aT();
+        bj();
       }
     }
   }
   
   public final void setChipIconTint(ColorStateList paramColorStateList)
   {
-    if (this.gF != paramColorStateList)
+    if (this.iA != paramColorStateList)
     {
-      this.gF = paramColorStateList;
-      if (aU()) {
-        android.support.v4.graphics.drawable.a.a(this.gE, paramColorStateList);
+      this.iA = paramColorStateList;
+      if (bk()) {
+        android.support.v4.graphics.drawable.a.a(this.iz, paramColorStateList);
       }
       onStateChange(getState());
     }
@@ -1057,11 +1057,11 @@ public final class a
   public final void setChipIconVisible(boolean paramBoolean)
   {
     int i;
-    if (this.gD != paramBoolean)
+    if (this.iy != paramBoolean)
     {
-      boolean bool = aU();
-      this.gD = paramBoolean;
-      paramBoolean = aU();
+      boolean bool = bk();
+      this.iy = paramBoolean;
+      paramBoolean = bk();
       if (bool == paramBoolean) {
         break label55;
       }
@@ -1071,57 +1071,57 @@ public final class a
         if (!paramBoolean) {
           break label60;
         }
-        d(this.gE);
+        d(this.iz);
       }
     }
     for (;;)
     {
       invalidateSelf();
-      aT();
+      bj();
       return;
       label55:
       i = 0;
       break;
       label60:
-      c(this.gE);
+      c(this.iz);
     }
   }
   
   public final void setChipMinHeight(float paramFloat)
   {
-    if (this.gw != paramFloat)
+    if (this.iq != paramFloat)
     {
-      this.gw = paramFloat;
+      this.iq = paramFloat;
       invalidateSelf();
-      aT();
+      bj();
     }
   }
   
   public final void setChipStartPadding(float paramFloat)
   {
-    if (this.gR != paramFloat)
+    if (this.iM != paramFloat)
     {
-      this.gR = paramFloat;
+      this.iM = paramFloat;
       invalidateSelf();
-      aT();
+      bj();
     }
   }
   
   public final void setChipStrokeColor(ColorStateList paramColorStateList)
   {
-    if (this.gy != paramColorStateList)
+    if (this.is != paramColorStateList)
     {
-      this.gy = paramColorStateList;
+      this.is = paramColorStateList;
       onStateChange(getState());
     }
   }
   
   public final void setChipStrokeWidth(float paramFloat)
   {
-    if (this.gz != paramFloat)
+    if (this.it != paramFloat)
     {
-      this.gz = paramFloat;
-      this.ha.setStrokeWidth(paramFloat);
+      this.it = paramFloat;
+      this.iV.setStrokeWidth(paramFloat);
       invalidateSelf();
     }
   }
@@ -1132,7 +1132,7 @@ public final class a
     float f1;
     if (localDrawable != paramDrawable)
     {
-      f1 = aZ();
+      f1 = bp();
       if (paramDrawable == null) {
         break label74;
       }
@@ -1140,15 +1140,15 @@ public final class a
     label74:
     for (paramDrawable = android.support.v4.graphics.drawable.a.i(paramDrawable).mutate();; paramDrawable = null)
     {
-      this.gI = paramDrawable;
-      float f2 = aZ();
+      this.iD = paramDrawable;
+      float f2 = bp();
       c(localDrawable);
-      if (aW()) {
-        d(this.gI);
+      if (bm()) {
+        d(this.iD);
       }
       invalidateSelf();
       if (f1 != f2) {
-        aT();
+        bj();
       }
       return;
     }
@@ -1156,47 +1156,47 @@ public final class a
   
   public final void setCloseIconEndPadding(float paramFloat)
   {
-    if (this.gX != paramFloat)
+    if (this.iS != paramFloat)
     {
-      this.gX = paramFloat;
+      this.iS = paramFloat;
       invalidateSelf();
-      if (aW()) {
-        aT();
+      if (bm()) {
+        bj();
       }
     }
   }
   
   public final void setCloseIconSize(float paramFloat)
   {
-    if (this.gK != paramFloat)
+    if (this.iF != paramFloat)
     {
-      this.gK = paramFloat;
+      this.iF = paramFloat;
       invalidateSelf();
-      if (aW()) {
-        aT();
+      if (bm()) {
+        bj();
       }
     }
   }
   
   public final void setCloseIconStartPadding(float paramFloat)
   {
-    if (this.gW != paramFloat)
+    if (this.iR != paramFloat)
     {
-      this.gW = paramFloat;
+      this.iR = paramFloat;
       invalidateSelf();
-      if (aW()) {
-        aT();
+      if (bm()) {
+        bj();
       }
     }
   }
   
   public final void setCloseIconTint(ColorStateList paramColorStateList)
   {
-    if (this.gJ != paramColorStateList)
+    if (this.iE != paramColorStateList)
     {
-      this.gJ = paramColorStateList;
-      if (aW()) {
-        android.support.v4.graphics.drawable.a.a(this.gI, paramColorStateList);
+      this.iE = paramColorStateList;
+      if (bm()) {
+        android.support.v4.graphics.drawable.a.a(this.iD, paramColorStateList);
       }
       onStateChange(getState());
     }
@@ -1205,11 +1205,11 @@ public final class a
   public final void setCloseIconVisible(boolean paramBoolean)
   {
     int i;
-    if (this.gH != paramBoolean)
+    if (this.iC != paramBoolean)
     {
-      boolean bool = aW();
-      this.gH = paramBoolean;
-      paramBoolean = aW();
+      boolean bool = bm();
+      this.iC = paramBoolean;
+      paramBoolean = bm();
       if (bool == paramBoolean) {
         break label55;
       }
@@ -1219,65 +1219,65 @@ public final class a
         if (!paramBoolean) {
           break label60;
         }
-        d(this.gI);
+        d(this.iD);
       }
     }
     for (;;)
     {
       invalidateSelf();
-      aT();
+      bj();
       return;
       label55:
       i = 0;
       break;
       label60:
-      c(this.gI);
+      c(this.iD);
     }
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)
   {
-    if (this.hk != paramColorFilter)
+    if (this.jf != paramColorFilter)
     {
-      this.hk = paramColorFilter;
+      this.jf = paramColorFilter;
       invalidateSelf();
     }
   }
   
   public final void setIconEndPadding(float paramFloat)
   {
-    if (this.gT != paramFloat)
+    if (this.iO != paramFloat)
     {
-      float f = aX();
-      this.gT = paramFloat;
-      paramFloat = aX();
+      float f = bn();
+      this.iO = paramFloat;
+      paramFloat = bn();
       invalidateSelf();
       if (f != paramFloat) {
-        aT();
+        bj();
       }
     }
   }
   
   public final void setIconStartPadding(float paramFloat)
   {
-    if (this.gS != paramFloat)
+    if (this.iN != paramFloat)
     {
-      float f = aX();
-      this.gS = paramFloat;
-      paramFloat = aX();
+      float f = bn();
+      this.iN = paramFloat;
+      paramFloat = bn();
       invalidateSelf();
       if (f != paramFloat) {
-        aT();
+        bj();
       }
     }
   }
   
   public final void setRippleColor(ColorStateList paramColorStateList)
   {
-    if (this.fS != paramColorStateList)
+    if (this.hJ != paramColorStateList)
     {
-      this.fS = paramColorStateList;
-      bb();
+      this.hJ = paramColorStateList;
+      br();
       onStateChange(getState());
     }
   }
@@ -1288,28 +1288,28 @@ public final class a
     if (paramCharSequence == null) {
       localObject = "";
     }
-    if (this.gA != localObject)
+    if (this.iu != localObject)
     {
-      this.gA = ((CharSequence)localObject);
-      this.gB = android.support.v4.d.a.eK().unicodeWrap((CharSequence)localObject);
-      this.hs = true;
+      this.iu = ((CharSequence)localObject);
+      this.iw = android.support.v4.d.a.fb().unicodeWrap((CharSequence)localObject);
+      this.jn = true;
       invalidateSelf();
-      aT();
+      bj();
     }
   }
   
   public final void setTextAppearance(android.support.design.d.b paramb)
   {
-    if (this.gC != paramb)
+    if (this.ix != paramb)
     {
-      this.gC = paramb;
+      this.ix = paramb;
       if (paramb != null)
       {
-        paramb.c(this.context, this.gZ, this.gs);
-        this.hs = true;
+        paramb.c(this.context, this.iU, this.ik);
+        this.jn = true;
       }
       onStateChange(getState());
-      aT();
+      bj();
     }
   }
   
@@ -1320,39 +1320,39 @@ public final class a
   
   public final void setTextEndPadding(float paramFloat)
   {
-    if (this.gV != paramFloat)
+    if (this.iQ != paramFloat)
     {
-      this.gV = paramFloat;
+      this.iQ = paramFloat;
       invalidateSelf();
-      aT();
+      bj();
     }
   }
   
   public final void setTextStartPadding(float paramFloat)
   {
-    if (this.gU != paramFloat)
+    if (this.iP != paramFloat)
     {
-      this.gU = paramFloat;
+      this.iP = paramFloat;
       invalidateSelf();
-      aT();
+      bj();
     }
   }
   
   public final void setTintList(ColorStateList paramColorStateList)
   {
-    if (this.hm != paramColorStateList)
+    if (this.jh != paramColorStateList)
     {
-      this.hm = paramColorStateList;
+      this.jh = paramColorStateList;
       onStateChange(getState());
     }
   }
   
   public final void setTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.hn != paramMode)
+    if (this.ji != paramMode)
     {
-      this.hn = paramMode;
-      this.hl = android.support.design.b.a.a(this, this.hm, paramMode);
+      this.ji = paramMode;
+      this.jg = android.support.design.b.a.a(this, this.jh, paramMode);
       invalidateSelf();
     }
   }
@@ -1361,16 +1361,16 @@ public final class a
   {
     boolean bool2 = super.setVisible(paramBoolean1, paramBoolean2);
     boolean bool1 = bool2;
-    if (aU()) {
-      bool1 = bool2 | this.gE.setVisible(paramBoolean1, paramBoolean2);
+    if (bk()) {
+      bool1 = bool2 | this.iz.setVisible(paramBoolean1, paramBoolean2);
     }
     bool2 = bool1;
-    if (aV()) {
-      bool2 = bool1 | this.gO.setVisible(paramBoolean1, paramBoolean2);
+    if (bl()) {
+      bool2 = bool1 | this.iJ.setVisible(paramBoolean1, paramBoolean2);
     }
     bool1 = bool2;
-    if (aW()) {
-      bool1 = bool2 | this.gI.setVisible(paramBoolean1, paramBoolean2);
+    if (bm()) {
+      bool1 = bool2 | this.iD.setVisible(paramBoolean1, paramBoolean2);
     }
     if (bool1) {
       invalidateSelf();
@@ -1388,7 +1388,7 @@ public final class a
   
   public static abstract interface a
   {
-    public abstract void aO();
+    public abstract void be();
   }
 }
 

@@ -9,16 +9,18 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.tq;
-import com.tencent.mm.g.a.ub;
-import com.tencent.mm.g.b.a.ef;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.a.uj;
+import com.tencent.mm.g.a.uu;
+import com.tencent.mm.g.b.a.fe;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.sns.j.e;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
@@ -30,75 +32,75 @@ import java.util.List;
 
 public class SnsPermissionUI
   extends MMPreference
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
+  private boolean AgX = false;
+  private boolean AgY = false;
+  private boolean AgZ = false;
   private int scene = 0;
   private com.tencent.mm.ui.base.preference.f screen;
   public p tipDialog = null;
   private String userName = "";
-  private ai vMX = null;
-  private boolean vMY = false;
-  private boolean vMZ = false;
-  private long vNa = 0L;
-  private int vNb = 0;
-  private boolean yPB = false;
-  private boolean yPC = false;
-  private boolean yPD = false;
+  private am wUg = null;
+  private boolean wUh = false;
+  private boolean wUi = false;
+  private long wUj = 0L;
+  private int wUk = 0;
   
-  private static boolean apG(String paramString)
+  private static boolean auM(String paramString)
   {
     AppMethodBeat.i(98979);
-    com.tencent.mm.plugin.sns.storage.v localv = af.dHX().xM(5L);
-    if (bs.isNullOrNil(localv.field_memberList))
+    com.tencent.mm.plugin.sns.storage.v localv = ag.dUk().Ak(5L);
+    if (bt.isNullOrNil(localv.field_memberList))
     {
       AppMethodBeat.o(98979);
       return false;
     }
-    boolean bool = bs.S(localv.field_memberList.split(",")).contains(paramString);
+    boolean bool = bt.U(localv.field_memberList.split(",")).contains(paramString);
     AppMethodBeat.o(98979);
     return bool;
   }
   
-  private void dqE()
+  private void dBh()
   {
     boolean bool2 = false;
     AppMethodBeat.i(98978);
-    com.tencent.mm.kernel.g.agS();
-    this.vMX = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(this.userName);
-    this.vMX.setUsername(this.userName);
-    boolean bool1 = this.vMX.aaK();
-    boolean bool3 = apG(this.userName);
-    Object localObject = (CheckBoxPreference)this.screen.aPN("sns_outside_permiss");
-    ((CheckBoxPreference)localObject).mF = bool1;
-    int i = this.vMX.exL;
-    ac.d("MicroMsg.SnsPermissionUI", "sex:%d", new Object[] { Integer.valueOf(i) });
+    g.ajD();
+    this.wUg = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(this.userName);
+    this.wUg.setUsername(this.userName);
+    boolean bool1 = this.wUg.adn();
+    boolean bool3 = auM(this.userName);
+    Object localObject = (CheckBoxPreference)this.screen.aVD("sns_outside_permiss");
+    ((CheckBoxPreference)localObject).oB = bool1;
+    int i = this.wUg.ePk;
+    ad.d("MicroMsg.SnsPermissionUI", "sex:%d", new Object[] { Integer.valueOf(i) });
     if (i == 1)
     {
       ((CheckBoxPreference)localObject).setTitle(2131763930);
-      localObject = (CheckBoxPreference)this.screen.aPN("sns_black_permiss");
+      localObject = (CheckBoxPreference)this.screen.aVD("sns_black_permiss");
       if (i != 1) {
         break label294;
       }
       ((CheckBoxPreference)localObject).setTitle(2131763786);
       label153:
-      ((CheckBoxPreference)localObject).mF = bool3;
-      if (!com.tencent.mm.n.b.ln(this.vMX.field_type)) {
-        this.screen.aPO("sns_black_permiss");
+      ((CheckBoxPreference)localObject).oB = bool3;
+      if (!com.tencent.mm.o.b.lM(this.wUg.field_type)) {
+        this.screen.aVE("sns_black_permiss");
       }
-      localObject = (PreferenceFooterCategory)this.screen.aPN("sns_openim_desc_footer");
+      localObject = (PreferenceFooterCategory)this.screen.aVD("sns_openim_desc_footer");
       bool1 = bool2;
-      if (ai.aNc(this.userName))
+      if (am.aSQ(this.userName))
       {
         bool1 = bool2;
-        if ("3552365301".equals(this.vMX.field_openImAppid)) {
+        if ("3552365301".equals(this.wUg.field_openImAppid)) {
           bool1 = true;
         }
       }
-      this.yPD = bool1;
-      if (!this.yPD) {
+      this.AgZ = bool1;
+      if (!this.AgZ) {
         break label309;
       }
-      this.screen.cK("sns_outside_permiss", true);
+      this.screen.cP("sns_outside_permiss", true);
       ((PreferenceFooterCategory)localObject).setSummary(2131763931);
     }
     for (;;)
@@ -118,22 +120,22 @@ public class SnsPermissionUI
       ((CheckBoxPreference)localObject).setTitle(2131763785);
       break label153;
       label309:
-      this.screen.cK("sns_openim_desc_footer", true);
+      this.screen.cP("sns_openim_desc_footer", true);
     }
   }
   
-  private int dqF()
+  private int dBi()
   {
     AppMethodBeat.i(98982);
     int i = 0;
     int j = 0;
-    if (this.vMX != null)
+    if (this.wUg != null)
     {
-      if (this.vMX.aaK()) {
+      if (this.wUg.adn()) {
         j = 1;
       }
       i = j;
-      if (apG(this.userName)) {
+      if (auM(this.userName)) {
         i = j | 0x2;
       }
     }
@@ -146,7 +148,7 @@ public class SnsPermissionUI
     AppMethodBeat.i(98975);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ac.d("MicroMsg.SnsPermissionUI", "dispatchKeyEvent");
+      ad.d("MicroMsg.SnsPermissionUI", "dispatchKeyEvent");
       setResult(-1, new Intent());
       finish();
       AppMethodBeat.o(98975);
@@ -166,7 +168,7 @@ public class SnsPermissionUI
   {
     AppMethodBeat.i(98977);
     this.screen = getPreferenceScreen();
-    if ((this.vMX != null) && (ai.aNc(this.userName)) && ("3552365301".equals(this.vMX.field_openImAppid))) {
+    if ((this.wUg != null) && (am.aSQ(this.userName)) && ("3552365301".equals(this.wUg.field_openImAppid))) {
       setMMTitle(2131763934);
     }
     for (;;)
@@ -183,8 +185,8 @@ public class SnsPermissionUI
           return true;
         }
       });
-      this.yPC = apG(this.userName);
-      dqE();
+      this.AgY = auM(this.userName);
+      dBh();
       AppMethodBeat.o(98977);
       return;
       setMMTitle(2131763933);
@@ -195,23 +197,23 @@ public class SnsPermissionUI
   {
     AppMethodBeat.i(98974);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(291, this);
+    g.ajD();
+    g.ajB().gAO.a(291, this);
     this.userName = getIntent().getStringExtra("sns_permission_userName");
-    this.yPB = getIntent().getBooleanExtra("sns_permission_anim", false);
-    this.vNa = getIntent().getLongExtra("sns_permission_snsinfo_svr_id", 0L);
+    this.AgX = getIntent().getBooleanExtra("sns_permission_anim", false);
+    this.wUj = getIntent().getLongExtra("sns_permission_snsinfo_svr_id", 0L);
     this.scene = getIntent().getIntExtra("sns_permission_block_scene", 0);
-    ac.d("MicroMsg.SnsPermissionUI", "SnsPermissionUI, scene:%d", new Object[] { Integer.valueOf(this.scene) });
-    com.tencent.mm.kernel.g.agS();
-    this.vMX = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(this.userName);
-    if (this.vMX == null)
+    ad.d("MicroMsg.SnsPermissionUI", "SnsPermissionUI, scene:%d", new Object[] { Integer.valueOf(this.scene) });
+    g.ajD();
+    this.wUg = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(this.userName);
+    if (this.wUg == null)
     {
-      ac.e("MicroMsg.SnsPermissionUI", "the error cause by get contact by %s", new Object[] { this.userName });
+      ad.e("MicroMsg.SnsPermissionUI", "the error cause by get contact by %s", new Object[] { this.userName });
       finish();
     }
-    this.vMX.setUsername(this.userName);
+    this.wUg.setUsername(this.userName);
     initView();
-    this.vNb = dqF();
+    this.wUk = dBi();
     AppMethodBeat.o(98974);
   }
   
@@ -219,43 +221,43 @@ public class SnsPermissionUI
   {
     AppMethodBeat.i(98976);
     super.onDestroy();
-    com.tencent.mm.plugin.sns.c.a.iyy.Lj();
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(291, this);
-    if ((this.vNa != 0L) && (this.vNa != -1L))
+    com.tencent.mm.plugin.sns.c.a.iRH.MR();
+    g.ajD();
+    g.ajB().gAO.b(291, this);
+    if ((this.wUj != 0L) && (this.wUj != -1L))
     {
-      localObject = new tq();
-      ((tq)localObject).dwu.dwv = this.vMZ;
-      ((tq)localObject).dwu.diD = this.vNa;
-      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+      localObject = new uj();
+      ((uj)localObject).dIG.dIH = this.wUi;
+      ((uj)localObject).dIG.dup = this.wUj;
+      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
     }
-    long l = bs.Gn();
-    int i = dqF();
-    Object localObject = new ef().ma(this.userName).mb(com.tencent.mm.plugin.sns.data.q.wW(this.vNa));
-    ((ef)localObject).dHr = this.vNb;
-    ((ef)localObject).dUb = i;
-    ((ef)localObject).dHw = 5;
-    ((ef)localObject).aHZ();
-    ac.d("MicroMsg.SnsPermissionUI", "report PerMission action [%d %d] cost [%d]", new Object[] { Integer.valueOf(this.vNb), Integer.valueOf(i), Long.valueOf(bs.aO(l)) });
-    if (this.yPD)
+    long l = bt.HI();
+    int i = dBi();
+    Object localObject = new fe().on(this.userName).oo(com.tencent.mm.plugin.sns.data.q.zw(this.wUj));
+    ((fe)localObject).dPT = this.wUk;
+    ((fe)localObject).ekt = i;
+    ((fe)localObject).dSg = 5;
+    ((fe)localObject).aLk();
+    ad.d("MicroMsg.SnsPermissionUI", "report PerMission action [%d %d] cost [%d]", new Object[] { Integer.valueOf(this.wUk), Integer.valueOf(i), Long.valueOf(bt.aO(l)) });
+    if (this.AgZ)
     {
-      boolean bool = apG(this.userName);
-      if ((this.yPC) && (!bool))
+      boolean bool = auM(this.userName);
+      if ((this.AgY) && (!bool))
       {
-        localObject = com.tencent.mm.plugin.sns.j.f.ydE;
-        com.tencent.mm.plugin.sns.j.f.eH(this.userName, 2);
+        localObject = e.ztz;
+        e.eZ(this.userName, 2);
         AppMethodBeat.o(98976);
         return;
       }
-      if ((!this.yPC) && (bool))
+      if ((!this.AgY) && (bool))
       {
-        localObject = com.tencent.mm.plugin.sns.j.f.ydE;
-        com.tencent.mm.plugin.sns.j.f.eH(this.userName, 3);
+        localObject = e.ztz;
+        e.eZ(this.userName, 3);
         AppMethodBeat.o(98976);
         return;
       }
-      localObject = com.tencent.mm.plugin.sns.j.f.ydE;
-      com.tencent.mm.plugin.sns.j.f.eH(this.userName, 1);
+      localObject = e.ztz;
+      e.eZ(this.userName, 1);
     }
     AppMethodBeat.o(98976);
   }
@@ -266,29 +268,29 @@ public class SnsPermissionUI
     paramf = paramPreference.mKey;
     if (paramf.equals("sns_outside_permiss"))
     {
-      paramf = new ub();
-      paramf.dwJ.dwL = true;
-      paramf.dwJ.dwK = false;
-      paramf.dwJ.username = this.userName;
-      com.tencent.mm.sdk.b.a.GpY.l(paramf);
-      if (this.vMX.aaK()) {
-        com.tencent.mm.model.w.p(this.vMX);
+      paramf = new uu();
+      paramf.dIV.dIX = true;
+      paramf.dIV.dIW = false;
+      paramf.dIV.username = this.userName;
+      com.tencent.mm.sdk.b.a.IbL.l(paramf);
+      if (this.wUg.adn()) {
+        com.tencent.mm.model.w.p(this.wUg);
       }
       for (;;)
       {
         AppMethodBeat.o(98981);
         return true;
-        com.tencent.mm.model.w.o(this.vMX);
+        com.tencent.mm.model.w.o(this.wUg);
       }
     }
     if (paramf.equals("sns_black_permiss"))
     {
-      paramf = new ub();
-      paramf.dwJ.dwL = false;
-      paramf.dwJ.dwK = true;
-      paramf.dwJ.username = this.userName;
-      com.tencent.mm.sdk.b.a.GpY.l(paramf);
-      boolean bool = apG(this.userName);
+      paramf = new uu();
+      paramf.dIV.dIX = false;
+      paramf.dIV.dIW = true;
+      paramf.dIV.username = this.userName;
+      com.tencent.mm.sdk.b.a.IbL.l(paramf);
+      boolean bool = auM(this.userName);
       paramf = this.userName;
       int i;
       if (bool)
@@ -297,15 +299,15 @@ public class SnsPermissionUI
         if ((i != 1) || (5L != 5L)) {
           break label295;
         }
-        this.vMY = true;
+        this.wUh = true;
       }
-      for (this.vMZ = false;; this.vMZ = false)
+      for (this.wUi = false;; this.wUi = false)
       {
         paramPreference = new LinkedList();
         paramPreference.add(paramf);
         paramf = new com.tencent.mm.plugin.sns.model.v(i, 5L, "", paramPreference.size(), paramPreference, this.scene);
-        com.tencent.mm.kernel.g.agS();
-        com.tencent.mm.kernel.g.agQ().ghe.a(paramf, 0);
+        g.ajD();
+        g.ajB().gAO.a(paramf, 0);
         getString(2131755906);
         this.tipDialog = h.b(this, getString(2131764013), true, new DialogInterface.OnCancelListener()
         {
@@ -313,8 +315,8 @@ public class SnsPermissionUI
           {
             AppMethodBeat.i(98973);
             SnsPermissionUI.a(SnsPermissionUI.this);
-            com.tencent.mm.kernel.g.agS();
-            com.tencent.mm.kernel.g.agQ().ghe.a(paramf);
+            g.ajD();
+            g.ajB().gAO.a(paramf);
             AppMethodBeat.o(98973);
           }
         });
@@ -323,7 +325,7 @@ public class SnsPermissionUI
         i = 1;
         break;
         label295:
-        this.vMY = false;
+        this.wUh = false;
       }
     }
     AppMethodBeat.o(98981);
@@ -333,7 +335,7 @@ public class SnsPermissionUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(98980);
-    ac.i("MicroMsg.SnsPermissionUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " " + paramn.getType());
+    ad.i("MicroMsg.SnsPermissionUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " " + paramn.getType());
     if (paramn.getType() == 291)
     {
       paramString = new StringBuilder("tipDialog ");
@@ -344,15 +346,15 @@ public class SnsPermissionUI
     label150:
     for (boolean bool = true;; bool = false)
     {
-      ac.d("MicroMsg.SnsPermissionUI", bool);
+      ad.d("MicroMsg.SnsPermissionUI", bool);
       if (this.tipDialog != null)
       {
         this.tipDialog.dismiss();
         this.tipDialog = null;
       }
-      dqE();
-      if (this.vMY) {
-        this.vMZ = true;
+      dBh();
+      if (this.wUh) {
+        this.wUi = true;
       }
       AppMethodBeat.o(98980);
       return;

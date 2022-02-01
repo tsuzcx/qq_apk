@@ -1,11 +1,12 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.widget.TextView;
-
 final class bm
 {
-  TextView Irf;
-  TextView Irg;
+  String KhF;
+  String KhG;
+  int KhH = -16777216;
+  int KhI = -16777216;
+  boolean KhJ = false;
 }
 
 

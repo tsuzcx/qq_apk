@@ -2,13 +2,13 @@ package com.tencent.mm.platformtools;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.protocal.protobuf.cwt;
 
 public final class z
 {
-  public static crm FI(String paramString)
+  public static cwt IX(String paramString)
   {
     AppMethodBeat.i(132979);
     if (paramString == null)
@@ -16,13 +16,13 @@ public final class z
       AppMethodBeat.o(132979);
       return null;
     }
-    crm localcrm = new crm();
-    localcrm.aJV(paramString);
+    cwt localcwt = new cwt();
+    localcwt.aPy(paramString);
     AppMethodBeat.o(132979);
-    return localcrm;
+    return localcwt;
   }
   
-  public static SKBuiltinBuffer_t FJ(String paramString)
+  public static SKBuiltinBuffer_t IY(String paramString)
   {
     AppMethodBeat.i(132982);
     if (paramString == null)
@@ -50,25 +50,25 @@ public final class z
       AppMethodBeat.o(132980);
       return null;
     }
-    paramb = paramb.eQU();
+    paramb = paramb.ffY();
     AppMethodBeat.o(132980);
     return paramb;
   }
   
-  public static String a(crm paramcrm)
+  public static String a(cwt paramcwt)
   {
-    if (paramcrm == null) {
+    if (paramcwt == null) {
       return null;
     }
-    return paramcrm.FEm;
+    return paramcwt.HoB;
   }
   
-  public static String a(crm paramcrm, String paramString)
+  public static String a(cwt paramcwt, String paramString)
   {
-    if (paramcrm == null) {
+    if (paramcwt == null) {
       return paramString;
     }
-    return paramcrm.FEm;
+    return paramcwt.HoB;
   }
   
   public static byte[] a(SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
@@ -119,7 +119,7 @@ public final class z
       AppMethodBeat.o(132981);
       return null;
     }
-    paramSKBuiltinBuffer_t = paramSKBuiltinBuffer_t.getBuffer().eQU();
+    paramSKBuiltinBuffer_t = paramSKBuiltinBuffer_t.getBuffer().ffY();
     AppMethodBeat.o(132981);
     return paramSKBuiltinBuffer_t;
   }

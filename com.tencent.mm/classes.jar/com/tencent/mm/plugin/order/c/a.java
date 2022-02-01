@@ -13,13 +13,13 @@ public final class a
   private int mBgColor;
   private int mColor;
   private Context mContext;
-  public a vzS;
+  public a wFm;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(66834);
     this.mContext = null;
-    this.vzS = null;
+    this.wFm = null;
     this.mColor = -1;
     this.mBgColor = -1;
     this.mContext = paramContext;
@@ -31,8 +31,8 @@ public final class a
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(66835);
-    if (this.vzS != null) {
-      this.vzS.onClick(paramView);
+    if (this.wFm != null) {
+      this.wFm.onClick(paramView);
     }
     AppMethodBeat.o(66835);
   }
@@ -55,7 +55,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.order.c.a
  * JD-Core Version:    0.7.0.1
  */

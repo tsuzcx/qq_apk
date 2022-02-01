@@ -1,64 +1,64 @@
 package com.tencent.mm.plugin.subapp.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.c;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.c;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bfy;
-import com.tencent.mm.protocal.protobuf.bfz;
-import com.tencent.mm.protocal.protobuf.dop;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.protocal.protobuf.bkg;
+import com.tencent.mm.protocal.protobuf.bkh;
+import com.tencent.mm.protocal.protobuf.dug;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
 import java.util.LinkedList;
 
 public final class a
   extends n
   implements k
 {
-  private g callback;
-  private au htR;
-  final com.tencent.mm.ak.b rr;
-  int zPW;
+  int Bhx;
+  private f callback;
+  private av hMj;
+  final com.tencent.mm.al.b rr;
   
   public a()
   {
     AppMethodBeat.i(28900);
-    this.zPW = 0;
-    this.htR = new au(new au.a()
+    this.Bhx = 0;
+    this.hMj = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(28899);
-        if (a.this.zPW < 0)
+        if (a.this.Bhx < 0)
         {
           AppMethodBeat.o(28899);
           return false;
         }
-        bfz localbfz = (bfz)a.this.rr.hvs.hvw;
+        bkh localbkh = (bkh)a.this.rr.hNL.hNQ;
         try
         {
-          Object localObject1 = (dop)localbfz.EVr.get(a.this.zPW);
-          if ((localObject1 != null) && (((dop)localObject1).FWm != null) && (((dop)localObject1).FWm.getBuffer() != null) && (((dop)localObject1).FWl != null) && (((dop)localObject1).FWl.getBuffer() != null))
+          Object localObject1 = (dug)localbkh.GEO.get(a.this.Bhx);
+          if ((localObject1 != null) && (((dug)localObject1).HHc != null) && (((dug)localObject1).HHc.getBuffer() != null) && (((dug)localObject1).HHb != null) && (((dug)localObject1).HHb.getBuffer() != null))
           {
-            ac.d("MicroMsg.NetSceneGetVUserInfo", "onGYNetEnd ver:" + localbfz.Version + " idx:" + a.this.zPW + " id:" + Integer.toHexString(((dop)localObject1).ID) + " size:" + ((dop)localObject1).FWl.getILen() + " hdsize:" + ((dop)localObject1).FWm.getILen());
-            a.a(((dop)localObject1).ID, true, ((dop)localObject1).FWm.getBuffer().toByteArray());
-            a.a(((dop)localObject1).ID, false, ((dop)localObject1).FWl.getBuffer().toByteArray());
+            ad.d("MicroMsg.NetSceneGetVUserInfo", "onGYNetEnd ver:" + localbkh.Version + " idx:" + a.this.Bhx + " id:" + Integer.toHexString(((dug)localObject1).ID) + " size:" + ((dug)localObject1).HHb.getILen() + " hdsize:" + ((dug)localObject1).HHc.getILen());
+            a.a(((dug)localObject1).ID, true, ((dug)localObject1).HHc.getBuffer().toByteArray());
+            a.a(((dug)localObject1).ID, false, ((dug)localObject1).HHb.getBuffer().toByteArray());
           }
           localObject1 = a.this;
-          ((a)localObject1).zPW -= 1;
+          ((a)localObject1).Bhx -= 1;
           AppMethodBeat.o(28899);
           return true;
         }
@@ -66,31 +66,31 @@ public final class a
         {
           for (;;)
           {
-            ac.e("MicroMsg.NetSceneGetVUserInfo", "get item :" + a.this.zPW + " not Found");
+            ad.e("MicroMsg.NetSceneGetVUserInfo", "get item :" + a.this.Bhx + " not Found");
             Object localObject2 = null;
           }
         }
       }
     }, true);
-    az.ayM();
-    int j = bs.m((Integer)c.agA().get(66052, null));
-    if (ar.a.hny.nT(j))
+    ba.aBQ();
+    int j = bt.n((Integer)c.ajl().get(66052, null));
+    if (as.a.hFQ.ot(j))
     {
-      az.ayM();
-      i = bs.m((Integer)c.agA().get(66053, null));
+      ba.aBQ();
+      i = bt.n((Integer)c.ajl().get(66053, null));
     }
     Object localObject = new StringBuilder("init: allfileid:").append(Integer.toBinaryString(j)).append(" inver:");
-    az.ayM();
-    ac.d("MicroMsg.NetSceneGetVUserInfo", bs.m((Integer)c.agA().get(66053, null)) + " reqver:" + i);
+    ba.aBQ();
+    ad.d("MicroMsg.NetSceneGetVUserInfo", bt.n((Integer)c.ajl().get(66053, null)) + " reqver:" + i);
     localObject = new b.a();
-    ((b.a)localObject).hvt = new bfy();
-    ((b.a)localObject).hvu = new bfz();
+    ((b.a)localObject).hNM = new bkg();
+    ((b.a)localObject).hNN = new bkh();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getvuserinfo";
     ((b.a)localObject).funcId = 167;
-    ((b.a)localObject).reqCmdId = 60;
+    ((b.a)localObject).hNO = 60;
     ((b.a)localObject).respCmdId = 1000000060;
-    this.rr = ((b.a)localObject).aAz();
-    ((bfy)this.rr.hvr.hvw).Version = i;
+    this.rr = ((b.a)localObject).aDC();
+    ((bkg)this.rr.hNK.hNQ).Version = i;
     AppMethodBeat.o(28900);
   }
   
@@ -104,12 +104,12 @@ public final class a
     //   7: astore 4
     //   9: aconst_null
     //   10: astore_3
-    //   11: getstatic 71	com/tencent/mm/model/ar$a:hny	Lcom/tencent/mm/model/ar$c;
+    //   11: getstatic 71	com/tencent/mm/model/as$a:hFQ	Lcom/tencent/mm/model/as$c;
     //   14: iload_0
     //   15: iload_1
     //   16: invokeinterface 176 3 0
     //   21: iconst_0
-    //   22: invokestatic 182	com/tencent/mm/vfs/i:cS	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   22: invokestatic 182	com/tencent/mm/vfs/i:cX	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   25: astore 5
     //   27: aload 5
     //   29: astore_3
@@ -140,7 +140,7 @@ public final class a
     //   77: ldc 193
     //   79: iconst_0
     //   80: anewarray 195	java/lang/Object
-    //   83: invokestatic 199	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   83: invokestatic 199	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   86: aload_3
     //   87: ifnull +7 -> 94
     //   90: aload_3
@@ -187,10 +187,10 @@ public final class a
     //   108	113	129	java/lang/Exception
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(28901);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(28901);
     return i;
@@ -206,18 +206,18 @@ public final class a
     AppMethodBeat.i(28902);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ac.e("MicroMsg.NetSceneGetVUserInfo", "errType:" + paramInt2 + " errCode:" + paramInt3);
+      ad.e("MicroMsg.NetSceneGetVUserInfo", "errType:" + paramInt2 + " errCode:" + paramInt3);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(28902);
       return;
     }
-    paramq = (bfz)((com.tencent.mm.ak.b)paramq).hvs.hvw;
+    paramq = (bkh)((com.tencent.mm.al.b)paramq).hNL.hNQ;
     paramArrayOfByte = new StringBuilder("onGYNetEnd new version:").append(paramq.Version).append(" old version:");
-    az.ayM();
-    ac.d("MicroMsg.NetSceneGetVUserInfo", bs.m((Integer)c.agA().get(66053, null)) + " Count:" + paramq.EVr.size());
-    az.ayM();
-    c.agA().set(66053, Integer.valueOf(paramq.Version));
-    if (paramq.EVr.size() <= 0)
+    ba.aBQ();
+    ad.d("MicroMsg.NetSceneGetVUserInfo", bt.n((Integer)c.ajl().get(66053, null)) + " Count:" + paramq.GEO.size());
+    ba.aBQ();
+    c.ajl().set(66053, Integer.valueOf(paramq.Version));
+    if (paramq.GEO.size() <= 0)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(28902);
@@ -225,23 +225,23 @@ public final class a
     }
     int i = 0;
     paramInt1 = 0;
-    while (i < paramq.EVr.size())
+    while (i < paramq.GEO.size())
     {
-      int j = ((dop)paramq.EVr.get(i)).ID;
+      int j = ((dug)paramq.GEO.get(i)).ID;
       i += 1;
       paramInt1 |= j;
     }
-    az.ayM();
-    c.agA().set(66052, Integer.valueOf(paramInt1));
+    ba.aBQ();
+    c.ajl().set(66052, Integer.valueOf(paramInt1));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    this.zPW = (paramq.EVr.size() - 1);
-    this.htR.au(50L, 50L);
+    this.Bhx = (paramq.GEO.size() - 1);
+    this.hMj.az(50L, 50L);
     AppMethodBeat.o(28902);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.b.a
  * JD-Core Version:    0.7.0.1
  */

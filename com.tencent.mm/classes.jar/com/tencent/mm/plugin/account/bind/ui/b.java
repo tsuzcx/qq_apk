@@ -12,13 +12,13 @@ public abstract class b
     super(paramContext, parama);
   }
   
-  public void FZ(String paramString) {}
+  public void Jo(String paramString) {}
   
   public void a(a parama) {}
   
   public static abstract interface a
   {
-    public abstract void qL(int paramInt);
+    public abstract void rl(int paramInt);
   }
   
   public static abstract interface b

@@ -7,35 +7,37 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.st;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aj;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.a.tk;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ak;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bz;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.cf;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.NormalIconPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
 import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.x;
 import java.util.Iterator;
 import java.util.List;
 
 public class SeeRoomOwnerManagerUI
   extends MMPreference
 {
-  private com.tencent.mm.storage.x ftP;
-  private String fvZ;
+  private ab fLO;
+  private String fPi;
   
   public int getResourceId()
   {
@@ -47,50 +49,50 @@ public class SeeRoomOwnerManagerUI
     AppMethodBeat.i(12909);
     super.onCreate(paramBundle);
     setMMTitle(2131762632);
-    setBackBtn(new com.tencent.mm.ui.x()
+    setBackBtn(new x()
     {
-      public final void WP()
+      public final void Zi()
       {
         AppMethodBeat.i(12906);
         SeeRoomOwnerManagerUI.this.finish();
         AppMethodBeat.o(12906);
       }
     });
-    this.fvZ = getIntent().getStringExtra("RoomInfo_Id");
-    this.ftP = ((c)g.ab(c.class)).awK().xN(bs.nullAsNil(this.fvZ));
+    this.fPi = getIntent().getStringExtra("RoomInfo_Id");
+    this.fLO = ((c)com.tencent.mm.kernel.g.ab(c.class)).azz().AN(bt.nullAsNil(this.fPi));
     String str;
-    if (this.ftP != null)
+    if (this.fLO != null)
     {
       paramBundle = new PreferenceTitleCategory(getContext());
       paramBundle.setTitle(2131762723);
       getPreferenceScreen().b(paramBundle);
-      ac.i("MicroMsg.SeeRoomOwnerManagerUI", "[onCreate] owner:%s", new Object[] { this.ftP.field_roomowner });
-      paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(this.ftP.field_roomowner);
+      ad.i("MicroMsg.SeeRoomOwnerManagerUI", "[onCreate] owner:%s", new Object[] { this.fLO.field_roomowner });
+      paramBundle = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(this.fLO.field_roomowner);
       Object localObject = new NormalIconPreference(getContext())
       {
         public final void onBindView(View paramAnonymousView)
         {
           AppMethodBeat.i(12907);
           super.onBindView(paramAnonymousView);
-          a.b.a(this.HEC, paramBundle.field_username, 0.15F, false);
-          this.HEC.setVisibility(0);
+          a.b.a(this.Jss, paramBundle.field_username, 0.15F, false);
+          this.Jss.setVisibility(0);
           AppMethodBeat.o(12907);
         }
       };
       ((NormalIconPreference)localObject).setKey(paramBundle.field_username);
       ((NormalIconPreference)localObject).getExtras().putString("username", paramBundle.field_username);
-      ((NormalIconPreference)localObject).setTitle(com.tencent.mm.pluginsdk.ui.span.k.c(getContext(), paramBundle.aaS()));
+      ((NormalIconPreference)localObject).setTitle(k.c(getContext(), paramBundle.adv()));
       getPreferenceScreen().b((Preference)localObject);
       paramBundle = new PreferenceTitleCategory(getContext());
       paramBundle.setTitle(2131762637);
-      localObject = this.ftP.aDl().iterator();
+      localObject = this.fLO.aGo().iterator();
       int i = 0;
       while (((Iterator)localObject).hasNext())
       {
         str = (String)((Iterator)localObject).next();
-        if (this.ftP.aMU(str))
+        if (this.fLO.aSH(str))
         {
-          ac.i("MicroMsg.SeeRoomOwnerManagerUI", "[resetData] Room Manager:%s", new Object[] { str });
+          ad.i("MicroMsg.SeeRoomOwnerManagerUI", "[resetData] Room Manager:%s", new Object[] { str });
           if (i != 0) {
             break label417;
           }
@@ -102,21 +104,21 @@ public class SeeRoomOwnerManagerUI
     label417:
     for (;;)
     {
-      final ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(str);
+      final am localam = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(str);
       NormalIconPreference local3 = new NormalIconPreference(getContext())
       {
         public final void onBindView(View paramAnonymousView)
         {
           AppMethodBeat.i(12908);
           super.onBindView(paramAnonymousView);
-          a.b.a(this.HEC, localai.field_username, 0.15F, false);
-          this.HEC.setVisibility(0);
+          a.b.a(this.Jss, localam.field_username, 0.15F, false);
+          this.Jss.setVisibility(0);
           AppMethodBeat.o(12908);
         }
       };
       local3.setKey(str);
-      local3.getExtras().putString("username", localai.field_username);
-      local3.setTitle(com.tencent.mm.pluginsdk.ui.span.k.c(getContext(), localai.aaS()));
+      local3.getExtras().putString("username", localam.field_username);
+      local3.setTitle(k.c(getContext(), localam.adv()));
       getPreferenceScreen().b(local3);
       break;
       getPreferenceScreen().notifyDataSetChanged();
@@ -133,47 +135,47 @@ public class SeeRoomOwnerManagerUI
     if ((paramPreference instanceof NormalIconPreference))
     {
       paramf = paramPreference.getExtras().getString("username");
-      localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramf);
-      paramPreference = ((av)localObject1).field_username;
-      paramf = ((ai)localObject1).aaS();
-      localObject1 = ((av)localObject1).field_nickname;
-      if (!bs.isNullOrNil(paramf)) {
+      localObject1 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramf);
+      paramPreference = ((aw)localObject1).field_username;
+      paramf = ((am)localObject1).adv();
+      localObject1 = ((aw)localObject1).field_nickname;
+      if (!bt.isNullOrNil(paramf)) {
         break label370;
       }
-      localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awC().alK(paramPreference);
-      if ((localObject2 == null) || (bs.isNullOrNil(((bz)localObject2).field_encryptUsername))) {
+      localObject2 = ((l)com.tencent.mm.kernel.g.ab(l.class)).azq().aqz(paramPreference);
+      if ((localObject2 == null) || (bt.isNullOrNil(((cf)localObject2).field_encryptUsername))) {
         break label370;
       }
-      paramf = ((bz)localObject2).field_conRemark;
+      paramf = ((cf)localObject2).field_conRemark;
     }
     label370:
     for (;;)
     {
-      if (!bs.isNullOrNil(paramPreference))
+      if (!bt.isNullOrNil(paramPreference))
       {
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("Contact_User", paramPreference);
         ((Intent)localObject2).putExtra("Contact_RemarkName", paramf);
-        if (this.ftP != null) {
-          ((Intent)localObject2).putExtra("Contact_RoomNickname", this.ftP.wk(paramPreference));
+        if (this.fLO != null) {
+          ((Intent)localObject2).putExtra("Contact_RoomNickname", this.fLO.zf(paramPreference));
         }
         ((Intent)localObject2).putExtra("Contact_Nick", (String)localObject1);
         ((Intent)localObject2).putExtra("Contact_RoomMember", true);
-        ((Intent)localObject2).putExtra("room_name", this.fvZ);
-        paramf = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramPreference);
-        if ((paramf != null) && ((int)paramf.fLJ > 0) && (com.tencent.mm.n.b.ln(paramf.field_type)))
+        ((Intent)localObject2).putExtra("room_name", this.fPi);
+        paramf = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(paramPreference);
+        if ((paramf != null) && ((int)paramf.gfj > 0) && (com.tencent.mm.o.b.lM(paramf.field_type)))
         {
-          localObject1 = new st();
-          ((st)localObject1).dvI.intent = ((Intent)localObject2);
-          ((st)localObject1).dvI.username = paramPreference;
-          a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
+          localObject1 = new tk();
+          ((tk)localObject1).dHR.intent = ((Intent)localObject2);
+          ((tk)localObject1).dHR.username = paramPreference;
+          a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
         }
-        if ((paramf != null) && (paramf.fad())) {
-          h.wUl.kvStat(10298, paramf.field_username + ",14");
+        if ((paramf != null) && (paramf.fqg())) {
+          com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, paramf.field_username + ",14");
         }
         ((Intent)localObject2).putExtra("Contact_Scene", 96);
         ((Intent)localObject2).putExtra("Is_RoomOwner", true);
-        ((Intent)localObject2).putExtra("Contact_ChatRoomId", this.fvZ);
+        ((Intent)localObject2).putExtra("Contact_ChatRoomId", this.fPi);
         d.b(this, "profile", ".ui.ContactInfoUI", (Intent)localObject2);
       }
       AppMethodBeat.o(12910);

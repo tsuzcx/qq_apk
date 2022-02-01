@@ -12,31 +12,31 @@ public final class i
   extends Preference
 {
   private View mView;
-  private int vzO;
-  String vzP;
+  private int wFi;
+  String wFj;
   
   public i(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66827);
     this.mView = null;
-    this.vzO = 2147483647;
+    this.wFi = 2147483647;
     setLayoutResource(2131494713);
     AppMethodBeat.o(66827);
   }
   
-  public final void apf(String paramString)
+  public final void auf(String paramString)
   {
     AppMethodBeat.i(66830);
     try
     {
-      this.vzO = g.cd(paramString, true);
+      this.wFi = g.cl(paramString, true);
       AppMethodBeat.o(66830);
       return;
     }
     catch (Exception paramString)
     {
-      this.vzO = -1;
+      this.wFi = -1;
       AppMethodBeat.o(66830);
     }
   }
@@ -60,9 +60,9 @@ public final class i
     TextView localTextView = (TextView)paramView.findViewById(2131302044);
     paramView = (TextView)paramView.findViewById(2131302043);
     localTextView.setText(getTitle());
-    paramView.setText(this.vzP);
-    if (this.vzO != 2147483647) {
-      paramView.setTextColor(this.vzO);
+    paramView.setText(this.wFj);
+    if (this.wFi != 2147483647) {
+      paramView.setTextColor(this.wFi);
     }
     AppMethodBeat.o(66829);
   }

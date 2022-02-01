@@ -9,7 +9,7 @@ import android.os.PowerManager.WakeLock;
 import android.os.StatFs;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import com.tencent.tmassistantsdk.storage.TMAssistantFile;
@@ -66,7 +66,7 @@ public class DownloadHelper
     {
       for (;;)
       {
-        ac.printErrStackTrace(TAG, paramString, "", new Object[0]);
+        ad.printErrStackTrace(TAG, paramString, "", new Object[0]);
         paramString = str1;
       }
     }
@@ -256,7 +256,7 @@ public class DownloadHelper
     {
       for (;;)
       {
-        ac.printErrStackTrace(TAG, paramString, "", new Object[0]);
+        ad.printErrStackTrace(TAG, paramString, "", new Object[0]);
       }
     }
     finally
@@ -282,7 +282,7 @@ public class DownloadHelper
     {
       for (;;)
       {
-        ac.printErrStackTrace(TAG, paramString1, "", new Object[0]);
+        ad.printErrStackTrace(TAG, paramString1, "", new Object[0]);
       }
     }
     finally
@@ -382,7 +382,7 @@ public class DownloadHelper
     {
       for (;;)
       {
-        ac.printErrStackTrace(TAG, paramString, "", new Object[0]);
+        ad.printErrStackTrace(TAG, paramString, "", new Object[0]);
       }
     }
     AppMethodBeat.o(101951);

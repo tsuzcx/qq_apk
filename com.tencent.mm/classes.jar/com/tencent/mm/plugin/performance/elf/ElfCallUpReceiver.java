@@ -4,19 +4,19 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class ElfCallUpReceiver
   extends BroadcastReceiver
 {
-  public static int vBe = -1;
+  public static int wHD = -1;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(124973);
-    ac.i("MicroMsg.ElfCallUpReceiver", "[onReceive] call up! ");
+    ad.i("MicroMsg.ElfCallUpReceiver", "[onReceive] call up! ");
     if (getClass().getName().equals(paramIntent.getAction())) {
-      vBe = paramIntent.getIntExtra("processId", 0);
+      wHD = paramIntent.getIntExtra("processId", 0);
     }
     AppMethodBeat.o(124973);
   }

@@ -7,27 +7,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.b.a;
 import com.tencent.mm.memory.i;
 import com.tencent.mm.memory.n;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.QImageView;
 
 public class QPictureView
   extends QImageView
 {
   private boolean DEBUG;
-  private i hfI;
-  private boolean hfJ;
-  private Runnable hfK;
+  private i hxQ;
+  private boolean hxR;
+  private Runnable hxS;
   
   public QPictureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(156547);
     this.DEBUG = false;
-    this.hfI = null;
-    this.hfJ = false;
-    this.hfK = new Runnable()
+    this.hxQ = null;
+    this.hxR = false;
+    this.hxS = new Runnable()
     {
       public final void run()
       {
@@ -44,9 +44,9 @@ public class QPictureView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(156548);
     this.DEBUG = false;
-    this.hfI = null;
-    this.hfJ = false;
-    this.hfK = new Runnable()
+    this.hxQ = null;
+    this.hxR = false;
+    this.hxS = new Runnable()
     {
       public final void run()
       {
@@ -58,23 +58,23 @@ public class QPictureView
     AppMethodBeat.o(156548);
   }
   
-  private void awk()
+  private void ayX()
   {
     AppMethodBeat.i(156554);
     if (this.DEBUG) {
-      ac.i("MicroMsg.QPictureView", "onAttach" + hashCode() + " " + bs.eWi().toString());
+      ad.i("MicroMsg.QPictureView", "onAttach" + hashCode() + " " + bt.flS().toString());
     }
-    removeCallbacks(this.hfK);
-    if (this.hfJ)
+    removeCallbacks(this.hxS);
+    if (this.hxR)
     {
       AppMethodBeat.o(156554);
       return;
     }
-    this.hfJ = true;
+    this.hxR = true;
     AppMethodBeat.o(156554);
   }
   
-  private static String bR(Object paramObject)
+  private static String bT(Object paramObject)
   {
     AppMethodBeat.i(156549);
     if (paramObject == null)
@@ -84,7 +84,7 @@ public class QPictureView
     }
     if ((paramObject instanceof a))
     {
-      paramObject = paramObject + " hashcode " + paramObject.hashCode() + " " + ((a)paramObject).awj() + " " + ((a)paramObject).awj().hashCode();
+      paramObject = paramObject + " hashcode " + paramObject.hashCode() + " " + ((a)paramObject).ayW() + " " + ((a)paramObject).ayW().hashCode();
       AppMethodBeat.o(156549);
       return paramObject;
     }
@@ -93,20 +93,20 @@ public class QPictureView
     return paramObject;
   }
   
-  private static void bS(Object paramObject)
+  private static void bU(Object paramObject)
   {
     AppMethodBeat.i(156552);
     if ((paramObject != null) && ((paramObject instanceof i))) {
-      ((i)paramObject).avO();
+      ((i)paramObject).ayB();
     }
     AppMethodBeat.o(156552);
   }
   
-  private static void bT(Object paramObject)
+  private static void bV(Object paramObject)
   {
     AppMethodBeat.i(156553);
     if ((paramObject != null) && ((paramObject instanceof i))) {
-      ((i)paramObject).avP();
+      ((i)paramObject).ayC();
     }
     AppMethodBeat.o(156553);
   }
@@ -115,16 +115,16 @@ public class QPictureView
   {
     AppMethodBeat.i(156555);
     if (this.DEBUG) {
-      ac.i("MicroMsg.QPictureView", "onDetach " + hashCode() + " " + bs.eWi().toString());
+      ad.i("MicroMsg.QPictureView", "onDetach " + hashCode() + " " + bt.flS().toString());
     }
-    if (!this.hfJ)
+    if (!this.hxR)
     {
       AppMethodBeat.o(156555);
       return;
     }
-    this.hfJ = false;
-    removeCallbacks(this.hfK);
-    postDelayed(this.hfK, 500L);
+    this.hxR = false;
+    removeCallbacks(this.hxS);
+    postDelayed(this.hxS, 500L);
     AppMethodBeat.o(156555);
   }
   
@@ -132,7 +132,7 @@ public class QPictureView
   {
     AppMethodBeat.i(156556);
     super.onAttachedToWindow();
-    awk();
+    ayX();
     AppMethodBeat.o(156556);
   }
   
@@ -148,7 +148,7 @@ public class QPictureView
   {
     AppMethodBeat.i(156559);
     super.onFinishTemporaryDetach();
-    awk();
+    ayX();
     AppMethodBeat.o(156559);
   }
   
@@ -163,20 +163,20 @@ public class QPictureView
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(156551);
-    removeCallbacks(this.hfK);
-    if ((paramDrawable == null) || (paramDrawable.equals(this.hfI)))
+    removeCallbacks(this.hxS);
+    if ((paramDrawable == null) || (paramDrawable.equals(this.hxQ)))
     {
       AppMethodBeat.o(156551);
       return;
     }
     if (this.DEBUG) {
-      ac.i("MicroMsg.QPictureView", "setImageDrawable " + hashCode() + " old: " + bR(this.hfI) + " new:" + bR(paramDrawable) + " " + bs.eWi().toString());
+      ad.i("MicroMsg.QPictureView", "setImageDrawable " + hashCode() + " old: " + bT(this.hxQ) + " new:" + bT(paramDrawable) + " " + bt.flS().toString());
     }
-    bT(this.hfI);
+    bV(this.hxQ);
     if ((paramDrawable instanceof i)) {}
-    for (this.hfI = ((i)paramDrawable);; this.hfI = null)
+    for (this.hxQ = ((i)paramDrawable);; this.hxQ = null)
     {
-      bS(paramDrawable);
+      bU(paramDrawable);
       super.setImageDrawable(paramDrawable);
       AppMethodBeat.o(156551);
       return;
@@ -186,14 +186,14 @@ public class QPictureView
   public void setReleasableBitmap(n paramn)
   {
     AppMethodBeat.i(156550);
-    if ((paramn == null) || (paramn.equals(this.hfI)))
+    if ((paramn == null) || (paramn.equals(this.hxQ)))
     {
       AppMethodBeat.o(156550);
       return;
     }
-    setImageBitmap(paramn.avT());
-    this.hfI = paramn;
-    bS(this.hfI);
+    setImageBitmap(paramn.ayG());
+    this.hxQ = paramn;
+    bU(this.hxQ);
     AppMethodBeat.o(156550);
   }
 }

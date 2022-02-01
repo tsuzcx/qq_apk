@@ -2,36 +2,36 @@ package d.l.b.a.b.j.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
-import d.g.b.l;
+import d.g.b.q;
 import d.l.b.a.b.f.f;
 
 public final class h$a
 {
-  private static final b<f, Boolean> LGW;
+  private static final b<f, Boolean> NxU;
   
   static
   {
     AppMethodBeat.i(60215);
-    LGX = new a();
-    LGW = (b)a.LGY;
+    NxV = new a();
+    NxU = (b)a.NxW;
     AppMethodBeat.o(60215);
   }
   
-  public static b<f, Boolean> gbV()
+  public static b<f, Boolean> gtu()
   {
-    return LGW;
+    return NxU;
   }
   
   static final class a
-    extends l
+    extends q
     implements b<f, Boolean>
   {
-    public static final a LGY;
+    public static final a NxW;
     
     static
     {
       AppMethodBeat.i(60214);
-      LGY = new a();
+      NxW = new a();
       AppMethodBeat.o(60214);
     }
     

@@ -7,20 +7,21 @@ import android.text.TextUtils.TruncateAt;
 
 public final class f
 {
-  public TextPaint gZ;
-  public boolean glA = true;
-  CharSequence glB;
-  public StaticLayout glC;
-  public Layout.Alignment glr;
-  public TextUtils.TruncateAt gls;
+  public int breakStrategy = -1;
+  public Layout.Alignment gFb;
+  public TextUtils.TruncateAt gFc;
+  public boolean gFk = true;
+  CharSequence gFl;
+  public StaticLayout gFm;
   public int gravity;
+  public TextPaint iU;
   public int maxLength;
   public int maxLines;
   CharSequence text;
   
   public f(StaticLayout paramStaticLayout)
   {
-    this.glC = paramStaticLayout;
+    this.gFm = paramStaticLayout;
   }
 }
 

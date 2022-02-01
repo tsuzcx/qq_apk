@@ -5,7 +5,7 @@ import java.util.Set;
 abstract class a
   extends com.bumptech.glide.d.a
 {
-  abstract Set<Class<?>> nr();
+  abstract Set<Class<?>> nJ();
 }
 
 

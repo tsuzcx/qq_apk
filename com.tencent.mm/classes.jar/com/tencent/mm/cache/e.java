@@ -3,31 +3,31 @@ package com.tencent.mm.cache;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.x.a;
-import com.tencent.mm.x.a.a;
-import com.tencent.mm.z.d;
+import com.tencent.mm.aa.d;
+import com.tencent.mm.y.a;
+import com.tencent.mm.y.a.a;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/cache/FilterCache;", "Lcom/tencent/mm/cache/IBaseArtistCache;", "Lcom/tencent/mm/items/FilterItem;", "()V", "curColorWeight", "", "getCurColorWeight", "()F", "setCurColorWeight", "(F)V", "curSeletedTypeIndex", "", "getCurSeletedTypeIndex", "()I", "setCurSeletedTypeIndex", "(I)V", "effects", "", "getEffects", "()Ljava/util/List;", "preBitmap", "Landroid/graphics/Bitmap;", "getPreBitmap", "()Landroid/graphics/Bitmap;", "setPreBitmap", "(Landroid/graphics/Bitmap;)V", "add", "", "item", "clear", "clone", "", "getCacheFromLocal", "getUndoCount", "isUndoEnable", "", "onCreate", "onDestroy", "onDrawCache", "canvas", "Landroid/graphics/Canvas;", "isOverDraw", "onFinalGenerate", "onRestore", "isExit", "onSave", "peek", "pop", "saveCacheToLocal", "bitmap", "size", "isAlive", "undo", "plugin-photoedit-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/cache/FilterCache;", "Lcom/tencent/mm/cache/IBaseArtistCache;", "Lcom/tencent/mm/items/FilterItem;", "()V", "curColorWeight", "", "getCurColorWeight", "()F", "setCurColorWeight", "(F)V", "curSeletedTypeIndex", "", "getCurSeletedTypeIndex", "()I", "setCurSeletedTypeIndex", "(I)V", "effects", "", "getEffects", "()Ljava/util/List;", "preBitmap", "Landroid/graphics/Bitmap;", "getPreBitmap", "()Landroid/graphics/Bitmap;", "setPreBitmap", "(Landroid/graphics/Bitmap;)V", "add", "", "item", "clear", "clone", "", "getCacheFromLocal", "getUndoCount", "isUndoEnable", "", "onCreate", "onDestroy", "onDrawCache", "canvas", "Landroid/graphics/Canvas;", "isOverDraw", "onFinalGenerate", "onRestore", "isExit", "onSave", "peek", "pop", "saveCacheToLocal", "bitmap", "size", "isAlive", "undo", "plugin-photoedit-sdk_release"})
 public final class e
   implements f<d>
 {
   private final List<d> effects;
-  public int fqd;
-  public float fqe;
-  public Bitmap fqf;
+  public int fIk;
+  public float fIl;
+  public Bitmap fIm;
   
   public e()
   {
     AppMethodBeat.i(163146);
-    Object localObject1 = a.fZG;
-    Object localObject2 = (Iterable)a.aeb();
+    Object localObject1 = a.gtc;
+    Object localObject2 = (Iterable)a.agG();
     localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
@@ -37,18 +37,18 @@ public final class e
     AppMethodBeat.o(163146);
   }
   
-  public final void Mh() {}
+  public final void NQ() {}
   
-  public final void Vo() {}
+  public final void XF() {}
   
   public final void a(Canvas paramCanvas, boolean paramBoolean)
   {
     AppMethodBeat.i(163142);
-    k.h(paramCanvas, "canvas");
-    Bitmap localBitmap = this.fqf;
+    p.h(paramCanvas, "canvas");
+    Bitmap localBitmap = this.fIm;
     if (localBitmap != null)
     {
-      ((d)this.effects.get(this.fqd)).a(paramCanvas, localBitmap, this.fqe);
+      ((d)this.effects.get(this.fIk)).a(paramCanvas, localBitmap, this.fIl);
       AppMethodBeat.o(163142);
       return;
     }
@@ -60,10 +60,10 @@ public final class e
     return 0;
   }
   
-  public final void cA(boolean paramBoolean)
+  public final void cC(boolean paramBoolean)
   {
-    this.fqd = 0;
-    this.fqe = 0.0F;
+    this.fIk = 0;
+    this.fIl = 0.0F;
   }
   
   public final Object clone()
@@ -77,11 +77,11 @@ public final class e
   public final void e(Canvas paramCanvas)
   {
     AppMethodBeat.i(163143);
-    k.h(paramCanvas, "canvas");
-    Bitmap localBitmap = this.fqf;
+    p.h(paramCanvas, "canvas");
+    Bitmap localBitmap = this.fIm;
     if (localBitmap != null)
     {
-      ((d)this.effects.get(this.fqd)).a(paramCanvas, localBitmap, this.fqe);
+      ((d)this.effects.get(this.fIk)).a(paramCanvas, localBitmap, this.fIl);
       AppMethodBeat.o(163143);
       return;
     }
@@ -94,7 +94,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.cache.e
  * JD-Core Version:    0.7.0.1
  */

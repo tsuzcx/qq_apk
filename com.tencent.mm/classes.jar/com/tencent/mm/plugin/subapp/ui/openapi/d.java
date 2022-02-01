@@ -6,10 +6,10 @@ import android.widget.TextView;
 
 final class d
 {
-  public ImageView fBA;
-  public TextView fwQ;
-  public TextView zST;
-  public View zSU;
+  public TextView Bky;
+  public View Bkz;
+  public TextView fQd;
+  public ImageView fUN;
 }
 
 

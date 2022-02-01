@@ -13,17 +13,17 @@ public abstract interface aa
   
   public abstract boolean a(j paramj, String... paramVarArgs);
   
-  public abstract boolean acI(String paramString);
+  public abstract boolean agx(String paramString);
   
   public abstract ArrayList<Long> b(List<String> paramList1, List<String> paramList2, List<Integer> paramList);
   
-  public abstract void tJ(long paramLong);
+  public abstract void vG(long paramLong);
   
-  public abstract j tK(long paramLong);
+  public abstract j vH(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.aa
  * JD-Core Version:    0.7.0.1
  */

@@ -15,16 +15,16 @@ public final class l
   {
     AppMethodBeat.i(32825);
     c.a locala = new c.a();
-    locala.GvF = new Field[2];
+    locala.IhA = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "msgListDataId";
-    locala.GvH.put("msgListDataId", "TEXT PRIMARY KEY ");
+    locala.IhC.put("msgListDataId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" msgListDataId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "msgListDataId";
+    locala.IhB = "msgListDataId";
     locala.columns[1] = "sessionName";
-    locala.GvH.put("sessionName", "TEXT default '' ");
+    locala.IhC.put("sessionName", "TEXT default '' ");
     localStringBuilder.append(" sessionName TEXT default '' ");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();

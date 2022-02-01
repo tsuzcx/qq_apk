@@ -2,7 +2,7 @@ package d.l.b.a.b.j.f;
 
 import d.a.v;
 import d.g.a.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.ah;
 import d.l.b.a.b.b.am;
 import d.l.b.a.b.b.ax;
@@ -20,47 +20,47 @@ public abstract class i
 {
   public Collection<? extends ah> a(f paramf, a parama)
   {
-    k.h(paramf, "name");
-    k.h(parama, "location");
-    return (Collection)v.KTF;
+    p.h(paramf, "name");
+    p.h(parama, "location");
+    return (Collection)v.MKE;
   }
   
   public Collection<l> a(d paramd, b<? super f, Boolean> paramb)
   {
-    k.h(paramd, "kindFilter");
-    k.h(paramb, "nameFilter");
-    return (Collection)v.KTF;
+    p.h(paramd, "kindFilter");
+    p.h(paramb, "nameFilter");
+    return (Collection)v.MKE;
   }
   
   public Collection<? extends am> b(f paramf, a parama)
   {
-    k.h(paramf, "name");
-    k.h(parama, "location");
-    return (Collection)v.KTF;
+    p.h(paramf, "name");
+    p.h(parama, "location");
+    return (Collection)v.MKE;
   }
   
   public d.l.b.a.b.b.h c(f paramf, a parama)
   {
-    k.h(paramf, "name");
-    k.h(parama, "location");
+    p.h(paramf, "name");
+    p.h(parama, "location");
     return null;
   }
   
   public void d(f paramf, a parama)
   {
-    k.h(paramf, "name");
-    k.h(parama, "location");
-    k.h(paramf, "name");
-    k.h(parama, "location");
+    p.h(paramf, "name");
+    p.h(parama, "location");
+    p.h(paramf, "name");
+    p.h(parama, "location");
     j localj = (j)this;
-    k.h(paramf, "name");
-    k.h(parama, "location");
+    p.h(paramf, "name");
+    p.h(parama, "location");
     localj.b(paramf, parama);
   }
   
-  public Set<f> fSy()
+  public Set<f> gjW()
   {
-    Object localObject1 = (Iterable)a(d.LGK, d.l.b.a.b.o.d.gcL());
+    Object localObject1 = (Iterable)a(d.NxI, d.l.b.a.b.o.d.gum());
     Collection localCollection = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
@@ -74,14 +74,14 @@ public abstract class i
     localCollection = (Collection)new LinkedHashSet();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      localCollection.add(((am)((Iterator)localObject1).next()).fRf());
+      localCollection.add(((am)((Iterator)localObject1).next()).giD());
     }
     return (Set)localCollection;
   }
   
-  public Set<f> fSz()
+  public Set<f> gjX()
   {
-    Object localObject1 = (Iterable)a(d.LGL, d.l.b.a.b.o.d.gcL());
+    Object localObject1 = (Iterable)a(d.NxJ, d.l.b.a.b.o.d.gum());
     Collection localCollection = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
@@ -95,14 +95,14 @@ public abstract class i
     localCollection = (Collection)new LinkedHashSet();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      localCollection.add(((ax)((Iterator)localObject1).next()).fRf());
+      localCollection.add(((ax)((Iterator)localObject1).next()).giD());
     }
     return (Set)localCollection;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.f.i
  * JD-Core Version:    0.7.0.1
  */

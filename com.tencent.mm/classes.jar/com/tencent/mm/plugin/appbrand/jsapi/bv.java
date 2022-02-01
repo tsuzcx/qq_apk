@@ -1,19 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.os.Bundle;
+import com.tencent.mm.ipcinvoker.d;
+
 public final class bv
-  extends JsApiPrivateAddContact
+  extends a<h>
 {
-  public static final int CTRL_INDEX = 408;
-  public static final String NAME = "private_quicklyAddBrandContact";
-  
-  protected final int beO()
-  {
-    return 0;
-  }
+  public static final int CTRL_INDEX = 829;
+  public static final String NAME = "phoneBindCardVerifySms";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bv
  * JD-Core Version:    0.7.0.1
  */

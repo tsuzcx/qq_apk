@@ -1,105 +1,46 @@
 package com.tencent.mm.plugin.webview.model;
 
-import android.net.Uri;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.platformtools.ab;
-import com.tencent.mm.plugin.websearch.api.i;
-import com.tencent.mm.plugin.websearch.api.z;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.sdk.platformtools.aj;
+import d.l;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/model/TopStoryWebViewVisitReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "enterTime", "", "getEnterTime", "()J", "lastResumeTime", "maxScrollY", "", "publishId", "", "scene", "stayTime", "totalScrollY", "onPause", "", "onResume", "report", "setMaxScrollY", "setPublishId", "setScene", "setTotalScrollY", "plugin-webview_release"})
 public final class ak
 {
-  private static final Set<String> CqC;
+  public int Aod;
+  public int DUd;
+  public long dBD;
+  public final long enterTime;
+  public String hDf;
+  public long lastResumeTime;
+  public int scene;
   
-  static
+  public ak()
   {
-    AppMethodBeat.i(78986);
-    Object localObject = new HashSet();
-    CqC = (Set)localObject;
-    ((Set)localObject).add("file:///android_asset/");
-    localObject = b.apa();
-    if (!bs.isNullOrNil((String)localObject)) {
-      localObject = b.apa().replace("/data/user/0", "/data/data");
-    }
-    for (;;)
-    {
-      e locale1 = new e(z.Un(0));
-      CqC.add("file://" + q.B(locale1.fxV()));
-      CqC.add("file://" + ((i)com.tencent.mm.kernel.g.ab(i.class)).ewV());
-      e locale2 = new e(b.aph(), z.exl());
-      CqC.add("file://" + q.B(locale2.fxV()));
-      e locale3 = new e((String)localObject, "wenote/res");
-      CqC.add("file://" + q.B(locale3.fxV()));
-      locale3 = new e(b.aph(), "wenote/res");
-      CqC.add("file://" + q.B(locale3.fxV()));
-      ac.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { q.B(locale1.fxV()), q.B(locale2.fxV()) });
-      localObject = new e((String)localObject, "emoji/res");
-      CqC.add("file://" + q.B(((e)localObject).fxV()));
-      locale1 = new e(b.aph(), "emoji/res");
-      CqC.add("file://" + q.B(locale1.fxV()));
-      ac.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { q.B(((e)localObject).fxV()), q.B(locale1.fxV()) });
-      localObject = CqC.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ac.i("MicroMsg.URLFilter", "WebViewUI white list path : %s", new Object[] { (String)((Iterator)localObject).next() });
-      }
-      AppMethodBeat.o(78986);
-      return;
-    }
+    AppMethodBeat.i(207587);
+    this.lastResumeTime = -1L;
+    this.enterTime = System.currentTimeMillis();
+    this.DUd = a.iq(aj.getContext());
+    this.Aod = a.iq(aj.getContext());
+    AppMethodBeat.o(207587);
   }
   
-  public static boolean aBN(String paramString)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class a<InputType, ResultType>
+    implements b<Bundle, IPCVoid>
   {
-    AppMethodBeat.i(78985);
-    if (ab.ivD)
+    public static final a DUe;
+    
+    static
     {
-      ac.w("MicroMsg.URLFilter", "skipLoadUrlCheck");
-      AppMethodBeat.o(78985);
-      return true;
+      AppMethodBeat.i(207586);
+      DUe = new a();
+      AppMethodBeat.o(207586);
     }
-    if (bs.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(78985);
-      return true;
-    }
-    paramString = paramString.toLowerCase();
-    if (paramString.startsWith("about:blank"))
-    {
-      AppMethodBeat.o(78985);
-      return false;
-    }
-    if (!paramString.startsWith("file://"))
-    {
-      paramString = Uri.parse(paramString);
-      if (bs.isNullOrNil(paramString.getHost()))
-      {
-        AppMethodBeat.o(78985);
-        return true;
-      }
-      if (!paramString.getHost().contains(com.tencent.luggage.h.g.DS()))
-      {
-        AppMethodBeat.o(78985);
-        return true;
-      }
-      AppMethodBeat.o(78985);
-      return false;
-    }
-    Iterator localIterator = CqC.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.startsWith((String)localIterator.next()))
-      {
-        AppMethodBeat.o(78985);
-        return true;
-      }
-    }
-    AppMethodBeat.o(78985);
-    return false;
   }
 }
 

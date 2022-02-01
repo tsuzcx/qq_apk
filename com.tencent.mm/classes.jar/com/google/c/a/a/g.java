@@ -4,22 +4,22 @@ import com.google.c.b.a;
 
 abstract class g
 {
-  static final g bHJ = new e(null, 0, 0);
-  final g bHK;
+  static final g bRX = new e(null, 0, 0);
+  final g bRY;
   
   g(g paramg)
   {
-    this.bHK = paramg;
+    this.bRY = paramg;
   }
   
   abstract void a(a parama, byte[] paramArrayOfByte);
   
-  final g bD(int paramInt1, int paramInt2)
+  final g bF(int paramInt1, int paramInt2)
   {
     return new e(this, paramInt1, paramInt2);
   }
   
-  final g bE(int paramInt1, int paramInt2)
+  final g bG(int paramInt1, int paramInt2)
   {
     return new b(this, paramInt1, paramInt2);
   }

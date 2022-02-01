@@ -11,255 +11,221 @@ import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.i;
 import android.text.TextUtils;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.modelappbrand.a.b.h;
 import com.tencent.mm.modelappbrand.a.g;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.ac;
+import com.tencent.mm.plugin.appbrand.permission.a.b.c;
+import com.tencent.mm.plugin.appbrand.permission.a.b.c.a;
+import com.tencent.mm.plugin.appbrand.permission.f;
+import com.tencent.mm.plugin.appbrand.r.a.c;
 import com.tencent.mm.plugin.appbrand.ui.MaxHeightRecyclerView;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog;", "Landroid/app/Dialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "context", "Landroid/content/Context;", "listener", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$Listener;", "shouldInLargeScreenCompatMode", "", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$Listener;Z)V", "_position", "", "value", "", "appBrandName", "getAppBrandName", "()Ljava/lang/String;", "setAppBrandName", "(Ljava/lang/String;)V", "applyWording", "getApplyWording", "setApplyWording", "buttonGroup", "Landroid/view/View;", "funcTv", "Landroid/widget/TextView;", "Landroid/graphics/Bitmap;", "icon", "getIcon", "()Landroid/graphics/Bitmap;", "setIcon", "(Landroid/graphics/Bitmap;)V", "iconUrl", "getIconUrl", "setIconUrl", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$ItemCheckedListener;", "itemCheckedListener", "getItemCheckedListener", "()Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$ItemCheckedListener;", "setItemCheckedListener", "(Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$ItemCheckedListener;)V", "loadingView", "mAdapter", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter;", "mApplyWordingTv", "mBtnAccept", "Landroid/widget/Button;", "mBtnReject", "mDialogContainer", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "mExplainIv", "Landroid/widget/ImageView;", "mIconIv", "mItems", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "mListener", "mNameTv", "mOnDismissListener", "Landroid/content/DialogInterface$OnDismissListener;", "mOnShowListener", "Landroid/content/DialogInterface$OnShowListener;", "mRequestDescTv", "mRootView", "mScope", "mSelectListLayout", "Landroid/widget/LinearLayout;", "mSimpleDetailDescTv", "recyclerView", "Lcom/tencent/mm/plugin/appbrand/ui/MaxHeightRecyclerView;", "requestDesc", "getRequestDesc", "setRequestDesc", "simpleDetailDesc", "getSimpleDetailDesc", "setSimpleDetailDesc", "changeListHeightByRotation", "", "rotation", "dismiss", "getContentView", "getDialogHeight", "getPosition", "getScope", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "check", "getSelectedItem", "isCancelable", "isCanceledOnTouchOutside", "onBackPressedEvent", "onCancel", "onDismiss", "onScreenOrientationChanged", "onShow", "dialogHelper", "setExplainOnClickListener", "Landroid/view/View$OnClickListener;", "setFunctionButtonOnClickListener", "setFunctionButtonText", "text", "setFunctionButtonTextColor", "color", "setNegativeButtonText", "cancelWording", "setOnListItemLongClickListener", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$OnListItemLongClickListener;", "setPosition", "position", "setPositiveButtonText", "allowWording", "setScope", "scope", "setSelectListItem", "items", "", "showExplainIv", "show", "Companion", "Listener", "luggage-wechat-full-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog;", "Landroid/app/Dialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView;", "context", "Landroid/content/Context;", "listener", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView$Listener;", "shouldInLargeScreenCompatMode", "", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView$Listener;Z)V", "_position", "", "value", "", "appBrandName", "getAppBrandName", "()Ljava/lang/String;", "setAppBrandName", "(Ljava/lang/String;)V", "applyWording", "getApplyWording", "setApplyWording", "buttonGroup", "Landroid/view/View;", "funcTv", "Landroid/widget/TextView;", "iconUrl", "getIconUrl", "setIconUrl", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$ItemCheckedListener;", "itemCheckedListener", "getItemCheckedListener", "()Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$ItemCheckedListener;", "setItemCheckedListener", "(Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$ItemCheckedListener;)V", "loadingView", "mAdapter", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter;", "mApplyWordingTv", "mBtnAccept", "Landroid/widget/Button;", "mBtnReject", "mDialogContainer", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "mExplainIv", "Landroid/widget/ImageView;", "mIconIv", "mItems", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "mLastPointerDownTouchEvent", "Landroid/view/MotionEvent;", "mListener", "mNameTv", "mOnDismissListener", "Landroid/content/DialogInterface$OnDismissListener;", "mOnShowListener", "Landroid/content/DialogInterface$OnShowListener;", "mRequestDescTv", "mRootView", "mRootWrapperFrameLayout", "Landroid/widget/FrameLayout;", "mScope", "mSelectListLayout", "Landroid/widget/LinearLayout;", "mSimpleDetailDescTv", "recyclerView", "Lcom/tencent/mm/plugin/appbrand/ui/MaxHeightRecyclerView;", "requestDesc", "getRequestDesc", "setRequestDesc", "simpleDetailDesc", "getSimpleDetailDesc", "setSimpleDetailDesc", "changeListHeightByRotation", "", "rotation", "createSecondaryExplainPresenterView", "Lcom/tencent/mm/plugin/appbrand/permission/IAuthorizePrivacyExplainPresenterView;", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "content", "webviewOpener", "Lcom/tencent/mm/plugin/appbrand/jsapi/IExternalToolsHelper;", "dismiss", "getContentView", "getDialogHeight", "getLastPointerDownTouchEvent", "getPosition", "getScope", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "check", "getSelectedItem", "isCancelable", "isCanceledOnTouchOutside", "onBackPressedEvent", "onCancel", "onDismiss", "onScreenOrientationChanged", "onShow", "dialogHelper", "setExplainOnClickListener", "Landroid/view/View$OnClickListener;", "setFunctionButtonOnClickListener", "setFunctionButtonText", "text", "setFunctionButtonTextColor", "color", "setNegativeButtonText", "cancelWording", "setOnListItemLongClickListener", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$OnListItemLongClickListener;", "setPosition", "position", "setPositiveButtonText", "allowWording", "setScope", "scope", "setSelectListItem", "items", "", "show", "showExplainIv", "Companion", "Listener", "luggage-wechat-full-sdk_release"})
 public final class i
   extends Dialog
-  implements k
+  implements com.tencent.mm.plugin.appbrand.permission.a.b, k
 {
-  public static final a mBB;
-  private DialogInterface.OnDismissListener VX;
-  private final List<o.a> bYM;
-  private View gDe;
+  public static final i.a rLy;
+  private DialogInterface.OnDismissListener XM;
+  private final List<o.a> cje;
+  private View gWO;
+  private final View iCR;
+  private int iDw;
   private String iconUrl;
-  public View ijA;
-  private int ikf;
-  private String keG;
-  private m kgA;
-  private String kgC;
-  private ImageView kgj;
-  private TextView kgk;
-  private ImageView kgm;
-  private Button kgy;
-  private Button kgz;
-  private TextView lJb;
-  private TextView lJc;
-  private TextView lJe;
-  private DialogInterface.OnShowListener lJh;
-  private final boolean mBA;
-  private LinearLayout mBo;
-  private MaxHeightRecyclerView mBp;
-  private TextView mBq;
-  private View mBr;
-  private o.b mBs;
-  private b mBt;
-  private o mBu;
-  private String mBv;
-  private String mBw;
-  private String mBx;
+  private ImageView kAX;
+  private TextView kAY;
+  private ImageView kBa;
+  private Button kBm;
+  private Button kBn;
+  private m kBo;
+  private String kBq;
+  private String kzp;
+  private MaxHeightRecyclerView lPD;
+  private MotionEvent lPG;
+  private String lPH;
+  private TextView lPI;
+  private String lPJ;
+  private TextView lPK;
+  private String lPL;
+  private LinearLayout lPM;
+  private o lPN;
+  private o.b lPO;
+  private TextView lPP;
+  private TextView lPU;
+  private DialogInterface.OnShowListener miV;
+  private final boolean mjE;
+  private View oez;
+  private b.c ouJ;
+  private FrameLayout qAX;
   
   static
   {
     AppMethodBeat.i(148265);
-    mBB = new a((byte)0);
+    rLy = new i.a((byte)0);
     AppMethodBeat.o(148265);
   }
   
-  public i(Context paramContext, b paramb, boolean paramBoolean)
+  public i(Context paramContext, b.c paramc, boolean paramBoolean)
   {
     super(paramContext);
-    AppMethodBeat.i(183078);
-    this.mBA = paramBoolean;
-    paramContext = View.inflate(n.ed(paramContext), 2131493051, null);
-    d.g.b.k.g(paramContext, "View.inflate(context.wra…and_request_dialog, null)");
-    this.ijA = paramContext;
-    this.mBt = paramb;
-    this.keG = "";
-    this.bYM = ((List)new ArrayList());
-    paramContext = this.ijA.findViewById(2131304100);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_icon)");
-    this.kgj = ((ImageView)paramContext);
-    paramContext = this.ijA.findViewById(2131304102);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_name)");
-    this.kgk = ((TextView)paramContext);
-    paramContext = this.ijA.findViewById(2131304096);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_cancel)");
-    this.kgz = ((Button)paramContext);
-    paramContext = this.ijA.findViewById(2131304103);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_ok)");
-    this.kgy = ((Button)paramContext);
-    paramContext = this.ijA.findViewById(2131304098);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_desc)");
-    this.lJb = ((TextView)paramContext);
-    paramContext = this.ijA.findViewById(2131304825);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.simple_detail_desc)");
-    this.lJc = ((TextView)paramContext);
-    paramContext = this.ijA.findViewById(2131304097);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_content)");
-    this.mBo = ((LinearLayout)paramContext);
-    paramContext = this.ijA.findViewById(2131304106);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_right_icon)");
-    this.kgm = ((ImageView)paramContext);
-    paramContext = this.ijA.findViewById(2131304095);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_apply_wording)");
-    this.lJe = ((TextView)paramContext);
-    paramContext = this.ijA.findViewById(2131304104);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_recyclerview)");
-    this.mBp = ((MaxHeightRecyclerView)paramContext);
-    this.mBp.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    this.mBu = new o(this.bYM);
-    this.mBu.mBs = this.mBs;
-    this.mBp.setAdapter((RecyclerView.a)this.mBu);
-    paramContext = this.ijA.findViewById(2131304101);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_loading)");
-    this.gDe = paramContext;
-    paramContext = this.ijA.findViewById(2131297653);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.button_group)");
-    this.mBr = paramContext;
-    paramContext = this.ijA.findViewById(2131304099);
-    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_function)");
-    this.mBq = ((TextView)paramContext);
-    this.kgy.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    AppMethodBeat.i(192453);
+    this.mjE = paramBoolean;
+    paramContext = View.inflate(n.bq(paramContext), 2131493051, null);
+    p.g(paramContext, "View.inflate(context.wra…and_request_dialog, null)");
+    this.iCR = paramContext;
+    this.ouJ = paramc;
+    this.kzp = "";
+    this.cje = ((List)new ArrayList());
+    paramContext = this.iCR.findViewById(2131304100);
+    p.g(paramContext, "mRootView.findViewById(R.id.request_icon)");
+    this.kAX = ((ImageView)paramContext);
+    paramContext = this.iCR.findViewById(2131304102);
+    p.g(paramContext, "mRootView.findViewById(R.id.request_name)");
+    this.kAY = ((TextView)paramContext);
+    paramContext = this.iCR.findViewById(2131304096);
+    p.g(paramContext, "mRootView.findViewById(R.id.request_cancel)");
+    this.kBn = ((Button)paramContext);
+    paramContext = this.iCR.findViewById(2131304103);
+    p.g(paramContext, "mRootView.findViewById(R.id.request_ok)");
+    this.kBm = ((Button)paramContext);
+    paramContext = this.iCR.findViewById(2131304098);
+    p.g(paramContext, "mRootView.findViewById(R.id.request_desc)");
+    this.lPU = ((TextView)paramContext);
+    paramContext = this.iCR.findViewById(2131304825);
+    p.g(paramContext, "mRootView.findViewById(R.id.simple_detail_desc)");
+    this.lPI = ((TextView)paramContext);
+    paramContext = this.iCR.findViewById(2131304097);
+    p.g(paramContext, "mRootView.findViewById(R.id.request_content)");
+    this.lPM = ((LinearLayout)paramContext);
+    paramContext = this.iCR.findViewById(2131304106);
+    p.g(paramContext, "mRootView.findViewById(R.id.request_right_icon)");
+    this.kBa = ((ImageView)paramContext);
+    paramContext = this.iCR.findViewById(2131304095);
+    p.g(paramContext, "mRootView.findViewById(R.id.request_apply_wording)");
+    this.lPK = ((TextView)paramContext);
+    paramContext = this.iCR.findViewById(2131304104);
+    p.g(paramContext, "mRootView.findViewById(R.id.request_recyclerview)");
+    this.lPD = ((MaxHeightRecyclerView)paramContext);
+    this.lPD.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
+    this.lPN = new o(this.cje);
+    this.lPN.lPO = this.lPO;
+    this.lPD.setAdapter((RecyclerView.a)this.lPN);
+    paramContext = this.iCR.findViewById(2131304101);
+    p.g(paramContext, "mRootView.findViewById(R.id.request_loading)");
+    this.gWO = paramContext;
+    paramContext = this.iCR.findViewById(2131297653);
+    p.g(paramContext, "mRootView.findViewById(R.id.button_group)");
+    this.oez = paramContext;
+    paramContext = this.iCR.findViewById(2131304099);
+    p.g(paramContext, "mRootView.findViewById(R.id.request_function)");
+    this.lPP = ((TextView)paramContext);
+    this.kBm.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(148227);
-        paramAnonymousView = i.a(this.mBy, true);
-        i.b localb = i.b(this.mBy);
-        o.a locala = i.c(this.mBy);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        paramAnonymousView = i.a(this.nbY, true);
+        localObject = i.b(this.nbY);
+        o.a locala = i.c(this.nbY);
         if (locala != null) {}
-        for (int i = locala.keF;; i = 0)
+        for (int i = locala.kzo;; i = 0)
         {
-          localb.a(1, paramAnonymousView, i);
-          paramAnonymousView = i.d(this.mBy);
-          if (paramAnonymousView == null) {
-            break;
+          ((b.c)localObject).a(1, paramAnonymousView, i);
+          paramAnonymousView = i.d(this.nbY);
+          if (paramAnonymousView != null) {
+            paramAnonymousView.c((k)this.nbY);
           }
-          paramAnonymousView.c((k)this.mBy);
+          a.a(this, "com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(148227);
           return;
         }
-        AppMethodBeat.o(148227);
       }
     });
-    this.kgz.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.kBn.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(148228);
-        paramAnonymousView = i.a(this.mBy, false);
-        i.b.a.a(i.b(this.mBy), 2, paramAnonymousView);
-        paramAnonymousView = i.d(this.mBy);
-        if (paramAnonymousView != null)
-        {
-          paramAnonymousView.c((k)this.mBy);
-          AppMethodBeat.o(148228);
-          return;
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        paramAnonymousView = i.a(this.nbY, false);
+        b.c.a.a(i.b(this.nbY), 2, paramAnonymousView);
+        paramAnonymousView = i.d(this.nbY);
+        if (paramAnonymousView != null) {
+          paramAnonymousView.c((k)this.nbY);
         }
+        a.a(this, "com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(148228);
       }
     });
-    this.mBp.setItemAnimator(null);
-    this.ikf = 2;
-    AppMethodBeat.o(183078);
+    this.lPD.setItemAnimator(null);
+    this.iDw = 2;
+    AppMethodBeat.o(192453);
   }
   
-  private final void sm(int paramInt)
+  private final void sO(int paramInt)
   {
     AppMethodBeat.i(148252);
     if ((paramInt == 1) || (paramInt == 3)) {}
     for (final double d = 1.5D;; d = 2.5D)
     {
-      this.mBp.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new c(this, d));
-      this.mBp.invalidate();
+      this.lPD.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new c(this, d));
+      this.lPD.invalidate();
       AppMethodBeat.o(148252);
       return;
     }
   }
   
-  public final void MP(int paramInt)
+  public final f a(d paramd, String paramString, ac paramac)
   {
-    AppMethodBeat.i(148258);
-    this.mBq.setTextColor(paramInt);
-    AppMethodBeat.o(148258);
-  }
-  
-  public final void RP(String paramString)
-  {
-    AppMethodBeat.i(148245);
-    this.kgC = paramString;
-    TextView localTextView = this.kgk;
-    if (paramString != null) {}
-    for (paramString = (CharSequence)paramString;; paramString = (CharSequence)"")
-    {
-      localTextView.setText(paramString);
-      AppMethodBeat.o(148245);
-      return;
+    AppMethodBeat.i(192452);
+    p.h(paramd, "component");
+    Context localContext = getContext();
+    p.g(localContext, "this.context");
+    paramString = new com.tencent.mm.plugin.appbrand.phonenumber.k(paramac, paramString, localContext, this.iCR.getMeasuredHeight(), paramd.getWindowAndroid().aWN());
+    paramd = paramd.getWindowAndroid();
+    p.g(paramd, "component.windowAndroid");
+    if (paramd.aWM()) {
+      paramString.setPosition(1);
     }
-  }
-  
-  public final void RQ(String paramString)
-  {
-    AppMethodBeat.i(148246);
-    this.mBv = paramString;
-    this.lJb.setText((CharSequence)paramString);
-    AppMethodBeat.o(148246);
-  }
-  
-  public final void RR(String paramString)
-  {
-    AppMethodBeat.i(148247);
-    this.mBw = paramString;
-    if (paramString != null)
-    {
-      this.lJc.setVisibility(0);
-      this.lJc.setText((CharSequence)paramString);
-    }
-    AppMethodBeat.o(148247);
-  }
-  
-  public final void RS(String paramString)
-  {
-    AppMethodBeat.i(148248);
-    this.mBx = paramString;
-    this.lJe.setText((CharSequence)paramString);
-    AppMethodBeat.o(148248);
-  }
-  
-  public final void Us(String paramString)
-  {
-    AppMethodBeat.i(148255);
-    if (paramString != null)
-    {
-      this.kgz.setText((CharSequence)paramString);
-      AppMethodBeat.o(148255);
-      return;
-    }
-    AppMethodBeat.o(148255);
-  }
-  
-  public final void a(View.OnClickListener paramOnClickListener)
-  {
-    AppMethodBeat.i(148259);
-    this.mBq.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(148259);
+    paramd = (f)paramString;
+    AppMethodBeat.o(192452);
+    return paramd;
   }
   
   public final void a(m paramm)
   {
     AppMethodBeat.i(148250);
-    Object localObject = this.lJh;
+    setPosition(this.iDw);
+    Object localObject = this.miV;
     if (localObject != null) {
       ((DialogInterface.OnShowListener)localObject).onShow((DialogInterface)this);
     }
-    this.kgA = paramm;
+    this.kBo = paramm;
     localObject = getContext().getSystemService("window");
     paramm = (m)localObject;
     if (!(localObject instanceof WindowManager)) {
@@ -268,124 +234,38 @@ public final class i
     paramm = (WindowManager)paramm;
     if (paramm != null)
     {
-      localObject = n.mCn;
-      localObject = this.ijA.getContext();
-      d.g.b.k.g(localObject, "mRootView.context");
-      View localView1 = this.ijA;
-      View localView2 = this.mBr;
+      localObject = n.swJ;
+      localObject = getContentView().getContext();
+      p.g(localObject, "contentView.context");
+      View localView1 = getContentView();
+      View localView2 = this.oez;
       Display localDisplay = paramm.getDefaultDisplay();
-      d.g.b.k.g(localDisplay, "it.defaultDisplay");
-      n.a((Context)localObject, localView1, localView2, localDisplay.getRotation(), this.mBA);
+      p.g(localDisplay, "it.defaultDisplay");
+      n.a((Context)localObject, localView1, localView2, localDisplay.getRotation(), this.mjE);
       paramm = paramm.getDefaultDisplay();
-      d.g.b.k.g(paramm, "it.defaultDisplay");
-      sm(paramm.getRotation());
+      p.g(paramm, "it.defaultDisplay");
+      sO(paramm.getRotation());
       AppMethodBeat.o(148250);
       return;
     }
     AppMethodBeat.o(148250);
   }
   
-  public final void a(o.b paramb)
-  {
-    this.mBs = paramb;
-    this.mBu.mBs = paramb;
-  }
-  
-  public final void a(o.c paramc)
-  {
-    AppMethodBeat.i(183077);
-    d.g.b.k.h(paramc, "listener");
-    this.mBu.mBG = paramc;
-    AppMethodBeat.o(183077);
-  }
-  
-  public final void aBP(String paramString)
-  {
-    AppMethodBeat.i(148257);
-    if (TextUtils.isEmpty((CharSequence)paramString))
-    {
-      this.mBq.setText((CharSequence)"");
-      this.mBq.setVisibility(4);
-      AppMethodBeat.o(148257);
-      return;
-    }
-    this.mBq.setText((CharSequence)paramString);
-    this.mBq.setVisibility(0);
-    AppMethodBeat.o(148257);
-  }
-  
-  public final void aBQ(String paramString)
-  {
-    AppMethodBeat.i(148263);
-    d.g.b.k.h(paramString, "scope");
-    this.keG = paramString;
-    AppMethodBeat.o(148263);
-  }
-  
-  public final boolean aLl()
+  public final boolean aOv()
   {
     return false;
   }
   
-  public final boolean aLm()
+  public final boolean aOw()
   {
     return false;
-  }
-  
-  public final void asC(String paramString)
-  {
-    AppMethodBeat.i(148256);
-    if (paramString != null)
-    {
-      this.kgy.setText((CharSequence)paramString);
-      AppMethodBeat.o(148256);
-      return;
-    }
-    AppMethodBeat.o(148256);
-  }
-  
-  public final void b(View.OnClickListener paramOnClickListener)
-  {
-    AppMethodBeat.i(148260);
-    this.kgm.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(148260);
-  }
-  
-  public final void bG(List<o.a> paramList)
-  {
-    AppMethodBeat.i(148262);
-    if (paramList != null)
-    {
-      if (paramList.isEmpty())
-      {
-        AppMethodBeat.o(148262);
-        return;
-      }
-      this.bYM.clear();
-      this.bYM.addAll((Collection)paramList);
-      this.mBu.notifyDataSetChanged();
-      this.mBo.setVisibility(0);
-      this.lJc.setVisibility(8);
-      this.gDe.setVisibility(8);
-      AppMethodBeat.o(148262);
-      return;
-    }
-    AppMethodBeat.o(148262);
-  }
-  
-  public final void bsB()
-  {
-    AppMethodBeat.i(169659);
-    this.ikf = 1;
-    this.ijA.setBackground(android.support.v4.content.b.l(getContext(), 2131231061));
-    AppMethodBeat.o(169659);
   }
   
   public final void dismiss()
   {
     AppMethodBeat.i(148253);
     super.dismiss();
-    DialogInterface.OnDismissListener localOnDismissListener = this.VX;
+    DialogInterface.OnDismissListener localOnDismissListener = this.XM;
     if (localOnDismissListener != null)
     {
       localOnDismissListener.onDismiss((DialogInterface)this);
@@ -397,18 +277,48 @@ public final class i
   
   public final View getContentView()
   {
-    return this.ijA;
+    AppMethodBeat.i(192449);
+    if (((i)this).qAX == null)
+    {
+      this.qAX = ((FrameLayout)new d(this, getContext()));
+      localObject = this.qAX;
+      if (localObject == null) {
+        p.bcb("mRootWrapperFrameLayout");
+      }
+      ((FrameLayout)localObject).addView(this.iCR, new ViewGroup.LayoutParams(-1, -1));
+    }
+    Object localObject = this.qAX;
+    if (localObject == null) {
+      p.bcb("mRootWrapperFrameLayout");
+    }
+    localObject = (View)localObject;
+    AppMethodBeat.o(192449);
+    return localObject;
+  }
+  
+  public final MotionEvent getLastPointerDownTouchEvent()
+  {
+    return this.lPG;
   }
   
   public final int getPosition()
   {
-    return this.ikf;
+    return this.iDw;
   }
   
-  public final void hW(boolean paramBoolean)
+  public final void h(d paramd)
+  {
+    AppMethodBeat.i(192451);
+    p.h(paramd, "component");
+    setPosition(this.iDw);
+    paramd.aVE().b((k)this);
+    AppMethodBeat.o(192451);
+  }
+  
+  public final void hb(boolean paramBoolean)
   {
     AppMethodBeat.i(148261);
-    ImageView localImageView = this.kgm;
+    ImageView localImageView = this.kBa;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -426,42 +336,199 @@ public final class i
   public final void onCancel()
   {
     AppMethodBeat.i(148254);
-    i.b.a.a(this.mBt, 3, new ArrayList());
+    b.c.a.a(this.ouJ, 3, new ArrayList());
     AppMethodBeat.o(148254);
   }
   
-  public final void pW(int paramInt)
+  public final void qy(int paramInt)
   {
     AppMethodBeat.i(148251);
-    Object localObject = n.mCn;
-    localObject = this.ijA.getContext();
-    d.g.b.k.g(localObject, "mRootView.context");
-    n.a((Context)localObject, this.ijA, this.mBr, paramInt, this.mBA);
-    sm(paramInt);
+    Object localObject = n.swJ;
+    localObject = getContentView().getContext();
+    p.g(localObject, "contentView.context");
+    n.a((Context)localObject, getContentView(), this.oez, paramInt, this.mjE);
+    sO(paramInt);
     AppMethodBeat.o(148251);
   }
   
-  public final void qV(String paramString)
+  public final void setAppBrandName(String paramString)
+  {
+    AppMethodBeat.i(148245);
+    this.kBq = paramString;
+    TextView localTextView = this.kAY;
+    if (paramString != null) {}
+    for (paramString = (CharSequence)paramString;; paramString = (CharSequence)"")
+    {
+      localTextView.setText(paramString);
+      AppMethodBeat.o(148245);
+      return;
+    }
+  }
+  
+  public final void setApplyWording(String paramString)
+  {
+    AppMethodBeat.i(148248);
+    this.lPL = paramString;
+    this.lPK.setText((CharSequence)paramString);
+    AppMethodBeat.o(148248);
+  }
+  
+  public final void setExplainOnClickListener(View.OnClickListener paramOnClickListener)
+  {
+    AppMethodBeat.i(148260);
+    this.kBa.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(148260);
+  }
+  
+  public final void setFunctionButtonOnClickListener(View.OnClickListener paramOnClickListener)
+  {
+    AppMethodBeat.i(148259);
+    this.lPP.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(148259);
+  }
+  
+  public final void setFunctionButtonText(String paramString)
+  {
+    AppMethodBeat.i(148257);
+    if (TextUtils.isEmpty((CharSequence)paramString))
+    {
+      this.lPP.setText((CharSequence)"");
+      this.lPP.setVisibility(4);
+      AppMethodBeat.o(148257);
+      return;
+    }
+    this.lPP.setText((CharSequence)paramString);
+    this.lPP.setVisibility(0);
+    AppMethodBeat.o(148257);
+  }
+  
+  public final void setFunctionButtonTextColor(int paramInt)
+  {
+    AppMethodBeat.i(148258);
+    this.lPP.setTextColor(paramInt);
+    AppMethodBeat.o(148258);
+  }
+  
+  public final void setIconUrl(String paramString)
   {
     AppMethodBeat.i(148249);
     this.iconUrl = paramString;
-    com.tencent.mm.modelappbrand.a.b.aAS().a(this.kgj, this.iconUrl, 2131233241, (b.h)g.htk);
+    com.tencent.mm.modelappbrand.a.b.aDV().a(this.kAX, this.iconUrl, 2131233241, (b.h)g.hLC);
     AppMethodBeat.o(148249);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$Companion;", "", "()V", "ALERT_RESULT_CODE_ACCEPT", "", "ALERT_RESULT_CODE_CANCEL", "ALERT_RESULT_CODE_REJECT", "luggage-wechat-full-sdk_release"})
-  public static final class a {}
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$Listener;", "", "onMsg", "", "resultCode", "", "resultData", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "avatarId", "luggage-wechat-full-sdk_release"})
-  public static abstract interface b
+  public final void setItemCheckedListener(o.b paramb)
   {
-    public abstract void a(int paramInt1, ArrayList<String> paramArrayList, int paramInt2);
-    
-    @l(fNY={1, 1, 16})
-    public static final class a {}
+    this.lPO = paramb;
+    this.lPN.lPO = paramb;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$changeListHeightByRotation$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "luggage-wechat-full-sdk_release"})
+  public final void setNegativeButtonText(String paramString)
+  {
+    AppMethodBeat.i(148255);
+    if (paramString != null)
+    {
+      this.kBn.setText((CharSequence)paramString);
+      AppMethodBeat.o(148255);
+      return;
+    }
+    AppMethodBeat.o(148255);
+  }
+  
+  public final void setOnListItemLongClickListener(o.c paramc)
+  {
+    AppMethodBeat.i(183077);
+    p.h(paramc, "listener");
+    this.lPN.ncg = paramc;
+    AppMethodBeat.o(183077);
+  }
+  
+  public final void setPosition(int paramInt)
+  {
+    AppMethodBeat.i(192450);
+    this.iDw = paramInt;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(192450);
+      return;
+      this.iCR.setBackground(android.support.v4.content.b.l(getContext(), 2131231061));
+      AppMethodBeat.o(192450);
+      return;
+      this.iCR.setBackground(android.support.v4.content.b.l(getContext(), 2131231060));
+    }
+  }
+  
+  public final void setPositiveButtonText(String paramString)
+  {
+    AppMethodBeat.i(148256);
+    if (paramString != null)
+    {
+      this.kBm.setText((CharSequence)paramString);
+      AppMethodBeat.o(148256);
+      return;
+    }
+    AppMethodBeat.o(148256);
+  }
+  
+  public final void setRequestDesc(String paramString)
+  {
+    AppMethodBeat.i(148246);
+    this.lPH = paramString;
+    this.lPU.setText((CharSequence)paramString);
+    AppMethodBeat.o(148246);
+  }
+  
+  public final void setScope(String paramString)
+  {
+    AppMethodBeat.i(148263);
+    p.h(paramString, "scope");
+    this.kzp = paramString;
+    AppMethodBeat.o(148263);
+  }
+  
+  public final void setSelectListItem(List<o.a> paramList)
+  {
+    AppMethodBeat.i(148262);
+    if (paramList != null)
+    {
+      if (paramList.isEmpty())
+      {
+        AppMethodBeat.o(148262);
+        return;
+      }
+      this.cje.clear();
+      this.cje.addAll((Collection)paramList);
+      this.lPN.notifyDataSetChanged();
+      this.lPM.setVisibility(0);
+      this.lPI.setVisibility(8);
+      this.gWO.setVisibility(8);
+      AppMethodBeat.o(148262);
+      return;
+    }
+    AppMethodBeat.o(148262);
+  }
+  
+  public final void setSimpleDetailDesc(String paramString)
+  {
+    AppMethodBeat.i(148247);
+    this.lPJ = paramString;
+    if (paramString != null)
+    {
+      this.lPI.setVisibility(0);
+      this.lPI.setText((CharSequence)paramString);
+    }
+    AppMethodBeat.o(148247);
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$Listener;", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/IJsAuthorizePromptPresenterView$Listener;", "luggage-wechat-full-sdk_release"})
+  public static abstract interface b
+    extends b.c
+  {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$changeListHeightByRotation$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "luggage-wechat-full-sdk_release"})
   public static final class c
     implements ViewTreeObserver.OnGlobalLayoutListener
   {
@@ -475,7 +542,7 @@ public final class i
       int k = 0;
       if (d > 0.0D)
       {
-        Object localObject = i.a(this.mBy).getLayoutManager();
+        Object localObject = i.a(this.nbY).getLayoutManager();
         int i;
         if (localObject != null)
         {
@@ -495,23 +562,44 @@ public final class i
           k += 1;
           j = i + j;
           break;
-          localObject = this.mBy.getContext();
-          d.g.b.k.g(localObject, "context");
+          localObject = this.nbY.getContext();
+          p.g(localObject, "context");
           i = ((Context)localObject).getResources().getDimensionPixelSize(2131165886);
           break label59;
           label114:
           i = (int)(i * d);
         }
       }
-      i.a(this.mBy).setMaxHeight(j);
-      i.a(this.mBy).getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
+      i.a(this.nbY).setMaxHeight(j);
+      i.a(this.nbY).getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
       AppMethodBeat.o(169658);
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog$getContentView$2", "Landroid/widget/FrameLayout;", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "luggage-wechat-full-sdk_release"})
+  public static final class d
+    extends FrameLayout
+  {
+    d(Context paramContext)
+    {
+      super();
+    }
+    
+    public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(192448);
+      if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 0)) {
+        i.a(this.nbY, MotionEvent.obtain(paramMotionEvent));
+      }
+      boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(192448);
+      return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.i
  * JD-Core Version:    0.7.0.1
  */

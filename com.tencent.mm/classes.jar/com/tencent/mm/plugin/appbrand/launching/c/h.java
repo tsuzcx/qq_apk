@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.launching.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.a;
-import com.tencent.mm.plugin.appbrand.launching.au;
-import com.tencent.mm.plugin.appbrand.service.m.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.launching.ax;
+import com.tencent.mm.plugin.appbrand.service.n.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class h
 {
@@ -13,16 +13,16 @@ public final class h
   {
     AppMethodBeat.i(47420);
     if (parama != null) {
-      parama.bnZ();
+      parama.brS();
     }
     AppMethodBeat.o(47420);
   }
   
   public static abstract interface a
   {
-    public abstract void bnY();
+    public abstract void brR();
     
-    public abstract void bnZ();
+    public abstract void brS();
   }
 }
 

@@ -2,10 +2,10 @@ package com.tencent.d.e.a.a;
 
 public final class k
 {
-  public int JTT = 0;
-  public int JTU = 0;
-  public int JTV = 0;
-  public int JTW = 0;
+  public int LNJ = 0;
+  public int LNK = 0;
+  public int LNL = 0;
+  public int LNM = 0;
 }
 
 

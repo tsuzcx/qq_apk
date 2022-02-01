@@ -2,7 +2,7 @@ package d.l.b.a.b.b.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.e;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.a.g;
 import d.l.b.a.b.a.g.a;
 import d.l.b.a.b.b.an;
@@ -17,12 +17,12 @@ import java.util.Set;
 
 final class c
 {
-  public static final c LiX;
+  public static final c MZT;
   
   static
   {
     AppMethodBeat.i(57358);
-    LiX = new c();
+    MZT = new c();
     AppMethodBeat.o(57358);
   }
   
@@ -31,7 +31,7 @@ final class c
     int i = 0;
     AppMethodBeat.i(57357);
     Object localObject = paramObject.getClass();
-    if (k.g(localObject, Class.class))
+    if (p.i(localObject, Class.class))
     {
       if (paramObject == null)
       {
@@ -39,23 +39,23 @@ final class c
         AppMethodBeat.o(57357);
         throw parama;
       }
-      parama.a(paramf, bt((Class)paramObject));
+      parama.a(paramf, bv((Class)paramObject));
       AppMethodBeat.o(57357);
       return;
     }
-    if (h.fSY().contains(localObject))
+    if (h.gkx().contains(localObject))
     {
       parama.a(paramf, paramObject);
       AppMethodBeat.o(57357);
       return;
     }
-    if (d.l.b.a.b.b.d.b.b.bw((Class)localObject))
+    if (d.l.b.a.b.b.d.b.b.by((Class)localObject))
     {
       if (((Class)localObject).isEnum()) {}
       for (;;)
       {
-        k.g(localObject, "(if (clazz.isEnum) clazz…lse clazz.enclosingClass)");
-        localObject = d.l.b.a.b.b.d.b.b.bz((Class)localObject);
+        p.g(localObject, "(if (clazz.isEnum) clazz…lse clazz.enclosingClass)");
+        localObject = d.l.b.a.b.b.d.b.b.bB((Class)localObject);
         if (paramObject != null) {
           break;
         }
@@ -64,8 +64,8 @@ final class c
         throw parama;
         localObject = ((Class)localObject).getEnclosingClass();
       }
-      paramObject = d.l.b.a.b.f.f.aWB(((Enum)paramObject).name());
-      k.g(paramObject, "Name.identifier((value as Enum<*>).name)");
+      paramObject = d.l.b.a.b.f.f.bcE(((Enum)paramObject).name());
+      p.g(paramObject, "Name.identifier((value as Enum<*>).name)");
       parama.a(paramf, (d.l.b.a.b.f.a)localObject, paramObject);
       AppMethodBeat.o(57357);
       return;
@@ -73,10 +73,10 @@ final class c
     if (Annotation.class.isAssignableFrom((Class)localObject))
     {
       localObject = ((Class)localObject).getInterfaces();
-      k.g(localObject, "clazz.interfaces");
-      localObject = (Class)e.S((Object[])localObject);
-      k.g(localObject, "annotationClass");
-      parama = parama.a(paramf, d.l.b.a.b.b.d.b.b.bz((Class)localObject));
+      p.g(localObject, "clazz.interfaces");
+      localObject = (Class)e.T((Object[])localObject);
+      p.g(localObject, "annotationClass");
+      parama = parama.a(paramf, d.l.b.a.b.b.d.b.b.bB((Class)localObject));
       if (parama == null)
       {
         AppMethodBeat.o(57357);
@@ -101,10 +101,10 @@ final class c
         return;
       }
       paramf = ((Class)localObject).getComponentType();
-      k.g(paramf, "componentType");
+      p.g(paramf, "componentType");
       if (paramf.isEnum())
       {
-        paramf = d.l.b.a.b.b.d.b.b.bz(paramf);
+        paramf = d.l.b.a.b.b.d.b.b.bB(paramf);
         if (paramObject == null)
         {
           parama = new v("null cannot be cast to non-null type kotlin.Array<*>");
@@ -123,13 +123,13 @@ final class c
             AppMethodBeat.o(57357);
             throw parama;
           }
-          localObject = d.l.b.a.b.f.f.aWB(((Enum)localObject).name());
-          k.g(localObject, "Name.identifier((element as Enum<*>).name)");
+          localObject = d.l.b.a.b.f.f.bcE(((Enum)localObject).name());
+          p.g(localObject, "Name.identifier((element as Enum<*>).name)");
           parama.a(paramf, (d.l.b.a.b.f.f)localObject);
           i += 1;
         }
       }
-      if (k.g(paramf, Class.class))
+      if (p.i(paramf, Class.class))
       {
         if (paramObject == null)
         {
@@ -149,7 +149,7 @@ final class c
             AppMethodBeat.o(57357);
             throw parama;
           }
-          parama.a(bt((Class)paramObject));
+          parama.a(bv((Class)paramObject));
           i += 1;
         }
       }
@@ -163,10 +163,10 @@ final class c
       int j = paramf.length;
       while (i < j)
       {
-        parama.fh(paramf[i]);
+        parama.fj(paramf[i]);
         i += 1;
       }
-      parama.Hm();
+      parama.IH();
       AppMethodBeat.o(57357);
       return;
     }
@@ -179,10 +179,10 @@ final class c
   {
     AppMethodBeat.i(57354);
     Class localClass = d.g.a.a(d.g.a.a(paramAnnotation));
-    paramc = paramc.a(d.l.b.a.b.b.d.b.b.bz(localClass), (an)new b(paramAnnotation));
+    paramc = paramc.a(d.l.b.a.b.b.d.b.b.bB(localClass), (an)new b(paramAnnotation));
     if (paramc != null)
     {
-      LiX.a(paramc, paramAnnotation, localClass);
+      MZT.a(paramc, paramAnnotation, localClass);
       AppMethodBeat.o(57354);
       return;
     }
@@ -192,23 +192,23 @@ final class c
   public static void a(Class<?> paramClass, p.c paramc)
   {
     AppMethodBeat.i(57353);
-    k.h(paramClass, "klass");
-    k.h(paramc, "visitor");
+    p.h(paramClass, "klass");
+    p.h(paramc, "visitor");
     paramClass = paramClass.getDeclaredAnnotations();
     int j = paramClass.length;
     int i = 0;
     while (i < j)
     {
       Object localObject = paramClass[i];
-      k.g(localObject, "annotation");
+      p.g(localObject, "annotation");
       a(paramc, localObject);
       i += 1;
     }
-    paramc.Hm();
+    paramc.IH();
     AppMethodBeat.o(57353);
   }
   
-  private static d.l.b.a.b.j.b.f bt(Class<?> paramClass)
+  private static d.l.b.a.b.j.b.f bv(Class<?> paramClass)
   {
     AppMethodBeat.i(57356);
     int i = 0;
@@ -216,82 +216,82 @@ final class c
     {
       i += 1;
       paramClass = paramClass.getComponentType();
-      k.g(paramClass, "currentClass.componentType");
+      p.g(paramClass, "currentClass.componentType");
     }
     if (paramClass.isPrimitive())
     {
-      if (k.g(paramClass, Void.TYPE))
+      if (p.i(paramClass, Void.TYPE))
       {
-        paramClass = d.l.b.a.b.f.a.p(g.KZg.KZo.fZL());
-        k.g(paramClass, "ClassId.topLevel(KotlinB…s.FQ_NAMES.unit.toSafe())");
+        paramClass = d.l.b.a.b.f.a.p(g.MQb.MQj.grk());
+        p.g(paramClass, "ClassId.topLevel(KotlinB…s.FQ_NAMES.unit.toSafe())");
         paramClass = new d.l.b.a.b.j.b.f(paramClass, i);
         AppMethodBeat.o(57356);
         return paramClass;
       }
-      paramClass = d.aWO(paramClass.getName());
-      k.g(paramClass, "JvmPrimitiveType.get(currentClass.name)");
-      paramClass = paramClass.gbF();
-      k.g(paramClass, "JvmPrimitiveType.get(cur…Class.name).primitiveType");
+      paramClass = d.bcR(paramClass.getName());
+      p.g(paramClass, "JvmPrimitiveType.get(currentClass.name)");
+      paramClass = paramClass.gte();
+      p.g(paramClass, "JvmPrimitiveType.get(cur…Class.name).primitiveType");
       if (i > 0)
       {
-        if (paramClass.LaY != null)
+        if (paramClass.MRT != null)
         {
-          localObject = paramClass.LaY;
+          localObject = paramClass.MRT;
           paramClass = (Class<?>)localObject;
           if (localObject == null)
           {
-            d.l.b.a.b.a.h.agL(4);
+            d.l.b.a.b.a.h.ajm(4);
             paramClass = (Class<?>)localObject;
           }
         }
         for (;;)
         {
           paramClass = d.l.b.a.b.f.a.p(paramClass);
-          k.g(paramClass, "ClassId.topLevel(primitiveType.arrayTypeFqName)");
+          p.g(paramClass, "ClassId.topLevel(primitiveType.arrayTypeFqName)");
           paramClass = new d.l.b.a.b.j.b.f(paramClass, i - 1);
           AppMethodBeat.o(57356);
           return paramClass;
-          paramClass.LaY = g.KYV.p(paramClass.LaW);
-          localObject = paramClass.LaY;
+          paramClass.MRT = g.MPQ.p(paramClass.MRR);
+          localObject = paramClass.MRT;
           paramClass = (Class<?>)localObject;
           if (localObject == null)
           {
-            d.l.b.a.b.a.h.agL(5);
+            d.l.b.a.b.a.h.ajm(5);
             paramClass = (Class<?>)localObject;
           }
         }
       }
-      if (paramClass.LaX != null)
+      if (paramClass.MRS != null)
       {
-        localObject = paramClass.LaX;
+        localObject = paramClass.MRS;
         paramClass = (Class<?>)localObject;
         if (localObject == null)
         {
-          d.l.b.a.b.a.h.agL(1);
+          d.l.b.a.b.a.h.ajm(1);
           paramClass = (Class<?>)localObject;
         }
       }
       for (;;)
       {
         paramClass = d.l.b.a.b.f.a.p(paramClass);
-        k.g(paramClass, "ClassId.topLevel(primitiveType.typeFqName)");
+        p.g(paramClass, "ClassId.topLevel(primitiveType.typeFqName)");
         paramClass = new d.l.b.a.b.j.b.f(paramClass, i);
         AppMethodBeat.o(57356);
         return paramClass;
-        paramClass.LaX = g.KYV.p(paramClass.LaV);
-        localObject = paramClass.LaX;
+        paramClass.MRS = g.MPQ.p(paramClass.MRQ);
+        localObject = paramClass.MRS;
         paramClass = (Class<?>)localObject;
         if (localObject == null)
         {
-          d.l.b.a.b.a.h.agL(2);
+          d.l.b.a.b.a.h.ajm(2);
           paramClass = (Class<?>)localObject;
         }
       }
     }
-    paramClass = d.l.b.a.b.b.d.b.b.bz(paramClass);
-    Object localObject = d.l.b.a.b.a.b.c.Lcr;
-    localObject = paramClass.fZF();
-    k.g(localObject, "javaClassId.asSingleFqName()");
+    paramClass = d.l.b.a.b.b.d.b.b.bB(paramClass);
+    Object localObject = d.l.b.a.b.a.b.c.MTm;
+    localObject = paramClass.gre();
+    p.g(localObject, "javaClassId.asSingleFqName()");
     localObject = d.l.b.a.b.a.b.c.c((d.l.b.a.b.f.b)localObject);
     if (localObject == null) {}
     for (;;)
@@ -316,11 +316,11 @@ final class c
       {
         Object localObject1 = ((Method)localObject2).invoke(paramAnnotation, new Object[0]);
         if (localObject1 == null) {
-          k.fOy();
+          p.gfZ();
         }
-        k.g(localObject2, "method");
-        localObject2 = d.l.b.a.b.f.f.aWB(((Method)localObject2).getName());
-        k.g(localObject2, "Name.identifier(method.name)");
+        p.g(localObject2, "method");
+        localObject2 = d.l.b.a.b.f.f.bcE(((Method)localObject2).getName());
+        p.g(localObject2, "Name.identifier(method.name)");
         a(parama, (d.l.b.a.b.f.f)localObject2, localObject1);
       }
       catch (IllegalAccessException localIllegalAccessException)
@@ -330,13 +330,13 @@ final class c
       }
       i += 1;
     }
-    parama.Hm();
+    parama.IH();
     AppMethodBeat.o(57355);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.location.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.r;
+import com.tencent.mm.pluginsdk.s;
 
 public final class f
 {
-  private static double kws = -85.0D;
-  private static double kwt = -1000.0D;
-  private static double kwu = -85.0D;
-  private static double kwv = -1000.0D;
+  private static double kSA = -85.0D;
+  private static double kSB = -1000.0D;
+  private static double kSy = -85.0D;
+  private static double kSz = -1000.0D;
   
   public static double E(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
@@ -53,7 +53,7 @@ public final class f
         break;
         if ((paramDouble3 == -1000.0D) || (paramDouble4 == -85.0D)) {
           paramInt = 0;
-        } else if (r.c(paramDouble2, paramDouble1, paramDouble4, paramDouble3) >= 5.0D) {
+        } else if (s.c(paramDouble2, paramDouble1, paramDouble4, paramDouble3) >= 5.0D) {
           paramInt = 1;
         } else {
           paramInt = 0;
@@ -65,13 +65,13 @@ public final class f
   public static double h(double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(55688);
-    kwu = paramDouble1;
-    kwv = paramDouble2;
-    if ((kws == -85.0D) || (kwt == -1000.0D)) {}
-    for (paramDouble1 = 0.0D;; paramDouble1 = Math.atan2(kwv - kwt, kwu - kws) * 180.0D / 3.141592D)
+    kSA = paramDouble1;
+    kSB = paramDouble2;
+    if ((kSy == -85.0D) || (kSz == -1000.0D)) {}
+    for (paramDouble1 = 0.0D;; paramDouble1 = Math.atan2(kSB - kSz, kSA - kSy) * 180.0D / 3.141592D)
     {
-      kws = kwu;
-      kwt = kwv;
+      kSy = kSA;
+      kSz = kSB;
       AppMethodBeat.o(55688);
       return paramDouble1;
     }
@@ -84,7 +84,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.f
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public class DiffDevOAuthFactory
   public static final int MAX_SUPPORTED_VERSION = 1;
   private static final String TAG = "MicroMsg.SDK.DiffDevOAuthFactory";
   public static final int VERSION_1 = 1;
-  private static IDiffDevOAuth v1Instance = null;
+  private static IDiffDevOAuth v1Instance;
   
   public static IDiffDevOAuth getDiffDevOAuth()
   {
@@ -29,9 +29,8 @@ public class DiffDevOAuthFactory
       AppMethodBeat.o(3744);
       return null;
     }
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
       AppMethodBeat.o(3744);
       return null;
     }
@@ -45,7 +44,7 @@ public class DiffDevOAuthFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.DiffDevOAuthFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.mm.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
 import com.tencent.mm.api.t;
-import com.tencent.mm.av.l;
-import com.tencent.mm.av.o;
-import com.tencent.mm.g.a.cs;
-import com.tencent.mm.g.a.cs.b;
+import com.tencent.mm.aw.i;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.g.a.cv;
+import com.tencent.mm.g.a.cv.b;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.fav.a.ad;
-import com.tencent.mm.plugin.messenger.a.j;
-import com.tencent.mm.remoteservice.d;
+import com.tencent.mm.modelmulti.o;
+import com.tencent.mm.modelmulti.o.b;
+import com.tencent.mm.modelmulti.o.d;
+import com.tencent.mm.modelmulti.o.e;
 import com.tencent.mm.remoteservice.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public class PhotoEditProxy
   extends com.tencent.mm.remoteservice.a
 {
-  public PhotoEditProxy(d paramd)
+  public PhotoEditProxy(com.tencent.mm.remoteservice.d paramd)
   {
     super(paramd);
   }
@@ -36,12 +36,12 @@ public class PhotoEditProxy
   public int doFavInMM(String paramString)
   {
     AppMethodBeat.i(103246);
-    cs localcs = new cs();
-    ((ad)com.tencent.mm.kernel.g.ab(ad.class)).a(localcs, 2, paramString);
-    localcs.dck.dcq = 44;
-    com.tencent.mm.sdk.b.a.GpY.l(localcs);
-    ac.i("MicroMsg.PhotoEditProxy", "[doFavInMM] path:%s", new Object[] { paramString });
-    int i = localcs.dcl.ret;
+    cv localcv = new cv();
+    ((com.tencent.mm.plugin.fav.a.ad)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fav.a.ad.class)).a(localcv, 2, paramString);
+    localcv.dnG.dnM = 44;
+    com.tencent.mm.sdk.b.a.IbL.l(localcv);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.PhotoEditProxy", "[doFavInMM] path:%s", new Object[] { paramString });
+    int i = localcv.dnH.ret;
     AppMethodBeat.o(103246);
     return i;
   }
@@ -58,7 +58,7 @@ public class PhotoEditProxy
   public String getFullPathInMM(String paramString)
   {
     AppMethodBeat.i(103247);
-    paramString = o.aFx().getFullPath(paramString);
+    paramString = q.aIF().getFullPath(paramString);
     AppMethodBeat.o(103247);
     return paramString;
   }
@@ -75,7 +75,7 @@ public class PhotoEditProxy
   public String getSelfUsernameInMM()
   {
     AppMethodBeat.i(103244);
-    String str = u.axw();
+    String str = u.aAm();
     AppMethodBeat.o(103244);
     return str;
   }
@@ -92,7 +92,7 @@ public class PhotoEditProxy
   public boolean isAutoSavePhotoInMM()
   {
     AppMethodBeat.i(103245);
-    boolean bool = com.tencent.mm.kernel.g.agR().agA().getBoolean(ah.a.GLd, true);
+    boolean bool = com.tencent.mm.kernel.g.ajC().ajl().getBoolean(al.a.Ixv, true);
     AppMethodBeat.o(103245);
     return bool;
   }
@@ -138,16 +138,26 @@ public class PhotoEditProxy
   public void sendImageInMM(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(103243);
-    paramString2 = new l(4, paramString3, paramString4, paramString2, 0, null, 0, "", "", true, 2131231564);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agi().a(paramString2, 0);
-    j.dck().hF(paramString1, paramString4);
+    paramString3 = o.a(o.d.ifX).pk(4);
+    paramString3.dyU = u.aAm();
+    paramString3.toUser = paramString4;
+    paramString3.ibF = paramString2;
+    paramString3.hZz = 0;
+    paramString3.igd = null;
+    paramString3.dxr = 0;
+    paramString3.hZI = "";
+    paramString3.thumbPath = "";
+    paramString3.igg = true;
+    paramString3.igf = 2131231564;
+    paramString3.igc = 11;
+    paramString3.aJv().execute();
+    com.tencent.mm.plugin.messenger.a.g.dlD().hP(paramString1, paramString4);
     AppMethodBeat.o(103243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.PhotoEditProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ public final class bv
   
   private bv(byte paramByte)
   {
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.bv
  * JD-Core Version:    0.7.0.1
  */

@@ -13,194 +13,194 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.o;
+import com.tencent.mm.aw.a.a.c;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.aw.q;
 import com.tencent.mm.plugin.card.d.n;
 import com.tencent.mm.plugin.card.model.m;
-import com.tencent.mm.protocal.protobuf.qy;
-import com.tencent.mm.protocal.protobuf.ry;
-import com.tencent.mm.protocal.protobuf.yg;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.aaf;
+import com.tencent.mm.protocal.protobuf.sr;
+import com.tencent.mm.protocal.protobuf.ts;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 
 public final class e
   extends a
 {
-  protected TextView iCg;
-  private LinearLayout nZe;
-  private RelativeLayout omV;
-  private TextView omW;
-  private View omX;
-  private ImageView omY;
-  private ImageView omZ;
-  private ImageView ona;
-  private ImageView onb;
-  private ImageView onc;
+  protected TextView iVq;
+  private LinearLayout oCy;
+  private RelativeLayout oQq;
+  private TextView oQr;
+  private View oQs;
+  private ImageView oQt;
+  private ImageView oQu;
+  private ImageView oQv;
+  private ImageView oQw;
+  private ImageView oQx;
   
   public e(Context paramContext)
   {
     super(paramContext);
   }
   
-  private void bUi()
+  private void bYN()
   {
     AppMethodBeat.i(113912);
     Object localObject = new c.a();
-    ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.aph();
-    o.aFC();
-    ((c.a)localObject).hKO = null;
-    ((c.a)localObject).gKe = m.UK(this.nTp.bPj().Eiq);
-    ((c.a)localObject).hKx = true;
-    ((c.a)localObject).gLt = true;
-    ((c.a)localObject).hKP = this.mContext.getResources().getDimensionPixelSize(2131165983);
-    ((c.a)localObject).hKQ = true;
-    ((c.a)localObject).hKv = true;
-    ((c.a)localObject).hKI = 2131231519;
-    ((c.a)localObject).gKh = com.tencent.mm.cc.a.au(this.mContext, 2131165987);
-    ((c.a)localObject).gKg = com.tencent.mm.cc.a.ig(this.mContext);
-    localObject = ((c.a)localObject).aFT();
-    o.aFB().a(this.nTp.bPj().Eiq, this.onb, (c)localObject);
-    ac.i("MicroMsg.CardWidgetMembership", "the member back ground url is " + this.nTp.bPj().Eiq);
+    ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.arU();
+    q.aIK();
+    ((c.a)localObject).idJ = null;
+    ((c.a)localObject).hdP = m.Yt(this.owK.bTO().FPA);
+    ((c.a)localObject).idr = true;
+    ((c.a)localObject).hfi = true;
+    ((c.a)localObject).idK = this.mContext.getResources().getDimensionPixelSize(2131165983);
+    ((c.a)localObject).idL = true;
+    ((c.a)localObject).idp = true;
+    ((c.a)localObject).idD = 2131231519;
+    ((c.a)localObject).hdS = com.tencent.mm.cc.a.ax(this.mContext, 2131165987);
+    ((c.a)localObject).hdR = com.tencent.mm.cc.a.ip(this.mContext);
+    localObject = ((c.a)localObject).aJc();
+    q.aIJ().a(this.owK.bTO().FPA, this.oQw, (c)localObject);
+    ad.i("MicroMsg.CardWidgetMembership", "the member back ground url is " + this.owK.bTO().FPA);
     AppMethodBeat.o(113912);
   }
   
-  public final void Ah(int paramInt)
+  public final void AQ(int paramInt)
   {
     AppMethodBeat.i(113909);
-    if (!TextUtils.isEmpty(this.nTp.bPj().Eiq))
+    if (!TextUtils.isEmpty(this.owK.bTO().FPA))
     {
-      this.onb.setBackgroundDrawable(null);
-      this.onc.setVisibility(0);
-      bUi();
+      this.oQw.setBackgroundDrawable(null);
+      this.oQx.setVisibility(0);
+      bYN();
       AppMethodBeat.o(113909);
       return;
     }
-    if (this.omA != null)
+    if (this.oPV != null)
     {
-      this.onb.setBackgroundResource(paramInt);
-      this.onc.setVisibility(8);
+      this.oQw.setBackgroundResource(paramInt);
+      this.oQx.setVisibility(8);
     }
     AppMethodBeat.o(113909);
   }
   
-  public final void H(boolean paramBoolean1, boolean paramBoolean2) {}
+  public final void I(boolean paramBoolean1, boolean paramBoolean2) {}
   
   public final void a(ShapeDrawable paramShapeDrawable)
   {
     AppMethodBeat.i(113910);
-    if (!TextUtils.isEmpty(this.nTp.bPj().Eiq))
+    if (!TextUtils.isEmpty(this.owK.bTO().FPA))
     {
-      this.onb.setBackgroundDrawable(null);
-      this.onc.setVisibility(0);
-      bUi();
+      this.oQw.setBackgroundDrawable(null);
+      this.oQx.setVisibility(0);
+      bYN();
       AppMethodBeat.o(113910);
       return;
     }
-    if (this.omA != null)
+    if (this.oPV != null)
     {
-      this.onb.setBackgroundDrawable(paramShapeDrawable);
-      this.onc.setVisibility(8);
+      this.oQw.setBackgroundDrawable(paramShapeDrawable);
+      this.oQx.setVisibility(8);
     }
     AppMethodBeat.o(113910);
   }
   
-  protected final void bUd()
+  protected final void bYI()
   {
     AppMethodBeat.i(113906);
-    this.iCg = ((TextView)bUc().findViewById(2131297911));
-    this.omV = ((RelativeLayout)bUc().findViewById(2131297860));
-    this.nZe = ((LinearLayout)bUc().findViewById(2131297762));
-    this.omW = ((TextView)bUc().findViewById(2131298408));
-    this.omX = bUc().findViewById(2131297760);
-    this.omY = ((ImageView)bUc().findViewById(2131297761));
-    this.omZ = ((ImageView)this.omA.findViewById(2131302234));
-    this.ona = ((ImageView)this.omA.findViewById(2131302233));
-    this.onb = ((ImageView)this.omA.findViewById(2131297857));
-    this.onc = ((ImageView)this.omA.findViewById(2131297859));
+    this.iVq = ((TextView)bYH().findViewById(2131297911));
+    this.oQq = ((RelativeLayout)bYH().findViewById(2131297860));
+    this.oCy = ((LinearLayout)bYH().findViewById(2131297762));
+    this.oQr = ((TextView)bYH().findViewById(2131298408));
+    this.oQs = bYH().findViewById(2131297760);
+    this.oQt = ((ImageView)bYH().findViewById(2131297761));
+    this.oQu = ((ImageView)this.oPV.findViewById(2131302234));
+    this.oQv = ((ImageView)this.oPV.findViewById(2131302233));
+    this.oQw = ((ImageView)this.oPV.findViewById(2131297857));
+    this.oQx = ((ImageView)this.oPV.findViewById(2131297859));
     AppMethodBeat.o(113906);
   }
   
-  protected final void bUe()
+  protected final void bYJ()
   {
     AppMethodBeat.i(113907);
-    if (this.mmb != null) {
-      this.mmb.setText(this.nTp.bPi().nVK);
+    if (this.mMD != null) {
+      this.mMD.setText(this.owK.bTN().oze);
     }
     Object localObject;
-    if ((this.nTp.bPi().Ekq != null) && (this.nTp.bPi().Ekq.size() > 0))
+    if ((this.owK.bTN().FRz != null) && (this.owK.bTN().FRz.size() > 0))
     {
-      localObject = (yg)this.nTp.bPi().Ekq.get(0);
-      if (!TextUtils.isEmpty(((yg)localObject).title)) {
-        this.iCg.setText(((yg)localObject).title);
+      localObject = (aaf)this.owK.bTN().FRz.get(0);
+      if (!TextUtils.isEmpty(((aaf)localObject).title)) {
+        this.iVq.setText(((aaf)localObject).title);
       }
     }
     else
     {
-      if (!this.nTp.bPe()) {
+      if (!this.owK.bTJ()) {
         break label484;
       }
-      jq(true);
-      this.onb.setAlpha(255);
-      if (this.onb.getBackground() != null) {
-        this.onb.getBackground().setAlpha(255);
+      jB(true);
+      this.oQw.setAlpha(255);
+      if (this.oQw.getBackground() != null) {
+        this.oQw.getBackground().setAlpha(255);
       }
-      localObject = this.nTp.bPj().code;
+      localObject = this.owK.bTO().code;
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         break label307;
       }
-      ac.e("MicroMsg.CardWidgetMembership", "don't updateCodeLayout, code is empty!");
-      jq(false);
+      ad.e("MicroMsg.CardWidgetMembership", "don't updateCodeLayout, code is empty!");
+      jB(false);
     }
     for (;;)
     {
-      localObject = this.omV.getLayoutParams();
+      localObject = this.oQq.getLayoutParams();
       int i = this.mContext.getResources().getDimensionPixelSize(2131165483);
       int j = this.mContext.getResources().getDisplayMetrics().widthPixels - i * 2;
       int k = j * 3 / 5;
       ((ViewGroup.LayoutParams)localObject).height = k;
-      ac.d("MicroMsg.CardWidgetMembership", "padding:%d,originWidth:%d,targetWidth:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-      this.omV.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      ad.d("MicroMsg.CardWidgetMembership", "padding:%d,originWidth:%d,targetWidth:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+      this.oQq.setLayoutParams((ViewGroup.LayoutParams)localObject);
       AppMethodBeat.o(113907);
       return;
-      this.iCg.setText("");
+      this.iVq.setText("");
       break;
       label307:
-      this.omX.setOnClickListener(this.jax);
-      this.omY.setOnClickListener(this.jax);
-      this.omW.setOnClickListener(this.jax);
-      switch (this.nTp.bPj().Eif)
+      this.oQs.setOnClickListener(this.jtG);
+      this.oQt.setOnClickListener(this.jtG);
+      this.oQr.setOnClickListener(this.jtG);
+      switch (this.owK.bTO().FPp)
       {
       default: 
         break;
       case 0: 
         if (((String)localObject).length() <= 40) {
-          this.omW.setText(n.VF((String)localObject));
+          this.oQr.setText(n.Zo((String)localObject));
         }
         break;
       case 1: 
       case 2: 
         if (((String)localObject).length() <= 40)
         {
-          if (this.nTp.bOX()) {
-            this.omW.setText(n.VF((String)localObject));
+          if (this.owK.bTC()) {
+            this.oQr.setText(n.Zo((String)localObject));
           } else {
-            this.omW.setText("");
+            this.oQr.setText("");
           }
         }
         else
         {
-          this.omW.setText("");
+          this.oQr.setText("");
           continue;
-          this.omW.setText("");
+          this.oQr.setText("");
           continue;
           label484:
-          this.omW.setText("");
-          this.omY.setVisibility(8);
-          this.omX.setVisibility(8);
-          this.onb.setAlpha(90);
-          if (this.onb.getBackground() != null) {
-            this.onb.getBackground().setAlpha(90);
+          this.oQr.setText("");
+          this.oQt.setVisibility(8);
+          this.oQs.setVisibility(8);
+          this.oQw.setAlpha(90);
+          if (this.oQw.getBackground() != null) {
+            this.oQw.getBackground().setAlpha(90);
           }
         }
         break;
@@ -208,39 +208,39 @@ public final class e
     }
   }
   
-  public final void jq(boolean paramBoolean)
+  public final void jB(boolean paramBoolean)
   {
     AppMethodBeat.i(113908);
-    if ((!TextUtils.isEmpty(this.nTp.bPj().code)) && (paramBoolean) && (this.nTp.bPj().Eif != 0) && (!this.nTp.bPi().EkX))
+    if ((!TextUtils.isEmpty(this.owK.bTO().code)) && (paramBoolean) && (this.owK.bTO().FPp != 0) && (!this.owK.bTN().FSg))
     {
-      this.omY.setVisibility(0);
-      this.omX.setVisibility(0);
+      this.oQt.setVisibility(0);
+      this.oQs.setVisibility(0);
       AppMethodBeat.o(113908);
       return;
     }
-    this.omY.setVisibility(8);
-    this.omX.setVisibility(8);
+    this.oQt.setVisibility(8);
+    this.oQs.setVisibility(8);
     AppMethodBeat.o(113908);
   }
   
-  public final void jr(boolean paramBoolean)
+  public final void jC(boolean paramBoolean)
   {
     AppMethodBeat.i(113911);
-    if (!TextUtils.isEmpty(this.nTp.bPj().Eiq))
+    if (!TextUtils.isEmpty(this.owK.bTO().FPA))
     {
-      this.ona.setVisibility(8);
-      this.omZ.setVisibility(8);
+      this.oQv.setVisibility(8);
+      this.oQu.setVisibility(8);
       AppMethodBeat.o(113911);
       return;
     }
-    this.ona.setVisibility(0);
-    this.omZ.setVisibility(0);
+    this.oQv.setVisibility(0);
+    this.oQu.setVisibility(0);
     AppMethodBeat.o(113911);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.e
  * JD-Core Version:    0.7.0.1
  */

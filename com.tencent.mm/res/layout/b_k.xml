@@ -31,8 +31,8 @@
                     <TextView android:textSize="@dimen/jv" android:textColor="@color/a3l" android:id="@id/cd_" android:background="@drawable/aaw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:text="" android:singleLine="true" />
                     <com.tencent.mm.kiss.widget.textview.PLSysTextView android:textSize="@dimen/jv" android:textColor="@color/a3l" android:id="@id/gq" android:background="@drawable/aaw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:text="" android:singleLine="true" />
                     <com.tencent.mm.kiss.widget.textview.PLSysTextView android:textSize="@dimen/jv" android:textColor="@color/a4d" android:id="@id/h4_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" />
-                    <FrameLayout android:id="@id/yi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d">
-                        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="32.0dip">
+                    <FrameLayout android:id="@id/yi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn">
+                        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="40.0dip">
                             <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
                                 <com.tencent.mm.kiss.widget.textview.PLSysTextView android:textSize="@dimen/jv" android:textColor="@color/a4d" android:id="@id/ij" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
                                 <com.tencent.mm.plugin.sns.ui.AsyncTextView android:textSize="@dimen/jv" android:textColor="@color/a3l" android:id="@id/gn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:singleLine="true" />
@@ -44,16 +44,16 @@
                             </LinearLayout>
                             <com.tencent.mm.kiss.widget.textview.PLSysTextView android:textSize="@dimen/jv" android:textColor="@color/a3l" android:gravity="center" android:id="@id/ho" android:background="@drawable/aaw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/rk" android:singleLine="true" />
                         </LinearLayout>
-                        <ImageView android:gravity="right" android:layout_gravity="center|right" android:id="@id/ik" android:background="@null" android:paddingLeft="@dimen/hd" android:paddingTop="@dimen/jn" android:paddingRight="12.0dip" android:paddingBottom="14.0dip" android:focusable="false" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="-12.0dip" android:layout_marginBottom="-4.0dip" android:src="?x_" android:contentDescription="@string/fkg" />
+                        <ImageView android:gravity="end" android:layout_gravity="end|center" android:id="@id/ik" android:background="@null" android:focusable="false" android:visibility="visible" android:layout_width="32.0dip" android:layout_height="20.0dip" android:src="?x_" android:contentDescription="@string/fkg" />
                     </FrameLayout>
                     <ViewStub android:id="@id/hu" android:layout="@layout/b_f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d" />
-                    <ViewStub android:id="@id/hj" android:layout="@layout/b_e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d" />
+                    <ViewStub android:id="@id/hj" android:layout="@layout/b_e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/d" />
                     <ViewStub android:id="@id/fop" android:visibility="gone" android:layout="@layout/b9n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/d" />
                     <ViewStub android:id="@id/foo" android:layout="@layout/b9m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/d" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
         <ViewStub android:id="@id/fn7" android:visibility="gone" android:layout="@layout/b76" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/d" />
-        <ViewStub android:id="@id/flk" android:layout="@layout/b7b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </com.tencent.mm.plugin.sns.ui.AdFrameLayout>
+    <ViewStub android:id="@id/flk" android:layout="@layout/bvg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

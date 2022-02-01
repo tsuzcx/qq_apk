@@ -11,7 +11,7 @@ public final class e
   extends j<d>
 {
   public static final String[] SQL_CREATE;
-  h iOJ;
+  h jhS;
   
   static
   {
@@ -24,9 +24,9 @@ public final class e
   {
     super(parame, d.info, "SafeDeviceInfo", null);
     AppMethodBeat.i(125521);
-    this.iOJ = null;
+    this.jhS = null;
     if ((parame instanceof h)) {
-      this.iOJ = ((h)parame);
+      this.jhS = ((h)parame);
     }
     AppMethodBeat.o(125521);
   }
@@ -39,7 +39,7 @@ public final class e
     return bool;
   }
   
-  public final List<d> aQr()
+  public final List<d> aTD()
   {
     AppMethodBeat.i(125523);
     LinkedList localLinkedList = new LinkedList();
@@ -60,7 +60,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.a.e
  * JD-Core Version:    0.7.0.1
  */

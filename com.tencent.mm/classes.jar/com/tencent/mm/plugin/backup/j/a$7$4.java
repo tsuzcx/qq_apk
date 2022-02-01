@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.backup.j;
 
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class a$7$4
   implements Runnable
@@ -12,7 +12,7 @@ final class a$7$4
   public final void run()
   {
     AppMethodBeat.i(22153);
-    Toast.makeText(ai.getContext(), "merge data delete", 0).show();
+    Toast.makeText(aj.getContext(), "merge data delete", 0).show();
     AppMethodBeat.o(22153);
   }
 }

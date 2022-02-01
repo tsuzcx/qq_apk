@@ -10,9 +10,9 @@ import com.tencent.mm.cc.a;
 public class PaddingImageView
   extends FrameLayout
 {
-  ImageView lqK;
-  ImageView plZ;
-  private int pma;
+  ImageView cum;
+  private int pPA;
+  ImageView pPz;
   
   public PaddingImageView(Context paramContext)
   {
@@ -41,21 +41,21 @@ public class PaddingImageView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(109411);
-    this.pma = a.au(getContext(), 2131165516);
-    this.lqK = new ImageView(paramContext);
-    this.lqK.setPadding(this.pma, this.pma, this.pma, this.pma);
-    this.plZ = new ImageView(paramContext);
+    this.pPA = a.ax(getContext(), 2131165516);
+    this.cum = new ImageView(paramContext);
+    this.cum.setPadding(this.pPA, this.pPA, this.pPA, this.pPA);
+    this.pPz = new ImageView(paramContext);
     AppMethodBeat.o(109411);
   }
   
   public ImageView getImageView()
   {
-    return this.lqK;
+    return this.cum;
   }
   
   public ImageView getImageViewFG()
   {
-    return this.plZ;
+    return this.pPz;
   }
 }
 

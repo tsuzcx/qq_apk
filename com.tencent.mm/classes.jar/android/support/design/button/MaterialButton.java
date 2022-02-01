@@ -27,13 +27,13 @@ import android.util.AttributeSet;
 public class MaterialButton
   extends AppCompatButton
 {
-  private final b fF;
-  private int fG;
-  private PorterDuff.Mode fH;
-  private ColorStateList fI;
-  private int fJ;
-  private int fK;
-  private int fL;
+  private int hA;
+  private int hB;
+  private int hC;
+  private final b hw;
+  private int hx;
+  private PorterDuff.Mode hy;
+  private ColorStateList hz;
   private Drawable icon;
   
   public MaterialButton(Context paramContext, AttributeSet paramAttributeSet)
@@ -45,94 +45,94 @@ public class MaterialButton
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = f.a(paramContext, paramAttributeSet, a.a.MaterialButton, paramInt, 2131821648, new int[0]);
-    this.fG = paramAttributeSet.getDimensionPixelSize(9, 0);
-    this.fH = g.a(paramAttributeSet.getInt(12, -1), PorterDuff.Mode.SRC_IN);
-    this.fI = android.support.design.d.a.b(getContext(), paramAttributeSet, 11);
+    this.hx = paramAttributeSet.getDimensionPixelSize(9, 0);
+    this.hy = g.a(paramAttributeSet.getInt(12, -1), PorterDuff.Mode.SRC_IN);
+    this.hz = android.support.design.d.a.b(getContext(), paramAttributeSet, 11);
     this.icon = android.support.design.d.a.c(getContext(), paramAttributeSet, 7);
-    this.fL = paramAttributeSet.getInteger(8, 1);
-    this.fJ = paramAttributeSet.getDimensionPixelSize(10, 0);
-    this.fF = new b(this);
-    b localb = this.fF;
+    this.hC = paramAttributeSet.getInteger(8, 1);
+    this.hA = paramAttributeSet.getDimensionPixelSize(10, 0);
+    this.hw = new b(this);
+    b localb = this.hw;
     localb.insetLeft = paramAttributeSet.getDimensionPixelOffset(0, 0);
     localb.insetRight = paramAttributeSet.getDimensionPixelOffset(1, 0);
     localb.insetTop = paramAttributeSet.getDimensionPixelOffset(2, 0);
     localb.insetBottom = paramAttributeSet.getDimensionPixelOffset(3, 0);
-    localb.fO = paramAttributeSet.getDimensionPixelSize(6, 0);
+    localb.hF = paramAttributeSet.getDimensionPixelSize(6, 0);
     localb.strokeWidth = paramAttributeSet.getDimensionPixelSize(15, 0);
-    localb.fP = g.a(paramAttributeSet.getInt(5, -1), PorterDuff.Mode.SRC_IN);
-    localb.fQ = android.support.design.d.a.b(localb.fN.getContext(), paramAttributeSet, 4);
-    localb.fR = android.support.design.d.a.b(localb.fN.getContext(), paramAttributeSet, 14);
-    localb.fS = android.support.design.d.a.b(localb.fN.getContext(), paramAttributeSet, 13);
-    localb.fT.setStyle(Paint.Style.STROKE);
-    localb.fT.setStrokeWidth(localb.strokeWidth);
-    paramContext = localb.fT;
+    localb.hG = g.a(paramAttributeSet.getInt(5, -1), PorterDuff.Mode.SRC_IN);
+    localb.hH = android.support.design.d.a.b(localb.hE.getContext(), paramAttributeSet, 4);
+    localb.hI = android.support.design.d.a.b(localb.hE.getContext(), paramAttributeSet, 14);
+    localb.hJ = android.support.design.d.a.b(localb.hE.getContext(), paramAttributeSet, 13);
+    localb.hK.setStyle(Paint.Style.STROKE);
+    localb.hK.setStrokeWidth(localb.strokeWidth);
+    paramContext = localb.hK;
     int i;
     int j;
     int k;
     MaterialButton localMaterialButton;
-    if (localb.fR != null)
+    if (localb.hI != null)
     {
-      paramInt = localb.fR.getColorForState(localb.fN.getDrawableState(), 0);
+      paramInt = localb.hI.getColorForState(localb.hE.getDrawableState(), 0);
       paramContext.setColor(paramInt);
-      paramInt = t.ab(localb.fN);
-      i = localb.fN.getPaddingTop();
-      j = t.ac(localb.fN);
-      k = localb.fN.getPaddingBottom();
-      localMaterialButton = localb.fN;
-      if (!b.fM) {
+      paramInt = t.ab(localb.hE);
+      i = localb.hE.getPaddingTop();
+      j = t.ac(localb.hE);
+      k = localb.hE.getPaddingBottom();
+      localMaterialButton = localb.hE;
+      if (!b.hD) {
         break label446;
       }
     }
-    for (paramContext = localb.aI();; paramContext = localb.a(new LayerDrawable(new Drawable[] { localb.fX, localb.fZ })))
+    for (paramContext = localb.aY();; paramContext = localb.a(new LayerDrawable(new Drawable[] { localb.hO, localb.hQ })))
     {
       localMaterialButton.setInternalBackground(paramContext);
-      t.d(localb.fN, paramInt + localb.insetLeft, i + localb.insetTop, j + localb.insetRight, localb.insetBottom + k);
+      t.d(localb.hE, paramInt + localb.insetLeft, i + localb.insetTop, j + localb.insetRight, localb.insetBottom + k);
       paramAttributeSet.recycle();
-      setCompoundDrawablePadding(this.fG);
-      aF();
+      setCompoundDrawablePadding(this.hx);
+      aV();
       return;
       paramInt = 0;
       break;
       label446:
-      localb.fW = new GradientDrawable();
-      localb.fW.setCornerRadius(localb.fO + 1.0E-005F);
-      localb.fW.setColor(-1);
-      localb.fX = android.support.v4.graphics.drawable.a.i(localb.fW);
-      android.support.v4.graphics.drawable.a.a(localb.fX, localb.fQ);
-      if (localb.fP != null) {
-        android.support.v4.graphics.drawable.a.a(localb.fX, localb.fP);
+      localb.hN = new GradientDrawable();
+      localb.hN.setCornerRadius(localb.hF + 1.0E-005F);
+      localb.hN.setColor(-1);
+      localb.hO = android.support.v4.graphics.drawable.a.i(localb.hN);
+      android.support.v4.graphics.drawable.a.a(localb.hO, localb.hH);
+      if (localb.hG != null) {
+        android.support.v4.graphics.drawable.a.a(localb.hO, localb.hG);
       }
-      localb.fY = new GradientDrawable();
-      localb.fY.setCornerRadius(localb.fO + 1.0E-005F);
-      localb.fY.setColor(-1);
-      localb.fZ = android.support.v4.graphics.drawable.a.i(localb.fY);
-      android.support.v4.graphics.drawable.a.a(localb.fZ, localb.fS);
+      localb.hP = new GradientDrawable();
+      localb.hP.setCornerRadius(localb.hF + 1.0E-005F);
+      localb.hP.setColor(-1);
+      localb.hQ = android.support.v4.graphics.drawable.a.i(localb.hP);
+      android.support.v4.graphics.drawable.a.a(localb.hQ, localb.hJ);
     }
   }
   
-  private void aF()
+  private void aV()
   {
     int i;
     if (this.icon != null)
     {
       this.icon = this.icon.mutate();
-      android.support.v4.graphics.drawable.a.a(this.icon, this.fI);
-      if (this.fH != null) {
-        android.support.v4.graphics.drawable.a.a(this.icon, this.fH);
+      android.support.v4.graphics.drawable.a.a(this.icon, this.hz);
+      if (this.hy != null) {
+        android.support.v4.graphics.drawable.a.a(this.icon, this.hy);
       }
-      if (this.fJ == 0) {
+      if (this.hA == 0) {
         break label102;
       }
-      i = this.fJ;
-      if (this.fJ == 0) {
+      i = this.hA;
+      if (this.hA == 0) {
         break label113;
       }
     }
     label102:
     label113:
-    for (int j = this.fJ;; j = this.icon.getIntrinsicHeight())
+    for (int j = this.hA;; j = this.icon.getIntrinsicHeight())
     {
-      this.icon.setBounds(this.fK, 0, i + this.fK, j);
+      this.icon.setBounds(this.hB, 0, i + this.hB, j);
       q.a(this, this.icon, null, null, null);
       return;
       i = this.icon.getIntrinsicWidth();
@@ -140,9 +140,9 @@ public class MaterialButton
     }
   }
   
-  private boolean aG()
+  private boolean aW()
   {
-    return (this.fF != null) && (!this.fF.gd);
+    return (this.hw != null) && (!this.hw.hU);
   }
   
   public ColorStateList getBackgroundTintList()
@@ -157,8 +157,8 @@ public class MaterialButton
   
   public int getCornerRadius()
   {
-    if (aG()) {
-      return this.fF.fO;
+    if (aW()) {
+      return this.hw.hF;
     }
     return 0;
   }
@@ -170,65 +170,65 @@ public class MaterialButton
   
   public int getIconGravity()
   {
-    return this.fL;
+    return this.hC;
   }
   
   public int getIconPadding()
   {
-    return this.fG;
+    return this.hx;
   }
   
   public int getIconSize()
   {
-    return this.fJ;
+    return this.hA;
   }
   
   public ColorStateList getIconTint()
   {
-    return this.fI;
+    return this.hz;
   }
   
   public PorterDuff.Mode getIconTintMode()
   {
-    return this.fH;
+    return this.hy;
   }
   
   public ColorStateList getRippleColor()
   {
-    if (aG()) {
-      return this.fF.fS;
+    if (aW()) {
+      return this.hw.hJ;
     }
     return null;
   }
   
   public ColorStateList getStrokeColor()
   {
-    if (aG()) {
-      return this.fF.fR;
+    if (aW()) {
+      return this.hw.hI;
     }
     return null;
   }
   
   public int getStrokeWidth()
   {
-    if (aG()) {
-      return this.fF.strokeWidth;
+    if (aW()) {
+      return this.hw.strokeWidth;
     }
     return 0;
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (aG()) {
-      return this.fF.fQ;
+    if (aW()) {
+      return this.hw.hH;
     }
     return super.getSupportBackgroundTintList();
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (aG()) {
-      return this.fF.fP;
+    if (aW()) {
+      return this.hw.hG;
     }
     return super.getSupportBackgroundTintMode();
   }
@@ -236,15 +236,15 @@ public class MaterialButton
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((Build.VERSION.SDK_INT < 21) && (aG()))
+    if ((Build.VERSION.SDK_INT < 21) && (aW()))
     {
-      b localb = this.fF;
-      if ((paramCanvas != null) && (localb.fR != null) && (localb.strokeWidth > 0))
+      b localb = this.hw;
+      if ((paramCanvas != null) && (localb.hI != null) && (localb.strokeWidth > 0))
       {
-        localb.fU.set(localb.fN.getBackground().getBounds());
-        localb.fV.set(localb.fU.left + localb.strokeWidth / 2.0F + localb.insetLeft, localb.fU.top + localb.strokeWidth / 2.0F + localb.insetTop, localb.fU.right - localb.strokeWidth / 2.0F - localb.insetRight, localb.fU.bottom - localb.strokeWidth / 2.0F - localb.insetBottom);
-        float f = localb.fO - localb.strokeWidth / 2.0F;
-        paramCanvas.drawRoundRect(localb.fV, f, f, localb.fT);
+        localb.hL.set(localb.hE.getBackground().getBounds());
+        localb.hM.set(localb.hL.left + localb.strokeWidth / 2.0F + localb.insetLeft, localb.hL.top + localb.strokeWidth / 2.0F + localb.insetTop, localb.hL.right - localb.strokeWidth / 2.0F - localb.insetRight, localb.hL.bottom - localb.strokeWidth / 2.0F - localb.insetBottom);
+        float f = localb.hF - localb.strokeWidth / 2.0F;
+        paramCanvas.drawRoundRect(localb.hM, f, f, localb.hK);
       }
     }
   }
@@ -252,11 +252,11 @@ public class MaterialButton
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((Build.VERSION.SDK_INT == 21) && (this.fF != null))
+    if ((Build.VERSION.SDK_INT == 21) && (this.hw != null))
     {
-      b localb = this.fF;
-      if (localb.gc != null) {
-        localb.gc.setBounds(localb.insetLeft, localb.insetTop, paramInt3 - paramInt1 - localb.insetRight, paramInt4 - paramInt2 - localb.insetBottom);
+      b localb = this.hw;
+      if (localb.hT != null) {
+        localb.hT.setBounds(localb.insetLeft, localb.insetTop, paramInt3 - paramInt1 - localb.insetRight, paramInt4 - paramInt2 - localb.insetBottom);
       }
     }
   }
@@ -265,16 +265,16 @@ public class MaterialButton
   {
     int i = 1;
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.icon == null) || (this.fL != 2)) {
+    if ((this.icon == null) || (this.hC != 2)) {
       return;
     }
     paramInt2 = (int)getPaint().measureText(getText().toString());
     label57:
     int j;
-    if (this.fJ == 0)
+    if (this.hA == 0)
     {
       paramInt1 = this.icon.getIntrinsicWidth();
-      j = (getMeasuredWidth() - paramInt2 - t.ac(this) - paramInt1 - this.fG - t.ab(this)) / 2;
+      j = (getMeasuredWidth() - paramInt2 - t.ac(this) - paramInt1 - this.hx - t.ab(this)) / 2;
       if (t.Y(this) != 1) {
         break label131;
       }
@@ -286,13 +286,13 @@ public class MaterialButton
       if (paramInt1 != 0) {
         paramInt2 = -j;
       }
-      if (this.fK == paramInt2) {
+      if (this.hB == paramInt2) {
         break;
       }
-      this.fK = paramInt2;
-      aF();
+      this.hB = paramInt2;
+      aV();
       return;
-      paramInt1 = this.fJ;
+      paramInt1 = this.hA;
       break label57;
     }
   }
@@ -304,16 +304,16 @@ public class MaterialButton
   
   public void setBackgroundColor(int paramInt)
   {
-    if (aG())
+    if (aW())
     {
-      b localb = this.fF;
-      if ((b.fM) && (localb.ga != null)) {
-        localb.ga.setColor(paramInt);
+      b localb = this.hw;
+      if ((b.hD) && (localb.hR != null)) {
+        localb.hR.setColor(paramInt);
       }
-      while ((b.fM) || (localb.fW == null)) {
+      while ((b.hD) || (localb.hN == null)) {
         return;
       }
-      localb.fW.setColor(paramInt);
+      localb.hN.setColor(paramInt);
       return;
     }
     super.setBackgroundColor(paramInt);
@@ -321,14 +321,14 @@ public class MaterialButton
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
-    if (aG())
+    if (aW())
     {
       if (paramDrawable != getBackground())
       {
-        b localb = this.fF;
-        localb.gd = true;
-        localb.fN.setSupportBackgroundTintList(localb.fQ);
-        localb.fN.setSupportBackgroundTintMode(localb.fP);
+        b localb = this.hw;
+        localb.hU = true;
+        localb.hE.setSupportBackgroundTintList(localb.hH);
+        localb.hE.setSupportBackgroundTintMode(localb.hG);
       }
     }
     else
@@ -361,37 +361,37 @@ public class MaterialButton
   public void setCornerRadius(int paramInt)
   {
     b localb;
-    if (aG())
+    if (aW())
     {
-      localb = this.fF;
-      if (localb.fO != paramInt)
+      localb = this.hw;
+      if (localb.hF != paramInt)
       {
-        localb.fO = paramInt;
-        if ((!b.fM) || (localb.ga == null) || (localb.gb == null) || (localb.gc == null)) {
+        localb.hF = paramInt;
+        if ((!b.hD) || (localb.hR == null) || (localb.hS == null) || (localb.hT == null)) {
           break label219;
         }
         if (Build.VERSION.SDK_INT == 21)
         {
-          if ((!b.fM) || (localb.fN.getBackground() == null)) {
+          if ((!b.hD) || (localb.hE.getBackground() == null)) {
             break label209;
           }
-          localGradientDrawable = (GradientDrawable)((LayerDrawable)((InsetDrawable)((RippleDrawable)localb.fN.getBackground()).getDrawable(0)).getDrawable()).getDrawable(0);
+          localGradientDrawable = (GradientDrawable)((LayerDrawable)((InsetDrawable)((RippleDrawable)localb.hE.getBackground()).getDrawable(0)).getDrawable()).getDrawable(0);
           localGradientDrawable.setCornerRadius(paramInt + 1.0E-005F);
-          if ((!b.fM) || (localb.fN.getBackground() == null)) {
+          if ((!b.hD) || (localb.hE.getBackground() == null)) {
             break label214;
           }
-          localGradientDrawable = (GradientDrawable)((LayerDrawable)((InsetDrawable)((RippleDrawable)localb.fN.getBackground()).getDrawable(0)).getDrawable()).getDrawable(1);
+          localGradientDrawable = (GradientDrawable)((LayerDrawable)((InsetDrawable)((RippleDrawable)localb.hE.getBackground()).getDrawable(0)).getDrawable()).getDrawable(1);
           localGradientDrawable.setCornerRadius(paramInt + 1.0E-005F);
         }
-        localb.ga.setCornerRadius(paramInt + 1.0E-005F);
-        localb.gb.setCornerRadius(paramInt + 1.0E-005F);
-        localb.gc.setCornerRadius(paramInt + 1.0E-005F);
+        localb.hR.setCornerRadius(paramInt + 1.0E-005F);
+        localb.hS.setCornerRadius(paramInt + 1.0E-005F);
+        localb.hT.setCornerRadius(paramInt + 1.0E-005F);
       }
     }
     label209:
     label214:
     label219:
-    while ((b.fM) || (localb.fW == null) || (localb.fY == null)) {
+    while ((b.hD) || (localb.hN == null) || (localb.hP == null)) {
       for (;;)
       {
         return;
@@ -400,14 +400,14 @@ public class MaterialButton
         localGradientDrawable = null;
       }
     }
-    localb.fW.setCornerRadius(paramInt + 1.0E-005F);
-    localb.fY.setCornerRadius(paramInt + 1.0E-005F);
-    localb.fN.invalidate();
+    localb.hN.setCornerRadius(paramInt + 1.0E-005F);
+    localb.hP.setCornerRadius(paramInt + 1.0E-005F);
+    localb.hE.invalidate();
   }
   
   public void setCornerRadiusResource(int paramInt)
   {
-    if (aG()) {
+    if (aW()) {
       setCornerRadius(getResources().getDimensionPixelSize(paramInt));
     }
   }
@@ -417,20 +417,20 @@ public class MaterialButton
     if (this.icon != paramDrawable)
     {
       this.icon = paramDrawable;
-      aF();
+      aV();
     }
   }
   
   public void setIconGravity(int paramInt)
   {
-    this.fL = paramInt;
+    this.hC = paramInt;
   }
   
   public void setIconPadding(int paramInt)
   {
-    if (this.fG != paramInt)
+    if (this.hx != paramInt)
     {
-      this.fG = paramInt;
+      this.hx = paramInt;
       setCompoundDrawablePadding(paramInt);
     }
   }
@@ -449,28 +449,28 @@ public class MaterialButton
     if (paramInt < 0) {
       throw new IllegalArgumentException("iconSize cannot be less than 0");
     }
-    if (this.fJ != paramInt)
+    if (this.hA != paramInt)
     {
-      this.fJ = paramInt;
-      aF();
+      this.hA = paramInt;
+      aV();
     }
   }
   
   public void setIconTint(ColorStateList paramColorStateList)
   {
-    if (this.fI != paramColorStateList)
+    if (this.hz != paramColorStateList)
     {
-      this.fI = paramColorStateList;
-      aF();
+      this.hz = paramColorStateList;
+      aV();
     }
   }
   
   public void setIconTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.fH != paramMode)
+    if (this.hy != paramMode)
     {
-      this.fH = paramMode;
-      aF();
+      this.hy = paramMode;
+      aV();
     }
   }
   
@@ -487,28 +487,28 @@ public class MaterialButton
   public void setRippleColor(ColorStateList paramColorStateList)
   {
     b localb;
-    if (aG())
+    if (aW())
     {
-      localb = this.fF;
-      if (localb.fS != paramColorStateList)
+      localb = this.hw;
+      if (localb.hJ != paramColorStateList)
       {
-        localb.fS = paramColorStateList;
-        if ((!b.fM) || (!(localb.fN.getBackground() instanceof RippleDrawable))) {
+        localb.hJ = paramColorStateList;
+        if ((!b.hD) || (!(localb.hE.getBackground() instanceof RippleDrawable))) {
           break label59;
         }
-        ((RippleDrawable)localb.fN.getBackground()).setColor(paramColorStateList);
+        ((RippleDrawable)localb.hE.getBackground()).setColor(paramColorStateList);
       }
     }
     label59:
-    while ((b.fM) || (localb.fZ == null)) {
+    while ((b.hD) || (localb.hQ == null)) {
       return;
     }
-    android.support.v4.graphics.drawable.a.a(localb.fZ, paramColorStateList);
+    android.support.v4.graphics.drawable.a.a(localb.hQ, paramColorStateList);
   }
   
   public void setRippleColorResource(int paramInt)
   {
-    if (aG()) {
+    if (aW()) {
       setRippleColor(android.support.v7.c.a.a.m(getContext(), paramInt));
     }
   }
@@ -516,73 +516,73 @@ public class MaterialButton
   public void setStrokeColor(ColorStateList paramColorStateList)
   {
     int i = 0;
-    if (aG())
+    if (aW())
     {
-      b localb = this.fF;
-      if (localb.fR != paramColorStateList)
+      b localb = this.hw;
+      if (localb.hI != paramColorStateList)
       {
-        localb.fR = paramColorStateList;
-        Paint localPaint = localb.fT;
+        localb.hI = paramColorStateList;
+        Paint localPaint = localb.hK;
         if (paramColorStateList != null) {
-          i = paramColorStateList.getColorForState(localb.fN.getDrawableState(), 0);
+          i = paramColorStateList.getColorForState(localb.hE.getDrawableState(), 0);
         }
         localPaint.setColor(i);
-        localb.aJ();
+        localb.aZ();
       }
     }
   }
   
   public void setStrokeColorResource(int paramInt)
   {
-    if (aG()) {
+    if (aW()) {
       setStrokeColor(android.support.v7.c.a.a.m(getContext(), paramInt));
     }
   }
   
   public void setStrokeWidth(int paramInt)
   {
-    if (aG())
+    if (aW())
     {
-      b localb = this.fF;
+      b localb = this.hw;
       if (localb.strokeWidth != paramInt)
       {
         localb.strokeWidth = paramInt;
-        localb.fT.setStrokeWidth(paramInt);
-        localb.aJ();
+        localb.hK.setStrokeWidth(paramInt);
+        localb.aZ();
       }
     }
   }
   
   public void setStrokeWidthResource(int paramInt)
   {
-    if (aG()) {
+    if (aW()) {
       setStrokeWidth(getResources().getDimensionPixelSize(paramInt));
     }
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (aG())
+    if (aW())
     {
-      localb = this.fF;
-      if (localb.fQ != paramColorStateList)
+      localb = this.hw;
+      if (localb.hH != paramColorStateList)
       {
-        localb.fQ = paramColorStateList;
-        if (!b.fM) {
+        localb.hH = paramColorStateList;
+        if (!b.hD) {
           break label36;
         }
-        localb.aH();
+        localb.aX();
       }
     }
     label36:
-    while (this.fF == null)
+    while (this.hw == null)
     {
       b localb;
       do
       {
         return;
-      } while (localb.fX == null);
-      android.support.v4.graphics.drawable.a.a(localb.fX, localb.fQ);
+      } while (localb.hO == null);
+      android.support.v4.graphics.drawable.a.a(localb.hO, localb.hH);
       return;
     }
     super.setSupportBackgroundTintList(paramColorStateList);
@@ -590,27 +590,27 @@ public class MaterialButton
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (aG())
+    if (aW())
     {
-      localb = this.fF;
-      if (localb.fP != paramMode)
+      localb = this.hw;
+      if (localb.hG != paramMode)
       {
-        localb.fP = paramMode;
-        if (!b.fM) {
+        localb.hG = paramMode;
+        if (!b.hD) {
           break label36;
         }
-        localb.aH();
+        localb.aX();
       }
     }
     label36:
-    while (this.fF == null)
+    while (this.hw == null)
     {
       b localb;
       do
       {
         return;
-      } while ((localb.fX == null) || (localb.fP == null));
-      android.support.v4.graphics.drawable.a.a(localb.fX, localb.fP);
+      } while ((localb.hO == null) || (localb.hG == null));
+      android.support.v4.graphics.drawable.a.a(localb.hO, localb.hG);
       return;
     }
     super.setSupportBackgroundTintMode(paramMode);

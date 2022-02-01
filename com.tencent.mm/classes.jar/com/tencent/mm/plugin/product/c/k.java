@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.product.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String oGN;
+  public String pkr;
   public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -14,8 +14,8 @@ public final class k
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.oGN != null) {
-        paramVarArgs.d(1, this.oGN);
+      if (this.pkr != null) {
+        paramVarArgs.d(1, this.pkr);
       }
       if (this.url != null) {
         paramVarArgs.d(2, this.url);
@@ -24,12 +24,12 @@ public final class k
       return 0;
     }
     if (paramInt == 1) {
-      if (this.oGN == null) {
+      if (this.pkr == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.oGN) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.pkr) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.url != null) {
@@ -40,9 +40,9 @@ public final class k
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(91277);
@@ -58,11 +58,11 @@ public final class k
           AppMethodBeat.o(91277);
           return -1;
         case 1: 
-          localk.oGN = locala.LVo.readString();
+          localk.pkr = locala.NPN.readString();
           AppMethodBeat.o(91277);
           return 0;
         }
-        localk.url = locala.LVo.readString();
+        localk.url = locala.NPN.readString();
         AppMethodBeat.o(91277);
         return 0;
       }

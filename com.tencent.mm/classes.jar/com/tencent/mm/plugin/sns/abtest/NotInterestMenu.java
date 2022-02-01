@@ -12,27 +12,29 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.ui.z;
 
 public class NotInterestMenu
   extends LinearLayout
 {
-  private static int[] xHy = { 2131763845, 2131763843, 2131763844 };
+  private static int[] yWi = { 2131763845, 2131763843, 2131763844 };
   private Context mContext;
-  private b xHA;
-  private p xHc;
-  private ListView xHx;
-  private c xHz;
+  private p yVM;
+  private ListView yWh;
+  private c yWj;
+  private b yWk;
   
   public NotInterestMenu(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(94941);
     this.mContext = null;
-    this.xHc = null;
-    this.xHz = null;
-    this.xHA = null;
+    this.yVM = null;
+    this.yWj = null;
+    this.yWk = null;
     this.mContext = paramContext;
     init();
     AppMethodBeat.o(94941);
@@ -43,9 +45,9 @@ public class NotInterestMenu
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(94942);
     this.mContext = null;
-    this.xHc = null;
-    this.xHz = null;
-    this.xHA = null;
+    this.yVM = null;
+    this.yWj = null;
+    this.yWk = null;
     this.mContext = paramContext;
     init();
     AppMethodBeat.o(94942);
@@ -54,16 +56,22 @@ public class NotInterestMenu
   private void init()
   {
     AppMethodBeat.i(94943);
-    z.jD(this.mContext).inflate(2131495027, this);
-    this.xHx = ((ListView)findViewById(2131302908));
-    this.xHx.setAdapter(new a());
-    this.xHx.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    z.jO(this.mContext).inflate(2131495027, this);
+    this.yWh = ((ListView)findViewById(2131302908));
+    this.yWh.setAdapter(new a());
+    this.yWh.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(94937);
+        b localb = new b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        a.b("com/tencent/mm/plugin/sns/abtest/NotInterestMenu$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
         if (NotInterestMenu.a(NotInterestMenu.this) != null) {
-          NotInterestMenu.a(NotInterestMenu.this).dFy();
+          NotInterestMenu.a(NotInterestMenu.this).dRa();
         }
         if (NotInterestMenu.b(NotInterestMenu.this) != null) {
           switch (paramAnonymousInt)
@@ -72,14 +80,13 @@ public class NotInterestMenu
         }
         for (;;)
         {
+          a.a(this, "com/tencent/mm/plugin/sns/abtest/NotInterestMenu$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(94937);
           return;
           NotInterestMenu.b(NotInterestMenu.this).c(NotInterestMenu.c(NotInterestMenu.this));
-          AppMethodBeat.o(94937);
-          return;
+          continue;
           NotInterestMenu.b(NotInterestMenu.this).d(NotInterestMenu.c(NotInterestMenu.this));
-          AppMethodBeat.o(94937);
-          return;
+          continue;
           NotInterestMenu.b(NotInterestMenu.this).e(NotInterestMenu.c(NotInterestMenu.this));
         }
       }
@@ -89,17 +96,17 @@ public class NotInterestMenu
   
   public void setOnClickMenuListener(b paramb)
   {
-    this.xHA = paramb;
+    this.yWk = paramb;
   }
   
   public void setOnSelectMenuItemListener(c paramc)
   {
-    this.xHz = paramc;
+    this.yWj = paramc;
   }
   
   public void setSnsInfo(p paramp)
   {
-    this.xHc = paramp;
+    this.yVM = paramp;
   }
   
   final class a
@@ -110,7 +117,7 @@ public class NotInterestMenu
     public final int getCount()
     {
       AppMethodBeat.i(94938);
-      int i = NotInterestMenu.dFx().length;
+      int i = NotInterestMenu.dQZ().length;
       AppMethodBeat.o(94938);
       return i;
     }
@@ -118,7 +125,7 @@ public class NotInterestMenu
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(94939);
-      paramInt = NotInterestMenu.dFx()[paramInt];
+      paramInt = NotInterestMenu.dQZ()[paramInt];
       AppMethodBeat.o(94939);
       return Integer.valueOf(paramInt);
     }
@@ -134,19 +141,19 @@ public class NotInterestMenu
       View localView = paramView;
       if (paramView == null)
       {
-        localView = z.jD(NotInterestMenu.d(NotInterestMenu.this)).inflate(2131495028, paramViewGroup, false);
+        localView = z.jO(NotInterestMenu.d(NotInterestMenu.this)).inflate(2131495028, paramViewGroup, false);
         paramView = new a();
-        paramView.xHC = ((TextView)localView.findViewById(2131302909));
+        paramView.yWm = ((TextView)localView.findViewById(2131302909));
         localView.setTag(paramView);
       }
-      ((a)localView.getTag()).xHC.setText(NotInterestMenu.dFx()[paramInt]);
+      ((a)localView.getTag()).yWm.setText(NotInterestMenu.dQZ()[paramInt]);
       AppMethodBeat.o(94940);
       return localView;
     }
     
     final class a
     {
-      TextView xHC;
+      TextView yWm;
       
       a() {}
     }
@@ -154,7 +161,7 @@ public class NotInterestMenu
   
   public static abstract interface b
   {
-    public abstract void dFy();
+    public abstract void dRa();
   }
   
   public static abstract interface c
@@ -168,7 +175,7 @@ public class NotInterestMenu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.abtest.NotInterestMenu
  * JD-Core Version:    0.7.0.1
  */

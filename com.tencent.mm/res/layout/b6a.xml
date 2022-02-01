@@ -2,6 +2,7 @@
 <RelativeLayout android:id="@id/al7" android:background="@color/d" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mm.pluginsdk.ui.tools.VideoSightView android:id="@id/co4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
+    <com.tencent.mm.plugin.sns.ui.widget.SnsAdTimelineVideoView android:id="@id/hyq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
     <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:gravity="center" android:id="@id/bmo" android:background="@color/fc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fjn" android:layout_centerInParent="true" android:alpha="0.8" />
     <ViewStub android:id="@id/fii" android:layout="@layout/b69" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     <ImageView android:id="@id/fsv" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />

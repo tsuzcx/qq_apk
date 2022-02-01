@@ -2,43 +2,44 @@ package com.tencent.mm.plugin.clean.c;
 
 import android.os.StatFs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 
 public final class d
-  implements aw
+  implements ax
 {
-  private static d oqQ;
+  private static d oUm;
   public long cacheSize;
-  public LinkedList<String> nSF;
-  public long oqA;
-  public HashMap<String, Long> oqO;
-  public HashSet<String> oqP;
-  public long oqy;
-  public long oqz;
+  public long dataSize;
+  public long oTU;
+  public long oTV;
+  public long oUj;
+  public HashMap<String, Long> oUk;
+  public HashSet<String> oUl;
+  public LinkedList<String> owa;
   
-  public static d bVd()
+  public static d bZI()
   {
     AppMethodBeat.i(22827);
-    if (oqQ == null) {
-      oqQ = new d();
+    if (oUm == null) {
+      oUm = new d();
     }
-    d locald = oqQ;
+    d locald = oUm;
     AppMethodBeat.o(22827);
     return locald;
   }
   
-  public static long bVe()
+  public static long bZJ()
   {
     AppMethodBeat.i(22832);
     long l;
     try
     {
-      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.apb());
+      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.arO());
       l = localStatFs.getBlockCount();
       int i = localStatFs.getBlockSize();
       l = i * l;
@@ -59,13 +60,13 @@ public final class d
     return l;
   }
   
-  public static long bVf()
+  public static long bZK()
   {
     AppMethodBeat.i(22833);
     long l;
     try
     {
-      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.apb());
+      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.arO());
       l = localStatFs.getAvailableBlocks();
       int i = localStatFs.getBlockSize();
       l = i * l;
@@ -86,17 +87,17 @@ public final class d
     return l;
   }
   
-  public static void bVg()
+  public static void bZL()
   {
     AppMethodBeat.i(22834);
-    com.tencent.mm.plugin.f.b.bOp().bOr();
+    com.tencent.mm.plugin.f.b.bSU().bSW();
     AppMethodBeat.o(22834);
   }
   
   public final void clearPluginData(int paramInt)
   {
     AppMethodBeat.i(22828);
-    a.bVb();
+    a.bZG();
     AppMethodBeat.o(22828);
   }
   
@@ -108,33 +109,34 @@ public final class d
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(22829);
-    ac.i("MicroMsg.SubCoreClean", "summerclean onAccountPostReset updated[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.plugin.f.b.bOp().onAccountInitialized(null);
+    ad.i("MicroMsg.SubCoreClean", "summerclean onAccountPostReset updated[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.plugin.f.b.bSU().onAccountInitialized(null);
     AppMethodBeat.o(22829);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(22831);
-    ac.i("MicroMsg.SubCoreClean", "summerclean onAccountRelease");
-    this.oqy = 0L;
-    this.oqz = 0L;
-    this.oqA = 0L;
-    if (this.oqO != null) {
-      this.oqO.clear();
+    ad.i("MicroMsg.SubCoreClean", "summerclean onAccountRelease");
+    this.oUj = 0L;
+    this.dataSize = 0L;
+    this.oTU = 0L;
+    this.oTV = 0L;
+    if (this.oUk != null) {
+      this.oUk.clear();
     }
-    if (this.oqP != null) {
-      this.oqP.clear();
+    if (this.oUl != null) {
+      this.oUl.clear();
     }
-    a.bVb();
-    com.tencent.mm.plugin.f.b.bOp().onAccountRelease();
+    a.bZG();
+    com.tencent.mm.plugin.f.b.bSU().onAccountRelease();
     AppMethodBeat.o(22831);
   }
   
   public final void onSdcardMount(boolean paramBoolean)
   {
     AppMethodBeat.i(22830);
-    ac.i("MicroMsg.SubCoreClean", "summerclean onSdcardMount mounted[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.i("MicroMsg.SubCoreClean", "summerclean onSdcardMount mounted[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(22830);
   }
 }

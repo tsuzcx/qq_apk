@@ -3,10 +3,12 @@ package com.tencent.mm.plugin.brandservice.ui.widget;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class MPVideoView$h
   implements View.OnClickListener
 {
@@ -15,18 +17,23 @@ final class MPVideoView$h
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(7490);
-    paramView = MPVideoView.h(this.nRy);
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initControlBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    paramView = MPVideoView.h(this.ouf);
     if (paramView == null) {
-      k.fOy();
+      p.gfZ();
     }
-    if (paramView.isPlaying())
+    if (paramView.isPlaying()) {
+      this.ouf.pause();
+    }
+    for (;;)
     {
-      this.nRy.pause();
+      a.a(this, "com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initControlBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(7490);
       return;
+      this.ouf.start();
     }
-    this.nRy.start();
-    AppMethodBeat.o(7490);
   }
 }
 

@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ay
   extends b
 {
-  public a daA;
+  public a dlN;
+  public b dlO;
   
   public ay()
   {
@@ -15,21 +16,30 @@ public final class ay
   
   private ay(byte paramByte)
   {
-    AppMethodBeat.i(116457);
-    this.daA = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(91198);
+    this.dlN = new a();
+    this.dlO = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116457);
+    AppMethodBeat.o(91198);
   }
   
   public static final class a
   {
-    public String username;
+    public String dlP;
+    public boolean dlQ;
+    public boolean dlR;
+    public boolean dlS;
+  }
+  
+  public static final class b
+  {
+    public boolean result;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ay
  * JD-Core Version:    0.7.0.1
  */

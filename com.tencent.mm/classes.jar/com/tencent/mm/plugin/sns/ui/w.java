@@ -1,8 +1,12 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.view.View;
+
 public abstract interface w
 {
-  public abstract void avx(String paramString);
+  public abstract boolean dZN();
+  
+  public abstract boolean fh(View paramView);
 }
 
 

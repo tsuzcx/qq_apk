@@ -11,7 +11,7 @@ public class SeMiterLimitActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SeMiterLimitActionArg> CREATOR;
-  public float jzy;
+  public float jTv;
   
   static
   {
@@ -50,7 +50,7 @@ public class SeMiterLimitActionArg
       AppMethodBeat.o(145128);
       return false;
     }
-    if (Float.compare(((SeMiterLimitActionArg)paramObject).jzy, this.jzy) == 0)
+    if (Float.compare(((SeMiterLimitActionArg)paramObject).jTv, this.jTv) == 0)
     {
       AppMethodBeat.o(145128);
       return true;
@@ -63,14 +63,14 @@ public class SeMiterLimitActionArg
   {
     AppMethodBeat.i(145125);
     super.h(paramParcel);
-    this.jzy = paramParcel.readFloat();
+    this.jTv = paramParcel.readFloat();
     AppMethodBeat.o(145125);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145129);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jzy) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jTv) });
     AppMethodBeat.o(145129);
     return i;
   }
@@ -79,7 +79,7 @@ public class SeMiterLimitActionArg
   {
     AppMethodBeat.i(145126);
     super.parse(paramJSONObject);
-    this.jzy = ((float)paramJSONObject.optJSONArray("data").optDouble(0));
+    this.jTv = ((float)paramJSONObject.optJSONArray("data").optDouble(0));
     AppMethodBeat.o(145126);
   }
   
@@ -87,7 +87,7 @@ public class SeMiterLimitActionArg
   {
     AppMethodBeat.i(145127);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.jzy);
+    paramParcel.writeFloat(this.jTv);
     AppMethodBeat.o(145127);
   }
 }

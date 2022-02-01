@@ -11,19 +11,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements l<BitmapDrawable>
 {
-  private final e aAt;
-  private final l<Bitmap> aEW;
+  private final e aCk;
+  private final l<Bitmap> aGN;
   
   public b(e parame, l<Bitmap> paraml)
   {
-    this.aAt = parame;
-    this.aEW = paraml;
+    this.aCk = parame;
+    this.aGN = paraml;
   }
   
   public final c b(j paramj)
   {
     AppMethodBeat.i(77351);
-    paramj = this.aEW.b(paramj);
+    paramj = this.aGN.b(paramj);
     AppMethodBeat.o(77351);
     return paramj;
   }

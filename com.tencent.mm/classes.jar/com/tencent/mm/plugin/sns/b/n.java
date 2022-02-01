@@ -7,11 +7,11 @@ import com.tencent.mm.protocal.protobuf.TimeLineObject;
 public abstract interface n
   extends a
 {
-  public abstract TimeLineObject Ds(String paramString);
+  public abstract TimeLineObject Gx(String paramString);
   
   public abstract void a(long paramLong, ImageView paramImageView, int paramInt);
   
-  public abstract boolean wK(long paramLong);
+  public abstract boolean zk(long paramLong);
 }
 
 

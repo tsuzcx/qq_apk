@@ -2,5 +2,5 @@
 <RelativeLayout android:id="@id/flr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/d"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mm.ui.widget.QDisFadeImageView android:id="@id/flp" android:layout_width="80.0dip" android:layout_height="80.0dip" android:scaleType="centerCrop" />
-    <ImageView android:id="@id/flq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/flq" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:layout_centerInParent="true" />
 </RelativeLayout>

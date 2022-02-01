@@ -1,211 +1,388 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.a;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
+import com.tencent.mm.plugin.sns.ui.VideoFullScreenActivity;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.al;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class l
+public class l
 {
-  public String fHr;
-  private View ijA;
-  private Context mContext;
-  public String mTitle;
-  public String pbZ;
-  a ymV;
-  private int ymW;
-  private int ymX;
-  private boolean ymY;
-  private boolean ymZ;
-  public a yna;
+  protected int backgroundColor;
+  public View contentView;
+  public Context context;
+  long dBD;
+  protected int ltA;
+  protected int ltB;
+  protected x zDK;
+  int zDL;
+  private long zDM;
+  boolean zDN;
+  protected ViewGroup zDO;
   
-  public l(final Context paramContext, k paramk, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
+  public l(Context paramContext, x paramx, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(96483);
-    this.fHr = "";
-    this.mTitle = "";
-    this.pbZ = "";
-    this.ymW = -1;
-    this.ymX = -1;
-    this.ymY = false;
-    this.ymZ = false;
-    this.fHr = paramString1;
-    this.mTitle = paramString2;
-    this.pbZ = paramString3;
-    this.mContext = paramContext;
-    this.ymY = paramBoolean1;
-    this.ymZ = paramBoolean2;
-    if ((paramk != null) && (paramk.getView() != null))
-    {
-      this.ymV = new a(paramContext);
-      this.ymV.setCanceledOnTouchOutside(true);
-      this.ijA = View.inflate(paramContext, 2131495496, null);
-      if (this.ijA == null)
-      {
-        ac.e("MicroMsg.AdLandingPageBottomSheet", "mRootView init fail!");
-        AppMethodBeat.o(96483);
-        return;
-      }
-      paramContext = (LinearLayout)this.ijA.findViewById(2131298549);
-      paramString1 = paramk.getView();
-      if (paramString1.getParent() != null) {
-        ((ViewGroup)paramString1.getParent()).removeView(paramString1);
-      }
-      this.ymW = ((int)paramk.dKA().yju);
-      this.ymX = ((int)paramk.dKA().yjv);
-      paramk = new LinearLayout.LayoutParams(-1, -1);
-      if ((this.ymW != 2147483647) && (this.ymX != 2147483647)) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0)
-        {
-          paramk.width = this.ymW;
-          paramk.height = this.ymX;
-        }
-        paramContext.addView(paramString1, paramk);
-        ((TextView)this.ijA.findViewById(2131297466)).setText(paramString2);
-        paramContext = this.ijA.findViewById(2131298368);
-        paramContext.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(96478);
-            l.this.ymV.cancel();
-            AppMethodBeat.o(96478);
-          }
-        });
-        paramk = this.ijA.findViewById(2131297460);
-        paramk.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(96479);
-            l.this.ymV.cancel();
-            AppMethodBeat.o(96479);
-          }
-        });
-        if (!this.ymZ) {
-          paramk.setVisibility(8);
-        }
-        if (this.ymY) {
-          paramContext.setVisibility(8);
-        }
-        paramContext = (ImageView)this.ijA.findViewById(2131305894);
-        paramContext.setVisibility(8);
-        if (bs.isNullOrNil(paramString3)) {
-          break label424;
-        }
-        paramk = h.jw("adId", paramString3);
-        if (paramk == null) {
-          break;
-        }
-        paramContext.setImageBitmap(paramk);
-        paramContext.setVisibility(0);
-        AppMethodBeat.o(96483);
-        return;
-      }
-      h.a(paramString3, 0, new f.a()
-      {
-        public final void asD(String paramAnonymousString)
-        {
-          AppMethodBeat.i(96480);
-          try
-          {
-            paramAnonymousString = f.decodeFile(paramAnonymousString);
-            paramContext.setImageBitmap(paramAnonymousString);
-            paramContext.setVisibility(0);
-            AppMethodBeat.o(96480);
-            return;
-          }
-          catch (Exception paramAnonymousString)
-          {
-            ac.e("MicroMsg.AdLandingPageBottomSheet", "%s" + bs.m(paramAnonymousString));
-            AppMethodBeat.o(96480);
-          }
-        }
-        
-        public final void dFC() {}
-        
-        public final void dFD() {}
-      });
+    AppMethodBeat.i(96466);
+    this.zDL = 0;
+    this.zDM = 0L;
+    this.dBD = 0L;
+    this.zDN = false;
+    this.contentView = null;
+    this.context = paramContext;
+    this.zDK = paramx;
+    this.zDO = paramViewGroup;
+    paramx = am.gk(paramContext);
+    this.ltA = paramx[0];
+    this.ltB = paramx[1];
+    if (al.aG(paramContext)) {
+      this.ltB -= al.aF(paramContext);
     }
-    label424:
-    AppMethodBeat.o(96483);
+    AppMethodBeat.o(96466);
   }
   
-  public final void bmi()
+  public boolean D(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(96485);
-    if (this.ymV != null) {
-      this.ymV.dismiss();
-    }
-    AppMethodBeat.o(96485);
+    return false;
   }
   
-  public final void cED()
+  public void a(x paramx)
   {
-    AppMethodBeat.i(96484);
-    if ((this.ijA == null) || (this.ymV == null))
+    AppMethodBeat.i(96467);
+    x localx = this.zDK;
+    if (localx == paramx)
     {
-      AppMethodBeat.o(96484);
+      AppMethodBeat.o(96467);
       return;
     }
-    this.ymV.getWindow().setFlags(8, 8);
-    this.ymV.getWindow().addFlags(131200);
-    if (this.yna != null)
+    if ((localx != null) && (localx.equals(paramx)))
     {
-      this.ymV.setOnDismissListener(new DialogInterface.OnDismissListener()
-      {
-        public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(96481);
-          l.this.yna.dKI();
-          AppMethodBeat.o(96481);
-        }
-      });
-      this.ymV.setOnCancelListener(new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(96482);
-          l.this.yna.dKJ();
-          AppMethodBeat.o(96482);
-        }
-      });
+      AppMethodBeat.o(96467);
+      return;
     }
-    this.ymV.setContentView(this.ijA);
-    BottomSheetBehavior.l((View)this.ijA.getParent()).J(al.gg(this.mContext)[1]);
-    this.ymV.show();
-    AppMethodBeat.o(96484);
+    this.zDK = paramx;
+    dRl();
+    dWW();
+    AppMethodBeat.o(96467);
   }
   
-  public static abstract interface a
+  public void aM(Map<String, Object> paramMap) {}
+  
+  public boolean aQ(JSONObject paramJSONObject)
   {
-    public abstract void dKI();
-    
-    public abstract void dKJ();
+    AppMethodBeat.i(96475);
+    if (this.zDL == 0)
+    {
+      AppMethodBeat.o(96475);
+      return false;
+    }
+    if (this.zDK.zAp)
+    {
+      AppMethodBeat.o(96475);
+      return false;
+    }
+    try
+    {
+      paramJSONObject.put("cid", this.zDK.zAg);
+      paramJSONObject.put("exposureCount", this.zDL);
+      paramJSONObject.put("stayTime", this.dBD);
+      AppMethodBeat.o(96475);
+      return true;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      ad.printErrStackTrace("MicroMsg.Sns.AdLandingPageBaseComponent", paramJSONObject, "", new Object[0]);
+      AppMethodBeat.o(96475);
+    }
+    return false;
+  }
+  
+  public void dRk() {}
+  
+  protected void dRl()
+  {
+    AppMethodBeat.i(96469);
+    ad.w("MicroMsg.Sns.AdLandingPageBaseComponent", "for component reuse, subclass must implement this method");
+    AppMethodBeat.o(96469);
+  }
+  
+  public void dRm()
+  {
+    AppMethodBeat.i(96470);
+    if (this.zDN)
+    {
+      AppMethodBeat.o(96470);
+      return;
+    }
+    this.zDN = true;
+    this.zDM = System.currentTimeMillis();
+    this.zDL += 1;
+    AppMethodBeat.o(96470);
+  }
+  
+  public void dRn()
+  {
+    AppMethodBeat.i(96471);
+    if (!this.zDN)
+    {
+      AppMethodBeat.o(96471);
+      return;
+    }
+    this.zDN = false;
+    if (this.zDM > 0L) {
+      this.dBD += System.currentTimeMillis() - this.zDM;
+    }
+    this.zDM = 0L;
+    AppMethodBeat.o(96471);
+  }
+  
+  public void dRo()
+  {
+    AppMethodBeat.i(96474);
+    dRn();
+    AppMethodBeat.o(96474);
+  }
+  
+  protected View dWC()
+  {
+    return null;
+  }
+  
+  protected void dWF() {}
+  
+  public final x dWS()
+  {
+    return this.zDK;
+  }
+  
+  public final int dWT()
+  {
+    AppMethodBeat.i(96472);
+    View localView = getView();
+    int[] arrayOfInt = new int[2];
+    localView.getLocationOnScreen(arrayOfInt);
+    int k = arrayOfInt[1];
+    int j = localView.getHeight() + k;
+    ad.d("MicroMsg.Sns.AdLandingPageBaseComponent", "comp %s , top %d,bottom %d ", new Object[] { this, Integer.valueOf(k), Integer.valueOf(j) });
+    int i;
+    if ((k >= 0) && (j <= this.ltB)) {
+      i = localView.getHeight();
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(96472);
+      return i;
+      if ((k < 0) && (j > 0))
+      {
+        i = j;
+        if (j <= this.ltB) {}
+      }
+      else if ((k < 0) && (j > this.ltB))
+      {
+        i = this.ltB;
+      }
+      else if ((k < this.ltB) && (j > this.ltB))
+      {
+        i = this.ltB - k;
+      }
+      else
+      {
+        i = 0;
+      }
+    }
+  }
+  
+  public boolean dWU()
+  {
+    AppMethodBeat.i(96473);
+    if (dWT() >= Math.min(getView().getHeight() >>> 1, this.ltB >>> 1))
+    {
+      AppMethodBeat.o(96473);
+      return true;
+    }
+    AppMethodBeat.o(96473);
+    return false;
+  }
+  
+  public final String dWV()
+  {
+    return this.zDK.zAg;
+  }
+  
+  public final void dWW()
+  {
+    AppMethodBeat.i(96476);
+    Object localObject1;
+    if (this.contentView == null)
+    {
+      localObject1 = new IllegalStateException("set field contentView first");
+      AppMethodBeat.o(96476);
+      throw ((Throwable)localObject1);
+    }
+    if (this.zDK != null)
+    {
+      localObject1 = this.contentView.getLayoutParams();
+      if (localObject1 != null)
+      {
+        if (this.zDK.zAi != 2.147484E+009F) {
+          ((ViewGroup.LayoutParams)localObject1).width = ((int)this.zDK.zAi);
+        }
+        if (this.zDK.zAj != 2.147484E+009F) {
+          ((ViewGroup.LayoutParams)localObject1).height = ((int)this.zDK.zAj);
+        }
+        Object localObject2;
+        int i;
+        if ((localObject1 instanceof LinearLayout.LayoutParams))
+        {
+          localObject2 = (LinearLayout.LayoutParams)localObject1;
+          i = getGravity();
+          if (i != 0) {
+            ((LinearLayout.LayoutParams)localObject2).gravity = i;
+          }
+        }
+        for (;;)
+        {
+          this.contentView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          AppMethodBeat.o(96476);
+          return;
+          if ((localObject1 instanceof FrameLayout.LayoutParams))
+          {
+            localObject2 = (FrameLayout.LayoutParams)localObject1;
+            i = getGravity();
+            if (i != 0) {
+              ((FrameLayout.LayoutParams)localObject2).gravity = i;
+            }
+          }
+        }
+      }
+      ad.i("MicroMsg.Sns.AdLandingPageBaseComponent", this + " has no layoutParams in container " + this.zDO);
+    }
+    AppMethodBeat.o(96476);
+  }
+  
+  public void dWX() {}
+  
+  protected final <T> T dWY()
+  {
+    try
+    {
+      x localx = this.zDK;
+      return localx;
+    }
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  public final ae dWZ()
+  {
+    AppMethodBeat.i(96477);
+    if ((this.context instanceof SnsAdNativeLandingPagesUI))
+    {
+      localae = ((SnsAdNativeLandingPagesUI)this.context).dWZ();
+      AppMethodBeat.o(96477);
+      return localae;
+    }
+    if ((this.context instanceof VideoFullScreenActivity))
+    {
+      localae = VideoFullScreenActivity.dWJ();
+      AppMethodBeat.o(96477);
+      return localae;
+    }
+    ae localae = new ae();
+    AppMethodBeat.o(96477);
+    return localae;
+  }
+  
+  public void dWm() {}
+  
+  public final int getGravity()
+  {
+    int i = 0;
+    switch (this.zDK.zAm)
+    {
+    }
+    for (;;)
+    {
+      switch (this.zDK.zAn)
+      {
+      default: 
+        return i;
+        i = 80;
+        continue;
+        i = 16;
+        continue;
+        i = 48;
+      }
+    }
+    return i | 0x1;
+    return i | 0x3;
+    return i | 0x5;
+  }
+  
+  protected int getLayout()
+  {
+    return 2147483647;
+  }
+  
+  public final View getView()
+  {
+    AppMethodBeat.i(96468);
+    if (this.contentView != null)
+    {
+      localObject = this.contentView;
+      AppMethodBeat.o(96468);
+      return localObject;
+    }
+    if (this.contentView == null)
+    {
+      int i = getLayout();
+      if (i != 2147483647) {
+        this.contentView = ((LayoutInflater)this.context.getSystemService("layout_inflater")).inflate(i, this.zDO, false);
+      }
+      while (this.contentView == null)
+      {
+        localObject = new IllegalStateException("implement getLayout() or customLayout() to get a valid root view");
+        AppMethodBeat.o(96468);
+        throw ((Throwable)localObject);
+        this.contentView = dWC();
+        if ((this.contentView != null) && (this.contentView.getLayoutParams() == null))
+        {
+          this.zDO.addView(this.contentView);
+          localObject = this.contentView.getLayoutParams();
+          this.zDO.removeView(this.contentView);
+          this.contentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+      }
+    }
+    dRk();
+    dRl();
+    dWF();
+    dWW();
+    Object localObject = this.contentView;
+    AppMethodBeat.o(96468);
+    return localObject;
+  }
+  
+  public final void setBackgroundColor(int paramInt)
+  {
+    this.backgroundColor = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l
  * JD-Core Version:    0.7.0.1
  */

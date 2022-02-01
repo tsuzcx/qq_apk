@@ -9,7 +9,7 @@ import com.tencent.mm.g.a.h;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,10 +23,10 @@ public final class JsApiAddNativeDownloadTask
     extends MainProcessTask
   {
     public static final Parcelable.Creator<AddNativeDownloadTaskTask> CREATOR;
-    public long cYu = 0L;
-    public int drx = 0;
-    private c jWO;
-    Runnable jWP;
+    public int dDp = 0;
+    public long djM = 0L;
+    private c krf;
+    Runnable krg;
     
     static
     {
@@ -35,20 +35,20 @@ public final class JsApiAddNativeDownloadTask
       AppMethodBeat.o(45448);
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       AppMethodBeat.i(45441);
-      ac.i("MicroMsg.JsApiAddNativeDownloadTask", "runInMainProcess flag:%d", new Object[] { Integer.valueOf(this.drx) });
-      this.jWO = new c() {};
-      com.tencent.mm.sdk.b.a.GpY.b(this.jWO);
+      ad.i("MicroMsg.JsApiAddNativeDownloadTask", "runInMainProcess flag:%d", new Object[] { Integer.valueOf(this.dDp) });
+      this.krf = new c() {};
+      com.tencent.mm.sdk.b.a.IbL.b(this.krf);
       AppMethodBeat.o(45441);
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(45442);
-      if (this.jWP != null) {
-        this.jWP.run();
+      if (this.krg != null) {
+        this.krg.run();
       }
       AppMethodBeat.o(45442);
     }
@@ -56,16 +56,16 @@ public final class JsApiAddNativeDownloadTask
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(45443);
-      this.drx = paramParcel.readInt();
-      this.cYu = paramParcel.readLong();
+      this.dDp = paramParcel.readInt();
+      this.djM = paramParcel.readLong();
       AppMethodBeat.o(45443);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45444);
-      paramParcel.writeInt(this.drx);
-      paramParcel.writeLong(this.cYu);
+      paramParcel.writeInt(this.dDp);
+      paramParcel.writeLong(this.djM);
       AppMethodBeat.o(45444);
     }
   }

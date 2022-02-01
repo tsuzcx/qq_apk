@@ -6,29 +6,29 @@ import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.j;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/config/prefetch/PrefetchWxaAttrsInfo;", "Lcom/tencent/mm/autogen/table/BaseAppBrandPrefetchWxaAttrsMarkTable;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/config/prefetch/PrefetchWxaAttrsInfo;", "Lcom/tencent/mm/autogen/table/BaseAppBrandPrefetchWxaAttrsMarkTable;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-appbrand-integration_release"})
 public final class a
   extends r
 {
-  public static final c.a hlR;
-  public static final String[] hlS;
-  public static final a jGm;
+  public static final c.a hEe;
+  public static final String[] hEf;
+  public static final a kav;
   
   static
   {
-    AppMethodBeat.i(187116);
-    jGm = new a((byte)0);
-    hlR = r.Th();
-    hlS = new String[] { j.getCreateSQLs(hlR, "AppBrandPrefetchWxaAttrsMarkTable") };
-    AppMethodBeat.o(187116);
+    AppMethodBeat.i(189010);
+    kav = new a((byte)0);
+    hEe = r.Vv();
+    hEf = new String[] { j.getCreateSQLs(hEe, "AppBrandPrefetchWxaAttrsMarkTable") };
+    AppMethodBeat.o(189010);
   }
   
   public final c.a getDBInfo()
   {
-    return hlR;
+    return hEe;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/config/prefetch/PrefetchWxaAttrsInfo$Companion;", "", "()V", "COL_PREFETCHUPDATETIME", "", "COL_USERNAME", "INFO", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "TABLE_CREATE", "", "kotlin.jvm.PlatformType", "[Ljava/lang/String;", "TABLE_NAME", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/config/prefetch/PrefetchWxaAttrsInfo$Companion;", "", "()V", "COL_PREFETCHUPDATETIME", "", "COL_USERNAME", "INFO", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "TABLE_CREATE", "", "kotlin.jvm.PlatformType", "[Ljava/lang/String;", "TABLE_NAME", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

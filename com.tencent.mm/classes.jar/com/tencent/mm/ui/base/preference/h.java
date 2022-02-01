@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.aq;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,37 +21,37 @@ public class h
   extends BaseAdapter
   implements f
 {
-  private Preference.a HDT;
-  private final i HFj;
-  private final LinkedList<String> HFk;
-  private final HashMap<String, Preference> HFl;
-  private final HashSet<String> HFm;
-  private final LinkedList<String> HFn;
-  private final HashMap<String, Integer> HFo;
-  private final HashMap<String, String> HFp;
-  public a HFq;
-  private int[] HFr;
-  private boolean HFs;
-  private boolean HFt;
+  private Preference.a JrJ;
+  private final i Jta;
+  private final LinkedList<String> Jtb;
+  private final HashMap<String, Preference> Jtc;
+  private final HashSet<String> Jtd;
+  private final LinkedList<String> Jte;
+  private final HashMap<String, Integer> Jtf;
+  private final HashMap<String, String> Jtg;
+  public a Jth;
+  private int[] Jti;
+  private boolean Jtj;
+  private boolean Jtk;
   protected final Context context;
-  private ListView iWK;
+  private ListView jpT;
   private final SharedPreferences sp;
   
   public h(Context paramContext, ListView paramListView, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(142591);
-    this.HFk = new LinkedList();
-    this.HFl = new HashMap();
-    this.HFm = new HashSet();
-    this.HFn = new LinkedList();
-    this.HFo = new HashMap();
-    this.HFp = new HashMap();
-    this.HFr = new int[0];
-    this.HFs = false;
-    this.HFt = false;
-    this.HFj = new i(paramContext);
+    this.Jtb = new LinkedList();
+    this.Jtc = new HashMap();
+    this.Jtd = new HashSet();
+    this.Jte = new LinkedList();
+    this.Jtf = new HashMap();
+    this.Jtg = new HashMap();
+    this.Jti = new int[0];
+    this.Jtj = false;
+    this.Jtk = false;
+    this.Jta = new i(paramContext);
     this.context = paramContext;
-    this.iWK = paramListView;
+    this.jpT = paramListView;
     this.sp = paramSharedPreferences;
     AppMethodBeat.o(142591);
   }
@@ -63,21 +63,21 @@ public class h
     if ((paramPreference instanceof CheckBoxPreference))
     {
       localObject = (CheckBoxPreference)paramPreference;
-      if (((Preference)localObject).HFK) {
-        ((CheckBoxPreference)localObject).mF = paramSharedPreferences.getBoolean(paramPreference.mKey, ((CheckBoxPreference)paramPreference).isChecked());
+      if (((Preference)localObject).JtB) {
+        ((CheckBoxPreference)localObject).oB = paramSharedPreferences.getBoolean(paramPreference.mKey, ((CheckBoxPreference)paramPreference).isChecked());
       }
     }
     if ((paramPreference instanceof DialogPreference))
     {
       localObject = (DialogPreference)paramPreference;
-      if (((Preference)localObject).HFK) {
+      if (((Preference)localObject).JtB) {
         ((DialogPreference)localObject).setValue(paramSharedPreferences.getString(paramPreference.mKey, null));
       }
     }
     if ((paramPreference instanceof EditPreference))
     {
       localObject = (EditPreference)paramPreference;
-      if (((Preference)localObject).HFK)
+      if (((Preference)localObject).JtB)
       {
         ((EditPreference)localObject).value = paramSharedPreferences.getString(paramPreference.mKey, null);
         ((EditPreference)localObject).setSummary(((EditPreference)localObject).value);
@@ -86,7 +86,7 @@ public class h
     AppMethodBeat.o(142608);
   }
   
-  private static boolean aak(int paramInt)
+  private static boolean acu(int paramInt)
   {
     return (paramInt == 2131494804) || (paramInt == 2131494886) || (paramInt == 2131494889);
   }
@@ -95,18 +95,18 @@ public class h
   {
     AppMethodBeat.i(142599);
     String str = f(paramPreference);
-    this.HFl.put(str, paramPreference);
-    LinkedList localLinkedList = this.HFk;
+    this.Jtc.put(str, paramPreference);
+    LinkedList localLinkedList = this.Jtb;
     int i = paramInt;
     if (paramInt == -1) {
-      i = this.HFk.size();
+      i = this.Jtb.size();
     }
     localLinkedList.add(i, str);
-    if ((!this.HFo.containsKey(e(paramPreference))) && (this.HFs)) {
-      this.HFo.put(e(paramPreference), Integer.valueOf(this.HFo.size()));
+    if ((!this.Jtf.containsKey(e(paramPreference))) && (this.Jtj)) {
+      this.Jtf.put(e(paramPreference), Integer.valueOf(this.Jtf.size()));
     }
-    if (paramPreference.HFL != null) {
-      this.HFp.put(paramPreference.HFL + "|" + paramPreference.mKey, paramPreference.mKey);
+    if (paramPreference.JtC != null) {
+      this.Jtg.put(paramPreference.JtC + "|" + paramPreference.mKey, paramPreference.mKey);
     }
     AppMethodBeat.o(142599);
   }
@@ -114,7 +114,7 @@ public class h
   private static String e(Preference paramPreference)
   {
     AppMethodBeat.i(142592);
-    paramPreference = paramPreference.getClass().getName() + "L" + paramPreference.getLayoutResource() + "W" + paramPreference.HFU;
+    paramPreference = paramPreference.getClass().getName() + "L" + paramPreference.getLayoutResource() + "W" + paramPreference.JtL;
     AppMethodBeat.o(142592);
     return paramPreference;
   }
@@ -137,37 +137,37 @@ public class h
   {
     AppMethodBeat.i(142598);
     b(paramPreference, paramInt);
-    if (!this.HFs) {
+    if (!this.Jtj) {
       notifyDataSetChanged();
     }
     AppMethodBeat.o(142598);
   }
   
-  public final Preference aPN(String paramString)
+  public final Preference aVD(String paramString)
   {
     AppMethodBeat.i(142600);
-    paramString = (Preference)this.HFl.get(paramString);
+    paramString = (Preference)this.Jtc.get(paramString);
     AppMethodBeat.o(142600);
     return paramString;
   }
   
-  public final boolean aPO(String paramString)
+  public final boolean aVE(String paramString)
   {
     AppMethodBeat.i(142603);
-    boolean bool = d(aPN(paramString));
+    boolean bool = d(aVD(paramString));
     AppMethodBeat.o(142603);
     return bool;
   }
   
-  public final int aPP(String paramString)
+  public final int aVF(String paramString)
   {
     AppMethodBeat.i(142595);
-    if (this.HFn == null)
+    if (this.Jte == null)
     {
       AppMethodBeat.o(142595);
       return -1;
     }
-    int i = this.HFn.indexOf(paramString);
+    int i = this.Jte.indexOf(paramString);
     AppMethodBeat.o(142595);
     return i;
   }
@@ -175,11 +175,11 @@ public class h
   public final void addPreferencesFromResource(int paramInt)
   {
     AppMethodBeat.i(142605);
-    this.HFs = true;
-    this.HFj.a(paramInt, this);
-    this.HFs = false;
-    if (this.iWK != null) {
-      this.iWK.setAdapter(this);
+    this.Jtj = true;
+    this.Jta.a(paramInt, this);
+    this.Jtj = false;
+    if (this.jpT != null) {
+      this.jpT.setAdapter(this);
     }
     notifyDataSetChanged();
     AppMethodBeat.o(142605);
@@ -188,16 +188,16 @@ public class h
   public final void b(Preference.a parama)
   {
     AppMethodBeat.i(142606);
-    this.HDT = parama;
+    this.JrJ = parama;
     notifyDataSetChanged();
     AppMethodBeat.o(142606);
   }
   
   public final void b(Preference paramPreference)
   {
-    AppMethodBeat.i(210326);
+    AppMethodBeat.i(221157);
     a(paramPreference, -1);
-    AppMethodBeat.o(210326);
+    AppMethodBeat.o(221157);
   }
   
   public final void c(Preference paramPreference)
@@ -207,15 +207,15 @@ public class h
     AppMethodBeat.o(142597);
   }
   
-  public final CheckBoxPreference cK(String paramString, boolean paramBoolean)
+  public final CheckBoxPreference cP(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(142601);
     if (paramBoolean) {
-      if (!this.HFm.contains(paramString)) {
-        this.HFm.add(paramString);
+      if (!this.Jtd.contains(paramString)) {
+        this.Jtd.add(paramString);
       }
     }
-    while (this.HFm.remove(paramString))
+    while (this.Jtd.remove(paramString))
     {
       notifyDataSetChanged();
       AppMethodBeat.o(142601);
@@ -236,9 +236,9 @@ public class h
       return false;
     }
     String str = f(paramPreference);
-    this.HFk.remove(str);
-    this.HFl.remove(str);
-    this.HFm.remove(paramPreference.mKey);
+    this.Jtb.remove(str);
+    this.Jtc.remove(str);
+    this.Jtd.remove(paramPreference.mKey);
     notifyDataSetChanged();
     AppMethodBeat.o(142602);
     return true;
@@ -247,13 +247,13 @@ public class h
   public int getCount()
   {
     AppMethodBeat.i(142609);
-    if (this.HFq != null)
+    if (this.Jth != null)
     {
-      i = this.HFq.LA(this.HFn.size());
+      i = this.Jth.Nc(this.Jte.size());
       AppMethodBeat.o(142609);
       return i;
     }
-    int i = this.HFn.size();
+    int i = this.Jte.size();
     AppMethodBeat.o(142609);
     return i;
   }
@@ -262,16 +262,16 @@ public class h
   {
     AppMethodBeat.i(142610);
     int i = paramInt;
-    if (this.HFq != null)
+    if (this.Jth != null)
     {
-      if (this.HFq.LB(paramInt))
+      if (this.Jth.Nd(paramInt))
       {
         AppMethodBeat.o(142610);
         return null;
       }
-      i = this.HFq.LC(paramInt);
+      i = this.Jth.Ne(paramInt);
     }
-    Object localObject = this.HFl.get(this.HFn.get(i));
+    Object localObject = this.Jtc.get(this.Jte.get(i));
     AppMethodBeat.o(142610);
     return localObject;
   }
@@ -284,13 +284,13 @@ public class h
   public int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(142612);
-    if (paramInt > this.HFn.size() - 1)
+    if (paramInt > this.Jte.size() - 1)
     {
       AppMethodBeat.o(142612);
       return -1;
     }
-    Object localObject = (Preference)this.HFl.get(this.HFn.get(paramInt));
-    localObject = (Integer)this.HFo.get(e((Preference)localObject));
+    Object localObject = (Preference)this.Jtc.get(this.Jte.get(paramInt));
+    localObject = (Integer)this.Jtf.get(e((Preference)localObject));
     if (localObject == null)
     {
       AppMethodBeat.o(142612);
@@ -305,34 +305,34 @@ public class h
   {
     AppMethodBeat.i(142613);
     int i = paramInt;
-    if (this.HFq != null)
+    if (this.Jth != null)
     {
-      if (this.HFq.LB(paramInt))
+      if (this.Jth.Nd(paramInt))
       {
-        paramView = this.HFq.getView(paramInt, paramView, paramViewGroup);
+        paramView = this.Jth.getView(paramInt, paramView, paramViewGroup);
         AppMethodBeat.o(142613);
         return paramView;
       }
-      i = this.HFq.LC(paramInt);
+      i = this.Jth.Ne(paramInt);
     }
-    if (i > this.HFn.size())
+    if (i > this.Jte.size())
     {
       AppMethodBeat.o(142613);
       return paramView;
     }
-    Object localObject = (Preference)this.HFl.get(this.HFn.get(i));
+    Object localObject = (Preference)this.Jtc.get(this.Jte.get(i));
     if ((localObject instanceof CheckBoxPreference)) {
-      ((Preference)localObject).a(this.HDT);
+      ((Preference)localObject).a(this.JrJ);
     }
-    if (!this.HFo.containsKey(e((Preference)localObject))) {
+    if (!this.Jtf.containsKey(e((Preference)localObject))) {
       paramView = null;
     }
     paramView = ((Preference)localObject).getView(paramView, paramViewGroup);
-    paramInt = this.HFr[i];
+    paramInt = this.Jti[i];
     paramViewGroup = paramView.findViewById(2131298739);
     localObject = paramView.findViewById(2131306012);
     if (paramViewGroup == null) {
-      ac.d("MicroMsg.MMPreferenceAdapter", "find content view error");
+      ad.d("MicroMsg.MMPreferenceAdapter", "find content view error");
     }
     View localView;
     int n;
@@ -350,7 +350,7 @@ public class h
       if ((paramInt & 0x2) != 0)
       {
         n = paramViewGroup.getPaddingLeft();
-        paramViewGroup.setBackground(ao.aI(this.context, 2130969245));
+        paramViewGroup.setBackground(aq.aM(this.context, 2130969245));
         paramViewGroup.setPadding(n, 0, 0, 0);
         if ((localView != null) && (localView.getBackground() != null)) {
           localView.setBackground(null);
@@ -375,7 +375,7 @@ public class h
       }
       n = localView.getPaddingTop();
       int i1 = localView.getPaddingBottom();
-      localView.setBackground(ao.aI(this.context, 2130969245));
+      localView.setBackground(aq.aM(this.context, 2130969245));
       localView.setPadding(0, n, 0, i1);
       if ((paramViewGroup == null) || (paramViewGroup.getBackground() == null)) {
         break;
@@ -390,10 +390,10 @@ public class h
   public int getViewTypeCount()
   {
     AppMethodBeat.i(142611);
-    if (!this.HFt) {
-      this.HFt = true;
+    if (!this.Jtk) {
+      this.Jtk = true;
     }
-    int i = Math.max(1, this.HFo.size());
+    int i = Math.max(1, this.Jtf.size());
     AppMethodBeat.o(142611);
     return i;
   }
@@ -401,7 +401,7 @@ public class h
   public final int indexOf(String paramString)
   {
     AppMethodBeat.i(142594);
-    int i = this.HFk.indexOf(paramString);
+    int i = this.Jtb.indexOf(paramString);
     AppMethodBeat.o(142594);
     return i;
   }
@@ -410,34 +410,34 @@ public class h
   {
     int j = 0;
     AppMethodBeat.i(142607);
-    this.HFn.clear();
-    Object localObject1 = this.HFk.iterator();
+    this.Jte.clear();
+    Object localObject1 = this.Jtb.iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
-      if (!this.HFm.contains(localObject2)) {
-        if (this.HFl.get(localObject2) == null) {
-          ac.e("MicroMsg.MMPreferenceAdapter", "not found pref by key ".concat(String.valueOf(localObject2)));
+      if (!this.Jtd.contains(localObject2)) {
+        if (this.Jtc.get(localObject2) == null) {
+          ad.e("MicroMsg.MMPreferenceAdapter", "not found pref by key ".concat(String.valueOf(localObject2)));
         } else {
-          this.HFn.add(localObject2);
+          this.Jte.add(localObject2);
         }
       }
     }
-    if (!this.HFn.isEmpty()) {
-      this.HFl.get(this.HFn.get(0));
+    if (!this.Jte.isEmpty()) {
+      this.Jtc.get(this.Jte.get(0));
     }
     localObject1 = new HashSet();
     int i = 0;
-    if (i < this.HFn.size())
+    if (i < this.Jte.size())
     {
-      localObject2 = (Preference)this.HFl.get(this.HFn.get(i));
-      if (((localObject2 instanceof PreferenceCategory)) && (bs.isNullOrNil(((Preference)localObject2).mKey)) && (i != 0))
+      localObject2 = (Preference)this.Jtc.get(this.Jte.get(i));
+      if (((localObject2 instanceof PreferenceCategory)) && (bt.isNullOrNil(((Preference)localObject2).mKey)) && (i != 0))
       {
-        Preference localPreference = (Preference)this.HFl.get(this.HFn.get(i - 1));
+        Preference localPreference = (Preference)this.Jtc.get(this.Jte.get(i - 1));
         if ((localPreference instanceof PreferenceCategory))
         {
-          if ((!bs.isNullOrNil(localPreference.mKey)) || ((localPreference.getTitle() != null) && (localPreference.getTitle().toString().trim().length() > 0))) {
+          if ((!bt.isNullOrNil(localPreference.mKey)) || ((localPreference.getTitle() != null) && (localPreference.getTitle().toString().trim().length() > 0))) {
             break label277;
           }
           ((Set)localObject1).add(f(localPreference));
@@ -448,60 +448,60 @@ public class h
         i += 1;
         break;
         label277:
-        if ((bs.isNullOrNil(((Preference)localObject2).mKey)) && ((((Preference)localObject2).getTitle() == null) || (((Preference)localObject2).getTitle().toString().trim().length() <= 0))) {
+        if ((bt.isNullOrNil(((Preference)localObject2).mKey)) && ((((Preference)localObject2).getTitle() == null) || (((Preference)localObject2).getTitle().toString().trim().length() <= 0))) {
           ((Set)localObject1).add(f((Preference)localObject2));
         }
       }
     }
-    this.HFn.removeAll((Collection)localObject1);
-    this.HFr = new int[this.HFn.size()];
-    if (this.HFr.length <= 0)
+    this.Jte.removeAll((Collection)localObject1);
+    this.Jti = new int[this.Jte.size()];
+    if (this.Jti.length <= 0)
     {
       AppMethodBeat.o(142607);
       return;
     }
     i = j;
-    if (this.HFr.length == 1)
+    if (this.Jti.length == 1)
     {
-      i = ((Preference)this.HFl.get(this.HFn.get(0))).getLayoutResource();
-      localObject1 = (Preference)this.HFl.get(this.HFn.get(0));
-      if (aak(i)) {
+      i = ((Preference)this.Jtc.get(this.Jte.get(0))).getLayoutResource();
+      localObject1 = (Preference)this.Jtc.get(this.Jte.get(0));
+      if (acu(i)) {
         if ((localObject1 instanceof CheckBoxPreference))
         {
-          localObject1 = this.HFr;
+          localObject1 = this.Jti;
           localObject1[0] |= 0x8;
-          localObject1 = this.HFr;
+          localObject1 = this.Jti;
           localObject1[0] |= 0x1;
         }
       }
       for (;;)
       {
-        a((Preference)this.HFl.get(this.HFn.get(0)), this.sp);
+        a((Preference)this.Jtc.get(this.Jte.get(0)), this.sp);
         super.notifyDataSetChanged();
         AppMethodBeat.o(142607);
         return;
-        this.HFr[0] = 3;
+        this.Jti[0] = 3;
         continue;
-        this.HFr[0] = 4;
+        this.Jti[0] = 4;
       }
     }
-    if (i < this.HFn.size())
+    if (i < this.Jte.size())
     {
-      a((Preference)this.HFl.get(this.HFn.get(i)), this.sp);
-      localObject1 = (Preference)this.HFl.get(this.HFn.get(i));
+      a((Preference)this.Jtc.get(this.Jte.get(i)), this.sp);
+      localObject1 = (Preference)this.Jtc.get(this.Jte.get(i));
       j = ((Preference)localObject1).getLayoutResource();
-      if (aak(j))
+      if (acu(j))
       {
         if ((localObject1 instanceof CheckBoxPreference))
         {
-          localObject1 = this.HFr;
+          localObject1 = this.Jti;
           localObject1[i] |= 0x8;
         }
         if (i == 0)
         {
-          localObject1 = this.HFr;
+          localObject1 = this.Jti;
           localObject1[i] |= 0x1;
-          localObject1 = this.HFr;
+          localObject1 = this.Jti;
           localObject1[i] |= 0x10;
         }
       }
@@ -509,32 +509,32 @@ public class h
       {
         i += 1;
         break;
-        if (i == this.HFn.size() - 1)
+        if (i == this.Jte.size() - 1)
         {
-          localObject1 = this.HFr;
+          localObject1 = this.Jti;
           localObject1[i] |= 0x2;
         }
-        j = ((Preference)this.HFl.get(this.HFn.get(i - 1))).getLayoutResource();
+        j = ((Preference)this.Jtc.get(this.Jte.get(i - 1))).getLayoutResource();
         if ((j != 2131494804) || (j == 2131494886) || (j == 2131494889))
         {
-          localObject1 = this.HFr;
+          localObject1 = this.Jti;
           localObject1[i] |= 0x1;
           continue;
           if (j == 2131494863)
           {
             if (i == 0)
             {
-              localObject1 = this.HFr;
+              localObject1 = this.Jti;
               localObject1[i] |= 0x4;
-              localObject1 = this.HFr;
+              localObject1 = this.Jti;
               localObject1[i] |= 0x10;
             }
             else
             {
-              j = ((Preference)this.HFl.get(this.HFn.get(i - 1))).getLayoutResource();
+              j = ((Preference)this.Jtc.get(this.Jte.get(i - 1))).getLayoutResource();
               if ((j == 2131494804) || (j == 2131494886) || (j == 2131494889))
               {
-                localObject1 = this.HFr;
+                localObject1 = this.Jti;
                 j = i - 1;
                 localObject1[j] |= 0x2;
               }
@@ -542,19 +542,19 @@ public class h
           }
           else
           {
-            localObject1 = this.HFr;
+            localObject1 = this.Jti;
             localObject1[i] |= 0x4;
             if (i == 0)
             {
-              localObject1 = this.HFr;
+              localObject1 = this.Jti;
               localObject1[i] |= 0x10;
             }
             else
             {
-              j = ((Preference)this.HFl.get(this.HFn.get(i - 1))).getLayoutResource();
-              if ((aak(j)) || (j == 2131494863))
+              j = ((Preference)this.Jtc.get(this.Jte.get(i - 1))).getLayoutResource();
+              if ((acu(j)) || (j == 2131494863))
               {
-                localObject1 = this.HFr;
+                localObject1 = this.Jti;
                 j = i - 1;
                 localObject1[j] |= 0x2;
               }
@@ -570,21 +570,21 @@ public class h
   public final void removeAll()
   {
     AppMethodBeat.i(142604);
-    this.HFn.clear();
-    this.HFl.clear();
-    this.HFk.clear();
-    this.HFm.clear();
+    this.Jte.clear();
+    this.Jtc.clear();
+    this.Jtb.clear();
+    this.Jtd.clear();
     notifyDataSetChanged();
     AppMethodBeat.o(142604);
   }
   
   public static abstract interface a
   {
-    public abstract int LA(int paramInt);
+    public abstract int Nc(int paramInt);
     
-    public abstract boolean LB(int paramInt);
+    public abstract boolean Nd(int paramInt);
     
-    public abstract int LC(int paramInt);
+    public abstract int Ne(int paramInt);
     
     public abstract View getView(int paramInt, View paramView, ViewGroup paramViewGroup);
   }

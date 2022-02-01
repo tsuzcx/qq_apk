@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dhz;
+import com.tencent.mm.protocal.protobuf.dno;
 
 public final class h
 {
-  public static boolean a(dhz paramdhz1, dhz paramdhz2)
+  public static boolean a(dno paramdno1, dno paramdno2)
   {
     AppMethodBeat.i(121912);
-    if ((paramdhz1 == null) || (paramdhz2 == null))
+    if ((paramdno1 == null) || (paramdno2 == null))
     {
       AppMethodBeat.o(121912);
       return false;
     }
-    if ((TextUtils.isEmpty(paramdhz1.activityName)) || (TextUtils.isEmpty(paramdhz2.activityName)))
+    if ((TextUtils.isEmpty(paramdno1.activityName)) || (TextUtils.isEmpty(paramdno2.activityName)))
     {
       AppMethodBeat.o(121912);
       return false;
     }
-    boolean bool = paramdhz1.activityName.equals(paramdhz2.activityName);
+    boolean bool = paramdno1.activityName.equals(paramdno2.activityName);
     AppMethodBeat.o(121912);
     return bool;
   }

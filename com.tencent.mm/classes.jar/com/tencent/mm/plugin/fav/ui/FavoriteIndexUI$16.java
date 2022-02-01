@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.fav.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.List;
 
 final class FavoriteIndexUI$16
@@ -15,10 +15,10 @@ final class FavoriteIndexUI$16
   {
     AppMethodBeat.i(107014);
     long l = System.currentTimeMillis();
-    List localList = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cpM();
+    List localList = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cvr();
     if (localList != null)
     {
-      ac.i("MicroMsg.FavoriteIndexUI", "initInvalidFavItem getInvalid favitems , size = %d,start time = %s", new Object[] { Integer.valueOf(localList.size()), Long.valueOf(l) });
+      ad.i("MicroMsg.FavoriteIndexUI", "initInvalidFavItem getInvalid favitems , size = %d,start time = %s", new Object[] { Integer.valueOf(localList.size()), Long.valueOf(l) });
       if (localList.size() == 0)
       {
         AppMethodBeat.o(107014);
@@ -31,7 +31,7 @@ final class FavoriteIndexUI$16
         ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().A((com.tencent.mm.plugin.fav.a.g)localList.get(i));
         i += 1;
       }
-      ac.i("MicroMsg.FavoriteIndexUI", "initInvalidFavItem  cost time = %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      ad.i("MicroMsg.FavoriteIndexUI", "initInvalidFavItem  cost time = %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     }
     AppMethodBeat.o(107014);
   }

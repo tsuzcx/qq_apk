@@ -1,39 +1,39 @@
 package d.l.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.l.b.a.c.a;
 import d.l.b.a.c.b;
 import d.l.b.a.c.e;
 import java.lang.ref.WeakReference;
 
-@l(fNY={1, 1, 15}, fNZ={""}, fOa={"K_CLASS_CACHE", "Lkotlin/reflect/jvm/internal/pcollections/HashPMap;", "", "kotlin.jvm.PlatformType", "", "clearKClassCache", "", "getOrCreateKotlinClass", "Lkotlin/reflect/jvm/internal/KClassImpl;", "T", "jClass", "Ljava/lang/Class;", "kotlin-reflection"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"K_CLASS_CACHE", "Lkotlin/reflect/jvm/internal/pcollections/HashPMap;", "", "kotlin.jvm.PlatformType", "", "clearKClassCache", "", "getOrCreateKotlinClass", "Lkotlin/reflect/jvm/internal/KClassImpl;", "T", "jClass", "Ljava/lang/Class;", "kotlin-reflection"})
 public final class f
 {
-  private static b<String, Object> KWb;
+  private static b<String, Object> MNh;
   
   static
   {
     AppMethodBeat.i(56305);
-    b localb = b.gcW();
-    k.g(localb, "HashPMap.empty<String, Any>()");
-    KWb = localb;
+    b localb = b.guw();
+    p.g(localb, "HashPMap.empty<String, Any>()");
+    MNh = localb;
     AppMethodBeat.o(56305);
   }
   
-  public static final <T> g<T> bo(Class<T> paramClass)
+  public static final <T> g<T> bq(Class<T> paramClass)
   {
     Object localObject2 = null;
     AppMethodBeat.i(56304);
-    k.h(paramClass, "jClass");
+    p.h(paramClass, "jClass");
     String str = paramClass.getName();
-    Object localObject1 = KWb.aiW(str.hashCode());
+    Object localObject1 = MNh.alx(str.hashCode());
     Object localObject3;
     if ((localObject1 != null) && (((a)localObject1).size > 0))
     {
       localObject3 = (e)((a)localObject1).first;
-      if (!((e)localObject3).aGF.equals(str)) {}
+      if (!((e)localObject3).aIw.equals(str)) {}
     }
     for (localObject1 = ((e)localObject3).value;; localObject1 = null)
     {
@@ -43,14 +43,14 @@ public final class f
       localObject3 = (g)((WeakReference)localObject1).get();
       localObject1 = localObject2;
       if (localObject3 != null) {
-        localObject1 = ((g)localObject3).KUC;
+        localObject1 = ((g)localObject3).MLE;
       }
-      if (!k.g(localObject1, paramClass)) {
+      if (!p.i(localObject1, paramClass)) {
         break label280;
       }
       AppMethodBeat.o(56304);
       return localObject3;
-      localObject1 = ((a)localObject1).LPo;
+      localObject1 = ((a)localObject1).NGj;
       break;
     }
     label133:
@@ -63,7 +63,7 @@ public final class f
       {
         g localg = (g)localObject3[i].get();
         if (localg != null) {}
-        for (localObject2 = localg.KUC; k.g(localObject2, paramClass); localObject2 = null)
+        for (localObject2 = localg.MLE; p.i(localObject2, paramClass); localObject2 = null)
         {
           AppMethodBeat.o(56304);
           return localg;
@@ -75,24 +75,24 @@ public final class f
       System.arraycopy(localObject1, 0, localObject2, 0, i);
       paramClass = new g(paramClass);
       localObject2[i] = new WeakReference(paramClass);
-      localObject1 = KWb.T(str, localObject2);
-      k.g(localObject1, "K_CLASS_CACHE.plus(name, newArray)");
-      KWb = (b)localObject1;
+      localObject1 = MNh.V(str, localObject2);
+      p.g(localObject1, "K_CLASS_CACHE.plus(name, newArray)");
+      MNh = (b)localObject1;
       AppMethodBeat.o(56304);
       return paramClass;
     }
     label280:
     paramClass = new g(paramClass);
-    localObject1 = KWb.T(str, new WeakReference(paramClass));
-    k.g(localObject1, "K_CLASS_CACHE.plus(name, WeakReference(newKClass))");
-    KWb = (b)localObject1;
+    localObject1 = MNh.V(str, new WeakReference(paramClass));
+    p.g(localObject1, "K_CLASS_CACHE.plus(name, WeakReference(newKClass))");
+    MNh = (b)localObject1;
     AppMethodBeat.o(56304);
     return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.f
  * JD-Core Version:    0.7.0.1
  */

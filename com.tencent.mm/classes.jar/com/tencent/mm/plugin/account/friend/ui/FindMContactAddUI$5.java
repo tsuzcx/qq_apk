@@ -12,14 +12,14 @@ final class FindMContactAddUI$5
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(131177);
-    FindMContactAddUI.q(this.iMs);
-    this.iMs.finish();
+    FindMContactAddUI.q(this.jfC);
+    this.jfC.finish();
     AppMethodBeat.o(131177);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.FindMContactAddUI.5
  * JD-Core Version:    0.7.0.1
  */

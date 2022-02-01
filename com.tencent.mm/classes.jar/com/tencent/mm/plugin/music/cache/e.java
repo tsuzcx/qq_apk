@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.music.cache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.i;
+import com.tencent.mm.az.i;
 import com.tencent.mm.plugin.music.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class e
 {
   public static void a(String paramString, a parama)
   {
     AppMethodBeat.i(137170);
-    if (dip())
+    if (dsB())
     {
       ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).a(paramString, parama);
       AppMethodBeat.o(137170);
       return;
     }
-    ac.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     AppMethodBeat.o(137170);
   }
   
-  public static i ani(String paramString)
+  public static i ash(String paramString)
   {
     AppMethodBeat.i(137166);
-    if (dip())
+    if (dsB())
     {
-      paramString = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).ani(paramString);
+      paramString = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).ash(paramString);
       AppMethodBeat.o(137166);
       return paramString;
     }
-    ac.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     AppMethodBeat.o(137166);
     return null;
   }
   
-  public static a anm(String paramString)
+  public static a asl(String paramString)
   {
     AppMethodBeat.i(137169);
-    if (dip())
+    if (dsB())
     {
-      paramString = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).anm(paramString);
+      paramString = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).asl(paramString);
       AppMethodBeat.o(137169);
       return paramString;
     }
-    ac.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     paramString = new a();
     AppMethodBeat.o(137169);
     return paramString;
   }
   
-  public static boolean dip()
+  public static boolean dsB()
   {
     AppMethodBeat.i(137164);
     if (com.tencent.mm.plugin.music.f.c.b.aQ(c.class) != null)
@@ -62,11 +62,11 @@ public final class e
     return false;
   }
   
-  public static void ed(String paramString, int paramInt)
+  public static void ev(String paramString, int paramInt)
   {
     AppMethodBeat.i(137168);
-    if (dip()) {
-      ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).ed(paramString, paramInt);
+    if (dsB()) {
+      ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).ev(paramString, paramInt);
     }
     AppMethodBeat.o(137168);
   }
@@ -74,31 +74,31 @@ public final class e
   public static String getAccPath()
   {
     AppMethodBeat.i(137165);
-    if (dip())
+    if (dsB())
     {
       str = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).getAccPath();
-      if (!bs.isNullOrNil(str))
+      if (!bt.isNullOrNil(str))
       {
         AppMethodBeat.o(137165);
         return str;
       }
     }
-    ac.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
-    String str = com.tencent.mm.loader.j.b.aph();
+    ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    String str = com.tencent.mm.loader.j.b.arU();
     AppMethodBeat.o(137165);
     return str;
   }
   
-  public static void s(String paramString, byte[] paramArrayOfByte)
+  public static void t(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(137167);
-    if (dip())
+    if (dsB())
     {
-      ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).s(paramString, paramArrayOfByte);
+      ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).t(paramString, paramArrayOfByte);
       AppMethodBeat.o(137167);
       return;
     }
-    ac.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     AppMethodBeat.o(137167);
   }
 }

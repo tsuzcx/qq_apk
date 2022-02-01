@@ -4,7 +4,9 @@ import android.content.Context;
 
 public abstract interface b
 {
-  public abstract void L(long paramLong, int paramInt);
+  public abstract void Hx(int paramInt);
+  
+  public abstract void P(long paramLong, int paramInt);
   
   public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6);
   
@@ -14,19 +16,34 @@ public abstract interface b
   
   public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, long paramLong, String paramString4, int paramInt3);
   
-  public abstract void af(String paramString, int paramInt1, int paramInt2);
+  public abstract void aj(String paramString, int paramInt1, int paramInt2);
   
-  public abstract boolean cOh();
+  public abstract boolean cWA();
   
-  public abstract String cOi();
+  public abstract String cWB();
   
-  public abstract void fh(Context paramContext);
+  public abstract void fk(Context paramContext);
   
   public abstract void j(Context paramContext, String paramString1, String paramString2);
   
   public abstract void k(String paramString1, String paramString2, String paramString3);
   
-  public abstract void mD(boolean paramBoolean);
+  public abstract void mV(boolean paramBoolean);
+  
+  public static final class a
+  {
+    private static b tRQ = null;
+    
+    public static void a(b paramb)
+    {
+      tRQ = paramb;
+    }
+    
+    public static b cWM()
+    {
+      return tRQ;
+    }
+  }
 }
 
 

@@ -7,102 +7,102 @@ import com.tencent.mm.plugin.appbrand.appusage.ah;
 import com.tencent.mm.plugin.appbrand.appusage.ai;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandDesktopViewStorageHelper;", "", "()V", "TAG", "", "collectionStorage", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandCollectionStorageWithCache;", "usageStorage", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandUsageStorageWithCache;", "asyncPreloadData", "", "obtainCollectionStorage", "obtainUsageStorage", "release", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandDesktopViewStorageHelper;", "", "()V", "TAG", "", "collectionStorage", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandCollectionStorageWithCache;", "usageStorage", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandUsageStorageWithCache;", "asyncPreloadData", "", "obtainCollectionStorage", "obtainUsageStorage", "release", "plugin-appbrand-integration_release"})
 public final class c
 {
-  private static e mzD;
-  private static b mzE;
-  public static final c mzF;
+  private static e nal;
+  private static b nam;
+  public static final c nan;
   
   static
   {
-    AppMethodBeat.i(187485);
-    mzF = new c();
-    AppMethodBeat.o(187485);
+    AppMethodBeat.i(189716);
+    nan = new c();
+    AppMethodBeat.o(189716);
   }
   
-  public static void bzz()
+  public static void bDD()
   {
-    AppMethodBeat.i(187483);
-    com.tencent.e.h.JZN.aT((Runnable)a.mzG);
-    AppMethodBeat.o(187483);
+    AppMethodBeat.i(189714);
+    com.tencent.e.h.LTJ.aS((Runnable)a.nao);
+    AppMethodBeat.o(189714);
   }
   
   public static void release()
   {
-    AppMethodBeat.i(187484);
-    com.tencent.d.f.h.fCP();
-    mzD = null;
-    mzE = null;
-    AppMethodBeat.o(187484);
+    AppMethodBeat.i(189715);
+    com.tencent.d.f.h.fUh();
+    nal = null;
+    nam = null;
+    AppMethodBeat.o(189715);
   }
   
-  public final e bzx()
+  public final e bDB()
   {
     try
     {
-      AppMethodBeat.i(187481);
-      if (mzD == null)
+      AppMethodBeat.i(189712);
+      if (nal == null)
       {
         localObject1 = (ai)g.ab(ai.class);
         if (localObject1 != null) {
-          mzD = new e((ai)localObject1);
+          nal = new e((ai)localObject1);
         }
       }
-      Object localObject1 = mzD;
-      AppMethodBeat.o(187481);
+      Object localObject1 = nal;
+      AppMethodBeat.o(189712);
       return localObject1;
     }
     finally {}
   }
   
-  public final b bzy()
+  public final b bDC()
   {
     try
     {
-      AppMethodBeat.i(187482);
-      if (mzE == null)
+      AppMethodBeat.i(189713);
+      if (nam == null)
       {
         localObject1 = (ah)g.ab(ah.class);
         if (localObject1 != null) {
-          mzE = new b((ah)localObject1);
+          nam = new b((ah)localObject1);
         }
       }
-      Object localObject1 = mzE;
-      AppMethodBeat.o(187482);
+      Object localObject1 = nam;
+      AppMethodBeat.o(189713);
       return localObject1;
     }
     finally {}
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
-    public static final a mzG;
+    public static final a nao;
     
     static
     {
-      AppMethodBeat.i(187480);
-      mzG = new a();
-      AppMethodBeat.o(187480);
+      AppMethodBeat.i(189711);
+      nao = new a();
+      AppMethodBeat.o(189711);
     }
     
     public final void run()
     {
-      AppMethodBeat.i(187479);
-      Object localObject = c.mzF.bzx();
+      AppMethodBeat.i(189710);
+      Object localObject = c.nan.bDB();
       if (localObject != null) {
-        ((e)localObject).bzv();
+        ((e)localObject).bDz();
       }
-      localObject = c.mzF.bzy();
+      localObject = c.nan.bDC();
       if (localObject != null)
       {
-        ((b)localObject).bzv();
-        AppMethodBeat.o(187479);
+        ((b)localObject).bDz();
+        AppMethodBeat.o(189710);
         return;
       }
-      AppMethodBeat.o(187479);
+      AppMethodBeat.o(189710);
     }
   }
 }

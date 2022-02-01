@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.downloader_app.detail.a;
 
 import android.content.Context;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.i.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.pluginsdk.model.app.am;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.pluginsdk.model.app.al;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class c
-  extends bn
+  extends bq
 {
-  public final void a(Context paramContext, String paramString, final bn.a parama)
+  public final void a(Context paramContext, String paramString, final bq.a parama)
   {
     AppMethodBeat.i(8826);
-    ac.i("MicroMsg.JsApiLaunchApplication", "invokeInMM");
+    ad.i("MicroMsg.JsApiLaunchApplication", "invokeInMM");
     try
     {
       paramString = new JSONObject(paramString);
       if (paramString == null)
       {
-        ac.e("MicroMsg.JsApiLaunchApplication", "data is null");
+        ad.e("MicroMsg.JsApiLaunchApplication", "data is null");
         parama.f("fail", null);
         AppMethodBeat.o(8826);
         return;
@@ -34,33 +34,33 @@ public class c
     {
       for (;;)
       {
-        ac.e("MicroMsg.JsApiLaunchApplication", "paras data error: " + paramString.getMessage());
+        ad.e("MicroMsg.JsApiLaunchApplication", "paras data error: " + paramString.getMessage());
         paramString = null;
       }
       paramString = paramString.optString("appID");
-      if (bs.isNullOrNil(paramString))
+      if (bt.isNullOrNil(paramString))
       {
-        ac.e("MicroMsg.JsApiLaunchApplication", "appid is null or nil");
+        ad.e("MicroMsg.JsApiLaunchApplication", "appid is null or nil");
         parama.f("fail", null);
         AppMethodBeat.o(8826);
         return;
       }
-      a.a(paramContext, paramString, new am()
+      a.a(paramContext, paramString, new al()
       {
         public final void v(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
         {
-          AppMethodBeat.i(195681);
+          AppMethodBeat.i(206777);
           parama.f(null, null);
-          AppMethodBeat.o(195681);
+          AppMethodBeat.o(206777);
         }
       });
       AppMethodBeat.o(8826);
     }
   }
   
-  public final void b(a.a parama) {}
+  public final void b(b.a parama) {}
   
-  public final int bYk()
+  public final int ccO()
   {
     return 2;
   }

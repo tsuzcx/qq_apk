@@ -8,31 +8,31 @@ import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.sight.base.a;
 import com.tencent.mm.plugin.sight.base.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.aj;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.al;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil;", "", "()V", "TAG", "", "checkConfigProviderParam", "", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getVideoInfo", "Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil$VideoInfo;", "path", "VideoInfo", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil;", "", "()V", "TAG", "", "checkConfigProviderParam", "", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getVideoInfo", "Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil$VideoInfo;", "path", "VideoInfo", "plugin-recordvideo_release"})
 public final class c
 {
-  public static final c wDO;
+  public static final c xRv;
   
   static
   {
     AppMethodBeat.i(76222);
-    wDO = new c();
+    xRv = new c();
     AppMethodBeat.o(76222);
   }
   
-  public static a arc(String paramString)
+  public static c.a awc(String paramString)
   {
     boolean bool = true;
     AppMethodBeat.i(76221);
-    k.h(paramString, "path");
-    a locala = e.asx(paramString);
+    p.h(paramString, "path");
+    a locala = e.axx(paramString);
     if (locala == null)
     {
       AppMethodBeat.o(76221);
@@ -43,13 +43,13 @@ public final class c
     {
       MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
       localMediaMetadataRetriever.setDataSource(paramString);
-      locala.width = bs.getInt(localMediaMetadataRetriever.extractMetadata(18), 0);
-      locala.height = bs.getInt(localMediaMetadataRetriever.extractMetadata(19), 0);
-      locala.videoBitrate = bs.getInt(localMediaMetadataRetriever.extractMetadata(20), 0);
+      locala.width = bt.getInt(localMediaMetadataRetriever.extractMetadata(18), 0);
+      locala.height = bt.getInt(localMediaMetadataRetriever.extractMetadata(19), 0);
+      locala.videoBitrate = bt.getInt(localMediaMetadataRetriever.extractMetadata(20), 0);
       localMediaMetadataRetriever.release();
       label116:
       int k = SightVideoJNI.getMp4RotateVFS(paramString);
-      paramString = aj.cl(ai.getContext());
+      paramString = al.ci(aj.getContext());
       int j;
       int i;
       if ((k == 270) || (k == 90))
@@ -71,7 +71,7 @@ public final class c
       }
       for (;;)
       {
-        paramString = new a(locala.width, locala.height, locala.videoDuration, k, locala.videoBitrate, locala.frameRate, bool, locala.wDQ, locala.wDR, locala.wDS);
+        paramString = new c.a(locala.width, locala.height, locala.videoDuration, k, locala.videoBitrate, locala.frameRate, bool, locala.xRx, locala.xRy, locala.xRz);
         AppMethodBeat.o(76221);
         return paramString;
         j = 0;
@@ -95,78 +95,20 @@ public final class c
   public static void h(RecordConfigProvider paramRecordConfigProvider)
   {
     AppMethodBeat.i(76220);
-    k.h(paramRecordConfigProvider, "configProvider");
-    if (paramRecordConfigProvider.wqt == null) {
+    p.h(paramRecordConfigProvider, "configProvider");
+    if (paramRecordConfigProvider.xyj == null) {
       switch (paramRecordConfigProvider.scene)
       {
       }
     }
     for (;;)
     {
-      ac.i("MicroMsg.MediaRecordParamUtil", "checkConfigProviderParam " + paramRecordConfigProvider.wqt);
+      ad.i("MicroMsg.MediaRecordParamUtil", "checkConfigProviderParam " + paramRecordConfigProvider.xyj);
       AppMethodBeat.o(76220);
       return;
-      d locald = d.aDL();
-      k.g(locald, "SubCoreVideoControl.getCore()");
-      paramRecordConfigProvider.wqt = locald.aDO();
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil$VideoInfo;", "", "width", "", "height", "duration", "rotate", "videoBitrate", "fps", "matchScreenRatio", "", "useABA", "bitrateAdaptiveUp", "useMinMaxQP", "(IIIIIIZIII)V", "getBitrateAdaptiveUp", "()I", "getDuration", "getFps", "getHeight", "getMatchScreenRatio", "()Z", "getRotate", "getUseABA", "getUseMinMaxQP", "getVideoBitrate", "getWidth", "component1", "component10", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "", "plugin-recordvideo_release"})
-  public static final class a
-  {
-    public final int duc;
-    public final int duration;
-    public final int fps;
-    public final int height;
-    public final int videoBitrate;
-    public final boolean wDP;
-    private final int wDQ;
-    public final int wDR;
-    private final int wDS;
-    public final int width;
-    
-    public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean, int paramInt7, int paramInt8, int paramInt9)
-    {
-      this.width = paramInt1;
-      this.height = paramInt2;
-      this.duration = paramInt3;
-      this.duc = paramInt4;
-      this.videoBitrate = paramInt5;
-      this.fps = paramInt6;
-      this.wDP = paramBoolean;
-      this.wDQ = paramInt7;
-      this.wDR = paramInt8;
-      this.wDS = paramInt9;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if ((this.width != paramObject.width) || (this.height != paramObject.height) || (this.duration != paramObject.duration) || (this.duc != paramObject.duc) || (this.videoBitrate != paramObject.videoBitrate) || (this.fps != paramObject.fps) || (this.wDP != paramObject.wDP) || (this.wDQ != paramObject.wDQ) || (this.wDR != paramObject.wDR) || (this.wDS != paramObject.wDS)) {}
-        }
-      }
-      else {
-        return true;
-      }
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(76219);
-      String str = "VideoInfo(width=" + this.width + ", height=" + this.height + ", duration=" + this.duration + ", rotate=" + this.duc + ", videoBitrate=" + this.videoBitrate + ", fps=" + this.fps + ", matchScreenRatio=" + this.wDP + ", useABA=" + this.wDQ + ", bitrateAdaptiveUp=" + this.wDR + ", useMinMaxQP=" + this.wDS + ")";
-      AppMethodBeat.o(76219);
-      return str;
+      d locald = d.aGQ();
+      p.g(locald, "SubCoreVideoControl.getCore()");
+      paramRecordConfigProvider.xyj = locald.aGT();
     }
   }
 }

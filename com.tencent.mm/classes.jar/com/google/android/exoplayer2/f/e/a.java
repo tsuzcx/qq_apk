@@ -19,21 +19,21 @@ import org.xmlpull.v1.XmlPullParserFactory;
 public final class a
   extends com.google.android.exoplayer2.f.b
 {
-  private static final Pattern bsm;
-  private static final Pattern bsn;
-  private static final Pattern bso;
-  private static final Pattern bsp;
-  private static final a bsq;
-  private final XmlPullParserFactory bsr;
+  private static final Pattern bCF;
+  private static final Pattern bCG;
+  private static final Pattern bCH;
+  private static final Pattern bCI;
+  private static final a bCJ;
+  private final XmlPullParserFactory bCK;
   
   static
   {
     AppMethodBeat.i(92847);
-    bsm = Pattern.compile("^([0-9][0-9]+):([0-9][0-9]):([0-9][0-9])(?:(\\.[0-9]+)|:([0-9][0-9])(?:\\.([0-9]+))?)?$");
-    bsn = Pattern.compile("^([0-9]+(?:\\.[0-9]+)?)(h|m|s|ms|f|t)$");
-    bso = Pattern.compile("^(([0-9]*.)?[0-9]+)(px|em|%)$");
-    bsp = Pattern.compile("^(\\d+\\.?\\d*?)% (\\d+\\.?\\d*?)%$");
-    bsq = new a(30.0F, 1, 1);
+    bCF = Pattern.compile("^([0-9][0-9]+):([0-9][0-9]):([0-9][0-9])(?:(\\.[0-9]+)|:([0-9][0-9])(?:\\.([0-9]+))?)?$");
+    bCG = Pattern.compile("^([0-9]+(?:\\.[0-9]+)?)(h|m|s|ms|f|t)$");
+    bCH = Pattern.compile("^(([0-9]*.)?[0-9]+)(px|em|%)$");
+    bCI = Pattern.compile("^(\\d+\\.?\\d*?)% (\\d+\\.?\\d*?)%$");
+    bCJ = new a(30.0F, 1, 1);
     AppMethodBeat.o(92847);
   }
   
@@ -43,8 +43,8 @@ public final class a
     AppMethodBeat.i(92838);
     try
     {
-      this.bsr = XmlPullParserFactory.newInstance();
-      this.bsr.setNamespaceAware(true);
+      this.bCK = XmlPullParserFactory.newInstance();
+      this.bCK.setNamespaceAware(true);
       AppMethodBeat.o(92838);
       return;
     }
@@ -60,7 +60,7 @@ public final class a
   {
     double d3 = 0.0D;
     AppMethodBeat.i(92845);
-    Matcher localMatcher = bsm.matcher(paramString);
+    Matcher localMatcher = bCF.matcher(paramString);
     double d1;
     double d2;
     long l;
@@ -79,11 +79,11 @@ public final class a
         }
       }
       label176:
-      for (d2 = (float)Long.parseLong(paramString) / parama.bss;; d2 = 0.0D)
+      for (d2 = (float)Long.parseLong(paramString) / parama.bCL;; d2 = 0.0D)
       {
         paramString = localMatcher.group(6);
         if (paramString != null) {
-          d3 = Long.parseLong(paramString) / parama.bst / parama.bss;
+          d3 = Long.parseLong(paramString) / parama.bCM / parama.bCL;
         }
         l = ((d2 + (d6 + (d4 + d5) + d1) + d3) * 1000000.0D);
         AppMethodBeat.o(92845);
@@ -92,7 +92,7 @@ public final class a
         break;
       }
     }
-    localMatcher = bsn.matcher(paramString);
+    localMatcher = bCG.matcher(paramString);
     if (localMatcher.matches())
     {
       d2 = Double.parseDouble(localMatcher.group(1));
@@ -150,7 +150,7 @@ public final class a
         continue;
         d1 = d2 / 1000.0D;
         continue;
-        d1 = d2 / parama.bss;
+        d1 = d2 / parama.bCL;
         continue;
         d1 = d2 / parama.tickRate;
       }
@@ -280,15 +280,15 @@ public final class a
     if (paramb != null)
     {
       l4 = l1;
-      if (paramb.bmR != -9223372036854775807L)
+      if (paramb.bxm != -9223372036854775807L)
       {
         l2 = l1;
         if (l1 != -9223372036854775807L) {
-          l2 = l1 + paramb.bmR;
+          l2 = l1 + paramb.bxm;
         }
         l4 = l2;
         if (l3 != -9223372036854775807L) {
-          l1 = l3 + paramb.bmR;
+          l1 = l3 + paramb.bxm;
         }
       }
     }
@@ -304,12 +304,112 @@ public final class a
         paramXmlPullParser = new b(paramXmlPullParser.getName(), null, l2, l1, locald, localObject2, (String)localObject1);
         AppMethodBeat.o(92844);
         return paramXmlPullParser;
-        if ((paramb != null) && (paramb.bmS != -9223372036854775807L)) {
-          l1 = paramb.bmS;
+        if ((paramb != null) && (paramb.bxn != -9223372036854775807L)) {
+          l1 = paramb.bxn;
         }
       }
       l1 = l3;
       l2 = l4;
+    }
+  }
+  
+  private static c a(XmlPullParser paramXmlPullParser)
+  {
+    int j = 1;
+    AppMethodBeat.i(92841);
+    String str = y.c(paramXmlPullParser, "id");
+    if (str == null)
+    {
+      AppMethodBeat.o(92841);
+      return null;
+    }
+    Object localObject = y.c(paramXmlPullParser, "origin");
+    if (localObject != null)
+    {
+      localObject = bCI.matcher((CharSequence)localObject);
+      if (!((Matcher)localObject).matches()) {}
+    }
+    for (;;)
+    {
+      float f1;
+      float f4;
+      int i;
+      try
+      {
+        float f2 = Float.parseFloat(((Matcher)localObject).group(1)) / 100.0F;
+        f1 = Float.parseFloat(((Matcher)localObject).group(2));
+        f1 /= 100.0F;
+        localObject = y.c(paramXmlPullParser, "extent");
+        if (localObject == null) {
+          break label287;
+        }
+        localObject = bCI.matcher((CharSequence)localObject);
+        if (!((Matcher)localObject).matches()) {
+          break label280;
+        }
+        float f3;
+        AppMethodBeat.o(92841);
+      }
+      catch (NumberFormatException paramXmlPullParser)
+      {
+        try
+        {
+          f3 = Float.parseFloat(((Matcher)localObject).group(1)) / 100.0F;
+          f4 = Float.parseFloat(((Matcher)localObject).group(2));
+          f4 /= 100.0F;
+          paramXmlPullParser = y.c(paramXmlPullParser, "displayAlign");
+          if (paramXmlPullParser != null)
+          {
+            paramXmlPullParser = x.bH(paramXmlPullParser);
+            i = -1;
+          }
+          switch (paramXmlPullParser.hashCode())
+          {
+          default: 
+            switch (i)
+            {
+            default: 
+              i = 0;
+              paramXmlPullParser = new c(str, f2, f1, 0, i, f3);
+              AppMethodBeat.o(92841);
+              return paramXmlPullParser;
+            }
+            break;
+          }
+        }
+        catch (NumberFormatException paramXmlPullParser)
+        {
+          AppMethodBeat.o(92841);
+          return null;
+        }
+        paramXmlPullParser = paramXmlPullParser;
+        AppMethodBeat.o(92841);
+        return null;
+      }
+      return null;
+      AppMethodBeat.o(92841);
+      return null;
+      label280:
+      AppMethodBeat.o(92841);
+      return null;
+      label287:
+      AppMethodBeat.o(92841);
+      return null;
+      if (paramXmlPullParser.equals("center"))
+      {
+        i = 0;
+        continue;
+        if (paramXmlPullParser.equals("after"))
+        {
+          i = 1;
+          continue;
+          f1 += f4 / 2.0F;
+          i = j;
+          continue;
+          i = 2;
+          f1 += f4;
+        }
+      }
     }
   }
   
@@ -345,7 +445,7 @@ public final class a
         switch (i)
         {
         default: 
-          label128:
+          label132:
           paramd = locald1;
         }
         break;
@@ -357,50 +457,50 @@ public final class a
       locald1 = paramd;
       break;
       if (!paramd.equals("id")) {
-        break label128;
+        break label132;
       }
       i = 0;
-      break label128;
+      break label132;
       if (!paramd.equals("backgroundColor")) {
-        break label128;
+        break label132;
       }
       i = 1;
-      break label128;
+      break label132;
       if (!paramd.equals("color")) {
-        break label128;
+        break label132;
       }
       i = 2;
-      break label128;
+      break label132;
       if (!paramd.equals("fontFamily")) {
-        break label128;
+        break label132;
       }
       i = 3;
-      break label128;
+      break label132;
       if (!paramd.equals("fontSize")) {
-        break label128;
+        break label132;
       }
       i = 4;
-      break label128;
+      break label132;
       if (!paramd.equals("fontWeight")) {
-        break label128;
+        break label132;
       }
       i = 5;
-      break label128;
+      break label132;
       if (!paramd.equals("fontStyle")) {
-        break label128;
+        break label132;
       }
       i = 6;
-      break label128;
+      break label132;
       if (!paramd.equals("textAlign")) {
-        break label128;
+        break label132;
       }
       i = 7;
-      break label128;
+      break label132;
       if (!paramd.equals("textDecoration")) {
-        break label128;
+        break label132;
       }
       i = 8;
-      break label128;
+      break label132;
       paramd = locald1;
       if (!"style".equals(paramXmlPullParser.getName())) {
         continue;
@@ -411,23 +511,23 @@ public final class a
       paramd = a(locald1);
       try
       {
-        paramd.eQ(com.google.android.exoplayer2.i.e.aC(str));
+        paramd.eU(com.google.android.exoplayer2.i.e.bv(str));
       }
       catch (IllegalArgumentException localIllegalArgumentException1) {}
       continue;
       paramd = a(localIllegalArgumentException1);
       try
       {
-        paramd.eP(com.google.android.exoplayer2.i.e.aC(str));
+        paramd.eT(com.google.android.exoplayer2.i.e.bv(str));
       }
       catch (IllegalArgumentException localIllegalArgumentException2) {}
       continue;
       paramd = a(localIllegalArgumentException2);
-      if (paramd.bsK == null) {}
+      if (paramd.bDb == null) {}
       for (boolean bool1 = true;; bool1 = false)
       {
         com.google.android.exoplayer2.i.a.checkState(bool1);
-        paramd.jD = str;
+        paramd.fontFamily = str;
         break;
       }
       paramd = localIllegalArgumentException2;
@@ -440,11 +540,11 @@ public final class a
         if (localObject.length == 1)
         {
           paramd = locald2;
-          localObject = bso.matcher(str);
-          label485:
+          localObject = bCH.matcher(str);
+          label495:
           paramd = locald2;
           if (!((Matcher)localObject).matches()) {
-            break label797;
+            break label807;
           }
           paramd = locald2;
           str = ((Matcher)localObject).group(3);
@@ -466,8 +566,8 @@ public final class a
           if (localObject.length == 2)
           {
             paramd = locald2;
-            localObject = bso.matcher(localObject[1]);
-            break label485;
+            localObject = bCH.matcher(localObject[1]);
+            break label495;
           }
           paramd = locald2;
           localObject = new f("Invalid number of entries for fontSize: " + localObject.length + ".");
@@ -479,32 +579,32 @@ public final class a
           if (str.equals("px"))
           {
             i = 0;
-            break label1434;
+            break label1447;
             paramd = locald2;
             if (str.equals("em"))
             {
               i = 1;
-              break label1434;
+              break label1447;
               paramd = locald2;
               if (str.equals("%"))
               {
                 i = 2;
-                break label1434;
+                break label1447;
                 paramd = locald2;
-                locald2.bsI = 1;
+                locald2.bDa = 1;
                 for (;;)
                 {
                   paramd = locald2;
-                  locald2.bsJ = Float.valueOf(((Matcher)localObject).group(1)).floatValue();
+                  locald2.fontSize = Float.valueOf(((Matcher)localObject).group(1)).floatValue();
                   paramd = locald2;
                   break;
                   paramd = locald2;
-                  locald2.bsI = 2;
+                  locald2.bDa = 2;
                   continue;
                   paramd = locald2;
-                  locald2.bsI = 3;
+                  locald2.bDa = 3;
                 }
-                label797:
+                label807:
                 paramd = locald2;
                 localObject = new f("Invalid expression for fontSize: '" + str + "'.");
                 paramd = locald2;
@@ -513,43 +613,43 @@ public final class a
                 throw ((Throwable)localObject);
                 paramd = a(locald2);
                 boolean bool2 = "bold".equalsIgnoreCase(str);
-                if (paramd.bsK == null)
+                if (paramd.bDb == null)
                 {
                   bool1 = true;
-                  label873:
+                  label884:
                   com.google.android.exoplayer2.i.a.checkState(bool1);
                   if (!bool2) {
-                    break label899;
+                    break label910;
                   }
                 }
-                label899:
+                label910:
                 for (i = 1;; i = 0)
                 {
-                  paramd.bsG = i;
+                  paramd.bCY = i;
                   break;
                   bool1 = false;
-                  break label873;
+                  break label884;
                 }
                 paramd = a(locald2);
                 bool2 = "italic".equalsIgnoreCase(str);
-                if (paramd.bsK == null)
+                if (paramd.bDb == null)
                 {
                   bool1 = true;
-                  label930:
+                  label941:
                   com.google.android.exoplayer2.i.a.checkState(bool1);
                   if (!bool2) {
-                    break label956;
+                    break label967;
                   }
                 }
-                label956:
+                label967:
                 for (i = 1;; i = 0)
                 {
-                  paramd.bsH = i;
+                  paramd.bCZ = i;
                   break;
                   bool1 = false;
-                  break label930;
+                  break label941;
                 }
-                paramd = x.aO(str);
+                paramd = x.bH(str);
                 i = -1;
                 switch (paramd.hashCode())
                 {
@@ -563,7 +663,7 @@ public final class a
                     break;
                   case 0: 
                     paramd = a(locald2);
-                    paramd.bsL = Layout.Alignment.ALIGN_NORMAL;
+                    paramd.bDc = Layout.Alignment.ALIGN_NORMAL;
                     break;
                     if (paramd.equals("left"))
                     {
@@ -592,18 +692,18 @@ public final class a
                   }
                 }
                 paramd = a(locald2);
-                paramd.bsL = Layout.Alignment.ALIGN_NORMAL;
+                paramd.bDc = Layout.Alignment.ALIGN_NORMAL;
                 break;
                 paramd = a(locald2);
-                paramd.bsL = Layout.Alignment.ALIGN_OPPOSITE;
+                paramd.bDc = Layout.Alignment.ALIGN_OPPOSITE;
                 break;
                 paramd = a(locald2);
-                paramd.bsL = Layout.Alignment.ALIGN_OPPOSITE;
+                paramd.bDc = Layout.Alignment.ALIGN_OPPOSITE;
                 break;
                 paramd = a(locald2);
-                paramd.bsL = Layout.Alignment.ALIGN_CENTER;
+                paramd.bDc = Layout.Alignment.ALIGN_CENTER;
                 break;
-                paramd = x.aO(str);
+                paramd = x.bH(str);
                 i = -1;
                 switch (paramd.hashCode())
                 {
@@ -616,7 +716,7 @@ public final class a
                     paramd = locald2;
                     break;
                   case 0: 
-                    paramd = a(locald2).aU(true);
+                    paramd = a(locald2).aV(true);
                     break;
                     if (paramd.equals("linethrough"))
                     {
@@ -639,18 +739,18 @@ public final class a
                     break;
                   }
                 }
-                paramd = a(locald2).aU(false);
-                break;
-                paramd = a(locald2).aV(true);
-                break;
                 paramd = a(locald2).aV(false);
+                break;
+                paramd = a(locald2).aW(true);
+                break;
+                paramd = a(locald2).aW(false);
                 break;
                 AppMethodBeat.o(92842);
                 return locald2;
               }
             }
           }
-          label1434:
+          label1447:
           switch (i)
           {
           }
@@ -707,7 +807,7 @@ public final class a
         if (!y.b(paramXmlPullParser, "region")) {
           break;
         }
-        localObject1 = b(paramXmlPullParser);
+        localObject1 = a(paramXmlPullParser);
         if (localObject1 == null) {
           break;
         }
@@ -719,113 +819,13 @@ public final class a
     }
   }
   
-  private static c b(XmlPullParser paramXmlPullParser)
-  {
-    int j = 1;
-    AppMethodBeat.i(92841);
-    String str = y.c(paramXmlPullParser, "id");
-    if (str == null)
-    {
-      AppMethodBeat.o(92841);
-      return null;
-    }
-    Object localObject = y.c(paramXmlPullParser, "origin");
-    if (localObject != null)
-    {
-      localObject = bsp.matcher((CharSequence)localObject);
-      if (!((Matcher)localObject).matches()) {}
-    }
-    for (;;)
-    {
-      float f1;
-      float f4;
-      int i;
-      try
-      {
-        float f2 = Float.parseFloat(((Matcher)localObject).group(1)) / 100.0F;
-        f1 = Float.parseFloat(((Matcher)localObject).group(2));
-        f1 /= 100.0F;
-        localObject = y.c(paramXmlPullParser, "extent");
-        if (localObject == null) {
-          break label301;
-        }
-        localObject = bsp.matcher((CharSequence)localObject);
-        if (!((Matcher)localObject).matches()) {
-          break label293;
-        }
-        float f3;
-        AppMethodBeat.o(92841);
-      }
-      catch (NumberFormatException paramXmlPullParser)
-      {
-        try
-        {
-          f3 = Float.parseFloat(((Matcher)localObject).group(1)) / 100.0F;
-          f4 = Float.parseFloat(((Matcher)localObject).group(2));
-          f4 /= 100.0F;
-          paramXmlPullParser = y.c(paramXmlPullParser, "displayAlign");
-          if (paramXmlPullParser != null)
-          {
-            paramXmlPullParser = x.aO(paramXmlPullParser);
-            i = -1;
-          }
-          switch (paramXmlPullParser.hashCode())
-          {
-          default: 
-            switch (i)
-            {
-            default: 
-              i = 0;
-              paramXmlPullParser = new c(str, f2, f1, 0, i, f3);
-              AppMethodBeat.o(92841);
-              return paramXmlPullParser;
-            }
-            break;
-          }
-        }
-        catch (NumberFormatException paramXmlPullParser)
-        {
-          AppMethodBeat.o(92841);
-          return null;
-        }
-        paramXmlPullParser = paramXmlPullParser;
-        AppMethodBeat.o(92841);
-        return null;
-      }
-      return null;
-      AppMethodBeat.o(92841);
-      return null;
-      label293:
-      AppMethodBeat.o(92841);
-      return null;
-      label301:
-      AppMethodBeat.o(92841);
-      return null;
-      if (paramXmlPullParser.equals("center"))
-      {
-        i = 0;
-        continue;
-        if (paramXmlPullParser.equals("after"))
-        {
-          i = 1;
-          continue;
-          f1 += f4 / 2.0F;
-          i = j;
-          continue;
-          i = 2;
-          f1 += f4;
-        }
-      }
-    }
-  }
-  
   private e i(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(92839);
     int i;
     try
     {
-      localXmlPullParser = this.bsr.newPullParser();
+      localXmlPullParser = this.bCK.newPullParser();
       localHashMap1 = new HashMap();
       localHashMap2 = new HashMap();
       localHashMap2.put("", new c());
@@ -833,7 +833,7 @@ public final class a
       locale = null;
       localLinkedList = new LinkedList();
       i = localXmlPullParser.getEventType();
-      paramArrayOfByte = bsq;
+      paramArrayOfByte = bCJ;
       paramInt = 0;
     }
     catch (XmlPullParserException paramArrayOfByte)
@@ -849,13 +849,13 @@ public final class a
       AppMethodBeat.o(92839);
       throw paramArrayOfByte;
       f = Integer.parseInt(paramArrayOfByte[0]) / Integer.parseInt(paramArrayOfByte[1]);
-      j = bsq.bst;
+      j = bCJ.bCM;
       paramArrayOfByte = localXmlPullParser.getAttributeValue("http://www.w3.org/ns/ttml#parameter", "subFrameRate");
       if (paramArrayOfByte == null) {
         break label812;
       }
       j = Integer.parseInt(paramArrayOfByte);
-      k = bsq.tickRate;
+      k = bCJ.tickRate;
       paramArrayOfByte = localXmlPullParser.getAttributeValue("http://www.w3.org/ns/ttml#parameter", "tickRate");
       if (paramArrayOfByte == null) {
         break label809;
@@ -999,21 +999,21 @@ public final class a
   
   static final class a
   {
-    final float bss;
-    final int bst;
+    final float bCL;
+    final int bCM;
     final int tickRate;
     
     a(float paramFloat, int paramInt1, int paramInt2)
     {
-      this.bss = paramFloat;
-      this.bst = paramInt1;
+      this.bCL = paramFloat;
+      this.bCM = paramInt1;
       this.tickRate = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.f.e.a
  * JD-Core Version:    0.7.0.1
  */

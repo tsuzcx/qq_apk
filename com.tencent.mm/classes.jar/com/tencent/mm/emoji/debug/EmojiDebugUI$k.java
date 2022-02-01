@@ -1,14 +1,16 @@
 package com.tencent.mm.emoji.debug;
 
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ax;
 import d.g.a.a;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class EmojiDebugUI$k
-  extends d.g.b.l
+  extends q
   implements a<String>
 {
-  EmojiDebugUI$k(aw paramaw)
+  EmojiDebugUI$k(ax paramax)
   {
     super(0);
   }

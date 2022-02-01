@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class yt
   extends b
 {
-  public a dCG;
+  public a dNG;
+  public b dNH;
   
   public yt()
   {
@@ -15,21 +16,27 @@ public final class yt
   
   private yt(byte paramByte)
   {
-    AppMethodBeat.i(117553);
-    this.dCG = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(91231);
+    this.dNG = new a();
+    this.dNH = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(117553);
+    AppMethodBeat.o(91231);
   }
   
   public static final class a
   {
-    public String diM;
+    public String dNI;
+  }
+  
+  public static final class b
+  {
+    public int status = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.yt
  * JD-Core Version:    0.7.0.1
  */

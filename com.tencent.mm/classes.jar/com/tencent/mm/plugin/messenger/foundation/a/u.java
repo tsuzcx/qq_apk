@@ -1,46 +1,18 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.xv;
-import java.util.concurrent.ConcurrentHashMap;
-import junit.framework.Assert;
+import com.tencent.mm.kernel.c.a;
+import java.util.Map;
 
 public abstract interface u
+  extends a
 {
-  public abstract void a(xv paramxv, byte[] paramArrayOfByte, boolean paramBoolean, x paramx);
+  public abstract void JL(int paramInt);
   
-  public static final class a
-  {
-    private static ConcurrentHashMap<Integer, u> uGR;
-    
-    static
-    {
-      AppMethodBeat.i(43065);
-      uGR = new ConcurrentHashMap();
-      AppMethodBeat.o(43065);
-    }
-    
-    public static u Ip(int paramInt)
-    {
-      AppMethodBeat.i(43064);
-      u localu = (u)uGR.get(Integer.valueOf(paramInt));
-      AppMethodBeat.o(43064);
-      return localu;
-    }
-    
-    public static void a(int paramInt, u paramu)
-    {
-      AppMethodBeat.i(43063);
-      if (uGR.get(Integer.valueOf(paramInt)) == null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        Assert.assertTrue(bool);
-        uGR.put(Integer.valueOf(paramInt), paramu);
-        AppMethodBeat.o(43063);
-        return;
-      }
-    }
-  }
+  public abstract void a(long paramLong, Map<String, String> paramMap, String paramString);
+  
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, String paramString2);
+  
+  public abstract void cq(String paramString, long paramLong);
 }
 
 

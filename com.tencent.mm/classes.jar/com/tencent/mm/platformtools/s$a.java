@@ -7,9 +7,9 @@ public enum s$a
   static
   {
     AppMethodBeat.i(151381);
-    iuo = new a("NET", 0);
-    iup = new a("DISK", 1);
-    iuq = new a[] { iuo, iup };
+    iNr = new a("NET", 0);
+    iNs = new a("DISK", 1);
+    iNt = new a[] { iNr, iNs };
     AppMethodBeat.o(151381);
   }
   
@@ -17,7 +17,7 @@ public enum s$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.platformtools.s.a
  * JD-Core Version:    0.7.0.1
  */

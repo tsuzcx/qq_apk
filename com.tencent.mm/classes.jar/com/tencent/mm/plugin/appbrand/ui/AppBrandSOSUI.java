@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.RemoteException;
@@ -14,56 +13,34 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.modelappbrand.b;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.compatible.util.n;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.plugin.webview.ui.tools.fts.FTSSOSMoreWebViewUI;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.search.FTSEditTextView.b;
 import com.tencent.mm.ui.search.a.c;
-import java.lang.reflect.Field;
 import java.util.List;
 
 public class AppBrandSOSUI
   extends FTSSOSMoreWebViewUI
 {
-  private View meb;
-  private String mec;
-  private String med;
+  private View mEu;
+  private String mEv;
+  private String mEw;
   private int scene;
-  
-  private int bvt()
-  {
-    int i = 0;
-    AppMethodBeat.i(21130);
-    try
-    {
-      Class localClass = Class.forName("com.android.internal.R$dimen");
-      Object localObject = localClass.newInstance();
-      int j = bs.getInt(localClass.getField("status_bar_height").get(localObject).toString(), 0);
-      j = getResources().getDimensionPixelSize(j);
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      label50:
-      break label50;
-    }
-    AppMethodBeat.o(21130);
-    return i;
-  }
   
   public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.b paramb)
   {
     AppMethodBeat.i(163179);
     if (!TextUtils.isEmpty(paramString2)) {
-      this.meb.setVisibility(8);
+      this.mEu.setVisibility(8);
     }
     try
     {
-      this.kYt.k(10001, null);
+      this.lvv.k(10001, null);
       super.a(paramString1, paramString2, paramList, paramb);
       AppMethodBeat.o(163179);
       return;
@@ -72,16 +49,16 @@ public class AppBrandSOSUI
     {
       for (;;)
       {
-        ac.e("MicroMsg.AppBrandSOSUI", "refresh keyword id error : %s", new Object[] { localRemoteException });
+        ad.e("MicroMsg.AppBrandSOSUI", "refresh keyword id error : %s", new Object[] { localRemoteException });
       }
     }
   }
   
-  public final boolean bvs()
+  public final boolean bzz()
   {
     AppMethodBeat.i(21127);
-    this.meb.setVisibility(8);
-    boolean bool = super.bvs();
+    this.mEu.setVisibility(8);
+    boolean bool = super.bzz();
     AppMethodBeat.o(21127);
     return bool;
   }
@@ -90,41 +67,46 @@ public class AppBrandSOSUI
   {
     AppMethodBeat.i(21129);
     super.dealContentView(paramView);
-    this.mec = getIntent().getStringExtra("key_nearby_url");
+    this.mEv = getIntent().getStringExtra("key_nearby_url");
     getIntent().getStringExtra("key_nearby_list_id");
-    this.meb = getLayoutInflater().inflate(2131493053, (ViewGroup)paramView, false);
-    View localView1 = this.meb.findViewById(2131302682);
+    this.mEu = getLayoutInflater().inflate(2131493053, (ViewGroup)paramView, false);
+    View localView1 = this.mEu.findViewById(2131302682);
     localView1.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(21124);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandSOSUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
         if (TextUtils.isEmpty(AppBrandSOSUI.a(AppBrandSOSUI.this)))
         {
+          a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandSOSUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(21124);
           return;
         }
-        Intent localIntent = new Intent();
-        localIntent.putExtra("showShare", false);
-        localIntent.putExtra("rawUrl", AppBrandSOSUI.a(AppBrandSOSUI.this));
-        localIntent.putExtra("geta8key_scene", 41);
-        localIntent.putExtra("show_long_click_popup_menu", false);
-        d.b(paramAnonymousView.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("showShare", false);
+        ((Intent)localObject).putExtra("rawUrl", AppBrandSOSUI.a(AppBrandSOSUI.this));
+        ((Intent)localObject).putExtra("geta8key_scene", 41);
+        ((Intent)localObject).putExtra("show_long_click_popup_menu", false);
+        d.b(paramAnonymousView.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+        a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandSOSUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(21124);
       }
     });
-    if (TextUtils.isEmpty(this.mec))
+    if (TextUtils.isEmpty(this.mEv))
     {
       localView1.setVisibility(8);
-      this.meb.setVisibility(8);
+      this.mEu.setVisibility(8);
     }
     while ((paramView instanceof FrameLayout))
     {
-      ((FrameLayout)paramView).addView(this.meb);
+      ((FrameLayout)paramView).addView(this.mEu);
       AppMethodBeat.o(21129);
       return;
       localView1.setVisibility(0);
-      this.meb.setVisibility(0);
+      this.mEu.setVisibility(0);
     }
     paramView = paramView.getLayoutParams();
     int k;
@@ -132,8 +114,8 @@ public class AppBrandSOSUI
     int i;
     if (getWindow().hasFeature(9))
     {
-      localView1 = this.meb;
-      k = this.meb.getPaddingLeft();
+      localView1 = this.mEu;
+      k = this.mEu.getPaddingLeft();
       localRect = new Rect();
       int j = getActionBarHeight();
       View localView2 = getWindow().getDecorView();
@@ -143,20 +125,20 @@ public class AppBrandSOSUI
       localView2.getLocationOnScreen(arrayOfInt);
       i = j;
       if (m == 0) {
-        i = j + bvt();
+        i = j + n.B(getContext(), 0);
       }
       if ((m - localRect.height() < 0) || (arrayOfInt[1] <= 200)) {
-        break label317;
+        break label321;
       }
       i += m - localRect.height();
     }
     for (;;)
     {
-      localView1.setPadding(k, i + this.meb.getPaddingTop(), this.meb.getPaddingRight(), this.meb.getPaddingBottom());
-      addContentView(this.meb, paramView);
+      localView1.setPadding(k, i + this.mEu.getPaddingTop(), this.mEu.getPaddingRight(), this.mEu.getPaddingBottom());
+      addContentView(this.mEu, paramView);
       AppMethodBeat.o(21129);
       return;
-      label317:
+      label321:
       i += localRect.top;
     }
   }
@@ -180,12 +162,12 @@ public class AppBrandSOSUI
     AppMethodBeat.i(21125);
     super.onCreate(paramBundle);
     overridePendingTransition(2130772095, 0);
-    this.med = getIntent().getStringExtra("key_session_id");
+    this.mEw = getIntent().getStringExtra("key_session_id");
     this.scene = getIntent().getIntExtra("ftsbizscene", 0);
-    ac.i("MicroMsg.AppBrandSOSUI", "onCreate oreh report weAppSearchClickStream(13929) statSessionId:%s", new Object[] { this.med });
-    h.wUl.f(13929, new Object[] { this.med, "", Integer.valueOf(1), Integer.valueOf(this.scene) });
+    ad.i("MicroMsg.AppBrandSOSUI", "onCreate oreh report weAppSearchClickStream(13929) statSessionId:%s", new Object[] { this.mEw });
+    g.yhR.f(13929, new Object[] { this.mEw, "", Integer.valueOf(1), Integer.valueOf(this.scene) });
     paramBundle = new Intent();
-    paramBundle.putExtra("key_session_id", this.med);
+    paramBundle.putExtra("key_session_id", this.mEw);
     paramBundle.putExtra("ftsbizscene", this.scene);
     setResult(-1, paramBundle);
     AppMethodBeat.o(21125);
@@ -195,7 +177,7 @@ public class AppBrandSOSUI
   {
     AppMethodBeat.i(21126);
     if ((this.scene == 3) || (this.scene == 16)) {
-      h.wUl.f(13929, new Object[] { this.med, b.hrW, Integer.valueOf(2), Integer.valueOf(this.scene) });
+      g.yhR.f(13929, new Object[] { this.mEw, com.tencent.mm.modelappbrand.b.hKo, Integer.valueOf(2), Integer.valueOf(this.scene) });
     }
     super.onDestroy();
     AppMethodBeat.o(21126);

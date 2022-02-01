@@ -54,6 +54,14 @@ public final class lf
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
       localObject2 = c.n(paramVarArgs);
+      ((Path)localObject2).moveTo(24.899494F, 12.0F);
+      ((Path)localObject2).cubicTo(27.432997F, 14.559223F, 29.0F, 18.094757F, 29.0F, 22.0F);
+      ((Path)localObject2).cubicTo(29.0F, 25.905243F, 27.432997F, 29.440777F, 24.899494F, 32.0F);
+      ((Path)localObject2).lineTo(23.41457F, 30.5F);
+      ((Path)localObject2).cubicTo(25.633213F, 28.258833F, 26.9F, 25.233406F, 26.9F, 22.0F);
+      ((Path)localObject2).cubicTo(26.9F, 18.766594F, 25.633213F, 15.741167F, 23.41457F, 13.5F);
+      ((Path)localObject2).lineTo(24.899494F, 12.0F);
+      ((Path)localObject2).close();
       ((Path)localObject2).moveTo(21.434671F, 15.5F);
       ((Path)localObject2).cubicTo(23.081448F, 17.163496F, 24.1F, 19.461592F, 24.1F, 22.0F);
       ((Path)localObject2).cubicTo(24.1F, 24.538408F, 23.081448F, 26.836504F, 21.434671F, 28.5F);
@@ -78,7 +86,7 @@ public final class lf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.lf
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package android.support.design.g;
 
 public abstract interface a
 {
-  public abstract void bu();
+  public abstract void bJ();
   
-  public abstract void bv();
+  public abstract void bK();
 }
 
 

@@ -1,30 +1,46 @@
 package com.tencent.mm.plugin.finder.convert;
 
+import android.support.v7.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.model.d;
+import com.tencent.mm.view.recyclerview.b;
+import com.tencent.mm.view.recyclerview.e;
+import d.g.a.a;
+import d.g.b.q;
 import d.l;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedPlainTextConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedPlainText;", "contract", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;", "safeMode", "", "tabType", "", "(Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;ZI)V", "convertMedia", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "getLayoutId", "plugin-finder_release"})
-public class p
-  extends g<com.tencent.mm.plugin.finder.model.p>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedNoMreFooterConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FeedFooterNoMoreData;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+public final class p
+  extends b<d>
 {
-  private final com.tencent.mm.plugin.finder.feed.g ram;
-  
-  private p(com.tencent.mm.plugin.finder.feed.g paramg, boolean paramBoolean, int paramInt)
+  public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
   {
-    super(paramg, paramBoolean, paramInt);
-    AppMethodBeat.i(165412);
-    this.ram = paramg;
-    AppMethodBeat.o(165412);
+    AppMethodBeat.i(201389);
+    d.g.b.p.h(paramRecyclerView, "recyclerView");
+    d.g.b.p.h(parame, "holder");
+    AppMethodBeat.o(201389);
   }
   
   public final int getLayoutId()
   {
-    return 2131492872;
+    return 2131496264;
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  static final class a
+    extends q
+    implements a<z>
+  {
+    a(e parame)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.p
  * JD-Core Version:    0.7.0.1
  */

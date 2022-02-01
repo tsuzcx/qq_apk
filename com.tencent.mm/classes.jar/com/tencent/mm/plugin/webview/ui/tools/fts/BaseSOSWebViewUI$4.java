@@ -12,15 +12,15 @@ final class BaseSOSWebViewUI$4
   public final void run()
   {
     AppMethodBeat.i(80527);
-    if (this.CCB.getJsapi() != null)
+    if (this.Egk.getJsapi() != null)
     {
-      if ((this.Abi != null) && (this.Abi.getInt("isRefresh") == 1) && (this.Abi.getString("widgetId") != null))
+      if ((this.BsT != null) && (this.BsT.getInt("isRefresh") == 1) && (this.BsT.getString("widgetId") != null))
       {
-        this.CCB.getJsapi().kr(this.Abi.getString("widgetId"), this.meg);
+        this.Egk.getJsapi().kP(this.BsT.getString("widgetId"), this.mEz);
         AppMethodBeat.o(80527);
         return;
       }
-      this.CCB.getJsapi().j(this.meg, this.CCC, this.Chz);
+      this.Egk.getJsapi().j(this.mEz, this.Egl, this.DKG);
     }
     AppMethodBeat.o(80527);
   }

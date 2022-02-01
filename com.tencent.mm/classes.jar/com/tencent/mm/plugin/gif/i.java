@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.gif;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class i
 {
-  public static Bitmap bm(byte[] paramArrayOfByte)
+  public static Bitmap bp(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(104682);
-    if (bs.cv(paramArrayOfByte))
+    if (bt.cC(paramArrayOfByte))
     {
       AppMethodBeat.o(104682);
       return null;
@@ -20,15 +20,15 @@ public final class i
     int[] arrayOfInt1 = new int[4];
     long l = MMWXGFJNI.nativeInitWxAMDecoder();
     if (l == 0L) {
-      ac.w("MicroMsg.GIF.MMWXGFUtil", "Cpan init wxam decoder failed.");
+      ad.w("MicroMsg.GIF.MMWXGFUtil", "Cpan init wxam decoder failed.");
     }
     int i = MMWXGFJNI.nativeDecodeBufferHeader(l, paramArrayOfByte, paramArrayOfByte.length);
     if (i != 0) {
-      ac.w("MicroMsg.GIF.MMWXGFUtil", "Cpan WXGF decode buffer header failed. result:%d", new Object[] { Integer.valueOf(i) });
+      ad.w("MicroMsg.GIF.MMWXGFUtil", "Cpan WXGF decode buffer header failed. result:%d", new Object[] { Integer.valueOf(i) });
     }
     i = MMWXGFJNI.nativeGetOption(l, paramArrayOfByte, paramArrayOfByte.length, arrayOfInt2);
     if (i != 0) {
-      ac.w("MicroMsg.GIF.MMWXGFUtil", "Cpan WXGF get option failed. result:%d", new Object[] { Integer.valueOf(i) });
+      ad.w("MicroMsg.GIF.MMWXGFUtil", "Cpan WXGF get option failed. result:%d", new Object[] { Integer.valueOf(i) });
     }
     i = arrayOfInt2[1];
     int j = arrayOfInt2[2];
@@ -46,7 +46,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.i
  * JD-Core Version:    0.7.0.1
  */

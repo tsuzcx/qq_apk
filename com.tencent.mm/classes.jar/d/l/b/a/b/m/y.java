@@ -1,7 +1,7 @@
 package d.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.m;
 
 public final class y
@@ -9,8 +9,8 @@ public final class y
   public static final boolean am(ab paramab)
   {
     AppMethodBeat.i(60747);
-    k.h(paramab, "$this$isFlexible");
-    boolean bool = paramab.gcz() instanceof v;
+    p.h(paramab, "$this$isFlexible");
+    boolean bool = paramab.gua() instanceof v;
     AppMethodBeat.o(60747);
     return bool;
   }
@@ -18,8 +18,8 @@ public final class y
   public static final v an(ab paramab)
   {
     AppMethodBeat.i(60748);
-    k.h(paramab, "$this$asFlexibleType");
-    paramab = paramab.gcz();
+    p.h(paramab, "$this$asFlexibleType");
+    paramab = paramab.gua();
     if (paramab == null)
     {
       paramab = new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.types.FlexibleType");
@@ -34,11 +34,11 @@ public final class y
   public static final aj ao(ab paramab)
   {
     AppMethodBeat.i(60749);
-    k.h(paramab, "$this$lowerIfFlexible");
-    paramab = paramab.gcz();
+    p.h(paramab, "$this$lowerIfFlexible");
+    paramab = paramab.gua();
     if ((paramab instanceof v))
     {
-      paramab = ((v)paramab).LLa;
+      paramab = ((v)paramab).NBV;
       AppMethodBeat.o(60749);
       return paramab;
     }
@@ -56,11 +56,11 @@ public final class y
   public static final aj ap(ab paramab)
   {
     AppMethodBeat.i(60750);
-    k.h(paramab, "$this$upperIfFlexible");
-    paramab = paramab.gcz();
+    p.h(paramab, "$this$upperIfFlexible");
+    paramab = paramab.gua();
     if ((paramab instanceof v))
     {
-      paramab = ((v)paramab).LLb;
+      paramab = ((v)paramab).NBW;
       AppMethodBeat.o(60750);
       return paramab;
     }
@@ -77,7 +77,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.y
  * JD-Core Version:    0.7.0.1
  */

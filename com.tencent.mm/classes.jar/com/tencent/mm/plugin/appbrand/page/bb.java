@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.page;
 
 public abstract interface bb
 {
-  public abstract String OF(String paramString);
+  public abstract String Si(String paramString);
 }
 
 

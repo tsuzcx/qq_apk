@@ -6,7 +6,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.webkit.ValueCallback;
 import android.widget.Toast;
-import com.tencent.luggage.h.e.a;
+import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.miniutil.MiniReaderLogic;
 import com.tencent.mm.miniutil.MiniReaderLogic.a;
@@ -15,16 +15,16 @@ import com.tencent.mm.platformtools.p.a;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandTaskProxyUI;
-import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.f.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.i;
-import com.tencent.mm.sdk.platformtools.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.n;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.vfs.e;
 import com.tencent.tbs.one.TBSOneManager;
 import com.tencent.xweb.f.a;
@@ -32,21 +32,21 @@ import com.tencent.xweb.f.a;
 final class OpenFileRequest$a
   extends AppBrandProxyUIProcessTask
 {
-  private static final int krF;
+  private static final int kNb;
   private String appId;
-  private String fBR;
+  private String fVf;
   private String fileName;
   private String filePath;
-  private boolean jVr;
-  private ValueCallback<String> jVv;
-  private boolean krG;
-  private MiniReaderLogic.a<Integer> krH;
+  private boolean kNc;
+  private MiniReaderLogic.a<Integer> kNd;
+  private boolean kpF;
+  private ValueCallback<String> kpJ;
   private String token;
   
   static
   {
     AppMethodBeat.i(174829);
-    krF = a.class.hashCode() & 0xFFFF;
+    kNb = a.class.hashCode() & 0xFFFF;
     AppMethodBeat.o(174829);
   }
   
@@ -56,63 +56,63 @@ final class OpenFileRequest$a
     this.appId = "";
     this.filePath = "";
     this.fileName = "";
-    this.fBR = "";
+    this.fVf = "";
     this.token = "";
-    this.krH = null;
-    this.jVv = new ValueCallback() {};
+    this.kNd = null;
+    this.kpJ = new ValueCallback() {};
     AppMethodBeat.o(174804);
   }
   
-  private void bgD()
+  private void bki()
   {
-    AppMethodBeat.i(186632);
-    if (bel() != null)
+    AppMethodBeat.i(188365);
+    if (bhP() != null)
     {
-      bel().appId = this.appId;
-      bel().a(this.filePath, this.fBR, this.token, this.fileName, this.jVr);
-      bel().jVv = this.jVv;
-      bel().ber();
-      MiniReaderLogic.a(bel().jVq.bGo(), bef(), this.filePath, this.fileName, this.fBR, this.token, this.jVv, bgE(), true, this.appId, this.jVr);
-      AppMethodBeat.o(186632);
+      bhP().appId = this.appId;
+      bhP().a(this.filePath, this.fVf, this.token, this.fileName, this.kpF);
+      bhP().kpJ = this.kpJ;
+      bhP().bhV();
+      MiniReaderLogic.a(bhP().kpE.bKz(), bhJ(), this.filePath, this.fileName, this.fVf, this.token, this.kpJ, bkj(), true, this.appId, this.kpF);
+      AppMethodBeat.o(188365);
       return;
     }
-    com.tencent.mm.cq.a.a(bef(), this.filePath, this.fileName, this.fBR, this.token, f.a.KyM, this.jVv, bgE(), this.jVr);
-    AppMethodBeat.o(186632);
+    com.tencent.mm.cq.a.a(bhJ(), this.filePath, this.fileName, this.fVf, this.token, f.a.Mpi, this.kpJ, bkj(), this.kpF);
+    AppMethodBeat.o(188365);
   }
   
-  private MiniReaderLogic.a<Integer> bgE()
+  private MiniReaderLogic.a<Integer> bkj()
   {
     AppMethodBeat.i(174807);
-    if (this.krH != null) {
-      this.krH.hlU = true;
+    if (this.kNd != null) {
+      this.kNd.hEh = true;
     }
-    this.krH = new MiniReaderLogic.a() {};
-    if (bel() != null) {
-      bel().jVu = this.krH;
+    this.kNd = new MiniReaderLogic.a() {};
+    if (bhP() != null) {
+      bhP().kpI = this.kNd;
     }
-    MiniReaderLogic.a locala = this.krH;
+    MiniReaderLogic.a locala = this.kNd;
     AppMethodBeat.o(174807);
     return locala;
   }
   
-  private void dd(String paramString1, String paramString2)
+  private void dg(String paramString1, String paramString2)
   {
     AppMethodBeat.i(174805);
-    paramString2 = d.aLW(paramString2);
+    paramString2 = d.aRD(paramString2);
     OpenFileRequest.OpenResult localOpenResult = new OpenFileRequest.OpenResult();
     try
     {
       Object localObject = new Intent();
       ((Intent)localObject).setPackage(null);
       ((Intent)localObject).setAction("android.intent.action.VIEW");
-      m.a(bef(), (Intent)localObject, new e(paramString1), paramString2);
+      n.a(bhJ(), (Intent)localObject, new e(paramString1), paramString2);
       ((Intent)localObject).addFlags(268435456);
       int i = Build.VERSION.SDK_INT;
       ((Intent)localObject).addFlags(524288);
-      paramString1 = bef();
-      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramString1, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/appbrand/jsapi/file/OpenFileRequest$OpenLogic", "openOuterAppDirectly", "(Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramString1.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+      paramString1 = bhJ();
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramString1, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/appbrand/jsapi/file/OpenFileRequest$OpenLogic", "openOuterAppDirectly", "(Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString1.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramString1, "com/tencent/mm/plugin/appbrand/jsapi/file/OpenFileRequest$OpenLogic", "openOuterAppDirectly", "(Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       localOpenResult.ret = 0;
       b(localOpenResult);
@@ -123,9 +123,9 @@ final class OpenFileRequest$a
     {
       for (;;)
       {
-        ac.e("MicroMsg.AppBrand.OpenFileRequest", "start outer view with mime(%s), e = %s", new Object[] { paramString2, paramString1 });
+        ad.e("MicroMsg.AppBrand.OpenFileRequest", "start outer view with mime(%s), e = %s", new Object[] { paramString2, paramString1 });
         localOpenResult.ret = 2147483646;
-        ap.f(new OpenFileRequest.a.1(this));
+        aq.f(new OpenFileRequest.a.1(this));
       }
     }
   }
@@ -135,12 +135,12 @@ final class OpenFileRequest$a
     AppMethodBeat.i(174806);
     this.appId = ((OpenFileRequest)paramProcessRequest).appId;
     this.filePath = ((OpenFileRequest)paramProcessRequest).filePath;
-    this.fBR = ((OpenFileRequest)paramProcessRequest).fBR;
-    this.jVr = ((OpenFileRequest)paramProcessRequest).jVr;
-    this.token = Integer.toString(bef().hashCode());
-    if (i.eUv())
+    this.fVf = ((OpenFileRequest)paramProcessRequest).fVf;
+    this.kpF = ((OpenFileRequest)paramProcessRequest).kpF;
+    this.token = Integer.toString(bhJ().hashCode());
+    if (j.fjZ())
     {
-      dd(this.filePath, this.fBR);
+      dg(this.filePath, this.fVf);
       AppMethodBeat.o(174806);
       return;
     }
@@ -157,7 +157,7 @@ final class OpenFileRequest$a
     {
       for (;;)
       {
-        ac.e("MicroMsg.AppBrand.OpenFileRequest", "get file name error " + paramProcessRequest.getMessage());
+        ad.e("MicroMsg.AppBrand.OpenFileRequest", "get file name error " + paramProcessRequest.getMessage());
         paramProcessRequest = "";
         continue;
         int i = 0;
@@ -166,19 +166,19 @@ final class OpenFileRequest$a
     paramProcessRequest = this.filePath;
     paramProcessRequest = paramProcessRequest.substring(i, paramProcessRequest.length());
     this.fileName = paramProcessRequest;
-    this.krG = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pSK, false);
-    com.tencent.mm.cq.a.JId = new OpenFileRequest.a.2(this, TBSOneManager.getDefaultInstance(bef()));
-    bgD();
+    this.kNc = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxo, false);
+    com.tencent.mm.cq.a.LBG = new OpenFileRequest.a.2(this, TBSOneManager.getDefaultInstance(bhJ()));
+    bki();
     AppMethodBeat.o(174806);
   }
   
-  public final void bem()
+  public final void bhQ()
   {
     AppMethodBeat.i(174808);
-    super.bem();
-    bef().getWindow().setBackgroundDrawableResource(2131101053);
-    if (this.krG) {
-      as.o(bef(), this.token, this.filePath);
+    super.bhQ();
+    bhJ().getWindow().setBackgroundDrawableResource(2131101053);
+    if (this.kNc) {
+      as.p(bhJ(), this.token, this.filePath);
     }
     AppMethodBeat.o(174808);
   }
@@ -186,7 +186,7 @@ final class OpenFileRequest$a
   public final void c(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(174809);
-    if (krF == paramInt1)
+    if (kNb == paramInt1)
     {
       paramIntent = new OpenFileRequest.OpenResult();
       if (-1 == paramInt2) {}
@@ -203,7 +203,7 @@ final class OpenFileRequest$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.OpenFileRequest.a
  * JD-Core Version:    0.7.0.1
  */

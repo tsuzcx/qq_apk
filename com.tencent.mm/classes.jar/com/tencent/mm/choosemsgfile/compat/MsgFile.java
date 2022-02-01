@@ -9,7 +9,7 @@ public class MsgFile
   implements Parcelable
 {
   public static final Parcelable.Creator<MsgFile> CREATOR;
-  public String fBR;
+  public String fVf;
   public String fileName;
   public String filePath;
   public int fileSize;
@@ -33,7 +33,7 @@ public class MsgFile
     this.fileName = paramParcel.readString();
     this.timeStamp = paramParcel.readLong();
     this.type = paramParcel.readString();
-    this.fBR = paramParcel.readString();
+    this.fVf = paramParcel.readString();
     AppMethodBeat.o(127510);
   }
   
@@ -45,7 +45,7 @@ public class MsgFile
   public String toString()
   {
     AppMethodBeat.i(127508);
-    String str = "MsgFile{fileSize=" + this.fileSize + ", filePath='" + this.filePath + '\'' + ", fileName='" + this.fileName + '\'' + ", timeStamp=" + this.timeStamp + ", type='" + this.type + '\'' + ", fileExt='" + this.fBR + '\'' + '}';
+    String str = "MsgFile{fileSize=" + this.fileSize + ", filePath='" + this.filePath + '\'' + ", fileName='" + this.fileName + '\'' + ", timeStamp=" + this.timeStamp + ", type='" + this.type + '\'' + ", fileExt='" + this.fVf + '\'' + '}';
     AppMethodBeat.o(127508);
     return str;
   }
@@ -58,13 +58,13 @@ public class MsgFile
     paramParcel.writeString(this.fileName);
     paramParcel.writeLong(this.timeStamp);
     paramParcel.writeString(this.type);
-    paramParcel.writeString(this.fBR);
+    paramParcel.writeString(this.fVf);
     AppMethodBeat.o(127509);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.choosemsgfile.compat.MsgFile
  * JD-Core Version:    0.7.0.1
  */

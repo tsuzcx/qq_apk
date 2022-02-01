@@ -5,10 +5,10 @@ public final class s
 {
   public s()
   {
-    this.LVT = 281;
+    this.NQs = 281;
   }
   
-  public final Boolean gfy()
+  public final Boolean gxW()
   {
     return Boolean.TRUE;
   }

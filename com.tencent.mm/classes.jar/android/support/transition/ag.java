@@ -9,28 +9,28 @@ import java.lang.reflect.Field;
 
 final class ag
 {
-  private static final ak BH;
-  private static Field BI;
-  private static boolean BJ;
-  static final Property<View, Float> BK;
-  static final Property<View, Rect> BL;
+  private static Field DA;
+  private static boolean DB;
+  static final Property<View, Float> DC;
+  static final Property<View, Rect> DD;
+  private static final ak Dz;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 22) {
-      BH = new aj();
+      Dz = new aj();
     }
     for (;;)
     {
-      BK = new Property(Float.class, "translationAlpha") {};
-      BL = new Property(Rect.class, "clipBounds") {};
+      DC = new Property(Float.class, "translationAlpha") {};
+      DD = new Property(Rect.class, "clipBounds") {};
       return;
       if (Build.VERSION.SDK_INT >= 21) {
-        BH = new ai();
+        Dz = new ai();
       } else if (Build.VERSION.SDK_INT >= 19) {
-        BH = new ah();
+        Dz = new ah();
       } else {
-        BH = new ak();
+        Dz = new ak();
       }
     }
   }
@@ -53,59 +53,59 @@ final class ag
   
   static float O(View paramView)
   {
-    return BH.O(paramView);
+    return Dz.O(paramView);
   }
   
   static void P(View paramView)
   {
-    BH.P(paramView);
+    Dz.P(paramView);
   }
   
   static void Q(View paramView)
   {
-    BH.Q(paramView);
+    Dz.Q(paramView);
   }
   
   static void a(View paramView, Matrix paramMatrix)
   {
-    BH.a(paramView, paramMatrix);
+    Dz.a(paramView, paramMatrix);
   }
   
   static void b(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    BH.b(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+    Dz.b(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   static void b(View paramView, Matrix paramMatrix)
   {
-    BH.b(paramView, paramMatrix);
+    Dz.b(paramView, paramMatrix);
   }
   
   static void c(View paramView, Matrix paramMatrix)
   {
-    BH.c(paramView, paramMatrix);
+    Dz.c(paramView, paramMatrix);
   }
   
   static void d(View paramView, float paramFloat)
   {
-    BH.d(paramView, paramFloat);
+    Dz.d(paramView, paramFloat);
   }
   
   static void m(View paramView, int paramInt)
   {
-    if (!BJ) {}
+    if (!DB) {}
     try
     {
       Field localField = View.class.getDeclaredField("mViewFlags");
-      BI = localField;
+      DA = localField;
       localField.setAccessible(true);
       label23:
-      BJ = true;
-      if (BI != null) {}
+      DB = true;
+      if (DA != null) {}
       try
       {
-        int i = BI.getInt(paramView);
-        BI.setInt(paramView, i & 0xFFFFFFF3 | paramInt);
+        int i = DA.getInt(paramView);
+        DA.setInt(paramView, i & 0xFFFFFFF3 | paramInt);
         return;
       }
       catch (IllegalAccessException paramView) {}
@@ -118,7 +118,7 @@ final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.ag
  * JD-Core Version:    0.7.0.1
  */

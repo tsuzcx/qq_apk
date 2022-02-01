@@ -8,30 +8,25 @@ public abstract class gu
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int enO;
-  private static final int eoK = "recordId".hashCode();
-  private static final int fiu;
-  private static final int key_HASHCODE;
+  private static final int fyg = "wallet_region".hashCode();
+  private static final int fyh = "function_list".hashCode();
+  private static final int fyi = "new_list".hashCode();
+  private static final int fyj = "banner_list".hashCode();
+  private static final int fyk = "type_name_list".hashCode();
+  private static final int fyl = "isShowSetting".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int value_HASHCODE;
-  private boolean __hadSetkey = true;
-  private boolean __hadSetvalue = true;
-  private boolean enx = true;
-  private boolean eoI = true;
-  public String field_appId;
-  public String field_domin;
-  public String field_key;
-  public int field_recordId;
-  public String field_value;
-  private boolean fit = true;
-  
-  static
-  {
-    enO = "appId".hashCode();
-    fiu = "domin".hashCode();
-    key_HASHCODE = "key".hashCode();
-    value_HASHCODE = "value".hashCode();
-  }
+  public String field_banner_list;
+  public String field_function_list;
+  public int field_isShowSetting;
+  public String field_new_list;
+  public String field_type_name_list;
+  public int field_wallet_region;
+  private boolean fya = true;
+  private boolean fyb = true;
+  private boolean fyc = true;
+  private boolean fyd = true;
+  private boolean fye = true;
+  private boolean fyf = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -46,11 +41,11 @@ public abstract class gu
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eoK != k) {
+      if (fyg != k) {
         break label65;
       }
-      this.field_recordId = paramCursor.getInt(i);
-      this.eoI = true;
+      this.field_wallet_region = paramCursor.getInt(i);
+      this.fya = true;
     }
     for (;;)
     {
@@ -58,14 +53,16 @@ public abstract class gu
       break label20;
       break;
       label65:
-      if (enO == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (fiu == k) {
-        this.field_domin = paramCursor.getString(i);
-      } else if (key_HASHCODE == k) {
-        this.field_key = paramCursor.getString(i);
-      } else if (value_HASHCODE == k) {
-        this.field_value = paramCursor.getString(i);
+      if (fyh == k) {
+        this.field_function_list = paramCursor.getString(i);
+      } else if (fyi == k) {
+        this.field_new_list = paramCursor.getString(i);
+      } else if (fyj == k) {
+        this.field_banner_list = paramCursor.getString(i);
+      } else if (fyk == k) {
+        this.field_type_name_list = paramCursor.getString(i);
+      } else if (fyl == k) {
+        this.field_isShowSetting = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -75,20 +72,23 @@ public abstract class gu
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eoI) {
-      localContentValues.put("recordId", Integer.valueOf(this.field_recordId));
+    if (this.fya) {
+      localContentValues.put("wallet_region", Integer.valueOf(this.field_wallet_region));
     }
-    if (this.enx) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.fyb) {
+      localContentValues.put("function_list", this.field_function_list);
     }
-    if (this.fit) {
-      localContentValues.put("domin", this.field_domin);
+    if (this.fyc) {
+      localContentValues.put("new_list", this.field_new_list);
     }
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.fyd) {
+      localContentValues.put("banner_list", this.field_banner_list);
     }
-    if (this.__hadSetvalue) {
-      localContentValues.put("value", this.field_value);
+    if (this.fye) {
+      localContentValues.put("type_name_list", this.field_type_name_list);
+    }
+    if (this.fyf) {
+      localContentValues.put("isShowSetting", Integer.valueOf(this.field_isShowSetting));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -98,7 +98,7 @@ public abstract class gu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.gu
  * JD-Core Version:    0.7.0.1
  */

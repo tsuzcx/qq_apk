@@ -6,21 +6,21 @@ import com.tencent.mm.plugin.appbrand.g.c;
 import com.tencent.mm.plugin.appbrand.g.d;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.model.AdReportCgiHelper;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class j
 {
   private static void a(int paramInt, String paramString1, String paramString2, String paramString3, long paramLong)
   {
     AppMethodBeat.i(46635);
-    long l = bs.eWj();
-    String str1 = ax.iL(ai.getContext());
-    String str2 = ax.iM(ai.getContext());
-    paramString1 = paramString3 + "," + paramString2 + "," + paramString1 + "," + l + "," + paramLong + "," + paramInt + "," + bhK() + "," + str1 + "," + str2 + ",,";
-    ac.v("MicroMsg.MiniProgramNavigatorAdReportHelper", "closeType:%d stayTime:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    long l = bt.flT();
+    String str1 = ay.iV(aj.getContext());
+    String str2 = ay.iW(aj.getContext());
+    paramString1 = paramString3 + "," + paramString2 + "," + paramString1 + "," + l + "," + paramLong + "," + paramInt + "," + blr() + "," + str1 + "," + str2 + ",,";
+    ad.v("MicroMsg.MiniProgramNavigatorAdReportHelper", "closeType:%d stayTime:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
     AdReportCgiHelper.a(16004, paramString1, null);
     AppMethodBeat.o(46635);
   }
@@ -33,8 +33,8 @@ public final class j
       AppMethodBeat.o(46633);
       return;
     }
-    final String str = paramAppBrandStatObject.kzK;
-    if (bs.isNullOrNil(str))
+    final String str = paramAppBrandStatObject.kVU;
+    if (bt.isNullOrNil(str))
     {
       AppMethodBeat.o(46633);
       return;
@@ -44,8 +44,8 @@ public final class j
       private void a(g.d paramAnonymousd, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
       {
         AppMethodBeat.i(46631);
-        j.a(paramAnonymousd, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, bs.eWj() - this.hHV);
-        this.kAd.kzK = null;
+        j.a(paramAnonymousd, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, bt.flT() - this.iaJ);
+        this.kWn.kVU = null;
         g.b(paramAnonymousString1, this);
         AppMethodBeat.o(46631);
       }
@@ -60,7 +60,7 @@ public final class j
       public final void onDestroy()
       {
         AppMethodBeat.i(46630);
-        a(g.Hg(this.val$appId), this.val$appId, paramString2, str);
+        a(g.Kv(this.val$appId), this.val$appId, paramString2, str);
         AppMethodBeat.o(46630);
       }
     });
@@ -75,19 +75,19 @@ public final class j
       AppMethodBeat.o(46634);
       return;
     }
-    if (bs.isNullOrNil(paramAppBrandStatObject.kzK))
+    if (bt.isNullOrNil(paramAppBrandStatObject.kVU))
     {
       AppMethodBeat.o(46634);
       return;
     }
-    a(4, paramString1, paramString2, paramAppBrandStatObject.kzK, 0L);
+    a(4, paramString1, paramString2, paramAppBrandStatObject.kVU, 0L);
     AppMethodBeat.o(46634);
   }
   
-  private static int bhK()
+  private static int blr()
   {
     AppMethodBeat.i(46636);
-    switch (ax.getNetType(ai.getContext()))
+    switch (ay.getNetType(aj.getContext()))
     {
     case 9: 
     default: 
@@ -120,7 +120,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.j
  * JD-Core Version:    0.7.0.1
  */

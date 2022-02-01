@@ -10,30 +10,30 @@ public final class a$at
   
   public a$at()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
     if (this.sceneType != 0) {
-      paramb.bv(1, this.sceneType);
+      paramb.bx(1, this.sceneType);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
     if (this.sceneType != 0) {
-      i = j + b.bx(1, this.sceneType);
+      i = j + b.bz(1, this.sceneType);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.at
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.loader.e;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"TAG", "", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"TAG", "", "plugin-emojisdk_release"})
 public final class d
 {
   private static final String TAG = "MicroMsg.IEmojiLoadTask";

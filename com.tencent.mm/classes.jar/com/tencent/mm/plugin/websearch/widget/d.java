@@ -4,16 +4,16 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class d
 {
-  private static final d Cbs;
+  private static final d DEq;
   
   static
   {
     AppMethodBeat.i(116638);
-    Cbs = new d();
+    DEq = new d();
     AppMethodBeat.o(116638);
   }
   
@@ -84,7 +84,7 @@ public final class d
   public static void d(WidgetData paramWidgetData)
   {
     AppMethodBeat.i(116637);
-    ac.i("WidgetSafeModeIpcImpl", "onDisplaySucc");
+    ad.i("WidgetSafeModeIpcImpl", "onDisplaySucc");
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 6);
     localBundle.putParcelable("data", paramWidgetData);
@@ -92,9 +92,9 @@ public final class d
     AppMethodBeat.o(116637);
   }
   
-  public static d exT()
+  public static d eMK()
   {
-    return Cbs;
+    return DEq;
   }
 }
 

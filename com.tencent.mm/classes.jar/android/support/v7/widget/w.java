@@ -10,15 +10,15 @@ import android.view.View;
 public final class w
   extends RecyclerView.h
 {
-  private static final int[] Ox = { 16843284 };
-  private Drawable akL;
+  private static final int[] Qo = { 16843284 };
+  private Drawable amC;
+  private final Rect mBounds = new Rect();
   private int mOrientation;
-  private final Rect ya = new Rect();
   
   public w(Context paramContext)
   {
-    paramContext = paramContext.obtainStyledAttributes(Ox);
-    this.akL = paramContext.getDrawable(0);
+    paramContext = paramContext.obtainStyledAttributes(Qo);
+    this.amC = paramContext.getDrawable(0);
     paramContext.recycle();
     this.mOrientation = 1;
   }
@@ -27,7 +27,7 @@ public final class w
   {
     int m = 0;
     int k = 0;
-    if ((paramRecyclerView.getLayoutManager() == null) || (this.akL == null)) {
+    if ((paramRecyclerView.getLayoutManager() == null) || (this.amC == null)) {
       return;
     }
     int j;
@@ -49,12 +49,12 @@ public final class w
         while (k < m)
         {
           paramt = paramRecyclerView.getChildAt(k);
-          RecyclerView.c(paramt, this.ya);
-          n = this.ya.bottom;
+          RecyclerView.c(paramt, this.mBounds);
+          n = this.mBounds.bottom;
           n = Math.round(paramt.getTranslationY()) + n;
-          i1 = this.akL.getIntrinsicHeight();
-          this.akL.setBounds(j, n - i1, i, n);
-          this.akL.draw(paramCanvas);
+          i1 = this.amC.getIntrinsicHeight();
+          this.amC.setBounds(j, n - i1, i, n);
+          this.amC.draw(paramCanvas);
           k += 1;
         }
         i = paramRecyclerView.getWidth();
@@ -78,12 +78,12 @@ public final class w
       {
         paramt = paramRecyclerView.getChildAt(k);
         paramRecyclerView.getLayoutManager();
-        RecyclerView.i.c(paramt, this.ya);
-        m = this.ya.right;
+        RecyclerView.i.c(paramt, this.mBounds);
+        m = this.mBounds.right;
         m = Math.round(paramt.getTranslationX()) + m;
-        i1 = this.akL.getIntrinsicWidth();
-        this.akL.setBounds(m - i1, j, m, i);
-        this.akL.draw(paramCanvas);
+        i1 = this.amC.getIntrinsicWidth();
+        this.amC.setBounds(m - i1, j, m, i);
+        this.amC.draw(paramCanvas);
         k += 1;
       }
       i = paramRecyclerView.getHeight();
@@ -94,17 +94,17 @@ public final class w
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
-    if (this.akL == null)
+    if (this.amC == null)
     {
       paramRect.set(0, 0, 0, 0);
       return;
     }
     if (this.mOrientation == 1)
     {
-      paramRect.set(0, 0, 0, this.akL.getIntrinsicHeight());
+      paramRect.set(0, 0, 0, this.amC.getIntrinsicHeight());
       return;
     }
-    paramRect.set(0, 0, this.akL.getIntrinsicWidth(), 0);
+    paramRect.set(0, 0, this.amC.getIntrinsicWidth(), 0);
   }
   
   public final void setDrawable(Drawable paramDrawable)
@@ -112,7 +112,7 @@ public final class w
     if (paramDrawable == null) {
       throw new IllegalArgumentException("Drawable cannot be null.");
     }
-    this.akL = paramDrawable;
+    this.amC = paramDrawable;
   }
 }
 

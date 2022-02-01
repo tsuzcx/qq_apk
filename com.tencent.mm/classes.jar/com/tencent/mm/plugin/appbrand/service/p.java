@@ -1,26 +1,19 @@
 package com.tencent.mm.plugin.appbrand.service;
 
 import android.content.Context;
+import android.os.Bundle;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
-import java.util.List;
 
 public abstract interface p
   extends a
 {
-  public abstract void G(Context paramContext, int paramInt);
+  public abstract boolean b(Context paramContext, String paramString, int paramInt, Bundle paramBundle1, Bundle paramBundle2);
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, List<WxaAttributes.WxaEntryInfo> paramList);
-  
-  public abstract void d(Context paramContext, int paramInt1, int paramInt2);
-  
-  public abstract void dk(Context paramContext);
-  
-  public abstract boolean dl(Context paramContext);
+  public abstract boolean n(String paramString, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.service.p
  * JD-Core Version:    0.7.0.1
  */

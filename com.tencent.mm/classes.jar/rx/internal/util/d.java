@@ -16,10 +16,10 @@ import rx.internal.util.unsafe.UnsafeAccess;
 public abstract class d<T>
   implements j
 {
-  private final long Mfm = 67L;
-  private final AtomicReference<Future<?>> Mfn = new AtomicReference();
-  Queue<T> aHj;
-  final int hQc = 0;
+  private final long Oao = 67L;
+  private final AtomicReference<Future<?>> Oap = new AtomicReference();
+  Queue<T> aJa;
+  final int ijq = 0;
   final int maxSize = 0;
   
   public d()
@@ -30,18 +30,18 @@ public abstract class d<T>
   private d(byte paramByte)
   {
     if (UnsafeAccess.isUnsafeAvailable()) {}
-    for (this.aHj = new MpmcArrayQueue(Math.max(this.maxSize, 1024));; this.aHj = new ConcurrentLinkedQueue())
+    for (this.aJa = new MpmcArrayQueue(Math.max(this.maxSize, 1024));; this.aJa = new ConcurrentLinkedQueue())
     {
       start();
       return;
     }
   }
   
-  protected abstract T ggC();
+  protected abstract T gzg();
   
   public final void shutdown()
   {
-    Future localFuture = (Future)this.Mfn.getAndSet(null);
+    Future localFuture = (Future)this.Oap.getAndSet(null);
     if (localFuture != null) {
       localFuture.cancel(false);
     }
@@ -51,11 +51,11 @@ public abstract class d<T>
   {
     for (;;)
     {
-      if (this.Mfn.get() != null) {
+      if (this.Oap.get() != null) {
         label10:
         return;
       }
-      Object localObject = rx.internal.c.d.ggx();
+      Object localObject = rx.internal.c.d.gzb();
       try
       {
         localObject = ((ScheduledExecutorService)localObject).scheduleAtFixedRate(new Runnable()
@@ -65,13 +65,13 @@ public abstract class d<T>
             int j = 0;
             int i = 0;
             AppMethodBeat.i(90198);
-            int k = d.this.aHj.size();
-            if (k < d.this.hQc)
+            int k = d.this.aJa.size();
+            if (k < d.this.ijq)
             {
               j = d.this.maxSize;
               while (i < j - k)
               {
-                d.this.aHj.add(d.this.ggC());
+                d.this.aJa.add(d.this.gzg());
                 i += 1;
               }
               AppMethodBeat.o(90198);
@@ -83,14 +83,14 @@ public abstract class d<T>
               i = j;
               while (i < k - m)
               {
-                d.this.aHj.poll();
+                d.this.aJa.poll();
                 i += 1;
               }
             }
             AppMethodBeat.o(90198);
           }
-        }, this.Mfm, this.Mfm, TimeUnit.SECONDS);
-        if (this.Mfn.compareAndSet(null, localObject)) {
+        }, this.Oao, this.Oao, TimeUnit.SECONDS);
+        if (this.Oap.compareAndSet(null, localObject)) {
           break label10;
         }
         ((Future)localObject).cancel(false);

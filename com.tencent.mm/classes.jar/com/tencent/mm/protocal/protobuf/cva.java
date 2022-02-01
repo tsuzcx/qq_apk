@@ -1,105 +1,81 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class cva
-  extends cpx
+  extends com.tencent.mm.bx.a
 {
-  public String djj;
-  public String dnz;
+  public int FwM;
+  public int Scene;
+  public String Url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123648);
+    AppMethodBeat.i(6427);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.Url != null) {
+        paramVarArgs.d(1, this.Url);
       }
-      if (this.djj != null) {
-        paramVarArgs.d(2, this.djj);
-      }
-      if (this.dnz != null) {
-        paramVarArgs.d(3, this.dnz);
-      }
-      AppMethodBeat.o(123648);
+      paramVarArgs.aS(2, this.FwM);
+      paramVarArgs.aS(3, this.Scene);
+      AppMethodBeat.o(6427);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label430;
+      if (this.Url == null) {
+        break label315;
       }
     }
-    label430:
-    for (int i = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label315:
+    for (paramInt = f.a.a.b.b.a.e(1, this.Url) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.djj != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.djj);
-      }
-      i = paramInt;
-      if (this.dnz != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.dnz);
-      }
-      AppMethodBeat.o(123648);
-      return i;
+      int i = f.a.a.b.b.a.bz(2, this.FwM);
+      int j = f.a.a.b.b.a.bz(3, this.Scene);
+      AppMethodBeat.o(6427);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(123648);
+        AppMethodBeat.o(6427);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         cva localcva = (cva)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(123648);
+          AppMethodBeat.o(6427);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcva.BaseRequest = ((iv)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(123648);
+          localcva.Url = locala.NPN.readString();
+          AppMethodBeat.o(6427);
           return 0;
         case 2: 
-          localcva.djj = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(123648);
+          localcva.FwM = locala.NPN.zc();
+          AppMethodBeat.o(6427);
           return 0;
         }
-        localcva.dnz = ((f.a.a.a.a)localObject1).LVo.readString();
-        AppMethodBeat.o(123648);
+        localcva.Scene = locala.NPN.zc();
+        AppMethodBeat.o(6427);
         return 0;
       }
-      AppMethodBeat.o(123648);
+      AppMethodBeat.o(6427);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cva
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,12 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.IShakeCheckingManager;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.j.d;
-import com.tencent.mm.pluginsdk.j.d.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bc;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.pluginsdk.l.d;
+import com.tencent.mm.pluginsdk.l.d.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class KindaShakeCheckingManager
   implements IShakeCheckingManager
@@ -52,18 +52,18 @@ public class KindaShakeCheckingManager
     AppMethodBeat.i(18515);
     if (paramBoolean)
     {
-      bc.aF(KindaContext.get(), 2131763587);
+      bd.aI(KindaContext.get(), 2131763587);
       AppMethodBeat.o(18515);
       return;
     }
-    bc.aF(KindaContext.get(), 2131763595);
+    bd.aI(KindaContext.get(), 2131763595);
     AppMethodBeat.o(18515);
   }
   
   public void playShakeSound()
   {
     AppMethodBeat.i(18514);
-    bc.aF(KindaContext.get(), 2131763618);
+    bd.aI(KindaContext.get(), 2131763618);
     AppMethodBeat.o(18514);
   }
   
@@ -90,8 +90,8 @@ public class KindaShakeCheckingManager
       public void onShake(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(18510);
-        ac.i("KindaShakeCheckingManager", "onShake");
-        long l = bs.aO(KindaShakeCheckingManager.this.lastShakeTime);
+        ad.i("KindaShakeCheckingManager", "onShake");
+        long l = bt.aO(KindaShakeCheckingManager.this.lastShakeTime);
         if (!KindaShakeCheckingManager.this.isStartShake)
         {
           if (l < 1200L) {
@@ -103,7 +103,7 @@ public class KindaShakeCheckingManager
           AppMethodBeat.o(18510);
           return;
         }
-        KindaShakeCheckingManager.access$202(KindaShakeCheckingManager.this, bs.Gn());
+        KindaShakeCheckingManager.access$202(KindaShakeCheckingManager.this, bt.HI());
         KindaShakeCheckingManager.access$302(KindaShakeCheckingManager.this, true);
         if (!KindaShakeCheckingManager.this.isInvokeCallback)
         {
@@ -115,9 +115,9 @@ public class KindaShakeCheckingManager
         AppMethodBeat.o(18510);
       }
     });
-    this.lastShakeTime = bs.Gn();
-    ap.aB(this.delayNofiyRunnable);
-    ap.n(this.delayNofiyRunnable, this.delayNotifyMs);
+    this.lastShakeTime = bt.HI();
+    aq.aA(this.delayNofiyRunnable);
+    aq.o(this.delayNofiyRunnable, this.delayNotifyMs);
     AppMethodBeat.o(18512);
   }
   
@@ -126,12 +126,12 @@ public class KindaShakeCheckingManager
     AppMethodBeat.i(18513);
     if (this.shakeSensor != null)
     {
-      this.shakeSensor.bXB();
+      this.shakeSensor.cce();
       this.shakeSensor = null;
     }
     this.isInvokeCallback = false;
     this.isStartShake = false;
-    ap.aB(this.delayNofiyRunnable);
+    aq.aA(this.delayNofiyRunnable);
     AppMethodBeat.o(18513);
   }
 }

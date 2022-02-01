@@ -2,179 +2,273 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
-import java.util.LinkedList;
 
 public final class dna
-  extends cpx
+  extends com.tencent.mm.bx.a
 {
-  public int DTc;
-  public int DTf;
-  public int EfV;
-  public String FUF;
-  public int FUG;
-  public int FUH;
-  public int hNR;
-  public String ncR;
-  public SKBuiltinBuffer_t vTK;
+  public String HBm;
+  public String HBn;
+  public int HBo;
+  public String gHx;
+  public String msg;
+  public int mtM;
+  public String nUh;
+  public String patchMd5;
+  public String title;
+  public String uJh;
+  public String uJi;
+  public String utw;
+  public int versionCode;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(148657);
+    AppMethodBeat.i(123719);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.vTK == null)
+      if (this.nUh == null)
       {
-        paramVarArgs = new b("Not all required fields were included: Data");
-        AppMethodBeat.o(148657);
+        paramVarArgs = new b("Not all required fields were included: patchId");
+        AppMethodBeat.o(123719);
         throw paramVarArgs;
       }
-      if (this.BaseRequest != null)
+      if (this.uJh == null)
       {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: newApkMd5");
+        AppMethodBeat.o(123719);
+        throw paramVarArgs;
       }
-      if (this.ncR != null) {
-        paramVarArgs.d(2, this.ncR);
-      }
-      if (this.vTK != null)
+      if (this.uJi == null)
       {
-        paramVarArgs.ln(3, this.vTK.computeSize());
-        this.vTK.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: oldApkMd5");
+        AppMethodBeat.o(123719);
+        throw paramVarArgs;
       }
-      paramVarArgs.aR(4, this.EfV);
-      if (this.FUF != null) {
-        paramVarArgs.d(5, this.FUF);
+      if (this.title == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: title");
+        AppMethodBeat.o(123719);
+        throw paramVarArgs;
       }
-      paramVarArgs.aR(6, this.hNR);
-      paramVarArgs.aR(7, this.FUG);
-      paramVarArgs.aR(8, this.DTf);
-      paramVarArgs.aR(9, this.FUH);
-      paramVarArgs.aR(10, this.DTc);
-      AppMethodBeat.o(148657);
+      if (this.HBn == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: okBtn");
+        AppMethodBeat.o(123719);
+        throw paramVarArgs;
+      }
+      if (this.utw == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: cancelBtn");
+        AppMethodBeat.o(123719);
+        throw paramVarArgs;
+      }
+      if (this.patchMd5 == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: patchMd5");
+        AppMethodBeat.o(123719);
+        throw paramVarArgs;
+      }
+      if (this.nUh != null) {
+        paramVarArgs.d(1, this.nUh);
+      }
+      if (this.HBm != null) {
+        paramVarArgs.d(2, this.HBm);
+      }
+      paramVarArgs.aS(3, this.mtM);
+      if (this.uJh != null) {
+        paramVarArgs.d(4, this.uJh);
+      }
+      if (this.uJi != null) {
+        paramVarArgs.d(5, this.uJi);
+      }
+      if (this.title != null) {
+        paramVarArgs.d(6, this.title);
+      }
+      if (this.msg != null) {
+        paramVarArgs.d(7, this.msg);
+      }
+      if (this.HBn != null) {
+        paramVarArgs.d(8, this.HBn);
+      }
+      if (this.utw != null) {
+        paramVarArgs.d(9, this.utw);
+      }
+      if (this.gHx != null) {
+        paramVarArgs.d(10, this.gHx);
+      }
+      if (this.patchMd5 != null) {
+        paramVarArgs.d(11, this.patchMd5);
+      }
+      paramVarArgs.aS(12, this.versionCode);
+      paramVarArgs.aS(13, this.HBo);
+      AppMethodBeat.o(123719);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label914;
+      if (this.nUh == null) {
+        break label1242;
       }
     }
-    label914:
-    for (int i = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label1242:
+    for (paramInt = f.a.a.b.b.a.e(1, this.nUh) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.HBm != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.HBm);
+      }
+      i += f.a.a.b.b.a.bz(3, this.mtM);
       paramInt = i;
-      if (this.ncR != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.ncR);
+      if (this.uJh != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.uJh);
       }
       i = paramInt;
-      if (this.vTK != null) {
-        i = paramInt + f.a.a.a.lm(3, this.vTK.computeSize());
+      if (this.uJi != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.uJi);
       }
-      i += f.a.a.b.b.a.bx(4, this.EfV);
       paramInt = i;
-      if (this.FUF != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.FUF);
+      if (this.title != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.title);
       }
-      i = f.a.a.b.b.a.bx(6, this.hNR);
-      int j = f.a.a.b.b.a.bx(7, this.FUG);
-      int k = f.a.a.b.b.a.bx(8, this.DTf);
-      int m = f.a.a.b.b.a.bx(9, this.FUH);
-      int n = f.a.a.b.b.a.bx(10, this.DTc);
-      AppMethodBeat.o(148657);
-      return paramInt + i + j + k + m + n;
+      i = paramInt;
+      if (this.msg != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.msg);
+      }
+      paramInt = i;
+      if (this.HBn != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.HBn);
+      }
+      i = paramInt;
+      if (this.utw != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.utw);
+      }
+      paramInt = i;
+      if (this.gHx != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.gHx);
+      }
+      i = paramInt;
+      if (this.patchMd5 != null) {
+        i = paramInt + f.a.a.b.b.a.e(11, this.patchMd5);
+      }
+      paramInt = f.a.a.b.b.a.bz(12, this.versionCode);
+      int j = f.a.a.b.b.a.bz(13, this.HBo);
+      AppMethodBeat.o(123719);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.vTK == null)
+        if (this.nUh == null)
         {
-          paramVarArgs = new b("Not all required fields were included: Data");
-          AppMethodBeat.o(148657);
+          paramVarArgs = new b("Not all required fields were included: patchId");
+          AppMethodBeat.o(123719);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(148657);
+        if (this.uJh == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: newApkMd5");
+          AppMethodBeat.o(123719);
+          throw paramVarArgs;
+        }
+        if (this.uJi == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: oldApkMd5");
+          AppMethodBeat.o(123719);
+          throw paramVarArgs;
+        }
+        if (this.title == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: title");
+          AppMethodBeat.o(123719);
+          throw paramVarArgs;
+        }
+        if (this.HBn == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: okBtn");
+          AppMethodBeat.o(123719);
+          throw paramVarArgs;
+        }
+        if (this.utw == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: cancelBtn");
+          AppMethodBeat.o(123719);
+          throw paramVarArgs;
+        }
+        if (this.patchMd5 == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: patchMd5");
+          AppMethodBeat.o(123719);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(123719);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         dna localdna = (dna)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(148657);
+          AppMethodBeat.o(123719);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdna.BaseRequest = ((iv)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(148657);
+          localdna.nUh = locala.NPN.readString();
+          AppMethodBeat.o(123719);
           return 0;
         case 2: 
-          localdna.ncR = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(148657);
+          localdna.HBm = locala.NPN.readString();
+          AppMethodBeat.o(123719);
           return 0;
         case 3: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new SKBuiltinBuffer_t();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdna.vTK = ((SKBuiltinBuffer_t)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(148657);
+          localdna.mtM = locala.NPN.zc();
+          AppMethodBeat.o(123719);
           return 0;
         case 4: 
-          localdna.EfV = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(148657);
+          localdna.uJh = locala.NPN.readString();
+          AppMethodBeat.o(123719);
           return 0;
         case 5: 
-          localdna.FUF = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(148657);
+          localdna.uJi = locala.NPN.readString();
+          AppMethodBeat.o(123719);
           return 0;
         case 6: 
-          localdna.hNR = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(148657);
+          localdna.title = locala.NPN.readString();
+          AppMethodBeat.o(123719);
           return 0;
         case 7: 
-          localdna.FUG = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(148657);
+          localdna.msg = locala.NPN.readString();
+          AppMethodBeat.o(123719);
           return 0;
         case 8: 
-          localdna.DTf = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(148657);
+          localdna.HBn = locala.NPN.readString();
+          AppMethodBeat.o(123719);
           return 0;
         case 9: 
-          localdna.FUH = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(148657);
+          localdna.utw = locala.NPN.readString();
+          AppMethodBeat.o(123719);
+          return 0;
+        case 10: 
+          localdna.gHx = locala.NPN.readString();
+          AppMethodBeat.o(123719);
+          return 0;
+        case 11: 
+          localdna.patchMd5 = locala.NPN.readString();
+          AppMethodBeat.o(123719);
+          return 0;
+        case 12: 
+          localdna.versionCode = locala.NPN.zc();
+          AppMethodBeat.o(123719);
           return 0;
         }
-        localdna.DTc = ((f.a.a.a.a)localObject1).LVo.xF();
-        AppMethodBeat.o(148657);
+        localdna.HBo = locala.NPN.zc();
+        AppMethodBeat.o(123719);
         return 0;
       }
-      AppMethodBeat.o(148657);
+      AppMethodBeat.o(123719);
       return -1;
     }
   }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner;
 
 public final class a
 {
-  public static int MK(int paramInt)
+  public static int Om(int paramInt)
   {
     switch (paramInt)
     {

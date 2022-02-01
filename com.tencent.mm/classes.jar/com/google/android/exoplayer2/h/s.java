@@ -11,19 +11,19 @@ import java.util.Map;
 public abstract interface s
   extends g
 {
-  public static final o<String> buZ = new o() {};
+  public static final o<String> bFo = new o() {};
   
   public static abstract class a
     implements s.b
   {
-    private final s.f buX = new s.f();
+    private final s.f bFm = new s.f();
     
     protected abstract s a(s.f paramf);
     
     @Deprecated
     public final void setDefaultRequestProperty(String paramString1, String paramString2)
     {
-      this.buX.set(paramString1, paramString2);
+      this.bFm.set(paramString1, paramString2);
     }
   }
   
@@ -37,27 +37,27 @@ public abstract interface s
   public static class c
     extends IOException
   {
-    public final j bmN;
+    public final j bxi;
     public final int type;
     
     public c(IOException paramIOException, j paramj, int paramInt)
     {
       super();
-      this.bmN = paramj;
+      this.bxi = paramj;
       this.type = paramInt;
     }
     
     public c(String paramString, j paramj)
     {
       super();
-      this.bmN = paramj;
+      this.bxi = paramj;
       this.type = 1;
     }
     
     public c(String paramString, IOException paramIOException, j paramj)
     {
       super(paramIOException);
-      this.bmN = paramj;
+      this.bxi = paramj;
       this.type = 1;
     }
   }
@@ -123,10 +123,10 @@ public abstract interface s
     {
       try
       {
-        AppMethodBeat.i(195776);
+        AppMethodBeat.i(217126);
         this.requestPropertiesSnapshot = null;
         this.requestProperties.put(paramString1, paramString2);
-        AppMethodBeat.o(195776);
+        AppMethodBeat.o(217126);
         return;
       }
       finally

@@ -5,28 +5,28 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.an;
+import com.tencent.mm.ui.ap;
 import com.tencent.neattextview.textview.view.NeatTextView;
 
 public class g
   extends com.tencent.neattextview.textview.view.b
 {
-  private n DBZ;
+  private n Fhg;
   
   public g(NeatTextView paramNeatTextView, n paramn)
   {
     super(paramNeatTextView.getContext(), paramNeatTextView);
     AppMethodBeat.i(152268);
-    this.DBZ = paramn;
+    this.Fhg = paramn;
     AppMethodBeat.o(152268);
   }
   
   public final void cancel(int paramInt)
   {
     AppMethodBeat.i(152271);
-    if (this.JLg != null)
+    if (this.LEP != null)
     {
-      CharacterStyle localCharacterStyle = this.JLg.JJH;
+      CharacterStyle localCharacterStyle = this.LEP.LDq;
       if ((localCharacterStyle instanceof o)) {
         ((o)localCharacterStyle).setIsPressed(false);
       }
@@ -39,9 +39,9 @@ public class g
   {
     AppMethodBeat.i(152270);
     boolean bool = super.onDown(paramMotionEvent);
-    if (this.JLg != null)
+    if (this.LEP != null)
     {
-      paramMotionEvent = this.JLg.JJH;
+      paramMotionEvent = this.LEP.LDq;
       if ((paramMotionEvent instanceof o)) {
         ((o)paramMotionEvent).setIsPressed(true);
       }
@@ -55,7 +55,7 @@ public class g
   public void onLongPress(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(152272);
-    if ((this.JLg != null) && (this.mView != null)) {
+    if ((this.LEP != null) && (this.mView != null)) {
       this.mView.performLongClick();
     }
     super.onLongPress(paramMotionEvent);
@@ -65,12 +65,12 @@ public class g
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(152269);
-    an.d("MMNeatTouchListener", "onTouch", new Object[0]);
+    ap.d("MMNeatTouchListener", "onTouch", new Object[0]);
     paramView.setTag(2131306044, new int[] { (int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY() });
     if ((paramView instanceof NeatTextView))
     {
       NeatTextView localNeatTextView = (NeatTextView)paramView;
-      if ((!localNeatTextView.fuD()) || (localNeatTextView.nPV))
+      if ((!localNeatTextView.fLq()) || (localNeatTextView.osC))
       {
         if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
           localNeatTextView.getWrappedTextView().setPressed(false);
@@ -78,7 +78,7 @@ public class g
         for (;;)
         {
           localNeatTextView.getWrappedTextView().setTag(paramView.getTag());
-          bool = this.DBZ.onTouch(localNeatTextView.getWrappedTextView(), paramMotionEvent);
+          bool = this.Fhg.onTouch(localNeatTextView.getWrappedTextView(), paramMotionEvent);
           AppMethodBeat.o(152269);
           return bool;
           if (paramMotionEvent.getAction() == 0) {
@@ -89,7 +89,7 @@ public class g
     }
     else
     {
-      this.DBZ.onTouch(paramView, paramMotionEvent);
+      this.Fhg.onTouch(paramView, paramMotionEvent);
     }
     boolean bool = super.onTouch(paramView, paramMotionEvent);
     AppMethodBeat.o(152269);

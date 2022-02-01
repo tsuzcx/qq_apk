@@ -1,0 +1,67 @@
+package com.tencent.mm.plugin.qqmail.e;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.plugin.qqmail.d.at;
+import com.tencent.mm.plugin.qqmail.d.au;
+
+public final class c
+  extends n
+  implements k
+{
+  private f callback;
+  public b hWL;
+  public String xbf;
+  
+  public c(String paramString)
+  {
+    AppMethodBeat.i(215254);
+    b.a locala = new b.a();
+    locala.funcId = getType();
+    locala.uri = "/cgi-bin/xmmailbroker/mb_readmail";
+    at localat = new at();
+    localat.xcR = paramString;
+    g.ajA();
+    localat.uin = a.getUin();
+    locala.hNM = localat;
+    locala.hNN = new au();
+    this.hWL = locala.aDC();
+    this.xbf = paramString;
+    AppMethodBeat.o(215254);
+  }
+  
+  public final int doScene(e parame, f paramf)
+  {
+    AppMethodBeat.i(215255);
+    this.callback = paramf;
+    int i = dispatch(parame, this.hWL, this);
+    AppMethodBeat.o(215255);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 11312;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(215256);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(215256);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.plugin.qqmail.e.c
+ * JD-Core Version:    0.7.0.1
+ */

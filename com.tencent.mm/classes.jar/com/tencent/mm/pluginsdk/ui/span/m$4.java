@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.n.e;
 
 public final class m$4
-  implements n.d
+  implements n.e
 {
   public m$4(Context paramContext) {}
   
@@ -18,12 +18,12 @@ public final class m$4
     AppMethodBeat.i(31924);
     Object localObject = new Intent("android.intent.action.DIAL", Uri.parse("tel:".concat(String.valueOf(paramMenuItem.getTitle().toString().replace(" ", "").replace("(", "").replace(")", "").replace("-", "")))));
     ((Intent)localObject).addFlags(268435456);
-    if (bs.ah(this.val$context, (Intent)localObject))
+    if (bt.aj(this.val$context, (Intent)localObject))
     {
       paramMenuItem = this.val$context;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper$4", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper$4", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramMenuItem, "com/tencent/mm/pluginsdk/ui/span/MailPhoneMenuHelper$4", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     AppMethodBeat.o(31924);

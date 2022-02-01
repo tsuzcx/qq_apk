@@ -1,12 +1,11 @@
 package com.tencent.tav.decoder.decodecache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.DecoderTrackSegment;
-import com.tencent.tav.decoder.IDecoder;
 import com.tencent.tav.decoder.IDecoder.DecodeType;
 import com.tencent.tav.decoder.IDecoderTrack;
 import com.tencent.tav.decoder.IDecoderTrack.SurfaceCreator;
@@ -22,7 +21,7 @@ public class CachedVideoDecoderTrack
 {
   private static final String TAG = "CachedVideoTrack";
   private CacheSegment currentFrameSegment;
-  private CMTime lastSampleTime;
+  private CMSampleState lastSampleState;
   final Object nextFrameDecoderLock;
   private CacheSegment nextFrameSegment;
   RenderContext renderContext;
@@ -33,29 +32,29 @@ public class CachedVideoDecoderTrack
   
   public CachedVideoDecoderTrack(IDecoderTrack paramIDecoderTrack, boolean paramBoolean)
   {
-    AppMethodBeat.i(198013);
+    AppMethodBeat.i(218409);
     this.segmentSize = 60;
     this.nextFrameDecoderLock = new Object();
-    this.lastSampleTime = CMTime.CMTimeInvalid;
+    this.lastSampleState = new CMSampleState();
     this.revert = paramBoolean;
     this.segmentDecoder = new SegmentDecoderThread(this, paramIDecoderTrack);
-    AppMethodBeat.o(198013);
+    AppMethodBeat.o(218409);
   }
   
   private void clearCurrentFrameSegment()
   {
-    AppMethodBeat.i(198030);
+    AppMethodBeat.i(218426);
     if (this.currentFrameSegment != null)
     {
       this.currentFrameSegment.clear();
       this.currentFrameSegment = null;
     }
-    AppMethodBeat.o(198030);
+    AppMethodBeat.o(218426);
   }
   
   private CMSampleBuffer decoderFrame(CMTime paramCMTime)
   {
-    AppMethodBeat.i(198028);
+    AppMethodBeat.i(218424);
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
     this.segmentDecoder.decoderSegment(paramCMTime, localCountDownLatch);
     try
@@ -63,7 +62,7 @@ public class CachedVideoDecoderTrack
       localCountDownLatch.await(5L, TimeUnit.SECONDS);
       label34:
       paramCMTime = this.segmentDecoder.seekSampleBuffer;
-      AppMethodBeat.o(198028);
+      AppMethodBeat.o(218424);
       return paramCMTime;
     }
     catch (InterruptedException paramCMTime)
@@ -76,373 +75,391 @@ public class CachedVideoDecoderTrack
   private CMSampleBuffer decoderSegment(CMTime arg1)
   {
     // Byte code:
-    //   0: ldc 102
+    //   0: ldc 100
     //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 104	com/tencent/tav/decoder/decodecache/RequestStatus
+    //   5: new 102	com/tencent/tav/decoder/decodecache/RequestStatus
     //   8: dup
-    //   9: invokespecial 105	com/tencent/tav/decoder/decodecache/RequestStatus:<init>	()V
+    //   9: invokespecial 103	com/tencent/tav/decoder/decodecache/RequestStatus:<init>	()V
     //   12: astore 4
     //   14: aload_0
-    //   15: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   18: ifnull +477 -> 495
+    //   15: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   18: ifnull +510 -> 528
     //   21: aload_0
-    //   22: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   25: getfield 110	com/tencent/tav/decoder/decodecache/CacheSegment:segmentTimeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
-    //   28: ifnull +467 -> 495
+    //   22: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   25: getfield 108	com/tencent/tav/decoder/decodecache/CacheSegment:segmentTimeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   28: ifnull +500 -> 528
     //   31: aload_0
-    //   32: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   35: getfield 110	com/tencent/tav/decoder/decodecache/CacheSegment:segmentTimeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   32: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   35: getfield 108	com/tencent/tav/decoder/decodecache/CacheSegment:segmentTimeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
     //   38: aload_1
-    //   39: invokevirtual 116	com/tencent/tav/coremedia/CMTimeRange:containsTime	(Lcom/tencent/tav/coremedia/CMTime;)Z
-    //   42: ifeq +453 -> 495
+    //   39: invokevirtual 114	com/tencent/tav/coremedia/CMTimeRange:containsTime	(Lcom/tencent/tav/coremedia/CMTime;)Z
+    //   42: ifeq +486 -> 528
     //   45: aload_0
     //   46: getfield 43	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameDecoderLock	Ljava/lang/Object;
     //   49: astore_3
     //   50: aload_3
     //   51: monitorenter
     //   52: aload_0
-    //   53: invokespecial 118	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:clearCurrentFrameSegment	()V
+    //   53: invokespecial 116	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:clearCurrentFrameSegment	()V
     //   56: aload_0
-    //   57: new 69	com/tencent/tav/decoder/decodecache/CacheSegment
+    //   57: new 67	com/tencent/tav/decoder/decodecache/CacheSegment
     //   60: dup
     //   61: aload_0
-    //   62: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   65: getfield 110	com/tencent/tav/decoder/decodecache/CacheSegment:segmentTimeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
-    //   68: invokespecial 121	com/tencent/tav/decoder/decodecache/CacheSegment:<init>	(Lcom/tencent/tav/coremedia/CMTimeRange;)V
-    //   71: putfield 67	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   62: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   65: getfield 108	com/tencent/tav/decoder/decodecache/CacheSegment:segmentTimeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   68: invokespecial 119	com/tencent/tav/decoder/decodecache/CacheSegment:<init>	(Lcom/tencent/tav/coremedia/CMTimeRange;)V
+    //   71: putfield 65	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
     //   74: aload_0
-    //   75: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   78: getfield 125	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
-    //   81: invokeinterface 131 1 0
+    //   75: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   78: getfield 123	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
+    //   81: invokeinterface 129 1 0
     //   86: astore 5
     //   88: aload 5
-    //   90: invokeinterface 137 1 0
+    //   90: invokeinterface 135 1 0
     //   95: ifeq +37 -> 132
     //   98: aload 5
-    //   100: invokeinterface 141 1 0
-    //   105: checkcast 143	com/tencent/tav/decoder/decodecache/CacheFrame
+    //   100: invokeinterface 139 1 0
+    //   105: checkcast 141	com/tencent/tav/decoder/decodecache/CacheFrame
     //   108: astore 6
     //   110: aload_0
-    //   111: getfield 67	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   111: getfield 65	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
     //   114: aload 6
-    //   116: invokevirtual 147	com/tencent/tav/decoder/decodecache/CacheSegment:pushFrame	(Lcom/tencent/tav/decoder/decodecache/CacheFrame;)V
+    //   116: invokevirtual 145	com/tencent/tav/decoder/decodecache/CacheSegment:pushFrame	(Lcom/tencent/tav/decoder/decodecache/CacheFrame;)V
     //   119: goto -31 -> 88
     //   122: astore_1
     //   123: aload_3
     //   124: monitorexit
-    //   125: ldc 102
-    //   127: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   125: ldc 100
+    //   127: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   130: aload_1
     //   131: athrow
     //   132: aload_0
-    //   133: getfield 67	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   133: getfield 65	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
     //   136: aload_1
-    //   137: invokevirtual 151	com/tencent/tav/decoder/decodecache/CacheSegment:popFrame	(Lcom/tencent/tav/coremedia/CMTime;)Lcom/tencent/tav/decoder/decodecache/CacheFrame;
+    //   137: invokevirtual 149	com/tencent/tav/decoder/decodecache/CacheSegment:popFrame	(Lcom/tencent/tav/coremedia/CMTime;)Lcom/tencent/tav/decoder/decodecache/CacheFrame;
     //   140: astore 5
     //   142: aload 5
-    //   144: ifnull +167 -> 311
-    //   147: new 153	java/lang/StringBuilder
+    //   144: ifnull +197 -> 341
+    //   147: new 151	java/lang/StringBuilder
     //   150: dup
-    //   151: ldc 155
-    //   153: invokespecial 158	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   151: ldc 153
+    //   153: invokespecial 156	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   156: astore_1
     //   157: aload 5
-    //   159: getfield 161	com/tencent/tav/decoder/decodecache/CacheFrame:sampleBuffer	Lcom/tencent/tav/coremedia/CMSampleBuffer;
-    //   162: ifnull +144 -> 306
+    //   159: getfield 159	com/tencent/tav/decoder/decodecache/CacheFrame:sampleBuffer	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   162: ifnull +168 -> 330
     //   165: aload 5
-    //   167: getfield 161	com/tencent/tav/decoder/decodecache/CacheFrame:sampleBuffer	Lcom/tencent/tav/coremedia/CMSampleBuffer;
-    //   170: invokevirtual 167	com/tencent/tav/coremedia/CMSampleBuffer:getTextureInfo	()Lcom/tencent/tav/coremedia/TextureInfo;
-    //   173: ifnull +133 -> 306
+    //   167: getfield 159	com/tencent/tav/decoder/decodecache/CacheFrame:sampleBuffer	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   170: invokevirtual 165	com/tencent/tav/coremedia/CMSampleBuffer:getTextureInfo	()Lcom/tencent/tav/coremedia/TextureInfo;
+    //   173: ifnull +157 -> 330
     //   176: iconst_1
     //   177: istore_2
-    //   178: ldc 10
-    //   180: aload_1
-    //   181: iload_2
-    //   182: invokevirtual 171	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   185: ldc 173
-    //   187: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: aload_1
+    //   179: iload_2
+    //   180: invokevirtual 169	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   183: ldc 171
+    //   185: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: astore 4
     //   190: aload 5
-    //   192: getfield 161	com/tencent/tav/decoder/decodecache/CacheFrame:sampleBuffer	Lcom/tencent/tav/coremedia/CMSampleBuffer;
-    //   195: invokevirtual 179	com/tencent/tav/coremedia/CMSampleBuffer:isNewFrame	()Z
-    //   198: invokevirtual 171	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   201: ldc 181
-    //   203: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: aload 5
-    //   208: getfield 184	com/tencent/tav/decoder/decodecache/CacheFrame:realFrameTime	Lcom/tencent/tav/coremedia/CMTime;
-    //   211: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   214: ldc 173
-    //   216: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: aload 5
-    //   221: getfield 190	com/tencent/tav/decoder/decodecache/CacheFrame:frameTime	Lcom/tencent/tav/coremedia/CMTime;
-    //   224: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   227: invokevirtual 194	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   230: invokestatic 200	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   233: aload_0
-    //   234: new 69	com/tencent/tav/decoder/decodecache/CacheSegment
-    //   237: dup
-    //   238: new 112	com/tencent/tav/coremedia/CMTimeRange
-    //   241: dup
-    //   242: aload_0
-    //   243: getfield 67	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   246: invokevirtual 204	com/tencent/tav/decoder/decodecache/CacheSegment:getLastFrameTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   249: aload_0
-    //   250: invokevirtual 207	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:getFrameDuration	()Lcom/tencent/tav/coremedia/CMTime;
-    //   253: aload_0
-    //   254: getfield 41	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentSize	I
-    //   257: i2f
-    //   258: invokevirtual 211	com/tencent/tav/coremedia/CMTime:multi	(F)Lcom/tencent/tav/coremedia/CMTime;
-    //   261: invokespecial 214	com/tencent/tav/coremedia/CMTimeRange:<init>	(Lcom/tencent/tav/coremedia/CMTime;Lcom/tencent/tav/coremedia/CMTime;)V
-    //   264: invokespecial 121	com/tencent/tav/decoder/decodecache/CacheSegment:<init>	(Lcom/tencent/tav/coremedia/CMTimeRange;)V
-    //   267: putfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   192: getfield 159	com/tencent/tav/decoder/decodecache/CacheFrame:sampleBuffer	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   195: ifnull +140 -> 335
+    //   198: aload 5
+    //   200: getfield 159	com/tencent/tav/decoder/decodecache/CacheFrame:sampleBuffer	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   203: invokevirtual 177	com/tencent/tav/coremedia/CMSampleBuffer:isNewFrame	()Z
+    //   206: invokestatic 183	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   209: astore_1
+    //   210: ldc 10
+    //   212: aload 4
+    //   214: aload_1
+    //   215: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   218: ldc 188
+    //   220: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: aload 5
+    //   225: getfield 192	com/tencent/tav/decoder/decodecache/CacheFrame:realFrameTime	Lcom/tencent/tav/coremedia/CMTime;
+    //   228: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   231: ldc 171
+    //   233: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: aload 5
+    //   238: getfield 195	com/tencent/tav/decoder/decodecache/CacheFrame:frameTime	Lcom/tencent/tav/coremedia/CMTime;
+    //   241: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   244: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   247: invokestatic 205	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   250: aload_0
+    //   251: new 67	com/tencent/tav/decoder/decodecache/CacheSegment
+    //   254: dup
+    //   255: new 110	com/tencent/tav/coremedia/CMTimeRange
+    //   258: dup
+    //   259: aload_0
+    //   260: getfield 65	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   263: invokevirtual 209	com/tencent/tav/decoder/decodecache/CacheSegment:getLastFrameTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   266: aload_0
+    //   267: invokevirtual 212	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:getFrameDuration	()Lcom/tencent/tav/coremedia/CMTime;
     //   270: aload_0
-    //   271: getfield 59	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentDecoder	Lcom/tencent/tav/decoder/decodecache/SegmentDecoderThread;
-    //   274: aload_0
-    //   275: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   278: aconst_null
-    //   279: invokevirtual 217	com/tencent/tav/decoder/decodecache/SegmentDecoderThread:decoderSegment	(Lcom/tencent/tav/decoder/decodecache/CacheSegment;Lcom/tencent/tav/decoder/decodecache/RequestStatus;)V
-    //   282: aload_0
-    //   283: aload 5
-    //   285: getfield 190	com/tencent/tav/decoder/decodecache/CacheFrame:frameTime	Lcom/tencent/tav/coremedia/CMTime;
-    //   288: putfield 50	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:lastSampleTime	Lcom/tencent/tav/coremedia/CMTime;
-    //   291: aload 5
-    //   293: getfield 161	com/tencent/tav/decoder/decodecache/CacheFrame:sampleBuffer	Lcom/tencent/tav/coremedia/CMSampleBuffer;
-    //   296: astore_1
-    //   297: aload_3
-    //   298: monitorexit
-    //   299: ldc 102
-    //   301: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   304: aload_1
-    //   305: areturn
-    //   306: iconst_0
-    //   307: istore_2
-    //   308: goto -130 -> 178
-    //   311: ldc 10
-    //   313: new 153	java/lang/StringBuilder
-    //   316: dup
-    //   317: ldc 219
-    //   319: invokespecial 158	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   322: aload_0
-    //   323: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   326: getfield 125	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
-    //   329: invokeinterface 223 1 0
-    //   334: invokevirtual 226	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   337: ldc 173
-    //   339: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   342: aload_0
-    //   343: getfield 67	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   346: getfield 125	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
-    //   349: invokeinterface 223 1 0
-    //   354: invokevirtual 226	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   357: invokevirtual 194	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   360: invokestatic 200	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   363: aload_3
-    //   364: monitorexit
-    //   365: aload_0
-    //   366: getfield 59	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentDecoder	Lcom/tencent/tav/decoder/decodecache/SegmentDecoderThread;
-    //   369: iconst_1
-    //   370: putfield 229	com/tencent/tav/decoder/decodecache/SegmentDecoderThread:cancel	Z
-    //   373: aload_0
-    //   374: getfield 43	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameDecoderLock	Ljava/lang/Object;
-    //   377: astore_3
-    //   378: aload_3
-    //   379: monitorenter
-    //   380: aload_0
-    //   381: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   384: ifnull +10 -> 394
-    //   387: aload_0
-    //   388: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   391: invokevirtual 72	com/tencent/tav/decoder/decodecache/CacheSegment:clear	()V
-    //   394: aload_0
-    //   395: new 69	com/tencent/tav/decoder/decodecache/CacheSegment
-    //   398: dup
-    //   399: new 112	com/tencent/tav/coremedia/CMTimeRange
-    //   402: dup
-    //   403: aload_1
-    //   404: aload_0
-    //   405: invokevirtual 207	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:getFrameDuration	()Lcom/tencent/tav/coremedia/CMTime;
-    //   408: aload_0
-    //   409: getfield 41	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentSize	I
-    //   412: i2f
-    //   413: invokevirtual 211	com/tencent/tav/coremedia/CMTime:multi	(F)Lcom/tencent/tav/coremedia/CMTime;
-    //   416: invokespecial 214	com/tencent/tav/coremedia/CMTimeRange:<init>	(Lcom/tencent/tav/coremedia/CMTime;Lcom/tencent/tav/coremedia/CMTime;)V
-    //   419: invokespecial 121	com/tencent/tav/decoder/decodecache/CacheSegment:<init>	(Lcom/tencent/tav/coremedia/CMTimeRange;)V
-    //   422: putfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   425: aload_0
-    //   426: getfield 59	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentDecoder	Lcom/tencent/tav/decoder/decodecache/SegmentDecoderThread;
-    //   429: aload_0
-    //   430: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   433: aload 4
-    //   435: invokevirtual 217	com/tencent/tav/decoder/decodecache/SegmentDecoderThread:decoderSegment	(Lcom/tencent/tav/decoder/decodecache/CacheSegment;Lcom/tencent/tav/decoder/decodecache/RequestStatus;)V
-    //   438: aload_3
-    //   439: monitorexit
-    //   440: aload 4
-    //   442: monitorenter
-    //   443: aload 4
-    //   445: invokevirtual 232	com/tencent/tav/decoder/decodecache/RequestStatus:getFinish	()Z
-    //   448: ifne +11 -> 459
-    //   451: aload 4
-    //   453: ldc2_w 233
-    //   456: invokevirtual 238	java/lang/Object:wait	(J)V
-    //   459: aload 4
-    //   461: monitorexit
-    //   462: aload_0
-    //   463: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   466: getfield 125	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
-    //   469: invokeinterface 223 1 0
-    //   474: ifne +100 -> 574
-    //   477: new 163	com/tencent/tav/coremedia/CMSampleBuffer
-    //   480: dup
-    //   481: getstatic 243	com/tencent/tav/decoder/IDecoder:SAMPLE_TIME_FINISH	Lcom/tencent/tav/coremedia/CMTime;
-    //   484: invokespecial 246	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMTime;)V
-    //   487: astore_1
-    //   488: ldc 102
-    //   490: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   493: aload_1
-    //   494: areturn
-    //   495: new 153	java/lang/StringBuilder
-    //   498: dup
-    //   499: ldc 248
-    //   501: invokespecial 158	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   504: astore 5
-    //   506: aload_0
-    //   507: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   510: ifnonnull +32 -> 542
-    //   513: ldc 250
-    //   515: astore_3
-    //   516: ldc 10
-    //   518: aload 5
-    //   520: aload_3
-    //   521: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   524: ldc 173
-    //   526: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   529: aload_1
-    //   530: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   533: invokevirtual 194	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   536: invokestatic 200	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   539: goto -166 -> 373
-    //   542: aload_0
-    //   543: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   546: getfield 110	com/tencent/tav/decoder/decodecache/CacheSegment:segmentTimeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
-    //   549: astore_3
-    //   550: goto -34 -> 516
-    //   553: astore_1
-    //   554: aload_3
-    //   555: monitorexit
-    //   556: ldc 102
-    //   558: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   561: aload_1
-    //   562: athrow
-    //   563: astore_1
-    //   564: aload 4
-    //   566: monitorexit
-    //   567: ldc 102
-    //   569: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   572: aload_1
-    //   573: athrow
-    //   574: aload_0
-    //   575: invokespecial 118	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:clearCurrentFrameSegment	()V
-    //   578: aload_0
-    //   579: new 69	com/tencent/tav/decoder/decodecache/CacheSegment
-    //   582: dup
-    //   583: aload_0
-    //   584: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   587: getfield 110	com/tencent/tav/decoder/decodecache/CacheSegment:segmentTimeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
-    //   590: invokespecial 121	com/tencent/tav/decoder/decodecache/CacheSegment:<init>	(Lcom/tencent/tav/coremedia/CMTimeRange;)V
-    //   593: putfield 67	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   596: aload_0
-    //   597: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   600: getfield 125	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
-    //   603: invokeinterface 131 1 0
-    //   608: astore_1
-    //   609: aload_1
-    //   610: invokeinterface 137 1 0
-    //   615: ifeq +24 -> 639
-    //   618: aload_1
-    //   619: invokeinterface 141 1 0
-    //   624: checkcast 143	com/tencent/tav/decoder/decodecache/CacheFrame
-    //   627: astore_3
-    //   628: aload_0
-    //   629: getfield 67	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   632: aload_3
-    //   633: invokevirtual 147	com/tencent/tav/decoder/decodecache/CacheSegment:pushFrame	(Lcom/tencent/tav/decoder/decodecache/CacheFrame;)V
-    //   636: goto -27 -> 609
-    //   639: aload_0
-    //   640: getfield 43	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameDecoderLock	Ljava/lang/Object;
+    //   271: getfield 41	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentSize	I
+    //   274: i2f
+    //   275: invokevirtual 218	com/tencent/tav/coremedia/CMTime:multi	(F)Lcom/tencent/tav/coremedia/CMTime;
+    //   278: invokespecial 221	com/tencent/tav/coremedia/CMTimeRange:<init>	(Lcom/tencent/tav/coremedia/CMTime;Lcom/tencent/tav/coremedia/CMTime;)V
+    //   281: invokespecial 119	com/tencent/tav/decoder/decodecache/CacheSegment:<init>	(Lcom/tencent/tav/coremedia/CMTimeRange;)V
+    //   284: putfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   287: aload_0
+    //   288: getfield 57	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentDecoder	Lcom/tencent/tav/decoder/decodecache/SegmentDecoderThread;
+    //   291: aload_0
+    //   292: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   295: aconst_null
+    //   296: invokevirtual 224	com/tencent/tav/decoder/decodecache/SegmentDecoderThread:decoderSegment	(Lcom/tencent/tav/decoder/decodecache/CacheSegment;Lcom/tencent/tav/decoder/decodecache/RequestStatus;)V
+    //   299: aload_0
+    //   300: new 45	com/tencent/tav/coremedia/CMSampleState
+    //   303: dup
+    //   304: aload 5
+    //   306: getfield 195	com/tencent/tav/decoder/decodecache/CacheFrame:frameTime	Lcom/tencent/tav/coremedia/CMTime;
+    //   309: invokespecial 227	com/tencent/tav/coremedia/CMSampleState:<init>	(Lcom/tencent/tav/coremedia/CMTime;)V
+    //   312: putfield 48	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:lastSampleState	Lcom/tencent/tav/coremedia/CMSampleState;
+    //   315: aload 5
+    //   317: getfield 159	com/tencent/tav/decoder/decodecache/CacheFrame:sampleBuffer	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   320: astore_1
+    //   321: aload_3
+    //   322: monitorexit
+    //   323: ldc 100
+    //   325: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   328: aload_1
+    //   329: areturn
+    //   330: iconst_0
+    //   331: istore_2
+    //   332: goto -154 -> 178
+    //   335: ldc 229
+    //   337: astore_1
+    //   338: goto -128 -> 210
+    //   341: ldc 10
+    //   343: new 151	java/lang/StringBuilder
+    //   346: dup
+    //   347: ldc 231
+    //   349: invokespecial 156	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   352: aload_0
+    //   353: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   356: getfield 123	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
+    //   359: invokeinterface 235 1 0
+    //   364: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   367: ldc 171
+    //   369: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: aload_0
+    //   373: getfield 65	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   376: getfield 123	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
+    //   379: invokeinterface 235 1 0
+    //   384: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   387: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   390: invokestatic 241	com/tencent/tav/decoder/logger/Logger:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   393: aload_3
+    //   394: monitorexit
+    //   395: aload_0
+    //   396: getfield 57	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentDecoder	Lcom/tencent/tav/decoder/decodecache/SegmentDecoderThread;
+    //   399: iconst_1
+    //   400: putfield 244	com/tencent/tav/decoder/decodecache/SegmentDecoderThread:cancel	Z
+    //   403: aload_0
+    //   404: getfield 43	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameDecoderLock	Ljava/lang/Object;
+    //   407: astore_3
+    //   408: aload_3
+    //   409: monitorenter
+    //   410: aload_0
+    //   411: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   414: ifnull +10 -> 424
+    //   417: aload_0
+    //   418: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   421: invokevirtual 70	com/tencent/tav/decoder/decodecache/CacheSegment:clear	()V
+    //   424: aload_0
+    //   425: new 67	com/tencent/tav/decoder/decodecache/CacheSegment
+    //   428: dup
+    //   429: new 110	com/tencent/tav/coremedia/CMTimeRange
+    //   432: dup
+    //   433: aload_1
+    //   434: aload_0
+    //   435: invokevirtual 212	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:getFrameDuration	()Lcom/tencent/tav/coremedia/CMTime;
+    //   438: aload_0
+    //   439: getfield 41	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentSize	I
+    //   442: i2f
+    //   443: invokevirtual 218	com/tencent/tav/coremedia/CMTime:multi	(F)Lcom/tencent/tav/coremedia/CMTime;
+    //   446: invokespecial 221	com/tencent/tav/coremedia/CMTimeRange:<init>	(Lcom/tencent/tav/coremedia/CMTime;Lcom/tencent/tav/coremedia/CMTime;)V
+    //   449: invokespecial 119	com/tencent/tav/decoder/decodecache/CacheSegment:<init>	(Lcom/tencent/tav/coremedia/CMTimeRange;)V
+    //   452: putfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   455: aload_0
+    //   456: getfield 57	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentDecoder	Lcom/tencent/tav/decoder/decodecache/SegmentDecoderThread;
+    //   459: aload_0
+    //   460: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   463: aload 4
+    //   465: invokevirtual 224	com/tencent/tav/decoder/decodecache/SegmentDecoderThread:decoderSegment	(Lcom/tencent/tav/decoder/decodecache/CacheSegment;Lcom/tencent/tav/decoder/decodecache/RequestStatus;)V
+    //   468: aload_3
+    //   469: monitorexit
+    //   470: aload 4
+    //   472: monitorenter
+    //   473: aload 4
+    //   475: invokevirtual 247	com/tencent/tav/decoder/decodecache/RequestStatus:getFinish	()Z
+    //   478: ifne +11 -> 489
+    //   481: aload 4
+    //   483: ldc2_w 248
+    //   486: invokevirtual 253	java/lang/Object:wait	(J)V
+    //   489: aload 4
+    //   491: monitorexit
+    //   492: aload_0
+    //   493: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   496: getfield 123	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
+    //   499: invokeinterface 235 1 0
+    //   504: ifne +105 -> 609
+    //   507: new 161	com/tencent/tav/coremedia/CMSampleBuffer
+    //   510: dup
+    //   511: ldc2_w 254
+    //   514: invokestatic 259	com/tencent/tav/coremedia/CMSampleState:fromError	(J)Lcom/tencent/tav/coremedia/CMSampleState;
+    //   517: invokespecial 262	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMSampleState;)V
+    //   520: astore_1
+    //   521: ldc 100
+    //   523: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   526: aload_1
+    //   527: areturn
+    //   528: new 151	java/lang/StringBuilder
+    //   531: dup
+    //   532: ldc_w 264
+    //   535: invokespecial 156	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   538: astore 5
+    //   540: aload_0
+    //   541: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   544: ifnonnull +33 -> 577
+    //   547: ldc_w 266
+    //   550: astore_3
+    //   551: ldc 10
+    //   553: aload 5
+    //   555: aload_3
+    //   556: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   559: ldc 171
+    //   561: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   564: aload_1
+    //   565: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   568: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   571: invokestatic 241	com/tencent/tav/decoder/logger/Logger:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   574: goto -171 -> 403
+    //   577: aload_0
+    //   578: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   581: getfield 108	com/tencent/tav/decoder/decodecache/CacheSegment:segmentTimeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   584: astore_3
+    //   585: goto -34 -> 551
+    //   588: astore_1
+    //   589: aload_3
+    //   590: monitorexit
+    //   591: ldc 100
+    //   593: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   596: aload_1
+    //   597: athrow
+    //   598: astore_1
+    //   599: aload 4
+    //   601: monitorexit
+    //   602: ldc 100
+    //   604: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   607: aload_1
+    //   608: athrow
+    //   609: aload_0
+    //   610: invokespecial 116	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:clearCurrentFrameSegment	()V
+    //   613: aload_0
+    //   614: new 67	com/tencent/tav/decoder/decodecache/CacheSegment
+    //   617: dup
+    //   618: aload_0
+    //   619: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   622: getfield 108	com/tencent/tav/decoder/decodecache/CacheSegment:segmentTimeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   625: invokespecial 119	com/tencent/tav/decoder/decodecache/CacheSegment:<init>	(Lcom/tencent/tav/coremedia/CMTimeRange;)V
+    //   628: putfield 65	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   631: aload_0
+    //   632: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   635: getfield 123	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
+    //   638: invokeinterface 129 1 0
     //   643: astore_1
     //   644: aload_1
-    //   645: monitorenter
-    //   646: aload_0
-    //   647: new 69	com/tencent/tav/decoder/decodecache/CacheSegment
-    //   650: dup
-    //   651: new 112	com/tencent/tav/coremedia/CMTimeRange
-    //   654: dup
-    //   655: aload_0
-    //   656: getfield 67	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   659: invokevirtual 204	com/tencent/tav/decoder/decodecache/CacheSegment:getLastFrameTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   662: aload_0
-    //   663: invokevirtual 207	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:getFrameDuration	()Lcom/tencent/tav/coremedia/CMTime;
-    //   666: aload_0
-    //   667: getfield 41	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentSize	I
-    //   670: i2f
-    //   671: invokevirtual 211	com/tencent/tav/coremedia/CMTime:multi	(F)Lcom/tencent/tav/coremedia/CMTime;
-    //   674: invokespecial 214	com/tencent/tav/coremedia/CMTimeRange:<init>	(Lcom/tencent/tav/coremedia/CMTime;Lcom/tencent/tav/coremedia/CMTime;)V
-    //   677: invokespecial 121	com/tencent/tav/decoder/decodecache/CacheSegment:<init>	(Lcom/tencent/tav/coremedia/CMTimeRange;)V
-    //   680: putfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   683: aload_0
-    //   684: getfield 59	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentDecoder	Lcom/tencent/tav/decoder/decodecache/SegmentDecoderThread;
-    //   687: aload_0
-    //   688: getfield 107	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   691: aconst_null
-    //   692: invokevirtual 217	com/tencent/tav/decoder/decodecache/SegmentDecoderThread:decoderSegment	(Lcom/tencent/tav/decoder/decodecache/CacheSegment;Lcom/tencent/tav/decoder/decodecache/RequestStatus;)V
-    //   695: aload_1
-    //   696: monitorexit
+    //   645: invokeinterface 135 1 0
+    //   650: ifeq +24 -> 674
+    //   653: aload_1
+    //   654: invokeinterface 139 1 0
+    //   659: checkcast 141	com/tencent/tav/decoder/decodecache/CacheFrame
+    //   662: astore_3
+    //   663: aload_0
+    //   664: getfield 65	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   667: aload_3
+    //   668: invokevirtual 145	com/tencent/tav/decoder/decodecache/CacheSegment:pushFrame	(Lcom/tencent/tav/decoder/decodecache/CacheFrame;)V
+    //   671: goto -27 -> 644
+    //   674: aload_0
+    //   675: getfield 43	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameDecoderLock	Ljava/lang/Object;
+    //   678: astore_1
+    //   679: aload_1
+    //   680: monitorenter
+    //   681: aload_0
+    //   682: new 67	com/tencent/tav/decoder/decodecache/CacheSegment
+    //   685: dup
+    //   686: new 110	com/tencent/tav/coremedia/CMTimeRange
+    //   689: dup
+    //   690: aload_0
+    //   691: getfield 65	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   694: invokevirtual 209	com/tencent/tav/decoder/decodecache/CacheSegment:getLastFrameTime	()Lcom/tencent/tav/coremedia/CMTime;
     //   697: aload_0
-    //   698: getfield 67	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   701: ifnull +65 -> 766
-    //   704: aload_0
-    //   705: getfield 67	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   708: getfield 125	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
-    //   711: invokeinterface 223 1 0
-    //   716: ifle +50 -> 766
-    //   719: aload_0
-    //   720: getfield 67	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
-    //   723: getfield 125	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
-    //   726: iconst_0
-    //   727: invokeinterface 254 2 0
-    //   732: checkcast 143	com/tencent/tav/decoder/decodecache/CacheFrame
-    //   735: astore_1
-    //   736: aload_0
-    //   737: aload_1
-    //   738: getfield 190	com/tencent/tav/decoder/decodecache/CacheFrame:frameTime	Lcom/tencent/tav/coremedia/CMTime;
-    //   741: putfield 50	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:lastSampleTime	Lcom/tencent/tav/coremedia/CMTime;
-    //   744: aload_1
-    //   745: getfield 161	com/tencent/tav/decoder/decodecache/CacheFrame:sampleBuffer	Lcom/tencent/tav/coremedia/CMSampleBuffer;
-    //   748: astore_1
-    //   749: ldc 102
-    //   751: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   754: aload_1
-    //   755: areturn
-    //   756: astore_3
-    //   757: aload_1
-    //   758: monitorexit
-    //   759: ldc 102
-    //   761: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   764: aload_3
-    //   765: athrow
-    //   766: ldc 102
-    //   768: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   771: aconst_null
-    //   772: areturn
-    //   773: astore_1
-    //   774: goto -315 -> 459
+    //   698: invokevirtual 212	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:getFrameDuration	()Lcom/tencent/tav/coremedia/CMTime;
+    //   701: aload_0
+    //   702: getfield 41	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentSize	I
+    //   705: i2f
+    //   706: invokevirtual 218	com/tencent/tav/coremedia/CMTime:multi	(F)Lcom/tencent/tav/coremedia/CMTime;
+    //   709: invokespecial 221	com/tencent/tav/coremedia/CMTimeRange:<init>	(Lcom/tencent/tav/coremedia/CMTime;Lcom/tencent/tav/coremedia/CMTime;)V
+    //   712: invokespecial 119	com/tencent/tav/decoder/decodecache/CacheSegment:<init>	(Lcom/tencent/tav/coremedia/CMTimeRange;)V
+    //   715: putfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   718: aload_0
+    //   719: getfield 57	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:segmentDecoder	Lcom/tencent/tav/decoder/decodecache/SegmentDecoderThread;
+    //   722: aload_0
+    //   723: getfield 105	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:nextFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   726: aconst_null
+    //   727: invokevirtual 224	com/tencent/tav/decoder/decodecache/SegmentDecoderThread:decoderSegment	(Lcom/tencent/tav/decoder/decodecache/CacheSegment;Lcom/tencent/tav/decoder/decodecache/RequestStatus;)V
+    //   730: aload_1
+    //   731: monitorexit
+    //   732: aload_0
+    //   733: getfield 65	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   736: ifnull +72 -> 808
+    //   739: aload_0
+    //   740: getfield 65	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   743: getfield 123	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
+    //   746: invokeinterface 235 1 0
+    //   751: ifle +57 -> 808
+    //   754: aload_0
+    //   755: getfield 65	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:currentFrameSegment	Lcom/tencent/tav/decoder/decodecache/CacheSegment;
+    //   758: getfield 123	com/tencent/tav/decoder/decodecache/CacheSegment:cacheFrameList	Ljava/util/List;
+    //   761: iconst_0
+    //   762: invokeinterface 270 2 0
+    //   767: checkcast 141	com/tencent/tav/decoder/decodecache/CacheFrame
+    //   770: astore_1
+    //   771: aload_0
+    //   772: new 45	com/tencent/tav/coremedia/CMSampleState
+    //   775: dup
+    //   776: aload_1
+    //   777: getfield 195	com/tencent/tav/decoder/decodecache/CacheFrame:frameTime	Lcom/tencent/tav/coremedia/CMTime;
+    //   780: invokespecial 227	com/tencent/tav/coremedia/CMSampleState:<init>	(Lcom/tencent/tav/coremedia/CMTime;)V
+    //   783: putfield 48	com/tencent/tav/decoder/decodecache/CachedVideoDecoderTrack:lastSampleState	Lcom/tencent/tav/coremedia/CMSampleState;
+    //   786: aload_1
+    //   787: getfield 159	com/tencent/tav/decoder/decodecache/CacheFrame:sampleBuffer	Lcom/tencent/tav/coremedia/CMSampleBuffer;
+    //   790: astore_1
+    //   791: ldc 100
+    //   793: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   796: aload_1
+    //   797: areturn
+    //   798: astore_3
+    //   799: aload_1
+    //   800: monitorexit
+    //   801: ldc 100
+    //   803: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   806: aload_3
+    //   807: athrow
+    //   808: ldc 100
+    //   810: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   813: aconst_null
+    //   814: areturn
+    //   815: astore_1
+    //   816: goto -327 -> 489
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	777	0	this	CachedVideoDecoderTrack
-    //   177	131	2	bool	boolean
-    //   49	584	3	localObject1	Object
-    //   756	9	3	localObject2	Object
-    //   12	553	4	localRequestStatus	RequestStatus
-    //   86	433	5	localObject3	Object
+    //   0	819	0	this	CachedVideoDecoderTrack
+    //   177	155	2	bool	boolean
+    //   49	619	3	localObject1	Object
+    //   798	9	3	localObject2	Object
+    //   12	588	4	localObject3	Object
+    //   86	468	5	localObject4	Object
     //   108	7	6	localCacheFrame	CacheFrame
     // Exception table:
     //   from	to	target	type
@@ -451,155 +468,158 @@ public class CachedVideoDecoderTrack
     //   123	125	122	finally
     //   132	142	122	finally
     //   147	176	122	finally
-    //   178	299	122	finally
-    //   311	365	122	finally
-    //   380	394	553	finally
-    //   394	440	553	finally
-    //   554	556	553	finally
-    //   443	459	563	finally
-    //   459	462	563	finally
-    //   564	567	563	finally
-    //   646	697	756	finally
-    //   757	759	756	finally
-    //   443	459	773	java/lang/InterruptedException
+    //   178	210	122	finally
+    //   210	323	122	finally
+    //   341	395	122	finally
+    //   410	424	588	finally
+    //   424	470	588	finally
+    //   589	591	588	finally
+    //   473	489	598	finally
+    //   489	492	598	finally
+    //   599	602	598	finally
+    //   681	732	798	finally
+    //   799	801	798	finally
+    //   473	489	815	java/lang/InterruptedException
   }
   
   public void asyncReadNextSample(CMTime paramCMTime) {}
   
   public void clipRangeAndClearRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(198024);
+    AppMethodBeat.i(218420);
     this.segmentDecoder.decoderTrack.clipRangeAndClearRange(paramCMTimeRange);
-    AppMethodBeat.o(198024);
+    AppMethodBeat.o(218420);
   }
   
   public CMTime getCurrentSampleTime()
   {
-    return this.lastSampleTime;
+    AppMethodBeat.i(218428);
+    CMTime localCMTime = this.lastSampleState.getTime();
+    AppMethodBeat.o(218428);
+    return localCMTime;
   }
   
   public CMTime getDuration()
   {
-    AppMethodBeat.i(198031);
+    AppMethodBeat.i(218427);
     CMTime localCMTime = this.segmentDecoder.decoderTrack.getDuration();
-    AppMethodBeat.o(198031);
+    AppMethodBeat.o(218427);
     return localCMTime;
   }
   
   public CMTime getFrameDuration()
   {
-    AppMethodBeat.i(198019);
+    AppMethodBeat.i(218415);
     CMTime localCMTime = this.segmentDecoder.decoderTrack.getFrameDuration();
-    AppMethodBeat.o(198019);
+    AppMethodBeat.o(218415);
     return localCMTime;
   }
   
   public int getFrameRate()
   {
-    AppMethodBeat.i(198018);
+    AppMethodBeat.i(218414);
     int i = this.segmentDecoder.decoderTrack.getFrameRate();
-    AppMethodBeat.o(198018);
+    AppMethodBeat.o(218414);
     return i;
-  }
-  
-  public CGSize getMaxRenderSize()
-  {
-    AppMethodBeat.i(198033);
-    CGSize localCGSize = this.segmentDecoder.decoderTrack.getMaxRenderSize();
-    AppMethodBeat.o(198033);
-    return localCGSize;
   }
   
   public int getTrackId()
   {
-    AppMethodBeat.i(198021);
+    AppMethodBeat.i(218417);
     int i = this.segmentDecoder.decoderTrack.getTrackId();
-    AppMethodBeat.o(198021);
+    AppMethodBeat.o(218417);
     return i;
-  }
-  
-  public boolean hasNewSample(CMTime paramCMTime)
-  {
-    return true;
   }
   
   public CMSampleBuffer readSample()
   {
-    AppMethodBeat.i(198026);
-    if (this.lastSampleTime == CMTime.CMTimeInvalid)
+    AppMethodBeat.i(218422);
+    if (this.lastSampleState.isInvalid())
     {
       localCMSampleBuffer = readSample(CMTime.CMTimeZero);
-      AppMethodBeat.o(198026);
+      AppMethodBeat.o(218422);
       return localCMSampleBuffer;
     }
-    if (this.lastSampleTime.smallThan(CMTime.CMTimeZero))
+    if (this.lastSampleState.getTime().smallThan(CMTime.CMTimeZero))
     {
-      localCMSampleBuffer = new CMSampleBuffer(this.lastSampleTime);
-      AppMethodBeat.o(198026);
+      localCMSampleBuffer = new CMSampleBuffer(this.lastSampleState);
+      AppMethodBeat.o(218422);
       return localCMSampleBuffer;
     }
-    CMSampleBuffer localCMSampleBuffer = readSample(this.lastSampleTime.add(getFrameDuration()));
-    AppMethodBeat.o(198026);
+    CMSampleBuffer localCMSampleBuffer = readSample(this.lastSampleState.getTime().add(getFrameDuration()));
+    AppMethodBeat.o(218422);
     return localCMSampleBuffer;
   }
   
   public CMSampleBuffer readSample(CMTime paramCMTime)
   {
-    AppMethodBeat.i(198027);
+    AppMethodBeat.i(218423);
     if (paramCMTime.smallThan(CMTime.CMTimeZero))
     {
       paramCMTime = readSample();
-      AppMethodBeat.o(198027);
+      AppMethodBeat.o(218423);
       return paramCMTime;
     }
-    Logger.e("CachedVideoTrack", "readSample: targetTime = ".concat(String.valueOf(paramCMTime)));
+    Logger.v("CachedVideoTrack", "readSample: targetTime = ".concat(String.valueOf(paramCMTime)));
     if (this.currentFrameSegment != null)
     {
       localObject = this.currentFrameSegment.popFrame(paramCMTime);
       if (localObject != null)
       {
-        this.lastSampleTime = ((CacheFrame)localObject).frameTime;
+        this.lastSampleState = new CMSampleState(((CacheFrame)localObject).frameTime);
         paramCMTime = new StringBuilder("readSample: hint currentSegment ");
-        if ((((CacheFrame)localObject).sampleBuffer != null) && (((CacheFrame)localObject).sampleBuffer.getTextureInfo() != null)) {}
-        for (boolean bool = true;; bool = false)
+        boolean bool;
+        StringBuilder localStringBuilder;
+        if ((((CacheFrame)localObject).sampleBuffer != null) && (((CacheFrame)localObject).sampleBuffer.getTextureInfo() != null))
         {
-          Logger.e("CachedVideoTrack", bool + "  " + ((CacheFrame)localObject).sampleBuffer.isNewFrame() + " time = " + ((CacheFrame)localObject).realFrameTime + "  " + ((CacheFrame)localObject).frameTime);
+          bool = true;
+          localStringBuilder = paramCMTime.append(bool).append("  ");
+          if (((CacheFrame)localObject).sampleBuffer == null) {
+            break label195;
+          }
+        }
+        label195:
+        for (paramCMTime = Boolean.valueOf(((CacheFrame)localObject).sampleBuffer.isNewFrame());; paramCMTime = "null")
+        {
+          Logger.v("CachedVideoTrack", paramCMTime + " time = " + ((CacheFrame)localObject).realFrameTime + "  " + ((CacheFrame)localObject).frameTime);
           paramCMTime = ((CacheFrame)localObject).sampleBuffer;
-          AppMethodBeat.o(198027);
+          AppMethodBeat.o(218423);
           return paramCMTime;
+          bool = false;
+          break;
         }
       }
     }
     if (!paramCMTime.smallThan(getDuration()))
     {
-      this.lastSampleTime = IDecoder.SAMPLE_TIME_FINISH;
-      paramCMTime = new CMSampleBuffer(IDecoder.SAMPLE_TIME_FINISH);
-      AppMethodBeat.o(198027);
+      this.lastSampleState = CMSampleState.fromError(-1L);
+      paramCMTime = new CMSampleBuffer(CMSampleState.fromError(-1L));
+      AppMethodBeat.o(218423);
       return paramCMTime;
     }
     Object localObject = decoderSegment(paramCMTime);
     if (localObject != null)
     {
-      Logger.e("CachedVideoTrack", "readSample: hint currentSegment - " + ((CMSampleBuffer)localObject).getTime());
-      AppMethodBeat.o(198027);
+      Logger.v("CachedVideoTrack", "readSample: hint currentSegment - " + ((CMSampleBuffer)localObject).getTime());
+      AppMethodBeat.o(218423);
       return localObject;
     }
     if (paramCMTime.bigThan(getDuration()))
     {
-      this.lastSampleTime = IDecoder.SAMPLE_TIME_FINISH;
-      paramCMTime = new CMSampleBuffer(IDecoder.SAMPLE_TIME_FINISH);
-      AppMethodBeat.o(198027);
+      this.lastSampleState = CMSampleState.fromError(-1L);
+      paramCMTime = new CMSampleBuffer(CMSampleState.fromError(-1L));
+      AppMethodBeat.o(218423);
       return paramCMTime;
     }
-    this.lastSampleTime = IDecoder.SAMPLE_TIME_ERROR;
-    paramCMTime = new CMSampleBuffer(IDecoder.SAMPLE_TIME_ERROR);
-    AppMethodBeat.o(198027);
+    this.lastSampleState = CMSampleState.fromError(-3L);
+    paramCMTime = new CMSampleBuffer(CMSampleState.fromError(-3L));
+    AppMethodBeat.o(218423);
     return paramCMTime;
   }
   
   public void release()
   {
-    AppMethodBeat.i(198032);
+    AppMethodBeat.i(218429);
     if (this.currentFrameSegment != null) {
       this.currentFrameSegment.clear();
     }
@@ -613,21 +633,21 @@ public class CachedVideoDecoderTrack
         this.segmentDecoder.release();
         this.segmentDecoder = null;
       }
-      AppMethodBeat.o(198032);
+      AppMethodBeat.o(218429);
       return;
     }
   }
   
   public CMSampleBuffer seekTo(CMTime paramCMTime, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(198025);
-    Logger.e("CachedVideoTrack", "seekTo: PlayerThreadMain ".concat(String.valueOf(paramCMTime)));
+    AppMethodBeat.i(218421);
+    Logger.v("CachedVideoTrack", "seekTo: PlayerThreadMain ".concat(String.valueOf(paramCMTime)));
     int i;
-    label120:
+    label127:
     CMSampleBuffer localCMSampleBuffer;
     if (paramCMTime.bigThan(getFrameDuration()))
     {
-      this.lastSampleTime = paramCMTime.sub(getFrameDuration());
+      this.lastSampleState = new CMSampleState(paramCMTime.sub(getFrameDuration()));
       if (this.currentFrameSegment != null)
       {
         this.currentFrameSegment.clear();
@@ -639,52 +659,52 @@ public class CachedVideoDecoderTrack
         this.nextFrameSegment = null;
       }
       if (!paramBoolean1) {
-        break label198;
+        break label215;
       }
       long l = paramCMTime.getTimeUs() / getFrameDuration().getTimeUs();
       if (paramCMTime.getTimeUs() % getFrameDuration().getTimeUs() <= 0L) {
-        break label183;
+        break label200;
       }
       i = 1;
       localCMSampleBuffer = decoderFrame(new CMTime((float)((l + i) * getFrameDuration().getTimeUs()) / 1000000.0F));
       if (localCMSampleBuffer != null) {
-        break label189;
+        break label206;
       }
     }
-    label183:
-    label189:
-    for (paramCMTime = IDecoder.SAMPLE_TIME_FINISH;; paramCMTime = localCMSampleBuffer.getTime())
+    label200:
+    label206:
+    for (paramCMTime = CMSampleState.fromError(-1L);; paramCMTime = localCMSampleBuffer.getState())
     {
-      this.lastSampleTime = paramCMTime;
-      AppMethodBeat.o(198025);
+      this.lastSampleState = paramCMTime;
+      AppMethodBeat.o(218421);
       return localCMSampleBuffer;
-      this.lastSampleTime = paramCMTime;
+      this.lastSampleState = new CMSampleState(paramCMTime);
       break;
       i = 0;
-      break label120;
+      break label127;
     }
-    label198:
-    AppMethodBeat.o(198025);
+    label215:
+    AppMethodBeat.o(218421);
     return null;
   }
   
   public void setDecodeType(IDecoder.DecodeType paramDecodeType)
   {
-    AppMethodBeat.i(198022);
+    AppMethodBeat.i(218418);
     this.segmentDecoder.decoderTrack.setDecodeType(paramDecodeType);
-    AppMethodBeat.o(198022);
+    AppMethodBeat.o(218418);
   }
   
   public void setFrameRate(int paramInt)
   {
-    AppMethodBeat.i(198017);
+    AppMethodBeat.i(218413);
     this.segmentDecoder.decoderTrack.setFrameRate(paramInt);
-    AppMethodBeat.o(198017);
+    AppMethodBeat.o(218413);
   }
   
   public void setMaxFrameCacheSize(int paramInt)
   {
-    AppMethodBeat.i(198034);
+    AppMethodBeat.i(218430);
     if (paramInt > 0)
     {
       this.segmentSize = paramInt;
@@ -692,7 +712,7 @@ public class CachedVideoDecoderTrack
         this.segmentDecoder.texturePool.setMaxCacheLength(paramInt);
       }
     }
-    AppMethodBeat.o(198034);
+    AppMethodBeat.o(218430);
   }
   
   public void setRevert(boolean paramBoolean)
@@ -702,44 +722,44 @@ public class CachedVideoDecoderTrack
   
   public void setTrackSegments(List<DecoderTrackSegment> paramList)
   {
-    AppMethodBeat.i(198023);
+    AppMethodBeat.i(218419);
     this.segmentDecoder.decoderTrack.setTrackSegments(paramList);
-    AppMethodBeat.o(198023);
+    AppMethodBeat.o(218419);
   }
   
   public void setVolume(float paramFloat)
   {
-    AppMethodBeat.i(198020);
+    AppMethodBeat.i(218416);
     this.segmentDecoder.decoderTrack.setVolume(paramFloat);
-    AppMethodBeat.o(198020);
+    AppMethodBeat.o(218416);
   }
   
   public void start()
   {
-    AppMethodBeat.i(198014);
+    AppMethodBeat.i(218410);
     start(null);
-    AppMethodBeat.o(198014);
+    AppMethodBeat.o(218410);
   }
   
   public void start(IDecoderTrack.SurfaceCreator paramSurfaceCreator)
   {
-    AppMethodBeat.i(198015);
+    AppMethodBeat.i(218411);
     start(paramSurfaceCreator, null);
-    AppMethodBeat.o(198015);
+    AppMethodBeat.o(218411);
   }
   
   public void start(IDecoderTrack.SurfaceCreator paramSurfaceCreator, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(198016);
+    AppMethodBeat.i(218412);
     this.validTimeRange = paramCMTimeRange;
     this.renderContext = ((RenderContext)paramSurfaceCreator);
     this.segmentDecoder.startForReady();
-    AppMethodBeat.o(198016);
+    AppMethodBeat.o(218412);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.decoder.decodecache.CachedVideoDecoderTrack
  * JD-Core Version:    0.7.0.1
  */

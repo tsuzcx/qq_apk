@@ -1,10 +1,12 @@
 package d.a;
 
 import d.g.a.b;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "T", "it", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "it", "", "invoke"})
 public final class t$b
-  extends d.g.b.l
+  extends q
   implements b
 {
   public t$b(int paramInt)

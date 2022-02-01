@@ -8,47 +8,26 @@ public abstract class fh
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eBs = "svrid".hashCode();
-  private static final int eMo;
-  private static final int eOn = "sayhiuser".hashCode();
-  private static final int eOo = "sayhicontent".hashCode();
-  private static final int eOp = "imgpath".hashCode();
-  private static final int elV = "status".hashCode();
-  private static final int eng;
-  private static final int env;
-  private static final int erG = "isSend".hashCode();
-  private static final int etX;
+  private static final int eEU = "appId".hashCode();
+  private static final int eFG = "appVersion".hashCode();
+  private static final int eGy = "reportId".hashCode();
+  private static final int foA;
+  private static final int fpo = "decryptKey".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE = "type".hashCode();
-  private boolean __hadSettype = true;
-  private boolean eAG = true;
-  private boolean eMf = true;
-  private boolean eOj = true;
-  private boolean eOk = true;
-  private boolean eOl = true;
-  private boolean elS = true;
-  private boolean emI = true;
-  private boolean ent = true;
-  private boolean err = true;
-  private boolean etJ = true;
-  public String field_content;
-  public long field_createtime;
-  public String field_imgpath;
-  public int field_isSend;
-  public String field_sayhicontent;
-  public String field_sayhiuser;
-  public int field_scene;
-  public int field_status;
-  public long field_svrid;
-  public String field_talker;
-  public int field_type;
+  private boolean eED = true;
+  private boolean eFC = true;
+  private boolean eGt = true;
+  public String field_appId;
+  public int field_appVersion;
+  public String field_decryptKey;
+  public String field_pkgMd5;
+  public int field_reportId;
+  private boolean jdField_for = true;
+  private boolean fpn = true;
   
   static
   {
-    env = "scene".hashCode();
-    eMo = "createtime".hashCode();
-    etX = "talker".hashCode();
-    eng = "content".hashCode();
+    foA = "pkgMd5".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -64,38 +43,25 @@ public abstract class fh
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eBs != k) {
-        break label65;
+      if (eEU != k) {
+        break label60;
       }
-      this.field_svrid = paramCursor.getLong(i);
-      this.eAG = true;
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (elV == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (env == k) {
-        this.field_scene = paramCursor.getInt(i);
-      } else if (eMo == k) {
-        this.field_createtime = paramCursor.getLong(i);
-      } else if (etX == k) {
-        this.field_talker = paramCursor.getString(i);
-      } else if (eng == k) {
-        this.field_content = paramCursor.getString(i);
-      } else if (eOn == k) {
-        this.field_sayhiuser = paramCursor.getString(i);
-      } else if (eOo == k) {
-        this.field_sayhicontent = paramCursor.getString(i);
-      } else if (eOp == k) {
-        this.field_imgpath = paramCursor.getString(i);
-      } else if (erG == k) {
-        this.field_isSend = paramCursor.getInt(i);
+      label60:
+      if (eFG == k) {
+        this.field_appVersion = paramCursor.getInt(i);
+      } else if (fpo == k) {
+        this.field_decryptKey = paramCursor.getString(i);
+      } else if (foA == k) {
+        this.field_pkgMd5 = paramCursor.getString(i);
+      } else if (eGy == k) {
+        this.field_reportId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -105,38 +71,20 @@ public abstract class fh
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eAG) {
-      localContentValues.put("svrid", Long.valueOf(this.field_svrid));
+    if (this.eED) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.elS) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
+    if (this.eFC) {
+      localContentValues.put("appVersion", Integer.valueOf(this.field_appVersion));
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
+    if (this.fpn) {
+      localContentValues.put("decryptKey", this.field_decryptKey);
     }
-    if (this.ent) {
-      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    if (this.jdField_for) {
+      localContentValues.put("pkgMd5", this.field_pkgMd5);
     }
-    if (this.eMf) {
-      localContentValues.put("createtime", Long.valueOf(this.field_createtime));
-    }
-    if (this.etJ) {
-      localContentValues.put("talker", this.field_talker);
-    }
-    if (this.emI) {
-      localContentValues.put("content", this.field_content);
-    }
-    if (this.eOj) {
-      localContentValues.put("sayhiuser", this.field_sayhiuser);
-    }
-    if (this.eOk) {
-      localContentValues.put("sayhicontent", this.field_sayhicontent);
-    }
-    if (this.eOl) {
-      localContentValues.put("imgpath", this.field_imgpath);
-    }
-    if (this.err) {
-      localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
+    if (this.eGt) {
+      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

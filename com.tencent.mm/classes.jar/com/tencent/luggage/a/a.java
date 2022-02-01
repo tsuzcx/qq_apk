@@ -7,25 +7,25 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class a
   implements c
 {
-  private static Map<Class<? extends b>, b> bVT;
-  private static Map<Class<? extends d>, d> bVU;
+  private static Map<Class<? extends b>, b> cgh;
+  private static Map<Class<? extends d>, d> cgj;
   
   static
   {
     AppMethodBeat.i(140304);
-    bVT = new ConcurrentHashMap();
-    bVU = new ConcurrentHashMap();
+    cgh = new ConcurrentHashMap();
+    cgj = new ConcurrentHashMap();
     AppMethodBeat.o(140304);
   }
   
-  public final Map<Class<? extends b>, b> Ah()
+  public final Map<Class<? extends b>, b> BE()
   {
-    return bVT;
+    return cgh;
   }
   
-  public final Map<Class<? extends d>, d> Ai()
+  public final Map<Class<? extends d>, d> BF()
   {
-    return bVU;
+    return cgj;
   }
   
   public final String getName()
@@ -35,7 +35,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.a.a
  * JD-Core Version:    0.7.0.1
  */

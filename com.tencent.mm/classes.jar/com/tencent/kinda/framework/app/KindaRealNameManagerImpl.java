@@ -10,7 +10,7 @@ import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.id_verify.a.a;
 import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 
 public class KindaRealNameManagerImpl
@@ -25,7 +25,7 @@ public class KindaRealNameManagerImpl
     paramITransmitKvData = KindaContext.get();
     if (!(paramITransmitKvData instanceof MMActivity))
     {
-      ac.e("KindaRealNameManagerImpl", "Fail to start KindaRealNameManagerImpl due to incompatible context(%s)", new Object[] { paramITransmitKvData.getClass().getName() });
+      ad.e("KindaRealNameManagerImpl", "Fail to start KindaRealNameManagerImpl due to incompatible context(%s)", new Object[] { paramITransmitKvData.getClass().getName() });
       AppMethodBeat.o(18504);
       return;
     }
@@ -43,11 +43,11 @@ public class KindaRealNameManagerImpl
     paramITransmitKvData = com.tencent.mm.wallet_core.a.br(paramITransmitKvData);
     if (!(paramITransmitKvData instanceof com.tencent.mm.plugin.wallet_core.id_verify.a))
     {
-      ac.e("KindaRealNameManagerImpl", "Fail to get correct wallet process in KindaRealNameManagerImpl, expect RealNameVerifyProcess got %s", new Object[] { paramITransmitKvData.getClass().getName() });
+      ad.e("KindaRealNameManagerImpl", "Fail to get correct wallet process in KindaRealNameManagerImpl, expect RealNameVerifyProcess got %s", new Object[] { paramITransmitKvData.getClass().getName() });
       AppMethodBeat.o(18504);
       return;
     }
-    ((com.tencent.mm.plugin.wallet_core.id_verify.a)paramITransmitKvData).BpC = new a.a()
+    ((com.tencent.mm.plugin.wallet_core.id_verify.a)paramITransmitKvData).CPR = new a.a()
     {
       public void run(Activity paramAnonymousActivity)
       {

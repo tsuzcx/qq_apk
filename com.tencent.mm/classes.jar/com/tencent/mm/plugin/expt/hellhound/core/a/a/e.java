@@ -3,20 +3,21 @@ package com.tencent.mm.plugin.expt.hellhound.core.a.a;
 import android.os.Message;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class e
 {
-  private ao qiX;
-  public d qiY;
-  b qiZ;
-  private final com.tencent.e.i.h qja;
+  private ap qQX;
+  public d qQY;
+  b qQZ;
+  private final com.tencent.e.i.h qRa;
   
   e()
   {
     AppMethodBeat.i(121873);
-    this.qja = new com.tencent.e.i.h()
+    this.qRa = new com.tencent.e.i.h()
     {
       public final String getKey()
       {
@@ -30,47 +31,47 @@ public final class e
         {
           try
           {
-            a locala = e.this.qiZ.ciL();
+            a locala = e.this.qQZ.cnL();
             if (locala == null)
             {
-              ac.e("MsgQ", "HABBYGE-MALI, MsgQ, mReceiver, localMsg == null");
+              ad.e("HABBYGE-MALI.MsgQ", "MsgQ, mReceiver, localMsg == null");
               continue;
               continue;
             }
           }
           catch (Exception localException)
           {
-            ac.printErrStackTrace("MsgQ", localException, "HABBYGE-MALI, MsgQ, mReceiver: %s", new Object[] { localException.getMessage() });
-            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(932L, 113L, 1L, false);
+            ad.printErrStackTrace("HABBYGE-MALI.MsgQ", localException, "MsgQ, mReceiver: %s", new Object[] { localException.getMessage() });
+            g.yhR.idkeyStat(932L, 113L, 1L, false);
           }
-          if (e.this.qiY != null) {
-            e.this.qiY.a(localException);
+          if (e.this.qQY != null) {
+            e.this.qQY.a(localException);
           }
         }
       }
     };
-    this.qiZ = new b();
-    if (com.tencent.mm.plugin.expt.hellhound.core.b.ciE()) {
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.o("key_hellhound_msgQ", new byte[0]);
+    this.qQZ = new b();
+    if (com.tencent.mm.plugin.expt.hellhound.core.b.cnC()) {
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.p("key_hellhound_msgQ", new byte[0]);
     }
-    this.qiX = new a("hellhound_msgq");
-    this.qiX.setLogging(false);
-    com.tencent.e.h.JZN.aV(this.qja);
+    this.qQX = new a("hellhound_msgq");
+    this.qQX.setLogging(false);
+    com.tencent.e.h.LTJ.aU(this.qRa);
     AppMethodBeat.o(121873);
   }
   
   final void b(a parama)
   {
     AppMethodBeat.i(121874);
-    Message localMessage = this.qiX.obtainMessage();
+    Message localMessage = this.qQX.obtainMessage();
     localMessage.what = 0;
     localMessage.obj = parama;
-    this.qiX.sendMessage(localMessage);
+    this.qQX.sendMessage(localMessage);
     AppMethodBeat.o(121874);
   }
   
   final class a
-    extends ao
+    extends ap
   {
     a(String paramString)
     {
@@ -96,21 +97,21 @@ public final class e
       //   26: checkcast 43	com/tencent/mm/plugin/expt/hellhound/core/a/a/a
       //   29: astore 5
       //   31: aload_0
-      //   32: getfield 13	com/tencent/mm/plugin/expt/hellhound/core/a/a/e$a:qjb	Lcom/tencent/mm/plugin/expt/hellhound/core/a/a/e;
-      //   35: getfield 47	com/tencent/mm/plugin/expt/hellhound/core/a/a/e:qiZ	Lcom/tencent/mm/plugin/expt/hellhound/core/a/a/b;
+      //   32: getfield 13	com/tencent/mm/plugin/expt/hellhound/core/a/a/e$a:qRb	Lcom/tencent/mm/plugin/expt/hellhound/core/a/a/e;
+      //   35: getfield 47	com/tencent/mm/plugin/expt/hellhound/core/a/a/e:qQZ	Lcom/tencent/mm/plugin/expt/hellhound/core/a/a/b;
       //   38: astore 6
       //   40: aload 5
-      //   42: ifnull +3616 -> 3658
+      //   42: ifnull +3694 -> 3736
       //   45: aload 6
-      //   47: getfield 53	com/tencent/mm/plugin/expt/hellhound/core/a/a/b:cEu	Ljava/util/concurrent/locks/ReentrantLock;
+      //   47: getfield 53	com/tencent/mm/plugin/expt/hellhound/core/a/a/b:cPz	Ljava/util/concurrent/locks/ReentrantLock;
       //   50: astore 4
       //   52: aload 4
       //   54: invokevirtual 59	java/util/concurrent/locks/ReentrantLock:lockInterruptibly	()V
-      //   57: invokestatic 63	com/tencent/mm/plugin/expt/hellhound/core/a/a/b:ciM	()I
+      //   57: invokestatic 63	com/tencent/mm/plugin/expt/hellhound/core/a/a/b:cnM	()I
       //   60: bipush 10
       //   62: if_icmpne +50 -> 112
       //   65: aload 6
-      //   67: getfield 67	com/tencent/mm/plugin/expt/hellhound/core/a/a/b:qiU	Ljava/util/concurrent/locks/Condition;
+      //   67: getfield 67	com/tencent/mm/plugin/expt/hellhound/core/a/a/b:qQU	Ljava/util/concurrent/locks/Condition;
       //   70: invokeinterface 72 1 0
       //   75: goto -18 -> 57
       //   78: astore_1
@@ -121,25 +122,25 @@ public final class e
       //   89: aload_1
       //   90: athrow
       //   91: astore_1
-      //   92: getstatic 81	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+      //   92: getstatic 81	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
       //   95: ldc2_w 82
       //   98: ldc2_w 84
       //   101: lconst_1
       //   102: iconst_0
-      //   103: invokevirtual 89	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+      //   103: invokevirtual 89	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
       //   106: ldc 22
       //   108: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   111: return
-      //   112: invokestatic 93	com/tencent/mm/plugin/expt/hellhound/core/a/a/b:ciN	()Lcom/tencent/mm/protocal/protobuf/bjs;
+      //   112: invokestatic 93	com/tencent/mm/plugin/expt/hellhound/core/a/a/b:cnN	()Lcom/tencent/mm/protocal/protobuf/boa;
       //   115: astore_1
       //   116: aload_1
-      //   117: ifnonnull +3547 -> 3664
-      //   120: new 95	com/tencent/mm/protocal/protobuf/bjs
+      //   117: ifnonnull +3625 -> 3742
+      //   120: new 95	com/tencent/mm/protocal/protobuf/boa
       //   123: dup
-      //   124: invokespecial 97	com/tencent/mm/protocal/protobuf/bjs:<init>	()V
+      //   124: invokespecial 97	com/tencent/mm/protocal/protobuf/boa:<init>	()V
       //   127: astore_1
       //   128: aload_1
-      //   129: getfield 101	com/tencent/mm/protocal/protobuf/bjs:EZj	Ljava/util/LinkedList;
+      //   129: getfield 101	com/tencent/mm/protocal/protobuf/boa:GIH	Ljava/util/LinkedList;
       //   132: astore 7
       //   134: aload 5
       //   136: ifnonnull +66 -> 202
@@ -164,1152 +165,1178 @@ public final class e
       //   169: iload_2
       //   170: invokestatic 127	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
       //   173: aastore
-      //   174: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   174: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   177: aload_1
-      //   178: invokestatic 135	com/tencent/mm/plugin/expt/hellhound/core/a/a/b:a	(Lcom/tencent/mm/protocal/protobuf/bjs;)V
+      //   178: invokestatic 135	com/tencent/mm/plugin/expt/hellhound/core/a/a/b:a	(Lcom/tencent/mm/protocal/protobuf/boa;)V
       //   181: aload 6
-      //   183: getfield 138	com/tencent/mm/plugin/expt/hellhound/core/a/a/b:qiT	Ljava/util/concurrent/locks/Condition;
+      //   183: getfield 138	com/tencent/mm/plugin/expt/hellhound/core/a/a/b:qQT	Ljava/util/concurrent/locks/Condition;
       //   186: invokeinterface 141 1 0
       //   191: aload 4
       //   193: invokevirtual 75	java/util/concurrent/locks/ReentrantLock:unlock	()V
       //   196: ldc 22
       //   198: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   201: return
-      //   202: new 143	com/tencent/mm/protocal/protobuf/bjr
+      //   202: new 143	com/tencent/mm/protocal/protobuf/bnz
       //   205: dup
-      //   206: invokespecial 144	com/tencent/mm/protocal/protobuf/bjr:<init>	()V
+      //   206: invokespecial 144	com/tencent/mm/protocal/protobuf/bnz:<init>	()V
       //   209: astore_3
       //   210: aload 5
       //   212: getfield 116	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:msgType	I
-      //   215: lookupswitch	default:+3452->3667, 1:+1783->1998, 2:+1783->1998, 3:+1783->1998, 4:+1783->1998, 5:+1810->2025, 6:+1937->2152, 100:+745->960, 101:+955->1170, 102:+1021->1236, 200:+1105->1320, 201:+1190->1405, 202:+1275->1490, 203:+1364->1579, 204:+1467->1682, 205:+1534->1749, 206:+1637->1852, 207:+1704->1919, 208:+2250->2465, 209:+2365->2580, 210:+2375->2590, 211:+2275->2490, 212:+2300->2515, 213:+2325->2540, 214:+2335->2550, 215:+2345->2560, 216:+2355->2570, 217:+2175->2390, 218:+2225->2440, 219:+2200->2415, 220:+3408->3623, 221:+3433->3648, 222:+1342->1557, 300:+1783->1998, 301:+1783->1998, 400:+2038->2253, 401:+2038->2253, 402:+2038->2253, 403:+2038->2253, 500:+2065->2280, 501:+2087->2302, 502:+2109->2324, 503:+2153->2368, 504:+2131->2346, 600:+1771->1986, 700:+2400->2615, 701:+2410->2625, 702:+2420->2635, 703:+2430->2645, 704:+2440->2655, 705:+2682->2897, 706:+2924->3139, 707:+3166->3381, 708:+2462->2677, 709:+2704->2919, 710:+2946->3161, 711:+3188->3403, 712:+2484->2699, 713:+2726->2941, 714:+2968->3183, 715:+3210->3425, 716:+2638->2853, 717:+2880->3095, 718:+3122->3337, 719:+3364->3579, 720:+2660->2875, 721:+2902->3117, 722:+3144->3359, 723:+3386->3601, 724:+2506->2721, 725:+2748->2963, 726:+2990->3205, 727:+3232->3447, 728:+2550->2765, 729:+2792->3007, 730:+3034->3249, 731:+3276->3491, 732:+2572->2787, 733:+2814->3029, 734:+3056->3271, 735:+3298->3513, 736:+2594->2809, 737:+2836->3051, 738:+3078->3293, 739:+3320->3535, 740:+2616->2831, 741:+2858->3073, 742:+3100->3315, 743:+3342->3557, 744:+2528->2743, 745:+2770->2985, 746:+3012->3227, 747:+3254->3469
-      //   961: iconst_2
-      //   962: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   965: checkcast 149	com/tencent/mm/protocal/protobuf/dcp
-      //   968: astore 8
-      //   970: aload_3
-      //   971: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   974: dup
-      //   975: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   978: putfield 156	com/tencent/mm/protocal/protobuf/bjr:EZc	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   981: aload 8
-      //   983: getfield 157	com/tencent/mm/protocal/protobuf/dcp:EZc	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   986: ifnull +48 -> 1034
-      //   989: aload_3
-      //   990: getfield 156	com/tencent/mm/protocal/protobuf/bjr:EZc	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   993: aload 8
-      //   995: getfield 157	com/tencent/mm/protocal/protobuf/dcp:EZc	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   998: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1001: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1004: aload_3
-      //   1005: getfield 156	com/tencent/mm/protocal/protobuf/bjr:EZc	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1008: aload 8
-      //   1010: getfield 157	com/tencent/mm/protocal/protobuf/dcp:EZc	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1013: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1016: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1019: aload_3
-      //   1020: getfield 156	com/tencent/mm/protocal/protobuf/bjr:EZc	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1023: aload 8
-      //   1025: getfield 157	com/tencent/mm/protocal/protobuf/dcp:EZc	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1028: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1031: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1034: aload_3
-      //   1035: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1038: dup
-      //   1039: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   1042: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1045: aload 8
-      //   1047: getfield 172	com/tencent/mm/protocal/protobuf/dcp:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1050: ifnull +48 -> 1098
-      //   1053: aload_3
-      //   1054: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1057: aload 8
-      //   1059: getfield 172	com/tencent/mm/protocal/protobuf/dcp:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1062: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1065: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1068: aload_3
-      //   1069: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1072: aload 8
-      //   1074: getfield 172	com/tencent/mm/protocal/protobuf/dcp:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1077: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1080: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1083: aload_3
-      //   1084: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1087: aload 8
-      //   1089: getfield 172	com/tencent/mm/protocal/protobuf/dcp:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1092: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1095: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1098: aload_3
-      //   1099: aload 8
-      //   1101: getfield 176	com/tencent/mm/protocal/protobuf/dcp:EIH	Z
-      //   1104: putfield 177	com/tencent/mm/protocal/protobuf/bjr:EIH	Z
-      //   1107: aload_3
-      //   1108: aload 8
-      //   1110: getfield 180	com/tencent/mm/protocal/protobuf/dcp:EIF	Ljava/lang/String;
-      //   1113: putfield 181	com/tencent/mm/protocal/protobuf/bjr:EIF	Ljava/lang/String;
-      //   1116: aload_3
-      //   1117: aload 8
-      //   1119: getfield 184	com/tencent/mm/protocal/protobuf/dcp:flags	I
-      //   1122: putfield 185	com/tencent/mm/protocal/protobuf/bjr:flags	I
-      //   1125: aload_3
-      //   1126: aload 8
-      //   1128: getfield 188	com/tencent/mm/protocal/protobuf/dcp:EIG	Ljava/lang/String;
-      //   1131: putfield 189	com/tencent/mm/protocal/protobuf/bjr:EIG	Ljava/lang/String;
-      //   1134: aload_3
-      //   1135: aload 8
-      //   1137: getfield 192	com/tencent/mm/protocal/protobuf/dcp:EZe	Ljava/lang/String;
-      //   1140: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
-      //   1143: aload_3
-      //   1144: aload 8
-      //   1146: getfield 196	com/tencent/mm/protocal/protobuf/dcp:EZf	Ljava/lang/String;
-      //   1149: putfield 197	com/tencent/mm/protocal/protobuf/bjr:EZf	Ljava/lang/String;
-      //   1152: aload_3
-      //   1153: aload 8
-      //   1155: getfield 198	com/tencent/mm/protocal/protobuf/dcp:timestamp	J
-      //   1158: putfield 199	com/tencent/mm/protocal/protobuf/bjr:timestamp	J
-      //   1161: aload_3
-      //   1162: bipush 100
-      //   1164: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1167: goto +2500 -> 3667
-      //   1170: aload 5
-      //   1172: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   1175: checkcast 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1178: astore 8
-      //   1180: aload_3
-      //   1181: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1184: dup
-      //   1185: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   1188: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1191: aload_3
-      //   1192: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1195: aload 8
-      //   1197: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1200: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1203: aload_3
-      //   1204: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1207: aload 8
-      //   1209: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1212: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1215: aload_3
-      //   1216: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1219: aload 8
-      //   1221: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1224: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1227: aload_3
-      //   1228: bipush 101
-      //   1230: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1233: goto +2434 -> 3667
-      //   1236: aload 5
-      //   1238: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   1241: checkcast 202	com/tencent/mm/protocal/protobuf/bww
-      //   1244: astore 8
-      //   1246: aload_3
-      //   1247: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1250: dup
-      //   1251: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   1254: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1257: aload_3
-      //   1258: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1261: aload 8
-      //   1263: getfield 205	com/tencent/mm/protocal/protobuf/bww:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1266: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1269: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1272: aload_3
-      //   1273: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1276: aload 8
-      //   1278: getfield 205	com/tencent/mm/protocal/protobuf/bww:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1281: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1284: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1287: aload_3
-      //   1288: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1291: aload 8
-      //   1293: getfield 205	com/tencent/mm/protocal/protobuf/bww:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1296: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1299: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1302: aload_3
-      //   1303: aload 8
-      //   1305: getfield 208	com/tencent/mm/protocal/protobuf/bww:EZh	Z
-      //   1308: putfield 209	com/tencent/mm/protocal/protobuf/bjr:EZh	Z
-      //   1311: aload_3
-      //   1312: bipush 102
-      //   1314: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1317: goto +2350 -> 3667
-      //   1320: aload 5
-      //   1322: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   1325: checkcast 211	com/tencent/mm/protocal/protobuf/bzg
-      //   1328: astore 8
-      //   1330: aload_3
-      //   1331: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1334: dup
-      //   1335: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   1338: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1341: aload_3
-      //   1342: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1345: aload 8
-      //   1347: getfield 212	com/tencent/mm/protocal/protobuf/bzg:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1350: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1353: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1356: aload_3
-      //   1357: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1360: aload 8
-      //   1362: getfield 212	com/tencent/mm/protocal/protobuf/bzg:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1365: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1368: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1371: aload_3
-      //   1372: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1375: aload 8
-      //   1377: getfield 212	com/tencent/mm/protocal/protobuf/bzg:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1380: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1383: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1386: aload_3
-      //   1387: aload 8
-      //   1389: getfield 213	com/tencent/mm/protocal/protobuf/bzg:flags	I
-      //   1392: putfield 185	com/tencent/mm/protocal/protobuf/bjr:flags	I
-      //   1395: aload_3
-      //   1396: sipush 200
-      //   1399: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1402: goto +2265 -> 3667
-      //   1405: aload 5
-      //   1407: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   1410: checkcast 211	com/tencent/mm/protocal/protobuf/bzg
-      //   1413: astore 8
-      //   1415: aload_3
-      //   1416: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1419: dup
-      //   1420: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   1423: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1426: aload_3
-      //   1427: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1430: aload 8
-      //   1432: getfield 212	com/tencent/mm/protocal/protobuf/bzg:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1435: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1438: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1441: aload_3
-      //   1442: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1445: aload 8
-      //   1447: getfield 212	com/tencent/mm/protocal/protobuf/bzg:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1450: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1453: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1456: aload_3
-      //   1457: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1460: aload 8
-      //   1462: getfield 212	com/tencent/mm/protocal/protobuf/bzg:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1465: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1468: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1471: aload_3
-      //   1472: aload 8
-      //   1474: getfield 213	com/tencent/mm/protocal/protobuf/bzg:flags	I
-      //   1477: putfield 185	com/tencent/mm/protocal/protobuf/bjr:flags	I
-      //   1480: aload_3
-      //   1481: sipush 201
-      //   1484: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1487: goto +2180 -> 3667
-      //   1490: aload 5
-      //   1492: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   1495: checkcast 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1498: astore 8
-      //   1500: aload_3
-      //   1501: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1504: dup
-      //   1505: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   1508: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1511: aload_3
-      //   1512: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1515: aload 8
-      //   1517: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1520: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1523: aload_3
-      //   1524: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1527: aload 8
-      //   1529: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1532: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1535: aload_3
-      //   1536: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1539: aload 8
-      //   1541: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1544: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1547: aload_3
-      //   1548: sipush 202
-      //   1551: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1554: goto +2113 -> 3667
-      //   1557: aload_3
-      //   1558: aload 5
-      //   1560: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   1563: checkcast 215	java/lang/String
-      //   1566: putfield 189	com/tencent/mm/protocal/protobuf/bjr:EIG	Ljava/lang/String;
-      //   1569: aload_3
-      //   1570: sipush 222
-      //   1573: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1576: goto +2091 -> 3667
-      //   1579: aload 5
-      //   1581: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   1584: checkcast 217	com/tencent/mm/protocal/protobuf/bzh
-      //   1587: astore 8
-      //   1589: aload_3
-      //   1590: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1593: dup
-      //   1594: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   1597: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1600: aload_3
-      //   1601: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1604: aload 8
-      //   1606: getfield 218	com/tencent/mm/protocal/protobuf/bzh:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1609: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1612: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1615: aload_3
-      //   1616: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1619: aload 8
-      //   1621: getfield 218	com/tencent/mm/protocal/protobuf/bzh:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1624: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1627: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1630: aload_3
-      //   1631: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1634: aload 8
-      //   1636: getfield 218	com/tencent/mm/protocal/protobuf/bzh:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1639: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1642: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1645: aload_3
-      //   1646: aload 8
-      //   1648: getfield 219	com/tencent/mm/protocal/protobuf/bzh:EIH	Z
-      //   1651: putfield 177	com/tencent/mm/protocal/protobuf/bjr:EIH	Z
-      //   1654: aload_3
-      //   1655: aload 8
-      //   1657: getfield 222	com/tencent/mm/protocal/protobuf/bzh:EZg	Z
-      //   1660: putfield 223	com/tencent/mm/protocal/protobuf/bjr:EZg	Z
-      //   1663: aload_3
-      //   1664: aload 8
-      //   1666: getfield 224	com/tencent/mm/protocal/protobuf/bzh:EIF	Ljava/lang/String;
-      //   1669: putfield 181	com/tencent/mm/protocal/protobuf/bjr:EIF	Ljava/lang/String;
-      //   1672: aload_3
-      //   1673: sipush 203
-      //   1676: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1679: goto +1988 -> 3667
-      //   1682: aload 5
-      //   1684: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   1687: checkcast 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1690: astore 8
-      //   1692: aload_3
-      //   1693: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1696: dup
-      //   1697: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   1700: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1703: aload_3
-      //   1704: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1707: aload 8
-      //   1709: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1712: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1715: aload_3
-      //   1716: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1719: aload 8
-      //   1721: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1724: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1727: aload_3
-      //   1728: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1731: aload 8
-      //   1733: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1736: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1739: aload_3
-      //   1740: sipush 204
-      //   1743: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1746: goto +1921 -> 3667
-      //   1749: aload 5
-      //   1751: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   1754: checkcast 217	com/tencent/mm/protocal/protobuf/bzh
-      //   1757: astore 8
-      //   1759: aload_3
-      //   1760: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1763: dup
-      //   1764: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   1767: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1770: aload_3
-      //   1771: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1774: aload 8
-      //   1776: getfield 218	com/tencent/mm/protocal/protobuf/bzh:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1779: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1782: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1785: aload_3
-      //   1786: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1789: aload 8
-      //   1791: getfield 218	com/tencent/mm/protocal/protobuf/bzh:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1794: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1797: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1800: aload_3
-      //   1801: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1804: aload 8
-      //   1806: getfield 218	com/tencent/mm/protocal/protobuf/bzh:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1809: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1812: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1815: aload_3
-      //   1816: aload 8
-      //   1818: getfield 219	com/tencent/mm/protocal/protobuf/bzh:EIH	Z
-      //   1821: putfield 177	com/tencent/mm/protocal/protobuf/bjr:EIH	Z
-      //   1824: aload_3
-      //   1825: aload 8
-      //   1827: getfield 222	com/tencent/mm/protocal/protobuf/bzh:EZg	Z
-      //   1830: putfield 223	com/tencent/mm/protocal/protobuf/bjr:EZg	Z
-      //   1833: aload_3
-      //   1834: aload 8
-      //   1836: getfield 224	com/tencent/mm/protocal/protobuf/bzh:EIF	Ljava/lang/String;
-      //   1839: putfield 181	com/tencent/mm/protocal/protobuf/bjr:EIF	Ljava/lang/String;
-      //   1842: aload_3
-      //   1843: sipush 205
-      //   1846: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1849: goto +1818 -> 3667
-      //   1852: aload 5
-      //   1854: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   1857: checkcast 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1860: astore 8
-      //   1862: aload_3
-      //   1863: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1866: dup
-      //   1867: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   1870: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1873: aload_3
-      //   1874: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1877: aload 8
-      //   1879: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1882: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1885: aload_3
-      //   1886: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1889: aload 8
-      //   1891: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1894: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1897: aload_3
-      //   1898: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1901: aload 8
-      //   1903: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1906: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1909: aload_3
-      //   1910: sipush 206
-      //   1913: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1916: goto +1751 -> 3667
-      //   1919: aload 5
-      //   1921: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   1924: checkcast 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1927: astore 8
-      //   1929: aload_3
-      //   1930: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   1933: dup
-      //   1934: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   1937: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1940: aload_3
-      //   1941: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1944: aload 8
-      //   1946: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1949: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   1952: aload_3
-      //   1953: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1956: aload 8
-      //   1958: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1961: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   1964: aload_3
-      //   1965: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   1968: aload 8
-      //   1970: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1973: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   1976: aload_3
-      //   1977: sipush 207
-      //   1980: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1983: goto +1684 -> 3667
-      //   1986: aload_3
-      //   1987: aload 5
-      //   1989: getfield 116	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:msgType	I
-      //   1992: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   1995: goto +1672 -> 3667
-      //   1998: aload_3
-      //   1999: aload 5
-      //   2001: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2004: checkcast 226	java/lang/Long
-      //   2007: invokevirtual 230	java/lang/Long:longValue	()J
-      //   2010: putfield 199	com/tencent/mm/protocal/protobuf/bjr:timestamp	J
-      //   2013: aload_3
-      //   2014: aload 5
-      //   2016: getfield 116	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:msgType	I
-      //   2019: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2022: goto +1645 -> 3667
-      //   2025: aload 5
-      //   2027: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2030: checkcast 232	com/tencent/mm/protocal/protobuf/apr
-      //   2033: astore 8
-      //   2035: aload_3
-      //   2036: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   2039: dup
-      //   2040: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   2043: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2046: aload 8
-      //   2048: getfield 233	com/tencent/mm/protocal/protobuf/apr:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2051: ifnull +48 -> 2099
-      //   2054: aload_3
-      //   2055: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2058: aload 8
-      //   2060: getfield 233	com/tencent/mm/protocal/protobuf/apr:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2063: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   2066: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   2069: aload_3
-      //   2070: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2073: aload 8
-      //   2075: getfield 233	com/tencent/mm/protocal/protobuf/apr:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2078: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   2081: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   2084: aload_3
-      //   2085: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2088: aload 8
-      //   2090: getfield 233	com/tencent/mm/protocal/protobuf/apr:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2093: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   2096: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   2099: aload_3
-      //   2100: aload 8
-      //   2102: getfield 234	com/tencent/mm/protocal/protobuf/apr:EIG	Ljava/lang/String;
-      //   2105: putfield 189	com/tencent/mm/protocal/protobuf/bjr:EIG	Ljava/lang/String;
-      //   2108: aload_3
-      //   2109: aload 8
-      //   2111: getfield 235	com/tencent/mm/protocal/protobuf/apr:EIH	Z
-      //   2114: putfield 177	com/tencent/mm/protocal/protobuf/bjr:EIH	Z
-      //   2117: aload_3
-      //   2118: aload 8
-      //   2120: getfield 236	com/tencent/mm/protocal/protobuf/apr:EIF	Ljava/lang/String;
-      //   2123: putfield 181	com/tencent/mm/protocal/protobuf/bjr:EIF	Ljava/lang/String;
-      //   2126: aload_3
-      //   2127: aload 8
-      //   2129: getfield 239	com/tencent/mm/protocal/protobuf/apr:EII	Z
-      //   2132: putfield 240	com/tencent/mm/protocal/protobuf/bjr:EII	Z
-      //   2135: aload_3
-      //   2136: aload 8
-      //   2138: getfield 241	com/tencent/mm/protocal/protobuf/apr:timestamp	J
-      //   2141: putfield 199	com/tencent/mm/protocal/protobuf/bjr:timestamp	J
-      //   2144: aload_3
-      //   2145: iconst_5
-      //   2146: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2149: goto +1518 -> 3667
-      //   2152: aload 5
-      //   2154: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2157: checkcast 243	com/tencent/mm/protocal/protobuf/apq
-      //   2160: astore 8
-      //   2162: aload_3
-      //   2163: new 151	com/tencent/mm/protocal/protobuf/dhz
-      //   2166: dup
-      //   2167: invokespecial 152	com/tencent/mm/protocal/protobuf/dhz:<init>	()V
-      //   2170: putfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2173: aload 8
-      //   2175: getfield 244	com/tencent/mm/protocal/protobuf/apq:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2178: ifnull +48 -> 2226
-      //   2181: aload_3
-      //   2182: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2185: aload 8
-      //   2187: getfield 244	com/tencent/mm/protocal/protobuf/apq:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2190: getfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   2193: putfield 161	com/tencent/mm/protocal/protobuf/dhz:activityName	Ljava/lang/String;
-      //   2196: aload_3
-      //   2197: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2200: aload 8
-      //   2202: getfield 244	com/tencent/mm/protocal/protobuf/apq:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2205: getfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   2208: putfield 164	com/tencent/mm/protocal/protobuf/dhz:EIR	Ljava/lang/String;
-      //   2211: aload_3
-      //   2212: getfield 171	com/tencent/mm/protocal/protobuf/bjr:EZd	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2215: aload 8
-      //   2217: getfield 244	com/tencent/mm/protocal/protobuf/apq:EIE	Lcom/tencent/mm/protocal/protobuf/dhz;
-      //   2220: getfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   2223: putfield 168	com/tencent/mm/protocal/protobuf/dhz:timestamp	J
-      //   2226: aload_3
-      //   2227: aload 8
-      //   2229: getfield 245	com/tencent/mm/protocal/protobuf/apq:EIF	Ljava/lang/String;
-      //   2232: putfield 181	com/tencent/mm/protocal/protobuf/bjr:EIF	Ljava/lang/String;
-      //   2235: aload_3
-      //   2236: aload 8
-      //   2238: getfield 246	com/tencent/mm/protocal/protobuf/apq:timestamp	J
-      //   2241: putfield 199	com/tencent/mm/protocal/protobuf/bjr:timestamp	J
-      //   2244: aload_3
-      //   2245: bipush 6
-      //   2247: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2250: goto +1417 -> 3667
-      //   2253: aload_3
-      //   2254: aload 5
-      //   2256: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2259: checkcast 118	java/lang/Integer
-      //   2262: invokevirtual 249	java/lang/Integer:intValue	()I
-      //   2265: putfield 185	com/tencent/mm/protocal/protobuf/bjr:flags	I
-      //   2268: aload_3
-      //   2269: aload 5
-      //   2271: getfield 116	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:msgType	I
-      //   2274: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2277: goto +1390 -> 3667
-      //   2280: aload_3
-      //   2281: aload 5
-      //   2283: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2286: checkcast 251	com/tencent/mm/protocal/protobuf/bjv
-      //   2289: putfield 255	com/tencent/mm/protocal/protobuf/bjr:EZi	Lcom/tencent/mm/protocal/protobuf/bjv;
-      //   2292: aload_3
-      //   2293: sipush 500
-      //   2296: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2299: goto +1368 -> 3667
+      //   215: lookupswitch	default:+3530->3745, 1:+1799->2014, 2:+1799->2014, 3:+1799->2014, 4:+1799->2014, 5:+1826->2041, 6:+1962->2177, 100:+761->976, 101:+971->1186, 102:+1037->1252, 200:+1121->1336, 201:+1206->1421, 202:+1291->1506, 203:+1380->1595, 204:+1483->1698, 205:+1550->1765, 206:+1653->1868, 207:+1720->1935, 208:+2284->2499, 209:+2399->2614, 210:+2409->2624, 211:+2309->2524, 212:+2334->2549, 213:+2359->2574, 214:+2369->2584, 215:+2379->2594, 216:+2389->2604, 217:+2209->2424, 218:+2259->2474, 219:+2234->2449, 220:+3442->3657, 221:+3467->3682, 222:+1358->1573, 300:+1799->2014, 301:+1799->2014, 400:+2072->2287, 401:+2072->2287, 402:+2072->2287, 403:+2072->2287, 500:+2099->2314, 501:+2121->2336, 502:+2143->2358, 503:+2187->2402, 504:+2165->2380, 600:+1787->2002, 700:+2434->2649, 701:+2444->2659, 702:+2454->2669, 703:+2464->2679, 704:+2474->2689, 705:+2716->2931, 706:+2958->3173, 707:+3200->3415, 708:+2496->2711, 709:+2738->2953, 710:+2980->3195, 711:+3222->3437, 712:+2518->2733, 713:+2760->2975, 714:+3002->3217, 715:+3244->3459, 716:+2672->2887, 717:+2914->3129, 718:+3156->3371, 719:+3398->3613, 720:+2694->2909, 721:+2936->3151, 722:+3178->3393, 723:+3420->3635, 724:+2540->2755, 725:+2782->2997, 726:+3024->3239, 727:+3266->3481, 728:+2584->2799, 729:+2826->3041, 730:+3068->3283, 731:+3310->3525, 732:+2606->2821, 733:+2848->3063, 734:+3090->3305, 735:+3332->3547, 736:+2628->2843, 737:+2870->3085, 738:+3112->3327, 739:+3354->3569, 740:+2650->2865, 741:+2892->3107, 742:+3134->3349, 743:+3376->3591, 744:+2562->2777, 745:+2804->3019, 746:+3046->3261, 747:+3288->3503, 800:+3477->3692, 801:+3499->3714
+      //   977: iconst_2
+      //   978: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   981: checkcast 149	com/tencent/mm/protocal/protobuf/dic
+      //   984: astore 8
+      //   986: aload_3
+      //   987: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   990: dup
+      //   991: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   994: putfield 156	com/tencent/mm/protocal/protobuf/bnz:GIy	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   997: aload 8
+      //   999: getfield 157	com/tencent/mm/protocal/protobuf/dic:GIy	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1002: ifnull +48 -> 1050
+      //   1005: aload_3
+      //   1006: getfield 156	com/tencent/mm/protocal/protobuf/bnz:GIy	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1009: aload 8
+      //   1011: getfield 157	com/tencent/mm/protocal/protobuf/dic:GIy	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1014: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1017: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1020: aload_3
+      //   1021: getfield 156	com/tencent/mm/protocal/protobuf/bnz:GIy	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1024: aload 8
+      //   1026: getfield 157	com/tencent/mm/protocal/protobuf/dic:GIy	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1029: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1032: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1035: aload_3
+      //   1036: getfield 156	com/tencent/mm/protocal/protobuf/bnz:GIy	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1039: aload 8
+      //   1041: getfield 157	com/tencent/mm/protocal/protobuf/dic:GIy	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1044: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1047: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1050: aload_3
+      //   1051: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   1054: dup
+      //   1055: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   1058: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1061: aload 8
+      //   1063: getfield 172	com/tencent/mm/protocal/protobuf/dic:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1066: ifnull +48 -> 1114
+      //   1069: aload_3
+      //   1070: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1073: aload 8
+      //   1075: getfield 172	com/tencent/mm/protocal/protobuf/dic:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1078: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1081: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1084: aload_3
+      //   1085: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1088: aload 8
+      //   1090: getfield 172	com/tencent/mm/protocal/protobuf/dic:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1093: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1096: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1099: aload_3
+      //   1100: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1103: aload 8
+      //   1105: getfield 172	com/tencent/mm/protocal/protobuf/dic:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1108: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1111: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1114: aload_3
+      //   1115: aload 8
+      //   1117: getfield 176	com/tencent/mm/protocal/protobuf/dic:Grz	Z
+      //   1120: putfield 177	com/tencent/mm/protocal/protobuf/bnz:Grz	Z
+      //   1123: aload_3
+      //   1124: aload 8
+      //   1126: getfield 180	com/tencent/mm/protocal/protobuf/dic:Grw	Ljava/lang/String;
+      //   1129: putfield 181	com/tencent/mm/protocal/protobuf/bnz:Grw	Ljava/lang/String;
+      //   1132: aload_3
+      //   1133: aload 8
+      //   1135: getfield 184	com/tencent/mm/protocal/protobuf/dic:flags	I
+      //   1138: putfield 185	com/tencent/mm/protocal/protobuf/bnz:flags	I
+      //   1141: aload_3
+      //   1142: aload 8
+      //   1144: getfield 188	com/tencent/mm/protocal/protobuf/dic:Gry	Ljava/lang/String;
+      //   1147: putfield 189	com/tencent/mm/protocal/protobuf/bnz:Gry	Ljava/lang/String;
+      //   1150: aload_3
+      //   1151: aload 8
+      //   1153: getfield 192	com/tencent/mm/protocal/protobuf/dic:GIA	Ljava/lang/String;
+      //   1156: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   1159: aload_3
+      //   1160: aload 8
+      //   1162: getfield 196	com/tencent/mm/protocal/protobuf/dic:GIB	Ljava/lang/String;
+      //   1165: putfield 197	com/tencent/mm/protocal/protobuf/bnz:GIB	Ljava/lang/String;
+      //   1168: aload_3
+      //   1169: aload 8
+      //   1171: getfield 198	com/tencent/mm/protocal/protobuf/dic:timestamp	J
+      //   1174: putfield 199	com/tencent/mm/protocal/protobuf/bnz:timestamp	J
+      //   1177: aload_3
+      //   1178: bipush 100
+      //   1180: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   1183: goto +2562 -> 3745
+      //   1186: aload 5
+      //   1188: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   1191: checkcast 151	com/tencent/mm/protocal/protobuf/dno
+      //   1194: astore 8
+      //   1196: aload_3
+      //   1197: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   1200: dup
+      //   1201: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   1204: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1207: aload_3
+      //   1208: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1211: aload 8
+      //   1213: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1216: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1219: aload_3
+      //   1220: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1223: aload 8
+      //   1225: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1228: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1231: aload_3
+      //   1232: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1235: aload 8
+      //   1237: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1240: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1243: aload_3
+      //   1244: bipush 101
+      //   1246: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   1249: goto +2496 -> 3745
+      //   1252: aload 5
+      //   1254: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   1257: checkcast 202	com/tencent/mm/protocal/protobuf/cbm
+      //   1260: astore 8
+      //   1262: aload_3
+      //   1263: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   1266: dup
+      //   1267: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   1270: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1273: aload_3
+      //   1274: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1277: aload 8
+      //   1279: getfield 205	com/tencent/mm/protocal/protobuf/cbm:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1282: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1285: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1288: aload_3
+      //   1289: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1292: aload 8
+      //   1294: getfield 205	com/tencent/mm/protocal/protobuf/cbm:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1297: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1300: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1303: aload_3
+      //   1304: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1307: aload 8
+      //   1309: getfield 205	com/tencent/mm/protocal/protobuf/cbm:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1312: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1315: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1318: aload_3
+      //   1319: aload 8
+      //   1321: getfield 208	com/tencent/mm/protocal/protobuf/cbm:GID	Z
+      //   1324: putfield 209	com/tencent/mm/protocal/protobuf/bnz:GID	Z
+      //   1327: aload_3
+      //   1328: bipush 102
+      //   1330: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   1333: goto +2412 -> 3745
+      //   1336: aload 5
+      //   1338: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   1341: checkcast 211	com/tencent/mm/protocal/protobuf/cdx
+      //   1344: astore 8
+      //   1346: aload_3
+      //   1347: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   1350: dup
+      //   1351: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   1354: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1357: aload_3
+      //   1358: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1361: aload 8
+      //   1363: getfield 212	com/tencent/mm/protocal/protobuf/cdx:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1366: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1369: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1372: aload_3
+      //   1373: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1376: aload 8
+      //   1378: getfield 212	com/tencent/mm/protocal/protobuf/cdx:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1381: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1384: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1387: aload_3
+      //   1388: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1391: aload 8
+      //   1393: getfield 212	com/tencent/mm/protocal/protobuf/cdx:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1396: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1399: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1402: aload_3
+      //   1403: aload 8
+      //   1405: getfield 213	com/tencent/mm/protocal/protobuf/cdx:flags	I
+      //   1408: putfield 185	com/tencent/mm/protocal/protobuf/bnz:flags	I
+      //   1411: aload_3
+      //   1412: sipush 200
+      //   1415: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   1418: goto +2327 -> 3745
+      //   1421: aload 5
+      //   1423: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   1426: checkcast 211	com/tencent/mm/protocal/protobuf/cdx
+      //   1429: astore 8
+      //   1431: aload_3
+      //   1432: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   1435: dup
+      //   1436: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   1439: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1442: aload_3
+      //   1443: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1446: aload 8
+      //   1448: getfield 212	com/tencent/mm/protocal/protobuf/cdx:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1451: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1454: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1457: aload_3
+      //   1458: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1461: aload 8
+      //   1463: getfield 212	com/tencent/mm/protocal/protobuf/cdx:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1466: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1469: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1472: aload_3
+      //   1473: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1476: aload 8
+      //   1478: getfield 212	com/tencent/mm/protocal/protobuf/cdx:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1481: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1484: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1487: aload_3
+      //   1488: aload 8
+      //   1490: getfield 213	com/tencent/mm/protocal/protobuf/cdx:flags	I
+      //   1493: putfield 185	com/tencent/mm/protocal/protobuf/bnz:flags	I
+      //   1496: aload_3
+      //   1497: sipush 201
+      //   1500: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   1503: goto +2242 -> 3745
+      //   1506: aload 5
+      //   1508: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   1511: checkcast 151	com/tencent/mm/protocal/protobuf/dno
+      //   1514: astore 8
+      //   1516: aload_3
+      //   1517: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   1520: dup
+      //   1521: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   1524: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1527: aload_3
+      //   1528: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1531: aload 8
+      //   1533: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1536: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1539: aload_3
+      //   1540: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1543: aload 8
+      //   1545: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1548: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1551: aload_3
+      //   1552: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1555: aload 8
+      //   1557: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1560: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1563: aload_3
+      //   1564: sipush 202
+      //   1567: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   1570: goto +2175 -> 3745
+      //   1573: aload_3
+      //   1574: aload 5
+      //   1576: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   1579: checkcast 215	java/lang/String
+      //   1582: putfield 189	com/tencent/mm/protocal/protobuf/bnz:Gry	Ljava/lang/String;
+      //   1585: aload_3
+      //   1586: sipush 222
+      //   1589: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   1592: goto +2153 -> 3745
+      //   1595: aload 5
+      //   1597: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   1600: checkcast 217	com/tencent/mm/protocal/protobuf/cdy
+      //   1603: astore 8
+      //   1605: aload_3
+      //   1606: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   1609: dup
+      //   1610: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   1613: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1616: aload_3
+      //   1617: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1620: aload 8
+      //   1622: getfield 218	com/tencent/mm/protocal/protobuf/cdy:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1625: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1628: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1631: aload_3
+      //   1632: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1635: aload 8
+      //   1637: getfield 218	com/tencent/mm/protocal/protobuf/cdy:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1640: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1643: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1646: aload_3
+      //   1647: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1650: aload 8
+      //   1652: getfield 218	com/tencent/mm/protocal/protobuf/cdy:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1655: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1658: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1661: aload_3
+      //   1662: aload 8
+      //   1664: getfield 219	com/tencent/mm/protocal/protobuf/cdy:Grz	Z
+      //   1667: putfield 177	com/tencent/mm/protocal/protobuf/bnz:Grz	Z
+      //   1670: aload_3
+      //   1671: aload 8
+      //   1673: getfield 222	com/tencent/mm/protocal/protobuf/cdy:GIC	Z
+      //   1676: putfield 223	com/tencent/mm/protocal/protobuf/bnz:GIC	Z
+      //   1679: aload_3
+      //   1680: aload 8
+      //   1682: getfield 224	com/tencent/mm/protocal/protobuf/cdy:Grw	Ljava/lang/String;
+      //   1685: putfield 181	com/tencent/mm/protocal/protobuf/bnz:Grw	Ljava/lang/String;
+      //   1688: aload_3
+      //   1689: sipush 203
+      //   1692: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   1695: goto +2050 -> 3745
+      //   1698: aload 5
+      //   1700: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   1703: checkcast 151	com/tencent/mm/protocal/protobuf/dno
+      //   1706: astore 8
+      //   1708: aload_3
+      //   1709: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   1712: dup
+      //   1713: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   1716: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1719: aload_3
+      //   1720: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1723: aload 8
+      //   1725: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1728: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1731: aload_3
+      //   1732: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1735: aload 8
+      //   1737: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1740: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1743: aload_3
+      //   1744: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1747: aload 8
+      //   1749: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1752: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1755: aload_3
+      //   1756: sipush 204
+      //   1759: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   1762: goto +1983 -> 3745
+      //   1765: aload 5
+      //   1767: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   1770: checkcast 217	com/tencent/mm/protocal/protobuf/cdy
+      //   1773: astore 8
+      //   1775: aload_3
+      //   1776: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   1779: dup
+      //   1780: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   1783: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1786: aload_3
+      //   1787: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1790: aload 8
+      //   1792: getfield 218	com/tencent/mm/protocal/protobuf/cdy:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1795: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1798: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1801: aload_3
+      //   1802: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1805: aload 8
+      //   1807: getfield 218	com/tencent/mm/protocal/protobuf/cdy:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1810: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1813: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1816: aload_3
+      //   1817: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1820: aload 8
+      //   1822: getfield 218	com/tencent/mm/protocal/protobuf/cdy:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1825: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1828: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1831: aload_3
+      //   1832: aload 8
+      //   1834: getfield 219	com/tencent/mm/protocal/protobuf/cdy:Grz	Z
+      //   1837: putfield 177	com/tencent/mm/protocal/protobuf/bnz:Grz	Z
+      //   1840: aload_3
+      //   1841: aload 8
+      //   1843: getfield 222	com/tencent/mm/protocal/protobuf/cdy:GIC	Z
+      //   1846: putfield 223	com/tencent/mm/protocal/protobuf/bnz:GIC	Z
+      //   1849: aload_3
+      //   1850: aload 8
+      //   1852: getfield 224	com/tencent/mm/protocal/protobuf/cdy:Grw	Ljava/lang/String;
+      //   1855: putfield 181	com/tencent/mm/protocal/protobuf/bnz:Grw	Ljava/lang/String;
+      //   1858: aload_3
+      //   1859: sipush 205
+      //   1862: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   1865: goto +1880 -> 3745
+      //   1868: aload 5
+      //   1870: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   1873: checkcast 151	com/tencent/mm/protocal/protobuf/dno
+      //   1876: astore 8
+      //   1878: aload_3
+      //   1879: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   1882: dup
+      //   1883: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   1886: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1889: aload_3
+      //   1890: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1893: aload 8
+      //   1895: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1898: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1901: aload_3
+      //   1902: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1905: aload 8
+      //   1907: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1910: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1913: aload_3
+      //   1914: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1917: aload 8
+      //   1919: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1922: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1925: aload_3
+      //   1926: sipush 206
+      //   1929: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   1932: goto +1813 -> 3745
+      //   1935: aload 5
+      //   1937: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   1940: checkcast 151	com/tencent/mm/protocal/protobuf/dno
+      //   1943: astore 8
+      //   1945: aload_3
+      //   1946: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   1949: dup
+      //   1950: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   1953: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1956: aload_3
+      //   1957: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1960: aload 8
+      //   1962: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1965: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   1968: aload_3
+      //   1969: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1972: aload 8
+      //   1974: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1977: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   1980: aload_3
+      //   1981: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   1984: aload 8
+      //   1986: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1989: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   1992: aload_3
+      //   1993: sipush 207
+      //   1996: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   1999: goto +1746 -> 3745
+      //   2002: aload_3
+      //   2003: aload 5
+      //   2005: getfield 116	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:msgType	I
+      //   2008: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2011: goto +1734 -> 3745
+      //   2014: aload_3
+      //   2015: aload 5
+      //   2017: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2020: checkcast 226	java/lang/Long
+      //   2023: invokevirtual 230	java/lang/Long:longValue	()J
+      //   2026: putfield 199	com/tencent/mm/protocal/protobuf/bnz:timestamp	J
+      //   2029: aload_3
+      //   2030: aload 5
+      //   2032: getfield 116	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:msgType	I
+      //   2035: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2038: goto +1707 -> 3745
+      //   2041: aload 5
+      //   2043: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2046: checkcast 232	com/tencent/mm/protocal/protobuf/atl
+      //   2049: astore 8
+      //   2051: aload_3
+      //   2052: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   2055: dup
+      //   2056: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   2059: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2062: aload 8
+      //   2064: getfield 233	com/tencent/mm/protocal/protobuf/atl:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2067: ifnull +48 -> 2115
+      //   2070: aload_3
+      //   2071: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2074: aload 8
+      //   2076: getfield 233	com/tencent/mm/protocal/protobuf/atl:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2079: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   2082: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   2085: aload_3
+      //   2086: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2089: aload 8
+      //   2091: getfield 233	com/tencent/mm/protocal/protobuf/atl:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2094: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   2097: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   2100: aload_3
+      //   2101: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2104: aload 8
+      //   2106: getfield 233	com/tencent/mm/protocal/protobuf/atl:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2109: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   2112: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   2115: aload_3
+      //   2116: aload 8
+      //   2118: getfield 234	com/tencent/mm/protocal/protobuf/atl:Gry	Ljava/lang/String;
+      //   2121: putfield 189	com/tencent/mm/protocal/protobuf/bnz:Gry	Ljava/lang/String;
+      //   2124: aload_3
+      //   2125: aload 8
+      //   2127: getfield 235	com/tencent/mm/protocal/protobuf/atl:Grz	Z
+      //   2130: putfield 177	com/tencent/mm/protocal/protobuf/bnz:Grz	Z
+      //   2133: aload_3
+      //   2134: aload 8
+      //   2136: getfield 236	com/tencent/mm/protocal/protobuf/atl:Grw	Ljava/lang/String;
+      //   2139: putfield 181	com/tencent/mm/protocal/protobuf/bnz:Grw	Ljava/lang/String;
+      //   2142: aload_3
+      //   2143: aload 8
+      //   2145: getfield 239	com/tencent/mm/protocal/protobuf/atl:Grx	I
+      //   2148: putfield 240	com/tencent/mm/protocal/protobuf/bnz:Grx	I
+      //   2151: aload_3
+      //   2152: aload 8
+      //   2154: getfield 243	com/tencent/mm/protocal/protobuf/atl:GrA	Z
+      //   2157: putfield 244	com/tencent/mm/protocal/protobuf/bnz:GrA	Z
+      //   2160: aload_3
+      //   2161: aload 8
+      //   2163: getfield 245	com/tencent/mm/protocal/protobuf/atl:timestamp	J
+      //   2166: putfield 199	com/tencent/mm/protocal/protobuf/bnz:timestamp	J
+      //   2169: aload_3
+      //   2170: iconst_5
+      //   2171: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2174: goto +1571 -> 3745
+      //   2177: aload 5
+      //   2179: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2182: checkcast 247	com/tencent/mm/protocal/protobuf/atk
+      //   2185: astore 8
+      //   2187: aload_3
+      //   2188: new 151	com/tencent/mm/protocal/protobuf/dno
+      //   2191: dup
+      //   2192: invokespecial 152	com/tencent/mm/protocal/protobuf/dno:<init>	()V
+      //   2195: putfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2198: aload 8
+      //   2200: getfield 248	com/tencent/mm/protocal/protobuf/atk:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2203: ifnull +48 -> 2251
+      //   2206: aload_3
+      //   2207: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2210: aload 8
+      //   2212: getfield 248	com/tencent/mm/protocal/protobuf/atk:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2215: getfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   2218: putfield 161	com/tencent/mm/protocal/protobuf/dno:activityName	Ljava/lang/String;
+      //   2221: aload_3
+      //   2222: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2225: aload 8
+      //   2227: getfield 248	com/tencent/mm/protocal/protobuf/atk:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2230: getfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   2233: putfield 164	com/tencent/mm/protocal/protobuf/dno:aHQ	I
+      //   2236: aload_3
+      //   2237: getfield 171	com/tencent/mm/protocal/protobuf/bnz:GIz	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2240: aload 8
+      //   2242: getfield 248	com/tencent/mm/protocal/protobuf/atk:Grv	Lcom/tencent/mm/protocal/protobuf/dno;
+      //   2245: getfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   2248: putfield 168	com/tencent/mm/protocal/protobuf/dno:timestamp	J
+      //   2251: aload_3
+      //   2252: aload 8
+      //   2254: getfield 249	com/tencent/mm/protocal/protobuf/atk:Grw	Ljava/lang/String;
+      //   2257: putfield 181	com/tencent/mm/protocal/protobuf/bnz:Grw	Ljava/lang/String;
+      //   2260: aload_3
+      //   2261: aload 8
+      //   2263: getfield 250	com/tencent/mm/protocal/protobuf/atk:Grx	I
+      //   2266: putfield 240	com/tencent/mm/protocal/protobuf/bnz:Grx	I
+      //   2269: aload_3
+      //   2270: aload 8
+      //   2272: getfield 251	com/tencent/mm/protocal/protobuf/atk:timestamp	J
+      //   2275: putfield 199	com/tencent/mm/protocal/protobuf/bnz:timestamp	J
+      //   2278: aload_3
+      //   2279: bipush 6
+      //   2281: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2284: goto +1461 -> 3745
+      //   2287: aload_3
+      //   2288: aload 5
+      //   2290: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2293: checkcast 118	java/lang/Integer
+      //   2296: invokevirtual 254	java/lang/Integer:intValue	()I
+      //   2299: putfield 185	com/tencent/mm/protocal/protobuf/bnz:flags	I
       //   2302: aload_3
       //   2303: aload 5
-      //   2305: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2308: checkcast 215	java/lang/String
-      //   2311: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2305: getfield 116	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:msgType	I
+      //   2308: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2311: goto +1434 -> 3745
       //   2314: aload_3
-      //   2315: sipush 501
-      //   2318: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2321: goto +1346 -> 3667
-      //   2324: aload_3
-      //   2325: aload 5
-      //   2327: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2330: checkcast 251	com/tencent/mm/protocal/protobuf/bjv
-      //   2333: putfield 255	com/tencent/mm/protocal/protobuf/bjr:EZi	Lcom/tencent/mm/protocal/protobuf/bjv;
+      //   2315: aload 5
+      //   2317: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2320: checkcast 256	com/tencent/mm/protocal/protobuf/bod
+      //   2323: putfield 260	com/tencent/mm/protocal/protobuf/bnz:GIE	Lcom/tencent/mm/protocal/protobuf/bod;
+      //   2326: aload_3
+      //   2327: sipush 500
+      //   2330: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2333: goto +1412 -> 3745
       //   2336: aload_3
-      //   2337: sipush 502
-      //   2340: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2343: goto +1324 -> 3667
-      //   2346: aload_3
-      //   2347: aload 5
-      //   2349: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2352: checkcast 215	java/lang/String
-      //   2355: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2337: aload 5
+      //   2339: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2342: checkcast 215	java/lang/String
+      //   2345: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2348: aload_3
+      //   2349: sipush 501
+      //   2352: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2355: goto +1390 -> 3745
       //   2358: aload_3
-      //   2359: sipush 504
-      //   2362: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2365: goto +1302 -> 3667
-      //   2368: aload_3
-      //   2369: aload 5
-      //   2371: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2374: checkcast 215	java/lang/String
-      //   2377: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2359: aload 5
+      //   2361: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2364: checkcast 256	com/tencent/mm/protocal/protobuf/bod
+      //   2367: putfield 260	com/tencent/mm/protocal/protobuf/bnz:GIE	Lcom/tencent/mm/protocal/protobuf/bod;
+      //   2370: aload_3
+      //   2371: sipush 502
+      //   2374: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2377: goto +1368 -> 3745
       //   2380: aload_3
-      //   2381: sipush 503
-      //   2384: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2387: goto +1280 -> 3667
-      //   2390: aload_3
-      //   2391: aload 5
-      //   2393: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2396: checkcast 226	java/lang/Long
-      //   2399: invokevirtual 230	java/lang/Long:longValue	()J
-      //   2402: putfield 199	com/tencent/mm/protocal/protobuf/bjr:timestamp	J
-      //   2405: aload_3
-      //   2406: sipush 217
-      //   2409: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2412: goto +1255 -> 3667
-      //   2415: aload_3
-      //   2416: aload 5
-      //   2418: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2421: checkcast 226	java/lang/Long
-      //   2424: invokevirtual 230	java/lang/Long:longValue	()J
-      //   2427: putfield 199	com/tencent/mm/protocal/protobuf/bjr:timestamp	J
-      //   2430: aload_3
-      //   2431: sipush 219
-      //   2434: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2437: goto +1230 -> 3667
-      //   2440: aload_3
-      //   2441: aload 5
-      //   2443: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2446: checkcast 226	java/lang/Long
-      //   2449: invokevirtual 230	java/lang/Long:longValue	()J
-      //   2452: putfield 199	com/tencent/mm/protocal/protobuf/bjr:timestamp	J
-      //   2455: aload_3
-      //   2456: sipush 218
-      //   2459: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2462: goto +1205 -> 3667
-      //   2465: aload_3
-      //   2466: aload 5
-      //   2468: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2471: checkcast 226	java/lang/Long
-      //   2474: invokevirtual 230	java/lang/Long:longValue	()J
-      //   2477: putfield 199	com/tencent/mm/protocal/protobuf/bjr:timestamp	J
-      //   2480: aload_3
-      //   2481: sipush 208
-      //   2484: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2487: goto +1180 -> 3667
-      //   2490: aload_3
-      //   2491: aload 5
-      //   2493: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2496: checkcast 226	java/lang/Long
-      //   2499: invokevirtual 230	java/lang/Long:longValue	()J
-      //   2502: putfield 199	com/tencent/mm/protocal/protobuf/bjr:timestamp	J
-      //   2505: aload_3
-      //   2506: sipush 211
-      //   2509: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2512: goto +1155 -> 3667
-      //   2515: aload_3
-      //   2516: aload 5
-      //   2518: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2521: checkcast 226	java/lang/Long
-      //   2524: invokevirtual 230	java/lang/Long:longValue	()J
-      //   2527: putfield 199	com/tencent/mm/protocal/protobuf/bjr:timestamp	J
-      //   2530: aload_3
-      //   2531: sipush 212
-      //   2534: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2537: goto +1130 -> 3667
-      //   2540: aload_3
-      //   2541: sipush 213
-      //   2544: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2547: goto +1120 -> 3667
-      //   2550: aload_3
-      //   2551: sipush 214
-      //   2554: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2557: goto +1110 -> 3667
-      //   2560: aload_3
-      //   2561: sipush 215
-      //   2564: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2567: goto +1100 -> 3667
-      //   2570: aload_3
-      //   2571: sipush 216
-      //   2574: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2577: goto +1090 -> 3667
-      //   2580: aload_3
-      //   2581: sipush 209
-      //   2584: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2587: goto +1080 -> 3667
-      //   2590: aload_3
-      //   2591: aload 5
-      //   2593: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2596: checkcast 257	com/tencent/mm/protocal/protobuf/apc
-      //   2599: getfield 260	com/tencent/mm/protocal/protobuf/apc:type	I
-      //   2602: putfield 185	com/tencent/mm/protocal/protobuf/bjr:flags	I
-      //   2605: aload_3
-      //   2606: sipush 210
-      //   2609: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2612: goto +1055 -> 3667
-      //   2615: aload_3
-      //   2616: sipush 700
-      //   2619: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2622: goto +1045 -> 3667
-      //   2625: aload_3
-      //   2626: sipush 701
-      //   2629: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2632: goto +1035 -> 3667
-      //   2635: aload_3
-      //   2636: sipush 702
-      //   2639: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2642: goto +1025 -> 3667
-      //   2645: aload_3
-      //   2646: sipush 703
-      //   2649: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2652: goto +1015 -> 3667
-      //   2655: aload_3
-      //   2656: aload 5
-      //   2658: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2661: checkcast 215	java/lang/String
-      //   2664: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
-      //   2667: aload_3
-      //   2668: sipush 704
-      //   2671: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2674: goto +993 -> 3667
-      //   2677: aload_3
-      //   2678: aload 5
-      //   2680: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2683: checkcast 215	java/lang/String
-      //   2686: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2381: aload 5
+      //   2383: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2386: checkcast 215	java/lang/String
+      //   2389: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2392: aload_3
+      //   2393: sipush 504
+      //   2396: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2399: goto +1346 -> 3745
+      //   2402: aload_3
+      //   2403: aload 5
+      //   2405: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2408: checkcast 215	java/lang/String
+      //   2411: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2414: aload_3
+      //   2415: sipush 503
+      //   2418: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2421: goto +1324 -> 3745
+      //   2424: aload_3
+      //   2425: aload 5
+      //   2427: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2430: checkcast 226	java/lang/Long
+      //   2433: invokevirtual 230	java/lang/Long:longValue	()J
+      //   2436: putfield 199	com/tencent/mm/protocal/protobuf/bnz:timestamp	J
+      //   2439: aload_3
+      //   2440: sipush 217
+      //   2443: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2446: goto +1299 -> 3745
+      //   2449: aload_3
+      //   2450: aload 5
+      //   2452: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2455: checkcast 226	java/lang/Long
+      //   2458: invokevirtual 230	java/lang/Long:longValue	()J
+      //   2461: putfield 199	com/tencent/mm/protocal/protobuf/bnz:timestamp	J
+      //   2464: aload_3
+      //   2465: sipush 219
+      //   2468: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2471: goto +1274 -> 3745
+      //   2474: aload_3
+      //   2475: aload 5
+      //   2477: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2480: checkcast 226	java/lang/Long
+      //   2483: invokevirtual 230	java/lang/Long:longValue	()J
+      //   2486: putfield 199	com/tencent/mm/protocal/protobuf/bnz:timestamp	J
+      //   2489: aload_3
+      //   2490: sipush 218
+      //   2493: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2496: goto +1249 -> 3745
+      //   2499: aload_3
+      //   2500: aload 5
+      //   2502: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2505: checkcast 226	java/lang/Long
+      //   2508: invokevirtual 230	java/lang/Long:longValue	()J
+      //   2511: putfield 199	com/tencent/mm/protocal/protobuf/bnz:timestamp	J
+      //   2514: aload_3
+      //   2515: sipush 208
+      //   2518: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2521: goto +1224 -> 3745
+      //   2524: aload_3
+      //   2525: aload 5
+      //   2527: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2530: checkcast 226	java/lang/Long
+      //   2533: invokevirtual 230	java/lang/Long:longValue	()J
+      //   2536: putfield 199	com/tencent/mm/protocal/protobuf/bnz:timestamp	J
+      //   2539: aload_3
+      //   2540: sipush 211
+      //   2543: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2546: goto +1199 -> 3745
+      //   2549: aload_3
+      //   2550: aload 5
+      //   2552: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2555: checkcast 226	java/lang/Long
+      //   2558: invokevirtual 230	java/lang/Long:longValue	()J
+      //   2561: putfield 199	com/tencent/mm/protocal/protobuf/bnz:timestamp	J
+      //   2564: aload_3
+      //   2565: sipush 212
+      //   2568: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2571: goto +1174 -> 3745
+      //   2574: aload_3
+      //   2575: sipush 213
+      //   2578: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2581: goto +1164 -> 3745
+      //   2584: aload_3
+      //   2585: sipush 214
+      //   2588: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2591: goto +1154 -> 3745
+      //   2594: aload_3
+      //   2595: sipush 215
+      //   2598: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2601: goto +1144 -> 3745
+      //   2604: aload_3
+      //   2605: sipush 216
+      //   2608: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2611: goto +1134 -> 3745
+      //   2614: aload_3
+      //   2615: sipush 209
+      //   2618: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2621: goto +1124 -> 3745
+      //   2624: aload_3
+      //   2625: aload 5
+      //   2627: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2630: checkcast 262	com/tencent/mm/protocal/protobuf/asx
+      //   2633: getfield 265	com/tencent/mm/protocal/protobuf/asx:type	I
+      //   2636: putfield 185	com/tencent/mm/protocal/protobuf/bnz:flags	I
+      //   2639: aload_3
+      //   2640: sipush 210
+      //   2643: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2646: goto +1099 -> 3745
+      //   2649: aload_3
+      //   2650: sipush 700
+      //   2653: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2656: goto +1089 -> 3745
+      //   2659: aload_3
+      //   2660: sipush 701
+      //   2663: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2666: goto +1079 -> 3745
+      //   2669: aload_3
+      //   2670: sipush 702
+      //   2673: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2676: goto +1069 -> 3745
+      //   2679: aload_3
+      //   2680: sipush 703
+      //   2683: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2686: goto +1059 -> 3745
       //   2689: aload_3
-      //   2690: sipush 708
-      //   2693: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2696: goto +971 -> 3667
-      //   2699: aload_3
-      //   2700: aload 5
-      //   2702: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2705: checkcast 215	java/lang/String
-      //   2708: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2690: aload 5
+      //   2692: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2695: checkcast 215	java/lang/String
+      //   2698: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2701: aload_3
+      //   2702: sipush 704
+      //   2705: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2708: goto +1037 -> 3745
       //   2711: aload_3
-      //   2712: sipush 712
-      //   2715: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2718: goto +949 -> 3667
-      //   2721: aload_3
-      //   2722: aload 5
-      //   2724: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2727: checkcast 215	java/lang/String
-      //   2730: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2712: aload 5
+      //   2714: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2717: checkcast 215	java/lang/String
+      //   2720: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2723: aload_3
+      //   2724: sipush 708
+      //   2727: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2730: goto +1015 -> 3745
       //   2733: aload_3
-      //   2734: sipush 724
-      //   2737: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2740: goto +927 -> 3667
-      //   2743: aload_3
-      //   2744: aload 5
-      //   2746: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2749: checkcast 215	java/lang/String
-      //   2752: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2734: aload 5
+      //   2736: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2739: checkcast 215	java/lang/String
+      //   2742: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2745: aload_3
+      //   2746: sipush 712
+      //   2749: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2752: goto +993 -> 3745
       //   2755: aload_3
-      //   2756: sipush 744
-      //   2759: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2762: goto +905 -> 3667
-      //   2765: aload_3
-      //   2766: aload 5
-      //   2768: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2771: checkcast 215	java/lang/String
-      //   2774: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2756: aload 5
+      //   2758: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2761: checkcast 215	java/lang/String
+      //   2764: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2767: aload_3
+      //   2768: sipush 724
+      //   2771: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2774: goto +971 -> 3745
       //   2777: aload_3
-      //   2778: sipush 728
-      //   2781: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2784: goto +883 -> 3667
-      //   2787: aload_3
-      //   2788: aload 5
-      //   2790: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2793: checkcast 215	java/lang/String
-      //   2796: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2778: aload 5
+      //   2780: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2783: checkcast 215	java/lang/String
+      //   2786: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2789: aload_3
+      //   2790: sipush 744
+      //   2793: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2796: goto +949 -> 3745
       //   2799: aload_3
-      //   2800: sipush 732
-      //   2803: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2806: goto +861 -> 3667
-      //   2809: aload_3
-      //   2810: aload 5
-      //   2812: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2815: checkcast 215	java/lang/String
-      //   2818: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2800: aload 5
+      //   2802: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2805: checkcast 215	java/lang/String
+      //   2808: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2811: aload_3
+      //   2812: sipush 728
+      //   2815: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2818: goto +927 -> 3745
       //   2821: aload_3
-      //   2822: sipush 736
-      //   2825: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2828: goto +839 -> 3667
-      //   2831: aload_3
-      //   2832: aload 5
-      //   2834: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2837: checkcast 215	java/lang/String
-      //   2840: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2822: aload 5
+      //   2824: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2827: checkcast 215	java/lang/String
+      //   2830: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2833: aload_3
+      //   2834: sipush 732
+      //   2837: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2840: goto +905 -> 3745
       //   2843: aload_3
-      //   2844: sipush 740
-      //   2847: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2850: goto +817 -> 3667
-      //   2853: aload_3
-      //   2854: aload 5
-      //   2856: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2859: checkcast 215	java/lang/String
-      //   2862: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2844: aload 5
+      //   2846: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2849: checkcast 215	java/lang/String
+      //   2852: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2855: aload_3
+      //   2856: sipush 736
+      //   2859: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2862: goto +883 -> 3745
       //   2865: aload_3
-      //   2866: sipush 716
-      //   2869: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2872: goto +795 -> 3667
-      //   2875: aload_3
-      //   2876: aload 5
-      //   2878: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2881: checkcast 215	java/lang/String
-      //   2884: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2866: aload 5
+      //   2868: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2871: checkcast 215	java/lang/String
+      //   2874: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2877: aload_3
+      //   2878: sipush 740
+      //   2881: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2884: goto +861 -> 3745
       //   2887: aload_3
-      //   2888: sipush 720
-      //   2891: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2894: goto +773 -> 3667
-      //   2897: aload_3
-      //   2898: aload 5
-      //   2900: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2903: checkcast 215	java/lang/String
-      //   2906: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2888: aload 5
+      //   2890: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2893: checkcast 215	java/lang/String
+      //   2896: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2899: aload_3
+      //   2900: sipush 716
+      //   2903: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2906: goto +839 -> 3745
       //   2909: aload_3
-      //   2910: sipush 705
-      //   2913: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2916: goto +751 -> 3667
-      //   2919: aload_3
-      //   2920: aload 5
-      //   2922: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2925: checkcast 215	java/lang/String
-      //   2928: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2910: aload 5
+      //   2912: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2915: checkcast 215	java/lang/String
+      //   2918: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2921: aload_3
+      //   2922: sipush 720
+      //   2925: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2928: goto +817 -> 3745
       //   2931: aload_3
-      //   2932: sipush 709
-      //   2935: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2938: goto +729 -> 3667
-      //   2941: aload_3
-      //   2942: aload 5
-      //   2944: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2947: checkcast 215	java/lang/String
-      //   2950: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2932: aload 5
+      //   2934: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2937: checkcast 215	java/lang/String
+      //   2940: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2943: aload_3
+      //   2944: sipush 705
+      //   2947: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2950: goto +795 -> 3745
       //   2953: aload_3
-      //   2954: sipush 713
-      //   2957: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2960: goto +707 -> 3667
-      //   2963: aload_3
-      //   2964: aload 5
-      //   2966: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2969: checkcast 215	java/lang/String
-      //   2972: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2954: aload 5
+      //   2956: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2959: checkcast 215	java/lang/String
+      //   2962: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2965: aload_3
+      //   2966: sipush 709
+      //   2969: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2972: goto +773 -> 3745
       //   2975: aload_3
-      //   2976: sipush 725
-      //   2979: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   2982: goto +685 -> 3667
-      //   2985: aload_3
-      //   2986: aload 5
-      //   2988: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   2991: checkcast 215	java/lang/String
-      //   2994: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2976: aload 5
+      //   2978: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   2981: checkcast 215	java/lang/String
+      //   2984: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   2987: aload_3
+      //   2988: sipush 713
+      //   2991: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   2994: goto +751 -> 3745
       //   2997: aload_3
-      //   2998: sipush 745
-      //   3001: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3004: goto +663 -> 3667
-      //   3007: aload_3
-      //   3008: aload 5
-      //   3010: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3013: checkcast 215	java/lang/String
-      //   3016: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   2998: aload 5
+      //   3000: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3003: checkcast 215	java/lang/String
+      //   3006: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3009: aload_3
+      //   3010: sipush 725
+      //   3013: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3016: goto +729 -> 3745
       //   3019: aload_3
-      //   3020: sipush 729
-      //   3023: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3026: goto +641 -> 3667
-      //   3029: aload_3
-      //   3030: aload 5
-      //   3032: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3035: checkcast 215	java/lang/String
-      //   3038: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3020: aload 5
+      //   3022: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3025: checkcast 215	java/lang/String
+      //   3028: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3031: aload_3
+      //   3032: sipush 745
+      //   3035: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3038: goto +707 -> 3745
       //   3041: aload_3
-      //   3042: sipush 733
-      //   3045: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3048: goto +619 -> 3667
-      //   3051: aload_3
-      //   3052: aload 5
-      //   3054: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3057: checkcast 215	java/lang/String
-      //   3060: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3042: aload 5
+      //   3044: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3047: checkcast 215	java/lang/String
+      //   3050: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3053: aload_3
+      //   3054: sipush 729
+      //   3057: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3060: goto +685 -> 3745
       //   3063: aload_3
-      //   3064: sipush 737
-      //   3067: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3070: goto +597 -> 3667
-      //   3073: aload_3
-      //   3074: aload 5
-      //   3076: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3079: checkcast 215	java/lang/String
-      //   3082: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3064: aload 5
+      //   3066: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3069: checkcast 215	java/lang/String
+      //   3072: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3075: aload_3
+      //   3076: sipush 733
+      //   3079: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3082: goto +663 -> 3745
       //   3085: aload_3
-      //   3086: sipush 741
-      //   3089: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3092: goto +575 -> 3667
-      //   3095: aload_3
-      //   3096: aload 5
-      //   3098: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3101: checkcast 215	java/lang/String
-      //   3104: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3086: aload 5
+      //   3088: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3091: checkcast 215	java/lang/String
+      //   3094: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3097: aload_3
+      //   3098: sipush 737
+      //   3101: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3104: goto +641 -> 3745
       //   3107: aload_3
-      //   3108: sipush 717
-      //   3111: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3114: goto +553 -> 3667
-      //   3117: aload_3
-      //   3118: aload 5
-      //   3120: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3123: checkcast 215	java/lang/String
-      //   3126: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3108: aload 5
+      //   3110: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3113: checkcast 215	java/lang/String
+      //   3116: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3119: aload_3
+      //   3120: sipush 741
+      //   3123: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3126: goto +619 -> 3745
       //   3129: aload_3
-      //   3130: sipush 721
-      //   3133: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3136: goto +531 -> 3667
-      //   3139: aload_3
-      //   3140: aload 5
-      //   3142: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3145: checkcast 215	java/lang/String
-      //   3148: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3130: aload 5
+      //   3132: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3135: checkcast 215	java/lang/String
+      //   3138: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3141: aload_3
+      //   3142: sipush 717
+      //   3145: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3148: goto +597 -> 3745
       //   3151: aload_3
-      //   3152: sipush 706
-      //   3155: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3158: goto +509 -> 3667
-      //   3161: aload_3
-      //   3162: aload 5
-      //   3164: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3167: checkcast 215	java/lang/String
-      //   3170: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3152: aload 5
+      //   3154: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3157: checkcast 215	java/lang/String
+      //   3160: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3163: aload_3
+      //   3164: sipush 721
+      //   3167: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3170: goto +575 -> 3745
       //   3173: aload_3
-      //   3174: sipush 710
-      //   3177: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3180: goto +487 -> 3667
-      //   3183: aload_3
-      //   3184: aload 5
-      //   3186: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3189: checkcast 215	java/lang/String
-      //   3192: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3174: aload 5
+      //   3176: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3179: checkcast 215	java/lang/String
+      //   3182: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3185: aload_3
+      //   3186: sipush 706
+      //   3189: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3192: goto +553 -> 3745
       //   3195: aload_3
-      //   3196: sipush 714
-      //   3199: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3202: goto +465 -> 3667
-      //   3205: aload_3
-      //   3206: aload 5
-      //   3208: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3211: checkcast 215	java/lang/String
-      //   3214: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3196: aload 5
+      //   3198: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3201: checkcast 215	java/lang/String
+      //   3204: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3207: aload_3
+      //   3208: sipush 710
+      //   3211: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3214: goto +531 -> 3745
       //   3217: aload_3
-      //   3218: sipush 726
-      //   3221: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3224: goto +443 -> 3667
-      //   3227: aload_3
-      //   3228: aload 5
-      //   3230: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3233: checkcast 215	java/lang/String
-      //   3236: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3218: aload 5
+      //   3220: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3223: checkcast 215	java/lang/String
+      //   3226: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3229: aload_3
+      //   3230: sipush 714
+      //   3233: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3236: goto +509 -> 3745
       //   3239: aload_3
-      //   3240: sipush 746
-      //   3243: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3246: goto +421 -> 3667
-      //   3249: aload_3
-      //   3250: aload 5
-      //   3252: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3255: checkcast 215	java/lang/String
-      //   3258: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3240: aload 5
+      //   3242: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3245: checkcast 215	java/lang/String
+      //   3248: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3251: aload_3
+      //   3252: sipush 726
+      //   3255: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3258: goto +487 -> 3745
       //   3261: aload_3
-      //   3262: sipush 730
-      //   3265: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3268: goto +399 -> 3667
-      //   3271: aload_3
-      //   3272: aload 5
-      //   3274: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3277: checkcast 215	java/lang/String
-      //   3280: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3262: aload 5
+      //   3264: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3267: checkcast 215	java/lang/String
+      //   3270: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3273: aload_3
+      //   3274: sipush 746
+      //   3277: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3280: goto +465 -> 3745
       //   3283: aload_3
-      //   3284: sipush 734
-      //   3287: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3290: goto +377 -> 3667
-      //   3293: aload_3
-      //   3294: aload 5
-      //   3296: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3299: checkcast 215	java/lang/String
-      //   3302: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3284: aload 5
+      //   3286: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3289: checkcast 215	java/lang/String
+      //   3292: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3295: aload_3
+      //   3296: sipush 730
+      //   3299: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3302: goto +443 -> 3745
       //   3305: aload_3
-      //   3306: sipush 738
-      //   3309: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3312: goto +355 -> 3667
-      //   3315: aload_3
-      //   3316: aload 5
-      //   3318: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3321: checkcast 215	java/lang/String
-      //   3324: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3306: aload 5
+      //   3308: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3311: checkcast 215	java/lang/String
+      //   3314: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3317: aload_3
+      //   3318: sipush 734
+      //   3321: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3324: goto +421 -> 3745
       //   3327: aload_3
-      //   3328: sipush 742
-      //   3331: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3334: goto +333 -> 3667
-      //   3337: aload_3
-      //   3338: aload 5
-      //   3340: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3343: checkcast 215	java/lang/String
-      //   3346: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3328: aload 5
+      //   3330: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3333: checkcast 215	java/lang/String
+      //   3336: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3339: aload_3
+      //   3340: sipush 738
+      //   3343: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3346: goto +399 -> 3745
       //   3349: aload_3
-      //   3350: sipush 718
-      //   3353: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3356: goto +311 -> 3667
-      //   3359: aload_3
-      //   3360: aload 5
-      //   3362: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3365: checkcast 215	java/lang/String
-      //   3368: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3350: aload 5
+      //   3352: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3355: checkcast 215	java/lang/String
+      //   3358: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3361: aload_3
+      //   3362: sipush 742
+      //   3365: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3368: goto +377 -> 3745
       //   3371: aload_3
-      //   3372: sipush 722
-      //   3375: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3378: goto +289 -> 3667
-      //   3381: aload_3
-      //   3382: aload 5
-      //   3384: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3387: checkcast 215	java/lang/String
-      //   3390: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3372: aload 5
+      //   3374: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3377: checkcast 215	java/lang/String
+      //   3380: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3383: aload_3
+      //   3384: sipush 718
+      //   3387: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3390: goto +355 -> 3745
       //   3393: aload_3
-      //   3394: sipush 707
-      //   3397: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3400: goto +267 -> 3667
-      //   3403: aload_3
-      //   3404: aload 5
-      //   3406: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3409: checkcast 215	java/lang/String
-      //   3412: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3394: aload 5
+      //   3396: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3399: checkcast 215	java/lang/String
+      //   3402: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3405: aload_3
+      //   3406: sipush 722
+      //   3409: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3412: goto +333 -> 3745
       //   3415: aload_3
-      //   3416: sipush 711
-      //   3419: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3422: goto +245 -> 3667
-      //   3425: aload_3
-      //   3426: aload 5
-      //   3428: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3431: checkcast 215	java/lang/String
-      //   3434: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3416: aload 5
+      //   3418: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3421: checkcast 215	java/lang/String
+      //   3424: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3427: aload_3
+      //   3428: sipush 707
+      //   3431: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3434: goto +311 -> 3745
       //   3437: aload_3
-      //   3438: sipush 715
-      //   3441: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3444: goto +223 -> 3667
-      //   3447: aload_3
-      //   3448: aload 5
-      //   3450: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3453: checkcast 215	java/lang/String
-      //   3456: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3438: aload 5
+      //   3440: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3443: checkcast 215	java/lang/String
+      //   3446: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3449: aload_3
+      //   3450: sipush 711
+      //   3453: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3456: goto +289 -> 3745
       //   3459: aload_3
-      //   3460: sipush 727
-      //   3463: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3466: goto +201 -> 3667
-      //   3469: aload_3
-      //   3470: aload 5
-      //   3472: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3475: checkcast 215	java/lang/String
-      //   3478: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3460: aload 5
+      //   3462: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3465: checkcast 215	java/lang/String
+      //   3468: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3471: aload_3
+      //   3472: sipush 715
+      //   3475: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3478: goto +267 -> 3745
       //   3481: aload_3
-      //   3482: sipush 747
-      //   3485: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3488: goto +179 -> 3667
-      //   3491: aload_3
-      //   3492: aload 5
-      //   3494: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3497: checkcast 215	java/lang/String
-      //   3500: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3482: aload 5
+      //   3484: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3487: checkcast 215	java/lang/String
+      //   3490: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3493: aload_3
+      //   3494: sipush 727
+      //   3497: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3500: goto +245 -> 3745
       //   3503: aload_3
-      //   3504: sipush 731
-      //   3507: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3510: goto +157 -> 3667
-      //   3513: aload_3
-      //   3514: aload 5
-      //   3516: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3519: checkcast 215	java/lang/String
-      //   3522: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3504: aload 5
+      //   3506: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3509: checkcast 215	java/lang/String
+      //   3512: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3515: aload_3
+      //   3516: sipush 747
+      //   3519: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3522: goto +223 -> 3745
       //   3525: aload_3
-      //   3526: sipush 735
-      //   3529: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3532: goto +135 -> 3667
-      //   3535: aload_3
-      //   3536: aload 5
-      //   3538: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3541: checkcast 215	java/lang/String
-      //   3544: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3526: aload 5
+      //   3528: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3531: checkcast 215	java/lang/String
+      //   3534: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3537: aload_3
+      //   3538: sipush 731
+      //   3541: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3544: goto +201 -> 3745
       //   3547: aload_3
-      //   3548: sipush 739
-      //   3551: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3554: goto +113 -> 3667
-      //   3557: aload_3
-      //   3558: aload 5
-      //   3560: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3563: checkcast 215	java/lang/String
-      //   3566: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3548: aload 5
+      //   3550: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3553: checkcast 215	java/lang/String
+      //   3556: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3559: aload_3
+      //   3560: sipush 735
+      //   3563: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3566: goto +179 -> 3745
       //   3569: aload_3
-      //   3570: sipush 743
-      //   3573: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3576: goto +91 -> 3667
-      //   3579: aload_3
-      //   3580: aload 5
-      //   3582: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3585: checkcast 215	java/lang/String
-      //   3588: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3570: aload 5
+      //   3572: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3575: checkcast 215	java/lang/String
+      //   3578: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3581: aload_3
+      //   3582: sipush 739
+      //   3585: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3588: goto +157 -> 3745
       //   3591: aload_3
-      //   3592: sipush 719
-      //   3595: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3598: goto +69 -> 3667
-      //   3601: aload_3
-      //   3602: aload 5
-      //   3604: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3607: checkcast 215	java/lang/String
-      //   3610: putfield 193	com/tencent/mm/protocal/protobuf/bjr:EZe	Ljava/lang/String;
+      //   3592: aload 5
+      //   3594: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3597: checkcast 215	java/lang/String
+      //   3600: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3603: aload_3
+      //   3604: sipush 743
+      //   3607: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3610: goto +135 -> 3745
       //   3613: aload_3
-      //   3614: sipush 723
-      //   3617: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3620: goto +47 -> 3667
-      //   3623: aload_3
-      //   3624: aload 5
-      //   3626: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qiS	Ljava/lang/Object;
-      //   3629: checkcast 226	java/lang/Long
-      //   3632: invokevirtual 230	java/lang/Long:longValue	()J
-      //   3635: putfield 199	com/tencent/mm/protocal/protobuf/bjr:timestamp	J
-      //   3638: aload_3
-      //   3639: sipush 220
-      //   3642: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3645: goto +22 -> 3667
-      //   3648: aload_3
-      //   3649: sipush 221
-      //   3652: putfield 200	com/tencent/mm/protocal/protobuf/bjr:msgType	I
-      //   3655: goto +12 -> 3667
-      //   3658: ldc 22
-      //   3660: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   3663: return
-      //   3664: goto -3536 -> 128
-      //   3667: goto -3526 -> 141
+      //   3614: aload 5
+      //   3616: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3619: checkcast 215	java/lang/String
+      //   3622: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3625: aload_3
+      //   3626: sipush 719
+      //   3629: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3632: goto +113 -> 3745
+      //   3635: aload_3
+      //   3636: aload 5
+      //   3638: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3641: checkcast 215	java/lang/String
+      //   3644: putfield 193	com/tencent/mm/protocal/protobuf/bnz:GIA	Ljava/lang/String;
+      //   3647: aload_3
+      //   3648: sipush 723
+      //   3651: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3654: goto +91 -> 3745
+      //   3657: aload_3
+      //   3658: aload 5
+      //   3660: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3663: checkcast 226	java/lang/Long
+      //   3666: invokevirtual 230	java/lang/Long:longValue	()J
+      //   3669: putfield 199	com/tencent/mm/protocal/protobuf/bnz:timestamp	J
+      //   3672: aload_3
+      //   3673: sipush 220
+      //   3676: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3679: goto +66 -> 3745
+      //   3682: aload_3
+      //   3683: sipush 221
+      //   3686: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3689: goto +56 -> 3745
+      //   3692: aload_3
+      //   3693: aload 5
+      //   3695: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3698: checkcast 267	com/tencent/mm/protocal/protobuf/dwc
+      //   3701: putfield 271	com/tencent/mm/protocal/protobuf/bnz:GIF	Lcom/tencent/mm/protocal/protobuf/dwc;
+      //   3704: aload_3
+      //   3705: sipush 800
+      //   3708: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3711: goto +34 -> 3745
+      //   3714: aload_3
+      //   3715: aload 5
+      //   3717: getfield 147	com/tencent/mm/plugin/expt/hellhound/core/a/a/a:qQS	Ljava/lang/Object;
+      //   3720: checkcast 273	com/tencent/mm/protocal/protobuf/bch
+      //   3723: putfield 277	com/tencent/mm/protocal/protobuf/bnz:GIG	Lcom/tencent/mm/protocal/protobuf/bch;
+      //   3726: aload_3
+      //   3727: sipush 801
+      //   3730: putfield 200	com/tencent/mm/protocal/protobuf/bnz:msgType	I
+      //   3733: goto +12 -> 3745
+      //   3736: ldc 22
+      //   3738: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   3741: return
+      //   3742: goto -3614 -> 128
+      //   3745: goto -3604 -> 141
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	3670	0	this	a
-      //   0	3670	1	paramMessage	Message
+      //   0	3748	0	this	a
+      //   0	3748	1	paramMessage	Message
       //   147	23	2	bool	boolean
-      //   140	3509	3	localObject1	Object
+      //   140	3587	3	localObject1	Object
       //   50	142	4	localReentrantLock	java.util.concurrent.locks.ReentrantLock
-      //   29	3596	5	locala	a
+      //   29	3687	5	locala	a
       //   38	144	6	localb	b
       //   132	10	7	localLinkedList	java.util.LinkedList
-      //   968	1269	8	localObject2	Object
+      //   984	1287	8	localObject2	Object
       // Exception table:
       //   from	to	target	type
       //   57	75	78	finally
@@ -1317,95 +1344,97 @@ public final class e
       //   120	128	78	finally
       //   128	134	78	finally
       //   141	191	78	finally
-      //   202	960	78	finally
-      //   960	1034	78	finally
-      //   1034	1098	78	finally
-      //   1098	1167	78	finally
-      //   1170	1233	78	finally
-      //   1236	1317	78	finally
-      //   1320	1402	78	finally
-      //   1405	1487	78	finally
-      //   1490	1554	78	finally
-      //   1557	1576	78	finally
-      //   1579	1679	78	finally
-      //   1682	1746	78	finally
-      //   1749	1849	78	finally
-      //   1852	1916	78	finally
-      //   1919	1983	78	finally
-      //   1986	1995	78	finally
-      //   1998	2022	78	finally
-      //   2025	2099	78	finally
-      //   2099	2149	78	finally
-      //   2152	2226	78	finally
-      //   2226	2250	78	finally
-      //   2253	2277	78	finally
-      //   2280	2299	78	finally
-      //   2302	2321	78	finally
-      //   2324	2343	78	finally
-      //   2346	2365	78	finally
-      //   2368	2387	78	finally
-      //   2390	2412	78	finally
-      //   2415	2437	78	finally
-      //   2440	2462	78	finally
-      //   2465	2487	78	finally
-      //   2490	2512	78	finally
-      //   2515	2537	78	finally
-      //   2540	2547	78	finally
-      //   2550	2557	78	finally
-      //   2560	2567	78	finally
-      //   2570	2577	78	finally
-      //   2580	2587	78	finally
-      //   2590	2612	78	finally
-      //   2615	2622	78	finally
-      //   2625	2632	78	finally
-      //   2635	2642	78	finally
-      //   2645	2652	78	finally
-      //   2655	2674	78	finally
-      //   2677	2696	78	finally
-      //   2699	2718	78	finally
-      //   2721	2740	78	finally
-      //   2743	2762	78	finally
-      //   2765	2784	78	finally
-      //   2787	2806	78	finally
-      //   2809	2828	78	finally
-      //   2831	2850	78	finally
-      //   2853	2872	78	finally
-      //   2875	2894	78	finally
-      //   2897	2916	78	finally
-      //   2919	2938	78	finally
-      //   2941	2960	78	finally
-      //   2963	2982	78	finally
-      //   2985	3004	78	finally
-      //   3007	3026	78	finally
-      //   3029	3048	78	finally
-      //   3051	3070	78	finally
-      //   3073	3092	78	finally
-      //   3095	3114	78	finally
-      //   3117	3136	78	finally
-      //   3139	3158	78	finally
-      //   3161	3180	78	finally
-      //   3183	3202	78	finally
-      //   3205	3224	78	finally
-      //   3227	3246	78	finally
-      //   3249	3268	78	finally
-      //   3271	3290	78	finally
-      //   3293	3312	78	finally
-      //   3315	3334	78	finally
-      //   3337	3356	78	finally
-      //   3359	3378	78	finally
-      //   3381	3400	78	finally
-      //   3403	3422	78	finally
-      //   3425	3444	78	finally
-      //   3447	3466	78	finally
-      //   3469	3488	78	finally
-      //   3491	3510	78	finally
-      //   3513	3532	78	finally
-      //   3535	3554	78	finally
-      //   3557	3576	78	finally
-      //   3579	3598	78	finally
-      //   3601	3620	78	finally
-      //   3623	3645	78	finally
-      //   3648	3655	78	finally
+      //   202	976	78	finally
+      //   976	1050	78	finally
+      //   1050	1114	78	finally
+      //   1114	1183	78	finally
+      //   1186	1249	78	finally
+      //   1252	1333	78	finally
+      //   1336	1418	78	finally
+      //   1421	1503	78	finally
+      //   1506	1570	78	finally
+      //   1573	1592	78	finally
+      //   1595	1695	78	finally
+      //   1698	1762	78	finally
+      //   1765	1865	78	finally
+      //   1868	1932	78	finally
+      //   1935	1999	78	finally
+      //   2002	2011	78	finally
+      //   2014	2038	78	finally
+      //   2041	2115	78	finally
+      //   2115	2174	78	finally
+      //   2177	2251	78	finally
+      //   2251	2284	78	finally
+      //   2287	2311	78	finally
+      //   2314	2333	78	finally
+      //   2336	2355	78	finally
+      //   2358	2377	78	finally
+      //   2380	2399	78	finally
+      //   2402	2421	78	finally
+      //   2424	2446	78	finally
+      //   2449	2471	78	finally
+      //   2474	2496	78	finally
+      //   2499	2521	78	finally
+      //   2524	2546	78	finally
+      //   2549	2571	78	finally
+      //   2574	2581	78	finally
+      //   2584	2591	78	finally
+      //   2594	2601	78	finally
+      //   2604	2611	78	finally
+      //   2614	2621	78	finally
+      //   2624	2646	78	finally
+      //   2649	2656	78	finally
+      //   2659	2666	78	finally
+      //   2669	2676	78	finally
+      //   2679	2686	78	finally
+      //   2689	2708	78	finally
+      //   2711	2730	78	finally
+      //   2733	2752	78	finally
+      //   2755	2774	78	finally
+      //   2777	2796	78	finally
+      //   2799	2818	78	finally
+      //   2821	2840	78	finally
+      //   2843	2862	78	finally
+      //   2865	2884	78	finally
+      //   2887	2906	78	finally
+      //   2909	2928	78	finally
+      //   2931	2950	78	finally
+      //   2953	2972	78	finally
+      //   2975	2994	78	finally
+      //   2997	3016	78	finally
+      //   3019	3038	78	finally
+      //   3041	3060	78	finally
+      //   3063	3082	78	finally
+      //   3085	3104	78	finally
+      //   3107	3126	78	finally
+      //   3129	3148	78	finally
+      //   3151	3170	78	finally
+      //   3173	3192	78	finally
+      //   3195	3214	78	finally
+      //   3217	3236	78	finally
+      //   3239	3258	78	finally
+      //   3261	3280	78	finally
+      //   3283	3302	78	finally
+      //   3305	3324	78	finally
+      //   3327	3346	78	finally
+      //   3349	3368	78	finally
+      //   3371	3390	78	finally
+      //   3393	3412	78	finally
+      //   3415	3434	78	finally
+      //   3437	3456	78	finally
+      //   3459	3478	78	finally
+      //   3481	3500	78	finally
+      //   3503	3522	78	finally
+      //   3525	3544	78	finally
+      //   3547	3566	78	finally
+      //   3569	3588	78	finally
+      //   3591	3610	78	finally
+      //   3613	3632	78	finally
+      //   3635	3654	78	finally
+      //   3657	3679	78	finally
+      //   3682	3689	78	finally
+      //   3692	3711	78	finally
+      //   3714	3733	78	finally
       //   22	40	91	java/lang/Exception
       //   45	57	91	java/lang/Exception
       //   79	91	91	java/lang/Exception

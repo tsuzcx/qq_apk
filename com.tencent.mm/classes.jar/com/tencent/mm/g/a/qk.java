@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class qk
   extends b
 {
-  public a dtr;
+  public a dFf;
   
   public qk()
   {
@@ -15,21 +15,21 @@ public final class qk
   
   private qk(byte paramByte)
   {
-    AppMethodBeat.i(125625);
-    this.dtr = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19826);
+    this.dFf = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(125625);
+    AppMethodBeat.o(19826);
   }
   
   public static final class a
   {
-    public int state = -1;
+    public int action;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.qk
  * JD-Core Version:    0.7.0.1
  */

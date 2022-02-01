@@ -12,7 +12,7 @@ public final class cy
   
   private cy(byte paramByte)
   {
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
   }
 }

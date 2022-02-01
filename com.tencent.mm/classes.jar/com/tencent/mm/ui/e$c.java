@@ -2,7 +2,7 @@ package com.tencent.mm.ui;
 
 public final class e$c
 {
-  public static String HgZ = "AntispamTicket";
+  public static String IUp = "AntispamTicket";
 }
 
 

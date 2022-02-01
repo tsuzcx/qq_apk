@@ -9,8 +9,8 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.MMBaseActivity;
 import com.tencent.mm.ui.base.y;
 import com.tencent.mm.ui.widget.a.d;
@@ -21,13 +21,13 @@ import com.tencent.mm.ui.widget.a.f.c;
 public class PermissionWarningDialog
   extends MMBaseActivity
 {
-  private DialogInterface.OnCancelListener VW;
-  private d iri;
+  private DialogInterface.OnCancelListener XL;
+  private d iKm;
   
   public PermissionWarningDialog()
   {
     AppMethodBeat.i(20694);
-    this.VW = new DialogInterface.OnCancelListener()
+    this.XL = new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -36,23 +36,23 @@ public class PermissionWarningDialog
         AppMethodBeat.o(20690);
       }
     };
-    this.iri = null;
+    this.iKm = null;
     AppMethodBeat.o(20694);
   }
   
-  private boolean aMD()
+  private boolean aPO()
   {
     AppMethodBeat.i(20699);
     if (getIntent() == null)
     {
-      ac.e("MicroMsg.PermissionWarningDialog", "Intent is null");
+      ad.e("MicroMsg.PermissionWarningDialog", "Intent is null");
       AppMethodBeat.o(20699);
       return false;
     }
     Object localObject = getIntent().getExtras();
     if (localObject == null)
     {
-      ac.e("MicroMsg.PermissionWarningDialog", "invalid params");
+      ad.e("MicroMsg.PermissionWarningDialog", "invalid params");
       AppMethodBeat.o(20699);
       return false;
     }
@@ -61,9 +61,9 @@ public class PermissionWarningDialog
     if (1 == i)
     {
       locala = new d.a(this);
-      locala.aRH(((Bundle)localObject).getString("warning_title"));
-      locala.aRI(((Bundle)localObject).getString("warning_content"));
-      locala.acM(2131755793).b(new DialogInterface.OnClickListener()
+      locala.aXF(((Bundle)localObject).getString("warning_title"));
+      locala.aXG(((Bundle)localObject).getString("warning_content"));
+      locala.afl(2131755793).c(new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -72,10 +72,10 @@ public class PermissionWarningDialog
           AppMethodBeat.o(20691);
         }
       });
-      locala.e(this.VW);
-      this.iri = locala.fvp();
-      this.iri.setCanceledOnTouchOutside(false);
-      this.iri.show();
+      locala.e(this.XL);
+      this.iKm = locala.fMb();
+      this.iKm.setCanceledOnTouchOutside(false);
+      this.iKm.show();
     }
     for (;;)
     {
@@ -86,9 +86,9 @@ public class PermissionWarningDialog
         locala = new d.a(this);
         ((Bundle)localObject).getBoolean("warning_filter", false);
         ((Bundle)localObject).getBoolean("warning_due2Exception", false);
-        locala.acF(2131755852);
-        locala.aRI(getString(2131755847));
-        locala.acM(2131755841).b(new DialogInterface.OnClickListener()
+        locala.afe(2131755852);
+        locala.aXG(getString(2131755847));
+        locala.afl(2131755841).c(new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -97,10 +97,10 @@ public class PermissionWarningDialog
             AppMethodBeat.o(20692);
           }
         });
-        locala.e(this.VW);
-        this.iri = locala.fvp();
-        this.iri.setCanceledOnTouchOutside(false);
-        this.iri.show();
+        locala.e(this.XL);
+        this.iKm = locala.fMb();
+        this.iKm.setCanceledOnTouchOutside(false);
+        this.iKm.show();
       }
       else
       {
@@ -108,16 +108,16 @@ public class PermissionWarningDialog
           break;
         }
         localObject = new f.a(this);
-        ((f.a)localObject).yi(false);
-        ((f.a)localObject).aRQ(getString(2131755812)).aRV(getString(2131755795)).aRU(getString(2131755813)).c(new f.c()
+        ((f.a)localObject).yU(false);
+        ((f.a)localObject).aXO(getString(2131755812)).aXT(getString(2131755795)).aXS(getString(2131755813)).c(new f.c()
         {
           public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
           {
             AppMethodBeat.i(20693);
             if (paramAnonymousBoolean)
             {
-              ac.i("MicroMsg.PermissionWarningDialog", "set MicroPhone unmute.");
-              ((AudioManager)ai.getContext().getSystemService("audio")).setMicrophoneMute(false);
+              ad.i("MicroMsg.PermissionWarningDialog", "set MicroPhone unmute.");
+              ((AudioManager)aj.getContext().getSystemService("audio")).setMicrophoneMute(false);
             }
             PermissionWarningDialog.this.finish();
             AppMethodBeat.o(20693);
@@ -137,22 +137,22 @@ public class PermissionWarningDialog
     ((Intent)localObject).putExtra("warning_filter", paramBoolean1);
     ((Intent)localObject).putExtra("warning_due2Exception", paramBoolean2);
     ((Intent)localObject).addFlags(805306368);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/permission/PermissionWarningDialog", "showReportAppListAlert", "(Landroid/content/Context;ZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/permission/PermissionWarningDialog", "showReportAppListAlert", "(Landroid/content/Context;ZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/permission/PermissionWarningDialog", "showReportAppListAlert", "(Landroid/content/Context;ZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(20700);
   }
   
-  public static void cU(Context paramContext)
+  public static void cS(Context paramContext)
   {
     AppMethodBeat.i(20701);
     Object localObject = new Intent(paramContext, PermissionWarningDialog.class);
     ((Intent)localObject).putExtra("warning_type", 3);
     ((Intent)localObject).addFlags(805306368);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/permission/PermissionWarningDialog", "showMicroPhoneMuteAlert", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/permission/PermissionWarningDialog", "showMicroPhoneMuteAlert", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/permission/PermissionWarningDialog", "showMicroPhoneMuteAlert", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(20701);
   }
@@ -162,7 +162,7 @@ public class PermissionWarningDialog
     AppMethodBeat.i(20695);
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    if (!aMD()) {
+    if (!aPO()) {
       finish();
     }
     AppMethodBeat.o(20695);
@@ -173,12 +173,12 @@ public class PermissionWarningDialog
     AppMethodBeat.i(20697);
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
-    if (this.iri != null)
+    if (this.iKm != null)
     {
-      this.iri.dismiss();
-      this.iri = null;
+      this.iKm.dismiss();
+      this.iKm = null;
     }
-    if (!aMD()) {
+    if (!aPO()) {
       finish();
     }
     AppMethodBeat.o(20697);

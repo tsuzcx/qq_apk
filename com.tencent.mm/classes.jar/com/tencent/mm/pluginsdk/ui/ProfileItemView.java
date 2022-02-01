@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.am;
 
 public abstract class ProfileItemView
   extends FrameLayout
 {
-  public ai piT;
+  public am pMt;
   
   public ProfileItemView(Context paramContext)
   {
@@ -28,13 +28,13 @@ public abstract class ProfileItemView
     init();
   }
   
-  public boolean aa(ai paramai)
+  public boolean aa(am paramam)
   {
-    this.piT = paramai;
-    return dqG();
+    this.pMt = paramam;
+    return dBj();
   }
   
-  public abstract boolean dqG();
+  public abstract boolean dBj();
   
   public abstract int getLayout();
   

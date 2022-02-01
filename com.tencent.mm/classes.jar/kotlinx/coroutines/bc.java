@@ -1,115 +1,39 @@
 package kotlinx.coroutines;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
-import kotlinx.coroutines.internal.a;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/EventLoop;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "isActive", "", "()Z", "isEmpty", "isUnconfinedLoopActive", "isUnconfinedQueueEmpty", "nextTime", "", "getNextTime", "()J", "shared", "unconfinedQueue", "Lkotlinx/coroutines/internal/ArrayQueue;", "Lkotlinx/coroutines/DispatchedTask;", "useCount", "decrementUseCount", "", "unconfined", "delta", "dispatchUnconfined", "task", "incrementUseCount", "processNextEvent", "processUnconfinedEvent", "shouldBeProcessedFromContext", "shutdown", "kotlinx-coroutines-core"})
-public abstract class bc
-  extends ab
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/Empty;", "Lkotlinx/coroutines/Incomplete;", "isActive", "", "(Z)V", "()Z", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
+final class bc
+  implements bm
 {
-  private boolean LRA;
-  private a<aw<?>> LRB;
-  private long LRz;
+  final boolean isActive;
   
-  private static long zF(boolean paramBoolean)
+  public bc(boolean paramBoolean)
   {
-    if (paramBoolean) {
-      return 4294967296L;
-    }
-    return 1L;
+    this.isActive = paramBoolean;
   }
   
-  public final void b(aw<?> paramaw)
+  public final ca gvq()
   {
-    a locala2 = this.LRB;
-    a locala1 = locala2;
-    if (locala2 == null)
+    return null;
+  }
+  
+  public final boolean isActive()
+  {
+    return this.isActive;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(117965);
+    StringBuilder localStringBuilder = new StringBuilder("Empty{");
+    if (this.isActive) {}
+    for (String str = "Active";; str = "New")
     {
-      locala1 = new a();
-      this.LRB = locala1;
-    }
-    locala1.addLast(paramaw);
-  }
-  
-  public long gdR()
-  {
-    if (!gdT()) {
-      return 9223372036854775807L;
-    }
-    return gdS();
-  }
-  
-  protected long gdS()
-  {
-    a locala = this.LRB;
-    if (locala == null) {}
-    while (locala.isEmpty()) {
-      return 9223372036854775807L;
-    }
-    return 0L;
-  }
-  
-  public final boolean gdT()
-  {
-    Object localObject = this.LRB;
-    if (localObject == null) {
-      return false;
-    }
-    localObject = (aw)((a)localObject).geu();
-    if (localObject == null) {
-      return false;
-    }
-    ((aw)localObject).run();
-    return true;
-  }
-  
-  public final boolean gdU()
-  {
-    return this.LRz >= zF(true);
-  }
-  
-  public final boolean gdV()
-  {
-    a locala = this.LRB;
-    if (locala != null) {
-      return locala.isEmpty();
-    }
-    return true;
-  }
-  
-  public final void gdW()
-  {
-    int i = 1;
-    this.LRz -= zF(true);
-    if (this.LRz > 0L) {}
-    do
-    {
-      return;
-      if (al.gdD())
-      {
-        if (this.LRz == 0L) {}
-        while (i == 0)
-        {
-          throw ((Throwable)new AssertionError());
-          i = 0;
-        }
-      }
-    } while (!this.LRA);
-    shutdown();
-  }
-  
-  protected boolean isEmpty()
-  {
-    return gdV();
-  }
-  
-  protected void shutdown() {}
-  
-  public final void zG(boolean paramBoolean)
-  {
-    this.LRz += zF(paramBoolean);
-    if (!paramBoolean) {
-      this.LRA = true;
+      str = str + '}';
+      AppMethodBeat.o(117965);
+      return str;
     }
   }
 }

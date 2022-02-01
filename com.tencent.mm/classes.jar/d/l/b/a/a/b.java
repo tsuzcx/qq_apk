@@ -4,14 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.e;
 import d.f;
 import d.g;
-import d.g.b.s;
-import d.g.b.w;
-import d.l.b.a.x;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.l.b.a.w;
 import d.v;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
@@ -19,29 +21,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-@d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"createAnnotationInstance", "T", "", "annotationClass", "Ljava/lang/Class;", "values", "", "", "methods", "", "Ljava/lang/reflect/Method;", "(Ljava/lang/Class;Ljava/util/Map;Ljava/util/List;)Ljava/lang/Object;", "throwIllegalArgumentType", "", "index", "", "name", "expectedJvmType", "transformKotlinToJvm", "expectedType", "kotlin-reflection", "hashCode", "toString"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"createAnnotationInstance", "T", "", "annotationClass", "Ljava/lang/Class;", "values", "", "", "methods", "", "Ljava/lang/reflect/Method;", "(Ljava/lang/Class;Ljava/util/Map;Ljava/util/List;)Ljava/lang/Object;", "throwIllegalArgumentType", "", "index", "", "name", "expectedJvmType", "transformKotlinToJvm", "expectedType", "kotlin-reflection"})
 public final class b
 {
-  static
-  {
-    AppMethodBeat.i(56584);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new s(w.g(b.class, "kotlin-reflection"), "hashCode", "<v#0>")), (d.l.k)w.a(new s(w.g(b.class, "kotlin-reflection"), "toString", "<v#1>")) };
-    AppMethodBeat.o(56584);
-  }
-  
   public static final <T> T a(Class<T> paramClass, final Map<String, ? extends Object> paramMap, final List<Method> paramList)
   {
     AppMethodBeat.i(56585);
-    d.g.b.k.h(paramClass, "annotationClass");
-    d.g.b.k.h(paramMap, "values");
-    d.g.b.k.h(paramList, "methods");
+    p.h(paramClass, "annotationClass");
+    p.h(paramMap, "values");
+    p.h(paramList, "methods");
     final a locala = new a(paramClass, paramList, paramMap);
-    final f localf1 = g.K((d.g.a.a)new b(paramMap));
-    final d.l.k localk1 = $$delegatedProperties[0];
-    final f localf2 = g.K((d.g.a.a)new d(paramClass, paramMap));
-    final d.l.k localk2 = $$delegatedProperties[1];
+    final f localf1 = g.O((d.g.a.a)new b(paramMap));
+    final f localf2 = g.O((d.g.a.a)new d(paramClass, paramMap));
     paramList = paramClass.getClassLoader();
-    paramMap = (InvocationHandler)new c(paramClass, localf2, localk2, localf1, localk1, locala, paramMap);
+    paramMap = (InvocationHandler)new c(paramClass, localf2, localf1, locala, paramMap);
     paramClass = Proxy.newProxyInstance(paramList, new Class[] { paramClass }, paramMap);
     if (paramClass == null)
     {
@@ -53,9 +46,69 @@ public final class b
     return paramClass;
   }
   
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"equals", "", "T", "", "other", "invoke"})
+  static final Object f(Object paramObject, Class<?> paramClass)
+  {
+    AppMethodBeat.i(187765);
+    if ((paramObject instanceof Class))
+    {
+      AppMethodBeat.o(187765);
+      return null;
+    }
+    Object localObject;
+    if ((paramObject instanceof d.l.b)) {
+      localObject = d.g.a.a((d.l.b)paramObject);
+    }
+    while (paramClass.isInstance(localObject))
+    {
+      AppMethodBeat.o(187765);
+      return localObject;
+      localObject = paramObject;
+      if ((paramObject instanceof Object[]))
+      {
+        if (((Object[])paramObject instanceof Class[]))
+        {
+          AppMethodBeat.o(187765);
+          return null;
+        }
+        if (((Object[])paramObject instanceof d.l.b[]))
+        {
+          if (paramObject == null)
+          {
+            paramObject = new v("null cannot be cast to non-null type kotlin.Array<kotlin.reflect.KClass<*>>");
+            AppMethodBeat.o(187765);
+            throw paramObject;
+          }
+          paramObject = (d.l.b[])paramObject;
+          localObject = (Collection)new ArrayList(paramObject.length);
+          int j = paramObject.length;
+          int i = 0;
+          while (i < j)
+          {
+            ((Collection)localObject).add(d.g.a.a(paramObject[i]));
+            i += 1;
+          }
+          paramObject = ((Collection)localObject).toArray(new Class[0]);
+          localObject = paramObject;
+          if (paramObject == null)
+          {
+            paramObject = new v("null cannot be cast to non-null type kotlin.Array<T>");
+            AppMethodBeat.o(187765);
+            throw paramObject;
+          }
+        }
+        else
+        {
+          localObject = (Object[])paramObject;
+        }
+      }
+    }
+    AppMethodBeat.o(187765);
+    return null;
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"equals", "", "T", "", "other", "invoke"})
   static final class a
-    extends d.g.b.l
+    extends q
     implements d.g.a.b<Object, Boolean>
   {
     a(Class paramClass, List paramList, Map paramMap)
@@ -63,7 +116,7 @@ public final class b
       super();
     }
     
-    public final boolean eZ(Object paramObject)
+    public final boolean fb(Object paramObject)
     {
       Object localObject2 = null;
       AppMethodBeat.i(56578);
@@ -80,7 +133,7 @@ public final class b
             localObject1 = d.g.a.a((d.l.b)localObject3);
           }
         }
-        if (d.g.b.k.g(localObject1, this.KYp))
+        if (p.i(localObject1, this.MPm))
         {
           localObject1 = (Iterable)paramList;
           boolean bool;
@@ -212,7 +265,7 @@ public final class b
               bool = Arrays.equals((Object[])localObject3, (Object[])localObject2);
               break label206;
             }
-            bool = d.g.b.k.g(localObject3, localObject2);
+            bool = p.i(localObject3, localObject2);
             break label206;
             label640:
             break;
@@ -225,9 +278,9 @@ public final class b
     }
   }
   
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "T", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "", "invoke"})
   static final class b
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<Integer>
   {
     b(Map paramMap)
@@ -236,21 +289,21 @@ public final class b
     }
   }
   
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "T", "<anonymous parameter 0>", "kotlin.jvm.PlatformType", "method", "Ljava/lang/reflect/Method;", "args", "", "invoke", "(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "<anonymous parameter 0>", "kotlin.jvm.PlatformType", "method", "Ljava/lang/reflect/Method;", "args", "", "invoke", "(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class c
     implements InvocationHandler
   {
-    c(Class paramClass, f paramf1, d.l.k paramk1, f paramf2, d.l.k paramk2, b.a parama, Map paramMap) {}
+    c(Class paramClass, f paramf1, f paramf2, b.a parama, Map paramMap) {}
     
     public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
     {
       AppMethodBeat.i(56580);
-      d.g.b.k.g(paramMethod, "method");
+      p.g(paramMethod, "method");
       paramObject = paramMethod.getName();
       if (paramObject == null) {}
-      while ((d.g.b.k.g(paramObject, "equals")) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1))
+      while ((p.i(paramObject, "equals")) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1))
       {
-        boolean bool = locala.eZ(e.S(paramArrayOfObject));
+        boolean bool = locala.fb(e.T(paramArrayOfObject));
         AppMethodBeat.o(56580);
         return Boolean.valueOf(bool);
         switch (paramObject.hashCode())
@@ -276,7 +329,7 @@ public final class b
         case 1444986633: 
           if (paramObject.equals("annotationType"))
           {
-            paramObject = this.KYp;
+            paramObject = this.MPm;
             AppMethodBeat.o(56580);
             return paramObject;
           }
@@ -294,15 +347,15 @@ public final class b
       if (paramArrayOfObject == null) {
         paramObject = new Object[0];
       }
-      paramObject = (Throwable)new x(e.V(paramObject) + ')');
+      paramObject = (Throwable)new w(e.W(paramObject) + ')');
       AppMethodBeat.o(56580);
       throw paramObject;
     }
   }
   
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "T", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "", "invoke"})
   static final class d
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<String>
   {
     d(Class paramClass, Map paramMap)
@@ -310,17 +363,17 @@ public final class b
       super();
     }
     
-    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "T", "", "entry", "", "invoke"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "T", "", "entry", "", "invoke"})
     static final class a
-      extends d.g.b.l
+      extends q
       implements d.g.a.b<Map.Entry<? extends String, ? extends Object>, String>
     {
-      public static final a KYx;
+      public static final a MPt;
       
       static
       {
         AppMethodBeat.i(56582);
-        KYx = new a();
+        MPt = new a();
         AppMethodBeat.o(56582);
       }
       
@@ -333,7 +386,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     d.l.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.nearby;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.plugin.nearby.a.f;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
   implements d
 {
-  private c ntp;
+  private c nUl;
   
   public Plugin()
   {
     AppMethodBeat.i(89751);
-    this.ntp = new c()
+    this.nUl = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a ab(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.b.a aa(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(89750);
         paramAnonymousContext = new com.tencent.mm.plugin.nearby.ui.a(paramAnonymousContext);
@@ -29,7 +29,7 @@ public class Plugin
     AppMethodBeat.o(89751);
   }
   
-  public m createApplication()
+  public n createApplication()
   {
     AppMethodBeat.i(89752);
     a locala = new a();
@@ -37,7 +37,7 @@ public class Plugin
     return locala;
   }
   
-  public aw createSubCore()
+  public ax createSubCore()
   {
     AppMethodBeat.i(89753);
     f localf = new f();
@@ -47,7 +47,7 @@ public class Plugin
   
   public c getContactWidgetFactory()
   {
-    return this.ntp;
+    return this.nUl;
   }
 }
 

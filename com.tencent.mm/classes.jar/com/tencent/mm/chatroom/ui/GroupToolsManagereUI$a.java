@@ -9,22 +9,22 @@ import android.support.v7.widget.a.a.a;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Collections;
 import java.util.List;
 
 public final class GroupToolsManagereUI$a
   extends a.a
 {
-  private boolean cWz = false;
-  private List fvr;
-  private GroupToolsManagereUI.b fvs;
-  private boolean fvt = true;
+  private boolean dhP = false;
+  private boolean fOA = true;
+  private List fOy;
+  private GroupToolsManagereUI.b fOz;
   
   public GroupToolsManagereUI$a(List paramList, GroupToolsManagereUI.b paramb)
   {
-    this.fvr = paramList;
-    this.fvs = paramb;
+    this.fOy = paramList;
+    this.fOz = paramb;
   }
   
   public final void L(RecyclerView.w paramw) {}
@@ -41,26 +41,26 @@ public final class GroupToolsManagereUI$a
   {
     AppMethodBeat.i(182179);
     ViewPropertyAnimator localViewPropertyAnimator;
-    if (this.fvt)
+    if (this.fOA)
     {
-      localViewPropertyAnimator = paramw.asD.animate();
+      localViewPropertyAnimator = paramw.auu.animate();
       if (Build.VERSION.SDK_INT >= 21)
       {
-        paramw.asD.setTranslationZ(20.0F);
+        paramw.auu.setTranslationZ(20.0F);
         localViewPropertyAnimator.start();
       }
-      this.fvt = false;
+      this.fOA = false;
     }
-    if (this.cWz)
+    if (this.dhP)
     {
-      localViewPropertyAnimator = paramw.asD.animate();
+      localViewPropertyAnimator = paramw.auu.animate();
       if (Build.VERSION.SDK_INT >= 21)
       {
-        paramw.asD.setTranslationZ(0.0F);
+        paramw.auu.setTranslationZ(0.0F);
         localViewPropertyAnimator.start();
       }
-      this.cWz = false;
-      this.fvt = true;
+      this.dhP = false;
+      this.fOA = true;
     }
     super.a(paramCanvas, paramRecyclerView, paramw, paramFloat1, paramFloat2, paramInt, paramBoolean);
     AppMethodBeat.o(182179);
@@ -69,29 +69,29 @@ public final class GroupToolsManagereUI$a
   public final boolean a(RecyclerView paramRecyclerView, RecyclerView.w paramw1, RecyclerView.w paramw2)
   {
     AppMethodBeat.i(182176);
-    int i = paramw1.lv();
-    int k = paramw2.lv();
-    ac.d("MicroMsg.roomtools.GroupToolsManagereUI", "onMove fromIndex:%s toIndex:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
+    int i = paramw1.lN();
+    int k = paramw2.lN();
+    ad.d("MicroMsg.roomtools.GroupToolsManagereUI", "onMove fromIndex:%s toIndex:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
     if (i < k)
     {
       j = i;
       while (j < k)
       {
-        Collections.swap(this.fvr, j, j + 1);
+        Collections.swap(this.fOy, j, j + 1);
         j += 1;
       }
     }
     int j = i;
     while (j > k)
     {
-      Collections.swap(this.fvr, j, j - 1);
+      Collections.swap(this.fOy, j, j - 1);
       j -= 1;
     }
-    paramRecyclerView.getAdapter().ap(i, k);
-    if (this.fvs != null) {
-      this.fvs.Ww();
+    paramRecyclerView.getAdapter().aq(i, k);
+    if (this.fOz != null) {
+      this.fOz.YP();
     }
-    paramw1.asD.performHapticFeedback(0, 2);
+    paramw1.auu.performHapticFeedback(0, 2);
     AppMethodBeat.o(182176);
     return true;
   }
@@ -100,7 +100,7 @@ public final class GroupToolsManagereUI$a
   {
     AppMethodBeat.i(182178);
     super.d(paramRecyclerView, paramw);
-    this.cWz = true;
+    this.dhP = true;
     AppMethodBeat.o(182178);
   }
   
@@ -111,14 +111,14 @@ public final class GroupToolsManagereUI$a
     AppMethodBeat.o(182177);
   }
   
-  public final boolean mW()
+  public final boolean no()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.GroupToolsManagereUI.a
  * JD-Core Version:    0.7.0.1
  */

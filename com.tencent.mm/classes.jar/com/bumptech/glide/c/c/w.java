@@ -17,29 +17,29 @@ import java.util.Set;
 public final class w<Data>
   implements n<Uri, Data>
 {
-  private static final Set<String> aIT;
-  private final c<Data> aIU;
+  private static final Set<String> aKK;
+  private final c<Data> aKL;
   
   static
   {
     AppMethodBeat.i(77322);
-    aIT = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[] { "file", "android.resource", "content" })));
+    aKK = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[] { "file", "android.resource", "content" })));
     AppMethodBeat.o(77322);
   }
   
   public w(c<Data> paramc)
   {
-    this.aIU = paramc;
+    this.aKL = paramc;
   }
   
   public static final class a
     implements o<Uri, AssetFileDescriptor>, w.c<AssetFileDescriptor>
   {
-    private final ContentResolver aDI;
+    private final ContentResolver aFz;
     
     public a(ContentResolver paramContentResolver)
     {
-      this.aDI = paramContentResolver;
+      this.aFz = paramContentResolver;
     }
     
     public final n<Uri, AssetFileDescriptor> a(r paramr)
@@ -53,7 +53,7 @@ public final class w<Data>
     public final d<AssetFileDescriptor> l(Uri paramUri)
     {
       AppMethodBeat.i(77315);
-      paramUri = new a(this.aDI, paramUri);
+      paramUri = new a(this.aFz, paramUri);
       AppMethodBeat.o(77315);
       return paramUri;
     }
@@ -62,11 +62,11 @@ public final class w<Data>
   public static final class b
     implements o<Uri, ParcelFileDescriptor>, w.c<ParcelFileDescriptor>
   {
-    private final ContentResolver aDI;
+    private final ContentResolver aFz;
     
     public b(ContentResolver paramContentResolver)
     {
-      this.aDI = paramContentResolver;
+      this.aFz = paramContentResolver;
     }
     
     public final n<Uri, ParcelFileDescriptor> a(r paramr)
@@ -80,7 +80,7 @@ public final class w<Data>
     public final d<ParcelFileDescriptor> l(Uri paramUri)
     {
       AppMethodBeat.i(77316);
-      paramUri = new i(this.aDI, paramUri);
+      paramUri = new i(this.aFz, paramUri);
       AppMethodBeat.o(77316);
       return paramUri;
     }
@@ -94,11 +94,11 @@ public final class w<Data>
   public static final class d
     implements o<Uri, InputStream>, w.c<InputStream>
   {
-    private final ContentResolver aDI;
+    private final ContentResolver aFz;
     
     public d(ContentResolver paramContentResolver)
     {
-      this.aDI = paramContentResolver;
+      this.aFz = paramContentResolver;
     }
     
     public final n<Uri, InputStream> a(r paramr)
@@ -112,7 +112,7 @@ public final class w<Data>
     public final d<InputStream> l(Uri paramUri)
     {
       AppMethodBeat.i(77318);
-      paramUri = new com.bumptech.glide.c.a.n(this.aDI, paramUri);
+      paramUri = new com.bumptech.glide.c.a.n(this.aFz, paramUri);
       AppMethodBeat.o(77318);
       return paramUri;
     }

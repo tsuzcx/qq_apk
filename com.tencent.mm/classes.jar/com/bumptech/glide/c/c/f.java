@@ -15,27 +15,27 @@ import java.io.InputStream;
 public final class f<Data>
   implements n<File, Data>
 {
-  private final d<Data> aIf;
+  private final d<Data> aJW;
   
   public f(d<Data> paramd)
   {
-    this.aIf = paramd;
+    this.aJW = paramd;
   }
   
   public static class a<Data>
     implements o<File, Data>
   {
-    private final f.d<Data> aIg;
+    private final f.d<Data> aJX;
     
     public a(f.d<Data> paramd)
     {
-      this.aIg = paramd;
+      this.aJX = paramd;
     }
     
     public final n<File, Data> a(r paramr)
     {
       AppMethodBeat.i(77226);
-      paramr = new f(this.aIg);
+      paramr = new f(this.aJX);
       AppMethodBeat.o(77226);
       return paramr;
     }
@@ -48,7 +48,7 @@ public final class f<Data>
     {
       super()
       {
-        public final Class<ParcelFileDescriptor> nU()
+        public final Class<ParcelFileDescriptor> om()
         {
           return ParcelFileDescriptor.class;
         }
@@ -61,14 +61,14 @@ public final class f<Data>
   static final class c<Data>
     implements d<Data>
   {
-    private final f.d<Data> aIg;
+    private final f.d<Data> aJX;
     private Data data;
     private final File file;
     
     c(File paramFile, f.d<Data> paramd)
     {
       this.file = paramFile;
-      this.aIg = paramd;
+      this.aJX = paramd;
     }
     
     public final void a(g paramg, d.a<? super Data> parama)
@@ -76,8 +76,8 @@ public final class f<Data>
       AppMethodBeat.i(77230);
       try
       {
-        this.data = this.aIg.u(this.file);
-        parama.R(this.data);
+        this.data = this.aJX.u(this.file);
+        parama.S(this.data);
         AppMethodBeat.o(77230);
         return;
       }
@@ -97,7 +97,7 @@ public final class f<Data>
       if (this.data != null) {
         try
         {
-          this.aIg.Q(this.data);
+          this.aJX.R(this.data);
           AppMethodBeat.o(77231);
           return;
         }
@@ -106,25 +106,25 @@ public final class f<Data>
       AppMethodBeat.o(77231);
     }
     
-    public final Class<Data> nU()
+    public final Class<Data> om()
     {
       AppMethodBeat.i(77232);
-      Class localClass = this.aIg.nU();
+      Class localClass = this.aJX.om();
       AppMethodBeat.o(77232);
       return localClass;
     }
     
-    public final a nV()
+    public final a on()
     {
-      return a.aCP;
+      return a.aEG;
     }
   }
   
   public static abstract interface d<Data>
   {
-    public abstract void Q(Data paramData);
+    public abstract void R(Data paramData);
     
-    public abstract Class<Data> nU();
+    public abstract Class<Data> om();
     
     public abstract Data u(File paramFile);
   }
@@ -136,7 +136,7 @@ public final class f<Data>
     {
       super()
       {
-        public final Class<InputStream> nU()
+        public final Class<InputStream> om()
         {
           return InputStream.class;
         }

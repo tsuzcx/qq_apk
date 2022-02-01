@@ -1,26 +1,25 @@
 package com.tencent.mm.plugin.location.ui.impl;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
 
 public final class g
 {
   private int enterScene;
-  private int fnm;
-  private int iCp;
-  int uex;
+  private int fFu;
+  private int iVz;
+  int vhg;
   
   private g()
   {
     AppMethodBeat.i(56107);
-    this.iCp = b.ueH.ordinal();
+    this.iVz = b.vhq.ordinal();
     AppMethodBeat.o(56107);
   }
   
   private void report()
   {
     AppMethodBeat.i(56111);
-    h.wUl.f(17993, new Object[] { Integer.valueOf(this.fnm), Integer.valueOf(this.enterScene), Integer.valueOf(this.iCp), Integer.valueOf(this.uex) });
+    com.tencent.mm.plugin.report.service.g.yhR.f(17993, new Object[] { Integer.valueOf(this.fFu), Integer.valueOf(this.enterScene), Integer.valueOf(this.iVz), Integer.valueOf(this.vhg) });
     reset();
     AppMethodBeat.o(56111);
   }
@@ -29,16 +28,16 @@ public final class g
   {
     AppMethodBeat.i(56110);
     this.enterScene = 0;
-    this.iCp = b.ueH.ordinal();
-    this.uex = 0;
-    this.fnm = 0;
+    this.iVz = b.vhq.ordinal();
+    this.vhg = 0;
+    this.fFu = 0;
     AppMethodBeat.o(56110);
   }
   
   public final void a(g.a parama)
   {
     AppMethodBeat.i(56109);
-    this.fnm = parama.ordinal();
+    this.fFu = parama.ordinal();
     report();
     AppMethodBeat.o(56109);
   }
@@ -46,7 +45,7 @@ public final class g
   public final void a(b paramb)
   {
     AppMethodBeat.i(56108);
-    this.iCp = paramb.ordinal();
+    this.iVz = paramb.ordinal();
     AppMethodBeat.o(56108);
   }
   
@@ -73,13 +72,13 @@ public final class g
     static
     {
       AppMethodBeat.i(56105);
-      ueC = new b("UNKNOWN", 0);
-      ueD = new b("SEARCH_LIST", 1);
-      ueE = new b("SEARCH_MAP", 2);
-      ueF = new b("DRAG_MAP", 3);
-      ueG = new b("LIST", 4);
-      ueH = new b("DIRECT", 5);
-      ueI = new b[] { ueC, ueD, ueE, ueF, ueG, ueH };
+      vhl = new b("UNKNOWN", 0);
+      vhm = new b("SEARCH_LIST", 1);
+      vhn = new b("SEARCH_MAP", 2);
+      vho = new b("DRAG_MAP", 3);
+      vhp = new b("LIST", 4);
+      vhq = new b("DIRECT", 5);
+      vhr = new b[] { vhl, vhm, vhn, vho, vhp, vhq };
       AppMethodBeat.o(56105);
     }
     
@@ -88,19 +87,19 @@ public final class g
   
   static final class c
   {
-    static g ueJ;
+    static g vhs;
     
     static
     {
       AppMethodBeat.i(56106);
-      ueJ = new g((byte)0);
+      vhs = new g((byte)0);
       AppMethodBeat.o(56106);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.g
  * JD-Core Version:    0.7.0.1
  */

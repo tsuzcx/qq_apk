@@ -7,17 +7,17 @@ import java.util.Iterator;
 public final class a<T>
   implements b.a<T>
 {
-  private final Object GzG;
-  private HashSet<Object<T>> jys;
+  private final Object IlA;
+  private HashSet<Object<T>> jSp;
   private final String mName;
   private T mValue;
   
   private a(String paramString)
   {
     AppMethodBeat.i(133213);
-    this.GzG = new Object();
+    this.IlA = new Object();
     this.mName = paramString;
-    this.jys = new HashSet();
+    this.jSp = new HashSet();
     AppMethodBeat.o(133213);
   }
   
@@ -48,9 +48,9 @@ public final class a<T>
     while (i == 0)
     {
       this.mValue = ???;
-      synchronized (this.GzG)
+      synchronized (this.IlA)
       {
-        localObject1 = this.jys.iterator();
+        localObject1 = this.jSp.iterator();
         if (!((Iterator)localObject1).hasNext()) {
           break label87;
         }

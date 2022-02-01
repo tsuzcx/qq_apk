@@ -4,16 +4,15 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.vfs.p;
+import com.tencent.mm.app.d;
+import com.tencent.mm.sdk.platformtools.ax;
 import java.io.File;
 
 public final class b
 {
-  private static final Boolean[] Goi = { null };
+  private static final Boolean[] HZV = { null };
   
-  private static String Jk(String paramString)
+  private static String MB(String paramString)
   {
     AppMethodBeat.i(176869);
     File localFile = new File(paramString);
@@ -25,154 +24,124 @@ public final class b
     }
     catch (Throwable localThrowable)
     {
-      ExtStorageMigrateMonitor.eTC().printErrStackTrace("MicroMsg.ExtStorageMigrateStatus", localThrowable, "[-] Fail to get canonical path for: %s", new Object[] { paramString });
+      ExtStorageMigrateMonitor.fjf().printErrStackTrace("MicroMsg.ExtStorageMigrateStatus", localThrowable, "[-] Fail to get canonical path for: %s", new Object[] { paramString });
       paramString = localFile.getAbsolutePath();
       AppMethodBeat.o(176869);
     }
     return paramString;
   }
   
-  public static boolean aKl(String paramString)
+  public static boolean aPQ(String paramString)
   {
     AppMethodBeat.i(176862);
-    paramString = "key_is_migrated_" + Jk(paramString);
-    boolean bool = aw.aKT("extmig_status_memo_storage").getBoolean(paramString, false);
+    paramString = "key_is_migrated_" + MB(paramString);
+    boolean bool = ax.aQz("extmig_status_memo_storage").getBoolean(paramString, false);
     AppMethodBeat.o(176862);
     return bool;
   }
   
-  static void aKm(String paramString)
+  static void aPR(String paramString)
   {
     AppMethodBeat.i(176863);
-    paramString = "key_is_migrated_" + Jk(paramString);
-    aw.aKT("extmig_status_memo_storage").encode(paramString, true);
+    paramString = "key_is_migrated_" + MB(paramString);
+    ax.aQz("extmig_status_memo_storage").encode(paramString, true);
     AppMethodBeat.o(176863);
   }
   
-  public static boolean eTQ()
+  static void fjA()
+  {
+    AppMethodBeat.i(189891);
+    ax.aQz("extmig_status_memo_storage").encode("key_indicate_rescan_needed_by_migrate_routine", true);
+    AppMethodBeat.o(189891);
+  }
+  
+  static void fjB()
+  {
+    AppMethodBeat.i(189892);
+    ax.aQz("extmig_status_memo_storage").encode("key_indicate_rescan_needed_by_migrate_routine", false);
+    AppMethodBeat.o(189892);
+  }
+  
+  public static boolean fjC()
+  {
+    AppMethodBeat.i(176867);
+    AppMethodBeat.o(176867);
+    return true;
+  }
+  
+  public static void fjD()
+  {
+    AppMethodBeat.i(176868);
+    AppMethodBeat.o(176868);
+  }
+  
+  public static boolean fjt()
   {
     AppMethodBeat.i(176864);
-    boolean bool = aw.aKT("extmig_status_memo_storage").getBoolean("key_is_olddata_ignored", false);
+    boolean bool = ax.aQz("extmig_status_memo_storage").getBoolean("key_is_olddata_ignored_v2", false);
     AppMethodBeat.o(176864);
     return bool;
   }
   
-  public static boolean eTR()
+  public static boolean fju()
   {
-    AppMethodBeat.i(206920);
-    boolean bool = aw.aKT("extmig_status_memo_storage").getBoolean("key_indicate_goon_by_migrate_routine", false);
-    AppMethodBeat.o(206920);
+    AppMethodBeat.i(189885);
+    boolean bool = ax.aQz("extmig_status_memo_storage").getBoolean("key_indicate_goon_by_migrate_routine", false);
+    AppMethodBeat.o(189885);
     return bool;
   }
   
-  static void eTS()
+  static void fjv()
   {
-    AppMethodBeat.i(206921);
-    aw.aKT("extmig_status_memo_storage").encode("key_indicate_goon_by_migrate_routine", true);
-    AppMethodBeat.o(206921);
+    AppMethodBeat.i(189886);
+    ax.aQz("extmig_status_memo_storage").encode("key_indicate_goon_by_migrate_routine", true);
+    AppMethodBeat.o(189886);
   }
   
-  static void eTT()
+  static void fjw()
   {
-    AppMethodBeat.i(206922);
-    aw.aKT("extmig_status_memo_storage").encode("key_indicate_goon_by_migrate_routine", false);
-    AppMethodBeat.o(206922);
+    AppMethodBeat.i(189887);
+    ax.aQz("extmig_status_memo_storage").encode("key_indicate_goon_by_migrate_routine", false);
+    AppMethodBeat.o(189887);
   }
   
-  static void eTU()
+  static void fjx()
   {
-    AppMethodBeat.i(206923);
-    aw.aKT("extmig_status_memo_storage").encode("key_indicate_migrating_by_migrate_routine", true);
-    AppMethodBeat.o(206923);
+    AppMethodBeat.i(189888);
+    ax.aQz("extmig_status_memo_storage").encode("key_indicate_migrating_by_migrate_routine", true);
+    AppMethodBeat.o(189888);
   }
   
-  static void eTV()
+  static void fjy()
   {
-    AppMethodBeat.i(206924);
-    aw.aKT("extmig_status_memo_storage").encode("key_indicate_migrating_by_migrate_routine", false);
-    AppMethodBeat.o(206924);
+    AppMethodBeat.i(189889);
+    ax.aQz("extmig_status_memo_storage").encode("key_indicate_migrating_by_migrate_routine", false);
+    AppMethodBeat.o(189889);
   }
   
-  public static boolean eTW()
+  public static boolean fjz()
   {
-    AppMethodBeat.i(206925);
-    boolean bool = aw.aKT("extmig_status_memo_storage").getBoolean("key_indicate_rescan_needed_by_migrate_routine", false);
-    AppMethodBeat.o(206925);
+    AppMethodBeat.i(189890);
+    boolean bool = ax.aQz("extmig_status_memo_storage").getBoolean("key_indicate_rescan_needed_by_migrate_routine", false);
+    AppMethodBeat.o(189890);
     return bool;
   }
   
-  static void eTX()
-  {
-    AppMethodBeat.i(206926);
-    aw.aKT("extmig_status_memo_storage").encode("key_indicate_rescan_needed_by_migrate_routine", true);
-    AppMethodBeat.o(206926);
-  }
-  
-  static void eTY()
-  {
-    AppMethodBeat.i(206927);
-    aw.aKT("extmig_status_memo_storage").encode("key_indicate_rescan_needed_by_migrate_routine", false);
-    AppMethodBeat.o(206927);
-  }
-  
-  public static boolean eTZ()
-  {
-    AppMethodBeat.i(176867);
-    synchronized (Goi)
-    {
-      if (Goi[0] == null)
-      {
-        boolean[] arrayOfBoolean1 = p.me("extmig_switch_storage", "is_routine_enabled");
-        Goi[0] = Boolean.valueOf(arrayOfBoolean1[0]);
-        if (arrayOfBoolean1[1] != 0) {
-          ExtStorageMigrateMonitor.as(1317L, 21L);
-        }
-      }
-      boolean bool = Goi[0].booleanValue();
-      AppMethodBeat.o(176867);
-      return bool;
-    }
-  }
-  
-  public static void eUa()
-  {
-    AppMethodBeat.i(176868);
-    if (bs.getInt(com.tencent.mm.plugin.expt.e.b.cmk().fS("clicfg_extmig_switch_open", "0"), 0) > 0) {
-      synchronized (Goi)
-      {
-        if ((Goi[0] != null) && (Goi[0].booleanValue()))
-        {
-          ExtStorageMigrateMonitor.eTC().w("MicroMsg.ExtStorageMigrateStatus", "[!] Already enabled.", new Object[0]);
-          AppMethodBeat.o(176868);
-          return;
-        }
-        if (!p.mf("extmig_switch_storage", "is_routine_enabled"))
-        {
-          ExtStorageMigrateMonitor.eTC().e("MicroMsg.ExtStorageMigrateStatus", "[-] Fail to store to mmkv, keep original status for safety.", new Object[0]);
-          AppMethodBeat.o(176868);
-          return;
-        }
-        Goi[0] = Boolean.TRUE;
-        AppMethodBeat.o(176868);
-        return;
-      }
-    }
-    AppMethodBeat.o(176868);
-  }
-  
-  public static void il(Context paramContext)
+  static void iv(Context paramContext)
   {
     AppMethodBeat.i(176865);
-    if (im(paramContext)) {
-      aw.aKT("extmig_status_memo_storage").encode("key_is_olddata_ignored", true);
+    if (iw(paramContext))
+    {
+      ExtStorageMigrateMonitor.fjf().i("MicroMsg.ExtStorageMigrateStatus", "[+] Mark newly installed in process: %s", new Object[] { d.cDP });
+      ax.aQz("extmig_status_memo_storage").encode("key_is_olddata_ignored_v2", true);
     }
     AppMethodBeat.o(176865);
   }
   
-  private static boolean im(Context paramContext)
+  private static boolean iw(Context paramContext)
   {
     AppMethodBeat.i(176866);
-    if (new File(com.tencent.mm.loader.j.b.aoZ(), "version_history.cfg").exists())
+    if (new File(com.tencent.mm.loader.j.b.arM(), "version_history.cfg").exists())
     {
       AppMethodBeat.o(176866);
       return false;

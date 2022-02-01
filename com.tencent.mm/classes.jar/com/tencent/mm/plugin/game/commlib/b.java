@@ -1,31 +1,34 @@
 package com.tencent.mm.plugin.game.commlib;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.vfs.i;
 
 public class b
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  private static b sWe;
-  private boolean fRX = false;
+  private static b tSK;
+  private boolean glB = false;
+  private boolean tSJ = false;
   
-  public static b cOz()
+  public static b cWV()
   {
     AppMethodBeat.i(89930);
-    if (sWe == null) {}
+    if (tSK == null) {}
     try
     {
-      if (sWe == null) {
-        sWe = new b();
+      if (tSK == null) {
+        tSK = new b();
       }
-      b localb = sWe;
+      b localb = tSK;
       AppMethodBeat.o(89930);
       return localb;
     }
@@ -38,12 +41,12 @@ public class b
   private void release()
   {
     AppMethodBeat.i(89932);
-    this.fRX = false;
-    com.tencent.mm.kernel.g.agi().b(1311, this);
+    this.glB = false;
+    g.aiU().b(1311, this);
     AppMethodBeat.o(89932);
   }
   
-  public final void mE(boolean paramBoolean)
+  public final void mW(boolean paramBoolean)
   {
     for (;;)
     {
@@ -56,30 +59,31 @@ public class b
           i = 1;
           if (i == 0)
           {
-            if (!i.eA(a.cOs()))
+            if (!i.fv(a.cWN()))
             {
               i = 1;
-              break label177;
+              break label182;
             }
           }
           else
           {
-            if (!this.fRX)
+            if (!this.glB)
             {
-              ac.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
+              ad.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
               release();
-              this.fRX = true;
-              com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNV, Long.valueOf(0L));
-              com.tencent.mm.kernel.g.agi().a(1311, this);
+              this.glB = true;
+              this.tSJ = paramBoolean;
+              g.ajC().ajl().set(al.a.IAm, Long.valueOf(0L));
+              g.aiU().a(1311, this);
               c localc = new c();
-              com.tencent.mm.kernel.g.agi().a(localc, 0);
+              g.aiU().a(localc, 0);
             }
             AppMethodBeat.o(89931);
           }
         }
         else
         {
-          long l = Math.abs(bs.pN(bs.g((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GDS, Long.valueOf(0L)))));
+          long l = Math.abs(bt.rM(bt.g((Long)g.ajC().ajl().get(al.a.Iql, Long.valueOf(0L)))));
           if (l > 86400L)
           {
             i = 1;
@@ -91,7 +95,7 @@ public class b
         i = 0;
       }
       finally {}
-      label177:
+      label182:
       if (i == 0) {}
     }
   }
@@ -101,11 +105,11 @@ public class b
     AppMethodBeat.i(89933);
     if (paramn.getType() == 1311)
     {
-      ac.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (com.tencent.mm.kernel.g.agP().afY()) {
+      ad.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (g.ajA().aiK()) {
         break label67;
       }
-      ac.w("MicroMsg.GameConfigUpdater", "account not init.");
+      ad.w("MicroMsg.GameConfigUpdater", "account not init.");
     }
     for (;;)
     {
@@ -113,7 +117,10 @@ public class b
       AppMethodBeat.o(89933);
       return;
       label67:
-      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GDS, Long.valueOf(bs.aNx()));
+      ad.i("MicroMsg.GameConfigUpdater", "updateTime, isForceUpdate: %b", new Object[] { Boolean.valueOf(this.tSJ) });
+      if (!this.tSJ) {
+        g.ajC().ajl().set(al.a.Iql, Long.valueOf(bt.aQJ()));
+      }
     }
   }
 }

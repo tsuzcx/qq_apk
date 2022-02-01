@@ -1,15 +1,16 @@
 package com.tencent.mm.loader.b.a;
 
+import com.tencent.mm.loader.f.g;
 import com.tencent.mm.loader.l.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "T", "R", "", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "clear", "", "configure", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;", "delete", "", "diskGet", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "exists", "get", "makeConfig", "onSaveCompleted", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "save", "source", "Companion", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "T", "R", "", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "clear", "", "configure", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;", "delete", "", "diskGet", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "exists", "get", "makeConfig", "onSaveCompleted", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "save", "source", "Companion", "libimageloader_release"})
 public abstract class d<T, R>
 {
   private static final String TAG = "MicroMsg.Loader.IDiskCache";
-  public static final d.a gJq = new d.a((byte)0);
-  private com.tencent.mm.loader.f.f gJm;
+  public static final d.a hdb = new d.a((byte)0);
+  private g hcX;
   
   public abstract boolean a(com.tencent.mm.loader.h.a.a<T> parama, com.tencent.mm.loader.c.e parame, com.tencent.mm.loader.f<?, R> paramf);
   
@@ -21,10 +22,10 @@ public abstract class d<T, R>
   
   public String c(com.tencent.mm.loader.h.a.a<T> parama, com.tencent.mm.loader.c.e parame, com.tencent.mm.loader.f<?, R> paramf)
   {
-    k.h(parama, "url");
-    k.h(parame, "opts");
-    k.h(paramf, "reaper");
-    String str = parame.gKe;
+    p.h(parama, "url");
+    p.h(parame, "opts");
+    p.h(paramf, "reaper");
+    String str = parame.hdP;
     if (str != null)
     {
       paramf = str;
@@ -32,7 +33,7 @@ public abstract class d<T, R>
     }
     else
     {
-      paramf = parame.gKe;
+      paramf = parame.hdP;
     }
     if (paramf != null)
     {
@@ -41,10 +42,10 @@ public abstract class d<T, R>
     }
     else
     {
-      parame = new StringBuilder().append(b.gNm).append("/");
-      paramf = this.gJm;
+      parame = new StringBuilder().append(b.hhj).append("/");
+      paramf = this.hcX;
       if (paramf == null) {
-        k.fOy();
+        p.gfZ();
       }
       parame = paramf.b(parama);
     }

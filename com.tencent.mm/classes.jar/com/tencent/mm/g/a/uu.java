@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class uu
   extends b
 {
+  public a dIV;
+  
   public uu()
   {
     this((byte)0);
@@ -12,8 +15,19 @@ public final class uu
   
   private uu(byte paramByte)
   {
-    this.Gqe = false;
+    AppMethodBeat.i(125643);
+    this.dIV = new a();
+    this.IbR = false;
     this.callback = null;
+    AppMethodBeat.o(125643);
+  }
+  
+  public static final class a
+  {
+    public boolean dIW;
+    public boolean dIX;
+    public boolean dIY;
+    public String username;
   }
 }
 

@@ -2,28 +2,28 @@ package d.l.b.a.b.e.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.v;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.e.a.u;
 import d.l.b.a.b.e.a.v;
 import java.util.List;
 
 public final class i
 {
-  private static final i Lyc;
-  public static final a Lyd;
-  final List<a.u> hqS;
+  private static final i NoZ;
+  public static final a Npa;
+  final List<a.u> hJk;
   
   static
   {
     AppMethodBeat.i(59086);
-    Lyd = new a((byte)0);
-    Lyc = new i((List)v.KTF);
+    Npa = new a((byte)0);
+    NoZ = new i((List)v.MKE);
     AppMethodBeat.o(59086);
   }
   
   private i(List<a.u> paramList)
   {
-    this.hqS = paramList;
+    this.hJk = paramList;
   }
   
   public static final class a
@@ -31,15 +31,15 @@ public final class i
     public static i g(a.v paramv)
     {
       AppMethodBeat.i(59085);
-      k.h(paramv, "table");
-      if (paramv.LwM.size() == 0)
+      p.h(paramv, "table");
+      if (paramv.NnJ.size() == 0)
       {
-        paramv = i.fYN();
+        paramv = i.gqm();
         AppMethodBeat.o(59085);
         return paramv;
       }
-      paramv = paramv.LwM;
-      k.g(paramv, "table.requirementList");
+      paramv = paramv.NnJ;
+      p.g(paramv, "table.requirementList");
       paramv = new i(paramv, (byte)0);
       AppMethodBeat.o(59085);
       return paramv;
@@ -48,7 +48,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.e.b.i
  * JD-Core Version:    0.7.0.1
  */

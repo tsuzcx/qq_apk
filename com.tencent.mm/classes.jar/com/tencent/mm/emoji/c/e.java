@@ -1,13 +1,13 @@
 package com.tencent.mm.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c.a;
+import com.tencent.mm.al.a.a;
 import com.tencent.mm.emoji.a.j;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.hr;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.hy;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.vending.c.a;
 
@@ -29,7 +29,7 @@ public final class e
           AppMethodBeat.o(104487);
           return;
         }
-        e.this.lG(paramAnonymousInt);
+        e.this.mg(paramAnonymousInt);
         AppMethodBeat.o(104487);
       }
     });

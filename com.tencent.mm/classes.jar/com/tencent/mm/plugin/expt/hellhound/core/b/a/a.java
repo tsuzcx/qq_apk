@@ -5,46 +5,46 @@ import com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c;
 
 public final class a
 {
-  public static void Ch(int paramInt)
+  public static void CS(int paramInt)
   {
     AppMethodBeat.i(121917);
-    c.cjd().qjB.Ch(paramInt);
+    c.cod().qRB.CS(paramInt);
     AppMethodBeat.o(121917);
   }
   
-  static void aag(String paramString)
+  static void adT(String paramString)
   {
     AppMethodBeat.i(121913);
-    c.cjd().qjB.aag(paramString);
+    c.cod().qRB.adT(paramString);
     AppMethodBeat.o(121913);
   }
   
-  static void aah(String paramString)
+  static void adU(String paramString)
   {
     AppMethodBeat.i(121914);
-    c.cjd().qjB.aah(paramString);
+    c.cod().qRB.adU(paramString);
     AppMethodBeat.o(121914);
   }
   
-  static void aai(String paramString)
+  static void adV(String paramString)
   {
     AppMethodBeat.i(121915);
-    c.cjd().qjB.aai(paramString);
+    c.cod().qRB.adV(paramString);
     AppMethodBeat.o(121915);
   }
   
-  static void aaj(String paramString)
+  static void adW(String paramString)
   {
     AppMethodBeat.i(121916);
-    c.cjd().qjB.aaj(paramString);
+    c.cod().qRB.adW(paramString);
     AppMethodBeat.o(121916);
   }
   
-  public static int ciY()
+  public static int cnY()
   {
-    AppMethodBeat.i(210378);
-    int i = c.cjd().qjB.ciY();
-    AppMethodBeat.o(210378);
+    AppMethodBeat.i(221634);
+    int i = c.cod().qRB.cnY();
+    AppMethodBeat.o(221634);
     return i;
   }
 }

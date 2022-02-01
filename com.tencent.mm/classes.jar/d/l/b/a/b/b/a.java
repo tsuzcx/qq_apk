@@ -9,27 +9,27 @@ public abstract interface a
 {
   public abstract <V> V a(a<V> parama);
   
-  public abstract ak fQP();
+  public abstract ak gin();
   
-  public abstract ak fQQ();
+  public abstract ak gio();
   
-  public abstract List<as> fQR();
+  public abstract List<as> gip();
   
-  public abstract ab fQS();
+  public abstract ab giq();
   
-  public abstract a fQT();
+  public abstract a gir();
   
-  public abstract List<av> fQU();
+  public abstract List<av> gis();
   
-  public abstract boolean fQV();
+  public abstract boolean git();
   
-  public abstract Collection<? extends a> fQW();
+  public abstract Collection<? extends a> giu();
   
   public static abstract interface a<V> {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.a
  * JD-Core Version:    0.7.0.1
  */

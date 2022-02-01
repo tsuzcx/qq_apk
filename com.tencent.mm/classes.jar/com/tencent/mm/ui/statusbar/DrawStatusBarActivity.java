@@ -10,7 +10,7 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 public abstract class DrawStatusBarActivity
   extends MMActivity
 {
-  private b ILH = null;
+  private b KCO = null;
   
   public void initSwipeBack()
   {
@@ -19,10 +19,10 @@ public abstract class DrawStatusBarActivity
     {
       View localView = getSwipeBackLayout().getChildAt(0);
       getSwipeBackLayout().removeView(localView);
-      this.ILH = new b(this);
-      this.ILH.addView(localView, new FrameLayout.LayoutParams(-1, -1));
-      getSwipeBackLayout().addView(this.ILH);
-      getSwipeBackLayout().setContentView(this.ILH);
+      this.KCO = new b(this);
+      this.KCO.addView(localView, new FrameLayout.LayoutParams(-1, -1));
+      getSwipeBackLayout().addView(this.KCO);
+      getSwipeBackLayout().setContentView(this.KCO);
     }
   }
   

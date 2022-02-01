@@ -56,7 +56,7 @@ public final class kp
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
       localObject2 = c.a((Paint)localObject2, paramVarArgs);
-      ((Paint)localObject2).setColor(-436207616);
+      ((Paint)localObject2).setColor(-2147483648);
       arrayOfFloat = c.a(arrayOfFloat, -1.0F, 1.224647E-016F, 5.361044F, -1.224647E-016F, -1.0F, 9.34036F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues(arrayOfFloat);
@@ -85,7 +85,7 @@ public final class kp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.kp
  * JD-Core Version:    0.7.0.1
  */

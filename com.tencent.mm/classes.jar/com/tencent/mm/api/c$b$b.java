@@ -1,21 +1,21 @@
 package com.tencent.mm.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class c$b$b
 {
-  public int cFX;
-  public int cFY;
-  public int cFZ;
+  public int cRc;
+  public int cRd;
+  public int cRe;
   
-  public static b dE(String paramString)
+  public static b eA(String paramString)
   {
     AppMethodBeat.i(116357);
-    ac.i("MicroMsg.BizInfo", "HardwareBizInfo = ".concat(String.valueOf(paramString)));
+    ad.i("MicroMsg.BizInfo", "HardwareBizInfo = ".concat(String.valueOf(paramString)));
     b localb = new b();
     if ((paramString == null) || (paramString.length() <= 0))
     {
@@ -25,9 +25,9 @@ public final class c$b$b
     try
     {
       paramString = new JSONObject(paramString);
-      localb.cFX = paramString.optInt("hardware_flag");
-      localb.cFY = paramString.optInt("connect_status_display_mode");
-      localb.cFZ = paramString.optInt("special_internal_brand_type");
+      localb.cRc = paramString.optInt("hardware_flag");
+      localb.cRd = paramString.optInt("connect_status_display_mode");
+      localb.cRe = paramString.optInt("special_internal_brand_type");
       AppMethodBeat.o(116357);
       return localb;
     }
@@ -35,14 +35,14 @@ public final class c$b$b
     {
       for (;;)
       {
-        ac.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bs.m(paramString) });
+        ad.e("MicroMsg.BizInfo", "exception:%s", new Object[] { bt.n(paramString) });
       }
     }
   }
   
-  public final boolean Jr()
+  public final boolean KQ()
   {
-    return (this.cFX & 0x1) > 0;
+    return (this.cRc & 0x1) > 0;
   }
 }
 

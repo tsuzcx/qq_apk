@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ai;
-import com.tencent.mm.ui.an;
+import com.tencent.mm.ui.ak;
+import com.tencent.mm.ui.ap;
 
 public final class f
 {
@@ -18,7 +18,7 @@ public final class f
     if (paramNumberPicker != null) {}
     try
     {
-      new ai(paramNumberPicker, "mSelectionDivider").set(paramDrawable);
+      new ak(paramNumberPicker, "mSelectionDivider").set(paramDrawable);
       AppMethodBeat.o(159575);
       return;
     }
@@ -38,13 +38,13 @@ public final class f
     }
     try
     {
-      paramNumberPicker = (EditText)new ai(paramNumberPicker, "mInputText").get();
+      paramNumberPicker = (EditText)new ak(paramNumberPicker, "mInputText").get();
       AppMethodBeat.o(159576);
       return paramNumberPicker;
     }
     catch (IllegalAccessException paramNumberPicker)
     {
-      an.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getInputText IllegalAccessException", new Object[0]);
+      ap.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getInputText IllegalAccessException", new Object[0]);
       AppMethodBeat.o(159576);
       return null;
     }
@@ -52,7 +52,7 @@ public final class f
     {
       for (;;)
       {
-        an.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getInputText NoSuchFieldException", new Object[0]);
+        ap.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getInputText NoSuchFieldException", new Object[0]);
       }
     }
   }
@@ -86,13 +86,13 @@ public final class f
     }
     try
     {
-      paramNumberPicker = (Paint)new ai(paramNumberPicker, "mSelectorWheelPaint").get();
+      paramNumberPicker = (Paint)new ak(paramNumberPicker, "mSelectorWheelPaint").get();
       AppMethodBeat.o(159577);
       return paramNumberPicker;
     }
     catch (IllegalAccessException paramNumberPicker)
     {
-      an.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getSelectorWheelPaint IllegalAccessException", new Object[0]);
+      ap.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getSelectorWheelPaint IllegalAccessException", new Object[0]);
       AppMethodBeat.o(159577);
       return null;
     }
@@ -100,7 +100,7 @@ public final class f
     {
       for (;;)
       {
-        an.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getSelectorWheelPaint NoSuchFieldException", new Object[0]);
+        ap.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getSelectorWheelPaint NoSuchFieldException", new Object[0]);
       }
     }
   }
@@ -127,7 +127,7 @@ public final class f
     }
     try
     {
-      paramNumberPicker = (EditText)new ai(paramNumberPicker, "mInputText").get();
+      paramNumberPicker = (EditText)new ak(paramNumberPicker, "mInputText").get();
       if (paramNumberPicker != null) {
         paramNumberPicker.setFilters(new InputFilter[0]);
       }
@@ -136,13 +136,13 @@ public final class f
     }
     catch (IllegalAccessException paramNumberPicker)
     {
-      an.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "fixDefaultValueDisplaying IllegalAccessException", new Object[0]);
+      ap.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "fixDefaultValueDisplaying IllegalAccessException", new Object[0]);
       AppMethodBeat.o(159579);
       return;
     }
     catch (NoSuchFieldException paramNumberPicker)
     {
-      an.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "fixDefaultValueDisplaying NoSuchFieldException", new Object[0]);
+      ap.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "fixDefaultValueDisplaying NoSuchFieldException", new Object[0]);
       AppMethodBeat.o(159579);
     }
   }
@@ -157,7 +157,7 @@ public final class f
     }
     try
     {
-      Runnable localRunnable = (Runnable)new ai(paramNumberPicker, "mSetSelectionCommand").get();
+      Runnable localRunnable = (Runnable)new ak(paramNumberPicker, "mSetSelectionCommand").get();
       if (localRunnable != null) {
         paramNumberPicker.removeCallbacks(localRunnable);
       }
@@ -166,13 +166,13 @@ public final class f
     }
     catch (IllegalAccessException paramNumberPicker)
     {
-      an.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "removePendingSetSelectionCommand IllegalAccessException", new Object[0]);
+      ap.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "removePendingSetSelectionCommand IllegalAccessException", new Object[0]);
       AppMethodBeat.o(159580);
       return;
     }
     catch (NoSuchFieldException paramNumberPicker)
     {
-      an.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "removePendingSetSelectionCommand NoSuchFieldException", new Object[0]);
+      ap.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "removePendingSetSelectionCommand NoSuchFieldException", new Object[0]);
       AppMethodBeat.o(159580);
     }
   }

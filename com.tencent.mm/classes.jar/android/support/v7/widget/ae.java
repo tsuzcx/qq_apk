@@ -11,16 +11,16 @@ import android.view.animation.LinearInterpolator;
 public class ae
   extends RecyclerView.s
 {
-  protected final DecelerateInterpolator TN = new DecelerateInterpolator();
-  protected final LinearInterpolator aoO = new LinearInterpolator();
-  protected PointF aoP;
-  private final float aoQ = a(paramContext.getResources().getDisplayMetrics());
-  protected int aoR = 0;
-  protected int aoS = 0;
+  protected final DecelerateInterpolator VD = new DecelerateInterpolator();
+  protected final LinearInterpolator aqG = new LinearInterpolator();
+  protected PointF aqH;
+  private final float aqI = a(paramContext.getResources().getDisplayMetrics());
+  protected int aqJ = 0;
+  protected int aqK = 0;
   
   public ae(Context paramContext) {}
   
-  private static int ah(int paramInt1, int paramInt2)
+  private static int ai(int paramInt1, int paramInt2)
   {
     int i = paramInt1 - paramInt2;
     paramInt2 = i;
@@ -32,22 +32,22 @@ public class ae
   
   public int E(View paramView, int paramInt)
   {
-    RecyclerView.i locali = this.apE;
-    if ((locali == null) || (!locali.jN())) {
+    RecyclerView.i locali = this.arw;
+    if ((locali == null) || (!locali.kd())) {
       return 0;
     }
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    return e(RecyclerView.i.bH(paramView) - localLayoutParams.topMargin, RecyclerView.i.bJ(paramView) + localLayoutParams.bottomMargin, locali.getPaddingTop(), locali.mHeight - locali.getPaddingBottom(), paramInt);
+    return f(RecyclerView.i.bH(paramView) - localLayoutParams.topMargin, RecyclerView.i.bJ(paramView) + localLayoutParams.bottomMargin, locali.getPaddingTop(), locali.mHeight - locali.getPaddingBottom(), paramInt);
   }
   
   public int F(View paramView, int paramInt)
   {
-    RecyclerView.i locali = this.apE;
-    if ((locali == null) || (!locali.jM())) {
+    RecyclerView.i locali = this.arw;
+    if ((locali == null) || (!locali.kc())) {
       return 0;
     }
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    return e(RecyclerView.i.bG(paramView) - localLayoutParams.leftMargin, RecyclerView.i.bI(paramView) + localLayoutParams.rightMargin, locali.getPaddingLeft(), locali.mWidth - locali.getPaddingRight(), paramInt);
+    return f(RecyclerView.i.bG(paramView) - localLayoutParams.leftMargin, RecyclerView.i.bI(paramView) + localLayoutParams.rightMargin, locali.getPaddingLeft(), locali.mWidth - locali.getPaddingRight(), paramInt);
   }
   
   protected float a(DisplayMetrics paramDisplayMetrics)
@@ -57,53 +57,53 @@ public class ae
   
   protected final void a(int paramInt1, int paramInt2, RecyclerView.s.a parama)
   {
-    if (this.alu.apZ.getChildCount() == 0) {
+    if (this.anl.arR.getChildCount() == 0) {
       stop();
     }
     do
     {
       return;
-      this.aoR = ah(this.aoR, paramInt1);
-      this.aoS = ah(this.aoS, paramInt2);
-    } while ((this.aoR != 0) || (this.aoS != 0));
-    PointF localPointF = bZ(this.arZ);
+      this.aqJ = ai(this.aqJ, paramInt1);
+      this.aqK = ai(this.aqK, paramInt2);
+    } while ((this.aqJ != 0) || (this.aqK != 0));
+    PointF localPointF = bZ(this.atQ);
     if ((localPointF == null) || ((localPointF.x == 0.0F) && (localPointF.y == 0.0F)))
     {
-      parama.asg = this.arZ;
+      parama.atX = this.atQ;
       stop();
       return;
     }
     float f = (float)Math.sqrt(localPointF.x * localPointF.x + localPointF.y * localPointF.y);
     localPointF.x /= f;
     localPointF.y /= f;
-    this.aoP = localPointF;
-    this.aoR = ((int)(localPointF.x * 10000.0F));
-    this.aoS = ((int)(localPointF.y * 10000.0F));
+    this.aqH = localPointF;
+    this.aqJ = ((int)(localPointF.x * 10000.0F));
+    this.aqK = ((int)(localPointF.y * 10000.0F));
     paramInt1 = ce(10000);
-    parama.a((int)(this.aoR * 1.2F), (int)(this.aoS * 1.2F), (int)(paramInt1 * 1.2F), this.aoO);
+    parama.a((int)(this.aqJ * 1.2F), (int)(this.aqK * 1.2F), (int)(paramInt1 * 1.2F), this.aqG);
   }
   
   protected void a(View paramView, RecyclerView.t paramt, RecyclerView.s.a parama)
   {
-    int i = F(paramView, kd());
-    int j = E(paramView, ke());
+    int i = F(paramView, kt());
+    int j = E(paramView, ku());
     int k = cd((int)Math.sqrt(i * i + j * j));
     if (k > 0) {
-      parama.a(-i, -j, k, this.TN);
+      parama.a(-i, -j, k, this.VD);
     }
   }
   
-  protected final int cd(int paramInt)
+  protected int cd(int paramInt)
   {
     return (int)Math.ceil(ce(paramInt) / 0.3356D);
   }
   
   protected int ce(int paramInt)
   {
-    return (int)Math.ceil(Math.abs(paramInt) * this.aoQ);
+    return (int)Math.ceil(Math.abs(paramInt) * this.aqI);
   }
   
-  public int e(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public int f(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     switch (paramInt5)
     {
@@ -127,23 +127,23 @@ public class ae
     return 0;
   }
   
-  protected int kd()
+  protected int kt()
   {
-    if ((this.aoP == null) || (this.aoP.x == 0.0F)) {
+    if ((this.aqH == null) || (this.aqH.x == 0.0F)) {
       return 0;
     }
-    if (this.aoP.x > 0.0F) {
+    if (this.aqH.x > 0.0F) {
       return 1;
     }
     return -1;
   }
   
-  protected int ke()
+  protected int ku()
   {
-    if ((this.aoP == null) || (this.aoP.y == 0.0F)) {
+    if ((this.aqH == null) || (this.aqH.y == 0.0F)) {
       return 0;
     }
-    if (this.aoP.y > 0.0F) {
+    if (this.aqH.y > 0.0F) {
       return 1;
     }
     return -1;
@@ -151,9 +151,9 @@ public class ae
   
   protected void onStop()
   {
-    this.aoS = 0;
-    this.aoR = 0;
-    this.aoP = null;
+    this.aqK = 0;
+    this.aqJ = 0;
+    this.aqH = null;
   }
 }
 

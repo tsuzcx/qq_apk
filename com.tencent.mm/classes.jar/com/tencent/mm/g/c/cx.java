@@ -8,16 +8,13 @@ public abstract class cx
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eMD = "championUrl".hashCode();
-  private static final int eME = "championMotto".hashCode();
-  private static final int eok = "username".hashCode();
+  private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eMB = true;
-  private boolean eMC = true;
-  private boolean eoh = true;
-  public String field_championMotto;
-  public String field_championUrl;
-  public String field_username;
+  private static final int value_HASHCODE = "value".hashCode();
+  private boolean __hadSetkey = true;
+  private boolean __hadSetvalue = true;
+  public String field_key;
+  public byte[] field_value;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,21 +29,20 @@ public abstract class cx
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eok != k) {
-        break label60;
+      if (key_HASHCODE != k) {
+        break label65;
       }
-      this.field_username = paramCursor.getString(i);
+      this.field_key = paramCursor.getString(i);
+      this.__hadSetkey = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eMD == k) {
-        this.field_championUrl = paramCursor.getString(i);
-      } else if (eME == k) {
-        this.field_championMotto = paramCursor.getString(i);
+      label65:
+      if (value_HASHCODE == k) {
+        this.field_value = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -56,14 +52,11 @@ public abstract class cx
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eoh) {
-      localContentValues.put("username", this.field_username);
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
     }
-    if (this.eMB) {
-      localContentValues.put("championUrl", this.field_championUrl);
-    }
-    if (this.eMC) {
-      localContentValues.put("championMotto", this.field_championMotto);
+    if (this.__hadSetvalue) {
+      localContentValues.put("value", this.field_value);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

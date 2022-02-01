@@ -7,7 +7,7 @@ import java.io.OutputStream;
 public final class c
   extends OutputStream
 {
-  private b aAy;
+  private b aCp;
   private byte[] buffer;
   private int index;
   private final OutputStream out;
@@ -21,7 +21,7 @@ public final class c
   {
     AppMethodBeat.i(76865);
     this.out = paramOutputStream;
-    this.aAy = paramb;
+    this.aCp = paramb;
     this.buffer = ((byte[])paramb.a(65536, [B.class));
     AppMethodBeat.o(76865);
   }
@@ -37,7 +37,7 @@ public final class c
     AppMethodBeat.o(76870);
   }
   
-  private void nW()
+  private void oo()
   {
     AppMethodBeat.i(76871);
     if (this.index == this.buffer.length) {
@@ -55,7 +55,7 @@ public final class c
       this.out.close();
       if (this.buffer != null)
       {
-        this.aAy.put(this.buffer);
+        this.aCp.put(this.buffer);
         this.buffer = null;
       }
       AppMethodBeat.o(76872);
@@ -83,7 +83,7 @@ public final class c
     int i = this.index;
     this.index = (i + 1);
     arrayOfByte[i] = ((byte)paramInt);
-    nW();
+    oo();
     AppMethodBeat.o(76866);
   }
   
@@ -113,7 +113,7 @@ public final class c
       System.arraycopy(paramArrayOfByte, j, this.buffer, this.index, k);
       this.index += k;
       j = i + k;
-      nW();
+      oo();
       i = j;
     } while (j < paramInt2);
     AppMethodBeat.o(76868);

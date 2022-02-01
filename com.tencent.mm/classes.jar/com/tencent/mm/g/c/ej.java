@@ -8,28 +8,22 @@ public abstract class ej
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eVi = "language".hashCode();
-  private static final int eVm = "appid".hashCode();
-  private static final int eVs = "wordingId".hashCode();
-  private static final int eVt = "wording".hashCode();
-  private static final int eVu = "pinyin".hashCode();
-  private static final int eVv = "quanpin".hashCode();
-  private static final int eol = "updateTime".hashCode();
+  private static final int eCW = "msgId".hashCode();
+  private static final int eDc = "status".hashCode();
+  private static final int eLe = "msgSvrId".hashCode();
+  private static final int fkH = "quotedMsgId".hashCode();
+  private static final int fkI = "quotedMsgSvrId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eVf = true;
-  private boolean eVk = true;
-  private boolean eVo = true;
-  private boolean eVp = true;
-  private boolean eVq = true;
-  private boolean eVr = true;
-  private boolean eoi = true;
-  public String field_appid;
-  public String field_language;
-  public String field_pinyin;
-  public String field_quanpin;
-  public long field_updateTime;
-  public String field_wording;
-  public String field_wordingId;
+  private boolean eCS = true;
+  private boolean eCZ = true;
+  private boolean eKR = true;
+  public long field_msgId;
+  public long field_msgSvrId;
+  public long field_quotedMsgId;
+  public long field_quotedMsgSvrId;
+  public int field_status;
+  private boolean fkF = true;
+  private boolean fkG = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -44,10 +38,10 @@ public abstract class ej
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVm != k) {
+      if (eCW != k) {
         break label60;
       }
-      this.field_appid = paramCursor.getString(i);
+      this.field_msgId = paramCursor.getLong(i);
     }
     for (;;)
     {
@@ -55,18 +49,14 @@ public abstract class ej
       break label20;
       break;
       label60:
-      if (eVs == k) {
-        this.field_wordingId = paramCursor.getString(i);
-      } else if (eVi == k) {
-        this.field_language = paramCursor.getString(i);
-      } else if (eVt == k) {
-        this.field_wording = paramCursor.getString(i);
-      } else if (eVu == k) {
-        this.field_pinyin = paramCursor.getString(i);
-      } else if (eVv == k) {
-        this.field_quanpin = paramCursor.getString(i);
-      } else if (eol == k) {
-        this.field_updateTime = paramCursor.getLong(i);
+      if (eLe == k) {
+        this.field_msgSvrId = paramCursor.getLong(i);
+      } else if (fkH == k) {
+        this.field_quotedMsgId = paramCursor.getLong(i);
+      } else if (fkI == k) {
+        this.field_quotedMsgSvrId = paramCursor.getLong(i);
+      } else if (eDc == k) {
+        this.field_status = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -76,26 +66,20 @@ public abstract class ej
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVk) {
-      localContentValues.put("appid", this.field_appid);
+    if (this.eCS) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.eVo) {
-      localContentValues.put("wordingId", this.field_wordingId);
+    if (this.eKR) {
+      localContentValues.put("msgSvrId", Long.valueOf(this.field_msgSvrId));
     }
-    if (this.eVf) {
-      localContentValues.put("language", this.field_language);
+    if (this.fkF) {
+      localContentValues.put("quotedMsgId", Long.valueOf(this.field_quotedMsgId));
     }
-    if (this.eVp) {
-      localContentValues.put("wording", this.field_wording);
+    if (this.fkG) {
+      localContentValues.put("quotedMsgSvrId", Long.valueOf(this.field_quotedMsgSvrId));
     }
-    if (this.eVq) {
-      localContentValues.put("pinyin", this.field_pinyin);
-    }
-    if (this.eVr) {
-      localContentValues.put("quanpin", this.field_quanpin);
-    }
-    if (this.eoi) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.eCZ) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -105,7 +89,7 @@ public abstract class ej
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.ej
  * JD-Core Version:    0.7.0.1
  */

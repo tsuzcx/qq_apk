@@ -9,8 +9,8 @@ import java.util.List;
 
 public class b
 {
-  private static boolean crd;
-  private static com.tencent.matrix.a.d.b.b cre = new com.tencent.matrix.a.d.b.b()
+  private static boolean cBZ;
+  private static com.tencent.matrix.a.d.b.b cCa = new com.tencent.matrix.a.d.b.b()
   {
     public final void b(Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
     {
@@ -18,8 +18,8 @@ public class b
       b.a(paramAnonymousMethod, paramAnonymousArrayOfObject);
     }
   };
-  private static com.tencent.matrix.a.d.b crf = new com.tencent.matrix.a.d.b("alarm", "android.app.IAlarmManager", cre);
-  private static List<b> crg = new ArrayList();
+  private static com.tencent.matrix.a.d.b cCb = new com.tencent.matrix.a.d.b("alarm", "android.app.IAlarmManager", cCa);
+  private static List<b> cCc = new ArrayList();
   
   /* Error */
   public static void a(b paramb)
@@ -27,7 +27,7 @@ public class b
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 47	com/tencent/matrix/a/b/b:crg	Ljava/util/List;
+    //   3: getstatic 47	com/tencent/matrix/a/b/b:cCc	Ljava/util/List;
     //   6: aload_0
     //   7: invokeinterface 56 2 0
     //   12: istore_1
@@ -36,13 +36,13 @@ public class b
     //   17: ldc 2
     //   19: monitorexit
     //   20: return
-    //   21: getstatic 47	com/tencent/matrix/a/b/b:crg	Ljava/util/List;
+    //   21: getstatic 47	com/tencent/matrix/a/b/b:cCc	Ljava/util/List;
     //   24: aload_0
     //   25: invokeinterface 59 2 0
     //   30: pop
-    //   31: getstatic 61	com/tencent/matrix/a/b/b:crd	Z
+    //   31: getstatic 61	com/tencent/matrix/a/b/b:cBZ	Z
     //   34: ifne -17 -> 17
-    //   37: getstatic 47	com/tencent/matrix/a/b/b:crg	Ljava/util/List;
+    //   37: getstatic 47	com/tencent/matrix/a/b/b:cCc	Ljava/util/List;
     //   40: invokeinterface 65 1 0
     //   45: ifne -28 -> 17
     //   48: ldc 67
@@ -51,13 +51,13 @@ public class b
     //   53: anewarray 4	java/lang/Object
     //   56: dup
     //   57: iconst_0
-    //   58: getstatic 42	com/tencent/matrix/a/b/b:crf	Lcom/tencent/matrix/a/d/b;
+    //   58: getstatic 42	com/tencent/matrix/a/b/b:cCb	Lcom/tencent/matrix/a/d/b;
     //   61: invokevirtual 72	com/tencent/matrix/a/d/b:doHook	()Z
     //   64: invokestatic 78	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   67: aastore
     //   68: invokestatic 84	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   71: iconst_1
-    //   72: putstatic 61	com/tencent/matrix/a/b/b:crd	Z
+    //   72: putstatic 61	com/tencent/matrix/a/b/b:cBZ	Z
     //   75: goto -58 -> 17
     //   78: astore_0
     //   79: ldc 2
@@ -78,11 +78,11 @@ public class b
   {
     try
     {
-      crg.remove(paramb);
-      if ((crd) && (crg.isEmpty()))
+      cCc.remove(paramb);
+      if ((cBZ) && (cCc.isEmpty()))
       {
-        c.i("Matrix.AlarmManagerServiceHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(crf.doUnHook()) });
-        crd = false;
+        c.i("Matrix.AlarmManagerServiceHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(cCb.doUnHook()) });
+        cBZ = false;
       }
       return;
     }
@@ -95,8 +95,8 @@ public class b
   
   static final class a
   {
-    AlarmManager.OnAlarmListener cqQ;
-    PendingIntent cqY;
+    AlarmManager.OnAlarmListener cBN;
+    PendingIntent cBV;
   }
   
   public static abstract interface b
@@ -108,11 +108,11 @@ public class b
   
   static final class c
   {
-    long cqN;
-    long cqO;
-    AlarmManager.OnAlarmListener cqQ;
-    PendingIntent cqY;
-    long crh;
+    long cBK;
+    long cBL;
+    AlarmManager.OnAlarmListener cBN;
+    PendingIntent cBV;
+    long cCd;
     int flags;
     int type;
   }

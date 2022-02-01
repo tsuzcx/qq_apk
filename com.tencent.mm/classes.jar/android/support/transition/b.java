@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 public final class b
   extends al
 {
-  private float yQ = 3.0F;
+  private float AJ = 3.0F;
   
   private static float e(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
@@ -43,7 +43,7 @@ public final class b
       if (l2 < 0L) {
         l1 = 300L;
       }
-      return Math.round((float)(l1 * i) / this.yQ * f);
+      return Math.round((float)(l1 * i) / this.AJ * f);
       i = 1;
       paramu1 = paramu2;
       break;

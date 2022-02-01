@@ -1,167 +1,183 @@
 package com.tencent.mm.plugin.finder.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.d.b.b;
-import com.tencent.mm.loader.e.d;
-import com.tencent.mm.loader.h.a.a;
-import com.tencent.mm.plugin.finder.storage.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
+import com.tencent.mm.audio.mix.h.b;
+import com.tencent.mm.model.u;
+import com.tencent.mm.protocal.protobuf.bvf;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.l;
-import d.v;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.net.URL;
-import java.net.UnknownHostException;
-import javax.net.ssl.SSLHandshakeException;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/loader/FinderImageDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "()V", "loadDataImp", "", "item", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "Companion", "DefaultHttpClientFactory", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/loader/FinderImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "username", "", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;Ljava/lang/String;)V", "getMediaObj", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "setMediaObj", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "getDecodeKey", "getMediaType", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "uniqueValue", "Companion", "plugin-finder_release"})
 public final class g
-  extends com.tencent.mm.loader.d.b<j>
+  implements k
 {
-  public static final g.a rto;
+  public static final a siE;
+  public bvf siC;
+  private com.tencent.mm.plugin.finder.storage.r siD;
+  private String username;
   
   static
   {
-    AppMethodBeat.i(166323);
-    rto = new g.a((byte)0);
-    AppMethodBeat.o(166323);
+    AppMethodBeat.i(178310);
+    siE = new a((byte)0);
+    AppMethodBeat.o(178310);
   }
   
-  public final void a(a<j> parama, com.tencent.mm.loader.f.f paramf, b.b paramb)
+  private g(bvf parambvf, com.tencent.mm.plugin.finder.storage.r paramr, String paramString)
   {
-    AppMethodBeat.i(166322);
-    k.h(parama, "item");
-    k.h(paramf, "fileNameCreator");
-    k.h(paramb, "callback");
-    try
-    {
-      paramf = (j)parama.value();
-      if (paramf.cwj() == m.rDQ)
-      {
-        parama = paramf.getUrl();
-        ac.d("Finder.ImageDownloader", "loadDataImp http " + paramf.cwj() + " thumbUrl " + paramf.aik() + " url " + paramf.getUrl());
-        paramf = b.rtp;
-        k.h(parama, "url");
-        parama = b.adE(parama);
-        if (parama.getResponseCode() < 300) {
-          break label172;
-        }
-        parama.disconnect();
-        ac.w("Finder.ImageDownloader", "dz[httpURLConnectionGet 300]");
-      }
-      label172:
-      Object localObject;
-      for (parama = null;; parama = com.tencent.mm.loader.h.b.d((byte[])localObject, paramf))
-      {
-        if (parama == null) {
-          break label204;
-        }
-        paramb.a((com.tencent.mm.loader.h.f)parama);
-        AppMethodBeat.o(166322);
-        return;
-        parama = paramf.aik();
-        break;
-        localObject = parama.getInputStream();
-        paramf = parama.getContentType();
-        localObject = d.o((InputStream)localObject);
-        parama.disconnect();
-      }
-      label204:
-      paramb.onError();
-      AppMethodBeat.o(166322);
-      return;
+    AppMethodBeat.i(166318);
+    String str = u.aAm();
+    p.g(str, "ConfigStorageLogic.getUsernameFromUserInfo()");
+    this.username = str;
+    this.siC = parambvf;
+    this.siD = paramr;
+    this.username = paramString;
+    if (parambvf.url == null) {
+      b.e("FinderImage", "mediaObj.url == null " + bt.flS());
     }
-    catch (InterruptedException parama)
-    {
-      ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
-      paramb.onError();
-      AppMethodBeat.o(166322);
-      return;
+    AppMethodBeat.o(166318);
+  }
+  
+  public final String aeA()
+  {
+    AppMethodBeat.i(166316);
+    Object localObject1 = new StringBuilder("finder_image_");
+    Object localObject2 = this.siD;
+    if (localObject2 == null) {
+      p.bcb("type");
     }
-    catch (UnknownHostException parama)
+    localObject2 = ((StringBuilder)localObject1).append(((com.tencent.mm.plugin.finder.storage.r)localObject2).detail).append('_');
+    localObject1 = this.siC;
+    if (localObject1 == null) {
+      p.bcb("mediaObj");
+    }
+    if (bt.isNullOrNil(((bvf)localObject1).mediaId))
     {
-      for (;;)
-      {
-        ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
+      localObject1 = this.siC;
+      if (localObject1 == null) {
+        p.bcb("mediaObj");
       }
     }
-    catch (SSLHandshakeException parama)
+    for (localObject1 = ai.ee(bt.bI(((bvf)localObject1).url, ""));; localObject1 = ((bvf)localObject1).mediaId)
     {
-      for (;;)
-      {
-        ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
-      }
-    }
-    catch (SocketException parama)
-    {
-      for (;;)
-      {
-        ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
-      }
-    }
-    catch (SocketTimeoutException parama)
-    {
-      for (;;)
-      {
-        ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
-      }
-    }
-    catch (IOException parama)
-    {
-      for (;;)
-      {
-        ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
-      }
-    }
-    catch (Exception parama)
-    {
-      for (;;)
-      {
-        ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
+      localObject1 = (String)localObject1;
+      AppMethodBeat.o(166316);
+      return localObject1;
+      localObject1 = this.siC;
+      if (localObject1 == null) {
+        p.bcb("mediaObj");
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/loader/FinderImageDownloader$DefaultHttpClientFactory;", "", "()V", "httpURLConnectionGet", "Lcom/tencent/mm/loader/model/HttpResponse;", "url", "", "openConnection", "Ljava/net/HttpURLConnection;", "plugin-finder_release"})
-  public static final class b
+  public final String akW()
   {
-    public static final b rtp;
-    
-    static
-    {
-      AppMethodBeat.i(166321);
-      rtp = new b();
-      AppMethodBeat.o(166321);
+    AppMethodBeat.i(178309);
+    Object localObject = this.siC;
+    if (localObject == null) {
+      p.bcb("mediaObj");
     }
-    
-    public static HttpURLConnection adE(String paramString)
-    {
-      AppMethodBeat.i(166320);
-      k.h(paramString, "url");
-      ac.i("Finder.ImageDownloader", "[openConnection] url:".concat(String.valueOf(paramString)));
-      paramString = new URL(paramString).openConnection();
-      if (paramString == null)
-      {
-        paramString = new v("null cannot be cast to non-null type java.net.HttpURLConnection");
-        AppMethodBeat.o(166320);
-        throw paramString;
-      }
-      paramString = (HttpURLConnection)paramString;
-      paramString.setConnectTimeout(15000);
-      paramString.setReadTimeout(20000);
-      AppMethodBeat.o(166320);
-      return paramString;
+    String str = ((bvf)localObject).thumbUrl;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
     }
+    AppMethodBeat.o(178309);
+    return localObject;
   }
+  
+  public final String cCA()
+  {
+    AppMethodBeat.i(202917);
+    Object localObject = this.siC;
+    if (localObject == null) {
+      p.bcb("mediaObj");
+    }
+    String str = ((bvf)localObject).thumb_url_token;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    AppMethodBeat.o(202917);
+    return localObject;
+  }
+  
+  public final com.tencent.mm.plugin.finder.storage.r cCx()
+  {
+    AppMethodBeat.i(178308);
+    com.tencent.mm.plugin.finder.storage.r localr = this.siD;
+    if (localr == null) {
+      p.bcb("type");
+    }
+    AppMethodBeat.o(178308);
+    return localr;
+  }
+  
+  public final String cCy()
+  {
+    AppMethodBeat.i(202915);
+    Object localObject = this.siC;
+    if (localObject == null) {
+      p.bcb("mediaObj");
+    }
+    String str = ((bvf)localObject).decodeKey;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    AppMethodBeat.o(202915);
+    return localObject;
+  }
+  
+  public final String cCz()
+  {
+    AppMethodBeat.i(202916);
+    Object localObject = this.siC;
+    if (localObject == null) {
+      p.bcb("mediaObj");
+    }
+    String str = ((bvf)localObject).url_token;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    AppMethodBeat.o(202916);
+    return localObject;
+  }
+  
+  public final String getPath()
+  {
+    AppMethodBeat.i(166315);
+    Object localObject = com.tencent.mm.plugin.finder.utils.r.sNc;
+    localObject = com.tencent.mm.plugin.finder.utils.r.a(this);
+    AppMethodBeat.o(166315);
+    return localObject;
+  }
+  
+  public final String getUrl()
+  {
+    AppMethodBeat.i(166317);
+    Object localObject = this.siC;
+    if (localObject == null) {
+      p.bcb("mediaObj");
+    }
+    String str = ((bvf)localObject).url;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    AppMethodBeat.o(166317);
+    return localObject;
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/loader/FinderImage$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,19 +14,19 @@ import org.json.JSONObject;
 public final class s
   extends m
 {
-  public int dgH;
-  public boolean hqq;
+  public int dsd;
+  public boolean hII;
   private int limit;
-  public long owV;
-  public int owW;
-  public List<a> oxy;
+  public List<a> paT;
+  public long paq;
+  public int par;
   public int type;
   
   public s(int paramInt1, long paramLong, String paramString, int paramInt2)
   {
     AppMethodBeat.i(63846);
-    this.oxy = new ArrayList();
-    this.hqq = false;
+    this.paT = new ArrayList();
+    this.hII = false;
     this.limit = paramInt2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("type", String.valueOf(paramInt1));
@@ -55,18 +55,18 @@ public final class s
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(63847);
-    this.owW = paramJSONObject.optInt("total_num");
-    this.dgH = paramJSONObject.optInt("total_amt");
-    this.owV = paramJSONObject.optLong("from_timestamp", 0L);
+    this.par = paramJSONObject.optInt("total_num");
+    this.dsd = paramJSONObject.optInt("total_amt");
+    this.paq = paramJSONObject.optLong("from_timestamp", 0L);
     this.type = paramJSONObject.optInt("type", 0);
     paramString = paramJSONObject.optJSONArray("records");
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      ac.i("MicroMsg.NetSceneTenpayF2fRecordList", "empty records");
-      if (this.oxy.size() < this.limit)
+      ad.i("MicroMsg.NetSceneTenpayF2fRecordList", "empty records");
+      if (this.paT.size() < this.limit)
       {
-        ac.i("MicroMsg.NetSceneTenpayF2fRecordList", "finish query");
-        this.hqq = true;
+        ad.i("MicroMsg.NetSceneTenpayF2fRecordList", "finish query");
+        this.hII = true;
       }
       AppMethodBeat.o(63847);
       return;
@@ -77,19 +77,19 @@ public final class s
       {
         paramJSONObject = paramString.getJSONObject(paramInt);
         a locala = new a();
-        locala.ows = paramJSONObject.optString("bill_id");
-        locala.owt = paramJSONObject.optString("trans_id");
+        locala.oZN = paramJSONObject.optString("bill_id");
+        locala.oZO = paramJSONObject.optString("trans_id");
         locala.timestamp = paramJSONObject.optLong("timestamp", 0L);
         locala.desc = paramJSONObject.optString("desc");
-        locala.dbH = paramJSONObject.optInt("fee", 0);
-        this.oxy.add(locala);
+        locala.dnd = paramJSONObject.optInt("fee", 0);
+        this.paT.add(locala);
         paramInt += 1;
       }
       catch (JSONException paramJSONObject)
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.NetSceneTenpayF2fRecordList", paramJSONObject, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.NetSceneTenpayF2fRecordList", paramJSONObject, "", new Object[0]);
         }
       }
     }
@@ -97,7 +97,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.s
  * JD-Core Version:    0.7.0.1
  */

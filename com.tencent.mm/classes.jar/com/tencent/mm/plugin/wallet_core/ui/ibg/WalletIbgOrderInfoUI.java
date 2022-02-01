@@ -4,25 +4,25 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.kf;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.a.kn;
 import com.tencent.mm.plugin.wallet_core.c.a.c;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 @com.tencent.mm.ui.base.a(3)
 public class WalletIbgOrderInfoUI
   extends WalletBaseUI
 {
-  public static Orders BhZ;
-  private String BLk = null;
-  private String BLl = null;
-  private String BLm = null;
-  private String BLn = null;
-  private final int BLo = 1;
-  private final int BLp = 2;
-  private String Bgm = null;
+  public static Orders CIn;
+  private String CGA = null;
+  private String DlC = null;
+  private String DlD = null;
+  private String DlE = null;
+  private String DlF = null;
+  private final int DlG = 1;
+  private final int DlH = 2;
   private String mAppId = null;
   private String mTimeStamp = null;
   
@@ -38,11 +38,11 @@ public class WalletIbgOrderInfoUI
     {
       if (paramInt1 == 1)
       {
-        paramIntent = new kf();
-        paramIntent.dlK.requestCode = 25;
-        paramIntent.dlK.bPH = -1;
-        paramIntent.dlK.dlL = new Intent();
-        com.tencent.mm.sdk.b.a.GpY.l(paramIntent);
+        paramIntent = new kn();
+        paramIntent.dxx.requestCode = 25;
+        paramIntent.dxx.bZU = -1;
+        paramIntent.dxx.dxy = new Intent();
+        com.tencent.mm.sdk.b.a.IbL.l(paramIntent);
       }
       setResult(-1);
       finish();
@@ -56,13 +56,13 @@ public class WalletIbgOrderInfoUI
     super.onCreate(paramBundle);
     addSceneEndListener(1565);
     this.mAppId = getIntent().getStringExtra("appId");
-    this.BLk = getIntent().getStringExtra("nonceStr");
+    this.DlC = getIntent().getStringExtra("nonceStr");
     this.mTimeStamp = getIntent().getStringExtra("timeStamp");
-    this.Bgm = getIntent().getStringExtra("packageExt");
-    this.BLl = getIntent().getStringExtra("paySignature");
-    this.BLm = getIntent().getStringExtra("signtype");
-    this.BLn = getIntent().getStringExtra("url");
-    doSceneForceProgress(new c(this.mAppId, this.BLk, this.mTimeStamp, this.Bgm, this.BLl, this.BLm, this.BLn));
+    this.CGA = getIntent().getStringExtra("packageExt");
+    this.DlD = getIntent().getStringExtra("paySignature");
+    this.DlE = getIntent().getStringExtra("signtype");
+    this.DlF = getIntent().getStringExtra("url");
+    doSceneForceProgress(new c(this.mAppId, this.DlC, this.mTimeStamp, this.CGA, this.DlD, this.DlE, this.DlF));
     AppMethodBeat.o(71448);
   }
   
@@ -77,17 +77,17 @@ public class WalletIbgOrderInfoUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(71450);
-    ac.i("MicroMsg.WalletIbgOrderInfoUI", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
+    ad.i("MicroMsg.WalletIbgOrderInfoUI", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
     if ((paramn instanceof c))
     {
       removeSceneEndListener(1565);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         paramn = (c)paramn;
-        BhZ = paramn.Bpf;
-        paramString = BhZ;
-        paramInt1 = paramn.Bpw;
-        ac.i("MicroMsg.WalletIbgOrderInfoUI", "gotoIbgOrderInfoUI, useNewPage: %s, orders: %s", new Object[] { Integer.valueOf(paramInt1), paramString });
+        CIn = paramn.CPv;
+        paramString = CIn;
+        paramInt1 = paramn.CPL;
+        ad.i("MicroMsg.WalletIbgOrderInfoUI", "gotoIbgOrderInfoUI, useNewPage: %s, orders: %s", new Object[] { Integer.valueOf(paramInt1), paramString });
         if (paramInt1 == 1)
         {
           paramn = new Intent(this, WalletIbgOrderInfoNewUI.class);

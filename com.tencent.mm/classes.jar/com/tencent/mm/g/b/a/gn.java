@@ -6,155 +6,127 @@ import com.tencent.mm.plugin.report.a;
 public final class gn
   extends a
 {
-  private long eaM = 0L;
-  private String ecm;
-  private a ecn;
-  private long eco = 0L;
-  private long ecp = 0L;
-  private String ecq;
+  public String dSb;
+  public long egV;
+  public long eik;
+  public long eil;
+  public String eoC;
+  public long eoD;
+  public String eoE;
+  public long eoF;
+  public long eoG;
+  public long eoH;
+  public long eoI;
+  public long eoJ;
+  public long eoK;
+  public long eoL;
+  public long eoM;
+  public long eoN;
+  public long eot;
+  public long eou;
+  public String eox;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(43470);
+    AppMethodBeat.i(179061);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ecm);
+    ((StringBuffer)localObject).append(this.dSb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaM);
+    ((StringBuffer)localObject).append(this.eoC);
     ((StringBuffer)localObject).append(",");
-    if (this.ecn != null) {}
-    for (int i = this.ecn.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eco);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.ecp);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.ecq);
-      localObject = ((StringBuffer)localObject).toString();
-      arz((String)localObject);
-      AppMethodBeat.o(43470);
-      return localObject;
-    }
-  }
-  
-  public final String PS()
-  {
-    AppMethodBeat.i(43471);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("AppId:").append(this.ecm);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppVersion:").append(this.eaM);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppState:").append(this.ecn);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.eco);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FileOccupation:").append(this.ecp);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DirPrefix:").append(this.ecq);
+    ((StringBuffer)localObject).append(this.eoD);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoE);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoF);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoG);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoH);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoI);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoJ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.egV);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eik);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eil);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eot);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoK);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoL);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoM);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eoN);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eox);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eou);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43471);
+    awz((String)localObject);
+    AppMethodBeat.o(179061);
     return localObject;
   }
   
-  public final long SG()
+  public final String RE()
   {
-    return this.ecp;
-  }
-  
-  public final String SH()
-  {
-    return this.ecq;
-  }
-  
-  public final gn a(a parama)
-  {
-    this.ecn = parama;
-    return this;
-  }
-  
-  public final String getAppId()
-  {
-    return this.ecm;
+    AppMethodBeat.i(179062);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("NewFeeds:").append(this.eoC);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("NewFeedsCount:").append(this.eoD);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ExposureNewFeeds:").append(this.eoE);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ExposureNewFeedsCount:").append(this.eoF);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("MissReadBreakLayersCount:").append(this.eoG);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("JumpableMissReadBreakLayersCount:").append(this.eoH);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("MissReadJumpBtnExposureCount:").append(this.eoI);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("MissReadJumpBtnClickCount:").append(this.eoJ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Seq:").append(this.egV);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SubSeq:").append(this.eik);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SubSeqSum:").append(this.eil);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("MissReadJumpBtnId:").append(this.eot);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("MissReadJumpBtnClickType:").append(this.eoK);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("MissReadJumpBtnFirstExposureTime:").append(this.eoL);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("JumpBreakLayerFeedCount:").append(this.eoM);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("JumpBreakLayerWeishangFeedCount:").append(this.eoN);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("JumpBreakLayerFeeds:").append(this.eox);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("MissReadJumpBreakLayerId:").append(this.eou);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(179062);
+    return localObject;
   }
   
   public final int getId()
   {
-    return 17687;
-  }
-  
-  public final gn ll(long paramLong)
-  {
-    this.eaM = paramLong;
-    return this;
-  }
-  
-  public final gn lm(long paramLong)
-  {
-    this.eco = paramLong;
-    return this;
-  }
-  
-  public final gn ln(long paramLong)
-  {
-    this.ecp = paramLong;
-    return this;
-  }
-  
-  public final gn nW(String paramString)
-  {
-    AppMethodBeat.i(43469);
-    this.ecm = t("AppId", paramString, true);
-    AppMethodBeat.o(43469);
-    return this;
-  }
-  
-  public final gn nX(String paramString)
-  {
-    AppMethodBeat.i(180149);
-    this.ecq = t("DirPrefix", paramString, true);
-    AppMethodBeat.o(180149);
-    return this;
-  }
-  
-  public static enum a
-  {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(43468);
-      ecr = new a("release", 0, 1);
-      ecs = new a("debug", 1, 2);
-      ect = new a("demo", 2, 3);
-      ecu = new a[] { ecr, ecs, ect };
-      AppMethodBeat.o(43468);
-    }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
-    
-    public static a iE(int paramInt)
-    {
-      switch (paramInt)
-      {
-      default: 
-        return null;
-      case 1: 
-        return ecr;
-      case 2: 
-        return ecs;
-      }
-      return ect;
-    }
+    return 19055;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.gn
  * JD-Core Version:    0.7.0.1
  */

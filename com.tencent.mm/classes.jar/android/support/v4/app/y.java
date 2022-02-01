@@ -9,10 +9,10 @@ public final class y
 {
   public static final class a
   {
-    public ArrayList<String> GK;
-    public ArrayList<String> GL;
-    public ArrayList<String> GM;
-    public ArrayList<Uri> GN;
+    public ArrayList<String> IC;
+    public ArrayList<String> IE;
+    public ArrayList<String> IF;
+    public ArrayList<Uri> IG;
     private Activity mActivity;
     public Intent mIntent;
     

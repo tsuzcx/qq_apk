@@ -12,7 +12,7 @@ import com.tencent.pb.common.c.b;
 public class ConnectReceiver
   extends BroadcastReceiver
 {
-  private static g JPH = null;
+  private static g LJs = null;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -26,12 +26,12 @@ public class ConnectReceiver
         if (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction())) {
           return;
         }
-        if (JPH == null) {
-          JPH = new g();
+        if (LJs == null) {
+          LJs = new g();
         }
         boolean bool1 = h.isNetworkConnected();
-        boolean bool2 = JPH.Up();
-        paramContext = (a)f.aTW("EventCenter");
+        boolean bool2 = LJs.WG();
+        paramContext = (a)f.aZU("EventCenter");
         if ((!bool2) || (paramContext == null)) {
           return;
         }

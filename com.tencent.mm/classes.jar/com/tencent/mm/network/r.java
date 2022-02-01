@@ -19,11 +19,11 @@ public abstract interface r
   
   public abstract void a(j paramj, int paramInt1, int paramInt2, String paramString);
   
-  public abstract h aCf();
+  public abstract h aFi();
   
-  public abstract i aCg();
+  public abstract i aFj();
   
-  public abstract int aCh();
+  public abstract int aFk();
   
   public abstract boolean getIsLongPolling();
   
@@ -33,9 +33,13 @@ public abstract interface r
   
   public abstract int getMMReqRespHash();
   
+  public abstract int getNewExtFlags();
+  
   public abstract int getOptions();
   
   public abstract int getTimeOut();
+  
+  public abstract byte[] getTransHeader();
   
   public abstract int getType();
   
@@ -99,7 +103,7 @@ public abstract interface r
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IReqResp_AIDL");
-        locali = aCg();
+        locali = aFj();
         paramParcel2.writeNoException();
         paramParcel1 = localh;
         if (locali != null) {
@@ -109,7 +113,7 @@ public abstract interface r
         return true;
       case 4: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IReqResp_AIDL");
-        localh = aCf();
+        localh = aFi();
         paramParcel2.writeNoException();
         paramParcel1 = locali;
         if (localh != null) {
@@ -161,7 +165,7 @@ public abstract interface r
         return true;
       case 12: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IReqResp_AIDL");
-        paramInt1 = aCh();
+        paramInt1 = aFk();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -191,11 +195,23 @@ public abstract interface r
         }
         paramParcel2.writeInt(paramInt1);
         return true;
+      case 16: 
+        paramParcel1.enforceInterface("com.tencent.mm.network.IReqResp_AIDL");
+        paramInt1 = getLongPollingTimeout();
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 17: 
+        paramParcel1.enforceInterface("com.tencent.mm.network.IReqResp_AIDL");
+        paramInt1 = getNewExtFlags();
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.network.IReqResp_AIDL");
-      paramInt1 = getLongPollingTimeout();
+      paramParcel1 = getTransHeader();
       paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
+      paramParcel2.writeByteArray(paramParcel1);
       return true;
     }
     
@@ -442,7 +458,7 @@ public abstract interface r
         //   33	80	101	finally
       }
       
-      public final h aCf()
+      public final h aFi()
       {
         AppMethodBeat.i(132760);
         Parcel localParcel1 = Parcel.obtain();
@@ -463,7 +479,7 @@ public abstract interface r
         }
       }
       
-      public final i aCg()
+      public final i aFj()
       {
         AppMethodBeat.i(132759);
         Parcel localParcel1 = Parcel.obtain();
@@ -484,7 +500,7 @@ public abstract interface r
         }
       }
       
-      public final int aCh()
+      public final int aFk()
       {
         AppMethodBeat.i(132768);
         Parcel localParcel1 = Parcel.obtain();
@@ -513,7 +529,7 @@ public abstract interface r
       public final boolean getIsLongPolling()
       {
         boolean bool = false;
-        AppMethodBeat.i(206890);
+        AppMethodBeat.i(189845);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -531,7 +547,7 @@ public abstract interface r
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(206890);
+          AppMethodBeat.o(189845);
         }
       }
       
@@ -562,7 +578,7 @@ public abstract interface r
       
       public final int getLongPollingTimeout()
       {
-        AppMethodBeat.i(206891);
+        AppMethodBeat.i(189846);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -577,7 +593,7 @@ public abstract interface r
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(206891);
+          AppMethodBeat.o(189846);
         }
       }
       
@@ -599,6 +615,27 @@ public abstract interface r
           localParcel2.recycle();
           localParcel1.recycle();
           AppMethodBeat.o(132762);
+        }
+      }
+      
+      public final int getNewExtFlags()
+      {
+        AppMethodBeat.i(189847);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IReqResp_AIDL");
+          this.mRemote.transact(17, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(189847);
         }
       }
       
@@ -641,6 +678,27 @@ public abstract interface r
           localParcel2.recycle();
           localParcel1.recycle();
           AppMethodBeat.o(132769);
+        }
+      }
+      
+      public final byte[] getTransHeader()
+      {
+        AppMethodBeat.i(189848);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IReqResp_AIDL");
+          this.mRemote.transact(18, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(189848);
         }
       }
       

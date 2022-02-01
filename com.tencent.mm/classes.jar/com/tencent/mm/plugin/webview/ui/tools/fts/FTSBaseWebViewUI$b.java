@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.webview.ui.tools.fts;
 import android.net.Uri;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.am;
 import com.tencent.mm.plugin.webview.core.e;
 import com.tencent.mm.plugin.webview.core.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.search.FTSEditTextView;
 import com.tencent.mm.ui.search.WebSearchView;
 import com.tencent.mm.vfs.i;
@@ -19,10 +19,10 @@ final class FTSBaseWebViewUI$b
 {
   private FTSBaseWebViewUI$b(FTSBaseWebViewUI paramFTSBaseWebViewUI) {}
   
-  private static WebResourceResponse aDv(String paramString)
+  private static WebResourceResponse aIW(String paramString)
   {
-    AppMethodBeat.i(188524);
-    ac.i("MicroMsg.WebSearch.FTSBaseWebViewUI", "url=%s | thread=%d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
+    AppMethodBeat.i(208179);
+    ad.i("MicroMsg.WebSearch.FTSBaseWebViewUI", "url=%s | thread=%d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
     paramString = Uri.parse(paramString);
     try
     {
@@ -30,7 +30,7 @@ final class FTSBaseWebViewUI$b
       if (paramString != null)
       {
         paramString = new WebResourceResponse("image/*", "utf8", paramString);
-        AppMethodBeat.o(188524);
+        AppMethodBeat.o(208179);
         return paramString;
       }
     }
@@ -40,29 +40,29 @@ final class FTSBaseWebViewUI$b
       {
         paramString = null;
       }
-      AppMethodBeat.o(188524);
+      AppMethodBeat.o(208179);
     }
     return null;
   }
   
   public final WebResourceResponse b(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(188523);
+    AppMethodBeat.i(208178);
     if ((paramWebResourceRequest != null) && (paramWebResourceRequest.getUrl() != null) && (paramWebResourceRequest.getUrl().toString().startsWith("weixin://fts")))
     {
-      paramWebView = aDv(paramWebResourceRequest.getUrl().toString());
-      AppMethodBeat.o(188523);
+      paramWebView = aIW(paramWebResourceRequest.getUrl().toString());
+      AppMethodBeat.o(208178);
       return paramWebView;
     }
-    AppMethodBeat.o(188523);
+    AppMethodBeat.o(208178);
     return null;
   }
   
-  public final e eza()
+  public final e eNP()
   {
-    AppMethodBeat.i(188522);
+    AppMethodBeat.i(208177);
     a locala = new a((byte)0);
-    AppMethodBeat.o(188522);
+    AppMethodBeat.o(208177);
     return locala;
   }
   
@@ -73,39 +73,39 @@ final class FTSBaseWebViewUI$b
     
     public final void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(188521);
-      if ((paramString2 != null) && (paramString2.equals(FTSBaseWebViewUI.b.this.CDb.bLL()))) {
-        ai.iE(FTSBaseWebViewUI.a(FTSBaseWebViewUI.b.this.CDb), 16);
+      AppMethodBeat.i(208176);
+      if ((paramString2 != null) && (paramString2.equals(FTSBaseWebViewUI.b.this.EgM.bQm()))) {
+        am.iR(FTSBaseWebViewUI.a(FTSBaseWebViewUI.b.this.EgM), 16);
       }
-      AppMethodBeat.o(188521);
+      AppMethodBeat.o(208176);
+    }
+    
+    public final void aGk(String paramString)
+    {
+      AppMethodBeat.i(208175);
+      ad.i("MicroMsg.WebSearch.FTSBaseWebViewUI", "onPageStarted %s", new Object[] { paramString });
+      FTSBaseWebViewUI.b.this.EgM.showOptionMenu(false);
+      if ((FTSBaseWebViewUI.c(FTSBaseWebViewUI.b.this.EgM) != null) && (!FTSBaseWebViewUI.d(FTSBaseWebViewUI.b.this.EgM)))
+      {
+        FTSBaseWebViewUI.c(FTSBaseWebViewUI.b.this.EgM).getFtsEditText().vr.clearFocus();
+        FTSBaseWebViewUI.b.this.EgM.hideVKB();
+      }
+      am.iR(FTSBaseWebViewUI.a(FTSBaseWebViewUI.b.this.EgM), 1);
+      am.iS(FTSBaseWebViewUI.a(FTSBaseWebViewUI.b.this.EgM), 1);
+      AppMethodBeat.o(208175);
     }
     
     public final void b(WebView paramWebView, String paramString)
     {
-      AppMethodBeat.i(188519);
-      ac.i("MicroMsg.WebSearch.FTSBaseWebViewUI", "onPageFinished %s", new Object[] { paramString });
-      FTSBaseWebViewUI.b.this.CDb.showOptionMenu(false);
-      if ((FTSBaseWebViewUI.c(FTSBaseWebViewUI.b.this.CDb) != null) && (!FTSBaseWebViewUI.d(FTSBaseWebViewUI.b.this.CDb)))
+      AppMethodBeat.i(208174);
+      ad.i("MicroMsg.WebSearch.FTSBaseWebViewUI", "onPageFinished %s", new Object[] { paramString });
+      FTSBaseWebViewUI.b.this.EgM.showOptionMenu(false);
+      if ((FTSBaseWebViewUI.c(FTSBaseWebViewUI.b.this.EgM) != null) && (!FTSBaseWebViewUI.d(FTSBaseWebViewUI.b.this.EgM)))
       {
-        FTSBaseWebViewUI.c(FTSBaseWebViewUI.b.this.CDb).getFtsEditText().ty.clearFocus();
-        FTSBaseWebViewUI.b.this.CDb.hideVKB();
+        FTSBaseWebViewUI.c(FTSBaseWebViewUI.b.this.EgM).getFtsEditText().vr.clearFocus();
+        FTSBaseWebViewUI.b.this.EgM.hideVKB();
       }
-      AppMethodBeat.o(188519);
-    }
-    
-    public final void m(WebView paramWebView, String paramString)
-    {
-      AppMethodBeat.i(188520);
-      ac.i("MicroMsg.WebSearch.FTSBaseWebViewUI", "onPageStarted %s", new Object[] { paramString });
-      FTSBaseWebViewUI.b.this.CDb.showOptionMenu(false);
-      if ((FTSBaseWebViewUI.c(FTSBaseWebViewUI.b.this.CDb) != null) && (!FTSBaseWebViewUI.d(FTSBaseWebViewUI.b.this.CDb)))
-      {
-        FTSBaseWebViewUI.c(FTSBaseWebViewUI.b.this.CDb).getFtsEditText().ty.clearFocus();
-        FTSBaseWebViewUI.b.this.CDb.hideVKB();
-      }
-      ai.iE(FTSBaseWebViewUI.a(FTSBaseWebViewUI.b.this.CDb), 1);
-      ai.iF(FTSBaseWebViewUI.a(FTSBaseWebViewUI.b.this.CDb), 1);
-      AppMethodBeat.o(188520);
+      AppMethodBeat.o(208174);
     }
   }
 }

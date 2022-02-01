@@ -14,86 +14,88 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.live.b.c;
 import com.tencent.mm.live.b.g;
 import com.tencent.mm.live.core.core.b.d;
-import com.tencent.mm.ui.ap;
-import d.g.b.k;
+import com.tencent.mm.ui.ar;
+import d.g.b.p;
+import d.g.b.q;
 import d.k.h;
-import d.y;
+import d.l;
+import d.z;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/plugin/LiveHostRightPanelPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "lastLikeCount", "", "liveMessageCallback", "Lkotlin/Function0;", "", "micBtnLayout", "Landroid/view/View;", "kotlin.jvm.PlatformType", "micDescTv", "Landroid/widget/TextView;", "shareBtn", "Landroid/widget/ImageView;", "shareBtnClickArea", "Landroid/widget/RelativeLayout;", "shareBtnLayout", "shareDescTv", "switchBtnLayout", "switchCameraBtn", "switchCameraBtnClickArea", "switchDescTv", "checkBtnLayout", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "setupForHost", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveHostRightPanelPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "lastLikeCount", "", "liveMessageCallback", "Lkotlin/Function0;", "", "micBtnLayout", "Landroid/view/View;", "kotlin.jvm.PlatformType", "micDescTv", "Landroid/widget/TextView;", "shareBtn", "Landroid/widget/ImageView;", "shareBtnClickArea", "Landroid/widget/RelativeLayout;", "shareBtnLayout", "shareDescTv", "switchBtnLayout", "switchCameraBtn", "switchCameraBtnClickArea", "switchDescTv", "checkBtnLayout", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "setupForHost", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
 public final class x
   extends a
 {
-  public final ImageView gBd;
-  public final RelativeLayout gBe;
-  public final ImageView gBf;
-  public final RelativeLayout gBg;
-  public final TextView gBh;
-  private final TextView gBi;
-  private final TextView gBj;
-  public final View gBk;
-  final View gBl;
-  final View gBm;
-  int gBn;
-  private final d.g.a.a<y> gBo;
-  final b gzb;
+  final b gSM;
+  public final ImageView gUN;
+  public final RelativeLayout gUO;
+  public final ImageView gUP;
+  public final RelativeLayout gUQ;
+  public final TextView gUR;
+  private final TextView gUS;
+  private final TextView gUT;
+  public final View gUU;
+  final View gUV;
+  final View gUW;
+  int gUX;
+  private final d.g.a.a<z> gUY;
   
   public x(final ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(190163);
-    this.gzb = paramb;
-    this.gBd = ((ImageView)paramViewGroup.findViewById(2131307749));
-    this.gBe = ((RelativeLayout)paramViewGroup.findViewById(2131307750));
-    this.gBf = ((ImageView)paramViewGroup.findViewById(2131307753));
-    this.gBg = ((RelativeLayout)paramViewGroup.findViewById(2131307754));
-    this.gBh = ((TextView)paramViewGroup.findViewById(2131307751));
-    this.gBi = ((TextView)paramViewGroup.findViewById(2131307755));
-    this.gBj = ((TextView)paramViewGroup.findViewById(2131307759));
-    this.gBk = paramViewGroup.findViewById(2131307752);
-    this.gBl = paramViewGroup.findViewById(2131307756);
-    this.gBm = paramViewGroup.findViewById(2131307760);
-    this.gBo = ((d.g.a.a)new a(this, paramViewGroup));
-    paramb = c.gtd;
-    c.d(name(), this.gBo);
+    AppMethodBeat.i(212452);
+    this.gSM = paramb;
+    this.gUN = ((ImageView)paramViewGroup.findViewById(2131307749));
+    this.gUO = ((RelativeLayout)paramViewGroup.findViewById(2131307750));
+    this.gUP = ((ImageView)paramViewGroup.findViewById(2131307753));
+    this.gUQ = ((RelativeLayout)paramViewGroup.findViewById(2131307754));
+    this.gUR = ((TextView)paramViewGroup.findViewById(2131307751));
+    this.gUS = ((TextView)paramViewGroup.findViewById(2131307755));
+    this.gUT = ((TextView)paramViewGroup.findViewById(2131307759));
+    this.gUU = paramViewGroup.findViewById(2131307752);
+    this.gUV = paramViewGroup.findViewById(2131307756);
+    this.gUW = paramViewGroup.findViewById(2131307760);
+    this.gUY = ((d.g.a.a)new a(this, paramViewGroup));
+    paramb = c.gMO;
+    c.d(name(), this.gUY);
     if (paramViewGroup.findViewById(2131298772) != null)
     {
       paramb = new LinearLayout.LayoutParams(-1, -1);
-      if (!aly()) {
-        paramb.bottomMargin = ap.ej(paramViewGroup.getContext());
+      if (!aol()) {
+        paramb.bottomMargin = ar.ej(paramViewGroup.getContext());
       }
       paramViewGroup = paramViewGroup.findViewById(2131298772);
-      k.g(paramViewGroup, "root.findViewById<Linear…>(R.id.content_root_view)");
+      p.g(paramViewGroup, "root.findViewById<Linear…>(R.id.content_root_view)");
       ((LinearLayout)paramViewGroup).setLayoutParams((ViewGroup.LayoutParams)paramb);
     }
-    AppMethodBeat.o(190163);
+    AppMethodBeat.o(212452);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(190162);
-    k.h(paramc, "status");
+    AppMethodBeat.i(212451);
+    p.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (y.cfA[paramc.ordinal()])
+    switch (y.cpQ[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(190162);
+      AppMethodBeat.o(212451);
       return;
-      nj(8);
-      AppMethodBeat.o(190162);
+      nI(8);
+      AppMethodBeat.o(212451);
       return;
-      nj(0);
-      this.gnb.post((Runnable)new d(this));
+      nI(0);
+      this.gGK.post((Runnable)new d(this));
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class a
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     a(x paramx, ViewGroup paramViewGroup)
     {
@@ -101,7 +103,7 @@ public final class x
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   public static final class b
     implements View.OnClickListener
   {
@@ -109,13 +111,17 @@ public final class x
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(190159);
-      this.gBp.gzb.a(b.c.gxN, new Bundle());
-      AppMethodBeat.o(190159);
+      AppMethodBeat.i(212448);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveHostRightPanelPlugin$setupForHost$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      this.gUZ.gSM.a(b.c.gRy, new Bundle());
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveHostRightPanelPlugin$setupForHost$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(212448);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   public static final class c
     implements View.OnClickListener
   {
@@ -123,45 +129,48 @@ public final class x
     
     public final void onClick(View paramView)
     {
-      boolean bool2 = true;
-      AppMethodBeat.i(190160);
-      this.gBp.gzb.a(b.c.gxM, new Bundle());
-      paramView = g.guG;
-      paramView = g.akJ();
+      AppMethodBeat.i(212449);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveHostRightPanelPlugin$setupForHost$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+      this.gUZ.gSM.a(b.c.gRx, new Bundle());
+      paramView = g.gOr;
+      paramView = g.anw();
       if (paramView != null)
       {
-        paramView = paramView.gnS;
+        paramView = paramView.gHB;
         if (paramView != null)
         {
-          Object localObject = g.guG;
-          localObject = g.akJ();
-          if (localObject != null)
-          {
-            localObject = ((d)localObject).gnS;
-            if (localObject != null)
-            {
-              bool1 = ((com.tencent.mm.live.core.core.b.b)localObject).gnL;
-              if (bool1) {
-                break label105;
-              }
-            }
+          localObject = g.gOr;
+          localObject = g.anw();
+          if (localObject == null) {
+            break label132;
           }
-          label105:
-          for (boolean bool1 = bool2;; bool1 = false)
-          {
-            paramView.gnL = bool1;
-            AppMethodBeat.o(190160);
-            return;
-            bool1 = true;
-            break;
+          localObject = ((d)localObject).gHB;
+          if (localObject == null) {
+            break label132;
+          }
+          bool = ((com.tencent.mm.live.core.core.b.b)localObject).gHu;
+          if (bool) {
+            break label137;
           }
         }
       }
-      AppMethodBeat.o(190160);
+      label132:
+      label137:
+      for (boolean bool = true;; bool = false)
+      {
+        paramView.gHu = bool;
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveHostRightPanelPlugin$setupForHost$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(212449);
+        return;
+        bool = true;
+        break;
+      }
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -169,17 +178,17 @@ public final class x
     
     public final void run()
     {
-      AppMethodBeat.i(190161);
-      x localx = this.gBp;
+      AppMethodBeat.i(212450);
+      x localx = this.gUZ;
       Object localObject = new ArrayList();
-      ((ArrayList)localObject).add(localx.gBl);
-      ((ArrayList)localObject).add(localx.gBm);
-      View localView = localx.gBl;
-      k.g(localView, "switchBtnLayout");
+      ((ArrayList)localObject).add(localx.gUV);
+      ((ArrayList)localObject).add(localx.gUW);
+      View localView = localx.gUV;
+      p.g(localView, "switchBtnLayout");
       int i = localView.getWidth();
-      localView = localx.gBm;
-      k.g(localView, "micBtnLayout");
-      i = h.la(i, localView.getWidth());
+      localView = localx.gUW;
+      p.g(localView, "micBtnLayout");
+      i = h.lp(i, localView.getWidth());
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -187,8 +196,8 @@ public final class x
         int j = (i - localView.getWidth()) / 2;
         localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), j + localView.getPaddingRight(), localView.getPaddingBottom());
       }
-      localx.gnb.requestLayout();
-      AppMethodBeat.o(190161);
+      localx.gGK.requestLayout();
+      AppMethodBeat.o(212450);
     }
   }
 }

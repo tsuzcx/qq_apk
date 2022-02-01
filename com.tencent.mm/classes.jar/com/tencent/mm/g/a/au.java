@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class au
   extends b
 {
-  public a dap;
+  public a dlF;
   
   public au()
   {
@@ -15,22 +16,22 @@ public final class au
   
   private au(byte paramByte)
   {
-    AppMethodBeat.i(120830);
-    this.dap = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(115969);
+    this.dlF = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(120830);
+    AppMethodBeat.o(115969);
   }
   
   public static final class a
   {
-    public int daq;
-    public int scene = 0;
+    public Activity activity;
+    public String dlG;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.au
  * JD-Core Version:    0.7.0.1
  */

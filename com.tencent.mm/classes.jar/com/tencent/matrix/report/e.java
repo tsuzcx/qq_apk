@@ -1,27 +1,27 @@
 package com.tencent.matrix.report;
 
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.n.n;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/matrix/report/MatrixFinderReporter;", "", "()V", "ID_KEY", "", "KV_ID", "getDeviceLevelIndex", "level", "", "getDeviceLevelSnsIndex", "isCareScene", "", "scene", "isFinderScene", "isFinderTlScene", "isSnsTlScene", "onAnr", "", "onFPS", "content", "Lorg/json/JSONObject;", "plugin-report_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/matrix/report/MatrixFinderReporter;", "", "()V", "ID_KEY", "", "KV_ID", "getDeviceLevelIndex", "level", "", "getDeviceLevelSnsIndex", "isCareScene", "", "scene", "isFinderScene", "isFinderTlScene", "isSnsTlScene", "onAnr", "", "onFPS", "content", "Lorg/json/JSONObject;", "plugin-report_release"})
 public final class e
 {
-  public static final e cui = new e();
+  public static final e cFd = new e();
   
-  public static boolean cN(String paramString)
+  public static boolean dQ(String paramString)
   {
-    k.h(paramString, "scene");
-    return n.nc(paramString, "SnsTimeLineUI");
+    p.h(paramString, "scene");
+    return n.nA(paramString, "SnsTimeLineUI");
   }
   
-  public static boolean cO(String paramString)
+  public static boolean dR(String paramString)
   {
-    k.h(paramString, "scene");
+    p.h(paramString, "scene");
     return n.a((CharSequence)paramString, (CharSequence)"Finder", false);
   }
   
-  static int cP(String paramString)
+  static int dS(String paramString)
   {
     switch (paramString.hashCode())
     {
@@ -45,7 +45,7 @@ public final class e
     }
   }
   
-  static int cQ(String paramString)
+  static int dT(String paramString)
   {
     switch (paramString.hashCode())
     {

@@ -10,11 +10,17 @@ import dalvik.system.DexClassLoader;
 public class b
   extends TBSOneStandaloneService.ServiceImpl
 {
+  private byte _hellAccFlag_;
+  
   public void onDestroy()
   {
     AppMethodBeat.i(173812);
     super.onDestroy();
-    System.exit(0);
+    com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/tencent/tbs/one/impl/c/a/b", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+    System.exit(((Integer)locala.mq(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/tbs/one/impl/c/a/b", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
     AppMethodBeat.o(173812);
   }
   

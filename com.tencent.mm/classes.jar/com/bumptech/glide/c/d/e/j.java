@@ -14,15 +14,15 @@ import java.util.List;
 public final class j
   implements k<InputStream, c>
 {
-  private final b aDH;
-  private final List<f> aDQ;
-  private final k<ByteBuffer, c> aKv;
+  private final List<f> aFH;
+  private final b aFy;
+  private final k<ByteBuffer, c> aMm;
   
   public j(List<f> paramList, k<ByteBuffer, c> paramk, b paramb)
   {
-    this.aDQ = paramList;
-    this.aKv = paramk;
-    this.aDH = paramb;
+    this.aFH = paramList;
+    this.aMm = paramk;
+    this.aFy = paramb;
   }
   
   private static byte[] d(InputStream paramInputStream)

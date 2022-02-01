@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kz;
+import com.tencent.mm.g.a.li;
 import com.tencent.mm.sdk.b.c;
 
 final class SimpleLoginUI$12
-  extends c<kz>
+  extends c<li>
 {
   SimpleLoginUI$12(SimpleLoginUI paramSimpleLoginUI)
   {
     AppMethodBeat.i(161707);
-    this.__eventId = kz.class.getName().hashCode();
+    this.__eventId = li.class.getName().hashCode();
     AppMethodBeat.o(161707);
   }
 }

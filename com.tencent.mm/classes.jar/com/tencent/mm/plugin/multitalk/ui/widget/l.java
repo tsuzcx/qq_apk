@@ -4,25 +4,25 @@ import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarHolderInContactUI;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "headerStub", "getHeaderStub", "()Landroid/view/View;", "setHeaderStub", "plugin-multitalk_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarHolderInContactUI;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "headerStub", "getHeaderStub", "()Landroid/view/View;", "setHeaderStub", "plugin-multitalk_release"})
 public final class l
   extends RecyclerView.w
 {
-  ImageView fxQ;
-  View uZF;
+  ImageView fRd;
+  View weJ;
   
   public l(View paramView)
   {
     super(paramView);
     AppMethodBeat.i(178985);
     View localView = paramView.findViewById(2131296996);
-    k.g(localView, "itemView.findViewById(R.id.avatar)");
-    this.fxQ = ((ImageView)localView);
+    p.g(localView, "itemView.findViewById(R.id.avatar)");
+    this.fRd = ((ImageView)localView);
     paramView = paramView.findViewById(2131300727);
-    k.g(paramView, "itemView.findViewById(R.id.header_stub)");
-    this.uZF = paramView;
+    p.g(paramView, "itemView.findViewById(R.id.header_stub)");
+    this.weJ = paramView;
     AppMethodBeat.o(178985);
   }
 }

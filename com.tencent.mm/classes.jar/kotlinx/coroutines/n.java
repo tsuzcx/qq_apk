@@ -1,32 +1,17 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.d;
+import d.g.a.b;
 import d.l;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/CancelledContinuation;", "Lkotlin/coroutines/Continuation;", "continuation", "", "cause", "", "handled", "<init>", "(Lkotlin/coroutines/Continuation;Ljava/lang/Throwable;Z)V", "makeResumed", "()Z", "kotlinx-coroutines-core", "Lkotlinx/coroutines/CompletedExceptionally;"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"getOrCreateCancellableContinuation", "Lkotlinx/coroutines/CancellableContinuationImpl;", "T", "delegate", "Lkotlin/coroutines/Continuation;", "suspendAtomicCancellableCoroutine", "block", "Lkotlin/Function1;", "Lkotlinx/coroutines/CancellableContinuation;", "", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "holdCancellability", "", "(ZLkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "suspendAtomicCancellableCoroutineReusable", "suspendCancellableCoroutine", "disposeOnCancellation", "handle", "Lkotlinx/coroutines/DisposableHandle;", "removeOnCancellation", "node", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "kotlinx-coroutines-core"})
 public final class n
-  extends t
 {
-  private static final AtomicIntegerFieldUpdater LQK;
-  private volatile int _resumed;
-  
-  static
+  public static final void a(k<?> paramk, ba paramba)
   {
-    AppMethodBeat.i(191164);
-    LQK = AtomicIntegerFieldUpdater.newUpdater(n.class, "_resumed");
-    AppMethodBeat.o(191164);
-  }
-  
-  public n(d<?> paramd, Throwable paramThrowable, boolean paramBoolean) {}
-  
-  public final boolean gdu()
-  {
-    AppMethodBeat.i(191162);
-    boolean bool = LQK.compareAndSet(this, 0, 1);
-    AppMethodBeat.o(191162);
-    return bool;
+    AppMethodBeat.i(190756);
+    paramk.K((b)new bb(paramba));
+    AppMethodBeat.o(190756);
   }
 }
 

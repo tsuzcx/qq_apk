@@ -14,19 +14,19 @@ import org.xwalk.core.XWalkCoreWrapper;
 public final class s
   implements m
 {
-  public ConcurrentMap<String, k> KHb;
-  public l KHc;
-  private ReflectMethod KHd;
-  private ReflectMethod KHe;
+  public ConcurrentMap<String, k> MxB;
+  public l MxC;
+  private ReflectMethod MxD;
+  private ReflectMethod MxE;
   
   private s()
   {
     AppMethodBeat.i(183747);
-    this.KHb = new ConcurrentHashMap();
+    this.MxB = new ConcurrentHashMap();
     AppMethodBeat.o(183747);
   }
   
-  private static boolean J(boolean paramBoolean, String paramString)
+  private static boolean O(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(183746);
     paramString = XWalkCoreWrapper.invokeRuntimeChannel(80013, new Object[] { Boolean.valueOf(paramBoolean), paramString });
@@ -45,7 +45,7 @@ public final class s
     if (XWalkCoreWrapper.getInstance().hasFeature(1030)) {
       try
       {
-        if (this.KHe == null)
+        if (this.MxE == null)
         {
           Class localClass = XWalkCoreWrapper.getInstance().getClass("com.tencent.xweb.xprofile.XProfileManager");
           if (localClass == null)
@@ -53,10 +53,10 @@ public final class s
             AppMethodBeat.o(154503);
             return;
           }
-          this.KHe = new ReflectMethod(localClass, "manualStopProfile", new Class[] { Integer.TYPE });
+          this.MxE = new ReflectMethod(localClass, "manualStopProfile", new Class[] { Integer.TYPE });
         }
-        this.KHc = paraml;
-        this.KHe.invoke(new Object[] { Integer.valueOf(0) });
+        this.MxC = paraml;
+        this.MxE.invoke(new Object[] { Integer.valueOf(0) });
         AppMethodBeat.o(154503);
         return;
       }
@@ -68,13 +68,13 @@ public final class s
     AppMethodBeat.o(154503);
   }
   
-  public final void aUR(String paramString)
+  public final void baU(String paramString)
   {
     AppMethodBeat.i(154502);
     if (XWalkCoreWrapper.getInstance().hasFeature(1030)) {
       try
       {
-        if (this.KHd == null)
+        if (this.MxD == null)
         {
           localObject = XWalkCoreWrapper.getInstance().getClass("com.tencent.xweb.xprofile.XProfileManager");
           if (localObject == null)
@@ -82,12 +82,12 @@ public final class s
             AppMethodBeat.o(154502);
             return;
           }
-          this.KHd = new ReflectMethod((Class)localObject, "manualStartProfile", new Class[] { Integer.TYPE, Bundle.class });
+          this.MxD = new ReflectMethod((Class)localObject, "manualStartProfile", new Class[] { Integer.TYPE, Bundle.class });
         }
         Object localObject = new Bundle();
         ((Bundle)localObject).putString("enabledTraceCategory", paramString);
         ((Bundle)localObject).putInt("traceSampleRatio", 10000);
-        this.KHd.invoke(new Object[] { Integer.valueOf(0), localObject });
+        this.MxD.invoke(new Object[] { Integer.valueOf(0), localObject });
         AppMethodBeat.o(154502);
         return;
       }
@@ -104,34 +104,34 @@ public final class s
     AppMethodBeat.i(183745);
     if (paramk == null)
     {
-      if (this.KHb.containsKey(paramString))
+      if (this.MxB.containsKey(paramString))
       {
-        this.KHb.remove(paramString);
-        J(false, paramString);
+        this.MxB.remove(paramString);
+        O(false, paramString);
         AppMethodBeat.o(183745);
         return true;
       }
       AppMethodBeat.o(183745);
       return false;
     }
-    if ((!this.KHb.containsKey(paramString)) && (!J(true, paramString)))
+    if ((!this.MxB.containsKey(paramString)) && (!O(true, paramString)))
     {
       AppMethodBeat.o(183745);
       return false;
     }
-    this.KHb.put(paramString, paramk);
+    this.MxB.put(paramString, paramk);
     AppMethodBeat.o(183745);
     return true;
   }
   
   public static final class a
   {
-    private static final s KHf;
+    private static final s MxF;
     
     static
     {
       AppMethodBeat.i(154500);
-      KHf = new s((byte)0);
+      MxF = new s((byte)0);
       AppMethodBeat.o(154500);
     }
   }

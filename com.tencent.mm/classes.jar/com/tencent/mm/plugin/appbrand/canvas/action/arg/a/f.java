@@ -9,24 +9,24 @@ import java.util.Map;
 public final class f
   extends a<BasePathActionArg>
 {
-  private static f jzW;
+  private static f jTR;
   
   static
   {
     AppMethodBeat.i(145325);
-    jzW = new f();
+    jTR = new f();
     AppMethodBeat.o(145325);
   }
   
-  public static f aZV()
+  public static f bdu()
   {
-    return jzW;
+    return jTR;
   }
   
-  public final <T> T Jw(String paramString)
+  public final <T> T MP(String paramString)
   {
     AppMethodBeat.i(145324);
-    paramString = ((com.tencent.mm.plugin.appbrand.canvas.b.a)e.a.jAm.jAl.get(paramString)).baa();
+    paramString = ((com.tencent.mm.plugin.appbrand.canvas.b.a)e.a.jUh.jUg.get(paramString)).bdz();
     AppMethodBeat.o(145324);
     return paramString;
   }

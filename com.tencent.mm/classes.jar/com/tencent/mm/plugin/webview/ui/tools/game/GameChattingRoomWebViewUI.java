@@ -9,27 +9,27 @@ import com.tencent.mm.plugin.webview.core.j;
 import com.tencent.mm.plugin.webview.core.j.a;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.xweb.WebView;
 
 public class GameChattingRoomWebViewUI
   extends WebViewUI
 {
-  private int CEB;
-  private int CEC;
-  final y.a CED;
-  final y.a CEE;
-  private j CEF;
+  private int Eil;
+  private int Eim;
+  final y.a Ein;
+  final y.a Eio;
+  private j Eip;
   String jumpUrl;
   
   public GameChattingRoomWebViewUI()
   {
     AppMethodBeat.i(80816);
     this.jumpUrl = "";
-    this.CEB = 4;
-    this.CEC = 5;
-    this.CED = new y.a()
+    this.Eil = 4;
+    this.Eim = 5;
+    this.Ein = new y.a()
     {
       public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
       {
@@ -39,7 +39,7 @@ public class GameChattingRoomWebViewUI
         AppMethodBeat.o(80814);
       }
     };
-    this.CEE = new y.a()
+    this.Eio = new y.a()
     {
       public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
       {
@@ -51,27 +51,27 @@ public class GameChattingRoomWebViewUI
         AppMethodBeat.o(80815);
       }
     };
-    this.CEF = new j()
+    this.Eip = new j()
     {
-      public final j.a n(WebView paramAnonymousWebView, final String paramAnonymousString)
+      public final j.a m(WebView paramAnonymousWebView, final String paramAnonymousString)
       {
-        AppMethodBeat.i(188549);
-        if (bs.isNullOrNil(paramAnonymousString))
+        AppMethodBeat.i(208219);
+        if (bt.isNullOrNil(paramAnonymousString))
         {
           paramAnonymousWebView = new j.a(false, false);
-          AppMethodBeat.o(188549);
+          AppMethodBeat.o(208219);
           return paramAnonymousWebView;
         }
         if ((paramAnonymousString.toLowerCase().startsWith("weixin://jump/")) || (paramAnonymousString.toLowerCase().startsWith("weixin://scanqrcode/")))
         {
-          com.tencent.e.h.JZN.aQ(new Runnable()
+          com.tencent.e.h.LTJ.aP(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(188548);
+              AppMethodBeat.i(208218);
               GameChattingRoomWebViewUI localGameChattingRoomWebViewUI = GameChattingRoomWebViewUI.this;
               String str1 = paramAnonymousString;
-              ac.i("MicroMsg.GameChattingRoomWebViewUI", "url = %s", new Object[] { str1 });
+              ad.i("MicroMsg.GameChattingRoomWebViewUI", "url = %s", new Object[] { str1 });
               localGameChattingRoomWebViewUI.jumpUrl = str1;
               String str2 = localGameChattingRoomWebViewUI.getIntent().getStringExtra("action");
               if (str2 != null)
@@ -85,35 +85,35 @@ public class GameChattingRoomWebViewUI
                   if (!str2.equals("action_create")) {
                     break;
                   }
-                  b.a(localGameChattingRoomWebViewUI.mController, localGameChattingRoomWebViewUI.getString(2131757965), str1, str3, localGameChattingRoomWebViewUI.CED, localGameChattingRoomWebViewUI.CEE);
-                  AppMethodBeat.o(188548);
+                  b.a(localGameChattingRoomWebViewUI.mController, localGameChattingRoomWebViewUI.getString(2131757965), str1, str3, localGameChattingRoomWebViewUI.Ein, localGameChattingRoomWebViewUI.Eio);
+                  AppMethodBeat.o(208218);
                   return;
                 }
                 if (str2.equals("action_join")) {
-                  b.a(localGameChattingRoomWebViewUI.mController, localGameChattingRoomWebViewUI.getString(2131760577), str1, str3, localGameChattingRoomWebViewUI.CED, localGameChattingRoomWebViewUI.CEE);
+                  b.a(localGameChattingRoomWebViewUI.mController, localGameChattingRoomWebViewUI.getString(2131760577), str1, str3, localGameChattingRoomWebViewUI.Ein, localGameChattingRoomWebViewUI.Eio);
                 }
               }
-              AppMethodBeat.o(188548);
+              AppMethodBeat.o(208218);
             }
           });
           paramAnonymousWebView = new j.a(true, true);
-          AppMethodBeat.o(188549);
+          AppMethodBeat.o(208219);
           return paramAnonymousWebView;
         }
         paramAnonymousWebView = new j.a(false, false);
-        AppMethodBeat.o(188549);
+        AppMethodBeat.o(208219);
         return paramAnonymousWebView;
       }
     };
     AppMethodBeat.o(80816);
   }
   
-  public final com.tencent.mm.plugin.webview.core.h bMD()
+  public final com.tencent.mm.plugin.webview.core.h bRd()
   {
-    AppMethodBeat.i(188550);
-    com.tencent.mm.plugin.webview.core.h localh = super.bMD();
-    localh.a(this.CEF);
-    AppMethodBeat.o(188550);
+    AppMethodBeat.i(208220);
+    com.tencent.mm.plugin.webview.core.h localh = super.bRd();
+    localh.a(this.Eip);
+    AppMethodBeat.o(208220);
     return localh;
   }
   

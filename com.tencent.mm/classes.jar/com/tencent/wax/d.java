@@ -10,80 +10,80 @@ import java.util.HashSet;
 
 public class d
 {
-  private static d KuC;
-  private d.a KuD;
-  private m KuE;
-  public Activity KuF;
-  public io.flutter.embedding.engine.a cDT;
+  private static d MkD;
+  private d.a MkE;
+  private m MkF;
+  public Activity MkG;
+  public io.flutter.embedding.engine.a cOY;
   
-  public static d fHA()
+  public static d fYR()
   {
-    AppMethodBeat.i(191685);
-    if (KuC == null) {}
+    AppMethodBeat.i(217482);
+    if (MkD == null) {}
     try
     {
-      KuC = new d();
-      d locald = KuC;
-      AppMethodBeat.o(191685);
+      MkD = new d();
+      d locald = MkD;
+      AppMethodBeat.o(217482);
       return locald;
     }
     finally
     {
-      AppMethodBeat.o(191685);
+      AppMethodBeat.o(217482);
     }
   }
   
   public final void a(d.a parama)
   {
-    this.KuD = parama;
+    this.MkE = parama;
   }
   
   public final void init()
   {
-    AppMethodBeat.i(191686);
-    if (this.KuD.KuM != null) {
-      com.tencent.wax.c.a.b(this.KuD.KuM);
+    AppMethodBeat.i(217483);
+    if (this.MkE.MkN != null) {
+      com.tencent.wax.c.a.b(this.MkE.MkN);
     }
     Object localObject1;
     Object localObject2;
-    if (this.cDT == null)
+    if (this.cOY == null)
     {
-      localObject1 = this.KuD;
-      FlutterMain.startInitialization(((d.a)localObject1).GX);
-      FlutterMain.ensureInitializationComplete(((d.a)localObject1).GX, ((d.a)localObject1).KuJ.fNp());
-      this.cDT = new io.flutter.embedding.engine.a(((d.a)localObject1).GX);
-      localObject1 = this.cDT;
-      ((io.flutter.embedding.engine.a)localObject1).KLp.setInitialRoute(this.KuD.KuH);
-      if (!((io.flutter.embedding.engine.a)localObject1).KLk.KLV)
+      localObject1 = this.MkE;
+      FlutterMain.startInitialization(((d.a)localObject1).IR);
+      FlutterMain.ensureInitializationComplete(((d.a)localObject1).IR, ((d.a)localObject1).MkK.toArray());
+      this.cOY = new io.flutter.embedding.engine.a(((d.a)localObject1).IR);
+      localObject1 = this.cOY;
+      ((io.flutter.embedding.engine.a)localObject1).MCm.setInitialRoute(this.MkE.MkI);
+      if (!((io.flutter.embedding.engine.a)localObject1).MCh.MCS)
       {
-        localObject2 = new DartExecutor.a(FlutterMain.findAppBundlePath(), this.KuD.KuG);
-        ((io.flutter.embedding.engine.a)localObject1).KLk.a((DartExecutor.a)localObject2);
+        localObject2 = new DartExecutor.a(FlutterMain.findAppBundlePath(), this.MkE.MkH);
+        ((io.flutter.embedding.engine.a)localObject1).MCh.a((DartExecutor.a)localObject2);
       }
     }
-    if (this.KuE == null) {
-      this.KuE = new b(this.cDT, this.KuD.GX);
+    if (this.MkF == null) {
+      this.MkF = new b(this.cOY, this.MkE.IR);
     }
-    if (!this.KuE.aVE("WxaRouterPlugin"))
+    if (!this.MkF.bbH("WxaRouterPlugin"))
     {
-      this.KuD.KuK.a(this.KuE);
-      this.KuE.dq("WxaRouterPlugin");
+      this.MkE.MkL.a(this.MkF);
+      this.MkF.em("WxaRouterPlugin");
     }
-    if (this.KuD.KuL != null)
+    if (this.MkE.MkM != null)
     {
-      localObject1 = e.fHC();
-      localObject2 = this.KuD.KuL;
-      if (!((e)localObject1).KuP.contains(localObject2))
+      localObject1 = e.fYT();
+      localObject2 = this.MkE.MkM;
+      if (!((e)localObject1).MkQ.contains(localObject2))
       {
-        ((e)localObject1).KuP.add(localObject2);
-        AppMethodBeat.o(191686);
+        ((e)localObject1).MkQ.add(localObject2);
+        AppMethodBeat.o(217483);
         return;
       }
       com.tencent.wax.c.a.i("WxaRouter.WxaRouterPlugin", "had add method call handler %s", new Object[] { Integer.valueOf(localObject2.hashCode()) });
-      AppMethodBeat.o(191686);
+      AppMethodBeat.o(217483);
       return;
     }
     com.tencent.wax.c.a.i("WxaRouter.WxaRouter", "no method call handler.", new Object[0]);
-    AppMethodBeat.o(191686);
+    AppMethodBeat.o(217483);
   }
 }
 

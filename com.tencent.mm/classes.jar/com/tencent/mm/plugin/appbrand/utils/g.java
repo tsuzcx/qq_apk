@@ -6,7 +6,7 @@ import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -15,29 +15,29 @@ public final class g
   implements Application.ActivityLifecycleCallbacks
 {
   public Application app;
-  public final Queue<a> mob;
-  private int moc;
-  public boolean mod;
+  public final Queue<a> mOD;
+  private int mOE;
+  public boolean mOF;
   
   public g()
   {
     AppMethodBeat.i(137911);
-    this.mob = new LinkedList();
-    this.moc = 0;
-    this.mod = false;
+    this.mOD = new LinkedList();
+    this.mOE = 0;
+    this.mOF = false;
     AppMethodBeat.o(137911);
   }
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(137912);
-    this.moc += 1;
-    if (this.moc == 1)
+    this.mOE += 1;
+    if (this.mOE == 1)
     {
-      ac.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnActivityCreated ");
-      paramBundle = this.mob.iterator();
+      ad.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnActivityCreated ");
+      paramBundle = this.mOD.iterator();
       while (paramBundle.hasNext()) {
-        ((a)paramBundle.next()).dR(paramActivity);
+        ((a)paramBundle.next()).dQ(paramActivity);
       }
     }
     AppMethodBeat.o(137912);
@@ -46,23 +46,23 @@ public final class g
   public final void onActivityDestroyed(Activity paramActivity)
   {
     AppMethodBeat.i(137913);
-    this.moc -= 1;
-    if (this.moc == 0)
+    this.mOE -= 1;
+    if (this.mOE == 0)
     {
-      ac.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnNoActivityLeft ");
-      paramActivity = this.mob.iterator();
+      ad.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnNoActivityLeft ");
+      paramActivity = this.mOD.iterator();
       while (paramActivity.hasNext()) {
-        ((a)paramActivity.next()).bxo();
+        ((a)paramActivity.next()).bBs();
       }
-      if ((this.mod) && (this.app != null))
+      if ((this.mOF) && (this.app != null))
       {
         paramActivity = this.app;
-        ac.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.release ");
+        ad.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.release ");
         paramActivity.unregisterActivityLifecycleCallbacks(this);
-        this.mob.clear();
+        this.mOD.clear();
         this.app = null;
-        this.mod = false;
-        this.mod = false;
+        this.mOF = false;
+        this.mOF = false;
         this.app = null;
       }
     }
@@ -81,9 +81,9 @@ public final class g
   
   public static abstract interface a
   {
-    public abstract void bxo();
+    public abstract void bBs();
     
-    public abstract void dR(Context paramContext);
+    public abstract void dQ(Context paramContext);
   }
 }
 

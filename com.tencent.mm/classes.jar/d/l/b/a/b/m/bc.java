@@ -17,10 +17,10 @@ import java.util.List;
 
 public class bc
 {
-  public static final aj LLQ;
-  public static final aj LLR;
-  public static final aj LLS;
-  public static final aj LLT;
+  public static final aj NCL;
+  public static final aj NCM;
+  public static final aj NCN;
+  public static final aj NCO;
   
   static
   {
@@ -29,10 +29,10 @@ public class bc
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      LLQ = u.aWS("DONT_CARE");
-      LLR = u.aWR("Cannot be inferred");
-      LLS = new a("NO_EXPECTED_TYPE");
-      LLT = new a("UNIT_EXPECTED_TYPE");
+      NCL = u.bcV("DONT_CARE");
+      NCM = u.bcU("Cannot be inferred");
+      NCN = new a("NO_EXPECTED_TYPE");
+      NCO = new a("UNIT_EXPECTED_TYPE");
       AppMethodBeat.o(60901);
       return;
     }
@@ -42,11 +42,11 @@ public class bc
   {
     AppMethodBeat.i(60889);
     if (paramab == null) {
-      agL(3);
+      ajm(3);
     }
-    paramab = paramab.gcz().zn(paramBoolean);
+    paramab = paramab.gua().Ab(paramBoolean);
     if (paramab == null) {
-      agL(4);
+      ajm(4);
     }
     AppMethodBeat.o(60889);
     return paramab;
@@ -57,23 +57,23 @@ public class bc
     AppMethodBeat.i(60891);
     if (u.L(paramh))
     {
-      paramh = u.aWR("Unsubstituted type for ".concat(String.valueOf(paramh)));
+      paramh = u.bcU("Unsubstituted type for ".concat(String.valueOf(paramh)));
       if (paramh == null) {
-        agL(11);
+        ajm(11);
       }
       AppMethodBeat.o(60891);
       return paramh;
     }
-    paramh = paramh.fPW();
+    paramh = paramh.ghu();
     if (paramh == null) {
-      agL(12);
+      ajm(12);
     }
     if (paramh1 == null) {
-      agL(13);
+      ajm(13);
     }
-    List localList = jf(paramh.getParameters());
-    g.a locala = g.LeU;
-    paramh = ac.a(g.a.fSm(), paramh, localList, false, paramh1, paramb);
+    List localList = jt(paramh.getParameters());
+    g.a locala = g.MVP;
+    paramh = ac.a(g.a.gjL(), paramh, localList, false, paramh1, paramb);
     AppMethodBeat.o(60891);
     return paramh;
   }
@@ -82,7 +82,7 @@ public class bc
   {
     AppMethodBeat.i(60897);
     if (paramb == null) {
-      agL(44);
+      ajm(44);
     }
     if (paramab == null)
     {
@@ -95,27 +95,27 @@ public class bc
       return false;
     }
     paramHashSet.add(paramab);
-    bg localbg = paramab.gcz();
-    if (((Boolean)paramb.ay(localbg)).booleanValue())
+    bg localbg = paramab.gua();
+    if (((Boolean)paramb.invoke(localbg)).booleanValue())
     {
       AppMethodBeat.o(60897);
       return true;
     }
     if ((localbg instanceof v)) {}
-    for (Object localObject = (v)localbg; (localObject != null) && ((a(((v)localObject).LLa, paramb, paramHashSet)) || (a(((v)localObject).LLb, paramb, paramHashSet))); localObject = null)
+    for (Object localObject = (v)localbg; (localObject != null) && ((a(((v)localObject).NBV, paramb, paramHashSet)) || (a(((v)localObject).NBW, paramb, paramHashSet))); localObject = null)
     {
       AppMethodBeat.o(60897);
       return true;
     }
-    if (((localbg instanceof l)) && (a(((l)localbg).LKK, paramb, paramHashSet)))
+    if (((localbg instanceof l)) && (a(((l)localbg).NBE, paramb, paramHashSet)))
     {
       AppMethodBeat.o(60897);
       return true;
     }
-    localObject = paramab.gbz();
+    localObject = paramab.gsZ();
     if ((localObject instanceof aa))
     {
-      paramab = ((Collection)((aa)localObject).LLj).iterator();
+      paramab = ((Collection)((aa)localObject).NCe).iterator();
       while (paramab.hasNext()) {
         if (a((ab)paramab.next(), paramb, paramHashSet))
         {
@@ -126,11 +126,11 @@ public class bc
       AppMethodBeat.o(60897);
       return false;
     }
-    paramab = paramab.gbw().iterator();
+    paramab = paramab.gsW().iterator();
     while (paramab.hasNext())
     {
       localObject = (av)paramab.next();
-      if ((!((av)localObject).gcB()) && (a(((av)localObject).fRV(), paramb, paramHashSet)))
+      if ((!((av)localObject).guc()) && (a(((av)localObject).gju(), paramb, paramHashSet)))
       {
         AppMethodBeat.o(60897);
         return true;
@@ -144,9 +144,9 @@ public class bc
   {
     AppMethodBeat.i(60885);
     if (paramab == null) {
-      agL(0);
+      ajm(0);
     }
-    if ((paramab == LLS) || (paramab == LLT))
+    if ((paramab == NCN) || (paramab == NCO))
     {
       AppMethodBeat.o(60885);
       return true;
@@ -158,7 +158,7 @@ public class bc
   public static boolean aC(ab paramab)
   {
     AppMethodBeat.i(60886);
-    if ((paramab != null) && (paramab.gbz() == LLQ.gbz()))
+    if ((paramab != null) && (paramab.gsZ() == NCL.gsZ()))
     {
       AppMethodBeat.o(60886);
       return true;
@@ -171,7 +171,7 @@ public class bc
   {
     AppMethodBeat.i(60887);
     if (paramab == null) {
-      agL(1);
+      ajm(1);
     }
     paramab = a(paramab, true);
     AppMethodBeat.o(60887);
@@ -182,7 +182,7 @@ public class bc
   {
     AppMethodBeat.i(60888);
     if (paramab == null) {
-      agL(2);
+      ajm(2);
     }
     paramab = a(paramab, false);
     AppMethodBeat.o(60888);
@@ -193,14 +193,14 @@ public class bc
   {
     AppMethodBeat.i(60893);
     if (paramab == null) {
-      agL(27);
+      ajm(27);
     }
-    if (paramab.fUx())
+    if (paramab.glW())
     {
       AppMethodBeat.o(60893);
       return true;
     }
-    if ((y.am(paramab)) && (aF(y.an(paramab).LLb)))
+    if ((y.am(paramab)) && (aF(y.an(paramab).NBW)))
     {
       AppMethodBeat.o(60893);
       return true;
@@ -208,15 +208,15 @@ public class bc
     if (aI(paramab))
     {
       if (paramab == null) {
-        agL(29);
+        ajm(29);
       }
-      if (!(paramab.gbz().fQq() instanceof e))
+      if (!(paramab.gsZ().ghO() instanceof e))
       {
         if (paramab == null) {
-          agL(18);
+          ajm(18);
         }
         ba localba = ba.aA(paramab);
-        Object localObject = paramab.gbz().fSt();
+        Object localObject = paramab.gsZ().gjR();
         ArrayList localArrayList = new ArrayList(((Collection)localObject).size());
         Iterator localIterator = ((Collection)localObject).iterator();
         label220:
@@ -224,17 +224,17 @@ public class bc
         {
           localObject = (ab)localIterator.next();
           if (paramab == null) {
-            agL(20);
+            ajm(20);
           }
           if (localObject == null) {
-            agL(21);
+            ajm(21);
           }
           if (localba == null) {
-            agL(22);
+            ajm(22);
           }
-          localObject = localba.c((ab)localObject, bh.LLV);
+          localObject = localba.c((ab)localObject, bh.NCP);
           if (localObject != null) {}
-          for (localObject = b((ab)localObject, paramab.fUx());; localObject = null)
+          for (localObject = b((ab)localObject, paramab.glW());; localObject = null)
           {
             if (localObject == null) {
               break label220;
@@ -255,10 +255,10 @@ public class bc
       AppMethodBeat.o(60893);
       return false;
     }
-    paramab = paramab.gbz();
+    paramab = paramab.gsZ();
     if ((paramab instanceof aa))
     {
-      paramab = paramab.fSt().iterator();
+      paramab = paramab.gjR().iterator();
       while (paramab.hasNext()) {
         if (aF((ab)paramab.next()))
         {
@@ -275,14 +275,14 @@ public class bc
   {
     AppMethodBeat.i(60894);
     if (paramab == null) {
-      agL(28);
+      ajm(28);
     }
-    if (paramab.fUx())
+    if (paramab.glW())
     {
       AppMethodBeat.o(60894);
       return true;
     }
-    if ((y.am(paramab)) && (aG(y.an(paramab).LLb)))
+    if ((y.am(paramab)) && (aG(y.an(paramab).NBW)))
     {
       AppMethodBeat.o(60894);
       return true;
@@ -295,9 +295,9 @@ public class bc
   {
     AppMethodBeat.i(60895);
     if (paramab == null) {
-      agL(30);
+      ajm(30);
     }
-    paramab = paramab.gbz().fQq();
+    paramab = paramab.gsZ().ghO();
     if ((paramab instanceof e))
     {
       paramab = (e)paramab;
@@ -312,9 +312,9 @@ public class bc
   {
     AppMethodBeat.i(60899);
     if (paramab == null) {
-      agL(59);
+      ajm(59);
     }
-    if ((aJ(paramab) != null) || ((paramab.gbz() instanceof p)))
+    if ((aJ(paramab) != null) || ((paramab.gsZ() instanceof p)))
     {
       AppMethodBeat.o(60899);
       return true;
@@ -327,11 +327,11 @@ public class bc
   {
     AppMethodBeat.i(60900);
     if (paramab == null) {
-      agL(62);
+      ajm(62);
     }
-    if ((paramab.gbz().fQq() instanceof as))
+    if ((paramab.gsZ().ghO() instanceof as))
     {
-      paramab = (as)paramab.gbz().fQq();
+      paramab = (as)paramab.gsZ().ghO();
       AppMethodBeat.o(60900);
       return paramab;
     }
@@ -343,7 +343,7 @@ public class bc
   {
     AppMethodBeat.i(60890);
     if (paramab == null) {
-      agL(8);
+      ajm(8);
     }
     if (paramBoolean)
     {
@@ -352,7 +352,7 @@ public class bc
       return paramab;
     }
     if (paramab == null) {
-      agL(9);
+      ajm(9);
     }
     AppMethodBeat.o(60890);
     return paramab;
@@ -362,7 +362,7 @@ public class bc
   {
     AppMethodBeat.i(60896);
     if (paramb == null) {
-      agL(43);
+      ajm(43);
     }
     boolean bool = a(paramab, paramb, new HashSet());
     AppMethodBeat.o(60896);
@@ -373,27 +373,27 @@ public class bc
   {
     AppMethodBeat.i(60898);
     if (paramas == null) {
-      agL(45);
+      ajm(45);
     }
     paramas = new ao(paramas);
     AppMethodBeat.o(60898);
     return paramas;
   }
   
-  public static List<av> jf(List<as> paramList)
+  public static List<av> jt(List<as> paramList)
   {
     AppMethodBeat.i(60892);
     if (paramList == null) {
-      agL(16);
+      ajm(16);
     }
     ArrayList localArrayList = new ArrayList(paramList.size());
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      localArrayList.add(new ax(((as)paramList.next()).fRe()));
+      localArrayList.add(new ax(((as)paramList.next()).giC()));
     }
     paramList = j.l(localArrayList);
     if (paramList == null) {
-      agL(17);
+      ajm(17);
     }
     AppMethodBeat.o(60892);
     return paramList;
@@ -413,17 +413,25 @@ public class bc
     {
       AppMethodBeat.i(60878);
       if (parami == null) {
-        agL(3);
+        ajm(3);
       }
       AppMethodBeat.o(60878);
       return this;
+    }
+    
+    public final aj Ac(boolean paramBoolean)
+    {
+      AppMethodBeat.i(60875);
+      IllegalStateException localIllegalStateException = new IllegalStateException(this.name);
+      AppMethodBeat.o(60875);
+      throw localIllegalStateException;
     }
     
     public final n b(aj paramaj)
     {
       AppMethodBeat.i(60877);
       if (paramaj == null) {
-        agL(2);
+        ajm(2);
       }
       paramaj = new IllegalStateException(this.name);
       AppMethodBeat.o(60877);
@@ -434,14 +442,14 @@ public class bc
     {
       AppMethodBeat.i(60874);
       if (paramg == null) {
-        agL(0);
+        ajm(0);
       }
       paramg = new IllegalStateException(this.name);
       AppMethodBeat.o(60874);
       throw paramg;
     }
     
-    protected final aj fUt()
+    protected final aj glS()
     {
       AppMethodBeat.i(60873);
       IllegalStateException localIllegalStateException = new IllegalStateException(this.name);
@@ -454,24 +462,16 @@ public class bc
       AppMethodBeat.i(60876);
       String str = this.name;
       if (str == null) {
-        agL(1);
+        ajm(1);
       }
       AppMethodBeat.o(60876);
       return str;
-    }
-    
-    public final aj zo(boolean paramBoolean)
-    {
-      AppMethodBeat.i(60875);
-      IllegalStateException localIllegalStateException = new IllegalStateException(this.name);
-      AppMethodBeat.o(60875);
-      throw localIllegalStateException;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.bc
  * JD-Core Version:    0.7.0.1
  */

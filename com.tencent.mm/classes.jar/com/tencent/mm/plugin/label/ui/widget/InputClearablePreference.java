@@ -16,11 +16,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.tools.f;
 import com.tencent.mm.ui.widget.MMEditText;
@@ -28,18 +28,18 @@ import com.tencent.mm.ui.widget.MMEditText;
 public class InputClearablePreference
   extends Preference
 {
-  public String imz;
+  public String iFQ;
   private String mText;
-  public String tVj;
-  public String tVk;
-  public int tVl;
-  private int tVm;
-  public boolean tVn;
-  public MMEditText tVo;
-  private ImageView tVp;
-  public TextView tVq;
-  private int tVr;
-  public a tVs;
+  public String uXL;
+  public String uXM;
+  public int uXN;
+  private int uXO;
+  public boolean uXP;
+  public MMEditText uXQ;
+  private ImageView uXR;
+  public TextView uXS;
+  private int uXT;
+  public a uXU;
   
   public InputClearablePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -51,22 +51,22 @@ public class InputClearablePreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void ajI(String paramString)
+  private void aou(String paramString)
   {
     boolean bool2 = true;
     AppMethodBeat.i(26333);
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
-      int i = f.aRl(paramString);
-      if (i <= this.tVl) {
+      int i = f.aXj(paramString);
+      if (i <= this.uXN) {
         break label90;
       }
       bool1 = true;
-      e(bool1, f.cM(this.tVl, ""), f.cN(this.tVl, paramString));
-      if (this.tVs != null)
+      g(bool1, f.cU(this.uXN, ""), f.cV(this.uXN, paramString));
+      if (this.uXU != null)
       {
-        paramString = this.tVs;
-        if (i > this.tVl) {
+        paramString = this.uXU;
+        if (i > this.uXN) {
           break label95;
         }
       }
@@ -75,7 +75,7 @@ public class InputClearablePreference
     label95:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramString.nw(bool1);
+      paramString.nQ(bool1);
       AppMethodBeat.o(26333);
       return;
       bool1 = false;
@@ -83,36 +83,36 @@ public class InputClearablePreference
     }
   }
   
-  private void e(boolean paramBoolean, int paramInt1, int paramInt2)
+  private void g(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(26334);
-    if (this.tVq != null)
+    if (this.uXS != null)
     {
       if (paramBoolean)
       {
-        this.tVq.setText(String.format(this.imz, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-        this.tVq.setVisibility(0);
+        this.uXS.setText(String.format(this.iFQ, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+        this.uXS.setVisibility(0);
         AppMethodBeat.o(26334);
         return;
       }
-      this.tVq.setVisibility(8);
+      this.uXS.setVisibility(8);
     }
     AppMethodBeat.o(26334);
   }
   
-  public final void ny(boolean paramBoolean)
+  public final void nS(boolean paramBoolean)
   {
     AppMethodBeat.i(26335);
-    if (this.tVq != null)
+    if (this.uXS != null)
     {
       if (paramBoolean)
       {
-        this.tVq.setText(this.tVk);
-        this.tVq.setVisibility(0);
+        this.uXS.setText(this.uXM);
+        this.uXS.setVisibility(0);
         AppMethodBeat.o(26335);
         return;
       }
-      this.tVq.setVisibility(8);
+      this.uXS.setVisibility(8);
     }
     AppMethodBeat.o(26335);
   }
@@ -121,20 +121,20 @@ public class InputClearablePreference
   {
     AppMethodBeat.i(26332);
     super.onBindView(paramView);
-    this.tVr = a.au(this.mContext, 2131165466);
-    this.tVo = ((MMEditText)paramView.findViewById(2131299306));
-    this.tVp = ((ImageView)paramView.findViewById(2131298982));
-    this.tVq = ((TextView)paramView.findViewById(2131299513));
-    if (this.tVo != null)
+    this.uXT = com.tencent.mm.cc.a.ax(this.mContext, 2131165466);
+    this.uXQ = ((MMEditText)paramView.findViewById(2131299306));
+    this.uXR = ((ImageView)paramView.findViewById(2131298982));
+    this.uXS = ((TextView)paramView.findViewById(2131299513));
+    if (this.uXQ != null)
     {
-      if (this.tVm <= 0) {
+      if (this.uXO <= 0) {
         break label273;
       }
-      this.tVo.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.tVm), new b() });
+      this.uXQ.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.uXO), new b() });
     }
     for (;;)
     {
-      this.tVo.addTextChangedListener(new TextWatcher()
+      this.uXQ.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -145,7 +145,7 @@ public class InputClearablePreference
             paramAnonymousEditable = paramAnonymousEditable.toString();
             InputClearablePreference.a(InputClearablePreference.this, paramAnonymousEditable);
             InputClearablePreference localInputClearablePreference = InputClearablePreference.this;
-            if (bs.isNullOrNil(paramAnonymousEditable)) {}
+            if (bt.isNullOrNil(paramAnonymousEditable)) {}
             for (;;)
             {
               InputClearablePreference.a(localInputClearablePreference, bool);
@@ -166,21 +166,21 @@ public class InputClearablePreference
           AppMethodBeat.i(26324);
           if (paramAnonymousCharSequence != null)
           {
-            ac.d("MicroMsg.Label.InputClearablePreference", "cpan[onTextChanged] :%s", new Object[] { paramAnonymousCharSequence.toString() });
+            ad.d("MicroMsg.Label.InputClearablePreference", "cpan[onTextChanged] :%s", new Object[] { paramAnonymousCharSequence.toString() });
             if (InputClearablePreference.a(InputClearablePreference.this) != null) {
-              InputClearablePreference.a(InputClearablePreference.this).adW(paramAnonymousCharSequence.toString());
+              InputClearablePreference.a(InputClearablePreference.this).ahV(paramAnonymousCharSequence.toString());
             }
           }
           AppMethodBeat.o(26324);
         }
       });
-      ac.d("MicroMsg.Label.InputClearablePreference", "mText %s", new Object[] { this.mText });
+      ad.d("MicroMsg.Label.InputClearablePreference", "mText %s", new Object[] { this.mText });
       setText(this.mText);
-      if (!bs.isNullOrNil(this.mText)) {
-        this.tVo.setSelection(this.mText.length());
+      if (!bt.isNullOrNil(this.mText)) {
+        this.uXQ.setSelection(this.mText.length());
       }
-      if (this.tVn) {
-        new ao().postDelayed(new Runnable()
+      if (this.uXP) {
+        new ap().postDelayed(new Runnable()
         {
           public final void run()
           {
@@ -197,29 +197,38 @@ public class InputClearablePreference
           }
         }, 0L);
       }
-      this.tVo.setHint(this.tVj);
-      this.tVp.setOnClickListener(new View.OnClickListener()
+      this.uXQ.setHint(this.uXL);
+      this.uXR.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(26326);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/label/ui/widget/InputClearablePreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           if (InputClearablePreference.b(InputClearablePreference.this) != null)
           {
             InputClearablePreference.b(InputClearablePreference.this).setText("");
             InputClearablePreference.b(InputClearablePreference.this, "");
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/label/ui/widget/InputClearablePreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(26326);
         }
       });
-      if (this.tVq != null) {
-        this.tVq.setOnTouchListener(new View.OnTouchListener()
+      if (this.uXS != null) {
+        this.uXS.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
             AppMethodBeat.i(26327);
+            b localb = new b();
+            localb.bd(paramAnonymousView);
+            localb.bd(paramAnonymousMotionEvent);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/label/ui/widget/InputClearablePreference$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
             if (InputClearablePreference.b(InputClearablePreference.this) != null) {
               InputClearablePreference.b(InputClearablePreference.this).clearFocus();
             }
+            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/label/ui/widget/InputClearablePreference$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(26327);
             return false;
           }
@@ -228,7 +237,7 @@ public class InputClearablePreference
       AppMethodBeat.o(26332);
       return;
       label273:
-      this.tVo.setFilters(new InputFilter[] { new b() });
+      this.uXQ.setFilters(new InputFilter[] { new b() });
     }
   }
   
@@ -236,44 +245,44 @@ public class InputClearablePreference
   {
     AppMethodBeat.i(26331);
     this.mText = paramString;
-    if ((this.tVo != null) && (!bs.isNullOrNil(paramString)))
+    if ((this.uXQ != null) && (!bt.isNullOrNil(paramString)))
     {
-      paramString = k.b(this.mContext, this.mText, this.tVr);
-      this.tVo.setText(paramString);
-      ajI(this.mText);
+      paramString = k.b(this.mContext, this.mText, this.uXT);
+      this.uXQ.setText(paramString);
+      aou(this.mText);
     }
     AppMethodBeat.o(26331);
   }
   
   public static abstract interface a
   {
-    public abstract void adW(String paramString);
+    public abstract void ahV(String paramString);
     
-    public abstract void nw(boolean paramBoolean);
+    public abstract void nQ(boolean paramBoolean);
   }
   
   final class b
     implements InputFilter
   {
-    public final char[] tVu;
+    public final char[] uXW;
     
     b()
     {
       AppMethodBeat.i(26329);
-      this.tVu = new char[] { 10, 44, 59, 12289, -244, -229 };
+      this.uXW = new char[] { 10, 44, 59, 12289, -244, -229 };
       AppMethodBeat.o(26329);
     }
     
     public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
     {
       AppMethodBeat.i(26330);
-      ac.d("MicroMsg.Label.InputClearablePreference", "on create tag filter, %s [%d, %d) %s [%d, %d),", new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramSpanned, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+      ad.d("MicroMsg.Label.InputClearablePreference", "on create tag filter, %s [%d, %d) %s [%d, %d),", new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramSpanned, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
       paramInt4 = paramInt1;
       while (paramInt4 < paramInt2)
       {
         paramSpanned = new char[paramInt2 - paramInt1];
         TextUtils.getChars(paramCharSequence, paramInt1, paramInt2, paramSpanned, 0);
-        int j = this.tVu.length;
+        int j = this.uXW.length;
         int i = 0;
         while (i < j)
         {
@@ -282,9 +291,9 @@ public class InputClearablePreference
             AppMethodBeat.o(26330);
             return "";
           }
-          if (paramSpanned[paramInt4] == this.tVu[i])
+          if (paramSpanned[paramInt4] == this.uXW[i])
           {
-            InputClearablePreference.this.ny(true);
+            InputClearablePreference.this.nS(true);
             AppMethodBeat.o(26330);
             return "";
           }

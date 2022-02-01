@@ -9,10 +9,10 @@ public class CMTimeMapping
   
   public CMTimeMapping(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2)
   {
-    AppMethodBeat.i(195719);
+    AppMethodBeat.i(219440);
     this.source = paramCMTimeRange1.clone();
     this.target = paramCMTimeRange2.clone();
-    AppMethodBeat.o(195719);
+    AppMethodBeat.o(219440);
   }
   
   public CMTimeRange getSource()
@@ -27,29 +27,29 @@ public class CMTimeMapping
   
   public void setSource(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(195720);
+    AppMethodBeat.i(219441);
     this.source = paramCMTimeRange.clone();
-    AppMethodBeat.o(195720);
+    AppMethodBeat.o(219441);
   }
   
   public void setTarget(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(195721);
+    AppMethodBeat.i(219442);
     this.target = paramCMTimeRange.clone();
-    AppMethodBeat.o(195721);
+    AppMethodBeat.o(219442);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(195722);
+    AppMethodBeat.i(219443);
     String str = "CMTimeMapping{source=" + this.source.toSimpleString() + ", target=" + this.target.toSimpleString() + '}';
-    AppMethodBeat.o(195722);
+    AppMethodBeat.o(219443);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMTimeMapping
  * JD-Core Version:    0.7.0.1
  */

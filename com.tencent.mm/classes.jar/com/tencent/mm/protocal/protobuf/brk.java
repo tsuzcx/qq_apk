@@ -1,62 +1,67 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class brk
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int Fgw;
-  public String devicename;
-  public String devicetype;
-  public String uuid;
+  public int GLK;
+  public LinkedList<String> GLL;
+  public String scope;
+  public String yDs;
+  
+  public brk()
+  {
+    AppMethodBeat.i(82449);
+    this.GLL = new LinkedList();
+    AppMethodBeat.o(82449);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(155438);
+    AppMethodBeat.i(82450);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.uuid != null) {
-        paramVarArgs.d(1, this.uuid);
+      if (this.scope != null) {
+        paramVarArgs.d(1, this.scope);
       }
-      if (this.devicename != null) {
-        paramVarArgs.d(2, this.devicename);
+      paramVarArgs.aS(2, this.GLK);
+      if (this.yDs != null) {
+        paramVarArgs.d(3, this.yDs);
       }
-      if (this.devicetype != null) {
-        paramVarArgs.d(3, this.devicetype);
-      }
-      paramVarArgs.aR(4, this.Fgw);
-      AppMethodBeat.o(155438);
+      paramVarArgs.e(4, 1, this.GLL);
+      AppMethodBeat.o(82450);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.uuid == null) {
+      if (this.scope == null) {
         break label378;
       }
     }
     label378:
-    for (int i = f.a.a.b.b.a.e(1, this.uuid) + 0;; i = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.scope) + 0;; paramInt = 0)
     {
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.GLK);
       paramInt = i;
-      if (this.devicename != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.devicename);
+      if (this.yDs != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.yDs);
       }
-      i = paramInt;
-      if (this.devicetype != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.devicetype);
-      }
-      paramInt = f.a.a.b.b.a.bx(4, this.Fgw);
-      AppMethodBeat.o(155438);
-      return i + paramInt;
+      i = f.a.a.a.c(4, 1, this.GLL);
+      AppMethodBeat.o(82450);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.GLL.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(155438);
+        AppMethodBeat.o(82450);
         return 0;
       }
       if (paramInt == 3)
@@ -66,33 +71,33 @@ public final class brk
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(155438);
+          AppMethodBeat.o(82450);
           return -1;
         case 1: 
-          localbrk.uuid = locala.LVo.readString();
-          AppMethodBeat.o(155438);
+          localbrk.scope = locala.NPN.readString();
+          AppMethodBeat.o(82450);
           return 0;
         case 2: 
-          localbrk.devicename = locala.LVo.readString();
-          AppMethodBeat.o(155438);
+          localbrk.GLK = locala.NPN.zc();
+          AppMethodBeat.o(82450);
           return 0;
         case 3: 
-          localbrk.devicetype = locala.LVo.readString();
-          AppMethodBeat.o(155438);
+          localbrk.yDs = locala.NPN.readString();
+          AppMethodBeat.o(82450);
           return 0;
         }
-        localbrk.Fgw = locala.LVo.xF();
-        AppMethodBeat.o(155438);
+        localbrk.GLL.add(locala.NPN.readString());
+        AppMethodBeat.o(82450);
         return 0;
       }
-      AppMethodBeat.o(155438);
+      AppMethodBeat.o(82450);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.brk
  * JD-Core Version:    0.7.0.1
  */

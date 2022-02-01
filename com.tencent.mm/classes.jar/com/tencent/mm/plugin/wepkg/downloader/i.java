@@ -6,15 +6,15 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ys;
+import com.tencent.mm.g.a.zm;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -22,14 +22,14 @@ import java.util.Iterator;
 
 public class i
 {
-  private static a Dax;
-  private static int oJD = -1;
+  private static a EEw;
+  private static int pnk = -1;
   
-  public static void bXA()
+  public static void ccd()
   {
     AppMethodBeat.i(110625);
-    if (Dax == null) {
-      Dax = new a((byte)0);
+    if (EEw == null) {
+      EEw = new a((byte)0);
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
@@ -37,9 +37,9 @@ public class i
     localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
     try
     {
-      ai.getContext().registerReceiver(Dax, localIntentFilter);
+      aj.getContext().registerReceiver(EEw, localIntentFilter);
       label59:
-      ac.i("MicroMsg.Wepkg.WepkgAutoDownloader", "WepkgAutoDownloader startListen");
+      ad.i("MicroMsg.Wepkg.WepkgAutoDownloader", "WepkgAutoDownloader startListen");
       AppMethodBeat.o(110625);
       return;
     }
@@ -49,16 +49,16 @@ public class i
     }
   }
   
-  public static void bXB()
+  public static void cce()
   {
     AppMethodBeat.i(110626);
-    if (Dax != null) {}
+    if (EEw != null) {}
     try
     {
-      ai.getContext().unregisterReceiver(Dax);
+      aj.getContext().unregisterReceiver(EEw);
       label20:
-      Dax = null;
-      ac.i("MicroMsg.Wepkg.WepkgAutoDownloader", "WepkgAutoDownloader stopListen");
+      EEw = null;
+      ad.i("MicroMsg.Wepkg.WepkgAutoDownloader", "WepkgAutoDownloader stopListen");
       AppMethodBeat.o(110626);
       return;
     }
@@ -74,52 +74,52 @@ public class i
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
       AppMethodBeat.i(110624);
-      h.JZN.aS(new Runnable()
+      h.LTJ.aR(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(199871);
+          AppMethodBeat.i(214458);
           for (;;)
           {
             Object localObject3;
             ArrayList localArrayList;
             try
             {
-              if ((!com.tencent.mm.kernel.g.agM()) || (com.tencent.mm.kernel.a.afS()))
+              if ((!com.tencent.mm.kernel.g.ajx()) || (com.tencent.mm.kernel.a.aiE()))
               {
-                ac.e("MicroMsg.Wepkg.WepkgAutoDownloader", "acc has not ready");
+                ad.e("MicroMsg.Wepkg.WepkgAutoDownloader", "acc has not ready");
                 return;
               }
-              i = ax.getNetType(ai.getContext());
-              if (i == i.oJD) {
+              i = ay.getNetType(aj.getContext());
+              if (i == i.pnk) {
                 return;
               }
-              i.AL(i);
-              ac.i("MicroMsg.Wepkg.WepkgAutoDownloader", "onNetStateChange, netState = ".concat(String.valueOf(i)));
+              i.access$102(i);
+              ad.i("MicroMsg.Wepkg.WepkgAutoDownloader", "onNetStateChange, netState = ".concat(String.valueOf(i)));
               if (i == 0)
               {
-                boolean bool = com.tencent.mm.m.g.ZZ().ZN();
-                if (bs.pN(bs.g((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GNN, Long.valueOf(0L)))) <= 1800L) {
+                boolean bool = com.tencent.mm.n.g.acB().aco();
+                if (bt.rM(bt.g((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IAe, Long.valueOf(0L)))) <= 1800L) {
                   break label352;
                 }
                 i = 1;
                 if (i == 0) {
-                  ac.i("MicroMsg.Wepkg.WepkgAutoDownloader", "dont auto download in wifi, because from the last time is not enough for %s s", new Object[] { Long.valueOf(1800L) });
+                  ad.i("MicroMsg.Wepkg.WepkgAutoDownloader", "dont auto download in wifi, because from the last time is not enough for %s s", new Object[] { Long.valueOf(1800L) });
                 }
                 if ((!bool) && (i != 0))
                 {
-                  com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNN, Long.valueOf(bs.aNx()));
-                  localObject1 = new ys();
-                  ((ys)localObject1).dCz.cZu = 0;
-                  com.tencent.mm.sdk.b.a.GpY.l((b)localObject1);
+                  com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IAe, Long.valueOf(bt.aQJ()));
+                  localObject1 = new zm();
+                  ((zm)localObject1).dOM.dkM = 0;
+                  com.tencent.mm.sdk.b.a.IbL.l((b)localObject1);
                 }
                 return;
               }
-              Object localObject1 = d.eIZ();
-              if ((((d)localObject1).CZV == null) || (((d)localObject1).CZV.size() == 0)) {
+              Object localObject1 = d.eXT();
+              if ((((d)localObject1).EDU == null) || (((d)localObject1).EDU.size() == 0)) {
                 continue;
               }
-              localObject3 = ((d)localObject1).CZV.values();
+              localObject3 = ((d)localObject1).EDU.values();
               localArrayList = new ArrayList();
               localObject3 = ((Collection)localObject3).iterator();
               if (((Iterator)localObject3).hasNext())
@@ -131,12 +131,12 @@ public class i
             }
             finally
             {
-              AppMethodBeat.o(199871);
+              AppMethodBeat.o(214458);
             }
             while (((Iterator)localObject3).hasNext())
             {
               c localc = (c)((Iterator)localObject3).next();
-              if (localc.CZL.Daq) {
+              if (localc.EDK.EEp) {
                 localObject2.a(localc);
               }
             }
@@ -153,7 +153,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.downloader.i
  * JD-Core Version:    0.7.0.1
  */

@@ -2,59 +2,59 @@ package com.tencent.mm.splash;
 
 import android.app.Application;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class m
 {
-  private static Application Gjc;
-  private static boolean GzA = false;
-  private static a GzB;
-  private static boolean GzC = false;
-  private static o.a GzD;
-  private static String csT;
+  private static Application HUP;
+  private static boolean Ilu = false;
+  private static a Ilv;
+  private static boolean Ilw = false;
+  private static o.a Ilx;
+  private static String cDP;
   
   public static void a(Application paramApplication, String paramString1, String paramString2)
   {
     boolean bool1 = true;
     AppMethodBeat.i(40683);
-    Gjc = paramApplication;
-    csT = paramString1;
+    HUP = paramApplication;
+    cDP = paramString1;
     h.a(new o()
     {
       public final void d(o.a paramAnonymousa)
       {
         AppMethodBeat.i(40682);
-        ac.i("MicroMsg.SplashInit", "do one more thing");
+        ad.i("MicroMsg.SplashInit", "do one more thing");
         m.c(paramAnonymousa);
-        m.CU(this.GzE);
-        m.eXV();
+        m.FZ(this.Ily);
+        m.fnF();
         AppMethodBeat.o(40682);
       }
     });
-    h.eXN().mStartTimestamp = System.currentTimeMillis();
+    h.fnx().mStartTimestamp = System.currentTimeMillis();
     if (!paramApplication.getPackageName().equals(paramString1)) {
       h.b("MicroMsg.SplashInit", "not main process(%s), no hack, do fallback.", new Object[] { paramString1 });
     }
     for (;;)
     {
-      GzA = bool1;
-      if (h.GyI != null) {
-        h.GyI.Lf();
+      Ilu = bool1;
+      if (h.IkC != null) {
+        h.IkC.MN();
       }
-      if ((!bool1) || (a.jl(paramApplication))) {}
+      if ((!bool1) || (a.ju(paramApplication))) {}
       try
       {
-        a.jn(paramApplication);
-        boolean bool2 = a.jp(paramApplication);
+        a.jw(paramApplication);
+        boolean bool2 = a.jy(paramApplication);
         h.b("MicroMsg.SplashInit", "block checking dex opt result: %s", new Object[] { Boolean.valueOf(bool2) });
         if (!bool2)
         {
           h.b("MicroMsg.SplashInit", "dexopt service return failed or timeout. kill self.", new Object[0]);
-          h.dol();
+          h.dyJ();
         }
-        a.jm(paramApplication);
-        if ((g.xF) || (bool1)) {
-          aMp(paramString2);
+        a.jv(paramApplication);
+        if ((g.zz) || (bool1)) {
+          aRW(paramString2);
         }
         AppMethodBeat.o(40683);
         return;
@@ -65,35 +65,35 @@ public final class m
         AppMethodBeat.o(40683);
         throw paramApplication;
       }
-      if (!h.m(paramApplication))
+      if (!h.o(paramApplication))
       {
-        h.eXN().idkey(675L, 5L, 1L);
-        h.jq(paramApplication);
+        h.fnx().idkey(675L, 5L, 1L);
+        h.jz(paramApplication);
         h.b("MicroMsg.SplashInit", "hack failed, do fallback logic.", new Object[0]);
       }
       else
       {
         bool1 = false;
-        h.eXI();
+        h.fns();
       }
     }
   }
   
-  private static void aMp(String paramString)
+  private static void aRW(String paramString)
   {
     AppMethodBeat.i(40684);
-    if (GzB != null)
+    if (Ilv != null)
     {
       AppMethodBeat.o(40684);
       return;
     }
-    paramString = aMq(paramString);
-    paramString.b(Gjc, csT);
-    GzB = paramString;
+    paramString = aRX(paramString);
+    paramString.b(HUP, cDP);
+    Ilv = paramString;
     AppMethodBeat.o(40684);
   }
   
-  private static a aMq(String paramString)
+  private static a aRX(String paramString)
   {
     AppMethodBeat.i(40687);
     try
@@ -104,41 +104,41 @@ public final class m
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.SplashInit", localException, "%s has problem!", new Object[] { paramString });
+      ad.printErrStackTrace("MicroMsg.SplashInit", localException, "%s has problem!", new Object[] { paramString });
       paramString = new RuntimeException(localException);
       AppMethodBeat.o(40687);
       throw paramString;
     }
   }
   
-  public static void eXV()
+  public static void fnF()
   {
     AppMethodBeat.i(40685);
-    if ((GzC) && (GzD != null)) {
-      GzB.a(GzD);
+    if ((Ilw) && (Ilx != null)) {
+      Ilv.a(Ilx);
     }
     AppMethodBeat.o(40685);
   }
   
-  public static void eXW()
+  public static void fnG()
   {
     AppMethodBeat.i(40686);
     h.b("MicroMsg.SplashInit", "applicationOnCreate", new Object[0]);
-    h.eXE();
-    GzC = true;
-    if (GzA)
+    h.fno();
+    Ilw = true;
+    if (Ilu)
     {
-      GzB.Lg();
+      Ilv.MO();
       AppMethodBeat.o(40686);
       return;
     }
-    eXV();
+    fnF();
     AppMethodBeat.o(40686);
   }
   
   public static abstract interface a
   {
-    public abstract void Lg();
+    public abstract void MO();
     
     public abstract void a(o.a parama);
     

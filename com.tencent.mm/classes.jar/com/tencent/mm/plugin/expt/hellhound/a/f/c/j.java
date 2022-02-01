@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.bjt;
-import com.tencent.mm.protocal.protobuf.bju;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.bob;
+import com.tencent.mm.protocal.protobuf.boc;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,19 +13,19 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPageBackup;", "", "()V", "Companion", "plugin-expt_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPageBackup;", "", "()V", "Companion", "plugin-expt_release"})
 public final class j
 {
-  public static final a qqj;
+  public static final a qZi;
   
   static
   {
     AppMethodBeat.i(185603);
-    qqj = new a((byte)0);
+    qZi = new a((byte)0);
     AppMethodBeat.o(185603);
   }
   
-  public static final void Wd(String paramString)
+  public static final void ZK(String paramString)
   {
     AppMethodBeat.i(185605);
     if (paramString == null)
@@ -33,46 +33,46 @@ public final class j
       AppMethodBeat.o(185605);
       return;
     }
-    bjt localbjt = a.clc();
-    if (localbjt == null)
+    bob localbob = a.cqq();
+    if (localbob == null)
     {
       AppMethodBeat.o(185605);
       return;
     }
-    int i = localbjt.EZk.size() - 1;
+    int i = localbob.GII.size() - 1;
     if (i >= 0)
     {
-      bju localbju = (bju)localbjt.EZk.get(i);
-      if ((localbju == null) || ((k.g(paramString, localbju.dnh) ^ true))) {}
+      boc localboc = (boc)localbob.GII.get(i);
+      if ((localboc == null) || ((p.i(paramString, localboc.dyV) ^ true))) {}
       for (;;)
       {
         i -= 1;
         break;
-        localbjt.EZk.remove(i);
+        localbob.GII.remove(i);
       }
     }
-    if ((localbjt == null) || (localbjt.EZk.isEmpty()))
+    if ((localbob == null) || (localbob.GII.isEmpty()))
     {
       AppMethodBeat.o(185605);
       return;
     }
     try
     {
-      paramString = localbjt.toByteArray();
+      paramString = localbob.toByteArray();
       if (paramString != null) {
-        b.o("mmkv_ssionPg_matched_bckup", paramString);
+        b.p("mmkv_ssionPg_matched_bckup", paramString);
       }
       AppMethodBeat.o(185605);
       return;
     }
     catch (IOException paramString)
     {
-      ac.printErrStackTrace("SessionPageBackup", (Throwable)paramString, "HABBYGE-MALI, SessionPageBackup, _write: %s", new Object[] { paramString.getMessage() });
+      ad.printErrStackTrace("HABBYGE-MALI.SessionPageBackup", (Throwable)paramString, "SessionPageBackup, _write: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(185605);
     }
   }
   
-  public static final List<bju> abu(String paramString)
+  public static final List<boc> afh(String paramString)
   {
     AppMethodBeat.i(185604);
     if (paramString == null)
@@ -80,19 +80,19 @@ public final class j
       AppMethodBeat.o(185604);
       return null;
     }
-    Object localObject = a.clc();
+    Object localObject = a.cqq();
     if (localObject == null)
     {
       AppMethodBeat.o(185604);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
-    localObject = ((bjt)localObject).EZk.iterator();
+    localObject = ((bob)localObject).GII.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      bju localbju = (bju)((Iterator)localObject).next();
-      if ((localbju != null) && (!(k.g(paramString, localbju.dnh) ^ true))) {
-        localArrayList.add(localbju);
+      boc localboc = (boc)((Iterator)localObject).next();
+      if ((localboc != null) && (!(p.i(paramString, localboc.dyV) ^ true))) {
+        localArrayList.add(localboc);
       }
     }
     paramString = (List)localArrayList;
@@ -100,10 +100,10 @@ public final class j
     return paramString;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPageBackup$Companion;", "", "()V", "KEY_MMKV", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/HellPageFlow;", "_write", "", "path", "backup", "pageItems", "", "Lcom/tencent/mm/protocal/protobuf/HellPageFlowItem;", "getBackup", "sessionId", "reset", "plugin-expt_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPageBackup$Companion;", "", "()V", "KEY_MMKV", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/HellPageFlow;", "_write", "", "path", "backup", "pageItems", "", "Lcom/tencent/mm/protocal/protobuf/HellPageFlowItem;", "getBackup", "sessionId", "reset", "plugin-expt_release"})
   public static final class a
   {
-    static bjt clc()
+    static bob cqq()
     {
       AppMethodBeat.i(185602);
       byte[] arrayOfByte = b.getBytes("mmkv_ssionPg_matched_bckup");
@@ -118,16 +118,16 @@ public final class j
         AppMethodBeat.o(185602);
         return null;
       }
-      bjt localbjt = new bjt();
+      bob localbob = new bob();
       try
       {
-        localbjt.parseFrom(arrayOfByte);
+        localbob.parseFrom(arrayOfByte);
         AppMethodBeat.o(185602);
-        return localbjt;
+        return localbob;
       }
       catch (IOException localIOException)
       {
-        ac.printErrStackTrace("SessionPageBackup", (Throwable)localIOException, "HABBYGE-MALI, SessionPageBackup, _read: %s", new Object[] { localIOException.getMessage() });
+        ad.printErrStackTrace("HABBYGE-MALI.SessionPageBackup", (Throwable)localIOException, "SessionPageBackup, _read: %s", new Object[] { localIOException.getMessage() });
         AppMethodBeat.o(185602);
       }
       return null;
@@ -136,7 +136,7 @@ public final class j
     public static void reset()
     {
       AppMethodBeat.i(185601);
-      b.o("mmkv_ssionPg_matched_bckup", new byte[0]);
+      b.p("mmkv_ssionPg_matched_bckup", new byte[0]);
       AppMethodBeat.o(185601);
     }
   }

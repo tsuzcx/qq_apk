@@ -6,7 +6,7 @@ import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.KView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 class KViewAnimatorProxy$1
   implements ValueAnimator.AnimatorUpdateListener
@@ -19,7 +19,7 @@ class KViewAnimatorProxy$1
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     paramValueAnimator = new DynamicColor(f, 0L);
     KViewAnimatorProxy.access$000(this.this$0).setBackgroundColor(paramValueAnimator);
-    ac.d("base_MMKView", "已经给背景颜色设置动画KView：" + KViewAnimatorProxy.access$000(this.this$0) + "，value：" + Long.toHexString(ColorUtil.absColor(f)));
+    ad.d("base_MMKView", "已经给背景颜色设置动画KView：" + KViewAnimatorProxy.access$000(this.this$0) + "，value：" + Long.toHexString(ColorUtil.absColor(f)));
     AppMethodBeat.o(18808);
   }
 }

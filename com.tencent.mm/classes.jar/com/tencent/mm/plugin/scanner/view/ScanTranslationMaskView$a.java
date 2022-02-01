@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.view;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/view/ScanTranslationMaskView$Companion;", "", "()V", "REQUEST_CODE_SELECT_PICTURE", "", "TAG", "", "scan-translation_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/view/ScanTranslationMaskView$Companion;", "", "()V", "REQUEST_CODE_SELECT_PICTURE", "", "TAG", "", "scan-translation_release"})
 public final class ScanTranslationMaskView$a {}
 
 

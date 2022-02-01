@@ -5,30 +5,30 @@ import com.tencent.mm.plugin.story.f.b.a;
 import d.l;
 import java.util.LinkedList;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryComment;", "", "()V", "bubbleList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "getBubbleList", "()Ljava/util/LinkedList;", "commentList", "getCommentList", "commentType", "", "getCommentType", "()I", "setCommentType", "(I)V", "commentUser", "", "getCommentUser", "()Ljava/lang/String;", "setCommentUser", "(Ljava/lang/String;)V", "isCommentUnread", "", "()Z", "setCommentUnread", "(Z)V", "isUnread", "setUnread", "isVisitorUnread", "setVisitorUnread", "msgList", "getMsgList", "showIndicator", "getShowIndicator", "setShowIndicator", "storyId", "", "getStoryId", "()J", "setStoryId", "(J)V", "storyOwner", "getStoryOwner", "setStoryOwner", "visitorList", "getVisitorList", "equals", "other", "toString", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryComment;", "", "()V", "bubbleList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "getBubbleList", "()Ljava/util/LinkedList;", "commentList", "getCommentList", "commentType", "", "getCommentType", "()I", "setCommentType", "(I)V", "commentUser", "", "getCommentUser", "()Ljava/lang/String;", "setCommentUser", "(Ljava/lang/String;)V", "isCommentUnread", "", "()Z", "setCommentUnread", "(Z)V", "isUnread", "setUnread", "isVisitorUnread", "setVisitorUnread", "msgList", "getMsgList", "showIndicator", "getShowIndicator", "setShowIndicator", "storyId", "", "getStoryId", "()J", "setStoryId", "(J)V", "storyOwner", "getStoryOwner", "setStoryOwner", "visitorList", "getVisitorList", "equals", "other", "toString", "plugin-story_release"})
 public final class g
 {
+  public boolean ALC;
+  public String ALG;
+  private String AMt;
+  public boolean AMu;
+  public boolean AMv;
+  boolean AMw;
+  public final LinkedList<a> AMx;
+  final LinkedList<a> AMy;
+  public final LinkedList<a> AMz;
+  int Abl;
   public final LinkedList<a> commentList;
-  public long dyg;
-  int yJR;
-  public boolean ztI;
-  public String ztM;
-  public boolean zuA;
-  boolean zuB;
-  public final LinkedList<a> zuC;
-  final LinkedList<a> zuD;
-  public final LinkedList<a> zuE;
-  private String zuy;
-  public boolean zuz;
+  public long dKt;
   
   public g()
   {
     AppMethodBeat.i(118918);
-    this.ztM = "";
+    this.ALG = "";
     this.commentList = new LinkedList();
-    this.zuC = new LinkedList();
-    this.zuD = new LinkedList();
-    this.zuE = new LinkedList();
+    this.AMx = new LinkedList();
+    this.AMy = new LinkedList();
+    this.AMz = new LinkedList();
     AppMethodBeat.o(118918);
   }
   
@@ -45,7 +45,7 @@ public final class g
       AppMethodBeat.o(118917);
       return true;
     }
-    if ((this.dyg == ((g)paramObject).dyg) && (this.commentList.size() == ((g)paramObject).commentList.size()) && (this.zuz == ((g)paramObject).zuz) && (this.ztI == ((g)paramObject).ztI))
+    if ((this.dKt == ((g)paramObject).dKt) && (this.commentList.size() == ((g)paramObject).commentList.size()) && (this.AMu == ((g)paramObject).AMu) && (this.ALC == ((g)paramObject).ALC))
     {
       AppMethodBeat.o(118917);
       return true;
@@ -57,7 +57,7 @@ public final class g
   public final String toString()
   {
     AppMethodBeat.i(118916);
-    String str = "StoryGalleryComment(fromUser='" + this.ztM + "', storyId=" + this.dyg + ", commentType=" + this.yJR + ", commentUser=" + this.zuy + ", isUnread=" + this.zuz + ", commentList=" + this.commentList + ')';
+    String str = "StoryGalleryComment(fromUser='" + this.ALG + "', storyId=" + this.dKt + ", commentType=" + this.Abl + ", commentUser=" + this.AMt + ", isUnread=" + this.AMu + ", commentList=" + this.commentList + ')';
     AppMethodBeat.o(118916);
     return str;
   }

@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.newtips;
 
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class c
-  implements aw
+  implements ax
 {
   public void clearPluginData(int paramInt) {}
   

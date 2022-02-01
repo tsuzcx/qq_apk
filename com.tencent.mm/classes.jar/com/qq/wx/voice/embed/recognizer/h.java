@@ -21,17 +21,17 @@ final class h
       AppMethodBeat.o(76769);
       return;
       int i = paramMessage.getData().getInt("errorCode");
-      this.bLy.bLz.onGetError(i);
+      this.bVL.bVM.onGetError(i);
       AppMethodBeat.o(76769);
       return;
       paramMessage = (a)paramMessage.obj;
-      this.bLy.bLz.a(paramMessage);
+      this.bVL.bVM.a(paramMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.qq.wx.voice.embed.recognizer.h
  * JD-Core Version:    0.7.0.1
  */

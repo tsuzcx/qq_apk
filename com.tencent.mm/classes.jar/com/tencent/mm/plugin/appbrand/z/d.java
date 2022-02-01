@@ -4,16 +4,16 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.webkit.URLUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 
 public final class d
 {
-  public static byte[] E(InputStream paramInputStream)
+  public static byte[] I(InputStream paramInputStream)
   {
     AppMethodBeat.i(140805);
     paramInputStream = a(paramInputStream, 0L, -1L);
@@ -21,10 +21,10 @@ public final class d
     return paramInputStream;
   }
   
-  public static String Rn(String paramString)
+  public static String UT(String paramString)
   {
     AppMethodBeat.i(140802);
-    Object localObject2 = ai.getContext().getAssets();
+    Object localObject2 = aj.getContext().getAssets();
     Object localObject1 = null;
     try
     {
@@ -35,7 +35,7 @@ public final class d
     {
       for (;;)
       {
-        ac.e("MicroMsg.AppBrandIOUtil", "openRead file( %s ) failed, exp = %s", new Object[] { paramString, bs.m(localException) });
+        ad.e("MicroMsg.AppBrandIOUtil", "openRead file( %s ) failed, exp = %s", new Object[] { paramString, bt.n(localException) });
         paramString = localObject1;
       }
       paramString = convertStreamToString(paramString);
@@ -49,10 +49,10 @@ public final class d
     return paramString;
   }
   
-  public static byte[] Ro(String paramString)
+  public static byte[] UU(String paramString)
   {
     AppMethodBeat.i(140803);
-    Object localObject2 = ai.getContext().getAssets();
+    Object localObject2 = aj.getContext().getAssets();
     Object localObject1 = null;
     try
     {
@@ -63,10 +63,10 @@ public final class d
     {
       for (;;)
       {
-        ac.e("MicroMsg.AppBrandIOUtil", "openRead file( %s ) failed, exp = %s", new Object[] { paramString, bs.m(localException) });
+        ad.e("MicroMsg.AppBrandIOUtil", "openRead file( %s ) failed, exp = %s", new Object[] { paramString, bt.n(localException) });
         paramString = localObject1;
       }
-      paramString = E(paramString);
+      paramString = I(paramString);
       AppMethodBeat.o(140803);
     }
     if (paramString == null)
@@ -77,10 +77,10 @@ public final class d
     return paramString;
   }
   
-  public static boolean Rp(String paramString)
+  public static boolean UV(String paramString)
   {
     AppMethodBeat.i(140806);
-    if ((!bs.isNullOrNil(paramString)) && ((URLUtil.isHttpsUrl(paramString)) || (URLUtil.isHttpUrl(paramString))))
+    if ((!bt.isNullOrNil(paramString)) && ((URLUtil.isHttpsUrl(paramString)) || (URLUtil.isHttpUrl(paramString))))
     {
       AppMethodBeat.o(140806);
       return true;
@@ -109,7 +109,7 @@ public final class d
         {
           for (;;)
           {
-            ac.e("MicroMsg.AppBrandIOUtil", "convertStreamToByteArray close: ".concat(String.valueOf(paramInputStream)));
+            ad.e("MicroMsg.AppBrandIOUtil", "convertStreamToByteArray close: ".concat(String.valueOf(paramInputStream)));
           }
         }
       }
@@ -124,7 +124,7 @@ public final class d
         {
           for (;;)
           {
-            ac.e("MicroMsg.AppBrandIOUtil", "convertStreamToByteArray close: ".concat(String.valueOf(paramInputStream)));
+            ad.e("MicroMsg.AppBrandIOUtil", "convertStreamToByteArray close: ".concat(String.valueOf(paramInputStream)));
           }
         }
       }
@@ -136,7 +136,7 @@ public final class d
     catch (Exception localException)
     {
       int j;
-      ac.e("MicroMsg.AppBrandIOUtil", "convertStreamToByteArray: ".concat(String.valueOf(localException)));
+      ad.e("MicroMsg.AppBrandIOUtil", "convertStreamToByteArray: ".concat(String.valueOf(localException)));
       try
       {
         paramInputStream.close();
@@ -147,7 +147,7 @@ public final class d
       {
         for (;;)
         {
-          ac.e("MicroMsg.AppBrandIOUtil", "convertStreamToByteArray close: ".concat(String.valueOf(paramInputStream)));
+          ad.e("MicroMsg.AppBrandIOUtil", "convertStreamToByteArray close: ".concat(String.valueOf(paramInputStream)));
         }
       }
     }
@@ -164,7 +164,7 @@ public final class d
         }
         catch (Exception paramInputStream)
         {
-          ac.e("MicroMsg.AppBrandIOUtil", "convertStreamToByteArray close: ".concat(String.valueOf(paramInputStream)));
+          ad.e("MicroMsg.AppBrandIOUtil", "convertStreamToByteArray close: ".concat(String.valueOf(paramInputStream)));
           continue;
         }
         paramLong2 = l;
@@ -193,7 +193,7 @@ public final class d
     {
       for (;;)
       {
-        ac.e("MicroMsg.AppBrandIOUtil", "convertStreamToByteArray close: ".concat(String.valueOf(paramInputStream)));
+        ad.e("MicroMsg.AppBrandIOUtil", "convertStreamToByteArray close: ".concat(String.valueOf(paramInputStream)));
       }
     }
   }
@@ -239,19 +239,19 @@ public final class d
     //   62: aload_3
     //   63: invokevirtual 165	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   66: aastore
-    //   67: invokestatic 64	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   67: invokestatic 64	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   70: aload_2
-    //   71: invokestatic 169	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   71: invokestatic 169	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   74: aload_0
-    //   75: invokestatic 169	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   75: invokestatic 169	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   78: ldc 145
     //   80: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: ldc 48
     //   85: areturn
     //   86: aload_2
-    //   87: invokestatic 169	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   87: invokestatic 169	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   90: aload_0
-    //   91: invokestatic 169	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   91: invokestatic 169	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   94: aload 4
     //   96: invokevirtual 172	java/io/StringWriter:toString	()Ljava/lang/String;
     //   99: astore_0
@@ -261,9 +261,9 @@ public final class d
     //   106: areturn
     //   107: astore_3
     //   108: aload_2
-    //   109: invokestatic 169	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   109: invokestatic 169	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   112: aload_0
-    //   113: invokestatic 169	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   113: invokestatic 169	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   116: ldc 145
     //   118: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   121: aload_3
@@ -286,7 +286,7 @@ public final class d
     //   52	70	107	finally
   }
   
-  public static byte[] q(ByteBuffer paramByteBuffer)
+  public static byte[] p(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(140807);
     if (paramByteBuffer == null)
@@ -311,7 +311,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.z.d
  * JD-Core Version:    0.7.0.1
  */

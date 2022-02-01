@@ -25,12 +25,12 @@ import javax.annotation.concurrent.GuardedBy;
 final class aj
   implements ServiceConnection
 {
-  final Messenger bCe;
-  ao bCf;
+  final Messenger bMs;
+  ao bMt;
   @GuardedBy("this")
-  final Queue<c<?>> bCg;
+  final Queue<c<?>> bMu;
   @GuardedBy("this")
-  final SparseArray<c<?>> bCh;
+  final SparseArray<c<?>> bMv;
   @GuardedBy("this")
   int state;
   
@@ -38,16 +38,16 @@ final class aj
   {
     AppMethodBeat.i(4256);
     this.state = 0;
-    this.bCe = new Messenger(new Handler(Looper.getMainLooper(), new ak(this)));
-    this.bCg = new ArrayDeque();
-    this.bCh = new SparseArray();
+    this.bMs = new Messenger(new Handler(Looper.getMainLooper(), new ak(this)));
+    this.bMu = new ArrayDeque();
+    this.bMv = new SparseArray();
     AppMethodBeat.o(4256);
   }
   
   private final void zzt()
   {
     AppMethodBeat.i(4260);
-    this.bCi.bCb.execute(new am(this));
+    this.bMw.bMp.execute(new am(this));
     AppMethodBeat.o(4260);
   }
   
@@ -70,7 +70,7 @@ final class aj
         }
       }
       finally {}
-      this.bCg.add(paramc);
+      this.bMu.add(paramc);
       if (this.state == 0) {
         bool1 = true;
       }
@@ -79,7 +79,7 @@ final class aj
       this.state = 1;
       paramc = new Intent("com.google.android.c2dm.intent.REGISTER");
       paramc.setPackage("com.google.android.gms");
-      if (!ConnectionTracker.getInstance().bindService(this.bCi.bAR, paramc, this, 1))
+      if (!ConnectionTracker.getInstance().bindService(this.bMw.bLf, paramc, this, 1))
       {
         zza(0, "Unable to bind to service");
         AppMethodBeat.o(4257);
@@ -88,13 +88,13 @@ final class aj
       for (;;)
       {
         return bool1;
-        this.bCi.bCb.schedule(new al(this), 30L, TimeUnit.SECONDS);
+        this.bMw.bMp.schedule(new al(this), 30L, TimeUnit.SECONDS);
         break;
-        this.bCg.add(paramc);
+        this.bMu.add(paramc);
         AppMethodBeat.o(4257);
         bool1 = bool2;
         continue;
-        this.bCg.add(paramc);
+        this.bMu.add(paramc);
         zzt();
         AppMethodBeat.o(4257);
         bool1 = bool2;
@@ -117,13 +117,13 @@ final class aj
       c localc;
       try
       {
-        localc = (c)this.bCh.get(i);
+        localc = (c)this.bMv.get(i);
         if (localc == null)
         {
           new StringBuilder(50).append("Received response for unknown request: ").append(i);
           return true;
         }
-        this.bCh.remove(i);
+        this.bMv.remove(i);
         zzu();
         paramMessage = paramMessage.getData();
         if (paramMessage.getBoolean("unsupported", false))
@@ -141,16 +141,16 @@ final class aj
     }
   }
   
-  final void fv(int paramInt)
+  final void fy(int paramInt)
   {
     try
     {
       AppMethodBeat.i(4265);
-      c localc = (c)this.bCh.get(paramInt);
+      c localc = (c)this.bMv.get(paramInt);
       if (localc != null)
       {
         new StringBuilder(31).append("Timing out request: ").append(paramInt);
-        this.bCh.remove(paramInt);
+        this.bMv.remove(paramInt);
         localc.a(new d(3, "Timed out waiting for response"));
         zzu();
       }
@@ -178,7 +178,7 @@ final class aj
       {
         try
         {
-          this.bCf = new ao(paramIBinder);
+          this.bMt = new ao(paramIBinder);
           this.state = 2;
           zzt();
           AppMethodBeat.o(4259);
@@ -245,20 +245,20 @@ final class aj
       throw paramString;
       Log.isLoggable("MessengerIpcClient", 2);
       this.state = 4;
-      ConnectionTracker.getInstance().unbindService(this.bCi.bAR, this);
+      ConnectionTracker.getInstance().unbindService(this.bMw.bLf, this);
       paramString = new d(paramInt, paramString);
-      Object localObject = this.bCg.iterator();
+      Object localObject = this.bMu.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((c)((Iterator)localObject).next()).a(paramString);
       }
-      this.bCg.clear();
+      this.bMu.clear();
       paramInt = 0;
-      while (paramInt < this.bCh.size())
+      while (paramInt < this.bMv.size())
       {
-        ((c)this.bCh.valueAt(paramInt)).a(paramString);
+        ((c)this.bMv.valueAt(paramInt)).a(paramString);
         paramInt += 1;
       }
-      this.bCh.clear();
+      this.bMv.clear();
       AppMethodBeat.o(4262);
       for (;;)
       {
@@ -276,11 +276,11 @@ final class aj
     try
     {
       AppMethodBeat.i(4263);
-      if ((this.state == 2) && (this.bCg.isEmpty()) && (this.bCh.size() == 0))
+      if ((this.state == 2) && (this.bMu.isEmpty()) && (this.bMv.size() == 0))
       {
         Log.isLoggable("MessengerIpcClient", 2);
         this.state = 3;
-        ConnectionTracker.getInstance().unbindService(this.bCi.bAR, this);
+        ConnectionTracker.getInstance().unbindService(this.bMw.bLf, this);
       }
       AppMethodBeat.o(4263);
       return;

@@ -5,44 +5,44 @@ import android.os.Looper;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class b
   extends com.tencent.mm.plugin.backup.b.d
 {
-  private static b mXp;
-  private com.tencent.mm.plugin.backup.c.a mUy;
-  private c mXq;
-  private e mXr;
-  private d mXs;
-  private a mXt;
+  private static b nxM;
+  private com.tencent.mm.plugin.backup.c.a nuW;
+  private c nxN;
+  private e nxO;
+  private d nxP;
+  private a nxQ;
   private PowerManager.WakeLock wakeLock = null;
   
-  public static b bEa()
+  public static b bIj()
   {
     AppMethodBeat.i(21549);
-    if (mXp == null)
+    if (nxM == null)
     {
       localb = new b();
-      mXp = localb;
+      nxM = localb;
       a(localb);
     }
-    b localb = mXp;
+    b localb = nxM;
     AppMethodBeat.o(21549);
     return localb;
   }
   
-  public final void bCK()
+  public final void bGS()
   {
-    mXp = null;
+    nxM = null;
   }
   
-  public final void bCQ()
+  public final void bGY()
   {
     AppMethodBeat.i(21556);
-    ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {
@@ -51,7 +51,7 @@ public final class b
         {
           if (b.a(b.this) == null)
           {
-            PowerManager localPowerManager = (PowerManager)ai.getContext().getSystemService("power");
+            PowerManager localPowerManager = (PowerManager)aj.getContext().getSystemService("power");
             b.a(b.this, localPowerManager.newWakeLock(26, "BackupPc Lock"));
           }
           if (!b.a(b.this).isHeld()) {
@@ -69,10 +69,10 @@ public final class b
     AppMethodBeat.o(21556);
   }
   
-  public final void bCR()
+  public final void bGZ()
   {
     AppMethodBeat.i(21557);
-    ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {
@@ -94,57 +94,57 @@ public final class b
     AppMethodBeat.o(21557);
   }
   
-  public final com.tencent.mm.plugin.backup.c.a bDz()
+  public final com.tencent.mm.plugin.backup.c.a bHH()
   {
     AppMethodBeat.i(21551);
-    if (this.mUy == null) {
-      this.mUy = new com.tencent.mm.plugin.backup.c.a();
+    if (this.nuW == null) {
+      this.nuW = new com.tencent.mm.plugin.backup.c.a();
     }
-    com.tencent.mm.plugin.backup.c.a locala = this.mUy;
+    com.tencent.mm.plugin.backup.c.a locala = this.nuW;
     AppMethodBeat.o(21551);
     return locala;
   }
   
-  public final c bEb()
+  public final c bIk()
   {
     AppMethodBeat.i(21552);
-    if (this.mXq == null) {
-      this.mXq = new c();
+    if (this.nxN == null) {
+      this.nxN = new c();
     }
-    c localc = this.mXq;
+    c localc = this.nxN;
     AppMethodBeat.o(21552);
     return localc;
   }
   
-  public final e bEc()
+  public final e bIl()
   {
     AppMethodBeat.i(21553);
-    if (this.mXr == null) {
-      this.mXr = new e();
+    if (this.nxO == null) {
+      this.nxO = new e();
     }
-    e locale = this.mXr;
+    e locale = this.nxO;
     AppMethodBeat.o(21553);
     return locale;
   }
   
-  public final d bEd()
+  public final d bIm()
   {
     AppMethodBeat.i(21554);
-    if (this.mXs == null) {
-      this.mXs = new d();
+    if (this.nxP == null) {
+      this.nxP = new d();
     }
-    d locald = this.mXs;
+    d locald = this.nxP;
     AppMethodBeat.o(21554);
     return locald;
   }
   
-  public final a bEe()
+  public final a bIn()
   {
     AppMethodBeat.i(21555);
-    if (this.mXt == null) {
-      this.mXt = new a();
+    if (this.nxQ == null) {
+      this.nxQ = new a();
     }
-    a locala = this.mXt;
+    a locala = this.nxQ;
     AppMethodBeat.o(21555);
     return locala;
   }
@@ -153,8 +153,8 @@ public final class b
   {
     AppMethodBeat.i(21550);
     ((Boolean)paramVarArgs[0]).booleanValue();
-    paramVarArgs = bEa().bEb();
-    new ao(Looper.getMainLooper()).postDelayed(new c.5(paramVarArgs), 100L);
+    paramVarArgs = bIj().bIk();
+    new ap(Looper.getMainLooper()).postDelayed(new c.5(paramVarArgs), 100L);
     AppMethodBeat.o(21550);
   }
 }

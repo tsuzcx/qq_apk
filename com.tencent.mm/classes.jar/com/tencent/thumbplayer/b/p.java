@@ -1,61 +1,63 @@
 package com.tencent.thumbplayer.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.thumbplayer.b.b.b;
+import com.tencent.thumbplayer.utils.a;
 import java.util.ArrayList;
 
 public final class p
 {
-  public String Kfs;
-  public ArrayList<com.tencent.thumbplayer.b.b.b> Kft;
-  private a Kfu;
-  public long aQX;
-  public long aQY;
+  public String LZm;
+  public ArrayList<b> LZn;
+  private a LZo;
+  public long bbs;
+  public long bbt;
   public int videoCodecId;
   
   private p(a parama)
   {
-    this.aQX = parama.aQX;
-    this.aQY = parama.aQY;
+    this.bbs = parama.bbs;
+    this.bbt = parama.bbt;
     this.videoCodecId = parama.videoCodecId;
-    this.Kfs = parama.Kfs;
-    this.Kft = parama.Kft;
-    this.Kfu = parama;
+    this.LZm = parama.LZm;
+    this.LZn = parama.LZn;
+    this.LZo = parama;
   }
   
   public static final class a
   {
-    String Kfs;
-    ArrayList<com.tencent.thumbplayer.b.b.b> Kft;
-    long aQX;
-    long aQY;
+    String LZm;
+    ArrayList<b> LZn;
+    long bbs;
+    long bbt;
     int videoCodecId;
     
-    public final a a(com.tencent.thumbplayer.b.b.b paramb)
+    public final a a(b paramb)
     {
-      AppMethodBeat.i(187838);
-      if (com.tencent.thumbplayer.utils.b.isEmpty(this.Kft)) {
-        this.Kft = new ArrayList();
+      AppMethodBeat.i(191859);
+      if (a.isEmpty(this.LZn)) {
+        this.LZn = new ArrayList();
       }
       for (;;)
       {
-        this.Kft.add(paramb);
-        AppMethodBeat.o(187838);
+        this.LZn.add(paramb);
+        AppMethodBeat.o(191859);
         return this;
-        this.Kft.clear();
+        this.LZn.clear();
       }
     }
     
-    public final a aTJ(String paramString)
+    public final a aZJ(String paramString)
     {
-      this.Kfs = paramString;
+      this.LZm = paramString;
       return this;
     }
     
-    public final p fFh()
+    public final p fWy()
     {
-      AppMethodBeat.i(187839);
+      AppMethodBeat.i(191860);
       p localp = new p(this, (byte)0);
-      AppMethodBeat.o(187839);
+      AppMethodBeat.o(191860);
       return localp;
     }
   }

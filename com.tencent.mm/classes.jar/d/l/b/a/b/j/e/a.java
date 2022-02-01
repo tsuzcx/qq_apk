@@ -1,7 +1,7 @@
 package d.l.b.a.b.j.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.as;
 import d.l.b.a.b.b.h;
 import d.l.b.a.b.b.l;
@@ -15,13 +15,13 @@ public final class a
   private static boolean ag(ab paramab)
   {
     AppMethodBeat.i(60160);
-    k.h(paramab, "$this$isInlineClassThatRequiresMangling");
-    paramab = paramab.gbz().fQq();
+    p.h(paramab, "$this$isInlineClassThatRequiresMangling");
+    paramab = paramab.gsZ().ghO();
     if (paramab != null)
     {
       paramab = (l)paramab;
-      k.h(paramab, "$this$isInlineClassThatRequiresMangling");
-      if ((e.D(paramab)) && (!k.g(d.l.b.a.b.j.d.a.o((l)paramab), c.LEz))) {}
+      p.h(paramab, "$this$isInlineClassThatRequiresMangling");
+      if ((e.D(paramab)) && (!p.i(d.l.b.a.b.j.d.a.o((l)paramab), c.Nvy))) {}
       for (int i = 1; i == 1; i = 0)
       {
         AppMethodBeat.o(60160);
@@ -47,7 +47,7 @@ public final class a
   private static final boolean ai(ab paramab)
   {
     AppMethodBeat.i(60162);
-    h localh = paramab.gbz().fQq();
+    h localh = paramab.gsZ().ghO();
     paramab = localh;
     if (!(localh instanceof as)) {
       paramab = null;
@@ -65,7 +65,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.e.a
  * JD-Core Version:    0.7.0.1
  */

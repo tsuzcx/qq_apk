@@ -1,13 +1,15 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ys;
-import com.tencent.mm.plugin.game.luggage.d.f;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bo;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.g.a.zm;
+import com.tencent.mm.plugin.game.luggage.f.g;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -15,19 +17,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class c
-  extends bo<f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama)
+  public final void a(Context paramContext, String paramString, bq.a parama)
   {
     int i = 0;
     AppMethodBeat.i(83053);
-    ac.i("MicroMsg.JsApiBatchUpdateWepkg", "invokeInMM");
+    ad.i("MicroMsg.JsApiBatchUpdateWepkg", "invokeInMM");
     try
     {
       paramContext = new JSONObject(paramString);
       if (paramContext == null)
       {
-        ac.e("MicroMsg.JsApiBatchUpdateWepkg", "data is null");
+        ad.e("MicroMsg.JsApiBatchUpdateWepkg", "data is null");
         parama.f("fail", null);
         AppMethodBeat.o(83053);
         return;
@@ -40,7 +42,7 @@ public class c
         paramContext = null;
       }
       paramContext = paramContext.optString("pkgIdList");
-      if (!bs.isNullOrNil(paramContext)) {
+      if (!bt.isNullOrNil(paramContext)) {
         try
         {
           paramString = new JSONArray(paramContext);
@@ -52,13 +54,13 @@ public class c
               paramContext.add(paramString.optString(i));
               i += 1;
             }
-            if (!bs.gY(paramContext))
+            if (!bt.hj(paramContext))
             {
-              paramString = new ys();
-              paramString.dCz.cZu = 8;
-              paramString.dCz.scene = 0;
-              paramString.dCz.dCF = paramContext;
-              com.tencent.mm.sdk.b.a.GpY.l(paramString);
+              paramString = new zm();
+              paramString.dOM.dkM = 8;
+              paramString.dOM.scene = 0;
+              paramString.dOM.dOS = paramContext;
+              a.IbL.l(paramString);
               parama.f(null, null);
               AppMethodBeat.o(83053);
               return;
@@ -67,7 +69,7 @@ public class c
         }
         catch (JSONException paramContext)
         {
-          ac.e("MicroMsg.JsApiBatchUpdateWepkg", "data is not json");
+          ad.e("MicroMsg.JsApiBatchUpdateWepkg", "data is not json");
         }
       }
       parama.f("fail", null);
@@ -75,9 +77,9 @@ public class c
     }
   }
   
-  public final void b(com.tencent.luggage.d.a<f>.a parama) {}
+  public final void b(b<g>.a paramb) {}
   
-  public final int bYk()
+  public final int ccO()
   {
     return 1;
   }

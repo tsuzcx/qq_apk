@@ -8,30 +8,32 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ql;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.api.l;
+import com.tencent.mm.g.a.qw;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.profile.ui.ContactInfoUI;
 import com.tencent.mm.plugin.profile.ui.newbizinfo.c.c;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class NewBizInfoFollowPreference
   extends Preference
 {
-  private MMActivity iMV;
-  private boolean pDN;
-  com.tencent.mm.pluginsdk.b.a vIR;
-  private TextView vOq;
-  private TextView vOr;
+  private MMActivity fLP;
+  private boolean qhs;
+  com.tencent.mm.pluginsdk.b.a wPY;
+  private TextView wVA;
+  private TextView wVz;
   
   public NewBizInfoFollowPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27501);
-    this.pDN = false;
-    this.iMV = ((MMActivity)paramContext);
-    this.pDN = false;
+    this.qhs = false;
+    this.fLP = ((MMActivity)paramContext);
+    this.qhs = false;
     AppMethodBeat.o(27501);
   }
   
@@ -39,81 +41,88 @@ public class NewBizInfoFollowPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27502);
-    this.pDN = false;
-    this.iMV = ((MMActivity)paramContext);
-    this.pDN = false;
+    this.qhs = false;
+    this.fLP = ((MMActivity)paramContext);
+    this.qhs = false;
     AppMethodBeat.o(27502);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27503);
-    this.pDN = true;
-    this.vOq = ((TextView)paramView.findViewById(2131298615));
-    if (this.vOq.getPaint() != null) {
-      this.vOq.getPaint().setFakeBoldText(true);
+    this.qhs = true;
+    this.wVz = ((TextView)paramView.findViewById(2131298615));
+    if (this.wVz.getPaint() != null) {
+      this.wVz.getPaint().setFakeBoldText(true);
     }
-    this.vOr = ((TextView)paramView.findViewById(2131298606));
-    if (this.vOr.getPaint() != null) {
-      this.vOr.getPaint().setFakeBoldText(true);
+    this.wVA = ((TextView)paramView.findViewById(2131298606));
+    if (this.wVA.getPaint() != null) {
+      this.wVA.getPaint().setFakeBoldText(true);
     }
-    if (this.pDN)
+    if (this.qhs)
     {
-      this.vOq.setOnClickListener(new View.OnClickListener()
+      this.wVz.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(27499);
-          Object localObject;
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoFollowPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
           if ((NewBizInfoFollowPreference.a(NewBizInfoFollowPreference.this) != null) && ((NewBizInfoFollowPreference.a(NewBizInfoFollowPreference.this) instanceof ContactWidgetNewBizInfo)))
           {
             paramAnonymousView = (ContactWidgetNewBizInfo)NewBizInfoFollowPreference.a(NewBizInfoFollowPreference.this);
-            if (paramAnonymousView.vKt != null)
+            if (paramAnonymousView.wRC != null)
             {
-              localObject = new ql();
-              paramAnonymousView.vKt.hTz = 5;
-              ((ql)localObject).dtt.dtu = paramAnonymousView.vKt;
-              com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+              localObject = new qw();
+              paramAnonymousView.wRC.imT = 5;
+              ((qw)localObject).dFu.dFv = paramAnonymousView.wRC;
+              com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
             }
             localObject = new Intent();
-            if (paramAnonymousView.vNT.getIntent().getBooleanExtra("key_start_biz_profile_from_app_brand_profile", false)) {
+            if (paramAnonymousView.wVc.getIntent().getBooleanExtra("key_start_biz_profile_from_app_brand_profile", false)) {
               ((Intent)localObject).setFlags(268435456);
             }
-            ((Intent)localObject).putExtra("chat_from_scene", paramAnonymousView.vNT.getIntent().getIntExtra("chat_from_scene", 0));
+            ((Intent)localObject).putExtra("chat_from_scene", paramAnonymousView.wVc.getIntent().getIntExtra("chat_from_scene", 0));
             ((Intent)localObject).putExtra("KOpenArticleSceneFromScene", 126);
             ((Intent)localObject).putExtra("specific_chat_from_scene", 5);
-            if (!paramAnonymousView.vIS) {
-              break label217;
+            if (!paramAnonymousView.wPZ) {
+              break label262;
             }
             ((Intent)localObject).putExtra("Chat_User", paramAnonymousView.contact.field_username);
             ((Intent)localObject).putExtra("Chat_Mode", 1);
-            paramAnonymousView.vNT.setResult(-1, (Intent)localObject);
+            paramAnonymousView.wVc.setResult(-1, (Intent)localObject);
           }
           for (;;)
           {
-            paramAnonymousView.Lw(5);
-            c.K(paramAnonymousView.contact.field_username, 300, paramAnonymousView.iMg);
+            paramAnonymousView.MY(5);
+            c.b(paramAnonymousView.contact.field_username, 300, paramAnonymousView.jfq, paramAnonymousView.enterTime);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoFollowPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(27499);
             return;
-            label217:
+            label262:
             ((Intent)localObject).putExtra("Chat_User", paramAnonymousView.contact.field_username);
             ((Intent)localObject).putExtra("Chat_Mode", 1);
             ((Intent)localObject).putExtra("finish_direct", true);
-            com.tencent.mm.plugin.profile.b.iyx.d((Intent)localObject, paramAnonymousView.vNT);
+            com.tencent.mm.plugin.profile.b.iRG.d((Intent)localObject, paramAnonymousView.wVc);
           }
         }
       });
-      this.vOr.setOnClickListener(new View.OnClickListener()
+      this.wVA.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(27500);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoFollowPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           if ((NewBizInfoFollowPreference.a(NewBizInfoFollowPreference.this) != null) && ((NewBizInfoFollowPreference.a(NewBizInfoFollowPreference.this) instanceof ContactWidgetNewBizInfo)))
           {
             paramAnonymousView = (ContactWidgetNewBizInfo)NewBizInfoFollowPreference.a(NewBizInfoFollowPreference.this);
-            ((com.tencent.mm.api.l)g.ab(com.tencent.mm.api.l.class)).a(paramAnonymousView.vIG, paramAnonymousView.vNT, paramAnonymousView.contact, true, new ContactWidgetNewBizInfo.6(paramAnonymousView));
-            c.K(paramAnonymousView.contact.field_username, 1000, paramAnonymousView.iMg);
+            ((l)g.ab(l.class)).a(paramAnonymousView.wPN, paramAnonymousView.wVc, paramAnonymousView.contact, true, new ContactWidgetNewBizInfo.6(paramAnonymousView));
+            c.b(paramAnonymousView.contact.field_username, 1000, paramAnonymousView.jfq, paramAnonymousView.enterTime);
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoFollowPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27500);
         }
       });

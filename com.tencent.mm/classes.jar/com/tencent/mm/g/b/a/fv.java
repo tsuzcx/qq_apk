@@ -6,162 +6,97 @@ import com.tencent.mm.plugin.report.a;
 public final class fv
   extends a
 {
-  public long eaA = 0L;
-  public long eaB = 0L;
-  public long eaC = 0L;
-  public long eaD = 0L;
-  public long eaE = 0L;
-  public long eaF = 0L;
-  public long eaG = 0L;
-  public long eaH = 0L;
-  public long eaI = 0L;
-  public long eaJ = 0L;
-  public long eaK = 0L;
-  public long eaL = 0L;
-  public long eam = 0L;
-  public long ean = 0L;
-  public long eao = 0L;
-  public long eap = 0L;
-  public long eaq = 0L;
-  public long ear = 0L;
-  public long eas = 0L;
-  public long eat = 0L;
-  public long eau = 0L;
-  public long eav = 0L;
-  public long eaw = 0L;
-  public long eax = 0L;
-  public long eay = 0L;
-  public long eaz = 0L;
+  private long dTs = 0L;
+  private long efJ = 0L;
+  private long emf = 0L;
+  private int emg = 0;
+  private long emh = 0L;
+  private long emi = 0L;
+  private long emj = 0L;
+  private long emk = 0L;
+  private long eml = 0L;
+  private long emm = 0L;
+  private long emn = 0L;
+  private long emo = 0L;
+  private long emp = 0L;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(43456);
+    AppMethodBeat.i(118498);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eam);
+    ((StringBuffer)localObject).append(this.efJ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ean);
+    ((StringBuffer)localObject).append(this.emf);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eao);
+    ((StringBuffer)localObject).append(this.emg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eap);
+    ((StringBuffer)localObject).append(this.dTs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaq);
+    ((StringBuffer)localObject).append(this.emh);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ear);
+    ((StringBuffer)localObject).append(this.emi);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eas);
+    ((StringBuffer)localObject).append(this.emj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eat);
+    ((StringBuffer)localObject).append(this.emk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eau);
+    ((StringBuffer)localObject).append(this.eml);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eav);
+    ((StringBuffer)localObject).append(this.emm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaw);
+    ((StringBuffer)localObject).append(this.emn);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eax);
+    ((StringBuffer)localObject).append(this.emo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eay);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaz);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaA);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaB);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaC);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaD);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaE);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaF);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaG);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaH);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaI);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaJ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaK);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaL);
+    ((StringBuffer)localObject).append(this.emp);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(43456);
+    awz((String)localObject);
+    AppMethodBeat.o(118498);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(43457);
+    AppMethodBeat.i(118499);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("isBindPhone:").append(this.eam);
+    ((StringBuffer)localObject).append("ImageCount:").append(this.efJ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("bindSuccess:").append(this.ean);
+    ((StringBuffer)localObject).append("RemuxCostTime:").append(this.emf);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("getPhoneNumberCount:").append(this.eao);
+    ((StringBuffer)localObject).append("RemuxSucc:").append(this.emg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickConfirmCount:").append(this.eap);
+    ((StringBuffer)localObject).append("VideoSize:").append(this.dTs);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickDenyCount:").append(this.eaq);
+    ((StringBuffer)localObject).append("BitRateMode:").append(this.emh);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickCancelCount:").append(this.ear);
+    ((StringBuffer)localObject).append("Fps:").append(this.emi);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("confirmBindedPhoneCount:").append(this.eas);
+    ((StringBuffer)localObject).append("BitRate:").append(this.emj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("confirmUnBindPhoneCount:").append(this.eat);
+    ((StringBuffer)localObject).append("IFrameInterval:").append(this.emk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickInfoCount:").append(this.eau);
+    ((StringBuffer)localObject).append("ContainMusic:").append(this.eml);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickUseOtherPhoneCount:").append(this.eav);
+    ((StringBuffer)localObject).append("OutputWidth:").append(this.emm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickManagePhoneCount:").append(this.eaw);
+    ((StringBuffer)localObject).append("OutputHeight:").append(this.emn);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickGetVerifyCodeCount:").append(this.eax);
+    ((StringBuffer)localObject).append("SupportCQ:").append(this.emo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("getVerifyCodeSuccessCount:").append(this.eay);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("getVerifyCodeFailedCount:").append(this.eaz);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickAddPhoneDoneCount:").append(this.eaA);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("addPhoneSuccessCount:").append(this.eaB);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("addPhoneFailedCount:").append(this.eaC);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("addPhoneAndSaveCount:").append(this.eaD);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("addPhoneNotSaveCount:").append(this.eaE);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickAddPhoneOnManagePageCount:").append(this.eaF);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("deletePhoneCount:").append(this.eaG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("deletePhoneSuccessCount:").append(this.eaH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("deletePhoneFailedCount:").append(this.eaI);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("verifyCodeCount:").append(this.eaJ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("verifyCodeSuccessCount:").append(this.eaK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("verifyCodeFailedCount:").append(this.eaL);
+    ((StringBuffer)localObject).append("useX264:").append(this.emp);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43457);
+    AppMethodBeat.o(118499);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16375;
+    return 17653;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.fv
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ public final class e
   extends AbstractCursor
   implements d
 {
-  private d Hce;
-  public d[] Hcf;
+  private d IPu;
+  public d[] IPv;
   private DataSetObserver mObserver;
   
   public e(d[] paramArrayOfd)
@@ -35,31 +35,68 @@ public final class e
         AppMethodBeat.o(133445);
       }
     };
-    this.Hcf = paramArrayOfd;
-    this.Hce = paramArrayOfd[0];
-    while (i < this.Hcf.length)
+    this.IPv = paramArrayOfd;
+    this.IPu = paramArrayOfd[0];
+    while (i < this.IPv.length)
     {
-      if (this.Hcf[i] != null) {
-        this.Hcf[i].registerDataSetObserver(this.mObserver);
+      if (this.IPv[i] != null) {
+        this.IPv[i].registerDataSetObserver(this.mObserver);
       }
       i += 1;
     }
     AppMethodBeat.o(133446);
   }
   
-  public final boolean YZ(int paramInt)
+  public final void a(f.a parama)
+  {
+    AppMethodBeat.i(133465);
+    int j = this.IPv.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (this.IPv[i] != null) {
+        this.IPv[i].a(parama);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(133465);
+  }
+  
+  public final boolean a(Object paramObject, a parama)
+  {
+    AppMethodBeat.i(133469);
+    int j = this.IPv.length;
+    int i = 0;
+    boolean bool2;
+    for (boolean bool1 = false; i < j; bool1 = bool2)
+    {
+      bool2 = bool1;
+      if (this.IPv[i] != null)
+      {
+        bool2 = bool1;
+        if (this.IPv[i].a(paramObject, parama)) {
+          bool2 = true;
+        }
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(133469);
+    return bool1;
+  }
+  
+  public final boolean abi(int paramInt)
   {
     AppMethodBeat.i(133471);
-    int j = this.Hcf.length;
+    int j = this.IPv.length;
     boolean bool1 = true;
     int i = 0;
     while (i < j)
     {
       boolean bool2 = bool1;
-      if (this.Hcf[i] != null)
+      if (this.IPv[i] != null)
       {
         bool2 = bool1;
-        if (!this.Hcf[i].YZ(paramInt)) {
+        if (!this.IPv[i].abi(paramInt)) {
           bool2 = false;
         }
       }
@@ -70,19 +107,19 @@ public final class e
     return bool1;
   }
   
-  public final a Za(int paramInt)
+  public final a abj(int paramInt)
   {
     AppMethodBeat.i(133468);
-    int k = this.Hcf.length;
+    int k = this.IPv.length;
     int j = 0;
     int i = paramInt;
     paramInt = j;
     while (paramInt < k)
     {
-      j = this.Hcf[paramInt].getCount();
+      j = this.IPv[paramInt].getCount();
       if (i < j)
       {
-        a locala = this.Hcf[paramInt].Za(i);
+        a locala = this.IPv[paramInt].abj(i);
         AppMethodBeat.o(133468);
         return locala;
       }
@@ -93,67 +130,30 @@ public final class e
     return null;
   }
   
-  public final void Zb(int paramInt)
+  public final void abk(int paramInt)
   {
     AppMethodBeat.i(133474);
-    int j = this.Hcf.length;
+    int j = this.IPv.length;
     int i = 0;
     while (i < j)
     {
-      if (this.Hcf[i] != null) {
-        this.Hcf[i].Zb(paramInt);
+      if (this.IPv[i] != null) {
+        this.IPv[i].abk(paramInt);
       }
       i += 1;
     }
     AppMethodBeat.o(133474);
   }
   
-  public final void a(f.a parama)
-  {
-    AppMethodBeat.i(133465);
-    int j = this.Hcf.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (this.Hcf[i] != null) {
-        this.Hcf[i].a(parama);
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(133465);
-  }
-  
-  public final boolean a(Object paramObject, a parama)
-  {
-    AppMethodBeat.i(133469);
-    int j = this.Hcf.length;
-    int i = 0;
-    boolean bool2;
-    for (boolean bool1 = false; i < j; bool1 = bool2)
-    {
-      bool2 = bool1;
-      if (this.Hcf[i] != null)
-      {
-        bool2 = bool1;
-        if (this.Hcf[i].a(paramObject, parama)) {
-          bool2 = true;
-        }
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(133469);
-    return bool1;
-  }
-  
   public final void close()
   {
     AppMethodBeat.i(133459);
-    int j = this.Hcf.length;
+    int j = this.IPv.length;
     int i = 0;
     while (i < j)
     {
-      if (this.Hcf[i] != null) {
-        this.Hcf[i].close();
+      if (this.IPv[i] != null) {
+        this.IPv[i].close();
       }
       i += 1;
     }
@@ -163,19 +163,19 @@ public final class e
   
   public final void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
   
-  public final boolean dU(Object paramObject)
+  public final boolean dX(Object paramObject)
   {
     AppMethodBeat.i(133472);
-    int j = this.Hcf.length;
+    int j = this.IPv.length;
     int i = 0;
     boolean bool2;
     for (boolean bool1 = false; i < j; bool1 = bool2)
     {
       bool2 = bool1;
-      if (this.Hcf[i] != null)
+      if (this.IPv[i] != null)
       {
         bool2 = bool1;
-        if (this.Hcf[i].dU(paramObject)) {
+        if (this.IPv[i].dX(paramObject)) {
           bool2 = true;
         }
       }
@@ -185,10 +185,10 @@ public final class e
     return bool1;
   }
   
-  public final a dV(Object paramObject)
+  public final a dY(Object paramObject)
   {
     AppMethodBeat.i(133473);
-    paramObject = this.Hce.dV(paramObject);
+    paramObject = this.IPu.dY(paramObject);
     AppMethodBeat.o(133473);
     return paramObject;
   }
@@ -196,12 +196,12 @@ public final class e
   public final void deactivate()
   {
     AppMethodBeat.i(133458);
-    int j = this.Hcf.length;
+    int j = this.IPv.length;
     int i = 0;
     while (i < j)
     {
-      if (this.Hcf[i] != null) {
-        this.Hcf[i].deactivate();
+      if (this.IPv[i] != null) {
+        this.IPv[i].deactivate();
       }
       i += 1;
     }
@@ -209,43 +209,15 @@ public final class e
     AppMethodBeat.o(133458);
   }
   
-  public final HashMap fdA()
-  {
-    return null;
-  }
-  
-  public final boolean fdB()
-  {
-    AppMethodBeat.i(133467);
-    int j = this.Hcf.length;
-    boolean bool1 = true;
-    int i = 0;
-    while (i < j)
-    {
-      boolean bool2 = bool1;
-      if (this.Hcf[i] != null)
-      {
-        bool2 = bool1;
-        if (!this.Hcf[i].fdB()) {
-          bool2 = false;
-        }
-      }
-      i += 1;
-      bool1 = bool2;
-    }
-    AppMethodBeat.o(133467);
-    return bool1;
-  }
-  
-  public final SparseArray<Object>[] fdz()
+  public final SparseArray<Object>[] ftH()
   {
     AppMethodBeat.i(133470);
-    int j = this.Hcf.length;
+    int j = this.IPv.length;
     SparseArray[] arrayOfSparseArray = new SparseArray[j];
     int i = 0;
     if (i < j)
     {
-      Object localObject = this.Hcf[i].fdz();
+      Object localObject = this.IPv[i].ftH();
       if (localObject != null) {}
       for (localObject = localObject[0];; localObject = null)
       {
@@ -258,10 +230,38 @@ public final class e
     return arrayOfSparseArray;
   }
   
+  public final HashMap ftI()
+  {
+    return null;
+  }
+  
+  public final boolean ftJ()
+  {
+    AppMethodBeat.i(133467);
+    int j = this.IPv.length;
+    boolean bool1 = true;
+    int i = 0;
+    while (i < j)
+    {
+      boolean bool2 = bool1;
+      if (this.IPv[i] != null)
+      {
+        bool2 = bool1;
+        if (!this.IPv[i].ftJ()) {
+          bool2 = false;
+        }
+      }
+      i += 1;
+      bool1 = bool2;
+    }
+    AppMethodBeat.o(133467);
+    return bool1;
+  }
+  
   public final byte[] getBlob(int paramInt)
   {
     AppMethodBeat.i(133456);
-    byte[] arrayOfByte = this.Hce.getBlob(paramInt);
+    byte[] arrayOfByte = this.IPu.getBlob(paramInt);
     AppMethodBeat.o(133456);
     return arrayOfByte;
   }
@@ -269,9 +269,9 @@ public final class e
   public final String[] getColumnNames()
   {
     AppMethodBeat.i(133457);
-    if (this.Hce != null)
+    if (this.IPu != null)
     {
-      String[] arrayOfString = this.Hce.getColumnNames();
+      String[] arrayOfString = this.IPu.getColumnNames();
       AppMethodBeat.o(133457);
       return arrayOfString;
     }
@@ -282,14 +282,14 @@ public final class e
   public final int getCount()
   {
     AppMethodBeat.i(133447);
-    int m = this.Hcf.length;
+    int m = this.IPv.length;
     int i = 0;
     int k;
     for (int j = 0; i < m; j = k)
     {
       k = j;
-      if (this.Hcf[i] != null) {
-        k = j + this.Hcf[i].getCount();
+      if (this.IPv[i] != null) {
+        k = j + this.IPv[i].getCount();
       }
       i += 1;
     }
@@ -300,7 +300,7 @@ public final class e
   public final double getDouble(int paramInt)
   {
     AppMethodBeat.i(133454);
-    double d = this.Hce.getDouble(paramInt);
+    double d = this.IPu.getDouble(paramInt);
     AppMethodBeat.o(133454);
     return d;
   }
@@ -308,7 +308,7 @@ public final class e
   public final float getFloat(int paramInt)
   {
     AppMethodBeat.i(133453);
-    float f = this.Hce.getFloat(paramInt);
+    float f = this.IPu.getFloat(paramInt);
     AppMethodBeat.o(133453);
     return f;
   }
@@ -316,7 +316,7 @@ public final class e
   public final int getInt(int paramInt)
   {
     AppMethodBeat.i(133451);
-    paramInt = this.Hce.getInt(paramInt);
+    paramInt = this.IPu.getInt(paramInt);
     AppMethodBeat.o(133451);
     return paramInt;
   }
@@ -324,7 +324,7 @@ public final class e
   public final long getLong(int paramInt)
   {
     AppMethodBeat.i(133452);
-    long l = this.Hce.getLong(paramInt);
+    long l = this.IPu.getLong(paramInt);
     AppMethodBeat.o(133452);
     return l;
   }
@@ -332,7 +332,7 @@ public final class e
   public final short getShort(int paramInt)
   {
     AppMethodBeat.i(133450);
-    short s = this.Hce.getShort(paramInt);
+    short s = this.IPu.getShort(paramInt);
     AppMethodBeat.o(133450);
     return s;
   }
@@ -340,7 +340,7 @@ public final class e
   public final String getString(int paramInt)
   {
     AppMethodBeat.i(133449);
-    String str = this.Hce.getString(paramInt);
+    String str = this.IPu.getString(paramInt);
     AppMethodBeat.o(133449);
     return str;
   }
@@ -348,7 +348,7 @@ public final class e
   public final boolean isNull(int paramInt)
   {
     AppMethodBeat.i(133455);
-    boolean bool = this.Hce.isNull(paramInt);
+    boolean bool = this.IPu.isNull(paramInt);
     AppMethodBeat.o(133455);
     return bool;
   }
@@ -356,8 +356,8 @@ public final class e
   public final boolean onMove(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(133448);
-    this.Hce = null;
-    int k = this.Hcf.length;
+    this.IPu = null;
+    int k = this.IPv.length;
     paramInt1 = 0;
     int j;
     for (int i = 0;; i = j)
@@ -365,23 +365,23 @@ public final class e
       if (paramInt1 < k)
       {
         j = i;
-        if (this.Hcf[paramInt1] == null) {
+        if (this.IPv[paramInt1] == null) {
           break label110;
         }
-        if (paramInt2 < this.Hcf[paramInt1].getCount() + i) {
-          this.Hce = this.Hcf[paramInt1];
+        if (paramInt2 < this.IPv[paramInt1].getCount() + i) {
+          this.IPu = this.IPv[paramInt1];
         }
       }
       else
       {
-        if (this.Hce == null) {
+        if (this.IPu == null) {
           break;
         }
-        boolean bool = this.Hce.moveToPosition(paramInt2 - i);
+        boolean bool = this.IPu.moveToPosition(paramInt2 - i);
         AppMethodBeat.o(133448);
         return bool;
       }
-      j = i + this.Hcf[paramInt1].getCount();
+      j = i + this.IPv[paramInt1].getCount();
       label110:
       paramInt1 += 1;
     }
@@ -392,12 +392,12 @@ public final class e
   public final void registerContentObserver(ContentObserver paramContentObserver)
   {
     AppMethodBeat.i(133460);
-    int j = this.Hcf.length;
+    int j = this.IPv.length;
     int i = 0;
     while (i < j)
     {
-      if (this.Hcf[i] != null) {
-        this.Hcf[i].registerContentObserver(paramContentObserver);
+      if (this.IPv[i] != null) {
+        this.IPv[i].registerContentObserver(paramContentObserver);
       }
       i += 1;
     }
@@ -407,12 +407,12 @@ public final class e
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(133462);
-    int j = this.Hcf.length;
+    int j = this.IPv.length;
     int i = 0;
     while (i < j)
     {
-      if (this.Hcf[i] != null) {
-        this.Hcf[i].registerDataSetObserver(paramDataSetObserver);
+      if (this.IPv[i] != null) {
+        this.IPv[i].registerDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
@@ -422,11 +422,11 @@ public final class e
   public final boolean requery()
   {
     AppMethodBeat.i(133464);
-    int j = this.Hcf.length;
+    int j = this.IPv.length;
     int i = 0;
     while (i < j)
     {
-      if ((this.Hcf[i] != null) && (!this.Hcf[i].requery()))
+      if ((this.IPv[i] != null) && (!this.IPv[i].requery()))
       {
         AppMethodBeat.o(133464);
         return false;
@@ -440,12 +440,12 @@ public final class e
   public final void unregisterContentObserver(ContentObserver paramContentObserver)
   {
     AppMethodBeat.i(133461);
-    int j = this.Hcf.length;
+    int j = this.IPv.length;
     int i = 0;
     while (i < j)
     {
-      if (this.Hcf[i] != null) {
-        this.Hcf[i].unregisterContentObserver(paramContentObserver);
+      if (this.IPv[i] != null) {
+        this.IPv[i].unregisterContentObserver(paramContentObserver);
       }
       i += 1;
     }
@@ -455,27 +455,27 @@ public final class e
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(133463);
-    int j = this.Hcf.length;
+    int j = this.IPv.length;
     int i = 0;
     while (i < j)
     {
-      if (this.Hcf[i] != null) {
-        this.Hcf[i].unregisterDataSetObserver(paramDataSetObserver);
+      if (this.IPv[i] != null) {
+        this.IPv[i].unregisterDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
     AppMethodBeat.o(133463);
   }
   
-  public final void wg(boolean paramBoolean)
+  public final void wS(boolean paramBoolean)
   {
     AppMethodBeat.i(133466);
-    int j = this.Hcf.length;
+    int j = this.IPv.length;
     int i = 0;
     while (i < j)
     {
-      if (this.Hcf[i] != null) {
-        this.Hcf[i].wg(paramBoolean);
+      if (this.IPv[i] != null) {
+        this.IPv[i].wS(paramBoolean);
       }
       i += 1;
     }

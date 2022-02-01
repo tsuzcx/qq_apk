@@ -4,38 +4,38 @@ import android.arch.lifecycle.Lifecycle.Event;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import d.l;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReporter;", "Landroid/arch/lifecycle/LifecycleObserver;", "()V", "enterUiTimestamp", "", "historyExposureItemIndexRecorder", "", "", "mSessionId", "onCreate", "", "onDestroy", "onResume", "onStop", "recordHistoryExposure", "indexStart", "indexEnd", "reportClickCollectionHeader", "reportClickEveryoneUsingHeader", "reportClickHistoryWxaItem", "appId", "", "listIndex", "reportClickLiveHeader", "showcaseType", "reportClickNearbyHeader", "reportClickOrderHeader", "reportEnterAppBrandDesktop", "reportHistoryWxaExposure", "count", "reportLeaveAppBrandDesktop", "stayDuration", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReporter;", "Landroid/arch/lifecycle/LifecycleObserver;", "()V", "enterUiTimestamp", "", "historyExposureItemIndexRecorder", "", "", "mSessionId", "onCreate", "", "onDestroy", "onResume", "onStop", "recordHistoryExposure", "indexStart", "indexEnd", "reportClickCollectionHeader", "reportClickEveryoneUsingHeader", "reportClickHistoryWxaItem", "appId", "", "listIndex", "reportClickLiveHeader", "showcaseType", "reportClickNearbyHeader", "reportClickOrderHeader", "reportEnterAppBrandDesktop", "reportHistoryWxaExposure", "count", "reportLeaveAppBrandDesktop", "stayDuration", "Companion", "plugin-appbrand-integration_release"})
 public final class AppBrandLauncherDesktopReporter
   implements LifecycleObserver
 {
-  public static final a lRm;
-  private long lRk;
-  public Set<Integer> lRl;
+  public static final a mrc;
   public long mSessionId;
+  private long mra;
+  public Set<Integer> mrb;
   
   static
   {
     AppMethodBeat.i(180650);
-    lRm = new a((byte)0);
+    mrc = new a((byte)0);
     AppMethodBeat.o(180650);
   }
   
   public AppBrandLauncherDesktopReporter()
   {
     AppMethodBeat.i(180649);
-    this.lRl = ((Set)new LinkedHashSet());
+    this.mrb = ((Set)new LinkedHashSet());
     AppMethodBeat.o(180649);
   }
   
-  public final void btc()
+  public final void bxh()
   {
     AppMethodBeat.i(180645);
-    h.wUl.f(19468, new Object[] { Integer.valueOf(2), "", "", "", "", "", Long.valueOf(this.mSessionId) });
+    g.yhR.f(19468, new Object[] { Integer.valueOf(2), "", "", "", "", "", Long.valueOf(this.mSessionId) });
     AppMethodBeat.o(180645);
   }
   
@@ -44,7 +44,7 @@ public final class AppBrandLauncherDesktopReporter
   {
     AppMethodBeat.i(180646);
     this.mSessionId = System.currentTimeMillis();
-    h.wUl.f(19468, new Object[] { Integer.valueOf(1), "", "", "", "", "", Long.valueOf(this.mSessionId) });
+    g.yhR.f(19468, new Object[] { Integer.valueOf(1), "", "", "", "", "", Long.valueOf(this.mSessionId) });
     AppMethodBeat.o(180646);
   }
   
@@ -55,7 +55,7 @@ public final class AppBrandLauncherDesktopReporter
   public final void onResume()
   {
     AppMethodBeat.i(180648);
-    this.lRk = System.currentTimeMillis();
+    this.mra = System.currentTimeMillis();
     AppMethodBeat.o(180648);
   }
   
@@ -64,15 +64,15 @@ public final class AppBrandLauncherDesktopReporter
   {
     AppMethodBeat.i(180647);
     long l1 = System.currentTimeMillis();
-    long l2 = this.lRk;
-    h.wUl.f(19468, new Object[] { Integer.valueOf(8), "", Long.valueOf(l1 - l2), "", "", Long.valueOf(this.mSessionId) });
-    int i = this.lRl.size();
-    h.wUl.f(19468, new Object[] { Integer.valueOf(7), "", "", "", "", Integer.valueOf(i), Long.valueOf(this.mSessionId) });
-    this.lRl.clear();
+    long l2 = this.mra;
+    g.yhR.f(19468, new Object[] { Integer.valueOf(8), "", Long.valueOf(l1 - l2), "", "", Long.valueOf(this.mSessionId) });
+    int i = this.mrb.size();
+    g.yhR.f(19468, new Object[] { Integer.valueOf(7), "", "", "", "", Integer.valueOf(i), Long.valueOf(this.mSessionId) });
+    this.mrb.clear();
     AppMethodBeat.o(180647);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReporter$Companion;", "", "()V", "ACTION_CLICK_COLLECTION_HEADER", "", "ACTION_CLICK_EVERYONE_USING_HEADER", "ACTION_CLICK_HISTORY_WXA_ITEM", "ACTION_CLICK_LIVE_HEADER", "ACTION_CLICK_NEARBY_HEADER", "ACTION_CLICK_ORDER_HEADER", "ACTION_ENTER_DESKTOP", "ACTION_REPORT_HISTORY_WXA_EXPOSURE", "ACTION_REPORT_LEAVE_APPBRAND_DESKTOP", "REPORT_ID", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReporter$Companion;", "", "()V", "ACTION_CLICK_COLLECTION_HEADER", "", "ACTION_CLICK_EVERYONE_USING_HEADER", "ACTION_CLICK_HISTORY_WXA_ITEM", "ACTION_CLICK_LIVE_HEADER", "ACTION_CLICK_NEARBY_HEADER", "ACTION_CLICK_ORDER_HEADER", "ACTION_ENTER_DESKTOP", "ACTION_REPORT_HISTORY_WXA_EXPOSURE", "ACTION_REPORT_LEAVE_APPBRAND_DESKTOP", "REPORT_ID", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

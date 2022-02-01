@@ -4,7 +4,7 @@ import io.flutter.plugin.a.j;
 
 public abstract class a
 {
-  public static a ew(Object paramObject)
+  public static a ez(Object paramObject)
   {
     return new a(true, paramObject);
   }
@@ -13,13 +13,13 @@ public abstract class a
   
   public static final class a
   {
-    Object KuA;
+    Object MkB;
     boolean result;
     
     public a(boolean paramBoolean, Object paramObject)
     {
       this.result = paramBoolean;
-      this.KuA = paramObject;
+      this.MkB = paramObject;
     }
   }
 }

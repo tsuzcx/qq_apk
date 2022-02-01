@@ -2,7 +2,7 @@ package com.tencent.mm.live.core.core.trtc.a;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.trtc.TRTCCloudDef.TRTCQuality;
 import com.tencent.trtc.TRTCCloudDef.TRTCVolumeInfo;
 import com.tencent.trtc.TRTCCloudListener;
@@ -14,175 +14,175 @@ public class b
   extends TRTCCloudListener
 {
   private static final String TAG;
-  private WeakReference<d> gph;
+  private WeakReference<d> gIP;
   
   static
   {
-    AppMethodBeat.i(209022);
+    AppMethodBeat.i(216676);
     TAG = b.class.getName();
-    AppMethodBeat.o(209022);
+    AppMethodBeat.o(216676);
   }
   
   public b(d paramd)
   {
-    AppMethodBeat.i(209005);
-    this.gph = new WeakReference(paramd);
-    AppMethodBeat.o(209005);
+    AppMethodBeat.i(216659);
+    this.gIP = new WeakReference(paramd);
+    AppMethodBeat.o(216659);
   }
   
   public void onAudioEffectFinished(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(209019);
-    this.gph.get();
-    AppMethodBeat.o(209019);
+    AppMethodBeat.i(216673);
+    this.gIP.get();
+    AppMethodBeat.o(216673);
   }
   
   public void onConnectOtherRoom(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(209016);
-    d locald = (d)this.gph.get();
+    AppMethodBeat.i(216670);
+    d locald = (d)this.gIP.get();
     if (locald != null) {
       locald.onConnectOtherRoom(paramString1, paramInt, paramString2);
     }
-    AppMethodBeat.o(209016);
+    AppMethodBeat.o(216670);
   }
   
   public void onDisConnectOtherRoom(int paramInt, String paramString)
   {
-    AppMethodBeat.i(209017);
-    d locald = (d)this.gph.get();
+    AppMethodBeat.i(216671);
+    d locald = (d)this.gIP.get();
     if (locald != null) {
       locald.onDisConnectOtherRoom(paramInt, paramString);
     }
-    AppMethodBeat.o(209017);
+    AppMethodBeat.o(216671);
   }
   
   public void onEnterRoom(long paramLong)
   {
-    AppMethodBeat.i(209006);
-    ac.i(TAG, "onEnterRoom: elapsed = ".concat(String.valueOf(paramLong)));
-    d locald = (d)this.gph.get();
+    AppMethodBeat.i(216660);
+    ad.i(TAG, "onEnterRoom: elapsed = ".concat(String.valueOf(paramLong)));
+    d locald = (d)this.gIP.get();
     if (locald != null) {
       locald.onEnterRoom(paramLong);
     }
-    AppMethodBeat.o(209006);
+    AppMethodBeat.o(216660);
   }
   
   public void onError(int paramInt, String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(209008);
-    ac.i(TAG, "onError: errCode = " + paramInt + " errMsg = " + paramString);
-    d locald = (d)this.gph.get();
+    AppMethodBeat.i(216662);
+    ad.i(TAG, "onError: errCode = " + paramInt + " errMsg = " + paramString);
+    d locald = (d)this.gIP.get();
     if (locald != null) {
       locald.onError(paramInt, paramString, paramBundle);
     }
-    AppMethodBeat.o(209008);
+    AppMethodBeat.o(216662);
   }
   
   public void onExitRoom(int paramInt)
   {
-    AppMethodBeat.i(209007);
-    ac.i(TAG, "onExitRoom: reason = ".concat(String.valueOf(paramInt)));
-    d locald = (d)this.gph.get();
+    AppMethodBeat.i(216661);
+    ad.i(TAG, "onExitRoom: reason = ".concat(String.valueOf(paramInt)));
+    d locald = (d)this.gIP.get();
     if (locald != null) {
       locald.onExitRoom(paramInt);
     }
-    AppMethodBeat.o(209007);
+    AppMethodBeat.o(216661);
   }
   
   public void onFirstVideoFrame(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(209014);
-    ac.i(TAG, "onFirstVideoFrame: userId = " + paramString + " streamType = " + paramInt1 + " width = " + paramInt2 + " height = " + paramInt3);
-    d locald = (d)this.gph.get();
+    AppMethodBeat.i(216668);
+    ad.i(TAG, "onFirstVideoFrame: userId = " + paramString + " streamType = " + paramInt1 + " width = " + paramInt2 + " height = " + paramInt3);
+    d locald = (d)this.gIP.get();
     if (locald != null) {
       locald.onFirstVideoFrame(paramString, paramInt1, paramInt2, paramInt3);
     }
-    AppMethodBeat.o(209014);
+    AppMethodBeat.o(216668);
   }
   
   public void onNetworkQuality(TRTCCloudDef.TRTCQuality paramTRTCQuality, ArrayList<TRTCCloudDef.TRTCQuality> paramArrayList)
   {
-    AppMethodBeat.i(209018);
-    paramArrayList = (d)this.gph.get();
+    AppMethodBeat.i(216672);
+    paramArrayList = (d)this.gIP.get();
     if (paramArrayList != null) {
       paramArrayList.a(paramTRTCQuality);
     }
-    AppMethodBeat.o(209018);
+    AppMethodBeat.o(216672);
   }
   
   public void onRecvCustomCmdMsg(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(209020);
-    this.gph.get();
-    AppMethodBeat.o(209020);
+    AppMethodBeat.i(216674);
+    this.gIP.get();
+    AppMethodBeat.o(216674);
   }
   
   public void onRecvSEIMsg(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(209021);
-    this.gph.get();
-    AppMethodBeat.o(209021);
+    AppMethodBeat.i(216675);
+    this.gIP.get();
+    AppMethodBeat.o(216675);
   }
   
   public void onRemoteUserEnterRoom(String paramString)
   {
-    AppMethodBeat.i(209009);
-    ac.i(TAG, "onRemoteUserEnterRoom: userId = ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(209009);
+    AppMethodBeat.i(216663);
+    ad.i(TAG, "onRemoteUserEnterRoom: userId = ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(216663);
   }
   
   public void onRemoteUserLeaveRoom(String paramString, int paramInt)
   {
-    AppMethodBeat.i(209010);
-    ac.i(TAG, "onRemoteUserLeaveRoom: userId = " + paramString + " reason = " + paramInt);
-    d locald = (d)this.gph.get();
+    AppMethodBeat.i(216664);
+    ad.i(TAG, "onRemoteUserLeaveRoom: userId = " + paramString + " reason = " + paramInt);
+    d locald = (d)this.gIP.get();
     if (locald != null) {
       locald.onRemoteUserLeaveRoom(paramString, paramInt);
     }
-    AppMethodBeat.o(209010);
+    AppMethodBeat.o(216664);
   }
   
   public void onStatistics(TRTCStatistics paramTRTCStatistics) {}
   
   public void onUserAudioAvailable(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(209013);
-    ac.i(TAG, "onUserAudioAvailable: userId = " + paramString + " available = " + paramBoolean);
-    d locald = (d)this.gph.get();
+    AppMethodBeat.i(216667);
+    ad.i(TAG, "onUserAudioAvailable: userId = " + paramString + " available = " + paramBoolean);
+    d locald = (d)this.gIP.get();
     if (locald != null) {
       locald.onUserAudioAvailable(paramString, paramBoolean);
     }
-    AppMethodBeat.o(209013);
+    AppMethodBeat.o(216667);
   }
   
   public void onUserSubStreamAvailable(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(209012);
-    ac.i(TAG, "onUserSubStreamAvailable: userId = " + paramString + " available = " + paramBoolean);
-    d locald = (d)this.gph.get();
+    AppMethodBeat.i(216666);
+    ad.i(TAG, "onUserSubStreamAvailable: userId = " + paramString + " available = " + paramBoolean);
+    d locald = (d)this.gIP.get();
     if (locald != null) {
       locald.onUserSubStreamAvailable(paramString, paramBoolean);
     }
-    AppMethodBeat.o(209012);
+    AppMethodBeat.o(216666);
   }
   
   public void onUserVideoAvailable(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(209011);
-    ac.i(TAG, "onUserVideoAvailable: userId = " + paramString + " available = " + paramBoolean);
-    d locald = (d)this.gph.get();
+    AppMethodBeat.i(216665);
+    ad.i(TAG, "onUserVideoAvailable: userId = " + paramString + " available = " + paramBoolean);
+    d locald = (d)this.gIP.get();
     if (locald != null) {
       locald.onUserVideoAvailable(paramString, paramBoolean);
     }
-    AppMethodBeat.o(209011);
+    AppMethodBeat.o(216665);
   }
   
   public void onUserVoiceVolume(ArrayList<TRTCCloudDef.TRTCVolumeInfo> paramArrayList, int paramInt)
   {
-    AppMethodBeat.i(209015);
-    this.gph.get();
-    AppMethodBeat.o(209015);
+    AppMethodBeat.i(216669);
+    this.gIP.get();
+    AppMethodBeat.o(216669);
   }
 }
 

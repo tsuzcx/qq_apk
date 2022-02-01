@@ -13,7 +13,7 @@ public class b<K, V>
   public WeakHashMap<f<K, V>, Boolean> bS = new WeakHashMap();
   public int mSize = 0;
   
-  public final b<K, V>.d R()
+  public final b<K, V>.d S()
   {
     d locald = new d((byte)0);
     this.bS.put(locald, Boolean.FALSE);
@@ -36,7 +36,7 @@ public class b<K, V>
     return paramK;
   }
   
-  protected c<K, V> c(K paramK)
+  protected c<K, V> d(K paramK)
   {
     for (c localc = this.bQ; (localc != null) && (!localc.bT.equals(paramK)); localc = localc.bU) {}
     return localc;
@@ -76,7 +76,7 @@ public class b<K, V>
   
   public V putIfAbsent(K paramK, V paramV)
   {
-    c localc = c(paramK);
+    c localc = d(paramK);
     if (localc != null) {
       return localc.mValue;
     }
@@ -86,7 +86,7 @@ public class b<K, V>
   
   public V remove(K paramK)
   {
-    paramK = c(paramK);
+    paramK = d(paramK);
     if (paramK == null) {
       return null;
     }
@@ -272,7 +272,7 @@ public class b<K, V>
       this.bU = paramc1;
     }
     
-    private b.c<K, V> S()
+    private b.c<K, V> T()
     {
       if ((this.bU == this.bZ) || (this.bZ == null)) {
         return null;
@@ -295,7 +295,7 @@ public class b<K, V>
         this.bZ = b(this.bZ);
       }
       if (this.bU == paramc) {
-        this.bU = S();
+        this.bU = T();
       }
     }
     

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.b.a;
 import android.webkit.URLUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -12,10 +12,10 @@ public final class g
 {
   public final String generate(String paramString)
   {
-    AppMethodBeat.i(194180);
+    AppMethodBeat.i(205992);
     if (!URLUtil.isNetworkUrl(paramString))
     {
-      AppMethodBeat.o(194180);
+      AppMethodBeat.o(205992);
       return paramString;
     }
     String str = paramString;
@@ -31,8 +31,8 @@ public final class g
       paramString = new URL(str);
       if (paramString != null)
       {
-        paramString = ah.dg(str).substring(0, 20);
-        AppMethodBeat.o(194180);
+        paramString = ai.ee(str).substring(0, 20);
+        AppMethodBeat.o(205992);
         return paramString;
       }
     }
@@ -43,14 +43,14 @@ public final class g
         h.log(6, "DefaultCacheKeyGenerator", h.h(paramString));
         paramString = null;
       }
-      AppMethodBeat.o(194180);
+      AppMethodBeat.o(205992);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.a.g
  * JD-Core Version:    0.7.0.1
  */

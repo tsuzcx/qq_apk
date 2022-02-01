@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   extends m<Boolean, d>
 {
-  private n oTv;
+  private n pxf;
   
   public c()
   {
     AppMethodBeat.i(181930);
-    this.oTv = new n();
+    this.pxf = new n();
     AppMethodBeat.o(181930);
   }
   
-  public final int caI()
+  public final int cfm()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.c
  * JD-Core Version:    0.7.0.1
  */

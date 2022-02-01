@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.scanner;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class i$4
   implements Runnable
@@ -13,18 +13,18 @@ final class i$4
   public final void run()
   {
     AppMethodBeat.i(169954);
-    if (!g.agM())
+    if (!g.ajx())
     {
       AppMethodBeat.o(169954);
       return;
     }
-    if (bs.isNullOrNil(i.d(this.wVU)))
+    if (bt.isNullOrNil(i.d(this.yjB)))
     {
-      ac.e("MicroMsg.scanner.SubCoreScanner", "accPath == null in onAccountPostReset");
+      ad.e("MicroMsg.scanner.SubCoreScanner", "accPath == null in onAccountPostReset");
       AppMethodBeat.o(169954);
       return;
     }
-    bs.z(i.d(this.wVU) + "image/scan/img", "scanbook", 604800000L);
+    bt.n(i.d(this.yjB) + "image/scan/img", "scanbook", 604800000L);
     AppMethodBeat.o(169954);
   }
   

@@ -7,18 +7,19 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.base.CustomViewPager;
 
 public class MusicViewPager
   extends CustomViewPager
 {
-  private GestureDetector irA;
+  private GestureDetector iKD;
   
   public MusicViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(63269);
-    this.irA = new GestureDetector(getContext(), new b((byte)0));
+    this.iKD = new GestureDetector(getContext(), new b((byte)0));
     setScroller(new a(getContext()));
     AppMethodBeat.o(63269);
   }
@@ -26,10 +27,16 @@ public class MusicViewPager
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(63270);
-    if ((super.onInterceptTouchEvent(paramMotionEvent)) && (this.irA.onTouchEvent(paramMotionEvent)))
+    if (super.onInterceptTouchEvent(paramMotionEvent))
     {
-      AppMethodBeat.o(63270);
-      return true;
+      GestureDetector localGestureDetector = this.iKD;
+      paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, paramMotionEvent.ahp(), "com/tencent/mm/plugin/music/ui/MusicViewPager", "onInterceptTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      if (com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)paramMotionEvent.mq(0)), "com/tencent/mm/plugin/music/ui/MusicViewPager", "onInterceptTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z"))
+      {
+        AppMethodBeat.o(63270);
+        return true;
+      }
     }
     AppMethodBeat.o(63270);
     return false;
@@ -65,6 +72,41 @@ public class MusicViewPager
   {
     private b() {}
     
+    public final boolean onContextClick(MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(192497);
+      b localb = new b();
+      localb.bd(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/MusicViewPager$YScrollDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+      boolean bool = super.onContextClick(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/music/ui/MusicViewPager$YScrollDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
+      AppMethodBeat.o(192497);
+      return bool;
+    }
+    
+    public final boolean onDoubleTap(MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(192496);
+      b localb = new b();
+      localb.bd(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/MusicViewPager$YScrollDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+      boolean bool = super.onDoubleTap(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/music/ui/MusicViewPager$YScrollDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
+      AppMethodBeat.o(192496);
+      return bool;
+    }
+    
+    public final void onLongPress(MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(192495);
+      b localb = new b();
+      localb.bd(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/MusicViewPager$YScrollDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+      super.onLongPress(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/music/ui/MusicViewPager$YScrollDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
+      AppMethodBeat.o(192495);
+    }
+    
     public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
     {
       AppMethodBeat.i(63268);
@@ -76,11 +118,23 @@ public class MusicViewPager
       AppMethodBeat.o(63268);
       return false;
     }
+    
+    public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(192494);
+      b localb = new b();
+      localb.bd(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/MusicViewPager$YScrollDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+      boolean bool = super.onSingleTapUp(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/music/ui/MusicViewPager$YScrollDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
+      AppMethodBeat.o(192494);
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.MusicViewPager
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package d.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.a.g;
 import d.l.b.a.b.b.as;
 import d.l.b.a.b.b.i;
@@ -19,36 +19,36 @@ public final class ap
   public static final ab c(as paramas)
   {
     AppMethodBeat.i(60816);
-    k.h(paramas, "$this$starProjectionType");
-    Object localObject1 = paramas.fPU();
+    p.h(paramas, "$this$starProjectionType");
+    Object localObject1 = paramas.ghs();
     if (localObject1 == null)
     {
       paramas = new v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassifierDescriptorWithTypeParameters");
       AppMethodBeat.o(60816);
       throw paramas;
     }
-    localObject1 = ((i)localObject1).fPW();
-    k.g(localObject1, "classDescriptor.typeConstructor");
+    localObject1 = ((i)localObject1).ghu();
+    p.g(localObject1, "classDescriptor.typeConstructor");
     localObject1 = ((at)localObject1).getParameters();
-    k.g(localObject1, "classDescriptor.typeConstructor.parameters");
+    p.g(localObject1, "classDescriptor.typeConstructor.parameters");
     Object localObject2 = (Iterable)localObject1;
     localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       as localas = (as)((Iterator)localObject2).next();
-      k.g(localas, "it");
-      ((Collection)localObject1).add(localas.fPW());
+      p.g(localas, "it");
+      ((Collection)localObject1).add(localas.ghu());
     }
     localObject1 = ba.d((ay)new a((List)localObject1));
-    localObject2 = paramas.fOJ();
-    k.g(localObject2, "this.upperBounds");
-    localObject2 = ((ba)localObject1).c((ab)j.iO((List)localObject2), bh.LLX);
+    localObject2 = paramas.ggj();
+    p.g(localObject2, "this.upperBounds");
+    localObject2 = ((ba)localObject1).c((ab)j.jc((List)localObject2), bh.NCR);
     localObject1 = localObject2;
     if (localObject2 == null)
     {
-      paramas = a.G((l)paramas).fPH();
-      k.g(paramas, "builtIns.defaultBound");
+      paramas = a.G((l)paramas).ghf();
+      p.g(paramas, "builtIns.defaultBound");
       localObject1 = (ab)paramas;
     }
     AppMethodBeat.o(60816);
@@ -63,10 +63,10 @@ public final class ap
     public final av d(at paramat)
     {
       AppMethodBeat.i(60815);
-      k.h(paramat, "key");
-      if (this.LLC.contains(paramat))
+      p.h(paramat, "key");
+      if (this.NCx.contains(paramat))
       {
-        paramat = paramat.fQq();
+        paramat = paramat.ghO();
         if (paramat == null)
         {
           paramat = new v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.TypeParameterDescriptor");
@@ -84,7 +84,7 @@ public final class ap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.ap
  * JD-Core Version:    0.7.0.1
  */

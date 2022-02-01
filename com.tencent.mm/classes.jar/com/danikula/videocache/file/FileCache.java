@@ -18,8 +18,8 @@ public class FileCache
   public FileCache(File paramFile)
   {
     this(paramFile, new UnlimitedDiskUsage());
-    AppMethodBeat.i(192545);
-    AppMethodBeat.o(192545);
+    AppMethodBeat.i(215892);
+    AppMethodBeat.o(215892);
   }
   
   public FileCache(File paramFile, DiskUsage paramDiskUsage)
@@ -65,9 +65,9 @@ public class FileCache
   
   private boolean isTempFile(File paramFile)
   {
-    AppMethodBeat.i(192547);
+    AppMethodBeat.i(215894);
     boolean bool = paramFile.getName().endsWith(".download");
-    AppMethodBeat.o(192547);
+    AppMethodBeat.o(215894);
     return bool;
   }
   

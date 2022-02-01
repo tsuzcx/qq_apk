@@ -1,48 +1,69 @@
 package com.tencent.mm.plugin.sns.ui.widget;
 
+import android.content.Context;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.a.b.a;
 import com.tencent.mm.pluginsdk.ui.applet.u;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class g
 {
+  private static String TAG = "MicroMsg.SnsPostDescUtil";
+  
+  public static l a(Context paramContext, String paramString, float paramFloat, boolean paramBoolean)
+  {
+    AppMethodBeat.i(100558);
+    paramContext = new l(k.a(paramContext, paramString, (int)paramFloat, 2, paramBoolean));
+    AppMethodBeat.o(100558);
+    return paramContext;
+  }
+  
   public static CharSequence d(Spannable paramSpannable)
   {
-    AppMethodBeat.i(200671);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramSpannable);
-    if (!bs.aj(paramSpannable))
+    AppMethodBeat.i(198614);
+    localSpannableStringBuilder = new SpannableStringBuilder(paramSpannable);
+    try
     {
-      paramSpannable = (o[])paramSpannable.getSpans(0, paramSpannable.length(), o.class);
-      if ((paramSpannable != null) && (paramSpannable.length > 0))
+      if (!bt.ai(paramSpannable))
       {
-        int j = paramSpannable.length;
-        int i = 0;
-        while (i < j)
+        o[] arrayOfo = (o[])paramSpannable.getSpans(0, paramSpannable.length(), o.class);
+        if ((arrayOfo != null) && (arrayOfo.length > 0))
         {
-          Object localObject = paramSpannable[i];
-          if (localObject.getType() == 1)
+          int j = arrayOfo.length;
+          int i = 0;
+          while (i < j)
           {
-            String str1 = localObject.getHrefInfo().url;
-            if ((str1 != null) && (str1.length() > a.yZS))
+            o localo = arrayOfo[i];
+            if (localo.getType() == 1)
             {
-              String str2 = str1.substring(0, a.yZS) + "...";
-              SpannableString localSpannableString = new SpannableString(str2);
-              localSpannableString.setSpan(new o(2, localObject.getHrefInfo()), 0, str2.length(), 33);
-              int k = localSpannableStringBuilder.toString().indexOf(str1);
-              localSpannableStringBuilder.replace(k, str1.length() + k, localSpannableString);
+              String str1 = localo.getHrefInfo().url;
+              if ((str1 != null) && (str1.length() > a.ArI))
+              {
+                String str2 = str1.substring(0, a.ArI) + "...";
+                SpannableString localSpannableString = new SpannableString(str2);
+                localSpannableString.setSpan(new o(2, localo.getHrefInfo()), 0, str2.length(), 33);
+                int k = localSpannableStringBuilder.toString().indexOf(str1);
+                localSpannableStringBuilder.replace(k, str1.length() + k, localSpannableString);
+              }
             }
+            i += 1;
           }
-          i += 1;
         }
       }
+      return localSpannableStringBuilder;
     }
-    AppMethodBeat.o(200671);
-    return localSpannableStringBuilder;
+    catch (Exception localException)
+    {
+      ad.w(TAG, "compressedPostDesc fail:%s", new Object[] { paramSpannable });
+      AppMethodBeat.o(198614);
+    }
   }
 }
 

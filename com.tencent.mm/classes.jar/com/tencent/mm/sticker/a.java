@@ -1,25 +1,25 @@
 package com.tencent.mm.sticker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ac.h;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.n.d;
 import d.v;
 import java.nio.charset.Charset;
 import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/BaseJsonObject;", "", "()V", "fromJson", "jsonObj", "Lorg/json/JSONObject;", "toJson", "Companion", "plugin-sticker_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/BaseJsonObject;", "", "()V", "fromJson", "jsonObj", "Lorg/json/JSONObject;", "toJson", "Companion", "plugin-sticker_release"})
 public abstract class a
 {
-  public static final a GzL = new a((byte)0);
+  public static final a IlF = new a((byte)0);
   private static final String TAG = "MicroMsg.BaseJsonObject";
   
-  public a by(JSONObject paramJSONObject)
+  public a bH(JSONObject paramJSONObject)
   {
-    k.h(paramJSONObject, "jsonObj");
+    p.h(paramJSONObject, "jsonObj");
     return this;
   }
   
@@ -28,19 +28,19 @@ public abstract class a
     return new JSONObject();
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/BaseJsonObject$Companion;", "", "()V", "TAG", "", "parseJson", "", "jsonFile", "obj", "Lcom/tencent/mm/sticker/BaseJsonObject;", "saveJson", "plugin-sticker_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/BaseJsonObject$Companion;", "", "()V", "TAG", "", "parseJson", "", "jsonFile", "obj", "Lcom/tencent/mm/sticker/BaseJsonObject;", "saveJson", "plugin-sticker_release"})
   public static final class a
   {
     public static void a(a parama, String paramString)
     {
       AppMethodBeat.i(105886);
-      k.h(parama, "obj");
-      k.h(paramString, "jsonFile");
+      p.h(parama, "obj");
+      p.h(paramString, "jsonFile");
       Charset localCharset;
       try
       {
         parama = parama.toJson().toString();
-        k.g(parama, "obj.toJson().toString()");
+        p.g(parama, "obj.toJson().toString()");
         localCharset = d.UTF_8;
         if (parama == null)
         {
@@ -51,32 +51,32 @@ public abstract class a
       }
       catch (Exception parama)
       {
-        ac.printErrStackTrace(a.access$getTAG$cp(), (Throwable)parama, "", new Object[0]);
+        ad.printErrStackTrace(a.access$getTAG$cp(), (Throwable)parama, "", new Object[0]);
         AppMethodBeat.o(105886);
         return;
       }
       parama = parama.getBytes(localCharset);
-      k.g(parama, "(this as java.lang.String).getBytes(charset)");
-      i.B(paramString, parama);
+      p.g(parama, "(this as java.lang.String).getBytes(charset)");
+      i.C(paramString, parama);
       AppMethodBeat.o(105886);
     }
     
     public static void a(String paramString, a parama)
     {
       AppMethodBeat.i(105885);
-      k.h(paramString, "jsonFile");
-      k.h(parama, "obj");
+      p.h(paramString, "jsonFile");
+      p.h(parama, "obj");
       try
       {
-        paramString = h.tT(i.aSr(paramString));
-        k.g(paramString, "jsonObj");
-        parama.by(paramString);
+        paramString = h.wJ(i.aYq(paramString));
+        p.g(paramString, "jsonObj");
+        parama.bH(paramString);
         AppMethodBeat.o(105885);
         return;
       }
       catch (Exception paramString)
       {
-        ac.printErrStackTrace(a.access$getTAG$cp(), (Throwable)paramString, "", new Object[0]);
+        ad.printErrStackTrace(a.access$getTAG$cp(), (Throwable)paramString, "", new Object[0]);
         AppMethodBeat.o(105885);
       }
     }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.ui.widget;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnClickListener;", "", "onTabClick", "", "tabId", "", "view", "Landroid/view/View;", "plugin-scan_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnClickListener;", "", "onTabClick", "", "tabId", "", "view", "Landroid/view/View;", "plugin-scan_release"})
 public abstract interface c {}
 
 

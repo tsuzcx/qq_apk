@@ -3,81 +3,81 @@ package com.tencent.mm.pluginsdk.ui.tools;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class d
 {
-  public static boolean aHL(String paramString)
+  public static boolean aNn(String paramString)
   {
     AppMethodBeat.i(152380);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ac.e("MicroMsg.AppNewIconUtil", "markNew fail, appId is empty");
+      ad.e("MicroMsg.AppNewIconUtil", "markNew fail, appId is empty");
       AppMethodBeat.o(152380);
       return false;
     }
-    ae localae = g.agR().agA();
-    if (localae == null)
+    ai localai = g.ajC().ajl();
+    if (localai == null)
     {
-      ac.e("MicroMsg.AppNewIconUtil", "markNew fail, cfgStg is null");
+      ad.e("MicroMsg.AppNewIconUtil", "markNew fail, cfgStg is null");
       AppMethodBeat.o(152380);
       return false;
     }
     a locala = new a((byte)0);
-    locala.arK((String)localae.get(69121, null));
-    if (!locala.xsD.contains(paramString)) {
-      locala.xsD.add(paramString);
+    locala.awL((String)localai.get(69121, null));
+    if (!locala.yHm.contains(paramString)) {
+      locala.yHm.add(paramString);
     }
-    localae.set(69121, locala.ePX());
+    localai.set(69121, locala.feZ());
     AppMethodBeat.o(152380);
     return true;
   }
   
-  public static boolean aHM(String paramString)
+  public static boolean aNo(String paramString)
   {
     AppMethodBeat.i(152381);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ac.e("MicroMsg.AppNewIconUtil", "unmarkNew fail, appId is empty");
+      ad.e("MicroMsg.AppNewIconUtil", "unmarkNew fail, appId is empty");
       AppMethodBeat.o(152381);
       return false;
     }
-    ae localae = g.agR().agA();
-    if (localae == null)
+    ai localai = g.ajC().ajl();
+    if (localai == null)
     {
-      ac.e("MicroMsg.AppNewIconUtil", "unmarkNew fail, cfgStg is null");
+      ad.e("MicroMsg.AppNewIconUtil", "unmarkNew fail, cfgStg is null");
       AppMethodBeat.o(152381);
       return false;
     }
     a locala = new a((byte)0);
-    locala.arK((String)localae.get(69121, null));
-    if (locala.xsD.contains(paramString)) {
-      locala.xsD.remove(paramString);
+    locala.awL((String)localai.get(69121, null));
+    if (locala.yHm.contains(paramString)) {
+      locala.yHm.remove(paramString);
     }
-    localae.set(69121, locala.ePX());
+    localai.set(69121, locala.feZ());
     AppMethodBeat.o(152381);
     return true;
   }
   
   static final class a
   {
-    List<String> xsD;
+    List<String> yHm;
     
     private a()
     {
       AppMethodBeat.i(152377);
-      this.xsD = new ArrayList();
+      this.yHm = new ArrayList();
       AppMethodBeat.o(152377);
     }
     
-    final void arK(String paramString)
+    final void awL(String paramString)
     {
       AppMethodBeat.i(152379);
-      this.xsD = new ArrayList();
+      this.yHm = new ArrayList();
       if ((paramString == null) || (paramString.length() == 0))
       {
         AppMethodBeat.o(152379);
@@ -89,22 +89,22 @@ public final class d
       while (i < j)
       {
         Object localObject = paramString[i];
-        this.xsD.add(localObject);
+        this.yHm.add(localObject);
         i += 1;
       }
       AppMethodBeat.o(152379);
     }
     
-    final String ePX()
+    final String feZ()
     {
       AppMethodBeat.i(152378);
-      if ((this.xsD == null) || (this.xsD.size() == 0))
+      if ((this.yHm == null) || (this.yHm.size() == 0))
       {
         AppMethodBeat.o(152378);
         return "";
       }
       Object localObject = new StringBuffer();
-      Iterator localIterator = this.xsD.iterator();
+      Iterator localIterator = this.yHm.iterator();
       while (localIterator.hasNext())
       {
         ((StringBuffer)localObject).append((String)localIterator.next());

@@ -1,16 +1,16 @@
 package d.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.j.b;
 import d.j.c;
 import d.l;
 import java.lang.reflect.Method;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/internal/PlatformImplementations;", "", "()V", "addSuppressed", "", "cause", "", "exception", "defaultPlatformRandom", "Lkotlin/random/Random;", "getMatchResultNamedGroup", "Lkotlin/text/MatchGroup;", "matchResult", "Ljava/util/regex/MatchResult;", "name", "", "ReflectAddSuppressedMethod", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/internal/PlatformImplementations;", "", "()V", "addSuppressed", "", "cause", "", "exception", "defaultPlatformRandom", "Lkotlin/random/Random;", "getMatchResultNamedGroup", "Lkotlin/text/MatchGroup;", "matchResult", "Ljava/util/regex/MatchResult;", "name", "", "ReflectAddSuppressedMethod", "kotlin-stdlib"})
 public class a
 {
-  public static c fOm()
+  public static c gfM()
   {
     AppMethodBeat.i(128996);
     c localc = (c)new b();
@@ -21,9 +21,9 @@ public class a
   public void a(Throwable paramThrowable1, Throwable paramThrowable2)
   {
     AppMethodBeat.i(128995);
-    k.h(paramThrowable1, "cause");
-    k.h(paramThrowable2, "exception");
-    Method localMethod = a.method;
+    p.h(paramThrowable1, "cause");
+    p.h(paramThrowable2, "exception");
+    Method localMethod = a.a.method;
     if (localMethod != null)
     {
       localMethod.invoke(paramThrowable1, new Object[] { paramThrowable2 });
@@ -31,63 +31,6 @@ public class a
       return;
     }
     AppMethodBeat.o(128995);
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/internal/PlatformImplementations$ReflectAddSuppressedMethod;", "", "()V", "method", "Ljava/lang/reflect/Method;", "kotlin-stdlib"})
-  static final class a
-  {
-    public static final a KUv;
-    public static final Method method;
-    
-    static
-    {
-      Object localObject2 = null;
-      AppMethodBeat.i(128990);
-      KUv = new a();
-      Method[] arrayOfMethod = Throwable.class.getMethods();
-      k.g(arrayOfMethod, "throwableClass.methods");
-      int k = arrayOfMethod.length;
-      int i = 0;
-      for (;;)
-      {
-        Object localObject1 = localObject2;
-        Method localMethod;
-        if (i < k)
-        {
-          localMethod = arrayOfMethod[i];
-          k.g(localMethod, "it");
-          if (!k.g(localMethod.getName(), "addSuppressed")) {
-            break label136;
-          }
-          localObject1 = localMethod.getParameterTypes();
-          k.g(localObject1, "it.parameterTypes");
-          k.h(localObject1, "$this$singleOrNull");
-          if (localObject1.length != 1) {
-            break label131;
-          }
-          localObject1 = localObject1[0];
-          if (!k.g((Class)localObject1, Throwable.class)) {
-            break label136;
-          }
-        }
-        label131:
-        label136:
-        for (int j = 1;; j = 0)
-        {
-          if (j == 0) {
-            break label141;
-          }
-          localObject1 = localMethod;
-          method = (Method)localObject1;
-          AppMethodBeat.o(128990);
-          return;
-          localObject1 = null;
-          break;
-        }
-        label141:
-        i += 1;
-      }
-    }
   }
 }
 

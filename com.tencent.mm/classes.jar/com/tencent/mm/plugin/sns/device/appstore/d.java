@@ -6,9 +6,9 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -17,38 +17,38 @@ import java.util.Set;
 
 public final class d
 {
-  private static d xOi = null;
-  private ApkInstalledWatcher xOe;
-  private boolean xOf;
-  private final Map<String, e> xOg;
-  private final b xOh;
+  private static d zec = null;
+  private ApkInstalledWatcher zdY;
+  private boolean zdZ;
+  private final Map<String, e> zea;
+  private final b zeb;
   
   private d()
   {
-    AppMethodBeat.i(200081);
-    this.xOf = false;
-    this.xOg = new HashMap();
-    this.xOe = new a((byte)0);
-    this.xOh = new b((byte)0);
-    AppMethodBeat.o(200081);
+    AppMethodBeat.i(197806);
+    this.zdZ = false;
+    this.zea = new HashMap();
+    this.zdY = new a((byte)0);
+    this.zeb = new b((byte)0);
+    AppMethodBeat.o(197806);
   }
   
   public static void a(e parame)
   {
     try
     {
-      AppMethodBeat.i(200079);
+      AppMethodBeat.i(197804);
       try
       {
-        dGI().b(parame);
-        AppMethodBeat.o(200079);
+        dSV().b(parame);
+        AppMethodBeat.o(197804);
       }
       catch (Throwable parame)
       {
         for (;;)
         {
-          ac.e("ApkInstalledWatcherManager", "watchStatic: watch info failed!");
-          AppMethodBeat.o(200079);
+          ad.e("ApkInstalledWatcherManager", "watchStatic: watch info failed!");
+          AppMethodBeat.o(197804);
         }
       }
       return;
@@ -56,18 +56,18 @@ public final class d
     finally {}
   }
   
-  private e atj(String paramString)
+  private e ayo(String paramString)
   {
-    AppMethodBeat.i(200085);
+    AppMethodBeat.i(197810);
     if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.xOg)
+      synchronized (this.zea)
       {
-        paramString = (e)this.xOg.remove(paramString);
-        AppMethodBeat.o(200085);
+        paramString = (e)this.zea.remove(paramString);
+        AppMethodBeat.o(197810);
         return paramString;
       }
     }
-    AppMethodBeat.o(200085);
+    AppMethodBeat.o(197810);
     return null;
   }
   
@@ -78,19 +78,19 @@ public final class d
     {
       try
       {
-        AppMethodBeat.i(200082);
-        ac.i("ApkInstalledWatcherManager", "watch is called");
+        AppMethodBeat.i(197807);
+        ad.i("ApkInstalledWatcherManager", "watch is called");
         if (parame == null)
         {
           if (i != 0) {
             break label72;
           }
-          AppMethodBeat.o(200082);
+          AppMethodBeat.o(197807);
           return;
         }
-        if ((TextUtils.isEmpty(parame.xOk)) || (TextUtils.isEmpty(parame.xOl)))
+        if ((TextUtils.isEmpty(parame.zee)) || (TextUtils.isEmpty(parame.zef)))
         {
-          ac.i("ApkInstalledWatcherManager", "checkWatchInfo is called, the input param is invalid");
+          ad.i("ApkInstalledWatcherManager", "checkWatchInfo is called, the input param is invalid");
           continue;
         }
         i = 1;
@@ -98,67 +98,67 @@ public final class d
       finally {}
       continue;
       label72:
-      dGJ();
-      synchronized (this.xOg)
+      dSW();
+      synchronized (this.zea)
       {
-        this.xOg.put(parame.xOk, parame);
-        dGL();
-        parame = this.xOh;
+        this.zea.put(parame.zee, parame);
+        dSY();
+        parame = this.zeb;
         if (!parame.mStarted)
         {
           parame.mStarted = true;
-          ap.n(parame, 300000L);
-          ac.i("ApkInstalledWatcherManager", "startTimer is called, the timer is to start.");
-          AppMethodBeat.o(200082);
+          aq.o(parame, 300000L);
+          ad.i("ApkInstalledWatcherManager", "startTimer is called, the timer is to start.");
+          AppMethodBeat.o(197807);
         }
       }
-      ac.i("ApkInstalledWatcherManager", "startTimer is called, the timer is started!");
-      AppMethodBeat.o(200082);
+      ad.i("ApkInstalledWatcherManager", "startTimer is called, the timer is started!");
+      AppMethodBeat.o(197807);
     }
   }
   
-  private static d dGI()
+  private static d dSV()
   {
     try
     {
-      AppMethodBeat.i(200080);
-      if (xOi == null) {
-        xOi = new d();
+      AppMethodBeat.i(197805);
+      if (zec == null) {
+        zec = new d();
       }
-      d locald = xOi;
-      AppMethodBeat.o(200080);
+      d locald = zec;
+      AppMethodBeat.o(197805);
       return locald;
     }
     finally {}
   }
   
-  private void dGJ()
+  private void dSW()
   {
     try
     {
-      AppMethodBeat.i(200083);
+      AppMethodBeat.i(197808);
       try
       {
-        if (this.xOe == null) {
-          this.xOe = new a((byte)0);
+        if (this.zdY == null) {
+          this.zdY = new a((byte)0);
         }
-        if (!this.xOf)
+        if (!this.zdZ)
         {
-          ac.i("ApkInstalledWatcherManager", "registerWatcher: the watcher is to be registered");
+          ad.i("ApkInstalledWatcherManager", "registerWatcher: the watcher is to be registered");
           IntentFilter localIntentFilter = new IntentFilter();
           localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
           localIntentFilter.addDataScheme("package");
-          ai.getContext().registerReceiver(this.xOe, localIntentFilter);
-          this.xOf = true;
+          aj.getContext().registerReceiver(this.zdY, localIntentFilter);
+          this.zdZ = true;
         }
-        AppMethodBeat.o(200083);
+        AppMethodBeat.o(197808);
       }
       catch (Throwable localThrowable)
       {
         for (;;)
         {
-          ac.e("ApkInstalledWatcherManager", "register ApkInstalledWatcher failed");
-          AppMethodBeat.o(200083);
+          ad.e("ApkInstalledWatcherManager", "register ApkInstalledWatcher failed");
+          AppMethodBeat.o(197808);
         }
       }
       return;
@@ -166,26 +166,26 @@ public final class d
     finally {}
   }
   
-  private void dGK()
+  private void dSX()
   {
     try
     {
-      AppMethodBeat.i(200084);
+      AppMethodBeat.i(197809);
       try
       {
-        if ((this.xOe != null) && (this.xOf))
+        if ((this.zdY != null) && (this.zdZ))
         {
-          ai.getContext().unregisterReceiver(this.xOe);
-          this.xOf = false;
+          aj.getContext().unregisterReceiver(this.zdY);
+          this.zdZ = false;
         }
-        AppMethodBeat.o(200084);
+        AppMethodBeat.o(197809);
       }
       catch (Throwable localThrowable)
       {
         for (;;)
         {
-          ac.e("ApkInstalledWatcherManager", "unregister ApkInstalledWatcher failed");
-          AppMethodBeat.o(200084);
+          ad.e("ApkInstalledWatcherManager", "unregister ApkInstalledWatcher failed");
+          AppMethodBeat.o(197809);
         }
       }
       return;
@@ -193,38 +193,38 @@ public final class d
     finally {}
   }
   
-  private void dGL()
+  private void dSY()
   {
-    AppMethodBeat.i(200086);
-    synchronized (this.xOg)
+    AppMethodBeat.i(197811);
+    synchronized (this.zea)
     {
-      Iterator localIterator = this.xOg.entrySet().iterator();
+      Iterator localIterator = this.zea.entrySet().iterator();
       if (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         if (localEntry.getValue() == null) {
           break label92;
         }
-        if (((e)localEntry.getValue()).xOo + 300000L < SystemClock.elapsedRealtime()) {
+        if (((e)localEntry.getValue()).zei + 300000L < SystemClock.elapsedRealtime()) {
           localIterator.remove();
         }
       }
-      AppMethodBeat.o(200086);
+      AppMethodBeat.o(197811);
       return;
       label92:
       localIterator.remove();
     }
   }
   
-  private boolean dGM()
+  private boolean dSZ()
   {
-    AppMethodBeat.i(200087);
-    synchronized (this.xOg)
+    AppMethodBeat.i(197812);
+    synchronized (this.zea)
     {
-      if (!this.xOg.isEmpty())
+      if (!this.zea.isEmpty())
       {
         bool = true;
-        AppMethodBeat.o(200087);
+        AppMethodBeat.o(197812);
         return bool;
       }
       boolean bool = false;
@@ -236,22 +236,22 @@ public final class d
   {
     private a() {}
     
-    protected final boolean ati(String paramString)
+    protected final boolean ayn(String paramString)
     {
-      AppMethodBeat.i(200077);
+      AppMethodBeat.i(197802);
       paramString = d.a(d.this, paramString);
       if (paramString != null)
       {
         ArrayMap localArrayMap = new ArrayMap();
-        if (paramString.xOn) {
+        if (paramString.zeh) {
           localArrayMap.put("outSns", Integer.valueOf(1));
         }
-        a.a(paramString.xOl, paramString.dtx, paramString.xOm, 3, "0", localArrayMap);
-        AppMethodBeat.o(200077);
+        a.a(paramString.zef, paramString.dFy, paramString.zeg, 3, "0", localArrayMap);
+        AppMethodBeat.o(197802);
         return true;
       }
-      ac.i("ApkInstalledWatcherManager", "onAppInstalled is called, but the pkg is not existed!");
-      AppMethodBeat.o(200077);
+      ad.i("ApkInstalledWatcherManager", "onAppInstalled is called, but the pkg is not existed!");
+      AppMethodBeat.o(197802);
       return false;
     }
   }
@@ -265,27 +265,27 @@ public final class d
     
     public final void run()
     {
-      AppMethodBeat.i(200078);
+      AppMethodBeat.i(197803);
       try
       {
         d.a(d.this);
         if (d.b(d.this))
         {
-          ap.n(this, 300000L);
-          ac.i("ApkInstalledWatcherManager", "there are some watcher info, the timer is going on");
-          AppMethodBeat.o(200078);
+          aq.o(this, 300000L);
+          ad.i("ApkInstalledWatcherManager", "there are some watcher info, the timer is going on");
+          AppMethodBeat.o(197803);
           return;
         }
         d.c(d.this);
         this.mStarted = false;
-        ac.i("ApkInstalledWatcherManager", "the timer is end!");
-        AppMethodBeat.o(200078);
+        ad.i("ApkInstalledWatcherManager", "the timer is end!");
+        AppMethodBeat.o(197803);
         return;
       }
       catch (Throwable localThrowable)
       {
-        ac.e("ApkInstalledWatcherManager", "there is something wrong in timer run function");
-        AppMethodBeat.o(200078);
+        ad.e("ApkInstalledWatcherManager", "there is something wrong in timer run function");
+        AppMethodBeat.o(197803);
       }
     }
   }

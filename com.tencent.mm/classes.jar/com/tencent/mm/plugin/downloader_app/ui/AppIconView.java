@@ -19,16 +19,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AppIconView
   extends AppCompatImageView
 {
-  private static final PorterDuffXfermode oMn;
+  private static final PorterDuffXfermode ppV;
   private Bitmap bitmap;
-  private RectF fV;
-  private Bitmap oMm;
+  private RectF hM;
+  private Bitmap ppU;
   private Rect rect;
   
   static
   {
     AppMethodBeat.i(8969);
-    oMn = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
+    ppV = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
     AppMethodBeat.o(8969);
   }
   
@@ -46,10 +46,10 @@ public class AppIconView
     if (this.rect == null) {
       this.rect = new Rect(0, 0, getWidth(), getHeight());
     }
-    if (this.fV == null) {
-      this.fV = new RectF(this.rect);
+    if (this.hM == null) {
+      this.hM = new RectF(this.rect);
     }
-    if ((this.bitmap != null) && (this.oMm != null)) {
+    if ((this.bitmap != null) && (this.ppU != null)) {
       if (Build.VERSION.SDK_INT < 21) {
         break label209;
       }
@@ -57,15 +57,15 @@ public class AppIconView
     label209:
     for (int i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null);; i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null, 31))
     {
-      paramCanvas.drawBitmap(this.oMm, this.rect, this.rect, localPaint);
-      localPaint.setXfermode(oMn);
+      paramCanvas.drawBitmap(this.ppU, this.rect, this.rect, localPaint);
+      localPaint.setXfermode(ppV);
       paramCanvas.drawBitmap(this.bitmap, null, this.rect, localPaint);
       paramCanvas.restoreToCount(i);
       localPaint.setXfermode(null);
       localPaint.setStyle(Paint.Style.STROKE);
       localPaint.setStrokeWidth(1.0F);
       localPaint.setColor(getResources().getColor(2131099975));
-      paramCanvas.drawRoundRect(this.fV, 32.0F, 32.0F, localPaint);
+      paramCanvas.drawRoundRect(this.hM, 32.0F, 32.0F, localPaint);
       AppMethodBeat.o(8966);
       return;
     }
@@ -74,14 +74,14 @@ public class AppIconView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(8967);
-    this.fV = new RectF(0.0F, 0.0F, paramInt1, paramInt2);
+    this.hM = new RectF(0.0F, 0.0F, paramInt1, paramInt2);
     this.rect = new Rect(0, 0, paramInt1, paramInt2);
     Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     Paint localPaint = new Paint(1);
     localPaint.setColor(getResources().getColor(2131099974));
-    localCanvas.drawRoundRect(this.fV, 32.0F, 32.0F, localPaint);
-    this.oMm = localBitmap;
+    localCanvas.drawRoundRect(this.hM, 32.0F, 32.0F, localPaint);
+    this.ppU = localBitmap;
     AppMethodBeat.o(8967);
   }
   
@@ -95,7 +95,7 @@ public class AppIconView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.AppIconView
  * JD-Core Version:    0.7.0.1
  */

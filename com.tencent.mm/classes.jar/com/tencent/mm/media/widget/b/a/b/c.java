@@ -2,22 +2,22 @@ package com.tencent.mm.media.widget.b.a.b;
 
 import android.hardware.camera2.CaptureResult.Key;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.lang.reflect.Constructor;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCResultKeyCreator;", "", "()V", "TAG", "", "resultConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureResult$Key;", "resultKey", "T", "name", "klass", "Ljava/lang/Class;", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCResultKeyCreator;", "", "()V", "TAG", "", "resultConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureResult$Key;", "resultKey", "T", "name", "klass", "Ljava/lang/Class;", "plugin-mediaeditor_release"})
 public final class c
 {
   private static final String TAG = "CT2.WCRequestKeyCreator";
-  private static Constructor<CaptureResult.Key<?>> haP;
-  public static final c haQ;
+  private static Constructor<CaptureResult.Key<?>> hsV;
+  public static final c hsW;
   
   static
   {
     AppMethodBeat.i(94210);
-    haQ = new c();
+    hsW = new c();
     TAG = "CT2.WCRequestKeyCreator";
     AppMethodBeat.o(94210);
   }
@@ -25,25 +25,25 @@ public final class c
   public static final <T> CaptureResult.Key<T> e(String paramString, Class<T> paramClass)
   {
     AppMethodBeat.i(94209);
-    k.h(paramString, "name");
-    k.h(paramClass, "klass");
+    p.h(paramString, "name");
+    p.h(paramClass, "klass");
     try
     {
       Constructor localConstructor;
-      if (haP == null)
+      if (hsV == null)
       {
         localConstructor = CaptureResult.Key.class.getConstructor(new Class[] { String.class, paramClass.getClass() });
-        haP = localConstructor;
+        hsV = localConstructor;
         if (localConstructor == null) {
-          k.fOy();
+          p.gfZ();
         }
         localConstructor.setAccessible(true);
       }
       try
       {
-        localConstructor = haP;
+        localConstructor = hsV;
         if (localConstructor == null) {
-          k.fOy();
+          p.gfZ();
         }
         paramString = localConstructor.newInstance(new Object[] { paramString, paramClass });
         if (paramString != null) {
@@ -75,7 +75,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.media.widget.b.a.b.c
  * JD-Core Version:    0.7.0.1
  */

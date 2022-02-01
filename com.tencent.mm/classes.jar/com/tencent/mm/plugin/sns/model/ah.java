@@ -1,85 +1,28 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.g;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.HashMap;
+import com.tencent.mm.plugin.sns.j.b;
 
 public final class ah
-  implements g
+  implements af
 {
-  HashMap<String, n> cache;
+  private int scene = 0;
+  private b zkL;
   
-  public ah()
+  public final b dTI()
   {
-    AppMethodBeat.i(95848);
-    this.cache = new HashMap();
-    AppMethodBeat.o(95848);
-  }
-  
-  public final boolean a(final n paramn)
-  {
-    AppMethodBeat.i(95852);
-    if ((paramn == null) || (bs.isNullOrNil(paramn.field_userName)))
-    {
-      AppMethodBeat.o(95852);
-      return false;
+    AppMethodBeat.i(95844);
+    if (this.zkL == null) {
+      this.zkL = new b();
     }
-    af.dvq().post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(95847);
-        ah.this.cache.put(paramn.field_userName, paramn);
-        AppMethodBeat.o(95847);
-      }
-    });
-    AppMethodBeat.o(95852);
-    return true;
+    b localb = this.zkL;
+    AppMethodBeat.o(95844);
+    return localb;
   }
   
-  public final n atR(String paramString)
+  public final int getScene()
   {
-    AppMethodBeat.i(95849);
-    paramString = (n)this.cache.get(paramString);
-    AppMethodBeat.o(95849);
-    return paramString;
-  }
-  
-  public final boolean dIl()
-  {
-    AppMethodBeat.i(95850);
-    af.dvq().post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(95845);
-        if (ah.this.cache.size() > 50) {
-          ah.a(ah.this, 10);
-        }
-        AppMethodBeat.o(95845);
-      }
-    });
-    AppMethodBeat.o(95850);
-    return true;
-  }
-  
-  public final boolean dIm()
-  {
-    AppMethodBeat.i(95851);
-    af.dvq().post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(95846);
-        ah.a(ah.this, ah.this.cache.size());
-        AppMethodBeat.o(95846);
-      }
-    });
-    AppMethodBeat.o(95851);
-    return true;
+    return this.scene;
   }
 }
 

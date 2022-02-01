@@ -3,23 +3,23 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aw
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int DNa;
-  public String DNb;
-  public String DNc;
-  public int DNd;
-  public int DNe;
-  public String DNf;
-  public int DNg;
-  public String DNh;
-  public String DNi;
-  public int DNj;
-  public String DNk;
-  public String iJY;
-  public String ncR;
-  public String ndW;
-  public int ndj;
+  public int Fsf;
+  public String Fsg;
+  public String Fsh;
+  public int Fsi;
+  public int Fsj;
+  public String Fsk;
+  public int Fsl;
+  public String Fsm;
+  public String Fsn;
+  public int Fso;
+  public String Fsp;
+  public String jdh;
+  public int nDG;
+  public String nDo;
+  public String nEt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -27,94 +27,94 @@ public final class aw
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ncR != null) {
-        paramVarArgs.d(1, this.ncR);
+      if (this.nDo != null) {
+        paramVarArgs.d(1, this.nDo);
       }
-      if (this.ndW != null) {
-        paramVarArgs.d(2, this.ndW);
+      if (this.nEt != null) {
+        paramVarArgs.d(2, this.nEt);
       }
-      paramVarArgs.aR(3, this.DNa);
-      if (this.DNb != null) {
-        paramVarArgs.d(4, this.DNb);
+      paramVarArgs.aS(3, this.Fsf);
+      if (this.Fsg != null) {
+        paramVarArgs.d(4, this.Fsg);
       }
-      if (this.DNc != null) {
-        paramVarArgs.d(5, this.DNc);
+      if (this.Fsh != null) {
+        paramVarArgs.d(5, this.Fsh);
       }
-      if (this.iJY != null) {
-        paramVarArgs.d(6, this.iJY);
+      if (this.jdh != null) {
+        paramVarArgs.d(6, this.jdh);
       }
-      paramVarArgs.aR(8, this.ndj);
-      paramVarArgs.aR(9, this.DNd);
-      paramVarArgs.aR(10, this.DNe);
-      if (this.DNf != null) {
-        paramVarArgs.d(11, this.DNf);
+      paramVarArgs.aS(8, this.nDG);
+      paramVarArgs.aS(9, this.Fsi);
+      paramVarArgs.aS(10, this.Fsj);
+      if (this.Fsk != null) {
+        paramVarArgs.d(11, this.Fsk);
       }
-      paramVarArgs.aR(12, this.DNg);
-      if (this.DNh != null) {
-        paramVarArgs.d(13, this.DNh);
+      paramVarArgs.aS(12, this.Fsl);
+      if (this.Fsm != null) {
+        paramVarArgs.d(13, this.Fsm);
       }
-      if (this.DNi != null) {
-        paramVarArgs.d(14, this.DNi);
+      if (this.Fsn != null) {
+        paramVarArgs.d(14, this.Fsn);
       }
-      paramVarArgs.aR(15, this.DNj);
-      if (this.DNk != null) {
-        paramVarArgs.d(16, this.DNk);
+      paramVarArgs.aS(15, this.Fso);
+      if (this.Fsp != null) {
+        paramVarArgs.d(16, this.Fsp);
       }
       AppMethodBeat.o(133142);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ncR == null) {
+      if (this.nDo == null) {
         break label978;
       }
     }
     label978:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ncR) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.nDo) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.ndW != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.ndW);
+      if (this.nEt != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.nEt);
       }
-      i += f.a.a.b.b.a.bx(3, this.DNa);
+      i += f.a.a.b.b.a.bz(3, this.Fsf);
       paramInt = i;
-      if (this.DNb != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.DNb);
+      if (this.Fsg != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Fsg);
       }
       i = paramInt;
-      if (this.DNc != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.DNc);
+      if (this.Fsh != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.Fsh);
       }
       paramInt = i;
-      if (this.iJY != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.iJY);
+      if (this.jdh != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.jdh);
       }
-      i = paramInt + f.a.a.b.b.a.bx(8, this.ndj) + f.a.a.b.b.a.bx(9, this.DNd) + f.a.a.b.b.a.bx(10, this.DNe);
+      i = paramInt + f.a.a.b.b.a.bz(8, this.nDG) + f.a.a.b.b.a.bz(9, this.Fsi) + f.a.a.b.b.a.bz(10, this.Fsj);
       paramInt = i;
-      if (this.DNf != null) {
-        paramInt = i + f.a.a.b.b.a.e(11, this.DNf);
+      if (this.Fsk != null) {
+        paramInt = i + f.a.a.b.b.a.e(11, this.Fsk);
       }
-      i = paramInt + f.a.a.b.b.a.bx(12, this.DNg);
+      i = paramInt + f.a.a.b.b.a.bz(12, this.Fsl);
       paramInt = i;
-      if (this.DNh != null) {
-        paramInt = i + f.a.a.b.b.a.e(13, this.DNh);
+      if (this.Fsm != null) {
+        paramInt = i + f.a.a.b.b.a.e(13, this.Fsm);
       }
       i = paramInt;
-      if (this.DNi != null) {
-        i = paramInt + f.a.a.b.b.a.e(14, this.DNi);
+      if (this.Fsn != null) {
+        i = paramInt + f.a.a.b.b.a.e(14, this.Fsn);
       }
-      i += f.a.a.b.b.a.bx(15, this.DNj);
+      i += f.a.a.b.b.a.bz(15, this.Fso);
       paramInt = i;
-      if (this.DNk != null) {
-        paramInt = i + f.a.a.b.b.a.e(16, this.DNk);
+      if (this.Fsp != null) {
+        paramInt = i + f.a.a.b.b.a.e(16, this.Fsp);
       }
       AppMethodBeat.o(133142);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(133142);
@@ -131,63 +131,63 @@ public final class aw
           AppMethodBeat.o(133142);
           return -1;
         case 1: 
-          localaw.ncR = locala.LVo.readString();
+          localaw.nDo = locala.NPN.readString();
           AppMethodBeat.o(133142);
           return 0;
         case 2: 
-          localaw.ndW = locala.LVo.readString();
+          localaw.nEt = locala.NPN.readString();
           AppMethodBeat.o(133142);
           return 0;
         case 3: 
-          localaw.DNa = locala.LVo.xF();
+          localaw.Fsf = locala.NPN.zc();
           AppMethodBeat.o(133142);
           return 0;
         case 4: 
-          localaw.DNb = locala.LVo.readString();
+          localaw.Fsg = locala.NPN.readString();
           AppMethodBeat.o(133142);
           return 0;
         case 5: 
-          localaw.DNc = locala.LVo.readString();
+          localaw.Fsh = locala.NPN.readString();
           AppMethodBeat.o(133142);
           return 0;
         case 6: 
-          localaw.iJY = locala.LVo.readString();
+          localaw.jdh = locala.NPN.readString();
           AppMethodBeat.o(133142);
           return 0;
         case 8: 
-          localaw.ndj = locala.LVo.xF();
+          localaw.nDG = locala.NPN.zc();
           AppMethodBeat.o(133142);
           return 0;
         case 9: 
-          localaw.DNd = locala.LVo.xF();
+          localaw.Fsi = locala.NPN.zc();
           AppMethodBeat.o(133142);
           return 0;
         case 10: 
-          localaw.DNe = locala.LVo.xF();
+          localaw.Fsj = locala.NPN.zc();
           AppMethodBeat.o(133142);
           return 0;
         case 11: 
-          localaw.DNf = locala.LVo.readString();
+          localaw.Fsk = locala.NPN.readString();
           AppMethodBeat.o(133142);
           return 0;
         case 12: 
-          localaw.DNg = locala.LVo.xF();
+          localaw.Fsl = locala.NPN.zc();
           AppMethodBeat.o(133142);
           return 0;
         case 13: 
-          localaw.DNh = locala.LVo.readString();
+          localaw.Fsm = locala.NPN.readString();
           AppMethodBeat.o(133142);
           return 0;
         case 14: 
-          localaw.DNi = locala.LVo.readString();
+          localaw.Fsn = locala.NPN.readString();
           AppMethodBeat.o(133142);
           return 0;
         case 15: 
-          localaw.DNj = locala.LVo.xF();
+          localaw.Fso = locala.NPN.zc();
           AppMethodBeat.o(133142);
           return 0;
         }
-        localaw.DNk = locala.LVo.readString();
+        localaw.Fsp = locala.NPN.readString();
         AppMethodBeat.o(133142);
         return 0;
       }

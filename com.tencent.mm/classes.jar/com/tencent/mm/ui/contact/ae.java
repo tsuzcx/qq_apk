@@ -3,10 +3,10 @@ package com.tencent.mm.ui.contact;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.a.e;
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ import java.util.ArrayList;
 public final class ae
   extends q
 {
-  private String Isk;
-  private Cursor iCz;
+  private String KiP;
+  private Cursor iVJ;
   
   public ae(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
   {
     super(paramMMBaseSelectContactUI, new ArrayList(), false, false);
     AppMethodBeat.i(102929);
-    this.Isk = paramString;
-    g.agS();
-    this.iCz = ((k)g.ab(k.class)).awB().e(this.Isk, "", this.fzw);
+    this.KiP = paramString;
+    g.ajD();
+    this.iVJ = ((l)g.ab(l.class)).azp().e(this.KiP, "", this.fSL);
     AppMethodBeat.o(102929);
   }
   
@@ -31,11 +31,11 @@ public final class ae
   {
     AppMethodBeat.i(102932);
     super.finish();
-    ac.i("MicroMsg.SpecialContactAdapter", "finish!");
-    if (this.iCz != null)
+    ad.i("MicroMsg.SpecialContactAdapter", "finish!");
+    if (this.iVJ != null)
     {
-      this.iCz.close();
-      this.iCz = null;
+      this.iVJ.close();
+      this.iVJ = null;
     }
     AppMethodBeat.o(102932);
   }
@@ -43,28 +43,28 @@ public final class ae
   public final int getCount()
   {
     AppMethodBeat.i(102930);
-    int i = this.iCz.getCount();
+    int i = this.iVJ.getCount();
     AppMethodBeat.o(102930);
     return i;
   }
   
-  protected final a qH(int paramInt)
+  protected final a rh(int paramInt)
   {
     AppMethodBeat.i(102931);
     e locale = null;
-    if ((paramInt >= 0) && (this.iCz.moveToPosition(paramInt)))
+    if ((paramInt >= 0) && (this.iVJ.moveToPosition(paramInt)))
     {
       locale = new e(paramInt);
-      ai localai = new ai();
-      localai.convertFrom(this.iCz);
-      locale.contact = localai;
-      locale.Iwh = dFi();
+      am localam = new am();
+      localam.convertFrom(this.iVJ);
+      locale.contact = localam;
+      locale.KmP = dQK();
     }
     for (;;)
     {
       AppMethodBeat.o(102931);
       return locale;
-      ac.e("MicroMsg.SpecialContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
+      ad.e("MicroMsg.SpecialContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
     }
   }
 }

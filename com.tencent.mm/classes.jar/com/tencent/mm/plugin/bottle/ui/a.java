@@ -7,18 +7,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.modelvoice.p;
-import com.tencent.mm.pluginsdk.g.h;
+import com.tencent.mm.pluginsdk.i.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.storage.bk.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bq.b;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
@@ -29,26 +30,26 @@ import com.tencent.mm.ui.r;
 import com.tencent.mm.ui.r.a;
 
 final class a
-  extends r<ap>
+  extends r<at>
   implements n.b
 {
-  private final MMActivity iMV;
-  protected MMSlideDelView.g ntA;
-  protected MMSlideDelView.c ntB;
-  protected MMSlideDelView.f ntC;
-  protected MMSlideDelView.d ntD;
+  private final MMActivity fLP;
+  protected MMSlideDelView.g nUw;
+  protected MMSlideDelView.c nUx;
+  protected MMSlideDelView.f nUy;
+  protected MMSlideDelView.d nUz;
   
   public a(Context paramContext, r.a parama)
   {
-    super(paramContext, new ap());
+    super(paramContext, new at());
     AppMethodBeat.i(22656);
-    this.ntD = MMSlideDelView.getItemStatusCallBack();
+    this.nUz = MMSlideDelView.getItemStatusCallBack();
     super.a(parama);
-    this.iMV = ((MMActivity)paramContext);
+    this.fLP = ((MMActivity)paramContext);
     AppMethodBeat.o(22656);
   }
   
-  private static int Tf(String paramString)
+  private static int WF(String paramString)
   {
     int j = 1;
     AppMethodBeat.i(22661);
@@ -73,36 +74,36 @@ final class a
     }
   }
   
-  final String L(ai paramai)
+  final String L(am paramam)
   {
     AppMethodBeat.i(22660);
-    paramai = com.tencent.mm.plugin.bottle.a.c.a(this.iMV, paramai);
+    paramam = com.tencent.mm.plugin.bottle.a.c.a(this.fLP, paramam);
     AppMethodBeat.o(22660);
-    return paramai;
+    return paramam;
   }
   
-  public final void Xb()
+  public final void Zu()
   {
     AppMethodBeat.i(22657);
-    com.tencent.mm.model.az.ayM();
-    setCursor(com.tencent.mm.model.c.awG().faN());
-    if (this.HmY != null) {
-      this.HmY.aPg();
+    com.tencent.mm.model.ba.aBQ();
+    setCursor(com.tencent.mm.model.c.azv().fqQ());
+    if (this.JaF != null) {
+      this.JaF.aSs();
     }
     super.notifyDataSetChanged();
     AppMethodBeat.o(22657);
   }
   
-  public final void Xc()
+  public final void Zv()
   {
     AppMethodBeat.i(22662);
-    Xb();
+    Zu();
     AppMethodBeat.o(22662);
   }
   
   public final void a(MMSlideDelView.f paramf)
   {
-    this.ntC = paramf;
+    this.nUy = paramf;
   }
   
   public final int getItemViewType(int paramInt)
@@ -113,7 +114,7 @@ final class a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(22659);
-    ap localap = (ap)getItem(paramInt);
+    at localat = (at)getItem(paramInt);
     Object localObject;
     label259:
     label478:
@@ -124,40 +125,40 @@ final class a
     if (paramView == null)
     {
       paramViewGroup = new a();
-      paramView = (MMSlideDelView)View.inflate(this.iMV, 2131493169, null);
-      localObject = View.inflate(this.iMV, 2131495763, null);
-      paramViewGroup.fuY = ((ImageView)((View)localObject).findViewById(2131297008));
-      paramViewGroup.fuZ = ((TextView)((View)localObject).findViewById(2131302867));
-      paramViewGroup.ntF = ((TextView)((View)localObject).findViewById(2131306207));
-      paramViewGroup.ntG = ((TextView)((View)localObject).findViewById(2131301311));
-      paramViewGroup.mxD = ((ImageView)((View)localObject).findViewById(2131305187));
-      paramViewGroup.ntH = ((TextView)((View)localObject).findViewById(2131305882));
-      paramViewGroup.ntI = paramView.findViewById(2131304837);
-      paramViewGroup.ntJ = ((TextView)paramView.findViewById(2131304839));
+      paramView = (MMSlideDelView)View.inflate(this.fLP, 2131493169, null);
+      localObject = View.inflate(this.fLP, 2131495763, null);
+      paramViewGroup.fOf = ((ImageView)((View)localObject).findViewById(2131297008));
+      paramViewGroup.fOg = ((TextView)((View)localObject).findViewById(2131302867));
+      paramViewGroup.nUB = ((TextView)((View)localObject).findViewById(2131306207));
+      paramViewGroup.nUC = ((TextView)((View)localObject).findViewById(2131301311));
+      paramViewGroup.mYk = ((ImageView)((View)localObject).findViewById(2131305187));
+      paramViewGroup.nUD = ((TextView)((View)localObject).findViewById(2131305882));
+      paramViewGroup.nUE = paramView.findViewById(2131304837);
+      paramViewGroup.nUF = ((TextView)paramView.findViewById(2131304839));
       paramView.setView((View)localObject);
-      paramView.setPerformItemClickListener(this.ntA);
-      paramView.setGetViewPositionCallback(this.ntB);
-      paramView.setItemStatusCallBack(this.ntD);
+      paramView.setPerformItemClickListener(this.nUw);
+      paramView.setGetViewPositionCallback(this.nUx);
+      paramView.setItemStatusCallBack(this.nUz);
       paramView.setEnable(false);
       paramView.setTag(paramViewGroup);
-      com.tencent.mm.model.az.ayM();
-      localObject = com.tencent.mm.model.c.awB().aNt(localap.field_username);
-      paramViewGroup.fuZ.setText(L((ai)localObject));
-      TextView localTextView = paramViewGroup.ntF;
-      if (localap.field_status != 1) {
+      com.tencent.mm.model.ba.aBQ();
+      localObject = com.tencent.mm.model.c.azp().Bf(localat.field_username);
+      paramViewGroup.fOg.setText(L((am)localObject));
+      TextView localTextView = paramViewGroup.nUB;
+      if (localat.field_status != 1) {
         break label623;
       }
-      localObject = this.iMV.getString(2131761075);
+      localObject = this.fLP.getString(2131761075);
       localTextView.setText((CharSequence)localObject);
-      a.b.c(paramViewGroup.fuY, ai.aNh(localap.field_username));
-      com.tencent.mm.model.az.ayM();
-      localObject = com.tencent.mm.model.c.awG().Ls().a(localap.field_isSend, localap.field_username, localap.field_content, Tf(localap.field_msgType), this.iMV);
-      paramViewGroup.ntG.setText(k.b(this.iMV, (CharSequence)localObject, paramViewGroup.ntG.getTextSize()));
-      paramViewGroup.ntG.setTextColor(com.tencent.mm.cc.a.m(this.iMV, 2131100642));
-      if ((Tf(localap.field_msgType) == 34) && (localap.field_isSend == 0) && (!bs.isNullOrNil(localap.field_content)) && (!new p(localap.field_content).iaD)) {
-        paramViewGroup.ntG.setTextColor(com.tencent.mm.cc.a.m(this.iMV, 2131100643));
+      a.b.c(paramViewGroup.fOf, am.aSZ(localat.field_username));
+      com.tencent.mm.model.ba.aBQ();
+      localObject = com.tencent.mm.model.c.azv().Na().a(localat.field_isSend, localat.field_username, localat.field_content, WF(localat.field_msgType), this.fLP);
+      paramViewGroup.nUC.setText(k.b(this.fLP, (CharSequence)localObject, paramViewGroup.nUC.getTextSize()));
+      paramViewGroup.nUC.setTextColor(com.tencent.mm.cc.a.m(this.fLP, 2131100642));
+      if ((WF(localat.field_msgType) == 34) && (localat.field_isSend == 0) && (!bt.isNullOrNil(localat.field_content)) && (!new p(localat.field_content).itZ)) {
+        paramViewGroup.nUC.setTextColor(com.tencent.mm.cc.a.m(this.fLP, 2131100643));
       }
-      switch (localap.field_status)
+      switch (localat.field_status)
       {
       case 3: 
       case 4: 
@@ -165,19 +166,23 @@ final class a
         paramInt = -1;
         if (paramInt != -1)
         {
-          paramViewGroup.mxD.setBackgroundResource(paramInt);
-          paramViewGroup.mxD.setVisibility(0);
-          paramViewGroup.ntI.setTag(localap.field_username);
-          paramViewGroup.ntI.setOnClickListener(new View.OnClickListener()
+          paramViewGroup.mYk.setBackgroundResource(paramInt);
+          paramViewGroup.mYk.setVisibility(0);
+          paramViewGroup.nUE.setTag(localat.field_username);
+          paramViewGroup.nUE.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(22655);
-              ac.v("MicroMsg.BottleConversationAdapter", "on delView clicked");
-              a.this.ntD.cVs();
-              if (a.this.ntC != null) {
-                a.this.ntC.cN(paramAnonymousView.getTag());
+              b localb = new b();
+              localb.bd(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/bottle/ui/BottleConversationAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+              ad.v("MicroMsg.BottleConversationAdapter", "on delView clicked");
+              a.this.nUz.deD();
+              if (a.this.nUy != null) {
+                a.this.nUy.cP(paramAnonymousView.getTag());
               }
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/bottle/ui/BottleConversationAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(22655);
             }
           });
@@ -185,12 +190,12 @@ final class a
           i = paramView.getPaddingTop();
           j = paramView.getPaddingRight();
           k = paramView.getPaddingLeft();
-          if (localap.field_unReadCount <= 100) {
+          if (localat.field_unReadCount <= 100) {
             break label677;
           }
-          paramViewGroup.ntH.setText("...");
-          paramViewGroup.ntH.setVisibility(0);
-          ac.v("MicroMsg.BottleConversationAdapter", "has unread 100");
+          paramViewGroup.nUD.setText("...");
+          paramViewGroup.nUD.setVisibility(0);
+          ad.v("MicroMsg.BottleConversationAdapter", "has unread 100");
         }
         break;
       }
@@ -204,7 +209,7 @@ final class a
       paramViewGroup = (a)paramView.getTag();
       break;
       label623:
-      localObject = h.c(this.iMV, localap.field_conversationTime, true);
+      localObject = i.c(this.fLP, localat.field_conversationTime, true);
       break label259;
       paramInt = -1;
       break label478;
@@ -214,19 +219,19 @@ final class a
       break label478;
       paramInt = 2131690877;
       break label478;
-      paramViewGroup.mxD.setVisibility(8);
+      paramViewGroup.mYk.setVisibility(8);
       break label499;
       label677:
-      if (localap.field_unReadCount > 0)
+      if (localat.field_unReadCount > 0)
       {
-        paramViewGroup.ntH.setText(localap.field_unReadCount);
-        paramViewGroup.ntH.setVisibility(0);
-        ac.v("MicroMsg.BottleConversationAdapter", "has unread");
+        paramViewGroup.nUD.setText(localat.field_unReadCount);
+        paramViewGroup.nUD.setVisibility(0);
+        ad.v("MicroMsg.BottleConversationAdapter", "has unread");
       }
       else
       {
-        paramViewGroup.ntH.setVisibility(4);
-        ac.v("MicroMsg.BottleConversationAdapter", "no unread");
+        paramViewGroup.nUD.setVisibility(4);
+        ad.v("MicroMsg.BottleConversationAdapter", "no unread");
       }
     }
   }
@@ -239,32 +244,32 @@ final class a
   public final void onPause()
   {
     AppMethodBeat.i(22658);
-    if (this.ntD != null) {
-      this.ntD.cVr();
+    if (this.nUz != null) {
+      this.nUz.deC();
     }
     AppMethodBeat.o(22658);
   }
   
   public final void setGetViewPositionCallback(MMSlideDelView.c paramc)
   {
-    this.ntB = paramc;
+    this.nUx = paramc;
   }
   
   public final void setPerformItemClickListener(MMSlideDelView.g paramg)
   {
-    this.ntA = paramg;
+    this.nUw = paramg;
   }
   
   public static final class a
   {
-    public ImageView fuY;
-    public TextView fuZ;
-    public ImageView mxD;
-    public TextView ntF;
-    public TextView ntG;
-    public TextView ntH;
-    public View ntI;
-    public TextView ntJ;
+    public ImageView fOf;
+    public TextView fOg;
+    public ImageView mYk;
+    public TextView nUB;
+    public TextView nUC;
+    public TextView nUD;
+    public View nUE;
+    public TextView nUF;
   }
 }
 

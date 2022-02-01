@@ -4,22 +4,22 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.a.y;
-import com.tencent.mm.protocal.protobuf.ahp;
+import com.tencent.mm.protocal.protobuf.akf;
 
 public final class c
   implements y
 {
-  public final boolean a(Context paramContext, g paramg, ahp paramahp)
+  public final boolean a(Context paramContext, g paramg, akf paramakf)
   {
     AppMethodBeat.i(24571);
-    d.b(paramContext, paramg, paramahp);
+    d.b(paramContext, paramg, paramakf);
     AppMethodBeat.o(24571);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.favorite.c
  * JD-Core Version:    0.7.0.1
  */

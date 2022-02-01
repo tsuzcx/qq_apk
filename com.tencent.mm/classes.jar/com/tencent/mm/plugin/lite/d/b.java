@@ -12,46 +12,46 @@ public final class b
   
   static
   {
-    AppMethodBeat.i(208159);
+    AppMethodBeat.i(214624);
     c.a locala = new c.a();
-    locala.GvF = new Field[6];
+    locala.IhA = new Field[6];
     locala.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appId";
-    locala.GvH.put("appId", "TEXT PRIMARY KEY ");
+    locala.IhC.put("appId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" appId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "appId";
+    locala.IhB = "appId";
     locala.columns[1] = "signatureKey";
-    locala.GvH.put("signatureKey", "TEXT");
+    locala.IhC.put("signatureKey", "TEXT");
     localStringBuilder.append(" signatureKey TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "pkgPath";
-    locala.GvH.put("pkgPath", "TEXT");
+    locala.IhC.put("pkgPath", "TEXT");
     localStringBuilder.append(" pkgPath TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "pkgType";
-    locala.GvH.put("pkgType", "TEXT");
+    locala.IhC.put("pkgType", "TEXT");
     localStringBuilder.append(" pkgType TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "patchId";
-    locala.GvH.put("patchId", "TEXT");
+    locala.IhC.put("patchId", "TEXT");
     localStringBuilder.append(" patchId TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "updateTime";
-    locala.GvH.put("updateTime", "LONG");
+    locala.IhC.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
     locala.columns[6] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(208159);
+    AppMethodBeat.o(214624);
   }
   
-  public final boolean cWv()
+  public final boolean dfH()
   {
-    AppMethodBeat.i(208158);
+    AppMethodBeat.i(214623);
     boolean bool = "debug".equals(this.field_pkgType);
-    AppMethodBeat.o(208158);
+    AppMethodBeat.o(214623);
     return bool;
   }
   

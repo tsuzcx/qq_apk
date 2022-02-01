@@ -1,6 +1,6 @@
 package com.tencent.mars.cdn;
 
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -76,7 +76,7 @@ public class CronetLogic
   public static String getSystemProperty(String paramString)
   {
     String str = System.getProperty(paramString);
-    ac.d("cronet", "property " + paramString + " res " + str);
+    ad.d("cronet", "property " + paramString + " res " + str);
     return str;
   }
   
@@ -102,7 +102,7 @@ public class CronetLogic
     {
       try
       {
-        ac.i("cronet", "verifyCertWithUserCA");
+        ad.i("cronet", "verifyCertWithUserCA");
         KeyStore localKeyStore = KeyStore.getInstance("AndroidCAStore");
         localKeyStore.load(null, null);
         Object localObject2 = new ArrayList();
@@ -124,9 +124,9 @@ public class CronetLogic
       }
       catch (KeyStoreException paramArrayOfByte)
       {
-        ac.e("cronet", paramArrayOfByte.getLocalizedMessage());
+        ad.e("cronet", paramArrayOfByte.getLocalizedMessage());
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
-        ac.i("cronet", "alias list size %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
+        ad.i("cronet", "alias list size %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
         if (((List)localObject2).size() > 0)
         {
           localObject1 = new ArrayList();
@@ -140,7 +140,7 @@ public class CronetLogic
             }
             catch (CertificateException paramArrayOfByte)
             {
-              ac.e("cronet", paramArrayOfByte.getLocalizedMessage());
+              ad.e("cronet", paramArrayOfByte.getLocalizedMessage());
               return convertToCronetResult(new AndroidCertVerifyResult(-5));
             }
           }
@@ -158,7 +158,7 @@ public class CronetLogic
           try
           {
             localX509Certificate.verify(((X509Certificate)localObject2).getPublicKey());
-            ac.i("cronet", "do user verify success");
+            ad.i("cronet", "do user verify success");
             i = 1;
             if (i == 0) {
               break label438;
@@ -170,27 +170,27 @@ public class CronetLogic
           }
           catch (Exception localException)
           {
-            ac.printErrStackTrace("cronet", localException, "Exception: check user verify certificate", new Object[0]);
+            ad.printErrStackTrace("cronet", localException, "Exception: check user verify certificate", new Object[0]);
           }
           continue;
         }
       }
       catch (NoSuchAlgorithmException paramArrayOfByte)
       {
-        ac.e("cronet", paramArrayOfByte.getLocalizedMessage());
+        ad.e("cronet", paramArrayOfByte.getLocalizedMessage());
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
-        ac.e("cronet", "checkServerTrusted self check aliasList null");
+        ad.e("cronet", "checkServerTrusted self check aliasList null");
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
       }
       catch (CertificateException paramArrayOfByte)
       {
-        ac.e("cronet", paramArrayOfByte.getLocalizedMessage());
+        ad.e("cronet", paramArrayOfByte.getLocalizedMessage());
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
       }
       catch (IOException paramArrayOfByte)
       {
-        ac.e("cronet", paramArrayOfByte.getLocalizedMessage());
+        ad.e("cronet", paramArrayOfByte.getLocalizedMessage());
         return convertToCronetResult(new AndroidCertVerifyResult(-1));
       }
     }
@@ -358,11 +358,6 @@ public class CronetLogic
     public String value = "";
   }
   
-  public static class HostIPHint
-  {
-    public CronetLogic.HostIpMap[] hostMap;
-  }
-  
   public static class ResponseHeader
   {
     public CronetLogic.HeaderMap[] headers = null;
@@ -405,7 +400,7 @@ public class CronetLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.cdn.CronetLogic
  * JD-Core Version:    0.7.0.1
  */

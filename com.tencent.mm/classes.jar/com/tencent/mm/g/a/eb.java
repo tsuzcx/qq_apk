@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class eb
   extends b
 {
-  public a ddS;
+  public a dpg;
+  public b dph;
   
   public eb()
   {
@@ -15,22 +16,23 @@ public final class eb
   
   private eb(byte paramByte)
   {
-    AppMethodBeat.i(115992);
-    this.ddS = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(115989);
+    this.dpg = new a();
+    this.dph = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(115992);
+    AppMethodBeat.o(115989);
   }
   
   public static final class a
   {
-    public String ddQ;
-    public int ddT = 0;
-    public int ddU = 0;
-    public double ddV = 0.0D;
-    public double ddW = 0.0D;
-    public String ddX;
-    public int ddY = 0;
+    public String doX;
+    public long msgId;
+  }
+  
+  public static final class b
+  {
+    public boolean doF;
   }
 }
 

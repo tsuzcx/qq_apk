@@ -2,7 +2,7 @@ package com.tencent.mm.ui.component;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/component/Sample;", "", "()V", "ABizUIC", "BBizUIC", "CBizUIC", "MainUIC", "SampleActivity", "SampleFragment", "libmmui_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/component/Sample;", "", "()V", "ABizUIC", "BBizUIC", "CBizUIC", "MainUIC", "SampleActivity", "SampleFragment", "libmmui_release"})
 public final class Sample {}
 
 

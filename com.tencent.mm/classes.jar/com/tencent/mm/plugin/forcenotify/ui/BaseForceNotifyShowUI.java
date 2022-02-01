@@ -9,15 +9,15 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.forcenotify.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 @com.tencent.mm.ui.base.a(3)
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/forcenotify/ui/BaseForceNotifyShowUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "username", "getUsername", "setUsername", "(Ljava/lang/String;)V", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-force-notify_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/forcenotify/ui/BaseForceNotifyShowUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "username", "getUsername", "setUsername", "(Ljava/lang/String;)V", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-force-notify_release"})
 public abstract class BaseForceNotifyShowUI
   extends MMActivity
 {
@@ -38,20 +38,20 @@ public abstract class BaseForceNotifyShowUI
     super.onCreate(paramBundle);
     fullScreenNoTitleBar(true);
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    this.username = ((String)j.d((Iterable)c.snp.snc));
+    this.username = ((String)j.d((Iterable)c.tjT.tjG));
     if (TextUtils.isEmpty((CharSequence)this.username))
     {
       this.username = getIntent().getStringExtra("userName");
-      ac.w(this.TAG, "fallback to get username! username=" + this.username);
+      ad.w(this.TAG, "fallback to get username! username=" + this.username);
     }
     if (TextUtils.isEmpty((CharSequence)this.username))
     {
-      ac.w(this.TAG, "fallback to get username! username=" + this.username);
+      ad.w(this.TAG, "fallback to get username! username=" + this.username);
       this.username = getIntent().getStringExtra("userName");
     }
     if (TextUtils.isEmpty((CharSequence)this.username))
     {
-      ac.e(this.TAG, "username is null");
+      ad.e(this.TAG, "username is null");
       this.username = "";
       finish();
     }
@@ -60,16 +60,16 @@ public abstract class BaseForceNotifyShowUI
   public void onDestroy()
   {
     super.onDestroy();
-    c.snp.snc.remove(this.username);
-    if (!c.snp.snc.isEmpty())
+    c.tjT.tjG.remove(this.username);
+    if (!c.tjT.tjG.isEmpty())
     {
-      c localc = c.snp;
-      Object localObject = j.c((Iterable)localc.snc);
-      k.g(localObject, "ForceNotifyService.getNotifyShowList().first()");
-      localc.afd((String)localObject);
-      ac.i(this.TAG, "continue to startActivity for username=" + (String)j.c((Iterable)c.snp.snc));
+      c localc = c.tjT;
+      Object localObject = j.c((Iterable)localc.tjG);
+      p.g(localObject, "ForceNotifyService.getNotifyShowList().first()");
+      localc.ajB((String)localObject);
+      ad.i(this.TAG, "continue to startActivity for username=" + (String)j.c((Iterable)c.tjT.tjG));
     }
-    ac.i(this.TAG, "[onDestroy]");
+    ad.i(this.TAG, "[onDestroy]");
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -78,7 +78,7 @@ public abstract class BaseForceNotifyShowUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -87,7 +87,7 @@ public abstract class BaseForceNotifyShowUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(149194);
-      this.sns.onBackPressed();
+      this.tjW.onBackPressed();
       AppMethodBeat.o(149194);
       return true;
     }

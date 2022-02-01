@@ -17,7 +17,7 @@ public class WxaWidgetSettingsUI
   extends MMActivity
 {
   String appId;
-  int dib;
+  int dtF;
   
   public int getLayoutId()
   {
@@ -41,10 +41,10 @@ public class WxaWidgetSettingsUI
     });
     setMMTitle(2131766328);
     this.appId = getIntent().getStringExtra("app_id");
-    this.dib = getIntent().getIntExtra("pkg_type", 0);
+    this.dtF = getIntent().getIntExtra("pkg_type", 0);
     MMSwitchBtn localMMSwitchBtn = (MMSwitchBtn)findViewById(2131303018);
-    paramBundle = b.Li(this.appId);
-    if ((paramBundle != null) && (paramBundle.jLU)) {}
+    paramBundle = b.OC(this.appId);
+    if ((paramBundle != null) && (paramBundle.kgf)) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       localMMSwitchBtn.setCheck(bool1);
@@ -53,42 +53,42 @@ public class WxaWidgetSettingsUI
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(121513);
-          DebuggerInfo localDebuggerInfo2 = b.Li(WxaWidgetSettingsUI.this.appId);
+          DebuggerInfo localDebuggerInfo2 = b.OC(WxaWidgetSettingsUI.this.appId);
           DebuggerInfo localDebuggerInfo1 = localDebuggerInfo2;
           if (localDebuggerInfo2 == null)
           {
             localDebuggerInfo1 = new DebuggerInfo();
             b.a(WxaWidgetSettingsUI.this.appId, localDebuggerInfo1);
           }
-          localDebuggerInfo1.jLU = paramAnonymousBoolean;
+          localDebuggerInfo1.kgf = paramAnonymousBoolean;
           AppMethodBeat.o(121513);
         }
       });
       localMMSwitchBtn = (MMSwitchBtn)findViewById(2131301019);
-      if ((paramBundle == null) || (!paramBundle.jLS))
+      if ((paramBundle == null) || (!paramBundle.kgd))
       {
         bool1 = bool2;
-        if (!j.a.on(this.dib)) {}
+        if (!j.a.oN(this.dtF)) {}
       }
       else
       {
         bool1 = true;
       }
       localMMSwitchBtn.setCheck(bool1);
-      localMMSwitchBtn.setEnabled(j.a.rq(this.dib));
+      localMMSwitchBtn.setEnabled(j.a.rQ(this.dtF));
       localMMSwitchBtn.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(121514);
-          DebuggerInfo localDebuggerInfo2 = b.Li(WxaWidgetSettingsUI.this.appId);
+          DebuggerInfo localDebuggerInfo2 = b.OC(WxaWidgetSettingsUI.this.appId);
           DebuggerInfo localDebuggerInfo1 = localDebuggerInfo2;
           if (localDebuggerInfo2 == null)
           {
             localDebuggerInfo1 = new DebuggerInfo();
             b.a(WxaWidgetSettingsUI.this.appId, localDebuggerInfo1);
           }
-          localDebuggerInfo1.jLS = paramAnonymousBoolean;
+          localDebuggerInfo1.kgd = paramAnonymousBoolean;
           AppMethodBeat.o(121514);
         }
       });

@@ -9,25 +9,25 @@ import java.util.HashMap;
 
 public final class a
 {
-  static HashMap<String, a> KHh;
+  static HashMap<String, a> MxH;
   
   static
   {
-    AppMethodBeat.i(208946);
-    KHh = new HashMap();
-    AppMethodBeat.o(208946);
+    AppMethodBeat.i(195586);
+    MxH = new HashMap();
+    AppMethodBeat.o(195586);
   }
   
-  public static a aVx(String paramString)
+  public static a bbA(String paramString)
   {
     try
     {
-      AppMethodBeat.i(208945);
-      if (!KHh.containsKey(paramString)) {
-        KHh.put(paramString, new a(paramString));
+      AppMethodBeat.i(195585);
+      if (!MxH.containsKey(paramString)) {
+        MxH.put(paramString, new a(paramString));
       }
-      paramString = (a)KHh.get(paramString);
-      AppMethodBeat.o(208945);
+      paramString = (a)MxH.get(paramString);
+      AppMethodBeat.o(195585);
       return paramString;
     }
     finally {}
@@ -36,74 +36,60 @@ public final class a
   public static final class a
     extends c
   {
-    String KHi;
+    String MxI;
     
     public a(String paramString)
     {
-      AppMethodBeat.i(208941);
-      this.KHi = paramString;
-      this.TAG = (fLH() + "Scheduler");
-      AppMethodBeat.o(208941);
+      AppMethodBeat.i(195582);
+      this.MxI = paramString;
+      this.TAG = (gdd() + "Scheduler");
+      AppMethodBeat.o(195582);
     }
     
     public final boolean a(SchedulerConfig paramSchedulerConfig1, SchedulerConfig paramSchedulerConfig2)
     {
-      AppMethodBeat.i(208942);
-      if ((paramSchedulerConfig1.KIx != paramSchedulerConfig2.KIx) || (!mN(paramSchedulerConfig1.path, paramSchedulerConfig2.path)))
+      AppMethodBeat.i(195583);
+      if ((paramSchedulerConfig1.Mzc != paramSchedulerConfig2.Mzc) || (!nl(paramSchedulerConfig1.path, paramSchedulerConfig2.path)))
       {
-        AppMethodBeat.o(208942);
+        AppMethodBeat.o(195583);
         return false;
       }
       boolean bool = super.a(paramSchedulerConfig1, paramSchedulerConfig2);
-      AppMethodBeat.o(208942);
+      AppMethodBeat.o(195583);
       return bool;
     }
     
-    public final String fLH()
+    public final String gdd()
     {
-      return this.KHi;
+      return this.MxI;
     }
     
-    public final int fLI()
+    public final int gde()
     {
       return 15;
     }
     
-    public final String fLJ()
+    public final String zR(boolean paramBoolean)
     {
-      AppMethodBeat.i(208944);
-      String str = b.mx("UPDATE_SCHEDULE_TIME_RANGE_BIND", "tools");
-      if (TextUtils.isEmpty(str))
-      {
-        str = super.fLJ();
-        AppMethodBeat.o(208944);
-        return str;
-      }
-      AppMethodBeat.o(208944);
-      return str;
-    }
-    
-    public final String ze(boolean paramBoolean)
-    {
-      AppMethodBeat.i(208943);
+      AppMethodBeat.i(195584);
       String str2;
       String str1;
       if (!paramBoolean)
       {
-        str2 = b.mx("UPDATE_SPEED_CONFIG", "tools");
+        str2 = b.mV("UPDATE_SPEED_CONFIG", "tools");
         str1 = str2;
         if (TextUtils.isEmpty(str2)) {
-          str1 = com.tencent.xweb.a.mx("UPDATE_SPEED_CONFIG", "tools");
+          str1 = com.tencent.xweb.a.mV("UPDATE_SPEED_CONFIG", "tools");
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(208943);
+        AppMethodBeat.o(195584);
         return str1;
-        str2 = b.mx("UPDATE_FORWARD_SPEED_CONFIG", "tools");
+        str2 = b.mV("UPDATE_FORWARD_SPEED_CONFIG", "tools");
         str1 = str2;
         if (TextUtils.isEmpty(str2)) {
-          str1 = com.tencent.xweb.a.mx("UPDATE_FORWARD_SPEED_CONFIG", "tools");
+          str1 = com.tencent.xweb.a.mV("UPDATE_FORWARD_SPEED_CONFIG", "tools");
         }
       }
     }

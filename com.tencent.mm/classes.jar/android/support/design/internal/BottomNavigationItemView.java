@@ -26,19 +26,19 @@ public class BottomNavigationItemView
   extends FrameLayout
   implements p.a
 {
-  private static final int[] hY = { 16842912 };
-  private ColorStateList fI;
-  private final int hZ;
-  private float ia;
-  private float ib;
-  private float ic;
-  private int ie;
-  private boolean jdField_if;
-  private ImageView ig;
-  private final TextView ih;
-  private final TextView ii;
-  private int ij = -1;
-  private j ik;
+  private static final int[] jT = { 16842912 };
+  private ColorStateList hz;
+  private final int jU;
+  private float jV;
+  private float jW;
+  private float jX;
+  private int jY;
+  private boolean jZ;
+  private ImageView ka;
+  private final TextView kb;
+  private final TextView kc;
+  private int kd = -1;
+  private j ke;
   
   public BottomNavigationItemView(Context paramContext)
   {
@@ -56,14 +56,14 @@ public class BottomNavigationItemView
     paramAttributeSet = getResources();
     LayoutInflater.from(paramContext).inflate(2131493692, this, true);
     setBackgroundResource(2131231891);
-    this.hZ = paramAttributeSet.getDimensionPixelSize(2131166101);
-    this.ig = ((ImageView)findViewById(2131300874));
-    this.ih = ((TextView)findViewById(2131304841));
-    this.ii = ((TextView)findViewById(2131301309));
-    t.p(this.ih, 2);
-    t.p(this.ii, 2);
+    this.jU = paramAttributeSet.getDimensionPixelSize(2131166101);
+    this.ka = ((ImageView)findViewById(2131300874));
+    this.kb = ((TextView)findViewById(2131304841));
+    this.kc = ((TextView)findViewById(2131301309));
+    t.p(this.kb, 2);
+    t.p(this.kc, 2);
     setFocusable(true);
-    b(this.ih.getTextSize(), this.ii.getTextSize());
+    b(this.kb.getTextSize(), this.kc.getTextSize());
   }
   
   private static void a(View paramView, float paramFloat1, float paramFloat2, int paramInt)
@@ -83,14 +83,14 @@ public class BottomNavigationItemView
   
   private void b(float paramFloat1, float paramFloat2)
   {
-    this.ia = (paramFloat1 - paramFloat2);
-    this.ib = (1.0F * paramFloat2 / paramFloat1);
-    this.ic = (1.0F * paramFloat1 / paramFloat2);
+    this.jV = (paramFloat1 - paramFloat2);
+    this.jW = (1.0F * paramFloat2 / paramFloat1);
+    this.jX = (1.0F * paramFloat1 / paramFloat2);
   }
   
   public final void a(j paramj)
   {
-    this.ik = paramj;
+    this.ke = paramj;
     setCheckable(paramj.isCheckable());
     setChecked(paramj.isChecked());
     setEnabled(paramj.isEnabled());
@@ -109,26 +109,26 @@ public class BottomNavigationItemView
     }
   }
   
-  public final boolean bl()
+  public final boolean bA()
   {
     return false;
   }
   
   public j getItemData()
   {
-    return this.ik;
+    return this.ke;
   }
   
   public int getItemPosition()
   {
-    return this.ij;
+    return this.kd;
   }
   
   public int[] onCreateDrawableState(int paramInt)
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
-    if ((this.ik != null) && (this.ik.isCheckable()) && (this.ik.isChecked())) {
-      mergeDrawableStates(arrayOfInt, hY);
+    if ((this.ke != null) && (this.ke.isCheckable()) && (this.ke.isChecked())) {
+      mergeDrawableStates(arrayOfInt, jT);
     }
     return arrayOfInt;
   }
@@ -140,11 +140,11 @@ public class BottomNavigationItemView
   
   public void setChecked(boolean paramBoolean)
   {
-    this.ii.setPivotX(this.ii.getWidth() / 2);
-    this.ii.setPivotY(this.ii.getBaseline());
-    this.ih.setPivotX(this.ih.getWidth() / 2);
-    this.ih.setPivotY(this.ih.getBaseline());
-    switch (this.ie)
+    this.kc.setPivotX(this.kc.getWidth() / 2);
+    this.kc.setPivotY(this.kc.getBaseline());
+    this.kb.setPivotX(this.kb.getWidth() / 2);
+    this.kb.setPivotY(this.kb.getBaseline());
+    switch (this.jY)
     {
     }
     for (;;)
@@ -152,60 +152,60 @@ public class BottomNavigationItemView
       refreshDrawableState();
       setSelected(paramBoolean);
       return;
-      if (this.jdField_if)
+      if (this.jZ)
       {
         if (paramBoolean)
         {
-          a(this.ig, this.hZ, 49);
-          a(this.ii, 1.0F, 1.0F, 0);
+          a(this.ka, this.jU, 49);
+          a(this.kc, 1.0F, 1.0F, 0);
         }
         for (;;)
         {
-          this.ih.setVisibility(4);
+          this.kb.setVisibility(4);
           break;
-          a(this.ig, this.hZ, 17);
-          a(this.ii, 0.5F, 0.5F, 4);
+          a(this.ka, this.jU, 17);
+          a(this.kc, 0.5F, 0.5F, 4);
         }
       }
       if (paramBoolean)
       {
-        a(this.ig, (int)(this.hZ + this.ia), 49);
-        a(this.ii, 1.0F, 1.0F, 0);
-        a(this.ih, this.ib, this.ib, 4);
+        a(this.ka, (int)(this.jU + this.jV), 49);
+        a(this.kc, 1.0F, 1.0F, 0);
+        a(this.kb, this.jW, this.jW, 4);
       }
       else
       {
-        a(this.ig, this.hZ, 49);
-        a(this.ii, this.ic, this.ic, 4);
-        a(this.ih, 1.0F, 1.0F, 0);
+        a(this.ka, this.jU, 49);
+        a(this.kc, this.jX, this.jX, 4);
+        a(this.kb, 1.0F, 1.0F, 0);
         continue;
         if (paramBoolean)
         {
-          a(this.ig, this.hZ, 49);
-          a(this.ii, 1.0F, 1.0F, 0);
+          a(this.ka, this.jU, 49);
+          a(this.kc, 1.0F, 1.0F, 0);
         }
         for (;;)
         {
-          this.ih.setVisibility(4);
+          this.kb.setVisibility(4);
           break;
-          a(this.ig, this.hZ, 17);
-          a(this.ii, 0.5F, 0.5F, 4);
+          a(this.ka, this.jU, 17);
+          a(this.kc, 0.5F, 0.5F, 4);
         }
         if (paramBoolean)
         {
-          a(this.ig, (int)(this.hZ + this.ia), 49);
-          a(this.ii, 1.0F, 1.0F, 0);
-          a(this.ih, this.ib, this.ib, 4);
+          a(this.ka, (int)(this.jU + this.jV), 49);
+          a(this.kc, 1.0F, 1.0F, 0);
+          a(this.kb, this.jW, this.jW, 4);
         }
         else
         {
-          a(this.ig, this.hZ, 49);
-          a(this.ii, this.ic, this.ic, 4);
-          a(this.ih, 1.0F, 1.0F, 0);
+          a(this.ka, this.jU, 49);
+          a(this.kc, this.jX, this.jX, 4);
+          a(this.kb, 1.0F, 1.0F, 0);
           continue;
-          a(this.ig, this.hZ, 17);
-          this.ii.setVisibility(8);
-          this.ih.setVisibility(8);
+          a(this.ka, this.jU, 17);
+          this.kc.setVisibility(8);
+          this.kb.setVisibility(8);
         }
       }
     }
@@ -214,9 +214,9 @@ public class BottomNavigationItemView
   public void setEnabled(boolean paramBoolean)
   {
     super.setEnabled(paramBoolean);
-    this.ih.setEnabled(paramBoolean);
-    this.ii.setEnabled(paramBoolean);
-    this.ig.setEnabled(paramBoolean);
+    this.kb.setEnabled(paramBoolean);
+    this.kc.setEnabled(paramBoolean);
+    this.ka.setEnabled(paramBoolean);
     if (paramBoolean)
     {
       t.a(this, r.W(getContext()));
@@ -238,8 +238,8 @@ public class BottomNavigationItemView
     for (;;)
     {
       localObject = a.i(paramDrawable).mutate();
-      a.a((Drawable)localObject, this.fI);
-      this.ig.setImageDrawable((Drawable)localObject);
+      a.a((Drawable)localObject, this.hz);
+      this.ka.setImageDrawable((Drawable)localObject);
       return;
       label40:
       paramDrawable = ((Drawable.ConstantState)localObject).newDrawable();
@@ -248,17 +248,17 @@ public class BottomNavigationItemView
   
   public void setIconSize(int paramInt)
   {
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.ig.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.ka.getLayoutParams();
     localLayoutParams.width = paramInt;
     localLayoutParams.height = paramInt;
-    this.ig.setLayoutParams(localLayoutParams);
+    this.ka.setLayoutParams(localLayoutParams);
   }
   
   public void setIconTintList(ColorStateList paramColorStateList)
   {
-    this.fI = paramColorStateList;
-    if (this.ik != null) {
-      setIcon(this.ik.getIcon());
+    this.hz = paramColorStateList;
+    if (this.ke != null) {
+      setIcon(this.ke.getIcon());
     }
   }
   
@@ -279,15 +279,15 @@ public class BottomNavigationItemView
   
   public void setItemPosition(int paramInt)
   {
-    this.ij = paramInt;
+    this.kd = paramInt;
   }
   
   public void setLabelVisibilityMode(int paramInt)
   {
-    if (this.ie != paramInt)
+    if (this.jY != paramInt)
     {
-      this.ie = paramInt;
-      if (this.ik == null) {
+      this.jY = paramInt;
+      if (this.ke == null) {
         break label38;
       }
     }
@@ -295,7 +295,7 @@ public class BottomNavigationItemView
     for (paramInt = 1;; paramInt = 0)
     {
       if (paramInt != 0) {
-        setChecked(this.ik.isChecked());
+        setChecked(this.ke.isChecked());
       }
       return;
     }
@@ -303,10 +303,10 @@ public class BottomNavigationItemView
   
   public void setShifting(boolean paramBoolean)
   {
-    if (this.jdField_if != paramBoolean)
+    if (this.jZ != paramBoolean)
     {
-      this.jdField_if = paramBoolean;
-      if (this.ik == null) {
+      this.jZ = paramBoolean;
+      if (this.ke == null) {
         break label38;
       }
     }
@@ -314,7 +314,7 @@ public class BottomNavigationItemView
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        setChecked(this.ik.isChecked());
+        setChecked(this.ke.isChecked());
       }
       return;
     }
@@ -322,30 +322,30 @@ public class BottomNavigationItemView
   
   public void setTextAppearanceActive(int paramInt)
   {
-    q.d(this.ii, paramInt);
-    b(this.ih.getTextSize(), this.ii.getTextSize());
+    q.d(this.kc, paramInt);
+    b(this.kb.getTextSize(), this.kc.getTextSize());
   }
   
   public void setTextAppearanceInactive(int paramInt)
   {
-    q.d(this.ih, paramInt);
-    b(this.ih.getTextSize(), this.ii.getTextSize());
+    q.d(this.kb, paramInt);
+    b(this.kb.getTextSize(), this.kc.getTextSize());
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
     if (paramColorStateList != null)
     {
-      this.ih.setTextColor(paramColorStateList);
-      this.ii.setTextColor(paramColorStateList);
+      this.kb.setTextColor(paramColorStateList);
+      this.kc.setTextColor(paramColorStateList);
     }
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    this.ih.setText(paramCharSequence);
-    this.ii.setText(paramCharSequence);
-    if ((this.ik == null) || (TextUtils.isEmpty(this.ik.getContentDescription()))) {
+    this.kb.setText(paramCharSequence);
+    this.kc.setText(paramCharSequence);
+    if ((this.ke == null) || (TextUtils.isEmpty(this.ke.getContentDescription()))) {
       setContentDescription(paramCharSequence);
     }
   }

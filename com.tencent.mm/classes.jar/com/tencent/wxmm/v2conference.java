@@ -25,8 +25,8 @@ public class v2conference
   {
     AppMethodBeat.i(40774);
     System.loadLibrary("c++_shared");
-    System.loadLibrary("marsbridgexlog");
-    System.loadLibrary("marsbridgenetwork");
+    System.loadLibrary("ilink_xlog");
+    System.loadLibrary("ilink_network");
     System.loadLibrary("confService");
     AppMethodBeat.o(40774);
   }
@@ -201,7 +201,7 @@ public class v2conference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.wxmm.v2conference
  * JD-Core Version:    0.7.0.1
  */

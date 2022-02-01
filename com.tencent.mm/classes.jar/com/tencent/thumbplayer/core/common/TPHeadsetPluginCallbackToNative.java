@@ -25,25 +25,25 @@ public class TPHeadsetPluginCallbackToNative
   @TPMethodCalledByNative
   private void registerCallback()
   {
-    AppMethodBeat.i(193632);
+    AppMethodBeat.i(220414);
     TPHeadsetPluginDetector.addHeadsetPluginListener(this);
-    AppMethodBeat.o(193632);
+    AppMethodBeat.o(220414);
   }
   
   @TPMethodCalledByNative
   private void unregisterCallback()
   {
-    AppMethodBeat.i(193633);
+    AppMethodBeat.i(220415);
     TPHeadsetPluginDetector.removeHeadsetPluginListener(this);
-    AppMethodBeat.o(193633);
+    AppMethodBeat.o(220415);
   }
   
   public void onHeadsetPlugin(Set<Integer> paramSet1, Set<Integer> paramSet2)
   {
-    AppMethodBeat.i(193634);
+    AppMethodBeat.i(220416);
     TPNativeLog.printLog(2, "TPHeadsetPluginCallback", "onHeadsetPlugin: oldOutputs: " + paramSet1 + ", newOutputs: " + paramSet2);
     _onAudioRouteChanged(paramSet1, paramSet2);
-    AppMethodBeat.o(193634);
+    AppMethodBeat.o(220416);
   }
 }
 

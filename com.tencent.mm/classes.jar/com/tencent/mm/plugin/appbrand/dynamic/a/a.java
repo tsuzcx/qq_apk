@@ -10,35 +10,35 @@ import java.util.Set;
 final class a
   implements e
 {
-  private final h<Object, View> jLq;
+  private final h<Object, View> kfB;
   
   a()
   {
     AppMethodBeat.i(121207);
-    this.jLq = new h();
+    this.kfB = new h();
     AppMethodBeat.o(121207);
   }
   
-  public final Map<Object, Set<View>> aAA()
+  public final Map<Object, Set<View>> aDD()
   {
     AppMethodBeat.i(121212);
-    Map localMap = this.jLq.bxh();
+    Map localMap = this.kfB.bBn();
     AppMethodBeat.o(121212);
     return localMap;
   }
   
-  public final Set<View> bV(Object paramObject)
+  public final Set<View> bX(Object paramObject)
   {
     AppMethodBeat.i(121210);
-    paramObject = this.jLq.cC(paramObject);
+    paramObject = this.kfB.cE(paramObject);
     AppMethodBeat.o(121210);
     return paramObject;
   }
   
-  public final Set<View> bW(Object paramObject)
+  public final Set<View> bY(Object paramObject)
   {
     AppMethodBeat.i(121211);
-    paramObject = this.jLq.cD(paramObject);
+    paramObject = this.kfB.cF(paramObject);
     AppMethodBeat.o(121211);
     return paramObject;
   }
@@ -46,7 +46,7 @@ final class a
   public final boolean d(Object paramObject, View paramView)
   {
     AppMethodBeat.i(121208);
-    boolean bool = this.jLq.h(paramObject, paramView);
+    boolean bool = this.kfB.j(paramObject, paramView);
     AppMethodBeat.o(121208);
     return bool;
   }
@@ -54,7 +54,7 @@ final class a
   public final boolean e(Object paramObject, View paramView)
   {
     AppMethodBeat.i(121209);
-    boolean bool = this.jLq.B(paramObject, paramView);
+    boolean bool = this.kfB.D(paramObject, paramView);
     AppMethodBeat.o(121209);
     return bool;
   }

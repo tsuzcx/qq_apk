@@ -3,13 +3,13 @@ package com.tencent.mm.protocal.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int DJF;
-  public com.tencent.mm.bw.b DJO;
-  public int DJP;
+  public int FoM;
+  public com.tencent.mm.bx.b FoV;
+  public int FoW;
   public int count;
-  public int xxQ;
+  public int yMB;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,44 +17,44 @@ public final class d
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.DJO == null)
+      if (this.FoV == null)
       {
         paramVarArgs = new f.a.a.b("Not all required fields were included: value");
         AppMethodBeat.o(143943);
         throw paramVarArgs;
       }
-      paramVarArgs.aR(1, this.DJF);
-      if (this.DJO != null) {
-        paramVarArgs.c(2, this.DJO);
+      paramVarArgs.aS(1, this.FoM);
+      if (this.FoV != null) {
+        paramVarArgs.c(2, this.FoV);
       }
-      paramVarArgs.aR(3, this.DJP);
-      paramVarArgs.aR(4, this.xxQ);
-      paramVarArgs.aR(5, this.count);
+      paramVarArgs.aS(3, this.FoW);
+      paramVarArgs.aS(4, this.yMB);
+      paramVarArgs.aS(5, this.count);
       AppMethodBeat.o(143943);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.DJF) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.FoM) + 0;
       paramInt = i;
-      if (this.DJO != null) {
-        paramInt = i + f.a.a.b.b.a.b(2, this.DJO);
+      if (this.FoV != null) {
+        paramInt = i + f.a.a.b.b.a.b(2, this.FoV);
       }
-      i = f.a.a.b.b.a.bx(3, this.DJP);
-      int j = f.a.a.b.b.a.bx(4, this.xxQ);
-      int k = f.a.a.b.b.a.bx(5, this.count);
+      i = f.a.a.b.b.a.bz(3, this.FoW);
+      int j = f.a.a.b.b.a.bz(4, this.yMB);
+      int k = f.a.a.b.b.a.bz(5, this.count);
       AppMethodBeat.o(143943);
       return paramInt + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      if (this.DJO == null)
+      if (this.FoV == null)
       {
         paramVarArgs = new f.a.a.b("Not all required fields were included: value");
         AppMethodBeat.o(143943);
@@ -73,23 +73,23 @@ public final class d
         AppMethodBeat.o(143943);
         return -1;
       case 1: 
-        locald.DJF = locala.LVo.xF();
+        locald.FoM = locala.NPN.zc();
         AppMethodBeat.o(143943);
         return 0;
       case 2: 
-        locald.DJO = locala.LVo.gfk();
+        locald.FoV = locala.NPN.gxI();
         AppMethodBeat.o(143943);
         return 0;
       case 3: 
-        locald.DJP = locala.LVo.xF();
+        locald.FoW = locala.NPN.zc();
         AppMethodBeat.o(143943);
         return 0;
       case 4: 
-        locald.xxQ = locala.LVo.xF();
+        locald.yMB = locala.NPN.zc();
         AppMethodBeat.o(143943);
         return 0;
       }
-      locald.count = locala.LVo.xF();
+      locald.count = locala.NPN.zc();
       AppMethodBeat.o(143943);
       return 0;
     }
@@ -99,7 +99,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.a.a.d
  * JD-Core Version:    0.7.0.1
  */

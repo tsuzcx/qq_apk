@@ -7,14 +7,14 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.an;
+import com.tencent.mm.ui.ap;
 
 public class d
   implements DragSortListView.i
 {
-  private Bitmap JnX;
-  int JnY = -16777216;
-  private ImageView lqK;
+  private Bitmap Lfu;
+  int Lfv = -16777216;
+  private ImageView cum;
   private ListView mListView;
   
   public d(ListView paramListView)
@@ -22,7 +22,7 @@ public class d
     this.mListView = paramListView;
   }
   
-  public final View adn(int paramInt)
+  public final View afN(int paramInt)
   {
     AppMethodBeat.i(159840);
     Object localObject = this.mListView;
@@ -34,29 +34,29 @@ public class d
     }
     ((View)localObject).setPressed(false);
     ((View)localObject).setDrawingCacheEnabled(true);
-    this.JnX = Bitmap.createBitmap(((View)localObject).getDrawingCache());
+    this.Lfu = Bitmap.createBitmap(((View)localObject).getDrawingCache());
     ((View)localObject).setDrawingCacheEnabled(false);
-    if (this.lqK == null) {
-      this.lqK = new ImageView(this.mListView.getContext());
+    if (this.cum == null) {
+      this.cum = new ImageView(this.mListView.getContext());
     }
-    this.lqK.setBackgroundColor(this.JnY);
-    this.lqK.setPadding(0, 0, 0, 0);
-    this.lqK.setImageBitmap(this.JnX);
-    this.lqK.setLayoutParams(new ViewGroup.LayoutParams(((View)localObject).getWidth(), ((View)localObject).getHeight()));
-    localObject = this.lqK;
+    this.cum.setBackgroundColor(this.Lfv);
+    this.cum.setPadding(0, 0, 0, 0);
+    this.cum.setImageBitmap(this.Lfu);
+    this.cum.setLayoutParams(new ViewGroup.LayoutParams(((View)localObject).getWidth(), ((View)localObject).getHeight()));
+    localObject = this.cum;
     AppMethodBeat.o(159840);
     return localObject;
   }
   
-  public final void gP(View paramView)
+  public final void hg(View paramView)
   {
     AppMethodBeat.i(159841);
     if ((paramView instanceof ImageView)) {
       ((ImageView)paramView).setImageDrawable(null);
     }
-    an.i("MicroMsg.SimpleFloatViewManager", "bitmap recycle %s", new Object[] { this.JnX.toString() });
-    this.JnX.recycle();
-    this.JnX = null;
+    ap.i("MicroMsg.SimpleFloatViewManager", "bitmap recycle %s", new Object[] { this.Lfu.toString() });
+    this.Lfu.recycle();
+    this.Lfu = null;
     AppMethodBeat.o(159841);
   }
   

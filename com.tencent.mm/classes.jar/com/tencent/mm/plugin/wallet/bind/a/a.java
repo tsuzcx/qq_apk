@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet.bind.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,8 +10,8 @@ import org.json.JSONObject;
 public final class a
   extends m
 {
-  public int BeS;
-  public String BeT;
+  public int CFh;
+  public String CFi;
   
   public a(String paramString1, String paramString2)
   {
@@ -45,12 +45,12 @@ public final class a
     {
       if (paramJSONObject != null)
       {
-        this.BeS = paramJSONObject.optInt("unbindbannerlevel", 0);
-        this.BeT = paramJSONObject.optString("unbindbannerwording");
+        this.CFh = paramJSONObject.optInt("unbindbannerlevel", 0);
+        this.CFi = paramJSONObject.optString("unbindbannerwording");
         AppMethodBeat.o(69062);
         return;
       }
-      ac.e("MicroMsg.NetSceneGetUnbindInfo", "json is null");
+      ad.e("MicroMsg.NetSceneGetUnbindInfo", "json is null");
     }
     AppMethodBeat.o(69062);
   }

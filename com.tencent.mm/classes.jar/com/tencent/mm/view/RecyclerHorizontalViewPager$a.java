@@ -2,7 +2,7 @@ package com.tencent.mm.view;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/view/RecyclerHorizontalViewPager$Companion;", "", "()V", "TAG", "", "libmmui_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/view/RecyclerHorizontalViewPager$Companion;", "", "()V", "TAG", "", "libmmui_release"})
 public final class RecyclerHorizontalViewPager$a {}
 
 

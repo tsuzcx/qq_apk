@@ -4,30 +4,29 @@ import android.content.Context;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import android.text.TextUtils;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ck;
-import com.tencent.mm.g.b.a.ip;
-import com.tencent.mm.g.b.a.iq;
+import com.tencent.mm.al.x;
+import com.tencent.mm.g.b.a.dc;
+import com.tencent.mm.g.b.a.ju;
+import com.tencent.mm.g.b.a.jv;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.n;
+import com.tencent.mm.plugin.appbrand.service.o;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
 import com.tencent.mm.plugin.websearch.api.WidgetData.Info;
 import com.tencent.mm.plugin.websearch.api.WidgetData.MoreFooter;
+import com.tencent.mm.plugin.websearch.api.aa;
+import com.tencent.mm.plugin.websearch.api.ab;
 import com.tencent.mm.plugin.websearch.api.d;
-import com.tencent.mm.plugin.websearch.api.i;
-import com.tencent.mm.plugin.websearch.api.l;
+import com.tencent.mm.plugin.websearch.api.j;
 import com.tencent.mm.plugin.websearch.api.m;
-import com.tencent.mm.plugin.websearch.api.v;
-import com.tencent.mm.plugin.websearch.api.w;
+import com.tencent.mm.plugin.websearch.api.n;
 import com.tencent.mm.plugin.websearch.api.z;
 import com.tencent.mm.plugin.websearch.widget.b.a.1;
 import com.tencent.mm.plugin.websearch.widget.b.a.2;
@@ -35,11 +34,11 @@ import com.tencent.mm.plugin.websearch.widget.view.footer.BtnSwitchFooter;
 import com.tencent.mm.plugin.websearch.widget.view.footer.DirectionSwitchFooter;
 import com.tencent.mm.plugin.websearch.widget.view.footer.DownArrowSwitchFooter;
 import com.tencent.mm.plugin.websearch.widget.view.footer.MoreFooter;
-import com.tencent.mm.protocal.protobuf.cpk;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.cup;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.c;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 import java.net.URLEncoder;
@@ -51,84 +50,84 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public final class b
-  implements l
+  implements m
 {
-  d CbL;
-  b CbO;
-  View CbS;
-  LinearLayout CbT;
-  com.tencent.mm.plugin.websearch.api.c CbU;
-  String CbV;
-  String CbW;
-  View CbX;
-  private com.tencent.mm.plugin.websearch.widget.view.footer.a CbY;
-  LinearLayout CbZ;
-  MoreFooter Cca;
-  float[] Ccb;
-  int Ccc;
-  com.tencent.mm.plugin.websearch.api.f Ccd;
-  a Cce;
-  WidgetData Ccf;
-  private WidgetData Ccg;
-  ThreeDotsLoadingView Cch;
-  View Cci;
-  View Ccj;
-  private com.tencent.mm.plugin.websearch.widget.view.footer.a.a Cck;
-  View.OnClickListener Ccl;
+  com.tencent.mm.plugin.websearch.api.e DEJ;
+  b DEM;
+  View DEQ;
+  LinearLayout DER;
+  d DES;
+  String DET;
+  String DEU;
+  View DEW;
+  private com.tencent.mm.plugin.websearch.widget.view.footer.a DEX;
+  LinearLayout DEY;
+  MoreFooter DEZ;
+  float[] DFa;
+  int DFb;
+  com.tencent.mm.plugin.websearch.api.g DFc;
+  a DFd;
+  WidgetData DFe;
+  private WidgetData DFf;
+  ThreeDotsLoadingView DFg;
+  View DFh;
+  View DFi;
+  private com.tencent.mm.plugin.websearch.widget.view.footer.a.a DFj;
+  View.OnClickListener DFk;
   MMActivity activity;
-  ViewGroup fWU;
+  ViewGroup gqv;
   volatile boolean isLoading;
   boolean isRetry;
   boolean isSelected;
-  View rKi;
-  boolean tdc;
+  View sFi;
+  boolean uaS;
   View view;
-  TextView wGo;
+  TextView xTV;
   
   public b()
   {
     AppMethodBeat.i(116713);
-    this.Ccb = new float[2];
-    this.Cck = new com.tencent.mm.plugin.websearch.widget.view.footer.a.a()
+    this.DFa = new float[2];
+    this.DFj = new com.tencent.mm.plugin.websearch.widget.view.footer.a.a()
     {
-      public final void eyj()
+      public final void eNa()
       {
         AppMethodBeat.i(116689);
-        List localList = b.this.Cce.eya();
+        List localList = b.this.DFd.eMR();
         if ((localList == null) || (localList.isEmpty()) || (localList.size() == 1))
         {
           AppMethodBeat.o(116689);
           return;
         }
-        com.tencent.mm.plugin.websearch.widget.f.a(1, b.this.Ccf, null);
-        b.this.Ccc = ((com.tencent.mm.plugin.websearch.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.websearch.api.e.class)).a(b.this.activity, ai.getContext().getString(2131763084), "", localList, new w()
+        com.tencent.mm.plugin.websearch.widget.f.a(1, b.this.DFe, null);
+        b.this.DFb = ((com.tencent.mm.plugin.websearch.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.websearch.api.f.class)).a(b.this.activity, aj.getContext().getString(2131763084), "", localList, new aa()
         {
-          public final void iD(int paramAnonymous2Int1, int paramAnonymous2Int2)
+          public final void iQ(int paramAnonymous2Int1, int paramAnonymous2Int2)
           {
-            if (paramAnonymous2Int2 != b.this.Ccc) {}
+            if (paramAnonymous2Int2 != b.this.DFb) {}
           }
         });
         AppMethodBeat.o(116689);
       }
       
-      public final void eyk()
+      public final void eNb()
       {
         AppMethodBeat.i(116690);
-        b.this.Ccd.exe();
+        b.this.DFc.eLS();
         AppMethodBeat.o(116690);
       }
       
-      public final void eyl()
+      public final void eNc()
       {
         AppMethodBeat.i(116691);
-        b.this.Ccd.exf();
+        b.this.DFc.eLT();
         AppMethodBeat.o(116691);
       }
       
       public final int getItemCount()
       {
         AppMethodBeat.i(116694);
-        int i = b.this.Cce.exZ();
+        int i = b.this.DFd.eMQ();
         AppMethodBeat.o(116694);
         return i;
       }
@@ -136,7 +135,7 @@ public final class b
       public final boolean hasNext()
       {
         AppMethodBeat.i(116692);
-        boolean bool = b.this.Cce.hasNext();
+        boolean bool = b.this.DFd.hasNext();
         AppMethodBeat.o(116692);
         return bool;
       }
@@ -144,37 +143,41 @@ public final class b
       public final boolean hasPrevious()
       {
         AppMethodBeat.i(116693);
-        boolean bool = b.this.Cce.eyb();
+        boolean bool = b.this.DFd.eMS();
         AppMethodBeat.o(116693);
         return bool;
       }
     };
-    this.Ccl = new View.OnClickListener()
+    this.DFk = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(116695);
-        if (b.this.Ccf.BZR != null)
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/WidgetView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (b.this.DFe.DCN != null)
         {
-          b.this.ab(b.this.Ccf.BZR.Cae, b.this.Ccf.BZR.Cad, b.this.Ccf.BZS.BZZ);
-          b.this.nt(true);
+          b.this.ag(b.this.DFe.DCN.DCZ, b.this.DFe.DCN.DCY, b.this.DFe.DCO.DCU);
+          b.this.nN(true);
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/widget/view/WidgetView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(116695);
       }
     };
     AppMethodBeat.o(116713);
   }
   
-  private static void aY(Map<String, String> paramMap)
+  private static void ba(Map<String, String> paramMap)
   {
     AppMethodBeat.i(116726);
-    cpk localcpk = new cpk();
-    localcpk.FCf = aZ(paramMap);
-    com.tencent.mm.ak.x.a(new v(localcpk).hEg, null);
+    cup localcup = new cup();
+    localcup.Hmu = bb(paramMap);
+    x.a(new z(localcup).hWL, null);
     AppMethodBeat.o(116726);
   }
   
-  private static String aZ(Map<String, String> paramMap)
+  private static String bb(Map<String, String> paramMap)
   {
     AppMethodBeat.i(116727);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -189,25 +192,25 @@ public final class b
     return paramMap;
   }
   
-  private void dFp()
+  private void dQR()
   {
     AppMethodBeat.i(116719);
-    switch (this.Ccf.BZU)
+    switch (this.DFe.DCQ)
     {
     default: 
-      ac.w("WidgetView", "unknown footer type %d", new Object[] { Integer.valueOf(this.Ccf.BZU) });
+      com.tencent.mm.sdk.platformtools.ad.w("WidgetView", "unknown footer type %d", new Object[] { Integer.valueOf(this.DFe.DCQ) });
       AppMethodBeat.o(116719);
       return;
     case 2: 
-      this.CbZ.setVisibility(8);
-      this.Cca.setVisibility(0);
-      eye();
+      this.DEY.setVisibility(8);
+      this.DEZ.setVisibility(0);
+      eMV();
       AppMethodBeat.o(116719);
       return;
     }
-    this.Cca.setVisibility(8);
-    this.CbZ.setVisibility(0);
-    eyf();
+    this.DEZ.setVisibility(8);
+    this.DEY.setVisibility(0);
+    eMW();
     AppMethodBeat.o(116719);
   }
   
@@ -217,141 +220,141 @@ public final class b
     if (paramWidgetData != null)
     {
       this.isLoading = true;
-      this.Cci.setVisibility(8);
-      this.Cch.fuX();
-      this.CbT.removeView(this.Cch);
-      this.Ccg = paramWidgetData;
-      this.CbS.setVisibility(8);
-      this.CbT.setVisibility(0);
-      this.CbU.aAq(this.CbV);
-      this.Ccf = paramWidgetData;
-      this.CbV = ("widgetid_" + System.currentTimeMillis());
-      this.CbU.a(paramWidgetData, this.CbV, ((i)com.tencent.mm.kernel.g.ab(i.class)).ewU(), 47);
-      cL();
-      ac.v("WidgetView", "%s, last %s, cur %s", new Object[] { toString(), this.Ccg.toString(), this.Ccf.toString() });
+      this.DFh.setVisibility(8);
+      this.DFg.fLK();
+      this.DER.removeView(this.DFg);
+      this.DFf = paramWidgetData;
+      this.DEQ.setVisibility(8);
+      this.DER.setVisibility(0);
+      this.DES.aFK(this.DET);
+      this.DFe = paramWidgetData;
+      this.DET = ("widgetid_" + System.currentTimeMillis());
+      this.DES.a(paramWidgetData, this.DET, ((j)com.tencent.mm.kernel.g.ab(j.class)).eLI(), 47);
+      updateView();
+      com.tencent.mm.sdk.platformtools.ad.v("WidgetView", "%s, last %s, cur %s", new Object[] { toString(), this.DFf.toString(), this.DFe.toString() });
     }
     AppMethodBeat.o(116717);
   }
   
-  private void eye()
+  private void eMV()
   {
     AppMethodBeat.i(116720);
-    if (this.Ccf.BZR != null)
+    if (this.DFe.DCN != null)
     {
-      this.Cca.setTitle(this.Ccf.BZR.title);
+      this.DEZ.setTitle(this.DFe.DCN.title);
       AppMethodBeat.o(116720);
       return;
     }
-    this.Cca.setVisibility(8);
-    ac.e("WidgetView", "more footer has empty title");
+    this.DEZ.setVisibility(8);
+    com.tencent.mm.sdk.platformtools.ad.e("WidgetView", "more footer has empty title");
     AppMethodBeat.o(116720);
   }
   
-  private void eyf()
+  private void eMW()
   {
     AppMethodBeat.i(116721);
-    Object localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.a.geG;
-    localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.tJ("100443");
+    Object localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.a.gyq;
+    localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.wz("100443");
     if (localObject == null)
     {
-      ac.i("WidgetView", "openSearchPreload item is null");
+      com.tencent.mm.sdk.platformtools.ad.i("WidgetView", "openSearchPreload item is null");
       AppMethodBeat.o(116721);
       return;
     }
     int i = 3;
-    if (((com.tencent.mm.storage.c)localObject).isValid()) {
-      i = bs.aLy((String)((com.tencent.mm.storage.c)localObject).eYV().get("switchType"));
+    if (((c)localObject).isValid()) {
+      i = bt.aRe((String)((c)localObject).foF().get("switchType"));
     }
     switch (i)
     {
     default: 
-      if (!(this.CbY instanceof DownArrowSwitchFooter))
+      if (!(this.DEX instanceof DownArrowSwitchFooter))
       {
-        this.CbZ.removeView((View)this.CbY);
-        this.CbY = new DownArrowSwitchFooter(this.CbZ.getContext());
-        this.CbZ.addView((View)this.CbY);
+        this.DEY.removeView((View)this.DEX);
+        this.DEX = new DownArrowSwitchFooter(this.DEY.getContext());
+        this.DEY.addView((View)this.DEX);
       }
       break;
     }
     for (;;)
     {
-      this.CbY.setCallback(this.Cck);
-      this.CbY.setTitle(eyh());
-      this.CbY.setIcon(this.Ccf.BZS.iconUrl);
+      this.DEX.setCallback(this.DFj);
+      this.DEX.setTitle(eMY());
+      this.DEX.setIcon(this.DFe.DCO.iconUrl);
       AppMethodBeat.o(116721);
       return;
-      if (!(this.CbY instanceof BtnSwitchFooter))
+      if (!(this.DEX instanceof BtnSwitchFooter))
       {
-        this.CbZ.removeView((View)this.CbY);
-        this.CbY = new BtnSwitchFooter(this.CbZ.getContext());
-        this.CbZ.addView((View)this.CbY);
+        this.DEY.removeView((View)this.DEX);
+        this.DEX = new BtnSwitchFooter(this.DEY.getContext());
+        this.DEY.addView((View)this.DEX);
         continue;
-        if (!(this.CbY instanceof DirectionSwitchFooter))
+        if (!(this.DEX instanceof DirectionSwitchFooter))
         {
-          this.CbZ.removeView((View)this.CbY);
-          this.CbY = new DirectionSwitchFooter(this.CbZ.getContext());
-          this.CbZ.addView((View)this.CbY);
+          this.DEY.removeView((View)this.DEX);
+          this.DEX = new DirectionSwitchFooter(this.DEY.getContext());
+          this.DEY.addView((View)this.DEX);
         }
       }
     }
   }
   
-  private String eyg()
+  private String eMX()
   {
     AppMethodBeat.i(116722);
-    if (!TextUtils.isEmpty(this.Ccf.BZS.Cac))
+    if (!TextUtils.isEmpty(this.DFe.DCO.DCX))
     {
-      str = this.Ccf.BZS.Cac;
+      str = this.DFe.DCO.DCX;
       AppMethodBeat.o(116722);
       return str;
     }
-    String str = ai.getContext().getString(2131763087);
+    String str = aj.getContext().getString(2131763087);
     AppMethodBeat.o(116722);
     return str;
   }
   
-  private String eyh()
+  private String eMY()
   {
     AppMethodBeat.i(116723);
-    if (!TextUtils.isEmpty(this.Ccf.BZS.footerWording))
+    if (!TextUtils.isEmpty(this.DFe.DCO.footerWording))
     {
-      str = this.Ccf.BZS.footerWording;
+      str = this.DFe.DCO.footerWording;
       AppMethodBeat.o(116723);
       return str;
     }
-    String str = ai.getContext().getString(2131763085, new Object[] { this.Ccf.BZS.bLs });
+    String str = aj.getContext().getString(2131763085, new Object[] { this.DFe.DCO.bVF });
     AppMethodBeat.o(116723);
     return str;
   }
   
-  private void eyi()
+  private void eMZ()
   {
     AppMethodBeat.i(116725);
-    ac.i("WidgetView", "exposure");
-    String str1 = String.format("262144:%s:%d:%s;", new Object[] { this.Ccf.BZS.sxK, Long.valueOf(System.currentTimeMillis() / 1000L), this.Ccf.BZS.Caa });
-    String str2 = this.Ccf.BZS.cFI + ";";
-    String str3 = "262144:" + this.Ccf.BZS.cFI + ";";
+    com.tencent.mm.sdk.platformtools.ad.i("WidgetView", "exposure");
+    String str1 = String.format("262144:%s:%d:%s;", new Object[] { this.DFe.DCO.tul, Long.valueOf(System.currentTimeMillis() / 1000L), this.DFe.DCO.DCV });
+    String str2 = this.DFe.DCO.cQN + ";";
+    String str3 = "262144:" + this.DFe.DCO.cQN + ";";
     HashMap localHashMap = new HashMap();
     localHashMap.put("isexpose", "1");
     localHashMap.put("content", str1);
-    localHashMap.put("searchid", this.Ccf.BZS.jKB);
+    localHashMap.put("searchid", this.DFe.DCO.keN);
     localHashMap.put("scene", "47");
-    localHashMap.put("query", this.Ccf.query);
-    localHashMap.put("sessionid", this.Ccf.BZV);
+    localHashMap.put("query", this.DFe.query);
+    localHashMap.put("sessionid", this.DFe.dDE);
     localHashMap.put("resulttype", str3);
     localHashMap.put("resultsubtypelist", str2);
     localHashMap.put("ishomepage", "1");
-    localHashMap.put("height", this.CbT.getHeight() + ";");
+    localHashMap.put("height", this.DER.getHeight() + ";");
     localHashMap.put("requestid", System.currentTimeMillis());
-    aY(localHashMap);
-    new iq().pI(str1).pL(this.Ccf.query).pN(str2).pM(str3).pJ(this.Ccf.BZS.jKB).pK(this.Ccf.BZV).Tg().aHZ();
+    ba(localHashMap);
+    new jv().so(str1).sr(this.DFe.query).st(str2).ss(str3).sp(this.DFe.DCO.keN).sq(this.DFe.dDE).Vt().aLk();
     AppMethodBeat.o(116725);
   }
   
-  final void ab(String paramString1, String paramString2, int paramInt)
+  final void ag(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(116714);
-    if (this.Ccf == null)
+    if (this.DFe == null)
     {
       AppMethodBeat.o(116714);
       return;
@@ -376,36 +379,36 @@ public final class b
     u.i("WidgetView", "open app with path %s", new Object[] { localObject1 });
     Object localObject2 = new AppBrandStatObject();
     ((AppBrandStatObject)localObject2).scene = 1108;
-    paramString1 = String.format("1:%s:%d:%s:%s:%s:%s:%d:%s", new Object[] { "", Long.valueOf(System.currentTimeMillis()), this.Ccf.BZS.Caa, "isWidget=1", this.CbV, this.Ccf.BZS.hsk, Integer.valueOf(this.Ccf.BZS.cFI), Integer.valueOf(0) });
-    ((AppBrandStatObject)localObject2).cYP = (this.Ccf.BZV + "::" + this.Ccf.BZS.jKB + ":" + this.Ccf.BZS.sxK + ":1:" + paramString1);
+    paramString1 = String.format("1:%s:%d:%s:%s:%s:%s:%d:%s", new Object[] { "", Long.valueOf(System.currentTimeMillis()), this.DFe.DCO.DCV, "isWidget=1", this.DET, this.DFe.DCO.hKC, Integer.valueOf(this.DFe.DCO.cQN), Integer.valueOf(0) });
+    ((AppBrandStatObject)localObject2).dkh = (this.DFe.dDE + "::" + this.DFe.DCO.keN + ":" + this.DFe.DCO.tul + ":1:" + paramString1);
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      paramString1 = this.Ccf.BZS.cYQ;
+      paramString1 = this.DFe.DCO.dki;
       if (!TextUtils.isEmpty(paramString2)) {
         break label502;
       }
-      paramString2 = this.Ccf.BZS.userName;
+      paramString2 = this.DFe.DCO.userName;
       label341:
-      localObject1 = (n)com.tencent.mm.kernel.g.ab(n.class);
-      localObject3 = ai.getContext();
+      localObject1 = (o)com.tencent.mm.kernel.g.ab(o.class);
+      localObject3 = aj.getContext();
       if (paramInt != -1) {
         break label505;
       }
-      paramInt = this.Ccf.BZS.BZZ;
+      paramInt = this.DFe.DCO.DCU;
     }
     label502:
     label505:
     for (;;)
     {
-      ((n)localObject1).a((Context)localObject3, paramString2, null, paramInt, this.Ccf.BZS.version, paramString1, (AppBrandStatObject)localObject2);
-      localObject1 = this.Ccf;
-      localObject2 = new ck();
-      ((ck)localObject2).dOI = 1L;
-      paramString1 = ((ck)localObject2).ku(paramString1).kt(((WidgetData)localObject1).query).QN().kr(((WidgetData)localObject1).BZS.jKB);
-      paramString1.dOL = ((WidgetData)localObject1).BZS.cFI;
-      paramString1 = paramString1.ks(((WidgetData)localObject1).BZV);
-      paramString1.dOK = paramString1.t("WeappUsrname", paramString2, true);
-      paramString1.aHZ();
+      ((o)localObject1).a((Context)localObject3, paramString2, null, paramInt, this.DFe.DCO.version, paramString1, (AppBrandStatObject)localObject2);
+      localObject1 = this.DFe;
+      localObject2 = new dc();
+      ((dc)localObject2).edX = 1L;
+      paramString1 = ((dc)localObject2).mq(paramString1).mp(((WidgetData)localObject1).query).SU().mn(((WidgetData)localObject1).DCO.keN);
+      paramString1.eea = ((WidgetData)localObject1).DCO.cQN;
+      paramString1 = paramString1.mo(((WidgetData)localObject1).dDE);
+      paramString1.edZ = paramString1.t("WeappUsrname", paramString2, true);
+      paramString1.aLk();
       AppMethodBeat.o(116714);
       return;
       paramString1 = (String)localObject1;
@@ -414,31 +417,7 @@ public final class b
     }
   }
   
-  final void cL()
-  {
-    AppMethodBeat.i(116718);
-    if (this.Ccf == null)
-    {
-      AppMethodBeat.o(116718);
-      return;
-    }
-    if (this.Ccf.BZS.rVS)
-    {
-      this.CbX.setVisibility(0);
-      this.rKi.setVisibility(0);
-      dFp();
-    }
-    for (;;)
-    {
-      this.wGo.setText(eyg());
-      AppMethodBeat.o(116718);
-      return;
-      this.CbX.setVisibility(8);
-      this.rKi.setVisibility(8);
-    }
-  }
-  
-  final void eyc()
+  final void eMT()
   {
     AppMethodBeat.i(116715);
     if (this.view == null)
@@ -446,76 +425,76 @@ public final class b
       AppMethodBeat.o(116715);
       return;
     }
-    boolean bool = this.tdc;
+    boolean bool = this.uaS;
     if (this.view.getVisibility() != 0)
     {
-      this.tdc = false;
+      this.uaS = false;
       AppMethodBeat.o(116715);
       return;
     }
     int[] arrayOfInt = new int[2];
     this.view.getLocationOnScreen(arrayOfInt);
-    if ((this.CbL != null) && (this.CbL.exd())) {}
-    for (this.tdc = true;; this.tdc = false)
+    if ((this.DEJ != null) && (this.DEJ.eLR())) {}
+    for (this.uaS = true;; this.uaS = false)
     {
-      if ((bool != this.tdc) && (this.tdc)) {
-        eyi();
+      if ((bool != this.uaS) && (this.uaS)) {
+        eMZ();
       }
       AppMethodBeat.o(116715);
       return;
     }
   }
   
-  final void eyd()
+  final void eMU()
   {
     AppMethodBeat.i(116716);
-    if ((this.fWU == null) || (this.Ccg == this.Ccf))
+    if ((this.gqv == null) || (this.DFf == this.DFe))
     {
-      ac.v("WidgetView", "%s same widgetData", new Object[] { toString() });
+      com.tencent.mm.sdk.platformtools.ad.v("WidgetView", "%s same widgetData", new Object[] { toString() });
       AppMethodBeat.o(116716);
       return;
     }
-    this.CbS.setVisibility(8);
-    this.CbT.setVisibility(0);
-    e(this.Ccf);
+    this.DEQ.setVisibility(8);
+    this.DER.setVisibility(0);
+    e(this.DFe);
     AppMethodBeat.o(116716);
   }
   
-  public final void nt(boolean paramBoolean)
+  public final void nN(boolean paramBoolean)
   {
     AppMethodBeat.i(116728);
-    ac.i("WidgetView", "report click");
+    com.tencent.mm.sdk.platformtools.ad.i("WidgetView", "report click");
     HashMap localHashMap = new HashMap();
-    localHashMap.put("content", String.format("262144:%s:%d:%s", new Object[] { this.Ccf.BZS.sxK, Long.valueOf(System.currentTimeMillis() / 1000L), this.Ccf.BZS.Caa }));
-    localHashMap.put("searchid", this.Ccf.BZS.jKB);
+    localHashMap.put("content", String.format("262144:%s:%d:%s", new Object[] { this.DFe.DCO.tul, Long.valueOf(System.currentTimeMillis() / 1000L), this.DFe.DCO.DCV }));
+    localHashMap.put("searchid", this.DFe.DCO.keN);
     localHashMap.put("scene", "47");
-    localHashMap.put("query", this.Ccf.query);
-    localHashMap.put("sessionid", this.Ccf.BZV);
-    localHashMap.put("docid", this.Ccf.BZS.sxK);
+    localHashMap.put("query", this.DFe.query);
+    localHashMap.put("sessionid", this.DFe.dDE);
+    localHashMap.put("docid", this.DFe.DCO.tul);
     localHashMap.put("timestamp", System.currentTimeMillis() / 1000L);
-    localHashMap.put("jumpurl", this.Ccf.BZS.cYQ);
-    String str1 = this.Ccf.BZS.Caa;
+    localHashMap.put("jumpurl", this.DFe.DCO.dki);
+    String str1 = this.DFe.DCO.DCV;
     String str2 = System.currentTimeMillis();
     if (paramBoolean) {}
     for (Object localObject = "1";; localObject = "0")
     {
       localHashMap.put("expand2", String.format("{\"statBuffer\":\"%s\";\"adBuffer\":\"\";\"clickId\":%s;\"isMore\":%s}", new Object[] { str1, str2, localObject }));
       localHashMap.put("businesstype", "262144");
-      localHashMap.put("h5version", z.Ul(0));
+      localHashMap.put("h5version", com.tencent.mm.plugin.websearch.api.ad.We(0));
       localHashMap.put("resulttype", "262144");
-      localHashMap.put("resultsubtype", this.Ccf.BZS.cFI);
-      aY(localHashMap);
-      localObject = new ip();
-      ((ip)localObject).elo = bs.aLy((String)localHashMap.get("businesstype"));
-      ((ip)localObject).elp = ((ip)localObject).t("docid", (String)localHashMap.get("docid"), true);
-      ((ip)localObject).elr = ((ip)localObject).t("expand2", (String)localHashMap.get("expand2"), true);
-      ((ip)localObject).dSz = ((ip)localObject).t("query", (String)localHashMap.get("query"), true);
-      ((ip)localObject).els = bs.aLy((String)localHashMap.get("resultsubtype"));
-      ((ip)localObject).elq = System.currentTimeMillis();
-      ((ip)localObject).eln = ((ip)localObject).t("searchid", this.Ccf.BZS.jKB, true);
-      ((ip)localObject).dDw = ((ip)localObject).t("sessionid", this.Ccf.BZV, true);
-      ((ip)localObject).dHR = 47L;
-      ((ip)localObject).aHZ();
+      localHashMap.put("resultsubtype", this.DFe.DCO.cQN);
+      ba(localHashMap);
+      localObject = new ju();
+      ((ju)localObject).eCq = bt.aRe((String)localHashMap.get("businesstype"));
+      ((ju)localObject).eCr = ((ju)localObject).t("docid", (String)localHashMap.get("docid"), true);
+      ((ju)localObject).eCt = ((ju)localObject).t("expand2", (String)localHashMap.get("expand2"), true);
+      ((ju)localObject).eif = ((ju)localObject).t("query", (String)localHashMap.get("query"), true);
+      ((ju)localObject).eCu = bt.aRe((String)localHashMap.get("resultsubtype"));
+      ((ju)localObject).eCs = System.currentTimeMillis();
+      ((ju)localObject).eCp = ((ju)localObject).t("searchid", this.DFe.DCO.keN, true);
+      ((ju)localObject).dQt = ((ju)localObject).t("sessionid", this.DFe.dDE, true);
+      ((ju)localObject).dUW = 47L;
+      ((ju)localObject).aLk();
       AppMethodBeat.o(116728);
       return;
     }
@@ -524,26 +503,50 @@ public final class b
   public final void setSelected(boolean paramBoolean)
   {
     AppMethodBeat.i(116724);
-    ac.v("WidgetView", "%s selected %b", new Object[] { toString(), Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.sdk.platformtools.ad.v("WidgetView", "%s selected %b", new Object[] { toString(), Boolean.valueOf(paramBoolean) });
     this.isSelected = paramBoolean;
     if (this.isSelected)
     {
-      eyd();
-      eyc();
+      eMU();
+      eMT();
       AppMethodBeat.o(116724);
       return;
     }
-    this.tdc = false;
+    this.uaS = false;
     AppMethodBeat.o(116724);
+  }
+  
+  final void updateView()
+  {
+    AppMethodBeat.i(116718);
+    if (this.DFe == null)
+    {
+      AppMethodBeat.o(116718);
+      return;
+    }
+    if (this.DFe.DCO.sSB)
+    {
+      this.DEW.setVisibility(0);
+      this.sFi.setVisibility(0);
+      dQR();
+    }
+    for (;;)
+    {
+      this.xTV.setText(eMX());
+      AppMethodBeat.o(116718);
+      return;
+      this.DEW.setVisibility(8);
+      this.sFi.setVisibility(8);
+    }
   }
   
   public static abstract interface a
   {
-    public abstract int exZ();
+    public abstract int eMQ();
     
-    public abstract List<com.tencent.mm.plugin.websearch.api.x> eya();
+    public abstract List<ab> eMR();
     
-    public abstract boolean eyb();
+    public abstract boolean eMS();
     
     public abstract boolean hasNext();
   }

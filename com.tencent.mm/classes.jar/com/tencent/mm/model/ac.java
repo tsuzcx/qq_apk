@@ -1,66 +1,55 @@
 package com.tencent.mm.model;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.bu.a;
-
-public final class ac
+public class ac
 {
-  private static String aG(String paramString1, String paramString2)
+  private final String dDx;
+  public final boolean enable;
+  private final String fSM;
+  private boolean hFJ;
+  private final String name;
+  private final String type;
+  
+  public ac()
   {
-    AppMethodBeat.i(150165);
-    String str = "";
-    if (paramString1 != null) {
-      str = "" + paramString1.replace("@", "");
-    }
-    paramString1 = str;
-    if (paramString2 != null) {
-      paramString1 = str + paramString2;
-    }
-    AppMethodBeat.o(150165);
-    return paramString1;
+    this.type = "";
+    this.name = "";
+    this.dDx = "";
+    this.fSM = "";
+    this.enable = true;
   }
   
-  public static ab aH(String paramString1, String paramString2)
+  public ac(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(150166);
-    if ((paramString1 == null) || (paramString1.length() <= 0))
-    {
-      AppMethodBeat.o(150166);
-      return null;
-    }
-    paramString1 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awJ().alJ(paramString1);
-    if ((paramString1 == null) || (!paramString1.fcw()))
-    {
-      AppMethodBeat.o(150166);
-      return null;
-    }
-    paramString1 = new ab("@domain.android", paramString1.name, aG(paramString1.GZM.aOB(""), paramString2), paramString1.GZM.aOB(""), paramString1.isEnable(), true);
-    AppMethodBeat.o(150166);
-    return paramString1;
+    this.type = paramString1;
+    this.name = paramString2;
+    this.dDx = paramString3;
+    this.fSM = paramString4;
+    this.enable = paramBoolean1;
+    this.hFJ = paramBoolean2;
   }
   
-  public static ab xL(String paramString)
+  public final String aBv()
   {
-    AppMethodBeat.i(150163);
-    paramString = new ab("@black.android", null, paramString, null, true, true);
-    AppMethodBeat.o(150163);
-    return paramString;
+    if (this.fSM == null) {
+      return "";
+    }
+    return this.fSM;
   }
   
-  public static ab xM(String paramString)
+  public final String adu()
   {
-    AppMethodBeat.i(150164);
-    bu localbu = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awJ().alJ("@t.qq.com");
-    if (localbu == null)
-    {
-      AppMethodBeat.o(150164);
-      return null;
+    if (this.dDx == null) {
+      return "";
     }
-    paramString = new ab("@t.qq.com", null, paramString, null, localbu.isEnable(), localbu.fcv());
-    AppMethodBeat.o(150164);
-    return paramString;
+    return this.dDx;
+  }
+  
+  public final String getType()
+  {
+    if (this.type == null) {
+      return "";
+    }
+    return this.type;
   }
 }
 

@@ -2,24 +2,24 @@ package d.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/sequences/GeneratorSequence;", "T", "", "Lkotlin/sequences/Sequence;", "getInitialValue", "Lkotlin/Function0;", "getNextValue", "Lkotlin/Function1;", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/sequences/GeneratorSequence;", "T", "", "Lkotlin/sequences/Sequence;", "getInitialValue", "Lkotlin/Function0;", "getNextValue", "Lkotlin/Function1;", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
 final class g<T>
   implements h<T>
 {
-  final d.g.a.a<T> LPK;
-  final b<T, T> LPL;
+  final d.g.a.a<T> NGF;
+  final b<T, T> NGG;
   
   public g(d.g.a.a<? extends T> parama, b<? super T, ? extends T> paramb)
   {
     AppMethodBeat.i(129487);
-    this.LPK = parama;
-    this.LPL = paramb;
+    this.NGF = parama;
+    this.NGG = paramb;
     AppMethodBeat.o(129487);
   }
   
@@ -31,37 +31,37 @@ final class g<T>
     return localIterator;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"kotlin/sequences/GeneratorSequence$iterator$1", "", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"kotlin/sequences/GeneratorSequence$iterator$1", "", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
   public static final class a
     implements d.g.b.a.a, Iterator<T>
   {
-    private int LPD = -2;
-    private T LPE;
+    private int NGy = -2;
+    private T NGz;
     
-    private final void gcZ()
+    private final void guz()
     {
       AppMethodBeat.i(129501);
       Object localObject1;
-      if (this.LPD == -2)
+      if (this.NGy == -2)
       {
-        localObject1 = this.LPM.LPK.invoke();
-        this.LPE = localObject1;
-        if (this.LPE != null) {
+        localObject1 = this.NGH.NGF.invoke();
+        this.NGz = localObject1;
+        if (this.NGz != null) {
           break label83;
         }
       }
       label83:
       for (int i = 0;; i = 1)
       {
-        this.LPD = i;
+        this.NGy = i;
         AppMethodBeat.o(129501);
         return;
-        localObject1 = this.LPM.LPL;
-        Object localObject2 = this.LPE;
+        localObject1 = this.NGH.NGG;
+        Object localObject2 = this.NGz;
         if (localObject2 == null) {
-          k.fOy();
+          p.gfZ();
         }
-        localObject1 = ((b)localObject1).ay(localObject2);
+        localObject1 = ((b)localObject1).invoke(localObject2);
         break;
       }
     }
@@ -69,10 +69,10 @@ final class g<T>
     public final boolean hasNext()
     {
       AppMethodBeat.i(129503);
-      if (this.LPD < 0) {
-        gcZ();
+      if (this.NGy < 0) {
+        guz();
       }
-      if (this.LPD == 1)
+      if (this.NGy == 1)
       {
         AppMethodBeat.o(129503);
         return true;
@@ -84,23 +84,23 @@ final class g<T>
     public final T next()
     {
       AppMethodBeat.i(129502);
-      if (this.LPD < 0) {
-        gcZ();
+      if (this.NGy < 0) {
+        guz();
       }
-      if (this.LPD == 0)
+      if (this.NGy == 0)
       {
         localObject = (Throwable)new NoSuchElementException();
         AppMethodBeat.o(129502);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.LPE;
+      Object localObject = this.NGz;
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type T");
         AppMethodBeat.o(129502);
         throw ((Throwable)localObject);
       }
-      this.LPD = -1;
+      this.NGy = -1;
       AppMethodBeat.o(129502);
       return localObject;
     }

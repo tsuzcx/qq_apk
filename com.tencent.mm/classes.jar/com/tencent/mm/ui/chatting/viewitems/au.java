@@ -1,58 +1,123 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.widget.TextView.BufferType;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.b;
-import com.tencent.mm.bb.t;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.c;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.mm.pluginsdk.ui.span.g;
+import com.tencent.mm.pluginsdk.ui.span.n;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.chatting.e.a;
+import com.tencent.mm.ui.widget.MMNeat7extView;
 import com.tencent.neattextview.textview.view.NeatTextView;
 
-final class au
-  implements at.a
+public final class au
+  extends c
 {
-  public final void b(c.a parama, int paramInt, com.tencent.mm.ui.chatting.d.a parama1, bo parambo)
+  private av KfH;
+  private as KfI;
+  private aw KfJ;
+  private bf KfK;
+  
+  public au()
   {
-    AppMethodBeat.i(37379);
-    parama = (at.b)parama;
-    parama.Ipl.ar(parambo.field_content);
-    parama.Ipl.setTag(new bj(parambo, parama1.foQ(), paramInt, null, '\000'));
-    Bundle localBundle = new Bundle();
-    localBundle.putString("chatroom_name", parama1.getTalkerUserName());
-    localBundle.putLong("msg_id", parambo.field_msgId);
-    if ((parambo.field_flag & 0x8) != 0)
+    AppMethodBeat.i(37376);
+    this.KfH = new av();
+    this.KfI = new as();
+    this.KfJ = new aw();
+    this.KfK = new bf();
+    AppMethodBeat.o(37376);
+  }
+  
+  public final View a(LayoutInflater paramLayoutInflater, View paramView)
+  {
+    AppMethodBeat.i(37377);
+    View localView;
+    if (paramView != null)
     {
-      parama.Ipl.a(k.a(parama1.HZF.getContext(), parambo.field_content, (int)parama.Ipl.getTextSize(), false, localBundle), TextView.BufferType.SPANNABLE);
-      parama.Ipl.setClickable(true);
-      parambo = t.aGP().CW(parama1.getTalkerUserName());
-      az.ayM();
-      paramInt = ((Integer)c.agA().get(12311, Integer.valueOf(-2))).intValue();
-      if (((parambo == null) || (parambo.hPy == -2)) && ((parambo != null) || (paramInt == -2))) {
-        break label291;
-      }
-      parama.Ipl.setTextColor(parama1.HZF.getContext().getResources().getColor(2131100151));
-      parama.Ipl.setBackground(parama1.HZF.getContext().getResources().getDrawable(2131231583));
+      localView = paramView;
+      if (paramView.getTag() != null) {}
+    }
+    else
+    {
+      localView = paramLayoutInflater.inflate(2131493474, null);
+      paramLayoutInflater = new b();
+      paramLayoutInflater.tPw = localView;
+      paramLayoutInflater.fTP = ((TextView)localView.findViewById(2131298178));
+      paramLayoutInflater.JYr = localView.findViewById(2131308258);
+      paramLayoutInflater.KfL = ((MMNeat7extView)localView.findViewById(2131298073));
+      paramLayoutInflater.KfL.setOnTouchListener(new g(paramLayoutInflater.KfL, new n(paramLayoutInflater.KfL.getContext())));
+      localView.setTag(paramLayoutInflater);
+    }
+    AppMethodBeat.o(37377);
+    return localView;
+  }
+  
+  public final void a(c.a parama, int paramInt, a parama1, bu parambu, String paramString)
+  {
+    AppMethodBeat.i(37378);
+    if (parambu.getType() == 10002) {
+      paramString = this.KfI;
     }
     for (;;)
     {
-      parama.Ipl.invalidate();
-      AppMethodBeat.o(37379);
+      paramString.b(parama, paramInt, parama1, parambu);
+      AppMethodBeat.o(37378);
       return;
-      parama.Ipl.a(k.a(parama1.HZF.getContext(), parambo.field_content, (int)parama.Ipl.getTextSize(), true, localBundle), TextView.BufferType.SPANNABLE);
-      break;
-      label291:
-      parama.Ipl.setTextColor(ao.aJ(parama1.HZF.getContext(), 2130968586));
-      parama.Ipl.setBackground(parama1.HZF.getContext().getResources().getDrawable(2131231582));
+      if (parambu.getType() == 570425393) {
+        paramString = this.KfJ;
+      } else if (parambu.getType() == 603979825) {
+        paramString = this.KfK;
+      } else {
+        paramString = this.KfH;
+      }
     }
+  }
+  
+  public final boolean a(MenuItem paramMenuItem, a parama, bu parambu)
+  {
+    return false;
+  }
+  
+  public final boolean a(l paraml, View paramView, bu parambu)
+  {
+    return false;
+  }
+  
+  public final boolean b(View paramView, a parama, bu parambu)
+  {
+    return false;
+  }
+  
+  public final boolean bi(int paramInt, boolean paramBoolean)
+  {
+    return (paramInt == 10000) || (paramInt == 10002) || (paramInt == 570425393) || (paramInt == 64) || (paramInt == 603979825);
+  }
+  
+  protected final boolean fHg()
+  {
+    return false;
+  }
+  
+  public final boolean fHh()
+  {
+    return false;
+  }
+  
+  static abstract interface a
+  {
+    public abstract void b(c.a parama, int paramInt, a parama1, bu parambu);
+  }
+  
+  final class b
+    extends c.a
+  {
+    NeatTextView KfL;
+    View tPw;
+    
+    b() {}
   }
 }
 

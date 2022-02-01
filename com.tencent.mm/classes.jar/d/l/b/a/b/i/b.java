@@ -2,7 +2,7 @@ package d.l.b.a.b.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.aj;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.ab;
 import d.l.b.a.b.b.as;
 import d.l.b.a.b.b.e;
@@ -19,30 +19,30 @@ public abstract interface b
   public static final class a
     implements b
   {
-    public static final a LBY;
+    public static final a NsU;
     
     static
     {
       AppMethodBeat.i(59650);
-      LBY = new a();
+      NsU = new a();
       AppMethodBeat.o(59650);
     }
     
     public final String a(h paramh, c paramc)
     {
       AppMethodBeat.i(59649);
-      k.h(paramh, "classifier");
-      k.h(paramc, "renderer");
+      p.h(paramh, "classifier");
+      p.h(paramc, "renderer");
       if ((paramh instanceof as))
       {
-        paramh = ((as)paramh).fRf();
-        k.g(paramh, "classifier.name");
+        paramh = ((as)paramh).giD();
+        p.g(paramh, "classifier.name");
         paramh = paramc.b(paramh, false);
         AppMethodBeat.o(59649);
         return paramh;
       }
       paramh = d.l.b.a.b.j.c.n((l)paramh);
-      k.g(paramh, "DescriptorUtils.getFqName(classifier)");
+      p.g(paramh, "DescriptorUtils.getFqName(classifier)");
       paramh = paramc.f(paramh);
       AppMethodBeat.o(59649);
       return paramh;
@@ -52,24 +52,24 @@ public abstract interface b
   public static final class b
     implements b
   {
-    public static final b LBZ;
+    public static final b NsV;
     
     static
     {
       AppMethodBeat.i(59652);
-      LBZ = new b();
+      NsV = new b();
       AppMethodBeat.o(59652);
     }
     
     public final String a(h paramh, c paramc)
     {
       AppMethodBeat.i(59651);
-      k.h(paramh, "classifier");
-      k.h(paramc, "renderer");
+      p.h(paramh, "classifier");
+      p.h(paramc, "renderer");
       if ((paramh instanceof as))
       {
-        paramh = ((as)paramh).fRf();
-        k.g(paramh, "classifier.name");
+        paramh = ((as)paramh).giD();
+        p.g(paramh, "classifier.name");
         paramh = paramc.b(paramh, false);
         AppMethodBeat.o(59651);
         return paramh;
@@ -78,13 +78,13 @@ public abstract interface b
       paramh = (l)paramh;
       do
       {
-        localArrayList.add(paramh.fRf());
-        paramc = paramh.fPU();
+        localArrayList.add(paramh.giD());
+        paramc = paramh.ghs();
         paramh = paramc;
       } while ((paramc instanceof e));
       paramh = (List)localArrayList;
-      k.h(paramh, "$this$asReversed");
-      paramh = q.je((List)new aj(paramh));
+      p.h(paramh, "$this$asReversed");
+      paramh = q.js((List)new aj(paramh));
       AppMethodBeat.o(59651);
       return paramh;
     }
@@ -93,30 +93,30 @@ public abstract interface b
   public static final class c
     implements b
   {
-    public static final c LCa;
+    public static final c NsW;
     
     static
     {
       AppMethodBeat.i(59656);
-      LCa = new c();
+      NsW = new c();
       AppMethodBeat.o(59656);
     }
     
     private final String a(h paramh)
     {
       AppMethodBeat.i(59654);
-      Object localObject = paramh.fRf();
-      k.g(localObject, "descriptor.name");
+      Object localObject = paramh.giD();
+      p.g(localObject, "descriptor.name");
       localObject = q.x((f)localObject);
       if ((paramh instanceof as))
       {
         AppMethodBeat.o(59654);
         return localObject;
       }
-      paramh = paramh.fPU();
-      k.g(paramh, "descriptor.containingDeclaration");
+      paramh = paramh.ghs();
+      p.g(paramh, "descriptor.containingDeclaration");
       paramh = j(paramh);
-      if ((paramh != null) && ((k.g(paramh, "") ^ true)))
+      if ((paramh != null) && ((p.i(paramh, "") ^ true)))
       {
         paramh = paramh + "." + (String)localObject;
         AppMethodBeat.o(59654);
@@ -137,8 +137,8 @@ public abstract interface b
       }
       if ((paraml instanceof ab))
       {
-        paraml = ((ab)paraml).fRH().fZG();
-        k.g(paraml, "descriptor.fqName.toUnsafe()");
+        paraml = ((ab)paraml).gjg().grf();
+        p.g(paraml, "descriptor.fqName.toUnsafe()");
         paraml = q.g(paraml);
         AppMethodBeat.o(59655);
         return paraml;
@@ -150,8 +150,8 @@ public abstract interface b
     public final String a(h paramh, c paramc)
     {
       AppMethodBeat.i(59653);
-      k.h(paramh, "classifier");
-      k.h(paramc, "renderer");
+      p.h(paramh, "classifier");
+      p.h(paramc, "renderer");
       paramh = a(paramh);
       AppMethodBeat.o(59653);
       return paramh;
@@ -160,7 +160,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.i.b
  * JD-Core Version:    0.7.0.1
  */

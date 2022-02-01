@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class xj
   extends b
 {
-  public a dAg;
-  public b dAh;
+  public a dLG;
   
   public xj()
   {
@@ -16,38 +15,22 @@ public final class xj
   
   private xj(byte paramByte)
   {
-    AppMethodBeat.i(130930);
-    this.dAg = new a();
-    this.dAh = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(155376);
+    this.dLG = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(130930);
+    AppMethodBeat.o(155376);
   }
   
   public static final class a
   {
-    public String action;
-    public String appId;
-    public String buffer;
-    public String cJz;
-    public String dAi;
-    public String dAj;
-    public int dAk;
-    public String nonceStr;
-    public String signType;
-    public String url;
-  }
-  
-  public static final class b
-  {
-    public String buffer;
-    public Runnable dAl;
-    public int retCode;
+    public boolean dLH = false;
+    public boolean dLI = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.xj
  * JD-Core Version:    0.7.0.1
  */

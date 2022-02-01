@@ -3,7 +3,9 @@ package com.tencent.mm.plugin.offline.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.report.service.g;
 
 final class WalletOfflineCoinPurseUI$9
   implements View.OnClickListener
@@ -13,8 +15,12 @@ final class WalletOfflineCoinPurseUI$9
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(66410);
-    h.wUl.f(14515, new Object[] { Integer.valueOf(1) });
-    WalletOfflineCoinPurseUI.n(this.vvx);
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/offline/ui/WalletOfflineCoinPurseUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    g.yhR.f(14515, new Object[] { Integer.valueOf(1) });
+    WalletOfflineCoinPurseUI.n(this.wAR);
+    a.a(this, "com/tencent/mm/plugin/offline/ui/WalletOfflineCoinPurseUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(66410);
   }
 }

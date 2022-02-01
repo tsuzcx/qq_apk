@@ -2,341 +2,345 @@ package com.tencent.mm.plugin.finder.upload;
 
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gz;
+import com.tencent.mm.ao.e;
+import com.tencent.mm.g.a.hd;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.loader.g.h;
-import com.tencent.mm.model.ce;
+import com.tencent.mm.model.cf;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.report.i.b;
-import com.tencent.mm.plugin.finder.report.i.c;
+import com.tencent.mm.plugin.finder.loader.m;
+import com.tencent.mm.plugin.finder.report.n.b;
+import com.tencent.mm.plugin.finder.report.n.c;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.f;
-import com.tencent.mm.plugin.finder.storage.m;
-import com.tencent.mm.plugin.finder.utils.n;
-import com.tencent.mm.plugin.finder.utils.p;
-import com.tencent.mm.plugin.mmsight.d;
 import com.tencent.mm.plugin.sight.base.AdaptiveAdjustBitrate;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.plugin.vlog.model.l.a;
+import com.tencent.mm.plugin.vlog.model.MultiMediaVideoChecker;
+import com.tencent.mm.plugin.vlog.model.MultiMediaVideoChecker.a;
 import com.tencent.mm.protocal.protobuf.FinderFeedReportObject;
 import com.tencent.mm.protocal.protobuf.FinderMediaReportInfo;
 import com.tencent.mm.protocal.protobuf.FinderMediaReportObject;
-import com.tencent.mm.protocal.protobuf.aad;
-import com.tencent.mm.protocal.protobuf.bqs;
-import com.tencent.mm.protocal.protobuf.bqt;
-import com.tencent.mm.protocal.protobuf.brc;
-import com.tencent.mm.protocal.protobuf.cnb;
-import com.tencent.mm.protocal.protobuf.dix;
-import com.tencent.mm.protocal.protobuf.dqk;
-import com.tencent.mm.protocal.protobuf.yn;
-import com.tencent.mm.protocal.protobuf.yo;
-import com.tencent.mm.protocal.protobuf.yp;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.vfs.i;
-import d.a.j;
-import d.g.b.k;
-import d.g.b.v.a;
-import d.g.b.v.c;
-import d.g.b.v.d;
-import d.y;
+import com.tencent.mm.protocal.protobuf.aam;
+import com.tencent.mm.protocal.protobuf.aan;
+import com.tencent.mm.protocal.protobuf.aao;
+import com.tencent.mm.protocal.protobuf.acd;
+import com.tencent.mm.protocal.protobuf.apb;
+import com.tencent.mm.protocal.protobuf.bvf;
+import com.tencent.mm.protocal.protobuf.bvg;
+import com.tencent.mm.protocal.protobuf.bvp;
+import com.tencent.mm.protocal.protobuf.cse;
+import com.tencent.mm.protocal.protobuf.dom;
+import com.tencent.mm.protocal.protobuf.dpu;
+import com.tencent.mm.protocal.protobuf.dwe;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.q;
+import d.g.b.y.a;
+import d.g.b.y.c;
+import d.g.b.y.d;
+import d.z;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/upload/FinderMediaProcessTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "finderObj", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "getFinderObj", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFinderObj", "call", "", "exportMedia", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "remuxComposition", "", "startRemuxerTick", "", "index", "outputPath", "", "videoParams", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "mediaReportObject", "Lcom/tencent/mm/protocal/protobuf/FinderMediaReportObject;", "remuxNormalVideo", "videoWidth", "videoHeight", "width", "height", "bitrate", "localFinderMedia", "musicPath", "mixType", "onUpdateProgress", "Lkotlin/Function1;", "", "uniqueId", "updateMedia", "localMedia", "reportObject", "updateProgress", "avgProgress", "Companion", "plugin-finder_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/FinderMediaProcessTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "finderObj", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "getFinderObj", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFinderObj", "call", "", "exportMedia", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "remuxComposition", "Lkotlin/Pair;", "", "", "startRemuxerTick", "", "index", "outputPath", "", "videoParams", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "mediaReportObject", "Lcom/tencent/mm/protocal/protobuf/FinderMediaReportObject;", "remuxNormalVideo", "videoWidth", "videoHeight", "width", "height", "bitrate", "localFinderMedia", "musicPath", "mixType", "onUpdateProgress", "Lkotlin/Function1;", "uniqueId", "updateMedia", "localMedia", "reportObject", "audioQuality", "videoQuality", "updateProgress", "avgProgress", "Companion", "plugin-finder_release"})
 public final class c
   extends com.tencent.mm.loader.g.c
 {
-  private static final String TAG = "Finder.FinderMediaProcessTask";
-  public static final a rME;
-  FinderItem rMD;
+  private static final String TAG = "Finder.LogPost.FinderMediaProcessTask";
+  public static final a sIG;
+  FinderItem sIF;
   
   static
   {
     AppMethodBeat.i(167735);
-    rME = new a((byte)0);
-    TAG = "Finder.FinderMediaProcessTask";
+    sIG = new a((byte)0);
+    TAG = "Finder.LogPost.FinderMediaProcessTask";
     AppMethodBeat.o(167735);
   }
   
   public c(FinderItem paramFinderItem)
   {
     AppMethodBeat.i(167734);
-    this.rMD = paramFinderItem;
+    this.sIF = paramFinderItem;
     AppMethodBeat.o(167734);
   }
   
   /* Error */
-  private final int a(final long paramLong, final int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, final int paramInt5, int paramInt6, final VideoTransPara paramVideoTransPara, bqs parambqs, final FinderMediaReportObject paramFinderMediaReportObject, String paramString2, int paramInt7, d.g.a.b<? super java.lang.Float, y> paramb)
+  private final int a(final long paramLong, final int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, final int paramInt5, int paramInt6, final VideoTransPara paramVideoTransPara, bvf parambvf, final FinderMediaReportObject paramFinderMediaReportObject, String paramString2, int paramInt7, d.g.a.b<? super Float, z> paramb)
   {
     // Byte code:
-    //   0: ldc 102
-    //   2: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 104	d/g/b/v$d
+    //   0: ldc 113
+    //   2: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 115	d/g/b/y$d
     //   8: dup
-    //   9: invokespecial 105	d/g/b/v$d:<init>	()V
+    //   9: invokespecial 116	d/g/b/y$d:<init>	()V
     //   12: astore 16
     //   14: aload 16
     //   16: iconst_m1
-    //   17: putfield 109	d/g/b/v$d:KUO	I
-    //   20: new 111	java/lang/Object
+    //   17: putfield 120	d/g/b/y$d:MLT	I
+    //   20: new 122	java/lang/Object
     //   23: dup
-    //   24: invokespecial 112	java/lang/Object:<init>	()V
+    //   24: invokespecial 123	java/lang/Object:<init>	()V
     //   27: astore 17
-    //   29: new 114	d/g/b/v$a
+    //   29: new 125	d/g/b/y$a
     //   32: dup
-    //   33: invokespecial 115	d/g/b/v$a:<init>	()V
+    //   33: invokespecial 126	d/g/b/y$a:<init>	()V
     //   36: astore 18
     //   38: aload 18
     //   40: iconst_0
-    //   41: putfield 119	d/g/b/v$a:KUL	Z
+    //   41: putfield 130	d/g/b/y$a:MLQ	Z
     //   44: aload 11
-    //   46: getfield 124	com/tencent/mm/protocal/protobuf/bqs:url	Ljava/lang/String;
+    //   46: getfield 135	com/tencent/mm/protocal/protobuf/bvf:url	Ljava/lang/String;
     //   49: astore 19
     //   51: aload 19
-    //   53: ldc 126
-    //   55: invokestatic 129	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   53: ldc 137
+    //   55: invokestatic 140	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   58: aload 11
-    //   60: getfield 133	com/tencent/mm/protocal/protobuf/bqs:rvh	Lcom/tencent/mm/protocal/protobuf/brc;
-    //   63: getfield 139	com/tencent/mm/protocal/protobuf/brc:Fgj	Lcom/tencent/mm/protocal/protobuf/dqk;
+    //   60: getfield 144	com/tencent/mm/protocal/protobuf/bvf:skC	Lcom/tencent/mm/protocal/protobuf/bvp;
+    //   63: getfield 150	com/tencent/mm/protocal/protobuf/bvp:GPL	Lcom/tencent/mm/protocal/protobuf/dwe;
     //   66: astore 20
     //   68: aload 20
-    //   70: ldc 141
-    //   72: invokestatic 129	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   75: new 143	com/tencent/mm/plugin/finder/video/l
+    //   70: ldc 152
+    //   72: invokestatic 140	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   75: new 154	com/tencent/mm/plugin/finder/video/l
     //   78: dup
     //   79: aload 13
     //   81: aload 19
     //   83: iload 14
     //   85: aload 4
     //   87: aload 20
-    //   89: invokestatic 146	com/tencent/mm/plugin/finder/upload/c$a:a	(Lcom/tencent/mm/protocal/protobuf/dqk;)Landroid/graphics/Rect;
+    //   89: invokestatic 157	com/tencent/mm/plugin/finder/upload/c$a:a	(Lcom/tencent/mm/protocal/protobuf/dwe;)Landroid/graphics/Rect;
     //   92: iload 7
     //   94: iload 8
     //   96: iload 9
     //   98: aload 10
-    //   100: getfield 151	com/tencent/mm/modelcontrol/VideoTransPara:audioBitrate	I
+    //   100: getfield 162	com/tencent/mm/modelcontrol/VideoTransPara:audioBitrate	I
     //   103: aload 10
-    //   105: getfield 154	com/tencent/mm/modelcontrol/VideoTransPara:audioSampleRate	I
+    //   105: getfield 165	com/tencent/mm/modelcontrol/VideoTransPara:audioSampleRate	I
     //   108: aload 10
-    //   110: getfield 157	com/tencent/mm/modelcontrol/VideoTransPara:gOt	I
+    //   110: getfield 168	com/tencent/mm/modelcontrol/VideoTransPara:audioChannelCount	I
     //   113: aload 10
-    //   115: getfield 160	com/tencent/mm/modelcontrol/VideoTransPara:fps	I
+    //   115: getfield 171	com/tencent/mm/modelcontrol/VideoTransPara:fps	I
     //   118: aload 11
-    //   120: getfield 133	com/tencent/mm/protocal/protobuf/bqs:rvh	Lcom/tencent/mm/protocal/protobuf/brc;
-    //   123: getfield 163	com/tencent/mm/protocal/protobuf/brc:cSh	I
+    //   120: getfield 144	com/tencent/mm/protocal/protobuf/bvf:skC	Lcom/tencent/mm/protocal/protobuf/bvp;
+    //   123: getfield 174	com/tencent/mm/protocal/protobuf/bvp:ddx	I
     //   126: i2l
     //   127: aload 11
-    //   129: getfield 133	com/tencent/mm/protocal/protobuf/bqs:rvh	Lcom/tencent/mm/protocal/protobuf/brc;
-    //   132: getfield 166	com/tencent/mm/protocal/protobuf/brc:hbI	I
+    //   129: getfield 144	com/tencent/mm/protocal/protobuf/bvf:skC	Lcom/tencent/mm/protocal/protobuf/bvp;
+    //   132: getfield 177	com/tencent/mm/protocal/protobuf/bvp:htQ	I
     //   135: i2l
-    //   136: new 168	com/tencent/mm/plugin/finder/upload/c$e
-    //   139: dup
-    //   140: aload 15
-    //   142: invokespecial 171	com/tencent/mm/plugin/finder/upload/c$e:<init>	(Ld/g/a/b;)V
-    //   145: checkcast 173	d/g/a/b
-    //   148: new 11	com/tencent/mm/plugin/finder/upload/c$f
-    //   151: dup
-    //   152: aload_0
-    //   153: aload 16
-    //   155: iload_3
-    //   156: aload 12
-    //   158: lload_1
-    //   159: iload 7
-    //   161: iload 8
-    //   163: aload 10
-    //   165: aload 17
-    //   167: aload 18
-    //   169: invokespecial 176	com/tencent/mm/plugin/finder/upload/c$f:<init>	(Lcom/tencent/mm/plugin/finder/upload/c;Ld/g/b/v$d;ILcom/tencent/mm/protocal/protobuf/FinderMediaReportObject;JIILcom/tencent/mm/modelcontrol/VideoTransPara;Ljava/lang/Object;Ld/g/b/v$a;)V
-    //   172: checkcast 173	d/g/a/b
-    //   175: iload 5
-    //   177: iload 6
-    //   179: invokespecial 179	com/tencent/mm/plugin/finder/video/l:<init>	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Landroid/graphics/Rect;IIIIIIIJJLd/g/a/b;Ld/g/a/b;II)V
-    //   182: astore 4
-    //   184: aload 4
-    //   186: invokevirtual 183	com/tencent/mm/plugin/finder/video/l:arc	()I
-    //   189: pop
-    //   190: aload 17
-    //   192: monitorenter
-    //   193: aload 18
-    //   195: getfield 119	d/g/b/v$a:KUL	Z
-    //   198: ifne +58 -> 256
-    //   201: getstatic 82	com/tencent/mm/plugin/finder/upload/c:TAG	Ljava/lang/String;
-    //   204: ldc 185
-    //   206: iload_3
-    //   207: invokestatic 191	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   210: invokevirtual 195	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   213: invokestatic 200	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   216: aload 17
-    //   218: invokevirtual 203	java/lang/Object:wait	()V
-    //   221: getstatic 82	com/tencent/mm/plugin/finder/upload/c:TAG	Ljava/lang/String;
-    //   224: new 205	java/lang/StringBuilder
-    //   227: dup
-    //   228: ldc 207
-    //   230: invokespecial 210	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   233: iload_3
-    //   234: invokevirtual 214	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   237: ldc 216
-    //   239: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   242: aload 16
-    //   244: getfield 109	d/g/b/v$d:KUO	I
-    //   247: invokevirtual 214	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   250: invokevirtual 223	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   253: invokestatic 200	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   256: getstatic 229	d/y:KTp	Ld/y;
-    //   259: astore 4
-    //   261: aload 17
-    //   263: monitorexit
-    //   264: aload 16
-    //   266: getfield 109	d/g/b/v$d:KUO	I
-    //   269: istore_3
-    //   270: ldc 102
-    //   272: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   275: iload_3
-    //   276: ireturn
-    //   277: astore 4
-    //   279: getstatic 82	com/tencent/mm/plugin/finder/upload/c:TAG	Ljava/lang/String;
-    //   282: aload 4
-    //   284: ldc 231
-    //   286: iconst_0
-    //   287: anewarray 111	java/lang/Object
-    //   290: invokestatic 235	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   293: getstatic 241	com/tencent/mm/plugin/finder/report/i$b:ryD	Lcom/tencent/mm/plugin/finder/report/i$b;
-    //   296: astore 4
-    //   298: invokestatic 244	com/tencent/mm/plugin/finder/report/i$b:cwZ	()V
-    //   301: aload_0
-    //   302: getstatic 250	com/tencent/mm/loader/g/h:gLO	Lcom/tencent/mm/loader/g/h;
-    //   305: invokevirtual 253	com/tencent/mm/plugin/finder/upload/c:a	(Lcom/tencent/mm/loader/g/h;)V
-    //   308: aload 16
-    //   310: getfield 109	d/g/b/v$d:KUO	I
-    //   313: istore_3
-    //   314: ldc 102
-    //   316: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   319: iload_3
-    //   320: ireturn
-    //   321: astore 4
-    //   323: aload 17
-    //   325: monitorexit
-    //   326: ldc 102
-    //   328: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   331: aload 4
-    //   333: athrow
+    //   136: aload 10
+    //   138: getfield 180	com/tencent/mm/modelcontrol/VideoTransPara:hmx	I
+    //   141: new 17	com/tencent/mm/plugin/finder/upload/c$e
+    //   144: dup
+    //   145: aload 15
+    //   147: invokespecial 183	com/tencent/mm/plugin/finder/upload/c$e:<init>	(Ld/g/a/b;)V
+    //   150: checkcast 185	d/g/a/b
+    //   153: new 19	com/tencent/mm/plugin/finder/upload/c$f
+    //   156: dup
+    //   157: aload_0
+    //   158: aload 16
+    //   160: iload_3
+    //   161: aload 12
+    //   163: lload_1
+    //   164: iload 7
+    //   166: iload 8
+    //   168: aload 10
+    //   170: aload 17
+    //   172: aload 18
+    //   174: invokespecial 188	com/tencent/mm/plugin/finder/upload/c$f:<init>	(Lcom/tencent/mm/plugin/finder/upload/c;Ld/g/b/y$d;ILcom/tencent/mm/protocal/protobuf/FinderMediaReportObject;JIILcom/tencent/mm/modelcontrol/VideoTransPara;Ljava/lang/Object;Ld/g/b/y$a;)V
+    //   177: checkcast 185	d/g/a/b
+    //   180: iload 5
+    //   182: iload 6
+    //   184: invokespecial 191	com/tencent/mm/plugin/finder/video/l:<init>	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Landroid/graphics/Rect;IIIIIIIJJILd/g/a/b;Ld/g/a/b;II)V
+    //   187: astore 4
+    //   189: aload 4
+    //   191: invokevirtual 195	com/tencent/mm/plugin/finder/video/l:atP	()I
+    //   194: pop
+    //   195: aload 17
+    //   197: monitorenter
+    //   198: aload 18
+    //   200: getfield 130	d/g/b/y$a:MLQ	Z
+    //   203: ifne +58 -> 261
+    //   206: getstatic 93	com/tencent/mm/plugin/finder/upload/c:TAG	Ljava/lang/String;
+    //   209: ldc 197
+    //   211: iload_3
+    //   212: invokestatic 203	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   215: invokevirtual 207	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   218: invokestatic 212	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   221: aload 17
+    //   223: invokevirtual 215	java/lang/Object:wait	()V
+    //   226: getstatic 93	com/tencent/mm/plugin/finder/upload/c:TAG	Ljava/lang/String;
+    //   229: new 217	java/lang/StringBuilder
+    //   232: dup
+    //   233: ldc 219
+    //   235: invokespecial 222	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   238: iload_3
+    //   239: invokevirtual 226	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   242: ldc 228
+    //   244: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: aload 16
+    //   249: getfield 120	d/g/b/y$d:MLT	I
+    //   252: invokevirtual 226	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   255: invokevirtual 235	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   258: invokestatic 212	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   261: getstatic 241	d/z:MKo	Ld/z;
+    //   264: astore 4
+    //   266: aload 17
+    //   268: monitorexit
+    //   269: aload 16
+    //   271: getfield 120	d/g/b/y$d:MLT	I
+    //   274: istore_3
+    //   275: ldc 113
+    //   277: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   280: iload_3
+    //   281: ireturn
+    //   282: astore 4
+    //   284: getstatic 93	com/tencent/mm/plugin/finder/upload/c:TAG	Ljava/lang/String;
+    //   287: aload 4
+    //   289: ldc 243
+    //   291: iconst_0
+    //   292: anewarray 122	java/lang/Object
+    //   295: invokestatic 247	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   298: getstatic 253	com/tencent/mm/plugin/finder/report/n$b:sqe	Lcom/tencent/mm/plugin/finder/report/n$b;
+    //   301: astore 4
+    //   303: invokestatic 256	com/tencent/mm/plugin/finder/report/n$b:cDH	()V
+    //   306: aload_0
+    //   307: getstatic 262	com/tencent/mm/loader/g/j:hfL	Lcom/tencent/mm/loader/g/j;
+    //   310: invokevirtual 265	com/tencent/mm/plugin/finder/upload/c:a	(Lcom/tencent/mm/loader/g/j;)V
+    //   313: aload 16
+    //   315: getfield 120	d/g/b/y$d:MLT	I
+    //   318: istore_3
+    //   319: ldc 113
+    //   321: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   324: iload_3
+    //   325: ireturn
+    //   326: astore 4
+    //   328: aload 17
+    //   330: monitorexit
+    //   331: ldc 113
+    //   333: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   336: aload 4
+    //   338: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	334	0	this	c
-    //   0	334	1	paramLong	long
-    //   0	334	3	paramInt1	int
-    //   0	334	4	paramString1	String
-    //   0	334	5	paramInt2	int
-    //   0	334	6	paramInt3	int
-    //   0	334	7	paramInt4	int
-    //   0	334	8	paramInt5	int
-    //   0	334	9	paramInt6	int
-    //   0	334	10	paramVideoTransPara	VideoTransPara
-    //   0	334	11	parambqs	bqs
-    //   0	334	12	paramFinderMediaReportObject	FinderMediaReportObject
-    //   0	334	13	paramString2	String
-    //   0	334	14	paramInt7	int
-    //   0	334	15	paramb	d.g.a.b<? super java.lang.Float, y>
-    //   12	297	16	locald	v.d
-    //   27	297	17	localObject	Object
-    //   36	158	18	locala	v.a
+    //   0	339	0	this	c
+    //   0	339	1	paramLong	long
+    //   0	339	3	paramInt1	int
+    //   0	339	4	paramString1	String
+    //   0	339	5	paramInt2	int
+    //   0	339	6	paramInt3	int
+    //   0	339	7	paramInt4	int
+    //   0	339	8	paramInt5	int
+    //   0	339	9	paramInt6	int
+    //   0	339	10	paramVideoTransPara	VideoTransPara
+    //   0	339	11	parambvf	bvf
+    //   0	339	12	paramFinderMediaReportObject	FinderMediaReportObject
+    //   0	339	13	paramString2	String
+    //   0	339	14	paramInt7	int
+    //   0	339	15	paramb	d.g.a.b<? super Float, z>
+    //   12	302	16	locald	y.d
+    //   27	302	17	localObject	Object
+    //   36	163	18	locala	y.a
     //   49	33	19	str	String
-    //   66	22	20	localdqk	dqk
+    //   66	22	20	localdwe	dwe
     // Exception table:
     //   from	to	target	type
-    //   44	184	277	java/lang/Throwable
-    //   193	256	321	finally
-    //   256	261	321	finally
+    //   44	189	282	java/lang/Throwable
+    //   198	261	326	finally
+    //   261	266	326	finally
   }
   
-  private final int a(long paramLong, int paramInt, String paramString, VideoTransPara paramVideoTransPara, bqs parambqs, FinderMediaReportObject paramFinderMediaReportObject)
+  private final d.o<Integer, Float> a(final long paramLong, final int paramInt, String paramString, final VideoTransPara paramVideoTransPara, final bvf parambvf, final FinderMediaReportObject paramFinderMediaReportObject)
   {
-    AppMethodBeat.i(203500);
-    ac.i(TAG, "remuxComposition outputPath:".concat(String.valueOf(paramString)));
-    yo localyo = parambqs.FfQ;
-    v.d locald = new v.d();
-    locald.KUO = -1;
-    yp localyp = localyo.AmP;
-    localyp.poB = paramString;
-    Object localObject = new Object();
-    v.a locala = new v.a();
-    locala.KUL = false;
-    com.tencent.mm.plugin.vlog.model.a locala1 = new com.tencent.mm.plugin.vlog.model.a();
-    locala1.retryCount = parambqs.rvh.retryCount;
-    locala1.uzZ = true;
-    parambqs = com.tencent.mm.plugin.finder.storage.b.rCU;
-    if (com.tencent.mm.plugin.finder.storage.b.cyb()) {
-      locala1.r(paramVideoTransPara);
+    AppMethodBeat.i(204327);
+    ad.i(TAG, "remuxComposition outputPath:".concat(String.valueOf(paramString)));
+    final aan localaan = parambvf.GPu;
+    final y.d locald = new y.d();
+    locald.MLT = -1;
+    final aao localaao = localaan.BEZ;
+    localaao.pSc = paramString;
+    final Object localObject = new Object();
+    final y.a locala = new y.a();
+    locala.MLQ = false;
+    com.tencent.mm.plugin.vlog.model.d locald1 = new com.tencent.mm.plugin.vlog.model.d();
+    locald1.retryCount = parambvf.skC.retryCount;
+    locald1.vCC = true;
+    parambvf = com.tencent.mm.plugin.finder.storage.b.sxa;
+    if (com.tencent.mm.plugin.finder.storage.b.cFa()) {
+      locald1.r(paramVideoTransPara);
     }
-    parambqs = (d.g.a.b)new c.c(this);
-    k.h(parambqs, "callback");
-    locala1.AmM = parambqs;
-    k.g(localyo, "videoCompositionInfo");
-    locala1.a(localyo, (d.g.a.b)new c.d(this, locald, paramInt, paramFinderMediaReportObject, paramLong, paramString, localyp, paramVideoTransPara, localyo, localObject, locala));
+    parambvf = new y.c();
+    parambvf.MLS = 0.0F;
+    parambvf = (d.g.a.b)new c(this, parambvf);
+    d.g.b.p.h(parambvf, "callback");
+    locald1.BEV = parambvf;
+    d.g.b.p.g(localaan, "videoCompositionInfo");
+    float f = locald1.a(localaan, (d.g.a.b)new d(this, locald, paramInt, paramFinderMediaReportObject, paramLong, paramString, localaao, paramVideoTransPara, localaan, localObject, locala));
     try
     {
-      if (!locala.KUL)
+      if (!locala.MLQ)
       {
-        ac.i(TAG, "wait ".concat(String.valueOf(paramInt)));
+        ad.i(TAG, "wait ".concat(String.valueOf(paramInt)));
         localObject.wait();
-        ac.i(TAG, "notify " + paramInt + ", " + locald.KUO);
+        ad.i(TAG, "notify " + paramInt + ", " + locald.MLT);
       }
-      paramString = y.KTp;
-      paramInt = locald.KUO;
-      AppMethodBeat.o(203500);
-      return paramInt;
+      paramString = z.MKo;
+      paramString = new d.o(Integer.valueOf(locald.MLT), Float.valueOf(f));
+      AppMethodBeat.o(204327);
+      return paramString;
     }
     finally
     {
-      AppMethodBeat.o(203500);
+      AppMethodBeat.o(204327);
     }
   }
   
-  public final void aZ(float paramFloat)
+  public final String aeK()
+  {
+    AppMethodBeat.i(167732);
+    long l = this.sIF.getLocalId();
+    AppMethodBeat.o(167732);
+    return String.valueOf(l);
+  }
+  
+  public final void bc(float paramFloat)
   {
     AppMethodBeat.i(167733);
     float f = paramFloat;
     if (paramFloat > 1.0F) {
       f = 1.0F;
     }
-    Object localObject = com.tencent.mm.plugin.finder.storage.b.rCU;
-    int i = (int)(com.tencent.mm.plugin.finder.storage.b.cys() * f);
-    ac.i(TAG, "feed " + this.rMD.getLocalId() + " updateProgress  " + f + ", " + i);
-    if (this.rMD.getPostInfo().FfV < i)
+    Object localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
+    int i = (int)(com.tencent.mm.plugin.finder.storage.b.cFv() * f);
+    ad.i(TAG, "feed " + this.sIF.getLocalId() + " updateProgress  " + f + ", " + i);
+    if (this.sIF.getPostInfo().GPz < i)
     {
-      this.rMD.getPostInfo().FfV = i;
-      localObject = com.tencent.mm.plugin.finder.storage.logic.b.rFl;
-      com.tencent.mm.plugin.finder.storage.logic.b.a.h(this.rMD);
+      this.sIF.getPostInfo().GPz = i;
+      localObject = com.tencent.mm.plugin.finder.storage.logic.b.sAs;
+      com.tencent.mm.plugin.finder.storage.logic.b.a.i(this.sIF);
     }
-    localObject = com.tencent.mm.sdk.b.a.GpY;
-    gz localgz = new gz();
-    localgz.dhW.dcd = this.rMD.getLocalId();
-    localgz.dhW.progress = this.rMD.getPostInfo().FfV;
-    ((com.tencent.mm.sdk.b.a)localObject).l((com.tencent.mm.sdk.b.b)localgz);
+    localObject = com.tencent.mm.sdk.b.a.IbL;
+    hd localhd = new hd();
+    localhd.dty.dnz = this.sIF.getLocalId();
+    localhd.dty.progress = this.sIF.getPostInfo().GPz;
+    ((com.tencent.mm.sdk.b.a)localObject).l((com.tencent.mm.sdk.b.b)localhd);
     AppMethodBeat.o(167733);
-  }
-  
-  public final String acg()
-  {
-    AppMethodBeat.i(167732);
-    long l = this.rMD.getLocalId();
-    AppMethodBeat.o(167732);
-    return String.valueOf(l);
   }
   
   public final void call()
   {
     AppMethodBeat.i(167731);
-    this.rMD.trackPost("mediaProcess");
-    Object localObject4 = (List)new ArrayList();
-    Object localObject1 = (Iterable)this.rMD.getMediaList();
+    this.sIF.trackPost("mediaProcess");
+    Object localObject1 = this.sIF.field_reportObject;
+    if (localObject1 != null) {
+      ((FinderFeedReportObject)localObject1).postStage = 2;
+    }
+    Object localObject5 = (List)new ArrayList();
+    localObject1 = (Iterable)this.sIF.getMediaList();
     int i = 0;
     localObject1 = ((Iterable)localObject1).iterator();
     Object localObject3;
@@ -344,618 +348,918 @@ public final class c
     {
       localObject3 = ((Iterator)localObject1).next();
       if (i < 0) {
-        j.fOc();
+        d.a.j.gfB();
       }
-      localObject3 = (bqs)localObject3;
-      if ((this.rMD.isNeedCrop(i)) && (this.rMD.getCropInfo(i) != null)) {
-        ((List)localObject4).add(localObject3);
+      localObject3 = (bvf)localObject3;
+      if ((this.sIF.isNeedCrop(i)) && (this.sIF.getCropInfo(i) != null)) {
+        ((List)localObject5).add(localObject3);
       }
-      if ((this.rMD.isNeedVideoCompositionPlay(i)) && (this.rMD.getCropInfo(i) != null)) {
-        ((List)localObject4).add(localObject3);
+      if ((this.sIF.isNeedVideoCompositionPlay(i)) && (this.sIF.getCropInfo(i) != null)) {
+        ((List)localObject5).add(localObject3);
       }
       i += 1;
     }
-    localObject1 = com.tencent.mm.plugin.finder.storage.b.rCU;
-    if ((com.tencent.mm.plugin.finder.storage.b.cyv()) && (ac.getLogLevel() >= 0))
+    localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
+    if ((com.tencent.mm.plugin.finder.storage.b.cFx()) && (ad.getLogLevel() >= 0))
     {
-      ac.i(TAG, "debug blocking, sleep.....");
-      Thread.sleep(1000000L);
+      ad.i(TAG, "debug blocking, sleep.....");
+      Thread.sleep(30000L);
     }
-    if (((List)localObject4).size() <= 0)
+    if (((List)localObject5).size() <= 0)
     {
-      ac.i(TAG, "nothing need to be processed");
-      aZ(1.0F);
-      a(h.gLN);
+      ad.i(TAG, "nothing need to be processed");
+      bc(1.0F);
+      a(com.tencent.mm.loader.g.j.hfK);
       AppMethodBeat.o(167731);
       return;
     }
-    ac.i(TAG, "process media count " + ((List)localObject4).size());
-    localObject1 = i.c.ryP;
-    i.c.cxh();
-    localObject1 = com.tencent.mm.plugin.finder.storage.b.rCU;
-    Object localObject5 = com.tencent.mm.plugin.finder.storage.b.cxZ();
-    ac.i(TAG, "FinderMediaProcessTask videoParams ".concat(String.valueOf(localObject5)));
-    localObject1 = (Iterable)localObject4;
-    int j = 0;
-    Iterator localIterator = ((Iterable)localObject1).iterator();
+    ad.i(TAG, "process media count " + ((List)localObject5).size());
+    localObject1 = n.c.sqy;
+    n.c.cDQ();
+    localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
+    final VideoTransPara localVideoTransPara = com.tencent.mm.plugin.finder.storage.b.cEY();
+    ad.i(TAG, "FinderMediaProcessTask videoParams ".concat(String.valueOf(localVideoTransPara)));
+    Iterator localIterator = ((Iterable)localObject5).iterator();
+    final int j = 0;
     int m;
-    bqs localbqs;
-    boolean bool;
+    bvf localbvf;
+    boolean bool4;
     Object localObject6;
-    long l;
-    String str;
-    int n;
     Object localObject7;
+    Object localObject4;
+    long l;
+    int n;
+    int i1;
+    int i2;
+    int i3;
+    label845:
+    label989:
+    label1014:
+    boolean bool3;
+    label921:
     Object localObject8;
-    label589:
-    label745:
+    label1048:
+    label1121:
+    boolean bool2;
+    label1182:
+    float f3;
+    float f4;
+    int i7;
+    boolean bool5;
     float f1;
-    label650:
     float f2;
     int k;
+    label1376:
+    boolean bool1;
     if (localIterator.hasNext())
     {
       localObject1 = localIterator.next();
       m = j + 1;
       if (j < 0) {
-        j.fOc();
+        d.a.j.gfB();
       }
-      localbqs = (bqs)localObject1;
-      i = localbqs.rvh.retryCount;
-      localObject1 = com.tencent.mm.plugin.finder.storage.b.rCU;
-      if (i > com.tencent.mm.plugin.finder.storage.b.cyq())
+      localbvf = (bvf)localObject1;
+      i = localbvf.skC.retryCount;
+      localObject1 = com.tencent.mm.plugin.finder.storage.b.sxa;
+      if (i > com.tencent.mm.plugin.finder.storage.b.cFt())
       {
-        a(h.gLO);
+        a(com.tencent.mm.loader.g.j.hfL);
         AppMethodBeat.o(167731);
         return;
       }
-      localObject1 = localbqs.rvh;
-      ((brc)localObject1).retryCount += 1;
-      localObject1 = com.tencent.mm.plugin.finder.storage.logic.b.rFl;
-      com.tencent.mm.plugin.finder.storage.logic.b.a.h(this.rMD);
-      localObject1 = n.rPN;
-      bool = n.c(localbqs);
+      localObject1 = localbvf.skC;
+      ((bvp)localObject1).retryCount += 1;
+      localObject1 = com.tencent.mm.plugin.finder.storage.logic.b.sAs;
+      com.tencent.mm.plugin.finder.storage.logic.b.a.i(this.sIF);
+      localObject1 = com.tencent.mm.plugin.finder.utils.p.sMo;
+      bool4 = com.tencent.mm.plugin.finder.utils.p.d(localbvf);
       localObject6 = new FinderMediaReportObject();
-      ((FinderMediaReportObject)localObject6).mediaType = localbqs.mediaType;
+      ((FinderMediaReportObject)localObject6).mediaType = localbvf.mediaType;
       ((FinderMediaReportObject)localObject6).origin = new FinderMediaReportInfo();
-      l = bs.Gn();
-      localObject1 = new com.tencent.mm.plugin.finder.loader.l(localbqs, m.rEd, 0, null, 12);
-      localObject3 = p.rQw;
-      str = p.a((com.tencent.mm.plugin.finder.loader.l)localObject1, String.valueOf(this.rMD.getCreateTime()));
-      localObject3 = null;
-      n = 1;
-      i = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(com.tencent.mm.plugin.expt.a.b.a.pWi, 1);
-      localObject7 = TAG;
-      localObject8 = new StringBuilder("process: config: ").append(i).append(", trackSize: ");
-      localObject1 = localbqs.FfQ;
+      ((FinderMediaReportObject)localObject6).multiMediaInfo = new LinkedList();
+      localObject1 = localbvf.GPu;
       if (localObject1 != null)
       {
-        localObject1 = ((yo)localObject1).Esk;
+        localObject1 = ((aan)localObject1).FZu;
         if (localObject1 != null)
         {
+          localObject1 = ((Iterable)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject7 = (dom)((Iterator)localObject1).next();
+            localObject3 = new FinderMediaReportInfo();
+            ((FinderMediaReportInfo)localObject3).fileSize = ((int)com.tencent.mm.vfs.i.aYo(((dom)localObject7).path));
+            localObject4 = MultiMediaVideoChecker.BFV;
+            localObject7 = ((dom)localObject7).path;
+            d.g.b.p.g(localObject7, "track.path");
+            localObject4 = ((MultiMediaVideoChecker)localObject4).aDk((String)localObject7);
+            if (localObject4 != null)
+            {
+              ((FinderMediaReportInfo)localObject3).width = ((MultiMediaVideoChecker.a)localObject4).width;
+              ((FinderMediaReportInfo)localObject3).height = ((MultiMediaVideoChecker.a)localObject4).height;
+              ((FinderMediaReportInfo)localObject3).videoBitrate = ((MultiMediaVideoChecker.a)localObject4).bitrate;
+              ((FinderMediaReportInfo)localObject3).videoDuration = ((int)((MultiMediaVideoChecker.a)localObject4).duration);
+              ((FinderMediaReportInfo)localObject3).audioBitrate = ((MultiMediaVideoChecker.a)localObject4).audioBitrate;
+              ((FinderMediaReportInfo)localObject3).fps = ((int)((MultiMediaVideoChecker.a)localObject4).cvL);
+              ad.i(TAG, "put multiMediaInfo:".concat(String.valueOf(localObject4)));
+              localObject4 = z.MKo;
+            }
+            ((FinderMediaReportObject)localObject6).multiMediaInfo.add(localObject3);
+          }
+          localObject1 = z.MKo;
+        }
+      }
+      l = bt.HI();
+      localObject1 = new m(localbvf, com.tencent.mm.plugin.finder.storage.r.syQ, 0, null, 12);
+      localObject3 = com.tencent.mm.plugin.finder.utils.r.sNc;
+      localObject7 = com.tencent.mm.plugin.finder.utils.r.a((m)localObject1, String.valueOf(this.sIF.getCreateTime()));
+      localObject4 = null;
+      n = 1;
+      i1 = 2;
+      i2 = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qAV, 0);
+      i3 = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qHH, 1);
+      localObject1 = localbvf.GPu;
+      if (localObject1 != null)
+      {
+        localObject1 = ((aan)localObject1).FZu;
+        if (localObject1 != null)
+        {
+          localObject1 = (dom)d.a.j.jd((List)localObject1);
+          localObject3 = localbvf.GPu;
+          if (localObject3 == null) {
+            break label3205;
+          }
+          localObject3 = ((aan)localObject3).FZu;
+          if ((localObject3 == null) || (((LinkedList)localObject3).size() != 1)) {
+            break label3205;
+          }
+          localObject3 = localbvf.GPu;
+          if (localObject3 == null) {
+            break label3187;
+          }
+          localObject3 = ((aan)localObject3).BFa;
+          if (localObject3 == null) {
+            break label3187;
+          }
+          localObject3 = ((aam)localObject3).FZr;
+          if (localObject3 == null) {
+            break label3187;
+          }
+          i = ((LinkedList)localObject3).size();
+          if (i != 0) {
+            break label3205;
+          }
+          localObject3 = localbvf.GPu;
+          if ((localObject3 == null) || (((aan)localObject3).BGn) || (localbvf.GPu.FZz != null) || (localObject1 == null)) {
+            break label3205;
+          }
+          if (((dom)localObject1).HCX != null)
+          {
+            localObject3 = ((dom)localObject1).HCX;
+            if (localObject3 == null) {
+              break label3193;
+            }
+            localObject3 = ((dpu)localObject3).path;
+            localObject3 = (CharSequence)localObject3;
+            if ((localObject3 != null) && (((CharSequence)localObject3).length() != 0)) {
+              break label3199;
+            }
+            i = 1;
+            if (i == 0) {
+              break label3205;
+            }
+          }
+          if (((dom)localObject1).hiy - ((dom)localObject1).startTimeMs != ((dom)localObject1).HCV - ((dom)localObject1).HCU) {
+            break label3205;
+          }
+          bool3 = true;
+          localObject3 = TAG;
+          localObject8 = new StringBuilder("process: config: ").append(i2).append(", checkNoNeedRemux:").append(i3).append(", trackSize: ");
+          localObject1 = localbvf.GPu;
+          if (localObject1 == null) {
+            break label3211;
+          }
+          localObject1 = ((aan)localObject1).FZu;
+          if (localObject1 == null) {
+            break label3211;
+          }
           localObject1 = Integer.valueOf(((LinkedList)localObject1).size());
           localObject8 = ((StringBuilder)localObject8).append(localObject1).append(", editSize: ");
-          localObject1 = localbqs.FfQ;
+          localObject1 = localbvf.GPu;
           if (localObject1 == null) {
-            break label1859;
+            break label3217;
           }
-          localObject1 = ((yo)localObject1).AmQ;
+          localObject1 = ((aan)localObject1).BFa;
           if (localObject1 == null) {
-            break label1859;
+            break label3217;
           }
-          localObject1 = ((yn)localObject1).Esi;
+          localObject1 = ((aam)localObject1).FZr;
           if (localObject1 == null) {
-            break label1859;
+            break label3217;
           }
           localObject1 = Integer.valueOf(((LinkedList)localObject1).size());
-          ac.i((String)localObject7, localObject1);
-          if (i != 1) {
-            break label3548;
+          ad.i((String)localObject3, localObject1 + ", videoIsNoEffect:" + bool3);
+          bool2 = false;
+          if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qDq, 0) == 1) {
+            bool2 = true;
           }
-          localObject1 = localbqs.FfQ;
-          if (localObject1 == null) {
-            break label1865;
+          f3 = localVideoTransPara.audioBitrate / 1000.0F;
+          f4 = localVideoTransPara.audioSampleRate;
+          i7 = localVideoTransPara.audioChannelCount;
+          bool5 = localbvf.GPu.BGm;
+          f1 = 0.0F;
+          f2 = 0.0F;
+          k = i1;
+          label1408:
+          Object localObject9;
+          if (i3 == 1)
+          {
+            k = i1;
+            if (bool3)
+            {
+              localObject1 = (dom)localbvf.GPu.FZu.get(0);
+              localObject3 = MultiMediaVideoChecker.BFV;
+              localObject8 = ((dom)localObject1).path;
+              d.g.b.p.g(localObject8, "track.path");
+              localObject3 = ((MultiMediaVideoChecker)localObject3).aDk((String)localObject8);
+              if (localObject3 == null) {
+                break label3249;
+              }
+              if ((((MultiMediaVideoChecker.a)localObject3).dGc != 90) && (((MultiMediaVideoChecker.a)localObject3).dGc != 270)) {
+                break label3223;
+              }
+              i = ((MultiMediaVideoChecker.a)localObject3).height;
+              double d = i;
+              if ((((MultiMediaVideoChecker.a)localObject3).dGc != 90) && (((MultiMediaVideoChecker.a)localObject3).dGc != 270)) {
+                break label3233;
+              }
+              i = ((MultiMediaVideoChecker.a)localObject3).width;
+              d = 1.0D * d / i;
+              ad.i(TAG, "origin videoInfo:" + localObject3 + ", videoParams:" + localVideoTransPara + ", videoRatio:" + d);
+              localObject8 = TAG;
+              localObject9 = new StringBuilder("videoRatio in range:");
+              com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
+              localObject9 = ((StringBuilder)localObject9).append(com.tencent.mm.plugin.finder.storage.b.cHK().contains((Comparable)Double.valueOf(d))).append(", finderVideoRatioRange:");
+              localb = com.tencent.mm.plugin.finder.storage.b.sxa;
+              ad.i((String)localObject8, com.tencent.mm.plugin.finder.storage.b.cHK());
+              if ((((MultiMediaVideoChecker.a)localObject3).vTf) || (((MultiMediaVideoChecker.a)localObject3).bitrate > localVideoTransPara.videoBitrate) || (((MultiMediaVideoChecker.a)localObject3).cvL > localVideoTransPara.fps)) {
+                break label3243;
+              }
+              localObject3 = com.tencent.mm.plugin.finder.storage.b.sxa;
+              if (!com.tencent.mm.plugin.finder.storage.b.cHK().contains((Comparable)Double.valueOf(d))) {
+                break label3243;
+              }
+              bool1 = true;
+              label1594:
+              ad.i(TAG, "isVideoSizeMatch:".concat(String.valueOf(bool1)));
+              k = i1;
+              if (bool1)
+              {
+                localObject3 = new Rect();
+                localObject8 = new Rect();
+                localObject9 = ((dom)localObject1).HCW.GbI;
+                d.g.b.p.g(localObject9, "track.cropInfo.cropRect");
+                com.tencent.mm.plugin.vlog.model.f.a((cse)localObject9, (Rect)localObject3);
+                localObject9 = ((dom)localObject1).HCW.GbK;
+                d.g.b.p.g(localObject9, "track.cropInfo.contentRect");
+                com.tencent.mm.plugin.vlog.model.f.a((cse)localObject9, (Rect)localObject8);
+                ad.i(TAG, "cropRect:" + localObject3 + ", contentRect:" + localObject8 + ", track:[" + ((dom)localObject1).HCU + ", " + ((dom)localObject1).HCV + ", " + ((dom)localObject1).BMD + ']');
+                k = i1;
+                if (((dom)localObject1).HCU == 0L)
+                {
+                  k = i1;
+                  if (((dom)localObject1).BMD - ((dom)localObject1).HCV <= 10L)
+                  {
+                    k = i1;
+                    if (((dom)localObject1).BMD <= localVideoTransPara.duration * 1000)
+                    {
+                      k = i1;
+                      if (d.g.b.p.i(localObject3, localObject8))
+                      {
+                        ad.i(TAG, "no need remux!!!");
+                        k = 3;
+                        com.tencent.mm.vfs.i.mz(((dom)localObject1).path, (String)localObject7);
+                        localObject1 = n.b.sqe;
+                        n.b.cDJ();
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
-          localObject1 = ((yo)localObject1).Esk;
-          if (localObject1 == null) {
-            break label1865;
+          i = k;
+          if (k == 3) {
+            break label4262;
           }
-          if (((LinkedList)localObject1).size() != 1) {
-            break label3548;
+          bool1 = false;
+          localObject1 = (dom)localbvf.GPu.FZu.get(0);
+          if (bool3)
+          {
+            localObject3 = new Rect();
+            localObject8 = new Rect();
+            localObject9 = ((dom)localObject1).HCW.GbI;
+            d.g.b.p.g(localObject9, "track.cropInfo.cropRect");
+            com.tencent.mm.plugin.vlog.model.f.a((cse)localObject9, (Rect)localObject3);
+            localObject9 = ((dom)localObject1).HCW.GbK;
+            d.g.b.p.g(localObject9, "track.cropInfo.contentRect");
+            com.tencent.mm.plugin.vlog.model.f.a((cse)localObject9, (Rect)localObject8);
+            bool1 = ((Rect)localObject8).contains((Rect)localObject3);
+            ad.i(TAG, "process: crop: " + localObject3 + ", content: " + localObject8);
           }
-          localObject1 = localbqs.FfQ;
-          if (localObject1 == null) {
-            break label1872;
+          if ((i2 != 1) || (!bool3) || (!bool1)) {
+            break label5610;
           }
-          localObject1 = ((yo)localObject1).AmQ;
-          if (localObject1 == null) {
-            break label1872;
-          }
-          localObject1 = ((yn)localObject1).Esi;
-          if (localObject1 == null) {
-            break label1872;
-          }
-          i = ((LinkedList)localObject1).size();
-          if (i != 0) {
-            break label3548;
-          }
-          ac.i(TAG, "process, force use normal video");
-          localObject1 = (dix)localbqs.FfQ.Esk.get(0);
-          i = SightVideoJNI.getMp4RotateVFS(((dix)localObject1).path);
-          localbqs.rvh.cSh = ((int)(localbqs.FfQ.Esl + ((dix)localObject1).Aox));
-          localbqs.rvh.hbI = ((int)(localbqs.FfQ.Esm + ((dix)localObject1).Aox));
-          f1 = ((dix)localObject1).AoA;
-          f2 = ((dix)localObject1).AoC;
-          k = ((Number)((dix)localObject1).FSo.Eur.Fjc.get(2)).intValue();
-          localObject3 = ((dix)localObject1).FSo.Eur.Fjc.get(0);
-          k.g(localObject3, "track.cropInfo.contentRect.values[0]");
-          f1 = 1.0F * (f1 * f2) / (k - ((Number)localObject3).intValue());
-          localObject3 = new dqk();
-          k = ((Number)((dix)localObject1).FSo.Eup.Fjc.get(0)).intValue();
-          localObject7 = ((dix)localObject1).FSo.Eur.Fjc.get(0);
-          k.g(localObject7, "track.cropInfo.contentRect.values[0]");
-          ((dqk)localObject3).left = ((int)((k - ((Number)localObject7).intValue()) * f1));
-          k = ((Number)((dix)localObject1).FSo.Eup.Fjc.get(1)).intValue();
-          localObject7 = ((dix)localObject1).FSo.Eur.Fjc.get(1);
-          k.g(localObject7, "track.cropInfo.contentRect.values[1]");
-          ((dqk)localObject3).bottom = ((int)((k - ((Number)localObject7).intValue()) * f1));
-          k = ((Number)((dix)localObject1).FSo.Eup.Fjc.get(2)).intValue();
-          localObject7 = ((dix)localObject1).FSo.Eur.Fjc.get(0);
-          k.g(localObject7, "track.cropInfo.contentRect.values[0]");
-          ((dqk)localObject3).right = ((int)((k - ((Number)localObject7).intValue()) * f1));
-          k = ((Number)((dix)localObject1).FSo.Eup.Fjc.get(3)).intValue();
-          localObject7 = ((dix)localObject1).FSo.Eur.Fjc.get(1);
-          k.g(localObject7, "track.cropInfo.contentRect.values[1]");
-          ((dqk)localObject3).top = ((int)((k - ((Number)localObject7).intValue()) * f1));
-          localObject7 = y.KTp;
-          localbqs.rvh.Fgj = ((dqk)localObject3);
-          k = ((Number)((dix)localObject1).FSo.Eur.Fjc.get(2)).intValue();
-          localObject7 = ((dix)localObject1).FSo.Eur.Fjc.get(0);
-          k.g(localObject7, "track.cropInfo.contentRect.values[0]");
-          k = (int)((k - ((Number)localObject7).intValue()) * f1);
-          n = ((Number)((dix)localObject1).FSo.Eur.Fjc.get(3)).intValue();
-          localObject7 = ((dix)localObject1).FSo.Eur.Fjc.get(1);
-          k.g(localObject7, "track.cropInfo.contentRect.values[1]");
-          n = (int)((n - ((Number)localObject7).intValue()) * f1);
-          f2 = (localbqs.rvh.Fgj.right - localbqs.rvh.Fgj.left) * 1.0F / localbqs.FfQ.AmP.gNU;
+          ad.i(TAG, "process, force use normal video");
+          i = SightVideoJNI.getMp4RotateVFS(((dom)localObject1).path);
+          localbvf.skC.ddx = ((int)(localbvf.GPu.FZv + ((dom)localObject1).HCU));
+          localbvf.skC.htQ = ((int)(localbvf.GPu.FZw + ((dom)localObject1).HCU));
+          f1 = ((dom)localObject1).BGr;
+          f2 = ((dom)localObject1).BGt;
+          n = ((Number)((dom)localObject1).HCW.GbK.GSD.get(2)).intValue();
+          localObject3 = ((dom)localObject1).HCW.GbK.GSD.get(0);
+          d.g.b.p.g(localObject3, "track.cropInfo.contentRect.values[0]");
+          f1 = 1.0F * (f1 * f2) / (n - ((Number)localObject3).intValue());
+          localObject3 = new dwe();
+          n = ((Number)((dom)localObject1).HCW.GbI.GSD.get(0)).intValue();
+          localObject4 = ((dom)localObject1).HCW.GbK.GSD.get(0);
+          d.g.b.p.g(localObject4, "track.cropInfo.contentRect.values[0]");
+          ((dwe)localObject3).left = ((int)((n - ((Number)localObject4).intValue()) * f1));
+          n = ((Number)((dom)localObject1).HCW.GbI.GSD.get(1)).intValue();
+          localObject4 = ((dom)localObject1).HCW.GbK.GSD.get(1);
+          d.g.b.p.g(localObject4, "track.cropInfo.contentRect.values[1]");
+          ((dwe)localObject3).bottom = ((int)((n - ((Number)localObject4).intValue()) * f1));
+          n = ((Number)((dom)localObject1).HCW.GbI.GSD.get(2)).intValue();
+          localObject4 = ((dom)localObject1).HCW.GbK.GSD.get(0);
+          d.g.b.p.g(localObject4, "track.cropInfo.contentRect.values[0]");
+          ((dwe)localObject3).right = ((int)((n - ((Number)localObject4).intValue()) * f1));
+          n = ((Number)((dom)localObject1).HCW.GbI.GSD.get(3)).intValue();
+          localObject4 = ((dom)localObject1).HCW.GbK.GSD.get(1);
+          d.g.b.p.g(localObject4, "track.cropInfo.contentRect.values[1]");
+          ((dwe)localObject3).top = ((int)((n - ((Number)localObject4).intValue()) * f1));
+          localObject4 = z.MKo;
+          localbvf.skC.GPL = ((dwe)localObject3);
+          n = ((Number)((dom)localObject1).HCW.GbK.GSD.get(2)).intValue();
+          localObject4 = ((dom)localObject1).HCW.GbK.GSD.get(0);
+          d.g.b.p.g(localObject4, "track.cropInfo.contentRect.values[0]");
+          n = (int)((n - ((Number)localObject4).intValue()) * f1);
+          i1 = ((Number)((dom)localObject1).HCW.GbK.GSD.get(3)).intValue();
+          localObject4 = ((dom)localObject1).HCW.GbK.GSD.get(1);
+          d.g.b.p.g(localObject4, "track.cropInfo.contentRect.values[1]");
+          i1 = (int)((i1 - ((Number)localObject4).intValue()) * f1);
+          f2 = (localbvf.skC.GPL.right - localbvf.skC.GPL.left) * 1.0F / localbvf.GPu.BEZ.targetWidth;
           f1 = f2;
           if (f2 > 1.0F) {
             f1 = 1.0F;
           }
-          localbqs.rvh.width = ((int)(localbqs.FfQ.AmP.gNU * f1));
-          localbqs.rvh.height = ((int)(f1 * localbqs.FfQ.AmP.gNV));
+          localbvf.skC.width = ((int)(localbvf.GPu.BEZ.targetWidth * f1));
+          localbvf.skC.height = ((int)(f1 * localbvf.GPu.BEZ.targetHeight));
           if (i != 90) {
-            break label1877;
+            break label3255;
           }
-          localObject7 = new dqk();
-          ((dqk)localObject7).left = ((dqk)localObject3).bottom;
-          ((dqk)localObject7).top = ((dqk)localObject3).right;
-          ((dqk)localObject7).right = ((dqk)localObject3).top;
-          ((dqk)localObject7).bottom = ((dqk)localObject3).left;
-          localbqs.rvh.Fgj = ((dqk)localObject7);
-          label1497:
-          localbqs.url = ((dix)localObject1).path;
-          localObject1 = localbqs.FfQ.gUk;
-          bool = localbqs.FfQ.AnX;
-          if (bs.isNullOrNil((String)localObject1)) {
-            break label2039;
+          localObject4 = new dwe();
+          ((dwe)localObject4).left = ((dwe)localObject3).bottom;
+          ((dwe)localObject4).top = ((dwe)localObject3).right;
+          ((dwe)localObject4).right = ((dwe)localObject3).top;
+          ((dwe)localObject4).bottom = ((dwe)localObject3).left;
+          localbvf.skC.GPL = ((dwe)localObject4);
+          label2773:
+          localbvf.url = ((dom)localObject1).path;
+          localObject1 = localbvf.GPu.hml;
+          bool1 = localbvf.GPu.BGm;
+          if (bt.isNullOrNil((String)localObject1)) {
+            break label3419;
           }
           i = 1;
-          label1537:
-          if (!bool) {
-            break label2049;
+          label2814:
+          if (!bool1) {
+            break label3431;
           }
           if (i == 0) {
-            break label2044;
+            break label3425;
           }
           i = 3;
-          label1548:
-          ac.i(TAG, "process, time: [" + localbqs.rvh.cSh + ", " + localbqs.rvh.hbI + "], size: [" + localbqs.rvh.width + ", " + localbqs.rvh.height + "], crop: [" + localbqs.rvh.Fgj.left + ", " + localbqs.rvh.Fgj.top + ", " + localbqs.rvh.Fgj.right + ", " + localbqs.rvh.Fgj.bottom + "], mixType: " + i);
-          bool = true;
+          label2827:
+          ad.i(TAG, "process, time: [" + localbvf.skC.ddx + ", " + localbvf.skC.htQ + "], size: [" + localbvf.skC.width + ", " + localbvf.skC.height + "], crop: [" + localbvf.skC.GPL.left + ", " + localbvf.skC.GPL.top + ", " + localbvf.skC.GPL.right + ", " + localbvf.skC.GPL.bottom + "], mixType: " + i);
+          bool1 = true;
           n = i;
         }
       }
     }
     for (;;)
     {
-      if (bool)
+      label3187:
+      label3193:
+      label3199:
+      int i5;
+      label3205:
+      label3211:
+      label3217:
+      label3223:
+      label3233:
+      label3243:
+      label3249:
+      label3255:
+      label3419:
+      label3425:
+      label3431:
+      int i4;
+      if (bool1)
       {
-        ((FinderMediaReportObject)localObject6).origin.fileSize = ((int)i.aSp(localbqs.url));
-        localObject3 = com.tencent.mm.plugin.sight.base.e.asx(localbqs.url);
-        int i1 = 0;
-        int i2 = 0;
-        if (localObject3 != null)
+        ((FinderMediaReportObject)localObject6).origin.fileSize = ((int)com.tencent.mm.vfs.i.aYo(localbvf.url));
+        localObject3 = MultiMediaVideoChecker.BFV;
+        localObject4 = localbvf.url;
+        d.g.b.p.g(localObject4, "it.url");
+        localObject4 = ((MultiMediaVideoChecker)localObject3).aDk((String)localObject4);
+        i1 = 0;
+        i2 = 0;
+        if (localObject4 != null)
         {
-          ((FinderMediaReportObject)localObject6).origin.videoDuration = ((com.tencent.mm.plugin.sight.base.a)localObject3).videoDuration;
-          ((FinderMediaReportObject)localObject6).origin.width = ((com.tencent.mm.plugin.sight.base.a)localObject3).width;
-          ((FinderMediaReportObject)localObject6).origin.height = ((com.tencent.mm.plugin.sight.base.a)localObject3).height;
-          ((FinderMediaReportObject)localObject6).origin.videoBitrate = ((com.tencent.mm.plugin.sight.base.a)localObject3).videoBitrate;
-          i1 = ((com.tencent.mm.plugin.sight.base.a)localObject3).width;
-          i2 = ((com.tencent.mm.plugin.sight.base.a)localObject3).height;
-          localObject7 = y.KTp;
+          ((FinderMediaReportObject)localObject6).origin.videoDuration = ((int)((MultiMediaVideoChecker.a)localObject4).duration);
+          ((FinderMediaReportObject)localObject6).origin.width = ((MultiMediaVideoChecker.a)localObject4).width;
+          ((FinderMediaReportObject)localObject6).origin.height = ((MultiMediaVideoChecker.a)localObject4).height;
+          ((FinderMediaReportObject)localObject6).origin.videoBitrate = ((MultiMediaVideoChecker.a)localObject4).bitrate;
+          ((FinderMediaReportObject)localObject6).origin.audioBitrate = ((MultiMediaVideoChecker.a)localObject4).audioBitrate;
+          ((FinderMediaReportObject)localObject6).origin.fps = ((int)((MultiMediaVideoChecker.a)localObject4).cvL);
+          i1 = ((MultiMediaVideoChecker.a)localObject4).width;
+          i2 = ((MultiMediaVideoChecker.a)localObject4).height;
+          localObject3 = z.MKo;
         }
-        if (localObject3 == null)
+        if (localObject4 == null)
         {
-          a(h.gLO);
+          a(com.tencent.mm.loader.g.j.hfL);
           AppMethodBeat.o(167731);
           return;
           localObject1 = null;
-          break label589;
-          label1859:
-          localObject1 = null;
-          break label650;
-          label1865:
-          localObject1 = localObject3;
-          continue;
-          label1872:
+          break label845;
           i = 0;
-          break label745;
-          label1877:
+          break label921;
+          localObject3 = null;
+          break label989;
+          i = 0;
+          break label1014;
+          bool3 = false;
+          break label1048;
+          localObject1 = null;
+          break label1121;
+          localObject1 = null;
+          break label1182;
+          i = ((MultiMediaVideoChecker.a)localObject3).width;
+          break label1376;
+          i = ((MultiMediaVideoChecker.a)localObject3).height;
+          break label1408;
+          bool1 = false;
+          break label1594;
+          bool1 = false;
+          break label1594;
           if (i == 180)
           {
-            localObject7 = new dqk();
-            ((dqk)localObject7).left = (k - ((dqk)localObject3).right);
-            ((dqk)localObject7).top = (n - ((dqk)localObject3).bottom);
-            ((dqk)localObject7).right = (k - ((dqk)localObject3).left);
-            ((dqk)localObject7).bottom = (n - ((dqk)localObject3).top);
-            localbqs.rvh.Fgj = ((dqk)localObject7);
-            break label1497;
+            localObject4 = new dwe();
+            ((dwe)localObject4).left = (n - ((dwe)localObject3).right);
+            ((dwe)localObject4).top = (i1 - ((dwe)localObject3).bottom);
+            ((dwe)localObject4).right = (n - ((dwe)localObject3).left);
+            ((dwe)localObject4).bottom = (i1 - ((dwe)localObject3).top);
+            localbvf.skC.GPL = ((dwe)localObject4);
+            break label2773;
           }
           if (i != 270) {
-            break label1497;
+            break label2773;
           }
-          localObject7 = new dqk();
-          ((dqk)localObject7).left = (n - ((dqk)localObject3).top);
-          ((dqk)localObject7).top = (k - ((dqk)localObject3).left);
-          ((dqk)localObject7).right = (n - ((dqk)localObject3).bottom);
-          ((dqk)localObject7).bottom = (k - ((dqk)localObject3).right);
-          localbqs.rvh.Fgj = ((dqk)localObject7);
-          break label1497;
-          label2039:
+          localObject4 = new dwe();
+          ((dwe)localObject4).left = (i1 - ((dwe)localObject3).top);
+          ((dwe)localObject4).top = (n - ((dwe)localObject3).left);
+          ((dwe)localObject4).right = (i1 - ((dwe)localObject3).bottom);
+          ((dwe)localObject4).bottom = (n - ((dwe)localObject3).right);
+          localbvf.skC.GPL = ((dwe)localObject4);
+          break label2773;
           i = 0;
-          break label1537;
-          label2044:
+          break label2814;
           i = 1;
-          break label1548;
-          label2049:
+          break label2827;
           if (i != 0)
           {
             i = 2;
-            break label1548;
+            break label2827;
           }
           i = 0;
-          break label1548;
+          break label2827;
         }
-        localObject7 = new v.c();
-        ((v.c)localObject7).KUN = 0.0F;
-        int i3 = SightVideoJNI.getMp4RotateVFS(localbqs.url);
-        i = localbqs.rvh.width;
-        k = localbqs.rvh.height;
+        localObject3 = new y.c();
+        ((y.c)localObject3).MLS = 0.0F;
+        i3 = SightVideoJNI.getMp4RotateVFS(localbvf.url);
+        i = localbvf.skC.width;
+        k = localbvf.skC.height;
         if ((i3 == 90) || (i3 == 270))
         {
-          i = localbqs.rvh.height;
-          k = localbqs.rvh.width;
+          i = localbvf.skC.height;
+          k = localbvf.skC.width;
         }
-        int i6 = ((VideoTransPara)localObject5).videoBitrate;
-        localObject8 = i.b.ryD;
-        i.b.cwY();
-        ac.i(TAG, "video rotate:" + i3 + ", width:" + i + ", height:" + k + " url " + localbqs.url + " thumbUrl: " + localbqs.thumbUrl + " size:" + bs.qz(i.aSp(localbqs.url)));
-        localObject8 = localbqs.url;
-        k.g(localObject8, "it.url");
-        f1 = ((com.tencent.mm.plugin.sight.base.a)localObject3).getVideoDuration();
-        f2 = localbqs.rvh.cSh / 1000.0F;
-        k.g(localObject5, "videoParams");
-        localObject8 = a.a((String)localObject8, i, k, f1, f2, (VideoTransPara)localObject5);
-        int i5 = i;
-        int i4 = k;
+        int i6 = localVideoTransPara.videoBitrate;
+        localObject8 = n.b.sqe;
+        n.b.cDG();
+        ad.i(TAG, "video rotate:" + i3 + ", width:" + i + ", height:" + k + " url " + localbvf.url + " thumbUrl: " + localbvf.thumbUrl + " size:" + bt.sy(com.tencent.mm.vfs.i.aYo(localbvf.url)));
+        localObject8 = localbvf.url;
+        d.g.b.p.g(localObject8, "it.url");
+        f1 = (float)((MultiMediaVideoChecker.a)localObject4).duration;
+        f2 = localbvf.skC.ddx / 1000.0F;
+        d.g.b.p.g(localVideoTransPara, "videoParams");
+        localObject4 = a.a((String)localObject8, i, k, f1, f2, localVideoTransPara);
+        i5 = i;
+        i4 = k;
         i3 = i6;
-        if (((c.a.a)localObject8).errCode == 0)
+        if (((c.a.a)localObject4).errCode == 0)
         {
           i5 = i;
           i4 = k;
           i3 = i6;
-          if (((c.a.a)localObject8).width > 0)
+          if (((c.a.a)localObject4).width > 0)
           {
             i5 = i;
             i4 = k;
             i3 = i6;
-            if (((c.a.a)localObject8).height > 0)
+            if (((c.a.a)localObject4).height > 0)
             {
               i5 = i;
               i4 = k;
               i3 = i6;
-              if (((c.a.a)localObject8).bitrate > 0)
+              if (((c.a.a)localObject4).bitrate > 0)
               {
-                i5 = ((c.a.a)localObject8).width;
-                i4 = ((c.a.a)localObject8).height;
-                i3 = ((c.a.a)localObject8).bitrate;
-                ac.i(TAG, "video abaResult, width:" + i5 + ", height:" + i4 + ", " + i3);
+                i5 = ((c.a.a)localObject4).width;
+                i4 = ((c.a.a)localObject4).height;
+                i3 = ((c.a.a)localObject4).bitrate;
+                ad.i(TAG, "video abaResult, width:" + i5 + ", height:" + i4 + ", " + i3);
               }
             }
           }
         }
-        i = a(l, j, str, i1, i2, d.IJ(i5), d.IJ(i4), i3, (VideoTransPara)localObject5, localbqs, (FinderMediaReportObject)localObject6, (String)localObject1, n, (d.g.a.b)new c.b((v.c)localObject7, j, this, (VideoTransPara)localObject5, (List)localObject4));
-        bs.aO(l);
+        if ((((c.a.a)localObject4).sIH == null) || (((c.a.a)localObject4).sIH.length < 28)) {
+          break label5605;
+        }
+      }
+      label4262:
+      label5422:
+      label5556:
+      label5562:
+      label5568:
+      label5605:
+      for (f1 = localObject4.sIH[27];; f1 = 0.0F)
+      {
+        localObject8 = localbvf.url;
+        d.g.b.p.g(localObject8, "it.url");
+        f2 = a.a((String)localObject8, f3, f4, i7, bool2, bool5);
+        ad.i(TAG, "qipengfeng, audio quality level: " + f2 + ", bitrate:" + f3 + ", samplerate:" + f4 + ", channels:" + i7 + ", enableAuQA:" + bool2 + ", useOriAu:" + bool5);
+        i = a(l, j, (String)localObject7, i1, i2, com.tencent.mm.plugin.mmsight.d.Kg(i5), com.tencent.mm.plugin.mmsight.d.Kg(i4), i3, localVideoTransPara, localbvf, (FinderMediaReportObject)localObject6, (String)localObject1, n, (d.g.a.b)new b((y.c)localObject3, j, this, localVideoTransPara, (List)localObject5));
+        bt.aO(l);
         if (i < 0)
         {
-          a(h.gLO);
+          a(com.tencent.mm.loader.g.j.hfL);
           AppMethodBeat.o(167731);
           return;
         }
-        localObject1 = com.tencent.mm.plugin.vlog.model.l.AnC;
-        localObject3 = com.tencent.mm.plugin.vlog.model.l.aye(str);
-        if ((localObject3 == null) || (((l.a)localObject3).width <= 0) || (((l.a)localObject3).height <= 0) || (((l.a)localObject3).clj <= 0.0F))
+        localObject3 = MultiMediaVideoChecker.BFV.aDk((String)localObject7);
+        if ((localObject3 == null) || (((MultiMediaVideoChecker.a)localObject3).width <= 0) || (((MultiMediaVideoChecker.a)localObject3).height <= 0) || (((MultiMediaVideoChecker.a)localObject3).cvL <= 0.0F))
         {
           localObject4 = TAG;
           localObject5 = new StringBuilder("normal video remuxVideo file error: ");
           if (localObject3 != null)
           {
-            localObject1 = Integer.valueOf(((l.a)localObject3).width);
+            localObject1 = Integer.valueOf(((MultiMediaVideoChecker.a)localObject3).width);
             localObject5 = ((StringBuilder)localObject5).append(localObject1).append(' ');
             if (localObject3 == null) {
-              break label2684;
+              break label4219;
             }
           }
-          label2684:
-          for (localObject1 = Integer.valueOf(((l.a)localObject3).height);; localObject1 = null)
+          label4219:
+          for (localObject1 = Integer.valueOf(((MultiMediaVideoChecker.a)localObject3).height);; localObject1 = null)
           {
-            ac.i((String)localObject4, localObject1);
-            localObject1 = i.b.ryD;
-            i.b.cwZ();
-            localObject1 = i.b.ryD;
-            i.b.cxa();
-            a(h.gLO);
+            ad.i((String)localObject4, localObject1);
+            localObject1 = n.b.sqe;
+            n.b.cDH();
+            localObject1 = n.b.sqe;
+            n.b.cDI();
+            a(com.tencent.mm.loader.g.j.hfL);
             AppMethodBeat.o(167731);
             return;
             localObject1 = null;
             break;
           }
         }
-        if (((c.a.a)localObject8).rMF == null) {
-          break label3543;
-        }
-      }
-      for (;;)
-      {
-        try
+        if (((c.a.a)localObject4).sIH != null) {}
+        for (;;)
         {
-          SightVideoJNI.addReportMetadata(str, ((c.a.a)localObject8).rMF, ((VideoTransPara)localObject5).hCL, 0);
-          i = 1;
-        }
-        catch (Throwable localThrowable)
-        {
-          i = 1;
-          continue;
-        }
-        aZ(1.0F);
-        localObject3 = this.rMD.getMediaList();
-        localObject7 = ((Iterable)localObject3).iterator();
-        if (((Iterator)localObject7).hasNext())
-        {
-          localObject1 = ((Iterator)localObject7).next();
-          localObject8 = (bqs)localObject1;
-          if (!k.g(localbqs.mediaId, ((bqs)localObject8).mediaId)) {
+          try
+          {
+            SightVideoJNI.addReportMetadata((String)localObject7, ((c.a.a)localObject4).sIH, localVideoTransPara.hVq, 0);
+            f3 = f2;
+            i = 1;
+            f2 = f1;
+            f1 = f3;
+          }
+          catch (Throwable localThrowable)
+          {
+            f3 = f1;
+            f1 = f2;
+            i = 1;
+            f2 = f3;
             continue;
           }
-          localObject1 = (bqs)localObject1;
-          if (localObject1 == null) {
-            break label3517;
-          }
-          k.h(localObject5, "videoParams");
-          k.h(localbqs, "localMedia");
-          k.h(str, "outputPath");
-          k.h(localObject1, "media");
-          k.h(localObject6, "reportObject");
-          k = ((VideoTransPara)localObject5).hCK;
-          n = (int)(localbqs.height / localbqs.width * k);
-          localObject7 = e.rMX;
-          k.h(str, "input");
-          localObject7 = p.rQw;
-          localObject7 = p.aeL(str);
-          ac.i(e.TAG, "genVideoThumbFileForPost input:" + str + ", targetWidth:" + k + ", targetHeight:" + n + ", thumbRect:" + null + ", dstPath:" + (String)localObject7);
-          localObject7 = e.a(str, k, n, null, (String)localObject7);
-          ((bqs)localObject1).FfS = ((FinderMediaReportObject)localObject6);
-          ((bqs)localObject1).url = str;
-          ((bqs)localObject1).thumbUrl = ((String)localObject7);
-          ((bqs)localObject1).FfP = false;
-          ((bqs)localObject1).mediaId = ah.dg(localbqs.url);
-          ((bqs)localObject1).fileSize = ((int)i.aSp(str));
-          ((bqs)localObject1).FfS.target = new FinderMediaReportInfo();
-          ((bqs)localObject1).FfS.target.fileSize = ((bqs)localObject1).fileSize;
-          localObject6 = ((bqs)localObject1).FfQ;
-          if (localObject6 != null) {
-            ((yo)localObject6).Esn = false;
-          }
-          localObject6 = com.tencent.mm.plugin.sight.base.e.asx(str);
-          if (localObject6 != null)
+          bc(1.0F);
+          localObject3 = this.sIF.getMediaList();
+          localObject4 = ((Iterable)localObject3).iterator();
+          if (((Iterator)localObject4).hasNext())
           {
-            ((bqs)localObject1).videoDuration = ((com.tencent.mm.plugin.sight.base.a)localObject6).getVideoDuration();
-            ((bqs)localObject1).FfS.target.videoDuration = ((com.tencent.mm.plugin.sight.base.a)localObject6).videoDuration;
-            ((bqs)localObject1).FfS.target.width = ((com.tencent.mm.plugin.sight.base.a)localObject6).width;
-            ((bqs)localObject1).FfS.target.height = ((com.tencent.mm.plugin.sight.base.a)localObject6).height;
-            ((bqs)localObject1).FfS.target.videoBitrate = ((com.tencent.mm.plugin.sight.base.a)localObject6).videoBitrate;
+            localObject1 = ((Iterator)localObject4).next();
+            localObject8 = (bvf)localObject1;
+            if (!d.g.b.p.i(localbvf.mediaId, ((bvf)localObject8).mediaId)) {
+              continue;
+            }
+            localObject1 = (bvf)localObject1;
+            if (localObject1 == null) {
+              break label5568;
+            }
+            d.g.b.p.g(localVideoTransPara, "videoParams");
+            d.g.b.p.h(localVideoTransPara, "videoParams");
+            d.g.b.p.h(localbvf, "localMedia");
+            d.g.b.p.h(localObject7, "outputPath");
+            d.g.b.p.h(localObject1, "media");
+            d.g.b.p.h(localObject6, "reportObject");
+            k = localVideoTransPara.hVp;
+            n = (int)(localbvf.height / localbvf.width * k);
+            localObject4 = f.sJc;
+            d.g.b.p.h(localObject7, "input");
+            localObject4 = com.tencent.mm.plugin.finder.utils.r.sNc;
+            localObject4 = com.tencent.mm.plugin.finder.utils.r.ajf((String)localObject7);
+            ad.i(f.TAG, "genVideoThumbFileForPost input:" + (String)localObject7 + ", targetWidth:" + k + ", targetHeight:" + n + ", thumbRect:" + null + ", dstPath:" + (String)localObject4);
+            localObject4 = f.a((String)localObject7, k, n, null, (String)localObject4);
+            localObject8 = com.tencent.mm.plugin.finder.storage.b.sxa;
+            if (!com.tencent.mm.plugin.finder.storage.b.cIh()) {
+              break label5550;
+            }
+            localObject8 = com.tencent.mm.plugin.finder.storage.b.sxa;
+            k = AdaptiveAdjustBitrate.getVideoImageQuality(com.tencent.mm.plugin.finder.storage.b.cFb(), 0, k, n, 0.8F);
+            ((bvf)localObject1).GPw = ((FinderMediaReportObject)localObject6);
+            ((bvf)localObject1).url = ((String)localObject7);
+            ((bvf)localObject1).thumbUrl = ((String)localObject4);
+            ((bvf)localObject1).GPt = false;
+            ((bvf)localObject1).mediaId = ai.ee(localbvf.url);
+            ((bvf)localObject1).fileSize = ((int)com.tencent.mm.vfs.i.aYo((String)localObject7));
+            ((bvf)localObject1).GPw.target = new FinderMediaReportInfo();
+            ((bvf)localObject1).GPw.target.fileSize = ((bvf)localObject1).fileSize;
+            ((bvf)localObject1).GPw.videoFinalSize = ((bvf)localObject1).GPw.target.fileSize;
+            localObject4 = ((bvf)localObject1).GPu;
+            if (localObject4 != null) {
+              ((aan)localObject4).FZx = false;
+            }
+            if (((bvf)localObject1).codec_info == null) {
+              ((bvf)localObject1).codec_info = new apb();
+            }
+            localObject4 = ((bvf)localObject1).codec_info;
+            ((apb)localObject4).Gnw = f2;
+            ((apb)localObject4).Gny = f1;
+            ((apb)localObject4).Gnz = k;
+            localObject6 = ((bvf)localObject1).GPu;
+            if (localObject6 == null) {
+              break label5556;
+            }
+            localObject6 = ((aan)localObject6).BFa;
+            if (localObject6 == null) {
+              break label5556;
+            }
+            localObject6 = ((aam)localObject6).FZr;
+            if (localObject6 == null) {
+              break label5556;
+            }
+            k = ((LinkedList)localObject6).size();
+            if (k <= 0) {
+              break label5562;
+            }
+            bool1 = true;
+            ((apb)localObject4).GnB = bool1;
+            ad.i(TAG, "codec_info video_score:" + ((apb)localObject4).Gnw + ",video_cover_score:" + ((apb)localObject4).Gnx + ",video_audio_score:" + ((apb)localObject4).Gny + ",thumb_score:" + ((apb)localObject4).Gnz + ",hdimg_score:" + ((apb)localObject4).GnA + ",has_stickers:" + ((apb)localObject4).GnB);
+            if (((bvf)localObject1).GPw.codecInfo == null) {
+              ((bvf)localObject1).GPw.codecInfo = ((bvf)localObject1).codec_info;
+            }
+            localObject4 = MultiMediaVideoChecker.BFV.aDk((String)localObject7);
+            if (localObject4 != null)
+            {
+              ((bvf)localObject1).videoDuration = d.h.a.co((float)((MultiMediaVideoChecker.a)localObject4).duration / 1000.0F);
+              ((bvf)localObject1).GPw.target.videoDuration = ((int)((MultiMediaVideoChecker.a)localObject4).duration);
+              ((bvf)localObject1).GPw.target.width = ((MultiMediaVideoChecker.a)localObject4).width;
+              ((bvf)localObject1).GPw.target.height = ((MultiMediaVideoChecker.a)localObject4).height;
+              ((bvf)localObject1).GPw.target.videoBitrate = ((MultiMediaVideoChecker.a)localObject4).bitrate;
+              ((bvf)localObject1).GPw.target.audioBitrate = ((MultiMediaVideoChecker.a)localObject4).audioBitrate;
+              ((bvf)localObject1).GPw.target.fps = ((int)((MultiMediaVideoChecker.a)localObject4).cvL);
+            }
+            ad.i(TAG, "processList index " + j + " url " + localbvf.url + " thumbUrl: " + localbvf.thumbUrl + " newMd5: " + ai.ee(localbvf.url) + " size:" + bt.sy(com.tencent.mm.vfs.i.aYo(localbvf.url)));
+            this.sIF.setMediaList((LinkedList)localObject3);
+            localObject1 = this.sIF.field_reportObject;
+            if (localObject1 != null)
+            {
+              ((FinderFeedReportObject)localObject1).remuxEndTime = cf.aCM();
+              ((FinderFeedReportObject)localObject1).remuxType = i;
+              localObject1 = z.MKo;
+            }
+            ((PluginFinder)g.ad(PluginFinder.class)).getFeedStorage().b(this.sIF.getLocalId(), this.sIF);
+            j = m;
+            break;
+            d.g.b.p.g(localVideoTransPara, "videoParams");
+            localObject2 = a(l, j, (String)localObject7, localVideoTransPara, localbvf, (FinderMediaReportObject)localObject6);
+            i = ((Number)((d.o)localObject2).first).intValue();
+            f2 = ((Number)((d.o)localObject2).second).floatValue();
+            if (i < 0)
+            {
+              a(com.tencent.mm.loader.g.j.hfL);
+              AppMethodBeat.o(167731);
+              return;
+            }
+            localObject3 = MultiMediaVideoChecker.BFV.aDk((String)localObject7);
+            if ((localObject3 == null) || (((MultiMediaVideoChecker.a)localObject3).width <= 0) || (((MultiMediaVideoChecker.a)localObject3).height <= 0) || (((MultiMediaVideoChecker.a)localObject3).cvL <= 0.0F))
+            {
+              localObject4 = TAG;
+              localObject5 = new StringBuilder("remuxVideo file error: ");
+              if (localObject3 != null)
+              {
+                localObject2 = Integer.valueOf(((MultiMediaVideoChecker.a)localObject3).width);
+                localObject5 = ((StringBuilder)localObject5).append(localObject2).append(' ');
+                if (localObject3 == null) {
+                  break label5422;
+                }
+              }
+              for (localObject2 = Integer.valueOf(((MultiMediaVideoChecker.a)localObject3).height);; localObject2 = null)
+              {
+                ad.i((String)localObject4, localObject2);
+                a(com.tencent.mm.loader.g.j.hfL);
+                AppMethodBeat.o(167731);
+                return;
+                localObject2 = null;
+                break;
+              }
+            }
+            localObject2 = localbvf.url;
+            d.g.b.p.g(localObject2, "it.url");
+            f1 = a.a((String)localObject2, f3, f4, i7, bool2, bool5);
+            ad.i(TAG, "qipengfeng, audio quality level: " + f1 + ", bitrate:" + f3 + ", samplerate:" + f4 + ", channels:" + i7 + ", enableAuQA:" + bool2 + ", useOriAu:" + bool5);
+            i = k;
+            continue;
           }
-          ac.i(TAG, "processList index " + j + " url " + localbqs.url + " thumbUrl: " + localbqs.thumbUrl + " newMd5: " + ah.dg(localbqs.url) + " size:" + bs.qz(i.aSp(localbqs.url)));
-          this.rMD.setMediaList((LinkedList)localObject3);
-          localObject1 = this.rMD.field_reportObject;
-          if (localObject1 != null)
-          {
-            ((FinderFeedReportObject)localObject1).remuxEndTime = ce.azJ();
-            ((FinderFeedReportObject)localObject1).remuxType = i;
-            localObject1 = y.KTp;
-          }
-          ((PluginFinder)g.ad(PluginFinder.class)).getFeedStorage().a(this.rMD.getLocalId(), this.rMD);
+          localObject2 = null;
+          continue;
+          k = 0;
+          continue;
+          k = 0;
+          continue;
+          bool1 = false;
+          continue;
           j = m;
           break;
-          k.g(localObject5, "videoParams");
-          if (a(l, j, str, (VideoTransPara)localObject5, localbqs, (FinderMediaReportObject)localObject6) < 0)
-          {
-            a(h.gLO);
-            AppMethodBeat.o(167731);
-            return;
-          }
-          localObject2 = com.tencent.mm.plugin.vlog.model.l.AnC;
-          localObject3 = com.tencent.mm.plugin.vlog.model.l.aye(str);
-          if ((localObject3 != null) && (((l.a)localObject3).width > 0) && (((l.a)localObject3).height > 0) && (((l.a)localObject3).clj > 0.0F)) {
-            break label3538;
-          }
-          localObject4 = TAG;
-          localObject5 = new StringBuilder("remuxVideo file error: ");
-          if (localObject3 != null)
-          {
-            localObject2 = Integer.valueOf(((l.a)localObject3).width);
-            localObject5 = ((StringBuilder)localObject5).append(localObject2).append(' ');
-            if (localObject3 == null) {
-              break label3505;
-            }
-          }
-          label3505:
-          for (localObject2 = Integer.valueOf(((l.a)localObject3).height);; localObject2 = null)
-          {
-            ac.i((String)localObject4, localObject2);
-            a(h.gLO);
-            AppMethodBeat.o(167731);
-            return;
-            localObject2 = null;
-            break;
-          }
+          a(com.tencent.mm.loader.g.j.hfK);
+          AppMethodBeat.o(167731);
+          return;
+          f3 = f1;
+          f1 = f2;
+          i = 1;
+          f2 = f3;
         }
-        localObject2 = null;
-        continue;
-        label3517:
-        j = m;
-        break;
-        a(h.gLN);
-        AppMethodBeat.o(167731);
-        return;
-        label3538:
-        i = 2;
-        continue;
-        label3543:
-        i = 1;
       }
-      label3548:
-      Object localObject2 = localObject3;
+      label5550:
+      label5610:
+      bool1 = bool4;
+      Object localObject2 = localObject4;
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/upload/FinderMediaProcessTask$Companion;", "", "()V", "RemuxTypeNormalVideo", "", "RemuxTypeTavkit", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkRemuxVideo", "path", "width", "height", "videoParams", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "localId", "", "convertViewRect", "Landroid/graphics/Rect;", "viewRect", "Lcom/tencent/mm/protocal/protobuf/ViewRect;", "getABAResult", "Lcom/tencent/mm/plugin/finder/upload/FinderMediaProcessTask$Companion$ABAResult;", "input", "durationSec", "", "startTimeSec", "videoTransPara", "ABAResult", "plugin-finder_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/FinderMediaProcessTask$Companion;", "", "()V", "RemuxTypeNoNeedRemux", "", "RemuxTypeNormalVideo", "RemuxTypeTavkit", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkRemuxVideo", "path", "width", "height", "videoParams", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "localId", "", "convertViewRect", "Landroid/graphics/Rect;", "viewRect", "Lcom/tencent/mm/protocal/protobuf/ViewRect;", "getABAResult", "Lcom/tencent/mm/plugin/finder/upload/FinderMediaProcessTask$Companion$ABAResult;", "input", "durationSec", "", "startTimeSec", "videoTransPara", "getAudioQualityLevel", "bitrate", "samplerate", "channels", "enableAuQA", "", "useOriAu", "ABAResult", "plugin-finder_release"})
   public static final class a
   {
+    public static float a(String paramString, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+    {
+      AppMethodBeat.i(204321);
+      d.g.b.p.h(paramString, "input");
+      com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
+      if (com.tencent.mm.plugin.finder.storage.b.cIh())
+      {
+        paramFloat1 = AdaptiveAdjustBitrate.b(paramString, paramFloat1, paramFloat2, paramInt, paramBoolean1, paramBoolean2);
+        AppMethodBeat.o(204321);
+        return paramFloat1;
+      }
+      AppMethodBeat.o(204321);
+      return 0.0F;
+    }
+    
     public static int a(String paramString, int paramInt1, int paramInt2, VideoTransPara paramVideoTransPara, long paramLong)
     {
       AppMethodBeat.i(167727);
-      k.h(paramVideoTransPara, "videoParams");
-      long l = i.aSp(paramString);
-      Object localObject = i.b.ryD;
-      i.b.uy(l);
-      localObject = com.tencent.mm.plugin.finder.storage.b.rCU;
-      if (l > com.tencent.mm.plugin.finder.storage.b.cyc())
+      d.g.b.p.h(paramVideoTransPara, "videoParams");
+      long l = com.tencent.mm.vfs.i.aYo(paramString);
+      Object localObject = n.b.sqe;
+      n.b.wz(l);
+      localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
+      if (l > com.tencent.mm.plugin.finder.storage.b.cFe())
       {
-        ac.i(c.access$getTAG$cp(), "checkRemuxVideo need remux zip");
-        localObject = i.b.ryD;
-        i.b.cxb();
-        l = bs.Gn();
-        localObject = paramString + ".remux";
-        paramInt1 = SightVideoJNI.remuxingVFS(paramString, (String)localObject, paramInt1, paramInt2, paramVideoTransPara.videoBitrate, com.tencent.mm.plugin.sight.base.c.xCr, 8, 2, 25.0F, paramVideoTransPara.fps, null, 0, com.tencent.mm.plugin.sight.base.c.xCq, 0, 51);
-        ac.i(c.access$getTAG$cp(), "checkRemuxVideo remux cost:" + bs.aO(l) + "ms, ret:" + paramInt1 + " localId:" + paramLong);
-        paramVideoTransPara = i.b.ryD;
-        i.b.uz(bs.aO(l));
-        if (paramInt1 >= 0)
+        localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
+        if (com.tencent.mm.plugin.finder.storage.b.cHU() != 1)
         {
-          i.ma((String)localObject, paramString);
-          paramLong = i.aSp((String)localObject);
-          paramString = i.b.ryD;
-          i.b.uA(paramLong);
-          paramString = com.tencent.mm.plugin.finder.storage.b.rCU;
-          if (paramLong > com.tencent.mm.plugin.finder.storage.b.cyc())
+          ad.i(c.access$getTAG$cp(), "checkRemuxVideo need remux zip");
+          localObject = n.b.sqe;
+          n.b.cDK();
+          l = bt.HI();
+          localObject = paramString + ".remux";
+          paramInt1 = SightVideoJNI.remuxingVFS(paramString, (String)localObject, paramInt1, paramInt2, paramVideoTransPara.videoBitrate, com.tencent.mm.plugin.sight.base.c.yRb, 8, 2, 25.0F, paramVideoTransPara.fps, null, 0, com.tencent.mm.plugin.sight.base.c.yRa, 0, 51);
+          ad.i(c.access$getTAG$cp(), "checkRemuxVideo remux cost:" + bt.aO(l) + "ms, ret:" + paramInt1 + " localId:" + paramLong);
+          paramVideoTransPara = n.b.sqe;
+          n.b.wA(bt.aO(l));
+          if (paramInt1 >= 0)
           {
+            com.tencent.mm.vfs.i.mA((String)localObject, paramString);
+            paramLong = com.tencent.mm.vfs.i.aYo((String)localObject);
+            paramString = n.b.sqe;
+            n.b.wB(paramLong);
+            paramString = com.tencent.mm.plugin.finder.storage.b.sxa;
+            if (paramLong > com.tencent.mm.plugin.finder.storage.b.cFe())
+            {
+              AppMethodBeat.o(167727);
+              return -3;
+            }
             AppMethodBeat.o(167727);
-            return -3;
+            return 0;
           }
+          paramString = n.b.sqe;
+          n.b.cDL();
           AppMethodBeat.o(167727);
-          return 0;
+          return -2;
         }
-        paramString = i.b.ryD;
-        i.b.cxc();
-        AppMethodBeat.o(167727);
-        return -2;
       }
-      ac.i(c.access$getTAG$cp(), "checkRemuxVideo, no need remux");
+      ad.i(c.access$getTAG$cp(), "checkRemuxVideo, no need remux");
       AppMethodBeat.o(167727);
       return 0;
     }
     
-    public static Rect a(dqk paramdqk)
+    public static Rect a(dwe paramdwe)
     {
       AppMethodBeat.i(167726);
-      k.h(paramdqk, "viewRect");
-      paramdqk = new Rect(paramdqk.left, paramdqk.top, paramdqk.right, paramdqk.bottom);
+      d.g.b.p.h(paramdwe, "viewRect");
+      paramdwe = new Rect(paramdwe.left, paramdwe.top, paramdwe.right, paramdwe.bottom);
       AppMethodBeat.o(167726);
-      return paramdqk;
+      return paramdwe;
     }
     
     public static a a(String paramString, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, VideoTransPara paramVideoTransPara)
     {
       AppMethodBeat.i(167728);
-      k.h(paramString, "input");
-      k.h(paramVideoTransPara, "videoTransPara");
+      d.g.b.p.h(paramString, "input");
+      d.g.b.p.h(paramVideoTransPara, "videoTransPara");
       for (;;)
       {
         try
         {
-          com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-          if (!com.tencent.mm.plugin.finder.storage.b.cyb()) {
+          com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
+          if (!com.tencent.mm.plugin.finder.storage.b.cFa()) {
             continue;
           }
-          paramString = AdaptiveAdjustBitrate.a(paramString, paramInt2, paramInt1, paramVideoTransPara.fps, paramVideoTransPara.videoBitrate, paramFloat1, paramFloat2, 4, paramVideoTransPara.hCN, paramVideoTransPara.hCO, paramVideoTransPara.hCP, paramVideoTransPara.hCQ, paramVideoTransPara.hCR, paramVideoTransPara.hCS, paramVideoTransPara.hCT);
+          paramString = AdaptiveAdjustBitrate.a(paramString, paramInt2, paramInt1, paramVideoTransPara.fps, paramVideoTransPara.videoBitrate, paramFloat1 / 1000.0F, paramFloat2 / 1000.0F, 4, paramVideoTransPara.hVs, paramVideoTransPara.hVt, paramVideoTransPara.hVu, paramVideoTransPara.hVv, paramVideoTransPara.hVw, paramVideoTransPara.hVx, paramVideoTransPara.hVy);
           j = paramVideoTransPara.videoBitrate;
           i = -1;
-          if ((paramString == null) || (paramString[3] <= 0)) {
-            break label245;
+          if (paramString == null) {
+            break label244;
           }
           j = paramString[0] * 1000;
           i = 0;
-          ac.i(c.access$getTAG$cp(), "getABAResult use videoBitrate:".concat(String.valueOf(j)));
+          ad.i(c.access$getTAG$cp(), "getABAResult use videoBitrate:".concat(String.valueOf(j)));
         }
         catch (Throwable paramString)
         {
           int j;
-          label139:
           paramString = new a(-1, 0, 0, 0, null);
           AppMethodBeat.o(167728);
           return paramString;
         }
-        ac.i(c.access$getTAG$cp(), "ABA:  finder video bitrate:" + j + " width: " + k + " height:" + paramInt1);
-        if (o.aJz() != null) {
-          com.tencent.mm.an.e.q(paramString);
+        ad.i(c.access$getTAG$cp(), "ABA:  finder video bitrate:" + j + " width: " + k + " height:" + paramInt1);
+        if (com.tencent.mm.modelvideo.o.aMK() != null) {
+          e.q(paramString);
         }
         paramString = new a(i, k, paramInt1, j, paramString);
         AppMethodBeat.o(167728);
         return paramString;
-        label245:
-        do
+        label244:
+        while ((paramString == null) || (paramString[5] <= 0))
         {
           k = paramInt1;
           paramInt1 = paramInt2;
-          break label139;
-          if (paramString[4] > 0) {
-            break;
-          }
-        } while ((paramString == null) || (paramString[5] <= 0));
+          break;
+        }
         int k = paramString[1];
         paramInt1 = paramString[2];
         int i = 0;
       }
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/upload/FinderMediaProcessTask$Companion$ABAResult;", "", "errCode", "", "width", "height", "bitrate", "abaParams", "", "(IIII[I)V", "getAbaParams", "()[I", "getBitrate", "()I", "getErrCode", "getHeight", "getWidth", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
+    @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/FinderMediaProcessTask$Companion$ABAResult;", "", "errCode", "", "width", "height", "bitrate", "abaParams", "", "(IIII[I)V", "getAbaParams", "()[I", "getBitrate", "()I", "getErrCode", "getHeight", "getWidth", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
     public static final class a
     {
       public final int bitrate;
       public final int errCode;
       public final int height;
-      public final int[] rMF;
+      public final int[] sIH;
       public final int width;
       
       public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
@@ -964,7 +1268,7 @@ public final class c
         this.width = paramInt2;
         this.height = paramInt3;
         this.bitrate = paramInt4;
-        this.rMF = paramArrayOfInt;
+        this.sIH = paramArrayOfInt;
       }
       
       public final boolean equals(Object paramObject)
@@ -975,7 +1279,7 @@ public final class c
           if ((paramObject instanceof a))
           {
             paramObject = (a)paramObject;
-            if ((this.errCode != paramObject.errCode) || (this.width != paramObject.width) || (this.height != paramObject.height) || (this.bitrate != paramObject.bitrate) || (!k.g(this.rMF, paramObject.rMF))) {}
+            if ((this.errCode != paramObject.errCode) || (this.width != paramObject.width) || (this.height != paramObject.height) || (this.bitrate != paramObject.bitrate) || (!d.g.b.p.i(this.sIH, paramObject.sIH))) {}
           }
         }
         else
@@ -994,7 +1298,7 @@ public final class c
         int k = this.width;
         int m = this.height;
         int n = this.bitrate;
-        int[] arrayOfInt = this.rMF;
+        int[] arrayOfInt = this.sIH;
         if (arrayOfInt != null) {}
         for (int i = Arrays.hashCode(arrayOfInt);; i = 0)
         {
@@ -1006,19 +1310,63 @@ public final class c
       public final String toString()
       {
         AppMethodBeat.i(167723);
-        String str = "ABAResult(errCode=" + this.errCode + ", width=" + this.width + ", height=" + this.height + ", bitrate=" + this.bitrate + ", abaParams=" + Arrays.toString(this.rMF) + ")";
+        String str = "ABAResult(errCode=" + this.errCode + ", width=" + this.width + ", height=" + this.height + ", bitrate=" + this.bitrate + ", abaParams=" + Arrays.toString(this.sIH) + ")";
         AppMethodBeat.o(167723);
         return str;
       }
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "invoke"})
-  static final class f
-    extends d.g.b.l
-    implements d.g.a.b<String, y>
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke", "com/tencent/mm/plugin/finder/upload/FinderMediaProcessTask$call$2$3"})
+  static final class b
+    extends q
+    implements d.g.a.b<Float, z>
   {
-    f(c paramc, v.d paramd, int paramInt1, FinderMediaReportObject paramFinderMediaReportObject, long paramLong, int paramInt2, int paramInt3, VideoTransPara paramVideoTransPara, Object paramObject, v.a parama)
+    b(y.c paramc, int paramInt, c paramc1, VideoTransPara paramVideoTransPara, List paramList)
+    {
+      super();
+    }
+  }
+  
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
+  static final class c
+    extends q
+    implements d.g.a.b<Float, z>
+  {
+    c(c paramc, y.c paramc1)
+    {
+      super();
+    }
+  }
+  
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "result", "", "invoke"})
+  static final class d
+    extends q
+    implements d.g.a.b<Boolean, z>
+  {
+    d(c paramc, y.d paramd, int paramInt, FinderMediaReportObject paramFinderMediaReportObject, long paramLong, String paramString, aao paramaao, VideoTransPara paramVideoTransPara, aan paramaan, Object paramObject, y.a parama)
+    {
+      super();
+    }
+  }
+  
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
+  static final class e
+    extends q
+    implements d.g.a.b<Float, z>
+  {
+    e(d.g.a.b paramb)
+    {
+      super();
+    }
+  }
+  
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
+  static final class f
+    extends q
+    implements d.g.a.b<String, z>
+  {
+    f(c paramc, y.d paramd, int paramInt1, FinderMediaReportObject paramFinderMediaReportObject, long paramLong, int paramInt2, int paramInt3, VideoTransPara paramVideoTransPara, Object paramObject, y.a parama)
     {
       super();
     }
@@ -1026,7 +1374,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.upload.c
  * JD-Core Version:    0.7.0.1
  */

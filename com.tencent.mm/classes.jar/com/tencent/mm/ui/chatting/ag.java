@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ag
 {
-  private static ag HQd;
-  Object HQc;
+  private static ag JDS;
+  Object JDR;
   
-  public static ag flM()
+  public static ag fCd()
   {
     try
     {
       AppMethodBeat.i(34839);
-      if (HQd == null) {
-        HQd = new ag();
+      if (JDS == null) {
+        JDS = new ag();
       }
-      ag localag = HQd;
+      ag localag = JDS;
       AppMethodBeat.o(34839);
       return localag;
     }

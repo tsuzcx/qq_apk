@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.expt.hellhound.a.g;
 
 public abstract interface a
 {
-  public abstract void CE(int paramInt);
+  public abstract void Dr(int paramInt);
   
-  public abstract void clt();
+  public abstract void cqI();
   
-  public abstract void clu();
+  public abstract void cqJ();
   
   public abstract void smoothScrollToPosition(int paramInt);
 }

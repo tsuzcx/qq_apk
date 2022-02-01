@@ -1,77 +1,72 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public final class alf
-  extends cqk
+  extends com.tencent.mm.bx.a
 {
-  public int continueFlag;
-  public b lastBuffer;
-  public LinkedList<FinderObject> object;
-  public b qZd;
+  public String GkY;
+  public LinkedList<alg> GkZ;
+  public String desc;
+  public String title;
   
   public alf()
   {
-    AppMethodBeat.i(195082);
-    this.object = new LinkedList();
-    AppMethodBeat.o(195082);
+    AppMethodBeat.i(91463);
+    this.GkZ = new LinkedList();
+    AppMethodBeat.o(91463);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(195083);
+    AppMethodBeat.i(91464);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.ln(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.title != null) {
+        paramVarArgs.d(1, this.title);
       }
-      paramVarArgs.e(2, 8, this.object);
-      if (this.lastBuffer != null) {
-        paramVarArgs.c(3, this.lastBuffer);
+      if (this.GkY != null) {
+        paramVarArgs.d(2, this.GkY);
       }
-      paramVarArgs.aR(4, this.continueFlag);
-      if (this.qZd != null) {
-        paramVarArgs.c(5, this.qZd);
+      paramVarArgs.e(3, 8, this.GkZ);
+      if (this.desc != null) {
+        paramVarArgs.d(4, this.desc);
       }
-      AppMethodBeat.o(195083);
+      AppMethodBeat.o(91464);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label614;
+      if (this.title == null) {
+        break label478;
       }
     }
-    label614:
-    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label478:
+    for (paramInt = f.a.a.b.b.a.e(1, this.title) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.a.c(2, 8, this.object);
-      paramInt = i;
-      if (this.lastBuffer != null) {
-        paramInt = i + f.a.a.b.b.a.b(3, this.lastBuffer);
+      int i = paramInt;
+      if (this.GkY != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.GkY);
       }
-      i = paramInt + f.a.a.b.b.a.bx(4, this.continueFlag);
+      i += f.a.a.a.c(3, 8, this.GkZ);
       paramInt = i;
-      if (this.qZd != null) {
-        paramInt = i + f.a.a.b.b.a.b(5, this.qZd);
+      if (this.desc != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.desc);
       }
-      AppMethodBeat.o(195083);
+      AppMethodBeat.o(91464);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.object.clear();
+        this.GkZ.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(195083);
+        AppMethodBeat.o(91464);
         return 0;
       }
       if (paramInt == 3)
@@ -79,57 +74,40 @@ public final class alf
         Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         alf localalf = (alf)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(195083);
+          AppMethodBeat.o(91464);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localalf.BaseResponse = ((BaseResponse)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(195083);
+          localalf.title = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(91464);
           return 0;
         case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          localalf.GkY = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(91464);
+          return 0;
+        case 3: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new FinderObject();
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new alg();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((FinderObject)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localalf.object.add(localObject1);
+            for (boolean bool = true; bool; bool = ((alg)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localalf.GkZ.add(localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(195083);
-          return 0;
-        case 3: 
-          localalf.lastBuffer = ((f.a.a.a.a)localObject1).LVo.gfk();
-          AppMethodBeat.o(195083);
-          return 0;
-        case 4: 
-          localalf.continueFlag = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(195083);
+          AppMethodBeat.o(91464);
           return 0;
         }
-        localalf.qZd = ((f.a.a.a.a)localObject1).LVo.gfk();
-        AppMethodBeat.o(195083);
+        localalf.desc = ((f.a.a.a.a)localObject1).NPN.readString();
+        AppMethodBeat.o(91464);
         return 0;
       }
-      AppMethodBeat.o(195083);
+      AppMethodBeat.o(91464);
       return -1;
     }
   }

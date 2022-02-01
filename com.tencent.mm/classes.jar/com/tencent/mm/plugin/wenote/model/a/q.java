@@ -6,20 +6,20 @@ import java.io.Serializable;
 public final class q
   implements Serializable
 {
-  public boolean CVL = false;
-  public long CVM = -1L;
-  public long CVN = -1L;
-  public String CVO = "";
-  public String CVP = "";
-  public int CVQ = 0;
-  public int CVR = 0;
-  public boolean qKi = false;
+  public boolean EzI = false;
+  public long EzJ = -1L;
+  public long EzK = -1L;
+  public String EzL = "";
+  public String EzM = "";
+  public int EzN = 0;
+  public int EzO = 0;
+  public boolean ruk = false;
   
-  public final String eHW()
+  public final String eWP()
   {
     AppMethodBeat.i(30377);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("topIsOpenFromSession=").append(this.CVL).append(" topLocalId=").append(this.CVM).append(" topMsgId=").append(this.CVN).append(" topTitle=").append(this.CVO).append(" topNoteXml=").append(this.CVP).append(" topLastPosition=").append(this.CVQ).append(" topLastOffset=").append(this.CVR);
+    ((StringBuilder)localObject).append("topIsOpenFromSession=").append(this.EzI).append(" topLocalId=").append(this.EzJ).append(" topMsgId=").append(this.EzK).append(" topTitle=").append(this.EzL).append(" topNoteXml=").append(this.EzM).append(" topLastPosition=").append(this.EzN).append(" topLastOffset=").append(this.EzO);
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(30377);
     return localObject;
@@ -27,7 +27,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.q
  * JD-Core Version:    0.7.0.1
  */

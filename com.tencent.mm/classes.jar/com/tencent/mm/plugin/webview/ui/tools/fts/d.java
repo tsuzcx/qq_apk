@@ -17,13 +17,13 @@ public final class d
     super(paramContext, paramView1, paramView2, paramView3, paramView4, paramView5, paramView6, paramView7, paramView8);
   }
   
-  protected final void eFm()
+  protected final void eUi()
   {
     AppMethodBeat.i(80764);
     Log.i("MicroMsg.WebSearch.SosAnimatorController", "search to init");
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.CDY[0][0] - this.CDO >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.CEe);
+    if (this.EhJ[0][0] - this.Ehz >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.EhP);
     }
     for (;;)
     {
@@ -41,8 +41,8 @@ public final class d
         {
           AppMethodBeat.i(80761);
           d.this.isAnimating = false;
-          if (d.this.CEb != null) {
-            d.this.CEb.onAnimationEnd();
+          if (d.this.EhM != null) {
+            d.this.EhM.onAnimationEnd();
           }
           AppMethodBeat.o(80761);
         }
@@ -53,8 +53,8 @@ public final class d
         {
           AppMethodBeat.i(80760);
           d.this.isAnimating = true;
-          if (d.this.CEb != null) {
-            d.this.CEb.onAnimationStart();
+          if (d.this.EhM != null) {
+            d.this.EhM.onAnimationStart();
           }
           AppMethodBeat.o(80760);
         }
@@ -62,17 +62,17 @@ public final class d
       localAnimatorSet.start();
       AppMethodBeat.o(80764);
       return;
-      localValueAnimator.addUpdateListener(this.CEf);
+      localValueAnimator.addUpdateListener(this.EhQ);
     }
   }
   
-  protected final void eFn()
+  protected final void eUj()
   {
     AppMethodBeat.i(80765);
     Log.i("MicroMsg.WebSearch.SosAnimatorController", "init to search");
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.CDY[0][0] - this.CDO >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.CEc);
+    if (this.EhJ[0][0] - this.Ehz >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.EhN);
     }
     for (;;)
     {
@@ -90,8 +90,8 @@ public final class d
         {
           AppMethodBeat.i(80763);
           d.this.isAnimating = false;
-          if (d.this.CEb != null) {
-            d.this.CEb.onAnimationEnd();
+          if (d.this.EhM != null) {
+            d.this.EhM.onAnimationEnd();
           }
           AppMethodBeat.o(80763);
         }
@@ -102,8 +102,8 @@ public final class d
         {
           AppMethodBeat.i(80762);
           d.this.isAnimating = true;
-          if (d.this.CEb != null) {
-            d.this.CEb.onAnimationStart();
+          if (d.this.EhM != null) {
+            d.this.EhM.onAnimationStart();
           }
           AppMethodBeat.o(80762);
         }
@@ -111,7 +111,7 @@ public final class d
       localAnimatorSet.start();
       AppMethodBeat.o(80765);
       return;
-      localValueAnimator.addUpdateListener(this.CEd);
+      localValueAnimator.addUpdateListener(this.EhO);
     }
   }
 }

@@ -15,7 +15,7 @@ public final class p
     this.uin = ((int)(0xFFFFFFFF & paramLong));
   }
   
-  public static int dv(String paramString)
+  public static int er(String paramString)
   {
     try
     {

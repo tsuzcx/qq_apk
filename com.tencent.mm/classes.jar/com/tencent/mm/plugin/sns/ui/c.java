@@ -12,43 +12,43 @@ import com.tencent.mm.plugin.sns.storage.a.c;
 import com.tencent.mm.plugin.sns.storage.a.c.a;
 import com.tencent.mm.plugin.sns.storage.b.e;
 import com.tencent.mm.plugin.sns.storage.b.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.List;
 
 public final class c
   extends BaseAdapter
 {
-  public int kar;
+  public int kuN;
   private final Context mContext;
-  private String tWM;
-  public com.tencent.mm.plugin.sns.data.b ywA;
+  private String uZv;
+  public com.tencent.mm.plugin.sns.data.b zNM;
   
   public c(Context paramContext, com.tencent.mm.plugin.sns.data.b paramb)
   {
     AppMethodBeat.i(97694);
-    this.ywA = null;
-    this.tWM = null;
-    this.kar = 0;
+    this.zNM = null;
+    this.uZv = null;
+    this.kuN = 0;
     this.mContext = paramContext;
-    this.ywA = paramb;
-    this.tWM = ab.iC(ai.getContext());
+    this.zNM = paramb;
+    this.uZv = ac.iM(aj.getContext());
     AppMethodBeat.o(97694);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(97695);
-    if (this.kar == 1)
+    if (this.kuN == 1)
     {
-      i = this.ywA.xMy.yYh.yeS.dJD().size();
+      i = this.zNM.zcq.ApS.zuT.dVR().size();
       AppMethodBeat.o(97695);
       return i;
     }
     int i = 0;
-    if (this.ywA.xMy.yYg.ygp != null) {
-      i = this.ywA.xMy.yYg.ygp.list.size();
+    if (this.zNM.zcq.ApR.zwr != null) {
+      i = this.zNM.zcq.ApR.zwr.list.size();
     }
     AppMethodBeat.o(97695);
     return i + 1;
@@ -57,7 +57,7 @@ public final class c
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(97697);
-    Object localObject = this.ywA.xMy.yYh.yeS.dJD().get(paramInt);
+    Object localObject = this.zNM.zcq.ApS.zuT.dVR().get(paramInt);
     AppMethodBeat.o(97697);
     return localObject;
   }
@@ -74,22 +74,22 @@ public final class c
     if (paramView == null) {
       localView = View.inflate(this.mContext, 2131492941, null);
     }
-    localView.setTag(this.ywA);
+    localView.setTag(this.zNM);
     paramViewGroup = "";
     Object localObject;
-    if (this.kar == 1)
+    if (this.kuN == 1)
     {
       localObject = (a.c.a)getItem(paramInt);
-      if ("zh_CN".equals(this.tWM))
+      if ("zh_CN".equals(this.uZv))
       {
-        paramViewGroup = ((a.c.a)localObject).yfk;
+        paramViewGroup = ((a.c.a)localObject).zvm;
         paramView = paramViewGroup;
-        if (bs.isNullOrNil(paramViewGroup)) {
-          paramView = ((a.c.a)localObject).yfm;
+        if (bt.isNullOrNil(paramViewGroup)) {
+          paramView = ((a.c.a)localObject).zvo;
         }
         label87:
         paramViewGroup = (TextView)localView.findViewById(2131296444);
-        if (!this.ywA.xMy.yYh.yeW) {
+        if (!this.zNM.zcq.ApS.zuX) {
           break label464;
         }
         paramViewGroup.setTextColor(this.mContext.getResources().getColor(2131099658));
@@ -109,43 +109,43 @@ public final class c
       paramView.setVisibility(paramInt);
       AppMethodBeat.o(97696);
       return localView;
-      if (("zh_TW".equals(this.tWM)) || ("zh_HK".equals(this.tWM)))
+      if (("zh_TW".equals(this.uZv)) || ("zh_HK".equals(this.uZv)))
       {
-        paramViewGroup = ((a.c.a)localObject).yfl;
+        paramViewGroup = ((a.c.a)localObject).zvn;
         break;
       }
-      paramViewGroup = ((a.c.a)localObject).yfm;
+      paramViewGroup = ((a.c.a)localObject).zvo;
       break;
       if (paramInt == 0)
       {
         paramView = paramViewGroup;
-        if (this.ywA == null) {
+        if (this.zNM == null) {
           break label87;
         }
         paramView = paramViewGroup;
-        if (this.ywA.xMy.yYg == null) {
+        if (this.zNM.zcq.ApR == null) {
           break label87;
         }
-        paramView = this.ywA.xMy.yYh;
-        if ("zh_CN".equals(this.tWM)) {
-          paramView = paramView.yeT;
+        paramView = this.zNM.zcq.ApS;
+        if ("zh_CN".equals(this.uZv)) {
+          paramView = paramView.zuU;
         }
         for (;;)
         {
-          if (bs.isNullOrNil(paramView)) {
+          if (bt.isNullOrNil(paramView)) {
             break label317;
           }
           break;
-          if (("zh_TW".equals(this.tWM)) || ("zh_HK".equals(this.tWM))) {
-            paramView = paramView.yeV;
+          if (("zh_TW".equals(this.uZv)) || ("zh_HK".equals(this.uZv))) {
+            paramView = paramView.zuW;
           } else {
-            paramView = paramView.yeU;
+            paramView = paramView.zuV;
           }
         }
         paramView = this.mContext.getString(2131763767);
         break label87;
       }
-      localObject = this.ywA.xMy.yYg.ygp;
+      localObject = this.zNM.zcq.ApR.zwr;
       paramView = paramViewGroup;
       if (localObject == null) {
         break label87;
@@ -155,21 +155,21 @@ public final class c
         break label87;
       }
       localObject = (b.f)((b.e)localObject).list.get(paramInt - 1);
-      if ("zh_CN".equals(this.tWM)) {
-        paramViewGroup = ((b.f)localObject).ygW;
+      if ("zh_CN".equals(this.uZv)) {
+        paramViewGroup = ((b.f)localObject).zxd;
       }
       for (;;)
       {
         paramView = paramViewGroup;
-        if (!bs.isNullOrNil(paramViewGroup)) {
+        if (!bt.isNullOrNil(paramViewGroup)) {
           break;
         }
-        paramView = ((b.f)localObject).xZb;
+        paramView = ((b.f)localObject).zpa;
         break;
-        if (("zh_TW".equals(this.tWM)) || ("zh_HK".equals(this.tWM))) {
-          paramViewGroup = ((b.f)localObject).ygX;
+        if (("zh_TW".equals(this.uZv)) || ("zh_HK".equals(this.uZv))) {
+          paramViewGroup = ((b.f)localObject).zxe;
         } else {
-          paramViewGroup = ((b.f)localObject).xZb;
+          paramViewGroup = ((b.f)localObject).zpa;
         }
       }
       paramViewGroup.setTextColor(this.mContext.getResources().getColor(2131099769));

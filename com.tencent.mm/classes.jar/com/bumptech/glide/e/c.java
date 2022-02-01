@@ -9,29 +9,29 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class c
 {
-  public static final s<?, ?, ?> aLf;
-  public final a<com.bumptech.glide.h.h, s<?, ?, ?>> aLg;
-  private final AtomicReference<com.bumptech.glide.h.h> aLh;
+  public static final s<?, ?, ?> aMW;
+  public final a<com.bumptech.glide.h.h, s<?, ?, ?>> aMX;
+  private final AtomicReference<com.bumptech.glide.h.h> aMY;
   
   static
   {
     AppMethodBeat.i(77606);
-    aLf = new s(Object.class, Object.class, Object.class, Collections.singletonList(new com.bumptech.glide.c.b.h(Object.class, Object.class, Object.class, Collections.emptyList(), new g(), null)), null);
+    aMW = new s(Object.class, Object.class, Object.class, Collections.singletonList(new com.bumptech.glide.c.b.h(Object.class, Object.class, Object.class, Collections.emptyList(), new g(), null)), null);
     AppMethodBeat.o(77606);
   }
   
   public c()
   {
     AppMethodBeat.i(77603);
-    this.aLg = new a();
-    this.aLh = new AtomicReference();
+    this.aMX = new a();
+    this.aMY = new AtomicReference();
     AppMethodBeat.o(77603);
   }
   
   public static boolean a(s<?, ?, ?> params)
   {
     AppMethodBeat.i(77604);
-    boolean bool = aLf.equals(params);
+    boolean bool = aMW.equals(params);
     AppMethodBeat.o(77604);
     return bool;
   }
@@ -39,17 +39,17 @@ public final class c
   public final <Data, TResource, Transcode> s<Data, TResource, Transcode> c(Class<Data> arg1, Class<TResource> paramClass1, Class<Transcode> paramClass2)
   {
     AppMethodBeat.i(77605);
-    com.bumptech.glide.h.h localh = (com.bumptech.glide.h.h)this.aLh.getAndSet(null);
+    com.bumptech.glide.h.h localh = (com.bumptech.glide.h.h)this.aMY.getAndSet(null);
     if (localh == null) {
       localh = new com.bumptech.glide.h.h();
     }
     for (;;)
     {
       localh.d(???, paramClass1, paramClass2);
-      synchronized (this.aLg)
+      synchronized (this.aMX)
       {
-        paramClass1 = (s)this.aLg.get(localh);
-        this.aLh.set(localh);
+        paramClass1 = (s)this.aMX.get(localh);
+        this.aMY.set(localh);
         AppMethodBeat.o(77605);
         return paramClass1;
       }

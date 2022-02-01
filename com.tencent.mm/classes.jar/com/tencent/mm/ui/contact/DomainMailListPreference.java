@@ -7,18 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class DomainMailListPreference
   extends Preference
 {
-  private String Ivu;
-  private TextView Ivv;
-  private TextView Ivw;
-  private TextView Ivx;
-  private boolean pDN;
+  private String Kma;
+  private TextView Kmb;
+  private TextView Kmc;
+  private TextView Kmd;
+  private boolean qhs;
   private String title;
   private TextView titleTv;
   
@@ -40,61 +40,61 @@ public class DomainMailListPreference
   
   private void init()
   {
-    this.pDN = false;
+    this.qhs = false;
     this.title = "";
-    this.Ivu = "";
+    this.Kma = "";
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(37819);
     this.titleTv = ((TextView)paramView.findViewById(2131305902));
-    this.Ivv = ((TextView)paramView.findViewById(2131300107));
-    this.Ivw = ((TextView)paramView.findViewById(2131304458));
-    this.Ivx = ((TextView)paramView.findViewById(2131305768));
-    this.pDN = true;
-    if (!this.pDN)
+    this.Kmb = ((TextView)paramView.findViewById(2131300107));
+    this.Kmc = ((TextView)paramView.findViewById(2131304458));
+    this.Kmd = ((TextView)paramView.findViewById(2131305768));
+    this.qhs = true;
+    if (!this.qhs)
     {
-      ac.e("MicroMsg.DomainMailPreference", "initView : unbind view");
+      ad.e("MicroMsg.DomainMailPreference", "initView : unbind view");
       super.onBindView(paramView);
       AppMethodBeat.o(37819);
       return;
     }
-    this.titleTv.setText(bs.nullAsNil(this.title));
-    String[] arrayOfString = this.Ivu.split(";");
-    if (bs.nullAsNil(this.Ivu).length() <= 0)
+    this.titleTv.setText(bt.nullAsNil(this.title));
+    String[] arrayOfString = this.Kma.split(";");
+    if (bt.nullAsNil(this.Kma).length() <= 0)
     {
-      this.Ivv.setVisibility(8);
-      this.Ivw.setVisibility(8);
+      this.Kmb.setVisibility(8);
+      this.Kmc.setVisibility(8);
     }
     label259:
     for (;;)
     {
-      this.Ivx.setVisibility(8);
+      this.Kmd.setVisibility(8);
       break;
       if (arrayOfString.length > 0)
       {
-        this.Ivv.setVisibility(0);
-        this.Ivv.setText(bs.nullAsNil(arrayOfString[0]));
+        this.Kmb.setVisibility(0);
+        this.Kmb.setText(bt.nullAsNil(arrayOfString[0]));
         label180:
         if (arrayOfString.length <= 1) {
           break label249;
         }
-        this.Ivw.setVisibility(0);
-        this.Ivw.setText(bs.nullAsNil(arrayOfString[1]));
+        this.Kmc.setVisibility(0);
+        this.Kmc.setText(bt.nullAsNil(arrayOfString[1]));
       }
       for (;;)
       {
         if (arrayOfString.length <= 2) {
           break label259;
         }
-        this.Ivx.setVisibility(0);
-        this.Ivx.setText(bs.nullAsNil(arrayOfString[2]));
+        this.Kmd.setVisibility(0);
+        this.Kmd.setText(bt.nullAsNil(arrayOfString[2]));
         break;
-        this.Ivv.setVisibility(8);
+        this.Kmb.setVisibility(8);
         break label180;
         label249:
-        this.Ivw.setVisibility(8);
+        this.Kmc.setVisibility(8);
       }
     }
   }

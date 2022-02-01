@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.offline.ui;
 
 public abstract interface a
 {
-  public abstract void dmi();
+  public abstract void dwA();
   
-  public abstract void dmj();
+  public abstract String dwB();
   
-  public abstract String dmk();
+  public abstract void dwC();
   
-  public abstract void dml();
+  public abstract void dwz();
   
   public abstract void e(int paramInt, String paramString1, String paramString2, String paramString3);
 }

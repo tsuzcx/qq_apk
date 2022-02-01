@@ -11,6 +11,6 @@
             <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:id="@id/gwu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:includeFontPadding="false" />
             <TextView android:textSize="@dimen/gx" android:textColor="#ffff891e" android:id="@id/gwt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:includeFontPadding="false" />
         </LinearLayout>
-        <CheckBox android:id="@id/gws" android:background="@drawable/a2r" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+        <CheckBox android:id="@id/gws" android:background="@drawable/a2r" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/ap" android:layout_height="@dimen/an" />
     </LinearLayout>
 </LinearLayout>

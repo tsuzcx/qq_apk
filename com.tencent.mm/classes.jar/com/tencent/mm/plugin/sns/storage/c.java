@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.an;
+import com.tencent.mm.g.c.ao;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class c
-  extends an
+  extends ao
 {
   protected static c.a info;
   
@@ -15,20 +15,20 @@ public final class c
   {
     AppMethodBeat.i(96280);
     c.a locala = new c.a();
-    locala.GvF = new Field[3];
+    locala.IhA = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "canvasId";
-    locala.GvH.put("canvasId", "LONG PRIMARY KEY ");
+    locala.IhC.put("canvasId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" canvasId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "canvasId";
+    locala.IhB = "canvasId";
     locala.columns[1] = "canvasXml";
-    locala.GvH.put("canvasXml", "TEXT");
+    locala.IhC.put("canvasXml", "TEXT");
     localStringBuilder.append(" canvasXml TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "createTime";
-    locala.GvH.put("createTime", "LONG");
+    locala.IhC.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -43,7 +43,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.c
  * JD-Core Version:    0.7.0.1
  */

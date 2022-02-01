@@ -1,94 +1,51 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.content.Intent;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
-import com.tencent.luggage.d.e;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bo;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.mm.plugin.game.luggage.f.g;
+import com.tencent.mm.plugin.game.luggage.f.g.9;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.aq;
 import org.json.JSONObject;
 
 public class p
-  extends bo<com.tencent.mm.plugin.game.luggage.d.f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  public final void b(final a<com.tencent.mm.plugin.game.luggage.d.f>.a parama)
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(83078);
-    String str1 = parama.bWS.bVY.optString("videoUrl");
-    String str2 = parama.bWS.bVY.optString("thumbUrl");
-    String str3 = parama.bWS.bVY.optString("appId");
-    if (bs.isNullOrNil(str1))
-    {
-      parama.a("invalid_videoUrl", null);
-      AppMethodBeat.o(83078);
-      return;
-    }
-    ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).a(((com.tencent.mm.plugin.game.luggage.d.f)parama.bWR).mContext, str1, str2, str3, 510);
-    ((MMActivity)((com.tencent.mm.plugin.game.luggage.d.f)parama.bWR).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
-    {
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
-      {
-        AppMethodBeat.i(83077);
-        if (paramAnonymousInt1 == 510)
-        {
-          if (paramAnonymousInt2 != -1) {
-            break label176;
-          }
-          switch (paramAnonymousIntent.getIntExtra("webview_callback_err", 0))
-          {
-          }
-        }
-        for (;;)
-        {
-          ((MMActivity)((com.tencent.mm.plugin.game.luggage.d.f)parama.bWR).mContext).mmSetOnActivityResultCallback(null);
-          AppMethodBeat.o(83077);
-          return;
-          JSONObject localJSONObject = new JSONObject();
-          paramAnonymousIntent = paramAnonymousIntent.getStringExtra("key_video_info");
-          try
-          {
-            localJSONObject.put("videoInfo", new JSONArray(paramAnonymousIntent).getJSONObject(0));
-            parama.a("", localJSONObject);
-          }
-          catch (JSONException paramAnonymousIntent)
-          {
-            for (;;)
-            {
-              ac.e("MicroMsg.JsApiLaunchGameVideoEditor", "json_err:%s", new Object[] { paramAnonymousIntent.getMessage() });
-            }
-          }
-          parama.a("cancel", null);
-          continue;
-          parama.a("download_err", null);
-          continue;
-          label176:
-          parama.a("cancel", null);
-        }
-      }
-    });
-    AppMethodBeat.o(83078);
+    AppMethodBeat.i(83074);
+    Object localObject = paramb.chh.cgn;
+    String str1 = ((JSONObject)localObject).optString("url");
+    String str2 = ((JSONObject)localObject).optString("viewId");
+    int i = ((JSONObject)localObject).optInt("left");
+    i = aq.fromDPToPix(aj.getContext(), i);
+    int j = ((JSONObject)localObject).optInt("top");
+    j = aq.fromDPToPix(aj.getContext(), j);
+    int k = ((JSONObject)localObject).optInt("width");
+    k = aq.fromDPToPix(aj.getContext(), k);
+    int m = ((JSONObject)localObject).optInt("height");
+    m = aq.fromDPToPix(aj.getContext(), m);
+    localObject = (g)paramb.chg;
+    ((g)localObject).au(new g.9((g)localObject, str1, str2, k, m, i, j));
+    paramb.a("", null);
+    AppMethodBeat.o(83074);
   }
   
-  public final int bYk()
+  public final int ccO()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "launchGameVideoEditor";
+    return "insertWebView";
   }
 }
 

@@ -15,59 +15,59 @@ import com.tencent.mm.plugin.appbrand.widget.input.k.a;
 
 public final class c
 {
-  final ab mGL;
-  final e mGM;
-  public final k.a mGY;
-  public aa mGZ;
-  int mHa;
-  boolean mHb;
+  final ab nhj;
+  final e nhk;
+  public final k.a nhw;
+  public aa nhx;
+  int nhy;
+  boolean nhz;
   
   c(ab paramab, e parame)
   {
     AppMethodBeat.i(136641);
-    this.mGY = new k.a()
+    this.nhw = new k.a()
     {
-      public final void bAj()
+      public final void bEl()
       {
         AppMethodBeat.i(136637);
-        c.this.mHa = -2147483648;
-        c.this.vW(3);
+        c.this.nhy = -2147483648;
+        c.this.wB(3);
         AppMethodBeat.o(136637);
       }
       
-      public final void bAk()
+      public final void bEm()
       {
         AppMethodBeat.i(136638);
-        c.this.mHa = -2147483648;
-        c.this.vW(3);
+        c.this.nhy = -2147483648;
+        c.this.wB(3);
         AppMethodBeat.o(136638);
       }
     };
-    this.mHa = -2147483648;
-    this.mHb = false;
-    this.mGL = paramab;
-    this.mGM = parame;
+    this.nhy = -2147483648;
+    this.nhz = false;
+    this.nhj = paramab;
+    this.nhk = parame;
     AppMethodBeat.o(136641);
   }
   
-  final void vW(final int paramInt)
+  final void wB(final int paramInt)
   {
     AppMethodBeat.i(136642);
-    final AutoFillListPopupWindowBase.a locala = this.mGM.mHf;
+    final AutoFillListPopupWindowBase.a locala = this.nhk.nhD;
     if (locala == null)
     {
       AppMethodBeat.o(136642);
       return;
     }
-    if (!this.mGM.apw.isShowing())
+    if (!this.nhk.arn.isShowing())
     {
       AppMethodBeat.o(136642);
       return;
     }
-    if ((1 == paramInt) && (this.mHb))
+    if ((1 == paramInt) && (this.nhz))
     {
-      this.mHa = -2147483648;
-      this.mHb = false;
+      this.nhy = -2147483648;
+      this.nhz = false;
     }
     locala.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
     {
@@ -76,17 +76,17 @@ public final class c
         AppMethodBeat.i(136640);
         locala.getViewTreeObserver().removeOnPreDrawListener(this);
         c localc = c.this;
-        if ((!localc.mGM.apw.isShowing()) || (localc.mGM.mHf == null) || (localc.mGM.mHf.getAdapter() == null) || (localc.mGM.mHf.getAdapter().getCount() <= 0)) {}
+        if ((!localc.nhk.arn.isShowing()) || (localc.nhk.nhD == null) || (localc.nhk.nhD.getAdapter() == null) || (localc.nhk.nhD.getAdapter().getCount() <= 0)) {}
         Object localObject;
         do
         {
           AppMethodBeat.o(136640);
           return true;
-          localObject = localc.mGL.getInputPanel();
+          localObject = localc.nhj.getInputPanel();
         } while (localObject == null);
-        int m = a.fromDPToPix(localc.mGL.getContext(), 8);
-        int n = localc.mGM.mHf.getChildAt(0).getHeight();
-        int i = localc.mGM.mHf.getAdapter().getCount() * n;
+        int m = a.fromDPToPix(localc.nhj.getContext(), 8);
+        int n = localc.nhk.nhD.getChildAt(0).getHeight();
+        int i = localc.nhk.nhD.getAdapter().getCount() * n;
         int k = i + m * 2;
         int j = n * 3 + m * 2;
         if (k > j) {
@@ -94,47 +94,47 @@ public final class c
         }
         for (;;)
         {
-          localc.mGM.aoZ = j;
+          localc.nhk.aqR = j;
           int[] arrayOfInt = new int[2];
-          localc.mGL.getView().getLocationInWindow(arrayOfInt);
+          localc.nhj.getView().getLocationInWindow(arrayOfInt);
           j = arrayOfInt[1];
-          j = localc.mGL.getView().getHeight() + j;
+          j = localc.nhj.getView().getHeight() + j;
           ((View)localObject).getLocationInWindow(arrayOfInt);
           k = arrayOfInt[1];
           label249:
-          if (((localc.mHa == -2147483648) || (localc.mHa >= 0 - m)) && (k - j >= i + m))
+          if (((localc.nhy == -2147483648) || (localc.nhy >= 0 - m)) && (k - j >= i + m))
           {
-            localc.mGM.apl = localc.mGL.getView();
-            localc.mGM.aoZ = (m * 2 + i);
-            localc.mGM.setVerticalOffset(0 - m);
-            localc.mGM.show();
-            localObject = localc.mGM;
-            if (((AutoFillListPopupWindowBase)localObject).apd) {
+            localc.nhk.ard = localc.nhj.getView();
+            localc.nhk.aqR = (m * 2 + i);
+            localc.nhk.setVerticalOffset(0 - m);
+            localc.nhk.show();
+            localObject = localc.nhk;
+            if (((AutoFillListPopupWindowBase)localObject).aqV) {
               break label539;
             }
           }
           label325:
-          for (i = 0;; i = ((AutoFillListPopupWindowBase)localObject).apb)
+          for (i = 0;; i = ((AutoFillListPopupWindowBase)localObject).aqT)
           {
-            localc.mHa = i;
+            localc.nhy = i;
             break;
-            if (j - localc.mGL.getView().getHeight() >= i)
+            if (j - localc.nhj.getView().getHeight() >= i)
             {
-              localc.mGM.apl = localc.mGL.getView();
-              localc.mGM.aoZ = (m * 2 + i);
-              localc.mGM.setVerticalOffset(-(i + m) - localc.mGL.getView().getHeight());
+              localc.nhk.ard = localc.nhj.getView();
+              localc.nhk.aqR = (m * 2 + i);
+              localc.nhk.setVerticalOffset(-(i + m) - localc.nhj.getView().getHeight());
               break label325;
             }
             if (i <= n)
             {
-              localc.mGM.aoZ = n;
-              localc.mGM.apl = localc.mGL.getView();
-              if (localc.mHa < 0 - m)
+              localc.nhk.aqR = n;
+              localc.nhk.ard = localc.nhj.getView();
+              if (localc.nhy < 0 - m)
               {
-                localc.mGM.setVerticalOffset(-(i + m) - localc.mGL.getView().getHeight());
+                localc.nhk.setVerticalOffset(-(i + m) - localc.nhj.getView().getHeight());
                 break label325;
               }
-              localc.mGM.setVerticalOffset(0 - m);
+              localc.nhk.setVerticalOffset(0 - m);
               break label325;
             }
             i -= n;
@@ -150,7 +150,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,19 @@
 package com.tencent.mm.opensdk.utils;
 
-import android.os.Bundle;
+import android.net.Uri;
+import android.provider.BaseColumns;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
+  implements BaseColumns
 {
-  public static int a(Bundle paramBundle, String paramString)
-  {
-    int i = -1;
-    AppMethodBeat.i(3757);
-    if (paramBundle == null)
-    {
-      AppMethodBeat.o(3757);
-      return -1;
-    }
-    try
-    {
-      int j = paramBundle.getInt(paramString, -1);
-      i = j;
-    }
-    catch (Exception paramBundle)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.IntentUtil", "getIntExtra exception:" + paramBundle.getMessage());
-      }
-    }
-    AppMethodBeat.o(3757);
-    return i;
-  }
+  public static final Uri a;
   
-  public static String b(Bundle paramBundle, String paramString)
+  static
   {
-    Object localObject = null;
-    AppMethodBeat.i(3758);
-    if (paramBundle == null)
-    {
-      AppMethodBeat.o(3758);
-      return null;
-    }
-    try
-    {
-      paramBundle = paramBundle.getString(paramString);
-      AppMethodBeat.o(3758);
-      return paramBundle;
-    }
-    catch (Exception paramBundle)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.IntentUtil", "getStringExtra exception:" + paramBundle.getMessage());
-        paramBundle = localObject;
-      }
-    }
+    AppMethodBeat.i(196989);
+    a = Uri.parse("content://com.tencent.mm.sdk.plugin.provider/sharedpref");
+    AppMethodBeat.o(196989);
   }
 }
 

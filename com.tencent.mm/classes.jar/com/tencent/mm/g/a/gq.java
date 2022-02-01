@@ -6,30 +6,30 @@ import com.tencent.mm.sdk.b.b;
 public final class gq
   extends b
 {
-  public a dhq;
+  public a dsz;
   
   public gq()
   {
     this((byte)0);
   }
   
-  public gq(byte paramByte)
+  private gq(byte paramByte)
   {
-    AppMethodBeat.i(183843);
-    this.dhq = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(133846);
+    this.dsz = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(183843);
+    AppMethodBeat.o(133846);
   }
   
   public static final class a
   {
-    public int dhr = 0;
+    public String url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.gq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.aa.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
+import com.tencent.mm.al.a;
+import com.tencent.mm.al.b.a;
 import com.tencent.mm.protocal.protobuf.x;
 import com.tencent.mm.protocal.protobuf.y;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
-  extends com.tencent.mm.ak.c<y>
+  extends a<y>
 {
   public c(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -17,14 +18,14 @@ public final class c
     localx.limit = paramInt1;
     localx.offset = paramInt2;
     localx.type = paramInt3;
-    locala.hvt = localx;
-    locala.hvu = new y();
+    locala.hNM = localx;
+    locala.hNN = new y();
     locala.uri = "/cgi-bin/mmpay-bin/newaaquerylist";
     locala.funcId = 1676;
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aAz();
-    ac.i("MicroMsg.CgiAAQueryList", "CgiAAQueryList, limit: %s, offset: %s, type: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    c(locala.aDC());
+    ad.i("MicroMsg.CgiAAQueryList", "CgiAAQueryList, limit: %s, offset: %s, type: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(63373);
   }
   
@@ -36,24 +37,24 @@ public final class c
     localx.limit = paramInt1;
     localx.offset = paramInt2;
     localx.type = paramInt3;
-    localx.DLl = paramString1;
-    localx.DLm = paramInt4;
-    localx.DLn = paramInt5;
-    localx.DLo = paramString2;
-    locala.hvt = localx;
-    locala.hvu = new y();
+    localx.Fqr = paramString1;
+    localx.Fqs = paramInt4;
+    localx.Fqt = paramInt5;
+    localx.Fqu = paramString2;
+    locala.hNM = localx;
+    locala.hNN = new y();
     locala.uri = "/cgi-bin/mmpay-bin/newaaquerylist";
     locala.funcId = 1676;
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aAz();
-    ac.i("MicroMsg.CgiAAQueryList", "CgiAAQueryList, limit: %s, offset: %s, type: %s, bill_id: %s, trans_id: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString1, paramString2 });
+    c(locala.aDC());
+    ad.i("MicroMsg.CgiAAQueryList", "CgiAAQueryList, limit: %s, offset: %s, type: %s, bill_id: %s, trans_id: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString1, paramString2 });
     AppMethodBeat.o(63372);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.cgi.c
  * JD-Core Version:    0.7.0.1
  */

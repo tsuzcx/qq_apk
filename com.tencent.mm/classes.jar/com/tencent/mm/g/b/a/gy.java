@@ -6,147 +6,162 @@ import com.tencent.mm.plugin.report.a;
 public final class gy
   extends a
 {
-  public long dHY = 0L;
-  public String dZT = "";
-  public long eaM = 0L;
-  public long eaY = 0L;
-  public String ecm = "";
-  public long eco = 0L;
-  public a edU;
-  private long edv = 0L;
-  public long edw = 0L;
-  public long edx = 0L;
+  public long eqU = 0L;
+  public long eqV = 0L;
+  public long eqW = 0L;
+  public long eqX = 0L;
+  public long eqY = 0L;
+  public long eqZ = 0L;
+  public long era = 0L;
+  public long erb = 0L;
+  public long erc = 0L;
+  public long erd = 0L;
+  public long ere = 0L;
+  public long erf = 0L;
+  public long erg = 0L;
+  public long erh = 0L;
+  public long eri = 0L;
+  public long erj = 0L;
+  public long erk = 0L;
+  public long erl = 0L;
+  public long erm = 0L;
+  public long ern = 0L;
+  public long ero = 0L;
+  public long erp = 0L;
+  public long erq = 0L;
+  public long err = 0L;
+  public long ers = 0L;
+  public long ert = 0L;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(43533);
+    AppMethodBeat.i(43456);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dZT);
+    ((StringBuffer)localObject).append(this.eqU);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ecm);
+    ((StringBuffer)localObject).append(this.eqV);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eaM);
+    ((StringBuffer)localObject).append(this.eqW);
     ((StringBuffer)localObject).append(",");
-    if (this.edU != null) {}
-    for (int i = this.edU.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eco);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.edv);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dHY);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.edw);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.edx);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eaY);
-      localObject = ((StringBuffer)localObject).toString();
-      arz((String)localObject);
-      AppMethodBeat.o(43533);
-      return localObject;
-    }
+    ((StringBuffer)localObject).append(this.eqX);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqY);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqZ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.era);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erb);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erc);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erd);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ere);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erf);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erg);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erh);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eri);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erj);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erk);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erl);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erm);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ern);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ero);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erp);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erq);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.err);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ers);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ert);
+    localObject = ((StringBuffer)localObject).toString();
+    awz((String)localObject);
+    AppMethodBeat.o(43456);
+    return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(43534);
+    AppMethodBeat.i(43457);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("InstanceId:").append(this.dZT);
+    ((StringBuffer)localObject).append("isBindPhone:").append(this.eqU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppId:").append(this.ecm);
+    ((StringBuffer)localObject).append("bindSuccess:").append(this.eqV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppVersion:").append(this.eaM);
+    ((StringBuffer)localObject).append("getPhoneNumberCount:").append(this.eqW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppState:").append(this.edU);
+    ((StringBuffer)localObject).append("clickConfirmCount:").append(this.eqX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.eco);
+    ((StringBuffer)localObject).append("clickDenyCount:").append(this.eqY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CostTimeMs:").append(this.edv);
+    ((StringBuffer)localObject).append("clickCancelCount:").append(this.eqZ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.dHY);
+    ((StringBuffer)localObject).append("confirmBindedPhoneCount:").append(this.era);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StartTimeStampMs:").append(this.edw);
+    ((StringBuffer)localObject).append("confirmUnBindPhoneCount:").append(this.erb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EndTimeStampMs:").append(this.edx);
+    ((StringBuffer)localObject).append("clickInfoCount:").append(this.erc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("type:").append(this.eaY);
+    ((StringBuffer)localObject).append("clickUseOtherPhoneCount:").append(this.erd);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("clickManagePhoneCount:").append(this.ere);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("clickGetVerifyCodeCount:").append(this.erf);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("getVerifyCodeSuccessCount:").append(this.erg);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("getVerifyCodeFailedCount:").append(this.erh);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("clickAddPhoneDoneCount:").append(this.eri);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("addPhoneSuccessCount:").append(this.erj);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("addPhoneFailedCount:").append(this.erk);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("addPhoneAndSaveCount:").append(this.erl);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("addPhoneNotSaveCount:").append(this.erm);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("clickAddPhoneOnManagePageCount:").append(this.ern);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("deletePhoneCount:").append(this.ero);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("deletePhoneSuccessCount:").append(this.erp);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("deletePhoneFailedCount:").append(this.erq);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("verifyCodeCount:").append(this.err);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("verifyCodeSuccessCount:").append(this.ers);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("verifyCodeFailedCount:").append(this.ert);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43534);
+    AppMethodBeat.o(43457);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16899;
-  }
-  
-  public final gy lG(long paramLong)
-  {
-    AppMethodBeat.i(43530);
-    this.edv = paramLong;
-    super.bc("CostTimeMs", this.edv);
-    AppMethodBeat.o(43530);
-    return this;
-  }
-  
-  public final gy lH(long paramLong)
-  {
-    AppMethodBeat.i(43531);
-    this.edw = paramLong;
-    super.bd("StartTimeStampMs", this.edw);
-    AppMethodBeat.o(43531);
-    return this;
-  }
-  
-  public final gy lI(long paramLong)
-  {
-    AppMethodBeat.i(43532);
-    this.edx = paramLong;
-    super.bd("EndTimeStampMs", this.edx);
-    AppMethodBeat.o(43532);
-    return this;
-  }
-  
-  public static enum a
-  {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(43529);
-      edV = new a("release", 0, 1);
-      edW = new a("debug", 1, 2);
-      edX = new a("demo", 2, 3);
-      edY = new a[] { edV, edW, edX };
-      AppMethodBeat.o(43529);
-    }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
-    
-    public static a iN(int paramInt)
-    {
-      switch (paramInt)
-      {
-      default: 
-        return null;
-      case 1: 
-        return edV;
-      case 2: 
-        return edW;
-      }
-      return edX;
-    }
+    return 16375;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.gy
  * JD-Core Version:    0.7.0.1
  */

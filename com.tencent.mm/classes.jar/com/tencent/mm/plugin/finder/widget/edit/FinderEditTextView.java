@@ -8,18 +8,18 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.widget.MMEditText;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.lang.reflect.Field;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditTextView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "editText", "Lcom/tencent/mm/ui/widget/MMEditText;", "deleteChar", "", "getText", "init", "insertText", "text", "requestEditFocus", "setTextCursorDrawable", "resId", "setTextCursorVisible", "visible", "", "setTextGravity", "gravity", "setTextHint", "hint", "setTextInputType", "type", "setTextMaxLines", "maxLines", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/widget/edit/FinderEditTextView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "editText", "Lcom/tencent/mm/ui/widget/MMEditText;", "deleteChar", "", "getText", "init", "insertText", "text", "requestEditFocus", "setTextCursorDrawable", "resId", "setTextCursorVisible", "visible", "", "setTextGravity", "gravity", "setTextHint", "hint", "setTextInputType", "type", "setTextMaxLines", "maxLines", "plugin-finder_release"})
 public final class FinderEditTextView
   extends FrameLayout
 {
   private String TAG;
-  public MMEditText rWm;
+  public MMEditText sSW;
   
   public FinderEditTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -42,40 +42,40 @@ public final class FinderEditTextView
   private final void init()
   {
     AppMethodBeat.i(168579);
-    this.rWm = new MMEditText(getContext());
+    this.sSW = new MMEditText(getContext());
     Object localObject = new FrameLayout.LayoutParams(-1, -2);
     ((FrameLayout.LayoutParams)localObject).gravity = 16;
-    MMEditText localMMEditText = this.rWm;
+    MMEditText localMMEditText = this.sSW;
     if (localMMEditText == null) {
-      k.aVY("editText");
+      p.bcb("editText");
     }
     addView((View)localMMEditText, (ViewGroup.LayoutParams)localObject);
-    localObject = this.rWm;
+    localObject = this.sSW;
     if (localObject == null) {
-      k.aVY("editText");
+      p.bcb("editText");
     }
     ((MMEditText)localObject).setBackground(null);
     AppMethodBeat.o(168579);
   }
   
-  public final void aeR(String paramString)
+  public final void ajp(String paramString)
   {
     AppMethodBeat.i(168586);
-    k.h(paramString, "text");
-    MMEditText localMMEditText = this.rWm;
+    p.h(paramString, "text");
+    MMEditText localMMEditText = this.sSW;
     if (localMMEditText == null) {
-      k.aVY("editText");
+      p.bcb("editText");
     }
-    localMMEditText.aRF(paramString);
+    localMMEditText.aXD(paramString);
     AppMethodBeat.o(168586);
   }
   
   public final String getText()
   {
     AppMethodBeat.i(168587);
-    Object localObject = this.rWm;
+    Object localObject = this.sSW;
     if (localObject == null) {
-      k.aVY("editText");
+      p.bcb("editText");
     }
     localObject = ((MMEditText)localObject).getText().toString();
     AppMethodBeat.o(168587);
@@ -88,11 +88,11 @@ public final class FinderEditTextView
     try
     {
       Field localField = TextView.class.getDeclaredField("mCursorDrawableRes");
-      k.g(localField, "field");
+      p.g(localField, "field");
       localField.setAccessible(true);
-      MMEditText localMMEditText = this.rWm;
+      MMEditText localMMEditText = this.sSW;
       if (localMMEditText == null) {
-        k.aVY("editText");
+        p.bcb("editText");
       }
       localField.set(localMMEditText, Integer.valueOf(paramInt));
       AppMethodBeat.o(168584);
@@ -100,7 +100,7 @@ public final class FinderEditTextView
     }
     catch (Exception localException)
     {
-      ac.e(this.TAG, "set cursor drawable error %s", new Object[] { localException.getMessage() });
+      ad.e(this.TAG, "set cursor drawable error %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(168584);
     }
   }
@@ -108,9 +108,9 @@ public final class FinderEditTextView
   public final void setTextCursorVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(168583);
-    MMEditText localMMEditText = this.rWm;
+    MMEditText localMMEditText = this.sSW;
     if (localMMEditText == null) {
-      k.aVY("editText");
+      p.bcb("editText");
     }
     localMMEditText.setCursorVisible(paramBoolean);
     AppMethodBeat.o(168583);
@@ -119,9 +119,9 @@ public final class FinderEditTextView
   public final void setTextGravity(int paramInt)
   {
     AppMethodBeat.i(168581);
-    MMEditText localMMEditText = this.rWm;
+    MMEditText localMMEditText = this.sSW;
     if (localMMEditText == null) {
-      k.aVY("editText");
+      p.bcb("editText");
     }
     localMMEditText.setGravity(paramInt);
     AppMethodBeat.o(168581);
@@ -130,10 +130,10 @@ public final class FinderEditTextView
   public final void setTextHint(String paramString)
   {
     AppMethodBeat.i(168585);
-    k.h(paramString, "hint");
-    MMEditText localMMEditText = this.rWm;
+    p.h(paramString, "hint");
+    MMEditText localMMEditText = this.sSW;
     if (localMMEditText == null) {
-      k.aVY("editText");
+      p.bcb("editText");
     }
     localMMEditText.setHint((CharSequence)paramString);
     AppMethodBeat.o(168585);
@@ -142,9 +142,9 @@ public final class FinderEditTextView
   public final void setTextInputType(int paramInt)
   {
     AppMethodBeat.i(168582);
-    MMEditText localMMEditText = this.rWm;
+    MMEditText localMMEditText = this.sSW;
     if (localMMEditText == null) {
-      k.aVY("editText");
+      p.bcb("editText");
     }
     localMMEditText.setInputType(paramInt);
     AppMethodBeat.o(168582);
@@ -153,9 +153,9 @@ public final class FinderEditTextView
   public final void setTextMaxLines(int paramInt)
   {
     AppMethodBeat.i(168580);
-    MMEditText localMMEditText = this.rWm;
+    MMEditText localMMEditText = this.sSW;
     if (localMMEditText == null) {
-      k.aVY("editText");
+      p.bcb("editText");
     }
     localMMEditText.setMaxLines(paramInt);
     AppMethodBeat.o(168580);

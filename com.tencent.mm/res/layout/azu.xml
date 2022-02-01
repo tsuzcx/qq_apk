@@ -4,7 +4,10 @@
     <ImageView style="@style/ro" />
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <include layout="@layout/azt" />
-        <ImageView android:id="@id/eun" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/fav_list_img_default" android:scaleType="centerInside" android:adjustViewBounds="true" android:maxWidth="260.0dip" style="@style/j6" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/eun" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerInside" android:adjustViewBounds="true" style="@style/j6" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/d45" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" style="@style/a4p" />
+        </FrameLayout>
         <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/rr" />
     </LinearLayout>
     <ProgressBar android:id="@id/ekg" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?android:progressBarStyleHorizontal" />

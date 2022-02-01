@@ -4,24 +4,24 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bg;
+import com.tencent.mm.g.c.bh;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class EmojiGroupInfo
-  extends bg
+  extends bh
   implements Parcelable
 {
   public static final Parcelable.Creator<EmojiGroupInfo> CREATOR;
-  public static int Jsm;
-  public static int Jsn;
-  public static int Jso;
-  public static int Jsp;
-  public static int Jsq;
-  public static int Jsr;
-  public static int Jss;
+  public static int OeH;
+  public static int OeI;
+  public static int OeJ;
+  public static int OeK;
+  public static int OeL;
+  public static int OeM;
+  public static int OeN;
   public static int TYPE_CUSTOM;
   public static int TYPE_SYSTEM;
   protected static c.a info;
@@ -30,138 +30,138 @@ public class EmojiGroupInfo
   {
     AppMethodBeat.i(104983);
     c.a locala = new c.a();
-    locala.GvF = new Field[29];
+    locala.IhA = new Field[29];
     locala.columns = new String[30];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "productID";
-    locala.GvH.put("productID", "TEXT PRIMARY KEY  COLLATE NOCASE ");
+    locala.IhC.put("productID", "TEXT PRIMARY KEY  COLLATE NOCASE ");
     localStringBuilder.append(" productID TEXT PRIMARY KEY  COLLATE NOCASE ");
     localStringBuilder.append(", ");
-    locala.GvG = "productID";
+    locala.IhB = "productID";
     locala.columns[1] = "packIconUrl";
-    locala.GvH.put("packIconUrl", "TEXT");
+    locala.IhC.put("packIconUrl", "TEXT");
     localStringBuilder.append(" packIconUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "packGrayIconUrl";
-    locala.GvH.put("packGrayIconUrl", "TEXT");
+    locala.IhC.put("packGrayIconUrl", "TEXT");
     localStringBuilder.append(" packGrayIconUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "packCoverUrl";
-    locala.GvH.put("packCoverUrl", "TEXT");
+    locala.IhC.put("packCoverUrl", "TEXT");
     localStringBuilder.append(" packCoverUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "packName";
-    locala.GvH.put("packName", "TEXT");
+    locala.IhC.put("packName", "TEXT");
     localStringBuilder.append(" packName TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "packDesc";
-    locala.GvH.put("packDesc", "TEXT");
+    locala.IhC.put("packDesc", "TEXT");
     localStringBuilder.append(" packDesc TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "packAuthInfo";
-    locala.GvH.put("packAuthInfo", "TEXT");
+    locala.IhC.put("packAuthInfo", "TEXT");
     localStringBuilder.append(" packAuthInfo TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "packPrice";
-    locala.GvH.put("packPrice", "TEXT");
+    locala.IhC.put("packPrice", "TEXT");
     localStringBuilder.append(" packPrice TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "packType";
-    locala.GvH.put("packType", "INTEGER");
+    locala.IhC.put("packType", "INTEGER");
     localStringBuilder.append(" packType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[9] = "packFlag";
-    locala.GvH.put("packFlag", "INTEGER");
+    locala.IhC.put("packFlag", "INTEGER");
     localStringBuilder.append(" packFlag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[10] = "packExpire";
-    locala.GvH.put("packExpire", "LONG");
+    locala.IhC.put("packExpire", "LONG");
     localStringBuilder.append(" packExpire LONG");
     localStringBuilder.append(", ");
     locala.columns[11] = "packTimeStamp";
-    locala.GvH.put("packTimeStamp", "LONG");
+    locala.IhC.put("packTimeStamp", "LONG");
     localStringBuilder.append(" packTimeStamp LONG");
     localStringBuilder.append(", ");
     locala.columns[12] = "packCopyright";
-    locala.GvH.put("packCopyright", "TEXT");
+    locala.IhC.put("packCopyright", "TEXT");
     localStringBuilder.append(" packCopyright TEXT");
     localStringBuilder.append(", ");
     locala.columns[13] = "type";
-    locala.GvH.put("type", "INTEGER");
+    locala.IhC.put("type", "INTEGER");
     localStringBuilder.append(" type INTEGER");
     localStringBuilder.append(", ");
     locala.columns[14] = "status";
-    locala.GvH.put("status", "INTEGER");
+    locala.IhC.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[15] = "sort";
-    locala.GvH.put("sort", "INTEGER default '1' ");
+    locala.IhC.put("sort", "INTEGER default '1' ");
     localStringBuilder.append(" sort INTEGER default '1' ");
     localStringBuilder.append(", ");
     locala.columns[16] = "lastUseTime";
-    locala.GvH.put("lastUseTime", "LONG");
+    locala.IhC.put("lastUseTime", "LONG");
     localStringBuilder.append(" lastUseTime LONG");
     localStringBuilder.append(", ");
     locala.columns[17] = "packStatus";
-    locala.GvH.put("packStatus", "INTEGER default '0' ");
+    locala.IhC.put("packStatus", "INTEGER default '0' ");
     localStringBuilder.append(" packStatus INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[18] = "flag";
-    locala.GvH.put("flag", "INTEGER default '0' ");
+    locala.IhC.put("flag", "INTEGER default '0' ");
     localStringBuilder.append(" flag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[19] = "recommand";
-    locala.GvH.put("recommand", "INTEGER default '0' ");
+    locala.IhC.put("recommand", "INTEGER default '0' ");
     localStringBuilder.append(" recommand INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[20] = "sync";
-    locala.GvH.put("sync", "INTEGER default '0' ");
+    locala.IhC.put("sync", "INTEGER default '0' ");
     localStringBuilder.append(" sync INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[21] = "idx";
-    locala.GvH.put("idx", "INTEGER default '0' ");
+    locala.IhC.put("idx", "INTEGER default '0' ");
     localStringBuilder.append(" idx INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[22] = "BigIconUrl";
-    locala.GvH.put("BigIconUrl", "TEXT");
+    locala.IhC.put("BigIconUrl", "TEXT");
     localStringBuilder.append(" BigIconUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[23] = "MutiLanName";
-    locala.GvH.put("MutiLanName", "TEXT");
+    locala.IhC.put("MutiLanName", "TEXT");
     localStringBuilder.append(" MutiLanName TEXT");
     localStringBuilder.append(", ");
     locala.columns[24] = "recommandType";
-    locala.GvH.put("recommandType", "INTEGER default '-1' ");
+    locala.IhC.put("recommandType", "INTEGER default '-1' ");
     localStringBuilder.append(" recommandType INTEGER default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[25] = "lang";
-    locala.GvH.put("lang", "TEXT");
+    locala.IhC.put("lang", "TEXT");
     localStringBuilder.append(" lang TEXT");
     localStringBuilder.append(", ");
     locala.columns[26] = "recommandWord";
-    locala.GvH.put("recommandWord", "TEXT");
+    locala.IhC.put("recommandWord", "TEXT");
     localStringBuilder.append(" recommandWord TEXT");
     localStringBuilder.append(", ");
     locala.columns[27] = "buttonType";
-    locala.GvH.put("buttonType", "INTEGER");
+    locala.IhC.put("buttonType", "INTEGER");
     localStringBuilder.append(" buttonType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[28] = "count";
-    locala.GvH.put("count", "INTEGER");
+    locala.IhC.put("count", "INTEGER");
     localStringBuilder.append(" count INTEGER");
     locala.columns[29] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
     TYPE_SYSTEM = 1;
-    Jsm = 2;
+    OeH = 2;
     TYPE_CUSTOM = 3;
-    Jsn = 4;
-    Jso = 256;
-    Jsp = 17;
-    Jsq = 18;
-    Jsr = 81;
-    Jss = 65;
-    CREATOR = new EmojiGroupInfo.1();
+    OeI = 4;
+    OeJ = 256;
+    OeK = 17;
+    OeL = 18;
+    OeM = 81;
+    OeN = 65;
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(104983);
   }
   
@@ -203,12 +203,12 @@ public class EmojiGroupInfo
     AppMethodBeat.o(104982);
   }
   
-  public final String aGJ()
+  public final String aJU()
   {
     return this.field_packName;
   }
   
-  public final void aXI(String paramString)
+  public final void bec(String paramString)
   {
     this.field_packName = paramString;
   }
@@ -218,17 +218,12 @@ public class EmojiGroupInfo
     return 0;
   }
   
-  public final String fdm()
-  {
-    return this.field_productID;
-  }
-  
-  public final String fdn()
+  public final String fIO()
   {
     return this.field_packGrayIconUrl;
   }
   
-  public final EmotionSummary fdo()
+  public final EmotionSummary fOt()
   {
     AppMethodBeat.i(104979);
     EmotionSummary localEmotionSummary = new EmotionSummary();
@@ -247,6 +242,11 @@ public class EmojiGroupInfo
     localEmotionSummary.PriceNum = this.field_packPrice;
     AppMethodBeat.o(104979);
     return localEmotionSummary;
+  }
+  
+  public final String fxi()
+  {
+    return this.field_productID;
   }
   
   public c.a getDBInfo()

@@ -9,10 +9,10 @@ import java.util.List;
 
 public final class h<T>
 {
-  public final l.a<ArrayList<T>> Rv = new l.b(10);
-  public final n<T, ArrayList<T>> Rw = new n();
-  private final ArrayList<T> Rx = new ArrayList();
-  private final HashSet<T> Ry = new HashSet();
+  public final l.a<ArrayList<T>> Tk = new l.b(10);
+  public final n<T, ArrayList<T>> Tl = new n();
+  private final ArrayList<T> Tm = new ArrayList();
+  private final HashSet<T> Tn = new HashSet();
   
   private void a(T paramT, ArrayList<T> paramArrayList, HashSet<T> paramHashSet)
   {
@@ -23,7 +23,7 @@ public final class h<T>
       throw new RuntimeException("This graph contains cyclic dependencies");
     }
     paramHashSet.add(paramT);
-    ArrayList localArrayList = (ArrayList)this.Rw.get(paramT);
+    ArrayList localArrayList = (ArrayList)this.Tl.get(paramT);
     if (localArrayList != null)
     {
       int i = 0;
@@ -38,27 +38,27 @@ public final class h<T>
     paramArrayList.add(paramT);
   }
   
-  public final void H(T paramT)
+  public final void I(T paramT)
   {
-    if (!this.Rw.containsKey(paramT)) {
-      this.Rw.put(paramT, null);
+    if (!this.Tl.containsKey(paramT)) {
+      this.Tl.put(paramT, null);
     }
   }
   
-  public final List I(T paramT)
+  public final List J(T paramT)
   {
-    return (List)this.Rw.get(paramT);
+    return (List)this.Tl.get(paramT);
   }
   
-  public final List<T> J(T paramT)
+  public final List<T> K(T paramT)
   {
     Object localObject1 = null;
-    int j = this.Rw.size();
+    int j = this.Tl.size();
     int i = 0;
     Object localObject2;
     if (i < j)
     {
-      ArrayList localArrayList = (ArrayList)this.Rw.valueAt(i);
+      ArrayList localArrayList = (ArrayList)this.Tl.valueAt(i);
       localObject2 = localObject1;
       if (localArrayList != null)
       {
@@ -75,7 +75,7 @@ public final class h<T>
     label99:
     for (;;)
     {
-      ((ArrayList)localObject1).add(this.Rw.keyAt(i));
+      ((ArrayList)localObject1).add(this.Tl.keyAt(i));
       localObject2 = localObject1;
       i += 1;
       localObject1 = localObject2;
@@ -84,18 +84,18 @@ public final class h<T>
     }
   }
   
-  public final ArrayList<T> fv()
+  public final ArrayList<T> fM()
   {
-    this.Rx.clear();
-    this.Ry.clear();
+    this.Tm.clear();
+    this.Tn.clear();
     int i = 0;
-    int j = this.Rw.size();
+    int j = this.Tl.size();
     while (i < j)
     {
-      a(this.Rw.keyAt(i), this.Rx, this.Ry);
+      a(this.Tl.keyAt(i), this.Tm, this.Tn);
       i += 1;
     }
-    return this.Rx;
+    return this.Tm;
   }
 }
 

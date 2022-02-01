@@ -16,7 +16,7 @@ public class ActivityStarterIpcDelegate
   implements Parcelable
 {
   public static final Parcelable.Creator<ActivityStarterIpcDelegate> CREATOR;
-  public final ResultReceiver ceI;
+  public final ResultReceiver coZ;
   
   static
   {
@@ -28,7 +28,7 @@ public class ActivityStarterIpcDelegate
   public ActivityStarterIpcDelegate(final Activity paramActivity)
   {
     AppMethodBeat.i(146867);
-    this.ceI = new ResultReceiver(new Handler(Looper.getMainLooper()))
+    this.coZ = new ResultReceiver(new Handler(Looper.getMainLooper()))
     {
       protected void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
@@ -41,9 +41,9 @@ public class ActivityStarterIpcDelegate
           {
             ((Intent)localObject).setFlags(((Intent)localObject).getFlags() & 0xEFFFFFFF);
             paramAnonymousBundle = paramActivity;
-            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousBundle, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate$1", "onReceiveResult", "(ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousBundle.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousBundle, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate$1", "onReceiveResult", "(ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousBundle.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousBundle, "com/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate$1", "onReceiveResult", "(ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
         }
@@ -56,7 +56,7 @@ public class ActivityStarterIpcDelegate
   private ActivityStarterIpcDelegate(Parcel paramParcel)
   {
     AppMethodBeat.i(146869);
-    this.ceI = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
+    this.coZ = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
     AppMethodBeat.o(146869);
   }
   
@@ -81,13 +81,13 @@ public class ActivityStarterIpcDelegate
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(146868);
-    this.ceI.writeToParcel(paramParcel, paramInt);
+    this.coZ.writeToParcel(paramParcel, paramInt);
     AppMethodBeat.o(146868);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate
  * JD-Core Version:    0.7.0.1
  */

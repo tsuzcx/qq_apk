@@ -3,112 +3,112 @@ package com.tencent.mm.plugin.voip.b;
 import android.content.Context;
 import android.os.BatteryManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/voip/util/BatteryUtils;", "", "()V", "avgAverageBattery", "", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "isStartCounter", "", "mBatteryManager", "Landroid/os/BatteryManager;", "getBatteryInfo", "", "init", "releaseBatteryCounter", "startBatteryCounter", "stopBatteryCounter", "isNewRenderer", "renderType", "", "Companion", "plugin-voip_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/util/BatteryUtils;", "", "()V", "avgAverageBattery", "", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "isStartCounter", "", "mBatteryManager", "Landroid/os/BatteryManager;", "getBatteryInfo", "", "init", "releaseBatteryCounter", "startBatteryCounter", "stopBatteryCounter", "isNewRenderer", "renderType", "", "Companion", "plugin-voip_release"})
 public final class a
 {
-  public static final a.a ALP;
-  private long ALM;
-  private boolean ALN;
-  private final BatteryManager ALO;
-  private ao handler;
+  public static final a.a CkU;
+  private long CkR;
+  private boolean CkS;
+  private final BatteryManager CkT;
+  private ap handler;
   
   static
   {
-    AppMethodBeat.i(208610);
-    ALP = new a.a((byte)0);
-    AppMethodBeat.o(208610);
+    AppMethodBeat.i(215924);
+    CkU = new a.a((byte)0);
+    AppMethodBeat.o(215924);
   }
   
   public a()
   {
-    AppMethodBeat.i(208609);
-    Object localObject = ai.getContext().getSystemService("batterymanager");
+    AppMethodBeat.i(215923);
+    Object localObject = aj.getContext().getSystemService("batterymanager");
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type android.os.BatteryManager");
-      AppMethodBeat.o(208609);
+      AppMethodBeat.o(215923);
       throw ((Throwable)localObject);
     }
-    this.ALO = ((BatteryManager)localObject);
+    this.CkT = ((BatteryManager)localObject);
     init();
-    AppMethodBeat.o(208609);
+    AppMethodBeat.o(215923);
   }
   
   private void init()
   {
-    AppMethodBeat.i(208605);
-    this.ALM = 0L;
-    this.handler = new ao("batteryCounter");
-    AppMethodBeat.o(208605);
+    AppMethodBeat.i(215919);
+    this.CkR = 0L;
+    this.handler = new ap("batteryCounter");
+    AppMethodBeat.o(215919);
   }
   
-  public final void S(boolean paramBoolean, int paramInt)
+  public final void T(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(208607);
-    this.ALN = false;
-    if (this.ALM > 0L)
+    AppMethodBeat.i(215921);
+    this.CkS = false;
+    if (this.CkR > 0L)
     {
-      ac.i("MicroMsg.BatteryUtils", "sum avgBattery=￥avgAverageBattery} microAmpere and avg avgBattery= " + this.ALM + ' ');
+      ad.i("MicroMsg.BatteryUtils", "sum avgBattery=￥avgAverageBattery} microAmpere and avg avgBattery= " + this.CkR + ' ');
       if (paramBoolean)
       {
-        localObject = g.AMq;
-        g.a.ab(this.ALM / 1000L, paramInt);
-        AppMethodBeat.o(208607);
+        localObject = i.ClE;
+        i.a.ag(this.CkR / 1000L, paramInt);
+        AppMethodBeat.o(215921);
         return;
       }
-      Object localObject = h.AMt;
-      h.a.ab(this.ALM / 1000L, paramInt);
+      Object localObject = j.ClH;
+      j.a.ag(this.CkR / 1000L, paramInt);
     }
-    AppMethodBeat.o(208607);
+    AppMethodBeat.o(215921);
   }
   
-  public final void elB()
+  public final void ezl()
   {
-    AppMethodBeat.i(208606);
+    AppMethodBeat.i(215920);
     for (;;)
     {
-      this.ALN = true;
-      ao localao = this.handler;
-      if (((localao == null) || (localao.isQuit() != true)) && (this.ALN))
+      this.CkS = true;
+      ap localap = this.handler;
+      if (((localap == null) || (localap.isQuit() != true)) && (this.CkS))
       {
-        localao = this.handler;
-        if (localao != null)
+        localap = this.handler;
+        if (localap != null)
         {
-          localao.postDelayed((Runnable)new b(this), 1000L);
-          AppMethodBeat.o(208606);
+          localap.postDelayed((Runnable)new b(this), 1000L);
+          AppMethodBeat.o(215920);
           return;
         }
-        AppMethodBeat.o(208606);
+        AppMethodBeat.o(215920);
         return;
       }
       init();
     }
   }
   
-  public final void elC()
+  public final void ezm()
   {
-    AppMethodBeat.i(208608);
-    ao localao = this.handler;
-    if (localao != null) {
-      localao.removeCallbacksAndMessages(null);
+    AppMethodBeat.i(215922);
+    ap localap = this.handler;
+    if (localap != null) {
+      localap.removeCallbacksAndMessages(null);
     }
-    localao = this.handler;
-    if (localao != null)
+    localap = this.handler;
+    if (localap != null)
     {
-      localao.quitSafely();
-      AppMethodBeat.o(208608);
+      localap.quitSafely();
+      AppMethodBeat.o(215922);
       return;
     }
-    AppMethodBeat.o(208608);
+    AppMethodBeat.o(215922);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -116,16 +116,16 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(208604);
-      a.a(this.ALQ);
-      this.ALQ.elB();
-      AppMethodBeat.o(208604);
+      AppMethodBeat.i(215918);
+      a.a(this.CkV);
+      this.CkV.ezl();
+      AppMethodBeat.o(215918);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.b.a
  * JD-Core Version:    0.7.0.1
  */

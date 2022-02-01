@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
 {
-  public final m.a aZA;
-  public final boolean bee;
-  public final String bef;
-  public final int beg;
-  public final byte[] beh;
+  public final m.a bjV;
+  public final String boA;
+  public final int boB;
+  public final byte[] boC;
+  public final boolean boz;
   
   public k(boolean paramBoolean, String paramString, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, byte[] paramArrayOfByte2)
   {
@@ -26,10 +26,10 @@ public final class k
       j = 1;
       label30:
       a.checkArgument(j ^ i);
-      this.bee = paramBoolean;
-      this.bef = paramString;
-      this.beg = paramInt1;
-      this.beh = paramArrayOfByte2;
+      this.boz = paramBoolean;
+      this.boA = paramString;
+      this.boB = paramInt1;
+      this.boC = paramArrayOfByte2;
       if (paramString != null) {
         break label104;
       }
@@ -38,7 +38,7 @@ public final class k
     for (;;)
     {
       label67:
-      this.aZA = new m.a(i, paramArrayOfByte1, paramInt2, paramInt3);
+      this.bjV = new m.a(i, paramArrayOfByte1, paramInt2, paramInt3);
       AppMethodBeat.o(92129);
       return;
       i = 0;
@@ -91,7 +91,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.k
  * JD-Core Version:    0.7.0.1
  */

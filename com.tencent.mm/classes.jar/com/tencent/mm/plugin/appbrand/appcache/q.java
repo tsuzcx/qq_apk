@@ -6,39 +6,39 @@ import java.util.List;
 
 public abstract interface q
 {
-  public abstract WxaPkg HR(String paramString);
+  public abstract WxaPkg Lj(String paramString);
   
-  public abstract InputStream HS(String paramString);
+  public abstract InputStream Lk(String paramString);
   
-  public abstract a HT(String paramString);
+  public abstract a Ll(String paramString);
   
-  public abstract boolean HU(String paramString);
+  public abstract boolean Lm(String paramString);
   
-  public abstract List<WxaPkg.Info> aWp();
+  public abstract List<WxaPkg.Info> aZK();
   
-  public abstract void aWq();
+  public abstract void aZL();
   
-  public abstract List<ModulePkgInfo> aWr();
+  public abstract List<ModulePkgInfo> aZM();
   
-  public abstract List<String> aWs();
+  public abstract List<String> aZN();
   
   public abstract void close();
   
   public static class a
   {
-    public int aBM;
+    public int aDD;
     public String fileName;
-    public String jlU;
-    public String jlV;
-    public WxaPkg jlW;
-    public String jlX;
-    public int jlY;
-    public int jlZ;
+    public String jFK;
+    public String jFL;
+    public WxaPkg jFM;
+    public String jFN;
+    public int jFO;
+    public int jFP;
     
-    public final WxaPkg.Info aWt()
+    public final WxaPkg.Info aZO()
     {
       AppMethodBeat.i(178519);
-      WxaPkg.Info localInfo = new WxaPkg.Info(this.jlX, this.fileName, this.jlY, this.jlZ);
+      WxaPkg.Info localInfo = new WxaPkg.Info(this.jFN, this.fileName, this.jFO, this.jFP);
       AppMethodBeat.o(178519);
       return localInfo;
     }

@@ -1,78 +1,74 @@
 package com.tencent.mm.plugin.appbrand.jsapi.r;
 
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.luggage.h.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import d.l;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "Event_onRealtimeDataResponse", "Priority", "plugin-appbrand-integration_release"})
 public final class c
-  extends a<d>
+  extends a<q>
 {
-  private static final int CTRL_INDEX = 652;
-  private static final String NAME = "operateRealtimeData";
-  @Deprecated
-  public static final a kJs;
+  private static final int CTRL_INDEX = 104;
+  private static final String NAME = "showModal";
   
-  static
+  public final void a(final q paramq, final JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(50672);
-    kJs = new a((byte)0);
-    CTRL_INDEX = 652;
-    NAME = "operateRealtimeData";
-    AppMethodBeat.o(50672);
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Companion;", "", "()V", "CTRL_INDEX", "", "getCTRL_INDEX", "()I", "NAME", "", "getNAME", "()Ljava/lang/String;", "plugin-appbrand-integration_release"})
-  static final class a {}
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Event_onRealtimeDataResponse;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "()V", "Companion", "plugin-appbrand-integration_release"})
-  public static final class b
-    extends p
-  {
-    public static final int CTRL_INDEX = 653;
-    public static final String NAME = "onRealtimeDataResponse";
-    @Deprecated
-    public static final a kJt;
-    
-    static
+    AppMethodBeat.i(177329);
+    aa localaa = paramq.getCurrentPageView();
+    if (localaa == null)
     {
-      AppMethodBeat.i(50667);
-      kJt = new a((byte)0);
-      AppMethodBeat.o(50667);
+      if ((paramq.getRuntime() != null) && (!paramq.getRuntime().isDestroyed()) && (!paramq.getRuntime().mInitialized))
+      {
+        ad.w("MicroMsg.JsApiShowModal", "invoke with appId[%s] callbackId[%d] runtime !initialized, retry", new Object[] { paramq.getAppId(), Integer.valueOf(paramInt) });
+        paramq.getRuntime().L(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(138262);
+            ad.i("MicroMsg.JsApiShowModal", "invoke after runtime initialized appId[%s] callbackId[%d]", new Object[] { paramq.getAppId(), Integer.valueOf(paramInt) });
+            c.this.a(paramq, paramJSONObject, paramInt);
+            AppMethodBeat.o(138262);
+          }
+        });
+        AppMethodBeat.o(177329);
+        return;
+      }
+      ad.w("MicroMsg.JsApiShowModal", "invoke failed with appId[%s] callbackId[%d], current page view is null.", new Object[] { paramq.getAppId(), Integer.valueOf(paramInt) });
+      paramq.h(paramInt, e("fail:page don't exist", null));
+      AppMethodBeat.o(177329);
+      return;
     }
-    
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Event_onRealtimeDataResponse$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"})
-    static final class a {}
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "", "(Ljava/lang/String;I)V", "HIGH", "LOW", "Companion", "plugin-appbrand-integration_release"})
-  public static enum c
-  {
-    public static final a kJx;
-    
-    static
+    String str1 = paramJSONObject.optString("title");
+    String str2 = paramJSONObject.optString("confirmText", paramq.getContext().getString(2131761022));
+    String str3 = paramJSONObject.optString("cancelText", paramq.getContext().getString(2131761020));
+    boolean bool = paramJSONObject.optBoolean("showCancel", true);
+    int i;
+    if (i.cqA.isDarkMode()) {
+      i = g.cg(paramJSONObject.optString("confirmColorDark", ""), aj.getContext().getResources().getColor(2131100035));
+    }
+    for (int j = g.cg(paramJSONObject.optString("cancelColorDark", ""), aj.getContext().getResources().getColor(2131100018));; j = g.cg(paramJSONObject.optString("cancelColor", ""), aj.getContext().getResources().getColor(2131100018)))
     {
-      AppMethodBeat.i(50668);
-      c localc1 = new c("HIGH", 0);
-      kJu = localc1;
-      c localc2 = new c("LOW", 1);
-      kJv = localc2;
-      kJw = new c[] { localc1, localc2 };
-      kJx = new a((byte)0);
-      AppMethodBeat.o(50668);
+      paramJSONObject = paramJSONObject.optString("content");
+      ad.i("MicroMsg.JsApiShowModal", "showModal appId[%s] title[%s] content[%s]", new Object[] { paramq.getAppId(), str1, paramJSONObject });
+      paramq.M(new c.2(this, paramq, localaa, str1, paramJSONObject, str2, paramInt, bool, str3, i, j));
+      AppMethodBeat.o(177329);
+      return;
+      i = g.cg(paramJSONObject.optString("confirmColor", ""), aj.getContext().getResources().getColor(2131100035));
     }
-    
-    private c() {}
-    
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority$Companion;", "", "()V", "of", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport$Priority;", "str", "", "plugin-appbrand-integration_release"})
-    public static final class a {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.r.c
  * JD-Core Version:    0.7.0.1
  */

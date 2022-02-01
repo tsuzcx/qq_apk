@@ -4,23 +4,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum f$g
 {
-  private final String KNn;
+  private final String MEk;
   
   static
   {
     AppMethodBeat.i(10289);
-    KNC = new g("CLICK", "SystemSoundType.click");
-    KND = new g[] { KNC };
+    MEz = new g("CLICK", "SystemSoundType.click");
+    MEA = new g[] { MEz };
     AppMethodBeat.o(10289);
   }
   
   private f$g(String paramString)
   {
     Object localObject;
-    this.KNn = localObject;
+    this.MEk = localObject;
   }
   
-  static g aVR(String paramString)
+  static g bbU(String paramString)
   {
     AppMethodBeat.i(10288);
     g[] arrayOfg = values();
@@ -29,7 +29,7 @@ public enum f$g
     while (i < j)
     {
       g localg = arrayOfg[i];
-      if (localg.KNn.equals(paramString))
+      if (localg.MEk.equals(paramString))
       {
         AppMethodBeat.o(10288);
         return localg;
@@ -43,7 +43,7 @@ public enum f$g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     io.flutter.embedding.engine.c.f.g
  * JD-Core Version:    0.7.0.1
  */

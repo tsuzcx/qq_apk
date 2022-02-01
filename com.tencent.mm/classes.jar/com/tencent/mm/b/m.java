@@ -20,7 +20,7 @@ public final class m
   }
   
   /* Error */
-  public static PublicKey p(android.content.Context paramContext, String paramString)
+  public static PublicKey o(android.content.Context paramContext, String paramString)
   {
     // Byte code:
     //   0: aconst_null

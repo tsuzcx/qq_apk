@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.story.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,14 +9,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/storage/StoryInfoStorage$Companion;", "", "()V", "CON_FAVORITE", "", "CON_HISTORY", "CON_NOT_VISIBLE_SELF", "CON_OTHERS", "CON_STORY_ID", "CON_USER", "EventNotifyStoryInfoDelete", "", "INDEX_CREATE", "", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "NotifyStoryInfoDelete", "ORDER_BY_FAV_SEQ", "getORDER_BY_FAV_SEQ", "()Ljava/lang/String;", "setORDER_BY_FAV_SEQ", "(Ljava/lang/String;)V", "ORDER_BY_SEQ", "getORDER_BY_SEQ", "setORDER_BY_SEQ", "SQL_CREATE", "kotlin.jvm.PlatformType", "getSQL_CREATE", "STORYINFO_SELECT_BEGIN", "STORYINFO_SELECT_COUNT", "TABLE", "getTABLE", "TAG", "buildLimitString", "data", "", "col", "reverse", "", "getORIntRange", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/StoryInfoStorage$Companion;", "", "()V", "CON_FAVORITE", "", "CON_HISTORY", "CON_NOT_VISIBLE_SELF", "CON_OTHERS", "CON_STORY_ID", "CON_USER", "EventNotifyStoryInfoDelete", "", "INDEX_CREATE", "", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "NotifyStoryInfoDelete", "ORDER_BY_FAV_SEQ", "getORDER_BY_FAV_SEQ", "()Ljava/lang/String;", "setORDER_BY_FAV_SEQ", "(Ljava/lang/String;)V", "ORDER_BY_SEQ", "getORDER_BY_SEQ", "setORDER_BY_SEQ", "SQL_CREATE", "kotlin.jvm.PlatformType", "getSQL_CREATE", "STORYINFO_SELECT_BEGIN", "STORYINFO_SELECT_COUNT", "TABLE", "getTABLE", "TAG", "buildLimitString", "data", "", "col", "reverse", "", "getORIntRange", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "plugin-story_release"})
 public final class k$a
 {
   public static String b(List<Integer> paramList, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(119552);
-    k.h(paramList, "data");
-    k.h(paramString, "col");
+    p.h(paramList, "data");
+    p.h(paramString, "col");
     StringBuilder localStringBuilder = new StringBuilder("(");
     if (paramBoolean) {
       localStringBuilder.append(paramString + " not in (");
@@ -36,15 +36,15 @@ public final class k$a
     localStringBuilder.append(")");
     localStringBuilder.append(")");
     paramList = localStringBuilder.toString();
-    k.g(paramList, "sb.toString()");
+    p.g(paramList, "sb.toString()");
     AppMethodBeat.o(119552);
     return paramList;
   }
   
-  public static ArrayList<Integer> fF(List<Integer> paramList)
+  public static ArrayList<Integer> fQ(List<Integer> paramList)
   {
     AppMethodBeat.i(119553);
-    k.h(paramList, "data");
+    p.h(paramList, "data");
     Object localObject = new ArrayList((Collection)paramList);
     paramList = new HashSet();
     ArrayList localArrayList1 = new ArrayList();
@@ -57,7 +57,7 @@ public final class k$a
       while (localIterator.hasNext())
       {
         int i = ((Integer)localIterator.next()).intValue();
-        k.g(localInteger, "i");
+        p.g(localInteger, "i");
         localArrayList2.add(Integer.valueOf(i | localInteger.intValue()));
       }
       paramList.addAll((Collection)new HashSet((Collection)localArrayList2));
@@ -69,11 +69,11 @@ public final class k$a
     return localArrayList1;
   }
   
-  public static String j(List<Integer> paramList, String paramString)
+  public static String i(List<Integer> paramList, String paramString)
   {
     AppMethodBeat.i(119551);
-    k.h(paramList, "data");
-    k.h(paramString, "col");
+    p.h(paramList, "data");
+    p.h(paramString, "col");
     paramList = b(paramList, paramString, false);
     AppMethodBeat.o(119551);
     return paramList;

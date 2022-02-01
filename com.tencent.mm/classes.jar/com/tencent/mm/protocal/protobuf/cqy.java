@@ -5,77 +5,64 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class cqy
-  extends com.tencent.mm.bw.a
+  extends cvc
 {
-  public crm EuE;
-  public crm Fbd;
+  public cqr Hjd;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(43126);
+    AppMethodBeat.i(32409);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.EuE == null)
+      if (this.Hjd == null)
       {
-        paramVarArgs = new b("Not all required fields were included: UserName");
-        AppMethodBeat.o(43126);
+        paramVarArgs = new b("Not all required fields were included: rcptinfo");
+        AppMethodBeat.o(32409);
         throw paramVarArgs;
       }
-      if (this.Fbd == null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: NickName");
-        AppMethodBeat.o(43126);
-        throw paramVarArgs;
+        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.EuE != null)
+      if (this.Hjd != null)
       {
-        paramVarArgs.ln(1, this.EuE.computeSize());
-        this.EuE.writeFields(paramVarArgs);
+        paramVarArgs.lC(2, this.Hjd.computeSize());
+        this.Hjd.writeFields(paramVarArgs);
       }
-      if (this.Fbd != null)
-      {
-        paramVarArgs.ln(2, this.Fbd.computeSize());
-        this.Fbd.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(43126);
+      AppMethodBeat.o(32409);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.EuE == null) {
-        break label562;
+      if (this.BaseRequest == null) {
+        break label522;
       }
     }
-    label562:
-    for (paramInt = f.a.a.a.lm(1, this.EuE.computeSize()) + 0;; paramInt = 0)
+    label522:
+    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.Fbd != null) {
-        i = paramInt + f.a.a.a.lm(2, this.Fbd.computeSize());
+      if (this.Hjd != null) {
+        i = paramInt + f.a.a.a.lB(2, this.Hjd.computeSize());
       }
-      AppMethodBeat.o(43126);
+      AppMethodBeat.o(32409);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.EuE == null)
+        if (this.Hjd == null)
         {
-          paramVarArgs = new b("Not all required fields were included: UserName");
-          AppMethodBeat.o(43126);
+          paramVarArgs = new b("Not all required fields were included: rcptinfo");
+          AppMethodBeat.o(32409);
           throw paramVarArgs;
         }
-        if (this.Fbd == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: NickName");
-          AppMethodBeat.o(43126);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(43126);
+        AppMethodBeat.o(32409);
         return 0;
       }
       if (paramInt == 3)
@@ -88,47 +75,47 @@ public final class cqy
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(43126);
+          AppMethodBeat.o(32409);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new crm();
+            localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((crm)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcqy.EuE = ((crm)localObject1);
+            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcqy.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(43126);
+          AppMethodBeat.o(32409);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new crm();
+          localObject1 = new cqr();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((crm)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localcqy.Fbd = ((crm)localObject1);
+          for (bool = true; bool; bool = ((cqr)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localcqy.Hjd = ((cqr)localObject1);
           paramInt += 1;
         }
-        AppMethodBeat.o(43126);
+        AppMethodBeat.o(32409);
         return 0;
       }
-      AppMethodBeat.o(43126);
+      AppMethodBeat.o(32409);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cqy
  * JD-Core Version:    0.7.0.1
  */

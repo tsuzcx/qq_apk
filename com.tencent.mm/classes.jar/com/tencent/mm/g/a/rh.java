@@ -1,13 +1,15 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bo;
 
 public final class rh
   extends b
 {
-  public a dup;
+  public a dFR;
+  public b dFS;
   
   public rh()
   {
@@ -16,21 +18,33 @@ public final class rh
   
   private rh(byte paramByte)
   {
-    AppMethodBeat.i(19829);
-    this.dup = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(149883);
+    this.dFR = new a();
+    this.dFS = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19829);
+    AppMethodBeat.o(149883);
   }
   
   public static final class a
   {
-    public bo cZc;
+    public String dFT;
+    public String dFU;
+    public Activity dsa;
+    public String packageName;
+    public int requestCode;
+    public int scene;
+  }
+  
+  public static final class b
+  {
+    public boolean dFV;
+    public Bundle extras;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.rh
  * JD-Core Version:    0.7.0.1
  */

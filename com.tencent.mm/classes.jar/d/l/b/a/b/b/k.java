@@ -9,19 +9,19 @@ public abstract interface k
 {
   public abstract k b(ba paramba);
   
-  public abstract List<as> fQR();
+  public abstract i giN();
   
-  public abstract ab fQS();
+  public abstract e giO();
   
-  public abstract i fRo();
+  public abstract List<as> gip();
   
-  public abstract e fRp();
+  public abstract ab giq();
   
   public abstract boolean isPrimary();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.k
  * JD-Core Version:    0.7.0.1
  */

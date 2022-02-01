@@ -7,7 +7,7 @@ import java.io.InputStream;
 public final class g
   extends FilterInputStream
 {
-  private int aMk = -2147483648;
+  private int aOb = -2147483648;
   
   public g(InputStream paramInputStream)
   {
@@ -17,7 +17,7 @@ public final class g
   private long q(long paramLong)
   {
     long l;
-    if (this.aMk == 0) {
+    if (this.aOb == 0) {
       l = -1L;
     }
     do
@@ -26,29 +26,29 @@ public final class g
       {
         return l;
         l = paramLong;
-      } while (this.aMk == -2147483648);
+      } while (this.aOb == -2147483648);
       l = paramLong;
-    } while (paramLong <= this.aMk);
-    return this.aMk;
+    } while (paramLong <= this.aOb);
+    return this.aOb;
   }
   
   private void r(long paramLong)
   {
-    if ((this.aMk != -2147483648) && (paramLong != -1L)) {
-      this.aMk = ((int)(this.aMk - paramLong));
+    if ((this.aOb != -2147483648) && (paramLong != -1L)) {
+      this.aOb = ((int)(this.aOb - paramLong));
     }
   }
   
   public final int available()
   {
     AppMethodBeat.i(77760);
-    if (this.aMk == -2147483648)
+    if (this.aOb == -2147483648)
     {
       i = super.available();
       AppMethodBeat.o(77760);
       return i;
     }
-    int i = Math.min(this.aMk, super.available());
+    int i = Math.min(this.aOb, super.available());
     AppMethodBeat.o(77760);
     return i;
   }
@@ -59,7 +59,7 @@ public final class g
     {
       AppMethodBeat.i(77755);
       super.mark(paramInt);
-      this.aMk = paramInt;
+      this.aOb = paramInt;
       AppMethodBeat.o(77755);
       return;
     }
@@ -105,7 +105,7 @@ public final class g
     {
       AppMethodBeat.i(77758);
       super.reset();
-      this.aMk = -2147483648;
+      this.aOb = -2147483648;
       AppMethodBeat.o(77758);
       return;
     }

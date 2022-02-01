@@ -12,17 +12,17 @@ import java.util.Set;
 public final class d
   implements Serializable
 {
-  public final Map<String, Map<String, e>> cvL;
-  public final Map<String, Map<String, e>> cvM;
-  public final Map<String, e> cvN;
-  public final Map<String, e> cvO;
+  public final Map<String, Map<String, e>> cGG;
+  public final Map<String, Map<String, e>> cGH;
+  public final Map<String, e> cGI;
+  public final Map<String, e> cGJ;
   
   d(b paramb)
   {
-    this.cvL = e(paramb.cvL);
-    this.cvM = e(paramb.cvM);
-    this.cvN = f(paramb.cvN);
-    this.cvO = f(paramb.cvO);
+    this.cGG = e(paramb.cGG);
+    this.cGH = e(paramb.cGH);
+    this.cGI = f(paramb.cGI);
+    this.cGJ = f(paramb.cGJ);
   }
   
   private static Map<String, Map<String, e>> e(Map<String, Map<String, c>> paramMap)
@@ -52,7 +52,7 @@ public final class d
   public final String toString()
   {
     Object localObject1 = "";
-    Iterator localIterator1 = this.cvL.entrySet().iterator();
+    Iterator localIterator1 = this.cGG.entrySet().iterator();
     Object localObject2;
     Object localObject3;
     Iterator localIterator2;
@@ -67,7 +67,7 @@ public final class d
       if (localIterator2.hasNext())
       {
         localEntry = (Map.Entry)localIterator2.next();
-        if (((e)localEntry.getValue()).cvR) {}
+        if (((e)localEntry.getValue()).cGM) {}
         for (localObject1 = " (always)";; localObject1 = "")
         {
           localObject2 = (String)localObject2 + "| Field: " + (String)localObject3 + "." + (String)localEntry.getKey() + (String)localObject1 + "\n";
@@ -75,7 +75,7 @@ public final class d
         }
       }
     }
-    localIterator1 = this.cvM.entrySet().iterator();
+    localIterator1 = this.cGH.entrySet().iterator();
     while (localIterator1.hasNext())
     {
       localObject2 = (Map.Entry)localIterator1.next();
@@ -86,7 +86,7 @@ public final class d
       if (localIterator2.hasNext())
       {
         localEntry = (Map.Entry)localIterator2.next();
-        if (((e)localEntry.getValue()).cvR) {}
+        if (((e)localEntry.getValue()).cGM) {}
         for (localObject1 = " (always)";; localObject1 = "")
         {
           localObject2 = (String)localObject2 + "| Static field: " + (String)localObject3 + "." + (String)localEntry.getKey() + (String)localObject1 + "\n";
@@ -94,22 +94,22 @@ public final class d
         }
       }
     }
-    localIterator1 = this.cvN.entrySet().iterator();
+    localIterator1 = this.cGI.entrySet().iterator();
     if (localIterator1.hasNext())
     {
       localObject3 = (Map.Entry)localIterator1.next();
-      if (((e)((Map.Entry)localObject3).getValue()).cvR) {}
+      if (((e)((Map.Entry)localObject3).getValue()).cGM) {}
       for (localObject2 = " (always)";; localObject2 = "")
       {
         localObject1 = (String)localObject1 + "| Thread:" + (String)((Map.Entry)localObject3).getKey() + (String)localObject2 + "\n";
         break;
       }
     }
-    localIterator1 = this.cvO.entrySet().iterator();
+    localIterator1 = this.cGJ.entrySet().iterator();
     if (localIterator1.hasNext())
     {
       localObject3 = (Map.Entry)localIterator1.next();
-      if (((e)((Map.Entry)localObject3).getValue()).cvR) {}
+      if (((e)((Map.Entry)localObject3).getValue()).cGM) {}
       for (localObject2 = " (always)";; localObject2 = "")
       {
         localObject1 = (String)localObject1 + "| Class:" + (String)((Map.Entry)localObject3).getKey() + (String)localObject2 + "\n";
@@ -121,114 +121,114 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract d.b G(String paramString1, String paramString2);
-    
     public abstract d.b H(String paramString1, String paramString2);
     
-    public abstract d Hh();
+    public abstract d IC();
     
-    public abstract d.b cT(String paramString);
+    public abstract d.b J(String paramString1, String paramString2);
     
-    public abstract d.b cU(String paramString);
+    public abstract d.b dW(String paramString);
+    
+    public abstract d.b dX(String paramString);
   }
   
   static final class b
     implements d.a
   {
-    final Map<String, Map<String, d.c>> cvL = new LinkedHashMap();
-    final Map<String, Map<String, d.c>> cvM = new LinkedHashMap();
-    final Map<String, d.c> cvN = new LinkedHashMap();
-    final Map<String, d.c> cvO = new LinkedHashMap();
-    private d.c cvP;
-    
-    public final b G(String paramString1, String paramString2)
-    {
-      b.checkNotNull(paramString1, "mClassName");
-      b.checkNotNull(paramString2, "fieldName");
-      Map localMap = (Map)this.cvL.get(paramString1);
-      Object localObject = localMap;
-      if (localMap == null)
-      {
-        localObject = new LinkedHashMap();
-        this.cvL.put(paramString1, localObject);
-      }
-      this.cvP = new d.c("field " + paramString1 + "#" + paramString2);
-      ((Map)localObject).put(paramString2, this.cvP);
-      return this;
-    }
+    final Map<String, Map<String, d.c>> cGG = new LinkedHashMap();
+    final Map<String, Map<String, d.c>> cGH = new LinkedHashMap();
+    final Map<String, d.c> cGI = new LinkedHashMap();
+    final Map<String, d.c> cGJ = new LinkedHashMap();
+    private d.c cGK;
     
     public final b H(String paramString1, String paramString2)
     {
       b.checkNotNull(paramString1, "mClassName");
       b.checkNotNull(paramString2, "fieldName");
-      Map localMap = (Map)this.cvM.get(paramString1);
+      Map localMap = (Map)this.cGG.get(paramString1);
       Object localObject = localMap;
       if (localMap == null)
       {
         localObject = new LinkedHashMap();
-        this.cvM.put(paramString1, localObject);
+        this.cGG.put(paramString1, localObject);
       }
-      this.cvP = new d.c("static field " + paramString1 + "#" + paramString2);
-      ((Map)localObject).put(paramString2, this.cvP);
+      this.cGK = new d.c("field " + paramString1 + "#" + paramString2);
+      ((Map)localObject).put(paramString2, this.cGK);
       return this;
     }
     
-    public final d Hh()
+    public final d IC()
     {
       return new d(this);
     }
     
-    public final b Hi()
+    public final b ID()
     {
-      this.cvP.cvR = true;
+      this.cGK.cGM = true;
       return this;
     }
     
-    public final b cT(String paramString)
+    public final b J(String paramString1, String paramString2)
+    {
+      b.checkNotNull(paramString1, "mClassName");
+      b.checkNotNull(paramString2, "fieldName");
+      Map localMap = (Map)this.cGH.get(paramString1);
+      Object localObject = localMap;
+      if (localMap == null)
+      {
+        localObject = new LinkedHashMap();
+        this.cGH.put(paramString1, localObject);
+      }
+      this.cGK = new d.c("static field " + paramString1 + "#" + paramString2);
+      ((Map)localObject).put(paramString2, this.cGK);
+      return this;
+    }
+    
+    public final b dW(String paramString)
     {
       b.checkNotNull(paramString, "threadName");
-      this.cvP = new d.c("any threads named ".concat(String.valueOf(paramString)));
-      this.cvN.put(paramString, this.cvP);
+      this.cGK = new d.c("any threads named ".concat(String.valueOf(paramString)));
+      this.cGI.put(paramString, this.cGK);
       return this;
     }
     
-    public final b cU(String paramString)
+    public final b dX(String paramString)
     {
       b.checkNotNull(paramString, "mClassName");
-      this.cvP = new d.c("any subclass of ".concat(String.valueOf(paramString)));
-      this.cvO.put(paramString, this.cvP);
+      this.cGK = new d.c("any subclass of ".concat(String.valueOf(paramString)));
+      this.cGJ.put(paramString, this.cGK);
       return this;
     }
     
-    public final b cV(String paramString)
+    public final b dY(String paramString)
     {
-      this.cvP.name = paramString;
+      this.cGK.name = paramString;
       return this;
     }
     
-    public final b cW(String paramString)
+    public final b dZ(String paramString)
     {
-      this.cvP.cvQ = paramString;
+      this.cGK.cGL = paramString;
       return this;
     }
   }
   
   static final class c
   {
-    String cvQ;
-    boolean cvR;
-    final String cvS;
+    String cGL;
+    boolean cGM;
+    final String cGN;
     String name;
     
     c(String paramString)
     {
-      this.cvS = paramString;
+      this.cGN = paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.d
  * JD-Core Version:    0.7.0.1
  */

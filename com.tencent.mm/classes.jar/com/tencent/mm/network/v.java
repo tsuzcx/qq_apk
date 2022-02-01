@@ -1,10 +1,9 @@
 package com.tencent.mm.network;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
@@ -16,9 +15,9 @@ public final class v
   implements w
 {
   public HttpURLConnection connection;
-  private int ili;
-  String imi;
-  private Map<String, List<String>> requestProperties;
+  public int iEz;
+  String iFz;
+  public Map<String, List<String>> requestProperties;
   public URL url;
   
   public v(URL paramURL, int paramInt)
@@ -26,49 +25,35 @@ public final class v
     AppMethodBeat.i(132849);
     this.requestProperties = null;
     this.url = paramURL;
-    this.ili = paramInt;
+    this.iEz = paramInt;
     this.connection = ((HttpURLConnection)this.url.openConnection());
-    if (1 == this.ili) {
+    if (1 == this.iEz) {
       this.connection.setInstanceFollowRedirects(false);
     }
     AppMethodBeat.o(132849);
   }
   
-  public final void Fh(String paramString)
+  public final void Iv(String paramString)
   {
     AppMethodBeat.i(132867);
     this.connection.setRequestProperty("Referer", paramString);
     AppMethodBeat.o(132867);
   }
   
-  public final void aLH()
+  public final String aOR()
   {
-    AppMethodBeat.i(132861);
-    this.connection.setDoInput(true);
-    AppMethodBeat.o(132861);
+    return this.iFz;
   }
   
-  public final void aLI()
+  public final int aOS()
   {
-    AppMethodBeat.i(132862);
-    this.connection.setDoOutput(true);
-    AppMethodBeat.o(132862);
-  }
-  
-  public final String aLJ()
-  {
-    return this.imi;
-  }
-  
-  public final int aLK()
-  {
-    return this.ili;
+    return this.iEz;
   }
   
   public final void connect()
   {
     AppMethodBeat.i(132853);
-    if ((1 == this.ili) && (this.requestProperties == null)) {
+    if ((1 == this.iEz) && (this.requestProperties == null)) {
       this.requestProperties = this.connection.getRequestProperties();
     }
     this.connection.connect();
@@ -114,7 +99,7 @@ public final class v
   public final String getHeaderField(String paramString)
   {
     AppMethodBeat.i(132857);
-    if ((1 == this.ili) && (this.requestProperties == null)) {
+    if ((1 == this.iEz) && (this.requestProperties == null)) {
       this.requestProperties = this.connection.getRequestProperties();
     }
     paramString = this.connection.getHeaderField(paramString);
@@ -125,7 +110,7 @@ public final class v
   public final int getHeaderFieldInt(String paramString, int paramInt)
   {
     AppMethodBeat.i(132858);
-    if ((1 == this.ili) && (this.requestProperties == null)) {
+    if ((1 == this.iEz) && (this.requestProperties == null)) {
       this.requestProperties = this.connection.getRequestProperties();
     }
     paramInt = this.connection.getHeaderFieldInt(paramString, paramInt);
@@ -136,7 +121,7 @@ public final class v
   public final Map<String, List<String>> getHeaderFields()
   {
     AppMethodBeat.i(132856);
-    if ((1 == this.ili) && (this.requestProperties == null)) {
+    if ((1 == this.iEz) && (this.requestProperties == null)) {
       this.requestProperties = this.connection.getRequestProperties();
     }
     Map localMap = this.connection.getHeaderFields();
@@ -155,7 +140,7 @@ public final class v
   public final InputStream getInputStream()
   {
     AppMethodBeat.i(132859);
-    if (1 == this.ili)
+    if (1 == this.iEz)
     {
       if (this.requestProperties == null) {
         this.requestProperties = this.connection.getRequestProperties();
@@ -167,25 +152,10 @@ public final class v
     return localInputStream;
   }
   
-  public final OutputStream getOutputStream()
-  {
-    AppMethodBeat.i(132860);
-    if (1 == this.ili)
-    {
-      if (this.requestProperties == null) {
-        this.requestProperties = this.connection.getRequestProperties();
-      }
-      getResponseCode();
-    }
-    OutputStream localOutputStream = this.connection.getOutputStream();
-    AppMethodBeat.o(132860);
-    return localOutputStream;
-  }
-  
   public final int getResponseCode()
   {
     AppMethodBeat.i(132851);
-    if ((1 == this.ili) && (this.requestProperties == null)) {
+    if ((1 == this.iEz) && (this.requestProperties == null)) {
       this.requestProperties = this.connection.getRequestProperties();
     }
     int i = -1;
@@ -194,7 +164,7 @@ public final class v
     {
       k = this.connection.getResponseCode();
       i = k;
-      if ((1 != this.ili) || (302 != k)) {
+      if ((1 != this.iEz) || (302 != k)) {
         break label390;
       }
       i = k;
@@ -262,8 +232,8 @@ public final class v
     }
     catch (Exception localException2)
     {
-      if ((1 == this.ili) && (200 != i) && (ax.isConnected(ai.getContext()))) {
-        b.reportFailIp(this.imi);
+      if ((1 == this.iEz) && (200 != i) && (ay.isConnected(aj.getContext()))) {
+        b.reportFailIp(this.iFz);
       }
       AppMethodBeat.o(132851);
       throw localException2;
@@ -276,8 +246,8 @@ public final class v
     AppMethodBeat.o(132851);
     return j;
     label390:
-    if ((1 == this.ili) && (200 != k) && (ax.isConnected(ai.getContext()))) {
-      b.reportFailIp(this.imi);
+    if ((1 == this.iEz) && (200 != k) && (ay.isConnected(aj.getContext()))) {
+      b.reportFailIp(this.iFz);
     }
     AppMethodBeat.o(132851);
     return k;
@@ -328,7 +298,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.network.v
  * JD-Core Version:    0.7.0.1
  */

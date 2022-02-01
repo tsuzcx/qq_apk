@@ -3,17 +3,18 @@ package com.tencent.mm.app;
 import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.loader.d;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class NoSpaceProfile
   extends d
 {
-  public static final String cIB;
+  public static final String cTJ;
   
   static
   {
     AppMethodBeat.i(19462);
-    cIB = ai.getPackageName() + ":nospace";
+    cTJ = aj.getPackageName() + ":nospace";
     AppMethodBeat.o(19462);
   }
   
@@ -22,9 +23,8 @@ public class NoSpaceProfile
   public final void onCreate()
   {
     AppMethodBeat.i(19461);
-    s.ep(cIB);
-    com.tencent.mm.sdk.platformtools.ab.initLanguage(ai.getContext());
-    ab.KT();
+    ac.initLanguage(aj.getContext());
+    ab.MA();
     AppMethodBeat.o(19461);
   }
 }

@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.wepkg.event;
 
 public class b
 {
-  public void cOX() {}
+  public void cXA() {}
   
-  public void cOY() {}
+  public void cXB() {}
   
-  public void mH(boolean paramBoolean) {}
+  public void nb(boolean paramBoolean) {}
 }
 
 

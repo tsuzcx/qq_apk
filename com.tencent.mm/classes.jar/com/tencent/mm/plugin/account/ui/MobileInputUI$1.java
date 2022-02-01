@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kz;
+import com.tencent.mm.g.a.li;
 import com.tencent.mm.sdk.b.c;
 
 final class MobileInputUI$1
-  extends c<kz>
+  extends c<li>
 {
   MobileInputUI$1(MobileInputUI paramMobileInputUI)
   {
     AppMethodBeat.i(161704);
-    this.__eventId = kz.class.getName().hashCode();
+    this.__eventId = li.class.getName().hashCode();
     AppMethodBeat.o(161704);
   }
 }

@@ -3,29 +3,29 @@ package com.tencent.mm.emoji.loader.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.loader.c.i;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyFactory;", "", "()V", "createVerifyConfig", "Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "verify", "", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyFactory;", "", "()V", "createVerifyConfig", "Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "verify", "", "plugin-emojisdk_release"})
 public final class c
 {
-  public static final c fQk;
+  public static final c gjK;
   
   static
   {
     AppMethodBeat.i(105492);
-    fQk = new c();
+    gjK = new c();
     AppMethodBeat.o(105492);
   }
   
   public static boolean k(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105491);
-    k.h(paramEmojiInfo, "emojiInfo");
+    p.h(paramEmojiInfo, "emojiInfo");
     a locala = new a();
-    k.h(paramEmojiInfo, "emojiInfo");
-    Object localObject1 = paramEmojiInfo.JC();
-    String str2 = paramEmojiInfo.ghd() + "_temp";
+    p.h(paramEmojiInfo, "emojiInfo");
+    Object localObject1 = paramEmojiInfo.Lb();
+    String str2 = paramEmojiInfo.gzQ() + "_temp";
     int i;
     boolean bool;
     if (i.h(paramEmojiInfo))
@@ -44,7 +44,7 @@ public final class c
       if (localObject3 == null) {
         localObject1 = "";
       }
-      String str1 = paramEmojiInfo.ghd();
+      String str1 = paramEmojiInfo.gzQ();
       localObject3 = str1;
       if (str1 == null) {
         localObject3 = "";

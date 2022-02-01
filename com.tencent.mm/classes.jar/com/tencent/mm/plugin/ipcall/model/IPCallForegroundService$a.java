@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.ipcall.model;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/ipcall/model/IPCallForegroundService$Companion;", "", "()V", "TAG", "", "app_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/ipcall/model/IPCallForegroundService$Companion;", "", "()V", "TAG", "", "app_release"})
 public final class IPCallForegroundService$a {}
 
 

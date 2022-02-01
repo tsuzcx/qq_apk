@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.sns.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String postId;
-  public int yaJ;
+  public int zqF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,7 +17,7 @@ public final class g
       if (this.postId != null) {
         paramVarArgs.d(1, this.postId);
       }
-      paramVarArgs.aR(2, this.yaJ);
+      paramVarArgs.aS(2, this.zqF);
       AppMethodBeat.o(96158);
       return 0;
     }
@@ -29,15 +29,15 @@ public final class g
     label258:
     for (paramInt = f.a.a.b.b.a.e(1, this.postId) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bx(2, this.yaJ);
+      int i = f.a.a.b.b.a.bz(2, this.zqF);
       AppMethodBeat.o(96158);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(96158);
@@ -53,11 +53,11 @@ public final class g
           AppMethodBeat.o(96158);
           return -1;
         case 1: 
-          localg.postId = locala.LVo.readString();
+          localg.postId = locala.NPN.readString();
           AppMethodBeat.o(96158);
           return 0;
         }
-        localg.yaJ = locala.LVo.xF();
+        localg.zqF = locala.NPN.zc();
         AppMethodBeat.o(96158);
         return 0;
       }
@@ -68,7 +68,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.i.g
  * JD-Core Version:    0.7.0.1
  */

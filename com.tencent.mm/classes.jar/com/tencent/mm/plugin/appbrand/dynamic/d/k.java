@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.b.b.a;
+import com.tencent.mm.ab.b.b.a;
 import com.tencent.mm.model.y.b;
 import com.tencent.mm.plugin.appbrand.dynamic.WxaWidgetContext;
 import com.tencent.mm.plugin.appbrand.dynamic.k.b;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -19,20 +19,20 @@ public final class k
     super("reportKeyValue", paramInt);
   }
   
-  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.ab.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121332);
-    parama = com.tencent.mm.plugin.appbrand.dynamic.k.Lf(parama.afz().getString("__page_view_id", null));
+    parama = com.tencent.mm.plugin.appbrand.dynamic.k.Oz(parama.ail().getString("__page_view_id", null));
     if (parama == null)
     {
-      parama1.bi(a(false, "JsApi Framework Context is null", null));
+      parama1.bk(a(false, "JsApi Framework Context is null", null));
       AppMethodBeat.o(121332);
       return;
     }
     paramJSONObject = paramJSONObject.optJSONArray("dataArray");
     if (paramJSONObject == null)
     {
-      parama1.bi(a(false, "dataArray is null", null));
+      parama1.bk(a(false, "dataArray is null", null));
       AppMethodBeat.o(121332);
       return;
     }
@@ -47,21 +47,21 @@ public final class k
         Object localObject = paramJSONObject.getJSONObject(i);
         int j = ((JSONObject)localObject).optInt("key");
         localObject = ((JSONObject)localObject).optString("value");
-        if ((j > 0) && (!bs.isNullOrNil((String)localObject))) {
-          h.wUl.f(j, new Object[] { parama.getAppId(), Integer.valueOf(parama.bcl()), Integer.valueOf(b.rP(parama.aVY()) + 1), localObject });
+        if ((j > 0) && (!bt.isNullOrNil((String)localObject))) {
+          g.yhR.f(j, new Object[] { parama.getAppId(), Integer.valueOf(parama.bfP()), Integer.valueOf(b.sr(parama.aZt()) + 1), localObject });
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ac.e("MicroMsg.JsApiFunc_ReportKeyValue", "parse report value failed : %s", new Object[] { localException });
+          ad.e("MicroMsg.JsApiFunc_ReportKeyValue", "parse report value failed : %s", new Object[] { localException });
         }
       }
       i += 1;
     }
     label212:
-    parama1.bi(a(true, "", null));
+    parama1.bk(a(true, "", null));
     AppMethodBeat.o(121332);
   }
 }

@@ -1,40 +1,41 @@
 package com.tencent.mm.plugin.game.commlib;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.commlib.e.b;
-import com.tencent.mm.plugin.game.d.ae;
-import com.tencent.mm.plugin.game.d.ay;
-import com.tencent.mm.plugin.game.d.cu;
-import com.tencent.mm.plugin.game.d.de;
-import com.tencent.mm.plugin.game.d.dp;
-import com.tencent.mm.plugin.game.d.dq;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.game.commlib.util.b;
+import com.tencent.mm.plugin.game.d.ag;
+import com.tencent.mm.plugin.game.d.au;
+import com.tencent.mm.plugin.game.d.bb;
+import com.tencent.mm.plugin.game.d.db;
+import com.tencent.mm.plugin.game.d.dm;
+import com.tencent.mm.plugin.game.d.ed;
+import com.tencent.mm.plugin.game.d.ee;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a
 {
-  public static ay sWd;
+  public static bb tSI;
   
-  public static String cOs()
+  public static String cWN()
   {
-    AppMethodBeat.i(190948);
-    String str = b.cOD() + "globalconfig";
-    AppMethodBeat.o(190948);
+    AppMethodBeat.i(199563);
+    String str = b.cWZ() + "globalconfig";
+    AppMethodBeat.o(199563);
     return str;
   }
   
   /* Error */
-  public static void cOt()
+  public static void cWO()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc 45
     //   5: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 47	com/tencent/mm/plugin/game/commlib/a:sWd	Lcom/tencent/mm/plugin/game/d/ay;
+    //   8: getstatic 47	com/tencent/mm/plugin/game/commlib/a:tSI	Lcom/tencent/mm/plugin/game/d/bb;
     //   11: ifnull +12 -> 23
     //   14: ldc 45
     //   16: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -45,7 +46,7 @@ public final class a
     //   26: lstore_0
     //   27: new 55	com/tencent/mm/vfs/e
     //   30: dup
-    //   31: invokestatic 57	com/tencent/mm/plugin/game/commlib/a:cOs	()Ljava/lang/String;
+    //   31: invokestatic 57	com/tencent/mm/plugin/game/commlib/a:cWN	()Ljava/lang/String;
     //   34: invokespecial 60	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   37: astore_3
     //   38: new 62	com/tencent/mm/vfs/h
@@ -62,15 +63,15 @@ public final class a
     //   56: aload_3
     //   57: invokevirtual 72	com/tencent/mm/vfs/h:read	([B)I
     //   60: pop
-    //   61: new 74	com/tencent/mm/plugin/game/d/ay
+    //   61: new 74	com/tencent/mm/plugin/game/d/bb
     //   64: dup
-    //   65: invokespecial 75	com/tencent/mm/plugin/game/d/ay:<init>	()V
+    //   65: invokespecial 75	com/tencent/mm/plugin/game/d/bb:<init>	()V
     //   68: astore 4
     //   70: aload 4
-    //   72: putstatic 47	com/tencent/mm/plugin/game/commlib/a:sWd	Lcom/tencent/mm/plugin/game/d/ay;
+    //   72: putstatic 47	com/tencent/mm/plugin/game/commlib/a:tSI	Lcom/tencent/mm/plugin/game/d/bb;
     //   75: aload 4
     //   77: aload_3
-    //   78: invokevirtual 79	com/tencent/mm/plugin/game/d/ay:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   78: invokevirtual 79	com/tencent/mm/plugin/game/d/bb:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   81: pop
     //   82: aload_2
     //   83: ifnull +7 -> 90
@@ -86,7 +87,7 @@ public final class a
     //   105: lsub
     //   106: invokevirtual 90	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   109: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokestatic 95	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   112: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   115: ldc 45
     //   117: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   120: goto -101 -> 19
@@ -107,7 +108,7 @@ public final class a
     //   144: invokevirtual 100	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   147: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   150: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 103	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   153: invokestatic 103	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   156: goto -74 -> 82
     //   159: astore_2
     //   160: goto -70 -> 90
@@ -123,7 +124,7 @@ public final class a
     //   37	41	3	localObject3	Object
     //   129	15	3	localException1	java.lang.Exception
     //   163	1	3	localException2	java.lang.Exception
-    //   68	8	4	localay	ay
+    //   68	8	4	localbb	bb
     // Exception table:
     //   from	to	target	type
     //   3	19	123	finally
@@ -138,78 +139,81 @@ public final class a
     //   47	82	163	java/lang/Exception
   }
   
-  public static ae cOu()
+  public static ag cWP()
   {
     AppMethodBeat.i(149392);
     Object localObject = null;
-    if (sWd != null)
+    if (tSI != null)
     {
-      ae localae = sWd.tjA;
-      localObject = localae;
-      if (localae != null)
+      ag localag = tSI.uhA;
+      localObject = localag;
+      if (localag != null)
       {
-        ac.i("MicroMsg.GameConfigManager", "getGameDetailSettingControl jumpType:%d, jumpUrl:%s", new Object[] { Integer.valueOf(localae.tiE), localae.thh });
-        localObject = localae;
+        ad.i("MicroMsg.GameConfigManager", "getGameDetailSettingControl jumpType:%d, jumpUrl:%s", new Object[] { Integer.valueOf(localag.ugz), localag.ueY });
+        localObject = localag;
       }
     }
     for (;;)
     {
       AppMethodBeat.o(149392);
       return localObject;
-      cOt();
+      cWO();
     }
   }
   
-  public static de cOv()
+  public static dm cWQ()
   {
     AppMethodBeat.i(149393);
-    if (sWd != null)
+    if (tSI != null)
     {
-      de localde = sWd.tjC;
+      if (tSI.uhC != null) {
+        ad.i("MicroMsg.GameConfigManager", "getStatusBarStyle color:%s, darkModeColor:%s, style:%s", new Object[] { tSI.uhC.hAD, tSI.uhC.ujP, tSI.uhC.udZ });
+      }
+      dm localdm = tSI.uhC;
       AppMethodBeat.o(149393);
-      return localde;
+      return localdm;
     }
-    cOt();
+    cWO();
     AppMethodBeat.o(149393);
     return null;
   }
   
-  public static boolean cOw()
+  public static boolean cWR()
   {
     AppMethodBeat.i(149394);
-    if (sWd != null)
+    if (tSI != null)
     {
-      if (sWd.tjE != null)
+      if (tSI.uhE != null)
       {
-        boolean bool = sWd.tjE.tlO;
+        boolean bool = tSI.uhE.ukn;
         AppMethodBeat.o(149394);
         return bool;
       }
     }
     else {
-      cOt();
+      cWO();
     }
     AppMethodBeat.o(149394);
     return false;
   }
   
-  public static List<String> cOx()
+  public static List<String> cWS()
   {
     AppMethodBeat.i(149397);
-    if (sWd != null)
+    if (tSI != null)
     {
-      if (sWd.tjE != null)
+      if (tSI.uhE != null)
       {
-        Object localObject = sWd.tjE.tlQ;
-        if (!bs.gY((List)localObject))
+        Object localObject = tSI.uhE.ukp;
+        if (!bt.hj((List)localObject))
         {
           ArrayList localArrayList = new ArrayList();
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
-            cu localcu = (cu)((Iterator)localObject).next();
-            if ((localcu != null) && (!bs.isNullOrNil(localcu.thZ))) {
-              localArrayList.add(localcu.thZ);
+            db localdb = (db)((Iterator)localObject).next();
+            if ((localdb != null) && (!bt.isNullOrNil(localdb.ufQ))) {
+              localArrayList.add(localdb.ufQ);
             }
           }
           AppMethodBeat.o(149397);
@@ -218,34 +222,53 @@ public final class a
       }
     }
     else {
-      cOt();
+      cWO();
     }
     AppMethodBeat.o(149397);
     return null;
   }
   
-  public static int cOy()
+  public static int cWT()
   {
     AppMethodBeat.i(149398);
-    if (sWd != null)
+    if (tSI != null)
     {
-      if (sWd.tjG != null)
+      if (tSI.uhG != null)
       {
-        int i = sWd.tjG.tlN;
+        int i = tSI.uhG.ukm;
         AppMethodBeat.o(149398);
         return i;
       }
       AppMethodBeat.o(149398);
       return 0;
     }
-    cOt();
+    cWO();
     AppMethodBeat.o(149398);
     return 0;
+  }
+  
+  public static au cWU()
+  {
+    AppMethodBeat.i(199564);
+    if (tSI != null)
+    {
+      if (tSI.uhL != null)
+      {
+        au localau = tSI.uhL;
+        AppMethodBeat.o(199564);
+        return localau;
+      }
+    }
+    else {
+      cWO();
+    }
+    AppMethodBeat.o(199564);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.a
  * JD-Core Version:    0.7.0.1
  */

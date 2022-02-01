@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <Button android:id="@id/hxw" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="GetSessionId" style="@style/my" />
+        <Button android:id="@id/hxv" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="GetChatUserInfo" style="@style/my" />
+        <Button android:id="@id/hxt" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="GetBlackList" style="@style/my" />
+        <Button android:id="@id/hzq" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="SetBlackList" style="@style/my" />
+        <Button android:id="@id/hzr" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="设置黑名单关联微信游戏账号" style="@style/my" />
+        <Button android:id="@id/hxu" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="GetChatSessionData" style="@style/my" />
+        <Button android:id="@id/h1f" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="会话" style="@style/my" />
+        <Button android:id="@id/g6c" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="清除DB" style="@style/my" />
+        <Button android:id="@id/hx6" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="创建很多conversation" style="@style/my" />
+        <Button android:id="@id/i04" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="直接进入聊天" style="@style/my" />
+        <Button android:id="@id/hwi" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="删除最新的一条Conversation" style="@style/my" />
+        <Button android:id="@id/hzs" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="置顶" style="@style/my" />
+        <Button android:id="@id/i0c" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="取消置顶" style="@style/my" />
+        <Button android:id="@id/hwx" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="免打扰" style="@style/my" />
+        <Button android:id="@id/dw1" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:text="取消免打扰" style="@style/my" />
+        <com.tencent.mm.ui.widget.MMEditText android:id="@id/hxn" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" android:hint="输入聊天信息" />
+        <Button android:id="@id/hzp" android:background="@color/a_j" android:layout_width="fill_parent" android:layout_height="45.0dip" android:text="发送" style="@style/my" />
+        <TextView android:textSize="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="接收到的消息xml,如下：" />
+        <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

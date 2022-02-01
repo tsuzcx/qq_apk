@@ -9,19 +9,19 @@ import com.tencent.mm.ui.widget.MMEditText.b;
 
 public final class j
 {
-  public static InputFilter[] DFp;
+  public static InputFilter[] Fku;
   
   static
   {
     AppMethodBeat.i(141184);
-    DFp = new InputFilter[] { new InputFilter.LengthFilter(50) };
+    Fku = new InputFilter[] { new InputFilter.LengthFilter(50) };
     AppMethodBeat.o(141184);
   }
   
   public static final class a
     implements TextWatcher
   {
-    public MMEditText.b DFq = null;
+    public MMEditText.b Fkv = null;
     
     public final void afterTextChanged(Editable paramEditable) {}
     
@@ -30,8 +30,8 @@ public final class j
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(141183);
-      if (this.DFq != null) {
-        this.DFq.aQv();
+      if (this.Fkv != null) {
+        this.Fkv.aTH();
       }
       AppMethodBeat.o(141183);
     }

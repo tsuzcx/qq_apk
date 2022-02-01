@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.backup.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class u
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String eSi;
+  public String fkx;
   public String mediaId;
-  public int ndE;
-  public int ndF;
-  public long ndG;
+  public int nEb;
+  public int nEc;
+  public long nEd;
   public String path;
   public int type;
   
@@ -19,9 +19,9 @@ public final class u
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.ndE);
-      if (this.eSi != null) {
-        paramVarArgs.d(2, this.eSi);
+      paramVarArgs.aS(1, this.nEb);
+      if (this.fkx != null) {
+        paramVarArgs.d(2, this.fkx);
       }
       if (this.mediaId != null) {
         paramVarArgs.d(3, this.mediaId);
@@ -29,18 +29,18 @@ public final class u
       if (this.path != null) {
         paramVarArgs.d(4, this.path);
       }
-      paramVarArgs.aR(5, this.type);
-      paramVarArgs.aR(6, this.ndF);
-      paramVarArgs.aO(7, this.ndG);
+      paramVarArgs.aS(5, this.type);
+      paramVarArgs.aS(6, this.nEc);
+      paramVarArgs.aY(7, this.nEd);
       AppMethodBeat.o(22126);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.ndE) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.nEb) + 0;
       paramInt = i;
-      if (this.eSi != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.eSi);
+      if (this.fkx != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.fkx);
       }
       i = paramInt;
       if (this.mediaId != null) {
@@ -50,18 +50,18 @@ public final class u
       if (this.path != null) {
         paramInt = i + f.a.a.b.b.a.e(4, this.path);
       }
-      i = f.a.a.b.b.a.bx(5, this.type);
-      int j = f.a.a.b.b.a.bx(6, this.ndF);
-      int k = f.a.a.b.b.a.p(7, this.ndG);
+      i = f.a.a.b.b.a.bz(5, this.type);
+      int j = f.a.a.b.b.a.bz(6, this.nEc);
+      int k = f.a.a.b.b.a.p(7, this.nEd);
       AppMethodBeat.o(22126);
       return paramInt + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(22126);
@@ -77,31 +77,31 @@ public final class u
         AppMethodBeat.o(22126);
         return -1;
       case 1: 
-        localu.ndE = locala.LVo.xF();
+        localu.nEb = locala.NPN.zc();
         AppMethodBeat.o(22126);
         return 0;
       case 2: 
-        localu.eSi = locala.LVo.readString();
+        localu.fkx = locala.NPN.readString();
         AppMethodBeat.o(22126);
         return 0;
       case 3: 
-        localu.mediaId = locala.LVo.readString();
+        localu.mediaId = locala.NPN.readString();
         AppMethodBeat.o(22126);
         return 0;
       case 4: 
-        localu.path = locala.LVo.readString();
+        localu.path = locala.NPN.readString();
         AppMethodBeat.o(22126);
         return 0;
       case 5: 
-        localu.type = locala.LVo.xF();
+        localu.type = locala.NPN.zc();
         AppMethodBeat.o(22126);
         return 0;
       case 6: 
-        localu.ndF = locala.LVo.xF();
+        localu.nEc = locala.NPN.zc();
         AppMethodBeat.o(22126);
         return 0;
       }
-      localu.ndG = locala.LVo.xG();
+      localu.nEd = locala.NPN.zd();
       AppMethodBeat.o(22126);
       return 0;
     }
@@ -111,7 +111,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.u
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.GoodsObject;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class ScanFastFocusEngineNative
 {
@@ -28,7 +28,7 @@ public class ScanFastFocusEngineNative
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.ScanFastFocusEngineNative", localException, "alvinluo FocusEngine init exception", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.ScanFastFocusEngineNative", localException, "alvinluo FocusEngine init exception", new Object[0]);
       AppMethodBeat.o(51649);
     }
   }
@@ -42,7 +42,7 @@ public class ScanFastFocusEngineNative
     this.points = new ScanPoint[10];
     this.pointCount = 0;
     this.cropObject = new GoodsObject();
-    ac.i("MicroMsg.ScanFastFocusEngineNative", "alvinluo ScanFastFocusEngineNative constructor %s", new Object[] { Integer.valueOf(hashCode()) });
+    ad.i("MicroMsg.ScanFastFocusEngineNative", "alvinluo ScanFastFocusEngineNative constructor %s", new Object[] { Integer.valueOf(hashCode()) });
     init();
     AppMethodBeat.o(51647);
   }
@@ -58,6 +58,8 @@ public class ScanFastFocusEngineNative
     }
     AppMethodBeat.o(51648);
   }
+  
+  public native ScanImagePHashInfo computeImagePHash(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
   
   public native ScanPoint[] getPointObjects();
   
@@ -90,7 +92,7 @@ public class ScanFastFocusEngineNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.ScanFastFocusEngineNative
  * JD-Core Version:    0.7.0.1
  */

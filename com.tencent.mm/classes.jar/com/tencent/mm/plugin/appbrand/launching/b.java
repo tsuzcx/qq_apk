@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ut;
+import com.tencent.mm.g.a.vm;
 import com.tencent.mm.sdk.b.c;
 
 public final class b
-  extends c<ut>
+  extends c<vm>
 {
   public b()
   {
     AppMethodBeat.i(160600);
-    this.__eventId = ut.class.getName().hashCode();
+    this.__eventId = vm.class.getName().hashCode();
     AppMethodBeat.o(160600);
   }
 }

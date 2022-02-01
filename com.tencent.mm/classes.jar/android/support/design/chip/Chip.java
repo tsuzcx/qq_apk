@@ -48,20 +48,20 @@ public class Chip
   extends AppCompatCheckBox
   implements a.a
 {
-  private static final Rect gg = new Rect();
-  private static final int[] gh = { 16842913 };
-  private final RectF fV = new RectF();
-  private a gi;
-  private RippleDrawable gj;
-  private View.OnClickListener gk;
-  private CompoundButton.OnCheckedChangeListener gl;
-  private boolean gm;
-  private int gn = -2147483648;
-  private boolean go;
-  private boolean gp;
-  private boolean gq;
-  private final a gr;
-  private final f.a gs = new f.a()
+  private static final Rect hX = new Rect();
+  private static final int[] hY = { 16842913 };
+  private final RectF hM = new RectF();
+  private a hZ;
+  private RippleDrawable ia;
+  private View.OnClickListener ib;
+  private CompoundButton.OnCheckedChangeListener ic;
+  private boolean ie;
+  private int jdField_if = -2147483648;
+  private boolean ig;
+  private boolean ih;
+  private boolean ii;
+  private final a ij;
+  private final f.a ik = new f.a()
   {
     public final void D(int paramAnonymousInt) {}
     
@@ -106,8 +106,8 @@ public class Chip
     }
     paramContext = a.a(paramContext, paramAttributeSet, paramInt);
     setChipDrawable(paramContext);
-    this.gr = new a(this);
-    t.a(this, this.gr);
+    this.ij = new a(this);
+    t.a(this, this.ij);
     if (Build.VERSION.SDK_INT >= 21) {
       setOutlineProvider(new ViewOutlineProvider()
       {
@@ -123,42 +123,42 @@ public class Chip
         }
       });
     }
-    setChecked(this.gm);
-    paramContext.hv = false;
-    setText(paramContext.gA);
-    setEllipsize(paramContext.hu);
+    setChecked(this.ie);
+    paramContext.jq = false;
+    setText(paramContext.iu);
+    setEllipsize(paramContext.jp);
     setIncludeFontPadding(false);
     if (getTextAppearance() != null) {
       a(getTextAppearance());
     }
     setSingleLine();
     setGravity(8388627);
-    aN();
+    bd();
   }
   
   private void a(b paramb)
   {
     TextPaint localTextPaint = getPaint();
-    localTextPaint.drawableState = this.gi.getState();
-    paramb.b(getContext(), localTextPaint, this.gs);
+    localTextPaint.drawableState = this.hZ.getState();
+    paramb.b(getContext(), localTextPaint, this.ik);
   }
   
-  private void aN()
+  private void bd()
   {
-    if ((TextUtils.isEmpty(getText())) || (this.gi == null)) {}
+    if ((TextUtils.isEmpty(getText())) || (this.hZ == null)) {}
     float f2;
     do
     {
       return;
-      f2 = this.gi.gR + this.gi.gY + this.gi.gU + this.gi.gV;
+      f2 = this.hZ.iM + this.hZ.iT + this.hZ.iP + this.hZ.iQ;
       float f1;
-      if ((!this.gi.gD) || (this.gi.getChipIcon() == null))
+      if ((!this.hZ.iy) || (this.hZ.getChipIcon() == null))
       {
         f1 = f2;
-        if (this.gi.gO != null)
+        if (this.hZ.iJ != null)
         {
           f1 = f2;
-          if (this.gi.gN)
+          if (this.hZ.iI)
           {
             f1 = f2;
             if (!isChecked()) {}
@@ -167,30 +167,30 @@ public class Chip
       }
       else
       {
-        f1 = f2 + (this.gi.gS + this.gi.gT + this.gi.gG);
+        f1 = f2 + (this.hZ.iN + this.hZ.iO + this.hZ.iB);
       }
       f2 = f1;
-      if (this.gi.gH)
+      if (this.hZ.iC)
       {
         f2 = f1;
-        if (this.gi.getCloseIcon() != null) {
-          f2 = f1 + (this.gi.gW + this.gi.gX + this.gi.gK);
+        if (this.hZ.getCloseIcon() != null) {
+          f2 = f1 + (this.hZ.iR + this.hZ.iS + this.hZ.iF);
         }
       }
     } while (t.ac(this) == f2);
     t.d(this, t.ab(this), getPaddingTop(), (int)f2, getPaddingBottom());
   }
   
-  private void aQ()
+  private void bg()
   {
-    if (this.gn == -2147483648) {
+    if (this.jdField_if == -2147483648) {
       setFocusedVirtualView(-1);
     }
   }
   
-  private boolean aR()
+  private boolean bh()
   {
-    return (this.gi != null) && (this.gi.getCloseIcon() != null);
+    return (this.hZ != null) && (this.hZ.getCloseIcon() != null);
   }
   
   @SuppressLint({"PrivateApi"})
@@ -201,11 +201,11 @@ public class Chip
     {
       paramMotionEvent = j.class.getDeclaredField("mHoveredVirtualViewId");
       paramMotionEvent.setAccessible(true);
-      if (((Integer)paramMotionEvent.get(this.gr)).intValue() != -2147483648)
+      if (((Integer)paramMotionEvent.get(this.ij)).intValue() != -2147483648)
       {
         paramMotionEvent = j.class.getDeclaredMethod("updateHoveredVirtualView", new Class[] { Integer.TYPE });
         paramMotionEvent.setAccessible(true);
-        paramMotionEvent.invoke(this.gr, new Object[] { Integer.valueOf(-2147483648) });
+        paramMotionEvent.invoke(this.ij, new Object[] { Integer.valueOf(-2147483648) });
         return true;
       }
     }
@@ -230,14 +230,14 @@ public class Chip
   
   private RectF getCloseIconTouchBounds()
   {
-    this.fV.setEmpty();
-    if (aR())
+    this.hM.setEmpty();
+    if (bh())
     {
-      a locala = this.gi;
-      RectF localRectF = this.fV;
+      a locala = this.hZ;
+      RectF localRectF = this.hM;
       locala.c(locala.getBounds(), localRectF);
     }
-    return this.fV;
+    return this.hM;
   }
   
   private Rect getCloseIconTouchBoundsInt()
@@ -249,24 +249,24 @@ public class Chip
   
   private b getTextAppearance()
   {
-    if (this.gi != null) {
-      return this.gi.gC;
+    if (this.hZ != null) {
+      return this.hZ.ix;
     }
     return null;
   }
   
   private boolean n(boolean paramBoolean)
   {
-    aQ();
+    bg();
     if (paramBoolean)
     {
-      if (this.gn == -1)
+      if (this.jdField_if == -1)
       {
         setFocusedVirtualView(0);
         return true;
       }
     }
-    else if (this.gn == 0)
+    else if (this.jdField_if == 0)
     {
       setFocusedVirtualView(-1);
       return true;
@@ -276,75 +276,75 @@ public class Chip
   
   private void setCloseIconFocused(boolean paramBoolean)
   {
-    if (this.gq != paramBoolean)
+    if (this.ii != paramBoolean)
     {
-      this.gq = paramBoolean;
+      this.ii = paramBoolean;
       refreshDrawableState();
     }
   }
   
   private void setCloseIconHovered(boolean paramBoolean)
   {
-    if (this.gp != paramBoolean)
+    if (this.ih != paramBoolean)
     {
-      this.gp = paramBoolean;
+      this.ih = paramBoolean;
       refreshDrawableState();
     }
   }
   
   private void setCloseIconPressed(boolean paramBoolean)
   {
-    if (this.go != paramBoolean)
+    if (this.ig != paramBoolean)
     {
-      this.go = paramBoolean;
+      this.ig = paramBoolean;
       refreshDrawableState();
     }
   }
   
   private void setFocusedVirtualView(int paramInt)
   {
-    if (this.gn != paramInt)
+    if (this.jdField_if != paramInt)
     {
-      if (this.gn == 0) {
+      if (this.jdField_if == 0) {
         setCloseIconFocused(false);
       }
-      this.gn = paramInt;
+      this.jdField_if = paramInt;
       if (paramInt == 0) {
         setCloseIconFocused(true);
       }
     }
   }
   
-  public final void aO()
+  public final void be()
   {
-    aN();
+    bd();
     requestLayout();
     if (Build.VERSION.SDK_INT >= 21) {
       invalidateOutline();
     }
   }
   
-  public final boolean aP()
+  public final boolean bf()
   {
     playSoundEffect(0);
-    if (this.gk != null) {
-      this.gk.onClick(this);
+    if (this.ib != null) {
+      this.ib.onClick(this);
     }
     for (boolean bool = true;; bool = false)
     {
-      this.gr.sendEventForVirtualView(0, 1);
+      this.ij.sendEventForVirtualView(0, 1);
       return bool;
     }
   }
   
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    return (d(paramMotionEvent)) || (this.gr.dispatchHoverEvent(paramMotionEvent)) || (super.dispatchHoverEvent(paramMotionEvent));
+    return (d(paramMotionEvent)) || (this.ij.dispatchHoverEvent(paramMotionEvent)) || (super.dispatchHoverEvent(paramMotionEvent));
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    return (this.gr.dispatchKeyEvent(paramKeyEvent)) || (super.dispatchKeyEvent(paramKeyEvent));
+    return (this.ij.dispatchKeyEvent(paramKeyEvent)) || (super.dispatchKeyEvent(paramKeyEvent));
   }
   
   protected void drawableStateChanged()
@@ -354,12 +354,12 @@ public class Chip
     super.drawableStateChanged();
     boolean bool1 = bool2;
     a locala;
-    if (this.gi != null)
+    if (this.hZ != null)
     {
       bool1 = bool2;
-      if (a.b(this.gi.gI))
+      if (a.b(this.hZ.iD))
       {
-        locala = this.gi;
+        locala = this.hZ;
         if (!isEnabled()) {
           break label222;
         }
@@ -369,15 +369,15 @@ public class Chip
     for (int j = 1;; j = 0)
     {
       int i = j;
-      if (this.gq) {
+      if (this.ii) {
         i = j + 1;
       }
       j = i;
-      if (this.gp) {
+      if (this.ih) {
         j = i + 1;
       }
       i = j;
-      if (this.go) {
+      if (this.ig) {
         i = j + 1;
       }
       j = i;
@@ -391,19 +391,19 @@ public class Chip
       for (j = k;; j = 0)
       {
         i = j;
-        if (this.gq)
+        if (this.ii)
         {
           arrayOfInt[j] = 16842908;
           i = j + 1;
         }
         j = i;
-        if (this.gp)
+        if (this.ih)
         {
           arrayOfInt[i] = 16843623;
           j = i + 1;
         }
         i = j;
-        if (this.go)
+        if (this.ig)
         {
           arrayOfInt[j] = 16842919;
           i = j + 1;
@@ -422,93 +422,93 @@ public class Chip
   
   public Drawable getCheckedIcon()
   {
-    if (this.gi != null) {
-      return this.gi.gO;
+    if (this.hZ != null) {
+      return this.hZ.iJ;
     }
     return null;
   }
   
   public ColorStateList getChipBackgroundColor()
   {
-    if (this.gi != null) {
-      return this.gi.gv;
+    if (this.hZ != null) {
+      return this.hZ.io;
     }
     return null;
   }
   
   public float getChipCornerRadius()
   {
-    if (this.gi != null) {
-      return this.gi.gx;
+    if (this.hZ != null) {
+      return this.hZ.ir;
     }
     return 0.0F;
   }
   
   public Drawable getChipDrawable()
   {
-    return this.gi;
+    return this.hZ;
   }
   
   public float getChipEndPadding()
   {
-    if (this.gi != null) {
-      return this.gi.gY;
+    if (this.hZ != null) {
+      return this.hZ.iT;
     }
     return 0.0F;
   }
   
   public Drawable getChipIcon()
   {
-    if (this.gi != null) {
-      return this.gi.getChipIcon();
+    if (this.hZ != null) {
+      return this.hZ.getChipIcon();
     }
     return null;
   }
   
   public float getChipIconSize()
   {
-    if (this.gi != null) {
-      return this.gi.gG;
+    if (this.hZ != null) {
+      return this.hZ.iB;
     }
     return 0.0F;
   }
   
   public ColorStateList getChipIconTint()
   {
-    if (this.gi != null) {
-      return this.gi.gF;
+    if (this.hZ != null) {
+      return this.hZ.iA;
     }
     return null;
   }
   
   public float getChipMinHeight()
   {
-    if (this.gi != null) {
-      return this.gi.gw;
+    if (this.hZ != null) {
+      return this.hZ.iq;
     }
     return 0.0F;
   }
   
   public float getChipStartPadding()
   {
-    if (this.gi != null) {
-      return this.gi.gR;
+    if (this.hZ != null) {
+      return this.hZ.iM;
     }
     return 0.0F;
   }
   
   public ColorStateList getChipStrokeColor()
   {
-    if (this.gi != null) {
-      return this.gi.gy;
+    if (this.hZ != null) {
+      return this.hZ.is;
     }
     return null;
   }
   
   public float getChipStrokeWidth()
   {
-    if (this.gi != null) {
-      return this.gi.gz;
+    if (this.hZ != null) {
+      return this.hZ.it;
     }
     return 0.0F;
   }
@@ -521,63 +521,63 @@ public class Chip
   
   public Drawable getCloseIcon()
   {
-    if (this.gi != null) {
-      return this.gi.getCloseIcon();
+    if (this.hZ != null) {
+      return this.hZ.getCloseIcon();
     }
     return null;
   }
   
   public CharSequence getCloseIconContentDescription()
   {
-    if (this.gi != null) {
-      return this.gi.gL;
+    if (this.hZ != null) {
+      return this.hZ.iG;
     }
     return null;
   }
   
   public float getCloseIconEndPadding()
   {
-    if (this.gi != null) {
-      return this.gi.gX;
+    if (this.hZ != null) {
+      return this.hZ.iS;
     }
     return 0.0F;
   }
   
   public float getCloseIconSize()
   {
-    if (this.gi != null) {
-      return this.gi.gK;
+    if (this.hZ != null) {
+      return this.hZ.iF;
     }
     return 0.0F;
   }
   
   public float getCloseIconStartPadding()
   {
-    if (this.gi != null) {
-      return this.gi.gW;
+    if (this.hZ != null) {
+      return this.hZ.iR;
     }
     return 0.0F;
   }
   
   public ColorStateList getCloseIconTint()
   {
-    if (this.gi != null) {
-      return this.gi.gJ;
+    if (this.hZ != null) {
+      return this.hZ.iE;
     }
     return null;
   }
   
   public TextUtils.TruncateAt getEllipsize()
   {
-    if (this.gi != null) {
-      return this.gi.hu;
+    if (this.hZ != null) {
+      return this.hZ.jp;
     }
     return null;
   }
   
   public void getFocusedRect(Rect paramRect)
   {
-    if (this.gn == 0)
+    if (this.jdField_if == 0)
     {
       paramRect.set(getCloseIconTouchBoundsInt());
       return;
@@ -587,64 +587,64 @@ public class Chip
   
   public h getHideMotionSpec()
   {
-    if (this.gi != null) {
-      return this.gi.gQ;
+    if (this.hZ != null) {
+      return this.hZ.iL;
     }
     return null;
   }
   
   public float getIconEndPadding()
   {
-    if (this.gi != null) {
-      return this.gi.gT;
+    if (this.hZ != null) {
+      return this.hZ.iO;
     }
     return 0.0F;
   }
   
   public float getIconStartPadding()
   {
-    if (this.gi != null) {
-      return this.gi.gS;
+    if (this.hZ != null) {
+      return this.hZ.iN;
     }
     return 0.0F;
   }
   
   public ColorStateList getRippleColor()
   {
-    if (this.gi != null) {
-      return this.gi.fS;
+    if (this.hZ != null) {
+      return this.hZ.hJ;
     }
     return null;
   }
   
   public h getShowMotionSpec()
   {
-    if (this.gi != null) {
-      return this.gi.gP;
+    if (this.hZ != null) {
+      return this.hZ.iK;
     }
     return null;
   }
   
   public CharSequence getText()
   {
-    if (this.gi != null) {
-      return this.gi.gA;
+    if (this.hZ != null) {
+      return this.hZ.iu;
     }
     return "";
   }
   
   public float getTextEndPadding()
   {
-    if (this.gi != null) {
-      return this.gi.gV;
+    if (this.hZ != null) {
+      return this.hZ.iQ;
     }
     return 0.0F;
   }
   
   public float getTextStartPadding()
   {
-    if (this.gi != null) {
-      return this.gi.gU;
+    if (this.hZ != null) {
+      return this.hZ.iP;
     }
     return 0.0F;
   }
@@ -653,22 +653,22 @@ public class Chip
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
     if (isChecked()) {
-      mergeDrawableStates(arrayOfInt, gh);
+      mergeDrawableStates(arrayOfInt, hY);
     }
     return arrayOfInt;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if ((TextUtils.isEmpty(getText())) || (this.gi == null) || (this.gi.hv))
+    if ((TextUtils.isEmpty(getText())) || (this.hZ == null) || (this.hZ.jq))
     {
       super.onDraw(paramCanvas);
       return;
     }
     int i = paramCanvas.save();
-    a locala = this.gi;
+    a locala = this.hZ;
     float f = getChipStartPadding();
-    f = locala.aX() + f + getTextStartPadding();
+    f = locala.bn() + f + getTextStartPadding();
     if (t.Y(this) == 0) {}
     for (;;)
     {
@@ -689,7 +689,7 @@ public class Chip
     {
       invalidate();
       super.onFocusChanged(paramBoolean, paramInt, paramRect);
-      this.gr.onFocusChanged(paramBoolean, paramInt, paramRect);
+      this.ij.onFocusChanged(paramBoolean, paramInt, paramRect);
       return;
       setFocusedVirtualView(-2147483648);
     }
@@ -740,7 +740,7 @@ public class Chip
             }
             bool1 = n(bool1);
             continue;
-            switch (this.gn)
+            switch (this.jdField_if)
             {
             default: 
               bool1 = bool2;
@@ -749,7 +749,7 @@ public class Chip
               performClick();
               return true;
             case 0: 
-              aP();
+              bf();
               return true;
               if (paramKeyEvent.hasNoModifiers()) {
                 i = 2;
@@ -828,7 +828,7 @@ public class Chip
         setCloseIconPressed(true);
         i = 1;
         continue;
-        if (!this.go) {
+        if (!this.ig) {
           break;
         }
         if (!bool2) {
@@ -837,8 +837,8 @@ public class Chip
         i = 1;
       }
     case 1: 
-      if (this.go) {
-        aP();
+      if (this.ig) {
+        bf();
       }
       break;
     }
@@ -851,7 +851,7 @@ public class Chip
   
   public void setBackground(Drawable paramDrawable)
   {
-    if ((paramDrawable != this.gi) && (paramDrawable != this.gj)) {
+    if ((paramDrawable != this.hZ) && (paramDrawable != this.ia)) {
       throw new UnsupportedOperationException("Do not set the background; Chip manages its own background drawable.");
     }
     super.setBackground(paramDrawable);
@@ -864,7 +864,7 @@ public class Chip
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
-    if ((paramDrawable != this.gi) && (paramDrawable != this.gj)) {
+    if ((paramDrawable != this.hZ) && (paramDrawable != this.ia)) {
       throw new UnsupportedOperationException("Do not set the background drawable; Chip manages its own background drawable.");
     }
     super.setBackgroundDrawable(paramDrawable);
@@ -887,24 +887,24 @@ public class Chip
   
   public void setCheckable(boolean paramBoolean)
   {
-    if (this.gi != null) {
-      this.gi.setCheckable(paramBoolean);
+    if (this.hZ != null) {
+      this.hZ.setCheckable(paramBoolean);
     }
   }
   
   public void setCheckableResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setCheckable(locala.context.getResources().getBoolean(paramInt));
     }
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    if (this.gi == null) {
-      this.gm = paramBoolean;
+    if (this.hZ == null) {
+      this.ie = paramBoolean;
     }
     boolean bool;
     do
@@ -912,17 +912,17 @@ public class Chip
       do
       {
         return;
-      } while (!this.gi.gM);
+      } while (!this.hZ.iH);
       bool = isChecked();
       super.setChecked(paramBoolean);
-    } while ((bool == paramBoolean) || (this.gl == null));
-    this.gl.onCheckedChanged(this, paramBoolean);
+    } while ((bool == paramBoolean) || (this.ic == null));
+    this.ic.onCheckedChanged(this, paramBoolean);
   }
   
   public void setCheckedIcon(Drawable paramDrawable)
   {
-    if (this.gi != null) {
-      this.gi.setCheckedIcon(paramDrawable);
+    if (this.hZ != null) {
+      this.hZ.setCheckedIcon(paramDrawable);
     }
   }
   
@@ -940,106 +940,106 @@ public class Chip
   
   public void setCheckedIconResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setCheckedIcon(android.support.v7.c.a.a.l(locala.context, paramInt));
     }
   }
   
   public void setCheckedIconVisible(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setCheckedIconVisible(locala.context.getResources().getBoolean(paramInt));
     }
   }
   
   public void setCheckedIconVisible(boolean paramBoolean)
   {
-    if (this.gi != null) {
-      this.gi.setCheckedIconVisible(paramBoolean);
+    if (this.hZ != null) {
+      this.hZ.setCheckedIconVisible(paramBoolean);
     }
   }
   
   public void setChipBackgroundColor(ColorStateList paramColorStateList)
   {
-    if (this.gi != null) {
-      this.gi.setChipBackgroundColor(paramColorStateList);
+    if (this.hZ != null) {
+      this.hZ.setChipBackgroundColor(paramColorStateList);
     }
   }
   
   public void setChipBackgroundColorResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setChipBackgroundColor(android.support.v7.c.a.a.m(locala.context, paramInt));
     }
   }
   
   public void setChipCornerRadius(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setChipCornerRadius(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setChipCornerRadius(paramFloat);
     }
   }
   
   public void setChipCornerRadiusResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setChipCornerRadius(locala.context.getResources().getDimension(paramInt));
     }
   }
   
   public void setChipDrawable(a parama)
   {
-    if (this.gi != parama)
+    if (this.hZ != parama)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       if (locala != null) {
         locala.a(null);
       }
-      this.gi = parama;
-      this.gi.a(this);
-      if (android.support.design.e.a.jP)
+      this.hZ = parama;
+      this.hZ.a(this);
+      if (android.support.design.e.a.lF)
       {
-        this.gj = new RippleDrawable(android.support.design.e.a.b(this.gi.fS), this.gi, null);
-        this.gi.o(false);
-        t.a(this, this.gj);
+        this.ia = new RippleDrawable(android.support.design.e.a.b(this.hZ.hJ), this.hZ, null);
+        this.hZ.o(false);
+        t.a(this, this.ia);
       }
     }
     else
     {
       return;
     }
-    this.gi.o(true);
-    t.a(this, this.gi);
+    this.hZ.o(true);
+    t.a(this, this.hZ);
   }
   
   public void setChipEndPadding(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setChipEndPadding(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setChipEndPadding(paramFloat);
     }
   }
   
   public void setChipEndPaddingResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setChipEndPadding(locala.context.getResources().getDimension(paramInt));
     }
   }
   
   public void setChipIcon(Drawable paramDrawable)
   {
-    if (this.gi != null) {
-      this.gi.setChipIcon(paramDrawable);
+    if (this.hZ != null) {
+      this.hZ.setChipIcon(paramDrawable);
     }
   }
   
@@ -1057,121 +1057,121 @@ public class Chip
   
   public void setChipIconResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setChipIcon(android.support.v7.c.a.a.l(locala.context, paramInt));
     }
   }
   
   public void setChipIconSize(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setChipIconSize(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setChipIconSize(paramFloat);
     }
   }
   
   public void setChipIconSizeResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setChipIconSize(locala.context.getResources().getDimension(paramInt));
     }
   }
   
   public void setChipIconTint(ColorStateList paramColorStateList)
   {
-    if (this.gi != null) {
-      this.gi.setChipIconTint(paramColorStateList);
+    if (this.hZ != null) {
+      this.hZ.setChipIconTint(paramColorStateList);
     }
   }
   
   public void setChipIconTintResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setChipIconTint(android.support.v7.c.a.a.m(locala.context, paramInt));
     }
   }
   
   public void setChipIconVisible(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setChipIconVisible(locala.context.getResources().getBoolean(paramInt));
     }
   }
   
   public void setChipIconVisible(boolean paramBoolean)
   {
-    if (this.gi != null) {
-      this.gi.setChipIconVisible(paramBoolean);
+    if (this.hZ != null) {
+      this.hZ.setChipIconVisible(paramBoolean);
     }
   }
   
   public void setChipMinHeight(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setChipMinHeight(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setChipMinHeight(paramFloat);
     }
   }
   
   public void setChipMinHeightResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setChipMinHeight(locala.context.getResources().getDimension(paramInt));
     }
   }
   
   public void setChipStartPadding(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setChipStartPadding(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setChipStartPadding(paramFloat);
     }
   }
   
   public void setChipStartPaddingResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setChipStartPadding(locala.context.getResources().getDimension(paramInt));
     }
   }
   
   public void setChipStrokeColor(ColorStateList paramColorStateList)
   {
-    if (this.gi != null) {
-      this.gi.setChipStrokeColor(paramColorStateList);
+    if (this.hZ != null) {
+      this.hZ.setChipStrokeColor(paramColorStateList);
     }
   }
   
   public void setChipStrokeColorResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setChipStrokeColor(android.support.v7.c.a.a.m(locala.context, paramInt));
     }
   }
   
   public void setChipStrokeWidth(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setChipStrokeWidth(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setChipStrokeWidth(paramFloat);
     }
   }
   
   public void setChipStrokeWidthResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setChipStrokeWidth(locala.context.getResources().getDimension(paramInt));
     }
   }
@@ -1190,19 +1190,19 @@ public class Chip
   
   public void setCloseIcon(Drawable paramDrawable)
   {
-    if (this.gi != null) {
-      this.gi.setCloseIcon(paramDrawable);
+    if (this.hZ != null) {
+      this.hZ.setCloseIcon(paramDrawable);
     }
   }
   
   public void setCloseIconContentDescription(CharSequence paramCharSequence)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
-      if (locala.gL != paramCharSequence)
+      a locala = this.hZ;
+      if (locala.iG != paramCharSequence)
       {
-        locala.gL = android.support.v4.d.a.eK().unicodeWrap(paramCharSequence);
+        locala.iG = android.support.v4.d.a.fb().unicodeWrap(paramCharSequence);
         locala.invalidateSelf();
       }
     }
@@ -1222,90 +1222,90 @@ public class Chip
   
   public void setCloseIconEndPadding(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setCloseIconEndPadding(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setCloseIconEndPadding(paramFloat);
     }
   }
   
   public void setCloseIconEndPaddingResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setCloseIconEndPadding(locala.context.getResources().getDimension(paramInt));
     }
   }
   
   public void setCloseIconResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setCloseIcon(android.support.v7.c.a.a.l(locala.context, paramInt));
     }
   }
   
   public void setCloseIconSize(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setCloseIconSize(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setCloseIconSize(paramFloat);
     }
   }
   
   public void setCloseIconSizeResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setCloseIconSize(locala.context.getResources().getDimension(paramInt));
     }
   }
   
   public void setCloseIconStartPadding(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setCloseIconStartPadding(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setCloseIconStartPadding(paramFloat);
     }
   }
   
   public void setCloseIconStartPaddingResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setCloseIconStartPadding(locala.context.getResources().getDimension(paramInt));
     }
   }
   
   public void setCloseIconTint(ColorStateList paramColorStateList)
   {
-    if (this.gi != null) {
-      this.gi.setCloseIconTint(paramColorStateList);
+    if (this.hZ != null) {
+      this.hZ.setCloseIconTint(paramColorStateList);
     }
   }
   
   public void setCloseIconTintResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setCloseIconTint(android.support.v7.c.a.a.m(locala.context, paramInt));
     }
   }
   
   public void setCloseIconVisible(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setCloseIconVisible(locala.context.getResources().getBoolean(paramInt));
     }
   }
   
   public void setCloseIconVisible(boolean paramBoolean)
   {
-    if (this.gi != null) {
-      this.gi.setCloseIconVisible(paramBoolean);
+    if (this.hZ != null) {
+      this.hZ.setCloseIconVisible(paramBoolean);
     }
   }
   
@@ -1377,7 +1377,7 @@ public class Chip
   
   public void setEllipsize(TextUtils.TruncateAt paramTruncateAt)
   {
-    if (this.gi == null) {}
+    if (this.hZ == null) {}
     do
     {
       return;
@@ -1385,8 +1385,8 @@ public class Chip
         throw new UnsupportedOperationException("Text within a chip are not allowed to scroll.");
       }
       super.setEllipsize(paramTruncateAt);
-    } while (this.gi == null);
-    this.gi.hu = paramTruncateAt;
+    } while (this.hZ == null);
+    this.hZ.jp = paramTruncateAt;
   }
   
   public void setGravity(int paramInt)
@@ -1398,48 +1398,48 @@ public class Chip
   
   public void setHideMotionSpec(h paramh)
   {
-    if (this.gi != null) {
-      this.gi.gQ = paramh;
+    if (this.hZ != null) {
+      this.hZ.iL = paramh;
     }
   }
   
   public void setHideMotionSpecResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
-      locala.gQ = h.k(locala.context, paramInt);
+      a locala = this.hZ;
+      locala.iL = h.k(locala.context, paramInt);
     }
   }
   
   public void setIconEndPadding(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setIconEndPadding(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setIconEndPadding(paramFloat);
     }
   }
   
   public void setIconEndPaddingResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setIconEndPadding(locala.context.getResources().getDimension(paramInt));
     }
   }
   
   public void setIconStartPadding(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setIconStartPadding(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setIconStartPadding(paramFloat);
     }
   }
   
   public void setIconStartPaddingResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setIconStartPadding(locala.context.getResources().getDimension(paramInt));
     }
   }
@@ -1463,8 +1463,8 @@ public class Chip
   public void setMaxWidth(int paramInt)
   {
     super.setMaxWidth(paramInt);
-    if (this.gi != null) {
-      this.gi.maxWidth = paramInt;
+    if (this.hZ != null) {
+      this.hZ.maxWidth = paramInt;
     }
   }
   
@@ -1478,43 +1478,43 @@ public class Chip
   
   void setOnCheckedChangeListenerInternal(CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
-    this.gl = paramOnCheckedChangeListener;
+    this.ic = paramOnCheckedChangeListener;
   }
   
   public void setOnCloseIconClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.gk = paramOnClickListener;
+    this.ib = paramOnClickListener;
   }
   
   public void setRippleColor(ColorStateList paramColorStateList)
   {
-    if (this.gi != null) {
-      this.gi.setRippleColor(paramColorStateList);
+    if (this.hZ != null) {
+      this.hZ.setRippleColor(paramColorStateList);
     }
   }
   
   public void setRippleColorResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setRippleColor(android.support.v7.c.a.a.m(locala.context, paramInt));
     }
   }
   
   public void setShowMotionSpec(h paramh)
   {
-    if (this.gi != null) {
-      this.gi.gP = paramh;
+    if (this.hZ != null) {
+      this.hZ.iK = paramh;
     }
   }
   
   public void setShowMotionSpecResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
-      locala.gP = h.k(locala.context, paramInt);
+      a locala = this.hZ;
+      locala.iK = h.k(locala.context, paramInt);
     }
   }
   
@@ -1528,7 +1528,7 @@ public class Chip
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    if (this.gi == null) {}
+    if (this.hZ == null) {}
     Object localObject;
     do
     {
@@ -1537,24 +1537,24 @@ public class Chip
       if (paramCharSequence == null) {
         localObject = "";
       }
-      paramCharSequence = android.support.v4.d.a.eK().unicodeWrap((CharSequence)localObject);
-      if (this.gi.hv) {
+      paramCharSequence = android.support.v4.d.a.fb().unicodeWrap((CharSequence)localObject);
+      if (this.hZ.jq) {
         paramCharSequence = null;
       }
       super.setText(paramCharSequence, paramBufferType);
-    } while (this.gi == null);
-    this.gi.setText((CharSequence)localObject);
+    } while (this.hZ == null);
+    this.hZ.setText((CharSequence)localObject);
   }
   
   public void setTextAppearance(int paramInt)
   {
     super.setTextAppearance(paramInt);
-    if (this.gi != null) {
-      this.gi.setTextAppearanceResource(paramInt);
+    if (this.hZ != null) {
+      this.hZ.setTextAppearanceResource(paramInt);
     }
     if (getTextAppearance() != null)
     {
-      getTextAppearance().c(getContext(), getPaint(), this.gs);
+      getTextAppearance().c(getContext(), getPaint(), this.ik);
       a(getTextAppearance());
     }
   }
@@ -1562,64 +1562,64 @@ public class Chip
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.gi != null) {
-      this.gi.setTextAppearanceResource(paramInt);
+    if (this.hZ != null) {
+      this.hZ.setTextAppearanceResource(paramInt);
     }
     if (getTextAppearance() != null)
     {
-      getTextAppearance().c(paramContext, getPaint(), this.gs);
+      getTextAppearance().c(paramContext, getPaint(), this.ik);
       a(getTextAppearance());
     }
   }
   
   public void setTextAppearance(b paramb)
   {
-    if (this.gi != null) {
-      this.gi.setTextAppearance(paramb);
+    if (this.hZ != null) {
+      this.hZ.setTextAppearance(paramb);
     }
     if (getTextAppearance() != null)
     {
-      getTextAppearance().c(getContext(), getPaint(), this.gs);
+      getTextAppearance().c(getContext(), getPaint(), this.ik);
       a(paramb);
     }
   }
   
   public void setTextAppearanceResource(int paramInt)
   {
-    if (this.gi != null) {
-      this.gi.setTextAppearanceResource(paramInt);
+    if (this.hZ != null) {
+      this.hZ.setTextAppearanceResource(paramInt);
     }
     setTextAppearance(getContext(), paramInt);
   }
   
   public void setTextEndPadding(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setTextEndPadding(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setTextEndPadding(paramFloat);
     }
   }
   
   public void setTextEndPaddingResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setTextEndPadding(locala.context.getResources().getDimension(paramInt));
     }
   }
   
   public void setTextStartPadding(float paramFloat)
   {
-    if (this.gi != null) {
-      this.gi.setTextStartPadding(paramFloat);
+    if (this.hZ != null) {
+      this.hZ.setTextStartPadding(paramFloat);
     }
   }
   
   public void setTextStartPaddingResource(int paramInt)
   {
-    if (this.gi != null)
+    if (this.hZ != null)
     {
-      a locala = this.gi;
+      a locala = this.hZ;
       locala.setTextStartPadding(locala.context.getResources().getDimension(paramInt));
     }
   }
@@ -1650,14 +1650,14 @@ public class Chip
     public final boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
     {
       if ((paramInt2 == 16) && (paramInt1 == 0)) {
-        return Chip.this.aP();
+        return Chip.this.bf();
       }
       return false;
     }
     
     public final void onPopulateNodeForHost(c paramc)
     {
-      if ((Chip.a(Chip.this) != null) && (Chip.a(Chip.this).gM)) {}
+      if ((Chip.a(Chip.this) != null) && (Chip.a(Chip.this).iH)) {}
       CharSequence localCharSequence;
       for (boolean bool = true;; bool = false)
       {
@@ -1682,9 +1682,9 @@ public class Chip
         {
           paramc.setContentDescription((CharSequence)localObject);
           paramc.setBoundsInParent(Chip.d(Chip.this));
-          localObject = c.a.Ps;
+          localObject = c.a.Rh;
           if (Build.VERSION.SDK_INT >= 21) {
-            paramc.Pm.addAction((AccessibilityNodeInfo.AccessibilityAction)((c.a)localObject).PV);
+            paramc.Rb.addAction((AccessibilityNodeInfo.AccessibilityAction)((c.a)localObject).RK);
           }
           paramc.setEnabled(Chip.this.isEnabled());
           return;
@@ -1700,7 +1700,7 @@ public class Chip
         }
       }
       paramc.setContentDescription("");
-      paramc.setBoundsInParent(Chip.aS());
+      paramc.setBoundsInParent(Chip.bi());
     }
   }
 }

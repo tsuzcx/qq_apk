@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ti
   extends b
 {
-  public a dwo;
+  public a dHP;
   
   public ti()
   {
@@ -15,16 +15,17 @@ public final class ti
   
   private ti(byte paramByte)
   {
-    AppMethodBeat.i(94814);
-    this.dwo = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(121037);
+    this.dHP = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(94814);
+    AppMethodBeat.o(121037);
   }
   
   public static final class a
   {
-    public boolean enable;
+    public Boolean dHI;
+    public String duO;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.aa.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
@@ -12,14 +12,14 @@ import java.nio.charset.CodingErrorAction;
 
 public final class b
 {
-  public static CodingErrorAction mqP = CodingErrorAction.REPORT;
+  public static CodingErrorAction mRv = CodingErrorAction.REPORT;
   
   public static String B(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(156675);
     Object localObject = Charset.forName("UTF8").newDecoder();
-    ((CharsetDecoder)localObject).onMalformedInput(mqP);
-    ((CharsetDecoder)localObject).onUnmappableCharacter(mqP);
+    ((CharsetDecoder)localObject).onMalformedInput(mRv);
+    ((CharsetDecoder)localObject).onUnmappableCharacter(mRv);
     try
     {
       paramByteBuffer.mark();
@@ -47,13 +47,13 @@ public final class b
     }
     catch (UnsupportedEncodingException paramArrayOfByte)
     {
-      ac.e("MicroMsg.AppBrandNetWork.Charsetfunctions", paramArrayOfByte.toString());
+      ad.e("MicroMsg.AppBrandNetWork.Charsetfunctions", paramArrayOfByte.toString());
       AppMethodBeat.o(156674);
     }
     return "";
   }
   
-  public static byte[] RG(String paramString)
+  public static byte[] Vl(String paramString)
   {
     AppMethodBeat.i(156672);
     try
@@ -64,13 +64,13 @@ public final class b
     }
     catch (UnsupportedEncodingException paramString)
     {
-      ac.e("MicroMsg.AppBrandNetWork.Charsetfunctions", paramString.toString());
+      ad.e("MicroMsg.AppBrandNetWork.Charsetfunctions", paramString.toString());
       AppMethodBeat.o(156672);
     }
     return new byte[0];
   }
   
-  public static byte[] RH(String paramString)
+  public static byte[] Vm(String paramString)
   {
     AppMethodBeat.i(156673);
     try
@@ -81,7 +81,7 @@ public final class b
     }
     catch (UnsupportedEncodingException paramString)
     {
-      ac.e("MicroMsg.AppBrandNetWork.Charsetfunctions", paramString.toString());
+      ad.e("MicroMsg.AppBrandNetWork.Charsetfunctions", paramString.toString());
       AppMethodBeat.o(156673);
     }
     return new byte[0];
@@ -89,7 +89,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa.f.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,95 +1,220 @@
 package com.tencent.tav.core;
 
 import android.graphics.Matrix;
-import android.opengl.GLES20;
 import android.os.Handler;
-import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tav.asset.MetadataItem;
-import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.EncoderWriter;
-import com.tencent.tav.decoder.EncoderWriter.OutputConfig;
 import com.tencent.tav.decoder.Filter;
-import com.tencent.tav.decoder.IDecoder;
 import com.tencent.tav.decoder.RenderContext;
 import com.tencent.tav.decoder.logger.Logger;
 import java.nio.ByteBuffer;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AssetWriterInput
 {
   private static final String TAG = "AssetWriterInput";
   private AssetWriter assetWriter;
-  private boolean canPerformMultiplePasses;
-  private boolean expectsMediaDataInRealTime;
-  private String extendedLanguageTag;
   private Handler handler;
-  private Handler.Callback handlerCallback;
   private HandlerThread handlerThread;
-  private String languageCode;
-  private boolean marksOutputTrackAsEnabled;
   Filter matrixFilter;
-  private int mediaTimeScale;
   private int mediaType;
   private List<MetadataItem> metadata;
-  private CGSize naturalSize;
-  private Map<String, Object> outputSettings;
-  private boolean performsMultiPassEncodingIfSupported;
-  private int preferredMediaChunkAlignment;
-  private CMTime preferredMediaChunkDuration;
-  private float preferredVolume;
   private WriterProgressListener progressListener;
   private boolean readyForMoreMediaData;
-  private boolean started;
+  private boolean started = false;
   private StatusListener statusListener;
-  private boolean stop;
+  private boolean stop = false;
   private Matrix transform;
   private EncoderWriter writer;
   private Handler writerHandler;
   private HandlerThread writerThread;
   
-  public AssetWriterInput(int paramInt, Map<String, Object> paramMap)
+  public AssetWriterInput(int paramInt)
   {
-    AppMethodBeat.i(197560);
-    this.outputSettings = new HashMap();
-    this.started = false;
-    this.stop = false;
     this.mediaType = paramInt;
-    this.outputSettings.putAll(paramMap);
-    AppMethodBeat.o(197560);
   }
   
-  private int getNextStep(int paramInt)
+  private ExportErrorStatus appendAudioSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
   {
-    return paramInt + 2;
-  }
-  
-  private int getStatus(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
+    AppMethodBeat.i(217840);
+    boolean bool = paramCMSampleBuffer.getTime().smallThan(CMTime.CMTimeZero);
+    Object localObject = paramCMSampleBuffer;
+    if (!bool)
     {
-      return -24;
-      return -18;
-      return -19;
-      return -20;
-      return -21;
-      switch (paramInt)
-      {
-      }
+      localObject = ByteBuffer.allocate(paramCMSampleBuffer.getSampleByteBuffer().limit());
+      ((ByteBuffer)localObject).order(paramCMSampleBuffer.getSampleByteBuffer().order());
+      ((ByteBuffer)localObject).put(paramCMSampleBuffer.getSampleByteBuffer());
+      ((ByteBuffer)localObject).flip();
+      localObject = new CMSampleBuffer(paramCMSampleBuffer.getTime(), (ByteBuffer)localObject);
     }
-    return -22;
-    return -23;
+    this.writerHandler.post(new WriterAudioRunnable((CMSampleBuffer)localObject, bool, null));
+    AppMethodBeat.o(217840);
+    return null;
+  }
+  
+  /* Error */
+  private ExportErrorStatus appendVideoSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
+  {
+    // Byte code:
+    //   0: ldc 151
+    //   2: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: getfield 153	com/tencent/tav/core/AssetWriterInput:assetWriter	Lcom/tencent/tav/core/AssetWriter;
+    //   9: invokevirtual 159	com/tencent/tav/core/AssetWriter:renderContext	()Lcom/tencent/tav/decoder/RenderContext;
+    //   12: invokevirtual 164	com/tencent/tav/decoder/RenderContext:makeCurrent	()V
+    //   15: fconst_0
+    //   16: fconst_0
+    //   17: fconst_0
+    //   18: fconst_1
+    //   19: invokestatic 170	android/opengl/GLES20:glClearColor	(FFFF)V
+    //   22: sipush 16640
+    //   25: invokestatic 173	android/opengl/GLES20:glClear	(I)V
+    //   28: aload_1
+    //   29: ifnull +172 -> 201
+    //   32: aload_1
+    //   33: invokevirtual 91	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   36: invokevirtual 177	com/tencent/tav/coremedia/CMTime:getTimeUs	()J
+    //   39: lconst_0
+    //   40: lcmp
+    //   41: iflt +160 -> 201
+    //   44: ldc 24
+    //   46: new 179	java/lang/StringBuilder
+    //   49: dup
+    //   50: ldc 181
+    //   52: invokespecial 184	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   55: aload_1
+    //   56: invokevirtual 91	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   59: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   62: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   65: invokestatic 198	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   68: aload_0
+    //   69: aload_1
+    //   70: invokespecial 202	com/tencent/tav/core/AssetWriterInput:renderSampleBuffer	(Lcom/tencent/tav/coremedia/CMSampleBuffer;)V
+    //   73: aconst_null
+    //   74: astore_2
+    //   75: aload_0
+    //   76: getfield 153	com/tencent/tav/core/AssetWriterInput:assetWriter	Lcom/tencent/tav/core/AssetWriter;
+    //   79: invokevirtual 159	com/tencent/tav/core/AssetWriter:renderContext	()Lcom/tencent/tav/decoder/RenderContext;
+    //   82: aload_1
+    //   83: invokevirtual 91	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   86: invokevirtual 177	com/tencent/tav/coremedia/CMTime:getTimeUs	()J
+    //   89: invokevirtual 206	com/tencent/tav/decoder/RenderContext:setPresentationTime	(J)V
+    //   92: aload_0
+    //   93: getfield 153	com/tencent/tav/core/AssetWriterInput:assetWriter	Lcom/tencent/tav/core/AssetWriter;
+    //   96: invokevirtual 159	com/tencent/tav/core/AssetWriter:renderContext	()Lcom/tencent/tav/decoder/RenderContext;
+    //   99: invokevirtual 210	com/tencent/tav/decoder/RenderContext:swapBuffers	()Z
+    //   102: pop
+    //   103: ldc 24
+    //   105: new 179	java/lang/StringBuilder
+    //   108: dup
+    //   109: ldc 212
+    //   111: invokespecial 184	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   114: aload_1
+    //   115: invokevirtual 91	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   118: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   121: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   124: invokestatic 198	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   127: aload_0
+    //   128: getfield 135	com/tencent/tav/core/AssetWriterInput:writerHandler	Landroid/os/Handler;
+    //   131: new 19	com/tencent/tav/core/AssetWriterInput$WriterVideoRunnable
+    //   134: dup
+    //   135: aload_0
+    //   136: aload_1
+    //   137: aconst_null
+    //   138: invokespecial 215	com/tencent/tav/core/AssetWriterInput$WriterVideoRunnable:<init>	(Lcom/tencent/tav/core/AssetWriterInput;Lcom/tencent/tav/coremedia/CMSampleBuffer;Lcom/tencent/tav/core/AssetWriterInput$1;)V
+    //   141: invokevirtual 144	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   144: pop
+    //   145: ldc 151
+    //   147: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   150: aload_2
+    //   151: areturn
+    //   152: astore_1
+    //   153: new 217	com/tencent/tav/core/ExportErrorStatus
+    //   156: dup
+    //   157: bipush 145
+    //   159: aload_1
+    //   160: invokespecial 220	com/tencent/tav/core/ExportErrorStatus:<init>	(ILjava/lang/Throwable;)V
+    //   163: astore_1
+    //   164: ldc 151
+    //   166: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   169: aload_1
+    //   170: areturn
+    //   171: astore_2
+    //   172: new 217	com/tencent/tav/core/ExportErrorStatus
+    //   175: dup
+    //   176: bipush 144
+    //   178: aload_2
+    //   179: invokespecial 220	com/tencent/tav/core/ExportErrorStatus:<init>	(ILjava/lang/Throwable;)V
+    //   182: astore_2
+    //   183: goto -108 -> 75
+    //   186: astore_2
+    //   187: new 217	com/tencent/tav/core/ExportErrorStatus
+    //   190: dup
+    //   191: bipush 143
+    //   193: aload_2
+    //   194: invokespecial 220	com/tencent/tav/core/ExportErrorStatus:<init>	(ILjava/lang/Throwable;)V
+    //   197: astore_2
+    //   198: goto -95 -> 103
+    //   201: aconst_null
+    //   202: astore_2
+    //   203: goto -76 -> 127
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	206	0	this	AssetWriterInput
+    //   0	206	1	paramCMSampleBuffer	CMSampleBuffer
+    //   74	77	2	localExportErrorStatus1	ExportErrorStatus
+    //   171	8	2	localException1	Exception
+    //   182	1	2	localExportErrorStatus2	ExportErrorStatus
+    //   186	8	2	localException2	Exception
+    //   197	6	2	localExportErrorStatus3	ExportErrorStatus
+    // Exception table:
+    //   from	to	target	type
+    //   5	15	152	java/lang/Exception
+    //   68	73	171	java/lang/Exception
+    //   75	103	186	java/lang/Exception
+  }
+  
+  private void onStartError(Exception paramException, int paramInt)
+  {
+    AppMethodBeat.i(217846);
+    if ((paramException instanceof ExportRuntimeException))
+    {
+      paramException = ((ExportRuntimeException)paramException).getErrorStatus();
+      if (this.progressListener != null) {
+        this.progressListener.onError(paramException);
+      }
+      AppMethodBeat.o(217846);
+      return;
+    }
+    if (paramInt == 1) {}
+    for (paramInt = -101;; paramInt = -102)
+    {
+      paramException = new ExportErrorStatus(paramInt, paramException);
+      break;
+    }
+  }
+  
+  private void renderSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
+  {
+    AppMethodBeat.i(217842);
+    paramCMSampleBuffer = paramCMSampleBuffer.getTextureInfo();
+    if (paramCMSampleBuffer != null)
+    {
+      if (this.matrixFilter == null)
+      {
+        this.matrixFilter = new Filter();
+        this.matrixFilter.setRendererWidth(this.assetWriter.renderContext().width());
+        this.matrixFilter.setRendererHeight(this.assetWriter.renderContext().height());
+      }
+      this.matrixFilter.applyFilter(paramCMSampleBuffer, this.transform, paramCMSampleBuffer.getTextureMatrix());
+    }
+    AppMethodBeat.o(217842);
   }
   
   void addStatusListener(StatusListener paramStatusListener)
@@ -97,223 +222,53 @@ public class AssetWriterInput
     this.statusListener = paramStatusListener;
   }
   
-  public void addTrackAssociationWithTrackOfInputAndType(AssetWriterInput paramAssetWriterInput, String paramString) {}
-  
-  public int appendSampleBuffer(final CMSampleBuffer paramCMSampleBuffer)
+  public ExportErrorStatus appendSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
   {
-    int j = 2;
-    boolean bool = true;
-    AppMethodBeat.i(197562);
-    if (!this.stop) {}
-    try
-    {
-      Logger.e("AssetWriterInput", "appendSampleBuffer: start " + paramCMSampleBuffer.getTime() + " type: " + this.mediaType);
-      if (this.mediaType == 1)
-      {
-        localObject = this.assetWriter.renderContext();
-        if (localObject == null) {}
-      }
-    }
-    catch (Throwable paramCMSampleBuffer)
-    {
-      label580:
-      for (;;)
-      {
-        Object localObject;
-        int k;
-        label472:
-        label502:
-        i = 0;
-      }
-    }
-    try
-    {
-      this.assetWriter.renderContext().makeCurrent();
-      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-      GLES20.glClear(16640);
-      j = getNextStep(1);
-      k = j;
-      if (paramCMSampleBuffer != null)
-      {
-        k = j;
-        i = j;
-      }
+    AppMethodBeat.i(217839);
+    if (!this.stop) {
       try
       {
-        if (paramCMSampleBuffer.getTime().getTimeUs() >= 0L)
+        Logger.e("AssetWriterInput", "appendSampleBuffer: start " + paramCMSampleBuffer.getTime() + " type: " + this.mediaType);
+        if ((this.mediaType == 1) && (this.assetWriter.renderContext() != null))
         {
-          i = j;
-          localObject = paramCMSampleBuffer.getTextureInfo();
-          k = j;
-          if (localObject != null)
-          {
-            i = j;
-            if (this.matrixFilter == null)
-            {
-              i = j;
-              this.matrixFilter = new Filter();
-              i = j;
-              this.matrixFilter.setRendererWidth(this.assetWriter.renderContext().width());
-              i = j;
-              this.matrixFilter.setRendererHeight(this.assetWriter.renderContext().height());
-            }
-            i = j;
-            this.matrixFilter.applyFilter((TextureInfo)localObject, this.transform, ((TextureInfo)localObject).getTextureMatrix());
-            i = j;
-            k = getNextStep(j);
-          }
-          i = k;
-          this.assetWriter.renderContext().setPresentationTime(paramCMSampleBuffer.getTime().getTimeUs());
-          i = k;
-          k = getNextStep(k);
-          i = k;
-          this.assetWriter.renderContext().swapBuffers();
-          i = k;
-          Logger.e("AssetWriterInput", "appendSampleBuffer: end " + paramCMSampleBuffer.getTime());
+          paramCMSampleBuffer = appendVideoSampleBuffer(paramCMSampleBuffer);
+          AppMethodBeat.o(217839);
+          return paramCMSampleBuffer;
         }
-        i = k;
-        this.writerHandler.post(new Runnable()
+        if (this.mediaType == 2)
         {
-          public void run()
-          {
-            AppMethodBeat.i(197555);
-            if (AssetWriterInput.this.handler != null) {}
-            try
-            {
-              AssetWriterInput.this.writer.writeVideoSample();
-              if ((paramCMSampleBuffer != null) && (paramCMSampleBuffer.getTime().equalsTo(IDecoder.SAMPLE_TIME_FINISH))) {
-                AssetWriterInput.this.writer.endWriteVideoSample();
-              }
-              if (AssetWriterInput.this.progressListener != null) {
-                AssetWriterInput.this.progressListener.onProgressChanged(AssetWriterInput.this, AssetWriterInput.this.writer.getVideoPresentationTimeUs());
-              }
-              AppMethodBeat.o(197555);
-              return;
-            }
-            catch (Throwable localThrowable)
-            {
-              while (AssetWriterInput.this.progressListener == null) {}
-              AssetWriterInput.this.progressListener.onError(localThrowable);
-              AppMethodBeat.o(197555);
-            }
-          }
-        });
-        AppMethodBeat.o(197562);
-        return -16;
-      }
-      catch (Throwable paramCMSampleBuffer) {}
-      i = this.mediaType;
-      if (i != 2) {
-        break label580;
-      }
-      i = j;
-      if (!paramCMSampleBuffer.getTime().smallThan(CMTime.CMTimeZero))
-      {
-        i = j;
-        localObject = paramCMSampleBuffer.getTime();
-        i = j;
-        final ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramCMSampleBuffer.getSampleByteBuffer().limit());
-        i = j;
-        j = getNextStep(2);
-        i = j;
-        localByteBuffer.order(paramCMSampleBuffer.getSampleByteBuffer().order());
-        i = j;
-        localByteBuffer.put(paramCMSampleBuffer.getSampleByteBuffer());
-        i = j;
-        localByteBuffer.flip();
-        i = j;
-        Logger.e("AssetWriterInput", "appendSampleBuffer: end " + paramCMSampleBuffer.getTime());
-        i = j;
-        this.writerHandler.post(new Runnable()
-        {
-          public void run()
-          {
-            AppMethodBeat.i(197556);
-            if (AssetWriterInput.this.handler != null) {}
-            try
-            {
-              AssetWriterInput.this.writer.writeAudioSample(this.val$time.getTimeUs(), localByteBuffer);
-              if (AssetWriterInput.this.progressListener != null) {
-                AssetWriterInput.this.progressListener.onProgressChanged(AssetWriterInput.this, AssetWriterInput.this.writer.getAudioPresentationTimeUs());
-              }
-              AppMethodBeat.o(197556);
-              return;
-            }
-            catch (Throwable localThrowable)
-            {
-              while (AssetWriterInput.this.progressListener == null) {}
-              AssetWriterInput.this.progressListener.onError(localThrowable);
-              AppMethodBeat.o(197556);
-            }
-          }
-        });
-        AppMethodBeat.o(197562);
-        return -17;
-      }
-      i = j;
-      this.writerHandler.post(new Runnable()
-      {
-        public void run()
-        {
-          AppMethodBeat.i(197557);
-          if (AssetWriterInput.this.handler != null) {}
-          try
-          {
-            AssetWriterInput.this.writer.endWriteAudioSample();
-            if (AssetWriterInput.this.progressListener != null) {
-              AssetWriterInput.this.progressListener.onProgressChanged(AssetWriterInput.this, -1L);
-            }
-            AppMethodBeat.o(197557);
-            return;
-          }
-          catch (Throwable localThrowable)
-          {
-            while (AssetWriterInput.this.progressListener == null) {}
-            AssetWriterInput.this.progressListener.onError(localThrowable);
-            AppMethodBeat.o(197557);
-          }
+          paramCMSampleBuffer = appendAudioSampleBuffer(paramCMSampleBuffer);
+          AppMethodBeat.o(217839);
+          return paramCMSampleBuffer;
         }
-      });
-      break label472;
-    }
-    catch (Throwable paramCMSampleBuffer)
-    {
-      i = 1;
-      break label502;
-    }
-    if (this.mediaType == 1) {}
-    for (;;)
-    {
-      i = getStatus(bool, i);
-      Logger.e("AssetWriterInput", "error:" + i + " write failed ", paramCMSampleBuffer);
-      if (this.statusListener != null) {
-        this.statusListener.statusChanged(this, AssetWriter.AssetWriterStatus.AssetWriterStatusFailed);
       }
-      AppMethodBeat.o(197562);
-      return i;
-      bool = false;
+      catch (Throwable paramCMSampleBuffer)
+      {
+        Logger.e("AssetWriterInput", "appendSampleBuffer: error", paramCMSampleBuffer);
+        if (this.statusListener != null) {
+          this.statusListener.statusChanged(this, AssetWriter.AssetWriterStatus.AssetWriterStatusFailed);
+        }
+        paramCMSampleBuffer = new ExportErrorStatus(-110, paramCMSampleBuffer);
+        AppMethodBeat.o(217839);
+        return paramCMSampleBuffer;
+      }
     }
-    AppMethodBeat.o(197562);
-    return -11;
-  }
-  
-  public boolean canAddTrackAssociationWithTrackOfInputAndType(AssetWriterInput paramAssetWriterInput, String paramString)
-  {
-    return false;
+    paramCMSampleBuffer = new ExportErrorStatus(-11);
+    AppMethodBeat.o(217839);
+    return paramCMSampleBuffer;
   }
   
   public void close()
   {
     try
     {
-      AppMethodBeat.i(197566);
-      Logger.i("AssetWriterInput", "close", new Object[0]);
+      AppMethodBeat.i(217847);
+      Logger.i("AssetWriterInput", "close");
       if (this.handlerThread != null)
       {
         this.readyForMoreMediaData = false;
         this.handlerThread.quit();
         this.handlerThread = null;
-        this.handlerCallback = null;
         this.handler = null;
       }
       if (this.writerThread != null)
@@ -323,25 +278,10 @@ public class AssetWriterInput
         this.writerThread = null;
         this.writerHandler = null;
       }
-      AppMethodBeat.o(197566);
+      AppMethodBeat.o(217847);
       return;
     }
     finally {}
-  }
-  
-  public String getExtendedLanguageTag()
-  {
-    return this.extendedLanguageTag;
-  }
-  
-  public String getLanguageCode()
-  {
-    return this.languageCode;
-  }
-  
-  public int getMediaTimeScale()
-  {
-    return this.mediaTimeScale;
   }
   
   public int getMediaType()
@@ -354,152 +294,17 @@ public class AssetWriterInput
     return this.metadata;
   }
   
-  public CGSize getNaturalSize()
-  {
-    return this.naturalSize;
-  }
-  
-  public Map<String, Object> getOutputSettings()
-  {
-    return this.outputSettings;
-  }
-  
-  public int getPreferredMediaChunkAlignment()
-  {
-    return this.preferredMediaChunkAlignment;
-  }
-  
-  public CMTime getPreferredMediaChunkDuration()
-  {
-    return this.preferredMediaChunkDuration;
-  }
-  
-  public float getPreferredVolume()
-  {
-    return this.preferredVolume;
-  }
-  
-  public Matrix getTransform()
-  {
-    return this.transform;
-  }
-  
   void initConfig(AssetWriter paramAssetWriter)
   {
-    AppMethodBeat.i(197564);
+    AppMethodBeat.i(217844);
     this.assetWriter = paramAssetWriter;
     this.writer = paramAssetWriter.encoderWriter();
-    if (this.mediaType == 1)
-    {
-      localOutputConfig = new EncoderWriter.OutputConfig();
-      if ((!this.outputSettings.containsKey("width")) || (!this.outputSettings.containsKey("height")))
-      {
-        paramAssetWriter = new IllegalArgumentException("width and height must > 0");
-        AppMethodBeat.o(197564);
-        throw paramAssetWriter;
-      }
-      localOutputConfig.VIDEO_TARGET_WIDTH = ((Integer)this.outputSettings.get("width")).intValue();
-      localOutputConfig.VIDEO_TARGET_HEIGHT = ((Integer)this.outputSettings.get("height")).intValue();
-      if (this.outputSettings.containsKey("frame-rate"))
-      {
-        paramAssetWriter = this.outputSettings.get("frame-rate");
-        localOutputConfig.VIDEO_FRAME_RATE = ((Integer)paramAssetWriter).intValue();
-        if (!this.outputSettings.containsKey("bitrate")) {
-          break label291;
-        }
-        paramAssetWriter = this.outputSettings.get("bitrate");
-        label195:
-        localOutputConfig.VIDEO_BIT_RATE = ((Integer)paramAssetWriter).intValue();
-        if (!this.outputSettings.containsKey("i-frame-interval")) {
-          break label301;
-        }
-      }
-      label291:
-      label301:
-      for (paramAssetWriter = this.outputSettings.get("i-frame-interval");; paramAssetWriter = Integer.valueOf(1))
-      {
-        localOutputConfig.VIDEO_IFRAME_INTERVAL = ((Integer)paramAssetWriter).intValue();
-        localOutputConfig.VIDEO_QUALITY = ((Boolean)this.outputSettings.get("QUALITY")).booleanValue();
-        this.writer.outputVideoEncoderConfig(localOutputConfig);
-        AppMethodBeat.o(197564);
-        return;
-        paramAssetWriter = Integer.valueOf(30);
-        break;
-        paramAssetWriter = Integer.valueOf(8000000);
-        break label195;
-      }
-    }
-    EncoderWriter.OutputConfig localOutputConfig = new EncoderWriter.OutputConfig();
-    if (this.outputSettings.containsKey("aac-profile"))
-    {
-      paramAssetWriter = this.outputSettings.get("aac-profile");
-      localOutputConfig.AUDIO_AAC_PROFILE = ((Integer)paramAssetWriter).intValue();
-      if (!this.outputSettings.containsKey("bitrate")) {
-        break label532;
-      }
-      paramAssetWriter = this.outputSettings.get("bitrate");
-      label384:
-      localOutputConfig.AUDIO_BIT_RATE = ((Integer)paramAssetWriter).intValue();
-      if (!this.outputSettings.containsKey("channel-count")) {
-        break label542;
-      }
-      paramAssetWriter = this.outputSettings.get("channel-count");
-      label423:
-      localOutputConfig.AUDIO_CHANNEL_COUNT = ((Integer)paramAssetWriter).intValue();
-      if (!this.outputSettings.containsKey("mime")) {
-        break label550;
-      }
-      paramAssetWriter = (String)this.outputSettings.get("mime");
-      label465:
-      localOutputConfig.AUDIO_MIME_TYPE = paramAssetWriter;
-      if (!this.outputSettings.containsKey("sample-rate")) {
-        break label557;
-      }
-    }
-    label532:
-    label542:
-    label550:
-    label557:
-    for (paramAssetWriter = this.outputSettings.get("sample-rate");; paramAssetWriter = Integer.valueOf(44100))
-    {
-      localOutputConfig.AUDIO_SAMPLE_RATE_HZ = ((Integer)paramAssetWriter).intValue();
-      this.writer.outputAudioEncoderConfig(localOutputConfig);
-      AppMethodBeat.o(197564);
-      return;
-      paramAssetWriter = Integer.valueOf(2);
-      break;
-      paramAssetWriter = Integer.valueOf(128000);
-      break label384;
-      paramAssetWriter = Integer.valueOf(1);
-      break label423;
-      paramAssetWriter = "audio/mp4a-latm";
-      break label465;
-    }
-  }
-  
-  public boolean isCanPerformMultiplePasses()
-  {
-    return this.canPerformMultiplePasses;
-  }
-  
-  public boolean isExpectsMediaDataInRealTime()
-  {
-    return this.expectsMediaDataInRealTime;
-  }
-  
-  public boolean isMarksOutputTrackAsEnabled()
-  {
-    return this.marksOutputTrackAsEnabled;
-  }
-  
-  public boolean isPerformsMultiPassEncodingIfSupported()
-  {
-    return this.performsMultiPassEncodingIfSupported;
+    AppMethodBeat.o(217844);
   }
   
   public boolean isReadyForMoreMediaData()
   {
-    AppMethodBeat.i(197559);
+    AppMethodBeat.i(217837);
     if (this.readyForMoreMediaData) {
       if (this.mediaType == 1)
       {
@@ -508,23 +313,23 @@ public class AssetWriterInput
       else {
         while (this.writer.audioTrackWritable())
         {
-          AppMethodBeat.o(197559);
+          AppMethodBeat.o(217837);
           return true;
         }
       }
     }
-    AppMethodBeat.o(197559);
+    AppMethodBeat.o(217837);
     return false;
   }
   
   public void markAsFinished()
   {
-    AppMethodBeat.i(197563);
+    AppMethodBeat.i(217843);
     this.writerHandler.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(197558);
+        AppMethodBeat.i(217834);
         if (AssetWriterInput.this.mediaType == 1) {
           try
           {
@@ -532,15 +337,15 @@ public class AssetWriterInput
             if (AssetWriterInput.this.progressListener != null)
             {
               AssetWriterInput.this.progressListener.onProgressChanged(AssetWriterInput.this, -1L);
-              AppMethodBeat.o(197558);
+              AppMethodBeat.o(217834);
               return;
             }
           }
           catch (Throwable localThrowable1)
           {
             while (AssetWriterInput.this.progressListener == null) {}
-            AssetWriterInput.this.progressListener.onError(localThrowable1);
-            AppMethodBeat.o(197558);
+            AssetWriterInput.this.progressListener.onError(new ExportErrorStatus(-123, localThrowable1));
+            AppMethodBeat.o(217834);
             return;
           }
         }
@@ -550,18 +355,18 @@ public class AssetWriterInput
           if (AssetWriterInput.this.progressListener != null) {
             AssetWriterInput.this.progressListener.onProgressChanged(AssetWriterInput.this, -1L);
           }
-          AppMethodBeat.o(197558);
+          AppMethodBeat.o(217834);
           return;
         }
         catch (Throwable localThrowable2)
         {
           while (AssetWriterInput.this.progressListener == null) {}
-          AssetWriterInput.this.progressListener.onError(localThrowable2);
-          AppMethodBeat.o(197558);
+          AssetWriterInput.this.progressListener.onError(new ExportErrorStatus(-124, localThrowable2));
+          AppMethodBeat.o(217834);
         }
       }
     });
-    AppMethodBeat.o(197563);
+    AppMethodBeat.o(217843);
   }
   
   public void requestMediaDataWhenReadyOnQueue(HandlerThread paramHandlerThread, final Runnable paramRunnable)
@@ -570,17 +375,17 @@ public class AssetWriterInput
     {
       try
       {
-        AppMethodBeat.i(197561);
+        AppMethodBeat.i(217838);
         if (this.handler != null)
         {
           Logger.e("AssetWriterInput", "正在处理上一次的request请求，无法重复发起");
-          AppMethodBeat.o(197561);
+          AppMethodBeat.o(217838);
           return;
         }
         if (this.assetWriter == null)
         {
           Logger.e("AssetWriterInput", "还没有与AssetWriter关联，无法发起request请求");
-          AppMethodBeat.o(197561);
+          AppMethodBeat.o(217838);
           continue;
         }
         this.handlerThread = paramHandlerThread;
@@ -592,82 +397,23 @@ public class AssetWriterInput
       {
         public void run()
         {
-          AppMethodBeat.i(197554);
-          AssetWriterInput.this.start();
-          paramRunnable.run();
-          AppMethodBeat.o(197554);
+          AppMethodBeat.i(217833);
+          if (AssetWriterInput.this.start()) {
+            paramRunnable.run();
+          }
+          AppMethodBeat.o(217833);
         }
       });
       this.writerThread = new HandlerThread("writerThread");
       this.writerThread.start();
       this.writerHandler = new Handler(this.writerThread.getLooper());
-      AppMethodBeat.o(197561);
+      AppMethodBeat.o(217838);
     }
-  }
-  
-  void setAssetWriter(AssetWriter paramAssetWriter)
-  {
-    this.assetWriter = paramAssetWriter;
-  }
-  
-  public void setCanPerformMultiplePasses(boolean paramBoolean)
-  {
-    this.canPerformMultiplePasses = paramBoolean;
-  }
-  
-  public void setExpectsMediaDataInRealTime(boolean paramBoolean)
-  {
-    this.expectsMediaDataInRealTime = paramBoolean;
-  }
-  
-  public void setExtendedLanguageTag(String paramString)
-  {
-    this.extendedLanguageTag = paramString;
-  }
-  
-  public void setLanguageCode(String paramString)
-  {
-    this.languageCode = paramString;
-  }
-  
-  public void setMarksOutputTrackAsEnabled(boolean paramBoolean)
-  {
-    this.marksOutputTrackAsEnabled = paramBoolean;
-  }
-  
-  public void setMediaTimeScale(int paramInt)
-  {
-    this.mediaTimeScale = paramInt;
   }
   
   public void setMetadata(List<MetadataItem> paramList)
   {
     this.metadata = paramList;
-  }
-  
-  public void setNaturalSize(CGSize paramCGSize)
-  {
-    this.naturalSize = paramCGSize;
-  }
-  
-  public void setPerformsMultiPassEncodingIfSupported(boolean paramBoolean)
-  {
-    this.performsMultiPassEncodingIfSupported = paramBoolean;
-  }
-  
-  public void setPreferredMediaChunkAlignment(int paramInt)
-  {
-    this.preferredMediaChunkAlignment = paramInt;
-  }
-  
-  public void setPreferredMediaChunkDuration(CMTime paramCMTime)
-  {
-    this.preferredMediaChunkDuration = paramCMTime;
-  }
-  
-  public void setPreferredVolume(float paramFloat)
-  {
-    this.preferredVolume = paramFloat;
   }
   
   public void setTransform(Matrix paramMatrix)
@@ -682,11 +428,11 @@ public class AssetWriterInput
   
   boolean start()
   {
-    AppMethodBeat.i(197565);
-    Logger.i("AssetWriterInput", "start", new Object[0]);
+    AppMethodBeat.i(217845);
+    Logger.i("AssetWriterInput", "start");
     if (this.started)
     {
-      AppMethodBeat.o(197565);
+      AppMethodBeat.o(217845);
       return true;
     }
     for (;;)
@@ -703,11 +449,12 @@ public class AssetWriterInput
       catch (Exception localException)
       {
         boolean bool;
-        Logger.e("AssetWriterInput", "start", localException);
+        Logger.e("AssetWriterInput", "start: ", localException);
+        onStartError(localException, this.mediaType);
         continue;
       }
       bool = this.started;
-      AppMethodBeat.o(197565);
+      AppMethodBeat.o(217845);
       return bool;
       this.writer.startAudioEncoder();
     }
@@ -724,16 +471,118 @@ public class AssetWriterInput
     public abstract void statusChanged(AssetWriterInput paramAssetWriterInput, AssetWriter.AssetWriterStatus paramAssetWriterStatus);
   }
   
+  class WriterAudioRunnable
+    implements Runnable
+  {
+    private final boolean isEndBuffer;
+    private final CMSampleBuffer sampleBuffer;
+    
+    private WriterAudioRunnable(CMSampleBuffer paramCMSampleBuffer, boolean paramBoolean)
+    {
+      this.sampleBuffer = paramCMSampleBuffer;
+      this.isEndBuffer = paramBoolean;
+    }
+    
+    public void run()
+    {
+      AppMethodBeat.i(217835);
+      if (AssetWriterInput.this.handler == null)
+      {
+        AppMethodBeat.o(217835);
+        return;
+      }
+      for (;;)
+      {
+        try
+        {
+          if (!this.isEndBuffer) {
+            continue;
+          }
+          AssetWriterInput.this.writer.endWriteAudioSample();
+          l = -1L;
+        }
+        catch (Throwable localThrowable)
+        {
+          if (!(localThrowable instanceof ExportRuntimeException)) {
+            continue;
+          }
+          ExportErrorStatus localExportErrorStatus = ((ExportRuntimeException)localThrowable).getErrorStatus();
+          if (AssetWriterInput.this.progressListener == null) {
+            continue;
+          }
+          AssetWriterInput.this.progressListener.onError(localExportErrorStatus);
+          AppMethodBeat.o(217835);
+          return;
+          localExportErrorStatus = new ExportErrorStatus(-122, localExportErrorStatus);
+          continue;
+          long l = -1L;
+          continue;
+        }
+        if (AssetWriterInput.this.progressListener != null) {
+          AssetWriterInput.this.progressListener.onProgressChanged(AssetWriterInput.this, l);
+        }
+        AppMethodBeat.o(217835);
+        return;
+        AssetWriterInput.this.writer.writeAudioSample(this.sampleBuffer.getTime().getTimeUs(), this.sampleBuffer.getSampleByteBuffer());
+        l = AssetWriterInput.this.writer.getAudioPresentationTimeUs();
+      }
+    }
+  }
+  
   static abstract interface WriterProgressListener
   {
-    public abstract void onError(Throwable paramThrowable);
+    public abstract void onError(ExportErrorStatus paramExportErrorStatus);
     
     public abstract void onProgressChanged(AssetWriterInput paramAssetWriterInput, long paramLong);
+  }
+  
+  class WriterVideoRunnable
+    implements Runnable
+  {
+    private final CMSampleBuffer sampleBuffer;
+    
+    private WriterVideoRunnable(CMSampleBuffer paramCMSampleBuffer)
+    {
+      this.sampleBuffer = paramCMSampleBuffer;
+    }
+    
+    public void run()
+    {
+      AppMethodBeat.i(217836);
+      if (AssetWriterInput.this.handler != null) {}
+      for (;;)
+      {
+        try
+        {
+          AssetWriterInput.this.writer.writeVideoSample();
+          if (this.sampleBuffer != null) {
+            if (this.sampleBuffer.getState().stateMatchingTo(new long[] { -1L })) {
+              AssetWriterInput.this.writer.endWriteVideoSample();
+            }
+          }
+          if (AssetWriterInput.this.progressListener != null) {
+            AssetWriterInput.this.progressListener.onProgressChanged(AssetWriterInput.this, AssetWriterInput.this.writer.getVideoPresentationTimeUs());
+          }
+          AppMethodBeat.o(217836);
+          return;
+        }
+        catch (Throwable localThrowable)
+        {
+          if (!(localThrowable instanceof ExportRuntimeException)) {}
+        }
+        for (ExportErrorStatus localExportErrorStatus = ((ExportRuntimeException)localThrowable).getErrorStatus(); AssetWriterInput.this.progressListener != null; localExportErrorStatus = new ExportErrorStatus(-121, localExportErrorStatus))
+        {
+          AssetWriterInput.this.progressListener.onError(localExportErrorStatus);
+          AppMethodBeat.o(217836);
+          return;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.core.AssetWriterInput
  * JD-Core Version:    0.7.0.1
  */

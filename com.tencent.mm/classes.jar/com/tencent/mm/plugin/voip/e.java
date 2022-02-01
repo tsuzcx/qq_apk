@@ -2,13 +2,8 @@ package com.tencent.mm.plugin.voip;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.g.a.xh;
-import com.tencent.mm.g.a.xh.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.plugin.voip.b.d;
-import com.tencent.mm.plugin.voip.model.l;
+import com.tencent.mm.g.a.yb;
+import com.tencent.mm.g.a.yb.a;
 import com.tencent.mm.plugin.voip.model.o;
 import com.tencent.mm.plugin.voip.model.p.a;
 import com.tencent.mm.plugin.voip.model.s;
@@ -16,40 +11,41 @@ import com.tencent.mm.plugin.voip.model.u;
 import com.tencent.mm.plugin.voip.model.v;
 import com.tencent.mm.plugin.voip.model.v2protocal;
 import com.tencent.mm.plugin.voip.model.w;
-import com.tencent.mm.protocal.protobuf.dsb;
-import com.tencent.mm.r.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.protocal.protobuf.dxv;
+import com.tencent.mm.s.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.ui.base.h;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
 public final class e
-  extends com.tencent.mm.sdk.b.c<xh>
+  extends com.tencent.mm.sdk.b.c<yb>
 {
   public e()
   {
     AppMethodBeat.i(161652);
-    this.__eventId = xh.class.getName().hashCode();
+    this.__eventId = yb.class.getName().hashCode();
     AppMethodBeat.o(161652);
   }
   
-  private static boolean a(xh paramxh)
+  private static boolean a(yb paramyb)
   {
     boolean bool = true;
     int i = 1;
     int j = 1;
     AppMethodBeat.i(114811);
-    if ((paramxh instanceof xh))
+    if ((paramyb instanceof yb))
     {
-      if (!g.agM())
+      if (!com.tencent.mm.kernel.g.ajx())
       {
         AppMethodBeat.o(114811);
         return false;
       }
-      switch (paramxh.dAb.dgL)
+      switch (paramyb.dMo.dsi)
       {
       }
     }
@@ -57,182 +53,182 @@ public final class e
     {
       AppMethodBeat.o(114811);
       return false;
-      paramxh.dAc.dAd = c.ehb().cUz;
+      paramyb.dMp.dMq = c.euM().dfP;
       continue;
-      if (a.aaZ()) {
-        com.tencent.mm.ui.base.h.l(paramxh.dAb.context, 2131764884, 2131755906);
-      } else if (!a.ch(paramxh.dAb.context)) {
-        if (paramxh.dAb.dzX == 2)
+      if (a.adC()) {
+        h.l(paramyb.dMo.context, 2131764884, 2131755906);
+      } else if (!a.ce(paramyb.dMo.context)) {
+        if (paramyb.dMo.dMk == 2)
         {
-          s.bj(paramxh.dAb.context, paramxh.dAb.talker);
+          s.bm(paramyb.dMo.context, paramyb.dMo.talker);
         }
-        else if (paramxh.dAb.dzX == 3)
+        else if (paramyb.dMo.dMk == 3)
         {
-          s.bk(paramxh.dAb.context, paramxh.dAb.talker);
+          s.bn(paramyb.dMo.context, paramyb.dMo.talker);
         }
-        else if (paramxh.dAb.dzX == 4)
+        else if (paramyb.dMo.dMk == 4)
         {
-          s.bl(paramxh.dAb.context, paramxh.dAb.talker);
+          s.bo(paramyb.dMo.context, paramyb.dMo.talker);
           continue;
-          Object localObject1 = c.ehb();
-          Object localObject2 = paramxh.dAb.dzW;
+          Object localObject1 = c.euM();
+          Object localObject2 = paramyb.dMo.dMj;
           if ((localObject2 != null) && (localObject2.length >= 10) && (localObject2[0] == 1))
           {
-            paramxh = new byte[localObject2.length - 1];
-            System.arraycopy(localObject2, 1, paramxh, 0, paramxh.length);
-            localObject2 = ((u)localObject1).AEF.Ayh.ABJ.AIf;
-            ((o)localObject2).ADx = System.currentTimeMillis();
-            d.Logd("MicroMsg.VoipDailReport", "devin:recvInvite:" + ((o)localObject2).ADx);
+            paramyb = new byte[localObject2.length - 1];
+            System.arraycopy(localObject2, 1, paramyb, 0, paramyb.length);
+            localObject2 = ((u)localObject1).CdF.BXC.CaI.Chg;
+            ((o)localObject2).Ccy = System.currentTimeMillis();
+            com.tencent.mm.plugin.voip.b.f.Logd("MicroMsg.VoipDailReport", "devin:recvInvite:" + ((o)localObject2).Ccy);
             try
             {
-              paramxh = (dsb)new dsb().parseFrom(paramxh);
-              ac.i("MicroMsg.Voip.VoipService", "doTaskCallin in onInviteNotify, roomid:%d, roomkey:%s, time:%d", new Object[] { Integer.valueOf(paramxh.Exf), Long.valueOf(paramxh.Exg), Integer.valueOf(paramxh.CreateTime) });
-              if (!((u)localObject1).AEZ)
+              paramyb = (dxv)new dxv().parseFrom(paramyb);
+              ad.i("MicroMsg.Voip.VoipService", "doTaskCallin in onInviteNotify, roomid:%d, roomkey:%s, time:%d", new Object[] { Integer.valueOf(paramyb.GeI), Long.valueOf(paramyb.GeJ), Integer.valueOf(paramyb.CreateTime) });
+              if (!((u)localObject1).CdZ)
               {
-                d.c(paramxh.Exf, paramxh.Exg, 1, 2);
-                ((u)localObject1).AEZ = true;
+                com.tencent.mm.plugin.voip.b.f.c(paramyb.GeI, paramyb.GeJ, 1, 2);
+                ((u)localObject1).CdZ = true;
               }
-              if (((u)localObject1).AEF.ekd()) {
+              if (((u)localObject1).CdF.exO()) {
                 break label527;
               }
-              com.tencent.mm.plugin.report.service.h.wUl.a(11523, true, true, new Object[] { Integer.valueOf(paramxh.Exf), Long.valueOf(paramxh.Exg), Integer.valueOf(paramxh.FZh), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
-              ((u)localObject1).c(paramxh);
+              com.tencent.mm.plugin.report.service.g.yhR.a(11523, true, true, new Object[] { Integer.valueOf(paramyb.GeI), Long.valueOf(paramyb.GeJ), Integer.valueOf(paramyb.HKd), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
+              ((u)localObject1).c(paramyb);
             }
-            catch (IOException paramxh)
+            catch (IOException paramyb)
             {
-              ac.printErrStackTrace("MicroMsg.Voip.VoipService", paramxh, "", new Object[0]);
+              ad.printErrStackTrace("MicroMsg.Voip.VoipService", paramyb, "", new Object[0]);
             }
             continue;
             label527:
-            com.tencent.mm.plugin.report.service.h.wUl.a(11523, true, true, new Object[] { Integer.valueOf(paramxh.Exf), Long.valueOf(paramxh.Exg), Integer.valueOf(paramxh.FZh), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
+            com.tencent.mm.plugin.report.service.g.yhR.a(11523, true, true, new Object[] { Integer.valueOf(paramyb.GeI), Long.valueOf(paramyb.GeJ), Integer.valueOf(paramyb.HKd), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
             continue;
-            c.ehb();
-            localObject1 = u.ayw(paramxh.dAb.content);
+            c.euM();
+            localObject1 = u.aDF(paramyb.dMo.content);
             if (localObject1 != null) {
-              if (((p.a)localObject1).eiQ())
+              if (((p.a)localObject1).ewB())
               {
-                paramxh.dAc.type = 2;
+                paramyb.dMp.type = 2;
               }
               else
               {
-                if (((p.a)localObject1).ADG == p.a.ADN) {}
+                if (((p.a)localObject1).CcG == p.a.CcN) {}
                 for (i = j; i != 0; i = 0)
                 {
-                  paramxh.dAc.type = 3;
+                  paramyb.dMp.type = 3;
                   break;
                 }
-                paramxh = paramxh.dAc;
-                localObject1 = c.ehb();
-                localObject2 = ai.getContext();
-                if ((((u)localObject1).cUz) && (((u)localObject1).AEU) && (!((u)localObject1).AEV))
+                paramyb = paramyb.dMp;
+                localObject1 = c.euM();
+                localObject2 = aj.getContext();
+                if ((((u)localObject1).dfP) && (((u)localObject1).CdU) && (!((u)localObject1).CdV))
                 {
-                  ac.d("MicroMsg.Voip.VoipService", "isVideoCalling " + ((u)localObject1).AEH + " isAudioCalling " + ((u)localObject1).AEI);
-                  if ((!bs.isNullOrNil(((u)localObject1).talker)) && (((k)g.ab(k.class)).awB().aNt(((u)localObject1).talker) != null)) {
-                    ((u)localObject1).a((Context)localObject2, ((u)localObject1).talker, true, ((u)localObject1).AEH, true);
+                  ad.d("MicroMsg.Voip.VoipService", "isVideoCalling " + ((u)localObject1).CdH + " isAudioCalling " + ((u)localObject1).CdI);
+                  if ((!bt.isNullOrNil(((u)localObject1).talker)) && (((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(((u)localObject1).talker) != null)) {
+                    ((u)localObject1).a((Context)localObject2, ((u)localObject1).talker, ((u)localObject1).CdF.BXC.CaI.uLt, true, ((u)localObject1).CdH, true);
                   }
                 }
                 for (;;)
                 {
-                  paramxh.dAe = bool;
+                  paramyb.dMr = bool;
                   break;
                   bool = false;
                 }
-                localObject1 = c.ehb();
-                paramxh = paramxh.dAb.dzW;
-                if (paramxh == null)
+                localObject1 = c.euM();
+                paramyb = paramyb.dMo.dMj;
+                if (paramyb == null)
                 {
-                  ac.i("MicroMsg.Voip.VoipService", "sidney:notify content null");
+                  ad.i("MicroMsg.Voip.VoipService", "sidney:notify content null");
                 }
                 else
                 {
-                  ac.i("MicroMsg.Voip.VoipService", "____voipNotify with data size:" + paramxh.length);
-                  j = ByteBuffer.wrap(paramxh, 0, 4).getInt();
-                  long l = ByteBuffer.wrap(paramxh, 4, 8).getLong();
-                  ac.i("MicroMsg.Voip.VoipService", "voipNotify roomid:" + j + " roomkey:" + l);
-                  if (((u)localObject1).AEX == null)
+                  ad.i("MicroMsg.Voip.VoipService", "____voipNotify with data size:" + paramyb.length);
+                  j = ByteBuffer.wrap(paramyb, 0, 4).getInt();
+                  long l = ByteBuffer.wrap(paramyb, 4, 8).getLong();
+                  ad.i("MicroMsg.Voip.VoipService", "voipNotify roomid:" + j + " roomkey:" + l);
+                  if (((u)localObject1).CdX == null)
                   {
-                    localObject2 = ((u)localObject1).AEF;
-                    ac.i("MicroMsg.Voip.VoipServiceEx", "current roomid:%d, params roomid:%d", new Object[] { Integer.valueOf(((v)localObject2).Ayh.ABJ.roomId), Integer.valueOf(j) });
-                    if ((j != 0) && (((v)localObject2).Ayh.ABJ.roomId == j)) {}
+                    localObject2 = ((u)localObject1).CdF;
+                    ad.i("MicroMsg.Voip.VoipServiceEx", "current roomid:%d, params roomid:%d", new Object[] { Integer.valueOf(((v)localObject2).BXC.CaI.roomId), Integer.valueOf(j) });
+                    if ((j != 0) && (((v)localObject2).BXC.CaI.roomId == j)) {}
                     for (;;)
                     {
                       if (i != 0) {
-                        break label1010;
+                        break label1024;
                       }
-                      ac.e("MicroMsg.Voip.VoipService", "voipSyncStatus ignored , not current roomid");
+                      ad.e("MicroMsg.Voip.VoipService", "voipSyncStatus ignored , not current roomid");
                       break;
                       i = 0;
                     }
                   }
-                  label1010:
-                  if (paramxh.length > 12) {
-                    ((u)localObject1).b(u.W(paramxh, paramxh.length - 12), j, l);
+                  label1024:
+                  if (paramyb.length > 12) {
+                    ((u)localObject1).b(u.X(paramyb, paramyb.length - 12), j, l);
                   }
-                  paramxh = ((u)localObject1).AEF;
-                  d.Logi("MicroMsg.Voip.VoipServiceEx", f.YG() + " need doSync by notify, status:" + paramxh.Ayh.mStatus);
-                  paramxh.Ayh.ABM.a(null, false, 7);
+                  paramyb = ((u)localObject1).CdF;
+                  com.tencent.mm.plugin.voip.b.f.Logi("MicroMsg.Voip.VoipServiceEx", com.tencent.mm.compatible.util.f.abi() + " need doSync by notify, status:" + paramyb.BXC.mStatus);
+                  paramyb.BXC.CaL.a(null, false, 7);
                   continue;
-                  localObject1 = c.ehb();
-                  localObject2 = paramxh.dAb.dzW;
-                  if ((!bs.cv((byte[])localObject2)) && (localObject2[0] == 3))
+                  localObject1 = c.euM();
+                  localObject2 = paramyb.dMo.dMj;
+                  if ((!bt.cC((byte[])localObject2)) && (localObject2[0] == 3))
                   {
                     try
                     {
-                      ac.i("MicroMsg.Voip.VoipService", "onCancelNotify");
-                      paramxh = new byte[localObject2.length - 1];
-                      System.arraycopy(localObject2, 1, paramxh, 0, paramxh.length);
-                      localObject2 = new dsb();
-                      ((dsb)localObject2).parseFrom(paramxh);
-                      ((u)localObject1).St(((dsb)localObject2).Exf);
-                      if ((((u)localObject1).AEX != null) && (((dsb)localObject2).Exf == ((u)localObject1).AEX.Exf) && (!((u)localObject1).uXE.eVs()))
+                      ad.i("MicroMsg.Voip.VoipService", "onCancelNotify");
+                      paramyb = new byte[localObject2.length - 1];
+                      System.arraycopy(localObject2, 1, paramyb, 0, paramyb.length);
+                      localObject2 = new dxv();
+                      ((dxv)localObject2).parseFrom(paramyb);
+                      ((u)localObject1).Ul(((dxv)localObject2).GeI);
+                      if ((((u)localObject1).CdX != null) && (((dxv)localObject2).GeI == ((u)localObject1).CdX.GeI) && (!((u)localObject1).wbS.fkZ()))
                       {
-                        ((u)localObject1).AEX = null;
-                        ((u)localObject1).AEY = 0L;
-                        ((u)localObject1).uXE.stopTimer();
+                        ((u)localObject1).CdX = null;
+                        ((u)localObject1).CdY = 0L;
+                        ((u)localObject1).wbS.stopTimer();
                       }
-                      paramxh = ((u)localObject1).AEF;
-                      ac.i("MicroMsg.Voip.VoipServiceEx", "onCancelInviteNotify, roomId: %s", new Object[] { Integer.valueOf(((dsb)localObject2).Exf) });
-                      if ((paramxh.Ayh.ABO == null) || (((dsb)localObject2).Exf != paramxh.Ayh.ABO.Exf)) {
+                      paramyb = ((u)localObject1).CdF;
+                      ad.i("MicroMsg.Voip.VoipServiceEx", "onCancelInviteNotify, roomId: %s", new Object[] { Integer.valueOf(((dxv)localObject2).GeI) });
+                      if ((paramyb.BXC.CaN == null) || (((dxv)localObject2).GeI != paramyb.BXC.CaN.GeI)) {
                         continue;
                       }
-                      paramxh.ekl();
-                      paramxh.Ayh.shutdown();
+                      paramyb.exW();
+                      paramyb.BXC.shutdown();
                     }
-                    catch (Exception paramxh)
+                    catch (Exception paramyb)
                     {
-                      ac.e("MicroMsg.Voip.VoipService", "onCancelNotify error: %s", new Object[] { paramxh.getMessage() });
+                      ad.e("MicroMsg.Voip.VoipService", "onCancelNotify error: %s", new Object[] { paramyb.getMessage() });
                     }
                     continue;
-                    localObject1 = c.ehb();
-                    localObject2 = paramxh.dAb.dzW;
-                    if ((!bs.cv((byte[])localObject2)) && (localObject2[0] == 2))
+                    localObject1 = c.euM();
+                    localObject2 = paramyb.dMo.dMj;
+                    if ((!bt.cC((byte[])localObject2)) && (localObject2[0] == 2))
                     {
                       try
                       {
-                        ac.i("MicroMsg.Voip.VoipService", "onAnswerNotify");
-                        paramxh = new byte[localObject2.length - 1];
-                        System.arraycopy(localObject2, 1, paramxh, 0, paramxh.length);
-                        localObject2 = new dsb();
-                        ((dsb)localObject2).parseFrom(paramxh);
-                        paramxh = ((u)localObject1).AEF;
-                        ac.i("MicroMsg.Voip.VoipServiceEx", "onAnswerNotify, roomId: %s", new Object[] { Integer.valueOf(((dsb)localObject2).Exf) });
-                        if (((dsb)localObject2).Exf != paramxh.Ayh.ABO.Exf) {
+                        ad.i("MicroMsg.Voip.VoipService", "onAnswerNotify");
+                        paramyb = new byte[localObject2.length - 1];
+                        System.arraycopy(localObject2, 1, paramyb, 0, paramyb.length);
+                        localObject2 = new dxv();
+                        ((dxv)localObject2).parseFrom(paramyb);
+                        paramyb = ((u)localObject1).CdF;
+                        ad.i("MicroMsg.Voip.VoipServiceEx", "onAnswerNotify, roomId: %s", new Object[] { Integer.valueOf(((dxv)localObject2).GeI) });
+                        if (((dxv)localObject2).GeI != paramyb.BXC.CaN.GeI) {
                           continue;
                         }
-                        if (!paramxh.Ayh.dsb) {
-                          break label1495;
+                        if (!paramyb.BXC.dDV) {
+                          break label1509;
                         }
-                        ac.i("MicroMsg.Voip.VoipServiceEx", "onAnswerNotify, already accept, ignore it");
+                        ad.i("MicroMsg.Voip.VoipServiceEx", "onAnswerNotify, already accept, ignore it");
                       }
-                      catch (Exception paramxh)
+                      catch (Exception paramyb)
                       {
-                        ac.e("MicroMsg.Voip.VoipService", "onAnswerNotify error: %s", new Object[] { paramxh.getMessage() });
+                        ad.e("MicroMsg.Voip.VoipService", "onAnswerNotify error: %s", new Object[] { paramyb.getMessage() });
                       }
                       continue;
-                      label1495:
-                      ac.i("MicroMsg.Voip.VoipServiceEx", "onAnswerNotify, not accept, hangout");
-                      paramxh.ekl();
-                      paramxh.Ayh.shutdown();
+                      label1509:
+                      ad.i("MicroMsg.Voip.VoipServiceEx", "onAnswerNotify, not accept, hangout");
+                      paramyb.exW();
+                      paramyb.BXC.shutdown();
                     }
                   }
                 }
@@ -246,7 +242,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.e
  * JD-Core Version:    0.7.0.1
  */

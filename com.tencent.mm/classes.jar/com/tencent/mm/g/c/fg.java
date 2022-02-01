@@ -8,85 +8,58 @@ public abstract class fg
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eBA;
-  private static final int eBx;
-  private static final int eBy;
-  private static final int eBz;
-  private static final int eZf = "shakeItemID".hashCode();
-  private static final int eZg;
-  private static final int eZh;
-  private static final int eZi;
-  private static final int eZj;
-  private static final int eZk;
-  private static final int eZl;
-  private static final int eZm;
-  private static final int eZn = "regionCode".hashCode();
-  private static final int eZo = "snsFlag".hashCode();
-  private static final int eZp = "sns_bgurl".hashCode();
-  private static final int eoc;
-  private static final int eok = "username".hashCode();
-  private static final int etG = "nickname".hashCode();
-  private static final int etZ;
+  private static final int eFp = "username".hashCode();
+  private static final int foX = "originalArticleCount".hashCode();
+  private static final int foY = "friendSubscribeCount".hashCode();
+  private static final int foZ = "allArticleWording".hashCode();
+  private static final int fpa = "historyArticlesUrl".hashCode();
+  private static final int fpb = "userRole".hashCode();
+  private static final int fpc = "banReason".hashCode();
+  private static final int fpd = "showRecommendArticle".hashCode();
+  private static final int fpe = "showService".hashCode();
+  private static final int fpf = "messageListStr".hashCode();
+  private static final int fpg = "serviceInfoListStr".hashCode();
+  private static final int fph = "bizAccountListStr".hashCode();
+  private static final int fpi = "cacheTime".hashCode();
+  private static final int fpj = "decryptUserName".hashCode();
+  private static final int fpk = "hiddenAvatar".hashCode();
+  private static final int fpl = "hiddenButtonBeforeFocus".hashCode();
+  private static final int fpm = "newBanReason".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE;
-  private boolean __hadSettype = true;
-  private boolean eAL = true;
-  private boolean eAM = true;
-  private boolean eAN = true;
-  private boolean eAO = true;
-  private boolean eYU = true;
-  private boolean eYV = true;
-  private boolean eYW = true;
-  private boolean eYX = true;
-  private boolean eYY = true;
-  private boolean eYZ = true;
-  private boolean eZa = true;
-  private boolean eZb = true;
-  private boolean eZc = true;
-  private boolean eZd = true;
-  private boolean eZe = true;
-  private boolean enL = true;
-  private boolean eoh = true;
-  private boolean etC = true;
-  private boolean etL = true;
-  public String field_city;
-  public String field_distance;
-  public int field_hasHDImg;
-  public int field_imgstatus;
-  public int field_insertBatch;
-  public byte[] field_lvbuffer;
-  public String field_nickname;
-  public String field_province;
-  public String field_regionCode;
-  public int field_reserved1;
-  public int field_reserved2;
-  public String field_reserved3;
-  public String field_reserved4;
-  public int field_sex;
-  public int field_shakeItemID;
-  public String field_signature;
-  public int field_snsFlag;
-  public String field_sns_bgurl;
-  public int field_type;
+  private boolean eFm = true;
+  public String field_allArticleWording;
+  public String field_banReason;
+  public String field_bizAccountListStr;
+  public long field_cacheTime;
+  public String field_decryptUserName;
+  public int field_friendSubscribeCount;
+  public int field_hiddenAvatar;
+  public int field_hiddenButtonBeforeFocus;
+  public String field_historyArticlesUrl;
+  public String field_messageListStr;
+  public String field_newBanReason;
+  public int field_originalArticleCount;
+  public String field_serviceInfoListStr;
+  public int field_showRecommendArticle;
+  public int field_showService;
+  public int field_userRole;
   public String field_username;
-  
-  static
-  {
-    eZg = "province".hashCode();
-    eZh = "city".hashCode();
-    eoc = "signature".hashCode();
-    eZi = "distance".hashCode();
-    eZj = "sex".hashCode();
-    eZk = "imgstatus".hashCode();
-    eZl = "hasHDImg".hashCode();
-    eZm = "insertBatch".hashCode();
-    eBx = "reserved1".hashCode();
-    eBy = "reserved2".hashCode();
-    eBz = "reserved3".hashCode();
-    eBA = "reserved4".hashCode();
-    type_HASHCODE = "type".hashCode();
-    etZ = "lvbuffer".hashCode();
-  }
+  private boolean foH = true;
+  private boolean foI = true;
+  private boolean foJ = true;
+  private boolean foK = true;
+  private boolean foL = true;
+  private boolean foM = true;
+  private boolean foN = true;
+  private boolean foO = true;
+  private boolean foP = true;
+  private boolean foQ = true;
+  private boolean foR = true;
+  private boolean foS = true;
+  private boolean foT = true;
+  private boolean foU = true;
+  private boolean foV = true;
+  private boolean foW = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -101,11 +74,11 @@ public abstract class fg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eZf != k) {
+      if (eFp != k) {
         break label65;
       }
-      this.field_shakeItemID = paramCursor.getInt(i);
-      this.eYU = true;
+      this.field_username = paramCursor.getString(i);
+      this.eFm = true;
     }
     for (;;)
     {
@@ -113,44 +86,38 @@ public abstract class fg
       break label20;
       break;
       label65:
-      if (eok == k) {
-        this.field_username = paramCursor.getString(i);
-      } else if (etG == k) {
-        this.field_nickname = paramCursor.getString(i);
-      } else if (eZg == k) {
-        this.field_province = paramCursor.getString(i);
-      } else if (eZh == k) {
-        this.field_city = paramCursor.getString(i);
-      } else if (eoc == k) {
-        this.field_signature = paramCursor.getString(i);
-      } else if (eZi == k) {
-        this.field_distance = paramCursor.getString(i);
-      } else if (eZj == k) {
-        this.field_sex = paramCursor.getInt(i);
-      } else if (eZk == k) {
-        this.field_imgstatus = paramCursor.getInt(i);
-      } else if (eZl == k) {
-        this.field_hasHDImg = paramCursor.getInt(i);
-      } else if (eZm == k) {
-        this.field_insertBatch = paramCursor.getInt(i);
-      } else if (eBx == k) {
-        this.field_reserved1 = paramCursor.getInt(i);
-      } else if (eBy == k) {
-        this.field_reserved2 = paramCursor.getInt(i);
-      } else if (eBz == k) {
-        this.field_reserved3 = paramCursor.getString(i);
-      } else if (eBA == k) {
-        this.field_reserved4 = paramCursor.getString(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (etZ == k) {
-        this.field_lvbuffer = paramCursor.getBlob(i);
-      } else if (eZn == k) {
-        this.field_regionCode = paramCursor.getString(i);
-      } else if (eZo == k) {
-        this.field_snsFlag = paramCursor.getInt(i);
-      } else if (eZp == k) {
-        this.field_sns_bgurl = paramCursor.getString(i);
+      if (foX == k) {
+        this.field_originalArticleCount = paramCursor.getInt(i);
+      } else if (foY == k) {
+        this.field_friendSubscribeCount = paramCursor.getInt(i);
+      } else if (foZ == k) {
+        this.field_allArticleWording = paramCursor.getString(i);
+      } else if (fpa == k) {
+        this.field_historyArticlesUrl = paramCursor.getString(i);
+      } else if (fpb == k) {
+        this.field_userRole = paramCursor.getInt(i);
+      } else if (fpc == k) {
+        this.field_banReason = paramCursor.getString(i);
+      } else if (fpd == k) {
+        this.field_showRecommendArticle = paramCursor.getInt(i);
+      } else if (fpe == k) {
+        this.field_showService = paramCursor.getInt(i);
+      } else if (fpf == k) {
+        this.field_messageListStr = paramCursor.getString(i);
+      } else if (fpg == k) {
+        this.field_serviceInfoListStr = paramCursor.getString(i);
+      } else if (fph == k) {
+        this.field_bizAccountListStr = paramCursor.getString(i);
+      } else if (fpi == k) {
+        this.field_cacheTime = paramCursor.getLong(i);
+      } else if (fpj == k) {
+        this.field_decryptUserName = paramCursor.getString(i);
+      } else if (fpk == k) {
+        this.field_hiddenAvatar = paramCursor.getInt(i);
+      } else if (fpl == k) {
+        this.field_hiddenButtonBeforeFocus = paramCursor.getInt(i);
+      } else if (fpm == k) {
+        this.field_newBanReason = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -160,65 +127,59 @@ public abstract class fg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eYU) {
-      localContentValues.put("shakeItemID", Integer.valueOf(this.field_shakeItemID));
-    }
-    if (this.eoh) {
+    if (this.eFm) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.etC) {
-      localContentValues.put("nickname", this.field_nickname);
+    if (this.foH) {
+      localContentValues.put("originalArticleCount", Integer.valueOf(this.field_originalArticleCount));
     }
-    if (this.eYV) {
-      localContentValues.put("province", this.field_province);
+    if (this.foI) {
+      localContentValues.put("friendSubscribeCount", Integer.valueOf(this.field_friendSubscribeCount));
     }
-    if (this.eYW) {
-      localContentValues.put("city", this.field_city);
+    if (this.foJ) {
+      localContentValues.put("allArticleWording", this.field_allArticleWording);
     }
-    if (this.enL) {
-      localContentValues.put("signature", this.field_signature);
+    if (this.foK) {
+      localContentValues.put("historyArticlesUrl", this.field_historyArticlesUrl);
     }
-    if (this.eYX) {
-      localContentValues.put("distance", this.field_distance);
+    if (this.foL) {
+      localContentValues.put("userRole", Integer.valueOf(this.field_userRole));
     }
-    if (this.eYY) {
-      localContentValues.put("sex", Integer.valueOf(this.field_sex));
+    if (this.foM) {
+      localContentValues.put("banReason", this.field_banReason);
     }
-    if (this.eYZ) {
-      localContentValues.put("imgstatus", Integer.valueOf(this.field_imgstatus));
+    if (this.foN) {
+      localContentValues.put("showRecommendArticle", Integer.valueOf(this.field_showRecommendArticle));
     }
-    if (this.eZa) {
-      localContentValues.put("hasHDImg", Integer.valueOf(this.field_hasHDImg));
+    if (this.foO) {
+      localContentValues.put("showService", Integer.valueOf(this.field_showService));
     }
-    if (this.eZb) {
-      localContentValues.put("insertBatch", Integer.valueOf(this.field_insertBatch));
+    if (this.foP) {
+      localContentValues.put("messageListStr", this.field_messageListStr);
     }
-    if (this.eAL) {
-      localContentValues.put("reserved1", Integer.valueOf(this.field_reserved1));
+    if (this.foQ) {
+      localContentValues.put("serviceInfoListStr", this.field_serviceInfoListStr);
     }
-    if (this.eAM) {
-      localContentValues.put("reserved2", Integer.valueOf(this.field_reserved2));
+    if (this.foR) {
+      localContentValues.put("bizAccountListStr", this.field_bizAccountListStr);
     }
-    if (this.eAN) {
-      localContentValues.put("reserved3", this.field_reserved3);
+    if (this.foS) {
+      localContentValues.put("cacheTime", Long.valueOf(this.field_cacheTime));
     }
-    if (this.eAO) {
-      localContentValues.put("reserved4", this.field_reserved4);
+    if (this.field_decryptUserName == null) {
+      this.field_decryptUserName = "";
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
+    if (this.foT) {
+      localContentValues.put("decryptUserName", this.field_decryptUserName);
     }
-    if (this.etL) {
-      localContentValues.put("lvbuffer", this.field_lvbuffer);
+    if (this.foU) {
+      localContentValues.put("hiddenAvatar", Integer.valueOf(this.field_hiddenAvatar));
     }
-    if (this.eZc) {
-      localContentValues.put("regionCode", this.field_regionCode);
+    if (this.foV) {
+      localContentValues.put("hiddenButtonBeforeFocus", Integer.valueOf(this.field_hiddenButtonBeforeFocus));
     }
-    if (this.eZd) {
-      localContentValues.put("snsFlag", Integer.valueOf(this.field_snsFlag));
-    }
-    if (this.eZe) {
-      localContentValues.put("sns_bgurl", this.field_sns_bgurl);
+    if (this.foW) {
+      localContentValues.put("newBanReason", this.field_newBanReason);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -228,7 +189,7 @@ public abstract class fg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.fg
  * JD-Core Version:    0.7.0.1
  */

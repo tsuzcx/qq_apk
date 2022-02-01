@@ -13,11 +13,11 @@ public class BankRemitScrollBar
     super(paramContext, paramAttributeSet);
   }
   
-  public final void WY()
+  public final void Zr()
   {
     AppMethodBeat.i(67571);
-    super.WY();
-    this.tNY = new String[] { "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
+    super.Zr();
+    this.uQL = new String[] { "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
     AppMethodBeat.o(67571);
   }
 }

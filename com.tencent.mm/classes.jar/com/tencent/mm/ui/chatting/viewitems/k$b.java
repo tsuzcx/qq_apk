@@ -9,33 +9,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k$b
   extends c.a
 {
-  View IkU;
-  TextView IkV;
-  View IkW;
-  TextView IkX;
-  ImageView IkY;
-  TextView IkZ;
-  TextView Ila;
-  TextView mmb;
-  View nBh;
-  ImageView oLR;
+  View Kbs;
+  TextView Kbt;
+  View Kbu;
+  TextView Kbv;
+  ImageView Kbw;
+  TextView Kbx;
+  TextView Kby;
+  TextView mMD;
+  View odh;
+  ImageView ppz;
   
-  public final b gd(View paramView)
+  public final b gu(View paramView)
   {
     AppMethodBeat.i(36916);
-    super.fX(paramView);
-    this.nBh = paramView.findViewById(2131303139);
-    this.IkU = paramView.findViewById(2131298761);
-    this.oLR = ((ImageView)paramView.findViewById(2131296852));
-    this.mmb = ((TextView)paramView.findViewById(2131296865));
-    this.IkV = ((TextView)paramView.findViewById(2131296872));
-    this.IkW = paramView.findViewById(2131306969);
-    this.IkX = ((TextView)paramView.findViewById(2131303321));
-    this.IkY = ((ImageView)paramView.findViewById(2131303309));
-    this.IkZ = ((TextView)paramView.findViewById(2131306966));
-    this.Ila = ((TextView)paramView.findViewById(2131297427));
-    this.ijt = ((CheckBox)this.sSS.findViewById(2131298068));
-    this.gGk = this.sSS.findViewById(2131298147);
+    super.gn(paramView);
+    this.odh = paramView.findViewById(2131303139);
+    this.Kbs = paramView.findViewById(2131298761);
+    this.ppz = ((ImageView)paramView.findViewById(2131296852));
+    this.mMD = ((TextView)paramView.findViewById(2131296865));
+    this.Kbt = ((TextView)paramView.findViewById(2131296872));
+    this.Kbu = paramView.findViewById(2131306969);
+    this.Kbv = ((TextView)paramView.findViewById(2131303321));
+    this.Kbw = ((ImageView)paramView.findViewById(2131303309));
+    this.Kbx = ((TextView)paramView.findViewById(2131306966));
+    this.Kby = ((TextView)paramView.findViewById(2131297427));
+    this.iCK = ((CheckBox)this.tPw.findViewById(2131298068));
+    this.gZU = this.tPw.findViewById(2131298147);
     AppMethodBeat.o(36916);
     return this;
   }

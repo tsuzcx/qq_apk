@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.view.TouchableLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.view.TouchableLayout android:id="@id/f40" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/f31" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/aix">
-            <android.support.v7.widget.RecyclerView android:id="@id/ejr" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </com.tencent.mm.view.RefreshLoadMoreLayout>
-    </android.support.design.widget.CoordinatorLayout>
+    <FrameLayout android:id="@id/hzz" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/f31" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/aix">
+                <android.support.v7.widget.RecyclerView android:id="@id/ejr" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </com.tencent.mm.view.RefreshLoadMoreLayout>
+        </android.support.design.widget.CoordinatorLayout>
+        <include android:layout_gravity="bottom" android:id="@id/hqu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bq8" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/hzu" android:background="@color/a7c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/c9h" android:background="@color/a_r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.view.AnimationLayout android:id="@id/hzw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="60.0dip">
+            <com.tencent.mm.view.NinePatchCropImageView android:id="@id/hzv" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="100.0dip" android:scaleType="centerCrop" />
+        </com.tencent.mm.view.AnimationLayout>
+    </FrameLayout>
     <FrameLayout android:id="@id/fgl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <include android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/a3z" />
     </FrameLayout>
     <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/htq" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginTop="144.0dip" android:indeterminateDrawable="@drawable/a7e" />
     <TextView android:gravity="center_horizontal" android:id="@id/f1l" android:paddingTop="144.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/ce4" style="@style/yn" />
-    <include android:layout_gravity="bottom" android:id="@id/hqu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bq8" />
 </com.tencent.mm.view.TouchableLayout>

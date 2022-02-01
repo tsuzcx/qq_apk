@@ -8,8 +8,8 @@ import com.tencent.mm.b.f;
 import com.tencent.mm.g.c.y;
 import com.tencent.mm.memory.a.c;
 import com.tencent.mm.plugin.s.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public final class j
   extends com.tencent.mm.sdk.e.j<g>
 {
   public static final String[] SQL_CREATE;
-  public final f<String, g> Dig;
+  public final f<String, g> EMR;
   
   static
   {
@@ -34,7 +34,7 @@ public final class j
   {
     super(parame, g.info, "AppInfo", y.INDEX_CREATE);
     AppMethodBeat.i(151735);
-    this.Dig = new c(50);
+    this.EMR = new c(50);
     parame = new g();
     parame.field_appId = "wx4310bbd51be7d979";
     if (!super.get(parame, new String[0]))
@@ -49,35 +49,35 @@ public final class j
     AppMethodBeat.o(151735);
   }
   
-  private void afF(String paramString)
+  private void akd(String paramString)
   {
     AppMethodBeat.i(151737);
-    if (!bs.isNullOrNil(paramString)) {
-      this.Dig.remove(paramString);
+    if (!bt.isNullOrNil(paramString)) {
+      this.EMR.remove(paramString);
     }
     AppMethodBeat.o(151737);
   }
   
-  public static String fB(String paramString, int paramInt)
+  public static String fY(String paramString, int paramInt)
   {
     int i = 0;
     AppMethodBeat.i(151745);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ac.e("MicroMsg.AppInfoStorage", "getIconPath : invalid argument");
+      ad.e("MicroMsg.AppInfoStorage", "getIconPath : invalid argument");
       AppMethodBeat.o(151745);
       return null;
     }
-    String str = a.dnv();
+    String str = a.dxN();
     com.tencent.mm.vfs.e locale1 = new com.tencent.mm.vfs.e(str);
     com.tencent.mm.vfs.e locale2;
     if (!locale1.exists()) {
-      if (!locale1.fxU().exists())
+      if (!locale1.fOJ().exists())
       {
-        locale2 = locale1.fxU();
-        com.tencent.mm.vfs.e locale3 = new com.tencent.mm.vfs.e(q.B(locale2.fxV()) + System.currentTimeMillis());
+        locale2 = locale1.fOJ();
+        com.tencent.mm.vfs.e locale3 = new com.tencent.mm.vfs.e(q.B(locale2.fOK()) + System.currentTimeMillis());
         if (locale3.mkdirs()) {
-          locale3.ae(locale2);
+          locale3.ag(locale2);
         }
       }
       else
@@ -85,14 +85,14 @@ public final class j
         if ((locale1.mkdirs()) && (locale1.isDirectory())) {
           break label191;
         }
-        ac.e("MicroMsg.AppInfoStorage", "mkdir error. %s", new Object[] { str });
+        ad.e("MicroMsg.AppInfoStorage", "mkdir error. %s", new Object[] { str });
       }
     }
     while (i == 0)
     {
       AppMethodBeat.o(151745);
       return null;
-      ac.e("MicroMsg.AppInfoStorage", "mkdir error, %s", new Object[] { q.B(locale2.fxV()) });
+      ad.e("MicroMsg.AppInfoStorage", "mkdir error, %s", new Object[] { q.B(locale2.fOK()) });
       continue;
       label191:
       i = 1;
@@ -100,27 +100,27 @@ public final class j
     switch (paramInt)
     {
     default: 
-      ac.e("MicroMsg.AppInfoStorage", "getIconPath, unknown iconType = ".concat(String.valueOf(paramInt)));
+      ad.e("MicroMsg.AppInfoStorage", "getIconPath, unknown iconType = ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(151745);
       return null;
     case 1: 
-      paramString = a.dnv() + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) + ".png";
+      paramString = a.dxN() + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) + ".png";
       AppMethodBeat.o(151745);
       return paramString;
     case 2: 
-      paramString = a.dnv() + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) + "_wm.png";
+      paramString = a.dxN() + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) + "_wm.png";
       AppMethodBeat.o(151745);
       return paramString;
     case 3: 
-      paramString = a.dnv() + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) + "_sg.png";
+      paramString = a.dxN() + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) + "_sg.png";
       AppMethodBeat.o(151745);
       return paramString;
     case 5: 
-      paramString = a.dnv() + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) + "_sl.png";
+      paramString = a.dxN() + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) + "_sl.png";
       AppMethodBeat.o(151745);
       return paramString;
     }
-    paramString = a.dnv() + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) + "_sp.png";
+    paramString = a.dxN() + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()) + "_sp.png";
     AppMethodBeat.o(151745);
     return paramString;
   }
@@ -133,22 +133,22 @@ public final class j
       AppMethodBeat.o(151736);
       return;
     }
-    this.Dig.o(paramg.field_appId, paramg);
+    this.EMR.q(paramg.field_appId, paramg);
     AppMethodBeat.o(151736);
   }
   
   public final boolean a(g paramg, String... paramVarArgs)
   {
     AppMethodBeat.i(151739);
-    if ((paramg == null) || (bs.isNullOrNil(paramg.field_appId)))
+    if ((paramg == null) || (bt.isNullOrNil(paramg.field_appId)))
     {
       AppMethodBeat.o(151739);
       return false;
     }
-    if ((g.DhS.equals(paramg.field_appId)) || (g.DhU.equals(paramg.field_appId))) {
-      ac.i("MicroMsg.AppInfoStorage", "update appinfo: %s, %s, %s, %s, %s", new Object[] { paramg.field_appId, paramg.field_appName, Integer.valueOf(paramg.field_serviceShowFlag), Integer.valueOf(paramg.field_appInfoFlag), bs.eWi() });
+    if ((g.EMD.equals(paramg.field_appId)) || (g.EMF.equals(paramg.field_appId))) {
+      ad.i("MicroMsg.AppInfoStorage", "update appinfo: %s, %s, %s, %s, %s", new Object[] { paramg.field_appId, paramg.field_appName, Integer.valueOf(paramg.field_serviceShowFlag), Integer.valueOf(paramg.field_appInfoFlag), bt.flS() });
     }
-    afF(paramg.field_appId);
+    akd(paramg.field_appId);
     boolean bool = super.updateNotify(paramg, false, paramVarArgs);
     if (bool) {
       doNotify(paramg.field_appId, 3, paramg.field_appId);
@@ -157,18 +157,18 @@ public final class j
     return bool;
   }
   
-  public final g aGk(String paramString)
+  public final g aLK(String paramString)
   {
     AppMethodBeat.i(151742);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ac.e("MicroMsg.AppInfoStorage", "appId is null");
+      ad.e("MicroMsg.AppInfoStorage", "appId is null");
       AppMethodBeat.o(151742);
       return null;
     }
-    g localg = (g)this.Dig.aJ(paramString);
+    g localg = (g)this.EMR.aL(paramString);
     if (localg != null) {}
-    while ((localg != null) && (!bs.isNullOrNil(localg.field_appId)))
+    while ((localg != null) && (!bt.isNullOrNil(localg.field_appId)))
     {
       AppMethodBeat.o(151742);
       return localg;
@@ -189,15 +189,15 @@ public final class j
   public final boolean b(g paramg, String... paramVarArgs)
   {
     AppMethodBeat.i(151740);
-    if ((paramg == null) || (bs.isNullOrNil(paramg.field_appId)))
+    if ((paramg == null) || (bt.isNullOrNil(paramg.field_appId)))
     {
       AppMethodBeat.o(151740);
       return false;
     }
-    if ((g.DhS.equals(paramg.field_appId)) || (g.DhU.equals(paramg.field_appId))) {
-      ac.i("MicroMsg.AppInfoStorage", "delete appinfo: %s, %s, %s, %s, %s", new Object[] { paramg.field_appId, paramg.field_appName, Integer.valueOf(paramg.field_serviceShowFlag), Integer.valueOf(paramg.field_appInfoFlag), bs.eWi() });
+    if ((g.EMD.equals(paramg.field_appId)) || (g.EMF.equals(paramg.field_appId))) {
+      ad.i("MicroMsg.AppInfoStorage", "delete appinfo: %s, %s, %s, %s, %s", new Object[] { paramg.field_appId, paramg.field_appName, Integer.valueOf(paramg.field_serviceShowFlag), Integer.valueOf(paramg.field_appInfoFlag), bt.flS() });
     }
-    afF(paramg.field_appId);
+    akd(paramg.field_appId);
     boolean bool = super.delete(paramg, false, paramVarArgs);
     if (bool) {
       doNotify(paramg.field_appId, 5, paramg.field_appId);
@@ -211,14 +211,14 @@ public final class j
     AppMethodBeat.i(151747);
     if ((paramString == null) || (paramString.length() == 0) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      ac.e("MicroMsg.AppInfoStorage", "saveIcon, invalid argument");
+      ad.e("MicroMsg.AppInfoStorage", "saveIcon, invalid argument");
       AppMethodBeat.o(151747);
       return false;
     }
-    Object localObject1 = fB(paramString, paramInt);
+    Object localObject1 = fY(paramString, paramInt);
     if (localObject1 == null)
     {
-      ac.e("MicroMsg.AppInfoStorage", "saveIcon fail, iconPath is null");
+      ad.e("MicroMsg.AppInfoStorage", "saveIcon fail, iconPath is null");
       AppMethodBeat.o(151747);
       return false;
     }
@@ -229,7 +229,7 @@ public final class j
     localObject1 = null;
     try
     {
-      localObject2 = i.ah((com.tencent.mm.vfs.e)localObject2);
+      localObject2 = i.aj((com.tencent.mm.vfs.e)localObject2);
       localObject1 = localObject2;
       ((OutputStream)localObject2).write(paramArrayOfByte);
       localObject1 = localObject2;
@@ -241,8 +241,8 @@ public final class j
     }
     catch (Exception paramString)
     {
-      ac.printErrStackTrace("MicroMsg.AppInfoStorage", paramString, "", new Object[0]);
-      ac.e("MicroMsg.AppInfoStorage", "saveIcon, exception, e = " + paramString.getMessage());
+      ad.printErrStackTrace("MicroMsg.AppInfoStorage", paramString, "", new Object[0]);
+      ad.e("MicroMsg.AppInfoStorage", "saveIcon, exception, e = " + paramString.getMessage());
       if (localObject1 == null) {}
     }
     try
@@ -258,22 +258,22 @@ public final class j
     }
   }
   
-  public final List<String> eLd()
+  public final List<String> eZX()
   {
     AppMethodBeat.i(151741);
-    ac.d("MicroMsg.AppInfoStorage", "getNullOpenIdList, maxCount = -1");
+    ad.d("MicroMsg.AppInfoStorage", "getNullOpenIdList, maxCount = -1");
     ArrayList localArrayList = new ArrayList();
     Cursor localCursor = rawQuery("select appId from AppInfo where openId is NULL ", new String[0]);
     if (localCursor == null)
     {
-      ac.e("MicroMsg.AppInfoStorage", "get null cursor");
+      ad.e("MicroMsg.AppInfoStorage", "get null cursor");
       AppMethodBeat.o(151741);
       return localArrayList;
     }
     int i = localCursor.getCount();
     if (i <= 0)
     {
-      ac.w("MicroMsg.AppInfoStorage", "getNullOpenIdList fail, cursor count = ".concat(String.valueOf(i)));
+      ad.w("MicroMsg.AppInfoStorage", "getNullOpenIdList fail, cursor count = ".concat(String.valueOf(i)));
       localCursor.close();
       AppMethodBeat.o(151741);
       return localArrayList;
@@ -285,7 +285,7 @@ public final class j
         if (i >= 0)
         {
           String str = localCursor.getString(i);
-          if (!bs.isNullOrNil(str)) {
+          if (!bt.isNullOrNil(str)) {
             localArrayList.add(str);
           }
         }
@@ -299,13 +299,13 @@ public final class j
     return localArrayList;
   }
   
-  public final Cursor eLe()
+  public final Cursor eZY()
   {
     AppMethodBeat.i(151744);
     Cursor localCursor = rawQuery("select * from AppInfo where appType like '%1,%'", new String[0]);
     if (localCursor == null)
     {
-      ac.e("MicroMsg.AppInfoStorage", "getGameApp : cursor is null");
+      ad.e("MicroMsg.AppInfoStorage", "getGameApp : cursor is null");
       AppMethodBeat.o(151744);
       return null;
     }
@@ -313,7 +313,7 @@ public final class j
     return localCursor;
   }
   
-  public final Cursor gC(int paramInt1, int paramInt2)
+  public final Cursor gU(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(151743);
     Object localObject = new StringBuilder(256);
@@ -326,7 +326,7 @@ public final class j
     localObject = rawQuery(((StringBuilder)localObject).toString(), new String[0]);
     if (localObject == null)
     {
-      ac.e("MicroMsg.AppInfoStorage", "getServiceByAppInfoFlagAndShowFlag : cursor is null");
+      ad.e("MicroMsg.AppInfoStorage", "getServiceByAppInfoFlagAndShowFlag : cursor is null");
       AppMethodBeat.o(151743);
       return null;
     }
@@ -337,13 +337,13 @@ public final class j
   public final boolean q(g paramg)
   {
     AppMethodBeat.i(151738);
-    if ((paramg == null) || (bs.isNullOrNil(paramg.field_appId)))
+    if ((paramg == null) || (bt.isNullOrNil(paramg.field_appId)))
     {
       AppMethodBeat.o(151738);
       return false;
     }
-    if ((g.DhS.equals(paramg.field_appId)) || (g.DhU.equals(paramg.field_appId))) {
-      ac.i("MicroMsg.AppInfoStorage", "insert appinfo: %s, %s, %s, %s, %s", new Object[] { paramg.field_appId, paramg.field_appName, Integer.valueOf(paramg.field_serviceShowFlag), Integer.valueOf(paramg.field_appInfoFlag), bs.eWi() });
+    if ((g.EMD.equals(paramg.field_appId)) || (g.EMF.equals(paramg.field_appId))) {
+      ad.i("MicroMsg.AppInfoStorage", "insert appinfo: %s, %s, %s, %s, %s", new Object[] { paramg.field_appId, paramg.field_appName, Integer.valueOf(paramg.field_serviceShowFlag), Integer.valueOf(paramg.field_appInfoFlag), bt.flS() });
     }
     if (super.insertNotify(paramg, false))
     {
@@ -361,14 +361,14 @@ public final class j
     AppMethodBeat.i(151746);
     if ((paramString == null) || (paramString.length() == 0) || (paramBitmap == null) || (paramBitmap.isRecycled()))
     {
-      ac.e("MicroMsg.AppInfoStorage", "saveIcon : invalid argument");
+      ad.e("MicroMsg.AppInfoStorage", "saveIcon : invalid argument");
       AppMethodBeat.o(151746);
       return false;
     }
-    Object localObject = fB(paramString, 1);
+    Object localObject = fY(paramString, 1);
     if (localObject == null)
     {
-      ac.e("MicroMsg.AppInfoStorage", "saveIcon fail, iconPath is null");
+      ad.e("MicroMsg.AppInfoStorage", "saveIcon fail, iconPath is null");
       AppMethodBeat.o(151746);
       return false;
     }
@@ -378,7 +378,7 @@ public final class j
     }
     try
     {
-      localObject = i.ah((com.tencent.mm.vfs.e)localObject);
+      localObject = i.aj((com.tencent.mm.vfs.e)localObject);
       paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject);
       ((OutputStream)localObject).close();
       doNotify(paramString);
@@ -387,8 +387,8 @@ public final class j
     }
     catch (Exception paramString)
     {
-      ac.printErrStackTrace("MicroMsg.AppInfoStorage", paramString, "", new Object[0]);
-      ac.e("MicroMsg.AppInfoStorage", "saveIcon : compress occurs an exception");
+      ad.printErrStackTrace("MicroMsg.AppInfoStorage", paramString, "", new Object[0]);
+      ad.e("MicroMsg.AppInfoStorage", "saveIcon : compress occurs an exception");
       AppMethodBeat.o(151746);
     }
     return false;

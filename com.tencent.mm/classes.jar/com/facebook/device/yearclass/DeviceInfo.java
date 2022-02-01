@@ -2,7 +2,7 @@ package com.facebook.device.yearclass;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
@@ -55,7 +55,7 @@ public class DeviceInfo
         while ((i < paramArrayOfByte.length) && (Character.isDigit(paramArrayOfByte[i]))) {
           i += 1;
         }
-        paramInt = bs.aLy(new String(paramArrayOfByte, 0, paramInt, i - paramInt));
+        paramInt = bt.aRe(new String(paramArrayOfByte, 0, paramInt, i - paramInt));
         AppMethodBeat.o(133646);
         return paramInt;
       }
@@ -133,7 +133,7 @@ public class DeviceInfo
     //   117: iconst_0
     //   118: iload_1
     //   119: invokespecial 108	java/lang/String:<init>	([BII)V
-    //   122: invokestatic 50	com/tencent/mm/sdk/platformtools/bs:aLy	(Ljava/lang/String;)I
+    //   122: invokestatic 50	com/tencent/mm/sdk/platformtools/bt:aRe	(Ljava/lang/String;)I
     //   125: invokestatic 114	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   128: astore 4
     //   130: iload_0
@@ -352,7 +352,7 @@ public class DeviceInfo
       AppMethodBeat.o(133641);
       return -1;
     }
-    int i = bs.getInt(paramString.substring(2), 0);
+    int i = bt.getInt(paramString.substring(2), 0);
     AppMethodBeat.o(133641);
     return i + 1;
   }
@@ -529,7 +529,7 @@ public class DeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.device.yearclass.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

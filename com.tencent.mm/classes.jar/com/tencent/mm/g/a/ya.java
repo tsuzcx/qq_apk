@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ya
   extends b
 {
-  public a dBw;
-  public b dBx;
+  public a dMm;
   
   public ya()
   {
@@ -16,24 +15,19 @@ public final class ya
   
   private ya(byte paramByte)
   {
-    AppMethodBeat.i(116058);
-    this.dBw = new a();
-    this.dBx = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(149894);
+    this.dMm = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116058);
+    AppMethodBeat.o(149894);
   }
   
   public static final class a
   {
-    public String dBy;
-  }
-  
-  public static final class b
-  {
-    public int dBA = -1;
-    public int dBB = -1;
-    public int dBz = -1;
+    public boolean dMn = false;
+    public boolean dkp = false;
+    public boolean dkq = false;
+    public String talker;
   }
 }
 

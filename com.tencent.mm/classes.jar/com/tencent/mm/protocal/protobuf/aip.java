@@ -4,69 +4,51 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class aip
-  extends com.tencent.mm.bw.a
+  extends cvc
 {
-  public String EDo;
-  public LinkedList<aiq> EDp;
-  public String desc;
-  public String title;
-  
-  public aip()
-  {
-    AppMethodBeat.i(91463);
-    this.EDp = new LinkedList();
-    AppMethodBeat.o(91463);
-  }
+  public double latitude;
+  public double longitude;
+  public long timestamp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91464);
+    AppMethodBeat.i(91454);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.d(1, this.title);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.EDo != null) {
-        paramVarArgs.d(2, this.EDo);
-      }
-      paramVarArgs.e(3, 8, this.EDp);
-      if (this.desc != null) {
-        paramVarArgs.d(4, this.desc);
-      }
-      AppMethodBeat.o(91464);
+      paramVarArgs.e(2, this.latitude);
+      paramVarArgs.e(3, this.longitude);
+      paramVarArgs.aY(4, this.timestamp);
+      AppMethodBeat.o(91454);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label478;
+      if (this.BaseRequest == null) {
+        break label444;
       }
     }
-    label478:
-    for (paramInt = f.a.a.b.b.a.e(1, this.title) + 0;; paramInt = 0)
+    label444:
+    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.EDo != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.EDo);
-      }
-      i += f.a.a.a.c(3, 8, this.EDp);
-      paramInt = i;
-      if (this.desc != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.desc);
-      }
-      AppMethodBeat.o(91464);
-      return paramInt;
+      int i = f.a.a.b.b.a.alT(2);
+      int j = f.a.a.b.b.a.alT(3);
+      int k = f.a.a.b.b.a.p(4, this.timestamp);
+      AppMethodBeat.o(91454);
+      return paramInt + i + j + k;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.EDp.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(91464);
+        AppMethodBeat.o(91454);
         return 0;
       }
       if (paramInt == 3)
@@ -77,44 +59,44 @@ public final class aip
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(91464);
+          AppMethodBeat.o(91454);
           return -1;
         case 1: 
-          localaip.title = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(91464);
-          return 0;
-        case 2: 
-          localaip.EDo = ((f.a.a.a.a)localObject1).LVo.readString();
-          AppMethodBeat.o(91464);
-          return 0;
-        case 3: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new aiq();
+            localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((aiq)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localaip.EDp.add(localObject1);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localaip.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(91464);
+          AppMethodBeat.o(91454);
+          return 0;
+        case 2: 
+          localaip.latitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
+          AppMethodBeat.o(91454);
+          return 0;
+        case 3: 
+          localaip.longitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
+          AppMethodBeat.o(91454);
           return 0;
         }
-        localaip.desc = ((f.a.a.a.a)localObject1).LVo.readString();
-        AppMethodBeat.o(91464);
+        localaip.timestamp = ((f.a.a.a.a)localObject1).NPN.zd();
+        AppMethodBeat.o(91454);
         return 0;
       }
-      AppMethodBeat.o(91464);
+      AppMethodBeat.o(91454);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aip
  * JD-Core Version:    0.7.0.1
  */

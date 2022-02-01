@@ -10,7 +10,6 @@ import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,14 +24,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.b.a;
+import com.tencent.mm.ax.b.a;
 import com.tencent.mm.platformtools.x;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ba;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMFormInputView;
 import com.tencent.mm.ui.base.MMFormVerifyCodeInputView;
@@ -45,68 +45,68 @@ public class MobileInputUI
   extends MMActivity
 {
   protected String countryCode;
-  protected String hLr;
-  protected int hnS;
-  protected LinearLayout iGS;
-  protected TextView iGU;
-  protected String iGW;
-  protected String iHQ;
-  protected p iJi;
-  private com.tencent.mm.sdk.b.c iQA;
-  protected EditText iRC;
-  protected Button iRI;
-  protected Button iRJ;
-  private View iRK;
-  protected Button iRL;
-  private ResizeLayout iRR;
-  protected String iRg;
-  protected boolean iRl;
-  protected MMFormInputView iSG;
-  private MMKeyboardUperView iSK;
-  protected boolean iSL;
-  private final int iSN;
-  private Button iSa;
-  protected int[] iSg;
-  private x iSu;
-  protected View iTA;
-  protected boolean iTB;
-  protected String iTC;
-  protected String iTD;
-  private int iTE;
-  private b iTF;
-  protected boolean iTG;
-  protected MMFormInputView iTp;
-  protected EditText iTq;
-  protected MMFormVerifyCodeInputView iTr;
-  protected View iTs;
-  protected CheckBox iTt;
-  protected TextView iTu;
-  protected Button iTv;
-  protected TextView iTw;
-  protected TextView iTx;
-  protected TextView iTy;
-  protected Button iTz;
+  protected int hGk;
+  protected String iem;
+  protected String jaZ;
+  protected LinearLayout jab;
+  protected TextView jad;
+  protected String jaf;
+  protected p jcr;
+  private com.tencent.mm.sdk.b.c jjI;
+  protected EditText jkK;
+  protected Button jkQ;
+  protected Button jkR;
+  private View jkS;
+  protected Button jkT;
+  private ResizeLayout jkZ;
+  protected String jko;
+  protected boolean jkt;
+  private x jlC;
+  protected MMFormInputView jlO;
+  private MMKeyboardUperView jlS;
+  protected boolean jlT;
+  private final int jlV;
+  private Button jli;
+  protected int[] jlo;
+  protected View jmA;
+  protected CheckBox jmB;
+  protected TextView jmC;
+  protected Button jmD;
+  protected TextView jmE;
+  protected TextView jmF;
+  protected TextView jmG;
+  protected Button jmH;
+  protected View jmI;
+  protected boolean jmJ;
+  protected String jmK;
+  protected String jmL;
+  private int jmM;
+  private b jmN;
+  protected boolean jmO;
+  protected MMFormInputView jmx;
+  protected EditText jmy;
+  protected MMFormVerifyCodeInputView jmz;
   
   public MobileInputUI()
   {
     AppMethodBeat.i(128356);
-    this.iTB = true;
-    this.iTC = null;
-    this.iTD = null;
-    this.iGW = null;
-    this.hLr = null;
+    this.jmJ = true;
+    this.jmK = null;
+    this.jmL = null;
+    this.jaf = null;
+    this.iem = null;
     this.countryCode = null;
-    this.iRg = null;
-    this.iTE = 0;
-    this.iSg = new int[5];
-    this.iSL = false;
-    this.iQA = new MobileInputUI.1(this);
-    this.iSN = 128;
-    this.iSu = new x();
+    this.jko = null;
+    this.jmM = 0;
+    this.jlo = new int[5];
+    this.jlT = false;
+    this.jjI = new MobileInputUI.1(this);
+    this.jlV = 128;
+    this.jlC = new x();
     AppMethodBeat.o(128356);
   }
   
-  private static void R(Context paramContext, String paramString)
+  private static void Q(Context paramContext, String paramString)
   {
     AppMethodBeat.i(128369);
     Intent localIntent = new Intent();
@@ -115,27 +115,27 @@ public class MobileInputUI
     localIntent.putExtra("show_bottom", false);
     localIntent.putExtra("needRedirect", false);
     localIntent.putExtra("neverGetA8Key", true);
-    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.DIw);
-    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.DIs);
-    com.tencent.mm.br.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.FnD);
+    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Fnz);
+    com.tencent.mm.bs.d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(128369);
   }
   
-  private boolean aQQ()
+  private boolean aUc()
   {
-    return this.iTE == 2;
+    return this.jmM == 2;
   }
   
-  private boolean aQR()
+  private boolean aUd()
   {
-    return this.iTE == 1;
+    return this.jmM == 1;
   }
   
-  private void aQT()
+  private void aUf()
   {
     AppMethodBeat.i(128364);
     hideVKB();
-    this.iSu.b(this, new Runnable()
+    this.jlC.b(this, new Runnable()
     {
       public final void run()
       {
@@ -147,51 +147,51 @@ public class MobileInputUI
     AppMethodBeat.o(128364);
   }
   
-  private void aQU()
+  private void aUg()
   {
     AppMethodBeat.i(128367);
-    if ((!bs.isNullOrNil(this.hLr)) && (!bs.isNullOrNil(this.countryCode)))
+    if ((!bt.isNullOrNil(this.iem)) && (!bt.isNullOrNil(this.countryCode)))
     {
-      this.iGU.setText(az.lo(this.hLr, this.countryCode));
+      this.jad.setText(ba.lN(this.iem, this.countryCode));
       AppMethodBeat.o(128367);
       return;
     }
-    this.iGU.setText(getString(2131761245));
+    this.jad.setText(getString(2131761245));
     AppMethodBeat.o(128367);
   }
   
   private void goBack()
   {
     AppMethodBeat.i(128365);
-    if (this.iTG)
+    if (this.jmO)
     {
       hideVKB();
-      Object localObject = com.tencent.mm.plugin.account.a.a.iyx.bD(this);
+      Object localObject = com.tencent.mm.plugin.account.a.a.iRG.bC(this);
       ((Intent)localObject).addFlags(67108864);
       ((Intent)localObject).putExtra("can_finish", true);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/account/ui/MobileInputUI", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/account/ui/MobileInputUI", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/MobileInputUI", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       finish();
-      com.tencent.mm.ui.base.b.jT(this);
+      com.tencent.mm.ui.base.b.ke(this);
       AppMethodBeat.o(128365);
       return;
     }
-    this.iTF.a(a.iTJ);
-    com.tencent.mm.plugin.b.a.IL(this.iHQ);
+    this.jmN.a(a.jmR);
+    com.tencent.mm.plugin.b.a.Ma(this.jaZ);
     hideVKB();
     finish();
     AppMethodBeat.o(128365);
   }
   
-  public final boolean aQS()
+  public final boolean aUe()
   {
     AppMethodBeat.i(128363);
-    if ((this.iTq.getText() != null) && (!bs.isNullOrNil(this.iTq.getText().toString())) && (this.iTB)) {
-      if (this.iTE == 2)
+    if ((this.jmy.getText() != null) && (!bt.isNullOrNil(this.jmy.getText().toString())) && (this.jmJ)) {
+      if (this.jmM == 2)
       {
-        if ((this.iRC.getText() != null) && (!bs.isNullOrNil(this.iRC.getText().toString())))
+        if ((this.jkK.getText() != null) && (!bt.isNullOrNil(this.jkK.getText().toString())))
         {
           AppMethodBeat.o(128363);
           return true;
@@ -212,7 +212,7 @@ public class MobileInputUI
     AppMethodBeat.i(128360);
     super.finish();
     overridePendingTransition(2130771986, 2130771986);
-    com.tencent.mm.plugin.report.service.h.wUl.f(14262, new Object[] { Integer.valueOf(this.iSg[0]), Integer.valueOf(this.iSg[1]), Integer.valueOf(this.iSg[2]), Integer.valueOf(this.iSg[3]), Integer.valueOf(this.iSg[4]) });
+    com.tencent.mm.plugin.report.service.g.yhR.f(14262, new Object[] { Integer.valueOf(this.jlo[0]), Integer.valueOf(this.jlo[1]), Integer.valueOf(this.jlo[2]), Integer.valueOf(this.jlo[3]), Integer.valueOf(this.jlo[4]) });
     AppMethodBeat.o(128360);
   }
   
@@ -224,134 +224,102 @@ public class MobileInputUI
   public void initView()
   {
     AppMethodBeat.i(128362);
-    this.iSG = ((MMFormInputView)findViewById(2131304611));
-    this.iRC = this.iSG.getContentEditText();
-    com.tencent.mm.ui.tools.b.c.d(this.iRC).acw(16).a(null);
-    this.iTp = ((MMFormInputView)findViewById(2131302363));
-    this.iTp.setInputType(3);
-    this.iTq = this.iTp.getContentEditText();
-    this.iTr = ((MMFormVerifyCodeInputView)findViewById(2131304879));
-    this.iTr.setInputType(3);
-    this.iGS = ((LinearLayout)findViewById(2131298805));
-    this.iGU = ((TextView)findViewById(2131298807));
-    this.iTs = findViewById(2131303937);
-    this.iTt = ((CheckBox)findViewById(2131303944));
-    this.iTu = ((TextView)findViewById(2131303943));
-    this.iTv = ((Button)findViewById(2131302852));
-    this.iTw = ((TextView)findViewById(2131303962));
-    this.iTx = ((TextView)findViewById(2131301582));
-    this.iTy = ((TextView)findViewById(2131302360));
-    this.iTz = ((Button)findViewById(2131301569));
-    this.iSa = ((Button)findViewById(2131301559));
-    this.iRI = ((Button)findViewById(2131301572));
-    this.iRJ = ((Button)findViewById(2131301574));
-    this.iRK = findViewById(2131300241);
-    this.iRL = ((Button)findViewById(2131301575));
-    this.iTA = findViewById(2131297439);
-    this.iRR = ((ResizeLayout)findViewById(2131304133));
-    this.iSK = ((MMKeyboardUperView)findViewById(2131304370));
-    this.iGS.setVisibility(8);
-    this.iSG.setVisibility(8);
-    this.iTr.setVisibility(8);
-    this.iTp.setVisibility(8);
-    this.iTw.setVisibility(8);
-    this.iTx.setVisibility(8);
-    this.iTv.setVisibility(8);
-    this.iTs.setVisibility(8);
-    this.iTz.setVisibility(8);
-    this.iRR.setOnSizeChanged(new ResizeLayout.a()
+    this.jlO = ((MMFormInputView)findViewById(2131304611));
+    this.jkK = this.jlO.getContentEditText();
+    com.tencent.mm.ui.tools.b.c.d(this.jkK).aeU(16).a(null);
+    this.jmx = ((MMFormInputView)findViewById(2131302363));
+    this.jmx.setInputType(3);
+    this.jmy = this.jmx.getContentEditText();
+    this.jmz = ((MMFormVerifyCodeInputView)findViewById(2131304879));
+    this.jmz.setInputType(3);
+    this.jab = ((LinearLayout)findViewById(2131298805));
+    this.jad = ((TextView)findViewById(2131298807));
+    this.jmA = findViewById(2131303937);
+    this.jmB = ((CheckBox)findViewById(2131303944));
+    this.jmC = ((TextView)findViewById(2131303943));
+    this.jmD = ((Button)findViewById(2131302852));
+    this.jmE = ((TextView)findViewById(2131303962));
+    this.jmF = ((TextView)findViewById(2131301582));
+    this.jmG = ((TextView)findViewById(2131302360));
+    this.jmH = ((Button)findViewById(2131301569));
+    this.jli = ((Button)findViewById(2131301559));
+    this.jkQ = ((Button)findViewById(2131301572));
+    this.jkR = ((Button)findViewById(2131301574));
+    this.jkS = findViewById(2131300241);
+    this.jkT = ((Button)findViewById(2131301575));
+    this.jmI = findViewById(2131297439);
+    this.jkZ = ((ResizeLayout)findViewById(2131304133));
+    this.jlS = ((MMKeyboardUperView)findViewById(2131304370));
+    this.jab.setVisibility(8);
+    this.jlO.setVisibility(8);
+    this.jmz.setVisibility(8);
+    this.jmx.setVisibility(8);
+    this.jmE.setVisibility(8);
+    this.jmF.setVisibility(8);
+    this.jmD.setVisibility(8);
+    this.jmA.setVisibility(8);
+    this.jmH.setVisibility(8);
+    this.jkZ.setOnSizeChanged(new ResizeLayout.a()
     {
-      public final void aQL()
+      public final void aTX()
       {
         AppMethodBeat.i(128348);
         MobileInputUI.c(MobileInputUI.this);
         AppMethodBeat.o(128348);
       }
     });
-    this.iRI.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(128349);
-        paramAnonymousView = MobileInputUI.this.getString(2131760769) + ab.eUO();
-        MobileInputUI.S(MobileInputUI.this, paramAnonymousView);
-        AppMethodBeat.o(128349);
-      }
-    });
-    this.iRJ.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(128350);
-        paramAnonymousView = MobileInputUI.this.getString(2131759660, new Object[] { ab.eUO() });
-        MobileInputUI.S(MobileInputUI.this, paramAnonymousView);
-        AppMethodBeat.o(128350);
-      }
-    });
+    this.jkQ.setOnClickListener(new MobileInputUI.17(this));
+    this.jkR.setOnClickListener(new MobileInputUI.18(this));
     Object localObject = new e(this, 1, false);
-    ((e)localObject).ISu = new MobileInputUI.19(this);
-    ((e)localObject).ISv = new n.d()
+    ((e)localObject).KJy = new n.d()
     {
-      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
+      public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
       {
-        AppMethodBeat.i(128352);
-        switch (paramAnonymousMenuItem.getItemId())
+        AppMethodBeat.i(128351);
+        if (paramAnonymousl.fyP())
         {
+          paramAnonymousl.jI(5001, 2131766192);
+          paramAnonymousl.jI(5002, 2131766189);
         }
-        for (;;)
-        {
-          AppMethodBeat.o(128352);
-          return;
-          MobileInputUI.d(MobileInputUI.this);
-          AppMethodBeat.o(128352);
-          return;
-          MobileInputUI.S(MobileInputUI.this, MobileInputUI.this.getString(2131766190) + ab.eUO());
-        }
+        AppMethodBeat.o(128351);
       }
     };
-    ((e)localObject).Ihj = new e.b()
+    ((e)localObject).KJz = new MobileInputUI.20(this);
+    ((e)localObject).JXC = new e.b()
     {
       public final void onDismiss() {}
     };
-    if (ab.eUL())
+    if (ac.fkp())
     {
-      this.iRL.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(128334);
-          MobileInputUI.d(MobileInputUI.this);
-          AppMethodBeat.o(128334);
-        }
-      });
+      this.jkT.setOnClickListener(new MobileInputUI.2(this));
       localObject = new boolean[1];
       localObject[0] = 1;
-      this.iTq.setOnFocusChangeListener(new View.OnFocusChangeListener()
+      this.jmy.setOnFocusChangeListener(new View.OnFocusChangeListener()
       {
         public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(128336);
           if (paramAnonymousBoolean)
           {
-            this.iTI[0] = true;
+            this.jmQ[0] = true;
             AppMethodBeat.o(128336);
             return;
           }
           if (MobileInputUI.e(MobileInputUI.this)) {
-            com.tencent.mm.plugin.normsg.a.b.vor.aor("ie_reg_eu");
+            com.tencent.mm.plugin.normsg.a.b.wtJ.atr("ie_reg_eu");
           }
           if (MobileInputUI.f(MobileInputUI.this)) {
-            com.tencent.mm.plugin.normsg.a.b.vor.aor("ie_login");
+            com.tencent.mm.plugin.normsg.a.b.wtJ.atr("ie_login");
           }
           AppMethodBeat.o(128336);
         }
       });
-      this.iTq.addTextChangedListener(new TextWatcher()
+      this.jmy.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
           AppMethodBeat.i(128337);
-          MobileInputUI.this.iTv.setEnabled(MobileInputUI.this.aQS());
+          MobileInputUI.this.jmD.setEnabled(MobileInputUI.this.aUe());
           AppMethodBeat.o(128337);
         }
         
@@ -360,31 +328,31 @@ public class MobileInputUI
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
           AppMethodBeat.i(128338);
-          if (this.iTI[0] != 0)
+          if (this.jmQ[0] != 0)
           {
-            this.iTI[0] = false;
+            this.jmQ[0] = false;
             if (MobileInputUI.e(MobileInputUI.this)) {
-              com.tencent.mm.plugin.normsg.a.b.vor.aop("ie_reg_eu");
+              com.tencent.mm.plugin.normsg.a.b.wtJ.atp("ie_reg_eu");
             }
             if (MobileInputUI.f(MobileInputUI.this)) {
-              com.tencent.mm.plugin.normsg.a.b.vor.aop("ie_login");
+              com.tencent.mm.plugin.normsg.a.b.wtJ.atp("ie_login");
             }
           }
           if (MobileInputUI.e(MobileInputUI.this)) {
-            com.tencent.mm.plugin.normsg.a.b.vor.aoq("ie_reg_eu");
+            com.tencent.mm.plugin.normsg.a.b.wtJ.atq("ie_reg_eu");
           }
           if (MobileInputUI.f(MobileInputUI.this)) {
-            com.tencent.mm.plugin.normsg.a.b.vor.aoq("ie_login");
+            com.tencent.mm.plugin.normsg.a.b.wtJ.atq("ie_login");
           }
           AppMethodBeat.o(128338);
         }
       });
-      this.iRC.addTextChangedListener(new TextWatcher()
+      this.jkK.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
           AppMethodBeat.i(128339);
-          MobileInputUI.this.iTv.setEnabled(MobileInputUI.this.aQS());
+          MobileInputUI.this.jmD.setEnabled(MobileInputUI.this.aUe());
           AppMethodBeat.o(128339);
         }
         
@@ -392,14 +360,14 @@ public class MobileInputUI
         
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
-      this.iTq.setOnEditorActionListener(new TextView.OnEditorActionListener()
+      this.jmy.setOnEditorActionListener(new TextView.OnEditorActionListener()
       {
         public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
         {
           AppMethodBeat.i(128340);
           if ((paramAnonymousInt == 6) || (paramAnonymousInt == 5))
           {
-            boolean bool = MobileInputUI.this.aQS();
+            boolean bool = MobileInputUI.this.aUe();
             AppMethodBeat.o(128340);
             return bool;
           }
@@ -407,149 +375,153 @@ public class MobileInputUI
           return false;
         }
       });
-      this.iTq.setOnKeyListener(new View.OnKeyListener()
+      this.jmy.setOnKeyListener(new View.OnKeyListener()
       {
         public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
         {
           AppMethodBeat.i(128341);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          localb.mr(paramAnonymousInt);
+          localb.bd(paramAnonymousKeyEvent);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/MobileInputUI$16", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahq());
           if ((66 == paramAnonymousInt) && (paramAnonymousKeyEvent.getAction() == 0))
           {
-            boolean bool = MobileInputUI.this.aQS();
+            boolean bool = MobileInputUI.this.aUe();
+            com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/account/ui/MobileInputUI$16", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
             AppMethodBeat.o(128341);
             return bool;
           }
+          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/account/ui/MobileInputUI$16", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
           AppMethodBeat.o(128341);
           return false;
         }
       });
       localObject = new boolean[1];
       localObject[0] = 0;
-      this.iTv.setEnabled(false);
-      this.iTv.setOnTouchListener(new View.OnTouchListener()
+      this.jmD.setEnabled(false);
+      this.jmD.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(128342);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          localb.bd(paramAnonymousMotionEvent);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/MobileInputUI$17", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
           switch (paramAnonymousMotionEvent.getAction())
           {
           }
           for (;;)
           {
+            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/account/ui/MobileInputUI$17", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(128342);
             return false;
-            this.iSP[0] = true;
+            this.jlX[0] = true;
             if (MobileInputUI.e(MobileInputUI.this)) {
-              com.tencent.mm.plugin.normsg.a.b.vor.id("ce_reg_eu", "<Reg>");
+              com.tencent.mm.plugin.normsg.a.b.wtJ.io("ce_reg_eu", "<Reg>");
             }
             if (MobileInputUI.f(MobileInputUI.this))
             {
-              com.tencent.mm.plugin.normsg.a.b.vor.id("ce_login", "<Login>");
+              com.tencent.mm.plugin.normsg.a.b.wtJ.io("ce_login", "<Login>");
               continue;
               if (MobileInputUI.e(MobileInputUI.this))
               {
-                com.tencent.mm.plugin.normsg.a.b.vor.a("ce_reg_eu", paramAnonymousMotionEvent);
-                com.tencent.mm.plugin.normsg.a.b.vor.aou("ce_reg_eu");
+                com.tencent.mm.plugin.normsg.a.b.wtJ.a("ce_reg_eu", paramAnonymousMotionEvent);
+                com.tencent.mm.plugin.normsg.a.b.wtJ.atu("ce_reg_eu");
               }
               if (MobileInputUI.f(MobileInputUI.this))
               {
-                com.tencent.mm.plugin.normsg.a.b.vor.a("ce_login", paramAnonymousMotionEvent);
-                com.tencent.mm.plugin.normsg.a.b.vor.aou("ce_login");
+                com.tencent.mm.plugin.normsg.a.b.wtJ.a("ce_login", paramAnonymousMotionEvent);
+                com.tencent.mm.plugin.normsg.a.b.wtJ.atu("ce_login");
               }
             }
           }
         }
       });
-      this.iTv.setOnClickListener(new View.OnClickListener()
+      this.jmD.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(128343);
-          if (this.iSP[0] != 0) {
-            this.iSP[0] = false;
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/MobileInputUI$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          if (this.jlX[0] != 0) {
+            this.jlX[0] = false;
           }
           for (;;)
           {
             MobileInputUI.g(MobileInputUI.this);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/MobileInputUI$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(128343);
             return;
             if (MobileInputUI.e(MobileInputUI.this))
             {
-              com.tencent.mm.plugin.normsg.a.b.vor.id("ce_reg_eu", "<Reg>");
+              com.tencent.mm.plugin.normsg.a.b.wtJ.io("ce_reg_eu", "<Reg>");
               paramAnonymousView = MotionEvent.obtain(0L, 0L, 1, 0.0F, 0.0F, 65535);
-              com.tencent.mm.plugin.normsg.a.b.vor.a("ce_reg_eu", paramAnonymousView);
-              com.tencent.mm.plugin.normsg.a.b.vor.aou("ce_reg_eu");
+              com.tencent.mm.plugin.normsg.a.b.wtJ.a("ce_reg_eu", paramAnonymousView);
+              com.tencent.mm.plugin.normsg.a.b.wtJ.atu("ce_reg_eu");
             }
             if (MobileInputUI.f(MobileInputUI.this))
             {
-              com.tencent.mm.plugin.normsg.a.b.vor.id("ce_login", "<Login>");
+              com.tencent.mm.plugin.normsg.a.b.wtJ.io("ce_login", "<Login>");
               paramAnonymousView = MotionEvent.obtain(0L, 0L, 1, 0.0F, 0.0F, 65535);
-              com.tencent.mm.plugin.normsg.a.b.vor.a("ce_login", paramAnonymousView);
-              com.tencent.mm.plugin.normsg.a.b.vor.aou("ce_login");
+              com.tencent.mm.plugin.normsg.a.b.wtJ.a("ce_login", paramAnonymousView);
+              com.tencent.mm.plugin.normsg.a.b.wtJ.atu("ce_login");
             }
           }
         }
       });
-      if (!bs.isNullOrNil(this.countryCode)) {
-        break label938;
+      if (!bt.isNullOrNil(this.countryCode)) {
+        break label941;
       }
-      this.hLr = getString(2131757952);
-      this.countryCode = az.aLd(getString(2131757951));
+      this.iem = getString(2131757952);
+      this.countryCode = ba.aQJ(getString(2131757951));
       label707:
-      if ((bs.isNullOrNil(this.hLr)) || (bs.isNullOrNil(this.countryCode)))
+      if ((bt.isNullOrNil(this.iem)) || (bt.isNullOrNil(this.countryCode)))
       {
-        this.iRg = ((TelephonyManager)getSystemService("phone")).getSimCountryIso();
-        ac.d("MicroMsg.MobileInputUI", "tm.getSimCountryIso()" + this.iRg);
-        if (!bs.isNullOrNil(this.iRg)) {
-          break label959;
+        this.jko = ((TelephonyManager)getSystemService("phone")).getSimCountryIso();
+        ad.d("MicroMsg.MobileInputUI", "tm.getSimCountryIso()" + this.jko);
+        if (!bt.isNullOrNil(this.jko)) {
+          break label962;
         }
-        ac.e("MicroMsg.MobileInputUI", "getDefaultCountryInfo error");
+        ad.e("MicroMsg.MobileInputUI", "getDefaultCountryInfo error");
       }
     }
     for (;;)
     {
-      aQU();
-      if (bs.isNullOrNil(this.iGW)) {
-        this.iTq.setText(this.iGW);
+      aUg();
+      if (bt.isNullOrNil(this.jaf)) {
+        this.jmy.setText(this.jaf);
       }
-      this.iGS.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(128344);
-          paramAnonymousView = new Intent();
-          paramAnonymousView.putExtra("country_name", MobileInputUI.this.hLr);
-          paramAnonymousView.putExtra("couttry_code", MobileInputUI.this.countryCode);
-          paramAnonymousView.putExtra("iso_code", MobileInputUI.this.iRg);
-          com.tencent.mm.plugin.account.a.a.iyx.b(paramAnonymousView, MobileInputUI.this);
-          AppMethodBeat.o(128344);
-        }
-      });
+      this.jab.setOnClickListener(new MobileInputUI.11(this));
       localObject = "";
-      if (com.tencent.mm.protocal.d.DIf) {
-        localObject = getString(2131755822) + getString(2131755263);
+      if ((com.tencent.mm.protocal.d.Fnm) || (com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_BLUE)) {
+        localObject = getString(2131755822) + com.tencent.mm.cd.g.is(this);
       }
       setMMTitle((String)localObject);
       setActionbarColor(getResources().getColor(2131100705));
       hideActionbarLine();
       AppMethodBeat.o(128362);
       return;
-      this.iRK.setVisibility(8);
-      this.iRL.setText(2131760754);
-      this.iRL.setOnClickListener(new MobileInputUI.3(this, (e)localObject));
+      this.jkS.setVisibility(8);
+      this.jkT.setText(2131760754);
+      this.jkT.setOnClickListener(new MobileInputUI.3(this, (e)localObject));
       break;
-      label938:
-      this.hLr = com.tencent.mm.aw.b.bq(this.countryCode, getString(2131757950));
+      label941:
+      this.iem = com.tencent.mm.ax.b.br(this.countryCode, getString(2131757950));
       break label707;
-      label959:
-      localObject = com.tencent.mm.aw.b.bp(this.iRg, getString(2131757950));
+      label962:
+      localObject = com.tencent.mm.ax.b.bq(this.jko, getString(2131757950));
       if (localObject == null)
       {
-        ac.e("MicroMsg.MobileInputUI", "getDefaultCountryInfo error");
+        ad.e("MicroMsg.MobileInputUI", "getDefaultCountryInfo error");
       }
       else
       {
-        this.countryCode = az.aLd(((b.a)localObject).hLq);
-        this.hLr = ((b.a)localObject).hLr;
+        this.countryCode = ba.aQJ(((b.a)localObject).iel);
+        this.iem = ((b.a)localObject).iem;
       }
     }
   }
@@ -569,17 +541,17 @@ public class MobileInputUI
       }
       if ((localObject1 != null) && (((Bundle)localObject1).getString("go_next", "").equals("agree_privacy")))
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(712L, 2L, 1L, false);
-        if ((this.iTF instanceof k)) {
-          ((k)this.iTF).iTj = 0;
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(712L, 2L, 1L, false);
+        if ((this.jmN instanceof k)) {
+          ((k)this.jmN).jmr = 0;
         }
-        this.iTF.a(a.iTK);
+        this.jmN.a(a.jmS);
         AppMethodBeat.o(128368);
         return;
       }
-      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(712L, 1L, 1L, false);
-      if ((this.iTF instanceof k)) {
-        ((k)this.iTF).iTj = 1;
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(712L, 1L, 1L, false);
+      if ((this.jmN instanceof k)) {
+        ((k)this.jmN).jmr = 1;
       }
       AppMethodBeat.o(128368);
       return;
@@ -592,10 +564,10 @@ public class MobileInputUI
       }
       if ((paramInt2 == -1) && (localObject1 != null) && (((Bundle)localObject1).getString("go_next", "").equals("get_reg_verify_code")))
       {
-        if ((this.iTF instanceof k)) {
-          ((k)this.iTF).iTj = 2;
+        if ((this.jmN instanceof k)) {
+          ((k)this.jmN).jmr = 2;
         }
-        this.iTF.a(a.iTK);
+        this.jmN.a(a.jmS);
       }
       AppMethodBeat.o(128368);
       return;
@@ -606,8 +578,8 @@ public class MobileInputUI
       if (paramIntent != null) {
         localObject1 = paramIntent.getBundleExtra("result_data");
       }
-      if ((paramInt2 == -1) && (localObject1 != null) && (((Bundle)localObject1).getString("go_next", "").equals("auth_again")) && ((this.iTF instanceof l))) {
-        this.iTF.a(a.iTK);
+      if ((paramInt2 == -1) && (localObject1 != null) && (((Bundle)localObject1).getString("go_next", "").equals("auth_again")) && ((this.jmN instanceof l))) {
+        this.jmN.a(a.jmS);
       }
       AppMethodBeat.o(128368);
       return;
@@ -619,38 +591,38 @@ public class MobileInputUI
     {
       AppMethodBeat.o(128368);
       return;
-      this.hLr = bs.bG(paramIntent.getStringExtra("country_name"), "");
-      this.countryCode = bs.bG(paramIntent.getStringExtra("couttry_code"), "");
-      this.iRg = bs.bG(paramIntent.getStringExtra("iso_code"), "");
-      if ((this.iTE == 2) && (!com.tencent.mm.aw.b.CR(this.countryCode)))
+      this.iem = bt.bI(paramIntent.getStringExtra("country_name"), "");
+      this.countryCode = bt.bI(paramIntent.getStringExtra("couttry_code"), "");
+      this.jko = bt.bI(paramIntent.getStringExtra("iso_code"), "");
+      if ((this.jmM == 2) && (!com.tencent.mm.ax.b.FV(this.countryCode)))
       {
         paramIntent = new Intent(this, RegByMobileRegAIOUI.class);
         paramIntent.putExtra("couttry_code", this.countryCode);
-        paramIntent.putExtra("country_name", this.hLr);
-        paramIntent.putExtra("iso_code", this.iRg);
-        paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.aeD(), "com/tencent/mm/plugin/account/ui/MobileInputUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramIntent.lR(0));
+        paramIntent.putExtra("country_name", this.iem);
+        paramIntent.putExtra("iso_code", this.jko);
+        paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.ahp(), "com/tencent/mm/plugin/account/ui/MobileInputUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramIntent.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/MobileInputUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         finish();
         AppMethodBeat.o(128368);
         return;
       }
-      aQU();
+      aUg();
       AppMethodBeat.o(128368);
       return;
     } while ((paramInt1 != 1024) || (paramIntent == null));
     localObject1 = paramIntent.getStringExtra("VoiceLoginAuthPwd");
     paramInt2 = paramIntent.getIntExtra("KVoiceHelpCode", 0);
-    boolean bool = bs.isNullOrNil((String)localObject1);
-    if (bs.isNullOrNil((String)localObject1)) {}
+    boolean bool = bt.isNullOrNil((String)localObject1);
+    if (bt.isNullOrNil((String)localObject1)) {}
     for (paramInt1 = i;; paramInt1 = ((String)localObject1).length())
     {
-      ac.d("MicroMsg.MobileInputUI", "onActivityResult, do voiceprint auth, authPwd is null:%b, authPwd.len:%d, lastErrCode:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ad.d("MicroMsg.MobileInputUI", "onActivityResult, do voiceprint auth, authPwd is null:%b, authPwd.len:%d, lastErrCode:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       if (paramInt2 != -217) {
         break;
       }
-      aQT();
+      aUf();
       AppMethodBeat.o(128368);
       return;
     }
@@ -662,76 +634,77 @@ public class MobileInputUI
     super.onCreate(paramBundle);
     super.setRequestedOrientation(1);
     getWindow().getDecorView().setBackgroundColor(getContext().getResources().getColor(2131100706));
-    this.iTE = getIntent().getIntExtra("mobile_input_purpose", 0);
-    this.hnS = getIntent().getIntExtra("mobile_auth_type", 0);
-    this.iTG = getIntent().getBooleanExtra("can_finish", false);
+    this.jmM = getIntent().getIntExtra("mobile_input_purpose", 0);
+    this.hGk = getIntent().getIntExtra("mobile_auth_type", 0);
+    this.jmO = getIntent().getBooleanExtra("can_finish", false);
     setBackBtn(new MobileInputUI.12(this), 2131689488);
     setActionbarColor(getContext().getResources().getColor(2131100705));
     hideActionbarLine();
-    switch (this.iTE)
+    switch (this.jmM)
     {
     case 0: 
     default: 
-      ac.e("MicroMsg.MobileInputUI", "wrong purpose %s", new Object[] { Integer.valueOf(this.iTE) });
+      ad.e("MicroMsg.MobileInputUI", "wrong purpose %s", new Object[] { Integer.valueOf(this.jmM) });
       finish();
       AppMethodBeat.o(128357);
       return;
     case 1: 
-      if (!bs.isNullOrNil(getIntent().getStringExtra("auth_ticket"))) {
-        this.iTF = new l();
+      if (!bt.isNullOrNil(getIntent().getStringExtra("auth_ticket"))) {
+        this.jmN = new l();
       }
       break;
     }
     for (;;)
     {
-      this.countryCode = az.aLd(bs.bG(getIntent().getStringExtra("couttry_code"), ""));
-      this.hLr = bs.bG(getIntent().getStringExtra("country_name"), "");
-      this.iRg = bs.nullAsNil(getIntent().getStringExtra("iso_code"));
-      this.iGW = bs.bG(getIntent().getStringExtra("bindmcontact_shortmobile"), "");
-      this.iTC = az.aLe(this.countryCode);
-      this.iTD = bs.bG(getIntent().getStringExtra("input_mobile_number"), "");
-      this.iHQ = com.tencent.mm.plugin.b.a.EL();
+      this.countryCode = ba.aQJ(bt.bI(getIntent().getStringExtra("couttry_code"), ""));
+      this.iem = bt.bI(getIntent().getStringExtra("country_name"), "");
+      this.jko = bt.nullAsNil(getIntent().getStringExtra("iso_code"));
+      this.jaf = bt.bI(getIntent().getStringExtra("bindmcontact_shortmobile"), "");
+      this.jmK = ba.aQK(this.countryCode);
+      this.jmL = bt.bI(getIntent().getStringExtra("input_mobile_number"), "");
+      this.jaZ = com.tencent.mm.plugin.b.a.Mp();
       initView();
-      this.iSL = getIntent().getBooleanExtra("from_deep_link", false);
-      if ((this.iSL) && (!bs.isNullOrNil(this.iTC)) && (!bs.isNullOrNil(this.iTD))) {
-        this.iTp.setText(this.iTD);
+      this.jlT = getIntent().getBooleanExtra("from_deep_link", false);
+      if ((this.jlT) && (!bt.isNullOrNil(this.jmK)) && (!bt.isNullOrNil(this.jmL))) {
+        this.jmx.setText(this.jmL);
       }
-      this.iTF.a(this);
-      if (com.tencent.mm.sdk.platformtools.h.EX_DEVICE_LOGIN)
+      this.jmN.a(this);
+      if (com.tencent.mm.sdk.platformtools.i.EX_DEVICE_LOGIN)
       {
-        this.iSa.setVisibility(0);
-        this.iSa.setOnClickListener(new MobileInputUI.15(this));
+        this.jli.setVisibility(0);
+        this.jli.setOnClickListener(new MobileInputUI.15(this));
       }
-      this.iRl = getIntent().getBooleanExtra("from_switch_account", false);
+      this.jkt = getIntent().getBooleanExtra("from_switch_account", false);
+      com.tencent.mm.cq.d.fSu();
       AppMethodBeat.o(128357);
       return;
       paramBundle = getIntent().getIntArrayExtra("kv_report_login_method_data");
       if (paramBundle != null) {
-        this.iSg = paramBundle;
+        this.jlo = paramBundle;
       }
-      this.iTF = new i();
+      this.jmN = new i();
       continue;
-      this.iTF = new k();
+      this.jmN = new k();
       continue;
-      this.iTF = new h();
+      this.jmN = new h();
       continue;
-      this.iTF = new j();
+      this.jmN = new j();
       continue;
-      this.iTF = new l();
+      this.jmN = new l();
     }
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(128361);
-    if (aQQ()) {
-      com.tencent.mm.plugin.normsg.a.b.vor.aor("ie_reg_eu");
+    if (aUc()) {
+      com.tencent.mm.plugin.normsg.a.b.wtJ.atr("ie_reg_eu");
     }
-    if (aQR()) {
-      com.tencent.mm.plugin.normsg.a.b.vor.aor("ie_login");
+    if (aUd()) {
+      com.tencent.mm.plugin.normsg.a.b.wtJ.atr("ie_login");
     }
-    if (this.iTr != null) {
-      this.iTr.reset();
+    if (this.jmz != null) {
+      this.jmz.reset();
     }
     super.onDestroy();
     AppMethodBeat.o(128361);
@@ -755,24 +728,24 @@ public class MobileInputUI
   {
     AppMethodBeat.i(128359);
     super.onPause();
-    com.tencent.mm.sdk.b.a.GpY.d(this.iQA);
-    this.iTF.stop();
+    com.tencent.mm.sdk.b.a.IbL.d(this.jjI);
+    this.jmN.stop();
     AppMethodBeat.o(128359);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(169142);
-    this.iSu.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
+    this.jlC.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(169142);
   }
   
   public void onResume()
   {
     AppMethodBeat.i(128358);
-    com.tencent.mm.sdk.b.a.GpY.c(this.iQA);
+    com.tencent.mm.sdk.b.a.IbL.c(this.jjI);
     super.onResume();
-    this.iTF.start();
+    this.jmN.start();
     AppMethodBeat.o(128358);
   }
   
@@ -789,9 +762,9 @@ public class MobileInputUI
     static
     {
       AppMethodBeat.i(128355);
-      iTJ = new a("GoBack", 0);
-      iTK = new a("GoNext", 1);
-      iTL = new a[] { iTJ, iTK };
+      jmR = new a("GoBack", 0);
+      jmS = new a("GoNext", 1);
+      jmT = new a[] { jmR, jmS };
       AppMethodBeat.o(128355);
     }
     

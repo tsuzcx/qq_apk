@@ -5,15 +5,15 @@ import java.util.Arrays;
 
 public final class c
 {
-  public String cDv = "";
-  String nom = null;
-  public e non = null;
-  public double noo = 0.0D;
+  public String cOA = "";
+  String nPi = null;
+  public e nPj = null;
+  public double nPk = 0.0D;
   
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(22438);
-    if ((this.non == null) || (paramObject == null))
+    if ((this.nPj == null) || (paramObject == null))
     {
       AppMethodBeat.o(22438);
       return false;
@@ -23,7 +23,7 @@ public final class c
       AppMethodBeat.o(22438);
       return true;
     }
-    boolean bool = Arrays.equals(((c)paramObject).non.nor.noS, this.non.nor.noS);
+    boolean bool = Arrays.equals(((c)paramObject).nPj.nPn.nPO, this.nPj.nPn.nPO);
     AppMethodBeat.o(22438);
     return bool;
   }
@@ -31,12 +31,12 @@ public final class c
   public final int hashCode()
   {
     AppMethodBeat.i(22437);
-    if (this.non == null)
+    if (this.nPj == null)
     {
       AppMethodBeat.o(22437);
       return 0;
     }
-    int i = Arrays.hashCode(this.non.nor.noS);
+    int i = Arrays.hashCode(this.nPj.nPn.nPO);
     AppMethodBeat.o(22437);
     return i;
   }

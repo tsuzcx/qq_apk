@@ -11,25 +11,25 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private static b Jpx;
-  final Handler JpA;
-  Map<c, a> Jpy;
-  final SparseIntArray Jpz;
+  private static b Lhc;
+  Map<c, a> Lhd;
+  final SparseIntArray Lhe;
+  final Handler Lhf;
   
   static
   {
     AppMethodBeat.i(74893);
-    Jpx = null;
-    Jpx = new b();
+    Lhc = null;
+    Lhc = new b();
     AppMethodBeat.o(74893);
   }
   
   public b()
   {
     AppMethodBeat.i(74891);
-    this.Jpy = new ConcurrentHashMap();
-    this.Jpz = new SparseIntArray();
-    this.JpA = new Handler(com.tencent.mm.vending.i.b.fxy().Jrs.getLooper())
+    this.Lhd = new ConcurrentHashMap();
+    this.Lhe = new SparseIntArray();
+    this.Lhf = new Handler(com.tencent.mm.vending.i.b.fOl().LiX.getLooper())
     {
       public final void handleMessage(Message arg1)
       {
@@ -43,10 +43,10 @@ public final class b
           AppMethodBeat.o(74894);
           return;
           locala.onCreate();
-          synchronized (locala.Jpn)
+          synchronized (locala.LgS)
           {
-            locala.Jpq = true;
-            locala.Jpn.notify();
+            locala.LgV = true;
+            locala.LgS.notify();
             AppMethodBeat.o(74894);
             return;
           }
@@ -61,32 +61,32 @@ public final class b
     AppMethodBeat.o(74891);
   }
   
-  public static b fxd()
+  public static b fNQ()
   {
-    return Jpx;
+    return Lhc;
   }
   
   public final void a(c paramc, a parama)
   {
     AppMethodBeat.i(74892);
-    if (!this.Jpy.containsKey(paramc))
+    if (!this.Lhd.containsKey(paramc))
     {
-      this.Jpy.put(paramc, parama);
+      this.Lhd.put(paramc, parama);
       com.tencent.mm.vending.f.a.i("Vending.InteractorManager", "presenter %s hash %s interactor %s looper %s", new Object[] { paramc, Integer.valueOf(paramc.hashCode()), parama, Looper.myLooper() });
-      int i = this.Jpz.get(paramc.hashCode(), 0);
+      int i = this.Lhe.get(paramc.hashCode(), 0);
       if ((i > 0) && (i < 4))
       {
         if (i > 0) {
-          this.JpA.sendMessage(this.JpA.obtainMessage(1, parama));
+          this.Lhf.sendMessage(this.Lhf.obtainMessage(1, parama));
         }
         if (i >= 2) {
-          this.JpA.sendMessage(this.JpA.obtainMessage(2, parama));
+          this.Lhf.sendMessage(this.Lhf.obtainMessage(2, parama));
         }
         if (i >= 3) {
-          this.JpA.sendMessage(this.JpA.obtainMessage(3, parama));
+          this.Lhf.sendMessage(this.Lhf.obtainMessage(3, parama));
         }
         if (i >= 4) {
-          this.JpA.sendMessage(this.JpA.obtainMessage(4, parama));
+          this.Lhf.sendMessage(this.Lhf.obtainMessage(4, parama));
         }
       }
       AppMethodBeat.o(74892);

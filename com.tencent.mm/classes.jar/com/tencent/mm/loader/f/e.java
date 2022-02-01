@@ -1,6 +1,12 @@
 package com.tencent.mm.loader.f;
 
-public abstract interface e {}
+import com.tencent.mm.loader.e.b.g;
+import com.tencent.mm.loader.h.a.a;
+
+public abstract interface e<T, R>
+{
+  public abstract void a(a<T> parama, g<?> paramg, R paramR);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar

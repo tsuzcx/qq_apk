@@ -76,12 +76,12 @@ public final class af
         if (localJSONArray.length() >= 2)
         {
           arrayOfFloat[i] = ((float)localJSONArray.optDouble(0));
-          paramJSONArray[i] = g.p(localJSONArray.optJSONArray(1));
+          paramJSONArray[i] = g.q(localJSONArray.optJSONArray(1));
         }
         i += 1;
       }
       paramCanvas = new LinearGradient(f1, f2, f3, f4, paramJSONArray, arrayOfFloat, Shader.TileMode.CLAMP);
-      paramd.jzb.setShader(paramCanvas);
+      paramd.jSY.setShader(paramCanvas);
     }
     for (;;)
     {
@@ -113,12 +113,12 @@ public final class af
           if (localJSONArray.length() >= 2)
           {
             arrayOfFloat[i] = ((float)localJSONArray.optDouble(0));
-            paramJSONArray[i] = g.p(localJSONArray.optJSONArray(1));
+            paramJSONArray[i] = g.q(localJSONArray.optJSONArray(1));
           }
           i += 1;
         }
         paramCanvas = new RadialGradient(f1, f2, f3, paramJSONArray, arrayOfFloat, Shader.TileMode.CLAMP);
-        paramd.jzb.setShader(paramCanvas);
+        paramd.jSY.setShader(paramCanvas);
       }
       else if ("normal".equalsIgnoreCase(paramCanvas))
       {
@@ -128,12 +128,12 @@ public final class af
           AppMethodBeat.o(144971);
           return false;
         }
-        paramd.jzb.setColor(g.p(paramCanvas));
+        paramd.jSY.setColor(g.q(paramCanvas));
       }
     }
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144970);
     SetStrokeStyleActionArg localSetStrokeStyleActionArg = new SetStrokeStyleActionArg();

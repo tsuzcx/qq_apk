@@ -1,32 +1,30 @@
 package com.tencent.mm.plugin.voip.video.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.f.d;
-import com.tencent.mm.media.i.b.e;
-import com.tencent.mm.plugin.xlabeffect.XLabEffect;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.a.b;
-import d.y;
+import com.tencent.mm.media.g.d;
+import com.tencent.mm.media.j.b.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.z;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
 public final class a
 {
-  public static boolean APq = true;
-  public static boolean APr = true;
-  public static float APs = 180.0F;
-  private int APt = -1;
-  d APu;
-  byte[] APv;
-  ByteBuffer APw = null;
-  int APx = 0;
-  volatile boolean aVG = false;
-  private boolean cqf = false;
-  XLabEffect fZP;
-  d gqY;
-  int gqZ;
-  int gra;
-  com.tencent.mm.media.i.b.a wxR;
+  public static boolean CoL = true;
+  public static boolean CoM = true;
+  public static float CoN = 180.0F;
+  private int CoO = -1;
+  d CoP;
+  byte[] CoQ;
+  ByteBuffer CoR = null;
+  int CoS = 0;
+  volatile boolean bgb = false;
+  private boolean cAX = false;
+  d gKI;
+  int gKJ;
+  int gKK;
+  com.tencent.mm.plugin.xlabeffect.b gtl;
+  com.tencent.mm.media.j.b.a xGL;
   
   public final void a(d paramd1, d paramd2, int paramInt)
   {
@@ -36,34 +34,34 @@ public final class a
     {
       try
       {
-        ac.i("MicroMsg.FilterProcessTex", "initial %s, %d, beauytParams:%s", new Object[] { this, Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(paramInt) });
-        if (this.fZP != null)
+        ad.i("MicroMsg.FilterProcessTex", "initial %s, %d, beauytParams:%s", new Object[] { this, Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(paramInt) });
+        if (this.gtl != null)
         {
-          ac.w("MicroMsg.FilterProcessTex", "initial xLabEffect: again");
-          this.fZP.destroy();
+          ad.w("MicroMsg.FilterProcessTex", "initial xLabEffect: again");
+          this.gtl.destroy();
         }
-        this.fZP = new XLabEffect();
-        this.fZP.uQ(false);
+        this.gtl = new com.tencent.mm.plugin.xlabeffect.b();
+        this.gtl.vB(false);
         boolean bool1;
         if ((paramInt & 0x1) != 0)
         {
           bool1 = true;
           break label278;
-          ac.i("MicroMsg.FilterProcessTex", "initial, needSkin:%s, needShape:%s, needFilter:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+          ad.i("MicroMsg.FilterProcessTex", "initial, needSkin:%s, needShape:%s, needFilter:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
           if (bool1) {
-            this.fZP.eJq();
+            this.gtl.eYk();
           }
           if (bool2) {
-            this.fZP.eJr();
+            this.gtl.eYl();
           }
           if (bool3) {
-            this.fZP.uP(true);
+            this.gtl.vA(true);
           }
-          this.APu = paramd1;
-          this.gqY = paramd2;
-          this.wxR = new e(this.gqZ, this.gra, this.gqZ, this.gra, 2, 1);
-          this.wxR.gVx = new b() {};
-          ac.d("MicroMsg.FilterProcessTex", "initial end %s", new Object[] { this });
+          this.CoP = paramd1;
+          this.gKI = paramd2;
+          this.xGL = new e(this.gKJ, this.gKK, this.gKJ, this.gKK, 2, 1);
+          this.xGL.hnA = new d.g.a.b() {};
+          ad.d("MicroMsg.FilterProcessTex", "initial end %s", new Object[] { this });
           AppMethodBeat.o(115704);
         }
         else
@@ -73,7 +71,7 @@ public final class a
       }
       catch (Exception paramd1)
       {
-        ac.printErrStackTrace("MicroMsg.FilterProcessTex", paramd1, "initial error", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.FilterProcessTex", paramd1, "initial error", new Object[0]);
         AppMethodBeat.o(115704);
         return;
       }
@@ -91,23 +89,23 @@ public final class a
     }
   }
   
-  public final ByteBuffer emN()
+  public final ByteBuffer eAL()
   {
-    AppMethodBeat.i(208530);
-    if (!this.aVG)
+    AppMethodBeat.i(216578);
+    if (!this.bgb)
     {
-      ac.i("MicroMsg.FilterProcessTex", "still not have data");
-      AppMethodBeat.o(208530);
+      ad.i("MicroMsg.FilterProcessTex", "still not have data");
+      AppMethodBeat.o(216578);
       return null;
     }
-    ByteBuffer localByteBuffer = this.APw;
-    AppMethodBeat.o(208530);
+    ByteBuffer localByteBuffer = this.CoR;
+    AppMethodBeat.o(216578);
     return localByteBuffer;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.a.a
  * JD-Core Version:    0.7.0.1
  */

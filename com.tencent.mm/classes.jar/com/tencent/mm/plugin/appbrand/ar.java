@@ -1,136 +1,182 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.app.Activity;
-import android.view.View;
+import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.r.a.a;
-import com.tencent.mm.plugin.appbrand.r.a.c;
-import com.tencent.mm.plugin.appbrand.r.a.d.b;
-import com.tencent.mm.plugin.appbrand.r.a.e;
-import com.tencent.mm.plugin.appbrand.r.a.e.b;
-import d.g.b.k;
-import d.l;
+import com.tencent.mm.plugin.appbrand.o.b.b;
+import com.tencent.mm.plugin.appbrand.o.d.b;
+import com.tencent.mm.plugin.appbrand.o.k.c;
+import com.tencent.mm.plugin.appbrand.q.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/WindowFullscreenHandlerViewImpl;", "Lcom/tencent/mm/plugin/appbrand/platform/window/AbsWindowFullscreenHandler;", "windowAndroid", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;", "containerProvider", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowFullscreenHandler$FullScreenViewContainerProvider;", "activity", "Landroid/app/Activity;", "(Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;Lcom/tencent/mm/plugin/appbrand/platform/window/WindowFullscreenHandler$FullScreenViewContainerProvider;Landroid/app/Activity;)V", "getActivity", "()Landroid/app/Activity;", "setActivity", "(Landroid/app/Activity;)V", "isInFullScreen", "", "()Z", "setInFullScreen", "(Z)V", "lastActivityOrientation", "", "lastWindowOrientation", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "getWindowAndroid", "()Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;", "enterFullscreen", "", "view", "Landroid/view/View;", "direction", "exitFullscreen", "parserOrientation", "orientation", "", "release", "setRequestedFullscreenDirection", "luggage-wxa-app_release"})
 public final class ar
-  extends a
 {
-  private Activity activity;
-  private e.b jik;
-  private int jil;
-  boolean jim;
-  private final c jin;
+  private static int jBt;
+  private static int jBu;
+  private static int jBv;
+  private static k.c jBw;
+  private static k.c jBx;
+  private static d.b jBy;
+  private static b.b jBz;
   
-  public ar(c paramc, d.b paramb, Activity paramActivity)
+  static
   {
-    super(paramc, paramb);
-    AppMethodBeat.i(193277);
-    this.jin = paramc;
-    this.activity = paramActivity;
-    this.jik = e.b.lOQ;
-    this.jil = 1;
-    AppMethodBeat.o(193277);
-  }
-  
-  public final void O(View paramView, int paramInt)
-  {
-    AppMethodBeat.i(193274);
-    k.h(paramView, "view");
-    super.O(paramView, paramInt);
-    rj(paramInt);
-    bsF();
-    this.jim = true;
-    AppMethodBeat.o(193274);
-  }
-  
-  public final boolean aUJ()
-  {
-    AppMethodBeat.i(193276);
-    boolean bool = this.lOM;
-    if (bool) {
-      this.jim = false;
-    }
-    if (super.aUJ())
+    AppMethodBeat.i(43996);
+    jBt = 1;
+    jBu = 2;
+    jBv = 3;
+    jBw = new k.c()
     {
-      if (e.b.c(this.jik)) {
-        this.jin.setSoftOrientation("landscape");
-      }
-      for (;;)
+      public final boolean KN(String paramAnonymousString)
       {
-        if (this.activity != null)
+        AppMethodBeat.i(43986);
+        if (c.SU(paramAnonymousString))
         {
-          Activity localActivity = this.activity;
-          if (localActivity == null) {
-            k.fOy();
-          }
-          localActivity.setRequestedOrientation(this.jil);
+          ad.i("MicroMsg.WcWssSwitchLogic", "isWcWssOpen : true for hardcode case");
+          AppMethodBeat.o(43986);
+          return true;
         }
-        bsG();
-        AppMethodBeat.o(193276);
-        return true;
-        this.jin.setSoftOrientation("portrait");
+        boolean bool = ar.rI(ar.jBt);
+        AppMethodBeat.o(43986);
+        return bool;
       }
-    }
-    if (bool)
-    {
-      this.lOM = false;
-      bsG();
-      AppMethodBeat.o(193276);
-      return true;
-    }
-    AppMethodBeat.o(193276);
-    return false;
-  }
-  
-  public final void release()
-  {
-    AppMethodBeat.i(193275);
-    super.release();
-    this.activity = null;
-    AppMethodBeat.o(193275);
-  }
-  
-  public final void rj(int paramInt)
-  {
-    AppMethodBeat.i(193273);
-    this.lOM = true;
-    if ((paramInt == 90) || (paramInt == -90)) {}
-    for (Object localObject1 = "landscape";; localObject1 = "portrait")
-    {
-      Object localObject2 = this.jin.getOrientationHandler();
-      k.g(localObject2, "windowAndroid.orientationHandler");
-      localObject2 = ((e)localObject2).aUB();
-      k.g(localObject2, "windowAndroid.orientatio…andler.currentOrientation");
-      this.jik = ((e.b)localObject2);
-      this.jin.setSoftOrientation((String)localObject1);
-      if ((this.activity != null) && (k.g(localObject1, "landscape")))
+      
+      public final boolean aXT()
       {
-        localObject1 = this.activity;
-        if (localObject1 == null) {
-          k.fOy();
-        }
-        if (!e.b.c(e.b.uy(((Activity)localObject1).getRequestedOrientation())))
-        {
-          localObject1 = this.activity;
-          if (localObject1 == null) {
-            k.fOy();
-          }
-          this.jil = ((Activity)localObject1).getRequestedOrientation();
-          localObject1 = this.activity;
-          if (localObject1 == null) {
-            k.fOy();
-          }
-          ((Activity)localObject1).setRequestedOrientation(6);
-        }
+        AppMethodBeat.i(43987);
+        boolean bool = ar.rJ(ar.jBt);
+        AppMethodBeat.o(43987);
+        return bool;
       }
-      AppMethodBeat.o(193273);
-      return;
+    };
+    jBx = new k.c()
+    {
+      public final boolean KN(String paramAnonymousString)
+      {
+        AppMethodBeat.i(43988);
+        boolean bool = ar.rI(ar.jBt);
+        AppMethodBeat.o(43988);
+        return bool;
+      }
+      
+      public final boolean aXT()
+      {
+        AppMethodBeat.i(43989);
+        boolean bool = ar.rJ(ar.jBt);
+        AppMethodBeat.o(43989);
+        return bool;
+      }
+    };
+    jBy = new d.b()
+    {
+      public final boolean aXT()
+      {
+        AppMethodBeat.i(43991);
+        boolean bool = ar.rJ(ar.jBu);
+        AppMethodBeat.o(43991);
+        return bool;
+      }
+      
+      public final boolean aXU()
+      {
+        AppMethodBeat.i(43990);
+        boolean bool = ar.rI(ar.jBu);
+        AppMethodBeat.o(43990);
+        return bool;
+      }
+    };
+    jBz = new b.b()
+    {
+      public final boolean aXU()
+      {
+        AppMethodBeat.i(43992);
+        boolean bool = ar.rI(ar.jBv);
+        AppMethodBeat.o(43992);
+        return bool;
+      }
+    };
+    AppMethodBeat.o(43996);
+  }
+  
+  public static k.c aXP()
+  {
+    return jBw;
+  }
+  
+  public static k.c aXQ()
+  {
+    return jBx;
+  }
+  
+  public static d.b aXR()
+  {
+    return jBy;
+  }
+  
+  public static b.b aXS()
+  {
+    return jBz;
+  }
+  
+  private static Boolean rH(int paramInt)
+  {
+    AppMethodBeat.i(43993);
+    Object localObject;
+    if (paramInt == jBt)
+    {
+      localObject = aj.fkE().getString("appbrandgame_open_wcwss", "");
+      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("wcwss")))
+      {
+        localObject = Boolean.TRUE;
+        AppMethodBeat.o(43993);
+        return localObject;
+      }
+      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("websocket")))
+      {
+        localObject = Boolean.FALSE;
+        AppMethodBeat.o(43993);
+        return localObject;
+      }
     }
+    else if (paramInt == jBu)
+    {
+      localObject = aj.fkE().getString("appbrandgame_open_cdnrequest", "");
+      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("chromium")))
+      {
+        localObject = Boolean.TRUE;
+        AppMethodBeat.o(43993);
+        return localObject;
+      }
+      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("request")))
+      {
+        localObject = Boolean.FALSE;
+        AppMethodBeat.o(43993);
+        return localObject;
+      }
+    }
+    else if (paramInt == jBv)
+    {
+      localObject = aj.fkE().getString("appbrandgame_open_cronetdownload", "");
+      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("open")))
+      {
+        localObject = Boolean.TRUE;
+        AppMethodBeat.o(43993);
+        return localObject;
+      }
+      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("close")))
+      {
+        localObject = Boolean.FALSE;
+        AppMethodBeat.o(43993);
+        return localObject;
+      }
+    }
+    AppMethodBeat.o(43993);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ar
  * JD-Core Version:    0.7.0.1
  */

@@ -19,21 +19,21 @@ import java.io.InputStream;
 public final class c
   implements com.bumptech.glide.c.a.d<InputStream>
 {
-  private final Uri aDK;
-  private final e aDL;
+  private final Uri aFB;
+  private final e aFC;
   private InputStream inputStream;
   
   private c(Uri paramUri, e parame)
   {
-    this.aDK = paramUri;
-    this.aDL = parame;
+    this.aFB = paramUri;
+    this.aFC = parame;
   }
   
   public static c a(Context paramContext, Uri paramUri, d paramd)
   {
     AppMethodBeat.i(76907);
-    b localb = com.bumptech.glide.c.ad(paramContext).aAy;
-    paramContext = new c(paramUri, new e(com.bumptech.glide.c.ad(paramContext).aAx.nt(), paramd, localb, paramContext.getContentResolver()));
+    b localb = com.bumptech.glide.c.ad(paramContext).aCp;
+    paramContext = new c(paramUri, new e(com.bumptech.glide.c.ad(paramContext).aCo.nL(), paramd, localb, paramContext.getContentResolver()));
     AppMethodBeat.o(76907);
     return paramContext;
   }
@@ -45,16 +45,16 @@ public final class c
     {
       try
       {
-        paramg = this.aDL.j(this.aDK);
+        paramg = this.aFC.j(this.aFB);
         if (paramg == null) {
           break label93;
         }
-        i = this.aDL.i(this.aDK);
+        i = this.aFC.i(this.aFB);
         if (i != -1)
         {
           paramg = new com.bumptech.glide.c.a.g(paramg, i);
           this.inputStream = paramg;
-          parama.R(this.inputStream);
+          parama.S(this.inputStream);
           AppMethodBeat.o(76908);
           return;
         }
@@ -89,32 +89,32 @@ public final class c
     AppMethodBeat.o(76909);
   }
   
-  public final Class<InputStream> nU()
+  public final Class<InputStream> om()
   {
     return InputStream.class;
   }
   
-  public final a nV()
+  public final a on()
   {
-    return a.aCP;
+    return a.aEG;
   }
   
   public static final class a
     implements d
   {
-    private static final String[] aDM = { "_data" };
-    private final ContentResolver aDI;
+    private static final String[] aFD = { "_data" };
+    private final ContentResolver aFz;
     
     public a(ContentResolver paramContentResolver)
     {
-      this.aDI = paramContentResolver;
+      this.aFz = paramContentResolver;
     }
     
     public final Cursor h(Uri paramUri)
     {
       AppMethodBeat.i(76905);
       paramUri = paramUri.getLastPathSegment();
-      paramUri = this.aDI.query(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, aDM, "kind = 1 AND image_id = ?", new String[] { paramUri }, null);
+      paramUri = this.aFz.query(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, aFD, "kind = 1 AND image_id = ?", new String[] { paramUri }, null);
       AppMethodBeat.o(76905);
       return paramUri;
     }
@@ -123,19 +123,19 @@ public final class c
   public static final class b
     implements d
   {
-    private static final String[] aDM = { "_data" };
-    private final ContentResolver aDI;
+    private static final String[] aFD = { "_data" };
+    private final ContentResolver aFz;
     
     public b(ContentResolver paramContentResolver)
     {
-      this.aDI = paramContentResolver;
+      this.aFz = paramContentResolver;
     }
     
     public final Cursor h(Uri paramUri)
     {
       AppMethodBeat.i(76906);
       paramUri = paramUri.getLastPathSegment();
-      paramUri = this.aDI.query(MediaStore.Video.Thumbnails.EXTERNAL_CONTENT_URI, aDM, "kind = 1 AND video_id = ?", new String[] { paramUri }, null);
+      paramUri = this.aFz.query(MediaStore.Video.Thumbnails.EXTERNAL_CONTENT_URI, aFD, "kind = 1 AND video_id = ?", new String[] { paramUri }, null);
       AppMethodBeat.o(76906);
       return paramUri;
     }

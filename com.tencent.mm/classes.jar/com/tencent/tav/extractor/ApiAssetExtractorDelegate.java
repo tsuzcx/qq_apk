@@ -18,21 +18,21 @@ public class ApiAssetExtractorDelegate
   
   public ApiAssetExtractorDelegate()
   {
-    AppMethodBeat.i(198070);
+    AppMethodBeat.i(218477);
     this.released = false;
     this.mediaExtractor = new MediaExtractor();
-    AppMethodBeat.o(198070);
+    AppMethodBeat.o(218477);
   }
   
   public boolean advance()
   {
     try
     {
-      AppMethodBeat.i(198080);
+      AppMethodBeat.i(218487);
       if (!this.released) {
         this.mediaExtractor.advance();
       }
-      AppMethodBeat.o(198080);
+      AppMethodBeat.o(218487);
       return false;
     }
     finally {}
@@ -168,9 +168,9 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(198076);
+      AppMethodBeat.i(218483);
       MediaFormat localMediaFormat = this.mediaExtractor.getTrackFormat(paramInt);
-      AppMethodBeat.o(198076);
+      AppMethodBeat.o(218483);
       return localMediaFormat;
     }
     finally
@@ -228,9 +228,9 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(198074);
+      AppMethodBeat.i(218481);
       this.mediaExtractor.release();
-      AppMethodBeat.o(198074);
+      AppMethodBeat.o(218481);
       return;
     }
     finally
@@ -244,11 +244,11 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(198079);
+      AppMethodBeat.i(218486);
       if (!this.released) {
         this.mediaExtractor.seekTo(paramLong, paramInt);
       }
-      AppMethodBeat.o(198079);
+      AppMethodBeat.o(218486);
       return;
     }
     finally {}
@@ -258,11 +258,11 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(198077);
+      AppMethodBeat.i(218484);
       if (!this.released) {
         this.mediaExtractor.selectTrack(paramInt);
       }
-      AppMethodBeat.o(198077);
+      AppMethodBeat.o(218484);
       return;
     }
     finally {}
@@ -273,18 +273,18 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(198072);
+      AppMethodBeat.i(218479);
       try
       {
         this.mediaExtractor.setDataSource(paramAssetFileDescriptor);
-        AppMethodBeat.o(198072);
+        AppMethodBeat.o(218479);
       }
       catch (IOException paramAssetFileDescriptor)
       {
         for (;;)
         {
           Logger.e("ApiAssetExtractorDelegate", "setDataSource", paramAssetFileDescriptor);
-          AppMethodBeat.o(198072);
+          AppMethodBeat.o(218479);
         }
       }
       return;
@@ -296,18 +296,18 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(198073);
+      AppMethodBeat.i(218480);
       try
       {
         this.mediaExtractor.setDataSource(paramFileDescriptor, 0L, 576460752303423487L);
-        AppMethodBeat.o(198073);
+        AppMethodBeat.o(218480);
       }
       catch (IOException paramFileDescriptor)
       {
         for (;;)
         {
           Logger.e("ApiAssetExtractorDelegate", "setDataSource", paramFileDescriptor);
-          AppMethodBeat.o(198073);
+          AppMethodBeat.o(218480);
         }
       }
       return;
@@ -319,18 +319,18 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(198071);
+      AppMethodBeat.i(218478);
       try
       {
         this.mediaExtractor.setDataSource(paramString);
-        AppMethodBeat.o(198071);
+        AppMethodBeat.o(218478);
       }
       catch (IOException paramString)
       {
         for (;;)
         {
           Logger.e("ApiAssetExtractorDelegate", "setDataSource", paramString);
-          AppMethodBeat.o(198071);
+          AppMethodBeat.o(218478);
         }
       }
       return;
@@ -342,11 +342,11 @@ public class ApiAssetExtractorDelegate
   {
     try
     {
-      AppMethodBeat.i(198078);
+      AppMethodBeat.i(218485);
       if (!this.released) {
         this.mediaExtractor.unselectTrack(paramInt);
       }
-      AppMethodBeat.o(198078);
+      AppMethodBeat.o(218485);
       return;
     }
     finally {}
@@ -354,7 +354,7 @@ public class ApiAssetExtractorDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.extractor.ApiAssetExtractorDelegate
  * JD-Core Version:    0.7.0.1
  */

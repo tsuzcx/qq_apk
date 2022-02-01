@@ -16,77 +16,82 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.finder.cgi.z;
-import com.tencent.mm.protocal.protobuf.aiz;
-import com.tencent.mm.protocal.protobuf.ajs;
-import com.tencent.mm.protocal.protobuf.akg;
-import com.tencent.mm.protocal.protobuf.amf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ad.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.finder.cgi.ag;
+import com.tencent.mm.plugin.i.a.j;
+import com.tencent.mm.plugin.i.a.s;
+import com.tencent.mm.protocal.protobuf.alp;
+import com.tencent.mm.protocal.protobuf.amp;
+import com.tencent.mm.protocal.protobuf.anf;
+import com.tencent.mm.protocal.protobuf.apl;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.base.n.e;
 import d.g.a.m;
+import d.g.b.p;
+import d.l;
 import d.v;
-import d.y;
+import d.z;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/FinderBlackListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "()V", "MENU_ID_UNSET_BLACK_LIST", "", "TAG", "", "contactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "Lkotlin/collections/ArrayList;", "emptyTip", "Landroid/widget/TextView;", "hasMore", "", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "listAdapter", "Lcom/tencent/mm/plugin/finder/ui/FansListAdapter;", "listView", "Landroid/widget/ListView;", "popupMenu", "Lcom/tencent/mm/ui/widget/menu/MMPopupMenu;", "doGetBlackListScene", "", "getLayoutId", "initView", "merge", "contacts", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onModifyResult", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showPopupMenu", "fansContact", "anchor", "Landroid/view/View;", "update", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/ui/FinderBlackListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "()V", "MENU_ID_UNSET_BLACK_LIST", "", "TAG", "", "contactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "Lkotlin/collections/ArrayList;", "emptyTip", "Landroid/widget/TextView;", "hasMore", "", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "listAdapter", "Lcom/tencent/mm/plugin/finder/ui/FansListAdapter;", "listView", "Landroid/widget/ListView;", "popupMenu", "Lcom/tencent/mm/ui/widget/menu/MMPopupMenu;", "doGetBlackListScene", "", "getLayoutId", "initView", "merge", "contacts", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onModifyResult", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showPopupMenu", "fansContact", "anchor", "Landroid/view/View;", "update", "plugin-finder_release"})
 public final class FinderBlackListUI
   extends MMFinderUI
-  implements com.tencent.mm.ak.g, com.tencent.mm.plugin.i.a.k<amf>
+  implements f, s<apl>
 {
   private final String TAG;
   private HashMap _$_findViewCache;
-  private TextView gCu;
+  private TextView gWe;
   private boolean hasMore;
-  private ListView iWK;
-  private com.tencent.mm.ui.widget.b.a nym;
-  private final f rFJ;
-  private final int rFK;
-  private com.tencent.mm.bw.b rpX;
-  private final ArrayList<ajs> rpr;
+  private ListView jpT;
+  private com.tencent.mm.ui.widget.b.a nZK;
+  private com.tencent.mm.bx.b rHF;
+  private final a sAI;
+  private final int sAJ;
+  private final ArrayList<amp> sec;
   
   public FinderBlackListUI()
   {
     AppMethodBeat.i(167154);
     this.TAG = "Finder.FinderBlackListUI";
-    this.rFJ = new f((Activity)this);
-    this.rpr = new ArrayList();
-    this.rFK = 1001;
+    this.sAI = new a((Activity)this);
+    this.sec = new ArrayList();
+    this.sAJ = 1001;
     AppMethodBeat.o(167154);
   }
   
-  private final void cBw()
+  private final void cJw()
   {
     AppMethodBeat.i(167151);
-    z localz = new z(this.rpX);
-    com.tencent.mm.kernel.g.agi().b((n)localz);
+    ag localag = new ag(this.rHF);
+    g.aiU().b((n)localag);
     AppMethodBeat.o(167151);
   }
   
   private final void update()
   {
     AppMethodBeat.i(167149);
-    if (this.rpr.isEmpty())
+    if (this.sec.isEmpty())
     {
-      localTextView = this.gCu;
+      localTextView = this.gWe;
       if (localTextView == null) {
-        d.g.b.k.aVY("emptyTip");
+        p.bcb("emptyTip");
       }
       localTextView.setVisibility(0);
-      localTextView = this.gCu;
+      localTextView = this.gWe;
       if (localTextView == null) {
-        d.g.b.k.aVY("emptyTip");
+        p.bcb("emptyTip");
       }
       localTextView.setText((CharSequence)getString(2131759155));
       AppMethodBeat.o(167149);
       return;
     }
-    TextView localTextView = this.gCu;
+    TextView localTextView = this.gWe;
     if (localTextView == null) {
-      d.g.b.k.aVY("emptyTip");
+      p.bcb("emptyTip");
     }
     localTextView.setVisibility(8);
     AppMethodBeat.o(167149);
@@ -94,7 +99,7 @@ public final class FinderBlackListUI
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(203092);
+    AppMethodBeat.i(203889);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -105,7 +110,7 @@ public final class FinderBlackListUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(203092);
+    AppMethodBeat.o(203889);
     return localView1;
   }
   
@@ -119,24 +124,24 @@ public final class FinderBlackListUI
     AppMethodBeat.i(167148);
     setMMTitle(getString(2131759270));
     Object localObject = findViewById(2131298674);
-    d.g.b.k.g(localObject, "findViewById<ListView>(R.id.contact_list)");
-    this.iWK = ((ListView)localObject);
+    p.g(localObject, "findViewById<ListView>(R.id.contact_list)");
+    this.jpT = ((ListView)localObject);
     localObject = findViewById(2131299472);
-    d.g.b.k.g(localObject, "findViewById<TextView>(R.id.empty_tip)");
-    this.gCu = ((TextView)localObject);
+    p.g(localObject, "findViewById<TextView>(R.id.empty_tip)");
+    this.gWe = ((TextView)localObject);
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    this.nym = new com.tencent.mm.ui.widget.b.a((Context)this);
-    localObject = this.iWK;
+    this.nZK = new com.tencent.mm.ui.widget.b.a((Context)this);
+    localObject = this.jpT;
     if (localObject == null) {
-      d.g.b.k.aVY("listView");
+      p.bcb("listView");
     }
-    ((ListView)localObject).setAdapter((ListAdapter)this.rFJ);
-    localObject = this.iWK;
+    ((ListView)localObject).setAdapter((ListAdapter)this.sAI);
+    localObject = this.jpT;
     if (localObject == null) {
-      d.g.b.k.aVY("listView");
+      p.bcb("listView");
     }
     ((ListView)localObject).setOnScrollListener((AbsListView.OnScrollListener)new b(this));
-    this.rFJ.rFA = ((m)new c(this));
+    this.sAI.sAz = ((m)new c(this));
     update();
     AppMethodBeat.o(167148);
   }
@@ -145,9 +150,9 @@ public final class FinderBlackListUI
   {
     AppMethodBeat.i(167147);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.agi().a(3717, (com.tencent.mm.ak.g)this);
+    g.aiU().a(3717, (f)this);
     initView();
-    cBw();
+    cJw();
     AppMethodBeat.o(167147);
   }
   
@@ -155,14 +160,14 @@ public final class FinderBlackListUI
   {
     AppMethodBeat.i(167152);
     super.onDestroy();
-    com.tencent.mm.kernel.g.agi().b(3717, (com.tencent.mm.ak.g)this);
+    g.aiU().b(3717, (f)this);
     AppMethodBeat.o(167152);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final n paramn)
   {
     AppMethodBeat.i(167153);
-    ac.i(this.TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
+    ad.i(this.TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if (paramn == null)
@@ -171,18 +176,18 @@ public final class FinderBlackListUI
         AppMethodBeat.o(167153);
         throw paramString;
       }
-      paramString = ((z)paramn).rr.aBD();
+      paramString = ((ag)paramn).rr.aEF();
       if (paramString == null)
       {
         paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetBlackListResponse");
         AppMethodBeat.o(167153);
         throw paramString;
       }
-      if (((akg)paramString).continueFlag != 0) {}
+      if (((anf)paramString).continueFlag != 0) {}
       for (boolean bool = true;; bool = false)
       {
         this.hasMore = bool;
-        paramString = ((z)paramn).rr.aBD();
+        paramString = ((ag)paramn).rr.aEF();
         if (paramString != null) {
           break;
         }
@@ -190,7 +195,7 @@ public final class FinderBlackListUI
         AppMethodBeat.o(167153);
         throw paramString;
       }
-      this.rpX = ((akg)paramString).rmJ;
+      this.rHF = ((anf)paramString).sbF;
       c.g((d.g.a.a)new e(this, paramn));
     }
     AppMethodBeat.o(167153);
@@ -202,7 +207,7 @@ public final class FinderBlackListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -211,13 +216,13 @@ public final class FinderBlackListUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167140);
-      this.rFL.finish();
+      this.sAK.finish();
       AppMethodBeat.o(167140);
       return true;
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderBlackListUI$initView$2", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/ui/FinderBlackListUI$initView$2", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "plugin-finder_release"})
   public static final class b
     implements AbsListView.OnScrollListener
   {
@@ -228,24 +233,24 @@ public final class FinderBlackListUI
       AppMethodBeat.i(167141);
       if ((paramInt == 0) && (paramAbsListView != null) && (!paramAbsListView.canScrollVertically(1)))
       {
-        if (FinderBlackListUI.a(this.rFL))
+        if (FinderBlackListUI.a(this.sAK))
         {
-          FinderBlackListUI.b(this.rFL);
+          FinderBlackListUI.b(this.sAK);
           AppMethodBeat.o(167141);
           return;
         }
-        if (FinderBlackListUI.c(this.rFL).getFooterViewsCount() == 0) {
-          FinderBlackListUI.c(this.rFL).addFooterView(View.inflate((Context)this.rFL, 2131494060, null));
+        if (FinderBlackListUI.c(this.sAK).getFooterViewsCount() == 0) {
+          FinderBlackListUI.c(this.sAK).addFooterView(View.inflate((Context)this.sAK, 2131494060, null));
         }
       }
       AppMethodBeat.o(167141);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "view", "Landroid/view/View;", "position", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "view", "Landroid/view/View;", "position", "", "invoke"})
   static final class c
-    extends d.g.b.l
-    implements m<View, Integer, y>
+    extends d.g.b.q
+    implements m<View, Integer, z>
   {
     c(FinderBlackListUI paramFinderBlackListUI)
     {
@@ -253,21 +258,21 @@ public final class FinderBlackListUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class d
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends d.g.b.q
+    implements d.g.a.a<z>
   {
-    d(FinderBlackListUI paramFinderBlackListUI, aiz paramaiz, amf paramamf)
+    d(FinderBlackListUI paramFinderBlackListUI, alp paramalp, apl paramapl)
     {
       super();
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class e
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends d.g.b.q
+    implements d.g.a.a<z>
   {
     e(FinderBlackListUI paramFinderBlackListUI, n paramn)
     {
@@ -275,7 +280,7 @@ public final class FinderBlackListUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
   static final class f
     implements View.OnCreateContextMenuListener
   {
@@ -284,27 +289,27 @@ public final class FinderBlackListUI
     public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
     {
       AppMethodBeat.i(167145);
-      paramContextMenu.add(0, FinderBlackListUI.e(this.rFL), 0, (CharSequence)this.rFL.getString(2131757741));
+      paramContextMenu.add(0, FinderBlackListUI.e(this.sAK), 0, (CharSequence)this.sAK.getString(2131757741));
       AppMethodBeat.o(167145);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
   static final class g
-    implements n.d
+    implements n.e
   {
-    g(FinderBlackListUI paramFinderBlackListUI, ajs paramajs) {}
+    g(FinderBlackListUI paramFinderBlackListUI, amp paramamp) {}
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
       AppMethodBeat.i(167146);
-      d.g.b.k.g(paramMenuItem, "menuItem");
-      if (paramMenuItem.getItemId() == FinderBlackListUI.e(this.rFL))
+      p.g(paramMenuItem, "menuItem");
+      if (paramMenuItem.getItemId() == FinderBlackListUI.e(this.sAK))
       {
-        paramMenuItem = (com.tencent.mm.plugin.i.a.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.f.class);
-        String str = this.rFO.EEs;
-        d.g.b.k.g(str, "fansContact.fansId");
-        paramMenuItem.a(str, false, (com.tencent.mm.plugin.i.a.k)this.rFL);
+        paramMenuItem = (j)g.ab(j.class);
+        String str = this.sAN.GlF;
+        p.g(str, "fansContact.fansId");
+        paramMenuItem.a(str, false, (s)this.sAK);
       }
       AppMethodBeat.o(167146);
     }
@@ -312,7 +317,7 @@ public final class FinderBlackListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderBlackListUI
  * JD-Core Version:    0.7.0.1
  */

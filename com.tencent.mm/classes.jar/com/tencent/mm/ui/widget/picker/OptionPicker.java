@@ -6,16 +6,16 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.aq;
 
 public class OptionPicker
   extends NumberPicker
 {
   private Context mContext;
-  private String[] mKp;
-  private int mKq;
   private int mMaxWidth;
   private int mMinWidth;
+  private String[] nkL;
+  private int nkM;
   
   public OptionPicker(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,8 +38,8 @@ public class OptionPicker
   private void init()
   {
     AppMethodBeat.i(159583);
-    this.mMinWidth = ao.fromDPToPix(this.mContext, 120);
-    this.mKq = ao.fromDPToPix(this.mContext, 20);
+    this.mMinWidth = aq.fromDPToPix(this.mContext, 120);
+    this.nkM = aq.fromDPToPix(this.mContext, 20);
     f.a(this, getResources().getDrawable(2131233617));
     setDescendantFocusability(393216);
     f.b(this, this.mContext.getResources().getColor(2131100711));
@@ -66,7 +66,7 @@ public class OptionPicker
       AppMethodBeat.o(159588);
       return;
     }
-    paramInt2 = getMeasuredWidth() + this.mKq * 2;
+    paramInt2 = getMeasuredWidth() + this.nkM * 2;
     paramInt1 = paramInt2;
     if (this.mMaxWidth > 0) {
       if (this.mMaxWidth <= paramInt2) {
@@ -93,7 +93,7 @@ public class OptionPicker
   public final void setExtraPadding(int paramInt)
   {
     AppMethodBeat.i(159586);
-    this.mKq = Math.max(paramInt, 0);
+    this.nkM = Math.max(paramInt, 0);
     AppMethodBeat.o(159586);
   }
   
@@ -115,7 +115,7 @@ public class OptionPicker
       AppMethodBeat.o(159584);
       return;
     }
-    this.mKp = paramArrayOfString;
+    this.nkL = paramArrayOfString;
     setDisplayedValues(null);
     setMinValue(0);
     setMaxValue(Math.max(paramArrayOfString.length - 1, 0));

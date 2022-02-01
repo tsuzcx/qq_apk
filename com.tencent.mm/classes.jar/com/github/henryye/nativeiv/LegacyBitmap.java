@@ -17,25 +17,36 @@ import java.io.InputStream;
 public class LegacyBitmap
   implements IBitmap<Bitmap>
 {
-  private Bitmap aQs = null;
+  private Bitmap baM = null;
   private long lastDecodeUsing = -1L;
+  
+  protected Bitmap a(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, c paramc)
+  {
+    AppMethodBeat.i(194933);
+    paramc = new BitmapFactory.Options();
+    paramc.inPreferredConfig = paramImageDecodeConfig.mConfig;
+    paramc.inPremultiplied = paramImageDecodeConfig.mPremultiplyAlpha;
+    paramInputStream = BitmapFactory.decodeStream(paramInputStream, null, paramc);
+    if ((paramInputStream != null) && (paramInputStream.getConfig() != Bitmap.Config.ARGB_8888))
+    {
+      b.w("Ni.LegacyBitmap", "hy: config not argb-8888", new Object[0]);
+      paramImageDecodeConfig = Bitmap.createBitmap(paramInputStream.getWidth(), paramInputStream.getHeight(), Bitmap.Config.ARGB_8888);
+      new Canvas(paramImageDecodeConfig).drawBitmap(paramInputStream, 0.0F, 0.0F, null);
+      paramInputStream.recycle();
+      paramInputStream = paramImageDecodeConfig;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(194933);
+      return paramInputStream;
+    }
+  }
   
   public void decodeInputStream(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, c paramc)
   {
     AppMethodBeat.i(127349);
     long l = SystemClock.elapsedRealtime();
-    paramc = new BitmapFactory.Options();
-    paramc.inPreferredConfig = paramImageDecodeConfig.mConfig;
-    paramc.inPremultiplied = paramImageDecodeConfig.mPremultiplyAlpha;
-    this.aQs = BitmapFactory.decodeStream(paramInputStream, null, paramc);
-    if ((this.aQs != null) && (this.aQs.getConfig() != Bitmap.Config.ARGB_8888))
-    {
-      b.w("Ni.LegacyBitmap", "hy: config not argb-8888", new Object[0]);
-      paramInputStream = Bitmap.createBitmap(this.aQs.getWidth(), this.aQs.getHeight(), Bitmap.Config.ARGB_8888);
-      new Canvas(paramInputStream).drawBitmap(this.aQs, 0.0F, 0.0F, null);
-      this.aQs.recycle();
-      this.aQs = paramInputStream;
-    }
+    this.baM = a(paramInputStream, paramImageDecodeConfig, paramc);
     this.lastDecodeUsing = (SystemClock.elapsedRealtime() - l);
     AppMethodBeat.o(127349);
   }
@@ -54,22 +65,22 @@ public class LegacyBitmap
   @Keep
   public Bitmap provide()
   {
-    return this.aQs;
+    return this.baM;
   }
   
   @Keep
   public void recycle()
   {
     AppMethodBeat.i(127350);
-    if (this.aQs != null) {
-      this.aQs.recycle();
+    if (this.baM != null) {
+      this.baM.recycle();
     }
     AppMethodBeat.o(127350);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.github.henryye.nativeiv.LegacyBitmap
  * JD-Core Version:    0.7.0.1
  */

@@ -12,42 +12,42 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   implements b
 {
-  private final RenderScript HIS;
-  private final ScriptIntrinsicBlur HIT;
-  private Allocation HIU;
-  private int HIV;
-  private int HIW;
+  private final RenderScript JwJ;
+  private final ScriptIntrinsicBlur JwK;
+  private Allocation JwL;
+  private int JwM;
+  private int JwN;
   
   public f(Context paramContext)
   {
     AppMethodBeat.i(142746);
-    this.HIV = -1;
-    this.HIW = -1;
-    this.HIS = RenderScript.create(paramContext);
-    this.HIT = ScriptIntrinsicBlur.create(this.HIS, Element.U8_4(this.HIS));
+    this.JwM = -1;
+    this.JwN = -1;
+    this.JwJ = RenderScript.create(paramContext);
+    this.JwK = ScriptIntrinsicBlur.create(this.JwJ, Element.U8_4(this.JwJ));
     AppMethodBeat.o(142746);
   }
   
   public final Bitmap d(Bitmap paramBitmap, float paramFloat)
   {
     AppMethodBeat.i(142747);
-    Allocation localAllocation = Allocation.createFromBitmap(this.HIS, paramBitmap);
-    if ((paramBitmap.getHeight() == this.HIW) && (paramBitmap.getWidth() == this.HIV)) {}
+    Allocation localAllocation = Allocation.createFromBitmap(this.JwJ, paramBitmap);
+    if ((paramBitmap.getHeight() == this.JwN) && (paramBitmap.getWidth() == this.JwM)) {}
     for (int i = 1;; i = 0)
     {
       if (i == 0)
       {
-        if (this.HIU != null) {
-          this.HIU.destroy();
+        if (this.JwL != null) {
+          this.JwL.destroy();
         }
-        this.HIU = Allocation.createTyped(this.HIS, localAllocation.getType());
-        this.HIV = paramBitmap.getWidth();
-        this.HIW = paramBitmap.getHeight();
+        this.JwL = Allocation.createTyped(this.JwJ, localAllocation.getType());
+        this.JwM = paramBitmap.getWidth();
+        this.JwN = paramBitmap.getHeight();
       }
-      this.HIT.setRadius(paramFloat);
-      this.HIT.setInput(localAllocation);
-      this.HIT.forEach(this.HIU);
-      this.HIU.copyTo(paramBitmap);
+      this.JwK.setRadius(paramFloat);
+      this.JwK.setInput(localAllocation);
+      this.JwK.forEach(this.JwL);
+      this.JwL.copyTo(paramBitmap);
       localAllocation.destroy();
       AppMethodBeat.o(142747);
       return paramBitmap;
@@ -57,22 +57,22 @@ public final class f
   public final void destroy()
   {
     AppMethodBeat.i(142748);
-    this.HIT.destroy();
-    this.HIS.destroy();
-    if (this.HIU != null) {
-      this.HIU.destroy();
+    this.JwK.destroy();
+    this.JwJ.destroy();
+    if (this.JwL != null) {
+      this.JwL.destroy();
     }
     AppMethodBeat.o(142748);
   }
   
-  public final Bitmap.Config fjS()
+  public final Bitmap.Config fAh()
   {
     return Bitmap.Config.ARGB_8888;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.blur.f
  * JD-Core Version:    0.7.0.1
  */

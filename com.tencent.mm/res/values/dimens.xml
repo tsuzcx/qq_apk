@@ -50,9 +50,9 @@
     <item type="dimen" name="ak">@dimen/cd</item>
     <item type="dimen" name="al">@dimen/cb</item>
     <dimen name="am">18.0dip</dimen>
-    <dimen name="an">32.0dip</dimen>
+    <dimen name="an">24.0dip</dimen>
     <dimen name="ao">20.0dip</dimen>
-    <dimen name="ap">32.0dip</dimen>
+    <dimen name="ap">24.0dip</dimen>
     <dimen name="aq">142.0dip</dimen>
     <dimen name="ar">64.0dip</dimen>
     <item type="dimen" name="as">@dimen/c</item>
@@ -590,11 +590,11 @@
     <dimen name="p6">12.0dip</dimen>
     <dimen name="p7">11.0dip</dimen>
     <dimen name="p8">10.0dip</dimen>
-    <dimen name="p9">56.0dip</dimen>
+    <dimen name="p9">36.0dip</dimen>
     <dimen name="p_">32.0dip</dimen>
-    <dimen name="pa">6.0dip</dimen>
+    <dimen name="pa">24.0dip</dimen>
     <dimen name="pb">16.0dip</dimen>
-    <dimen name="pc">16.0dip</dimen>
+    <dimen name="pc">24.0dip</dimen>
     <dimen name="pd">28.0dip</dimen>
     <dimen name="pe">11.0dip</dimen>
     <dimen name="pf">16.0dip</dimen>
@@ -629,7 +629,7 @@
     <dimen name="q8">12.0dip</dimen>
     <dimen name="q9">24.0dip</dimen>
     <dimen name="q_">12.0dip</dimen>
-    <dimen name="qa">64.0dip</dimen>
+    <dimen name="qa">68.0dip</dimen>
     <dimen name="qb">11.0dip</dimen>
     <dimen name="qc">16.0dip</dimen>
     <dimen name="qd">4.0dip</dimen>
@@ -1138,9 +1138,9 @@
     <dimen name="a3z">48.0dip</dimen>
     <dimen name="a40">40.0dip</dimen>
     <dimen name="a41">16.0dip</dimen>
-    <dimen name="a42">13.0dip</dimen>
-    <dimen name="a43">9.0dip</dimen>
-    <dimen name="a44">5.0dip</dimen>
+    <dimen name="a42">15.0dip</dimen>
+    <dimen name="a43">10.0dip</dimen>
+    <dimen name="a44">6.0dip</dimen>
     <dimen name="a45">56.0dip</dimen>
     <dimen name="a46">24.0dip</dimen>
     <dimen name="a47">56.0dip</dimen>
@@ -1847,7 +1847,7 @@
     <dimen name="amd">40.0dip</dimen>
     <dimen name="ame">0.0dip</dimen>
     <dimen name="amf">3.0dip</dimen>
-    <item type="dimen" name="amg">@dimen/cg</item>
+    <item type="dimen" name="amg">@dimen/ch</item>
     <item type="dimen" name="amh">@dimen/cd</item>
     <item type="dimen" name="ami">@dimen/cg</item>
     <item type="dimen" name="amj">@dimen/c5</item>
@@ -1859,4 +1859,26 @@
     <dimen name="amp">56.0dip</dimen>
     <dimen name="amq">68.0dip</dimen>
     <dimen name="amr">320.0dip</dimen>
+    <dimen name="ams">11.0sp</dimen>
+    <dimen name="amt">17.0dip</dimen>
+    <dimen name="amu">14.0dip</dimen>
+    <dimen name="amv">12.0dip</dimen>
+    <dimen name="amw">5.0dip</dimen>
+    <dimen name="amx">12.0dip</dimen>
+    <dimen name="amy">36.0dip</dimen>
+    <dimen name="amz">0.5dip</dimen>
+    <dimen name="an0">1.0dip</dimen>
+    <dimen name="an1">3.0dip</dimen>
+    <dimen name="an2">28.0dip</dimen>
+    <dimen name="an3">20.0dip</dimen>
+    <dimen name="an4">1.0px</dimen>
+    <dimen name="an5">15.0dip</dimen>
+    <dimen name="an6">10.0dip</dimen>
+    <dimen name="an7">20.0dip</dimen>
+    <dimen name="an8">74.0dip</dimen>
+    <dimen name="an9">236.0dip</dimen>
+    <dimen name="an_">108.0dip</dimen>
+    <dimen name="ana">5.0dip</dimen>
+    <dimen name="anb">2.0dip</dimen>
+    <dimen name="anc">32.0dip</dimen>
 </resources>

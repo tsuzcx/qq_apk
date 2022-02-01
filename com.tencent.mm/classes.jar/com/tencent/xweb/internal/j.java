@@ -13,9 +13,9 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class j
 {
-  static a KDj;
-  static a KDk;
-  static a KDl;
+  static a MtJ;
+  static a MtK;
+  static a MtL;
   
   public static IWebView a(WebView.c paramc, WebView paramWebView)
   {
@@ -23,7 +23,7 @@ public final class j
     AppMethodBeat.i(156982);
     Log.i("WebViewWrapperFactory", "try to create webview  = ".concat(String.valueOf(paramc)));
     b localb = b.c("CREATE_WEBVIEW", paramc);
-    localb.fKl();
+    localb.gbG();
     localObject1 = localObject2;
     for (;;)
     {
@@ -42,7 +42,7 @@ public final class j
           continue;
         }
         localObject1 = paramWebView;
-        localb.fKm();
+        localb.gbH();
       }
       catch (Exception paramWebView)
       {
@@ -61,54 +61,54 @@ public final class j
   public static a g(WebView.c paramc)
   {
     AppMethodBeat.i(156981);
-    if (paramc == WebView.c.KzZ)
+    if (paramc == WebView.c.Mqu)
     {
-      if (KDj == null)
+      if (MtJ == null)
       {
-        paramc = f.mK("com.tencent.xweb.xwalk.XWalkWebFactory", "getInstance");
+        paramc = f.ni("com.tencent.xweb.xwalk.XWalkWebFactory", "getInstance");
         if ((paramc == null) || (!(paramc instanceof a)))
         {
           Log.e("WebViewWrapperFactory", "find com.tencent.xweb.XWalkWebFactory failed");
           AppMethodBeat.o(156981);
           return null;
         }
-        KDj = (a)paramc;
+        MtJ = (a)paramc;
       }
-      paramc = KDj;
+      paramc = MtJ;
       AppMethodBeat.o(156981);
       return paramc;
     }
-    if (paramc == WebView.c.KAa)
+    if (paramc == WebView.c.Mqv)
     {
-      if (KDk == null)
+      if (MtK == null)
       {
-        paramc = f.mK("com.tencent.xweb.x5.X5WebFactory", "getInstance");
+        paramc = f.ni("com.tencent.xweb.x5.X5WebFactory", "getInstance");
         if ((paramc == null) || (!(paramc instanceof a)))
         {
           Log.e("WebViewWrapperFactory", "find X5WebFactory failed");
           AppMethodBeat.o(156981);
           return null;
         }
-        KDk = (a)paramc;
+        MtK = (a)paramc;
       }
-      paramc = KDk;
+      paramc = MtK;
       AppMethodBeat.o(156981);
       return paramc;
     }
-    if (paramc == WebView.c.KAb)
+    if (paramc == WebView.c.Mqw)
     {
-      if (KDl == null)
+      if (MtL == null)
       {
-        paramc = f.mK("com.tencent.xweb.sys.SysWebFactory", "getInstance");
+        paramc = f.ni("com.tencent.xweb.sys.SysWebFactory", "getInstance");
         if ((paramc == null) || (!(paramc instanceof a)))
         {
           Log.e("WebViewWrapperFactory", "find SysWebFactory failed");
           AppMethodBeat.o(156981);
           return null;
         }
-        KDl = (a)paramc;
+        MtL = (a)paramc;
       }
-      paramc = KDl;
+      paramc = MtL;
       AppMethodBeat.o(156981);
       return paramc;
     }

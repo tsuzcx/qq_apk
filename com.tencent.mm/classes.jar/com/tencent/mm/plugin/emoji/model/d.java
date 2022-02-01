@@ -1,75 +1,75 @@
 package com.tencent.mm.plugin.emoji.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.h;
+import com.tencent.mm.ac.h;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import org.json.JSONObject;
 
 public final class d
 {
-  private static d pap;
-  public String paq;
-  public String par;
-  public boolean pas;
-  public boolean pat;
-  public String pau;
-  public String pav;
+  private static d pDZ;
+  public String pEa;
+  public String pEb;
+  public boolean pEc;
+  public boolean pEd;
+  public String pEe;
+  public String pEf;
   
   public d()
   {
     AppMethodBeat.i(179054);
-    this.pas = false;
-    this.pat = false;
-    this.par = ((String)g.agR().agA().get(ah.a.GRE, ""));
-    this.paq = ((String)g.agR().agA().get(ah.a.GRF, ""));
-    ccf();
+    this.pEc = false;
+    this.pEd = false;
+    this.pEb = ((String)g.ajC().ajl().get(al.a.IEi, ""));
+    this.pEa = ((String)g.ajC().ajl().get(al.a.IEj, ""));
+    cgJ();
     AppMethodBeat.o(179054);
   }
   
-  public static d cce()
+  public static d cgI()
   {
     try
     {
       AppMethodBeat.i(179053);
-      if (pap == null) {
-        pap = new d();
+      if (pDZ == null) {
+        pDZ = new d();
       }
-      d locald = pap;
+      d locald = pDZ;
       AppMethodBeat.o(179053);
       return locald;
     }
     finally {}
   }
   
-  public final void ccf()
+  public final void cgJ()
   {
     AppMethodBeat.i(179055);
-    ac.i("MicroMsg.EmojiStoreExpt", "updateExpt: %s %s", new Object[] { this.par, this.paq });
+    ad.i("MicroMsg.EmojiStoreExpt", "updateExpt: %s %s", new Object[] { this.pEb, this.pEa });
     try
     {
-      if (!bs.isNullOrNil(this.par)) {
-        this.pas = bs.lr(h.tT(this.par).optString("second_strategy", "None"), "Paid");
+      if (!bt.isNullOrNil(this.pEb)) {
+        this.pEc = bt.lQ(h.wJ(this.pEb).optString("second_strategy", "None"), "Paid");
       }
-      if (!bs.isNullOrNil(this.paq))
+      if (!bt.isNullOrNil(this.pEa))
       {
-        JSONObject localJSONObject = h.tT(this.paq);
-        this.pat = bs.lr(localJSONObject.optString("strategy", "Recommend"), "FriendDownloads");
-        this.pau = localJSONObject.optString("tab_wording");
-        this.pav = localJSONObject.optString("list_wording");
+        JSONObject localJSONObject = h.wJ(this.pEa);
+        this.pEd = bt.lQ(localJSONObject.optString("strategy", "Recommend"), "FriendDownloads");
+        this.pEe = localJSONObject.optString("tab_wording");
+        this.pEf = localJSONObject.optString("list_wording");
       }
       AppMethodBeat.o(179055);
       return;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.EmojiStoreExpt", localException, "", new Object[0]);
-      this.pas = false;
-      this.pat = false;
+      ad.printErrStackTrace("MicroMsg.EmojiStoreExpt", localException, "", new Object[0]);
+      this.pEc = false;
+      this.pEd = false;
       AppMethodBeat.o(179055);
     }
   }

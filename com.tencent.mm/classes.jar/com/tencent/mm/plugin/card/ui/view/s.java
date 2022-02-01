@@ -16,12 +16,12 @@ public final class s
   
   public final void b(ViewGroup paramViewGroup, b paramb) {}
   
-  public final boolean bTN()
+  public final boolean bYs()
   {
     return true;
   }
   
-  public final boolean bTO()
+  public final boolean bYt()
   {
     return true;
   }
@@ -33,7 +33,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.s
  * JD-Core Version:    0.7.0.1
  */

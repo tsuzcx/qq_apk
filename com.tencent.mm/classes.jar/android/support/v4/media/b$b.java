@@ -16,7 +16,7 @@ final class b$b<T extends b.a>
   public final void onChildrenLoaded(String paramString, List<MediaBrowser.MediaItem> paramList, Bundle paramBundle)
   {
     MediaSessionCompat.d(paramBundle);
-    ((b.a)this.Jv).k(paramList);
+    ((b.a)this.Ll).k(paramList);
   }
   
   public final void onError(String paramString, Bundle paramBundle)

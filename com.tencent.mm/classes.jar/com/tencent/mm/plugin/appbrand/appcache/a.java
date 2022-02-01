@@ -12,34 +12,34 @@ public final class a
   extends t
   implements b
 {
-  static final c.a hlR;
-  public static final String[] hlS;
-  public static final String[] jlk;
+  static final c.a hEe;
+  public static final String[] hEf;
+  public static final String[] jFa;
   
   static
   {
     AppMethodBeat.i(180190);
-    jlk = new String[] { "appId", "appVersion" };
+    jFa = new String[] { "appId", "appVersion" };
     Object localObject1 = new c.a();
-    ((c.a)localObject1).GvF = new Field[3];
+    ((c.a)localObject1).IhA = new Field[3];
     ((c.a)localObject1).columns = new String[4];
     Object localObject2 = new StringBuilder();
     ((c.a)localObject1).columns[0] = "appId";
-    ((c.a)localObject1).GvH.put("appId", "TEXT");
+    ((c.a)localObject1).IhC.put("appId", "TEXT");
     ((StringBuilder)localObject2).append(" appId TEXT");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[1] = "appVersion";
-    ((c.a)localObject1).GvH.put("appVersion", "INTEGER");
+    ((c.a)localObject1).IhC.put("appVersion", "INTEGER");
     ((StringBuilder)localObject2).append(" appVersion INTEGER");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[2] = "isSeparatedPluginsUsed";
-    ((c.a)localObject1).GvH.put("isSeparatedPluginsUsed", "INTEGER");
+    ((c.a)localObject1).IhC.put("isSeparatedPluginsUsed", "INTEGER");
     ((StringBuilder)localObject2).append(" isSeparatedPluginsUsed INTEGER");
     ((c.a)localObject1).columns[3] = "rowid";
     ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    hlR = (c.a)localObject1;
+    hEe = (c.a)localObject1;
     localObject1 = " PRIMARY KEY ( ";
-    localObject2 = jlk;
+    localObject2 = jFa;
     int j = localObject2.length;
     int i = 0;
     while (i < j)
@@ -51,20 +51,20 @@ public final class a
     localObject1 = ((String)localObject1).replaceFirst(",", "");
     localObject1 = (String)localObject1 + " )";
     localObject2 = new StringBuilder();
-    Object localObject3 = hlR;
+    Object localObject3 = hEe;
     ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
-    hlS = new String[] { j.getCreateSQLs(hlR, "AppBrandSeparatedPluginsCompatMarkTable") };
+    hEf = new String[] { j.getCreateSQLs(hEe, "AppBrandSeparatedPluginsCompatMarkTable") };
     AppMethodBeat.o(180190);
   }
   
   public final c.a getDBInfo()
   {
-    return hlR;
+    return hEe;
   }
   
   public final String[] getKeys()
   {
-    return jlk;
+    return jFa;
   }
 }
 

@@ -2,29 +2,29 @@ package com.tencent.mm.plugin.mall.b;
 
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.o;
+import com.tencent.mm.aw.a.a.c;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.aw.q;
 import com.tencent.mm.b.g;
-import com.tencent.mm.g.a.vn;
+import com.tencent.mm.g.a.wg;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.text.SimpleDateFormat;
 
 public final class a
 {
-  private static SimpleDateFormat omi = null;
-  private static SimpleDateFormat omj = null;
+  private static SimpleDateFormat oPD = null;
+  private static SimpleDateFormat oPE = null;
   
-  private static String akw(String paramString)
+  private static String apj(String paramString)
   {
     AppMethodBeat.i(66185);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(66185);
       return null;
     }
-    paramString = String.format("%s/%s", new Object[] { b.aph() + "wallet/mall", g.getMessageDigest(paramString.getBytes()) });
+    paramString = String.format("%s/%s", new Object[] { b.arU() + "wallet/mall", g.getMessageDigest(paramString.getBytes()) });
     AppMethodBeat.o(66185);
     return paramString;
   }
@@ -38,18 +38,18 @@ public final class a
       return;
     }
     paramImageView.setImageBitmap(null);
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).prefixPath = akw(paramString);
-      ((c.a)localObject).hKx = true;
-      ((c.a)localObject).gKm = true;
-      ((c.a)localObject).gLt = false;
+      ((c.a)localObject).prefixPath = apj(paramString);
+      ((c.a)localObject).idr = true;
+      ((c.a)localObject).hdX = true;
+      ((c.a)localObject).hfi = false;
       if (paramInt != 0) {
-        ((c.a)localObject).hKI = paramInt;
+        ((c.a)localObject).idD = paramInt;
       }
-      localObject = ((c.a)localObject).aFT();
-      o.aFB().a(paramString, paramImageView, (c)localObject);
+      localObject = ((c.a)localObject).aJc();
+      q.aIJ().a(paramString, paramImageView, (c)localObject);
       AppMethodBeat.o(66184);
       return;
     }
@@ -59,12 +59,12 @@ public final class a
     AppMethodBeat.o(66184);
   }
   
-  public static void dbp()
+  public static void dkJ()
   {
     AppMethodBeat.i(66182);
-    vn localvn = new vn();
-    localvn.dyn.dyo = false;
-    com.tencent.mm.sdk.b.a.GpY.l(localvn);
+    wg localwg = new wg();
+    localwg.dKA.dKB = false;
+    com.tencent.mm.sdk.b.a.IbL.l(localwg);
     AppMethodBeat.o(66182);
   }
   

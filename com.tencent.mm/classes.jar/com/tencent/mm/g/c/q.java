@@ -8,13 +8,13 @@ public abstract class q
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandLocalUsageRecordUpdateTimeIndex ON AppBrandLocalUsageRecord(updateTime)" };
-  private static final int eoA = "versionType".hashCode();
-  private static final int eok = "username".hashCode();
-  private static final int eol = "updateTime".hashCode();
+  private static final int eFF = "versionType".hashCode();
+  private static final int eFp = "username".hashCode();
+  private static final int eFq = "updateTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eoh = true;
-  private boolean eoi = true;
-  private boolean eow = true;
+  private boolean eFB = true;
+  private boolean eFm = true;
+  private boolean eFn = true;
   public long field_updateTime;
   public String field_username;
   public int field_versionType;
@@ -32,7 +32,7 @@ public abstract class q
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eok != k) {
+      if (eFp != k) {
         break label60;
       }
       this.field_username = paramCursor.getString(i);
@@ -43,9 +43,9 @@ public abstract class q
       break label20;
       break;
       label60:
-      if (eoA == k) {
+      if (eFF == k) {
         this.field_versionType = paramCursor.getInt(i);
-      } else if (eol == k) {
+      } else if (eFq == k) {
         this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -56,13 +56,13 @@ public abstract class q
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eoh) {
+    if (this.eFm) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eow) {
+    if (this.eFB) {
       localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
     }
-    if (this.eoi) {
+    if (this.eFn) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.systemRowid > 0L) {

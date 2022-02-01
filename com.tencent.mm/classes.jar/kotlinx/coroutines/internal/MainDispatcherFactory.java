@@ -2,12 +2,12 @@ package kotlinx.coroutines.internal;
 
 import d.l;
 import java.util.List;
-import kotlinx.coroutines.bw;
+import kotlinx.coroutines.bz;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/internal/MainDispatcherFactory;", "", "loadPriority", "", "getLoadPriority", "()I", "createDispatcher", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "allFactories", "", "hintOnError", "", "kotlinx-coroutines-core"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/internal/MainDispatcherFactory;", "", "loadPriority", "", "getLoadPriority", "()I", "createDispatcher", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "allFactories", "", "hintOnError", "", "kotlinx-coroutines-core"})
 public abstract interface MainDispatcherFactory
 {
-  public abstract bw createDispatcher(List<? extends MainDispatcherFactory> paramList);
+  public abstract bz createDispatcher(List<? extends MainDispatcherFactory> paramList);
   
   public abstract int getLoadPriority();
   

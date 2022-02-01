@@ -5,7 +5,7 @@ import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.facedetect.e.a;
 import com.tencent.mm.plugin.facedetect.e.a.4;
 import com.tencent.mm.plugin.facedetect.e.a.5;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class e$1
   implements Runnable
@@ -15,15 +15,15 @@ final class e$1
   public final void run()
   {
     AppMethodBeat.i(104223);
-    Object localObject = a.coq();
-    int i = this.kIx;
-    ((a)localObject).qCx.postToWorker(new a.4((a)localObject, i));
-    localObject = a.coq();
-    float f = this.qFV.fps;
-    ((a)localObject).qCx.postToWorker(new a.5((a)localObject, f));
-    localObject = this.qFX;
-    byte[][] arrayOfByte = this.qFW;
-    d.qFG.ag(new e.2((e)localObject, arrayOfByte));
+    Object localObject = a.ctV();
+    int i = this.leQ;
+    ((a)localObject).rmn.postToWorker(new a.4((a)localObject, i));
+    localObject = a.ctV();
+    float f = this.rpO.fps;
+    ((a)localObject).rmn.postToWorker(new a.5((a)localObject, f));
+    localObject = this.rpQ;
+    byte[][] arrayOfByte = this.rpP;
+    d.rpy.af(new e.2((e)localObject, arrayOfByte));
     AppMethodBeat.o(104223);
   }
 }

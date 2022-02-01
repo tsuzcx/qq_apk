@@ -1,176 +1,176 @@
 package com.tencent.mm.plugin.voip.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.voip.b.d;
+import com.tencent.mm.plugin.voip.b.f;
 
 public final class o
 {
-  public long AAo;
-  public long AAp;
-  public int ACR;
-  public int ACS;
-  public int ACT;
-  public int ACU;
-  byte ACV;
-  byte ACW;
-  byte ACX;
-  byte ACY;
-  byte ACZ;
-  long ADA;
-  long ADB;
-  public int ADC;
-  byte ADa;
-  byte ADb;
-  int ADc;
-  public int ADd;
-  public int ADe;
-  public int ADf;
-  public int ADg;
-  public int ADh;
-  public int ADi;
-  public int ADj;
-  int ADk;
-  int ADl;
-  int ADm;
-  int ADn;
-  int ADo;
-  int ADp;
-  int ADq;
-  int ADr;
-  public long ADs;
-  long ADt;
-  long ADu;
-  long ADv;
-  long ADw;
-  public long ADx;
-  long ADy;
-  long ADz;
+  public long BZo;
+  public long BZp;
+  public int CbS;
+  public int CbT;
+  public int CbU;
+  public int CbV;
+  byte CbW;
+  byte CbX;
+  byte CbY;
+  byte CbZ;
+  long CcA;
+  long CcB;
+  long CcC;
+  public int CcD;
+  byte Cca;
+  byte Ccb;
+  byte Ccc;
+  int Ccd;
+  public int Cce;
+  public int Ccf;
+  public int Ccg;
+  public int Cch;
+  public int Cci;
+  public int Ccj;
+  public int Cck;
+  int Ccl;
+  int Ccm;
+  int Ccn;
+  int Cco;
+  int Ccp;
+  int Ccq;
+  int Ccr;
+  int Ccs;
+  public long Cct;
+  long Ccu;
+  long Ccv;
+  long Ccw;
+  long Ccx;
+  public long Ccy;
+  long Ccz;
   long beginTime;
-  String ion;
+  String iHK;
   
   public o()
   {
     AppMethodBeat.i(114954);
     this.beginTime = 0L;
-    this.AAo = 0L;
-    this.AAp = 0L;
-    this.ADC = 0;
-    eiO();
+    this.BZo = 0L;
+    this.BZp = 0L;
+    this.CcD = 0;
+    ewz();
     AppMethodBeat.o(114954);
   }
   
-  public final void eiJ()
+  public final String ewA()
+  {
+    AppMethodBeat.i(114960);
+    String str = "," + this.Ccc;
+    AppMethodBeat.o(114960);
+    return str;
+  }
+  
+  public final void ewu()
   {
     AppMethodBeat.i(114955);
     if (this.beginTime == 0L) {}
-    for (this.ACU = 0;; this.ACU = ((int)(System.currentTimeMillis() - this.beginTime)))
+    for (this.CbV = 0;; this.CbV = ((int)(System.currentTimeMillis() - this.beginTime)))
     {
-      d.Logi("MicroMsg.VoipDailReport", "devin:beginTime:" + this.beginTime + ", CurrentTime: " + System.currentTimeMillis());
-      d.Logi("MicroMsg.VoipDailReport", "devin:endDial:" + this.ACU);
+      f.Logi("MicroMsg.VoipDailReport", "devin:beginTime:" + this.beginTime + ", CurrentTime: " + System.currentTimeMillis());
+      f.Logi("MicroMsg.VoipDailReport", "devin:endDial:" + this.CbV);
       AppMethodBeat.o(114955);
       return;
     }
   }
   
-  public final void eiK()
+  public final void ewv()
   {
     AppMethodBeat.i(114956);
-    if (0L == this.ADt)
+    if (0L == this.Ccu)
     {
-      this.ADt = System.currentTimeMillis();
-      d.Logi("MicroMsg.VoipDailReport", "accept received timestamp:" + this.ADt);
+      this.Ccu = System.currentTimeMillis();
+      f.Logi("MicroMsg.VoipDailReport", "accept received timestamp:" + this.Ccu);
     }
     AppMethodBeat.o(114956);
   }
   
-  public final void eiL()
+  public final void eww()
   {
     AppMethodBeat.i(114957);
-    if (0L == this.ADu)
+    if (0L == this.Ccv)
     {
-      this.ADu = System.currentTimeMillis();
-      d.Logi("MicroMsg.VoipDailReport", "sync accept received timestamp:" + this.ADu);
+      this.Ccv = System.currentTimeMillis();
+      f.Logi("MicroMsg.VoipDailReport", "sync accept received timestamp:" + this.Ccv);
     }
     AppMethodBeat.o(114957);
   }
   
-  public final void eiM()
+  public final void ewx()
   {
     AppMethodBeat.i(114958);
-    this.ADy = System.currentTimeMillis();
-    d.Logd("MicroMsg.VoipDailReport", "devin:acceptCallTime:" + this.ADy);
+    this.Ccz = System.currentTimeMillis();
+    f.Logd("MicroMsg.VoipDailReport", "devin:acceptCallTime:" + this.Ccz);
     AppMethodBeat.o(114958);
   }
   
-  public final void eiN()
+  public final void ewy()
   {
     AppMethodBeat.i(114959);
-    if (this.ADx == 0L) {}
-    for (this.ADn = 0;; this.ADn = ((int)(System.currentTimeMillis() - this.ADx)))
+    if (this.Ccy == 0L) {}
+    for (this.Cco = 0;; this.Cco = ((int)(System.currentTimeMillis() - this.Ccy)))
     {
-      d.Logi("MicroMsg.VoipDailReport", "devin:answerInvite current:" + System.currentTimeMillis());
-      d.Logi("MicroMsg.VoipDailReport", "devin:answerInvite:" + this.ADn);
+      f.Logi("MicroMsg.VoipDailReport", "devin:answerInvite current:" + System.currentTimeMillis());
+      f.Logi("MicroMsg.VoipDailReport", "devin:answerInvite:" + this.Cco);
       AppMethodBeat.o(114959);
       return;
     }
   }
   
-  public final void eiO()
+  public final void ewz()
   {
-    this.ADs = 0L;
-    this.ADw = 0L;
-    this.ADx = 0L;
-    this.ADy = 0L;
-    this.ADz = 0L;
-    this.ADA = 0L;
-    this.ADt = 0L;
-    this.ADu = 0L;
-    this.ADv = 0L;
-    this.ADd = 0;
-    this.ADe = 0;
-    this.ADf = 0;
-    this.ADg = 0;
-    this.ADh = 0;
-    this.ADi = 0;
-    this.ADj = 0;
-    this.ADk = 0;
-    this.ADl = 0;
-    this.ADm = 0;
-    this.ADn = 0;
-    this.ADo = 0;
-    this.ADp = 0;
-    this.ADq = 0;
-    this.ADr = 0;
-  }
-  
-  public final String eiP()
-  {
-    AppMethodBeat.i(114960);
-    String str = "," + this.ADb;
-    AppMethodBeat.o(114960);
-    return str;
+    this.Cct = 0L;
+    this.Ccx = 0L;
+    this.Ccy = 0L;
+    this.Ccz = 0L;
+    this.CcA = 0L;
+    this.CcB = 0L;
+    this.Ccu = 0L;
+    this.Ccv = 0L;
+    this.Ccw = 0L;
+    this.Cce = 0;
+    this.Ccf = 0;
+    this.Ccg = 0;
+    this.Cch = 0;
+    this.Cci = 0;
+    this.Ccj = 0;
+    this.Cck = 0;
+    this.Ccl = 0;
+    this.Ccm = 0;
+    this.Ccn = 0;
+    this.Cco = 0;
+    this.Ccp = 0;
+    this.Ccq = 0;
+    this.Ccr = 0;
+    this.Ccs = 0;
   }
   
   public final void reset()
   {
     this.beginTime = 0L;
-    this.ACR = 0;
-    this.ACS = 0;
-    this.ACT = 0;
-    this.ACU = 0;
-    this.ACV = 0;
-    this.ACW = 0;
-    this.ACX = 0;
-    this.ACY = 0;
-    this.ACZ = 0;
-    this.ADa = 0;
-    this.ADb = 0;
-    this.ADc = 0;
+    this.CbS = 0;
+    this.CbT = 0;
+    this.CbU = 0;
+    this.CbV = 0;
+    this.CbW = 0;
+    this.CbX = 0;
+    this.CbY = 0;
+    this.CbZ = 0;
+    this.Cca = 0;
+    this.Ccb = 0;
+    this.Ccc = 0;
+    this.Ccd = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.o
  * JD-Core Version:    0.7.0.1
  */

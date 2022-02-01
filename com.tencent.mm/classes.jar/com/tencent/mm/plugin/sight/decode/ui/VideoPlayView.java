@@ -8,10 +8,8 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Display;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
@@ -34,11 +32,11 @@ import com.tencent.mm.pluginsdk.ui.tools.h.d;
 import com.tencent.mm.pluginsdk.ui.tools.h.e;
 import com.tencent.mm.pluginsdk.ui.tools.t;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 
 public class VideoPlayView
@@ -46,65 +44,65 @@ public class VideoPlayView
   implements d.a, h
 {
   private int duration;
-  private boolean ftN;
-  private View gBO;
-  public View gGk;
-  private String gKe;
-  private ao gox;
-  private ProgressBar iXo;
-  public h odZ;
-  private int xEe;
-  private int xEf;
-  private boolean xEg;
-  private a xEh;
-  private ViewGroup xEi;
-  public a xEj;
-  private double xEk;
-  public TextView xEl;
-  public String xEm;
-  public ImageView xEn;
-  public boolean xEo;
-  private int xEp;
-  private int xEq;
-  private boolean xEr;
-  private boolean xEs;
-  private long xEt;
-  private Animation xEu;
-  private Animation xEv;
-  private Runnable xEw;
-  public int xEx;
+  private boolean fMP;
+  private ap gIf;
+  private View gVy;
+  public View gZU;
+  private String hdP;
+  private ProgressBar jqx;
+  public h oHt;
+  private int ySO;
+  private int ySP;
+  private boolean ySQ;
+  private a ySR;
+  private ViewGroup ySS;
+  public a yST;
+  private double ySU;
+  public TextView ySV;
+  public String ySW;
+  public ImageView ySX;
+  public boolean ySY;
+  private int ySZ;
+  private int yTa;
+  private boolean yTb;
+  private boolean yTc;
+  private long yTd;
+  private Animation yTe;
+  private Animation yTf;
+  private Runnable yTg;
+  public int yTh;
   
   public VideoPlayView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(116172);
-    this.xEe = 320;
-    this.xEf = 240;
-    this.xEg = true;
-    this.odZ = null;
-    this.xEk = 0.0D;
-    this.xEm = "";
-    this.gox = new ao();
-    this.xEo = true;
+    this.ySO = 320;
+    this.ySP = 240;
+    this.ySQ = true;
+    this.oHt = null;
+    this.ySU = 0.0D;
+    this.ySW = "";
+    this.gIf = new ap();
+    this.ySY = true;
     this.duration = 0;
-    this.xEp = 0;
-    this.xEq = 0;
-    this.xEr = false;
-    this.xEs = false;
-    this.xEt = 0L;
-    this.xEu = new AlphaAnimation(1.0F, 0.0F);
-    this.xEv = new AlphaAnimation(0.0F, 1.0F);
-    this.xEw = new Runnable()
+    this.ySZ = 0;
+    this.yTa = 0;
+    this.yTb = false;
+    this.yTc = false;
+    this.yTd = 0L;
+    this.yTe = new AlphaAnimation(1.0F, 0.0F);
+    this.yTf = new AlphaAnimation(0.0F, 1.0F);
+    this.yTg = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(116165);
-        VideoPlayView.this.dEQ();
+        VideoPlayView.this.dQs();
         AppMethodBeat.o(116165);
       }
     };
-    this.xEx = 0;
-    this.ftN = false;
+    this.yTh = 0;
+    this.fMP = false;
     init();
     AppMethodBeat.o(116172);
   }
@@ -113,47 +111,47 @@ public class VideoPlayView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(116173);
-    this.xEe = 320;
-    this.xEf = 240;
-    this.xEg = true;
-    this.odZ = null;
-    this.xEk = 0.0D;
-    this.xEm = "";
-    this.gox = new ao();
-    this.xEo = true;
+    this.ySO = 320;
+    this.ySP = 240;
+    this.ySQ = true;
+    this.oHt = null;
+    this.ySU = 0.0D;
+    this.ySW = "";
+    this.gIf = new ap();
+    this.ySY = true;
     this.duration = 0;
-    this.xEp = 0;
-    this.xEq = 0;
-    this.xEr = false;
-    this.xEs = false;
-    this.xEt = 0L;
-    this.xEu = new AlphaAnimation(1.0F, 0.0F);
-    this.xEv = new AlphaAnimation(0.0F, 1.0F);
-    this.xEw = new Runnable()
+    this.ySZ = 0;
+    this.yTa = 0;
+    this.yTb = false;
+    this.yTc = false;
+    this.yTd = 0L;
+    this.yTe = new AlphaAnimation(1.0F, 0.0F);
+    this.yTf = new AlphaAnimation(0.0F, 1.0F);
+    this.yTg = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(116165);
-        VideoPlayView.this.dEQ();
+        VideoPlayView.this.dQs();
         AppMethodBeat.o(116165);
       }
     };
-    this.xEx = 0;
-    this.ftN = false;
+    this.yTh = 0;
+    this.fMP = false;
     init();
     AppMethodBeat.o(116173);
   }
   
-  private void NS(int paramInt)
+  private void Pv(int paramInt)
   {
     AppMethodBeat.i(116185);
     if (paramInt >= 0) {}
-    for (double d = paramInt;; d = this.odZ.getLastProgresstime())
+    for (double d = paramInt;; d = this.oHt.getLastProgresstime())
     {
-      this.xEk = d;
-      ac.i("MicroMsg.VideoPlayView", "pause play " + this.xEk + " lastTime: " + paramInt + " last " + this.odZ.getLastProgresstime());
-      this.odZ.pause();
-      this.gox.post(new Runnable()
+      this.ySU = d;
+      ad.i("MicroMsg.VideoPlayView", "pause play " + this.ySU + " lastTime: " + paramInt + " last " + this.oHt.getLastProgresstime());
+      this.oHt.pause();
+      this.gIf.post(new Runnable()
       {
         public final void run()
         {
@@ -164,36 +162,36 @@ public class VideoPlayView
           AppMethodBeat.o(116169);
         }
       });
-      if (this.xEh != null) {
-        this.xEh.dER();
+      if (this.ySR != null) {
+        this.ySR.dQt();
       }
       AppMethodBeat.o(116185);
       return;
     }
   }
   
-  private void dEP()
+  private void dQr()
   {
     AppMethodBeat.i(116178);
-    ((View)this.xEj).setVisibility(0);
-    this.gBO.setVisibility(0);
-    if (this.xEo) {
-      this.xEn.setVisibility(0);
+    ((View)this.yST).setVisibility(0);
+    this.gVy.setVisibility(0);
+    if (this.ySY) {
+      this.ySX.setVisibility(0);
     }
     int i;
-    if (this.xEx == 2) {
+    if (this.yTh == 2) {
       i = 0;
     }
     for (;;)
     {
       if (i != 0) {
-        this.gGk.setVisibility(0);
+        this.gZU.setVisibility(0);
       }
-      this.gox.removeCallbacks(this.xEw);
-      this.gox.postDelayed(this.xEw, 3000L);
+      this.gIf.removeCallbacks(this.yTg);
+      this.gIf.postDelayed(this.yTg, 3000L);
       AppMethodBeat.o(116178);
       return;
-      if (bs.isNullOrNil(this.xEm)) {
+      if (bt.isNullOrNil(this.ySW)) {
         i = 0;
       } else {
         i = 1;
@@ -204,57 +202,38 @@ public class VideoPlayView
   private void init()
   {
     AppMethodBeat.i(116174);
-    this.xEu.setDuration(200L);
-    this.xEv.setDuration(200L);
+    this.yTe.setDuration(200L);
+    this.yTf.setDuration(200L);
     View.inflate(getContext(), 2131495832, this);
-    this.gBO = findViewById(2131303282);
-    this.xEn = ((ImageView)findViewById(2131302238));
-    this.xEn.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
-    this.iXo = ((ProgressBar)findViewById(2131303535));
-    this.xEi = ((ViewGroup)findViewById(2131306317));
-    this.odZ = t.hz(getContext());
-    this.odZ.setLoop(false);
+    this.gVy = findViewById(2131303282);
+    this.ySX = ((ImageView)findViewById(2131302238));
+    this.ySX.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+    this.jqx = ((ProgressBar)findViewById(2131303535));
+    this.ySS = ((ViewGroup)findViewById(2131306317));
+    this.oHt = t.hE(getContext());
+    this.oHt.setLoop(false);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.xEi.addView((View)this.odZ, 0, localLayoutParams);
-    this.xEl = ((TextView)findViewById(2131304777));
-    this.gGk = this.xEl;
-    this.odZ.setVideoCallback(new h.a()
+    this.ySS.addView((View)this.oHt, 0, localLayoutParams);
+    this.ySV = ((TextView)findViewById(2131304777));
+    this.gZU = this.ySV;
+    this.oHt.setVideoCallback(new h.a()
     {
-      public final void dZ(int paramAnonymousInt1, int paramAnonymousInt2)
-      {
-        AppMethodBeat.i(116162);
-        VideoPlayView.c(VideoPlayView.this, paramAnonymousInt1);
-        VideoPlayView.d(VideoPlayView.this, paramAnonymousInt2);
-        if (VideoPlayView.k(VideoPlayView.this)) {
-          VideoPlayView.l(VideoPlayView.this).post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(116157);
-              VideoPlayView.e(VideoPlayView.this, VideoPlayView.this.xEx);
-              AppMethodBeat.o(116157);
-            }
-          });
-        }
-        AppMethodBeat.o(116162);
-      }
-      
-      public final int eP(final int paramAnonymousInt1, final int paramAnonymousInt2)
+      public final int eT(final int paramAnonymousInt1, final int paramAnonymousInt2)
       {
         AppMethodBeat.i(116161);
-        ap.f(new Runnable()
+        aq.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(116156);
-            ac.i("MicroMsg.VideoPlayView", "play time " + paramAnonymousInt1 + " video time " + paramAnonymousInt2);
+            ad.i("MicroMsg.VideoPlayView", "play time " + paramAnonymousInt1 + " video time " + paramAnonymousInt2);
             if (paramAnonymousInt2 > 0)
             {
               VideoPlayView.b(VideoPlayView.this, paramAnonymousInt2);
               if ((VideoPlayView.c(VideoPlayView.this) != null) && (VideoPlayView.h(VideoPlayView.this))) {
                 VideoPlayView.i(VideoPlayView.this);
               }
-              VideoPlayView.f(VideoPlayView.this).NT(paramAnonymousInt2);
+              VideoPlayView.f(VideoPlayView.this).Pw(paramAnonymousInt2);
             }
             if (VideoPlayView.c(VideoPlayView.this) != null)
             {
@@ -275,10 +254,29 @@ public class VideoPlayView
         return 0;
       }
       
+      public final void eb(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(116162);
+        VideoPlayView.c(VideoPlayView.this, paramAnonymousInt1);
+        VideoPlayView.d(VideoPlayView.this, paramAnonymousInt2);
+        if (VideoPlayView.k(VideoPlayView.this)) {
+          VideoPlayView.l(VideoPlayView.this).post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(116157);
+              VideoPlayView.e(VideoPlayView.this, VideoPlayView.this.yTh);
+              AppMethodBeat.o(116157);
+            }
+          });
+        }
+        AppMethodBeat.o(116162);
+      }
+      
       public final void onCompletion()
       {
         AppMethodBeat.i(116160);
-        ac.d("MicroMsg.VideoPlayView", "on completion " + bs.eWi().toString());
+        ad.d("MicroMsg.VideoPlayView", "on completion " + bt.flS().toString());
         if (!VideoPlayView.b(VideoPlayView.this))
         {
           VideoPlayView.a(VideoPlayView.this, 0.0D);
@@ -288,14 +286,14 @@ public class VideoPlayView
           VideoPlayView.d(VideoPlayView.this);
           if (System.currentTimeMillis() - VideoPlayView.e(VideoPlayView.this) < 2000L)
           {
-            ac.i("MicroMsg.VideoPlayView", "Too short onCompletion");
+            ad.i("MicroMsg.VideoPlayView", "Too short onCompletion");
             AppMethodBeat.o(116160);
             return;
           }
           VideoPlayView.a(VideoPlayView.this, System.currentTimeMillis());
           if (VideoPlayView.f(VideoPlayView.this) != null)
           {
-            VideoPlayView.f(VideoPlayView.this).dES();
+            VideoPlayView.f(VideoPlayView.this).dQu();
             AppMethodBeat.o(116160);
           }
         }
@@ -305,7 +303,7 @@ public class VideoPlayView
           VideoPlayView.a(VideoPlayView.this, (int)VideoPlayView.g(VideoPlayView.this));
           VideoPlayView.d(VideoPlayView.this);
           if (VideoPlayView.f(VideoPlayView.this) != null) {
-            VideoPlayView.f(VideoPlayView.this).dET();
+            VideoPlayView.f(VideoPlayView.this).dQv();
           }
         }
         AppMethodBeat.o(116160);
@@ -314,40 +312,25 @@ public class VideoPlayView
       public final void onError(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(116159);
-        ac.e("MicroMsg.VideoPlayView", "on play video error, what %d extra %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        ad.e("MicroMsg.VideoPlayView", "on play video error, what %d extra %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         VideoPlayView.a(VideoPlayView.this).stop();
         AppMethodBeat.o(116159);
       }
       
-      public final void rB()
+      public final void ta()
       {
         AppMethodBeat.i(116158);
-        ac.d("MicroMsg.VideoPlayView", f.YF() + " onPrepared");
+        ad.d("MicroMsg.VideoPlayView", f.abh() + " onPrepared");
         VideoPlayView.a(VideoPlayView.this, true);
         AppMethodBeat.o(116158);
       }
     });
-    if ((this.odZ instanceof VideoSightView)) {
-      ((VideoSightView)this.odZ).setEnableConfigChanged(false);
+    if ((this.oHt instanceof VideoSightView)) {
+      ((VideoSightView)this.oHt).setEnableConfigChanged(false);
     }
-    setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(116163);
-        if (paramAnonymousMotionEvent.getAction() == 1) {
-          VideoPlayView.m(VideoPlayView.this);
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(116163);
-          return true;
-          paramAnonymousMotionEvent.getAction();
-        }
-      }
-    });
-    dEQ();
-    ((View)this.odZ).post(new Runnable()
+    setOnTouchListener(new VideoPlayView.2(this));
+    dQs();
+    ((View)this.oHt).post(new Runnable()
     {
       public final void run()
       {
@@ -368,25 +351,33 @@ public class VideoPlayView
     AppMethodBeat.o(116174);
   }
   
-  private void qA(boolean paramBoolean)
+  private void rc(boolean paramBoolean)
   {
     AppMethodBeat.i(116184);
-    this.odZ.p(this.xEk);
-    this.odZ.start();
-    ac.i("MicroMsg.VideoPlayView", "startplay get duration " + this.duration + " lastPlayProgressTime: " + this.xEk);
-    if (this.xEh != null) {
-      this.xEh.qB(paramBoolean);
+    this.oHt.p(this.ySU);
+    this.oHt.start();
+    ad.i("MicroMsg.VideoPlayView", "startplay get duration " + this.duration + " lastPlayProgressTime: " + this.ySU);
+    if (this.ySR != null) {
+      this.ySR.rd(paramBoolean);
     }
     AppMethodBeat.o(116184);
   }
   
-  public final void axj() {}
+  public final boolean B(Context paramContext, boolean paramBoolean)
+  {
+    AppMethodBeat.i(116187);
+    paramBoolean = this.oHt.B(paramContext, paramBoolean);
+    AppMethodBeat.o(116187);
+    return paramBoolean;
+  }
   
-  public final void axk() {}
+  public final void aAa() {}
   
-  public final void axl() {}
+  public final void aAb() {}
   
-  public final void axm() {}
+  public final void azY() {}
+  
+  public final void azZ() {}
   
   public final void d(double paramDouble, boolean paramBoolean)
   {
@@ -395,29 +386,29 @@ public class VideoPlayView
     AppMethodBeat.o(116199);
   }
   
-  public final void dEO()
+  public final void dQq()
   {
     AppMethodBeat.i(116177);
-    this.iXo.setVisibility(0);
+    this.jqx.setVisibility(0);
     AppMethodBeat.o(116177);
   }
   
-  public final void dEQ()
+  public final void dQs()
   {
     AppMethodBeat.i(116179);
-    if (this.xEj != null) {
-      ((View)this.xEj).setVisibility(4);
+    if (this.yST != null) {
+      ((View)this.yST).setVisibility(4);
     }
-    this.gBO.setVisibility(8);
-    this.xEn.setVisibility(8);
-    this.gGk.setVisibility(8);
+    this.gVy.setVisibility(8);
+    this.ySX.setVisibility(8);
+    this.gZU.setVisibility(8);
     AppMethodBeat.o(116179);
   }
   
   public int getCurrentPosition()
   {
     AppMethodBeat.i(116193);
-    int i = this.odZ.getCurrentPosition();
+    int i = this.oHt.getCurrentPosition();
     AppMethodBeat.o(116193);
     return i;
   }
@@ -427,7 +418,7 @@ public class VideoPlayView
     AppMethodBeat.i(116194);
     if (this.duration == 0)
     {
-      i = this.odZ.getDuration();
+      i = this.oHt.getDuration();
       AppMethodBeat.o(116194);
       return i;
     }
@@ -439,7 +430,7 @@ public class VideoPlayView
   public double getLastProgresstime()
   {
     AppMethodBeat.i(116191);
-    double d = Math.max(this.xEk, this.odZ.getLastProgresstime());
+    double d = Math.max(this.ySU, this.oHt.getLastProgresstime());
     AppMethodBeat.o(116191);
     return d;
   }
@@ -451,13 +442,13 @@ public class VideoPlayView
   
   public String getVideoPath()
   {
-    return this.gKe;
+    return this.hdP;
   }
   
   public final boolean isPlaying()
   {
     AppMethodBeat.i(116186);
-    boolean bool = this.odZ.isPlaying();
+    boolean bool = this.oHt.isPlaying();
     AppMethodBeat.o(116186);
     return bool;
   }
@@ -465,22 +456,22 @@ public class VideoPlayView
   public final void onDetach()
   {
     AppMethodBeat.i(116189);
-    this.odZ.onDetach();
+    this.oHt.onDetach();
     AppMethodBeat.o(116189);
   }
   
   public final void p(double paramDouble)
   {
     AppMethodBeat.i(116196);
-    this.odZ.p(paramDouble);
-    this.xEj.seek((int)paramDouble);
+    this.oHt.p(paramDouble);
+    this.yST.seek((int)paramDouble);
     AppMethodBeat.o(116196);
   }
   
   public final void pause()
   {
     AppMethodBeat.i(116183);
-    NS(-1);
+    Pv(-1);
     AppMethodBeat.o(116183);
   }
   
@@ -489,11 +480,11 @@ public class VideoPlayView
   public void setIsDownloading(boolean paramBoolean)
   {
     AppMethodBeat.i(116176);
-    this.xEr = paramBoolean;
+    this.yTb = paramBoolean;
     Object localObject;
-    if ((this.odZ != null) && ((this.odZ instanceof VideoSightView)))
+    if ((this.oHt != null) && ((this.oHt instanceof VideoSightView)))
     {
-      localObject = (VideoSightView)this.odZ;
+      localObject = (VideoSightView)this.oHt;
       if (((VideoSightView)localObject).getController() != null)
       {
         localObject = ((VideoSightView)localObject).getController();
@@ -505,7 +496,7 @@ public class VideoPlayView
     label66:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      ((com.tencent.mm.plugin.sight.decode.a.b)localObject).xDa = paramBoolean;
+      ((com.tencent.mm.plugin.sight.decode.a.b)localObject).yRK = paramBoolean;
       AppMethodBeat.o(116176);
       return;
     }
@@ -514,20 +505,20 @@ public class VideoPlayView
   public void setLeftButtonOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116180);
-    this.gBO.setOnClickListener(paramOnClickListener);
+    this.gVy.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(116180);
   }
   
   public void setLoop(boolean paramBoolean)
   {
     AppMethodBeat.i(116190);
-    this.odZ.setLoop(paramBoolean);
+    this.oHt.setLoop(paramBoolean);
     AppMethodBeat.o(116190);
   }
   
   public void setMute(boolean paramBoolean)
   {
-    this.ftN = paramBoolean;
+    this.fMP = paramBoolean;
   }
   
   public void setOnInfoCallback(h.b paramb) {}
@@ -541,50 +532,50 @@ public class VideoPlayView
   public void setPlayProgressCallback(boolean paramBoolean)
   {
     AppMethodBeat.i(116197);
-    this.odZ.setPlayProgressCallback(paramBoolean);
+    this.oHt.setPlayProgressCallback(paramBoolean);
     AppMethodBeat.o(116197);
   }
   
   public void setRightButtonOnCliclListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116181);
-    this.xEn.setOnClickListener(paramOnClickListener);
+    this.ySX.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(116181);
   }
   
   public void setThumb(Bitmap paramBitmap)
   {
     AppMethodBeat.i(116195);
-    this.odZ.setThumb(paramBitmap);
+    this.oHt.setThumb(paramBitmap);
     AppMethodBeat.o(116195);
   }
   
   public void setVideoCallback(h.a parama)
   {
     AppMethodBeat.i(116192);
-    this.odZ.setVideoCallback(parama);
+    this.oHt.setVideoCallback(parama);
     AppMethodBeat.o(116192);
   }
   
   public void setVideoPath(String paramString)
   {
     AppMethodBeat.i(116171);
-    this.gKe = paramString;
-    ac.i("MicroMsg.VideoPlayView", "videoPath  %s", new Object[] { this.gKe });
-    this.odZ.setVideoPath(this.gKe);
+    this.hdP = paramString;
+    ad.i("MicroMsg.VideoPlayView", "videoPath  %s", new Object[] { this.hdP });
+    this.oHt.setVideoPath(this.hdP);
     AppMethodBeat.o(116171);
   }
   
   public void setVideoPlayViewEvent(a parama)
   {
-    this.xEh = parama;
+    this.ySR = parama;
   }
   
   public void setVideoTotalTime(int paramInt)
   {
     AppMethodBeat.i(116175);
-    if (this.xEj.getVideoTotalTime() != paramInt) {
-      this.xEj.setVideoTotalTime(paramInt);
+    if (this.yST.getVideoTotalTime() != paramInt) {
+      this.yST.setVideoTotalTime(paramInt);
     }
     AppMethodBeat.o(116175);
   }
@@ -592,7 +583,7 @@ public class VideoPlayView
   public final boolean start()
   {
     AppMethodBeat.i(116182);
-    qA(true);
+    rc(true);
     AppMethodBeat.o(116182);
     return true;
   }
@@ -600,103 +591,95 @@ public class VideoPlayView
   public final void stop()
   {
     AppMethodBeat.i(116188);
-    this.odZ.stop();
+    this.oHt.stop();
     AppMethodBeat.o(116188);
   }
   
   public final void update(int paramInt)
   {
     AppMethodBeat.i(116198);
-    this.xEs = true;
+    this.yTc = true;
     Object localObject;
-    if ((this.xEq == 0) || (this.xEp == 0))
+    if ((this.yTa == 0) || (this.ySZ == 0))
     {
       localObject = getResources().getDisplayMetrics();
-      this.xEq = ((DisplayMetrics)localObject).heightPixels;
-      this.xEp = ((DisplayMetrics)localObject).widthPixels;
-      if (this.xEq < this.xEp)
+      this.yTa = ((DisplayMetrics)localObject).heightPixels;
+      this.ySZ = ((DisplayMetrics)localObject).widthPixels;
+      if (this.yTa < this.ySZ)
       {
-        this.xEq = ((DisplayMetrics)localObject).widthPixels;
-        this.xEp = ((DisplayMetrics)localObject).heightPixels;
+        this.yTa = ((DisplayMetrics)localObject).widthPixels;
+        this.ySZ = ((DisplayMetrics)localObject).heightPixels;
       }
-      ac.i("MicroMsg.VideoPlayView", "getScreen screen_height:" + this.xEq + " screen_width:" + this.xEp);
+      ad.i("MicroMsg.VideoPlayView", "getScreen screen_height:" + this.yTa + " screen_width:" + this.ySZ);
     }
-    ViewGroup.LayoutParams localLayoutParams = this.xEi.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.ySS.getLayoutParams();
     RelativeLayout.LayoutParams localLayoutParams1;
-    if (this.xEj == null)
+    if (this.yST == null)
     {
       localObject = null;
       localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
       if (paramInt != 1) {
         break label410;
       }
-      localLayoutParams1.width = this.xEp;
-      localLayoutParams1.height = ((int)(this.xEp * 1.0D * this.xEf / this.xEe));
-      if (this.xEj != null) {
+      localLayoutParams1.width = this.ySZ;
+      localLayoutParams1.height = ((int)(this.ySZ * 1.0D * this.ySP / this.ySO));
+      if (this.yST != null) {
         ((RelativeLayout.LayoutParams)localObject).bottomMargin = BackwardSupportUtil.b.g(getContext(), 0.0F);
       }
     }
     for (;;)
     {
-      if (this.xEj != null)
+      if (this.yST != null)
       {
-        this.xEj.dEK();
-        ((View)this.xEj).setLayoutParams((ViewGroup.LayoutParams)localObject);
-        if ((this.xEj instanceof AdVideoPlayerLoadingBar)) {
-          this.gox.postDelayed(new Runnable()
+        this.yST.dQn();
+        ((View)this.yST).setLayoutParams((ViewGroup.LayoutParams)localObject);
+        if ((this.yST instanceof AdVideoPlayerLoadingBar)) {
+          this.gIf.postDelayed(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(116170);
               if (!VideoPlayView.a(VideoPlayView.this).isPlaying()) {
-                ((AdVideoPlayerLoadingBar)VideoPlayView.c(VideoPlayView.this)).bkN();
+                ((AdVideoPlayerLoadingBar)VideoPlayView.c(VideoPlayView.this)).boy();
               }
               AppMethodBeat.o(116170);
             }
           }, 500L);
         }
       }
-      ac.i("MicroMsg.VideoPlayView", "orientation " + paramInt + " " + localLayoutParams1.width + " " + localLayoutParams1.height);
-      ((View)this.odZ).setLayoutParams(localLayoutParams1);
-      if ((this.odZ instanceof com.tencent.mm.plugin.sight.decode.a.a)) {
-        ((com.tencent.mm.plugin.sight.decode.a.a)this.odZ).hf(localLayoutParams1.width, localLayoutParams1.height);
+      ad.i("MicroMsg.VideoPlayView", "orientation " + paramInt + " " + localLayoutParams1.width + " " + localLayoutParams1.height);
+      ((View)this.oHt).setLayoutParams(localLayoutParams1);
+      if ((this.oHt instanceof com.tencent.mm.plugin.sight.decode.a.a)) {
+        ((com.tencent.mm.plugin.sight.decode.a.a)this.oHt).hw(localLayoutParams1.width, localLayoutParams1.height);
       }
       localLayoutParams.height = localLayoutParams1.height;
       localLayoutParams.width = localLayoutParams1.width;
-      this.xEi.setLayoutParams(localLayoutParams);
-      ((View)this.odZ).requestLayout();
+      this.ySS.setLayoutParams(localLayoutParams);
+      ((View)this.oHt).requestLayout();
       AppMethodBeat.o(116198);
       return;
-      localObject = (RelativeLayout.LayoutParams)((View)this.xEj).getLayoutParams();
+      localObject = (RelativeLayout.LayoutParams)((View)this.yST).getLayoutParams();
       break;
       label410:
-      localLayoutParams1.height = this.xEp;
-      localLayoutParams1.width = ((int)(this.xEp * 1.0D * this.xEe / this.xEf));
-      if (this.xEj != null) {
+      localLayoutParams1.height = this.ySZ;
+      localLayoutParams1.width = ((int)(this.ySZ * 1.0D * this.ySO / this.ySP));
+      if (this.yST != null) {
         ((RelativeLayout.LayoutParams)localObject).bottomMargin = BackwardSupportUtil.b.g(getContext(), 0.0F);
       }
     }
   }
   
-  public final boolean z(Context paramContext, boolean paramBoolean)
-  {
-    AppMethodBeat.i(116187);
-    paramBoolean = this.odZ.z(paramContext, paramBoolean);
-    AppMethodBeat.o(116187);
-    return paramBoolean;
-  }
-  
   public static abstract interface a
   {
-    public abstract void NT(int paramInt);
+    public abstract void Pw(int paramInt);
     
-    public abstract void dER();
+    public abstract void dQt();
     
-    public abstract void dES();
+    public abstract void dQu();
     
-    public abstract void dET();
+    public abstract void dQv();
     
-    public abstract void qB(boolean paramBoolean);
+    public abstract void rd(boolean paramBoolean);
   }
 }
 

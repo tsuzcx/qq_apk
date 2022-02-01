@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.c;
+import com.tencent.mm.plugin.appbrand.jsapi.base.d;
 import org.json.JSONObject;
 
 public final class l
-  extends c
+  extends d
 {
   public static final int CTRL_INDEX = 83;
   public static final String NAME = "updateCanvas";
@@ -18,7 +18,7 @@ public final class l
     return i;
   }
   
-  public final boolean bfu()
+  public final boolean biX()
   {
     return true;
   }

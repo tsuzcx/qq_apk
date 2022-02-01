@@ -11,7 +11,7 @@ public final class h
     super(paramAssetManager, paramString);
   }
   
-  public final Class<ParcelFileDescriptor> nU()
+  public final Class<ParcelFileDescriptor> om()
   {
     return ParcelFileDescriptor.class;
   }

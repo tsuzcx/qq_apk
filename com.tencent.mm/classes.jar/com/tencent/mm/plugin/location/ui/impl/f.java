@@ -2,62 +2,62 @@ package com.tencent.mm.plugin.location.ui.impl;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.Addr;
-import com.tencent.mm.protocal.protobuf.ccb;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.cgs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class f
 {
-  public double bNq;
-  public double bNr;
-  public String dlj;
+  public double bXD;
+  public double bXE;
+  public String dwW;
   public String mName;
   public int type;
-  public String uek;
-  public String uel;
-  public String uem;
-  public String uen;
-  public String ueo;
-  public String uep;
-  public String ueq;
-  public String uer;
-  public String ues;
-  public String uet;
-  public Addr ueu;
-  public String uev;
-  public int uew;
+  public String vgT;
+  public String vgU;
+  public String vgV;
+  public String vgW;
+  public String vgX;
+  public String vgY;
+  public String vgZ;
+  public String vha;
+  public String vhb;
+  public String vhc;
+  public Addr vhd;
+  public String vhe;
+  public int vhf;
   
   public f()
   {
-    this.uew = -1;
+    this.vhf = -1;
   }
   
-  public f(ccb paramccb, String paramString)
+  public f(cgs paramcgs, String paramString)
   {
     AppMethodBeat.i(56098);
-    this.uew = -1;
-    this.mName = paramccb.Name;
-    this.uek = paramccb.Fqw;
-    this.bNr = paramccb.Ecf;
-    this.bNq = paramccb.Ecg;
-    this.uel = paramccb.Fqx;
-    this.uem = paramccb.vkB;
-    this.uen = paramccb.Fqy;
-    this.ueo = paramccb.iJU;
-    this.uep = paramccb.iJV;
-    this.ueq = paramccb.Euh;
-    this.uer = paramccb.Eui;
-    this.ues = paramccb.Fqz;
-    this.uev = paramString;
-    this.ueu = new Addr();
-    this.ueu.hEt = this.uek;
-    this.ueu.hEv = this.uep;
-    this.ueu.hEw = this.uep;
-    this.ueu.hEx = this.ueq;
-    this.ueu.hEz = this.ues;
-    this.ueu.hEC = this.mName;
-    this.ueu.hEu = this.ueo;
-    this.ueu.hEF = ((float)paramccb.Ecf);
-    this.ueu.hEE = ((float)paramccb.Ecg);
+    this.vhf = -1;
+    this.mName = paramcgs.Name;
+    this.vgT = paramcgs.Hag;
+    this.bXE = paramcgs.FIb;
+    this.bXD = paramcgs.FIc;
+    this.vgU = paramcgs.Hah;
+    this.vgV = paramcgs.wpT;
+    this.vgW = paramcgs.Hai;
+    this.vgX = paramcgs.jdd;
+    this.vgY = paramcgs.jde;
+    this.vgZ = paramcgs.GbA;
+    this.vha = paramcgs.GbB;
+    this.vhb = paramcgs.Haj;
+    this.vhe = paramString;
+    this.vhd = new Addr();
+    this.vhd.hWY = this.vgT;
+    this.vhd.hXa = this.vgY;
+    this.vhd.hXb = this.vgY;
+    this.vhd.hXc = this.vgZ;
+    this.vhd.hXe = this.vhb;
+    this.vhd.hXh = this.mName;
+    this.vhd.hWZ = this.vgX;
+    this.vhd.hXk = ((float)paramcgs.FIb);
+    this.vhd.hXj = ((float)paramcgs.FIc);
     this.type = 0;
     AppMethodBeat.o(56098);
   }
@@ -65,32 +65,32 @@ public final class f
   public final boolean c(Addr paramAddr)
   {
     AppMethodBeat.i(56099);
-    this.ueu = paramAddr;
-    if (!bs.isNullOrNil(paramAddr.hEt)) {
-      this.mName = paramAddr.hEt;
+    this.vhd = paramAddr;
+    if (!bt.isNullOrNil(paramAddr.hWY)) {
+      this.mName = paramAddr.hWY;
     }
-    if (!bs.isNullOrNil(paramAddr.hEx)) {
-      this.uek = paramAddr.hEx;
+    if (!bt.isNullOrNil(paramAddr.hXc)) {
+      this.vgT = paramAddr.hXc;
     }
-    if (!bs.isNullOrNil(paramAddr.hEy)) {
-      this.uek += paramAddr.hEy;
+    if (!bt.isNullOrNil(paramAddr.hXd)) {
+      this.vgT += paramAddr.hXd;
     }
-    if (!bs.isNullOrNil(paramAddr.hEz)) {
-      this.uek += paramAddr.hEz;
+    if (!bt.isNullOrNil(paramAddr.hXe)) {
+      this.vgT += paramAddr.hXe;
     }
-    if (!bs.isNullOrNil(paramAddr.hEA)) {
-      this.uek += paramAddr.hEA;
+    if (!bt.isNullOrNil(paramAddr.hXf)) {
+      this.vgT += paramAddr.hXf;
     }
-    this.bNq = paramAddr.hEE;
-    this.bNr = paramAddr.hEF;
-    this.ueo = paramAddr.hEu;
-    this.uep = paramAddr.hEv;
-    this.ueq = paramAddr.hEx;
-    this.uer = paramAddr.hEz;
-    this.uet = paramAddr.hEB;
-    this.ues = paramAddr.hEA;
-    this.dlj = paramAddr.hED;
-    if ((bs.isNullOrNil(this.mName)) && (bs.isNullOrNil(this.uek)))
+    this.bXD = paramAddr.hXj;
+    this.bXE = paramAddr.hXk;
+    this.vgX = paramAddr.hWZ;
+    this.vgY = paramAddr.hXa;
+    this.vgZ = paramAddr.hXc;
+    this.vha = paramAddr.hXe;
+    this.vhc = paramAddr.hXg;
+    this.vhb = paramAddr.hXf;
+    this.dwW = paramAddr.hXi;
+    if ((bt.isNullOrNil(this.mName)) && (bt.isNullOrNil(this.vgT)))
     {
       AppMethodBeat.o(56099);
       return false;
@@ -101,7 +101,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.f
  * JD-Core Version:    0.7.0.1
  */

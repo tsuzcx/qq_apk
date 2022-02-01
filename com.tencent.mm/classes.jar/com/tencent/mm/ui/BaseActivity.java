@@ -24,6 +24,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -31,32 +33,32 @@ import java.util.LinkedList;
 public abstract class BaseActivity
   extends AppCompatActivity
 {
-  private TextView HfN;
-  private View HfO;
-  private View HfP;
-  private int HfQ = 0;
-  private WeImageView HfR;
-  private WeImageView HfS;
-  private TextView HfT;
-  private MenuItem HfU;
-  private MenuItem HfV;
-  private int HfW;
-  private int HfX;
-  private c HfY;
-  private BaseActivity.a HfZ = BaseActivity.a.Hgi;
-  private boolean Hga = false;
-  private int Hgb;
-  private int Hgc;
-  private LinkedList<b> Hgd = new LinkedList();
+  private int DPG = 0;
+  private TextView ITe;
+  private View ITf;
+  private View ITg;
+  private WeImageView ITh;
+  private WeImageView ITi;
+  private TextView ITj;
+  private MenuItem ITk;
+  private MenuItem ITl;
+  private int ITm;
+  private int ITn;
+  private c ITo;
+  private BaseActivity.a ITp = BaseActivity.a.ITy;
+  private boolean ITq = false;
+  private int ITr;
+  private int ITs;
+  private LinkedList<b> ITt = new LinkedList();
   private View actionbarView;
-  private int bxO = this.Hgb;
+  private int bIc = this.ITr;
   private ActionBar mActionBar;
   private Context mContext;
-  private ImageView mgn;
-  private TextView myG;
+  private ImageView mGO;
+  private TextView mZo;
   private int theme;
   
-  private void a(final MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, int paramInt, BaseActivity.a parama)
+  private void a(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, int paramInt, BaseActivity.a parama)
   {
     if (this.mActionBar == null) {
       return;
@@ -64,58 +66,50 @@ public abstract class BaseActivity
     if (paramOnMenuItemClickListener == null)
     {
       this.mActionBar.setDisplayHomeAsUpEnabled(false);
-      this.HfZ = parama;
+      this.ITp = parama;
       if (paramInt != 0) {
-        this.HfW = paramInt;
+        this.ITm = paramInt;
       }
-      if (this.HfZ == BaseActivity.a.Hgk) {
-        this.HfW = 0;
+      if (this.ITp == BaseActivity.a.ITA) {
+        this.ITm = 0;
       }
-      if (this.HfZ != BaseActivity.a.Hgi) {
+      if (this.ITp != BaseActivity.a.ITy) {
         break label141;
       }
-      this.HfW = 2131230842;
+      this.ITm = 2131230842;
     }
     for (;;)
     {
-      if ((this.mgn != null) && (this.HfW != 0))
+      if ((this.mGO != null) && (this.ITm != 0))
       {
-        feM();
-        this.mgn.setImageResource(this.HfW);
+        fuU();
+        this.mGO.setImageResource(this.ITm);
       }
-      feQ();
+      fuY();
       return;
       this.mActionBar.setDisplayHomeAsUpEnabled(false);
-      if (this.HfP == null) {
+      if (this.ITg == null) {
         break;
       }
-      this.HfP.setVisibility(0);
-      this.HfP.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(159087);
-          paramOnMenuItemClickListener.onMenuItemClick(null);
-          AppMethodBeat.o(159087);
-        }
-      });
+      this.ITg.setVisibility(0);
+      this.ITg.setOnClickListener(new BaseActivity.2(this, paramOnMenuItemClickListener));
       break;
       label141:
-      if (this.HfZ == BaseActivity.a.Hgj) {
-        this.HfW = 2131230844;
+      if (this.ITp == BaseActivity.a.ITz) {
+        this.ITm = 2131230844;
       }
     }
   }
   
-  private void feM()
+  private void fuU()
   {
-    if (this.mgn == null) {
+    if (this.mGO == null) {
       return;
     }
-    this.mgn.setVisibility(0);
+    this.mGO.setVisibility(0);
   }
   
-  private void feN()
+  private void fuV()
   {
     View localView;
     int i;
@@ -123,7 +117,7 @@ public abstract class BaseActivity
     {
       localView = getWindow().getDecorView();
       i = localView.getSystemUiVisibility();
-      if (!this.Hga) {
+      if (!this.ITq) {
         break label40;
       }
       i &= 0xFFFFDFFF;
@@ -137,64 +131,64 @@ public abstract class BaseActivity
     }
   }
   
-  private void feO()
+  private void fuW()
   {
-    if (this.HfY == c.Hgt) {
-      if (this.HfT != null) {}
+    if (this.ITo == c.ITJ) {
+      if (this.ITj != null) {}
     }
     for (;;)
     {
       return;
-      if (this.Hga)
+      if (this.ITq)
       {
-        this.HfT.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+        this.ITj.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
         return;
       }
-      this.HfT.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
+      this.ITj.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
       return;
-      if (this.HfY == c.Hgv) {
-        this.HfX = 2131230841;
+      if (this.ITo == c.ITL) {
+        this.ITn = 2131230841;
       }
-      while ((this.HfR != null) && (this.HfX != 0))
+      while ((this.ITh != null) && (this.ITn != 0))
       {
-        this.HfR.setImageResource(this.HfX);
-        if (!this.Hga) {
+        this.ITh.setImageResource(this.ITn);
+        if (!this.ITq) {
           break label166;
         }
-        this.HfR.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+        this.ITh.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
         return;
-        if (this.HfY == c.Hgw) {
-          this.HfX = 2131230845;
-        } else if (this.HfY == c.Hgx) {
-          this.HfX = 2131230846;
+        if (this.ITo == c.ITM) {
+          this.ITn = 2131230845;
+        } else if (this.ITo == c.ITN) {
+          this.ITn = 2131230846;
         }
       }
     }
     label166:
-    this.HfR.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+    this.ITh.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
   }
   
-  private void feP()
+  private void fuX()
   {
-    if (this.HfS == null) {
+    if (this.ITi == null) {
       return;
     }
-    if (this.Hga)
+    if (this.ITq)
     {
-      this.HfS.setImageResource(2131230854);
+      this.ITi.setImageResource(2131230854);
       return;
     }
-    this.HfS.setImageResource(2131230846);
+    this.ITi.setImageResource(2131230846);
   }
   
-  private void feQ()
+  private void fuY()
   {
-    if (this.Hga)
+    if (this.ITq)
     {
-      this.mgn.setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+      this.mGO.setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
       return;
     }
-    this.mgn.setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+    this.mGO.setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
   }
   
   public static void showVKB(Activity paramActivity)
@@ -215,49 +209,49 @@ public abstract class BaseActivity
   
   private void updateTitle()
   {
-    if (this.myG == null) {
+    if (this.mZo == null) {
       return;
     }
-    if (this.Hga)
+    if (this.ITq)
     {
-      this.myG.setTextColor(this.mContext.getResources().getColor(2131099886));
+      this.mZo.setTextColor(this.mContext.getResources().getColor(2131099886));
       return;
     }
-    this.myG.setTextColor(this.mContext.getResources().getColor(2131099885));
+    this.mZo.setTextColor(this.mContext.getResources().getColor(2131099885));
   }
   
   public final void a(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    a(paramOnMenuItemClickListener, 2131689492, BaseActivity.a.Hgh);
+    a(paramOnMenuItemClickListener, 2131689492, BaseActivity.a.ITx);
   }
   
   public final void a(String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, c paramc)
   {
     b localb = new b();
-    localb.Hgm = 0;
-    localb.Hgn = 0;
+    localb.ITC = 0;
+    localb.ITD = 0;
     localb.text = paramString;
-    localb.iPc = paramOnMenuItemClickListener;
-    localb.qQj = null;
-    localb.Hgr = paramc;
-    if ((localb.Hgn == 2131230845) && ((paramString == null) || (paramString.length() <= 0))) {
+    localb.jil = paramOnMenuItemClickListener;
+    localb.rAj = null;
+    localb.ITH = paramc;
+    if ((localb.ITD == 2131230845) && ((paramString == null) || (paramString.length() <= 0))) {
       localb.text = getString(2131755127);
     }
-    int j = localb.Hgm;
+    int j = localb.ITC;
     int i = 0;
     for (;;)
     {
-      if (i < this.Hgd.size())
+      if (i < this.ITt.size())
       {
-        if (((b)this.Hgd.get(i)).Hgm == j)
+        if (((b)this.ITt.get(i)).ITC == j)
         {
-          an.d("BaseActivity", "match menu, id ：" + j + ", remove it", new Object[0]);
-          this.Hgd.remove(i);
+          ap.d("BaseActivity", "match menu, id ：" + j + ", remove it", new Object[0]);
+          this.ITt.remove(i);
         }
       }
       else
       {
-        this.Hgd.add(localb);
+        this.ITt.add(localb);
         new Handler().postDelayed(new Runnable()
         {
           public final void run()
@@ -296,45 +290,36 @@ public abstract class BaseActivity
       if (this.mActionBar != null)
       {
         this.mActionBar.setLogo(new ColorDrawable(getResources().getColor(17170445)));
-        this.mActionBar.fU();
+        this.mActionBar.gm();
         this.mActionBar.setDisplayHomeAsUpEnabled(false);
-        this.mActionBar.fT();
-        this.mActionBar.fV();
+        this.mActionBar.gl();
+        this.mActionBar.gn();
         paramBundle = LayoutInflater.from(this).inflate(2131492926, null);
         this.mActionBar.setCustomView(paramBundle);
-        if (this.HfQ == 0) {
-          this.HfQ = ao.aJ(this.mContext, 2130968653);
+        if (this.DPG == 0) {
+          this.DPG = aq.aN(this.mContext, 2130968653);
         }
-        this.Hga = am.ZN(this.HfQ);
-        this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.HfQ));
-        this.myG = ((TextView)findViewById(16908308));
-        this.HfN = ((TextView)findViewById(16908309));
-        this.HfO = findViewById(2131305937);
-        this.HfP = findViewById(2131296416);
-        this.mgn = ((ImageView)findViewById(2131296417));
-        setBackBtn(new MenuItem.OnMenuItemClickListener()
-        {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            AppMethodBeat.i(159086);
-            BaseActivity.this.finish();
-            AppMethodBeat.o(159086);
-            return true;
-          }
-        });
+        this.ITq = ao.abX(this.DPG);
+        this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.DPG));
+        this.mZo = ((TextView)findViewById(16908308));
+        this.ITe = ((TextView)findViewById(16908309));
+        this.ITf = findViewById(2131305937);
+        this.ITg = findViewById(2131296416);
+        this.mGO = ((ImageView)findViewById(2131296417));
+        setBackBtn(new BaseActivity.1(this));
       }
-      this.Hgb = ao.av(this.mContext, 2131165252);
-      this.Hgc = ao.av(this.mContext, 2131165559);
+      this.ITr = aq.ay(this.mContext, 2131165252);
+      this.ITs = aq.ay(this.mContext, 2131165559);
       if (Build.VERSION.SDK_INT >= 21)
       {
-        if (this.HfQ == 0) {
-          this.HfQ = ao.aJ(this.mContext, 2130968653);
+        if (this.DPG == 0) {
+          this.DPG = aq.aN(this.mContext, 2130968653);
         }
         paramBundle = getWindow();
         paramBundle.clearFlags(201326592);
         paramBundle.addFlags(-2147483648);
-        paramBundle.setStatusBarColor(this.HfQ);
-        feN();
+        paramBundle.setStatusBarColor(this.DPG);
+        fuV();
       }
       return;
       this.theme = 2131821548;
@@ -345,53 +330,61 @@ public abstract class BaseActivity
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    an.d("BaseActivity", "on create option menu, menuCache size:%d", new Object[] { Integer.valueOf(this.Hgd.size()) });
-    if ((this.mActionBar == null) || (this.Hgd.size() == 0)) {
-      an.w("BaseActivity", "error, mActionBar is null or cache size:%d", new Object[] { Integer.valueOf(this.Hgd.size()) });
+    ap.d("BaseActivity", "on create option menu, menuCache size:%d", new Object[] { Integer.valueOf(this.ITt.size()) });
+    if ((this.mActionBar == null) || (this.ITt.size() == 0)) {
+      ap.w("BaseActivity", "error, mActionBar is null or cache size:%d", new Object[] { Integer.valueOf(this.ITt.size()) });
     }
     for (int i = 0; i != 0; i = 1)
     {
       return true;
-      Iterator localIterator = this.Hgd.iterator();
+      Iterator localIterator = this.ITt.iterator();
       while (localIterator.hasNext())
       {
         final b localb = (b)localIterator.next();
-        if (localb.Hgm != 16908332)
+        if (localb.ITC != 16908332)
         {
           Object localObject;
-          if (localb.Hgr == c.Hgx)
+          if (localb.ITH == c.ITN)
           {
-            this.HfU = paramMenu.add(0, localb.Hgm, 0, localb.text);
+            this.ITk = paramMenu.add(0, localb.ITC, 0, localb.text);
             localObject = new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
                 AppMethodBeat.i(159088);
+                b localb = new b();
+                localb.bd(paramAnonymousView);
+                a.b("com/tencent/mm/ui/BaseActivity$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
                 BaseActivity.a(BaseActivity.a(BaseActivity.this), localb);
+                a.a(this, "com/tencent/mm/ui/BaseActivity$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(159088);
               }
             };
-            if (localb.Hgq == null) {
-              localb.Hgq = View.inflate(this.mContext, 2131492920, null);
+            if (localb.ITG == null) {
+              localb.ITG = View.inflate(this.mContext, 2131492920, null);
             }
-            this.HfS = ((WeImageView)localb.Hgq.findViewById(2131296376));
-            this.HfS.setVisibility(0);
-            feP();
-            this.HfS.setOnClickListener((View.OnClickListener)localObject);
-            this.HfS.setEnabled(localb.enable);
-            this.HfU.setActionView(localb.Hgq);
-            this.HfU.setEnabled(localb.enable);
-            this.HfU.setVisible(localb.visible);
+            this.ITi = ((WeImageView)localb.ITG.findViewById(2131296376));
+            this.ITi.setVisibility(0);
+            fuX();
+            this.ITi.setOnClickListener((View.OnClickListener)localObject);
+            this.ITi.setEnabled(localb.enable);
+            this.ITk.setActionView(localb.ITG);
+            this.ITk.setEnabled(localb.enable);
+            this.ITk.setVisible(localb.visible);
           }
           else
           {
-            this.HfV = paramMenu.add(0, localb.Hgm, 0, localb.text);
+            this.ITl = paramMenu.add(0, localb.ITC, 0, localb.text);
             localObject = new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
                 AppMethodBeat.i(159089);
+                b localb = new b();
+                localb.bd(paramAnonymousView);
+                a.b("com/tencent/mm/ui/BaseActivity$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
                 BaseActivity.a(BaseActivity.b(BaseActivity.this), localb);
+                a.a(this, "com/tencent/mm/ui/BaseActivity$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(159089);
               }
             };
@@ -400,66 +393,70 @@ public abstract class BaseActivity
               public final boolean onLongClick(View paramAnonymousView)
               {
                 AppMethodBeat.i(159090);
+                b localb = new b();
+                localb.bd(paramAnonymousView);
+                a.b("com/tencent/mm/ui/BaseActivity$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
                 boolean bool = BaseActivity.a(paramAnonymousView, localb);
+                a.a(bool, this, "com/tencent/mm/ui/BaseActivity$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
                 AppMethodBeat.o(159090);
                 return bool;
               }
             };
-            this.HfY = localb.Hgr;
-            if ((localb.Hgr == c.Hgu) || (localb.Hgr == c.Hgt))
+            this.ITo = localb.ITH;
+            if ((localb.ITH == c.ITK) || (localb.ITH == c.ITJ))
             {
-              if (localb.Hgo == null) {
-                localb.Hgo = View.inflate(this.mContext, 2131492920, null);
+              if (localb.ITE == null) {
+                localb.ITE = View.inflate(this.mContext, 2131492920, null);
               }
-              this.HfT = ((TextView)localb.Hgo.findViewById(2131296377));
-              this.HfT.setVisibility(0);
-              this.HfT.setText(localb.text);
-              if (localb.Hgr == c.Hgu)
+              this.ITj = ((TextView)localb.ITE.findViewById(2131296377));
+              this.ITj.setVisibility(0);
+              this.ITj.setText(localb.text);
+              if (localb.ITH == c.ITK)
               {
-                this.HfT.setTextColor(this.mContext.getResources().getColorStateList(2131100038));
+                this.ITj.setTextColor(this.mContext.getResources().getColorStateList(2131100038));
                 label454:
-                this.HfT.setOnClickListener((View.OnClickListener)localObject);
-                this.HfT.setOnLongClickListener(local5);
-                this.HfT.setEnabled(localb.enable);
-                this.HfV.setActionView(localb.Hgo);
+                this.ITj.setOnClickListener((View.OnClickListener)localObject);
+                this.ITj.setOnLongClickListener(local5);
+                this.ITj.setEnabled(localb.enable);
+                this.ITl.setActionView(localb.ITE);
               }
             }
             for (;;)
             {
-              this.HfV.setEnabled(localb.enable);
-              this.HfV.setVisible(localb.visible);
-              if (this.HfV == null) {
+              this.ITl.setEnabled(localb.enable);
+              this.ITl.setVisible(localb.visible);
+              if (this.ITl == null) {
                 break;
               }
-              this.HfV.setShowAsAction(2);
+              this.ITl.setShowAsAction(2);
               break;
-              feO();
+              fuW();
               break label454;
-              if (localb.Hgn != 0) {
-                this.HfX = localb.Hgn;
+              if (localb.ITD != 0) {
+                this.ITn = localb.ITD;
               }
-              if (localb.Hgr == c.Hgy) {
-                this.HfX = 0;
+              if (localb.ITH == c.ITO) {
+                this.ITn = 0;
               }
-              if (localb.Hgp == null) {
-                localb.Hgp = View.inflate(this.mContext, 2131492920, null);
+              if (localb.ITF == null) {
+                localb.ITF = View.inflate(this.mContext, 2131492920, null);
               }
-              this.HfR = ((WeImageView)localb.Hgp.findViewById(2131296376));
-              feO();
-              if (this.HfX != 0)
+              this.ITh = ((WeImageView)localb.ITF.findViewById(2131296376));
+              fuW();
+              if (this.ITn != 0)
               {
-                this.HfR.setVisibility(0);
-                this.HfR.setOnClickListener((View.OnClickListener)localObject);
-                this.HfR.setOnLongClickListener(local5);
-                this.HfR.setEnabled(localb.enable);
-                this.HfV.setActionView(localb.Hgp);
+                this.ITh.setVisibility(0);
+                this.ITh.setOnClickListener((View.OnClickListener)localObject);
+                this.ITh.setOnLongClickListener(local5);
+                this.ITh.setEnabled(localb.enable);
+                this.ITl.setActionView(localb.ITF);
               }
             }
           }
         }
       }
-      if (this.HfU != null) {
-        this.HfU.setShowAsAction(2);
+      if (this.ITk != null) {
+        this.ITk.setShowAsAction(2);
       }
     }
     return super.onCreateOptionsMenu(paramMenu);
@@ -473,10 +470,10 @@ public abstract class BaseActivity
   
   public final void removeAllOptionMenu()
   {
-    if (this.Hgd.isEmpty()) {
+    if (this.ITt.isEmpty()) {
       return;
     }
-    this.Hgd.clear();
+    this.ITt.clear();
     supportInvalidateOptionsMenu();
   }
   
@@ -485,57 +482,57 @@ public abstract class BaseActivity
     if (this.mActionBar == null) {
       return;
     }
-    this.HfQ = paramInt;
-    this.Hga = am.ZN(this.HfQ);
-    this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.HfQ));
+    this.DPG = paramInt;
+    this.ITq = ao.abX(this.DPG);
+    this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.DPG));
     if (Build.VERSION.SDK_INT >= 21) {
-      getWindow().setStatusBarColor(this.HfQ);
+      getWindow().setStatusBarColor(this.DPG);
     }
-    feN();
-    feQ();
-    feO();
+    fuV();
+    fuY();
+    fuW();
     updateTitle();
-    if (this.HfN != null)
+    if (this.ITe != null)
     {
-      if (!this.Hga) {
+      if (!this.ITq) {
         break label116;
       }
-      this.HfN.setTextColor(this.mContext.getResources().getColor(2131099883));
+      this.ITe.setTextColor(this.mContext.getResources().getColor(2131099883));
     }
     for (;;)
     {
-      feP();
+      fuX();
       return;
       label116:
-      this.HfN.setTextColor(this.mContext.getResources().getColor(2131099882));
+      this.ITe.setTextColor(this.mContext.getResources().getColor(2131099882));
     }
   }
   
   public final void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    a(paramOnMenuItemClickListener, 0, BaseActivity.a.Hgi);
+    a(paramOnMenuItemClickListener, 0, BaseActivity.a.ITy);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    if ((this.mActionBar == null) || (this.myG == null)) {
+    if ((this.mActionBar == null) || (this.mZo == null)) {
       return;
     }
-    this.myG.setText(paramCharSequence.toString());
+    this.mZo.setText(paramCharSequence.toString());
     updateTitle();
   }
   
   public static final class b
   {
-    int Hgm = -1;
-    int Hgn;
-    View Hgo;
-    View Hgp;
-    View Hgq;
-    BaseActivity.c Hgr = BaseActivity.c.Hgs;
+    int ITC = -1;
+    int ITD;
+    View ITE;
+    View ITF;
+    View ITG;
+    BaseActivity.c ITH = BaseActivity.c.ITI;
     boolean enable = true;
-    MenuItem.OnMenuItemClickListener iPc;
-    View.OnLongClickListener qQj;
+    MenuItem.OnMenuItemClickListener jil;
+    View.OnLongClickListener rAj;
     String text;
     boolean visible = true;
   }
@@ -545,14 +542,14 @@ public abstract class BaseActivity
     static
     {
       AppMethodBeat.i(159097);
-      Hgs = new c("CUSTOM", 0);
-      Hgt = new c("TEXT", 1);
-      Hgu = new c("GREEN_TEXT", 2);
-      Hgv = new c("ADD", 3);
-      Hgw = new c("MORE", 4);
-      Hgx = new c("SEARCH", 5);
-      Hgy = new c("NONE", 6);
-      Hgz = new c[] { Hgs, Hgt, Hgu, Hgv, Hgw, Hgx, Hgy };
+      ITI = new c("CUSTOM", 0);
+      ITJ = new c("TEXT", 1);
+      ITK = new c("GREEN_TEXT", 2);
+      ITL = new c("ADD", 3);
+      ITM = new c("MORE", 4);
+      ITN = new c("SEARCH", 5);
+      ITO = new c("NONE", 6);
+      ITP = new c[] { ITI, ITJ, ITK, ITL, ITM, ITN, ITO };
       AppMethodBeat.o(159097);
     }
     
@@ -561,7 +558,7 @@ public abstract class BaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.BaseActivity
  * JD-Core Version:    0.7.0.1
  */

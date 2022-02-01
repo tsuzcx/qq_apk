@@ -14,32 +14,32 @@ public final class ac
   extends LinearLayout
   implements i.a
 {
-  private HeaderContainer HpP;
-  private ImageView HpQ;
-  private ImageView fuY;
-  private TextView nBF;
-  private TextView xhj;
+  private HeaderContainer Jdv;
+  private ImageView Jdw;
+  private ImageView fOf;
+  private TextView odU;
+  private TextView yvk;
   
   public ac(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(33518);
     ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131494944, this, true);
-    this.fuY = ((ImageView)findViewById(2131297008));
-    this.HpQ = ((ImageView)findViewById(2131303625));
-    this.nBF = ((TextView)findViewById(2131302860));
-    this.xhj = ((TextView)findViewById(2131306244));
+    this.fOf = ((ImageView)findViewById(2131297008));
+    this.Jdw = ((ImageView)findViewById(2131303625));
+    this.odU = ((TextView)findViewById(2131302860));
+    this.yvk = ((TextView)findViewById(2131306244));
     AppMethodBeat.o(33518);
   }
   
   public final TextView getNickNameTV()
   {
-    return this.nBF;
+    return this.odU;
   }
   
   public final ImageView getQrCodeIv()
   {
-    return this.HpQ;
+    return this.Jdw;
   }
   
   protected final void onDraw(Canvas paramCanvas)
@@ -52,22 +52,22 @@ public final class ac
   public final void setAccountName(String paramString)
   {
     AppMethodBeat.i(33520);
-    if (this.xhj != null) {
-      this.xhj.setText(getResources().getString(2131755271, new Object[] { paramString }));
+    if (this.yvk != null) {
+      this.yvk.setText(getResources().getString(2131755271, new Object[] { paramString }));
     }
     AppMethodBeat.o(33520);
   }
   
   public final void setHeaderContainer(HeaderContainer paramHeaderContainer)
   {
-    this.HpP = paramHeaderContainer;
+    this.Jdv = paramHeaderContainer;
   }
   
   public final void setNickNameTV(SpannableString paramSpannableString)
   {
     AppMethodBeat.i(33521);
-    if (this.nBF != null) {
-      this.nBF.setText(paramSpannableString);
+    if (this.odU != null) {
+      this.odU.setText(paramSpannableString);
     }
     AppMethodBeat.o(33521);
   }

@@ -7,19 +7,21 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class MusicPreference
   extends Preference
 {
-  private View.OnClickListener iu;
-  private boolean lrL;
+  private View.OnClickListener km;
+  private boolean lQV;
   private View mView;
-  public String wYs;
-  public String wYt;
-  public String wYu;
-  private ImageButton xcR;
-  a xcS;
+  public String ymb;
+  public String ymc;
+  public String ymd;
+  private ImageButton yqT;
+  a yqU;
   
   public MusicPreference(Context paramContext)
   {
@@ -36,10 +38,10 @@ public class MusicPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(51808);
     this.mView = null;
-    this.xcR = null;
-    this.wYs = "";
-    this.wYt = "";
-    this.wYu = "";
+    this.yqT = null;
+    this.ymb = "";
+    this.ymc = "";
+    this.ymd = "";
     setLayoutResource(2131494875);
     AppMethodBeat.o(51808);
   }
@@ -60,21 +62,25 @@ public class MusicPreference
   {
     AppMethodBeat.i(51811);
     super.onBindView(paramView);
-    if (this.iu == null) {
-      this.iu = new View.OnClickListener()
+    if (this.km == null) {
+      this.km = new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(51807);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/scanner/ui/MusicPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           if (MusicPreference.a(MusicPreference.this) == null)
           {
+            a.a(this, "com/tencent/mm/plugin/scanner/ui/MusicPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(51807);
             return;
           }
           if (paramAnonymousView.getId() == 2131303376)
           {
             if (!MusicPreference.b(MusicPreference.this)) {
-              break label83;
+              break label136;
             }
             MusicPreference.a(MusicPreference.this, false);
             MusicPreference.c(MusicPreference.this).setImageResource(2131233641);
@@ -82,40 +88,41 @@ public class MusicPreference
           for (;;)
           {
             MusicPreference.a(MusicPreference.this).d(MusicPreference.this);
+            a.a(this, "com/tencent/mm/plugin/scanner/ui/MusicPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(51807);
             return;
-            label83:
+            label136:
             MusicPreference.a(MusicPreference.this, true);
             MusicPreference.c(MusicPreference.this).setImageResource(2131233642);
           }
         }
       };
     }
-    this.xcR = ((ImageButton)paramView.findViewById(2131303376));
-    this.xcR.setOnClickListener(this.iu);
-    if (this.lrL)
+    this.yqT = ((ImageButton)paramView.findViewById(2131303376));
+    this.yqT.setOnClickListener(this.km);
+    if (this.lQV)
     {
-      this.xcR.setImageResource(2131233642);
+      this.yqT.setImageResource(2131233642);
       AppMethodBeat.o(51811);
       return;
     }
-    this.xcR.setImageResource(2131233641);
+    this.yqT.setImageResource(2131233641);
     AppMethodBeat.o(51811);
   }
   
-  public final void pY(boolean paramBoolean)
+  public final void qw(boolean paramBoolean)
   {
     AppMethodBeat.i(51810);
-    this.lrL = paramBoolean;
-    if (this.xcR != null)
+    this.lQV = paramBoolean;
+    if (this.yqT != null)
     {
       if (paramBoolean)
       {
-        this.xcR.setImageResource(2131233642);
+        this.yqT.setImageResource(2131233642);
         AppMethodBeat.o(51810);
         return;
       }
-      this.xcR.setImageResource(2131233641);
+      this.yqT.setImageResource(2131233641);
     }
     AppMethodBeat.o(51810);
   }
@@ -127,7 +134,7 @@ public class MusicPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.MusicPreference
  * JD-Core Version:    0.7.0.1
  */

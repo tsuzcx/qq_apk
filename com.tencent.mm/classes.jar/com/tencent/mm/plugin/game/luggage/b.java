@@ -1,41 +1,36 @@
 package com.tencent.mm.plugin.game.luggage;
 
-import android.os.Build.VERSION;
-import android.webkit.WebResourceResponse;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.d.e;
-import com.tencent.mm.plugin.webview.ui.tools.game.d;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
+import com.tencent.xweb.t;
 
 public final class b
-  implements com.tencent.luggage.webview.a.c
 {
-  private e sWF;
-  
-  public b(e parame)
+  public static <T extends com.tencent.mm.ipcinvoker.b<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean b(InputType paramInputType, Class<T> paramClass, d<ResultType> paramd)
   {
-    this.sWF = parame;
-  }
-  
-  public final String DX()
-  {
-    return "weixin://game.js";
-  }
-  
-  public final WebResourceResponse bM(String paramString)
-  {
-    AppMethodBeat.i(82986);
-    if (Build.VERSION.SDK_INT < 21)
+    AppMethodBeat.i(82981);
+    if (cXa()) {}
+    for (String str = "com.tencent.mm:toolsmp";; str = "com.tencent.mm:tools")
     {
-      AppMethodBeat.o(82986);
-      return null;
+      boolean bool = h.a(str, paramInputType, paramClass, paramd);
+      AppMethodBeat.o(82981);
+      return bool;
     }
-    boolean bool = false;
-    if (this.sWF.getWePkgPlugin() != null) {
-      bool = this.sWF.getWePkgPlugin().CZo;
+  }
+  
+  private static boolean cXa()
+  {
+    AppMethodBeat.i(82980);
+    if ((t.baV("game.weixin.qq.com")) && (!ToolsProcessIPCService.ahO()))
+    {
+      AppMethodBeat.o(82980);
+      return true;
     }
-    paramString = d.uy(bool);
-    AppMethodBeat.o(82986);
-    return paramString;
+    AppMethodBeat.o(82980);
+    return false;
   }
 }
 

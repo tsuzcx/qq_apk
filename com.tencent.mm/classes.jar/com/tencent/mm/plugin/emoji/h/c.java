@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.emoji.h;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.plugin.emoji.b;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class c
 {
   private final String TAG = "MicroMsg.emoji.UseSmileyTool";
-  public int mbA;
-  public String pmB;
+  public int mBI;
+  public String pQb;
   
   public c(int paramInt)
   {
-    this.mbA = paramInt;
+    this.mBI = paramInt;
   }
   
   public static void a(Intent paramIntent, String paramString, Activity paramActivity)
@@ -35,27 +35,27 @@ public final class c
   public static void a(String paramString1, String paramString2, Activity paramActivity)
   {
     AppMethodBeat.i(109444);
-    if (bs.isNullOrNil(paramString1))
+    if (bt.isNullOrNil(paramString1))
     {
-      ac.d("MicroMsg.emoji.UseSmileyTool", "talker name is invalid so can't go to chat room use.");
+      ad.d("MicroMsg.emoji.UseSmileyTool", "talker name is invalid so can't go to chat room use.");
       AppMethodBeat.o(109444);
       return;
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("Chat_User", paramString1);
     localIntent.putExtra("smiley_product_id", paramString2);
-    b.iyx.d(localIntent, paramActivity);
+    b.iRG.d(localIntent, paramActivity);
     AppMethodBeat.o(109444);
   }
   
   public final void O(Activity paramActivity)
   {
     AppMethodBeat.i(109445);
-    ac.d("MicroMsg.emoji.UseSmileyTool", "jacks sendToFriend emoji");
+    ad.d("MicroMsg.emoji.UseSmileyTool", "jacks sendToFriend emoji");
     Intent localIntent = new Intent();
     localIntent.putExtra("MMActivity.OverrideEnterAnimation", 2130772047);
     localIntent.putExtra("MMActivity.OverrideExitAnimation", 2130772106);
-    d.c(paramActivity, ".ui.transmit.SelectConversationUI", localIntent, this.mbA);
+    d.c(paramActivity, ".ui.transmit.SelectConversationUI", localIntent, this.mBI);
     paramActivity.overridePendingTransition(2130772108, 2130772048);
     AppMethodBeat.o(109445);
   }

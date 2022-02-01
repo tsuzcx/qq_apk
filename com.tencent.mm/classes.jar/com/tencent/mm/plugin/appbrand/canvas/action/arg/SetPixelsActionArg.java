@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -105,7 +105,7 @@ public class SetPixelsActionArg
     }
     catch (JSONException paramJSONObject)
     {
-      ac.printErrStackTrace("SetPixelsActionArg", paramJSONObject, "", new Object[0]);
+      ad.printErrStackTrace("SetPixelsActionArg", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(145222);
     }
   }

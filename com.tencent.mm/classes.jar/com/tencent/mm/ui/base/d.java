@@ -5,24 +5,24 @@ import android.support.v4.view.q;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public abstract class d
   extends q
 {
-  private Queue<View> HuD;
-  private int HuE = 0;
+  private Queue<View> Jit;
+  private int Jiu = 0;
   public Context context;
   
   public d(Context paramContext)
   {
     this.context = paramContext;
-    this.HuD = new LinkedList();
+    this.Jit = new LinkedList();
   }
   
-  public abstract void Ka(int paramInt);
+  public abstract void LC(int paramInt);
   
   public abstract View a(View paramView, ViewGroup paramViewGroup, int paramInt);
   
@@ -30,18 +30,18 @@ public abstract class d
   {
     paramObject = (View)paramObject;
     paramViewGroup.removeView(paramObject);
-    this.HuD.add(paramObject);
-    Ka(paramInt);
-    ac.d("MicroMsg.CustomPagerAdapter", "recycle queue size %d", new Object[] { Integer.valueOf(this.HuD.size()) });
+    this.Jit.add(paramObject);
+    LC(paramInt);
+    ad.d("MicroMsg.CustomPagerAdapter", "recycle queue size %d", new Object[] { Integer.valueOf(this.Jit.size()) });
   }
   
-  public abstract int djx();
+  public abstract int dtJ();
   
   public int getItemPosition(Object paramObject)
   {
-    if (this.HuE > 0)
+    if (this.Jiu > 0)
     {
-      this.HuE -= 1;
+      this.Jiu -= 1;
       return -2;
     }
     return super.getItemPosition(paramObject);
@@ -50,12 +50,12 @@ public abstract class d
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     long l = System.currentTimeMillis();
-    View localView = a((View)this.HuD.poll(), paramViewGroup, paramInt);
+    View localView = a((View)this.Jit.poll(), paramViewGroup, paramInt);
     if (localView.getLayoutParams() == null) {
       localView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     }
     paramViewGroup.addView(localView);
-    ac.v("MicroMsg.CustomPagerAdapter", "instantiateItem usetime: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ad.v("MicroMsg.CustomPagerAdapter", "instantiateItem usetime: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     return localView;
   }
   
@@ -66,7 +66,7 @@ public abstract class d
   
   public void notifyDataSetChanged()
   {
-    this.HuE = djx();
+    this.Jiu = dtJ();
     super.notifyDataSetChanged();
   }
 }

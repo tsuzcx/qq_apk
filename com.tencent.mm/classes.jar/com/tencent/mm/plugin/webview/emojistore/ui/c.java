@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.webview.emojistore.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.emoji.a.a.h;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.h.b;
-import com.tencent.mm.protocal.protobuf.cyz;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.dem;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.search.data.SimilarEmojiQueryModel;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.util.ArrayList;
@@ -20,72 +22,72 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/emojistore/ui/SosSimilarEmojiDataManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "callback", "continueFlag", "", "emojiDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "Lkotlin/collections/ArrayList;", "getEmojiDataList", "()Ljava/util/ArrayList;", "setEmojiDataList", "(Ljava/util/ArrayList;)V", "model", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "getModel", "()Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "setModel", "(Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;)V", "offset", "", "getOffset", "()I", "setOffset", "(I)V", "searchID", "", "getSearchID", "()Ljava/lang/String;", "setSearchID", "(Ljava/lang/String;)V", "totalCount", "enableLoadMore", "", "getHeadData", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getSimilarEmojiList", "", "onCrate", "intent", "Landroid/content/Intent;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-webview_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/emojistore/ui/SosSimilarEmojiDataManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "callback", "continueFlag", "", "emojiDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "Lkotlin/collections/ArrayList;", "getEmojiDataList", "()Ljava/util/ArrayList;", "setEmojiDataList", "(Ljava/util/ArrayList;)V", "model", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "getModel", "()Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "setModel", "(Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;)V", "offset", "", "getOffset", "()I", "setOffset", "(I)V", "searchID", "", "getSearchID", "()Ljava/lang/String;", "setSearchID", "(Ljava/lang/String;)V", "totalCount", "enableLoadMore", "", "getHeadData", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getSimilarEmojiList", "", "onCrate", "intent", "Landroid/content/Intent;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-webview_release"})
 public final class c
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  public static final c.a Cgr;
-  SimilarEmojiQueryModel Cgp;
-  ArrayList<h> Cgq;
-  com.tencent.mm.ak.g callback;
-  private int fAw;
+  public static final c.a DJu;
+  SimilarEmojiQueryModel DJs;
+  ArrayList<h> DJt;
+  f callback;
+  private int fTM;
   int offset;
-  String pik;
-  boolean qYO;
+  String pLL;
+  boolean rKf;
   
   static
   {
     AppMethodBeat.i(82496);
-    Cgr = new c.a((byte)0);
+    DJu = new c.a((byte)0);
     AppMethodBeat.o(82496);
   }
   
   public c()
   {
     AppMethodBeat.i(82495);
-    this.pik = ("Similar" + System.currentTimeMillis());
-    this.qYO = true;
-    this.Cgq = new ArrayList();
+    this.pLL = ("Similar" + System.currentTimeMillis());
+    this.rKf = true;
+    this.DJt = new ArrayList();
     AppMethodBeat.o(82495);
   }
   
-  public final void d(com.tencent.mm.ak.g paramg)
+  public final void d(f paramf)
   {
     AppMethodBeat.i(82493);
-    k.h(paramg, "callback");
-    ac.i("MicroMsg.SimilarEmoji", "do net request:[" + this.Cgp + ']');
-    this.callback = paramg;
-    if (!this.qYO)
+    p.h(paramf, "callback");
+    ad.i("MicroMsg.SimilarEmoji", "do net request:[" + this.DJs + ']');
+    this.callback = paramf;
+    if (!this.rKf)
     {
       AppMethodBeat.o(82493);
       return;
     }
-    paramg = this.Cgp;
-    if (paramg != null)
+    paramf = this.DJs;
+    if (paramf != null)
     {
-      EmojiInfo localEmojiInfo = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().XL(paramg.emojiMD5);
-      paramg = new com.tencent.mm.plugin.webview.fts.c(paramg.emojiMD5, this.offset, this.pik, this.pik, 0, this.pik, 59, localEmojiInfo.field_cdnUrl, localEmojiInfo.field_aeskey);
-      com.tencent.mm.kernel.g.agi().b((n)paramg);
+      EmojiInfo localEmojiInfo = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().abr(paramf.emojiMD5);
+      paramf = new com.tencent.mm.plugin.webview.fts.d(paramf.emojiMD5, this.offset, this.pLL, this.pLL, 0, this.pLL, 59, localEmojiInfo.field_cdnUrl, localEmojiInfo.field_aeskey);
+      g.aiU().b((n)paramf);
       AppMethodBeat.o(82493);
       return;
     }
     AppMethodBeat.o(82493);
   }
   
-  public final EmojiInfo ezk()
+  public final EmojiInfo eNZ()
   {
     AppMethodBeat.i(82492);
-    Object localObject1 = this.Cgp;
+    Object localObject1 = this.DJs;
     if (localObject1 != null)
     {
-      Object localObject2 = com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class);
-      k.g(localObject2, "plugin<IPluginEmoji>(IPluginEmoji::class.java)");
-      localObject1 = ((com.tencent.mm.plugin.emoji.b.d)localObject2).getEmojiMgr().XL(((SimilarEmojiQueryModel)localObject1).emojiMD5);
-      ((EmojiInfo)localObject1).field_catalog = EmojiInfo.Jss;
-      if (this.Cgq.isEmpty())
+      Object localObject2 = g.ad(com.tencent.mm.plugin.emoji.b.d.class);
+      p.g(localObject2, "plugin<IPluginEmoji>(IPluginEmoji::class.java)");
+      localObject1 = ((com.tencent.mm.plugin.emoji.b.d)localObject2).getEmojiMgr().abr(((SimilarEmojiQueryModel)localObject1).emojiMD5);
+      ((EmojiInfo)localObject1).field_catalog = EmojiInfo.OeN;
+      if (this.DJt.isEmpty())
       {
-        localObject2 = this.Cgq;
-        k.g(localObject1, "emojiInfo");
+        localObject2 = this.DJt;
+        p.g(localObject1, "emojiInfo");
         ((ArrayList)localObject2).add(new h((EmojiInfo)localObject1, 100));
       }
       AppMethodBeat.o(82492);
@@ -106,19 +108,19 @@ public final class c
         AppMethodBeat.o(82494);
         throw paramString;
       }
-      localObject1 = bs.bG(((com.tencent.mm.plugin.webview.fts.c)paramn).ezo().FhN, "");
+      localObject1 = bt.bI(((com.tencent.mm.plugin.webview.fts.d)paramn).eOd().GDb, "");
     }
     try
     {
       localObject1 = new JSONObject((String)localObject1);
       this.offset = ((JSONObject)localObject1).optInt("offset", 0);
-      this.fAw = ((JSONObject)localObject1).optInt("totalCount", 0);
-      this.qYO = ((JSONObject)localObject1).optBoolean("continueFlag", false);
+      this.fTM = ((JSONObject)localObject1).optInt("totalCount", 0);
+      this.rKf = ((JSONObject)localObject1).optBoolean("continueFlag", false);
       localObject2 = ((JSONObject)localObject1).optString("searchID");
-      k.g(localObject2, "responseJson.optString(\"searchID\")");
-      this.pik = ((String)localObject2);
+      p.g(localObject2, "responseJson.optString(\"searchID\")");
+      this.pLL = ((String)localObject2);
       localObject2 = ((JSONObject)localObject1).optJSONArray("items");
-      if (((Collection)this.Cgq).isEmpty()) {
+      if (((Collection)this.DJt).isEmpty()) {
         break label384;
       }
       i = 1;
@@ -133,14 +135,14 @@ public final class c
         int i = 0;
       }
     }
-    if ((i != 0) && (((h)j.iQ((List)this.Cgq)).fRp == 104)) {
-      this.Cgq.remove(j.iQ((List)this.Cgq));
+    if ((i != 0) && (((h)j.je((List)this.DJt)).gkP == 104)) {
+      this.DJt.remove(j.je((List)this.DJt));
     }
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new JSONArray();
     }
-    ac.i("MicroMsg.SimilarEmoji", "get more emoji size:" + ((JSONArray)localObject1).length());
+    ad.i("MicroMsg.SimilarEmoji", "get more emoji size:" + ((JSONArray)localObject1).length());
     j = ((JSONArray)localObject1).length();
     i = 0;
     while (i < j)
@@ -148,16 +150,16 @@ public final class c
       localObject2 = ((JSONArray)localObject1).getJSONObject(i);
       EmojiInfo localEmojiInfo = new EmojiInfo();
       b.a((JSONObject)localObject2, localEmojiInfo);
-      this.Cgq.add(new h(localEmojiInfo, 103));
+      this.DJt.add(new h(localEmojiInfo, 103));
       i += 1;
     }
-    if (this.qYO) {
-      this.Cgq.add(new h(new EmojiInfo(), 104));
+    if (this.rKf) {
+      this.DJt.add(new h(new EmojiInfo(), 104));
     }
     localObject1 = this.callback;
     if (localObject1 != null)
     {
-      ((com.tencent.mm.ak.g)localObject1).onSceneEnd(paramInt1, paramInt2, paramString, paramn);
+      ((f)localObject1).onSceneEnd(paramInt1, paramInt2, paramString, paramn);
       AppMethodBeat.o(82494);
       return;
     }

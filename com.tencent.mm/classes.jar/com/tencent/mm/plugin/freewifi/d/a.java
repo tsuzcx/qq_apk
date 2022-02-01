@@ -3,110 +3,110 @@ package com.tencent.mm.plugin.freewifi.d;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
 import com.tencent.mm.plugin.freewifi.g.d;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.j;
-import com.tencent.mm.protocal.protobuf.ad;
-import com.tencent.mm.protocal.protobuf.apy;
-import com.tencent.mm.protocal.protobuf.cjv;
-import com.tencent.mm.protocal.protobuf.cyw;
-import com.tencent.mm.protocal.protobuf.dv;
-import com.tencent.mm.protocal.protobuf.hn;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.protocal.protobuf.ac;
+import com.tencent.mm.protocal.protobuf.ats;
+import com.tencent.mm.protocal.protobuf.cov;
+import com.tencent.mm.protocal.protobuf.dej;
+import com.tencent.mm.protocal.protobuf.dw;
+import com.tencent.mm.protocal.protobuf.hu;
 import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.net.URLDecoder;
 import java.util.LinkedList;
 
 public final class a
   extends c
 {
-  private static int sqS = 7200;
-  private int dgm;
+  private static int tnu = 7200;
+  private int drI;
   private String mac;
   private String ssid;
   
   public a(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(24842);
-    cJr();
-    this.dgm = 4;
-    com.tencent.mm.protocal.protobuf.ac localac = (com.tencent.mm.protocal.protobuf.ac)this.rr.hvr.hvw;
+    cRG();
+    this.drI = 4;
+    ac localac = (ac)this.rr.hNK.hNQ;
     localac.OpCode = 4;
     localac.URL = paramString1;
-    localac.DLC = paramInt;
-    localac.DLD = paramString2;
-    localac.DLE = m.cIH();
-    localac.DLB = new LinkedList();
-    paramString2 = new dv();
-    paramString2.ssid = m.afm("MicroMsg.FreeWifi.NetSceneAPAuth");
-    paramString2.mac = m.afn("MicroMsg.FreeWifi.NetSceneAPAuth");
-    localac.DLB.add(paramString2);
-    localac.DLF = m.afo("MicroMsg.FreeWifi.NetSceneAPAuth");
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "Constructing get front page request, HasMobile=%d, Ap_info[0].ssid=%s, Ap_info[0].mac=%s", new Object[] { Integer.valueOf(localac.DLE), paramString2.ssid, paramString2.mac });
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "opCode = %d, url = %s", new Object[] { Integer.valueOf(4), paramString1 });
+    localac.FqH = paramInt;
+    localac.FqI = paramString2;
+    localac.FqJ = m.cQW();
+    localac.FqG = new LinkedList();
+    paramString2 = new dw();
+    paramString2.ssid = m.ajK("MicroMsg.FreeWifi.NetSceneAPAuth");
+    paramString2.mac = m.ajL("MicroMsg.FreeWifi.NetSceneAPAuth");
+    localac.FqG.add(paramString2);
+    localac.FqK = m.ajM("MicroMsg.FreeWifi.NetSceneAPAuth");
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "Constructing get front page request, HasMobile=%d, Ap_info[0].ssid=%s, Ap_info[0].mac=%s", new Object[] { Integer.valueOf(localac.FqJ), paramString2.ssid, paramString2.mac });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "opCode = %d, url = %s", new Object[] { Integer.valueOf(4), paramString1 });
     AppMethodBeat.o(24842);
   }
   
   public a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4)
   {
     AppMethodBeat.i(24841);
-    cJr();
+    cRG();
     this.ssid = paramString3;
     this.mac = paramString2;
-    this.dgm = 1;
+    this.drI = 1;
     LinkedList localLinkedList = new LinkedList();
-    Object localObject = new dv();
-    ((dv)localObject).ssid = paramString3;
-    ((dv)localObject).mac = paramString2;
-    ((dv)localObject).fLO = paramInt1;
+    Object localObject = new dw();
+    ((dw)localObject).ssid = paramString3;
+    ((dw)localObject).mac = paramString2;
+    ((dw)localObject).gfo = paramInt1;
     localLinkedList.add(localObject);
-    localObject = (com.tencent.mm.protocal.protobuf.ac)this.rr.hvr.hvw;
-    ((com.tencent.mm.protocal.protobuf.ac)localObject).OpCode = 1;
-    ((com.tencent.mm.protocal.protobuf.ac)localObject).DLB = localLinkedList;
-    ((com.tencent.mm.protocal.protobuf.ac)localObject).URL = paramString1;
-    ((com.tencent.mm.protocal.protobuf.ac)localObject).DLC = paramInt2;
-    ((com.tencent.mm.protocal.protobuf.ac)localObject).DLD = paramString4;
-    ((com.tencent.mm.protocal.protobuf.ac)localObject).DLF = m.afo("MicroMsg.FreeWifi.NetSceneAPAuth");
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "opcode = %d, mac = %s, ssid = %s, rssi = %d", new Object[] { Integer.valueOf(1), paramString2, paramString3, Integer.valueOf(paramInt1) });
+    localObject = (ac)this.rr.hNK.hNQ;
+    ((ac)localObject).OpCode = 1;
+    ((ac)localObject).FqG = localLinkedList;
+    ((ac)localObject).URL = paramString1;
+    ((ac)localObject).FqH = paramInt2;
+    ((ac)localObject).FqI = paramString4;
+    ((ac)localObject).FqK = m.ajM("MicroMsg.FreeWifi.NetSceneAPAuth");
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "opcode = %d, mac = %s, ssid = %s, rssi = %d", new Object[] { Integer.valueOf(1), paramString2, paramString3, Integer.valueOf(paramInt1) });
     AppMethodBeat.o(24841);
   }
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt, String paramString7)
   {
     AppMethodBeat.i(24840);
-    cJr();
+    cRG();
     this.ssid = paramString2;
     this.mac = paramString3;
-    com.tencent.mm.protocal.protobuf.ac localac = (com.tencent.mm.protocal.protobuf.ac)this.rr.hvr.hvw;
+    ac localac = (ac)this.rr.hNK.hNQ;
     String str = URLDecoder.decode(paramString5);
     localac.OpCode = 0;
     localac.URL = paramString1;
     localac.SSID = paramString2;
-    localac.DLy = paramString4;
-    localac.DLz = str;
-    localac.DLA = paramString6;
-    localac.DLC = paramInt;
-    localac.DLD = paramString7;
+    localac.FqD = paramString4;
+    localac.FqE = str;
+    localac.FqF = paramString6;
+    localac.FqH = paramInt;
+    localac.FqI = paramString7;
     paramString7 = new LinkedList();
-    dv localdv = new dv();
-    localdv.ssid = paramString2;
-    localdv.mac = paramString3;
-    paramString7.add(localdv);
-    localac.DLB = paramString7;
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "url : %s, ssid : %s, mid : %s, mac : %s, apauthdata : %s, decoded apauthdata :%s,  token : %s", new Object[] { paramString1, paramString2, paramString4, paramString3, paramString5, str, paramString6 });
+    dw localdw = new dw();
+    localdw.ssid = paramString2;
+    localdw.mac = paramString3;
+    paramString7.add(localdw);
+    localac.FqG = paramString7;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "url : %s, ssid : %s, mid : %s, mac : %s, apauthdata : %s, decoded apauthdata :%s,  token : %s", new Object[] { paramString1, paramString2, paramString4, paramString3, paramString5, str, paramString6 });
     AppMethodBeat.o(24840);
   }
   
-  public final String RT()
+  public final String Ua()
   {
-    ad localad = (ad)this.rr.hvs.hvw;
+    com.tencent.mm.protocal.protobuf.ad localad = (com.tencent.mm.protocal.protobuf.ad)this.rr.hNL.hNQ;
     if (localad != null) {
-      return localad.DLR;
+      return localad.FqW;
     }
     return null;
   }
@@ -114,8 +114,8 @@ public final class a
   protected final void b(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     AppMethodBeat.i(24843);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, opCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.dgm) });
-    switch (this.dgm)
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, opCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.drI) });
+    switch (this.drI)
     {
     }
     for (;;)
@@ -124,186 +124,186 @@ public final class a
       return;
       if ((paramInt2 == 0) && (paramInt3 == 0))
       {
-        Object localObject = j.cJk().afA(this.ssid);
+        Object localObject = j.cRz().ajY(this.ssid);
         paramString = this.ssid;
-        cyw localcyw;
+        dej localdej;
         if (localObject == null)
         {
           bool = true;
-          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "get freewifi by ssid :%s, is wifi info = null ? %b", new Object[] { paramString, Boolean.valueOf(bool) });
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "get freewifi by ssid :%s, is wifi info = null ? %b", new Object[] { paramString, Boolean.valueOf(bool) });
           paramInt1 = 0;
           paramString = (String)localObject;
           if (localObject == null)
           {
             paramInt1 = 1;
             paramString = new com.tencent.mm.plugin.freewifi.g.c();
-            paramString.field_ssidmd5 = ah.dg(this.ssid);
+            paramString.field_ssidmd5 = ai.ee(this.ssid);
           }
           paramString.field_wifiType = 1;
-          localObject = (ad)this.rr.hvs.hvw;
-          localcyw = ((ad)localObject).DLK;
-          if (localcyw == null) {
+          localObject = (com.tencent.mm.protocal.protobuf.ad)this.rr.hNL.hNQ;
+          localdej = ((com.tencent.mm.protocal.protobuf.ad)localObject).FqP;
+          if (localdej == null) {
             break label470;
           }
-          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "en : %s, cn : %s, tw : %s", new Object[] { localcyw.FIc, localcyw.FId, localcyw.FIe });
-          paramString.field_showWordCn = localcyw.FId;
-          paramString.field_showWordEn = localcyw.FIc;
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "en : %s, cn : %s, tw : %s", new Object[] { localdej.HsK, localdej.HsL, localdej.HsM });
+          paramString.field_showWordCn = localdej.HsL;
+          paramString.field_showWordEn = localdej.HsK;
         }
-        for (paramString.field_showWordTw = localcyw.FIe;; paramString.field_showWordTw = ai.getContext().getResources().getString(2131759658))
+        for (paramString.field_showWordTw = localdej.HsM;; paramString.field_showWordTw = aj.getContext().getResources().getString(2131759658))
         {
-          paramString.field_action = ((ad)localObject).DLI;
+          paramString.field_action = ((com.tencent.mm.protocal.protobuf.ad)localObject).FqN;
           paramString.field_verifyResult = 1;
           paramString.field_connectState = -1;
-          if (((ad)localObject).DLS <= 0) {
-            ((ad)localObject).DLS = sqS;
+          if (((com.tencent.mm.protocal.protobuf.ad)localObject).FqX <= 0) {
+            ((com.tencent.mm.protocal.protobuf.ad)localObject).FqX = tnu;
           }
-          paramString.field_expiredTime = (bs.aNx() + ((ad)localObject).DLS);
-          paramString.field_showUrl = ((ad)localObject).DLJ;
-          paramString.field_action = ((ad)localObject).DLI;
+          paramString.field_expiredTime = (bt.aQJ() + ((com.tencent.mm.protocal.protobuf.ad)localObject).FqX);
+          paramString.field_showUrl = ((com.tencent.mm.protocal.protobuf.ad)localObject).FqO;
+          paramString.field_action = ((com.tencent.mm.protocal.protobuf.ad)localObject).FqN;
           paramString.field_ssid = this.ssid;
           paramString.field_mac = this.mac;
           paramString.field_wifiType = 1;
           if (paramInt1 == 0) {
             break label524;
           }
-          bool = j.cJk().insert(paramString);
-          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "insert freewifi ret = %b", new Object[] { Boolean.valueOf(bool) });
-          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "insert local freewifi info : %s, %b, expiredTime : %d, action :%d, showurl : %s", new Object[] { this.ssid, Boolean.valueOf(bool), Integer.valueOf(((ad)localObject).DLH), Integer.valueOf(((ad)localObject).DLI), ((ad)localObject).DLJ });
+          bool = j.cRz().insert(paramString);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "insert freewifi ret = %b", new Object[] { Boolean.valueOf(bool) });
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "insert local freewifi info : %s, %b, expiredTime : %d, action :%d, showurl : %s", new Object[] { this.ssid, Boolean.valueOf(bool), Integer.valueOf(((com.tencent.mm.protocal.protobuf.ad)localObject).FqM), Integer.valueOf(((com.tencent.mm.protocal.protobuf.ad)localObject).FqN), ((com.tencent.mm.protocal.protobuf.ad)localObject).FqO });
           AppMethodBeat.o(24843);
           return;
           bool = false;
           break;
           label470:
-          paramString.field_showWordCn = ai.getContext().getResources().getString(2131759658);
-          paramString.field_showWordEn = ai.getContext().getResources().getString(2131759658);
+          paramString.field_showWordCn = aj.getContext().getResources().getString(2131759658);
+          paramString.field_showWordEn = aj.getContext().getResources().getString(2131759658);
         }
         label524:
-        boolean bool = j.cJk().update(paramString, new String[0]);
-        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "update local freewifi info : %s, %b, expiredTime : %d, action :%d, showurl : %s", new Object[] { this.ssid, Boolean.valueOf(bool), Integer.valueOf(((ad)localObject).DLH), Integer.valueOf(((ad)localObject).DLI), ((ad)localObject).DLJ });
+        boolean bool = j.cRz().update(paramString, new String[0]);
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "update local freewifi info : %s, %b, expiredTime : %d, action :%d, showurl : %s", new Object[] { this.ssid, Boolean.valueOf(bool), Integer.valueOf(((com.tencent.mm.protocal.protobuf.ad)localObject).FqM), Integer.valueOf(((com.tencent.mm.protocal.protobuf.ad)localObject).FqN), ((com.tencent.mm.protocal.protobuf.ad)localObject).FqO });
         AppMethodBeat.o(24843);
         return;
-        localObject = j.cJk().afA(this.ssid);
+        localObject = j.cRz().ajY(this.ssid);
         paramInt1 = 0;
         paramString = (String)localObject;
         if (localObject == null)
         {
           paramInt1 = 1;
           paramString = new com.tencent.mm.plugin.freewifi.g.c();
-          paramString.field_ssidmd5 = ah.dg(this.ssid);
+          paramString.field_ssidmd5 = ai.ee(this.ssid);
         }
         if ((paramInt2 == 0) && (paramInt3 == 0))
         {
-          localObject = (ad)this.rr.hvs.hvw;
+          localObject = (com.tencent.mm.protocal.protobuf.ad)this.rr.hNL.hNQ;
           paramString.field_ssid = this.ssid;
-          paramString.field_showUrl = ((ad)localObject).DLJ;
-          localcyw = ((ad)localObject).DLK;
-          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "get resp info : %s, expiredTime : %d, action :%d, showurl : %s", new Object[] { this.ssid, Integer.valueOf(((ad)localObject).DLH), Integer.valueOf(((ad)localObject).DLI), ((ad)localObject).DLJ });
-          if (localcyw != null)
+          paramString.field_showUrl = ((com.tencent.mm.protocal.protobuf.ad)localObject).FqO;
+          localdej = ((com.tencent.mm.protocal.protobuf.ad)localObject).FqP;
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "get resp info : %s, expiredTime : %d, action :%d, showurl : %s", new Object[] { this.ssid, Integer.valueOf(((com.tencent.mm.protocal.protobuf.ad)localObject).FqM), Integer.valueOf(((com.tencent.mm.protocal.protobuf.ad)localObject).FqN), ((com.tencent.mm.protocal.protobuf.ad)localObject).FqO });
+          if (localdej != null)
           {
-            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "en : %s, cn : %s, tw : %s", new Object[] { localcyw.FIc, localcyw.FId, localcyw.FIe });
-            paramString.field_showWordCn = localcyw.FId;
-            paramString.field_showWordEn = localcyw.FIc;
-            paramString.field_showWordTw = localcyw.FIe;
-            paramString.field_action = ((ad)localObject).DLI;
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "en : %s, cn : %s, tw : %s", new Object[] { localdej.HsK, localdej.HsL, localdej.HsM });
+            paramString.field_showWordCn = localdej.HsL;
+            paramString.field_showWordEn = localdej.HsK;
+            paramString.field_showWordTw = localdej.HsM;
+            paramString.field_action = ((com.tencent.mm.protocal.protobuf.ad)localObject).FqN;
             paramString.field_verifyResult = 1;
             paramString.field_connectState = -1;
-            if (((ad)localObject).DLS <= 0) {
-              ((ad)localObject).DLS = sqS;
+            if (((com.tencent.mm.protocal.protobuf.ad)localObject).FqX <= 0) {
+              ((com.tencent.mm.protocal.protobuf.ad)localObject).FqX = tnu;
             }
-            paramString.field_expiredTime = (bs.aNx() + ((ad)localObject).DLS);
+            paramString.field_expiredTime = (bt.aQJ() + ((com.tencent.mm.protocal.protobuf.ad)localObject).FqX);
             paramString.field_mac = this.mac;
             if (paramInt1 == 0) {
               break label979;
             }
-            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "insert freewifi ret = %b", new Object[] { Boolean.valueOf(j.cJk().insert(paramString)) });
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "insert freewifi ret = %b", new Object[] { Boolean.valueOf(j.cRz().insert(paramString)) });
           }
           for (;;)
           {
-            j.cJk().afB(this.ssid);
+            j.cRz().ajZ(this.ssid);
             AppMethodBeat.o(24843);
             return;
-            paramString.field_showWordCn = ai.getContext().getResources().getString(2131759658);
-            paramString.field_showWordEn = ai.getContext().getResources().getString(2131759658);
-            paramString.field_showWordTw = ai.getContext().getResources().getString(2131759658);
+            paramString.field_showWordCn = aj.getContext().getResources().getString(2131759658);
+            paramString.field_showWordEn = aj.getContext().getResources().getString(2131759658);
+            paramString.field_showWordTw = aj.getContext().getResources().getString(2131759658);
             break;
             label979:
-            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "insert freewifi ret = %b", new Object[] { Boolean.valueOf(j.cJk().update(paramString, new String[0])) });
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "insert freewifi ret = %b", new Object[] { Boolean.valueOf(j.cRz().update(paramString, new String[0])) });
           }
         }
-        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.FreeWifi.NetSceneAPAuth", "check this ap failed, ssid is :%s", new Object[] { this.ssid });
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.FreeWifi.NetSceneAPAuth", "check this ap failed, ssid is :%s", new Object[] { this.ssid });
         if (paramInt1 == 0)
         {
-          bool = j.cJk().delete(paramString, new String[0]);
-          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FreeWifi.NetSceneAPAuth", "freewifi verify failed, delte local db infos : %s, ret = %b", new Object[] { this.ssid, Boolean.valueOf(bool) });
+          bool = j.cRz().delete(paramString, new String[0]);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FreeWifi.NetSceneAPAuth", "freewifi verify failed, delte local db infos : %s, ret = %b", new Object[] { this.ssid, Boolean.valueOf(bool) });
         }
       }
     }
   }
   
-  protected final void cJr()
+  protected final void cRG()
   {
     AppMethodBeat.i(24839);
     b.a locala = new b.a();
-    locala.hvt = new com.tencent.mm.protocal.protobuf.ac();
-    locala.hvu = new ad();
+    locala.hNM = new ac();
+    locala.hNN = new com.tencent.mm.protocal.protobuf.ad();
     locala.uri = "/cgi-bin/micromsg-bin/apauth";
     locala.funcId = 640;
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aAz();
+    this.rr = locala.aDC();
     AppMethodBeat.o(24839);
   }
   
-  public final String cJs()
+  public final String cRH()
   {
-    ad localad = (ad)this.rr.hvs.hvw;
+    com.tencent.mm.protocal.protobuf.ad localad = (com.tencent.mm.protocal.protobuf.ad)this.rr.hNL.hNQ;
     if (localad != null) {
-      return localad.DLG;
+      return localad.FqL;
     }
     return null;
   }
   
-  public final cjv cJt()
+  public final cov cRI()
   {
-    ad localad = (ad)this.rr.hvs.hvw;
+    com.tencent.mm.protocal.protobuf.ad localad = (com.tencent.mm.protocal.protobuf.ad)this.rr.hNL.hNQ;
     if (localad != null) {
-      return localad.DLN;
+      return localad.FqS;
     }
     return null;
   }
   
-  public final boolean cJu()
+  public final boolean cRJ()
   {
-    ad localad = (ad)this.rr.hvs.hvw;
-    if ((localad != null) && (localad.DLO != null)) {
-      return localad.DLO.DLE == 1;
+    com.tencent.mm.protocal.protobuf.ad localad = (com.tencent.mm.protocal.protobuf.ad)this.rr.hNL.hNQ;
+    if ((localad != null) && (localad.FqT != null)) {
+      return localad.FqT.FqJ == 1;
     }
     return false;
   }
   
-  public final apy cJv()
+  public final ats cRK()
   {
-    ad localad = (ad)this.rr.hvs.hvw;
+    com.tencent.mm.protocal.protobuf.ad localad = (com.tencent.mm.protocal.protobuf.ad)this.rr.hNL.hNQ;
     if (localad != null) {
-      return localad.DLO;
+      return localad.FqT;
     }
     return null;
   }
   
-  public final hn cJw()
+  public final hu cRL()
   {
-    ad localad = (ad)this.rr.hvs.hvw;
+    com.tencent.mm.protocal.protobuf.ad localad = (com.tencent.mm.protocal.protobuf.ad)this.rr.hNL.hNQ;
     if (localad != null) {
-      return localad.DLP;
+      return localad.FqU;
     }
     return null;
   }
   
   public final String getOpenId()
   {
-    ad localad = (ad)this.rr.hvs.hvw;
+    com.tencent.mm.protocal.protobuf.ad localad = (com.tencent.mm.protocal.protobuf.ad)this.rr.hNL.hNQ;
     if (localad != null) {
-      return localad.DLQ;
+      return localad.FqV;
     }
     return null;
   }
@@ -315,7 +315,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.d.a
  * JD-Core Version:    0.7.0.1
  */

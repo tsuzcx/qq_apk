@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.s;
+import com.tencent.mm.pluginsdk.t;
 import com.tencent.mm.splash.SplashActivity;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.z;
@@ -46,7 +46,7 @@ public class WeChatSplashActivity
   public void onPause()
   {
     AppMethodBeat.i(160111);
-    s.eKk();
+    t.eYY();
     super.onPause();
     AppMethodBeat.o(160111);
   }

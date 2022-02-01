@@ -3,27 +3,27 @@ package com.tencent.mm.plugin.sns.ui.previewimageview;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.model.g;
 import java.util.concurrent.ExecutorService;
 
 final class c$c
   extends g<String, Integer, Boolean>
 {
-  private ImageView dkL;
-  private Bitmap hua;
+  private ImageView dwy;
+  private Bitmap hMs;
   private String path;
   
   public c$c(c paramc, ImageView paramImageView, String paramString)
   {
-    this.dkL = paramImageView;
+    this.dwy = paramImageView;
     this.path = paramString;
   }
   
-  public final ExecutorService dBu()
+  public final ExecutorService dCe()
   {
     AppMethodBeat.i(179372);
-    ExecutorService localExecutorService = af.dHB();
+    ExecutorService localExecutorService = ag.dTO();
     AppMethodBeat.o(179372);
     return localExecutorService;
   }

@@ -1,10 +1,7 @@
 package com.google.android.exoplayer2.a;
 
-import android.os.Handler;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.b.d;
-import com.google.android.exoplayer2.i.a;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface e
 {
@@ -18,43 +15,7 @@ public abstract interface e
   
   public abstract void d(d paramd);
   
-  public abstract void dH(int paramInt);
-  
-  public static final class a
-  {
-    final e aUy;
-    final Handler handler;
-    
-    public a(Handler paramHandler, e parame)
-    {
-      AppMethodBeat.i(91769);
-      if (parame != null) {}
-      for (paramHandler = (Handler)a.checkNotNull(paramHandler);; paramHandler = null)
-      {
-        this.handler = paramHandler;
-        this.aUy = parame;
-        AppMethodBeat.o(91769);
-        return;
-      }
-    }
-    
-    public final void e(final d paramd)
-    {
-      AppMethodBeat.i(91770);
-      if (this.aUy != null) {
-        this.handler.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(91767);
-            e.a.this.aUy.d(paramd);
-            AppMethodBeat.o(91767);
-          }
-        });
-      }
-      AppMethodBeat.o(91770);
-    }
-  }
+  public abstract void dL(int paramInt);
 }
 
 

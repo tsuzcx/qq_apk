@@ -1,113 +1,207 @@
 package com.tencent.mm.model;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.loader.j.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.n.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
 
 public final class ay
-  extends c
 {
-  public static ay hnA;
-  public static final String hnB;
-  
-  static
+  public static void m(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(132238);
-    hnA = new ay(c.gMU);
-    hnB = b.aoZ() + "last_avatar_dir";
-    AppMethodBeat.o(132238);
-  }
-  
-  private ay(c paramc)
-  {
-    super(paramc.aqf());
-    AppMethodBeat.i(132233);
-    AppMethodBeat.o(132233);
-  }
-  
-  public final void aL(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(132234);
-    ac.i("MicroMsg.LastLoginInfo", "save key : %s value : %s", new Object[] { paramString1, paramString2 });
-    this.sp.edit().putString(paramString1, paramString2).commit();
-    if (paramString1.equals("login_weixin_username")) {
-      ai.getContext().getSharedPreferences("notify_key_pref_no_account", com.tencent.mm.compatible.util.g.YK()).edit().putString("login_weixin_username", paramString2).commit();
-    }
-    AppMethodBeat.o(132234);
-  }
-  
-  public final String ayE()
-  {
-    AppMethodBeat.i(132236);
-    String str = aw("last_avatar_path", "");
-    AppMethodBeat.o(132236);
-    return str;
-  }
-  
-  public final void g(String paramString1, int paramInt, String paramString2)
-  {
-    AppMethodBeat.i(132235);
-    int i = 0;
-    if (paramInt != 0)
+    int j = 2;
+    AppMethodBeat.i(150169);
+    boolean bool2 = a.abF();
+    boolean bool3 = a.abH();
+    com.tencent.mm.kernel.g.ajD();
+    boolean bool4 = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(73217, Boolean.TRUE)).booleanValue();
+    com.tencent.mm.kernel.g.ajD();
+    boolean bool5 = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(73218, Boolean.TRUE)).booleanValue();
+    boolean bool1;
+    com.tencent.mm.plugin.report.service.g localg;
+    int k;
+    label162:
+    int m;
+    label170:
+    int n;
+    label178:
+    int i;
+    if ((bool4) || (bool5))
     {
+      bool1 = true;
+      ad.i("MicroMsg.KvNotificationStat", "doStatSysNotificationAfterModify, switchNewMsg: %s, switchVoipInvite: %s, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool1) });
+      localg = com.tencent.mm.plugin.report.service.g.yhR;
+      if (!bool2) {
+        break label284;
+      }
+      k = 1;
+      if (!bool3) {
+        break label290;
+      }
+      m = 1;
+      if (!bool1) {
+        break label296;
+      }
+      n = 1;
+      if (!paramBoolean1) {
+        break label307;
+      }
+      if (!bool2) {
+        break label302;
+      }
+      i = 2;
+      label189:
+      if (!paramBoolean2) {
+        break label317;
+      }
+      if (!bool3) {
+        break label312;
+      }
+    }
+    for (;;)
+    {
+      localg.f(14852, new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(0) });
+      AppMethodBeat.o(150169);
+      return;
+      bool1 = false;
+      break;
+      label284:
+      k = 0;
+      break label162;
+      label290:
+      m = 0;
+      break label170;
+      label296:
+      n = 0;
+      break label178;
+      label302:
       i = 1;
-      aL("last_login_bind_qq", String.valueOf(paramInt));
+      break label189;
+      label307:
+      i = 0;
+      break label189;
+      label312:
+      j = 1;
+      continue;
+      label317:
+      j = 0;
     }
-    paramInt = i;
-    if (!bs.isNullOrNil(paramString2))
-    {
-      paramInt = i | 0x2;
-      aL("last_login_bind_email", String.valueOf(paramString2));
-    }
-    i = paramInt;
-    if (!bs.isNullOrNil(paramString1))
-    {
-      i = paramInt | 0x4;
-      aL("last_login_bind_mobile", paramString1);
-    }
-    aL("last_bind_info", String.valueOf(i));
-    AppMethodBeat.o(132235);
   }
   
-  public final void yg(String paramString)
+  public static void ou(int paramInt)
   {
-    AppMethodBeat.i(132237);
-    ac.i("MicroMsg.LastLoginInfo", "Save last avatar: ".concat(String.valueOf(paramString)));
-    if (bs.isNullOrNil(paramString))
+    AppMethodBeat.i(150167);
+    boolean bool2 = a.abF();
+    boolean bool3 = a.abH();
+    boolean bool4 = a.abI();
+    boolean bool5 = a.abJ();
+    boolean bool6 = a.abN();
+    boolean bool7 = a.abW();
+    int i2 = a.abX();
+    int i3 = a.abZ();
+    int i4 = a.abY();
+    int i5 = a.aca();
+    com.tencent.mm.kernel.g.ajD();
+    boolean bool8 = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(73217, Boolean.TRUE)).booleanValue();
+    com.tencent.mm.kernel.g.ajD();
+    boolean bool9 = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(73218, Boolean.TRUE)).booleanValue();
+    boolean bool1;
+    com.tencent.mm.plugin.report.service.g localg;
+    int i;
+    label287:
+    int j;
+    label294:
+    int k;
+    label301:
+    int m;
+    label309:
+    int n;
+    label317:
+    int i1;
+    label325:
+    String str1;
+    String str2;
+    if ((bool8) || (bool9))
     {
-      AppMethodBeat.o(132237);
-      return;
+      bool1 = true;
+      ad.i("MicroMsg.KvNotificationStat", "doStatNotification, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, isNotificationShowDetail: %s, isNotificationSound: %s, isNotificationShake: %s, isActiveSilentTime: %s, activeBegin: %s, activeEnd: %s, scene: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool6), Boolean.valueOf(bool7), ov(i2) + ov(i3), ov(i4) + ov(i5), Integer.valueOf(paramInt), Boolean.valueOf(bool8), Boolean.valueOf(bool9), Boolean.valueOf(bool1) });
+      localg = com.tencent.mm.plugin.report.service.g.yhR;
+      if (!bool2) {
+        break label488;
+      }
+      i = 1;
+      if (!bool3) {
+        break label493;
+      }
+      j = 1;
+      if (!bool4) {
+        break label498;
+      }
+      k = 1;
+      if (!bool5) {
+        break label503;
+      }
+      m = 1;
+      if (!bool6) {
+        break label509;
+      }
+      n = 1;
+      if (!bool7) {
+        break label515;
+      }
+      i1 = 2;
+      str1 = ov(i4) + ov(i5);
+      str2 = ov(i2) + ov(i3);
+      if (!bool1) {
+        break label521;
+      }
     }
-    String str = paramString.substring(paramString.lastIndexOf('/') + 1);
-    if (bs.isNullOrNil(str))
+    label515:
+    label521:
+    for (i2 = 1;; i2 = 2)
     {
-      AppMethodBeat.o(132237);
+      localg.f(15308, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), str1, str2, Integer.valueOf(paramInt), Integer.valueOf(i2) });
+      AppMethodBeat.o(150167);
       return;
+      bool1 = false;
+      break;
+      label488:
+      i = 2;
+      break label287;
+      label493:
+      j = 2;
+      break label294;
+      label498:
+      k = 2;
+      break label301;
+      label503:
+      m = 2;
+      break label309;
+      label509:
+      n = 2;
+      break label317;
+      i1 = 1;
+      break label325;
     }
-    str = hnB + "/" + str;
-    i.aSh(hnB);
-    ac.i("MicroMsg.LastLoginInfo", "delete old avatar path[%s], ret[%b]", new Object[] { str, Boolean.valueOf(i.deleteFile(str)) });
-    i.lZ(paramString, str);
-    aL("last_avatar_path", str);
-    if (com.tencent.mm.kernel.g.agM()) {
-      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GQX, str);
+  }
+  
+  private static String ov(int paramInt)
+  {
+    AppMethodBeat.i(150168);
+    if (paramInt > 10)
+    {
+      AppMethodBeat.o(150168);
+      return String.valueOf(paramInt);
     }
-    AppMethodBeat.o(132237);
+    String str = "0".concat(String.valueOf(paramInt));
+    AppMethodBeat.o(150168);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.ay
  * JD-Core Version:    0.7.0.1
  */

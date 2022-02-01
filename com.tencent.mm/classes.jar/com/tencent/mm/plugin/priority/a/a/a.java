@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.priority.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -10,7 +10,7 @@ import java.util.Calendar;
 
 public final class a
 {
-  public static String aj(String paramString1, String paramString2, String paramString3)
+  public static String aq(String paramString1, String paramString2, String paramString3)
   {
     int i = 1;
     AppMethodBeat.i(40495);
@@ -18,11 +18,11 @@ public final class a
     if (!((e)localObject).exists()) {
       ((e)localObject).mkdirs();
     }
-    if (bs.isNullOrNil(paramString2))
+    if (bt.isNullOrNil(paramString2))
     {
-      localObject = paramString1 + "da_" + bs.eWj();
+      localObject = paramString1 + "da_" + bt.flT();
       paramString2 = (String)localObject;
-      if (!bs.isNullOrNil(paramString3)) {
+      if (!bt.isNullOrNil(paramString3)) {
         paramString2 = (String)localObject + "." + paramString3;
       }
     }
@@ -31,15 +31,15 @@ public final class a
       localObject = paramString2;
       try
       {
-        if (!q.B(new e(paramString2).fxU().fxV()).equalsIgnoreCase(q.B(new e(paramString1).fxV())))
+        if (!q.B(new e(paramString2).fOJ().fOK()).equalsIgnoreCase(q.B(new e(paramString1).fOK())))
         {
-          localObject = paramString1 + "da_" + bs.eWj();
-          ac.w("MicroMsg.Priority.PriorityUtil", "maybe DirTraversal attach. %s", new Object[] { localObject });
+          localObject = paramString1 + "da_" + bt.flT();
+          ad.w("MicroMsg.Priority.PriorityUtil", "maybe DirTraversal attach. %s", new Object[] { localObject });
         }
         AppMethodBeat.o(40495);
         return localObject;
         localObject = paramString2;
-        if (!bs.isNullOrNil(paramString3))
+        if (!bt.isNullOrNil(paramString3))
         {
           localObject = paramString2;
           if (!paramString2.endsWith(paramString3)) {
@@ -48,7 +48,7 @@ public final class a
         }
         String str = paramString1 + (String)localObject;
         paramString2 = str;
-        if (!i.eA(str)) {
+        if (!i.fv(str)) {
           continue;
         }
         for (;;)
@@ -56,7 +56,7 @@ public final class a
           paramString2 = str;
           if (i < 20)
           {
-            if (!i.eA(paramString1 + i + "_" + (String)localObject)) {
+            if (!i.fv(paramString1 + i + "_" + (String)localObject)) {
               paramString2 = paramString1 + i + "_" + (String)localObject;
             }
           }
@@ -65,9 +65,9 @@ public final class a
             if (i != 20) {
               break;
             }
-            localObject = paramString1 + "da_" + bs.eWj();
+            localObject = paramString1 + "da_" + bt.flT();
             paramString2 = (String)localObject;
-            if (bs.isNullOrNil(paramString3)) {
+            if (bt.isNullOrNil(paramString3)) {
               break;
             }
             paramString2 = (String)localObject + "." + paramString3;
@@ -80,10 +80,10 @@ public final class a
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.Priority.PriorityUtil", paramString2, "", new Object[0]);
-          paramString1 = paramString1 + "da_" + bs.eWj();
+          ad.printErrStackTrace("MicroMsg.Priority.PriorityUtil", paramString2, "", new Object[0]);
+          paramString1 = paramString1 + "da_" + bt.flT();
           localObject = paramString1;
-          if (!bs.isNullOrNil(paramString3)) {
+          if (!bt.isNullOrNil(paramString3)) {
             localObject = paramString1 + "." + paramString3;
           }
         }
@@ -91,7 +91,7 @@ public final class a
     }
   }
   
-  public static long doF()
+  public static long dzh()
   {
     AppMethodBeat.i(40496);
     Calendar localCalendar = Calendar.getInstance();
@@ -104,14 +104,14 @@ public final class a
     return l;
   }
   
-  public static final boolean gH(int paramInt1, int paramInt2)
+  public static final boolean gZ(int paramInt1, int paramInt2)
   {
     return (paramInt1 & paramInt2) > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.priority.a.a.a
  * JD-Core Version:    0.7.0.1
  */

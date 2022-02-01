@@ -6,11 +6,11 @@ public abstract interface e
 {
   public abstract void a(String paramString1, String paramString2, String paramString3, f paramf);
   
-  public abstract List<a> bIG();
+  public abstract List<a> bMT();
   
-  public abstract void eJ(int paramInt1, int paramInt2);
+  public abstract void eN(int paramInt1, int paramInt2);
   
-  public abstract void yo(int paramInt);
+  public abstract void yY(int paramInt);
 }
 
 

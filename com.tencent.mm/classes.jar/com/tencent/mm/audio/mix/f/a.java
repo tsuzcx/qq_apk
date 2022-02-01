@@ -5,20 +5,20 @@ import com.tencent.mm.audio.mix.h.b;
 
 public final class a
 {
-  public static boolean H(int paramInt1, int paramInt2, int paramInt3)
+  public static boolean I(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136884);
-    if (!hD(paramInt1))
+    if (!hK(paramInt1))
     {
       AppMethodBeat.o(136884);
       return false;
     }
-    if (!hE(paramInt2))
+    if (!hL(paramInt2))
     {
       AppMethodBeat.o(136884);
       return false;
     }
-    if (!hF(paramInt3))
+    if (!hM(paramInt3))
     {
       AppMethodBeat.o(136884);
       return false;
@@ -27,7 +27,7 @@ public final class a
     return true;
   }
   
-  private static boolean hD(int paramInt)
+  private static boolean hK(int paramInt)
   {
     AppMethodBeat.i(136885);
     if (paramInt <= 0)
@@ -45,7 +45,7 @@ public final class a
     return false;
   }
   
-  private static boolean hE(int paramInt)
+  private static boolean hL(int paramInt)
   {
     AppMethodBeat.i(136886);
     if (paramInt <= 0)
@@ -63,7 +63,7 @@ public final class a
     return false;
   }
   
-  private static boolean hF(int paramInt)
+  private static boolean hM(int paramInt)
   {
     AppMethodBeat.i(136887);
     if (paramInt <= 0) {

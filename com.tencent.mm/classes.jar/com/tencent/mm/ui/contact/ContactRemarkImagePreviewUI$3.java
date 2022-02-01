@@ -4,6 +4,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class ContactRemarkImagePreviewUI$3
   implements AdapterView.OnItemClickListener
@@ -13,19 +15,27 @@ final class ContactRemarkImagePreviewUI$3
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(37739);
-    if (!this.IuE.isTitleShowing())
+    b localb = new b();
+    localb.bd(paramAdapterView);
+    localb.bd(paramView);
+    localb.mr(paramInt);
+    localb.qY(paramLong);
+    a.b("com/tencent/mm/ui/contact/ContactRemarkImagePreviewUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+    if (!this.Klk.isTitleShowing()) {
+      this.Klk.showTitleView();
+    }
+    for (;;)
     {
-      this.IuE.showTitleView();
+      a.a(this, "com/tencent/mm/ui/contact/ContactRemarkImagePreviewUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(37739);
       return;
+      this.Klk.hideTitleView();
     }
-    this.IuE.hideTitleView();
-    AppMethodBeat.o(37739);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ContactRemarkImagePreviewUI.3
  * JD-Core Version:    0.7.0.1
  */

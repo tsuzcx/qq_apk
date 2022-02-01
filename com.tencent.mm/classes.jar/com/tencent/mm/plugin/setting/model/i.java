@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bvx;
-import com.tencent.mm.protocal.protobuf.bvy;
-import com.tencent.mm.protocal.protobuf.dob;
+import com.tencent.mm.protocal.protobuf.can;
+import com.tencent.mm.protocal.protobuf.cao;
+import com.tencent.mm.protocal.protobuf.dts;
 
 public final class i
   extends n
   implements k
 {
-  private g callback;
-  private final String djj;
+  private f callback;
+  private final String duW;
   private final int scene;
-  public final String xom;
-  public final int xon;
+  public final String yCR;
+  public final int yCS;
   
   public i(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this.djj = paramString1;
-    this.xom = paramString2;
-    this.xon = paramInt1;
+    this.duW = paramString1;
+    this.yCR = paramString2;
+    this.yCS = paramInt1;
     this.scene = paramInt2;
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(73777);
-    this.callback = paramg;
-    paramg = new b.a();
-    bvx localbvx = new bvx();
-    localbvx.djj = this.djj;
-    localbvx.Fls = this.xom;
-    localbvx.Flt = this.xon;
-    paramg.hvt = localbvx;
-    paramg.uri = "/cgi-bin/mmbiz-bin/moduserauth";
-    paramg.hvu = new bvy();
-    paramg.funcId = getType();
-    paramg.reqCmdId = 0;
-    paramg.respCmdId = 0;
-    int i = dispatch(parame, paramg.aAz(), this);
+    this.callback = paramf;
+    paramf = new b.a();
+    can localcan = new can();
+    localcan.duW = this.duW;
+    localcan.GVb = this.yCR;
+    localcan.GVc = this.yCS;
+    paramf.hNM = localcan;
+    paramf.uri = "/cgi-bin/mmbiz-bin/moduserauth";
+    paramf.hNN = new cao();
+    paramf.funcId = getType();
+    paramf.hNO = 0;
+    paramf.respCmdId = 0;
+    int i = dispatch(parame, paramf.aDC(), this);
     AppMethodBeat.o(73777);
     return i;
   }
@@ -59,14 +59,14 @@ public final class i
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(73776);
-    paramString = (bvy)((b)paramq).hvs.hvw;
-    this.callback.onSceneEnd(paramInt2, paramString.EuM.dfm, paramString.EuM.dfn, this);
+    paramString = (cao)((b)paramq).hNL.hNQ;
+    this.callback.onSceneEnd(paramInt2, paramString.Gcg.dqI, paramString.Gcg.dqJ, this);
     AppMethodBeat.o(73776);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.i
  * JD-Core Version:    0.7.0.1
  */
